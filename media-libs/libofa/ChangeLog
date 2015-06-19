@@ -1,0 +1,114 @@
+# ChangeLog for media-libs/libofa
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libofa/ChangeLog,v 1.33 2015/05/07 22:22:53 mrueg Exp $
+
+  07 May 2015; Manuel Rüger <mrueg@gentoo.org> -libofa-0.9.3.ebuild:
+  Remove old.
+
+  15 Sep 2014; Agostino Sarubbo <ago@gentoo.org> libofa-0.9.3-r1.ebuild:
+  Stable for sparc, wrt bug #512012
+
+  25 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libofa-0.9.3-r1.ebuild:
+  Stable for alpha, wrt bug #512012
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libofa-0.9.3-r1.ebuild:
+  Stable for ppc64, wrt bug #512012
+
+  28 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libofa-0.9.3-r1.ebuild:
+  Stable for ppc, wrt bug #512012
+
+  16 Jul 2014; Pacho Ramos <pacho@gentoo.org> libofa-0.9.3-r1.ebuild:
+  amd64/x86 stable, bug #516332
+
+  06 Jul 2014; Jeroen Roovers <jer@gentoo.org> libofa-0.9.3-r1.ebuild:
+  Stable for HPPA (bug #516332).
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> libofa-0.9.3-r1.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+*libofa-0.9.3-r1 (07 Jun 2014)
+
+  07 Jun 2014; Michał Górny <mgorny@gentoo.org> +libofa-0.9.3-r1.ebuild:
+  Enable multilib support.
+
+  04 Jun 2012; Justin Lecher <jlec@gentoo.org> libofa-0.9.3.ebuild,
+  +files/libofa-0.9.3-gcc-4.7.patch:
+  Add gcc-4.7 compatibility patch from fedora, #414141
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> libofa-0.9.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  22 Jul 2011; Christoph Mende <angelos@gentoo.org> libofa-0.9.3.ebuild,
+  +files/libofa-0.9.3-curl-7.21.patch:
+  Fix compilation against (bug #376009)
+
+  06 Mar 2011; Tobias Klausmann <klausman@gentoo.org> libofa-0.9.3.ebuild:
+  Stable on alpha, bug #354061
+
+  10 Oct 2010; Tobias Klausmann <klausman@gentoo.org> libofa-0.9.3.ebuild:
+  Keyworded on alpha, bug #326767
+
+  22 Jan 2010; Jonathan Callen <abcd@gentoo.org> libofa-0.9.3.ebuild:
+  Keyword ~amd64-linux/~x86-linux
+
+  19 Jan 2010; Jeroen Roovers <jer@gentoo.org> libofa-0.9.3.ebuild:
+  Stable for HPPA too.
+
+  27 Apr 2009; Jeroen Roovers <jer@gentoo.org> libofa-0.9.3:
+  Marked ~hppa (bug #260777).
+
+  11 Apr 2009; Peter Alfredsen <loki_val@gentoo.org>
+  +files/libofa-0.9.3-gcc-4.4.patch, libofa-0.9.3.ebuild:
+  Fix bug 265750, failure with gcc-4.4. Thanks to Andreas Sturmlechner
+  <andreas.sturmlechner@gmail.com> for the patch.
+
+  16 Apr 2008; Samuli Suominen <drac@gentoo.org>
+  +files/libofa-0.9.3-gcc-4.3.patch, libofa-0.9.3.ebuild:
+  Fix building with GCC 4.3, thanks to Mikko C. in bug 215563.
+
+  06 Feb 2008; Santiago M. Mola <coldwind@gentoo.org> libofa-0.9.3.ebuild:
+  HOMEPAGE and SRC_URI updated, quoting fixed.
+
+  11 Sep 2007; Samuli Suominen <drac@gentoo.org> libofa-0.9.3.ebuild:
+  Fix fftw depends to version 3, fails at configure stage with 2.
+
+  23 Jan 2007; Steve Dibb <beandog@gentoo.org> libofa-0.9.3.ebuild:
+  amd64 stable, bug 158836
+
+  26 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> libofa-0.9.3.ebuild:
+  Stable on sparc wrt #158836
+
+  25 Dec 2006; Andrej Kacian <ticho@gentoo.org> libofa-0.9.3.ebuild:
+  Stable on x86, bug #158836.
+
+  23 Dec 2006; Matti Bickel <mabi@gentoo.org> libofa-0.9.3.ebuild:
+  ppc stable (bug #158836)
+
+  23 Dec 2006; Markus Rothe <corsair@gentoo.org> libofa-0.9.3.ebuild:
+  Stable on ppc64; bug #158836
+
+  01 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> libofa-0.9.3.ebuild:
+  Keyworded ~sparc wrt #156599
+
+  21 Nov 2006; Brent Baude <ranger@gentoo.org> libofa-0.9.3.ebuild:
+  Marking libofa-0.9.3 ~ppc64 for bug 155302
+
+  21 Nov 2006; Joseph Jezak <josejx@gentoo.org> libofa-0.9.3.ebuild:
+  Marked ~ppc for bug #155302.
+
+  25 Sep 2006; Patrick McLean <chutzpah@gentoo.org> libofa-0.9.3.ebuild:
+  Add ~amd64.
+
+  30 Aug 2006; Carsten Lohrke <carlo@gentoo.org>
+  +files/libofa-0.9.3-gcc-4.patch, libofa-0.9.3.ebuild:
+  GCC 4 patch, thanks to Dave Baker.
+
+  27 Aug 2006; Carsten Lohrke <carlo@gentoo.org> libofa-0.9.3.ebuild:
+  Fix whitespace.
+
+*libofa-0.9.3 (27 Aug 2006)
+
+  27 Aug 2006; Carsten Lohrke <carlo@gentoo.org> +metadata.xml,
+  +libofa-0.9.3.ebuild:
+  Initial commit. Thanks to Maxwell Gender-Jones, bug #126069.

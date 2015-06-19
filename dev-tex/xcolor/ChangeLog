@@ -1,0 +1,151 @@
+# ChangeLog for dev-tex/xcolor
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/xcolor/ChangeLog,v 1.42 2012/05/09 16:24:23 aballier Exp $
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> xcolor-2.11.ebuild:
+  keyword ~amd64-fbsd
+
+  14 Jun 2011; Matt Turner <mattst88@gentoo.org> xcolor-2.11.ebuild:
+  Added ~mips, bug 342513
+
+  02 Oct 2010; Fabian Groffen <grobian@gentoo.org> xcolor-2.11.ebuild:
+  Marked ~x64-macos, bug #333981
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org> xcolor-2.11.ebuild:
+  Transfer Prefix keywords
+
+  30 May 2009; Ulrich Mueller <ulm@gentoo.org> xcolor-2.11.ebuild:
+  Remove app-text/tetex from dependencies, bug 227443.
+
+  18 Mar 2009; Raúl Porcel <armin76@gentoo.org> xcolor-2.11.ebuild:
+  arm/s390/sh stable wrt #253551
+
+  11 Mar 2009; Raúl Porcel <armin76@gentoo.org> xcolor-2.11.ebuild:
+  Add ~arm/~s390/~sh
+
+  01 Apr 2008; Alexis Ballier <aballier@gentoo.org> -xcolor-1.11-r1.ebuild,
+  -xcolor-2.00-r1.ebuild:
+  remove old
+
+  15 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> xcolor-2.11.ebuild:
+  amd64 stable wrt bug #208747
+
+  11 Feb 2008; Brent Baude <ranger@gentoo.org> xcolor-2.11.ebuild:
+  stable ppc64, bug 208747
+
+  10 Feb 2008; Alexis Ballier <aballier@gentoo.org> xcolor-2.11.ebuild:
+  keyword ~x86-fbsd
+
+  07 Feb 2008; Raúl Porcel <armin76@gentoo.org> xcolor-2.11.ebuild:
+  alpha/ia64/sparc stable wrt #208747
+
+  06 Feb 2008; nixnut <nixnut@gentoo.org> xcolor-2.11.ebuild:
+  stable on ppc wrt bug #208747
+
+  04 Feb 2008; Jeroen Roovers <jer@gentoo.org> xcolor-2.11.ebuild:
+  Stable for HPPA (bug #208747).
+
+  03 Feb 2008; Christian Faulhammer <opfer@gentoo.org> xcolor-2.11.ebuild:
+  stable x86, bug 208747
+
+  03 Feb 2008; Alexis Ballier <aballier@gentoo.org> xcolor-2.11.ebuild:
+  generate fonts in the sandbox instead of using addwrite..
+
+  18 Dec 2007; Jeroen Roovers <jer@gentoo.org> xcolor-2.11.ebuild:
+  Marked ~hppa (bug #195815).
+
+  27 Oct 2007; Fabian Groffen <grobian@gentoo.org> xcolor-2.00-r1.ebuild,
+  xcolor-2.11.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  26 Oct 2007; Raúl Porcel <armin76@gentoo.org> xcolor-2.11.ebuild:
+  Add ~ia64
+
+  25 Oct 2007; Markus Rothe <corsair@gentoo.org> xcolor-2.11.ebuild:
+  Added ~ppc64
+
+*xcolor-2.11 (14 Oct 2007)
+
+  14 Oct 2007; Alexis Ballier <aballier@gentoo.org> +xcolor-2.11.ebuild:
+  version bump, make use of texmf-site, depend on tex packages that support it
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Feb 2006; Aron Griffis <agriffis@gentoo.org> xcolor-2.00-r1.ebuild:
+  Mark 2.00-r1 stable on alpha
+
+  08 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  xcolor-2.00-r1.ebuild:
+  ppc stable, bug #116811
+
+  31 Dec 2005; Simon Stelling <blubb@gentoo.org> xcolor-2.00-r1.ebuild:
+  stable on amd64 per bug 116811
+
+  26 Dec 2005; Mark Loeser <halcy0n@gentoo.org> xcolor-2.00-r1.ebuild:
+  Stable on x86; bug #116811
+
+  28 Nov 2005; Alexandre Buisse <nattfodd@gentoo.org> xcolor-1.11-r1.ebuild,
+  xcolor-2.00-r1.ebuild:
+  Back to ~arch.
+
+*xcolor-2.00-r1 (28 Nov 2005)
+*xcolor-1.11-r1 (28 Nov 2005)
+
+  28 Nov 2005; Alexandre Buisse <nattfodd@gentoo.org> -xcolor-1.11.ebuild,
+  +xcolor-1.11-r1.ebuild, -xcolor-2.00.ebuild, +xcolor-2.00-r1.ebuild:
+  Added block of >=tetex-3.0 as this package is now part of tetex and the
+  block was previously not mutual (bug #94815).
+
+  27 Aug 2005; Fabian Groffen <grobian@gentoo.org> xcolor-2.00.ebuild:
+  Marking ~ppc-macos (bug #81542)
+
+  28 Dec 2004; Dylan Carlson <absinthe@gentoo.org> xcolor-2.00.ebuild:
+  Stable on amd64.
+
+  05 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> -xcolor-1.10.ebuild,
+  xcolor-1.11.ebuild, xcolor-2.00.ebuild:
+  Added app-arch/unzip to DEPEND; bug #66375. Marked 2.00 stable on x86, alpha
+  and ppc.
+
+*xcolor-2.00 (19 Aug 2004)
+
+  19 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> -xcolor-1.09.ebuild,
+  xcolor-1.11.ebuild, +xcolor-2.00.ebuild:
+  Version bumped. Marked 1.11 stable on x86 and alpha. This closes bug #60803.
+
+*xcolor-1.11 (13 Jun 2004)
+
+  13 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> +xcolor-1.11.ebuild:
+  Version bumped. Corrected HOMEPAGE and SRC_URI. See bug #48415
+
+  06 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> xcolor-1.09.ebuild,
+  xcolor-1.10.ebuild:
+  Stable on x86 and ppc.
+
+  06 May 2004; Ciaran McCreesh <ciaranm@gentoo.org> xcolor-1.10.ebuild:
+  Added ~sparc, #50228
+
+*xcolor-1.10 (21 Apr 2004)
+
+  21 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> xcolor-1.10.ebuild:
+  Version bumped. Closing bug #48415
+
+  13 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> xcolor-1.09.ebuild:
+  marked ~amd64
+
+  11 Mar 2004; David Holm <dholm@gentoo.org> xcolor-1.09.ebuild:
+  Added to ~ppc.
+
+*xcolor-1.09 (22 Feb 2004)
+
+  11 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> xcolor-1.09.ebuild:
+  Marked stable on x86
+
+  22 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> metadata.xml,
+  xcolor-1.09.ebuild:
+  Initial import. Ebuild required by dev-tex/latex-beamer. See bug #33244
+

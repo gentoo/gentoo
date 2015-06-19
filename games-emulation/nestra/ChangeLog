@@ -1,0 +1,75 @@
+# ChangeLog for games-emulation/nestra
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/nestra/ChangeLog,v 1.20 2015/04/08 14:54:13 mr_bones_ Exp $
+
+  08 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> nestra-0.66-r2.ebuild:
+  mark stable
+
+  08 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> nestra-0.66-r2.ebuild:
+  tidy
+
+  07 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> nestra-0.66-r2.ebuild:
+  tidy
+
+  13 Oct 2014; Michał Górny <mgorny@gentoo.org> nestra-0.66-r2.ebuild:
+  Support multilib providers for deps. Bump to EAPI=5.
+
+  17 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  nestra-0.66-r2.ebuild:
+  stable x86, bug 279543
+
+  29 Jul 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  nestra-0.66-r2.ebuild:
+  EAPI=2
+
+*nestra-0.66-r2 (01 Sep 2008)
+
+  01 Sep 2008; Tristan Heaven <nyhm@gentoo.org>
+  +files/nestra-0.66-include.patch, +nestra-0.66-r2.ebuild:
+  Fix implicit declarations and linking on amd64, bug #206375
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> nestra-0.66-r1.ebuild:
+  Removing old virtual/x11 dependency.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-nestra-0.66-r1, Manifest:
+  Fixing SHA256 digest, pass four
+
+  11 Feb 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  nestra-0.66-r1.ebuild:
+  Add modular X dependencies (bug #121697, Tupone Alfredo).
+
+  05 Feb 2006; Simon Stelling <blubb@gentoo.org> nestra-0.66-r1.ebuild:
+  remove old 2004.3 multilib checks
+
+  10 Jan 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/nestra-0.66-exec-stack.patch, nestra-0.66-r1.ebuild:
+  Build nestra without an executable stack.
+
+  10 Jan 2006; Mike Frysinger <vapier@gentoo.org> nestra-0.66-r1.ebuild:
+  Fix LDFLAGS support.
+
+  13 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  nestra-0.66-r1.ebuild:
+  call games_pkg_setup more; error check sed; use default src_compile
+
+  13 Jul 2005; Simon Stelling <blubb@gentoo.org> nestra-0.66-r1.ebuild:
+  fixed bug 94871
+
+  21 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  nestra-0.66-r1.ebuild:
+  Added support to build 32bit version on amd64.
+
+*nestra-0.66-r1 (27 Mar 2004)
+
+  27 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> nestra-0.66-r1.ebuild:
+  depend on sed >= 4; use emake; error check; upgrade to debian patch -7; use
+  mirror:// syntax
+
+*nestra-0.66 (27 Dec 2002)
+
+  18 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add debian patch + games.eclass support.
+
+  27 Dec 2002; Ryan Phillips <rphillips@gentoo.org> nestra-0.66.ebuild :
+  initial release

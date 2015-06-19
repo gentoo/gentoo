@@ -1,0 +1,335 @@
+# ChangeLog for app-text/sgmltools-lite
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/sgmltools-lite/ChangeLog,v 1.76 2015/06/09 12:41:04 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  14 Apr 2015; Justin Lecher <jlec@gentoo.org> -sgmltools-lite-3.0.3-r11.ebuild:
+  Drop old
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org>
+  sgmltools-lite-3.0.3-r14.ebuild:
+  Stable for ia64, wrt bug #544008
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org>
+  sgmltools-lite-3.0.3-r14.ebuild:
+  Stable for alpha, wrt bug #544008
+
+  02 Apr 2015; Markus Meier <maekke@gentoo.org>
+  sgmltools-lite-3.0.3-r14.ebuild:
+  arm stable, bug #544008
+
+  01 Apr 2015; Agostino Sarubbo <ago@gentoo.org>
+  sgmltools-lite-3.0.3-r14.ebuild:
+  Stable for sparc, wrt bug #544008
+
+  31 Mar 2015; Agostino Sarubbo <ago@gentoo.org>
+  sgmltools-lite-3.0.3-r14.ebuild:
+  Stable for ppc64, wrt bug #544008
+
+  28 Mar 2015; Agostino Sarubbo <ago@gentoo.org>
+  sgmltools-lite-3.0.3-r14.ebuild:
+  Stable for ppc, wrt bug #544008
+
+  28 Mar 2015; Jeroen Roovers <jer@gentoo.org> sgmltools-lite-3.0.3-r14.ebuild:
+  Stable for HPPA (bug #544008).
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org>
+  sgmltools-lite-3.0.3-r14.ebuild:
+  Stable for x86, wrt bug #544008
+
+  24 Mar 2015; Agostino Sarubbo <ago@gentoo.org>
+  sgmltools-lite-3.0.3-r14.ebuild:
+  Stable for amd64, wrt bug #544008
+
+*sgmltools-lite-3.0.3-r14 (21 Mar 2015)
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> +sgmltools-lite-3.0.3-r14.ebuild,
+  -sgmltools-lite-3.0.3-r13.ebuild, metadata.xml:
+  Use ecvs_clean; make man packe symlinks work correctly; modernize ebuild style
+
+*sgmltools-lite-3.0.3-r13 (01 Jan 2015)
+
+  01 Jan 2015; Michał Górny <mgorny@gentoo.org>
+  +sgmltools-lite-3.0.3-r13.ebuild, -sgmltools-lite-3.0.3-r12.ebuild:
+  Fix installed module byte-compilation.
+
+*sgmltools-lite-3.0.3-r12 (25 Dec 2014)
+
+  25 Dec 2014; Michał Górny <mgorny@gentoo.org>
+  +sgmltools-lite-3.0.3-r12.ebuild:
+  Convert to python-single-r1.
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> -sgmltools-lite-3.0.3-r10.ebuild,
+  metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/sgml-herd-has-no-maintainers-
+  again-td259655.html
+
+  15 Jul 2012; Raúl Porcel <armin76@gentoo.org>
+  sgmltools-lite-3.0.3-r11.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #410193
+
+  28 Jun 2012; Brent Baude <ranger@gentoo.org> sgmltools-lite-3.0.3-r11.ebuild:
+  Marking sgmltools-lite-3.0.3-r11 ppc for bug 410193
+
+  27 Jun 2012; Jeroen Roovers <jer@gentoo.org> sgmltools-lite-3.0.3-r11.ebuild:
+  Stable for HPPA (bug #410193).
+
+  22 Jun 2012; Brent Baude <ranger@gentoo.org> sgmltools-lite-3.0.3-r11.ebuild:
+  Marking sgmltools-lite-3.0.3-r11 ppc64 for bug 410193
+
+  20 Jun 2012; Markus Meier <maekke@gentoo.org>
+  sgmltools-lite-3.0.3-r11.ebuild:
+  arm stable, bug #410193
+
+  17 Jun 2012; Jeff Horelick <jdhore@gentoo.org>
+  sgmltools-lite-3.0.3-r11.ebuild:
+  marked x86 per bug 410193
+
+  15 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  sgmltools-lite-3.0.3-r11.ebuild:
+  Stable for amd64, wrt bug #410193
+
+*sgmltools-lite-3.0.3-r11 (29 Mar 2012)
+
+  29 Mar 2012; Mike Gilbert <floppym@gentoo.org>
+  +sgmltools-lite-3.0.3-r11.ebuild:
+  Convert python shebangs. Use slot deps.
+
+  25 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  sgmltools-lite-3.0.3-r10.ebuild:
+  Use Python 2 (bug #312123).
+
+  05 Apr 2011; Ulrich Mueller <ulm@gentoo.org> sgmltools-lite-3.0.3-r10.ebuild:
+  Depend on dev-lang/python because virtual/python will go away, bug 358849.
+
+  02 Sep 2008; Christian Faulhammer <opfer@gentoo.org> metadata.xml,
+  sgmltools-lite-3.0.3-r10.ebuild:
+  rename USE=tetex to USE=jadetex for bug 196745
+
+  29 May 2008; Ali Polatel <hawking@gentoo.org>
+  sgmltools-lite-3.0.3-r10.ebuild:
+  python_mod_{cleanup,optimize} are ROOT aware. Quoting.
+
+  12 Mar 2007; Leonardo Boshell <leonardop@gentoo.org> metadata.xml,
+  -sgmltools-lite-3.0.3-r7.ebuild:
+  Replacing text-markup herd with the new sgml herd.
+
+  19 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  sgmltools-lite-3.0.3-r10.ebuild:
+  Stable on Alpha.
+
+  03 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  sgmltools-lite-3.0.3-r10.ebuild:
+  Stable on hppa wrt #139255
+
+  06 Jul 2006; Jon Hood <squinky86@gentoo.org>
+  sgmltools-lite-3.0.3-r10.ebuild:
+  Stable on amd64, bug #139255.
+
+  06 Jul 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  sgmltools-lite-3.0.3-r10.ebuild:
+  Stable on sparc wrt #139255
+
+  06 Jul 2006; Markus Rothe <corsair@gentoo.org>
+  sgmltools-lite-3.0.3-r10.ebuild:
+  Stable on ppc64
+
+  05 Jul 2006; <nixnut@gentoo.org> sgmltools-lite-3.0.3-r10.ebuild:
+  Stable on ppc. Bug #139255
+
+  05 Jul 2006; Joshua Jackson <tsunam@gentoo.org>
+  sgmltools-lite-3.0.3-r10.ebuild:
+  stable x86; bug #139255
+
+  16 Mar 2006; Martin Ehmsen <ehmsen@gentoo.org>
+  sgmltools-lite-3.0.3-r7.ebuild, sgmltools-lite-3.0.3-r10.ebuild:
+  Don't install COPYING, found by QA script.
+
+  30 Nov 2005; Tom Gall <tgall@gentoo.org> sgmltools-lite-3.0.3-r7.ebuild:
+  stable on ppc64
+
+*sgmltools-lite-3.0.3-r10 (13 Aug 2005)
+
+  13 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  sgmltools-lite-3.0.3-r10.ebuild:
+  Don't install files provided by other packages. In particular, don't
+  create sgml2{html,txt,rtf} scripts, as they are not good substitutes for
+  the real programs in linuxdoc-tools (bug #88232). Don't include the
+  linuxdoc catalog in the system global catalog.
+
+  15 Jul 2005; Leonardo Boshell <leonardop@gentoo.org>
+  sgmltools-lite-3.0.3-r9.ebuild:
+  Call sgml-catalog_cat_include() from the global scope again (bug #98680).
+
+*sgmltools-lite-3.0.3-r9 (11 Jul 2005)
+
+  11 Jul 2005; Leonardo Boshell <leonardop@gentoo.org>
+  sgmltools-lite-3.0.3-r9.ebuild:
+  New revision. Install the linuxdoc DTD catalog (bug #98134). Added "w3m or
+  lynx" dependency atom for the txt backend.
+
+*sgmltools-lite-3.0.3-r8 (29 May 2005)
+
+  29 May 2005; Leonardo Boshell <leonardop@gentoo.org>
+  sgmltools-lite-3.0.3-r8.ebuild:
+  New revision, creates binaries from the python scripts; resolves bug
+  #87509. Thanks to Torsten Veller. Removed lynx dependency, as it is not
+  necessary.
+
+  15 Mar 2005; Seemant Kulleen <seemant@gentoo.org>
+  sgmltools-lite-3.0.3-r6.ebuild, sgmltools-lite-3.0.3-r7.ebuild:
+  Dependency update: net-www/lynx -> www-client/lynx.
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  19 Oct 2004; Mamoru KOMACHI <usata@gentoo.org>
+  sgmltools-lite-3.0.3-r6.ebuild, sgmltools-lite-3.0.3-r7.ebuild:
+  Fixed missing dependencies; bug #68021.
+
+  09 Sep 2004; Hardave Riar <hardave@gentoo.org>
+  sgmltools-lite-3.0.3-r7.ebuild:
+  Added ~mips keyword
+
+  08 Sep 2004; Philippe Trottier <tchiwam@gentoo.org> 
+  sgmltools-lite-3.0.3-r7.ebuild, 
+  builds on ppc64, Marked ~ppc64
+
+  07 Aug 2004; Tom Martin <slarti@gentoo.org> sgmltools-lite-3.0.3-r6.ebuild,
+  sgmltools-lite-3.0.3-r7.ebuild:
+  Typo in DESCRIPTION: specificially -> specifically. Bug 59717.
+
+  06 Jun 2004; Jason Wever <weeve@gentoo.org> sgmltools-lite-3.0.3-r7.ebuild:
+  Stable on sparc.
+
+  13 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  sgmltools-lite-3.0.3-r7.ebuild:
+  Stable on alpha.
+
+  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> sgmltools-lite-3.0.3-r7.ebuild :
+  Stable on AMD64.
+
+  26 Apr 2004; Mike Gardiner <obz@gentoo.org> sgmltools-lite-3.0.3-r6.ebuild,
+  sgmltools-lite-3.0.3-r7.ebuild:
+  Marked stable on x86
+
+  01 Jan 2004; Guy Martin <gmsoft@gentoo.org> sgmltools-lite-3.0.3-r7.ebuild:
+  Marked stable on hppa.
+
+*sgmltools-lite-3.0.3-r7 (23 Nov 2003)
+
+  23 Nov 2003; Mike Gardiner <obz@gentoo.org> sgmltools-lite-3.0.3-r7.ebuild:
+  New revision which allows tex support to be enabled by the USE='tetex'
+  setting. Cleaned up to use econf/emake/einstall.
+
+  16 Nov 2003; Brad House <brad_mssw@gentoo.org>
+  sgmltools-lite-3.0.3-r6.ebuild:
+  mark stable on amd64
+
+  27 Sep 2003; Mike Gardiner <obz@gentoo.org> metadata.xml,
+  sgmltools-lite-3.0.3-r5.ebuild, sgmltools-lite-3.0.3-r6.ebuild:
+  Fixed the sgml2* tools, thanks to <parapente@mail15.com> for bug #27658. Added
+  metadata.xml and removed older -r5 version
+
+  12 Jun 2003; <msterret@gentoo.org> sgmltools-lite-3.0.3-r5.ebuild,
+  sgmltools-lite-3.0.3-r6.ebuild:
+  fix Header
+
+  03 Jan 2003; Matthew Turk <satai@gentoo.org> :
+  Changed around the method of updating the SGML_CATALOG environment variables,
+  move it into sgml-catalog.eclass.  This should keep it up to date.
+
+  30 Dec 2002; Matthew Turk <satai@gentoo.org> :
+  Changed dependencies to work with new docbook-sgml-dtd's.
+
+*sgmltools-lite-3.0.3-r6 (30 Dec 2002)
+
+  10 Mar 2003; Aron Griffis <agriffis@gentoo.org>
+  sgmltools-lite-3.0.3-r6.ebuild:
+  Mark stable on alpha
+
+  30 Dec 2002; Matthew Turk <satai@gentoo.org> : 
+  changed to inherit sgml-catalog and better deal with catalogs. 
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*sgmltools-lite-3.0.3-r5 (12 Sep 2002)
+
+  20 Sep 2002; Mike Frysinger <vapier@gentoo.org> :
+  Updated HOMEPAGE and removed duplicate LICENSE
+
+  12 Sep 2002; satai <satai@gentoo.org> sgmltools-lite-3.0.3-r5.ebuild :
+  Added more robust file checking.
+
+  02 Sep 2002; satai <satai@gentoo.org> sgmltools-lite-3.0.3-r5.ebuild :
+  Added catalog installation.
+
+*sgmltools-lite-3.0.3-r4 (3 Apr 2002)
+
+  20 Sep 2002; Mike Frysinger <vapier@gentoo.org> :
+  Updated HOMEPAGE and removed duplicate LICENSE
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> sgmltools-lite-3.0.3.ebuild :
+  Added LICENSE, SLOT.
+
+  15 Jul 2002; Owen Stampflee <owen@gentoo.org> :
+  Added KEYWORDS.
+
+  3 Apr 2002; Seemant Kulleen <seemant@gentoo.org> sgmltools-lite-3.0.3-r4.ebuild :
+  Some users report that the CVS directories in the source tree cause emerge
+  failures, so these are being removed before make install.
+
+  31 Mar 2002; Seemant Kulleen <seemant@gentoo.org> sgmltools-lite-3.0.3-r4.ebuild :
+  This addresses bug # 1163.  However, there are no symlinks being created for
+  the binary.  Instead, a mini shell script is created to call the
+  sgmltools binary with the appropriate flag.  Symlinks, however, are created
+  for the man pages for the 5 extra binaries.
+
+*sgmltools-lite-3.0.3-r3 (31 Mar 2002)
+
+  20 Sep 2002; Mike Frysinger <vapier@gentoo.org> :
+  Updated HOMEPAGE and removed duplicate LICENSE
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> sgmltools-lite-3.0.3-r3.ebuild :
+  Added LICENSE, SLOT.
+
+  31 Mar 2002; Seemant Kulleen <seemant@gentoo.org> sgmltools-lite-3.0.3-r3.ebuild :
+  Fixed bug # 1369.  Also, added sgml environment generation into the
+  pkg_postinst() function, so we do not need to jump through sed hoops to
+  achieve that.
+
+*sgmltools-lite-3.0.3-r2 (27 Mar 2002)
+
+  20 Sep 2002; Mike Frysinger <vapier@gentoo.org> :
+  Updated HOMEPAGE and removed duplicate LICENSE
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> sgmltools-lite-3.0.3-r2.ebuild :
+  Added LICENSE, SLOT, DESCRIPTION.
+
+  27 Mar 2002; Seemant Kulleen <seemant@gentoo.org> sgmltools-lite-3.03-r2.ebuild :
+  Man page/LFH fixes submitted by Matthew Kennedy.
+
+*sgmltools-lite-3.0.3-r1 (18 Mar 2002)
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> sgmltools-lite-3.0.3-r1.ebuild :
+  Added LICENSE, SLOT, DESCRIPTION.
+
+  18 Mar 2002; Seemant Kulleen <seemant@gentoo.org> sgmltools-lite-3.03-r1.ebuild :
+  Fixed a sandbox violation.
+
+*sgmltools-lite-3.0.3 (1 Feb 2002)
+
+  20 Sep 2002; Mike Frysinger <vapier@gentoo.org> :
+  Updated HOMEPAGE
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> sgmltools-lite-3.0.3-r1.ebuild :
+  Added DESCRIPTION.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

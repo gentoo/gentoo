@@ -1,0 +1,59 @@
+# ChangeLog for games-action/descent3-demo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/descent3-demo/ChangeLog,v 1.14 2015/06/01 22:05:45 mr_bones_ Exp $
+
+  01 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  descent3-demo-1.4.0a.ebuild:
+  clean up app-emulation/emul-linux which has been removed
+
+  27 Jun 2014; Michał Górny <mgorny@gentoo.org> descent3-demo-1.4.0a.ebuild:
+  Support multilib packages in dependencies. Remove unnecessary dependencies.
+
+  15 Apr 2014; Ulrich Müller <ulm@gentoo.org> descent3-demo-1.4.0a.ebuild:
+  Fix LICENSE, add mirror and bindist restrictions, bug 506810.
+
+  23 Dec 2012; Tupone Alfredo <tupone@gentoo.org> descent3-demo-1.4.0a.ebuild:
+  Move to EAPI 4.
+  Use QA_PREBUILT. Bug #429278 by Diego Elio Pettenò
+
+  08 Feb 2012; Mike Frysinger <vapier@gentoo.org> descent3-demo-1.4.0a.ebuild:
+  Move to new unpacker eclass for unpack_makeself.
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org>
+  descent3-demo-1.4.0a.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> descent3-demo-1.4.0a.ebuild:
+  Replacing einfo with elog
+
+  07 Nov 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  descent3-demo-1.4.0a.ebuild:
+  Stable on amd64.
+
+  13 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  descent3-demo-1.4.0a.ebuild:
+  Added ~amd64 KEYWORDS, removed virtual/x11 from dependencies, and added
+  symlink for ppics.hog for bug #151148.
+
+  22 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  descent3-demo-1.4.0a.ebuild:
+  Stable on x86.
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  descent3-demo-1.4.0a.ebuild:
+  Changing nostrip to strip.
+
+  24 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  descent3-demo-1.4.0a.ebuild:
+  Moved games_pkg_postinst to the beginning of pkg_postinst.
+
+  13 Feb 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  descent3-demo-1.4.0a.ebuild:
+  Removed redundant games_pkg_postinst and closing bug #122631.
+
+*descent3-demo-1.4.0a (11 Feb 2006)
+
+  11 Feb 2006; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +descent3-demo-1.4.0a.ebuild:
+  Initial import. Ebuild by Paul Bredbury <brebs@sent.com>. Closing bug
+  #120371.

@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# uncomment this to make it work
+#
+
+#exec /usr/sbin/qmail-notify -r

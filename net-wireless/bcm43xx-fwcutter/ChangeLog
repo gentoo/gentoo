@@ -1,0 +1,55 @@
+# ChangeLog for net-wireless/bcm43xx-fwcutter
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/bcm43xx-fwcutter/ChangeLog,v 1.14 2015/03/21 20:39:45 jlec Exp $
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> bcm43xx-fwcutter-005.ebuild,
+  bcm43xx-fwcutter-006.ebuild:
+  use dobin instead of exeinto /usr/bin/ && doexe
+
+  21 Nov 2012; Rick Farina <zerochaos@gentoo.org> metadata.xml:
+  adding myself as co-maintainer
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+  22 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  bcm43xx-fwcutter-006.ebuild:
+  fix typo
+
+  22 Mar 2008; Joseph Jezak <josejx@gentoo.org> bcm43xx-fwcutter-005.ebuild,
+  bcm43xx-fwcutter-006.ebuild:
+  Fixes bug #207784.
+
+  07 Apr 2007; Joseph Jezak <josejx@gentoo.org> bcm43xx-fwcutter-006.ebuild:
+  Marked ppc stable.
+
+*bcm43xx-fwcutter-006 (22 Jan 2007)
+
+  22 Jan 2007; Joseph Jezak <josejx@gentoo.org>
+  -bcm43xx-fwcutter-004.ebuild, +bcm43xx-fwcutter-006.ebuild:
+  Added latest version.
+
+  02 Dec 2006; Tony Vroon <chainsaw@gentoo.org> bcm43xx-fwcutter-005.ebuild:
+  Add ~ppc64 keyword. Tested on 64ul with GCC 4.X & BCM4306 hardware.
+
+  24 Nov 2006; Joseph Jezak <josejx@gentoo.org> bcm43xx-fwcutter-005.ebuild:
+  Marked ppc stable.
+
+*bcm43xx-fwcutter-005 (04 Oct 2006)
+
+  04 Oct 2006; Joseph Jezak <josejx@gentoo.org>
+  +bcm43xx-fwcutter-005.ebuild:
+  Added latest version, removed hotplug dependency, as it's not an actual dep.
+
+  04 Sep 2006; Joseph Jezak <josejx@gentoo.org> bcm43xx-fwcutter-004.ebuild:
+  Marked ppc stable.
+
+  06 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  bcm43xx-fwcutter-004.ebuild:
+  Set CC to the right command name, closes bug #132485.
+
+  21 Apr 2006; Joseph Jezak <josejx@gentoo.org> bcm43xx-fwcutter-004.ebuild:
+  Fixed keywords to match bcm43xx ebuild.
+
+  21 Apr 2006; Joseph Jezak <josejx@gentoo.org> ChangeLog:
+  Added fwcutter ebuild.

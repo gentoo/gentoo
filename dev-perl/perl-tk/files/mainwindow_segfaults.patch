@@ -1,0 +1,25 @@
+From ba3a92a779f7adcf655b7e45b40ee5b0cb79bc8b Mon Sep 17 00:00:00 2001
+From: Slaven Rezic <slaven@rezic.de>
+Date: Fri, 14 Mar 2014 16:00:05 +0100
+Subject: [PATCH] no segfaults if Tk::MainWindow::Create was called without
+ args
+
+However, this case never happened in real life, as this function was
+not supposed to be used directly anyway.
+---
+ tkGlue.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tkGlue.c b/tkGlue.c
+index 57f0bca..ae595bf 100644
+--- a/tkGlue.c
++++ b/tkGlue.c
+@@ -2370,7 +2370,7 @@ XS(XS_Tk__MainWindow_Create)
+  STRLEN na;
+  Tcl_Interp *interp = Tcl_CreateInterp();
+  SV **args = &ST(0);
+- char *appName = SvPV(ST(1),na);
++ char *appName = items >= 1 ? SvPV(ST(1),na) : "";
+  int offset = args - sp;
+  int code;
+  if (!initialized)

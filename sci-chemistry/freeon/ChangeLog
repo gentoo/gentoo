@@ -1,0 +1,19 @@
+# ChangeLog for sci-chemistry/freeon
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/freeon/ChangeLog,v 1.4 2015/03/31 12:47:05 idella4 Exp $
+
+  31 Mar 2015; Ian Delaney <idella4@gentoo.org> freeon-1.0.8-r1.ebuild:
+  clean old impls, add py3.4 support, fixes Bug #531004
+
+  26 Oct 2014; Justin Lecher <jlec@gentoo.org> freeon-1.0.8-r1.ebuild,
+  +files/freeon-1.0.8-blas.patch:
+  Fix blas/lapakc detection
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> freeon-1.0.8-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*freeon-1.0.8-r1 (13 Dec 2013)
+
+  13 Dec 2013; Nicolas Bock <nicolasbock@gentoo.org> +freeon-1.0.8-r1.ebuild,
+  +metadata.xml:
+  Moved current ebuild from sci overlay to x86.

@@ -1,0 +1,76 @@
+# ChangeLog for dev-tex/pdfannotextractor
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/pdfannotextractor/ChangeLog,v 1.19 2015/04/13 22:20:28 mrueg Exp $
+
+  13 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -pdfannotextractor-0.1k.ebuild:
+  Remove old.
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> pdfannotextractor-0.1l.ebuild:
+  Stable for amd64, wrt bug #474212
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> pdfannotextractor-0.1l.ebuild:
+  Stable for x86, wrt bug #474212
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> pdfannotextractor-0.1l.ebuild:
+  Stable for ppc64, wrt bug #474212
+
+  24 Jun 2013; Agostino Sarubbo <ago@gentoo.org> pdfannotextractor-0.1l.ebuild:
+  Stable for ppc, wrt bug #474212
+
+*pdfannotextractor-0.1l (22 Apr 2013)
+
+  22 Apr 2013; Alexis Ballier <aballier@gentoo.org>
+  +pdfannotextractor-0.1l.ebuild:
+  version bump
+
+  22 Apr 2013; Alexis Ballier <aballier@gentoo.org>
+  -pdfannotextractor-0.1i.ebuild:
+  remove old
+
+  08 Dec 2012; Agostino Sarubbo <ago@gentoo.org> pdfannotextractor-0.1k.ebuild:
+  Stable for ppc64, wrt bug #436880
+
+  10 Oct 2012; Brent Baude <ranger@gentoo.org> pdfannotextractor-0.1k.ebuild:
+  Marking pdfannotextractor-0.1k ppc for bug 436880
+
+  03 Oct 2012; Agostino Sarubbo <ago@gentoo.org> pdfannotextractor-0.1k.ebuild:
+  Stable for amd64, wrt bug #436880
+
+  12 May 2012; Alexis Ballier <aballier@gentoo.org>
+  pdfannotextractor-0.1k.ebuild:
+  keyword ~amd64-fbsd
+
+  02 Nov 2011; Alexis Ballier <aballier@gentoo.org>
+  pdfannotextractor-0.1k.ebuild:
+  keyword ~x86-fbsd
+
+  28 Aug 2011; Fabian Groffen <grobian@gentoo.org>
+  pdfannotextractor-0.1k.ebuild:
+  Marked ~x64-macos
+
+  12 Aug 2011; Thomas Kahle <tomka@gentoo.org> pdfannotextractor-0.1k.ebuild:
+  x86 stable per bug 355085
+
+  09 Aug 2011; Markos Chandras <hwoarang@gentoo.org>
+  pdfannotextractor-0.1i.ebuild:
+  Stable on amd64 wrt bug #355085
+
+*pdfannotextractor-0.1k (27 Jul 2011)
+
+  27 Jul 2011; Alexis Ballier <aballier@gentoo.org>
+  +pdfannotextractor-0.1k.ebuild:
+  version bump
+
+  18 Mar 2011; Thomas Kahle <tomka@gentoo.org> pdfannotextractor-0.1i.ebuild:
+  ~x86 per bug 355353
+
+  20 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  pdfannotextractor-0.1i.ebuild:
+  Marked ~ppc/~ppc64 wrt #355353
+
+*pdfannotextractor-0.1i (17 Feb 2011)
+
+  17 Feb 2011; Alexis Ballier <aballier@gentoo.org>
+  +pdfannotextractor-0.1i.ebuild, +files/javajars.patch, +metadata.xml:
+  initial import, split out of texlive-latexextra for getting proper building
+  and deps, part of bug #342317

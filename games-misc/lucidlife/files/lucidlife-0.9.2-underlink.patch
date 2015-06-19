@@ -1,0 +1,11 @@
+--- src/Makefile.am.old	2011-06-17 17:31:54.078600741 +0200
++++ src/Makefile.am	2011-06-17 17:32:05.491299944 +0200
+@@ -2,7 +2,7 @@
+            -DDATADIR=\""$(datadir)/lucidlife"\" \
+            -DDOCDIR=\""$(datadir)/doc/lucidlife"\"
+ 
+-LIBS = $(GNOME_LIBS)
++LIBS = $(GNOME_LIBS) -lX11
+ 
+ bin_PROGRAMS = lucidlife
+ 

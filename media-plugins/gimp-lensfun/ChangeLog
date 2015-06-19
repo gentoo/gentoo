@@ -1,0 +1,36 @@
+# ChangeLog for media-plugins/gimp-lensfun
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gimp-lensfun/ChangeLog,v 1.7 2015/03/30 09:11:33 idella4 Exp $
+
+  30 Mar 2015; Ian Delaney <idella4@gentoo.org>
+  +files/0.2.3-remove-deprecated-output.patch, gimp-lensfun-0.2.3.ebuild:
+  add patch sourced from upstream, supplied by maintainer in bug #537130, fixes
+  bug
+
+*gimp-lensfun-0.2.3 (30 May 2014)
+
+  30 May 2014; Sven Vermeulen <swift@gentoo.org> +gimp-lensfun-0.2.3.ebuild:
+  New version of GIMP Lensfun (0.2.3), thanks to Mario Kicherer (bug #468788)
+
+  15 Aug 2013; Patrick Lauer <patrick@gentoo.org> gimp-lensfun-0.2.2-r2.ebuild:
+  Whitespace
+
+*gimp-lensfun-0.2.2-r2 (28 Oct 2012)
+
+  28 Oct 2012; Markos Chandras <hwoarang@gentoo.org>
+  +gimp-lensfun-0.2.2-r2.ebuild:
+  Add openmp support. Bug #437406. Thanks to Mario Kicherer <dev@kicherer.org>
+
+*gimp-lensfun-0.2.2-r1 (30 Sep 2012)
+
+  30 Sep 2012; Markos Chandras <hwoarang@gentoo.org>
+  +files/gimp-lensfun-0.2.2-build.patch, +gimp-lensfun-0.2.2-r1.ebuild,
+  -gimp-lensfun-0.2.2.ebuild:
+  Build system fixes thanks to Julian Ospald (hasufell). Bug #436660
+
+*gimp-lensfun-0.2.2 (30 Sep 2012)
+
+  30 Sep 2012; Markos Chandras <hwoarang@gentoo.org> +gimp-lensfun-0.2.2.ebuild,
+  +metadata.xml:
+  Initial commit. Thanks to Mario <mkarts@empanyc.net> who will proxy-maintain
+  it. Bug #436282

@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=begemot utility function library
+HOMEPAGE=http://people.freebsd.org/~harti/
+KEYWORDS=~amd64 ~amd64-fbsd ~x86-fbsd
+LICENSE=BSD
+SLOT=0
+SRC_URI=http://people.freebsd.org/~harti/libbegemot/libbegemot-1.11.tar.gz
+_eclasses_=libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=595a296166c664e9dd248b982ba92fce

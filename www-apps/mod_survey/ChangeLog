@@ -1,0 +1,118 @@
+# ChangeLog for www-apps/mod_survey
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/mod_survey/ChangeLog,v 1.10 2015/06/13 17:20:49 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  mod_survey-3.2.5.ebuild:
+  The CGI module is no longer part of core Perl and has been moved to dev-perl
+
+  14 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -mod_survey-3.2.4.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> mod_survey-3.2.4.ebuild,
+  mod_survey-3.2.5.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  22 Mar 2008; Benedikt Böhm <hollow@gentoo.org> mod_survey-3.2.5.ebuild:
+  use APACHE_MODULES_CONFDIR
+
+*mod_survey-3.2.5 (04 Mar 2008)
+
+  04 Mar 2008; Benedikt Böhm <hollow@gentoo.org> +files/98_mod_survey.conf,
+  +mod_survey-3.2.5.ebuild:
+  version bump wrt #211985
+
+  04 Feb 2008; Benedikt Böhm <hollow@gentoo.org> mod_survey-3.2.4.ebuild:
+  readd config file
+
+  04 Feb 2008; Benedikt Böhm <hollow@gentoo.org> mod_survey-3.2.4.ebuild:
+  merge from webapps overlay wrt #208584
+
+  02 Feb 2008; Jakub Moc <jakub@gentoo.org> mod_survey-3.2.4.ebuild:
+  Nuke unneeded apache dependency already implied by mod_perl for Bug 208584.
+  Fix LINGUAS handling, fix dosed, fix quoting, ebuild clean-up.
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org> mod_survey-3.2.4.ebuild:
+  Fixing the DEPEND/RDEPEND for the move of net-www/apache to
+  www-servers/apache (#78622).
+
+  12 May 2007; Luca Longinotti <chtekk@gentoo.org> mod_survey-3.2.4.ebuild:
+  Apache 1.X masking (fix ebuilds to not require apache-1*).
+
+  15 Jan 2007; Luca Longinotti <chtekk@gentoo.org> +files/language-list.txt,
+  +files/postinstall-en.txt, +files/reconfig, +metadata.xml,
+  +mod_survey-3.2.4.ebuild:
+  Move from www-apache/ to www-apps/ category.
+
+  11 Dec 2006; Renat Lumpau <rl03@gentoo.org> mod_survey-3.2.4.ebuild:
+  Bug #157664.
+
+  09 Jul 2006; Renat Lumpau <rl03@gentoo.org> mod_survey-3.2.4.ebuild:
+  einfo->elog
+
+*mod_survey-3.2.4 (01 Jul 2006)
+
+  01 Jul 2006; Renat Lumpau <rl03@gentoo.org> -mod_survey-3.2.3-r2.ebuild,
+  +mod_survey-3.2.4.ebuild:
+  Version bump (bug #138576).
+
+*mod_survey-3.2.3-r2 (31 Jan 2006)
+
+  31 Jan 2006; Renat Lumpau <rl03@gentoo.org> files/reconfig,
+  -mod_survey-3.2.3-r1.ebuild, +mod_survey-3.2.3-r2.ebuild:
+  Fixed #121041 for real.
+
+*mod_survey-3.2.3-r1 (31 Jan 2006)
+
+  31 Jan 2006; Renat Lumpau <rl03@gentoo.org> +files/language-list.txt,
+  files/postinstall-en.txt, +files/reconfig, -mod_survey-3.2.3.ebuild,
+  +mod_survey-3.2.3-r1.ebuild:
+  Fixes for bug #121041, limited support for LINGUAS
+
+*mod_survey-3.2.3 (23 Jan 2006)
+
+  23 Jan 2006; Renat Lumpau <rl03@gentoo.org> -mod_survey-3.2.3_pre3.ebuild,
+  +mod_survey-3.2.3.ebuild:
+  Version bump wrt bug #120043.
+
+*mod_survey-3.2.3_pre3 (19 Jan 2006)
+
+  19 Jan 2006; Renat Lumpau <rl03@gentoo.org> -mod_survey-3.2.3_pre2.ebuild,
+  -mod_survey-3.2.3_pre2-r1.ebuild, +mod_survey-3.2.3_pre3.ebuild:
+  Version bump, removed old versions
+
+*mod_survey-3.2.3_pre2-r1 (16 Jan 2006)
+
+  16 Jan 2006; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
+  +mod_survey-3.2.3_pre2-r1.ebuild:
+  Fixes for bug #119193.
+
+*mod_survey-3.2.3_pre2 (07 Jan 2006)
+
+  07 Jan 2006; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
+  -files/reconfig, metadata.xml, -mod_survey-3.2.0.ebuild,
+  +mod_survey-3.2.3_pre2.ebuild:
+  Version bump and general cleanup per bug #75037.
+
+  24 May 2005; Michael Cummings <mcummings@gentoo.org>
+  mod_survey-3.2.0.ebuild:
+  dev-perl/CGI => perl-core/CGI
+
+  09 May 2005; Elfyn McBratney <beu@gentoo.org> mod_survey-3.2.0.ebuild:
+  dev-perl/mod_perl -> www-apache/mod_perl
+
+  30 Nov 2004; Sven Wegener <swegener@gentoo.org> mod_survey-3.2.0.ebuild:
+  Fixed invalid atoms in *DEPEND.
+
+  12 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> mod_survey-3.2.0.ebuild:
+  Added amd64 keyword, closing #61252.
+
+  30 Aug 2004; David Holm <dholm@gentoo.org> mod_survey-3.2.0.ebuild:
+  Added to ~ppc.
+
+*mod_survey-3.2.0 (18 Aug 2004)
+
+  18 Aug 2004; Renat Lumpau <rl03@gentoo.org> +files/postinstall-en.txt,
+  +files/reconfig, +mod_survey-3.2.0.ebuild:
+  Initial ebuild (bug #20446). Thanks to Joel Palmius <joel.palmius@mh.se> for
+  his help.

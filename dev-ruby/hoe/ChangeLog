@@ -1,0 +1,691 @@
+# ChangeLog for dev-ruby/hoe
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/hoe/ChangeLog,v 1.178 2015/04/27 06:07:29 graaff Exp $
+
+  27 Apr 2015; Hans de Graaff <graaff@gentoo.org> -hoe-2.13.0-r1.ebuild:
+  Cleanup.
+
+*hoe-3.13.1 (04 Feb 2015)
+
+  04 Feb 2015; Manuel Rüger <mrueg@gentoo.org> +hoe-3.13.1.ebuild:
+  Version bump.
+
+  08 Jan 2015; Agostino Sarubbo <ago@gentoo.org> hoe-3.13.0.ebuild:
+  Stable for ppc64, wrt bug #532572
+
+  01 Jan 2015; Agostino Sarubbo <ago@gentoo.org> hoe-3.13.0.ebuild:
+  Stable for ia64, wrt bug #532572
+
+  28 Dec 2014; Manuel Rüger <mrueg@gentoo.org> hoe-3.13.0-r1.ebuild:
+  Add ruby2.2 target.
+
+  26 Dec 2014; Markus Meier <maekke@gentoo.org> hoe-3.13.0.ebuild:
+  arm stable, bug #532572
+
+  23 Dec 2014; Agostino Sarubbo <ago@gentoo.org> hoe-3.13.0.ebuild:
+  Stable for alpha, wrt bug #532572
+
+  22 Dec 2014; Agostino Sarubbo <ago@gentoo.org> hoe-3.13.0.ebuild:
+  Stable for sparc, wrt bug #532572
+
+  22 Dec 2014; Agostino Sarubbo <ago@gentoo.org> hoe-3.13.0.ebuild:
+  Stable for ppc, wrt bug #532572
+
+  19 Dec 2014; Agostino Sarubbo <ago@gentoo.org> hoe-3.13.0.ebuild:
+  Stable for x86, wrt bug #532572
+
+  19 Dec 2014; Agostino Sarubbo <ago@gentoo.org> hoe-3.13.0.ebuild:
+  Stable for amd64, wrt bug #532572
+
+  15 Dec 2014; Jeroen Roovers <jer@gentoo.org> hoe-3.13.0.ebuild:
+  Stable for HPPA (bug #532572).
+
+*hoe-3.13.0-r1 (14 Dec 2014)
+
+  14 Dec 2014; Manuel Rüger <mrueg@gentoo.org> +hoe-3.13.0-r1.ebuild,
+  hoe-3.13.0.ebuild:
+  Create a stable candidate of hoe-3.
+
+  29 Oct 2014; Manuel Rüger <mrueg@gentoo.org> -files/hoe-2.10.0-test-fix.patch,
+  -files/hoe-2.5.0-tests.patch,
+  -files/hoe-2.6.0-rubyforge-without-account.patch,
+  -files/hoe-2.6.1-test-file-ordering.patch,
+  -files/hoe-2.8.0-test-file-ordering.patch, -hoe-3.11.0.ebuild,
+  -hoe-3.12.0.ebuild, hoe-2.13.0-r1.ebuild, hoe-3.13.0.ebuild:
+  Cleanup old. Drop jruby target.
+
+*hoe-3.13.0 (04 Oct 2014)
+
+  04 Oct 2014; Manuel Rüger <mrueg@gentoo.org> +hoe-3.13.0.ebuild:
+  Version bump.
+
+  19 Sep 2014; Manuel Rüger <mrueg@gentoo.org> -hoe-2.12.5.ebuild:
+  Cleanup old.
+
+  19 Sep 2014; Agostino Sarubbo <ago@gentoo.org> hoe-2.13.0-r1.ebuild:
+  Stable for ppc64, wrt bug #503564
+
+  19 Sep 2014; Agostino Sarubbo <ago@gentoo.org> hoe-2.13.0-r1.ebuild:
+  Stable for ppc, wrt bug #503564
+
+  15 Aug 2014; Raúl Porcel <armin76@gentoo.org> hoe-2.13.0-r1.ebuild:
+  sparc stable, bug #490180
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> hoe-2.12.5.ebuild,
+  hoe-2.13.0-r1.ebuild, hoe-3.11.0.ebuild, hoe-3.12.0.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  17 Jun 2014; Tobias Klausmann <klausman@gentoo.org> hoe-2.13.0-r1.ebuild:
+  Stable on alpha, bug #490180
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> hoe-2.13.0-r1.ebuild:
+  x86 stable wrt bug #490180
+
+  15 May 2014; Manuel Rüger <mrueg@gentoo.org> -hoe-3.9.0-r1.ebuild:
+  Cleanup old.
+
+*hoe-3.12.0 (25 Apr 2014)
+
+  25 Apr 2014; Manuel Rüger <mrueg@gentoo.org> +hoe-3.12.0.ebuild,
+  -hoe-3.9.0.ebuild:
+  Version bump.
+
+*hoe-3.11.0 (21 Apr 2014)
+
+  21 Apr 2014; Hans de Graaff <graaff@gentoo.org> +hoe-3.11.0.ebuild:
+  Version bump. Remove Gem.bin_wrapper use that is broken on Gentoo.
+
+*hoe-3.9.0-r1 (18 Apr 2014)
+
+  18 Apr 2014; Manuel Rüger <mrueg@gentoo.org> +hoe-3.9.0-r1.ebuild,
+  hoe-3.9.0.ebuild:
+  Move ruby21 target to -r1. Add missing die statement.
+
+  05 Apr 2014; Manuel Rüger <mrueg@gentoo.org> hoe-2.12.5.ebuild,
+  hoe-2.13.0-r1.ebuild, hoe-3.9.0.ebuild:
+  Remove ree18 and ruby18 target.
+
+  10 Mar 2014; Manuel Rüger <mrueg@gentoo.org> -hoe-2.13.0.ebuild:
+  Cleanup unused.
+
+  01 Mar 2014; Hans de Graaff <graaff@gentoo.org> hoe-3.9.0.ebuild:
+  Add back amd64-fbsd keyword that got dropped by accident.
+
+*hoe-3.9.0 (01 Mar 2014)
+
+  01 Mar 2014; Hans de Graaff <graaff@gentoo.org> +hoe-3.9.0.ebuild:
+  Version bump.
+
+  01 Feb 2014; Akinori Hattori <hattya@gentoo.org> hoe-2.13.0-r1.ebuild:
+  ia64 stable wrt bug #490180
+
+  19 Jan 2014; Pacho Ramos <pacho@gentoo.org> hoe-2.13.0-r1.ebuild:
+  amd64 stable, bug 490180
+
+  18 Jan 2014; Hans de Graaff <graaff@gentoo.org> -hoe-2.6.0-r1.ebuild,
+  -hoe-2.8.0.ebuild:
+  Remove old versions.
+
+  05 Jan 2014; Hans de Graaff <graaff@gentoo.org> hoe-2.12.5.ebuild:
+  Drop s390 and sh stable flags for ruby.
+
+  29 Dec 2013; Markus Meier <maekke@gentoo.org> hoe-2.13.0-r1.ebuild:
+  arm stable, bug #490180
+
+  09 Nov 2013; Jeroen Roovers <jer@gentoo.org> hoe-2.13.0-r1.ebuild:
+  Stable for HPPA (bug #490180).
+
+*hoe-2.13.0-r1 (10 Sep 2013)
+
+  10 Sep 2013; Hans de Graaff <graaff@gentoo.org> +hoe-2.13.0-r1.ebuild:
+  Revision bump to add ruby20.
+
+  28 Jan 2013; Alexis Ballier <aballier@gentoo.org> hoe-2.13.0.ebuild:
+  keyword ~amd64-fbsd
+
+  06 Nov 2012; Jeroen Roovers <jer@gentoo.org> hoe-2.12.5.ebuild:
+  Stable for HPPA (bug #411507).
+
+  27 Oct 2012; Raúl Porcel <armin76@gentoo.org> hoe-2.12.5.ebuild:
+  s390/sh stable wrt #411507
+
+  21 Oct 2012; Raúl Porcel <armin76@gentoo.org> hoe-2.12.5.ebuild:
+  alpha/ia64/sparc stable wrt #411507
+
+  25 Jul 2012; Anthony G. Basile <blueness@gentoo.org> hoe-2.12.5.ebuild:
+  Stable ppc64, bug #411507
+
+  22 Jul 2012; <nixnut@gentoo.org> hoe-2.12.5.ebuild:
+  ppc stable #411507
+
+  28 Jun 2012; Hans de Graaff <graaff@gentoo.org> hoe-2.13.0.ebuild:
+  Add rdoc as a runtime dependency for the publish task. It is possible for
+  packages to turn off the rdoc dependency, but the default is to enable it and
+  simple initializing the Hoe object already requires it. Fixes bug 423883.
+
+  25 Jun 2012; Andreas Schuerch <nativemad@gentoo.org> hoe-2.12.5.ebuild:
+  x86 stable, see bug 411507
+
+  27 May 2012; Markus Meier <maekke@gentoo.org> hoe-2.12.5.ebuild:
+  arm stable, bug #411507
+
+  26 May 2012; Hans de Graaff <graaff@gentoo.org> hoe-2.13.0.ebuild:
+  Add rdoc also as a test dependency also for the latest version, not trivial
+  to avoid it. Fixes bug 417581.
+
+  26 May 2012; Hans de Graaff <graaff@gentoo.org> hoe-2.12.5.ebuild:
+  Add rdoc also as a test dependency. Fixes bug 417581.
+
+  20 May 2012; Agostino Sarubbo <ago@gentoo.org> hoe-2.12.5.ebuild:
+  Stable for amd64, wrt bug #411507
+
+  20 May 2012; Hans de Graaff <graaff@gentoo.org> -hoe-2.12.2.ebuild,
+  -hoe-2.12.3.ebuild, -hoe-2.12.4.ebuild:
+  Remove old versions.
+
+*hoe-2.13.0 (24 Jan 2012)
+
+  24 Jan 2012; Hans de Graaff <graaff@gentoo.org> +hoe-2.13.0.ebuild:
+  Version bump.
+
+*hoe-2.12.5 (15 Jan 2012)
+
+  15 Jan 2012; Hans de Graaff <graaff@gentoo.org> +hoe-2.12.5.ebuild:
+  Version bump.
+
+  31 Dec 2011; Fabian Groffen <grobian@gentoo.org> hoe-2.12.4.ebuild:
+  Add Prefix keywords, bug #396547
+
+*hoe-2.12.4 (18 Dec 2011)
+
+  18 Dec 2011; Hans de Graaff <graaff@gentoo.org> +hoe-2.12.4.ebuild:
+  Version bump.
+
+  10 Nov 2011; Naohiro Aota <naota@gentoo.org> hoe-2.12.3.ebuild:
+  Add ~x86-fbsd
+
+  12 Sep 2011; Hans de Graaff <graaff@gentoo.org> hoe-2.12.3.ebuild:
+  Depend on rdoc gem since the code explicitly requires it now. Fixes 381233.
+
+*hoe-2.12.3 (10 Sep 2011)
+
+  10 Sep 2011; Hans de Graaff <graaff@gentoo.org> +hoe-2.12.3.ebuild:
+  Version bump.
+
+  10 Sep 2011; Hans de Graaff <graaff@gentoo.org> -hoe-2.9.0.ebuild,
+  -hoe-2.9.1.ebuild, -hoe-2.10.0.ebuild, -hoe-2.11.0.ebuild,
+  -hoe-2.12.0.ebuild:
+  Remove old versions.
+
+*hoe-2.12.2 (26 Aug 2011)
+
+  26 Aug 2011; Hans de Graaff <graaff@gentoo.org> +hoe-2.12.2.ebuild:
+  Version bump.
+
+*hoe-2.12.0 (20 Aug 2011)
+
+  20 Aug 2011; Hans de Graaff <graaff@gentoo.org> +hoe-2.12.0.ebuild:
+  Version bump.
+
+*hoe-2.11.0 (10 Aug 2011)
+
+  10 Aug 2011; Hans de Graaff <graaff@gentoo.org> +hoe-2.11.0.ebuild:
+  Version bump.
+
+*hoe-2.10.0 (19 Jul 2011)
+
+  19 Jul 2011; Hans de Graaff <graaff@gentoo.org> +hoe-2.10.0.ebuild,
+  +files/hoe-2.10.0-test-fix.patch:
+  Version bump.
+
+  15 Jul 2011; Matt Turner <mattst88@gentoo.org> hoe-2.9.1.ebuild:
+  Added ~mips, bug 332593
+
+  10 Jul 2011; Mark Loeser <halcy0n@gentoo.org> hoe-2.8.0.ebuild:
+  Stable for ppc64; bug #354481
+
+  03 Jun 2011; Hans de Graaff <graaff@gentoo.org> hoe-2.8.0.ebuild:
+  Restrict tests to avoid problems with a missing dependency on hoe-seattlerb,
+  which we can't easily add since that is not stable on all arches. This
+  addresses bug 368631.
+
+  03 Jun 2011; Hans de Graaff <graaff@gentoo.org> -hoe-2.5.0.ebuild:
+  Remove old version.
+
+  23 Apr 2011; Raúl Porcel <armin76@gentoo.org> hoe-2.8.0.ebuild:
+  alpha stable
+
+  27 Mar 2011; Brent Baude <ranger@gentoo.org> hoe-2.8.0.ebuild:
+  Marking hoe-2.8.0 ppc stable for bug 354481
+
+  07 Mar 2011; Raúl Porcel <armin76@gentoo.org> hoe-2.5.0.ebuild,
+  hoe-2.6.0-r1.ebuild, hoe-2.8.0.ebuild, hoe-2.9.0.ebuild, hoe-2.9.1.ebuild:
+  Add ~s390/~sh
+
+  01 Mar 2011; Jeroen Roovers <jer@gentoo.org> hoe-2.8.0.ebuild:
+  Stable for HPPA (bug #354481).
+
+  26 Feb 2011; Raúl Porcel <armin76@gentoo.org> hoe-2.8.0.ebuild:
+  ia64/sparc stable wrt #354481
+
+  15 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> hoe-2.8.0.ebuild:
+  x86 stable wrt bug #354481
+
+  13 Feb 2011; Markos Chandras <hwoarang@gentoo.org> hoe-2.8.0.ebuild:
+  Stable on amd64 wrt bug #354481
+
+  11 Feb 2011; Hans de Graaff <graaff@gentoo.org> -hoe-2.6.2.ebuild,
+  hoe-2.8.0.ebuild:
+  Remove old version. Drop ruby19 to create stable candidate.
+
+*hoe-2.9.1 (11 Feb 2011)
+
+  11 Feb 2011; Hans de Graaff <graaff@gentoo.org> +hoe-2.9.1.ebuild:
+  Version bump.
+
+*hoe-2.9.0 (02 Feb 2011)
+
+  02 Feb 2011; Hans de Graaff <graaff@gentoo.org> +hoe-2.9.0.ebuild:
+  Version bump.
+
+  16 Jan 2011; Markos Chandras <hwoarang@gentoo.org> hoe-2.6.0-r1.ebuild:
+  Stable on amd64 wrt bug #333947
+
+  15 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> hoe-2.6.0-r1.ebuild:
+  ppc64 stable wrt #333947
+
+  09 Jan 2011; Hans de Graaff <graaff@gentoo.org> hoe-2.5.0.ebuild,
+  hoe-2.6.0-r1.ebuild, hoe-2.6.2.ebuild:
+  Generate our stub gem specifications again to avoid issues with differing
+  dependencies between gem and ebuild.
+
+  09 Jan 2011; Hans de Graaff <graaff@gentoo.org> hoe-2.6.2.ebuild:
+  Drop ruby19 keyword to create a stable candidate for ree18.
+
+  09 Jan 2011; Hans de Graaff <graaff@gentoo.org> -hoe-2.3.2.ebuild,
+  -hoe-2.6.1.ebuild:
+  Remove old versions.
+
+  02 Jan 2011; Hans de Graaff <graaff@gentoo.org> hoe-2.6.2.ebuild,
+  hoe-2.8.0.ebuild:
+  Move ~alpha forward as was intended.
+
+  27 Dec 2010; Fabian Groffen <grobian@gentoo.org> hoe-2.8.0.ebuild:
+  Marked ~x64-solaris
+
+*hoe-2.8.0 (11 Dec 2010)
+
+  11 Dec 2010; Hans de Graaff <graaff@gentoo.org> +hoe-2.8.0.ebuild,
+  +files/hoe-2.8.0-test-file-ordering.patch:
+  Version bump.
+
+  13 Nov 2010; Raúl Porcel <armin76@gentoo.org> hoe-2.6.0-r1.ebuild:
+  ia64/sparc stable
+
+  10 Oct 2010; Tobias Klausmann <klausman@gentoo.org> hoe-2.6.1.ebuild:
+  Keyworded on alpha, bug #325465
+
+  29 Sep 2010; Brent Baude <ranger@gentoo.org> hoe-2.5.0.ebuild:
+  Marking hoe-2.5.0 ppc64 for bug 321043
+
+  28 Sep 2010; Brent Baude <ranger@gentoo.org> hoe-2.5.0.ebuild:
+  Marking hoe-2.5.0 ppc for bug 321043
+
+*hoe-2.6.2 (18 Sep 2010)
+
+  18 Sep 2010; Hans de Graaff <graaff@gentoo.org> +hoe-2.6.2.ebuild:
+  Version bump.
+
+  08 Sep 2010; Christian Faulhammer <fauli@gentoo.org> hoe-2.6.0-r1.ebuild:
+  stable x86, bug 333947
+
+  28 Aug 2010; Hans de Graaff <graaff@gentoo.org> hoe-2.6.1.ebuild,
+  +files/hoe-2.6.1-test-file-ordering.patch:
+  Fix file ordering issues with tests, fixing bug 323059.
+
+  22 Aug 2010; Diego E. Pettenò <flameeyes@gentoo.org> hoe-2.6.0-r1.ebuild:
+  Remove ruby19/ree18 support from 2.6.0-r1 so that it can be marked stable.
+
+  21 Aug 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/hoe-2.4.0-tests.patch:
+  Remove unused file.
+
+  18 Aug 2010; Diego E. Pettenò <flameeyes@gentoo.org> hoe-2.5.0.ebuild,
+  hoe-2.6.0-r1.ebuild, hoe-2.6.1.ebuild:
+  Stop using virtual/ruby-minitest, since it's now unbundled from 1.9 as
+  well.
+
+  17 Aug 2010; Jeroen Roovers <jer@gentoo.org> hoe-2.5.0.ebuild:
+  Stable for HPPA (bug #321043).
+
+  05 Aug 2010; Markus Meier <maekke@gentoo.org> hoe-2.6.1.ebuild:
+  add ~arm, bug #331061
+
+  24 Jul 2010; Raúl Porcel <armin76@gentoo.org> hoe-2.5.0.ebuild:
+  ia64/sparc stable wrt #321043
+
+  21 Jul 2010; Christian Faulhammer <fauli@gentoo.org> hoe-2.5.0.ebuild:
+  stable x86, bug 321043
+
+  29 Jun 2010; Christoph Mende <angelos@gentoo.org> hoe-2.5.0.ebuild:
+  Stable on amd64 wrt bug #321043
+
+*hoe-2.6.1 (05 Jun 2010)
+
+  05 Jun 2010; Hans de Graaff <graaff@gentoo.org> +hoe-2.6.1.ebuild:
+  Version bump. Our rubyforge patch is no longer needed.
+
+  22 May 2010; Alex Legler <a3li@gentoo.org> hoe-2.6.0-r1.ebuild:
+  Add REE18 support
+
+  22 May 2010; Diego E. Pettenò <flameeyes@gentoo.org> hoe-2.3.2.ebuild,
+  -hoe-2.3.3.ebuild, -hoe-2.4.0.ebuild, hoe-2.5.0.ebuild,
+  hoe-2.6.0-r1.ebuild:
+  Cleanup old versions, use new syntax.
+
+  22 May 2010; Hans de Graaff <graaff@gentoo.org> hoe-2.5.0.ebuild:
+  Drop ruby19 to allow stabilization.
+
+  09 May 2010; Hans de Graaff <graaff@gentoo.org> -hoe-2.6.0.ebuild:
+  Remove broken version.
+
+*hoe-2.6.0-r1 (09 May 2010)
+
+  09 May 2010; Hans de Graaff <graaff@gentoo.org> +hoe-2.6.0-r1.ebuild,
+  +files/hoe-2.6.0-rubyforge-without-account.patch:
+  Don't require rubyforge to be configured. Applied patch from Fedora by
+  Mamoru Tasaka, fixing bug 317881.
+
+  26 Apr 2010; Hans de Graaff <graaff@gentoo.org> hoe-2.6.0.ebuild:
+  Provide user-config file in those phases that need it. Use proper path for
+  it.
+
+*hoe-2.6.0 (24 Apr 2010)
+
+  24 Apr 2010; Hans de Graaff <graaff@gentoo.org> +hoe-2.6.0.ebuild:
+  Version bump. Minor enhancements and bug fixes.
+
+  16 Feb 2010; Jonathan Callen <abcd@gentoo.org> hoe-2.5.0.ebuild:
+  Add ~x64-macos for bug 305355
+
+  18 Jan 2010; Brent Baude <ranger@gentoo.org> hoe-2.5.0.ebuild:
+  Marking hoe-2.5.0 ~ppc64 for bug 297830
+
+  13 Jan 2010; Brent Baude <ranger@gentoo.org> hoe-2.4.0.ebuild:
+  Marking hoe-2.4.0 ~ppc64 for bug 297830
+
+*hoe-2.5.0 (07 Jan 2010)
+
+  07 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org> +hoe-2.5.0.ebuild,
+  +files/hoe-2.5.0-tests.patch:
+  Version bump, rubyforge is no longer needed at runtime either. Tests
+  needed some fixing though.
+
+  06 Jan 2010; Raúl Porcel <armin76@gentoo.org> hoe-2.4.0.ebuild:
+  Add ~ia64/~sparc
+
+  04 Jan 2010; Markus Meier <maekke@gentoo.org> hoe-2.4.0.ebuild:
+  add ~x86, bug #297830
+
+  04 Jan 2010; Christian Faulhammer <fauli@gentoo.org> hoe-2.4.0.ebuild:
+  Transfer Prefix keywords
+
+  04 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org> hoe-2.4.0.ebuild:
+  Add support for JRuby (although it has a possibly cyclic dependency over
+  jruby-openssl).
+
+  25 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> hoe-2.4.0.ebuild:
+  Depend on the minitest virtual, add ruby19 to the list of supported
+  implementations (even though it requires hoe-seattlerb for 1.9.
+
+  23 Dec 2009; Jeroen Roovers <jer@gentoo.org> hoe-2.4.0.ebuild:
+  Marked ~ppc (bug #297830).
+
+  23 Dec 2009; Jeroen Roovers <jer@gentoo.org> hoe-2.4.0.ebuild:
+  Marked ~hppa (bug #297830).
+
+*hoe-2.4.0 (21 Dec 2009)
+
+  21 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> +hoe-2.4.0.ebuild,
+  +files/hoe-2.4.0-tests.patch:
+  Bump and port to fakegem.
+
+  09 Dec 2009; Hans de Graaff <graaff@gentoo.org> -hoe-1.8.2.ebuild,
+  -hoe-2.1.0.ebuild:
+  Remove old versions.
+
+  05 Sep 2009; Brent Baude <ranger@gentoo.org> hoe-2.3.2.ebuild:
+  Marking hoe-2.3.2 ppc64 stable for bug 280851
+
+  29 Aug 2009; Raúl Porcel <armin76@gentoo.org> hoe-2.3.2.ebuild:
+  ia64/sparc stable wrt #280851
+
+  14 Aug 2009; Markus Meier <maekke@gentoo.org> hoe-2.3.2.ebuild:
+  amd64/x86 stable, bug #280851
+
+  09 Aug 2009; Jeroen Roovers <jer@gentoo.org> hoe-2.3.2.ebuild,
+  hoe-2.3.3.ebuild:
+  Marked ~hppa too.
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> hoe-2.3.2.ebuild:
+  ppc stable #280851
+
+  09 Aug 2009; Hans de Graaff <graaff@gentoo.org> -hoe-1.8.3.ebuild,
+  -hoe-1.11.0.ebuild, -hoe-1.12.2.ebuild:
+  Remove old versions.
+
+*hoe-2.3.3 (09 Aug 2009)
+
+  09 Aug 2009; Hans de Graaff <graaff@gentoo.org> +hoe-2.3.3.ebuild:
+  Version bump with minor enhancements.
+
+*hoe-2.3.2 (10 Jul 2009)
+
+  10 Jul 2009; Hans de Graaff <graaff@gentoo.org> +hoe-2.3.2.ebuild:
+  Version bump.
+
+*hoe-2.1.0 (17 Jun 2009)
+
+  17 Jun 2009; Hans de Graaff <graaff@gentoo.org> +hoe-2.1.0.ebuild:
+  Version bump with significant changes. May not be fully backward
+  compatible.
+
+*hoe-1.12.2 (10 May 2009)
+
+  10 May 2009; Alex Legler <a3li@gentoo.org> -hoe-1.5.1.ebuild,
+  +hoe-1.12.2.ebuild:
+  Version bump, deleting one old version.
+
+  22 Apr 2009; Hans de Graaff <graaff@gentoo.org> hoe-1.11.0.ebuild:
+  hoe 1.11.0 requires rake 0.8.4 or higher.
+
+*hoe-1.11.0 (27 Mar 2009)
+
+  27 Mar 2009; Hans de Graaff <graaff@gentoo.org> +hoe-1.11.0.ebuild:
+  Version bump
+
+*hoe-1.8.3 (24 Jan 2009)
+
+  24 Jan 2009; Hans de Graaff <graaff@gentoo.org> +hoe-1.8.3.ebuild:
+  Version bump
+
+  26 Dec 2008; Raúl Porcel <armin76@gentoo.org> hoe-1.8.2.ebuild:
+  ia64 stable wrt #250348
+
+  20 Dec 2008; Markus Meier <maekke@gentoo.org> hoe-1.8.2.ebuild:
+  amd64/x86 stable, bug #250348
+
+  14 Dec 2008; nixnut <nixnut@gentoo.org> hoe-1.8.2.ebuild:
+  Stable on ppc wrt bug 250348
+
+  12 Dec 2008; Hans de Graaff <graaff@gentoo.org> -hoe-1.4.0.ebuild,
+  -hoe-1.5.3.ebuild, -hoe-1.6.0.ebuild, -hoe-1.7.0.ebuild,
+  -hoe-1.8.0.ebuild:
+  Remove old versions
+
+  10 Dec 2008; Ferris McCormick <fmccor@gentoo.org> hoe-1.8.2.ebuild:
+  Sparc stable, part of Bug #250348.
+
+  09 Dec 2008; Brent Baude <ranger@gentoo.org> hoe-1.8.2.ebuild:
+  Marking hoe-1.8.2 ppc64 for bug 250348
+
+  18 Nov 2008; Hans de Graaff <graaff@gentoo.org> hoe-1.8.2.ebuild:
+  Has been tested for Ruby 1.9 compatibility in the overlay.
+
+*hoe-1.8.2 (25 Oct 2008)
+
+  25 Oct 2008; Hans de Graaff <graaff@gentoo.org> +hoe-1.8.2.ebuild:
+  Version bump
+
+*hoe-1.8.0 (14 Oct 2008)
+
+  14 Oct 2008; Hans de Graaff <graaff@gentoo.org> +hoe-1.8.0.ebuild:
+  Version bump with 5 minor enhancements.
+
+  03 Sep 2008; Hans de Graaff <graaff@gentoo.org> hoe-1.7.0.ebuild:
+  Depend on rubygems 1.2.0 since the generated tasks depend on it. Thanks to
+  Cyril Mougel for providing the information in #236444.
+
+  08 Jul 2008; Javier Villavicencio <the_paya@gentoo.org> hoe-1.7.0.ebuild:
+  Add ~x86-fbsd.
+
+  07 Jul 2008; Friedrich Oslage <bluebird@gentoo.org> hoe-1.7.0.ebuild:
+  Add ~sparc keyword, bug #230517
+
+*hoe-1.7.0 (01 Jul 2008)
+
+  01 Jul 2008; Hans de Graaff <graaff@gentoo.org> +hoe-1.7.0.ebuild:
+  Version bump with 3 minor enhancements:
+    * Use rdoc 2.x gem if available. Eric likes his backslashes.
+    * Added extra_dev_deps for new rubygems developer dependencies.
+    * Finally got a sane test that does something. Hey... it's a start.
+
+*hoe-1.6.0 (18 Jun 2008)
+
+  18 Jun 2008; Hans de Graaff <graaff@gentoo.org> +hoe-1.6.0.ebuild:
+  Version bump: adds blog categories.
+
+*hoe-1.5.3 (22 May 2008)
+
+  22 May 2008; Hans de Graaff <graaff@gentoo.org> +hoe-1.5.3.ebuild:
+  Version bump: minor bugfixes
+
+  22 May 2008; Hans de Graaff <graaff@gentoo.org> -hoe-1.2.2.ebuild,
+  -hoe-1.3.0.ebuild, -hoe-1.5.0.ebuild:
+  Remove old versions
+
+  17 Apr 2008; Raúl Porcel <armin76@gentoo.org> hoe-1.5.1.ebuild:
+  ia64 stable wrt #217389
+
+  13 Apr 2008; Markus Rothe <corsair@gentoo.org> hoe-1.5.1.ebuild:
+  Stable on ppc64; bug #217389
+
+  12 Apr 2008; Dawid Węgliński <cla@gentoo.org> hoe-1.5.1.ebuild:
+  Stable on x86 (bug #217389)
+
+  12 Apr 2008; nixnut <nixnut@gentoo.org> hoe-1.5.1.ebuild:
+  Stable on ppc wrt bug 217389
+
+  12 Apr 2008; Hans de Graaff <graaff@gentoo.org> hoe-1.5.1.ebuild:
+  Mark stable on amd64, bug #217389
+
+  15 Mar 2008; nixnut <nixnut@gentoo.org> hoe-1.4.0.ebuild:
+  Stable on ppc wrt bug 213250
+
+  14 Mar 2008; Raúl Porcel <armin76@gentoo.org> hoe-1.4.0.ebuild:
+  ia64 stable
+
+  13 Mar 2008; Brent Baude <ranger@gentoo.org> hoe-1.4.0.ebuild:
+  stable ppc64, bug 213250
+
+  13 Mar 2008; Dawid Węgliński <cla@gentoo.org> hoe-1.4.0.ebuild:
+  Stable on x86 (bug #213250)
+
+  13 Mar 2008; Hans de Graaff <graaff@gentoo.org> hoe-1.4.0.ebuild:
+  Mark stable on amd64
+
+*hoe-1.5.1 (05 Mar 2008)
+
+  05 Mar 2008; Richard Brown <rbrown@gentoo.org> +hoe-1.5.1.ebuild:
+  Version bump.
+
+  01 Feb 2008; Joshua Nichols <nichoj@gentoo.org> hoe-1.5.0.ebuild:
+  Updated dependencies.
+
+*hoe-1.5.0 (31 Jan 2008)
+
+  31 Jan 2008; Hans de Graaff <graaff@gentoo.org> +hoe-1.5.0.ebuild:
+  Version bump: 9 minor enhancements.
+
+*hoe-1.4.0 (23 Dec 2007)
+
+  23 Dec 2007; Hans de Graaff <graaff@gentoo.org> +hoe-1.4.0.ebuild:
+  Version bump: rake package now supports INLINE=1 and FORCE_PLATFORM=whatever.
+
+  18 Nov 2007; Hans de Graaff <graaff@gentoo.org> -hoe-1.2.1.ebuild:
+  Remove old version
+
+  13 Oct 2007; Tom Gall <tgall@gentoo.org> hoe-1.2.2.ebuild:
+  stable on ppc64 
+
+  05 Sep 2007; Christoph Mende <angelos@gentoo.org> hoe-1.2.2.ebuild:
+  Stable on amd64 wrt bug #190161
+
+  26 Aug 2007; Raúl Porcel <armin76@gentoo.org> hoe-1.2.2.ebuild:
+  ia64/x86 stable wrt #190161
+
+*hoe-1.3.0 (15 Aug 2007)
+
+  15 Aug 2007; Hans de Graaff <graaff@gentoo.org> +hoe-1.3.0.ebuild:
+  Version bump:
+   * Hoe now builds signed gems automatically.
+   * Extended rdoc pattern to include ext dirs.
+   * Fixed dependency adding for versionless dependencies.
+   * Added NODOT env var to disable RDoc diagram generation.
+   * The config_hoe task automatically merges in new config entries.
+
+*hoe-1.2.2 (24 Jul 2007)
+
+  24 Jul 2007; Hans de Graaff <graaff@gentoo.org> -hoe-1.1.6.ebuild,
+  -hoe-1.2.0.ebuild, +hoe-1.2.2.ebuild:
+  Version bump with minor bug fixes
+
+*hoe-1.2.1 (04 Jun 2007)
+
+  04 Jun 2007; Hans de Graaff <graaff@gentoo.org> +hoe-1.2.1.ebuild:
+  Version bump: 8 minor enhancements and 1 bug fix.
+
+  13 Apr 2007; Robin H. Johnson <robbat2@gentoo.org> hoe-1.2.0.ebuild:
+  Add ~ppc for work.
+
+*hoe-1.2.0 (14 Mar 2007)
+
+  14 Mar 2007; Hans de Graaff <graaff@gentoo.org> -hoe-1.1.1.ebuild,
+  -hoe-1.1.3.ebuild, +hoe-1.2.0.ebuild:
+  Version bump; remove old versions.
+
+  12 Mar 2007; Tom Gall <tgall@gentoo.org> hoe-1.1.6.ebuild:
+  added ~ppc64
+
+*hoe-1.1.6 (06 Jan 2007)
+
+  06 Jan 2007; Hans de Graaff <graaff@gentoo.org> +hoe-1.1.6.ebuild:
+  Version bump.
+
+  05 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> hoe-1.1.3.ebuild:
+  Add ~ia64 keyword.
+
+*hoe-1.1.3 (18 Dec 2006)
+
+  18 Dec 2006; Hans de Graaff <graaff@gentoo.org> +hoe-1.1.3.ebuild:
+  Version bump.
+
+  04 Dec 2006; Hans de Graaff <graaff@gentoo.org> hoe-1.1.1.ebuild:
+  Keyword for ~amd64.
+
+*hoe-1.1.1 (03 Dec 2006)
+
+  03 Dec 2006; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org> +metadata.xml,
+  +hoe-1.1.1.ebuild:
+  Added hoe, part of #147065. Ebuild by Guillaume Benny
+  <guillaume.benny@sympatico.ca>

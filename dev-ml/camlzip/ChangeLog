@@ -1,0 +1,103 @@
+# ChangeLog for dev-ml/camlzip
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/camlzip/ChangeLog,v 1.26 2013/03/06 11:45:34 aballier Exp $
+
+  06 Mar 2013; Alexis Ballier <aballier@gentoo.org>
+  -files/camlzip-1.03-Makefile-findlib.patch, -camlzip-1.04.ebuild,
+  -files/META:
+  remove old
+
+  12 Feb 2013; Agostino Sarubbo <ago@gentoo.org> camlzip-1.05.ebuild:
+  Stable for ppc, wrt bug #456552
+
+  12 Feb 2013; Agostino Sarubbo <ago@gentoo.org> camlzip-1.05.ebuild:
+  Stable for x86, wrt bug #456552
+
+  12 Feb 2013; Agostino Sarubbo <ago@gentoo.org> camlzip-1.05.ebuild:
+  Stable for amd64, wrt bug #456552
+
+  11 Feb 2013; Alexis Ballier <aballier@gentoo.org> camlzip-1.05.ebuild:
+  eapi5, add subslot and := deps
+
+*camlzip-1.05 (21 Nov 2012)
+
+  21 Nov 2012; Alexis Ballier <aballier@gentoo.org> +camlzip-1.05.ebuild:
+  version bump
+
+  27 Apr 2011; Christoph Mende <angelos@gentoo.org> camlzip-1.04.ebuild:
+  Stable on amd64 wrt bug #363617
+
+  07 Dec 2009; Alexis Ballier <aballier@gentoo.org> -camlzip-1.03-r1.ebuild:
+  remove old
+
+  21 Oct 2009; Markus Meier <maekke@gentoo.org> camlzip-1.04.ebuild:
+  x86 stable, bug #285691
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> camlzip-1.04.ebuild:
+  ppc stable #285691
+
+*camlzip-1.04 (21 Jun 2009)
+
+  21 Jun 2009; Alexis Ballier <aballier@gentoo.org> +camlzip-1.04.ebuild:
+  version bump
+
+  21 Jun 2009; Alexis Ballier <aballier@gentoo.org> camlzip-1.03-r1.ebuild:
+  define eapi before inherit and assign rdepend explicitly
+
+  25 Sep 2008; Alexis Ballier <aballier@gentoo.org> camlzip-1.03-r1.ebuild:
+  keyword ~x86-fbsd
+
+  06 Apr 2008; Alexis Ballier <aballier@gentoo.org>
+  -files/camlzip-1.01-Makefile-findlib.patch, -camlzip-1.01-r1.ebuild:
+  remove old
+
+  06 Apr 2008; Markus Meier <maekke@gentoo.org> camlzip-1.03-r1.ebuild:
+  x86 stable, bug #215748
+
+  03 Apr 2008; Brent Baude <ranger@gentoo.org> camlzip-1.03-r1.ebuild:
+  stable ppc, bug 215748
+
+  02 Jan 2008; Alexis Ballier <aballier@gentoo.org> camlzip-1.03-r1.ebuild:
+  Add support to not build with ocamlopt
+
+  10 Nov 2007; Alexis Ballier <aballier@gentoo.org>
+  files/camlzip-1.03-Makefile-findlib.patch:
+  dont install intermediate objects
+
+  10 Nov 2007; Alexis Ballier <aballier@gentoo.org> camlzip-1.01-r1.ebuild:
+  quote dir variables
+
+  10 Nov 2007; Alexis Ballier <aballier@gentoo.org> -camlzip-1.03.ebuild:
+  cleanup unused version
+
+*camlzip-1.03-r1 (10 Nov 2007)
+
+  10 Nov 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/camlzip-1.03-Makefile-findlib.patch, +camlzip-1.03-r1.ebuild:
+  also install zlib support, thanks to Pierre Clairambault
+  <pclairam@gmail.com>, bug #198466
+
+*camlzip-1.03 (26 May 2007)
+
+  26 May 2007; Alexis Ballier <aballier@gentoo.org> +camlzip-1.03.ebuild:
+  Version bump, ~amd64, closes bug #147523
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  26 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> camlzip-1.01-r1.ebuild,
+  -camlzip-1.01.ebuild:
+  Move to stable (not depended on), remove old version.
+
+*camlzip-1.01-r1 (25 Aug 2004)
+
+  25 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> files/META,
+  +files/camlzip-1.01-Makefile-findlib.patch, +camlzip-1.01-r1.ebuild:
+  Move to findlib eclass, ebuild cleanup.
+
+*camlzip-1.01 (18 Aug 2004)
+
+  18 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> camlzip-1.01.ebuild,
+  metadata.xml, files/META:
+  Add camlzip, an ocaml library to access compressed files (g?zip, jar), thanks
+  to Julien TIERNY <julien.tierny@wanadoo.fr> for the ebuild (bug #50621)

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>rich0@gentoo.org</email>
+</maintainer>
+<longdescription>QT-based application used to analyze data from various CPAP machines.</longdescription>
+</pkgmetadata>

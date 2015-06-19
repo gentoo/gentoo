@@ -1,0 +1,37 @@
+# ChangeLog for dev-haskell/zlib-bindings
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/zlib-bindings/ChangeLog,v 1.9 2015/06/06 18:36:05 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> zlib-bindings-0.1.1.5.ebuild:
+  Stable for x86, wrt bug #535026
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> zlib-bindings-0.1.1.5.ebuild:
+  Stable for amd64, wrt bug #535026
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  zlib-bindings-0.1.1.3.ebuild:
+  Drop trailing '.' from description.
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*zlib-bindings-0.1.1.5 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org> +zlib-bindings-0.1.1.5.ebuild:
+  Bump zlib-bindings to 0.1.1.5
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> zlib-bindings-0.1.1.3.ebuild:
+  Stable for x86, wrt bug #488750
+
+  05 Nov 2013; Tony Vroon <chainsaw@gentoo.org> zlib-bindings-0.1.1.3.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #488750.
+
+*zlib-bindings-0.1.1.3 (26 Aug 2013)
+
+  26 Aug 2013; Alexander Vershilov <qnikst@gentoo.org> +metadata.xml,
+  +zlib-bindings-0.1.1.3.ebuild:
+  dev-haskell/zlib-bindings: initial layout

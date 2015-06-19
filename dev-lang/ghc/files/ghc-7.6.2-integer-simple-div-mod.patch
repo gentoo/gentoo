@@ -1,0 +1,57 @@
+commit de13417726b90b0945aaaf0b9cfbaf8ab975d8b5
+Author: Gabor Greif <ggreif@gmail.com>
+Date:   Tue Jul 24 14:31:36 2012 +0200
+
+    track integer-gmp and add 'divInteger', 'modInteger'
+
+diff --git a/libraries/integer-simple/GHC/Integer.hs b/libraries/integer-simple/GHC/Integer.hs
+index c9b50a7..4122d38 100644
+--- a/libraries/integer-simple/GHC/Integer.hs
++++ b/libraries/integer-simple/GHC/Integer.hs
+@@ -4,7 +4,7 @@
+ -----------------------------------------------------------------------------
+ -- |
+ -- Module      :  GHC.Integer
+--- Copyright   :  (c) Ian Lynagh 2007-2008
++-- Copyright   :  (c) Ian Lynagh 2007-2012
+ -- License     :  BSD3
+ --
+ -- Maintainer  :  igloo@earth.li
+@@ -27,6 +27,7 @@ module GHC.Integer (
+     plusInteger, minusInteger, timesInteger, negateInteger,
+     eqInteger, neqInteger, absInteger, signumInteger,
+     leInteger, gtInteger, ltInteger, geInteger, compareInteger,
++    divInteger, modInteger,
+     divModInteger, quotRemInteger, quotInteger, remInteger,
+     encodeFloatInteger, decodeFloatInteger, floatFromInteger,
+     encodeDoubleInteger, decodeDoubleInteger, doubleFromInteger,
+diff --git a/libraries/integer-simple/GHC/Integer/Type.hs b/libraries/integer-simple/GHC/Integer/Type.hs
+index c3d812c..67ed19c 100644
+--- a/libraries/integer-simple/GHC/Integer/Type.hs
++++ b/libraries/integer-simple/GHC/Integer/Type.hs
+@@ -7,7 +7,7 @@
+ -----------------------------------------------------------------------------
+ -- |
+ -- Module      :  GHC.Integer.Type
+--- Copyright   :  (c) Ian Lynagh 2007-2008
++-- Copyright   :  (c) Ian Lynagh 2007-2012
+ -- License     :  BSD3
+ --
+ -- Maintainer  :  igloo@earth.li
+@@ -370,6 +370,16 @@ n `divModInteger` d =
+             then (# q `minusInteger` oneInteger, r `plusInteger` d #)
+             else (# q, r #)
+ 
++{-# NOINLINE divInteger #-}
++divInteger :: Integer -> Integer -> Integer
++n `divInteger` d = quotient
++    where (# quotient, _ #) = n `divModInteger` d
++
++{-# NOINLINE modInteger #-}
++modInteger :: Integer -> Integer -> Integer
++n `modInteger` d = modulus
++    where (# _, modulus #) = n `divModInteger` d
++
+ {-# NOINLINE quotRemInteger #-}
+ quotRemInteger :: Integer -> Integer -> (# Integer, Integer #)
+ Naught      `quotRemInteger` (!_)        = (# Naught, Naught #)

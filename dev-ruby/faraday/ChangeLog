@@ -1,0 +1,132 @@
+# ChangeLog for dev-ruby/faraday
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/faraday/ChangeLog,v 1.30 2015/06/07 17:44:59 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 May 2015; Hans de Graaff <graaff@gentoo.org> faraday-0.9.1.ebuild:
+  Add missing test dependency on dev-ruby/rack-test.
+
+  18 Apr 2015; Sven Wegener <swegener@gentoo.org> faraday-0.9.0.ebuild,
+  faraday-0.9.1.ebuild:
+  Rename distfile to include package name.
+
+  03 Apr 2015; Hans de Graaff <graaff@gentoo.org> faraday-0.9.1.ebuild:
+  Add missing test dependency on dev-ruby/httpclient.
+
+  11 Mar 2015; Hans de Graaff <graaff@gentoo.org> -faraday-0.8.8.ebuild:
+  Cleanup.
+
+*faraday-0.9.1 (03 Mar 2015)
+
+  03 Mar 2015; Hans de Graaff <graaff@gentoo.org> +faraday-0.9.1.ebuild:
+  Version bump.
+
+  03 Jan 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/faraday-0.4.5-gentoo.patch:
+  Remove old patches.
+
+  15 Aug 2014; Anthony G. Basile <blueness@gentoo.org> faraday-0.8.8.ebuild,
+  faraday-0.9.0.ebuild:
+  Keyword ~ppc ~ppc64, bug #511424
+
+  16 Jul 2014; Hans de Graaff <graaff@gentoo.org> faraday-0.9.0.ebuild:
+  Add ruby21.
+
+  16 May 2014; Hans de Graaff <graaff@gentoo.org> faraday-0.9.0.ebuild:
+  Add ruby20.
+
+  16 Mar 2014; Manuel Rüger <mrueg@gentoo.org> faraday-0.8.8.ebuild,
+  faraday-0.9.0.ebuild:
+  Missed to remove ruby18 target.
+
+  16 Mar 2014; Manuel Rüger <mrueg@gentoo.org> -faraday-0.7.6.ebuild,
+  -faraday-0.8.1.ebuild, faraday-0.8.8.ebuild, faraday-0.9.0.ebuild:
+  Cleanup old. Remove ruby18-only dependencies.
+
+*faraday-0.9.0 (22 Jan 2014)
+
+  22 Jan 2014; Hans de Graaff <graaff@gentoo.org> +faraday-0.9.0.ebuild:
+  Version bump.
+
+*faraday-0.8.8 (25 Dec 2013)
+
+  25 Dec 2013; Hans de Graaff <graaff@gentoo.org> +faraday-0.8.8.ebuild:
+  Version bump. Also fixes bug 496016.
+
+  05 Aug 2012; Hans de Graaff <graaff@gentoo.org> -faraday-0.4.6.ebuild,
+  -faraday-0.7.4.ebuild, -faraday-0.7.5.ebuild, -faraday-0.8.0.ebuild:
+  Cleanup.
+
+*faraday-0.8.1 (05 Jul 2012)
+
+  05 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> +faraday-0.8.1.ebuild:
+  Version bump.
+
+  17 May 2012; Thomas Kahle <tomka@gentoo.org> faraday-0.8.0.ebuild:
+  marked ~x86 per bug 396547
+
+*faraday-0.8.0 (29 Apr 2012)
+
+  29 Apr 2012; Diego E. Pettenò <flameeyes@gentoo.org> +faraday-0.8.0.ebuild:
+  Version bump; addd sinatra to the test dependencies, remove dropped
+  dependencies, add a dependency over system_timer (for Ruby 1.8/EE only). JRuby
+  has been dropped until it supports sinatra.
+
+*faraday-0.7.6 (08 Apr 2012)
+
+  08 Apr 2012; Hans de Graaff <graaff@gentoo.org> +faraday-0.7.6.ebuild:
+  Version bump.
+
+*faraday-0.7.5 (16 Oct 2011)
+
+  16 Oct 2011; Hans de Graaff <graaff@gentoo.org> +faraday-0.7.5.ebuild:
+  Version bump.
+
+  24 Jul 2011; Thomas Kahle <tomka@gentoo.org> faraday-0.7.4.ebuild:
+  ~x86 per bug 375153
+
+  14 Jul 2011; Hans de Graaff <graaff@gentoo.org> faraday-0.7.4.ebuild:
+  Lower test-unit dependency because tests pass with 2.2.0 as well and 2.3
+  isn't in the tree yet.
+
+*faraday-0.7.4 (14 Jul 2011)
+
+  14 Jul 2011; Hans de Graaff <graaff@gentoo.org> +faraday-0.7.4.ebuild:
+  Version bump. Dropped x86 keyword due to new dependency: bug 375153.
+
+  20 Oct 2010; Hans de Graaff <graaff@gentoo.org> -faraday-0.4.5.ebuild:
+  Remove old version.
+
+*faraday-0.4.6 (29 May 2010)
+
+  29 May 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +faraday-0.4.6.ebuild:
+  Version bump.
+
+  18 May 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  faraday-0.4.5.ebuild:
+  Add ~x86, tested on development container.
+
+*faraday-0.4.5 (13 May 2010)
+
+  13 May 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -faraday-0.4.3.ebuild, -files/faraday-0.4.3-gentoo.patch,
+  +faraday-0.4.5.ebuild, +files/faraday-0.4.5-gentoo.patch:
+  Version bump, fix test dependencies.
+
+  30 Apr 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  faraday-0.4.3.ebuild:
+  Add Ruby 1.9 support.
+
+  30 Apr 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  faraday-0.4.3.ebuild:
+  Fix rdoc directory.
+
+*faraday-0.4.3 (30 Apr 2010)
+
+  30 Apr 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +faraday-0.4.3.ebuild, +files/faraday-0.4.3-gentoo.patch, +metadata.xml:
+  Initial import of the faraday library. Patch sent upstream for 0.4.4
+  release.

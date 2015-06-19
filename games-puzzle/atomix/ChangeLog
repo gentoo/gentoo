@@ -1,0 +1,58 @@
+# ChangeLog for games-puzzle/atomix
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/atomix/ChangeLog,v 1.17 2015/06/09 15:15:50 eva Exp $
+
+*atomix-3.16.0 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org> +atomix-3.16.0.ebuild:
+  Version bump for Gnome 3.16.
+
+  07 Dec 2013; Tupone Alfredo <tupone@gentoo.org> atomix-2.14.0.ebuild,
+  +files/atomix-2.14.0-underlink.patch:
+  Fix underlink. Bug #482368 by Dennis Lissov 
+
+  04 Nov 2013; Michael Sterrett <mr_bones_@gentoo.org> atomix-2.14.0.ebuild:
+  remove warnings from the desktop file
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> atomix-2.14.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  07 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org> atomix-2.14.0.ebuild:
+  QA cleanup: Shorten DESCRIPTION.
+
+  14 Jun 2006; <nixnut@gentoo.org> atomix-2.14.0.ebuild:
+  Stable on ppc; bug #136196
+
+  12 Jun 2006; Simon Stelling <blubb@gentoo.org> atomix-2.14.0.ebuild:
+  stable on amd64
+
+  12 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> atomix-2.14.0.ebuild:
+  Stable on x86 wrt bug #136196.
+
+*atomix-2.14.0 (06 Jun 2006)
+
+  06 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> +atomix-2.14.0.ebuild:
+  Version bumped and closing bug #126749.
+
+  23 Oct 2004; Alastair Tse <liquidx@gentoo.org> atomix-1.0.1.ebuild:
+  add workaround for intltool-0.31.3 for INTLTOOL_ICONV
+
+  05 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org> atomix-1.0.1.ebuild:
+  fix compile error with gcc34 (bug #66142) (again)
+
+  03 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org> atomix-1.0.1.ebuild:
+  fix compile error with gcc34 (bug #66142)
+
+  02 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> atomix-1.0.1.ebuild:
+  added XML-Parser to RDEPEND to fix bug 37031
+
+*atomix-1.0.1 (30 Dec 2003)
+
+  30 Dec 2003; Michael Sterrett <mr_bones_@gentoo.org> atomix-1.0.1.ebuild:
+  version bump; now unmaintained upstream
+
+*atomix-0.9.4 (28 Jul 2002)
+
+  28 Jul 2002; Gabriele Giorgetti <stroke@gentoo.org> atomix-0.9.4.ebuild :
+
+  Initial cvs import. A mind game for GNOME2

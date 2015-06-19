@@ -1,0 +1,92 @@
+# ChangeLog for sci-physics/espresso
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/espresso/ChangeLog,v 1.21 2015/03/20 15:18:41 jlec Exp $
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> espresso-3.3.0.ebuild:
+  Fix tcl/tk slotting
+
+  16 Mar 2015; Christoph Junghans <ottxor@gentoo.org> -espresso-3.2.0.ebuild:
+  remove old
+
+  16 Mar 2015; Christoph Junghans <ottxor@gentoo.org>
+  +files/espresso-3.3.0-cython-0.22.patch, espresso-3.3.0.ebuild:
+  fixed build with cython-0.22 (bug #543136)
+
+  07 Mar 2015; Christoph Junghans <ottxor@gentoo.org> espresso-3.2.0.ebuild,
+  espresso-3.3.0.ebuild:
+  fixed homepage (bug #541888)
+
+*espresso-3.3.0 (11 Aug 2014)
+
+  11 Aug 2014; Christoph Junghans <ottxor@gentoo.org> +espresso-3.3.0.ebuild,
+  espresso-3.2.0.ebuild, metadata.xml:
+  version bump
+
+  11 Dec 2013; Justin Lecher <jlec@gentoo.org> espresso-3.2.0.ebuild:
+  Drop unnecessay dep
+
+  11 Dec 2013; Justin Lecher <jlec@gentoo.org> -espresso-3.1.0.ebuild,
+  -espresso-3.1.1.ebuild, -espresso-3.1.2.ebuild, espresso-3.2.0.ebuild,
+  metadata.xml:
+  Drop old; fix python handling
+
+*espresso-3.2.0 (11 May 2013)
+
+  11 May 2013; Christoph Junghans <ottxor@gentoo.org> +espresso-3.2.0.ebuild:
+  version bump
+
+*espresso-3.1.2 (09 Mar 2013)
+
+  09 Mar 2013; Christoph Junghans <ottxor@gentoo.org> +espresso-3.1.2.ebuild:
+  version bump
+
+  09 Feb 2013; Pacho Ramos <pacho@gentoo.org> espresso-3.1.1.ebuild:
+  Use readme.gentoo.eclass for elog message (#456068)
+
+*espresso-3.1.1 (09 Oct 2012)
+
+  09 Oct 2012; Christoph Junghans <ottxor@gentoo.org> +espresso-3.1.1.ebuild:
+  Version bump (thx to Olaf Lenz)
+
+  06 May 2012; Christoph Junghans <ottxor@gentoo.org> espresso-3.1.0.ebuild:
+  add Darwin fixes
+
+  06 May 2012; Christoph Junghans <ottxor@gentoo.org> espresso-3.1.0.ebuild:
+  fix deps + add prefix keywords
+
+  08 Apr 2012; Alexey Shvetsov <alexxy@gentoo.org> espresso-3.1.0.ebuild:
+  [sci-physics/espresso] Add ~amd64 keyword
+
+  24 Mar 2012; Christoph Junghans <ottxor@gentoo.org> espresso-3.1.0.ebuild:
+  Fixes bug #405455, again
+
+*espresso-3.1.0 (22 Mar 2012)
+
+  22 Mar 2012; Christoph Junghans <ottxor@gentoo.org> -espresso-3.0.2.ebuild,
+  +espresso-3.1.0.ebuild:
+  version bump
+
+  23 Feb 2012; Kacper Kowalik <xarthisius@gentoo.org> espresso-3.0.2.ebuild:
+  Fix dependency on app-doc/doxygen wrt converting useflag 'nodot' to 'dot'.
+  Fixes bug 405455 by Marien Zwart <marienz@gentoo.org>
+
+*espresso-3.0.2 (27 Nov 2011)
+
+  27 Nov 2011; Christoph Junghans <ottxor@gentoo.org> -espresso-3.0.1.ebuild,
+  +espresso-3.0.2.ebuild:
+  Version bump + qa fixes (bug #392123)
+
+*espresso-3.0.1 (27 May 2011)
+
+  27 May 2011; Christoph Junghans <ottxor@gentoo.org> -espresso-3.0.0.ebuild,
+  +espresso-3.0.1.ebuild:
+  Version bump
+
+  26 Apr 2011; Christoph Junghans <ottxor@gentoo.org> espresso-3.0.0.ebuild:
+  added ~amd64 (bug 266648#c10)
+
+*espresso-3.0.0 (20 Apr 2011)
+
+  20 Apr 2011; Christoph Junghans <ottxor@gentoo.org> +espresso-3.0.0.ebuild,
+  +metadata.xml:
+  initial commit from science overlay (bug 266648)

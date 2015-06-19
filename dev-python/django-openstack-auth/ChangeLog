@@ -1,0 +1,55 @@
+# ChangeLog for dev-python/django-openstack-auth
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/django-openstack-auth/ChangeLog,v 1.10 2015/06/13 08:39:02 idella4 Exp $
+
+*django-openstack-auth-1.3.1 (13 Jun 2015)
+
+  13 Jun 2015; Ian Delaney <idella4@gentoo.org>
+  +django-openstack-auth-1.3.1.ebuild:
+  bump; add doc build
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+*django-openstack-auth-1.2.0 (14 Apr 2015)
+
+  14 Apr 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +django-openstack-auth-1.2.0.ebuild:
+  updating django-openstack-auth
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org>
+  django-openstack-auth-1.1.5.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org>
+  django-openstack-auth-1.1.5.ebuild:
+  amd64 stable, bug 540290
+
+  01 Aug 2014; Matthew Thode <prometheanfire@gentoo.org>
+  -django-openstack-auth-1.0.10.ebuild, -django-openstack-auth-1.0.7.ebuild,
+  -django-openstack-auth-1.1.3.ebuild:
+  removing the old and jankey
+
+*django-openstack-auth-1.1.5 (28 Apr 2014)
+
+  28 Apr 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +django-openstack-auth-1.1.5.ebuild:
+  3
+
+*django-openstack-auth-1.1.3 (23 Oct 2013)
+
+  23 Oct 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +django-openstack-auth-1.1.3.ebuild:
+  update for havana horizon update
+
+*django-openstack-auth-1.0.10 (23 May 2013)
+
+  23 May 2013; Ian Delaney <idella4@gentoo.org>
+  +django-openstack-auth-1.0.10.ebuild:
+  bump
+
+*django-openstack-auth-1.0.7 (12 Apr 2013)
+
+  12 Apr 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +django-openstack-auth-1.0.7.ebuild, +metadata.xml:
+  initial of commit django_openstack_auth for horizon

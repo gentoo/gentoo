@@ -1,0 +1,59 @@
+#!/sbin/runscript
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-nds/portmap/files/portmap.rc6,v 1.13 2009/05/30 20:50:39 vapier Exp $
+
+depend() {
+	use net
+	before inetd
+	before xinetd
+}
+
+checkconfig() {
+	if [ -e /proc/config.gz ] ; then
+		if zcat /proc/config.gz | grep -s SUNRPC_REGISTER_V4=y ; then
+			eerror "portmap does not work with SUNRPC_REGISTER_V4=y;"
+			eerror "disable it or use the net-nds/rpcbind package."
+			return 1
+		fi
+	fi
+	return 0
+}
+
+start() {
+	checkconfig || return 1
+
+	ebegin "Starting portmap"
+	start-stop-daemon --start --quiet --exec /sbin/portmap -- ${PORTMAP_OPTS}
+	local ret=$?
+	eend ${ret}
+	# without, if a service depending on portmap is started too fast,
+	# connecting to portmap will fail -- azarah
+	sleep 1
+	return ${ret}
+}
+
+stop() {
+	ebegin "Stopping portmap"
+	start-stop-daemon --stop --quiet --exec /sbin/portmap
+	eend $?
+}
+
+restart() {
+	# Dump the portmapper's table before stopping
+	ebegin "Saving portmap table"
+	local pmap=$(pmap_dump)
+	eend $?
+
+	# Stop and restart portmapper
+	svc_stop
+	sleep 1
+	svc_start
+
+	# Reload the portmapper's table
+	if [ -n "${pmap}" ] ; then
+		ebegin "Reloading portmap table"
+		echo "${pmap}" | pmap_set
+		eend $?
+	fi
+}

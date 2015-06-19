@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install nofetch postinst prepare
+DESCRIPTION=A C++ based modeling platform for VLSI and system-level co-design
+EAPI=4
+HOMEPAGE=http://www.systemc.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=SOPLA-2.3
+RESTRICT=fetch test
+SLOT=0
+SRC_URI=systemc-2.2.0.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=d86f4d0e9d48699ba1f48f4c37d9b0df

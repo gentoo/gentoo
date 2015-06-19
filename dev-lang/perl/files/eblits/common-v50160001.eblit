@@ -1,0 +1,71 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/perl/files/eblits/common-v50160001.eblit,v 1.1 2012/06/05 17:52:35 tove Exp $
+
+src_remove_dual_file() {
+	local i pkg ver
+	pkg="$1"
+	ver="$2"
+	shift 2
+	case "${EBUILD_PHASE:-none}" in
+		postinst|postrm)
+			for i in "$@" ; do
+				alternatives_auto_makesym "${i}" "${i}-[0-9]*"
+			done
+			;;
+		setup)
+			for i in "$@" ; do
+				if [[ -f ${EROOT}${i} && ! -h ${EROOT}${i} ]] ; then
+					has_version ${pkg} && ewarn "You must reinstall ${pkg} !"
+					break
+				fi
+			done
+			;;
+		install)
+			for i in "$@" ; do
+				if ! [[ -f "${ED}"${i} ]] ; then
+					ewarn "${i} does not exist!"
+					continue
+				fi
+				mv "${ED}"${i}{,-${ver}-${P}} || die
+			done
+			;;
+	esac
+}
+
+src_remove_dual_man() {
+	local i pkg ver ff
+	pkg="$1"
+	ver="$2"
+	shift 2
+	case "${EBUILD_PHASE:-none}" in
+		postinst|postrm)
+			for i in "$@" ; do
+				ff=`echo "${EROOT}${i%.[0-9]}-${ver}-${P}${i#${i%.[0-9]}}"*`
+				ff=${ff##*${i#${i%.[0-9]}}}
+				alternatives_auto_makesym "${i}${ff}" "${i%.[0-9]}-[0-9]*"
+			done
+			;;
+		install)
+			for i in "$@" ; do
+				if ! [[ -f "${ED}"${i} ]] ; then
+					ewarn "${i} does not exist!"
+					continue
+				fi
+				mv "${ED}"${i} "${ED}"${i%.[0-9]}-${ver}-${P}${i#${i%.[0-9]}} || die
+			done
+			;;
+	esac
+}
+
+src_remove_dual() {
+	local i pkg ver
+	pkg="$1"
+	ver="$2"
+	shift 2
+	for i in "$@" ; do
+		src_remove_dual_file  "${pkg}" "${ver}" "/usr/bin/${i}"
+		src_remove_dual_man   "${pkg}" "${ver}" "/usr/share/man/man1/${i}.1"
+	done
+}
+

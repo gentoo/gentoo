@@ -1,0 +1,50 @@
+# ChangeLog for media-sound/splay
+# Copyright 2002-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/splay/ChangeLog,v 1.17 2008/12/19 09:40:22 aballier Exp $
+
+  19 Dec 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/splay-0.9.5.2-gcc43-2.patch, splay-0.9.5.2.ebuild:
+  fix build with gcc 4.3, by Yaroslav Gorbunov, bug #251255
+
+  06 Aug 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/splay-0.9.5.2-gcc43.patch, splay-0.9.5.2.ebuild:
+  fix build with gcc 4.3, bug #232773
+
+  01 Mar 2007; Alexis Ballier <aballier@gentoo.org> splay-0.9.5.2.ebuild:
+  Reverting renaming, it breaks cplay, thanks to drac for pointing that quickly
+
+  01 Mar 2007; Alexis Ballier <aballier@gentoo.org> splay-0.9.5.2.ebuild:
+  Prevent collisions with media-sound/mp3blaster, bug #148293
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  07 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> splay-0.9.5.2.ebuild:
+  Drop virtual/libc dependency.
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> splay-0.9.5.2.ebuild:
+  Added to ~ppc.
+
+  04 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +files/splay-0.9.5.2-external-id3lib.diff, splay-0.9.5.2.ebuild:
+  added patch to fix compilation problems if an id3lib is installed. 
+  fixes #87597
+
+  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> splay-0.9.5.2.ebuild:
+  Stable amd64.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> splay-0.9.5.2.ebuild:
+  virtual/glibc -> virtual/libc
+
+  27 Apr 2004; Dylan Carlson <absinthe@gentoo.org> splay-0.9.5.2.ebuild:
+  Added ~amd64 to KEYWORDS.
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> splay-0.9.5.2.ebuild:
+  Added IUSE.
+
+*splay-0.9.5.2 (03 Dec 2002)
+
+  03 Dec 2002; Aron Griffis <agriffis@gentoo.org>: Initial ebuild.

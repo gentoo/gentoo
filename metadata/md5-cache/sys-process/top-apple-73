@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install postinst prepare
+DESCRIPTION=Apple's top from Mac OS X Lion 10.7
+EAPI=5
+HOMEPAGE=http://www.opensource.apple.com/
+KEYWORDS=~ppc-macos ~x64-macos ~x86-macos
+LICENSE=APSL-2 BSD
+SLOT=0
+SRC_URI=http://www.opensource.apple.com/tarballs/top/top-73.tar.gz http://www.opensource.apple.com/source/libutil/libutil-11/libutil.h?txt -> libutil-11-top-73.h
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c97a675f1626ae690cae0983a2c755aa

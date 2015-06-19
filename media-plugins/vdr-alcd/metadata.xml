@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>media-tv</herd>
+<herd>proxy-maintainers</herd>
+<maintainer>
+  <email>vdr@gentoo.org</email>
+  <name>Gentoo VDR Project</name>
+</maintainer>
+<maintainer>
+  <email>vdr@helmutauer.de</email>
+  <name>Helmut Auer</name>
+  <description>Upstream maintainer</description>
+</maintainer>
+<longdescription lang="en">
+VDR plugin: Control the LCD of the Siemens Activy 300
+</longdescription>
+</pkgmetadata>
+

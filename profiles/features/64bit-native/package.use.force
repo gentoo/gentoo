@@ -1,0 +1,7 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/features/64bit-native/package.use.force,v 1.1 2012/07/04 07:18:21 tetromino Exp $
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (04 Jul 2012)
+# Force 64-bit parts of wine, bug #351436
+app-emulation/wine win64

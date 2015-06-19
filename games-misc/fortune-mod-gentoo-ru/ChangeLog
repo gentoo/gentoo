@@ -1,0 +1,218 @@
+# ChangeLog for games-misc/fortune-mod-gentoo-ru
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-gentoo-ru/ChangeLog,v 1.14 2013/01/07 08:36:02 qnikst Exp $
+
+  07 Jan 2013;  <qnikst@gentoo.org> fortune-mod-gentoo-ru-0.25.ebuild,
+  fortune-mod-gentoo-ru-0.26.ebuild, fortune-mod-gentoo-ru-9999.ebuild,
+  metadata.xml:
+  games-misc/fortune-mod-gentoo-ru license fixed
+
+  05 Jan 2013; Sergey Popov <pinkbyte@gentoo.org>
+  fortune-mod-gentoo-ru-0.25.ebuild, fortune-mod-gentoo-ru-0.26.ebuild,
+  fortune-mod-gentoo-ru-9999.ebuild:
+  Change homepage by Andreis Vinogradovs request, wrt bug #450418
+
+  05 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Drop deprecated maintainer record by Andreis Vinogradovs request, wrt bug
+  #450418
+
+  20 Oct 2012; Sergey Popov <pinkbyte@gentoo.org>
+  fortune-mod-gentoo-ru-0.25.ebuild, fortune-mod-gentoo-ru-0.26.ebuild:
+  Add keywords ~amd64-linux ~x86-linux
+
+  01 Jun 2012; Johannes Huber <johu@gentoo.org>
+  fortune-mod-gentoo-ru-0.26.ebuild:
+  Stable for x86, wrt bug #418985
+
+  01 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  fortune-mod-gentoo-ru-0.26.ebuild:
+  Stable for amd64, wrt bug #418985
+
+*fortune-mod-gentoo-ru-0.26 (09 Mar 2012)
+
+  09 Mar 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +fortune-mod-gentoo-ru-0.26.ebuild, -fortune-mod-gentoo-ru-0.24.ebuild:
+  Bump to 0.26, remove 0.24. Thanks to slepnoga
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  fortune-mod-gentoo-ru-0.25.ebuild:
+  x86 stable wrt bug #399301
+
+  04 Feb 2012; Maxim Koltsov <maksbotan@gentoo.org> metadata.xml:
+  Fix maintainer's email in metadata
+
+  19 Jan 2012; Agostino Sarubbo <ago@gentoo.org>
+  fortune-mod-gentoo-ru-0.25.ebuild:
+  Stable for amd64, wrt bug #399301
+
+  06 Nov 2011; Peter Volkov <pva@gentoo.org> metadata.xml:
+  Add me into metadata.xml
+
+*fortune-mod-gentoo-ru-0.25 (06 Nov 2011)
+
+  06 Nov 2011; Peter Volkov <pva@gentoo.org>
+  +fortune-mod-gentoo-ru-0.25.ebuild:
+  Version bump wrt to slepnoga.
+
+  05 Nov 2011; Maxim Koltsov <maksbotan@gentoo.org> metadata.xml:
+  Change email of maintainer on his request
+
+  30 Oct 2011; Peter Volkov <pva@gentoo.org>
+  +fortune-mod-gentoo-ru-0.24.ebuild, +fortune-mod-gentoo-ru-9999.ebuild,
+  +metadata.xml:
+  Initial import from Rion overlay, thank slepnoga for this job.
+
+*fortune-mod-gentoo-ru-0.24 (06 Sep 2011)
+
+  06 Sep 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +fortune-mod-gentoo-ru-0.24.ebuild:
+  bump
+
+  21 Aug 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -fortune-mod-gentoo-ru-0.22.ebuild, fortune-mod-gentoo-ru-0.23.ebuild:
+  fix typo
+
+*fortune-mod-gentoo-ru-0.23 (25 Jul 2011)
+
+  25 Jul 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  +fortune-mod-gentoo-ru-0.23.ebuild:
+  bump
+
+*fortune-mod-gentoo-ru-0.22 (18 Jun 2011)
+
+  18 Jun 2011; Andreis Vinogradovs <spamslepnoga@inbox.ru>
+  -fortune-mod-gentoo-ru-0.20.ebuild, -fortune-mod-gentoo-ru-0.21.ebuild,
+  +fortune-mod-gentoo-ru-0.22.ebuild:
+  drop old add mew
+
+  06 Apr 2011; <slep@gentoo.org> -fortune-mod-gentoo-ru-0.19.ebuild:
+  remove old
+
+*fortune-mod-gentoo-ru-0.21 (06 Apr 2011)
+
+  06 Apr 2011; <slep@gentoo.org> +fortune-mod-gentoo-ru-0.21.ebuild:
+  bump
+
+*fortune-mod-gentoo-ru-0.20 (03 Feb 2011)
+
+  03 Feb 2011; <slep@gentoo.org> +fortune-mod-gentoo-ru-0.20.ebuild:
+  bump
+
+  21 Jan 2011; A. Vinogradov <spamslepnoga@inbox.ru>
+  fortune-mod-gentoo-ru-9999.ebuild:
+  fix errors for old mercurial eclass
+
+  31 Dec 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -fortune-mod-gentoo-ru-0.16.ebuild, -fortune-mod-gentoo-ru-0.17.ebuild,
+  -fortune-mod-gentoo-ru-0.18.ebuild:
+  drop old
+
+*fortune-mod-gentoo-ru-0.17 (26 Nov 2010)
+
+  26 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +fortune-mod-gentoo-ru-0.17.ebuild:
+  bump
+
+  08 Nov 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -fortune-mod-gentoo-ru-0.14.ebuild, -fortune-mod-gentoo-ru-0.15.ebuild,
+  +fortune-mod-gentoo-ru-0.16.ebuild:
+  bump and remove old
+
+*fortune-mod-gentoo-ru-0.15 ( 12 Oct 2010 )
+
+  12 Oct 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +fortune-mod-gentoo-ru-0.15.ebuild:
+  bump
+
+  18 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -fortune-mod-gentoo-ru-0.12.ebuild, -fortune-mod-gentoo-ru-0.13.ebuild:
+  remove old
+
+*fortune-mod-gentoo-ru-0.14 ( 18 Sep 2010; A. Vinogradov )
+
+  18 Sep 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +fortune-mod-gentoo-ru-0.14.ebuild:
+  bump
+
+*fortune-mod-gentoo-ru-0.13 ( 25 Aug 2010 )
+
+  25 Aug 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +fortune-mod-gentoo-ru-0.13.ebuild:
+  new version
+
+  07 Jul 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -fortune-mod-gentoo-ru-0.11.ebuild:
+  remowe old
+
+*fortune-mod-gentoo-ru-0.12
+
+  31 May 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +fortune-mod-gentoo-ru-0.12.ebuild:
+  bump
+
+  12 Mar 2010; <slep@gentoo.org> -fortune-mod-gentoo-ru-0.09.ebuild,
+  -fortune-mod-gentoo-ru-0.10.ebuild:
+  delete old version
+
+  05 Mar 2010; <slep@gentoo.org> +fortune-mod-gentoo-ru-0.11.ebuild:
+  version bump
+
+  09 Feb 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  -fortune-mod-gentoo-ru-0.04.ebuild, -fortune-mod-gentoo-ru-0.05.ebuild,
+  -fortune-mod-gentoo-ru-0.06.ebuild, -fortune-mod-gentoo-ru-0.07.ebuild,
+  -fortune-mod-gentoo-ru-0.08.ebuild:
+  drop old version
+
+  16 Jan 2010; A. Vinogradov <spamslepnoga@inbox.ru>
+  +fortune-mod-gentoo-ru-0.10.ebuild:
+  version bump
+
+  25 Nov 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +fortune-mod-gentoo-ru-0.09.ebuild:
+  version bump
+
+  24 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +fortune-mod-gentoo-ru-0.08.ebuild:
+  version bump
+
+  11 Oct 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +fortune-mod-gentoo-ru-0.07.ebuild:
+  new version added
+
+  30 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +fortune-mod-gentoo-ru-0.06.ebuild:
+  version bump
+
+  26 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  fortune-mod-gentoo-ru-9999.ebuild:
+  fix SRC_URI
+
+  18 Sep 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  fortune-mod-gentoo-ru-9999.ebuild:
+  drop all keywords in 9999 ebuild
+
+  09 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  fortune-mod-gentoo-ru-0.04.ebuild:
+  fix mirror
+
+*fortune-mod-gentoo-ru-0.05 (09 Aug 2009)
+
+  09 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +fortune-mod-gentoo-ru-0.05.ebuild:
+  add new version
+
+*fortune-mod-gentoo-ru-9999 (08 Aug 2009)
+
+  08 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +fortune-mod-gentoo-ru-9999.ebuild:
+  add live-9999 ebuild
+
+  08 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  fortune-mod-gentoo-ru-0.04.ebuild:
+  fix SRC_URI, project now in googlecode
+
+*fortune-mod-gentoo-ru-0.04 (08 Aug 2009)
+
+  08 Aug 2009; A. Vinogradov <spamslepnoga@inbox.ru>
+  +fortune-mod-gentoo-ru-0.04.ebuild, +metadata.xml:
+  initial commit,tnx MarSoft for works

@@ -1,0 +1,86 @@
+# ChangeLog for x11-libs/libxkbcommon
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libxkbcommon/ChangeLog,v 1.23 2015/03/14 14:17:59 maekke Exp $
+
+  14 Mar 2015; Markus Meier <maekke@gentoo.org> libxkbcommon-0.5.0.ebuild:
+  arm stable, bug #530652
+
+  06 Mar 2015; Jeroen Roovers <jer@gentoo.org> libxkbcommon-0.5.0.ebuild:
+  Stable for HPPA (bug #530652).
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> libxkbcommon-0.5.0.ebuild:
+  add arm64 support, tested on A53 board
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libxkbcommon-0.5.0.ebuild:
+  Stable for alpha, wrt bug #530652
+
+  23 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libxkbcommon-0.5.0.ebuild:
+  Stable for sparc, wrt bug #530652
+
+  22 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libxkbcommon-0.5.0.ebuild:
+  Stable for ia64, wrt bug #530652
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libxkbcommon-0.5.0.ebuild:
+  Stable for ppc64, wrt bug #530652
+
+  20 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libxkbcommon-0.5.0.ebuild:
+  Stable for ppc, wrt bug #530652
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libxkbcommon-0.5.0.ebuild:
+  Add ~alpha/~ppc/~ppc64/~sparc wrt bug #526914
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libxkbcommon-0.5.0.ebuild:
+  Stable for x86, wrt bug #530652
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libxkbcommon-0.5.0.ebuild:
+  Stable for amd64, wrt bug #530652
+
+  08 Feb 2015; Pacho Ramos <pacho@gentoo.org> libxkbcommon-0.5.0.ebuild:
+  ia64 keyword, bug #526914 by Émeric Maschino
+
+  03 Feb 2015; Jeroen Roovers <jer@gentoo.org> libxkbcommon-0.5.0.ebuild:
+  Marked ~hppa too.
+
+*libxkbcommon-0.5.0 (26 Oct 2014)
+
+  26 Oct 2014; Rémi Cardona <remi@gentoo.org> +libxkbcommon-0.5.0.ebuild:
+  Bump to 0.5.0, add test USE flag (see bug #526914)
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> libxkbcommon-0.4.1.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+*libxkbcommon-0.4.1 (08 May 2014)
+
+  08 May 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libxkbcommon-0.4.1.ebuild:
+  Version bump, bug #509550. Add multilib support, bug #496696.
+
+  21 Apr 2014; Agostino Sarubbo <ago@gentoo.org> libxkbcommon-0.3.1.ebuild:
+  Stable for arm, wrt bug #507568
+
+  07 Dec 2013; Johannes Huber <johu@gentoo.org> libxkbcommon-0.3.1.ebuild:
+  x86 stable, bug #480340
+
+  02 Sep 2013; Chema Alonso <nimiux@gentoo.org> libxkbcommon-0.3.1.ebuild:
+  Stable for amd64 wrt bug #480340
+
+  13 Jul 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  libxkbcommon-0.3.1.ebuild:
+  Keyword ~arm.
+
+*libxkbcommon-0.3.1 (11 Jun 2013)
+
+  11 Jun 2013; Kacper Kowalik <xarthisius@gentoo.org>
+  +libxkbcommon-0.3.1.ebuild:
+  Version bump wrt #470076 by Nikoli <nikoli@lavabit.com>
+
+  21 Apr 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  libxkbcommon-0.2.0.ebuild:
+  set XORG_EAUTORECONF before inheriting the eclass
+
+*libxkbcommon-0.2.0 (27 Mar 2013)
+
+  27 Mar 2013; Alexey Shvetsov <alexxy@gentoo.org> +libxkbcommon-0.2.0.ebuild,
+  +metadata.xml:
+  Import to tree bug #439578

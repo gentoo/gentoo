@@ -1,0 +1,31 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Tue Nov 19 11:20:21 UTC 2013
+
+Respect LDFLAGS, remove stripping.
+Fixes Gentoo bug #491602
+
+--- a/cx_Freeze-4.3.2/setup.py
++++ b/cx_Freeze-4.3.2/setup.py
+@@ -78,11 +78,12 @@
+         extraArgs = ext.extra_link_args or []
+         if sys.platform != "win32":
+             vars = distutils.sysconfig.get_config_vars()
++            if vars["LINKFORSHARED"] and sys.platform != "darwin":
++                vars["LINKFORSHARED"] = vars["LINKFORSHARED"] + " " + os.environ["LDFLAGS"]
++                extraArgs.extend(vars["LINKFORSHARED"].split())
+             if not vars.get("Py_ENABLE_SHARED", 0):
+                 libraryDirs.append(vars["LIBPL"])
+                 libraries.append("python%s.%s" % sys.version_info[:2])
+-                if vars["LINKFORSHARED"] and sys.platform != "darwin":
+-                    extraArgs.extend(vars["LINKFORSHARED"].split())
+                 if vars["LIBS"]:
+                     extraArgs.extend(vars["LIBS"].split())
+                 if vars["LIBM"]:
+@@ -91,7 +92,6 @@
+                     extraArgs.extend(vars["BASEMODLIBS"].split())
+                 if vars["LOCALMODLIBS"]:
+                     extraArgs.extend(vars["LOCALMODLIBS"].split())
+-            extraArgs.append("-s")
+         elif ext.name.find("Win32GUI") > 0 \
+                 and self.compiler.compiler_type == "mingw32":
+             extraArgs.append("-mwindows")

@@ -1,0 +1,231 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/use.mask,v 1.70 2015/06/02 09:15:35 ulm Exp $
+
+# Unmask the flag which corresponds to ARCH.
+-amd64
+
+# SECTION: Unmask
+
+# cilk has been ported to this arch.
+-cilk
+
+# Mike Gilbert <floppym@gentoo.org> (19 Oct 2014)
+# sys-libs/libapparmor
+-apparmor
+
+# Alexey Shvetsov <alexxy@gentoo.org> (08 Apr 2014)
+# Cuda works here
+-cuda
+
+# Michał Górny <mgorny@gentoo.org> (30 Mar 2014)
+# PyPy is keyworded on this arch.
+-python_targets_pypy
+-python_single_target_pypy
+-python_targets_pypy3
+-python_single_target_pypy3
+
+# Michał Górny <mgorny@gentoo.org> (4 May 2013)
+# Unmask systemd since it is keyworded here.
+-systemd
+
+# Andrey Grozin <grozin@gentoo.org> (25 Jun 2014)
+# keyworded on amd64
+-clisp
+-clozurecl
+-ecls
+-gcl
+-sbcl
+
+# Michał Górny <mgorny@gentoo.org> (26 Jan 2013)
+# Unmask the multilib flags for this arch.
+-abi_x86_32
+-abi_x86_64
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (09 Dec 2012)
+# Orc optimisations work fine on amd64 and x86
+-orc
+
+# Diego Elio Pettenò <flameeyes@gentoo.org> (21 Aug 2012)
+# IPMI is only implemented for x86, amd64 and ia64
+-ipmi
+
+# Ralph Sennhauser <sera@gentoo.org> (31 Jul 2012)
+# Keyworded on amd64
+-python_targets_jython2_5
+-python_single_target_jython2_5
+-python_targets_jython2_7
+-python_single_target_jython2_7
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (05. Mar 2012)
+# Unmask, works with v4l2, #350211
+-dxr3
+
+# Justin Lecher <jlec@gentoo.org> (04. Feb 2012)
+# Unmask because deps are keyworded
+-zeitgeist
+
+# 2011/12/22 - Alexis Ballier <aballier@gentoo.org>
+# Unmask vdpau as its supported here
+-vdpau
+
+# 2011/07/01 - Alexey Shvetsov <alexxy@gentoo.org>
+# Infiniband stuff works here
+-infiniband
+
+# 2010/02/14 - Samuli Suominen <ssuominen@gentoo.org>
+# Unmask amd64/x86 only SANE_BACKENDS
+-sane_backends_canon_pp
+-sane_backends_hpsj5s
+-sane_backends_mustek_pp
+-sane_backends_qcam
+
+# 2010/05/03 - Alex Legler <a3li@gentoo.org>
+# Add support for Ruby Enterprise Edition targets where rubyee is available
+# -ruby_targets_ree18
+
+# 2010/01/08 - Diego E. Pettenò <flameeyes@gentoo.org>
+# Add support for JRuby targets where jruby is available
+# -ruby_targets_jruby
+
+# 2011/10/21 - Hans de Graaff <graaff@gentoo.org>
+# Add support for Rubinius targets where rbx is available
+#-ruby_targets_rbx
+
+# Lilo works on amd64, so ...
+-lilo
+
+# 2007/10/09 - Steve Dibb <beandog@gentoo.org>
+# Unmask support for SSSE3 (pni) for media-video/mplayer
+-ssse3
+
+# 2007/08/19 - Christoph Mende <angelos@gentoo.org>
+# Unmask support for dev-db/oracle-instantclient-basic
+-oci8-instant-client
+-oracle
+
+# 2007/03/10 - Mike Frysinger <vapier@gentoo.org>
+# NVRAM works on x86/amd64 hosts
+-nvram
+
+# 2005/09/14 - Diego Pettenò <flameeyes@gentoo.org>
+# nVidia XvMC support works on amd64
+-nvidia
+
+# 2005/12/01 - Daniel Gryniewicz <dang@gentoo.org>
+# There is now a kqemu that works and is stable on amd64
+-kqemu
+
+# 2006/03/03 - Luca Barbato <lu_zero@gentoo.org>
+# codec support x264
+-x264
+
+# 2006/01/28 - Donnie Berkholz <dberkholz@gentoo.org>
+# Modular X: unmask for architectures on which they are available
+-input_devices_synaptics
+-input_devices_virtualbox
+-input_devices_vmmouse
+-input_devices_wacom
+-video_cards_nvidia
+-video_cards_fglrx
+-video_cards_via
+-video_cards_virtualbox
+-video_cards_vmware
+-video_cards_qxl
+
+# Diego Pettenò <flameeyes@gentoo.org> (4 Jan 2007)
+# Unmask the flags for PHP that are available only on x86/amd64
+-oci8
+-oracle7
+-db2
+
+# Feb 16th 2007; Simon Stelling <blubb@gentoo.org>
+# Since this profile forces >=portage-2.1.2, we can unmask all
+# SIMD assembler flags
+-mmx
+-mmxext
+-sse
+-sse2
+-sse3
+-sse4
+-sse4a
+-sse4_1
+-sse4_2
+-avx
+-avx128fma
+-avx2
+-avx256
+-3dnow
+-3dnowext
+-fma3
+-fma4
+-xop
+-cpu_flags_x86_3dnow
+-cpu_flags_x86_3dnowext
+-cpu_flags_x86_aes
+-cpu_flags_x86_avx
+-cpu_flags_x86_avx2
+-cpu_flags_x86_fma3
+-cpu_flags_x86_fma4
+-cpu_flags_x86_mmx
+-cpu_flags_x86_mmxext
+-cpu_flags_x86_padlock
+-cpu_flags_x86_popcnt
+-cpu_flags_x86_sse
+-cpu_flags_x86_sse2
+-cpu_flags_x86_sse3
+-cpu_flags_x86_sse4_1
+-cpu_flags_x86_sse4_2
+-cpu_flags_x86_sse4a
+-cpu_flags_x86_ssse3
+-cpu_flags_x86_xop
+
+# George Shapovalov <george@gentoo.org> (8 Apr 2007)
+# supported on amd64
+-ada
+
+# Robert Buchholz <rbu@gentoo.org> (03 Jun 2007)
+# Unmask as it works on amd64
+-lcd_devices_luise
+
+# SECTION: Unavailable/Broken
+
+# 2007/01/18 - Jeffrey Gardner <je_fro@gentoo.org>
+# Mask gamess support temporarily.
+gamess
+
+# 2006/12/21 - Diego Pettenò <flameeyes@gentoo.org>
+# Mask some ALSA cards that are known broken in AMD64
+alsa_cards_cs5535audio
+
+# 2006/06/07 - Danny van Dyk <kugelfang@gentoo.org>
+# FIXME. Unknown mask reason. Has effect on qpopper
+# and tpop3d.
+drac
+
+# 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
+# Modular X: mask for architectures on which they aren't available
+video_cards_i740
+video_cards_newport
+video_cards_nsc
+
+# 2004/10/06 - Jeremy Huddleston <eradicator@gentoo.org>
+# sys-cluster/pvm won't build
+pvm
+
+# 2004/06/22 - Taken from 2004.0 profile
+# masked
+3dfx
+
+# 2007/02/02 - Simon Stelling <blubb@gentoo.org>
+# we don't have no gcc64; bug 144535
+gcc64
+
+# 2007/02/04 - Simon Stelling <blubb@gentoo.org>
+# games-emulation/caps is 32bit only, while app-emulation/e-uae is 64bit; bug 158416
+capslib
+
+# fdk-aac is already keyworded here
+-fdk
+
+# NOT NECESSARY - SECTION

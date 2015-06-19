@@ -1,0 +1,113 @@
+# ChangeLog for dev-perl/Class-Virtual
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-Virtual/ChangeLog,v 1.27 2014/08/22 20:52:07 axs Exp $
+
+*Class-Virtual-0.60.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Class-Virtual-0.60.0-r1.ebuild, -Class-Virtual-0.60.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  04 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> Class-Virtual-0.60.0.ebuild:
+  Fix DESCRIPTION
+
+  05 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  Class-Virtual-0.60.0.ebuild:
+  Class-ISA moved to dev-perl
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Class-Virtual-0.60.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Class-Virtual-0.60.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Class-Virtual-0.60.0 (01 Sep 2011)
+
+  01 Sep 2011; Torsten Veller <tove@gentoo.org> +Class-Virtual-0.60.0.ebuild:
+  Change version scheme
+
+*Class-Virtual-0.60 (08 Feb 2011)
+
+  08 Feb 2011; Torsten Veller <tove@gentoo.org> -Class-Virtual-0.06.ebuild,
+  +Class-Virtual-0.60.ebuild:
+  Depend on perl-core/Class-ISA. The Class-ISA core module is deprecated and
+  will be removed (#351061). EAPI=3 bump. Change version scheme
+
+  29 Jan 2010; Torsten Veller <tove@gentoo.org> Class-Virtual-0.06.ebuild:
+  Fix LICENSE: same terms as perl (#301969). Maintenance
+
+  23 Dec 2009; Fabian Groffen <grobian@gentoo.org>
+  Class-Virtual-0.06.ebuild:
+  Marked ~x86-solaris, bug #296509
+
+  02 May 2009; Torsten Veller <tove@gentoo.org> -Class-Virtual-0.05.ebuild:
+  Cleanup
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> Class-Virtual-0.06.ebuild:
+  Stable on x86, bug #169152.
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Class-Virtual-0.06.ebuild:
+  Stable on ia64.
+
+  08 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-Virtual-0.05.ebuild, Class-Virtual-0.06.ebuild:
+  Marking amd64, sparc stable
+
+*Class-Virtual-0.06 (05 Sep 2006)
+
+  05 Sep 2006; Yuval Yaari <yuval@gentoo.org> +Class-Virtual-0.06.ebuild:
+  Version bump
+
+  07 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  -Class-Virtual-0.04.ebuild, Class-Virtual-0.05.ebuild:
+  Marking amd64 stable; clean up
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-Virtual-0.04.ebuild, Class-Virtual-0.05.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> Class-Virtual-0.05.ebuild:
+  Mark 0.05 stable on ia64
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  Class-Virtual-0.04.ebuild, Class-Virtual-0.05.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed header
+
+  01 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-Virtual-0.05.ebuild:
+  Keywording ~amd64
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org> Class-Virtual-0.05.ebuild:
+  Mark 0.05 ~ia64
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-Virtual-0.05.ebuild:
+  marking stable sparc x86
+
+  18 Jul 2005; David Holm <dholm@gentoo.org> Class-Virtual-0.05.ebuild:
+  Added to ~ppc.
+
+*Class-Virtual-0.05 (17 Jul 2005)
+
+  17 Jul 2005; Michael Cummings <mcummings@gentoo.org>
+  +Class-Virtual-0.05.ebuild:
+  Version bump upstream
+
+  17 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Class-Virtual-0.04.ebuild:
+  Stable on sparc
+
+  21 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  Class-Virtual-0.04.ebuild:
+  Unmasking for x86
+
+*Class-Virtual-0.04 (06 Oct 2004)
+
+  06 Oct 2004; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +Class-Virtual-0.04.ebuild:
+  Dep for Plucene - perl port of lucene

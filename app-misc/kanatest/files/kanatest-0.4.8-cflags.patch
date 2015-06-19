@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index b5ac45c..c2c6d18 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -38,7 +38,7 @@ AC_CHECK_LIB(xml2,
+ 	[],
+ 	[AC_MSG_ERROR(You do not appear to have libxml2 installed.)])
+ 
+-CFLAGS="$BUILD_CFLAGS -Wall $PLATFORM_CFLAGS -D_GNU_SOURCE"
++CFLAGS="$CFLAGS $BUILD_CFLAGS -Wall $PLATFORM_CFLAGS -D_GNU_SOURCE"
+ CXXFLAGS="$CFLAGS"
+ CPPFLAGS="$gtk_CFLAGS $xml_CFLAGS"
+ LIBS="$gtk_LIBS $xml_LIBS"

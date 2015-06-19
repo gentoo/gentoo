@@ -1,0 +1,31 @@
+# Copyright 2008 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/desc/netbeans_modules.desc,v 1.5 2013/10/16 09:36:55 fordfrog Exp $
+
+# This file contains descriptions of NETBEANS_MODULES USE_EXPAND flags.
+
+apisupport - enables apisupport module
+cnd - enables C/C++ development support
+dlight - enables framework for creation of Observability Tools using DTrace
+enterprise - enables enterprise development support
+ergonomics - enables ergonomics features
+extide - enables extide module
+groovy - enables Groovy and Grails development support
+gsf - enables support for web client development
+harness - enables harness support
+ide - enables Netbeans IDE
+identity - enables identity module
+j2ee - enables J2EE development support
+java - enables Java development support
+javacard - enables cluster for JavaCard development
+javafx - enables JavaFX development support
+mobility - enables support for development of mobile applications
+nb - enables Netbeans branding
+php - enables PHP development support
+profiler - enables Java profiler
+ruby - enables Ruby development support
+soa - enables SOA development support
+visualweb - enables visual web development support
+webcommon - enables javascript libraries and web client tools
+websvccommon - enables common support for web services development
+xml - enables XML related development support (schema, validation, WSDL, etc.)

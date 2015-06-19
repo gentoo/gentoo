@@ -1,0 +1,12 @@
+DEFINED_PHASES=config install postinst postrm preinst setup
+DESCRIPTION=Folding@Home is a distributed computing project for protein folding
+EAPI=4
+HOMEPAGE=http://folding.stanford.edu/FAQ-SMP.html
+KEYWORDS=~amd64 ~x86
+LICENSE=FAH-EULA-2014 FAH-special-permission
+RDEPEND=app-arch/bzip2 sys-devel/gcc sys-libs/glibc sys-libs/zlib
+RESTRICT=mirror bindist strip
+SLOT=0
+SRC_URI=x86? ( https://fah.stanford.edu/file-releases/public/release/fahclient/centos-5.5-32bit/v7.4/fahclient_7.4.4-32bit-release.tar.bz2 ) amd64? ( https://fah.stanford.edu/file-releases/public/release/fahclient/centos-5.3-64bit/v7.4/fahclient_7.4.4-64bit-release.tar.bz2 )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=3464a03f622845287668dfd3314a71e3

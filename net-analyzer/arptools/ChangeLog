@@ -1,0 +1,30 @@
+# ChangeLog for net-analyzer/arptools
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/arptools/ChangeLog,v 1.7 2014/08/10 20:57:15 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> arptools-1.0.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  10 Jul 2014; Jeroen Roovers <jer@gentoo.org> arptools-1.0.2.ebuild:
+  EAPI bump. Set RDEPEND. Set SLOT dependency on net-libs/libnet.
+
+  20 Jan 2014; Robin H. Johnson <robbat2@gentoo.org> arptools-1.0.2.ebuild:
+  Upstream moved distfiles.
+
+  07 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> arptools-1.0.2.ebuild:
+  Add ~amd64 keyword, wrt bug #460652, thanks to Andrew Savchenko
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org> -arptools-1.0.0.ebuild:
+  Cleanup
+
+*arptools-1.0.2 (31 Mar 2007)
+
+  31 Mar 2007; Marcelo Goes <vanquirius@gentoo.org> +arptools-1.0.2.ebuild:
+  1.0.2 version bump, do not set RDEPEND=DEPEND.
+
+*arptools-1.0.0 (07 Jun 2006)
+
+  07 Jun 2006; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +arptools-1.0.0.ebuild:
+  Initial commit. Bug #126884, submitted by Tomoyuki Sakurai
+  <trombik@gentoo.gr.jp>.

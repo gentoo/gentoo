@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>ultrabug@gentoo.org</email>
+		<name>Alexys Jacob</name>
+	</maintainer>
+	<maintainer>
+		<email>bugs@bergstroem.nu</email>
+		<name>Johan Bergström</name>
+	</maintainer>
+	<longdescription lang="en">
+	</longdescription>
+	<upstream>
+		<remote-id type="github">mongodb/mongo-cxx-driver</remote-id>
+	</upstream>
+</pkgmetadata>

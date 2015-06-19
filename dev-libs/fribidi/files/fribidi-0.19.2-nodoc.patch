@@ -1,0 +1,11 @@
+--- Makefile.am
++++ Makefile.am
+@@ -9,7 +9,7 @@
+ ##############################################################################
+ 
+ ## The order of subdirs is important, don't change without a reason.
+-SUBDIRS = gen.tab charset lib bin doc test
++SUBDIRS = gen.tab charset lib bin test
+ 
+ EXTRA_DIST = bootstrap ChangeLog.old
+ 

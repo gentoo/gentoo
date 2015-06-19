@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
+DEPEND=dev-lang/spidermonkey:24 >=dev-libs/glib-2.37.3:2 >=dev-libs/gobject-introspection-1.38:= sys-libs/readline:0 virtual/libffi cairo? ( x11-libs/cairo[X,glib] ) gtk? ( x11-libs/gtk+:3 ) gnome-base/gnome-common sys-devel/gettext virtual/pkgconfig test? ( sys-apps/dbus ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Linux Mint's fork of gjs for Cinnamon
+EAPI=5
+HOMEPAGE=http://cinnamon.linuxmint.com/
+IUSE=+cairo examples gtk test test
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT || ( MPL-1.1 LGPL-2+ GPL-2+ )
+RDEPEND=dev-lang/spidermonkey:24 >=dev-libs/glib-2.37.3:2 >=dev-libs/gobject-introspection-1.38:= sys-libs/readline:0 virtual/libffi cairo? ( x11-libs/cairo[X,glib] ) gtk? ( x11-libs/gtk+:3 ) !<gnome-extra/cinnamon-2.4
+SLOT=0
+SRC_URI=https://github.com/linuxmint/cjs/archive/2.6.0.tar.gz -> cjs-2.6.0.tar.gz
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f	virtualx	73cfc129b4b9ba23aed1abb10c825d86
+_md5_=c343489cbe44a8425a9a3118a5c09a70

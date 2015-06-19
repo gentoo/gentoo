@@ -1,0 +1,45 @@
+# ChangeLog for dev-util/piklab
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/piklab/ChangeLog,v 1.10 2014/03/20 20:25:14 johu Exp $
+
+  20 Mar 2014; Johannes Huber <johu@gentoo.org> -piklab-0.16.1.ebuild,
+  piklab-0.16.2.ebuild:
+  EAPI 5, sort deps. Remove old.
+
+*piklab-0.16.2 (16 Dec 2013)
+
+  16 Dec 2013; Patrick Lauer <patrick@gentoo.org> +piklab-0.16.2.ebuild:
+  Bump
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> piklab-0.16.1.ebuild:
+  Move Qt dependencies to the new category
+
+  08 Oct 2012; Michael Palimaka <kensington@gentoo.org>
+  -files/piklab-0.15.10-gcc46.patch, -piklab-0.15.10.ebuild:
+  Remove old.
+
+  07 Aug 2012; Michael Palimaka <kensington@gentoo.org> piklab-0.16.1.ebuild:
+  Update package description.
+
+*piklab-0.16.1 (07 Aug 2012)
+
+  07 Aug 2012; Michael Palimaka <kensington@gentoo.org> +piklab-0.16.1.ebuild,
+  metadata.xml:
+  Version bump. Add upstream metadata. Fixes bug #429364.
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -piklab-0.15.7.ebuild:
+  Remove old
+
+  03 Jun 2011; Justin Lecher <jlec@gentoo.org> piklab-0.15.7.ebuild,
+  piklab-0.15.10.ebuild, +files/piklab-0.15.10-gcc46.patch:
+  Make it gcc46 resistant, #369887
+
+*piklab-0.15.10 (07 Oct 2010)
+
+  07 Oct 2010; Mike Frysinger <vapier@gentoo.org> +piklab-0.15.10.ebuild:
+  Version bump.
+
+*piklab-0.15.7 (28 Feb 2010)
+
+  28 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> +piklab-0.15.7.ebuild:
+  Initial commit wrt #143801, thanks to all contributors.

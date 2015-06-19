@@ -1,0 +1,12 @@
+Index: libiodbc2-3.52.7/iodbcinst/unicode.h
+===================================================================
+--- libiodbc2-3.52.7.orig/iodbcinst/unicode.h	2009-09-09 14:13:17.000000000 +0200
++++ libiodbc2-3.52.7/iodbcinst/unicode.h	2010-06-26 21:16:26.000000000 +0200
+@@ -76,6 +76,7 @@
+ 
+ #ifndef _UNICODE_H
+ #define _UNICODE_H
++#include <iodbc.h>
+ 
+ 
+ #if defined (__APPLE__) && !defined (MACOSX102) && !defined (HAVE_CONFIG_H)

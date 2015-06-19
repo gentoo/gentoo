@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>net-im</herd>
+	<use>
+		<flag name="talkfilters">Enable support for
+		<pkg>app-text/talklfilters</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="bitbucket">rekkanoryo/purple-plugin-pack</remote-id>
+	</upstream>
+</pkgmetadata>

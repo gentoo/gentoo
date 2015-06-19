@@ -1,0 +1,115 @@
+# ChangeLog for app-emacs/folding
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/folding/ChangeLog,v 1.31 2015/02/24 09:13:31 ago Exp $
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> folding-2013.0613.1821.ebuild:
+  Stable for alpha, wrt bug #534842
+
+  27 Jan 2015; Ulrich Müller <ulm@gentoo.org> folding-2012.0226.1623.ebuild,
+  folding-2013.0613.1821.ebuild:
+  Update HOMEPAGE, bug 537928.
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> folding-2013.0613.1821.ebuild:
+  Stable for x86, wrt bug #534842
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> folding-2013.0613.1821.ebuild:
+  Stable for amd64, wrt bug #534842
+
+*folding-2013.0613.1821 (14 Feb 2014)
+
+  14 Feb 2014; Ulrich Müller <ulm@gentoo.org> -folding-2007.0506.ebuild,
+  -folding-2009.0905.0811.ebuild, folding-2012.0226.1623.ebuild,
+  +folding-2013.0613.1821.ebuild, +files/50folding-gentoo.el,
+  -files/70folding-gentoo.el:
+  Version bump. Move site-init file to standard name. Remove old.
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> folding-2012.0226.1623.ebuild:
+  Stable for alpha, wrt bug #457234
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> folding-2012.0226.1623.ebuild:
+  Stable for x86, wrt bug #457234
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> folding-2012.0226.1623.ebuild:
+  Stable for amd64, wrt bug #457234
+
+*folding-2012.0226.1623 (20 Dec 2012)
+
+  20 Dec 2012; Ulrich Müller <ulm@gentoo.org> folding-2009.0905.0811.ebuild,
+  +folding-2012.0226.1623.ebuild:
+  Version bump, bug 447912. Specify LICENSE more precisely.
+
+  19 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  folding-2009.0905.0811.ebuild:
+  Stable on alpha, bug #393771
+
+  14 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  folding-2009.0905.0811.ebuild:
+  x86 stable wrt bug #393771
+
+  12 Dec 2011; Agostino Sarubbo <ago@gentoo.org> folding-2009.0905.0811.ebuild:
+  Stable for AMD64, wrt bug #393771
+
+*folding-2009.0905.0811 (16 Oct 2009)
+
+  16 Oct 2009; Ulrich Mueller <ulm@gentoo.org>
+  +folding-2009.0905.0811.ebuild:
+  Version bump, new snapshot from upstream repository.
+
+  17 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  -folding-2006.1118.ebuild:
+  clean up
+
+  07 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  folding-2007.0506.ebuild:
+  Stable on alpha, bug #272464
+
+  07 Jun 2009; Markus Meier <maekke@gentoo.org> folding-2007.0506.ebuild:
+  amd64/x86 stable, bug #272464
+
+*folding-2007.0506 (29 Jan 2009)
+
+  29 Jan 2009; Ulrich Mueller <ulm@gentoo.org> files/70folding-gentoo.el,
+  +folding-2007.0506.ebuild:
+  Version bump, bug 256733.
+
+  29 Jan 2009; Christian Faulhammer <fauli@gentoo.org> -folding-2.97.ebuild:
+  clean up
+
+  18 Oct 2007; Ulrich Mueller <ulm@gentoo.org> folding-2006.1118.ebuild:
+  amd64 stable, bug #195512.
+
+  20 Sep 2007; Raúl Porcel <armin76@gentoo.org> folding-2006.1118.ebuild:
+  alpha stable wrt #192617
+
+  16 Sep 2007; Christian Faulhammer <opfer@gentoo.org> folding-2.97.ebuild:
+  drop ppc-macos
+
+  16 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  folding-2006.1118.ebuild:
+  stable x86, bug 192617
+
+*folding-2006.1118 (09 Feb 2007)
+
+  09 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  +folding-2006.1118.ebuild:
+  version bump: move to tar.bz2 compression
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  12 Oct 2005; Matthew Kennedy <mkennedy@gentoo.org> folding-2.97.ebuild:
+  Homepage correction; Resolves Bug #108445.
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> folding-2.97.ebuild:
+  Mark 2.97 stable on alpha
+
+  01 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org> folding-2.97.ebuild:
+  Keywording ~amd64.
+
+  01 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> folding-2.97.ebuild:
+  Stable on x86. Added to ~alpha and ~ppc-macos.
+
+*folding-2.97 (05 Oct 2003)
+
+  05 Oct 2003; Matthew Kennedy <mkennedy@gentoo.org> :
+  Initial import.  Ebuild submitted by Jeremy Maitin-Shepard <jbms@attbi.com>.

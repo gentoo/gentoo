@@ -1,0 +1,118 @@
+From ed8383c618e124cfa708c9ee87563fcdf2f4649c Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Fri, 19 Dec 2014 18:53:34 -0500
+Subject: [PATCH] sm: Avoid double-free on iconv failure
+
+* sm/minip12.c: (p12_build) if jnlib_iconv_open fails, avoid
+double-free of pwbuf.
+
+--
+
+Observed by Joshua Rogers <honey@internot.info>, who proposed a
+slightly different fix.
+
+Debian-Bug-Id: 773472
+
+Added fix at a second place - wk.
+---
+ sm/minip12.c |    2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/agent/minip12.c b/agent/minip12.c
+index 01b91b7..ca4d248 100644
+--- a/agent/minip12.c
++++ b/agent/minip12.c
+@@ -2422,6 +2422,7 @@ p12_build (gcry_mpi_t *kparms, const void *cert, size_t certlen,
+                      " requested charset '%s': %s\n",
+                      charset, strerror (errno));
+           gcry_free (pwbuf);
++          pwbuf = NULL;
+           goto failure;
+         }
+ 
+@@ -2436,6 +2437,7 @@ p12_build (gcry_mpi_t *kparms, const void *cert, size_t certlen,
+                      " requested charset '%s': %s\n",
+                      charset, strerror (errno));
+           gcry_free (pwbuf);
++          pwbuf = NULL;
+           jnlib_iconv_close (cd);
+           goto failure;
+         }
+-- 
+1.7.10.4
+
+From b0b3803e8c2959dd67ca96debc54b5c6464f0d41 Mon Sep 17 00:00:00 2001
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Fri, 19 Dec 2014 18:07:55 -0500
+Subject: [PATCH] scd: Avoid double-free on error condition in scd
+
+* scd/command.c (cmd_readkey): avoid double-free of cert
+
+--
+
+When ksba_cert_new() fails, cert will be double-freed.
+
+Debian-Bug-Id: 773471
+
+Original patch changed by wk to do the free only at leave.
+---
+ scd/command.c |    6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/scd/command.c b/scd/command.c
+index dd4191f..1cc580a 100644
+--- a/scd/command.c
++++ b/scd/command.c
+@@ -804,10 +804,8 @@ cmd_readkey (assuan_context_t ctx, char *line)
+ 
+   rc = ksba_cert_new (&kc);
+   if (rc)
+-    {
+-      xfree (cert);
+-      goto leave;
+-    }
++    goto leave;
++
+   rc = ksba_cert_init_from_mem (kc, cert, ncert);
+   if (rc)
+     {
+-- 
+1.7.10.4
+
+From abd5f6752d693b7f313c19604f0723ecec4d39a6 Mon Sep 17 00:00:00 2001
+From: Werner Koch <wk@gnupg.org>
+Date: Mon, 22 Dec 2014 12:16:46 +0100
+Subject: [PATCH] dirmngr,gpgsm: Return NULL on fail
+
+* dirmngr/ldapserver.c (ldapserver_parse_one): Set SERVER to NULL.
+* sm/gpgsm.c (parse_keyserver_line): Ditto.
+--
+
+Reported-by: Joshua Rogers <git@internot.info>
+
+  "If something inside the ldapserver_parse_one function failed,
+   'server' would be freed, then returned, leading to a
+   use-after-free.  This code is likely copied from sm/gpgsm.c, which
+   was also susceptible to this bug."
+
+Signed-off-by: Werner Koch <wk@gnupg.org>
+---
+ dirmngr/ldapserver.c |    1 +
+ sm/gpgsm.c           |    1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/sm/gpgsm.c b/sm/gpgsm.c
+index 3398d17..72bceb4 100644
+--- a/sm/gpgsm.c
++++ b/sm/gpgsm.c
+@@ -862,6 +862,7 @@ parse_keyserver_line (char *line,
+     {
+       log_info (_("%s:%u: skipping this line\n"), filename, lineno);
+       keyserver_list_free (server);
++      server = NULL;
+     }
+ 
+   return server;
+-- 
+1.7.10.4
+

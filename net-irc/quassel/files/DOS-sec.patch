@@ -1,0 +1,318 @@
+diff --git a/src/core/corebasichandler.cpp b/src/core/corebasichandler.cpp
+index dfa8a99..fbfc76c 100644
+--- a/src/core/corebasichandler.cpp
++++ b/src/core/corebasichandler.cpp
+@@ -33,6 +33,9 @@ CoreBasicHandler::CoreBasicHandler(CoreNetwork *parent)
+     connect(this, SIGNAL(putCmd(QString, const QList<QByteArray> &, const QByteArray &)),
+         network(), SLOT(putCmd(QString, const QList<QByteArray> &, const QByteArray &)));
+ 
++    connect(this, SIGNAL(putCmd(QString, const QList<QList<QByteArray>> &, const QByteArray &)),
++        network(), SLOT(putCmd(QString, const QList<QList<QByteArray>> &, const QByteArray &)));
++
+     connect(this, SIGNAL(putRawLine(const QByteArray &)),
+         network(), SLOT(putRawLine(const QByteArray &)));
+ }
+diff --git a/src/core/corebasichandler.h b/src/core/corebasichandler.h
+index 20d057f..a4b5a7f 100644
+--- a/src/core/corebasichandler.h
++++ b/src/core/corebasichandler.h
+@@ -55,6 +55,7 @@ class CoreBasicHandler : public BasicHandler
+ signals:
+     void displayMsg(Message::Type, BufferInfo::Type, const QString &target, const QString &text, const QString &sender = "", Message::Flags flags = Message::None);
+     void putCmd(const QString &cmd, const QList<QByteArray> &params, const QByteArray &prefix = QByteArray());
++    void putCmd(const QString &cmd, const QList<QList<QByteArray>> &params, const QByteArray &prefix = QByteArray());
+     void putRawLine(const QByteArray &msg);
+ 
+ protected:
+diff --git a/src/core/corenetwork.cpp b/src/core/corenetwork.cpp
+index 7e9ce26..932af6f 100644
+--- a/src/core/corenetwork.cpp
++++ b/src/core/corenetwork.cpp
+@@ -284,6 +284,16 @@ void CoreNetwork::putCmd(const QString &cmd, const QList<QByteArray> &params, co
+ }
+ 
+ 
++void CoreNetwork::putCmd(const QString &cmd, const QList<QList<QByteArray>> &params, const QByteArray &prefix)
++{
++    QListIterator<QList<QByteArray>> i(params);
++    while (i.hasNext()) {
++        QList<QByteArray> msg = i.next();
++        putCmd(cmd, msg, prefix);
++    }
++}
++
++
+ void CoreNetwork::setChannelJoined(const QString &channel)
+ {
+     _autoWhoQueue.prepend(channel.toLower()); // prepend so this new chan is the first to be checked
+@@ -980,3 +990,79 @@ void CoreNetwork::requestSetNetworkInfo(const NetworkInfo &info)
+         }
+     }
+ }
++
++
++QList<QList<QByteArray>> CoreNetwork::splitMessage(const QString &cmd, const QString &message, std::function<QList<QByteArray>(QString &)> cmdGenerator)
++{
++    QString wrkMsg(message);
++    QList<QList<QByteArray>> msgsToSend;
++
++    // do while (wrkMsg.size() > 0)
++    do {
++        // First, check to see if the whole message can be sent at once.  The
++        // cmdGenerator function is passed in by the caller and is used to encode
++        // and encrypt (if applicable) the message, since different callers might
++        // want to use different encoding or encode different values.
++        int splitPos = wrkMsg.size();
++        QList<QByteArray> initialSplitMsgEnc = cmdGenerator(wrkMsg);
++        int initialOverrun = userInputHandler()->lastParamOverrun(cmd, initialSplitMsgEnc);
++
++        if (initialOverrun) {
++            // If the message was too long to be sent, first try splitting it along
++            // word boundaries with QTextBoundaryFinder.
++            QString splitMsg(wrkMsg);
++            QTextBoundaryFinder qtbf(QTextBoundaryFinder::Word, splitMsg);
++            qtbf.setPosition(initialSplitMsgEnc[1].size() - initialOverrun);
++            QList<QByteArray> splitMsgEnc;
++            int overrun = initialOverrun;
++
++            while (overrun) {
++                splitPos = qtbf.toPreviousBoundary();
++
++                // splitPos==-1 means the QTBF couldn't find a split point at all and
++                // splitPos==0 means the QTBF could only find a boundary at the beginning of
++                // the string.  Neither one of these works for us.
++                if (splitPos > 0) {
++                    // If a split point could be found, split the message there, calculate the
++                    // overrun, and continue with the loop.
++                    splitMsg = splitMsg.left(splitPos);
++                    splitMsgEnc = cmdGenerator(splitMsg);
++                    overrun = userInputHandler()->lastParamOverrun(cmd, splitMsgEnc);
++                }
++                else {
++                    // If a split point could not be found (the beginning of the message
++                    // is reached without finding a split point short enough to send) and we
++                    // are still in Word mode, switch to Grapheme mode.  We also need to restore
++                    // the full wrkMsg to splitMsg, since splitMsg may have been cut down during
++                    // the previous attempt to find a split point.
++                    if (qtbf.type() == QTextBoundaryFinder::Word) {
++                        splitMsg = wrkMsg;
++                        splitPos = splitMsg.size();
++                        QTextBoundaryFinder graphemeQtbf(QTextBoundaryFinder::Grapheme, splitMsg);
++                        graphemeQtbf.setPosition(initialSplitMsgEnc[1].size() - initialOverrun);
++                        qtbf = graphemeQtbf;
++                    }
++                    else {
++                        // If the QTBF fails to find a split point in Grapheme mode, we give up.
++                        // This should never happen, but it should be handled anyway.
++                        qWarning() << "Unexpected failure to split message!";
++                        return msgsToSend;
++                    }
++                }
++            }
++
++            // Once a message of sendable length has been found, remove it from the wrkMsg and
++            // add it to the list of messages to be sent.
++            wrkMsg.remove(0, splitPos);
++            msgsToSend.append(splitMsgEnc);
++        }
++        else{
++            // If the entire remaining message is short enough to be sent all at once, remove
++            // it from the wrkMsg and add it to the list of messages to be sent.
++            wrkMsg.remove(0, splitPos);
++            msgsToSend.append(initialSplitMsgEnc);
++        }
++    } while (wrkMsg.size() > 0);
++
++    return msgsToSend;
++}
+diff --git a/src/core/corenetwork.h b/src/core/corenetwork.h
+index 87121ba..05565a4 100644
+--- a/src/core/corenetwork.h
++++ b/src/core/corenetwork.h
+@@ -40,6 +40,8 @@
+ 
+ #include "coresession.h"
+ 
++#include <functional>
++
+ class CoreIdentity;
+ class CoreUserInputHandler;
+ class CoreIgnoreListManager;
+@@ -93,6 +95,8 @@ class CoreNetwork : public Network
+     inline quint16 localPort() const { return socket.localPort(); }
+     inline quint16 peerPort() const { return socket.peerPort(); }
+ 
++    QList<QList<QByteArray>> splitMessage(const QString &cmd, const QString &message, std::function<QList<QByteArray>(QString &)> cmdGenerator);
++
+ public slots:
+     virtual void setMyNick(const QString &mynick);
+ 
+@@ -112,6 +116,7 @@ public slots:
+     void userInput(BufferInfo bufferInfo, QString msg);
+     void putRawLine(QByteArray input);
+     void putCmd(const QString &cmd, const QList<QByteArray> &params, const QByteArray &prefix = QByteArray());
++    void putCmd(const QString &cmd, const QList<QList<QByteArray>> &params, const QByteArray &prefix = QByteArray());
+ 
+     void setChannelJoined(const QString &channel);
+     void setChannelParted(const QString &channel);
+diff --git a/src/core/coreuserinputhandler.cpp b/src/core/coreuserinputhandler.cpp
+index 33d1f67..72ac996 100644
+--- a/src/core/coreuserinputhandler.cpp
++++ b/src/core/coreuserinputhandler.cpp
+@@ -473,12 +473,16 @@ void CoreUserInputHandler::handleMsg(const BufferInfo &bufferInfo, const QString
+         return;
+ 
+     QString target = msg.section(' ', 0, 0);
+-    QByteArray encMsg = userEncode(target, msg.section(' ', 1));
++    QString msgSection = msg.section(' ', 1);
++
++    std::function<QByteArray(const QString &, const QString &)> encodeFunc = [this] (const QString &target, const QString &message) -> QByteArray {
++        return userEncode(target, message);
++    };
+ 
+ #ifdef HAVE_QCA2
+-    putPrivmsg(serverEncode(target), encMsg, network()->cipher(target));
++    putPrivmsg(target, msgSection, encodeFunc, network()->cipher(target));
+ #else
+-    putPrivmsg(serverEncode(target), encMsg);
++    putPrivmsg(target, msgSection, encodeFunc);
+ #endif
+ }
+ 
+@@ -594,11 +598,14 @@ void CoreUserInputHandler::handleSay(const BufferInfo &bufferInfo, const QString
+     if (bufferInfo.bufferName().isEmpty() || !bufferInfo.acceptsRegularMessages())
+         return;  // server buffer
+ 
+-    QByteArray encMsg = channelEncode(bufferInfo.bufferName(), msg);
++    std::function<QByteArray(const QString &, const QString &)> encodeFunc = [this] (const QString &target, const QString &message) -> QByteArray {
++        return channelEncode(target, message);
++    };
++
+ #ifdef HAVE_QCA2
+-    putPrivmsg(serverEncode(bufferInfo.bufferName()), encMsg, network()->cipher(bufferInfo.bufferName()));
++    putPrivmsg(bufferInfo.bufferName(), msg, encodeFunc, network()->cipher(bufferInfo.bufferName()));
+ #else
+-    putPrivmsg(serverEncode(bufferInfo.bufferName()), encMsg);
++    putPrivmsg(bufferInfo.bufferName(), msg, encodeFunc);
+ #endif
+     emit displayMsg(Message::Plain, bufferInfo.type(), bufferInfo.bufferName(), msg, network()->myNick(), Message::Self);
+ }
+@@ -763,56 +770,23 @@ void CoreUserInputHandler::defaultHandler(QString cmd, const BufferInfo &bufferI
+ }
+ 
+ 
+-void CoreUserInputHandler::putPrivmsg(const QByteArray &target, const QByteArray &message, Cipher *cipher)
++void CoreUserInputHandler::putPrivmsg(const QString &target, const QString &message, std::function<QByteArray(const QString &, const QString &)> encodeFunc, Cipher *cipher)
+ {
+-    // Encrypted messages need special care. There's no clear relation between cleartext and encrypted message length,
+-    // so we can't just compute the maxSplitPos. Instead, we need to loop through the splitpoints until the crypted
+-    // version is short enough...
+-    // TODO: check out how the various possible encryption methods behave length-wise and make
+-    //       this clean by predicting the length of the crypted msg.
+-    //       For example, blowfish-ebc seems to create 8-char chunks.
++    QString cmd("PRIVMSG");
++    QByteArray targetEnc = serverEncode(target);
+ 
+-    static const char *cmd = "PRIVMSG";
+-    static const char *splitter = " .,-!?";
++    std::function<QList<QByteArray>(QString &)> cmdGenerator = [&] (QString &splitMsg) -> QList<QByteArray> {
++        QByteArray splitMsgEnc = encodeFunc(target, splitMsg);
+ 
+-    int maxSplitPos = message.count();
+-    int splitPos = maxSplitPos;
+-    forever {
+-        QByteArray crypted = message.left(splitPos);
+-        bool isEncrypted = false;
+ #ifdef HAVE_QCA2
+-        if (cipher && !cipher->key().isEmpty() && !message.isEmpty()) {
+-            isEncrypted = cipher->encrypt(crypted);
++        if (cipher && !cipher->key().isEmpty() && !splitMsg.isEmpty()) {
++            cipher->encrypt(splitMsgEnc);
+         }
+ #endif
+-        int overrun = lastParamOverrun(cmd, QList<QByteArray>() << target << crypted);
+-        if (overrun) {
+-            // In case this is not an encrypted msg, we can just cut off at the end
+-            if (!isEncrypted)
+-                maxSplitPos = message.count() - overrun;
+-
+-            splitPos = -1;
+-            for (const char *splitChar = splitter; *splitChar != 0; splitChar++) {
+-                splitPos = qMax(splitPos, message.lastIndexOf(*splitChar, maxSplitPos) + 1); // keep split char on old line
+-            }
+-            if (splitPos <= 0 || splitPos > maxSplitPos)
+-                splitPos = maxSplitPos;
+-
+-            maxSplitPos = splitPos - 1;
+-            if (maxSplitPos <= 0) { // this should never happen, but who knows...
+-                qWarning() << tr("[Error] Could not encrypt your message: %1").arg(message.data());
+-                return;
+-            }
+-            continue; // we never come back here for !encrypted!
+-        }
+-
+-        // now we have found a valid splitpos (or didn't need to split to begin with)
+-        putCmd(cmd, QList<QByteArray>() << target << crypted);
+-        if (splitPos < message.count())
+-            putPrivmsg(target, message.mid(splitPos), cipher);
++        return QList<QByteArray>() << targetEnc << splitMsgEnc;
++    };
+ 
+-        return;
+-    }
++    putCmd(cmd, network()->splitMessage(cmd, message, cmdGenerator));
+ }
+ 
+ 
+diff --git a/src/core/coreuserinputhandler.h b/src/core/coreuserinputhandler.h
+index 69a429e..6e69ce6 100644
+--- a/src/core/coreuserinputhandler.h
++++ b/src/core/coreuserinputhandler.h
+@@ -88,7 +88,7 @@ public slots:
+ private:
+     void doMode(const BufferInfo& bufferInfo, const QChar &addOrRemove, const QChar &mode, const QString &nickList);
+     void banOrUnban(const BufferInfo &bufferInfo, const QString &text, bool ban);
+-    void putPrivmsg(const QByteArray &target, const QByteArray &message, Cipher *cipher = 0);
++    void putPrivmsg(const QString &target, const QString &message, std::function<QByteArray(const QString &, const QString &)> encodeFunc, Cipher *cipher = 0);
+ 
+ #ifdef HAVE_QCA2
+     QByteArray encrypt(const QString &target, const QByteArray &message, bool *didEncrypt = 0) const;
+diff --git a/src/core/ctcpparser.cpp b/src/core/ctcpparser.cpp
+index fba3d13..37b0af3 100644
+--- a/src/core/ctcpparser.cpp
++++ b/src/core/ctcpparser.cpp
+@@ -312,29 +312,13 @@ QByteArray CtcpParser::pack(const QByteArray &ctcpTag, const QByteArray &message
+ 
+ void CtcpParser::query(CoreNetwork *net, const QString &bufname, const QString &ctcpTag, const QString &message)
+ {
+-    QList<QByteArray> params;
+-    params << net->serverEncode(bufname) << lowLevelQuote(pack(net->serverEncode(ctcpTag), net->userEncode(bufname, message)));
+-
+-    static const char *splitter = " .,-!?";
+-    int maxSplitPos = message.count();
+-    int splitPos = maxSplitPos;
++    QString cmd("PRIVMSG");
+ 
+-    int overrun = net->userInputHandler()->lastParamOverrun("PRIVMSG", params);
+-    if (overrun) {
+-        maxSplitPos = message.count() - overrun -2;
+-        splitPos = -1;
+-        for (const char *splitChar = splitter; *splitChar != 0; splitChar++) {
+-            splitPos = qMax(splitPos, message.lastIndexOf(*splitChar, maxSplitPos) + 1); // keep split char on old line
+-        }
+-        if (splitPos <= 0 || splitPos > maxSplitPos)
+-            splitPos = maxSplitPos;
+-
+-        params = params.mid(0, 1) <<  lowLevelQuote(pack(net->serverEncode(ctcpTag), net->userEncode(bufname, message.left(splitPos))));
+-    }
+-    net->putCmd("PRIVMSG", params);
++    std::function<QList<QByteArray>(QString &)> cmdGenerator = [&] (QString &splitMsg) -> QList<QByteArray> {
++        return QList<QByteArray>() << net->serverEncode(bufname) << lowLevelQuote(pack(net->serverEncode(ctcpTag), net->userEncode(bufname, splitMsg)));
++    };
+ 
+-    if (splitPos < message.count())
+-        query(net, bufname, ctcpTag, message.mid(splitPos));
++    net->putCmd(cmd, net->splitMessage(cmd, message, cmdGenerator));
+ }
+ 
+ 

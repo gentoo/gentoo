@@ -1,0 +1,337 @@
+# ChangeLog for media-gfx/transfig
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/transfig/ChangeLog,v 1.82 2014/12/01 09:14:05 ago Exp $
+
+  01 Dec 2014; Agostino Sarubbo <ago@gentoo.org> transfig-3.2.5e.ebuild:
+  Stable for sparc, wrt bug #297379
+
+  13 Nov 2014; Tobias Klausmann <klausman@gentoo.org> transfig-3.2.5e.ebuild:
+  Stable on alpha, bug 297379
+
+  10 Nov 2014; Agostino Sarubbo <ago@gentoo.org> transfig-3.2.5e.ebuild:
+  Stable for ppc64, wrt bug #297379
+
+  10 Nov 2014; Agostino Sarubbo <ago@gentoo.org> transfig-3.2.5e.ebuild:
+  Stable for ppc, wrt bug #297379
+
+  08 Nov 2014; Agostino Sarubbo <ago@gentoo.org> transfig-3.2.5e.ebuild:
+  Stable for x86, wrt bug #297379
+
+  08 Nov 2014; Agostino Sarubbo <ago@gentoo.org> transfig-3.2.5e.ebuild:
+  Stable for amd64, wrt bug #297379
+
+*transfig-3.2.5e (08 Jun 2014)
+
+  08 Jun 2014; Peter Volkov <pva@gentoo.org> +transfig-3.2.5e.ebuild,
+  +files/transfig-3.2.5e-fprintf_format_warnings.patch,
+  +files/transfig-3.2.5e-man-hyphen.patch, +files/transfig-3.2.5e-typos.patch,
+  metadata.xml:
+  Version bump, bug #487710, thank Martin Walch for report.
+
+  30 Apr 2013; Christoph Junghans <ottxor@gentoo.org> transfig-3.2.5d-r1.ebuild:
+  added ~arm (tested by me)
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> -transfig-3.2.5d.ebuild,
+  metadata.xml:
+  Cleanup due bug #96436
+
+  08 Jun 2012; Zac Medico <zmedico@gentoo.org> transfig-3.2.5d-r1.ebuild,
+  transfig-3.2.5d.ebuild:
+  inherit multilib for get_libdir
+
+  23 Oct 2011; Fabian Groffen <grobian@gentoo.org>
+  +files/transfig-3.2.5-solaris.patch, transfig-3.2.5d-r1.ebuild:
+  Add patch to fix compilation on Darwin and Solaris, added Prefix keywords, bug
+  #353408
+
+  21 Sep 2011; Jeroen Roovers <jer@gentoo.org> transfig-3.2.5d-r1.ebuild:
+  Stable for HPPA (bug #372595).
+
+  24 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  transfig-3.2.5d-r1.ebuild:
+  ppc64 stable wrt #372595
+
+  23 Jul 2011; Raúl Porcel <armin76@gentoo.org> transfig-3.2.5d-r1.ebuild:
+  alpha/ia64/sparc stable wrt #372595
+
+  15 Jul 2011; Markus Meier <maekke@gentoo.org> transfig-3.2.5d-r1.ebuild:
+  x86 stable, bug #372595
+
+  27 Jun 2011; Brent Baude <ranger@gentoo.org> transfig-3.2.5d-r1.ebuild:
+  Marking transfig-3.2.5d-r1 ppc for bug 372595
+
+  26 Jun 2011; Markos Chandras <hwoarang@gentoo.org> transfig-3.2.5d-r1.ebuild:
+  Stable on amd64 wrt bug #372595
+
+  13 May 2011; Peter Volkov <pva@gentoo.org>
+  +files/transfig-3.2.5d-fig2mpdf.patch:
+  Revert patch that is still in use, bug #366041, thank Don A. Bailey for
+  report.
+
+*transfig-3.2.5d-r1 (01 May 2011)
+
+  01 May 2011; Peter Volkov <pva@gentoo.org> -transfig-3.2.5-r2.ebuild,
+  -files/transfig-3.2.5-SetFigFont-params.patch,
+  -files/transfig-3.2.5-arrows-and-QA.patch,
+  -files/transfig-3.2.5-displaywho.patch,
+  -files/transfig-3.2.5-fig2ps2tex_bashisms.patch,
+  -files/transfig-3.2.5-imagemap.patch, -files/transfig-3.2.5-locale.patch,
+  -transfig-3.2.5c.ebuild, -files/transfig-3.2.5c-avoid_warnings.patch,
+  -files/transfig-3.2.5c-cups_workaround.patch,
+  -files/transfig-3.2.5c-fig2mpdf.patch, +transfig-3.2.5d-r1.ebuild,
+  +files/transfig-3.2.5d-MAXWIDTH.patch, -files/transfig-3.2.5d-fig2mpdf.patch,
+  +files/transfig-3.2.5d-fig2mpdf-r1.patch,
+  +files/transfig-3.2.5d-leadspace.patch,
+  +files/transfig-3.2.5d-libpng-1.5.patch,
+  +files/transfig-3.2.5d-precision.patch:
+  Update to EAPI=4 and incorportage some prefix changes, bug #353408, thank
+  Jeremy Olexa for report. Fix build issue with libpng-1.5, bug #356751 thank
+  Alexis Ballier for the patch. Added debian fixes: update fig2mpdf patch to
+  use list of layers instead of range of layers; leadspace patch to aoid wrong
+  leading spaces in PIC text; precision to change the precision of PIC floating
+  point output from %.2f to %.3f; MAXWIDTH to increasese MAXWIDTH of embedded
+  images from 8K to 16K. Drop old.
+
+  09 Jan 2011; Brent Baude <ranger@gentoo.org> transfig-3.2.5d.ebuild:
+  Marking transfig-3.2.5d ppc for bug 348344
+
+  27 Dec 2010; Brent Baude <ranger@gentoo.org> transfig-3.2.5d.ebuild:
+  Marking transfig-3.2.5d ppc64 for bug 348344
+
+  25 Dec 2010; Jeroen Roovers <jer@gentoo.org> transfig-3.2.5d.ebuild:
+  Stable for HPPA (bug #348344).
+
+  25 Dec 2010; Raúl Porcel <armin76@gentoo.org> transfig-3.2.5d.ebuild:
+  ia64/sparc stable wrt #348344
+
+  21 Dec 2010; Tobias Klausmann <klausman@gentoo.org> transfig-3.2.5d.ebuild:
+  Stable on alpha, bug #348344
+
+  21 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  transfig-3.2.5d.ebuild:
+  x86 stable wrt security bug #348344
+
+  21 Dec 2010; Peter Volkov <pva@gentoo.org> transfig-3.2.5d.ebuild:
+  amd64 stable, bug #348344, thank Agostino Sarubbo for testing.
+
+  24 Nov 2010; Peter Volkov <pva@gentoo.org> transfig-3.2.5-r2.ebuild,
+  transfig-3.2.5c.ebuild, transfig-3.2.5d.ebuild:
+  Updated jpeg dependencies on virtual/jpeg, thank Andre for report.
+
+*transfig-3.2.5d (28 Sep 2010)
+
+  28 Sep 2010; Peter Volkov <pva@gentoo.org> +transfig-3.2.5d.ebuild,
+  +files/transfig-3.2.5d-fig2mpdf.patch:
+  Version bump. Use POSIX shell compatible fig2ps2tex.sh to avoid dependency
+  on tcsh, bug #338295, thank Nathan Phillip Brink (ohnobinki) for report.
+
+  31 Jan 2010; Markus Meier <maekke@gentoo.org> transfig-3.2.5c.ebuild:
+  amd64 stable, bug #264575
+
+  24 Jan 2010; Raúl Porcel <armin76@gentoo.org> transfig-3.2.5c.ebuild:
+  alpha/ia64/sparc stable wrt #264575
+
+  23 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  transfig-3.2.5c.ebuild:
+  stable x86, security bug 264575
+
+  23 Jan 2010; Brent Baude <ranger@gentoo.org> transfig-3.2.5c.ebuild:
+  Marking transfig-3.2.5c ppc64 for bug 264575
+
+*transfig-3.2.5c (14 Jan 2010)
+
+  14 Jan 2010; Peter Volkov <pva@gentoo.org> +transfig-3.2.5c.ebuild,
+  +files/transfig-3.2.5c-avoid_warnings.patch,
+  +files/transfig-3.2.5c-cups_workaround.patch,
+  +files/transfig-3.2.5c-fig2mpdf.patch,
+  +files/transfig-3.2.5c-maxfontsize.patch:
+  Version bump. Added workaround for printing with cups, fig2mpdf-1.1.2
+  patch is separated in two parts to ease applying Debian typo fixes into
+  manual.
+
+  02 Dec 2008; Brent Baude <ranger@gentoo.org> transfig-3.2.5-r2.ebuild:
+  Marking transfig-3.2.5-r2 ppc64 for bug 244957
+
+  03 Nov 2008; Raúl Porcel <armin76@gentoo.org> transfig-3.2.5-r2.ebuild:
+  alpha/ia64/sparc stable wrt #244957
+
+  02 Nov 2008; Markus Meier <maekke@gentoo.org> transfig-3.2.5-r2.ebuild:
+  amd64/x86 stable, bug #244957
+
+  01 Nov 2008; nixnut <nixnut@gentoo.org> transfig-3.2.5-r2.ebuild:
+  Stable on ppc wrt bug 244957
+
+  30 Oct 2008; Jeroen Roovers <jer@gentoo.org> transfig-3.2.5-r2.ebuild:
+  Stable for HPPA (bug #244957).
+
+*transfig-3.2.5-r2 (27 Aug 2008)
+
+  27 Aug 2008; Peter Volkov <pva@gentoo.org>
+  +files/transfig-3.2.5-SetFigFont-params.patch,
+  +files/transfig-3.2.5-arrows-and-QA.patch,
+  +files/transfig-3.2.5-displaywho.patch,
+  +files/transfig-3.2.5-fig2ps2tex_bashisms.patch,
+  +files/transfig-3.2.5-imagemap.patch, +files/transfig-3.2.5-locale.patch,
+  +files/transfig-ru_RU.CP1251.ps, +files/transfig-ru_RU.KOI8-R.ps,
+  +files/transfig-uk_UA.KOI8-U.ps, +transfig-3.2.5-r2.ebuild:
+  Fix export of arrows into PNG, bug #235348, thank renean AT gmx.de for
+  report. Backported misc debian patches, see patches itself for
+  descriptions.
+
+*transfig-3.2.5-r1 (11 May 2008)
+
+  11 May 2008; Peter Volkov <pva@gentoo.org>
+  -files/transfig-3.2.4-gcc-3.3.patch, -files/transfig-3.2.4.patch,
+  -transfig-3.2.4-r2.ebuild, +transfig-3.2.5-r1.ebuild:
+  Removed executalbe permission and fixed location of misc files which are
+  installed into XFIGLIBDIR, bug #221243 thank Volkmar Glauche for report.
+
+  22 Jul 2007; <pva@gentoo.org> transfig-3.2.4-r2.ebuild,
+  transfig-3.2.5.ebuild:
+  Removed virtual/x11 dependency.
+
+  27 Jun 2007; <pva@gentoo.org> -files/transfig-3.2.3d.patch,
+  -transfig-3.2.3d-r1.ebuild, -transfig-3.2.4-r1.ebuild:
+  Cleaning old ebuilds.
+
+  27 Jun 2007; Markus Rothe <corsair@gentoo.org> transfig-3.2.5.ebuild:
+  Stable on ppc64; bug #183040
+
+  26 Jun 2007; Lars Weiler <pylon@gentoo.org> transfig-3.2.5.ebuild:
+  Stable on ppc; bug #183040.
+
+  25 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org> transfig-3.2.5.ebuild:
+  Stable on sparc wrt #183040
+
+  25 Jun 2007; Raúl Porcel <armin76@gentoo.org> transfig-3.2.5.ebuild:
+  alpha/ia64/x86 stable wrt #183040
+
+  24 Jun 2007; Jeroen Roovers <jer@gentoo.org> transfig-3.2.5.ebuild:
+  Stable for HPPA (bug #183040).
+
+  24 Jun 2007; Christoph Mende <angelos@gentoo.org> transfig-3.2.5.ebuild:
+  Stable on amd64 wrt bug 183040
+
+  05 Apr 2007; <pva@gentoo.org> metadata.xml:
+  Added myself to metadata - do not want to miss bugs.
+
+*transfig-3.2.5 (02 Apr 2007)
+
+  02 Apr 2007; <pva@gentoo.org> transfig-3.2.4-r2.ebuild,
+  +transfig-3.2.5.ebuild:
+  Version bump. Droped ppc-macos keyword, see media-libs/jpeg ChangeLog.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  02 Sep 2006; Jeroen Roovers <jer@gentoo.org> transfig-3.2.4-r2.ebuild:
+  Stable for HPPA (bug #140903).
+
+  05 Aug 2006; Jason Wever <weeve@gentoo.org> transfig-3.2.4-r2.ebuild:
+  Stable on SPARC wrt bug #140903.
+
+  03 Aug 2006; Joshua Jackson <tsunam@gentoo.org> transfig-3.2.4-r2.ebuild:
+  Stable x86; bug #140903
+
+  13 Jul 2006; Aron Griffis <agriffis@gentoo.org> transfig-3.2.4-r2.ebuild:
+  Mark 3.2.4-r2 stable on ia64
+
+  08 Jul 2006; Lars Weiler <pylon@gentoo.org> transfig-3.2.4-r2.ebuild:
+  Stable on ppc; gcc-4 related; bug #138099.
+
+  29 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  transfig-3.2.4-r2.ebuild:
+  Respect CFLAGS and LDFLAGS.
+
+  28 Mar 2006; <malverian@gentoo.org> transfig-3.2.4-r2.ebuild:
+  Add proper dependencies for modular xorg. Thanks to Andy Kittner in bug #123073
+
+  22 Mar 2006; Aron Griffis <agriffis@gentoo.org> transfig-3.2.4-r2.ebuild:
+  Mark 3.2.4-r2 ~ia64
+
+  18 Jan 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  transfig-3.2.4-r2.ebuild:
+  Fix dependencies for modular X.
+
+  31 Oct 2005; Fabian Groffen <grobian@gentoo.org> transfig-3.2.4-r2.ebuild:
+  Also apply GGC3.3 patch for GCC4.  Allows compilation on ppc-macos, marked
+  ~ppc-macos (bug #110948)
+
+  13 Sep 2005; Aron Griffis <agriffis@gentoo.org> transfig-3.2.4-r2.ebuild:
+  Mark 3.2.4-r2 stable on alpha
+
+  30 May 2005; Sven Wegener <swegener@gentoo.org> transfig-3.2.4-r1.ebuild,
+  transfig-3.2.4-r2.ebuild:
+  Moved from gcc.eclass to toolchain-funcs.eclass, bug #92745.
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> transfig-3.2.4-r2.ebuild:
+  Stable on ppc64
+
+  01 Nov 2004; Markus Rothe <corsair@gentoo.org> transfig-3.2.4-r2.ebuild:
+  Marked ~ppc64
+
+  01 Nov 2004; Markus Rothe <corsair@gentoo.org> transfig-3.2.4-r1.ebuild:
+  Marked ~ppc64; bug #66756
+
+  06 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  transfig-3.2.4-r2.ebuild:
+  multilib fixes.
+
+*transfig-3.2.4-r2 (02 Sep 2004)
+
+  02 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> +transfig-3.2.4-r2.ebuild:
+  Added shapepatch. Thanks to Geoffrey <geoffrey@andrews.edu>, see bug #20877.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> transfig-3.2.4-r1.ebuild:
+  Add inherit eutils
+
+  05 Dec 2003; Jason Wever <weeve@gentoo.org> transfig-3.2.4-r1.ebuild:
+  Marked stable on sparc.
+
+*transfig-3.2.4-r1 (18 Apr 2003)
+
+  06 Nov 2003; Philip Walls <malverian@gentoo.org> files/transfig-3.2.4.patch :
+  Fixes emerge -K problems, Xpm support, and png support. Thanks to 
+  splite (splite-gentoo@sigint.cs.purdue.edu) for patch. closes #25076
+
+  01 Jul 2003; Guy Martin <gmsoft@gentoo.org> transfig-3.2.4-r1.ebuild
+  Added hppa to KEYWORDS.
+
+  21 Jul 2003; Will Woods <wwoods@gentoo.org> transfig-3.2.4-r1.ebuild:
+  Marked stable for alpha
+
+  24 Jun 2003; Luca Barbato <lu_zero@gentoo.org> transfig-3.2.4-r1.ebuild:
+  Fixed gcc-3.3 problems.
+
+  10 May 2003; Jason Wever <weeve@gentoo.org> transfig-3.2.4-r1.ebuild:
+  Added ~sparc to keywords.
+
+  18 Apr 2003; Philip Walls <malverian@gentoo.org> transfig-3.2.4.ebuild
+  files/transfig-3.2.4.patch :
+  Stopped from installing into /usr/local
+  Fixes bug #18983
+
+*transfig-3.2.4 (08 Jan 2003)
+
+  08 Jan 2003; Martin Holzer <mholzer@gentoo.org> transfig-3.2.4.ebuild 
+  files/digest-transfig-3.2.4 ChangeLog :
+  Version bumped.
+
+*transfig-3.2.3d-r1 (12 Apr 2002)
+
+  7 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
+
+  12 Apr 2002; Seemant Kulleen <seemant@gentoo.org> transfig-3.2.3d-r1.ebuild :
+
+  Added Description, and compile against newer libpng
+
+*transfig-3.2.3d (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

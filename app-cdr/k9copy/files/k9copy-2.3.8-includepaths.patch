@@ -1,0 +1,182 @@
+libavutil/time.h in recent ffmpeg versions pollute the includes.
+include libav* headers correcly.
+https://bugs.gentoo.org/show_bug.cgi?id=459980
+same as for backlite
+
+Index: k9copy-2.3.8-Source/cmake/FindAvcodec.cmake
+===================================================================
+--- k9copy-2.3.8-Source.orig/cmake/FindAvcodec.cmake
++++ k9copy-2.3.8-Source/cmake/FindAvcodec.cmake
+@@ -10,11 +10,11 @@ IF (AVCODEC_INCLUDE_DIR_FF)
+ ELSE (AVCODEC_INCLUDE_DIR_FF)
+       FIND_PATH(AVCODEC_INCLUDE_DIR_LAVC "libavcodec/avcodec.h" PATHS)
+       IF (AVCODEC_INCLUDE_DIR_LAVC)
+-          SET (AVCODEC_INCLUDE_DIR "${AVCODEC_INCLUDE_DIR_LAVC}/libavcodec")
++          SET (AVCODEC_INCLUDE_DIR "${AVCODEC_INCLUDE_DIR_LAVC}")
+       ELSE (AVCODEC_INCLUDE_DIR_LAVC)
+ 	  FIND_PATH(AVCODEC_INCLUDE_DIR_FF_LAVC "ffmpeg/libavcodec/avcodec.h" PATHS)
+ 	  IF (AVCODEC_INCLUDE_DIR_FF_LAVC)
+-	    SET (AVCODEC_INCLUDE_DIR "${AVCODEC_INCLUDE_DIR_FF_LAVC}/ffmpeg/libavcodec")
++	    SET (AVCODEC_INCLUDE_DIR "${AVCODEC_INCLUDE_DIR_FF_LAVC}/ffmpeg")
+ 	    SET (FFMPEG_INCLUDE_DIR "${AVCODEC_INCLUDE_DIR_FF_LAVC}/ffmpeg")
+ 	  ENDIF (AVCODEC_INCLUDE_DIR_FF_LAVC)
+       ENDIF (AVCODEC_INCLUDE_DIR_LAVC)
+@@ -35,4 +35,4 @@ IF (INC_FOUND)
+ ELSE (INC_FOUND)
+       MESSAGE(FATAL_ERROR "Could not find ${_lib}")
+ ENDIF (INC_FOUND)
+-ENDMACRO (FINDAVCODEC _lib )
+\ No newline at end of file
++ENDMACRO (FINDAVCODEC _lib )
+Index: k9copy-2.3.8-Source/cmake/FindAvformat.cmake
+===================================================================
+--- k9copy-2.3.8-Source.orig/cmake/FindAvformat.cmake
++++ k9copy-2.3.8-Source/cmake/FindAvformat.cmake
+@@ -6,11 +6,11 @@ IF (AVFORMAT_INCLUDE_DIR_FF)
+ ELSE (AVFORMAT_INCLUDE_DIR_FF)
+       FIND_PATH(AVFORMAT_INCLUDE_DIR_LAVC "libavformat/avformat.h" PATHS)
+       IF (AVFORMAT_INCLUDE_DIR_LAVC)
+-          SET (AVFORMAT_INCLUDE_DIR "${AVFORMAT_INCLUDE_DIR_LAVC}/libavformat")
++          SET (AVFORMAT_INCLUDE_DIR "${AVFORMAT_INCLUDE_DIR_LAVC}")
+       ELSE (AVFORMAT_INCLUDE_DIR_LAVC)
+ 	  FIND_PATH(AVFORMAT_INCLUDE_DIR_FF_LAVF "ffmpeg/libavformat/avformat.h" PATHS)
+ 	  IF (AVFORMAT_INCLUDE_DIR_FF_LAVF)
+-	    SET (AVFORMAT_INCLUDE_DIR "${AVFORMAT_INCLUDE_DIR_FF_LAVF}/ffmpeg/libavformat")
++	    SET (AVFORMAT_INCLUDE_DIR "${AVFORMAT_INCLUDE_DIR_FF_LAVF}/ffmpeg")
+ 	  ENDIF (AVFORMAT_INCLUDE_DIR_FF_LAVF)
+       ENDIF (AVFORMAT_INCLUDE_DIR_LAVC)
+ ENDIF (AVFORMAT_INCLUDE_DIR_FF)
+@@ -32,4 +32,4 @@ IF (INC_FOUND)
+ ELSE (INC_FOUND)
+       MESSAGE(FATAL_ERROR "Could not find ${_lib}")
+ ENDIF (INC_FOUND)
+-ENDMACRO (FINDAVFORMAT _lib )
+\ No newline at end of file
++ENDMACRO (FINDAVFORMAT _lib )
+Index: k9copy-2.3.8-Source/cmake/FindAvutil.cmake
+===================================================================
+--- k9copy-2.3.8-Source.orig/cmake/FindAvutil.cmake
++++ k9copy-2.3.8-Source/cmake/FindAvutil.cmake
+@@ -6,11 +6,11 @@ IF (AVUTIL_INCLUDE_DIR_FF)
+ ELSE (AVUTIL_INCLUDE_DIR_FF)
+       FIND_PATH(AVUTIL_INCLUDE_DIR_LAVC "libavutil/avutil.h" PATHS)
+       IF (AVUTIL_INCLUDE_DIR_LAVC)
+-          SET (AVUTIL_INCLUDE_DIR "${AVUTIL_INCLUDE_DIR_LAVC}/libavutil")
++          SET (AVUTIL_INCLUDE_DIR "${AVUTIL_INCLUDE_DIR_LAVC}")
+       ELSE (AVUTIL_INCLUDE_DIR_LAVC)
+ 	  FIND_PATH(AVUTIL_INCLUDE_DIR_FF_LAVF "ffmpeg/libavutil/avutil.h" PATHS)
+ 	  IF (AVUTIL_INCLUDE_DIR_FF_LAVF)
+-	    SET (AVUTIL_INCLUDE_DIR "${AVUTIL_INCLUDE_DIR_FF_LAVF}/ffmpeg/libavutil")
++	    SET (AVUTIL_INCLUDE_DIR "${AVUTIL_INCLUDE_DIR_FF_LAVF}/ffmpeg")
+ 	  ENDIF (AVUTIL_INCLUDE_DIR_FF_LAVF)
+       ENDIF (AVUTIL_INCLUDE_DIR_LAVC)
+ ENDIF (AVUTIL_INCLUDE_DIR_FF)
+@@ -32,4 +32,4 @@ IF (INC_FOUND)
+ ELSE (INC_FOUND)
+       MESSAGE(FATAL_ERROR "Could not find ${_lib}")
+ ENDIF (INC_FOUND)
+-ENDMACRO (FINDAVUTIL _lib )
+\ No newline at end of file
++ENDMACRO (FINDAVUTIL _lib )
+Index: k9copy-2.3.8-Source/cmake/FindFFmpegScale.cmake
+===================================================================
+--- k9copy-2.3.8-Source.orig/cmake/FindFFmpegScale.cmake
++++ k9copy-2.3.8-Source/cmake/FindFFmpegScale.cmake
+@@ -7,11 +7,11 @@ IF (FFMPEGSCALE_INCLUDE_DIR_FF)
+ ELSE (FFMPEGSCALE_INCLUDE_DIR_FF)
+       FIND_PATH(FFMPEGSCALE_INCLUDE_DIR_LAVC "libswscale/swscale.h" PATHS)
+       IF (FFMPEGSCALE_INCLUDE_DIR_LAVC)
+-          SET (FFMPEGSCALE_INCLUDE_DIR "${FFMPEGSCALE_INCLUDE_DIR_LAVC}/libswscale")
++          SET (FFMPEGSCALE_INCLUDE_DIR "${FFMPEGSCALE_INCLUDE_DIR_LAVC}")
+       ELSE (FFMPEGSCALE_INCLUDE_DIR_LAVC)
+ 	  FIND_PATH(FFMPEGSCALE_INCLUDE_DIR_FF_SCAL "ffmpeg/libswscale/swscale.h" PATHS)
+ 	  IF (FFMPEGSCALE_INCLUDE_DIR_FF_SCAL)
+-	    SET (FFMPEGSCALE_INCLUDE_DIR "${FFMPEGSCALE_INCLUDE_DIR_FF_SCAL}/ffmpeg/libswscale")
++	    SET (FFMPEGSCALE_INCLUDE_DIR "${FFMPEGSCALE_INCLUDE_DIR_FF_SCAL}/ffmpeg")
+ 	  ENDIF (FFMPEGSCALE_INCLUDE_DIR_FF_SCAL)
+       ENDIF (FFMPEGSCALE_INCLUDE_DIR_LAVC)
+ ENDIF (FFMPEGSCALE_INCLUDE_DIR_FF)
+@@ -34,4 +34,4 @@ ELSE (HAVE_SWSCALE)
+       MESSAGE(STATUS "k9copy will be built without swscale support")
+       #MESSAGE(FATAL_ERROR "Could not find ${_lib}")
+ ENDIF (HAVE_SWSCALE)
+-ENDMACRO (FINDFFMPEGSCALE _lib )
+\ No newline at end of file
++ENDMACRO (FINDFFMPEGSCALE _lib )
+Index: k9copy-2.3.8-Source/src/import/k9avidecode.cpp
+===================================================================
+--- k9copy-2.3.8-Source.orig/src/import/k9avidecode.cpp
++++ k9copy-2.3.8-Source/src/import/k9avidecode.cpp
+@@ -10,14 +10,14 @@
+ //
+ //
+ #include "k9avidecode.h"
+-#include <avcodec.h>
++#include <libavcodec/avcodec.h>
+ #include <qimage.h>
+ #include <dlfcn.h>
+ #include "k9common.h"
+ 
+ #ifdef HAVE_SWSCALE
+ 
+-#include "swscale.h"
++#include <libswscale/swscale.h>
+ 
+ static int sws_flags = SWS_BICUBIC;
+ 
+Index: k9copy-2.3.8-Source/src/import/k9avidecode.h
+===================================================================
+--- k9copy-2.3.8-Source.orig/src/import/k9avidecode.h
++++ k9copy-2.3.8-Source/src/import/k9avidecode.h
+@@ -14,13 +14,13 @@
+ 
+ #include "k9common.h"
+ #include <qobject.h>
+-#include <avformat.h>
+-#include <avutil.h>
++#include <libavformat/avformat.h>
++#include <libavutil/avutil.h>
+ #include <qimage.h>
+ #include <cstdlib>
+ #include <QObject>
+ #ifdef HAVE_SWSCALE
+-#include <swscale.h>
++#include <libswscale/swscale.h>
+ #endif
+ /**
+ 	@author Jean-Michel PETIT <k9copy@free.fr>
+Index: k9copy-2.3.8-Source/src/vamps/k9ffmpeg.cpp
+===================================================================
+--- k9copy-2.3.8-Source.orig/src/vamps/k9ffmpeg.cpp
++++ k9copy-2.3.8-Source/src/vamps/k9ffmpeg.cpp
+@@ -12,7 +12,7 @@
+ #include "k9common.h"
+ #include "k9ffmpeg.h"
+ #ifdef HAVE_SWSCALE
+-#include "swscale.h"
++#include <libswscale/swscale.h>
+ #endif
+ #include <dlfcn.h>
+ #include <klocale.h>
+Index: k9copy-2.3.8-Source/src/vamps/k9ffmpeg.h
+===================================================================
+--- k9copy-2.3.8-Source.orig/src/vamps/k9ffmpeg.h
++++ k9copy-2.3.8-Source/src/vamps/k9ffmpeg.h
+@@ -13,12 +13,12 @@
+ #define K9FFMPEG_H
+ 
+ #include <QString>
+-#include <avcodec.h>
+-#include <avformat.h>
+-#include <avutil.h>
+-#include <avio.h>
++#include <libavcodec/avcodec.h>
++#include <libavformat/avformat.h>
++#include <libavutil/avutil.h>
++#include <libavformat/avio.h>
+ #ifdef HAVE_SWSCALE
+-#include <swscale.h>
++#include <libswscale/swscale.h>
+ #endif
+ /**
+ 	@author Jean-Michel PETIT <k9copy@free.fr>

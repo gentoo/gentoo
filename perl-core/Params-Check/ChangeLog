@@ -1,0 +1,142 @@
+# ChangeLog for perl-core/Params-Check
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/perl-core/Params-Check/ChangeLog,v 1.35 2015/06/08 20:37:49 dilfridge Exp $
+
+  08 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -Params-Check-0.360.0-r1.ebuild:
+  Remove old
+
+*Params-Check-0.380.0-r1 (26 Jul 2014)
+*Params-Check-0.360.0-r1 (26 Jul 2014)
+
+  26 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Params-Check-0.360.0-r1.ebuild, +Params-Check-0.380.0-r1.ebuild,
+  -Params-Check-0.360.0.ebuild, -Params-Check-0.380.0.ebuild:
+  EAPI bump
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org> Params-Check-0.360.0.ebuild,
+  Params-Check-0.380.0.ebuild:
+  Add arm64 love.
+
+  17 Jan 2014; Mike Frysinger <vapier@gentoo.org> Params-Check-0.360.0.ebuild:
+  Mark m68k stable.
+
+  31 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> -Params-Check-0.26.ebuild,
+  -Params-Check-0.280.0.ebuild, -Params-Check-0.300.0.ebuild,
+  -Params-Check-0.320.0.ebuild, -Params-Check-0.340.0.ebuild:
+  Drop old
+
+*Params-Check-0.380.0 (14 Aug 2013)
+
+  14 Aug 2013; Patrick Lauer <patrick@gentoo.org> +Params-Check-0.380.0.ebuild:
+  Bump
+
+  02 Mar 2013; Agostino Sarubbo <ago@gentoo.org> Params-Check-0.360.0.ebuild:
+  Stable for sh, wrt bug #458122
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Params-Check-0.360.0.ebuild:
+  Stable for sparc, wrt bug #458122
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Params-Check-0.360.0.ebuild:
+  Stable for ia64, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Params-Check-0.360.0.ebuild:
+  Stable for arm, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Params-Check-0.360.0.ebuild:
+  Stable for s390, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Params-Check-0.360.0.ebuild:
+  Stable for alpha, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Params-Check-0.360.0.ebuild:
+  Stable for hppa, wrt bug #458122
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org> Params-Check-0.360.0.ebuild:
+  Add ~arm-linux keyword.
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Params-Check-0.360.0.ebuild:
+  Stable for ppc, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Params-Check-0.360.0.ebuild:
+  Stable for ppc64, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Params-Check-0.360.0.ebuild:
+  Stable for x86, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Params-Check-0.360.0.ebuild:
+  Stable for amd64, wrt bug #458122
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Params-Check-0.360.0 (02 May 2012)
+
+  02 May 2012; Torsten Veller <tove@gentoo.org> +Params-Check-0.360.0.ebuild:
+  Version bump
+
+  28 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  Params-Check-0.340.0.ebuild:
+  keyword ~amd64-fbsd
+
+*Params-Check-0.340.0 (25 Apr 2012)
+
+  25 Apr 2012; Torsten Veller <tove@gentoo.org> +Params-Check-0.340.0.ebuild:
+  Version bump
+
+*Params-Check-0.320.0 (09 Aug 2011)
+
+  09 Aug 2011; Torsten Veller <tove@gentoo.org> +Params-Check-0.320.0.ebuild:
+  Version bump
+
+*Params-Check-0.300.0 (26 Jul 2011)
+
+  26 Jul 2011; Torsten Veller <tove@gentoo.org> +Params-Check-0.300.0.ebuild:
+  Version bump
+
+  07 Jul 2011; Alexis Ballier <aballier@gentoo.org>
+  Params-Check-0.280.0.ebuild:
+  keyword ~x86-fbsd
+
+  13 Jun 2011; Matt Turner <mattst88@gentoo.org> Params-Check-0.280.0.ebuild:
+  Added ~mips, bug 351526
+
+*Params-Check-0.280.0 (20 May 2011)
+
+  20 May 2011; Torsten Veller <tove@gentoo.org> -Params-Check-0.280.ebuild,
+  +Params-Check-0.280.0.ebuild:
+  Change version scheme
+
+  02 May 2011; Fabian Groffen <grobian@gentoo.org> Params-Check-0.280.ebuild:
+  Marked ~x64-freebsd
+
+  27 Feb 2011; Fabian Groffen <grobian@gentoo.org> Params-Check-0.280.ebuild:
+  Add Prefix keywords, bug #351526
+
+  27 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  Params-Check-0.280.ebuild:
+  Marked ~ppc64 wrt #351526
+
+  29 Jan 2011; Raúl Porcel <armin76@gentoo.org> Params-Check-0.280.ebuild:
+  Add ~alpha/~arm/~ia64/~m68k/~s390/~sh/~sparc wrt #351526
+
+  24 Jan 2011; Jeroen Roovers <jer@gentoo.org> Params-Check-0.280.ebuild:
+  Marked ~hppa (bug #351526).
+
+*Params-Check-0.280 (13 Jan 2011)
+
+  13 Jan 2011; Torsten Veller <tove@gentoo.org> +Params-Check-0.280.ebuild:
+  Version bump
+
+  27 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> Params-Check-0.26.ebuild:
+  Keywording for ppc.
+
+  20 Jan 2009; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +Params-Check-0.26.ebuild:
+  Move from dev-perl to perl-core.
+
+*Params-Check-0.26 (23 Dec 2008)
+
+  23 Dec 2008; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +Params-Check-0.26.ebuild:
+  Initial commit. Dep for Archive-Rar-2.x

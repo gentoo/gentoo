@@ -1,0 +1,21 @@
+http://bugs.gentoo.org/425364
+
+--- src/cmdline.cpp
++++ src/cmdline.cpp
+@@ -264,14 +264,14 @@
+   }
+   do {
+     if (!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
+-      m_vFiles.push_back( fs::path(fd.cFileName, fs::native) );
++      m_vFiles.push_back( fs::path(fd.cFileName) );
+     }
+   } while (::FindNextFile(hFind, &fd));
+   ::FindClose(hFind);
+ #else
+   int n = optind;
+   while (n < m_argc) {
+-    m_vFiles.push_back( fs::path(m_argv[n], fs::native) );
++    m_vFiles.push_back( fs::path(m_argv[n]) );
+     ++n;
+   }
+ #endif

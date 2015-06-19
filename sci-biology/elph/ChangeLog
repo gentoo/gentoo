@@ -1,0 +1,71 @@
+# ChangeLog for sci-biology/elph
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/elph/ChangeLog,v 1.15 2010/08/09 18:24:26 xarthisius Exp $
+
+  09 Aug 2010; Kacper Kowalik <xarthisius@gentoo.org> elph-1.0.1.ebuild:
+  Respect LDFLAGS wrt bug 331881. Thanks to Diego for report.
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org> elph-1.0.1.ebuild:
+  Transfer Prefix keywords
+
+  29 Jun 2008; Torsten Veller <tove@gentoo.org> elph-0.1.5.ebuild,
+  elph-1.0.1.ebuild:
+  Add missing die: || "..." -> || die "..."
+
+  07 Feb 2008; Fabian Groffen <grobian@gentoo.org> elph-0.1.5.ebuild,
+  elph-1.0.1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+*elph-1.0.1 (27 Jan 2008)
+
+  27 Jan 2008; Markus Dittrich <markusle@gentoo.org> +elph-1.0.1.ebuild:
+  Version bump (see bug #191864).
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  14 Sep 2006; Olivier Fisette <ribosome@gentoo.org> metadata.xml:
+  Stepping down from maintainership.
+
+  18 Oct 2005; Olivier Fisette <ribosome@gentoo.org> elph-0.1.5.ebuild:
+  Ebuild clean-up. Corrected home page.
+
+  04 Mar 2005; Lina Pezzella <j4rg0n@gentoo.org> elph-0.1.5.ebuild
+  Stable ppc-macos
+
+  01 Mar 2005; Olivier Fisette <ribosome@gentoo.org> -elph-0.1.4.ebuild,
+  elph-0.1.5.ebuild:
+  Added 0.1.5 to x86. Removed old version.
+
+  30 Jan 2005; Lina Pezzella <j4rg0n@gentoo.org> elph-0.1.5.ebuild:
+  Unstable ppc-macos
+
+  27 Jan 2005; Olivier Fisette <ribosome@gentoo.org> elph-0.1.5.ebuild:
+  Ebuild clean-up.
+
+*elph-0.1.5 (27 Jan 2005)
+
+  27 Jan 2005; Olivier Fisette <ribosome@gentoo.org>
+  +files/elph-0.1.5-usage.patch, +elph-0.1.5.ebuild:
+  New version.
+
+*elph-0.1.4 (23 Dec 2004)
+
+  23 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +files/elph-0.1.4-usage.patch, +elph-0.1.4.ebuild:
+  Moved from app-sci/elph to sci-biology/elph.
+
+  07 Nov 2004; Olivier Fisette <ribosome@gentoo.org> metadata.xml,
+  -elph-0.1.2.ebuild, elph-0.1.4.ebuild:
+  Removed buggy version (0.1.2). Added 0.1.4 to x86. Set myself as
+  maintainer. Added long description.
+
+  30 Oct 2004; Olivier Fisette <ribosome@gentoo.org> +elph-0.1.4.ebuild
+  +files/elph-0.1.4-usage.patch :
+  New version.
+
+*elph-0.1.2 (22 May 2003)
+
+  22 May 2003; Jon Portnoy <avenj@gentoo.org> elph-0.1.2.ebuild :
+  Initial import. Ebuild submitted by Stephen Diener in bug
+  #21308.

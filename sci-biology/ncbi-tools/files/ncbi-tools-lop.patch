@@ -1,0 +1,15 @@
+--- platform/linux-power.ncbi.mk.bak	2005-08-04 22:45:13.000000000 -0500
++++ platform/linux-power.ncbi.mk	2005-08-04 22:45:35.000000000 -0500
+@@ -9,10 +9,10 @@
+ #it appears the flags above do not work anymore with newer libc,
+ #the new flags should work. Dima. 08/23/01
+ NCBI_AR=ar
+-NCBI_CC = xlc_r -w -qcpluscmt -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE
++NCBI_CC = gcc -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE
+ NCBI_CFLAGS1 = -c 
+ NCBI_LDFLAGS1 = -O3 -D_LARGE_FILES 
+-NCBI_OPTFLAG = -O3 -qmaxmem=-1 -D_LARGE_FILE
++NCBI_OPTFLAG = -O3  -D_LARGE_FILE
+ NCBI_BIN_MASTER = /vol/stcfs/rchen/LoP/ncbi/bin
+ NCBI_BIN_COPY = /vol/stcfs/rchen/LoP/ncbi/bin
+ NCBI_INCDIR = /vol/stcfs/rchen/LoP/ncbi/include

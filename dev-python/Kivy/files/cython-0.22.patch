@@ -1,0 +1,139 @@
+--- kivy/graphics.orig/shader.pyx	2015-02-19 07:27:13.062070969 +0100
++++ kivy/graphics/shader.pyx	2015-02-19 07:27:22.838737743 +0100
+@@ -221,13 +221,13 @@
+         '''
+         glUseProgram(0)
+ 
+-    cdef void set_uniform(self, str name, value):
++    cdef void set_uniform(self, str name, value) except *:
+         if name in self.uniform_values and self.uniform_values[name] == value:
+             return
+         self.uniform_values[name] = value
+         self.upload_uniform(name, value)
+ 
+-    cdef void upload_uniform(self, str name, value):
++    cdef void upload_uniform(self, str name, value) except *:
+         '''Pass a uniform variable to the shader.
+         '''
+         cdef long vec_size, index, x, y
+@@ -412,7 +412,7 @@
+             mat[x] = <GLfloat>value.mat[x]
+         glUniformMatrix4fv(loc, 1, False, mat)
+ 
+-    cdef int get_uniform_loc(self, str name):
++    cdef int get_uniform_loc(self, str name) except *:
+         cdef bytes c_name = name.encode('utf-8')
+         cdef int loc = glGetUniformLocation(self.program, c_name)
+         self.uniform_locations[name] = loc
+@@ -453,11 +453,11 @@
+         # save for the next run.
+         self._current_vertex_format = vertex_format
+ 
+-    cdef void build(self):
++    cdef void build(self) except *:
+         self.build_vertex()
+         self.build_fragment()
+ 
+-    cdef void build_vertex(self, int link=1):
++    cdef void build_vertex(self, int link=1) except *:
+         if self.vertex_shader is not None:
+             glDetachShader(self.program, self.vertex_shader.shader)
+             self.vertex_shader = None
+@@ -467,7 +467,7 @@
+         if link:
+             self.link_program()
+ 
+-    cdef void build_fragment(self, int link=1):
++    cdef void build_fragment(self, int link=1) except *:
+         if self.fragment_shader is not None:
+             glDetachShader(self.program, self.fragment_shader.shader)
+             self.fragment_shader = None
+@@ -477,7 +477,7 @@
+         if link:
+             self.link_program()
+ 
+-    cdef void link_program(self):
++    cdef void link_program(self) except *:
+         if self.vertex_shader is None or self.fragment_shader is None:
+             return
+ 
+--- kivy/graphics.orig/instructions.pyx	2015-02-19 07:27:13.062070969 +0100
++++ kivy/graphics/instructions.pyx	2014-01-20 03:49:50.000000000 +0100
+@@ -233,15 +233,15 @@
+         if self.context_pop:
+             context.pop_states(self.context_pop)
+ 
+-    cdef void set_state(self, str name, value):
++    cdef void set_state(self, str name, value) except *:
+         self.context_state[name] = value
+         self.flag_update()
+ 
+-    cdef void push_state(self, str name):
++    cdef void push_state(self, str name) except *:
+         self.context_push.append(name)
+         self.flag_update()
+ 
+-    cdef void pop_state(self, str name):
++    cdef void pop_state(self, str name) except *:
+         self.context_pop.append(name)
+         self.flag_update()
+ 
+@@ -764,29 +764,29 @@
+     cdef get_state(self, str name):
+         return self.state_stacks[name][-1]
+ 
+-    cdef void set_states(self, dict states):
++    cdef void set_states(self, dict states) except *:
+         cdef str name
+         for name, value in states.iteritems():
+             self.set_state(name, value)
+ 
+-    cdef void push_state(self, str name):
++    cdef void push_state(self, str name) except *:
+         stack = self.state_stacks[name]
+         stack.append(stack[-1])
+         self.flag_update()
+ 
+-    cdef void push_states(self, list names):
++    cdef void push_states(self, list names) except *:
+         cdef str name
+         for name in names:
+             self.push_state(name)
+ 
+-    cdef void pop_state(self, str name):
++    cdef void pop_state(self, str name) except *:
+         stack = self.state_stacks[name]
+         oldvalue = stack.pop()
+         if oldvalue != stack[-1]:
+             self.set_state(name, stack[-1])
+             self.flag_update()
+ 
+-    cdef void pop_states(self, list names):
++    cdef void pop_states(self, list names) except *:
+         cdef str name
+         for name in names:
+             self.pop_state(name)
+@@ -806,10 +806,10 @@
+         texture.bind()
+         self.flag_update()
+ 
+-    cdef void enter(self):
++    cdef void enter(self) except *:
+         self._shader.use()
+ 
+-    cdef void leave(self):
++    cdef void leave(self) except *:
+         self._shader.stop()
+ 
+     cdef void apply(self):
+--- kivy/graphics.orig/instructions.pxd	2015-02-19 07:44:16.315415541 +0100
++++ kivy/graphics/instructions.pxd  2014-01-20 03:49:50.000000000 +0100
+@@ -115,7 +115,7 @@
+     cdef void pop_states(self, list names) except *
+     cdef void enter(self) except *
+     cdef void leave(self) except *
+-    cdef void apply(self) except *
++    cdef void apply(self)
+     cpdef draw(self)
+     cdef void reload(self)
+ 

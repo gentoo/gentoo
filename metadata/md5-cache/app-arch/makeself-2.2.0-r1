@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION=shell script that generates a self-extractible tar.gz
+EAPI=4
+HOMEPAGE=http://www.megastep.org/makeself/
+KEYWORDS=~amd64 ~hppa ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=sys-apps/gentoo-functions
+SLOT=0
+SRC_URI=https://github.com/megastep/makeself/archive/release-2.2.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=bdbbfb4840b06748df6d6dca881c01e7

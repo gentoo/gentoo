@@ -1,0 +1,56 @@
+# ChangeLog for sci-libs/coinor-utils
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/coinor-utils/ChangeLog,v 1.4 2014/02/04 10:44:35 jlec Exp $
+
+  04 Feb 2014; Justin Lecher <jlec@gentoo.org> coinor-utils-2.9.11.ebuild:
+  Move preparations to src_prepare; use usex()
+
+  29 Jan 2014; Justin Lecher <jlec@gentoo.org> coinor-utils-2.9.11.ebuild,
+  metadata.xml:
+  Don't rely on previous installation, #499656
+
+  14 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  coinor-utils-2.9.11.ebuild:
+  Cleanup, as-needed as applied upstream
+
+*coinor-utils-2.9.11 (14 Jan 2014)
+
+  14 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-utils-2.9.11.ebuild, +metadata.xml:
+  Initial import in main tree
+
+*coinor-utils-2.9.10 (07 Dec 2013)
+
+  07 Dec 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-utils-2.9.10.ebuild, -coinor-utils-2.9.3.ebuild:
+  sci-libs/coinor-utils: Version bump
+
+*coinor-utils-2.9.3 (17 Jul 2013)
+
+  17 Jul 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-utils-2.9.3.ebuild, -coinor-utils-2.9.1.ebuild:
+  sci-libs/coinor-utils: Version bump
+
+*coinor-utils-2.9.1 (03 Jul 2013)
+
+  03 Jul 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-utils-2.9.1.ebuild, -coinor-utils-2.9.0.ebuild:
+  sci-libs/coinor-utils: Version bump
+
+*coinor-utils-2.9.0 (26 May 2013)
+
+  26 May 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-utils-2.9.0.ebuild, -coinor-utils-2.8.8.ebuild:
+  sci-libs/coinor-utils: Version bump
+
+*coinor-utils-2.8.8 (29 Jan 2013)
+
+  29 Jan 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-utils-2.8.8.ebuild, -coinor-utils-2.8.6.ebuild:
+  sci-libs/coinor-utils: Version bump
+
+*coinor-utils-2.8.6 (16 Jul 2012)
+
+  16 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-utils-2.8.6.ebuild, +metadata.xml:
+  sci-libs/coinor-utils: Initial import

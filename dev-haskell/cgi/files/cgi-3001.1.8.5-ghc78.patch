@@ -1,0 +1,90 @@
+diff --git a/Network/CGI/Protocol.hs b/Network/CGI/Protocol.hs
+index 6b9d2ec..e9a14ff 100644
+--- a/Network/CGI/Protocol.hs
++++ b/Network/CGI/Protocol.hs
+@@ -11,7 +11,7 @@
+ -- An implementation of the program side of the CGI protocol.
+ --
+ -----------------------------------------------------------------------------
+-
++{-# LANGUAGE CPP, DeriveDataTypeable #-}
+ module Network.CGI.Protocol (
+   -- * CGI request
+   CGIRequest(..), Input(..), 
+@@ -44,7 +44,12 @@ import System.IO (Handle, hPutStrLn, stderr, hFlush, hSetBinaryMode)
+ import qualified Data.ByteString.Lazy.Char8 as BS
+ import Data.ByteString.Lazy.Char8 (ByteString)
+ 
++#if MIN_VERSION_base(4,7,0)
++import Data.Typeable
++#else
+ import Data.Typeable (Typeable(..), mkTyConApp, mkTyCon)
++#endif
++
+ 
+ import Network.CGI.Header
+ import Network.CGI.Multipart
+@@ -72,8 +77,10 @@ data CGIRequest =
+                }
+     deriving (Show)
+ 
++#if ! MIN_VERSION_base(4,7,0)
+ instance Typeable CGIResult where
+     typeOf _ = mkTyConApp (mkTyCon "Network.CGI.Protocol.CGIResult") []
++#endif
+ 
+ -- | The value of an input parameter, and some metadata.
+ data Input = Input {
+@@ -90,7 +97,11 @@ data Input = Input {
+ -- | The result of a CGI program.
+ data CGIResult = CGIOutput ByteString
+                | CGINothing
++#if MIN_VERSION_base(4,7,0)
++                 deriving (Show, Read, Eq, Ord, Typeable)
++#else
+                  deriving (Show, Read, Eq, Ord)
++#endif		 
+ 
+ --
+ -- * Running CGI actions
+
+
+diff --git a/Network/CGI/Monad.hs b/Network/CGI/Monad.hs
+index 2294f8c..7ed116c 100644
+--- a/Network/CGI/Monad.hs
++++ b/Network/CGI/Monad.hs
+@@ -1,4 +1,5 @@
+ {-# OPTIONS_GHC -fglasgow-exts #-}
++{-# LANGUAGE CPP, DeriveDataTypeable #-}
+ -----------------------------------------------------------------------------
+ -- |
+ -- Module      :  Network.CGI.Monad
+@@ -40,8 +41,12 @@ import Control.Monad.Error (MonadError(..))
+ import Control.Monad.Reader (ReaderT(..), asks)
+ import Control.Monad.Writer (WriterT(..), tell)
+ import Control.Monad.Trans (MonadTrans, MonadIO, liftIO, lift)
++#if MIN_VERSION_base(4,7,0)
++import Data.Typeable
++#else
+ import Data.Typeable (Typeable(..), Typeable1(..), 
+-                      mkTyConApp, mkTyCon)
++                      mkTyConApp, mkTyCon)		      
++#endif		      
+ 
+ import Network.CGI.Protocol
+ 
+@@ -55,10 +60,14 @@ type CGI a = CGIT IO a
+ 
+ -- | The CGIT monad transformer.
+ newtype CGIT m a = CGIT { unCGIT :: ReaderT CGIRequest (WriterT Headers m) a }
++#if MIN_VERSION_base(4,7,0)
++			deriving (Typeable)
+ 
++#else
+ instance (Typeable1 m, Typeable a) => Typeable (CGIT m a) where
+     typeOf _ = mkTyConApp (mkTyCon "Network.CGI.Monad.CGIT") 
+                 [typeOf1 (undefined :: m a), typeOf (undefined :: a)]
++#endif		
+ 
+ instance (Functor m, Monad m) => Functor (CGIT m) where
+     fmap f c = CGIT (fmap f (unCGIT c))

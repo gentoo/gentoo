@@ -1,0 +1,43 @@
+# ChangeLog for net-wireless/orinoco-fwutils
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/orinoco-fwutils/ChangeLog,v 1.9 2012/12/16 13:49:32 ago Exp $
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> orinoco-fwutils-0.3.ebuild:
+  Stable for x86, wrt bug #441500
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+*orinoco-fwutils-0.3 (06 Jul 2012)
+
+  06 Jul 2012; Steev Klimaszewski <steev@gentoo.org>
+  orinoco-fwutils-0.1.ebuild, -orinoco-fwutils-0.2.ebuild,
+  +orinoco-fwutils-0.3.ebuild:
+  Version bump for orinoco-fwutils. Remove 0.2 which was unstable. Fix quoting
+  issues, as well as headers.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  20 Apr 2006; Henrik Brix Andersen <brix@gentoo.org> metadata.xml:
+  Transferred ownership to steev.
+
+*orinoco-fwutils-0.2 (14 Apr 2006)
+
+  14 Apr 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +orinoco-fwutils-0.2.ebuild:
+  Version bump.
+
+  05 Mar 2006; Henrik Brix Andersen <brix@gentoo.org>
+  orinoco-fwutils-0.1.ebuild:
+  Added note about what to do with the firmware files.
+
+  30 Jan 2006; Henrik Brix Andersen <brix@gentoo.org>
+  orinoco-fwutils-0.1.ebuild:
+  Stable on x86.
+
+*orinoco-fwutils-0.1 (27 Nov 2005)
+
+  27 Nov 2005; Henrik Brix Andersen <brix@gentoo.org> +metadata.xml,
+  +orinoco-fwutils-0.1.ebuild:
+  Initial import. Replaces firmware found in net-wireless/orinoco-usb-firmware.

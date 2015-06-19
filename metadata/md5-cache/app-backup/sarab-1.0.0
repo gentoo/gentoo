@@ -1,0 +1,10 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=SaraB is a powerful and automated backup scheduling system based on DAR
+HOMEPAGE=http://sarab.sourceforge.net/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=app-backup/dar virtual/mailx
+SLOT=0
+SRC_URI=mirror://sourceforge/sarab/sarab-1.0.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b7163a380b32d9f8c0bd1dbfa81c9a19

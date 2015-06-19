@@ -1,0 +1,63 @@
+# ChangeLog for media-video/flvstreamer
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/flvstreamer/ChangeLog,v 1.13 2011/02/27 10:24:50 xarthisius Exp $
+
+  27 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  flvstreamer-2.1c.ebuild:
+  Marked ~ppc wrt #3350153. Thanks to Michael Jorgenson <Jorgenson@cf.ac.uk>
+  for report and testing.
+
+  17 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  -flvstreamer-1.8i.ebuild, -flvstreamer-1.9.ebuild,
+  -flvstreamer-2.1a.ebuild:
+  Remove old ebuilds
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  flvstreamer-2.1c.ebuild:
+  stable x86, bug 327221
+
+  09 Jul 2010; Pacho Ramos <pacho@gentoo.org> flvstreamer-2.1c.ebuild:
+  stable amd64, bug 327221
+
+*flvstreamer-2.1c (18 May 2010)
+
+  18 May 2010; Markos Chandras <hwoarang@gentoo.org>
+  +flvstreamer-2.1c.ebuild:
+  Version bump. Thanks to Diogo Pereira <sir.suriv@gmail.com> for the patch.
+  Fixes bug #320013
+
+  06 May 2010; Markos Chandras <hwoarang@gentoo.org>
+  flvstreamer-2.1a.ebuild:
+  More Makefile fixes wrt bug #318353. Thanks to Nathan Phillip Brink
+  (ohnobinki) <ohnobinki@ohnopublishing.net>
+
+*flvstreamer-2.1a (10 Jan 2010)
+
+  10 Jan 2010; Hanno Boeck <hanno@gentoo.org> +flvstreamer-2.1a.ebuild:
+  Version bump.
+
+  30 Dec 2009; Markos Chandras <hwoarang@gentoo.org> flvstreamer-1.9.ebuild:
+  Fix broken makefile wrt bug #298535
+
+*flvstreamer-1.9 (15 Dec 2009)
+
+  15 Dec 2009; <hwoarang@gentoo.org> +flvstreamer-1.9.ebuild:
+  Version bump. Fixes bug #296867
+
+  26 Nov 2009; Markus Meier <maekke@gentoo.org> flvstreamer-1.8i.ebuild:
+  amd64 stable, bug #289747
+
+  29 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  flvstreamer-1.8i.ebuild:
+  stable x86, bug 289747
+
+  08 Aug 2009; Markos Chandras <hwoarang@gentoo.org>
+  flvstreamer-1.8i.ebuild:
+  Fix typo on description
+
+*flvstreamer-1.8i (08 Aug 2009)
+
+  08 Aug 2009; Markos Chandras <hwoarang@gentoo.org>
+  +flvstreamer-1.8i.ebuild, +metadata.xml:
+  Initial commit of flvstreamer application
+

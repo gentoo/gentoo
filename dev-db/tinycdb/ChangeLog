@@ -1,0 +1,143 @@
+# ChangeLog for dev-db/tinycdb
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/tinycdb/ChangeLog,v 1.43 2014/10/11 05:36:02 hattya Exp $
+
+  11 Oct 2014; Akinori Hattori <hattya@gentoo.org> tinycdb-0.77-r2.ebuild:
+  fixes bug #524954
+
+  28 Sep 2014; Akinori Hattori <hattya@gentoo.org> tinycdb-0.77-r2.ebuild:
+  update to EAPI 5
+
+  28 Sep 2014; Akinori Hattori <hattya@gentoo.org> tinycdb-0.77-r2.ebuild:
+  einstall -> emake wrt bug #521540
+
+  08 Oct 2012; Akinori Hattori <hattya@gentoo.org>
+  +files/tinycdb-0.77-uclibc.diff, tinycdb-0.77-r2.ebuild:
+  add patch to fix compilation error with uClibc by Joshua B. Kahlenberg wrt bug
+  #434784
+
+  16 Jun 2012; Akinori Hattori <hattya@gentoo.org> -tinycdb-0.77-r1.ebuild,
+  -tinycdb-0.77.ebuild:
+  cleaned out old ebuild(s).
+
+  16 Jun 2012; Akinori Hattori <hattya@gentoo.org> tinycdb-0.77-r2.ebuild:
+  ia64 stable wrt bug #418671.
+
+  14 Jun 2012; Jeroen Roovers <jer@gentoo.org> tinycdb-0.77-r2.ebuild:
+  Stable for HPPA (bug #418671).
+
+  14 Jun 2012; Jeff Horelick <jdhore@gentoo.org> tinycdb-0.77-r2.ebuild:
+  marked x86 per bug 418671
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> tinycdb-0.77-r2.ebuild:
+  Marking tinycdb-0.77-r2 ppc for bug 418671
+
+  03 Jun 2012; Agostino Sarubbo <ago@gentoo.org> tinycdb-0.77-r2.ebuild:
+  Stable for amd64, wrt bug #418671
+
+  06 May 2012; Raúl Porcel <armin76@gentoo.org> tinycdb-0.77-r1.ebuild:
+  ia64 stable wrt #399963
+
+  04 Apr 2012; Jeff Horelick <jdhore@gentoo.org> tinycdb-0.77-r1.ebuild:
+  marked x86 per bug 399963
+
+*tinycdb-0.77-r2 (08 Mar 2012)
+
+  08 Mar 2012; Jeroen Roovers <jer@gentoo.org> +tinycdb-0.77-r2.ebuild,
+  +files/tinycdb-0.77-umask.diff:
+  Fix implicit declaration of function ‘umask’.
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> tinycdb-0.77-r1.ebuild:
+  Marking tinycdb-0.77-r1 ppc for bug 399963
+
+  27 Feb 2012; Jeroen Roovers <jer@gentoo.org> tinycdb-0.77-r1.ebuild:
+  Stable for HPPA (bug #399963).
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> tinycdb-0.77-r1.ebuild:
+  Stable for amd64, wrt bug #399963
+
+  13 Aug 2011; Akinori Hattori <hattya@gentoo.org> tinycdb-0.77.ebuild:
+  update to EAPI 4.
+
+*tinycdb-0.77-r1 (13 Aug 2011)
+
+  13 Aug 2011; Akinori Hattori <hattya@gentoo.org> +tinycdb-0.77-r1.ebuild,
+  +files/tinycdb-0.77-gentoo.diff:
+  add static-libs use flag. fixes bug #359557.
+
+  11 Apr 2010; Akinori Hattori <hattya@gentoo.org> -tinycdb-0.74.ebuild,
+  -tinycdb-0.76.ebuild, -files/tinycdb-libbase.diff:
+  cleaned out old ebuild(s).
+
+  11 Apr 2010; Akinori Hattori <hattya@gentoo.org> tinycdb-0.77.ebuild:
+  stable on ia64. wrt bug #302064.
+
+  14 Mar 2010; Markos Chandras <hwoarang@gentoo.org> tinycdb-0.77.ebuild:
+  Fix amd64 multilib support and marked stable for amd64 wrt bug #302064
+
+  12 Feb 2010; Jeroen Roovers <jer@gentoo.org> tinycdb-0.77.ebuild:
+  Stable for HPPA (bug #302064).
+
+  10 Feb 2010; Markus Meier <maekke@gentoo.org> tinycdb-0.77.ebuild:
+  x86 stable, bug #302064
+
+  24 Jan 2010; Brent Baude <ranger@gentoo.org> tinycdb-0.77.ebuild:
+  stable ppc, bug 302064
+
+*tinycdb-0.77 (22 Oct 2009)
+
+  22 Oct 2009; Patrick Lauer <patrick@gentoo.org> +tinycdb-0.77.ebuild:
+  Bump, fixes #289357
+
+  26 Oct 2008; Akinori Hattori <hattya@gentoo.org> tinycdb-0.76.ebuild:
+  fixes bug #243772 and bug #240171.
+
+  01 Aug 2008; Akinori Hattori <hattya@gentoo.org> tinycdb-0.76.ebuild:
+  fixes bug #210730.
+
+  09 Sep 2007; Akinori Hattori <hattya@gentoo.org> tinycdb-0.76.ebuild:
+  stable on ia64.
+
+  09 Sep 2007; Akinori Hattori <hattya@gentoo.org> tinycdb-0.76.ebuild:
+  fix src_test.
+
+  09 Aug 2007; Akinori Hattori <hattya@gentoo.org> tinycdb-0.76.ebuild:
+  stable on x86.
+
+  12 Mar 2007; Akinori Hattori <hattya@gentoo.org> tinycdb-0.76.ebuild:
+  remove trailing whitespace.
+
+*tinycdb-0.76 (12 Mar 2007)
+
+  12 Mar 2007; Akinori Hattori <hattya@gentoo.org> +tinycdb-0.76.ebuild:
+  new upstream release.
+
+  30 Jan 2007; Patrick McLean <chutzpah@gentoo.org> tinycdb-0.74.ebuild:
+  Add ~amd64
+
+  14 Jul 2006; Akinori Hattori <hattya@gentoo.org> tinycdb-0.74.ebuild:
+  enclose D, S and FILESDIR in double quotes.
+
+  23 Jan 2006; Rene Nussbaumer <killerfox@gentoo.org> tinycdb-0.74.ebuild:
+  Unstable on hppa. See bug #115716.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> tinycdb-0.74.ebuild:
+  Stable on ppc.
+
+  17 Oct 2004; Akinori Hattori <hattya@gentoo.org> tinycdb-0.74.ebuild:
+  stable on ia64.
+
+  19 Sep 2004; Akinori Hattori <hattya@gentoo.org> tinycdb-0.74.ebuild:
+  stable on x86.
+
+  17 Sep 2004; Akinori Hattori <hattya@gentoo.org> tinycdb-0.74.ebuild:
+  add ~ia64.
+
+  03 Sep 2004; David Holm <dholm@gentoo.org> tinycdb-0.74.ebuild:
+  Added to ~ppc.
+
+*tinycdb-0.74 (19 Aug 2004)
+
+  19 Aug 2004; Akinori Hattori <hattya@gentoo.org> +metadata.xml,
+  +files/tinycdb-libbase.diff, +tinycdb-0.74.ebuild:
+  Initial revision.

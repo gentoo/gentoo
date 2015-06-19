@@ -1,0 +1,30 @@
+diff -ur gprolog-1.4.4.orig/src/Makefile.in gprolog-1.4.4/src/Makefile.in
+--- gprolog-1.4.4.orig/src/Makefile.in	2013-04-23 16:56:44.000000000 +0200
++++ gprolog-1.4.4/src/Makefile.in	2013-05-15 17:01:25.000000000 +0200
+@@ -97,7 +97,7 @@
+ # --- Documentation --- #
+ 
+ install-doc:
+-	if test $(DOC_DIR) != none; then \
++	if test $(DOC_DIR) != $(DESTDIR)none; then \
+ 	   ./mkinstalldirs $(DOC_DIR); \
+ 	   (F=`cd ../doc; echo $(DOC_FILES)`; \
+ 	   for i in $$F; do $(INSTALL_DATA) ../doc/$$i $(DOC_DIR); done); \
+@@ -113,7 +113,7 @@
+ # --- HTML --- #
+ 
+ install-html:
+-	if test $(HTML_DIR) != none; then \
++	if test $(HTML_DIR) != $(DESTDIR)none; then \
+ 	   ./mkinstalldirs $(HTML_DIR); \
+ 	   (F=`cd ../doc/html_node; echo $(HTML_FILES)`; \
+ 	   for i in $$F; do $(INSTALL_DATA) ../doc/html_node/$$i $(HTML_DIR); done); \
+@@ -129,7 +129,7 @@
+ # --- Examples --- #
+ 
+ install-examples:
+-	if test $(EXAMPLES_DIR) != none; then \
++	if test $(EXAMPLES_DIR) != $(DESTDIR)none; then \
+ 	   ./mkinstalldirs $(EXAMPLES_DIR)/ExamplesPl; \
+ 	   (F=`cd ../examples/ExamplesPl; echo $(EXPL_FILES)`; \
+ 	   for i in $$F; do $(INSTALL_DATA) ../examples/ExamplesPl/$$i $(EXAMPLES_DIR)/ExamplesPl; done); \

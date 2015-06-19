@@ -1,0 +1,34 @@
+# ChangeLog for dev-python/python-daap
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-daap/ChangeLog,v 1.7 2015/01/05 07:24:24 idella4 Exp $
+
+  05 Jan 2015; Ian Delaney <idella4@gentoo.org> python-daap-0.7.1-r1.ebuild:
+  fix typo
+
+*python-daap-0.7.1-r1 (05 Jan 2015)
+
+  05 Jan 2015; Ian Delaney <idella4@gentoo.org> +python-daap-0.7.1-r1.ebuild,
+  -python-daap-0.7.1.ebuild:
+  revbump; conversion -> distutils-r1, rm old
+
+  23 Feb 2012; Patrick Lauer <patrick@gentoo.org> python-daap-0.7.1.ebuild:
+  Restricting python properly
+
+  31 May 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  python-daap-0.7.1.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  24 Nov 2008; <ssuominen@gentoo.org> metadata.xml:
+  Re-assign to sound and python herds.
+
+*python-daap-0.7.1 (27 May 2008)
+
+  27 May 2008; Samuli Suominen <drac@gentoo.org> -python-daap-0.7.ebuild,
+  +python-daap-0.7.1.ebuild:
+  Version bump wrt #223327 by Christophe Thil.
+
+*python-daap-0.7 (08 Jul 2007)
+
+  08 Jul 2007; Samuli Suominen <drac@gentoo.org> +python-daap-0.7.ebuild:
+  Initial commit for bug 183408. Thanks to Philip Allison, Bernie Hackett and
+  Niklas Närhinen.

@@ -1,0 +1,55 @@
+* Ignore curl-config --static-libs, as we should link dynamically.
+* Only initialize gcrypt if we are using an older gnutls that needs this.
+  This is necessary to support newer gnutls linked to libnettle instead of libgcrypt.
+* Mark NSS as supported, as it does not require the application to initialize threading.
+
+--- setup.py
++++ setup.py
+@@ -96,9 +96,7 @@
+                 include_dirs.append(e[2:])
+         else:
+             extra_compile_args.append(e)
+-    libs = split_quoted(
+-        os.popen("'%s' --libs" % CURL_CONFIG).read()+\
+-        os.popen("'%s' --static-libs" % CURL_CONFIG).read())
++    libs = split_quoted(os.popen("'%s' --libs" % CURL_CONFIG).read())
+     for e in libs:
+         if e[:2] == "-l":
+             libraries.append(e[2:])
+@@ -106,6 +104,8 @@
+                 define_macros.append(('HAVE_CURL_OPENSSL', 1))
+             if e[2:] == 'gnutls':
+                 define_macros.append(('HAVE_CURL_GNUTLS', 1))
++            if e[2:] == 'ssl3':
++                define_macros.append(('HAVE_CURL_NSS', 1))
+         elif e[:2] == "-L":
+             library_dirs.append(e[2:])
+         else:
+
+--- src/pycurl.c
++++ src/pycurl.c
+@@ -78,15 +78,18 @@
+ #   define PYCURL_NEED_OPENSSL_TSL
+ #   include <openssl/crypto.h>
+ # elif defined(HAVE_CURL_GNUTLS)
+-#   define PYCURL_NEED_SSL_TSL
+-#   define PYCURL_NEED_GNUTLS_TSL
+-#   include <gcrypt.h>
+-# else
++#   include <gnutls/gnutls.h>
++#   if GNUTLS_VERSION_NUMBER <= 0x020b00
++#     define PYCURL_NEED_SSL_TSL
++#     define PYCURL_NEED_GNUTLS_TSL
++#     include <gcrypt.h>
++#   endif
++# elif !defined(HAVE_CURL_NSS)
+ #  warning \
+    "libcurl was compiled with SSL support, but configure could not determine which " \
+    "library was used; thus no SSL crypto locking callbacks will be set, which may " \
+    "cause random crashes on SSL requests"
+-# endif /* HAVE_CURL_OPENSSL || HAVE_CURL_GNUTLS */
++# endif /* HAVE_CURL_OPENSSL || HAVE_CURL_GNUTLS || HAVE_CURL_NSS */
+ #endif /* HAVE_CURL_SSL */
+ 
+ #if defined(PYCURL_NEED_SSL_TSL)
+

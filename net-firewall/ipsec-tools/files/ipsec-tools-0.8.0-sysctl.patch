@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/425770
+
+--- a/src/racoon/pfkey.c
++++ b/src/racoon/pfkey.c
+@@ -59,7 +59,6 @@
+ #include <sys/param.h>
+ #include <sys/socket.h>
+ #include <sys/queue.h>
+-#include <sys/sysctl.h>
+ 
+ #include <net/route.h>
+ #include <net/pfkeyv2.h>
+--- a/src/setkey/setkey.c
++++ b/src/setkey/setkey.c
+@@ -40,7 +40,6 @@
+ #include <sys/socket.h>
+ #include <sys/time.h>
+ #include <sys/stat.h>
+-#include <sys/sysctl.h>
+ #include <err.h>
+ #include <netinet/in.h>
+ #include <net/pfkeyv2.h>

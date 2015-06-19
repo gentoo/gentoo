@@ -1,0 +1,41 @@
+diff -urN a/core/src/main/java/org/apache/commons/vfs2/provider/webdav/ExceptionConverter.java b/core/src/main/java/org/apache/commons/vfs2/provider/webdav/ExceptionConverter.java
+--- a/core/src/main/java/org/apache/commons/vfs2/provider/webdav/ExceptionConverter.java	2013-07-05 15:28:39.072739044 +0200
++++ b/core/src/main/java/org/apache/commons/vfs2/provider/webdav/ExceptionConverter.java	2013-07-05 15:30:24.799404027 +0200
+@@ -50,7 +50,7 @@
+         {
+             try
+             {
+-                Element error = davExc.toXml(DomUtil.BUILDER_FACTORY.newDocumentBuilder().newDocument());
++                Element error = davExc.toXml(DomUtil.createDocument());
+                 if (DomUtil.matches(error, DavException.XML_ERROR, DavConstants.NAMESPACE))
+                 {
+                     if (DomUtil.hasChildElement(error, "exception", null))
+diff -urN a/core/src/main/java/org/apache/commons/vfs2/provider/webdav/WebdavFileObject.java b/core/src/main/java/org/apache/commons/vfs2/provider/webdav/WebdavFileObject.java
+--- a/core/src/main/java/org/apache/commons/vfs2/provider/webdav/WebdavFileObject.java	2013-07-05 15:28:39.072739044 +0200
++++ b/core/src/main/java/org/apache/commons/vfs2/provider/webdav/WebdavFileObject.java	2013-07-05 15:31:02.449403426 +0200
+@@ -63,6 +63,7 @@
+ import org.apache.jackrabbit.webdav.client.methods.UncheckoutMethod;
+ import org.apache.jackrabbit.webdav.client.methods.VersionControlMethod;
+ import org.apache.jackrabbit.webdav.property.DavProperty;
++import org.apache.jackrabbit.webdav.property.DavPropertyIterator;
+ import org.apache.jackrabbit.webdav.property.DavPropertyName;
+ import org.apache.jackrabbit.webdav.property.DavPropertyNameSet;
+ import org.apache.jackrabbit.webdav.property.DavPropertySet;
+@@ -294,7 +294,7 @@
+             DavPropertySet properties = getProperties(fileName, PropFindMethod.PROPFIND_ALL_PROP,
+                     new DavPropertyNameSet(), false);
+             @SuppressWarnings("unchecked") // iterator() is documented to return DavProperty instances
+-            Iterator<DavProperty> iter = properties.iterator();
++            DavPropertyIterator iter = properties.iterator();
+             while (iter.hasNext())
+             {
+                 DavProperty property = iter.next();
+@@ -302,7 +302,7 @@
+             }
+             properties = getPropertyNames(fileName);
+             @SuppressWarnings("unchecked") // iterator() is documented to return DavProperty instances
+-            Iterator<DavProperty> iter2 = properties.iterator();
++            DavPropertyIterator iter2 = properties.iterator();
+             while (iter2.hasNext())
+             {
+                 DavProperty property = iter2.next();

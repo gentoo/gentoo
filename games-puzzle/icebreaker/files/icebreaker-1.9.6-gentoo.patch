@@ -1,0 +1,247 @@
+--- dialog.c
++++ dialog.c
+@@ -279,10 +279,10 @@ PopupReturnType popuphighscores()
+ 
+ 	for (i=0;i<HISCORENUM;i++)
+ 	{
+-		snprintf(buf,4,"%d.",i+1);
++		snprintf(buf,sizeof(buf),"%d.",i+1);
+ 		puttext(scorelistrect.x+BLOCKWIDTH,scorelistrect.y+45+i*(CHARHEIGHT*2+5),2,color.normaltext,buf);		
+ 		puttext(scorelistrect.x+BLOCKWIDTH*4,scorelistrect.y+45+i*(CHARHEIGHT*2+5),2,color.normaltext,hiscorename[i]);		
+-		snprintf(buf,30,"%ld",hiscoreval[i]);		
++		snprintf(buf,sizeof(buf),"%ld",hiscoreval[i]);		
+ 		puttext(scorelistrect.x+scorelistrect.w-(BLOCKWIDTH*5),scorelistrect.y+45+i*(CHARHEIGHT*2+5),2,color.normaltext,buf);
+ 	}
+ 	
+@@ -364,7 +364,7 @@ PopupReturnType popuphelp()
+ 	{
+ 		puttext(helprect.x+BLOCKWIDTH/2,helprect.y+BLOCKHEIGHT/2+i*(CHARHEIGHT*2+4),2,color.normaltext,helptext[i]);		
+ 	}
+-	snprintf(buf,80,"v%d.%d.%d   %s",VERMAJOR,VERMINOR,VERSUB,"Copyright (c) 2000-2002 Matthew Miller. Released under the GPL.");
++	snprintf(buf,sizeof(buf),"v%d.%d.%d   %s",VERMAJOR,VERMINOR,VERSUB,"Copyright (c) 2000-2002 Matthew Miller. Released under the GPL.");
+ 	puttext(helprect.x+BLOCKWIDTH/2,helprect.y+helprect.h-CHARHEIGHT*3,1,color.copyrighttext,buf);		
+ 	puttext(helprect.x+BLOCKWIDTH/2,helprect.y+helprect.h-CHARHEIGHT*1-3,1,color.copyrighttext,"Thanks to my wonderful wife Karen for inspiration (and for patience)!");		
+ 	
+--- menu.c
++++ menu.c
+@@ -193,12 +193,12 @@ PopupReturnType popupoptionsmenu()
+ 
+ 	if (strlen(commandline.theme)>0)
+ 	{
+-		snprintf(originaltheme,MAXTHEMENAMELENGTH+1,"%s",commandline.theme);
++		snprintf(originaltheme,sizeof(originaltheme),"%s",commandline.theme);
+ 		originalthemecl=true;
+ 	}
+ 	else
+ 	{
+-		snprintf(originaltheme,MAXTHEMENAMELENGTH+1,"%s",options.theme);
++		snprintf(originaltheme,sizeof(originaltheme),"%s",options.theme);
+ 		originalthemecl=false;	
+ 	}
+ 				
+@@ -521,7 +521,7 @@ PopupReturnType menuitem_theme(char * va
+ 		if (((mbutton==1 || mbutton==4) && t==themecount-1) || ((mbutton!=1 && mbutton!=4) && t==0))
+ 		{ // "random", at the end/beginning of the list
+ 			
+-			strncpy(val,"random",MAXMENUVALUELENGTH);
++			strcpy(options.theme,"random");
+ 			snprintf(options.theme,MAXMENUVALUELENGTH,"random");
+ 			
+ 			settheme("linux"); // just for pretty
+@@ -538,7 +538,7 @@ PopupReturnType menuitem_theme(char * va
+ 			if (mbutton==1 || mbutton==4) // left click or scroll forwards
+ 			{
+ 				strncpy(val,themelist[(t+1)%themecount],MAXMENUVALUELENGTH);
+-				snprintf(options.theme,MAXMENUVALUELENGTH,themelist[(t+1)%themecount]);
++				snprintf(options.theme,sizeof(options.theme),"%s",themelist[(t+1)%themecount]);
+ 			}
+ 			else // right or middle or scroll back
+ 			{
+--- hiscore.c
++++ hiscore.c
+@@ -72,7 +72,7 @@
+ 	// make sure all entries are zeroed out to start.
+ 	for (i=0;i<HISCORENUM;i++)
+ 	{
+-		snprintf(temphiscorename[i],7,"Nobody");
++		strcpy(temphiscorename[i],"Nobody");
+ 		temphiscoreval[i]=100; //100 is better than 0. :)
+ 	}
+ 
+@@ -103,7 +103,7 @@
+ 	// ok, so now, we can copy things over in the proper sorted order
+ 	for (i=0;i<HISCORENUM;i++)
+ 	{
+-		snprintf(hiscorename[i],50,temphiscorename[arrayindex[i]]);
++		snprintf(hiscorename[i],50,"%s",temphiscorename[arrayindex[i]]);
+ 		hiscoreval[i]=temphiscoreval[arrayindex[i]];
+ 	}
+ 
+@@ -201,13 +201,13 @@
+ 	// make sure the temp array contains the right data
+ 	for (i=0;i<HISCORENUM;i++)
+ 	{
+-		snprintf(temphiscorename[i],50,hiname[i]);
++		snprintf(temphiscorename[i],50,"%s",hiname[i]);
+ 		temphiscoreval[i]=hival[i];
+ 	}
+ 	
+ 	// and toss in the new data 
+ 	//(this is why these arrays are size HISCORENUM+1)
+-	snprintf(temphiscorename[HISCORENUM],50,username);
++	snprintf(temphiscorename[HISCORENUM],50,"%s",username);
+ 	temphiscoreval[HISCORENUM]=score;
+ 
+ 	// fill the "helper" array. 
+@@ -221,7 +221,7 @@
+ 	// and take the top ones back.
+ 	for (i=0;i<HISCORENUM;i++)
+ 	{
+-		snprintf(hiname[i],50,temphiscorename[arrayindex[i]]); 
++		snprintf(hiname[i],50,"%s",temphiscorename[arrayindex[i]]); 
+ 		hival[i]=temphiscoreval[arrayindex[i]];
+ 	}
+ }
+--- line.c
++++ line.c
+@@ -30,8 +30,9 @@
+ 
+ Line createline(int linenum)
+ {
+-	Line l;
++	static Line l;
+ 
++	memset(&l, 0, sizeof(l));
+ 	switch (linenum)
+ 	{
+ 		case 1: 
+--- options.c
++++ options.c
+@@ -66,7 +66,7 @@
+ 	options.autopause=AUTOPAUSEOFF;	
+ 	options.difficulty=NORMAL;
+ 	options.fullscreen=FULLSCREENOFF;
+-	snprintf(options.theme,MAXTHEMENAMELENGTH+1,"linux");
++	strcpy(options.theme,"linux");
+ }
+ 
+ int readoptions(void)
+@@ -81,7 +81,7 @@
+ 
+ 	setdefaultoptions();
+ 	
+-	snprintf(filename,255,"%s/%s",homedir,OPTIONFILE);
++	snprintf(filename,sizeof(filename),"%s/%s",homedir,OPTIONFILE);
+ 	
+ 	optionfile=fopen(filename,"r");
+ 	if (optionfile==NULL)
+@@ -135,7 +135,7 @@
+ 			}
+ 			else if (!strcmp(optbuf,"theme"))
+ 			{
+-				snprintf(options.theme,MAXTHEMENAMELENGTH+1,"%s",valbuf);
++				snprintf(options.theme,sizeof(options.theme),"%s",valbuf);
+ 			}
+ 			// FIX: add username
+ 		}
+@@ -150,7 +150,7 @@
+ {
+ 	FILE * optionfile;
+ 	char filename[255];
+-	snprintf(filename,255,"%s/%s",homedir,OPTIONFILE);
++	snprintf(filename,sizeof(filename),"%s/%s",homedir,OPTIONFILE);
+ 	
+ 	optionfile=fopen(filename,"w");
+ 	if (optionfile==NULL)
+@@ -292,7 +292,7 @@
+ 			else
+ 			{
+ 				// fix -- we should probably search for malicious characters here.
+-				snprintf(commandline.theme,MAXTHEMENAMELENGTH+1,"%s",argv[i]+strlen(FLAGTHEME));
++				snprintf(commandline.theme,sizeof(commandline.theme),"%s",argv[i]+strlen(FLAGTHEME));
+ 			}	
+ 		}
+ 		else if (strncmp(argv[i],FLAGTHEMELONG "=" ,strlen(FLAGTHEMELONG "=")) == 0)
+@@ -312,7 +312,7 @@
+ 			else
+ 			{
+ 				// fix -- we should probably search for malicious characters here.
+-				snprintf(commandline.theme,MAXTHEMENAMELENGTH+1,"%s",argv[i]+strlen(FLAGTHEMELONG "="));
++				snprintf(commandline.theme,sizeof(commandline.theme),"%s",argv[i]+strlen(FLAGTHEMELONG "="));
+ 			}	
+ 		}
+ 		else if (strncmp(argv[i],FLAGTHEMELONG,strlen(FLAGTHEMELONG)) == 0)
+--- penguin.c
++++ penguin.c
+@@ -40,8 +40,9 @@
+ 
+ Penguin createpenguinxy(int x, int y)
+ {
+-	Penguin p;
++	static Penguin p;
+ 
++	memset(&p, 0, sizeof(p));
+ 	switch (random() % 4)
+ 	{
+ 		case 0:
+--- themes.c
++++ themes.c
+@@ -183,7 +183,7 @@
+ 
+ 	foundcolor.spritetransparent = 0;
+ 	
+-	snprintf(themefilename, 256,"%s/%s%s",DATAPREFIX,themename,THEMEFILEEXTENSION);
++	snprintf(themefilename, sizeof(themefilename),"%s/%s%s",DATAPREFIX,themename,THEMEFILEEXTENSION);
+ 	
+ 	themefile=fopen(themefilename,"r");
+ 	if (themefile==NULL)
+@@ -329,7 +329,7 @@
+ 						               "We'll try to load it anyway, but don't be surpised if there's a problem.\n"
+ 						               "(Filename is %s)\n",themename,valbuf);
+ 					}
+-					snprintf(loadfilebuf, 256,"%s/%s",DATAPREFIX,valbuf);
++					snprintf(loadfilebuf, sizeof(loadfilebuf),"%s/%s",DATAPREFIX,valbuf);
+ 					spriteimage=loadsprite(themename,loadfilebuf);
+ 				}
+ 				else if (!strcmp(optbuf,"spritemirrorbitmap"))
+@@ -340,7 +340,7 @@
+ 						               "We'll try to load it anyway, but don't be surpised if there's a problem.\n"
+ 						               "(Filename is %s)\n",themename,valbuf);
+ 					}
+-					snprintf(loadfilebuf, 256,"%s/%s",DATAPREFIX,valbuf);
++					snprintf(loadfilebuf, sizeof(loadfilebuf),"%s/%s",DATAPREFIX,valbuf);
+ 					spritemirrorimage=loadsprite(themename,loadfilebuf);
+ 				}
+ 				else if (!strcmp(optbuf,"soundouch"))
+@@ -351,7 +351,7 @@
+ 						               "We'll try to load it anyway, but don't be surpised if there's a problem.\n"
+ 						               "(Filename is %s)\n",themename,valbuf);
+ 					}
+-					snprintf(loadfilebuf, 256,"%s/%s",DATAPREFIX,valbuf);
++					snprintf(loadfilebuf, sizeof(loadfilebuf),"%s/%s",DATAPREFIX,valbuf);
+ 					loadsounds(themename,loadfilebuf,NULL);
+ 				}
+ 				else if (!strcmp(optbuf,"soundcrash"))
+@@ -362,7 +362,7 @@
+ 						               "We'll try to load it anyway, but don't be surpised if there's a problem.\n"
+ 						               "(Filename is %s)\n",themename,valbuf);
+ 					}
+-					snprintf(loadfilebuf, 256,"%s/%s",DATAPREFIX,valbuf);
++					snprintf(loadfilebuf, sizeof(loadfilebuf),"%s/%s",DATAPREFIX,valbuf);
+ 					loadsounds(themename,NULL,loadfilebuf);
+ 				}
+ 			}
+@@ -474,11 +474,11 @@
+ 	{
+ 		fprintf(stderr,"Hey! You can't have a theme named random! Please remove the random.ibt\n"
+ 		        "file from your themes directory.\n");
+-		snprintf(themename,MAXTHEMENAMELENGTH+1,"linux");
++		strcpy(themename,"linux");
+ 	}
+ 	else
+ 	{
+-		snprintf(themename,MAXTHEMENAMELENGTH+1,themelist[random() %themecount]);
++		snprintf(themename,sizeof(themename),"%s",themelist[random() %themecount]);
+ 	}
+ 	freethemenames(&themelist,themecount);
+ 	return settheme(themename);

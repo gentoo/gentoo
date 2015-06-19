@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION="su" wrapper which transfers X credentials
+EAPI=5
+HOMEPAGE=http://fgouget.free.fr/sux/sux-readme.shtml
+KEYWORDS=alpha amd64 arm ppc sparc x86
+LICENSE=MIT
+RDEPEND=x11-apps/xauth
+SLOT=0
+SRC_URI=http://fgouget.free.fr/sux/sux
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=71237e366b7a4853ab41e76312075116

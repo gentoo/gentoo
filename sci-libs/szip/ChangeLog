@@ -1,0 +1,107 @@
+# ChangeLog for sci-libs/szip
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/szip/ChangeLog,v 1.25 2013/07/18 14:14:54 chithanh Exp $
+
+  18 Jul 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  szip-2.1-r1.ebuild:
+  Keyword ~arm.
+
+  15 Oct 2012;  <naota@gentoo.org> szip-2.1-r1.ebuild:
+  Add ~x86-fbsd.
+
+  26 Jun 2012; Sebastien Fabbro <fabbros@gentoo.org> szip-2.1-r1.ebuild:
+  keyword amd64-linux and x86-linux
+
+*szip-2.1-r1 (21 Dec 2011)
+
+  21 Dec 2011; Sébastien Fabbro <bicatali@gentoo.org> +szip-2.1-r1.ebuild:
+  Switched to EAPI4 and use autotools-utils which introduces static-libs flag.
+  Install the only example flag instead of many useless ones.
+
+  09 Jul 2010; Kacper Kowalik <xarthisius@gentoo.org> -szip-1.1-r1.ebuild,
+  -files/szip-1.1-fPIC.patch:
+  Remove old
+
+  09 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> szip-2.1.ebuild:
+  ppc64 stable wrt #324797
+
+  20 Jun 2010; Raúl Porcel <armin76@gentoo.org> szip-2.1.ebuild:
+  alpha/ia64/sparc stable wrt #324797
+
+  12 Oct 2009; Jeroen Roovers <jer@gentoo.org> szip-2.1.ebuild:
+  Stable for HPPA (bug #245707).
+
+  20 Sep 2009; nixnut <nixnut@gentoo.org> szip-2.1.ebuild:
+  ppc stable #284613
+
+  19 Sep 2009; Markus Meier <maekke@gentoo.org> szip-2.1.ebuild:
+  amd64/x86 stable, bug #284613
+
+  21 Jan 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/szip-2.0-example.patch, metadata.xml, -szip-2.0.ebuild,
+  szip-2.1.ebuild:
+  Fixed SRC_URI and re-fetch tar, thanks to Valeri Sokolov, closing bug
+  #255692. Patch not needed anymore, and install one example. Removed older
+  version, updated description in metadata.xml
+
+  09 Apr 2008; Jeroen Roovers <jer@gentoo.org> szip-2.1.ebuild:
+  Marked ~hppa (bug #216855).
+
+  02 Jan 2008; Raúl Porcel <armin76@gentoo.org> szip-2.1.ebuild:
+  Add ~alpha/~ia64
+
+*szip-2.1 (03 Nov 2007)
+
+  03 Nov 2007; Sébastien Fabbro <bicatali@gentoo.org> +szip-2.1.ebuild:
+  Version bump.
+
+*szip-2.0 (18 Aug 2007)
+
+  18 Aug 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/szip-2.0-example.patch, +szip-2.0.ebuild:
+  Version bump. Thanks Ryan May <rmay@ou.edu> for his work, closing bug #186523
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  27 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> szip-1.1-r1.ebuild:
+  Stable on sparc
+
+  14 Jun 2006; Ferris McCormick <fmccor@gentoo.org> szip-1.1-r1.ebuild:
+  Add ~sparc keyword; required for hds5.  Runs all its tests and installs as
+  expected.
+
+  23 May 2006; Markus Rothe <corsair@gentoo.org> szip-1.1-r1.ebuild:
+  Stable on ppc64
+
+  17 Mar 2006; Markus Rothe <corsair@gentoo.org> szip-1.1-r1.ebuild:
+  Added ~ppc64; bug #126527
+
+  26 Jun 2005; Olivier Fisette <ribosome@gentoo.org> -szip-1.1.ebuild:
+  Removed obsolete version.
+
+*szip-1.1 (28 Dec 2004)
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +files/szip-1.1-fPIC.patch, +szip-1.1-r1.ebuild, +szip-1.1.ebuild:
+  Moved from dev-libs/szip to sci-libs/szip.
+
+  30 Jul 2004; Patrick Kursawe <phosphan@gentoo.org> szip-1.1-r1.ebuild:
+  Guess it's time to become stable
+
+  30 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> szip-1.1-r1.ebuild:
+  Fix -fPIC issues, closing #46222.
+
+*szip-1.1-r1 (16 Mar 2004)
+
+  16 Mar 2004; Patrick Kursawe <phosphan@gentoo.org> szip-1.1-r1.ebuild:
+  Now also builds shared libs.
+
+  15 Mar 2004; David Holm <dholm@gentoo.org> szip-1.1.ebuild:
+  Added to ~ppc.
+
+*szip-1.1 (16 Dec 2003)
+
+  16 Dec 2003; Patrick Kursawe <phosphan@gentoo.org> metadata.xml,
+  szip-1.1.ebuild:
+  Initial import, needed for dev-libs/hdf (Version 4)

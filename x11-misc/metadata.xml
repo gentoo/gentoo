@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The x11-misc category contains miscellaneous X11 applications which do
+		not belong elsewhere.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie x11-misc enthält verschiedene X11-Applikationen die sich
+		nicht anderweitig einordnen lassen.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría x11-misc contiene aplicaciones mixtas de X11 que no
+		pertenecen a ninguna otra categoría.
+	</longdescription>
+	<longdescription lang="ja">
+		x11-miscカテゴリーには他のカテゴリーに分類されなかった
+		多種多様なX11アプリケーションが含まれて>います。
+	</longdescription>
+	<longdescription lang="nl">
+		De categorie x11-misc bevat allerlei X11-applicaties die niet in andere
+		categorieën thuishoren.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm x11-misc chứa các ứng dụng X11 không thuộc vào nơi nào khác.
+	</longdescription>
+	<longdescription lang="sk">
+		Kategória x11-misc obsahuje rôzne aplikácie pre X11, ktoré nie sú
+		zaradené do iných kategórií.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria x11-misc contiene applicazioni miste per X11 che non appartengono ad altre categorie.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria x11-misc contém aplicações mistas de X11 que não
+		pertencem a outras categorias.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria x11-misc zawiera aplikacje dla X11, które nie pasują do żadnej
+		z pozostałych kategorii.
+	</longdescription>
+</catmetadata>
+

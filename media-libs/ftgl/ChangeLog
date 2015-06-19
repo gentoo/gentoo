@@ -1,0 +1,140 @@
+# ChangeLog for media-libs/ftgl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/ftgl/ChangeLog,v 1.40 2015/03/03 08:25:16 dlan Exp $
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> ftgl-2.1.3_rc5.ebuild:
+  add arm64 support, tested on A53 board
+
+  27 Apr 2013; Patrick Lauer <patrick@gentoo.org> ftgl-2.1.3_rc5.ebuild:
+  Automake 1.13 fix
+
+  14 Nov 2012; Justin Lecher <jlec@gentoo.org> ftgl-2.1.3_rc5.ebuild:
+  Keyworded for ~linux, tested by me
+
+  10 May 2012; Alexis Ballier <aballier@gentoo.org> ftgl-2.1.3_rc5.ebuild:
+  keyword ~amd64-fbsd
+
+  15 Mar 2012; Tomáš Chvátal <scarabeus@gentoo.org> ftgl-2.1.3_rc5.ebuild:
+  Install static libraries only if desired and remove libtool archive as we have
+  pc file.
+
+  20 May 2011; Tupone Alfredo <tupone@gentoo.org> ftgl-2.1.3_rc5.ebuild,
+  +files/ftgl-2.1.3_rc5-underlink.patch:
+  Fix underlink. Bug #367485 by Diego Elio Pettenò
+
+  10 Oct 2010; Raúl Porcel <armin76@gentoo.org> ftgl-2.1.3_rc5.ebuild:
+  arm/ia64/sh stable
+
+  16 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  ftgl-2.1.3_rc5.ebuild:
+  virtual/glut -> media-libs/glut
+
+  08 Aug 2010; Raúl Porcel <armin76@gentoo.org> ftgl-2.1.3_rc5.ebuild:
+  Add ~ia64 wrt #329389
+
+  23 Jul 2010; Markus Meier <maekke@gentoo.org> ftgl-2.1.3_rc5.ebuild:
+  add ~arm, bug #329389
+
+  10 Aug 2009; Tobias Klausmann <klausman@gentoo.org> ftgl-2.1.3_rc5.ebuild:
+  Stable on alpha, bug #266937
+
+  23 Jul 2009; Joseph Jezak <josejx@gentoo.org> ftgl-2.1.3_rc5.ebuild:
+  Marked ppc/ppc64 stable.
+
+  29 Jun 2009; Ferris McCormick <fmccor@gentoo.org> ftgl-2.1.3_rc5.ebuild:
+  Sparc stable, required for bug #255229.
+
+  02 Jun 2009; Jeroen Roovers <jer@gentoo.org> ftgl-2.1.3_rc5.ebuild:
+  Stable for HPPA (bug #255229).
+
+  09 Mar 2009; Raúl Porcel <armin76@gentoo.org> ftgl-2.1.3_rc5.ebuild:
+  x86 stable wrt #245293
+
+  07 Mar 2009; Jeremy Olexa <darkside@gentoo.org> ftgl-2.1.3_rc5.ebuild:
+  amd64 stable, bug 245293
+
+  24 Nov 2008; Tupone Alfredo <tupone@gentoo.org>
+  files/ftgl-2.1.3_rc5-gentoo.patch:
+  Fix bug #248589 reported by mathwizard@gmx.de
+
+*ftgl-2.1.3_rc5 (23 Nov 2008)
+
+  23 Nov 2008; Tupone Alfredo <tupone@gentoo.org>
+  +files/ftgl-2.1.3_rc5-gentoo.patch, +ftgl-2.1.3_rc5.ebuild:
+  Version bump to 2.1.3_rc5. Bug #234831 by Tomáš Chvátal
+
+  30 Mar 2008; <ricmm@gentoo.org> ftgl-2.1.2-r1.ebuild:
+  Drop to ~mips due to unstable deps
+
+*ftgl-2.1.2-r2 (05 Jan 2008)
+
+  05 Jan 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/ftgl-2.1.2-configure.ac.patch, +files/ftgl-2.1.2-ftgl.pc.in.patch,
+  +ftgl-2.1.2-r2.ebuild:
+  add patch from Cedric Pinson to correct version in .pc file (bug #171047)
+
+  27 Dec 2007; Michael Sterrett <mr_bones_@gentoo.org> ftgl-2.1.2-r1.ebuild:
+  license should have been LGPL-2 (bug #174440)
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing seemant from metadata.xml as per #202469.
+
+  23 Oct 2007; Jeroen Roovers <jer@gentoo.org> ftgl-2.1.2-r1.ebuild:
+  Stable for HPPA too (audacious-plugins).
+
+  27 Jul 2007; Seemant Kulleen <seemant@gentoo.org> ftgl-2.1.2-r1.ebuild:
+  changing the WANT_AUTOMAKE to latest as well, now, as it's reported to be
+  working by Renato Caldas in bug #186782
+
+  15 Jun 2007; Joshua Kinard <kumba@gentoo.org> ftgl-2.1.2-r1.ebuild:
+  Stable on mips.
+
+  27 Feb 2007; Javier Villavicencio <the_paya@gentoo.org>
+  ftgl-2.1.2-r1.ebuild:
+  Added ~x86-fbsd keyword.
+
+  26 Feb 2007; Jeroen Roovers <jer@gentoo.org> ftgl-2.1.2-r1.ebuild:
+  Marked ~hppa (bug #168465).
+
+  22 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> ftgl-2.1.2-r1.ebuild:
+  Stable on sparc
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> ftgl-2.1.2-r1.ebuild:
+  Stable on Alpha.
+
+  03 Oct 2006; Daniel Drake <dsd@gentoo.org> ftgl-2.1.2-r1.ebuild:
+  Fix no-multilib issues arising from ancient libtool
+
+  08 Sep 2006; Thomas Cort <tcort@gentoo.org> ftgl-2.1.2-r1.ebuild:
+  Added ~alpha keyword.
+
+  25 Jul 2006; Michael Sterrett <mr_bones_@gentoo.org> ftgl-2.1.2-r1.ebuild:
+  strip-flags since ftgl is sensitive - bug #112820
+
+  07 May 2006; Markus Rothe <corsair@gentoo.org> ftgl-2.1.2-r1.ebuild:
+  Stable on ppc64
+
+  02 Feb 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +files/ftgl-2.1.2-gcc41.patch, ftgl-2.1.2-r1.ebuild:
+  Add a GCC 4.1 compile fix per #120835.
+
+  10 Dec 2005; Tom Gall <tgall@gentoo.org> ftgl-2.1.2-r1.ebuild:
+  added ~ppc64
+
+*ftgl-2.1.2-r1 (04 Nov 2005)
+
+  04 Nov 2005; Seemant Kulleen <seemant@gentoo.org> +ftgl-2.1.2-r1.ebuild:
+  now it actually installs the shared library thanks to ilya kriveshko, and
+  libtool fixes, thanks to az.
+
+  12 Jun 2005; Marcus D. Hanwell <marcus@gentoo.org> ftgl-2.1.2.ebuild:
+  Stable on amd64.
+
+  07 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org> ftgl-2.1.2.ebuild:
+  Marked ~amd64.
+
+*ftgl-2.1.2 (17 Dec 2004)
+
+  17 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/2.1.2-ftgl.pc.in.patch, +ftgl-2.1.2.ebuild:
+  initial commit - ebuild provided by Jordi Vilalta via bug #47048

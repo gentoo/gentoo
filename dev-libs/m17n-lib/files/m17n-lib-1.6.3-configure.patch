@@ -1,0 +1,82 @@
+diff --git a/configure.ac b/configure.ac
+index 2e58d68..49b812a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -125,7 +125,9 @@ if test "x$no_x" != "xyes"; then
+   X11_LD_FLAGS="-lXt -lX11"
+   M17N_EXT_LIBS="$M17N_EXT_LIBS X11"
+ 
+-  if test "x$HAVE_XAW" = "xyes"; then
++  AC_ARG_WITH(athena, 
++	    AS_HELP_STRING([--with-athena],[with MIT Athena widget suport]))
++  if test "x$with_athena" != "xno" -a "x$HAVE_XAW" = "xyes"; then
+     AC_DEFINE(HAVE_X11_XAW_COMMAND_H, 1,
+ 	      [Define to 1 if you have the Xaw header files.])
+     XAW_LD_FLAGS="-lXaw -lXmu"
+@@ -149,7 +151,9 @@ else
+ fi
+ AC_CHECK_LIB(fribidi, fribidi_set_mirroring, HAVE_FRIBIDI=yes, HAVE_FRIBIDI=no)
+ AC_CHECK_HEADER(fribidi/fribidi.h,, HAVE_FRIBIDI=no)
+-if test "x$HAVE_FRIBIDI" = "xyes"; then
++AC_ARG_WITH(fribidi, 
++	    AS_HELP_STRING([--with-fribidi],[with fribidi suport]))
++if test "x$with_fribidi" != "xno" -a "x$HAVE_FRIBIDI" = "xyes"; then
+   AC_DEFINE(HAVE_FRIBIDI, 1, 
+ 	    [Define to 1 if you have Fribidi library and header file.])
+   M17N_EXT_LIBS="$M17N_EXT_LIBS fribidi"
+@@ -202,8 +206,10 @@ fi
+ AC_SUBST(OTF_LD_FLAGS)
+ 
+ dnl Check for Freetype2 usability.
++AC_ARG_WITH(freetype,
++	    AS_HELP_STRING([--with-freetype],[enable Freetype support]))
+ AC_CHECK_PROG(HAVE_FREETYPE_CONFIG, freetype-config, yes)
+-if test "x$HAVE_FREETYPE_CONFIG" = "xyes"; then
++if test "x$with_freetype" != "xno" -a "x$HAVE_FREETYPE_CONFIG" = "xyes"; then
+   FREETYPE_INC=`freetype-config --cflags`
+   save_CPPFLAGS="$CPPFLAGS"
+   CPPFLAGS="$CPPFLAGS $FREETYPE_INC"
+@@ -255,7 +261,9 @@ AC_CHECK_HEADER(X11/Xft/Xft.h,, HAVE_XFT2=no,
+ #else
+ Version too old.  Compiling this line should fail.
+ #endif])
+-if test "x$HAVE_XFT2" = "xyes"; then
++AC_ARG_WITH(xft,
++	    AS_HELP_STRING([--with-xft],[enable Xft2 support]))
++if test "x$with_xft" != "xno" -a "x$HAVE_XFT2" = "xyes"; then
+   AC_DEFINE(HAVE_XFT2, 1,
+ 	    [Define to 1 if you have Xft2 library and header file.])
+   M17N_EXT_LIBS="$M17N_EXT_LIBS xft2"
+@@ -330,7 +338,9 @@ else
+ fi
+ AC_CHECK_LIB(xml2, xmlParseMemory, HAVE_XML2=yes, HAVE_XML2=no)
+ AC_CHECK_HEADER(libxml/tree.h,, HAVE_XML2=no, /**/)
+-if test "x$HAVE_XML2" = "xyes"; then
++AC_ARG_WITH(libxml2, 
++	    AS_HELP_STRING([--with-libxml2],[with libxml2 suport]))
++if test "x$with_libxml2" != "xno" -a "x$HAVE_XML2" = "xyes"; then
+   AC_DEFINE(HAVE_XML2, 1,
+ 	    [Define to 1 if you have libxml2 library and header file])
+   M17N_EXT_LIBS="$M17N_EXT_LIBS xml2"
+@@ -344,7 +354,9 @@ AC_SUBST(XML2_LD_FLAGS)
+ dnl Check for Anthy usability.
+ 
+ PKG_CHECK_MODULES(ANTHY, anthy, HAVE_ANTHY=yes, HAVE_ANTHY=no)
+-if test "x$HAVE_ANTHY" = "xyes"; then
++AC_ARG_WITH(anthy, 
++	    AS_HELP_STRING([--with-anthy],[with anthy suport]))
++if test "x$with_anthy" != "xno" -a "x$HAVE_ANTHY" = "xyes"; then
+   AC_DEFINE(HAVE_ANTHY, 1,
+ 	   [Define to 1 if you have Anthy library and header file])
+   M17N_EXT_LIBS="$M17N_EXT_LIBS anthy"
+@@ -355,7 +367,9 @@ AC_SUBST(ANTHY_LD_FLAGS)
+ 
+ dnl Check for Ispell usability.
+ AC_CHECK_PROG(HAVE_ISPELL, ispell, yes)
+-if test "x$HAVE_ISPELL" = "xyes"; then
++AC_ARG_WITH(ispell, 
++	    AS_HELP_STRING([--with-ispell],[with ispell suport]))
++if test "x$with_ispell" != "xno" -a "x$HAVE_ISPELL" = "xyes"; then
+   AC_DEFINE(HAVE_ISPELL, 1, [Define if ispell is available.])
+   M17N_EXT_LIBS="$M17N_EXT_LIBS ispell"
+   CONFIG_FLAGS="$CONFIG_FLAGS -DHAVE_ISPELL"

@@ -1,0 +1,102 @@
+# ChangeLog for app-dicts/aspell-de-alt
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-de-alt/ChangeLog,v 1.27 2014/01/05 10:57:51 pacho Exp $
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org>
+  aspell-de-alt-2.1.1-r1.ebuild:
+  keyword ~amd64-fbsd
+
+  02 Jan 2010; Ulrich Mueller <ulm@gentoo.org> -aspell-de-alt-2.1.1.ebuild:
+  Remove old.
+
+  02 Jan 2010; Brent Baude <ranger@gentoo.org>
+  aspell-de-alt-2.1.1-r1.ebuild:
+  Marking aspell-de-alt-2.1.1-r1 ppc64 for bug 296443
+
+  28 Dec 2009; nixnut <nixnut@gentoo.org> aspell-de-alt-2.1.1-r1.ebuild:
+  ppc stable #296443
+
+  19 Dec 2009; Pacho Ramos <pacho@gentoo.org> aspell-de-alt-2.1.1-r1.ebuild:
+  amd64 stable, bug 296443
+
+  15 Dec 2009; Raúl Porcel <armin76@gentoo.org>
+  aspell-de-alt-2.1.1-r1.ebuild:
+  alpha/arm/ia64/s390/sh/x86 stable wrt #296443
+
+  14 Dec 2009; Jeroen Roovers <jer@gentoo.org>
+  aspell-de-alt-2.1.1-r1.ebuild:
+  Stable for HPPA (bug #296443).
+
+  11 Dec 2009; Tiago Cunha <tcunha@gentoo.org>
+  aspell-de-alt-2.1.1-r1.ebuild:
+  stable sparc, bug 296443
+
+*aspell-de-alt-2.1.1-r1 (22 Oct 2009)
+
+  22 Oct 2009; Ulrich Mueller <ulm@gentoo.org>
+  +aspell-de-alt-2.1.1-r1.ebuild,
+  +files/aspell-de-alt-2.1.1-dict-name.patch:
+  Add proper alias names for dictionary. Install additional documentation.
+
+  21 Oct 2009; Alexis Ballier <aballier@gentoo.org>
+  aspell-de-alt-2.1.1.ebuild:
+  keyword ~sparc-fbsd, bug #254398
+
+  26 Jun 2009; Alexis Ballier <aballier@gentoo.org>
+  aspell-de-alt-2.1.1.ebuild:
+  keyword ~x86-fbsd
+
+  26 Apr 2009; Brent Baude <ranger@gentoo.org> aspell-de-alt-2.1.1.ebuild:
+  stable ppc, bug 258297
+
+  19 Mar 2009; Jeroen Roovers <jer@gentoo.org> aspell-de-alt-2.1.1.ebuild:
+  Stable for HPPA (bug #258297).
+
+  18 Mar 2009; Brent Baude <ranger@gentoo.org> aspell-de-alt-2.1.1.ebuild:
+  Marking aspell-de-alt-2.1.1 ~ppc for bug 254398
+
+  14 Mar 2009; Raúl Porcel <armin76@gentoo.org> aspell-de-alt-2.1.1.ebuild:
+  arm/ia64/s390/sh stable wrt #258297
+
+  02 Mar 2009; Tiago Cunha <tcunha@gentoo.org> aspell-de-alt-2.1.1.ebuild:
+  stable sparc, bug 258297
+
+  02 Mar 2009; Peter Volkov <pva@gentoo.org> aspell-de-alt-2.1.1.ebuild:
+  ~mips keyworded, bug #254398.
+
+  15 Feb 2009; Markus Meier <maekke@gentoo.org> aspell-de-alt-2.1.1.ebuild:
+  amd64/x86 stable, bug #258297
+
+  13 Feb 2009; Brent Baude <ranger@gentoo.org> aspell-de-alt-2.1.1.ebuild:
+  stable ppc64, bug 258297
+
+  11 Feb 2009; Raúl Porcel <armin76@gentoo.org> aspell-de-alt-2.1.1.ebuild:
+  Add ~arm/~ia64/~s390/~sh wrt #254398
+
+  09 Feb 2009; Tobias Klausmann <klausman@gentoo.org>
+  aspell-de-alt-2.1.1.ebuild:
+  Stable on alpha, bug #258297
+
+  06 Feb 2009; Jeroen Roovers <jer@gentoo.org> aspell-de-alt-2.1.1.ebuild:
+  Marked ~hppa (bug #254398).
+
+  01 Feb 2009; Tiago Cunha <tcunha@gentoo.org> aspell-de-alt-2.1.1.ebuild:
+  keyworded ~arch for sparc, bug 254398
+
+  14 Jan 2009; Brent Baude <ranger@gentoo.org> aspell-de-alt-2.1.1.ebuild:
+  keyworded ~arch for ppc64, bug 254398
+
+  10 Jan 2009; Tobias Klausmann <klausman@gentoo.org>
+  aspell-de-alt-2.1.1.ebuild:
+  Keyworded on alpha, bug #254398
+
+*aspell-de-alt-2.1.1 (10 Jan 2009)
+
+  10 Jan 2009; Ulrich Mueller <ulm@gentoo.org> +metadata.xml,
+  +aspell-de-alt-2.1.1.ebuild:
+  Initial import. Ebuild contributed by Patric Mueller <bhaak@gmx.net>,
+  modified by me; bug 193593.

@@ -1,0 +1,18 @@
+# ChangeLog for media-libs/shivavg
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/shivavg/ChangeLog,v 1.3 2010/09/16 17:16:05 scarabeus Exp $
+
+  16 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> shivavg-0.2.1.ebuild:
+  virtual/glut -> media-libs/glut
+
+  03 Aug 2010; Tomáš Chvátal <scarabeus@gentoo.org> shivavg-0.2.1.ebuild,
+  metadata.xml:
+  Fix longdesc. Fix trailing whitespace. Use base eclass for PATCHES array
+  (future use).
+
+*shivavg-0.2.1 (21 Jul 2010)
+
+  21 Jul 2010; Luca Barbato <lu_zero@gentoo.org> +metadata.xml,
+  +shivavg-0.2.1.ebuild:
+  First commit
+

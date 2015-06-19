@@ -1,0 +1,95 @@
+# ChangeLog for dev-java/dsiutils
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/dsiutils/ChangeLog,v 1.21 2014/08/10 20:12:36 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> dsiutils-1.0.10-r2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  17 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -dsiutils-1.0.10-r1.ebuild:
+  NM: Cleanup superseeded ebuilds.
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> dsiutils-1.0.10-r2.ebuild:
+  Stable for x86, wrt bug #424337
+
+  08 Dec 2012; Agostino Sarubbo <ago@gentoo.org> dsiutils-1.0.10-r2.ebuild:
+  Stable for ppc64, wrt bug #424337
+
+  07 Dec 2012; Agostino Sarubbo <ago@gentoo.org> dsiutils-1.0.10-r2.ebuild:
+  Stable for ppc, wrt bug #424337
+
+  07 Dec 2012; <ago@gentoo.org> dsiutils-1.0.10-r2.ebuild:
+  Stable for amd64, wrt bug #424337
+
+*dsiutils-1.0.10-r2 (30 Jun 2012)
+
+  30 Jun 2012; Ralph Sennhauser <sera@gentoo.org> -dsiutils-1.0.4.ebuild,
+  -dsiutils-1.0.5.ebuild, -dsiutils-1.0.7.ebuild, -dsiutils-1.0.10.ebuild,
+  +dsiutils-1.0.10-r2.ebuild:
+  Restrict build to <jdk7. #423519
+  Fix source zip and make better use of eclasses.
+  Remove old.
+
+  13 Apr 2012; Ulrich Müller <ulm@gentoo.org> dsiutils-1.0.4.ebuild,
+  dsiutils-1.0.5.ebuild, dsiutils-1.0.7.ebuild, dsiutils-1.0.10.ebuild,
+  dsiutils-1.0.10-r1.ebuild:
+  Move EAPI assignment to top of ebuild, bug 411875.
+
+  09 Feb 2010; Joseph Jezak <josejx@gentoo.org> dsiutils-1.0.10-r1.ebuild:
+  Marked ppc/ppc64 stable for bug #281006.
+
+  14 Aug 2009; Markus Meier <maekke@gentoo.org> dsiutils-1.0.10-r1.ebuild:
+  amd64 stable, bug #281006
+
+  14 Aug 2009; Markus Meier <maekke@gentoo.org> dsiutils-1.0.10-r1.ebuild:
+  x86 stable, bug #281006
+
+*dsiutils-1.0.10-r1 (11 Jul 2009)
+
+  11 Jul 2009; Alistair Bush <ali_bush@gentoo.org>
+  +dsiutils-1.0.10-r1.ebuild:
+  Fix package.env generation.
+
+*dsiutils-1.0.10 (09 Jul 2009)
+
+  09 Jul 2009; Alistair Bush <ali_bush@gentoo.org> +dsiutils-1.0.10.ebuild:
+  Version Bump
+
+*dsiutils-1.0.7 (07 Feb 2009)
+
+  07 Feb 2009; Alistair Bush <ali_bush@gentoo.org> +dsiutils-1.0.7.ebuild:
+  Version Bump.
+
+*dsiutils-1.0.5 (04 Jun 2008)
+
+  04 Jun 2008; Alistair Bush <ali_bush@gentoo.org> -dsiutils-1.0.1.ebuild,
+  +dsiutils-1.0.5.ebuild:
+  Version Bump and cleanup old version.
+
+*dsiutils-1.0.4 (15 Apr 2008)
+
+  15 Apr 2008; Alistair Bush <ali_bush@gentoo.org> +dsiutils-1.0.4.ebuild:
+  Version Bump.
+
+  12 Apr 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  dsiutils-1.0.1.ebuild:
+  Added ~ppc, bug #215406
+
+  07 Apr 2008; Markus Rothe <corsair@gentoo.org> dsiutils-1.0.1.ebuild:
+  Added ~ppc64; bug #215406
+
+  04 Apr 2008; Christian Faulhammer <opfer@gentoo.org>
+  dsiutils-1.0.1.ebuild:
+  keyworded ~arch for x86, bug 215406
+
+  03 Apr 2008; Alistair Bush <ali_bush@gentoo.org> dsiutils-1.0.1.ebuild:
+  Update Dependencies to pull in higher version of fastutil
+
+  02 Apr 2008; Alistair Bush <ali_bush@gentoo.org> +metadata.xml,
+  +dsiutils-1.0.1.ebuild:
+  New Package.
+
+*dsiutils-1.0.1 (02 Apr 2008)
+
+  02 Apr 2008; Alistair Bush <ali_bush@gentoo.org> +metadata.xml,
+  +dsiutils-1.0.1.ebuild:
+  New Package.

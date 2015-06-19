@@ -1,0 +1,46 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/amavisd-new/files/amavisd.initd,v 1.5 2012/08/24 18:25:20 idl0r Exp $
+
+extra_started_commands="reload"
+extra_commands="debug debug_sa"
+
+prog="/usr/sbin/amavisd"
+progname="amavisd-new"
+
+depend() {
+	need net
+	use logger antivirus snmpd
+	before mta
+}
+
+start() {
+	ebegin "Starting ${progname}"
+	"${prog}" start
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${progname}"
+	"${prog}" stop 1>/dev/null
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading ${progname}"
+	"${prog}" reload 1>/dev/null
+	eend $?
+}
+
+debug() {
+	ebegin "Starting ${progname} in debug mode"
+	"${prog}" debug
+	eend $?
+}
+
+debug_sa() {
+	ebegin "Starting ${progname} in debug-sa mode"
+	"${prog}" debug-sa
+	eend $?
+}

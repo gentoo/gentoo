@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>x11</herd>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>x11@gentoo.org</email>
+		<description>Assign to herd.</description>
+	</maintainer>
+	<maintainer>
+		<email>jekarlson@gmail.com</email>
+		<description>Proxy maintainer, CC him on bugs.</description>
+	</maintainer>
+	<use>
+		<flag name='qt4'>
+			Install qt4 dependent optional tools (e.g Catalyst Control Panel)
+		</flag>
+		<flag name='modules'>Build the kernel modules</flag>
+		<flag name='gdm-hack'>Do a potentially dangerous binary search and replace to fix gdm compatibility</flag>
+		<flag name='pax_kernel'>Enable pax kernel specific patches</flag>
+	</use>
+</pkgmetadata>

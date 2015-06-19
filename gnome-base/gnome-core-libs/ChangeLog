@@ -1,0 +1,117 @@
+# ChangeLog for gnome-base/gnome-core-libs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-core-libs/ChangeLog,v 1.28 2015/06/09 23:11:23 eva Exp $
+
+*gnome-core-libs-3.16.0 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-core-libs-3.12.0.ebuild, +gnome-core-libs-3.16.0.ebuild:
+  Version bump for Gnome 3.16.
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnome-core-libs-3.14.0.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnome-core-libs-3.14.0.ebuild:
+  amd64 stable, bug 534012
+
+*gnome-core-libs-3.14.0 (24 Dec 2014)
+
+  24 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-core-libs-3.10.0.ebuild, +gnome-core-libs-3.14.0.ebuild:
+  Version bump for Gnome 3.14. Clean up old revision.
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gnome-core-libs-3.12.0.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gnome-core-libs-3.12.0.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  01 May 2014; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gnome-core-libs-3.10.0.ebuild, gnome-core-libs-3.12.0.ebuild:
+  libgnomekbd hasn't been a core lib since 3.8 (bug #509130, thanks to Jura).
+
+*gnome-core-libs-3.12.0 (28 Apr 2014)
+
+  28 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-core-libs-3.12.0.ebuild:
+  Version bump for Gnome 3.12.
+
+  18 Apr 2014; Pacho Ramos <pacho@gentoo.org> -gnome-core-libs-3.8.0.ebuild:
+  Drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gnome-core-libs-3.10.0.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gnome-core-libs-3.10.0.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-core-libs-3.10.0.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-core-libs-3.10.0.ebuild:
+  arch stable, bug 888
+
+  15 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-core-libs-3.10.0.ebuild:
+  Use latest librsvg
+
+*gnome-core-libs-3.10.0 (24 Dec 2013)
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org> +gnome-core-libs-3.10.0.ebuild,
+  -gnome-core-libs-3.6.2.ebuild:
+  Version bump for Gnome 3.10
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> gnome-core-libs-3.8.0.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> gnome-core-libs-3.8.0.ebuild:
+  amd64 stable, bug #478252
+
+*gnome-core-libs-3.8.0 (11 Apr 2013)
+
+  11 Apr 2013; Pacho Ramos <pacho@gentoo.org> +gnome-core-libs-3.8.0.ebuild:
+  Update metapackages to stop emerge world from continue installing old apps,
+  obsolete fallback components and blocks
+
+  07 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-core-libs-3.4.1.ebuild:
+  Clean up old revision.
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gnome-core-libs-3.6.2.ebuild:
+  Add ~arm, wrt bug #449220
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> gnome-core-libs-3.6.2.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> gnome-core-libs-3.6.2.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> gnome-core-libs-3.6.2.ebuild:
+  Add ~ia64, wrt bug #449220
+
+*gnome-core-libs-3.6.2 (26 Dec 2012)
+
+  26 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-core-libs-3.2.1.ebuild, +gnome-core-libs-3.6.2.ebuild:
+  Version bump.
+
+  05 Nov 2012; Ulrich Müller <ulm@gentoo.org> gnome-core-libs-3.2.1.ebuild,
+  gnome-core-libs-3.4.1.ebuild:
+  Change LICENSE to "metapackage", bug 440846.
+
+*gnome-core-libs-3.4.1 (10 Sep 2012)
+
+  10 Sep 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +gnome-core-libs-3.4.1.ebuild:
+  Add gnome-3.4.1 meta.
+
+  25 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gnome-core-libs-3.2.1.ebuild:
+  Add an elog with the upgrade guide url to pkg_pretend() (so that users will
+  see it as soon as they start to emerge gnome, and hopefully take notice of
+  it).
+
+*gnome-core-libs-3.2.1 (07 Nov 2011)
+
+  07 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +gnome-core-libs-3.2.1.ebuild, +metadata.xml:
+  Add the sub-meta package for core gnome-3 libraries from the gnome overlay.

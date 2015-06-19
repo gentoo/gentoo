@@ -1,0 +1,266 @@
+# ChangeLog for app-portage/flaggie
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/flaggie/ChangeLog,v 1.61 2015/06/07 19:06:08 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add bitbucket to remote-id in metadata.xml
+
+  23 Nov 2014; Michał Górny <mgorny@gentoo.org> flaggie-0.2.1.ebuild,
+  flaggie-9999.ebuild:
+  Enable python3.4.
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> flaggie-0.2.1.ebuild,
+  flaggie-9999.ebuild:
+  Replace obsolete mirror://bitbucket with the real URI.
+
+  06 Apr 2014; Michał Górny <mgorny@gentoo.org> flaggie-0.2.1.ebuild,
+  flaggie-9999.ebuild:
+  Enable PYTHON_TARGETS=pypy.
+
+  24 Dec 2013; Sergey Popov <pinkbyte@gentoo.org> flaggie-0.2.1.ebuild:
+  Stable on arm, wrt bug #479480
+
+  26 Oct 2013; Michał Górny <mgorny@gentoo.org> flaggie-9999.ebuild:
+  Clean up the log messages a bit.
+
+  14 Oct 2013; Michał Górny <mgorny@gentoo.org> flaggie-0.2.1.ebuild,
+  flaggie-9999.ebuild:
+  Switch to git-r3. Add PYTHON_USEDEP on portage.
+
+  29 Sep 2013; Michał Górny <mgorny@gentoo.org> -flaggie-0.2-r3.ebuild:
+  Drop old.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> flaggie-0.2-r3.ebuild,
+  flaggie-0.2.1.ebuild, flaggie-9999.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  20 Aug 2013; Sébastien Fabbro <bicatali@gentoo.org> flaggie-0.2.1.ebuild:
+  Keyword amd64-linux and x86-linux
+
+  18 Aug 2013; Agostino Sarubbo <ago@gentoo.org> flaggie-0.2.1.ebuild:
+  Stable for x86, wrt bug #479480
+
+  07 Aug 2013; Michał Górny <mgorny@gentoo.org> flaggie-0.2-r3.ebuild,
+  flaggie-0.2.1.ebuild, flaggie-9999.ebuild:
+  Drop removed Python implementations from PYTHON_COMPAT.
+
+  07 Aug 2013; Michał Górny <mgorny@gentoo.org> flaggie-0.2.1.ebuild,
+  flaggie-9999.ebuild:
+  Enable pypy2.0.
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> flaggie-0.2.1.ebuild:
+  Stable for amd64, wrt bug #479480
+
+*flaggie-0.2.1 (24 May 2013)
+
+  24 May 2013; Michał Górny <mgorny@gentoo.org> +flaggie-0.2.1.ebuild:
+  Version bump. The new version improves Prefix compatibility and fixes handling
+  comments in package.* files.
+
+  24 May 2013; Michał Górny <mgorny@gentoo.org> -flaggie-0.2-r2.ebuild,
+  -flaggie-0.2.ebuild, flaggie-0.2-r3.ebuild:
+  Drop old. Integrate testing and stable ebuilds since we have stable-masks for
+  pypy now.
+
+  25 Feb 2013; Michał Górny <mgorny@gentoo.org> flaggie-0.2-r3.ebuild,
+  flaggie-9999.ebuild:
+  Add ~ppc64 per bug #459194.
+
+  17 Dec 2012; Michał Górny <mgorny@gentoo.org> flaggie-0.2-r2.ebuild,
+  flaggie-0.2-r3.ebuild, flaggie-9999.ebuild:
+  Bump to EAPI=5 to make Paludis happy, bug #447524.
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> flaggie-0.2-r2.ebuild:
+  Stable for x86, wrt bug #445178
+
+*flaggie-9999 (15 Dec 2012)
+
+  15 Dec 2012; Michał Górny <mgorny@gentoo.org> +flaggie-9999.ebuild:
+  Import the live ebuild.
+
+*flaggie-0.2-r3 (09 Dec 2012)
+
+  09 Dec 2012; Michał Górny <mgorny@gentoo.org> +flaggie-0.2-r3.ebuild:
+  Enable python3.3 and pypy1.8.
+
+  02 Dec 2012; <ago@gentoo.org> flaggie-0.2-r2.ebuild:
+  Stable for amd64, wrt bug #445178
+
+  29 Nov 2012; Michał Górny <mgorny@gentoo.org> flaggie-0.2-r2.ebuild:
+  Remove pypy from PYTHON_COMPAT to clear the path for STABLEREQ.
+
+  29 Nov 2012; Michał Górny <mgorny@gentoo.org> -flaggie-0.2-r1.ebuild:
+  Remove old.
+
+  22 Nov 2012; Ian Delaney <idella4@gentoo.org> flaggie-0.2-r2.ebuild:
+  pypy comaptibility added
+
+  21 Oct 2012; Michał Górny <mgorny@gentoo.org> flaggie-0.2-r2.ebuild:
+  Re-add ~x86-fbsd & ~amd64-fbsd after keywording python-exec.
+
+  20 Oct 2012; Jeroen Roovers <jer@gentoo.org> flaggie-0.2-r2.ebuild:
+  Marked ~hppa (bug #438388).
+
+  16 Oct 2012; Michał Górny <mgorny@gentoo.org> flaggie-0.2-r2.ebuild:
+  Re-keyword ~arm for python-exec being keyworded.
+
+*flaggie-0.2-r2 (15 Oct 2012)
+
+  15 Oct 2012; Michał Górny <mgorny@gentoo.org> +flaggie-0.2-r2.ebuild:
+  Revision bump to distutils-r1.
+
+*flaggie-0.2-r1 (31 Aug 2012)
+
+  31 Aug 2012; Michał Górny <mgorny@gentoo.org> +flaggie-0.2-r1.ebuild,
+  -flaggie-0.1.4.ebuild, flaggie-0.2.ebuild, metadata.xml:
+  Sync to the live ebuild.
+
+  07 Aug 2012; Alexis Ballier <aballier@gentoo.org> flaggie-0.2.ebuild:
+  keyword ~amd64-fbsd
+
+  20 Jul 2012; Jeroen Roovers <jer@gentoo.org> flaggie-0.2.ebuild:
+  Marked ~hppa too.
+
+  09 Feb 2012; Matt Turner <mattst88@gentoo.org> flaggie-0.2.ebuild:
+  Added ~mips, bug 393175.
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> flaggie-0.2.ebuild:
+  x86 stable wrt bug #399815
+
+  23 Jan 2012; Agostino Sarubbo <ago@gentoo.org> flaggie-0.2.ebuild:
+  Stable for amd64, wrt bug #399815
+
+*flaggie-0.2 (17 Dec 2011)
+
+  17 Dec 2011; Michał Górny <mgorny@gentoo.org> +flaggie-0.2.ebuild,
+  metadata.xml:
+  Version bump. The new version always aborts on ambiguous atoms and brings
+  updated bash-completion.
+
+  09 Dec 2011; Naohiro Aota <naota@gentoo.org> flaggie-0.1.4.ebuild:
+  Add ~x86-fbsd #393175
+
+  02 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> flaggie-0.1.4.ebuild:
+  x86 stable wrt bug #345441
+
+  01 Nov 2011; Tony Vroon <chainsaw@gentoo.org> flaggie-0.1.4.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo & Ian
+  "idella4" Delaney in bug #345441.
+
+  26 Oct 2011; Michał Górny <mgorny@gentoo.org> flaggie-0.1.4.ebuild:
+  Restrict Python 3 due to bugs in it.
+
+  16 Oct 2011; Michał Górny <mgorny@gentoo.org> flaggie-0.1.4.ebuild:
+  Migrate to bash-completion-r1.
+
+*flaggie-0.1.4 (08 Oct 2011)
+
+  08 Oct 2011; Michał Górny <mgorny@gentoo.org> -flaggie-0.1.3.ebuild,
+  +flaggie-0.1.4.ebuild:
+  Version bump. The new version fixes issue writing new USE variable.
+
+*flaggie-0.1.3 (30 Aug 2011)
+
+  30 Aug 2011; Michał Górny <mgorny@gentoo.org> -flaggie-0.0.4.ebuild,
+  -flaggie-0.1.2.ebuild, +flaggie-0.1.3.ebuild:
+  Version bump. The new version fixes support for invalid USE_EXPAND values
+  (bug #380505) and -env:: action (bug #372069).
+
+*flaggie-0.1.2 (14 Aug 2011)
+
+  14 Aug 2011; Michał Górny <mgorny@gentoo.org> -flaggie-0.1.1.ebuild,
+  +flaggie-0.1.2.ebuild:
+  Long-delayed version bump to 0.1.2 bugfix.
+
+*flaggie-0.1.1 (19 Jan 2011)
+
+  19 Jan 2011; Michał Górny <mgorny@gentoo.org> -flaggie-0.1.ebuild,
+  +flaggie-0.1.1.ebuild:
+  Version bump. The new version fixes treating license groups as incorrect args
+  and adds support for USE_EXPAND variables in make.conf.
+
+  16 Jan 2011; Michał Górny <mgorny@gentoo.org> flaggie-0.0.4.ebuild,
+  flaggie-0.1.ebuild:
+  Add missing app-shells/gentoo-bashcomp RDEP for bash-completion. Thanks to
+  Jacek Sowiński.
+
+*flaggie-0.1 (15 Jan 2011)
+
+  15 Jan 2011; Michał Górny <mgorny@gentoo.org> -flaggie-0.0.3.ebuild,
+  +flaggie-0.1.ebuild:
+  Version bump. The new version introduces preliminary support for global
+  (make.conf) actions.
+
+  08 Jan 2011; Michał Górny <mgorny@gentoo.org> flaggie-0.0.4.ebuild:
+  Use bash-completion.eclass.
+
+*flaggie-0.0.4 (07 Jan 2011)
+
+  07 Jan 2011; Michał Górny <mgorny@gentoo.org> +flaggie-0.0.4.ebuild:
+  Version bump. Fixes #349108 (package.accept_keywords support) and #349207
+  ('*' special keyword), adds a bash-completion script.
+
+  06 Jan 2011; Dane Smith <c1pher@gentoo.org> flaggie-0.0.3.ebuild:
+  Tested on arm. Marking ~arm.
+
+  05 Jan 2011; Michał Górny <mgorny@gentoo.org> -flaggie-0.0.2.4.ebuild,
+  flaggie-0.0.3.ebuild:
+  EAPI bump, drop old version.
+
+  20 Dec 2010; Michał Górny <mgorny@gentoo.org> flaggie-0.0.2.4.ebuild,
+  flaggie-0.0.3.ebuild:
+  Change the SRC_URIs to use cloud.github.com directly. This avoids issues with
+  (pointless) SSL and old wget versions.
+
+  19 Dec 2010; Michał Górny <mgorny@gentoo.org> flaggie-0.0.2.4.ebuild,
+  flaggie-0.0.3.ebuild:
+  Clarify the Portage RDEP.
+
+  19 Dec 2010; Michał Górny <mgorny@gentoo.org> metadata.xml:
+  Clarify the <bugs-to/> URL.
+
+*flaggie-0.0.3 (08 Dec 2010)
+
+  08 Dec 2010; Michał Górny <mgorny@gentoo.org> -flaggie-0.0.2.3.ebuild,
+  +flaggie-0.0.3.ebuild:
+  Version bump. The new version introduces package.env file support and further
+  bugfixes.
+
+*flaggie-0.0.2.4 (23 Nov 2010)
+
+  23 Nov 2010; Michał Górny <mgorny@gentoo.org> +flaggie-0.0.2.4.ebuild:
+  Version bump. The new version fixes '**' keyword argument support and uses
+  atomic writes.
+
+*flaggie-0.0.2.3 (17 Nov 2010)
+
+  17 Nov 2010; Michał Górny <mgorny@gentoo.org> -flaggie-0.0.2.2.ebuild,
+  +flaggie-0.0.2.3.ebuild:
+  Version bump. Fixes crash with non-existent files and auto-shortening
+  unmodified package.keywords entries.
+
+*flaggie-0.0.2.2 (15 Nov 2010)
+
+  15 Nov 2010; Michał Górny <mgorny@gentoo.org> -flaggie-0.0.2.1.ebuild,
+  +flaggie-0.0.2.2.ebuild, metadata.xml:
+  Version bump, with important bugfixes (whitespace problems, omitting
+  backup files).
+
+*flaggie-0.0.2.1 (13 Nov 2010)
+
+  13 Nov 2010; Michał Górny <mgorny@gentoo.org> -flaggie-0.0.2.ebuild,
+  +flaggie-0.0.2.1.ebuild:
+  Version bump, fixing issues with shortcut package.keywords entries.
+
+*flaggie-0.0.2 (10 Nov 2010)
+
+  10 Nov 2010; Michał Górny <mgorny@gentoo.org> -flaggie-0.0.1.ebuild,
+  +flaggie-0.0.2.ebuild, metadata.xml:
+  Version bump. The new version fixes important runtime issues, and supplies
+  a few new cleanup actions. Fixing typos in metadata.xml too.
+
+*flaggie-0.0.1 (07 Nov 2010)
+
+  07 Nov 2010; Michał Górny <mgorny@gentoo.org> +flaggie-0.0.1.ebuild,
+  +metadata.xml:
+  Introducing flaggie, a new CLI package.* file mangler.

@@ -1,0 +1,70 @@
+# ChangeLog for dev-libs/libdivecomputer
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libdivecomputer/ChangeLog,v 1.14 2014/08/29 08:37:36 dlan Exp $
+
+  29 Aug 2014; Yixun Lan <dlan@gentoo.org> libdivecomputer-9999.ebuild:
+  fix bug 503572, proxy for maintainer, thanks Martin Gysel (bearsh)
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  libdivecomputer-0.4.1.ebuild, libdivecomputer-0.4.2.ebuild,
+  libdivecomputer-9999.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*libdivecomputer-0.4.2 (27 Feb 2014)
+
+  27 Feb 2014; Sergey Popov <pinkbyte@gentoo.org>
+  +libdivecomputer-0.4.2.ebuild, metadata.xml:
+  Version bump, add new proxied maintainer, bug #500568
+
+  27 Feb 2014; Sergey Popov <pinkbyte@gentoo.org> libdivecomputer-0.4.1.ebuild,
+  libdivecomputer-9999.ebuild:
+  Fix improper KEYWORDS in live ebuild
+
+  27 Feb 2014; Sergey Popov <pinkbyte@gentoo.org>
+  -libdivecomputer-0.3.0.ebuild, -libdivecomputer-0.4.0.ebuild:
+  Drop old versions
+
+  27 Feb 2014; Sergey Popov <pinkbyte@gentoo.org> libdivecomputer-0.4.1.ebuild,
+  libdivecomputer-9999.ebuild:
+  Port USE='tools' fix into live ebuild. QA fixes: move
+  AUTOTOOLS_IN_SOURCE_BUILD before inheriting apropriate eclass, correct
+  src_prepare to call autotools-utils_src_prepare instead of plain eautoreconf,
+  epatch_user in non-live ebuild
+
+  16 Feb 2014; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Fix maintainer's email address, fix spelling
+
+*libdivecomputer-0.4.1 (24 Aug 2013)
+
+  24 Aug 2013; Tom Wijsman <TomWij@gentoo.org> +libdivecomputer-0.4.1.ebuild,
+  metadata.xml:
+  Version bump to 0.4.1. Fixed file collision with /usr/bin/nemo by prefixing
+  the tools and bringing them under the 'tools' USE flag, which is disabled by
+  default per upstream suggestion. Proxied commit for Martin Gysel (bearsh).
+  Fixes bug #480706, reported by zamabe.
+
+  09 Jul 2013; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Removed myself from metadata.xml to avoid duplication, as I am part of proxy-
+  maintainers herd now.
+
+*libdivecomputer-0.4.0 (15 May 2013)
+
+  15 May 2013; Tom Wijsman <TomWij@gentoo.org> +libdivecomputer-0.4.0.ebuild:
+  Version bump to 0.4.0, slotted libusb dependency, ebuild patch contributed by
+  Martin Gysel (bearsh).
+
+  28 Mar 2013; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Added proxy-maintainers to metadata.xml.
+
+*libdivecomputer-9999 (28 Mar 2013)
+
+  28 Mar 2013; Tom Wijsman <TomWij@gentoo.org> +libdivecomputer-9999.ebuild:
+  Added live ebuild for testing purposes.
+
+*libdivecomputer-0.3.0 (28 Mar 2013)
+
+  28 Mar 2013; Tom Wijsman <TomWij@gentoo.org> +libdivecomputer-0.3.0.ebuild,
+  +metadata.xml:
+  New ebuild for libdivecomputer, a library for communication with dive
+  computers from various manufacturers. Ebuild contributed by Martin Gysel aka
+  bearsh, corrected by Aaron Bauman aka B-Man. Fixes bug #437960.

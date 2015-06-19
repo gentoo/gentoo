@@ -1,0 +1,44 @@
+# ChangeLog for x11-misc/tinymount
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/tinymount/ChangeLog,v 1.9 2015/06/04 18:04:11 pesa Exp $
+
+  04 Jun 2015; Davide Pesavento <pesa@gentoo.org> tinymount-0.2.8.ebuild:
+  Fix bug 551202, plus various other enhancements to the ebuild.
+
+  04 Jun 2015; Davide Pesavento <pesa@gentoo.org> -tinymount-0.2.6-r1.ebuild:
+  old
+
+*tinymount-0.2.8 (03 Feb 2015)
+
+  03 Feb 2015; Ben de Groot <yngwin@gentoo.org> +tinymount-0.2.8.ebuild,
+  metadata.xml:
+  version bump (bug #532080
+
+  03 Mar 2013; Samuli Suominen <ssuominen@gentoo.org> -tinymount-0.2.4.ebuild,
+  -tinymount-0.2.6.ebuild:
+  old
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> tinymount-0.2.4.ebuild,
+  tinymount-0.2.6-r1.ebuild, tinymount-0.2.6.ebuild:
+  Move Qt dependencies to the new category
+
+*tinymount-0.2.6-r1 (06 Nov 2012)
+
+  06 Nov 2012; Markos Chandras <hwoarang@gentoo.org>
+  +files/tinymount-0.2.6-libnotify.patch, +tinymount-0.2.6-r1.ebuild:
+  Revbump. Drop -Werror. Bug #442048. Don't build libnotify support
+  unconditionally. Bug #441986
+
+*tinymount-0.2.6 (06 Nov 2012)
+
+  06 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> +tinymount-0.2.6.ebuild:
+  Version bump wrt bug #441912, utilize l10n eclass to manage locales
+
+  15 May 2012; Samuli Suominen <ssuominen@gentoo.org> tinymount-0.2.4.ebuild,
+  metadata.xml:
+  Use git:// instead of https:// and setup proxy-maintainership in metadata.xml
+
+*tinymount-0.2.4 (15 May 2012)
+
+  15 May 2012; Samuli Suominen <ssuominen@gentoo.org> +tinymount-0.2.4.ebuild:
+  Initial commit wrt #415565 by Mike Limansky

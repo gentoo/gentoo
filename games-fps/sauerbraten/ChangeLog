@@ -1,0 +1,111 @@
+# ChangeLog for games-fps/sauerbraten
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/sauerbraten/ChangeLog,v 1.22 2014/07/28 18:35:28 mr_bones_ Exp $
+
+  28 Jul 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/sauerbraten-2010.07.28-system-enet.patch,
+  -sauerbraten-2010.07.28.ebuild:
+  old
+
+  17 Feb 2013; Agostino Sarubbo <ago@gentoo.org> sauerbraten-2013.01.04.ebuild:
+  Stable for x86, wrt bug #456060
+
+  17 Feb 2013; Agostino Sarubbo <ago@gentoo.org> sauerbraten-2013.01.04.ebuild:
+  Stable for amd64, wrt bug #456060
+
+*sauerbraten-2013.01.04 (05 Jan 2013)
+
+  05 Jan 2013; Julian Ospald <hasufell@gentoo.org>
+  +sauerbraten-2013.01.04.ebuild, +files/sauerbraten-2013.01.04-QA.patch,
+  +files/sauerbraten-2013.01.04-master.patch,
+  +files/sauerbraten-2013.01.04-system-enet.patch:
+  version bump wrt #450360
+
+  04 Dec 2012; <ago@gentoo.org> sauerbraten-2010.07.28.ebuild:
+  Stable for x86, wrt bug #443560
+
+  18 Nov 2012;  <ago@gentoo.org> sauerbraten-2010.07.28.ebuild:
+  Stable for amd64, wrt bug #443560
+
+  18 Nov 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  sauerbraten-2010.07.28.ebuild:
+  add a default for the server config (bug #443650)
+
+  17 Nov 2012; Michael Sterrett <mr_bones_@gentoo.org> files/sauerbraten.init:
+  fix init script (bug #443646)
+
+  16 Nov 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  -sauerbraten-2008.06.17.ebuild:
+  old
+
+  05 Sep 2012; Justin Lecher <jlec@gentoo.org> sauerbraten-2010.07.28.ebuild:
+  Use doicon instead insinto + doins to install icon files
+
+*sauerbraten-2010.07.28 (08 Feb 2012)
+
+  08 Feb 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  +sauerbraten-2010.07.28.ebuild,
+  +files/sauerbraten-2010.07.28-system-enet.patch, +files/sauerbraten.conf,
+  +files/sauerbraten.init:
+  version bump (bug #366321) with contributions from at least Jon
+  Severinsson, Petr Pisar, Tomáš Chvátal, and Paul Hartman (bug #111566)
+
+  09 Mar 2009; Tomas Chvatal <scarabeus@gentoo.org>
+  +files/sauerbraten_unix.patch, -files/wrapper,
+  -sauerbraten-2007.08.29.ebuild, -sauerbraten-2007.12.27.ebuild,
+  sauerbraten-2008.06.17.ebuild:
+  Allow user editable configuration (map editation wont work as it is
+  CANTFIX). Per bug #232028. Remove old.
+
+*sauerbraten-2008.06.17 (18 Jun 2008)
+
+  18 Jun 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +sauerbraten-2008.06.17.ebuild:
+  version bump
+
+*sauerbraten-2007.12.27 (07 Jan 2008)
+
+  07 Jan 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +sauerbraten-2007.12.27.ebuild:
+  version bump
+
+  25 Dec 2007; <solar@gentoo.org> sauerbraten-2007.08.29.ebuild:
+  - binary packages that are linked with libc.so.6 need to use sys-libs/glibc
+  in RDEPEND
+
+*sauerbraten-2007.08.29 (24 Sep 2007)
+
+  24 Sep 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  +sauerbraten-2007.08.29.ebuild:
+  version bump
+
+*sauerbraten-2007.08.19 (20 Aug 2007)
+
+  20 Aug 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  +sauerbraten-2007.08.19.ebuild:
+  version bump
+
+*sauerbraten-2007.04.15 (16 Apr 2007)
+
+  16 Apr 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  +sauerbraten-2007.04.15.ebuild:
+  version bump
+
+  04 Feb 2007; Simon Stelling <blubb@gentoo.org>
+  sauerbraten-2006.12.04.ebuild:
+  correct dependencies and make sure libs get installed to lib32 on amd64; bug
+  158012
+
+*sauerbraten-2006.12.04 (06 Dec 2006)
+
+  06 Dec 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  +sauerbraten-2006.12.04.ebuild:
+  version bump
+
+  16 Oct 2006; <tupone@gentoo.org> sauerbraten-2006.09.12.ebuild:
+  Add menu entry. Bug #150362 by Marijn Schouten
+
+*sauerbraten-2006.09.12 (19 Sep 2006)
+
+  19 Sep 2006; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

@@ -1,0 +1,112 @@
+# ChangeLog for app-emacs/matlab
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/matlab/ChangeLog,v 1.28 2014/06/07 11:21:09 ulm Exp $
+
+  07 Jun 2014; Ulrich Müller <ulm@gentoo.org> matlab-3.3.2_pre20130829.ebuild:
+  Remove redundant NEED_EMACS assignment.
+
+  24 Mar 2014; Ulrich Müller <ulm@gentoo.org>
+  -matlab-3.1.0_pre20070306.ebuild, -files/51matlab-gentoo.el:
+  Remove old.
+
+  24 Mar 2014; Agostino Sarubbo <ago@gentoo.org>
+  matlab-3.3.2_pre20130829.ebuild:
+  Stable for x86, wrt bug #505458
+
+  24 Mar 2014; Agostino Sarubbo <ago@gentoo.org>
+  matlab-3.3.2_pre20130829.ebuild:
+  Stable for amd64, wrt bug #505458
+
+  17 Mar 2014; Ulrich Müller <ulm@gentoo.org>
+  -matlab-3.3.1_pre20100121.ebuild, matlab-3.3.2_pre20130829.ebuild:
+  Drop dependency on virtual/emacs-cedet, as CEDET is included with Emacs 23.2
+  and later. Remove old.
+
+*matlab-3.3.2_pre20130829 (21 Feb 2014)
+
+  21 Feb 2014; Ulrich Müller <ulm@gentoo.org>
+  -matlab-3.3.0_pre20091116.ebuild, +matlab-3.3.2_pre20130829.ebuild,
+  +files/50matlab-gentoo.el:
+  Version bump. Remove intermediate version.
+
+  14 Jan 2012; Raúl Porcel <armin76@gentoo.org>
+  matlab-3.1.0_pre20070306.ebuild, matlab-3.3.0_pre20091116.ebuild,
+  matlab-3.3.1_pre20100121.ebuild:
+  Drop sparc keywords
+
+*matlab-3.3.1_pre20100121 (08 Mar 2010)
+
+  08 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  +matlab-3.3.1_pre20100121.ebuild:
+  version bump
+
+  24 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  matlab-3.1.0_pre20070306.ebuild, matlab-3.3.0_pre20091116.ebuild:
+  import changes from Prefix overlay
+
+*matlab-3.3.0_pre20091116 (19 Nov 2009)
+
+  19 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  +matlab-3.3.0_pre20091116.ebuild:
+  version bump for bug 256735
+
+  29 Jan 2009; Christian Faulhammer <fauli@gentoo.org>
+  -files/50matlab-gentoo.el, -matlab-2.2.3.ebuild:
+  clean up
+
+  27 Aug 2008; Ulrich Mueller <ulm@gentoo.org>
+  matlab-3.1.0_pre20070306.ebuild:
+  Use eclass default instead of elisp-comp, bug 235442.
+
+  23 Jan 2008; Raúl Porcel <armin76@gentoo.org>
+  matlab-3.1.0_pre20070306.ebuild:
+  sparc stable wrt #206584
+
+  18 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  matlab-3.1.0_pre20070306.ebuild:
+  stable amd64
+
+  18 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  matlab-3.1.0_pre20070306.ebuild:
+  stable x86
+
+*matlab-3.1.0_pre20070306 (18 Dec 2007)
+
+  18 Dec 2007; Ulrich Mueller <ulm@gentoo.org> +files/51matlab-gentoo.el,
+  +matlab-3.1.0_pre20070306.ebuild:
+  Add current CVS snapshot.
+
+  27 Oct 2007; Christian Faulhammer <opfer@gentoo.org> matlab-2.2.3.ebuild:
+  updated HOMEPAGE, set SITEFILE to a more generic value, removed unnecessary
+  dependency on virtual/emacs (provided by elisp.eclass already)
+
+  08 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/50matlab-gentoo.el:
+  add load path correctly, fixes bug 169588, reported by Ulrich Mueller
+  <ulm@kph.uni-mainz.de>
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  26 Jan 2006; Matthew Kennedy <mkennedy@gentoo.org> matlab-2.2.3.ebuild:
+  Update HOMEPAGE; Ebuild cleanup; Resolves Bug# 110419.
+
+  24 Oct 2005; Joseph Jezak <josejx@gentoo.org> matlab-2.2.3.ebuild:
+  Marked ~ppc.
+
+  05 Apr 2005; Simon Stelling <blubb@gentoo.org> matlab-2.2.3.ebuild:
+  added ~amd64
+
+  19 Jun 2004; Jason Wever <weeve@gentoo.org> matlab-2.2.3.ebuild:
+  Stable on sparc.
+
+  10 May 2004; Jason Wever <weeve@gentoo.org> matlab-2.2.3.ebuild:
+  Added ~sparc keyword to help resolve bug #50695.
+
+*matlab-2.2.3 (31 Oct 2002)
+
+  31 Oct 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  matlab-2.2.3.ebuild, files/50matlab-gentoo.el, 
+  files/digest-matlab-2.2.3 :
+
+  Initial import.

@@ -1,0 +1,14 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sat Jun 16 00:27:52 UTC 2012
+
+use cmake variable for data location
+
+--- files/openmw.cfg
++++ files/openmw.cfg
+@@ -1,5 +1,6 @@
+ data="?global?data"
+ data="?mw?Data Files"
++data=${MORROWIND_DATA_FILES}
+ data-local="?userdata?data"
+ resources=${OPENMW_RESOURCE_FILES}
+ script-blacklist=Museum

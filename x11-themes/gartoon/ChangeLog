@@ -1,0 +1,49 @@
+# ChangeLog for x11-themes/gartoon
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gartoon/ChangeLog,v 1.13 2008/01/07 10:39:17 nelchael Exp $
+
+  07 Jan 2008; Krzysiek Pawlik <nelchael@gentoo.org> gartoon-0.5-r2.ebuild:
+  Remove gartoon-pallete.svg to fix icon cache generation, see bug #199110.
+
+  30 Jun 2007; Samuli Suominen <drac@gentoo.org> gartoon-0.5-r2.ebuild:
+  Fix RESTRICT nostrip to strip.
+
+  05 May 2007; Steve Dibb <beandog@gentoo.org> gartoon-0.5-r2.ebuild:
+  amd64 stable
+
+  23 Mar 2007; Samuli Suominen <drac@gentoo.org> -gartoon-0.5-r1.ebuild,
+  gartoon-0.5-r2.ebuild:
+  sparc stable.
+
+*gartoon-0.5-r2 (23 Mar 2007)
+
+  23 Mar 2007; Samuli Suominen <drac@gentoo.org> +gartoon-0.5-r2.ebuild:
+  Add two symlinks for bug 158113. Thanks to Brad Walker.
+
+  22 Mar 2007; Samuli Suominen <drac@gentoo.org> metadata.xml,
+  gartoon-0.5-r1.ebuild:
+  Take maintainership and some minor fixes..
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove gothgirl from metadata.xml due to retirement.
+
+*gartoon-0.5-r1 (31 Oct 2006)
+
+  31 Oct 2006; gothgirl <gothgirl@gentoo.org> metadata.xml,
+  +gartoon-0.5-r1.ebuild:
+  bump re:bug#153500
+
+  23 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org> gartoon-0.5.ebuild:
+  Stable on sparc
+
+  11 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org> gartoon-0.5.ebuild:
+  Keyworded ~sparc
+
+  14 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> gartoon-0.5.ebuild:
+  Added to ~ppc. See bug #111633.
+
+*gartoon-0.5 (03 Nov 2005)
+
+  03 Nov 2005; <gothgirl@gentoo.org> +metadata.xml, +gartoon-0.5.ebuild:
+  initial import to tree wrt bug#107220
+

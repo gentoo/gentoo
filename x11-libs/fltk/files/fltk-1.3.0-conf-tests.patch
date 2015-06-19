@@ -1,0 +1,79 @@
+diff --git a/Makefile b/Makefile
+index ccec15c..747625e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -27,7 +27,7 @@
+ 
+ include makeinclude
+ 
+-DIRS = $(IMAGEDIRS) src $(CAIRODIR) fluid test documentation
++DIRS = $(IMAGEDIRS) src $(CAIRODIR) fluid
+ 
+ all: makeinclude fltk-config
+ 	for dir in $(DIRS); do\
+@@ -35,6 +35,10 @@ all: makeinclude fltk-config
+ 		(cd $$dir; $(MAKE) $(MFLAGS)) || exit 1;\
+ 	done
+ 
++check: all	
++	$(MAKE) $(MFLAGS) -C test || exit 1
++
++
+ install: makeinclude
+ 	-mkdir -p $(DESTDIR)$(bindir)
+ 	$(RM) $(DESTDIR)$(bindir)/fltk-config
+@@ -109,9 +113,6 @@ makeinclude: configure configh.in makeinclude.in
+ 	touch config.h
+ 	chmod +x fltk-config
+ 
+-configure: configure.in
+-	autoconf
+-
+ portable-dist:
+ 	epm -v -s fltk.xpm fltk
+ 
+diff --git a/documentation/Makefile b/documentation/Makefile
+index 1742cfa..8102c43 100644
+--- a/documentation/Makefile
++++ b/documentation/Makefile
+@@ -92,11 +92,6 @@ install: $(MANPAGES)
+ 	  $(INSTALL_DATA) fltk.pdf $(DESTDIR)$(docdir); \
+ 	fi
+ 	echo "Installing man pages in $(DESTDIR)$(mandir) ..."
+-	-$(INSTALL_DIR) $(DESTDIR)$(mandir)/cat1
+-	$(INSTALL_MAN) $(SRC_DOCDIR)/fluid.$(CAT1EXT) $(DESTDIR)$(mandir)/cat1
+-	$(INSTALL_MAN) $(SRC_DOCDIR)/fltk-config.$(CAT1EXT) $(DESTDIR)$(mandir)/cat1
+-	-$(INSTALL_DIR) $(DESTDIR)$(mandir)/cat3
+-	$(INSTALL_MAN) $(SRC_DOCDIR)/fltk.$(CAT3EXT) $(DESTDIR)$(mandir)/cat3
+ 	-$(INSTALL_DIR) $(DESTDIR)$(mandir)/man1
+ 	$(INSTALL_MAN) $(SRC_DOCDIR)/fluid.man $(DESTDIR)$(mandir)/man1/fluid.1
+ 	$(INSTALL_MAN) $(SRC_DOCDIR)/fltk-config.man $(DESTDIR)$(mandir)/man1/fltk-config.1
+@@ -104,10 +99,6 @@ install: $(MANPAGES)
+ 	$(INSTALL_MAN) $(SRC_DOCDIR)/fltk.man $(DESTDIR)$(mandir)/man3/fltk.3
+ 
+ install-linux install-osx:
+-	-$(INSTALL_DIR) $(DESTDIR)$(mandir)/cat6
+-	$(INSTALL_MAN) $(SRC_DOCDIR)/blocks.$(CAT6EXT) $(DESTDIR)$(mandir)/cat6
+-	$(INSTALL_MAN) $(SRC_DOCDIR)/checkers.$(CAT6EXT) $(DESTDIR)$(mandir)/cat6
+-	$(INSTALL_MAN) $(SRC_DOCDIR)/sudoku.$(CAT6EXT) $(DESTDIR)$(mandir)/cat6
+ 	-$(INSTALL_DIR) $(DESTDIR)$(mandir)/man6
+ 	$(INSTALL_MAN) $(SRC_DOCDIR)/blocks.man $(DESTDIR)$(mandir)/man6/blocks.6
+ 	$(INSTALL_MAN) $(SRC_DOCDIR)/checkers.man $(DESTDIR)$(mandir)/man6/checkers.6
+@@ -116,17 +107,11 @@ install-linux install-osx:
+ 
+ uninstall:
+ 	$(RMDIR) $(DESTDIR)$(docdir)
+-	$(RM) $(DESTDIR)$(mandir)/cat1/fluid.$(CAT1EXT)
+ 	$(RM) $(DESTDIR)$(mandir)/man1/fluid.1
+-	$(RM) $(DESTDIR)$(mandir)/cat1/fltk-config.$(CAT1EXT)
+ 	$(RM) $(DESTDIR)$(mandir)/man1/fltk-config.1
+-	$(RM) $(DESTDIR)$(mandir)/cat3/fltk.$(CAT3EXT)
+ 	$(RM) $(DESTDIR)$(mandir)/man3/fltk.3
+ 
+ uninstall-linux uninstall-osx:
+-	$(RM) $(DESTDIR)$(mandir)/cat6/blocks.$(CAT6EXT)
+-	$(RM) $(DESTDIR)$(mandir)/cat6/checkers.$(CAT6EXT)
+-	$(RM) $(DESTDIR)$(mandir)/cat6/sudoku.$(CAT6EXT)
+ 	$(RM) $(DESTDIR)$(mandir)/man6/blocks.6
+ 	$(RM) $(DESTDIR)$(mandir)/man6/checkers.6
+ 	$(RM) $(DESTDIR)$(mandir)/man6/sudoku.6

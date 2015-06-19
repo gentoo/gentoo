@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>games</herd>
+	<longdescription>
+A rather wierd shoot-em-up game that originated on the Atari 2600. It's more fun 
+than it looks. Just released so might be tweaked.
+</longdescription>
+	<upstream>
+		<remote-id type="freshmeat">yarsrevenge</remote-id>
+	</upstream>
+</pkgmetadata>

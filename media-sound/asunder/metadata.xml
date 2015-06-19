@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sound</herd>
+<use>
+  <flag name='mac'>Support for creation of Monkey's Audio files (APE)</flag>
+  <flag name='opus'>Support for creation of Opus files</flag>
+</use>
+</pkgmetadata>

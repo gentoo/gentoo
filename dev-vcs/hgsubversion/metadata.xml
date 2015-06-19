@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>djc@gentoo.org</email>
+		<name>Dirkjan Ochtman</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">hgsubversion</remote-id>
+		<remote-id type="bitbucket">durin42/hgsubversion</remote-id>
+	</upstream>
+</pkgmetadata>

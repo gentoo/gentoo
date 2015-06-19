@@ -1,0 +1,46 @@
+# ChangeLog for games-arcade/dynamitejack
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/dynamitejack/ChangeLog,v 1.11 2015/06/01 21:41:33 mr_bones_ Exp $
+
+  01 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  dynamitejack-1.0.23-r1.ebuild:
+  clean up app-emulation/emul-linux which has been removed
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> dynamitejack-1.0.23-r1.ebuild:
+  Stable for x86, wrt bug #539392
+
+  21 May 2015; Agostino Sarubbo <ago@gentoo.org> dynamitejack-1.0.23-r1.ebuild:
+  Stable for amd64, wrt bug #539392
+
+  27 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -dynamitejack-1.0.23.ebuild:
+  old
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+*dynamitejack-1.0.23-r1 (26 Jun 2014)
+
+  26 Jun 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +dynamitejack-1.0.23-r1.ebuild:
+  converted deps to gx86-multilib ; note, cannot access the distfile and so
+  cannot confirm all deps are correct
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> dynamitejack-1.0.23.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  02 Jun 2013; Julian Ospald <hasufell@gentoo.org> dynamitejack-1.0.23.ebuild:
+  splitdebug is not invalid
+
+  13 May 2013; Patrick Lauer <patrick@gentoo.org> dynamitejack-1.0.23.ebuild:
+  Remove invalid splitdebug restrict
+
+  09 May 2013; Julian Ospald <hasufell@gentoo.org> dynamitejack-1.0.23.ebuild:
+  restrict splitdebug
+
+*dynamitejack-1.0.23 (21 Mar 2013)
+
+  21 Mar 2013; Julian Ospald <hasufell@gentoo.org> +dynamitejack-1.0.23.ebuild,
+  +metadata.xml:
+  initial import

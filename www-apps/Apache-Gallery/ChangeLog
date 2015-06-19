@@ -1,0 +1,187 @@
+# ChangeLog for www-apps/Apache-Gallery
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/Apache-Gallery/ChangeLog,v 1.38 2015/06/13 17:18:27 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Apache-Gallery-1.0_rc3.ebuild:
+  The CGI module is no longer part of core Perl and has been moved to dev-perl
+
+  19 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Drop perl herd from metadata
+
+  09 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> Apache-Gallery-1.0_rc3.ebuild:
+  Bump to EAPI=5 (bug #478714)
+
+  19 Jun 2011; Raúl Porcel <armin76@gentoo.org> Apache-Gallery-1.0_rc3.ebuild:
+  Drop alpha/sparc keywords
+
+  07 Mar 2009; Petteri Räty <betelgeuse@gentoo.org>
+  Apache-Gallery-1.0_rc3.ebuild:
+  Migrate to EAPI 2.
+
+  17 Feb 2008; Benedikt Böhm <hollow@gentoo.org> metadata.xml:
+  remove redundant metadata
+
+  17 Feb 2008; Benedikt Böhm <hollow@gentoo.org>
+  -files/76_apache-gallery.conf, -files/76_apache1-gallery.conf,
+  -files/apache-gallery.conf, Apache-Gallery-1.0_rc3.ebuild:
+  remove old files; add libapreq2 check; cleanup
+
+  02 Feb 2008; Benedikt Böhm <hollow@gentoo.org>
+  Apache-Gallery-1.0_rc3.ebuild:
+  fix depend.apache usage wrt #208033
+
+  19 Aug 2007; Benedikt Böhm <hollow@gentoo.org>
+  Apache-Gallery-1.0_rc3.ebuild:
+  move www-misc/libapreq2 to www-apache/libapreq2
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org>
+  Apache-Gallery-1.0_rc3.ebuild:
+  Fixing the DEPEND/RDEPEND for the move of net-www/apache to
+  www-servers/apache (#78622).
+
+  13 Jun 2007; Luca Longinotti <chtekk@gentoo.org>
+  -Apache-Gallery-0.6.ebuild:
+  Remove Apache1.
+
+  24 May 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  Apache-Gallery-1.0_rc3.ebuild:
+  Stable on sparc wrt #178194
+
+  20 May 2007; nixnut <nixnut@gentoo.org> Apache-Gallery-1.0_rc3.ebuild:
+  Stable on ppc wrt bug 178194
+
+  20 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  Apache-Gallery-1.0_rc3.ebuild:
+  stable x86/amd64, bug 178194
+
+  12 May 2007; Luca Longinotti <chtekk@gentoo.org>
+  Apache-Gallery-1.0_rc3.ebuild:
+  Apache 1.X masking (fix ebuilds to not require apache-1*).
+
+  20 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Apache-Gallery-1.0_rc3.ebuild:
+  libapreq2 move, bug 162120
+
+  20 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Apache-Gallery-0.6.ebuild, Apache-Gallery-1.0_rc3.ebuild:
+  Changed libapreq dep to new location, bug 162120
+
+  09 Jul 2006; Renat Lumpau <rl03@gentoo.org> Apache-Gallery-0.6.ebuild:
+  einfo->elog
+
+  20 Apr 2006; Jason Wever <weeve@gentoo.org> Apache-Gallery-0.6.ebuild:
+  Stable on SPARC.
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  Apache-Gallery-0.6.ebuild, Apache-Gallery-1.0_rc3.ebuild:
+  Virtuals for perl-core
+
+  18 Jan 2006; Renat Lumpau <rl03@gentoo.org> Apache-Gallery-0.6.ebuild,
+  Apache-Gallery-1.0_rc3.ebuild:
+  Removed virtual/x11 dependency. Per upstream, it's only needed for imlib
+
+*Apache-Gallery-1.0_rc3 (11 Jan 2006)
+
+  11 Jan 2006; Renat Lumpau <rl03@gentoo.org> -Apache-Gallery-0.8.ebuild,
+  -Apache-Gallery-0.8-r1.ebuild, -Apache-Gallery-0.8-r2.ebuild,
+  -Apache-Gallery-0.9.1.ebuild, +Apache-Gallery-1.0_rc3.ebuild:
+  Version bump wrt bug #118621, cleaned out old versions.
+
+  23 Oct 2005; Renat Lumpau <rl03@gentoo.org> Apache-Gallery-0.6.ebuild,
+  Apache-Gallery-0.8.ebuild, Apache-Gallery-0.8-r1.ebuild,
+  Apache-Gallery-0.8-r2.ebuild:
+  Fixed emerge --config wrt bug #109482.
+
+  24 Sep 2005; Bryan Østergaard <kloeri@gentoo.org>
+  Apache-Gallery-0.9.1.ebuild:
+  Add back ~alpha keyword, bug 104737.
+
+  16 Sep 2005; Aron Griffis <agriffis@gentoo.org> Apache-Gallery-0.6.ebuild:
+  Mark 0.6 stable on alpha
+
+  03 Sep 2005; Jason Wever <weeve@gentoo.org> Apache-Gallery-0.9.1.ebuild:
+  Added ~sparc keyword as it was inadvertently dropped in the version bump.
+
+  08 Aug 2005; Renat Lumpau <rl03@gentoo.org> Apache-Gallery-0.9.1.ebuild:
+  Fixed libapreq2 dependency wrt bug #101329.
+
+  05 Aug 2005; Renat Lumpau <rl03@gentoo.org> +files/postinstall-en.txt:
+  Added missing postinstall-en.txt
+
+*Apache-Gallery-0.9.1 (02 Aug 2005)
+
+  02 Aug 2005; Renat Lumpau <rl03@gentoo.org>
+  +files/76_apache1-gallery.conf, +files/76_apache2-gallery.conf,
+  +Apache-Gallery-0.9.1.ebuild:
+  Version bump (#97231). Fixed Apache paths (#79432).
+
+  24 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Apache-Gallery-0.6.ebuild, Apache-Gallery-0.8-r1.ebuild,
+  Apache-Gallery-0.8-r2.ebuild, Apache-Gallery-0.8.ebuild:
+  dev-perl/CGI => perl-core/CGI
+
+  10 May 2005; Elfyn McBratney <beu@gentoo.org> Apache-Gallery-0.6.ebuild,
+  Apache-Gallery-0.8.ebuild, Apache-Gallery-0.8-r1.ebuild,
+  Apache-Gallery-0.8-r2.ebuild:
+  dev-perl/libapreq{,2} -> www-apache
+
+  09 May 2005; Elfyn McBratney <beu@gentoo.org> Apache-Gallery-0.6.ebuild,
+  Apache-Gallery-0.8.ebuild, Apache-Gallery-0.8-r1.ebuild,
+  Apache-Gallery-0.8-r2.ebuild:
+  dev-perl/mod_perl -> www-apache/mod_perl
+
+  07 Mar 2005; Michael Cummings <mcummings@gentoo.org>
+  Apache-Gallery-0.8-r1.ebuild:
+  Modified what's installed from templates [ bug 71196 - thanks to Wayne Love
+  <wayne@wslove.org> ]. Also corrected default vs new ins's.
+
+*Apache-Gallery-0.8-r1 (21 Sep 2004)
+
+  21 Sep 2004; Renat Lumpau <rl03@gentoo.org> metadata.xml,
+  files/apache-gallery.conf, +Apache-Gallery-0.8-r1.ebuild:
+  Version bump, this time done right. Resolves bug #52020.
+
+  20 Sep 2004; Michael Cummings <mcummings@gentoo.org>
+  Apache-Gallery-0.8.ebuild:
+  Missing deps added
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  Apache-Gallery-0.6.ebuild:
+  Masked Apache-Gallery-0.6.ebuild stable for ppc
+
+*Apache-Gallery-0.8 (15 Aug 2004)
+
+  15 Aug 2004; Stuart Herbert <stuart@gentoo.org> +metadata.xml,
+  +files/apache-gallery.conf, +Apache-Gallery-0.6.ebuild,
+  +Apache-Gallery-0.8.ebuild:
+  Moved from dev-perl/Apache-Gallery to www-apps/Apache-Gallery.
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  Apache-Gallery-0.6.ebuild, Apache-Gallery-0.8.ebuild:
+  Keyword fix, virtual for older version
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  Apache-Gallery-0.8.ebuild:
+  changed to virtaul/x11
+
+*Apache-Gallery-0.8 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  Apache-Gallery-0.8.ebuild:
+  new version, new deps
+
+  29 Jul 2003; Michael Cummings <mcummings@gentoo.org>
+  files/apache-gallery.conf:
+  Totally missed the missing apache-gallery.conf file. Thanks to Dan Noe
+  <dpn@isomerica.net> in Bug 25136 for catching that
+
+*Apache-Gallery-0.6 (20 Jun 2003)
+
+  20 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  Apache-Gallery-0.6.ebuild:
+  New ebuild. Original ebuild submitted in bug 11725 by Jens Hilligsoee
+  <gentoo@hilli.dk>

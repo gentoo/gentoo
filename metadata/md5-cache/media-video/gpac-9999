@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install preinst prepare unpack
+DEPEND=a52? ( media-libs/a52dec ) aac? ( >=media-libs/faad2-2.0 ) alsa? ( media-libs/alsa-lib ) dvb? ( media-tv/linuxtv-dvb-apps ) ffmpeg? ( virtual/ffmpeg ) jack? ( media-sound/jack-audio-connection-kit ) jpeg? ( virtual/jpeg ) mad? ( >=media-libs/libmad-0.15.1b ) opengl? ( virtual/opengl media-libs/freeglut virtual/glu ) >=media-libs/libogg-1.1 png? ( >=media-libs/libpng-1.4 ) vorbis? ( >=media-libs/libvorbis-1.1 ) theora? ( media-libs/libtheora ) truetype? ( >=media-libs/freetype-2.1.4 ) xml? ( >=dev-libs/libxml2-2.6.0 ) xvid? ( >=media-libs/xvid-1.0.1 ) sdl? ( media-libs/libsdl ) jpeg2k? ( media-libs/openjpeg:0 ) ssl? ( dev-libs/openssl ) pulseaudio? ( media-sound/pulseaudio ) x11-libs/libXt x11-libs/libX11 x11-libs/libXv x11-libs/libXext || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DESCRIPTION=GPAC is an implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
+EAPI=4
+HOMEPAGE=http://gpac.wp.mines-telecom.fr/
+IUSE=a52 aac alsa debug dvb ffmpeg ipv6 jack jpeg jpeg2k mad opengl oss png pulseaudio sdl ssl static-libs theora truetype vorbis xml xvid
+LICENSE=GPL-2
+RDEPEND=a52? ( media-libs/a52dec ) aac? ( >=media-libs/faad2-2.0 ) alsa? ( media-libs/alsa-lib ) dvb? ( media-tv/linuxtv-dvb-apps ) ffmpeg? ( virtual/ffmpeg ) jack? ( media-sound/jack-audio-connection-kit ) jpeg? ( virtual/jpeg ) mad? ( >=media-libs/libmad-0.15.1b ) opengl? ( virtual/opengl media-libs/freeglut virtual/glu ) >=media-libs/libogg-1.1 png? ( >=media-libs/libpng-1.4 ) vorbis? ( >=media-libs/libvorbis-1.1 ) theora? ( media-libs/libtheora ) truetype? ( >=media-libs/freetype-2.1.4 ) xml? ( >=dev-libs/libxml2-2.6.0 ) xvid? ( >=media-libs/xvid-1.0.1 ) sdl? ( media-libs/libsdl ) jpeg2k? ( media-libs/openjpeg:0 ) ssl? ( dev-libs/openssl ) pulseaudio? ( media-sound/pulseaudio ) x11-libs/libXt x11-libs/libX11 x11-libs/libXv x11-libs/libXext
+SLOT=0
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=7ec4510dbfb9ff0a5d9f7ce4054df4db

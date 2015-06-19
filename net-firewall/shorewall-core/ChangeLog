@@ -1,0 +1,292 @@
+# ChangeLog for net-firewall/shorewall-core
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/shorewall-core/ChangeLog,v 1.67 2015/01/13 15:53:01 jer Exp $
+
+  13 Jan 2015; Jeroen Roovers <jer@gentoo.org>
+  shorewall-core-4.5.21.10-r1.ebuild:
+  Stable for HPPA (bug #535560).
+
+  18 Nov 2014; Michael Weber <xmw@gentoo.org> -files/4.5.18-r1/shorewallrc_new,
+  -files/4.5.21.7/10-releasenotes.patch, -files/4.5.21.7/shorewallrc,
+  -shorewall-core-4.5.18-r1.ebuild, -shorewall-core-4.5.21.7.ebuild:
+  Drop old.
+
+*shorewall-core-4.5.21.10-r1 (18 Nov 2014)
+
+  18 Nov 2014; Michael Weber <xmw@gentoo.org> +files/4.5.21.10-r1/shorewallrc,
+  +shorewall-core-4.5.21.10-r1.ebuild, -files/4.5.21.10/shorewallrc,
+  -shorewall-core-4.5.21.10.ebuild:
+  Revbump (bug 520316, thanks whissi).
+
+  02 Nov 2014; Sven Vermeulen <swift@gentoo.org>
+  shorewall-core-4.5.21.10.ebuild, shorewall-core-4.5.21.9.ebuild:
+  Remove sec-policy/selinux-* dependency from DEPEND but keep in RDEPEND (bug
+  #527698)
+
+  19 Sep 2014; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.21.9.ebuild:
+  Stable for sparc, wrt bug #511620
+
+  19 Sep 2014; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.21.9.ebuild:
+  Stable for ppc64, wrt bug #511620
+
+  19 Sep 2014; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.21.9.ebuild:
+  Stable for ppc, wrt bug #511620
+
+  30 Aug 2014; Chema Alonso <nimiux@gentoo.org> shorewall-core-4.5.21.9.ebuild:
+  Stable for amd64 wrt bug #511620
+
+  26 Jul 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  shorewall-core-4.5.21.9.ebuild:
+  x86 stable wrt bug #511620
+
+  24 Jul 2014; Tobias Klausmann <klausman@gentoo.org>
+  shorewall-core-4.5.21.9.ebuild:
+  Stable on alpha, bug #511620
+
+*shorewall-core-4.5.21.10 (12 Jun 2014)
+
+  12 Jun 2014; Tom Wijsman <TomWij@gentoo.org> +files/4.5.21.10/shorewallrc,
+  +shorewall-core-4.5.21.10.ebuild:
+  Version bump to 4.5.21.10; fixes bug #509258 and bug #509258, proxied commit
+  for Thomas D. (whissi).
+
+  04 Jun 2014; Jeroen Roovers <jer@gentoo.org> shorewall-core-4.5.21.9.ebuild:
+  Stable for HPPA (bug #511620).
+
+*shorewall-core-4.5.21.9 (26 Apr 2014)
+
+  26 Apr 2014; Markos Chandras <hwoarang@gentoo.org>
+  +files/4.5.21.9/shorewallrc, +shorewall-core-4.5.21.9.ebuild,
+  -files/4.5.19/shorewallrc, -files/4.5.21.2/shorewallrc,
+  -files/4.5.21.4/shorewallrc, -files/shorewallrc_new,
+  -shorewall-core-4.5.18.ebuild, -shorewall-core-4.5.19.ebuild,
+  -shorewall-core-4.5.21.2.ebuild, -shorewall-core-4.5.21.4.ebuild:
+  Version bump. Remove old. Bug #508396 thanks to Thomas D. <whissi@whissi.de>
+
+  23 Mar 2014; Agostino Sarubbo <ago@gentoo.org>
+  shorewall-core-4.5.18-r1.ebuild:
+  Stable for alpha, wrt bug #487690
+
+  23 Mar 2014; Agostino Sarubbo <ago@gentoo.org>
+  shorewall-core-4.5.18-r1.ebuild:
+  Stable for sparc, wrt bug #487690
+
+*shorewall-core-4.5.21.7 (15 Mar 2014)
+
+  15 Mar 2014; Markos Chandras <hwoarang@gentoo.org>
+  +files/4.5.21.7/10-releasenotes.patch, +files/4.5.21.7/shorewallrc,
+  +shorewall-core-4.5.21.7.ebuild, metadata.xml:
+  Version bump. Bug #499174 thanks to Thomas D.
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org>
+  shorewall-core-4.5.18-r1.ebuild:
+  Stable for x86, wrt bug #487690
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org>
+  shorewall-core-4.5.18-r1.ebuild:
+  Stable for ppc, wrt bug #487690
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org>
+  shorewall-core-4.5.18-r1.ebuild:
+  Stable for ppc64, wrt bug #487690
+
+*shorewall-core-4.5.21.4 (02 Dec 2013)
+
+  02 Dec 2013; Constanze Hausner <constanze@gentoo.org>
+  +files/4.5.21.4/shorewallrc, +shorewall-core-4.5.21.4.ebuild:
+  Version Bump; Thanks to Thomas D.
+
+*shorewall-core-4.5.21.2 (26 Oct 2013)
+
+  26 Oct 2013; Constanze Hausner <constanze@gentoo.org>
+  +files/4.5.21.2/shorewallrc, +shorewall-core-4.5.21.2.ebuild:
+  Version bump; Thanks to Thomas D.
+
+  21 Oct 2013; Chema Alonso <nimiux@gentoo.org>
+  shorewall-core-4.5.18-r1.ebuild:
+  Stable for amd64 wrt bug #487690
+
+  16 Oct 2013; Jeroen Roovers <jer@gentoo.org> shorewall-core-4.5.18-r1.ebuild:
+  Stable for HPPA (bug #487690).
+
+*shorewall-core-4.5.18-r1 (22 Sep 2013)
+
+  22 Sep 2013; Constanze Hausner <constanze@gentoo.org>
+  +files/4.5.18-r1/shorewallrc_new, +shorewall-core-4.5.18-r1.ebuild:
+  Bugfix 459316 for 4.5.18; Thanks to Thomas D.
+
+  29 Aug 2013; Constanze Hausner <constanze@gentoo.org> metadata.xml:
+  Added Thomas D. as new maintainer
+
+*shorewall-core-4.5.19 (28 Aug 2013)
+
+  28 Aug 2013; Constanze Hausner <constanze@gentoo.org>
+  +files/4.5.19/shorewallrc, +shorewall-core-4.5.19.ebuild:
+  Version bump; Add new files/ structure
+
+  28 Aug 2013; Constanze Hausner <constanze@gentoo.org>
+  -shorewall-core-4.5.15.ebuild, -shorewall-core-4.5.17.ebuild:
+  Preparation for files/ restructuring: Cleanup old versions
+
+  17 Aug 2013; Jeroen Roovers <jer@gentoo.org> shorewall-core-4.5.18.ebuild:
+  Stable for HPPA (bug #480072).
+
+  17 Aug 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.18.ebuild:
+  Stable for ppc64, wrt bug #480072
+
+  17 Aug 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.18.ebuild:
+  Stable for ppc, wrt bug #480072
+
+  17 Aug 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.18.ebuild:
+  Stable for sparc, wrt bug #480072
+
+  17 Aug 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.18.ebuild:
+  Stable for alpha, wrt bug #480072
+
+  17 Aug 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.18.ebuild:
+  Stable for x86, wrt bug #480072
+
+  17 Aug 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.18.ebuild:
+  Stable for amd64, wrt bug #480072
+
+*shorewall-core-4.5.18 (13 Jul 2013)
+
+  13 Jul 2013; Constanze Hausner <constanze@gentoo.org>
+  -shorewall-core-4.5.8.2.ebuild, -shorewall-core-4.5.11.2.ebuild,
+  +shorewall-core-4.5.18.ebuild:
+  Cleanup; Version bump bug #472434
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.15.ebuild:
+  Stable for ppc64, wrt bug #470544
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.15.ebuild:
+  Stable for ppc, wrt bug #470544
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.15.ebuild:
+  Stable for x86, wrt bug #470544
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.15.ebuild:
+  Stable for sparc, wrt bug #470544
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.15.ebuild:
+  Stable for alpha, wrt bug #470544
+
+  04 Jun 2013; Tony Vroon <chainsaw@gentoo.org> shorewall-core-4.5.15.ebuild:
+  Marked stable on AMD64 based on a report by Elijah "Armageddon" El Lazkani in
+  bug #470544.
+
+*shorewall-core-4.5.17 (02 Jun 2013)
+
+  02 Jun 2013; Constanze Hausner <constanze@gentoo.org>
+  +shorewall-core-4.5.17.ebuild, -files/shorewallrc:
+  Cleanup; Version bump
+
+  29 May 2013; Jeroen Roovers <jer@gentoo.org> shorewall-core-4.5.15.ebuild:
+  Stable for HPPA (bug #470544).
+
+*shorewall-core-4.5.15 (05 Apr 2013)
+
+  05 Apr 2013; Constanze Hausner <constanze@gentoo.org>
+  +shorewall-core-4.5.15.ebuild:
+  Version Bump see Bug #462490
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.11.2.ebuild:
+  Stable for sparc, wrt bug #461208
+
+  23 Mar 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.11.2.ebuild:
+  Stable for alpha, wrt bug #461208
+
+  23 Mar 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.11.2.ebuild:
+  Stable for ppc64, wrt bug #461208
+
+  22 Mar 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.11.2.ebuild:
+  Stable for ppc, wrt bug #461208
+
+  21 Mar 2013; Jeroen Roovers <jer@gentoo.org> shorewall-core-4.5.11.2.ebuild:
+  Stable for HPPA (bug #461208).
+
+  17 Mar 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.11.2.ebuild:
+  Stable for x86, wrt bug #461208
+
+  17 Mar 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.11.2.ebuild:
+  Stable for amd64, wrt bug #461208
+
+  12 Feb 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.8.2.ebuild:
+  Stable for sparc, wrt bug #452830
+
+  30 Jan 2013; Jeroen Roovers <jer@gentoo.org> shorewall-core-4.5.8.2.ebuild:
+  Stable for HPPA (bug #452830).
+
+  21 Jan 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.8.2.ebuild:
+  Stable for ppc, wrt bug #452830
+
+  21 Jan 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.8.2.ebuild:
+  Stable for ppc64, wrt bug #452830
+
+  20 Jan 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.8.2.ebuild:
+  Stable for alpha, wrt bug #452830
+
+  18 Jan 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.8.2.ebuild:
+  Stable for x86, wrt bug #452830
+
+  18 Jan 2013; Agostino Sarubbo <ago@gentoo.org> shorewall-core-4.5.8.2.ebuild:
+  Stable for amd64, wrt bug #452830
+
+*shorewall-core-4.5.11.2 (18 Jan 2013)
+
+  18 Jan 2013; Constanze Hausner <constanze@gentoo.org>
+  -shorewall-core-4.5.0.1.ebuild, -shorewall-core-4.5.0.1-r1.ebuild,
+  -shorewall-core-4.5.0.1-r2.ebuild, -shorewall-core-4.5.0.1-r3.ebuild,
+  -shorewall-core-4.5.4.2.ebuild, -shorewall-core-4.5.6.2.ebuild,
+  +shorewall-core-4.5.11.2.ebuild:
+  Version bump and cleanup of old versions
+
+  19 Oct 2012; <swift@gentoo.org> shorewall-core-4.5.0.1.ebuild,
+  shorewall-core-4.5.0.1-r1.ebuild, shorewall-core-4.5.0.1-r2.ebuild,
+  shorewall-core-4.5.0.1-r3.ebuild, shorewall-core-4.5.4.2.ebuild,
+  shorewall-core-4.5.6.2.ebuild, shorewall-core-4.5.8.2.ebuild:
+  Adding SELinux shorewall policy as dependency when SELinux is enabled
+
+*shorewall-core-4.5.8.2 (12 Oct 2012)
+
+  12 Oct 2012; Constanze Hausner <constanze@gentoo.org>
+  +shorewall-core-4.5.8.2.ebuild, +files/shorewallrc_new:
+  Version Bump with altered rc-file
+
+*shorewall-core-4.5.6.2 (15 Aug 2012)
+
+  15 Aug 2012; Constanze Hausner <constanze@gentoo.org>
+  +shorewall-core-4.5.6.2.ebuild:
+  Version Bump
+
+*shorewall-core-4.5.4.2 (08 Jun 2012)
+
+  08 Jun 2012; Constanze Hausner <constanze@gentoo.org>
+  +shorewall-core-4.5.4.2.ebuild, +files/shorewallrc:
+  Version bump with new config file
+
+*shorewall-core-4.5.0.1-r3 (24 Apr 2012)
+
+  24 Apr 2012; Constanze Hausner <constanze@gentoo.org>
+  +shorewall-core-4.5.0.1-r3.ebuild:
+  Fix for bug #411179, thanks to Joakim for reporting
+
+*shorewall-core-4.5.0.1-r2 (02 Mar 2012)
+
+  02 Mar 2012; Constanze Hausner <constanze@gentoo.org>
+  +shorewall-core-4.5.0.1-r2.ebuild:
+  Fixed wrong dependency see bug #405747
+
+
+*shorewall-core-4.5.0.1-r1 (27 Feb 2012)
+
+  27 Feb 2012; Constanze Hausner <constanze@gentoo.org>
+  +shorewall-core-4.5.0.1-r1.ebuild:
+  Added missing dependency; see bug #405747
+
+
+*shorewall-core-4.5.0.1 (24 Feb 2012)
+
+  24 Feb 2012; Constanze Hausner <constanze@gentoo.org>
+  +shorewall-core-4.5.0.1.ebuild, +metadata.xml:
+  Core features moved to new package shorewall-core

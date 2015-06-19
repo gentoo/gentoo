@@ -1,0 +1,40 @@
+# ChangeLog for dev-tex/latex-calendar
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/latex-calendar/ChangeLog,v 1.11 2014/08/10 21:26:26 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> latex-calendar-3.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  03 Apr 2013; Ulrich Müller <ulm@gentoo.org> latex-calendar-3.1.ebuild:
+  Fix LICENSE, bug 464114. Minor QA fixes to make repoman happy.
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  05 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  28 Dec 2004; Dylan Carlson <absinthe@gentoo.org>
+  latex-calendar-3.1.ebuild:
+  Stable on amd64.
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> latex-calendar-3.1.ebuild:
+  Added IUSE=.
+
+  13 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> latex-calendar-3.1.ebuild:
+  marked ~amd64
+
+  28 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> latex-calendar-3.1.ebuild:
+  Fixed compilation problem reported by Dennis Frommknecht
+  <d.frommknecht@t-online.de> in Bug #31678.
+
+  08 Jan 2003; Matthew Turk <satai@gentoo.org> :
+  Marked as stable.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*latex-calendar-3.1 (04 Nov 2002)
+
+  04 Nov 2002; Matthew Turk <satai@gentoo.org> latex-calendar-3.1.ebuild :
+  Initial import.  A very useful and beautiful calendar creator package for
+  LaTeX.  Very flexible.

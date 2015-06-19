@@ -1,0 +1,620 @@
+# ChangeLog for app-eselect/eselect-opengl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-opengl/ChangeLog,v 1.2 2015/06/17 12:28:01 chithanh Exp $
+
+  17 Jun 2015; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -eselect-opengl-1.3.1-r2.ebuild, eselect-opengl-1.2.7.ebuild,
+  eselect-opengl-1.3.1-r4.ebuild:
+  Update x11-base/xorg-server blockers.
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> +eselect-opengl-1.2.7.ebuild,
+  +eselect-opengl-1.3.1-r2.ebuild, +eselect-opengl-1.3.1-r4.ebuild,
+  +metadata.xml:
+  Move package from app-admin to app-eselect category.
+
+  02 Mar 2015; Yixun Lan <dlan@gentoo.org> eselect-opengl-1.3.1-r2.ebuild:
+  add arm64 support, tested on A53 board
+
+*eselect-opengl-1.3.1-r4 (01 Mar 2015)
+
+  01 Mar 2015; Michał Górny <mgorny@gentoo.org> +eselect-opengl-1.3.1-r4.ebuild,
+  -eselect-opengl-1.3.1-r3.ebuild:
+  Update the blockers since the patch has been backported to xorg-server-1.16*.
+
+*eselect-opengl-1.3.1-r3 (27 Feb 2015)
+
+  27 Feb 2015; Michał Górny <mgorny@gentoo.org> +eselect-opengl-1.3.1-r3.ebuild:
+  Add a revbump that no longer complains about "Files" section but blocks the
+  xorg-server versions not having the fix for it.
+
+  11 Feb 2015; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  eselect-opengl-1.2.7.ebuild, eselect-opengl-1.3.1-r2.ebuild:
+  Update list of blockers for new mesa release.
+
+  22 Jan 2015; Michał Górny <mgorny@gentoo.org> eselect-opengl-1.3.1-r2.ebuild:
+  Avoid error messages when /usr/lib*/opengl does not exist, bug #537224.
+
+*eselect-opengl-1.3.1-r2 (21 Jan 2015)
+
+  21 Jan 2015; Michał Górny <mgorny@gentoo.org> +eselect-opengl-1.3.1-r2.ebuild,
+  -eselect-opengl-1.3.1-r1.ebuild:
+  Clean up broken symlinks and empty directories. Complain about custom
+  xorg.conf.d files as well.
+
+  03 Jan 2015; Michał Górny <mgorny@gentoo.org> eselect-opengl-1.3.1-r1.ebuild:
+  Complain about Files section until we find a more permanent solution.
+
+*eselect-opengl-1.3.1-r1 (03 Jan 2015)
+
+  03 Jan 2015; Michał Górny <mgorny@gentoo.org> +eselect-opengl-1.3.1-r1.ebuild,
+  -eselect-opengl-1.3.1.ebuild:
+  Block incompatible emul-linux-x86-opengl versions.
+
+  01 Jan 2015; Michał Górny <mgorny@gentoo.org> eselect-opengl-1.3.1.ebuild:
+  Lower the blocker now that 14.9-r2 is also fixed.
+
+  01 Jan 2015; Michał Górny <mgorny@gentoo.org> eselect-opengl-1.3.1.ebuild:
+  Warn about xorg.conf containing ModulePaths, bug #534128.
+
+  01 Jan 2015; Michał Górny <mgorny@gentoo.org> eselect-opengl-1.3.1.ebuild:
+  Add a blocker on incompatible ati-drivers.
+
+  31 Dec 2014; Michał Górny <mgorny@gentoo.org> -eselect-opengl-1.3.0.ebuild:
+  Remove the buggy intermediate version.
+
+  17 Dec 2014; Michał Górny <mgorny@gentoo.org> eselect-opengl-1.3.0.ebuild,
+  eselect-opengl-1.3.1.ebuild:
+  Remove correct old file, reported by nE0sIghT.
+
+  10 Dec 2014; Patrick Lauer <patrick@gentoo.org> eselect-opengl-1.2.7.ebuild:
+  Fix xorg-server dep
+
+*eselect-opengl-1.3.1 (08 Dec 2014)
+
+  08 Dec 2014; Michał Górny <mgorny@gentoo.org> +eselect-opengl-1.3.1.ebuild,
+  eselect-opengl-1.3.0.ebuild:
+  Version bump to fix creating xorg.conf.d it if does not exist, reported by
+  Jeroen Roovers. Use ${PV} in SRC_URI.
+
+  08 Dec 2014; Matt Turner <mattst88@gentoo.org> eselect-opengl-1.2.7.ebuild:
+  Block on mesa-10.3.4-r1 and >=10.3.5-r1
+
+  08 Dec 2014; Matt Turner <mattst88@gentoo.org> eselect-opengl-1.3.0.ebuild:
+  Block on mesa-10.3.5. Thanks Arfrever for pointing this out.
+
+*eselect-opengl-1.3.0 (08 Dec 2014)
+
+  08 Dec 2014; Michał Górny <mgorny@gentoo.org> +eselect-opengl-1.3.0.ebuild,
+  -eselect-opengl-1.2.1.ebuild, -eselect-opengl-1.2.3.ebuild,
+  -eselect-opengl-1.2.4.ebuild, -eselect-opengl-1.2.5-r1.ebuild,
+  -eselect-opengl-1.2.6.1.ebuild, -eselect-opengl-1.2.6.ebuild,
+  eselect-opengl-1.2.7.ebuild:
+  Complete redesign wrt bug #531842. Drop old.
+
+  09 Jun 2013; Agostino Sarubbo <ago@gentoo.org> eselect-opengl-1.2.7.ebuild:
+  Stable for sh, wrt bug #463430
+
+  26 May 2013; Agostino Sarubbo <ago@gentoo.org> eselect-opengl-1.2.7.ebuild:
+  Stable for ppc, wrt bug #463430
+
+  26 May 2013; Agostino Sarubbo <ago@gentoo.org> eselect-opengl-1.2.7.ebuild:
+  Stable for s390, wrt bug #463430
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> eselect-opengl-1.2.7.ebuild:
+  Stable for ia64, wrt bug #463430
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> eselect-opengl-1.2.7.ebuild:
+  Stable for arm, wrt bug #463430
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> eselect-opengl-1.2.7.ebuild:
+  Stable for alpha, wrt bug #463430
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> eselect-opengl-1.2.7.ebuild:
+  Stable for sparc, wrt bug #463430
+
+  24 May 2013; Agostino Sarubbo <ago@gentoo.org> eselect-opengl-1.2.7.ebuild:
+  Stable for ppc64, wrt bug #463430
+
+  23 May 2013; Agostino Sarubbo <ago@gentoo.org> eselect-opengl-1.2.7.ebuild:
+  Stable for x86, wrt bug #463430
+
+  23 May 2013; Agostino Sarubbo <ago@gentoo.org> eselect-opengl-1.2.7.ebuild:
+  Stable for amd64, wrt bug #463430
+
+  23 May 2013; Jeroen Roovers <jer@gentoo.org> eselect-opengl-1.2.7.ebuild:
+  Stable for HPPA (bug #463430).
+
+  27 Feb 2013; Zac Medico <zmedico@gentoo.org> eselect-opengl-1.2.7.ebuild:
+  Add ~arm-linux keyword.
+
+*eselect-opengl-1.2.7 (26 Jan 2013)
+
+  26 Jan 2013; Matt Turner <mattst88@gentoo.org> +eselect-opengl-1.2.7.ebuild:
+  Version bump to support GLES3 headers, bug 444114. Also update glext.h and
+  glxext.h, bug 452022.
+
+  02 Dec 2012; Agostino Sarubbo <ago@gentoo.org> eselect-opengl-1.2.6.1.ebuild:
+  Stable for ppc64, wrt bug #432400
+
+  28 Nov 2012; Brent Baude <ranger@gentoo.org> eselect-opengl-1.2.6.1.ebuild:
+  Marking eselect-opengl-1.2.6.1 ppc stable for bug 440872
+
+  24 Sep 2012; Raúl Porcel <armin76@gentoo.org> eselect-opengl-1.2.6.1.ebuild:
+  alpha/ia64/sh/sparc stable wrt #432400
+
+  16 Sep 2012; Markus Meier <maekke@gentoo.org> eselect-opengl-1.2.6.1.ebuild:
+  arm stable, bug #432400
+
+  12 Sep 2012; Andreas Schuerch <nativemad@gentoo.org>
+  eselect-opengl-1.2.6.1.ebuild:
+  x86 stable, see bug 432400
+
+  04 Sep 2012; Jeroen Roovers <jer@gentoo.org> eselect-opengl-1.2.6.1.ebuild:
+  Stable for HPPA (bug #432400).
+
+  02 Sep 2012; Agostino Sarubbo <ago@gentoo.org> eselect-opengl-1.2.6.1.ebuild:
+  Stable for amd64, wrt bug #432400
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org>
+  eselect-opengl-1.2.5-r1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #419473
+
+  12 Jul 2012; Brent Baude <ranger@gentoo.org> eselect-opengl-1.2.5-r1.ebuild:
+  Marking eselect-opengl-1.2.5-r1 ppc stable for bug 419473
+
+  11 Jul 2012; Brent Baude <ranger@gentoo.org> eselect-opengl-1.2.5-r1.ebuild:
+  Marking eselect-opengl-1.2.5-r1 ppc64 stable for bug 419473
+
+  28 Jun 2012; Jeroen Roovers <jer@gentoo.org> eselect-opengl-1.2.5-r1.ebuild:
+  Stable for HPPA (bug #419473).
+
+  27 Jun 2012; Markus Meier <maekke@gentoo.org> eselect-opengl-1.2.5-r1.ebuild:
+  arm stable, bug #419473
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  eselect-opengl-1.2.5-r1.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  eselect-opengl-1.2.5-r1.ebuild:
+  Stable for amd64, wrt bug #419473
+
+*eselect-opengl-1.2.6.1 (13 Jun 2012)
+
+  13 Jun 2012; Luca Barbato <lu_zero@gentoo.org>
+  +eselect-opengl-1.2.6.1.ebuild:
+  New version, fix support for non-standard headers
+
+  05 Jun 2012; Luca Barbato <lu_zero@gentoo.org> eselect-opengl-1.2.6.ebuild:
+  Add back ~amd64-fbsd
+
+*eselect-opengl-1.2.6 (05 Jun 2012)
+
+  05 Jun 2012; Luca Barbato <lu_zero@gentoo.org> +eselect-opengl-1.2.6.ebuild:
+  New version supporting multiple gles implementations
+
+  10 May 2012; Alexis Ballier <aballier@gentoo.org>
+  eselect-opengl-1.2.5-r1.ebuild:
+  keyword ~amd64-fbsd
+
+  24 Mar 2012; Fabian Groffen <grobian@gentoo.org>
+  eselect-opengl-1.2.5-r1.ebuild:
+  Make activation work on Darwin, where libGL.so doesn't exist (but libGL.dylib
+  does), bug #408517
+
+*eselect-opengl-1.2.5-r1 (05 Mar 2012)
+
+  05 Mar 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  +eselect-opengl-1.2.5-r1.ebuild, -eselect-opengl-1.2.5.ebuild:
+  Revision bump wrt updating gl{x,}ext.h header files. You should do this every
+  time you bump the package or at least once every year.
+
+*eselect-opengl-1.2.5 (02 Mar 2012)
+
+  02 Mar 2012; Luca Barbato <lu_zero@gentoo.org> +eselect-opengl-1.2.5.ebuild:
+  Support GLES as well, fix bug #406501
+
+  03 Oct 2011; Joseph Jezak <josejx@gentoo.org> eselect-opengl-1.2.4.ebuild:
+  Marked ppc/ppc64 stable for bug #380421.
+
+  02 Oct 2011; Raúl Porcel <armin76@gentoo.org> eselect-opengl-1.2.4.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #380421
+
+  21 Sep 2011; Jeroen Roovers <jer@gentoo.org> eselect-opengl-1.2.4.ebuild:
+  Stable for HPPA (bug #380421).
+
+  05 Sep 2011; Markus Meier <maekke@gentoo.org> eselect-opengl-1.2.4.ebuild:
+  arm stable, bug #380421
+
+  04 Sep 2011; Markus Meier <maekke@gentoo.org> eselect-opengl-1.2.4.ebuild:
+  x86 stable, bug #380421
+
+  30 Aug 2011; Tony Vroon <chainsaw@gentoo.org> eselect-opengl-1.2.4.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo in bug
+  #380421 filed by Chí-Thanh Christopher Nguyễn.
+
+*eselect-opengl-1.2.4 (18 Aug 2011)
+
+  18 Aug 2011; Mike Frysinger <vapier@gentoo.org> +eselect-opengl-1.2.4.ebuild:
+  Version bump to fix #316921.
+
+*eselect-opengl-1.2.3 (13 Jul 2011)
+
+  13 Jul 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -eselect-opengl-1.2.2.ebuild, +eselect-opengl-1.2.3.ebuild:
+  Version bump, fixes bug #374853.
+
+*eselect-opengl-1.2.2 (09 Jul 2011)
+
+  09 Jul 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +eselect-opengl-1.2.2.ebuild:
+  Version bump.
+
+  15 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -eselect-opengl-1.1.1-r2.ebuild, eselect-opengl-1.2.1.ebuild:
+  Drop older. Drop m68k keyword.
+
+  05 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  eselect-opengl-1.2.1.ebuild:
+  ppc64 stable wrt #354237
+
+  05 Mar 2011; Raúl Porcel <armin76@gentoo.org> eselect-opengl-1.2.1.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #354237
+
+  23 Feb 2011; Jeroen Roovers <jer@gentoo.org> eselect-opengl-1.2.1.ebuild:
+  Stable for HPPA (bug #354237).
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  eselect-opengl-1.2.1.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Christian Faulhammer <fauli@gentoo.org>
+  eselect-opengl-1.2.1.ebuild:
+  stable x86, bug 354237
+
+  12 Feb 2011; Markos Chandras <hwoarang@gentoo.org>
+  eselect-opengl-1.2.1.ebuild:
+  Stable on amd64 wrt bug #354237
+
+  26 Jan 2011; Fabian Groffen <grobian@gentoo.org> eselect-opengl-1.2.1.ebuild:
+  Add Prefix keywords
+
+*eselect-opengl-1.2.1 (26 Jan 2011)
+
+  26 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -eselect-opengl-1.2.0.ebuild, +eselect-opengl-1.2.1.ebuild:
+  Version bump. Integrate more prefix fun.
+
+*eselect-opengl-1.2.0 (25 Jan 2011)
+
+  25 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +eselect-opengl-1.2.0.ebuild:
+  Version bump with various bugfixes that should silence even people using
+  corner cases.
+
+  10 Feb 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -eselect-opengl-1.0.8-r1.ebuild:
+  rm
+
+  10 Feb 2010; Joseph Jezak <josejx@gentoo.org>
+  eselect-opengl-1.1.1-r2.ebuild:
+  Marked ppc stable for bug #301271.
+
+  06 Feb 2010; Raúl Porcel <armin76@gentoo.org>
+  eselect-opengl-1.1.1-r2.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #301271
+
+  01 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  eselect-opengl-1.1.1-r2.ebuild:
+  stable x86, bug 301271
+
+  31 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  eselect-opengl-1.1.1-r2.ebuild:
+  Stable on amd64. Per bug #301271.
+
+  23 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -eselect-opengl-1.0.6-r1.ebuild:
+  rm
+
+  20 Jan 2010; Brent Baude <ranger@gentoo.org>
+  eselect-opengl-1.1.1-r2.ebuild:
+  Marking eselect-opengl-1.1.1-r2 ppc64 for bug 301271
+
+  19 Jan 2010; Jeroen Roovers <jer@gentoo.org>
+  eselect-opengl-1.1.1-r2.ebuild:
+  Stable for HPPA (bug #301271).
+
+  15 Dec 2009; Brent Baude <ranger@gentoo.org>
+  eselect-opengl-1.0.8-r1.ebuild:
+  Marking eselect-opengl-1.0.8-r1 ppc64 stable for bug 294958
+
+  15 Dec 2009; Raúl Porcel <armin76@gentoo.org>
+  eselect-opengl-1.0.8-r1.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable
+
+*eselect-opengl-1.1.1-r2 (14 Nov 2009)
+
+  14 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -eselect-opengl-1.1.1-r1.ebuild, +eselect-opengl-1.1.1-r2.ebuild:
+  Revbump once more and thist time use correct eapi. Yesterday was really
+  weird day.
+
+*eselect-opengl-1.1.1-r1 (13 Nov 2009)
+
+  13 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -eselect-opengl-1.1.1.ebuild, +eselect-opengl-1.1.1-r1.ebuild:
+  Revbump. Fix .la file removal failiture.
+
+*eselect-opengl-1.1.1 (08 Nov 2009)
+
+  08 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -eselect-opengl-1.1.0.ebuild, +eselect-opengl-1.1.1.ebuild:
+  Verbump and drop old to make nvidia work again.
+
+  08 Nov 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +eselect-opengl-1.0.8-r1.ebuild:
+  resurrect stable version
+
+*eselect-opengl-1.1.0 (07 Nov 2009)
+
+  07 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -eselect-opengl-1.0.5.ebuild, -eselect-opengl-1.0.6.ebuild,
+  -eselect-opengl-1.0.7.ebuild, -eselect-opengl-1.0.8-r1.ebuild,
+  -eselect-opengl-1.0.9.ebuild, +eselect-opengl-1.1.0.ebuild:
+  Version bump. Drop all old stuff.
+
+*eselect-opengl-1.0.9 (30 Oct 2009)
+
+  30 Oct 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  +eselect-opengl-1.0.9.ebuild:
+  Version bump.
+  Use symlinks with relative path instead of absolute one everywhere.
+  Rewrite code to be at least a bit readable (use functions).
+  Since this release .la files are ignored.
+
+  26 Oct 2009; Jeroen Roovers <jer@gentoo.org>
+  eselect-opengl-1.0.8-r1.ebuild:
+  Stable for HPPA (bug #282290).
+
+  11 Oct 2009; nixnut <nixnut@gentoo.org> eselect-opengl-1.0.8-r1.ebuild:
+  ppc stable #282290
+
+  09 Oct 2009; Markus Meier <maekke@gentoo.org>
+  eselect-opengl-1.0.8-r1.ebuild:
+  arm stable, bug #282290
+
+  05 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  eselect-opengl-1.0.8-r1.ebuild:
+  x86 stable, bug 282290
+
+  30 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  eselect-opengl-1.0.8-r1.ebuild:
+  amd64 stable wrt #282290
+
+  24 Sep 2009; Rémi Cardona <remi@gentoo.org>
+  eselect-opengl-1.0.8-r1.ebuild:
+  lower eselect dep to 1.1 (see bug #286090)
+
+*eselect-opengl-1.0.8-r1 (15 Sep 2009)
+
+  15 Sep 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -eselect-opengl-1.0.8.ebuild, +eselect-opengl-1.0.8-r1.ebuild:
+  Revbump to make pple grab the update.
+
+*eselect-opengl-1.0.8 (15 Sep 2009)
+
+  15 Sep 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  +eselect-opengl-1.0.8.ebuild:
+  Version bump. Fix bugs #281452 and #280212.
+
+  28 Jul 2009; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  x11-drivers -> x11.
+
+  24 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  eselect-opengl-1.0.7.ebuild:
+  Adjust rdepend on eselect to be correct.
+
+*eselect-opengl-1.0.7 (23 Jun 2009)
+
+  23 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  +eselect-opengl-1.0.7.ebuild:
+  Version bump to fix bugs 228547 (broken symlinks) and 261498 (relative
+  path usage). Also fixes issue with file collisions for binary drivers per
+  bug 274959.
+
+  23 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  eselect-opengl-1.0.5.ebuild, eselect-opengl-1.0.6.ebuild,
+  eselect-opengl-1.0.6-r1.ebuild:
+  Fix bug #173571 causing wrong eselect opengl set call. On all versions.
+
+  18 Mar 2009; <ricmm@gentoo.org> eselect-opengl-1.0.5.ebuild:
+  Drop down to ~mips due to unstable deps
+
+  02 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing eradicator as a maintainer since he was retired.
+
+  20 May 2008; Raúl Porcel <armin76@gentoo.org>
+  eselect-opengl-1.0.6-r1.ebuild:
+  ia64 stable wrt #208899
+
+  17 May 2008; Tobias Klausmann <klausman@gentoo.org>
+  eselect-opengl-1.0.6-r1.ebuild:
+  Stable on alpha, bug #208899
+
+  14 May 2008; Jeroen Roovers <jer@gentoo.org>
+  eselect-opengl-1.0.6-r1.ebuild:
+  Stable for HPPA (bug #208899).
+
+  11 May 2008; Markus Rothe <corsair@gentoo.org>
+  eselect-opengl-1.0.6-r1.ebuild:
+  Stable on ppc64; bug #208899
+
+  10 May 2008; nixnut <nixnut@gentoo.org> eselect-opengl-1.0.6-r1.ebuild:
+  Stable on ppc wrt bug 208899
+
+  09 May 2008; Markus Meier <maekke@gentoo.org>
+  eselect-opengl-1.0.6-r1.ebuild:
+  amd64/x86 stable, bug #208899
+
+  09 May 2008; Ferris McCormick <fmccor@gentoo.org>
+  eselect-opengl-1.0.6-r1.ebuild:
+  Sparc stable --- Bug #208899 --- It's been fine for 4 months now.
+
+  27 Dec 2007; Jeremy Huddleston <eradicator@gentoo.org>
+  eselect-opengl-1.0.5.ebuild, eselect-opengl-1.0.6.ebuild,
+  eselect-opengl-1.0.6-r1.ebuild:
+  Repoman quoting.
+
+*eselect-opengl-1.0.6-r1 (27 Dec 2007)
+
+  27 Dec 2007; Jeremy Huddleston <eradicator@gentoo.org>
+  eselect-opengl-1.0.6-r1.ebuild:
+  Bumped versions of glxext.h and glext.h.  Closes bug #201048.
+
+*eselect-opengl-1.0.6 (27 Oct 2007)
+
+  27 Oct 2007; Jeremy Huddleston <eradicator@gentoo.org>
+  +eselect-opengl-1.0.6.ebuild:
+  Cleaned out old cruft which supported the 2004.3 amd64 profile. Improved
+  support for cleaning up after switching away from newer nvidia drivers.
+
+  27 Oct 2007; Jeremy Huddleston <eradicator@gentoo.org>
+  -eselect-opengl-1.0.3.ebuild, -eselect-opengl-1.0.4.ebuild:
+  Removed old versions.
+
+  01 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  eselect-opengl-1.0.3.ebuild, eselect-opengl-1.0.4.ebuild,
+  eselect-opengl-1.0.5.ebuild:
+  (QA) RESTRICT="multilib-pkg-force" -> EMULTILIB_PKG="true"
+
+  10 Mar 2007; Danny van Dyk <kugelfang@gentoo.org>
+  eselect-opengl-1.0.3.ebuild, eselect-opengl-1.0.4.ebuild,
+  eselect-opengl-1.0.5.ebuild:
+  QA: Removed all references to dyn_* functions.
+
+  07 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  eselect-opengl-1.0.3.ebuild, eselect-opengl-1.0.4.ebuild,
+  eselect-opengl-1.0.5.ebuild:
+  Change all instances of [ to [[.
+
+  07 Feb 2007; Simon Stelling <blubb@gentoo.org>
+  eselect-opengl-1.0.5.ebuild:
+  stable on amd64; bug 160535
+
+  26 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  eselect-opengl-1.0.5.ebuild:
+  Stable on Alpha.
+
+  25 Jan 2007; Alexander H. Færøy <eroyf@gentoo.org>
+  eselect-opengl-1.0.5.ebuild:
+  Stable on MIPS.
+
+  16 Jan 2007; Jeroen Roovers <jer@gentoo.org> eselect-opengl-1.0.5.ebuild:
+  Stable for HPPA (bug #160535).
+
+  14 Jan 2007; Joseph Jezak <josejx@gentoo.org> eselect-opengl-1.0.5.ebuild:
+  Marked ppc stable for bug #160535.
+
+  09 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  eselect-opengl-1.0.5.ebuild:
+  stable x86, bug #160535
+
+  09 Jan 2007; Markus Rothe <corsair@gentoo.org>
+  eselect-opengl-1.0.5.ebuild:
+  Stable on ppc64; bug #160535
+
+  08 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  eselect-opengl-1.0.5.ebuild:
+  Stable on sparc wrt #160535
+
+  05 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  eselect-opengl-1.0.4.ebuild, eselect-opengl-1.0.5.ebuild:
+  Changed eselect dependency to be >= 1.0.5 and closing bug #147660.
+
+*eselect-opengl-1.0.5 (10 Oct 2006)
+
+  10 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  +eselect-opengl-1.0.5.ebuild:
+  Bump to fix ROOT != /. Remove an unneeded sed from the ebuild as well.
+
+  05 Oct 2006; Danny van Dyk <kugelfang@gentoo.org>
+  eselect-opengl-1.0.3.ebuild, eselect-opengl-1.0.4.ebuild:
+  Replaced block by correct dep.
+
+*eselect-opengl-1.0.4 (06 Jul 2006)
+
+  06 Jul 2006; Danny van Dyk <kugelfang@gentoo.org>
+  eselect-opengl-1.0.3.ebuild, +eselect-opengl-1.0.4.ebuild:
+  Added a block on eselect-1.0.3 for eselect-opengl-1.0.3. Bumped to
+  eselect-opengl-1.0.4 to be compatible with eselect-1.0.3.
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  eselect-opengl-1.0.3.ebuild:
+  mips stable.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org>
+  files/digest-eselect-opengl-1.0.3, Manifest:
+  Fixing duff SHA256 digests: Bug # 131293
+
+  03 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  eselect-opengl-1.0.3.ebuild:
+  Add ~x86-fbsd keyword.
+
+  03 Apr 2006; Thomas Cort <tcort@gentoo.org> eselect-opengl-1.0.3.ebuild:
+  Stable on alpha.
+
+  27 Mar 2006; Markus Rothe <corsair@gentoo.org>
+  eselect-opengl-1.0.3.ebuild:
+  Stable on ppc64
+
+  26 Mar 2006; Michael Hanselmann <hansmi@gentoo.org>
+  eselect-opengl-1.0.3.ebuild:
+  Stable on hppa, ppc.
+
+  24 Mar 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  eselect-opengl-1.0.3.ebuild:
+  Stable x86.
+
+  15 Mar 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  -eselect-opengl-1.0.2-r1.ebuild, eselect-opengl-1.0.3.ebuild:
+  Stable amd64 and sparc.
+
+  28 Jan 2006; Markus Rothe <corsair@gentoo.org>
+  eselect-opengl-1.0.3.ebuild:
+  Added ~ppc64
+
+*eselect-opengl-1.0.3 (19 Oct 2005)
+
+  19 Oct 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  eselect-opengl-1.0.2-r1.ebuild, +eselect-opengl-1.0.3.ebuild:
+  Version bump for eselect-1.0_rc
+
+  01 Oct 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -eselect-opengl-1.0.1.ebuild, -eselect-opengl-1.0.2.ebuild:
+  Removing old versions.
+
+*eselect-opengl-1.0.2-r1 (14 Sep 2005)
+
+  14 Sep 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +eselect-opengl-1.0.2-r1.ebuild:
+  Fixed ACTION->action
+
+*eselect-opengl-1.0.2 (05 Sep 2005)
+
+  05 Sep 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +eselect-opengl-1.0.2.ebuild:
+  Version bump to fix symlinking to tls libs and --impl-headers. Plus much
+  cleanup of the module thanks to kugs.
+
+*eselect-opengl-1.0.1 (23 Aug 2005)
+
+  23 Aug 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -eselect-opengl-1.0.0.ebuild, +eselect-opengl-1.0.1.ebuild:
+  Fixed a bug in setting up the header files.
+
+*eselect-opengl-1.0.0 (17 Aug 2005)
+
+  17 Aug 2005; Jeremy Huddleston <eradicator@gentoo.org> +metadata.xml,
+  +eselect-opengl-1.0.0.ebuild:
+  Added eselect opengl module which will be a replacement for opengl-update.

@@ -1,0 +1,29 @@
+--- a/src/timezone/pgtz.c	2015-02-02 15:45:23.000000000 -0500
++++ b/src/timezone/pgtz.c	2015-04-07 14:21:22.341832190 -0400
+@@ -586,6 +586,12 @@
+ 		if (direntry->d_name[0] == '.')
+ 			continue;
+ 
++		/* if current working directory has the same name as current direntry name,
++		 * then skip as this is a recursive fs loop
++		 */
++		if (strncmp(direntry->d_name,tzdirsub,strlen(direntry->d_name)) == 0)
++			continue;
++
+ 		snprintf(tzdir + tzdir_orig_len, MAXPGPATH - tzdir_orig_len,
+ 				 "/%s", direntry->d_name);
+ 
+@@ -1615,6 +1621,13 @@
+ 		if (direntry->d_name[0] == '.')
+ 			continue;
+ 
++		/* copy current working directory so that there is no risk of modification by basename(),
++		 * and compare to current direntry name; skip if they are the same as this is a recursive fs loop
++		 */
++		snprintf(fullname, MAXPGPATH, "%s", dir->dirname[dir->depth]);
++		if (strncmp(direntry->d_name,basename(fullname),strlen(direntry->d_name)) == 0)
++			continue;
++
+ 		snprintf(fullname, MAXPGPATH, "%s/%s",
+ 				 dir->dirname[dir->depth], direntry->d_name);
+ 		if (stat(fullname, &statbuf) != 0)

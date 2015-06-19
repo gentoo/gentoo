@@ -1,0 +1,20 @@
+# ChangeLog for dev-haskell/fsnotify
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/fsnotify/ChangeLog,v 1.4 2014/12/14 11:40:01 gienah Exp $
+
+*fsnotify-0.1.0.3 (14 Dec 2014)
+
+  14 Dec 2014; Mark Wright <gienah@gentoo.org> +fsnotify-0.1.0.3.ebuild:
+  Bump fsnotify to 0.1.0.3
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> fsnotify-0.0.11.ebuild:
+  Drop trailing '.' from description.
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*fsnotify-0.0.11 (26 Aug 2013)
+
+  26 Aug 2013; Alexander Vershilov <qnikst@gentoo.org> +fsnotify-0.0.11.ebuild,
+  +metadata.xml:
+  dev-haskell/fsnotify: initial layout

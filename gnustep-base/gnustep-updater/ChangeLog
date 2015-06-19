@@ -1,0 +1,57 @@
+# ChangeLog for gnustep-base/gnustep-updater
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-updater/ChangeLog,v 1.13 2012/12/20 13:07:08 ago Exp $
+
+  20 Dec 2012; Agostino Sarubbo <ago@gentoo.org> gnustep-updater-0.2.ebuild:
+  Stable for sparc, wrt bug #410601
+
+  27 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  gnustep-updater-0.3.ebuild:
+  stable ppc ppc64, bug #433293
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gnustep-updater-0.3.ebuild:
+  x86 stable wrt bug #433293
+
+  07 Sep 2012; Agostino Sarubbo <ago@gentoo.org> gnustep-updater-0.3.ebuild:
+  Stable for amd64, wrt bug #433293
+
+*gnustep-updater-0.3 (03 Jul 2012)
+
+  03 Jul 2012; Bernard Cafarelli <voyageur@gentoo.org>
+  +gnustep-updater-0.3.ebuild:
+  Version bump
+
+  16 Jun 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  gnustep-updater-0.2.ebuild:
+  ppc64 stable wrt #410601
+
+  07 Jun 2012; Michael Weber <xmw@gentoo.org> gnustep-updater-0.2.ebuild:
+  ppc stable (bug 410601)
+
+  07 Apr 2012; Markus Meier <maekke@gentoo.org> gnustep-updater-0.2.ebuild:
+  x86 stable, bug #410601
+
+  05 Apr 2012; Agostino Sarubbo <ago@gentoo.org> gnustep-updater-0.2.ebuild:
+  Stable for amd64, wrt bug #410601
+
+  20 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org>
+  -gnustep-updater-0.1.ebuild:
+  Remove old version (missing libobjc.so change support)
+
+  09 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org>
+  gnustep-updater-0.2.ebuild:
+  Missing rdep on pax-utils (for scanelf)
+
+*gnustep-updater-0.2 (09 Feb 2012)
+
+  09 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org>
+  +gnustep-updater-0.2.ebuild:
+  Version bump, now supports rebuilding gnustep packages when switching to/from
+  libobjc2
+
+*gnustep-updater-0.1 (20 Apr 2011)
+
+  20 Apr 2011; Bernard Cafarelli <voyageur@gentoo.org>
+  +gnustep-updater-0.1.ebuild, +metadata.xml:
+  Initial version, based on perl-cleaner

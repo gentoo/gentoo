@@ -1,0 +1,1326 @@
+# ChangeLog for sys-kernel/mips-sources
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/mips-sources/ChangeLog,v 1.156 2015/05/04 02:20:58 kumba Exp $
+
+*mips-sources-4.0.1 (04 May 2015)
+*mips-sources-3.19.6 (04 May 2015)
+
+  04 May 2015; Joshua Kinard <kumba@gentoo.org> -mips-sources-3.19.ebuild,
+  +mips-sources-3.19.6.ebuild, +mips-sources-4.0.1.ebuild:
+  Bump to 3.19.6 and import 4.0.1.
+
+*mips-sources-3.19 (16 Feb 2015)
+
+  16 Feb 2015; Joshua Kinard <kumba@gentoo.org> -mips-sources-3.18.5.ebuild,
+  +mips-sources-3.19.ebuild, -files/eblits/show_ip27_info-v2.eblit,
+  +files/eblits/show_ip27_info-v3.eblit, -files/eblits/src_unpack-v4.eblit,
+  +files/eblits/src_unpack-v5.eblit:
+  Update to 3.19.0 and linux-mips-git 20150215. Update IP27 show_info to warn
+  of random BUG() under heavy disk I/O.
+
+*mips-sources-3.18.5 (01 Feb 2015)
+
+  01 Feb 2015; Joshua Kinard <kumba@gentoo.org> +mips-sources-3.18.5.ebuild,
+  -mips-sources-3.18.3.ebuild:
+  Update to 3.18.5, fix compile failure in IP27 RTC platform driver, update to
+  linux-mips-git 20150130.
+
+  21 Jan 2015; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove unneded useflag description from metadata.xml
+
+*mips-sources-3.18.3 (18 Jan 2015)
+
+  18 Jan 2015; Joshua Kinard <kumba@gentoo.org> -mips-sources-2.6.29.1.ebuild,
+  -mips-sources-3.9.11.ebuild, -mips-sources-3.10.4.ebuild,
+  +mips-sources-3.18.3.ebuild, -files/eblits/show_ip22_info-v1.eblit,
+  -files/eblits/show_ip27_info-v1.eblit, +files/eblits/show_ip27_info-v2.eblit,
+  -files/eblits/show_ip30_info-v1.eblit, -files/eblits/show_ip30_info-v2.eblit,
+  +files/eblits/show_ip30_info-v3.eblit, -files/eblits/show_ip32_info-v1.eblit,
+  -files/eblits/src_unpack-v2.eblit, -files/eblits/src_unpack-v3.eblit,
+  +files/eblits/src_unpack-v4.eblit, metadata.xml:
+  Update to 3.18.3, and all older ebuilds and associated eblits removed. Octane
+  (IP30) support returns in this release, with some caveats. Origin/Onyx2
+  (IP27) support has been fixed up, and other hardware is known to work, with
+  the exception of IP22, IP28, and Cobalt, which have not been tested in some
+  time.
+
+*mips-sources-3.10.4 (29 Jul 2013)
+
+  29 Jul 2013; Joshua Kinard <kumba@gentoo.org> -mips-sources-3.10.1.ebuild,
+  +mips-sources-3.10.4.ebuild:
+  Update to 3.10.4.
+
+*mips-sources-3.10.1 (22 Jul 2013)
+*mips-sources-3.9.11 (22 Jul 2013)
+
+  22 Jul 2013; Joshua Kinard <kumba@gentoo.org> -mips-sources-3.4.24.ebuild,
+  -mips-sources-3.6.11.ebuild, -mips-sources-3.7.1.ebuild,
+  +mips-sources-3.9.11.ebuild, +mips-sources-3.10.1.ebuild, metadata.xml:
+  Update to 3.9.11/3.10.1. All use git pull from linux-mips 20130721. Minor
+  Octane hacks added by J. Pendergrass, but still needs additional work to
+  boot.
+
+  09 Jun 2013; Mike Frysinger <vapier@gentoo.org> metadata.xml:
+  Add upstream CPE tag (security info) from ChromiumOS.
+
+  09 Mar 2013; Tom Wijsman <TomWij@gentoo.org> mips-sources-2.6.29.1.ebuild,
+  mips-sources-3.4.24.ebuild, mips-sources-3.6.11.ebuild,
+  mips-sources-3.7.1.ebuild:
+  EAPI 5. Kernel sources and (gen)patches now use xz instead of bz2. Bug
+  #421721.
+
+*mips-sources-3.7.1 (27 Dec 2012)
+*mips-sources-3.6.11 (27 Dec 2012)
+*mips-sources-3.4.24 (27 Dec 2012)
+
+  27 Dec 2012; Joshua Kinard <kumba@gentoo.org> -mips-sources-3.4.19.ebuild,
+  +mips-sources-3.4.24.ebuild, -mips-sources-3.6.7.ebuild,
+  +mips-sources-3.6.11.ebuild, +mips-sources-3.7.1.ebuild:
+  Update to 3.4.24/3.6.11 and add 3.7.1. All use git pull from linus-mips
+  20121226.
+
+*mips-sources-3.6.7 (23 Nov 2012)
+*mips-sources-3.4.19 (23 Nov 2012)
+
+  23 Nov 2012; Joshua Kinard <kumba@gentoo.org> -mips-sources-3.4.14.ebuild,
+  +mips-sources-3.4.19.ebuild, -mips-sources-3.5.7.ebuild,
+  -mips-sources-3.6.2.ebuild, +mips-sources-3.6.7.ebuild:
+  Updates; drop 3.5.7 and update to 3.4.19/3.6.7. Use git pull from linux-mips
+  20121123 as well.
+
+*mips-sources-3.6.2 (21 Oct 2012)
+*mips-sources-3.5.7 (21 Oct 2012)
+*mips-sources-3.4.14 (21 Oct 2012)
+
+  21 Oct 2012; Joshua Kinard <kumba@gentoo.org> -mips-sources-3.0.9-r1.ebuild,
+  -mips-sources-3.1.6.ebuild, +mips-sources-3.4.14.ebuild,
+  +mips-sources-3.5.7.ebuild, +mips-sources-3.6.2.ebuild:
+  Updates; drop 3.2.21, 3.3.8, and 3.4.4. Replace with 3.4.14, 3.5.7, and
+  3.6.2.
+
+  13 Apr 2012; Ulrich Müller <ulm@gentoo.org> mips-sources-3.0.9-r1.ebuild,
+  mips-sources-3.1.6.ebuild:
+  Move EAPI assignment to top of ebuild, bug 411875.
+
+*mips-sources-3.1.6 (02 Jan 2012)
+*mips-sources-3.0.9-r1 (02 Jan 2012)
+
+  02 Jan 2012; Joshua Kinard <kumba@gentoo.org> -mips-sources-3.0.9.ebuild,
+  +mips-sources-3.0.9-r1.ebuild, -mips-sources-3.1.5.ebuild,
+  +mips-sources-3.1.6.ebuild:
+  Update the multicast patch in 3.0.9 to the one that was accepted by net-dev
+  and removed the cleanups patch. Ditto for 3.1.x, and update to 3.1.6.
+
+*mips-sources-3.1.5 (17 Dec 2011)
+*mips-sources-3.0.9 (17 Dec 2011)
+
+  17 Dec 2011; Joshua Kinard <kumba@gentoo.org> -mips-sources-3.0.4.ebuild,
+  +mips-sources-3.0.9.ebuild, +mips-sources-3.1.5.ebuild:
+  Bump to 3.0.9 and add 3.1.5. Include new patchsets for both that fix an issue
+  in SGI IP32 where ICMPv6 neighbor discovery didn't work.
+
+*mips-sources-3.0.4 (04 Sep 2011)
+
+  04 Sep 2011; Joshua Kinard <kumba@gentoo.org>
+  +files/eblits/show_ip22_info-v3.eblit, +files/eblits/show_ip30_info-v2.eblit,
+  +files/eblits/show_ip32_info-v3.eblit, +files/eblits/src_unpack-v3.eblit,
+  -files/eblits/show_ip22_info-v2.eblit, -files/eblits/show_ip32_info-v2.eblit,
+  -files/eblits/src_unpack-v1.eblit, -mips-sources-2.6.31.12.ebuild,
+  -mips-sources-2.6.34.7.ebuild, -mips-sources-2.6.35.9.ebuild,
+  -mips-sources-2.6.36.3.ebuild, -mips-sources-2.6.37.ebuild,
+  +mips-sources-3.0.4.ebuild, metadata.xml:
+  Add mips-sources-3.0.4, and remove old ebuilds and associated eblits.
+
+  25 Apr 2011; Ulrich Mueller <ulm@gentoo.org> mips-sources-2.6.29.1.ebuild,
+  mips-sources-2.6.31.12.ebuild, mips-sources-2.6.34.7.ebuild,
+  mips-sources-2.6.35.9.ebuild, mips-sources-2.6.36.3.ebuild,
+  mips-sources-2.6.37.ebuild:
+  Remove redundant PROVIDE line, virtual/linux-sources is already provided via
+  kernel-2.eclass, bug 118442.
+
+  19 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  mips-sources-2.6.29.1.ebuild, mips-sources-2.6.31.12.ebuild,
+  mips-sources-2.6.34.7.ebuild, mips-sources-2.6.35.9.ebuild,
+  mips-sources-2.6.36.3.ebuild, mips-sources-2.6.37.ebuild:
+  Remove virtual/alsa.
+
+*mips-sources-2.6.37 (07 Feb 2011)
+
+  07 Feb 2011; Joshua Kinard <kumba@gentoo.org> +mips-sources-2.6.37.ebuild:
+  Add mips-sources-2.6.37.
+
+*mips-sources-2.6.36.3 (07 Feb 2011)
+*mips-sources-2.6.35.9 (07 Feb 2011)
+
+  07 Feb 2011; Joshua Kinard <kumba@gentoo.org> -mips-sources-2.6.35.8.ebuild,
+  +mips-sources-2.6.35.9.ebuild, -mips-sources-2.6.36.ebuild,
+  +mips-sources-2.6.36.3.ebuild:
+  Security updates to mips-sources.
+
+  28 Nov 2010; Robin H. Johnson <robbat2@gentoo.org> Manifest:
+  Update Manifest for deblob 2.6.36.
+
+*mips-sources-2.6.36 (16 Nov 2010)
+*mips-sources-2.6.35.8 (16 Nov 2010)
+*mips-sources-2.6.34.7 (16 Nov 2010)
+
+  16 Nov 2010; Joshua Kinard <kumba@gentoo.org> -mips-sources-2.6.34.ebuild,
+  +mips-sources-2.6.34.7.ebuild, +mips-sources-2.6.35.8.ebuild,
+  +mips-sources-2.6.36.ebuild:
+  Updated 2.6.34 to 2.6.34.7 and added ebuilds for 2.6.35.8 and 2.6.36.
+  Octane is still broke as-of these releases and no ETA is set yet for its
+  return.
+
+  03 Aug 2010; Robin H. Johnson <robbat2@gentoo.org> Manifest:
+  kernel-2 deblob support for 2.6.35; bug #324505: deblob-check usage.
+
+*mips-sources-2.6.34 (07 Jun 2010)
+
+  07 Jun 2010; Joshua Kinard <kumba@gentoo.org>
+  +files/eblits/show_ip22_info-v2.eblit, -mips-sources-2.6.27.21-r1.ebuild,
+  +mips-sources-2.6.34.ebuild, +files/eblits/show_ip32_info-v2.eblit,
+  -mips-sources-2.6.28.9-r1.ebuild:
+  Update to 2.6.34. Octane support is actually marked as testing in this
+  release (persuant to the last log entry). The patches apply, but have not
+  been built. New patches are in the works, as time permits. Current hold-up
+  is a lockup in the 8250 Serial Core when the system boots. This release
+  also adds an experimental RTC Driver for SGI O2 systems and their
+  Dallas/Maxim DS1685/DS1687 timekeeping chips. Slated to be submitted
+  upstream soon.
+
+  26 Apr 2010; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Update Manifest for deblob support in kernel-2 eclass.
+
+*mips-sources-2.6.31.12 (13 Feb 2010)
+
+  13 Feb 2010; Joshua Kinard <kumba@gentoo.org>
+  mips-sources-2.6.27.21-r1.ebuild, mips-sources-2.6.28.9-r1.ebuild,
+  mips-sources-2.6.29.1.ebuild, +mips-sources-2.6.31.12.ebuild:
+  Update to 2.6.31.12. Octane support is disabled as of this release, and
+  may not return. Testing on 2.6.32 will determine. Also fixed spacing
+  issues in the ebuilds.
+
+  10 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  mips-sources-2.6.27.21-r1.ebuild, mips-sources-2.6.28.9-r1.ebuild,
+  mips-sources-2.6.29.1.ebuild:
+  QA: non-maintainer commit. Fix metadata invariancy issues. Per bug
+  #300370.
+
+*mips-sources-2.6.29.1 (11 Apr 2009)
+*mips-sources-2.6.28.9-r1 (11 Apr 2009)
+*mips-sources-2.6.27.21-r1 (11 Apr 2009)
+
+  11 Apr 2009; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.27.21.ebuild, +mips-sources-2.6.27.21-r1.ebuild,
+  -mips-sources-2.6.28.9.ebuild, +mips-sources-2.6.28.9-r1.ebuild,
+  -mips-sources-2.6.29-r1.ebuild, +mips-sources-2.6.29.1.ebuild:
+  Update to 2.6.29.1, and add in patches to address a problem on o32
+  binaries with the llseek() system call.
+
+*mips-sources-2.6.29-r1 (25 Mar 2009)
+
+  25 Mar 2009; Joshua Kinard <kumba@gentoo.org> -mips-sources-2.6.29.ebuild,
+  +mips-sources-2.6.29-r1.ebuild:
+  Add a quick fix to 2.6.29 to revert a patch in upstream that causes the
+  networking stack to slowly die.
+
+*mips-sources-2.6.29 (24 Mar 2009)
+*mips-sources-2.6.28.9 (24 Mar 2009)
+*mips-sources-2.6.27.21 (24 Mar 2009)
+
+  24 Mar 2009; Joshua Kinard <kumba@gentoo.org>
+  +files/eblits/src_unpack-v2.eblit, metadata.xml,
+  -mips-sources-2.6.27.20.ebuild, +mips-sources-2.6.27.21.ebuild,
+  -mips-sources-2.6.28.8.ebuild, +mips-sources-2.6.28.9.ebuild,
+  +mips-sources-2.6.29.ebuild:
+  Update to 2.6.27.21, 2.6.28.9, and add the newly-released 2.6.29 ebuild,
+  plus an updated src_unpack eblit to factor in a new local USE flag --
+  impactdebug. USE 'impactdebug' will apply a patch that enables a
+  very-early, direct framebuffer device for Octane and IP28 systems that
+  have an ImpactSR or SolidImpact graphics boardset. It is useful for
+  debugging kernel problems that occur before the console or serial drivers
+  are ready.
+
+  22 Mar 2009; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.27.18.ebuild, +mips-sources-2.6.27.20.ebuild,
+  -mips-sources-2.6.28.7-r1.ebuild, +mips-sources-2.6.28.8.ebuild:
+  Update to 2.6.27.20 and 2.6.28.8, and include some ext4 fixes from
+  gentoo-sources/lkml, and build fixes from linux-mips.
+
+*mips-sources-2.6.28.8 (18 Mar 2009)
+*mips-sources-2.6.27.20 (18 Mar 2009)
+
+  18 Mar 2009; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.27.18.ebuild, +mips-sources-2.6.27.20.ebuild,
+  -mips-sources-2.6.28.7-r1.ebuild, +mips-sources-2.6.28.8.ebuild:
+  Update 2.6.27.18 to 2.6.27.20 and 2.6.28.7 to 2.6.28.8 (lots of ext4
+  fixes).
+
+*mips-sources-2.6.28.7-r1 (16 Mar 2009)
+*mips-sources-2.6.27.18 (16 Mar 2009)
+
+  16 Mar 2009; Joshua Kinard <kumba@gentoo.org>
+  +files/eblits/pkg_setup-v1.eblit, +files/eblits/show_cobalt_info-v1.eblit,
+  +files/eblits/show_ip22_info-v1.eblit,
+  +files/eblits/show_ip27_info-v1.eblit,
+  +files/eblits/err_disabled_mach-v1.eblit,
+  +files/eblits/err_only_one_mach_allowed-v1.eblit,
+  +files/eblits/pkg_postinst-v1.eblit,
+  +files/eblits/show_ip28_info-v1.eblit,
+  +files/eblits/show_ip30_info-v1.eblit,
+  +files/eblits/show_ip32_info-v1.eblit, +files/eblits/src_unpack-v1.eblit,
+  -mips-sources-2.6.20.18.ebuild, -mips-sources-2.6.27.10.ebuild,
+  +mips-sources-2.6.27.18.ebuild, -mips-sources-2.6.28.7.ebuild,
+  +mips-sources-2.6.28.7-r1.ebuild:
+  Modernize mips-sources to use eblit micronization technology and the newer
+  kernel-2 eclass. Guaranteed to be smaller and shinier! Also pull in a
+  newer snapshot from linux-mips git, change the format of the mips-sources
+  patch tarball to reduce its overall size and conform to kernel-2 usage,
+  and update 2.6.27 to latest patch revision.
+
+*mips-sources-2.6.28.7 (23 Feb 2009)
+
+  23 Feb 2009; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.28.5.ebuild, +mips-sources-2.6.28.7.ebuild:
+  2.6.28.5 --> 2.6.28.7
+
+*mips-sources-2.6.28.5 (15 Feb 2009)
+
+  15 Feb 2009; Joshua Kinard <kumba@gentoo.org> -mips-sources-2.6.28.ebuild,
+  +mips-sources-2.6.28.5.ebuild:
+  Update 2.6.28 to 2.6.28.5
+
+  09 Jan 2009; Joshua Kinard <kumba@gentoo.org>
+  mips-sources-2.6.20.18.ebuild, mips-sources-2.6.27.10.ebuild,
+  mips-sources-2.6.28.ebuild:
+  Fix up some variables with quotes.
+
+*mips-sources-2.6.28 (08 Jan 2009)
+*mips-sources-2.6.27.10 (08 Jan 2009)
+
+  08 Jan 2009; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.27.9.ebuild, +mips-sources-2.6.27.10.ebuild,
+  +mips-sources-2.6.28.ebuild:
+  Update to 2.6.27.10 and add a 2.6.28 ebuild.
+
+*mips-sources-2.6.27.9 (17 Dec 2008)
+
+  17 Dec 2008; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.22.6.ebuild, -mips-sources-2.6.23.14.ebuild,
+  -mips-sources-2.6.24.7.ebuild, -mips-sources-2.6.27.7.ebuild,
+  +mips-sources-2.6.27.9.ebuild:
+  Remove several old versions, except the last properly-working one on IP28,
+  and bump 2.6.27.7 to 2.6.27.9. This should also support IP28 fairly well,
+  so 2.6.20.18 will be removed soon.
+
+*mips-sources-2.6.27.7 (09 Dec 2008)
+
+  09 Dec 2008; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.27.6.ebuild, +mips-sources-2.6.27.7.ebuild:
+  Update to 2.6.27.7.
+
+*mips-sources-2.6.27.6 (16 Nov 2008)
+
+  16 Nov 2008; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.27.4.ebuild, +mips-sources-2.6.27.6.ebuild:
+  Update 2.6.27.4 to 2.6.27.6
+
+*mips-sources-2.6.27.4 (30 Oct 2008)
+
+  30 Oct 2008; Joshua Kinard <kumba@gentoo.org>
+  +mips-sources-2.6.27.4.ebuild:
+  Update mips-sources to 2.6.27.4. Tested on IP27, IP28, IP30, & IP32, but
+  not on IP22 or cobalt systems.
+
+  22 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*mips-sources-2.6.24.7 (28 May 2008)
+
+  28 May 2008; Joshua Kinard <kumba@gentoo.org>
+  +mips-sources-2.6.24.7.ebuild:
+  Update mips-sources to 2.6.24.7. Tested on IP32 and IP30, but IP22, IP27,
+  and cobalt need testing, and IP28 is not supported in this release.
+
+*mips-sources-2.6.23.14 (10 Feb 2008)
+
+  10 Feb 2008; Joshua Kinard <kumba@gentoo.org>
+  mips-sources-2.6.22.6.ebuild, +mips-sources-2.6.23.14.ebuild:
+  Make 2.6.22.6 stable, and import 2.6.23.14.
+
+*mips-sources-2.6.22.6 (03 Sep 2007)
+*mips-sources-2.6.20.18 (03 Sep 2007)
+
+  03 Sep 2007; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.16.47.ebuild, -mips-sources-2.6.17.14.ebuild,
+  -mips-sources-2.6.20.14.ebuild, +mips-sources-2.6.20.18.ebuild,
+  +mips-sources-2.6.22.6.ebuild:
+  Removed 2.6.16.* and 2.6.17.* ebuilds; Upgraded 2.6.20 to .18 from .14;
+  Added 2.6.22.6 to unstable for testing. Also tweaked pkg_setup to allow for
+  marking of machines as needing 'testing' -- that is, booting on real
+  hardware, as I can't always test each machine that I forward-port the
+  patches for.
+
+*mips-sources-2.6.20.14 (14 Jun 2007)
+
+  14 Jun 2007; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.20.13.ebuild, +mips-sources-2.6.20.14.ebuild:
+  Update 2.6.20.13 to 2.6.20.14
+
+*mips-sources-2.6.20.13 (09 Jun 2007)
+
+  09 Jun 2007; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.20.11.ebuild, +mips-sources-2.6.20.13.ebuild:
+  Update 2.6.20.11 to 2.6.20.13.
+
+  20 May 2007; Joshua Kinard <kumba@gentoo.org>
+  mips-sources-2.6.20.11.ebuild:
+  Update the patchset with a patch to bring the uber experimental IP32 R10k
+  support up to par, as well as update the info text of the various machines.
+  No rev bump needed as no sane person should be using the IP32 R10k system
+  anyways.
+
+  19 May 2007; Joshua Kinard <kumba@gentoo.org>
+  mips-sources-2.6.20.11.ebuild:
+  Mark 2.6.20.11 as stable on mips.  It is time.
+
+*mips-sources-2.6.20.11 (09 May 2007)
+
+  09 May 2007; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.20.10.ebuild, +mips-sources-2.6.20.11.ebuild:
+  Update 2.6.20.10 to 2.6.20.11
+
+*mips-sources-2.6.20.10 (30 Apr 2007)
+
+  30 Apr 2007; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.20.7-r1.ebuild, +mips-sources-2.6.20.10.ebuild:
+  Update 2.6.20.7 to 2.6.20.10 to fix several new security issues. IP28
+  support has been enabled for this revission too, however it may be flakey.
+  Problems should be filed at Bugzilla.
+
+*mips-sources-2.6.20.7-r1 (16 Apr 2007)
+*mips-sources-2.6.17.14 (16 Apr 2007)
+*mips-sources-2.6.16.47 (16 Apr 2007)
+
+  16 Apr 2007; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.16.27.ebuild, +mips-sources-2.6.16.47.ebuild,
+  -mips-sources-2.6.17.10.ebuild, +mips-sources-2.6.17.14.ebuild,
+  -mips-sources-2.6.20.7.ebuild, +mips-sources-2.6.20.7-r1.ebuild:
+  Update 2.6.20.7 to a newer snapshot from linux-mips git and fix the IP27
+  patches so that they actually apply. IP28 is still broke, however. Also
+  update 2.6.17.10 -> 2.6.17.14 and 2.6.16.27 -> 2.6.16.47, and provide newer
+  snapshots for them as well, plus a squashfs update for 2.6.16.
+
+*mips-sources-2.6.20.7 (14 Apr 2007)
+
+  14 Apr 2007; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.20.6.ebuild, +mips-sources-2.6.20.7.ebuild:
+  Update 2.6.20.6 to 2.6.20.7
+
+*mips-sources-2.6.20.6 (7 Apr 2007)
+
+  7 Apr 2007; Joshua Kinard <kumba@gentoo.org>
+  +mips-sources-2.6.20.6.ebuild:
+  So after several versions of silence, mips-sources returns to life with the
+  introduction of an ebuild for 2.6.20.6. This release contains an enhancement
+  for IP22's scsi driver which may help boost speed. It also alters IP32's
+  build methology again -- CONFIG_BUILD_ELF64 is now dead and removed from
+  Kconfig, however the vmlinux.32 target will still be used, and a new
+  revision of the squashfs patch has been added. The only downside is IP28
+  support has been disabled until new patches for it are available. Forward
+  porting the existing patches is improbable due to changes from using
+  CPHYSADDR to a new __pa() macro. IP27 support is untested, but assumed to
+  work until determined otherwise (due to a lack of hardware).
+
+  05 Sep 2006; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.15.7-r2.ebuild, mips-sources-2.6.16.27.ebuild,
+  mips-sources-2.6.17.10.ebuild:
+  Removed 2.6.15-r2, Marked 2.6.17.10 stable on mips.
+
+*mips-sources-2.6.17.10 (29 Aug 2006)
+
+  29 Aug 2006; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.17.7.ebuild, +mips-sources-2.6.17.10.ebuild:
+  Update 2.6.17.7 to 2.6.17.10 (2.6.17.11 has an unresolved build-time error).
+
+*mips-sources-2.6.17.7 (27 Jul 2006)
+*mips-sources-2.6.16.27 (27 Jul 2006)
+
+  27 Jul 2006; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.16.22.ebuild, +mips-sources-2.6.16.27.ebuild,
+  -mips-sources-2.6.17.3.ebuild, +mips-sources-2.6.17.7.ebuild:
+  Update 2.6.16.22 to 2.6.16.27 and 2.6.17.3 to 2.6.17.7. This includes some
+  newer patches to fix up IP27 support a little, and one or two generic
+  patches.
+
+*mips-sources-2.6.15.7-r2 (06 Jul 2006)
+
+  06 Jul 2006; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.15.7-r1.ebuild, +mips-sources-2.6.15.7-r2.ebuild,
+  mips-sources-2.6.16.22.ebuild, mips-sources-2.6.17.3.ebuild:
+  The 1.22 version of generic-patches tarball got damaged in getting out to
+  the mirrors, so rather than wait for that to be cleared, 1.23 is being
+  uploaded instead and all versions will reference it. Also updated 2.6.15.7
+  to pull in the squashfs patch and a hack to allow 64bit kernel builds on
+  ip22.
+
+*mips-sources-2.6.17.3 (03 Jul 2006)
+*mips-sources-2.6.16.22 (03 Jul 2006)
+
+  03 Jul 2006; Joshua Kinard <kumba@gentoo.org>
+  mips-sources-2.6.15.7-r1.ebuild, -mips-sources-2.6.16.20.ebuild,
+  +mips-sources-2.6.16.22.ebuild, +mips-sources-2.6.17.3.ebuild:
+  Update 2.6.16.20 to 2.6.16.22, import 2.6.17.3, and mask 2.6.15-r7 for all
+  systems except IP22, as this is the last known kernel that worked on IP22 in
+  64bit mode. 2.6.16.22 and 2.6.17.3 include SquashFS for the first time, as
+  well as being the barrier between linuxthreads and nptl support. This means
+  2.6.17 is enabled only in the 2006.1 nptl sub-profiles, and masked in all
+  other profiles. It is intended to be used with a transitional
+  linuxthreads->nptl userland, as linuxthreads support will die with 2.6.16*.
+
+*mips-sources-2.6.16.20 (07 Jun 2006)
+
+  07 Jun 2006; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.16.17.ebuild, +mips-sources-2.6.16.20.ebuild:
+  Update 2.6.16.17 to 2.6.16.20.
+
+*mips-sources-2.6.16.17 (21 May 2006)
+
+  21 May 2006; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.16.16.ebuild, +mips-sources-2.6.16.17.ebuild:
+  Update 2.6.16.16 to 2.6.16.17.
+
+*mips-sources-2.6.16.16 (11 May 2006)
+
+  11 May 2006; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.16.13.ebuild, +mips-sources-2.6.16.16.ebuild:
+  Update 2.6.16.13 to 2.6.16.16, and stable 2.6.16.*
+
+*mips-sources-2.6.16.13 (04 May 2006)
+
+  04 May 2006; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.16.11.ebuild, +mips-sources-2.6.16.13.ebuild:
+  Update 2.6.16.11 to 2.6.16.13.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org>
+  files/digest-mips-sources-2.6.15.7-r1, Manifest:
+  Fixing SHA256 digest, pass four
+
+*mips-sources-2.6.16.11 (25 Apr 2006)
+
+  25 Apr 2006; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.16.9.ebuild, +mips-sources-2.6.16.11.ebuild:
+  Update 2.6.16.9 to 2.6.16.11.
+
+*mips-sources-2.6.16.9 (21 Apr 2006)
+
+  21 Apr 2006; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.16.4-r1.ebuild, +mips-sources-2.6.16.9.ebuild:
+  Update 2.6.16.4 to 2.6.16.9.
+
+  16 Apr 2006; Joshua Kinard <kumba@gentoo.org>
+  mips-sources-2.6.16.4-r1.ebuild:
+  Add a dependency for >=gcc-3.4.6 on 2.6.16.4.
+
+*mips-sources-2.6.16.4-r1 (13 Apr 2006)
+*mips-sources-2.6.15.7-r1 (13 Apr 2006)
+
+  13 Apr 2006; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.15.7.ebuild, +mips-sources-2.6.15.7-r1.ebuild,
+  -mips-sources-2.6.16.4.ebuild, +mips-sources-2.6.16.4-r1.ebuild:
+  We forgot to remove a reference to 'soft_cursor' in the Octane Odyssey video
+  driver, triggering a compile failure.
+
+*mips-sources-2.6.16.4 (12 Apr 2006)
+
+  12 Apr 2006; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.16.3.ebuild, +mips-sources-2.6.16.4.ebuild:
+  Update 2.6.16.3 to 2.6.16.4.
+
+*mips-sources-2.6.16.3 (11 Apr 2006)
+
+  11 Apr 2006; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.16.2.ebuild, +mips-sources-2.6.16.3.ebuild:
+  Update 2.6.16.2 to 2.6.16.3.
+
+*mips-sources-2.6.16.2 (11 Apr 2006)
+
+  11 Apr 2006; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.14.7.ebuild, +mips-sources-2.6.16.2.ebuild:
+  Remove 2.6.14.7, and import 2.6.16.2.
+
+*mips-sources-2.6.15.7 (02 Apr 2006)
+
+  02 Apr 2006; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.4.31-r1.ebuild, -mips-sources-2.6.15.4.ebuild,
+  +mips-sources-2.6.15.7.ebuild:
+  Removed 2.4.31 -- this terminates support for the 2.4 kernel series on all
+  Gentoo-supported MIPS systems. Also update 2.6.15 to the .7 release from .4.
+  2.6.16 import is forth coming.
+
+*mips-sources-2.6.15.4 (19 Feb 2006)
+*mips-sources-2.6.14.7 (19 Feb 2006)
+
+  19 Feb 2006; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.13.5.ebuild, -mips-sources-2.6.14.6.ebuild,
+  +mips-sources-2.6.14.7.ebuild, +mips-sources-2.6.15.4.ebuild:
+  Another long-awaited mips-sources update. This removes 2.6.13.5, and adds in
+  2.6.14.7. 2.6.15.4 is also imported with newer ebuild code to handle when a
+  particular machine is known to fail for a given release. 2.6.15.4 also gets
+  cobalt support working again, and includes a highly expermental patch for
+  those interested in working on R10K-based SGI O2 systems.
+
+*mips-sources-2.6.14.6 (13 Jan 2006)
+
+  13 Jan 2006; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.14.5.ebuild, +mips-sources-2.6.14.6.ebuild:
+  Another 2.6.14 stable bump, this time to .6. Patches several security flaws
+  from upstream, and incorporates a fix for Octane to fix a keyboard detection
+  issue that was reported.
+
+*mips-sources-2.6.14.5 (03 Jan 2006)
+
+  03 Jan 2006; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.14.4.ebuild, +mips-sources-2.6.14.5.ebuild:
+  Bump to 2.6.14.5 to plug a number of security holes, plug a compile error on
+  IP30 (Bug #116368), and roll in a new IP28 patchset that fixes some IMpactSR
+  DMA issues.
+
+  20 Dec 2005; Joshua Kinard <kumba@gentoo.org>
+  mips-sources-2.6.14.4.ebuild:
+  Minor tweaks to change CVSDATE to GITDATE, and use newer rev of mips-sources
+  patchball due to a bug in one patch that resulted in patch failure.
+
+*mips-sources-2.6.14.4 (20 Dec 2005)
+*mips-sources-2.6.13.5 (20 Dec 2005)
+
+  20 Dec 2005; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.12.5.ebuild, -mips-sources-2.6.13.4.ebuild,
+  +mips-sources-2.6.13.5.ebuild, +mips-sources-2.6.14.4.ebuild:
+  Import 2.6.13.5 and 2.6.14.4. Removing 2.6.12.5 as IP27 now works in both
+  2.6.13/2.6.14. 2.6.14.4 also brings in X support for the Impact card in IP28
+  (Indigo2 Impact) systems.
+
+*mips-sources-2.6.13.4 (16 Oct 2005)
+
+  16 Oct 2005; Joshua Kinard <kumba@gentoo.org>
+  +mips-sources-2.4.31-r1.ebuild, -mips-sources-2.4.31.ebuild,
+  -mips-sources-2.6.10-r4.ebuild, +mips-sources-2.6.12.5.ebuild,
+  -mips-sources-2.6.12.ebuild, +mips-sources-2.6.13.4.ebuild:
+  Import new kernel versions: 2.6.13.4 for ip22, ip28, ip30, and ip32;; 2.6.12.5
+  for ip27 (2.6.13.4 has major PCI issues on ip27); Also updated 2.4.31 for ip22
+  w/ a patch that allows use of the RJ-45 port on Challenge S.
+
+*mips-sources-2.6.12 (05 Jul 2005)
+
+  05 Jul 2005; Joshua Kinard <kumba@gentoo.org> +mips-sources-2.6.12.ebuild,
+  -mips-sources-2.6.12_rc6.ebuild:
+  Added 2.6.12 final. Includes a number of enhancements: Octane (IP30) users
+  will discover qla1280 support and VPro support; O2 (IP32) users will notice
+  slightly increased scsi; and Origin (IP27) users will discover sources that
+  *gasp* actually work! (dramatic cue).
+
+*mips-sources-2.4.31 (11 Jun 2005)
+
+  11 Jun 2005; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.4.28-r2.ebuild, +mips-sources-2.4.31.ebuild,
+  -mips-sources-2.6.10-r3.ebuild, +mips-sources-2.6.10-r4.ebuild,
+  -mips-sources-2.6.12_rc2-r2.ebuild, -mips-sources-2.6.12_rc3-r1.ebuild,
+  +mips-sources-2.6.12_rc6.ebuild:
+  New ebuilds: dropped 2.4.28 due to age and replaced it with 2.4.31 for IP22
+  systems only. revbumped 2.6.10 to plug some security holes (CAN-2005-1041,
+  CAN-2005-1265, CAN-2005-1589, etc..), and added a new ebuild for 2.6.12-rc6.
+
+  19 May 2005; Joshua Kinard <kumba@gentoo.org> mips-sources-2.6.10-r3.ebuild,
+  mips-sources-2.6.12_rc2-r2.ebuild, mips-sources-2.6.12_rc3-r1.ebuild:
+  For 2.6 ebuilds, provide virtual/alsa.
+
+*mips-sources-2.6.12_rc2-r2 (18 May 2005)
+
+  18 May 2005; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.6.10-r2.ebuild, +mips-sources-2.6.10-r3.ebuild,
+  -mips-sources-2.6.12_rc2-r1.ebuild, +mips-sources-2.6.12_rc2-r2.ebuild,
+  +mips-sources-2.6.12_rc3-r1.ebuild, -mips-sources-2.6.12_rc3.ebuild:
+  Patch the 2.6 sources up a little bit. Add in a patch to finally nail that
+  annoying gbefb typo that kills IP32 builds, a couple security patches
+  (CAN-2005-1263/1264/1368), and a new CVS diff for 2.6.12-rc3.
+
+*mips-sources-2.6.12_rc3 (01 May 2005)
+
+  01 May 2005; Joshua Kinard <kumba@gentoo.org>
+  +mips-sources-2.6.12_rc3.ebuild:
+  Import of an ebuild for 2.6.12-rc3
+
+*mips-sources-2.6.12_rc2-r1 (25 Apr 2005)
+
+  25 Apr 2005; Joshua Kinard <kumba@gentoo.org>
+  +mips-sources-2.6.12_rc2-r1.ebuild, -mips-sources-2.6.12_rc2.ebuild:
+  The patch for IP28 was b0rked, and we had an incredibly stupid typo in the
+  ebuild. The kind that gets you laughed at by even novice bash coders.
+
+*mips-sources-2.4.28-r2 (23 Apr 2005)
+
+  23 Apr 2005; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.4.27-r8.ebuild, -mips-sources-2.4.28-r1.ebuild,
+  +mips-sources-2.4.28-r2.ebuild, -mips-sources-2.6.10-r1.ebuild,
+  +mips-sources-2.6.10-r2.ebuild, -mips-sources-2.6.12_rc1.ebuild,
+  +mips-sources-2.6.12_rc2.ebuild, -mips-sources-2.6.8.1-r8.ebuild,
+  -mips-sources-2.6.9-r9.ebuild:
+  * Removed 2.4.27, 2.6.8.1, and 2.6.9 ebuilds due to age and number of open
+  security bugs 
+  * Added ebuild for 2.6.12-rc2 from CVS 20050423 
+  * Added IP27 support to 2.6.12-rc2 
+  * Forward ported IP28 patch from 2.6.10 to 2.6.12-rc2 
+  * Resolved the Following Security Issues: 
+  * 2.4.28 - CAN-2005-0209 (#81195), CAN-2005-0384 (#82201), 
+  CAN-2005-0449 (#81195), CAN-2004-1333 (#78362), CAN-2004-1335 (#78363), 
+  NTFS DoS (#81106), VFS Range Check (#81295) 
+  * 2.6.10 - CAN-2005-0209 (#81195), CAN-2005-0210 (#85478), 
+  CAN-2005-0384 (#82201), CAN-2005-0400 (#86258), CAN-2005-0449 (#81195), 
+  CAN-2005-0529 (#82141), CAN-2005-0530 (#82141), CAN-2005-0531 (#82141), 
+  CAN-2005-0532 (#82141), CAN-2005-0736 (#85385), CAN-2005-0749 (#86783), 
+  CAN-2005-0750 (#86638), CAN-2005-0815 (#86784), CAN-2005-0839 (#87534), 
+  CAN-2005-0867 (#88740), CAN-2005-0916 (#87913), CAN-2005-0937 (#87573), 
+  Local DoS/tmpfs (#87536), Rose & SCSI/Tape (#85795), NTFS DoS (#81106), 
+  nfsacl Remote DoS (#74070) 
+  * 2.6.12-rc2 - nfsacl Remote DoS (#74070) 
+  * Misc. ebuild tweaks and cleanups
+
+  26 Mar 2005; Joshua Kinard <kumba@gentoo.org>
+  mips-sources-2.6.12_rc1.ebuild:
+  Drop cgs' dallas 1-wire NIC patch for now -- it needs more work.
+
+*mips-sources-2.6.12_rc1 (24 Mar 2005)
+
+  24 Mar 2005; Joshua Kinard <kumba@gentoo.org>
+  +mips-sources-2.6.12_rc1.ebuild:
+  Adding a 2.6.12-rc1 ebuild because of the constantly changing version of
+  2.6.11.x. Includes updated Octane support (w/ SMP), remaining cobalt bits that
+  have yet to be merged, and an experimental mips nptl patch for testing
+  purposes. IP28 support is not available in this release, though.
+
+  06 Feb 2005; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.28-r1.ebuild,
+  mips-sources-2.6.10-r1.ebuild:
+  Marked 2.6.10-r1 unstable, 2.4.28-r1 stable.
+
+*mips-sources-2.4.28-r1 (18 Jan 2005)
+
+  18 Jan 2005; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.4.27-r7.ebuild, +mips-sources-2.4.27-r8.ebuild,
+  +mips-sources-2.4.28-r1.ebuild, -mips-sources-2.4.28.ebuild,
+  +mips-sources-2.6.10-r1.ebuild, -mips-sources-2.6.10.ebuild,
+  -mips-sources-2.6.8.1-r7.ebuild, +mips-sources-2.6.8.1-r8.ebuild,
+  -mips-sources-2.6.9-r8.ebuild, +mips-sources-2.6.9-r9.ebuild:
+  Many more fun changes. New here is support in 2.6.10 for the SGI IP28 machine
+  (Indigo2 Impact R10000), courtesy of Peter Fuerst's work. See the 2.6.10
+  ebuild for URL and information regarding this support, which is experimental.
+  Also included are a number of security patches, including CAN-2005-0001, and
+  CAN-2004-1235. Specific Gentoo Bug numbers are as follows: 77025, 77094,
+  75963, 77666, & 77923. Structural changes have been made to the 2.6.10 ebuild
+  as well, and cobalt patches are no longer bundled in an external tarball, but
+  are included in mips-sources_generic-patches now.
+
+*mips-sources-2.4.28 (06 Jan 2005)
+
+  06 Jan 2005; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.4.26-r14.ebuild, -mips-sources-2.4.27-r6.ebuild,
+  +mips-sources-2.4.27-r7.ebuild, +mips-sources-2.4.28.ebuild,
+  +mips-sources-2.6.10.ebuild, -mips-sources-2.6.7-r12.ebuild,
+  -mips-sources-2.6.8.1-r6.ebuild, +mips-sources-2.6.8.1-r7.ebuild,
+  -mips-sources-2.6.9-r7.ebuild, +mips-sources-2.6.9-r8.ebuild:
+  More changes (as usual). Mainly security updates - added CAN-2004-1068,
+  CAN-2004-1069, CAN-2004-1016, CAN-2004-1056, CAN-1004-1137, plus a non-CAN
+  shm_unlock patch for 2.6. Also included are new ebuilds for 2.6.10 and 2.4.28,
+  and removed 2.6.7 and 2.4.26 ebuilds. 2.6.10 no longer uses individual cobalt
+  patches -- all have been lumped into a single patch similar to IP30/Octane
+  support, and added code to 2.6.10's ebuild to use RC-kernels when needed via
+  variable switch. See the following gentoo bugs: 72317, 72452, 74384, 74392,
+  74464, 74465.
+
+*mips-sources-2.6.8.1-r6 (03 Dec 2004)
+
+  03 Dec 2004; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.4.26-r13.ebuild, +mips-sources-2.4.26-r14.ebuild,
+  -mips-sources-2.4.27-r5.ebuild, +mips-sources-2.4.27-r6.ebuild,
+  -mips-sources-2.6.7-r11.ebuild, +mips-sources-2.6.7-r12.ebuild,
+  -mips-sources-2.6.8.1-r5.ebuild, +mips-sources-2.6.8.1-r6.ebuild,
+  -mips-sources-2.6.9-r6.ebuild, +mips-sources-2.6.9-r7.ebuild:
+  *more* security fixes. This time, it's CAN-2004-1074. See Bug #72452. Bumped
+  SECPATCHVER to 1.8.
+
+*mips-sources-2.6.9-r6 (01 Dec 2004)
+
+  01 Dec 2004; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.4.26-r12.ebuild, +mips-sources-2.4.26-r13.ebuild,
+  -mips-sources-2.4.27-r4.ebuild, +mips-sources-2.4.27-r5.ebuild,
+  -mips-sources-2.6.7-r10.ebuild, +mips-sources-2.6.7-r11.ebuild,
+  -mips-sources-2.6.8.1-r4.ebuild, +mips-sources-2.6.8.1-r5.ebuild,
+  -mips-sources-2.6.9-r5.ebuild, +mips-sources-2.6.9-r6.ebuild:
+  More security updates (yay). Added patch to fix a kernel memory modification
+  vuln (Bug #72317). Bumped SECPATCHVER to 1.7.
+
+*mips-sources-2.4.27-r4 (01 Dec 2004)
+
+  01 Dec 2004; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.4.26-r11.ebuild, +mips-sources-2.4.26-r12.ebuild,
+  -mips-sources-2.4.27-r3.ebuild, +mips-sources-2.4.27-r4.ebuild,
+  +mips-sources-2.6.7-r10.ebuild, -mips-sources-2.6.7-r9.ebuild,
+  -mips-sources-2.6.8.1-r3.ebuild, +mips-sources-2.6.8.1-r4.ebuild,
+  -mips-sources-2.6.9-r4.ebuild, +mips-sources-2.6.9-r5.ebuild:
+  Security updates again; CAN-2004-0814 had a newer patch to be applied to 2.4.*
+  and 2.6.7/2.6.8.1. Also included an updated patch for the binfmt_elf vuln.
+  SECPATCHVER bumped to 1.6.
+
+  27 Nov 2004; Joshua Kinard <kumba@gentoo.org> mips-sources-2.6.9-r4.ebuild:
+  Tested to work (for the most part) on IP22, works well for Cobalt, and
+  required for IP32/IP30 support. All in all, finally ready for unstable.
+
+*mips-sources-2.4.26-r11 (26 Nov 2004)
+
+  26 Nov 2004; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.4.26-r10.ebuild, +mips-sources-2.4.26-r11.ebuild,
+  -mips-sources-2.4.27-r2.ebuild, +mips-sources-2.4.27-r3.ebuild,
+  -mips-sources-2.6.7-r8.ebuild, +mips-sources-2.6.7-r9.ebuild,
+  -mips-sources-2.6.8.1-r2.ebuild, +mips-sources-2.6.8.1-r3.ebuild,
+  -mips-sources-2.6.9-r3.ebuild, +mips-sources-2.6.9-r4.ebuild:
+  Bumped SECPATCHVER to 1.5. Includes fix for CAN-2004-0883 and a mips-specific
+  ptrace vuln.
+
+*mips-sources-2.6.8.1-r2 (13 Nov 2004)
+
+  13 Nov 2004; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.4.25-r9.ebuild, +mips-sources-2.4.26-r10.ebuild,
+  -mips-sources-2.4.26-r9.ebuild, -mips-sources-2.4.27-r1.ebuild,
+  +mips-sources-2.4.27-r2.ebuild, -mips-sources-2.6.4-r9.ebuild,
+  -mips-sources-2.6.6-r9.ebuild, -mips-sources-2.6.7-r7.ebuild,
+  +mips-sources-2.6.7-r8.ebuild, -mips-sources-2.6.8.1-r1.ebuild,
+  +mips-sources-2.6.8.1-r2.ebuild, -mips-sources-2.6.9-r2.ebuild,
+  +mips-sources-2.6.9-r3.ebuild:
+  Security Updates and housecleaning. Removed 2.4.25, 2.6.4, & 2.6.6 ebuilds.
+  Security patchball has fixes for CAN-2004-0814 and CAN-2004-0816, plus a
+  remote DDoS and race conditions in binfmt_elf. Misc. patches include new
+  ramdisk code for arch/mips/ramdisk/*, spelling tweak to RM52xx CPU in Kconfig,
+  and a new gbefb patch from onion2(tal.org).
+
+*mips-sources-2.6.9-r2 (02 Nov 2004)
+
+  02 Nov 2004; Joshua Kinard <kumba@gentoo.org>
+  mips-sources-2.6.8.1-r1.ebuild, -mips-sources-2.6.9-r1.ebuild,
+  +mips-sources-2.6.9-r2.ebuild:
+  Added a patch for 2.6.9 that allows for Linux on Octane (IP30, 'Speedracer').
+  This also fixes the 2.6.9-r1 bad digests (finally), and cleans 2.6.8.1's 
+  ebuild up a bit.
+
+  29 Oct 2004; Joshua Kinard <kumba@gentoo.org> :
+  Tweaked the prologue patch in the generic patch tarball.
+
+*mips-sources-2.6.9-r1 (29 Oct 2004)
+
+  29 Oct 2004; Joshua Kinard <kumba@gentoo.org> +mips-sources-2.6.9-r1.ebuild,
+  -mips-sources-2.6.9.ebuild:
+  Added revised 2.6.9 ebuild with better patches. One fixes the prologue code
+  issue again for gcc-3.4.x, another patch for livecd testing only adds in
+  CDROM partition support (this is extremely experimental), and a gbefb typo
+  fix.
+
+  23 Oct 2004; Joshua Kinard <kumba@gentoo.org> :
+  Digest fix
+
+*mips-sources-2.6.9 (21 Oct 2004)
+
+  21 Oct 2004; Joshua Kinard <kumba@gentoo.org> +mips-sources-2.6.9.ebuild:
+  New version - Contains known fixes for many things, including functional IP22
+  (Indy/Indigo2 support (including ip22zilog), big changes in IP32 code,
+  gcc-3.4.x fixes, and various other tweaks.
+
+*mips-sources-2.4.26-r9 (29 Sep 2004)
+
+  29 Sep 2004; Joshua Kinard <kumba@gentoo.org>
+  -files/mipscvs-2.4.25-makefile-fix.patch,
+  -files/mipscvs-2.4.25-makefile-inlinelimit.patch,
+  -files/mipscvs-2.4.25-no-page-align.patch,
+  -files/mipscvs-2.4.26-makefile-fix.patch,
+  -files/mipscvs-2.4.27-makefile-fix.patch,
+  -files/mipscvs-2.6.5-swapbug-fix.patch,
+  -files/mipscvs-2.6.5-unistd-linkage.patch,
+  -files/mipscvs-2.6.7-maceisa_rtc_irq-fix.patch,
+  -files/mipscvs-2.6.x-ip32-kern_entry-arcboot.patch,
+  -files/mipscvs-2.6.x-no-page-align.patch,
+  -files/misc-2.6-compat_alloc_user_space.patch,
+  -files/misc-2.6-force_mouse_detection.patch,
+  -files/misc-2.6-iptables_headers.patch, -mips-sources-2.4.25-r8.ebuild,
+  +mips-sources-2.4.25-r9.ebuild, -mips-sources-2.4.26-r8.ebuild,
+  +mips-sources-2.4.26-r9.ebuild, +mips-sources-2.4.27-r1.ebuild,
+  -mips-sources-2.4.27.ebuild, -mips-sources-2.6.4-r8.ebuild,
+  +mips-sources-2.6.4-r9.ebuild, -mips-sources-2.6.6-r8.ebuild,
+  +mips-sources-2.6.6-r9.ebuild, -mips-sources-2.6.7-r6.ebuild,
+  +mips-sources-2.6.7-r7.ebuild, +mips-sources-2.6.8.1-r1.ebuild,
+  -mips-sources-2.6.8.1.ebuild:
+  Yet another overhaul. Removed all files except digests from FILESDIR and put
+  them into a generic patches tarball pulled off the mirrors by the ebuilds.
+  Also a brand-spankin' new ebuild for 2.6.8.1 that includes a bunch of patches
+  and backports from linux-mips CVS (which will be in 2.6.9). Fixes for 2.6.8
+  include ip22zilog finally getting fixed, IP22 64-bit support available, statfs
+  fixes useful for n32 userland, and patches to allow building of mips kernels
+  w/ gcc-3.4.x (not for 2.4 kernels, that is forth-coming).
+
+*mips-sources-2.6.8.1 (14 Aug 2004)
+
+  14 Aug 2004; Joshua Kinard <kumba@gentoo.org>
+  +files/misc-2.6-compat_alloc_user_space.patch, +mips-sources-2.4.27.ebuild,
+  -mips-sources-2.6.7-r5.ebuild, +mips-sources-2.6.7-r6.ebuild,
+  +mips-sources-2.6.8.1.ebuild:
+  Fun fun updates. New ebuilds for 2.4.27 and 2.6.8.1, pulled from linux-mips
+  CVS on 18 Aug 2004. Also included a patch from lmo cvs for 2.6.7 that should
+  fix the ifconfig problem.
+
+*mips-sources-2.6.6-r8 (11 Aug 2004)
+
+  11 Aug 2004; Joshua Kinard <kumba@gentoo.org>
+  -mips-sources-2.4.25-r7.ebuild, +mips-sources-2.4.25-r8.ebuild,
+  -mips-sources-2.4.26-r7.ebuild, +mips-sources-2.4.26-r8.ebuild,
+  -mips-sources-2.6.4-r7.ebuild, +mips-sources-2.6.4-r8.ebuild,
+  -mips-sources-2.6.6-r5.ebuild, +mips-sources-2.6.6-r8.ebuild,
+  -mips-sources-2.6.7-r4.ebuild, +mips-sources-2.6.7-r5.ebuild:
+  Security updates (again) - CAN-2004-0685 for 2.4 only, and patches for the
+  security flaw described in Bug #59905.
+
+*mips-sources-2.6.7-r4 (06 Aug 2004)
+
+  06 Aug 2004; Joshua Kinard <kumba@gentoo.org>
+  +files/misc-2.6-force_mouse_detection.patch, -mips-sources-2.4.25-r6.ebuild,
+  +mips-sources-2.4.25-r7.ebuild, -mips-sources-2.4.26-r6.ebuild,
+  +mips-sources-2.4.26-r7.ebuild, -mips-sources-2.6.4-r6.ebuild,
+  +mips-sources-2.6.4-r7.ebuild, -mips-sources-2.6.5-r5.ebuild,
+  -mips-sources-2.6.6-r4.ebuild, +mips-sources-2.6.6-r5.ebuild,
+  -mips-sources-2.6.7-r3.ebuild, +mips-sources-2.6.7-r4.ebuild:
+  Another kernel vuln, the patch for this one is a doozy, CAN-2004-0415. Also
+  pulled 2.6.5 from the tree, but we're keeping 2.6.4 around because it's the
+  last version that worked on Indigo2 systems. Also included is a patch to force
+  mouse detection for IP22/IP32 (And possibly others) in 2.6.x.
+
+*mips-sources-2.4.25-r6 (02 Aug 2004)
+
+  02 Aug 2004; Joshua Kinard <kumba@gentoo.org>
+  -files/CAN-2004-0075-2.6-vicam_usb.patch,
+  -files/CAN-2004-0109-2.4-iso9660.patch,
+  -files/CAN-2004-0109-2.6-iso9660.patch, -files/CAN-2004-0133-xfs_ext3.patch,
+  -files/CAN-2004-0177-ext3_jbd.patch, -files/CAN-2004-0178-sbblaster.patch,
+  -files/CAN-2004-0181-2.4-jfs_ext3.patch,
+  -files/CAN-2004-0181-2.6-jfs_ext3.patch, -files/CAN-2004-0228-cpufreq.patch,
+  -files/CAN-2004-0229-fb_copy_cmap.patch, -files/CAN-2004-0394-panic.patch,
+  -files/CAN-2004-0427-2.4-do_fork.patch,
+  -files/CAN-2004-0427-2.6-do_fork.patch,
+  -files/CAN-2004-0495-2.4-sparse.patch.bz2,
+  -files/CAN-2004-0495_0496-2.6-sparse.patch.bz2,
+  -files/CAN-2004-0497-attr_gid.patch, -files/CAN-2004-0535-2.4-e1000.patch,
+  -files/CAN-2004-0596-2.6-eql.patch, -files/CAN-2004-0626-death_packet.patch,
+  +files/mipscvs-2.6.x-ip32-kern_entry-arcboot.patch,
+  -mips-sources-2.4.25-r5.ebuild, +mips-sources-2.4.25-r6.ebuild,
+  -mips-sources-2.4.26-r5.ebuild, +mips-sources-2.4.26-r6.ebuild,
+  -mips-sources-2.6.4-r5.ebuild, +mips-sources-2.6.4-r6.ebuild,
+  -mips-sources-2.6.5-r4.ebuild, +mips-sources-2.6.5-r5.ebuild,
+  -mips-sources-2.6.6-r3.ebuild, +mips-sources-2.6.6-r4.ebuild,
+  -mips-sources-2.6.7-r2.ebuild, +mips-sources-2.6.7-r3.ebuild:
+  First, was wrong to put compressed files into the tree, thus all
+  security-related patches have been moved to a patchball on the mirrors, and
+  2.6 has a newer patch for a /proc issue added in as well. Second, a patch for
+  2.6.x ebuilds was added to tweak the kernel entry addr for IP32 kernels so
+  that the arcboot bootloader will actually boot the things.
+
+*mips-sources-2.4.25-r5 (01 Aug 2004)
+
+  01 Aug 2004; Joshua Kinard <kumba@gentoo.org>
+  -files/CAN-2004-0495-2.4-sparse.patch,
+  +files/CAN-2004-0495-2.4-sparse.patch.bz2,
+  -files/CAN-2004-0495_0496-2.6-sparse.patch,
+  +files/CAN-2004-0495_0496-2.6-sparse.patch.bz2,
+  -files/CAN-2004-0497-2.6-attr_gid.patch,
+  +files/CAN-2004-0497-attr_gid.patch, -mips-sources-2.4.25-r4.ebuild,
+  +mips-sources-2.4.25-r5.ebuild, -mips-sources-2.4.26-r3.ebuild,
+  -mips-sources-2.4.26-r4.ebuild, +mips-sources-2.4.26-r5.ebuild,
+  mips-sources-2.6.4-r5.ebuild, mips-sources-2.6.5-r4.ebuild,
+  mips-sources-2.6.6-r3.ebuild, mips-sources-2.6.7-r2.ebuild:
+  bzipped two large patches to get under the 20KB size limit in the tree, and
+  added CAN-2004-0497 to the 2.4.x ebuilds.
+
+*mips-sources-2.6.5-r4 (22 Jul 2004)
+
+  22 Jul 2004; Joshua Kinard <kumba@gentoo.org>
+  +files/CAN-2004-0495_0496-2.6-sparse.patch,
+  +files/CAN-2004-0497-2.6-attr_gid.patch, +files/CAN-2004-0596-2.6-eql.patch,
+  -mips-sources-2.6.4-r4.ebuild, +mips-sources-2.6.4-r5.ebuild,
+  -mips-sources-2.6.5-r3.ebuild, +mips-sources-2.6.5-r4.ebuild,
+  -mips-sources-2.6.6-r2.ebuild, +mips-sources-2.6.6-r3.ebuild,
+  -mips-sources-2.6.7-r1.ebuild, +mips-sources-2.6.7-r2.ebuild:
+  Added security patches for 2.6.x kernels for the following vulns:
+  CAN-2004-0495, CAN-2004-0496, CAN-2004-0497, & CAN-2004-0596.
+
+*mips-sources-2.4.26-r4 (13 Jul 2004)
+
+  13 Jul 2004; Joshua Kinard <kumba@gentoo.org>
+  +mips-sources-2.4.26-r4.ebuild:
+  New 2.4.26 snapshot from linux-mips CVS.
+
+*mips-sources-2.6.4-r4 (01 Jul 2004)
+
+  01 Jul 2004; Joshua Kinard <kumba@gentoo.org>
+  +files/CAN-2004-0495-2.4-sparse.patch, +files/CAN-2004-0535-2.4-e1000.patch,
+  +files/CAN-2004-0626-death_packet.patch,
+  +files/misc-2.6-iptables_headers.patch, -mips-sources-2.4.25-r3.ebuild,
+  +mips-sources-2.4.25-r4.ebuild, -mips-sources-2.4.26-r2.ebuild,
+  +mips-sources-2.4.26-r3.ebuild, -mips-sources-2.6.4-r3.ebuild,
+  +mips-sources-2.6.4-r4.ebuild, -mips-sources-2.6.5-r2.ebuild,
+  +mips-sources-2.6.5-r3.ebuild, -mips-sources-2.6.6-r1.ebuild,
+  +mips-sources-2.6.6-r2.ebuild, -mips-sources-2.6.6.ebuild,
+  +mips-sources-2.6.7-r1.ebuild, -mips-sources-2.6.7.ebuild:
+  Security updates; Fixes for sparse/e1000 bugs for 2.4 and the packet of death
+  for 2.6.
+
+*mips-sources-2.6.7 (23 Jun 2004)
+
+  23 Jun 2004; Joshua Kinard <kumba@gentoo.org>
+  +files/mipscvs-2.6.7-maceisa_rtc_irq-fix.patch, +mips-sources-2.6.7.ebuild:
+  New snapshot for 2.6.7
+
+  07 Jun 2004; Joshua Kinard <kumba@gentoo.org> mips-sources-2.6.6-r1.ebuild:
+  Change the IP32DIFFDATE back to a known working date.
+
+*mips-sources-2.4.25-r3 (04 Jun 2004)
+
+  04 Jun 2004; Joshua Kinard <kumba@gentoo.org>
+  -files/CAN-2003-0961-do_brk.patch, -files/CAN-2003-0985-mremap.patch,
+  -files/CAN-2004-0010-ncpfs.patch, +files/CAN-2004-0075-2.6-vicam_usb.patch,
+  -files/CAN-2004-0077-do_munmap.patch, +files/CAN-2004-0133-xfs_ext3.patch,
+  +files/CAN-2004-0181-2.4-jfs_ext3.patch,
+  +files/CAN-2004-0181-2.6-jfs_ext3.patch, +files/CAN-2004-0228-cpufreq.patch,
+  +files/CAN-2004-0229-fb_copy_cmap.patch, +files/CAN-2004-0394-panic.patch,
+  +files/CAN-2004-0427-2.4-do_fork.patch,
+  +files/CAN-2004-0427-2.6-do_fork.patch,
+  -files/bigendian-byteorder-fix.patch,
+  -files/mipscvs-2.4.21-makefile-fix.patch,
+  -files/mipscvs-2.4.21-no-page-align.patch,
+  -files/mipscvs-2.4.22-makefile-fix.patch,
+  -files/mipscvs-2.4.22-no-page-align.patch,
+  -files/mipscvs-2.4.23-makefile-fix.patch,
+  -files/mipscvs-2.4.23-makefile-inlinelimit.patch,
+  -files/mipscvs-2.4.23-no-page-align.patch, -files/rtc-fixes.patch,
+  -mips-sources-2.4.21-r9.ebuild, -mips-sources-2.4.22-r12.ebuild,
+  -mips-sources-2.4.23-r8.ebuild, -mips-sources-2.4.25-r2.ebuild,
+  +mips-sources-2.4.25-r3.ebuild, -mips-sources-2.4.26-r1.ebuild,
+  +mips-sources-2.4.26-r2.ebuild, -mips-sources-2.6.3-r4.ebuild,
+  -mips-sources-2.6.4-r2.ebuild, +mips-sources-2.6.4-r3.ebuild,
+  -mips-sources-2.6.5-r1.ebuild, +mips-sources-2.6.5-r2.ebuild,
+  +mips-sources-2.6.6-r1.ebuild:
+  Batch of security updates that apparently got missed. Finally removed
+  2.4.{21,22,23} and 2.6.3 from repository. Added newer 2.6.6 snapshot
+  (20040406), and marked 2.4.26 stable.
+
+*mips-sources-2.6.6 (10 May 2004)
+
+  10 May 2004; Joshua Kinard <kumba@gentoo.org> mips-sources-2.6.3-r4.ebuild,
+  mips-sources-2.6.4-r2.ebuild, mips-sources-2.6.5-r1.ebuild,
+  +mips-sources-2.6.6.ebuild:
+  Adding an ebuild for 2.6.6 sources and some comment fixes in the other 2.6.x
+  ebuilds.
+
+  03 May 2004; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.23-r8.ebuild,
+  mips-sources-2.4.25-r2.ebuild:
+  Marked stable.
+
+  28 Apr 2004; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.26-r1.ebuild:
+  Removed two lines in the 2.4.26 ebuild that were excluding a patch (debugging
+  bit I forgot to remove).
+
+*mips-sources-2.4.22-r12 (21 Apr 2004)
+*mips-sources-2.4.23-r8 (21 Apr 2004)
+*mips-sources-2.4.25-r2 (21 Apr 2004)
+*mips-sources-2.4.26-r1 (21 Apr 2004)
+
+  21 Apr 2004; Joshua Kinard <kumba@gentoo.org>
+  +files/CAN-2004-0177-ext3_jbd.patch, +files/CAN-2004-0178-sbblaster.patch,
+  files/mipscvs-2.6.5-swapbug-fix.patch,
+  +files/mipscvs-2.6.5-unistd-linkage.patch, -mips-sources-2.4.21-r8.ebuild,
+  +mips-sources-2.4.21-r9.ebuild, -mips-sources-2.4.22-r11.ebuild,
+  +mips-sources-2.4.22-r12.ebuild, -mips-sources-2.4.23-r7.ebuild,
+  +mips-sources-2.4.23-r8.ebuild, -mips-sources-2.4.25-r1.ebuild,
+  +mips-sources-2.4.25-r2.ebuild, +mips-sources-2.4.26-r1.ebuild,
+  -mips-sources-2.4.26.ebuild, -mips-sources-2.6.3-r3.ebuild,
+  +mips-sources-2.6.3-r4.ebuild, -mips-sources-2.6.4-r1.ebuild,
+  +mips-sources-2.6.4-r2.ebuild, +mips-sources-2.6.5-r1.ebuild,
+  -mips-sources-2.6.5.ebuild:
+  More updates. Two security fixes for 2.4.x sources missed in the last update
+  round; Updated patches for cobalt support (loadable initrd, d-cache IDE/PIO
+  fix); Patch for 2.6.5 to fix swap issues; build bug when building 2.6.5 w/
+  initrd support, and some minor cleanups.
+
+  16 Apr 2004; Joshua Kinard <kumba@gentoo.org>
+  files/CAN-2004-0109-2.6-iso9660.patch:
+  Had the wrong patch for 2.6.x for CAN-2004-0109 (ck-sources had this issue
+  originally). Patch is now the correct one.
+
+*mips-sources-2.4.26 (16 Apr 2004)
+*mips-sources-2.4.22-r11 (16 Apr 2004)
+*mips-sources-2.4.23-r7 (16 Apr 2004)
+*mips-sources-2.4.25-r1 (16 Apr 2004)
+
+  16 Apr 2004; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.21-r8.ebuild,
+  mips-sources-2.4.22-r11.ebuild, mips-sources-2.4.23-r7.ebuild,
+  mips-sources-2.4.25-r1.ebuild, mips-sources-2.4.26.ebuild,
+  files/mipscvs-2.4.26-makefile-fix.patch:
+  Adding ebuilds for 2.4.26 from linux-mips CVS. Also some typo fixes in the
+  other ebuilds.
+
+*mips-sources-2.6.5 (15 Apr 2004)
+*mips-sources-2.6.4-r1 (15 Apr 2004)
+
+  15 Apr 2004; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.21-r7.ebuild,
+  mips-sources-2.4.21-r8.ebuild, mips-sources-2.4.22-r10.ebuild,
+  mips-sources-2.4.22-r11.ebuild, mips-sources-2.4.23-r6.ebuild,
+  mips-sources-2.4.23-r7.ebuild, mips-sources-2.4.25-r1.ebuild,
+  mips-sources-2.4.25.ebuild, mips-sources-2.6.3-r1.ebuild,
+  mips-sources-2.6.3-r2.ebuild, mips-sources-2.6.3-r3.ebuild,
+  mips-sources-2.6.3.ebuild, mips-sources-2.6.4-r1.ebuild,
+  mips-sources-2.6.4.ebuild, mips-sources-2.6.5.ebuild,
+  files/CAN-2004-0109-2.4-iso9660.patch,
+  files/CAN-2004-0109-2.6-iso9660.patch,
+  files/mipscvs-2.4.21-no-page-align.patch,
+  files/mipscvs-2.4.22-no-page-align.patch,
+  files/mipscvs-2.4.23-no-page-align.patch,
+  files/mipscvs-2.4.25-no-page-align.patch,
+  files/mipscvs-2.6.5-swapbug-fix.patch,
+  files/mipscvs-2.6.x-no-page-align.patch:
+  Fun fun updates. Added a patch to all ebuilds to patch a security vuln in
+  isofs (CAN-2004-0109); Added several patches for the various versions to tweak
+  the flags passed to the linker to request no page alignment. Without this
+  patch, binutils-2.14.90.0.8 and up will produce unbootable kernels. Lastly,
+  the final patch is for 2.6.5 which is a workaround for a BUG() call generated
+  in the swap code.
+
+  12 Apr 2004; Daniel Ahlberg <aliz@gentoo.org>
+  mips-sources-2.4.22-r10.ebuild, mips-sources-2.4.23-r6.ebuild,
+  mips-sources-2.4.25.ebuild:
+  Add IUSE=
+
+  13 Mar 2004; Joshua Kinard <kumba@gentoo.org> :
+  Updated 2.6.3 digests due to the 1.1 ver of the cobalt patchset needing a
+  small tweak
+
+*mips-sources-2.6.4 (13 Mar 2004)
+
+  13 Mar 2004; Joshua Kinard <kumba@gentoo.org> mips-sources-2.6.4.ebuild:
+  New ebuild for 2.6.4, CVS snapshot dated 20040311. Includes patchsets for
+  cobalt systems (experimental) and SGI O2.
+
+  08 Mar 2004; Joshua Kinard <kumba@gentoo.org> mips-sources-2.6.3-r1.ebuild,
+  mips-sources-2.6.3-r2.ebuild, mips-sources-2.6.3.ebuild:
+  Forgot to set keywords to mask this package (rather experimental)
+
+*mips-sources-2.6.3-r1 (08 Mar 2004)
+
+  08 Mar 2004; Joshua Kinard <kumba@gentoo.org> mips-sources-2.6.3-r1.ebuild,
+  mips-sources-2.6.3-r2.ebuild, mips-sources-2.6.3.ebuild:
+  2.6.x versions of mips-sources. Snapshots are from 20040218, 20040301, and
+  20040305. Cobalt-mips patches are included for eventual usage of 2.6 on Cobalt
+  microserver systems. The 20040305 ebuild also contains a minimal patchset from
+  Iluxa that allows proper SGI O2 functionality.
+
+*mips-sources-2.4.22-r10 (18 Feb 2004)
+
+  23 Feb 2004; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.25.ebuild,
+  files/pax-linux-2.4.25-200402192035.patch:
+  Just realized the pax patch is way too big for the tree, removed until a more
+  elegant way of including it can be devised.
+
+*mips-sources-2.4.25 (23 Feb 2004)
+
+  23 Feb 2004; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.21-r7.ebuild,
+  mips-sources-2.4.22-r10.ebuild, mips-sources-2.4.23-r6.ebuild,
+  mips-sources-2.4.25.ebuild, files/CAN-2003-0961-do_brk.patch,
+  files/CAN-2003-0985-mremap.patch, files/CAN-2004-0010-ncpfs.patch,
+  files/CAN-2004-0077-do_munmap.patch, files/do_brk_fix.patch,
+  files/do_munmap-fix.patch,
+  files/mipscvs-2.4.23-makefile-inlinelimit-fix.patch,
+  files/mipscvs-2.4.23-makefile-inlinelimit.patch,
+  files/mipscvs-2.4.25-makefile-fix.patch,
+  files/mipscvs-2.4.25-makefile-inlinelimit.patch,
+  files/mremap-fix-try2.patch, files/pax-linux-2.4.25-200402192035.patch:
+  More cleanups, mainly in renaming the security-based patches to include their
+  CVE number for easy reference on their purpose. Also added an ebuild for
+  2.4.25 kernel, taken from linux-mips CVS on 20040222.
+
+*mips-sources-2.4.23-r6 (18 Feb 2004)
+
+  18 Feb 2004; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.21-r4.ebuild,
+  mips-sources-2.4.21-r6.ebuild, mips-sources-2.4.21-r7.ebuild,
+  mips-sources-2.4.22-r10.ebuild, mips-sources-2.4.22-r7.ebuild,
+  mips-sources-2.4.22-r9.ebuild, mips-sources-2.4.23-r3.ebuild,
+  mips-sources-2.4.23-r5.ebuild, mips-sources-2.4.23-r6.ebuild,
+  files/do_munmap-fix.patch:
+  Added a patch to fix a possible kernel vulnerability in do_munmap. Due to this
+  requiring an ebuild bump, the old sources were all removed and the sources
+  containing the cobalt patches were bumped up.
+
+*mips-sources-2.4.23-r5 (10 Feb 2004)
+
+  10 Feb 2004; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.21-r5.ebuild,
+  mips-sources-2.4.21-r6.ebuild, mips-sources-2.4.22-r8.ebuild,
+  mips-sources-2.4.22-r9.ebuild, mips-sources-2.4.23-r4.ebuild,
+  mips-sources-2.4.23-r5.ebuild, files/mipscvs-2.4.22-makefile-fix.patch,
+  files/mipscvs-2.4.22-makefile-mips64-tweak.patch,
+  files/mipscvs-2.4.22-sgiwd-fix.patch,
+  files/mipscvs-2.4.23-makefile-inlinelimit-fix.patch:
+  Newer ebuilds are cleaned up to look similar between each other, contain newer
+  cobalt patches, and some other reorganization.  Older ebuilds w/ cobalt patches
+  have been deleted.
+
+*mips-sources-2.4.22-r8 (01 Feb 2004)
+
+  01 Feb 2004; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.21-r5.ebuild,
+  mips-sources-2.4.22-r8.ebuild, mips-sources-2.4.23-r4.ebuild:
+  Added patches to allow kernels to work properly on cobalt systems
+
+*mips-sources-2.4.23-r3 (19 Jan 2004)
+
+  19 Jan 2004; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.21-r3.ebuild,
+  mips-sources-2.4.21-r4.ebuild, mips-sources-2.4.22-r6.ebuild,
+  mips-sources-2.4.22-r7.ebuild, mips-sources-2.4.23-r2.ebuild,
+  mips-sources-2.4.23-r3.ebuild, files/mremap-fix-try2.patch,
+  files/mremap-fix.patch:
+  updated the mremap patch
+
+*mips-sources-2.4.21-r3 (05 Jan 2004)
+
+  05 Jan 2004; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.21-r2.ebuild,
+  mips-sources-2.4.21-r3.ebuild, mips-sources-2.4.22-r4.ebuild,
+  mips-sources-2.4.22-r5.ebuild, mips-sources-2.4.22-r6.ebuild,
+  mips-sources-2.4.23-r1.ebuild, mips-sources-2.4.23-r2.ebuild,
+  files/mremap-fix.patch, files/rtc-fixes.patch:
+  Added a patch to fix a new kernel vunerability for 2.4.21, 2.4.22, and 2.4.23
+  and added a patch to fix a memory leak in MIPS-related RTC drivers (and the 
+  generic RTC driver, as cobalt uses this). Also removed older ebuilds lacking 
+  aforementioned patches.
+
+  17 Dec 2003; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.22-r1.ebuild,
+  mips-sources-2.4.22-r2.ebuild, mips-sources-2.4.22-r3.ebuild,
+  mips-sources-2.4.22-r5.ebuild:
+  Removed 2.4.22-r1 through -r3 ebuilds, and bump 2.4.22-r5 ebuild to mips stable
+
+*mips-sources-2.4.23-r1 (15 Dec 2003)
+
+  15 Dec 2003; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.23-r1.ebuild:
+  New CVS snap from linux-mips CVS dated 20031214 and contains SGI XFS patches
+
+*mips-sources-2.4.22-r4 (02 Dec 2003)
+
+  02 Dec 2003; Brian Jackson <iggy@gentoo.org> mips-sources-2.4.22-r4.ebuild,
+  mips-sources-2.4.22-r5.ebuild:
+  version bump for do_brk vuln
+
+  01 Dec 2003; Brian Jackson <iggy@gentoo.org> mips-sources-2.4.21-r2.ebuild,
+  mips-sources-2.4.22-r1.ebuild, mips-sources-2.4.22-r2.ebuild,
+  mips-sources-2.4.22-r3.ebuild, files/do_brk_fix.patch:
+  fix do_brk vuln
+
+*mips-sources-2.4.23 (28 Nov 2003)
+
+  28 Nov 2003; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.23.ebuild,
+  files/mipscvs-2.4.23-makefile-fix.patch:
+  linux-mips.org CVS snap containing new 2.4.23 kernel sources
+
+*mips-sources-2.4.22-r3 (15 Oct 2003)
+
+  20 Nov 2003; Brandon Low <lostlogic@gentoo.org>
+  mips-sources-2.4.21-r2.ebuild, mips-sources-2.4.22-r1.ebuild,
+  mips-sources-2.4.22-r2.ebuild, mips-sources-2.4.22-r3.ebuild:
+  Move version handling logic to after inherit kernel, or insert it where
+  necessary
+
+  16 Nov 2003; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.21-r2.ebuild,
+  mips-sources-2.4.22-r1.ebuild, mips-sources-2.4.22-r2.ebuild,
+  mips-sources-2.4.22-r3.ebuild:
+  Did some variable re-ordering to get around correct an issue with newer
+  kernel.class behavior
+
+  16 Oct 2003; Joshua Kinard <kumba@gentoo.org>
+  files/mipscvs-2.4.22-makefile-mips64-tweak.patch:
+  Typo in patch for mips64 building.
+
+  15 Oct 2003; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.22-r3.ebuild,
+  files/mipscvs-2.4.22-makefile-mips64-tweak.patch:
+  New linux-mips.org CVS snap, dated 20031015. This snapshot allows mips64
+  kernels to be built and booted on Indy/Indigo2 systems, however this support
+  is very preliminary.  Details on mips64 will be forthcoming.
+  The SGIWD scsi patch and bigendian byteorder patch are no longer needed in
+  this release
+  Lastly, we now install the sources in /usr/src/linux-<version>-<cvsdate>.
+
+*mips-sources-2.4.22-r2 (25 Sep 2003)
+
+  25 Sep 2003; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.21-r1.ebuild,
+  mips-sources-2.4.21-r2.ebuild, mips-sources-2.4.22-r1.ebuild,
+  mips-sources-2.4.22-r2.ebuild, files/mips-patches-gcc-makefile-fix.patch,
+  files/mipscvs-2.4.21-makefile-fix.patch,
+  files/mipscvs-2.4.22-20030825-makefile-fix.patch,
+  files/mipscvs-2.4.22-20030825-sgiwd-fix.patch,
+  files/mipscvs-2.4.22-makefile-fix.patch,
+  files/mipscvs-2.4.22-sgiwd-fix.patch:
+  New CVS snapshot from linux-mips.org dated 20030925
+  Changed the name of a few patches to be more consistent in naming
+  Removed mips-sources-2.4.21-r1 ebuild/digests
+  Moved mips-sources-2.4.21-r2 to mips stable
+
+*mips-sources-2.4.22-r1 (26 Aug 2003)
+
+  15 Sep 2003; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.21-r2.ebuild,
+  mips-sources-2.4.22-r1.ebuild:
+  Added a patch to fix headers for big-endian archs
+  Changed 2.4.22 kernel to mips stable
+
+  10 Sep 2003; Joshua Kinard <kumba@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+  30 Aug 2003; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.22-r1.ebuild,
+  files/mipscvs-2.4.22-20030825-sgiwd-fix.patch:
+  Forgot to add a patch which actually lets the kernel boot. Fixes some issue in
+  the SGI WD scsi driver.
+
+  26 Aug 2003; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.22-r1.ebuild:
+  New kernel revision for MIPS, 2.4.22 from linux-mips.org CVS.
+  Also made some various tweaks to other ebuilds in this package.
+
+*mips-sources-2.4.21-r2 (04 Aug 2003)
+
+  04 Aug 2003; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.21-r2.ebuild,
+  files/mips-patches-gcc-makefile-fix.patch:
+  New snapshot of linux-mips CVS from 20030803
+  Uses a diff between linux-2.4.21 and mipscvs tree to avoid large tarballs on distfiles-local
+
+*mips-sources-2.4.21-r1 (05 Jul 2003)
+
+  04 Aug 2003; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.21-r1.ebuild:
+  Changed ~mips to mips in KEYWORDS
+  Added a PROVIDE and EXTRAVERSION line
+
+  05 Jul 2003; Joshua Kinard <kumba@gentoo.org> :
+  ebuild for CVS Snapshot (20030705) of linux-mips.org kernel, tagged linux_2_4
+  Removed ebuild for mips-sources-2.4.21_pre4-r1
+
+*mips-sources-2.4.21_pre4-r1 (04 Jul 2003)
+
+  04 Jul 2003; Joshua Kinard <kumba@gentoo.org> :
+  Added ebuild for CVS Snapshot (20030703) of linux-mips.org kernel, tagged linux_2_4
+  Includes patch to fix r4k cache handling, and patches for fixing
+  arch/mips/Makefile depending if the compiler is gcc-3.2 or gcc-3.3
+
+
+*mips-sources-2.4.19 (22 Jan 2003)
+
+  26 Aug 2003; Joshua Kinard <kumba@gentoo.org> mips-sources-2.4.19.ebuild
+  Removed from CVS, as it's old, and outdated for MIPS.
+
+  22 Jan 2003; Nicholas Wourms <dragon@gentoo.org> :
+  Initial import.  Kernel contains the following patches from the
+  Debian/MIPS stable kernel sources:
+	+kernel-source-2.4.19_2.4.19-5
+	+kernel-patch-2.4.19-mips_2.4.19-0.020911.5

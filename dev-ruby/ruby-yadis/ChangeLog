@@ -1,0 +1,46 @@
+# ChangeLog for dev-ruby/ruby-yadis
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-yadis/ChangeLog,v 1.11 2015/03/25 20:16:23 graaff Exp $
+
+  25 Mar 2015; Hans de Graaff <graaff@gentoo.org> ruby-yadis-0.3.4-r2.ebuild:
+  Add ruby22.
+
+  26 Nov 2014; Manuel Rüger <mrueg@gentoo.org> ruby-yadis-0.3.4-r2.ebuild:
+  Drop jruby target.
+
+  06 Aug 2014; Manuel Rüger <mrueg@gentoo.org> ruby-yadis-0.3.4-r2.ebuild:
+  Add ruby21 target.
+
+  24 Apr 2014; Manuel Rüger <mrueg@gentoo.org> -ruby-yadis-0.3.4-r1.ebuild,
+  ruby-yadis-0.3.4-r2.ebuild:
+  Remove ruby18 support. Cleanup old.
+
+*ruby-yadis-0.3.4-r2 (30 Oct 2013)
+
+  30 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +ruby-yadis-0.3.4-r2.ebuild:
+  Add ruby20 target.
+
+  22 Sep 2012; Hans de Graaff <graaff@gentoo.org> ruby-yadis-0.3.4-r1.ebuild:
+  EAPI=4. Add ruby19,jruby. Drop useless test dependency.
+
+  14 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata.xml so that it's the same as most other packages.
+
+  11 Aug 2010; Hans de Graaff <graaff@gentoo.org> -ruby-yadis-0.3.4.ebuild:
+  Remove old version.
+
+*ruby-yadis-0.3.4-r1 (11 Jul 2010)
+
+  11 Jul 2010; Hans de Graaff <graaff@gentoo.org>
+  +ruby-yadis-0.3.4-r1.ebuild:
+  Convert to ruby-fakegem.
+
+  22 May 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  ruby-yadis-0.3.4.ebuild:
+  Various cleanups.
+
+*ruby-yadis-0.3.4 (31 Mar 2007)
+
+  31 Mar 2007; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +ruby-yadis-0.3.4.ebuild:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

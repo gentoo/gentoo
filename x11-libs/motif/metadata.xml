@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>ulm@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="motif22-compatibility">Compatibility with Open Motif 2.2</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">motif</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=dev-libs/dbus-glib-0.98 >=dev-libs/glib-2.26:2 >=dev-libs/libdbusmenu-0.6.2[gtk3] >=dev-libs/libindicator-12.10.0:3 >=x11-libs/gtk+-3.2:3 introspection? ( >=dev-libs/gobject-introspection-1 ) virtual/pkgconfig introspection? ( || ( dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] dev-lang/vala:0.24[vapigen(+)] dev-lang/vala:0.22[vapigen(+)] dev-lang/vala:0.20[vapigen(+)] ) )
+DESCRIPTION=A library to allow applications to export a menu into the Unity Menu bar
+EAPI=5
+HOMEPAGE=http://launchpad.net/libappindicator
+IUSE=+introspection
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1 LGPL-3
+RDEPEND=>=dev-libs/dbus-glib-0.98 >=dev-libs/glib-2.26:2 >=dev-libs/libdbusmenu-0.6.2[gtk3] >=dev-libs/libindicator-12.10.0:3 >=x11-libs/gtk+-3.2:3 introspection? ( >=dev-libs/gobject-introspection-1 )
+SLOT=3
+SRC_URI=http://launchpad.net/libappindicator/12.10/12.10.0/+download/libappindicator-12.10.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vala	09bc7da1a93142c9eb90786e6f6b39d2
+_md5_=959c3ffb9b1bf2000569e2dfb2c66f91

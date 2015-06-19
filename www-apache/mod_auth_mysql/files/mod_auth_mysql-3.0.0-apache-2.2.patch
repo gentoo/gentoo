@@ -1,0 +1,131 @@
+Index: mod_auth_mysql-3.0.0/mod_auth_mysql.c
+===================================================================
+--- mod_auth_mysql-3.0.0.orig/mod_auth_mysql.c
++++ mod_auth_mysql-3.0.0/mod_auth_mysql.c
+@@ -206,7 +206,7 @@
+   #define SNPRINTF apr_snprintf
+   #define PSTRDUP apr_pstrdup
+   #define PSTRNDUP apr_pstrndup
+-  #define STRCAT ap_pstrcat
++  #define STRCAT apr_pstrcat
+   #define POOL apr_pool_t
+   #include "http_request.h"   /* for ap_hook_(check_user_id | auth_checker)*/
+   #include "ap_compat.h"
+@@ -237,7 +237,7 @@
+   #define SNPRINTF ap_snprintf
+   #define PSTRDUP ap_pstrdup
+   #define PSTRNDUP ap_pstrndup
+-  #define STRCAT ap_pstrcat
++  #define STRCAT apr_pstrcat
+   #define POOL pool
+   #include <stdlib.h>
+   #include "ap_sha1.h"
+@@ -589,87 +589,87 @@ static void * create_mysql_auth_dir_conf
+ static
+ command_rec mysql_auth_cmds[] = {
+ 	AP_INIT_TAKE1("AuthMySQLHost", ap_set_string_slot,
+-	(void *) APR_XtOffsetOf(mysql_auth_config_rec, mysqlhost),
++	(void *) APR_OFFSETOF(mysql_auth_config_rec, mysqlhost),
+ 	OR_AUTHCFG, "mysql server host name"),
+ 
+ 	AP_INIT_TAKE1("AuthMySQLPort", ap_set_int_slot,
+-	(void *) APR_XtOffsetOf(mysql_auth_config_rec, mysqlport),
++	(void *) APR_OFFSETOF(mysql_auth_config_rec, mysqlport),
+ 	OR_AUTHCFG, "mysql server port number"),
+ 
+ 	AP_INIT_TAKE1("AuthMySQLSocket", ap_set_string_slot,
+-	(void *) APR_XtOffsetOf(mysql_auth_config_rec, mysqlsocket),
++	(void *) APR_OFFSETOF(mysql_auth_config_rec, mysqlsocket),
+ 	OR_AUTHCFG, "mysql server socket path"),
+ 
+ 	AP_INIT_TAKE1("AuthMySQLUser", ap_set_string_slot,
+-	(void *) APR_XtOffsetOf(mysql_auth_config_rec, mysqluser),
++	(void *) APR_OFFSETOF(mysql_auth_config_rec, mysqluser),
+ 	OR_AUTHCFG, "mysql server user name"),
+ 
+ 	AP_INIT_TAKE1("AuthMySQLPassword", ap_set_string_slot,
+-	(void *) APR_XtOffsetOf(mysql_auth_config_rec, mysqlpasswd),
++	(void *) APR_OFFSETOF(mysql_auth_config_rec, mysqlpasswd),
+ 	OR_AUTHCFG, "mysql server user password"),
+ 
+ 	AP_INIT_TAKE1("AuthMySQLDB", ap_set_string_slot,
+-	(void *) APR_XtOffsetOf(mysql_auth_config_rec, mysqlDB),
++	(void *) APR_OFFSETOF(mysql_auth_config_rec, mysqlDB),
+ 	OR_AUTHCFG, "mysql database name"),
+ 
+ 	AP_INIT_TAKE1("AuthMySQLUserTable", ap_set_string_slot,
+-	(void *) APR_XtOffsetOf(mysql_auth_config_rec, mysqlpwtable),
++	(void *) APR_OFFSETOF(mysql_auth_config_rec, mysqlpwtable),
+ 	OR_AUTHCFG, "mysql user table name"),
+ 
+ 	AP_INIT_TAKE1("AuthMySQLGroupTable", ap_set_string_slot,
+-	(void *) APR_XtOffsetOf(mysql_auth_config_rec, mysqlgrptable),
++	(void *) APR_OFFSETOF(mysql_auth_config_rec, mysqlgrptable),
+ 	OR_AUTHCFG, "mysql group table name"),
+ 
+ 	AP_INIT_TAKE1("AuthMySQLNameField", ap_set_string_slot,
+-	(void *) APR_XtOffsetOf(mysql_auth_config_rec, mysqlNameField),
++	(void *) APR_OFFSETOF(mysql_auth_config_rec, mysqlNameField),
+ 	OR_AUTHCFG, "mysql User ID field name within User table"),
+ 
+ 	AP_INIT_TAKE1("AuthMySQLGroupField", ap_set_string_slot,
+-	(void *) APR_XtOffsetOf(mysql_auth_config_rec, mysqlGroupField),
++	(void *) APR_OFFSETOF(mysql_auth_config_rec, mysqlGroupField),
+ 	OR_AUTHCFG, "mysql Group field name within table"),
+ 
+ 	AP_INIT_TAKE1("AuthMySQLGroupUserNameField", ap_set_string_slot,
+-	(void *) APR_XtOffsetOf(mysql_auth_config_rec, mysqlGroupUserNameField),
++	(void *) APR_OFFSETOF(mysql_auth_config_rec, mysqlGroupUserNameField),
+ 	OR_AUTHCFG, "mysql User ID field name within Group table"),
+ 
+ 	AP_INIT_TAKE1("AuthMySQLPasswordField", ap_set_string_slot,
+-	(void *) APR_XtOffsetOf(mysql_auth_config_rec, mysqlPasswordField),
++	(void *) APR_OFFSETOF(mysql_auth_config_rec, mysqlPasswordField),
+ 	OR_AUTHCFG, "mysql Password field name within table"),
+ 
+ 	AP_INIT_TAKE1("AuthMySQLPwEncryption", ap_set_string_slot,
+-	(void *) APR_XtOffsetOf(mysql_auth_config_rec, mysqlEncryptionField),
++	(void *) APR_OFFSETOF(mysql_auth_config_rec, mysqlEncryptionField),
+ 	OR_AUTHCFG, "mysql password encryption method"),
+ 
+ 	AP_INIT_TAKE1("AuthMySQLSaltField", ap_set_string_slot,
+-	(void*) APR_XtOffsetOf(mysql_auth_config_rec, mysqlSaltField),
++	(void*) APR_OFFSETOF(mysql_auth_config_rec, mysqlSaltField),
+ 	OR_AUTHCFG, "mysql salfe field name within table"),
+ 
+ /*	AP_INIT_FLAG("AuthMySQLKeepAlive", ap_set_flag_slot,
+-	(void *) APR_XtOffsetOf(mysql_auth_config_rec, mysqlKeepAlive),
++	(void *) APR_OFFSETOF(mysql_auth_config_rec, mysqlKeepAlive),
+ 	OR_AUTHCFG, "mysql connection kept open across requests if On"),
+ */
+ 	AP_INIT_FLAG("AuthMySQLAuthoritative", ap_set_flag_slot,
+-	(void *) APR_XtOffsetOf(mysql_auth_config_rec, mysqlAuthoritative),
++	(void *) APR_OFFSETOF(mysql_auth_config_rec, mysqlAuthoritative),
+ 	OR_AUTHCFG, "mysql lookup is authoritative if On"),
+ 
+ 	AP_INIT_FLAG("AuthMySQLNoPasswd", ap_set_flag_slot,
+-	(void *) APR_XtOffsetOf(mysql_auth_config_rec, mysqlNoPasswd),
++	(void *) APR_OFFSETOF(mysql_auth_config_rec, mysqlNoPasswd),
+ 	OR_AUTHCFG, "If On, only check if user exists; ignore password"),
+ 
+ 	AP_INIT_FLAG("AuthMySQLEnable", ap_set_flag_slot,
+-	(void *) APR_XtOffsetOf(mysql_auth_config_rec, mysqlEnable),
++	(void *) APR_OFFSETOF(mysql_auth_config_rec, mysqlEnable),
+ 	OR_AUTHCFG, "enable mysql authorization"),
+ 
+ 	AP_INIT_TAKE1("AuthMySQLUserCondition", ap_set_string_slot,
+-	(void *) APR_XtOffsetOf(mysql_auth_config_rec, mysqlUserCondition),
++	(void *) APR_OFFSETOF(mysql_auth_config_rec, mysqlUserCondition),
+ 	OR_AUTHCFG, "condition to add to user where-clause"),
+ 
+ 	AP_INIT_TAKE1("AuthMySQLGroupCondition", ap_set_string_slot,
+-	(void *) APR_XtOffsetOf(mysql_auth_config_rec, mysqlGroupCondition),
++	(void *) APR_OFFSETOF(mysql_auth_config_rec, mysqlGroupCondition),
+ 	OR_AUTHCFG, "condition to add to group where-clause"),
+ 
+ 	AP_INIT_TAKE1("AuthMySQLCharacterSet", ap_set_string_slot,
+-	(void *) APR_XtOffsetOf(mysql_auth_config_rec, mysqlCharacterSet),
++	(void *) APR_OFFSETOF(mysql_auth_config_rec, mysqlCharacterSet),
+ 	OR_AUTHCFG, "mysql character set to be used"),
+ 
+   { NULL }

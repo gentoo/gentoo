@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm setup
+DEPEND=app-arch/unzip X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=Pothana 2000 and Vemana fonts for the Telugu script
+HOMEPAGE=http://www.kavya-nandanam.com/
+IUSE=doc X
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://gentoo/pothana2k-2006.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	font	b3239d2dc442d1717b9725e2be7cb5d6	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=6553289e26273901139038b915a2630d

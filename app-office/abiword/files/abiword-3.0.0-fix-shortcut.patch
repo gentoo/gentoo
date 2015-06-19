@@ -1,0 +1,40 @@
+Description: Upstream-derived patch to fix SHIFT-CTRL-CURSOR_KEY shortcut combos.
+Origin:      upstream, http://bugzilla.abisource.com/attachment.cgi?id=5695&action=view
+Bug:         http://bugzilla.abisource.com/show_bug.cgi?id=13596
+Bug-Ubuntu:  https://bugs.launchpad.net/bugs/1315949
+
+Index: b/src/af/ev/gtk/ev_UnixKeyboard.cpp
+===================================================================
+--- a/src/af/ev/gtk/ev_UnixKeyboard.cpp
++++ b/src/af/ev/gtk/ev_UnixKeyboard.cpp
+@@ -87,17 +87,20 @@
+ 	{
+ 		state |= EV_EMS_CONTROL;
+ 
+-		// Gdk does us the favour of working out a translated keyvalue for us,
+-		// but with the Ctrl keys, we do not want that -- see bug 9545
+-		Display * display = GDK_DISPLAY_XDISPLAY(gdk_window_get_display(e->window));
+-		KeySym sym = XkbKeycodeToKeysym(display,
+-						e->hardware_keycode,
+-						e->state & GDK_SHIFT_MASK ? 1 : 0, 0);
+-		xxx_UT_DEBUGMSG(("ev_UnixKeyboard::keyPressEvent: keyval %d, hardware_keycode %d\n"
+-					 "                                sym: 0x%x\n",
+-					 e->keyval, e->hardware_keycode, sym));
++		if (!s_isVirtualKeyCode(charData))
++		{
++			// Gdk does us the favour of working out a translated keyvalue for us,
++			// but with the Ctrl keys, we do not want that -- see bug 9545
++			Display * display = GDK_DISPLAY_XDISPLAY(gdk_window_get_display(e->window));
++			KeySym sym = XkbKeycodeToKeysym(display,
++							e->hardware_keycode,
++							e->state & GDK_SHIFT_MASK ? 1 : 0, 0);
++			xxx_UT_DEBUGMSG(("ev_UnixKeyboard::keyPressEvent: keyval %d, hardware_keycode %d\n"
++						 "                                sym: 0x%x\n",
++						 e->keyval, e->hardware_keycode, sym));
+ 
+-		charData = sym;
++			charData = sym;
++		}
+ 	}
+ 	if (e->state & (s_alt_mask))
+ 		state |= EV_EMS_ALT;

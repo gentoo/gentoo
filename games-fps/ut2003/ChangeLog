@@ -1,0 +1,199 @@
+# ChangeLog for games-fps/ut2003
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2003/ChangeLog,v 1.51 2015/06/14 18:15:46 ulm Exp $
+
+  14 Jun 2015; Ulrich Müller <ulm@gentoo.org> ut2003-2225-r4.ebuild:
+  [QA] Remove emul-linux-x86-* from dependencies.
+
+  15 Oct 2014; Pacho Ramos <pacho@gentoo.org> ut2003-2225-r4.ebuild:
+  Support multilib providers for deps. Bump to EAPI=5.
+
+  07 Sep 2014; Ulrich Müller <ulm@gentoo.org> ut2003-2225-r4.ebuild:
+  QA: Remove unnecessary dependency on emul-linux-x86-compat, bug 522130.
+
+  16 Dec 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  ut2003-2225-r4.ebuild:
+  GAMES_LICENSE_CHECK is deprecated. The license checking is handled by the
+  package manager instead.
+
+  28 Jul 2008; Chris Gianelloni <wolf31o2@gentoo.org> metadata.xml:
+  Removing myself from metadata.xml since I am retiring from the project.
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> ut2003-2225-r4.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  15 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r4.ebuild:
+  Fix quoting.
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> ut2003-2225-r4.ebuild:
+  Replacing einfo with elog
+
+  07 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r4.ebuild:
+  Change all instances of [ to [[.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  03 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r4.ebuild:
+  Remove the game name from the description.
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r4.ebuild:
+  Changed nostrip to strip.
+
+  24 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -ut2003-2225-r3.ebuild, ut2003-2225-r4.ebuild:
+  Moved games_pkg_postinst to beginning of pkg_postinst and cleaning up older
+  ebuilds.
+
+  05 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r4.ebuild:
+  Marking stable on amd64/x86.
+
+  23 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r4.ebuild:
+  Revert last change since I fixed up ut2003-ded, instead.
+
+  23 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r4.ebuild:
+  Diabled merging dedicated server on amd64.
+
+  27 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r4.ebuild:
+  UT2003.xpm->ut2003.xpm
+
+  26 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r4.ebuild:
+  Removed cdinstall since ut2003-data is not optional due to being non-trivial
+  to duplicate.
+
+*ut2003-2225-r4 (26 Oct 2005)
+
+  26 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +ut2003-2225-r4.ebuild:
+  Updated with split data and patch ebuilds and adding initial amd64 support.
+
+  21 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r3.ebuild:
+  Added addition dir variable to games_make_wrapper for bug #109793.
+
+  16 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r3.ebuild:
+  Added CATEGORY.
+
+  16 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r3.ebuild:
+  Changed ebuild ... config to emerge --config for bug #109482.
+
+  21 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r3.ebuild:
+  Changed check_license to explicitly list license to check.
+
+  30 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r3.ebuild:
+  Updated ebuild to use tarball rather than patch files and closing bug #96939.
+
+  27 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r3.ebuild:
+  Changed to use external loki_patch for future compatibility.
+
+  01 Sep 2004; Chris Gianelloni <wolf31o2@gentoo.org> -files/ut2003,
+  ut2003-2225-r3.ebuild:
+  Switching to games_make_wrapper for starter script.
+
+*ut2003-2225-r3 (08 Jul 2004)
+
+  08 Jul 2004; Chris Gianelloni <wolf31o2@gentoo.org> -ut2003-2225-r2.ebuild,
+  +ut2003-2225-r3.ebuild:
+  Updated to close bug #54726.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  ut2003-2225-r2.ebuild:
+  virtual/glibc -> virtual/libc
+
+  26 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r2.ebuild:
+  Fixing problem due to new eclass.
+
+  26 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r2.ebuild:
+  Added games-util/uz2unpack to DEPEND.
+
+  03 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> ut2003-2225-r2.ebuild:
+  Ddir into src_install; fix dir -> die typo; skip unnecessary dodir
+
+  01 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r2.ebuild:
+  Adding some ewarn info at the bottom to inform users of potential security
+  problems and fixes for hosting a server.
+
+*ut2003-2225-r2 (01 Apr 2004)
+
+  01 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r1.ebuild,
+  ut2003-2225-r2.ebuild, files/ucc:
+  Updated with patches to fix recent DoS in Unreal engine based games. See bug
+  #44351 for more information.
+
+  22 Mar 2004; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r1.ebuild:
+  Modified sed line to change sed from working on portage tree to working on
+  file in ${D}. Closing bug #45287.
+
+  19 Mar 2004; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r1.ebuild:
+  Fixing sed problem and (hopefully) closing bug #35603.
+
+  16 Mar 2004; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r1.ebuild:
+  Changed sed lines to use sed -i.
+
+  27 Feb 2004; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r1.ebuild,
+  ut2003-2225.ebuild:
+  Removing old ebuild and changing desktop entry.
+
+  24 Feb 2004; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r1.ebuild:
+  Removing ucc link from package, as it is unnecessary and conflicts with Unreal
+  Tournament. Closing bug #42786. Also, bumping to stable on x86.
+
+*ut2003-2225-r1 (13 Feb 2004)
+
+  13 Feb 2004; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225-r1.ebuild,
+  ut2003-2225.ebuild:
+  Fixing Benchmark problem in ut2003-2225.ebuild and closing bug #41004. Adding
+  ut2003-2225-r1.ebuild to ~x86 to test new cdrom interface and close bug #40877
+  (Thanks, dad... ;p).
+
+  05 Feb 2004; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225.ebuild:
+  Fixing benchmark/patch problems. Fix provided by Matthis Grimm. Closing bug
+  #40376.
+
+  24 Jan 2004; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225.ebuild:
+  Commented benchmark files for now to close bug #35603.
+
+  15 Dec 2003; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225.ebuild:
+  Changed Benchmark copy to not use doexe.  Closing bug #35603.
+
+  13 Dec 2003; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225.ebuild:
+  Modified cdkey creation and added more error checking.
+
+  04 Oct 2003; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225.ebuild:
+  Added license check.
+
+  16 Sep 2003; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225.ebuild:
+  Closing bug #28222.
+
+  11 Sep 2003; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225.ebuild:
+  Being a good citizen and fixing my repoman warnings.
+
+  11 Sep 2003; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225.ebuild:
+  Updated to fix possible problem with coreutils.
+
+  08 Sep 2003; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225.ebuild:
+  Fixed sound and player model picker issues.  Closes bugs # 27357 and 27451.
+
+  26 Aug 2003; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225.ebuild:
+  Fixing problem with location of .ini files during installtion. Closing bug
+  #27357
+
+  14 Aug 2003; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225.ebuild,
+  files/ucc, files/ut2003:
+  Fixing bug #26396
+
+  07 Aug 2003; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225.ebuild:
+  Fixing ebuild to unpack file directly rather than using unpack_makeself.
+  Apparently, I wasn't paying much attention when updating some ebuilds and made
+  this change. Closing bug #26129. Thanks for pointing this out, Hendrik.
+
+  06 Aug 2003; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225.ebuild:
+  Fixed sandbox violation
+
+  05 Aug 2003; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225.ebuild:
+  Fixed to use unpack_makeself
+
+*ut2003-2225 (21 Jul 2003)
+
+  21 Jul 2003; Chris Gianelloni <wolf31o2@gentoo.org> ut2003-2225.ebuild,
+  files/ucc, files/ut2003:
+  Initial import to portage.  Ebuild submitted by me.

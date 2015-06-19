@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci-astronomy</herd>
+<longdescription lang="en">
+  PyAVM is a module to represent, read, and write metadata following
+  the Astronomy Visualization Metadata (AVM) standard.
+</longdescription>
+<upstream>
+  <remote-id type="pypi">PyAVM</remote-id>
+</upstream>
+</pkgmetadata>

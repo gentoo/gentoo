@@ -1,0 +1,25 @@
+# ChangeLog for net-wireless/airpwn
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/airpwn/ChangeLog,v 1.5 2015/03/21 14:12:33 jlec Exp $
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> airpwn-1.4-r2.ebuild:
+  add missing eclass
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> airpwn-1.4-r2.ebuild,
+  metadata.xml:
+  use ecvs_clean; Bump to python-single-r1.eclass
+
+*airpwn-1.4-r2 (02 Apr 2014)
+
+  02 Apr 2014; Rick Farina <zerochaos@gentoo.org> +airpwn-1.4-r2.ebuild,
+  -airpwn-1.4-r1.ebuild:
+  install example conf files and content required to use them
+
+  02 May 2013; Rick Farina <zerochaos@gentoo.org> airpwn-1.4-r1.ebuild:
+  fixed as-needed linking issue and horribly incorrect deps
+
+*airpwn-1.4-r1 (19 Apr 2013)
+
+  19 Apr 2013; Rick Farina <zerochaos@gentoo.org> +airpwn-1.4-r1.ebuild,
+  +metadata.xml:
+  initial commit of airpwn, import/cleanup from pentoo repo

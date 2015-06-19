@@ -1,0 +1,123 @@
+#!/usr/bin/env python
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/distcc/files/3.0/distcc-config,v 1.3 2008/10/27 21:29:44 matsuu Exp $
+
+import os, re, signal, sys
+from string import rstrip
+from subprocess import Popen
+
+options=[
+	'--get-hosts',
+	'--set-hosts',
+	'--get-verbose',
+	'--set-verbose',
+	'--get-log',
+	'--set-log',
+	'--help',
+	'--get-env',
+	'--set-env'
+]
+
+tmpcmdline=sys.argv[1:]
+cmdline=[]
+envfile = '/etc/env.d/02distcc'
+
+def exithandler(foo,bar):
+	os.kill(0,signal.SIGKILL)
+	sys.exit(1)
+
+signal.signal(signal.SIGINT,exithandler)
+
+def isroot(ret=0):
+	if os.getuid() != 0:
+		if ret == 0:
+			print '!!!',sys.argv[:1][0],tmpcmdline[0],'must be run as root'
+			sys.exit(1)
+		else:
+			retval = 0
+	else:
+		retval = 1
+	return retval
+
+def writeenv(var,value):
+	isroot()
+	distcc_env    = []
+	distcc_env    = open(envfile, 'r').readlines()
+	distcc_env_new = open(envfile, 'w')
+	for i in range(len(distcc_env)):
+		if re.compile(var+'="(.*)"').match(distcc_env[i]):
+			distcc_env[i] = var+'="'+value+'"\n'
+		distcc_env_new.write(distcc_env[i])
+	#print 'Set',var,'to:',value
+	Popen('/usr/sbin/env-update', shell=True)
+	print 'If you want to use these new settings in an existing shell,'
+	print 'you need to "source /etc/profile" to get the changes.'
+
+def readenv(var):
+	distcc_env = open(envfile, 'r').read()
+	match = re.compile(var+'="(.*)"').search(distcc_env)
+	if match:
+		print var+'='+match.group(1)
+	else:
+		print var,'not set.'
+
+def createdistccdir(dir):
+	if not os.path.exists(dir):
+		os.mkdir(dir)
+		os.chmod(dir, 0755)
+
+for x in tmpcmdline:
+	if not x:
+		continue
+	if x[0:2]=="--":
+		if not x in options:
+			print "!!! Error:",x,"is an invalid option."
+			sys.exit(1)
+	else:
+		cmdline = x
+
+if '--get-hosts' in tmpcmdline:
+	HOSTS_ENV  = os.environ.get('DISTCC_HOSTS')
+	HOSTS_HOME = os.environ.get('HOME')+'/hosts'
+	if HOSTS_ENV:
+		print HOSTS_ENV
+	elif os.path.isfile(HOSTS_HOME) and os.path.getsize(HOSTS_HOME) != 0:
+		print rstrip(open(HOSTS_HOME, 'r').read())
+	elif os.path.exists('/etc/distcc/hosts'):
+		print rstrip(open('/etc/distcc/hosts', 'r').read())
+	else:
+		print 'No configuration file found. Setup your hosts with --set-hosts.'
+elif '--set-hosts' in tmpcmdline:
+	if isroot(1):
+		PATH = '/etc/distcc'
+	else:
+		PATH = os.environ.get('HOME')
+	createdistccdir(PATH)
+	open(PATH+'/hosts', 'w').write(cmdline + '\n')
+elif '--get-verbose' in tmpcmdline:
+	readenv('DISTCC_VERBOSE')
+elif '--set-verbose' in tmpcmdline:
+	writeenv('DISTCC_VERBOSE',tmpcmdline[1])
+elif '--get-log' in tmpcmdline:
+	readenv('DISTCC_LOG')
+elif '--set-log' in tmpcmdline:
+	writeenv('DISTCC_LOG',tmpcmdline[1])
+elif '--get-env' in tmpcmdline:
+	if len(tmpcmdline) == 1:
+		print rstrip(open(envfile, 'r').read())
+	elif len(tmpcmdline) == 2:
+		readenv(tmpcmdline[1])
+	else:
+		print '!!! Error: Specify only one variable.'
+elif '--set-env' in tmpcmdline:
+	if len(tmpcmdline) > 2 and len(tmpcmdline) <= 3:
+		isroot()
+		writeenv(tmpcmdline[1],tmpcmdline[2])
+	else:
+		print '!!! Error: Awaiting two parameters.'
+else:
+	print 'Usage: %s --set-hosts DISTCC_HOSTS | --get-hosts' % sys.argv[0]
+	print '       %s --set-verbose { 0 | 1 }  | --get-verbose' % sys.argv[0]
+	print '       %s --set-log FILE           | --get-log' % sys.argv[0]
+	print '       %s --set-env VARIABLE VALUE | --get-env [VARIABLE]' % sys.argv[0]

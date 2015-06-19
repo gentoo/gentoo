@@ -1,0 +1,32 @@
+# ChangeLog for sys-boot/bootcreator
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/bootcreator/ChangeLog,v 1.7 2011/04/10 14:18:53 ulm Exp $
+
+  10 Apr 2011; Ulrich Mueller <ulm@gentoo.org> bootcreator-1.1.ebuild,
+  bootcreator-1.2.ebuild:
+  Don't PROVIDE virtual/bootloader, bug 359971.
+
+  29 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Lars Weiler (Pylon) from metadata.xml (as per #215644).
+
+*bootcreator-1.2 (10 Feb 2007)
+
+  10 Feb 2007; Lars Weiler <pylon@gentoo.org> +bootcreator-1.2.ebuild:
+  Version bump.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  15 Oct 2005; Joseph Jezak <josejx@gentoo.org> bootcreator-1.1.ebuild:
+  Added virtual/bootloader to fix virtual in Pegasos profiles.
+
+  20 Jan 2005; Lars Weiler <pylon@gentoo.org> bootcreator-1.1.ebuild:
+  Stable now.
+
+*bootcreator-1.1 (16 Jan 2005)
+
+  16 Jan 2005; Lars Weiler <pylon@gentoo.org> +metadata.xml,
+  +bootcreator-1.1.ebuild:
+  New ebuild for all Pegasos users.
+  Thanks to MorgothDc that he released this Software under the GPL!
+

@@ -1,0 +1,151 @@
+# ChangeLog for dev-java/javassist
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/javassist/ChangeLog,v 1.36 2015/06/09 13:40:54 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*javassist-3.18.2 (07 Sep 2014)
+
+  07 Sep 2014; Johann Schmitz <ercpe@gentoo.org> +javassist-3.18.2.ebuild:
+  Version bump of javassist to 3.18.2
+
+*javassist-3.14.0-r1 (07 Sep 2014)
+
+  07 Sep 2014; Johann Schmitz <ercpe@gentoo.org> +javassist-3.14.0-r1.ebuild:
+  EAPI bump, install examples
+
+*javassist-3.7-r1 (07 Sep 2014)
+
+  07 Sep 2014; Johann Schmitz <ercpe@gentoo.org> +javassist-3.7-r1.ebuild:
+  EAPI bump, install examples
+
+*javassist-3.4-r1 (07 Sep 2014)
+
+  07 Sep 2014; Johann Schmitz <ercpe@gentoo.org> +javassist-3.4-r1.ebuild:
+  EAPI bump, install examples
+
+*javassist-2.6-r2 (07 Sep 2014)
+
+  07 Sep 2014; Johann Schmitz <ercpe@gentoo.org> +javassist-2.6-r2.ebuild:
+  EAPI bump; added use for samples
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> javassist-2.6-r1.ebuild,
+  javassist-3.14.0.ebuild, javassist-3.4.ebuild, javassist-3.7.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  10 Mar 2012; Brent Baude <ranger@gentoo.org> javassist-3.14.0.ebuild:
+  Marking javassist-3.14.0 ppc for bug 356931
+
+  19 Mar 2011; Thomas Kahle <tomka@gentoo.org> javassist-3.14.0.ebuild:
+  x86 stable per bug 356931
+
+  01 Mar 2011; Markos Chandras <hwoarang@gentoo.org> javassist-3.14.0.ebuild:
+  Stable on amd64 wrt bug #356931
+
+*javassist-3.14.0 (30 Jan 2011)
+
+  30 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org> +javassist-3.14.0.ebuild:
+  Version bump
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  javassist-2.6-r1.ebuild, javassist-3.4.ebuild:
+  Transfer Prefix keywords for all SLOTs
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org> javassist-3.7.ebuild:
+  Transfer Prefix keywords
+
+  25 Oct 2008; nixnut <nixnut@gentoo.org> javassist-3.7.ebuild:
+  Stable on ppc wrt bug 243128
+
+  23 Oct 2008; Markus Meier <maekke@gentoo.org> javassist-3.7.ebuild:
+  amd64/x86 stable, bug #243128
+
+  30 Jun 2008; Kenneth Prugh <ken69267@gentoo.org> javassist-3.4.ebuild,
+  javassist-3.7.ebuild:
+  Fixed IUSE QA issue
+
+  05 Apr 2008; Petteri Räty <betelgeuse@gentoo.org>
+  -files/javassist-3.1_rc2-classpath.patch:
+  Remove unused patch.
+
+*javassist-3.7 (05 Apr 2008)
+
+  05 Apr 2008; Petteri Räty <betelgeuse@gentoo.org> +javassist-3.7.ebuild:
+  Version bump. Fixes bug #216250.
+
+  31 Mar 2008; Kenneth Prugh <ken69267@gentoo.org> javassist-3.4.ebuild:
+  amd64 stable, bug #214775
+
+  30 Mar 2008; Markus Rothe <corsair@gentoo.org> javassist-2.6-r1.ebuild,
+  javassist-3.4.ebuild:
+  Added ~ppc64
+
+  28 Mar 2008; Christian Faulhammer <opfer@gentoo.org> javassist-3.4.ebuild:
+  stable x86, bug 214775
+
+  26 Mar 2008; Brent Baude <ranger@gentoo.org> javassist-3.4.ebuild:
+  stable ppc, bug 214775
+
+  18 Aug 2007; Petteri Räty <betelgeuse@gentoo.org> javassist-3.4.ebuild:
+  Cleanup ebuild.
+
+  02 Apr 2007; Petteri Räty <betelgeuse@gentoo.org> -javassist-2.6.ebuild,
+  javassist-2.6-r1.ebuild:
+  Marked stable on bug #171179.
+
+  19 Mar 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -javassist-3.1_rc2-r1.ebuild:
+  Removed older version with extreme slot. Only dep has already been removed.
+
+*javassist-3.4 (19 Mar 2007)
+
+  19 Mar 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  +javassist-3.4.ebuild:
+  Bumped package to latest version, relaxed slot from 3.1 -> 3. Updated only
+  dep accordingly.
+
+  18 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  javassist-2.6-r1.ebuild:
+  stable x86, bug 171179
+
+  17 Mar 2007; nixnut <nixnut@gentoo.org> javassist-2.6-r1.ebuild:
+  Stable on ppc wrt bug 171179
+
+  16 Mar 2007; Petteri Räty <betelgeuse@gentoo.org>
+  javassist-2.6-r1.ebuild:
+  Use java-pkg_dojavadoc.
+
+  31 Jan 2007; Timothy Redaelli <drizzt@gentoo.org> javassist-2.6.ebuild,
+  javassist-3.1_rc2-r1.ebuild:
+  Stable on ppc, thanks to Nathan Smith for reporting.
+
+  11 Sep 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/javassist-3.1_rc2-classpath.patch, -javassist-3.1_rc2.ebuild,
+  javassist-3.1_rc2-r1.ebuild:
+  Remove unneeded version, -r1 compiles with Java strict.
+
+*javassist-3.1_rc2-r1 (05 Aug 2006)
+*javassist-2.6-r1 (05 Aug 2006)
+
+  05 Aug 2006; Joshua Nichols <nichoj@gentoo.org> +javassist-2.6-r1.ebuild,
+  +javassist-3.1_rc2-r1.ebuild:
+  Revision bumps to support new Java system.
+
+*javassist-3.1_rc2 (22 Jan 2006)
+
+  22 Jan 2006; Joshua Nichols <nichoj@gentoo.org> +javassist-3.1_rc2.ebuild:
+  Version bump.
+
+  30 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> javassist-2.6.ebuild:
+  stable on amd64 and x86, added ~ppc to KEYWORDS. introduced support for the
+  source useflag.
+
+  20 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> javassist-2.6.ebuild:
+  added missing jikes dependency. see #78819.
+
+*javassist-2.6 (30 Oct 2004)
+
+  30 Oct 2004; Thomas Matthijs <axxo@gentoo.org> +metadata.xml,
+  +javassist-2.6.ebuild:
+  inital import, ebuild contributed by Dan <dan@intuitivelyobvious.net>

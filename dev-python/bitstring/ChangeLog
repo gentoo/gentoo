@@ -1,0 +1,83 @@
+# ChangeLog for dev-python/bitstring
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/bitstring/ChangeLog,v 1.19 2015/04/08 08:05:23 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> bitstring-3.1.1.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> bitstring-3.1.1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> bitstring-3.1.1.ebuild:
+  amd64 stable, bug 540290
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -bitstring-3.1.0.ebuild:
+  Remove old.
+
+  24 Nov 2014; Pacho Ramos <pacho@gentoo.org> bitstring-3.1.1.ebuild:
+  Support python 3.4
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> bitstring-3.1.1.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+  02 Sep 2013; Mike Gilbert <floppym@gentoo.org> bitstring-3.1.1.ebuild:
+  Fix tests under python2.6. Add python3.3.
+
+  10 May 2013; Patrick Lauer <patrick@gentoo.org> bitstring-3.1.0.ebuild,
+  bitstring-3.1.1.ebuild:
+  Adding RDEPEND to make repoman happy
+
+  24 Mar 2013; Mike Gilbert <floppym@gentoo.org> bitstring-3.1.1.ebuild:
+  Don't depend on setuptools.
+
+*bitstring-3.1.1 (23 Mar 2013)
+
+  23 Mar 2013; Andrey Grozin <grozin@gentoo.org> -bitstring-3.1.0-r1.ebuild,
+  +bitstring-3.1.1.ebuild:
+  Version bump
+
+*bitstring-3.1.0-r1 (22 Mar 2013)
+
+  22 Mar 2013; Andrey Grozin <grozin@gentoo.org> -bitstring-2.2.0.ebuild,
+  -bitstring-3.0.1.ebuild, -bitstring-3.0.2.ebuild, +bitstring-3.1.0-r1.ebuild:
+  Porting to distutils-r1, tests; cleaning old
+
+*bitstring-3.1.0 (11 Mar 2013)
+
+  11 Mar 2013; Patrick Lauer <patrick@gentoo.org> +bitstring-3.1.0.ebuild:
+  Bump
+
+  21 Feb 2012; Patrick Lauer <patrick@gentoo.org> bitstring-2.2.0.ebuild,
+  bitstring-3.0.1.ebuild, bitstring-3.0.2.ebuild:
+  Restricting py2.5
+
+*bitstring-3.0.2 (10 Feb 2012)
+
+  10 Feb 2012; Andrey Grozin <grozin@gentoo.org> +bitstring-3.0.2.ebuild:
+  Version bump
+
+*bitstring-3.0.1 (22 Nov 2011)
+
+  22 Nov 2011; Andrey Grozin <grozin@gentoo.org> +bitstring-3.0.1.ebuild:
+  Version bump
+
+*bitstring-2.2.0 (19 Jun 2011)
+
+  19 Jun 2011; Andrey Grozin <grozin@gentoo.org> -bitstring-2.0.3.ebuild,
+  -bitstring-2.1.1.ebuild, +bitstring-2.2.0.ebuild:
+  Version bump
+
+*bitstring-2.1.1 (26 Feb 2011)
+
+  26 Feb 2011; Andrey Grozin <grozin@gentoo.org> +bitstring-2.1.1.ebuild:
+  Version bump
+
+  10 Nov 2010; Patrick Lauer <patrick@gentoo.org> bitstring-2.0.3.ebuild:
+  Adding amd64 keyword for #344661
+
+*bitstring-2.0.3 (18 Aug 2010)
+
+  18 Aug 2010; Andrey Grozin <grozin@gentoo.org> +bitstring-2.0.3.ebuild,
+  +metadata.xml:
+  Initial import

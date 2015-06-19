@@ -1,0 +1,145 @@
+# ChangeLog for dev-perl/Email-MessageID
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Email-MessageID/ChangeLog,v 1.32 2015/05/10 17:02:34 dilfridge Exp $
+
+*Email-MessageID-1.405.0 (10 May 2015)
+
+  10 May 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Email-MessageID-1.405.0.ebuild:
+  Version bump
+
+*Email-MessageID-1.402.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Email-MessageID-1.402.0-r1.ebuild, -Email-MessageID-1.402.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  17 Jun 2012; Raúl Porcel <armin76@gentoo.org>
+  Email-MessageID-1.402.0.ebuild:
+  Drop alpha/ia64/sparc keywords
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Email-MessageID-1.402.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Email-MessageID-1.402.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Email-MessageID-1.402.0 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Email-MessageID-1.402.0.ebuild:
+  Change version scheme
+
+*Email-MessageID-1.402 (14 Jan 2011)
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -Email-MessageID-1.35.1.ebuild,
+  -Email-MessageID-1.40.1.ebuild, -Email-MessageID-1.40.2.ebuild,
+  +Email-MessageID-1.402.ebuild:
+  Convert ebuild version. Cleanup
+
+  13 Jan 2011; Brent Baude <ranger@gentoo.org>
+  Email-MessageID-1.40.2.ebuild:
+  Marking Email-MessageID-1.40.2 ppc stable for bug 341865
+
+  13 Nov 2010; Raúl Porcel <armin76@gentoo.org>
+  Email-MessageID-1.40.2.ebuild:
+  alpha/ia64/sparc stable wrt #341865
+
+  05 Nov 2010; Samuli Suominen <ssuominen@gentoo.org>
+  Email-MessageID-1.40.2.ebuild:
+  ppc64 stable wrt #341865
+
+  05 Nov 2010; Markos Chandras <hwoarang@gentoo.org>
+  Email-MessageID-1.40.2.ebuild:
+  Stable on amd64 wrt bug #341865
+
+  04 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  Email-MessageID-1.40.2.ebuild:
+  x86 stable, bug 341865
+
+*Email-MessageID-1.40.2 (16 Jul 2010)
+
+  16 Jul 2010; Torsten Veller <tove@gentoo.org>
+  +Email-MessageID-1.40.2.ebuild:
+  Version bump
+
+  18 Mar 2010; Jeremy Olexa <darkside@gentoo.org> Email-MessageID-1.40.1.ebuild:
+  add ~x86-solaris ~sparc-solaris kw, as tested on bug 308683
+
+  13 Mar 2009; Torsten Veller <tove@gentoo.org>
+  -Email-MessageID-1.35.ebuild, -Email-MessageID-1.40.0.ebuild:
+  Cleanup
+
+*Email-MessageID-1.40.1 (26 Jan 2009)
+
+  26 Jan 2009; Torsten Veller <tove@gentoo.org>
+  +Email-MessageID-1.40.1.ebuild:
+  Version bump
+
+*Email-MessageID-1.40.0 (08 Dec 2008)
+
+  08 Dec 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +Email-MessageID-1.40.0.ebuild:
+  Version bump.
+
+  08 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  Email-MessageID-1.35.1.ebuild:
+  alpha/ia64 stable
+
+  04 Dec 2007; Markus Rothe <corsair@gentoo.org>
+  Email-MessageID-1.35.1.ebuild:
+  Stable on ppc64; bug #198075
+
+  04 Dec 2007; nixnut <nixnut@gentoo.org> Email-MessageID-1.35.1.ebuild:
+  Stable on ppc wrt bug 198075
+
+  03 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  Email-MessageID-1.35.1.ebuild:
+  stable x86, bug 198075
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  Email-MessageID-1.35.1.ebuild:
+  amd64 stable
+
+  30 Jun 2007; Raúl Porcel <armin76@gentoo.org>
+  Email-MessageID-1.35.1.ebuild:
+  Add ~alpha wrt #165190
+
+  21 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  Email-MessageID-1.35.1.ebuild:
+  Marking sparc stable
+
+  10 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Email-MessageID-1.35.ebuild:
+  sparc stable
+
+  08 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Email-MessageID-1.35.ebuild:
+  Marking amd64 stable
+
+*Email-MessageID-1.35.1 (06 Apr 2007)
+
+  06 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  +Email-MessageID-1.35.1.ebuild:
+  Version bump
+
+  27 Mar 2007; Matti Bickel <mabi@gentoo.org> Email-MessageID-1.35.ebuild:
+  ~ppc added (bug #165190)
+
+  27 Mar 2007; Raúl Porcel <armin76@gentoo.org>
+  Email-MessageID-1.35.ebuild:
+  Add ~ia64 wrt bug 165190
+
+  14 Feb 2007; Markus Rothe <corsair@gentoo.org>
+  Email-MessageID-1.35.ebuild:
+  Added ~ppc64
+
+*Email-MessageID-1.35 (05 Feb 2007)
+
+  05 Feb 2007; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +Email-MessageID-1.35.ebuild:
+  Dep for Email-MIME-Modifier

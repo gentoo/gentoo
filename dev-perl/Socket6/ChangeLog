@@ -1,0 +1,209 @@
+# ChangeLog for dev-perl/Socket6
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Socket6/ChangeLog,v 1.60 2015/01/24 11:25:29 zlogene Exp $
+
+  24 Jan 2015; Mikle Kolyada <zlogene@gentoo.org> Socket6-0.250.0.ebuild:
+  Stable for all
+
+  22 Jan 2015; Markus Meier <maekke@gentoo.org> Socket6-0.250.0.ebuild:
+  arm stable, bug #535222
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org> Socket6-0.250.0.ebuild:
+  Stable for amd64, wrt bug #535222
+
+  13 Jan 2015; Jeroen Roovers <jer@gentoo.org> Socket6-0.250.0.ebuild:
+  Stable for HPPA (bug #535222).
+
+*Socket6-0.230.0-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Socket6-0.230.0-r1.ebuild, -Socket6-0.230.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+*Socket6-0.250.0 (04 Feb 2014)
+
+  04 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> +Socket6-0.250.0.ebuild:
+  Version bump
+
+  02 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> -Socket6-0.20.ebuild:
+  Drop version with old EAPI
+
+  01 Feb 2014; Mike Frysinger <vapier@gentoo.org> Socket6-0.20.ebuild,
+  Socket6-0.230.0.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  25 Sep 2013; Agostino Sarubbo <ago@gentoo.org> Socket6-0.230.0.ebuild:
+  Stable for ppc, wrt bug #343555
+
+  23 Sep 2013; Agostino Sarubbo <ago@gentoo.org> Socket6-0.230.0.ebuild:
+  Stable for sparc, wrt bug #343555
+
+  23 Sep 2013; Agostino Sarubbo <ago@gentoo.org> Socket6-0.230.0.ebuild:
+  Stable for ppc64, wrt bug #343555
+
+  23 Sep 2013; Agostino Sarubbo <ago@gentoo.org> Socket6-0.230.0.ebuild:
+  Stable for alpha, wrt bug #343555
+
+  22 Sep 2013; Agostino Sarubbo <ago@gentoo.org> Socket6-0.230.0.ebuild:
+  Stable for ia64, wrt bug #343555
+
+  22 Sep 2013; Agostino Sarubbo <ago@gentoo.org> Socket6-0.230.0.ebuild:
+  Stable for x86, wrt bug #343555
+
+  15 Sep 2013; Markus Meier <maekke@gentoo.org> Socket6-0.230.0.ebuild:
+  arm stable, bug #343555
+
+  15 Sep 2013; Jeroen Roovers <jer@gentoo.org> Socket6-0.230.0.ebuild:
+  Stable for HPPA (bug #343555).
+
+  15 Sep 2013; Agostino Sarubbo <ago@gentoo.org> Socket6-0.230.0.ebuild:
+  Stable for amd64, wrt bug #343555
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  13 Dec 2011; Naohiro Aota <naota@gentoo.org> Socket6-0.230.0.ebuild:
+  Add ~x86-fbsd
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Socket6-0.23.ebuild:
+  Cleanup
+
+*Socket6-0.230.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +Socket6-0.230.0.ebuild:
+  Change version scheme
+
+  20 Apr 2011; Justin Lecher <jlec@gentoo.org> Socket6-0.20.ebuild,
+  Socket6-0.23.ebuild:
+  Respect CC, #243962
+
+  02 Apr 2011; Torsten Veller <tove@gentoo.org> -Socket6-0.19.ebuild:
+  Cleanup
+
+  08 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> Socket6-0.20.ebuild:
+  ppc stable wrt #342475
+
+  28 Dec 2010; Brent Baude <ranger@gentoo.org> Socket6-0.20.ebuild:
+  Marking Socket6-0.20 ppc64 for bug 342475
+
+  03 Nov 2010; Peter Volkov <pva@gentoo.org> Socket6-0.20.ebuild:
+  Stable on amd64 too.
+
+  21 Jan 2010; Torsten Veller <tove@gentoo.org> Socket6-0.19.ebuild:
+  mips -> ~mips
+
+  11 Jan 2010; Fabian Groffen <grobian@gentoo.org> Socket6-0.23.ebuild:
+  Transfer Prefix keywords
+
+  29 Jun 2009; Jeroen Roovers <jer@gentoo.org> Socket6-0.20.ebuild:
+  Stable for HPPA too.
+
+  13 Mar 2009; Torsten Veller <tove@gentoo.org> -Socket6-0.17.ebuild,
+  -Socket6-0.22.ebuild:
+  Cleanup
+
+*Socket6-0.23 (08 Dec 2008)
+
+  08 Dec 2008; Robin H. Johnson <robbat2@gentoo.org> +Socket6-0.23.ebuild:
+  Version bump.
+
+*Socket6-0.22 (23 Aug 2008)
+
+  23 Aug 2008; Torsten Veller <tove@gentoo.org> +Socket6-0.22.ebuild:
+  Version bump
+
+  17 Jul 2008; Raúl Porcel <armin76@gentoo.org> Socket6-0.20.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+*Socket6-0.20 (21 May 2008)
+
+  21 May 2008; Torsten Veller <tove@gentoo.org> +Socket6-0.20.ebuild:
+  Version bump
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> Socket6-0.19.ebuild:
+  Stable on x86, bug #169152.
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org> -Socket6-0.11.ebuild,
+  Socket6-0.17.ebuild, -Socket6-0.18.ebuild, Socket6-0.19.ebuild:
+  Version bump, thanks seemant
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org> Socket6-0.19.ebuild:
+  ppc stable
+
+  18 Aug 2006; Michael Cummings <mcummings@gentoo.org> Socket6-0.19.ebuild:
+  Marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org> Socket6-0.11.ebuild,
+  Socket6-0.17.ebuild, Socket6-0.18.ebuild, Socket6-0.19.ebuild:
+  Adding perl dep; fixed header; fixed DEPEND
+
+  18 Jul 2006; Bryan Østergaard <kloeri@gentoo.org> Socket6-0.19.ebuild:
+  Stable on alpha.
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org> Socket6-0.18.ebuild,
+  Socket6-0.19.ebuild:
+  Marking sparc stable
+
+  24 Apr 2006; Joshua Kinard <kumba@gentoo.org> Socket6-0.19.ebuild:
+  Marked stable on mips.
+
+  19 Mar 2006; Markus Rothe <corsair@gentoo.org> Socket6-0.19.ebuild:
+  Stable on ppc64
+
+  26 Feb 2006; Joshua Kinard <kumba@gentoo.org> Socket6-0.19.ebuild:
+  Added ~mips to KEYWORDS.
+
+  28 Jan 2006; Markus Rothe <corsair@gentoo.org> Socket6-0.19.ebuild:
+  Added ~ppc64
+
+  27 Jan 2006; Michael Hanselmann <hansmi@gentoo.org> Socket6-0.19.ebuild:
+  Added to ~hppa.
+
+*Socket6-0.19 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org> +Socket6-0.19.ebuild:
+  Version bump upstream
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> Socket6-0.18.ebuild:
+  add ~ia64
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> Socket6-0.17.ebuild:
+  Stable on amd64.
+
+  30 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> Socket6-0.17.ebuild:
+  Stable on ppc.
+
+  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> Socket6-0.17.ebuild:
+  Stable on alpha.
+
+  29 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> Socket6-0.17.ebuild:
+  Stable on sparc
+
+*Socket6-0.18 (29 Apr 2005)
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org> Socket6-0.17.ebuild,
+  +Socket6-0.18.ebuild:
+  Cleaning for mirror
+
+  07 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> Socket6-0.11.ebuild:
+  Stable on ppc.
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*Socket6-0.17 (06 Jun 2004)
+
+  06 Jun 2004; Michael Cummings <mcummings@gentoo.org> Socket6-0.17.ebuild:
+  new version on cpan
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org> Socket6-0.11.ebuild:
+  Stable on alpha.
+
+  25 Feb 2004; Sven Blumenstein <bazik@gentoo.org> Socket6-0.11.ebuild:
+  Stable on sparc, thanks to Josh Grebe <josh@brokedown.net> for testing!
+
+*Socket6-0.11 (31 May 2003)
+
+  31 May 2003; Michael Cummings <mcummings@gentoo.org> Socket6-0.11.ebuild:
+  ipv6 dep for POE

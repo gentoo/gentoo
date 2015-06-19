@@ -1,0 +1,180 @@
+#!/sbin/runscript
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/capi4k-utils/files/capi.initd,v 1.8 2008/04/20 23:00:46 sbriesen Exp $
+
+opts="info showconfig"
+
+depend() {
+	after isapnp pcmcia bluetooth
+}
+
+# possible firmware locations (list and order taken from 'capiinit')
+FWDIRS="/lib/firmware/isdn /lib/firmware /usr/share/isdn /usr/lib/isdn /lib/isdn"
+
+# Firmware search
+findfw() {  # <fw_name>
+	local DIR
+	for DIR in ${FWDIRS}; do
+		if [ -f "${DIR}/${1}" ]; then
+			echo "${DIR}/${1}"; return 0
+		fi
+	done
+	return 1
+}
+
+# looking for 'detected' cards (currently only 'sedlfax')
+detected() {  # <driver>
+	# /proc/capi/controller: <controller> <drivername> <state> <cardname> <controllerinfo>
+	sed -n "s:^\([1-9][0-9]*\) \+${1} \+detected \+.*:\1:p" \
+		/proc/capi/controller 2>/dev/null
+}
+
+# detecting loaded mISDN modules
+misdn_modules() {
+	sed -n "s:^mISDN_core \+[0-9]\+ \+[0-9]\+ \+\([^ ]\+\).*\$:\1:p" \
+		/proc/modules 2>/dev/null | tr "," " "
+}
+
+# detecting loaded CAPI drivers
+capi_drivers() {
+	local DRV MISDN=0
+	for DRV in $(sed -n "s:^[0-9]\+ \+\([^ ]\+\).*\$:\1:p" /proc/capi/controller 2>/dev/null); do
+		case "${DRV}" in
+			mISDN)	MISDN=1;;
+			?*)	echo "${DRV}";;
+		esac
+	done
+	# dirty hack to find loaded mISDN modules
+	if [ ${MISDN} -gt 0 ]; then
+		for DRV in $(misdn_modules); do
+			case "${DRV}" in
+				mISDN_*|l3udss1|faxl3) continue;;
+				?*) echo "${DRV}";;
+			esac
+		done
+	fi
+}
+
+# detecting bluetooth CIP connections
+bluez_cip() {
+	[ -x /usr/bin/ciptool ] && \
+	sed -n "s:[0-9]\+ \+cmtp \+[^ ]\+ \+\([0-9A-F:]\+\) \+.*\$:\1:p" \
+		/proc/capi/controller 2>/dev/null
+}
+
+
+
+start() {
+	if [ ! -e /etc/capi.conf ] ; then
+		eerror "You're missing /etc/capi.conf (comes with a capi-driver)."
+		eerror "Emerge net-dialup/fritzcapi if you're having an AVM Fritz!Card"
+		return 1
+	fi
+
+	ebegin "Loading CAPI"
+	[ -f /proc/capi/capi20 ] || /sbin/modprobe -s capi
+	eend $? || return 1
+
+	local CNT=0  # wait for udev (max 10s)
+	while [ ! -c /dev/capi20 -a ${CNT} -lt 40 ]; do
+		sleep 0.25; : $((CNT++))
+	done
+
+	ebegin "Starting CAPI"
+	/usr/sbin/capiinit activate 2>/dev/null
+	if eend $?; then
+		local CIP MSG INFO FW CARD MISDN
+
+		# HACK: loading ISAR.BIN onto 'sedlfax' cards
+		# shouldn't be necessary, but mISDN is crappy
+		MISDN=$(detected "mISDN")
+		if [ -n "${MISDN}" ]; then
+			FW=$(findfw "ISAR.BIN")
+			if [ -n "${FW}" ]; then
+				for CARD in ${MISDN}; do
+					ebegin "Loading firmware '${FW##*/}' onto controller ${CARD}"
+					/usr/sbin/avmcapictrl load "${FW}" "${CARD}" 2>&1 >/dev/null
+					eend $?
+				done
+			else
+				eerror "Firmware 'ISAR.BIN' not found in ${FWDIRS%% *}"
+			fi
+		fi
+
+		# connect to CIP devices
+		if [ -n "${CAPI_CIP_DEVICES}" -a -x /usr/bin/ciptool ]; then
+			for CIP in ${CAPI_CIP_DEVICES}; do
+				ebegin "CIP connect to ${CIP}"
+				INFO=$(/usr/bin/ciptool connect "${CIP}" 2>&1)
+				if ! eend $?; then
+					[ -n "${INFO}" ] && \
+					echo "${INFO}" | while read line MSG; do eerror "  ${MSG}"; done
+				fi
+			done
+			sleep 0.3  # give subsystems time to initialize
+		fi
+
+		# load 'capidrv'
+		[ -f /proc/capi/capidrv -o "${CAPI_LOAD_CAPIDRV}" != "yes" ] || /sbin/modprobe -s capidrv
+
+		# show controllers
+		INFO=$(cat /proc/capi/controller)
+		if [ -n "${INFO}" ]; then
+			einfo "Available CAPI controllers:"
+			echo "${INFO}" | while read MSG; do einfo "  ${MSG}"; done
+		fi
+	fi
+	return 0  # never fail
+}
+
+stop() {
+	local DRV CIP RET FCNT=0 DRIVERS=$(capi_drivers | sort -u)
+
+	# if some CAPI applications are still running, kill 'em
+	if fuser -s /dev/capi20 2>/dev/null; then
+		ebegin "Stopping CAPI applications"
+		fuser -ks /dev/capi20; RET=$?
+		while [ ${RET} -eq 0 -a ${FCNT} -lt 10 ]; do
+			: $((FCNT++)); sleep 0.5; fuser -s /dev/capi20; RET=$?
+		done
+		[ ${RET} -ne 0 ]
+		eend $?
+	fi
+
+	# release bluetooth CIP connections
+	for CIP in $(bluez_cip); do
+		ebegin "Release CIP connection to ${CIP}"
+		/usr/bin/ciptool release "${CIP}"
+		eend
+	done
+
+	ebegin "Stopping CAPI"
+	[ "${CAPI_LOAD_CAPIDRV}" = "yes" ] && /sbin/modprobe -sqr capidrv
+	[ "${CAPI_UNLOAD_CARDS}" = "yes" ] && /usr/sbin/capiinit stop &>/dev/null
+	for DRV in ${DRIVERS}; do
+		/sbin/modprobe -sqr "${DRV}"
+	done
+	/sbin/modprobe -sqr capi
+	eend 0  # ignore errors
+}
+
+info() {
+	if [ -f /proc/capi/controller ]; then
+		local MSG
+		while read MSG; do einfo "${MSG}"; done < /proc/capi/controller
+	else
+		eerror "ERROR: CAPI not loaded"
+		return 1
+	fi
+}
+
+showconfig() {
+	local MSG INFO
+	if INFO=$(/usr/sbin/capiinit show 2>&1); then
+		echo "${INFO}" | while read MSG; do einfo "${MSG}"; done
+		return 0
+	fi
+	echo "${INFO}" | while read MSG; do eerror "${MSG}"; done
+	return 1
+}

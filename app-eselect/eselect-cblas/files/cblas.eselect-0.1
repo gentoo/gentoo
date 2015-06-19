@@ -1,0 +1,15 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id: cblas.eselect-0.1,v 1.1 2015/03/31 16:47:06 ulm Exp $
+
+inherit skel
+
+MODULE="CBLAS"
+IFACE="cblas"
+
+DESCRIPTION="Manage installed $MODULE implementations"
+MAINTAINER="spyderous@gentoo.org"
+SVN_DATE='$Date: 2015/03/31 16:47:06 $'
+VERSION=$(svn_date_to_version "${SVN_DATE}" )
+
+# vim: set ft=eselect :

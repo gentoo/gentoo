@@ -1,0 +1,55 @@
+--- src/celestia/kde/data/celestia.desktop.orig	2008-02-27 15:19:41.000000000 +0000
++++ src/celestia/kde/data/celestia.desktop	2008-02-27 15:43:20.000000000 +0000
+@@ -1,8 +1,12 @@
+ [Desktop Entry]
++Encoding=UTF-8
++Version=1.0
+ Name=Celestia
+-Comment=Celestia
++Comment=3D space simulator to explore the universe
+ Exec=celestia %f
+ Terminal=false
+ Icon=celestia.png
+ MimeType=application/x-celestia-script
+ Type=Application
++Categories=Education;Science;Astronomy;Qt
++GenericName=Space Simulator
+--- src/celestia/gtk/data/celestia.desktop.orig	2008-02-27 15:19:58.000000000 +0000
++++ src/celestia/gtk/data/celestia.desktop	2008-02-27 15:44:26.000000000 +0000
+@@ -1,12 +1,12 @@
+ [Desktop Entry]
+ Encoding=UTF-8
+-Version=1.4.0
+-Type=Application
+-Exec=celestia
+-Icon=celestia
+-X-GNOME-DocPath=
+-Terminal=false
++Version=1.0
+ Name=Celestia
+-Comment=Space Simulator
+-StartupNotify=true
+-Categories=Astronomy;Science;Application;
++Comment=3D space simulator to explore the universe
++Exec=celestia %f
++Terminal=false
++Icon=celestia.png
++MimeType=application/x-celestia-script
++Type=Application
++Categories=Education;Science;Astronomy;GTK
++GenericName=Space Simulator
+--- celestia.desktop 	1970-01-01 01:00:00.000000000 +0100
++++ celestia.desktop	2008-02-27 15:22:31.000000000 +0000
+@@ -0,0 +1,12 @@
++[Desktop Entry]
++Encoding=UTF-8
++Version=1.0
++Name=Celestia
++GenericName=Space Simulator
++Comment=Explore the Universe in this detailed space simulation
++Type=Application
++Categories=Education;Science;Astronomy
++Exec=celestia %f
++Terminal=false
++Icon=celestia.png
++MimeType=application/x-celestia-script

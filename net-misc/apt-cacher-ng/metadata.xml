@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>deb-tools</herd>
+<maintainer>
+<email>jer@gentoo.org</email>
+<name>Jeroen Roovers</name>
+</maintainer>
+<use>
+<flag name="fuse">Install the <pkg>sys-fs/fuse</pkg> based acngfs, to use a userspace filesystem for the apt cache.</flag>
+</use>
+</pkgmetadata>

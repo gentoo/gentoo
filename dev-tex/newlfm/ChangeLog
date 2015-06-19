@@ -1,0 +1,34 @@
+# ChangeLog for dev-tex/newlfm
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/newlfm/ChangeLog,v 1.8 2011/06/27 14:40:00 aballier Exp $
+
+  27 Jun 2011; Alexis Ballier <aballier@gentoo.org> newlfm-8.3-r1.ebuild:
+  depend on tl-latexextra for lastpage.sty, by Łukasz Stelmach, bug #360129
+
+  05 Sep 2008; Christian Faulhammer <opfer@gentoo.org> newlfm-8.3-r1.ebuild:
+  remove dependency on virtual/tetex
+
+  03 Sep 2008; Alexis Ballier <aballier@gentoo.org> -newlfm-8.3.ebuild:
+  remove unused version
+
+*newlfm-8.3-r1 (04 Jun 2008)
+
+  04 Jun 2008; Marijn Schouten <hkBst@gentoo.org> +newlfm-8.3-r1.ebuild:
+  fix bug 165227, thanks to Ian Taylor <itaylor@uark.edu>
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  05 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  28 Dec 2004; Dylan Carlson <absinthe@gentoo.org> newlfm-8.3.ebuild:
+  Keywords ~amd64.
+
+*newlfm-8.3 (10 Nov 2004)
+
+  10 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +newlfm-8.3.ebuild:
+  Initial import. Ebuild submitted by Thomas Leitner <thomas_leitner@gmx.at>;
+  bug #68462.
+

@@ -1,0 +1,44 @@
+# ChangeLog for sci-libs/xgks-pmel
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/xgks-pmel/ChangeLog,v 1.11 2014/08/10 20:25:16 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> xgks-pmel-2.5.5.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  16 Oct 2012; Justin Lecher <jlec@gentoo.org> xgks-pmel-2.5.5.ebuild,
+  metadata.xml:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, #24135.
+
+  25 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> xgks-pmel-2.5.5.ebuild:
+  Update to eapi4 -> bit cleanup.
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> xgks-pmel-2.5.5.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> xgks-pmel-2.5.5.ebuild:
+  Added fortran-2.eclass support
+
+  01 Dec 2010; Sébastien Fabbro <bicatali@gentoo.org> xgks-pmel-2.5.5.ebuild:
+  Remove use of fortran eclass
+
+  04 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  xgks-pmel-2.5.5.ebuild:
+  Add -j1 to build, see bug #295724.
+
+  08 Jun 2009; Steve Arnold <nerdboy@gentoo.org> xgks-pmel-2.5.5.ebuild:
+  Renamed package binaries to avoid conflicts; closes bug #272629.
+
+  16 May 2009; Steve Arnold <nerdboy@gentoo.org> xgks-pmel-2.5.5.ebuild:
+  Added internal header files required by packages that don't stick to the 
+  public interface.  Sheesh...
+
+*xgks-pmel-2.5.5 (30 Apr 2009)
+
+  30 Apr 2009; Steve Arnold <nerdboy@gentoo.org> +files/aclocal.patch,
+  +metadata.xml, +xgks-pmel-2.5.5.ebuild:
+  New ebuild for PMEL's xgks library, another required dependency for Ferret.
+  Still needs merging with the newer (but unloved) code on sourceforge.

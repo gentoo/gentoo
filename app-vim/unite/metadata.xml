@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>vim</herd>
+	<longdescription lang="en">
+		Unite searches and displays information from arbitrary sources like files,
+		buffers, recently used files or registers. You can run one of defined action
+		on a target displayed.
+
+		The differences between unite and similar plugins like fuzzyfinder or ku are
+		that unite doesn't use the built-in completion interface of Vim, and integrates
+		sources at the same time.
+	</longdescription>
+</pkgmetadata>

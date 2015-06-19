@@ -1,0 +1,80 @@
+# ChangeLog for virtual/opencl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/opencl/ChangeLog,v 1.19 2015/03/31 18:17:59 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> opencl-0-r2.ebuild,
+  opencl-0-r3.ebuild, opencl-0-r4.ebuild:
+  Update dependency after package move of eselect modules to app-eselect.
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> opencl-0-r4.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  06 Apr 2014; Agostino Sarubbo <ago@gentoo.org> opencl-0-r4.ebuild:
+  Stable for x86, wrt bug #500368
+
+  27 Mar 2014; Agostino Sarubbo <ago@gentoo.org> opencl-0-r4.ebuild:
+  Stable for amd64, wrt bug #500368
+
+  24 Mar 2014; Kacper Kowalik <xarthisius@gentoo.org> metadata.xml:
+  Drop maintainership
+
+  04 Feb 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  opencl-0-r4.ebuild:
+  Keyword ~ppc.
+
+  21 Sep 2013; Michał Górny <mgorny@gentoo.org> opencl-0-r4.ebuild:
+  Remove MULTILIB_USEDEP on packages not having the flags (yet).
+
+*opencl-0-r4 (21 Sep 2013)
+
+  21 Sep 2013; Michał Górny <mgorny@gentoo.org> +opencl-0-r4.ebuild:
+  Convert to multilib.
+
+*opencl-0-r3 (19 Jun 2013)
+
+  19 Jun 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +opencl-0-r3.ebuild:
+  New revision with adds mesa[opencl] as an option and drops REQUIRED_USE.
+
+  09 Jan 2013; Kacper Kowalik <xarthisius@gentoo.org> opencl-0-r2.ebuild:
+  Put nvidia/ati in required_use for x86 wrt #450180. Thanks to 
+  Vicente Olivert Riera <peratu@carrosses.com> for report
+
+  14 Jul 2012; Ulrich Müller <ulm@gentoo.org> opencl-0.ebuild,
+  opencl-0-r2.ebuild:
+  QA: Define mandatory ebuild variables, bug 425848.
+
+  21 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> opencl-0-r2.ebuild:
+  x86 stable wrt bug #408979
+
+  24 Mar 2012; Agostino Sarubbo <ago@gentoo.org> opencl-0-r2.ebuild:
+  Stable for amd64, wrt bug #408979
+
+*opencl-0-r2 (06 Mar 2012)
+
+  06 Mar 2012; Kacper Kowalik <xarthisius@gentoo.org> +opencl-0-r2.ebuild,
+  -opencl-0-r1.ebuild:
+  Fix deps to include proper revbumps for graphics drivers. Thanks to neurogeek
+  for spotting
+
+  15 Feb 2012; Kacper Kowalik <xarthisius@gentoo.org> opencl-0-r1.ebuild:
+  Remove dependency on opencl useflag since it was dropped in ati-drivers. Fixes
+  bug 403409 by Paolo Pedroni <paolo.pedroni@iol.it>
+
+*opencl-0-r1 (04 Feb 2012)
+
+  04 Feb 2012; Kacper Kowalik <xarthisius@gentoo.org> +opencl-0-r1.ebuild,
+  metadata.xml:
+  Utilize new app-admin/eselect-opencl and the fact that we now have 3 viable
+  providers, use flags are no longer mutually exclusive
+
+  20 Dec 2011; Mike Frysinger <vapier@gentoo.org> opencl-0.ebuild:
+  Drop ATI from dep list for now since that only provides the libraries and not
+  the required headers #392179#2 by Emil Karlson.
+
+*opencl-0 (20 Dec 2011)
+
+  20 Dec 2011; Mike Frysinger <vapier@gentoo.org> +opencl-0.ebuild,
+  +metadata.xml:
+  Initial ebuild by me for #392179 by Michal Pytasz.

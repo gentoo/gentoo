@@ -1,0 +1,107 @@
+# ChangeLog for dev-libs/libmoe
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmoe/ChangeLog,v 1.27 2013/10/03 07:57:49 naota Exp $
+
+  03 Oct 2013; Naohiro Aota <naota@gentoo.org> -libmoe-1.5.8.ebuild:
+  Drop old version.
+
+  03 Oct 2013; Naohiro Aota <naota@gentoo.org> libmoe-1.5.8-r2.ebuild:
+  Patch Makefile to respect AR. #483746
+
+  02 Jul 2012; Naohiro Aota <naota@gentoo.org> -libmoe-1.5.8-r1.ebuild:
+  Drop old revision. #424121
+
+  01 Jul 2012; Agostino Sarubbo <ago@gentoo.org> libmoe-1.5.8-r2.ebuild:
+  Stable for amd64, wrt bug #302326
+
+  09 Sep 2011; Naohiro Aota <naota@gentoo.org> libmoe-1.5.8-r2.ebuild,
+  +files/libmoe-1.5.8-makefile.patch:
+  Add patch to set LDFLAGS. Bug #335802
+
+  23 Mar 2010; Brent Baude <ranger@gentoo.org> libmoe-1.5.8-r2.ebuild:
+  stable ppc, bug 302326
+
+  20 Mar 2010; Raúl Porcel <armin76@gentoo.org> libmoe-1.5.8-r2.ebuild:
+  sparc stable wrt #302326
+
+  08 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  libmoe-1.5.8-r2.ebuild:
+  stable x86, bug 302326
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> libmoe-1.5.8.ebuild,
+  libmoe-1.5.8-r1.ebuild:
+  Remove virtual/libc
+
+*libmoe-1.5.8-r2 (19 Nov 2008)
+
+  19 Nov 2008; MATSUU Takuto <matsuu@gentoo.org>
+  +files/libmoe-1.5.8-gentoo.patch, +libmoe-1.5.8-r2.ebuild:
+  Fixed Flameeyes QA warning, bug #247062.
+
+  13 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  libmoe-1.5.8-r1.ebuild:
+  ppc. stable
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org> libmoe-1.5.8-r1.ebuild:
+  x86 stable
+
+  03 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  19 Jan 2006; Karol Wojtaszek <sekretarz@gentoo.org>
+  libmoe-1.5.8-r1.ebuild:
+  Stable on amd64
+
+*libmoe-1.5.8-r1 (15 Oct 2005)
+
+  15 Oct 2005; MATSUU Takuto <matsuu@gentoo.org> +libmoe-1.5.8-r1.ebuild:
+  Fixed amd64 compile issue.
+  Clean up ebuild.
+
+  09 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> libmoe-1.5.8.ebuild:
+  Stable on ppc.
+
+  07 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> libmoe-1.5.8.ebuild:
+  Stable on sparc
+
+  05 Mar 2005; Mamoru KOMACHI <usata@gentoo.org> libmoe-1.5.8.ebuild:
+  Stable on x86.
+
+*libmoe-1.5.8 (13 Feb 2005)
+
+  13 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> -libmoe-1.5.5.ebuild,
+  +libmoe-1.5.8.ebuild:
+  Version bumped. Removed old ebuild.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> libmoe-1.5.5.ebuild,
+  libmoe-1.5.6.ebuild:
+  virtual/glibc -> virtual/libc
+
+*libmoe-1.5.6 (20 Sep 2003)
+
+  13 Dec 2003; Mamoru KOMACHI <usata@gentoo.org> libmoe-1.5.4.ebuild,
+  libmoe-1.5.6.ebuild:
+  Marked as stable; removed old ebuild
+
+  20 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> libmoe-1.5.6.ebuild:
+  Version bumped
+
+*libmoe-1.5.5 (15 Aug 2003)
+
+  03 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> libmoe-1.5.4.ebuild,
+  libmoe-1.5.5.ebuild:
+  Considered for stable
+
+  20 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> libmoe-1.5.5.ebuild:
+  Marked stable on x86
+
+  15 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> libmoe-1.5.5.ebuild:
+  Version bump
+
+*libmoe-1.5.4 (08 Aug 2003)
+
+  22 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> libmoe-1.5.4.ebuild:
+  Marked stable on x86 and ppc
+
+  08 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> libmoe-1.5.4.ebuild:
+  Initial import

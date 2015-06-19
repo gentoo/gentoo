@@ -1,0 +1,48 @@
+# ChangeLog for sci-libs/avogadrolibs
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/avogadrolibs/ChangeLog,v 1.7 2015/04/07 14:40:57 jlec Exp $
+
+  01 Dec 2014; Justin Lecher <jlec@gentoo.org> avogadrolibs-0.7.2-r1.ebuild:
+  Use SUBSLOTS for hdf5
+
+  10 Mar 2014; Michael Palimaka <kensington@gentoo.org>
+  avogadrolibs-0.7.2-r1.ebuild:
+  Pin Qt dependencies to SLOT 4.
+
+*avogadrolibs-0.7.2-r1 (16 Jan 2014)
+
+  16 Jan 2014; Justin Lecher <jlec@gentoo.org> -avogadrolibs-0.7.2.ebuild,
+  +avogadrolibs-0.7.2-r1.ebuild, +files/avogadrolibs-0.7.2-6464.patch:
+  Fix double suffix
+
+  16 Jan 2014; Justin Lecher <jlec@gentoo.org> avogadrolibs-0.7.2.ebuild:
+  Drop versionator.eclass
+
+  16 Jan 2014; Justin Lecher <jlec@gentoo.org> avogadrolibs-0.7.2.ebuild:
+  Fix DESCRIPTION
+
+*avogadrolibs-0.7.2 (16 Jan 2014)
+
+  16 Jan 2014; Justin Lecher <jlec@gentoo.org> +avogadrolibs-0.7.2.ebuild,
+  +metadata.xml:
+  Imported from science overlay
+
+*avogadro-libs-0.7.2 (16 Jan 2014)
+
+  16 Jan 2014; Justin Lecher <jlec@gentoo.org> avogadro-libs-0.6.0.ebuild,
+  +avogadro-libs-0.7.2.ebuild:
+  Version Bump
+
+  12 Aug 2013; Justin Lecher <jlec@gentoo.org> avogadro-libs-0.6.0.ebuild,
+  +files/avogadro-libs-0.6.0-underlinking.patch, metadata.xml:
+  Fix underlinking reported by ercpe, allow monolithic plugin module
+
+  12 Aug 2013; Justin Lecher <jlec@gentoo.org> avogadro-libs-0.6.0.ebuild,
+  +files/avogadro-libs-0.6.0-underlinking.patch, metadata.xml:
+  Fix underlinking reported by ercpe, allow monolithic plugin module
+
+*avogadro-libs-0.6.0 (23 Jul 2013)
+
+  23 Jul 2013; Justin Lecher <jlec@gentoo.org> +avogadro-libs-0.6.0.ebuild,
+  +metadata.xml:
+  New addition written by me

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile config configure install postinst postrm prepare setup unpack
+DEPEND=media-video/vdr >=dev-libs/tntnet-2.2.1[ssl=] >=dev-libs/cxxtools-2.2.1 pcre? ( >=dev-libs/libpcre-8.12[cxx] ) >=media-tv/gentoo-vdr-scripts-0.4.2 virtual/linuxtv-dvb-headers ssl? ( dev-libs/openssl )
+DESCRIPTION=VDR Plugin: Web Access To Settings
+EAPI=5
+HOMEPAGE=http://live.vdr-developer.org
+IUSE=pcre ssl ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-video/vdr >=dev-libs/tntnet-2.2.1[ssl=] >=dev-libs/cxxtools-2.2.1 pcre? ( >=dev-libs/libpcre-8.12[cxx] ) >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/eselect-vdr-0.0.2
+SLOT=0
+SRC_URI=mirror://gentoo/vdr-live-0.3.0_p20130504.tar.bz2 http://dev.gentoo.org/~hd_brummy/distfiles/vdr-live-0.3.0_p20130504.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	ssl-cert	b53367370fde96e19beca78050a47c61	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	vdr-plugin-2	3cba10b397a7c399a0b953c28aa27529
+_md5_=4c116ad94165c7493e6f74bbe897dad7

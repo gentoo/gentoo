@@ -1,0 +1,25 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu-guest-agent/files/qemu-ga.init-r1,v 1.1 2013/08/11 21:36:56 cardoe Exp $
+
+start() {
+    GA_METHOD=${GA_METHOD:-virtio-serial}
+    GA_PATH=${GA_PATH:-/dev/virtio-ports/org.qemu.guest_agent.0}
+
+    ebegin "Starting QEMU Guest Agent"
+
+    start-stop-daemon --start --pidfile /run/qemu-ga.pid \
+        --exec /usr/bin/qemu-ga -- -m ${GA_METHOD} -p ${GA_PATH} \
+        -l /var/log/qemu-ga.log -d -f /run/qemu-ga.pid -t /run ${GA_OPTIONS}
+
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping QEMU Guest Agent"
+
+    start-stop-daemon --stop --pidfile /run/qemu-ga.pid
+
+    eend $?
+}

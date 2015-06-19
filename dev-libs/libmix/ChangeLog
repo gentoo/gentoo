@@ -1,0 +1,175 @@
+# ChangeLog for dev-libs/libmix
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmix/ChangeLog,v 1.47 2015/02/28 14:02:52 mrueg Exp $
+
+  28 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -libmix-2.05-r6.ebuild:
+  Remove old.
+
+  28 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libmix-2.05-r7.ebuild:
+  Stable for ia64, wrt bug #535114
+
+  27 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libmix-2.05-r7.ebuild:
+  Stable for sparc, wrt bug #535114
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libmix-2.05-r7.ebuild:
+  Stable for alpha, wrt bug #535114
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> libmix-2.05-r7.ebuild:
+  Stable for x86, wrt bug #535114
+
+  18 Jan 2015; Agostino Sarubbo <ago@gentoo.org> libmix-2.05-r7.ebuild:
+  Stable for ppc64, wrt bug #535114
+
+  17 Jan 2015; Markus Meier <maekke@gentoo.org> libmix-2.05-r7.ebuild:
+  arm stable, bug #535114
+
+  17 Jan 2015; Agostino Sarubbo <ago@gentoo.org> libmix-2.05-r7.ebuild:
+  Stable for ppc, wrt bug #535114
+
+  12 Jan 2015; Jeroen Roovers <jer@gentoo.org> libmix-2.05-r7.ebuild:
+  Stable for HPPA (bug #535114).
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> libmix-2.05-r7.ebuild:
+  Stable for amd64, wrt bug #535114
+
+*libmix-2.05-r7 (05 Jul 2014)
+
+  05 Jul 2014; Jeroen Roovers <jer@gentoo.org> +libmix-2.05-r7.ebuild,
+  -files/libmix-2.05-gentoo.patch, -files/libmix-2.05-gentoo2.patch:
+  Move expf/logf to a safe namespace (bug #455414). Remove net-libs/libnet
+  cruft.
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> libmix-2.05-r6.ebuild:
+  Add arm64 love.
+
+  27 Aug 2013; Alexis Ballier <aballier@gentoo.org> libmix-2.05-r6.ebuild:
+  keyword ~amd64-fbsd
+
+  12 May 2013; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove obsolete useflag from metadata.xml
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -libmix-2.05-r5.ebuild:
+  Remove old
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> libmix-2.05-r6.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #404651
+
+  05 Mar 2012; Markus Meier <maekke@gentoo.org> libmix-2.05-r6.ebuild:
+  arm stable, bug #404651
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> libmix-2.05-r6.ebuild:
+  Marking libmix-2.05-r6 ppc64 for bug 404651
+
+  24 Feb 2012; Brent Baude <ranger@gentoo.org> libmix-2.05-r6.ebuild:
+  Marking libmix-2.05-r6 ppc for bug 404651
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> libmix-2.05-r6.ebuild:
+  x86 stable wrt bug #404651
+
+  21 Feb 2012; Jeroen Roovers <jer@gentoo.org> libmix-2.05-r6.ebuild:
+  Stable for HPPA (bug #404651).
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> libmix-2.05-r6.ebuild:
+  Stable for amd64, wrt bug #404651
+
+*libmix-2.05-r6 (17 Nov 2011)
+
+  17 Nov 2011; Mike Frysinger <vapier@gentoo.org> +libmix-2.05-r6.ebuild,
+  +files/libmix-2.05-gentoo-r1.patch:
+  Clean up gentoo patch to set SONAME, but not diff from the files actually
+  installed #390839 by Lars Wendler.
+
+  21 May 2011; Christoph Mende <angelos@gentoo.org> -libmix-2.05.ebuild:
+  Remove old
+
+  20 May 2011; Kacper Kowalik <xarthisius@gentoo.org> libmix-2.05-r5.ebuild:
+  ppc/ppc64 stable wrt #359741
+
+  16 Apr 2011; Raúl Porcel <armin76@gentoo.org> libmix-2.05-r5.ebuild:
+  ia64/m68k/s390/sh/sparc/x86 stable wrt #359741
+
+  11 Apr 2011; Jeroen Roovers <jer@gentoo.org> libmix-2.05-r5.ebuild:
+  Stable for HPPA (bug #359741).
+
+  09 Apr 2011; Markus Meier <maekke@gentoo.org> libmix-2.05-r5.ebuild:
+  arm stable, bug #359741
+
+  02 Apr 2011; Samuli Suominen <ssuominen@gentoo.org> libmix-2.05.ebuild,
+  libmix-2.05-r5.ebuild, metadata.xml:
+  Use net-libs/libpcap instead of virtual/libpcap wrt #358835.
+
+  27 Mar 2011; Tobias Klausmann <klausman@gentoo.org> libmix-2.05-r5.ebuild:
+  Stable on alpha, bug #359741
+
+  21 Mar 2011; Christoph Mende <angelos@gentoo.org> libmix-2.05-r5.ebuild:
+  Stable on amd64 wrt bug #359741
+
+  21 Mar 2011; Christoph Mende <angelos@gentoo.org> libmix-2.05-r5.ebuild,
+  +files/libmix-2.05-gentoo2.patch:
+  Fixed build when CLIB is set (bug #353719)
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> libmix-2.05.ebuild:
+  Drop to ~mips
+
+*libmix-2.05-r5 (23 Jan 2011)
+
+  23 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> -libmix-2.05-r4.ebuild,
+  +libmix-2.05-r5.ebuild, -files/libmix-2.05-autotools.patch,
+  +files/libmix-2.05-gentoo.patch, +files/libmix-2.05-libnet.patch:
+  Make static libs optional and don't build them with -fPIC. Drop no-net2 flag
+  as currently net-libs/libnet:1.0 doesn't produce shared libs. Prepared for
+  addition of USE=net2, initial fix for compilation with libnet-1.0. Thanks to
+  Angelos for help. Clean ebuild. Drop old.
+
+  09 Aug 2010; Markos Chandras <hwoarang@gentoo.org> libmix-2.05-r4.ebuild:
+  Add --libdir paramteter on econf. Fixes bug #331515
+
+*libmix-2.05-r4 (06 Aug 2010)
+
+  06 Aug 2010; Markos Chandras <hwoarang@gentoo.org> -libmix-2.05-r3.ebuild,
+  +libmix-2.05-r4.ebuild, files/libmix-2.05-autotools.patch:
+  Fix path for library installation. Bug #331457. Remove old ebuild. Thanks
+  to Adam Stylinski <stylinae@mail.uc.edu> for reporting that
+
+*libmix-2.05-r3 (06 Aug 2010)
+
+  06 Aug 2010; Markos Chandras <hwoarang@gentoo.org> -libmix-2.05-r1.ebuild,
+  -libmix-2.05-r2.ebuild, +libmix-2.05-r3.ebuild,
+  +files/libmix-2.05-autotools.patch:
+  Respect LDFLAGS + QA + autotools fixes from Doktor Notor
+  <notordoktor@gmail.com>. Bug #268444. Remove old ebuilds
+
+*libmix-2.05-r2 (14 Jul 2010)
+
+  14 Jul 2010; Jeroen Roovers <jer@gentoo.org> +libmix-2.05-r2.ebuild:
+  Respect CC, CXX, LDFLAGS.
+
+*libmix-2.05-r1 (08 Jan 2009)
+
+  08 Jan 2009; Jeroen Roovers <jer@gentoo.org>
+  +files/libmix-2.05-fix-pattern.patch, +libmix-2.05-r1.ebuild:
+  Revision bump to fix NULL dereferencing thanks to Israel G. Lugo (bug
+  #190248).
+
+  06 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  06 Jul 2007; Roy Marples <uberlord@gentoo.org> libmix-2.05.ebuild:
+  Keyworded ~x86-fbsd
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  09 Sep 2005; Tom Gall <tgall@gentoo.org> libmix-2.05.ebuild:
+  stable on ppc64
+
+  14 Apr 2005; Tom Gall <tgall@gentoo.org> libmix-2.05.ebuild:
+  added ~ppc64, dep for bug#89110
+
+  30 Jan 2005; Daniel Black <dragonheart@gentoo.org> libmix-2.05.ebuild:
+  transition DEPEND to virtual/libpcap
+
+*libmix-2.05 (05 May 2004)
+
+  05 May 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

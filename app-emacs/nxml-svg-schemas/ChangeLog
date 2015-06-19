@@ -1,0 +1,31 @@
+# ChangeLog for app-emacs/nxml-svg-schemas
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/nxml-svg-schemas/ChangeLog,v 1.6 2015/04/21 10:56:35 nimiux Exp $
+
+  21 Apr 2015; Chema Alonso <nimiux@gentoo.org>
+  nxml-svg-schemas-1.1.20081123.ebuild:
+  Stable for amd64 wrt bug #538014
+
+  07 Jun 2014; Ulrich Müller <ulm@gentoo.org>
+  nxml-svg-schemas-1.1.20081123.ebuild:
+  Remove redundant NEED_EMACS assignment.
+
+  26 Sep 2012; Ulrich Müller <ulm@gentoo.org>
+  nxml-svg-schemas-1.1.20081123.ebuild:
+  Specify LICENSE more precisely. Bump ebuild to EAPI 4.
+
+  12 Mar 2011; Ulrich Mueller <ulm@gentoo.org>
+  nxml-svg-schemas-1.1.20081123.ebuild:
+  Drop dependency on app-emacs/nxml-mode.
+
+  26 Nov 2008; Raúl Porcel <armin76@gentoo.org>
+  nxml-svg-schemas-1.1.20081123.ebuild:
+  Add ~x86 wrt #248461
+
+*nxml-svg-schemas-1.1.20081123 (23 Nov 2008)
+
+  23 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/60nxml-svg-schemas-gentoo.el, +files/Makefile-trang,
+  +files/schemas.xml, +metadata.xml, +nxml-svg-schemas-1.1.20081123.ebuild:
+  New ebuild, SVG (1.1 for now) schemas for nxml-mode.
+

@@ -1,0 +1,35 @@
+From 4a874dde53cf6acca7db2e7be3c10106fb50ec62 Mon Sep 17 00:00:00 2001
+From: Markos Chandras <hwoarang@gentoo.org>
+Date: Sun, 28 Apr 2013 12:27:57 +0100
+Subject: [PATCH] configure.ac: Fix json-c detection for json-c >= 0.11
+
+json-c-0.11 renamed the pkgconfig file to json-c
+https://github.com/json-c/json-c/blob/master/ChangeLog
+The configure.ac file was fixed to look for json-c if json
+is not available.
+
+[Alexandre Rostovtsev <tetromino@gentoo.org>: backport to 2.0.13]
+
+Signed-off-by: Markos Chandras <hwoarang@gentoo.org>
+---
+ configure.ac | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index dd50bcf..0ca5e67 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -104,7 +104,9 @@ PKG_CHECK_MODULES([DBUS], [dbus-1])
+ PKG_CHECK_MODULES([LIBXML], [libxml-2.0])
+ PKG_CHECK_MODULES([NSS], [nss])
+ PKG_CHECK_MODULES([CURL], [libcurl])
+-PKG_CHECK_MODULES([JSON_C], [json])
++PKG_CHECK_MODULES([JSON_C], [json],,[
++    PKG_CHECK_MODULES([JSON_C], [json-c])
++])
+ PKG_CHECK_MODULES([BTPARSER], [btparser])
+ PKG_CHECK_MODULES([NEWT], [libnewt])
+ PKG_CHECK_MODULES([PROXY], [libproxy-1.0], [
+-- 
+1.8.2.1
+

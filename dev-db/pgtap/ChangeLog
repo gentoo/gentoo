@@ -1,0 +1,18 @@
+# ChangeLog for dev-db/pgtap
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/pgtap/ChangeLog,v 1.4 2014/12/28 15:12:31 titanofold Exp $
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org> pgtap-0.93.0.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org> pgtap-0.93.0.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+  01 May 2013; Agostino Sarubbo <ago@gentoo.org> pgtap-0.93.0.ebuild:
+  Stable for amd64, wrt bug #468038
+
+*pgtap-0.93.0 (30 Mar 2013)
+
+  30 Mar 2013; Aaron W. Swenson <titanofold@gentoo.org> +pgtap-0.93.0.ebuild,
+  +files/pgtap-pg_config_override.patch, +metadata.xml:
+  PostgreSQL unit testing comes to Gentoo. Initial commit.

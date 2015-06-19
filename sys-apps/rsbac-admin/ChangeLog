@@ -1,0 +1,35 @@
+# ChangeLog for sys-apps/rsbac-admin
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/rsbac-admin/ChangeLog,v 1.45 2014/02/17 14:07:50 blueness Exp $
+
+*rsbac-admin-1.4.8 (17 Feb 2014)
+
+  17 Feb 2014; Anthony G. Basile <blueness@gentoo.org>
+  +rsbac-admin-1.4.8.ebuild:
+  Version bump
+
+*rsbac-admin-1.4.7 (20 Aug 2013)
+
+  20 Aug 2013; Anthony G. Basile <blueness@gentoo.org>
+  +rsbac-admin-1.4.7.ebuild:
+  Version bump
+
+  17 May 2012; Anthony G. Basile <blueness@gentoo.org> files/rklogd:
+  Fix issues with rklogd
+
+  15 May 2012; Anthony G. Basile <blueness@gentoo.org> files/rklogd:
+  Improve detection of run-jail in initd script
+
+*rsbac-admin-1.4.6-r1 (15 May 2012)
+
+  15 May 2012; Anthony G. Basile <blueness@gentoo.org>
+  +rsbac-admin-1.4.6-r1.ebuild, +files/rklogd:
+  Remove automatic addition of security user
+  Reintroduce deprecated rklogd, bug #415511
+
+*rsbac-admin-1.4.6 (07 Jan 2012)
+
+  07 Jan 2012; Anthony G. Basile <blueness@gentoo.org>
+  +rsbac-admin-1.4.6.ebuild, +files/nsswitch.conf, +files/rsbac.conf,
+  +metadata.xml:
+  Initial resurrection

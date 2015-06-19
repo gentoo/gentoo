@@ -1,0 +1,180 @@
+--- a/Makefile.am	2013-08-11 23:10:53.838280533 +0200
++++ b/Makefile.am	2013-08-11 23:31:55.429404471 +0200
+@@ -1,5 +1,5 @@
+-CFLAGS=-g -O2 -Wall
++AM_CFLAGS=-Wall
+ 
+ SUBDIRS=po
+ 
+ EXPORT_MODULES=					\
+@@ -84,87 +82,21 @@
+ 	rm -f .stamp-distutils-in-builddir
+ 
+ nobase_pkgdata_SCRIPTS=				\
+-	check-device-ids.py			\
+-	pysmb.py				\
+-	scp-dbus-service.py			\
+-	system-config-printer.py		\
+-	install-printerdriver.py		\
+-	troubleshoot/__init__.py		\
+-	applet.py
++	check-device-ids.py
+ 
+ nobase_pkgdata_DATA=					\
+-	asyncconn.py					\
+-	asyncipp.py					\
+-	asyncpk1.py					\
+-	authconn.py					\
+ 	config.py					\
+-	cupspk.py					\
+ 	debug.py					\
+ 	dnssdresolve.py					\
+-	errordialogs.py					\
+-	HIG.py						\
+ 	firewallsettings.py					\
+-	gui.py						\
+-	gtkinklevel.py					\
+ 	installpackage.py				\
+-	jobviewer.py					\
+ 	monitor.py					\
+-	newprinter.py					\
+-	options.py					\
+-	optionwidgets.py				\
+ 	PhysicalDevice.py				\
+-	ppdcache.py					\
+ 	ppdippstr.py					\
+-	ppdsloader.py					\
+-	printerproperties.py				\
+ 	probe_printer.py				\
+ 	SearchCriterion.py				\
+-	serversettings.py				\
+ 	smburi.py					\
+ 	statereason.py					\
+-	timedops.py					\
+-	ToolbarSearchEntry.py				\
+-	userdefault.py					\
+-	ui/AboutDialog.ui				\
+-	ui/ConnectDialog.ui				\
+-	ui/ConnectingDialog.ui				\
+-	ui/InstallDialog.ui				\
+-	ui/JobsWindow.ui				\
+-	ui/NewPrinterName.ui				\
+-	ui/NewPrinterWindow.ui				\
+-	ui/PrinterPropertiesDialog.ui			\
+-	ui/PrintersWindow.ui				\
+-	ui/ServerSettingsDialog.ui			\
+-	ui/SMBBrowseDialog.ui				\
+-	ui/statusicon_popupmenu.ui			\
+-	ui/WaitWindow.ui				\
+-	icons/i-network-printer.png			\
+-	troubleshoot/base.py				\
+-	troubleshoot/CheckLocalServerPublishing.py	\
+-	troubleshoot/CheckNetworkServerSanity.py	\
+-	troubleshoot/CheckPPDSanity.py			\
+-	troubleshoot/CheckPrinterSanity.py		\
+-	troubleshoot/CheckSELinux.py			\
+-	troubleshoot/CheckUSBPermissions.py		\
+-	troubleshoot/ChooseNetworkPrinter.py		\
+-	troubleshoot/ChoosePrinter.py			\
+-	troubleshoot/DeviceListed.py			\
+-	troubleshoot/ErrorLogCheckpoint.py		\
+-	troubleshoot/ErrorLogFetch.py			\
+-	troubleshoot/ErrorLogParse.py			\
+-	troubleshoot/Locale.py				\
+-	troubleshoot/LocalOrRemote.py			\
+-	troubleshoot/NetworkCUPSPrinterShared.py	\
+-	troubleshoot/PrinterStateReasons.py		\
+-	troubleshoot/PrintTestPage.py			\
+-	troubleshoot/QueueNotEnabled.py			\
+-	troubleshoot/QueueRejectingJobs.py		\
+-	troubleshoot/RemoteAddress.py			\
+-	troubleshoot/SchedulerNotRunning.py		\
+-	troubleshoot/ServerFirewalled.py		\
+-	troubleshoot/Shrug.py				\
+-	troubleshoot/VerifyPackages.py			\
+-	troubleshoot/Welcome.py				\
+ 	xml/preferreddrivers.rng			\
+ 	xml/validate.py
+ 
+@@ -172,20 +104,14 @@
+ cupshelpers_DATA=\
+ 	xml/preferreddrivers.xml
+ 
+-bin_SCRIPTS=					\
+-	system-config-printer			\
+-	install-printerdriver			\
+-	system-config-printer-applet		\
+-	dbus/scp-dbus-service
+-
+ if UDEV_RULES
+-udevrulesdir=$(sysconfdir)/udev/rules.d
++udevrulesdir=$(shell pkg-config --variable=udevdir udev)/rules.d
+ udevrules_DATA=udev/70-printers.rules
+ udev_udev_configure_printer_SOURCES=\
+ 	udev/udev-configure-printer.c
+-udev_udev_configure_printer_LDADD= -lcups -ludev $(libusb_LIBS) $(GLIB_LIBS)
+-udev_udev_configure_printer_CFLAGS= $(AM_CFLAGS) $(libusb_CFLAGS) $(GLIB_CFLAGS)
+-udevhelperdir=$(sysconfdir)/udev
++udev_udev_configure_printer_LDADD= -lcups $(libudev_LIBS) $(libusb_LIBS) $(GLIB_LIBS)
++udev_udev_configure_printer_CFLAGS= $(AM_CFLAGS) $(libudev_CFLAGS) $(libusb_CFLAGS) $(GLIB_CFLAGS)
++udevhelperdir=$(shell pkg-config --variable=udevdir udev)
+ udevhelper_PROGRAMS=\
+ 	udev/udev-configure-printer
+ udevhelper_SCRIPTS=\
+@@ -202,56 +128,17 @@
+ 
+ endif
+ 
+-man_MANS=					\
+-	man/system-config-printer.1		\
+-	man/system-config-printer-applet.1
+-
+ dbus_DATA =					\
+ 	dbus/com.redhat.NewPrinterNotification.conf		\
+ 	dbus/com.redhat.PrinterDriversInstaller.conf
+ dbusdir = $(sysconfdir)/dbus-1/system.d/
+ 
+-dbusinterfaces_DATA =				\
+-	dbus/org.fedoraproject.Config.Printing.xml
+-dbusinterfacesdir = $(datadir)/dbus-1/interfaces/
+-
+-dbusservices_DATA =				\
+-	dbus/org.fedoraproject.Config.Printing.service
+-dbusservicesdir = $(datadir)/dbus-1/services/
+-
+-desktop_DATA =\
+-	system-config-printer.desktop \
+-	print-applet.desktop
+ desktopdir = $(datadir)/applications/
+ autostartdir = $(sysconfdir)/xdg/autostart/
+ 
+ DESKTOP_VENDOR=@DESKTOPVENDOR@
+ DESKTOP_PREFIX=@DESKTOPPREFIX@
+ 
+-install-desktopDATA: $(desktop_DATA)
+-	mkdir -p $(DESTDIR)$(desktopdir)
+-	mkdir -p $(DESTDIR)$(desktopdir)
+-	desktop-file-install $(DESKTOP_VENDOR)	\
+-	  --dir $(DESTDIR)$(desktopdir)		\
+-	  --add-category System			\
+-	  --add-category Settings		\
+-	  --add-category HardwareSettings	\
+-	  --add-category Printing		\
+-	  --add-category GTK			\
+-	  system-config-printer.desktop
+-	desktop-file-install $(DESKTOP_VENDOR)	\
+-	  --dir $(DESTDIR)$(autostartdir)	\
+-	  --add-category System			\
+-	  --add-category Monitor		\
+-	  --add-category GTK			\
+-	  print-applet.desktop
+-
+-uninstall-desktopDATA:
+-	rm -f $(DESTDIR)$(desktopdir)/$(DESKTOP_PREFIX)system-config-printer.desktop
+-	rm -f $(DESTDIR)$(autostartdir)/$(DESKTOP_PREFIX)print-applet.desktop
+-
+-desktop_in_files = $(desktop_DATA:.desktop=.desktop.in)
+-
+ EXTRA_DIST=\
+ 	$(nobase_pkgdata_SCRIPTS) \
+ 	$(nobase_pkgdata_DATA) \

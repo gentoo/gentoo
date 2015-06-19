@@ -1,0 +1,280 @@
+# ChangeLog for games-fps/urbanterror
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/urbanterror/ChangeLog,v 1.59 2015/04/20 20:03:24 mr_bones_ Exp $
+
+  20 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/urbanterror-4.2.018-build.patch,
+  -files/urbanterror-4.2.021-build.patch, -urbanterror-4.2.018-r1.ebuild,
+  -urbanterror-4.2.021.ebuild:
+  old
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> urbanterror-4.2.023.ebuild:
+  Stable for x86, wrt bug #545742
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> urbanterror-4.2.023.ebuild:
+  Stable for amd64, wrt bug #545742
+
+  06 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> metadata.xml,
+  urbanterror-4.2.023.ebuild:
+  tidy metadata.xml
+
+  06 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/urbanterror-4.2.023-build.patch, files/urbanterror-4.2.018-build.patch,
+  files/urbanterror-4.2.021-build.patch, urbanterror-4.2.023.ebuild:
+  tidy; detangle patch
+
+  15 Feb 2015;  <anarchy@gentoo.org> urbanterror-4.2.023.ebuild:
+  seed using 4.2.022, missed initial commit update
+
+*urbanterror-4.2.023 (14 Feb 2015)
+
+  14 Feb 2015;  <anarchy@gentoo.org> +urbanterror-4.2.023.ebuild, metadata.xml:
+  Misc bug fixes upstream, last 4.2.xxx release. Add support for hardened users.
+
+  27 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/urbanterror-4.1.1-build.patch, -files/urbanterror-4.1.1-minizip.patch,
+  -urbanterror-4.1.1.ebuild:
+  old
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+*urbanterror-4.2.021 (20 Nov 2014)
+
+  20 Nov 2014; Julian Ospald <hasufell@gentoo.org> -urbanterror-4.2.018.ebuild,
+  -urbanterror-4.2.019.ebuild, +urbanterror-4.2.021.ebuild,
+  -files/urbanterror-4.2.017-build.patch,
+  -files/urbanterror-4.2.019-build.patch,
+  +files/urbanterror-4.2.021-build.patch:
+  version bump, rm old
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> urbanterror-4.2.018-r1.ebuild:
+  Stable for amd64, wrt bug #518236
+
+*urbanterror-4.2.019 (19 Sep 2014)
+
+  19 Sep 2014; Julian Ospald <hasufell@gentoo.org> +urbanterror-4.2.019.ebuild,
+  +files/urbanterror-4.2.019-build.patch, metadata.xml:
+  version bump
+
+  14 Aug 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  urbanterror-4.2.018-r1.ebuild:
+  x86 stable wrt bug #518236
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> urbanterror-4.2.018.ebuild,
+  urbanterror-4.2.018-r1.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+*urbanterror-4.2.018-r1 (12 Mar 2014)
+
+  12 Mar 2014; Julian Ospald <hasufell@gentoo.org>
+  +urbanterror-4.2.018-r1.ebuild, +files/urbanterror-4.2.018-build.patch:
+  revbump to update engine
+
+  12 Mar 2014; Julian Ospald <hasufell@gentoo.org> -urbanterror-4.2.014.ebuild,
+  -urbanterror-4.2.015.ebuild, -urbanterror-4.2.017.ebuild,
+  -files/urbanterror-4.2.014-build.patch,
+  -files/urbanterror-4.2.015-build.patch:
+  remove old
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> urbanterror-4.2.018.ebuild:
+  Stable for x86, wrt bug #502356
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> urbanterror-4.2.018.ebuild:
+  amd64 stable, bug #502356
+
+*urbanterror-4.2.018 (26 Jan 2014)
+
+  26 Jan 2014; Julian Ospald <hasufell@gentoo.org>
+  +files/urbanterror-4.2.017-build.patch, +urbanterror-4.2.018.ebuild:
+  version bump
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> urbanterror-4.2.015.ebuild:
+  Stable for x86, wrt bug #491532
+
+*urbanterror-4.2.017 (23 Dec 2013)
+
+  23 Dec 2013; Julian Ospald <hasufell@gentoo.org> -urbanterror-4.2.016.ebuild,
+  +urbanterror-4.2.017.ebuild:
+  version bump, remove old
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> urbanterror-4.2.015.ebuild:
+  amd64 stable, bug #491532
+
+*urbanterror-4.2.016 (19 Dec 2013)
+
+  19 Dec 2013; Julian Ospald <hasufell@gentoo.org> +urbanterror-4.2.016.ebuild:
+  version bump, uses engine from 4.2.015
+
+*urbanterror-4.2.015 (28 Sep 2013)
+
+  28 Sep 2013; Julian Ospald <hasufell@gentoo.org> +urbanterror-4.2.015.ebuild,
+  +files/urbanterror-4.2.015-build.patch:
+  version bump
+
+  27 Sep 2013; Julian Ospald <hasufell@gentoo.org>
+  -files/urbanterror-4.2.012-build.patch,
+  -files/urbanterror-4.2.013-build.patch, -urbanterror-4.2.012.ebuild,
+  -urbanterror-4.2.013-r1.ebuild:
+  remove old (keep 4.1.1 since some servers still use it)
+
+  01 Sep 2013; Julian Ospald <hasufell@gentoo.org> urbanterror-4.1.1.ebuild:
+  update license information
+
+  01 Sep 2013; Julian Ospald <hasufell@gentoo.org> urbanterror-4.1.1.ebuild:
+  add mirror restriction, update license information
+
+  01 Sep 2013; Julian Ospald <hasufell@gentoo.org> urbanterror-4.2.012.ebuild,
+  urbanterror-4.2.013-r1.ebuild, urbanterror-4.2.014.ebuild:
+  update license information wrt #481650
+
+  28 Aug 2013; Agostino Sarubbo <ago@gentoo.org> urbanterror-4.2.014.ebuild:
+  Stable for x86, wrt bug #480784
+
+  13 Aug 2013; Chema Alonso <nimiux@gentoo.org> urbanterror-4.2.014.ebuild:
+  Stable for amd64 wrt bug #480784
+
+*urbanterror-4.2.014 (15 Jul 2013)
+
+  15 Jul 2013; Julian Ospald <hasufell@gentoo.org> -urbanterror-4.2.009.ebuild,
+  -files/urbanterror-4.2.009-build.patch, +urbanterror-4.2.014.ebuild,
+  +files/urbanterror-4.2.014-build.patch:
+  version bump
+
+*urbanterror-4.2.013-r1 (09 Jul 2013)
+
+  09 Jul 2013; Julian Ospald <hasufell@gentoo.org> -urbanterror-4.2.013.ebuild,
+  +urbanterror-4.2.013-r1.ebuild, files/urbanterror-4.2.013-build.patch:
+  revbump to update the game engine
+
+  04 Jul 2013; Julian Ospald <hasufell@gentoo.org> urbanterror-4.2.013.ebuild:
+  update check-reqs wrt #475766
+
+*urbanterror-4.2.013 (04 Jul 2013)
+
+  04 Jul 2013; Julian Ospald <hasufell@gentoo.org> +urbanterror-4.2.013.ebuild,
+  +files/urbanterror-4.2.013-build.patch:
+  version bump
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> urbanterror-4.2.012.ebuild:
+  Stable for amd64, wrt bug #474448
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> urbanterror-4.2.012.ebuild:
+  Stable for x86, wrt bug #474448
+
+*urbanterror-4.2.012 (24 Apr 2013)
+
+  24 Apr 2013; Julian Ospald <hasufell@gentoo.org> -urbanterror-4.2.011.ebuild,
+  -files/urbanterror-4.2.011-build.patch, +urbanterror-4.2.012.ebuild,
+  +files/urbanterror-4.2.012-build.patch:
+  version bump wrt #466728
+
+*urbanterror-4.2.011 (07 Apr 2013)
+
+  07 Apr 2013; Julian Ospald <hasufell@gentoo.org> -urbanterror-4.2.010.ebuild,
+  -files/urbanterror-4.2.010-build.patch, +urbanterror-4.2.011.ebuild,
+  +files/urbanterror-4.2.011-build.patch:
+  version bump, remove old
+
+*urbanterror-4.2.010 (05 Apr 2013)
+
+  05 Apr 2013; Julian Ospald <hasufell@gentoo.org> +urbanterror-4.2.010.ebuild,
+  +files/urbanterror-4.2.010-build.patch:
+  version bump
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> urbanterror-4.2.009.ebuild:
+  Stable for x86, wrt bug #457124
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> urbanterror-4.2.009.ebuild:
+  Stable for amd64, wrt bug #457124
+
+  21 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/urbanterror-4.2.008-build.patch, -urbanterror-4.2.008.ebuild:
+  old
+
+*urbanterror-4.2.009 (23 Dec 2012)
+
+  23 Dec 2012; Julian Ospald <hasufell@gentoo.org> +urbanterror-4.2.009.ebuild,
+  +files/urbanterror-4.2.009-build.patch:
+  version bump
+
+  05 Dec 2012; Julian Ospald <hasufell@gentoo.org> urbanterror-4.2.008.ebuild:
+  update SRC_URI wrt #446148
+
+*urbanterror-4.2.008 (04 Dec 2012)
+
+  04 Dec 2012; Julian Ospald <hasufell@gentoo.org> -urbanterror-4.2.006.ebuild,
+  -files/urbanterror-4.2.006-build.patch, -urbanterror-4.2.007.ebuild,
+  -files/urbanterror-4.2.007-build.patch, +urbanterror-4.2.008.ebuild,
+  +files/urbanterror-4.2.008-build.patch:
+  version bump, remove old
+
+*urbanterror-4.2.007 (18 Nov 2012)
+
+  18 Nov 2012; Julian Ospald <hasufell@gentoo.org> +urbanterror-4.2.007.ebuild,
+  +files/urbanterror-4.2.007-build.patch:
+  version bump
+
+*urbanterror-4.2.006 (10 Nov 2012)
+
+  10 Nov 2012; Julian Ospald <hasufell@gentoo.org> -urbanterror-4.2.003.ebuild,
+  -files/urbanterror-4.2.003-build.patch, -urbanterror-4.2.004.ebuild,
+  -files/urbanterror-4.2.004-build.patch, -urbanterror-4.2.005.ebuild,
+  -files/urbanterror-4.2.005-build.patch, +urbanterror-4.2.006.ebuild,
+  +files/urbanterror-4.2.006-build.patch:
+  version bump, remove old
+
+  05 Nov 2012; Julian Ospald <hasufell@gentoo.org> urbanterror-4.2.005.ebuild:
+  don't use dlopen if we can switch it off
+
+*urbanterror-4.2.005 (05 Nov 2012)
+
+  05 Nov 2012; Julian Ospald <hasufell@gentoo.org> +urbanterror-4.2.005.ebuild,
+  +files/urbanterror-4.2.005-build.patch:
+  version bump
+
+*urbanterror-4.2.004 (01 Nov 2012)
+
+  01 Nov 2012; Julian Ospald <hasufell@gentoo.org> +urbanterror-4.2.004.ebuild,
+  +files/urbanterror-4.2.004-build.patch:
+  version bump
+
+*urbanterror-4.2.003 (26 Oct 2012)
+
+  26 Oct 2012; Julian Ospald <hasufell@gentoo.org> -urbanterror-4.2.002.ebuild,
+  -files/urbanterror-4.2.002-build.patch, +urbanterror-4.2.003.ebuild,
+  +files/urbanterror-4.2.003-build.patch:
+  version bump, remove old
+
+  19 Oct 2012; Julian Ospald <hasufell@gentoo.org>
+  files/urbanterror-4.2.002-build.patch:
+  don't add aggressive optimizations to debug build
+
+*urbanterror-4.2.002 (12 Oct 2012)
+
+  12 Oct 2012; Julian Ospald <hasufell@gentoo.org> +urbanterror-4.2.002.ebuild,
+  +files/urbanterror-4.2.002-build.patch:
+  version bump
+
+  19 Jul 2012; Jeff Horelick <jdhore@gentoo.org> urbanterror-4.1.1.ebuild:
+  marked x86 per bug 425346
+
+  09 Jul 2012; Agostino Sarubbo <ago@gentoo.org> urbanterror-4.1.1.ebuild:
+  Stable for amd64, wrt bug #425346
+
+  08 Jul 2012; Julian Ospald <hasufell@gentoo.org> urbanterror-4.1.1.ebuild:
+  update icon cache
+
+  05 Jun 2012; Julian Ospald <hasufell@gentoo.org> urbanterror-4.1.1.ebuild:
+  use new doicon functionality
+
+  02 Jun 2012; Julian Ospald <hasufell@gentoo.org> urbanterror-4.1.1.ebuild:
+  bump to EAPI=4
+
+*urbanterror-4.1.1 (24 May 2012)
+
+  24 May 2012; Julian Ospald <hasufell@gentoo.org> +urbanterror-4.1.1.ebuild,
+  +files/urbanterror-4.1.1-build.patch, +files/urbanterror-4.1.1-minizip.patch,
+  +metadata.xml:
+  initial import wrt #203296 thanks to Mr_Bones_

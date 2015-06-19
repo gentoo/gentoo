@@ -1,0 +1,1002 @@
+# ChangeLog for net-misc/rsync
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/rsync/ChangeLog,v 1.267 2015/05/15 12:03:06 pacho Exp $
+
+  15 May 2015; Pacho Ramos <pacho@gentoo.org> rsync-3.1.1.ebuild:
+  ppc stable wrt bug #540000
+
+  30 Apr 2015; Mike Frysinger <vapier@gentoo.org> metadata.xml:
+  Add CPE info via Chromium OS.
+
+  28 Apr 2015; Agostino Sarubbo <ago@gentoo.org> rsync-3.1.1.ebuild:
+  Stable for alpha, wrt bug #540000
+
+  26 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> rsync-3.1.1.ebuild:
+  sparc stable wrt bug #540000
+
+  21 Apr 2015; Jeroen Roovers <jer@gentoo.org> rsync-3.1.1.ebuild:
+  Stable for PPC64 (bug #540000).
+
+  16 Mar 2015; Mike Frysinger <vapier@gentoo.org> rsync-3.1.1.ebuild:
+  Mark arm64/ia64/m68k/s390/sh stable.
+
+  26 Feb 2015; Markus Meier <maekke@gentoo.org> rsync-3.1.1.ebuild:
+  arm stable, bug #540000
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org> rsync-3.1.1.ebuild:
+  Stable for x86, wrt bug #540000
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org> rsync-3.1.1.ebuild:
+  Stable for amd64, wrt bug #540000
+
+  14 Feb 2015; Jeroen Roovers <jer@gentoo.org> rsync-3.1.1.ebuild:
+  Stable for HPPA (bug #540000).
+
+  18 Dec 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  files/rsyncd.conf-3.0.9-r1:
+  default to /run instead of /var/run for bug #332633
+
+*rsync-3.1.1 (07 Jul 2014)
+
+  07 Jul 2014; Lars Wendler <polynomial-c@gentoo.org> -rsync-3.1.1_pre2.ebuild,
+  +rsync-3.1.1.ebuild:
+  Version bump. Removed old.
+
+  27 May 2014; Lars Wendler <polynomial-c@gentoo.org> rsync-3.1.1_pre2.ebuild:
+  rsync-3.1.1_pre2 no longer needs the patch from 3.1.0.
+
+  27 May 2014; Lars Wendler <polynomial-c@gentoo.org> -files/rsyncd.conf,
+  -files/rsyncd.init.d, -files/rsyncd.xinetd:
+  Removed old files from FILESDIR as well.
+
+*rsync-3.1.1_pre2 (27 May 2014)
+
+  27 May 2014; Lars Wendler <polynomial-c@gentoo.org> -rsync-3.0.8.ebuild,
+  -rsync-3.0.9.ebuild, -rsync-3.0.9-r2.ebuild, +rsync-3.1.1_pre2.ebuild:
+  Added pre-version without KEYWORDS. Removed old.
+
+*rsync-3.1.0-r1 (15 Apr 2014)
+
+  15 Apr 2014; Lars Wendler <polynomial-c@gentoo.org> -rsync-3.1.0.ebuild,
+  +rsync-3.1.0-r1.ebuild,
+  +files/rsync-3.1.1_pre1-avoid_infinite_wait_reading_secrets_file.patch:
+  Security bump (bug #507698). Removed vulnerable version
+
+  06 Apr 2014; Mike Frysinger <vapier@gentoo.org> rsync-3.0.9-r3.ebuild:
+  Mark m68k/s390/sh stable.
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> rsync-3.0.9-r3.ebuild,
+  rsync-3.1.0.ebuild:
+  Add arm64 love.
+
+*rsync-3.1.0 (10 Oct 2013)
+
+  10 Oct 2013; Tony Vroon <chainsaw@gentoo.org> +rsync-3.1.0.ebuild:
+  Version bump, as requested by Lars Polynomial-C Wendler in bug #486634.
+  Introduces protocol 31 and option passing to the remote daemon.
+  Human-readable sizes can now be expressed in terabytes.
+
+  23 Sep 2013; Agostino Sarubbo <ago@gentoo.org> rsync-3.0.9-r3.ebuild:
+  Stable for sparc, wrt bug #480090
+
+  14 Sep 2013; Agostino Sarubbo <ago@gentoo.org> rsync-3.0.9-r3.ebuild:
+  Stable for alpha, wrt bug #480090
+
+  14 Sep 2013; Agostino Sarubbo <ago@gentoo.org> rsync-3.0.9-r3.ebuild:
+  Stable for x86, wrt bug #480090
+
+  14 Sep 2013; Agostino Sarubbo <ago@gentoo.org> rsync-3.0.9-r3.ebuild:
+  Stable for ia64, wrt bug #480090
+
+  12 Sep 2013; Agostino Sarubbo <ago@gentoo.org> rsync-3.0.9-r3.ebuild:
+  Stable for ppc64, wrt bug #480090
+
+  12 Sep 2013; Agostino Sarubbo <ago@gentoo.org> rsync-3.0.9-r3.ebuild:
+  Stable for ppc, wrt bug #480090
+
+  10 Sep 2013; Markus Meier <maekke@gentoo.org> rsync-3.0.9-r3.ebuild:
+  arm stable, bug #480090
+
+  09 Sep 2013; Jeroen Roovers <jer@gentoo.org> rsync-3.0.9-r3.ebuild:
+  Stable for HPPA (bug #480090).
+
+  08 Sep 2013; Agostino Sarubbo <ago@gentoo.org> rsync-3.0.9-r3.ebuild:
+  Stable for amd64, wrt bug #480090
+
+*rsync-3.0.9-r3 (06 Jul 2013)
+
+  06 Jul 2013; Pacho Ramos <pacho@gentoo.org> +files/rsyncd.service,
+  +rsync-3.0.9-r3.ebuild:
+  Install unit file (#466088, thanks to Doug and base-system herd for allowing
+  it).
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org> rsync-3.0.9-r2.ebuild:
+  Add ~arm-linux keyword.
+
+  18 Nov 2012; Agostino Sarubbo <ago@gentoo.org> -rsync-3.0.7-r2.ebuild,
+  -rsync-3.0.7.ebuild:
+  Remove old
+
+  09 Sep 2012; Raúl Porcel <armin76@gentoo.org> rsync-3.0.9-r2.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #431852
+
+  20 Aug 2012; Jeroen Roovers <jer@gentoo.org> rsync-3.0.9-r2.ebuild:
+  Stable for HPPA (bug #431852).
+
+  19 Aug 2012; Anthony G. Basile <blueness@gentoo.org> rsync-3.0.9-r2.ebuild:
+  Stable ppc ppc64, bug #431852
+
+  19 Aug 2012; Johannes Huber <johu@gentoo.org> rsync-3.0.9-r2.ebuild:
+  Stable for x86, wrt bug #431852
+
+  19 Aug 2012; Anthony G. Basile <blueness@gentoo.org> rsync-3.0.9-r2.ebuild:
+  Stable arm, bug #431852
+
+  19 Aug 2012; Agostino Sarubbo <ago@gentoo.org> rsync-3.0.9-r2.ebuild:
+  Stable for amd64, wrt bug #431852
+
+  18 Aug 2012; Mike Frysinger <vapier@gentoo.org> rsync-3.0.9-r2.ebuild,
+  rsync-3.0.9.ebuild:
+  Revert wrong perl change.
+
+  30 Jun 2012; Fabian Groffen <grobian@gentoo.org> rsync-3.0.9-r2.ebuild:
+  Fix elementary Prefix error using ED for DESTDIR in make install.
+
+  29 Jun 2012; Mike Frysinger <vapier@gentoo.org> rsync-3.0.9-r2.ebuild,
+  rsync-3.0.9.ebuild:
+  Avoid regenerating proto.h which requires perl -- the shipped one should work
+  in all places we care about #421625 by László Szalma.
+
+  25 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org> rsync-3.0.9-r2.ebuild,
+  rsync-3.0.9.ebuild:
+  Add dependency over dev-lang/perl at build time.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> rsync-3.0.9-r2.ebuild:
+  keyword ~amd64-fbsd
+
+  01 Apr 2012; Raúl Porcel <armin76@gentoo.org> rsync-3.0.9.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #406055
+
+*rsync-3.0.9-r2 (22 Mar 2012)
+
+  22 Mar 2012; Christian Ruppert <idl0r@gentoo.org> -rsync-3.0.9-r1.ebuild,
+  +rsync-3.0.9-r2.ebuild, +files/rsyncd.init.d-r1:
+  Simplify the init script.
+
+  15 Mar 2012; Markus Meier <maekke@gentoo.org> rsync-3.0.9.ebuild:
+  arm stable, bug #406055
+
+  05 Mar 2012; Mike Frysinger <vapier@gentoo.org> rsync-3.0.9-r1.ebuild:
+  Make sure libs we build against have USE=static-libs enabled when we have
+  USE=static #406109 by Jeff Horelick.
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> rsync-3.0.9.ebuild:
+  Marking rsync-3.0.9 ppc64 for bug 406055
+
+  01 Mar 2012; Brent Baude <ranger@gentoo.org> rsync-3.0.9.ebuild:
+  Marking rsync-3.0.9 ppc for bug 406055
+
+  29 Feb 2012; Agostino Sarubbo <ago@gentoo.org> rsync-3.0.9.ebuild:
+  Stable for amd64, wrt bug #406055
+
+*rsync-3.0.9-r1 (28 Feb 2012)
+
+  28 Feb 2012; Jeremy Olexa <darkside@gentoo.org> +files/rsyncd.conf-3.0.9-r1,
+  +files/rsyncd.xinetd-3.0.9-r1, +rsync-3.0.9-r1.ebuild:
+  revision bump to support Gentoo Prefix. EAPI, KEYWORDS, EPREFIX/ED/EROOT
+  usage, new files in FILESDIR. Bug 406061
+
+  28 Feb 2012; Jeroen Roovers <jer@gentoo.org> rsync-3.0.9.ebuild:
+  Stable for HPPA (bug #406055).
+
+  28 Feb 2012; Jeff Horelick <jdhore@gentoo.org> rsync-3.0.9.ebuild:
+  marked x86 per bug 406055
+
+*rsync-3.0.9 (30 Oct 2011)
+
+  30 Oct 2011; Mike Frysinger <vapier@gentoo.org> +rsync-3.0.9.ebuild:
+  Version bump #387999 by Kilburn Abrahams.
+
+  02 Apr 2011; Raúl Porcel <armin76@gentoo.org> rsync-3.0.8.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #360891
+
+  29 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> rsync-3.0.8.ebuild:
+  ppc/ppc64 stable wrt #360891
+
+  28 Mar 2011; Christian Faulhammer <fauli@gentoo.org> rsync-3.0.8.ebuild:
+  stable x86, security bug 360891
+
+  28 Mar 2011; Jeroen Roovers <jer@gentoo.org> rsync-3.0.8.ebuild:
+  Stable for HPPA (bug #360891).
+
+  28 Mar 2011; Christoph Mende <angelos@gentoo.org> rsync-3.0.8.ebuild:
+  Stable on amd64 wrt bug #360891
+
+*rsync-3.0.8 (28 Mar 2011)
+
+  28 Mar 2011; Mike Frysinger <vapier@gentoo.org> +rsync-3.0.8.ebuild:
+  Version bump #360891 by Paweł Hajdan, Jr.
+
+*rsync-3.0.7-r2 (09 Jan 2011)
+
+  09 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> -rsync-3.0.7-r1.ebuild,
+  +rsync-3.0.7-r2.ebuild:
+  Complete fail of a revbump on my part, sorry about that, lets try it again.
+
+*rsync-3.0.7-r1 (09 Jan 2011)
+
+  09 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> +rsync-3.0.7-r1.ebuild:
+  Install the rsync contrib scripts (includes useful rsync log parsing scripts,
+  and atomic rsync helpers).
+
+  09 Oct 2010; Raúl Porcel <armin76@gentoo.org> rsync-3.0.7.ebuild:
+  arm/ia64/m68k/s390/sh/sparc stable wrt #337537
+
+  30 Sep 2010; Brent Baude <ranger@gentoo.org> rsync-3.0.7.ebuild:
+  stable ppc64, bug 337537
+
+  27 Sep 2010; Brent Baude <ranger@gentoo.org> rsync-3.0.7.ebuild:
+  Marking rsync-3.0.7 ppc for bug 337537
+
+  20 Sep 2010; Markos Chandras <hwoarang@gentoo.org> rsync-3.0.7.ebuild:
+  Stable on amd64 wrt bug #337537
+
+  20 Sep 2010; Guy Martin <gmsoft@gentoo.org> rsync-3.0.7.ebuild:
+  hppa stable wrt #337537
+
+  19 Sep 2010; Tobias Klausmann <klausman@gentoo.org> rsync-3.0.7.ebuild:
+  Stable on alpha, bug #337537, thanks to mattst88 for testing
+
+  17 Sep 2010; Christian Faulhammer <fauli@gentoo.org> rsync-3.0.7.ebuild:
+  stable x86, bug 337537
+
+*rsync-3.0.7 (16 Jan 2010)
+
+  16 Jan 2010; Mike Frysinger <vapier@gentoo.org> +rsync-3.0.7.ebuild:
+  Version bump #301149 by Bernhard Hartleb.
+
+  20 Oct 2009; Mike Frysinger <vapier@gentoo.org> rsync-3.0.6.ebuild:
+  Drop USE=xinetd and just always install the conf file.
+
+  31 Aug 2009; Brent Baude <ranger@gentoo.org> rsync-3.0.6.ebuild:
+  stable ppc64, bug 282880
+
+  30 Aug 2009; nixnut <nixnut@gentoo.org> rsync-3.0.6.ebuild:
+  ppc stable #282880
+
+  29 Aug 2009; Jeroen Roovers <jer@gentoo.org> rsync-3.0.6.ebuild:
+  Stable for HPPA (bug #282880).
+
+  28 Aug 2009; Raúl Porcel <armin76@gentoo.org> rsync-3.0.6.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc/x86 stable wrt #282880
+
+  27 Aug 2009; Thomas Anderson <tanderson@gentoo.org> rsync-3.0.6.ebuild:
+  stable amd64, bug 282880
+
+  27 Aug 2009; Mike Frysinger <vapier@gentoo.org> rsync-3.0.5.ebuild,
+  rsync-3.0.6.ebuild:
+  Move to common epatch code.
+
+  29 May 2009; Diego E. Pettenò <flameeyes@gentoo.org> rsync-3.0.5.ebuild,
+  rsync-3.0.6.ebuild:
+  Replace kernel-conditional dependency on sys-apps/acl with virtual/acl.
+
+*rsync-3.0.6 (11 May 2009)
+
+  11 May 2009; Mike Frysinger <vapier@gentoo.org> +rsync-3.0.6.ebuild:
+  Version bump #269375 by Lars Wendler.
+
+  17 Mar 2009; Raúl Porcel <armin76@gentoo.org> rsync-3.0.5.ebuild:
+  m68k stable wrt #258367, thanks to kolla for testing
+
+  12 Feb 2009; Brent Baude <ranger@gentoo.org> rsync-3.0.5.ebuild:
+  stable ppc64, bug 258367
+
+  12 Feb 2009; nixnut <nixnut@gentoo.org> rsync-3.0.5.ebuild:
+  ppc stable #258367
+
+  12 Feb 2009; Jeremy Olexa <darkside@gentoo.org> rsync-3.0.5.ebuild:
+  amd64 stable, bug 258367
+
+  12 Feb 2009; Jeroen Roovers <jer@gentoo.org> rsync-3.0.5.ebuild:
+  Stable for HPPA (bug #258367).
+
+  11 Feb 2009; Raúl Porcel <armin76@gentoo.org> rsync-3.0.5.ebuild:
+  arm/ia64/s390/sh/sparc/x86 stable wrt #258367
+
+  09 Feb 2009; Tobias Klausmann <klausman@gentoo.org> rsync-3.0.5.ebuild:
+  Stable on alpha, bug #258367
+
+  08 Jan 2009; Mike Frysinger <vapier@gentoo.org> rsync-3.0.5.ebuild:
+  Drop code to move rsyncd.conf around since everyone is converted now
+  #201223 by Paul Hewlett. Also tweak chroot check so it only warns when
+  people have bad config files.
+
+  08 Jan 2009; Mike Frysinger <vapier@gentoo.org> rsync-3.0.4.ebuild,
+  rsync-3.0.5.ebuild:
+  Have SRC_URI look in a slightly diff path where all upstream versions are
+  kept #254060 by Maryasin Semen.
+
+*rsync-3.0.5 (29 Dec 2008)
+
+  29 Dec 2008; Mike Frysinger <vapier@gentoo.org> +rsync-3.0.5.ebuild:
+  Version bump.
+
+  27 Nov 2008; Jeroen Roovers <jer@gentoo.org> rsync-3.0.4.ebuild:
+  Stable for HPPA (bug #248439).
+
+  25 Nov 2008; Brent Baude <ranger@gentoo.org> rsync-3.0.4.ebuild:
+  stable ppc64, bug 248439
+
+  24 Nov 2008; Raúl Porcel <armin76@gentoo.org> rsync-3.0.4.ebuild:
+  alpha/arm/ia64/sparc stable wrt #248439
+
+  23 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org> rsync-3.0.4.ebuild:
+  ppc stable, bug #248439
+
+  23 Nov 2008; Dawid Węgliński <cla@gentoo.org> rsync-3.0.4.ebuild:
+  Stable on amd64/x86 (bug #248439)
+
+  09 Nov 2008; Mike Frysinger <vapier@gentoo.org> rsync-3.0.4.ebuild:
+  Allow users to apply custom rsync patches #246017 by Nicholas Fiorentini.
+
+*rsync-3.0.4 (17 Sep 2008)
+
+  17 Sep 2008; Mike Frysinger <vapier@gentoo.org> +rsync-3.0.4.ebuild:
+  Version bump #237169 by Conrad Kostecki.
+
+  16 Aug 2008; nixnut <nixnut@gentoo.org> rsync-3.0.2.ebuild:
+  Stable on ppc wrt bug 228673
+
+  14 Aug 2008; Raúl Porcel <armin76@gentoo.org> rsync-3.0.3.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+*rsync-3.0.3 (01 Jul 2008)
+
+  01 Jul 2008; Mike Frysinger <vapier@gentoo.org> +rsync-3.0.3.ebuild:
+  Version bump.
+
+  01 Jul 2008; Jeroen Roovers <jer@gentoo.org> rsync-3.0.2.ebuild:
+  Stable for HPPA (bug #228673).
+
+  24 Jun 2008; Mike Frysinger <vapier@gentoo.org> rsync-3.0.2.ebuild:
+  Add USE=iconv #229125 by Fabian Groffen.
+
+  21 Jun 2008; Markus Rothe <corsair@gentoo.org> rsync-3.0.2.ebuild:
+  Stable on ppc64; bug #228673
+
+  21 Jun 2008; Raúl Porcel <armin76@gentoo.org> rsync-3.0.2.ebuild:
+  alpha/ia64/sparc stable wrt #228673
+
+  21 Jun 2008; Thomas Anderson <gentoofan23@gentoo.org> rsync-3.0.2.ebuild:
+  amd64 stable, bug #228673
+
+  21 Jun 2008; Christian Faulhammer <opfer@gentoo.org> rsync-3.0.2.ebuild:
+  stable x86, bug 228673
+
+  21 Jun 2008; Mike Frysinger <vapier@gentoo.org> rsync-2.6.9-r6.ebuild:
+  Append -pthread rather than -lpthread #226911 by Diego Pettenò.
+
+  12 Apr 2008; Dawid Węgliński <cla@gentoo.org> rsync-2.6.9-r6.ebuild:
+  Stable on x86 (bug #216887)
+
+  10 Apr 2008; Jeroen Roovers <jer@gentoo.org> rsync-2.6.9-r6.ebuild:
+  Stable for HPPA (bug #216887).
+
+  10 Apr 2008; Markus Meier <maekke@gentoo.org> rsync-2.6.9-r6.ebuild:
+  amd64 stable, security bug #216887
+
+  10 Apr 2008; Markus Rothe <corsair@gentoo.org> rsync-2.6.9-r6.ebuild:
+  Stable on ppc64; bug #216887
+
+  10 Apr 2008; Raúl Porcel <armin76@gentoo.org> rsync-2.6.9-r6.ebuild:
+  alpha/ia64/sparc stable wrt security #216887
+
+  10 Apr 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  rsync-2.6.9-r6.ebuild:
+  ppc stable, bug #216887
+
+*rsync-2.6.9-r6 (10 Apr 2008)
+
+  10 Apr 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/rsync-3.0.1-xattr-alloc.diff, +rsync-2.6.9-r6.ebuild:
+  Add fix from upstream for security issue in optional xattr patch #216887.
+
+*rsync-3.0.2 (08 Apr 2008)
+
+  08 Apr 2008; Mike Frysinger <vapier@gentoo.org> +rsync-3.0.2.ebuild:
+  Version bump.
+
+*rsync-3.0.1 (04 Apr 2008)
+
+  04 Apr 2008; Mike Frysinger <vapier@gentoo.org> +rsync-3.0.1.ebuild:
+  Version bump.
+
+*rsync-3.0.0-r2 (17 Mar 2008)
+
+  17 Mar 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/rsync-3.0.0-dry-run-hang.patch, +rsync-3.0.0-r2.ebuild:
+  Fix from upstream for hang with --dry-run #193243 by David Leverton.
+
+  16 Mar 2008; Mike Frysinger <vapier@gentoo.org> +files/rsyncd.logrotate,
+  rsync-3.0.0-r1.ebuild:
+  Add logrotate file from Anton Bolshakov #212876.
+
+*rsync-3.0.0-r1 (16 Mar 2008)
+
+  16 Mar 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/rsync-3.0.0-NULL-config.patch, +files/rsync-3.0.0-acl-crash.patch,
+  +files/rsync-3.0.0-fake-super-attrs.patch, +rsync-3.0.0-r1.ebuild:
+  Add some fixes from upstream.
+
+*rsync-3.0.0 (01 Mar 2008)
+
+  01 Mar 2008; Mike Frysinger <vapier@gentoo.org> +rsync-3.0.0.ebuild:
+  Version bump.
+
+*rsync-3.0.0_pre10 (20 Feb 2008)
+
+  20 Feb 2008; Mike Frysinger <vapier@gentoo.org> +rsync-3.0.0_pre10.ebuild:
+  Version bump.
+
+  19 Feb 2008; Doug Klima <cardoe@gentoo.org> rsync-3.0.0_pre8.ebuild,
+  rsync-3.0.0_pre9.ebuild:
+  sys-apps/attr should only be required on Linux, bug #210680
+
+*rsync-3.0.0_pre9 (11 Feb 2008)
+
+  11 Feb 2008; Mike Frysinger <vapier@gentoo.org> +rsync-3.0.0_pre9.ebuild:
+  Version bump.
+
+*rsync-3.0.0_pre8 (12 Jan 2008)
+
+  12 Jan 2008; Mike Frysinger <vapier@gentoo.org> +rsync-3.0.0_pre8.ebuild:
+  Version bump rsync-3.0.0_pre7 rsync-3.0.0_pre8.
+
+*rsync-3.0.0_pre7 (17 Dec 2007)
+
+  17 Dec 2007; Mike Frysinger <vapier@gentoo.org> +rsync-3.0.0_pre7.ebuild:
+  Version bump.
+
+  03 Dec 2007; Raúl Porcel <armin76@gentoo.org> rsync-2.6.9-r5.ebuild:
+  ia64 stable wrt security #200821
+
+  03 Dec 2007; Jeroen Roovers <jer@gentoo.org> rsync-2.6.9-r5.ebuild:
+  Stable for HPPA (bug #200821).
+
+  02 Dec 2007; Markus Rothe <corsair@gentoo.org> rsync-2.6.9-r5.ebuild:
+  Stable on ppc64; bug #200821
+
+  02 Dec 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  rsync-2.6.9-r5.ebuild:
+  ppc stable, bug #200821
+
+  02 Dec 2007; Jose Luis Rivero <yoswink@gentoo.org> rsync-2.6.9-r5.ebuild:
+  Stable on alpha wrt security bug #200821
+
+  01 Dec 2007; Markus Ullmann <jokey@gentoo.org> rsync-2.6.9-r5.ebuild:
+  Stable on arm/sparc
+
+  01 Dec 2007; Christoph Mende <angelos@gentoo.org> rsync-2.6.9-r5.ebuild:
+  Stable on amd64 wrt bug #200821
+
+  01 Dec 2007; Markus Meier <maekke@gentoo.org> rsync-2.6.9-r5.ebuild:
+  x86 stable, security bug #200821
+
+*rsync-3.0.0_pre6 (01 Dec 2007)
+
+  01 Dec 2007; Mike Frysinger <vapier@gentoo.org> +rsync-3.0.0_pre6.ebuild:
+  Version bump.
+
+*rsync-2.6.9-r5 (01 Dec 2007)
+
+  01 Dec 2007; Mike Frysinger <vapier@gentoo.org>
+  +files/rsync-2.6.9-munge-symlinks.patch, +rsync-2.6.9-r5.ebuild:
+  Fix from upstream for #200821.
+
+*rsync-2.6.9-r4 (28 Sep 2007)
+
+  28 Sep 2007; Roy Marples <uberlord@gentoo.org>
+  +files/rsync-2.6.9-pid-early.patch, +rsync-2.6.9-r4.ebuild:
+  patch rsync so it creates a pidfile a lot sooner, #192075.
+
+  29 Aug 2007; Markus Rothe <corsair@gentoo.org> rsync-2.6.9-r3.ebuild:
+  Stable on ppc64; bug #189132
+
+  24 Aug 2007; Raúl Porcel <armin76@gentoo.org> rsync-2.6.9-r3.ebuild:
+  alpha/ia64 stable wrt security #189132
+
+  23 Aug 2007; Joshua Kinard <kumba@gentoo.org> rsync-2.6.9-r3.ebuild:
+  Stable on mips, per #189132.
+
+  23 Aug 2007; Jeroen Roovers <jer@gentoo.org> rsync-2.6.9-r3.ebuild:
+  Stable for HPPA (bug #189132).
+
+  22 Aug 2007; Christoph Mende <angelos@gentoo.org> rsync-2.6.9-r3.ebuild:
+  Stable on amd64 wrt security bug #189132
+
+  22 Aug 2007; Andrej Kacian <ticho@gentoo.org> rsync-2.6.9-r3.ebuild:
+  Stable on x86, security bug #189132.
+
+  22 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> rsync-2.6.9-r3.ebuild:
+  Stable on sparc wrt security #189132
+
+  22 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  rsync-2.6.9-r3.ebuild:
+  ppc stable, bug #189132
+
+*rsync-2.6.9-r3 (22 Aug 2007)
+
+  22 Aug 2007; Roy Marples <uberlord@gentoo.org>
+  +files/rsync-2.6.9-fname-obo.patch, +rsync-2.6.9-r3.ebuild:
+  Fix off-by-one errors, #189132 thanks to Tobias Scherbaum.
+
+  10 Jul 2007; Christoph Mende <angelos@gentoo.org> rsync-2.6.9-r2.ebuild:
+  Stable on amd64 wrt bug #184685
+
+  09 Jul 2007; Joseph Jezak <josejx@gentoo.org> rsync-2.6.9-r2.ebuild:
+  Marked ppc and ppc64 stable for bug #184685.
+
+  09 Jul 2007; Mike Frysinger <vapier@gentoo.org> rsync-2.6.9-r2.ebuild:
+  Pull in xinetd when USE=xinetd #184671 by Jeremy Ebler.
+
+  30 Jun 2007; Raúl Porcel <armin76@gentoo.org> rsync-2.6.9-r2.ebuild:
+  alpha stable
+
+  26 May 2007; Jeroen Roovers <jer@gentoo.org> rsync-2.6.9-r2.ebuild:
+  Stable for HPPA too.
+
+  23 May 2007; Gustavo Zacarias <gustavoz@gentoo.org> rsync-2.6.9-r2.ebuild:
+  Stable on sparc
+
+  11 May 2007; Joshua Kinard <kumba@gentoo.org> rsync-2.6.9-r2.ebuild:
+  Stable on mips.
+
+  24 Apr 2007; Raúl Porcel <armin76@gentoo.org> rsync-2.6.9-r2.ebuild:
+  ia64 + x86 stable
+
+  23 Feb 2007; Roy Marples <uberlord@gentoo.org> files/rsyncd.init.d:
+  Use start-stop-daemon correctly.
+
+*rsync-2.6.9-r2 (03 Feb 2007)
+
+  03 Feb 2007; Mike Frysinger <vapier@gentoo.org>
+  +files/rsync-2.6.9-stats-fix.patch, +rsync-2.6.9-r2.ebuild:
+  Add fix from upstream for file stats #165134 by Lloeki.
+
+*rsync-2.6.9-r1 (16 Dec 2006)
+
+  16 Dec 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/rsync-2.6.9-delete-acls-xattr.patch, +rsync-2.6.9-r1.ebuild:
+  Fix from upstream for using --delete with USE=acl #158130 by Thomas
+  Fleischmann.
+
+  14 Dec 2006; Alexander H. Færøy <eroyf@gentoo.org> rsync-2.6.9.ebuild:
+  Stable on Alpha and MIPS; bug #157977
+
+  13 Dec 2006; Brent Baude <ranger@gentoo.org> rsync-2.6.9.ebuild:
+  Marking  rsync-2.6.9 ppc64 stable per bug 159977
+
+  13 Dec 2006; Jeroen Roovers <jer@gentoo.org> rsync-2.6.9.ebuild:
+  Stable for HPPA (bug #157977).
+
+  13 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org> rsync-2.6.9.ebuild:
+  ppc stable, bug #157977
+
+  13 Dec 2006; Michael Cummings <mcummings@gentoo.org> rsync-2.6.9.ebuild:
+  amd64 stable, bug 157977
+
+  13 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> rsync-2.6.9.ebuild:
+  Stable on sparc wrt #157977
+
+  13 Dec 2006; Fabian Groffen <grobian@gentoo.org> rsync-2.6.8-r2.ebuild,
+  rsync-2.6.9.ebuild:
+  Dropped ppc-macos keyword, see you in prefix.
+
+  13 Dec 2006; Christian Faulhammer <opfer@gentoo.org> rsync-2.6.9.ebuild:
+  stable x86, bugs #157977
+
+*rsync-2.6.9 (07 Nov 2006)
+
+  07 Nov 2006; Mike Frysinger <vapier@gentoo.org> +rsync-2.6.9.ebuild:
+  Version bump #154347 by Kilburn Abrahams.
+
+  17 Oct 2006; Roy Marples <uberlord@gentoo.org> rsync-2.6.8-r2.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  04 Sep 2006; Joshua Kinard <kumba@gentoo.org> rsync-2.6.8-r2.ebuild:
+  Marked stable on mips.
+
+*rsync-2.6.8-r2 (14 May 2006)
+
+  14 May 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/rsync-2.6.8-verbose-quiet-output.patch, +rsync-2.6.8-r2.ebuild:
+  Fix from upstream for output with -v and -q #133217 by lou.
+
+*rsync-2.6.8-r1 (13 May 2006)
+
+  13 May 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/rsync-2.6.8-fix-deferred-msgs.patch, +rsync-2.6.8-r1.ebuild:
+  Fix from upstream for broken transfers #133054 by Wernfried Haas.
+
+  03 May 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fix Manifest (ChangeLog changed without a Manifest update).
+
+  30 Apr 2006; Bryan Østergaard <kloeri@gentoo.org> rsync-2.6.8.ebuild:
+  Stable on alpha + ia64.
+
+  29 Apr 2006; Rene Nussbaumer <killerfox@gentoo.org> rsync-2.6.8.ebuild:
+  Stable on hppa.
+
+  29 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org> rsync-2.6.8.ebuild:
+  Stable on sparc
+
+  29 Apr 2006; <tcort@gentoo.org> rsync-2.6.8.ebuild:
+  Stable on amd64.
+
+  29 Apr 2006; Markus Rothe <corsair@gentoo.org> rsync-2.6.8.ebuild:
+  Stable on ppc64
+
+  29 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org> rsync-2.6.8.ebuild:
+  ppc stable
+
+  29 Apr 2006; Mark Loeser <halcy0n@gentoo.org> rsync-2.6.8.ebuild:
+  Stable on x86
+
+*rsync-2.6.8 (23 Apr 2006)
+
+  23 Apr 2006; Mike Frysinger <vapier@gentoo.org> +rsync-2.6.8.ebuild:
+  Version bump #130898 by Kilburn Abrahams.
+
+*rsync-2.6.7-r1 (08 Apr 2006)
+
+  08 Apr 2006; Mike Frysinger <vapier@gentoo.org> -rsync-2.6.7.ebuild,
+  +rsync-2.6.7-r1.ebuild:
+  Fix acl/xattr configure options #129116 by Alexander Skwar.
+
+  30 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> rsync-2.6.7.ebuild:
+  Add ~x86-fbsd keyword.
+
+*rsync-2.6.7 (16 Mar 2006)
+
+  16 Mar 2006; Mike Frysinger <vapier@gentoo.org> +rsync-2.6.7.ebuild:
+  Version bump #126267 by Kilburn Abrahams.
+
+  02 Jan 2006; Mike Frysinger <vapier@gentoo.org> +files/rsyncd.xinetd,
+  rsync-2.6.0-r6.ebuild, rsync-2.6.6-r1.ebuild:
+  Add an optional xinetd.d file by Malte S. Stretz #117466.
+
+*rsync-2.6.6-r1 (17 Oct 2005)
+
+  17 Oct 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/rsync-2.6.6-acls.patch, +rsync-2.6.6-r1.ebuild:
+  Fix from upstream for acl code #100981.
+
+  13 Oct 2005; Kito <kito@gentoo.org> rsync-2.6.6.ebuild:
+  ~ppc-macos keyword
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+*rsync-2.6.0-r6 (01 Aug 2005)
+
+  01 Aug 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/rsync-2.6.0-cvsignore.patch, +rsync-2.6.0-r6.ebuild:
+  Add patch from upstream to fix -C #100861 by awk.
+
+*rsync-2.6.6 (29 Jul 2005)
+
+  29 Jul 2005; Mike Frysinger <vapier@gentoo.org> +rsync-2.6.6.ebuild:
+  Version bump #100674 by Tim Yamin.
+
+*rsync-2.6.5 (11 Jun 2005)
+
+  11 Jun 2005; Mike Frysinger <vapier@gentoo.org> +rsync-2.6.5.ebuild:
+  Version bump.
+
+*rsync-2.6.0-r5 (31 May 2005)
+
+  31 May 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/rsync-2.6.0-livecd-sigmask.patch, +rsync-2.6.0-r5.ebuild:
+  Adding rsync patch for livecd/installer until python 2.4 goes stable.
+
+*rsync-2.6.4 (06 Apr 2005)
+
+  06 Apr 2005; Mike Frysinger <vapier@gentoo.org> +rsync-2.6.4.ebuild:
+  Version bump #88029 by FieldySnuts.
+
+*rsync-2.6.3-r1 (18 Mar 2005)
+
+  18 Mar 2005; Mike Frysinger <vapier@gentoo.org> +rsync-2.6.3-r1.ebuild:
+  Move the rsyncd.conf file to /etc.
+
+*rsync-2.6.0-r4 (18 Mar 2005)
+
+  18 Mar 2005; Mike Frysinger <vapier@gentoo.org> +rsync-2.6.0-r4.ebuild:
+  Move the rsyncd.conf file to /etc and add some examples to the default
+  config #80939.
+
+  21 Nov 2004; Mike Frysinger <vapier@gentoo.org> rsync-2.6.0-r3.ebuild,
+  rsync-2.6.3.ebuild:
+  Make sure we update the rsync(1) manpage with the new .conf location too
+  #71650 by Paul Oldham.
+
+*rsync-2.6.3 (03 Oct 2004)
+
+  03 Oct 2004; Mike Frysinger <vapier@gentoo.org> +rsync-2.6.3.ebuild:
+  Version bumpage.
+
+*rsync-2.6.3_pre2 (25 Sep 2004)
+
+  25 Sep 2004; Mike Frysinger <vapier@gentoo.org> +rsync-2.6.3_pre2.ebuild:
+  Version bump #64798 by Holger Hoffstätte.
+
+  15 Aug 2004; <kloeri@gentoo.org> rsync-2.6.0-r3.ebuild:
+  Stable on alpha, bug 60309.
+
+  14 Aug 2004; Hardave Riar <hardave@gentoo.org> rsync-2.6.0-r3.ebuild:
+  stable on mips #60309
+
+  14 Aug 2004; Tom Gal <tgall@gentoo.org> rsync-2.6.0-r3.ebuild
+  stable on ppc64, bug #60309
+
+*rsync-2.6.0-r3 (14 Aug 2004)
+
+*rsync-2.6.2-r4 (14 Aug 2004)
+
+  14 Aug 2004; Jon Hood <squinky86@gentoo.org>
+  +files/rsync-pathsanitize.patch, rsync-2.6.0-r2.ebuild,
+  +rsync-2.6.0-r3.ebuild, +rsync-2.6.2-r4.ebuild:
+  Apply path sanitizing patch from #60309, update SRC_URI for older versions of
+  rsync; thanks wernfried haas <w.haas@xover.htu.tuwien.ac.at>!
+
+  13 Jul 2004; Tom Gall <tgall@gentoo.org> rsync-2.6.0-r2.ebuild:
+  stable on ppc64
+
+  12 Jul 2004; Travis Tilley <lv@gentoo.org> rsync-2.6.0-r2.ebuild:
+  stable on amd64
+
+  11 Jul 2004; Aron Griffis <agriffis@gentoo.org> rsync-2.6.0-r2.ebuild,
+  rsync-2.6.2-r3.ebuild:
+  stable on ia64
+
+  10 Jul 2004; Hardave Riar <hardave@gentoo.org> rsync-2.6.0-r2.ebuild:
+  Stable on mips
+
+  11 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> rsync-2.6.0-r2.ebuild:
+  Stable on alpha, bug 49534.
+
+  10 Jul 2004; Ian Leitch <port001@gentoo.org> rsync-2.6.0-r2.ebuild:
+  Marked stable on x86
+
+  10 Jul 2004; Jason Wever <weeve@gentoo.org> rsync-2.6.0-r2.ebuild:
+  Stable on sparc wrt bug #49543.
+
+  10 Jul 2004; Michael Hanselmann <hansmi@gentoo.org> rsync-2.6.0-r2.ebuild:
+  Stable on ppc. Bug 49534.
+
+*rsync-2.6.0-r2 (09 Jul 2004)
+
+  09 Jul 2004; Mike Frysinger <vapier@gentoo.org> +files/2.6.0-sanitize.patch,
+  +rsync-2.6.0-r2.ebuild:
+  Version bump with security patch #49534.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> rsync-2.6.0-r1.ebuild,
+  rsync-2.6.0.ebuild, rsync-2.6.1.ebuild, rsync-2.6.2-r1.ebuild,
+  rsync-2.6.2-r2.ebuild, rsync-2.6.2-r3.ebuild, rsync-2.6.2.ebuild:
+  change virtual/glibc to virtual/libc
+
+*rsync-2.6.1 (22 Jun 2004)
+
+  22 Jun 2004; Mike Frysinger <vapier@gentoo.org> +rsync-2.6.1.ebuild:
+  Try to fix security bug #49534 without pissing off #49933.
+
+*rsync-2.6.2-r3 (08 May 2004)
+
+  08 May 2004; Martin Holzer <mholzer@gentoo.org> rsync-2.6.2-r3.ebuild:
+  adding ipv6 config option
+
+*rsync-2.6.2-r2 (03 May 2004)
+
+  03 May 2004; Martin Holzer <mholzer@gentoo.org> rsync-2.6.2-r2.ebuild:
+  adding rsyncd conf in econf. closes 49707
+
+  02 May 2004; Bryan Østergaard <kloeri@gentoo.org> rsync-2.6.2-r1.ebuild:
+  Stable on alpha.
+
+  02 May 2004; Tom Gall <tgall@gentoo.org> rsync-2.6.2.ebuild,
+  rsync-2.6.2-r1.ebuild:
+  Stable on ppc64
+
+  02 May 2004; Ciaran McCreesh <ciaranm@gentoo.org> rsync-2.6.2-r1.ebuild:
+  Stable on sparc, mips
+
+  02 May 2004; Joshua Kinard <kumba@gentoo.org> rsync-2.6.2.ebuild:
+  Marked stable on sparc.
+
+  01 May 2004; Guy Martin <gmsoft@gentoo.org> :
+  Marked stable on hppa.
+
+  01 May 2004; Jon Portnoy <avenj@gentoo.org> rsync-2.6.2.ebuild :
+  Stable on AMD64 and x86.
+
+  01 May 2004; Joshua Kinard <kumba@gentoo.org> rsync-2.6.2.ebuild:
+  Marked stable on mips.
+
+*rsync-2.6.2-r1 (02 May 2004)
+
+  02 May 2004; Martin Holzer <mholzer@gentoo.org> rsync-2.6.2-r1.ebuild:
+  adding acl patch again.
+
+  01 May 2004; Michael McCabe <randy@gentoo.org> rsync-2.6.2.ebuild:
+  Stable on s390
+
+*rsync-2.6.2 (30 Apr 2004)
+
+  30 Apr 2004; <solar@gentoo.org> rsync-2.6.2.ebuild:
+  version bump for security update CAN-2004-0426, bug 49534 this version also
+  seems to have the proxy-auth patch merged upstream, USE=acl disabled for now
+  due to patching conflicts
+
+  27 Apr 2004; Michael McCabe <randy@gentoo.org> rsync-2.6.0-r1.ebuild:
+  Marked stable on s390
+
+*rsync-2.6.0-r1 (19 Apr 2004)
+
+  19 Apr 2004; Martin Holzer <mholzer@gentoo.org> rsync-2.6.0-r1.ebuild:
+  adding acl patch. closes 48214
+
+  11 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> rsync-2.6.0.ebuild:
+  add patch from Sascha Silbe to fix use static linking (bug #47361)
+
+  11 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> rsync-2.6.0.ebuild:
+  add IUSE (bug #47358); don't rdepend on sed; error check sed; tidy
+
+*rsync-2.6.0 (03 Jan 2004)
+
+  03 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bumpage #37009.
+
+*rsync-2.5.7 (04 Dec 2003)
+
+  04 Dec 2003; Seemant Kulleen <seemant@gentoo.org> rsync-2.5.7.ebuild:
+  version bump for security vulnerability
+
+*rsync-2.5.6-r4 (18 Oct 2003)
+
+  18 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Set default rsh cmd to ssh instead of rsh #30521.
+
+*rsync-2.5.6-r3 (25 Aug 2003)
+
+  26 Aug 2003; Daniel Ahlberg <aliz@gentoo.org> rsync-2.5.6-r3.ebuild :
+  Don't try to unpack the patch.
+
+  25 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add default rsyncd.conf file so that the init.d script will find pid file #27277.
+
+*rsync-2.5.6-r2 (23 May 2003)
+
+  23 Jul 2003; Will Woods <wwoods@gentoo.org> rsync-2.5.6-r2.ebuild:
+  Marked stable for alpha
+
+  23 Jul 2003; Guy Martin <gmsoft@gentoo.org> rsync-2.5.6-r2.ebuild :
+  Marked stable on hppa.
+
+  06 Jul 2003; Joshua Kinard <kumba@gentoo.org> rsync-2.5.6-r2.ebuild:
+  Changed ~mips to mips in KEYWORDS
+  Changed ~sparc to sparc in KEYWORDS (Apparently already done, somehow got reversed?)
+
+  24 May 2003; Luca Barbato <lu_zero@gentoo.org> rsync-2.5.6-r2.ebuild:
+  added ~ppc keyword
+
+  23 May 2003; Martin Holzer <mholzer@gentoo.org> rsync-2.5.6-r2.ebuild,
+  files/rsync-gentoo-2.5.1.patch, files/rsync-gentoo-2.5.2.patch:
+  Adding basic proxy auth patch. Closes #11706.
+
+  21 May 2003; Jason Wever <weeve@gentoo.org> rsync-2.5.6-r1.ebuild:
+  Changed ~sparc keyword to sparc.
+
+  06 Mar 2003; Luca Barbato <lu_zero@gentoo.org> :
+  force -lpthread link on gcc-2.95.x, solves bug #16921
+  
+  24 Feb 2003; Luca Barbato <lu_zero@gentoo.org> :
+  Added the popt in DEPEND
+
+*rsync-2.5.6-r1 (22 Feb 2003)
+
+  19 May 2003; Joshua Kinard <kumba@gentoo.org> rsync-2.5.6-r1.ebuild:
+  Added ~sparc and ~mips to KEYWORDS
+
+  25 Feb 2003; Guy Martin <gmsoft@gentoo.org> rsync-2.5.6-r1.ebuild :
+  Commited stable for hppa.
+
+  22 Feb 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add init.d and conf.d files
+
+*rsync-2.5.6 (28 Jan 2003)
+
+  21 Feb 2003; Zach Welch <zwelch@gentoo.org> :
+  Added arm to keywords.
+
+  09 Feb 2003; Guy Martin <gmsoft@gentoo.org> :
+  Added hppa to keywords.
+
+  28 Jan 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Updated to the official 2.5.6.
+	
+*rsync-2.5.6_pre20021105-r1 (29 Dec 2002)
+
+  29 Dec 2002; Maik Schreiber <blizzy@gentoo.org> : Revision bump to fix wrong
+  configuration directory path (only used for running an rsync server).
+
+  26 Dec 2002; Maik Schreiber <blizzy@gentoo.org> rsync-2.5.6_pre20021105 :
+  Changed "~x86" to "x86" in KEYWORDS.
+
+  19 Dec 2002; Dean Bailey <alron@gentoo.org> : removed sparc64 keyword
+
+*rsync-2.5.6_pre20021105 (10 Dec 2002)
+
+  10 Dec 2002; Maik Schreiber <blizzy@gentoo.org> : New upstream snapshot.
+  Seems to be stable for several months now (see rsync mailing list).
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*rsync-2.5.5-r1 (07 May 2002)
+
+  18 Jan 2003; Jan Seidel <tuxus@gentoo.org> :
+  Added mips to keywords
+
+  29 Jul 2002; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
+
+  09 Jul 2002; phoen][x <phoenix@gentoo.org> rsync-2.5.5-r1.ebuild :
+  Added KEYWORDS, LICENSE, SLOT.
+
+  07 May 2002; Kain <kain@kain.org> rsync-2.5.5-r1.ebuild : Fix dependency to
+  libpopt again so that build images not made from a virgin install will work.
+
+*rsync-2.5.5 (02 May 2002)
+
+  09 Jul 2002; phoen][x <phoenix@gentoo.org> rsync-2.5.5.ebuild :
+  Added KEYWORDS, LICENSE, SLOT.
+
+  02 May 2002; Daniel Robbins <drobbins@gentoo.org>: new ebuild to hopefully
+  fix some "dead rsync --daemon" processes... the problem that just won't go
+  away.
+
+*rsync-2.5.4-r1 (18 Apr 2002)
+
+  09 Jul 2002; phoen][x <phoenix@gentoo.org> rsync-2.5.4-r1.ebuild :
+  Added KEYWORDS, LICENSE, SLOT.
+
+  18 Apr 2002; kain <kain@kain.org> rsync-2.5.4-r1.ebuild : Fix dependency to
+  libpopt so build images made with this will work.
+
+*rsync-2.5.4 (15 Mar 2002)
+
+  09 Jul 2002; phoen][x <phoenix@gentoo.org> rsync-2.5.4.ebuild :
+  Added KEYWORDS, LICENSE, SLOT.
+
+  15 Mar 2002; Bruce A. Locke <blocke@shivan.org> rsync-2.5.4.ebuild :
+  Update to 2.5.4 (with zlib security fix)
+
+*rsync-2.5.2-r1 (1 Mar 2002)
+
+  09 Jul 2002; phoen][x <phoenix@gentoo.org> rsync-2.5.2-r1.ebuild :
+  Added KEYWORDS, LICENSE, SLOT.
+
+  1 Mar 2002; Daniel Robbins <drobbins@gentoo.org> : Closed remote denial of
+  service attack/hung process problem reopened in 2.5.2 due to a missing patch.
+
+*rsync-2.5.2 (1 Feb 2002)
+
+  09 Jul 2002; phoen][x <phoenix@gentoo.org> rsync-2.5.2.ebuild :
+  Added KEYWORDS, LICENSE, SLOT.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,88 @@
+# ChangeLog for gnustep-base/mknfonts
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-base/mknfonts/ChangeLog,v 1.25 2014/08/10 21:18:35 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> mknfonts-0.5-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  07 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  mknfonts-0.5-r1.ebuild:
+  Transfer Prefix keywords
+
+  03 Dec 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  mknfonts-0.5-r1.ebuild:
+  Fix compilation with --as-needed, bug #249507
+
+  27 Aug 2008; Bernard Cafarelli <voyageur@gentoo.org> -mknfonts-0.5.ebuild:
+  Remove old version
+
+  06 Dec 2007; Raúl Porcel <armin76@gentoo.org> mknfonts-0.5-r1.ebuild:
+  sparc stable wrt #195990
+
+  16 Nov 2007; Steve Dibb <beandog@gentoo.org> mknfonts-0.5-r1.ebuild:
+  amd64 stable, bug 195990
+
+  27 Oct 2007; nixnut <nixnut@gentoo.org> mknfonts-0.5-r1.ebuild:
+  Stable on ppc wrt bug 195278
+
+  17 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  mknfonts-0.5-r1.ebuild:
+  stable x86, bug 195990
+
+  03 Oct 2007; Raúl Porcel <armin76@gentoo.org> mknfonts-0.5-r1.ebuild:
+  Re-add ~sparc wrt #189372
+
+  06 Sep 2007; Raúl Porcel <armin76@gentoo.org> mknfonts-0.5-r1.ebuild:
+  Add ~alpha wrt #189372
+
+*mknfonts-0.5-r1 (18 Aug 2007)
+
+  18 Aug 2007; Fabian Groffen <grobian@gentoo.org>
+  +files/mknfonts-rename.patch, +mknfonts-0.5-r1.ebuild:
+  Bump from GNUstep overlay.  Using new gnustep eclasses
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> mknfonts-0.5.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  15 Apr 2005; Armando Di Cianno <fafhrd@gentoo.org> mknfonts-0.5.ebuild:
+  Core GNUstep ebuild bumps; cleaned up dependencies of ancestors of gnustep-env
+
+  04 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> mknfonts-0.5.ebuild:
+  Stable on sparc
+
+  10 Jan 2005; Armando Di Cianno <fafhrd@gentoo.org> mknfonts-0.5.ebuild:
+  Marking stable for x86
+
+  13 Dec 2004; Armando Di Cianno <fafhrd@gentoo.org> mknfonts-0.5.ebuild:
+  Cleaned up detection of objc and libff; general cleanups
+
+  23 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mknfonts-0.5.ebuild:
+  Stable amd64... bug #68857.
+
+  11 Nov 2004; Armando Di Cianno <fafhrd@gentoo.org> mknfonts-0.5.ebuild:
+  Mass Update: gnustep.eclass revamped to allow configurable root install;
+  gnustep-base/libs/apps updated to utilize new gnustep.eclass (only versions
+  bumped where files would change); some KEYWORDS were accidentally dropped
+  between version bumps of packages -- this has been resolved; windowmaker
+  correctly supports gnustep now
+
+  02 Nov 2004; Simon Stelling <blubb@gentoo.org> mknfonts-0.5.ebuild:
+  added ~amd64
+
+  31 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> mknfonts-0.5.ebuild:
+  ~alpha keyword.
+
+  24 Oct 2004; Jason Wever <weeve@gentoo.org> mknfonts-0.5.ebuild:
+  Added ~sparc keyword wrt bug #68729.
+
+*mknfonts-0.5 (10 Oct 2004)
+
+  10 Oct 2004; David Holm <dholm@gentoo.org> mknfonts-0.5.ebuild:
+  Added to ~ppc.
+
+  28 Aug 2004; Armando Di Cianno <fafhrd@gentoo.org> :
+  Added first package.

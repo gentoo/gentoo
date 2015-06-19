@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=>=app-text/hunspell-1.2 media-libs/libogg media-libs/libvorbis sys-libs/zlib x11-libs/libX11 x11-libs/libXtst >=dev-qt/qtcore-4.5:4[exceptions,qt3support] >=dev-qt/qtgui-4.5:4[exceptions,qt3support] >=dev-qt/qtwebkit-4.5:4[exceptions] !kde? ( || ( >=dev-qt/qtphonon-4.5:4[exceptions] media-libs/phonon[qt4] ) ) kde? ( media-libs/phonon[qt4] ) virtual/pkgconfig
+DESCRIPTION=Feature-rich dictionary lookup program
+EAPI=5
+HOMEPAGE=http://goldendict.org/
+IUSE=debug kde linguas_ar_SA linguas_bg_BG linguas_cs_CZ linguas_de_DE linguas_el_GR linguas_it_IT linguas_lt_LT linguas_ru_RU linguas_uk_UA linguas_vi_VN linguas_zh_CN
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=>=app-text/hunspell-1.2 media-libs/libogg media-libs/libvorbis sys-libs/zlib x11-libs/libX11 x11-libs/libXtst >=dev-qt/qtcore-4.5:4[exceptions,qt3support] >=dev-qt/qtgui-4.5:4[exceptions,qt3support] >=dev-qt/qtwebkit-4.5:4[exceptions] !kde? ( || ( >=dev-qt/qtphonon-4.5:4[exceptions] media-libs/phonon[qt4] ) ) kde? ( media-libs/phonon[qt4] )
+SLOT=0
+SRC_URI=mirror://sourceforge/goldendict/goldendict-1.0.1-src.tar.bz2
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	l10n	33bde4fb0cfd3a21a277b66bfd837e19	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	55ebcc6f3269308d226969c26704e343	qt4-r2	7199e3db5b5908325487d379c6f67cf0	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=13efb5e7ca9c8d962fd776cddd0dae19

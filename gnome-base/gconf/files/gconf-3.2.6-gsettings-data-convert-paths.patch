@@ -1,0 +1,41 @@
+From 405f865c07261a95c8c9a09a84ab679c6dd0a330 Mon Sep 17 00:00:00 2001
+From: Colin Walters <walters@verbum.org>
+Date: Thu, 24 Oct 2013 16:27:24 -0400
+Subject: gsettings-data-convert: Warn (and fix) invalid schema paths
+
+See https://bugzilla.gnome.org/show_bug.cgi?id=704802
+
+https://bugzilla.gnome.org/show_bug.cgi?id=710836
+
+diff --git a/gsettings/gsettings-data-convert.c b/gsettings/gsettings-data-convert.c
+index 9b2d1d0..160ed41 100644
+--- a/gsettings/gsettings-data-convert.c
++++ b/gsettings/gsettings-data-convert.c
+@@ -182,7 +182,23 @@ handle_file (const gchar *filename)
+         }
+ 
+       if (schema_path[1] != NULL)
+-        settings = g_settings_new_with_path (schema_path[0], schema_path[1]);
++	{
++	  char *compat_path_alloced = NULL; 
++	  char *compat_path;
++	  /* Work around broken .convert files:
++	     https://bugzilla.gnome.org/show_bug.cgi?id=704802
++	  */
++	  if (!g_str_has_suffix (schema_path[1], "/"))
++	    {
++	      g_warning ("Schema file '%s' has missing trailing / in '%s'",
++			 filename, schema_path[1]);
++	      compat_path = compat_path_alloced = g_strconcat (schema_path[1], "/", NULL);
++	    }
++	  else
++	    compat_path = schema_path[1];
++	  settings = g_settings_new_with_path (schema_path[0], compat_path);
++	  g_free (compat_path_alloced);
++	}
+       else
+         settings = g_settings_new (schema_path[0]);
+ 
+-- 
+cgit v0.10.1
+

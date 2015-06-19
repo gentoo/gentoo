@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=>=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=FPS level editor
+EAPI=2
+HOMEPAGE=http://www.qeradiant.com/?data=editors/gtk
+KEYWORDS=-* x86
+LICENSE=qeradiant
+RDEPEND==media-libs/libpng-1.2* sys-libs/zlib app-crypt/mhash =dev-libs/glib-2* x11-libs/gtk+:2 dev-libs/atk x11-libs/pango x11-libs/gtkglext dev-libs/libxml2 sys-libs/glibc virtual/opengl games-misc/games-envd
+SLOT=0
+SRC_URI=http://zerowing.idsoftware.com/files/radiant/nightly/1.5/gtkradiant-1.5.0-2006-03-02.i386.rpm
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	rpm	b94b54b44f14d6bee3e966c8f5c86fba	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=3abaee1096482b791a1e3f919cb3db4b

@@ -1,0 +1,54 @@
+# ChangeLog for app-shells/squirrelsh
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-shells/squirrelsh/ChangeLog,v 1.11 2015/06/09 12:07:49 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*squirrelsh-1.2.7 (08 Jan 2013)
+
+  08 Jan 2013; Anthony G. Basile <blueness@gentoo.org> +squirrelsh-1.2.7.ebuild:
+  Version bump
+
+  29 Jun 2012; Anthony G. Basile <blueness@gentoo.org> metadata.xml:
+  Removing eplumlee@yahoo.com as maintainer until he gets back to me
+
+  02 May 2012; Jeff Horelick <jdhore@gentoo.org> squirrelsh-1.2.6.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*squirrelsh-1.2.6 (13 Mar 2012)
+
+  13 Mar 2012; Anthony G. Basile <blueness@gentoo.org>
+  +squirrelsh-1.2.6.ebuild, +files/squirrelsh-fix-in_LDFLAGS.patch,
+  +files/squirrelsh-no-docs.patch, +files/squirrelsh-no-strip.patch,
+  +files/squirrelsh-remove-forced-abi.patch,
+  +files/squirrelsh-rename-LDFLAGS.patch:
+  Version bump
+
+  04 Mar 2012; Anthony G. Basile <blueness@gentoo.org> metadata.xml:
+  Added myself as proxy maintainer
+
+  04 Mar 2012; Pacho Ramos <pacho@gentoo.org> -squirrelsh-1.2.3.ebuild,
+  metadata.xml:
+  Drop maintainer due retirement, bug #206112, drop old.
+
+*squirrelsh-1.2.3-r1 (10 Apr 2010)
+
+  10 Apr 2010; Kenneth Prugh <ken69267@gentoo.org>
+  +squirrelsh-1.2.3-r1.ebuild, metadata.xml:
+  Use static libraries and update metadata
+
+  01 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  squirrelsh-1.2.3.ebuild:
+  use src_prepare instead of src_unpack, and fix ~x86 keyword
+
+  01 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  squirrelsh-1.2.3.ebuild:
+  add ~x86, bug 280334
+
+*squirrelsh-1.2.3 (20 Mar 2009)
+
+  20 Mar 2009; Kenneth Prugh <ken69267@gentoo.org> +metadata.xml,
+  +squirrelsh-1.2.3.ebuild:
+  Initial commit. Ebuild written by Evan Plumlee <ed-209@hellburner.com>.
+  Proxied maintainer.

@@ -1,0 +1,50 @@
+--- a/maven-build.xml
++++ b/maven-build.xml
+@@ -38,7 +38,5 @@
+     <ant antfile="build.xml" dir="tiles" target="clean"/>
+     <ant antfile="build.xml" dir="dojo" target="clean"/>
+     <ant antfile="build.xml" dir="rest" target="clean"/>
+-    <ant antfile="build.xml" dir="portlet" target="clean"/>
+-    <ant antfile="build.xml" dir="portlet-tiles" target="clean"/>
+     <ant antfile="build.xml" dir="junit" target="clean"/>
+     <ant antfile="build.xml" dir="testng" target="clean"/>
+@@ -73,7 +72,5 @@
+     <ant antfile="build.xml" dir="tiles" target="compile"/>
+     <ant antfile="build.xml" dir="dojo" target="compile"/>
+     <ant antfile="build.xml" dir="rest" target="compile"/>
+-    <ant antfile="build.xml" dir="portlet" target="compile"/>
+-    <ant antfile="build.xml" dir="portlet-tiles" target="compile"/>
+     <ant antfile="build.xml" dir="junit" target="compile"/>
+     <ant antfile="build.xml" dir="testng" target="compile"/>
+@@ -108,7 +106,5 @@
+     <ant antfile="build.xml" dir="tiles" target="compile-tests"/>
+     <ant antfile="build.xml" dir="dojo" target="compile-tests"/>
+     <ant antfile="build.xml" dir="rest" target="compile-tests"/>
+-    <ant antfile="build.xml" dir="portlet" target="compile-tests"/>
+-    <ant antfile="build.xml" dir="portlet-tiles" target="compile-tests"/>
+     <ant antfile="build.xml" dir="junit" target="compile-tests"/>
+     <ant antfile="build.xml" dir="testng" target="compile-tests"/>
+@@ -143,7 +140,5 @@
+     <ant antfile="build.xml" dir="tiles" target="test"/>
+     <ant antfile="build.xml" dir="dojo" target="test"/>
+     <ant antfile="build.xml" dir="rest" target="test"/>
+-    <ant antfile="build.xml" dir="portlet" target="test"/>
+-    <ant antfile="build.xml" dir="portlet-tiles" target="test"/>
+     <ant antfile="build.xml" dir="junit" target="test"/>
+     <ant antfile="build.xml" dir="testng" target="test"/>
+@@ -178,7 +174,5 @@
+     <ant antfile="build.xml" dir="tiles" target="javadoc"/>
+     <ant antfile="build.xml" dir="dojo" target="javadoc"/>
+     <ant antfile="build.xml" dir="rest" target="javadoc"/>
+-    <ant antfile="build.xml" dir="portlet" target="javadoc"/>
+-    <ant antfile="build.xml" dir="portlet-tiles" target="javadoc"/>
+     <ant antfile="build.xml" dir="junit" target="javadoc"/>
+     <ant antfile="build.xml" dir="testng" target="javadoc"/>
+@@ -213,7 +208,5 @@
+     <ant antfile="build.xml" dir="tiles" target="package"/>
+     <ant antfile="build.xml" dir="dojo" target="package"/>
+     <ant antfile="build.xml" dir="rest" target="package"/>
+-    <ant antfile="build.xml" dir="portlet" target="package"/>
+-    <ant antfile="build.xml" dir="portlet-tiles" target="package"/>
+     <ant antfile="build.xml" dir="junit" target="package"/>
+     <ant antfile="build.xml" dir="testng" target="package"/>

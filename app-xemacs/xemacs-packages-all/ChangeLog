@@ -1,0 +1,98 @@
+# ChangeLog for app-xemacs/xemacs-packages-all
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/xemacs-packages-all/ChangeLog,v 1.22 2014/08/10 19:48:34 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  xemacs-packages-all-2007.04.27-r1.ebuild,
+  xemacs-packages-all-2010.07.29.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  04 Nov 2012; Ulrich Müller <ulm@gentoo.org>
+  xemacs-packages-all-2007.04.27-r1.ebuild,
+  xemacs-packages-all-2010.07.29.ebuild:
+  Change LICENSE to "metapackage".
+
+  22 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  xemacs-packages-all-2010.07.29.ebuild:
+  ppc64 stable wrt #369897
+
+  03 Jul 2011; Markos Chandras <hwoarang@gentoo.org>
+  xemacs-packages-all-2010.07.29.ebuild:
+  Stable on amd64 wrt bug #369897
+
+  28 Jun 2011; Brent Baude <ranger@gentoo.org>
+  xemacs-packages-all-2010.07.29.ebuild:
+  Marking xemacs-packages-all-2010.07.29 ppc stable for bug 369897
+
+  26 Jun 2011; Raúl Porcel <armin76@gentoo.org>
+  xemacs-packages-all-2010.07.29.ebuild:
+  alpha/sparc stable wrt #369897
+
+  12 Jun 2011; Thomas Kahle <tomka@gentoo.org>
+  xemacs-packages-all-2010.07.29.ebuild:
+  x86 stable per bug 369897
+
+  24 Oct 2010; Brent Baude <ranger@gentoo.org>
+  xemacs-packages-all-2010.07.29.ebuild:
+  Marking xemacs-packages-all-2010.07.29 ~ppc for bug 332607
+
+  18 Sep 2010; Raúl Porcel <armin76@gentoo.org>
+  xemacs-packages-all-2010.07.29.ebuild:
+  Add ~alpha/~sparc wrt #332607
+
+  18 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  xemacs-packages-all-2010.07.29.ebuild:
+  keyworded ~arch for x86, bug 332607
+
+*xemacs-packages-all-2010.07.29 (13 Aug 2010)
+
+  13 Aug 2010; Hans de Graaff <graaff@gentoo.org>
+  +xemacs-packages-all-2010.07.29.ebuild:
+  Version bump. Drop alpha, ppc, sparc, x86 keywords due to new unkeyworded
+  packages, bug 332607.
+
+  07 Feb 2009; Christian Faulhammer <fauli@gentoo.org>
+  -xemacs-packages-all-2007.04.27.ebuild:
+  clean up, because of vulnerability affected versions
+
+  05 Jul 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  xemacs-packages-all-2007.04.27-r1.ebuild:
+  ppc stable, bug #221197
+
+  26 Jun 2008; Santiago M. Mola <coldwind@gentoo.org>
+  xemacs-packages-all-2007.04.27-r1.ebuild:
+  amd64 stable wrt security bug #221197 (and redo alpha/sparc)
+
+  26 Jun 2008; Raúl Porcel <armin76@gentoo.org> ChangeLog:
+  alpha/sparc stable wrt #221197
+
+  25 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  xemacs-packages-all-2007.04.27-r1.ebuild:
+  stable x86, security bug 221197
+
+*xemacs-packages-all-2007.04.27-r1 (15 Jun 2008)
+
+  15 Jun 2008; Hans de Graaff <graaff@gentoo.org>
+  +xemacs-packages-all-2007.04.27-r1.ebuild:
+  Bump edit-utils dependency to 2.39 as part of the fix for #221197.
+
+  05 May 2008; Raúl Porcel <armin76@gentoo.org>
+  xemacs-packages-all-2007.04.27.ebuild:
+  alpha/sparc stable wrt #219332
+
+  02 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  xemacs-packages-all-2007.04.27.ebuild:
+  stable x86, bug 219332
+
+  30 Apr 2008; nixnut <nixnut@gentoo.org>
+  xemacs-packages-all-2007.04.27.ebuild:
+  Stable on ppc wrt bug 219332
+
+  26 Apr 2008; Hans de Graaff <graaff@gentoo.org>
+  xemacs-packages-all-2007.04.27.ebuild:
+  Mark stable on amd64 , bug #219332
+
+  23 Apr 2008; Hans de Graaff <graaff@gentoo.org> ChangeLog:
+  Initial import. This is a meta package that will pull in all xemacs packages.
+  As such it has the same effect as installing xemacs-packages-sumo, but without
+  the nasty file collisions as mentioned in #23949.

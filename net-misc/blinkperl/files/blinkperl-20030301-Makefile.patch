@@ -1,0 +1,20 @@
+Do not install into /usr/man and be consistent about the package name.
+
+--- blinkperl/Makefile.orig	2003-02-08 15:58:10.000000000 +0100
++++ blinkperl/Makefile	2008-11-27 21:14:03.000000000 +0100
+@@ -1,12 +1,12 @@
+ SHELL=/bin/sh
+-PREFIX=/usr/local
+-MANDIR=${PREFIX}/man
++PREFIX=/usr
+ BINDIR=${PREFIX}/bin
+ SHAREDIR=${PREFIX}/share
++MANDIR=${SHAREDIR}/man
+ #
+ # Be sure to modify $moviedir in blinkserver.pl if you modify it here!
+ #
+-BLINKENPERLSHAREDIR=${SHAREDIR}/blinkenperl
++BLINKENPERLSHAREDIR=${SHAREDIR}/blinkperl
+ MOVIEDIR=${BLINKENPERLSHAREDIR}/movies
+ 
+ # Enable "make install DESTDIR=some-path" to make it easier

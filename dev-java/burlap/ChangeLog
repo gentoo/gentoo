@@ -1,0 +1,97 @@
+# ChangeLog for dev-java/burlap
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/burlap/ChangeLog,v 1.23 2014/08/10 20:09:02 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> burlap-3.0.8-r3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  07 Feb 2014; Tom Wijsman <TomWij@gentoo.org> burlap-3.0.8-r3.ebuild:
+  Make PATCHES an array to fix repoman warning.
+
+  13 Jan 2012; Ralph Sennhauser <sera@gentoo.org> -burlap-3.0.8-r2.ebuild:
+  Remove old. No longer requires dev-java/servletapi. #398689
+
+  03 May 2008; Kenneth Prugh <ken69267@gentoo.org> burlap-3.0.8-r3.ebuild:
+  amd64 stable, bug #219640
+
+  02 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  burlap-3.0.8-r3.ebuild:
+  filter jikes and stable x86, bug 219640
+
+*burlap-3.0.8-r3 (14 Feb 2008)
+
+  14 Feb 2008; William L. Thomson Jr. <wltjr@gentoo.org>
+  +burlap-3.0.8-r3.ebuild:
+  Switched to java-virtuals/servlet-api and set EAPI=1. Fixed slot on hessian
+  3.0 -> 3.0.8.
+
+  10 Jun 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -burlap-3.0.8-r1.ebuild:
+  Removed old revision.
+
+  10 Jun 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  burlap-3.0.8-r2.ebuild:
+  Marked stable on amd64 as per bug 179893.
+
+  30 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  burlap-3.0.8-r2.ebuild:
+  stable x86, bug 179893
+
+  11 Feb 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -files/build-2.1.12.xml, -burlap-2.1.12-r1.ebuild:
+  Move burlap-2.1.12-r1 to the migrated-java overlay because the only thing
+  using it is dev-java/spring in that overlay.
+
+  16 Jan 2007; Petteri Räty <betelgeuse@gentoo.org> metadata.xml,
+  burlap-2.1.12-r1.ebuild, burlap-3.0.8-r1.ebuild, burlap-3.0.8-r2.ebuild:
+  Shortened DESCRIPTION by having a longdescription in metadata.xml.
+
+*burlap-3.0.8-r2 (16 Jan 2007)
+
+  16 Jan 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +files/3.0.8-java5.patch, +burlap-3.0.8-r2.ebuild:
+  Added patch to compile with jdks from 1.4 to 1.6. Thanks to Martin Jansa
+  <Martin.Jansa@mk.cvut.cz>. Fixes bug #137968.
+
+  05 Dec 2006; Vlastimil Babka <caster@gentoo.org> burlap-3.0.8-r1.ebuild:
+  Fix building due to stray space.
+
+  28 Nov 2006; Joshua Nichols <nichoj@gentoo.org> -burlap-2.1.12.ebuild,
+  -burlap-3.0.8.ebuild:
+  Dropped earlier revision with equivalent keywords.
+
+  28 Nov 2006; Joshua Nichols <nichoj@gentoo.org> burlap-3.0.8-r1.ebuild:
+  Stabilized on amd64 (see bug #155622).
+
+  23 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  burlap-3.0.8-r1.ebuild:
+  stable x86, bug #155622
+
+  10 Sep 2006; Joshua Nichols <nichoj@gentoo.org> burlap-2.1.12-r1.ebuild:
+  Fixed java-strict errors.
+
+  06 Aug 2006; Joshua Nichols <nichoj@gentoo.org> burlap-3.0.8-r1.ebuild:
+  Fixed building with java-strict.
+
+*burlap-3.0.8-r1 (04 Jul 2006)
+*burlap-2.1.12-r1 (04 Jul 2006)
+
+  04 Jul 2006; Joshua Nichols <nichoj@gentoo.org> +burlap-2.1.12-r1.ebuild,
+  +burlap-3.0.8-r1.ebuild:
+  Revision bump to support new Java system.
+
+  09 Jan 2006; Joshua Nichols <nichoj@gentoo.org> burlap-3.0.8.ebuild:
+  Fixed servletapi dependency.
+
+  30 Nov 2005; <nichoj@gentoo.org> burlap-2.1.12.ebuild,
+  burlap-3.0.8.ebuild:
+  Added ~amd64 keyword (bug #110369).
+
+*burlap-3.0.8 (23 Oct 2005)
+*burlap-2.1.12 (23 Oct 2005)
+
+  23 Oct 2005; Petteri Räty <betelgeuse@gentoo.org>
+  +files/build-2.1.12.xml, +metadata.xml, +burlap-2.1.12.ebuild,
+  +burlap-3.0.8.ebuild:
+  Initial ebuild for 2.1.12 done by Josh Nichols <nichoj@alum.rpi.edu> and
+  improved by me. Fixes bug 97005.

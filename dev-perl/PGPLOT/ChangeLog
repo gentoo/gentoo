@@ -1,0 +1,82 @@
+# ChangeLog for dev-perl/PGPLOT
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/PGPLOT/ChangeLog,v 1.22 2014/08/05 17:52:50 zlogene Exp $
+
+  05 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> PGPLOT-2.210.0.ebuild:
+  Bump to EAPI=5
+
+  04 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> PGPLOT-2.210.0.ebuild:
+  Fix DESCRIPTION
+
+  16 Apr 2013; Vicente Olivert Riera <vincent@gentoo.org> PGPLOT-2.210.0.ebuild:
+  Adding ~ppc keyword for dev-perl/PDL and his dependences, wrt bug #449762
+
+  13 Jan 2013; Markus Meier <maekke@gentoo.org> PGPLOT-2.210.0.ebuild:
+  add ~arm, bug #449762
+
+  10 Dec 2012; Sébastien Fabbro <bicatali@gentoo.org> PGPLOT-2.210.0.ebuild:
+  Keyword amd64-linux and x86-linux
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -PGPLOT-2.210.ebuild:
+  Cleanup
+
+*PGPLOT-2.210.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org> +PGPLOT-2.210.0.ebuild:
+  Change version scheme
+
+  02 Apr 2011; Torsten Veller <tove@gentoo.org> -PGPLOT-2.20.ebuild:
+  Cleanup
+
+*PGPLOT-2.210 (12 Jan 2011)
+
+  12 Jan 2011; Torsten Veller <tove@gentoo.org> +PGPLOT-2.210.ebuild:
+  Version bump
+
+  05 Feb 2010; Torsten Veller <tove@gentoo.org> PGPLOT-2.20.ebuild:
+  Fix LICENSE (#301969). Maintenance
+
+  02 May 2009; Torsten Veller <tove@gentoo.org> -PGPLOT-2.19.ebuild:
+  Cleanup
+
+  13 Jul 2008; Robin H. Johnson <robbat2@gentoo.org> PGPLOT-2.19.ebuild,
+  PGPLOT-2.20.ebuild:
+  Remove x11-base/xorg-server dependancy, as the X dependancies are brought
+  in by sci-libs/pgplot already.
+
+  22 Jul 2007; Hans de Graaff <graaff@gentoo.org> PGPLOT-2.19.ebuild,
+  PGPLOT-2.20.ebuild:
+  Drop virtual/x11 references.
+
+*PGPLOT-2.20 (13 Jun 2007)
+
+  13 Jun 2007; Michael Cummings <mcummings@gentoo.org> PGPLOT-2.19.ebuild,
+  +PGPLOT-2.20.ebuild:
+  Version bump
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org> PGPLOT-2.19.ebuild:
+  Version bump, thanks seemant
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org> PGPLOT-2.19.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  11 Jul 2006; Michael Cummings <mcummings@gentoo.org> PGPLOT-2.19.ebuild:
+  Updating for modular X
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org> PGPLOT-2.19.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> PGPLOT-2.19.ebuild:
+  Mark 2.19 ~ia64
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org> PGPLOT-2.19.ebuild:
+  Mark 2.19 ~ia64
+
+*PGPLOT-2.19 (23 Jan 2006)
+
+  23 Jan 2006; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +PGPLOT-2.19.ebuild:
+  Optional dep for PDL

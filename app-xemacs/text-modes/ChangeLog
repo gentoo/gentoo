@@ -1,0 +1,104 @@
+# ChangeLog for app-xemacs/text-modes
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/text-modes/ChangeLog,v 1.30 2014/08/10 19:37:27 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> text-modes-1.92.ebuild,
+  text-modes-1.98.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  22 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> text-modes-1.98.ebuild:
+  ppc64 stable wrt #369897
+
+  03 Jul 2011; Markos Chandras <hwoarang@gentoo.org> text-modes-1.98.ebuild:
+  Stable on amd64 wrt bug #369897
+
+  28 Jun 2011; Brent Baude <ranger@gentoo.org> text-modes-1.98.ebuild:
+  Marking text-modes-1.98 ppc stable for bug 369897
+
+  25 Jun 2011; Raúl Porcel <armin76@gentoo.org> text-modes-1.98.ebuild:
+  alpha/sparc stable wrt #369897
+
+  12 Jun 2011; Thomas Kahle <tomka@gentoo.org> text-modes-1.98.ebuild:
+  x86 stable per bug 369897
+
+  10 Jun 2011; Jeroen Roovers <jer@gentoo.org> text-modes-1.98.ebuild:
+  Stable for HPPA (bug #369897).
+
+  03 Jun 2011; Hans de Graaff <graaff@gentoo.org> -text-modes-1.96.ebuild:
+  Remove old version.
+
+*text-modes-1.98 (13 Aug 2010)
+
+  13 Aug 2010; Hans de Graaff <graaff@gentoo.org> +text-modes-1.98.ebuild:
+  Version bump: XEmacs compatibility fixes.
+
+*text-modes-1.96 (21 Feb 2009)
+
+  21 Feb 2009; Hans de Graaff <graaff@gentoo.org> +text-modes-1.96.ebuild:
+  Version bump: updates to whitespace.el and desktop-entry-mode.el and sync
+  htmlize to upstream 1.34.
+
+  19 Mar 2008; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  A herd should not be listed as maintainer
+
+  25 Oct 2007; Hans de Graaff <graaff@gentoo.org> -text-modes-1.58.ebuild:
+  Remove old version
+
+  15 Oct 2007; Jeroen Roovers <jer@gentoo.org> text-modes-1.92.ebuild:
+  Stable for HPPA (bug #189672).
+
+  20 Sep 2007; Jeroen Roovers <jer@gentoo.org> text-modes-1.92.ebuild:
+  Marked ~hppa (bug #193144).
+
+  03 Jun 2007; Hans de Graaff <graaff@gentoo.org> -text-modes-1.90.ebuild:
+  Remove intermediate version
+
+  03 Jun 2007; Hans de Graaff <graaff@gentoo.org> text-modes-1.92.ebuild:
+  Stable on amd64, ppc, ppc64, sparc, x86 as per #175560
+
+  29 May 2007; Raúl Porcel <armin76@gentoo.org> text-modes-1.92.ebuild:
+  alpha stable wrt #175560
+
+*text-modes-1.92 (22 Dec 2006)
+
+  22 Dec 2006; Hans de Graaff <graaff@gentoo.org> +text-modes-1.92.ebuild:
+  Version bump.
+
+*text-modes-1.90 (11 Nov 2006)
+
+  11 Nov 2006; Hans de Graaff <graaff@gentoo.org> -text-modes-1.55.ebuild,
+  +text-modes-1.90.ebuild:
+  Version bump for bug #33180. Remove old version.
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  text-modes-1.58.ebuild:
+  Stable on ppc.
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> text-modes-1.58.ebuild:
+  Stable on ppc64
+
+  01 Nov 2004; Markus Rothe <corsair@gentoo.org> text-modes-1.58.ebuild:
+  Marked ~ppc64; bug #67093
+
+  15 Mar 2004; <rac@gentoo.org> metadata.xml, text-modes-1.58.ebuild:
+  keyword amd64
+
+  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> text-modes-1.58.ebuild:
+  Stable on alpha
+
+*text-modes-1.58 (22 Feb 2003)
+
+  22 Feb 2003;  <rendhalver@gentoo.org> text-modes-1.55.ebuild text-modes-1.58.ebuild files/digest-text-modes-1.58 :
+  Add ~alpha to KEYWORDS
+
+  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
+  new stable ebuild
+
+  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
+  fix depend on ispell to point to xemacs-ispell
+  changed alpha to ~alpha
+
+*text-modes-1.55 (16 Dec 2002)
+
+  16 Dec 2002; Rendhalver [Peter Brown] <rendhalver@gentoo.org> :
+  Initial import.

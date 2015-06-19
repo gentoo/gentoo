@@ -1,0 +1,48 @@
+# ChangeLog for games-fps/doomsday-resources
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/doomsday-resources/ChangeLog,v 1.10 2015/01/30 20:23:14 tupone Exp $
+
+  30 Jan 2015; Tupone Alfredo <tupone@gentoo.org>
+  doomsday-resources-1.01-r1.ebuild:
+  EAPI 5
+
+  01 May 2014; Ulrich Müller <ulm@gentoo.org>
+  doomsday-resources-1.01-r1.ebuild:
+  Change LICENSE to free-noncomm, bug 505636.
+
+  31 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -doomsday-resources-1.01.ebuild:
+  old
+
+  06 Jul 2012; Agostino Sarubbo <ago@gentoo.org>
+  doomsday-resources-1.01-r1.ebuild:
+  Stable for amd64, wrt bug #424517
+
+  03 Jul 2012; Jeff Horelick <jdhore@gentoo.org>
+  doomsday-resources-1.01-r1.ebuild:
+  marked x86 per bug 424517
+
+*doomsday-resources-1.01-r1 (30 May 2012)
+
+  30 May 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +doomsday-resources-1.01-r1.ebuild:
+  Unmask on amd64 with >=doomsday-1.9.8
+
+  18 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  doomsday-resources-1.01.ebuild:
+  stable x86, bug 308785
+
+  08 Feb 2007; Tristan Heaven <nyhm@gentoo.org>
+  doomsday-resources-1.01.ebuild:
+  Fix hardcoded paths
+
+  27 Sep 2006; Tristan Heaven <nyhm@gentoo.org>
+  doomsday-resources-1.01.ebuild:
+  Add app-arch/unzip to DEPEND
+
+*doomsday-resources-1.01 (31 May 2006)
+
+  31 May 2006; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +doomsday-resources-1.01.ebuild:
+  Initial import. Ebuild by Paul Bredbury <brebs@sent.com> and edited by me.
+  Closing bug #117098.

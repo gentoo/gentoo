@@ -1,0 +1,21 @@
+--- elektra-0.7.1/Makefile.am
++++ elektra-0.7.1/Makefile.am
+@@ -1,6 +1,6 @@
+ ACLOCAL_AMFLAGS = -I m4
+ 
+-SUBDIRS = libltdl src doc benchmarks examples scripts xmlschema tests
++SUBDIRS = src doc benchmarks examples scripts xmlschema tests
+ EXTRA_DIST=elektra.pc elektratools.pc elektracpp.pc elektra.spec elektra.mandriva.spec elektra.xml
+ 
+ pkgconfigdir = $(ulibdir)/pkgconfig
+--- elektra-0.7.1/doc/Makefile.am
++++ elektra-0.7.1/doc/Makefile.am
+@@ -7,6 +7,8 @@
+ EXTRA_DIST+=$(all_mans)
+ EXTRA_DIST+= $(HTML_TITLE_LAYOUT_XSL)
+ 
++develdocDATA_INSTALL = install
++
+ SUBDIRS=images standards
+ 
+ # Dependencies for Doxygen documentation

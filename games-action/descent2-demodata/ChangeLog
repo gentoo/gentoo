@@ -1,0 +1,41 @@
+# ChangeLog for games-action/descent2-demodata
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/descent2-demodata/ChangeLog,v 1.9 2015/02/09 08:17:51 ago Exp $
+
+  09 Feb 2015; Agostino Sarubbo <ago@gentoo.org> descent2-demodata-1.0.ebuild:
+  Stable for amd64, wrt bug #539410
+
+  06 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  descent2-demodata-1.0.ebuild:
+  EAPI=5; tidy
+
+  31 Dec 2014; Tupone Alfredo <tupone@gentoo.org> descent2-demodata-1.0.ebuild:
+  Migrating to EAPI 4
+
+  10 Feb 2010; Joseph Jezak <josejx@gentoo.org>
+  descent2-demodata-1.0.ebuild:
+  Marked ppc stable for bug #294889.
+
+  01 Dec 2009; Markus Meier <maekke@gentoo.org>
+  descent2-demodata-1.0.ebuild:
+  x86 stable, bug #294889
+
+  14 Feb 2008; Tristan Heaven <nyhm@gentoo.org>
+  descent2-demodata-1.0.ebuild:
+  Fix RDEPEND to not include unzip and unarj
+
+  06 Sep 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  descent2-demodata-1.0.ebuild:
+  Removed the RDEPEND section since it was causing dependency issues and
+  adding ~amd64 to KEYWORDS.
+
+  03 Feb 2007; Tristan Heaven <nyhm@gentoo.org>
+  descent2-demodata-1.0.ebuild:
+  Add app-arch/unzip to DEPEND
+
+*descent2-demodata-1.0 (09 Jan 2007)
+
+  09 Jan 2007; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +descent2-demodata-1.0.ebuild:
+  Initial import. Ebuild by Paul Bredbury <brebs@sent.com> and based loosely
+  on games-action/d2x. Closing bug #137306.

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>gnustep</herd>
+	<longdescription>Silver.theme is a theme with menu in-window, silvered controls, scrollbars at right side and arrows at opposite sides. Ideal for people who want use GNUstep apps in desktops like Gnome, KDE, ...</longdescription>
+</pkgmetadata>

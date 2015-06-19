@@ -1,0 +1,7 @@
+#!/bin/sh
+### Restart the wireless device on Gentoo
+### Useful for bcm43xx/b43 which doesn't reconnect on resume
+
+### Uncomment the line below and properly set the device variable
+WIRELESS="net.wlan0"
+# /etc/init.d/${WIRELESS} restart

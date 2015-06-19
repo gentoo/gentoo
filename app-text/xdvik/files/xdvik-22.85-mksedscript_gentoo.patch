@@ -1,0 +1,20 @@
+This used to eval something like:
+foo=char **
+so, the first match to * would be executed
+causing: https://bugs.gentoo.org/show_bug.cgi?id=410695
+
+remove the quotes and quote again so that we always get foo="char **"
+
+Index: xdvik-22.85/texk/xdvik/mksedscript
+===================================================================
+--- xdvik-22.85.orig/texk/xdvik/mksedscript
++++ xdvik-22.85/texk/xdvik/mksedscript
+@@ -45,7 +45,7 @@ done
+ 
+ eval "`awk '/^#define/ { printf "mk_%s=%s", $2, $3
+   for (i = 4; i <= NF; i++) printf " %s", $i
+-  print "" }' c-auto.h`"
++  print "" }' c-auto.h | tr -d '"' |sed -e 's/\(.*\)=\(.*\)$/\1="\2"/'`"
+ 
+ # eval "`cat c-auto.h \
+ #   | grep '^[ 	]*#[ 	]*define[ 	]' \

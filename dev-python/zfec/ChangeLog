@@ -1,0 +1,28 @@
+# ChangeLog for dev-python/zfec
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/zfec/ChangeLog,v 1.7 2015/04/08 08:05:15 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> zfec-1.4.24.ebuild:
+  Drop old Python implementations
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  01 Nov 2014; Chema Alonso <nimiux@gentoo.org> zfec-1.4.24.ebuild:
+  Stable for amd64 wrt bug #518242
+
+  14 Aug 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> zfec-1.4.24.ebuild:
+  x86 stable wrt bug #518242
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> zfec-1.4.24.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+  11 Aug 2013; Julian Ospald <hasufell@gentoo.org> zfec-1.4.24.ebuild:
+  fix deps wrt #480332
+
+*zfec-1.4.24 (01 Aug 2013)
+
+  01 Aug 2013; Julian Ospald <hasufell@gentoo.org> +zfec-1.4.24.ebuild,
+  +metadata.xml:
+  initial import

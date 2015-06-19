@@ -1,0 +1,48 @@
+--- gsmc-1.1.orig/configure.ac	2011-01-12 18:14:55.633360421 -0200
++++ gsmc-1.1/configure.ac	2011-01-12 19:58:12.617251642 -0200
+@@ -7,26 +7,13 @@
+ AM_INIT_AUTOMAKE(gsmc, 1.0, ik5nax@amsat.org)
+ 
+ # Checks for programs.
+-AC_PROG_CC
+-pkg_modules="gtk+-2.0"
+-PKG_CHECK_MODULES(PACKAGE,[$pkg_modules])
++AM_PROG_CC_C_O
+ AC_SUBST(PACKAGE_CFLAGS)
+ AC_SUBST(PACKAGE_LIBS)
+ 
+ # Checks for libraries.
+-LIBS=" "
+-PKG_LIB2=`pkg-config --libs gtk+-2.0`
+-PKG_LIB=""
+-for i in $PKG_LIB2 ; do
+-        case $i in 
+-                -l*) PKG_LIB="$i $PKG_LIB" ;;
+-                -L*) LIBS="$i $LIBS" ;;
+-        esac
+-done
+-for i in $PKG_LIB ; do
+-        j=${i#'-l'}
+-        AC_CHECK_LIB($j,main)
+-done
++PKG_PROG_PKG_CONFIG
++PKG_CHECK_MODULES([GTK], [gtk+-2.0])
+ 
+ # Checks for header files.
+ AC_HEADER_STDC
+
+--- gsmc-1.1.orig/Makefile.am	2011-01-12 18:14:55.633360421 -0200
++++ gsmc-1.1/Makefile.am	2011-01-12 20:37:21.034615478 -0200
+@@ -2,8 +2,8 @@
+      
+ bin_PROGRAMS=gsmc
+ gsmc_SOURCES= autotune.c calc.c dataconv.c draw.c main.c print.c widget.c autotune.h calc.h dataconv.h draw.h main.h print.h widget.h
+-INCLUDES=@PACKAGE_CFLAGS@
+-LIBS=@PACKAGE_LIBS@
++gsmc_CFLAGS = $(AM_CFLAGS) $(GTK_CFLAGS)
++gsmc_LDADD = $(AM_LDADD) $(GTK_LIBS)
+ 
+ EXTRA_DIST=gsmc.1.in gtkrc TODO
+-man_MANS=gsmc.1
+\ No newline at end of file
++man_MANS=gsmc.1

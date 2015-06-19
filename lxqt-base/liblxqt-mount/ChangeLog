@@ -1,0 +1,42 @@
+# ChangeLog for lxqt-base/liblxqt-mount
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/lxqt-base/liblxqt-mount/ChangeLog,v 1.9 2015/04/15 06:50:11 dlan Exp $
+
+  15 Apr 2015; Yixun Lan <dlan@gentoo.org> liblxqt-mount-0.9.0.ebuild:
+  restore arm keyword, bug 528676
+
+  03 Apr 2015; Michael Palimaka <kensington@gentoo.org>
+  liblxqt-mount-0.9.0.ebuild:
+  Drop ~arm keyword due to unsatisfied dependencies wrt bug #545432.
+
+  03 Apr 2015; Yixun Lan <dlan@gentoo.org> liblxqt-mount-0.9.0.ebuild:
+  keyword arm/arm64, tested on cortex-a9/cortex-a53 hardware
+
+*liblxqt-mount-0.9.0 (10 Feb 2015)
+
+  10 Feb 2015; Ben de Groot <yngwin@gentoo.org> +liblxqt-mount-0.9.0.ebuild:
+  LXQt 0.9.0 version bump
+
+  30 Jan 2015; Michael Palimaka <kensington@gentoo.org>
+  liblxqt-mount-0.7.0.ebuild, liblxqt-mount-0.8.0.ebuild:
+  Update SRC_URI by Michael Vetter <g.bluehut@gmail.com> wrt bug #537032.
+
+*liblxqt-mount-0.8.0 (08 Nov 2014)
+
+  08 Nov 2014; Jauhien Piatlicki <jauhien@gentoo.org>
+  +liblxqt-mount-0.8.0.ebuild:
+  version bump
+
+  02 Nov 2014; Jauhien Piatlicki <jauhien@gentoo.org>
+  liblxqt-mount-0.7.0.ebuild:
+  make dependencies more precise (preparation for LXQt 0.8.0 release)
+
+  29 May 2014; Manuel Rüger <mrueg@gentoo.org> liblxqt-mount-0.7.0.ebuild:
+  Add ~arm keyword.
+
+*liblxqt-mount-0.7.0 (26 May 2014)
+
+  26 May 2014; Jauhien Piatlicki <jauhien@gentoo.org>
+  +liblxqt-mount-0.7.0.ebuild, +metadata.xml:
+  Initial import from the qt overlay, thanks to Harvey Mittens and Davide
+  Pesavento, see bug #509946

@@ -1,0 +1,25 @@
+# ChangeLog for sys-fs/go-mtpfs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/go-mtpfs/ChangeLog,v 1.6 2015/05/11 16:26:57 mgorny Exp $
+
+  11 May 2015; Michał Górny <mgorny@gentoo.org> go-mtpfs-9999.ebuild:
+  Add a dependency on go-usb, bug #523990. Part of https://github.com/gentoo
+  /gentoo-portage-rsync-mirror/pull/105 by likewhoa.
+
+  28 Jan 2014; Rick Farina <zerochaos@gentoo.org> go-mtpfs-9999.ebuild:
+  can't say I'm proud, but this is about as clean as I can get it, and it works
+
+  23 Jan 2014; Rick Farina <zerochaos@gentoo.org> go-mtpfs-9999.ebuild:
+  horrible, horrible update, that happens to build on hardened
+
+  21 Oct 2013; Rick Farina <zerochaos@gentoo.org> go-mtpfs-9999.ebuild:
+  breaking things up and adding tests
+
+  21 Oct 2013; Rick Farina <zerochaos@gentoo.org> go-mtpfs-9999.ebuild:
+  fix missing dep
+
+*go-mtpfs-9999 (21 Oct 2013)
+
+  21 Oct 2013; Rick Farina <zerochaos@gentoo.org> +go-mtpfs-9999.ebuild,
+  +metadata.xml:
+  go-mtpfs initial commit.  can't build yet, can't find go-fuse properly

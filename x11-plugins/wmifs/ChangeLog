@@ -1,0 +1,80 @@
+# ChangeLog for x11-plugins/wmifs
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmifs/ChangeLog,v 1.23 2014/11/05 13:09:36 voyageur Exp $
+
+  05 Nov 2014; Bernard Cafarelli <voyageur@gentoo.org> wmifs-1.4.ebuild:
+  Host tarball on my devspace, bug #527610
+
+*wmifs-1.4 (27 Oct 2014)
+
+  27 Oct 2014; Bernard Cafarelli <voyageur@gentoo.org> +wmifs-1.4.ebuild:
+  Version bump with new homepage, ebuild cleanup
+
+  09 Sep 2010; Michele Noberasco <s4t4n@gentoo.org>; wmifs-1.3_beta1-r2.ebuild:
+  Honour Gentoo LDFLAGS, see bug #336537.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  wmifs-1.3_beta1-r2.ebuild:
+  Drop virtual/x11 references.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  31 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  wmifs-1.3_beta1-r2.ebuild:
+  Fixed DEPEND for modular X.
+
+  10 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmifs-1.3_beta1-r2.ebuild:
+  Removed COPYING and INSTALL from dodoc.
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> wmifs-1.3_beta1-r2.ebuild:
+  stable on ia64
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  wmifs-1.3_beta1-r2.ebuild:
+  Masked wmifs-1.3_beta1-r2.ebuild stable for ppc
+
+  23 Aug 2004; Michele Noberasco <s4t4n@gentoo.org> -wmifs-1.3_beta1.ebuild:
+  Remove older ebuilds...
+
+  20 Aug 2004; Jason Wever <weeve@gentoo.org> wmifs-1.3_beta1-r2.ebuild:
+  Stable on sparc.
+
+*wmifs-1.3_beta1-r2 (01 Aug 2004)
+
+  01 Aug 2004; Michele Noberasco <s4t4n@gentoo.org> wmifs-1.3_beta1-r2.ebuild:
+  New revision that honours Gentoo CFLAGS. Stable for x86. Didn't touch other
+  arch keywords as this change should not impact stability...
+  wmifs-1.3_beta1-r1.ebuild:
+  Remove older revision.
+
+  12 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> wmifs-1.3_beta1-r1.ebuild:
+  Stable on alpha.
+
+  05 Apr 2004; Chris Aniszczyk <zx@gentoo.org> wmifs-1.3_beta1-r1.ebuild:
+  Marking stable on hppa
+
+  27 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> wmifs-1.3_beta1-r1.ebuild:
+  Mark stable on amd64.
+
+*wmifs-1.3_beta1-r1 (01 Nov 2003)
+
+  01 Nov 2003; Seemant Kulleen <seemant@gentoo.org> wmifs-1.3_beta1-r1.ebuild:
+  using the Debian patch which allows for longer interface names and prettifies
+  the output in wmifs for long names. Thanks to: Georgi Georgiev
+  <chutz@chubaka.net> in bug #26249
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*wmifs-1.3_beta1 (3 Feb 2002)
+
+  29 Aug 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
+  Relocated to x11-plugins
+
+  3 Feb 2002; Vitaly Kushneriuk <vitaly@gentoo.org>:
+  
+  Initial ebuild revision.

@@ -1,0 +1,18 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/bareos/files/bareos-dir.confd,v 1.1 2013/10/21 21:52:50 mschiff Exp $
+
+# Config file for /etc/init.d/bareos-dir
+
+# Bareos can use more than one catalog database and each one can 
+# be of any supported type.
+# If a database server where you store a bareos catalog
+# is on a different machine, you might want to remove the corresponding
+# type from the rc_need variable.
+rc_need="%databasetypes%"
+
+# Options for the director daemon.
+# The director can be run as a non-root user, however
+# please ensure that this user has proper permissions to
+# access your backup devices.
+DIR_OPTIONS="-u root -g bareos -c /etc/bareos/bareos-dir.conf"

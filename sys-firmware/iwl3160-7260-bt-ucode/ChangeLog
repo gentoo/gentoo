@@ -1,0 +1,44 @@
+# ChangeLog for sys-firmware/iwl3160-7260-bt-ucode
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-firmware/iwl3160-7260-bt-ucode/ChangeLog,v 1.6 2014/11/17 13:44:23 gienah Exp $
+
+*iwl3160-7260-bt-ucode-37.8.10_p1 (17 Nov 2014)
+
+  17 Nov 2014; Mark Wright <gienah@gentoo.org>
+  +iwl3160-7260-bt-ucode-37.8.10_p1.ebuild:
+  Update Intel 3160 7260 bluetooth microcode
+
+*iwl3160-7260-bt-ucode-37.8.10 (01 Jul 2014)
+
+  01 Jul 2014; Mark Wright <gienah@gentoo.org>
+  +iwl3160-7260-bt-ucode-37.8.10.ebuild,
+  -iwl3160-7260-bt-ucode-37.10.10-r1.ebuild, metadata.xml:
+  Upgrade iwl3160-7260-bt-ucode from 37.7.10 to 37.8.10. Delete the old
+  37.10.10-r1 - 37.10.10 was an incorrect version number, it actually was
+  37.7.10, and the 37.7.10 ucode files are included in 37.8.10.
+
+  22 Jun 2014; Mark Wright <gienah@gentoo.org>
+  iwl3160-7260-bt-ucode-37.10.10-r1.ebuild:
+  Fix Bug 513644 - sys-firmware/iwl3160-7260-bt-ucode-37.10.10-r1: make kernel
+  checks nonfatal, thanks to patrick for reporting.
+
+*iwl3160-7260-bt-ucode-37.10.10-r1 (31 Jan 2014)
+
+  31 Jan 2014; Mark Wright <gienah@gentoo.org>
+  +iwl3160-7260-bt-ucode-37.10.10-r1.ebuild,
+  -iwl3160-7260-bt-ucode-37.10.10.ebuild:
+  Correct the Intel wireless bluetooth 3160 and 7260 firmware install directory
+  to /lib/firmware/intel
+
+  25 Jan 2014; Mark Wright <gienah@gentoo.org>
+  iwl3160-7260-bt-ucode-37.10.10.ebuild:
+  Change the SRC_URI to use the source file manually copied to the gentoo
+  mirror.
+
+*iwl3160-7260-bt-ucode-37.10.10 (25 Jan 2014)
+
+  25 Jan 2014; Mark Wright <gienah@gentoo.org>
+  +iwl3160-7260-bt-ucode-37.10.10.ebuild, +metadata.xml:
+  Add firmware for the Intel Wireless Bluetooth 3160 and Intel Wireless
+  Bluetooth 7260 devices. Part of bug #489714, thanks to Thomas Kear for
+  reporting and testing.

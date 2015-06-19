@@ -1,0 +1,224 @@
+diff --git a/include/rime/lever/customizer.h b/include/rime/lever/customizer.h
+index 8418410..f6811d9 100644
+--- a/include/rime/lever/customizer.h
++++ b/include/rime/lever/customizer.h
+@@ -8,6 +8,9 @@
+ #define RIME_CUSTOMIZER_H_
+ 
+ #include <string>
++#ifndef BOOST_NO_SCOPED_ENUMS
++#define BOOST_NO_SCOPED_ENUMS
++#endif // BOOST_NO_SCOPED_ENUMS
+ #include <boost/filesystem.hpp>
+ 
+ namespace rime {
+diff --git a/include/rime/lever/switcher_settings.h b/include/rime/lever/switcher_settings.h
+index 8263e14..f7c9d1e 100644
+--- a/include/rime/lever/switcher_settings.h
++++ b/include/rime/lever/switcher_settings.h
+@@ -9,6 +9,9 @@
+ 
+ #include <string>
+ #include <vector>
++#ifndef BOOST_NO_SCOPED_ENUMS
++#define BOOST_NO_SCOPED_ENUMS
++#endif // BOOST_NO_SCOPED_ENUMS
+ #include <boost/filesystem.hpp>
+ #include "custom_settings.h"
+ 
+diff --git a/include/rime/lever/user_dict_manager.h b/include/rime/lever/user_dict_manager.h
+index e971ad8..e765678 100644
+--- a/include/rime/lever/user_dict_manager.h
++++ b/include/rime/lever/user_dict_manager.h
+@@ -9,6 +9,9 @@
+ 
+ #include <string>
+ #include <vector>
++#ifndef BOOST_NO_SCOPED_ENUMS
++#define BOOST_NO_SCOPED_ENUMS
++#endif // BOOST_NO_SCOPED_ENUMS
+ #include <boost/filesystem.hpp>
+ 
+ namespace rime {
+diff --git a/src/core_module.cc b/src/core_module.cc
+index 785c22f..4d078ae 100644
+--- a/src/core_module.cc
++++ b/src/core_module.cc
+@@ -5,6 +5,9 @@
+ // 2013-10-17 GONG Chen <chen.sst@gmail.com>
+ //
+ 
++#ifndef BOOST_NO_SCOPED_ENUMS
++#define BOOST_NO_SCOPED_ENUMS
++#endif // BOOST_NO_SCOPED_ENUMS
+ #include <boost/filesystem.hpp>
+ #include <rime_api.h>
+ #include <rime/common.h>
+diff --git a/src/dict/db.cc b/src/dict/db.cc
+index b8c46a6..eadacb9 100644
+--- a/src/dict/db.cc
++++ b/src/dict/db.cc
+@@ -5,6 +5,9 @@
+ // 2011-11-02 GONG Chen <chen.sst@gmail.com>
+ //
+ #include <boost/algorithm/string.hpp>
++#ifndef BOOST_NO_SCOPED_ENUMS
++#define BOOST_NO_SCOPED_ENUMS
++#endif // BOOST_NO_SCOPED_ENUMS
+ #include <boost/filesystem.hpp>
+ #include <rime_version.h>
+ #include <rime/common.h>
+diff --git a/src/dict/dict_compiler.cc b/src/dict/dict_compiler.cc
+index 2bd9aa4..f383f7e 100644
+--- a/src/dict/dict_compiler.cc
++++ b/src/dict/dict_compiler.cc
+@@ -7,6 +7,9 @@
+ #include <fstream>
+ #include <map>
+ #include <set>
++#ifndef BOOST_NO_SCOPED_ENUMS
++#define BOOST_NO_SCOPED_ENUMS
++#endif // BOOST_NO_SCOPED_ENUMS
+ #include <boost/filesystem.hpp>
+ #include <rime/algo/algebra.h>
+ #include <rime/algo/utilities.h>
+diff --git a/src/dict/dictionary.cc b/src/dict/dictionary.cc
+index 66306b5..b0d755d 100644
+--- a/src/dict/dictionary.cc
++++ b/src/dict/dictionary.cc
+@@ -5,6 +5,9 @@
+ // 2011-07-05 GONG Chen <chen.sst@gmail.com>
+ //
+ #include <utility>
++#ifndef BOOST_NO_SCOPED_ENUMS
++#define BOOST_NO_SCOPED_ENUMS
++#endif // BOOST_NO_SCOPED_ENUMS
+ #include <boost/filesystem.hpp>
+ #include <rime/common.h>
+ #include <rime/schema.h>
+diff --git a/src/dict/mapped_file.cc b/src/dict/mapped_file.cc
+index 6fd21a6..cd46994 100644
+--- a/src/dict/mapped_file.cc
++++ b/src/dict/mapped_file.cc
+@@ -7,6 +7,9 @@
+ // 2011-06-30 GONG Chen <chen.sst@gmail.com>
+ //
+ #include <fstream>
++#ifndef BOOST_NO_SCOPED_ENUMS
++#define BOOST_NO_SCOPED_ENUMS
++#endif // BOOST_NO_SCOPED_ENUMS
+ #include <boost/filesystem.hpp>
+ #include <boost/interprocess/file_mapping.hpp>
+ #include <boost/interprocess/mapped_region.hpp>
+diff --git a/src/dict/preset_vocabulary.cc b/src/dict/preset_vocabulary.cc
+index f74ea58..136f9fa 100644
+--- a/src/dict/preset_vocabulary.cc
++++ b/src/dict/preset_vocabulary.cc
+@@ -4,6 +4,9 @@
+ //
+ // 2011-11-27 GONG Chen <chen.sst@gmail.com>
+ //
++#ifndef BOOST_NO_SCOPED_ENUMS
++#define BOOST_NO_SCOPED_ENUMS
++#endif // BOOST_NO_SCOPED_ENUMS
+ #include <boost/filesystem.hpp>
+ #include <boost/lexical_cast.hpp>
+ #include <utf8.h>
+diff --git a/src/dict/tree_db.cc b/src/dict/tree_db.cc
+index 4b6ed2e..542fe83 100644
+--- a/src/dict/tree_db.cc
++++ b/src/dict/tree_db.cc
+@@ -4,6 +4,9 @@
+ //
+ // 2011-11-02 GONG Chen <chen.sst@gmail.com>
+ //
++#ifndef BOOST_NO_SCOPED_ENUMS
++#define BOOST_NO_SCOPED_ENUMS
++#endif // BOOST_NO_SCOPED_ENUMS
+ #include <boost/filesystem.hpp>
+ #if defined(_MSC_VER)
+ #pragma warning(disable: 4244)
+diff --git a/src/gear/simplifier.cc b/src/gear/simplifier.cc
+index 6bb8524..d02b979 100644
+--- a/src/gear/simplifier.cc
++++ b/src/gear/simplifier.cc
+@@ -7,6 +7,9 @@
+ #include <string>
+ #include <vector>
+ #include <boost/algorithm/string.hpp>
++#ifndef BOOST_NO_SCOPED_ENUMS
++#define BOOST_NO_SCOPED_ENUMS
++#endif // BOOST_NO_SCOPED_ENUMS
+ #include <boost/filesystem.hpp>
+ #include <opencc/opencc.h>
+ #include <stdint.h>
+diff --git a/src/lever/custom_settings.cc b/src/lever/custom_settings.cc
+index 0153830..0713cbc 100644
+--- a/src/lever/custom_settings.cc
++++ b/src/lever/custom_settings.cc
+@@ -5,6 +5,9 @@
+ // 2012-02-26 GONG Chen <chen.sst@gmail.com>
+ //
+ #include <boost/algorithm/string.hpp>
++#ifndef BOOST_NO_SCOPED_ENUMS
++#define BOOST_NO_SCOPED_ENUMS
++#endif // BOOST_NO_SCOPED_ENUMS
+ #include <boost/filesystem.hpp>
+ #include <rime/config.h>
+ #include <rime/deployer.h>
+diff --git a/src/lever/deployment_tasks.cc b/src/lever/deployment_tasks.cc
+index 495066f..589c883 100644
+--- a/src/lever/deployment_tasks.cc
++++ b/src/lever/deployment_tasks.cc
+@@ -5,6 +5,9 @@
+ // 2011-12-10 GONG Chen <chen.sst@gmail.com>
+ //
+ #include <boost/algorithm/string.hpp>
++#ifndef BOOST_NO_SCOPED_ENUMS
++#define BOOST_NO_SCOPED_ENUMS
++#endif // BOOST_NO_SCOPED_ENUMS
+ #include <boost/filesystem.hpp>
+ #include <boost/uuid/random_generator.hpp>
+ #include <boost/uuid/uuid.hpp>
+diff --git a/src/lever/switcher_settings.cc b/src/lever/switcher_settings.cc
+index 4ee7d57..bb4dbd0 100644
+--- a/src/lever/switcher_settings.cc
++++ b/src/lever/switcher_settings.cc
+@@ -6,6 +6,9 @@
+ //
+ #include <utility>
+ #include <boost/algorithm/string.hpp>
++#ifndef BOOST_NO_SCOPED_ENUMS
++#define BOOST_NO_SCOPED_ENUMS
++#endif // BOOST_NO_SCOPED_ENUMS
+ #include <boost/filesystem.hpp>
+ #include <rime/config.h>
+ #include <rime/deployer.h>
+diff --git a/src/lever/user_dict_manager.cc b/src/lever/user_dict_manager.cc
+index 601cfc2..e087739 100644
+--- a/src/lever/user_dict_manager.cc
++++ b/src/lever/user_dict_manager.cc
+@@ -6,6 +6,9 @@
+ //
+ #include <fstream>
+ #include <boost/algorithm/string.hpp>
++#ifndef BOOST_NO_SCOPED_ENUMS
++#define BOOST_NO_SCOPED_ENUMS
++#endif // BOOST_NO_SCOPED_ENUMS
+ #include <boost/filesystem.hpp>
+ #include <boost/scope_exit.hpp>
+ #include <rime/common.h>
+diff --git a/src/lever/userdb_recovery_task.cc b/src/lever/userdb_recovery_task.cc
+index 818e2fd..2a25efd 100644
+--- a/src/lever/userdb_recovery_task.cc
++++ b/src/lever/userdb_recovery_task.cc
+@@ -5,6 +5,9 @@
+ // 2013-04-22 GONG Chen <chen.sst@gmail.com>
+ //
+ #include <boost/algorithm/string.hpp>
++#ifndef BOOST_NO_SCOPED_ENUMS
++#define BOOST_NO_SCOPED_ENUMS
++#endif // BOOST_NO_SCOPED_ENUMS
+ #include <boost/filesystem.hpp>
+ #include <boost/scope_exit.hpp>
+ #include <rime/deployer.h>

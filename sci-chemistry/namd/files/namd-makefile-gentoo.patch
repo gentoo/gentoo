@@ -1,0 +1,88 @@
+# provide paths for charm++ provided includes/libraries/binaries
+
+--- NAMD_2.6b1_Source-patched/Makefile	2005-07-22 18:50:58.000000000 +0000
++++ NAMD_2.6b1_Source/Makefile	2005-09-30 02:28:35.000000000 +0000
+@@ -227,10 +227,10 @@
+ 	$(DSTDIR)/stringhash.o
+ 
+ # definitions for Charm routines
+-CHARMC = $(CHARM)/bin/charmc
+-CHARMXI = $(CHARM)/bin/charmc
+-CHARMINC = $(CHARM)/include $(COPTD)CMK_OPTIMIZE=1
+-CHARMLIB = $(CHARM)/lib
++CHARMC = /usr/bin/charmc
++CHARMXI = /usr/bin/charmc
++CHARMINC = /usr/include/charm-5.9 $(COPTD)CMK_OPTIMIZE=1
++CHARMLIB = /usr/lib
+ 
+ # Libraries we may have changed
+ LIBS = $(PLUGINLIB) $(DPMTALIBS) $(DPMELIBS) $(TCLDLL)
+@@ -250,7 +250,7 @@
+ 
+ # Add new executables here.
+ 
+-BINARIES = namd2 psfgen charmrun flipdcd flipbinpdb
++BINARIES = namd2 psfgen flipdcd flipbinpdb
+ 
+ # This should be rebuilt at every compile, but not on Win32.
+ BUILDINFO = $(DSTDIR)/buildinfo
+@@ -279,10 +279,7 @@
+ 	$(CHARMOPTS) \
+ 	-lm -o namd2
+ 
+-charmrun: $(CHARM)/bin/charmrun # XXX
+-	$(COPY) $(CHARM)/bin/charmrun $@
+-
+-win32binaries: namd2.exe psfgen.exe charmd.exe charmd_faceless.exe charmrun.exe
++win32binaries: namd2.exe psfgen.exe charmd.exe charmd_faceless.exe 
+ 
+ namd2.exe:  $(INCDIR) $(DSTDIR) $(OBJS) $(LIBS)
+ 	$(MAKEBUILDINFO)
+@@ -304,9 +301,6 @@
+ charmd_faceless.exe:
+ 	$(COPY) $(CHARM)/bin/charmd_faceless.exe charmd_faceless.exe
+ 
+-charmrun.exe:
+-	$(COPY) $(CHARM)/bin/charmrun.exe charmrun.exe
+-
+ psfgen:	$(DSTDIR) $(SBOBJS)
+ 	$(CC) $(SBCFLAGS) -o psfgen $(SBOBJS) $(TCLLIB) $(TCLAPPLIB) -lm
+ 
+@@ -565,9 +559,9 @@
+ 
+ DOC_FILES = README.txt announce.txt license.txt notes.txt
+ 
+-RELEASE_FILES = namd2 psfgen charmrun flipdcd flipbinpdb
++RELEASE_FILES = namd2 psfgen flipdcd flipbinpdb
+ 
+-WIN32_RELEASE_FILES = namd2.exe psfgen.exe charmrun.exe charmd.exe charmd_faceless.exe $(TCLDLL)
++WIN32_RELEASE_FILES = namd2.exe psfgen.exe charmd.exe charmd_faceless.exe $(TCLDLL)
+ 
+ release: all
+ 	$(ECHO) Creating release $(RELEASE_DIR_NAME)
+@@ -575,18 +569,18 @@
+ 	cp $(RELEASE_FILES) $(RELEASE_DIR_NAME)
+ 	for f in $(DOC_FILES); do cp .rootdir/$$f $(RELEASE_DIR_NAME); done
+ 	cp -r .rootdir/lib $(RELEASE_DIR_NAME)
+-	if [ -r $(CHARM)/bin/charmd ]; then \
+-	  $(COPY) $(CHARM)/bin/charmd $(RELEASE_DIR_NAME); \
++	if [ -r /usr/bin/charmd ]; then \
++	  $(COPY) /usr/bin/charmd $(RELEASE_DIR_NAME); \
+ 	fi
+-	if [ -r $(CHARM)/bin/charmd_faceless ]; then \
+-	  $(COPY) $(CHARM)/bin/charmd_faceless $(RELEASE_DIR_NAME); \
++	if [ -r /usr/bin/charmd_faceless ]; then \
++	  $(COPY) /usr/bin/charmd_faceless $(RELEASE_DIR_NAME); \
+ 	fi
+ 	chmod -R a+rX $(RELEASE_DIR_NAME)
+ 	tar cf $(RELEASE_DIR_NAME).tar $(RELEASE_DIR_NAME)
+ 	gzip $(RELEASE_DIR_NAME).tar
+-	echo $(CHARM)
+-	ls -l $(CHARM)/lib
+-	echo $(CHARM)
++	echo /usr
++	ls -l /usr/lib
++	echo /usr
+ 	file $(RELEASE_FILES)
+ 
+ winrelease: winall

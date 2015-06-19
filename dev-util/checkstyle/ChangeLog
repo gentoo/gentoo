@@ -1,0 +1,187 @@
+# ChangeLog for dev-util/checkstyle
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/checkstyle/ChangeLog,v 1.46 2014/08/10 21:26:19 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> checkstyle-4.4.ebuild,
+  checkstyle-5.4.ebuild, checkstyle-5.5.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  21 Dec 2011; Ralph Sennhauser <sera@gentoo.org> checkstyle-5.4.ebuild,
+  checkstyle-5.5.ebuild:
+  Add tools.jar to build classpath, thanks to Chewi for noticing
+
+  30 Nov 2011; Fabian Groffen <grobian@gentoo.org> checkstyle-5.5.ebuild:
+  Add back Prefix keywords for bug #390017
+
+*checkstyle-5.5 (20 Nov 2011)
+
+  20 Nov 2011; Ralph Sennhauser <sera@gentoo.org> +checkstyle-5.5.ebuild:
+  Version bump. Bug #390457
+
+*checkstyle-5.4 (09 Nov 2011)
+
+  09 Nov 2011; Ralph Sennhauser <sera@gentoo.org> +checkstyle-5.4.ebuild:
+  Version bump, bug 388485
+
+  21 Feb 2010; Jonathan Callen <abcd@gentoo.org> checkstyle-4.4.ebuild:
+  Transfer prefix keywords (no other changes)
+
+  29 Mar 2009; Petteri Räty <betelgeuse@gentoo.org> checkstyle-4.4.ebuild:
+  Migrate to EAPI 2 for bug #239835.
+
+  15 Feb 2009; Vlastimil Babka <caster@gentoo.org> -checkstyle-4.3.ebuild,
+  checkstyle-4.4.ebuild:
+  Cleanup and use slot deps.
+
+  10 Mar 2008; Kenneth Prugh <ken69267@gentoo.org> checkstyle-4.4.ebuild:
+  amd64 stable, bug #212666
+
+  08 Mar 2008; Markus Meier <maekke@gentoo.org> checkstyle-4.4.ebuild:
+  x86 stable, bug #212666
+
+  08 Mar 2008; Krzysiek Pawlik <nelchael@gentoo.org> checkstyle-4.4.ebuild:
+  Stable on ppc, see bug #212666.
+
+*checkstyle-4.4 (29 Dec 2007)
+
+  29 Dec 2007; Petteri Räty <betelgeuse@gentoo.org> +checkstyle-4.4.ebuild:
+  Version bump. Tests now work with 1.5.
+
+  19 Dec 2007; Petteri Räty <betelgeuse@gentoo.org> -checkstyle-4.2.ebuild:
+  Remove old version.
+
+  25 Nov 2007; Brent Baude <ranger@gentoo.org> checkstyle-4.3.ebuild:
+  marking checkstyle-4.3 ppc for bug 200275
+
+  25 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  checkstyle-4.3.ebuild:
+  stable x86, bug 200275
+
+  25 Nov 2007; Samuli Suominen <drac@gentoo.org> checkstyle-4.3.ebuild:
+  amd64 stable wrt #200275
+
+  10 Jun 2007; Petteri Räty <betelgeuse@gentoo.org> -checkstyle-3.5.ebuild:
+  Delete old version that uses generation 1.
+
+  10 Jun 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  checkstyle-4.2.ebuild:
+  Marked stable on amd64 as per bug 178938.
+
+  10 Jun 2007; Miroslav Šulc <fordfrog@gentoo.org> checkstyle-4.2.ebuild:
+  Fixed missing app-arch/zip in DEPEND
+
+  28 May 2007; nixnut <nixnut@gentoo.org> checkstyle-4.2.ebuild:
+  Stable on ppc wrt bug 178938
+
+  19 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  checkstyle-4.2.ebuild:
+  stable x86, bug 178938
+
+  17 May 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -checkstyle-3.4-r4.ebuild, -checkstyle-4.1.ebuild:
+  Removing old versions.
+
+*checkstyle-4.3 (23 Apr 2007)
+
+  23 Apr 2007; Petteri Räty <betelgeuse@gentoo.org> +checkstyle-4.3.ebuild:
+  Version bump. Test suite works only with virtual/jdk-1.6.
+
+  03 Feb 2007; Steve Dibb <beandog@gentoo.org> checkstyle-4.2.ebuild:
+  add ~amd64, bug 161618
+
+  29 Jan 2007; Krzysiek Pawlik <nelchael@gentoo.org> checkstyle-4.2.ebuild:
+  Add ~ppc, see bug #161618.
+
+*checkstyle-4.2 (12 Jan 2007)
+
+  12 Jan 2007; Petteri Räty <betelgeuse@gentoo.org> +checkstyle-4.2.ebuild:
+  Version bump using generation 2. Added source use flag and src_test support.
+  Should fix bug #140831.
+
+  09 Jan 2007; Vlastimil Babka <caster@gentoo.org> checkstyle-4.1.ebuild:
+  Convert einfo to elog.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  checkstyle-3.4-r4.ebuild, checkstyle-3.5.ebuild, checkstyle-4.1.ebuild:
+  Dropping sparc keywords, see #96229
+
+*checkstyle-4.1 (19 Dec 2005)
+
+  19 Dec 2005; Joshua Nichols <nichoj@gentoo.org> +checkstyle-4.1.ebuild:
+  Version bump (bug #115986).
+
+  04 Oct 2005; Jochen Maes <sejo@gentoo.org> checkstyle-3.5.ebuild:
+  Fixing the ant-tasks depend
+
+  14 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> checkstyle-3.5.ebuild:
+  Stable on ppc.
+
+  13 Aug 2005; Luis Medinas <metalgod@gentoo.org> checkstyle-3.5.ebuild:
+  Stable on AMD64.
+
+*checkstyle-3.5 (29 Jun 2005)
+
+  29 Jun 2005; Thomas Matthijs <axxo@gentoo.org> +checkstyle-3.5.ebuild:
+  version bump + enable ant task, thanks too Christopher G. Stach II
+  <cgs@ldsys.net> in 93239
+
+*checkstyle-3.4-r4 (14 May 2005)
+
+  14 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  -checkstyle-3.3-r1.ebuild, -checkstyle-3.4-r3.ebuild,
+  +checkstyle-3.4-r4.ebuild:
+  updated commons-beanutils dependency to reflect new slotting. see #71952
+
+  02 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> checkstyle-3.3-r1.ebuild,
+  -checkstyle-3.3.ebuild:
+  cleanup, removed old revision with a dependency to regexp.
+
+*checkstyle-3.4-r3 (27 Mar 2005)
+*checkstyle-3.3-r1 (27 Mar 2005)
+
+  27 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> +checkstyle-3.3-r1.ebuild,
+  -checkstyle-3.4-r2.ebuild, +checkstyle-3.4-r3.ebuild:
+  moved from dev-java/regexp to dev-java/jakarta-regexp dependency. see #71336
+
+  14 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> checkstyle-3.3.ebuild,
+  checkstyle-3.4-r2.ebuild:
+  both ebuilds now generate a bash script to make this package easy to use.
+  fixes bug #77767.
+
+  21 Oct 2004; Simon Stelling <blubb@gentoo.org> checkstyle-3.4-r2.ebuild:
+  added ~amd64
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> checkstyle-3.3.ebuild,
+  checkstyle-3.4-r2.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  14 Oct 2004; David Holm <dholm@gentoo.org> checkstyle-3.4-r2.ebuild:
+  Added to ~ppc.
+
+*checkstyle-3.4-r2 (17 Sep 2004)
+
+  17 Sep 2004; Thomas Matthijs <axxo@gentoo.org> -checkstyle-3.4-r1.ebuild,
+  +checkstyle-3.4-r2.ebuild, -checkstyle-3.4.ebuild:
+  named the jar ${PN}.jar to its usable with java-pkg_jar-from
+
+*checkstyle-3.4-r1 (12 Sep 2004)
+
+  12 Sep 2004; Thomas Matthijs <axxo@gentoo.org> +checkstyle-3.4-r1.ebuild:
+  no longer uses packed jars, bug 63306
+
+*checkstyle-3.4 (30 Aug 2004)
+
+  30 Aug 2004; Chris Aniszczyk <zx@gentoo.org> checkstyle-3.3.ebuild,
+  +checkstyle-3.4.ebuild:
+  Version bump
+
+  31 Jul 2004; Thomas Matthijs <axxo@gentoo.org> checkstyle-3.3.ebuild:
+  fix depend
+
+*checkstyle-3.3 (24 Feb 2004)
+
+  24 Feb 2004; Chris Aniszczyk <zx@gentoo.org> checkstyle-3.3.ebuild,
+  metadata.xml:
+  Initial Import. Thanks to Andrew Sayman <lorien420@myrealbox.com> for the
+  initial ebuild. Bug #27982

@@ -1,0 +1,136 @@
+# ChangeLog for media-libs/openimageio
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/openimageio/ChangeLog,v 1.29 2015/05/27 11:28:54 ago Exp $
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> openimageio-1.3.5.ebuild:
+  Stable for x86, wrt bug #529464
+
+  21 May 2015; Agostino Sarubbo <ago@gentoo.org> openimageio-1.3.5.ebuild:
+  Stable for amd64, wrt bug #529464
+
+  17 Feb 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +files/openimageio-1.3.5-openexr-2.x.patch, openimageio-1.3.5.ebuild:
+  Fix missing -pthread with OpenEXR 2.x. The file it's checking if -pthread is
+  required or not, doesn't exist anymore in OpenEXR 2.x.
+
+  24 Jan 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  openimageio-1.1.1.ebuild, openimageio-1.1.7.ebuild, openimageio-1.3.5.ebuild:
+  Fix OpenCV dependencies (new useflag, migration to python-single-r1)
+
+*openimageio-1.3.5 (25 Oct 2013)
+
+  25 Oct 2013; Samuli Suominen <ssuominen@gentoo.org> +openimageio-1.3.5.ebuild:
+  Version bump (known to solve multiple build issues)
+
+  13 Jun 2013; Michael Weber <xmw@gentoo.org> openimageio-1.1.1.ebuild,
+  openimageio-1.1.7.ebuild:
+  Depend on SLOT=0 of media-libs/openjpeg (bug 440086)
+
+  10 Mar 2013; Samuli Suominen <ssuominen@gentoo.org> openimageio-1.1.7.ebuild:
+  Optionalize python_fix_shebangs and python-single-r1_pkg_setup with USE python.
+
+  10 Mar 2013; Samuli Suominen <ssuominen@gentoo.org>
+  -openimageio-1.1.3.ebuild:
+  old
+
+*openimageio-1.1.7 (10 Mar 2013)
+
+  10 Mar 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +openimageio-1.1.7.ebuild:
+  Version bump.
+
+  10 Mar 2013; Samuli Suominen <ssuominen@gentoo.org> openimageio-1.1.1.ebuild,
+  openimageio-1.1.3.ebuild, metadata.xml:
+  Rename USE opencolorio with USE colorio to match media-gfx/blender.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> openimageio-1.1.1.ebuild,
+  openimageio-1.1.3.ebuild:
+  Move Qt dependencies to the new category
+
+  16 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> openimageio-1.1.1.ebuild,
+  openimageio-1.1.3.ebuild:
+  Move from media-gfx/opencolorio to media-libs/opencolorio
+
+  15 Jan 2013; Samuli Suominen <ssuominen@gentoo.org> openimageio-1.1.1.ebuild:
+  x86 stable wrt #436572
+
+*openimageio-1.1.3 (15 Jan 2013)
+
+  15 Jan 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +openimageio-1.1.3.ebuild:
+  Version bump.
+
+  15 Dec 2012; Samuli Suominen <ssuominen@gentoo.org> openimageio-1.1.1.ebuild,
+  +files/openimageio-1.1.1-x86-build.patch:
+  Fix building with x86 (32bit) by reordering internal headers wrt #444784 by
+  "jazzed.jazzed". Patch is from install_deps.sh used when building Blender by
+  hand.
+
+  26 Nov 2012; Agostino Sarubbo <ago@gentoo.org> openimageio-1.1.1.ebuild:
+  Stable for amd64, wrt bug #436572
+
+  25 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> openimageio-1.1.1.ebuild:
+  Utilize vcs-snapshot eclass
+
+  24 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> openimageio-1.1.1.ebuild,
+  metadata.xml:
+  Introduce USE="opencolorio" but leave it disabled by default because of the
+  circular depend opencolorio[opengl] vs. openimageio[opencolorio]
+
+  24 Nov 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -openimageio-1.0.8.ebuild:
+  old
+
+*openimageio-1.1.1 (24 Nov 2012)
+
+  24 Nov 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +openimageio-1.1.1.ebuild, metadata.xml:
+  Version bump wrt #435400 by Hendrik v. Raven
+
+  29 Sep 2012; Anthony G. Basile <blueness@gentoo.org> openimageio-1.0.8.ebuild:
+  keyword ~ppc64, bug #436566
+
+  14 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> openimageio-1.0.8.ebuild:
+  Temporarily disable testsuite wrt #431412
+
+  02 Aug 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -openimageio-0.10.2.ebuild, -files/openimageio-0.10.2-libpng15.patch,
+  -files/openimageio-0.10.2-multilib.patch, -openimageio-0.10.5.ebuild,
+  -files/openimageio-0.10.5+boost-1.50.patch, -openimageio-1.0.7-r1.ebuild,
+  metadata.xml:
+  old
+
+*openimageio-1.0.8 (02 Aug 2012)
+
+  02 Aug 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +openimageio-1.0.8.ebuild:
+  Version bump. Remove no-op USE="opencv" and add missing media-libs/libwebp
+  dependency.
+
+*openimageio-1.0.7-r1 (21 Jul 2012)
+
+  21 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +openimageio-1.0.7-r1.ebuild, -openimageio-1.0.7.ebuild:
+  Fix qt4 USE flag.
+
+*openimageio-1.0.7 (15 Jul 2012)
+
+  15 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/openimageio-0.10.5+boost-1.50.patch, +openimageio-1.0.7.ebuild,
+  metadata.xml:
+  Version bump; the new version builds with GCC 4.7 (closes bug #424061) and
+  with Boost 1.50 (thanks to Philipp Middendorf in bug #424353). Also introduce
+  USE flags for new and old dependencies.
+
+*openimageio-0.10.5 (22 Feb 2012)
+
+  22 Feb 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +openimageio-0.10.5.ebuild:
+  Version bump.
+
+*openimageio-0.10.2 (15 Oct 2011)
+
+  15 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +openimageio-0.10.2.ebuild, +files/openimageio-0.10.2-libpng15.patch,
+  +files/openimageio-0.10.2-multilib.patch:
+  Initial commit wrt #377853 by "Shannon"

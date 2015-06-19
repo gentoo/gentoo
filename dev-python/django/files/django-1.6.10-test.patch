@@ -1,0 +1,81 @@
+ django/core/management/commands/makemessages.py |  4 ++--
+ tests/i18n/commands/extraction.py               | 14 +++++++++++---
+ tests/utils_tests/test_jslex.py                 |  2 +-
+ 3 files changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/django/core/management/commands/makemessages.py b/django/core/management/commands/makemessages.py
+index 5b09661..c8f05ac 100644
+--- a/django/core/management/commands/makemessages.py
++++ b/django/core/management/commands/makemessages.py
+@@ -90,7 +90,7 @@ class TranslatableFile(object):
+             orig_file = os.path.join(self.dirpath, self.file)
+             is_templatized = file_ext in command.extensions
+             if is_templatized:
+-                with open(orig_file, "rU") as fp:
++                with open(orig_file, "r") as fp:
+                     src_data = fp.read()
+                 thefile = '%s.py' % self.file
+                 content = templatize(src_data, orig_file[2:])
+@@ -404,7 +404,7 @@ class Command(NoArgsCommand):
+         for domain in domains:
+             django_po = os.path.join(django_dir, 'conf', 'locale', locale, 'LC_MESSAGES', '%s.po' % domain)
+             if os.path.exists(django_po):
+-                with io.open(django_po, 'rU', encoding='utf-8') as fp:
++                with io.open(django_po, 'r', encoding='utf-8') as fp:
+                     m = plural_forms_re.search(fp.read())
+                 if m:
+                     plural_form_line = force_str(m.group('value'))
+diff --git a/tests/i18n/commands/extraction.py b/tests/i18n/commands/extraction.py
+index e0b6deb..06cf50d 100644
+--- a/tests/i18n/commands/extraction.py
++++ b/tests/i18n/commands/extraction.py
+@@ -5,6 +5,7 @@ import io
+ import os
+ import re
+ import shutil
++import sys
+ import warnings
+ 
+ from django.core import management
+@@ -141,6 +142,10 @@ class BasicExtractorTests(ExtractorTests):
+         self.assertIn("UnicodeDecodeError: skipped file not_utf8.txt in .",
+                       force_text(stdout.getvalue()))
+ 
++    # This issue is fixed in 1.8+ (#23312).
++    if six.PY3 and sys.platform.startswith('win'):
++        test_unicode_decode_error = expectedFailure(test_unicode_decode_error)
++
+     def test_extraction_warning(self):
+         """test xgettext warning about multiple bare interpolation placeholders"""
+         os.chdir(self.test_dir)
+@@ -206,13 +211,16 @@ class BasicExtractorTests(ExtractorTests):
+             self.assertEqual(len(ws), 3)
+             for w in ws:
+                 self.assertTrue(issubclass(w.category, TranslatorCommentWarning))
+-            six.assertRegex(self, str(ws[0].message),
++            six.assertRegex(
++                self, str(ws[0].message),
+                 r"The translator-targeted comment 'Translators: ignored i18n comment #1' \(file templates[/\\]comments.thtml, line 4\) was ignored, because it wasn't the last item on the line\."
+             )
+-            six.assertRegex(self, str(ws[1].message),
++            six.assertRegex(
++                self, str(ws[1].message),
+                 r"The translator-targeted comment 'Translators: ignored i18n comment #3' \(file templates[/\\]comments.thtml, line 6\) was ignored, because it wasn't the last item on the line\."
+             )
+-            six.assertRegex(self, str(ws[2].message),
++            six.assertRegex(
++                self, str(ws[2].message),
+                 r"The translator-targeted comment 'Translators: ignored i18n comment #4' \(file templates[/\\]comments.thtml, line 8\) was ignored, because it wasn't the last item on the line\."
+             )
+         # Now test .po file contents
+diff --git a/tests/utils_tests/test_jslex.py b/tests/utils_tests/test_jslex.py
+index a2af7b4..e696149 100644
+--- a/tests/utils_tests/test_jslex.py
++++ b/tests/utils_tests/test_jslex.py
+@@ -1,5 +1,5 @@
++# -*- coding: utf-8 -*-
+ """Tests for jslex."""
+-# encoding: utf-8
+ # originally from https://bitbucket.org/ned/jslex
+ 
+ from django.test import TestCase

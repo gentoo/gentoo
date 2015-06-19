@@ -1,0 +1,101 @@
+# ChangeLog for dev-java/jnr-ffi
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jnr-ffi/ChangeLog,v 1.20 2015/06/17 16:55:02 monsieurp Exp $
+
+  17 Jun 2015; Patrice Clement <monsieurp@gentoo.org> -jnr-ffi-0.7.11.ebuild,
+  -jnr-ffi-0.7.7.ebuild, -jnr-ffi-0.7.9.ebuild, -jnr-ffi-1.0.6.ebuild,
+  jnr-ffi-0.7.11-r1.ebuild, jnr-ffi-1.0.10.ebuild, jnr-ffi-2.0.2.ebuild:
+  Stable for x86+amd64 through ALLARCHES. Remove old. Fix bug 552362.
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  02 Apr 2015; James Le Cuirot <chewi@gentoo.org> jnr-ffi-2.0.2.ebuild:
+  The line to remove the broken test was supposed to be removed but wasn't amid
+  the earlier confusion. Upstream appears to have fixed it.
+
+  02 Apr 2015; James Le Cuirot <chewi@gentoo.org> jnr-ffi-1.0.10.ebuild,
+  jnr-ffi-2.0.2.ebuild:
+  1.0.10's SRC_URI no longer matches the mirrors and 2.0.2 still uses the old
+  style GitHub URL. Sort this mess out once and for all.
+
+  29 Mar 2015; Patrice Clement <monsieurp@gentoo.org> jnr-ffi-1.0.10.ebuild,
+  jnr-ffi-2.0.2.ebuild:
+  Adjust SLOTs and ${S}. Fix bug 544778 and bug 544780.
+
+*jnr-ffi-2.0.2 (21 Mar 2015)
+
+  21 Mar 2015; Patrice Clement <monsieurp@gentoo.org>
+  +files/jnr-ffi-2.0.2-junit48.patch, +jnr-ffi-2.0.2.ebuild,
+  jnr-ffi-1.0.10.ebuild, jnr-ffi-1.0.6.ebuild:
+  Version bump courtesy of Arfrever <arfrever.fta@gmail.com>. Fix bug 525342.
+
+*jnr-ffi-0.7.11-r1 (13 Nov 2014)
+
+  13 Nov 2014; Johann Schmitz <ercpe@gentoo.org>
+  +files/jnr-ffi-0.7.11-flags.patch, +jnr-ffi-0.7.11-r1.ebuild:
+  Added patch to strip -Werror from compile flags (bug #528780)
+
+*jnr-ffi-1.0.10 (12 Jan 2014)
+
+  12 Jan 2014; Tom Wijsman <TomWij@gentoo.org> +jnr-ffi-1.0.10.ebuild:
+  Version bump to 1.0.10; fixes bug #486030, reported by Arfrever Frehtes
+  Taifersar Arahesis.
+
+*jnr-ffi-1.0.6 (21 Sep 2013)
+
+  21 Sep 2013; Tom Wijsman <TomWij@gentoo.org>
+  +files/jnr-ffi-1.0.6-junit48.patch, +jnr-ffi-1.0.6.ebuild:
+  Version bump to 1.0.6, fixes bug #485144 reported by Arfrever. Patched tests
+  to work with both junit 4.8 and 4.11. New SLOT 1.
+
+*jnr-ffi-0.7.11 (17 Sep 2013)
+
+  17 Sep 2013; Tom Wijsman <TomWij@gentoo.org> +jnr-ffi-0.7.11.ebuild:
+  Version bump to 0.7.11, fixes part of bug #485144 reported by Arfrever.
+
+  31 Aug 2013; Pacho Ramos <pacho@gentoo.org> jnr-ffi-0.5.10.ebuild:
+  Drop -Werror and fix gcc-4.7 (#438132)
+
+*jnr-ffi-0.7.9 (07 Feb 2013)
+
+  07 Feb 2013; Ralph Sennhauser <sera@gentoo.org> -jnr-ffi-0.7.4.ebuild,
+  -jnr-ffi-0.7.6.ebuild, +jnr-ffi-0.7.9.ebuild:
+  Version bump. #452168
+  Remove obsolete.
+
+*jnr-ffi-0.7.7 (25 Sep 2012)
+
+  25 Sep 2012; Ralph Sennhauser <sera@gentoo.org> +jnr-ffi-0.7.7.ebuild:
+  Version bump. #431936
+
+*jnr-ffi-0.7.6 (25 Sep 2012)
+
+  25 Sep 2012; Ralph Sennhauser <sera@gentoo.org> +jnr-ffi-0.7.6.ebuild:
+  Version bump. #431936
+
+  28 May 2012; Johannes Huber <johu@gentoo.org> jnr-ffi-0.6.0.ebuild:
+  Stable for x86, wrt bug #417813
+
+*jnr-ffi-0.7.4 (28 May 2012)
+
+  28 May 2012; Ralph Sennhauser <sera@gentoo.org> +jnr-ffi-0.7.4.ebuild:
+  Version bump. #417889
+  Drop restrict test and run those which pass. Upstream still has ignore test
+  failures enabled.
+
+  28 May 2012; Agostino Sarubbo <ago@gentoo.org> jnr-ffi-0.6.0.ebuild:
+  Stable for amd64, wrt bug #417813
+
+  09 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> jnr-ffi-0.5.10.ebuild:
+  x86 stable wrt bug #396305
+
+  30 Apr 2012; Agostino Sarubbo <ago@gentoo.org> jnr-ffi-0.5.10.ebuild:
+  Stable for amd64, wrt bug #396305
+
+*jnr-ffi-0.6.0 (12 Jan 2012)
+*jnr-ffi-0.5.10 (12 Jan 2012)
+
+  12 Jan 2012; Ralph Sennhauser <sera@gentoo.org> +jnr-ffi-0.5.10.ebuild,
+  +jnr-ffi-0.6.0.ebuild, +files/jnr-ffi_maven-build.xml:
+  New package, replacement for dev-java/jaffl.

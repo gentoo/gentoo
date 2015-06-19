@@ -1,0 +1,262 @@
+# ChangeLog for media-sound/aumix
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/aumix/ChangeLog,v 1.75 2012/05/05 08:10:37 mgorny Exp $
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> aumix-2.9.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  16 Aug 2010; Jeroen Roovers <jer@gentoo.org> aumix-2.9.1.ebuild:
+  Stable for PPC (bug #327853).
+
+  16 Aug 2010; Jeroen Roovers <jer@gentoo.org> aumix-2.9.1.ebuild:
+  Stable for HPPA (bug #327853).
+
+  24 Jul 2010; Raúl Porcel <armin76@gentoo.org> aumix-2.9.1.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #327853
+
+  19 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> aumix-2.9.1.ebuild:
+  ppc64 stable wrt #327853
+
+  12 Jul 2010; Christian Faulhammer <fauli@gentoo.org> aumix-2.9.1.ebuild:
+  stable x86, bug 327853
+
+  12 Jul 2010; Markos Chandras <hwoarang@gentoo.org> aumix-2.9.1.ebuild:
+  Stable on amd64 wrt bug #327853
+
+*aumix-2.9.1 (11 Jun 2010)
+
+  11 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> +aumix-2.9.1.ebuild:
+  Version bump.
+
+*aumix-2.9 (14 Apr 2010)
+
+  14 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> +aumix-2.9.ebuild:
+  Version bump.
+
+*aumix-2.8-r5 (12 May 2009)
+
+  12 May 2009; Samuli Suominen <ssuominen@gentoo.org> +aumix-2.8-r5.ebuild,
+  +files/aumix-2.8-noninter_strncpy.patch:
+  Fix buffer overflow when changing volume wrt #260985, thanks to Guillaume
+  Rosaire and Magnus Granberg.
+
+  31 Mar 2008; <ricmm@gentoo.org> aumix-2.8-r4.ebuild:
+  Drop to ~mips due to unstable deps
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> aumix-2.8-r4.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  23 May 2007; Jeremy Huddleston <eradicator@gentoo.org>
+  aumix-2.8-r4.ebuild:
+  Removed old portage dep.  Ref bug #162516.
+
+  25 Mar 2007; Samuli Suominen <drac@gentoo.org> files/aumix.rc6:
+  Remove unnecessary bashism for bug 171689.
+
+  29 Aug 2006; Luis Medinas <metalgod@gentoo.org> -aumix-2.8-r2.ebuild:
+  Remove older revision that still uses gtk2 use flag.
+
+  09 Jul 2006; Joshua Kinard <kumba@gentoo.org> aumix-2.8-r4.ebuild:
+  Marked stable on mips.
+
+  23 Apr 2006; Thomas Cort <tcort@gentoo.org> aumix-2.8-r4.ebuild:
+  Stable on alpha wrt Bug #125481.
+
+  10 Mar 2006; Markus Rothe <corsair@gentoo.org> aumix-2.8-r4.ebuild:
+  Stable on ppc64; bug #125481
+
+  10 Mar 2006; Michael Hanselmann <hansmi@gentoo.org> aumix-2.8-r4.ebuild:
+  Stable on ppc.
+
+  10 Mar 2006; Michele Noberasco <s4t4n@gentoo.org> aumix-2.8-r4.ebuild:
+  Stable for x86. See bug #125481.
+
+  10 Mar 2006; Aron Griffis <agriffis@gentoo.org> aumix-2.8-r4.ebuild:
+  Mark 2.8-r4 stable on ia64
+
+  09 Mar 2006; Luis Medinas <metalgod@gentoo.org> aumix-2.8-r4.ebuild:
+  Stable on amd64. Bug #125481.
+
+  09 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> aumix-2.8-r4.ebuild:
+  Stable on sparc wrt #125481
+
+  08 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> aumix-2.8-r2.ebuild,
+  -aumix-2.8-r3.ebuild:
+  Drop old version.
+
+*aumix-2.8-r4 (08 Feb 2006)
+
+  08 Feb 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/aumix-2.8-mute.patch, +aumix-2.8-r4.ebuild:
+  Added patch to fix mute script, bug #122087.
+
+*aumix-2.8-r3 (22 Jan 2006)
+
+  22 Jan 2006; MATSUU Takuto <matsuu@gentoo.org> +aumix-2.8-r3.ebuild:
+  Removed gtk2 use flag, bug 106560.
+  Clean up ebuild.
+
+  07 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org> files/aumix.rc6:
+  Updated init script to work with sparc audio. Closes bug #84412 thanks to
+  Peter Schloemer <dapete@dapete.de>.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> aumix-2.8-r2.ebuild:
+  Stable on ppc64
+
+  11 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> aumix-2.8-r2.ebuild:
+  Stable on alpha.
+
+  10 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  files/aumix-2.8-nls.patch:
+  Prevent auto* from rerunning... closes bug #70379.
+
+  08 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -aumix-2.7-r4.ebuild, -aumix-2.8.ebuild:
+  Removing old versions.
+
+  08 Nov 2004; Hardave Riar <hardave@gentoo.org> aumix-2.8-r2.ebuild:
+  Stable on mips, bug #69587.
+
+  01 Nov 2004; Markus Rothe <corsair@gentoo.org>
+
+  aumix-2.8-r2.ebuild:
+  Marked ~ppc64; bug #64627
+
+  31 Oct 2004; Michael Hanselmann <hansmi@gentoo.org> aumix-2.8-r2.ebuild:
+  Stable on ppc.
+
+  31 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> files/aumix.rc6:
+  Fixed depend()
+
+  31 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/aumix-2.8-nls.patch:
+  Only installing .desktop file to applications dir. Fixed building with -nls
+  to close bug #58897.
+
+  15 Oct 2004; David Holm <dholm@gentoo.org> aumix-2.8-r2.ebuild:
+  Added to ~ppc.
+
+  06 Oct 2004; Guy Martin <gmsoft@gentoo.org> aumix-2.8-r2.ebuild:
+  Stable on hppa.
+
+  03 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> aumix-2.8-r2.ebuild:
+  Stable amd64, sparc, x86.
+
+  29 Aug 2004; Jeremy Huddleston <eradicator@gentoo.org> files/aumix.rc6:
+  Added 'usr hotplug' to init script for bug #62091.
+
+  23 Jul 2004; Seemant Kulleen <seemant@gentoo.org> aumix-2.8-r2.ebuild:
+  add nls check in the configure -- no nls now = no .mofiles being installed
+
+  22 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/aumix-2.8-close-dialogs.patch, +files/aumix-2.8-save_load.patch:
+  Added aumix-2.8-close-dialogs.patch aumix-2.8-save_load.patch from upstream.
+
+*aumix-2.8-r2 (22 Jul 2004)
+
+  22 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/aumix-2.8-nohome.patch, +aumix-2.8-r2.ebuild:
+  Fix aumix segfaulting when env(HOME) is not defined. Thanks to Collins Richey
+  <erichey2@comcast.net>. Closes bug #57291
+
+  13 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> aumix-2.8-r1.ebuild:
+  Stable on alpha.
+
+  10 Jun 2004; Guy Martin <gmsoft@gentoo.org> aumix-2.8-r1.ebuild:
+  Marked stable on hppa.
+
+  06 Jun 2004; Jason Wever <weeve@gentoo.org> aumix-2.8-r1.ebuild:
+  Sparc me like a hurricane.
+
+  30 May 2004; Jeremy Huddleston <eradicator@gentoo.org> aumix-2.8-r1.ebuild:
+  Stable x86.
+
+  28 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> aumix-2.8-r1.ebuild:
+  Removed gnome form IUSE.
+
+  26 Apr 2004; Stephen P. Becker <geoman@gentoo.org> aumix-2.8-r1.ebuild,
+  aumix-2.8.ebuild:
+  2.8 stable on mips, ~mips keyword added to 2.8-r1
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> aumix-2.7-r4.ebuild:
+  Add die following econf for bug 48950
+
+*aumix-2.8-r1 (18 Apr 2004)
+
+  18 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> aumix-2.8-r1.ebuild:
+  USE flag support fixed for bug #48101.
+
+  02 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> aumix-2.8.ebuild:
+  Removed alsa IUSE.  Fixed myconf.  Closes bug #46475.
+
+  22 Feb 2004; Aron Griffis <agriffis@gentoo.org> aumix-2.8.ebuild:
+  stable on alpha and ia64
+
+  23 Feb 2004; Seemant Kulleen <seemant@gentoo.org> files/aumix.rc6:
+  grammar fix in the initscript
+
+  26 Jan 2004; <gustavoz@gentoo.org> aumix-2.8.ebuild:
+  stable on sparc
+
+  24 Jan 2004; Brad House <brad_mssw@gentoo.org> aumix-2.8.ebuild:
+  stable on amd64
+
+  10 Jan 2004; Jason Wever <weeve@gentoo.org> aumix-2.8.ebuild:
+  Added ~sparc keyword.
+
+  09 Dec 2003; Seemant Kulleen <seemant@gentoo.org> aumix-2.7-r4.ebuild,
+  aumix-2.8.ebuild:
+  fix gtk/gtk2 issue so that it compiles gtk1 interface if -gtk in USE. Thanks
+  to: Will Richey <w-gentoo@mulm.org> in bug #35444
+
+  18 May 2003; Seemant Kulleen <seemant@gentoo.org> files/aumix.rc6:
+  Added support for OSS detection in the initscript. Thanks to: Jarkko
+  Haapalainen <dragon@opp.ysao.fi> in bug #20691
+
+*aumix-2.8 (16 Dec 2002)
+
+  04 Nov 2003; Joshua Kinard <kumba@gentoo.org> aumix-2.8.ebuild:
+  Added ~mips to KEYWORDS
+
+  04 Aug 2003; Guy Martin <gmsoft@gentoo.org> aumix-2.8.ebuild :
+  Added hppa to KEYWORDS.
+
+  16 Dec 2002; Seemant Kulleen <seemant@gentoo.org> aumix-2.8.ebuild
+  files/digest-aumix-2.8 :
+
+  New version which can use either/both gtk versions.  Ebuild by:
+  cardoe@cardoe.com (Doug Goldstein) in bug #12287
+
+*aumix-2.7-r4 (21 May 2002)
+
+  20 Jun 2003; Guy Martin <gmsoft@gento.org> aumix-2.7-r4.ebuild :
+  Added hppa to KEYWORDS.
+
+  16 Dec 2002; Seemant Kulleen <seemant@gentoo.org> aumix-2.7-r4.ebuild :
+
+  Fixed the myconf stuff.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  15 Dec 2002; Bjoern Brauel <bjb@gentoo.org> aumix-2.7-r4.ebuild :
+  unmask on alpha
+
+  18 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
+
+  16 Sep 2002; Maarten Thibaut <murphy@gentoo.org> aumix-2.7-r4.ebuild : Added
+  sparc/sparc64 keywords
+
+  21 May 2002; Martin Schlemmer <azarah@gentoo.org> : Resolve bug #2777.
+
+*aumix-2.7-r3 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

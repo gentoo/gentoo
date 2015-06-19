@@ -1,0 +1,85 @@
+ configure.in                  | 40 +++++++++++++++++++++-------------------
+ src/libsphinxbase/Makefile.am |  1 +
+ 2 files changed, 22 insertions(+), 19 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index e10629c..b5d6ea9 100644
+--- a/configure.in
++++ b/configure.in
+@@ -62,13 +62,15 @@ if test x$withval = xno; then
+    use_lapack=false
+ fi
+ ])
+-if test x$use_lapack = xtrue; then
+-   AC_CHECK_LIB(lapack, sgesv_,,use_internal_lapack=true)
+-   if test x$use_internal_lapack != xtrue; then
+-      AC_CHECK_LIB(blas, sgemm_,,use_internal_lapack=true)
+-   fi
++AS_IF([test "x$with_lapack" = "xyes"], [
++   PKG_CHECK_MODULES([LAPACK], [lapack],,
++                     AC_CHECK_LIB(lapack, sgesv_,,use_internal_lapack=true))
++   AS_IF([test "x$use_internal_lapack" != "xtrue"], [
++      PKG_CHECK_MODULES([BLAS], [blas],,
++                        AC_CHECK_LIB(blas, sgemm_,,use_internal_lapack=true))
++   ])
+    AC_DEFINE(WITH_LAPACK, [], [Enable matrix algebra with LAPACK])
+-fi
++])
+ AM_CONDITIONAL(LAPACK_LITE, test x$use_internal_lapack = xtrue)
+ AM_CONDITIONAL(USE_LAPACK, test x$use_lapack = xtrue)
+ 
+@@ -208,9 +210,15 @@ AM_PROG_LIBTOOL
+ dnl
+ dnl Check for Doxygen, and build dox if present
+ dnl
+-AC_CHECK_PROG(HAVE_DOXYGEN, doxygen, yes, no)
++AC_ARG_ENABLE([doc],
++   AS_HELP_STRING([--enable-doc], [Build docs using doxygen]))
++AS_IF([test "x$enable_doc" = "xyes"], [
++   AC_CHECK_PROG(HAVE_DOXYGEN, doxygen, yes, no)
++	AS_IF([test "x$HAVE_DOXYGEN" != "xyes"], [
++      AC_MSG_ERROR([--enable-doc given, but doxygen not found.]); exit 1
++   ])
++])
+ AM_CONDITIONAL(BUILD_DOXYGEN, test "x$HAVE_DOXYGEN" = "xyes")
+-
+ dnl
+ dnl Check for Python, and build python module if present
+ dnl
+@@ -260,19 +268,13 @@ fi
+ AM_CONDITIONAL(BUILD_CYTHON, test "x$HAVE_CYTHON" = "xyes")
+ 
+ dnl
+-dnl Check for pkgconfig
+-dnl
+-AC_CHECK_PROG(HAVE_PKGCONFIG, pkg-config, yes, no)
+-
+-dnl
+ dnl Check for libsndfile
+ dnl
+-if test "x$HAVE_PKGCONFIG" = "xyes"; then
+-   PKG_CHECK_MODULES(SNDFILE,sndfile,,true)
+-   AC_CHECK_HEADERS([sndfile.h])
+-   PKG_CHECK_MODULES(SAMPLERATE,samplerate,,true)
+-   AC_CHECK_HEADERS([samplerate.h])
+-fi
++PKG_CHECK_MODULES(SNDFILE,sndfile,,true)
++AC_CHECK_HEADERS([sndfile.h])
++PKG_CHECK_MODULES(SAMPLERATE,samplerate,,true)
++AC_CHECK_HEADERS([samplerate.h])
++
+ AC_SUBST(SNDFILE_LIBS)
+ AC_SUBST(SNDFILE_CFLAGS)
+ AC_SUBST(SAMPLERATE_LIBS)
+diff --git a/src/libsphinxbase/Makefile.am b/src/libsphinxbase/Makefile.am
+index 52ee3e1..f4efd8a 100644
+--- a/src/libsphinxbase/Makefile.am
++++ b/src/libsphinxbase/Makefile.am
+@@ -8,6 +8,7 @@ libsphinxbase_la_SOURCES =
+ # This is API version 2, software release 1, which also supports API version 1
+ libsphinxbase_la_LDFLAGS = -version-info 2:1:1
+ libsphinxbase_la_LIBADD = $(LTLIBICONV) \
++	@LAPACK_LIBS@ \
+ 	util/libsphinxutil.la \
+ 	fe/libsphinxfe.la \
+ 	feat/libsphinxfeat.la \

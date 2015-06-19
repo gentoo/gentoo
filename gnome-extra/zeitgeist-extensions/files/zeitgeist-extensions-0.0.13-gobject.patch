@@ -1,0 +1,53 @@
+diff -Nur a/extensions/tracker/tracker.py b/extensions/tracker/tracker.py
+--- a/extensions/tracker/tracker.py	2011-12-18 16:42:33.000000000 +0100
++++ b/extensions/tracker/tracker.py	2011-12-18 16:55:08.000000000 +0100
+@@ -26,9 +26,7 @@
+ import logging
+ 
+ import gi
+-from gi.repository import Tracker
+-
+-import gobject
++from gi.repository import Tracker, GObject
+ 
+ from _zeitgeist.engine.extension import Extension
+ from _zeitgeist.engine import constants
+@@ -52,7 +50,7 @@
+         self._engine = engine
+         self.cursor = get_default_cursor()
+         if not (os.path.exists(INDEX_FILE)):
+-            gobject.idle_add (self._reindex)
++            GObject.idle_add (self._reindex)
+ 
+     def _reindex(self):
+         log.info("Empty index detected. Doing full rebuild")
+diff -Nur a/extensions/fts/fts.py b/extensions/fts/fts.py
+--- a/extensions/fts/fts.py	2011-12-18 17:21:37.000000000 +0100
++++ b/extensions/fts/fts.py	2011-12-18 17:22:09.000000000 +0100
+@@ -49,7 +49,7 @@
+ from Queue import Queue, Empty
+ import threading
+ from urllib import quote as url_escape, unquote as url_unescape
+-import gobject, gio
++from gi.repository import GObject
+ from cStringIO import StringIO
+ 
+ from zeitgeist.datamodel import Symbol, StorageState, ResultType, TimeRange, NULL_EVENT, NEGATION_OPERATOR
+@@ -294,7 +294,7 @@
+ 		# Cache of parsed DesktopEntrys
+ 		self._desktops = {}
+ 		
+-		gobject.threads_init()
++		GObject.threads_init()
+ 		self._may_run = True
+ 		self._queue = Queue(0)
+ 		self._worker = threading.Thread(target=self._worker_thread,
+@@ -304,7 +304,7 @@
+ 		# We need to defer the index checking until after ZG has completed
+ 		# full setup. Hence the idle handler.
+ 		# We also don't start the worker until after we've checked the index
+-		gobject.idle_add (self._check_index_and_start_worker)
++		GObject.idle_add (self._check_index_and_start_worker)
+ 	
+ 	@synchronized (INDEX_LOCK)
+ 	def _check_index_and_start_worker (self):

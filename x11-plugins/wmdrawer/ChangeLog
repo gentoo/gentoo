@@ -1,0 +1,109 @@
+# ChangeLog for x11-plugins/wmdrawer
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmdrawer/ChangeLog,v 1.25 2014/04/07 19:53:06 ssuominen Exp $
+
+  07 Apr 2014; Samuli Suominen <ssuominen@gentoo.org> wmdrawer-0.10.5-r2.ebuild:
+  Use EAPI5 instead of EAPI1.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> wmdrawer-0.10.5-r2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  28 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  wmdrawer-0.10.5-r2.ebuild:
+  Fix slot-dep on gtk+
+
+  31 Aug 2010; Michele Noberasco <s4t4n@gentoo.org> wmdrawer-0.10.5-r2.ebuild:
+  Honour Gentoo LDFLAGS. Closes bug #334005.
+  Fixed man page installation.
+
+  02 Dec 2008; Michele Noberasco <s4t4n@gentoo.org> wmdrawer-0.10.5-r2.ebuild:
+  Fix LDFLAGS ordering per bug #248640. Some generic QA fixes.
+
+  12 Jan 2008; Santiago M. Mola <coldwind@gentoo.org>
+  wmdrawer-0.10.5-r2.ebuild:
+  Add pkgconfig to DEPEND (#204543), misc QA fixes.
+
+  18 Nov 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  wmdrawer-0.10.5-r2.ebuild:
+  +gtk unconditionally for gnome-1.x removal
+
+  24 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  -wmdrawer-0.10.5.ebuild, wmdrawer-0.10.5-r2.ebuild:
+  Fixed DEPEND for modular X.
+
+  14 Nov 2005; Luis Medinas <metalgod@gentoo.org> wmdrawer-0.10.5-r2.ebuild:
+  Marked Stable on amd64.
+
+  07 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmdrawer-0.10.5-r2.ebuild,
+  wmdrawer-0.10.5.ebuild:
+  Removed INSTALL and COPYING from dodoc.
+
+*wmdrawer-0.10.5-r2 (20 Sep 2005)
+
+  20 Sep 2005; Michele Noberasco <s4t4n@gentoo.org> wmdrawer-0.10.5-r2.ebuild:
+  Revision bump, substituting gtk2 with gtk USE flag. I'm leaving already unmasked
+  archs as they are, since this is a non-change anyway. Fixes bug #106560.
+  wmdrawer-0.10.5-r1.ebuild:
+  Wiped out previous ebuild.
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  wmdrawer-0.10.5-r1.ebuild:
+  Stable on ppc.
+
+  29 Aug 2005; Michele Noberasco <s4t4n@gentoo.org> wmdrawer-0.10.5-r1.ebuild:
+  Stable for x86.
+
+*wmdrawer-0.10.5-r1 (29 Mar 2005)
+
+  29 Mar 2005; Michele Noberasco <s4t4n@gentoo.org> wmdrawer-0.10.5-r1.ebuild:
+  Revision bump, adding support for gtk2 USE flag. Add added some magic sed
+  to honour Gentoo CFLAGS.
+  wmdrawer-0.10.4.1.ebuild:
+  Wiped out older ebuild.
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> wmdrawer-0.10.5.ebuild:
+  Stable on amd64.
+
+  04 Sep 2004; Michele Noberasco <s4t4n@gentoo.org> wmdrawer-0.10.5.ebuild:
+  Stable for x86.
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  wmdrawer-0.10.5.ebuild:
+  Masked wmdrawer-0.10.5.ebuild stable for ppc
+
+*wmdrawer-0.10.5 (01 Aug 2004)
+
+  01 Aug 2004; Michele Noberasco <s4t4n@gentoo.org> wmdrawer-0.10.5.ebuild:
+  Version bump.
+  wmdrawer-0.10.4.1.ebuild:
+  Add gzip to DEPEND. Stable on x86.
+  wmdrawer-0.10.2.ebuild:
+  Remove older ebuild.
+
+  15 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> wmdrawer-0.10.4.1.ebuild:
+  Stable on amd64.
+
+*wmdrawer-0.10.4.1 (02 Nov 2003)
+
+  02 Nov 2003; Markus Nigbur <pyrania@gentoo.org> wmdrawer-0.10.1.ebuild,
+  wmdrawer-0.10.2.ebuild, wmdrawer-0.10.4.1.ebuild, wmdrawer-0.9.15.ebuild:
+  Version bump and removed old versions.
+
+*wmdrawer-0.10.2 (26 Sep 2003)
+
+  26 Sep 2003; Brad Cowan <bcowan@gentoo.org> wmdrawer-0.10.2.ebuild:
+  Version bump.
+
+  12 Jun 2003; <msterret@gentoo.org> wmdrawer-0.10.1.ebuild,
+  wmdrawer-0.9.15.ebuild:
+  add Header
+
+*wmdrawer-0.10.1 (03 Jun 2003)
+
+  03 Jun 2003; Brad Cowan <bcowan@gentoo.org> wmdrawer-0.10.1.ebuild:
+  bumped version
+
+*wmdrawer-0.9.15 (03 Jun 2003)
+
+  03 Jun 2003; Brad Cowan <bcowan@gentoo.org> wmdrawer-0.9.15.ebuild:
+  Initial import. Thanks to Martin Schipany bug # 16223

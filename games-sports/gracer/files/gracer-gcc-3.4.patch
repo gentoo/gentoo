@@ -1,0 +1,120 @@
+--- src/glbind.c.old	2004-11-05 01:15:07.141221016 +0000
++++ src/glbind.c	2004-11-05 01:15:32.808319024 +0000
+@@ -2150,6 +2150,7 @@
+     return 3;
+ 
+   default:
++    ;
+   }
+ 
+ ERROR:
+@@ -2889,6 +2890,7 @@
+     return 6;
+ 
+   default:
++    ;
+   }
+ 
+ ERROR:
+@@ -3081,6 +3083,7 @@
+     return 4;
+ 
+   default:
++    ;
+   }
+ 
+ ERROR:
+--- src/glutwidgets.c.old	2004-11-05 01:17:17.941336376 +0000
++++ src/glutwidgets.c	2004-11-05 01:18:42.059548464 +0000
+@@ -255,6 +255,7 @@
+ 	widget->width += (width - screen_width);
+ 	break;
+       default:
++        ;
+       }
+       switch (widget->anchor & GR_VERTICAL_MASK) {
+       case GR_BOTTOM:
+@@ -268,6 +269,7 @@
+ 	widget->height += (width - screen_height);
+ 	break;
+       default:
++        ;
+       }
+       glut_widget_calc_bbox (widget);
+     }
+@@ -327,6 +329,7 @@
+       break;
+ 
+     default:
++      ;
+     }
+   }
+ 
+@@ -504,6 +507,7 @@
+       break;
+ 
+     default:
++      ;
+     }
+   }
+ 
+@@ -1299,6 +1303,7 @@
+     break;
+ 
+   default:
++    ;
+   }
+ }
+ 
+@@ -1571,6 +1576,7 @@
+       break;
+ 
+     default:
++      ;
+     }
+ 
+     glColor4fv (widget->fg_color[GR_STATE_NORMAL]);
+--- src/gr_world.c.old	2004-11-05 01:19:30.766143936 +0000
++++ src/gr_world.c	2004-11-05 01:19:07.717647840 +0000
+@@ -169,6 +169,7 @@
+       break;
+ 
+     default:
++      ;
+     }
+ 
+     tlist = entry->triggers;
+--- ac2scene/ac2scene.c.old	2004-11-05 01:13:55.845059680 +0000
++++ ac2scene/ac2scene.c	2004-11-05 01:14:32.526483256 +0000
+@@ -162,6 +162,7 @@
+     break;
+ 
+   default:
++    ;
+   }
+ 
+   return 0;
+@@ -234,6 +235,7 @@
+     break;
+ 
+   default:
++    ;
+   }
+ 
+   return 0;
+@@ -316,6 +318,7 @@
+     }
+     break;
+   default:
++    ;
+   }
+ 
+   return 0;
+@@ -399,6 +402,7 @@
+       break;
+ 
+     default:
++      ;
+     }
+   }
+ 

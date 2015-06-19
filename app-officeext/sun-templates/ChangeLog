@@ -1,0 +1,27 @@
+# ChangeLog for app-officeext/sun-templates
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-officeext/sun-templates/ChangeLog,v 1.5 2014/08/10 18:18:38 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  sun-templates-1.0.0-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  27 Apr 2013; Tomáš Chvátal <scarabeus@gentoo.org> -sun-templates-1.0.0.ebuild,
+  sun-templates-1.0.0-r1.ebuild:
+  Stabilise latest, drop older.
+
+  24 Mar 2013; Tomáš Chvátal <scarabeus@gentoo.org>
+  sun-templates-1.0.0-r1.ebuild:
+  Fix typo. Thanks to Nikoli for reporting.
+
+*sun-templates-1.0.0-r1 (23 Mar 2013)
+
+  23 Mar 2013; Tomáš Chvátal <scarabeus@gentoo.org>
+  +sun-templates-1.0.0-r1.ebuild:
+  migrate to office-ext-r1 eclass
+
+*sun-templates-1.0.0 (31 May 2012)
+
+  31 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> +metadata.xml,
+  +sun-templates-1.0.0.ebuild:
+  Initial commit, split out from l10n.

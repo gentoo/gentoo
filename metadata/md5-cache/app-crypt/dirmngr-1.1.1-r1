@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=net-nds/openldap-2.1.26 >=dev-libs/libgpg-error-1.4 >=dev-libs/libgcrypt-1.4.0:0 >=dev-libs/libksba-1.0.2 >=dev-libs/pth-1.3.7 nls? ( virtual/libintl ) >=dev-libs/libassuan-2 nls? ( >=sys-devel/gettext-0.12.1 )
+DESCRIPTION=DirMngr is a daemon to handle CRL and certificate requests for GnuPG
+EAPI=5
+HOMEPAGE=http://www.gnupg.org/download/index.en.html#dirmngr
+IUSE=nls
+KEYWORDS=alpha amd64 hppa ~ia64 ppc ppc64 sparc x86
+LICENSE=GPL-3
+RDEPEND=>=net-nds/openldap-2.1.26 >=dev-libs/libgpg-error-1.4 >=dev-libs/libgcrypt-1.4.0:0 >=dev-libs/libksba-1.0.2 >=dev-libs/pth-1.3.7 nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://gnupg/dirmngr/dirmngr-1.1.1.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d262e8c264f561b1fa61e8549158485b

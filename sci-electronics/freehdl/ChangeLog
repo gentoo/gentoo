@@ -1,0 +1,102 @@
+# ChangeLog for sci-electronics/freehdl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/freehdl/ChangeLog,v 1.20 2015/04/26 19:54:05 mrueg Exp $
+
+  26 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -freehdl-0.0.3.ebuild,
+  -freehdl-0.0.4.ebuild, -freehdl-0.0.6.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> freehdl-0.0.3.ebuild,
+  freehdl-0.0.4.ebuild, freehdl-0.0.6.ebuild, freehdl-0.0.7.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> freehdl-0.0.6.ebuild,
+  freehdl-0.0.7.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*freehdl-0.0.7 (10 Jul 2009)
+
+  10 Jul 2009; Denis Dupeyron <calchan@gentoo.org> +freehdl-0.0.7.ebuild:
+  Version bump, thanks to Christopher Covington.
+
+*freehdl-0.0.6 (23 Apr 2008)
+
+  23 Apr 2008; Denis Dupeyron <calchan@gentoo.org> +freehdl-0.0.6.ebuild:
+  Version bump.
+
+*freehdl-0.0.4 (30 Apr 2007)
+
+  30 Apr 2007; Denis Dupeyron <calchan@gentoo.org> +freehdl-0.0.4.ebuild:
+  Version bump.
+
+  10 Jan 2007; Piotr Jaroszyński <peper@gentoo.org> Manifest:
+  Fix Manifest.
+
+  10 Jan 2007; <marijn@gentoo.org> freehdl-0.0.3.ebuild:
+  Dependency update: dev-util/guile -> dev-scheme/guile.
+
+  15 Oct 2006; Denis Dupeyron <calchan@gentoo.org> -freehdl-0.0.1.ebuild,
+  -freehdl-0.0.2.ebuild:
+  Removed old versions.
+
+*freehdl-0.0.3 (10 Sep 2006)
+
+  10 Sep 2006; Denis Dupeyron <calchan@gentoo.org> +freehdl-0.0.3.ebuild:
+  Version bump.
+
+  02 Jul 2006; Denis Dupeyron <calchan@gentoo.org> metadata.xml:
+  Adjusted metadata, see bug #138062.
+
+*freehdl-0.0.2 (30 Jun 2006)
+
+  30 Jun 2006; Denis Dupeyron <calchan@gentoo.org> +freehdl-0.0.2.ebuild:
+  Revision bump.
+
+  27 May 2006; Denis Dupeyron <calchan@gentoo.org>
+  -files/freehdl-20040113-gcc3.4.patch,
+  -files/freehdl-20050510-memory.patch, -freehdl-20040113.ebuild,
+  -freehdl-20050510.ebuild:
+  Removed ebuilds with old versioning scheme.
+
+  27 May 2006; <nixnut@gentoo.org> freehdl-0.0.1.ebuild:
+  Added ~ppc keyword. bug #134091
+
+*freehdl-0.0.1 (23 May 2006)
+
+  23 May 2006; Denis Dupeyron <calchan@gentoo.org> +freehdl-0.0.1.ebuild,
+  freehdl-20040113.ebuild, freehdl-20050510.ebuild:
+  Version bump. Due to the new versioning scheme, this may appear as a
+  downgrade, but it isn't.
+
+  30 Aug 2005; Patrick Kursawe <phosphan@gentoo.org>
+  +files/freehdl-20050510-memory.patch, freehdl-20050510.ebuild:
+  Fixed #104122 with a little patch. Marking ~arch for x86 and ppc.
+
+*freehdl-20050510 (29 Aug 2005)
+
+  29 Aug 2005; Patrick Kursawe <phosphan@gentoo.org> +freehdl-20050510.ebuild:
+  Version bump. Uses flex instead of bringing a patch with flex results. Marked
+  as -* until bug #104122 has been fixed.
+
+  05 Jan 2005; Patrick Kursawe <phosphan@gentoo.org> freehdl-20040113.ebuild:
+  Adding guile to dependencies (bug #75809)
+
+*freehdl-20040113 (27 Dec 2004)
+
+  27 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +files/freehdl-20040113-gcc3.4.patch, +freehdl-20040113.ebuild:
+  Moved from app-sci/freehdl to sci-electronics/freehdl.
+
+  04 Oct 2004; Patrick Kursawe <phosphan@gentoo.org>
+  +files/freehdl-20040113-gcc3.4.patch, freehdl-20040113.ebuild:
+  Adding patch for gcc 3.4. Adding ~x86 to "KEYWORDS".
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  freehdl-20040113.ebuild:
+  virtual/glibc -> virtual/libc
+
+*freehdl-20040113 (13 May 2004)
+
+  13 May 2004; David Holm <dholm@gentoo.org> +metadata.xml,
+  +freehdl-20040113.ebuild:
+  Initial import.

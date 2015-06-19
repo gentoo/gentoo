@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>php</herd>
+<maintainer>
+<email>olemarkus@gentoo.org</email>
+<name>Ole Markus With</name>
+</maintainer>
+<longdescription lang="en">
+The Symfony YAML Component
+</longdescription>
+</pkgmetadata>
+

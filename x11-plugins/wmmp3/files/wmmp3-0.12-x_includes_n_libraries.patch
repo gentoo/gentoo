@@ -1,0 +1,20 @@
+--- configure.orig	2005-08-24 09:45:23.000000000 +0200
++++ configure	2005-08-24 09:45:08.000000000 +0200
+@@ -1977,11 +1977,15 @@
+ 
+ 
+ if test "$x_includes" != "NONE"; then
+-        CFLAGS="$CFLAGS -I$x_includes"
++        if test "$x_includes" != ""; then
++                CFLAGS="$CFLAGS -I$x_includes"
++        fi
+ fi
+ 
+ if test "$x_libraries" != "NONE"; then
+-        LDFLAGS="$LDFLAGS -L$x_libraries"
++        if test "$x_libraries" != ""; then
++                LDFLAGS="$LDFLAGS -L$x_libraries"
++        fi
+ fi
+ 
+ echo $ac_n "checking for XOpenDisplay in -lX11""... $ac_c" 1>&6

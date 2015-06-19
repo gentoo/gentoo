@@ -1,0 +1,66 @@
+# ChangeLog for games-misc/openmsx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/openmsx/ChangeLog,v 1.17 2015/02/05 03:57:17 mr_bones_ Exp $
+
+  05 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> -openmsx-0.3.1.ebuild:
+  old
+
+  28 Jan 2015; Agostino Sarubbo <ago@gentoo.org> openmsx-0.3.1-r1.ebuild:
+  Stable for ppc, wrt bug #534278
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> openmsx-0.3.1-r1.ebuild:
+  Stable for x86, wrt bug #534278
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org> openmsx-0.3.1-r1.ebuild:
+  Stable for amd64, wrt bug #534278
+
+  03 Jan 2015; Sergei Trofimovich <slyfox@gentoo.org> openmsx-0.3.1-r1.ebuild:
+  Restore call to python's pkg_setup (bug #534278 by Torsten Kaiser).
+
+  02 Jan 2015; Patrick Lauer <patrick@gentoo.org> openmsx-0.3.1-r1.ebuild:
+  Remove useless blank line
+
+*openmsx-0.3.1-r1 (02 Jan 2015)
+
+  02 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org> +openmsx-0.3.1-r1.ebuild:
+  EAPI=5; use python-any-r1
+
+  15 Oct 2010; Markus Meier <maekke@gentoo.org> openmsx-0.3.1.ebuild:
+  add ~arm, bug #316003
+
+  15 Oct 2010; Brent Baude <ranger@gentoo.org> openmsx-0.3.1.ebuild:
+  stable ppc, bug 339549
+
+  10 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> openmsx-0.3.1.ebuild:
+  x86 stable wrt bug #339549
+
+  06 Oct 2010; Markos Chandras <hwoarang@gentoo.org> openmsx-0.3.1.ebuild:
+  Stable on amd64 wrt bug #339549
+
+*openmsx-0.3.1 (31 Aug 2010)
+
+  31 Aug 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +openmsx-0.3.1.ebuild:
+  Version bump
+
+*openmsx-0.3.0 (01 Aug 2010)
+
+  01 Aug 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +openmsx-0.3.0.ebuild:
+  version bump
+
+  28 May 2010; Joseph Jezak <josejx@gentoo.org> openmsx-0.2.1.ebuild:
+  Marked ppc/ppc64 stable.
+
+  25 May 2010; Pacho Ramos <pacho@gentoo.org> openmsx-0.2.1.ebuild:
+  stable amd64, bug 320503
+
+  25 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> openmsx-0.2.1.ebuild:
+  x86 stable wrt bug #320503
+
+*openmsx-0.2.1 (07 Apr 2010)
+
+  07 Apr 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +openmsx-0.2.1.ebuild, +metadata.xml:
+  initial commit - ebuild submitted by Locke 'Wizzleby' Shinseiko (bug
+  #312993)

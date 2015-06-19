@@ -1,0 +1,83 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need logger net
+	after postgres mysql
+}
+
+LOGFILE=${LOGFILE:-"/var/log/ttrssd.log"}
+TTRSSD_USER=${TTRSSD_USER:-"ttrssd"}
+TTRSSD_GROUP=${TTRSSD_GROUP:-"ttrssd"}
+INSTANCE_FOLDERS="cache lock feed-icons"
+BASE_PID="/run/ttrssd"
+
+checkconfig() {
+	local instance instancepidname dir
+
+	# check instances
+	if [ -z "${INSTANCE_DIRS}" ]; then
+		eerror "There is no defined instance directory in /etc/conf.d/ttrssd"
+		return 1
+	fi
+
+	# verify log file accessibility
+	if [ ! -e "${LOGFILE}" ]; then
+		touch "${LOGFILE}" || return 1
+	fi
+	chown "${TTRSSD_USER}":"${TTRSSD_GROUP}" "${LOGFILE}" || return 1
+
+	mkdir -p "${BASE_PID}"
+
+	# check instances for errors
+	for instance in ${INSTANCE_DIRS}; do
+		instancepidname=$(echo "${instance}.pid" | sed -e 's|/||' -e 's|/|--|g')
+
+		if [ ! -f "${instance}/update_daemon2.php" ]; then
+			eerror "\"${instance}\" does not contain update_daemon2.php script."
+			eerror "Please check your installation or the INSTANCE_DIRS variable."
+			return 1
+		fi
+
+		# NOTE: This can't be done by webapp-config if we want runtime configurable TTRSSD_GROUP
+		for dir in ${INSTANCE_FOLDERS}; do
+			if [ -d "${instance}/${dir}" ]; then
+				chown -R ":${TTRSSD_GROUP}" "${instance}/${dir}" || return 1
+				chmod -R g+w "${instance}/${dir}" || return 1
+			fi
+		done
+	done
+}
+
+start () {
+	local instance instancepidname
+
+	checkconfig || return 1
+
+	for instance in ${INSTANCE_DIRS}; do
+		instancepidname=$(echo "${instance}.pid" | sed -e 's|/||' -e 's|/|--|g')
+		mypid="${BASE_PID}/${instancepidname}"
+		ebegin "Starting TT-RSS update daemon in \"${instance}\""
+		start-stop-daemon --start --user "${TTRSSD_USER}":"${TTRSSD_GROUP}" --background \
+			--stdout "${LOGFILE}" --stderr "${LOGFILE}" \
+			--make-pidfile --pidfile "${mypid}" \
+			--exec /usr/bin/php -- -f "${instance}/update_daemon2.php"
+		eend $?
+	done
+}
+
+stop() {
+	local instance instancepidname
+
+	for instance in ${INSTANCE_DIRS}; do
+		instancepidname=$(echo "${instance}.pid" | sed -e 's|/||' -e 's|/|--|g')
+		mypid="${BASE_PID}/${instancepidname}"
+		ebegin "Stopping TT-RSS update daemon in \"${instance}\""
+		start-stop-daemon --stop \
+			--pidfile "${mypid}" \
+			--exec /usr/bin/php -- -f "${instance}/update_daemon2.php"
+		eend $?
+		rm -f ${instance}/lock/*.lock
+	done
+}

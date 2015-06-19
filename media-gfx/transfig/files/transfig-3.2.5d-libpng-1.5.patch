@@ -1,0 +1,39 @@
+http://bugs.gentoo.org/show_bug.cgi?id=356751
+
+Index: transfig.3.2.5d/fig2dev/dev/readpng.c
+===================================================================
+--- transfig.3.2.5d.orig/fig2dev/dev/readpng.c
++++ transfig.3.2.5d/fig2dev/dev/readpng.c
+@@ -62,7 +62,7 @@ read_png(file,filetype,pic,llx,lly)
+     }
+ 
+     /* set long jump here */
+-    if (setjmp(png_ptr->jmpbuf)) {
++    if (setjmp(png_jmpbuf(png_ptr))) {
+ 	/* if we get here there was a problem reading the file */
+ 	png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
+ 	return 0;
+@@ -78,15 +78,17 @@ read_png(file,filetype,pic,llx,lly)
+     png_get_IHDR(png_ptr, info_ptr, &w, &h, &bit_depth, &color_type,
+ 	&interlace_type, &compression_type, &filter_type);
+ 
+-    if (info_ptr->valid & PNG_INFO_gAMA)
+-	png_set_gamma(png_ptr, 2.2, info_ptr->gamma);
+-    else
+-	png_set_gamma(png_ptr, 2.2, 0.45);
++    png_fixed_point gamma = 0.45;
++    png_get_gAMA_fixed(png_ptr,info_ptr,&gamma);
++    png_set_gamma(png_ptr, 2.2, gamma);
+ 
+-    if (info_ptr->valid & PNG_INFO_bKGD)
++    if (png_get_valid(png_ptr,info_ptr,PNG_INFO_bKGD)) {
+ 	/* set the background to the one supplied */
+-	png_set_background(png_ptr, &info_ptr->background,
++    	png_color_16p background;
++	png_get_bKGD(png_ptr,info_ptr,&background);
++	png_set_background(png_ptr, background,
+ 		PNG_BACKGROUND_GAMMA_FILE, 1, 1.0);
++    }
+     else {
+ 	/* blend the canvas background using the alpha channel */
+ 	if (bgspec) {

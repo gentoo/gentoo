@@ -1,0 +1,16 @@
+diff --git a/salt/minion.py b/salt/minion.py
+index 47a23de..52a5849 100644
+--- a/salt/minion.py
++++ b/salt/minion.py
+@@ -461,8 +461,10 @@ class MultiMinion(object):
+ 
+         while True:
+             for minion in minions.values():
+-                if isinstance(minion, dict):
++                if isinstance(minion, dict) and 'minion' in minion:
+                     minion = minion['minion']
++                elif isinstance(minion, dict):
++                    continue
+                 if not hasattr(minion, 'schedule'):
+                     continue
+                 try:

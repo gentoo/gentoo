@@ -1,0 +1,104 @@
+# ChangeLog for dev-perl/Data-Stream-Bulk
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Data-Stream-Bulk/ChangeLog,v 1.20 2014/08/26 18:49:31 axs Exp $
+
+*Data-Stream-Bulk-0.110.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Data-Stream-Bulk-0.110.0-r1.ebuild, -Data-Stream-Bulk-0.110.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org>
+  -Data-Stream-Bulk-0.100.0.ebuild:
+  Cleanup
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Data-Stream-Bulk-0.110.0 (21 May 2012)
+
+  21 May 2012; Torsten Veller <tove@gentoo.org> -Data-Stream-Bulk-0.11.ebuild,
+  +Data-Stream-Bulk-0.110.0.ebuild:
+  Fix PV. Drop dev-perl/Test-use-ok
+
+*Data-Stream-Bulk-0.11 (20 May 2012)
+
+  20 May 2012; Robin H. Johnson <robbat2@gentoo.org>
+  +Data-Stream-Bulk-0.11.ebuild, Data-Stream-Bulk-0.100.0.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  21 Apr 2012; Torsten Veller <tove@gentoo.org>
+  -Data-Stream-Bulk-0.80.0.ebuild:
+  Cleanup
+
+*Data-Stream-Bulk-0.100.0 (13 Feb 2012)
+
+  13 Feb 2012; Torsten Veller <tove@gentoo.org>
+  +Data-Stream-Bulk-0.100.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Data-Stream-Bulk-0.08.ebuild:
+  Cleanup
+
+*Data-Stream-Bulk-0.80.0 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Data-Stream-Bulk-0.80.0.ebuild:
+  Change version scheme
+
+  20 Oct 2010; Torsten Veller <tove@gentoo.org>
+  -Data-Stream-Bulk-0.07.ebuild:
+  Cleanup
+
+*Data-Stream-Bulk-0.08 (25 Aug 2010)
+
+  25 Aug 2010; Torsten Veller <tove@gentoo.org>
+  +Data-Stream-Bulk-0.08.ebuild:
+  Version bump
+
+  16 Jul 2009; Torsten Veller <tove@gentoo.org>
+  -Data-Stream-Bulk-0.04.ebuild, -Data-Stream-Bulk-0.05.ebuild,
+  -Data-Stream-Bulk-0.06.ebuild:
+  Cleanup
+
+*Data-Stream-Bulk-0.07 (11 Jul 2009)
+
+  11 Jul 2009; Torsten Veller <tove@gentoo.org>
+  +Data-Stream-Bulk-0.07.ebuild:
+  Version bump
+
+*Data-Stream-Bulk-0.06 (01 Jul 2009)
+
+  01 Jul 2009; Torsten Veller <tove@gentoo.org>
+  +Data-Stream-Bulk-0.06.ebuild:
+  Version bump
+
+*Data-Stream-Bulk-0.05 (27 Jun 2009)
+
+  27 Jun 2009; Torsten Veller <tove@gentoo.org>
+  +Data-Stream-Bulk-0.05.ebuild:
+  Version bump
+
+  14 May 2009; Torsten Veller <tove@gentoo.org>
+  Data-Stream-Bulk-0.04.ebuild:
+  Run tests and add ~amd64 (#269846)
+
+  02 May 2009; Torsten Veller <tove@gentoo.org>
+  -Data-Stream-Bulk-0.03.ebuild:
+  Cleanup
+
+*Data-Stream-Bulk-0.04 (25 Apr 2009)
+
+  25 Apr 2009; Torsten Veller <tove@gentoo.org>
+  +Data-Stream-Bulk-0.04.ebuild:
+  Version bump
+
+  05 Feb 2009; Torsten Veller <tove@gentoo.org>
+  Data-Stream-Bulk-0.03.ebuild:
+  Add missing dependency
+
+*Data-Stream-Bulk-0.03 (15 Jan 2009)
+
+  15 Jan 2009; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +Data-Stream-Bulk-0.03.ebuild:
+  Inital commit

@@ -1,0 +1,64 @@
+# ChangeLog for sys-apps/biosdisk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/biosdisk/ChangeLog,v 1.16 2015/04/08 18:27:33 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> biosdisk-0_p20100611-r1.ebuild:
+  Drop old Python implementations
+
+  19 Oct 2014; Pacho Ramos <pacho@gentoo.org> biosdisk-0_p20100611-r1.ebuild:
+  remove app-text/unix2dos from RDEPEND (#525824 by Michael Orlitzky)
+
+*biosdisk-0_p20100611-r1 (30 Jul 2013)
+
+  30 Jul 2013; Mike Gilbert <floppym@gentoo.org>
+  +biosdisk-0_p20100611-r1.ebuild, -biosdisk-0_p20100611.ebuild:
+  Add python deps, bug 478662. Proxied for Matthew Shultz.
+
+  03 Mar 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Add to proxy-maintainers herd
+
+  01 Dec 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  This has now a proxy maintainer, bug #431172#c5
+
+*biosdisk-0_p20100611 (16 Sep 2012)
+
+  16 Sep 2012; Pacho Ramos <pacho@gentoo.org> +biosdisk-0_p20100611.ebuild,
+  -biosdisk-0.65.ebuild, -biosdisk-0.75.2.ebuild:
+  Bump to make it work again, drop old broken versions, bug #431172 by Matthew
+  Schultz.
+
+  05 Feb 2012; Michael Weber <xmw@gentoo.org> biosdisk-0.75.2.ebuild:
+  Update HOMEPAGE (bug 401967)
+
+  22 Mar 2010; <jlec@gentoo.org> biosdisk-0.65.ebuild,
+  biosdisk-0.75.2.ebuild:
+  Some QA, corrected dos2unix/unix2dos DEP, #310761
+
+*biosdisk-0.75.2 (01 Oct 2008)
+
+  01 Oct 2008; Thilo Bangert <bangert@gentoo.org> +biosdisk-0.75.2.ebuild:
+  version bump by Armando Di Cianno - bug #210734
+
+  30 Aug 2008; Diego Pettenò <flameeyes@gentoo.org> biosdisk-0.65.ebuild:
+  Add ~amd64 keyword.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  08 Jan 2007; Danny van Dyk <kugelfang@gentoo.org> -biosdisk-0.50.ebuild:
+  QA: Removed unused versions.
+
+  23 Jan 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove pkdawson from metadata, bug 57788.
+
+*biosdisk-0.65 (03 Jan 2005)
+
+  03 Jan 2005; Patrick Dawson <pkdawson@gentoo.org> biosdisk-0.50.ebuild,
+  +biosdisk-0.65.ebuild:
+  Version bump.
+
+*biosdisk-0.50 (22 Aug 2004)
+
+  22 Aug 2004; Patrick Dawson <pkdawson@gentoo.org> biosdisk-0.50.ebuild :
+  Initial import.  Ebuild submitted by Robert Paskowitz <rpaskowitz@confucius.ca>.
+  Closes bug #57481.

@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=Multiple editing sessions withing a single frame (like screen)..
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=app-xemacs/xemacs-base app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/escreen-1.01-pkg.tar.gz
+_eclasses_=xemacs-packages	29b865270cd0de904945912d5041f1cc
+_md5_=dc222743db010b1061477049ad5c401b

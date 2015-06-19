@@ -1,0 +1,108 @@
+--- SConstruct
++++ SConstruct
+@@ -891,39 +891,6 @@
+ 
+ 
+ #
+-# these are part of the Ardour source tree because they are C++
+-# 
+-
+-libraries['vamp'] = LibraryInfo (LIBS='vampsdk',
+-                                 LIBPATH='#libs/vamp-sdk',
+-                                 CPPPATH='#libs/vamp-sdk')
+-libraries['vamphost'] = LibraryInfo (LIBS='vamphostsdk',
+-                                 LIBPATH='#libs/vamp-sdk',
+-                                 CPPPATH='#libs/vamp-sdk')
+-
+-env['RUBBERBAND'] = False
+-
+-conf = Configure (env)
+-
+-if conf.CheckHeader ('fftw3.h'):
+-    env['RUBBERBAND'] = True
+-    libraries['rubberband'] = LibraryInfo (LIBS='rubberband',
+-                                           LIBPATH='#libs/rubberband',
+-                                           CPPPATH='#libs/rubberband',
+-                                           CCFLAGS='-DUSE_RUBBERBAND')
+-else:
+-    print ""
+-    print "-------------------------------------------------------------------------"
+-    print "You do not have the FFTW single-precision development package installed."
+-    print "This prevents Ardour from using the Rubberband library for timestretching"
+-    print "and pitchshifting. It will fall back on SoundTouch for timestretch, and "
+-    print "pitchshifting will not be available."
+-    print "-------------------------------------------------------------------------"
+-    print ""
+-
+-conf.Finish()
+-
+-#
+ # Check for libusb
+ 
+ libraries['usb'] = LibraryInfo ()
+@@ -1109,10 +1076,22 @@
+     # Comment the previous line and uncomment this for old versions of Debian:
+     #libraries['soundtouch'].ParseConfig ('pkg-config --cflags --libs libSoundTouch')
+ 
+-    libraries['appleutility'] = LibraryInfo(LIBS='libappleutility',
+-                                            LIBPATH='#libs/appleutility',
+-                                            CPPPATH='#libs/appleutility')
++    #libraries['appleutility'] = LibraryInfo(LIBS='libappleutility',
++    #                                        LIBPATH='#libs/appleutility',
++    #                                        CPPPATH='#libs/appleutility')
+     
++    env['RUBBERBAND'] = True
++    env.Append (CXXFLAGS="-DUSE_RUBBERBAND")
++    libraries['rubberband'] = LibraryInfo()
++    libraries['rubberband'].ParseConfig ('pkg-config --cflags --libs rubberband')
++
++    libraries['vamp-sdk'] = LibraryInfo()
++    libraries['vamp-sdk'].ParseConfig ('pkg-config --cflags --libs vamp-sdk')
++    libraries['vamp'] = LibraryInfo()
++    libraries['vamp'].ParseConfig ('pkg-config --cflags --libs vamp-sdk')
++    libraries['vamphost'] = LibraryInfo()
++    libraries['vamphost'].ParseConfig ('pkg-config --cflags --libs vamp-hostsdk')
++
+     coredirs = [
+         'templates',
+         'manual'
+@@ -1122,7 +1101,6 @@
+         'libs/pbd',
+         'libs/midi++2',
+         'libs/ardour',
+-        'libs/vamp-sdk',
+         'libs/vamp-plugins/',
+     # these are unconditionally included but have
+     # tests internally to avoid compilation etc
+@@ -1138,8 +1116,7 @@
+     gtk_subdirs = [
+ #        'libs/flowcanvas',
+         'libs/gtkmm2ext',
+-        'gtk2_ardour',
+-        clearlooks_version
++        'gtk2_ardour'
+         ]
+ 
+ else:
+@@ -1251,9 +1228,9 @@
+ # timestretch libraries
+ #
+ 
+-timefx_subdirs = []
+-if env['RUBBERBAND']:
+-    timefx_subdirs += ['libs/rubberband']
++#timefx_subdirs = []
++#if env['RUBBERBAND']:
++#    timefx_subdirs += ['libs/rubberband']
+ 
+ #
+ # Tools
+@@ -1441,7 +1418,7 @@
+ for subdir in coredirs:
+     SConscript (subdir + '/SConscript')
+ 
+-for sublistdir in [ subdirs, timefx_subdirs, gtk_subdirs, surface_subdirs, tools_subdirs ]:
++for sublistdir in [ subdirs, gtk_subdirs, surface_subdirs, tools_subdirs ]:
+     for subdir in sublistdir:
+         SConscript (subdir + '/SConscript')
+ 

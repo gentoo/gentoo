@@ -1,0 +1,97 @@
+# ChangeLog for dev-lang/python-exec
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/python-exec/ChangeLog,v 1.22 2015/06/07 19:11:15 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add bitbucket to remote-id in metadata.xml
+
+*python-exec-2.0.2 (26 May 2015)
+
+  26 May 2015; Michał Górny <mgorny@gentoo.org> +python-exec-2.0.2.ebuild:
+  Version bump. The new version updates script comments (bug #524342), fixes
+  off-by-one error in file reading, and enables largefile support (bug #550438).
+
+  19 Feb 2015; Michał Górny <mgorny@gentoo.org> -python-exec-0.3.1-r1.ebuild,
+  -python-exec-0.9999.ebuild:
+  Remove python-exec:0.
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> python-exec-0.3.1-r1.ebuild,
+  python-exec-0.9999.ebuild, python-exec-2.0.1-r1.ebuild,
+  python-exec-2.9999.ebuild:
+  Replace obsolete mirror://bitbucket with the real URI.
+
+  16 May 2014; Michał Górny <mgorny@gentoo.org> -python-exec-0.3.1.ebuild,
+  -python-exec-2.0.1.ebuild, -python-exec-2.0.ebuild:
+  Drop old.
+
+*python-exec-2.0.1-r1 (06 Mar 2014)
+*python-exec-0.3.1-r1 (06 Mar 2014)
+
+  06 Mar 2014; Michał Górny <mgorny@gentoo.org> +python-exec-0.3.1-r1.ebuild,
+  +python-exec-2.0.1-r1.ebuild, python-exec-0.9999.ebuild,
+  python-exec-2.9999.ebuild:
+  Remove dev-python/python-exec PDEP since it is going for p.mask.
+
+  29 Jan 2014; Mike Frysinger <vapier@gentoo.org> python-exec-0.3.1.ebuild,
+  python-exec-0.9999.ebuild, python-exec-2.0.1.ebuild, python-exec-2.0.ebuild,
+  python-exec-2.9999.ebuild:
+  Fix LICENSE to right value.
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> python-exec-0.3.1.ebuild,
+  python-exec-0.9999.ebuild, python-exec-2.0.1.ebuild, python-exec-2.0.ebuild,
+  python-exec-2.9999.ebuild:
+  Add arm64 love.
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> python-exec-0.3.1.ebuild,
+  python-exec-2.0.1.ebuild:
+  Mark m68k/s390/sh stable.
+
+  01 Dec 2013; Akinori Hattori <hattya@gentoo.org> python-exec-2.0.1.ebuild:
+  ia64 stable wrt bug #491420
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> python-exec-2.0.1.ebuild:
+  Stable for x86, wrt bug #491420
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> python-exec-2.0.1.ebuild:
+  Stable for sparc, wrt bug #491420
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> python-exec-2.0.1.ebuild:
+  Stable for ppc, wrt bug #491420
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> python-exec-2.0.1.ebuild:
+  Stable for ppc64, wrt bug #491420
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> python-exec-2.0.1.ebuild:
+  Stable for arm, wrt bug #491420
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> python-exec-2.0.1.ebuild:
+  Stable for alpha, wrt bug #491420
+
+  23 Nov 2013; Pacho Ramos <pacho@gentoo.org> python-exec-2.0.1.ebuild:
+  amd64 stable, bug #491420
+
+  19 Nov 2013; Jeroen Roovers <jer@gentoo.org> python-exec-2.0.1.ebuild:
+  Stable for HPPA (bug #491420).
+
+*python-exec-2.0.1 (16 Nov 2013)
+
+  16 Nov 2013; Michał Górny <mgorny@gentoo.org> +python-exec-2.0.1.ebuild:
+  Version bump. Fix unitialized memory access, bug #491410.
+
+  15 Nov 2013; Robin H. Johnson <robbat2@gentoo.org> python-exec-0.3.1.ebuild,
+  python-exec-0.9999.ebuild, python-exec-2.0.ebuild, python-exec-2.9999.ebuild:
+  Use PDEPEND to fix python-exec dep for all users, acked by ZeroChaos & mgorny
+  in #gentoo-dev.
+
+  09 Nov 2013; Pacho Ramos <pacho@gentoo.org> python-exec-2.0.ebuild:
+  amd64 stable, bug #488682
+
+*python-exec-0.9999 (30 Oct 2013)
+*python-exec-2.9999 (30 Oct 2013)
+*python-exec-0.3.1 (30 Oct 2013)
+*python-exec-2.0 (30 Oct 2013)
+
+  30 Oct 2013; Michał Górny <mgorny@gentoo.org> +metadata.xml,
+  +python-exec-0.3.1.ebuild, +python-exec-0.9999.ebuild,
+  +python-exec-2.0.ebuild, +python-exec-2.9999.ebuild:
+  Move the real ebuilds of dev-python/python-exec to dev-lang/python-exec.

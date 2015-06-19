@@ -1,0 +1,294 @@
+# ChangeLog for dev-perl/module-info
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/module-info/ChangeLog,v 1.78 2015/06/13 22:20:11 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  module-info-0.350.0-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*module-info-0.350.0-r1 (23 Aug 2014)
+
+  23 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +module-info-0.350.0-r1.ebuild, -module-info-0.350.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  08 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> -module-info-0.320.0.ebuild,
+  -module-info-0.340.0.ebuild, module-info-0.350.0.ebuild:
+  alpha stable wrt bug #495546; Drop old.
+
+  06 Mar 2014; Agostino Sarubbo <ago@gentoo.org> module-info-0.350.0.ebuild:
+  Stable for ppc64, wrt bug #495546
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> module-info-0.350.0.ebuild:
+  Stable for ppc, wrt bug #495546
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> module-info-0.350.0.ebuild:
+  amd64 stable, bug #495546
+
+  23 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  module-info-0.350.0.ebuild:
+  x86 stable wrt bug #495546
+
+  11 Feb 2014; Jeroen Roovers <jer@gentoo.org> module-info-0.350.0.ebuild:
+  Stable for HPPA (bug #495546).
+
+*module-info-0.350.0 (13 Sep 2013)
+
+  13 Sep 2013; Patrick Lauer <patrick@gentoo.org> +module-info-0.350.0.ebuild:
+  Bump
+
+*module-info-0.340.0 (25 Aug 2013)
+
+  25 Aug 2013; Patrick Lauer <patrick@gentoo.org> +module-info-0.340.0.ebuild:
+  Bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  05 Apr 2012; Torsten Veller <tove@gentoo.org> -module-info-0.31.ebuild:
+  Cleanup
+
+  31 Mar 2012; Raúl Porcel <armin76@gentoo.org> module-info-0.31.ebuild,
+  module-info-0.320.0.ebuild:
+  Drop ia64/sparc keywords
+
+  31 Mar 2012; Tobias Klausmann <klausman@gentoo.org>
+  module-info-0.320.0.ebuild:
+  Stable on alpha, bug #400303
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  module-info-0.320.0.ebuild:
+  x86 stable wrt bug #400303
+
+  03 Mar 2012; Brent Baude <ranger@gentoo.org> module-info-0.320.0.ebuild:
+  Marking module-info-0.320.0 ppc64 for bug 400303
+
+  27 Feb 2012; Brent Baude <ranger@gentoo.org> module-info-0.320.0.ebuild:
+  Marking module-info-0.320.0 ppc for bug 400303
+
+  24 Feb 2012; Jeroen Roovers <jer@gentoo.org> module-info-0.320.0.ebuild:
+  Stable for HPPA (bug #400303).
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> module-info-0.320.0.ebuild:
+  Stable for amd64, wrt bug #400303
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -module-info-0.32.ebuild:
+  Cleanup
+
+*module-info-0.320.0 (27 Aug 2011)
+
+  27 Aug 2011; Torsten Veller <tove@gentoo.org> +module-info-0.320.0.ebuild:
+  Change version scheme
+
+*module-info-0.32 (09 Sep 2010)
+
+  09 Sep 2010; Torsten Veller <tove@gentoo.org> +module-info-0.32.ebuild:
+  Version bump
+
+  21 Jan 2010; Torsten Veller <tove@gentoo.org> module-info-0.31.ebuild:
+  Ebuild maintenance. EAPI=2. mips -> ~mips
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org> module-info-0.31.ebuild:
+  New virtuals: module-build
+
+  30 Sep 2008; Torsten Veller <tove@gentoo.org> -module-info-0.29.0.ebuild,
+  -module-info-0.30.ebuild:
+  Cleanup
+
+  30 Sep 2008; Torsten Veller <tove@gentoo.org> module-info-0.31.ebuild:
+  Cleanup
+
+  28 Mar 2008; Jeroen Roovers <jer@gentoo.org> module-info-0.31.ebuild:
+  Stable for HPPA too.
+
+  19 Nov 2007; Joshua Kinard <kumba@gentoo.org> module-info-0.31.ebuild:
+  Stable on mips.
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org> module-info-0.31.ebuild:
+  amd64 stable
+
+  08 Oct 2007; Tom Gall <tgall@gentoo.org> module-info-0.31.ebuild:
+  stable on ppc64
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  module-info-0.31.ebuild:
+  Stable on ppc.
+
+  12 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  module-info-0.31.ebuild:
+  Stable on sparc
+
+  11 Jul 2007; Raúl Porcel <armin76@gentoo.org> module-info-0.31.ebuild:
+  alpha/ia64/x86 stable
+
+*module-info-0.31 (13 Jun 2007)
+
+  13 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  +module-info-0.31.ebuild:
+  Version bump
+
+  12 May 2007; Joshua Kinard <kumba@gentoo.org> module-info-0.30.ebuild:
+  Stable on mips.
+
+  16 Apr 2007; Markus Rothe <corsair@gentoo.org> module-info-0.30.ebuild:
+  Stable on ppc64
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> module-info-0.30.ebuild:
+  Stable on x86, bug #169152.
+
+  20 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  -module-info-0.20.ebuild, -module-info-0.26.ebuild,
+  -module-info-0.28.ebuild, module-info-0.29.0.ebuild,
+  module-info-0.30.ebuild:
+  Cleaning up ebuilds
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  module-info-0.30.ebuild:
+  ppc stable
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  module-info-0.20.ebuild, module-info-0.26.ebuild, module-info-0.28.ebuild,
+  module-info-0.29.0.ebuild, module-info-0.30.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  19 Jul 2006; Bryan Østergaard <kloeri@gentoo.org>
+  module-info-0.30.ebuild:
+  Stable on alpha.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> module-info-0.30.ebuild:
+  Mark 0.30 stable on ia64
+
+  03 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  module-info-0.30.ebuild:
+  Marking amd64 stable
+
+  29 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  module-info-0.30.ebuild:
+  Stable on hppa
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  module-info-0.30.ebuild:
+  Marking sparc stable
+
+*module-info-0.30 (01 May 2006)
+
+  01 May 2006; <mcumming@gentoo.org> +module-info-0.30.ebuild:
+  Version bump
+
+  24 Apr 2006; Joshua Kinard <kumba@gentoo.org> module-info-0.29.0.ebuild:
+  Marked stable on mips.
+
+  21 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  module-info-0.29.0.ebuild:
+  Stable on hppa
+
+  16 Apr 2006; Michael Hanselmann <hansmi@gentoo.org>
+  module-info-0.29.0.ebuild:
+  Stable on ppc.
+
+  09 Apr 2006; Markus Rothe <corsair@gentoo.org> module-info-0.29.0.ebuild:
+  Stable on ppc64
+
+  03 Apr 2006; Aron Griffis <agriffis@gentoo.org> module-info-0.29.0.ebuild:
+  Mark 0.29.0 stable on ia64
+
+  01 Apr 2006; <mcummings@gentoo.org> module-info-0.29.0.ebuild:
+  Marking stable x86, sparc
+
+  26 Feb 2006; Joshua Kinard <kumba@gentoo.org> module-info-0.28.ebuild:
+  Marked stable on mips.
+
+*module-info-0.29.0 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  +module-info-0.29.0.ebuild:
+  Version bump upstream
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> module-info-0.28.ebuild:
+  Mark 0.28 stable on ia64
+
+  03 Sep 2005; Markus Rothe <corsair@gentoo.org> module-info-0.28.ebuild:
+  Stable on ppc64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> module-info-0.28.ebuild:
+  add ~ia64
+
+  21 Aug 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  module-info-0.28.ebuild:
+  Stable on hppa.
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  module-info-0.28.ebuild:
+  Stable on ppc.
+
+  12 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  module-info-0.28.ebuild:
+  stable on alpha
+
+  12 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  module-info-0.28.ebuild:
+  Stable on sparc
+
+  12 Aug 2005; Michael Cummings <mcummings@gentoo.org>
+  module-info-0.28.ebuild:
+  Marking stable x86
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> module-info-0.28.ebuild:
+  Stable on amd64.
+
+  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  module-info-0.26.ebuild:
+  Stable on alpha.
+
+*module-info-0.28 (28 Apr 2005)
+
+  28 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -module-info-0.24.ebuild, module-info-0.26.ebuild,
+  +module-info-0.28.ebuild:
+  Cleaning
+
+  12 Mar 2005; Markus Rothe <corsair@gentoo.org> module-info-0.26.ebuild:
+  Stable on ppc64
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  22 Dec 2004; Yuta SATOH <nigoro@gentoo.org> module-info-0.26.ebuild:
+  added ~ppc64
+
+  21 Nov 2004; Hardave Riar <hardave@gentoo.org> module-info-0.26.ebuild:
+  Stable on mips, dep for bug #68570
+
+  20 Nov 2004; Daniel Black <dragonheart@gentoo.org> module-info-0.26.ebuild:
+  ppc stable to support bug #68570
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> module-info-0.20.ebuild:
+  Stable on amd64.
+
+*module-info-0.26 (30 Jul 2004)
+
+  30 Jul 2004; Michael Cummings <mcummings@gentoo.org>
+  +module-info-0.26.ebuild:
+  New version on CPAN
+
+*module-info-0.24 (06 Jun 2004)
+
+  06 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  module-info-0.24.ebuild:
+  new version on cpan
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org> module-info-0.20.ebuild:
+  Stable on alpha.
+
+  05 Apr 2004; Gustavo Zacarias <gustavoz@gentoo.org> module-info-0.20.ebuild:
+  Stable on sparc
+
+  19 Jan 2004; Eric Sammer <esammer@gentoo.org> module-info-0.20.ebuild:
+  Added ~amd64 to keywords to fix depend.BAD.
+
+*module-info-0.20 (26 Jun 2003)
+
+  26 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  module-info-0.20.ebuild:
+  Dep for module-build, part of the alzabo deps

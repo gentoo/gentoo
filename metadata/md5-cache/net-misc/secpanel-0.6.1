@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=!gif? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) )
+DESCRIPTION=Graphical frontend for managing and running SSH and SCP connections
+EAPI=2
+HOMEPAGE=http://themediahost.de/secpanel/
+IUSE=gif
+KEYWORDS=alpha amd64 sparc x86
+LICENSE=GPL-2
+RDEPEND=virtual/ssh dev-lang/tk
+SLOT=0
+SRC_URI=mirror://sourceforge/secpanel/secpanel-0.6.1.tgz
+_md5_=6f3a0a4b545082e78066e45e2e0f1d5e

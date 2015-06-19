@@ -1,0 +1,31 @@
+# ChangeLog for media-video/rovclock
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/rovclock/ChangeLog,v 1.8 2013/03/17 16:06:11 hwoarang Exp $
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  18 Mar 2011; Christoph Mende <angelos@gentoo.org> rovclock-0.6e.ebuild,
+  +files/rovclock-0.6e-ldflags.patch:
+  QA: Respect LDFLAGS (bug #335535)
+
+  22 May 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove genstef from metadata.xml (#66339)
+
+  15 Sep 2008; Sven Wegener <swegener@gentoo.org> rovclock-0.6e.ebuild:
+  Respect CFLAGS, make cross-compile aware.
+
+  15 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  08 Nov 2006; Daniel Gryniewicz <dang@gentoo.org> rovclock-0.6e.ebuild:
+  Marked stable on amd64 for bug #152753
+
+  31 Oct 2006; Christian Faulhammer <opfer@gentoo.org> rovclock-0.6e.ebuild:
+  stabled x86, bug #152753
+
+*rovclock-0.6e (13 Jan 2006)
+
+  13 Jan 2006; Stefan Schweizer <genstef@gentoo.org> +metadata.xml,
+  +rovclock-0.6e.ebuild:
+  New ebuild thanks to Sebastian Witt <se.witt@gmx.net> and t35t0r in bug 102919

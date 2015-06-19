@@ -1,0 +1,61 @@
+#!/sbin/runscript
+
+MINISSDPD="/usr/sbin/minissdpd"
+PIDFILE="/var/run/minissdpd.pid"
+
+depend() {
+	need net
+	before miniupnpd
+}
+
+interfaceup() {
+	# interface exists?
+	if [ ! -f /sys/class/net/$1/flags ]; then return 1; fi
+	let "IFUP = `cat /sys/class/net/$1/flags` & 1"
+	# interface has UP flag?
+	if [ $IFUP -eq 0 ]; then return 1; fi
+	return 0
+}
+
+# awk script: scans the /proc routing table for local subnets
+# 1. filter list for entries with a gateway (column 3) of 0.0.0.0 (ie interface-local)
+# 2. read column 2 for network-order hex encoded subnet address
+# 3. match against a 10.x.x.x, 172.(16-31).x.x, or 192.168.x.x address
+# 4. print out any interface (column 1) that matches
+privateinterfaces() {
+	awk -f - /proc/net/route <<'FindPrivateNetworks'
+function p(m,n) { return(and(IP,m) == n); }
+$3=="00000000" { IP=strtonum("0x"$2); if (p(0xff,0x0a) || p(0x1fff,0x10ac) || p(0xffff,0xa8c0)) print $1; }
+FindPrivateNetworks
+}
+
+start() {
+	ebegin "Starting minissdpd"
+
+	ARGS=""
+	if [ "x$MINISSDPD_IFACE" = "x" ]; then
+		ewarn "No interfaces provided, using interfaces on private networks"
+		IFLIST=$(privateinterfaces)
+	else
+		IFLIST="$MINISSDPD_IFACE"
+	fi
+
+	eindent
+	for IF in $IFLIST; do
+		if interfaceup $IF; then
+			einfo Adding interface $IF
+			ARGS+="-i $IF "
+		else
+			ewarn "Interface $IF is not up"
+		fi
+	done
+	eoutdent
+	start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $MINISSDPD -- $ARGS
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping minissdpd"
+	start-stop-daemon --stop --pidfile "${PIDFILE}"
+	eend $?
+}

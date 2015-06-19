@@ -1,0 +1,20 @@
+--- cmake/modules/FindKDE4Internal.cmake
++++ cmake/modules/FindKDE4Internal.cmake
+@@ -1204,7 +1204,7 @@
+    set(CMAKE_C_FLAGS_DEBUGFULL        "-g3 -fno-inline")
+    set(CMAKE_C_FLAGS_PROFILE          "-g3 -fno-inline -ftest-coverage -fprofile-arcs")
+ 
+-   set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -Wno-long-long -std=iso9899:1990 -Wundef -Wcast-align -Werror-implicit-function-declaration -Wchar-subscripts -Wall -W -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -fno-common")
++   set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -Wno-long-long -std=iso9899:1990 -Wundef -Wcast-align -Wchar-subscripts -Wall -W -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -fno-common")
+    # As of Qt 4.6.x we need to override the new exception macros if we want compile with -fno-exceptions
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnon-virtual-dtor -Wno-long-long -Wundef -Wcast-align -Wchar-subscripts -Wall -W -Wpointer-arith -Wformat-security -fno-exceptions -DQT_NO_EXCEPTIONS -fno-check-new -fno-common")
+ 
+@@ -1295,7 +1295,7 @@
+       endif(NOT _compile_result)
+ 
+       if (GCC_IS_NEWER_THAN_4_2)
+-         set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=return-type -fvisibility-inlines-hidden")
++         set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
+       endif (GCC_IS_NEWER_THAN_4_2)
+    else (__KDE_HAVE_GCC_VISIBILITY AND GCC_IS_NEWER_THAN_4_1 AND NOT _GCC_COMPILED_WITH_BAD_ALLOCATOR AND NOT WIN32)
+       set (__KDE_HAVE_GCC_VISIBILITY 0)

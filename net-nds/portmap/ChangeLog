@@ -1,0 +1,187 @@
+# ChangeLog for net-nds/portmap
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-nds/portmap/ChangeLog,v 1.52 2014/11/02 09:25:14 swift Exp $
+
+  02 Nov 2014; Sven Vermeulen <swift@gentoo.org> portmap-6.0.ebuild,
+  portmap-9999.ebuild:
+  Remove sec-policy/selinux-* dependency from DEPEND but keep in RDEPEND (bug
+  #527698)
+
+  09 Dec 2012; Ulrich Müller <ulm@gentoo.org> portmap-6.0.ebuild,
+  portmap-9999.ebuild:
+  Fix LICENSE, bugs 446590 and 426102.
+
+  01 Jun 2012; Zac Medico <zmedico@gentoo.org> portmap-6.0.ebuild,
+  portmap-9999.ebuild:
+  inherit user for enewgroup and enewuser
+
+  21 Sep 2011; Michał Górny <mgorny@gentoo.org> portmap-9999.ebuild:
+  Migrate to git-2.
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> portmap-6.0.ebuild:
+  Drop to ~mips
+
+  30 May 2009; Mike Frysinger <vapier@gentoo.org> files/portmap.rc6:
+  Add check for SUNRPC_REGISTER_V4=y in kernel config.
+
+  08 Jan 2008; Jeroen Roovers <jer@gentoo.org> portmap-6.0.ebuild:
+  Stable for HPPA (bug #190182).
+
+  28 Dec 2007; Guy Martin <gmsoft@gentoo.org> portmap-6.0.ebuild:
+  Strip -fpie LDFLAGS when building on hppa since pie support is broken.
+
+  06 Oct 2007; Tom Gall <tgall@gentoo.org> portmap-6.0.ebuild:
+  stable on ppc64, bug 190182
+
+  27 Sep 2007; Joshua Kinard <kumba@gentoo.org> portmap-6.0.ebuild:
+  Stable on mips, per #190182.
+
+  14 Sep 2007; Christian Faulhammer <opfer@gentoo.org> portmap-6.0.ebuild:
+  stable x86, bug 190182
+
+  28 Aug 2007; nixnut <nixnut@gentoo.org> portmap-6.0.ebuild:
+  Stable on ppc wrt bug 190182
+
+  27 Aug 2007; Raúl Porcel <armin76@gentoo.org> portmap-6.0.ebuild:
+  alpha/ia64 stable wrt #190182
+
+  27 Aug 2007; Christoph Mende <angelos@gentoo.org> portmap-6.0.ebuild:
+  Stable on amd64 wrt bug #190182
+
+  27 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> portmap-6.0.ebuild:
+  Stable on sparc wrt #190182
+
+  12 May 2007; Roy Marples <uberlord@gentoo.org>
+  +files/portmap-6.0-tcpd.patch, portmap-6.0.ebuild:
+  Enable compile without tcp-wrappers, #178242.
+
+*portmap-6.0 (12 May 2007)
+
+  12 May 2007; Mike Frysinger <vapier@gentoo.org> +portmap-6.0.ebuild:
+  Version bump.
+
+*portmap-9999 (20 Apr 2007)
+
+  20 Apr 2007; Mike Frysinger <vapier@gentoo.org> +portmap-9999.ebuild:
+  Live git version.
+
+  26 Mar 2007; Alec Warner <antarus@gentoo.org> portmap-5b-r9.ebuild:
+  Remove dependency on portage: ref bug 162516
+
+  09 Sep 2006; Mike Frysinger <vapier@gentoo.org> files/portmap.rc6:
+  Dont use a tempfile in init.d restart() #146624 by Stefan Hellermann.
+
+  23 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> portmap-5b-r9.ebuild:
+  Use -1 instead of /bin/false on enewuser call.
+
+  22 Feb 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/portmap-5b-no-SYS.patch, portmap-5b-r9.ebuild:
+  Add patch to delete the $(SYS) variable which isnt used at all #83000 by
+  Mihai Limbasan.
+
+  07 Feb 2005; Markus Rothe <corsair@gentoo.org> -portmap-5b-r8.ebuild,
+  portmap-5b-r9.ebuild:
+  Stable on ppc64; -r8 no longer needed -> removed
+
+  23 Jan 2005; Bryan Østergaard <kloeri@gentoo.org> portmap-5b-r9.ebuild:
+  Stable on alpha.
+
+  19 Jan 2005; Joshua Kinard <kumba@gentoo.org> portmap-5b-r9.ebuild:
+  Marked stable on mips.
+
+  10 Dec 2004; Joseph Jezak <josejx@gentoo.org> portmap-5b-r9.ebuild:
+  Marked ppc stable.
+
+  06 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org> portmap-5b-r9.ebuild:
+  Stable on sparc
+
+  31 Oct 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/portmap-5b-loopback-only.patch,
+  +files/portmap-5b-optional-tcpd.patch, +files/portmap.confd,
+  files/portmap.rc6, portmap-5b-r8.ebuild, portmap-5b-r9.ebuild:
+  Clean up ebuilds and add support for loopback-only #65199 by Elros Cyriatan.
+
+  02 Aug 2004; Aron Griffis <agriffis@gentoo.org> portmap-5b-r8.ebuild,
+  portmap-5b-r9.ebuild:
+  Add enewuser/enewgroup for rpc #41759
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> portmap-5b-r7.ebuild,
+  portmap-5b-r8.ebuild, portmap-5b-r9.ebuild:
+  virtual/glibc -> virtual/libc
+
+  11 May 2004; Michael McCabe <randy@gentoo.org> portmap-5b-r8.ebuild:
+  added s390 keywords
+
+*portmap-5b-r9 (24 Apr 2004)
+
+  24 Apr 2004; Robin H. Johnson <robbat2@gentoo.org> portmap-5b-r9.ebuild:
+  add new version supporting leaving out tcp-wrappers via USE flag.
+
+  06 Apr 2004; Joshua Brindle <method@gentoo.org> portmap-5b-r8.ebuild:
+  added selinux policy to rdepend
+
+  09 Mar 2004; <agriffis@gentoo.org> portmap-5b-r8.ebuild:
+  stable on alpha and ia64
+
+  07 Mar 2004; Joshua Kinard <kumba@gentoo.org> portmap-5b-r6.ebuild,
+  portmap-5b-r7.ebuild, portmap-5b-r8.ebuild:
+  Marked stable on mips, copyright header fixes.
+
+  16 Feb 2004; Gustavo Zacarias <gustavoz@gentoo.org> portmap-5b-r8.ebuild:
+  Stable on hppa
+
+  09 Feb 2004; <gustavoz@gentoo.org> portmap-5b-r8.ebuild:
+  stable on sparc
+
+  08 Feb 2004; Martin Schlemmer <azarah@gentoo.org> portmap-5b-r8.ebuild:
+  Bump to stable for x86.
+
+  28 Dec 2003; Martin Schlemmer <azarah@gentoo.org> portmap-5b-r8.ebuild:
+  Make last fix more dynamic.
+
+*portmap-5b-r8 (27 Dec 2003)
+
+  27 Dec 2003; Martin Schlemmer <azarah@gentoo.org> portmap-5b-r8.ebuild,
+  files/portmap-4.0-cleanup.patch, files/portmap-4.0-malloc.patch,
+  files/portmap-4.0-rpc_user.patch, files/portmap-4.0-sigpipe.patch:
+  Cleanup ebuild a bit. Add some RH patches. Fix to work with
+  >=sys-apps/tcp-wrappers-7.6-r7 that moved libwrap.a to /lib.
+
+*portmap-5b-r7 (31 Dec 2002)
+
+  05 May 2003; Martin Holzer <mholzer@gentoo.org> files/portmap.rc5,
+  files/portmap.rc6:
+  Portmap starts now before inetd and xinetd in runlevels. Closes #18189.
+
+  28 Mar 2003; Guy Martin <gmsoft@gentoo.org> portmap-5b-r7.ebuild :
+  Added hppa to KEYWORDS.
+
+  13 Mar 2003; Zach Welch <zwelch@gentoo.org> portmap-5b-r7.ebuild:
+  add arm keyword
+
+  09 Mar 2003; Aron Griffis <agriffis@gentoo.org> portmap-5b-r7.ebuild:
+  Mark stable on alpha
+
+  16 Feb 2003; Jan Seidel <tuxus@gentoo.org> portmap-5b-r7.ebuild :
+  Added mips to keywords
+
+  09 Feb 2003; Seemant Kulleen <seemant@gentoo.org> *.ebuild :
+  Sed expression delimiter from / to :, closing bug #15006 by Blu3
+  <david+gentoo.org@blue-labs.org>; also use epatch in the r6 ebuild.
+
+  31 Dec 2002; Martin Schlemmer <azarah@gentoo.org> portmap-5b-r7.ebuild :
+  Should include errno.h, and not define as external.  Fix
+  relocation error and build problem with glibc-2.3.2 cvs ...
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> :
+  Changed sparc ~sparc keywords.
+ 
+*portmap-5b-r6 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

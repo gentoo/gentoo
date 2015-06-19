@@ -1,0 +1,383 @@
+# ChangeLog for sys-apps/logwatch
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/logwatch/ChangeLog,v 1.97 2015/04/03 06:21:56 vapier Exp $
+
+*logwatch-7.4.1 (03 Apr 2015)
+
+  03 Apr 2015; Mike Frysinger <vapier@gentoo.org> +logwatch-7.4.1.ebuild,
+  files/logwatch:
+  Version bump #542744 by Tobias Sager.  Create cache dirs via existing cronjob
+  #520570 by Agostino Sarubbo.
+
+  03 Apr 2015; Mike Frysinger <vapier@gentoo.org> logwatch-7.4.0-r1.ebuild,
+  logwatch-7.4.0_p170-r1.ebuild:
+  Add ~x86-fbsd #303295 by Johan Hattne.
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> logwatch-7.4.0_p170-r1.ebuild:
+  Stable for sparc, wrt bug #495922
+
+  19 Jan 2014; Agostino Sarubbo <ago@gentoo.org> logwatch-7.4.0_p170-r1.ebuild:
+  Stable for ppc64, wrt bug #495922
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> logwatch-7.4.0_p170-r1.ebuild:
+  Stable for alpha, wrt bug #495922
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> logwatch-7.4.0_p170-r1.ebuild:
+  Stable for ppc, wrt bug #495922
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> logwatch-7.4.0_p170-r1.ebuild:
+  Stable for x86, wrt bug #495922
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> logwatch-7.4.0_p170-r1.ebuild:
+  amd64 stable, bug #495922
+
+  31 Dec 2013; Markus Meier <maekke@gentoo.org> logwatch-7.4.0_p170-r1.ebuild:
+  arm stable, bug #495922
+
+  26 Dec 2013; Jeroen Roovers <jer@gentoo.org> logwatch-7.4.0_p170-r1.ebuild:
+  Stable for HPPA (bug #495922).
+
+  20 Dec 2013; Justin Lecher <jlec@gentoo.org> logwatch-7.4.0-r1.ebuild,
+  logwatch-7.4.0_p170-r1.ebuild, metadata.xml:
+  Drop unnessecary dies
+
+*logwatch-7.4.0_p170-r1 (19 Dec 2013)
+
+  19 Dec 2013; Michael Orlitzky <mjo@gentoo.org> +logwatch-7.4.0_p170-r1.ebuild,
+  -logwatch-7.4.0_p170.ebuild:
+  Revbump to avoid installation of amavis-logwatch and postfix-logwatch man
+  pages, bug #493322.
+
+*logwatch-7.4.0_p170 (25 Oct 2013)
+
+  25 Oct 2013; Lars Wendler <polynomial-c@gentoo.org> -logwatch-7.3.6.ebuild,
+  -logwatch-7.3.7_pre20091210.ebuild, -logwatch-7.3.7_pre20100217.ebuild,
+  +logwatch-7.4.0_p170.ebuild:
+  Added svn snapshot (rev. 170) as per request by Pinkbyte. Should fix bug
+  #424862. Removed old versions.
+
+*logwatch-7.4.0-r1 (16 Jan 2013)
+
+  16 Jan 2013; Hans de Graaff <graaff@gentoo.org> +logwatch-7.4.0-r1.ebuild,
+  +files/logwatch-7.4.0-openssh-hpn.patch:
+  Add a patch to ignore output by the hpn patch for openssh, bug 385781.
+
+  17 Mar 2012; Raúl Porcel <armin76@gentoo.org> logwatch-7.4.0.ebuild:
+  sparc stable wrt #356387
+
+  16 Mar 2012; Brent Baude <ranger@gentoo.org> logwatch-7.4.0.ebuild:
+  Marking logwatch-7.4.0 ppc64 for bug 356387
+
+  12 Mar 2012; Markus Meier <maekke@gentoo.org> logwatch-7.4.0.ebuild:
+  arm stable, bug #356387
+
+  07 Mar 2012; Thomas Kahle <tomka@gentoo.org> logwatch-7.4.0.ebuild:
+  marked x86 per bug 356387
+
+  05 Mar 2012; Brent Baude <ranger@gentoo.org> logwatch-7.4.0.ebuild:
+  Marking logwatch-7.4.0 ppc for bug 356387
+
+  02 Mar 2012; Jeroen Roovers <jer@gentoo.org> logwatch-7.4.0.ebuild:
+  Stable for HPPA (bug #356387).
+
+  02 Mar 2012; Agostino Sarubbo <ago@gentoo.org> logwatch-7.4.0.ebuild:
+  Stable for amd64, wrt bug #356387
+
+  02 Mar 2012; Tobias Klausmann <klausman@gentoo.org> logwatch-7.4.0.ebuild:
+  Stable on alpha, bug #356387
+
+*logwatch-7.4.0 (12 Nov 2011)
+
+  12 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> +logwatch-7.4.0.ebuild:
+  Version bump wrt bug #358807.
+
+  06 Apr 2011; Benedikt Böhm <hollow@gentoo.org> metadata.xml:
+  remove myself from metadata
+
+  06 Jun 2010; Raúl Porcel <armin76@gentoo.org> logwatch-7.3.6.ebuild:
+  arm stable wrt #300828
+
+  24 Apr 2010; Raúl Porcel <armin76@gentoo.org> logwatch-7.3.6.ebuild,
+  logwatch-7.3.7_pre20091210.ebuild, logwatch-7.3.7_pre20100217.ebuild:
+  Add ~arm
+
+  23 Feb 2010; Joseph Jezak <josejx@gentoo.org>
+  logwatch-7.3.7_pre20100217.ebuild:
+  Marked ~ppc for bug #295639.
+
+*logwatch-7.3.7_pre20100217 (17 Feb 2010)
+
+  17 Feb 2010; Benedikt Böhm <hollow@gentoo.org>
+  -logwatch-7.3.7_pre20091204.ebuild, -logwatch-7.3.7_pre20100211.ebuild,
+  +logwatch-7.3.7_pre20100217.ebuild:
+  fix #305527
+
+*logwatch-7.3.7_pre20100211 (11 Feb 2010)
+
+  11 Feb 2010; Benedikt Böhm <hollow@gentoo.org>
+  logwatch-7.3.7_pre20091210.ebuild, +logwatch-7.3.7_pre20100211.ebuild:
+  new snapshot
+
+  31 Dec 2009; Brent Baude <ranger@gentoo.org>
+  logwatch-7.3.7_pre20091204.ebuild:
+  Marking logwatch-7.3.7_pre20091204 ~ppc64 for bug 295639
+
+  26 Dec 2009; Raúl Porcel <armin76@gentoo.org>
+  logwatch-7.3.7_pre20091204.ebuild, logwatch-7.3.7_pre20091210.ebuild:
+  Add ~alpha/~sparc wrt #295639
+
+*logwatch-7.3.7_pre20091210 (10 Dec 2009)
+
+  10 Dec 2009; Benedikt Böhm <hollow@gentoo.org>
+  +logwatch-7.3.7_pre20091210.ebuild:
+  new snapshot
+
+  07 Dec 2009; Jeroen Roovers <jer@gentoo.org>
+  logwatch-7.3.7_pre20091204.ebuild:
+  Marked ~hppa (bug #295639).
+
+  04 Dec 2009; Benedikt Böhm <hollow@gentoo.org> metadata.xml:
+  update metadata
+
+*logwatch-7.3.7_pre20091204 (04 Dec 2009)
+
+  04 Dec 2009; Benedikt Böhm <hollow@gentoo.org> -logwatch-7.3.2.ebuild,
+  -logwatch-7.3.4.ebuild, +logwatch-7.3.7_pre20091204.ebuild,
+  files/logwatch:
+  latest cvs snapshot + patches. fixes #141649, #158549, #174870, #183762,
+  #190385, #244613, #256885, #260524, #291029
+
+  26 Feb 2009; Raúl Porcel <armin76@gentoo.org> logwatch-7.3.6.ebuild:
+  x86 stable wrt #259730
+
+  24 Feb 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  logwatch-7.3.6.ebuild:
+  stable amd64, bug 259730
+
+  23 Feb 2009; Tobias Klausmann <klausman@gentoo.org> logwatch-7.3.6.ebuild:
+  Stable on alpha, bug #259730
+
+  31 May 2008; Mike Frysinger <vapier@gentoo.org> logwatch-7.3.6.ebuild:
+  Add dev-perl/DateManip to RDEPEND #223647 by John Wilcock.
+
+  18 Oct 2007; Michael Hanselmann <hansmi@gentoo.org> logwatch-7.3.6.ebuild:
+  Stable on ppc.
+
+  15 Oct 2007; Markus Rothe <corsair@gentoo.org> logwatch-7.3.6.ebuild:
+  Stable on ppc64
+
+  21 Aug 2007; Jeroen Roovers <jer@gentoo.org> logwatch-7.3.6.ebuild:
+  Stable for HPPA (bug #153189).
+
+*logwatch-7.3.6 (16 Jun 2007)
+
+  16 Jun 2007; Mike Frysinger <vapier@gentoo.org> +logwatch-7.3.6.ebuild:
+  Version bump #179595 by Daniel Webert.
+
+  13 Jun 2007; Raúl Porcel <armin76@gentoo.org> logwatch-7.3.2.ebuild:
+  alpha stable wrt #159269
+
+  23 Mar 2007; René Nussbaumer <killerfox@gentoo.org>
+  logwatch-7.3.4.ebuild:
+  Added to ~hppa.
+
+  17 Mar 2007; Steve Dibb <beandog@gentoo.org> logwatch-7.3.2.ebuild:
+  amd64 stable, bug 159269
+
+  10 Mar 2007; nixnut <nixnut@gentoo.org> logwatch-7.3.2.ebuild:
+  Stable on ppc wrt bug 159269
+
+  08 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org> logwatch-7.3.2.ebuild:
+  Stable on sparc wrt #159269
+
+  06 Mar 2007; Markus Rothe <corsair@gentoo.org> logwatch-7.3.2.ebuild:
+  Stable on ppc64; bug #159269
+
+  03 Mar 2007; Andrej Kacian <ticho@gentoo.org> logwatch-7.3.2.ebuild:
+  Stable on x86, bug #159269.
+
+*logwatch-7.3.4 (03 Mar 2007)
+
+  03 Mar 2007; Mike Frysinger <vapier@gentoo.org> +logwatch-7.3.4.ebuild:
+  Version bump #168768 by Kevin Parent.
+
+  05 Feb 2007; Simon Stelling <blubb@gentoo.org> logwatch-7.3-r1.ebuild:
+  stable on amd64
+
+  09 Jan 2007; Markus Rothe <corsair@gentoo.org> logwatch-7.3-r1.ebuild:
+  Stable on ppc64; bug #159899
+
+  07 Jan 2007; Torsten Veller <tove@gentoo.org> logwatch-7.3-r1.ebuild:
+  Stable on x86 (#159899)
+
+  07 Jan 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  logwatch-7.3-r1.ebuild:
+  ppc stable, bug #159899
+
+  06 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> logwatch-7.3-r1.ebuild:
+  Stable on Alpha.
+
+  06 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  logwatch-7.3-r1.ebuild:
+  Stable on sparc wrt #159899
+
+*logwatch-7.3.2 (05 Jan 2007)
+
+  05 Jan 2007; Mike Frysinger <vapier@gentoo.org> +logwatch-7.3.2.ebuild:
+  Version bump #159898 by Daniel Webert.
+
+  10 Nov 2006; Mike Frysinger <vapier@gentoo.org> logwatch-7.3-r1.ebuild:
+  Try not to install two logwatch cron files #145361 by Brian Wood.
+
+  01 Aug 2006; <tcort@gentoo.org> logwatch-7.1.ebuild:
+  Stable on alpha wrt Bug #140600.
+
+  01 Aug 2006; Patrick McLean <chutzpah@gentoo.org> logwatch-7.1.ebuild:
+  Stable on amd64 (bug #142300).
+
+*logwatch-7.3-r1 (23 Jul 2006)
+
+  23 Jul 2006; Martin Schlemmer <azarah@gentoo.org> +logwatch-7.3-r1.ebuild:
+  Install html templates to enable html output to work.
+
+  20 Jul 2006; Markus Rothe <corsair@gentoo.org> logwatch-7.1.ebuild:
+  Stable on ppc64; bug #140600
+
+  18 Jul 2006; Joshua Jackson <tsunam@gentoo.org> logwatch-7.1.ebuild:
+  Stable x86; bug #140600
+
+  16 Jul 2006; Jason Wever <weeve@gentoo.org> logwatch-7.1.ebuild:
+  Stable on SPARC wrt bug #140600.
+
+  16 Jul 2006; <nixnut@gentoo.org> logwatch-7.1.ebuild:
+  Stable on ppc. Bug #140600
+
+*logwatch-7.3 (16 Jul 2006)
+
+  16 Jul 2006; Mike Frysinger <vapier@gentoo.org> +logwatch-7.3.ebuild:
+  Version bump #126893 by Daniel Webert.
+
+  14 Dec 2005; Jason Wever <weeve@gentoo.org> logwatch-7.1.ebuild:
+  Use keepdir on /var/cache/logwatch to keep it from getting removed when old
+  versions are cleaned up.
+
+*logwatch-7.1 (10 Dec 2005)
+
+  10 Dec 2005; Mike Frysinger <vapier@gentoo.org> +logwatch-7.1.ebuild:
+  Version bump #115009 by Daniel Webert.
+
+*logwatch-7.0-r1 (08 Nov 2005)
+
+  08 Nov 2005; Mike Frysinger <vapier@gentoo.org> +logwatch-7.0-r1.ebuild:
+  Fixes by Rod Begbie so that the install actually works #111477.
+
+*logwatch-7.0 (04 Nov 2005)
+
+  04 Nov 2005; Mike Frysinger <vapier@gentoo.org> +logwatch-7.0.ebuild:
+  Version bump #111274 by Dhruba Bandopadhyay.
+
+  23 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org> logwatch-6.1.2.ebuild:
+  marked ~alpha wrt bug #109748
+
+  26 Jul 2005; Mike Frysinger <vapier@gentoo.org> logwatch-6.1.2.ebuild:
+  Install logwatch file as 00-logwatch so it will be run before other cronjobs
+  #100243 by Brian G. Peterson.
+
+*logwatch-6.1.2 (18 Jun 2005)
+
+  18 Jun 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/logwatch-6.1.2-emerge-applydate.patch, +logwatch-6.1.2.ebuild:
+  Version bump #96362 by Sheldon Hearn.
+
+*logwatch-6.0.2 (29 Apr 2005)
+
+  29 Apr 2005; Mike Frysinger <vapier@gentoo.org> +files/logwatch,
+  +logwatch-6.0.2.ebuild:
+  Version bump and add a cron script #83641 by Meder Bakirov.
+
+  07 Apr 2005; Jason Wever <weeve@gentoo.org> logwatch-5.2.2.ebuild:
+  Stable on SPARC.
+
+  20 Mar 2005; Jason Wever <weeve@gentoo.org> logwatch-5.2.2.ebuild:
+  Added ~sparc keyword.
+
+  11 Jan 2005; Andrej Kacian <ticho@gentoo.org> logwatch-4.3.2.ebuild,
+  logwatch-5.0.ebuild, logwatch-5.2.2.ebuild:
+  mail-client/mailx -> virtual/mailx in RDEPEND. For bug #73972.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  logwatch-5.0.ebuild, logwatch-5.2.2.ebuild:
+  Masked logwatch-5.2.2.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  logwatch-5.0.ebuild:
+  Masked logwatch-5.0.ebuild stable for ppc
+
+  21 Jul 2004; Tom Gall <tgall@gentoo.org> logwatch-5.2.2.ebuild:
+  stable on ppc64, bug #57579
+
+*logwatch-5.2.2 (23 Jun 2004)
+
+  23 Jun 2004; Sven Wegener <swegener@gentoo.org> -logwatch-5.2.1.ebuild,
+  +logwatch-5.2.2.ebuild:
+  Version bump and prune older ebuild as source has disappeared upstream.
+
+*logwatch-5.2.1 (23 Jun 2004)
+
+  23 Jun 2004; Sven Wegener <swegener@gentoo.org> logwatch-4.3.2.ebuild,
+  logwatch-5.0.ebuild, +logwatch-5.2.1.ebuild:
+  Version bump. Switched RDEPEND and DEPEND.
+
+  30 May 2004; Robin H. Johnson <robbat2@gentoo.org> logwatch-4.3.2.ebuild,
+  logwatch-5.0.ebuild:
+  mailx move
+
+  13 Mar 2004; David Holm <dholm@gentoo.org> logwatch-5.0.ebuild:
+  Added to ~ppc.
+
+*logwatch-5.0 (17 Nov 2003)
+
+  17 Nov 2003; Jared Hudson <jhhudso@gentoo.org> : Version bump. Credit goes to
+  Alessandro Pisani <alextxm@tin.it> for the new ebuild.
+	
+  23 Oct 2003; Martin Holzer <mholzer@gentoo.org> logwatch-4.3.2.ebuild:
+  removing auto-adding to cron. Closes #29012.
+
+  01 May 2003; Jared Hudson <jhhudso@gentoo.org> logwatch-4.2.1-r1.ebuild,
+  logwatch-4.3.1-r1.ebuild : Changed pkg_postrm() to remove the symbolic
+  links created in pkg_postinst(). In response to bug #17746, credit goes to
+  Gregorio Guidi <g.guidi@sns.it>.
+	
+  11 Apr 2003; Jared Hudson <jhhudso@gentoo.org> logwatch-4.2.1.ebuild,
+  logwatch-4.3.1.ebuild : Changed pkg_postrm() and pkg_postinst() to fix
+  crontab bug reported in bug # 16576. Credit goes to:
+  Alessandro Pisani <alextxm@tin.it>
+	
+*logwatch-4.3.2 (11 Apr 2003)
+	
+  11 Apr 2003; Jared Hudson <jhhudso@gentoo.org> : IMPORTANT NOTICE: I have
+  changed the location of logwatch and its configuration files and scripts.
+  logwatch.pl is now in /usr/sbin/logwatch.pl, the configuration files
+  and scripts are in /etc/log.d This will match the way the author intended
+  logwatch to be enabled while also allowing the configuration files to be
+  monitored for changed and subject to etc-update when logwatch is upgraded.
+  Credit goes to the following people: Alessandro Pisani <alextxm@tin.it>
+  and Georgi Georgiev <chutz@chubaka.net> Bugs fixed: 13303 16016 16576 17746
+
+  30 Mar 2003; Jared Hudson <jhhudso@gentoo.org> : Provider archived this
+  version of the tarball, so I changed our location in the ebuild.
+	
+*logwatch-4.3.1 (07 Feb 2003)
+
+  07 Feb 2003; Jared Hudson <jhhudso@gentoo.org> : Version bump.
+	
+*logwatch-4.2.1 (20 Dec 2002)
+
+  19 Feb 2003; Martin Holzer <mholzer@gentoo.org> logwatch-4.2.1.ebuild :
+  Marking as stable.
+	
+  07 Feb 2003; Jared Hudson <jhhudso@gentoo.org> : Changed source location,
+  since providing ftp site moved 4.2.1 to old archives.
+	
+  20 Dec 2002; Jared Hudson <jhhudso@gentoo.org> : Initial import. Ebuild
+  submitted by Alessandro Pisani <alextxm@tin.it>.

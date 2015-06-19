@@ -1,0 +1,44 @@
+# ChangeLog for dev-haskell/crypto
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/crypto/ChangeLog,v 1.9 2014/07/25 08:59:14 slyfox Exp $
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*crypto-4.2.5.1-r1 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org> +crypto-4.2.5.1-r1.ebuild:
+  Specify the quickcheck slot 2 in crypto-4.2.5.1-r1
+
+*crypto-4.2.5.1 (22 Dec 2012)
+
+  22 Dec 2012; Sergei Trofimovich <slyfox@gentoo.org> +crypto-4.2.5.1.ebuild,
+  -crypto-4.2.4.ebuild, -crypto-4.2.5.ebuild, -files/crypto-4.2.4-ghc-7.4.patch,
+  -files/crypto-4.2.5-ghc-7.6.patch:
+  Version bump.
+
+  18 Nov 2012; Mark Wright <gienah@gentoo.org>
+  +files/crypto-4.2.5-ghc-7.6.patch, crypto-4.2.5.ebuild:
+  Patch crypto 4.2.5 for ghc 7.6.1, EAPI=5
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org> crypto-4.2.4.ebuild,
+  crypto-4.2.5.ebuild:
+  move dev-haskell/crypto/crypto-4.2.4.ebuild ebuild to mirror://hackage
+
+*crypto-4.2.5 (02 Jun 2012)
+
+  02 Jun 2012; Mark Wright <gienah@gentoo.org> +crypto-4.2.5.ebuild:
+  Bump crypto to 4.2.5
+
+  17 Apr 2012; Sergei Trofimovich <slyfox@gentoo.org>
+  +files/crypto-4.2.4-ghc-7.4.patch, crypto-4.2.4.ebuild:
+  Fixed build breakage against ghc-7.4 (bug #412289 by Robin Johnson).
+
+  16 Mar 2012; Sergei Trofimovich <slyfox@gentoo.org> crypto-4.2.4.ebuild:
+  Fixed case in HOMEPAGE.
+
+*crypto-4.2.4 (04 Dec 2011)
+
+  04 Dec 2011; Sergei Trofimovich <slyfox@gentoo.org> +crypto-4.2.4.ebuild,
+  +metadata.xml:
+  Initial version. Haskell cryptographic functions (dev-haskell/hs3 depend)

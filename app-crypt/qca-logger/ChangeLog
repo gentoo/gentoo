@@ -1,0 +1,86 @@
+# ChangeLog for app-crypt/qca-logger
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca-logger/ChangeLog,v 1.13 2015/02/22 07:43:46 jer Exp $
+
+  22 Feb 2015; Jeroen Roovers <jer@gentoo.org> qca-logger-2.0.0_beta2.ebuild:
+  Stable for HPPA (bug #540976).
+
+  14 Jun 2012; Ben de Groot <yngwin@gentoo.org> qca-logger-2.0.0_beta2.ebuild:
+  Destabling to ~ia64 because last available stable qt will be masked pending
+  removal
+
+  26 Mar 2010; Ben de Groot <yngwin@gentoo.org>
+  qca-logger-2.0.0_beta2.ebuild:
+  Use qt4-r2.eclass (bug #311481). Tighten formatting.
+
+  13 Nov 2009; Joseph Jezak <josejx@gentoo.org>
+  qca-logger-2.0.0_beta2.ebuild:
+  Marked ppc64 stable for bug #272685.
+
+  19 Aug 2009; Petteri Räty <betelgeuse@gentoo.org>
+  qca-logger-2.0.0_beta2.ebuild:
+  Migrate to EAPI 2 in order to nuke built_with_use.
+
+  21 Jul 2009; Raúl Porcel <armin76@gentoo.org>
+  qca-logger-2.0.0_beta2.ebuild:
+  ia64/sparc stable wrt #272865
+
+  16 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  qca-logger-2.0.0_beta2.ebuild:
+  Stable on alpha, bug #272865
+
+  10 Jun 2009; Markus Meier <maekke@gentoo.org>
+  qca-logger-2.0.0_beta2.ebuild:
+  amd64/x86 stable, bug #272865
+
+  08 Aug 2008; Alexis Ballier <aballier@gentoo.org>
+  qca-logger-2.0.0_beta2.ebuild:
+  keyword ~x86-fbsd
+
+  26 Mar 2008; Raúl Porcel <armin76@gentoo.org>
+  qca-logger-2.0.0_beta2.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #213868
+
+  15 Mar 2008; Markus Rothe <corsair@gentoo.org>
+  qca-logger-2.0.0_beta2.ebuild:
+  Added ~ppc64
+
+  14 Jan 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  qca-logger-2.0.0_beta2.ebuild:
+  Removed accidental RESTRICT=mirror.
+
+  13 Jan 2008; Wulf C. Krueger <philantrop@gentoo.org> +metadata.xml,
+  +qca-logger-2.0.0_beta2.ebuild:
+  Initial import to the tree as per bug 129536.
+
+*qca-logger-2.0.0_beta2 (15 Dec 2007)
+
+  15 Dec 2007; Ingmar Vanhassel <ingmar.vanhassel@gmail.com>
+  -qca-logger-2.0.0_beta1.ebuild, +qca-logger-2.0.0_beta2.ebuild:
+  Added qca-logger-2.0.0_beta2.ebuild.
+
+*qca-logger-2.0.0_beta1 (06 Nov 2007)
+
+  06 Nov 2007; Ingmar Vanhassel <ingmar.vanhassel@gmail.com>
+  -qca-logger-0.1_p20070829-r1.ebuild, +qca-logger-2.0.0_beta1.ebuild:
+  Added qca-logger-2.0.0_beta1.ebuild, thanks to Davide Pesavento in Bug 129536.
+
+  04 Oct 2007; Emanuele A. Bagnaschi <zephyrus@mirach.it>
+  -qca-logger-0.1_p20070829.ebuild, qca-logger-0.1_p20070829-r1.ebuild:
+  Minor changes to the ebuild, thanks to Davide Pesavento. See bug #129536.
+  Removed old '-r0' ebuild.
+ 
+*qca-logger-0.1_p20070829-r1 (10 Sep 2007)
+
+  10 Sep 2007; Emanuele A. Bagnaschi <zephyrus@mirach.it>
+  +qca-logger-0.1_p20070829-r1.ebuild:
+  Updated to reflect change about the behaviour of debug builds.
+  Thanks to Davide Pesavento.
+
+*qca-logger-0.1_p20070829 (07 Sep 2007)
+
+  07 Sep 2007; Emanuele A. Bagnaschi <zephyrus@mirach.it>
+  +qca-logger-0.1_p20070829.ebuild:
+  Added qca-logger-0.1_p20070829. Moving to a more sane qca2 framework. Many
+  thanks to Davide Pesavento and Alon Bar-Lev, see bug #129536.
+

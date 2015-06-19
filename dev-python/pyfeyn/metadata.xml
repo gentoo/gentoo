@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>python</herd>
+	<maintainer>
+		<email>grozin@gentoo.org</email>
+		<name>Andrey Grozin</name>
+	</maintainer>
+	<longdescription>Python package for drawing Feynman diagrams
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">pyfeyn</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/argus/files/argus.initd,v 1.1 2006/01/08 23:47:19 vanquirius Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting argus"
+	start-stop-daemon --start --quiet --exec /usr/sbin/argus -- -d
+	eend $? 
+}
+
+stop() {
+	ebegin "Stopping argus"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/argus
+	eend $?
+}

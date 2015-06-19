@@ -1,0 +1,82 @@
+# ChangeLog for net-misc/java-wakeonlan
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/java-wakeonlan/ChangeLog,v 1.20 2015/05/31 18:48:39 zlogene Exp $
+
+  31 May 2015; Mikle Kolyada <zlogene@gentoo.org>
+  -java-wakeonlan-1.0.0-r1.ebuild, java-wakeonlan-1.0.0-r2.ebuild:
+  amd64/x86 stable wrt bug #550462. Drop old.
+
+*java-wakeonlan-1.0.0-r2 (26 May 2015)
+
+  26 May 2015; Patrice Clement <monsieurp@gentoo.org>
+  +java-wakeonlan-1.0.0-r2.ebuild:
+  EAPI 5 bump. Fix bug 550462.
+
+  27 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -java-wakeonlan-1.0.0.ebuild:
+  NM: Cleanup old.
+
+  04 Dec 2011; Markos Chandras <hwoarang@gentoo.org>
+  java-wakeonlan-1.0.0-r1.ebuild:
+  Stable on amd64 wrt bug #391641
+
+  01 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  java-wakeonlan-1.0.0-r1.ebuild:
+  x86 stable wrt bug #391641
+
+  20 Mar 2009; Joseph Jezak <josejx@gentoo.org>
+  java-wakeonlan-1.0.0-r1.ebuild:
+  Marked ~ppc for bug #197861.
+
+*java-wakeonlan-1.0.0-r1 (31 Jan 2009)
+
+  31 Jan 2009; Serkan Kaba <serkan@gentoo.org>
+  +files/java-wakeonlan-1.0.0-build.xml.patch,
+  +java-wakeonlan-1.0.0-r1.ebuild:
+  Revbump to avoid bundling of unit tests in the jar. Add jsap to javadoc
+  classpath. Keyword for amd64.
+
+  02 Feb 2008; Vlastimil Babka <caster@gentoo.org>
+  -java-wakeonlan-0.3.0.ebuild:
+  Remove gen-1 version.
+
+  04 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  java-wakeonlan-1.0.0.ebuild:
+  quote variable
+
+  04 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  java-wakeonlan-1.0.0.ebuild:
+  stable x86, bug 197861
+
+*java-wakeonlan-1.0.0 (21 Apr 2007)
+
+  21 Apr 2007; Miroslav Šulc <fordfrog@gentoo.org> ChangeLog,
+  java-wakeonlan-1.0.0.ebuild:
+  Version bump
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  java-wakeonlan-0.3.0.ebuild:
+  Dropping sparc keywords, see #96229
+
+  17 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  java-wakeonlan-0.3.0.ebuild:
+  added missing unzip dependency. see #69831
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org>
+  java-wakeonlan-0.3.0.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  30 Aug 2004; Chris Aniszczyk <zx@gentoo.org> java-wakeonlan-0.3.0.ebuild:
+  Marking x86
+
+  18 Feb 2004; Chris Aniszczyk <zx@gentoo.org> java-wakeonlan-0.3.0.ebuild:
+  Bug Fix #41663
+
+*java-wakeonlan-0.3.0 (15 Feb 2004)
+
+  15 Feb 2004; Chris Aniszczyk <zx@gentoo.org> java-wakeonlan-0.3.0.ebuild:
+  Initial Import.
+  Thanks Steffen Moldaner <s.moldaner@gmx.net> for the initial ebuild. Bug #27056

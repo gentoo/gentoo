@@ -1,0 +1,137 @@
+# ChangeLog for net-misc/grdesktop
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/grdesktop/ChangeLog,v 1.35 2014/10/11 04:43:55 mrueg Exp $
+
+  11 Oct 2014; Manuel Rüger <mrueg@gentoo.org> -grdesktop-0.23.ebuild:
+  Cleanup old EAPI1 ebuild.
+
+  15 Sep 2014; Agostino Sarubbo <ago@gentoo.org> grdesktop-0.23-r1.ebuild:
+  Stable for sparc, wrt bug #512012
+
+  28 Jul 2014; Agostino Sarubbo <ago@gentoo.org> grdesktop-0.23-r1.ebuild:
+  Stable for ppc, wrt bug #512012
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> grdesktop-0.23-r1.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> grdesktop-0.23-r1.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  09 Jul 2014; Pacho Ramos <pacho@gentoo.org>
+  files/grdesktop-0.23-desktop.patch:
+  Fix Icon path (by Joakim Tjernlund)
+
+*grdesktop-0.23-r1 (08 Jul 2014)
+
+  08 Jul 2014; Pacho Ramos <pacho@gentoo.org>
+  +files/grdesktop-0.23-desktop.patch, +grdesktop-0.23-r1.ebuild:
+  Bump eapi, update gnome2.eclass usage, fix desktop file
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> grdesktop-0.23.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> grdesktop-0.23.ebuild:
+  Fix slot-dep on gtk+
+
+  31 Jan 2009; Gilles Dartiguelongue <eva@gentoo.org> grdesktop-0.23.ebuild:
+  Fix locale installation, bug #253463.
+
+  12 Jan 2008; Mart Raudsepp <leio@gentoo.org>
+  -files/0010_all_0.22-remove-double-makefile-syntax.patch,
+  -files/grdesktop-0.22-gcc2_fix.patch, -grdesktop-0.22-r1.ebuild,
+  grdesktop-0.23.ebuild:
+  Remove old and add missing pkgconfig dep, bug 205437
+
+  04 Jul 2007; Roy Marples <uberlord@gentoo.org> grdesktop-0.23.ebuild:
+  Added ~x86-fbsd keyword.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 Aug 2006; Chris White <chriswhite@gentoo.org> metadata.xml:
+  metadata.xml translation by Yoshino-san in bug #135465
+
+  16 Mar 2006; John N. Laliberte <allanonjl@gentoo.org>
+  grdesktop-0.22-r1.ebuild, grdesktop-0.23.ebuild:
+  fix scrollkeeper violation, fixes #126394
+
+  07 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  grdesktop-0.23.ebuild:
+  Marked ppc stable
+
+  12 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> grdesktop-0.23.ebuild:
+  Stable on sparc
+
+  10 Sep 2005; <dang@gentoo.org> grdesktop-0.23.ebuild:
+  Marked stable on amd64
+
+  05 Sep 2005; Leonardo Boshell <leonardop@gentoo.org>
+  grdesktop-0.23.ebuild:
+  Stable on x86.
+
+  19 Mar 2005; Jason Wever <weeve@gentoo.org> grdesktop-0.22-r1.ebuild:
+  Stable on sparc wrt security bug #85881.
+
+  03 Feb 2005; Lars Weiler <pylon@gentoo.org> grdesktop-0.23.ebuild:
+  Added ~ppc.
+
+*grdesktop-0.23 (09 Jun 2004)
+
+  09 Jun 2004; L. Boshell <leonardop@gentoo.org> grdesktop-0.23.ebuild:
+  New release.
+
+  08 Jun 2004; L. Boshell <leonardop@gentoo.org> grdesktop-0.22-r1.ebuild,
+  files/grdesktop-0.22-gcc2_fix.patch:
+  Added patch to fix compilation under gcc-2. Cosmetic fixes. Fix the
+  program's icon path in grdesktop.desktop, resolving bug #50295.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> grdesktop-0.22-r1.ebuild:
+  Add inherit eutils
+
+  22 Feb 2004; Andrew Bevitt <cyfred@gentoo.org>; grdesktop-0.22-r1.ebuild,
+  files/0010_all_0.22-remove-double-makefile-syntax.patch:
+  Fixing some more DEP/RDEP problems and adding patch to help with scrollkeeper
+  updates during compile.
+
+  21 Feb 2004; Andrew Bevitt <cyfred@gentoo.org>; grdesktop-0.22.ebuild:
+  Pulling bad dependency ebuild
+
+*grdesktop-0.22-r1 (21 Feb 2004)
+
+  21 Feb 2004; Andrew Bevitt <cyfred@gentoo.org>; grdesktop-0.22-r1.ebuild,
+  grdesktop-0.22.ebuild, metadata.xml:
+  Updating for dependency changes, and pulling ~amd64 as dependencies have been
+  masked for this ARCH
+
+*grdesktop-0.22 (16 Feb 2004)
+
+  16 Feb 2004; Andrew Bevitt <cyfred@gentoo.org>; grdesktop-0.22.ebuild:
+  Version bump to 0.22, modified ebuild to use new SRC_URI name convention, and
+  updated econf for use of /var/tmp/portage
+
+  22 Aug 2003; Jason Wever <weeve@gentoo.org> grdesktop-0.19.ebuild:
+  Added ~sparc to keywords.
+
+*grdesktop-0.19 (12 Mar 2003)
+
+  12 Mar 2003; Brad Cowan <bcowan@gentoo.org> grdesktop-0.19.ebuild,
+  files/digest-grdesktop-0.19 :
+
+  Version bump. 
+
+  03 Dec 2003; Matthew Turk <satai@gentoo.org>
+  Changing from docbook2X to docbook-sgml-utils.
+
+*grdesktop-0.17 (11 Nov 2002)
+
+  11 Nov 2002; Brad Cowan <bcowan@gentoo.org> grdesktop-0.17.ebuild,
+  files/digest-grdesktop-0.16 :
+
+  Version bump. 
+
+*grdesktop-0.16 (01 Nov 2002)
+
+  01 Nov 2002; Brad Cowan <bcowan@gentoo.org> grdesktop-0.16.ebuild,
+  files/digest-grdesktop-0.16, ChangeLog :
+  
+  Initial import.

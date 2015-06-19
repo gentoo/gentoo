@@ -1,0 +1,48 @@
+# ChangeLog for dev-python/oauth
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/oauth/ChangeLog,v 1.14 2015/04/08 08:04:58 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> oauth-1.0.1-r1.ebuild:
+  Drop old Python implementations
+
+  27 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -oauth-1.0.1.ebuild:
+  Remove old.
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> oauth-1.0.1-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> oauth-1.0.1-r1.ebuild:
+  amd64 stable, bug 540290
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> oauth-1.0.1-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> oauth-1.0.1-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*oauth-1.0.1 (29 Jun 2013)
+
+  29 Jun 2013; Ian Delaney <idella4@gentoo.org> +oauth-1.0.1.ebuild:
+  return -1.0.1
+
+*oauth-1.0.1-r1 (29 Jun 2013)
+
+  29 Jun 2013; Ian Delaney <idella4@gentoo.org> +oauth-1.0.1-r1.ebuild,
+  -oauth-1.0.1.ebuild:
+  revbump; migrate -> distutils-r1, remove old, fixes Bug #474796
+
+  21 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> oauth-1.0.1.ebuild:
+  x86 stable wrt bug #378589
+
+  14 Aug 2011; Markos Chandras <hwoarang@gentoo.org> oauth-1.0.1.ebuild:
+  Stable on amd64 wrt bug #378589
+
+  14 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  oauth-1.0.1.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*oauth-1.0.1 (02 Mar 2010)
+
+  02 Mar 2010; Jesus Rivero <neurogeek@gentoo.org> +oauth-1.0.1.ebuild,
+  +metadata.xml:
+  Initial commit. Closes bug #290159. Thanks to Ravi for the report

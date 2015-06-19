@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prerm setup unpack
+DEPEND=>=media-gfx/iscan-2.21.0 >=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=Epson Perfection V370 and similar scanner plugin for SANE 'epkowa' backend
+EAPI=5
+HOMEPAGE=http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=AVASYS
+RDEPEND=>=media-gfx/iscan-2.21.0
+SLOT=0
+SRC_URI=amd64? ( http://dev.gentoo.org/~flameeyes/avasys/iscan-plugin-perfection-v370-1.0.0-2.x86_64.rpm ) x86? ( http://dev.gentoo.org/~flameeyes/avasys/iscan-plugin-perfection-v370-1.0.0-2.i386.rpm )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	rpm	b94b54b44f14d6bee3e966c8f5c86fba	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=897eb7f27d27abecc0caf13c1bcdd5aa

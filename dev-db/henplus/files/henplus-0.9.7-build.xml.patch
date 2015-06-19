@@ -1,0 +1,34 @@
+--- build.xml.orig	2006-10-17 22:25:57.000000000 +0200
++++ build.xml	2006-10-17 22:27:34.000000000 +0200
+@@ -21,26 +21,26 @@
+      <property name="libreadline-java" value="libreadline-java-0.8.0.jar"/>
+ 
+      <path id="compile.classpath">
+-        <fileset dir="${lib}">
+-           <include name="${libreadline-java}"/>
+-           <include name="${commons-cli}"/>
+-        </fileset>
++        <fileset dir="${lib}" includes="**/*.jar"/>
+      </path>
+ 
+      <path id="run.classpath">
+         <path refid="compile.classpath" />
+         <pathelement path="${classes}" />
+      </path>
+-
++	
++	 <!--
+      <taskdef name="ant-server" classname="net.sweetohm.ant.server.ServerTask">
+         <classpath>
+            <pathelement location="${lib}/build/sat-0.7.jar" />
+         </classpath>
+      </taskdef>
++	 
+ 
+      <target name="server">
+         <ant-server/>
+      </target>
++	 -->
+ 
+      <target name="prepare">
+         <tstamp>

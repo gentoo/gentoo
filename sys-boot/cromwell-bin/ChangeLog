@@ -1,0 +1,32 @@
+# ChangeLog for sys-boot/cromwell-bin
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/cromwell-bin/ChangeLog,v 1.6 2011/04/10 14:36:44 ulm Exp $
+
+  10 Apr 2011; Ulrich Mueller <ulm@gentoo.org> cromwell-bin-2.31.ebuild,
+  cromwell-bin-2.40.ebuild:
+  Don't PROVIDE virtual/bootloader, bug 359971.
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  cromwell-bin-2.31.ebuild, cromwell-bin-2.40.ebuild:
+  (QA) RESTRICT clean up.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+*cromwell-bin-2.40 (10 Aug 2005)
+
+  10 Aug 2005; Chris Bainbridge <chrb@gentoo.org> +cromwell-bin-2.40.ebuild:
+  version bump.
+
+  28 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  cromwell-bin-2.31.ebuild:
+  add -* to keywords because this package is only applicable to xbox 
+  which is only available in x86 architecture
+  Also added metadata.xml based on the one in cromwell package since 
+  it has the same maintainer
+
+*cromwell-bin-2.31 (16 Oct 2004)
+
+  16 Oct 2004; Chris Bainbridge <chrb@gentoo.org> +cromwell-bin-2.31.ebuild:
+  New package
+

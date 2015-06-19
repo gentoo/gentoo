@@ -1,0 +1,31 @@
+From 78742c815c15a2fd839705e9cd832479a5729f3b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Diego=20Elio=20Petten=C3=B2?= <flameeyes@flameeyes.eu>
+Date: Mon, 23 Jan 2012 02:10:41 +0100
+Subject: [PATCH] Add one missing replacement of localhost vs envvar
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+
+Signed-off-by: Diego Elio Pettenò <flameeyes@flameeyes.eu>
+---
+ .../mongoid/config/replset_database_spec.rb        |    3 ++-
+ 1 files changed, 2 insertions(+), 1 deletions(-)
+
+diff --git a/spec/functional/mongoid/config/replset_database_spec.rb b/spec/functional/mongoid/config/replset_database_spec.rb
+index 6f24971..e295422 100644
+--- a/spec/functional/mongoid/config/replset_database_spec.rb
++++ b/spec/functional/mongoid/config/replset_database_spec.rb
+@@ -32,7 +32,8 @@ describe Mongoid::Config::ReplsetDatabase do
+ 
+       it "does not modify the options in place" do
+         options["test"]["hosts"].should eq(
+-          [["localhost", 27017], ["localhost", 27017]]
++          [[ENV["MONGOID_SPEC_HOST"], ENV["MONGOID_SPEC_PORT"].to_i],
++           [ENV["MONGOID_SPEC_HOST"], ENV["MONGOID_SPEC_PORT"].to_i]]
+         )
+       end
+     end
+-- 
+1.7.8.4
+

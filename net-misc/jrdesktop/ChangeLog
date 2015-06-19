@@ -1,0 +1,41 @@
+# ChangeLog for net-misc/jrdesktop
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/jrdesktop/ChangeLog,v 1.8 2015/04/26 23:02:56 mrueg Exp $
+
+  26 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -jrdesktop-0.2.0030.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> jrdesktop-0.2.0030.ebuild,
+  jrdesktop-0.3.1.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  16 Dec 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due retirement, #169737
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  jrdesktop-0.3.1.0.ebuild:
+  x86 stable wrt bug #397171
+
+  02 Feb 2012; Agostino Sarubbo <ago@gentoo.org> jrdesktop-0.3.1.0.ebuild:
+  Stable for amd64, wrt bug #397171
+
+*jrdesktop-0.3.1.0 (18 Sep 2009)
+
+  18 Sep 2009; Alistair Bush <ali_bush@gentoo.org>
+  +jrdesktop-0.3.1.0.ebuild:
+  Version Bump.
+
+  29 Jun 2009; Markus Meier <maekke@gentoo.org> jrdesktop-0.2.0030.ebuild:
+  amd64/x86 stable, bug #275103
+
+*jrdesktop-0.2.0030 (22 May 2009)
+
+  22 May 2009; Alistair Bush <ali_bush@gentoo.org>
+  +jrdesktop-0.2.0030.ebuild, +metadata.xml:
+  Move jrdesktop to gentoo-x86
+
+* jrdesktop-0.2.0030 (29 Apr 2009)
+
+  29 Apr 2009; Alistair Bush <ali_bush@gentoo.org> +metadata.xml,
+  jrdesktop-0.2.0030:
+  Add Package.

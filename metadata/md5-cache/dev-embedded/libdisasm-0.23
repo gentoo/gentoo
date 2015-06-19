@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=Library for providing basic disassembly of Intel x86 instructions from a binary stream
+EAPI=4
+HOMEPAGE=http://bastard.sourceforge.net/libdisasm.html
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=Clarified-Artistic
+SLOT=0
+SRC_URI=mirror://sourceforge/project/bastard/libdisasm/0.23/libdisasm-0.23.tar.gz
+_md5_=5641e9454df4a3631fc53ee72d6118f6

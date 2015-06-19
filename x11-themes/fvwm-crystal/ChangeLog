@@ -1,0 +1,361 @@
+# ChangeLog for x11-themes/fvwm-crystal
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/fvwm-crystal/ChangeLog,v 1.77 2013/12/27 14:00:55 pinkbyte Exp $
+
+  27 Dec 2013; Sergey Popov <pinkbyte@gentoo.org>
+  -fvwm-crystal-3.0.6-r2.ebuild, -files/fvwm-crystal,
+  -files/fvwm-crystal.apps.patch, -files/fvwm-crystal-build.patch:
+  Drop old
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> fvwm-crystal-3.2.3.ebuild:
+  Stable for x86, wrt bug #474474
+
+  06 Nov 2013; Chema Alonso <nimiux@gentoo.org> fvwm-crystal-3.2.3.ebuild:
+  Stable for amd64 wrt bug #474474
+
+*fvwm-crystal-3.2.5 (19 Oct 2013)
+
+  19 Oct 2013; Markos Chandras <hwoarang@gentoo.org> +fvwm-crystal-3.2.5.ebuild:
+  Version bump. Bug #477828
+
+*fvwm-crystal-3.2.3 (23 Jun 2013)
+
+  23 Jun 2013; Markos Chandras <hwoarang@gentoo.org> +fvwm-crystal-3.2.3.ebuild,
+  metadata.xml:
+  Version bump. Bug #468680. Ebuild by Dominique Michel
+  <dominique.michel@vtxnet.ch> who will maintain it from now on
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> fvwm-crystal-3.0.6-r2.ebuild:
+  Drop sparc keywords
+
+  21 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -fvwm-crystal-3.0.6-r1.ebuild:
+  old
+
+  21 Jun 2012; Jeff Horelick <jdhore@gentoo.org> fvwm-crystal-3.0.6-r2.ebuild:
+  marked x86 per bug 422435
+
+  20 Jun 2012; Agostino Sarubbo <ago@gentoo.org> fvwm-crystal-3.0.6-r2.ebuild:
+  Stable for amd64, wrt bug #422435
+
+*fvwm-crystal-3.0.6-r2 (23 Jan 2012)
+
+  23 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +fvwm-crystal-3.0.6-r2.ebuild, +files/fvwm-crystal-build.patch:
+  Fix bad initialization of generate-menu wrt #345985. Use "emake install" with
+  DESTDIR instead of "einstall". Thanks to Jan Vereecke, David Abbott and
+  Dominique Michel.
+
+  23 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  fvwm-crystal-3.0.6-r1.ebuild:
+  Use python.eclass and convert shebang(s) wrt #317041 by Ian Delaney
+
+  23 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  fvwm-crystal-3.0.6-r1.ebuild:
+  Fix *magick dependencies (import command is used) wrt #314413 by Wojciech
+  Porczyk
+
+  11 Nov 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -fvwm-crystal-3.0.5-r1.ebuild:
+  old
+
+  11 Nov 2011; Samuli Suominen <ssuominen@gentoo.org>
+  fvwm-crystal-3.0.6-r1.ebuild:
+  amd64/x86 stable wrt #385143
+
+  27 Sep 2011; Samuli Suominen <ssuominen@gentoo.org>
+  fvwm-crystal-3.0.6-r1.ebuild:
+  Fix missing USE="png" depend for x11-wm/fvwm wrt #332117 by Jonathan Geisler
+
+  19 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  fvwm-crystal-3.0.5-r1.ebuild, fvwm-crystal-3.0.6-r1.ebuild:
+  Fix HOMEPAGE wrt #379353 by Jesús Guerrero <i92guboj@gentoo.org>
+
+  28 Sep 2009; Víctor Ostorga <vostorga@gentoo.org>
+  fvwm-crystal-3.0.6-r1.ebuild:
+  Adding RDEPEND on x11-apps/xwd and media-gfx/imagemagick[png] , bug 282137
+
+*fvwm-crystal-3.0.6-r1 (26 Jun 2009)
+
+  26 Jun 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -fvwm-crystal-3.0.6.ebuild, +fvwm-crystal-3.0.6-r1.ebuild,
+  +files/fvwm-crystal.apps.patch:
+  Misc fixes (bug 254360, bug 71033 and bug 272945), ebuild and patch from
+  Naohiro Aota (naota@elisp.net)
+
+*fvwm-crystal-3.0.6 (07 Dec 2008)
+
+  07 Dec 2008; Patrick Lauer <patrick@gentoo.org>
+  +fvwm-crystal-3.0.6.ebuild:
+  Bump to 3.0.6, closes #250183
+
+  02 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing lucass as a maintainer since he was retired.
+
+  23 Apr 2008; Lukasz Strzygowski <lucass@gentoo.org>
+  -fvwm-crystal-3.0.4.ebuild, -fvwm-crystal-3.0.5.ebuild:
+  Dropped old versions.
+
+  23 Apr 2008; Markus Meier <maekke@gentoo.org>
+  fvwm-crystal-3.0.5-r1.ebuild:
+  amd64 stable, bug #212025
+
+  13 Mar 2008; Lukasz Strzygowski <lucass@gentoo.org>
+  fvwm-crystal-3.0.5-r1.ebuild:
+  Fixed env vars in fvwm-crystal.apps.
+
+  11 Mar 2008; Raúl Porcel <armin76@gentoo.org>
+  fvwm-crystal-3.0.5-r1.ebuild:
+  sparc stable wrt #212025
+
+  04 Mar 2008; Brent Baude <ranger@gentoo.org> fvwm-crystal-3.0.5-r1.ebuild:
+  stable ppc64, bug 212025
+
+  03 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  fvwm-crystal-3.0.5-r1.ebuild:
+  stable x86, bug 212025
+
+  02 Mar 2008; Lars Weiler <pylon@gentoo.org> fvwm-crystal-3.0.5-r1.ebuild:
+  stable ppc, bug 212025
+
+*fvwm-crystal-3.0.5-r1 (19 Feb 2008)
+
+  19 Feb 2008; Lukasz Strzygowski <lucass@gentoo.org>
+  +fvwm-crystal-3.0.5-r1.ebuild:
+  Added patch to fix names of env vars (bug #210580). Minor cleanup.
+
+  09 Jun 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  fvwm-crystal-3.0.5.ebuild:
+  Added optional dep on x11-misc/stalonetray.
+
+*fvwm-crystal-3.0.5 (09 Jun 2007)
+
+  09 Jun 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  +fvwm-crystal-3.0.5.ebuild:
+  Version bump.
+
+  04 Mar 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  fvwm-crystal-3.0.4.ebuild:
+  Replaced einfo with elog in pkg_postinst.
+
+  04 Feb 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  -fvwm-crystal-2.20050306.ebuild, -fvwm-crystal-3.0.ebuild,
+  -fvwm-crystal-3.0.3.ebuild:
+  Dropped old versions.
+
+  04 Feb 2007; Steve Dibb <beandog@gentoo.org> fvwm-crystal-3.0.4.ebuild:
+  amd64 stable, bug 141738
+
+  20 Jan 2007; Raúl Porcel <armin76@gentoo.org> fvwm-crystal-3.0.4.ebuild:
+  x86 stable wrt bug 141738
+
+  20 Jan 2007; nixnut <nixnut@gentoo.org> fvwm-crystal-3.0.4.ebuild:
+  Stable on ppc wrt bug 141738
+
+  19 Jan 2007; Markus Rothe <corsair@gentoo.org> fvwm-crystal-3.0.4.ebuild:
+  Stable on ppc64; bug #141738
+
+  19 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  fvwm-crystal-3.0.4.ebuild:
+  Stable on sparc wrt #141738
+
+  13 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  fvwm-crystal-2.20050306.ebuild:
+  Remove xmms useflag.
+
+  08 Jul 2006; Markus Rothe <corsair@gentoo.org>
+  fvwm-crystal-2.20050306.ebuild:
+  Stable on ppc64
+
+*fvwm-crystal-3.0.4 (31 May 2006)
+
+  31 May 2006; Lukasz Strzygowski <lucass@gentoo.org>
+  +fvwm-crystal-3.0.4.ebuild:
+  Version bump.
+
+  19 May 2006; Markus Rothe <corsair@gentoo.org>
+  fvwm-crystal-2.20050306.ebuild, fvwm-crystal-3.0.ebuild,
+  fvwm-crystal-3.0.3.ebuild:
+  Added ~ppc64
+
+*fvwm-crystal-3.0.3 (19 Feb 2006)
+
+  19 Feb 2006; Lukasz Strzygowski <lucass@gentoo.org>
+  +fvwm-crystal-3.0.3.ebuild:
+  Version bump.
+
+  19 Feb 2006; Lukasz Strzygowski <lucass@gentoo.org>
+  fvwm-crystal-2.20050306.ebuild, -fvwm-crystal-3.0_rc1.ebuild,
+  -fvwm-crystal-3.0_rc2.ebuild, -fvwm-crystal-3.0_rc3.ebuild,
+  fvwm-crystal-3.0.ebuild:
+  Project migrated to gna.org. Updated HOMEPAGE and SRC_URI.
+  Removed old release candidates.
+
+  26 Jan 2006; Lukasz Strzygowski <lucass@gentoo.org>
+  fvwm-crystal-2.20050306.ebuild:
+  Typo fix (bug #119700).
+
+*fvwm-crystal-3.0 (01 Nov 2005)
+
+  01 Nov 2005; Lukasz Strzygowski <lucass@gentoo.org>
+  +fvwm-crystal-3.0.ebuild:
+  Version bump. Fixed dependency on habak (bug #110445).
+
+*fvwm-crystal-3.0_rc3 (18 Oct 2005)
+
+  18 Oct 2005; Lukasz Strzygowski <lucass@gentoo.org>
+  -fvwm-crystal-1.0.3_pre1.ebuild, fvwm-crystal-2.20050306.ebuild,
+  +fvwm-crystal-3.0_rc3.ebuild:
+  Version bump. Cleaned up dependencies.
+  Modified postinst message in 2.20050306.
+  Removed 1.0.3_pre1.
+
+  14 Oct 2005; Lukasz Strzygowski <lucass@gentoo.org>
+  fvwm-crystal-3.0_rc2.ebuild:
+  Added media-sound/mpd-svn as an optional dependency. Closing bug #108992.
+
+*fvwm-crystal-3.0_rc2 (23 Sep 2005)
+
+  23 Sep 2005; Lukasz Strzygowski <lucass@gentoo.org>
+  -files/fvwm-crystal-fvwm-version-check.diff, -fvwm-crystal-1.0.1.ebuild,
+  -fvwm-crystal-2.20041128.ebuild, -fvwm-crystal-2.20041224.ebuild,
+  +fvwm-crystal-3.0_rc2.ebuild:
+  Version bump. Removed few older versions.
+
+  09 Aug 2005; Luis Medinas <metalgod@gentoo.org>
+  fvwm-crystal-3.0_rc1.ebuild:
+  Added ~amd64 keywords. Closes bug #100851
+
+*fvwm-crystal-3.0_rc1 (27 Jul 2005)
+
+  27 Jul 2005; Lukasz Strzygowski <lucass@gentoo.org>
+  -fvwm-crystal-2.20040723.ebuild, -fvwm-crystal-2.20040723-r1.ebuild,
+  -fvwm-crystal-2.20040903.ebuild, -fvwm-crystal-2.20040929.ebuild,
+  +fvwm-crystal-3.0_rc1.ebuild:
+  Version bump. Closing bug #100485. Removed few old versions.
+
+  11 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  fvwm-crystal-2.20050306.ebuild:
+  Stable on sparc
+
+  10 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  fvwm-crystal-2.20050306.ebuild:
+  Stable on ppc.
+
+  09 Apr 2005; Lukasz Strzygowski <lucass@gentoo.org>
+  fvwm-crystal-2.20050306.ebuild:
+  Marked stable on x86.
+
+*fvwm-crystal-2.20050306 (08 Mar 2005)
+
+  08 Mar 2005; Lukasz Strzygowski <lucass@gentoo.org>
+  +fvwm-crystal-2.20050306.ebuild:
+  Version bump.
+
+  25 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  fvwm-crystal-2.20041224.ebuild:
+  Stable on sparc
+
+  24 Jan 2005; Lukasz Strzygowski <lucass@gentoo.org>
+  fvwm-crystal-2.20041224.ebuild:
+  Marked stable on x86.
+
+  17 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  fvwm-crystal-2.20041128.ebuild:
+  Stable on sparc
+
+  15 Jan 2005; Lukasz Strzygowski <lucass@gentoo.org>
+  fvwm-crystal-2.20041128.ebuild:
+  Marked stable on x86.
+
+  27 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  fvwm-crystal-2.20040929.ebuild:
+  Stable on sparc
+
+*fvwm-crystal-2.20041224 (24 Dec 2004)
+
+  24 Dec 2004; Lukasz Strzygowski <lucass@gentoo.org>
+  fvwm-crystal-2.20040903.ebuild, fvwm-crystal-2.20040929.ebuild,
+  +fvwm-crystal-2.20041224.ebuild:
+  Version bump. Older releases marked stable on x86.
+
+*fvwm-crystal-2.20041128 (03 Dec 2004)
+
+  03 Dec 2004; Lukasz Strzygowski <lucass@gentoo.org>
+  +fvwm-crystal-2.20041128.ebuild:
+  Version bump. Updated dependency on x11-wm/fvwm.
+
+*fvwm-crystal-2.20040929 (01 Oct 2004)
+
+  01 Oct 2004; Lukasz Strzygowski <lucass@gentoo.org>
+  +fvwm-crystal-2.20040929.ebuild:
+  Version bump. Some minor updates. Removed dependency on fvwm-crystal-apps.
+
+  18 Sep 2004; Jason Wever <weeve@gentoo.org>
+  fvwm-crystal-2.20040723-r1.ebuild:
+  Stable on sparc.
+
+*fvwm-crystal-2.20040903 (10 Sep 2004)
+
+  10 Sep 2004; Lukasz Strzygowski <lucass@gentoo.org>
+  fvwm-crystal-1.0.1.ebuild, fvwm-crystal-1.0.3_pre1.ebuild,
+  fvwm-crystal-2.20040723-r1.ebuild, +fvwm-crystal-2.20040903.ebuild:
+  Version bump. Thanks for information to Daniel Webert in #62871. Stabilized
+  older versions on x86, except 2.20040723, because it's buggy.
+
+  15 Aug 2004; Jason Wever <weeve@gentoo.org>
+  fvwm-crystal-2.20040723-r1.ebuild:
+  Added ~sparc keyword wrt bug #59871.
+
+*fvwm-crystal-2.20040723-r1 (12 Aug 2004)
+
+  12 Aug 2004; Lukasz Strzygowski <lucass@gentoo.org>
+  +fvwm-crystal-2.20040723-r1.ebuild:
+  Added dev-python/pyxml to dependencies. Thanks to Jonathan Geisler in #59871.
+
+*fvwm-crystal-2.20040723 (09 Aug 2004)
+
+  09 Aug 2004; Lukasz Strzygowski <lucass@gentoo.org> metadata.xml,
+  +files/fvwm-crystal, +fvwm-crystal-2.20040723.ebuild:
+  Initial commit of ebuild for new branch of fvwm-crystal. Upstream
+  changed versioning scheme. Dropped ~ppc and ~sparc keywords because
+  of new dependency - x11-misc/fvwm-crystal-apps. I will report it to arch
+  teams. Added xsession file - files/fvwm-crystal. Added myself as a maintainer.
+  Added description to metadata.xml. Thanks for testing to Andrzej Olender
+  <arsen@gentoo.pl>.
+
+  03 Jul 2004; Jason Wever <weeve@gentoo.org> fvwm-crystal-1.0.3_pre1.ebuild:
+  Added ~sparc keyword.
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> fvwm-crystal-1.0.1.ebuild:
+  Inherit eutils.
+
+  01 Apr 2004; Tavis Ormandy <taviso@gentoo.org>
+  fvwm-crystal-1.0.3_pre1.ebuild:
+  more descriptive $DESCRIPTION.
+
+*fvwm-crystal-1.0.3_pre1 (30 Mar 2004)
+
+  30 Mar 2004; Tavis Ormandy <taviso@gentoo.org>
+  fvwm-crystal-1.0.3_pre1.ebuild:
+  new release of fvwm-crystal which fixes all known issues with
+  installation, thanks to Lukasz Strzygowski <lucass AT gentoo.pl> for
+  the revised ebuild provided in #46169.
+
+  25 Mar 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-crystal-1.0.1.ebuild,
+  files/fvwm-crystal-fvwm-version-check.diff:
+  configure logic to check fvwm version doesnt work.
+
+  13 Mar 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-crystal-1.0.1.ebuild:
+  adding some einfo about some other supported applications mentioned
+  on the homepage, and addded a dependedncy for xmms? ( xmmsfind ).
+
+  13 Mar 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-crystal-1.0.1.ebuild:
+  added some comments, removed --prefix arg...econf handles that.
+
+*fvwm-crystal-1.0.1 (13 Mar 2004)
+
+  13 Mar 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-crystal-1.0.1.ebuild:
+  initial import, based on ebuild provided by lucass <lucass AT gentoo.pl>
+  in #37043.

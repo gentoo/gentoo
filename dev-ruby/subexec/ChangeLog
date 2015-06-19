@@ -1,0 +1,73 @@
+# ChangeLog for dev-ruby/subexec
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/subexec/ChangeLog,v 1.17 2015/06/07 19:54:49 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  11 Apr 2015; Hans de Graaff <graaff@gentoo.org> subexec-0.2.3-r1.ebuild:
+  Add ruby22.
+
+  30 Oct 2014; Manuel Rüger <mrueg@gentoo.org> subexec-0.2.3-r1.ebuild:
+  Drop jruby target.
+
+  29 Jul 2014; Hans de Graaff <graaff@gentoo.org> subexec-0.2.3-r1.ebuild:
+  Add ruby21.
+
+  24 Apr 2014; Manuel Rüger <mrueg@gentoo.org> subexec-0.2.3-r1.ebuild:
+  Remove ruby18 support.
+
+*subexec-0.2.3-r1 (11 Nov 2013)
+
+  11 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +subexec-0.2.3-r1.ebuild,
+  -subexec-0.2.3.ebuild:
+  Add ruby20 target. Cleanup old.
+
+  10 Sep 2013; Manuel Rüger <mrueg@gentoo.org> -files/subexec-0.2.2-lang.patch,
+  -subexec-0.2.2.ebuild:
+  Cleanup old.
+
+*subexec-0.2.3 (20 Apr 2013)
+
+  20 Apr 2013; Hans de Graaff <graaff@gentoo.org> +subexec-0.2.3.ebuild:
+  Version bump.
+
+  23 Sep 2012; Hans de Graaff <graaff@gentoo.org> -subexec-0.2.1.ebuild:
+  Cleanup.
+
+  13 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> subexec-0.2.2.ebuild:
+  Use the new rspec recipe for testing.
+
+*subexec-0.2.2 (30 Apr 2012)
+
+  30 Apr 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/subexec-0.2.2-lang.patch, +subexec-0.2.2.ebuild, -subexec-0.2.0.ebuild:
+  Version bump; requires a patch to work properly still.
+
+*subexec-0.2.1 (02 Jan 2012)
+
+  02 Jan 2012; Hans de Graaff <graaff@gentoo.org> +subexec-0.2.1.ebuild:
+  Version bump.
+
+  28 Dec 2011; Hans de Graaff <graaff@gentoo.org> subexec-0.2.0.ebuild:
+  Drop ruby-debug dependency. It's not needed and not ruby19-ready.
+
+  28 Dec 2011; Hans de Graaff <graaff@gentoo.org> -subexec-0.0.4.ebuild,
+  -subexec-0.1.0.ebuild:
+  Remove old versions.
+
+*subexec-0.2.0 (04 Nov 2011)
+
+  04 Nov 2011; Hans de Graaff <graaff@gentoo.org> +subexec-0.2.0.ebuild:
+  Version bump.
+
+*subexec-0.1.0 (04 Mar 2011)
+
+  04 Mar 2011; Hans de Graaff <graaff@gentoo.org> +subexec-0.1.0.ebuild:
+  Version bump.
+
+*subexec-0.0.4 (21 Jul 2010)
+
+  21 Jul 2010; Hans de Graaff <graaff@gentoo.org> +subexec-0.0.4.ebuild,
+  +metadata.xml:
+  Initial import. New dependency of dev-ruby/mini_magick

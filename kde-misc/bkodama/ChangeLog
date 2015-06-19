@@ -1,0 +1,25 @@
+# ChangeLog for kde-misc/bkodama
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/bkodama/ChangeLog,v 1.5 2014/03/20 21:50:51 johu Exp $
+
+  20 Mar 2014; Johannes Huber <johu@gentoo.org> bkodama-0.3.1.ebuild:
+  Bump to EAPI 5.
+
+  29 Oct 2011; Jonathan Callen <abcd@gentoo.org> bkodama-0.3.1.ebuild:
+  Bump to EAPI=4
+
+  31 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> -bkodama-0.2.1.ebuild,
+  bkodama-0.3.1.ebuild:
+  EAPI3, slotmove to 4, remove old
+
+*bkodama-0.3.1 (14 Dec 2010)
+
+  14 Dec 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  +bkodama-0.3.1.ebuild:
+  Version bump
+
+*bkodama-0.2.1 (26 Sep 2010)
+
+  26 Sep 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  +bkodama-0.2.1.ebuild, +metadata.xml:
+  New application, fixes bug 302921

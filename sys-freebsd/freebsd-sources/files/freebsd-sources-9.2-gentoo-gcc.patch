@@ -1,0 +1,13 @@
+diff --git a/sys/conf/newvers.sh b/sys/conf/newvers.sh
+index e504f75..7aa63df 100644
+--- a/sys/conf/newvers.sh
++++ b/sys/conf/newvers.sh
+@@ -86,7 +86,7 @@ fi
+ touch version
+ v=`cat version` u=${USER:-root} d=`pwd` h=${HOSTNAME:-`hostname`} t=`date`
+ i=`${MAKE:-make} -V KERN_IDENT`
+-compiler_v=$($(${MAKE:-make} -V CC) -v 2>&1 | grep 'version')
++compiler_v=$($(${MAKE:-make} -V CC) -v 2>&1 | grep 'version' | tail -n 1)
+ 
+ for dir in /bin /usr/bin /usr/local/bin; do
+ 	if [ -x "${dir}/svnversion" ] ; then

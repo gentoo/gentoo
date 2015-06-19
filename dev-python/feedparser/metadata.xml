@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <longdescription>Parse RSS and Atom feeds in Python. 2000 unit tests. Open source.</longdescription>
+  <upstream>
+    <remote-id type="google-code">feedparser</remote-id>
+  </upstream>
+</pkgmetadata>

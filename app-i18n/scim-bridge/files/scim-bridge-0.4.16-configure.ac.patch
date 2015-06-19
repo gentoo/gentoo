@@ -1,0 +1,164 @@
+--- configure.ac.orig	2009-11-27 21:07:46.000000000 +0800
++++ configure.ac	2009-11-27 21:33:17.000000000 +0800
+@@ -55,63 +55,6 @@
+ AM_CONDITIONAL(HAVE_DOCBOOK, test x$DOCBOOK_XSL != xno)
+ AM_CONDITIONAL(BUILD_MANUAL, test x$XSLTPROC != xno -a x$DOCBOOK_XSL != xno)
+ 
+-# Check if we should build scim-bridge-gtk-immodule
+-PKG_CHECK_MODULES(GTK2, [gtk+-2.0 >= 2.4.0 pango >= 1.1.0 gdk-pixbuf-2.0 >= 2.4.0],
+-			[SCIM_BRIDGE_HAS_GTK2=yes],
+-			[SCIM_BRIDGE_HAS_GTK2=no])
+-
+-SCIM_BRIDGE_HAS_GTK2_2=no
+-if test "$SCIM_BRIDGE_HAS_GTK2" = "yes"; then
+-  if $PKG_CONFIG --exists "gtk+-2.0 >= 2.2" ; then
+-    SCIM_BRIDGE_HAS_GTK2_2=yes
+-    GTK_VERSION=2.2.0
+-    AC_DEFINE(GDK_MULTIHEAD_SAFE,1,[Force use of GDK's multihead-safe APIs.])
+-  fi
+-  if $PKG_CONFIG --exists "gtk+-2.0 >= 2.3.5" ; then
+-    SCIM_BRIDGE_HAS_GTK2_4=yes
+-    GTK_VERSION=2.3.5
+-    AC_DEFINE(HAVE_GTK_DRAW_INSERTION_CURSOR,1,[Have gtk_draw_insertion_cursor ().])
+-  fi
+-  GTK_BINARY_VERSION=`$PKG_CONFIG --variable=gtk_binary_version gtk+-2.0`
+-  GTK_LIBDIR=`$PKG_CONFIG --variable=libdir gtk+-2.0`
+-  if test -z "$GTK_LIBDIR)"; then
+-    GTK_LIBDIR="$libdir"
+-  fi
+-  AC_SUBST(GTK_LIBDIR)
+-  AC_SUBST(GTK_VERSION)
+-  AC_SUBST(GTK_BINARY_VERSION)
+-  enable_gtk2_immodule="yes";
+-fi
+-
+-# Check if we should build scim-bridge-qt-immodule
+-PKG_CHECK_MODULES(QT3, [qt-mt >= 3.3],
+-			[SCIM_BRIDGE_HAS_QT3=yes],
+-			[SCIM_BRIDGE_HAS_QT3=no])
+-
+-if test "$SCIM_BRIDGE_HAS_QT3" = "yes"; then
+-  if test -z "$QT3_PREFIX"; then
+-    QT3_PREFIX=`$PKG_CONFIG --variable=prefix qt-mt`
+-  fi
+-  AC_SUBST(QT3_PREFIX)
+-  enable_qt3_immodule="yes";
+-fi
+-
+-PKG_CHECK_MODULES(QT4, [QtGui >= 4.0, QtCore >= 4.0],
+-			[SCIM_BRIDGE_HAS_QT4=yes],
+-			[SCIM_BRIDGE_HAS_QT4=no])
+-
+-if test "$SCIM_BRIDGE_HAS_QT4" = "yes"; then
+-  if test -z "$QT4_PREFIX"; then
+-    QT4_PREFIX=`$PKG_CONFIG --variable=prefix QtCore`
+-  fi
+-  AC_SUBST(QT4_PREFIX)
+-  if test -z "$QT4_LIBDIR"; then
+-    QT4_LIBDIR=`$PKG_CONFIG --variable=libdir QtCore`
+-  fi
+-  AC_SUBST(QT4_LIBDIR)
+-  enable_qt4_immodule="yes";
+-fi
+-
+ ###########################################################
+ ##             Definiation of compile args.              ##
+ ###########################################################
+@@ -132,13 +75,16 @@
+        	      enable_agent=yes)
+ 
+ AC_ARG_ENABLE(gtk2-immodule,
+-	      [AS_HELP_STRING([--enable-gtk2-immodule], [build GTK2 IM module])], , )
++	      [AS_HELP_STRING([--enable-gtk2-immodule], [build GTK2 IM module [default=yes]])], ,
++	      enable_gtk2_immodule=yes)
+ 
+ AC_ARG_ENABLE(qt3-immodule,
+-	      [AS_HELP_STRING([--enable-qt3-immodule], [build Qt3 IM module])], , )
++	      [AS_HELP_STRING([--enable-qt3-immodule], [build Qt3 IM module [default=yes]])], ,
++	      enable_qt3_immodule=yes)
+ 
+ AC_ARG_ENABLE(qt4-immodule,
+-	      [AS_HELP_STRING([--enable-qt4-immodule], [build Qt4 IM module])], , )
++	      [AS_HELP_STRING([--enable-qt4-immodule], [build Qt4 IM module [default=yes]])], ,
++	      enable_qt4_immodule=yes)
+ 
+ if test "$enable_debug" = "yes"; then
+   AC_DEFINE(ENABLE_DEBUG,1,[Define this to enable the debug facility in libscim])
+@@ -175,7 +121,33 @@
+ if test "$enable_gtk2_immodule" = "yes"; then
+   SCIM_BRIDGE_BUILD_GTK2_IMMODULE=1
+   SCIM_BRIDGE_BUILD_IMMODULE=1
+-  if test "$SCIM_BRIDGE_HAS_GTK2" = "no" ; then
++
++  # Check if we should build scim-bridge-gtk-immodule
++  PKG_CHECK_MODULES(GTK2, [gtk+-2.0 >= 2.4.0 pango >= 1.1.0 gdk-pixbuf-2.0 >= 2.4.0],
++  			[SCIM_BRIDGE_HAS_GTK2=yes],
++  			[SCIM_BRIDGE_HAS_GTK2=no])
++  
++  SCIM_BRIDGE_HAS_GTK2_2=no
++  if test "$SCIM_BRIDGE_HAS_GTK2" = "yes"; then
++    if $PKG_CONFIG --exists "gtk+-2.0 >= 2.2" ; then
++      SCIM_BRIDGE_HAS_GTK2_2=yes
++      GTK_VERSION=2.2.0
++      AC_DEFINE(GDK_MULTIHEAD_SAFE,1,[Force use of GDK's multihead-safe APIs.])
++    fi
++    if $PKG_CONFIG --exists "gtk+-2.0 >= 2.3.5" ; then
++      SCIM_BRIDGE_HAS_GTK2_4=yes
++      GTK_VERSION=2.3.5
++      AC_DEFINE(HAVE_GTK_DRAW_INSERTION_CURSOR,1,[Have gtk_draw_insertion_cursor ().])
++    fi
++    GTK_BINARY_VERSION=`$PKG_CONFIG --variable=gtk_binary_version gtk+-2.0`
++    GTK_LIBDIR=`$PKG_CONFIG --variable=libdir gtk+-2.0`
++    if test -z "$GTK_LIBDIR)"; then
++      GTK_LIBDIR="$libdir"
++    fi
++    AC_SUBST(GTK_LIBDIR)
++    AC_SUBST(GTK_VERSION)
++    AC_SUBST(GTK_BINARY_VERSION)
++  else
+      AC_MSG_ERROR([Gtk >= 2.2 can not be found!])
+   fi
+   enable_immodule=yes
+@@ -187,7 +159,18 @@
+ if test "$enable_qt3_immodule" = "yes"; then
+   SCIM_BRIDGE_BUILD_QT3_IMMODULE=1
+   SCIM_BRIDGE_BUILD_IMMODULE=1
+-  if test "$SCIM_BRIDGE_HAS_QT3" = "no"; then
++
++  # Check if we should build scim-bridge-qt-immodule
++  PKG_CHECK_MODULES(QT3, [qt-mt >= 3.3],
++  			[SCIM_BRIDGE_HAS_QT3=yes],
++  			[SCIM_BRIDGE_HAS_QT3=no])
++  
++  if test "$SCIM_BRIDGE_HAS_QT3" = "yes"; then
++    if test -z "$QT3_PREFIX"; then
++      QT3_PREFIX=`$PKG_CONFIG --variable=prefix qt-mt`
++    fi
++    AC_SUBST(QT3_PREFIX)
++  else
+     AC_MSG_ERROR([qt >= 3.3 can not be found!])
+   fi
+   enable_immodule=yes
+@@ -199,7 +182,21 @@
+ if test "$enable_qt4_immodule" = "yes"; then
+   SCIM_BRIDGE_BUILD_QT4_IMMODULE=1
+   SCIM_BRIDGE_BUILD_IMMODULE=1
+-  if test "$SCIM_BRIDGE_HAS_QT4" = "no"; then
++
++  PKG_CHECK_MODULES(QT4, [QtGui >= 4.0, QtCore >= 4.0],
++  			[SCIM_BRIDGE_HAS_QT4=yes],
++  			[SCIM_BRIDGE_HAS_QT4=no])
++  
++  if test "$SCIM_BRIDGE_HAS_QT4" = "yes"; then
++    if test -z "$QT4_PREFIX"; then
++      QT4_PREFIX=`$PKG_CONFIG --variable=prefix QtCore`
++    fi
++    AC_SUBST(QT4_PREFIX)
++    if test -z "$QT4_LIBDIR"; then
++      QT4_LIBDIR=`$PKG_CONFIG --variable=libdir QtCore`
++    fi
++    AC_SUBST(QT4_LIBDIR)
++  else
+     AC_MSG_ERROR([qt >= 4.0 can not be found!])
+   fi
+   enable_immodule=yes

@@ -1,0 +1,76 @@
+# ChangeLog for dev-java/metadata-extractor
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/metadata-extractor/ChangeLog,v 1.15 2014/01/02 15:22:51 tomwij Exp $
+
+*metadata-extractor-2.2.2-r4 (02 Jan 2014)
+
+  02 Jan 2014; Tom Wijsman <TomWij@gentoo.org>
+  +metadata-extractor-2.2.2-r4.ebuild, -metadata-extractor-2.2.2-r3.ebuild,
+  metadata-extractor-2.2.2-r2.ebuild:
+  Shortened DESCRIPTION. Revision bump: EAPI 5, changed src_prepare to
+  java_prepare.
+
+  17 Nov 2009; Vlastimil Babka <caster@gentoo.org>
+  metadata-extractor-2.2.2-r2.ebuild:
+  Fix the deps which pulled 3 versions of jdk with USE=test
+
+*metadata-extractor-2.2.2-r3 (31 Jan 2009)
+
+  31 Jan 2009; Serkan Kaba <serkan@gentoo.org>
+  +files/metadata-extractor-2.2.2-buildfix.patch,
+  +metadata-extractor-2.2.2-r3.ebuild:
+  Migrate to EAPI 1. Limit jdk version to <=1.6. Compile tests with test USE
+  flag only. Avoid packing unit tests into the jar.
+
+  11 Mar 2008; Petteri Räty <betelgeuse@gentoo.org>
+  metadata-extractor-2.2.2-r2.ebuild:
+  Restrict running tests to 1.4 - 1.6 because they need com.sun classes.
+
+  10 Jan 2008; Vlastimil Babka <caster@gentoo.org>
+  metadata-extractor-2.2.2-r2.ebuild:
+  Restrict junit dependency.
+
+  05 Jan 2008; Petteri Räty <betelgeuse@gentoo.org> metadata.xml:
+  Shorten DESCRIPTION.
+
+  03 Aug 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -metadata-extractor-2.2.2-r1.ebuild:
+  Remove generation 1 ebuild.
+
+*metadata-extractor-2.2.2-r2 (24 Apr 2007)
+
+  24 Apr 2007; Alistair John Bush <ali_bush@gentoo.org>
+  +metadata-extractor-2.2.2-r2.ebuild:
+  Migrated to generation 2 Java build system.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*metadata-extractor-2.2.2-r1 (09 Sep 2005)
+
+  09 Sep 2005; Thomas Matthijs <axxo@gentoo.org>
+  -metadata-extractor-2.2.2.ebuild, +metadata-extractor-2.2.2-r1.ebuild:
+  rev bump to force update
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  metadata-extractor-2.2.2.ebuild:
+  stable on amd64
+
+  22 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  metadata-extractor-2.2.2.ebuild:
+  Keywords ~amd64.
+
+  21 Sep 2004; Thomas Matthijs <axxo@gentoo.org> :
+  x86
+
+  03 Aug 2004; David Holm <dholm@gentoo.org> metadata-extractor-2.2.2.ebuild:
+  Added to ~ppc.
+
+*metadata-extractor-2.2.2 (30 Jul 2004)
+
+  30 Jul 2004; Thomas Matthijs <axxo@gentoo.org> +metadata.xml,
+  +metadata-extractor-2.2.2.ebuild:
+  initial import, dependency of gallery-remote

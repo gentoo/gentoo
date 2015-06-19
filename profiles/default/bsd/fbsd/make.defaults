@@ -1,0 +1,30 @@
+# Copyright 1999-2013 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License, v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/bsd/fbsd/make.defaults,v 1.16 2013/11/26 11:12:05 naota Exp $
+
+# Last building sandbox breaks gfind, bug #374425
+FEATURES="-sandbox -usersandbox"
+
+USERLAND="BSD"
+KERNEL="FreeBSD"
+ELIBC="FreeBSD"
+
+MAKE="gmake"
+
+USE="berkdb crypt iconv ipv6 ncurses nls oss pam pcre readline ssl tcpd zlib"
+
+# 2006/03/07 - Donnie Berkholz <dberkholz@gentoo.org>
+# Modular X: Support direct rendering by default
+USE="${USE} dri"
+
+# 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
+# Defaults for video drivers
+VIDEO_CARDS="dummy fbdev vmware"
+
+# Let virtual/mta pick ssmtp[mta] for stage1 builds.
+# https://bugs.gentoo.org/show_bug.cgi?id=408587
+# python2: let portage pulls in python-2 so that we get it as default
+# interpreter in stage1's and add it to make.default so that it is rebuilt in
+# stage 3 and when updating.
+BOOTSTRAP_USE="${BOOTSTRAP_USE} mta python2"
+USE="${USE} python2"

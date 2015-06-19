@@ -1,0 +1,2997 @@
+# ChangeLog for www-client/chromium
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-client/chromium/ChangeLog-2011,v 1.1 2012/01/01 21:03:37 dilfridge Exp $
+
+*chromium-17.0.963.12-r1 (28 Dec 2011)
+
+  28 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-revert-jpeg-swizzle-r0.patch, -chromium-17.0.942.0.ebuild,
+  -chromium-17.0.963.6.ebuild, +chromium-17.0.963.12-r1.ebuild:
+  Revert WebKit changeset responsible for Gentoo bug #393471 (bug reported by
+  floppym, useful input by Julien Sanchez, Dan, Siarhei Siamashka, and
+  excellent comments by DRC, the developer of libjpeg-turbo). Remove old.
+
+  17 Dec 2011; Mike Gilbert <floppym@gentoo.org> -chromium-15.0.874.121.ebuild,
+  -chromium-16.0.912.59.ebuild:
+  Drop old.
+
+*chromium-17.0.963.12 (16 Dec 2011)
+
+  16 Dec 2011; Mike Gilbert <floppym@gentoo.org> +chromium-17.0.963.12.ebuild,
+  -chromium-17.0.963.0.ebuild, -chromium-17.0.963.2.ebuild:
+  Version bump for dev channel release.
+
+  14 Dec 2011; Agostino Sarubbo <ago@gentoo.org> chromium-16.0.912.63.ebuild:
+  Stable for X86, wrt bug #394587
+
+*chromium-17.0.963.6 (13 Dec 2011)
+
+  13 Dec 2011; Mike Gilbert <floppym@gentoo.org> +chromium-17.0.963.6.ebuild:
+  Version bump for dev channel release.
+
+  13 Dec 2011; Agostino Sarubbo <ago@gentoo.org> chromium-16.0.912.63.ebuild:
+  Stable for AMD64, wrt security bug #394587
+
+  13 Dec 2011; Mike Gilbert <floppym@gentoo.org> chromium-9999-r1.ebuild:
+  Keep third_party/libyuv. Thanks to Julien Sanchez.
+
+*chromium-17.0.963.2 (09 Dec 2011)
+
+  09 Dec 2011; Mike Gilbert <floppym@gentoo.org> +chromium-17.0.963.2.ebuild:
+  Version bump for dev channel release.
+
+*chromium-16.0.912.63 (08 Dec 2011)
+
+  08 Dec 2011; Mike Gilbert <floppym@gentoo.org> +chromium-16.0.912.63.ebuild,
+  -chromium-16.0.912.41.ebuild:
+  Version bump for beta channel release.
+
+  07 Dec 2011; Mike Gilbert <floppym@gentoo.org> chromium-17.0.963.0.ebuild:
+  Update nacl-toolchain-newlib dependency.
+
+*chromium-17.0.963.0 (07 Dec 2011)
+
+  07 Dec 2011; Mike Gilbert <floppym@gentoo.org> +chromium-17.0.963.0.ebuild,
+  -chromium-17.0.938.0.ebuild:
+  Version bump for dev channel release.
+
+  02 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> chromium-9999-r1.ebuild:
+  Limit gclient sync to one job to prevent hangs. Consulted upstream before
+  applying.
+
+*chromium-16.0.912.59 (02 Dec 2011)
+
+  02 Dec 2011; Mike Gilbert <floppym@gentoo.org> +chromium-16.0.912.59.ebuild,
+  -chromium-16.0.912.36.ebuild:
+  Version bump for beta channel release.
+
+  02 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> chromium-9999-r1.ebuild:
+  Update nacl-toolchain-newlib dependency to fix bug #392389 by Julien Sanchez.
+
+  01 Dec 2011; Mike Gilbert <floppym@gentoo.org> chromium-9999-r1.ebuild:
+  Keep third_party/khronos.
+
+*chromium-16.0.912.41 (25 Nov 2011)
+
+  25 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-16.0.912.32.ebuild, +chromium-16.0.912.41.ebuild:
+  Version bump for beta channel release. Remove old.
+
+  23 Nov 2011; Mike Gilbert <floppym@gentoo.org> chromium-9999-r1.ebuild:
+  Lower v8 dep to 3.7.6; it will probably work and makes testing
+  preserve_old_lib easier.
+
+  23 Nov 2011; Mike Gilbert <floppym@gentoo.org> chromium-17.0.942.0.ebuild:
+  Lower v8 dep to 3.7.6; it will probably work and makes tesing preserve_old_lib
+  easier.
+
+  19 Nov 2011; Mike Gilbert <floppym@gentoo.org> chromium-17.0.942.0.ebuild,
+  chromium-9999-r1.ebuild:
+  Update v8 dependency to 3.7.7, thanks to Martin Jansa in bug 391007. Make live
+  ebuild deps match dev channel.
+
+*chromium-17.0.942.0 (18 Nov 2011)
+
+  18 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-17.0.932.0.ebuild, +chromium-17.0.942.0.ebuild:
+  Version bump for dev channel release. Remove old.
+
+  18 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-15.0.874.120.ebuild, chromium-15.0.874.121.ebuild:
+  x86 stable wrt security bug #390779. Remove old.
+
+  17 Nov 2011; Tony Vroon <chainsaw@gentoo.org> chromium-15.0.874.121.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo in
+  security bug #390779. I am told that Mike Gilbert feels 1 AT report is
+  sufficient.
+
+*chromium-15.0.874.121 (17 Nov 2011)
+
+  17 Nov 2011; Mike Gilbert <floppym@gentoo.org> +chromium-15.0.874.121.ebuild:
+  Version bump for stable channel release.
+
+  16 Nov 2011; Mike Gilbert <floppym@gentoo.org> chromium-17.0.938.0.ebuild,
+  chromium-9999-r1.ebuild:
+  zip_reader.cc needs to be updated as well.
+
+  15 Nov 2011; Mike Gilbert <floppym@gentoo.org> chromium-17.0.938.0.ebuild:
+  Apply workaround for bug 383371 to zip_internal.cc. Bug 390633.
+
+*chromium-17.0.938.0 (15 Nov 2011)
+
+  15 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-17.0.928.0.ebuild, +chromium-17.0.938.0.ebuild:
+  Version bump for dev channel release, remove old.
+
+*chromium-16.0.912.36 (11 Nov 2011)
+
+  11 Nov 2011; Mike Gilbert <floppym@gentoo.org> +chromium-16.0.912.36.ebuild,
+  -chromium-16.0.912.21.ebuild:
+  Version bump for beta channel release.
+
+  11 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-16.0.912.32.ebuild, chromium-17.0.932.0.ebuild,
+  chromium-9999-r1.ebuild:
+  Remove breaking CFLAGS, bug #390147 by Alex Boyd.
+
+  11 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-15.0.874.102.ebuild, -chromium-15.0.874.106.ebuild,
+  chromium-15.0.874.120.ebuild:
+  x86 stable wrt security bug #390113. Remove old.
+
+  10 Nov 2011; Mike Gilbert <floppym@gentoo.org> chromium-9999-r1.ebuild:
+  Apply workaround for bug 383371 to zip_internal.cc. Reported by godmachine-x6.
+
+  10 Nov 2011; Mike Gilbert <floppym@gentoo.org> chromium-15.0.874.120.ebuild:
+  Stable on amd64 based on testing by ago. Security bug 390113.
+
+*chromium-15.0.874.120 (10 Nov 2011)
+
+  10 Nov 2011; Mike Gilbert <floppym@gentoo.org> +chromium-15.0.874.120.ebuild:
+  Version bump for stable channel release.
+
+  10 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-17.0.932.0.ebuild, chromium-9999-r1.ebuild:
+  Restore cups USE flag for 17.x, and also run more tests.
+
+  10 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-cups-r0.patch, chromium-16.0.912.32.ebuild:
+  Restore cups USE flag, bug #388497 by rom.gentoo.
+
+  09 Nov 2011; Mike Gilbert <floppym@gentoo.org> chromium-9999-r1.ebuild:
+  Restore cups USE flag for live ebuild. Bug 388497.
+
+*chromium-16.0.912.32 (09 Nov 2011)
+
+  09 Nov 2011; Mike Gilbert <floppym@gentoo.org> +chromium-16.0.912.32.ebuild,
+  -chromium-16.0.912.15.ebuild:
+  Version bump for beta channel release. Move kernel checks to pkg_setup.
+
+*chromium-17.0.932.0 (08 Nov 2011)
+
+  08 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-17.0.932.0.ebuild, chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Use system yasm. Move kernel options
+  checking back to pkg_setup to make it visible in the logs. NaCl doesn't work
+  (bug #389379 by Tatsh).
+
+  08 Nov 2011; Robin H. Johnson <robbat2@gentoo.org>
+  chromium-16.0.912.15.ebuild:
+  Make CONFIG_CHECK non-fatal, like other ebuilds.
+
+  04 Nov 2011; Mike Gilbert <floppym@gentoo.org> chromium-9999-r1.ebuild:
+  Remove any leftover nacl toolchain files.
+
+*chromium-17.0.928.0 (04 Nov 2011)
+
+  04 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-17.0.928.0.ebuild:
+  Version bump for dev channel release.
+
+  04 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-16.0.912.21.ebuild, chromium-9999-r1.ebuild:
+  Make kernel checks non-fatal again, people don't like them being fatal.
+
+  02 Nov 2011; Mike Gilbert <floppym@gentoo.org> chromium-16.0.912.21.ebuild,
+  chromium-9999-r1.ebuild:
+  Install nacl_helper.
+
+*chromium-16.0.912.21 (02 Nov 2011)
+
+  02 Nov 2011; Mike Gilbert <floppym@gentoo.org> +chromium-16.0.912.21.ebuild,
+  -chromium-16.0.912.12.ebuild:
+  Version bump for dev channel release.
+
+  01 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-16.0.912.15.ebuild, chromium-9999-r1.ebuild:
+  Make CUPS required, bug #388497 by rom.gentoo.
+
+  01 Nov 2011; Mike Gilbert <floppym@gentoo.org> chromium-9999-r1.ebuild:
+  Disable gclient runhooks so we use the system nacl-toolchain-newlib.
+
+  01 Nov 2011; Mike Gilbert <floppym@gentoo.org> chromium-9999-r1.ebuild:
+  Keep third_party/jsoncpp. Bug 388915 by Ralf Mayer.
+
+  28 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-14.0.835.202.ebuild, -chromium-15.0.874.100.ebuild,
+  chromium-15.0.874.102.ebuild, metadata.xml:
+  x86 stable wrt security bug #388461, remove old.
+
+*chromium-16.0.912.15 (28 Oct 2011)
+
+  28 Oct 2011; Mike Gilbert <floppym@gentoo.org> +chromium-16.0.912.15.ebuild,
+  -chromium-16.0.912.4.ebuild:
+  Version bump for dev channel release.
+
+*chromium-15.0.874.106 (26 Oct 2011)
+
+  26 Oct 2011; Mike Gilbert <floppym@gentoo.org> +chromium-15.0.874.106.ebuild:
+  Version bump for stable channel release.
+
+*chromium-16.0.912.12 (26 Oct 2011)
+
+  26 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-16.0.912.0.ebuild, +chromium-16.0.912.12.ebuild,
+  chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Further reduce number of differences
+  between live and non-live ebuilds. Remove old.
+
+  25 Oct 2011; Mike Gilbert <floppym@gentoo.org> chromium-15.0.874.102.ebuild:
+  Stable on amd64 wrt bug 388461. Arch tested by ago.
+
+  24 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-15.0.874.102.ebuild, chromium-16.0.912.4.ebuild,
+  chromium-9999-r1.ebuild:
+  Maintainability cleanup: always build chromedriver to reduce number of USE
+  flags (testability); reduce number of differences between live and non-live
+  ebuild.
+
+*chromium-16.0.912.4 (21 Oct 2011)
+*chromium-15.0.874.102 (21 Oct 2011)
+
+  21 Oct 2011; Mike Gilbert <floppym@gentoo.org> -chromium-15.0.874.92.ebuild,
+  +chromium-15.0.874.102.ebuild, -chromium-16.0.899.0.ebuild,
+  -chromium-16.0.904.0-r2.ebuild, -chromium-16.0.904.0-r3.ebuild,
+  +chromium-16.0.912.4.ebuild:
+  Version bumps for beta and dev channel releases.
+
+*chromium-15.0.874.100 (21 Oct 2011)
+
+  21 Oct 2011; Mike Gilbert <floppym@gentoo.org> -chromium-15.0.874.83.ebuild,
+  +chromium-15.0.874.100.ebuild:
+  Version bump for beta channel release.
+
+*chromium-16.0.912.0 (19 Oct 2011)
+
+  19 Oct 2011; Mike Gilbert <floppym@gentoo.org> +chromium-16.0.912.0.ebuild:
+  Version bump for dev channel release.
+
+*chromium-16.0.904.0-r3 (19 Oct 2011)
+
+  19 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-14.0.835.163.ebuild, -chromium-16.0.904.0-r1.ebuild,
+  +chromium-16.0.904.0-r3.ebuild, chromium-9999-r1.ebuild:
+  Re-enable NaCl (previosuly broken by bug #386931 by Kamen Dokov). Remove old.
+
+  18 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-16.0.904.0-r2.ebuild, chromium-9999-r1.ebuild:
+  Bump to EAPI-4; use pkg_pretend and make missing sandbox support in kernel
+  fatal if installing the package; add a die hook for better diagnostics and
+  more precise error messages.
+
+  17 Oct 2011; Andreas Schuerch <nativemad@gentoo.org>
+  chromium-14.0.835.202.ebuild:
+  x86 stable, bug 385649
+
+  15 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-16.0.904.0-r2.ebuild, chromium-9999-r1.ebuild:
+  Fix build failures: bug #386931 by Kamen Dokov (disabled NaCl again), bug
+  #387145 by Agostino Sarubbo (required recent enough V8).
+
+  13 Oct 2011; Mike Gilbert <floppym@gentoo.org> chromium-9999-r1.ebuild:
+  Don't depend on scons; we are using the bundled copy.
+
+  13 Oct 2011; Mike Gilbert <floppym@gentoo.org> chromium-16.0.904.0-r1.ebuild,
+  chromium-16.0.904.0-r2.ebuild:
+  DEPEND on dev-python/simplejson unconditionally. Bug 386861 by Andrew Waters.
+
+*chromium-15.0.874.92 (12 Oct 2011)
+
+  12 Oct 2011; Mike Gilbert <floppym@gentoo.org> -chromium-15.0.874.81.ebuild,
+  +chromium-15.0.874.92.ebuild:
+  Version bump for beta channel release.
+
+*chromium-16.0.904.0-r2 (12 Oct 2011)
+
+  12 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/extract_v8_version.py, -chromium-16.0.904.0.ebuild,
+  +chromium-16.0.904.0-r2.ebuild, chromium-9999-r1.ebuild:
+  Use system V8. Hopefully bug #357809 shouldn't return. Remove old.
+
+*chromium-16.0.904.0-r1 (12 Oct 2011)
+
+  12 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-16.0.904.0-r1.ebuild, chromium-9999-r1.ebuild:
+  Re-enable NaCl.
+
+*chromium-16.0.904.0 (11 Oct 2011)
+
+  11 Oct 2011; Mike Gilbert <floppym@gentoo.org> -chromium-16.0.891.0.ebuild,
+  +chromium-16.0.904.0.ebuild:
+  Version bump for dev channel release.
+
+*chromium-15.0.874.83 (08 Oct 2011)
+
+  08 Oct 2011; Mike Gilbert <floppym@gentoo.org> -chromium-15.0.874.54.ebuild,
+  +chromium-15.0.874.83.ebuild:
+  Version bump for beta channel release.
+
+  07 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-14.0.835.202.ebuild:
+  Disable failing time-dependent test, bug #385331 by graaff.
+
+*chromium-15.0.874.81 (06 Oct 2011)
+
+  06 Oct 2011; Mike Gilbert <floppym@gentoo.org> -chromium-15.0.874.51.ebuild,
+  +chromium-15.0.874.81.ebuild:
+  Beta channel version bump.
+
+  06 Oct 2011; Mike Gilbert <floppym@gentoo.org> chromium-14.0.835.202.ebuild:
+  Stable on amd64; arch tested by ago. Bug 385649.
+
+*chromium-14.0.835.202 (04 Oct 2011)
+
+  04 Oct 2011; Mike Gilbert <floppym@gentoo.org> +chromium-14.0.835.202.ebuild:
+  Version bump for stable channel release.
+
+*chromium-16.0.899.0 (04 Oct 2011)
+
+  04 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-16.0.899.0.ebuild, chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Enable WebRTC.
+
+  01 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-kerberos-r0.patch, chromium-15.0.874.54.ebuild:
+  Fix build with Heimdal, bug #383121 by Ben Carrell, patch by Martin von
+  Gagern.
+
+*chromium-15.0.874.54 (30 Sep 2011)
+
+  30 Sep 2011; Mike Gilbert <floppym@gentoo.org> -chromium-15.0.874.21.ebuild,
+  +chromium-15.0.874.54.ebuild:
+  Version bump for beta channel release. Remove old.
+
+*chromium-15.0.874.51 (29 Sep 2011)
+
+  29 Sep 2011; Mike Gilbert <floppym@gentoo.org> -chromium-15.0.874.15.ebuild,
+  +chromium-15.0.874.51.ebuild:
+  Version bump for beta channel release. Remove old.
+
+*chromium-16.0.891.0 (27 Sep 2011)
+
+  27 Sep 2011; Mike Gilbert <floppym@gentoo.org> +chromium-16.0.891.0.ebuild:
+  Version bump for dev channel release.
+
+  26 Sep 2011; Mike Gilbert <floppym@gentoo.org> -files/chromium.xml,
+  -files/chromium-cups-r0.patch, -files/chromium-kerberos-r1.patch,
+  -files/chromium-system-libevent-r1.patch,
+  -files/chromium-glibc-2.14-r0.patch, -files/chromium-ffmpeg-build-r0.patch,
+  -files/chromium-kerberos-r0.patch, -files/chromium-launcher-r1.sh,
+  -files/chromium-libgcrypt-r0.patch, -files/chromium-system-vpx-r3.patch,
+  -files/chromium-perl-5.14-r0.patch, -files/chromium-system-vpx-r4.patch,
+  -files/chromium-system-zlib-r0.patch:
+  Remove unused files from FILESDIR.
+
+  26 Sep 2011; Mike Gilbert <floppym@gentoo.org> -chromium-13.0.782.215.ebuild,
+  -chromium-13.0.782.220.ebuild, -chromium-14.0.835.162.ebuild:
+  Remove old versions.
+
+*chromium-15.0.874.21 (24 Sep 2011)
+
+  24 Sep 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-15.0.874.12.ebuild, +chromium-15.0.874.21.ebuild:
+  Version bump for beta channel release.
+
+  18 Sep 2011; Thomas Kahle <tomka@gentoo.org> chromium-14.0.835.163.ebuild:
+  x86 stable per bug 383251
+
+  18 Sep 2011; Markos Chandras <hwoarang@gentoo.org>
+  chromium-14.0.835.163.ebuild:
+  Stable on amd64 wrt bug #383251
+
+  18 Sep 2011; Mike Gilbert <floppym@gentoo.org> chromium-14.0.835.163.ebuild,
+  chromium-15.0.874.15.ebuild, chromium-9999-r1.ebuild:
+  Add workaround for build failure with zlib-1.2.5.1-r1. Bug 383371 by Chris
+  Smith.
+
+*chromium-15.0.874.15 (16 Sep 2011)
+
+  16 Sep 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-15.0.874.5.ebuild, +chromium-15.0.874.15.ebuild,
+  chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Fixed bug #381289 by Thomas Beinicke
+  (temporarily disabled linux_link_kerberos. Removed old.
+
+  15 Sep 2011; Mike Gilbert <floppym@gentoo.org> chromium-14.0.835.163.ebuild,
+  chromium-15.0.874.12.ebuild, chromium-9999-r1.ebuild:
+  Enable H.264 support in bundled ffmpeg; bug 382029 by Sylvain Bertrand. Add
+  bindist use flag.
+
+  15 Sep 2011; Mike Gilbert <floppym@gentoo.org> chromium-9999-r1.ebuild:
+  Keep third_party/smhasher, bug 382941 by Julien Sanchez.
+
+  15 Sep 2011; Mike Gilbert <floppym@gentoo.org> chromium-14.0.835.163.ebuild,
+  chromium-15.0.874.12.ebuild:
+  Add epatch_user support to beta and dev channels.
+
+*chromium-14.0.835.163 (15 Sep 2011)
+
+  15 Sep 2011; Mike Gilbert <floppym@gentoo.org> -chromium-14.0.835.159.ebuild,
+  +chromium-14.0.835.163.ebuild:
+  Version bump for beta channel release. Remove old.
+
+*chromium-15.0.874.12 (14 Sep 2011)
+
+  14 Sep 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-15.0.874.1.ebuild, +chromium-15.0.874.12.ebuild:
+  Version bump for dev channel release. Remove old.
+
+  14 Sep 2011; Mike Gilbert <floppym@gentoo.org> chromium-9999-r1.ebuild:
+  Refactor src_unpack. Set ESVN_REPO_URI to trunk.
+
+*chromium-14.0.835.162 (13 Sep 2011)
+
+  13 Sep 2011; Mike Gilbert <floppym@gentoo.org> -chromium-14.0.835.126.ebuild,
+  -chromium-14.0.835.157.ebuild, +chromium-14.0.835.162.ebuild:
+  Version bump for beta channel release. Remove old.
+
+  12 Sep 2011; Thomas Kahle <tomka@gentoo.org> chromium-13.0.782.220.ebuild:
+  x86 stable per bug 381713
+
+*chromium-15.0.874.5 (09 Sep 2011)
+
+  09 Sep 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-15.0.865.0.ebuild, +chromium-15.0.874.5.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-14.0.835.159 (09 Sep 2011)
+
+  09 Sep 2011; Mike Gilbert <floppym@gentoo.org> +chromium-14.0.835.159.ebuild:
+  Version bump for beta channel release.
+
+*chromium-15.0.874.1 (08 Sep 2011)
+
+  08 Sep 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-15.0.861.0.ebuild, +chromium-15.0.874.1.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-14.0.835.157 (06 Sep 2011)
+
+  06 Sep 2011; Mike Gilbert <floppym@gentoo.org> -chromium-14.0.835.109.ebuild,
+  -chromium-14.0.835.122.ebuild, -chromium-14.0.835.124.ebuild,
+  +chromium-14.0.835.157.ebuild:
+  Version bump for beta channel release. Remove old.
+
+  04 Sep 2011; Tony Vroon <chainsaw@gentoo.org> chromium-13.0.782.220.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Elijah "Armageddon" El Lazkani in security bug #381713 filed by Mike
+  "floppym" Gilbert.
+
+  03 Sep 2011; Mike Gilbert <floppym@gentoo.org> chromium-9999-r1.ebuild:
+  Need dev-util/scons to build nacl
+
+  03 Sep 2011; Mike Gilbert <floppym@gentoo.org> chromium-9999-r1.ebuild:
+  Depend on simplejson unconditionally to fix native_client/SConstruct
+
+*chromium-13.0.782.220 (03 Sep 2011)
+
+  03 Sep 2011; Mike Gilbert <floppym@gentoo.org> +chromium-13.0.782.220.ebuild:
+  Version bump for stable channel release.
+
+*chromium-14.0.835.126 (01 Sep 2011)
+
+  01 Sep 2011; Mike Gilbert <floppym@gentoo.org> +chromium-14.0.835.126.ebuild:
+  Version bump for beta channel release.
+
+*chromium-14.0.835.124 (01 Sep 2011)
+
+  01 Sep 2011; Mike Gilbert <floppym@gentoo.org> +chromium-14.0.835.124.ebuild:
+  Version bump for beta channel release.
+
+*chromium-14.0.835.122 (31 Aug 2011)
+
+  31 Aug 2011; Mike Gilbert <floppym@gentoo.org> -chromium-14.0.835.94.ebuild,
+  +chromium-14.0.835.122.ebuild:
+  Version bump for beta channel release. Remove old.
+
+  30 Aug 2011; Mike Gilbert <floppym@gentoo.org> chromium-9999-r1.ebuild:
+  Add workaround for bug 380801
+
+  30 Aug 2011; Mike Gilbert <floppym@gentoo.org> chromium-15.0.865.0.ebuild,
+  chromium-9999-r1.ebuild:
+  Restore 64 pixel icon
+
+*chromium-15.0.865.0 (30 Aug 2011)
+
+  30 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-kerberos-r1.patch, -chromium-15.0.854.0.ebuild,
+  +chromium-15.0.865.0.ebuild, chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Link with Kerberos if requested instead
+  of dlopen. Remove old.
+
+*chromium-15.0.861.0 (26 Aug 2011)
+
+  26 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-kerberos-r0.patch, -chromium-15.0.849.0.ebuild,
+  +chromium-15.0.861.0.ebuild, chromium-9999-r1.ebuild, +files/nacl.gypi,
+  metadata.xml:
+  Version bump for dev channel release. Added experimental support for
+  ChromeDriver, bug #376147 by Judson and patches by chutzpath. Made support
+  for PulseAudio optional, bug #377847 by octoploid. Fixed bug #379487 by Mike
+  Gilbert and bug #380331 by Julien Sanchez. Removed old.
+
+*chromium-14.0.835.109 (24 Aug 2011)
+
+  24 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-13.0.782.107-r1.ebuild, -chromium-13.0.782.109.ebuild,
+  -chromium-14.0.835.35.ebuild, +chromium-14.0.835.109.ebuild:
+  Version bump for beta channel release. Remove old.
+
+  24 Aug 2011; Thomas Kahle <tomka@gentoo.org> chromium-13.0.782.215.ebuild:
+  x86 stable per bug 380311
+
+  23 Aug 2011; Markos Chandras <hwoarang@gentoo.org>
+  chromium-13.0.782.215.ebuild:
+  Stable on amd64 wrt bug #380311
+
+*chromium-13.0.782.215 (23 Aug 2011)
+
+  23 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-13.0.782.215.ebuild:
+  Version bump for stable channel release.
+
+*chromium-15.0.854.0 (17 Aug 2011)
+
+  17 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-15.0.854.0.ebuild:
+  Version bump for dev channel release.
+
+*chromium-14.0.835.94 (16 Aug 2011)
+
+  16 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-14.0.835.29.ebuild, +chromium-14.0.835.94.ebuild:
+  Version bump for beta channel release. Remove old.
+
+*chromium-15.0.849.0 (12 Aug 2011)
+
+  12 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-system-libevent-r1.patch, +chromium-15.0.849.0.ebuild,
+  chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Fix bug #378777 by Julien Sanchez.
+
+*chromium-14.0.835.35 (11 Aug 2011)
+
+  11 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-14.0.835.18.ebuild, +chromium-14.0.835.35.ebuild,
+  chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Drop WebRTC support temporarily so that
+  we don't need to depend on PulseAudio, bug #377847 by octoploid. Remove old.
+
+*chromium-14.0.835.29 (09 Aug 2011)
+
+  09 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-14.0.835.15.ebuild, +chromium-14.0.835.29.ebuild:
+  Version bump for dev channel release. Remove old.
+
+  08 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-12.0.742.112.ebuild, -chromium-13.0.782.107.ebuild,
+  chromium-13.0.782.107-r1.ebuild, chromium-13.0.782.109.ebuild,
+  chromium-14.0.835.15.ebuild, chromium-14.0.835.18.ebuild,
+  chromium-9999-r1.ebuild:
+  Depend on libgcrypt with USE=cups, bug #377903 by Nils Larsson. Remove old.
+
+  07 Aug 2011; Markus Meier <maekke@gentoo.org> chromium-13.0.782.107.ebuild:
+  x86 stable, bug #377475
+
+*chromium-14.0.835.18 (05 Aug 2011)
+
+  05 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-14.0.825.0-r1.ebuild, +chromium-14.0.835.18.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-13.0.782.109 (05 Aug 2011)
+*chromium-13.0.782.107-r1 (05 Aug 2011)
+
+  05 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-13.0.782.99.ebuild, +chromium-13.0.782.107-r1.ebuild,
+  +chromium-13.0.782.109.ebuild, -chromium-14.0.825.0.ebuild,
+  chromium-14.0.835.15.ebuild, chromium-9999-r1.ebuild:
+  Version bump for beta channel release. Fix a misgenerated desktop entry.
+  Remove old.
+
+*chromium-14.0.835.15 (04 Aug 2011)
+
+  04 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-system-libevent-r0.patch, +chromium-14.0.835.15.ebuild,
+  chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Fixes bug #375759 by Mathieu Zhang, bug
+  #375827 by fkhp, bug #376301 by Julien Sanchez, bug #376499 by Mike Gilbert,
+  bug #376501 by Mike Gilbert. We're using bundled ffmpeg and libvpx again, and
+  NaCl is disabled temporarily.
+
+  04 Aug 2011; Markos Chandras <hwoarang@gentoo.org>
+  chromium-13.0.782.107.ebuild:
+  Stable on amd64 wrt bug #377475
+
+*chromium-13.0.782.107 (02 Aug 2011)
+
+  02 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-13.0.782.41-r1.ebuild, +chromium-13.0.782.107.ebuild:
+  Version bump for stable channel release. Remove old.
+
+*chromium-13.0.782.99 (21 Jul 2011)
+
+  21 Jul 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-13.0.782.41.ebuild, +chromium-13.0.782.99.ebuild:
+  Version bump for beta channel release. Remove old.
+
+*chromium-14.0.825.0-r1 (20 Jul 2011)
+
+  20 Jul 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-14.0.814.0.ebuild, +chromium-14.0.825.0-r1.ebuild,
+  chromium-9999-r1.ebuild:
+  Back to system ffmpeg, bug #371931 by Ambroz Bizjak.
+
+  20 Jul 2011; Fabian Groffen <grobian@gentoo.org>
+  chromium-13.0.782.41-r1.ebuild, chromium-14.0.825.0.ebuild,
+  chromium-9999-r1.ebuild:
+  Fix for Prefix, bug #367651
+
+  20 Jul 2011; Alex Alexander <wired@gentoo.org>
+  +files/chromium-icu-compatibility-r0.patch, chromium-14.0.825.0.ebuild:
+  icu fix, bug #374903
+
+  19 Jul 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-14.0.825.0.ebuild, chromium-9999-r1.ebuild:
+  The dependency on libXinerama is now mandatory.
+
+*chromium-14.0.825.0 (19 Jul 2011)
+
+  19 Jul 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-14.0.803.0.ebuild, +chromium-14.0.825.0.ebuild,
+  chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Fixes bug #375425 by Mike Gilbert.
+  Remove old.
+
+  18 Jul 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-12.0.742.112.ebuild, chromium-13.0.782.41.ebuild,
+  chromium-13.0.782.41-r1.ebuild, chromium-14.0.803.0.ebuild,
+  chromium-14.0.814.0.ebuild, chromium-9999-r1.ebuild:
+  Add sys-devel/bison to DEPEND, bug #375451 by Albert W. Hopkins.
+
+*chromium-13.0.782.41-r1 (17 Jul 2011)
+
+  17 Jul 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-13.0.782.32.ebuild, +chromium-13.0.782.41-r1.ebuild:
+  Backport fixes for bug #372561 and bug #366413. Remove old.
+
+*chromium-14.0.814.0 (17 Jul 2011)
+
+  17 Jul 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-12.0.742.91-r1.ebuild, -chromium-14.0.797.0.ebuild,
+  +chromium-14.0.814.0.ebuild, chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Fixes bug #372561 by Florian Scandella
+  and an issue reported by zmedico in bug #366413. Remove old.
+
+  30 Jun 2011; Thomas Kahle <tomka@gentoo.org> chromium-12.0.742.112.ebuild:
+  x86 stable per bug 373451
+
+*chromium-13.0.782.41 (30 Jun 2011)
+
+  30 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-13.0.782.24-r1.ebuild, +chromium-13.0.782.41.ebuild:
+  Version bump for beta channel release. Remove old.
+
+  29 Jun 2011; Christoph Mende <angelos@gentoo.org>
+  chromium-12.0.742.112.ebuild:
+  Stable on amd64 wrt bug #373451
+
+*chromium-12.0.742.112 (29 Jun 2011)
+
+  29 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-12.0.742.91-r2.ebuild, +chromium-12.0.742.112.ebuild:
+  Version bump for stable channel release. Remove old.
+
+*chromium-14.0.803.0 (28 Jun 2011)
+
+  28 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-14.0.794.0.ebuild, +chromium-14.0.803.0.ebuild:
+  Version bump for dev channel release. Remove old.
+
+  28 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-libgcrypt-r0.patch, chromium-13.0.782.32.ebuild:
+  Fix build without libgcrypt, bug #373079 by nzqr.
+
+  24 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> files/chromium.xml:
+  Use chromium-browser instead of chromium for GNOME default applications file.
+  chromium is now there only for compatibility.
+
+*chromium-13.0.782.32 (23 Jun 2011)
+
+  23 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-glibc-2.14-r0.patch, files/chromium-perl-5.14-r0.patch,
+  +chromium-13.0.782.32.ebuild:
+  Version bump for beta channel release. Fix a problem with perl patch (bug
+  #372627 by Richard Cox). Fix build failure with glibc-2.14 (bug #372495 by
+  Chris Smith).
+
+*chromium-14.0.797.0 (21 Jun 2011)
+
+  21 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-14.0.797.0.ebuild:
+  Version bump for dev channel release.
+
+*chromium-12.0.742.91-r2 (21 Jun 2011)
+
+  21 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-perl-5.14-r0.patch, +chromium-12.0.742.91-r2.ebuild,
+  -chromium-13.0.782.24.ebuild, chromium-13.0.782.24-r1.ebuild,
+  chromium-14.0.794.0.ebuild:
+  Backport perl-5.14 compile fix, bug #372301 by Markus Peloquin
+  <markus@cs.wisc.edu>.
+
+*chromium-14.0.794.0 (18 Jun 2011)
+
+  18 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-11.0.696.71.ebuild, -chromium-12.0.742.91.ebuild,
+  +chromium-14.0.794.0.ebuild:
+  Version bump for dev channel release. Remove old.
+
+  18 Jun 2011; Markos Chandras <hwoarang@gentoo.org>
+  chromium-12.0.742.91-r1.ebuild:
+  Stable on amd64 wrt bug #370481
+
+  17 Jun 2011; Thomas Kahle <tomka@gentoo.org> chromium-12.0.742.91-r1.ebuild:
+  x86 stable per bug 370481
+
+*chromium-13.0.782.24-r1 (17 Jun 2011)
+*chromium-12.0.742.91-r1 (17 Jun 2011)
+
+  17 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-12.0.742.77.ebuild, +chromium-12.0.742.91-r1.ebuild,
+  -chromium-13.0.782.20.ebuild, +chromium-13.0.782.24-r1.ebuild,
+  chromium-9999-r1.ebuild:
+  Switch back to bundled ffmpeg because of crashes, bug #371931 by Ambroz
+  Bizjak <ambrop7@gmail.com>. Drop ~arm because of yasm dependency. Remove old.
+
+*chromium-13.0.782.24 (16 Jun 2011)
+
+  16 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-13.0.782.15.ebuild, +chromium-13.0.782.24.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-13.0.782.20 (14 Jun 2011)
+
+  14 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-13.0.782.13.ebuild, +chromium-13.0.782.20.ebuild:
+  Version bump for dev channel release. Remove old.
+
+  10 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-12.0.742.91.ebuild, chromium-13.0.782.15.ebuild,
+  chromium-9999-r1.ebuild:
+  Die if src_test is run as root, the tests fail in that case; bug #370957 by
+  tampakrap.
+
+*chromium-13.0.782.15 (10 Jun 2011)
+
+  10 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-13.0.782.1.ebuild, +chromium-13.0.782.15.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-13.0.782.13 (09 Jun 2011)
+
+  09 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-13.0.772.0-r1.ebuild, +chromium-13.0.782.13.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-12.0.742.91 (07 Jun 2011)
+
+  07 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-12.0.742.68.ebuild, +chromium-12.0.742.91.ebuild:
+  Version bump for beta channel release. Remove old.
+
+*chromium-12.0.742.77 (03 Jun 2011)
+
+  03 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-12.0.742.60.ebuild, +chromium-12.0.742.77.ebuild:
+  Version bump for beta channel release. Remove old.
+
+  02 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-13.0.782.1.ebuild, chromium-9999-r1.ebuild:
+  Clean up: remove /dev/shm checks (hopefully obsolete thanks to openrc),
+  remove unused _WARNING variables, remove libsrtp from bundled libs exclusion
+  list, switch to tc-arch for arch detection (for simplicity - we shouldn't
+  have custom code for that).
+
+*chromium-13.0.782.1 (02 Jun 2011)
+
+  02 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-11.0.696.68.ebuild, -chromium-13.0.767.1.ebuild,
+  +chromium-13.0.782.1.ebuild, chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Re-enable NaCl (bug #366413). Remove
+  old.
+
+  29 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-13.0.772.0-r1.ebuild, chromium-9999-r1.ebuild:
+  Support LINGUAS, bug #332751 by Nikoli <nikoli@lavabit.com>.
+
+  27 May 2011; Markos Chandras <hwoarang@gentoo.org>
+  chromium-11.0.696.71.ebuild:
+  Stable on amd64 wrt bug #
+
+*chromium-13.0.772.0-r1 (26 May 2011)
+
+  26 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-13.0.772.0.ebuild, +files/chromium-launcher-r2.sh,
+  +chromium-13.0.772.0-r1.ebuild, chromium-9999-r1.ebuild,
+  +files/chromium.default:
+  Make it easier to override command-line flags, based on Debian's launcher
+  script; bug #357629 by Jonas Bernoulli <jonas@bernoul.li>.
+
+*chromium-12.0.742.68 (26 May 2011)
+
+  26 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-12.0.742.53.ebuild, +chromium-12.0.742.68.ebuild:
+  Version bump for beta channel release. Remove old.
+
+  25 May 2011; Thomas Kahle <tomka@gentoo.org> chromium-11.0.696.71.ebuild:
+  x86 stable per bug 368649
+
+*chromium-11.0.696.71 (25 May 2011)
+
+  25 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-11.0.696.71.ebuild:
+  Version bump for stable channel release.
+
+  25 May 2011; Markus Meier <maekke@gentoo.org> chromium-12.0.742.53.ebuild,
+  chromium-12.0.742.60.ebuild, chromium-13.0.767.1.ebuild,
+  chromium-13.0.772.0.ebuild:
+  restore ~arm, bug #366619
+
+*chromium-13.0.772.0 (24 May 2011)
+
+  24 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-13.0.761.0.ebuild, +chromium-13.0.772.0.ebuild,
+  chromium-9999-r1.ebuild:
+  Version bump for dev channel release, remove pam dependency (the browser no
+  longer links with PAM), bug #368289 by Matt Whitlock
+  <gentoo@mattwhitlock.name>. Remove old.
+
+*chromium-12.0.742.60 (19 May 2011)
+
+  19 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-12.0.742.21.ebuild, +chromium-12.0.742.60.ebuild:
+  Version bump for beta channel release. Remove old.
+
+*chromium-13.0.767.1 (18 May 2011)
+
+  18 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-11.0.696.65.ebuild, +chromium-13.0.767.1.ebuild:
+  Version bump for dev channel release. Remove old.
+
+  13 May 2011; Markos Chandras <hwoarang@gentoo.org>
+  chromium-11.0.696.68.ebuild:
+  Stable on amd64 wrt bug #367013
+
+*chromium-13.0.761.0 (13 May 2011)
+
+  13 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-13.0.761.0.ebuild:
+  Version bump for dev channel release. Native Client is temporarily disabled
+  wrt bug #366413.
+
+*chromium-12.0.742.53 (13 May 2011)
+
+  13 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-12.0.742.53.ebuild:
+  Version bump for beta channel release.
+
+  13 May 2011; Thomas Kahle <tomka@gentoo.org> chromium-11.0.696.68.ebuild:
+  x86 stable per bug 367013
+
+*chromium-11.0.696.68 (12 May 2011)
+
+  12 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-11.0.696.68.ebuild:
+  Version bump for stable channel release.
+
+  11 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> chromium-9999-r1.ebuild:
+  Download missing NaCl files in src_unpack (bug #366413 by Mike Gilbert
+  <floppymaster@gmail.com>).
+
+  09 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> chromium-9999-r1.ebuild:
+  Fix variable quoting (add missing quotes). Spotted by Mike Gilbert
+  <floppymaster@gmail.com>.
+
+  09 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-12.0.742.16.ebuild, chromium-12.0.742.21.ebuild:
+  Drop ~arm, missing keywords for libwebp, pyftdpdlib, and simplejson.
+
+  09 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-11.0.696.57.ebuild, chromium-9999-r1.ebuild, +files/dot-gclient:
+  Use LKGR to hopefully avoid transient problems like bug #365367. Simplify
+  src_unpack a bit. Add one more bundled library that we need (libphonenumber).
+  Remove old.
+
+  08 May 2011; Markos Chandras <hwoarang@gentoo.org>
+  chromium-11.0.696.65.ebuild:
+  Stable on amd64 wrt bug #366335
+
+  08 May 2011; Christian Faulhammer <fauli@gentoo.org>
+  chromium-11.0.696.65.ebuild:
+  stable x86, security bug 366335
+
+  07 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-12.0.742.21.ebuild, chromium-9999-r1.ebuild:
+  Use system pyftpdlib.
+
+*chromium-11.0.696.65 (07 May 2011)
+
+  07 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-11.0.696.65.ebuild:
+  Version bump for stable channel release.
+
+*chromium-12.0.742.21 (06 May 2011)
+
+  06 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -files/chromium-ffmpeg-build-r1.patch,
+  -files/chromium-gecko-mediaplayer-r0.patch,
+  -files/chromium-gecko-mediaplayer-r1.patch,
+  -files/chromium-gssapi-heimdal-r0.patch, -files/chromium-launcher.sh,
+  -files/chromium-net-tests-r0.patch, -files/chromium-system-flac-r0.patch,
+  -files/chromium-system-icu-r0.patch, -files/chromium-system-speex-r0.patch,
+  -files/chromium-system-vpx-r1.patch, -files/chromium-system-vpx-r2.patch,
+  -files/chromium-system-xdg-utils-r0.patch,
+  -files/chromium-webkit-version.patch, -files/experimental.gyp,
+  -files/flac.gyp, -files/speex.gyp, -files/v8.gyp,
+  -chromium-12.0.742.12.ebuild, +chromium-12.0.742.21.ebuild:
+  Version bump for dev channel release. Remove old ebuilds and files.
+
+*chromium-12.0.742.16 (03 May 2011)
+
+  03 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-10.0.648.205.ebuild, -chromium-11.0.696.50-r1.ebuild,
+  -chromium-12.0.742.9-r1.ebuild, +chromium-12.0.742.16.ebuild,
+  metadata.xml:
+  Version bump for dev channel release. Remove old.
+
+  29 Apr 2011; Thomas Kahle <tomka@gentoo.org> chromium-11.0.696.57.ebuild:
+  x86 stable per bug 365125
+
+*chromium-12.0.742.12 (29 Apr 2011)
+
+  29 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-12.0.742.5.ebuild, +chromium-12.0.742.12.ebuild:
+  Version bump for dev channel release. Remove old.
+
+  28 Apr 2011; Markos Chandras <hwoarang@gentoo.org>
+  chromium-11.0.696.57.ebuild:
+  Stable on amd64 wrt bug #365125
+
+*chromium-12.0.742.9-r1 (28 Apr 2011)
+
+  28 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-12.0.742.9.ebuild, +chromium-12.0.742.9-r1.ebuild,
+  chromium-9999-r1.ebuild:
+  Use system libwebp.
+
+*chromium-11.0.696.57 (27 Apr 2011)
+
+  27 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-11.0.696.50.ebuild, +chromium-11.0.696.57.ebuild:
+  Version bump for beta channel release. Remove old.
+
+*chromium-12.0.742.9 (26 Apr 2011)
+
+  26 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-12.0.742.0.ebuild, +chromium-12.0.742.9.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-12.0.742.5 (23 Apr 2011)
+*chromium-11.0.696.50-r1 (23 Apr 2011)
+
+  23 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-cups-r0.patch, -chromium-11.0.696.43.ebuild,
+  +chromium-11.0.696.50-r1.ebuild, -chromium-12.0.733.0.ebuild,
+  +chromium-12.0.742.5.ebuild, chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Add checks for sandboxing-related
+  kernel options (bug #363907 by Keith Dart <kdart@kdart.com>). Fix build
+  with USE="-cups" (bug #364525 by Jonas Bernoulli <jonas@bernoul.li>).
+  Remove old.
+
+*chromium-12.0.742.0 (21 Apr 2011)
+
+  21 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-system-zlib-r0.patch, -chromium-10.0.648.204.ebuild,
+  -chromium-12.0.725.0.ebuild, +chromium-12.0.742.0.ebuild,
+  chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Fixes bug #364205 by Julien Sanchez
+  <julien.sanchez@gmail.com>. Used modified patch by Mike Gilbert
+  <floppymaster@gmail.com>. Remove old.
+
+*chromium-11.0.696.50 (19 Apr 2011)
+
+  19 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-11.0.696.34.ebuild, +chromium-11.0.696.50.ebuild:
+  Version bump for beta channel release. Remove old.
+
+  16 Apr 2011; Christoph Mende <angelos@gentoo.org>
+  chromium-10.0.648.205.ebuild:
+  Stable on amd64 wrt bug #363629
+
+  16 Apr 2011; Christian Faulhammer <fauli@gentoo.org>
+  chromium-10.0.648.205.ebuild:
+  stable x86, security bug 363629
+
+*chromium-10.0.648.205 (14 Apr 2011)
+
+  14 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-10.0.648.205.ebuild:
+  Version bump for stable channel release.
+
+*chromium-12.0.733.0 (13 Apr 2011)
+
+  13 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-12.0.712.0-r1.ebuild, +chromium-12.0.733.0.ebuild,
+  chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Enable DiskCache tests, the testing
+  data is now in the tarball. Remove old.
+
+*chromium-11.0.696.43 (13 Apr 2011)
+
+  13 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-11.0.696.28.ebuild, +chromium-11.0.696.43.ebuild:
+  Version bump for beta channel release. Remove old.
+
+  09 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-net-tests-r0.patch, chromium-12.0.725.0.ebuild,
+  chromium-9999-r1.ebuild:
+  Fix some net_unittests failures, bug #361939.
+
+  08 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-12.0.725.0.ebuild, chromium-9999-r1.ebuild:
+  Add a dependency on libXinerama, bug #362405.
+
+  08 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-12.0.725.0.ebuild, chromium-9999-r1.ebuild:
+  Use virtual/ffmpeg, bug #361665 by Zeev Tarantov
+  <zeev.tarantov@gmail.com>.
+
+  07 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-9999-r1.ebuild:
+  Drop patch applied upstream, bug #362363 by Mike Gilbert
+  <floppymaster@gmail.com>.
+
+  07 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-10.0.648.204.ebuild, chromium-11.0.696.34.ebuild,
+  chromium-12.0.725.0.ebuild, chromium-9999-r1.ebuild:
+  Update elog messages, bug #361859 by edoceo <code@edoceo.com>, bug #359153
+  by Mark Keisler <grimm26@mitsein.net> including font suggestions by Mike
+  Gilbert <floppymaster@gmail.com>, Julien Sanchez
+  <julien.sanchez@gmail.com>, and many others.
+
+  06 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-10.0.648.204.ebuild:
+  Backport the fix for V8 on hardened, bug #361747 by Kai Dietrich
+  <mail@cleeus.de>.
+
+*chromium-12.0.725.0 (06 Apr 2011)
+
+  06 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-12.0.712.0.ebuild, +chromium-12.0.725.0.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-11.0.696.34 (05 Apr 2011)
+
+  05 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-11.0.696.25.ebuild, +chromium-11.0.696.34.ebuild:
+  Version bump for beta channel release. Remove old.
+
+  05 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-gssapi-heimdal-r0.patch, chromium-12.0.712.0-r1.ebuild,
+  chromium-9999-r1.ebuild:
+  Also run net_unittests in src_test (known issues: bug #361885, bug
+  #361939). Add optional dependency on Kerberos for HTTP authentication.
+
+*chromium-12.0.712.0-r1 (03 Apr 2011)
+
+  03 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-ffmpeg-build-r1.patch, +chromium-12.0.712.0-r1.ebuild:
+  Update the ffmpeg patch to be more compatible, see bug #361665 comment #3
+  by Mike Gilbert <floppymaster@gmail.com>.
+
+  02 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-ffmpeg-build-r0.patch, chromium-11.0.696.28.ebuild,
+  chromium-12.0.712.0.ebuild:
+  Backport upstream FFmpeg compatibility patch, bug #355405 by Philipp
+  <sefi@s-e-f-i.de>.
+
+*chromium-11.0.696.28 (01 Apr 2011)
+
+  01 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-10.0.648.133.ebuild, -chromium-11.0.696.16.ebuild,
+  +chromium-11.0.696.28.ebuild:
+  Version bump for beta channel release. Remove old.
+
+  30 Mar 2011; Alex Alexander <wired@gentoo.org> chromium-9999-r1.ebuild:
+  re-added suffix/slot to the desktop entry, bug #361211
+
+*chromium-11.0.696.25 (29 Mar 2011)
+
+  29 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-11.0.696.14.ebuild, +chromium-11.0.696.25.ebuild,
+  chromium-12.0.712.0.ebuild, chromium-9999-r1.ebuild:
+  Version bump for beta channel release. Restore check for PaX (bug
+  #301880), handle more MIME types for GNOME (bug #360797 by pacho). Remove
+  old.
+
+  26 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  chromium-10.0.648.204.ebuild:
+  stable x86, security bug 360399
+
+  25 Mar 2011; Christoph Mende <angelos@gentoo.org>
+  chromium-10.0.648.204.ebuild:
+  Stable on amd64 wrt bug #360399
+
+*chromium-12.0.712.0 (25 Mar 2011)
+
+  25 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-10.0.648.151.ebuild, +chromium-12.0.712.0.ebuild,
+  chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Switch back to bundled V8, bug
+  #357809 by Jon Wagoner <jon.wagoner@redcheetah.com> and additional
+  comments by redneb <redneb@gmx.com>. Fix bug #360389 by fkhp
+  <fkhp101@tom.com>. Use arch detection logic by grobian, bug #354601
+  (Prefix support).
+
+*chromium-10.0.648.204 (25 Mar 2011)
+
+  25 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-10.0.648.204.ebuild:
+  Version bump for stable channel release. Switch back to bundled V8, bug
+  #357809 by Jon Wagoner <jon.wagoner@redcheetah.com> and additional
+  comments by redneb <redneb@gmx.com>.
+
+*chromium-11.0.696.16 (22 Mar 2011)
+
+  22 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-11.0.696.12.ebuild, +chromium-11.0.696.16.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-11.0.696.14 (18 Mar 2011)
+
+  18 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-11.0.696.3.ebuild, +chromium-11.0.696.14.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-10.0.648.151 (18 Mar 2011)
+
+  18 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-10.0.648.151.ebuild:
+  Version bump for stable and beta channel release.
+
+*chromium-11.0.696.12 (16 Mar 2011)
+
+  16 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-10.0.648.127.ebuild, -chromium-11.0.696.1.ebuild,
+  +chromium-11.0.696.12.ebuild, chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Fix bug #358745 by Mike Gilbert
+  <floppymaster@gmail.com>, apply modified patch by suka (bug #358763).
+  Remove old.
+
+  14 Mar 2011; Markus Meier <maekke@gentoo.org> chromium-11.0.696.1.ebuild,
+  chromium-11.0.696.3.ebuild:
+  add ~arm, bug #350648
+
+  13 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-10.0.648.133.ebuild, chromium-11.0.696.3.ebuild,
+  chromium-9999-r1.ebuild:
+  Fix src_test after virtualx.eclass updates, bug #358373 by graaff. Also
+  clean up optional dependency code.
+
+  13 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  chromium-10.0.648.133.ebuild:
+  Stable on amd64 wrt bug #358581
+
+  13 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  chromium-10.0.648.133.ebuild:
+  stable x86, security bug 358581
+
+*chromium-11.0.696.3 (12 Mar 2011)
+
+  12 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -files/chromium-tests-r0.patch, -chromium-9.0.597.107.ebuild,
+  -chromium-11.0.686.3.ebuild, +chromium-11.0.696.3.ebuild, metadata.xml:
+  Version bump for dev channel release. Remove old.
+
+  12 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  chromium-10.0.648.127.ebuild:
+  stable x86, security bug 357963
+
+*chromium-10.0.648.133 (12 Mar 2011)
+
+  12 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-10.0.648.126.ebuild, +chromium-10.0.648.133.ebuild:
+  Version bump for stable channel release. Remove old.
+
+  11 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-10.0.648.127.ebuild, chromium-11.0.696.1.ebuild,
+  chromium-9999-r1.ebuild:
+  Update dependencies to require a recent enough libvpx version, bug #358361
+  by Joel Rebello <joelmadzu@gmail.com>.
+
+  10 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-10.0.648.127.ebuild, chromium-11.0.696.1.ebuild,
+  chromium-9999-r1.ebuild:
+  Use an elog message instead of (problematic) dependencies for Downloads
+  page icons, bug #352263 by Patrizio Bassi <patrizio.bassi@gmail.com>.
+
+*chromium-11.0.696.1 (10 Mar 2011)
+
+  10 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-system-vpx-r3.patch, -chromium-11.0.686.1.ebuild,
+  +chromium-11.0.696.1.ebuild, chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Fixed bug #357451 by Alphat-PC
+  <AlphatPC@gmail.com> fully for dev channel ebuild and partially for live
+  ebuild (will land fixes upstream). Remove old.
+
+  08 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  chromium-10.0.648.127.ebuild:
+  Stable on amd64 wrt bug #357963
+
+  04 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-9999-r1.ebuild:
+  Remove upstreamed patch, bug #357307 by Julien Sanchez
+  <julien.sanchez@gmail.com>.
+
+*chromium-11.0.686.3 (04 Mar 2011)
+
+  04 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-11.0.686.0.ebuild, +chromium-11.0.686.3.ebuild,
+  chromium-9999-r1.ebuild:
+  Version bump for dev channel release. Fix bug #357003 by Mikko C.
+  <mikko.cal@gmail.com>. Remove old.
+
+*chromium-10.0.648.127 (04 Mar 2011)
+
+  04 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-10.0.648.114.ebuild, +chromium-10.0.648.127.ebuild:
+  Version bump for beta channel release. Remove old.
+
+*chromium-10.0.648.126 (03 Mar 2011)
+
+  03 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-9.0.597.94.ebuild, -chromium-9.0.597.98.ebuild,
+  -chromium-10.0.648.82.ebuild, +chromium-10.0.648.126.ebuild:
+  Version bump for beta channel release. Remove old.
+
+  02 Mar 2011; Thomas Kahle <tomka@gentoo.org> chromium-9.0.597.107.ebuild:
+  x86 stable per bug 356933
+
+*chromium-11.0.686.1 (02 Mar 2011)
+
+  02 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-11.0.672.2-r3.ebuild, +chromium-11.0.686.1.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-11.0.686.0 (01 Mar 2011)
+
+  01 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-system-icu-r0.patch, +chromium-11.0.686.0.ebuild,
+  chromium-9999-r1.ebuild:
+  Version bump for dev channel release.
+
+*chromium-9999-r1 (01 Mar 2011)
+*chromium-11.0.672.2-r3 (01 Mar 2011)
+
+  01 Mar 2011; Alex Alexander <wired@gentoo.org>
+  -chromium-11.0.672.2-r1.ebuild, -chromium-11.0.672.2-r2.ebuild,
+  +chromium-11.0.672.2-r3.ebuild, -chromium-9999.ebuild,
+  +chromium-9999-r1.ebuild, +files/chromium-browser.xml,
+  files/chromium-launcher-r1.sh:
+  live ebuild now slotted, installable alongside releases. removed failing
+  patches. man page fix in 9999 and dev channel.
+
+  01 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  chromium-9.0.597.107.ebuild:
+  Stable on amd64 wrt bug #356933
+
+  01 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-9.0.597.107.ebuild, chromium-10.0.648.114.ebuild,
+  -chromium-11.0.672.2.ebuild, chromium-11.0.672.2-r2.ebuild,
+  chromium-9999.ebuild:
+  Prepare for gtk+-3.x (slotted dependencies). Remove old.
+
+*chromium-9.0.597.107 (01 Mar 2011)
+
+  01 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-9.0.597.107.ebuild:
+  Version bump for stable channel release.
+
+*chromium-11.0.672.2-r2 (25 Feb 2011)
+
+  25 Feb 2011; Alex Alexander <wired@gentoo.org>
+  +chromium-11.0.672.2-r2.ebuild, chromium-9999.ebuild:
+  restored chromium symlink, to avoid confusion and frustration.
+  chromium-browser is still the default.
+
+*chromium-10.0.648.114 (24 Feb 2011)
+
+  24 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-10.0.648.114.ebuild:
+  Version bump for beta channel release.
+
+  22 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-10.0.648.82.ebuild, chromium-11.0.672.2.ebuild,
+  chromium-11.0.672.2-r1.ebuild, chromium-9999.ebuild:
+  Remove themes from RDEPEND that do not satisfy the dependency fully (i.e.
+  the Downloads page does not have icons). I discovered this while working
+  on bug #352263.
+
+*chromium-11.0.672.2-r1 (22 Feb 2011)
+
+  22 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-launcher-r1.sh, +chromium-11.0.672.2-r1.ebuild,
+  chromium-9999.ebuild:
+  Rename the launcher from chromium to chromium-browser, for xdg-open; bug
+  #355517 by Dean Matzkov <Bapabooiee@gmail.com>.
+
+  20 Feb 2011; Markus Meier <maekke@gentoo.org> chromium-10.0.648.82.ebuild:
+  add ~arm, bug #350648
+
+*chromium-11.0.672.2 (18 Feb 2011)
+
+  18 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-9.0.597.94.ebuild, chromium-9.0.597.98.ebuild,
+  -chromium-10.0.648.45.ebuild, chromium-10.0.648.82.ebuild,
+  +chromium-11.0.672.2.ebuild, chromium-9999.ebuild,
+  +files/experimental.gyp, metadata.xml:
+  Version bump for dev channel release. Fixed bug #354343 by Julien Sanchez
+  <julien.sanchez@gmail.com>. Dropped support for system-sqlite
+  (http://crbug.com/70589). Removed old.
+
+*chromium-10.0.648.82 (17 Feb 2011)
+
+  17 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -files/chromium-locale-glib-r1.patch, -chromium-10.0.648.18.ebuild,
+  -files/chromium-system-icu-r1.patch, +chromium-10.0.648.82.ebuild,
+  -files/chromium-system-icu-r2.patch, -files/extract_v8_version.py:
+  Version bump for dev channel release. Remove old ebuilds and patches.
+
+*chromium-9.0.597.98 (14 Feb 2011)
+
+  14 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-9.0.597.98.ebuild:
+  Version bump for stable and beta channels release.
+
+  13 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-9.0.597.94.ebuild, chromium-10.0.648.18.ebuild,
+  chromium-10.0.648.45.ebuild, chromium-9999.ebuild:
+  Require libxml2 to have ICU support, for compatibility with some websites;
+  bug #350252 by nelchael.
+
+*chromium-10.0.648.45 (11 Feb 2011)
+
+  11 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-9.0.597.84.ebuild, -chromium-10.0.648.11.ebuild,
+  +chromium-10.0.648.45.ebuild:
+  Version bump for dev channel release. Remove old.
+
+  11 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-9.0.597.94.ebuild:
+  x86 stable wrt security bug #354121
+
+  10 Feb 2011; Markos Chandras <hwoarang@gentoo.org>
+  chromium-9.0.597.94.ebuild:
+  Stable on amd64 wrt bug #354121
+
+*chromium-9.0.597.94 (10 Feb 2011)
+
+  10 Feb 2011; Bernard Cafarelli <voyageur@gentoo.org>
+  +chromium-9.0.597.94.ebuild:
+  Version bump for stable channel release.
+
+  08 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-8.0.552.237.ebuild, -chromium-9.0.597.83.ebuild:
+  Remove old versions, security bug #353626.
+
+  08 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> chromium-9999.ebuild:
+  Fix build, bug #353643 by Mike Gilbert <floppymaster@gmail.com>.
+
+  05 Feb 2011; Markus Meier <maekke@gentoo.org> chromium-9.0.597.84.ebuild:
+  add ~arm, bug #350648
+
+  05 Feb 2011; Christian Faulhammer <fauli@gentoo.org>
+  chromium-9.0.597.84.ebuild:
+  stable x86/amd64, security bug 353626
+
+*chromium-10.0.648.18 (04 Feb 2011)
+
+  04 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-10.0.648.6.ebuild, +chromium-10.0.648.18.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-10.0.648.11 (02 Feb 2011)
+
+  02 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-10.0.642.2-r1.ebuild, +chromium-10.0.648.11.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-9.0.597.84 (02 Feb 2011)
+
+  02 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-9.0.597.67.ebuild, +chromium-9.0.597.84.ebuild:
+  Version bump for beta channel release. Remove old.
+
+  30 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-9.0.597.83.ebuild, chromium-10.0.648.6.ebuild,
+  chromium-9999.ebuild:
+  Fix a build error with -Os, bug #352457 by Francois Chenier
+  <belgix@virginbroadband.com.au>.
+
+  28 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> chromium-9999.ebuild:
+  Remove system-sqlite USE flag, it's broken upstream. Bug #352892 by fkhp
+  <fkhp101@tom.com>.
+
+*chromium-10.0.648.6 (27 Jan 2011)
+
+  27 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-10.0.634.0-r1.ebuild, -chromium-10.0.642.2.ebuild,
+  +chromium-10.0.648.6.ebuild, +files/chromium-webkit-version.patch:
+  Version bump for dev channel release. Remove old.
+
+*chromium-9.0.597.83 (26 Jan 2011)
+
+  26 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-9.0.597.45.ebuild, +chromium-9.0.597.83.ebuild:
+  Version bump for beta channel release. Remove old.
+
+*chromium-10.0.642.2-r1 (22 Jan 2011)
+
+  22 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-system-flac-r0.patch, +chromium-10.0.642.2-r1.ebuild,
+  chromium-9999.ebuild, +files/flac.gyp:
+  Build with system flac, bug #352093 by Mike Gilbert
+  <floppymaster@gmail.com>.
+
+*chromium-10.0.642.2 (21 Jan 2011)
+
+  21 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-10.0.642.2.ebuild, chromium-9999.ebuild:
+  Version bump for dev channel release. Uses bundled flac (bug #352093).
+  Always uses system V8. Fixed bug #352309 by fkhp <fkhp101@tom.com>.
+
+*chromium-9.0.597.67 (19 Jan 2011)
+
+  19 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-9.0.597.67.ebuild:
+  Version bump for beta channel release.
+
+  16 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-8.0.552.224.ebuild, chromium-8.0.552.237.ebuild,
+  -chromium-9.0.597.44.ebuild, chromium-9.0.597.45.ebuild,
+  -chromium-10.0.634.0.ebuild, chromium-10.0.634.0-r1.ebuild,
+  chromium-9999.ebuild:
+  Fix sys-devel/make dependency, bug #351092 by Bob Raitz
+  <pappy_mcfae@yahoo.com>. Remove old.
+
+  15 Jan 2011; Markus Meier <maekke@gentoo.org> chromium-8.0.552.237.ebuild:
+  x86 stable, bug #351525
+
+*chromium-10.0.634.0-r1 (14 Jan 2011)
+
+  14 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-system-xdg-utils-r0.patch, -chromium-10.0.628.0-r1.ebuild,
+  +chromium-10.0.634.0-r1.ebuild, chromium-9999.ebuild:
+  Make sure we don't use bundled xdg-utils. Remove old.
+
+  13 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  chromium-8.0.552.237.ebuild:
+  Stable on amd64 wrt bug #351525
+
+*chromium-8.0.552.237 (13 Jan 2011)
+
+  13 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-8.0.552.237.ebuild:
+  Version bump for stable channel release.
+
+*chromium-10.0.634.0 (12 Jan 2011)
+
+  12 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-10.0.628.0.ebuild, +chromium-10.0.634.0.ebuild,
+  chromium-9999.ebuild:
+  Version bump for dev channel release. Should fix bug #350799 by Julien
+  Sanchez <julien.sanchez@gmail.com>. Remove old.
+
+*chromium-10.0.628.0-r1 (10 Jan 2011)
+
+  10 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-10.0.612.1-r1.ebuild, +chromium-10.0.628.0-r1.ebuild,
+  chromium-9999.ebuild:
+  Change way how bundled libraries are removed (whitelisting instead of
+  blacklisting).
+
+  09 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-10.0.628.0.ebuild, chromium-9999.ebuild:
+  Exclude test that relies on custom ICU patches (bug #350347). Also remove
+  net_unittests for now and make all test failures fatal.
+
+*chromium-9.0.597.45 (07 Jan 2011)
+
+  07 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-9.0.597.42.ebuild, +chromium-9.0.597.45.ebuild:
+  Version bump for beta channel release. Remove old.
+
+*chromium-10.0.628.0 (06 Jan 2011)
+
+  06 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-10.0.612.1.ebuild, +chromium-10.0.628.0.ebuild,
+  chromium-9999.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-9.0.597.44 (06 Jan 2011)
+
+  06 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-9.0.597.19.ebuild, +chromium-9.0.597.44.ebuild:
+  Version bump for beta channel release.
+
+  05 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-9.0.597.42.ebuild:
+  Update dev-lang/v8 dependency to better match upstream.
+
+*chromium-9.0.597.42 (05 Jan 2011)
+
+  05 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-9.0.597.42.ebuild:
+  Version bump for beta channel release. Remove broken src_test.
+
+  03 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-gecko-mediaplayer-r1.patch, chromium-9999.ebuild,
+  +files/chromium-system-vpx-r2.patch:
+  Rebase patches, bugs #349228 and #349234. Used patches by Mike Gilbert
+  <floppymaster@gmail.com>, tested by Julien Sanchez
+  <julien.sanchez@gmail.com>.
+
+  02 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-10.0.612.1-r1.ebuild, chromium-9999.ebuild:
+  Fix locale-sensitive test failures, bug #350349.
+
+*chromium-10.0.612.1-r1 (22 Dec 2010)
+
+  22 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-system-speex-r0.patch, +chromium-10.0.612.1-r1.ebuild,
+  chromium-9999.ebuild, +files/speex.gyp:
+  Build with system speex.
+
+  22 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-10.0.612.1.ebuild, chromium-9999.ebuild:
+  Remove /etc/fstab sanity check, it is irrelevant for ~arch systems; bug
+  #349226 by Mike Gilbert <floppymaster@gmail.com>.
+
+  20 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-10.0.612.1.ebuild, chromium-9999.ebuild:
+  Add more checks to prevent user problems like bug #299777 or bug #348235.
+
+  19 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-tests-r0.patch:
+  Restore missing patch, bug #349042 by Andrew Savchenko
+  <bircoph@gmail.com>.
+
+*chromium-10.0.612.1 (18 Dec 2010)
+
+  18 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -files/chromium-locale-glib-r0.patch, -chromium-8.0.552.215.ebuild,
+  +files/chromium-system-icu-r2.patch, -chromium-9.0.597.16.ebuild,
+  -files/chromium-tests-r0.patch, +chromium-10.0.612.1.ebuild:
+  Version bump for dev channel release. Fixes bug #348458 by Mike Gilbert
+  <floppymaster@gmail.com>, used modified patch by Mike Gilbert
+  <floppymaster@gmail.com>. Remove old ebuilds and patches.
+
+  16 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-9.0.597.19.ebuild:
+  Drop ~arm keyword for beta channel version being unmasked (needs libvpx
+  and chromium-tools).
+
+  14 Dec 2010; Markos Chandras <hwoarang@gentoo.org>
+  chromium-8.0.552.224.ebuild:
+  Stable on amd64 wrt bug #348651
+
+*chromium-9.0.597.19 (14 Dec 2010)
+
+  14 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-9.0.597.0.ebuild, +chromium-9.0.597.19.ebuild:
+  Version bump for dev channel release. Remove old.
+
+  14 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  chromium-8.0.552.224.ebuild:
+  stable x86, security bug 348651
+
+*chromium-8.0.552.224 (13 Dec 2010)
+
+  13 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-8.0.552.224.ebuild:
+  Version bump for stable channel release.
+
+  12 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> chromium-9999.ebuild:
+  Drop patch applied upstream, bug #348462 by Mike Gilbert
+  <floppymaster@gmail.com>.
+
+*chromium-9.0.597.16 (10 Dec 2010)
+
+  10 Dec 2010; Alexey Shvetsov <alexxy@gentoo.org> -chromium-9.0.597.15.ebuild,
+  +chromium-9.0.597.16.ebuild:
+  Version bump for dev channel. With permissions from Pawel Hajdan jr
+  <phajdan.jr@gentoo.org>
+
+*chromium-9.0.597.15 (10 Dec 2010)
+
+  10 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -files/chromium-gconf-optional-r0.patch,
+  -files/chromium-system-icu-r0.patch, +files/chromium-tests-r0.patch,
+  -files/chromium-make-3.82-compatibility-r0.patch,
+  -chromium-7.0.517.44.ebuild, -files/chromium-gnome-keyring-r0.patch,
+  -chromium-8.0.552.210.ebuild, -files/chromium-plugins-path-r0.patch,
+  -chromium-9.0.587.0-r1.ebuild, -files/chromium-system-sqlite-r0.patch,
+  +chromium-9.0.597.15.ebuild, -files/chromium-system-ssl-r0.patch,
+  chromium-9999.ebuild, -files/chromium-system-vpx-r0.patch:
+  Version bump for dev channel release. Added src_test (tests fail for now,
+  the failures are non-fatal). Removed old ebuilds and patches.
+
+  09 Dec 2010; Richard Freeman <rich0@gentoo.org>
+  chromium-8.0.552.215.ebuild:
+  amd64 stable - 347625
+
+  09 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  chromium-8.0.552.215.ebuild:
+  stable x86, security bug 347625
+
+*chromium-8.0.552.215 (03 Dec 2010)
+
+  03 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-8.0.552.208.ebuild, +chromium-8.0.552.215.ebuild:
+  Version bump for stable channel release. Remove old.
+
+*chromium-9.0.597.0 (02 Dec 2010)
+
+  02 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-9.0.576.0.ebuild, +chromium-9.0.597.0.ebuild:
+  Version bump for dev channel release. Remove old.
+
+  29 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-9.0.587.0-r1.ebuild, chromium-9999.ebuild:
+  Use dev-util/chromium-tools instead of a script from FILESDIR to extract
+  bundled v8 version.
+
+*chromium-9.0.587.0-r1 (24 Nov 2010)
+
+  24 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-9.0.570.0-r1.ebuild, -chromium-9.0.587.0.ebuild,
+  +chromium-9.0.587.0-r1.ebuild, chromium-9999.ebuild:
+  Use system ffmpeg (a more recent snapshot), bug #345325 by Mike Gilbert
+  <floppymaster@gmail.com>.
+
+*chromium-8.0.552.210 (24 Nov 2010)
+
+  24 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-8.0.552.200.ebuild, +chromium-8.0.552.210.ebuild:
+  Version bump for beta channel release. Remove old.
+
+*chromium-9.0.587.0 (19 Nov 2010)
+
+  19 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-system-vpx-r1.patch, +chromium-9.0.587.0.ebuild,
+  chromium-9999.ebuild:
+  Version bump for dev channel release. Back to bundled ffmpeg.
+
+*chromium-8.0.552.208 (19 Nov 2010)
+
+  19 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-8.0.552.28.ebuild, +chromium-8.0.552.208.ebuild:
+  Version bump for beta channel release. Remove old.
+
+  13 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/extract_v8_version.py, chromium-9.0.576.0.ebuild,
+  chromium-9999.ebuild:
+  Extract bundled and installed V8 version. Will be useful for an
+  unconditional switch to system-provided V8.
+
+*chromium-8.0.552.200 (12 Nov 2010)
+
+  12 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-8.0.552.200.ebuild:
+  Version bump for beta channel release.
+
+*chromium-9.0.576.0 (10 Nov 2010)
+
+  10 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-system-vpx-r0.patch, -chromium-9.0.570.0.ebuild,
+  +chromium-9.0.576.0.ebuild, chromium-9999.ebuild:
+  Version bump for dev channel release. Fix bug #343805 by Julien Sanchez
+  <julien.sanchez@gmail.com>. Remove old.
+
+  09 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> chromium-9999.ebuild:
+  Remove patch applied upstream, bug #344787 by Julien Sanchez
+  <julien.sanchez@gmail.com>.
+
+  09 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-9.0.570.0-r1.ebuild, chromium-9999.ebuild:
+  Add missing dbus-glib dependency, bug #344795 by volkmar.
+
+  07 Nov 2010; Jory A. Pratt <anarchy@gentoo.org>
+  chromium-7.0.517.44.ebuild, chromium-8.0.552.28.ebuild,
+  chromium-9.0.570.0.ebuild, chromium-9.0.570.0-r1.ebuild,
+  chromium-9999.ebuild:
+  Convert media-libs/jpeg to virtual/jpeg
+
+  07 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-7.0.517.41.ebuild, chromium-7.0.517.44.ebuild,
+  chromium-8.0.552.28.ebuild, chromium-9.0.570.0.ebuild,
+  chromium-9.0.570.0-r1.ebuild, chromium-9999.ebuild,
+  files/chromium-launcher.sh:
+  Check /dev/shm compatibility in pkg_setup instead of the launcher script,
+  and make the checks non-fatal. This makes the package more friendly for
+  customized setups.
+
+*chromium-9.0.570.0-r1 (07 Nov 2010)
+
+  07 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-gconf-optional-r0.patch, +chromium-9.0.570.0-r1.ebuild,
+  chromium-9999.ebuild:
+  Make gconf dependency optional.
+
+  07 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-9.0.570.0.ebuild, chromium-9999.ebuild:
+  Fix build failures with python 3, bug #344367 by pacho. Original patch by
+  pacho.
+
+  05 Nov 2010; Markos Chandras <hwoarang@gentoo.org>
+  chromium-7.0.517.44.ebuild:
+  Stable on amd64 wrt bug #344201
+
+  05 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  chromium-7.0.517.44.ebuild:
+  stable x86, security bug 344201
+
+*chromium-8.0.552.28 (04 Nov 2010)
+*chromium-7.0.517.44 (04 Nov 2010)
+
+  04 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-locale-glib-r0.patch, -chromium-7.0.517.41-r1.ebuild,
+  -chromium-8.0.552.23.ebuild, +files/chromium-locale-glib-r1.patch,
+  +chromium-7.0.517.44.ebuild, +chromium-8.0.552.28.ebuild,
+  chromium-9.0.570.0.ebuild, chromium-9999.ebuild:
+  Version bump for beta and stable channel releases. Fix bug #343971 by Sok
+  Ann Yap <sokann@gmail.com>. Lower cups dependency to 1.3.x everywhere, it
+  is just too much trouble to maintain. Remove old.
+
+  03 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-9.0.570.0.ebuild, chromium-9999.ebuild:
+  Update dev-lang/v8 dependency to better match upstream.
+
+*chromium-9.0.570.0 (03 Nov 2010)
+
+  03 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-8.0.552.18.ebuild, +chromium-9.0.570.0.ebuild:
+  Version bump for dev channel release.
+
+  31 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-8.0.552.23.ebuild, chromium-9999.ebuild:
+  Update dev-lang/v8 dependency to better match upstream.
+
+*chromium-8.0.552.23 (30 Oct 2010)
+
+  30 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-6.0.472.62.ebuild, -chromium-6.0.472.63.ebuild,
+  -chromium-7.0.517.36.ebuild, -chromium-7.0.544.0-r2.ebuild,
+  -chromium-8.0.552.11.ebuild, +chromium-8.0.552.23.ebuild:
+  Version bump for dev channel release. Remove old.
+
+  29 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> +files/v8.gyp,
+  chromium-8.0.552.18.ebuild, chromium-9999.ebuild, metadata.xml:
+  Add experimental support for building with system-provided v8.
+
+  27 Oct 2010; Bernard Cafarelli <voyageur@gentoo.org> chromium-9999.ebuild:
+  Drop icu patch, merged upstream, thanks Keith Rusler
+  <xzekecomax@gmail.com> in bug #342877
+
+*chromium-8.0.552.18 (27 Oct 2010)
+
+  27 Oct 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  -chromium-8.0.552.0.ebuild, +chromium-8.0.552.18.ebuild:
+  Version bump for dev channel release.
+
+*chromium-8.0.552.11 (22 Oct 2010)
+
+  22 Oct 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +chromium-8.0.552.11.ebuild:
+  Version bump for dev channel release.
+
+  20 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  chromium-7.0.517.41.ebuild:
+  stable x86, security bug 341797
+
+  20 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  chromium-7.0.517.41.ebuild:
+  Stable on amd64 wrt bug #341797
+
+*chromium-7.0.517.41-r1 (19 Oct 2010)
+
+  19 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-7.0.517.41.ebuild, +chromium-7.0.517.41-r1.ebuild:
+  Prepare for stabilization. 7.0.517.41 has been promoted to the stable
+  channel.
+
+  15 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-8.0.552.0.ebuild, chromium-9999.ebuild:
+  Make sure the build system uses the right toolchain binaries, bug #340795
+  by Nikoli <nikoli@lavabit.com>
+
+*chromium-7.0.517.41 (14 Oct 2010)
+
+  14 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-7.0.517.24.ebuild, +chromium-7.0.517.41.ebuild:
+  Version bump for beta channel release.
+
+*chromium-8.0.552.0 (13 Oct 2010)
+
+  13 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-system-icu-r1.patch, -chromium-7.0.544.0-r1.ebuild,
+  +chromium-8.0.552.0.ebuild, chromium-9999.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-7.0.544.0-r2 (11 Oct 2010)
+
+  11 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-7.0.536.2-r1.ebuild, -chromium-7.0.544.0.ebuild,
+  +chromium-7.0.544.0-r2.ebuild, chromium-9999.ebuild:
+  Build with system ffmpeg. This fixes bug #333547 by Andy Wilkinson
+  <andy@wtribe.com>.
+
+*chromium-7.0.544.0-r1 (09 Oct 2010)
+
+  09 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-gecko-mediaplayer-r0.patch, +chromium-7.0.544.0-r1.ebuild,
+  chromium-9999.ebuild, metadata.xml:
+  Add optional support for www-plugins/gecko-mediaplayer, as suggested by
+  sandrain in Gentoo Forums.
+
+*chromium-7.0.517.36 (08 Oct 2010)
+
+  08 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-7.0.517.36.ebuild:
+  Version bump for beta channel release.
+
+  07 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> chromium-9999.ebuild:
+  Remove patch applied upstream (system sqlite support).
+
+*chromium-7.0.544.0 (07 Oct 2010)
+
+  07 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-system-icu-r0.patch, -chromium-7.0.536.2.ebuild,
+  +chromium-7.0.544.0.ebuild, chromium-9999.ebuild:
+  Version bump for dev channel release. Dropped support for system SSL,
+  chromium now does not compile with it.
+
+*chromium-7.0.536.2-r1 (05 Oct 2010)
+
+  05 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-system-ssl-r0.patch, +chromium-7.0.536.2-r1.ebuild,
+  chromium-9999.ebuild:
+  Build with system SSL support, and remove one more bundled library.
+
+  05 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-7.0.536.2.ebuild, chromium-9999.ebuild,
+  files/chromium-launcher.sh:
+  Pass the extra plugin dir in a command-line flag instead of patching the
+  source. See bug #333575 by ferret <ferret@explodingferret.com>.
+
+  04 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-7.0.536.2.ebuild, chromium-9999.ebuild:
+  Update the sqlite dependency to also require icu and threadsafe flags to
+  be on (it's closer to the upstream-bundled sqlite configuration). Also
+  build v8 snapshot by default.
+
+*chromium-7.0.536.2 (01 Oct 2010)
+
+  01 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-system-sqlite-r0.patch, -chromium-6.0.472.59.ebuild,
+  -chromium-6.0.472.62-r1.ebuild, -chromium-6.0.472.63-r1.ebuild,
+  -chromium-7.0.517.13.ebuild, +chromium-7.0.536.2.ebuild,
+  chromium-9999.ebuild, metadata.xml:
+  Version bump for dev channel release. Add an option to build with
+  system-provided sqlite library. Re-enable tcmalloc support. Minor ebuild
+  cleanups. Remove old versions.
+
+*chromium-7.0.517.24 (29 Sep 2010)
+
+  29 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-7.0.517.8.ebuild, +chromium-7.0.517.24.ebuild:
+  Version bump for dev channel release.
+
+*chromium-7.0.517.13 (27 Sep 2010)
+
+  27 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-7.0.517.5.ebuild, +chromium-7.0.517.13.ebuild:
+  Version bump for dev channel release.
+
+  26 Sep 2010; Markus Meier <maekke@gentoo.org> chromium-6.0.472.62.ebuild:
+  x86 stable, bug #338204
+
+  23 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> chromium-9999.ebuild:
+  Remove a patch that has been merged upstream, bug #337543, pointed out by
+  Anthony Parsons <ant@specialops.ath.cx>
+
+*chromium-6.0.472.63-r1 (23 Sep 2010)
+*chromium-6.0.472.63 (23 Sep 2010)
+
+  23 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-6.0.472.63.ebuild, +chromium-6.0.472.63-r1.ebuild:
+  Version bump for stable channel release.
+
+  22 Sep 2010; Richard Freeman <rich0@gentoo.org>
+  chromium-6.0.472.62.ebuild:
+  amd64 stable - 338204
+
+  22 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-6.0.472.62.ebuild, chromium-6.0.472.62-r1.ebuild,
+  chromium-7.0.517.5.ebuild, chromium-7.0.517.8.ebuild,
+  chromium-9999.ebuild:
+  Remove the option to enable SSE2, it's not really suitable for
+  distributions. See bug #336871 by Alex Barker <alex@1stleg.com>.
+
+*chromium-6.0.472.62-r1 (20 Sep 2010)
+*chromium-6.0.472.62 (20 Sep 2010)
+
+  20 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.375.127.ebuild, -chromium-6.0.472.59-r1.ebuild,
+  +chromium-6.0.472.62.ebuild, +chromium-6.0.472.62-r1.ebuild,
+  -files/chromium-6.0.495.0-gcc-4.5.patch,
+  -files/chromium-disable-vp8-r1.patch, -chromium-7.0.503.1-r1.ebuild,
+  -files/chromium-ffmpeg-compatibility-r0.patch,
+  -files/chromium-20100122-ubuntu-html5-video-mimetypes.patch,
+  -files/chromium-drop_sse2-r0.patch, -files/chromium-yuv-crash-r0.patch,
+  -files/chromium-libpng-1.4.patch, -files/chromium-yuv-crash-r1.patch:
+  Version bump for stable channel release. Remove old. Remove unusded
+  patches.
+
+  20 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> chromium-9999.ebuild:
+  Use gclient sync --nohooks to avoid a problem with gyp running to early.
+  Thanks to Mike Gilbert <floppymaster@gmail.com> in bug #337543.
+
+  18 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  chromium-6.0.472.59.ebuild:
+  Stable on amd64 wrt bug #335750
+
+  17 Sep 2010; Christian Faulhammer <fauli@gentoo.org>
+  chromium-6.0.472.59.ebuild:
+  stable x86, security bug 335750
+
+*chromium-7.0.517.8 (17 Sep 2010)
+
+  17 Sep 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +chromium-7.0.517.8.ebuild:
+  Version bump for dev channel release.
+
+*chromium-6.0.472.59-r1 (15 Sep 2010)
+*chromium-6.0.472.59 (15 Sep 2010)
+
+  15 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-6.0.472.55.ebuild, +chromium-6.0.472.59.ebuild,
+  +chromium-6.0.472.59-r1.ebuild:
+  Version bump for stable channel release. Provide a target for
+  stabilization (-r0) with lower cups dependency. There are some problems
+  both with older and newer cups, but we need to stabilize this version of
+  chromium quickly due to security bug #335750.
+
+*chromium-7.0.517.5 (14 Sep 2010)
+
+  14 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-7.0.503.1.ebuild, +chromium-7.0.517.5.ebuild,
+  chromium-9999.ebuild:
+  Version bump for dev channel release. Now we use system libxml and libxslt
+  again. Removed old version.
+
+  11 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-7.0.503.1-r1.ebuild, chromium-9999.ebuild:
+  Apply most cleanup changes from bug #333513 by scarabeus.
+
+*chromium-6.0.472.55 (08 Sep 2010)
+
+  08 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-6.0.472.53.ebuild, -chromium-6.0.472.53-r1.ebuild,
+  +chromium-6.0.472.55.ebuild:
+  Version bump for stable channel release. Remove old.
+
+*chromium-7.0.503.1-r1 (07 Sep 2010)
+
+  07 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-gnome-keyring-r0.patch, +chromium-7.0.503.1-r1.ebuild,
+  chromium-9999.ebuild:
+  Fix dependencies, bug #332411 by Patrizio Bassi <hetfield666@gmail.com>
+  and comment by Yuri Arabadji <yuri@deepunix.net>.
+
+*chromium-6.0.472.53-r1 (04 Sep 2010)
+
+  04 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-6.0.472.51.ebuild, chromium-6.0.472.53.ebuild,
+  +chromium-6.0.472.53-r1.ebuild:
+  Version bump for ~arch, and lower cups dependency for 6.0.472.53 which
+  should go stable (bug #335750).
+
+*chromium-6.0.472.53 (02 Sep 2010)
+
+  02 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-6.0.472.53.ebuild:
+  Version bump for stable channel release.
+
+*chromium-6.0.472.51 (28 Aug 2010)
+
+  28 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.375.125.ebuild, -chromium-6.0.472.36.ebuild,
+  -chromium-6.0.472.41.ebuild, +chromium-6.0.472.51.ebuild,
+  -chromium-6.0.495.0.ebuild, chromium-7.0.503.1.ebuild,
+  chromium-9999.ebuild:
+  Version bump for beta channel release. Fix bug #334939 by Michal Gorny
+  <gentoo@mgorny.alt.pl>. Remove old.
+
+*chromium-7.0.503.1 (26 Aug 2010)
+
+  26 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-6.0.490.1.ebuild, +chromium-7.0.503.1.ebuild,
+  chromium-9999.ebuild:
+  Version bump for dev channel release. Enable use_system_icu. Remove old.
+
+*chromium-6.0.472.41 (21 Aug 2010)
+
+  21 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-6.0.472.33-r1.ebuild, +chromium-6.0.472.41.ebuild:
+  Version bump for beta channel release. Remove old.
+
+  20 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  chromium-5.0.375.127.ebuild:
+  Stable on amd64 wrt bug #333559
+
+  20 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  chromium-5.0.375.127.ebuild:
+  stable x86, security bug 333559
+
+*chromium-5.0.375.127 (19 Aug 2010)
+
+  19 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-5.0.375.127.ebuild:
+  Version bump for stable channel release.
+
+  19 Aug 2010; Alex Alexander <wired@gentoo.org> chromium-6.0.495.0.ebuild,
+  +files/chromium-6.0.495.0-gcc-4.5.patch:
+  fixed gcc-4.5 compilation, thanks to Sergey Dulko for patch. bug #333345
+
+  18 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> chromium-9999.ebuild:
+  Remove ffmpeg from dependencies now that we use the bundled one.
+
+  18 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> chromium-9999.ebuild:
+  Make remove_bundled_lib failures non-fatal in the 9999 ebuild, bug #332171
+  by fkhp <fkhp101@tom.com>. Used suggestion by Mike Gilbert
+  <floppymaster@gmail.com>.
+
+*chromium-6.0.495.0 (18 Aug 2010)
+
+  18 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-6.0.495.0.ebuild, chromium-9999.ebuild:
+  Version bump for dev channel release.
+
+*chromium-6.0.472.36 (17 Aug 2010)
+
+  17 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-6.0.472.36.ebuild:
+  Version bump for beta channel release.
+
+*chromium-6.0.490.1 (13 Aug 2010)
+
+  13 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-yuv-crash-r1.patch, -chromium-6.0.472.25-r1.ebuild,
+  -chromium-6.0.472.33.ebuild, +chromium-6.0.490.1.ebuild,
+  chromium-9999.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-6.0.472.33-r1 (12 Aug 2010)
+
+  12 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-yuv-crash-r0.patch, -chromium-6.0.472.14.ebuild,
+  +chromium-6.0.472.33-r1.ebuild:
+  Backport upstream fix for bug #331611 by Anthony Parsons
+  <ant@specialops.ath.cx>. Removed old ebuild.
+
+*chromium-6.0.472.33 (11 Aug 2010)
+
+  11 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-6.0.472.25.ebuild, +chromium-6.0.472.33.ebuild:
+  Version bump for beta channel release. Removed old ebuild.
+
+  11 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-plugins-path-r0.patch, chromium-6.0.472.25-r1.ebuild,
+  chromium-9999.ebuild:
+  Update plugins search path instead of using a symlink.
+
+  11 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-make-3.82-compatibility-r0.patch,
+  chromium-6.0.472.25-r1.ebuild, chromium-9999.ebuild:
+  Fix compile with make-3.82, bug #332131 by polynomial-c.
+
+  10 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-6.0.472.25-r1.ebuild, chromium-9999.ebuild:
+  Add workaround for bug #331945 by Evan Teran <eteran@alum.rit.edu>, also
+  confirmed by kernelOfTruth on forums. No bump because gcc-4.5 is not even
+  in ~arch.
+
+*chromium-6.0.472.25-r1 (10 Aug 2010)
+
+  10 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-6.0.472.22.ebuild, +chromium-6.0.472.25-r1.ebuild:
+  Switch to bundled ffmpeg for compatibility reasons. See also bug #331661
+  by Anthony Parsons <ant@specialops.ath.cx>. We are still getting some
+  crashes there. Removed older broken version.
+
+  08 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-6.0.472.25.ebuild, chromium-9999.ebuild:
+  Link gnome-keyring at compile time when USE=gnome. Previously the code was
+  using dlopen.
+
+  08 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-6.0.472.25.ebuild, chromium-9999.ebuild:
+  Remove more bundled libraries.
+
+*chromium-6.0.472.25 (07 Aug 2010)
+
+  07 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-6.0.472.25.ebuild:
+  Version bump for dev channel release.
+
+*chromium-6.0.472.22 (06 Aug 2010)
+
+  06 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-ffmpeg-compatibility-r0.patch,
+  -chromium-5.0.375.99.ebuild, -chromium-6.0.472.11.ebuild,
+  +chromium-6.0.472.22.ebuild:
+  Version bump for dev channel release. Includes a workaround for upstream
+  http://crbug.com/50678, reported to me by Julien Sanchez
+  <julien.sanchez@gmail.com>. Removed old ebuilds.
+
+  31 Jul 2010; Harald van Dĳk <truedfx@gentoo.org>
+  chromium-5.0.375.99.ebuild, chromium-5.0.375.125.ebuild,
+  chromium-6.0.472.11.ebuild, chromium-6.0.472.14.ebuild,
+  chromium-9999.ebuild:
+  Fix quoting
+
+*chromium-6.0.472.14 (31 Jul 2010)
+
+  31 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-6.0.472.0.ebuild, +chromium-6.0.472.14.ebuild:
+  Version bump for dev channel release.
+
+  29 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  chromium-5.0.375.125.ebuild:
+  Stable on amd64 wrt bug #330003
+
+*chromium-6.0.472.11 (29 Jul 2010)
+
+  29 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-6.0.466.0.ebuild, +chromium-6.0.472.11.ebuild:
+  Version bump for dev channel release. Removed old ebuild.
+
+  27 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  chromium-5.0.375.125.ebuild:
+  stable x86, security bug 330003
+
+*chromium-5.0.375.125 (26 Jul 2010)
+
+  26 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-5.0.375.125.ebuild:
+  Version bump for stable channel release.
+
+*chromium-6.0.472.0 (22 Jul 2010)
+
+  22 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-6.0.458.1.ebuild, +chromium-6.0.472.0.ebuild:
+  Version bump for dev channel release.
+
+  18 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.375.99.ebuild:
+  Remove gecko-mediaplyer block, the plugin is blacklisted by upstream
+  anyway, bug #325867 by Ian Pickworth <ian@pickworth.me.uk>.
+
+  17 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-6.0.466.0.ebuild, chromium-9999.ebuild:
+  Require >=cups-1.4.4 so that printing really works. Fixes bug #327041 by
+  mcclung@nebrwesleyan.edu.
+
+*chromium-6.0.466.0 (16 Jul 2010)
+
+  16 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-6.0.453.1.ebuild, +chromium-6.0.466.0.ebuild,
+  chromium-9999.ebuild:
+  Version bump for dev channel release. Added run-time dependency on
+  gnome-keyring if gnome USE-flag is set. Removed old ebuild.
+
+*chromium-6.0.458.1 (10 Jul 2010)
+
+  10 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -files/chromium-flash-hang-workaround-r1.patch,
+  -chromium-5.0.375.86.ebuild, -files/chromium-gyp-fixes-r1.patch,
+  -chromium-6.0.437.3.ebuild, -files/chromium-gyp-fixes-r2.patch,
+  +chromium-6.0.458.1.ebuild, -files/chromium-optional-cups-r1.patch:
+  Version bump for dev channel release. Removed old ebuilds and patches.
+
+  07 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> metadata.xml:
+  Transfer ownership to the new chromium herd.
+
+  06 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  chromium-5.0.375.99.ebuild:
+  stable x86, security bug 326717
+
+  04 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-6.0.453.1.ebuild, chromium-9999.ebuild:
+  Added MimeType field to the .desktop file, so that .html and other files
+  can be opened with Chromium. Patch by Daniel Schoemer
+  <daniel.schoemer@gmx.net>, bug #326863.
+
+  03 Jul 2010; Pacho Ramos <pacho@gentoo.org> chromium-5.0.375.99.ebuild:
+  amd64 stable, security bug #326717
+
+*chromium-6.0.453.1 (03 Jul 2010)
+
+  03 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-6.0.437.1.ebuild, +chromium-6.0.453.1.ebuild,
+  chromium-9999.ebuild:
+  Version bump for dev channel release. Contains a workaround for bug
+  #326609 by Aaron Haviland <orion@parsed.net>. Removed old ebuild.
+
+*chromium-5.0.375.99 (03 Jul 2010)
+
+  03 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.375.70-r1.ebuild, +chromium-5.0.375.99.ebuild:
+  Version bump for stable channel release. Removed old ebuild.
+
+  25 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  chromium-5.0.375.86.ebuild:
+  Stable on amd64 wrt bug #325451
+
+  25 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  chromium-5.0.375.86.ebuild:
+  stable x86, bug 325451
+
+*chromium-5.0.375.86 (24 Jun 2010)
+
+  24 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-5.0.375.86.ebuild:
+  Version bump for beta channel release.
+
+  23 Jun 2010; Bernard Cafarelli <voyageur@gentoo.org> chromium-9999.ebuild:
+  Install resources.pak, bug #324645 by Mike Gilbert
+  <floppymaster@gmail.com>. Drop cups patch, it's merged usptream, and
+  enable WebM support
+
+  21 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.375.70.ebuild, chromium-5.0.375.70-r1.ebuild,
+  -chromium-6.0.427.0.ebuild, chromium-6.0.437.1.ebuild,
+  chromium-6.0.437.3.ebuild, chromium-9999.ebuild:
+  Disable gpu rendering to fix nvidia-drivers compatibility problems, bug
+  #319331 by mjbjr@beaudesign.com.
+
+*chromium-6.0.437.3 (21 Jun 2010)
+
+  21 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-6.0.437.3.ebuild:
+  Version bump for dev channel release.
+
+  20 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  chromium-5.0.375.70-r1.ebuild:
+  stable x86, bug 322343
+
+  20 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  chromium-5.0.375.70-r1.ebuild:
+  Stable on amd64 wrt bug #322343
+
+*chromium-5.0.375.70-r1 (20 Jun 2010)
+
+  20 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-flash-hang-workaround-r1.patch,
+  +chromium-5.0.375.70-r1.ebuild:
+  Version bump to work around a flash hang (bug #324365 by lack). Also fix
+  bug #323865 by Alex Barker <alex@1stleg.com>.
+
+  19 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-6.0.437.1.ebuild, chromium-9999.ebuild:
+  Move gnome-keyring from RDEPEND to DEPEND. According to
+  http://crbug.com/12351 it's a compile-time-only dependency.
+
+  19 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> chromium-9999.ebuild:
+  Do not apply a patch already applied upstream, bug #324675 by nixtrian
+  <nixtrian@gmail.com>
+
+  19 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-6.0.437.1.ebuild, chromium-9999.ebuild:
+  Add sse2 USE flag, so that SSE2-capable systems can enable it. Suggested
+  by spatz.
+
+  18 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-6.0.437.1.ebuild, chromium-9999.ebuild:
+  Add missing gnome-keyring dependency. For now it's required, making it
+  optional is non-trivial. Reported by spatz in bug #324517.
+
+*chromium-6.0.437.1 (17 Jun 2010)
+
+  17 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-gyp-fixes-r2.patch, +chromium-6.0.437.1.ebuild,
+  +files/chromium-optional-cups-r1.patch, chromium-9999.ebuild:
+  Version bump for dev channel release. Fix bug #323675 by Dan Douglas
+  <doug0213@metnet.edu>. Fix bug #324105 by Anthony Parsons
+  <ant@specialops.ath.cx>.
+
+  16 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.375.70.ebuild:
+  Apply the ffmpeg build workaround to the 5.0.x.x series, bug #324359 by
+  flameeyes.
+
+  11 Jun 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  chromium-6.0.427.0.ebuild, chromium-9999.ebuild:
+  New versions depend on libcups
+
+  11 Jun 2010; Pacho Ramos <pacho@gentoo.org> chromium-5.0.375.70.ebuild:
+  amd64 stable, bug 322343
+
+*chromium-6.0.427.0 (10 Jun 2010)
+
+  10 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-disable-vp8-r1.patch, -chromium-5.0.375.55.ebuild,
+  -chromium-6.0.408.1.ebuild, +files/chromium-gyp-fixes-r1.patch,
+  -chromium-6.0.401.1.ebuild, +chromium-6.0.427.0.ebuild,
+  chromium-9999.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-5.0.375.70 (04 Jun 2010)
+
+  04 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.375.53.ebuild, +chromium-5.0.375.70.ebuild:
+  Version bump for beta channel release. Removed old versions.
+
+  02 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.375.55.ebuild:
+  Only use tarballs from Gentoo mirrors, to try to avoid problems with
+  upstream regenerated tarballs.
+
+  01 Jun 2010; Bernard Cafarelli <voyageur@gentoo.org> chromium-9999.ebuild:
+  Depend on live ffmpeg to fix compilation for now, bug #321159
+
+  29 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.375.55.ebuild:
+  Also disable tcmalloc for 5.0.x.x versions, see bug #320419. This improves
+  our compatibility.
+
+  26 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.375.53.ebuild, chromium-5.0.375.55.ebuild,
+  chromium-6.0.401.1.ebuild, chromium-6.0.408.1.ebuild,
+  chromium-9999.ebuild:
+  Latest stable ffmpeg is sufficient to compile and run chromium. Adjusted
+  the dependency. This will also make chromium easier to stabilize.
+
+*chromium-5.0.375.55 (25 May 2010)
+
+  25 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.375.38.ebuild, +chromium-5.0.375.55.ebuild:
+  Version bump for stable channel release. Remove old.
+
+*chromium-5.0.375.53 (22 May 2010)
+
+  22 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -files/chromium-drop_sse2.patch, -chromium-5.0.375.29.ebuild,
+  +chromium-5.0.375.53.ebuild,
+  -files/chromium-supported-media-mime-types.patch:
+  Version bump for beta channel release. Remove old.
+
+*chromium-6.0.408.1 (21 May 2010)
+
+  21 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.396.0.ebuild, +chromium-6.0.408.1.ebuild,
+  chromium-9999.ebuild:
+  Version bump for dev channel release. Fix bug #319783 by Richard
+  <shiningarcanine@gmail.com>. Fix bug #320145 by Tomas Racek
+  <racek.t@seznam.cz>. Fix bug #320419 by fkhp <fkhp101@tom.com>, used
+  solution by Evan Teran <eteran@alum.rit.edu>. Remove old.
+
+*chromium-6.0.401.1 (14 May 2010)
+
+  14 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-6.0.401.1.ebuild, chromium-9999.ebuild:
+  Version bump for dev channel release. Fixes bug #318969 by Petr Gregor
+  <p.gregy@gmail.com>. Fixes bug #319431 by Auke Booij <auke@tulcod.com>.
+
+*chromium-5.0.375.38 (11 May 2010)
+
+  11 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.342.9.ebuild, -chromium-5.0.375.23.ebuild,
+  +chromium-5.0.375.38.ebuild, chromium-5.0.396.0.ebuild,
+  chromium-9999.ebuild, -files/chromium-fix-make-build.patch,
+  -files/chromium-gcc45.patch, files/chromium-launcher.sh:
+  Version bump for beta channel relase. Fix bug #315667 by Joel
+  <Joel7987@gmail.com>, used suggestion by Constantine D. Kardaris
+  <ckardaris@gmail.com>. Fix bug #318511 by cyrillic
+  <cyrilmaley@hotmail.com>, used suggestion by truedfx. Fix bug #318573 by
+  flameeyes, also note useful comment there by Reimar Doeffinger
+  <Reimar.Doeffinger@gmx.de>. Remove old and clean up patches.
+
+*chromium-5.0.396.0 (07 May 2010)
+
+  07 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-5.0.396.0.ebuild:
+  Version bump for dev channel release.
+
+  05 May 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  -files/chromium-drop_sse2-r1.patch, chromium-9999.ebuild:
+  Drop SSE2 patch, it can now be disabled via a gyp define
+
+*chromium-5.0.375.29 (04 May 2010)
+
+  04 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.375.9.ebuild, +chromium-5.0.375.29.ebuild:
+  Version bump for dev channel release. Remove old.
+
+  04 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> chromium-9999.ebuild:
+  Do not apply the libpng-1.4 patch, it has been applied upstream. Bug
+  #318361 by Zeke Connor <xzekex@live.co.uk>
+
+  29 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.375.23.ebuild, chromium-9999.ebuild:
+  Cleanup: better handling of -Werror and system zlib. Check success of
+  setting CFLAGS in include.gypi.
+
+*chromium-5.0.375.23 (28 Apr 2010)
+
+  28 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.371.0.ebuild, +chromium-5.0.375.23.ebuild:
+  Version bump for dev channel release. Remove old.
+
+  26 Apr 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +files/chromium-gcc45.patch, chromium-5.0.342.9.ebuild:
+  GCC 4.5 patch for beta channel by truedfx in bug #317155
+
+  20 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.375.9.ebuild, chromium-9999.ebuild:
+  Add dev-lang/perl to DEPEND, just for correctness.
+
+  19 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.375.9.ebuild, chromium-9999.ebuild:
+  Add x11-themes/oxygen-molecule as a possible candidate to satisfy the icon
+  theme dependency, bug #315689 by Nikoli <nikoli@lavabit.com>
+
+*chromium-5.0.375.9 (19 Apr 2010)
+
+  19 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-drop_sse2-r0.patch, -chromium-5.0.375.3.ebuild,
+  +chromium-5.0.375.9.ebuild:
+  Version bump for dev channel release. Should fix problems with H.264 codec
+  support with system ffmpeg, bug #316029 by Daniel Faucon
+  <koolfy@gmail.com>
+
+  19 Apr 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +files/chromium-drop_sse2-r1.patch, chromium-9999.ebuild:
+  Update drop_sse2 patch, bug #315247
+
+*chromium-5.0.375.3 (14 Apr 2010)
+
+  14 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-5.0.375.3.ebuild, chromium-9999.ebuild,
+  +files/chromium-supported-media-mime-types.patch:
+  Version bump for dev channel release. Add USE flags for mp3 and x264
+  support, depending on the system ffmpeg.
+
+  14 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.342.7.ebuild, chromium-5.0.342.9.ebuild,
+  -chromium-5.0.360.5.ebuild, -chromium-5.0.366.2.ebuild,
+  -files/chromium-ffmpeg.patch, metadata.xml:
+  Make sure that all ebuilds have the fix for bug #314977. Remove old.
+
+  13 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.371.0.ebuild, chromium-9999.ebuild:
+  Require ffmpeg with threads USE flag. This is needed for html5 video to
+  work. Should fix bug #314977 by Julien Sanchez <julien.sanchez@gmail.com>.
+
+  11 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.371.0.ebuild, chromium-9999.ebuild:
+  Fix the build on hardened by disabling V8 snapshot, bug #301880 by Damien
+  <damienkallison@gmail.com>
+
+  11 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.371.0.ebuild, chromium-9999.ebuild:
+  Apply arch detection logic from bug #296917 by ferret
+  <ferret@explodingferret.com>
+
+  09 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.371.0.ebuild, chromium-9999.ebuild:
+  Make ffmpeg support required, starting with the most recent versions.
+
+*chromium-5.0.371.0 (09 Apr 2010)
+
+  09 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-5.0.371.0.ebuild, chromium-9999.ebuild:
+  Version bump for dev channel release. Use the old patch for ffmpeg, the
+  new one was broken. Drop the make build patch, it no longer applies.
+
+*chromium-5.0.342.9 (08 Apr 2010)
+
+  08 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-5.0.342.9.ebuild:
+  Version bump for beta channel release.
+
+  05 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.342.7.ebuild, chromium-5.0.360.5.ebuild,
+  chromium-5.0.366.2.ebuild, chromium-9999.ebuild:
+  Add runtime dependency on virtual/ttf-fonts, otherwise the browser may not
+  start. Reported by armin76.
+
+  04 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.307.11.ebuild, chromium-5.0.342.7.ebuild,
+  -chromium-5.0.360.0.ebuild, chromium-5.0.360.5.ebuild:
+  Make sure all ebuilds have the fix for libpng-1.4, bug #310959 by
+  loki_val. Remove old.
+
+  03 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +files/chromium-libpng-1.4.patch, chromium-5.0.366.2.ebuild,
+  chromium-9999.ebuild:
+  Fix build failure with libpng-1.4, bug #310959 by loki_val.
+
+  03 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.366.2.ebuild, chromium-9999.ebuild,
+  +files/chromium-ffmpeg.patch:
+  Only claim to support more audio/video codecs when we are using system
+  ffmpeg (bug #306921 by Carlos Augusto <silvaesilva@gmail.com>)
+
+*chromium-5.0.366.2 (02 Apr 2010)
+
+  02 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-5.0.366.2.ebuild:
+  Version bump for dev channel release.
+
+*chromium-5.0.360.5 (31 Mar 2010)
+
+  31 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.342.5.ebuild, -chromium-5.0.356.0.ebuild,
+  +chromium-5.0.360.5.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-5.0.360.0 (29 Mar 2010)
+
+  29 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-5.0.360.0.ebuild:
+  Version bump for dev channel release.
+
+*chromium-5.0.342.7 (25 Mar 2010)
+
+  25 Mar 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +chromium-5.0.342.7.ebuild:
+  Version bump for beta channel release.
+
+  19 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.307.11.ebuild, chromium-5.0.342.5.ebuild,
+  chromium-5.0.356.0.ebuild, chromium-9999.ebuild:
+  Only block www-plugins/gecko-mediaplayer if it has been compiled with
+  USE=gnome, thanks to George Reitsma <g.p.reitsma@ieee.org> and Doktor
+  Notor <notordoktor@gmail.com> in bug #309231.
+
+*chromium-5.0.356.0 (19 Mar 2010)
+
+  19 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.307.9.ebuild, -chromium-5.0.342.1.ebuild,
+  -chromium-5.0.342.3.ebuild, +chromium-5.0.356.0.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-5.0.342.5 (17 Mar 2010)
+
+  17 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-5.0.342.5.ebuild:
+  Version bump for dev channel release.
+
+  13 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.307.11.ebuild, chromium-5.0.342.3.ebuild,
+  chromium-9999.ebuild:
+  Add blocker for incompatible plugin (gecko-mediaplayer) when
+  USE=plugins-symlink is enabled, bug #309231 by George Reitsma
+  <g.p.reitsma@ieee.org>. Also clean up DEPEND vs. RDEPEND a bit.
+
+*chromium-5.0.342.3 (12 Mar 2010)
+
+  12 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.335.0.ebuild, +chromium-5.0.342.3.ebuild:
+  Version bump for dev channel release. Remove old.
+
+*chromium-5.0.342.1 (05 Mar 2010)
+
+  05 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.307.7.ebuild, -chromium-5.0.322.2.ebuild,
+  +chromium-5.0.342.1.ebuild:
+  Version bump for dev channel release. Remove old.
+
+  03 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -files/chromium-use_system_libevent-1.4.13.patch,
+  chromium-5.0.335.0.ebuild, chromium-9999.ebuild:
+  Initial work on making ffmpeg support more sane wrt bug #306921. Used
+  suggestions by Carlos Augusto <silvaesilva@gmail.com> and Doktor Notor
+  <notordoktor@gmail.com>. Also remove an unused patch.
+
+  01 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.307.11.ebuild, chromium-5.0.335.0.ebuild,
+  chromium-9999.ebuild:
+  Add check for $ROOT in the /dev/shm sanity check wrt latest comments in
+  bug #299777.
+
+*chromium-5.0.307.11 (27 Feb 2010)
+
+  27 Feb 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-5.0.307.11.ebuild:
+  Version bump for beta channel release.
+
+*chromium-5.0.335.0 (25 Feb 2010)
+
+  25 Feb 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-5.0.307.5.ebuild, +chromium-5.0.335.0.ebuild:
+  Version bump for dev channel release. Remove old.
+
+  23 Feb 2010; Raúl Porcel <armin76@gentoo.org> chromium-5.0.322.2.ebuild,
+  chromium-9999.ebuild:
+  Add fix for arm build
+
+  19 Feb 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-5.0.307.9.ebuild, chromium-5.0.322.2.ebuild,
+  chromium-9999.ebuild, +files/chromium-fix-make-build.patch:
+  Prevent the make build from filling entire disk space on some systems, bug
+  297273.
+
+*chromium-5.0.307.9 (18 Feb 2010)
+
+  18 Feb 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +chromium-5.0.307.9.ebuild:
+  Beta channel update, fixes some tab crashes, improved font bolding for
+  fonts without native bold
+
+  16 Feb 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-4.0.249.43.ebuild, -chromium-4.0.266.0-r1.ebuild,
+  -chromium-4.0.302.2.ebuild, chromium-5.0.307.5.ebuild,
+  chromium-5.0.307.7.ebuild, chromium-5.0.322.2.ebuild,
+  chromium-9999.ebuild:
+  Add elog message encouraging users to read Gentoo meaningful backtrace
+  guide. Also remove old ebuilds.
+
+*chromium-5.0.322.2 (15 Feb 2010)
+
+  15 Feb 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +chromium-5.0.322.2.ebuild:
+  Dev channel release bump, with experimental native client (check chrome
+  releases blog for details)
+
+*chromium-5.0.307.7 (11 Feb 2010)
+
+  11 Feb 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +chromium-5.0.307.7.ebuild:
+  Yet another 5.0.307 bump, but this time it is beta channel
+
+  11 Feb 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-4.0.249.43.ebuild, chromium-4.0.266.0-r1.ebuild,
+  chromium-4.0.302.2.ebuild, chromium-5.0.307.5.ebuild,
+  chromium-9999.ebuild:
+  Check /dev/shm sanity in pkg_setup. This should help in cases like bug
+  #299777.
+
+  08 Feb 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-4.0.295.0.ebuild, chromium-5.0.307.5.ebuild,
+  chromium-9999.ebuild, metadata.xml:
+  Make system web browser plugins symlink optional, wrt bug #301911 by
+  Robert Bradbury <robert.bradbury@gmail.com>. Also remove an old ebuild.
+
+  06 Feb 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  chromium-4.0.249.43.ebuild, chromium-4.0.266.0-r1.ebuild,
+  chromium-4.0.295.0.ebuild, chromium-4.0.302.2.ebuild,
+  chromium-5.0.307.5.ebuild, chromium-9999.ebuild:
+  Fix jpeg dependency to jpeg:0, spotted by ssuominen
+
+*chromium-5.0.307.5 (05 Feb 2010)
+
+  05 Feb 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  -chromium-5.0.307.1.ebuild, +chromium-5.0.307.5.ebuild:
+  Bump to fix a few bugs in 5.0.307, mostly theme corruption after update
+
+*chromium-5.0.307.1 (03 Feb 2010)
+
+  03 Feb 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  chromium-4.0.266.0-r1.ebuild, +chromium-5.0.307.1.ebuild,
+  chromium-9999.ebuild, +files/chromium.xml:
+  Dev channel release bump, also include gnome default-apps file from pacho
+  in bug #303100
+
+  01 Feb 2010; Raúl Porcel <armin76@gentoo.org> chromium-4.0.302.2.ebuild,
+  chromium-9999.ebuild:
+  Fix build on arm
+
+  29 Jan 2010; Bernard Cafarelli <voyageur@gentoo.org> chromium-9999.ebuild:
+  Fix zlib sed, add libXScrnSaver RDEPEND, bug #302646
+
+  28 Jan 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-4.0.249.43.ebuild, -chromium-4.0.266.0.ebuild,
+  chromium-4.0.266.0-r1.ebuild, chromium-4.0.295.0.ebuild,
+  chromium-4.0.302.2.ebuild, chromium-9999.ebuild:
+  Add build-time dependency on sys-devel/flex, thanks to flameeyes in bug
+  #302590.
+
+  26 Jan 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +chromium-4.0.249.43.ebuild:
+  Pawel just reminded me that the beta channel latest version is 4.0.249.43,
+  not 4.0.266.0
+
+  26 Jan 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  -chromium-4.0.249.43.ebuild, chromium-4.0.266.0-r1.ebuild,
+  chromium-4.0.295.0.ebuild, chromium-4.0.302.2.ebuild,
+  chromium-9999.ebuild:
+  Revert multilib change from bug #296917 as it breaks cross-compiling, bug
+  #301652. Also apply H264 patch to -9999 and remove old
+
+  26 Jan 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  chromium-4.0.249.43.ebuild, chromium-4.0.266.0.ebuild,
+  chromium-4.0.266.0-r1.ebuild, chromium-4.0.295.0.ebuild,
+  chromium-4.0.302.2.ebuild, chromium-9999.ebuild:
+  Drop dependency on media-fonts/corefonts, bug #302231 by Andrew John
+  Hughes <gnu_andrew@member.fsf.org>
+
+*chromium-4.0.266.0-r1 (24 Jan 2010)
+
+  24 Jan 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +chromium-4.0.266.0-r1.ebuild, chromium-4.0.295.0.ebuild,
+  chromium-4.0.302.2.ebuild,
+  +files/chromium-20100122-ubuntu-html5-video-mimetypes.patch:
+  Allow H.264 codec with our system ffmpeg, patch from Alt Linux in bug
+  #302098
+
+*chromium-4.0.302.2 (22 Jan 2010)
+
+  22 Jan 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-4.0.260.0.ebuild, -chromium-4.0.288.1.ebuild,
+  +chromium-4.0.302.2.ebuild:
+  Version bump for dev channel release. Remove old.
+
+  22 Jan 2010; Raúl Porcel <armin76@gentoo.org>
+  -files/chromium-drop_armel_m32.patch, chromium-9999.ebuild:
+  Drop unneded arm patch
+
+  18 Jan 2010; Raúl Porcel <armin76@gentoo.org> chromium-4.0.266.0.ebuild,
+  chromium-4.0.288.1.ebuild, chromium-4.0.295.0.ebuild:
+  Add ~arm
+
+*chromium-4.0.295.0 (15 Jan 2010)
+
+  15 Jan 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-4.0.295.0.ebuild:
+  Version bump for 4.0.295.0 dev channel release.
+
+  13 Jan 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  chromium-4.0.249.43.ebuild, chromium-4.0.260.0.ebuild,
+  chromium-4.0.266.0.ebuild, chromium-4.0.288.1.ebuild,
+  chromium-9999.ebuild:
+  Add xdg-utils to RDEPEND, spotted by Bailey Kong <bailey@tgpsolutions.com>
+  in bug #300795
+
+  07 Jan 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -chromium-4.0.251.0.ebuild, chromium-9999.ebuild,
+  -files/chromium-use_system_libevent.patch:
+  Drop the libevent patch for the live (9999) ebuild, as it landed upstream.
+  Remove the old version of the patch and the ebuild that used it.
+
+*chromium-4.0.288.1 (07 Jan 2010)
+
+  07 Jan 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-4.0.288.1.ebuild:
+  Version bump for dev channel release.
+
+  07 Jan 2010; Raúl Porcel <armin76@gentoo.org>
+  +files/chromium-drop_armel_m32.patch, chromium-9999.ebuild:
+  Add patch to fix build on ARM, enable v8 build on ARM
+
+  25 Dec 2009; Raúl Porcel <armin76@gentoo.org> chromium-4.0.266.0.ebuild,
+  chromium-9999.ebuild:
+  Add arm support, but don't keyword it as its still a big buggy
+
+*chromium-4.0.249.43 (19 Dec 2009)
+
+  19 Dec 2009; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +chromium-4.0.249.43.ebuild, metadata.xml:
+  Add ebuild for 4.0.249.43 beta release. Contains bugfixes and adds popup
+  support for page action extensions.
+
+  15 Dec 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  chromium-4.0.266.0.ebuild, chromium-9999.ebuild:
+  multilib cleanups, thanks to ferret <ferret@explodingferret.com> in bug
+  #296917
+
+*chromium-4.0.266.0 (08 Dec 2009)
+
+  08 Dec 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  -chromium-4.0.248.0.ebuild, +chromium-4.0.266.0.ebuild:
+  Version bump, fixes some race-condition crashes, and maybe fix bug #295756
+
+  02 Dec 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  +files/chromium-use_system_libevent-1.4.13.patch,
+  chromium-4.0.260.0.ebuild, chromium-9999.ebuild:
+  Update external libevent patch and re-enable it, crash was unrelated to it
+
+  01 Dec 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  chromium-4.0.260.0.ebuild, chromium-9999.ebuild:
+  Bump required nss version to 3.12.3
+
+*chromium-4.0.260.0 (01 Dec 2009)
+
+  01 Dec 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  -chromium-4.0.240.0.ebuild, +chromium-4.0.260.0.ebuild:
+  Version bump, enables bookmarks sync by default, allows again extensions
+  to access file:// elements (adblock+), external libevent disabled as it
+  crashes with it
+
+  24 Nov 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  chromium-4.0.251.0.ebuild, chromium-9999.ebuild:
+  Get correct proxy settings for KDE, bug #294321
+
+  19 Nov 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  chromium-4.0.251.0.ebuild, chromium-9999.ebuild:
+  Also install man page as chromium.1
+
+  19 Nov 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  chromium-4.0.251.0.ebuild, chromium-9999.ebuild, metadata.xml:
+  Make ffmpeg RDEPEND optional, bug #293666. Re-enable external libevent
+  (1.4.13 is available). Update live ebuild to latest changes
+
+*chromium-4.0.251.0 (18 Nov 2009)
+
+  18 Nov 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  +chromium-4.0.251.0.ebuild:
+  Bump to fix bug #293539 (crash at startup for stable amd64)
+
+*chromium-4.0.248.0 (15 Nov 2009)
+
+  15 Nov 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  -chromium-4.0.223.5.ebuild, +chromium-4.0.248.0.ebuild:
+  Version bump, enables bookmarks sync (with --enable-sync), and fix menu
+  location for adblock+ extension
+
+  15 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org> chromium-9999.ebuild:
+  QA: Drop keywords on live ebuilds.
+
+  09 Nov 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  chromium-4.0.240.0.ebuild:
+  Re-enable system zlib, thanks to Elias Pipping. Also add gnome-icon-theme
+  to RDEPEND, thanks to Oleksandr Kovalenko <alx.kovalenko@gmail.com> in bug
+  #292201
+
+*chromium-4.0.240.0 (08 Nov 2009)
+
+  08 Nov 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  -chromium-4.0.237.1.ebuild, +chromium-4.0.240.0.ebuild:
+  Drop down menus were not fixed for select tags, so bump again
+
+*chromium-4.0.237.1 (07 Nov 2009)
+
+  07 Nov 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  -chromium-4.0.236.0.ebuild, +chromium-4.0.237.1.ebuild:
+  Remove 4.0.236.0 and bump, this version displayed all drop down menus as
+  blank
+
+*chromium-4.0.236.0 (05 Nov 2009)
+
+  05 Nov 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  -chromium-4.0.221.5_p27967.ebuild, -chromium-4.0.222.6_p28888.ebuild,
+  +chromium-4.0.236.0.ebuild, chromium-9999.ebuild:
+  Version bump
+
+  29 Oct 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  chromium-4.0.221.5_p27967.ebuild, chromium-4.0.222.6_p28888.ebuild,
+  chromium-4.0.223.5.ebuild, chromium-9999.ebuild:
+  Drop tcmalloc compile flag, by upstream recommendation
+
+*chromium-4.0.223.5 (20 Oct 2009)
+
+  20 Oct 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  -chromium-4.0.219.4_p27359.ebuild, +chromium-4.0.223.5.ebuild:
+  Version bump synced with release, should improve speed on amd64 and audio
+  stuttering with HTML5
+
+*chromium-4.0.222.6_p28888 (13 Oct 2009)
+
+  13 Oct 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  +chromium-4.0.222.6_p28888.ebuild, chromium-9999.ebuild:
+  rootdir parameter finally fixed in compilation, YUV amd64 assembly and
+  other fixes. Next bumps will follow official releases, from
+  http://src.chromium.org/viewvc/chrome/releases/
+
+*chromium-4.0.222.6_p28807 (13 Oct 2009)
+
+  13 Oct 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  +chromium-4.0.222.6_p28807.ebuild:
+  Version bump, includes 64 bit linux yuv (faster media)
+
+*chromium-4.0.221.5_p27967 (05 Oct 2009)
+
+  05 Oct 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  +chromium-4.0.221.5_p27967.ebuild:
+  Bump, sync with VERSION file change in trunk svn
+
+  02 Oct 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  -chromium-4.0.212.0_p26805.ebuild, chromium-9999.ebuild:
+  Fix compilation in new native client part
+
+*chromium-9999 (01 Oct 2009)
+
+  01 Oct 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  +chromium-9999.ebuild:
+  Add live ebuild for those who wonder what to do of their free diskspace
+
+  30 Sep 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  chromium-4.0.212.0_p26805.ebuild, chromium-4.0.219.4_p27359.ebuild:
+  Fix desktop entry so xdg-open works correctly with chromium as default
+  browser
+
+*chromium-4.0.219.4_p27359 (28 Sep 2009)
+
+  28 Sep 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  +chromium-4.0.219.4_p27359.ebuild:
+  Version bump, this finally fixes the useless automatic recreation of
+  ~/Downloads
+
+  23 Sep 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  chromium-4.0.212.0_p26805.ebuild:
+  Use bundled libevent until 1.4.13, per upstream advice
+
+  23 Sep 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  chromium-4.0.212.0_p26805.ebuild:
+  Correctly set revision for about box, install man page
+
+*chromium-4.0.212.0_p26805 (22 Sep 2009)
+
+  22 Sep 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  -chromium-4.0.212.0_p26343.ebuild, +chromium-4.0.212.0_p26805.ebuild,
+  +files/chromium-use_system_libevent.patch:
+  Bump to fix truncated downloads, http://crbug.com/406 . Also use system
+  libevent
+
+  22 Sep 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  chromium-4.0.212.0_p26343.ebuild:
+  Fix .desktop entry as reported by nightmorph in bug #285922
+
+  16 Sep 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  files/chromium-launcher.sh:
+  Set CHROME_DESKTOP in the wrapper script
+
+*chromium-4.0.212.0_p26343 (16 Sep 2009)
+
+  16 Sep 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  -chromium-4.0.210.0_p26329.ebuild, +chromium-4.0.212.0_p26343.ebuild:
+  Version number was incorrect (they really change it often!), grab a V8
+  crash fix on amd64 too
+
+  16 Sep 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  +files/chromium-drop_sse2.patch, chromium-4.0.210.0_p26329.ebuild:
+  Forgot patch for x86 users, to prevent automatic enabling of
+  -march=pentium4 -msse2
+
+*chromium-4.0.210.0_p26329 (16 Sep 2009)
+
+  16 Sep 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  +chromium-4.0.210.0_p26329.ebuild, +files/chromium-launcher.sh,
+  +metadata.xml:
+  Initial commit, ebuild py Pawel Hajdan Jr <phajdan.jr@chromium.org> and
+  me, bug #278975. Tarball hosted on gentoo mirrors until upstream makes
+  official ones available
+

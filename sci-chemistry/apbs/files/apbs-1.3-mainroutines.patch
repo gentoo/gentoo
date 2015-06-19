@@ -1,0 +1,12 @@
+diff --git a/bin/Makefile.am b/bin/Makefile.am
+index 15158ca..f73d276 100644
+--- a/bin/Makefile.am
++++ b/bin/Makefile.am
+@@ -29,6 +29,7 @@ rm.apbs: Makefile
+ 
+ lib_LTLIBRARIES = libapbsmainroutines.la
+ libapbsmainroutines_la_SOURCES = routines.c
++libapbsmainroutines_la_LIBADD = -L../src/aaa_lib/.libs/ -lapbs @mc_lib@
+ libapbsmainroutines_la_LDFLAGS = -version-info ${APBS_VERSION}
+ 
+ INCLUDES = @inc_list@

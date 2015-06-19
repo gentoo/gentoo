@@ -1,0 +1,23 @@
+diff --git a/Makefile b/Makefile
+index 1bae380..605d674 100644
+--- a/Makefile
++++ b/Makefile
+@@ -72,8 +72,7 @@ AR=ar
+ all: ${INSTLIBA} mbconv mbconv.man
+ 
+ mbconv: mbconv.c ${ALL}
+-	${CC} ${CF} -o $@ $< -L. -lmoe
+-
++	${CC} ${CF} ${LDFLAGS} -o $@ $< -L. -lmoe
+ 
+ ${DEST}.so: ${DEST}.so.${VER}.${RELEASE}
+ 	ln -sf $< $@
+@@ -116,7 +115,7 @@ ${BTRI_Cs}: %.c: %.mk_btri.c mk_btri
+ 	./mk_btri <$< >$@-new && mv $@-new $@
+ 
+ mk_btri: btri.c btri.h altmalloc.o
+-	${CC} ${CF} -DMAIN -o $@ $< altmalloc.o
++	${CC} ${CF} ${LDFLAGS} -DMAIN -o $@ $< altmalloc.o
+ 
+ mbconv.man: mbconv.pod
+ 	pod2man --section=${MANSECT} --center=' ' $< >$@

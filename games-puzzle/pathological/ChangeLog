@@ -1,0 +1,129 @@
+# ChangeLog for games-puzzle/pathological
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/pathological/ChangeLog,v 1.31 2015/04/08 18:11:57 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pathological-1.1.3-r3.ebuild:
+  Drop old Python implementations
+
+  31 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  pathological-1.1.3-r3.ebuild:
+  sparc and ia64 are unstable
+
+  04 Jun 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  -pathological-1.1.3-r2.ebuild:
+  old
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> pathological-1.1.3-r3.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  04 Aug 2013; Agostino Sarubbo <ago@gentoo.org> pathological-1.1.3-r3.ebuild:
+  Stable for ia64, wrt bug #477428
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> pathological-1.1.3-r3.ebuild:
+  Stable for sparc, wrt bug #477428
+
+  27 Jul 2013; Agostino Sarubbo <ago@gentoo.org> pathological-1.1.3-r3.ebuild:
+  Stable for x86, wrt bug #477428
+
+  22 Jul 2013; Agostino Sarubbo <ago@gentoo.org> pathological-1.1.3-r3.ebuild:
+  Stable for ppc, wrt bug #477428
+
+  21 Jul 2013; Agostino Sarubbo <ago@gentoo.org> pathological-1.1.3-r3.ebuild:
+  Stable for amd64, wrt bug #477428
+
+*pathological-1.1.3-r3 (13 Jun 2013)
+
+  13 Jun 2013; Julian Ospald <hasufell@gentoo.org>
+  +pathological-1.1.3-r3.ebuild:
+  fix python handling wrt #473126
+
+  04 Sep 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  pathological-1.1.3-r2.ebuild:
+  any mod support will do
+
+  01 Nov 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  pathological-1.1.3-r2.ebuild:
+  add a warning if no music is going to be played (bug #388975)
+
+  25 Jun 2008; nixnut <nixnut@gentoo.org> pathological-1.1.3-r2.ebuild:
+  Stable on ppc wrt bug 228965
+
+  23 Jun 2008; Raúl Porcel <armin76@gentoo.org>
+  pathological-1.1.3-r2.ebuild:
+  ia64 stable wrt #228965
+
+  23 Jun 2008; Ferris McCormick <fmccor@gentoo.org>
+  pathological-1.1.3-r2.ebuild:
+  Sparc stable, Bug #228965.  Looks fine.
+
+  23 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  pathological-1.1.3-r2.ebuild:
+  stable x86, bug 228965
+
+  22 Jun 2008; Kenneth Prugh <ken69267@gentoo.org>
+  pathological-1.1.3-r2.ebuild:
+  amd64 stable, bug #228965
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org>
+  pathological-1.1.3-r1.ebuild, pathological-1.1.3-r2.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+*pathological-1.1.3-r2 (04 Feb 2008)
+
+  04 Feb 2008; Tristan Heaven <nyhm@gentoo.org>
+  +pathological-1.1.3-r2.ebuild:
+  Fix Python SyntaxError
+
+  20 Oct 2006; Tristan Heaven <nyhm@gentoo.org>
+  pathological-1.1.3-r1.ebuild:
+  Cleanup ebuild
+
+  16 Mar 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/pathological-1.1.3-build.patch, pathological-1.1.3-r1.ebuild:
+  Touchup build.
+
+*pathological-1.1.3-r1 (16 Oct 2005)
+
+  16 Oct 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/pathological-1.1.3-music-py.patch, +pathological-1.1.3-r1.ebuild:
+  Fix "music_pending_song is not defined" bug in music handling #109272 by
+  revenger.
+
+  11 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  pathological-1.1.3.ebuild:
+  Stable on sparc
+
+  16 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  pathological-1.1.3.ebuild:
+  Keyworded ~sparc
+
+  03 Jan 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  pathological-1.1.3.ebuild:
+  Added menu entry and closing bug #76558.
+
+  29 Dec 2004; Joseph Jezak <josejx@gentoo.org> pathological-1.1.3.ebuild:
+  Marked ppc stable.
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> pathological-1.1.3.ebuild:
+  Added ~ppc.
+
+*pathological-1.1.3 (21 Sep 2003)
+
+  21 Sep 2003; Michael Sterrett <msterret@gentoo.org> metadata.xml,
+  pathological-1.1.3.ebuild:
+  version bump; add metadata.xml
+
+  10 Jul 2003; Michael Sterrett <msterret@gentoo.org>
+  pathological-1.1.2.ebuild:
+  fix DESCRIPTION
+
+  10 Jul 2003; Michael Sterrett <msterret@gentoo.org>
+  pathological-1.1.2.ebuild:
+  Don't use doexe for pathological.py to avoid trying to strip it.
+  Use insopts for getting file perms right.
+
+*pathological-1.1.2 (10 Jul 2003)
+
+  10 Jul 2003; Michael Sterrett <msterret@gentoo.org>
+  pathological-1.1.2.ebuild:
+  Initial commit.  ebuild not based on user submitted ebuild. (bug 23443)

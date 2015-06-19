@@ -1,0 +1,81 @@
+# ChangeLog for media-gfx/zgv
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/zgv/ChangeLog,v 1.19 2011/11/05 06:54:22 ssuominen Exp $
+
+  05 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> zgv-5.9.ebuild,
+  +files/zgv-5.9-libpng15.patch:
+  Fix building with libpng15 wrt #389591 by Navid Zamani
+
+  28 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> zgv-5.9.ebuild:
+  Use virtual/jpeg.
+
+  28 Sep 2009; Víctor Ostorga <vostorga@gentoo.org> zgv-5.9.ebuild,
+  +files/zgv-5.9-Makefile-QA.patch:
+  Fixing pre-stripped files bug #255870, Respecting CC variable, Respecting
+  LDFLAGS, Fixing repoman warnings
+
+  20 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/zgv-5.7-gcc3.patch, -files/zgv-5.8-integer-overflow-fix.diff:
+  Remove unused files.
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  05 Aug 2006; Chris White <chriswhite@gentoo.org> -zgv-5.7-r1.ebuild,
+  -zgv-5.8.ebuild:
+  Security punts for bug #140498.
+
+  01 Jun 2006; Mark Loeser <halcy0n@gentoo.org> zgv-5.9.ebuild:
+  Stable on x86; bug #134839
+
+*zgv-5.9 (30 May 2006)
+
+  30 May 2006; Stefan Cornelius <corny@gentoo.org>
+  +files/zgv-5.9-cmyk-yccl-fix.diff, +zgv-5.9.ebuild:
+  Adding zgv 5.9, security bug #134839
+
+*zgv-5.8 (06 Nov 2004)
+
+  06 Nov 2004; <lanius@gentoo.org> +files/zgv-5.8-integer-overflow-fix.diff,
+  +zgv-5.8.ebuild:
+  version bump, add security fix, bug #69150
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> zgv-5.7-r1.ebuild:
+  Add inherit eutils
+
+*zgv-5.7-r1 (22 Jan 2004)
+
+  22 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Remove setuid bit since you dont need them with svgalib-1.9.x.
+
+*zgv-5.7 (03 Oct 2003)
+
+  07 Oct 2003; Brandy Westcott brandy@gentoo.org zgv-5.7.ebuild:
+  Added sys-apps/gawk as a dependency
+
+  03 Oct 2003; Heinrich Wendel <lanius@gentoo.org> zgv-5.7.ebuild,
+  files/zgv-5.7-gcc3.patch:
+  version bump
+
+*zgv-5.6 (9 May 2002)
+
+  9 May 2002; Martin Schlemmer <azarah@gentoo.org> zgv-5.6.ebuild :
+
+  Update to latest version.
+
+*zgv-5.5-r1 (12 Mar 2002)
+
+  12 Mar 2002; Seemant Kulleen <seemant@gentoo.org> zgv-5.5-r1.ebuild :
+
+  Compile against new libpng
+
+*zgv-5.5 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

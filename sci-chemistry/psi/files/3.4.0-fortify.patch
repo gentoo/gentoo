@@ -1,0 +1,58 @@
+ src/bin/ccenergy/get_params.cc   |    2 +-
+ src/bin/cclambda/get_params.cc   |    2 +-
+ src/bin/ccresponse/get_params.cc |    2 +-
+ src/bin/ccsort/get_params.cc     |    2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/bin/ccenergy/get_params.cc b/src/bin/ccenergy/get_params.cc
+index 53f4c83..a2fa932 100644
+--- a/src/bin/ccenergy/get_params.cc
++++ b/src/bin/ccenergy/get_params.cc
+@@ -193,7 +193,7 @@ void get_params()
+     }
+   }
+   else if(params.local) {
+-    local.weakp = (char *) malloc(4 * sizeof(char));
++    local.weakp = (char *) malloc(5 * sizeof(char));
+     sprintf(local.weakp, "%s", "NONE");
+   }
+ 
+diff --git a/src/bin/cclambda/get_params.cc b/src/bin/cclambda/get_params.cc
+index 4a9d2c8..8a2ae17 100644
+--- a/src/bin/cclambda/get_params.cc
++++ b/src/bin/cclambda/get_params.cc
+@@ -150,7 +150,7 @@ void get_params(void)
+     }
+   }
+   else if(params.local) {
+-    local.weakp = (char *) malloc(4 * sizeof(char));
++    local.weakp = (char *) malloc(5 * sizeof(char));
+     sprintf(local.weakp, "%s", "NONE");
+   }
+   
+diff --git a/src/bin/ccresponse/get_params.cc b/src/bin/ccresponse/get_params.cc
+index a96db13..5c40aa0 100644
+--- a/src/bin/ccresponse/get_params.cc
++++ b/src/bin/ccresponse/get_params.cc
+@@ -207,7 +207,7 @@ void get_params()
+     }
+   }
+   else if(params.local) {
+-    local.weakp = (char *) malloc(4 * sizeof(char));
++    local.weakp = (char *) malloc(5 * sizeof(char));
+     sprintf(local.weakp, "%s", "NONE");
+   }
+ 
+diff --git a/src/bin/ccsort/get_params.cc b/src/bin/ccsort/get_params.cc
+index ad7f0c3..6ee1993 100644
+--- a/src/bin/ccsort/get_params.cc
++++ b/src/bin/ccsort/get_params.cc
+@@ -120,7 +120,7 @@ void get_params()
+     }
+   }
+   else if(params.local) {
+-    local.weakp = (char *) malloc(4 * sizeof(char));
++    local.weakp = (char *) malloc(5 * sizeof(char));
+     sprintf(local.weakp, "%s", "NONE");
+   }
+ 

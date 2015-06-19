@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-dock</herd>
+<longdescription>
+WMiNET is a dockable applet for monitoring all your inet daemon activity, it's 
+designed for WindowMaker's dock, but of course, it works with other 
+windowmanagers too.
+</longdescription>
+</pkgmetadata>

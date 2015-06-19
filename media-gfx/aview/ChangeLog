@@ -1,0 +1,77 @@
+# ChangeLog for media-gfx/aview
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/aview/ChangeLog,v 1.19 2013/08/15 08:29:37 grobian Exp $
+
+  15 Aug 2013; Fabian Groffen <grobian@gentoo.org> aview-1.3.0_rc1-r3.ebuild:
+  Marked ~x64-solaris
+
+*aview-1.3.0_rc1-r3 (06 Aug 2012)
+
+  06 Aug 2012; Christoph Junghans <ottxor@gentoo.org>
+  +aview-1.3.0_rc1-r3.ebuild, -aview-1.3.0_rc1-r2.ebuild:
+  EAPI bumped to 4 and prefix build tweaks
+
+  15 Dec 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #353461
+
+*aview-1.3.0_rc1-r2 (23 Feb 2011)
+
+  23 Feb 2011; Kevin McCarthy <signals@gentoo.org> +aview-1.3.0_rc1-r2.ebuild,
+  +files/aview-1.3.0_rc1-asciiview.patch:
+  Fixed multiple filename bug and keyboard input problem. (Bug #293654)
+
+  29 May 2009; Robert Buchholz <rbu@gentoo.org> -aview-1.3.0_rc1.ebuild:
+  Remove ebuild that is vulnerable to GLSA 200812-14, bug #271762.
+
+  19 Sep 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  aview-1.3.0_rc1-r1.ebuild:
+  ppc stable, bug #235808
+
+  17 Sep 2008; Raúl Porcel <armin76@gentoo.org> aview-1.3.0_rc1-r1.ebuild:
+  x86 stable wrt #235808
+
+  17 Sep 2008; Santiago M. Mola <coldwind@gentoo.org>
+  aview-1.3.0_rc1-r1.ebuild:
+  amd64 stable wrt security bug #235808
+
+*aview-1.3.0_rc1-r1 (13 Sep 2008)
+
+  13 Sep 2008; Robert Buchholz <rbu@gentoo.org>
+  +files/aview-1.3.0_rc1-includes.patch,
+  +files/aview-1.3.0_rc1-tmp_creation.patch, +aview-1.3.0_rc1-r1.ebuild:
+  Non-maintainer bump:
+  Fix insecure temporary file creation in asciiview (bug #235808)
+
+  15 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  16 Aug 2005; Mark Loeser <halcy0n@gentoo.org>
+  +files/aview-1.3.0_rc1-filename-spaces.patch, aview-1.3.0_rc1.ebuild:
+  Adding patch to fix using asciiview with files that have spaces in the name,
+  thanks to kyberneticist AT yahoo DOT com for the patch; bug #39207
+
+  19 Jun 2005; Simon Stelling <blubb@gentoo.org> aview-1.3.0_rc1.ebuild:
+  stable on amd64
+
+  01 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> aview-1.3.0_rc1.ebuild:
+  added ~amd64 to KEYWORDS. fixes #83701
+
+  08 Jul 2003; Martin Holzer <mholzer@gentoo.org> aview-1.3.0_rc1.ebuild:
+  Changed Desc. Closes #24074.
+
+*aview-1.3.0_rc1 (1 Feb 2002)
+
+  08 Aug 2002; Mark Guertin <gerk@gentoo.org> aview-1.3.0_rc1.ebuild :
+  Fixed broken ${S}, and added to this ChangeLog (no one else has even though
+  the file has been updated several times), added ppc to keywords
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,22 @@
+# ChangeLog for sys-firmware/b43legacy-firmware
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-firmware/b43legacy-firmware/ChangeLog,v 1.1 2013/02/13 18:54:22 ssuominen Exp $
+
+  13 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +b43legacy-firmware-3.130.20.0.ebuild, +metadata.xml:
+  Move from net-wireless/ category.
+
+  10 Feb 2013; Rick Farina <zerochaos@gentoo.org>
+  b43legacy-firmware-3.130.20.0.ebuild:
+  minor fixup to use eapi5 and confirm usefulness
+
+  10 Dec 2012; Rick Farina <zerochaos@gentoo.org>
+  b43legacy-firmware-3.130.20.0.ebuild:
+  fix license as-is->Broadcom
+
+*b43legacy-firmware-3.130.20.0 (09 Dec 2012)
+
+  09 Dec 2012; Rick Farina <zerochaos@gentoo.org>
+  +b43legacy-firmware-3.130.20.0.ebuild, +metadata.xml:
+  reintroduce b43legacy-firmware as a new package to prevent it from being
+  confused with b43-firmware or accidently cleaned

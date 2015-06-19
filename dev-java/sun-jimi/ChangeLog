@@ -1,0 +1,103 @@
+# ChangeLog for dev-java/sun-jimi
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jimi/ChangeLog,v 1.20 2014/08/10 20:24:50 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> sun-jimi-1.0-r3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  19 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -sun-jimi-1.0-r2.ebuild:
+  NM: Cleanup superseded ebuilds.
+
+  25 Feb 2013; Agostino Sarubbo <ago@gentoo.org> sun-jimi-1.0-r3.ebuild:
+  Stable for ppc64, wrt bug #457286
+
+  25 Feb 2013; Agostino Sarubbo <ago@gentoo.org> sun-jimi-1.0-r3.ebuild:
+  Stable for ppc, wrt bug #457286
+
+  25 Feb 2013; Agostino Sarubbo <ago@gentoo.org> sun-jimi-1.0-r3.ebuild:
+  Stable for x86, wrt bug #457286
+
+  25 Feb 2013; Agostino Sarubbo <ago@gentoo.org> sun-jimi-1.0-r3.ebuild:
+  Stable for amd64, wrt bug #457286
+
+*sun-jimi-1.0-r3 (13 Jan 2013)
+
+  13 Jan 2013; Ralph Sennhauser <sera@gentoo.org> +sun-jimi-1.0-r3.ebuild:
+  Fix Homepage and download url, thanks to Elisas Propst <mail@eliasprobst.eu>.
+  #435802
+  LICENSE is now Oracle-BCLA-JavaSE.
+  EAPI bump.
+
+  31 Dec 2011; Ralph Sennhauser <sera@gentoo.org> sun-jimi-1.0-r2.ebuild:
+  Drop ia64 support #345433
+
+  04 Jul 2009; Brent Baude <ranger@gentoo.org> sun-jimi-1.0-r2.ebuild:
+  Marking sun-jimi-1.0-r2 ppc64 for bug 274798
+
+  04 May 2008; Petteri Räty <betelgeuse@gentoo.org> sun-jimi-1.0-r2.ebuild:
+  Update download URL.
+
+  24 Oct 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -sun-jimi-1.0-r1.ebuild:
+  Removed java gen 1 ebuild
+
+  05 Apr 2007; Petteri Räty <betelgeuse@gentoo.org> sun-jimi-1.0-r2.ebuild:
+  Mark the generation 2 migration stable on amd64, ppc and x86 because the
+  only change is to switch to ejavac.
+
+  13 Feb 2007; Markus Rothe <corsair@gentoo.org> sun-jimi-1.0-r2.ebuild:
+  Added ~ppc64; bug #153229
+
+  28 Nov 2006; Joshua Nichols <nichoj@gentoo.org> sun-jimi-1.0-r2.ebuild:
+  Added ~ia64.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  sun-jimi-1.0-r1.ebuild, sun-jimi-1.0-r2.ebuild:
+  Dropping sparc keywords, see #96229
+
+*sun-jimi-1.0-r2 (03 Aug 2006)
+
+  03 Aug 2006; Joshua Nichols <nichoj@gentoo.org> +sun-jimi-1.0-r2.ebuild:
+  Revision bump to support the new Java system.
+
+  17 Feb 2006; Michael Hanselmann <hansmi@gentoo.org>
+  sun-jimi-1.0-r1.ebuild:
+  Stable on ppc.
+
+*sun-jimi-1.0-r1 (17 Sep 2005)
+
+  17 Sep 2005; Petteri Räty <betelgeuse@gentoo.org> -sun-jimi-1.0.ebuild,
+  +sun-jimi-1.0-r1.ebuild:
+  Version bump so that dev-java/jimi users move to this package and removed
+  the installation of the License file.
+
+  26 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> sun-jimi-1.0.ebuild:
+  Stable on sparc
+
+*sun-jimi-1.0 (23 Dec 2004)
+
+  23 Dec 2004; Karl Trygve Kalleberg <karltk@gentoo.org> +metadata.xml,
+  +sun-jimi-1.0.ebuild:
+  Moved from dev-java/jimi. Fixes #75427.
+
+  17 Oct 2004; Thomas Matthijs <axxo@gentoo.org> jimi-1.0.ebuild:
+  keyword ~ppc
+
+  17 Oct 2004; Thomas Matthijs <axxo@gentoo.org> jimi-1.0.ebuild:
+  depend on app-arch/unzip
+
+  17 Oct 2004; Thomas Matthijs <axxo@gentoo.org> jimi-1.0.ebuild:
+  keyword x86
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> jimi-1.0.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  03 Oct 2004; Jason Wever <weeve@gentoo.org> jimi-1.0.ebuild:
+  Added ~sparc keyword.
+
+*jimi-1.0 (21 Sep 2004)
+
+  21 Sep 2004; Thomas Matthijs <axxo@gentoo.org> +metadata.xml,
+  +jimi-1.0.ebuild:
+  initial import, ebuild created by me, as a dep

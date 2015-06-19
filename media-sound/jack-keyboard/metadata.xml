@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proaudio</herd>
+<longdescription lang="en">
+	jack-keyboard is a virtual MIDI keyboard - a program that allows you to send
+	JACK MIDI events (play ;-) using your PC keyboard. It's somewhat similar to
+	vkeybd, except it uses JACK MIDI instead of ALSA, and the keyboard mapping
+	is much better - it uses the same layout as trackers (like Impulse Tracker)
+	did, so you have two and half octaves under your fingers.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+--- a/src/cpu_has_sse2.S	2008-01-29 04:44:10.000000000 +0000
++++ b/src/cpu_has_sse2.S	2008-05-31 18:29:00.000000000 +0000
+@@ -13,6 +13,9 @@
+ #  You should have received a copy of the GNU General Public License
+ #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
+ 
+ .text
+ .globl cpu_has_sse2

@@ -1,0 +1,15 @@
+# ChangeLog for app-admin/consul-template
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/consul-template/ChangeLog,v 1.2 2015/06/05 11:36:19 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*consul-template-9999 (26 May 2015)
+*consul-template-0.9.0 (26 May 2015)
+
+  26 May 2015; Zac Medico <zmedico@gentoo.org> +consul-template-0.9.0.ebuild,
+  +consul-template-9999.ebuild, +files/consul-template.confd,
+  +files/consul-template.initd, +files/consul-template.service,
+  +files/localhost.json.example, +metadata.xml:
+  Add consul-template.

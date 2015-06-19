@@ -1,0 +1,24 @@
+# ChangeLog for app-crypt/tc-play
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/tc-play/ChangeLog,v 1.5 2015/06/05 12:09:50 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> -tc-play-1.1.ebuild,
+  tc-play-2.0.ebuild:
+  Add slot operators; drop old
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*tc-play-2.0 (07 Jun 2014)
+
+  07 Jun 2014; Alon Bar-Lev <alonbl@gentoo.org> +tc-play-2.0.ebuild:
+  Version bump, bug#511768
+
+  01 Mar 2014; Michał Górny <mgorny@gentoo.org> tc-play-1.1.ebuild:
+  Update libgcrypt dep to use slot :0.
+
+*tc-play-1.1 (05 Oct 2013)
+
+  05 Oct 2013; Alon Bar-Lev <alonbl@gentoo.org> +metadata.xml,
+  +tc-play-1.1.ebuild:
+  Initial import, bug#432914

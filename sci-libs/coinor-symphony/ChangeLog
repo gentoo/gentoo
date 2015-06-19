@@ -1,0 +1,49 @@
+# ChangeLog for sci-libs/coinor-symphony
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/coinor-symphony/ChangeLog,v 1.4 2014/02/04 10:43:38 jlec Exp $
+
+  04 Feb 2014; Justin Lecher <jlec@gentoo.org> coinor-symphony-5.5.7.ebuild:
+  Move preparations to src_prepare
+
+  04 Feb 2014; Justin Lecher <jlec@gentoo.org> coinor-symphony-5.5.7.ebuild:
+  Fix the common coinor pkg-config installation problem
+
+  15 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  coinor-symphony-5.5.7.ebuild:
+  As-needed applied upstream
+
+*coinor-symphony-5.5.7 (14 Jan 2014)
+
+  14 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-symphony-5.5.7.ebuild, +metadata.xml:
+  Initial import in main tree
+
+*coinor-symphony-5.5.6 (07 Dec 2013)
+
+  07 Dec 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-symphony-5.5.6.ebuild, -coinor-symphony-5.5.0.ebuild:
+  sci-libs/coinor-symphony: Version bump
+
+*coinor-symphony-5.5.0 (17 Jul 2013)
+
+  17 Jul 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-symphony-5.5.0.ebuild, -coinor-symphony-5.4.7.ebuild:
+  sci-libs/coinor-symphony: Version bump
+
+*coinor-symphony-5.4.7 (26 May 2013)
+
+  26 May 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-symphony-5.4.7.ebuild, -coinor-symphony-5.4.6.ebuild:
+  sci-libs/coinor-symphony: Version bump
+
+*coinor-symphony-5.4.6 (29 Jan 2013)
+
+  29 Jan 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-symphony-5.4.6.ebuild, -coinor-symphony-5.4.4.ebuild:
+  sci-libs/coinor-symphony: Version bump
+
+*coinor-symphony-5.4.4 (17 Jul 2012)
+
+  17 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-symphony-5.4.4.ebuild, +metadata.xml:
+  sci-libs/coinor-symphony: Initial import

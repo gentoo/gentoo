@@ -1,0 +1,358 @@
+# ChangeLog for dev-perl/Crypt-OpenSSL-RSA
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-OpenSSL-RSA/ChangeLog,v 1.87 2014/08/22 15:28:22 axs Exp $
+
+*Crypt-OpenSSL-RSA-0.280.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Crypt-OpenSSL-RSA-0.280.0-r1.ebuild, -Crypt-OpenSSL-RSA-0.280.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade.  Also
+  dropped redundant dev-lang/perl dependency as eclass provides it
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -Crypt-OpenSSL-RSA-0.25.ebuild:
+  Cleanup
+
+  19 Mar 2012; Raúl Porcel <armin76@gentoo.org>
+  Crypt-OpenSSL-RSA-0.280.0.ebuild:
+  ia64/m68k/s390/sh/sparc stable wrt #400067
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Crypt-OpenSSL-RSA-0.280.0.ebuild:
+  x86 stable wrt bug #400067
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org>
+  Crypt-OpenSSL-RSA-0.280.0.ebuild:
+  Marking Crypt-OpenSSL-RSA-0.280.0 ppc64 for bug 400067
+
+  01 Mar 2012; Brent Baude <ranger@gentoo.org>
+  Crypt-OpenSSL-RSA-0.280.0.ebuild:
+  Marking Crypt-OpenSSL-RSA-0.280.0 ppc for bug 400067
+
+  29 Feb 2012; Markus Meier <maekke@gentoo.org>
+  Crypt-OpenSSL-RSA-0.280.0.ebuild:
+  arm stable, bug #400067
+
+  27 Feb 2012; Jeroen Roovers <jer@gentoo.org>
+  Crypt-OpenSSL-RSA-0.280.0.ebuild:
+  Stable for HPPA (bug #400067).
+
+  25 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  Crypt-OpenSSL-RSA-0.280.0.ebuild:
+  Stable on alpha, bug #400067
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  Crypt-OpenSSL-RSA-0.280.0.ebuild:
+  Stable for amd64, wrt bug #400067
+
+  13 Dec 2011; Naohiro Aota <naota@gentoo.org>
+  Crypt-OpenSSL-RSA-0.280.0.ebuild:
+  Add ~x86-fbsd
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -Crypt-OpenSSL-RSA-0.270.0.ebuild:
+  Cleanup
+
+*Crypt-OpenSSL-RSA-0.280.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Crypt-OpenSSL-RSA-0.280.0.ebuild:
+  Version bump
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org> -Crypt-OpenSSL-RSA-0.26.ebuild:
+  Cleanup
+
+*Crypt-OpenSSL-RSA-0.270.0 (06 Jul 2011)
+
+  06 Jul 2011; Torsten Veller <tove@gentoo.org>
+  +Crypt-OpenSSL-RSA-0.270.0.ebuild:
+  Version bump
+
+  23 Apr 2011; Fabian Groffen <grobian@gentoo.org>
+  Crypt-OpenSSL-RSA-0.26.ebuild:
+  Marked ~x64-macos, bug #363103
+
+  21 Jan 2010; Torsten Veller <tove@gentoo.org>
+  Crypt-OpenSSL-RSA-0.25.ebuild, Crypt-OpenSSL-RSA-0.26.ebuild:
+  Ebuild maintenance. mips -> ~mips. EAPI=2
+
+  09 Jan 2010; Fabian Groffen <grobian@gentoo.org>
+  Crypt-OpenSSL-RSA-0.26.ebuild:
+  Transfer Prefix keywords
+
+*Crypt-OpenSSL-RSA-0.26 (24 Nov 2009)
+
+  24 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Crypt-OpenSSL-RSA-0.26.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  15 Sep 2008; Torsten Veller <tove@gentoo.org>
+  -Crypt-OpenSSL-RSA-0.22-r1.ebuild, -Crypt-OpenSSL-RSA-0.23.ebuild,
+  -Crypt-OpenSSL-RSA-0.24.ebuild:
+  Cleanup
+
+  28 Mar 2008; Jeroen Roovers <jer@gentoo.org>
+  Crypt-OpenSSL-RSA-0.25.ebuild:
+  Stable for HPPA too.
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  Crypt-OpenSSL-RSA-0.25.ebuild:
+  amd64 stable
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Crypt-OpenSSL-RSA-0.25.ebuild:
+  Stable on ppc.
+
+  06 Jul 2007; Tom Gall <tgall@gentoo.org>
+  Crypt-OpenSSL-RSA-0.25.ebuild:
+  stable on ppc64
+
+  05 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  Crypt-OpenSSL-RSA-0.25.ebuild:
+  alpha/ia64/x86 stable
+
+  30 Jun 2007; Joshua Kinard <kumba@gentoo.org>
+  Crypt-OpenSSL-RSA-0.25.ebuild:
+  Stable on mips.
+
+  25 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  Crypt-OpenSSL-RSA-0.25.ebuild:
+  Marking sparc stable
+
+*Crypt-OpenSSL-RSA-0.25 (24 May 2007)
+
+  24 May 2007; Michael Cummings <mcummings@gentoo.org>
+  +Crypt-OpenSSL-RSA-0.25.ebuild:
+  Version bump
+
+  12 May 2007; Joshua Kinard <kumba@gentoo.org>
+  Crypt-OpenSSL-RSA-0.24.ebuild:
+  Stable on mips.
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Crypt-OpenSSL-RSA-0.24.ebuild:
+  ppc stable
+
+  15 Apr 2007; Markus Rothe <corsair@gentoo.org>
+  Crypt-OpenSSL-RSA-0.24.ebuild:
+  Stable on ppc64
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org>
+  Crypt-OpenSSL-RSA-0.24.ebuild:
+  Stable on x86, bug #169152.
+
+  07 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Crypt-OpenSSL-RSA-0.24.ebuild:
+  Marking sparc stable
+
+  07 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -Crypt-OpenSSL-RSA-0.21.ebuild, -Crypt-OpenSSL-RSA-0.22.ebuild,
+  Crypt-OpenSSL-RSA-0.22-r1.ebuild, Crypt-OpenSSL-RSA-0.23.ebuild,
+  Crypt-OpenSSL-RSA-0.24.ebuild:
+  Marking amd64 stable
+
+*Crypt-OpenSSL-RSA-0.24 (22 Nov 2006)
+
+  22 Nov 2006; Michael Cummings <mcummings@gentoo.org>
+  +Crypt-OpenSSL-RSA-0.24.ebuild:
+  Version bump
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Crypt-OpenSSL-RSA-0.23.ebuild:
+  ppc stable
+
+  16 Sep 2006; Markus Rothe <corsair@gentoo.org>
+  Crypt-OpenSSL-RSA-0.23.ebuild:
+  Stable on ppc64
+
+  09 Sep 2006; <ticho@gentoo.org> Crypt-OpenSSL-RSA-0.23.ebuild:
+  Stable on x86, bug #123194.
+
+  08 Sep 2006; Thomas Cort <tcort@gentoo.org> Crypt-OpenSSL-RSA-0.23.ebuild:
+  Stable on alpha wrt Bug #123194.
+
+  17 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Crypt-OpenSSL-RSA-0.23.ebuild:
+  Marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Crypt-OpenSSL-RSA-0.21.ebuild, Crypt-OpenSSL-RSA-0.22.ebuild,
+  Crypt-OpenSSL-RSA-0.22-r1.ebuild, Crypt-OpenSSL-RSA-0.23.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  Crypt-OpenSSL-RSA-0.21.ebuild, Crypt-OpenSSL-RSA-0.22.ebuild,
+  Crypt-OpenSSL-RSA-0.22-r1.ebuild, Crypt-OpenSSL-RSA-0.23.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+  29 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Crypt-OpenSSL-RSA-0.23.ebuild:
+  Stable on hppa
+
+  11 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  Crypt-OpenSSL-RSA-0.23.ebuild:
+  Marking stable sparc
+
+  21 May 2006; Markus Rothe <corsair@gentoo.org>
+  Crypt-OpenSSL-RSA-0.22-r1.ebuild:
+  Stable on ppc64
+
+  20 May 2006; Thomas Cort <tcort@gentoo.org>
+  Crypt-OpenSSL-RSA-0.22-r1.ebuild:
+  Stable on alpha and amd64.
+
+  29 Apr 2006; Joshua Kinard <kumba@gentoo.org>
+  Crypt-OpenSSL-RSA-0.22-r1.ebuild:
+  Marked stable on mips.
+
+*Crypt-OpenSSL-RSA-0.23 (24 Apr 2006)
+
+  24 Apr 2006; <mcummings@gentoo.org> +Crypt-OpenSSL-RSA-0.23.ebuild:
+  Version bump
+
+  20 Apr 2006; Thomas Cort <tcort@gentoo.org>
+  Crypt-OpenSSL-RSA-0.22-r1.ebuild:
+  Added ~amd64 keyword wrt Bug #123488.
+
+  16 Apr 2006; Michael Hanselmann <hansmi@gentoo.org>
+  Crypt-OpenSSL-RSA-0.22-r1.ebuild:
+  Stable on ppc.
+
+  01 Apr 2006; <mcummings@gentoo.org> Crypt-OpenSSL-RSA-0.22-r1.ebuild:
+  Marking stable x86, sparc
+
+  18 Mar 2006; Markus Rothe <corsair@gentoo.org>
+  Crypt-OpenSSL-RSA-0.22-r1.ebuild:
+  Added ~ppc64; bug #126675
+
+  10 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  Crypt-OpenSSL-RSA-0.22-r1.ebuild:
+  Mark 0.22-r1 ~ia64. #123488
+
+  06 Mar 2006; Jose Luis Rivero <yoswink@gentoo.org>
+  Crypt-OpenSSL-RSA-0.22-r1.ebuild:
+  Added ~alpha keyword wrt bug #123488 Crypt-OpenSSL-Bignum-0.03.ebuild
+
+  26 Feb 2006; Joshua Kinard <kumba@gentoo.org>
+  Crypt-OpenSSL-RSA-0.21.ebuild, Crypt-OpenSSL-RSA-0.22-r1.ebuild:
+  Marked 0.21 stable on mips; Added ~mips to 0.22-r1 for Bug #123488.
+
+  22 Feb 2006; <nixnut@gentoo.org> Crypt-OpenSSL-RSA-0.22-r1.ebuild:
+  Added ~ppc keyword. Bug 123488
+
+*Crypt-OpenSSL-RSA-0.22-r1 (20 Feb 2006)
+
+  20 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  +Crypt-OpenSSL-RSA-0.22-r1.ebuild:
+  Bump with Bignum support
+
+  06 Feb 2006; Simon Stelling <blubb@gentoo.org>
+  Crypt-OpenSSL-RSA-0.22.ebuild:
+  stable on amd64
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  Crypt-OpenSSL-RSA-0.22.ebuild:
+  Mark 0.22 stable on ia64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org>
+  Crypt-OpenSSL-RSA-0.22.ebuild:
+  Mark 0.22 stable on alpha
+
+  16 Jan 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  Crypt-OpenSSL-RSA-0.22.ebuild:
+  Stable on hppa.
+
+  15 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  Crypt-OpenSSL-RSA-0.22.ebuild:
+  Stable on ppc.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Crypt-OpenSSL-RSA-0.22.ebuild:
+  Marking stable sparc x86
+
+*Crypt-OpenSSL-RSA-0.22 (22 Nov 2005)
+
+  22 Nov 2005; Michael Cummings <mcummings@gentoo.org>
+  -Crypt-OpenSSL-RSA-0.19.ebuild, +Crypt-OpenSSL-RSA-0.22.ebuild:
+  Version bump, cleaning up
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  Crypt-OpenSSL-RSA-0.21.ebuild:
+  Mark 0.21 stable on ia64
+
+  19 Sep 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  Crypt-OpenSSL-RSA-0.21.ebuild:
+  Stable on amd64.
+
+  08 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  Crypt-OpenSSL-RSA-0.21.ebuild:
+  Mark 0.21 stable on alpha
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  Crypt-OpenSSL-RSA-0.21.ebuild:
+  add ~ia64
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Crypt-OpenSSL-RSA-0.21.ebuild:
+  Stable on ppc.
+
+  25 Jul 2005; Guy Martin <gmsoft@gentoo.org> Crypt-OpenSSL-RSA-0.21.ebuild:
+  Stable on hppa.
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Crypt-OpenSSL-RSA-0.13-r1.ebuild, -Crypt-OpenSSL-RSA-0.13.ebuild,
+  Crypt-OpenSSL-RSA-0.19.ebuild, Crypt-OpenSSL-RSA-0.21.ebuild:
+  Cleaning
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Crypt-OpenSSL-RSA-0.19.ebuild:
+  Stable on ppc.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  Crypt-OpenSSL-RSA-0.13-r1.ebuild, Crypt-OpenSSL-RSA-0.13.ebuild,
+  Crypt-OpenSSL-RSA-0.19.ebuild, Crypt-OpenSSL-RSA-0.21.ebuild:
+  virtual/glibc -> virtual/libc
+
+*Crypt-OpenSSL-RSA-0.21 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  Crypt-OpenSSL-RSA-0.21.ebuild:
+  new version on cpan
+
+  24 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  Crypt-OpenSSL-RSA-0.19.ebuild:
+  Stable on alpha.
+
+  07 May 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  Crypt-OpenSSL-RSA-0.19.ebuild:
+  Stable on sparc
+
+  25 Feb 2004; Joshua Kinard <kumba@gentoo.org> Crypt-OpenSSL-RSA-0.19.ebuild:
+  Added ~mips to KEYWORDS to satisfy repoman deps.
+
+*Crypt-OpenSSL-RSA-0.19 (07 Jun 2003)
+
+  07 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  Crypt-OpenSSL-RSA-0.19.ebuild:
+  CPAN update
+
+  21 Aug 2002; Michael Cummings <mcummings@gentoo.org>: Corrected keywords,
+  slot, header; no rev bump
+
+*Crypt-OpenSSL-RSA-0.13-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*Crypt-OpenSSL-RSA-0.13 (18 Aug 2002)
+
+  18 Aug 2002; Michael Cummings <mcummings@gentoo.org>: Initial ebuild checkin
+
+  18 Aug 2002; Navid Golpayegani <golpa@atmos.umd.edu>: User-contributed
+  submission. Thanks Navid!

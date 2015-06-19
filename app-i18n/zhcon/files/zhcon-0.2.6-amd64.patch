@@ -1,0 +1,77 @@
+diff --git a/src/winime.cpp b/src/winime.cpp
+index 0c52393..85729a3 100644
+--- a/src/winime.cpp
++++ b/src/winime.cpp
+@@ -56,10 +56,10 @@ mCandilistBufLen(0)
+ 
+     memcpy(&mHead, mpBuf, sizeof(mHead));
+     int len = strlen(mHead.mCodeSet);
+-    mpIndex1 = (char **) (mpBuf + sizeof(mHead));
+-    mpIndex2 = (char **) (mpBuf + sizeof(mHead) + len * sizeof(char *));
+-    mpText = mpBuf + sizeof(mHead) + len * sizeof(char *) +
+-                len * len * sizeof(char *);
++    mpIndex1 = (int *) (mpBuf + sizeof(mHead));
++    mpIndex2 = (int *) (mpBuf + sizeof(mHead) + len * sizeof(int));
++    mpText = mpBuf + sizeof(mHead) + len * sizeof(int) +
++                len * len * sizeof(int);
+ }
+ 
+ WinIme::~WinIme() {
+@@ -246,32 +246,33 @@ int WinIme::Search(char c) {
+             //                p = *t;
+         }
+         else
+-            p = mpIndex1[Index(c)];
++            p = (char *)mpIndex1[Index(c)];
+ 
+         if (p == (char *) 0xffffffff)
+             found = false;
+-        p = (unsigned int) p + mpText;
++        p = (unsigned long) p + mpText;
+     } //2nd level index
+     else if (mNum == 1) {
+         int l = strlen(mHead.mCodeSet);
+         if (c == mHead.mWildChar) {
+             char **t;
+             t =
+-                find_if(mpIndex2 + Index(mInput[0]) * l,
+-                        mpIndex2 + (Index(mInput[0]) + 1) * l,
++                find_if((char **)(mpIndex2 + Index(mInput[0]) * l),
++                        (char **)(mpIndex2 + (Index(mInput[0]) + 1) * l),
+                         bind2nd(not_equal_to < char *>(),
+                                 (char *) 0xffffffff));
+-            if (t == mpIndex2 + (Index(mInput[0]) + 1) * l)
++            if (t == ((char **)mpIndex2) + (Index(mInput[0]) + 1) * l)
+                 p = (char *) 0xffffffff;
+             else
+                 p = *t;
+-        } else
+-            p = mpIndex2[Index(mInput[0]) * l + Index(c)];
++        } else {
++            int dd =  Index(mInput[0]) * l + Index(c);
++            p = (char *)(mpIndex2[Index(mInput[0]) * l + Index(c)]);
++        }
+ 
+         if (p == (char *) 0xffffffff)
+             found = false;
+-
+-        p = (unsigned int) p + mpText;
++        p = (unsigned long) p + mpText;
+     } else if (mNum < mHead.mMaxCodes) {
+         p = mpOffset[mNum - 1];
+         if (p == (char *) 0xffffffff)
+diff --git a/src/winime.h b/src/winime.h
+index c2f51ab..816a270 100644
+--- a/src/winime.h
++++ b/src/winime.h
+@@ -83,8 +83,8 @@ class WinIme {
+         char* mpOffset[12];
+         int mFd;
+         char* mpBuf;
+-        char** mpIndex1;
+-        char** mpIndex2;
++        int *mpIndex1;
++        int *mpIndex2;
+         char* mpText;
+         char* mpCur;                  //current search position
+         unsigned int mBufSize;

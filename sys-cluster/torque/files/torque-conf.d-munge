@@ -1,0 +1,18 @@
+# The default logging takes place in $PBS_SERVER_HOME/<mom/server/sched>_priv.
+# If you'd like to change that, use the following per service.
+PBS_SERVER_LOG=/var/log/pbs_server.log
+PBS_MOM_LOG=/var/log/pbs_mom.log
+PBS_SCHED_LOG=/var/log/pbs_sched.log
+
+
+# There are a number of ways to stop the pbs server.  For more details, man qterm
+# At the time of writing, checkpoint is probably not working.
+# immediate:  All jobs are killed.
+# delay:  Checkpoint, rerun or wait for jobs to finish before stopping
+# quick:  Remember running jobs, and let them run without interaction with pbs_server.
+#         This is the default action
+PBS_SERVER_STOP=quick
+
+# Use munge auth by default.  This causes all pbs service to require
+# the munge service.  Set to non-zero to enable.
+PBS_USE_MUNGE=0

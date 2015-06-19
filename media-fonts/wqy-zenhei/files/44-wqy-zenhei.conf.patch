@@ -1,0 +1,39 @@
+--- 44-wqy-zenhei.conf.old	2014-02-14 00:41:31.277115976 +0100
++++ 44-wqy-zenhei.conf	2014-02-14 00:43:18.985123207 +0100
+@@ -4,9 +4,35 @@
+ <fontconfig>
+   <!-- modified by Madsen@SMTH -->
+   <match target="font">
+-        <test qual="any" name="family">
++        <test name="family">
+                 <string>WenQuanYi Zen Hei</string>
++        </test> 
++        <edit name="globaladvance"><bool>false</bool></edit>
++        <edit name="spacing"><int>0</int></edit>
++        <edit name="antialias" mode="assign"><bool>true</bool></edit>
++        <edit name="hinting" mode="assign"><bool>true</bool></edit>
++        <edit name="hintstyle" mode="assign"><const>hintnone</const></edit>
++        <edit name="autohint" mode="assign"><bool>false</bool></edit>
++        <edit name="rh_prefer_bitmaps" mode="assign"><bool>false</bool></edit>
++        <edit name="rgba" mode="assign"><const>none</const></edit>
++        <edit name="embeddedbitmap"><bool>false</bool></edit>
++  </match>
++  <match target="font">
++        <test name="family">
+                 <string>文泉驿正黑</string>
++        </test> 
++        <edit name="globaladvance"><bool>false</bool></edit>
++        <edit name="spacing"><int>0</int></edit>
++        <edit name="antialias" mode="assign"><bool>true</bool></edit>
++        <edit name="hinting" mode="assign"><bool>true</bool></edit>
++        <edit name="hintstyle" mode="assign"><const>hintnone</const></edit>
++        <edit name="autohint" mode="assign"><bool>false</bool></edit>
++        <edit name="rh_prefer_bitmaps" mode="assign"><bool>false</bool></edit>
++        <edit name="rgba" mode="assign"><const>none</const></edit>
++        <edit name="embeddedbitmap"><bool>false</bool></edit>
++  </match>
++  <match target="font">
++        <test name="family">
+                 <string>文泉驛正黑</string>
+         </test> 
+         <edit name="globaladvance"><bool>false</bool></edit>

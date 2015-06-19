@@ -1,0 +1,192 @@
+# ChangeLog for x11-misc/pathfinder
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/pathfinder/ChangeLog,v 1.44 2015/06/11 14:16:46 ago Exp $
+
+  11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> pathfinder-1.7.49.ebuild:
+  Stable for ppc, wrt bug #535832
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> pathfinder-1.7.49.ebuild:
+  Stable for x86, wrt bug #535832
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> pathfinder-1.7.49.ebuild:
+  Stable for amd64, wrt bug #535832
+
+*pathfinder-1.7.49 (11 Nov 2014)
+
+  11 Nov 2014; Matti Bickel <mabi@gentoo.org> +pathfinder-1.7.49.ebuild:
+  version bump in lockstep with fox
+
+  04 Jul 2014; Matti Bickel <mabi@gentoo.org> -pathfinder-1.7.43.ebuild:
+  remove old
+
+*pathfinder-1.7.47 (04 Jul 2014)
+
+  04 Jul 2014; Matti Bickel <mabi@gentoo.org> +pathfinder-1.7.47.ebuild:
+  need libICE and libSM for proper linking (fixes #515172)
+
+*pathfinder-1.7.45 (10 Jan 2014)
+
+  10 Jan 2014; Matti Bickel <mabi@gentoo.org> +pathfinder-1.7.45.ebuild:
+  version bump, cleanup
+
+  13 Nov 2013; Matti Bickel <mabi@gentoo.org> -pathfinder-1.7.40.ebuild:
+  remove erronously committed version
+
+*pathfinder-1.7.40 (13 Nov 2013)
+*pathfinder-1.7.43 (13 Nov 2013)
+
+  13 Nov 2013; Matti Bickel <mabi@gentoo.org> +pathfinder-1.7.40.ebuild,
+  +pathfinder-1.7.43.ebuild, -pathfinder-1.7.33.ebuild,
+  -pathfinder-1.7.39.ebuild:
+  version bump; remove old
+
+*pathfinder-1.7.39 (03 Jul 2013)
+
+  03 Jul 2013; Matti Bickel <mabi@gentoo.org> +pathfinder-1.7.39.ebuild,
+  -pathfinder-1.7.32.ebuild:
+  version bump dev builds
+
+*pathfinder-1.7.33 (04 Jul 2012)
+
+  04 Jul 2012; Matti Bickel <mabi@gentoo.org> +pathfinder-1.7.33.ebuild:
+  version bump
+
+*pathfinder-1.7.32 (12 Feb 2012)
+
+  12 Feb 2012; Matti Bickel <mabi@gentoo.org> +pathfinder-1.7.32.ebuild,
+  -pathfinder-1.6.35.ebuild:
+  version bump
+
+  12 Nov 2011; Justin Lecher <jlec@gentoo.org> pathfinder-1.6.35.ebuild,
+  pathfinder-1.6.36.ebuild:
+  Corrected slotting for png and tiff
+
+  26 Feb 2011; Kevin McCarthy <signals@gentoo.org> pathfinder-1.6.35.ebuild,
+  pathfinder-1.6.36.ebuild:
+  Updated depends from media-libs/jpeg to virtual/jpeg
+
+  27 Jul 2010; Jeroen Roovers <jer@gentoo.org> pathfinder-1.6.36.ebuild:
+  Stable for HPPA (bug #309199).
+
+  31 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  pathfinder-1.6.36.ebuild:
+  x86 stable wrt bug #309199
+
+  15 Mar 2010; nixnut <nixnut@gentoo.org> pathfinder-1.6.36.ebuild:
+  ppc stable #309199
+
+  20 Jan 2010; Brent Baude <ranger@gentoo.org> pathfinder-1.6.36.ebuild:
+  Marking pathfinder-1.6.36 ppc64 for bug 276854
+
+*pathfinder-1.6.36 (28 Jul 2009)
+
+  28 Jul 2009; Jeroen Roovers <jer@gentoo.org> +pathfinder-1.6.36.ebuild:
+  Version bump (bug #276854).
+
+  17 Apr 2009; Matti Bickel <mabi@gentoo.org> -pathfinder-1.6.34.ebuild:
+  cleanup
+
+  10 Apr 2009; Raúl Porcel <armin76@gentoo.org> pathfinder-1.6.35.ebuild:
+  x86 stable wrt #263795
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> pathfinder-1.6.35.ebuild:
+  Marking pathfinder-1.6.35 ppc64 stable for bug 263795
+
+  31 Mar 2009; Jeroen Roovers <jer@gentoo.org> pathfinder-1.6.35.ebuild:
+  Stable for HPPA (bug #263795).
+
+  30 Mar 2009; Brent Baude <ranger@gentoo.org> pathfinder-1.6.35.ebuild:
+  Marking pathfinder-1.6.35 ppc for bug 263795
+
+*pathfinder-1.6.35 (01 Mar 2009)
+
+  01 Mar 2009; Matti Bickel <mabi@gentoo.org> -pathfinder-1.6.30.ebuild,
+  -pathfinder-1.6.31.ebuild, +pathfinder-1.6.35.ebuild:
+  removed old builds, added new version using EAPI 1 slot deps, to avoid
+  bumping when nothing really changed in the fox stable api. This will be the
+  last bump for pathfinder-1.6
+
+  02 Dec 2008; Jeroen Roovers <jer@gentoo.org> pathfinder-1.6.34.ebuild:
+  Stable for HPPA (bug #249286).
+
+*pathfinder-1.6.34 (04 Oct 2008)
+
+  04 Oct 2008; Matti Bickel <mabi@gentoo.org> metadata.xml,
+  +pathfinder-1.6.34.ebuild:
+  version bump, take formal maintainership
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+*pathfinder-1.6.31 (25 Feb 2008)
+
+  25 Feb 2008; Matti Bickel <mabi@gentoo.org> -pathfinder-1.6.27.ebuild,
+  -pathfinder-1.6.29.ebuild, +pathfinder-1.6.31.ebuild:
+  added new version, cleanup
+
+  25 Feb 2008; Jeroen Roovers <jer@gentoo.org> pathfinder-1.6.30.ebuild:
+  Stable for HPPA (bug #210543).
+
+  21 Nov 2007; Ferris McCormick <fmccor@gentoo.org>
+  pathfinder-1.6.30.ebuild:
+  Add ~sparc keyword (implicit in Bug #199853), it's a utility from
+  x11-libs/fox.
+
+*pathfinder-1.6.30 (21 Nov 2007)
+
+  21 Nov 2007; Matti Bickel <mabi@gentoo.org> +pathfinder-1.6.30.ebuild:
+  version bump
+
+*pathfinder-1.6.29 (09 Oct 2007)
+
+  09 Oct 2007; Matti Bickel <mabi@gentoo.org> -pathfinder-1.6.19.ebuild,
+  -pathfinder-1.6.25.ebuild, +pathfinder-1.6.29.ebuild:
+  clean stale versions, bump
+
+  09 Oct 2007; Jeroen Roovers <jer@gentoo.org> pathfinder-1.6.27.ebuild:
+  Stable for HPPA (bug #194813).
+
+*pathfinder-1.6.27 (06 Jun 2007)
+
+  06 Jun 2007; Matti Bickel <mabi@gentoo.org> +pathfinder-1.6.27.ebuild:
+  version bump
+
+  06 Jun 2007; Jeroen Roovers <jer@gentoo.org> pathfinder-1.6.25.ebuild:
+  Stable for HPPA (bug #181017).
+
+  19 May 2007; Matti Bickel <mabi@gentoo.org> -pathfinder-1.4.12.ebuild,
+  -pathfinder-1.5.4.ebuild:
+  clean old ebuilds
+
+*pathfinder-1.6.25 (28 Mar 2007)
+
+  28 Mar 2007; Matti Bickel <mabi@gentoo.org> +pathfinder-1.6.25.ebuild:
+  Version bump
+
+*pathfinder-1.6.19 (20 Dec 2006)
+
+  20 Dec 2006; Matti Bickel <mabi@gentoo.org> -pathfinder-1.2.15.ebuild,
+  +pathfinder-1.6.19.ebuild:
+  revbump+cleanup
+
+  30 Oct 2006; Matti Bickel <mabi@gentoo.org> pathfinder-1.2.15.ebuild,
+  pathfinder-1.4.12.ebuild, pathfinder-1.5.4.ebuild:
+  Killed ranged deps, set DEPEND (bug #153329)
+
+  29 Oct 2006; Matti Bickel <mabi@gentoo.org> -pathfinder-1.0.53.ebuild:
+  Removing stale ebuilds (bug #153234)
+
+  15 Jul 2006; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove rphillips from metadata.xml as he's retired.
+
+  04 Jul 2005; Jonathan Smith <smithj@gentoo.org> +metadata.xml:
+  added metadata
+
+*pathfinder-1.2.15 (07 May 2005)
+
+  07 May 2005; <rphillips@gentoo.org> +pathfinder-1.0.53.ebuild,
+  +pathfinder-1.2.15.ebuild, +pathfinder-1.4.12.ebuild,
+  +pathfinder-1.5.4.ebuild:
+  Added Yaakov Selkowitz's eclass based fox ebuilds for testing.
+  Fixes #88924

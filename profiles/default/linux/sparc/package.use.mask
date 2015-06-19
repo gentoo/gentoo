@@ -1,0 +1,7 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/sparc/package.use.mask,v 1.3 2014/10/21 12:13:44 vapier Exp $
+
+# Mike Frysinger <vapier@gentoo.org> (21 Oct 2014)
+# This target supports ASAN/etc... #504200.
+sys-devel/gcc -sanitize

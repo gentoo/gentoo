@@ -1,0 +1,87 @@
+# ChangeLog for kde-misc/fancytasks
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/fancytasks/ChangeLog,v 1.18 2014/04/24 14:14:38 johu Exp $
+
+  24 Apr 2014; Johannes Huber <johu@gentoo.org> -fancytasks-1.1.2.ebuild,
+  fancytasks-1.1.2-r1.ebuild:
+  amd64/x86 stable, remove old.
+
+*fancytasks-1.1.2-r1 (20 Mar 2014)
+
+  20 Mar 2014; Johannes Huber <johu@gentoo.org> +fancytasks-1.1.2-r1.ebuild:
+  Revision bump to EAPI 5.
+
+  22 Jul 2012; Markos Chandras <hwoarang@gentoo.org> fancytasks-1.1.2.ebuild:
+  Stable on amd64 wrt bug #426840
+
+  16 Jul 2012; Jeff Horelick <jdhore@gentoo.org> fancytasks-1.1.2.ebuild:
+  marked x86 per bug 426840
+
+  16 Jul 2012; Johannes Huber <johu@gentoo.org> -fancytasks-1.1.0.ebuild,
+  fancytasks-1.1.2.ebuild:
+  Respect LINGUAS, remove old.
+
+*fancytasks-1.1.2 (14 Jun 2012)
+
+  14 Jun 2012; Michael Palimaka <kensington@gentoo.org>
+  +fancytasks-1.1.2.ebuild, -fancytasks-1.0.98.ebuild,
+  -fancytasks-1.0.99.ebuild:
+  Version bump, remove old.
+
+*fancytasks-1.1.0 (23 Mar 2012)
+
+  23 Mar 2012; Johannes Huber <johu@gentoo.org> +fancytasks-1.1.0.ebuild:
+  Version bump wrt bug #409391.
+
+*fancytasks-1.0.99 (13 Mar 2012)
+
+  13 Mar 2012; Johannes Huber <johu@gentoo.org> +fancytasks-1.0.99.ebuild,
+  -fancytasks-1.0.96.ebuild:
+  Version bump, remove old.
+
+  03 Mar 2012; Johannes Huber <johu@gentoo.org> fancytasks-1.0.98.ebuild:
+  Set KDE minimal version to 4.8, fixes bug #406767.
+
+*fancytasks-1.0.98 (01 Mar 2012)
+
+  01 Mar 2012; Johannes Huber <johu@gentoo.org> +fancytasks-1.0.98.ebuild:
+  Version bump.
+
+*fancytasks-1.0.96 (22 Dec 2011)
+
+  22 Dec 2011; Johannes Huber <johu@gentoo.org> +fancytasks-1.0.96.ebuild,
+  -fancytasks-1.0.94.ebuild:
+  Version bump, makes bug #395667 obsolete.
+
+  29 Oct 2011; Jonathan Callen <abcd@gentoo.org> fancytasks-1.0.94.ebuild:
+  Bump to EAPI=4; make DOCS an array; cleanup
+
+  31 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  -fancytasks-1.0.92.ebuild:
+  remove old
+
+*fancytasks-1.0.94 (06 Jan 2011)
+
+  06 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +fancytasks-1.0.94.ebuild:
+  Version bump (bug 348451)
+
+  15 May 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  -fancytasks-0.9.8.ebuild, fancytasks-1.0.92.ebuild:
+  Remove old, update qimageblitz category, deps cleanup
+
+  10 Mar 2010; Krzysiek Pawlik <nelchael@gentoo.org>
+  fancytasks-1.0.92.ebuild:
+  Update list of available languages.
+
+*fancytasks-1.0.92 (10 Mar 2010)
+
+  10 Mar 2010; Krzysiek Pawlik <nelchael@gentoo.org>
+  +fancytasks-1.0.92.ebuild:
+  Version bump.
+
+*fancytasks-0.9.8 (28 Oct 2009)
+
+  28 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +fancytasks-0.9.8.ebuild:
+  Initial commit wrt #285313, thanks to Art Win for reporting.

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=virtual/libusb:0 sys-libs/readline
+DESCRIPTION=USB Reverse engineering tools
+EAPI=2
+HOMEPAGE=http://usb-robot.sourceforge.net/
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=virtual/libusb:0 sys-libs/readline
+SLOT=0
+SRC_URI=mirror://sourceforge/usb-robot/usb-robot-0.2.0.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=e4e6f754ab651d90acb8cc311b262d06

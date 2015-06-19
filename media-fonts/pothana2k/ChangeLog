@@ -1,0 +1,34 @@
+# ChangeLog for media-fonts/pothana2k
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/pothana2k/ChangeLog,v 1.7 2012/06/30 05:37:12 yngwin Exp $
+
+  30 Jun 2012; Ben de Groot <yngwin@gentoo.org> pothana2k-2006-r1.ebuild:
+  Mark stable, bug #286245
+
+  07 Sep 2009; Ryan Hill <dirtyepic@gentoo.org> pothana2k-2006-r1.ebuild:
+  Drop pkg_postinst message, handled by eclass now.
+
+  23 Jun 2008; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  pothana2k-2006-r1.ebuild:
+  mark ~ppc (bug #224979)
+
+  08 Jun 2008; Kenneth Prugh <ken69267@gentoo.org> pothana2k-2006-r1.ebuild:
+  added ~amd64, bug #224979
+
+  05 Jun 2008; Markus Rothe <corsair@gentoo.org> pothana2k-2006-r1.ebuild:
+  Added ~ppc64; bug #224979
+
+*pothana2k-2006-r1 (05 Jun 2008)
+
+  05 Jun 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/65-pothana2k.conf, -pothana2k-2006.ebuild,
+  +pothana2k-2006-r1.ebuild:
+  adding fontconfig file to enable rendering Telugu even though a single
+  glyph is missing
+
+*pothana2k-2006 (05 Jun 2008)
+
+  05 Jun 2008; Peter Alfredsen <loki_val@gentoo.org> +metadata.xml,
+  +pothana2k-2006.ebuild:
+  Initial commit. Closes bug 102389. Thanks to Francisco José Cañizares
+  Santofimia <telefrancisco@gmail.com> for providing the initial ebuild.

@@ -1,0 +1,27 @@
+From 9a85d61a39f9afd0f60e9e5fc59e7ade553c0541 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 27 Oct 2014 14:52:01 -0400
+Subject: [PATCH] tests: fix skip exit code
+
+The test harness looks for exit code 77 to mark tests as skipped, not
+exit 2.  Switch over so we get SKIP instead of FAIL.
+---
+ tests/WgetFeature.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/WgetFeature.pm b/tests/WgetFeature.pm
+index 0762314..118e79c 100644
+--- a/tests/WgetFeature.pm
++++ b/tests/WgetFeature.pm
+@@ -22,7 +22,7 @@ sub import
+ 
+     unless ($have_features{$feature}) {
+         print $skip_messages{$feature}, "\n";
+-        exit 2; # skip
++        exit 77; # skip
+     }
+ }
+ 
+-- 
+2.1.2
+

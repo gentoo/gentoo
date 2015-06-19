@@ -1,0 +1,88 @@
+# ChangeLog for dev-ruby/webrobots
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/webrobots/ChangeLog,v 1.22 2015/04/12 07:23:03 graaff Exp $
+
+  12 Apr 2015; Hans de Graaff <graaff@gentoo.org> webrobots-0.1.1-r2.ebuild:
+  Add ruby22.
+
+  09 Apr 2015; Hans de Graaff <graaff@gentoo.org> -webrobots-0.1.1.ebuild:
+  Cleanup.
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> webrobots-0.1.1-r1.ebuild:
+  Stable for x86, wrt bug #545458
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> webrobots-0.1.1-r1.ebuild:
+  Stable for amd64, wrt bug #545458
+
+*webrobots-0.1.1-r2 (04 Apr 2015)
+
+  04 Apr 2015; Hans de Graaff <graaff@gentoo.org> webrobots-0.1.1-r1.ebuild,
+  +webrobots-0.1.1-r2.ebuild:
+  Create stable candidate.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> webrobots-0.1.1-r1.ebuild,
+  webrobots-0.1.1.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  23 May 2014; Hans de Graaff <graaff@gentoo.org> webrobots-0.1.1-r1.ebuild:
+  Add ruby21. Do not run test that require the network, bug 431528.
+
+  05 Apr 2014; Manuel Rüger <mrueg@gentoo.org> webrobots-0.1.1-r1.ebuild,
+  webrobots-0.1.1.ebuild:
+  Remove ruby18 target.
+
+*webrobots-0.1.1-r1 (11 Nov 2013)
+
+  11 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +webrobots-0.1.1-r1.ebuild:
+  Add ruby20 target.
+
+  15 Sep 2013; Agostino Sarubbo <ago@gentoo.org> webrobots-0.1.1.ebuild:
+  Stable for x86, wrt bug #483694
+
+  15 Sep 2013; Agostino Sarubbo <ago@gentoo.org> webrobots-0.1.1.ebuild:
+  Stable for amd64, wrt bug #483694
+
+  10 Sep 2013; Manuel Rüger <mrueg@gentoo.org> -webrobots-0.0.13.ebuild:
+  Cleanup old.
+
+*webrobots-0.1.1 (23 Apr 2013)
+
+  23 Apr 2013; Hans de Graaff <graaff@gentoo.org> +webrobots-0.1.1.ebuild:
+  Version bump.
+
+  25 Nov 2012; Thomas Kahle <tomka@gentoo.org> webrobots-0.0.13.ebuild:
+  marked ~x86 per bug 432830
+
+  29 Sep 2012; Fabian Groffen <grobian@gentoo.org> webrobots-0.0.13.ebuild:
+  Added Prefix keywords, bug #432830
+
+  27 Sep 2012; Samuli Suominen <ssuominen@gentoo.org> webrobots-0.0.13.ebuild:
+  Keyword ~ppc/~ppc64 wrt #432830
+
+  17 Aug 2012; Hans de Graaff <graaff@gentoo.org> -webrobots-0.0.11.ebuild,
+  -webrobots-0.0.12.ebuild:
+  Cleanup.
+
+*webrobots-0.0.13 (25 Jan 2012)
+
+  25 Jan 2012; Hans de Graaff <graaff@gentoo.org> +webrobots-0.0.13.ebuild:
+  Version bump.
+
+*webrobots-0.0.12 (31 Oct 2011)
+
+  31 Oct 2011; Hans de Graaff <graaff@gentoo.org> +webrobots-0.0.12.ebuild:
+  Version bump. Add ruby19.
+
+  31 Oct 2011; Hans de Graaff <graaff@gentoo.org> -webrobots-0.0.10.ebuild:
+  Remove old version.
+
+*webrobots-0.0.11 (12 Aug 2011)
+
+  12 Aug 2011; Hans de Graaff <graaff@gentoo.org> +webrobots-0.0.11.ebuild:
+  Version bump.
+
+*webrobots-0.0.10 (18 Jul 2011)
+
+  18 Jul 2011; Hans de Graaff <graaff@gentoo.org> +webrobots-0.0.10.ebuild,
+  +metadata.xml:
+  Initial import. New dependency of dev-ruby/mechanize.

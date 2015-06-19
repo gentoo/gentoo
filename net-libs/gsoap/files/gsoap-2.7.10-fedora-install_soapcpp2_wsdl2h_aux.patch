@@ -1,0 +1,12 @@
+--- gsoap-2.7/gsoap/Makefile.am	2008-01-27 15:02:36.000000000 -0600
++++ gsoap-2.7mf/gsoap/Makefile.am	2008-01-28 10:24:26.000000000 -0600
+@@ -12,6 +12,9 @@ CLEANFILES=soapcpp2 stdsoap2_cpp.cpp std
+ AM_CXXFLAGS=$(SOAPCPP2_DEBUG) -D$(platform)
+ AM_CFLAGS=$(SOAPCPP2_DEBUG) -D$(platform)
+ 
++# Install all soapcpp2 and wsdl2h files into /usr/share/gsoap
++nobase_pkgdata_DATA = import/* plugin/* WS/* custom/* extras/*
++
+ ## we cannot build stdsoap2.o from 2 different sources (stdsoap2.cpp and stdsoap2.c), so we need an intermediate target:
+ stdsoap2_ck.c: stdsoap2.cpp
+ 	$(LN_S) $(srcdir)/stdsoap2.cpp stdsoap2_ck.c

@@ -1,0 +1,160 @@
+# ChangeLog for net-mail/uw-mailutils
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/uw-mailutils/ChangeLog,v 1.41 2012/03/09 14:08:35 eras Exp $
+
+  09 Mar 2012; Eray Aslan <eras@gentoo.org> -uw-mailutils-2007e.ebuild,
+  -uw-mailutils-2007e-r1.ebuild:
+  remove old
+
+  08 Mar 2012; Brent Baude <ranger@gentoo.org> uw-mailutils-2007f.ebuild:
+  Marking uw-mailutils-2007f ppc64 for bug 391353
+
+  04 Jan 2012; Brent Baude <ranger@gentoo.org> uw-mailutils-2007f.ebuild:
+  Marking uw-mailutils-2007f ppc for bug 391353
+
+  24 Dec 2011; Eray Aslan <eras@gentoo.org> uw-mailutils-2007f.ebuild:
+  Fix building with -ssl USE flag - bug #395855
+
+  17 Dec 2011; Raúl Porcel <armin76@gentoo.org> uw-mailutils-2007f.ebuild:
+  alpha/ia64/sparc stable wrt #391353
+
+  28 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  uw-mailutils-2007f.ebuild:
+  x86 stable wrt bug #391353
+
+  26 Nov 2011; Markos Chandras <hwoarang@gentoo.org> uw-mailutils-2007f.ebuild:
+  Stable on amd64 wrt bug #391353
+
+  22 Nov 2011; Jeroen Roovers <jer@gentoo.org> uw-mailutils-2007f.ebuild:
+  Stable for HPPA (bug #391353).
+
+*uw-mailutils-2007f (12 Sep 2011)
+
+  12 Sep 2011; Eray Aslan <eras@gentoo.org> +uw-mailutils-2007f.ebuild:
+  version bump
+
+  06 Jun 2011; Eray Aslan <eras@gentoo.org> -uw-mailutils-2007b.ebuild,
+  uw-mailutils-2007e-r1.ebuild:
+  Respect LDFLAGS - bug #336565. Remove old. EAPI bump.
+
+*uw-mailutils-2007e-r1 (06 May 2011)
+
+  06 May 2011; Eray Aslan <eras@gentoo.org> +uw-mailutils-2007e-r1.ebuild,
+  +files/uw-mailutils-ssl.patch:
+  add pam and ssl USE flags - bugs 129729 276401
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> uw-mailutils-2007b.ebuild,
+  uw-mailutils-2007e.ebuild:
+  Remove virtual/libc
+
+  02 Feb 2009; Raúl Porcel <armin76@gentoo.org> uw-mailutils-2007e.ebuild:
+  ia64/sparc stable wrt #245425
+
+  31 Jan 2009; Tobias Klausmann <klausman@gentoo.org>
+  uw-mailutils-2007e.ebuild:
+  Stable on alpha, bug #245425
+
+  24 Jan 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  uw-mailutils-2007e.ebuild:
+  ppc stable, bug #245425
+
+  22 Jan 2009; Brent Baude <ranger@gentoo.org> uw-mailutils-2007e.ebuild:
+  Marking uw-mailutils-2007e ppc64 for bug 245435
+
+  21 Jan 2009; Markus Meier <maekke@gentoo.org> uw-mailutils-2007e.ebuild:
+  amd64/x86 stable, bug #245425
+
+  20 Jan 2009; Jeroen Roovers <jer@gentoo.org> uw-mailutils-2007e.ebuild:
+  Stable for HPPA (bug #245425).
+
+*uw-mailutils-2007e (13 Jan 2009)
+
+  13 Jan 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  -uw-mailutils-2004g.ebuild, +uw-mailutils-2007e.ebuild:
+  Version bump, #245425
+
+  20 Sep 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  uw-mailutils-2007b.ebuild:
+  ppc stable, bug #231258
+
+  25 Aug 2008; Raúl Porcel <armin76@gentoo.org> uw-mailutils-2007b.ebuild:
+  alpha/ia64 stable wrt #231258
+
+  24 Aug 2008; Markus Rothe <corsair@gentoo.org> uw-mailutils-2007b.ebuild:
+  Stable on ppc64; bug #231258
+
+  22 Aug 2008; Jeroen Roovers <jer@gentoo.org> uw-mailutils-2007b.ebuild:
+  Stable for HPPA (bug #231258).
+
+  21 Aug 2008; Friedrich Oslage <bluebird@gentoo.org>
+  uw-mailutils-2007b.ebuild:
+  Stable on sparc, bug #231258
+
+  20 Aug 2008; Markus Meier <maekke@gentoo.org> uw-mailutils-2007b.ebuild:
+  amd64/x86 stable, bug #231258
+
+  19 Aug 2008; Christian Hoffmann <hoffie@gentoo.org>
+  uw-mailutils-2007b.ebuild:
+  moving blocker against old uw-imap versions to RDEPEND as uw-imap should
+  not affect building of this package at all (bug 231258 #c17)
+
+*uw-mailutils-2007b (24 Jul 2008)
+
+  24 Jul 2008; Christian Hoffmann <hoffie@gentoo.org>
+  +uw-mailutils-2007b.ebuild:
+  version bump (bug 153281), thanks to Target <target@targ.dyndns.org> for
+  ebuild submission and testing; also fixing quoting and license; thanks to
+  dertobi123 for approval for this commit
+
+  02 Aug 2007; Roy Marples <uberlord@gentoo.org> uw-mailutils-2004g.ebuild:
+  Fix compile on FreeBSD and add ~x86-fbsd keyword, #104760.
+
+  21 Apr 2007; Raúl Porcel <armin76@gentoo.org> uw-mailutils-2004g.ebuild:
+  ia64 stable
+
+  02 Apr 2007; Raúl Porcel <armin76@gentoo.org> uw-mailutils-2004g.ebuild:
+  Add ~ia64 keyword wrt bug 170301
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  09 Oct 2005; Andrej Kacian <ticho@gentoo.org> ChangeLog:
+  Use pam-less make target. Bug #108529, reported by Henrique Dias
+  <hdias@aesbuc.pt>.
+
+  07 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  uw-mailutils-2004g.ebuild:
+  fix DESCRIPTION and HOMEPAGE
+
+  07 Oct 2005; Andrej Kacian <ticho@gentoo.org> uw-mailutils-2004g.ebuild:
+  Added block of pine to deps, to prevent file collisions.
+
+  07 Oct 2005; Simon Stelling <blubb@gentoo.org> uw-mailutils-2004g.ebuild:
+  marked stable on amd64 wrt bug 108206
+
+  07 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  uw-mailutils-2004g.ebuild:
+  Stable on hppa, ppc. See bug #108206.
+
+  06 Oct 2005; Brent Baude <ranger@gentoo.org> uw-mailutils-2004g.ebuild:
+  Marking uw-imap-2004g-r1 ppc64 for bug 108206
+
+  06 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  uw-mailutils-2004g.ebuild:
+  Stable on sparc wrt #108206
+
+  06 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  uw-mailutils-2004g.ebuild:
+  stable on alpha wrt bug #108206
+
+  06 Oct 2005; Andrej Kacian <ticho@gentoo.org> uw-mailutils-2004g.ebuild:
+  Stable on x86, due to security bug #108206.
+
+*uw-mailutils-2004g (06 Oct 2005)
+
+  06 Oct 2005; Andrej Kacian <ticho@gentoo.org>
+  +files/uw-mailutils-2004g.patch, +metadata.xml,
+  +uw-mailutils-2004g.ebuild:
+  Initial import. Closes bug #105313, reported by Zak Kipling <zak at
+  transversal.com>.
+

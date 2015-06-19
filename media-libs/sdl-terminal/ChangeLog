@@ -1,0 +1,64 @@
+# ChangeLog for media-libs/sdl-terminal
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/sdl-terminal/ChangeLog,v 1.14 2014/07/22 14:49:49 tupone Exp $
+
+  22 Jul 2014; Alfredo Tupone <tupone@gentoo.org> sdl-terminal-1.1.3-r1.ebuild,
+  +files/sdl-terminal-1.1.3-nopython.patch,
+  -files/sdl-terminal-1.1.3-python-libs-path.patch:
+  Removing python dependency. Requiring virtual/glu. Fix bug #514598 by 
+  Patrick Lauer
+
+  13 Nov 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  sdl-terminal-1.1.3-r1.ebuild:
+  upstream website went away
+
+  22 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -sdl-terminal-1.1.3.ebuild:
+  old
+
+  04 Dec 2012; <ago@gentoo.org> sdl-terminal-1.1.3-r1.ebuild:
+  Stable for x86, wrt bug #443542
+
+  16 Nov 2012; Agostino Sarubbo <ago@gentoo.org> sdl-terminal-1.1.3-r1.ebuild:
+  Stable for amd64, wrt bug #443542
+
+  17 Oct 2012;  <ago@gentoo.org> sdl-terminal-1.1.3-r1.ebuild:
+  Add ~amd64, wrt to bug #438442
+
+  15 Oct 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  sdl-terminal-1.1.3-r1.ebuild:
+  tidy
+
+*sdl-terminal-1.1.3-r1 (15 Oct 2012)
+
+  15 Oct 2012; Sergey Popov <pinkbyte@gentoo.org>
+  +sdl-terminal-1.1.3-r1.ebuild,
+  +files/sdl-terminal-1.1.3-python-libs-path.patch:
+  Revision bump: bump to EAPI 4, build static libs optionally, fix python libs
+  searching in configure phase
+
+  22 Apr 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  sdl-terminal-1.1.3.ebuild:
+  update HOMEPAGE (bug #412775)
+
+  19 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  sdl-terminal-1.1.3.ebuild:
+  stable x86, bug 284492
+
+  11 Nov 2007; Tupone Alfredo <tupone@gentoo.org> sdl-terminal-1.1.3.ebuild:
+  Fixing homepage and download url
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*sdl-terminal-1.1.3 (24 Feb 2006)
+
+  24 Feb 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdl-terminal-1.1.3.ebuild:
+  version bump
+
+*sdl-terminal-1.1.0 (10 Jan 2006)
+
+  10 Jan 2006; Michael Sterrett <mr_bones_@gentoo.org> +metadata.xml,
+  +sdl-terminal-1.1.0.ebuild:
+  initial commit

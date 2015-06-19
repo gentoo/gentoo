@@ -1,0 +1,29 @@
+# ChangeLog for media-video/google2srt
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/google2srt/ChangeLog,v 1.5 2013/08/04 21:53:41 sbriesen Exp $
+
+  04 Aug 2013; Stefan Briesenick <sbriesen@gentoo.org>
+  -google2srt-0.5.2.ebuild:
+  removed old version.
+
+*google2srt-0.5.6 (04 Aug 2013)
+
+  04 Aug 2013; Stefan Briesenick <sbriesen@gentoo.org>
+  +google2srt-0.5.6.ebuild:
+  version bump.
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #92799
+
+*google2srt-0.5.3 (10 Jul 2011)
+
+  10 Jul 2011; Stefan Briesenick <sbriesen@gentoo.org> google2srt-0.5.2.ebuild,
+  +google2srt-0.5.3.ebuild, -files/icon.png:
+  version bump + icon.png moved to distfiles
+
+*google2srt-0.5.2 (02 Aug 2010)
+
+  02 Aug 2010; Stefan Briesenick <sbriesen@gentoo.org>
+  +google2srt-0.5.2.ebuild, +files/build.xml, +files/icon.png,
+  +metadata.xml:
+  initial commit

@@ -1,0 +1,49 @@
+# ChangeLog for x11-plugins/wmsystray
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmsystray/ChangeLog,v 1.13 2015/03/20 08:57:14 jlec Exp $
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> files/wmsystray.desktop:
+  Fix desktop file
+
+  09 Sep 2010; Michele Noberasco <s4t4n@gentoo.org> wmsystray-0.1.1.ebuild:
+  Honour Gentoo LDFLAGS, see bug #336296.
+  Some QA on package build.
+
+  30 Jun 2007; Santiago M. Mola <coldwind@gentoo.org>
+  +files/wmsystray-0.1.1-Makefile.patch,
+  +files/wmsystray-0.1.1-gcc-3.4.patch, -files/wmsystray-gcc-3.4.patch,
+  -files/wmsystray-cflags.patch, wmsystray-0.1.1.ebuild:
+  Use correct install program (bug #176100), use domenu and clean *DEPEND
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  16 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org> wmsystray-0.1.1.ebuild:
+  Remove prepallman.
+
+  31 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> wmsystray-0.1.1.ebuild:
+  Fixed DEPEND for modular X.
+
+  25 Jul 2005; Simon Stelling <blubb@gentoo.org> wmsystray-0.1.1.ebuild:
+  stable on amd64
+
+  26 Jun 2005; Simon Stelling <blubb@gentoo.org> wmsystray-0.1.1.ebuild:
+  added ~amd64 keyword
+
+  25 Nov 2004; Jason Wever <weeve@gentoo.org> wmsystray-0.1.1.ebuild:
+  Added ~sparc keyword.
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  wmsystray-0.1.1.ebuild:
+  Masked wmsystray-0.1.1.ebuild stable for ppc
+
+  26 Aug 2004; Michele Noberasco <s4t4n@gentoo.org> wmsystray-0.1.1.ebuild:
+  Add patch to fix #61704. Stable for x86...
+
+  18 Jul 2004; David Holm <dholm@gentoo.org> wmsystray-0.1.1.ebuild:
+  Added to ~ppc.
+
+*wmsystray-0.1.1 (17 Jul 2004)
+
+  17 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmsystray-0.1.1.ebuild:
+  Initial import. Thanks to Przemyslaw Maciag. Closes #54947.

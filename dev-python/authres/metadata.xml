@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>python</herd>
+	<longdescription>
+	RFC 5451 Authentication-Results Headers generation and parsing for Python.
+	It also supports Authentication Results extensions:
+		RFC 5617 DKIM/ADSP
+		RFC 6008 DKIM signature identification (header.b)
+		RFC 6212 Vouch By Reference (VBR)
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">authres</remote-id>
+		<remote-id type="launchpad">authentication-results-python</remote-id>
+	</upstream>
+</pkgmetadata>

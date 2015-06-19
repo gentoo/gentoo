@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=dev-dotnet/libgdiplus dev-lang/mono media-libs/freetype:2[X] media-libs/libsdl2[X,opengl,video] media-libs/openal virtual/jpeg virtual/opengl >=sys-apps/sed-4
+DESCRIPTION=A free RTS engine supporting games like Command & Conquer and Red Alert
+EAPI=5
+HOMEPAGE=http://open-ra.org/
+IUSE=tools
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-dotnet/libgdiplus dev-lang/mono media-libs/freetype:2[X] media-libs/libsdl2[X,opengl,video] media-libs/openal virtual/jpeg virtual/opengl games-misc/games-envd
+SLOT=0
+SRC_URI=https://github.com/OpenRA/OpenRA/tarball/release-20141029 -> openra-20141029.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	mono-env	59ca1177366cc9e14521d3501e9bb281	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	vcs-snapshot	58b766562c9fbfb3268b04e33cdf2f66
+_md5_=9a7dff8580589675fda0dd7f417f0084

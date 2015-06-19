@@ -1,0 +1,38 @@
+--- db-4.0.14/dist/Makefile.in.orig	2003-08-16 06:21:53.763400112 +0200
++++ db-4.0.14/dist/Makefile.in	2003-08-16 06:23:16.036892640 +0200
+@@ -58,7 +58,7 @@
+ 
+ LDFLAGS=	@LDFLAGS@
+ LIBS=		@LIBS@
+-LIBSO_LIBS=	@LIBSO_LIBS@
++LIBSO_LIBS=	@LIBSO_LIBS@ $(LIBS)
+ 
+ libdb=		libdb.a
+ libso_base=	libdb
+@@ -77,7 +77,7 @@
+ CXX=		@MAKEFILE_CXX@
+ CXXLINK=	@MAKEFILE_CXXLINK@
+ XSOLINK=	@MAKEFILE_XSOLINK@
+-LIBXSO_LIBS=	@LIBXSO_LIBS@
++LIBXSO_LIBS=	@LIBXSO_LIBS@ $(LIBS)
+ 
+ libcxx=		libdb_cxx.a
+ libxso_base=	libdb_cxx
+@@ -93,7 +93,7 @@
+ # Java support is optional and requires shared librarires.
+ ##################################################
+ CLASSPATH=	$(JAVA_CLASSTOP)
+-LIBJSO_LIBS=	@LIBJSO_LIBS@
++LIBJSO_LIBS=	@LIBJSO_LIBS@ $(LIBS)
+ 
+ JAR=		@JAR@
+ JAVAC=		env CLASSPATH="$(CLASSPATH)" @JAVAC@
+@@ -121,7 +121,7 @@
+ # Tcl support is optional and requires shared libraries.
+ ##################################################
+ TCFLAGS=	@TCFLAGS@
+-LIBTSO_LIBS=	@LIBTSO_LIBS@
++LIBTSO_LIBS=	@LIBTSO_LIBS@ $(LIBS)
+ libtso_base=	libdb_tcl
+ libtso=		$(libtso_base)-$(SOVERSION).@SOSUFFIX@
+ libtso_static=	$(libtso_base)-$(SOVERSION).a

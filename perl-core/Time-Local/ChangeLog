@@ -1,0 +1,356 @@
+# ChangeLog for perl-core/Time-Local
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/perl-core/Time-Local/ChangeLog,v 1.83 2014/07/26 12:46:37 dilfridge Exp $
+
+*Time-Local-1.230.0-r1 (26 Jul 2014)
+
+  26 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Time-Local-1.230.0-r1.ebuild, -Time-Local-1.230.0.ebuild:
+  EAPI bump
+
+  15 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -Time-Local-1.200.0.ebuild, -Time-Local-1.220.0.ebuild:
+  Remove old
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org> Time-Local-1.200.0.ebuild,
+  Time-Local-1.220.0.ebuild, Time-Local-1.230.0.ebuild:
+  Add arm64 love.
+
+  17 Jan 2014; Mike Frysinger <vapier@gentoo.org> Time-Local-1.230.0.ebuild:
+  Mark m68k stable.
+
+  31 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> -Time-Local-1.19.01.ebuild:
+  Drop old
+
+  02 Mar 2013; Agostino Sarubbo <ago@gentoo.org> Time-Local-1.230.0.ebuild:
+  Stable for sh, wrt bug #458122
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Time-Local-1.230.0.ebuild:
+  Stable for sparc, wrt bug #458122
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Time-Local-1.230.0.ebuild:
+  Stable for ia64, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Time-Local-1.230.0.ebuild:
+  Stable for arm, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Time-Local-1.230.0.ebuild:
+  Stable for s390, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Time-Local-1.230.0.ebuild:
+  Stable for alpha, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Time-Local-1.230.0.ebuild:
+  Stable for hppa, wrt bug #458122
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org> Time-Local-1.230.0.ebuild:
+  Add ~arm-linux keyword.
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Time-Local-1.230.0.ebuild:
+  Stable for ppc, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Time-Local-1.230.0.ebuild:
+  Stable for ppc64, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Time-Local-1.230.0.ebuild:
+  Stable for x86, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Time-Local-1.230.0.ebuild:
+  Stable for amd64, wrt bug #458122
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org> Time-Local-1.230.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+*Time-Local-1.230.0 (27 Jul 2012)
+
+  27 Jul 2012; Torsten Veller <tove@gentoo.org> +Time-Local-1.230.0.ebuild:
+  Version bump
+
+*Time-Local-1.220.0 (13 Jul 2012)
+
+  13 Jul 2012; Torsten Veller <tove@gentoo.org> +Time-Local-1.220.0.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  05 May 2012; Alexis Ballier <aballier@gentoo.org> Time-Local-1.200.0.ebuild:
+  keyword ~amd64-fbsd
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> Time-Local-1.200.0.ebuild:
+  ia64/m68k/s390/sh/sparc/x86 stable wrt #397199
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> Time-Local-1.200.0.ebuild:
+  Marking Time-Local-1.200.0 ppc64 for bug 397199
+
+  25 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  Time-Local-1.200.0.ebuild:
+  Stable on alpha, bug #397199
+
+  10 Feb 2012; Markus Meier <maekke@gentoo.org> Time-Local-1.200.0.ebuild:
+  arm stable, bug #397199
+
+  08 Feb 2012; Jeroen Roovers <jer@gentoo.org> Time-Local-1.200.0.ebuild:
+  Stable for HPPA (bug #397199).
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org> Time-Local-1.200.0.ebuild:
+  Marking Time-Local-1.200.0 ppc for bug 397199
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Time-Local-1.200.0.ebuild:
+  Stable for amd64, wrt bug #397199
+
+  29 Dec 2011; Fabian Groffen <grobian@gentoo.org> Time-Local-1.200.0.ebuild:
+  Add Solaris keywords, bug #395763
+
+*Time-Local-1.200.0 (18 May 2011)
+
+  18 May 2011; Torsten Veller <tove@gentoo.org> -Time-Local-1.200.ebuild,
+  +Time-Local-1.200.0.ebuild:
+  Change version scheme
+
+  03 May 2011; Fabian Groffen <grobian@gentoo.org> Time-Local-1.200.ebuild:
+  Marked ~x64-macos, bug #365285
+
+*Time-Local-1.200 (13 Jan 2011)
+
+  13 Jan 2011; Torsten Veller <tove@gentoo.org> +Time-Local-1.200.ebuild:
+  Version bump
+
+  25 Nov 2010; Fabian Groffen <grobian@gentoo.org>
+  Time-Local-1.19.01.ebuild:
+  Marked ~ppc-macos
+
+  17 Jan 2010; Torsten Veller <tove@gentoo.org> -Time-Local-1.17.ebuild,
+  -Time-Local-1.18.ebuild:
+  Cleanup
+
+  05 Jan 2010; nixnut <nixnut@gentoo.org> Time-Local-1.19.01.ebuild:
+  ppc stable #288026
+
+  16 Dec 2009; Jonathan Callen <abcd@gentoo.org> Time-Local-1.17.ebuild,
+  Time-Local-1.18.ebuild, Time-Local-1.19.01.ebuild:
+  QA: Transfer prefix keywords
+
+  14 Dec 2009; Raúl Porcel <armin76@gentoo.org> Time-Local-1.19.01.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #288026
+
+  10 Dec 2009; Brent Baude <ranger@gentoo.org> Time-Local-1.19.01.ebuild:
+  Marking Time-Local-1.19.01 ppc64 stable for bug 288026
+
+  07 Dec 2009; Markus Meier <maekke@gentoo.org> Time-Local-1.19.01.ebuild:
+  arm stable, bug #288026
+
+  07 Dec 2009; Jeroen Roovers <jer@gentoo.org> Time-Local-1.19.01.ebuild:
+  Stable for HPPA (bug #288026).
+
+  04 Dec 2009; Torsten Veller <tove@gentoo.org> Time-Local-1.19.01.ebuild:
+  Stable on amd64 (#288026)
+
+  04 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  Time-Local-1.19.01.ebuild:
+  x86 stable, bug 288026
+
+  07 Jul 2009; Jeroen Roovers <jer@gentoo.org> Time-Local-1.18.ebuild:
+  Stable for HPPA too.
+
+  13 Mar 2009; Torsten Veller <tove@gentoo.org> -Time-Local-1.11.ebuild,
+  -Time-Local-1.12.ebuild, -Time-Local-1.13.ebuild:
+  Cleanup
+
+*Time-Local-1.19.01 (21 Nov 2008)
+
+  21 Nov 2008; Torsten Veller <tove@gentoo.org> +Time-Local-1.19.01.ebuild:
+  Version bump
+
+  15 Jul 2008; Raúl Porcel <armin76@gentoo.org> Time-Local-1.18.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+*Time-Local-1.18 (09 May 2008)
+
+  09 May 2008; Torsten Veller <tove@gentoo.org> +Time-Local-1.18.ebuild:
+  #219479 - Version bump
+
+  28 Mar 2008; Jeroen Roovers <jer@gentoo.org> Time-Local-1.17.ebuild:
+  Stable for HPPA too.
+
+  12 Aug 2007; Tom Gall <tgall@gentoo.org> Time-Local-1.17.ebuild:
+  stable on ppc64
+
+  04 Jul 2007; Raúl Porcel <armin76@gentoo.org> Time-Local-1.17.ebuild:
+  alpha/ia64/x86 stable
+
+  11 May 2007; Joshua Kinard <kumba@gentoo.org> Time-Local-1.17.ebuild:
+  Stable on mips.
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Time-Local-1.17.ebuild:
+  ppc stable
+
+  17 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  Time-Local-1.17.ebuild:
+  Stable on sparc
+
+  15 Apr 2007; Markus Rothe <corsair@gentoo.org> Time-Local-1.13.ebuild:
+  Stable on ppc64
+
+  09 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Time-Local-1.17.ebuild:
+  Marking amd64 stable
+
+  03 Mar 2007; Andrej Kacian <ticho@gentoo.org> Time-Local-1.13.ebuild:
+  Stable on x86, bug #169153.
+
+*Time-Local-1.17 (05 Feb 2007)
+
+  05 Feb 2007; Michael Cummings <mcummings@gentoo.org>
+  +Time-Local-1.17.ebuild:
+  Version bump
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Time-Local-1.11.ebuild, Time-Local-1.12.ebuild, Time-Local-1.13.ebuild:
+  Ebuild maintenance
+
+  24 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Time-Local-1.13.ebuild:
+  Stable on ppc.
+
+  23 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Time-Local-1.13.ebuild:
+  Stable on hppa
+
+  21 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> Time-Local-1.13.ebuild:
+  Stable on Alpha.
+
+  20 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  -Time-Local-1.10.ebuild:
+  Cleaning up old ebuild
+
+  20 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Time-Local-1.13.ebuild:
+  Marking amd64 stable
+
+  20 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Time-Local-1.13.ebuild:
+  Marking sparc stable
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Time-Local-1.12.ebuild:
+  ppc stable
+
+  05 Sep 2006; Joshua Kinard <kumba@gentoo.org> Time-Local-1.12.ebuild:
+  Marked stable on mips.
+
+*Time-Local-1.13 (20 Aug 2006)
+
+  20 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  +Time-Local-1.13.ebuild:
+  Version bump
+
+  18 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Time-Local-1.12.ebuild:
+  Marking amd64 stable
+
+  04 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Time-Local-1.10.ebuild, Time-Local-1.11.ebuild, Time-Local-1.12.ebuild:
+  Adding perl dep
+
+  18 Jul 2006; Bryan Østergaard <kloeri@gentoo.org> Time-Local-1.12.ebuild:
+  Stable on alpha.
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  Time-Local-1.12.ebuild:
+  Marking sparc stable
+
+  23 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> Time-Local-1.12.ebuild:
+  Add ~x86-fbsd keyword.
+
+  25 Feb 2006; Joshua Kinard <kumba@gentoo.org> Time-Local-1.11.ebuild:
+  Marked stable on mips.
+
+  07 Feb 2006; Simon Stelling <blubb@gentoo.org> Time-Local-1.11.ebuild:
+  stable on amd64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> Time-Local-1.11.ebuild:
+  Mark 1.11 stable on alpha
+
+  21 Jan 2006; Markus Rothe <corsair@gentoo.org> Time-Local-1.11.ebuild:
+  Stable on ppc64
+
+  15 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  Time-Local-1.11.ebuild:
+  Stable on ppc.
+
+  14 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Time-Local-1.11.ebuild:
+  Marking sparc x86 stable
+
+*Time-Local-1.12 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  +Time-Local-1.12.ebuild:
+  Version bump upstream
+
+  04 Jun 2005; Michael Cummings <mcummings@gentoo.org>
+  Time-Local-1.10.ebuild:
+  Tested on raq2, bumping for mips
+
+*Time-Local-1.11 (25 May 2005)
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +Time-Local-1.10.ebuild, +Time-Local-1.11.ebuild:
+  dev-perl => perl-core migration
+
+*Time-Local-1.11 (29 Apr 2005)
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Time-Local-1.05.ebuild, -Time-Local-1.07.ebuild, +Time-Local-1.11.ebuild:
+  Cleaning for mirror
+
+  25 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> Time-Local-1.10.ebuild:
+  Stable on alpha.
+
+  11 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org> Time-Local-1.10.ebuild:
+  Stable on amd64.
+
+  07 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Time-Local-1.10.ebuild:
+  Stable on ppc.
+
+  07 Apr 2005; Yuta SATOH <nigoro@gentoo.org> Time-Local-1.10.ebuild:
+  Stable on ppc64
+
+  02 Apr 2005; Michael Cummings <mcummings@gentoo.org> Time-Local-1.10.ebuild:
+  Marking stable for sparc and x86
+
+  23 Dec 2004; Yuta SATOH <nigoro@gentoo.org> Time-Local-1.10.ebuild:
+  added ~ppc64
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> Time-Local-1.07.ebuild:
+  Stable on amd64.
+
+*Time-Local-1.10 (10 Jun 2004)
+
+  10 Jun 2004; Michael Cummings <mcummings@gentoo.org> Time-Local-1.10.ebuild:
+  new version on cpan
+
+  20 Feb 2004; Aron Griffis <agriffis@gentoo.org> Time-Local-1.07.ebuild:
+  stable on alpha and ia64
+
+  09 Feb 2004; Bartosch Pixa <darkspecter@gentoo.org> Time-Local-1.07.ebuild:
+  set ppc in keywords
+
+  18 Jan 2004; <tuxus@gentoo.org> :
+  Added ~mips to KEYWORDS.
+
+  08 Jan 2004; <gustavoz@gentoo.org> Time-Local-1.07.ebuild:
+  stable for hppa and sparc
+
+*Time-Local-1.07 (15 Jul 2003)
+
+  15 Jul 2003; Michael Cummings <mcummings@gentoo.org> Time-Local-1.07.ebuild:
+  CPAN Version bump
+
+*Time-Local-1.05 (07 Jun 2003)
+
+  07 Jun 2003; Michael Cummings <mcummings@gentoo.org> Time-Local-1.05.ebuild:
+  Missing dep for Date::ICal

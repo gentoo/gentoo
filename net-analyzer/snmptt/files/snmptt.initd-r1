@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/snmptt/files/snmptt.initd-r1,v 1.1 2013/11/26 12:32:49 jer Exp $
+
+depend() {
+	need snmptrapd
+}
+
+start() {
+	ebegin "Starting snmptt"
+	start-stop-daemon --start --pidfile /run/snmptt.pid --exec /usr/sbin/snmptt
+	eend
+}
+
+stop() {
+	ebegin "Stopping snmptt"
+	start-stop-daemon --stop --pidfile /run/snmptt.pid
+	eend
+}

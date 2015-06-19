@@ -1,0 +1,96 @@
+# ChangeLog for dev-dotnet/gnome-keyring-sharp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/gnome-keyring-sharp/ChangeLog,v 1.18 2015/06/06 09:55:17 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  19 Jan 2014; Dion Moult <moult@gentoo.org> gnome-keyring-sharp-1.0.2.ebuild:
+  Remove dependency on virutal/monodoc as it basically pulls in dev-lang/mono
+  (bug 471180)
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org>
+  gnome-keyring-sharp-1.0.2-r1.ebuild:
+  Stable for ppc, wrt bug #487770
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org>
+  gnome-keyring-sharp-1.0.2-r1.ebuild:
+  x86 stable, bug #487770
+
+  23 Nov 2013; Pacho Ramos <pacho@gentoo.org>
+  gnome-keyring-sharp-1.0.2-r1.ebuild:
+  amd64 stable, bug #487770
+
+*gnome-keyring-sharp-1.0.2-r1 (24 May 2013)
+
+  24 May 2013; Pacho Ramos <pacho@gentoo.org>
+  +files/gnome-keyring-sharp-1.0.2-monodoc-dir.patch,
+  +gnome-keyring-sharp-1.0.2-r1.ebuild:
+  Apply fedora patch fixing monodoc location, drop unneeded doc USE flag, stop
+  using deprecated mono.eclass
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  gnome-keyring-sharp-1.0.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  21 Mar 2011; Brent Baude <ranger@gentoo.org>
+  gnome-keyring-sharp-1.0.2.ebuild:
+  Marking gnome-keyring-sharp-1.0.2 ppc stable for bug 359651
+
+  12 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  gnome-keyring-sharp-1.0.2.ebuild:
+  Marked ~ppc wrt #339379
+
+  29 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  gnome-keyring-sharp-1.0.2.ebuild:
+  Stable on amd64 wrt bug #352808
+
+  29 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  gnome-keyring-sharp-1.0.2.ebuild:
+  stable x86, bug 352808
+
+*gnome-keyring-sharp-1.0.2 (25 Nov 2010)
+
+  25 Nov 2010; Pacho Ramos <pacho@gentoo.org>
+  -gnome-keyring-sharp-1.0.0-r2.ebuild,
+  -files/gnome-keyring-sharp-1.0.0-monodoc-r1.patch,
+  +gnome-keyring-sharp-1.0.2.ebuild:
+  Version bump including the patches we were applying and solving glue path
+  (bug #345119 by Wojciech Dzierżanowski). Remove old.
+
+  07 Oct 2010; Pacho Ramos <pacho@gentoo.org>
+  -gnome-keyring-sharp-1.0.0-r1.ebuild,
+  -files/gnome-keyring-sharp-1.0.0-monodoc.patch:
+  Remove old.
+
+*gnome-keyring-sharp-1.0.0-r2 (03 Jul 2010)
+
+  03 Jul 2010; Pacho Ramos <pacho@gentoo.org>
+  +gnome-keyring-sharp-1.0.0-r2.ebuild,
+  +files/gnome-keyring-sharp-1.0.0-monodoc-r1.patch:
+  Revision bump applying debian patch to support Gnome 2.30, also adapt
+  monodoc patch to this new situation.
+
+*gnome-keyring-sharp-1.0.0-r1 (24 Jan 2009)
+
+  24 Jan 2009; Peter Alfredsen <loki_val@gentoo.org>
+  +files/gnome-keyring-sharp-1.0.0-monodoc.patch,
+  -gnome-keyring-sharp-1.0.0.ebuild, +gnome-keyring-sharp-1.0.0-r1.ebuild:
+  Fix bug 250069, g-k-s would pick up dev-scheme/chickens csc executable
+  instead of gmcs. Also fix bug 254122, add doc use flag for monodoc
+  dependency. Transition to gmcs done. Multilib-safe.
+
+  14 Dec 2008; Peter Alfredsen <loki_val@gentoo.org>
+  gnome-keyring-sharp-1.0.0.ebuild:
+  Use virtual/monodoc to accomodate inclusion of monodoc in mono from
+  >=mono-2.2_pre1
+
+  25 Nov 2008; Peter Alfredsen <loki_val@gentoo.org>
+  gnome-keyring-sharp-1.0.0.ebuild:
+  monodoc is a build-time dep.
+
+*gnome-keyring-sharp-1.0.0 (25 Nov 2008)
+
+  25 Nov 2008; Peter Alfredsen <loki_val@gentoo.org> +metadata.xml,
+  +gnome-keyring-sharp-1.0.0.ebuild:
+  Initial import. Ebuild fetched from ikelos' overlay.

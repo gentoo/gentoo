@@ -1,0 +1,61 @@
+# ChangeLog for games-mud/mudix
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-mud/mudix/ChangeLog,v 1.17 2015/01/04 02:28:43 mr_bones_ Exp $
+
+  04 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org> mudix-4.3-r1.ebuild:
+  EAPI=5
+
+  12 Jan 2011; Michael Sterrett <mr_bones_@gentoo.org> mudix-4.3-r1.ebuild:
+  add prepgamesdirs; tidy
+
+  08 Feb 2009; Tupone Alfredo <tupone@gentoo.org>
+  +files/mudix-4.3-as-needed.patch, mudix-4.3-r1.ebuild:
+  Fix --as-needed bug #247415 by flameeyes@gentoo.org
+
+  30 Jul 2008; Kenneth Prugh <ken69267@gentoo.org> mudix-4.3-r1.ebuild:
+  amd64 stable, bug #232679
+
+  30 Jul 2008; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  mudix-4.3-r1.ebuild:
+  stable on ppc (bug #232679)
+
+  24 Jul 2008; Raúl Porcel <armin76@gentoo.org> mudix-4.3-r1.ebuild:
+  x86 stable wrt #232679
+
+*mudix-4.3-r1 (15 May 2008)
+
+  15 May 2008; Tristan Heaven <nyhm@gentoo.org> +mudix-4.3-r1.ebuild:
+  Use games eclass and respect CFLAGS
+
+  08 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> mudix-4.0.ebuild:
+  Stable on ppc.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*mudix-4.3 (21 Dec 2004)
+
+  21 Dec 2004; Dylan Carlson <absinthe@gentoo.org> mudix-4.0.ebuild,
+  +mudix-4.3.ebuild:
+  Version bump. Fixed HOMEPAGE and SRC_URI. Added keywords ~amd64.
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> mudix-4.0.ebuild:
+  Added ~ppc.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> mudix-4.0.ebuild:
+  virtual/glibc -> virtual/libc
+
+  24 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> mudix-4.0.ebuild:
+  header fix; tidy
+
+*mudix-4.0 (27 Feb 2002)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> mudix-4.0.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  27 Feb 2002; Bruce A. Locke <blocke@shivan.org> mudix-4.0.ebuild :
+
+  Mudix ebuild contributed by robin@crondor.net (Robin Bakels)

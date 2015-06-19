@@ -1,0 +1,21 @@
+# ChangeLog for app-leechcraft/lcpackgen
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-leechcraft/lcpackgen/ChangeLog,v 1.4 2015/06/07 07:59:56 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  28 Jun 2014; Maxim Koltsov <maksbotan@gentoo.org> -lcpackgen-1.2.ebuild,
+  lcpackgen-1.3.ebuild:
+  Add missing dependency on dev-qt/qtxmlpatterns, bug #515298. Clean old.
+
+*lcpackgen-1.3 (08 Jan 2014)
+
+  08 Jan 2014; Maxim Koltsov <maksbotan@gentoo.org> +lcpackgen-1.3.ebuild:
+  Bump to 1.3, thanks to 0xd34df00d
+
+*lcpackgen-1.2 (03 Jul 2013)
+
+  03 Jul 2013; Maxim Koltsov <maksbotan@gentoo.org> +lcpackgen-1.2.ebuild,
+  +metadata.xml:
+  Add app-leechcraft/lcpackgen-1.2, thanks to 0xd34df00d.

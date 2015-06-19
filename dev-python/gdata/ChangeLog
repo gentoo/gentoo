@@ -1,0 +1,431 @@
+# ChangeLog for dev-python/gdata
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/gdata/ChangeLog,v 1.115 2015/04/08 08:05:03 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> gdata-2.0.17-r1.ebuild,
+  gdata-2.0.18.ebuild:
+  Drop old Python implementations
+
+  02 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -gdata-2.0.16.ebuild,
+  -gdata-2.0.17.ebuild:
+  Remove old.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> gdata-2.0.17-r1.ebuild,
+  gdata-2.0.18.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> gdata-2.0.17-r1.ebuild,
+  gdata-2.0.18.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  03 Jul 2013; Christoph Junghans <ottxor@gentoo.org> gdata-2.0.18.ebuild:
+  Added ~amd64-linux (tested by me)
+
+*gdata-2.0.18 (14 Jun 2013)
+
+  14 Jun 2013; Tim Harder <radhermit@gentoo.org> +gdata-2.0.18.ebuild:
+  Version bump.
+
+*gdata-2.0.17-r1 (14 Jun 2013)
+
+  14 Jun 2013; Ian Delaney <idella4@gentoo.org> +gdata-2.0.17-r1.ebuild:
+  revbump; migrate -> distutils-r1
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #144305
+
+  04 May 2013; Mike Gilbert <floppym@gentoo.org> gdata-2.0.14.ebuild:
+  Drop dependency on dev-python/elementtree.
+
+  21 Feb 2013; Zac Medico <zmedico@gentoo.org> gdata-2.0.17.ebuild:
+  Add ~arm-linux and ~x86-linux keywords.
+
+  02 Aug 2012; Jesus Rivero <neurogeek@gentoo.org> gdata-2.0.14.ebuild,
+  gdata-2.0.16.ebuild, gdata-2.0.17.ebuild:
+  Bumped to EAPI 4 and added ssl(+) and xml(+) to PYTHON_USE_WITH
+
+*gdata-2.0.17 (26 May 2012)
+
+  26 May 2012; Tim Harder <radhermit@gentoo.org> +gdata-2.0.17.ebuild:
+  Version bump.
+
+  26 Feb 2012; Mike Gilbert <floppym@gentoo.org> gdata-2.0.16.ebuild:
+  Set EAPI=4.
+
+  26 Feb 2012; Mike Gilbert <floppym@gentoo.org> gdata-2.0.16.ebuild:
+  Simplify dev-lang/python[xml] dependencies.
+
+*gdata-2.0.16 (26 Feb 2012)
+
+  26 Feb 2012; Mike Gilbert <floppym@gentoo.org> +gdata-2.0.16.ebuild:
+  Version bump. Resolves bug 398533.
+
+  23 Jun 2011; Markos Chandras <hwoarang@gentoo.org> -gdata-2.0.13.ebuild:
+  Remove old ebuilds. Requested by Arfrever
+
+  04 Jun 2011; Raúl Porcel <armin76@gentoo.org> gdata-2.0.14.ebuild:
+  alpha/ia64/sparc stable wrt #364867
+
+  28 May 2011; Brent Baude <ranger@gentoo.org> gdata-2.0.14.ebuild:
+  Marking gdata-2.0.14 ppc for bug 364867
+
+  23 May 2011; Thomas Kahle <tomka@gentoo.org> gdata-2.0.14.ebuild:
+  x86 stable per bug 364867
+
+  17 May 2011; Markus Meier <maekke@gentoo.org> gdata-2.0.14.ebuild:
+  arm stable, bug #364867
+
+  13 May 2011; Jeroen Roovers <jer@gentoo.org> gdata-2.0.14.ebuild:
+  Stable for HPPA (bug #364867).
+
+  29 Apr 2011; Samuli Suominen <ssuominen@gentoo.org> gdata-2.0.14.ebuild:
+  ppc64 stable wrt #364867
+
+  27 Apr 2011; Christoph Mende <angelos@gentoo.org> gdata-2.0.14.ebuild:
+  Stable on amd64 wrt bug #364867
+
+  28 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gdata-2.0.14.ebuild:
+  Improve dependencies (bug #360901).
+
+*gdata-2.0.14 (26 Mar 2011)
+
+  26 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +gdata-2.0.14.ebuild:
+  Version bump.
+
+  08 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -gdata-2.0.10.ebuild, -gdata-2.0.12.ebuild:
+  Delete.
+
+  08 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> gdata-2.0.13.ebuild:
+  ppc64 stable wrt #350871
+
+  29 Jan 2011; Raúl Porcel <armin76@gentoo.org> gdata-2.0.13.ebuild:
+  alpha/ia64/sparc stable wrt #350871
+
+  15 Jan 2011; Markus Meier <maekke@gentoo.org> gdata-2.0.13.ebuild:
+  x86 stable, bug #350871
+
+  15 Jan 2011; Markus Meier <maekke@gentoo.org> gdata-2.0.13.ebuild:
+  arm stable, bug #350871
+
+  14 Jan 2011; Brent Baude <ranger@gentoo.org> gdata-2.0.13.ebuild:
+  stable ppc, bug 350871
+
+  13 Jan 2011; Jeroen Roovers <jer@gentoo.org> gdata-2.0.13.ebuild:
+  Stable for HPPA (bug #350871).
+
+  07 Jan 2011; Markos Chandras <hwoarang@gentoo.org> gdata-2.0.13.ebuild:
+  Stable on amd64 wrt bug #350871
+
+  20 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gdata-2.0.13.ebuild:
+  Fix tests (gdata issue #474).
+
+*gdata-2.0.13 (07 Dec 2010)
+
+  07 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -gdata-2.0.11.ebuild, +gdata-2.0.13.ebuild:
+  Version bump.
+
+  26 Oct 2010; Jeroen Roovers <jer@gentoo.org> gdata-2.0.12.ebuild:
+  Stable for HPPA (bug #341621).
+
+  24 Oct 2010; Brent Baude <ranger@gentoo.org> gdata-2.0.12.ebuild:
+  stable ppc, bug 341621
+
+  23 Oct 2010; Raúl Porcel <armin76@gentoo.org> gdata-2.0.12.ebuild:
+  alpha/arm/ia64/sparc stable wrt #341621
+
+  20 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> gdata-2.0.12.ebuild:
+  x86 stable wrt bug #341621
+
+  19 Oct 2010; Markos Chandras <hwoarang@gentoo.org> gdata-2.0.12.ebuild:
+  Stable on amd64 wrt bug #341621
+
+  03 Oct 2010; Raúl Porcel <armin76@gentoo.org> gdata-2.0.11.ebuild:
+  alpha/arm/ia64/sparc stable wrt #338221
+
+  28 Sep 2010; Brent Baude <ranger@gentoo.org> gdata-2.0.11.ebuild:
+  stable ppc, bug 338221
+
+  26 Sep 2010; Markus Meier <maekke@gentoo.org> gdata-2.0.11.ebuild:
+  x86 stable, bug #338221
+
+  24 Sep 2010; Markos Chandras <hwoarang@gentoo.org> gdata-2.0.11.ebuild:
+  Stable on amd64 wrt bug #338221
+
+*gdata-2.0.12 (20 Sep 2010)
+
+  20 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +gdata-2.0.12.ebuild:
+  Version bump.
+
+*gdata-2.0.11 (31 Jul 2010)
+
+  31 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +gdata-2.0.11.ebuild:
+  Version bump.
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org> gdata-2.0.10.ebuild:
+  Stable for HPPA (bug #324463).
+
+  11 Jul 2010; Raúl Porcel <armin76@gentoo.org> gdata-2.0.10.ebuild:
+  alpha/arm/ia64/sparc/x86 stable wrt #324463
+
+  06 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> gdata-2.0.10.ebuild:
+  ppc64 stable wrt #324463
+
+  27 Jun 2010; <nixnut@gentoo.org> gdata-2.0.10.ebuild:
+  ppc stable #324463
+
+  24 Jun 2010; Pacho Ramos <pacho@gentoo.org> gdata-2.0.10.ebuild:
+  stable amd64, bug 324463
+
+  23 May 2010; <nixnut@gentoo.org> gdata-2.0.9.ebuild:
+  ppc stable #315157
+
+*gdata-2.0.10 (13 May 2010)
+
+  13 May 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -gdata-2.0.4.ebuild, -gdata-2.0.6.ebuild, +gdata-2.0.10.ebuild:
+  Version bump.
+
+  13 May 2010; Jeroen Roovers <jer@gentoo.org> gdata-2.0.9.ebuild:
+  Stable for HPPA (bug #315157).
+
+  08 May 2010; Raúl Porcel <armin76@gentoo.org> gdata-2.0.9.ebuild:
+  alpha/arm/ia64/sparc stable wrt #315157
+
+  03 May 2010; Olivier Crête <tester@gentoo.org> ChangeLog:
+  amd64 stable, bug #314899
+
+  26 Apr 2010; Christian Faulhammer <fauli@gentoo.org> gdata-2.0.9.ebuild:
+  stable x86, bug 315157
+
+  16 Apr 2010; Pacho Ramos <pacho@gentoo.org> gdata-2.0.9.ebuild:
+  amd64 stable, bug 315157
+
+  21 Mar 2010; Raúl Porcel <armin76@gentoo.org> gdata-2.0.7.ebuild:
+  alpha/arm/ia64/sparc/x86 stable wrt #307253
+
+  18 Mar 2010; Markos Chandras <hwoarang@gentoo.org> gdata-2.0.7.ebuild:
+  Stable on amd64 wrt bug #307253
+
+*gdata-2.0.9 (12 Mar 2010)
+
+  12 Mar 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +gdata-2.0.9.ebuild:
+  Version bump.
+
+  10 Mar 2010; Joseph Jezak <josejx@gentoo.org> gdata-2.0.7.ebuild:
+  Marked ppc/ppc64 stable for bug #307253.
+
+*gdata-2.0.8 (01 Mar 2010)
+
+  01 Mar 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +gdata-2.0.8.ebuild:
+  Version bump.
+
+*gdata-2.0.7 (28 Jan 2010)
+
+  28 Jan 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +gdata-2.0.7.ebuild:
+  Version bump.
+
+  24 Jan 2010; Raúl Porcel <armin76@gentoo.org> gdata-2.0.6.ebuild:
+  alpha/arm/ia64/sparc stable wrt #301401
+
+  23 Jan 2010; Jeroen Roovers <jer@gentoo.org> gdata-2.0.6.ebuild:
+  Stable for HPPA (bug #301401).
+
+  23 Jan 2010; Brent Baude <ranger@gentoo.org> gdata-2.0.6.ebuild:
+  stable ppc, bug 301401
+
+  22 Jan 2010; Tom Gall <tgall@gentoo.org> gdata-2.0.6.ebuild:
+  stable on ppc64, bug 301401
+
+  21 Jan 2010; Christian Faulhammer <fauli@gentoo.org> gdata-2.0.6.ebuild:
+  stable x86, bug 301401
+
+  31 Dec 2009; Brent Baude <ranger@gentoo.org> gdata-2.0.4.ebuild:
+  Marking gdata-2.0.4 ppc64 for bug 293296
+
+*gdata-2.0.6 (19 Dec 2009)
+
+  19 Dec 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +gdata-2.0.6.ebuild:
+  Version bump.
+
+  15 Dec 2009; Raúl Porcel <armin76@gentoo.org> gdata-2.0.4.ebuild:
+  alpha/ia64/sparc stable wrt #293296
+
+  19 Nov 2009; Markus Meier <maekke@gentoo.org> gdata-2.0.4.ebuild:
+  arm stable, bug #293296
+
+  19 Nov 2009; Markus Meier <maekke@gentoo.org> gdata-2.0.4.ebuild:
+  amd64/x86 stable, bug #293296
+
+  19 Nov 2009; Mounir Lamouri <volkmar@gentoo.org> gdata-2.0.4.ebuild:
+  Stable for ppc, bug 293296
+
+  16 Nov 2009; Jeroen Roovers <jer@gentoo.org> gdata-2.0.4.ebuild:
+  Stable for HPPA (bug #293296).
+
+*gdata-2.0.4 (16 Oct 2009)
+
+  16 Oct 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -gdata-1.0.8.ebuild, -files/gdata-1.0.8-test-fix.patch,
+  -gdata-2.0.1.ebuild, -gdata-2.0.1-r1.ebuild, +gdata-2.0.4.ebuild:
+  Version bump.
+
+  12 Oct 2009; Jeroen Roovers <jer@gentoo.org> gdata-2.0.2.ebuild:
+  Stable for HPPA (bug #287194).
+
+  07 Oct 2009; nixnut <nixnut@gentoo.org> gdata-2.0.2.ebuild:
+  ppc stable #288194
+
+  05 Oct 2009; Raúl Porcel <armin76@gentoo.org> gdata-2.0.2.ebuild:
+  alpha/arm/ia64/sparc stable wrt #287194
+
+  03 Oct 2009; Markus Meier <maekke@gentoo.org> gdata-2.0.2.ebuild:
+  amd64/x86 stable, bug #287194
+
+  22 Sep 2009; Jeroen Roovers <jer@gentoo.org> gdata-2.0.0.ebuild:
+  Stable for HPPA (bug #277347).
+
+  22 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gdata-2.0.1.ebuild, gdata-2.0.1-r1.ebuild, gdata-2.0.2.ebuild,
+  +files/gdata-2.0.2-fix_tests.patch:
+  Fix tests on big endian architectures (bug #280365).
+
+*gdata-2.0.2 (01 Sep 2009)
+
+  01 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +gdata-2.0.2.ebuild:
+  Version bump.
+
+  31 Aug 2009; Brent Baude <ranger@gentoo.org> gdata-2.0.0.ebuild:
+  Marking gdata-2.0.0 ppc64 for bug 277347
+
+*gdata-2.0.1-r1 (16 Aug 2009)
+
+  16 Aug 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gdata-2.0.1.ebuild, +gdata-2.0.1-r1.ebuild:
+  Rename gdata-2.0.1 to gdata-2.0.1-r1. Unset SUPPORT_PYTHON_ABIS in
+  gdata-2.0.1 to allow earlier stabilization (bug #280365).
+
+  14 Aug 2009; Raúl Porcel <armin76@gentoo.org> gdata-2.0.0.ebuild:
+  alpha/arm/ia64/sparc stable wrt #277347
+
+*gdata-2.0.1 (10 Aug 2009)
+
+  10 Aug 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +gdata-2.0.1.ebuild:
+  Version bump. Set SUPPORT_PYTHON_ABIS.
+
+  02 Aug 2009; nixnut <nixnut@gentoo.org> gdata-2.0.0.ebuild:
+  ppc stable #277347
+
+  24 Jul 2009; Jim Ramsay <lack@gentoo.org> -gdata-1.0.4.ebuild,
+  -gdata-1.2.4.ebuild, -gdata-1.3.3.ebuild:
+  Version cleanup, also version 1.3.3 fails some tests (Bug #276681)
+
+  24 Jul 2009; Christian Faulhammer <fauli@gentoo.org> gdata-2.0.0.ebuild:
+  stable x86, bug 277347
+
+  22 Jul 2009; Jeremy Olexa <darkside@gentoo.org> gdata-2.0.0.ebuild:
+  amd64 stable, bug 277347
+
+  15 Jul 2009; Christian Faulhammer <fauli@gentoo.org> gdata-1.3.3.ebuild:
+  stable x86, bug 277347
+
+*gdata-2.0.0 (10 Jul 2009)
+
+  10 Jul 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +gdata-2.0.0.ebuild:
+  Version bump.
+
+*gdata-1.3.3 (23 Jun 2009)
+
+  23 Jun 2009; Patrick Lauer <patrick@gentoo.org> +gdata-1.3.3.ebuild:
+  Bump to 1.3.3, fixes #274892. Small fixes by Rodrigo Lazo
+
+  28 Apr 2009; Raúl Porcel <armin76@gentoo.org> gdata-1.0.8.ebuild:
+  arm stable
+
+  04 Apr 2009; Raúl Porcel <armin76@gentoo.org> gdata-1.0.8.ebuild,
+  gdata-1.2.4.ebuild:
+  Add ~arm
+
+*gdata-1.2.4 (04 Mar 2009)
+
+  04 Mar 2009; Jim Ramsay <lack@gentoo.org> +gdata-1.2.4.ebuild:
+  Version bump: gdata-1.2.4 is released (Bug #246786)
+
+  13 Nov 2008; Brent Baude <ranger@gentoo.org> gdata-1.0.8.ebuild:
+  Marking gdata-1.0.8 ppc64 stable for bug 236971
+
+  28 Oct 2008; Brent Baude <ranger@gentoo.org> gdata-1.0.8.ebuild:
+  Marking gdata-1.0.8 ~ppc64 for gnome
+
+  25 Sep 2008; Jeroen Roovers <jer@gentoo.org> gdata-1.0.8.ebuild:
+  Stable for HPPA (bug #236971).
+
+  12 Aug 2008; Raúl Porcel <armin76@gentoo.org> gdata-1.0.8.ebuild:
+  alpha/ia64/sparc stable wrt #229709
+
+  10 Aug 2008; Markus Meier <maekke@gentoo.org> gdata-1.0.8.ebuild:
+  x86 stable, bug #229709
+
+  30 Jul 2008; Brent Baude <ranger@gentoo.org> gdata-1.0.8.ebuild:
+  Marking gdata-1.0.8 ppc stable for bug 229709
+
+  26 Jul 2008; Olivier Crête <tester@gentoo.org> gdata-1.0.8.ebuild:
+  Stable on amd64, bug #229709
+
+  02 Jun 2008; Alexis Ballier <aballier@gentoo.org> gdata-1.0.8.ebuild:
+  keyword ~x86-fbsd
+
+  08 May 2008; Jeroen Roovers <jer@gentoo.org> gdata-1.0.8.ebuild:
+  Marked ~hppa (bug #218794).
+
+  05 May 2008; Raúl Porcel <armin76@gentoo.org> gdata-1.0.8.ebuild:
+  Add ~alpha/~ia64 wrt #218794
+
+  02 May 2008; Ferris McCormick <fmccor@gentoo.org> gdata-1.0.8.ebuild:
+  Add ~sparc keyword, part of Bug #218794 (tests run fine).
+
+  28 Mar 2008; Ali Polatel <hawking@gentoo.org>
+  +files/gdata-1.0.8-test-fix.patch, gdata-1.0.8.ebuild:
+  Add patch from upstream to fix tests. Bug 212983
+
+*gdata-1.0.8 (09 Oct 2007)
+
+  09 Oct 2007; Jim Ramsay <lack@gentoo.org> +gdata-1.0.8.ebuild:
+  New version - 1.0.8
+
+  08 Oct 2007; Donnie Berkholz <dberkholz@gentoo.org>; gdata-1.0.4.ebuild:
+  Keyword ~ppc.
+
+*gdata-1.0.4 (03 Jul 2007)
+
+  03 Jul 2007; Lukasz Strzygowski <lucass@gentoo.org> -gdata-1.0.2.ebuild,
+  +gdata-1.0.4.ebuild:
+  Version bump:
+   - keyworded ~amd64
+   - added examples USE-flag
+   - added src_test
+   - shortened DESCRIPTION
+   - added PYTHON_MODNAME
+  Dropped old version.
+
+  22 May 2007; Jim Ramsay <lack@gentoo.org> gdata-1.0.2.ebuild:
+  Added elementtree dependency
+
+*gdata-1.0.2 (22 May 2007)
+
+  22 May 2007; Jim Ramsay <lack@gentoo.org> +metadata.xml,
+  +gdata-1.0.2.ebuild:
+  dev-python/gdata - The official python interface to the Google Data API

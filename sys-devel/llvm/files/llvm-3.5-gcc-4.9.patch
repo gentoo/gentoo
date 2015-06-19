@@ -1,0 +1,43 @@
+commit 080fb498017d17af2e4d7563608c7d8a848f20da
+Author: Sanjoy Das <sanjoy at azulsystems.com>
+Date:   Thu Jun 19 15:38:02 2014 -0700
+
+    Fix the --enable-shared build.
+    
+    Currently a build configured with ./configure --enable-shared breaks
+    with an undefined "llvm::cl::parser<llvm::PassInfo
+    const*>::getOption(unsigned int) const" symbol when linking opt.  This
+    body for this symbol gets emitted into Pass.o (along with the destructor
+    for PassNameParser), but gets linked into libLLVM-3.5svn.so with local
+    visibility, causing the link error.
+    
+    This fix uses the existing EXTERN_TEMPLATE machinery to force a globally
+    visible definition for the functions in parser<const PassInfo *> into
+    Pass.o.
+
+diff --git a/include/llvm/IR/LegacyPassNameParser.h b/include/llvm/IR/LegacyPassNameParser.h
+index e2e4912..a07e3fd 100644
+--- a/include/llvm/IR/LegacyPassNameParser.h
++++ b/include/llvm/IR/LegacyPassNameParser.h
+@@ -95,6 +95,8 @@ private:
+   }
+ };
+ 
++EXTERN_TEMPLATE_INSTANTIATION(class cl::parser<const PassInfo *>);
++
+ ///===----------------------------------------------------------------------===//
+ /// FilteredPassNameParser class - Make use of the pass registration
+ /// mechanism to automatically add a command line argument to opt for
+diff --git a/lib/IR/Pass.cpp b/lib/IR/Pass.cpp
+index 91d86ae..00ce223 100644
+--- a/lib/IR/Pass.cpp
++++ b/lib/IR/Pass.cpp
+@@ -234,6 +234,8 @@ PassNameParser::~PassNameParser() {
+   // attempting to remove the registration listener is an error.
+ }
+ 
++TEMPLATE_INSTANTIATION(class cl::parser<const PassInfo *>);
++
+ //===----------------------------------------------------------------------===//
+ //   AnalysisUsage Class Implementation
+ //

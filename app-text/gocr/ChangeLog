@@ -1,0 +1,285 @@
+# ChangeLog for app-text/gocr
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/gocr/ChangeLog,v 1.70 2013/08/06 18:07:16 maekke Exp $
+
+  06 Aug 2013; Markus Meier <maekke@gentoo.org> gocr-0.50.ebuild:
+  add ~arm, bug #473828
+
+*gocr-0.50 (20 May 2013)
+
+  20 May 2013; Alexis Ballier <aballier@gentoo.org> +gocr-0.50.ebuild:
+  version bump
+
+  02 Sep 2012; Tim Harder <radhermit@gentoo.org> -gocr-0.45.ebuild,
+  -files/gocr-0.45-makefile.patch, -gocr-0.48.ebuild:
+  Remove old.
+
+  01 Apr 2012; Raúl Porcel <armin76@gentoo.org> gocr-0.49.ebuild:
+  alpha/sparc/x86 stable wrt #408165
+
+  16 Mar 2012; Brent Baude <ranger@gentoo.org> gocr-0.49.ebuild:
+  Marking gocr-0.49 ppc for bug 408165
+
+  16 Mar 2012; Brent Baude <ranger@gentoo.org> gocr-0.49.ebuild:
+  Marking gocr-0.49 ppc64 for bug 408165
+
+  15 Mar 2012; Agostino Sarubbo <ago@gentoo.org> gocr-0.49.ebuild:
+  Stable for amd64, wrt bug #408165
+
+*gocr-0.49 (20 Apr 2011)
+
+  20 Apr 2011; Tim Harder <radhermit@gentoo.org> +gocr-0.49.ebuild:
+  Version bump. Update to EAPI 4.
+
+  11 Jun 2010; Alexis Ballier <aballier@gentoo.org> gocr-0.45.ebuild,
+  gocr-0.48.ebuild:
+  Add missing rdeps over xli and xsane, by Kobboi <gentoo@lermytte.be>, bug
+  #323113
+
+  11 Jun 2010; Alexis Ballier <aballier@gentoo.org>
+  -files/gocr-0.43-makefile.patch, -gocr-0.46.ebuild,
+  -files/gocr-0.46-makefile.patch, -gocr-0.47.ebuild,
+  -files/gocr-0.47-makefile.patch:
+  remove old
+
+*gocr-0.48 (28 Feb 2010)
+
+  28 Feb 2010; Daniel Pielmeier <billie@gentoo.org> +gocr-0.48.ebuild:
+  Verson bump.
+
+  22 Feb 2010; Jonathan Callen <abcd@gentoo.org> gocr-0.47.ebuild:
+  Transfer prefix keywords, bump EAPI
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> gocr-0.45.ebuild,
+  gocr-0.46.ebuild, gocr-0.47.ebuild:
+  virtual/ghostscript->app-text/ghostscript-gpl: ghostscript-gpl is the only
+  implementation left in the tree.
+
+*gocr-0.47 (29 Apr 2009)
+
+  29 Apr 2009; Alexis Ballier <aballier@gentoo.org>
+  +files/gocr-0.47-makefile.patch, +gocr-0.47.ebuild:
+  version bump, bug #187942
+
+*gocr-0.46 (26 Oct 2008)
+
+  26 Oct 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/gocr-0.46-makefile.patch, +gocr-0.46.ebuild:
+  version bump, thanks to Ed Davison for the report and Daniel Pielmeier for
+  the updated patch. Bug #243250
+
+  06 Apr 2008; Tobias Klausmann <klausman@gentoo.org> gocr-0.45.ebuild:
+  Stable on alpha, bug #189461
+
+  27 Mar 2008; Christian Faulhammer <opfer@gentoo.org> gocr-0.45.ebuild:
+  stable x86, bug 189461
+
+  26 Mar 2008; Markus Rothe <corsair@gentoo.org> gocr-0.45.ebuild:
+  Stable on ppc64; bug #189461
+
+  26 Mar 2008; Brent Baude <ranger@gentoo.org> gocr-0.45.ebuild:
+  stable ppc, bug 189461
+
+  25 Mar 2008; Ferris McCormick <fmccor@gentoo.org> gocr-0.45.ebuild:
+  Sparc stable, Bug #189461.
+
+  25 Mar 2008; Samuli Suominen <drac@gentoo.org> gocr-0.45.ebuild:
+  amd64 stable wrt bug #189461
+
+  07 Mar 2008; Alexis Ballier <aballier@gentoo.org>
+  -files/gocr-0.40-as-needed.patch, -files/gocr-0.44-makefile.patch,
+  -gocr-0.40-r2.ebuild, -gocr-0.44.ebuild:
+  remove unused versions
+
+*gocr-0.45 (26 Jan 2008)
+
+  26 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/gocr-0.45-makefile.patch, +gocr-0.45.ebuild:
+  version bump
+
+  20 Sep 2007; Alexis Ballier <aballier@gentoo.org> gocr-0.44.ebuild:
+  add dep on ghostscript when building doc, bug #188569
+
+*gocr-0.44 (27 Jul 2007)
+
+  27 Jul 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/gocr-0.44-makefile.patch, +gocr-0.44.ebuild:
+  version bump, bug #172764, thanks to Roberto Castagnola
+  <roberto.castagnola@gmail.com>
+
+  03 Jul 2007; Tom Gall <tgall@gentoo.org> gocr-0.43.ebuild:
+  stable on ppc64
+
+  01 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  +files/digest-gocr-0.40-r2, +files/digest-gocr-0.43, Manifest:
+  (QA) Add digests.
+
+  29 Jun 2007; Christian Faulhammer <opfer@gentoo.org> gocr-0.43.ebuild:
+  stable x86, bug 153068
+
+  29 Jun 2007; Christoph Mende <angelos@gentoo.org> gocr-0.43.ebuild:
+  Stable on amd64 wrt bug #153068
+
+  03 Jun 2007; Raúl Porcel <armin76@gentoo.org> gocr-0.43.ebuild:
+  Add ~alpha wrt #173100
+
+  06 May 2007; Tobias Scherbaum <dertobi123@gentoo.org> gocr-0.43.ebuild:
+  ppc stable
+
+  24 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> gocr-0.43.ebuild:
+  Stable on sparc
+
+  23 Apr 2007; Sven Wegener <swegener@gentoo.org> gocr-0.43.ebuild:
+  Sync IUSE (+tk)
+
+  13 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+*gocr-0.43 (20 Jan 2007)
+
+  20 Jan 2007; Alin Nastac <mrness@gentoo.org>
+  +files/gocr-0.43-makefile.patch, -gocr-0.39.ebuild, -gocr-0.40.ebuild,
+  +gocr-0.43.ebuild:
+  Version bump (#145624). Remove obsolete versions.
+
+  06 Jun 2006; Simon Stelling <blubb@gentoo.org> gocr-0.40-r2.ebuild:
+  stable on amd64
+
+  30 May 2006; Jason Wever <weeve@gentoo.org> gocr-0.40-r2.ebuild:
+  Stable on SPARC wrt bug #133376.
+
+  26 May 2006; Joseph Jezak <josejx@gentoo.org> gocr-0.40-r2.ebuild:
+  Marked ppc stable for bug #133376.
+
+  25 May 2006; Chris Gianelloni <wolf31o2@gentoo.org> gocr-0.40-r2.ebuild:
+  Stable on x86 wrt bug #133376.
+
+  23 May 2006; Alexandre Buisse <nattfodd@gentoo.org> -gocr-0.40-r1.ebuild:
+  Removed 0.40-r1 as -r2 is stable on ppc64.
+
+  23 May 2006; Markus Rothe <corsair@gentoo.org> gocr-0.40-r2.ebuild:
+  Stable on ppc64; bug #133376
+
+*gocr-0.40-r2 (23 May 2006)
+
+  23 May 2006; Alexandre Buisse <nattfodd@gentoo.org> +gocr-0.40-r2.ebuild:
+  Added dep to imagemagick when gtk USE flag is set (see bug #133376).
+
+*gocr-0.40-r1 (08 May 2006)
+
+  08 May 2006; Martin Ehmsen <ehmsen@gentoo.org>
+  +files/gocr-0.40-as-needed.patch, +gocr-0.40-r1.ebuild:
+  Added --as-needed patch from TGL <degrenier@easyconnect.fr>, bug #132567.
+
+  23 Apr 2006; Markus Rothe <corsair@gentoo.org> gocr-0.40.ebuild:
+  Stable on ppc64
+
+  17 Dec 2005; Markus Rothe <corsair@gentoo.org> gocr-0.39.ebuild,
+  gocr-0.40.ebuild:
+  Added ~ppc64; bug #97355
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> gocr-0.39.ebuild:
+  Stable on ppc.
+
+*gocr-0.40 (23 Apr 2005)
+
+  23 Apr 2005; Mamoru KOMACHI <usata@gentoo.org>
+  -files/gocr-0.3.6-gentoo.diff, -gocr-0.3.6-r3.ebuild, -gocr-0.37.ebuild,
+  +gocr-0.40.ebuild:
+  Version bumped; bug #88736.
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> gocr-0.39.ebuild:
+  Stable on amd64.
+
+  04 Jul 2004; David Holm <dholm@gentoo.org> gocr-0.39.ebuild:
+  Added to ~ppc.
+
+  02 Jun 2004; Aron Griffis <agriffis@gentoo.org> gocr-0.37.ebuild,
+  gocr-0.39.ebuild:
+  Fix use invocation
+
+  10 May 2004; Ferris McCormick <fmccor@gentoo.org> gocr-0.39.ebuild:
+  Marked stable for sparc.
+
+  03 May 2004; Ferris McCormick <fmccor@gentoo.org> gocr-0.39.ebuild:
+  Add ~sparc keyword.
+
+  26 Apr 2004; Mike Gardiner <obz@gentoo.org> gocr-0.37.ebuild,
+  gocr-0.39.ebuild:
+  Marked stable on x86
+
+  22 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> gocr-0.3.6-r2.ebuild,
+  gocr-0.3.6-r3.ebuild, gocr-0.37.ebuild, gocr-0.39.ebuild:
+  Marked 0.3.6-r3 as stable, closing bug #45242
+  Changed netpbm dependency to not require 10
+
+*gocr-0.39 (12 Mar 2004)
+
+  12 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> gocr-0.39.ebuild:
+  Version bumped. Closing bug #42743
+
+*gocr-0.3.6-r3 (12 Mar 2004)
+
+  12 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> gocr-0.3.6-r3.ebuild:
+  Fixed manpage directory and changed tetex IUSE flag to doc.
+  Closing bug #43211
+
+  10 Feb 2004; Mike Gardiner <obz@gentoo.org> gocr-0.3.6-r2.ebuild,
+  gocr-0.37.ebuild:
+  Included examples in the USE='doc' case, thanks to pYrania, see bug #40617
+
+  09 Dec 2003; Heinrich Wendel <lanius@gentoo.org> gocr-0.3.6-r2.ebuild:
+  changed app-text/ghostscript to virtual/ghostscript
+
+  22 Oct 2003; Mike Gardiner <obz@gentoo.org> gocr-0.3.6-r2.ebuild:
+  Fixed make install to use DESTDIR=D/usr so we get /usr as a prefix instead of
+  /, see bug #31676
+
+*gocr-0.37 (16 Sep 2003)
+
+  16 Sep 2003; Mike Gardiner <obz@gentoo.org> gocr-0.37.ebuild, metadata.xml:
+  New version with an ebuild rewrite. TeX is no longer required to build the
+  examples/etc, fig is used instead, which simplifies things a lot. Frontend
+  usage controlled by gtk, and examples/docs by doc
+
+*gocr-0.3.6-r2 (06 Jul 2002)
+
+  19 Jan 2003; Martin Holzer <mholzer@gentoo.org> gocr-0.3.6-r2.ebuild
+  ChangeLog :
+  gocr breaks with netpbm 10.11.4 so depending on 9.12*
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+  20 Oct 2002; Matthew Turk <satai@gentoo.org> gocr-0.3.6-r2.ebuild
+
+  Really really real this time.  Fixed dependencies (on transfig) and sandbox.
+
+
+  06 Jul 2002; Seemant Kulleen <seemant@gentoo.org> gocr-0.3.6-r2.ebuild
+  files/digest-gocr-0.3.6-r2 :
+
+  real fix for sandbox violation
+
+*gocr-0.3.6-r1 (29 Jun 2002)
+
+  29 Jun 2002; Seemant Kulleen <seeamnt@gentoo.org> gocr-0.3.6-r1.ebuild
+  files/digest-gocr-0.3.6-r1 :
+
+  sandbox violation fix.
+
+*gocr-0.3.6 (28 Jun 2002)
+
+  28 Jun 2002; Ryan Phillips <rphillips@gentoo.org> gocr-0.3.6.ebuild :
+
+  Added a new version, and disabled the sandbox temporarily.  The 
+  sandbox fails on latex font installations.  Anybody know a workaround?
+
+*gocr-0.3.4 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

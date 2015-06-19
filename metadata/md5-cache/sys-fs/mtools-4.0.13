@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=X? ( x11-libs/libICE x11-libs/libXau x11-libs/libSM x11-libs/libX11 x11-libs/libXt )
+DESCRIPTION=utilities to access MS-DOS disks from Unix without mounting them
+HOMEPAGE=http://mtools.linux.lu/
+IUSE=X
+KEYWORDS=alpha amd64 ~arm hppa ppc ppc64 sparc x86
+LICENSE=GPL-3
+RDEPEND=X? ( x11-libs/libICE x11-libs/libXau x11-libs/libSM x11-libs/libX11 x11-libs/libXt )
+SLOT=0
+SRC_URI=http://mtools.linux.lu/mtools-4.0.13.tar.bz2 mirror://gnu/mtools/mtools-4.0.13.tar.bz2
+_md5_=730e49e73ad8c2ae174d33f26efdaa82

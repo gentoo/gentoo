@@ -1,0 +1,62 @@
+# ChangeLog for dev-libs/libhtmlparse
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libhtmlparse/ChangeLog,v 1.15 2014/03/10 10:51:10 ssuominen Exp $
+
+  10 Mar 2014; Samuli Suominen <ssuominen@gentoo.org>
+  -libhtmlparse-0.1.13.ebuild:
+  old
+
+  10 Mar 2014; Samuli Suominen <ssuominen@gentoo.org>
+  libhtmlparse-0.1.13-r1.ebuild:
+  Use prune_libtool_files from eutils.eclass to drop libhtmlparse.la when it's
+  not required. Mark stable for x86 as prereq for dropping -r0.
+
+  10 Mar 2014; Samuli Suominen <ssuominen@gentoo.org>
+  libhtmlparse-0.1.13-r1.ebuild, libhtmlparse-0.1.13.ebuild:
+  Punt virtual/libc dependency.
+
+*libhtmlparse-0.1.13-r1 (02 Nov 2012)
+
+  02 Nov 2012; Sergey Popov <pinkbyte@gentoo.org>
+  +libhtmlparse-0.1.13-r1.ebuild:
+  Revision bump: EAPI 4, add missing 'die' statements, add 'static-libs' USE
+  flag, keyword ~amd64 wrt bug #440734. Thanks to Vicente Olivert Riera
+
+  02 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> libhtmlparse-0.1.13.ebuild:
+  Fix description and other minor QA issues
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -libhtmlparse-0.1.12.ebuild:
+  Remove old
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove ka0ttic from metadata.xml due to retirement.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  06 May 2005; Aaron Walker <ka0ttic@gentoo.org> libhtmlparse-0.1.13.ebuild:
+  Stable on x86.
+
+*libhtmlparse-0.1.13 (11 Feb 2005)
+
+  11 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml,
+  libhtmlparse-0.1.12.ebuild, +libhtmlparse-0.1.13.ebuild:
+  Version bump.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libhtmlparse-0.1.12.ebuild:
+  virtual/glibc -> virtual/libc
+
+  14 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  libhtmlparse-0.1.12.ebuild:
+  Don't assign default to S; header fix
+
+*libhtmlparse-0.1.12 (01 Jan 2003)
+
+  01 Jab 2003; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  libhtmlparse-0.1.12.ebuild, files/digest-libhtmlparse-0.1.12 :
+
+  Initial import.

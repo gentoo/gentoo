@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install setup
+DEPEND=app-arch/xz-utils
+DESCRIPTION=Transparent proxy server that works as a poor man's VPN using ssh
+EAPI=5
+HOMEPAGE=https://github.com/apenwarr/sshuttle/
+IUSE=python_targets_python2_7
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=net-firewall/iptables
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~radhermit/dist/sshuttle-0.61.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	7a178335dbd6ea7f50ed4e3e1c13c1e4	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=884b02cb68c64e97cb5aefe65c775a51

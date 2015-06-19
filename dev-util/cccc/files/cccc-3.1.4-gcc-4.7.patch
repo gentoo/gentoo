@@ -1,0 +1,11 @@
+--- cccc/cccc_tbl.cc
++++ cccc/cccc_tbl.cc
+@@ -96,7 +96,7 @@
+   typename map_t::iterator value_iterator=map_t::find(old_item_ptr->key());
+   if(value_iterator!=map_t::end())
+     {
+-      erase(value_iterator);
++      this->erase(value_iterator);
+       retval=true;
+     }
+   return retval;

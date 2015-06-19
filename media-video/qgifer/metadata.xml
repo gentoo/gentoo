@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>andrzej.pauli@gmail.com</email>
+		<name>Andrzej Pauli</name>
+		<description>Maintainer.  Assign bugs to him.</description>
+	</maintainer>
+	<herd>proxy-maintainers</herd>
+	<longdescription lang="en">
+		QGifer is a tool for extracting part of a video to an animated GIF file.
+	</longdescription>
+	<use>
+		<flag name="imagemagick">Use imagemagick for image operations</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">qgifer</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci-biology</herd>
+<use>
+  <flag name='mpi_njtree'>Use MPI (as opposed to serial) code for computing
+    neighbor-joining trees</flag>
+  <flag name='static_pairalign'>Use static (as opposed to dynamic) scheduling
+    for pair alignments</flag>
+</use>
+</pkgmetadata>

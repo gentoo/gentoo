@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=>=dev-games/openscenegraph-3.0.1 sys-libs/zlib x11-libs/fltk:1[opengl,threads] >=dev-games/simgear-3.0.0 >=dev-libs/boost-1.34 nls? ( sys-devel/gettext ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=A graphical frontend for the FlightGear Flight Simulator
+EAPI=5
+HOMEPAGE=http://sourceforge.net/projects/fgrun
+IUSE=debug nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-games/openscenegraph-3.0.1 sys-libs/zlib x11-libs/fltk:1[opengl,threads] >=games-simulation/flightgear-3.0.0 games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://gentoo/fg-fgrun-e13e42811239008fded7685d8f2311bb571f6a58.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=2e71927677817afb671b3fea07acec3f

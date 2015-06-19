@@ -1,0 +1,29 @@
+# ChangeLog for games-arcade/supertransball2
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/supertransball2/ChangeLog,v 1.6 2015/03/16 07:27:31 mr_bones_ Exp $
+
+  16 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  supertransball2-1.5.ebuild:
+  EAPI=5
+
+  16 Oct 2010; Tupone Alfredo <tupone@gentoo.org>
+  supertransball2-1.5.ebuild, +files/supertransball2-1.5-ldflags.patch:
+  Respect LDFLAGS. Bug #334637 by flameeyes@gentoo.org
+
+  27 Jan 2009; Raúl Porcel <armin76@gentoo.org> supertransball2-1.5.ebuild:
+  x86 stable wrt #255779
+
+  21 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  supertransball2-1.5.ebuild:
+  epatch takes a list and use the c++ from toolchain
+
+  24 Apr 2007; Timothy Redaelli <drizzt@gentoo.org>
+  supertransball2-1.5.ebuild:
+  Add ~x86-fbsd keyword.
+  Thanks to Nathan Smith for reporting wrt bug #175779
+
+*supertransball2-1.5 (11 Feb 2007)
+
+  11 Feb 2007; <tupone@gentoo.org> +metadata.xml,
+  +supertransball2-1.5.ebuild:
+  New ebuild by brebs. Bug #109199 by desowin.

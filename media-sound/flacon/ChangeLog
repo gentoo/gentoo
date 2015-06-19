@@ -1,0 +1,75 @@
+# ChangeLog for media-sound/flacon
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/flacon/ChangeLog,v 1.20 2015/04/19 07:04:34 pacho Exp $
+
+  19 Apr 2015; Pacho Ramos <pacho@gentoo.org> flacon-1.0.0.ebuild:
+  x86 stable wrt bug #529466
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> flacon-0.8.0.ebuild:
+  Drop old Python implementations
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> flacon-1.0.0.ebuild:
+  Stable for amd64, wrt bug #529466
+
+*flacon-1.0.0 (27 Jul 2014)
+
+  27 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> +flacon-1.0.0.ebuild:
+  Version bump, thanks to Nikoli
+
+  26 Apr 2014; Maxim Koltsov <maksbotan@gentoo.org> -flacon-0.6.1.ebuild:
+  Clean old.
+
+*flacon-0.9.4 (26 Apr 2014)
+*flacon-9999 (26 Apr 2014)
+
+  26 Apr 2014; Maxim Koltsov <maksbotan@gentoo.org> +flacon-0.9.4.ebuild,
+  +flacon-9999.ebuild:
+  Bump to 0.9.4, add live ebuild, bug #507440. Thanks to Nikoli.
+
+  13 Oct 2013; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Updated Nikoli's e-mail address for easier automatic assignment.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> flacon-0.8.0.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> flacon-0.7.2.ebuild:
+  Stable for x86, wrt bug #471668
+
+  29 May 2013; Michael Weber <xmw@gentoo.org> flacon-0.8.0.ebuild, metadata.xml:
+  Ebuild by Nikoli, bug 471554. Remove local description of USE linguas_si_LK.
+
+  29 May 2013; Chema Alonso <nimiux@gentoo.org> flacon-0.7.2.ebuild:
+  Stable for amd64 wrt bug #471668
+
+*flacon-0.8.0 (29 May 2013)
+
+  29 May 2013; Michael Weber <xmw@gentoo.org> +flacon-0.8.0.ebuild,
+  -flacon-0.5.7.ebuild, -flacon-0.6.0.ebuild, metadata.xml:
+  Version bump based on bug 471554 by Nikoli, drop old.
+
+*flacon-0.7.2 (23 Aug 2012)
+
+  23 Aug 2012; Maxim Koltsov <maksbotan@gentoo.org> +flacon-0.7.2.ebuild:
+  Bump to 0.7.2, bug 431982. Thanks to Nikoli
+
+  21 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> flacon-0.6.1.ebuild:
+  x86 stable wrt bug #413359
+
+  26 Apr 2012; Agostino Sarubbo <ago@gentoo.org> flacon-0.6.1.ebuild:
+  Stable for amd64, wrt bug #413359
+
+*flacon-0.6.1 (26 Mar 2012)
+
+  26 Mar 2012; Maxim Koltsov <maksbotan@gentoo.org> +flacon-0.6.1.ebuild:
+  Bump to 0.6.1, bug #409173. Thanks to Nikoli
+
+*flacon-0.6.0 (07 Dec 2011)
+
+  07 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org> +flacon-0.6.0.ebuild:
+  Version bump to 0.6.0, thanks to Nikoli
+
+*flacon-0.5.7 (24 Sep 2011)
+
+  24 Sep 2011; Maxim Koltsov <maksbotan@gentoo.org> +flacon-0.5.7.ebuild,
+  +metadata.xml:
+  Add initial ebuild, thanks to Nikoli <nikoli@lavabit.com>. Bug 353606.

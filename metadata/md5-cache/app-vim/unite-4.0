@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: unite all sources
+EAPI=4
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=3396
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/unite-4.0.tar.bz2 http://dev.gentoo.org/~radhermit/vim/unite-4.0.tar.bz2
+_eclasses_=vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=d70145e290d304af1a9c91e3fbe99cf2

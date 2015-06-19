@@ -1,0 +1,36 @@
+Index: camlidl-1.05/tests/unix.idl
+===================================================================
+--- camlidl-1.05.orig/tests/unix.idl
++++ camlidl-1.05/tests/unix.idl
+@@ -15,16 +15,16 @@ quote (C, "
+ 
+   union process_status { int code; };
+ 
+-  enum { WEXITED, WSIGNALED, WSTOPPED };
++  enum { WEXITED2, WSIGNALED, WSTOPPED2 };
+ 
+   static void decode_status(int status, int * kind, union process_status * p)
+   {
+     if (WIFEXITED(status)) {
+-      *kind = WEXITED; p->code = WEXITSTATUS(status);
++      *kind = WEXITED2; p->code = WEXITSTATUS(status);
+     } else if (WIFSIGNALED(status)) {
+       *kind = WSIGNALED; p->code = WTERMSIG(status);
+     } else {
+-      *kind = WSTOPPED; p->code = WSTOPSIG(status);
++      *kind = WSTOPPED2; p->code = WSTOPSIG(status);
+     }
+   }
+ 
+@@ -59,9 +59,9 @@ int execve([in,string] char * path, 
+ int fork(void);
+ 
+ union process_status {
+-  case WEXITED: int code;
++  case WEXITED2: int code;
+   case WSIGNALED: int code;
+-  case WSTOPPED: int code;
++  case WSTOPPED2: int code;
+ };
+ 
+ int wait([out] int * kind,

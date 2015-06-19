@@ -1,0 +1,18 @@
+# ChangeLog for media-libs/rply
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/rply/ChangeLog,v 1.3 2012/05/21 19:06:42 tetromino Exp $
+
+  21 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org> rply-1.01-r1.ebuild:
+  Need eutils for epatch.
+
+  17 Feb 2012; Alexandre Rostovtsev <tetromino@gentoo.org> rply-1.01-r1.ebuild:
+  Tarball no longer fetchable from upstream (bug #404299, thanks to Kacper
+  Kowalik for reporting).
+
+*rply-1.01-r1 (28 Oct 2011)
+
+  28 Oct 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +rply-1.01-r1.ebuild, +files/rply-1.01-lc_numeric.patch,
+  +files/rply-1.01-stdint.h.patch, +files/rply_CMakeLists.txt, +metadata.xml:
+  New ebuild, moved from gnome overlay.
+

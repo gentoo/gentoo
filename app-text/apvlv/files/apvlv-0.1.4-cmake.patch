@@ -1,0 +1,32 @@
+diff -ruN apvlv-0.1.4-Source/src/CMakeLists.txt my/src/CMakeLists.txt
+--- apvlv-0.1.4-Source/src/CMakeLists.txt	2012-06-13 05:44:28.000000000 +0200
++++ my/src/CMakeLists.txt	2012-07-17 00:32:53.782141814 +0200
+@@ -1,23 +1,18 @@
+ IF (WIN32)
+         ADD_DEFINITIONS (-D_CRT_SECURE_NO_WARNINGS)
+ ELSE (WIN32)
+-        SET (CMAKE_CXX_FLAGS "-Wall -fno-strict-aliasing")
+-
+-        OPTION (APVLV_ENABLE_DEBUG "If build binary with debug infomations." OFF)
+-        IF (APVLV_ENABLE_DEBUG)
+-                SET (CMAKE_CXX_FLAGS "-D_DEBUG -g ${CMAKE_CXX_FLAGS}")
+-        ELSE (APVLV_ENABLE_DEBUG)
+-                SET (CMAKE_CXX_FLAGS "-O2 ${CMAKE_CXX_FLAGS}")
+-        ENDIF (APVLV_ENABLE_DEBUG)
++        SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -fno-strict-aliasing")
+ ENDIF (WIN32)
+ 
+ FIND_PACKAGE (PkgConfig)
+ 
+-PKG_CHECK_MODULES (FREETYPE2 freetype2 REQUIRED)
+ PKG_CHECK_MODULES (GTK2 gtk+-2.0 REQUIRED)
+ PKG_CHECK_MODULES (GLIB2 glib-2.0 REQUIRED)
+ PKG_CHECK_MODULES (GTHREAD2 gthread-2.0 REQUIRED)
+-PKG_CHECK_MODULES (WEBKIT1 webkit-1.0 QUIET)
++
++IF (APVLV_WITH_HTML)
++    PKG_CHECK_MODULES (WEBKIT1 webkit-1.0 REQUIRED)
++ENDIF (APVLV_WITH_HTML)
+ INCLUDE_DIRECTORIES (${FREETYPE2_INCLUDE_DIRS} 
+                      ${GTK2_INCLUDE_DIRS} 
+                      ${GLIB2_INCLUDE_DIRS} 

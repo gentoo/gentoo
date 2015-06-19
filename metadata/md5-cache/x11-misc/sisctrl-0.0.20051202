@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare
+DEPEND=dev-libs/glib:2 x11-libs/gtk+:2 x11-libs/libXrender x11-libs/libXv x11-libs/libXxf86vm virtual/pkgconfig x11-proto/xf86vidmodeproto
+DESCRIPTION=tool that allows you to tune SiS drivers from X
+EAPI=5
+HOMEPAGE=http://www.winischhofer.net/linuxsispart1.shtml#sisctrl
+KEYWORDS=~amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 x11-libs/gtk+:2 x11-libs/libXrender x11-libs/libXv x11-libs/libXxf86vm
+SLOT=0
+SRC_URI=http://www.winischhofer.net/sis/sisctrl-0.0.20051202.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c283e2a9189e62963b5326ff97dbcd2f

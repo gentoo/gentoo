@@ -1,0 +1,96 @@
+# ChangeLog for app-xemacs/auctex
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/auctex/ChangeLog,v 1.29 2014/08/10 18:42:28 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> auctex-1.47.ebuild,
+  auctex-1.51.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  22 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> auctex-1.51.ebuild:
+  ppc64 stable wrt #369897
+
+  03 Jul 2011; Markos Chandras <hwoarang@gentoo.org> auctex-1.51.ebuild:
+  Stable on amd64 wrt bug #369897
+
+  28 Jun 2011; Brent Baude <ranger@gentoo.org> auctex-1.51.ebuild:
+  Marking auctex-1.51 ppc stable for bug 369897
+
+  25 Jun 2011; Raúl Porcel <armin76@gentoo.org> auctex-1.51.ebuild:
+  alpha/sparc stable wrt #369897
+
+  12 Jun 2011; Thomas Kahle <tomka@gentoo.org> auctex-1.51.ebuild:
+  x86 stable per bug 369897
+
+*auctex-1.51 (22 Feb 2009)
+
+  22 Feb 2009; Hans de Graaff <graaff@gentoo.org> +auctex-1.51.ebuild:
+  Version bump with sync to upstream 11.84
+
+  19 Feb 2009; Christian Faulhammer <fauli@gentoo.org> -auctex-1.46.ebuild:
+  clean up
+
+  12 May 2008; Markus Rothe <corsair@gentoo.org> auctex-1.47.ebuild:
+  Stable on ppc64
+
+  05 May 2008; Raúl Porcel <armin76@gentoo.org> auctex-1.47.ebuild:
+  alpha/sparc stable wrt #219332
+
+  02 May 2008; Christian Faulhammer <opfer@gentoo.org> auctex-1.47.ebuild:
+  stable x86, bug 219332
+
+  30 Apr 2008; nixnut <nixnut@gentoo.org> auctex-1.47.ebuild:
+  Stable on ppc wrt bug 219332
+
+  26 Apr 2008; Hans de Graaff <graaff@gentoo.org> ChangeLog:
+  Mark stable on amd64 , bug #219332
+
+  19 Mar 2008; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  A herd should not be listed as maintainer
+
+  28 Feb 2008; Raúl Porcel <armin76@gentoo.org> auctex-1.47.ebuild:
+  Re-add ~ppc64, removed by mistake
+
+  21 Oct 2007; Hans de Graaff <graaff@gentoo.org> -auctex-1.33.ebuild:
+  Remove old version
+
+  03 Jun 2007; Hans de Graaff <graaff@gentoo.org> auctex-1.46.ebuild:
+  Stable on amd64, ppc, ppc64, sparc, x86 as per #175560
+
+  29 May 2007; Raúl Porcel <armin76@gentoo.org> auctex-1.46.ebuild:
+  alpha stable wrt #175560
+
+*auctex-1.47 (05 May 2007)
+
+  05 May 2007; Hans de Graaff <graaff@gentoo.org> +auctex-1.47.ebuild:
+  Version bump: documentation changes only
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*auctex-1.46 (11 Nov 2006)
+
+  11 Nov 2006; Hans de Graaff <graaff@gentoo.org> +auctex-1.46.ebuild:
+  Version bump, fixes bug #119162.
+
+  05 Nov 2006; Hans de Graaff <graaff@gentoo.org> +metadata.xml,
+  -auctex-1.32.ebuild:
+  Remove old version, add metadata.xml
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> auctex-1.33.ebuild:
+  Stable on ppc.
+
+  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> auctex-1.33.ebuild:
+  Stable on alpha
+
+*auctex-1.33 (22 Feb 2003)
+
+  22 Feb 2003;  <rendhalver@gentoo.org> auctex-1.32.ebuild auctex-1.33.ebuild files/digest-auctex-1.33 :
+  Add ~alpha to KEYWORDS
+
+  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
+  new stable ebuild
+
+*auctex-1.32 (16 Dec 2002)
+
+  16 Dec 2002; Rendhalver [Peter Brown] <rendhalver@gentoo.org> :
+  Initial import.

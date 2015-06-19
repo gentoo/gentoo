@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=COmputer Language Manipulation
+EAPI=5
+HOMEPAGE=http://www.complang.org/colm/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.complang.org/colm/colm-0.12.0.tar.gz
+_md5_=6e46ce8e5f2281b518d13b0700e734b0

@@ -1,0 +1,15 @@
+http://bugs.gentoo.org/334569
+
+--- Makefile
++++ Makefile
+@@ -79,9 +79,7 @@
+ 	@rm -rf "build/tuxpaint-stamps-$(VER_DATE)" "build/tuxpaint-stamps-$(VER_DATE).tar.gz"
+ 	@-if [ -d build ] ; then rmdir build ; fi
+ 
+-releasedir: build/tuxpaint-stamps-$(VER_DATE)
+-
+-build/tuxpaint-stamps-$(VER_DATE):
++releasedir:
+ 	@echo
+ 	@echo "Creating release directory"
+ 	@echo

@@ -1,0 +1,231 @@
+# ChangeLog for app-text/texi2html
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/texi2html/ChangeLog,v 1.71 2013/02/07 21:44:45 ulm Exp $
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> texi2html-5.0-r1.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  24 Sep 2012; Samuli Suominen <ssuominen@gentoo.org> -texi2html-1.78.ebuild,
+  -texi2html-5.0.ebuild:
+  old
+
+  24 Sep 2012; Raúl Porcel <armin76@gentoo.org> texi2html-5.0-r1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #414927
+
+  15 Jun 2012; Johannes Huber <johu@gentoo.org> texi2html-5.0-r1.ebuild:
+  Stable for x86, wrt bug #414927
+
+  29 May 2012; Brent Baude <ranger@gentoo.org> texi2html-5.0-r1.ebuild:
+  Marking texi2html-5.0-r1 ppc for bug 414927
+
+  23 May 2012; Brent Baude <ranger@gentoo.org> texi2html-5.0-r1.ebuild:
+  Marking texi2html-5.0-r1 ppc64 for bug 414927
+
+  16 May 2012; Jeroen Roovers <jer@gentoo.org> texi2html-5.0-r1.ebuild:
+  Stable for HPPA (bug #414927).
+
+  13 May 2012; Markus Meier <maekke@gentoo.org> texi2html-5.0-r1.ebuild:
+  arm stable, bug #414927
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> texi2html-5.0-r1.ebuild:
+  Stable for amd64, wrt bug #414927
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> texi2html-5.0-r1.ebuild:
+  keyword ~amd64-fbsd
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> texi2html-5.0-r1.ebuild:
+  fix build on on platforms without GNU install
+
+  06 May 2012; Samuli Suominen <ssuominen@gentoo.org> texi2html-5.0-r1.ebuild:
+  Temporarily restrict testsuite wrt #411523 by Markus Oehme
+
+  06 May 2012; Samuli Suominen <ssuominen@gentoo.org> texi2html-5.0-r1.ebuild:
+  Rekeyword ~ppc/~ppc64 wrt #408399
+
+  06 May 2012; Raúl Porcel <armin76@gentoo.org> texi2html-5.0.ebuild,
+  texi2html-5.0-r1.ebuild:
+  Add ~alpha/~arm/~ia64/~s390/~sh/~sparc wrt #408399
+
+  05 Apr 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -texi2html-1.64-r1.ebuild, -texi2html-1.76.ebuild:
+  old
+
+  05 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> texi2html-5.0-r1.ebuild:
+  Raise dev-perl/libintl-perl to >= 1.200 wrt #410787 by Jeroen Roovers
+
+  21 Mar 2012; Jeroen Roovers <jer@gentoo.org> texi2html-5.0-r1.ebuild:
+  Marked ~hppa (bug #408399).
+
+*texi2html-5.0-r1 (15 Mar 2012)
+
+  15 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> +texi2html-5.0-r1.ebuild:
+  Revision bump because of keyword dropping for new RDEPEND
+  dev-perl/Unicode-EastAsianWidth to avoid using bundled copy when
+  USE="unicode" is enabled.
+
+  15 Mar 2012; Jeroen Roovers <jer@gentoo.org> texi2html-5.0.ebuild:
+  Marked ~hppa (bug #408119).
+
+*texi2html-5.0 (14 Mar 2012)
+
+  14 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> +texi2html-5.0.ebuild:
+  Version bump wrt #258998 by Arfrever Frehtes Taifersar Arahesis
+
+  04 Oct 2011; Jeroen Roovers <jer@gentoo.org> texi2html-1.78.ebuild:
+  Stable for HPPA (bug #355085).
+
+  18 Sep 2011; Raúl Porcel <armin76@gentoo.org> texi2html-1.78.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #355085
+
+  14 Aug 2011; Markus Meier <maekke@gentoo.org> texi2html-1.78.ebuild:
+  arm stable, bug #355085
+
+  12 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> texi2html-1.78.ebuild:
+  ppc/ppc64 stable wrt #355085
+
+  12 Aug 2011; Thomas Kahle <tomka@gentoo.org> texi2html-1.78.ebuild:
+  x86 stable per bug 355085
+
+  09 Aug 2011; Markos Chandras <hwoarang@gentoo.org> texi2html-1.78.ebuild:
+  Stable on amd64 wrt bug #355085
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> texi2html-1.64-r1.ebuild:
+  Drop to ~mips
+
+  02 Oct 2010; Fabian Groffen <grobian@gentoo.org> texi2html-1.78.ebuild:
+  Marked ~x64-macos, bug #333981
+
+  11 Jun 2010; Alexis Ballier <aballier@gentoo.org> texi2html-1.78.ebuild:
+  dont try to install non existent files, by Christophe LEFEBVRE, bug
+  #317967
+
+  22 Feb 2010; Jonathan Callen <abcd@gentoo.org> texi2html-1.78.ebuild:
+  Add prefix keywords, support; bump EAPI
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> texi2html-1.64-r1.ebuild:
+  Remove virtual/libc
+
+  18 Mar 2009; Raúl Porcel <armin76@gentoo.org> texi2html-1.76.ebuild:
+  sh stable wrt #253551
+
+  11 Mar 2009; Raúl Porcel <armin76@gentoo.org> texi2html-1.78.ebuild:
+  Add ~sh
+
+  13 Apr 2008; Fabian Groffen <grobian@gentoo.org> texi2html-1.76.ebuild,
+  texi2html-1.78.ebuild:
+  Dropped ppc-macos keyword, see you in Prefix
+
+  23 Nov 2007; Alexis Ballier <aballier@gentoo.org> -texi2html-1.64.ebuild,
+  texi2html-1.64-r1.ebuild:
+  remove old, fix date header, quote D
+
+*texi2html-1.78 (23 Nov 2007)
+
+  23 Nov 2007; Alexis Ballier <aballier@gentoo.org> texi2html-1.76.ebuild,
+  +texi2html-1.78.ebuild:
+  version bump, fix src uri and homepage, bug #199484
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  07 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> texi2html-1.76.ebuild:
+  Add ~x86-fbsd keyword.
+
+  16 Mar 2006; Martin Ehmsen <ehmsen@gentoo.org> texi2html-1.64.ebuild,
+  texi2html-1.64-r1.ebuild, texi2html-1.76.ebuild:
+  Don't install INSTALL and/or COPYING, found by QA script.
+
+  18 May 2005; Markus Rothe <corsair@gentoo.org> texi2html-1.76.ebuild:
+  Stable on ppc64
+
+  22 Apr 2005; Kito <kito@gentoo.org> texi2html-1.76.ebuild:
+  ~ppc-macos keyword
+
+  14 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> texi2html-1.76.ebuild:
+  Stable on alpha.
+
+  11 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> texi2html-1.76.ebuild:
+  Stable on sparc
+
+  10 Apr 2005; Simon Stelling <blubb@gentoo.org> texi2html-1.76.ebuild:
+  stable on amd64
+
+  09 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> texi2html-1.76.ebuild:
+  Stable on ppc.
+
+  09 Apr 2005; Mamoru KOMACHI <usata@gentoo.org> -texi2html-1.70.ebuild,
+  texi2html-1.76.ebuild:
+  Stable on x86.
+
+*texi2html-1.76 (08 Feb 2005)
+
+  08 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> +texi2html-1.76.ebuild:
+  Version bumped. See also bug #74307.
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> texi2html-1.64-r1.ebuild,
+  texi2html-1.70.ebuild:
+  added ~ppc64 to KEYWORDS/Stable on ppc64
+
+  03 Dec 2004; Mamoru KOMACHI <usata@gentoo.org> texi2html-1.64.ebuild,
+  texi2html-1.70.ebuild:
+  Remove dead symbolic link before merge; bug #72753.
+
+  11 Nov 2004; Markus Rothe <corsair@gentoo.org> texi2html-1.64-r1.ebuild:
+  Marked ~ppc64
+
+*texi2html-1.70 (30 Oct 2004)
+
+  30 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> +texi2html-1.70.ebuild:
+  Version bumped.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  texi2html-1.64-r1.ebuild, texi2html-1.64.ebuild:
+  virtual/glibc -> virtual/libc
+
+  26 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> texi2html-1.64-r1.ebuild:
+  Marked stable on amd64.
+
+  28 Apr 2004; Guy Martin <gmsoft@gentoo.org> texi2html-1.64-r1.ebuild:
+  Marked stable on hppa.
+
+  27 Apr 2004; Ferris McCormick <fmccor@gentoo.org> texi2html-1.64-r1.ebuild:
+  Mark stable for sparc (see bug 34217).
+
+  26 Apr 2004; Mike Gardiner <obz@gentoo.org> texi2html-1.64-r1.ebuild,
+  texi2html-1.64.ebuild:
+  Marked stable on x86
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> texi2html-1.64-r1.ebuild:
+  stable on alpha and ia64
+
+*texi2html-1.64-r1 (24 Nov 2003)
+
+  24 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> texi2html-1.64-r1.ebuild:
+  Fixed binary conflict with teTeX, bug #34217.
+
+  30 Jun 2003; Bartosch Pixa <darkspecter@gentoo.org> texi2html-1.64.ebuild:
+  set ppc in keywords
+
+  13 Mar 2003; Olivier Reisch <doctomoe@gentoo.org> texi2html-1.64.ebuild :
+  Added ~ppc keyword
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*texi2html-1.64 (1 Feb 2002)
+
+  04 Jul 2003; Guy Martin <gmsoft@gentoo.org> texi2html-1.64.ebuild :
+  Added hppa to KEYWORDS.
+
+  10 Mar 2003; Will Woods <wwoods@gentoo.org> texi2html-1.64.ebuild:
+  Added alpha to KEYWORDS
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> texi2html-1.64.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

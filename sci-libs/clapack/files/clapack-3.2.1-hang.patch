@@ -1,0 +1,13 @@
+diff -ruN clapack-3.2.1-CMAKE.orig/SRC/CMakeLists.txt clapack-3.2.1-CMAKE/SRC/CMakeLists.txt
+--- clapack-3.2.1-CMAKE.orig/SRC/CMakeLists.txt	2011-06-21 00:29:16.275749375 +0200
++++ clapack-3.2.1-CMAKE/SRC/CMakeLists.txt	2011-06-21 00:31:06.133749448 +0200
+@@ -355,6 +355,9 @@
+    zla_heamv.c zla_hercond_c.c zla_hercond_x.c zla_herpvgrw.c		
+    zla_lin_berr.c zlarscl2.c zlascl2.c zla_wwaddw.c)
+ 
++if(CMAKE_COMPILER_IS_GNUCC)
++   set_source_files_properties(../INSTALL/dlamch.c ../INSTALL/slamch.c PROPERTIES COMPILE_FLAGS "-ffloat-store -O0")
++endif()
+ 
+ if( USEXBLAS)
+   set(ALLXOBJ ${SXLASRC} ${DXLASRC} ${CXLASRC} ${ZXLASRC} ${ALLXAUX})

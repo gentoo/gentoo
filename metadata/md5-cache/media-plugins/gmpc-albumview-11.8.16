@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=media-sound/gmpc-11.8.16 virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext )
+DESCRIPTION=This plugin shows your music collection in albums
+EAPI=4
+HOMEPAGE=http://gmpc.wikia.com/wiki/GMPC_PLUGIN_ALBUMVIEW
+IUSE=nls
+KEYWORDS=amd64 x86
+LICENSE=LGPL-2
+RDEPEND=>=media-sound/gmpc-11.8.16
+SLOT=0
+SRC_URI=http://download.sarine.nl/Programs/gmpc/11.8/gmpc-albumview-11.8.16.tar.gz
+_md5_=4bae5cbea5448d8825c9bcaec45791aa

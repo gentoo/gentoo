@@ -1,0 +1,49 @@
+# ChangeLog for mail-filter/mapson
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/mapson/ChangeLog,v 1.12 2013/07/12 04:55:40 ago Exp $
+
+  12 Jul 2013; Agostino Sarubbo <ago@gentoo.org> mapson-3.3.ebuild:
+  Stable for amd64, wrt bug #476118
+
+  05 Jan 2012; Eray Aslan <eras@gentoo.org> -mapson-3.0.ebuild,
+  -files/mapson-3.0-gcc43-tests.patch, -files/mapson-3.0-gcc43.patch:
+  remove old
+
+  04 Jan 2012; Brent Baude <ranger@gentoo.org> mapson-3.3.ebuild:
+  Marking mapson-3.3 ppc for bug 391133
+
+  22 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> mapson-3.3.ebuild:
+  x86 stable wrt bug #391133
+
+*mapson-3.3 (10 Jun 2011)
+
+  10 Jun 2011; Eray Aslan <eras@gentoo.org> +mapson-3.3.ebuild:
+  Version and EAPI bump.
+
+  10 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> mapson-3.0.ebuild,
+  +files/mapson-3.0-gcc43-tests.patch:
+  Fix building with GCC 4.3+ wrt #277151.
+
+  22 Jan 2009; Mark Loeser <halcy0n@gentoo.org>
+  +files/mapson-3.0-gcc43.patch, mapson-3.0.ebuild:
+  Patch to fix compilation with gcc-4.3 by Yaroslav Gorbunov <yagorbunov AT
+  mail DOT ru>; bug #251151
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> mapson-3.0.ebuild:
+  Stable on ppc.
+
+  01 Nov 2004; Andrej Kacian <ticho@gentoo.org> mapson-3.0.ebuild:
+  Stable on x86
+
+  15 Oct 2004; David Holm <dholm@gentoo.org> mapson-3.0.ebuild:
+  Added to ~ppc.
+
+*mapson-3.0 (07 Sep 2004)
+
+  07 Sep 2004; Andrej Kacian <ticho@gentoo.org> +metadata.xml,
+  +mapson-3.0.ebuild:
+  Initial version. Closes #23169, ebuild submitted by Peter Simons
+  <simons@cryp.to>.

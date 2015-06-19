@@ -1,0 +1,415 @@
+# ChangeLog for media-gfx/graphicsmagick
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/graphicsmagick/ChangeLog,v 1.125 2014/09/08 18:40:29 radhermit Exp $
+
+*graphicsmagick-1.3.20-r1 (08 Sep 2014)
+
+  08 Sep 2014; Tim Harder <radhermit@gentoo.org> -graphicsmagick-1.3.20.ebuild,
+  +graphicsmagick-1.3.20-r1.ebuild:
+  Restrict virtual/jpeg slot.
+
+  08 Sep 2014; Tim Harder <radhermit@gentoo.org>
+  -graphicsmagick-1.3.16-r1.ebuild, -graphicsmagick-1.3.17.ebuild:
+  Remove old.
+
+*graphicsmagick-1.3.20 (04 Sep 2014)
+
+  04 Sep 2014; Tim Harder <radhermit@gentoo.org> +graphicsmagick-1.3.20.ebuild,
+  +files/graphicsmagick-1.3.20-powerpc.patch:
+  Version bump.
+
+  03 Mar 2014; Samuli Suominen <ssuominen@gentoo.org>
+  graphicsmagick-1.3.19.ebuild:
+  Call epatch_user wrt #498942 by Nick Bowler
+
+  06 Jan 2014; Naohiro Aota <naota@gentoo.org> graphicsmagick-1.3.19.ebuild:
+  Add ~x86-fbsd #496740
+
+*graphicsmagick-1.3.19 (02 Jan 2014)
+
+  02 Jan 2014; Tim Harder <radhermit@gentoo.org> +graphicsmagick-1.3.19.ebuild,
+  +files/graphicsmagick-1.3.19-flags.patch,
+  +files/graphicsmagick-1.3.19-freetype.patch,
+  +files/graphicsmagick-1.3.19-perl.patch, metadata.xml:
+  Version bump. Add webp use flag, fix perl bindings build issue (bug #456180,
+  patch by Tiziano Müller), and fix generated config file flags (bug #479560).
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> graphicsmagick-1.3.18.ebuild:
+  Stable for sparc, wrt bug #477606
+
+  30 Jul 2013; Agostino Sarubbo <ago@gentoo.org> graphicsmagick-1.3.18.ebuild:
+  Stable for alpha, wrt bug #477606
+
+  27 Jul 2013; Agostino Sarubbo <ago@gentoo.org> graphicsmagick-1.3.18.ebuild:
+  Stable for x86, wrt bug #477606
+
+  22 Jul 2013; Agostino Sarubbo <ago@gentoo.org> graphicsmagick-1.3.18.ebuild:
+  Stable for ppc64, wrt bug #477606
+
+  22 Jul 2013; Agostino Sarubbo <ago@gentoo.org> graphicsmagick-1.3.18.ebuild:
+  Stable for ppc, wrt bug #477606
+
+  21 Jul 2013; Jeroen Roovers <jer@gentoo.org> graphicsmagick-1.3.18.ebuild:
+  Stable for HPPA (bug #477606).
+
+  21 Jul 2013; Jeroen Roovers <jer@gentoo.org> graphicsmagick-1.3.18.ebuild,
+  +files/graphicsmagick-1.3.18-powerpc.patch:
+  Fix building on HPPA (bug #438608).
+
+  21 Jul 2013; Agostino Sarubbo <ago@gentoo.org> graphicsmagick-1.3.18.ebuild:
+  Stable for amd64, wrt bug #477606
+
+  08 Apr 2013; Tim Harder <radhermit@gentoo.org> graphicsmagick-1.3.18.ebuild,
+  files/graphicsmagick-1.3.18-freetype.patch:
+  Update freetype cross-compile patch to drop eautoreconf usage (fixes bug
+  #465122).
+
+*graphicsmagick-1.3.18 (08 Apr 2013)
+
+  08 Apr 2013; Tim Harder <radhermit@gentoo.org> +graphicsmagick-1.3.18.ebuild,
+  +files/graphicsmagick-1.3.18-freetype.patch:
+  Version bump.
+
+  21 Jan 2013; Mike Frysinger <vapier@gentoo.org>
+  +files/graphicsmagick-1.3.17-freetype.patch, graphicsmagick-1.3.17.ebuild:
+  Fix cross-compiling with freetype while upstream sorts it out.
+
+*graphicsmagick-1.3.17 (15 Oct 2012)
+
+  15 Oct 2012; Tim Harder <radhermit@gentoo.org> +graphicsmagick-1.3.17.ebuild:
+  Version bump. Update to EAPI 5.
+
+  04 Oct 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -graphicsmagick-1.3.13.ebuild,
+  -files/graphicsmagick-1.3.13-lzma_configure.patch:
+  old
+
+  04 Oct 2012; Samuli Suominen <ssuominen@gentoo.org>
+  graphicsmagick-1.3.16-r1.ebuild:
+  ppc/ppc64 stable wrt #428718
+
+  19 Aug 2012; Raúl Porcel <armin76@gentoo.org>
+  graphicsmagick-1.3.16-r1.ebuild:
+  alpha/sparc stable wrt #428718
+
+  12 Aug 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -graphicsmagick-1.3.14.ebuild, -graphicsmagick-1.3.15.ebuild,
+  -graphicsmagick-1.3.16.ebuild:
+  old
+
+  12 Aug 2012; Samuli Suominen <ssuominen@gentoo.org>
+  graphicsmagick-1.3.16-r1.ebuild:
+  Restore "emake check" to src_test() to allow parallel testing.
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org>
+  graphicsmagick-1.3.16-r1.ebuild:
+  Stable for amd64, wrt bug #428718
+
+  03 Aug 2012; Jeroen Roovers <jer@gentoo.org> graphicsmagick-1.3.16-r1.ebuild:
+  Stable for HPPA (bug #428718).
+
+  03 Aug 2012; Jeff Horelick <jdhore@gentoo.org>
+  graphicsmagick-1.3.16-r1.ebuild:
+  marked x86 per bug 428718
+
+*graphicsmagick-1.3.16-r1 (02 Aug 2012)
+
+  02 Aug 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +graphicsmagick-1.3.16-r1.ebuild,
+  +files/graphicsmagick-1.3.16-libpng14.patch:
+  Upstream patch for inconsistent typecasts with libpng14 and above wrt
+  security #428718
+
+  24 Jun 2012; Tim Harder <radhermit@gentoo.org> graphicsmagick-1.3.16.ebuild:
+  Drop perl-5.16 build fix since it was applied upstream.
+
+*graphicsmagick-1.3.16 (24 Jun 2012)
+
+  24 Jun 2012; Tim Harder <radhermit@gentoo.org> +graphicsmagick-1.3.16.ebuild:
+  Version bump.
+
+  17 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  graphicsmagick-1.3.15.ebuild:
+  Fix building with ExtUtils-ParseXS >= 3.x wrt #378197 by Torsten Veller
+
+  16 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  graphicsmagick-1.3.15.ebuild, metadata.xml:
+  Use global USE flag "postscript" instead of local USE flag "gs" for
+  PostScript support
+
+  14 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  graphicsmagick-1.3.15.ebuild, metadata.xml:
+  Optionalize app-text/ghostscript-gpl with USE="gs" wrt #409467 by Johan
+  Bergström
+
+*graphicsmagick-1.3.15 (14 Jun 2012)
+
+  14 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +graphicsmagick-1.3.15.ebuild:
+  Version bump wrt #421053 by Johan Bergström
+
+  14 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -files/graphicsmagick-1.3.7-debian-fixed.patch,
+  -files/graphicsmagick-1.3.7-perl-ldflags.patch,
+  -graphicsmagick-1.3.12-r1.ebuild:
+  old
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> graphicsmagick-1.3.13.ebuild:
+  alpha/sparc stable wrt #399903
+
+  08 Mar 2012; Brent Baude <ranger@gentoo.org> graphicsmagick-1.3.13.ebuild:
+  Marking graphicsmagick-1.3.13 ppc64 for bug 399903
+
+*graphicsmagick-1.3.14 (29 Feb 2012)
+
+  29 Feb 2012; Tim Harder <radhermit@gentoo.org> +graphicsmagick-1.3.14.ebuild:
+  Version bump.
+
+  28 Feb 2012; Brent Baude <ranger@gentoo.org> graphicsmagick-1.3.13.ebuild:
+  Marking graphicsmagick-1.3.13 ppc for bug 399903
+
+  07 Feb 2012; Jeroen Roovers <jer@gentoo.org> graphicsmagick-1.3.13.ebuild:
+  Stable for HPPA (bug #399903).
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  graphicsmagick-1.3.13.ebuild:
+  x86 stable wrt bug #399903
+
+  27 Jan 2012; Agostino Sarubbo <ago@gentoo.org> graphicsmagick-1.3.13.ebuild:
+  Stable for amd64, wrt bug #399903
+
+*graphicsmagick-1.3.13 (28 Dec 2011)
+
+  28 Dec 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +graphicsmagick-1.3.13.ebuild,
+  +files/graphicsmagick-1.3.13-lzma_configure.patch:
+  Version bump wrt #395611 by Ivan S. Titov
+
+  16 Dec 2011; Naohiro Aota <naota@gentoo.org> graphicsmagick-1.3.12-r1.ebuild:
+  Add ~x86-fbsd
+
+  23 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -graphicsmagick-1.3.12.ebuild:
+  old
+
+  23 Oct 2011; Raúl Porcel <armin76@gentoo.org>
+  graphicsmagick-1.3.12-r1.ebuild:
+  alpha/sparc stable wrt #387361
+
+  18 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  graphicsmagick-1.3.12-r1.ebuild:
+  x86 stable wrt bug #387361
+
+  17 Oct 2011; Jeroen Roovers <jer@gentoo.org> graphicsmagick-1.3.12-r1.ebuild:
+  Stable for HPPA (bug #387361).
+
+  17 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  graphicsmagick-1.3.12-r1.ebuild:
+  ppc/ppc64 stable wrt #387361
+
+  17 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  graphicsmagick-1.3.12-r1.ebuild:
+  amd64 stable wrt #387361
+
+  28 Sep 2011; Samuli Suominen <ssuominen@gentoo.org>
+  graphicsmagick-1.3.12-r1.ebuild:
+  Use gentoo mirrors.
+
+*graphicsmagick-1.3.12-r1 (07 Aug 2011)
+
+  07 Aug 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +graphicsmagick-1.3.12-r1.ebuild:
+  Fix compability with libpng15 wrt #362637 by Jonathan Callen
+
+  08 Nov 2010; Markus Meier <maekke@gentoo.org>
+  graphicsmagick-1.3.12.ebuild:
+  change jpeg dep to virtual/jpeg
+
+  19 Jul 2010; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  Removing myself as maintainer
+
+  21 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  graphicsmagick-1.3.12.ebuild:
+  Restrict media-libs/lcms depend to old version.
+
+  30 May 2010; Raúl Porcel <armin76@gentoo.org>
+  graphicsmagick-1.3.12.ebuild:
+  alpha/sparc stable wrt #318647
+
+  16 May 2010; Markus Meier <maekke@gentoo.org>
+  graphicsmagick-1.3.12.ebuild:
+  amd64/x86 stable, bug #318647
+
+  11 May 2010; Brent Baude <ranger@gentoo.org> graphicsmagick-1.3.12.ebuild:
+  stable ppc64, bug 318647
+
+  11 May 2010; Jeroen Roovers <jer@gentoo.org> graphicsmagick-1.3.12.ebuild:
+  Stable for HPPA (bug #318647).
+
+  10 May 2010; nixnut <nixnut@gentoo.org> graphicsmagick-1.3.12.ebuild:
+  ppc stable #318647
+
+  14 Apr 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  graphicsmagick-1.3.12.ebuild, metadata.xml:
+  Added a modules keyword (bug #314987) and better description of use flags
+
+  24 Mar 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  -graphicsmagick-1.3.10.ebuild, -graphicsmagick-1.3.11.ebuild,
+  graphicsmagick-1.3.12.ebuild:
+  Now install perl modules in vendor instead of site-dir, bug #310839
+
+  21 Mar 2010; Fabian Groffen <grobian@gentoo.org>
+  graphicsmagick-1.3.12.ebuild:
+  Drop EAPI back to 2 and add compatability code for EPREFIX since
+  perl-module.eclass doesn't support EAPI=3 yet, thanks tove.
+
+  21 Mar 2010; Fabian Groffen <grobian@gentoo.org>
+  graphicsmagick-1.3.12.ebuild:
+  Add EPREFIX to configure arguments, bump to EAPI=3
+
+*graphicsmagick-1.3.12 (11 Mar 2010)
+
+  11 Mar 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +graphicsmagick-1.3.12.ebuild:
+  Version bump
+
+  11 Mar 2010; Joseph Jezak <josejx@gentoo.org>
+  graphicsmagick-1.3.11.ebuild:
+  Marked ~ppc for bug #300776.
+
+  25 Feb 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  -graphicsmagick-1.3.8.ebuild, +graphicsmagick-1.3.11.ebuild:
+  Version bump
+
+*graphicsmagick-1.3.11 (25 Feb 2010)
+
+  25 Feb 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +graphicsmagick-1.3.11.ebuild:
+  Version bump
+
+  20 Feb 2010; Raúl Porcel <armin76@gentoo.org>
+  graphicsmagick-1.3.8.ebuild, graphicsmagick-1.3.10.ebuild:
+  Add ~alpha/~sparc wrt #300776
+
+*graphicsmagick-1.3.10 (14 Feb 2010)
+
+  14 Feb 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  -graphicsmagick-1.3.7-r2.ebuild,
+  -files/graphicsmagick-1.3.7-CVE-2009-1882.patch,
+  -files/graphicsmagick-1.3.7-CVE-2009-3736.patch,
+  +graphicsmagick-1.3.10.ebuild:
+  Version bump
+
+  11 Feb 2010; Jeroen Roovers <jer@gentoo.org> graphicsmagick-1.3.8.ebuild:
+  Marked ~hppa ~ppc64 (bug #300776).
+
+  09 Feb 2010; Brent Baude <ranger@gentoo.org>
+  graphicsmagick-1.3.7-r2.ebuild:
+  Marking graphicsmagick-1.3.7-r2 ~ppc64 for bug 300776
+
+*graphicsmagick-1.3.8 (26 Jan 2010)
+
+  26 Jan 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +graphicsmagick-1.3.8.ebuild, metadata.xml:
+  Version bump. Removed security patches, applied upstream. Leave global use
+  flags to the users (removed the +), misc ebuild cleaning.
+
+*graphicsmagick-1.3.7-r2 (12 Jan 2010)
+
+  12 Jan 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  -graphicsmagick-1.3.7-r1.ebuild, +graphicsmagick-1.3.7-r2.ebuild,
+  +files/graphicsmagick-1.3.7-debian-fixed.patch:
+  Added another patch from Debian. Now force disabling of gslib which caused
+  bad JPEG i/o
+
+*graphicsmagick-1.3.7-r1 (11 Jan 2010)
+
+  11 Jan 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  -graphicsmagick-1.3.7.ebuild, +graphicsmagick-1.3.7-r1.ebuild,
+  +files/graphicsmagick-1.3.7-CVE-2009-1882.patch,
+  +files/graphicsmagick-1.3.7-CVE-2009-3736.patch,
+  +files/graphicsmagick-1.3.7-perl-ldflags.patch:
+  Fixed doc installation (bug #297939), perl module (bug #296935), added
+  security patches (bug #295425, bug #295429)
+
+  07 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  graphicsmagick-1.3.7.ebuild:
+  Transfer Prefix keywords
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> graphicsmagick-1.3.7.ebuild:
+  virtual/ghostscript->app-text/ghostscript-gpl: ghostscript-gpl is the only
+  implementation left in the tree.
+
+*graphicsmagick-1.3.7 (24 Nov 2009)
+
+  24 Nov 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  +graphicsmagick-1.3.7.ebuild, +metadata.xml:
+  Re-imported into the main tree (needed for octave). Thanks everyone in bug
+  #190372, especially Janne Rönkkö to maintain in the sunrise overlay
+
+  19 Sep 2009; Janne Rönkkö (jroo) <jroo@iki.fi>
+  -graphicsmagick-1.3.6.ebuild, +graphicsmagick-1.3.7.ebuild:
+  Version bump to 1.3.7
+
+  11 Aug 2009; Janne Rönkkö (jroo) <jroo@iki.fi>
+  -graphicsmagick-1.3.5.ebuild, +graphicsmagick-1.3.6.ebuild, metadata.xml:
+  Version bump for GM 1.3.6.
+
+  05 May 2009; Christian Ruppert <idl0r@gentoo.org>
+  graphicsmagick-1.3.5.ebuild:
+  Fixed EAPI definition.
+
+  17 Apr 2009; Justin Lecher <jlec@gentoo.org>
+  graphicsmagick-1.3.5.ebuild:
+  QA quotes around EAPI version
+
+  13 Apr 2009; Janne Rönkkö (jroo) <jroo@iki.fi>
+  graphicsmagick-1.3.5.ebuild:
+  Bugfix for perllocal.pod problem. Thanks to valli.
+
+  27 Jan 2009; Janne Rönkkö (jroo) <jroo@iki.fi>
+  -graphicsmagick-1.3.4.ebuild, +graphicsmagick-1.3.5.ebuild:
+  Version bumb for GraphicsMagick.
+
+  19 Jan 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  graphicsmagick-1.3.4.ebuild:
+  Add suggested RDEPEND=${DEPEND}
+
+  16 Jan 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  graphicsmagick-1.3.4.ebuild:
+  Move to EAPI-2 for openmp-usedep
+
+  16 Jan 2009; Janne Rönkkö (jroo) <jroo@iki.fi>
+  -graphicsmagick-1.3.3.ebuild, +graphicsmagick-1.3.4.ebuild:
+  Version bumb to 1.3.4 for GraphicsMagick.
+
+  10 Dec 2008; Janne Rönkkö (jroo) <jroo@iki.fi>
+  -graphicsmagick-1.3.2.ebuild, +graphicsmagick-1.3.3.ebuild:
+  Version bumb for GraphicsMagick.
+
+  18 Nov 2008; Janne Rönkkö (jroo) <jroo@iki.fi>
+  -graphicsmagick-1.3.ebuild, +graphicsmagick-1.3.1.ebuild:
+  Version bumb for graphicsmagick.
+
+  16 Nov 2008; Janne Rönkkö (jroo) <jroo@iki.fi>
+  -graphicsmagick-1.2.5.ebuild, +graphicsmagick-1.3.ebuild:
+  Version bump for graphicsmagick.
+
+  23 Aug 2008; Thomas Beierlein (TomJBE) <tb@forth-ev.de> metadata.xml:
+  Added local USE flag description wrt GLEP 56
+
+  04 Aug 2008; Tiago Cunha (tcunha) <me@tiagocunha.org>
+  graphicsmagick-1.2.5.ebuild:
+  Whitespace
+
+  03 Aug 2008; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  graphicsmagick-1.2.5.ebuild:
+  econf dies on its own
+
+  03 Aug 2008; Janne Rönkkö (jroo) <jroo@iki.fi>
+  graphicsmagick-1.2.5.ebuild:
+  Corrected license for graphicsmagick-1.2.5.
+
+  02 Aug 2008; Janne Rönkkö (jroo) <jroo@iki.fi>
+  +graphicsmagick-1.2.5.ebuild, +metadata.xml:
+  New Ebuild for bug 190372.

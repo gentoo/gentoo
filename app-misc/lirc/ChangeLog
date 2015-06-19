@@ -1,0 +1,1097 @@
+# ChangeLog for app-misc/lirc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/lirc/ChangeLog,v 1.252 2015/06/09 11:47:28 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  02 Aug 2014; Agostino Sarubbo <ago@gentoo.org> lirc-0.9.0-r5.ebuild:
+  Stable for ppc64, wrt bug #500082
+
+  23 Mar 2014; Agostino Sarubbo <ago@gentoo.org> lirc-0.9.0-r5.ebuild:
+  Stable for x86, wrt bug #500082
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> lirc-0.9.0-r5.ebuild:
+  Stable for ppc, wrt bug #500082
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> lirc-0.9.0-r5.ebuild:
+  amd64 stable, bug #500082
+
+  23 Jan 2014; Mike Frysinger <vapier@gentoo.org> files/lircd-0.8.6-r2:
+  Fix bashism with output redirect.
+
+*lirc-0.9.0-r5 (03 Jan 2014)
+
+  03 Jan 2014; Pacho Ramos <pacho@gentoo.org> +files/irexec.service,
+  +files/lirc.service, +files/lircm.service, +lirc-0.9.0-r5.ebuild:
+  Add unit files (#496852 by Lucian Muresan)
+
+*lirc-0.9.0-r4 (06 Oct 2013)
+
+  06 Oct 2013; Matthias Schwarzott <zzam@gentoo.org> +lirc-0.9.0-r4.ebuild,
+  +files/lirc-0.9.0-fixed-font.patch:
+  Use font 'fixed' in xmode2, to not fail because of missing font. Patch is
+  from https://bugs.archlinux.org/task/30912
+
+  29 Aug 2013; Ian Stakenvicius <axs@gentoo.org>
+  files/lirc-0.9.0-add-zotac-support.patch:
+  fixed bug 482826
+
+*lirc-0.9.0-r3 (27 Aug 2013)
+
+  27 Aug 2013; Ian Stakenvicius <axs@gentoo.org> +lirc-0.9.0-r3.ebuild,
+  lirc-0.9.0-r2.ebuild:
+  fixed oops where I applied the new patch to the ebuild with stable keywords
+
+  27 Aug 2013; Ian Stakenvicius <axs@gentoo.org>
+  +files/lirc-0.9.0-add-zotac-support.patch, lirc-0.9.0-r2.ebuild:
+  added support for zotac, bug 462596
+
+  24 May 2013; Ian Stakenvicius <axs@gentoo.org>
+  +files/lirc-0.9.0-kernel-3.8-fixes.patch, lirc-0.9.0-r2.ebuild:
+  apply fix for kernel-3.8 (bug 461532) , only unparallelize the necessary bit
+  of compilation
+
+  26 Apr 2013; Patrick Lauer <patrick@gentoo.org> lirc-0.9.0-r2.ebuild:
+  Automake 1.13 fix
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> lirc-0.9.0-r2.ebuild:
+  Stable for ppc64, wrt bug #462890
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org> lirc-0.9.0-r2.ebuild:
+  Add ~ppc64, wrt bug #455960
+
+  30 Nov 2012;  <ago@gentoo.org> -lirc-0.8.7.ebuild, -lirc-0.9.0.ebuild:
+  Remove old
+
+  30 Nov 2012;  <ago@gentoo.org> lirc-0.9.0-r2.ebuild:
+  Stable for x86, wrt bug #434322
+
+  30 Nov 2012; Tomáš Chvátal <scarabeus@gentoo.org> lirc-0.9.0-r2.ebuild:
+  Stable for ppc wrt bug#434322.
+
+  27 Nov 2012; Ian Stakenvicius <axs@gentoo.org> lirc-0.9.0-r2.ebuild,
+  +files/lirc-0.9.0-kernel-3.5-err-fix.patch:
+  added err() to kcompat.h as has been removed from usb.h in kernels >=3.5,
+  fixing bug 444736
+
+  24 Oct 2012; Ian Stakenvicius <axs@gentoo.org> lirc-0.9.0-r2.ebuild,
+  +files/lirc-0.9.0-kernel-3.3.0-fixes.patch:
+  fixed asm/system.h migration issue caused by 3.3+ kernels, bug 439538
+
+  18 Sep 2012; Pacho Ramos <pacho@gentoo.org> -files/lirc-0.8.6-send-evsyn.diff,
+  -lirc-0.8.5.ebuild, -lirc-0.8.7_pre1.ebuild:
+  Drop masked versions.
+
+  15 Sep 2012; Agostino Sarubbo <ago@gentoo.org> lirc-0.9.0-r2.ebuild:
+  Stable for amd64, wrt bug #434322
+
+  14 Sep 2012; Ian Stakenvicius <axs@gentoo.org> lirc-0.9.0-r2.ebuild:
+  added static-libs use flag to disable default installation of static libs
+
+*lirc-0.9.0-r2 (19 Jul 2012)
+
+  19 Jul 2012; Ian Stakenvicius <axs@gentoo.org> -files/lircd-0.8.6-r1,
+  +files/lircd-0.8.6-r2, -lirc-0.9.0-r1.ebuild, +lirc-0.9.0-r2.ebuild,
+  +files/lircd.conf.4, -files/lircd.conf.3:
+  allowed conf.d/lircd to override socket and symlink for multiplexing, bug
+  287731
+
+  17 Jul 2012; Ian Stakenvicius <axs@gentoo.org> lirc-0.9.0-r1.ebuild,
+  +files/lirc-0.9.0-atiusb_kfifo.patch:
+  Applied upstream patch to fix bug 377033
+
+  17 Jul 2012; Ian Stakenvicius <axs@gentoo.org> lirc-0.9.0-r1.ebuild,
+  +files/lirc-0.9.0-kernel-2.6.39-fixes.patch:
+  fixed compilation issues for some drivers against kernel >=2.6.39 for bug
+  369179 , using patch from amielke overlay as the basis
+
+*lirc-0.9.0-r1 (17 Jul 2012)
+
+  17 Jul 2012; Ian Stakenvicius <axs@gentoo.org> +files/lircd-0.8.6-r1,
+  +lirc-0.9.0-r1.ebuild, +files/lircd.conf.3:
+  converted ebuild to EAPI4, made drivers build separately from tools to fix
+  bug 160134, fixed init script so that socket path exists (bug 414307), added
+  option so that init script can set 'lirc' as the kernel IR decoding protocol
+  on startup (bug 368489)
+
+  09 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> lirc-0.8.5.ebuild,
+  lirc-0.8.7_pre1.ebuild, lirc-0.8.7.ebuild, lirc-0.9.0.ebuild:
+  Fix libusb depend to pull in correct SLOT wrt #378385 by Luis Navarro
+
+  05 Jan 2012; Michael Weber <xmw@gentoo.org> lirc-0.8.7.ebuild:
+  ppc stable (bug 343659)
+
+  13 Jun 2011; Christian Faulhammer <fauli@gentoo.org> lirc-0.9.0.ebuild:
+  mceusb driver has been merged into the kernel, note that
+
+*lirc-0.9.0 (02 Jun 2011)
+
+  02 Jun 2011; Christian Faulhammer <fauli@gentoo.org> +lirc-0.9.0.ebuild:
+  version bump for bug 368721
+
+  05 Nov 2010; Markos Chandras <hwoarang@gentoo.org> lirc-0.8.7.ebuild:
+  Stable on amd64 wrt bug #343659
+
+  04 Nov 2010; Christian Faulhammer <fauli@gentoo.org> lirc-0.8.7.ebuild:
+  stable x86, bug 343659
+
+*lirc-0.8.7 (01 Nov 2010)
+
+  01 Nov 2010; Christian Faulhammer <fauli@gentoo.org> +lirc-0.8.7.ebuild:
+  version bump for bug 332277
+
+  01 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  -lirc-0.8.3_pre1.ebuild, -lirc-0.8.3-r2.ebuild,
+  -files/lirc-0.8.3-imon-pad2keys.patch,
+  -files/lirc-0.8.3-kernel-2.6.26.diff,
+  -files/lirc-0.8.3-kernel-2.6.27.diff, -files/lirc-0.8.3-pa19.patch,
+  -files/lirc-0.8.3_pre1-imon-pad2keys.patch,
+  -files/lirc-0.8.3_pre1-kernel-2.6.24.diff,
+  -files/lirc-0.8.3_pre3-imon-pad2keys.patch, -lirc-0.8.4.ebuild,
+  -lirc-0.8.4a.ebuild, -lirc-0.8.6-r3.ebuild, -files/lirc-0.8.6-i2c.patch,
+  -files/lircd, -files/xbox-lircd.conf:
+  clean up, also for bug 343199
+
+  01 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  lirc-0.8.3_pre1.ebuild, lirc-0.8.3-r2.ebuild, lirc-0.8.4.ebuild,
+  lirc-0.8.4a.ebuild, lirc-0.8.5.ebuild, lirc-0.8.6-r3.ebuild,
+  lirc-0.8.7_pre1.ebuild:
+  drop ppc64 for bug 275872
+
+*lirc-0.8.7_pre1 (21 May 2010)
+
+  21 May 2010; Steve Dibb <beandog@gentoo.org> +lirc-0.8.7_pre1.ebuild:
+  Version bump
+
+*lirc-0.8.6-r3 (21 May 2010)
+
+  21 May 2010; Steve Dibb <beandog@gentoo.org> files/lircd-0.8.6,
+  +lirc-0.8.6-r3.ebuild, +files/lirc-0.8.6-i2c.patch,
+  +files/lirc-0.8.6-send-evsyn.diff:
+  I2C patch to build against gentoo-sources-2.6.32, bug 296739; Add
+  localmount, modules to startup init, bug 314545; evdev input patch, bug
+  299030
+
+  21 May 2010; Steve Dibb <beandog@gentoo.org> files/lircd.conf.2:
+  Typo in conf.d sample, bug 301346
+
+  10 Mar 2010; Joseph Jezak <josejx@gentoo.org> lirc-0.8.6-r2.ebuild:
+  Marked ~ppc/~ppc64 for bug #287662.
+
+*lirc-0.8.6-r2 (15 Nov 2009)
+
+  15 Nov 2009; Matthias Schwarzott <zzam@gentoo.org>
+  +files/irexec-initd-0.8.6-r2, +lirc-0.8.6-r2.ebuild:
+  Let irexec init-script depend on the virtual service lirc to be able to
+  use a different lirc server, Bug #277588.
+
+  03 Nov 2009; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.6-r1.ebuild:
+  Change ebuild, so that lirc package does no longer own lircd.conf. That
+  way portage should not delete lircd.conf on update or unmerge.
+
+  03 Nov 2009; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.6-r1.ebuild:
+  Change ebuild, so that lirc package does no longer own lircd.conf. That
+  way portage should not delete lircd.conf on update or unmerge.
+
+  06 Oct 2009; Christian Faulhammer <fauli@gentoo.org> lirc-0.8.5.ebuild:
+  remove iguanaIR, because it is still in testing
+
+*lirc-0.8.6-r1 (04 Oct 2009)
+
+  04 Oct 2009; Christian Faulhammer <fauli@gentoo.org> +files/lircd-0.8.6,
+  -lirc-0.8.6.ebuild, +lirc-0.8.6-r1.ebuild:
+  Revision bump that will fix some new and some old issues:
+  * Merge mceusb and mceusb2 driver (bug 286269 by candrews AT integralblue
+  DOT com)
+  * New init.d file that will keep the old socket location so we don't break
+  all applications (thanks to Oldrich Jedlicka <oldium DOT pro AT seznam DOT
+  cz> in bug 286451)
+  * Add new ene0100 device
+  * Correct entry for iguanaIR device (bug 208785 by MasterC <MasterCLC AT
+  gmail DOT com>)
+  * Fix DEPEND and RDEPEND relations
+
+  04 Oct 2009; Christian Faulhammer <fauli@gentoo.org> lirc-0.8.5.ebuild:
+  readd stable keywords that have been accidentally removed
+
+  03 Oct 2009; Christian Faulhammer <fauli@gentoo.org> lirc-0.8.5.ebuild:
+  Rework dependencies:
+  * Add dev-embedded/libftdi for some drivers, bug 276518 (with help
+  from sping)
+  * Correct assignment of RDEPEND and DEPEND
+
+  25 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org> lirc-0.8.4.ebuild,
+  -files/lirc-0.8.4-imon-pad2keys.patch, lirc-0.8.4a.ebuild:
+  Remove duplicate patch.
+
+*lirc-0.8.6 (23 Sep 2009)
+
+  23 Sep 2009; Christian Faulhammer <fauli@gentoo.org> +lirc-0.8.6.ebuild:
+  version bump, bug 284865
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> lirc-0.8.5.ebuild:
+  ppc stable #275872
+
+  11 Jul 2009; <chainsaw@gentoo.org> lirc-0.8.5.ebuild:
+  Marked stable on AMD64 for bug #275872; compile-tested on a dual Opteron
+  2354. No IR-capable hardware but utilities tested and working.
+
+  30 Jun 2009; Christian Faulhammer <fauli@gentoo.org> lirc-0.8.5.ebuild:
+  stable x86, bug 275872
+
+  18 Jun 2009; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.4a.ebuild,
+  lirc-0.8.5.ebuild:
+  Rename modprobe config file to lirc.conf
+
+*lirc-0.8.5 (17 Jun 2009)
+
+  17 Jun 2009; Steve Dibb <beandog@gentoo.org> +lirc-0.8.5.ebuild:
+  Version bump, bug 271482
+
+  18 Mar 2009; Joseph Jezak <josejx@gentoo.org> lirc-0.8.4.ebuild:
+  Marked ppc stable for bug #253920.
+
+  13 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  +files/lirc-0.8.4-portaudio_check.patch, lirc-0.8.4.ebuild,
+  lirc-0.8.4a.ebuild:
+  Only detect media-libs/portaudio if LIRC_DEVICES=audio is enabled, thus
+  preventing build failures, see bug 251703 and bug 251522
+
+  10 Mar 2009; Steve Dibb <beandog@gentoo.org> lirc-0.8.4.ebuild,
+  lirc-0.8.4a.ebuild:
+  Fix amd64 keywords, bug 253920
+
+  10 Mar 2009; Steve Dibb <beandog@gentoo.org> lirc-0.8.4a.ebuild:
+  amd64 stable, bug 253920
+
+  07 Mar 2009; Christian Faulhammer <fauli@gentoo.org> lirc-0.8.4.ebuild:
+  stable x86, bug 253920
+
+  28 Feb 2009; Christian Faulhammer <fauli@gentoo.org>
+  -files/lirc-0.8.0-conf-pixelview_bt878.diff,
+  -files/lirc-0.8.0-i2c-kernel-2.6.17.diff,
+  -files/lirc-0.8.0-imon-pad2keys.patch,
+  -files/lirc-0.8.0-kernel-2.6.16.diff,
+  -files/lirc-0.8.0-kernel-2.6.17.diff,
+  -files/lirc-0.8.0-kernel-2.6.18.diff,
+  -files/lirc-0.8.0-kernel-2.6.19.diff, -files/lirc-0.8.0-sandbox-fix.diff,
+  -files/lirc-0.8.0-too-many-connections-overflow.diff,
+  -files/lirc-0.8.0pre4-xbox-remote.diff,
+  -files/lirc-0.8.1-atiusb-xbox.diff, -files/lirc-0.8.1-imon-pad2keys.patch,
+  -files/lirc-0.8.1-kernel-2.6.20.diff,
+  -files/lirc-0.8.2-kernel-2.6.22.patch,
+  -files/lirc-0.8.2-kernel-2.6.23.patch, -files/lirc-udev-094.diff,
+  -files/lirc-remotewonderplus.patch, -files/lircd.conf,
+  -lirc-0.8.0-r8.ebuild, -lirc-0.8.1.ebuild, -lirc-0.8.2_pre2.ebuild,
+  -lirc-0.8.2.ebuild, -lirc-0.8.2-r1.ebuild, -lirc-0.8.2-r2.ebuild,
+  -lirc-0.8.3_pre3.ebuild, -lirc-0.8.3.ebuild, -lirc-0.8.3-r1.ebuild:
+  clean up, hopefully without breaking anything
+
+*lirc-0.8.4a (28 Feb 2009)
+
+  28 Feb 2009; Christian Faulhammer <fauli@gentoo.org> +lirc-0.8.4a.ebuild:
+  version bump for 251703 and fix for 251522
+
+  10 Jan 2009; Steve Dibb <beandog@gentoo.org> lirc-0.8.3-r1.ebuild,
+  lirc-0.8.3-r2.ebuild, lirc-0.8.4.ebuild:
+  Remove MODULE_UNLOAD kernel check, add ewarn notice
+
+  25 Dec 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  +files/lirc-0.8.3-kernel-2.6.27.diff, lirc-0.8.3-r2.ebuild:
+  Add Kernel 2.6.27 compatibility to lirc-0.8.3-r2. Fixes bug #236713, thanks
+  to James <cctsurf at gmail dot com> for the patch. Committed with permission
+  of beandog
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/lirc-0.8.3_pre1-kernel-2.6.24.diff:
+  Fix patch with absolute paths.
+
+*lirc-0.8.4 (12 Oct 2008)
+
+  12 Oct 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/lirc-0.8.4-imon-pad2keys.patch, lirc-0.8.0-r8.ebuild,
+  +lirc-0.8.4.ebuild:
+  Version bumped. This adds Kernel 2.6.27 compatibility. Added driver
+  options irlink, commandir, ite8709 and samsung, Bug #221727. Removed
+  portaudio patch. Shorten description of lirc-0.8.0-r8.
+
+  12 Oct 2008; Matthias Schwarzott <zzam@gentoo.org> files/lircd.conf.2:
+  Fix config example for devinput, Bug #235107
+
+  08 Aug 2008; Steve Dibb <beandog@gentoo.org> lirc-0.8.3-r2.ebuild:
+  amd64 stable, bug 230792
+
+  01 Aug 2008; nixnut <nixnut@gentoo.org> lirc-0.8.3-r2.ebuild:
+  Stable on ppc wrt bug 230792
+
+  31 Jul 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  28 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  files/lirc-0.8.3-kernel-2.6.26.diff:
+  Remove those annoying cvs-keywords from the patch, bug #233081
+
+  26 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/lirc-0.8.3-kernel-2.6.26.diff, lirc-0.8.3-r2.ebuild:
+  Make lirc compile against linux-2.6.26, thanks to enkil <enkil@cvmx.org> for
+  the patch, Bug #231867.
+
+  17 Jul 2008; Christian Faulhammer <opfer@gentoo.org> lirc-0.8.3-r2.ebuild:
+  stable x86, bug 230792
+
+  16 Jun 2008; Samuli Suominen <drac@gentoo.org>
+  +files/lirc-0.8.3-pa19.patch, lirc-0.8.3-r2.ebuild:
+  Portaudio v19 patch from bug 222841, Comment #8 by Thomas Beierlein.
+
+  06 Jun 2008; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.3-r2.ebuild:
+  Added imon_lcd to list of possible lirc_devices, thanks to Jan Paesmans
+  <jan.paesmans@gmail.com>.
+
+*lirc-0.8.3-r2 (19 May 2008)
+
+  19 May 2008; Matthias Schwarzott <zzam@gentoo.org> +files/modprobed.lirc,
+  +lirc-0.8.3-r2.ebuild:
+  Removed old syntax from modprobe config file.
+
+*lirc-0.8.3-r1 (10 May 2008)
+
+  10 May 2008; Steve Dibb <beandog@gentoo.org> +lirc-0.8.3-r1.ebuild:
+  Check for MODULE_UNLOAD in kernel
+
+  05 May 2008; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.3.ebuild:
+  Adding hack to stop portage from deleting lircd.conf.
+
+*lirc-0.8.3 (05 May 2008)
+
+  05 May 2008; Matthias Schwarzott <zzam@gentoo.org> +files/lircd-0.8.3,
+  +files/lirc-0.8.3-imon-pad2keys.patch, +lirc-0.8.3.ebuild:
+  Version bumped. Init-script changes: Now provide lirc, Bug #190669. Use
+  pidfile to allow starting more than one lircd, Bug #212551. This may also
+  fix the Kernel Oops of Bug #218612. Fixed keys in imon-pad2keys config,
+  Bug #219101. Do install all avail remote config files to
+  /usr/share/lirc/remotes and skip the auto-preserving of the old conf-file,
+  Bug #219097.
+
+  04 May 2008; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.3_pre3.ebuild:
+  Added imon_knob to possible LIRC_DEVICES, Bug #208719.
+
+*lirc-0.8.3_pre3 (28 Apr 2008)
+
+  28 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/lirc-0.8.3_pre3-imon-pad2keys.patch, +lirc-0.8.3_pre3.ebuild:
+  Version bumped. Create /etc/modprobe.d instead of /etc/modules.d, Bug
+  #214019.
+
+  16 Apr 2008; Markus Rothe <corsair@gentoo.org> lirc-0.8.3_pre1.ebuild:
+  Stable on ppc64; bug #208433
+
+  28 Mar 2008; Markus Meier <maekke@gentoo.org> lirc-0.8.3_pre1.ebuild:
+  amd64 stable, bug #208433
+
+  06 Feb 2008; nixnut <nixnut@gentoo.org> lirc-0.8.3_pre1.ebuild:
+  stable on ppc wrt bug #208433
+
+  01 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  lirc-0.8.3_pre1.ebuild:
+  stable x86, bug 208433
+
+  28 Dec 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  files/lirc-0.8.3_pre1-kernel-2.6.24.diff, lirc-0.8.3_pre1.ebuild:
+  rewrite patch; bug 200508
+
+  27 Dec 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  lirc-0.8.3_pre1.ebuild:
+  removed workless kernel-2.6.24.diff, wont work with LIRC_DEVICES=serial;
+  reopend bug 200508
+
+  26 Dec 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  lirc-0.8.3_pre1.ebuild:
+  fixed typo; patch/diff
+
+  26 Dec 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/lirc-0.8.3_pre1-kernel-2.6.24.diff, lirc-0.8.3_pre1.ebuild:
+  bug 200508 fixed; thanks to A.Stirling M.Marte T.Kost
+
+  02 Dec 2007; Markus Rothe <corsair@gentoo.org> lirc-0.8.2-r2.ebuild:
+  Stable on ppc64; bug #197768
+
+  16 Nov 2007; Steve Dibb <beandog@gentoo.org> lirc-0.8.2-r2.ebuild:
+  amd64 stable, bug 197768
+
+  12 Nov 2007; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.2-r2.ebuild,
+  lirc-0.8.3_pre1.ebuild:
+  Fix libusb depend for atilibusb driver, Bug #196994.
+
+  12 Nov 2007; Matthias Schwarzott <zzam@gentoo.org> +files/lircd.conf.2,
+  lirc-0.8.2-r2.ebuild, lirc-0.8.3_pre1.ebuild:
+  Supply a good default conf-file. This fixes Bug 198482.
+
+  02 Nov 2007; Lars Weiler <pylon@gentoo.org> lirc-0.8.2-r2.ebuild:
+  stable ppc, bug #197768
+
+  01 Nov 2007; Christian Faulhammer <opfer@gentoo.org> lirc-0.8.2-r2.ebuild:
+  stable x86, bug 197768
+
+  18 Oct 2007; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.2-r1.ebuild,
+  lirc-0.8.2-r2.ebuild, lirc-0.8.3_pre1.ebuild:
+  Disabling lirc_gpio for Kernel 2.6.22+, as it did not work/failed to
+  compile, Bug #187418.
+
+  18 Oct 2007; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.3_pre1.ebuild:
+  Force non-parallel make. Bug #196134.
+
+  17 Oct 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/lirc-0.8.3_pre1-imon-pad2keys.patch, lirc-0.8.3_pre1.ebuild:
+  Updated imon-pad2key patch. This makes the option switchable via
+  module-parameter instead of recompiling. Bug 196134
+
+  14 Oct 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/lirc-0.8.3_pre1-remotewonderplus.patch, lirc-0.8.3_pre1.ebuild:
+  Fixed some sed code, Bug 195786. Fixed remotewonderplus patch.
+
+*lirc-0.8.3_pre1 (13 Oct 2007)
+
+  13 Oct 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +lirc-0.8.3_pre1.ebuild:
+  Added new pre-release ebuild. This improves gpio support with newer kernels.
+
+  13 Oct 2007; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.2-r2.ebuild:
+  Switch installing to emake.
+
+  13 Oct 2007; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.0-r8.ebuild,
+  lirc-0.8.1.ebuild, lirc-0.8.2_pre2.ebuild, lirc-0.8.2.ebuild,
+  lirc-0.8.2-r1.ebuild, lirc-0.8.2-r2.ebuild:
+  General cleanup, and quote fixing.
+
+*lirc-0.8.2-r2 (11 Oct 2007)
+
+  11 Oct 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/lirc-0.8.2-kernel-2.6.23.patch, +lirc-0.8.2-r2.ebuild:
+  Fixed device-node to work with udev-115-r2+. Compiling fixed for Kernel
+  2.6.23+, Bug 195432.
+
+  01 Sep 2007; Joseph Jezak <josejx@gentoo.org> lirc-0.8.2-r1.ebuild:
+  Marked ppc stable for bug #187822.
+
+  14 Aug 2007; Markus Rothe <corsair@gentoo.org> lirc-0.8.2-r1.ebuild:
+  Stable on ppc64; bug #187822
+
+  14 Aug 2007; Christian Faulhammer <opfer@gentoo.org> lirc-0.8.2-r1.ebuild:
+  stable x86, bug 187822
+
+  13 Aug 2007; Doug Goldstein <cardoe@gentoo.org> lirc-0.8.2-r1.ebuild:
+  amd64 stable
+
+*lirc-0.8.2-r1 (12 Aug 2007)
+
+  12 Aug 2007; Steve Dibb <beandog@gentoo.org>
+  +files/lirc-0.8.2-kernel-2.6.22.patch, +lirc-0.8.2-r1.ebuild:
+  Fix compile under 2.6.22, bug 187822
+
+  22 Jul 2007; David Shakaryan <omp@gentoo.org> lirc-0.8.0-r8.ebuild:
+  Remove virtual/x11 from dependencies.
+
+*lirc-0.8.2 (04 Jul 2007)
+
+  04 Jul 2007; Matthias Schwarzott <zzam@gentoo.org> +lirc-0.8.2.ebuild:
+  Version bumped. Adds support for macmini and ttusbir. Removed special
+  settings com? and lpt?, use serial und parallel instead, and set io-ports
+  with module-parameters.
+
+  27 Jun 2007; Raúl Porcel <armin76@gentoo.org> lirc-0.8.0-r8.ebuild,
+  lirc-0.8.1.ebuild, lirc-0.8.2_pre2.ebuild:
+  Drop alpha/ia64 keyword as nobody has hardware to test
+
+  24 May 2007; Matthias Schwarzott <zzam@gentoo.org> files/irexec-initd:
+  Fixed irexec initscript to work with non-bash shells, Bug #179634.
+
+  18 May 2007; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Assigned to herd media-tv.
+
+*lirc-0.8.2_pre2 (27 Apr 2007)
+
+  27 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +lirc-0.8.2_pre2.ebuild:
+  Version bumped.
+
+  27 Apr 2007; Matthias Schwarzott <zzam@gentoo.org> -lirc-0.8.0-r5.ebuild:
+  Removed old ebuild.
+
+  21 Apr 2007; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.0-r5.ebuild,
+  lirc-0.8.0-r8.ebuild, lirc-0.8.1.ebuild:
+  Corrected --without-X to the correct lower case version --without-x, now it
+  has an effect, solving Bug #173174.
+
+  08 Apr 2007; Christian Faulhammer <opfer@gentoo.org> lirc-0.8.1.ebuild:
+  stable amd64, bug 166557
+
+  07 Apr 2007; Joseph Jezak <josejx@gentoo.org> lirc-0.8.1.ebuild:
+  Marked ppc stable for bug #166557.
+
+  02 Apr 2007; Raúl Porcel <armin76@gentoo.org> lirc-0.8.1.ebuild:
+  ia64 stable wrt bug 166557
+
+  27 Mar 2007; Christian Faulhammer <opfer@gentoo.org> lirc-0.8.1.ebuild:
+  stable x86, bug 166557
+
+  15 Mar 2007; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.1.ebuild:
+  Added lirc device usb_uirt_raw, as requested by Robert Parenton
+  <rparenton@lada.org>, Bug #170698.
+
+  27 Feb 2007; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.1.ebuild:
+  Fixed disabling lirc_parallel on SMP systems, thanks to Helau
+  <helmut@helmutauer.de>.
+
+  22 Feb 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/lirc-0.8.1-kernel-2.6.20.diff, lirc-0.8.1.ebuild:
+  Added patch to compile with kernel 2.6.20, Bug #166557.
+
+  14 Jan 2007; Joseph Jezak <josejx@gentoo.org> lirc-0.8.0-r8.ebuild:
+  Marked ppc stable for bug #159980.
+
+  09 Jan 2007; Markus Rothe <corsair@gentoo.org> lirc-0.8.0-r8.ebuild:
+  Stable on ppc64; bug #159980
+
+  08 Jan 2007; Matthias Schwarzott <zzam@gentoo.org> -lirc-0.7.0-r1.ebuild,
+  -lirc-0.7.2.ebuild, -lirc-0.8.0-r1.ebuild, -lirc-0.8.1_pre5.ebuild:
+  Removed some old cruft, solving Bug #159983.
+
+*lirc-0.8.1 (07 Jan 2007)
+
+  07 Jan 2007; Matthias Schwarzott <zzam@gentoo.org> +lirc-0.8.1.ebuild:
+  Version bumped.
+
+  06 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> lirc-0.8.0-r8.ebuild,
+  lirc-0.8.1_pre5.ebuild:
+  Stable on Alpha.
+
+  06 Jan 2007; Matthias Schwarzott <zzam@gentoo.org> lirc-0.7.0-r1.ebuild,
+  lirc-0.7.2.ebuild, lirc-0.8.0-r1.ebuild, lirc-0.8.0-r5.ebuild,
+  lirc-0.8.0-r8.ebuild, lirc-0.8.1_pre5.ebuild:
+  Converted to elog.
+
+  04 Jan 2007; Peter Weller (welp) <welp@gentoo.org> lirc-0.8.0-r8.ebuild:
+  Stable on amd64 wrt bug #159980
+
+  04 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> lirc-0.8.0-r8.ebuild,
+  lirc-0.8.1_pre5.ebuild:
+  Stable on IA64.
+
+  04 Jan 2007; Christian Faulhammer <opfer@gentoo.org> lirc-0.8.0-r8.ebuild:
+  stable x86, bug #159980
+
+*lirc-0.8.1_pre5 (03 Jan 2007)
+
+  03 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/lirc-0.8.1-atiusb-xbox.diff, +files/lirc-0.8.1-imon-pad2keys.patch,
+  +lirc-0.8.1_pre5.ebuild:
+  Added a pre-release as it contains a lot of fixes, thanks to mcummings for
+  noticing. Use newer xbox-patch that can unconditionally be applied.
+
+  14 Dec 2006; Matthias Schwarzott <zzam@gentoo.org> lirc-0.7.2.ebuild,
+  lirc-0.8.0-r1.ebuild, lirc-0.8.0-r5.ebuild, lirc-0.8.0-r8.ebuild:
+  Unconditionally installing udev-rules due to Bug #158114.
+
+*lirc-0.8.0-r8 (02 Dec 2006)
+
+  02 Dec 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/lirc-0.8.0-sandbox-fix.diff, files/irexec-confd,
+  files/irexec-initd, -lirc-0.8.0-r7.ebuild, +lirc-0.8.0-r8.ebuild:
+  Solve sandbox-violation, fix from dsd, Bug #156807. Starting irexec as user
+  is now possible, suggested by Sebastian Kemper <sebastian_ml@gmx.net>.
+
+*lirc-0.8.0-r7 (01 Dec 2006)
+
+  01 Dec 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/lirc-0.8.0-too-many-connections-overflow.diff, +files/irexec-confd,
+  +files/irexec-initd, +files/lirc-remotewonderplus.patch,
+  -lirc-0.8.0-r6.ebuild, +lirc-0.8.0-r7.ebuild:
+  Fixing overflow, Bug #123704. Allow building more than one driver (with big
+  warning), Bug #144951. Added irexec-initscript, Bug #124295. Added support
+  for remotewonderplus-device, Bug #149130.
+
+*lirc-0.8.0-r6 (30 Nov 2006)
+
+  30 Nov 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/lirc-0.8.0-kernel-2.6.19.diff, +lirc-0.8.0-r6.ebuild:
+  Makes lirc compatible with kernel-2.6.19
+
+  24 Nov 2006; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.0-r1.ebuild,
+  lirc-0.8.0-r5.ebuild:
+  Switched over to request latest autoconf/automake as that also works.
+
+  05 Oct 2006; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.0-r1.ebuild,
+  lirc-0.8.0-r5.ebuild:
+  Removed unused use-flags alsa and usb, due to Bug #150083.
+
+  24 Sep 2006; Michael Hanselmann <hansmi@gentoo.org> lirc-0.8.0-r5.ebuild:
+  Stable on ppc.
+
+  19 Sep 2006; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.0-r1.ebuild,
+  lirc-0.8.0-r5.ebuild:
+  Now depend on the correct autotools versions, as no longer all versions are
+  automagically pulled in by system.
+
+  15 Sep 2006; Matthias Schwarzott <zzam@gentoo.org> -lirc-0.8.0.ebuild:
+  Removed older revision.
+
+  12 Sep 2006; <blubb@gentoo.org> lirc-0.8.0-r5.ebuild:
+  stable on amd64
+
+  07 Sep 2006; Markus Rothe <corsair@gentoo.org> lirc-0.8.0-r5.ebuild:
+  Stable on ppc64; bug #146725
+
+  07 Sep 2006; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.0-r5.ebuild:
+  Stable on x86.
+
+  07 Sep 2006; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.0-r5.ebuild:
+  Stable on x86.
+
+  04 Sep 2006; <blubb@gentoo.org> lirc-0.8.0-r1.ebuild:
+  stable on amd64
+
+  03 Sep 2006; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.0-r5.ebuild:
+  Added conditional depend on inputlircd as it now has all necessary keywords.
+
+  03 Sep 2006; <blubb@gentoo.org> lirc-0.8.0-r5.ebuild:
+  added ~amd64
+
+  04 Aug 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/lirc-0.8.0-conf-pixelview_bt878.diff, -lirc-0.8.0-r3.ebuild,
+  -lirc-0.8.0-r4.ebuild, lirc-0.8.0-r5.ebuild:
+  Removed older ebuild-revisions. Added a patch to solve bug #142732, thanks
+  to Bartlomiej Celary <semiquasi@o2.pl> for reporting.
+
+*lirc-0.8.0-r5 (31 Jul 2006)
+
+  31 Jul 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/lirc-0.8.0-i2c-kernel-2.6.17.diff, +lirc-0.8.0-r5.ebuild:
+  Added Patch from lirc-cvs to solve issue with Kernel 2.6.17/ivtv driver, see
+  Bug #141841.
+
+  27 Jul 2006; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.0-r4.ebuild:
+  Bugfix, now also apply xbox-patch when xbox-driver was autoselected by
+  PROFILE_ARCH.
+
+  27 Jul 2006; Matthias Schwarzott <zzam@gentoo.org>
+  files/lirc-0.8.0-kernel-2.6.17.diff:
+  Small change to match the patch in lirc-cvs.
+
+*lirc-0.8.0-r4 (25 Jul 2006)
+
+  25 Jul 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/lirc-0.8.0-kernel-2.6.18.diff, +files/modulesd.lirc,
+  +lirc-0.8.0-r4.ebuild:
+  Added patch for compatibility with kernel 2.6.18. Set compiled in default
+  device-node depending on activated driver (for e.g. usbirboy), removed older
+  hack for setting device-node. Without set driver use option userspace. Added
+  /etc/modules.d/lirc.
+
+  23 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  lirc-0.8.0-r1.ebuild, lirc-0.8.0-r3.ebuild:
+  0.8.0-r1 ppc stable, 0.8.0-r3 added ~ppc, bug #138636
+
+  12 Jul 2006; Aron Griffis <agriffis@gentoo.org> lirc-0.8.0-r1.ebuild:
+  Mark 0.8.0-r1 stable on ia64
+
+  06 Jul 2006; Markus Rothe <corsair@gentoo.org> lirc-0.8.0-r1.ebuild:
+  Stable on ppc64
+
+  05 Jul 2006; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.0-r1.ebuild:
+  Marked stable on x86.
+
+*lirc-0.8.0-r3 (30 Jun 2006)
+
+  30 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/lirc-udev-094.diff, lirc-0.8.0-r1.ebuild, -lirc-0.8.0-r2.ebuild,
+  +lirc-0.8.0-r3.ebuild:
+  Added patch to solve Bug #138532. Install udev-rules-file conditionally by
+  use-flag udev and not based on existance of sys-fs/udev.
+
+  30 Jun 2006; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.0.ebuild,
+  lirc-0.8.0-r1.ebuild, lirc-0.8.0-r2.ebuild:
+  Corrected missing function call in error-handling.
+
+  26 Jun 2006; Markus Rothe <corsair@gentoo.org> lirc-0.8.0-r2.ebuild:
+  Added ~ppc64; bug #138025
+
+  26 Jun 2006; Simon Stelling <blubb@gentoo.org> lirc-0.8.0.ebuild:
+  stable on amd64
+
+*lirc-0.8.0-r2 (26 Jun 2006)
+
+  26 Jun 2006; Matthias Schwarzott <zzam@gentoo.org> +lirc-0.8.0-r2.ebuild:
+  Added support for using external-driver-ebuild usbirboy. Degraded keywords
+  to only ~x86.
+
+  21 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/lirc-0.8.0-kernel-2.6.17.diff, lirc-0.8.0.ebuild,
+  lirc-0.8.0-r1.ebuild:
+  Make it compile with Kernel 2.6.17, solving Bug #137409.
+
+  07 Jun 2006; Markus Rothe <corsair@gentoo.org> lirc-0.8.0-r1.ebuild:
+  Added ~ppc64; bug #131306
+
+*lirc-0.8.0-r1 (05 Jun 2006)
+
+  05 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/lirc-0.8.0-imon-pad2keys.patch,
+  +files/lirc-0.8.0pre4-xbox-remote.diff, +lirc-0.8.0-r1.ebuild:
+  Redesigned ebuild to use use-expanded variable LIRC_DEVICES instead of
+  LIRC_OPTS. Now uses /dev/lirc/0 per default as created by udev. Has proper
+  depends now (Bug #131306). Added support for xboxusb (Bug #135490). Added
+  imon_pad2keys driver. Removed ~ppc64 because of not keyworded
+  media-libs/libirman.
+
+  31 May 2006; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.0.ebuild:
+  Small corrections (sleep -> epause, added missing call to
+  linux-mod_pkg_preinst)
+
+  29 May 2006; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.0.ebuild:
+  DEPEND-Cosmetics.
+
+  21 May 2006; Markus Rothe <corsair@gentoo.org> lirc-0.8.0.ebuild:
+  Stable on ppc64
+
+  03 May 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Set maintainer to myself
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-lirc-0.7.2,
+  files/digest-lirc-0.8.0, Manifest:
+  Fixing SHA256 digest, pass four
+
+  16 Apr 2006; Michael Hanselmann <hansmi@gentoo.org> lirc-0.8.0.ebuild:
+  Stable on ppc.
+
+  14 Apr 2006; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.0.ebuild:
+  Marked stable on x86
+
+  14 Apr 2006; Matthias Schwarzott <zzam@gentoo.org> lirc-0.8.0.ebuild:
+  Moved WANT_AUTOCONF to pkg_setup - Thanks to Przemyslaw Maciag
+  <p_maciag@wp.pl> for reporting - Bug #123727
+
+  14 Apr 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/lirc-0.8.0-kernel-2.6.16.diff, lirc-0.8.0.ebuild:
+  Added patch to compile against Kernel 2.6.16 - Thanks to Paul Marks
+  <pmarks@purdue.edu> and Marc Rodarte <mrodarte19@gmail.com> - See Bug
+  #127122
+
+  06 Mar 2006; Simon Stelling <blubb@gentoo.org> lirc-0.7.0-r1.ebuild:
+  somehow the files vanished from SRC_URI.. fixing that
+
+  20 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org> ChangeLog:
+  Fix lirc-0.8.0 digests
+
+*lirc-0.8.0 (20 Feb 2006)
+
+  20 Feb 2006; Heinrich Wendel <lanius@gentoo.org>
+  -files/lirc-0.6.6-gentoo.diff.bz2, -files/lirc-0.7.0-configure.in.patch,
+  -files/lirc-0.7.0_pre2-i2c.patch.gz,
+  -files/lirc-0.7.0_pre7-configure.patch,
+  -files/lirc-0.7.0_pre7-streamzap.patch.bz2, files/lircd.conf,
+  -lirc-0.8.0_pre1.ebuild, -lirc-0.8.0_pre3.ebuild, +lirc-0.8.0.ebuild:
+  version bump; cleanups; modular X port
+
+*lirc-0.8.0_pre3 (10 Jan 2006)
+
+  10 Jan 2006; Doug Goldstein <cardoe@gentoo.org> +lirc-0.8.0_pre3.ebuild:
+  Reworked the ebuild a little bit and hopefully fixed the problems people are
+  having with it.
+
+  05 Jan 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  lirc-0.8.0_pre1.ebuild:
+  Fixed modular X dependency.
+
+  03 Jan 2006; Diego Pettenò <flameeyes@gentoo.org> lirc-0.8.0_pre1.ebuild:
+  Replace libtoolize with eautoreconf so that it does not break with
+  mis-versioning with portage sanity checks.
+
+  14 Dec 2005; Doug Goldstein <cardoe@gentoo.org> lirc-0.7.2.ebuild:
+  Adding modular X depends
+
+  04 Dec 2005; Jeroen Roovers <jer@gentoo.org> lirc-0.7.0-r1.ebuild:
+  Fixed sed script number two.
+
+*lirc-0.7.2 (23 Aug 2005)
+
+  23 Aug 2005; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.1.ebuild,
+  +lirc-0.7.2.ebuild:
+  version bump; fix rules file
+
+  10 Jul 2005; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.1.ebuild:
+  add udev rules file, bug #98171
+
+  15 May 2005; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0-r1.ebuild,
+  lirc-0.7.1.ebuild:
+  add support for the X use flag, bug #91624
+
+  14 May 2005; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0-r1.ebuild,
+  lirc-0.7.1.ebuild:
+  make xbox patch default in 0.7.0; uncomment it in 0.7.1, is doesn't work there
+
+  11 May 2005; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.1.ebuild:
+  always apply the xbox patch, it still has to be enabled
+
+*lirc-0.7.1 (22 Apr 2005)
+
+  22 Apr 2005; Heinrich Wendel <lanius@gentoo.org> +lirc-0.7.1.ebuild:
+  version bump
+
+  13 Apr 2005; Heinrich Wendel <lanius@gentoo.org> -lirc-0.7.0_pre3.ebuild,
+  -lirc-0.7.0_pre6.ebuild, -lirc-0.7.0_pre7.ebuild, -lirc-0.7.0_pre8.ebuild,
+  -lirc-0.7.0.ebuild, lirc-0.7.0-r1.ebuild:
+  don't overwrite lircd.conf, bug #88199
+
+  13 Apr 2005; Heinrich Wendel <lanius@gentoo.org> -lirc-0.7.0_pre3.ebuild,
+  -lirc-0.7.0_pre6.ebuild, -lirc-0.7.0_pre7.ebuild, -lirc-0.7.0_pre8.ebuild,
+  -lirc-0.7.0.ebuild, lirc-0.7.0-r1.ebuild:
+  cleanups
+
+  13 Apr 2005; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0-r1.ebuild:
+  fix bt878 compilation, bug #87505
+
+  13 Apr 2005; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0-r1.ebuild:
+  update driver list; fix smp detection
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> lirc-0.7.0-r1.ebuild:
+  stable on ia64
+
+  25 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> lirc-0.7.0-r1.ebuild:
+  Stable on alpha, bug 84888.
+
+  24 Mar 2005; Joseph Jezak <josejx@gentoo.org> lirc-0.7.0-r1.ebuild:
+  Marked ppc stable for bug #84888.
+
+  10 Mar 2005; Markus Rothe <corsair@gentoo.org> lirc-0.7.0-r1.ebuild:
+  Stable on ppc64
+
+  26 Jan 2005; lanius@gentoo.org lirc-0.7.0-r1.ebuild:
+  filter some flags; stable on amd64
+
+  20 Jan 2005; lanius@gentoo.org lirc-0.7.0-r1.ebuild:
+  stable on x86
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  25 Dec 2004; Doug Goldstein <cardoe@gentoo.org> lirc-0.7.0-r1.ebuild:
+  compile fix, add libtoolize
+
+  09 Dec 2004; lanius@gentoo.org lirc-0.7.0-r1.ebuild:
+  fix dependencies; require autoconf 2.5
+
+*lirc-0.7.0-r1 (03 Dec 2004)
+
+  03 Dec 2004; Chris Bainbridge <chrb@gentoo.org>
+  +files/lirc-0.7.0-xbox.patch.bz2, +lirc-0.7.0-r1.ebuild:
+  Added xbox driver. Only used when the xbox profile is selected. 
+  Thanks to Tim Dodge for the patch.
+
+*lirc-0.7.0_pre8 (03 Dec 2004)
+
+  03 Dec 2004; Chris Bainbridge <chrb@gentoo.org> +lirc-0.7.0_pre8.ebuild:
+  Version bump, pre8 doesnt appear to need the patches that were applied to pre7
+
+  30 Nov 2004; Brian Jackson <iggy@gentoo.org> metadata.xml,
+  lirc-0.7.0.ebuild:
+  update lirc-0.7.0 to use linux-mod, added lanius as maintainer
+
+  29 Nov 2004; lanius@gentoo.org files/lircd.conf:
+  fix default path of lirc device, bug #71618
+
+  29 Nov 2004; <heino@gentoo.org> lirc-0.7.0.ebuild:
+  remove bogus configure.in patch
+
+  22 Nov 2004; Daniel Black <dragonheart@gentoo.org> lirc-0.7.0.ebuild:
+  added debug support as per bug #71989. Thanks to Colin Macdonald <cbm@sfu.ca>
+
+  17 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> lirc-0.7.0_pre7.ebuild:
+  Keyworded sparc
+
+*lirc-0.7.0 (17 Nov 2004)
+
+  17 Nov 2004; <lanius@gentoo.org> +files/lirc-0.7.0-configure.in.patch,
+  +files/lirc-0.7.0-streamzap.patch.bz2, -lirc-0.6.6-r1.ebuild,
+  +lirc-0.7.0.ebuild, -lirc-0.7.0_pre4.ebuild:
+  - version bump, bug #68613
+  - move to kernel-mod eclass, bug #67431
+  - fix undefined AC_MACROS, bug #67433
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> lirc-0.7.0_pre7.ebuild:
+  Stable on amd64.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  lirc-0.6.6-r1.ebuild, lirc-0.7.0_pre4.ebuild, lirc-0.7.0_pre7.ebuild:
+  Masked lirc-0.7.0_pre7.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  lirc-0.6.6-r1.ebuild, lirc-0.7.0_pre4.ebuild:
+  Masked lirc-0.7.0_pre4.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  lirc-0.6.6-r1.ebuild:
+  Masked lirc-0.6.6-r1.ebuild stable for ppc
+
+  02 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> lirc-0.7.0_pre7.ebuild:
+  Stable on alpha.
+
+  28 Sep 2004; Sven Wegener <swegener@gentoo.org> files/lircmd:
+  Gentoo Technologies, Inc. -> Gentoo Foundation
+
+  26 Sep 2004; Heinrich Wendel <lanius@gentoo.org> files/lircd:
+  remove need net from init script
+
+  26 Sep 2004; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0_pre7-r1.ebuild:
+  make streamzap driver depend on a use flag, because it can break other things,
+  bug #64557
+
+  25 Sep 2004; Heinrich Wendel <lanius@gentoo.org>
+  +files/lirc-0.7.0_pre7-configure.patch, lirc-0.7.0_pre7-r1.ebuild,
+  lirc-0.7.0_pre7.ebuild:
+  fix typo in configure that leads to a compile error, bug #64356
+
+*lirc-0.7.0_pre7-r1 (16 Sep 2004)
+
+  16 Sep 2004; Heinrich Wendel <lanius@gentoo.org>
+  +files/lirc-0.7.0_pre7-streamzap.patch.bz2, +lirc-0.7.0_pre7-r1.ebuild:
+  add streamcap pc remote support, bug #60110, mark pre7 x86
+
+  08 Sep 2004; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0_pre7.ebuild:
+  fix pid file, bug #62838
+
+  03 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> lirc-0.7.0_pre7.ebuild:
+  fix use invocation
+
+  03 Aug 2004; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0_pre7.ebuild:
+  don't use kmod if no modules are build, bug #59250
+
+  03 Aug 2004; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0_pre7.ebuild:
+  check if is_koutput, bug #59159
+
+  02 Aug 2004; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0_pre7.ebuild:
+  add lircmd init script, bug #17167
+
+*lirc-0.7.0_pre7 (02 Aug 2004)
+
+  02 Aug 2004; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0_pre7.ebuild:
+  version bump, make it work with 2.6 kernels, install graphics
+
+  28 Jul 2004; Tom Gall <tgall@gentoo.org> lirc-0.7.0_pre6.ebuild:
+  stable on ppc64, bug #55076
+
+  03 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> lirc-0.7.0_pre4.ebuild:
+  Stable on alpha.
+
+*lirc-0.7.0_pre6 (30 Jun 2004)
+
+  30 Jun 2004; Chris Bainbridge <chrb@gentoo.org> +lirc-0.7.0_pre6.ebuild:
+  Version bump,  fix ARCH and xbox config support
+
+  26 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> lirc-0.7.0_pre4.ebuild:
+  Marked stable on amd64.
+
+  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  lirc-0.6.6-r1.ebuild, lirc-0.7.0_pre3.ebuild, lirc-0.7.0_pre4.ebuild:
+  x86 stable.QA fixes. Use LIRC_OPTS to set options.
+
+  24 May 2004; Heinrich Wendel <lanius@gentoo.org> lirc-0.6.6-r1.ebuild,
+  lirc-0.7.0_pre2.ebuild, lirc-0.7.0_pre3.ebuild, lirc-0.7.0_pre4.ebuild:
+  fix GREP in global scope, bug #48382
+
+  22 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> lirc-0.7.0_pre4.ebuild:
+  marked ~amd64. Someone forgot to mark ~amd64 on a version bump.
+
+*lirc-0.7.0_pre4 (09 Apr 2004)
+
+  09 Apr 2004; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0_pre4.ebuild:
+  version bump, enable syslog logging, bug #47311
+
+  14 Mar 2004; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0_pre3.ebuild:
+  fix url to kernel 2.6 patch, remove irda warning, it's obsolete, bug #44395
+
+*lirc-0.7.0_pre3 (08 Mar 2004)
+
+  08 Mar 2004; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0_pre3.ebuild:
+  version bump
+
+  24 Feb 2004; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0_pre2.ebuild:
+  stable on x86
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> lirc-0.7.0_pre2.ebuild:
+  stable on alpha and ia64
+
+  05 Feb 2004; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0_pre2.ebuild,
+  files/lircd.conf:
+  added /etc/conf.d/lircd
+
+  19 Jan 2004; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0_pre2.ebuild,
+  files/lirc-0.7.0_pre2-i2c.patch.gz:
+  added patch to compile with i2c 2.8
+
+  17 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> lirc-0.7.0_pre2.ebuild:
+  set ppc in keywords
+
+  14 Jan 2004; Brian Jackson <iggy@gentoo.org> lirc-0.6.6-r1.ebuild,
+  lirc-0.7.0_pre2.ebuild, files/lircd:
+  updated dates in ebuilds, added ${LIRCD_OPTS} to the start cmd line to
+  pass extra options to the daemon
+
+  29 Dec 2003; Sven Blumenstein <bazik@gentoo.org> lirc-0.6.6-r1.ebuild:
+  Marked sparc to fix gxine depend.
+
+  29 Dec 2003; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0_pre2.ebuild:
+  finally fix kernel 2.6 support
+
+  29 Nov 2003; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0_pre2.ebuild:
+  fixed typo in LIRC_OPTS
+
+  26 Nov 2003; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0_pre2.ebuild:
+  added check for 2.6 kernel which removes all drivers from build
+
+  25 Nov 2003; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0_pre2.ebuild:
+  added warning about 2.6 kernel
+
+  16 Nov 2003; Brad House <brad_mssw@gentoo.org> lirc-0.6.6-r1.ebuild:
+  mark stable on amd64
+
+  23 Oct 2003; Martin Holzer <mholzer@gentoo.org> lirc-0.7.0_pre2.ebuild:
+  added warning about irda and kernel. Closes #30847.
+
+  13 Oct 2003; Martin Holzer <mholzer@gentoo.org> :
+  fixing sandbox issue. closes #30982
+
+*lirc-0.7.0_pre2 (11 Oct 2003)
+
+  11 Oct 2003; Heinrich Wendel <lanius@gentoo.org> lirc-0.6.5.ebuild,
+  lirc-0.7.0_pre2.ebuild, files/lirc-0.6.5-gentoo.diff.bz2:
+  cleanups
+
+*lirc-0.7.0_pre2 (11 Oct 2003)
+
+  11 Oct 2003; Heinrich Wendel <lanius@gentoo.org> lirc-0.7.0_pre2.ebuild:
+  version bump
+
+*lirc-0.6.6-r2 (09 Sep 2003)
+
+  09 Sep 2003; Martin Holzer <mholzer@gentoo.org> lirc-0.6.6-r2.ebuild,
+  files/lirc-0.6.6-r2-gentoo.diff.bz2:
+  Adding 2003-08-01 patch from rivatv.sf.net for asus support
+
+*lirc-0.6.6-r1 (27 Feb 2003)
+
+  27 Feb 2003; Mark Guertin <gerk@gentoo.org> lirc-0.6.6-r1.ebuild :
+  set ~ppc in keywords
+
+*lirc-0.6.6 (04 Feb 2003)
+
+  04 Feb 2003; Nick Hadaway <raker@gentoo.org> lirc-0.6.6.ebuild,
+  files/digest-lirc-0.6.6, files/lirc-0.6.6-gentoo.diff.bz2 :
+  Migrated previous patch's mknod and depmod related fixes.  Added to the
+  patch removing references to a seemingly missing hw_udp.c.  Added
+  an SMP workaround started on bug #13241.  Version bump.
+
+*lirc-0.6.5 (11 Jul 2002)
+
+  09 JuL 2002; Georg Sauthoff <g_sauthoff@web.de> lirc-0.6.5.ebuild, files/lircd,
+  files/lirc-0.6.5-gentoo.diff: Initial ebuild.

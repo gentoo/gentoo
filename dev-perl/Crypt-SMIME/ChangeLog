@@ -1,0 +1,32 @@
+# ChangeLog for dev-perl/Crypt-SMIME
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-SMIME/ChangeLog,v 1.6 2015/03/22 17:43:29 dilfridge Exp $
+
+*Crypt-SMIME-0.150.0 (22 Mar 2015)
+
+  22 Mar 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Crypt-SMIME-0.150.0.ebuild:
+  Version bump
+
+*Crypt-SMIME-0.100.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Crypt-SMIME-0.100.0-r1.ebuild, -Crypt-SMIME-0.100.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Crypt-SMIME-0.10.ebuild:
+  Cleanup
+
+*Crypt-SMIME-0.100.0 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org> +Crypt-SMIME-0.100.0.ebuild:
+  Change version scheme
+
+*Crypt-SMIME-0.10 (25 Apr 2011)
+
+  25 Apr 2011; Christian Ruppert <idl0r@gentoo.org> +Crypt-SMIME-0.10.ebuild,
+  +metadata.xml:
+  Initial commit for dev-perl/Crypt-SMIME.

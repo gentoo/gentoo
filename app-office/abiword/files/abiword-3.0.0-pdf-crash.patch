@@ -1,0 +1,102 @@
+From 128dfbc82cbd5c2c1bb6d0cde238a933639fba50 Mon Sep 17 00:00:00 2001
+From: Hubert Figuiere <hub@figuiere.net>
+Date: Sat, 28 Dec 2013 02:05:23 +0000
+Subject: [PATCH] Bug 13586 - We don't have a frame when printing.
+
+UPLIFTED from trunk
+
+git-svn-id: svn+ssh://svn.abisource.com/svnroot/abiword/branches/ABI-3-0-0-STABLE@33663 bcba8976-2d24-0410-9c9c-aab3bd5fdfd6
+---
+ src/text/fmt/gtk/fv_UnixSelectionHandles.cpp | 44 +++++++++++++++++++++-------
+ 1 file changed, 33 insertions(+), 11 deletions(-)
+
+diff --git a/src/text/fmt/gtk/fv_UnixSelectionHandles.cpp b/src/text/fmt/gtk/fv_UnixSelectionHandles.cpp
+index a3a3347..8bc187c 100644
+--- a/src/text/fmt/gtk/fv_UnixSelectionHandles.cpp
++++ b/src/text/fmt/gtk/fv_UnixSelectionHandles.cpp
+@@ -36,42 +36,60 @@ static void handle_dragged_cb (FvTextHandle         *handle,
+ 
+ 	mode = _fv_text_handle_get_mode (handle);
+ 
+-	if (pos == FV_TEXT_HANDLE_POSITION_SELECTION_START)
++	if (pos == FV_TEXT_HANDLE_POSITION_SELECTION_START) {
+ 		handles->updateSelectionStart ((UT_sint32)x, (UT_sint32)y);
++        }
+ 	else {
+-		if (mode == FV_TEXT_HANDLE_MODE_SELECTION)
++		if (mode == FV_TEXT_HANDLE_MODE_SELECTION) {
+ 			handles->updateSelectionEnd ((UT_sint32)x, (UT_sint32)y);
+-                else
++                }
++                else {
+ 			handles->updateCursor((UT_sint32)x, (UT_sint32)y);
++                }
+ 	}
+ }
+ 
+ FV_UnixSelectionHandles::FV_UnixSelectionHandles(FV_View *view, FV_Selection selection)
+ 	: FV_SelectionHandles (view, selection)
++	, m_text_handle(NULL)
+ {
+ 	XAP_Frame * pFrame = static_cast<XAP_Frame*>(m_pView->getParentData());
+-	XAP_UnixFrameImpl * pFrameImpl =static_cast<XAP_UnixFrameImpl *>( pFrame->getFrameImpl());
+-	GtkWidget * pWidget = pFrameImpl->getViewWidget();
+-
+-	m_text_handle = _fv_text_handle_new (pWidget);
+-        _fv_text_handle_set_relative_to (m_text_handle,
+-                                         gtk_widget_get_window (pWidget));
+-        g_signal_connect (m_text_handle, "handle-dragged",
+-                          G_CALLBACK(handle_dragged_cb), this);
++	// When saving to PDF (and printing) we don't have a frame
++	// See bug 13586
++	if (pFrame) {
++		XAP_UnixFrameImpl * pFrameImpl = static_cast<XAP_UnixFrameImpl *>(pFrame->getFrameImpl());
++		GtkWidget * pWidget = pFrameImpl->getViewWidget();
++
++		m_text_handle = _fv_text_handle_new (pWidget);
++		_fv_text_handle_set_relative_to (m_text_handle,
++						 gtk_widget_get_window (pWidget));
++		g_signal_connect (m_text_handle, "handle-dragged",
++				  G_CALLBACK(handle_dragged_cb), this);
++	}
+ }
+ 
+ FV_UnixSelectionHandles::~FV_UnixSelectionHandles()
+ {
++	if(!m_text_handle) {
++		return;
++	}
+ 	g_object_unref (m_text_handle);
+ }
+ 
+ void FV_UnixSelectionHandles::hide()
+ {
++	if(!m_text_handle) {
++		return;
++	}
+ 	_fv_text_handle_set_mode (m_text_handle, FV_TEXT_HANDLE_MODE_NONE);
+ }
+ 
+ void FV_UnixSelectionHandles::setCursorCoords(UT_sint32 x, UT_sint32 y, UT_uint32 height, bool visible)
+ {
++	if(!m_text_handle) {
++		return;
++	}
++
+ 	GdkRectangle rect;
+ 
+ 	_fv_text_handle_set_mode(m_text_handle, FV_TEXT_HANDLE_MODE_CURSOR);
+@@ -92,6 +110,10 @@ void FV_UnixSelectionHandles::setCursorCoords(UT_sint32 x, UT_sint32 y, UT_uint3
+ void FV_UnixSelectionHandles::setSelectionCoords(UT_sint32 start_x, UT_sint32 start_y, UT_uint32 start_height, bool start_visible,
+                                                  UT_sint32 end_x, UT_sint32 end_y, UT_uint32 end_height, bool end_visible)
+ {
++	if(!m_text_handle) {
++		return;
++	}
++
+ 	GdkRectangle rect;
+ 
+ 	_fv_text_handle_set_mode(m_text_handle, FV_TEXT_HANDLE_MODE_SELECTION);
+-- 
+1.9.1
+

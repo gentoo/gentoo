@@ -1,0 +1,11 @@
+--- Makefile.old	2015-01-05 11:35:24.794160467 +0100
++++ Makefile	2015-01-05 11:36:23.181058180 +0100
+@@ -24,8 +24,6 @@
+ install:
+ 	install -d $(DESTDIR)$(DATAPATH)
+ 	cp -R komidata/* $(DESTDIR)$(DATAPATH)
+-	chmod -R 644 $(DESTDIR)$(DATAPATH)
+-	chmod 755 $(DESTDIR)$(DATAPATH)
+ 	install -d $(DESTDIR)$(BINPATH)
+ 	cp komi $(DESTDIR)$(BINPATH)
+ 	chmod 755 $(DESTDIR)$(BINPATH)/komi

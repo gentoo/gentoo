@@ -1,0 +1,770 @@
+# ChangeLog for net-libs/telepathy-glib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/telepathy-glib/ChangeLog,v 1.169 2015/04/08 18:04:58 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> telepathy-glib-0.24.0.ebuild,
+  telepathy-glib-0.24.1.ebuild:
+  Drop old Python implementations
+
+  02 Jan 2015; Agostino Sarubbo <ago@gentoo.org> telepathy-glib-0.24.1.ebuild:
+  Stable for alpha, wrt bug #529964
+
+  01 Jan 2015; Markus Meier <maekke@gentoo.org> telepathy-glib-0.24.1.ebuild:
+  arm stable, bug #529964
+
+  01 Jan 2015; Agostino Sarubbo <ago@gentoo.org> telepathy-glib-0.24.1.ebuild:
+  Stable for sparc, wrt bug #529964
+
+  31 Dec 2014; Agostino Sarubbo <ago@gentoo.org> telepathy-glib-0.24.1.ebuild:
+  Stable for ia64, wrt bug #529964
+
+  30 Dec 2014; Agostino Sarubbo <ago@gentoo.org> telepathy-glib-0.24.1.ebuild:
+  Stable for ppc64, wrt bug #529964
+
+  28 Dec 2014; Agostino Sarubbo <ago@gentoo.org> telepathy-glib-0.24.1.ebuild:
+  Stable for ppc, wrt bug #529964
+
+  19 Dec 2014; Pacho Ramos <pacho@gentoo.org> telepathy-glib-0.24.1.ebuild:
+  amd64 stable, bug 529964
+
+  18 Dec 2014; Pacho Ramos <pacho@gentoo.org> telepathy-glib-0.24.1.ebuild:
+  x86 stable, bug 529964
+
+*telepathy-glib-0.24.1 (01 Sep 2014)
+
+  01 Sep 2014; Pacho Ramos <pacho@gentoo.org> +telepathy-glib-0.24.1.ebuild,
+  -telepathy-glib-0.20.1-r1.ebuild, -telepathy-glib-0.22.1.ebuild:
+  Version bump, drop old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  telepathy-glib-0.20.1-r1.ebuild, telepathy-glib-0.22.1.ebuild,
+  telepathy-glib-0.24.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  20 Jun 2014; Agostino Sarubbo <ago@gentoo.org> telepathy-glib-0.24.0.ebuild:
+  Stable for arm, wrt bug #508862
+
+  17 May 2014; Agostino Sarubbo <ago@gentoo.org> telepathy-glib-0.24.0.ebuild:
+  Stable for alpha, wrt bug #508862
+
+  14 May 2014; Agostino Sarubbo <ago@gentoo.org> telepathy-glib-0.24.0.ebuild:
+  Stable for sparc, wrt bug #508862
+
+  13 May 2014; Agostino Sarubbo <ago@gentoo.org> telepathy-glib-0.24.0.ebuild:
+  Stable for ia64, wrt bug #508862
+
+  11 May 2014; Agostino Sarubbo <ago@gentoo.org> telepathy-glib-0.24.0.ebuild:
+  Stable for ppc64, wrt bug #508862
+
+  10 May 2014; Agostino Sarubbo <ago@gentoo.org> telepathy-glib-0.24.0.ebuild:
+  Stable for ppc, wrt bug #508862
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org> telepathy-glib-0.24.0.ebuild:
+  x86 stable, bug 508862
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org> telepathy-glib-0.24.0.ebuild:
+  amd64 stable, bug 508862
+
+  27 Apr 2014; Pacho Ramos <pacho@gentoo.org> -telepathy-glib-0.20.4.ebuild:
+  drop old
+
+  19 Apr 2014; Pacho Ramos <pacho@gentoo.org> telepathy-glib-0.24.0.ebuild:
+  We need to pull in net-im/telepathy-mission-control (#504744 by Johannes
+  Buchner)
+
+*telepathy-glib-0.24.0 (12 Apr 2014)
+
+  12 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +telepathy-glib-0.24.0.ebuild:
+  Version bump.
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> telepathy-glib-0.22.1.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> telepathy-glib-0.22.1.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> telepathy-glib-0.22.1.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> telepathy-glib-0.22.1.ebuild:
+  arch stable, bug 888
+
+*telepathy-glib-0.22.1 (09 Feb 2014)
+
+  09 Feb 2014; Pacho Ramos <pacho@gentoo.org> +telepathy-glib-0.22.1.ebuild:
+  Version bump
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> telepathy-glib-0.20.4.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> telepathy-glib-0.20.4.ebuild:
+  amd64 stable, bug #478252
+
+  27 Oct 2013; Pacho Ramos <pacho@gentoo.org> -telepathy-glib-0.20.3.ebuild,
+  metadata.xml:
+  Cleanup due voip herd removal:
+  http://article.gmane.org/gmane.linux.gentoo.devel/88434
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> telepathy-glib-0.20.1-r1.ebuild,
+  telepathy-glib-0.20.3.ebuild, telepathy-glib-0.20.4.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*telepathy-glib-0.20.4 (24 Jul 2013)
+
+  24 Jul 2013; Pacho Ramos <pacho@gentoo.org> +telepathy-glib-0.20.4.ebuild,
+  -telepathy-glib-0.20.2.ebuild:
+  Version bump, drop old
+
+*telepathy-glib-0.20.3 (21 Jun 2013)
+
+  21 Jun 2013; Pacho Ramos <pacho@gentoo.org> +telepathy-glib-0.20.3.ebuild:
+  Version bump
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #137506
+
+*telepathy-glib-0.20.2 (06 Apr 2013)
+
+  06 Apr 2013; Pacho Ramos <pacho@gentoo.org> +telepathy-glib-0.20.2.ebuild,
+  -telepathy-glib-0.18.1.ebuild:
+  Version bump, drop old.
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  telepathy-glib-0.20.1-r1.ebuild:
+  Stable for sparc, wrt bug #458984
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  telepathy-glib-0.20.1-r1.ebuild:
+  Stable for alpha, wrt bug #458984
+
+  30 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  telepathy-glib-0.18.1.ebuild, -telepathy-glib-0.18.2.ebuild:
+  Clean up old revisions.
+
+  29 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  telepathy-glib-0.20.1-r1.ebuild:
+  Stable for ia64, wrt bug #458984
+
+  28 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  telepathy-glib-0.20.1-r1.ebuild:
+  Stable for arm, wrt bug #458984
+
+  27 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  telepathy-glib-0.20.1-r1.ebuild:
+  Stable for ppc64, wrt bug #458984
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  telepathy-glib-0.20.1-r1.ebuild:
+  Stable for ppc, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  telepathy-glib-0.20.1-r1.ebuild:
+  Stable for x86, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  telepathy-glib-0.20.1-r1.ebuild:
+  Stable for amd64, wrt bug #458984
+
+  22 Feb 2013; Zac Medico <zmedico@gentoo.org> telepathy-glib-0.20.1-r1.ebuild:
+  Add ~arm-linux keyword.
+
+*telepathy-glib-0.20.1-r1 (21 Dec 2012)
+
+  21 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  -telepathy-glib-0.16.5.ebuild, telepathy-glib-0.18.1.ebuild,
+  telepathy-glib-0.18.2.ebuild, +telepathy-glib-0.20.1-r1.ebuild, metadata.xml:
+  Version bump for Gnome 3.6. Switch to EAPI=5 and python-any-r1. Fix license
+  and wrong call to default. Drop old revisions.
+
+  28 Oct 2012; Raúl Porcel <armin76@gentoo.org> telepathy-glib-0.18.1.ebuild:
+  ia64/sparc stable wrt #427544
+
+  16 Oct 2012; Matt Turner <mattst88@gentoo.org> telepathy-glib-0.18.1.ebuild:
+  Stable on alpha, bug 427544.
+
+  16 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  telepathy-glib-0.18.1.ebuild:
+  stable ppc, bug #427544
+
+  07 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  telepathy-glib-0.18.1.ebuild:
+  stable ppc64, bug #427544
+
+  06 Oct 2012; Markus Meier <maekke@gentoo.org> telepathy-glib-0.18.1.ebuild:
+  arm stable, bug #427544
+
+  04 Oct 2012; Agostino Sarubbo <ago@gentoo.org> telepathy-glib-0.18.1.ebuild:
+  Stable for amd64, wrt bug #427544
+
+  03 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  telepathy-glib-0.18.1.ebuild:
+  x86 stable wrt bug #427544
+
+  16 Sep 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  telepathy-glib-0.18.2.ebuild:
+  Fix vala.eclass usage (bug #435158, thanks to Alexandre and Rafał Mużyło)
+  and simplify dependencies.
+
+*telepathy-glib-0.18.2 (15 Sep 2012)
+
+  15 Sep 2012; Pacho Ramos <pacho@gentoo.org> +telepathy-glib-0.18.2.ebuild,
+  -telepathy-glib-0.14.10.ebuild, -telepathy-glib-0.16.3.ebuild,
+  -telepathy-glib-0.16.4.ebuild, -telepathy-glib-0.17.7.ebuild:
+  Version bump, drop old.
+
+  03 Sep 2012; Nirbheek Chauhan <nirbheek@gentoo.org>
+  telepathy-glib-0.18.1.ebuild:
+  Vala should be in DEPEND, not RDEPEND...
+
+  15 Jul 2012; Raúl Porcel <armin76@gentoo.org> telepathy-glib-0.16.5.ebuild:
+  alpha/ia64/sparc stable wrt #410611
+
+  24 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  telepathy-glib-0.16.5.ebuild:
+  ppc stable wrt #410611
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> telepathy-glib-0.14.10.ebuild,
+  telepathy-glib-0.16.3.ebuild, telepathy-glib-0.16.4.ebuild,
+  telepathy-glib-0.16.5.ebuild, telepathy-glib-0.17.7.ebuild,
+  telepathy-glib-0.18.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  29 Apr 2012; Markus Meier <maekke@gentoo.org> telepathy-glib-0.16.5.ebuild:
+  x86 stable, bug #410611
+
+  25 Apr 2012; Markus Meier <maekke@gentoo.org> telepathy-glib-0.16.5.ebuild:
+  arm stable, bug #410611
+
+*telepathy-glib-0.18.1 (23 Apr 2012)
+
+  23 Apr 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +telepathy-glib-0.18.1.ebuild:
+  Version bump to stable 0.18 series; adds high-level API for
+  TpDBusTubeChannel.
+
+  19 Apr 2012; Brent Baude <ranger@gentoo.org> telepathy-glib-0.16.5.ebuild:
+  Marking telepathy-glib-0.16.5 ppc64 stable for bug 410611
+
+  18 Apr 2012; Agostino Sarubbo <ago@gentoo.org> telepathy-glib-0.16.5.ebuild:
+  Stable for amd64, wrt bug #410611
+
+  14 Apr 2012; Zac Medico <zmedico@gentoo.org> telepathy-glib-0.17.7.ebuild:
+  Add ~amd64-linux keyword.
+
+*telepathy-glib-0.17.7 (26 Mar 2012)
+
+  26 Mar 2012; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +telepathy-glib-0.17.7.ebuild:
+  Bump, unstable release, used by gnome-shell-3.4
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> telepathy-glib-0.16.3.ebuild:
+  alpha/ia64/sparc stable wrt #393007
+
+  05 Mar 2012; Brent Baude <ranger@gentoo.org> telepathy-glib-0.16.3.ebuild:
+  Marking telepathy-glib-0.16.3 ppc stable for bug 393007
+
+  05 Mar 2012; Brent Baude <ranger@gentoo.org> telepathy-glib-0.16.3.ebuild:
+  Marking telepathy-glib-0.16.3 ppc64 stable for bug 393007
+
+*telepathy-glib-0.16.5 (20 Feb 2012)
+
+  20 Feb 2012; Pacho Ramos <pacho@gentoo.org> +telepathy-glib-0.16.5.ebuild:
+  Version bump.
+
+  18 Jan 2012; Markus Meier <maekke@gentoo.org> telepathy-glib-0.16.3.ebuild:
+  arm stable, bug #393007
+
+  14 Jan 2012; Markus Meier <maekke@gentoo.org> telepathy-glib-0.16.3.ebuild:
+  x86 stable, bug #393007
+
+*telepathy-glib-0.16.4 (30 Dec 2011)
+
+  30 Dec 2011; Pacho Ramos <pacho@gentoo.org> +telepathy-glib-0.16.4.ebuild,
+  -telepathy-glib-0.16.2.ebuild:
+  Version bump, remove old.
+
+  29 Dec 2011; Pacho Ramos <pacho@gentoo.org> telepathy-glib-0.16.3.ebuild:
+  amd64 stable, bug 393007
+
+*telepathy-glib-0.16.3 (28 Nov 2011)
+
+  28 Nov 2011; Pacho Ramos <pacho@gentoo.org> +telepathy-glib-0.16.3.ebuild,
+  -telepathy-glib-0.16.1.ebuild:
+  Version bump, remove old.
+
+*telepathy-glib-0.16.2 (20 Nov 2011)
+
+  20 Nov 2011; Pacho Ramos <pacho@gentoo.org> +telepathy-glib-0.16.2.ebuild,
+  -telepathy-glib-0.14.7.ebuild, -telepathy-glib-0.16.0.ebuild:
+  Version bump, remove old.
+
+  30 Oct 2011; Raúl Porcel <armin76@gentoo.org> telepathy-glib-0.14.10.ebuild:
+  alpha/ia64/sparc stable wrt #385699
+
+  28 Oct 2011; Markus Meier <maekke@gentoo.org> telepathy-glib-0.14.10.ebuild:
+  arm stable, bug #385699
+
+*telepathy-glib-0.16.1 (25 Oct 2011)
+
+  25 Oct 2011; Pacho Ramos <pacho@gentoo.org> +telepathy-glib-0.16.1.ebuild:
+  Version bump.
+
+  21 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  telepathy-glib-0.14.10.ebuild:
+  x86 stable wrt bug #385699
+
+*telepathy-glib-0.16.0 (17 Oct 2011)
+
+  17 Oct 2011; Pacho Ramos <pacho@gentoo.org> -telepathy-glib-0.12.7.ebuild,
+  -telepathy-glib-0.14.9.ebuild, +telepathy-glib-0.16.0.ebuild:
+  Version bump, remove old.
+
+  16 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  telepathy-glib-0.14.10.ebuild:
+  ppc/ppc64 stable wrt #385699
+
+  14 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  telepathy-glib-0.14.10.ebuild:
+  amd64 stable wrt #385699
+
+  05 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  telepathy-glib-0.14.7.ebuild:
+  ppc/ppc64 stable wrt #369909
+
+*telepathy-glib-0.14.10 (04 Oct 2011)
+
+  04 Oct 2011; Pacho Ramos <pacho@gentoo.org> +telepathy-glib-0.14.10.ebuild:
+  Version bump.
+
+  13 Aug 2011; Raúl Porcel <armin76@gentoo.org> telepathy-glib-0.14.7.ebuild:
+  alpha/ia64/sparc stable wrt #369909
+
+  05 Aug 2011; Zac Medico <zmedico@gentoo.org> telepathy-glib-0.14.9.ebuild:
+  Add ~x86-linux keyword.
+
+  17 Jul 2011; Markus Meier <maekke@gentoo.org> telepathy-glib-0.14.7.ebuild:
+  arm stable, bug #369909
+
+  14 Jul 2011; Thomas Kahle <tomka@gentoo.org> telepathy-glib-0.14.7.ebuild:
+  x86 stable per bug 369909
+
+*telepathy-glib-0.14.9 (08 Jul 2011)
+
+  08 Jul 2011; Pacho Ramos <pacho@gentoo.org> -telepathy-glib-0.14.8.ebuild,
+  +telepathy-glib-0.14.9.ebuild:
+  Version bump: This release reverts the patch introduced in 0.14.8 changing
+  the default value of the TpChannelIface:handle-type property. While being
+  correct, this fix introduces assertion errors in some connection managers and
+  so was not appropriate for a stable branch and, because of this, we drop
+  0.14.8 from the tree as it won't go to stable ever. This version also fixes
+  tests.
+
+  01 Jul 2011; Markos Chandras <hwoarang@gentoo.org>
+  telepathy-glib-0.14.7.ebuild:
+  Stable on amd64 wrt bug #278255
+
+*telepathy-glib-0.14.8 (24 Jun 2011)
+
+  24 Jun 2011; Pacho Ramos <pacho@gentoo.org> -telepathy-glib-0.14.5.ebuild,
+  +telepathy-glib-0.14.8.ebuild:
+  Version bump, remove old.
+
+*telepathy-glib-0.14.7 (03 Jun 2011)
+
+  03 Jun 2011; Pacho Ramos <pacho@gentoo.org> -telepathy-glib-0.14.4.ebuild,
+  +telepathy-glib-0.14.7.ebuild:
+  Version bump, remove old.
+
+*telepathy-glib-0.14.5 (04 May 2011)
+
+  04 May 2011; Pacho Ramos <pacho@gentoo.org> -telepathy-glib-0.14.3.ebuild,
+  +telepathy-glib-0.14.5.ebuild:
+  Version bump, remove old.
+
+*telepathy-glib-0.14.4 (15 Apr 2011)
+
+  15 Apr 2011; Pacho Ramos <pacho@gentoo.org> -telepathy-glib-0.14.1.ebuild,
+  +telepathy-glib-0.14.4.ebuild:
+  Version bump, remove old.
+
+*telepathy-glib-0.14.3 (02 Apr 2011)
+
+  02 Apr 2011; Pacho Ramos <pacho@gentoo.org> -telepathy-glib-0.13.18.ebuild,
+  +telepathy-glib-0.14.3.ebuild:
+  Version bump, remove old.
+
+  23 Mar 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  -telepathy-glib-0.10.1.ebuild:
+  Clean up old revisions.
+
+*telepathy-glib-0.14.1 (23 Mar 2011)
+
+  23 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  -telepathy-glib-0.13.17.ebuild, +telepathy-glib-0.14.1.ebuild:
+  Bump to 0.14.1
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org> telepathy-glib-0.12.7.ebuild:
+  Marking telepathy-glib-0.12.7 ppc stable for bug 353436
+
+  21 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  telepathy-glib-0.12.7.ebuild:
+  ppc64 stable wrt #353436
+
+*telepathy-glib-0.13.18 (20 Mar 2011)
+
+  20 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  -telepathy-glib-0.13.16.ebuild, +telepathy-glib-0.13.18.ebuild:
+  Bump to 0.13.18, remove old
+
+*telepathy-glib-0.13.17 (14 Mar 2011)
+
+  14 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +telepathy-glib-0.13.17.ebuild:
+  Bump to 0.13.17
+
+  12 Mar 2011; Raúl Porcel <armin76@gentoo.org> telepathy-glib-0.12.7.ebuild:
+  alpha/arm/ia64/sparc stable wrt #353436
+
+*telepathy-glib-0.13.16 (09 Mar 2011)
+
+  09 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +telepathy-glib-0.13.16.ebuild:
+  Bump to 0.13.16, all tests pass
+
+  27 Feb 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  -telepathy-glib-0.10.7.ebuild, -telepathy-glib-0.12.3.ebuild,
+  -telepathy-glib-0.12.5.ebuild:
+  Clean up old revisions.
+
+  24 Feb 2011; Thomas Kahle <tomka@gentoo.org> telepathy-glib-0.12.7.ebuild:
+  x86 stable per bug 353436
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org>
+  telepathy-glib-0.12.7.ebuild:
+  Stable on amd64 wrt bug #353436
+
+*telepathy-glib-0.12.7 (07 Feb 2011)
+
+  07 Feb 2011; Pacho Ramos <pacho@gentoo.org> +telepathy-glib-0.12.7.ebuild,
+  metadata.xml:
+  Version bump with important bugfixes (like some crashers), add gnome to
+  metadata as talked between us since empathy relies on this.
+
+  26 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  telepathy-glib-0.12.5.ebuild:
+  added ~ppc/~ppc64 wrt #348313
+
+  21 Jan 2011; Jeroen Roovers <jer@gentoo.org> telepathy-glib-0.10.1.ebuild,
+  telepathy-glib-0.10.7.ebuild:
+  Drop HPPA keywording (bug #348313).
+
+  10 Dec 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  telepathy-glib-0.12.5.ebuild:
+  Drop ~ppc and ~ppc64 keywords due to unkeyworded gobject-introspection, bug
+  #348313.
+
+  09 Dec 2010; <nirbheek@gentoo.org> telepathy-glib-0.12.3.ebuild,
+  telepathy-glib-0.12.5.ebuild:
+  Drop hppa due to missing keywords on dev-libs/gobject-introspection, bug
+  348313
+
+*telepathy-glib-0.12.5 (04 Dec 2010)
+
+  04 Dec 2010; Pacho Ramos <pacho@gentoo.org> -telepathy-glib-0.12.0.ebuild,
+  +telepathy-glib-0.12.5.ebuild:
+  Version bump that will have vala support enabled as needed for Gnome 2.32,
+  empathy and co. Remove old testing.
+
+*telepathy-glib-0.12.3 (03 Nov 2010)
+
+  03 Nov 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  +telepathy-glib-0.12.3.ebuild:
+  Bump to 0.12.3 - small fixes and a bunch of bug fixese since 0.12.0. Also,
+  don't let USE=debug control --enable-debug - this is only enables
+  conditionally enabled code to get debugging output (which upstream needs
+  to actually debug any issues remotely).
+
+  13 Oct 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  telepathy-glib-0.12.0.ebuild, metadata.xml:
+  Fix build with multiple python installation, bug #315323. Add support for
+  vala bindings needed for gnome 2.32.
+
+  09 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  telepathy-glib-0.10.1.ebuild:
+  ppc64 stable wrt #324077
+
+  06 Oct 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  telepathy-glib-0.12.0.ebuild:
+  Introspection USE flag must be enabled by default.
+
+*telepathy-glib-0.12.0 (29 Sep 2010)
+
+  29 Sep 2010; Pacho Ramos <pacho@gentoo.org>
+  -files/telepathy-glib-0.7.33-fix-test.patch,
+  -files/telepathy-glib-0.7.33-nobuildtest.patch,
+  -telepathy-glib-0.8.0.ebuild, -telepathy-glib-0.8.1.ebuild,
+  +telepathy-glib-0.12.0.ebuild:
+  Version bump with bugfixes and some new features, remove old.
+
+*telepathy-glib-0.10.7 (21 Sep 2010)
+
+  21 Sep 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  +telepathy-glib-0.10.7.ebuild:
+  Version bump. Leak fixes, doc updates, ...
+
+  11 Sep 2010; <nixnut@gentoo.org> telepathy-glib-0.10.1.ebuild:
+  ppc stable #321591
+
+  18 Aug 2010; Markus Meier <maekke@gentoo.org>
+  telepathy-glib-0.10.1.ebuild:
+  arm stable, bug #314899
+
+  07 Aug 2010; Raúl Porcel <armin76@gentoo.org>
+  telepathy-glib-0.10.1.ebuild:
+  ia64/sparc stable wrt #321591
+
+  01 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  telepathy-glib-0.10.1.ebuild:
+  stable x86, bug 321591
+
+  31 Jul 2010; Pacho Ramos <pacho@gentoo.org> telepathy-glib-0.10.1.ebuild:
+  amd64 stable, bug 321591
+
+  25 Jul 2010; Tobias Klausmann <klausman@gentoo.org>
+  telepathy-glib-0.10.1.ebuild:
+  Stable on alpha, bug #321591
+
+  27 Jun 2010; <nixnut@gentoo.org> telepathy-glib-0.8.1.ebuild:
+  ppc stable #321519
+
+*telepathy-glib-0.10.1 (26 Mar 2010)
+
+  26 Mar 2010; Olivier Crête <tester@gentoo.org>
+  +telepathy-glib-0.10.1.ebuild:
+  Version bump
+
+  18 Jan 2010; Jeroen Roovers <jer@gentoo.org> telepathy-glib-0.8.1.ebuild:
+  Marked ~hppa too.
+
+  09 Jan 2010; Pacho Ramos <pacho@gentoo.org> telepathy-glib-0.8.1.ebuild:
+  amd64 stable, bug 286877
+
+  09 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  telepathy-glib-0.8.1.ebuild:
+  stable x86, bug 286877
+
+*telepathy-glib-0.8.1 (12 Nov 2009)
+
+  12 Nov 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +telepathy-glib-0.8.1.ebuild:
+  Version bump.
+
+*telepathy-glib-0.8.0 (24 Sep 2009)
+
+  24 Sep 2009; Olivier Crête <tester@gentoo.org>
+  -telepathy-glib-0.7.34.ebuild, -telepathy-glib-0.7.37.ebuild,
+  +telepathy-glib-0.8.0.ebuild:
+  Version bump
+
+*telepathy-glib-0.7.37 (14 Sep 2009)
+
+  14 Sep 2009; Olivier Crête <tester@gentoo.org>
+  -telepathy-glib-0.7.36.ebuild, +telepathy-glib-0.7.37.ebuild:
+  Version bump (again)
+
+*telepathy-glib-0.7.36 (14 Sep 2009)
+
+  14 Sep 2009; Olivier Crête <tester@gentoo.org>
+  -telepathy-glib-0.7.33.ebuild, +telepathy-glib-0.7.36.ebuild:
+  Version bump
+
+*telepathy-glib-0.7.34 (21 Aug 2009)
+
+  21 Aug 2009; Olivier Crête <tester@gentoo.org>
+  -telepathy-glib-0.7.25.ebuild, -telepathy-glib-0.7.29.ebuild,
+  -telepathy-glib-0.7.31.ebuild, +telepathy-glib-0.7.34.ebuild:
+  Version bump
+
+  06 Aug 2009; Olivier Crête <tester@gentoo.org>
+  telepathy-glib-0.7.33.ebuild:
+  Really fix build
+
+  06 Aug 2009; Olivier Crête <tester@gentoo.org>
+  telepathy-glib-0.7.33.ebuild:
+  Re-enable elibtoolize to make it build
+
+*telepathy-glib-0.7.33 (05 Aug 2009)
+
+  05 Aug 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -telepathy-glib-0.7.18.ebuild, -telepathy-glib-0.7.20.ebuild,
+  +telepathy-glib-0.7.33.ebuild,
+  +files/telepathy-glib-0.7.33-fix-test.patch,
+  +files/telepathy-glib-0.7.33-nobuildtest.patch:
+  Version bump. Update to latest telepathy-spec, bug fixes. Clean up old
+  revisions.
+
+  18 Jun 2009; Alexis Ballier <aballier@gentoo.org>
+  telepathy-glib-0.7.31.ebuild:
+  keyword ~x86-fbsd and call elibtoolize for a sane .so versionning.
+
+*telepathy-glib-0.7.31 (01 Jun 2009)
+
+  01 Jun 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +telepathy-glib-0.7.31.ebuild:
+  Version bump. Updated to telepathy-spec 0.17.25.
+
+*telepathy-glib-0.7.29 (09 Apr 2009)
+
+  09 Apr 2009; Olivier Crête <tester@gentoo.org>
+  +telepathy-glib-0.7.29.ebuild:
+  Version bump
+
+  04 Apr 2009; <solar@gentoo.org> telepathy-glib-0.7.25.ebuild:
+  - Keyword ~arm
+
+  23 Feb 2009; Joseph Jezak <josejx@gentoo.org>
+  telepathy-glib-0.7.25.ebuild:
+  Marked ~ppc for bug #211776.
+
+*telepathy-glib-0.7.25 (04 Feb 2009)
+
+  04 Feb 2009; Olivier Crête <tester@gentoo.org>
+  +telepathy-glib-0.7.25.ebuild:
+  Version bump
+
+  07 Jan 2009; Raúl Porcel <armin76@gentoo.org>
+  telepathy-glib-0.7.20.ebuild:
+  Add ~alpha/~ia64 wrt #245949
+
+*telepathy-glib-0.7.20 (30 Dec 2008)
+
+  30 Dec 2008; Santiago M. Mola <coldwind@gentoo.org>
+  -telepathy-glib-0.7.14.ebuild, -telepathy-glib-0.7.16.ebuild,
+  +telepathy-glib-0.7.20.ebuild:
+  Version bump, remove old.
+
+  24 Dec 2008; Friedrich Oslage <bluebird@gentoo.org>
+  telepathy-glib-0.7.18.ebuild:
+  Add ~sparc keyword, bug #245949
+
+  09 Dec 2008; Brent Baude <ranger@gentoo.org> telepathy-glib-0.7.18.ebuild:
+  Marking telepathy-glib-0.7.18 ~ppc64 for bug 245949
+
+*telepathy-glib-0.7.18 (06 Nov 2008)
+
+  06 Nov 2008; Santiago M. Mola <coldwind@gentoo.org>
+  +telepathy-glib-0.7.18.ebuild:
+  Version bump.
+
+*telepathy-glib-0.7.16 (03 Oct 2008)
+
+  03 Oct 2008; Santiago M. Mola <coldwind@gentoo.org>
+  -telepathy-glib-0.7.13.ebuild, +telepathy-glib-0.7.16.ebuild:
+  Version bummp.
+
+*telepathy-glib-0.7.14 (21 Aug 2008)
+
+  21 Aug 2008; Santiago M. Mola <coldwind@gentoo.org>
+  -telepathy-glib-0.7.10.ebuild, +telepathy-glib-0.7.14.ebuild:
+  Version bump, remove old.
+
+*telepathy-glib-0.7.13 (29 Jul 2008)
+
+  29 Jul 2008; Santiago M. Mola <coldwind@gentoo.org>
+  -telepathy-glib-0.7.7.ebuild, +telepathy-glib-0.7.13.ebuild:
+  Version bump, remove old.
+
+*telepathy-glib-0.7.10 (13 Jun 2008)
+
+  13 Jun 2008; Santiago M. Mola <coldwind@gentoo.org>
+  -telepathy-glib-0.7.6.ebuild, +telepathy-glib-0.7.10.ebuild:
+  Version bump and remove old.
+
+*telepathy-glib-0.7.7 (05 May 2008)
+
+  05 May 2008; Santiago M. Mola <coldwind@gentoo.org>
+  -telepathy-glib-0.7.2.ebuild, -telepathy-glib-0.7.3.ebuild,
+  -telepathy-glib-0.7.5.ebuild, +telepathy-glib-0.7.7.ebuild:
+  Bump to 0.7.7, remove old ebuilds.
+
+*telepathy-glib-0.7.6 (10 Apr 2008)
+
+  10 Apr 2008; Santiago M. Mola <coldwind@gentoo.org>
+  +telepathy-glib-0.7.6.ebuild:
+  Version bump.
+
+*telepathy-glib-0.7.5 (08 Mar 2008)
+
+  08 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  +telepathy-glib-0.7.5.ebuild:
+  Version bump.
+
+  29 Feb 2008; Mart Raudsepp <leio@gentoo.org> telepathy-glib-0.7.3.ebuild:
+  Install README and NEWS docs
+
+*telepathy-glib-0.7.3 (28 Feb 2008)
+
+  28 Feb 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +telepathy-glib-0.7.3.ebuild:
+  bump to 0.7.3, add doc useflag for rebuilding gtk-doc
+
+*telepathy-glib-0.7.2 (19 Feb 2008)
+
+  19 Feb 2008; <tester@gentoo.org> -telepathy-glib-0.5.13.ebuild,
+  -telepathy-glib-0.5.14.ebuild, -telepathy-glib-0.6.0.ebuild,
+  -telepathy-glib-0.6.1.ebuild, -telepathy-glib-0.7.0.ebuild,
+  +telepathy-glib-0.7.2.ebuild:
+  Version bump, remove older versions
+
+*telepathy-glib-0.7.0 (04 Dec 2007)
+
+  04 Dec 2007; Piotr Jaroszyński <peper@gentoo.org>
+  +telepathy-glib-0.7.0.ebuild:
+  Add 0.7.0.
+
+*telepathy-glib-0.6.1 (22 Nov 2007)
+
+  22 Nov 2007; Piotr Jaroszyński <peper@gentoo.org>
+  +telepathy-glib-0.6.1.ebuild:
+  Add 0.6.1.
+
+*telepathy-glib-0.6.0 (28 Sep 2007)
+
+  28 Sep 2007; Piotr Jaroszyński <peper@gentoo.org>
+  +telepathy-glib-0.6.0.ebuild:
+  Add 0.6.0.
+
+*telepathy-glib-0.5.14 (01 Sep 2007)
+
+  01 Sep 2007; Piotr Jaroszyński <peper@gentoo.org>
+  -telepathy-glib-0.5.10.ebuild, -telepathy-glib-0.5.11.ebuild,
+  +telepathy-glib-0.5.14.ebuild:
+  Add 0.5.14, remove old versions.
+
+  30 Jun 2007; Piotr Jaroszyński <peper@gentoo.org>
+  telepathy-glib-0.5.10.ebuild, telepathy-glib-0.5.11.ebuild,
+  telepathy-glib-0.5.13.ebuild:
+  Clean up dbus deps wrt bug #183696.
+
+*telepathy-glib-0.5.13 (01 Jun 2007)
+
+  01 Jun 2007; Piotr Jaroszyński <peper@gentoo.org>
+  +telepathy-glib-0.5.13.ebuild:
+  Version bump.
+
+*telepathy-glib-0.5.11 (30 Apr 2007)
+
+  30 Apr 2007; Piotr Jaroszyński <peper@gentoo.org>
+  +telepathy-glib-0.5.11.ebuild:
+  Version bump.
+
+  22 Apr 2007; Piotr Jaroszyński <peper@gentoo.org>
+  telepathy-glib-0.5.10.ebuild:
+  Fix block dep.
+
+*telepathy-glib-0.5.10 (20 Apr 2007)
+
+  20 Apr 2007; Piotr Jaroszyński <peper@gentoo.org> +metadata.xml,
+  +telepathy-glib-0.5.10.ebuild:
+  New package.

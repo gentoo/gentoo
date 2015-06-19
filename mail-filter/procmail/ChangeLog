@@ -1,0 +1,301 @@
+# ChangeLog for mail-filter/procmail
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/procmail/ChangeLog,v 1.50 2014/10/24 19:03:15 grobian Exp $
+
+  24 Oct 2014; Fabian Groffen <grobian@gentoo.org>
+  +files/procmail-3.22-interix.patch, +files/procmail-prefix.patch,
+  procmail-3.22-r10.ebuild:
+  Add Prefix changes
+
+  22 Apr 2014; Fabian Groffen <grobian@gentoo.org> procmail-3.22-r10.ebuild:
+  Fix build using GCC 4.7, thanks Denis Kaganovich in bug #466552
+
+  08 Jun 2011; Eray Aslan <eras@gentoo.org> procmail-3.22-r10.ebuild:
+  Fix lockfile permissions - bug #351656
+
+  16 Mar 2011; Eray Aslan <eras@gentoo.org> procmail-3.22-r10.ebuild:
+  change to new style virtual/mda
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> procmail-3.22-r10.ebuild:
+  Remove virtual/libc
+
+  13 Jun 2009; Peter Alfredsen <loki_val@gentoo.org>
+  procmail-3.22-r10.ebuild, +files/procmail-3.22-glibc-2.10.patch:
+  Fix compilation with glibc-2.10, bug 270551.
+
+  16 Feb 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  -files/gentoo-maildir2.diff, -procmail-3.22-r7.ebuild,
+  -procmail-3.22-r8.ebuild, -procmail-3.22-r9.ebuild:
+  Cleanup
+
+  16 Feb 2009; Brent Baude <ranger@gentoo.org> procmail-3.22-r10.ebuild:
+  stable ppc64, bug 257184
+
+  15 Feb 2009; Brent Baude <ranger@gentoo.org> procmail-3.22-r10.ebuild:
+  stable ppc, bug 257184
+
+  06 Feb 2009; Jeroen Roovers <jer@gentoo.org> procmail-3.22-r10.ebuild:
+  Stable for HPPA (bug #257184).
+
+  05 Feb 2009; Raúl Porcel <armin76@gentoo.org> procmail-3.22-r10.ebuild:
+  arm/ia64/s390/sh stable wrt #257184
+
+  01 Feb 2009; Markus Meier <maekke@gentoo.org> procmail-3.22-r10.ebuild:
+  x86 stable, bug #257184
+
+  01 Feb 2009; Tiago Cunha <tcunha@gentoo.org> procmail-3.22-r10.ebuild:
+  stable amd64/sparc, bug 257184
+
+  01 Feb 2009; Tobias Klausmann <klausman@gentoo.org>
+  procmail-3.22-r10.ebuild:
+  Stable on alpha, bug #257184
+
+*procmail-3.22-r10 (27 Dec 2008)
+
+  27 Dec 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  +procmail-3.22-r10.ebuild:
+  Add note to configure a default mail storage location when using maildir
+  (#249579), do not strip binaries and respect LDFLAGS (#249202)
+
+  02 Dec 2008; Jeroen Roovers <jer@gentoo.org> procmail-3.22-r9.ebuild:
+  Stable for HPPA (bug #233595).
+
+  01 Dec 2008; Brent Baude <ranger@gentoo.org> procmail-3.22-r9.ebuild:
+  stable ppc64, bug 233595
+
+  29 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  procmail-3.22-r9.ebuild:
+  ppc stable, bug #233595
+
+  29 Nov 2008; Raúl Porcel <armin76@gentoo.org> procmail-3.22-r9.ebuild:
+  alpha/arm/ia64/sparc stable wrt #233595
+
+  28 Nov 2008; Markus Meier <maekke@gentoo.org> procmail-3.22-r9.ebuild:
+  amd64/x86 stable, bug #233595
+
+  28 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  procmail-3.22-r9.ebuild:
+  Don't epatch in src_compile
+
+*procmail-3.22-r9 (15 Jun 2008)
+
+  15 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  +files/gentoo-maildir3.diff, +files/procmail-pipealloc.diff,
+  +procmail-3.22-r9.ebuild:
+  fix lockfile perms (#121221), fix locking issues w/ NFS (#156493), fix
+  memory allocation when piping mail through a filter (#200006), unset
+  MAILSPOOLHOME (#108869)
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Jan 2007; Fernando J. Pereda <ferdy@gentoo.org>
+  -procmail-3.22-r6.ebuild:
+  QA: Clean unused versions.
+
+*procmail-3.22-r8 (12 May 2006)
+
+  12 May 2006; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/procmail-maxprocs-fix.diff, +procmail-3.22-r8.ebuild:
+  Fix for bug #119890 thanks to Arthur Britto <ahbritto@iat.com>
+
+  20 Feb 2006; Joshua Kinard <kumba@gentoo.org> procmail-3.22-r7.ebuild:
+  Marked stable on mips.
+
+  15 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  procmail-3.22-r7.ebuild:
+  stable on alpha
+
+  06 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  procmail-3.22-r7.ebuild:
+  Stable on hppa.
+
+  03 Oct 2005; Daniel Black <dragonheart@gentoo.org> Manifest:
+  digest fix - bug #107938
+
+  02 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> ChangeLog:
+  Stable on ppc.
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> procmail-3.22-r7.ebuild:
+  Mark 3.22-r7 stable on ia64
+
+  28 Sep 2005; Luis Medinas <metalgod@gentoo.org> procmail-3.22-r7.ebuild:
+  Marked stable on amd64
+
+  24 Sep 2005; Markus Rothe <corsair@gentoo.org> procmail-3.22-r7.ebuild:
+  Stable on ppc64
+
+  22 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  procmail-3.22-r7.ebuild:
+  Stable on sparc
+
+  21 Sep 2005; Andrej Kacian <ticho@gentoo.org> procmail-3.22-r7.ebuild:
+  Stable on x86.
+
+*procmail-3.22-r7 (17 Aug 2005)
+
+  17 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/procmail-comsat-segfault.diff, +procmail-3.22-r7.ebuild:
+  fix for bug #102340
+
+  13 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  procmail-3.22-r6.ebuild:
+  use append-flags instead of assigning directly
+
+  09 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> procmail-3.22-r6.ebuild:
+  Stable on mips.
+
+  23 May 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/procmail-lazy-bindings.diff, procmail-3.22-r6.ebuild:
+  Don't use lazy bindings neither on procmail nor in lockfile
+
+  27 Jan 2005; Andrej Kacian <ticho@gentoo.org> procmail-3.22-r6.ebuild:
+  Added selinux support. Bug #79751.
+
+  07 Dec 2004; Scott W Taylor <swtaylor@gentoo.org> procmail-3.22-r6.ebuild:
+  remove mail-mta/courier block
+
+  22 Sep 2004; Andrej Kacian <ticho@gentoo.org> procmail-3.22-r6.ebuild:
+  Use epatch instead of patch in src_compile()
+
+  19 Sep 2004; Scott W Taylor <swtaylor@gentoo.org> procmail-3.22-r6.ebuild:
+  procmail is part of courier. don't install it separately
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  procmail-3.22-r6.ebuild:
+  virtual/glibc -> virtual/libc
+
+  30 Jun 2004; Tom Gall <tgall@gentoo.org> procmail-3.22-r6.ebuild:
+  stable on ppc64, bug #55663
+
+  29 Jun 2004; Cory Visi <merlin@gentoo.org> procmail-3.22-r6.ebuild:
+  Missing mbox in IUSE and fix ebuild typo (Bug 47895 and Bug 44783)
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org> procmail-3.22-r6.ebuild:
+  Fix use invocation
+
+*procmail-3.22-r6 (03 Jun 2004)
+
+  03 Jun 2004; Seemant Kulleen <seemant@gentoo.org> +metadata.xml,
+  +files/gentoo-maildir2.diff, +procmail-3.22-r6.ebuild:
+  Moved from net-mail/procmail to mail-filter/procmail.
+
+  11 May 2004; Michael McCabe <randy@gentoo.org> procmail-3.22-r6.ebuild:
+  Added s390 keywords
+
+  29 Jan 2004; Stewart <blkdeath@gentoo.org> procmail-3.22-r6.ebuild:
+  Re: Bug #39793 - reset insopts to 0644 for man pages, docs, config files
+
+  19 Jan 2004; <tuxus@gentoo.org> procmail-3.22-r6.ebuild:
+  Added ~mips to KEYWORDS.
+
+  05 Jan 2004; Robin H. Johnson <robbat2@gentoo.org> procmail-3.22-r5.ebuild,
+  procmail-3.22-r6.ebuild:
+  fix copyright headers, fix bug #35949 properly as opposed to the old broken
+  -O2 fix.
+
+*procmail-3.22-r6 (21 Jun 2003)
+
+  21 Jun 2003; Brandon Low <lostlogic@gentoo.org> procmail-3.22-r6.ebuild:
+  Fix USE=maildir
+
+  05 Feb 2003; Aron Griffis <agriffis@gentoo.org> procmail-3.22-r5.ebuild :
+  Mark stable on alpha
+
+*procmail-3.22-r5 (28 Oct 2002)
+
+  17 Jun 2003; Guy Martin <gmsoft@gentoo.org> procmail-3.22-r5.ebuild :
+  Added hppa to KEYWORDS.
+
+  05 Apr 2003; Zach Welch <zwelch@gentoo.org> procmail-3.22-r5.ebuild:
+  add arm keyword
+
+  22 Dec 2002; Christian Birchinger <joker@gentoo.org> :     
+  Removed sparc64 keyword.
+	
+  28 Oct 2002; Grant Goodyear <g2boojum@gentoo.org> procmail-3.22-r5.ebuild :
+
+  It seems that _both_ the /etc/procmailrc entry and the patch are required
+  for procmail to deliver to ${HOME}/.maildir properly.  At least, w/o the
+  /etc/procmailrc entry my mail was being delivered to ~/.maildir but not
+  in maildir form (meaning messages were dumped into ~/.maildir instead of
+  ~/.maildir/new.  So, I restored the creation of /etc/procmailrc.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+  09 Dec 2002; Jon Portnoy <avenj@gentoo.org> procmail-3.22-r5.ebuild :
+
+  Updated ebuild to respect icc USE flag, no revision bump necessary.
+
+  10 Dec 2002; Jon Portnoy <avenj@gentoo.org> procmail-3.22-r5.ebuild :
+
+  Revert USE to prevent a dependency blockage.
+
+  14 Dec 2002; Aron Griffis <agriffis@gentoo.org> procmail-3.22-r5.ebuild :
+
+  Added ~alpha to KEYWORDS
+
+*procmail-3.22-r4 (5 Sep 2002)
+	
+  5 Sep 2002; Jared H. Hudson <jhhudso@gentoo.org> procmail-3.22-r4.ebuild :
+
+  Added PROVIDE of virtual/mda. Thanks goes to Eric Renfro
+  <psi-jack@myrealbox.com> in reference to bug #6806.
+	
+*procmail-3.22-r3 (26 Jul 2002)
+
+  3 Aug 2002; Calum Selkirk <cselkirk@gentoo.org> procmail-3.22-r3.ebuild
+  procmail-3.22-r2.ebuild files/gentoo-maildir.diff digest-procmail-3.22-r3 :
+
+  Add ppc to KEYWORDS (procmail-3.22-r2.ebuild).
+  Changed from *.patch to *.diff
+  Seems i neglected to cvs add the diff.
+  
+  26 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> procmail-3.22-r3.ebuild 
+  files/gentoo-maildir.patch digest-procmail-3.22-r3 :
+
+  Added patch to remove MAILSPOOLDIR and define MAILSPOOLHOME when
+  we are delivering to Maildir style mailboxes (USE="maildir"). The 
+  /etc/procmailrc soultion (below) doesn't seem to work, procmail still
+  attempts to deliver to /var/spool/mail (see bug #5630).
+  Added ppc to KEYWORDS
+  Added RDEPEND 
+  
+*procmail-3.22-r2 (16 Jul 2002)
+
+  26 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> procmail-3.22-r2.ebuild :
+  
+  Added ppc to KEYWORDS
+  Added RDEPEND
+  Fixed Copyright year .. s/2000/2002
+  Fixed illegal space characters
+  
+  16 Jul 2002; Nick Hadaway <raker@gentoo.org> procmail-3.22-r2.ebuild :
+
+  Updated sed statement to include a "-O2" so procmail doesn't barf
+  on the strstr() tests.
+
+*procmail-3.22-r2 (18 Jun 2002)
+
+  18 Jun 2002; Grant Goodyear <g2boojum@gentoo.org> ChangeLog  :
+
+  Thanks to Jose Fonseca procmail now uses /etc/procmailrc to determine the
+  default mailbox instead of patching the source.
+
+*procmail-3.22-r1 (1 Feb 2002)
+
+  3 May 2002; J.Hudson <jhhudso@gentoo.org> procmail-3.22-r1.ebuild :
+
+  Added mbox use item to ebuild. When used, procmail will not change
+  the location of mail spool to a maildir style location. Instead, it
+  will use the /var/spool/mail/* default.
+
+*procmail-3.22 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

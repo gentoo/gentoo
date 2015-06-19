@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/proxyper/files/proxyper.init,v 1.2 2004/07/15 00:09:18 agriffis Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting distributed.net personal proxy"
+	start-stop-daemon --start --quiet --pidfile /opt/proxyper/rc5desproxy.pid --exec /opt/proxyper/proxyper -- -detach
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping distributed.net personal proxy"
+	start-stop-daemon --stop --quiet --pidfile /opt/proxyper/rc5desproxy.pid
+	eend $?
+}

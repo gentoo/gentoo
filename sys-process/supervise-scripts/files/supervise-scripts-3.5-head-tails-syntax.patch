@@ -1,0 +1,19 @@
+fixheadtails.eclass can't handle shell scripts so we need to fix ourselves
+
+http://bugs.gentoo.org/152307
+
+--- svscan-add-to-inittab.in
++++ svscan-add-to-inittab.in
+@@ -53,10 +53,10 @@
+ 
+ # Splice the new lines into the old file
+ {
+-  catit | head -$(($lineno-1))
++  catit | head -n $(($lineno-1))
+   echo "SV:2345:respawn:$conf_bin/svscan-start /service"
+   echo "SX:S016:wait:$conf_bin/svscan-stopall /service"
+-  catit | tail +$lineno
++  catit | tail -n +$lineno
+ } >"$tmpfile"
+ 
+ # And move it over the existing file

@@ -1,0 +1,47 @@
+# ChangeLog for app-accessibility/simon
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/simon/ChangeLog,v 1.11 2015/06/04 18:56:36 kensington Exp $
+
+  04 Jun 2015; Michael Palimaka <kensington@gentoo.org> simon-0.4.0.ebuild,
+  simon-0.4.1.ebuild:
+  Move various kde-base packages to kde-apps.
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  28 Aug 2013; Agostino Sarubbo <ago@gentoo.org> simon-0.4.1.ebuild:
+  Stable for x86, wrt bug #480794
+
+  13 Aug 2013; Agostino Sarubbo <ago@gentoo.org> simon-0.4.1.ebuild:
+  Stable for amd64, wrt bug #480794
+
+*simon-0.4.1 (30 Jun 2013)
+
+  30 Jun 2013; Julian Ospald <hasufell@gentoo.org> +simon-0.4.1.ebuild,
+  +files/simon-0.4.1-libdir.patch, +files/simon-0.4.1-linguas.patch,
+  +files/simon-0.4.1-sphinx.patch:
+  version bump
+
+  27 Jun 2013; Agostino Sarubbo <ago@gentoo.org> simon-0.4.0.ebuild:
+  Stable for x86, wrt bug #474436
+
+  27 Jun 2013; Agostino Sarubbo <ago@gentoo.org> simon-0.4.0.ebuild:
+  Stable for amd64, wrt bug #474436
+
+  01 Apr 2013; Julian Ospald <hasufell@gentoo.org>
+  +files/simon-0.4.0-sphinx.patch:
+  add missing patch
+
+  31 Mar 2013; Julian Ospald <hasufell@gentoo.org> simon-0.4.0.ebuild,
+  metadata.xml:
+  add sphinx useflag, add julius fallback
+
+  31 Mar 2013; Julian Ospald <hasufell@gentoo.org> simon-0.4.0.ebuild:
+  fix deps
+
+*simon-0.4.0 (31 Mar 2013)
+
+  31 Mar 2013; Julian Ospald <hasufell@gentoo.org> +simon-0.4.0.ebuild,
+  +files/simon-0.4.0-libdir.patch, +files/simon-0.4.0-linguas.patch,
+  +files/simon-0.4.0-opencv.patch, +metadata.xml:
+  initial import wrt #244945

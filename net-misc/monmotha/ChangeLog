@@ -1,0 +1,41 @@
+# ChangeLog for net-misc/monmotha
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/monmotha/ChangeLog,v 1.11 2014/08/10 20:45:15 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> monmotha-2.3.8.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  11 May 2007; Thilo Bangert <bangert@gentoo.org> +metadata.xml:
+  add metadata.xml - currently this package is unmaintained
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org> monmotha-2.3.8.ebuild:
+  Fix *initd, *confd and *envd calls (#17388, #174266)
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*monmotha-2.3.8 (10 Feb 2005)
+
+  10 Feb 2005; Daniel Black <dragonheart@gentoo.org>
+  -files/rc.firewall-2.3.8-pre7, +monmotha-2.3.8.ebuild,
+  -monmotha-2.3.8_pre7.ebuild:
+  Version bump as per bug #80946. Thanks to Curtis Magyar <curtm4n@gmail.com>
+
+  23 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org>
+  monmotha-2.3.8_pre7.ebuild:
+  Added to ~amd64, bug #72219
+
+*monmotha-2.3.8_pre7 (20 Aug 2002)
+
+  11 Mar 2003; Martin Holzer <mholzer@gentoo.org> monmotha-2.3.8_pre7.ebuild:
+  changed sys-apps/iptables to net-firewall/iptables
+
+  20 Aug 2002; Arcady Genkin <agenkin@thpoon.com>
+  monmotha-2.3.8_pre7.ebuild :
+  
+  Initial version of the package, created by you@hanez.org (Johannes
+  Findeisen).

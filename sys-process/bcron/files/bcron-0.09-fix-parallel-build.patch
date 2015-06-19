@@ -1,0 +1,19 @@
+--- Makefile.orig	2010-01-14 15:39:07.000000000 +0100
++++ Makefile	2010-01-14 15:39:40.000000000 +0100
+@@ -96,14 +96,14 @@
+ 	./load insthier -lbg-installer -lbg
+ 	mv insthier installer
+ 
+-instcheck: load insthier.o
++instcheck: load insthier.o installer instshow
+ 	./load insthier -lbg-instcheck -lbg
+ 	mv insthier instcheck
+ 
+ insthier.o: compile insthier.c conf_bin.c
+ 	./compile insthier.c
+ 
+-instshow: load insthier.o
++instshow: load insthier.o installer
+ 	./load insthier -lbg-instshow -lbg
+ 	mv insthier instshow
+ 

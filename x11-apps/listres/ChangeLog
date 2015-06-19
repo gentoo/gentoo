@@ -1,0 +1,153 @@
+# ChangeLog for x11-apps/listres
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/listres/ChangeLog,v 1.41 2015/04/08 17:39:21 mrueg Exp $
+
+  08 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -listres-1.0.2.ebuild:
+  Remove old.
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> listres-1.0.3.ebuild:
+  s390/sh/sparc stable wrt #419473
+
+  12 Jul 2012; Brent Baude <ranger@gentoo.org> listres-1.0.3.ebuild:
+  Marking listres-1.0.3 ppc stable for bug 419473
+
+  11 Jul 2012; Brent Baude <ranger@gentoo.org> listres-1.0.3.ebuild:
+  Marking listres-1.0.3 ppc64 stable for bug 419473
+
+  28 Jun 2012; Jeroen Roovers <jer@gentoo.org> listres-1.0.3.ebuild:
+  Stable for HPPA (bug #419473).
+
+  27 Jun 2012; Markus Meier <maekke@gentoo.org> listres-1.0.3.ebuild:
+  arm stable, bug #419473
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> listres-1.0.3.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> listres-1.0.3.ebuild:
+  Stable for amd64, wrt bug #419473
+
+*listres-1.0.3 (04 Mar 2012)
+
+  04 Mar 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +listres-1.0.3.ebuild:
+  Version bump.
+
+  10 Oct 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -listres-1.0.1-r1.ebuild:
+  old
+
+  19 Sep 2010; Raúl Porcel <armin76@gentoo.org> listres-1.0.2.ebuild:
+  s390/sh/sparc stable wrt #327777
+
+  22 Jul 2010; Markus Meier <maekke@gentoo.org> listres-1.0.2.ebuild:
+  arm stable, bug #327777
+
+  15 Feb 2010; Joseph Jezak <josejx@gentoo.org> listres-1.0.2.ebuild:
+  Marked ppc/ppc64 stable for bug #302046.
+
+  11 Feb 2010; Jeroen Roovers <jer@gentoo.org> listres-1.0.2.ebuild:
+  Stable for HPPA (bug #302046).
+
+  08 Feb 2010; Christian Faulhammer <fauli@gentoo.org> listres-1.0.2.ebuild:
+  stable x86, bug 302046
+
+  30 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> listres-1.0.2.ebuild:
+  amd64 stable wrt #302046
+
+*listres-1.0.2 (19 Dec 2009)
+
+  19 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  +listres-1.0.2.ebuild:
+  Version bump.
+
+  07 Jul 2009; Jeroen Roovers <jer@gentoo.org> listres-1.0.1-r1.ebuild:
+  Stable for HPPA too.
+
+  22 Apr 2009; Brent Baude <ranger@gentoo.org> listres-1.0.1-r1.ebuild:
+  Marking listres-1.0.1-r1 ppc64 stable for bug 264982
+
+  17 Apr 2009; Jeroen Roovers <jer@gentoo.org> listres-1.0.1-r1.ebuild:
+  Marked ~hppa too.
+
+  11 Apr 2009; nixnut <nixnut@gentoo.org> listres-1.0.1-r1.ebuild:
+  ppc stable #264982
+
+  09 Apr 2009; Raúl Porcel <armin76@gentoo.org> listres-1.0.1-r1.ebuild:
+  arm/s390/sh stable wrt #264982
+
+  06 Apr 2009; Friedrich Oslage <bluebird@gentoo.org>
+  listres-1.0.1-r1.ebuild:
+  Stable on sparc, bug #264982
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org> listres-1.0.1-r1.ebuild:
+  x86 stable, bug #264982
+
+  05 Apr 2009; Olivier Crête <tester@gentoo.org> listres-1.0.1-r1.ebuild:
+  Stable on amd64, bug #264982
+
+*listres-1.0.1-r1 (16 Jan 2009)
+
+  16 Jan 2009; Rémi Cardona <remi@gentoo.org> +listres-1.0.1-r1.ebuild:
+  remove xprint support (see bug #254874)
+
+  24 Mar 2008; Markus Meier <maekke@gentoo.org> listres-1.0.1.ebuild:
+  amd64 stable, bug #202087
+
+  19 Dec 2007; Dawid Węgliński <cla@gentoo.org> listres-1.0.1.ebuild:
+  Stable on x86 (bug #202087)
+
+  20 May 2007; Christian Faulhammer <opfer@gentoo.org> listres-1.0.1.ebuild:
+  added ~amd64, bug 177249
+
+  10 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>; listres-1.0.1.ebuild:
+  Update description to be less generic.
+
+  20 May 2006; Robin H. Johnson <robbat2@gentoo.org> listres-1.0.1.ebuild:
+  Added ~ppc after testing.
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> listres-1.0.1.ebuild:
+  Added ~ppc64
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -listres-0.99.2.ebuild, -listres-1.0.0.ebuild:
+  Pull old versions.
+
+*listres-1.0.1 (23 Dec 2005)
+
+  23 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +listres-1.0.1.ebuild:
+  Bump for 7.0.
+
+*listres-1.0.0 (18 Dec 2005)
+
+  18 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +listres-1.0.0.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -listres-0.99.0.ebuild, -listres-0.99.1.ebuild:
+  Pull old versions.
+
+*listres-0.99.2 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +listres-0.99.2.ebuild:
+  Bump for 7.0RC3.
+
+*listres-0.99.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +listres-0.99.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> listres-0.99.0.ebuild:
+  Add ~sparc keyword (Modular X testing).
+
+*listres-0.99.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +listres-0.99.0.ebuild:
+  Initial commit for modular X.

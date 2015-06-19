@@ -1,0 +1,158 @@
+# ChangeLog for media-libs/libemf
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libemf/ChangeLog,v 1.44 2015/02/27 07:57:53 jlec Exp $
+
+*libemf-1.0.7 (27 Feb 2015)
+
+  27 Feb 2015; Justin Lecher <jlec@gentoo.org> +libemf-1.0.7.ebuild:
+  Version Bump
+
+  12 Aug 2013; Michael Palimaka <kensington@gentoo.org> -libemf-1.0.4.ebuild:
+  Remove old.
+
+  10 Aug 2013; Agostino Sarubbo <ago@gentoo.org> libemf-1.0.4-r1.ebuild:
+  Stable for ppc, wrt bug #474242
+
+  04 Aug 2013; Agostino Sarubbo <ago@gentoo.org> libemf-1.0.4-r1.ebuild:
+  Stable for ppc64, wrt bug #474242
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> libemf-1.0.4-r1.ebuild:
+  Stable for sparc, wrt bug #474242
+
+  29 Jul 2013; Sergey Popov <pinkbyte@gentoo.org> libemf-1.0.4.ebuild,
+  libemf-1.0.4-r1.ebuild:
+  No upstream support for arm
+
+  29 Jul 2013; Sergey Popov <pinkbyte@gentoo.org> libemf-1.0.4-r1.ebuild:
+  Stable on amd64 and x86, wrt bug #474242
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #473480
+
+*libemf-1.0.4-r1 (03 May 2013)
+
+  03 May 2013; Justin Lecher <jlec@gentoo.org> libemf-1.0.4.ebuild,
+  +libemf-1.0.4-r1.ebuild, metadata.xml:
+  Fix obsolete macros to work with automake-1.13, #468458
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> libemf-1.0.4.ebuild:
+  keyword ~amd64-fbsd
+
+  02 Mar 2012; Justin Lecher <jlec@gentoo.org> libemf-1.0.4.ebuild:
+  Handle static-libs individually, therefore move to auto-tools.eclass and
+  EAPI=4
+
+  13 Dec 2011; Naohiro Aota <naota@gentoo.org> libemf-1.0.4.ebuild:
+  Add ~x86-fbsd
+
+  18 Oct 2010; Justin Lecher <jlec@gentoo.org> libemf-1.0.4.ebuild:
+  Keyworded ~-linux prefix
+
+  02 Jan 2010; Patrick Kursawe <phosphan@gentoo.org> -libemf-1.0.3.ebuild,
+  -files/libemf-1.0.3-gcc4.3.patch:
+  Removed obsolete version.
+
+  02 Jan 2010; Brent Baude <ranger@gentoo.org> libemf-1.0.4.ebuild:
+  Marking libemf-1.0.4 ppc64 for bug 292610
+
+  26 Dec 2009; Raúl Porcel <armin76@gentoo.org> libemf-1.0.4.ebuild:
+  sparc stable wrt #292610
+
+  21 Nov 2009; nixnut <nixnut@gentoo.org> libemf-1.0.4.ebuild:
+  ppc stable #292610
+
+  17 Nov 2009; Ryan Hill <dirtyepic@gentoo.org> libemf-1.0.4.ebuild:
+  Fix libtool trying to link against the wrong library versions, spotted by
+  Daniel Pielmeier in bug #292610.
+
+  16 Nov 2009; Markus Meier <maekke@gentoo.org> libemf-1.0.4.ebuild:
+  amd64/x86 stable, bug #292610
+
+*libemf-1.0.4 (10 Oct 2009)
+
+  10 Oct 2009; Ryan Hill <dirtyepic@gentoo.org> +libemf-1.0.4.ebuild,
+  +files/libemf-1.0.4-amd64-alpha.patch:
+  Version bump. Fix build on amd64 and alpha with Fedora patch and keyword
+  ~amd64.
+
+  23 Apr 2008; Patrick Kursawe <phosphan@gentoo.org>
+  +files/libemf-1.0.3-gcc4.3.patch, -files/libEMF-1.0-amd64.patch,
+  -files/libEMF-1.0-gcc3.patch, -libemf-1.0.ebuild, libemf-1.0.3.ebuild:
+  Fixing compilation for gcc 4.3, see bug #218531
+
+  18 Feb 2007; nixnut <nixnut@gentoo.org> libemf-1.0.3.ebuild:
+  Stable on ppc wrt bug 160141
+
+  13 Feb 2007; Markus Rothe <corsair@gentoo.org> libemf-1.0.3.ebuild:
+  Stable on ppc64; bug #160141
+
+  12 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org> libemf-1.0.3.ebuild:
+  Stable on sparc wrt #160141
+
+  12 Feb 2007; Raúl Porcel <armin76@gentoo.org> libemf-1.0.3.ebuild:
+  x86 stable wrt bug 160141
+
+  26 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org> libemf-1.0.3.ebuild:
+  Keyworded ~sparc wrt #127328
+
+  13 Apr 2006; Patrick McLean <chutzpah@gentoo.org>
+  -files/libEMF-1.0.3-amd64.patch, libemf-1.0.ebuild, libemf-1.0.3.ebuild:
+  Drop amd64 keyword from all revisions (see bug #127328). Also remove amd64
+  patch from 1.0.3. Leave the patch on 1.0 because it's stable on other arches.
+
+  12 Apr 2006; Patrick McLean <chutzpah@gentoo.org>
+  +files/libEMF-1.0.3-amd64.patch, libemf-1.0.3.ebuild:
+  Update amd64 patch for 1.0.3 and add ~amd64.
+
+  29 Mar 2006; Markus Rothe <corsair@gentoo.org> libemf-1.0.3.ebuild:
+  Added ~ppc64; bug #127328
+
+  26 Mar 2006; <nixnut@gentoo.org> libemf-1.0.3.ebuild:
+  Added ~ppc. Bug #127328
+
+*libemf-1.0.3 (23 Mar 2006)
+
+  23 Mar 2006; Patrick Kursawe <phosphan@gentoo.org> +libemf-1.0.3.ebuild:
+  Looks like this version is slightly better maintained than the original dead
+  project.
+
+  22 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> libemf-1.0.ebuild:
+  Stable on sparc
+
+  09 Jun 2005; <sekretarz@gentoo.org> libemf-1.0.ebuild:
+  Stable on amd64
+
+  05 Jun 2005; Markus Rothe <corsair@gentoo.org> libemf-1.0.ebuild:
+  Stable on ppc64; dependency for bug #92995
+
+  21 May 2005; Markus Rothe <corsair@gentoo.org> libemf-1.0.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  17 May 2005; Patrick Kursawe <phosphan@gentoo.org> libemf-1.0.ebuild:
+  Removing unnecessary "inherit gcc".
+
+  26 Mar 2005; Jason Wever <weeve@gentoo.org> libemf-1.0.ebuild:
+  Added ~sparc keyword wrt bug #86280.
+
+  22 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> libemf-1.0.ebuild:
+  added ~amd64 to KEYWORDS. fixes #80338
+
+  01 Feb 2005; Patrick Kursawe <phosphan@gentoo.org>
+  +files/libEMF-1.0-amd64.patch, libemf-1.0.ebuild:
+  Adding patch for amd64, see bug #9167 (patch source: PLD)
+
+  24 Mar 2004; Patrick Kursawe <phosphan@gentoo.org> libemf-1.0.ebuild:
+  Added missing "inherit eutils"
+
+  18 Feb 2004; Patrick Kursawe <phosphan@gentoo.org> libemf-1.0.ebuild:
+  Checking gcc version before applying the patch now.
+
+  15 Feb 2004; Bartosch Pixa <darkspecter@gentoo.org> libemf-1.0.ebuild:
+  set ~ppc in keywords
+
+*libemf-1.0 (17 Jul 2003)
+
+  17 Jul 2003; Patrick Kursawe <phosphan@gentoo.org> libemf-1.0.ebuild,
+  metadata.xml, files/libEMF-1.0-gcc3.patch:
+  Initial import, used by chemtool-1.6 - patch for gcc3 by Stanislav Brabec
+  <sbrabec@users.sourceforge.net>

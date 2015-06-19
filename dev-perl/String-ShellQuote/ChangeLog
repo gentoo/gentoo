@@ -1,0 +1,162 @@
+# ChangeLog for dev-perl/String-ShellQuote
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/String-ShellQuote/ChangeLog,v 1.43 2014/08/22 20:17:36 axs Exp $
+
+*String-ShellQuote-1.40.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +String-ShellQuote-1.40.0-r1.ebuild, -String-ShellQuote-1.40.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -String-ShellQuote-1.03.ebuild:
+  Cleanup
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> String-ShellQuote-1.03.ebuild,
+  String-ShellQuote-1.40.0.ebuild:
+  Drop ia64/sparc keywords
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  String-ShellQuote-1.40.0.ebuild:
+  x86 stable wrt bug #400219
+
+  03 Mar 2012; Brent Baude <ranger@gentoo.org> String-ShellQuote-1.40.0.ebuild:
+  Marking String-ShellQuote-1.40.0 ppc64 for bug 400219
+
+  27 Feb 2012; Brent Baude <ranger@gentoo.org> String-ShellQuote-1.40.0.ebuild:
+  Marking String-ShellQuote-1.40.0 ppc for bug 400219
+
+  25 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  String-ShellQuote-1.40.0.ebuild:
+  Stable on alpha, bug #400219
+
+  24 Feb 2012; Jeroen Roovers <jer@gentoo.org> String-ShellQuote-1.40.0.ebuild:
+  Stable for HPPA (bug #400219).
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  String-ShellQuote-1.40.0.ebuild:
+  Stable for amd64, wrt bug #400219
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -String-ShellQuote-1.04.ebuild:
+  Cleanup
+
+*String-ShellQuote-1.40.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +String-ShellQuote-1.40.0.ebuild:
+  Change version scheme
+
+*String-ShellQuote-1.04 (12 Jun 2010)
+
+  12 Jun 2010; Torsten Veller <tove@gentoo.org>
+  +String-ShellQuote-1.04.ebuild:
+  Version bump
+
+  02 Feb 2010; Torsten Veller <tove@gentoo.org>
+  String-ShellQuote-1.03.ebuild:
+  Fix LICENSE: same terms as perl (#301969). Maintenance
+
+  02 May 2009; Torsten Veller <tove@gentoo.org>
+  -String-ShellQuote-1.00-r1.ebuild:
+  Cleanup
+
+  16 Apr 2007; Markus Rothe <corsair@gentoo.org>
+  String-ShellQuote-1.03.ebuild:
+  Stable on ppc64
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org>
+  String-ShellQuote-1.03.ebuild:
+  Stable on x86, bug #169152.
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -String-ShellQuote-1.00.ebuild, String-ShellQuote-1.00-r1.ebuild,
+  String-ShellQuote-1.03.ebuild:
+  Ebuild maintenance
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  String-ShellQuote-1.03.ebuild:
+  ppc stable
+
+  18 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  String-ShellQuote-1.03.ebuild:
+  Marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  String-ShellQuote-1.00.ebuild, String-ShellQuote-1.00-r1.ebuild,
+  String-ShellQuote-1.03.ebuild:
+  Adding perl dep; fixed header; fixed DEPEND
+
+  18 Jul 2006; Bryan Østergaard <kloeri@gentoo.org>
+  String-ShellQuote-1.03.ebuild:
+  Stable on alpha.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  String-ShellQuote-1.03.ebuild:
+  Mark 1.03 stable on ia64
+
+  29 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  String-ShellQuote-1.03.ebuild:
+  Stable on hppa
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  String-ShellQuote-1.03.ebuild:
+  Marking sparc stable
+
+  21 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  String-ShellQuote-1.00-r1.ebuild:
+  Stable on hppa
+
+  22 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  String-ShellQuote-1.00-r1.ebuild, String-ShellQuote-1.03.ebuild:
+  ~hppa blessing
+
+*String-ShellQuote-1.03 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  +String-ShellQuote-1.03.ebuild:
+  Version bump
+
+  28 Sep 2005; Ilya A. Volynets-Evenbakh <ilya@total-knowledge.com>
+  String-ShellQuote-1.00-r1.ebuild:
+  mark ~mips
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  String-ShellQuote-1.00-r1.ebuild:
+  Mark 1.00-r1 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  String-ShellQuote-1.00-r1.ebuild:
+  add ~ia64
+
+  02 Apr 2005; Yuta SATOH <nigoro@gentoo.org>
+  String-ShellQuote-1.00-r1.ebuild:
+  Stable on ppc64
+
+  05 Mar 2005; Yuta SATOH <nigoro@gentoo.org>
+  String-ShellQuote-1.00-r1.ebuild:
+  added ~ppc64
+
+  04 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  String-ShellQuote-1.00-r1.ebuild, String-ShellQuote-1.00.ebuild:
+  bug 76590
+
+*String-ShellQuote-1.00-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*String-ShellQuote-1.00 (21 Aug 2002)
+
+  21 Aug 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  String-ShellQuote-1.00.ebuild, files/digest-String-ShellQuote-1.00 :
+
+  Ebuild submitted by Matthew Kennedy <mkennedy@gentoo.org> as a
+  dependency for mp32ogg.

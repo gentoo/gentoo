@@ -1,0 +1,92 @@
+# ChangeLog for games-action/rune
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/rune/ChangeLog,v 1.23 2015/06/01 22:05:45 mr_bones_ Exp $
+
+  01 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org> rune-1.07-r2.ebuild:
+  clean up app-emulation/emul-linux which has been removed
+
+  13 Oct 2014; Michał Górny <mgorny@gentoo.org> rune-1.07-r2.ebuild:
+  Support multilib providers for deps. Bump to EAPI=5.
+
+  07 Sep 2014; Ulrich Müller <ulm@gentoo.org> rune-1.07-r2.ebuild:
+  QA: Remove unnecessary dependency on emul-linux-x86-compat, bug 522152.
+
+  16 Jan 2012; Ulrich Müller <ulm@gentoo.org> rune-1.07-r2.ebuild:
+  Migrate to cdrom.eclass, bug 398809.
+
+  01 Sep 2010; Michael Sterrett <mr_bones_@gentoo.org> rune-1.07-r2.ebuild:
+  EAPI=2; clean up SRC_URI
+
+  26 Sep 2008; Zac Medico <zmedico@gentoo.org> rune-1.07-r2.ebuild:
+  Set PROPERTIES=interactive since src_unpack() calls cdrom_get_cds() and
+  also GAMES_CHECK_LICENSE=yes is set.
+
+  05 Jun 2008; Chris Gianelloni <wolf31o2@gentoo.org> metadata.xml:
+  Removing myself as maintainer.
+
+  06 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org> rune-1.07-r2.ebuild:
+  Fixing quoting.
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> rune-1.07-r2.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  15 Jan 2008; Samuli Suominen <drac@gentoo.org> rune-1.07-r2.ebuild:
+  change dev-util/xdelta dep. to =dev-util/xdelta-1*
+
+  24 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org> rune-1.07-r2.ebuild:
+  Moved cdrom_get_cds to src_unpack since binary packages don't require the
+  original media to install as well as some general cleanup.
+
+  19 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org> rune-1.07-r2.ebuild:
+  Adding strip to RESTRICT for bug #137819.
+
+  15 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org> -rune-1.07-r1.ebuild,
+  rune-1.07-r2.ebuild:
+  Stable on amd64/x86 since there have been no bug reports in quite some time.
+  Removing older revisions. Removing virtual/x11 from dependencies.
+
+  24 May 2006; Chris Gianelloni <wolf31o2@gentoo.org> rune-1.07-r2.ebuild:
+  Changed libsdl dependency and closing bug #117918.
+
+*rune-1.07-r2 (24 May 2006)
+
+  24 May 2006; Chris Gianelloni <wolf31o2@gentoo.org> +rune-1.07-r2.ebuild:
+  Added a new revision to use xdelta to save users from having to download as
+  much. This is especially important for the people with the Linux CD that
+  don't really need anything from the download. Thanks to Patrick Zimmermann
+  <patrick@zakweb.de> for doing the legwork on this one. Closing bug #125257.
+
+  13 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org> rune-1.07-r1.ebuild:
+  Moved games_pkg_setup to the beginning of pkg_setup.
+
+  21 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> rune-1.07-r1.ebuild:
+  Marking stable on amd64/x86 as there have been no bug reports in 4 months
+  and the game works perfectly for me on both of these platforms.
+
+  21 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> rune-1.07-r1.ebuild:
+  Added =virtual/libstdc++-3.3 as this game is based off the unreal engine and
+  links against libstdc++.
+
+  10 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org> -rune-1.07.ebuild,
+  rune-1.07-r1.ebuild:
+  Added modular X dependencies.
+
+  22 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org> rune-1.07-r1.ebuild:
+  Changed 2->1 and 1->0.  Changed rune.bin->rune-bin.  Closing bug #113234.
+
+*rune-1.07-r1 (22 Nov 2005)
+
+  22 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org> +rune-1.07-r1.ebuild:
+  Updated ebuild to support both Linux and Windows media. Tested on Linux.
+  Ebuild submitted by Patrick Zimmermann <patrick@zakweb.de> and closing bug
+  #41732.
+
+  27 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org> rune-1.07.ebuild:
+  Changed HOMEPAGE.
+
+*rune-1.07 (27 Oct 2005)
+
+  27 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +rune-1.07.ebuild:
+  Initial import. Original ebuild by Patrick Zimmermann <patrick@zakweb.de>
+  and modified by me. Closing bug #41732.

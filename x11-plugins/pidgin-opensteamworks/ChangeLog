@@ -1,0 +1,151 @@
+# ChangeLog for x11-plugins/pidgin-opensteamworks
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/pidgin-opensteamworks/ChangeLog,v 1.30 2015/05/26 13:52:58 mrueg Exp $
+
+*pidgin-opensteamworks-1.5.1 (26 May 2015)
+
+  26 May 2015; Manuel Rüger <mrueg@gentoo.org>
+  +pidgin-opensteamworks-1.5.1.ebuild:
+  Version bump.
+
+  04 Feb 2015; Manuel Rüger <mrueg@gentoo.org>
+  -pidgin-opensteamworks-1.3.ebuild:
+  Remove old. Drop stable keyword for ppc. See bug #517808.
+
+*pidgin-opensteamworks-1.5 (20 Nov 2014)
+
+  20 Nov 2014; Manuel Rüger <mrueg@gentoo.org>
+  +pidgin-opensteamworks-1.5.ebuild:
+  Version bump.
+
+  25 Aug 2014; Manuel Rüger <mrueg@gentoo.org> pidgin-opensteamworks-1.4.ebuild:
+  Mark amd64 stable. Bug #517808.
+
+  14 Aug 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  pidgin-opensteamworks-1.4.ebuild:
+  x86 stable wrt bug #517808
+
+*pidgin-opensteamworks-1.4 (29 Jan 2014)
+
+  29 Jan 2014; Manuel Rüger <mrueg@gentoo.org>
+  +pidgin-opensteamworks-1.4.ebuild:
+  Version bump.
+
+  14 Jan 2014; Manuel Rüger <mrueg@gentoo.org>
+  -files/pidgin-opensteamworks-1.0_p32-Makefile,
+  -files/pidgin-opensteamworks-1.0_p68-Makefile,
+  -pidgin-opensteamworks-1.0_p41.ebuild, -pidgin-opensteamworks-1.0_p68.ebuild:
+  Cleanup old.
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org>
+  pidgin-opensteamworks-1.3.ebuild:
+  Stable for ppc, wrt bug #492308
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org>
+  pidgin-opensteamworks-1.3.ebuild:
+  Stable for x86, wrt bug #492308
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> pidgin-opensteamworks-1.3.ebuild:
+  amd64 stable, bug #492308
+
+*pidgin-opensteamworks-1.3 (05 Sep 2013)
+
+  05 Sep 2013; Julian Ospald <hasufell@gentoo.org>
+  +files/pidgin-opensteamworks-1.3-Makefile, +pidgin-opensteamworks-1.3.ebuild:
+  version bump wrt #483664
+
+*pidgin-opensteamworks-1.0_p68 (18 Aug 2013)
+
+  18 Aug 2013; Julian Ospald <hasufell@gentoo.org>
+  -pidgin-opensteamworks-1.0_p67.ebuild, +pidgin-opensteamworks-1.0_p68.ebuild,
+  -files/pidgin-opensteamworks-1.0_p67-Makefile,
+  +files/pidgin-opensteamworks-1.0_p68-Makefile:
+  version bump, remove broken version
+
+*pidgin-opensteamworks-1.0_p67 (10 Aug 2013)
+
+  10 Aug 2013; Manuel Rüger <mrueg@gentoo.org>
+  +files/pidgin-opensteamworks-1.0_p67-Makefile,
+  +pidgin-opensteamworks-1.0_p67.ebuild, -pidgin-opensteamworks-1.0_p38.ebuild:
+  Version bump. Drop old.
+
+  08 Jul 2013; Manuel Rüger <mrueg@gentoo.org>
+  -pidgin-opensteamworks-1.0_p32.ebuild, -pidgin-opensteamworks-1.0_p34.ebuild,
+  -pidgin-opensteamworks-1.0_p36.ebuild, metadata.xml:
+  Update metadata.xml, drop old
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org>
+  pidgin-opensteamworks-1.0_p41.ebuild:
+  Stable for amd64, wrt bug #474400
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org>
+  pidgin-opensteamworks-1.0_p41.ebuild:
+  Stable for x86, wrt bug #474400
+
+  24 Jun 2013; Agostino Sarubbo <ago@gentoo.org>
+  pidgin-opensteamworks-1.0_p41.ebuild:
+  Stable for ppc, wrt bug #474400
+
+*pidgin-opensteamworks-1.0_p41 (27 Apr 2013)
+
+  27 Apr 2013; Julian Ospald <hasufell@gentoo.org>
+  +pidgin-opensteamworks-1.0_p41.ebuild:
+  version bump
+
+*pidgin-opensteamworks-1.0_p38 (29 Jan 2013)
+
+  29 Jan 2013; Julian Ospald <hasufell@gentoo.org>
+  +pidgin-opensteamworks-1.0_p38.ebuild:
+  version bump
+
+  10 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  pidgin-opensteamworks-1.0_p36.ebuild:
+  Add ~ppc, wrt bug #414611
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  pidgin-opensteamworks-1.0_p36.ebuild:
+  Stable for x86, wrt bug #439776
+
+  01 Nov 2012; <ago@gentoo.org> pidgin-opensteamworks-1.0_p36.ebuild:
+  Stable for amd64, wrt bug #439776
+
+*pidgin-opensteamworks-1.0_p36 (24 Sep 2012)
+
+  24 Sep 2012; Julian Ospald <hasufell@gentoo.org>
+  +pidgin-opensteamworks-1.0_p36.ebuild:
+  version bump
+
+*pidgin-opensteamworks-1.0_p34 (09 Aug 2012)
+
+  09 Aug 2012; Julian Ospald <hasufell@gentoo.org>
+  +pidgin-opensteamworks-1.0_p34.ebuild:
+  version bump
+
+  09 Jul 2012; Johannes Huber <johu@gentoo.org>
+  pidgin-opensteamworks-1.0_p32.ebuild:
+  Stable for x86, wrt bug #425338
+
+  09 Jul 2012; Agostino Sarubbo <ago@gentoo.org>
+  pidgin-opensteamworks-1.0_p32.ebuild:
+  Stable for amd64, wrt bug #425338
+
+  24 May 2012; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  fix metadata.xml
+
+*pidgin-opensteamworks-1.0_p32 (24 May 2012)
+
+  24 May 2012; Julian Ospald <hasufell@gentoo.org>
+  -pidgin-opensteamworks-1.0_p30.ebuild, +pidgin-opensteamworks-1.0_p32.ebuild,
+  -files/pidgin-opensteamworks-1.0_p30-Makefile,
+  +files/pidgin-opensteamworks-1.0_p32-Makefile:
+  version bump with Manuel Rueger
+
+  04 May 2012; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  add net-im herd to metadata.xml
+
+*pidgin-opensteamworks-1.0_p30 (04 May 2012)
+
+  04 May 2012; Julian Ospald <hasufell@gentoo.org>
+  +pidgin-opensteamworks-1.0_p30.ebuild,
+  +files/pidgin-opensteamworks-1.0_p30-Makefile, +metadata.xml:
+  initial import by Manuel Rueger (mrueg) wrt #414171

@@ -1,0 +1,51 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/perl/files/eblits/src_install-v50200001.eblit,v 1.1 2014/12/19 18:52:46 dilfridge Exp $
+
+eblit-perl-src_install() {
+	local i
+	local coredir="${ARCH_LIB}/CORE"
+
+	emake DESTDIR="${D}" install
+
+	rm -f "${ED}/usr/bin/perl${MY_PV}"
+	ln -s perl "${ED}"/usr/bin/perl${MY_PV} || die
+
+	if ! tc-is-static-only ; then
+		dolib.so "${ED}"${coredir}/${LIBPERL}
+		rm -f "${ED}"${coredir}/${LIBPERL}
+		ln -sf ${LIBPERL} "${ED}"/usr/$(get_libdir)/libperl$(get_libname ${SHORT_PV}) || die
+		ln -sf ${LIBPERL} "${ED}"/usr/$(get_libdir)/libperl$(get_libname) || die
+		ln -sf ../../../../../$(get_libdir)/${LIBPERL} "${ED}"${coredir}/${LIBPERL} || die
+		ln -sf ../../../../../$(get_libdir)/${LIBPERL} "${ED}"${coredir}/libperl$(get_libname ${SHORT_PV}) || die
+		ln -sf ../../../../../$(get_libdir)/${LIBPERL} "${ED}"${coredir}/libperl$(get_libname) || die
+	fi
+
+	rm -rf "${ED}"/usr/share/man/man3 || die "Unable to remove module man pages"
+
+	# This removes ${D} from Config.pm
+	for i in $(find "${D}" -iname "Config.pm" ) ; do
+		einfo "Removing ${D} from ${i}..."
+		sed -i -e "s:${D}::" "${i}" || die "Sed failed"
+	done
+
+	find "${ED}" -type f -name .packlist -delete || die
+
+	dodoc Changes* README AUTHORS
+
+	if use doc ; then
+		# HTML Documentation
+		# We expect errors, warnings, and such with the following.
+
+		dodir /usr/share/doc/${PF}/html
+		LD_LIBRARY_PATH=. ./perl installhtml \
+			--podroot='.' \
+			--podpath='lib:ext:pod:vms' \
+			--recurse \
+			--htmldir="${ED}/usr/share/doc/${PF}/html"
+	fi
+
+	[[ -d ${ED}/usr/local ]] && rm -r "${ED}"/usr/local
+
+	dual_scripts
+}

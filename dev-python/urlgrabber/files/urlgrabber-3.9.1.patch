@@ -1,0 +1,26 @@
+http://yum.baseurl.org/gitweb?p=urlgrabber.git;a=commitdiff;h=f4e57ece7ded0f7ad83c8a40fe8423fab7812264
+http://yum.baseurl.org/gitweb?p=urlgrabber.git;a=commitdiff;h=89cc380a2a251a1d2d8b91cf6df170fa546597aa
+
+diff --git a/urlgrabber/grabber.py b/urlgrabber/grabber.py
+index f98f423..7b7f979 100644
+--- a/urlgrabber/grabber.py
++++ b/urlgrabber/grabber.py
+@@ -1532,11 +1589,14 @@
+     def _over_max_size(self, cur, max_size=None):
+ 
+         if not max_size:
+-            max_size = self.size
+-        if self.opts.size: # if we set an opts size use that, no matter what
+-            max_size = self.opts.size
++            if not self.opts.size:
++                max_size = self.size
++            else:
++                max_size = self.opts.size
++
+         if not max_size: return False # if we have None for all of the Max then this is dumb
+-        if cur > max_size + max_size*.10:
++
++        if cur > int(float(max_size) * 1.10):
+ 
+             msg = _("Downloaded more than max size for %s: %s > %s") \
+                         % (self.url, cur, max_size)

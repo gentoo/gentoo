@@ -1,0 +1,84 @@
+# ChangeLog for net-voip/telepathy-rakia
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-voip/telepathy-rakia/ChangeLog,v 1.22 2015/04/08 18:20:12 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> telepathy-rakia-0.8.0.ebuild:
+  Drop old Python implementations
+
+  13 Nov 2014; Pacho Ramos <pacho@gentoo.org>
+  -files/telepathy-rakia-0.7.4-gio-linking.patch, -telepathy-rakia-0.7.4.ebuild:
+  Drop old (#508854)
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> telepathy-rakia-0.8.0.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> telepathy-rakia-0.8.0.ebuild:
+  arch stable, bug 888
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> telepathy-rakia-0.8.0.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> telepathy-rakia-0.8.0.ebuild:
+  amd64 stable, bug #478252
+
+  27 Oct 2013; Pacho Ramos <pacho@gentoo.org> -telepathy-rakia-0.7.5.ebuild,
+  metadata.xml:
+  Voip herd is removed: http://article.gmane.org/gmane.linux.gentoo.devel/88434
+
+*telepathy-rakia-0.8.0 (04 Oct 2013)
+
+  04 Oct 2013; Pacho Ramos <pacho@gentoo.org> +telepathy-rakia-0.8.0.ebuild,
+  -telepathy-rakia-0.6.8.ebuild:
+  Version bump, drop old
+
+*telepathy-rakia-0.7.5 (28 Sep 2013)
+
+  28 Sep 2013; Pacho Ramos <pacho@gentoo.org> +telepathy-rakia-0.7.5.ebuild:
+  Version bump
+
+  03 Aug 2013; Michał Górny <mgorny@gentoo.org> telepathy-rakia-0.6.8.ebuild,
+  telepathy-rakia-0.7.4.ebuild:
+  Move dev-python/twisted to dev-python/twisted-core.
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-rakia-0.7.4.ebuild:
+  Stable for sparc, wrt bug #458984
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-rakia-0.7.4.ebuild:
+  Stable for alpha, wrt bug #458984
+
+  30 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -telepathy-rakia-0.6.6.ebuild:
+  Clean up old revision.
+
+  29 Mar 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-rakia-0.7.4.ebuild:
+  Stable for ia64, wrt bug #458984
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-rakia-0.7.4.ebuild:
+  Stable for ppc, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-rakia-0.7.4.ebuild:
+  Stable for x86, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-rakia-0.7.4.ebuild:
+  Stable for amd64, wrt bug #458984
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #453094
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-rakia-0.7.4.ebuild:
+  Add ~arm, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> telepathy-rakia-0.7.4.ebuild:
+  Add ~ppc64, wrt bug #449220
+
+*telepathy-rakia-0.7.4 (18 Jul 2012)
+*telepathy-rakia-0.6.8 (18 Jul 2012)
+*telepathy-rakia-0.6.6 (18 Jul 2012)
+
+  18 Jul 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +telepathy-rakia-0.6.6.ebuild, +telepathy-rakia-0.6.8.ebuild,
+  +telepathy-rakia-0.7.4.ebuild,
+  +files/telepathy-rakia-0.7.4-gio-linking.patch, +metadata.xml:
+  Rename net-voip/telepathy-sofiasip to net-voip/telepathy-rakia, and add 0.7.4
+  for empathy-3.4 (bug #403861, thanks to Olivier Crete for clarifying the
+  issue).

@@ -1,0 +1,14 @@
+--- cpdup.c.orig	2009-02-05 12:22:10.000000000 +0100
++++ cpdup.c	2009-02-05 12:23:23.000000000 +0100
+@@ -1543,7 +1543,11 @@
+  */
+ 
+ static int
++#ifdef _ST_FLAGS_PRESENT_
+ xrename(const char *src, const char *dst, u_long flags)
++#else
++xrename(const char *src, const char *dst, u_long flags __unused)
++#endif
+ {
+     int r;
+ 

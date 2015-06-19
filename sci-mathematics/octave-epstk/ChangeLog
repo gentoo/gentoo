@@ -1,0 +1,35 @@
+# ChangeLog for sci-mathematics/octave-epstk
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave-epstk/ChangeLog,v 1.2 2012/06/06 21:36:59 bicatali Exp $
+
+*octave-epstk-2.4 (06 Jun 2012)
+
+  06 Jun 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +octave-epstk-2.4.ebuild:
+  Version bump
+
+*octave-epstk-2.3 (09 Mar 2011)
+
+  09 Mar 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  +octave-epstk-2.3.ebuild, +metadata.xml:
+  Version bump. Initial import to the main tree
+
+*octave-epstk-2.2 (13 Jan 2010)
+
+  13 Jan 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  -octave-epstk-2.1.ebuild, -files/octave-epstk-2.1_PATCH1.patch,
+  +octave-epstk-2.2.ebuild, metadata.xml:
+  Bump. Now based on Debian modifications
+
+  12 Oct 2009; Justin Lecher (jlec) <jlec@j-schmitz.net>
+  octave-epstk-2.1.ebuild:
+  fix for bug 288586, thanks Juergen Rose for reporting
+  Some QA, rest is commented in the ebuild
+
+*octave-epstk-2.1 (14 Apr 2006)
+
+  14 Apr 2006; Lucas Chiesa <lucas.chiesa@gmail.com>:
+  +octave-epstk-2.1.ebuild, +metadata.xml, +ChangeLog,
+  +octave-epstk-2.1_PATCH1.patch
+  Initial import. Thanks to Peter Gustafson <petegus@umich.edu>
+  for the ebuild. Closes bug #127475

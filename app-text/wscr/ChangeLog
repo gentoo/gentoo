@@ -1,0 +1,82 @@
+# ChangeLog for app-text/wscr
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/wscr/ChangeLog,v 1.27 2013/02/02 17:22:42 jer Exp $
+
+  02 Feb 2013; Jeroen Roovers <jer@gentoo.org> wscr-1.2-r1.ebuild:
+  Update SRC_URI, HOMEPAGE.
+
+  20 Mar 2012; Jeroen Roovers <jer@gentoo.org> -wscr-1.2.ebuild:
+  Old.
+
+  19 Mar 2012; Raúl Porcel <armin76@gentoo.org> wscr-1.2.ebuild,
+  wscr-1.2-r1.ebuild:
+  Drop alpha/sparc keywords
+
+  09 Mar 2012; Jeroen Roovers <jer@gentoo.org> wscr-1.2-r1.ebuild:
+  Fix HOMEPAGE.
+
+  07 Mar 2012; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Take up maintainership.
+
+  24 Feb 2012; Brent Baude <ranger@gentoo.org> wscr-1.2-r1.ebuild:
+  Marking wscr-1.2-r1 ppc for bug 403885
+
+  15 Feb 2012; Pacho Ramos <pacho@gentoo.org> wscr-1.2-r1.ebuild:
+  Fallback to gentoo.org webpage as upstream is dead.
+
+  28 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> wscr-1.2-r1.ebuild:
+  x86 stable wrt bug #391609
+
+  25 Nov 2011; Markos Chandras <hwoarang@gentoo.org> wscr-1.2-r1.ebuild:
+  Stable on amd64 wrt bug #391609
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> wscr-1.2.ebuild:
+  Drop to ~mips
+
+*wscr-1.2-r1 (14 Oct 2010)
+
+  14 Oct 2010; Jeroen Roovers <jer@gentoo.org> +wscr-1.2-r1.ebuild:
+  Respect LDFLAGS.
+
+  03 Jan 2009; Christoph Mende <angelos@gentoo.org> wscr-1.2.ebuild:
+  QA: Respect CC (bug 243762)
+
+  24 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> wscr-1.2.ebuild:
+  amd64 stable
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing taviso from metadata.xml as per #202471. Assigning to
+  maintainer-needed.
+
+  09 Apr 2007; Peter Weller <welp@gentoo.org> wscr-1.2.ebuild:
+  Keyworded ~amd64
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  22 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org> wscr-1.2.ebuild:
+  Stable on sparc
+
+  13 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> wscr-1.2.ebuild:
+  Stable on mips.
+
+  16 Jul 2005; Joseph Jezak <josejx@gentoo.org> wscr-1.2.ebuild:
+  Marked ppc stable for bug #99222.
+
+  31 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org> wscr-1.2.ebuild:
+  mark ~ppc
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> wscr-1.2.ebuild:
+  virtual/glibc -> virtual/libc
+
+  28 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> wscr-1.2.ebuild:
+  Added ~sparc, ~mips
+
+  25 Jul 2003; Tavis Ormandy <taviso@gentoo.org> wscr-1.2.ebuild:
+  stable on alpha and x86
+
+*wscr-1.2 (06 May 2003)
+
+  06 May 2003; Tavis Ormandy <taviso@gentoo.org> wscr-1.2.ebuild:
+  Initial import.
+

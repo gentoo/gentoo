@@ -1,0 +1,23 @@
+# ChangeLog for net-misc/portspoof
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/portspoof/ChangeLog,v 1.4 2015/03/10 15:14:04 zerochaos Exp $
+
+*portspoof-1.3 (10 Mar 2015)
+
+  10 Mar 2015; Rick Farina <zerochaos@gentoo.org> +portspoof-1.3.ebuild,
+  portspoof-9999.ebuild:
+  version bump and add upstream init file as support script called portspoof-
+  runner
+
+  26 Mar 2014; Rick Farina <zerochaos@gentoo.org> portspoof-9999.ebuild:
+  update 9999 to match versioned
+
+  26 Mar 2014; Rick Farina <zerochaos@gentoo.org> portspoof-1.1.ebuild:
+  tested on x86
+
+*portspoof-9999 (22 Mar 2014)
+*portspoof-1.1 (22 Mar 2014)
+
+  22 Mar 2014; Rick Farina <zerochaos@gentoo.org> +metadata.xml,
+  +portspoof-1.1.ebuild, +portspoof-9999.ebuild:
+  initial ebuilds for portspoof

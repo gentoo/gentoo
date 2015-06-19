@@ -1,0 +1,45 @@
+# ChangeLog for dev-vcs/statsvn
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/statsvn/ChangeLog,v 1.5 2014/08/10 21:23:39 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> statsvn-0.5.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  18 Jun 2014; Manuel Rüger <mrueg@gentoo.org>
+  -files/statsvn-0.4.1-fixstatcvsusage.patch, -statsvn-0.4.1.ebuild:
+  NM: Cleanup superseded ebuilds.
+
+  22 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  statsvn-0.4.1.ebuild, statsvn-0.5.0.ebuild:
+  dev-util/subversion renamed to dev-vcs/subversion.
+
+  18 Jun 2010; Pacho Ramos <pacho@gentoo.org> statsvn-0.5.0.ebuild:
+  amd64 stable, bug 275182
+
+  05 Mar 2010; Serkan Kaba <serkan@gentoo.org> +statsvn-0.4.1.ebuild,
+  +files/statsvn-0.4.1-build.xml.patch,
+  +files/statsvn-0.4.1-fixstatcvsusage.patch, +statsvn-0.5.0.ebuild,
+  +metadata.xml:
+  Move to dev-vcs.
+
+  11 Feb 2010; Christian Faulhammer <fauli@gentoo.org> statsvn-0.5.0.ebuild:
+  stable x86, bug 275182
+
+  11 Feb 2010; Christian Faulhammer <fauli@gentoo.org> statsvn-0.5.0.ebuild:
+  depend on backport-util-concurrent 3.1 for bug 295421
+
+*statsvn-0.5.0 (23 May 2009)
+
+  23 May 2009; Serkan Kaba <serkan@gentoo.org> +statsvn-0.5.0.ebuild:
+  Version bump.
+
+  05 Jan 2009; Markus Meier <maekke@gentoo.org> statsvn-0.4.1.ebuild:
+  amd64/x86 stable, bug #253359
+
+*statsvn-0.4.1 (03 Oct 2008)
+
+  03 Oct 2008; Serkan Kaba <serkan@gentoo.org>
+  +files/statsvn-0.4.1-build.xml.patch,
+  +files/statsvn-0.4.1-fixstatcvsusage.patch, +metadata.xml,
+  +statsvn-0.4.1.ebuild:
+  Initial version. Fixes bug #156048.

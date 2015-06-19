@@ -1,0 +1,30 @@
+# Copyright 1999-2013 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/desc/dracut_modules.desc,v 1.9 2013/09/14 14:30:28 aidecoe Exp $
+
+# This file contains descriptions of DRACUT_MODULES USE_EXPAND flags.
+
+bootchart - Measure performance of the boot process for later visualisation
+biosdevname - Name devices with names returned by BIOS
+btrfs - Scan for Btrfs on block devices
+caps - Load kernel modules and drop this privilege for real init
+cifs - Support CIFS
+crypt - Decrypt devices encrypted with cryptsetup/LUKS
+crypt-gpg - Support for GPG-encrypted keys for crypt module
+crypt-loop - Support for LUKS-encrypted keys for crypt module
+dash - Allows use of dash instead of default bash (on your own risk)
+dmraid - Support dmraid devices, also known as ATA-RAID, or Fake RAID
+dmsquash-live - Module which might be used for Live CDs
+livenet - Similar to dmsquash-live but gets image via HTTP(S)
+gensplash - Framebuffer splash (media-gfx/splashutils)
+iscsi - Support iSCSI
+lvm - Support Logical Volume Manager
+mdraid - Support MD devices, also known as software RAID devices
+multipath - Support Device Mapper multipathing
+plymouth - Plymouth boot splash
+nbd - Support network block devices
+nfs - Support NFS
+ssh-client - Install ssh and scp along with config files and specified keys
+syslog - Enable logging with syslog-ng or rsyslog
+systemd - Experimental systemd module
+xen - Support for Xen

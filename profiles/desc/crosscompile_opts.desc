@@ -1,0 +1,10 @@
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/desc/crosscompile_opts.desc,v 1.1 2006/08/04 21:44:09 kugelfang Exp $
+
+# This file contains descriptions of CROSSCOMPILE_OPTS USE_EXPAND flags.
+
+# Keep it sorted.
+
+bootstrap - Build only a bootstrap version of the toolchain.
+headers-only - Build the toolchain against cross-headers only.

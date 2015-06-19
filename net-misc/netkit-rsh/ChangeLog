@@ -1,0 +1,322 @@
+# ChangeLog for net-misc/netkit-rsh
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-rsh/ChangeLog,v 1.80 2013/06/02 08:38:23 ago Exp $
+
+  02 Jun 2013; Agostino Sarubbo <ago@gentoo.org> netkit-rsh-0.17-r10.ebuild:
+  Stable for sh, wrt bug #463126
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> netkit-rsh-0.17-r10.ebuild:
+  Stable for sparc, wrt bug #463126
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> netkit-rsh-0.17-r10.ebuild:
+  Stable for s390, wrt bug #463126
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> netkit-rsh-0.17-r10.ebuild:
+  Stable for x86, wrt bug #463126
+
+  18 May 2013; Agostino Sarubbo <ago@gentoo.org> netkit-rsh-0.17-r10.ebuild:
+  Stable for alpha, wrt bug #463126
+
+  17 May 2013; Agostino Sarubbo <ago@gentoo.org> netkit-rsh-0.17-r10.ebuild:
+  Stable for ia64, wrt bug #463126
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> netkit-rsh-0.17-r10.ebuild:
+  Stable for arm, wrt bug #463126
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> netkit-rsh-0.17-r10.ebuild:
+  Stable for ppc64, wrt bug #463126
+
+  16 May 2013; Jeroen Roovers <jer@gentoo.org> netkit-rsh-0.17-r10.ebuild:
+  Stable for HPPA (bug #463126).
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> netkit-rsh-0.17-r10.ebuild:
+  Stable for ppc, wrt bug #463126
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> netkit-rsh-0.17-r10.ebuild:
+  Stable for amd64, wrt bug #463126
+
+*netkit-rsh-0.17-r10 (27 Jan 2013)
+
+  27 Jan 2013; Mike Frysinger <vapier@gentoo.org> +netkit-rsh-0.17-r10.ebuild:
+  Convert to EAPI=4 and enable filecap support.
+
+  08 Mar 2012; Naohiro Aota <naota@gentoo.org> netkit-rsh-0.17-r9.ebuild:
+  Bump patch version. #328081
+
+  10 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  netkit-rsh-0.17-r9.ebuild:
+  Fix xz-utils vs. lzma-utils deps.
+
+  21 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -netkit-rsh-0.17-r8.ebuild, -files/rexec.pamd-include,
+  -files/rlogin.pamd-include, files/rlogin.pamd-pambase,
+  -files/rsh.pamd-include, files/rsh.pamd-pambase:
+  Remove old version (drops ~x86-fbsd!), fix rhost_auth references (bug
+  #233242).
+
+  12 Jan 2009; Guy Martin <gmsoft@gentoo.org> netkit-rsh-0.17-r9.ebuild:
+  hppa stable, #250892
+
+  28 Dec 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  netkit-rsh-0.17-r9.ebuild:
+  ppc stable, bug #250892
+
+  27 Dec 2008; Brent Baude <ranger@gentoo.org> netkit-rsh-0.17-r9.ebuild:
+  stable ppc64, bug 250892
+
+  23 Dec 2008; Raúl Porcel <armin76@gentoo.org> netkit-rsh-0.17-r9.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #250892
+
+  22 Dec 2008; Markus Meier <maekke@gentoo.org> netkit-rsh-0.17-r9.ebuild:
+  amd64/x86 stable, bug #250892
+
+  20 Dec 2008; Peter Volkov <pva@gentoo.org> netkit-rsh-0.17-r8.ebuild,
+  netkit-rsh-0.17-r9.ebuild:
+  ~mips rekeyworeded, bug #210783.
+
+  16 Jun 2008; Mike Frysinger <vapier@gentoo.org> netkit-rsh-0.17-r9.ebuild:
+  Fix building when ARG_MAX is not defined #225341 by Tobias Scherbaum.
+
+  14 Jun 2008; nixnut <nixnut@gentoo.org> netkit-rsh-0.17-r9.ebuild:
+  Added ~ppc wrt bug 210783
+
+  21 Mar 2008; Markus Meier <maekke@gentoo.org> netkit-rsh-0.17-r9.ebuild:
+  add ~amd64, bug #210783
+
+  06 Mar 2008; Raúl Porcel <armin76@gentoo.org> netkit-rsh-0.17-r9.ebuild:
+  Add ~alpha/~ia64 wrt #210783
+
+  05 Mar 2008; Ferris McCormick <fmccor@gentoo.org>
+  netkit-rsh-0.17-r9.ebuild:
+  Add back ~sparc for testing, Bug #210783.
+
+  05 Mar 2008; Brent Baude <ranger@gentoo.org> netkit-rsh-0.17-r9.ebuild:
+  keyworded ~arch for ppc64, bug 210783
+
+  04 Mar 2008; Jeroen Roovers <jer@gentoo.org> netkit-rsh-0.17-r9.ebuild:
+  Marked ~hppa (bug #210783).
+
+  04 Mar 2008; <cla@gentoo.org> netkit-rsh-0.17-r9.ebuild:
+  Marked ~x86 (bug #210783). Thanks to Michał Wołonkiewicz <volon@vp.pl> for
+  testing.
+
+  25 Feb 2008; Diego Pettenò <flameeyes@gentoo.org>
+  netkit-rsh-0.17-r9.ebuild:
+  Fix dependency, thanks to Xake in bug #211390.
+
+  20 Feb 2008; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Fix dependencies for pambase/pam.
+
+*netkit-rsh-0.17-r9 (19 Feb 2008)
+
+  19 Feb 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +files/rexec.pamd-pambase, +files/rlogin.pamd-pambase,
+  +files/rsh.pamd-pambase, +netkit-rsh-0.17-r9.ebuild:
+  Add a new revision with pambase's system-remote-login as base stack.
+
+  19 Feb 2008; Diego Pettenò <flameeyes@gentoo.org> -files/rexec.pamd,
+  -files/rlogin.pamd, -files/rsh.pamd:
+  Remove older pamd files to avoid scaring me again with pam_stack.so.
+
+  02 Jan 2008; Mike Frysinger <vapier@gentoo.org> netkit-rsh-0.17-r8.ebuild:
+  Respect env LDFLAGS. Respect CC for everyone, not just cross-compilers
+  #203911 by Davide Cendron.
+
+  23 Jul 2007; Mike Frysinger <vapier@gentoo.org> netkit-rsh-0.17-r8.ebuild:
+  Punt bindnow-flags usage.
+
+  26 Jun 2007; Lars Weiler <pylon@gentoo.org> netkit-rsh-0.17-r8.ebuild:
+  Stable on ppc; #182395.
+
+  20 Jun 2007; Markus Rothe <corsair@gentoo.org> netkit-rsh-0.17-r8.ebuild:
+  Stable on ppc64; bug #182395
+
+  20 Jun 2007; Jeroen Roovers <jer@gentoo.org> netkit-rsh-0.17-r8.ebuild:
+  Stable for HPPA (bug #182395).
+
+  20 Jun 2007; Joshua Kinard <kumba@gentoo.org> netkit-rsh-0.17-r8.ebuild:
+  Stable on mips, per #182395.
+
+  19 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  netkit-rsh-0.17-r8.ebuild:
+  Stable on sparc wrt #182395
+
+  18 Jun 2007; Raúl Porcel <armin76@gentoo.org> netkit-rsh-0.17-r8.ebuild:
+  alpha/ia64/x86 stable wrt #182395
+
+  18 Jun 2007; Christoph Mende <angelos@gentoo.org>
+  netkit-rsh-0.17-r8.ebuild:
+  Stable on amd64 wrt bug 182395
+
+  29 Oct 2006; Emanuele Giaquinta <exg@gentoo.org> +metadata.xml:
+  Add metadata.
+
+  28 Oct 2006; Christian Faulhammer <opfer@gentoo.org>
+  netkit-rsh-0.17-r7.ebuild:
+  x86 stable wrt bug #151380
+
+  21 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  netkit-rsh-0.17-r7.ebuild:
+  Stable on Alpha, bug 151380.
+
+*netkit-rsh-0.17-r8 (16 Oct 2006)
+
+  16 Oct 2006; Timothy Redaelli <drizzt@gentoo.org>
+  +netkit-rsh-0.17-r8.ebuild:
+  Revbump:
+  Moved patches to mirror://gentoo
+  Added patch for fbsd
+  Added ~x86-fbsd keyword
+
+  15 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  netkit-rsh-0.17-r7.ebuild:
+  hppa stable, bug #151380
+
+  15 Oct 2006; Jason Wever <weeve@gentoo.org> netkit-rsh-0.17-r7.ebuild:
+  Stable on SPARC wrt bug #151380.
+
+  14 Oct 2006; Aron Griffis <agriffis@gentoo.org> netkit-rsh-0.17-r7.ebuild:
+  Mark 0.17-r7 stable on ia64. #151380
+
+  14 Oct 2006; Olivier Crête <tester@gentoo.org> netkit-rsh-0.17-r7.ebuild:
+  Stable on amd64 per bug #151380
+
+  14 Oct 2006; Michael Hanselmann <hansmi@gentoo.org>
+  netkit-rsh-0.17-r7.ebuild:
+  Stable on ppc. See bug #151380.
+
+  14 Oct 2006; Markus Rothe <corsair@gentoo.org> netkit-rsh-0.17-r7.ebuild:
+  Stable on ppc64; bug #151380
+
+  28 Jun 2006; Joel Martin <kanaka@gentoo.org> netkit-rsh-0.17-r6.ebuild,
+  netkit-rsh-0.17-r7.ebuild:
+  Allow cross-compiling by sed-removing runtime tests from lame non-autoconf
+  configure script.
+
+  25 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/netkit-rsh-0.16-rlogin-rsh.patch,
+  -files/netkit-rsh-0.16-rlogin=rsh.patch, files/redhat.spec,
+  netkit-rsh-0.17-r7.ebuild:
+  Rename netkit-rsh-0.16-rlogin=rsh.patch to fix repoman failure.
+
+  25 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  netkit-rsh-0.17-r7.ebuild:
+  Use bindnow-flags function instead of -Wl,-z,now.
+
+  02 Jul 2005; Hardave Riar <hardave@gentoo.org> netkit-rsh-0.17-r6.ebuild:
+  Stable on mips, bug #93215.
+
+  22 May 2005; Olivier Crête <tester@gentoo.org> netkit-rsh-0.17-r6.ebuild:
+  Mark stable on x86 per security bug #93215
+
+*netkit-rsh-0.17-r7 (22 May 2005)
+
+  22 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/rexec.pamd-include, +files/rlogin.pamd-include,
+  +files/rsh.pamd-include, netkit-rsh-0.17-r6.ebuild,
+  +netkit-rsh-0.17-r7.ebuild:
+  Inherit pam for newpamd function. Added new revision with include syntax for
+  OpenPAM compatibility.
+
+  21 May 2005; Markus Rothe <corsair@gentoo.org> netkit-rsh-0.17-r6.ebuild:
+  Stable on ppc64; bug #93215
+
+  20 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  netkit-rsh-0.17-r6.ebuild:
+  Stable on sparc wrt #93215
+
+  20 May 2005; Bryan Østergaard <kloeri@gentoo.org>
+  netkit-rsh-0.17-r6.ebuild:
+  Stable on alpha, bug 93215.
+
+  20 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  netkit-rsh-0.17-r6.ebuild:
+  Stable on ppc.
+
+  20 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  netkit-rsh-0.17-r6.ebuild:
+  stable on amd64 wrt #93215
+
+*netkit-rsh-0.17-r6 (20 May 2005)
+
+  20 May 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/netkit-rsh-0.10-stdarg.patch, +files/netkit-rsh-0.16-jbj.patch,
+  +files/netkit-rsh-0.16-jbj4.patch, +files/netkit-rsh-0.16-nokrb.patch,
+  +files/netkit-rsh-0.16-prompt.patch,
+  +files/netkit-rsh-0.16-rlogin=rsh.patch,
+  +files/netkit-rsh-0.17-chdir.patch, +files/netkit-rsh-0.17-checkdir.patch,
+  +files/netkit-rsh-0.17-errno.patch, +files/netkit-rsh-0.17-ignchld.patch,
+  +files/netkit-rsh-0.17-lfs.patch, +files/netkit-rsh-0.17-nohost.patch,
+  +files/netkit-rsh-0.17-nohostcheck.patch,
+  +files/netkit-rsh-0.17-pam-nologin.patch,
+  +files/netkit-rsh-0.17-pam-sess.patch,
+  +files/netkit-rsh-0.17-pre20000412-jbj5.patch,
+  +files/netkit-rsh-0.17-rexec.patch,
+  +files/netkit-rsh-0.17-rexec-netrc.patch,
+  +files/netkit-rsh-0.17-rexec-sig.patch,
+  +files/netkit-rsh-0.17-sectty.patch, +files/netkit-rsh-0.17-strip.patch,
+  +files/netkit-rsh-0.17-userandhost.patch, +files/redhat.spec,
+  +netkit-rsh-0.17-r6.ebuild:
+  Import patches from Redhat to resolve #93215.
+
+  08 Dec 2004; Michael Hanselmann <hansmi@gentoo.org>
+  netkit-rsh-0.17-r5.ebuild:
+  Added a patch to prevent from segfaulting on ppc. See bug #72359.
+
+  22 Jul 2004; Jon Portnoy <avenj@gentoo.org> netkit-rsh-0.17-r5.ebuild :
+  Optional PAM support from Christer Ekholm in bug #56503.
+
+  24 Apr 2004; Tom Gall <tgall@gentoo.org> netkit-rsh-0.17-r5.ebuild:
+  marked stable on ppc64
+
+  14 Nov 2003; Brad House <brad_mssw@gentoo.org> netkit-rsh-0.17-r5.ebuild:
+  mark stable on amd64
+
+*netkit-rsh-0.17-r5 (01 Aug 2003)
+
+  01 Aug 2003; Aron Griffis <agriffis@gentoo.org> netkit-rsh-0.17-r5.ebuild,
+  files/rexec.xinetd, files/rlogin.xinetd, files/rsh.xinetd:
+  Remove log_type specification to default to syslog
+
+*netkit-rsh-0.17-r4 (25 Jul 2003)
+
+  25 Jul 2003; Donny Davies <woodchip@gentoo.org> netkit-rsh-0.17-r2.ebuild,
+  netkit-rsh-0.17-r4.ebuild, files/rexec.pamd, files/rlogin.pamd,
+  files/rsh.pamd:
+  Moved the pam.d/ snips to this package from sys-libs/pam.
+
+*netkit-rsh-0.17-r3 (25 Oct 2002)
+
+  24 Feb 2003; Nicholas Wourms <dragon@gentoo.org> netkit-rsh-0.17-r3.ebuild :
+  Added mips to the keywords.
+
+  10 Feb 2003; Seemant Kulleen <seemant@gentoo.org> *.ebuild :
+
+  Inherit eutils to use epatch instead.  Also, changed sed expression
+  delimiters to : from /, closing bug #15006 by Blu3
+  <david+gentoo.org@blue-labs.org>
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  15 Dec 2002; Bjoern Brauel <bjb@gentoo.org> netkit-rsh-0.17-r3.ebuild :
+  Add alpha to KEYWORDS
+
+  25 Oct 2002; Donny Davies <woodchip@gentoo.org> : Add xinetd.d/ configs; #9443.
+
+*netkit-rsh-0.17-r2 (1 Feb 2002)
+
+  24 Feb 2003; Nicholas Wourms <dragon@gentoo.org> netkit-rsh-0.17-r2.ebuild :
+  Added mips to the keywords.
+
+  20 Oct 2002; Calum Selkirk <cselkirk@gentoo.org> netkit-rsh-0.17-r2.ebuild :
+  Added ppc to KEYWORDS.
+
+  09 Jul 2002; phoen][x <phoenix@gentoo.org> netkit-rsh-0.17-r2.ebuild :
+  Added KEYWORDS, LICENSE, SLOT.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,36 @@
+# ChangeLog for media-gfx/gif2apng
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gif2apng/ChangeLog,v 1.6 2014/05/03 08:54:25 radhermit Exp $
+
+*gif2apng-1.9 (03 May 2014)
+
+  03 May 2014; Tim Harder <radhermit@gentoo.org> +gif2apng-1.9.ebuild,
+  +files/gif2apng-1.9-flags.patch:
+  Version bump.
+
+*gif2apng-1.8 (16 Sep 2013)
+
+  16 Sep 2013; Tim Harder <radhermit@gentoo.org> +gif2apng-1.8.ebuild,
+  +files/gif2apng-1.8-flags.patch:
+  Version bump.
+
+*gif2apng-1.7 (23 Feb 2012)
+
+  23 Feb 2012; Tim Harder <radhermit@gentoo.org> +gif2apng-1.7.ebuild:
+  Version bump.
+
+*gif2apng-1.6 (25 Jun 2011)
+
+  25 Jun 2011; Tim Harder <radhermit@gentoo.org> -gif2apng-1.5.ebuild,
+  +gif2apng-1.6.ebuild:
+  Version bump and remove old. Fix dependencies.
+
+  29 Apr 2011; Tim Harder <radhermit@gentoo.org> gif2apng-1.5.ebuild:
+  Fix description (bug #365225 by Manu Wächter).
+
+*gif2apng-1.5 (26 Apr 2011)
+
+  26 Apr 2011; Mike Frysinger <vapier@gentoo.org> +gif2apng-1.5.ebuild,
+  +metadata.xml:
+  New package.
+

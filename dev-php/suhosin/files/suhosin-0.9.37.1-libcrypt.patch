@@ -1,0 +1,12 @@
+Index: suhosin-0.9.32.1/config.m4
+===================================================================
+--- suhosin-0.9.33.orig/config.m4
++++ suhosin-0.9.33/config.m4
+@@ -6,4 +6,7 @@ PHP_ARG_ENABLE(suhosin, whether to enabl
+ 
+ if test "$PHP_SUHOSIN" != "no"; then
+   PHP_NEW_EXTENSION(suhosin, suhosin.c sha256.c memory_limit.c treat_data.c ifilter.c post_handler.c ufilter.c rfc1867.c rfc1867_new.c log.c header.c execute.c ex_imp.c session.c aes.c crypt.c, $ext_shared)
++  PHP_CHECK_LIBRARY(crypt, crypt,
++    [PHP_ADD_LIBRARY(crypt,, SUHOSIN_SHARED_LIBADD)])
++  PHP_SUBST(SUHOSIN_SHARED_LIBADD)
+ fi

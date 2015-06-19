@@ -1,0 +1,102 @@
+# ChangeLog for app-admin/longrun
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/longrun/ChangeLog,v 1.27 2015/06/09 08:41:55 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  07 Mar 2015; Anthony G. Basile <blueness@gentoo.org>
+  +files/0.9-replace-loff_t.patch, longrun-0.9-r4.ebuild:
+  Fix type for pread/pwrite.  Bug #541694.
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+  05 Mar 2012; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove betelgeuse
+
+  09 Feb 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Herd is primary maintainer.
+
+  09 Jan 2010; Robin H. Johnson <robbat2@gentoo.org> -longrun-0.9-r3.ebuild:
+  Cleanup old ebuilds for progress on bug #283320 for linux-info changes.
+
+  20 Nov 2009; Markus Meier <maekke@gentoo.org> longrun-0.9-r4.ebuild:
+  x86 stable, bug #287893
+
+*longrun-0.9-r4 (06 Sep 2009)
+
+  06 Sep 2009; Mike Auty <ikelos@gentoo.org> +longrun-0.9-r4.ebuild:
+  Add in kernel config existence checks (bug 283320).
+
+  06 Sep 2009; Robin H. Johnson <robbat2@gentoo.org> longrun-0.9-r3.ebuild:
+  Linux-info cleanup (bug #283320): make more CONFIG_CHECK non-fatal.
+
+  23 Oct 2008; Diego Pettenò <flameeyes@gentoo.org>
+  files/0.9-makefile_cflags.patch, longrun-0.9-r3.ebuild:
+  Respect LDFLAGS, respect CC.
+
+  27 Mar 2007; Petteri Räty <betelgeuse@gentoo.org> metadata.xml,
+  longrun-0.9-r3.ebuild:
+  Fix things reported by qualudis.
+
+  27 Jan 2007; Danny van Dyk <kugelfang@gentoo.org> -longrun-0.9-r2.ebuild:
+  QA: Removed unused versions.
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> longrun-0.9-r2.ebuild,
+  longrun-0.9-r3.ebuild:
+  Replacing einfo with elog
+
+  19 Mar 2006; Petteri Räty <betelgeuse@gentoo.org> longrun-0.9-r3.ebuild:
+  Marked stable on x86.
+
+*longrun-0.9-r3 (05 Feb 2006)
+
+  05 Feb 2006; Petteri Räty <betelgeuse@gentoo.org> -longrun-0.9-r1.ebuild,
+  +longrun-0.9-r3.ebuild:
+  Updated to the latest Debian patch set, now installs Swedish and Japanese
+  translations, added a patch that uses user set CFLAGS to compile 
+  longrun and removed old revision.
+
+  03 Sep 2005; Petteri Räty <betelgeuse@gentoo.org> longrun-0.9-r2.ebuild:
+  Marked stable on x86.
+
+  12 Aug 2005; Petteri Räty <betelgeuse@gentoo.org> longrun-0.9-r1.ebuild:
+  Moved the gcc-3 patch from Debian to distfiles mirrors.
+
+*longrun-0.9-r2 (31 Jul 2005)
+
+  31 Jul 2005; Petteri Räty <betelgeuse@gentoo.org> +metadata.xml,
+  +longrun-0.9-r2.ebuild:
+  Added Debian patches. Resolves bug #55369.
+  Also added checks for the right kernel config.
+
+  20 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> longrun-0.9-r1.ebuild:
+  inherit eutils for epatch; error check
+
+  20 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> longrun-0.9.ebuild:
+  clean old ebuild
+
+  25 May 2003; Martin Holzer <mholzer@gentoo.org> longrun-0.9-r1.ebuild,
+  longrun-0.9.ebuild:
+  now uses mirror://kernel
+
+*longrun-0.9-r1 (17 Apr 2003)
+
+  17 Apr 2003; Brandon Low <lostlogic@gentoo.org> Manifest,
+  longrun-0.9-r1.ebuild, files/longrun-0.9-r1-debian-gcc-3.diff:
+  Add a fix for compilation on gcc-3
+
+*longrun-0.9 (1 Feb 2002)
+
+  29 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> longrun-0.9.ebuild :
+
+  Added -ppc to KEYWORDS.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

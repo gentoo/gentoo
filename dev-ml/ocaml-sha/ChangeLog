@@ -1,0 +1,28 @@
+# ChangeLog for dev-ml/ocaml-sha
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocaml-sha/ChangeLog,v 1.6 2015/06/06 19:46:56 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*ocaml-sha-1.9 (13 Oct 2013)
+
+  13 Oct 2013; Alexis Ballier <aballier@gentoo.org> +ocaml-sha-1.9.ebuild:
+  version bump
+
+  19 Aug 2013; Alexis Ballier <aballier@gentoo.org> ocaml-sha-1.8.ebuild:
+  eapi5, define subslot and add := dep on ocaml packages
+
+  19 Aug 2013; Alexis Ballier <aballier@gentoo.org> -ocaml-sha-1.7.ebuild:
+  remove old
+
+*ocaml-sha-1.8 (30 Oct 2012)
+
+  30 Oct 2012; Alexis Ballier <aballier@gentoo.org> +ocaml-sha-1.8.ebuild:
+  version bump
+
+*ocaml-sha-1.7 (02 Aug 2012)
+
+  02 Aug 2012; Alexis Ballier <aballier@gentoo.org> +ocaml-sha-1.7.ebuild,
+  +metadata.xml:
+  initial import, ebuild by Jacques-Pascal Deplaix, bug #427002

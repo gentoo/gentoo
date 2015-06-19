@@ -1,0 +1,14 @@
+DEFINED_PHASES=install nofetch postinst postrm prerm setup unpack
+DEPEND=>=dev-java/java-config-2.2.0 app-eselect/eselect-java
+DESCRIPTION=HP JDK/JRE and Plug-In
+EAPI=2
+HOMEPAGE=http://www.hp.com/go/java
+IUSE=doc examples nsplugin
+KEYWORDS=-* ~hppa-hpux ~ia64-hpux
+LICENSE=HP-JDKJRE6
+RDEPEND=>=dev-java/java-config-2.2.0 app-eselect/eselect-java
+RESTRICT=fetch
+SLOT=1.6
+SRC_URI=hppa-hpux? ( jdk6_16005_pa.depot ) ia64-hpux? ( jdk6_16005_ia.depot )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	java-vm-2	caa0212cf1c60716fd4b3ab09268be3e	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=2a1195329438d933833b478059dd7ce6

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: display current scope context in a C file
+HOMEPAGE=http://www.bluweb.com/us/chouser/proj/ctx/
+KEYWORDS=alpha amd64 ia64 ppc x86
+LICENSE=GPL-2
+RDEPEND=!app-vim/enhancedcommentify || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/ctx-1.17.tar.bz2 http://dev.gentoo.org/~radhermit/vim/ctx-1.17.tar.bz2
+_eclasses_=vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=26175b6c9deb42e6b367fcfd58b14ea5

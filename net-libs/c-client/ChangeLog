@@ -1,0 +1,402 @@
+# ChangeLog for net-libs/c-client
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/c-client/ChangeLog,v 1.107 2013/01/04 08:33:23 eras Exp $
+
+  04 Jan 2013; Eray Aslan <eras@gentoo.org> -c-client-2007e-r2.ebuild,
+  -c-client-2007f-r1.ebuild, -c-client-2007f-r2.ebuild,
+  -c-client-2007f-r3.ebuild, -files/2002d-Makefile.patch,
+  -files/c-client-2007e-ldflags.patch:
+  Remove old
+
+  30 Dec 2012; Raúl Porcel <armin76@gentoo.org> c-client-2007f-r4.ebuild:
+  s390/sh/sparc stable wrt #445063
+
+  30 Dec 2012; Agostino Sarubbo <ago@gentoo.org> c-client-2007f-r4.ebuild:
+  Stable for alpha, wrt bug #445063
+
+  29 Dec 2012; Agostino Sarubbo <ago@gentoo.org> c-client-2007f-r4.ebuild:
+  Stable for sparc, wrt bug #445063
+
+  21 Dec 2012; Ulrich Müller <ulm@gentoo.org> c-client-2007e-r2.ebuild,
+  c-client-2007f-r1.ebuild, c-client-2007f-r2.ebuild, c-client-2007f-r3.ebuild,
+  c-client-2007f-r4.ebuild:
+  Fix LICENSE, see README file, bug 446380.
+
+  18 Dec 2012; Agostino Sarubbo <ago@gentoo.org> c-client-2007f-r4.ebuild:
+  Stable for ia64, wrt bug #445063
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> c-client-2007f-r4.ebuild:
+  Stable for x86, wrt bug #445063
+
+  09 Dec 2012; Agostino Sarubbo <ago@gentoo.org> c-client-2007f-r4.ebuild:
+  Stable for ppc64, wrt bug #445063
+
+  02 Dec 2012; Markus Meier <maekke@gentoo.org> c-client-2007f-r4.ebuild:
+  arm stable, bug #445063
+
+  29 Nov 2012; Brent Baude <ranger@gentoo.org> c-client-2007f-r4.ebuild:
+  Marking c-client-2007f-r4 ppc for bug 445063
+
+  29 Nov 2012; <ago@gentoo.org> c-client-2007f-r4.ebuild:
+  Stable for amd64, wrt bug #445063
+
+  29 Nov 2012; Jeroen Roovers <jer@gentoo.org> c-client-2007f-r4.ebuild:
+  Stable for HPPA (bug #445063).
+
+  17 Oct 2012;  <naota@gentoo.org> c-client-2007f-r4.ebuild:
+  Add ~x86-fbsd. #267299
+
+*c-client-2007f-r4 (15 Oct 2012)
+
+  15 Oct 2012; Eray Aslan <eras@gentoo.org> +c-client-2007f-r4.ebuild,
+  +files/c-client-2007f-topal.patch, metadata.xml:
+  Add topal and chappa USE flags for use with mail-client/alpine - bug #391387.
+  Fix ssl linkage.
+
+  08 Oct 2012; Robin H. Johnson <robbat2@gentoo.org>
+  +files/c-client-2007f-ldflags.patch, c-client-2007f-r3.ebuild:
+  Ensure kerberos builds properly with as-needed
+
+  08 Oct 2012; Robin H. Johnson <robbat2@gentoo.org> c-client-2007f-r3.ebuild:
+  Whitespace.
+
+*c-client-2007f-r3 (08 Oct 2012)
+
+  08 Oct 2012; Robin H. Johnson <robbat2@gentoo.org> +c-client-2007f-r3.ebuild:
+  Add in IPv6 and Kerberos support from uw-imap.
+
+  11 Jul 2012; Eray Aslan <eras@gentoo.org> -c-client-2007f.ebuild:
+  Remove old
+
+*c-client-2007f-r2 (11 Jul 2012)
+
+  11 Jul 2012; Eray Aslan <eras@gentoo.org> +c-client-2007f-r2.ebuild:
+  Make build system multilib aware - bug #425766. Thanks to Anthony Basile
+
+  08 Jul 2012; Raúl Porcel <armin76@gentoo.org> c-client-2007f-r1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #413601
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  c-client-2007f-r1.ebuild:
+  x86 stable wrt bug #413601
+
+  29 May 2012; Brent Baude <ranger@gentoo.org> c-client-2007f-r1.ebuild:
+  Marking c-client-2007f-r1 ppc for bug 413601
+
+  29 May 2012; Alexis Ballier <aballier@gentoo.org> c-client-2007f-r1.ebuild:
+  keyword ~amd64-fbsd
+
+  16 May 2012; Jeroen Roovers <jer@gentoo.org> c-client-2007f-r1.ebuild:
+  Stable for HPPA (bug #413601).
+
+  08 May 2012; Brent Baude <ranger@gentoo.org> c-client-2007f-r1.ebuild:
+  Marking c-client-2007f-r1 ppc64 for bug 413601
+
+  29 Apr 2012; Markus Meier <maekke@gentoo.org> c-client-2007f-r1.ebuild:
+  arm stable, bug #413601
+
+  26 Apr 2012; Agostino Sarubbo <ago@gentoo.org> c-client-2007f-r1.ebuild:
+  Stable for amd64, wrt bug #413601
+
+*c-client-2007f-r1 (20 Feb 2012)
+
+  20 Feb 2012; Eray Aslan <eras@gentoo.org> +c-client-2007f-r1.ebuild:
+  EAPI bump. Add static-libs USE flag. Fix header install.
+
+*c-client-2007f (20 Nov 2011)
+
+  20 Nov 2011; Eray Aslan <eras@gentoo.org> +c-client-2007f.ebuild:
+  version bump
+
+  25 Jul 2011; Eray Aslan <eras@gentoo.org> -c-client-2007e.ebuild,
+  -c-client-2007e-r1.ebuild:
+  remove old
+
+  17 Jul 2011; Mark Loeser <halcy0n@gentoo.org> c-client-2007e-r2.ebuild:
+  Stable for ppc64; bug #368585
+
+  22 Jun 2011; Brent Baude <ranger@gentoo.org> c-client-2007e-r2.ebuild:
+  Marking c-client-2007e-r2 ppc for bug 368585
+
+  12 Jun 2011; Raúl Porcel <armin76@gentoo.org> c-client-2007e-r2.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #368585
+
+  11 Jun 2011; Markus Meier <maekke@gentoo.org> c-client-2007e-r2.ebuild:
+  arm stable, bug #368585
+
+  07 Jun 2011; Eray Aslan <eras@gentoo.org> c-client-2007e-r2.ebuild:
+  Add back kolab patch - bug #370489
+
+  07 Jun 2011; Eray Aslan <eras@gentoo.org> files/c-client-2007e-ldflags.patch:
+  Fix as-needed properly - bug #370421
+
+  07 Jun 2011; Eray Aslan <eras@gentoo.org> files/c-client-2007e-ldflags.patch:
+  Fix as-needed flag - bug #370421
+
+  05 Jun 2011; Jeroen Roovers <jer@gentoo.org> c-client-2007e-r2.ebuild:
+  Stable for HPPA (bug #368585).
+
+  31 May 2011; Markus Meier <maekke@gentoo.org> c-client-2007e-r2.ebuild:
+  x86 stable, bug #368585
+
+  31 May 2011; Eray Aslan <eras@gentoo.org> c-client-2007e-r2.ebuild:
+  Improve symlink code - bug #369351. Thanks to Nicola Rauseo.
+
+  27 May 2011; Markos Chandras <hwoarang@gentoo.org> c-client-2007e-r2.ebuild:
+  Stable on amd64 wrt bug #368585
+
+*c-client-2007e-r2 (11 May 2011)
+
+  11 May 2011; Eray Aslan <eras@gentoo.org> +c-client-2007e-r2.ebuild:
+  Symlink shared library - bug #255118. Drop kolab USE flag.
+
+  16 Mar 2011; Eray Aslan <eras@gentoo.org> c-client-2007e.ebuild,
+  c-client-2007e-r1.ebuild:
+  change to new style virtual/imap-c-client bug 358993
+
+  16 Aug 2010; Jeroen Roovers <jer@gentoo.org> c-client-2007e-r1.ebuild:
+  Combine sed scripts for single file, die on failure.
+
+*c-client-2007e-r1 (16 Aug 2010)
+
+  16 Aug 2010; Jeroen Roovers <jer@gentoo.org>
+  -files/c-client-2004a-amd64-so-fix.patch, -c-client-2004g.ebuild,
+  -c-client-2004g-r1.ebuild, -files/c-client-2004g_KOLAB_Annotations.patch,
+  -c-client-2006k.ebuild, +c-client-2007e-r1.ebuild,
+  +files/c-client-2007e-ldflags.patch, metadata.xml:
+  Respect LDFLAGS, CC, AR, RANLIB by Olivier Huber (bug #331773). Get rid of
+  the useless patch version variables since they are used only once and
+  obscure casual grep epatch *.ebuild outcome. Install RFCs only when
+  USE=doc.
+
+  24 May 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove wrobel from metadata.xml (#111816)
+
+  30 Mar 2009; Raúl Porcel <armin76@gentoo.org> c-client-2007e.ebuild:
+  arm/s390/sh stable wrt #252567
+
+  07 Jan 2009; Raúl Porcel <armin76@gentoo.org> c-client-2007e.ebuild:
+  alpha/ia64 stable wrt #252567
+
+  03 Jan 2009; Markus Meier <maekke@gentoo.org> c-client-2007e.ebuild:
+  x86 stable, bug #252567
+
+  03 Jan 2009; Jeroen Roovers <jer@gentoo.org> c-client-2007e.ebuild:
+  Stable for HPPA (bug #252567).
+
+  30 Dec 2008; Friedrich Oslage <bluebird@gentoo.org> c-client-2007e.ebuild:
+  Stable on sparc, security bug #252567
+
+  29 Dec 2008; Tobias Heinlein <keytoaster@gentoo.org>
+  c-client-2007e.ebuild:
+  amd64 stable wrt security bug #252567
+
+  29 Dec 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  c-client-2007e.ebuild:
+  ppc stable, bug #252567
+
+  29 Dec 2008; Brent Baude <ranger@gentoo.org> c-client-2007e.ebuild:
+  Marking c-client-2007e ppc64 for bug 252567
+
+*c-client-2007e (28 Dec 2008)
+
+  28 Dec 2008; Gunnar Wrobel <wrobel@gentoo.org> +c-client-2007e.ebuild:
+  Added net-libs/c-client-2007e in response to sec issue #252567.
+
+  02 May 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  c-client-2006k.ebuild:
+  ppc stable, bug #213473
+
+  21 Apr 2008; Jeroen Roovers <jer@gentoo.org> c-client-2006k.ebuild:
+  Stable for HPPA (bug #213473).
+
+  20 Apr 2008; Raúl Porcel <armin76@gentoo.org> c-client-2006k.ebuild:
+  ia64/sparc stable wrt #213473
+
+  19 Apr 2008; Markus Rothe <corsair@gentoo.org> c-client-2006k.ebuild:
+  Stable on ppc64; bug #213473
+
+  18 Apr 2008; Markus Meier <maekke@gentoo.org> c-client-2006k.ebuild:
+  amd64/x86 stable, bug #213473
+
+  18 Apr 2008; Tobias Klausmann <klausman@gentoo.org> c-client-2006k.ebuild:
+  Stable on alpha, bug #213473
+
+  02 Mar 2008; Robin H. Johnson <robbat2@gentoo.org> c-client-2004g.ebuild,
+  c-client-2004g-r1.ebuild, c-client-2006k.ebuild:
+  Group and world writable directories cause GrSec to deny exection on the
+  package for security. That is too much permission anyway, so clean up perms
+  better.
+
+  22 Feb 2008; Gunnar Wrobel <wrobel@gentoo.org> ChangeLog, Manifest:
+  Clean up changelog.
+
+*c-client-2006k (22 Feb 2008)
+*c-client-2004g-r1 (22 Feb 2008)
+
+  22 Feb 2008; Gunnar Wrobel <wrobel@gentoo.org>
+  +files/c-client-2004g_KOLAB_Annotations.patch,
+  +files/c-client-2006k_GENTOO_Makefile.patch,
+  +files/c-client-2006k_GENTOO_amd64-so-fix.patch,
+  +files/c-client-2006k_KOLAB_Annotations.patch, metadata.xml,
+  c-client-2004g.ebuild, +c-client-2004g-r1.ebuild, +c-client-2006k.ebuild:
+  Added c-client-2004g-r1 and c-client-2006k, both with support for the Kolab
+  groupware server.
+
+  21 Feb 2008; Robin H. Johnson <robbat2@gentoo.org> c-client-2004g.ebuild:
+  Clean up all repoman warnings.
+
+  21 Feb 2008; Robin H. Johnson <robbat2@gentoo.org> -c-client-2002d.ebuild,
+  -c-client-2002d-r1.ebuild, -c-client-2002e.ebuild,
+  -c-client-2002e-r1.ebuild, -c-client-2002e-r2.ebuild,
+  -c-client-2004a.ebuild, -c-client-2004a-r1.ebuild, -c-client-2004c.ebuild:
+  Clean up all old versions.
+
+  21 Feb 2008; Robin H. Johnson <robbat2@gentoo.org> c-client-2004g.ebuild:
+  PAM is only needed by the Linux build.
+
+  07 Jul 2007; Jeroen Roovers <jer@gentoo.org> c-client-2004g.ebuild:
+  Stable for HPPA (bug #183898).
+
+  05 Jul 2007; Markus Rothe <corsair@gentoo.org> c-client-2004g.ebuild:
+  Stable on ppc64; bug #183898
+
+  04 Jul 2007; Christoph Mende <angelos@gentoo.org> c-client-2004g.ebuild:
+  Stable on amd64 wrt bug #183898
+
+  02 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> c-client-2004g.ebuild:
+  Stable on sparc wrt #183898
+
+  02 Jul 2007; Raúl Porcel <armin76@gentoo.org> c-client-2004g.ebuild:
+  alpha/ia64/x86 stable wrt #183898
+
+  02 Jul 2007; Lars Weiler <pylon@gentoo.org> c-client-2004g.ebuild:
+  Stable on ppc; bug #183898.
+
+  18 May 2007; Roy Marples <uberlord@gentoo.org> c-client-2004g.ebuild:
+  Keyworded ~x86-fbsd, #138170 thanks to Nicholas Steicke.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*c-client-2004g (06 Oct 2005)
+
+  06 Oct 2005; Robin H. Johnson <robbat2@gentoo.org> +c-client-2004g.ebuild:
+  Bug #107562, version bump.
+
+  25 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  c-client-2004a-r1.ebuild:
+  Stable on alpha.
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> c-client-2004a-r1.ebuild:
+  Stable on ppc64
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  c-client-2004a-r1.ebuild:
+  Stable on ppc.
+
+  06 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  c-client-2004a-r1.ebuild:
+  Marked stable on amd64.
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> c-client-2004a-r1.ebuild:
+  stable on ia64
+
+  31 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  c-client-2004a-r1.ebuild:
+  Stable on sparc
+
+*c-client-2004c (30 Mar 2005)
+
+  30 Mar 2005; Robin H. Johnson <robbat2@gentoo.org> +c-client-2004c.ebuild:
+  Version bump.
+
+  30 Mar 2005; Robin H. Johnson <robbat2@gentoo.org>
+  c-client-2004a-r1.ebuild:
+  Move 2004a-r1 to stable x86.
+
+  10 Mar 2005; Marcus D. Hanwell <cryos@gentoo.org> c-client-2004a-r1.ebuild:
+  Tiny cleanup in symlink creation of the .so.
+
+  20 Feb 2005; Hardave Riar <hardave@gentoo.org> c-client-2004a.ebuild:
+  Stable on mips
+
+*c-client-2004a-r1 (01 Feb 2005)
+
+  01 Feb 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  +files/c-client-2004a-amd64-so-fix.patch, +c-client-2004a-r1.ebuild:
+  Patched Makefile to build a shared library for amd64, allowing PHP 5 with imap
+  to compile. Also fixed the symlinking of c-client.a for multilib archs.
+
+  03 Nov 2004; Bret Curtis <psi29a@gentoo.org> :
+  Addeing to ~mips for testing
+
+*c-client-2004a (02 Oct 2004)
+
+  02 Oct 2004; <iggy@gentoo.org> +c-client-2004a.ebuild:
+  version bump, added pam use flag
+
+  18 Aug 2004; Tom Gall <tgall@gentoo.org> c-client-2002e-r2.ebuild:
+  stable on ppc64
+
+  16 Apr 2004; Michael McCabe <randy@gentoo.org> c-client-2002e-r2.ebuild:
+  adding s390 keywords
+
+*c-client-2002e-r2 (05 Feb 2004)
+
+  05 Feb 2004; Robin H. Johnson <robbat2@gentoo.org> c-client-2002e-r2.ebuild:
+  fix bug #40146, move -fPIC to all arches as it's needed for lots of fixes.
+
+  01 Jan 2004; Jon Portnoy <avenj@gentoo.org> c-client-2002e-r1.ebuild :
+  AMD64 keywords.
+
+  10 Jan 2004; <agriffis@gentoo.org> c-client-2002e-r1.ebuild:
+  stable on ia64
+
+  22 Dec 2003; Robin H. Johnson <robbat2@gentoo.org> c-client-2002d-r1.ebuild,
+  c-client-2002d.ebuild, c-client-2002e-r1.ebuild, c-client-2002e.ebuild:
+  fix bug #35437
+
+*c-client-2002e-r1 (08 Dec 2003)
+
+  08 Dec 2003; Robin H. Johnson <robbat2@gentoo.org> c-client-2002e-r1.ebuild:
+  fix bug #35378 and move new ebuild to stable right away to fix some other
+  glitches
+
+  25 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  add metadata.xml
+
+*c-client-2002e (25 Oct 2003)
+
+  25 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> c-client-2002e.ebuild:
+  version bump
+
+  25 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> c-client-2002d-r1.ebuild:
+  bump -r1 to stable
+
+*c-client-2002d-r1 (11 Aug 2003)
+
+  11 Aug 2003; Robin H. Johnson <robbat2@gentoo.org> c-client-2002d-r1.ebuild:
+  add more -fPIC support
+
+  02 Aug 2003; Tavis Ormandy <taviso@gentoo.org> c-client-2002d.ebuild:
+  stable on alpha
+
+  12 Jul 2003; Jason Wever <weeve@gentoo.org> c-client-2002d.ebuild:
+  Changed ~sparc keyword to sparc to fix dependency borkage.
+
+  28 Jun 2003; Tavis Ormandy <taviso@gentoo.org> c-client-2002d.ebuild:
+  alpha needs -fPIC
+
+*c-client-2002d (07 Jun 2003)
+
+  20 Jun 2003; Guy Martin <gmsoft@gentoo.org> c-client-2002d.ebuild :
+  Added hppa to KEYWORDS to fix dependencies problem with mod_php.
+
+  07 Jun 2003; Robin Johnson <robbat2@gentoo.org> Manifest,
+  files/digest-c-client-2002d, files/2002d-Makefile.patch, ChangeLog,
+  c-client-2002d.ebuild:
+  Initial import. Ebuild based on submission in bug #20372 by Celestial Wizard
+  <gentoo@dev.celestialwizard.org>
+
+ 

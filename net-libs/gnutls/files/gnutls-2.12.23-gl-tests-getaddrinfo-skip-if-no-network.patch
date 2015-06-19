@@ -1,0 +1,30 @@
+From 4b3252d59ef2d73118e2de6743ba58e2cbafa008 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Sat, 8 Mar 2014 22:13:51 +0200
+Subject: [PATCH] tests: getaddrinfo: skip if no network
+
+When running tests under network sandbox, there is no connectivity to
+the DNS, in this case function returns system error and ECONNREFUSED
+this should result in skipping test.
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ tests/test-getaddrinfo.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gl/tests/test-getaddrinfo.c b/gl/tests/test-getaddrinfo.c
+index acf9cd6..b155410 100644
+--- a/gl/tests/test-getaddrinfo.c
++++ b/gl/tests/test-getaddrinfo.c
+@@ -85,7 +85,7 @@ simple (char const *host, char const *service)
+       /* EAI_AGAIN is returned if no network is available. Don't fail
+          the test merely because someone is down the country on their
+          in-law's farm. */
+-      if (res == EAI_AGAIN)
++      if (res == EAI_AGAIN || (res == EAI_SYSTEM && err == ECONNREFUSED))
+         {
+           skip++;
+           fprintf (stderr, "skipping getaddrinfo test: no network?\n");
+-- 
+1.8.3.2
+

@@ -1,0 +1,107 @@
+# ChangeLog for net-misc/ps3mediaserver
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ps3mediaserver/ChangeLog,v 1.20 2014/01/01 15:15:51 floppym Exp $
+
+*ps3mediaserver-1.90.1 (01 Jan 2014)
+
+  01 Jan 2014; Mike Gilbert <floppym@gentoo.org> +ps3mediaserver-1.90.1.ebuild:
+  Version bump, bug 496614.
+
+*ps3mediaserver-1.90.0 (06 Aug 2013)
+
+  06 Aug 2013; Mike Gilbert <floppym@gentoo.org> +ps3mediaserver-1.90.0.ebuild,
+  -ps3mediaserver-1.70.0.ebuild, -ps3mediaserver-1.72.0.ebuild,
+  -ps3mediaserver-1.81.0.ebuild:
+  Version bump, bug 479934 by baru reddy.
+
+*ps3mediaserver-1.82.0 (15 Jun 2013)
+
+  15 Jun 2013; Mike Gilbert <floppym@gentoo.org> +ps3mediaserver-1.82.0.ebuild:
+  Version bump.
+
+*ps3mediaserver-1.81.0 (12 May 2013)
+
+  12 May 2013; Mike Gilbert <floppym@gentoo.org> +ps3mediaserver-1.81.0.ebuild:
+  Version bump.
+
+*ps3mediaserver-1.72.0 (24 Nov 2012)
+
+  24 Nov 2012; Mike Gilbert <floppym@gentoo.org> +ps3mediaserver-1.72.0.ebuild,
+  -ps3mediaserver-1.60.0.ebuild:
+  Version bump.
+
+*ps3mediaserver-1.70.0 (11 Sep 2012)
+
+  11 Sep 2012; Mike Gilbert <floppym@gentoo.org> +ps3mediaserver-1.70.0.ebuild,
+  -ps3mediaserver-1.53.0.ebuild, -ps3mediaserver-1.54.0.ebuild:
+  Version bump for bug 434608.
+
+*ps3mediaserver-1.60.0 (05 Aug 2012)
+
+  05 Aug 2012; Mike Gilbert <floppym@gentoo.org> +ps3mediaserver-1.60.0.ebuild:
+  Version bump.
+
+*ps3mediaserver-1.54.0 (01 Jul 2012)
+
+  01 Jul 2012; Mike Gilbert <floppym@gentoo.org> +ps3mediaserver-1.54.0.ebuild,
+  -ps3mediaserver-1.50.1.ebuild, -ps3mediaserver-1.52.1.ebuild:
+  Version bump. Remove old.
+
+*ps3mediaserver-1.53.0 (17 Jun 2012)
+
+  17 Jun 2012; Mike Gilbert <floppym@gentoo.org> +ps3mediaserver-1.53.0.ebuild:
+  Version bump.
+
+*ps3mediaserver-1.52.1 (11 Apr 2012)
+
+  11 Apr 2012; Mike Gilbert <floppym@gentoo.org> +ps3mediaserver-1.52.1.ebuild:
+  Version bump for #411551 by dirtyepic.
+
+  01 Mar 2012; Mike Gilbert <floppym@gentoo.org> ps3mediaserver-1.50.1.ebuild:
+  Add graphicsmagick[imagemagick] as an alternative per ssuominen.
+
+  01 Mar 2012; Mike Gilbert <floppym@gentoo.org>
+  -ps3mediaserver-1.20.412-r1.ebuild, -ps3mediaserver-1.40.0.ebuild,
+  -ps3mediaserver-1.50.0.ebuild, ps3mediaserver-1.50.1.ebuild:
+  Need imagemagick for convert utility, bug 406395 by Brad Allen. Drop old
+  versions.
+
+  20 Feb 2012; Mike Gilbert <floppym@gentoo.org> files/ps3mediaserver.initd,
+  ps3mediaserver-1.50.1.ebuild:
+  Re-do init script.
+
+*ps3mediaserver-1.50.1 (17 Feb 2012)
+
+  17 Feb 2012; Mike Gilbert <floppym@gentoo.org> +ps3mediaserver-1.50.1.ebuild:
+  Version bump.
+
+  30 Nov 2011; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Make myself the primary maintainer so I get bugs assigned to me.
+
+  30 Nov 2011; Mike Gilbert <floppym@gentoo.org> +files/ps3mediaserver.confd,
+  +files/ps3mediaserver.initd, ps3mediaserver-1.50.0.ebuild:
+  Install init script, bug 357665. Thanks to Milan Berger and Christian Kaps.
+
+*ps3mediaserver-1.50.0 (30 Nov 2011)
+
+  30 Nov 2011; Mike Gilbert <floppym@gentoo.org> +ps3mediaserver-1.50.0.ebuild,
+  metadata.xml:
+  Version bump. Add multiuser use flag to control launcher behavior.
+
+*ps3mediaserver-1.40.0 (04 Nov 2011)
+
+  04 Nov 2011; Mike Gilbert <floppym@gentoo.org> +ps3mediaserver-1.40.0.ebuild,
+  metadata.xml:
+  Version bump. Update dependencies. Create/install desktop file.
+
+*ps3mediaserver-1.20.412-r1 (07 Jan 2011)
+
+  07 Jan 2011; Mike Frysinger <vapier@gentoo.org>
+  -ps3mediaserver-1.20.412.ebuild, +ps3mediaserver-1.20.412-r1.ebuild:
+  Rename pms to $PN to avoid collisions #350796.
+
+*ps3mediaserver-1.20.412 (06 Jan 2011)
+
+  06 Jan 2011; Mike Frysinger <vapier@gentoo.org>
+  +ps3mediaserver-1.20.412.ebuild, +metadata.xml:
+  Initial ebuild #264561 by Michael Mathurin.

@@ -1,0 +1,11 @@
+--- bsnmp-1.12/config/Makefile.pre.old	2012-04-26 10:45:58.000000000 -0400
++++ bsnmp-1.12/config/Makefile.pre	2012-04-26 10:46:11.000000000 -0400
+@@ -53,7 +53,7 @@
+ # Assume a Posix-ish make that passes MAKEFLAGS in the environment.
+ SUBMAKE= $(MAKE) --no-print-directory
+ 
+-WARNS=	-Wsystem-headers -Werror -Wall -Wno-format-y2k -W	\
++WARNS=	-Wsystem-headers -Wall -Wno-format-y2k -W		\
+ 	-Wstrict-prototypes -Wmissing-prototypes		\
+ 	-Wpointer-arith -Wreturn-type -Wcast-qual		\
+ 	-Wwrite-strings -Wswitch -Wshadow -Wcast-align		\

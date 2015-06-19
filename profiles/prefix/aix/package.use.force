@@ -1,0 +1,14 @@
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/aix/package.use.force,v 1.1 2009/06/06 03:54:34 solar Exp $
+
+# Michael Haubenwallner <haubi@gentoo.org> (2009-03-18)
+# Plugins need to be built and installed using libtool (#261186)
+net-nds/openldap minimal
+
+# Michael Haubenwallner <haubi@gentoo.org> (2008-05-09)
+# Gentoo's PIE patch for gcc-3 does not work on AIX.
+# One might want to use gcc-3.4 on AIX, because IBM Rational Purify
+# might not support gcc-4. The first gcc-support (gcc-3.4) has come
+# with PurifyPlus Interim Fix v7.0.0.0-010 (released in February 2008).
+=sys-devel/gcc-3* nopie

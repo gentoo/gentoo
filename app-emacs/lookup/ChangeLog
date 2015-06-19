@@ -1,0 +1,72 @@
+# ChangeLog for app-emacs/lookup
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/lookup/ChangeLog,v 1.18 2014/08/29 06:48:10 ulm Exp $
+
+  29 Aug 2014; Ulrich Müller <ulm@gentoo.org> lookup-1.4.1.ebuild:
+  Call econf properly, replace einstall by emake.
+
+  10 Oct 2012; Ulrich Müller <ulm@gentoo.org> +files/50lookup-gentoo.el,
+  -files/51lookup-gentoo.el, lookup-1.4.1.ebuild,
+  +files/lookup-1.4.1-garbage-char.patch:
+  Fix compilation with Emacs 24, thanks to Naohiro Aota in bug 425270.
+  Update ebuild for EAPI 4.
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing usata from metadata.xml as per #22931.
+
+  01 Dec 2007; Christian Faulhammer <opfer@gentoo.org> lookup-1.4.1.ebuild:
+  stable amd64, bug 195512
+
+  30 Oct 2007; Ulrich Mueller <ulm@gentoo.org> -files/50lookup-gentoo.el,
+  -lookup-1.4.ebuild, -lookup-1.4-r1.ebuild:
+  Remove vulnerabe versions wrt bug #197306.
+
+  30 Oct 2007; Christian Faulhammer <opfer@gentoo.org> lookup-1.4.1.ebuild:
+  stable x86, security bug 197306
+
+*lookup-1.4.1 (28 Oct 2007)
+
+  28 Oct 2007; Ulrich Mueller <ulm@gentoo.org> +lookup-1.4.1.ebuild:
+  Version bump, fixes insecure temp file creation wrt to CVE-2007-0237,
+  security bug #197306.
+
+*lookup-1.4-r1 (08 Oct 2007)
+
+  08 Oct 2007; Ulrich Mueller <ulm@gentoo.org> +files/51lookup-gentoo.el,
+  +lookup-1.4-r1.ebuild:
+  Leave /etc/services alone since ndtp (port 2882) is registered by IANA now.
+  Set load-path in site-init file, don't define keybindings.
+
+  23 Feb 2007; Christian Faulhammer <opfer@gentoo.org> -lookup-1.3.ebuild:
+  clean up
+
+  03 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  01 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org> lookup-1.4.ebuild:
+  Keywording ~amd64.
+
+  25 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> lookup-1.3.ebuild,
+  lookup-1.4.ebuild:
+  Marked stable on x86. Don't assign default to S
+
+*lookup-1.4 (14 Feb 2004)
+
+  14 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> lookup-1.4.ebuild:
+  Version bumped
+
+*lookup-1.3 (01 Sep 2003)
+
+  29 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> lookup-1.3.ebuild,
+  metadata.xml:
+  Adds ndtp entry to /etc/services if not present. Thanks to Masahiro
+  Nishiyama <masahiro@sol.cs.ritsumei.ac.jp> for reporting the bug.
+  This closes Bug #29858
+
+  18 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> lookup-1.3.ebuild:
+  Marked as stable
+
+  01 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> lookup-1.3.ebuild,
+  files/50lookup-gentoo.el:
+  Initial import
+

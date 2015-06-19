@@ -1,0 +1,25 @@
+--- gnomemeeting-1.2.1/configure.orig	2005-04-11 17:24:31.000000000 +0000
++++ gnomemeeting-1.2.1/configure	2005-04-11 17:25:34.000000000 +0000
+@@ -20815,15 +20815,17 @@
+ if test x"${disable_gnome}" = xyes ; then
+ 
+ 
+-if false; then
+-  GCONF_SCHEMAS_INSTALL_TRUE=
+-  GCONF_SCHEMAS_INSTALL_FALSE='#'
+-else
++#if false; then
++#  GCONF_SCHEMAS_INSTALL_TRUE=
++#  GCONF_SCHEMAS_INSTALL_FALSE='#'
++#else
+   GCONF_SCHEMAS_INSTALL_TRUE='#'
+   GCONF_SCHEMAS_INSTALL_FALSE=
+-fi
++#fi
+ 
+ else
++  GCONF_SCHEMAS_INSTALL_TRUE=
++  GCONF_SCHEMAS_INSTALL_FALSE='#'
+ 
+   if test "x$GCONF_SCHEMA_INSTALL_SOURCE" = "x"; then
+     GCONF_SCHEMA_CONFIG_SOURCE=`gconftool-2 --get-default-source`

@@ -1,0 +1,56 @@
+# ChangeLog for dev-perl/Net-Server-Coro
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Server-Coro/ChangeLog,v 1.11 2014/08/26 17:36:35 axs Exp $
+
+*Net-Server-Coro-1.300.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Net-Server-Coro-1.300.0-r1.ebuild, -Net-Server-Coro-1.300.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org>
+  -Net-Server-Coro-1.200.0.ebuild:
+  Cleanup
+
+*Net-Server-Coro-1.300.0 (12 Nov 2012)
+
+  12 Nov 2012; Torsten Veller <tove@gentoo.org>
+  +Net-Server-Coro-1.300.0.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  01 Mar 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Add missing cpan remote-id tags in metadata.xml (#406287)
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org>
+  -Net-Server-Coro-0.900.0.ebuild, -Net-Server-Coro-1.100.0.ebuild:
+  Cleanup
+
+*Net-Server-Coro-1.200.0 (30 Oct 2011)
+
+  30 Oct 2011; Torsten Veller <tove@gentoo.org>
+  +Net-Server-Coro-1.200.0.ebuild:
+  Version bump
+
+*Net-Server-Coro-1.100.0 (05 Sep 2011)
+
+  05 Sep 2011; Torsten Veller <tove@gentoo.org>
+  +Net-Server-Coro-1.100.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Net-Server-Coro-0.9.ebuild:
+  Cleanup
+
+*Net-Server-Coro-0.900.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Net-Server-Coro-0.900.0.ebuild:
+  Change version scheme
+
+*Net-Server-Coro-0.9 (15 Aug 2011)
+
+  15 Aug 2011; Patrick Lauer <patrick@gentoo.org> +Net-Server-Coro-0.9.ebuild,
+  +metadata.xml:
+  Initial import from Rion overlay, ebuilds by the respective authors

@@ -1,0 +1,32 @@
+# ChangeLog for dev-util/xmlindent
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/xmlindent/ChangeLog,v 1.8 2014/08/10 21:30:16 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  xmlindent-0.2.17-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> xmlindent-0.2.17-r1.ebuild:
+  Drop sparc keywords
+
+  09 Apr 2012; Agostino Sarubbo <ago@gentoo.org> xmlindent-0.2.17-r1.ebuild:
+  Stable for amd64, wrt bug #411165
+
+  07 Apr 2012; Jeff Horelick <jdhore@gentoo.org> xmlindent-0.2.17-r1.ebuild:
+  marked x86 per bug 411165
+
+*xmlindent-0.2.17-r1 (07 May 2010)
+
+  07 May 2010; Jeroen Roovers <jer@gentoo.org> -xmlindent-0.2.17.ebuild,
+  +xmlindent-0.2.17-r1.ebuild:
+  Set RDEPEND so it is not set implicitly (bug #221331). Respect CC (bug
+  #244048), CFLAGS and LDFLAGS.
+
+  24 Jun 2006; Andrej Kacian <ticho@gentoo.org> xmlindent-0.2.17.ebuild:
+  Added ~x86 keyword. Bug #137456, by Gilles Dartiguelongue <dartigug at
+  esiee.fr>.
+
+*xmlindent-0.2.17 (17 Dec 2005)
+
+  17 Dec 2005; Tom Martin <slarti@gentoo.org> +xmlindent-0.2.17.ebuild:
+  Initial import, thanks to Sascha Herrmann <starfox899@web.de> in bug #113535.

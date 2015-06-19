@@ -1,0 +1,74 @@
+From 4e322b85a12ba3ef5e8118724e3442b2ebb0f6d6 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Wed, 1 Aug 2012 11:43:34 -0400
+Subject: [PATCH iputils] doc: fix parallel build of html/man pages
+
+The use of the same tempdir prevents building of these files in parallel.
+So build all of them in unique tempdirs so we can do them in parallel.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ doc/Makefile | 37 ++++++++++++++++++++++++-------------
+ 1 file changed, 24 insertions(+), 13 deletions(-)
+
+diff --git a/doc/Makefile b/doc/Makefile
+index 7ec4f1c..4f930a3 100644
+--- a/doc/Makefile
++++ b/doc/Makefile
+@@ -12,29 +12,40 @@ man: $(MANFILES)
+ # lots of some strange temporary junk directories and files.
+ # So, scope it to a temporary dir and clean all after each run.
+ 
+-$(HTMLFILES): index.db
+-	@-rm -rf tmp.db2html
+-	@mkdir tmp.db2html
+-	@set -e; cd tmp.db2html; docbook2html ../$< ; mv *.html ..
+-	@-rm -rf tmp.db2html
++SETUP_TMPDIR = \
++	t="tmp.db2html.$@"; \
++	rm -rf $$t; \
++	mkdir $$t; \
++	cd $$t
++CLEAN_TMPDIR = \
++	cd ..; \
++	rm -rf $$t
++
++MAKE_HTML = \
++	@set -e; \
++	$(SETUP_TMPDIR); \
++	docbook2html ../$<; \
++	mv *.html ..; \
++	$(CLEAN_TMPDIR)
+ 
++$(HTMLFILES): index.db
++	$(MAKE_HTML)
+ iputils.html: iputils.db
+-	@-rm -rf tmp.db2html
+-	@mkdir tmp.db2html
+-	@set -e; cd tmp.db2html; docbook2html -u -o html ../$< ; mv html/$@ ..
+-	@-rm -rf tmp.db2html
++	$(MAKE_HTML)
+ 
+ # docbook2man produces utterly ugly output and I did not find
+ # any way to customize this but hacking backend perl script a little.
+ # Well, hence...
+ 
+ $(MANFILES): index.db
+-	@-mkdir tmp.db2man
+-	@set -e; cd tmp.db2man; nsgmls ../$< | sgmlspl ../docbook2man-spec.pl ;	mv $@ ..
+-	@-rm -rf tmp.db2man
++	@set -e; \
++	$(SETUP_TMPDIR); \
++	nsgmls ../$< | sgmlspl ../docbook2man-spec.pl; \
++	mv $@ ..; \
++	$(CLEAN_TMPDIR)
+ 
+ clean:
+-	@rm -rf $(MANFILES) $(HTMLFILES) iputils.html tmp.db2html tmp.db2man
++	@rm -rf $(MANFILES) $(HTMLFILES) iputils.html tmp.db2html* tmp.db2man*
+ 
+ snapshot:
+ 	@date "+%y%m%d" > snapshot.db
+-- 
+2.3.5
+

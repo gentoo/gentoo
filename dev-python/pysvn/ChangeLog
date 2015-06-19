@@ -1,0 +1,188 @@
+# ChangeLog for dev-python/pysvn
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pysvn/ChangeLog,v 1.46 2015/03/25 10:50:56 idella4 Exp $
+
+*pysvn-1.7.10 (25 Mar 2015)
+
+  25 Mar 2015; Ian Delaney <idella4@gentoo.org>
+  +files/pysvn-1.7.10-respect_flags.patch, +pysvn-1.7.10.ebuild:
+  bump; re-based patch for new version
+
+  14 Jan 2015; Ian Delaney <idella4@gentoo.org>
+  -files/pysvn-1.7.6-respect_flags.patch,
+  -files/pysvn-1.7.7-respect_flags.patch, -pysvn-1.7.6.ebuild,
+  -pysvn-1.7.7.ebuild, -pysvn-1.7.8.ebuild:
+  rm disused patches & old versions
+
+  07 Dec 2014; Agostino Sarubbo <ago@gentoo.org> pysvn-1.7.9.ebuild:
+  Stable for ppc, wrt bug #530576
+
+  05 Dec 2014; Agostino Sarubbo <ago@gentoo.org> pysvn-1.7.9.ebuild:
+  Stable for x86, wrt bug #530576
+
+  04 Dec 2014; Agostino Sarubbo <ago@gentoo.org> pysvn-1.7.9.ebuild:
+  Stable for amd64, wrt bug #530576
+
+  18 Oct 2014; Agostino Sarubbo <ago@gentoo.org> pysvn-1.7.8.ebuild:
+  Stable for ppc, wrt bug #517958
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> pysvn-1.7.8.ebuild:
+  Stable for x86, wrt bug #517958
+
+  09 Oct 2014; Agostino Sarubbo <ago@gentoo.org> pysvn-1.7.8.ebuild:
+  Stable for amd64, wrt bug #517958
+
+*pysvn-1.7.9 (15 Aug 2014)
+
+  15 Aug 2014; Ian Delaney <idella4@gentoo.org>
+  +files/pysvn-1.7.9-respect_flags.patch, +pysvn-1.7.9.ebuild:
+  drop py2.6 py3.2 add py3.4, re-based patch, re-instated test phase, tidy
+
+  07 Jan 2014; Lars Wendler <polynomial-c@gentoo.org> pysvn-1.7.8.ebuild:
+  Fixed dependency on subversion (bug #497400).
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> pysvn-1.7.7.ebuild,
+  pysvn-1.7.8.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*pysvn-1.7.8 (28 Aug 2013)
+
+  28 Aug 2013; Mike Gilbert <floppym@gentoo.org> +pysvn-1.7.8.ebuild:
+  Version bump.
+
+  10 May 2013; Patrick Lauer <patrick@gentoo.org> -pysvn-1.7.5.ebuild:
+  Removing 1.7.5 as it depends on removed svn version
+
+  19 Mar 2013; Kacper Kowalik <xarthisius@gentoo.org> pysvn-1.7.7.ebuild:
+  Split installing python-abi specific files from docs and examples to prevent
+  parallel install failures
+
+*pysvn-1.7.7 (12 Mar 2013)
+
+  12 Mar 2013; Ian Delaney <idella4@gentoo.org>
+  +files/pysvn-1.7.7-respect_flags.patch, +pysvn-1.7.7.ebuild,
+  files/pysvn-1.7.6-respect_flags.patch, pysvn-1.7.6.ebuild:
+  bump, some test scripts fial, test restrited
+
+  13 Jan 2013; Agostino Sarubbo <ago@gentoo.org> pysvn-1.7.6.ebuild:
+  Stable for x86, wrt bug #449782
+
+  05 Jan 2013; Agostino Sarubbo <ago@gentoo.org> pysvn-1.7.6.ebuild:
+  Stable for amd64, wrt bug #449782
+
+  20 Oct 2012; Kacper Kowalik <xarthisius@gentoo.org> pysvn-1.7.6.ebuild:
+  Mark ~amd64-linux
+
+  30 Mar 2012; Mike Gilbert <floppym@gentoo.org> pysvn-1.7.6.ebuild:
+  python_execute does not exist ing gentoo-x86.
+
+  10 Mar 2012; Justin Lecher <jlec@gentoo.org> pysvn-1.7.6.ebuild:
+  Fix DEPS, remove setuptools which aren't needed
+
+  10 Mar 2012; Justin Lecher <jlec@gentoo.org> pysvn-1.7.6.ebuild:
+  Py2.4 is gone, tanks Arfrever telling me that
+
+  10 Mar 2012; Justin Lecher <jlec@gentoo.org> pysvn-1.7.6.ebuild,
+  +files/pysvn-1.7.6-respect_flags.patch:
+  Moved to EAPI=4 and imported changes from progress overlay including FLAGS
+  respect patch, typo fix backport from upstream, fix test # 389241 & 387777,
+  thanks Arfrever for the work
+
+  10 Mar 2012; Justin Lecher <jlec@gentoo.org> pysvn-1.7.5.ebuild,
+  pysvn-1.7.6.ebuild:
+  Restrict pypy
+
+*pysvn-1.7.6 (09 Mar 2012)
+
+  09 Mar 2012; Patrick Lauer <patrick@gentoo.org> +pysvn-1.7.6.ebuild:
+  Bump/fix for #395533 #407065
+
+  27 Feb 2012; Sebastian Pipping <sping@gentoo.org> pysvn-1.7.5.ebuild:
+  Adjust dependency to require subversion before 1.7 (bug #395533)
+
+  18 Apr 2011; Thomas Kahle <tomka@gentoo.org> pysvn-1.7.5.ebuild:
+  x86 stable per bug 362769
+
+  15 Apr 2011; Christoph Mende <angelos@gentoo.org> pysvn-1.7.5.ebuild:
+  Stable on amd64 wrt bug #362769
+
+*pysvn-1.7.5 (09 Mar 2011)
+
+  09 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pysvn-1.7.5.ebuild:
+  Version bump.
+
+  05 Feb 2011; Markus Meier <maekke@gentoo.org> pysvn-1.7.4.ebuild:
+  add ~arm, bug #350648
+
+  05 Feb 2011; Christian Faulhammer <fauli@gentoo.org> pysvn-1.7.4.ebuild:
+  stable amd64, bug 353642
+
+  05 Feb 2011; Christian Faulhammer <fauli@gentoo.org> pysvn-1.7.4.ebuild:
+  stable x86, bug 353642
+
+  05 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pysvn-1.7.4.ebuild:
+  Restrict Jython ABIs.
+
+  23 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -files/pysvn-1.7.1-skip_root_test.patch, pysvn-1.7.4.ebuild:
+  Delete no longer needed patch (bug #299422).
+
+  17 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pysvn-1.7.4.ebuild:
+  Update dependencies (bug #341399).
+
+*pysvn-1.7.4 (16 Oct 2010)
+
+  16 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -files/pysvn-1.7.0-darwin-freebsd.patch, -pysvn-1.7.2.ebuild,
+  +pysvn-1.7.4.ebuild:
+  Version bump (bug #338897). Respect LDFLAGS (bug #339967).
+
+  30 Sep 2010; Fabian Groffen <grobian@gentoo.org> pysvn-1.7.2.ebuild:
+  Fixed pycxx detection in Prefix, marked ~x86-solaris, ~x86-linux
+
+  22 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pysvn-1.7.2.ebuild:
+  dev-util/subversion renamed to dev-vcs/subversion.
+
+  15 Mar 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pysvn-1.7.2.ebuild:
+  Fix dependencies (bug #304517).
+
+*pysvn-1.7.2 (28 Jan 2010)
+
+  28 Jan 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pysvn-1.7.2.ebuild:
+  Version bump.
+
+  07 Nov 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pysvn-1.7.1.ebuild:
+  Fix building with USE="doc" or USE="examples" (bug #289806).
+
+*pysvn-1.7.1 (17 Oct 2009)
+
+  17 Oct 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pysvn-1.7.1.ebuild, +files/pysvn-1.7.1-skip_root_test.patch:
+  Version bump (bug #289376). Set SUPPORT_PYTHON_ABIS.
+
+  08 Oct 2009; Fabian Groffen <grobian@gentoo.org> pysvn-1.7.0.ebuild,
+  +files/pysvn-1.7.0-darwin-freebsd.patch:
+  Fix for and keyword ~x86-freebsd and ~ppc-macos, thanks Michael Yang for
+  the FreeBSD part of the patch, bug #287608
+
+  04 Sep 2009; Patrick Lauer <patrick@gentoo.org> -pysvn-1.6.3-r1.ebuild:
+  Remove old
+
+*pysvn-1.7.0 (21 Jun 2009)
+
+  21 Jun 2009; Patrick Lauer <patrick@gentoo.org> +pysvn-1.7.0.ebuild:
+  Bump to 1.7.0, fixes bug #274848
+
+*pysvn-1.6.3-r1 (01 Apr 2009)
+
+  01 Apr 2009; Patrick Lauer <patrick@gentoo.org>
+  +files/skip-root-test.patch, +metadata.xml, +pysvn-1.6.3-r1.ebuild:
+  Initial import, ebuild from sunrise overlay. Thanks to idl0r and all the
+  others who worked on this in the last 2 years.

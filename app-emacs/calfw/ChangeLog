@@ -1,0 +1,43 @@
+# ChangeLog for app-emacs/calfw
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/calfw/ChangeLog,v 1.8 2015/06/05 12:23:46 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  07 Jun 2014; Ulrich Müller <ulm@gentoo.org> -calfw-1.1.ebuild,
+  -calfw-1.2.ebuild, calfw-1.3.ebuild, -files/calfw-1.1-calfwel.patch:
+  Remove redundant NEED_EMACS assignment. Update EAPI to 5. Remove old.
+
+*calfw-1.3 (10 Oct 2011)
+
+  10 Oct 2011; Naohiro Aota <naota@gentoo.org> +calfw-1.3.ebuild:
+  Version bump.
+
+*calfw-1.2 (14 Aug 2011)
+
+  14 Aug 2011; Naohiro Aota <naota@gentoo.org> +calfw-1.2.ebuild:
+  Bump to 1.2
+
+  10 Jul 2011; Naohiro Aota <naota@gentoo.org> calfw-1.1.ebuild,
+  +files/calfw-1.1-calfwel.patch:
+  Add fix for calfw.el
+
+*calfw-1.1 (10 Jul 2011)
+
+  10 Jul 2011; Naohiro Aota <naota@gentoo.org> -calfw-0.1.ebuild,
+  -calfw-0.1-r1.ebuild, -files/calfw-0.1-cl.patch,
+  -files/calfw-0.1-howm-menu.patch, +calfw-1.1.ebuild:
+  version bumped
+
+*calfw-0.1-r1 (12 Apr 2011)
+
+  12 Apr 2011; Ulrich Mueller <ulm@gentoo.org> +files/50calfw-gentoo.el,
+  +calfw-0.1-r1.ebuild, metadata.xml:
+  Use default functions of elisp.eclass. Add a site-init file.
+
+*calfw-0.1 (10 Apr 2011)
+
+  10 Apr 2011; Naohiro Aota <naota@elisp.net> +calfw-0.1.ebuild,
+  +files/calfw-0.1-cl.patch, +files/calfw-0.1-howm-menu.patch, +metadata.xml:
+  New ebuild for calfw. Ebuild written by me.

@@ -1,0 +1,9 @@
+# ChangeLog for sys-block/sas2ircu
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/sas2ircu/ChangeLog,v 1.1 2014/06/27 07:59:15 robbat2 Exp $
+
+*sas2ircu-19 (27 Jun 2014)
+
+  27 Jun 2014; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +sas2ircu-19.ebuild:
+  Initial commit, quick ebuild by myself.

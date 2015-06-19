@@ -1,0 +1,26 @@
+From 0e291e8b022b058f1db6112f5437b7a01e563a2e Mon Sep 17 00:00:00 2001
+From: Elias Probst <mail@eliasprobst.eu>
+Date: Thu, 23 Jan 2014 00:04:46 +0100
+Subject: [PATCH] Fixed the usage of TASK_RCDIR which was introduced by #1473.
+ Until now, the content of doc/rc was still installed to TASK_DOCDIR instead
+ of TASK_RCDIR.
+
+---
+ doc/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+index 99a1a2f..ce5d13f 100644
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -11,6 +11,6 @@ install (DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/man/   DESTINATION ${TASK_MAN1DIR
+                                                       FILES_MATCHING PATTERN "*.1")
+ install (DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/man/   DESTINATION ${TASK_MAN5DIR}
+                                                       FILES_MATCHING PATTERN "*.5")
+-install (DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/rc     DESTINATION ${TASK_DOCDIR})
++install (DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/rc/    DESTINATION ${TASK_RCDIR})
+ 
+ install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/ref/task-ref.pdf DESTINATION ${TASK_DOCDIR})
+-- 
+1.8.3.2
+

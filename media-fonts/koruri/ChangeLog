@@ -1,0 +1,10 @@
+# ChangeLog for media-fonts/koruri
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/koruri/ChangeLog,v 1.1 2015/03/07 08:49:32 yngwin Exp $
+
+*koruri-20141224 (07 Mar 2015)
+
+  07 Mar 2015; Ben de Groot <yngwin@gentoo.org> +koruri-20141224.ebuild,
+  +metadata.xml:
+  Initial commit. Ebuild based on the one provided by Ogino Masanori in bug
+  #496034.

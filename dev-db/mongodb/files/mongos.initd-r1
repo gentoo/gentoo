@@ -1,0 +1,50 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mongodb/files/mongos.initd-r1,v 1.1 2013/08/16 12:54:44 ultrabug Exp $
+
+depend() {
+	use net
+}
+
+checkconfig() {
+	if [ -z "${MONGOS_CONFIGDB}" ]; then
+		eerror "MONGOS_CONFIGDB is not defined, check your configuration file !"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	checkconfig || return 1
+
+	checkpath -d -m 0750 -o "${MONGOS_USER}":mongodb "${MONGOS_RUN}"
+
+	# Listen to MONGOS_IP if configured
+	[ -z "${MONGOS_IP}" ] || MONGOS_OPTIONS="--bind_ip ${MONGOS_IP} ${MONGOS_OPTIONS}"
+
+	# Baselayout-1 user should use --chuid instead of --user
+	local USEROPT="--user"
+	if [ ! -f /etc/init.d/sysfs ]; then
+		USEROPT="--chuid"
+	fi
+
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --background --start --make-pidfile \
+		--pidfile ${MONGOS_RUN:-/var/run/mongodb}/${SVCNAME}.pid \
+		${USEROPT} ${MONGOS_USER:-mongodb} \
+		--exec ${MONGOS_EXEC:-/usr/bin/mongos} \
+		-- \
+		--port ${MONGOS_PORT:-27018} \
+		--unixSocketPrefix ${MONGOS_RUN:-/var/run/mongodb} \
+		--logappend --logpath /var/log/mongodb/${SVCNAME}.log \
+		--configdb ${MONGOS_CONFIGDB} \
+		${MONGOS_OPTIONS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --pidfile ${MONGOS_RUN:-/var/run/mongodb}/${SVCNAME}.pid
+	eend $?
+}

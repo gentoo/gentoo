@@ -1,0 +1,171 @@
+# ChangeLog for games-strategy/dopewars
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/dopewars/ChangeLog,v 1.27 2015/03/25 15:19:31 mr_bones_ Exp $
+
+  25 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  dopewars-1.5.12-r2.ebuild:
+  EAPI=5
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> dopewars-1.5.12-r2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  11 Nov 2009; Mounir Lamouri <volkmar@gentoo.org>
+  dopewars-1.5.12-r2.ebuild:
+  Stable for ppc, bug 288295
+
+  09 Nov 2009; Markus Meier <maekke@gentoo.org> dopewars-1.5.12-r2.ebuild:
+  amd64 stable, bug #288295
+
+  07 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  dopewars-1.5.12-r2.ebuild:
+  stable x86, security bug 288295
+
+*dopewars-1.5.12-r2 (09 Oct 2009)
+
+  09 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +dopewars-1.5.12-r2.ebuild, +files/dopewars-1.5.12-CVE-2009-3591.patch:
+  rev bump to get patch to fix Server DoS (bug #288295)
+
+  02 Jun 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  dopewars-1.5.12-r1.ebuild:
+  esound is going away
+
+  12 May 2008; Markus Meier <maekke@gentoo.org> dopewars-1.5.12-r1.ebuild:
+  amd64 stable, bug #221747
+
+  12 May 2008; nixnut <nixnut@gentoo.org> dopewars-1.5.12-r1.ebuild:
+  Stable on ppc wrt bug 221747
+
+  12 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  dopewars-1.5.12-r1.ebuild:
+  stable x86, bug 221747
+
+*dopewars-1.5.12-r1 (24 Dec 2007)
+
+  24 Dec 2007; Tupone Alfredo <tupone@gentoo.org>
+  +dopewars-1.5.12-r1.ebuild:
+  Fixing dependency on dev-libs/glib. Bug #203207 by Paul Merlin
+
+  09 Oct 2006; Tristan Heaven <nyhm@gentoo.org> dopewars-1.5.12.ebuild:
+  Fix install path when not using the default GAMES_DATADIR
+
+  05 Oct 2006; Tristan Heaven <nyhm@gentoo.org> dopewars-1.5.12.ebuild:
+  Fix gettext dependency
+
+*dopewars-1.5.12 (31 Dec 2005)
+
+  31 Dec 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +dopewars-1.5.12.ebuild:
+  version bump
+
+  20 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  dopewars-1.5.10.ebuild:
+  remove gtk2 use flag
+
+*dopewars-1.5.10 (26 May 2005)
+
+  26 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +dopewars-1.5.10.ebuild:
+  version bump
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  03 Jun 2004; Aron Griffis <agriffis@gentoo.org> dopewars-1.5.9.ebuild:
+  Fix use invocation
+
+  23 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> dopewars-1.5.9.ebuild:
+  don't rdepend on sed
+
+  05 Jan 2004; Jon Portnoy <avenj@gentoo.org> dopewars-1.5.9.ebuild :
+  AMD64 keywords.
+
+  28 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> dopewars-1.5.9.ebuild:
+  fix gtk2 USE flag usage (bug 34562); fix in-game docs; fix hiscore file; more
+  error checking/messages
+
+  27 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> dopewars-1.5.9.ebuild:
+  be less specific about glib (bug 34562)
+
+  21 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> dopewars-1.5.8.ebuild,
+  files/dopewars-1.5.8-gentoo.diff:
+  clean version 1.5.8 from portage
+
+  21 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> dopewars-1.5.9.ebuild:
+  fix gtk2 USE handling per Spider; mark stable on ppc
+
+  17 Oct 2003; L. Boshell <leonardop@gentoo.org> dopewars-1.5.9.ebuild:
+  Marking stable on x86.
+  
+*dopewars-1.5.9 (14 Jul 2003)
+
+  14 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump + games.eclass + more optional support.
+
+*dopewars-1.5.8 (28 Oct 2002)
+
+  07 Nov 2002; L. Boshell <leonardop@gentoo.org> dopewars-1.5.8.ebuild,
+  files/dopewars-1.5.8-gentoo.diff : Fixed a small problem with the
+  $myconf variable and added a correction for the doc directory path in
+  the patch.
+  
+  28 Oct 2002; L. Boshell <leonardop@gentoo.org> dopewars-1.5.8.ebuild :
+  New version. Added support for various USE flags.
+
+*dopewars-1.5.7 (25 Jun 2002)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> dopewars-1.5.7.ebuild :
+  Added KEYWORDS.
+
+  25 Jun 2002; Seemant Kuulleen <seemant@gentoo.org> dopewars-1.5.7.ebuild
+  files/digest-dopewars-1.5.7 :
+
+  Version bump.
+
+*dopewars-1.5.4-r1 (7 May 2002)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> dopewars-1.5.4-r1.ebuild :
+  Added KEYWORDS, SLOT.
+  7 May 2002; Spider <spider@gentoo.org> dopewars-1.5.4-r1.ebuild dopewars-1.5.4.ebuild:
+  fix sourceforge mirroring.
+
+*dopewars-1.5.4-r1
+  11 Apr 2002; Spider <spider@gentoo.org> dopewars-1.5.4-r1.ebuild dopewars-1.5.4.ebuild:
+  Update all glib dependencies to use glib-1.2*  in preparation of unmasking the glib-2.0.1 packages
+  
+
+
+*dopewars-1.5.4-r1 (27 Mar 2002)
+
+  27 Mar 2002; Seemant Kulleen <seemant@gentoo.org> dopewars-1.5.4-r1.ebuild :
+
+  man page/LFH fixes submitted by Matthew Kennedy.
+
+*dopewars-1.5.4 (15 Mar 2002)
+
+  15 Mar 2002; Seemant Kulleen <seemant@gentoo.org> dopewars-1.5.4.ebuild
+
+  Upgraded to new version and added USE dependent nls compilation.  Also
+  changed the location of the html documentation into /usr/share/doc/dopewars
+  instead of /usr/share/dopewars/doc.  Additionally, added a check for gnome in
+  the USE flag.  If not present, the desktop icons etc need not be present.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> skel.ChangeLog :
+  
+  This changelog is targetted to users. This means that the comments should be
+  well explained and written in clean English. 
+  
+  Every new version or revision of the package has to be marked by a '*'
+  seperator line as above. Changements since the last revision have to be
+  added to the top of the file, underneath the initial copyright and cvs header
+  comments, in exactly the same format as this comment.
+  
+  This means that you start with header line that has the following format :
+  
+      date; your_name <your_email> changed_file1, changed_file2 :
+	  
+  Below that line your explanation should follow. It has to be indented,
+  paragraphed and wrapped at a linewidth of 80 characters.
+  
+  Any details about what exactly changed in the code should be added as a
+  message when the changes are committed to cvs, not in this file.

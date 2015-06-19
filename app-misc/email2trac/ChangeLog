@@ -1,0 +1,77 @@
+# ChangeLog for app-misc/email2trac
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/email2trac/ChangeLog,v 1.15 2015/01/12 21:52:41 dlan Exp $
+
+*email2trac-2.8.4 (12 Jan 2015)
+*email2trac-2.6.2-r1 (12 Jan 2015)
+
+  12 Jan 2015; Yixun Lan <dlan@gentoo.org> -email2trac-2.6.0.ebuild,
+  -email2trac-2.6.2.ebuild, +email2trac-2.6.2-r1.ebuild,
+  +email2trac-2.8.4.ebuild, metadata.xml:
+  drop old, bump new, add Lukas Dzunko as maintainer, bug 528192 
+
+  01 Oct 2012; Tim Harder <radhermit@gentoo.org> -email2trac-2.4.7.ebuild,
+  -email2trac-2.5.0.ebuild:
+  Remove old.
+
+*email2trac-2.6.2 (01 Oct 2012)
+
+  01 Oct 2012; Tim Harder <radhermit@gentoo.org> +email2trac-2.6.2.ebuild:
+  Version bump.
+
+*email2trac-2.6.0 (01 Sep 2012)
+
+  01 Sep 2012; Tim Harder <radhermit@gentoo.org> +email2trac-2.6.0.ebuild:
+  Version bump.
+
+  23 Feb 2012; Tim Harder <radhermit@gentoo.org> -email2trac-1.6.0.ebuild,
+  -email2trac-2.4.2.ebuild:
+  Remove old.
+
+*email2trac-2.5.0 (23 Feb 2012)
+
+  23 Feb 2012; Tim Harder <radhermit@gentoo.org> +email2trac-2.5.0.ebuild:
+  Version bump.
+
+*email2trac-2.4.7 (03 Jan 2012)
+
+  03 Jan 2012; Tim Harder <radhermit@gentoo.org> +email2trac-2.4.7.ebuild:
+  Version bump. Update to EAPI 4.
+
+*email2trac-2.4.2 (02 Oct 2011)
+
+  02 Oct 2011; Tim Harder <radhermit@gentoo.org> +email2trac-2.4.2.ebuild:
+  Version bump.
+
+  20 Apr 2011; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Fix herd.
+
+  18 Feb 2011; Benedikt Böhm <hollow@gentoo.org> metadata.xml:
+  remove myself from metadata
+
+  07 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -email2trac-1.4.0.ebuild:
+  Delete.
+
+*email2trac-1.6.0 (22 Aug 2010)
+
+  22 Aug 2010; Benedikt Böhm <hollow@gentoo.org> -email2trac-1.3.2.ebuild,
+  email2trac-1.4.0.ebuild, +email2trac-1.6.0.ebuild:
+  version bump wrt #332785. also fixes bug #325123
+
+  12 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  email2trac-1.4.0.ebuild:
+  Respect LDFLAGS,CFLAGS. Bug #331853. Thanks to Diego E. 'Flameeyes'
+  Pettenò <flameeyes@gentoo.org> for reporting
+
+*email2trac-1.4.0 (29 May 2010)
+
+  29 May 2010; Benedikt Böhm <hollow@gentoo.org> +email2trac-1.4.0.ebuild:
+  version bump wrt #321645
+
+*email2trac-1.3.2 (12 May 2010)
+
+  12 May 2010; Benedikt Böhm <hollow@gentoo.org> +email2trac-1.3.2.ebuild,
+  +metadata.xml:
+  initial ebuild
+

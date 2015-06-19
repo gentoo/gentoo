@@ -1,0 +1,43 @@
+# ChangeLog for app-misc/evtest
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/evtest/ChangeLog,v 1.10 2015/01/14 04:40:25 vapier Exp $
+
+*evtest-1.31 (14 Jan 2015)
+
+  14 Jan 2015; Mike Frysinger <vapier@gentoo.org> +evtest-1.31.ebuild:
+  Version bump.
+
+  19 Oct 2013; Mike Frysinger <vapier@gentoo.org> evtest-1.30.ebuild:
+  Add keywords for everyone.
+
+  09 Mar 2013; Agostino Sarubbo <ago@gentoo.org> evtest-1.30.ebuild:
+  Stable for x86, wrt bug #457244
+
+  08 Mar 2013; Agostino Sarubbo <ago@gentoo.org> evtest-1.30.ebuild:
+  Stable for arm, wrt bug #457244
+
+  01 Mar 2013; Chema Alonso <nimiux@gentoo.org> evtest-1.30.ebuild:
+  Stable for amd64 wrt bug #457244
+
+  06 Jan 2013; Zac Medico <zmedico@gentoo.org> Manifest:
+  Update Manifest with digests for a snapshot which I've manually uploaded to
+  dev.gentoo.org:/space/distfiles-local/, since the SRC_URI returns a
+  dynamically generated file with random digests.
+
+*evtest-1.30 (06 Jan 2013)
+
+  06 Jan 2013; Mike Frysinger <vapier@gentoo.org> +evtest-1.30.ebuild,
+  +files/evtest-1.30-autoconf.patch, +files/evtest-1.30-xml.patch:
+  Version bump #450634 by Agostino Sarubbo.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> evtest-1.29.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  27 Mar 2012; Mike Frysinger <vapier@gentoo.org> evtest-1.29.ebuild:
+  Stabilize for all.
+
+*evtest-1.29 (10 Feb 2012)
+
+  10 Feb 2012; Mike Frysinger <vapier@gentoo.org> +evtest-1.29.ebuild,
+  +metadata.xml:
+  Initial ebuild based on ChromiumOS ebuild.

@@ -1,0 +1,24 @@
+diff -ur ws-jaxme-0.5.2-old/src/jaxme/org/apache/ws/jaxme/impl/JMMarshallerImpl.java ws-jaxme-0.5.2/src/jaxme/org/apache/ws/jaxme/impl/JMMarshallerImpl.java
+--- ws-jaxme-0.5.2-old/src/jaxme/org/apache/ws/jaxme/impl/JMMarshallerImpl.java	2005-03-10 12:14:08.000000000 +0200
++++ ws-jaxme-0.5.2/src/jaxme/org/apache/ws/jaxme/impl/JMMarshallerImpl.java	2009-04-05 00:43:39.498597962 +0300
+@@ -45,7 +45,7 @@
+  * @author <a href="mailto:joe@ispsoft.de">Jochen Wiedmann</a>
+  * @version $Id: jaxme-0.5.2-fix_marshallers.patch,v 1.1 2009/05/23 00:55:54 ali_bush Exp $
+  */
+-public class JMMarshallerImpl extends JMControllerImpl implements JMMarshaller {
++public abstract class JMMarshallerImpl extends JMControllerImpl implements JMMarshaller {
+   /** Default value for {@link Marshaller#JAXB_ENCODING}.
+    * (UTF-8 encoding)
+    */
+diff -ur ws-jaxme-0.5.2-old/src/jaxme/org/apache/ws/jaxme/impl/JMUnmarshallerImpl.java ws-jaxme-0.5.2/src/jaxme/org/apache/ws/jaxme/impl/JMUnmarshallerImpl.java
+--- ws-jaxme-0.5.2-old/src/jaxme/org/apache/ws/jaxme/impl/JMUnmarshallerImpl.java	2005-03-04 12:41:53.000000000 +0200
++++ ws-jaxme-0.5.2/src/jaxme/org/apache/ws/jaxme/impl/JMUnmarshallerImpl.java	2009-04-05 00:43:53.635210800 +0300
+@@ -44,7 +44,7 @@
+ 
+ /** JaxMe's {@link javax.xml.bind.Unmarshaller} implementation.
+  */
+-public class JMUnmarshallerImpl extends JMControllerImpl implements JMUnmarshaller {
++public abstract class JMUnmarshallerImpl extends JMControllerImpl implements JMUnmarshaller {
+     private static final SAXParserFactory spf;
+     static {
+         spf = SAXParserFactory.newInstance();

@@ -1,0 +1,13 @@
+diff -r -U 2 a/src/plugins.h b/src/plugins.h
+--- a/src/plugins.h	2010-01-07 12:44:38.000000000 +0100
++++ b/src/plugins.h	2010-06-19 13:56:30.960679284 +0200
+@@ -25,4 +25,8 @@
+ 
+ 
++#ifndef lt__PROGRAM__LTX_preloaded_symbols
++#define lt__PROGRAM__LTX_preloaded_symbols lt_libltdl_LTX_preloaded_symbols
++extern const void *lt_preloaded_symbols[];
++#endif
+
+ /* Plugins must return STS_SUCCESS / SUCCESS_FAILURE */
+ 

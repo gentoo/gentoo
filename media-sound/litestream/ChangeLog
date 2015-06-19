@@ -1,0 +1,49 @@
+# ChangeLog for media-sound/litestream
+# Copyright 2000-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/litestream/ChangeLog,v 1.12 2014/08/10 21:07:38 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> litestream-1.3_rc3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  11 Aug 2007; Raúl Porcel <armin76@gentoo.org> litestream-1.3_rc3.ebuild:
+  x86 stable wrt #153350
+
+  31 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  litestream-1.3_rc3.ebuild:
+  Stable on sparc wrt #153350
+
+  03 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*litestream-1.3_rc3 (17 Dec 2005)
+
+  17 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +litestream-1.3_rc3.ebuild:
+  Bump to latest version to allow compile on newer GCC versions.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  litestream-1.2.ebuild:
+  Stable sparc.
+
+  22 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  litestream-1.2.ebuild:
+  Added to ~sparc.
+
+  23 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  litestream-1.2.ebuild:
+  Stable x86.
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  litestream-1.2.ebuild:
+  Added IUSE.
+
+  25 Mar 2004; David Holm <dholm@gentoo.org> litestream-1.2.ebuild:
+  Added to ~ppc.
+
+*litestream-1.2 (24 Mar 2004)
+
+  24 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  litestream-1.2.ebuild, metadata.xml, files/litestream-1.2-Makefile.patch,
+  files/vargs.h:
+  Liteweight mp3 streaming server compatible with shoutcast protocol. Ebuild
+  submitted by Adam Roben <aroben@fas.harvard.edu> in bug #35354.

@@ -1,0 +1,11 @@
+--- erts/configure.in.bak	2013-11-04 14:47:47.838188678 +0100
++++ erts/configure.in	2013-11-04 14:46:54.352439671 +0100
+@@ -1322,7 +1322,7 @@
+ if test "x$with_termcap" != "xno" &&
+    test "X$host" != "Xwin32"; then
+     # try these libs
+-    termcap_libs="ncurses curses termcap termlib"
++    termcap_libs="tinfo ncurses curses termcap termlib"
+ 
+     for termcap_lib in $termcap_libs; do
+ 	AC_CHECK_LIB($termcap_lib, tgetent, TERMCAP_LIB="-l$termcap_lib")

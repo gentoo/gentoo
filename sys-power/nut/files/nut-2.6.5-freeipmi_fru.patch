@@ -1,0 +1,448 @@
+Update to 1.2.x ipmi_fru declarations.
+
+Starting with the 1.2.1 release, all of the ipmi_fru_parse* declarations (both
+lowercase & uppercase) were renamed to ipmi_fru*.  This is a simple search &
+replace of all instances. Upstream should probably have a backwards compatible
+version that supports both variants of the names.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+diff -Nuar nut-2.6.5.orig/drivers/nut-libfreeipmi.c nut-2.6.5/drivers/nut-libfreeipmi.c
+--- nut-2.6.5.orig/drivers/nut-libfreeipmi.c	2012-07-31 17:38:59.000000000 +0000
++++ nut-2.6.5/drivers/nut-libfreeipmi.c	2013-08-12 17:55:03.132363518 +0000
+@@ -57,7 +57,7 @@
+ 
+ /* FreeIPMI contexts and configuration*/
+ ipmi_ctx_t ipmi_ctx = NULL;
+-ipmi_fru_parse_ctx_t fru_parse_ctx = NULL;
++ipmi_fru_ctx_t fru_parse_ctx = NULL;
+ ipmi_monitoring_ctx_t mon_ctx = NULL;
+ struct ipmi_monitoring_ipmi_config ipmi_config;
+ /* SDR management API has changed with 1.1.X and later */
+@@ -78,7 +78,7 @@
+ 
+ /* Support functions */
+ static const char* libfreeipmi_getfield (uint8_t language_code,
+-	ipmi_fru_parse_field_t *field);
++	ipmi_fru_field_t *field);
+ 
+ static void libfreeipmi_cleanup();
+ 
+@@ -97,7 +97,7 @@
+ int nut_ipmi_open(int ipmi_id, IPMIDevice_t *ipmi_dev)
+ {
+ 	int ret = -1;
+-	uint8_t areabuf[IPMI_FRU_PARSE_AREA_SIZE_MAX+1];
++	uint8_t areabuf[IPMI_FRU_AREA_SIZE_MAX+1];
+ 	unsigned int area_type = 0;
+ 	unsigned int area_length = 0;
+ 
+@@ -134,26 +134,26 @@
+ 	upsdebugx(1, "FreeIPMI initialized...");
+ 
+ 	/* Parse FRU information */
+-	if (!(fru_parse_ctx = ipmi_fru_parse_ctx_create (ipmi_ctx)))
++	if (!(fru_parse_ctx = ipmi_fru_ctx_create (ipmi_ctx)))
+ 	{
+ 		libfreeipmi_cleanup();
+-		fatal_with_errno(EXIT_FAILURE, "ipmi_fru_parse_ctx_create()");
++		fatal_with_errno(EXIT_FAILURE, "ipmi_fru_ctx_create()");
+ 	}
+       
+ 	/* lots of motherboards calculate checksums incorrectly */
+-	if (ipmi_fru_parse_ctx_set_flags (fru_parse_ctx, IPMI_FRU_PARSE_FLAGS_SKIP_CHECKSUM_CHECKS) < 0)
++	if (ipmi_fru_ctx_set_flags (fru_parse_ctx, IPMI_FRU_FLAGS_SKIP_CHECKSUM_CHECKS) < 0)
+ 	{
+ 		libfreeipmi_cleanup();
+-		fatalx(EXIT_FAILURE, "ipmi_fru_parse_ctx_set_flags: %s\n",
+-			ipmi_fru_parse_ctx_strerror (ipmi_fru_parse_ctx_errnum (fru_parse_ctx)));
++		fatalx(EXIT_FAILURE, "ipmi_fru_ctx_set_flags: %s\n",
++			ipmi_fru_ctx_strerror (ipmi_fru_ctx_errnum (fru_parse_ctx)));
+ 	}
+ 
+ 	/* Now open the requested (local) PSU */
+-	if (ipmi_fru_parse_open_device_id (fru_parse_ctx, ipmi_id) < 0)
++	if (ipmi_fru_open_device_id (fru_parse_ctx, ipmi_id) < 0)
+ 	{
+ 		libfreeipmi_cleanup();
+-		fatalx(EXIT_FAILURE, "ipmi_fru_parse_open_device_id: %s\n",
+-			ipmi_fru_parse_ctx_errormsg (fru_parse_ctx));
++		fatalx(EXIT_FAILURE, "ipmi_fru_open_device_id: %s\n",
++			ipmi_fru_ctx_errormsg (fru_parse_ctx));
+ 	}
+ 
+ 	/* Set IPMI identifier */
+@@ -164,19 +164,19 @@
+ 		/* clear fields */
+ 		area_type = 0;
+ 		area_length = 0;
+-		memset (areabuf, '\0', IPMI_FRU_PARSE_AREA_SIZE_MAX + 1);
++		memset (areabuf, '\0', IPMI_FRU_AREA_SIZE_MAX + 1);
+ 
+ 		/* parse FRU buffer */
+-		if (ipmi_fru_parse_read_data_area (fru_parse_ctx,
++		if (ipmi_fru_read_data_area (fru_parse_ctx,
+ 											&area_type,
+ 											&area_length,
+ 											areabuf,
+-											IPMI_FRU_PARSE_AREA_SIZE_MAX) < 0)
++											IPMI_FRU_AREA_SIZE_MAX) < 0)
+ 		{
+ 			libfreeipmi_cleanup();
+ 			fatal_with_errno(EXIT_FAILURE, 
+-				"ipmi_fru_parse_open_device_id: %s\n",
+-				ipmi_fru_parse_ctx_errormsg (fru_parse_ctx));
++				"ipmi_fru_open_device_id: %s\n",
++				ipmi_fru_ctx_errormsg (fru_parse_ctx));
+ 		}
+ 
+ 		if (area_length)
+@@ -184,7 +184,7 @@
+ 			switch (area_type)
+ 			{
+ 				/* get generic board information */
+-				case IPMI_FRU_PARSE_AREA_TYPE_BOARD_INFO_AREA:
++				case IPMI_FRU_AREA_TYPE_BOARD_INFO_AREA:
+ 
+ 					if(libfreeipmi_get_board_info (areabuf, area_length,
+ 						ipmi_dev) < 0)
+@@ -193,7 +193,7 @@
+ 					}
+ 					break;
+ 				/* get specific PSU information */
+-				case IPMI_FRU_PARSE_AREA_TYPE_MULTIRECORD_POWER_SUPPLY_INFORMATION:
++				case IPMI_FRU_AREA_TYPE_MULTIRECORD_POWER_SUPPLY_INFORMATION:
+ 
+ 					if(libfreeipmi_get_psu_info (areabuf, area_length, ipmi_dev) < 0)
+ 					{
+@@ -205,13 +205,13 @@
+ 					break;
+ 			}
+ 		}
+-	} while ((ret = ipmi_fru_parse_next (fru_parse_ctx)) == 1);
++	} while ((ret = ipmi_fru_next (fru_parse_ctx)) == 1);
+ 
+ 	/* check for errors */
+ 	if (ret < 0) {
+ 		libfreeipmi_cleanup();
+-		fatal_with_errno(EXIT_FAILURE, "ipmi_fru_parse_next: %s",
+-			ipmi_fru_parse_ctx_errormsg (fru_parse_ctx));
++		fatal_with_errno(EXIT_FAILURE, "ipmi_fru_next: %s",
++			ipmi_fru_ctx_errormsg (fru_parse_ctx));
+ 	}
+ 	else {
+ 		/* Get all related sensors information */
+@@ -232,25 +232,25 @@
+ }
+ 
+ static const char* libfreeipmi_getfield (uint8_t language_code,
+-									ipmi_fru_parse_field_t *field)
++									ipmi_fru_field_t *field)
+ {
+-	static char strbuf[IPMI_FRU_PARSE_AREA_STRING_MAX + 1];
+-	unsigned int strbuflen = IPMI_FRU_PARSE_AREA_STRING_MAX;
++	static char strbuf[IPMI_FRU_AREA_STRING_MAX + 1];
++	unsigned int strbuflen = IPMI_FRU_AREA_STRING_MAX;
+ 
+ 	if (!field->type_length_field_length)
+ 		return NULL;
+ 
+-	memset (strbuf, '\0', IPMI_FRU_PARSE_AREA_STRING_MAX + 1);
++	memset (strbuf, '\0', IPMI_FRU_AREA_STRING_MAX + 1);
+ 
+-	if (ipmi_fru_parse_type_length_field_to_string (fru_parse_ctx,
++	if (ipmi_fru_type_length_field_to_string (fru_parse_ctx,
+ 													field->type_length_field,
+ 													field->type_length_field_length,
+ 													language_code,
+ 													strbuf,
+ 													&strbuflen) < 0)
+ 		{
+-			upsdebugx (2, "ipmi_fru_parse_type_length_field_to_string: %s",
+-				ipmi_fru_parse_ctx_errormsg (fru_parse_ctx));
++			upsdebugx (2, "ipmi_fru_type_length_field_to_string: %s",
++				ipmi_fru_ctx_errormsg (fru_parse_ctx));
+ 			return NULL;
+ 		}
+ 
+@@ -280,8 +280,8 @@
+ {
+ 	/* cleanup */
+ 	if (fru_parse_ctx) {
+-		ipmi_fru_parse_close_device_id (fru_parse_ctx);
+-		ipmi_fru_parse_ctx_destroy (fru_parse_ctx);
++		ipmi_fru_close_device_id (fru_parse_ctx);
++		ipmi_fru_ctx_destroy (fru_parse_ctx);
+ 	}
+ 
+ #ifdef HAVE_FREEIPMI_11X_12X
+@@ -342,7 +342,7 @@
+ 
+ 	upsdebugx(1, "entering libfreeipmi_get_psu_info()");
+ 
+-	if (ipmi_fru_parse_multirecord_power_supply_information (fru_parse_ctx,
++	if (ipmi_fru_multirecord_power_supply_information (fru_parse_ctx,
+ 			areabuf,
+ 			area_length,
+ 			&overall_capacity,
+@@ -368,8 +368,8 @@
+ 			&total_combined_wattage,
+ 			&predictive_fail_tachometer_lower_threshold) < 0)
+ 	{
+-		fatalx(EXIT_FAILURE, "ipmi_fru_parse_multirecord_power_supply_information: %s",
+-			ipmi_fru_parse_ctx_errormsg (fru_parse_ctx));
++		fatalx(EXIT_FAILURE, "ipmi_fru_multirecord_power_supply_information: %s",
++			ipmi_fru_ctx_errormsg (fru_parse_ctx));
+ 	}
+ 
+ 	ipmi_dev->overall_capacity = overall_capacity;
+@@ -392,12 +392,12 @@
+ {
+ 	uint8_t language_code;
+ 	uint32_t mfg_date_time;
+-	ipmi_fru_parse_field_t board_manufacturer;
+-	ipmi_fru_parse_field_t board_product_name;
+-	ipmi_fru_parse_field_t board_serial_number;
+-	ipmi_fru_parse_field_t board_part_number;
+-	ipmi_fru_parse_field_t board_fru_file_id;
+-	ipmi_fru_parse_field_t board_custom_fields[IPMI_FRU_CUSTOM_FIELDS];
++	ipmi_fru_field_t board_manufacturer;
++	ipmi_fru_field_t board_product_name;
++	ipmi_fru_field_t board_serial_number;
++	ipmi_fru_field_t board_part_number;
++	ipmi_fru_field_t board_fru_file_id;
++	ipmi_fru_field_t board_custom_fields[IPMI_FRU_CUSTOM_FIELDS];
+ 	const char *string = NULL;
+ 	time_t timetmp;
+ 	struct tm mfg_date_time_tm;
+@@ -406,15 +406,15 @@
+ 	upsdebugx(1, "entering libfreeipmi_get_board_info()");
+ 
+ 	/* clear fields */
+-	memset (&board_manufacturer, '\0', sizeof (ipmi_fru_parse_field_t));
+-	memset (&board_product_name, '\0', sizeof (ipmi_fru_parse_field_t));
+-	memset (&board_serial_number, '\0', sizeof (ipmi_fru_parse_field_t));
+-	memset (&board_fru_file_id, '\0', sizeof (ipmi_fru_parse_field_t));
++	memset (&board_manufacturer, '\0', sizeof (ipmi_fru_field_t));
++	memset (&board_product_name, '\0', sizeof (ipmi_fru_field_t));
++	memset (&board_serial_number, '\0', sizeof (ipmi_fru_field_t));
++	memset (&board_fru_file_id, '\0', sizeof (ipmi_fru_field_t));
+ 	memset (&board_custom_fields[0], '\0',
+-			sizeof (ipmi_fru_parse_field_t) * IPMI_FRU_CUSTOM_FIELDS);
++			sizeof (ipmi_fru_field_t) * IPMI_FRU_CUSTOM_FIELDS);
+ 
+ 	/* parse FRU buffer */
+-	if (ipmi_fru_parse_board_info_area (fru_parse_ctx,
++	if (ipmi_fru_board_info_area (fru_parse_ctx,
+ 			areabuf,
+ 			area_length,
+ 			&language_code,
+@@ -428,8 +428,8 @@
+ 			IPMI_FRU_CUSTOM_FIELDS) < 0)
+ 	{
+ 		libfreeipmi_cleanup();
+-		fatalx(EXIT_FAILURE, "ipmi_fru_parse_board_info_area: %s",
+-			ipmi_fru_parse_ctx_errormsg (fru_parse_ctx));
++		fatalx(EXIT_FAILURE, "ipmi_fru_board_info_area: %s",
++			ipmi_fru_ctx_errormsg (fru_parse_ctx));
+ 	}
+ 
+ 
+diff -Nuar nut-2.6.5.orig/m4/nut_check_libfreeipmi.m4 nut-2.6.5/m4/nut_check_libfreeipmi.m4
+--- nut-2.6.5.orig/m4/nut_check_libfreeipmi.m4	2012-07-31 17:38:56.000000000 +0000
++++ nut-2.6.5/m4/nut_check_libfreeipmi.m4	2013-08-12 17:55:03.132363518 +0000
+@@ -66,7 +66,7 @@
+ 	dnl when version cannot be tested (prior to 1.0.5, with no pkg-config)
+ 	dnl we have to check for some specific functions
+ 	AC_SEARCH_LIBS([ipmi_ctx_find_inband], [freeipmi], [], [nut_have_freeipmi=no])
+-	AC_SEARCH_LIBS([ipmi_fru_parse_ctx_create], [freeipmi], [], [nut_have_freeipmi=no])
++	AC_SEARCH_LIBS([ipmi_fru_ctx_create], [freeipmi], [], [nut_have_freeipmi=no])
+ 
+ 	AC_SEARCH_LIBS([ipmi_monitoring_init], [ipmimonitoring], [nut_have_freeipmi_monitoring=yes], [nut_have_freeipmi_monitoring=no])
+ 	AC_SEARCH_LIBS([ipmi_monitoring_sensor_read_record_id], [ipmimonitoring], [], [nut_have_freeipmi_monitoring=no])
+diff -Nuar nut-2.6.5.orig/tools/nut-scanner/scan_ipmi.c nut-2.6.5/tools/nut-scanner/scan_ipmi.c
+--- nut-2.6.5.orig/tools/nut-scanner/scan_ipmi.c	2012-07-31 17:38:58.000000000 +0000
++++ nut-2.6.5/tools/nut-scanner/scan_ipmi.c	2013-08-12 17:55:03.132363518 +0000
+@@ -34,24 +34,24 @@
+ static lt_dlhandle dl_handle = NULL;
+ static const char *dl_error = NULL;
+ 
+-static int (*nut_ipmi_fru_parse_close_device_id) (ipmi_fru_parse_ctx_t ctx);
+-static void (*nut_ipmi_fru_parse_ctx_destroy) (ipmi_fru_parse_ctx_t ctx);
++static int (*nut_ipmi_fru_close_device_id) (ipmi_fru_ctx_t ctx);
++static void (*nut_ipmi_fru_ctx_destroy) (ipmi_fru_ctx_t ctx);
+ #ifdef HAVE_FREEIPMI_11X_12X
+ static void (*nut_ipmi_sdr_ctx_destroy) (ipmi_sdr_ctx_t ctx);
+ #else /* HAVE_FREEIPMI_11X_12X */
+ static void (*nut_ipmi_sdr_cache_ctx_destroy) (ipmi_sdr_cache_ctx_t ctx);
+ static void (*nut_ipmi_sdr_parse_ctx_destroy) (ipmi_sdr_parse_ctx_t ctx);
+ #endif /* HAVE_FREEIPMI_11X_12X */
+-static ipmi_fru_parse_ctx_t (*nut_ipmi_fru_parse_ctx_create) (ipmi_ctx_t ipmi_ctx);
+-static int (*nut_ipmi_fru_parse_ctx_set_flags) (ipmi_fru_parse_ctx_t ctx, unsigned int flags);
+-static int (*nut_ipmi_fru_parse_open_device_id) (ipmi_fru_parse_ctx_t ctx, uint8_t fru_device_id);
+-static char * (*nut_ipmi_fru_parse_ctx_errormsg) (ipmi_fru_parse_ctx_t ctx);
+-static int (*nut_ipmi_fru_parse_read_data_area) (ipmi_fru_parse_ctx_t ctx,
++static ipmi_fru_ctx_t (*nut_ipmi_fru_ctx_create) (ipmi_ctx_t ipmi_ctx);
++static int (*nut_ipmi_fru_ctx_set_flags) (ipmi_fru_ctx_t ctx, unsigned int flags);
++static int (*nut_ipmi_fru_open_device_id) (ipmi_fru_ctx_t ctx, uint8_t fru_device_id);
++static char * (*nut_ipmi_fru_ctx_errormsg) (ipmi_fru_ctx_t ctx);
++static int (*nut_ipmi_fru_read_data_area) (ipmi_fru_ctx_t ctx,
+                                    unsigned int *area_type,
+                                    unsigned int *area_length,
+                                    void *areabuf,
+                                    unsigned int areabuflen);
+-static int (*nut_ipmi_fru_parse_next) (ipmi_fru_parse_ctx_t ctx);
++static int (*nut_ipmi_fru_next) (ipmi_fru_ctx_t ctx);
+ static ipmi_ctx_t (*nut_ipmi_ctx_create) (void);
+ static int (*nut_ipmi_ctx_find_inband) (ipmi_ctx_t ctx,
+                           ipmi_driver_type_t *driver_type,
+@@ -92,12 +92,12 @@
+ 	/* Clear any existing error */
+ 	lt_dlerror();
+ 
+-	*(void **) (&nut_ipmi_fru_parse_close_device_id) = lt_dlsym(dl_handle, "ipmi_fru_parse_close_device_id");
++	*(void **) (&nut_ipmi_fru_close_device_id) = lt_dlsym(dl_handle, "ipmi_fru_close_device_id");
+ 	if ((dl_error = lt_dlerror()) != NULL)  {
+ 			goto err;
+ 	}
+ 
+-	*(void **) (&nut_ipmi_fru_parse_ctx_destroy) = lt_dlsym(dl_handle, "ipmi_fru_parse_ctx_destroy");
++	*(void **) (&nut_ipmi_fru_ctx_destroy) = lt_dlsym(dl_handle, "ipmi_fru_ctx_destroy");
+ 	if ((dl_error = lt_dlerror()) != NULL)  {
+ 			goto err;
+ 	}
+@@ -122,32 +122,32 @@
+ 	}
+ #endif /* HAVE_FREEIPMI_11X_12X */
+ 
+-	*(void **) (&nut_ipmi_fru_parse_ctx_create) = lt_dlsym(dl_handle, "ipmi_fru_parse_ctx_create");
++	*(void **) (&nut_ipmi_fru_ctx_create) = lt_dlsym(dl_handle, "ipmi_fru_ctx_create");
+ 	if ((dl_error = lt_dlerror()) != NULL)  {
+ 			goto err;
+ 	}
+ 
+-	*(void **) (&nut_ipmi_fru_parse_ctx_set_flags) = lt_dlsym(dl_handle, "ipmi_fru_parse_ctx_set_flags");
++	*(void **) (&nut_ipmi_fru_ctx_set_flags) = lt_dlsym(dl_handle, "ipmi_fru_ctx_set_flags");
+ 	if ((dl_error = lt_dlerror()) != NULL)  {
+ 			goto err;
+ 	}
+ 
+-	*(void **) (&nut_ipmi_fru_parse_open_device_id) = lt_dlsym(dl_handle, "ipmi_fru_parse_open_device_id");
++	*(void **) (&nut_ipmi_fru_open_device_id) = lt_dlsym(dl_handle, "ipmi_fru_open_device_id");
+ 	if ((dl_error = lt_dlerror()) != NULL)  {
+ 			goto err;
+ 	}
+ 
+-	*(void **) (&nut_ipmi_fru_parse_ctx_errormsg) = lt_dlsym(dl_handle, "ipmi_fru_parse_ctx_errormsg");
++	*(void **) (&nut_ipmi_fru_ctx_errormsg) = lt_dlsym(dl_handle, "ipmi_fru_ctx_errormsg");
+ 	if ((dl_error = lt_dlerror()) != NULL)  {
+ 			goto err;
+ 	}
+ 
+-	*(void **) (&nut_ipmi_fru_parse_read_data_area) = lt_dlsym(dl_handle, "ipmi_fru_parse_read_data_area");
++	*(void **) (&nut_ipmi_fru_read_data_area) = lt_dlsym(dl_handle, "ipmi_fru_read_data_area");
+ 	if ((dl_error = lt_dlerror()) != NULL)  {
+ 			goto err;
+ 	}
+ 
+-	*(void **) (&nut_ipmi_fru_parse_next) = lt_dlsym(dl_handle, "ipmi_fru_parse_next");
++	*(void **) (&nut_ipmi_fru_next) = lt_dlsym(dl_handle, "ipmi_fru_next");
+ 	if ((dl_error = lt_dlerror()) != NULL)  {
+ 			goto err;
+ 	}
+@@ -188,17 +188,17 @@
+ 
+ /* Cleanup IPMI contexts */
+ #ifdef HAVE_FREEIPMI_11X_12X
+-static void nut_freeipmi_cleanup(ipmi_fru_parse_ctx_t fru_parse_ctx,
++static void nut_freeipmi_cleanup(ipmi_fru_ctx_t fru_parse_ctx,
+ 								 ipmi_sdr_ctx_t sdr_ctx)
+ #else /* HAVE_FREEIPMI_11X_12X */
+-static void nut_freeipmi_cleanup(ipmi_fru_parse_ctx_t fru_parse_ctx,
++static void nut_freeipmi_cleanup(ipmi_fru_ctx_t fru_parse_ctx,
+ 								 ipmi_sdr_cache_ctx_t sdr_cache_ctx,
+ 								 ipmi_sdr_parse_ctx_t sdr_parse_ctx)
+ #endif /* HAVE_FREEIPMI_11X_12X */
+ {
+ 	if (fru_parse_ctx) {
+-		(*nut_ipmi_fru_parse_close_device_id) (fru_parse_ctx);
+-		(*nut_ipmi_fru_parse_ctx_destroy) (fru_parse_ctx);
++		(*nut_ipmi_fru_close_device_id) (fru_parse_ctx);
++		(*nut_ipmi_fru_ctx_destroy) (fru_parse_ctx);
+ 	}
+ 
+ #ifdef HAVE_FREEIPMI_11X_12X
+@@ -226,8 +226,8 @@
+ 	int ret = -1;
+ 	unsigned int area_type = 0;
+ 	unsigned int area_length = 0;
+-	uint8_t areabuf[IPMI_FRU_PARSE_AREA_SIZE_MAX+1];
+-	ipmi_fru_parse_ctx_t fru_parse_ctx = NULL;
++	uint8_t areabuf[IPMI_FRU_AREA_SIZE_MAX+1];
++	ipmi_fru_ctx_t fru_parse_ctx = NULL;
+ #ifdef HAVE_FREEIPMI_11X_12X
+ 	ipmi_sdr_ctx_t sdr_ctx = NULL;
+ #else /* HAVE_FREEIPMI_11X_12X */
+@@ -236,14 +236,14 @@
+ #endif /* HAVE_FREEIPMI_11X_12X */
+ 
+ 	/* Parse FRU information */
+-	if (!(fru_parse_ctx = (*nut_ipmi_fru_parse_ctx_create) (ipmi_ctx)))
++	if (!(fru_parse_ctx = (*nut_ipmi_fru_ctx_create) (ipmi_ctx)))
+ 	{
+-		fprintf(stderr, "ipmi_fru_parse_ctx_create()\n");
++		fprintf(stderr, "ipmi_fru_ctx_create()\n");
+ 		return 0;
+ 	}
+ 	  
+ 	/* lots of motherboards calculate checksums incorrectly */
+-	if ((*nut_ipmi_fru_parse_ctx_set_flags) (fru_parse_ctx, IPMI_FRU_PARSE_FLAGS_SKIP_CHECKSUM_CHECKS) < 0)
++	if ((*nut_ipmi_fru_ctx_set_flags) (fru_parse_ctx, IPMI_FRU_FLAGS_SKIP_CHECKSUM_CHECKS) < 0)
+ 	{
+ #ifdef HAVE_FREEIPMI_11X_12X
+ 		nut_freeipmi_cleanup(fru_parse_ctx, sdr_ctx);
+@@ -253,7 +253,7 @@
+ 		return 0;
+ 	}
+ 
+-	if ((*nut_ipmi_fru_parse_open_device_id) (fru_parse_ctx, ipmi_id) < 0)
++	if ((*nut_ipmi_fru_open_device_id) (fru_parse_ctx, ipmi_id) < 0)
+ 	{
+ #ifdef HAVE_FREEIPMI_11X_12X
+ 		nut_freeipmi_cleanup(fru_parse_ctx, sdr_ctx);
+@@ -268,14 +268,14 @@
+ 		/* clear fields */
+ 		area_type = 0;
+ 		area_length = 0;
+-		memset (areabuf, '\0', IPMI_FRU_PARSE_AREA_SIZE_MAX + 1);
++		memset (areabuf, '\0', IPMI_FRU_AREA_SIZE_MAX + 1);
+ 
+ 		/* parse FRU buffer */
+-		if ((*nut_ipmi_fru_parse_read_data_area) (fru_parse_ctx,
++		if ((*nut_ipmi_fru_read_data_area) (fru_parse_ctx,
+ 											&area_type,
+ 											&area_length,
+ 											areabuf,
+-											IPMI_FRU_PARSE_AREA_SIZE_MAX) < 0)
++											IPMI_FRU_AREA_SIZE_MAX) < 0)
+ 		{
+ #ifdef HAVE_FREEIPMI_11X_12X
+ 			nut_freeipmi_cleanup(fru_parse_ctx, sdr_ctx);
+@@ -287,7 +287,7 @@
+ 
+ 		if (area_length)
+ 		{
+-			if (area_type == IPMI_FRU_PARSE_AREA_TYPE_MULTIRECORD_POWER_SUPPLY_INFORMATION)
++			if (area_type == IPMI_FRU_AREA_TYPE_MULTIRECORD_POWER_SUPPLY_INFORMATION)
+ 			{
+ 				/* Found a POWER_SUPPLY record */
+ #ifdef HAVE_FREEIPMI_11X_12X
+@@ -298,7 +298,7 @@
+ 				return 1;
+ 			}
+ 		}
+-	} while ((ret = (*nut_ipmi_fru_parse_next) (fru_parse_ctx)) == 1);
++	} while ((ret = (*nut_ipmi_fru_next) (fru_parse_ctx)) == 1);
+ 
+ 	/* No need for further errors checking */
+ #ifdef HAVE_FREEIPMI_11X_12X

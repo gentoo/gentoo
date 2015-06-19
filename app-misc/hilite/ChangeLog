@@ -1,0 +1,62 @@
+# ChangeLog for app-misc/hilite
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/hilite/ChangeLog,v 1.20 2011/01/05 15:28:42 jlec Exp $
+
+  05 Jan 2011; Justin Lecher <jlec@gentoo.org> hilite-1.5.ebuild:
+  Some Clean up
+
+  19 Oct 2010; Mart Raudsepp <leio@gentoo.org> hilite-1.5.ebuild:
+  Drop to ~mips
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org> hilite-1.5.ebuild:
+  Transfer Prefix keywords
+
+  26 Mar 2008; Raúl Porcel <armin76@gentoo.org> hilite-1.5.ebuild:
+  Add ~ia64
+
+  03 Feb 2008; Fabian Groffen <grobian@gentoo.org> hilite-1.5.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-hilite-1.5,
+  Manifest:
+  Fixing SHA256 digest, pass four
+
+  07 Apr 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove ciaranm from metadata.xml.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> hilite-1.5.ebuild:
+  stable on amd64
+
+  27 Dec 2004; <gongloo@gentoo.org> hilite-1.5.ebuild:
+  Added ~ppc-macos.
+
+  26 Oct 2004; Ciaran McCreesh <ciaranm@gentoo.org> hilite-1.5.ebuild:
+  Don't use CC, bug #68981
+
+  16 Oct 2004; Tom Martin <slarti@gentoo.org> metadata.xml:
+  Added to the shell-tools herd for ciaranm.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> hilite-1.5.ebuild:
+  Masked hilite-1.5.ebuild stable for ppc
+
+  18 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> hilite-1.5.ebuild:
+  x86 stable
+
+  10 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org> hilite-1.5.ebuild:
+  Added ~x86, ~hppa
+
+  05 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org> hilite-1.5.ebuild:
+  Stable on sparc, mips
+
+  10 Jul 2004; Tom Martin <slarti@gentoo.org> hilite-1.5.ebuild:
+  Marked ~amd64.
+
+*hilite-1.5 (20 Jun 2004)
+
+  20 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +hilite-1.5.ebuild:
+  Initial version
+

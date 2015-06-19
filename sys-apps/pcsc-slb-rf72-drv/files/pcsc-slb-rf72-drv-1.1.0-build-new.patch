@@ -1,0 +1,24 @@
+diff -urNp slb_rf72.org/ifdhandler.c slb_rf72/ifdhandler.c
+--- slb_rf72.org/ifdhandler.c	2001-08-23 17:19:22.000000000 +0300
++++ slb_rf72/ifdhandler.c	2006-10-07 12:57:43.000000000 +0200
+@@ -37,6 +37,7 @@
+ #ifdef HAVE_PTHREAD_H
+ #include <pthread.h>
+ #endif
++#include <openct/ctapi.h>
+ 
+ /*
+  * Not exported constants definition
+diff -urNp slb_rf72.org/Makefile slb_rf72/Makefile
+--- slb_rf72.org/Makefile	2001-09-05 18:22:00.000000000 +0300
++++ slb_rf72/Makefile	2006-10-07 13:05:20.000000000 +0200
+@@ -16,7 +16,7 @@ clean: 
+ 	rm -f test *.o *.lo *.so
+ 
+ lib:  $(OBJ)
+-	$(LD) -G ifdhandler.o lib/libctapi.a -o libslb_rf72.so
++	$(CC) $(LDFLAGS) -shared `pkg-config --libs-only-L libopenct` -lopenctapi ifdhandler.o -o libslb_rf72.so
+ 
+ ifdhandler.o: ifdhandler.h ifdhandler.c
+-	$(CC) $(CFLAGS) -c ifdhandler.c $(INCLUDES)
++	$(CC) $(CFLAGS) `pkg-config --cflags libopenct` -fPIC -DHAVE_PTHREAD_H -c ifdhandler.c $(INCLUDES)

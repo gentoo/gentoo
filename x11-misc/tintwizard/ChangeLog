@@ -1,0 +1,46 @@
+# ChangeLog for x11-misc/tintwizard
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/tintwizard/ChangeLog,v 1.8 2014/02/22 14:00:38 idl0r Exp $
+
+  22 Feb 2014; Christian Ruppert <idl0r@gentoo.org> metadata.xml:
+  Remove myself as maintainer
+
+  20 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  tintwizard-0.3.4-r1.ebuild:
+  stable x86, bug 333149
+
+  17 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  tintwizard-0.3.4-r1.ebuild:
+  Stable on amd64 wrt bug #333149
+
+*tintwizard-0.3.4-r1 (02 Jul 2010)
+
+  02 Jul 2010; Christian Ruppert <idl0r@gentoo.org>
+  -tintwizard-0.3.3b.ebuild, -tintwizard-0.3.4.ebuild,
+  +tintwizard-0.3.4-r1.ebuild:
+  Link /usr/bin/tintwizard to /usr/bin/tintwizard.py, bug 326357.
+
+*tintwizard-0.3.4 (30 Jun 2010)
+
+  30 Jun 2010; Christian Ruppert <idl0r@gentoo.org>
+  +tintwizard-0.3.4.ebuild:
+  Version bump, bug 326355, thanks to Nick Pope
+  <nick+gentoo@nickpope.me.uk>.
+
+  08 May 2010; Christian Ruppert <idl0r@gentoo.org>
+  tintwizard-0.3.3b.ebuild:
+  Remove SUPPORT_PYTHON_ABIS and RESTRICT_PYTHON_ABIS as requested per bug
+  317027.
+
+*tintwizard-0.3.3b (30 Apr 2010)
+
+  30 Apr 2010; Christian Ruppert <idl0r@gentoo.org>
+  -tintwizard-0.3.3.ebuild, +tintwizard-0.3.3b.ebuild:
+  Version bump to 0.3.3b. Add SUPPORT_PYTHON_ABIS.
+
+*tintwizard-0.3.3 (06 Apr 2010)
+
+  06 Apr 2010; Christian Ruppert <idl0r@gentoo.org>
+  +tintwizard-0.3.3.ebuild, +metadata.xml:
+  New ebuild x11-misc/tintwizard, bug 310677.
+

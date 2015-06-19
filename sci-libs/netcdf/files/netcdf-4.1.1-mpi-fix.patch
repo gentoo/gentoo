@@ -1,0 +1,32 @@
+Ensure hdf5.h is included before netcdf.h to avoid build error with openmpi >= 1.4.1
+
+--- libsrc4/nc4internal.h
++++ libsrc4/nc4internal.h
+@@ -8,13 +8,13 @@
+ 
+ #include <config.h>
+ #include <stdio.h>
++#include <hdf5.h>
+ #include "error.h"
+ #include <stdlib.h>
+ #include <ctype.h>
+ #include <stdarg.h>
+ #include <string.h>
+ #include "netcdf3.h"
+-#include <hdf5.h>
+ #include <netcdf.h>
+ 
+ #ifdef USE_PARALLEL
+--- libncdap4/ncdap4.h
++++ libncdap4/ncdap4.h
+@@ -12,9 +12,9 @@
+ #include <stdio.h>
+ 
+ #include "config.h"
++#include "nc4internal.h"
+ #include "netcdf.h"
+ #include "nc.h"
+-#include "nc4internal.h"
+ #include "ncdap.h"
+ #include "getvara.h"
+ #include "constraints3.h"

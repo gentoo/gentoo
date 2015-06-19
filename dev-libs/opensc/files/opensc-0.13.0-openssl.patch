@@ -1,0 +1,27 @@
+diff -urNp opensc-0.13.0.old/src/libopensc/iasecc-sm.c opensc-0.13.0/src/libopensc/iasecc-sm.c
+--- opensc-0.13.0.old/src/libopensc/iasecc-sm.c	2012-12-04 16:43:40.000000000 +0200
++++ opensc-0.13.0/src/libopensc/iasecc-sm.c	2014-02-19 21:24:34.479234564 +0200
+@@ -26,10 +26,6 @@
+ #include "asn1.h"
+ #include "cardctl.h"
+ 
+-#ifndef ENABLE_OPENSSL
+-#error "Need OpenSSL"
+-#endif
+-
+ #include "sm.h"
+ #include "iasecc.h"
+ #include "authentic.h"
+diff -urNp opensc-0.13.0.old/src/pkcs11/framework-pkcs15.c opensc-0.13.0/src/pkcs11/framework-pkcs15.c
+--- opensc-0.13.0.old/src/pkcs11/framework-pkcs15.c	2012-12-04 16:43:40.000000000 +0200
++++ opensc-0.13.0/src/pkcs11/framework-pkcs15.c	2014-02-19 21:31:43.816108633 +0200
+@@ -2853,8 +2853,8 @@ struct sc_pkcs11_framework_ops framework
+ 	pkcs15_login,
+ 	pkcs15_logout,
+ 	pkcs15_change_pin,
+-	pkcs15_initialize,
+ #ifdef USE_PKCS15_INIT
++	pkcs15_initialize,
+ 	pkcs15_init_pin,
+ 	pkcs15_create_object,
+ 	pkcs15_gen_keypair,

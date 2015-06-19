@@ -1,0 +1,22 @@
+# ChangeLog for dev-python/netcdf4-python
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/netcdf4-python/ChangeLog,v 1.5 2015/06/13 02:18:27 zmedico Exp $
+
+  13 Jun 2015; Zac Medico <zmedico@gentoo.org> netcdf4-python-1.0.4.ebuild:
+  Add slot operator for sci-libs/netcdf (links to libnetcdf.so).
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> netcdf4-python-1.0.4.ebuild:
+  Drop old Python implementations
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> netcdf4-python-1.0.4.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+  04 Jul 2013; Justin Lecher <jlec@gentoo.org> netcdf4-python-1.0.4.ebuild:
+  Add missing dep on sci-libs/hdf5; Fix USEDEP; implement tests
+
+*netcdf4-python-1.0.4 (04 Jul 2013)
+
+  04 Jul 2013; Justin Lecher <jlec@gentoo.org> +netcdf4-python-1.0.4.ebuild,
+  +metadata.xml:
+  New addition written by me

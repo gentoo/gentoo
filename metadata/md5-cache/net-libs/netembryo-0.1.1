@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=>=dev-libs/openssl-0.9.8 sctp? ( net-misc/lksctp-tools ) virtual/pkgconfig test? ( >=dev-libs/glib-2.20:2 sys-apps/gawk dev-util/ctags )
+DESCRIPTION=a network abstraction library
+EAPI=2
+HOMEPAGE=http://lscube.org/projects/netembryo/
+IUSE=ipv6 +sctp test
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-libs/openssl-0.9.8 sctp? ( net-misc/lksctp-tools )
+SLOT=0
+SRC_URI=http://lscube.org/files/downloads/netembryo/netembryo-0.1.1.tar.bz2
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=0e7cf97a6ecdc18f7c1cb3234aa809ef

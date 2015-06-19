@@ -1,0 +1,75 @@
+# ChangeLog for games-action/accelerator3d
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/accelerator3d/ChangeLog,v 1.16 2015/03/23 07:26:50 mr_bones_ Exp $
+
+  23 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -accelerator3d-0.1.1-r1.ebuild:
+  old
+
+  21 Mar 2015; Andreas Schuerch <nativemad@gentoo.org>
+  accelerator3d-0.1.1-r2.ebuild:
+  x86 stable, see bug 505024
+
+  26 Feb 2015; Chema Alonso <nimiux@gentoo.org> accelerator3d-0.1.1-r2.ebuild:
+  Stable for amd64 wrt bug #505024
+
+  01 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  accelerator3d-0.1.1-r2.ebuild:
+  punt 2_6
+
+  31 Dec 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  accelerator3d-0.1.1-r2.ebuild:
+  tidy
+
+  01 Dec 2013; Julian Ospald <hasufell@gentoo.org>
+  accelerator3d-0.1.1-r2.ebuild:
+  add PYTHON_USEDEP to dev-python/pyode wrt #493042
+
+*accelerator3d-0.1.1-r2 (01 Dec 2013)
+
+  01 Dec 2013; Julian Ospald <hasufell@gentoo.org>
+  +accelerator3d-0.1.1-r2.ebuild:
+  convert to python-r1
+
+  26 Feb 2012; Tupone Alfredo <tupone@gentoo.org>
+  accelerator3d-0.1.1-r1.ebuild:
+  Installing desktop file. Bug #314199 by Paweł Hajdan, Jr.
+
+  04 May 2010; Tupone Alfredo <tupone@gentoo.org>
+  accelerator3d-0.1.1-r1.ebuild:
+  Force python2 fixing bug #312227 by arferever@gentoo.org
+
+  09 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  accelerator3d-0.1.1-r1.ebuild:
+  x86 stable wrt bug #306671
+
+*accelerator3d-0.1.1-r1 (24 Jan 2010)
+
+  24 Jan 2010; Tristan Heaven <nyhm@gentoo.org>
+  +accelerator3d-0.1.1-r1.ebuild,
+  +files/accelerator3d-0.1.1-gllightmodel.patch:
+  Fix runtime error with recent pyopengl versions, bug #297521
+
+  09 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  accelerator3d-0.1.1.ebuild:
+  stable x86, bug 294143
+
+  30 Jun 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  accelerator3d-0.1.1.ebuild:
+  EAPI=2
+
+  28 Jul 2006; Javier Villavicencio <the_paya@gentoo.org>
+  accelerator3d-0.1.1.ebuild:
+  Add ~x86-fbsd keyword.
+
+*accelerator3d-0.1.1 (18 Apr 2006)
+
+  18 Apr 2006; <Tupone@gentoo.org>
+  +files/accelerator3d-0.1.1-gentoo-paths.patch,
+  +accelerator3d-0.1.1.ebuild:
+  Version bump, bug #130373 by Alexandru Toma
+
+*accelerator3d-0.1.0 (22 Oct 2005)
+
+  22 Oct 2005; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me for #110010 by Matija Suklje (hook).

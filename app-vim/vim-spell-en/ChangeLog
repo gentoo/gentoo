@@ -1,0 +1,69 @@
+# ChangeLog for app-vim/vim-spell-en
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/vim-spell-en/ChangeLog,v 1.16 2009/12/17 11:06:53 fauli Exp $
+
+  17 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  vim-spell-en-20060123.ebuild:
+  QA: add prefix keywords
+
+  15 Jan 2009; Raúl Porcel <armin76@gentoo.org>
+  vim-spell-en-20060123.ebuild:
+  Add ~arm wrt #254673
+
+  09 Dec 2008; Raúl Porcel <armin76@gentoo.org>
+  vim-spell-en-20060123.ebuild:
+  Add ~alpha wrt #250323
+
+  01 Jun 2007; nixnut <nixnut@gentoo.org> vim-spell-en-20060123.ebuild:
+  Stable on ppc wrt bug 176373
+
+  31 May 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  vim-spell-en-20060123.ebuild:
+  Stable on sparc wrt #176373
+
+  29 Apr 2007; Danny van Dyk <kugelfang@gentoo.org>
+  vim-spell-en-20060123.ebuild:
+  Marked stable on amd64.
+
+  27 Oct 2006; Lars Weiler <pylon@gentoo.org> vim-spell-en-20060123.ebuild:
+  vimspell dictionaries also work on PowerPC.  Added ~pcc.
+
+  04 Sep 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  vim-spell-en-20060123.ebuild:
+  stable on x86 (bug #145694)
+
+  11 May 2006; Ferris McCormick <fmccor@gentoo.org>
+  vim-spell-en-20060123.ebuild:
+  Add ~sparc keyword.  Works as expected.
+
+  07 Apr 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove ciaranm from metadata.xml.
+
+  29 Mar 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  vim-spell-en-20060123.ebuild:
+  drop sparc and mips keywords until they're keyworded in new vim/gvim ebuilds
+  (per ciaranm)
+
+  23 Jan 2006; Ciaran McCreesh <ciaranm@gentoo.org>
+  -vim-spell-en-20050928.ebuild:
+  Tidy up
+
+*vim-spell-en-20060123 (23 Jan 2006)
+
+  23 Jan 2006; Ciaran McCreesh <ciaranm@gentoo.org>
+  +vim-spell-en-20060123.ebuild:
+  New vim-spell-en snapshot
+
+  07 Oct 2005; Tom Martin <slarti@gentoo.org> vim-spell-en-20050928.ebuild:
+  Marked ~amd64.
+
+  03 Oct 2005; Thomas Matthijs <axxo@gentoo.org>
+  vim-spell-en-20050928.ebuild:
+  keyword ~x86
+
+*vim-spell-en-20050928 (28 Sep 2005)
+
+  28 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +vim-spell-en-20050928.ebuild:
+  New package.
+

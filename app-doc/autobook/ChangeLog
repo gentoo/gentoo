@@ -1,0 +1,55 @@
+# ChangeLog for app-doc/autobook
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-doc/autobook/ChangeLog,v 1.16 2013/01/27 22:28:44 radhermit Exp $
+
+  27 Jan 2013; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  26 Jun 2012; Ryan Hill <dirtyepic@gentoo.org> autobook-1.5.ebuild,
+  metadata.xml:
+  Maintainer -> app-doc. Set RDEPEND.
+
+  12 Sep 2007; Ryan Hill <dirtyepic@gentoo.org> -files/digest-autobook-1.4:
+  Remove lost digest.
+
+  11 Sep 2007; Ryan Hill <dirtyepic@gentoo.org> -autobook-1.4.ebuild:
+  Remove old.
+
+  21 Jun 2007; Jeroen Roovers <jer@gentoo.org> autobook-1.5.ebuild:
+  Stable for HPPA (bug #182266).
+
+  17 Jun 2007; Raúl Porcel <armin76@gentoo.org> autobook-1.5.ebuild:
+  ia64/x86 stable wrt #182266
+
+  17 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org> autobook-1.5.ebuild:
+  ppc stable, bug #182266
+
+  17 Jun 2007; Christoph Mende <angelos@gentoo.org> autobook-1.5.ebuild:
+  Stable on amd64 wrt bug 182266
+
+  26 Nov 2006; Mike Frysinger <vapier@gentoo.org> autobook-1.5.ebuild:
+  Add support for installing examples via USE=examples.
+
+*autobook-1.5 (19 Nov 2006)
+
+  19 Nov 2006; Ryan Hill <dirtyepic@gentoo.org> +metadata.xml,
+  -autobook-1.3.ebuild, +autobook-1.5.ebuild:
+  Version bump with updated examples and references. Also removed old 1.3
+  version and took over as maintainer.
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  19 Dec 2004; Jason Huebel <jhuebel@gentoo.org> autobook-1.3.ebuild,
+  autobook-1.4.ebuild:
+  amd64, just docs, no need for testing
+
+*autobook-1.4 (12 Sep 2004)
+
+  12 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> +autobook-1.4.ebuild:
+  version bump
+
+*autobook-1.3 (16 Mar 2003)
+  16 Mar 2003; J.Alberto Suárez López <bass@gentoo.org> autobook-1.3.ebuild:
+  initial ebuild by Tom Payne <gentoo@tompayne.org> 
+

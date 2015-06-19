@@ -1,0 +1,62 @@
+# ChangeLog for media-fonts/arkpandora
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/arkpandora/ChangeLog,v 1.16 2015/02/21 17:09:46 yngwin Exp $
+
+  21 Feb 2015; Ben de Groot <yngwin@gentoo.org> arkpandora-2.04.ebuild:
+  Adjust homepage and SRC_URI to Gentoo mirrors, since upstream vanished (bug
+  #436628). Bump to EAPI=5. Tighten up formatting.
+
+  06 Jul 2009; Jeroen Roovers <jer@gentoo.org> arkpandora-2.04.ebuild:
+  Stable for HPPA too.
+
+  30 Mar 2008; Robin H. Johnson <robbat2@gentoo.org> arkpandora-2.04.ebuild:
+  Add ~ppc.
+
+  29 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  arkpandora-2.04.ebuild:
+  amd64 stable
+
+  24 Feb 2008; Raúl Porcel <armin76@gentoo.org> arkpandora-2.04.ebuild:
+  alpha stable
+
+  23 Jan 2008; Raúl Porcel <armin76@gentoo.org> arkpandora-2.04.ebuild:
+  Add ~alpha, x86 stable
+
+  11 Jul 2006; Aron Griffis <agriffis@gentoo.org> arkpandora-2.04.ebuild:
+  Mark 2.04 stable on ia64
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-arkpandora-2.04, Manifest:
+  Fixing SHA256 digest, pass four
+
+  02 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> arkpandora-2.04.ebuild:
+  Add ~x86-fbsd keyword.
+
+  10 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  arkpandora-2.04.ebuild:
+  Added to ~hppa.
+
+  23 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  arkpandora-2.04.ebuild:
+  Stable on sparc
+
+  23 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  arkpandora-2.04.ebuild:
+  Keyworded ~sparc
+
+  24 Apr 2005; Diego Pettenò <flameeyes@gentoo.org> arkpandora-2.04.ebuild:
+  Marked ~amd64.
+
+  14 Dec 2004; Markus Rothe <corsair@gentoo.org> arkpandora-2.04.ebuild:
+  Stable on ppc64
+
+  01 Nov 2004; Markus Rothe <corsair@gentoo.org>
+
+  arkpandora-2.04.ebuild:
+  Marked ~ppc64; bug #68103
+
+*arkpandora-2.04 (17 Oct 2004)
+
+  17 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +arkpandora-2.04.ebuild:
+  Initial import. This closes bug #30389.

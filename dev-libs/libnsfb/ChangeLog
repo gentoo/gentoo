@@ -1,0 +1,80 @@
+# ChangeLog for dev-libs/libnsfb
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libnsfb/ChangeLog,v 1.15 2015/06/09 22:06:04 xmw Exp $
+
+*libnsfb-0.1.3-r1 (09 Jun 2015)
+
+  09 Jun 2015; Michael Weber <xmw@gentoo.org> +libnsfb-0.1.3-r1.ebuild,
+  -libnsfb-0.1.3.ebuild:
+  Revbump for multilib fix.
+
+  22 Mar 2015; Michael Weber <xmw@gentoo.org>
+  files/libnsfb-0.1.3-glibc2.20.patch:
+  Drop CFLAGS=-g
+
+*libnsfb-0.1.3 (22 Mar 2015)
+
+  22 Mar 2015; Michael Weber <xmw@gentoo.org>
+  +files/libnsfb-0.1.3-glibc2.20.patch, +libnsfb-0.1.3.ebuild,
+  -files/libnsfb-0.0.2-autodetect.patch, -files/libnsfb-0.0.2-unused.patch,
+  -files/libnsfb-0.0.2-xcb-fix.patch, -libnsfb-0.0.2.ebuild,
+  -libnsfb-0.1.0.ebuild:
+  Version bump (bug 543846).
+
+  18 Nov 2014; Michael Weber <xmw@gentoo.org>
+  +files/libnsfb-0.1.2-glibc2.20.patch, libnsfb-0.1.2.ebuild:
+  Re-add keywords, bug 529594 was due a skipped cvs commit.
+
+  17 Nov 2014; Patrick Lauer <patrick@gentoo.org> libnsfb-0.1.2.ebuild:
+  Remove keywords until weirdness is fixed #529594
+
+*libnsfb-0.1.2 (17 Nov 2014)
+
+  17 Nov 2014; Patrick Lauer <patrick@gentoo.org> +libnsfb-0.1.2.ebuild:
+  Bump for dependencies of www-client/netsurf
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> libnsfb-0.1.0.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  17 Jun 2014; Michał Górny <mgorny@gentoo.org> libnsfb-0.1.0.ebuild:
+  Update to use proper multilib deps.
+
+  23 Jun 2013; Michael Weber <xmw@gentoo.org> libnsfb-0.1.0.ebuild:
+  Migrate to netsurf.eclass
+
+*libnsfb-0.1.0 (17 Jun 2013)
+
+  17 Jun 2013; Michael Weber <xmw@gentoo.org>
+  +files/libnsfb-0.1.0-autodetect.patch, +libnsfb-0.1.0.ebuild,
+  -libnsfb-9999.ebuild:
+  Version bump (bug 470720), multilib build, preparations for netsurf eclass.
+
+  28 Feb 2013; Michael Weber <xmw@gentoo.org> libnsfb-0.0.2.ebuild,
+  libnsfb-9999.ebuild:
+  netsurf eclass preparation.
+
+  27 Feb 2013; Michael Weber <xmw@gentoo.org> libnsfb-0.0.2.ebuild,
+  +files/libnsfb-0.0.2-autodetect.patch, libnsfb-9999.ebuild:
+  Add use flags sdl, vnx, xcb (thanks a.m@freemail.hu, bug 458978). Restore
+  cross-compile functionality (thanks James Le Cuirot, bug 431884)
+
+*libnsfb-0.0.2 (18 Jul 2012)
+
+  18 Jul 2012; Michael Weber <xmw@gentoo.org> +files/libnsfb-0.0.2-unused.patch,
+  +files/libnsfb-0.0.2-xcb-fix.patch, +libnsfb-0.0.2.ebuild,
+  -libnsfb-0.0.2_pre20120629.ebuild:
+  Version bump to netsurf-2.9 tarball, drop old
+
+*libnsfb-0.0.2_pre20120629 (18 Jul 2012)
+
+  18 Jul 2012; Michael Weber <xmw@gentoo.org> +libnsfb-0.0.2_pre20120629.ebuild,
+  -libnsfb-0.0.2_pre20120718.ebuild:
+  fix version information
+
+*libnsfb-0.0.2_pre20120718 (18 Jul 2012)
+*libnsfb-9999 (18 Jul 2012)
+
+  18 Jul 2012; Michael Weber <xmw@gentoo.org> +libnsfb-0.0.2_pre20120718.ebuild,
+  +libnsfb-9999.ebuild, +metadata.xml:
+  Initial import

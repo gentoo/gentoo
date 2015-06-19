@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sysadmin</herd>
+
+  <use>
+    <flag name='nagios'>
+      Install a nagios plugin to check sensors' status.
+    </flag>
+  </use>
+</pkgmetadata>

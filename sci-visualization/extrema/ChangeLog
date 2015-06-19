@@ -1,0 +1,56 @@
+# ChangeLog for sci-visualization/extrema
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/extrema/ChangeLog,v 1.11 2012/08/06 20:50:04 bicatali Exp $
+
+  06 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> extrema-4.4.5.ebuild,
+  metadata.xml:
+  Added static-libs, switch to EAPI4, keyword amd64-linux, x86-linux
+
+  18 Jun 2011; Andrey Grozin <grozin@gentoo.org> extrema-4.4.5.ebuild:
+  Depend on wxGTK[X], bug #371579, thanks to Piotr Szymaniak
+  <szarpaj@grubelek.pl>
+
+*extrema-4.4.5 (13 Apr 2011)
+
+  13 Apr 2011; Kacper Kowalik <xarthisius@gentoo.org> -extrema-4.4.2.ebuild,
+  -extrema-4.4.3.ebuild, +extrema-4.4.5.ebuild,
+  +files/extrema-4.4.5-gcc46.patch:
+  Version bump. Fix building with gcc-4.6 wrt #363467 by Diego Elio Pettenò
+  <flameeyes@gentoo.org>. Drop old.
+
+*extrema-4.4.3 (10 Feb 2010)
+
+  10 Feb 2010; Andrey Grozin <grozin@gentoo.org> -extrema-4.3.6.ebuild,
+  +extrema-4.4.3.ebuild:
+  Version bump
+
+  07 Jan 2010; Sébastien Fabbro <bicatali@gentoo.org> extrema-4.4.2.ebuild:
+  Fixed possible sandbox violation (bug #299954)
+
+*extrema-4.4.2 (06 Jan 2010)
+
+  06 Jan 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +extrema-4.4.2.ebuild:
+  Version bump
+
+  06 Dec 2008; Andrey Grozin <grozin@gentoo.org> -files/extrema-4.3.5.patch,
+  -extrema-4.3.5.ebuild, extrema-4.3.6.ebuild:
+  Fixing file collision with sci-chemistry/psi, bug #249423.
+
+*extrema-4.3.6 (02 Jun 2008)
+
+  02 Jun 2008; Andrey Grozin <grozin@gentoo.org> +extrema-4.3.6.ebuild:
+  Version bump
+
+  15 May 2008; Richard Freeman <rich0@gentoo.org> extrema-4.3.5.ebuild:
+  keyword ~amd64 - 220169
+
+  11 May 2008; Andrey Grozin <grozin@gentoo.org> +files/extrema-4.3.5.patch,
+  extrema-4.3.5.ebuild:
+  One example patched. Unwanted files are no longer installed.
+
+*extrema-4.3.5 (04 May 2008)
+
+  04 May 2008; Andrey Grozin <grozin@gentoo.org> +metadata.xml,
+  +extrema-4.3.5.ebuild:
+  Initial import.

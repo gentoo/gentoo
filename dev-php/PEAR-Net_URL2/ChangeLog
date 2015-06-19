@@ -1,0 +1,94 @@
+# ChangeLog for dev-php/PEAR-Net_URL2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Net_URL2/ChangeLog,v 1.22 2014/08/10 20:53:27 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-Net_URL2-2.0.0.ebuild, PEAR-Net_URL2-2.0.5.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  17 May 2014; Agostino Sarubbo <ago@gentoo.org> PEAR-Net_URL2-2.0.5.ebuild:
+  Stable for alpha, wrt bug #502760
+
+  14 May 2014; Agostino Sarubbo <ago@gentoo.org> PEAR-Net_URL2-2.0.5.ebuild:
+  Stable for sparc, wrt bug #502760
+
+  13 May 2014; Agostino Sarubbo <ago@gentoo.org> PEAR-Net_URL2-2.0.5.ebuild:
+  Stable for ia64, wrt bug #502760
+
+  26 Apr 2014; Agostino Sarubbo <ago@gentoo.org> PEAR-Net_URL2-2.0.5.ebuild:
+  Stable for x86, wrt bug #502760
+
+  25 Apr 2014; Chema Alonso <nimiux@gentoo.org> PEAR-Net_URL2-2.0.5.ebuild:
+  Stable for amd64 wrt bug #502760
+
+  05 Apr 2014; Jeroen Roovers <jer@gentoo.org> PEAR-Net_URL2-2.0.5.ebuild:
+  Stable for HPPA (bug #502760).
+
+*PEAR-Net_URL2-2.0.5 (04 Jan 2014)
+
+  04 Jan 2014; Matti Bickel <mabi@gentoo.org> +PEAR-Net_URL2-2.0.5.ebuild:
+  version bump
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> PEAR-Net_URL2-2.0.0.ebuild:
+  ia64/sparc/x86 stable wrt #396981
+
+  02 Mar 2012; Tobias Klausmann <klausman@gentoo.org>
+  PEAR-Net_URL2-2.0.0.ebuild:
+  Stable on alpha, bug #396981
+
+  21 Feb 2012; Jeroen Roovers <jer@gentoo.org> PEAR-Net_URL2-2.0.0.ebuild:
+  Stable for HPPA (bug #396981).
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> PEAR-Net_URL2-2.0.0.ebuild:
+  Stable for amd64, wrt bug #396981
+
+  19 Feb 2012; Raúl Porcel <armin76@gentoo.org> PEAR-Net_URL2-2.0.0.ebuild:
+  Add ~alpha/~ia64/~s390/~sh/~sparc wrt #396973
+
+  08 Feb 2012; Markus Meier <maekke@gentoo.org> PEAR-Net_URL2-2.0.0.ebuild:
+  add ~arm, bug #396973
+
+  07 Feb 2012; Jeroen Roovers <jer@gentoo.org> PEAR-Net_URL2-2.0.0.ebuild:
+  Marked ~hppa (bug #396973).
+
+  01 Feb 2012; Samuli Suominen <ssuominen@gentoo.org>
+  PEAR-Net_URL2-2.0.0.ebuild:
+  Keyword ~ppc/~ppc64 wrt #396973
+
+*PEAR-Net_URL2-2.0.0 (18 Jan 2012)
+
+  18 Jan 2012; Matti Bickel <mabi@gentoo.org> +PEAR-Net_URL2-2.0.0.ebuild,
+  -PEAR-Net_URL2-0.1.0.ebuild, -PEAR-Net_URL2-0.2.0.ebuild,
+  -PEAR-Net_URL2-0.3.0.ebuild, -PEAR-Net_URL2-0.3.1.ebuild:
+  version bump & remove old
+
+*PEAR-Net_URL2-0.3.1 (16 Feb 2010)
+
+  16 Feb 2010; Steve Dibb <beandog@gentoo.org> +PEAR-Net_URL2-0.3.1.ebuild:
+  Version bump
+
+*PEAR-Net_URL2-0.3.0 (23 Sep 2009)
+
+  23 Sep 2009; Steve Dibb <beandog@gentoo.org> +PEAR-Net_URL2-0.3.0.ebuild:
+  Version bump
+
+*PEAR-Net_URL2-0.2.0 (22 Aug 2009)
+
+  22 Aug 2009; Steve Dibb <beandog@gentoo.org> +PEAR-Net_URL2-0.2.0.ebuild:
+  Version bump, bug 249855
+
+  06 Dec 2007; Markus Ullmann <jokey@gentoo.org> PEAR-Net_URL2-0.1.0.ebuild:
+  LICENSE fix from project overlay
+
+  02 Dec 2007; Jakub Moc <jakub@gentoo.org> PEAR-Net_URL2-0.1.0.ebuild:
+  Fix LICENSE
+
+*PEAR-Net_URL2-0.1.0 (27 Aug 2007)
+
+  27 Aug 2007; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +PEAR-Net_URL2-0.1.0.ebuild:
+  Initital commit from project overlay
+
+  15 Aug 2007; Jakub Moc <jakub@gentoo.org> +metadata.xml,
+  +PEAR-Net_URL2-0.1.0.ebuild:
+  Add a a replacement for superseded PEAR-Net_URL package

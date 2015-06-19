@@ -1,0 +1,40 @@
+Index: bibtex2html-1.88/Makefile.in
+===================================================================
+--- bibtex2html-1.88.orig/Makefile.in
++++ bibtex2html-1.88/Makefile.in
+@@ -56,24 +56,24 @@ test: bibtex2html bib2bib
+ 	make -C bench test
+ 
+ install-indep:
+-	mkdir -p $(BINDIR)
+-	cp aux2bib $(BINDIR)/aux2bib
+-	mkdir -p $(MANDIR)/man1
+-	cp bibtex2html.1 $(MANDIR)/man1/bibtex2html.1
+-	cp bibtex2html.1 $(MANDIR)/man1/bib2bib.1
+-	cp aux2bib.1 $(MANDIR)/man1/aux2bib.1
++	mkdir -p $(DESTDIR)$(BINDIR)
++	cp aux2bib $(DESTDIR)$(BINDIR)/aux2bib
++	mkdir -p $(DESTDIR)$(MANDIR)/man1
++	cp bibtex2html.1 $(DESTDIR)$(MANDIR)/man1/bibtex2html.1
++	cp bibtex2html.1 $(DESTDIR)$(MANDIR)/man1/bib2bib.1
++	cp aux2bib.1 $(DESTDIR)$(MANDIR)/man1/aux2bib.1
+ 
+ install: install-indep
+ 	if test @OCAMLBEST@ = opt ; then \
+-		cp bibtex2html bib2bib $(BINDIR) ; \
++		cp bibtex2html bib2bib $(DESTDIR)$(BINDIR) ; \
+ 	else \
+-		cp bibtex2html.byte $(BINDIR)/bibtex2html ; \
+-		cp bib2bib.byte $(BINDIR)/bib2bib ; \
++		cp bibtex2html.byte $(DESTDIR)$(BINDIR)/bibtex2html ; \
++		cp bib2bib.byte $(DESTDIR)$(BINDIR)/bib2bib ; \
+ 	fi
+ 
+ install-byte: install-indep
+-	cp bibtex2html.byte $(BINDIR)/bibtex2html
+-	cp bib2bib.byte $(BINDIR)/bib2bib
++	cp bibtex2html.byte $(DESTDIR)$(BINDIR)/bibtex2html
++	cp bib2bib.byte $(DESTDIR)$(BINDIR)/bib2bib
+ 
+ local: bibtex2html bib2bib
+ 	cp bibtex2html bib2bib aux2bib $$HOME/bin/$$OSTYPE

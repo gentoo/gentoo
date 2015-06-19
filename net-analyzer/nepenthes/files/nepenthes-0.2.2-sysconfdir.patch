@@ -1,0 +1,77 @@
+--- a/modules/module-honeytrap/module-honeytrap.conf.dist
++++ b/modules/module-honeytrap/module-honeytrap.conf.dist
+@@ -20,7 +20,7 @@
+ 	pcap_dump_options
+ 	{	
+ 		min_packets "3";			// minimum of packets, else the dump gets removed
+-		path	"var/log/pcap/";		// path for pcap files relative to basedir
++		path	"/var/log/nepenthes/pcap/";		// path for pcap files relative to basedir
+ 	};	
+ 	
+ };
+--- a/modules/log-download/log-download.conf.dist
++++ b/modules/log-download/log-download.conf.dist
+@@ -1,5 +1,5 @@
+ log-download
+ {
+-    downloadfile    "var/log/logged_downloads"; // log download attempts
+-    submitfile    "var/log/logged_submissions"; // log successfull downloads
++    downloadfile    "/var/log/nepenthes/logged_downloads"; // log download attempts
++    submitfile    "/var/log/nepenthes/logged_submissions"; // log successfull downloads
+ };
+--- a/modules/submit-file/submit-file.conf.dist
++++ b/modules/submit-file/submit-file.conf.dist
+@@ -1,5 +1,5 @@
+ submit-file
+ {
+-    path "var/binaries/";
++    path "/var/lib/nepenthes/binaries/";
+ };
+     
+--- a/conf/nepenthes.conf.dist
++++ b/conf/nepenthes.conf.dist
+@@ -3,8 +3,8 @@
+ 
+ nepenthes
+ {
+-    moduledir               "lib/nepenthes";        // relative to workdir
+-    moduleconfigdir         "etc/nepenthes";                  // relative to workdir
++    moduledir               "/usr/lib/nepenthes";        // relative to workdir
++    moduleconfigdir         "/etc/nepenthes";                  // relative to workdir
+ 
+     modules(
+ //  module name (in moduledir)      config file (in moduleconfigdir)
+@@ -90,8 +90,8 @@
+ 
+     logmanager
+     {
+-	ring_logging_file		"var/log/nepenthes.%d.log";
+-	file_logging_file		"var/log/nepenthes.log";
++	ring_logging_file		"/var/log/nepenthes/nepenthes.%d.log";
++	file_logging_file		"/var/log/nepenthes/nepenthes.log";
+     };
+ 
+     modulemanager
+@@ -103,7 +103,7 @@
+     {
+         strictfiletype              "1";
+         // where does submit-file write to? set this to the same dir
+-        filesdir                    "var/binaries/"; 
++        filesdir                    "/var/lib/nepenthes/binaries/"; 
+     };
+ 
+     downloadmanager
+@@ -122,11 +122,11 @@
+     
+     utilities
+     {
+-	hexdump_path                "var/hexdumps/";
++	hexdump_path                "/var/lib/nepenthes/hexdumps/";
+     };
+     
+     geolocationmanager
+     {
+-	cache_path                   "var/cache/nepenthes/geolocation/";
++	cache_path                   "/var/lib/nepenthes/cache/geolocation/";
+     };
+ };

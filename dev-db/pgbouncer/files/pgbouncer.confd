@@ -1,0 +1,12 @@
+# Location of configuration file for PgBouncer.
+INIFILE="/etc/pgbouncer.ini"
+
+# How long to wait in seconds for a safe shutdown. Equivalent to
+# issuing 'PAUSE;' and 'SHUTDOWN;' on psql console. (See 'man 1 pgbouncer'.)
+NICE_TIMEOUT=60
+
+# Set to 'YES' to perform an immediate shutdown if the nice shutdown
+# doesn't work. Same as issuing 'SHUTDOWN;' on console. (See 'man 1
+# pgbouncer'.)
+FORCE_QUIT="no"
+FORCE_QUIT_TIMEOUT=2

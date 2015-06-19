@@ -1,0 +1,214 @@
+# ChangeLog for dev-util/elfkickers
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/elfkickers/ChangeLog,v 1.54 2012/07/17 13:31:58 blueness Exp $
+
+  17 Jul 2012; Anthony G. Basile <blueness@gentoo.org>
+  elfkickers-3.0-r2.ebuild:
+  Keyword ~ppc ~ppc64
+
+  08 Jun 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer from metadata as talked with him.
+
+  01 Apr 2012; Raúl Porcel <armin76@gentoo.org> elfkickers-3.0a.ebuild:
+  sparc stable wrt #404735
+
+  16 Mar 2012; Thomas Kahle <tomka@gentoo.org> elfkickers-3.0a.ebuild:
+  marked x86 per bug 404735
+
+  12 Mar 2012; Markus Meier <maekke@gentoo.org> elfkickers-3.0a.ebuild:
+  arm stable, bug #404735
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> elfkickers-3.0a.ebuild:
+  Stable for amd64, wrt bug #404735
+
+  12 Nov 2011; Anthony G. Basile <blueness@gentoo.org>
+  -elfkickers-2.0a-r4.ebuild, -elfkickers-2.0a-r5.ebuild,
+  -elfkickers-2.0a-r6.ebuild:
+  Remove old versions
+
+*elfkickers-3.0a (12 Nov 2011)
+
+  12 Nov 2011; Anthony G. Basile <blueness@gentoo.org> +elfkickers-3.0a.ebuild:
+  Version bump
+
+  24 Sep 2011; Raúl Porcel <armin76@gentoo.org> elfkickers-3.0-r1.ebuild,
+  elfkickers-3.0-r2.ebuild:
+  Readd ~sparc wrt #380085
+
+  16 Sep 2011; Jeroen Roovers <jer@gentoo.org> elfkickers-3.0-r1.ebuild,
+  elfkickers-3.0-r2.ebuild:
+  Marked ~hppa (bug #380085).
+
+  08 Sep 2011; Naohiro Aota <naota@gentoo.org> elfkickers-3.0-r2.ebuild:
+  Add ~x86-fbsd. Bug #380085
+
+  06 Sep 2011; Matt Turner <mattst88@gentoo.org> elfkickers-3.0-r1.ebuild,
+  elfkickers-3.0-r2.ebuild:
+  Added ~mips, bug 380085
+
+*elfkickers-3.0-r2 (06 Sep 2011)
+
+  06 Sep 2011; Anthony G. Basile <blueness@gentoo.org>
+  +elfkickers-3.0-r2.ebuild, +files/add-freebsd-elf-defs.patch:
+  Patch for missing ELF defs on FreeBSD, bug #380085
+
+  05 Sep 2011; Markus Meier <maekke@gentoo.org> elfkickers-3.0-r1.ebuild:
+  add ~arm, bug #380085
+
+  24 Aug 2011; Markus Meier <maekke@gentoo.org> elfkickers-3.0-r1.ebuild:
+  x86 stable, bug #380083
+
+  22 Aug 2011; Tony Vroon <chainsaw@gentoo.org> elfkickers-3.0-r1.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo & Ian
+  "idella4" Delaney in bug #380083 filed by Anthony "blueness" Basile.
+
+  21 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  elfkickers-3.0-r1.ebuild:
+  Add die after sed, bug #380083
+
+  21 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  elfkickers-2.0a-r4.ebuild, elfkickers-2.0a-r5.ebuild,
+  elfkickers-2.0a-r6.ebuild:
+  ppc/ppc64 keywords dropped wrt #380085
+
+*elfkickers-3.0-r1 (03 Jun 2011)
+
+  03 Jun 2011; Anthony G. Basile <blueness@gentoo.org> -elfkickers-3.0.ebuild,
+  +elfkickers-3.0-r1.ebuild, +files/respect-CFLAGS-LDFLAGS.patch:
+  Respect CC/CFLAGS/LDFLAGS, bugs #369813 and 369817
+
+  02 Jun 2011; Anthony G. Basile <blueness@gentoo.org> Manifest:
+  Fixed manifest
+
+*elfkickers-3.0 (31 May 2011)
+
+  31 May 2011; Anthony G. Basile <blueness@gentoo.org> +elfkickers-3.0.ebuild:
+  Version bump
+
+*elfkickers-2.0a-r6 (13 Feb 2011)
+
+  13 Feb 2011; Anthony G. Basile <blueness@gentoo.org>
+  +elfkickers-2.0a-r6.ebuild:
+  Fixed bug #353718
+
+*elfkickers-2.0a-r5 (02 Nov 2010)
+
+  02 Nov 2010; Anthony G. Basile <blueness@gentoo.org>
+  +elfkickers-2.0a-r5.ebuild, -files/elfkickers-2.0a.diff,
+  -files/elfkickers-2.0a-bsd.patch, -files/elfkickers-2.0a-elfls-core.patch,
+  -files/sstrip-mjn3.c, -files/elfkickers-2.0a-make.patch, metadata.xml:
+  Rev bump, bug #337108
+
+  05 Mar 2010; <solar@gentoo.org> -elfkickers-2.0a.ebuild,
+  -elfkickers-2.0a-r1.ebuild, -elfkickers-2.0a-r2.ebuild,
+  -elfkickers-2.0a-r3.ebuild, elfkickers-2.0a-r4.ebuild:
+  - flush old ebuilds. make sure docs are handled right. (bug 305549)
+
+  04 Mar 2009; Timothy Redaelli <drizzt@gentoo.org>
+  elfkickers-2.0a-r4.ebuild:
+  Add ~x86-fbsd keyword
+
+  27 Sep 2008; Raúl Porcel <armin76@gentoo.org> elfkickers-2.0a-r4.ebuild:
+  arm stable wrt #197752
+
+  07 Jun 2008; nixnut <nixnut@gentoo.org> elfkickers-2.0a-r4.ebuild:
+  Stable on ppc wrt bug 197752
+
+  05 Jun 2008; Markus Rothe <corsair@gentoo.org> elfkickers-2.0a-r4.ebuild:
+  Stable on ppc64; bug #197752
+
+  02 Jun 2008; Jeroen Roovers <jer@gentoo.org> elfkickers-2.0a-r4.ebuild:
+  Stable for HPPA (bug #197752).
+
+  02 Jun 2008; Raúl Porcel <armin76@gentoo.org> elfkickers-2.0a-r4.ebuild:
+  sparc stable wrt #197752
+
+  10 May 2008; <solar@gentoo.org> elfkickers-2.0a-r4.ebuild:
+  - stable for x86 and amd64 with small cross compile fix for arm
+
+*elfkickers-2.0a-r4 (01 Jan 2008)
+
+  01 Jan 2008; <solar@gentoo.org> +elfkickers-2.0a-r4.ebuild:
+  - little more hacking on making these tools work for both 32 and 64 bit ELF
+  files.
+
+  17 Nov 2007; Samuli Suominen <drac@gentoo.org> elfkickers-2.0a-r3.ebuild:
+  amd64 stable wrt #197752
+
+  06 Nov 2007; Raúl Porcel <armin76@gentoo.org> elfkickers-2.0a-r3.ebuild:
+  sparc stable wrt #197752
+
+  06 Nov 2007; Markus Rothe <corsair@gentoo.org> elfkickers-2.0a-r3.ebuild:
+  Stable on ppc64; bug #197752
+
+  02 Nov 2007; Lars Weiler <pylon@gentoo.org> elfkickers-2.0a-r3.ebuild:
+  stable ppc, bug #197752
+
+  02 Nov 2007; Jeroen Roovers <jer@gentoo.org> elfkickers-2.0a-r3.ebuild:
+  Stable for HPPA (bug #197752).
+
+  01 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  elfkickers-2.0a-r3.ebuild:
+  stable x86, bug 197752
+
+  03 Oct 2007; <solar@gentoo.org> elfkickers-2.0a-r3.ebuild:
+  keyworded ~ppc64
+
+*elfkickers-2.0a-r3 (30 Aug 2007)
+
+  30 Aug 2007; <pva@gentoo.org> +elfkickers-2.0a-r3.ebuild:
+  Fixes problem reported in bug #178790 comment 2 by Pat Erley.
+
+*elfkickers-2.0a-r2 (16 May 2007)
+
+  16 May 2007; <solar@gentoo.org> +elfkickers-2.0a-r2.ebuild:
+  - make rebind and elfls 64bit aware when compiled on 64bit hosts
+
+  12 Aug 2006; Jason Wever <weeve@gentoo.org> elfkickers-2.0a-r1.ebuild:
+  Stable on SPARC.
+
+  17 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/elfkickers-2.0a-bsd.patch, +files/elfkickers-2.0a-make.patch,
+  elfkickers-2.0a-r1.ebuild:
+  Build fixes for *BSD.
+
+  17 Jul 2006; <solar@gentoo.org> elfkickers-2.0a-r1.ebuild:
+  - stable on 32bit arches. ppc, arm, x86
+
+*elfkickers-2.0a-r1 (09 May 2006)
+
+  09 May 2006; <solar@gentoo.org> +files/elfkickers-2.0a-elfls-core.patch,
+  +files/sstrip-mjn3.c, +elfkickers-2.0a-r1.ebuild:
+  - update elfls for ET_CORE. - update sstrip to be cross and 64bit aware -
+  Manuel Novoa III.
+
+  07 May 2005; David Holm <dholm@gentoo.org> elfkickers-2.0a.ebuild:
+  Added to ~ppc.
+
+  11 Nov 2004; <solar@gentoo.org> elfkickers-2.0a.ebuild:
+  added ~mips to the KEYWORDS
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  elfkickers-2.0a.ebuild:
+  virtual/glibc -> virtual/libc
+
+  25 Apr 2004; Guy Martin <gmsoft@gentoo.org> elfkickers-2.0a.ebuild:
+  Removed unneeded nasm DEPEND. Marked stable on hppa and sparc.
+
+  25 Dec 2003; Jason Wever <weeve@gentoo.org> elfkickers-2.0a.ebuild:
+  Removed sparc keyword as this package cannot be emerged due to the dependency
+  on nasm, which only works on x86.
+
+  29 Sep 2003; <solar@gentoo.org> elfkickers-2.0a.ebuild:
+  marking stable on x86,sparc
+
+  31 Jul 2003; <solar@gentoo.org> elfkickers-2.0a.ebuild:
+  added sparc to keywords after testing on sparc64
+
+*elfkickers-2.0a (25 Jul 2003)
+
+  25 Jul 2003; <solar@gentoo.org> elfkickers-2.0a.ebuild, metadata.xml,
+  files/elfkickers-2.0a.diff:
+  Initial import of ELFkickers into portage, adds tools such as sstrip, rebind,
+  elfls, elftoc, ebfc
+

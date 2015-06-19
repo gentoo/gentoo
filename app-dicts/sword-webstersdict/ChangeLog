@@ -1,0 +1,17 @@
+# ChangeLog for app-dicts/sword-webstersdict
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/sword-webstersdict/ChangeLog,v 1.3 2014/01/06 01:12:55 creffett Exp $
+
+  06 Jan 2014; Chris Reffett <creffett@gentoo.org>
+  sword-webstersdict-1.1.ebuild:
+  EAPI bump
+
+  16 May 2008; Steve Dibb <beandog@gentoo.org>
+  sword-webstersdict-1.1.ebuild:
+  Fix keywords
+
+*sword-webstersdict-1.1 (27 Feb 2008)
+
+  27 Feb 2008; Steve Dibb <beandog@gentoo.org> +metadata.xml,
+  +sword-webstersdict-1.1.ebuild:
+  Initial commit

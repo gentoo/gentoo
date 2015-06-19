@@ -1,0 +1,16 @@
+# ChangeLog for x11-wm/goomwwm
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/goomwwm/ChangeLog,v 1.3 2013/11/02 17:27:04 jer Exp $
+
+  02 Nov 2013; Jeroen Roovers <jer@gentoo.org> goomwwm-1.0.0.ebuild:
+  Remove unnneeded include by Peter King (bug #490080). Fix building with
+  --as-needed.
+
+  22 May 2013; Jeroen Roovers <jer@gentoo.org> goomwwm-1.0.0.ebuild:
+  Marked ~x86 too.
+
+*goomwwm-1.0.0 (22 May 2013)
+
+  22 May 2013; Jeroen Roovers <jer@gentoo.org> +goomwwm-1.0.0.ebuild,
+  +metadata.xml:
+  Initial commit.

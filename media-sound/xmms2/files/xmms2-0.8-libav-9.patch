@@ -1,0 +1,20 @@
+commit d61dbc522f4024debb1f99de758de9e5cc7c0936
+Author: Diego Biurrun <diego@biurrun.de>
+Date:   Sun Nov 25 17:33:02 2012 +0100
+
+    OTHER: Support for newer libavcodec versions
+    
+    Add missing #include
+
+diff --git a/src/plugins/avcodec/avcodec.c b/src/plugins/avcodec/avcodec.c
+index c846d64..114d7df 100644
+--- a/src/plugins/avcodec/avcodec.c
++++ b/src/plugins/avcodec/avcodec.c
+@@ -23,6 +23,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <glib.h>
++#include <libavutil/mem.h>
+ 
+ #include "avcodec_compat.h"
+ 

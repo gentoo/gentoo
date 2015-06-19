@@ -1,0 +1,160 @@
+# ChangeLog for dev-ruby/ruby-termios
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-termios/ChangeLog,v 1.43 2015/06/07 19:40:24 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*ruby-termios-1.0.0-r1 (03 Jun 2015)
+
+  03 Jun 2015; Hans de Graaff <graaff@gentoo.org>
+  +ruby-termios-1.0.0-r1.ebuild:
+  Add ruby21, ruby22.
+
+  16 Mar 2015; Hans de Graaff <graaff@gentoo.org>
+  -ruby-termios-0.9.6-r2.ebuild:
+  Cleanup.
+
+  30 Aug 2014; Chema Alonso <nimiux@gentoo.org> ruby-termios-1.0.0.ebuild:
+  Stable for amd64 wrt bug #517012
+
+  26 Jul 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ruby-termios-1.0.0.ebuild:
+  x86 stable wrt bug #517012
+
+  24 Apr 2014; Manuel Rüger <mrueg@gentoo.org> ruby-termios-0.9.6-r2.ebuild,
+  ruby-termios-1.0.0.ebuild:
+  Remove ruby18 support.
+
+*ruby-termios-1.0.0 (13 Nov 2013)
+
+  13 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +ruby-termios-1.0.0.ebuild:
+  Version bump. Add ruby20 target.
+
+  21 Jul 2013; Hans de Graaff <graaff@gentoo.org>
+  -ruby-termios-0.9.6-r1.ebuild:
+  Cleanup.
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> ruby-termios-0.9.6-r2.ebuild:
+  Stable for x86, wrt bug #475582
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> ruby-termios-0.9.6-r2.ebuild:
+  Stable for amd64, wrt bug #475582
+
+*ruby-termios-0.9.6-r2 (22 Sep 2012)
+
+  22 Sep 2012; Hans de Graaff <graaff@gentoo.org>
+  +ruby-termios-0.9.6-r2.ebuild:
+  EAPI=4. Add ruby19. Restrict tests since these need a real TTY, bug 340575.
+
+  01 Jul 2012; Raúl Porcel <armin76@gentoo.org> ruby-termios-0.9.6-r1.ebuild:
+  Drop alpha keywords
+
+  01 May 2012; Raúl Porcel <armin76@gentoo.org> ruby-termios-0.9.6-r1.ebuild:
+  Drop ia64/sparc keywords
+
+  28 Dec 2010; Hans de Graaff <graaff@gentoo.org>
+  ruby-termios-0.9.6-r1.ebuild:
+  Keyword ~x86-macos.
+
+  06 Sep 2010; Hans de Graaff <graaff@gentoo.org>
+  -ruby-termios-0.9.6.ebuild:
+  Remove old version.
+
+  05 Sep 2010; Raúl Porcel <armin76@gentoo.org>
+  ruby-termios-0.9.6-r1.ebuild:
+  alpha/ia64 stable wrt #333865
+
+  23 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  ruby-termios-0.9.6-r1.ebuild:
+  Stable on amd64 wrt bug #333865
+
+  22 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ruby-termios-0.9.6-r1.ebuild:
+  x86 stable wrt bug #333865
+
+  21 Aug 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/ruby-termios-ruby19.patch, ruby-termios-0.9.6-r1.ebuild:
+  Remove unused file. Remove examples USE flag, always install them
+  (uncompressed), and die on tests' failure.
+
+*ruby-termios-0.9.6-r1 (05 Jul 2010)
+
+  05 Jul 2010; Hans de Graaff <graaff@gentoo.org>
+  +ruby-termios-0.9.6-r1.ebuild:
+  Convert to ruby-ng.
+
+  01 May 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  ruby-termios-0.9.6.ebuild:
+  Restore original SRC_URI.
+
+  30 Apr 2010; Hans de Graaff <graaff@gentoo.org> ruby-termios-0.9.6.ebuild:
+  Deal with github changing their tarball generation.
+
+  11 Jan 2010; Hans de Graaff <graaff@gentoo.org>
+  -ruby-termios-0.9.4.ebuild:
+  Remove old version.
+
+  11 Jan 2010; Raúl Porcel <armin76@gentoo.org> ruby-termios-0.9.6.ebuild:
+  alpha/ia64 stable wrt #298237
+
+  10 Jan 2010; Markus Meier <maekke@gentoo.org> ruby-termios-0.9.6.ebuild:
+  amd64/x86 stable, bug #298237
+
+*ruby-termios-0.9.6 (23 Oct 2009)
+
+  23 Oct 2009; Hans de Graaff <graaff@gentoo.org>
+  +ruby-termios-0.9.6.ebuild:
+  Version bump with better compatibility with various ruby versions.
+
+  22 Aug 2009; Alex Legler <a3li@gentoo.org> ruby-termios-0.9.4.ebuild:
+  Remove ruby16 and ruby19 from USE_RUBY.
+
+  13 Jun 2009; Hans de Graaff <graaff@gentoo.org> ruby-termios-0.9.4.ebuild:
+  Fix quoting.
+
+  21 Jan 2007; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org>
+  ruby-termios-0.9.4.ebuild:
+  Added examples use flag to ebuild, #145222
+
+  23 Nov 2006; <blubb@gentoo.org> ruby-termios-0.9.4.ebuild:
+  stable on amd64
+
+  21 Mar 2006; Caleb Tennis <caleb@gentoo.org>
+  +files/ruby-termios-ruby19.patch, ruby-termios-0.9.4.ebuild:
+  Add a patch to make it work with ruby19, from bug #127041
+
+  20 Mar 2006; Caleb Tennis <caleb@gentoo.org> ruby-termios-0.9.4.ebuild:
+  change einstall to make DESTDIR=D install
+
+  04 Feb 2006; <solar@gentoo.org> :
+  - redigest needed due to bad RMD160. bug #121124
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> ruby-termios-0.9.4.ebuild:
+  Mark 0.9.4 stable on ia64
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org> ruby-termios-0.9.4.ebuild:
+  Mark 0.9.4 ~ia64
+
+  19 Aug 2005; Rob Holland <tigger@gentoo.org> ruby-termios-0.9.4.ebuild:
+  Keyworded ~amd64.
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  03 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> ruby-termios-0.9.4.ebuild:
+  Stable on alpha.
+
+  17 Apr 2004; David Holm <dholm@gentoo.org> ruby-termios-0.9.4.ebuild:
+  Added to ~ppc.
+
+  11 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> ruby-termios-0.9.4.ebuild:
+  virtual/ruby fix
+
+  30 May 2003; Tom Payne <twp@gentoo.org> ruby-termios-0.9.4.ebuild :
+  Fixed LICENSE.
+
+*ruby-termios-0.9.4 (19 May 2003)
+
+  19 May 2003; Tom Payne <twp@gentoo.org> ruby-termios-0.9.4.ebuild :
+  Initial release.

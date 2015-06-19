@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=perl? ( dev-lang/perl ) =app-editors/vile-9.8n >=x11-libs/libX11-1.0.0 >=x11-libs/libXt-1.0.0 >=x11-libs/libICE-1.0.0 >=x11-libs/libSM-1.0.0 >=x11-libs/libXaw-1.0.1 >=x11-libs/libXpm-3.5.4.2 >=x11-proto/xproto-7.0.4 sys-devel/flex
+DESCRIPTION=VI Like Emacs -- yet another full-featured vi clone
+EAPI=5
+HOMEPAGE=http://invisible-island.net/vile/
+IUSE=perl
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=perl? ( dev-lang/perl ) =app-editors/vile-9.8n >=x11-libs/libX11-1.0.0 >=x11-libs/libXt-1.0.0 >=x11-libs/libICE-1.0.0 >=x11-libs/libSM-1.0.0 >=x11-libs/libXaw-1.0.1 >=x11-libs/libXpm-3.5.4.2 >=x11-proto/xproto-7.0.4
+SLOT=0
+SRC_URI=ftp://invisible-island.net/vile/current/vile-9.8n.tgz
+_md5_=653c27681561c8719bd849c42e426327

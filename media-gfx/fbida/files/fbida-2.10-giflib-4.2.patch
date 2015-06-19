@@ -1,0 +1,17 @@
+--- a/rd/read-gif.c
++++ b/rd/read-gif.c
+@@ -14,6 +14,14 @@
+ }
+ #else
+ #define GIF5DATA(x)
++// v4.2 removed PrintGifError in favor of GifErrorString, but with a different
++// prototype than v5
++#if defined(GIFLIB_MAJOR) && defined(GIFLIB_MINOR) && (GIFLIB_MAJOR == 4) && (GIFLIB_MINOR == 2)
++static void PrintGifError()
++{
++    fprintf(stderr, "GIF library error: %s\n", GifErrorString());
++}
++#endif
+ #define PrintGifError(e)	PrintGifError()
+ #define DGifOpenFileHandle(x,e)	DGifOpenFileHandle(x)
+ #define DGifCloseFile(x,e)	DGifCloseFile(x)

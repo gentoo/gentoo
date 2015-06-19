@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=GOsa plugin for Mail integration
+EAPI=3
+HOMEPAGE=https://oss.gonicus.de/labs/gosa/wiki/WikiStart.
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=~net-nds/gosa-core-2.6.10 ~net-nds/gosa-plugin-systems-2.6.10
+SLOT=0
+SRC_URI=ftp://oss.gonicus.de/pub/gosa/gosa-plugin-mail-2.6.10.tar.bz2 http://oss.gonicus.de/pub/gosa/gosa-plugin-mail-2.6.10.tar.bz2 ftp://oss.gonicus.de/pub/gosa/archive/gosa-plugin-mail-2.6.10.tar.bz2 http://oss.gonicus.de/pub/gosa/archive/gosa-plugin-mail-2.6.10.tar.bz2
+_md5_=7437b9277af0b9230f5b326bf4568584

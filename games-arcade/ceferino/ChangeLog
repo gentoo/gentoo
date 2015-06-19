@@ -1,0 +1,65 @@
+# ChangeLog for games-arcade/ceferino
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/ceferino/ChangeLog,v 1.17 2015/01/03 19:15:43 tupone Exp $
+
+  03 Jan 2015; Tupone Alfredo <tupone@gentoo.org> ceferino-0.97.8.ebuild:
+  EAPI 5
+
+  24 Aug 2012; Michael Sterrett <mr_bones_@gentoo.org> ceferino-0.97.8.ebuild:
+  any mod support will do
+
+  14 May 2009; Markus Meier <maekke@gentoo.org> ceferino-0.97.8.ebuild:
+  amd64/x86 stable, bug #269726
+
+  13 May 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/ceferino-0.97.8-gcc44.patch, ceferino-0.97.8.ebuild:
+  EAPI=2; add gcc44 patch submitted by Martin Väth via bug #269678
+
+*ceferino-0.97.8 (16 Aug 2007)
+
+  16 Aug 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  +ceferino-0.97.8.ebuild:
+  version bump
+
+  27 May 2007; Peter Weller <welp@gentoo.org> ceferino-0.97.5.ebuild:
+  Stable on amd64 wrt bug 178386
+
+  05 Oct 2006; Tristan Heaven <nyhm@gentoo.org> ceferino-0.97.5.ebuild:
+  Fix gettext dependency
+
+*ceferino-0.97.5 (31 Jan 2006)
+
+  31 Jan 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  +ceferino-0.97.5.ebuild:
+  version bump
+
+  09 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org> -ceferino-0.95.ebuild:
+  Cleaning older versions.
+
+*ceferino-0.96 (29 Aug 2005)
+
+  29 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +ceferino-0.96.ebuild:
+  version bump
+
+  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org> ceferino-0.95.ebuild:
+  Removed INSTALL file.
+
+  30 May 2005; Simon Stelling <blubb@gentoo.org> ceferino-0.95.ebuild:
+  added ~amd64 keyword
+
+*ceferino-0.95 (30 May 2005)
+
+  30 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +ceferino-0.95.ebuild:
+  version bump
+
+  10 May 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  ceferino-0.94.ebuild:
+  Added ~ppc keyword, #92129
+
+*ceferino-0.94 (09 May 2005)
+
+  09 May 2005; Michael Sterrett <mr_bones_@gentoo.org> +metadata.xml,
+  +ceferino-0.94.ebuild:
+  initial commit - ebuild submitted by TGL via bug #90888

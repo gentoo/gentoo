@@ -1,0 +1,76 @@
+# ChangeLog for dev-libs/tinyxml2
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/tinyxml2/ChangeLog,v 1.17 2015/06/06 19:37:40 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  23 Mar 2015; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Drop myself as maintainer.
+
+  15 Feb 2015; Mikle Kolyada <zlogene@gentoo.org> tinyxml2-2.2.0.ebuild:
+  Add ~arm keyword
+
+  12 Dec 2014; Tim Harder <radhermit@gentoo.org> -tinyxml2-2.0.2.ebuild,
+  -tinyxml2-2.1.0.ebuild:
+  Remove old.
+
+  12 Dec 2014; Tim Harder <radhermit@gentoo.org> tinyxml2-2.2.0.ebuild:
+  Stabilize for amd64 and x86.
+
+*tinyxml2-2.2.0 (07 Oct 2014)
+
+  07 Oct 2014; Tim Harder <radhermit@gentoo.org> +tinyxml2-2.2.0.ebuild:
+  Version bump.
+
+*tinyxml2-2.1.0 (21 Apr 2014)
+
+  21 Apr 2014; Tim Harder <radhermit@gentoo.org> +tinyxml2-2.1.0.ebuild:
+  Version bump.
+
+  29 Mar 2014; Tim Harder <radhermit@gentoo.org>
+  -tinyxml2-1.0.1_p20120531.ebuild, -files/tinyxml2-1.0.1_p20120531-test.patch:
+  Remove old.
+
+*tinyxml2-2.0.2 (29 Mar 2014)
+
+  29 Mar 2014; Tim Harder <radhermit@gentoo.org> +tinyxml2-2.0.2.ebuild:
+  Version bump (bug #506102).
+
+  06 Jan 2013; <jd@gentoo.org> tinyxml2-1.0.9_p20121123.ebuild:
+  marked x86 per bug 450334
+
+  05 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  tinyxml2-1.0.9_p20121123.ebuild:
+  Stable for amd64, wrt bug #450334
+
+*tinyxml2-1.0.9_p20121123 (24 Nov 2012)
+
+  24 Nov 2012; Tim Harder <radhermit@gentoo.org>
+  +tinyxml2-1.0.9_p20121123.ebuild, +files/tinyxml2-1.0.9_p20121123-test.patch:
+  Version bump.
+
+  20 Sep 2012; Tim Harder <radhermit@gentoo.org>
+  tinyxml2-1.0.1_p20120531.ebuild:
+  Set CMAKE_MIN_VERSION.
+
+  04 Aug 2012; Agostino Sarubbo <ago@gentoo.org>
+  tinyxml2-1.0.1_p20120531.ebuild:
+  Stable for amd64, wrt bug #427592
+
+  23 Jul 2012; Jeff Horelick <jdhore@gentoo.org>
+  tinyxml2-1.0.1_p20120531.ebuild:
+  marked x86 per bug 427592
+
+  02 Jun 2012; Tim Harder <radhermit@gentoo.org>
+  tinyxml2-1.0.1_p20120531.ebuild,
+  +files/tinyxml2-1.0.1_p20120531-test-return-status.patch:
+  Properly die if tests fail.
+
+*tinyxml2-1.0.1_p20120531 (31 May 2012)
+
+  31 May 2012; Tim Harder <radhermit@gentoo.org>
+  +tinyxml2-1.0.1_p20120531.ebuild, +files/tinyxml2-1.0.1_p20120531-test.patch,
+  +metadata.xml:
+  Initial import. Used by recent versions of libmediainfo (fixes bug #414647 by
+  hasufell).

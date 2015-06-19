@@ -1,0 +1,147 @@
+# ChangeLog for media-video/binkplayer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/binkplayer/ChangeLog,v 1.35 2015/06/01 20:40:06 mr_bones_ Exp $
+
+  01 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org> binkplayer-1.99w.ebuild:
+  clean up app-emulation/emul-linux which has been removed
+
+  02 Nov 2014; Michael Sterrett <mr_bones_@gentoo.org> binkplayer-1.99w.ebuild:
+  use QA_PREBUILT
+
+  02 Nov 2014; Jonathan Callen <jcallen@gentoo.org> binkplayer-1.99w.ebuild:
+  Also drop sdl_mixer dep as unused
+
+  02 Nov 2014; Jonathan Callen <jcallen@gentoo.org> binkplayer-1.99w.ebuild:
+  Update deps to match libraries actually used (add openal, drop libstdc++.so.5)
+
+  21 Oct 2014; Pacho Ramos <pacho@gentoo.org> binkplayer-1.99w.ebuild:
+  Support multilib providers for deps. Bump to EAPI=5.
+
+  18 Oct 2014; Michael Sterrett <mr_bones_@gentoo.org> -binkplayer-1.9p.ebuild:
+  old
+
+  12 Oct 2014; Agostino Sarubbo <ago@gentoo.org> binkplayer-1.99w.ebuild:
+  Stable for x86, wrt bug #522096
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> binkplayer-1.99w.ebuild:
+  Stable for amd64, wrt bug #522096
+
+  08 Sep 2014; Ulrich Müller <ulm@gentoo.org> binkplayer-1.9p.ebuild:
+  Replace emul-linux-x86-compat dependency by virtual/libstdc++, bug 522218.
+
+  04 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org> binkplayer-1.99w.ebuild:
+  EAPI=5
+
+  03 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org> binkplayer-1.99w.ebuild:
+  clean deps (bug #522048)
+
+  23 Apr 2014; Ulrich Müller <ulm@gentoo.org> binkplayer-1.9p.ebuild,
+  binkplayer-1.99w.ebuild:
+  Fix LICENSE, bug 455836.
+
+*binkplayer-1.99w (13 Mar 2013)
+
+  13 Mar 2013; Michael Sterrett <mr_bones_@gentoo.org> +binkplayer-1.99w.ebuild:
+  version bump
+
+  24 Sep 2012; Mike Frysinger <vapier@gentoo.org> binkplayer-1.9p.ebuild:
+  QA_DT_HASH (old/deprecated) -> QA_FLAGS_IGNORED (new hotness).
+
+  04 Jan 2010; Samuli Suominen <ssuominen@gentoo.org>
+  binkplayer-1.9p.ebuild:
+  Set QA_DT_HASH and QA_PRESTRIPPED instead of using RESTRICT="strip".
+
+  02 Dec 2009; Markus Meier <maekke@gentoo.org> binkplayer-1.9p.ebuild:
+  amd64/x86 stable, bug #295238
+
+  02 Nov 2009; Markus Meier <maekke@gentoo.org> binkplayer-1.9g.ebuild:
+  amd64/x86 stable, bug #290964
+
+*binkplayer-1.9p (29 Oct 2009)
+
+  29 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +binkplayer-1.9p.ebuild:
+  version bump
+
+  11 Sep 2008; Tristan Heaven <nyhm@gentoo.org> binkplayer-1.9g.ebuild:
+  Add missing dependencies
+
+*binkplayer-1.9g (10 Sep 2008)
+
+  10 Sep 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +binkplayer-1.9g.ebuild:
+  version bump
+
+*binkplayer-1.9b (26 Jan 2008)
+
+  26 Jan 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +binkplayer-1.9b.ebuild:
+  version bump
+
+*binkplayer-1.8x (20 Oct 2007)
+
+  20 Oct 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  +binkplayer-1.8x.ebuild:
+  version bump
+
+*binkplayer-1.8s (19 Apr 2007)
+
+  19 Apr 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  +binkplayer-1.8s.ebuild:
+  version bump
+
+*binkplayer-1.8n (22 Aug 2006)
+
+  22 Aug 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  -binkplayer-1.8c.ebuild, +binkplayer-1.8n.ebuild:
+  version bump
+
+  04 Jul 2006; Jon Hood <squinky86@gentoo.org> binkplayer-1.8h.ebuild:
+  Stable on amd64, bug #138927.
+
+  29 Mar 2006; Herbie Hopkins <herbs@gentoo.org> binkplayer-1.8h.ebuild:
+  Marked ~amd64.
+
+*binkplayer-1.8h (26 Feb 2006)
+
+  26 Feb 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  +binkplayer-1.8h.ebuild:
+  version bump - reported by Jean Darcoux via bug #124108
+
+*binkplayer-1.8c (25 May 2005)
+
+  25 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +binkplayer-1.8c.ebuild:
+  version bump
+
+*binkplayer-1.6g (12 Sep 2004)
+
+  12 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +binkplayer-1.6g.ebuild:
+  version bump (bug #63835)
+
+*binkplayer-1.6d (16 Jul 2004)
+
+  16 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +binkplayer-1.6d.ebuild:
+  version bump
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  binkplayer-1.5y.ebuild, binkplayer-1.6b.ebuild, binkplayer-1.6c.ebuild:
+  virtual/glibc -> virtual/libc
+
+*binkplayer-1.6c (27 Mar 2004)
+
+  27 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> binkplayer-1.6c.ebuild:
+  version bump
+
+*binkplayer-1.6b (19 Jan 2004)
+
+  19 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> binkplayer-1.5y.ebuild,
+  binkplayer-1.6b.ebuild:
+  mark 1.5 stable for x86; version bump for unstable
+
+*binkplayer-1.5y (17 Nov 2003)
+
+  17 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> binkplayer-1.5y.ebuild:
+  initial commit (bug 31788)

@@ -1,0 +1,54 @@
+# ChangeLog for dev-ruby/extlib
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/extlib/ChangeLog,v 1.14 2014/11/12 17:08:05 mrueg Exp $
+
+  12 Nov 2014; Manuel Rüger <mrueg@gentoo.org> extlib-0.9.16-r1.ebuild:
+  Drop jruby target.
+
+  01 Nov 2014; Hans de Graaff <graaff@gentoo.org> extlib-0.9.16-r1.ebuild:
+  Indicate ruby21 status.
+
+  30 Oct 2014; Manuel Rüger <mrueg@gentoo.org> extlib-0.9.16-r1.ebuild:
+  Drop jruby target.
+
+  15 May 2014; Manuel Rüger <mrueg@gentoo.org> extlib-0.9.16-r1.ebuild:
+  Remove ruby18.
+
+  17 Nov 2013; Manuel Rüger <mrueg@gentoo.org> -extlib-0.9.16.ebuild:
+  Cleanup old.
+
+*extlib-0.9.16-r1 (30 Oct 2013)
+
+  30 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +extlib-0.9.16-r1.ebuild:
+  Add ruby20 target.
+
+  03 Mar 2013; Hans de Graaff <graaff@gentoo.org> -extlib-0.9.15.ebuild:
+  Cleanup.
+
+*extlib-0.9.16 (12 Feb 2013)
+
+  12 Feb 2013; Hans de Graaff <graaff@gentoo.org> +extlib-0.9.16.ebuild:
+  Version bump.
+
+  14 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata.xml so that it's the same as most other packages.
+
+  14 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> extlib-0.9.15.ebuild:
+  Port to rspec helper for testing. Bump to EAPI 4.
+
+  16 May 2012; Hans de Graaff <graaff@gentoo.org> extlib-0.9.15.ebuild:
+  Fix USE=doc not to require jeweler, bug 416273. Add ruby19, ree19, jruby.
+
+  21 Jun 2010; Hans de Graaff <graaff@gentoo.org> -extlib-0.9.14.ebuild:
+  Remove old version.
+
+*extlib-0.9.15 (03 Jun 2010)
+
+  03 Jun 2010; Hans de Graaff <graaff@gentoo.org> +extlib-0.9.15.ebuild:
+  Version bump. Build and install documentation using yard.
+
+*extlib-0.9.14 (19 Feb 2010)
+
+  19 Feb 2010; Hans de Graaff <graaff@gentoo.org> +extlib-0.9.14.ebuild,
+  +metadata.xml:
+  Moved from ruby overlay.

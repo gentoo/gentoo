@@ -1,0 +1,32 @@
+# ChangeLog for dev-python/turbolift
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/turbolift/ChangeLog,v 1.7 2015/06/07 16:24:19 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> turbolift-2.0.5.ebuild:
+  Drop old Python implementations
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> turbolift-2.0.5.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+*turbolift-2.0.5 (24 Jun 2014)
+
+  24 Jun 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +turbolift-2.0.5.ebuild, -turbolift-2.0.3.ebuild:
+  bup and fixing 514838
+
+  10 Nov 2013; Matthew Thode <prometheanfire@gentoo.org> metadata.xml,
+  turbolift-2.0.3.ebuild:
+  update to package description
+
+*turbolift-2.0.3 (08 Nov 2013)
+
+  08 Nov 2013; Matthew Thode <prometheanfire@gentoo.org> +metadata.xml,
+  +turbolift-2.0.3.ebuild:
+  initial commit of turbolift

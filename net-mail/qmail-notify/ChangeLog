@@ -1,0 +1,57 @@
+# ChangeLog for net-mail/qmail-notify
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/qmail-notify/ChangeLog,v 1.17 2014/08/10 20:45:53 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  qmail-notify-0.93-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  14 Jan 2010; Thilo Bangert <bangert@gentoo.org>
+  qmail-notify-0.93-r1.ebuild:
+  fix SRC_URI - fix QA warnings
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org>
+  qmail-notify-0.93-r1.ebuild:
+  Remove virtual/libc
+
+  12 Jun 2007; Marius Mauch <genone@gentoo.org> qmail-notify-0.93-r1.ebuild:
+  Replacing einfo with elog
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  20 Feb 2006; Michael Hanselmann <hansmi@gentoo.org>
+  -qmail-notify-0.93.ebuild, qmail-notify-0.93-r1.ebuild:
+  Stable on amd64, sparc, x86. Added to ~hppa, ~ppc. Removed old ebuilds.
+
+  26 Oct 2004; Tom Martin <slarti@gentoo.org> qmail-notify-0.93-r1.ebuild,
+  qmail-notify-0.93-r1.ebuild:
+  Marked ~amd64, fixing ${CC} with regard to bug 69004.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  qmail-notify-0.93-r1.ebuild, qmail-notify-0.93.ebuild:
+  virtual/glibc -> virtual/libc
+
+*qmail-notify-0.93-r1 (11 Aug 2003)
+
+  11 Aug 2003; Robin H. Johnson <robbat2@gentoo.org> files/qmail-notify.cron:
+  fix bug #26430, cleanup ebuild a bit
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*qmail-notify-0.93 (17 Jun 2002)
+
+  17 Jun 2002; Thilo Bangert <bangert@gentoo.org> qmail-notify-0.93.ebuild:
+
+  version bump - added license
+
+
+*qmail-notify-0.92 (17 Apr 2002)
+
+  17 Apr 2002; Thilo Bangert <bangert@gentoo.org> qmail-notify-0.92.ebuild:
+
+  added virtual/cron dependancy - installed cron file to /etc/cron.hourly
+
+  13 Mar 2002; Thilo Bangert <thilo.bangert@gmx.net> ChangeLog:
+
+  initial release

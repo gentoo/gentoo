@@ -1,0 +1,456 @@
+# ChangeLog for sci-visualization/paraview
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/paraview/ChangeLog,v 1.90 2015/05/26 02:11:33 patrick Exp $
+
+  26 May 2015; Patrick Lauer <patrick@gentoo.org> paraview-4.1.0-r2.ebuild,
+  paraview-4.2.0-r1.ebuild, paraview-4.3.1.ebuild:
+  Fix protobuf dep #537988
+
+*paraview-4.3.1 (19 Apr 2015)
+
+  19 Apr 2015; Matthias Maier <tamiko@gentoo.org>
+  +files/paraview-4.1.0-vtk-freetype.patch,
+  +files/paraview-4.2.0-protobuf-2.patch, +files/paraview-4.2.0-protobuf.patch,
+  +paraview-4.3.1.ebuild, -files/paraview-4.2.0-Protobuf.patch,
+  -paraview-4.0.1-r2.ebuild, paraview-4.1.0-r2.ebuild, paraview-4.2.0-r1.ebuild:
+  version bump (bug #538690), fix dependencies (bug #538168), fix freetype-2.5.5
+  compatibility also in 4.1.0-r2 (bug #541012), fix protobuf compatibility in
+  4.2.0 and 4.3.1 (bug #537988)
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> paraview-4.0.1-r2.ebuild,
+  paraview-4.1.0-r2.ebuild, paraview-4.2.0-r1.ebuild:
+  Drop old Python implementations
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> metadata.xml,
+  paraview-4.0.1-r2.ebuild, paraview-4.1.0-r2.ebuild, paraview-4.2.0-r1.ebuild:
+  Fix tcl/tk slotting
+
+*paraview-4.2.0-r1 (19 Jan 2015)
+*paraview-4.1.0-r2 (19 Jan 2015)
+*paraview-4.0.1-r2 (19 Jan 2015)
+
+  19 Jan 2015; Matthias Maier <tamiko@gentoo.org> +paraview-4.0.1-r2.ebuild,
+  +paraview-4.1.0-r2.ebuild, +paraview-4.2.0-r1.ebuild,
+  -paraview-4.0.1-r1.ebuild, -paraview-4.1.0-r1.ebuild, -paraview-4.2.0.ebuild:
+  do not set global PYTHONPATH environment variable, bug #499272
+
+  31 Dec 2014; Matthias Maier <tamiko@gentoo.org>
+  +files/paraview-4.2.0-vtk-freetype.patch, paraview-4.2.0.ebuild:
+  fix compilation with freetype-2.5.4, bug #533444
+
+*paraview-4.2.0 (21 Dec 2014)
+
+  21 Dec 2014; Matthias Maier <tamiko@gentoo.org>
+  +files/paraview-4.1.0-glxext-legacy.patch,
+  +files/paraview-4.1.0-no-fatal-warnings.patch,
+  +files/paraview-4.2.0-Protobuf.patch,
+  +files/paraview-4.2.0-removesqlite.patch, +paraview-4.2.0.ebuild,
+  -paraview-4.0.1.ebuild, paraview-4.1.0-r1.ebuild:
+  version bump; define GLX_GLXEXT_LEGACY in 4.0.1, bug #528654; do not use -Wl
+  ,--fatal-warnings, bug #526464
+
+  20 Dec 2014; Matthias Maier <tamiko@gentoo.org> metadata.xml:
+  take over maintainership
+
+  13 Dec 2014; Michał Górny <mgorny@gentoo.org> paraview-4.0.1-r1.ebuild,
+  paraview-4.0.1.ebuild, paraview-4.1.0-r1.ebuild:
+  Rename net-zope/zope-interface to dev-python/zope-interface.
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  22 May 2014; Julian Ospald <hasufell@gentoo.org> paraview-4.1.0-r1.ebuild:
+  add dev-qt/designer:4 dependency wrt #503622
+
+  27 Feb 2014; Julian Ospald <hasufell@gentoo.org> paraview-4.1.0-r1.ebuild:
+  restrict test wrt #502594 and #502592
+
+  25 Jan 2014; Julian Ospald <hasufell@gentoo.org> paraview-4.0.1-r1.ebuild:
+  fix sci-libs/netcdf dep wrt #498076
+
+*paraview-4.1.0-r1 (25 Jan 2014)
+
+  25 Jan 2014; Julian Ospald <hasufell@gentoo.org> -paraview-4.1.0.ebuild,
+  +paraview-4.1.0-r1.ebuild:
+  fix random sandbox violations wrt #499020
+
+*paraview-4.1.0 (18 Jan 2014)
+
+  18 Jan 2014; Julian Ospald <hasufell@gentoo.org> +paraview-4.1.0.ebuild:
+  version bump, fix sci-libs/netcdf dep wrt #498076
+
+  03 Aug 2013; Michał Górny <mgorny@gentoo.org> paraview-4.0.1.ebuild,
+  paraview-4.0.1-r1.ebuild:
+  Move dev-python/twisted to dev-python/twisted-core.
+
+*paraview-4.0.1-r1 (29 Jul 2013)
+
+  29 Jul 2013; Julian Ospald <hasufell@gentoo.org> +paraview-4.0.1-r1.ebuild,
+  +files/paraview-4.0.1-Protobuf.patch:
+  use system protobuf, potentially fixing bug 471130
+
+  28 Jul 2013; Julian Ospald <hasufell@gentoo.org> paraview-4.0.1.ebuild:
+  fix build with stable dev-db/mysql wrt #478250
+
+  27 Jul 2013; Julian Ospald <hasufell@gentoo.org> -paraview-3.98.0.ebuild,
+  -paraview-3.98.0-r1.ebuild, -files/paraview-3.98.0-gcc-4.7.patch,
+  -files/paraview-3.98.0-mpi4py.patch, -files/paraview-3.98.0-pvblot.patch,
+  -files/paraview-3.98.0-removesqlite.patch,
+  -files/paraview-3.98.0-vtk-cg-path.patch,
+  -files/paraview-3.98.0-vtknetcd.patch,
+  -files/paraview-3.98.0-xdmf-cstring.patch:
+  remove old
+
+  24 Jul 2013; Julian Ospald <hasufell@gentoo.org> paraview-4.0.1.ebuild:
+  update REQUIRED_USE, fix automagic enabling of qt4, fix building with latest
+  dev-db/mysql wrt #475492
+
+*paraview-4.0.1 (01 Jul 2013)
+
+  01 Jul 2013; Julian Ospald <hasufell@gentoo.org> +paraview-4.0.1.ebuild,
+  +files/paraview-4.0.1-gcc-4.7.patch,
+  +files/paraview-4.0.1-removesqlite.patch,
+  +files/paraview-4.0.1-vtk-cg-path.patch,
+  +files/paraview-4.0.1-vtknetcd.patch,
+  +files/paraview-4.0.1-xdmf-cstring.patch:
+  version bump
+
+  29 May 2013; Justin Lecher <jlec@gentoo.org> paraview-3.98.0.ebuild,
+  paraview-3.98.0-r1.ebuild, metadata.xml:
+  Fix usage of new python r1 eclasses (missing PYTHON_REQUIRED_USE)
+
+  29 May 2013; Julian Ospald <hasufell@gentoo.org> paraview-3.98.0-r1.ebuild,
+  paraview-3.98.0.ebuild:
+  update REQUIRED_USE to include PYTHON_REQUIRED_USE
+
+*paraview-3.98.0-r1 (07 May 2013)
+
+  07 May 2013; Julian Ospald <hasufell@gentoo.org> +paraview-3.98.0-r1.ebuild,
+  metadata.xml:
+  fix install of headers and put it behind development useflag wrt #465258 ;
+  also fix compilation of plugins if all other useflags are disabled
+
+  09 Mar 2013; Julian Ospald <hasufell@gentoo.org> paraview-3.98.0.ebuild:
+  fix build time failure wrt #460528, fix a few non-fatal typos
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> paraview-3.98.0.ebuild:
+  Move Qt dependencies to the new category
+
+  17 Feb 2013; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  set correct maintainer
+
+  13 Feb 2013; Julian Ospald <hasufell@gentoo.org> paraview-3.98.0.ebuild:
+  fix gl2ps dep
+
+*paraview-3.98.0 (11 Feb 2013)
+
+  11 Feb 2013; Julian Ospald <hasufell@gentoo.org> -paraview-3.6.2.ebuild,
+  -files/paraview-3.6.2-about.html.patch,
+  -files/paraview-3.6.2-assistant.patch,
+  -files/paraview-3.6.2-boost-property_map.patch,
+  -files/paraview-3.6.2-findcg-cmake.patch, -files/paraview-3.6.2-h5part.patch,
+  -files/paraview-3.6.2-hdf-1.8.3.patch, -files/paraview-3.6.2-libpng14.patch,
+  -files/paraview-3.6.2-libpng15.patch,
+  -files/paraview-3.6.2-no-doc-finder.patch, -files/paraview-3.6.2-odbc.patch,
+  -files/paraview-3.6.2-pointsprite-disable.patch,
+  -files/paraview-3.6.2-qt.patch, +paraview-3.98.0.ebuild,
+  +files/paraview-3.98.0-gcc-4.7.patch, +files/paraview-3.98.0-mpi4py.patch,
+  +files/paraview-3.98.0-pvblot.patch,
+  +files/paraview-3.98.0-removesqlite.patch,
+  +files/paraview-3.98.0-vtk-cg-path.patch,
+  +files/paraview-3.98.0-vtknetcd.patch,
+  +files/paraview-3.98.0-xdmf-cstring.patch:
+  version bump wrt #317345
+
+  06 May 2012; Davide Pesavento <pesa@gentoo.org> paraview-3.6.2.ebuild:
+  Stop inheriting deprecated qt4 eclass (it wasn't used anyway).
+
+  17 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> paraview-3.6.2.ebuild,
+  +files/paraview-3.6.2-libpng15.patch:
+  Fix building with libpng15 wrt #387437 by Ruggero Morsucci
+
+  27 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> paraview-3.6.2.ebuild:
+  Fix for python 2.7 wrt #348151
+
+  27 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> paraview-3.6.2.ebuild:
+  Fix dependency on qt-assistant wrt bug 335831
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #105599
+
+  10 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  paraview-3.6.2.ebuild:
+  Fix deprecation warning.
+
+  31 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> paraview-3.6.2.ebuild:
+  Depend on virtual/ffmpeg instead of media-video/ffmpeg.
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> paraview-3.6.2.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  20 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> paraview-3.6.2.ebuild:
+  Marked ~ppc wrt #331605. Thanks to Kazuyoshi Furutaka
+  <furutaka@jb3.so-net.ne.jp> for report and testing.
+
+  08 Nov 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  -paraview-3.6.1.ebuild, -paraview-3.6.1-r1.ebuild,
+  -files/paraview-3.6.1-assistant.patch,
+  -files/paraview-3.6.1-hdf-1.8.3.patch,
+  -files/paraview-3.6.1-install-fix.patch,
+  -files/paraview-3.6.1-no-doc-finder.patch,
+  -files/paraview-3.6.1-pointsprite-disable.patch,
+  -files/paraview-3.6.1-qt.patch, paraview-3.6.2.ebuild:
+  media-libs/jpeg -> virtual/jpeg. Drop old. Sort KEYWORDS and USE.
+
+  17 Jun 2010; Patrick Lauer <patrick@gentoo.org> paraview-3.6.2.ebuild:
+  Migrating away from deprecated postgres virtuals
+
+  21 May 2010; Justin Lecher <jlec@gentoo.org> paraview-3.6.2.ebuild:
+  Fixes for PYTHON ABI, #316257
+
+  12 May 2010; Samuli Suominen <ssuominen@gentoo.org> paraview-3.6.2.ebuild,
+  +files/paraview-3.6.2-libpng14.patch:
+  Fix building with libpng14 wrt #319397 by Helmut Jarausch.
+
+  09 Mar 2010; Jonathan Callen <abcd@gentoo.org> paraview-3.6.2.ebuild:
+  QA: When not using an absolute path, you MUST NOT use a file extension
+  (.png, .svg, or .xpm) on the icon name for make_desktop_entry
+
+  30 Jan 2010; Markus Dittrich <markusle@gentoo.org> paraview-3.6.2.ebuild,
+  +files/paraview-3.6.2-h5part.patch:
+  Add temporary fix for broken h5part plugin (see bug #301538).
+  Also changed hdf5 dependency to hd5[mpi=] per bug #302621.
+
+  21 Jan 2010; Markus Dittrich <markusle@gentoo.org> paraview-3.6.2.ebuild,
+  +files/paraview-3.6.2-boost-property_map.patch,
+  +files/paraview-3.6.2-odbc.patch:
+  Added patch to allow compilation against boost-1.42 (fixes #301684).
+  Also forced the use of system HDF5 (fixes #301668) and fixed a problem
+  with finding the proper odbc libs (#301538).
+
+*paraview-3.6.2 (16 Jan 2010)
+
+  16 Jan 2010; Markus Dittrich <markusle@gentoo.org> +paraview-3.6.2.ebuild,
+  +files/paraview-3.6.2-assistant.patch,
+  +files/paraview-3.6.2-findcg-cmake.patch,
+  +files/paraview-3.6.2-hdf-1.8.3.patch,
+  +files/paraview-3.6.2-no-doc-finder.patch,
+  +files/paraview-3.6.2-pointsprite-disable.patch,
+  +files/paraview-3.6.2-about.html.patch,
+  +files/paraview-3.6.2-qt.patch, metadata.xml:
+  Version bump. This new ebuild fully utilizes the cmake-utils eclass and
+  adds desktop entries for both paraview and OverView (this fixes bugs 
+  #299627, #287589, #273117). Thanks much to Francois Bissey 
+  <f.r.bissey@massey.ac.nz> for his great help with the ebuild.
+
+  24 Nov 2009; Markus Dittrich <markusle@gentoo.org>
+  paraview-3.6.1-r1.ebuild:
+  Removed boost from RDEPEND (fixes bug #293086).
+
+  09 Oct 2009; Markus Dittrich <markusle@gentoo.org>
+  paraview-3.6.1-r1.ebuild:
+  Make sure to use the paraview provided OpenGl headers rather than
+  the system ones since newer OpenGL-3.2 stuff breaks vtk's header
+  parsing framework (fixes bug #287500).
+
+  05 Aug 2009; Markus Dittrich <markusle@gentoo.org>
+  -files/paraview-3.2.1-openmpi.patch, -paraview-3.3_pre20080514.ebuild,
+  -files/paraview-3.3_pre20080514-gcc4.3.patch,
+  -files/paraview-3.3_pre20080514-hdf5.patch,
+  -files/paraview-3.3_pre20080514-qt4.4.patch, -paraview-3.4.0.ebuild,
+  -files/paraview-3.4.0-qt4.4-5.patch:
+  Removed old ebuilds and patches.
+
+*paraview-3.6.1-r1 (29 Jul 2009)
+
+  29 Jul 2009; Markus Dittrich <markusle@gentoo.org>
+  +paraview-3.6.1-r1.ebuild:
+  New revision. paraview-3.6.1 should now be able to coexist with vtk
+  (#279264).
+
+  28 Jul 2009; Markus Dittrich <markusle@gentoo.org> paraview-3.6.1.ebuild,
+  +files/paraview-3.6.1-no-doc-finder.patch:
+  Added patch and fixes to ebuild to remove several install location
+  snafus.
+
+  27 Jul 2009; Markus Dittrich <markusle@gentoo.org> paraview-3.6.1.ebuild:
+  Have paraview block vtk until a better solution is found (#279264).
+
+  26 Jul 2009; Markus Dittrich <markusle@gentoo.org> paraview-3.6.1.ebuild:
+  Disabled building of tests since they seem to fail for a number
+  of people (#279002 and #278982).
+
+  25 Jul 2009; Markus Dittrich <markusle@gentoo.org> paraview-3.6.1.ebuild:
+  Only apply hdf5 patch conditional on >=hdf-1.8.0 (bug #279060).
+
+  25 Jul 2009; Markus Dittrich <markusle@gentoo.org> paraview-3.6.1.ebuild:
+  Remove threads useflag and always force compilation against pthreads.
+
+*paraview-3.6.1 (23 Jul 2009)
+
+  23 Jul 2009; Markus Dittrich <markusle@gentoo.org>
+  -files/paraview-2.6.0-hdf5-zlib.patch,
+  -files/paraview-2.6.0-include.patch, -files/paraview-2.6.2-tkImgGIF.patch,
+  -paraview-3.2.1.ebuild, -files/paraview-3.2-libxml2-fix.patch,
+  -files/paraview-3.2-support-qt4.3.patch, +paraview-3.6.1.ebuild,
+  +files/paraview-3.6.1-assistant.patch,
+  +files/paraview-3.6.1-hdf-1.8.3.patch,
+  +files/paraview-3.6.1-install-fix.patch,
+  +files/paraview-3.6.1-pointsprite-disable.patch,
+  +files/paraview-3.6.1-qt.patch, metadata.xml:
+  Version bump (bug #278563) and big cleanup.
+  A big "Thank you!" goes to Takuya OSHIMA for his great help
+  with the OpenFoam reader and Oliver Borm for testing.
+
+  16 Jul 2009; Markus Dittrich <markusle@gentoo.org> paraview-3.4.0.ebuild:
+  More ebuild cleanups.
+
+  14 Jul 2009; Markus Dittrich <markusle@gentoo.org> paraview-3.4.0.ebuild,
+  +files/paraview-3.4.0-qt4.4-5.patch:
+  Added support for >=qt4.4 to 3.4.0 ebuild.
+
+  13 Jun 2009; Justin Bronder <jsbronder@gentoo.org> -paraview-2.6.2.ebuild:
+  Removing paraview-2.6.2, depends on sys-cluster/mpich which is going
+  away (#266565).
+
+  05 Nov 2008; Markus Dittrich <markusle@gentoo.org> paraview-3.4.0.ebuild:
+  Updated OpenFOAM patch. Thank much to Takuya OSHIMA for his help.
+
+  31 Oct 2008; Markus Dittrich <markusle@gentoo.org> paraview-3.4.0.ebuild:
+  Switched install location from paraview-3.4.0 to paraview-3.4.
+
+  30 Oct 2008; Markus Dittrich <markusle@gentoo.org> paraview-3.4.0.ebuild:
+  Fixed wrong installation path and went back to EAPI=1 to ease 
+  installation for users of the stable branch. Also rolled back the 
+  OpenFOAM patch one version since the newer seems to cause problems.
+
+*paraview-3.4.0 (28 Oct 2008)
+
+  28 Oct 2008; Markus Dittrich <markusle@gentoo.org> +paraview-3.4.0.ebuild:
+  Version bump (see bug #243362).
+
+  22 Oct 2008; Markus Dittrich <markusle@gentoo.org>
+  paraview-3.3_pre20080514.ebuild:
+  Apply hdf5 patch only when USE="hdf5" since it interferes otherwise.
+
+  15 Oct 2008; Markus Dittrich <markusle@gentoo.org>
+  +files/paraview-3.3_pre20080514-hdf5.patch,
+  files/paraview-3.3_pre20080514-gcc4.3.patch,
+  paraview-3.3_pre20080514.ebuild:
+  Added patch to fix issues due to changed API in >=hdf5-1.6.7 
+  (fixes bug #242184). Also updated gcc-4 patch.
+
+  29 Jul 2008; Markus Dittrich <markusle@gentoo.org>
+  paraview-3.3_pre20080514.ebuild:
+  Added OpenFOAM-1.5 support patch (fixes bug #233191). Thanks much to
+  Takuya OSHIMA <oshima@eng.niigata-u.ac.jp> for providing a
+  customized patch and Oliver Borm <oli.borm@web.de> for his patch. 
+
+  28 Jul 2008; Carsten Lohrke <carlo@gentoo.org> paraview-3.2.1.ebuild:
+  QA: Get rid of deprecated qt4_min_version().
+
+  27 Jul 2008; Carsten Lohrke <carlo@gentoo.org>
+  paraview-3.3_pre20080514.ebuild:
+  Fix broken split Qt 4.4 dependencies, cf. bug 217161 comment 11.
+
+  27 May 2008; Markus Dittrich <markusle@gentoo.org> ChangeLog:
+  Removed package from package.mask.
+
+  26 May 2008; Markus Dittrich <markusle@gentoo.org>
+  -files/paraview-3.3_pre20080514-qt.patch,
+  +files/paraview-3.3_pre20080514-qt4.4.patch,
+  paraview-3.3_pre20080514.ebuild:
+  Added support for qt4, fixed bogus /usr/plugin install directory and
+  depend explicitly on eselect-opengl to avoid missing declarations 
+  in older glext header files.
+
+*paraview-3.3_pre20080514 (15 May 2008)
+
+  15 May 2008; Markus Dittrich <markusle@gentoo.org>
+  +files/paraview-3.3_pre20080514-gcc4.3.patch,
+  +files/paraview-3.3_pre20080514-qt.patch,
+  +paraview-3.3_pre20080514.ebuild:
+  Added development version which fixes the non-functioning
+  screenshot feature (see bug #220477).
+
+  12 May 2008; Markus Dittrich <markusle@gentoo.org> paraview-2.6.2.ebuild,
+  paraview-3.2.1.ebuild:
+  Removed runtime dependency on app-doc/doxygen (fixes bug #221689).
+
+  20 Feb 2008; Markus Dittrich <markusle@gentoo.org>
+  +files/paraview-3.2.1-openmpi.patch, paraview-3.2.1.ebuild:
+  Enabled support for openmpi and mpich2 (see bug #210639).
+
+  15 Feb 2008; Markus Dittrich <markusle@gentoo.org>
+  +files/paraview-2.6.2-tkImgGIF.patch, paraview-2.6.2.ebuild:
+  Added patch to take care of SA28784 and CVE-2008-0553 (see bug #208464).
+
+  14 Feb 2008; Markus Dittrich <markusle@gentoo.org> paraview-3.2.1.ebuild:
+  Added pkg_setup logic and EAPI=1 in response to updated qt4.eclass 
+  (see bug #210062). Thanks much to Jakub Moc <jakub@gentoo.org> for
+  the fix.
+
+  21 Jan 2008; Markus Dittrich <markusle@gentoo.org> paraview-3.2.1.ebuild:
+  Fixed improper MPI cmake option (bug #206840).
+
+  19 Jan 2008; Markus Dittrich <markusle@gentoo.org> paraview-3.2.1.ebuild:
+  Let the qt4 eclass check for qt3support.
+
+  05 Jan 2008; Markus Dittrich <markusle@gentoo.org> paraview-3.2.1.ebuild:
+  Added patch to support OpenFOAM (see bug #202685). Thanks much to
+  Oliver Borm <oli.borm@web.de> for his help and patch.
+
+*paraview-3.2.1 (14 Dec 2007)
+
+  14 Dec 2007; Markus Dittrich <markusle@gentoo.org>
+  +files/paraview-3.2-libxml2-fix.patch,
+  +files/paraview-3.2-support-qt4.3.patch, +paraview-3.2.1.ebuild:
+  Version bump (fixes bug #183192).
+
+  19 Aug 2007; Markus Dittrich <markusle@gentoo.org>
+  -files/paraview-2.4.4-hdf5-zlib.patch, -files/paraview-2.4.4-png.patch,
+  -files/paraview-2.4.4-python-wrap.patch, -paraview-2.4.4.ebuild,
+  -paraview-2.6.0.ebuild, -paraview-2.6.1.ebuild:
+  Removed obsolete versions.
+
+*paraview-2.6.2 (25 Jul 2007)
+
+  25 Jul 2007; Markus Dittrich <markusle@gentoo.org> +paraview-2.6.2.ebuild:
+  Version bump. Thanks much to Daniel Tourde <daniel.tourde@bredband.net> 
+  for helping with the ebuild.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  paraview-2.4.4.ebuild, paraview-2.6.0.ebuild, paraview-2.6.1.ebuild:
+  Drop virtual/x11 references.
+
+*paraview-2.6.1 (24 Apr 2007)
+
+  24 Apr 2007; Markus Dittrich <markusle@gentoo.org> +paraview-2.6.1.ebuild:
+  Version bump. Dropped ffmpeg keyword for now since the build 
+  fails due to undefined macros in one of the ffmpeg headers.
+  Thanks much to Sebastien Fabbro <bicatali@gentoo.org>
+  for his ebuild.
+
+*paraview-2.6.0 (20 Feb 2007)
+
+  20 Feb 2007; Markus Dittrich <markusle@gentoo.org>
+  +files/paraview-2.6.0-hdf5-zlib.patch,
+  +files/paraview-2.6.0-include.patch, +paraview-2.6.0.ebuild:
+  Version bump.
+
+  29 Nov 2006; Markus Dittrich <markusle@gentoo.org>
+  +files/paraview-2.4.4-python-wrap.patch, paraview-2.4.4.ebuild:
+  Added patch that ensures that all dynamic libs needed for pvpython
+  are present.
+
+  20 Nov 2006; Markus Dittrich <markusle@gentoo.org> paraview-2.4.4.ebuild:
+  Added ffmpeg and threads USE flags. Also, added paraview libdir
+  to LDPATH.
+
+*paraview-2.4.4 (18 Oct 2006)
+
+  18 Oct 2006; Markus Dittrich <markusle@gentoo.org>
+  +files/paraview-2.4.4-hdf5-zlib.patch, +files/paraview-2.4.4-png.patch,
+  +metadata.xml, +paraview-2.4.4.ebuild:
+  Initial import (fixes bug #118130). Many thanks to Daniel Tourde
+  <daniel.tourde@caelae.se> for his ebuild and testing.

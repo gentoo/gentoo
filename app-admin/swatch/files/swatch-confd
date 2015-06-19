@@ -1,0 +1,25 @@
+# /etc/conf.d/swatch: config file for /etc/init.d/swatch
+
+# Path to the swatch program.
+#SWATCH_BINARY="/usr/bin/swatch"
+
+# Swatchrc to read patterns and actions from.
+#SWATCHRC="/etc/swatchrc"
+
+# File to monitor
+#SWATCH_TAILFILE="/var/log/syslog"
+
+# Arguments to tail program
+#SWATCH_TAILARGS=""
+
+# Swatch log file
+#SWATCH_LOGFILE="/var/log/swatch.log"
+
+# Swatch error file
+#SWATCH_ERRFILE="/var/log/swatch-err.log"
+
+# Where to output the generated script to. Should not be writable by others.
+#SWATCH_SCRIPT="/var/run/swatch/swatch_script.pl"
+
+# Whether to parse the complete file once at startup. Defaults to "NO".
+PARSE_FULL="NO"

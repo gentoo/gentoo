@@ -1,0 +1,27 @@
+From 0d6ac25c1c7871be52e8399c6e8bc8509ed5f3d9 Mon Sep 17 00:00:00 2001
+From: Martin Jansa <Martin.Jansa@gmail.com>
+Date: Tue, 3 Apr 2012 19:30:33 +0200
+Subject: [PATCH] use log.level instead of loglevel
+
+Signed-off-by: Martin Jansa <Martin.Jansa@gmail.com>
+---
+ xs/maps/apache2_structures.map              |    2 +-
+ xs/tables/current/Apache2/StructureTable.pm |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/xs/tables/current/Apache2/StructureTable.pm b/xs/tables/current/Apache2/StructureTable.pm
+index 0c0465a..439184e 100644
+--- a/xs/tables/current/Apache2/StructureTable.pm
++++ b/xs/tables/current/Apache2/StructureTable.pm
+@@ -3245,7 +3245,7 @@ $Apache2::StructureTable = [
+       },
+       {
+         'type' => 'int',
+-        'name' => 'loglevel'
++        'name' => 'log.level'
+       },
+       {
+         'type' => 'int',
+-- 
+1.7.8.5
+

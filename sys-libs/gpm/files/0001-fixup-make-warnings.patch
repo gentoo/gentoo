@@ -1,0 +1,35 @@
+From 1bee81778e7355e6b902986b6e0fc5750546444a Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 16 Feb 2009 15:43:40 -0500
+Subject: [PATCH] fixup make warnings
+
+Split the toplevel dep target to use normal make dependencies and use the
+$(MAKE) var rather than hardcoding `make`.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ Makefile.in |    8 +++++---
+ 1 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 90b92d0..89cbb5e 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -26,9 +26,11 @@ SUBDIRS = src doc contrib
+ 
+ all: do-all
+ 
+-dep:
+-	touch src/$(DEPFILE) # to prevent unecessary warnings
+-	make -C src dep
++src/$(DEPFILE):
++	touch $@ # to prevent unecessary warnings
++
++dep: src/$(DEPFILE)
++	$(MAKE) -C src dep
+ 
+ check: all
+ 
+-- 
+1.7.3.1
+

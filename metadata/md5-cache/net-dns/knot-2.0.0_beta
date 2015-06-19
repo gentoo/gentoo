@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=>=net-libs/gnutls-3.0 >=dev-libs/jansson-2.3 dev-db/lmdb >=dev-libs/userspace-rcu-0.5.4 caps? ( >=sys-libs/libcap-ng-0.6.4 ) dnstap? ( dev-libs/fstrm dev-libs/protobuf-c ) idn? ( net-dns/libidn ) systemd? ( sys-apps/systemd ) virtual/pkgconfig doc? ( dev-python/sphinx app-text/texlive-core sys-apps/texinfo )
+DESCRIPTION=High-performance authoritative-only DNS server
+EAPI=5
+HOMEPAGE=http://www.knot-dns.cz/
+IUSE=debug dnstap doc caps +fastparser idn systemd
+LICENSE=GPL-3
+RDEPEND=>=net-libs/gnutls-3.0 >=dev-libs/jansson-2.3 dev-db/lmdb >=dev-libs/userspace-rcu-0.5.4 caps? ( >=sys-libs/libcap-ng-0.6.4 ) dnstap? ( dev-libs/fstrm dev-libs/protobuf-c ) idn? ( net-dns/libidn ) systemd? ( sys-apps/systemd )
+SLOT=0
+SRC_URI=https://secure.nic.cz/files/knot-dns/knot-2.0.0-beta.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=2ab0c2324c0799c53d81f742a9bc8bf7

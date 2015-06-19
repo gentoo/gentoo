@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Basic CD Player for blackbox wm
+EAPI=4
+HOMEPAGE=http://tranber1.free.fr/bbcd.html
+KEYWORDS=~amd64 ppc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=media-libs/libcdaudio x11-libs/libX11
+SLOT=0
+SRC_URI=http://tranber1.free.fr/bbcd-0.3.1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=08b6d261499959e4da31592335a4f2e9

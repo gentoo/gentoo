@@ -1,0 +1,43 @@
+# ChangeLog for net-misc/rwbs
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/rwbs/ChangeLog,v 1.12 2013/03/15 13:29:06 pinkbyte Exp $
+
+  15 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> rwbs-0.27-r1.ebuild:
+  Use QA_PREBUILT, wrt bug #452814. Thanks to Diego Elio Pettenò, who
+  discovered this issue
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org> rwbs-0.27-r1.ebuild:
+  Add ~amd64
+
+  12 Jul 2012; Ian Stakenvicius <axs@gentoo.org> rwbs-0.27-r1.ebuild:
+  added GPL-2 to LICENSE per bug 426094
+
+*rwbs-0.27-r1 (25 Jun 2012)
+
+  25 Jun 2012; Justin Lecher <jlec@gentoo.org> -rwbs-0.27.ebuild,
+  +rwbs-0.27-r1.ebuild, files/rwbs.rc, metadata.xml:
+  Install binary package into /opt, #273330
+
+  30 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org> files/rwbs.conf:
+  Fix conf.d file.
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  22 Apr 2007; Christian Heim <phreak@gentoo.org> metadata.xml,
+  rwbs-0.27.ebuild:
+  Use newconfd/newinitd for #174266; Properly quote variables.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*rwbs-0.27 (5 Nov 2002)
+  
+  04 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
+  Cleaned up ebuild and added sep files for conf.d/init.d
+
+  5 Nov 2002; Matt Keadle <mkeadle@gentoo.org> rwbs-0.27.ebuild
+  ChangeLog files/digest-rwbs-0.27:
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. Thanks to "delta407" for submitting this
+  ebuild.

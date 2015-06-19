@@ -1,0 +1,31 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ppc64/64ul/package.use.mask,v 1.22 2015/06/04 18:47:17 kensington Exp $
+
+# Agostino Sarubbo <ago@gentoo.org> (31 Jan 2012)
+# Mask because requires a lot of unstable depends not ready for the stabilization
+gnome-extra/nm-applet bluetooth
+
+# Joseph Jezak <josejx@gentoo.org> (18 May 2012)
+# Mask the C# bindings for KDE
+kde-base/kdebindings-meta csharp
+
+# Patrick McLean <chutzpah@gentoo.org> (08 Nov 2011)
+# mask conntrack USE flag for dnsmasq as dep is not keyworded
+net-dns/dnsmasq conntrack
+
+# Brent Baude <ranger@gentoo.org> (06 Jan 2010)
+# masking toolame for mplayer bug 280281
+media-video/mplayer toolame
+
+# Brent Baude <ranger@gentoo.org> (31 Dec 2009)
+# Masking for bug 274847
+app-admin/conky apcupsd
+
+# Brent Baude <ranger@gentoo.org> (6  Feb 2009)
+# Masking solver/ocaml USE from kalzium to fix tree borkage
+kde-apps/kalzium solver
+
+# Brent Baude <ranger@gentoo.org> (28 January 2009)
+# Masking zemberek for enchant
+app-text/enchant zemberek

@@ -1,0 +1,17 @@
+# ChangeLog for net-misc/openr2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openr2/ChangeLog,v 1.3 2014/08/10 20:45:50 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> openr2-1.3.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  27 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due voip herd removal:
+  http://article.gmane.org/gmane.linux.gentoo.devel/88434
+
+*openr2-1.3.0 (13 May 2010)
+
+  13 May 2010; <chainsaw@gentoo.org> +files/1.3.0-respect-user-cflags.patch,
+  +openr2-1.3.0.ebuild, +metadata.xml:
+  Initial commit. Ebuild based on the submission by Eduardo Frazão in bug
+  #315189.

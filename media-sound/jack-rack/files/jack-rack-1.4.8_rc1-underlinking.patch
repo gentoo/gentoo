@@ -1,0 +1,13 @@
+This should be applied after Debian 02-gcc45_binutils_gold.patch which adds -ldl, but
+we need also -lm wrt http://bugs.gentoo.org/463696 for exp(), log() and logf()
+
+--- src/Makefile.am
++++ src/Makefile.am
+@@ -62,6 +62,7 @@
+ 
+ 
+ LIBS = \
++	-lm \
+ 	-ldl \
+ 	$(JACK_LIBS) \
+ 	$(GTK_LIBS) \

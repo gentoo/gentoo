@@ -1,0 +1,81 @@
+# ChangeLog for dev-vcs/bzr-git
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/bzr-git/ChangeLog,v 1.18 2015/05/23 01:37:25 mrueg Exp $
+
+  23 May 2015; Manuel Rüger <mrueg@gentoo.org> -bzr-git-0.6.2.ebuild,
+  -bzr-git-0.6.7.ebuild:
+  Remove old.
+
+*bzr-git-0.6.8-r1 (10 Mar 2015)
+
+  10 Mar 2015; Ian Delaney <idella4@gentoo.org> +bzr-git-0.6.8-r1.ebuild:
+  revbump; conversion -> distutils-r1 wrt bug #541008
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> bzr-git-0.6.8.ebuild:
+  Stable for x86, wrt bug #457348
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> bzr-git-0.6.8.ebuild:
+  Stable for amd64, wrt bug #457348
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> bzr-git-0.6.7.ebuild:
+  Stable for x86, wrt bug #418969
+
+  13 Oct 2012; Markos Chandras <hwoarang@gentoo.org> bzr-git-0.6.7.ebuild:
+  Stable on amd64 wrt bug #418969
+
+*bzr-git-0.6.8 (08 Oct 2012)
+
+  08 Oct 2012; Christian Faulhammer <fauli@gentoo.org> +bzr-git-0.6.8.ebuild:
+  version bump
+
+  30 Sep 2012; Raúl Porcel <armin76@gentoo.org> bzr-git-0.6.2.ebuild,
+  bzr-git-0.6.7.ebuild:
+  Drop alpha keywords
+
+*bzr-git-0.6.7 (17 Mar 2012)
+
+  17 Mar 2012; Christian Faulhammer <fauli@gentoo.org> +bzr-git-0.6.7.ebuild:
+  version bump
+
+  17 Mar 2012; Christian Faulhammer <fauli@gentoo.org> -bzr-git-0.5.2.ebuild:
+  clean up
+
+  23 Jan 2012; Thomas Kahle <tomka@gentoo.org> bzr-git-0.6.2.ebuild:
+  x86 stable per bug 383751
+
+  21 Jan 2012; Tobias Klausmann <klausman@gentoo.org> bzr-git-0.6.2.ebuild:
+  Stable on alpha, bug #383751
+
+  28 Dec 2011; Christian Faulhammer <fauli@gentoo.org> bzr-git-0.6.2.ebuild:
+  raise dev-python/dulwich dependency to 0.8.0 as reported by Jonathan Lovelace
+  in bug 389465
+
+  30 Oct 2011; Markos Chandras <hwoarang@gentoo.org> bzr-git-0.6.2.ebuild:
+  Stable on amd64 wrt bug #383751
+
+*bzr-git-0.6.2 (16 Aug 2011)
+
+  16 Aug 2011; Christian Faulhammer <fauli@gentoo.org> -bzr-git-0.5.4.ebuild,
+  +bzr-git-0.6.2.ebuild:
+  version bump and clean up
+
+*bzr-git-0.6.1 (17 Jul 2011)
+
+  17 Jul 2011; Christian Faulhammer <fauli@gentoo.org> +bzr-git-0.6.1.ebuild:
+  version bump
+
+*bzr-git-0.5.4 (12 Feb 2011)
+
+  12 Feb 2011; Christian Faulhammer <fauli@gentoo.org>
+  +bzr-git-0.5.4.ebuild:
+  version bump
+
+  12 Jan 2011; Markos Chandras <hwoarang@gentoo.org> bzr-git-0.5.2.ebuild:
+  Stable on amd64 wrt bug #346985
+
+*bzr-git-0.5.2 (10 Oct 2010)
+
+  10 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  +bzr-git-0.5.2.ebuild, +metadata.xml:
+  initial import for bug 335209 from Bazaar overlay, written by Mark
+  Lee and myself

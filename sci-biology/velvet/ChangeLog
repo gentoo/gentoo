@@ -1,0 +1,97 @@
+# ChangeLog for sci-biology/velvet
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/velvet/ChangeLog,v 1.22 2015/04/07 14:35:47 jlec Exp $
+
+*velvet-1.2.10 (28 Dec 2013)
+
+  28 Dec 2013; Justin Lecher <jlec@gentoo.org> +velvet-1.2.10.ebuild:
+  Import Version Bump from sci overlay, thanks mahn for the ebuild, #495094
+
+  12 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+  21 Dec 2011; Justin Lecher <jlec@gentoo.org> -velvet-0.7.55.ebuild,
+  -velvet-0.7.62.ebuild:
+  Cleaned old
+
+  21 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> velvet-1.0.18-r1.ebuild:
+  x86 stable wrt bug #393981
+
+  16 Dec 2011; Justin Lecher <jlec@gentoo.org> velvet-1.0.18-r1.ebuild:
+  Added missing dep on sys-libs/zlib requested by ago, #393981
+
+  16 Dec 2011; Agostino Sarubbo <ago@gentoo.org> velvet-1.0.18-r1.ebuild:
+  Stable for AMD64, wrt bug #393981
+
+  16 Dec 2011; Justin Lecher <jlec@gentoo.org> velvet-1.0.18-r1.ebuild:
+  Do not add O3, move to EAPI=4
+
+*velvet-1.0.18-r1 (13 Apr 2011)
+
+  13 Apr 2011; Kacper Kowalik <xarthisius@gentoo.org> -velvet-1.0.18.ebuild,
+  +velvet-1.0.18-r1.ebuild, -files/velvet-1.0.18-gentoo.diff,
+  +files/velvet-1.0.18-gentoo-r1.diff:
+  Fix building with --as-needed wrt #363479 by Diego Elio Pettenò
+  <flameeyes@gentoo.org>
+
+*velvet-1.0.18 (03 Feb 2011)
+
+  03 Feb 2011; Andrey Kislyuk <weaver@gentoo.org> +velvet-1.0.18.ebuild,
+  +files/velvet-1.0.18-gentoo.diff:
+  Version bump
+
+  20 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org> -velvet-0.7.50.ebuild:
+  Remove old
+
+  20 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org> velvet-0.7.62.ebuild,
+  +files/velvet-0.7.62-gentoo.diff:
+  Fix parallel build, respect FLAGS, fix --as-needed issues wrt bug 277938.
+  Thanks Diego for reporting.
+
+*velvet-0.7.62 (05 May 2010)
+
+  05 May 2010; Andrey Kislyuk <weaver@gentoo.org> +velvet-0.7.62.ebuild:
+  Version bump
+
+  31 Oct 2009; Markus Meier <maekke@gentoo.org> velvet-0.7.55.ebuild:
+  amd64/x86 stable, bug #290936
+
+  19 Sep 2009; Andrey Kislyuk <weaver@gentoo.org> velvet-0.7.55.ebuild:
+  Use elog
+
+  19 Sep 2009; Andrey Kislyuk <weaver@gentoo.org> velvet-0.7.55.ebuild:
+  Add support for passing compile-time variables to build
+
+*velvet-0.7.55 (19 Sep 2009)
+
+  19 Sep 2009; Andrey Kislyuk <weaver@gentoo.org> -velvet-0.7.47.ebuild,
+  +velvet-0.7.55.ebuild:
+  Version bump, drop old
+
+*velvet-0.7.50 (20 Aug 2009)
+
+  20 Aug 2009; Andrey Kislyuk <weaver@gentoo.org> -velvet-0.7.31.ebuild,
+  -velvet-0.7.34.ebuild, -velvet-0.7.42.ebuild, +velvet-0.7.50.ebuild:
+  Version bump, remove old
+
+*velvet-0.7.47 (27 Jul 2009)
+
+  27 Jul 2009; Andrey Kislyuk <weaver@gentoo.org> +velvet-0.7.47.ebuild:
+  Version bump
+
+*velvet-0.7.42 (07 Jul 2009)
+
+  07 Jul 2009; Andrey Kislyuk <weaver@gentoo.org> +velvet-0.7.42.ebuild:
+  Version bump
+
+*velvet-0.7.34 (21 Jun 2009)
+
+  21 Jun 2009; Andrey Kislyuk <weaver@gentoo.org> +velvet-0.7.34.ebuild:
+  Version bump
+
+*velvet-0.7.31 (05 Jun 2009)
+
+  05 Jun 2009; Andrey Kislyuk <weaver@gentoo.org> +metadata.xml,
+  +velvet-0.7.31.ebuild:
+  New package, ebuild written by me
+

@@ -1,0 +1,35 @@
+# ChangeLog for dev-php/php-openid
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/php-openid/ChangeLog,v 1.8 2015/06/06 19:52:49 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  18 Apr 2015; Sven Wegener <swegener@gentoo.org>
+  php-openid-2.2.3_pre20140423.ebuild:
+  Rename distfile to include package name.
+
+*php-openid-2.2.3_pre20140423 (07 Oct 2014)
+
+  07 Oct 2014; Brian Evans <grknight@gentoo.org>
+  +php-openid-2.2.3_pre20140423.ebuild, -php-openid-2.2.2.ebuild:
+  Bump to github snapshot from 2014-04-23 for security bug 482140
+
+  26 Jan 2012; Matti Bickel <mabi@gentoo.org> php-openid-2.2.2.ebuild:
+  remove unneeded php-lib-r1.php reference, EAPI bump
+
+*php-openid-2.2.2 (02 Aug 2010)
+
+  02 Aug 2010; Matti Bickel <mabi@gentoo.org> -php-openid-2.1.3.ebuild,
+  +php-openid-2.2.2.ebuild:
+  version bump, thanks to Ole Markus With (bug #326769)
+
+  02 Jan 2010; Ben de Groot <yngwin@gentoo.org> php-openid-2.1.3.ebuild:
+  Old-style virtuals can't take use deps
+
+*php-openid-2.1.3 (01 Jan 2010)
+
+  01 Jan 2010; Ben de Groot <yngwin@gentoo.org> +php-openid-2.1.3.ebuild,
+  +metadata.xml:
+  Initial commit. Ebuild based on the one by Nathan Phillip Brink in his
+  ohnobinki overlay.

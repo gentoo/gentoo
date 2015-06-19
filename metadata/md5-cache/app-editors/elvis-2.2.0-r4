@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm prepare
+DEPEND=>=sys-libs/ncurses-5.7-r7 X? ( >=x11-proto/xproto-7.0.4 >=x11-libs/libX11-1.0.0 >=x11-libs/libXt-1.0.0 >=x11-libs/libXpm-3.5.4.2 >=x11-libs/libXft-2.1.8.2 ) app-eselect/eselect-vi virtual/pkgconfig
+DESCRIPTION=A vi/ex clone
+EAPI=5
+HOMEPAGE=ftp://ftp.cs.pdx.edu/pub/elvis/
+IUSE=X
+KEYWORDS=amd64 ppc ppc64 x86 ~x86-interix ~ppc-macos ~x86-macos ~m68k-mint ~sparc-solaris
+LICENSE=Artistic
+RDEPEND=>=sys-libs/ncurses-5.7-r7 X? ( >=x11-proto/xproto-7.0.4 >=x11-libs/libX11-1.0.0 >=x11-libs/libXt-1.0.0 >=x11-libs/libXpm-3.5.4.2 >=x11-libs/libXft-2.1.8.2 ) app-eselect/eselect-vi
+SLOT=0
+SRC_URI=ftp://ftp.cs.pdx.edu/pub/elvis/elvis-2.2_0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=d0ed8c55f29f4fc8bf75d5b0b73e252f

@@ -1,0 +1,124 @@
+# ChangeLog for sci-electronics/klayout
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/klayout/ChangeLog,v 1.26 2015/05/27 11:32:54 mrueg Exp $
+
+  27 May 2015; Manuel Rüger <mrueg@gentoo.org> -klayout-0.22.9.ebuild:
+  Remove old.
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> klayout-0.23.10.ebuild:
+  Stable for x86, wrt bug #541652
+
+  21 May 2015; Agostino Sarubbo <ago@gentoo.org> klayout-0.23.10.ebuild:
+  Stable for amd64, wrt bug #541652
+
+*klayout-0.23.10 (12 Apr 2015)
+
+  12 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +klayout-0.23.10.ebuild, +files/klayout-0.23.10-Makefile.conf.linux-gentoo:
+  Version bump, now building against ruby-2.0
+
+  07 Dec 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  -klayout-0.22.4.ebuild:
+  Remove old
+
+  07 Dec 2013; Johannes Huber <johu@gentoo.org> klayout-0.22.9.ebuild:
+  x86 stable, bug #475308
+
+  18 Nov 2013; Tony Vroon <chainsaw@gentoo.org> klayout-0.22.9.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #475308.
+
+*klayout-0.22.9 (13 Oct 2013)
+
+  13 Oct 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  -klayout-0.22.8.ebuild, +klayout-0.22.9.ebuild:
+  Version bump; remove old
+
+  13 Oct 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  -klayout-0.20.2.ebuild, -files/klayout-0.20.2-Makefile.conf.linux-gentoo,
+  -files/klayout-0.20.2-configureonly.patch, klayout-0.22.8.ebuild,
+  +files/klayout-0.22.8-noautoruby.patch:
+  Fix build against ruby-1.9 and re-add keywords; remove old
+
+*klayout-0.22.8 (30 Jun 2013)
+
+  30 Jun 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +klayout-0.22.8.ebuild:
+  Version bump; does not build yet, needs further investigation.
+
+  19 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  Switch to sci-electronics herd
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> klayout-0.20.2.ebuild,
+  klayout-0.22.4.ebuild:
+  Move Qt dependencies to the new category
+
+  20 Jan 2013; Agostino Sarubbo <ago@gentoo.org> klayout-0.22.4.ebuild:
+  Stable for x86, wrt bug #452716
+
+  20 Jan 2013; Agostino Sarubbo <ago@gentoo.org> klayout-0.22.4.ebuild:
+  Stable for amd64, wrt bug #452716
+
+*klayout-0.22.4 (02 Jan 2013)
+
+  02 Jan 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  -files/klayout-0.21.10-gcc46.patch, -klayout-0.21.19.ebuild,
+  -klayout-0.22.ebuild, +klayout-0.22.4.ebuild:
+  Version bump; does not build without ruby anymore
+
+*klayout-0.22 (22 Sep 2012)
+
+  22 Sep 2012; Andreas K. Huettel <dilfridge@gentoo.org> +klayout-0.22.ebuild:
+  Version bump
+
+*klayout-0.21.19 (22 Jul 2012)
+
+  22 Jul 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  -klayout-0.21.11.ebuild, -klayout-0.21.12.ebuild, +klayout-0.21.19.ebuild:
+  Version bump; remove old
+
+*klayout-0.21.12 (11 Jun 2012)
+
+  11 Jun 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  -klayout-0.21.10.ebuild, +klayout-0.21.12.ebuild:
+  Version bump; remove old
+
+*klayout-0.21.11 (25 Jul 2011)
+
+  25 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +klayout-0.21.11.ebuild:
+  Version bump, add missing ruby dependency (bug 369055)
+
+  29 May 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -klayout-0.21.7.ebuild:
+  Remove old
+
+  29 May 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  klayout-0.21.10.ebuild, +files/klayout-0.21.10-gcc46.patch:
+  Fix compilation with gcc-4.6, bug 369055
+
+*klayout-0.21.10 (28 May 2011)
+
+  28 May 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +klayout-0.21.10.ebuild:
+  Version bump
+
+*klayout-0.21.7 (30 Mar 2011)
+
+  30 Mar 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +klayout-0.21.7.ebuild, +files/klayout-0.21.7-Makefile.conf.linux-gentoo:
+  Version bump
+
+  19 Oct 2010; Markos Chandras <hwoarang@gentoo.org> klayout-0.20.2.ebuild:
+  Stable on amd64 wrt bug #341543
+
+  18 Oct 2010; Thomas Kahle <tomka@gentoo.org> klayout-0.20.2.ebuild:
+  x86 stable per bug 341543
+
+*klayout-0.20.2 (20 Sep 2010)
+
+  20 Sep 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  +klayout-0.20.2.ebuild, +files/klayout-0.20.2-Makefile.conf.linux-gentoo,
+  +files/klayout-0.20.2-configureonly.patch, +metadata.xml:
+  New application, viewer and editor for integrated circuit layouts. Thanks
+  to Andreas Krinke and _AxS_ for the initial ebuild. Fixes bug 259291.

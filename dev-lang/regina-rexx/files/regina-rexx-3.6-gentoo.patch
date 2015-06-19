@@ -1,0 +1,28 @@
+--- a/Makefile.in	2011-12-31 09:50:28.000000000 +0100
++++ b/Makefile.in	2012-12-15 18:29:37.691579584 +0100
+@@ -92,6 +92,7 @@
+ REXX_BINARY_LIBS = @REXX_BINARY_LIBS@
+ REGINA_BINARY_LIBS = @REGINA_BINARY_LIBS@
+ LIBREGINA_BINARY_LIBS = @LIBREGINA_BINARY_LIBS@
++LIBREGUTIL_BINARY_LIBS = @LIBREGINA_BINARY_LIBS@ @REXX_BINARY_LIBS@
+ THREADER_BINARY_LIBS = @THREADER_BINARY_LIBS@
+ EXECISER_BINARY_LIBS = @EXECISER_BINARY_LIBS@
+ STACK_BINARY_LIBS = @STACK_BINARY_LIBS@
+@@ -926,7 +927,7 @@
+ #	$(CC) -c $(COPT) $(CC2O) $(DYN_COMP) $(regutildir)/regtrig.c
+ 
+ $(SHLPRE)regutil$(MODPST): $(REGUTILOBJ) $(SHLPRE)$(SHLFILE)$(SHLPST) $(REGUTILEXP)
+-	$(LD_RXLIB_UTILA) $(REGUTILEXPORTS) $(REGUTILOBJ) $(LD_RXLIB_UTILB) $(BOTHLIBS)
++	$(LD_RXLIB_UTILA) $(REGUTILEXPORTS) $(REGUTILOBJ) $(LD_RXLIB_UTILB) $(BOTHLIBS) $(LIBREGUTIL_BINARY_LIBS)
+ 	$(RANLIB_DYNAMIC)
+ 
+ 
+@@ -1009,7 +1010,7 @@
+ 	$(INSTALL) -m 755 -c ./rxqueue$(binarybitprefix)$(EXE) $(DESTDIR)$(bindir)/rxqueue$(binarybitprefix)$(EXE)
+ 	$(INSTALL) -m 755 -c ./rxstack$(binarybitprefix)$(EXE) $(DESTDIR)$(bindir)/rxstack$(binarybitprefix)$(EXE)
+ 	$(INSTALL) -m 755 -c ./regina-config $(DESTDIR)$(bindir)/regina-config
+-	-$(INSTALL) -m 755 -c ./rxstack.init.d $(DESTDIR)$(sysconfdir)/rc.d/init.d/rxstack
++	
+ 	@echo "The system startup/shutdown script; rxstack, may have been installed into $(sysconfdir)/rc.d/init.d"
+ 	@echo "You need to create the appropriate links to this script to start and stop rxstack automatically."
+ 	-$(INSTALL) -m 755 -c ./$(LIBPRE)$(LIBFILE)$(LIBPST) $(DESTDIR)$(libdir)/$(LIBPRE)$(LIBFILE)$(LIBPST)

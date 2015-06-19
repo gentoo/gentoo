@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Miscellaneous commands used on Darwin/Mac OS X systems, Mountain Lion 10.8
+EAPI=4
+HOMEPAGE=http://www.opensource.apple.com/
+KEYWORDS=~ppc-macos ~x64-macos ~x86-macos
+LICENSE=BSD
+SLOT=0
+SRC_URI=http://www.opensource.apple.com/darwinsource/tarballs/other/misc_cmds-31.tar.gz http://www.opensource.apple.com/darwinsource/tarballs/other/shell_cmds-170.tar.gz http://www.opensource.apple.com/darwinsource/tarballs/other/developer_cmds-55.tar.gz http://www.opensource.apple.com/source/adv_cmds/adv_cmds-147/md/md.c?txt -> adv_cmds-md-147.c http://www.opensource.apple.com/source/adv_cmds/adv_cmds-147/md/md.1?txt -> adv_cmds-md-147.1
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8ffe2107ca8a5a0d9614b8689b9cd169

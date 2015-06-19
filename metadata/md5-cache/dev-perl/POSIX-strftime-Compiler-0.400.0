@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-perl/Module-Build-0.380.0 virtual/perl-CPAN-Meta virtual/perl-Carp virtual/perl-Exporter virtual/perl-Time-Local test? ( >=virtual/perl-Test-Simple-0.980.0 ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=GNU C library compatible strftime for loggers and servers
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/POSIX-strftime-Compiler/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp virtual/perl-Exporter virtual/perl-Time-Local dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/K/KA/KAZEBURO/POSIX-strftime-Compiler-0.40.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=37e71a381e39234f1eca9d77bdb2ba0f

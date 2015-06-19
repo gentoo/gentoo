@@ -1,0 +1,213 @@
+# ChangeLog for sys-apps/memtest86
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/memtest86/ChangeLog,v 1.49 2015/06/07 11:27:24 polynomial-c Exp $
+
+*memtest86-4.3.7 (07 Jun 2015)
+
+  07 Jun 2015; Lars Wendler <polynomial-c@gentoo.org>
+  -memtest86-4.3.3-r2.ebuild, -memtest86-4.3.5.ebuild, +memtest86-4.3.7.ebuild:
+  Version bump. Removed old.
+
+*memtest86-4.3.6 (04 Jun 2015)
+
+  04 Jun 2015; Lars Wendler <polynomial-c@gentoo.org> -memtest86-4.3.4.ebuild,
+  +memtest86-4.3.6.ebuild:
+  Version bump. Removed old.
+
+*memtest86-4.3.5 (03 Jun 2015)
+
+  02 Jun 2015; Lars Wendler <polynomial-c@gentoo.org> +memtest86-4.3.5.ebuild:
+  Version bump.
+
+*memtest86-4.3.4 (29 May 2015)
+
+  29 May 2015; Lars Wendler <polynomial-c@gentoo.org> -memtest86-4.0.ebuild,
+  -memtest86-4.0s.ebuild, -memtest86-4.3.3.ebuild, -memtest86-4.3.3-r1.ebuild,
+  +memtest86-4.3.4.ebuild:
+  Version bump. Removed old.
+
+*memtest86-4.3.3-r2 (31 Aug 2014)
+
+  31 Aug 2014; Mike Gilbert <floppym@gentoo.org> +files/39_memtest86,
+  +memtest86-4.3.3-r2.ebuild:
+  Add a more robust grub config generator, bug 456308.
+
+  18 Oct 2013; Anthony G. Basile <blueness@gentoo.org>
+  files/memtest86-4.3.3-build-nopie.patch:
+  Fix -fno-pie for bug #487600
+
+*memtest86-4.3.3-r1 (10 Oct 2013)
+
+  10 Oct 2013; Anthony G. Basile <blueness@gentoo.org>
+  +files/memtest86-4.3.3-build-nopie.patch, +memtest86-4.3.3-r1.ebuild:
+  Expand the build patch to include -nopie, bug #206726
+
+*memtest86-4.3.3 (10 Oct 2013)
+
+  10 Oct 2013; Tony Vroon <chainsaw@gentoo.org> +memtest86-4.3.3.ebuild,
+  +files/memtest86-4.3.3-build.patch:
+  Version bump, as requested by Chris "blackstar86" in bug #472704.
+
+*memtest86-4.0s (02 Jul 2012)
+
+  02 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> +memtest86-4.0s.ebuild,
+  -files/memtest86-3.4-build.patch, -files/memtest86-3.5-build.patch,
+  -memtest86-3.4.ebuild, -memtest86-3.5.ebuild:
+  Cleanup old; bump to version 4.0s (also called 4.0b) and make the ebuild
+  almost identical to memtest86+; install a grub2 configuration file as well.
+
+  15 Jun 2011; Jeroen Roovers <jer@gentoo.org> files/memtest86-4.0-build.patch:
+  Clean up patch.
+
+*memtest86-4.0 (15 Jun 2011)
+
+  15 Jun 2011; Jeroen Roovers <jer@gentoo.org> files/memtest86-3.5-build.patch,
+  +memtest86-4.0.ebuild, +files/memtest86-4.0-build.patch:
+  Version bump.
+
+  09 Jan 2011; Mike Frysinger <vapier@gentoo.org> memtest86-3.3.ebuild,
+  memtest86-3.4.ebuild, memtest86-3.5.ebuild:
+  Use new mount-boot_pkg_postinst helper.
+
+  31 Mar 2010; Robin H. Johnson <robbat2@gentoo.org> memtest86-3.5.ebuild,
+  files/memtest86-3.5-build.patch:
+  Bug #312441: fix parallel make issue.
+
+*memtest86-3.5 (09 Oct 2009)
+
+  09 Oct 2009; Mike Frysinger <vapier@gentoo.org> +memtest86-3.5.ebuild,
+  +files/memtest86-3.5-build.patch:
+  Version bump #285284 by Sergey Kondakov.
+
+  22 Mar 2009; Michał Januszewski <spock@gentoo.org> memtest86-3.3.ebuild,
+  memtest86-3.4.ebuild:
+  Fix bug #260547 (drop the /etc/fstab -> GRUB translation code).
+
+  28 Sep 2008; Michał Januszewski <spock@gentoo.org> Manifest:
+  Compile memtest86+ with -O1 instead of -Os (bug #217324).
+
+  23 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*memtest86-3.4 (19 Jan 2008)
+
+  19 Jan 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/memtest86-3.4-build.patch, +memtest86-3.4.ebuild:
+  Version bump #206115.
+
+  13 Oct 2007; Christoph Mende <angelos@gentoo.org> memtest86-3.3.ebuild:
+  Stable on amd64 wrt bug #195224
+
+  10 Oct 2007; Christian Faulhammer <opfer@gentoo.org> memtest86-3.3.ebuild:
+  stable x86, bug 195224
+
+*memtest86-3.3 (17 Mar 2007)
+
+  17 Mar 2007; Mike Frysinger <vapier@gentoo.org>
+  +files/memtest86-3.3-funky-test.patch,
+  +files/memtest86-3.3-gnu-hash.patch, +memtest86-3.3.ebuild:
+  Version bump #169685 by ScytheMan.
+
+  19 Aug 2006; <malc@gentoo.org> memtest86-3.2.ebuild:
+  Stable on amd64
+
+  06 Jun 2006; Michael Sterrett <mr_bones_@gentoo.org> memtest86-3.2.ebuild:
+  fixup RESTRICT; error check sed; less cat abuse
+
+  26 Nov 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  memtest86-3.2.ebuild:
+  Added to ~amd64.
+
+  10 Jan 2005; <solar@gentoo.org> +files/memtest86-3.2-solar.patch,
+  memtest86-3.2.ebuild:
+  - fixed problem with missing ssp symbols. bug #76495
+
+  10 Jan 2005; Mike Frysinger <vapier@gentoo.org> memtest86-3.2.ebuild:
+  Disable src_test (since one doesnt exist) #77368 and only add PIC patch if
+  toolchain supports stack-protector #76515.
+
+*memtest86-3.2 (02 Jan 2005)
+
+  02 Jan 2005; Tony Vroon <chainsaw@gentoo.org> -files/memtest86-3.0.patch,
+  -memtest86-3.0-r2.ebuild, memtest86-3.1a.ebuild, +memtest86-3.2.ebuild:
+  Version bump. 3.1a stable on x86. Portability update to no-PIC patching, old
+  ebuild and patch cleaned. Closes bug #76432.
+
+  07 Dec 2004; <solar@gentoo.org> +files/memtest86-3.1a-test-pic.patch,
+  memtest86-3.1a.ebuild:
+  - patched memtest86-3.1a to disable pic on test.c which was causing BREG
+  errors when building. x86 asm guru needed to make the test pic aware someday
+
+*memtest86-3.1a (24 Sep 2004)
+
+  24 Sep 2004; Mike Frysinger <vapier@gentoo.org> +memtest86-3.1a.ebuild:
+  Version bump #49002 by Erinn Looney-Triggs.
+
+  30 Jun 2004; Aron Griffis <agriffis@gentoo.org> memtest86-3.0-r1.ebuild,
+  memtest86-3.0-r2.ebuild:
+  sync IUSE (missing), glibc -> libc, trim trailing whitespace
+
+  27 Jun 2004; Aron Griffis <agriffis@gentoo.org> memtest86-3.0-r2.ebuild:
+  QA - fix use invocation
+
+  18 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  memtest86-3.0-r1.ebuild:
+  This contains 32bit x86 assembly and won't work on amd64.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> memtest86-3.0-r2.ebuild:
+  Add inherit eutils
+
+  05 Feb 2004; <augustus@gentoo.org> memtest86-3.0-r2.ebuild:
+  This won't compile on AMD64 right now. It will need some work. Changed to
+  -amd64.
+
+*memtest86-3.0-r2 (01 Feb 2004)
+
+  01 Feb 2004; Michal Januszewski <spock@gentoo.org> memtest86-3.0-r1.ebuild,
+  memtest86-3.0-r2.ebuild, files/memtest86-3.0.patch:
+  A new revision which: makes memtest86 compile from source and not use the
+  precompiled bin image, adds support for the local ''serial' USE flag and
+  closes bugs #35717 and #28078.
+
+  24 Jan 2003; <woodchip@gentoo.org> : add lilo example snip.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*memtest86-3.0-r1 (06 Sep 2002)
+
+  06 Sep 2002; Matthew Kennedy <mkennedy@gentoo.org>
+  memtest86-3.0-r1.ebuild, files/digest-memtest-3.0-r1, ChangeLog :
+
+  Installs the binary distributed with memetest86 rather than
+  compiling it from source (which doesn't work with gcc3.2 at
+  runtime). Upstream has been notified, but no response at the
+  moment. Resolves bug #4088.
+
+*memtest86-3.0 (03 Jun 2002)
+
+  29 Sep 2002; Donny Davies <woodchip@gentoo.org> :
+  Now uses mount-boot eclass, #7903.
+
+  25 Sep 2002; Matthew Kennedy <mkennedy@gentoo.org> :
+  Applied hanno's ebuild from http://bugs.gentoo.org/show_bug.cgi?id=4088 to fix my bad.
+
+  24 Sep 2002; Matthew Kennedy <mkennedy@gentoo.org> :
+  Replace patch with mandrake patch. Still doesn't seem to work
+  properly though. Contacting upstream on this...
+
+  22 Sep 2002; Mike Frysinger <vapier@gentoo.org> :
+  It looks like a patch was developed to fix a bug but then never actually
+  added to the ebuild ... so i put in the patch line in src_compile #8203
+
+  21 Jul 2002; Mark Guertin <gerk@gentoo.org>:
+  updated keywords (-ppc -sparc -sparc64)
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> memtest86-3.0.ebuild :
+  Added KEYWORDS.
+
+  03 Jun 2002; Karl Trygve Kalleberg <karltk@gentoo.org> memtest86-3.0.ebuild files/digest-memtest86-3.0 :
+  Memtest86 is thorough, stand alone memory test for x86 architecture 
+  computers. BIOS based memory tests are only a quick check and often miss 
+  many of the failures that are detected by Memtest86. 
+
+  Ebuild submitted by Alastair Nicol <ifni@blueyonder.co.uk>.

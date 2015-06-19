@@ -1,0 +1,19 @@
+# ChangeLog for sci-libs/spooles
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/spooles/ChangeLog,v 1.2 2012/08/03 20:03:59 bicatali Exp $
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> spooles-2.2.ebuild:
+  keyword amd64-linux x86-linux
+
+*spooles-2.2 (05 Mar 2011)
+
+  05 Mar 2011; Sébastien Fabbro <bicatali@gentoo.org> +spooles-2.2.ebuild,
+  +files/spooles-2.2-I2Ohash-64bit.patch, +files/spooles-2.2-formats.patch,
+  +files/spooles-2.2-makefiles.patch, +files/Make.inc.in, +metadata.xml:
+  Initial import into the main tree. Rewrote from scratch.
+
+  15 Oct 2008; Oliver Borm (boroli) <oli.borm@web.de> +spooles-2.2.ebuild,
+  +files/spooles-2.2_I2Ohash-64bit.patch, +files/spooles-2.2_MPI.patch,
+  +files/spooles-2.2_MT.patch, +files/spooles-2.2_makefiles.patch,
+  +files/spooles-2.2_shared-libs.patch, +metadata.xml:
+  Reworked ebuild for bug 125772, thanks to abraxxas and pva

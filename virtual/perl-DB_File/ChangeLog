@@ -1,0 +1,300 @@
+# ChangeLog for virtual/perl-DB_File
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/perl-DB_File/ChangeLog,v 1.77 2015/06/04 17:14:38 dilfridge Exp $
+
+*perl-DB_File-1.835.0 (04 Jun 2015)
+
+  04 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-DB_File-1.827.0-r2.ebuild, -perl-DB_File-1.829.0.ebuild,
+  +perl-DB_File-1.835.0.ebuild:
+  Add Perl 5.22 version, remove old
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org> perl-DB_File-1.831.0.ebuild:
+  Stable for alpha, wrt bug #536790
+
+  17 Feb 2015; Markus Meier <maekke@gentoo.org> perl-DB_File-1.831.0.ebuild:
+  arm stable, bug #536790
+
+  17 Feb 2015; Agostino Sarubbo <ago@gentoo.org> perl-DB_File-1.831.0.ebuild:
+  Stable for ia64, wrt bug #536790
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org> perl-DB_File-1.831.0.ebuild:
+  Stable for sparc, wrt bug #536790
+
+  15 Feb 2015; Agostino Sarubbo <ago@gentoo.org> perl-DB_File-1.831.0.ebuild:
+  Stable for ppc64, wrt bug #536790
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org> perl-DB_File-1.831.0.ebuild:
+  Stable for ppc, wrt bug #536790
+
+  13 Feb 2015; Jeroen Roovers <jer@gentoo.org> perl-DB_File-1.831.0.ebuild:
+  Stable for HPPA (bug #536790).
+
+  13 Feb 2015; Agostino Sarubbo <ago@gentoo.org> perl-DB_File-1.831.0.ebuild:
+  Stable for x86, wrt bug #536790
+
+  08 Feb 2015; Mikle Kolyada <zlogene@gentoo.org> perl-DB_File-1.831.0.ebuild:
+  amd64 stable wrt bug #536790
+
+*perl-DB_File-1.827.0-r2 (18 Jul 2014)
+
+  18 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-DB_File-1.826.0-r2.ebuild, -perl-DB_File-1.827.0-r1.ebuild,
+  +perl-DB_File-1.827.0-r2.ebuild, perl-DB_File-1.831.0.ebuild:
+  Improve dependencies; remove old
+
+*perl-DB_File-1.827.0-r1 (06 Jul 2014)
+
+  06 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-DB_File-1.827.0.ebuild, +perl-DB_File-1.827.0-r1.ebuild:
+  Revision bump for added provider
+
+*perl-DB_File-1.831.0 (05 Jul 2014)
+
+  05 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-DB_File-1.821.ebuild, -perl-DB_File-1.822.0.ebuild,
+  -perl-DB_File-1.824.0.ebuild, perl-DB_File-1.827.0.ebuild,
+  +perl-DB_File-1.831.0.ebuild:
+  Add perl-5.20 version; remove old
+
+  17 Jan 2014; Mike Frysinger <vapier@gentoo.org> perl-DB_File-1.827.0.ebuild:
+  Mark m68k stable.
+
+  31 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> -perl-DB_File-1.820.ebuild:
+  Drop old
+
+*perl-DB_File-1.829.0 (16 Aug 2013)
+
+  16 Aug 2013; Patrick Lauer <patrick@gentoo.org> +perl-DB_File-1.829.0.ebuild:
+  Bump
+
+  02 Mar 2013; Agostino Sarubbo <ago@gentoo.org> perl-DB_File-1.827.0.ebuild:
+  Stable for sh, wrt bug #458122
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org> perl-DB_File-1.827.0.ebuild:
+  Stable for sparc, wrt bug #458122
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org> perl-DB_File-1.827.0.ebuild:
+  Stable for ia64, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> perl-DB_File-1.827.0.ebuild:
+  Stable for arm, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> perl-DB_File-1.827.0.ebuild:
+  Stable for s390, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> perl-DB_File-1.827.0.ebuild:
+  Stable for alpha, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> perl-DB_File-1.827.0.ebuild:
+  Stable for hppa, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> perl-DB_File-1.827.0.ebuild:
+  Stable for ppc, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> perl-DB_File-1.827.0.ebuild:
+  Stable for ppc64, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> perl-DB_File-1.827.0.ebuild:
+  Stable for x86, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> perl-DB_File-1.827.0.ebuild:
+  Stable for amd64, wrt bug #458122
+
+*perl-DB_File-1.827.0 (30 Aug 2012)
+
+  30 Aug 2012; Torsten Veller <tove@gentoo.org> +perl-DB_File-1.827.0.ebuild:
+  Version bump
+
+*perl-DB_File-1.826.0-r2 (19 Jun 2012)
+
+  19 Jun 2012; Torsten Veller <tove@gentoo.org>
+  -perl-DB_File-1.826.0-r1.ebuild, +perl-DB_File-1.826.0-r2.ebuild:
+  Depend on perl[berkdb] again (#421977)
+
+*perl-DB_File-1.826.0-r1 (21 May 2012)
+
+  21 May 2012; Torsten Veller <tove@gentoo.org> -perl-DB_File-1.826.0.ebuild,
+  +perl-DB_File-1.826.0-r1.ebuild:
+  Add perl-5.16 as provider
+
+  14 Feb 2012; Naohiro Aota <naota@gentoo.org> perl-DB_File-1.826.0.ebuild:
+  Add ~x86-fbsd
+
+*perl-DB_File-1.826.0 (29 Jan 2012)
+
+  29 Jan 2012; Torsten Veller <tove@gentoo.org> +perl-DB_File-1.826.0.ebuild:
+  Version bump
+
+  15 Oct 2011; Torsten Veller <tove@gentoo.org> perl-DB_File-1.820.ebuild:
+  DB_File is provided by dev-lang/perl[berkdb] (#385697)
+
+*perl-DB_File-1.824.0 (07 Aug 2011)
+
+  07 Aug 2011; Torsten Veller <tove@gentoo.org> +perl-DB_File-1.824.0.ebuild:
+  Version bump
+
+  28 Jun 2011; Torsten Veller <tove@gentoo.org> perl-DB_File-1.820.ebuild:
+  Add perl-5.12.4 virtual
+
+*perl-DB_File-1.822.0 (14 Mar 2011)
+
+  14 Mar 2011; Torsten Veller <tove@gentoo.org> +perl-DB_File-1.822.0.ebuild:
+  Version bump
+
+  22 Jan 2011; Torsten Veller <tove@gentoo.org> perl-DB_File-1.820.ebuild:
+  Add perl-5.12.3 as provider
+
+*perl-DB_File-1.821 (13 Jan 2011)
+
+  13 Jan 2011; Torsten Veller <tove@gentoo.org> +perl-DB_File-1.821.ebuild:
+  Version bump
+
+  07 Sep 2010; Torsten Veller <tove@gentoo.org> perl-DB_File-1.820.ebuild:
+  Add perl-5.12.2 as provider
+
+  14 Jul 2010; Torsten Veller <tove@gentoo.org> perl-DB_File-1.820.ebuild:
+  Add perl-5.12 as provider
+
+  14 Feb 2010; Torsten Veller <tove@gentoo.org> perl-DB_File-1.820.ebuild:
+  No need to inherit eutils anymore
+
+  05 Feb 2010; Torsten Veller <tove@gentoo.org> perl-DB_File-1.820.ebuild:
+  Depend on perl[berkdb]
+
+  17 Jan 2010; Torsten Veller <tove@gentoo.org> -perl-DB_File-1.815.ebuild,
+  -perl-DB_File-1.819.ebuild:
+  Cleanup
+
+  07 Jan 2010; Torsten Veller <tove@gentoo.org> perl-DB_File-1.815.ebuild,
+  perl-DB_File-1.819.ebuild, perl-DB_File-1.820.ebuild:
+  Empty HOMEPAGE and LICENSE
+
+  05 Jan 2010; nixnut <nixnut@gentoo.org> perl-DB_File-1.820.ebuild:
+  ppc stable #288026
+
+  15 Dec 2009; Jonathan Callen <abcd@gentoo.org> perl-DB_File-1.815.ebuild,
+  perl-DB_File-1.819.ebuild, perl-DB_File-1.820.ebuild:
+  QA: Add prefix keywords
+
+  14 Dec 2009; Raúl Porcel <armin76@gentoo.org> perl-DB_File-1.820.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #288026
+
+  10 Dec 2009; Brent Baude <ranger@gentoo.org> perl-DB_File-1.820.ebuild:
+  Marking perl-DB_File-1.820 ppc64 stable for bug 288026
+
+  07 Dec 2009; Markus Meier <maekke@gentoo.org> perl-DB_File-1.820.ebuild:
+  arm stable, bug #288026
+
+  07 Dec 2009; Jeroen Roovers <jer@gentoo.org> perl-DB_File-1.820.ebuild:
+  Stable for HPPA (bug #288026).
+
+  04 Dec 2009; Torsten Veller <tove@gentoo.org> perl-DB_File-1.820.ebuild:
+  Stable on amd64 (#288026)
+
+  04 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  perl-DB_File-1.820.ebuild:
+  x86 stable, bug 288026
+
+  25 Aug 2009; Torsten Veller <tove@gentoo.org> perl-DB_File-1.820.ebuild:
+  Add support for perl-5.10.1
+
+*perl-DB_File-1.820 (03 Apr 2009)
+
+  03 Apr 2009; Torsten Veller <tove@gentoo.org> +perl-DB_File-1.820.ebuild:
+  Version bump
+
+  13 Mar 2009; Torsten Veller <tove@gentoo.org> -perl-DB_File-1.813.ebuild,
+  -perl-DB_File-1.814.ebuild, -perl-DB_File-1.817.ebuild,
+  -perl-DB_File-1.818.ebuild:
+  Cleanup
+
+*perl-DB_File-1.819 (20 Feb 2009)
+
+  20 Feb 2009; Torsten Veller <tove@gentoo.org> +perl-DB_File-1.819.ebuild:
+  Version bump
+
+*perl-DB_File-1.818 (01 Feb 2009)
+
+  01 Feb 2009; Torsten Veller <tove@gentoo.org> +perl-DB_File-1.818.ebuild:
+  Version bump
+
+*perl-DB_File-1.817 (08 Dec 2008)
+
+  08 Dec 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +perl-DB_File-1.817.ebuild:
+  Version bump.
+
+  31 Mar 2008; Jeroen Roovers <jer@gentoo.org> perl-DB_File-1.815.ebuild:
+  Stable for HPPA too.
+
+  19 Nov 2007; Joshua Kinard <kumba@gentoo.org> ChangeLog:
+  Stable on mips.
+
+  15 Oct 2007; Markus Rothe <corsair@gentoo.org> perl-DB_File-1.815.ebuild:
+  Stable on ppc64
+
+  04 Jul 2007; Raúl Porcel <armin76@gentoo.org> perl-DB_File-1.815.ebuild:
+  alpha/ia64/x86 stable
+
+  11 May 2007; Joshua Kinard <kumba@gentoo.org> perl-DB_File-1.815.ebuild:
+  Stable on mips.
+
+  07 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  perl-DB_File-1.815.ebuild:
+  ppc stable
+
+  17 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  perl-DB_File-1.815.ebuild:
+  Stable on sparc
+
+  09 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  perl-DB_File-1.815.ebuild:
+  Marking stable amd64
+
+*perl-DB_File-1.815 (06 Feb 2007)
+
+  06 Feb 2007; Michael Cummings <mcummings@gentoo.org>
+  +perl-DB_File-1.815.ebuild:
+  Version bump
+
+  01 Dec 2006; Tony Vroon <chainsaw@gentoo.org> perl-DB_File-1.814.ebuild:
+  Use double quotes in the test, it fails otherwise. As suggested by Jakub Muc
+  <jakub@gentoo.org>.
+
+  20 Nov 2006; Sven Wegener <swegener@gentoo.org> perl-DB_File-1.814.ebuild:
+  Drop berkdb from IUSE, this package doesn't use it. Move checking from
+  src_unpack to pkg_setup.
+
+  19 Nov 2006; Michael Cummings <mcummings@gentoo.org>
+  perl-DB_File-1.814.ebuild:
+  Updating virtual to catch perls built without berkdb
+
+  25 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  -perl-DB_File-1.811.ebuild, perl-DB_File-1.813.ebuild:
+  Cleaning out stale ebuild
+
+  26 Feb 2006; Joshua Kinard <kumba@gentoo.org> perl-DB_File-1.814.ebuild:
+  Marked stable on mips.
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  perl-DB_File-1.811.ebuild, perl-DB_File-1.813.ebuild,
+  perl-DB_File-1.814.ebuild:
+  Sorry, proper rdeps
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  perl-DB_File-1.811.ebuild, perl-DB_File-1.813.ebuild,
+  perl-DB_File-1.814.ebuild:
+  Updated RDEPENDS
+
+  07 Feb 2006; Simon Stelling <blubb@gentoo.org> perl-DB_File-1.814.ebuild:
+  stable on amd64
+
+*perl-DB_File-1.814 (06 Feb 2006)
+*perl-DB_File-1.813 (06 Feb 2006)
+*perl-DB_File-1.811 (06 Feb 2006)
+
+  06 Feb 2006; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +perl-DB_File-1.811.ebuild, +perl-DB_File-1.813.ebuild,
+  +perl-DB_File-1.814.ebuild:
+  New virtual for perl-core/DB_File

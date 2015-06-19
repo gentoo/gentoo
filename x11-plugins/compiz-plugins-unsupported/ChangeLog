@@ -1,0 +1,76 @@
+# ChangeLog for x11-plugins/compiz-plugins-unsupported
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/compiz-plugins-unsupported/ChangeLog,v 1.15 2012/09/25 14:35:30 pinkbyte Exp $
+
+  25 Sep 2012; Sergey Popov <pinkbyte@gentoo.org>
+  -compiz-plugins-unsupported-0.8.4-r1.ebuild:
+  Drop old
+
+  30 Aug 2012; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Remove myself and proxy maintainer from maintainers
+
+  30 Aug 2012; Sergey Popov <pinkbyte@gentoo.org>
+  compiz-plugins-unsupported-0.8.8.ebuild:
+  Bump EAPI to 4, add DOCS variable
+
+*compiz-plugins-unsupported-0.8.8 (07 May 2012)
+
+  07 May 2012; Naohiro Aota <naota@gentoo.org>
+  +compiz-plugins-unsupported-0.8.8.ebuild, metadata.xml:
+  Version bump. Assign Pinkbyte as maintainer.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  compiz-plugins-unsupported-0.8.4-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  21 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  -compiz-plugins-unsupported-0.8.4.ebuild,
+  compiz-plugins-unsupported-0.8.4-r1.ebuild:
+  Fix slot-deps on gtk+ and other libs, remove old
+
+  26 Feb 2011; Kevin McCarthy <signals@gentoo.org>
+  compiz-plugins-unsupported-0.8.4.ebuild,
+  compiz-plugins-unsupported-0.8.4-r1.ebuild:
+  Updated depends from media-libs/jpeg to virtual/jpeg
+
+*compiz-plugins-unsupported-0.8.4-r1 (03 Apr 2010)
+
+  03 Apr 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +compiz-plugins-unsupported-0.8.4-r1.ebuild:
+  Replaced compiz ~ deps with >= deps to support the new compiz-0.8.6
+  release and to avoid future dep issues.
+  Did a revbump to avoid issues with installed packages.
+
+  23 Dec 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  compiz-plugins-unsupported-0.8.4.ebuild:
+  Dropped block for old package name now that I've finally set the pkg move.
+
+  20 Dec 2009; Romain Perier <mrpouet@gentoo.org>
+  -compiz-plugins-unsupported-0.8.2.ebuild:
+  Clean up old version
+
+*compiz-plugins-unsupported-0.8.4 (15 Oct 2009)
+
+  15 Oct 2009; Romain Perier <mrpouet@gentoo.org>
+  +compiz-plugins-unsupported-0.8.4.ebuild:
+  Version bump.
+
+  25 Apr 2009; Brent Baude <ranger@gentoo.org>
+  compiz-plugins-unsupported-0.8.2.ebuild:
+  Marking compiz-plugins-unsupported-0.8.2 ~ppc for bug 246804
+
+  25 Apr 2009; Brent Baude <ranger@gentoo.org>
+  compiz-plugins-unsupported-0.8.2.ebuild:
+  Marking compiz-plugins-unsupported-0.8.2 ~ppc64 for bug 246804
+
+  07 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  compiz-plugins-unsupported-0.8.2.ebuild:
+  Added missing depend on compiz-plugins-main - thanks to Simon Kohlmeyer.
+  Fixes bug 264905.
+
+*compiz-plugins-unsupported-0.8.2 (03 Apr 2009)
+
+  03 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +metadata.xml, +compiz-plugins-unsupported-0.8.2.ebuild:
+  Bumped compiz to the 0.8.2 release.
+

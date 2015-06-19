@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-perl/Module-Pluggable-3.1 >=dev-perl/Config-Tiny-2 >=dev-perl/Email-Address-1.88.9 dev-perl/List-MoreUtils dev-perl/IO-String dev-perl/perltidy >=dev-perl/PPI-1.220 dev-perl/PPIx-Utilities >=dev-perl/PPIx-Regexp-0.27.0 dev-perl/Pod-Spell >=dev-perl/set-scalar-1.20 dev-perl/File-HomeDir dev-perl/File-Which dev-perl/B-Keywords >=dev-perl/Readonly-2 dev-perl/Exception-Class dev-perl/String-Format >=virtual/perl-version-0.77 >=dev-perl/Module-Build-0.402.400 test? ( dev-perl/Test-Deep dev-perl/PadWalker dev-perl/Test-Memory-Cycle dev-perl/Test-Pod dev-perl/Test-Pod-Coverage ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Critique Perl source code for best-practices
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Perl-Critic/
+IUSE=test
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/Module-Pluggable-3.1 >=dev-perl/Config-Tiny-2 >=dev-perl/Email-Address-1.88.9 dev-perl/List-MoreUtils dev-perl/IO-String dev-perl/perltidy >=dev-perl/PPI-1.220 dev-perl/PPIx-Utilities >=dev-perl/PPIx-Regexp-0.27.0 dev-perl/Pod-Spell >=dev-perl/set-scalar-1.20 dev-perl/File-HomeDir dev-perl/File-Which dev-perl/B-Keywords >=dev-perl/Readonly-2 dev-perl/Exception-Class dev-perl/String-Format >=virtual/perl-version-0.77 dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/T/TH/THALJEF/Perl-Critic-1.123.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=ef20d0a77dda6fbb9d92ddc6f07dd207

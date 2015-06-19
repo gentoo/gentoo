@@ -1,0 +1,68 @@
+# ChangeLog for app-misc/multimon
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/multimon/ChangeLog,v 1.19 2012/12/16 09:40:26 lu_zero Exp $
+
+*multimon-1.0-r3 (16 Dec 2012)
+
+  16 Dec 2012; Luca Barbato <lu_zero@gentoo.org> +multimon-1.0-r3.ebuild:
+  Import ubuntu fixes and improvements
+
+  21 Nov 2012; Michael Palimaka <kensington@gentoo.org> -multimon-1.0.ebuild:
+  Remove old.
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> multimon-1.0-r2.ebuild:
+  Stable for x86, wrt bug #441086
+
+  03 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> multimon-1.0-r2.ebuild:
+  Add ~amd64 keyword, wrt bug #441086
+
+  21 Jun 2012; Justin Lecher <jlec@gentoo.org> multimon-1.0-r2.ebuild,
+  +files/multimon-1.0-prll.patch, metadata.xml:
+  Add fix for parallel build, #369713
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -multimon-1.0-r1.ebuild:
+  Remove old
+
+  01 Jun 2011; Diego E. Pettenò <flameeyes@gentoo.org> multimon-1.0-r2.ebuild:
+  QA: workaround bug #369713 by using make -j1.
+
+*multimon-1.0-r2 (20 Oct 2010)
+
+  20 Oct 2010; Jeroen Roovers <jer@gentoo.org> +multimon-1.0-r2.ebuild,
+  +files/multimon-1.0-flags.patch, +files/multimon-1.0-includes.patch:
+  Respect LDFLAGS (bug #337700), CC. Fix compiler warnings.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> multimon-1.0.ebuild,
+  multimon-1.0-r1.ebuild:
+  Remove virtual/libc
+
+*multimon-1.0-r1 (17 Nov 2008)
+
+  17 Nov 2008; Hans de Graaff <graaff@gentoo.org> +multimon-1.0-r1.ebuild:
+  Rename the gen binary to multimon-gen to avoid file collisions with
+  dev-ruby/gen. Fixes #247156. Use emake instead of make.
+
+  22 Jul 2007; David Shakaryan <omp@gentoo.org> multimon-1.0.ebuild:
+  Remove virtual/x11 from dependencies.
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  09 Feb 2006; Andrej Kacian <ticho@gentoo.org> multimon-1.0.ebuild:
+  Added modular X dependencies.
+
+  21 Jul 2005; David Holm <dholm@gentoo.org> multimon-1.0.ebuild:
+  Added to ~ppc.
+
+*multimon-1.0 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

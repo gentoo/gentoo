@@ -1,0 +1,11 @@
+# ChangeLog for net-libs/dleyna-connector-dbus
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/dleyna-connector-dbus/ChangeLog,v 1.1 2015/06/09 22:49:03 eva Exp $
+
+*dleyna-connector-dbus-0.2.0 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  +dleyna-connector-dbus-0.2.0.ebuild, +metadata.xml:
+  Initial ebuild from gnome-overlay for Gnome 3.16, needed by grilo-plugins and
+  gnome-photos at least.
+

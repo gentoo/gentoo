@@ -1,0 +1,39 @@
+# ChangeLog for games-mud/circlemud
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-mud/circlemud/ChangeLog,v 1.12 2015/02/06 13:40:44 ago Exp $
+
+  06 Feb 2015; Agostino Sarubbo <ago@gentoo.org> circlemud-3.1.ebuild:
+  Stable for amd64, wrt bug #539022
+
+  04 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org> circlemud-3.1.ebuild:
+  EAPI=5
+
+  12 Oct 2010; Michael Sterrett <mr_bones_@gentoo.org> circlemud-3.1.ebuild:
+  add eutils for epatch; tidy
+
+  16 Sep 2010; Alfredo Tupone <tupone@gentoo.org> circlemud-3.1.ebuild,
+  +files/circlemud-3.1-ldflags.patch:
+  Respect LDFLAGS. Bug #337460 by flameeyes@gentoo.org
+
+  07 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org> circlemud-3.1.ebuild:
+  QA cleanup: Fix quoting.
+
+  08 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  21 Dec 2004; Dylan Carlson <absinthe@gentoo.org> circlemud-3.1.ebuild:
+  Keywords ~amd64.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> circlemud-3.1.ebuild:
+  virtual/glibc -> virtual/libc
+
+  03 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> circlemud-3.1.ebuild:
+  marking stable - no bugs for 125 days.
+
+  14 Apr 2004; David Holm <dholm@gentoo.org> circlemud-3.1.ebuild:
+  Added to ~ppc.
+
+*circlemud-3.1 (29 Jan 2004)
+
+  29 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Minati jean #37094.

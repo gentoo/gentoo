@@ -1,0 +1,172 @@
+/*
+ * Refer to the named.conf(5) and named(8) man pages, and the documentation
+ * in /usr/share/doc/bind-9 for more details.
+ * Online versions of the documentation can be found here:
+ * http://www.isc.org/software/bind/documentation
+ *
+ * If you are going to set up an authoritative server, make sure you
+ * understand the hairy details of how DNS works. Even with simple mistakes,
+ * you can break connectivity for affected parties, or cause huge amounts of
+ * useless Internet traffic.
+ */
+
+acl "xfer" {
+	/* Deny transfers by default except for the listed hosts.
+	 * If we have other name servers, place them here.
+	 */
+	none;
+};
+
+/*
+ * You might put in here some ips which are allowed to use the cache or
+ * recursive queries
+ */
+acl "trusted" {
+	127.0.0.0/8;
+	::1/128;
+};
+
+options {
+	directory "/var/bind";
+	pid-file "/run/named/named.pid";
+
+	/* https://www.isc.org/solutions/dlv >=bind-9.7.x only */
+	//bindkeys-file "/etc/bind/bind.keys";
+
+	listen-on-v6 { ::1; };
+	listen-on { 127.0.0.1; };
+
+	allow-query {
+		/*
+		 * Accept queries from our "trusted" ACL.  We will
+		 * allow anyone to query our master zones below.
+		 * This prevents us from becoming a free DNS server
+		 * to the masses.
+		 */
+		trusted;
+	};
+
+	allow-query-cache {
+		/* Use the cache for the "trusted" ACL. */
+		trusted;
+	};
+
+	allow-recursion {
+		/* Only trusted addresses are allowed to use recursion. */
+		trusted;
+	};
+
+	allow-transfer {
+		/* Zone tranfers are denied by default. */
+		none;
+	};
+
+	allow-update {
+		/* Don't allow updates, e.g. via nsupdate. */
+		none;
+	};
+
+	/*
+	* If you've got a DNS server around at your upstream provider, enter its
+	* IP address here, and enable the line below. This will make you benefit
+	* from its cache, thus reduce overall DNS traffic in the Internet.
+	*
+	* Uncomment the following lines to turn on DNS forwarding, and change
+	*  and/or update the forwarding ip address(es):
+	*/
+/*
+	forward first;
+	forwarders {
+	//	123.123.123.123;	// Your ISP NS
+	//	124.124.124.124;	// Your ISP NS
+	//	4.2.2.1;		// Level3 Public DNS
+	//	4.2.2.2;		// Level3 Public DNS
+		8.8.8.8;		// Google Open DNS
+		8.8.4.4;		// Google Open DNS
+	};
+
+*/
+
+	//dnssec-enable yes;
+	//dnssec-validation yes;
+
+	/*
+	 * As of bind 9.8.0:
+	 * "If the root key provided has expired,
+	 * named will log the expiration and validation will not work."
+	 */
+	//dnssec-validation auto;
+
+	/* if you have problems and are behind a firewall: */
+	//query-source address * port 53;
+};
+
+/*
+logging {
+	channel default_log {
+		file "/var/log/named/named.log" versions 5 size 50M;
+		print-time yes;
+		print-severity yes;
+		print-category yes;
+	};
+
+	category default { default_log; };
+	category general { default_log; };
+};
+*/
+
+include "/etc/bind/rndc.key";
+controls {
+	inet 127.0.0.1 port 953 allow { 127.0.0.1/32; ::1/128; } keys { "rndc-key"; };
+};
+
+zone "." in {
+	type hint;
+	file "/var/bind/named.cache";
+};
+
+zone "localhost" IN {
+	type master;
+	file "pri/localhost.zone";
+	notify no;
+};
+
+zone "127.in-addr.arpa" IN {
+	type master;
+	file "pri/127.zone";
+	notify no;
+};
+
+/*
+ * Briefly, a zone which has been declared delegation-only will be effectively
+ * limited to containing NS RRs for subdomains, but no actual data beyond its
+ * own apex (for example, its SOA RR and apex NS RRset). This can be used to
+ * filter out "wildcard" or "synthesized" data from NAT boxes or from
+ * authoritative name servers whose undelegated (in-zone) data is of no
+ * interest.
+ * See http://www.isc.org/software/bind/delegation-only for more info
+ */
+
+//zone "COM" { type delegation-only; };
+//zone "NET" { type delegation-only; };
+
+//zone "YOUR-DOMAIN.TLD" {
+//	type master;
+//	file "/var/bind/pri/YOUR-DOMAIN.TLD.zone";
+//	allow-query { any; };
+//	allow-transfer { xfer; };
+//};
+
+//zone "YOUR-SLAVE.TLD" {
+//	type slave;
+//	file "/var/bind/sec/YOUR-SLAVE.TLD.zone";
+//	masters { <MASTER>; };
+
+	/* Anybody is allowed to query but transfer should be controlled by the master. */
+//	allow-query { any; };
+//	allow-transfer { none; };
+
+	/* The master should be the only one who notifies the slaves, shouldn't it? */
+//	allow-notify { <MASTER>; };
+//	notify no;
+//};

@@ -1,0 +1,35 @@
+# ChangeLog for dev-java/jaxb-tools
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jaxb-tools/ChangeLog,v 1.8 2014/08/10 20:17:05 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> jaxb-tools-2.1.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  23 Jun 2009; Petteri Räty <betelgeuse@gentoo.org>
+  jaxb-tools-2.1.2.ebuild:
+  Add slot deps to java deps in order for new slot of istack-commons-runtime
+  not to break things. Part of fixing bug #275049.
+
+  28 Mar 2008; nixnut <nixnut@gentoo.org> jaxb-tools-2.1.2.ebuild:
+  Stable on ppc wrt bug 214778
+
+  19 Aug 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  jaxb-tools-2.1.2.ebuild:
+  amd64 stable, bug #187681.
+
+  15 Aug 2007; Christian Faulhammer <opfer@gentoo.org>
+  jaxb-tools-2.1.2.ebuild:
+  stable x86, bug 187681
+
+  11 Aug 2007; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml:
+  Remove myself from <maintainer>.
+
+  23 May 2007; Diego Pettenò <flameeyes@gentoo.org>
+  jaxb-tools-2.1.2.ebuild:
+  Add ~x86-fbsd keyword. Bug #176906.
+
+*jaxb-tools-2.1.2 (01 May 2007)
+
+  01 May 2007; Krzysiek Pawlik <nelchael@gentoo.org> +files/build.xml-2.1.2,
+  +metadata.xml, +jaxb-tools-2.1.2.ebuild:
+  Initial commit of jaxb-tools.

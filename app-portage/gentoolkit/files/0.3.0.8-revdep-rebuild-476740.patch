@@ -1,0 +1,33 @@
+From 87a01450ab33220f6f0821d4f4209004cdc3aa8b Mon Sep 17 00:00:00 2001
+From: Paul Varner <fuzzyray@gentoo.org>
+Date: Tue, 10 Sep 2013 13:52:28 -0500
+Subject: [PATCH] Fix Ctrl-C handling when running emerge (Bug 476740).
+
+---
+ bin/revdep-rebuild.sh | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/bin/revdep-rebuild.sh b/bin/revdep-rebuild.sh
+index 6cb5608..09f5135 100755
+--- a/bin/revdep-rebuild.sh
++++ b/bin/revdep-rebuild.sh
+@@ -1052,6 +1052,7 @@ portage_settings() {
+ 	if [[ -n ${REVDEP_REBUILD_DEFAULT_OPTS} ]]; then
+ 		EMERGE_DEFAULT_OPTS=("${REVDEP_REBUILD_DEFAULT_OPTS[@]}")
+ 	fi
++
+ }
+ 
+ ##
+@@ -1138,7 +1139,7 @@ rebuild() {
+ 		REBUILD_LIST=$(sort -u "$EBUILDS_FILE")
+ 	fi
+ 
+-	trap - SIGHUP SIGINT SIGQUIT SIGABRT SIGTERM
++	trap "kill 0" SIGHUP SIGINT SIGQUIT SIGABRT SIGTERM
+ 
+ 	[[ $QUIET -ne 1 ]] && einfo 'All prepared. Starting rebuild'
+ 	echo "emerge --complete-graph=y --oneshot ${EMERGE_DEFAULT_OPTS[@]} ${EMERGE_OPTIONS[@]} $REBUILD_LIST"
+-- 
+1.8.3.2
+

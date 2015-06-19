@@ -1,0 +1,16 @@
+ ax_bam.m4 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ax_bam.m4 b/ax_bam.m4
+index 7d463b7..95f1bed 100644
+--- a/ax_bam.m4
++++ b/ax_bam.m4
+@@ -189,7 +189,7 @@ if test "x$want_bam" = "xyes"; then
+ 			AC_MSG_NOTICE([Your bam libraries seem too old (version $_version).])
+ 		fi
+ 	else
+-		BAM_LIB="-lbam"
++		BAM_LIB="-lbam -lhts"
+ 		AC_SUBST(BAM_CPPFLAGS)
+ 		AC_SUBST(BAM_LDFLAGS)
+ 		AC_SUBST(BAM_LIB)

@@ -1,0 +1,40 @@
+# ChangeLog for sci-libs/libh2o
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/libh2o/ChangeLog,v 1.8 2014/07/06 13:21:24 mgorny Exp $
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> libh2o-0.2.1.ebuild,
+  libh2o-9999.ebuild:
+  Replace obsolete mirror://bitbucket with the real URI.
+
+  16 Oct 2013; Michał Górny <mgorny@gentoo.org> libh2o-9999.ebuild:
+  Switch to git-r3.
+
+*libh2o-9999 (15 Dec 2012)
+
+  15 Dec 2012; Michał Górny <mgorny@gentoo.org> +libh2o-9999.ebuild:
+  Import the live ebuild.
+
+  24 Aug 2012; Michał Górny <mgorny@gentoo.org> -libh2o-0.1.ebuild,
+  -libh2o-0.2.ebuild, libh2o-0.2.1.ebuild:
+  Add missing virtual/pkgconfig dep wrt bug #432616.
+
+*libh2o-0.2.1 (11 Jun 2012)
+
+  11 Jun 2012; Michał Górny <mgorny@gentoo.org> +libh2o-0.2.1.ebuild:
+  Version bump. The new version adds expansion calculation functions.
+
+*libh2o-0.2 (06 Jun 2012)
+
+  06 Jun 2012; Michał Górny <mgorny@gentoo.org> +libh2o-0.2.ebuild:
+  Version bump. The new version introduces equations for heat capacity & speed
+  of sound.
+
+  05 Jun 2012; Michał Górny <mgorny@gentoo.org> metadata.xml:
+  Update issue tracker URI.
+
+*libh2o-0.1 (05 Jun 2012)
+
+  05 Jun 2012; Michał Górny <mgorny@gentoo.org> +libh2o-0.1.ebuild,
+  +metadata.xml:
+  Initial commit of libh2o, a lightweight library for properties of water and
+  steam.

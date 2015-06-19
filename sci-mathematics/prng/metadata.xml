@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sci-mathematics</herd>
+	<longdescription lang="en">
+  The Pseudo-Random Number Generator library is a portable,
+  high-performance ANSI-C implementations of pseudorandom number
+  generators such as linear congruential, inversive congruential, and
+  explicit inversive congruential random number generators (called
+  LCG, ICG and EICG, respectively) created by Otmar Lendl. It is part
+  of the pLab project.
+</longdescription>
+</pkgmetadata>

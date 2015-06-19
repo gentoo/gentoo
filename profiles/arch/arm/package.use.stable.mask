@@ -1,0 +1,20 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/arm/package.use.stable.mask,v 1.9 2015/06/02 18:30:37 pacho Exp $
+
+# Pacho Ramos <pacho@gentoo.org> (02 Jun 2015)
+# Missing stable
+net-misc/connman l2tp pptp
+
+# Michael Palimaka <kensington@gentoo.org> (11 May 2015)
+# KDE is not stable on arm
+www-client/qupzilla kde
+
+# Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
+# Mask due Gnome3 not going to be stabilized on this arch
+dev-util/geany-plugins devhelp markdown webkit
+>=gnome-base/gnome-desktop-2.32.1-r2 license-docs
+net-libs/libproxy webkit
+>=net-libs/webkit-gtk-2.4 geoloc
+>=x11-libs/gtk+-3.12.2 cloudprint
+x11-libs/gksu gnome

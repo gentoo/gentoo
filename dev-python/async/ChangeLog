@@ -1,0 +1,36 @@
+# ChangeLog for dev-python/async
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/async/ChangeLog,v 1.9 2015/06/09 15:03:32 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> async-0.6.2.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> async-0.6.2.ebuild:
+  amd64 stable, bug 540290
+
+  23 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -async-0.6.1-r1.ebuild,
+  -async-0.6.1.ebuild:
+  Remove old.
+
+*async-0.6.2 (18 Nov 2014)
+
+  18 Nov 2014; Justin Lecher <jlec@gentoo.org> +async-0.6.2.ebuild,
+  metadata.xml:
+  Version Bump; add support for python3
+
+*async-0.6.1-r1 (07 May 2013)
+
+  07 May 2013; Ian Delaney <idella4@gentoo.org> +async-0.6.1-r1.ebuild:
+  migrate -> distutils-r1
+
+  27 Aug 2011; Jesus Rivero <neurogeek@gentoo.org> async-0.6.1.ebuild:
+  Added ~amd64 keyword
+
+*async-0.6.1 (27 Aug 2011)
+
+  27 Aug 2011; Jesus Rivero <neurogeek@gentoo.org> +async-0.6.1.ebuild,
+  +files/async-0.6.1_libz_link.patch, +metadata.xml:
+  Initial commit

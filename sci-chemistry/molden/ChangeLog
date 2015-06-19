@@ -1,0 +1,253 @@
+# ChangeLog for sci-chemistry/molden
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/molden/ChangeLog,v 1.48 2013/04/11 18:51:34 ulm Exp $
+
+  11 Apr 2013; Ulrich Müller <ulm@gentoo.org> molden-4.8-r2.ebuild,
+  molden-5.0.ebuild:
+  Fix LICENSE, see <http://www.cmbi.ru.nl/molden/CopyRight.html>.
+
+  04 Feb 2013; Justin Lecher <jlec@gentoo.org> molden-4.8-r2.ebuild,
+  molden-5.0.ebuild:
+  Always depend on virtual/glu, #455384
+
+  30 Jan 2013; Justin Lecher <jlec@gentoo.org> molden-4.8-r2.ebuild,
+  molden-5.0.ebuild, metadata.xml:
+  Add virtual/glu to deps, #454690
+
+  19 Oct 2012; Justin Lecher <jlec@gentoo.org> molden-4.8-r2.ebuild,
+  molden-5.0.ebuild:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  15 Jul 2012; Justin Lecher <jlec@gentoo.org> -molden-4.7.ebuild,
+  -files/molden-4.7-glibc-2.11.patch, -files/molden-4.7-ldflags.patch:
+  Drop old
+
+  15 Jul 2012; Raúl Porcel <armin76@gentoo.org> molden-4.7.ebuild,
+  molden-4.8-r2.ebuild, molden-5.0.ebuild:
+  Drop alpha/ia64 keywords
+
+  26 Jun 2012; Agostino Sarubbo <ago@gentoo.org> molden-4.8-r2.ebuild:
+  Stable for amd64, wrt bug #423175
+
+  25 Jun 2012; Jeff Horelick <jdhore@gentoo.org> molden-4.8-r2.ebuild:
+  marked x86 per bug 423175
+
+  23 Jun 2012; Justin Lecher <jlec@gentoo.org> molden-5.0.ebuild,
+  +files/molden-5.0-overflow.patch:
+  Add missing patch
+
+*molden-5.0 (23 Jun 2012)
+*molden-4.8-r2 (23 Jun 2012)
+
+  23 Jun 2012; Justin Lecher <jlec@gentoo.org> -molden-4.7-r1.ebuild,
+  -molden-4.8.ebuild, -molden-4.8-r1.ebuild, +molden-4.8-r2.ebuild,
+  files/molden-4.8-overflow.patch, +molden-5.0.ebuild,
+  +files/molden-5.0-ambfor.patch, metadata.xml:
+  Fix buffer overflow, #342907; Version Bump, #355741; Fix build failures,
+  #358917, #423015; drop old
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> molden-4.7.ebuild,
+  molden-4.7-r1.ebuild, molden-4.8.ebuild, molden-4.8-r1.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> molden-4.7.ebuild,
+  molden-4.7-r1.ebuild, molden-4.8.ebuild, molden-4.8-r1.ebuild:
+  Added fortran-2.eclass support
+
+  16 Dec 2010; Justin Lecher <jlec@gentoo.org> molden-4.7.ebuild,
+  molden-4.7-r1.ebuild, molden-4.8.ebuild, molden-4.8-r1.ebuild:
+  Removal of fortran.eclass, #348851
+
+  16 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> molden-4.7.ebuild,
+  molden-4.7-r1.ebuild, molden-4.8.ebuild, molden-4.8-r1.ebuild:
+  virtual/glut -> media-libs/glut
+
+  20 Jul 2010; Justin Lecher <jlec@gentoo.org> molden-4.7-r1.ebuild,
+  molden-4.8-r1.ebuild:
+  Added gccmakedep to DEPEND, #329093
+
+*molden-4.8-r1 (24 Jun 2010)
+*molden-4.7-r1 (24 Jun 2010)
+
+  24 Jun 2010; Justin Lecher <jlec@gentoo.org> +molden-4.7-r1.ebuild,
+  +files/molden-4.7-glibc-2.11.patch, +files/molden-4.7-implicit-dec.patch,
+  +files/molden-4.7-ldflags.patch, +molden-4.8-r1.ebuild,
+  files/molden-4.8-ldflags.patch:
+  Fix for glibc-2.11, fix for bug #315595
+
+*molden-4.8 (26 Feb 2010)
+
+  26 Feb 2010; Markus Dittrich <markusle@gentoo.org>
+  -files/molden-3.9-fixMakefile.patch, -molden-4.4.ebuild,
+  -files/molden-4.4-gfortran-gentoo.patch, -molden-4.6.ebuild,
+  -files/molden-4.6-gfortran.patch, +molden-4.8.ebuild,
+  +files/molden-4.8-ambfor.patch, +files/molden-4.8-ldflags.patch,
+  +files/molden-4.8-overflow.patch:
+  Version bump (fixes #285220, #270941). Removed old ebuild.
+
+  18 Jan 2010; Raúl Porcel <armin76@gentoo.org> molden-4.7.ebuild:
+  alpha/ia64/x86 stable
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> molden-4.4.ebuild,
+  molden-4.6.ebuild, molden-4.7.ebuild:
+  Remove virtual/libc
+
+  29 May 2009; Donnie Berkholz <dberkholz@gentoo.org>; molden-4.7.ebuild:
+  Stable on amd64.
+
+  28 May 2009; Donnie Berkholz <dberkholz@gentoo.org>; molden-4.7.ebuild:
+  The build system requires ex, which comes along with vim.
+
+*molden-4.7 (02 Jan 2009)
+
+  02 Jan 2009; Marcus D. Hanwell <cryos@gentoo.org> +molden-4.7.ebuild:
+  Version bump.
+
+  31 Dec 2007; Jeff Gardner <je_fro@gentoo.org> ChangeLog:
+  Fixing my email address
+
+  12 Aug 2007; <je_fro@gentoo.org> -molden-4.3.ebuild:
+  Removed old version.
+
+  11 Aug 2007; Steve Dibb <beandog@gentoo.org> molden-4.4.ebuild:
+  amd64 stable, bug 187124
+
+  30 Jul 2007; Raúl Porcel <armin76@gentoo.org> molden-4.4.ebuild:
+  alpha/ia64/x86 stable wrt #187124
+
+  30 Jul 2007; Jeff Gardner <je_fro@gentoo.org> molden-4.6.ebuild:
+  Change logic in src_install wrt bug #187073, thanks to Benj FitzPatrick.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; molden-4.3.ebuild,
+  molden-4.4.ebuild, molden-4.6.ebuild:
+  Drop virtual/x11 references.
+
+*molden-4.6 (23 Jun 2007)
+
+  23 Jun 2007; Markus Dittrich <markusle@gentoo.org> +molden-4.6.ebuild, +files/molden-4.6-gfortran.patch:
+  Version bump.
+
+  13 Mar 2007; Danny van Dyk <kugelfang@gentoo.org> molden-4.3.ebuild:
+  QA: which -> type -P
+
+*molden-4.4 (03 Oct 2006)
+
+  03 Oct 2006; Markus Dittrich <markusle@gentoo.org>
+  +files/molden-4.4-gfortran-gentoo.patch, +molden-4.4.ebuild:
+  Version bump (fixes bug #138642). Thanks to je_fro 
+  <je_fro@yahoo.com> for his ebuild and patch.
+
+  20 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  (#148281) Change herd to sci-chemistry from sci.
+
+  05 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Remove myself as maintainer, anyone feel free to work on this, although I'll
+  continue to do so as well.
+
+  07 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Update to my new email address.
+
+  08 Apr 2006; Donnie Berkholz <dberkholz@gentoo.org>; -molden-3.9.ebuild,
+  -molden-4.0.ebuild, -molden-4.1.ebuild:
+  Pull old versions, everyone's stabilized on 4.3.
+
+  08 Apr 2006; Simon Stelling <blubb@gentoo.org> molden-4.3.ebuild:
+  stable on amd64
+
+  10 Mar 2006; Aron Griffis <agriffis@gentoo.org> molden-4.3.ebuild:
+  Mark 4.3 stable on ia64
+
+  08 Feb 2006; Aron Griffis <agriffis@gentoo.org> molden-4.3.ebuild:
+  Mark 4.3 stable on alpha
+
+  20 Jan 2006; Joshua Jackson <tsunam@gentoo.org> molden-4.3.ebuild:
+  Stable on x86 for bug #119378
+
+  18 Jan 2006; Donnie Berkholz <dberkholz@gentoo.org>; molden-4.3.ebuild:
+  Fix dependencies for modular X.
+
+  18 Jan 2006; Donnie Berkholz <dberkholz@gentoo.org>; molden-4.3.ebuild:
+  Parallel build sporadically dies.
+
+  14 May 2005; Bryan Østergaard <kloeri@gentoo.org> molden-4.3.ebuild:
+  ~ia64 keyword.
+
+  25 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> molden-4.3.ebuild:
+  ~alpha keyword.
+
+*molden-4.3 (05 Feb 2005)
+
+  05 Feb 2005; Donnie Berkholz <dberkholz@gentoo.org>; +molden-4.3.ebuild:
+  (#79047) New version, supports gromacs file format and some other stuff.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  24 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +files/molden-3.9-fixMakefile.patch, +molden-3.9.ebuild, +molden-4.0.ebuild,
+  +molden-4.1.ebuild:
+  Moved from app-sci/molden to sci-chemistry/molden.
+
+  23 Dec 2004; Donnie Berkholz <dberkholz@gentoo.org>; molden-4.1.ebuild:
+  x86.
+
+  20 Nov 2004; Danny van Dyk <kugelfang@gentoo.org> molden-4.1.ebuild:
+  Marked ~amd64.
+
+  26 Oct 2004; Donnie Berkholz <dberkholz@gentoo.org>; molden-3.9.ebuild,
+  molden-4.0.ebuild, molden-4.1.ebuild:
+  Move eclasses from gcc to toolchain-funcs. Get rid of ${CC} use (#68990).
+
+  28 Jul 2004; Donnie Berkholz <dberkholz@gentoo.org>; molden-3.9.ebuild,
+  molden-4.0.ebuild, molden-4.1.ebuild:
+  Search for a fortran compiler, since gcc doesn't compile one by default
+  anymore (#58628).
+
+  27 Jul 2004; Donnie Berkholz <dberkholz@gentoo.org>; molden-4.0.ebuild:
+  x86.
+
+*molden-4.1 (27 Jul 2004)
+
+  27 Jul 2004; Donnie Berkholz <dberkholz@gentoo.org>; +molden-4.1.ebuild:
+  Version bump (#57960). Add virtual/libc and virtual/x11 to DEPEND. Upstream
+  changes include bugfixes and addition of interactive docking.
+
+  21 May 2004; Danny van Dyk <kugelfang@gentoo.org> :
+  Marked ~amd64.
+
+  15 May 2004; Danny van Dyk <kugelfang@gentoo.org> molden-4.0.ebuild:
+  Marked ~amd64.
+
+  05 May 2004; Bryan Østergaard <kloeri@gentoo.org> molden-4.0.ebuild:
+  Stable on alpha.
+
+  21 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; molden-4.0.ebuild:
+  ~alpha for agriffis.
+
+  21 Apr 2004; Donnie Berkholz <dberkholz@gentoo.org>; molden-4.0.ebuild:
+  Some wizardly bash replacements for sed by Aron Griffis <agriffis@gentoo.org>
+  (#46816).
+
+  04 Apr 2004; Aron Griffis <agriffis@gentoo.org> molden-3.9.ebuild,
+  molden-4.0.ebuild:
+  Add ia64 keywords for bug 46559
+
+  13 Mar 2004; Donnie Berkholz <dberkholz@gentoo.org>; :
+  Upstream changed the tarball. Fixing digest.
+
+*molden-4.0 (28 Feb 2004)
+
+  28 Feb 2004; Donnie Berkholz <dberkholz@gentoo.org>; molden-4.0.ebuild:
+  Version bump. Uses 3.9 patch, so don't remove that when dropping 3.9.
+
+  28 Feb 2004; Donnie Berkholz <dberkholz@gentoo.org>; molden-3.9.ebuild:
+  Add missing glut dep for opengl USE.
+
+*molden-3.9 (10 Nov 2003)
+
+  10 Nov 2003; Donnie Berkholz <dberkholz@gentoo.org>; molden-3.9.ebuild,
+  files/molden-3.9-fixMakefile.patch:
+  Thanks to Rossen Apostolov <rossen@protein.osaka-u.ac.jp> on bug #33001 for
+  the initial ebuild, with further modifications by me.
+

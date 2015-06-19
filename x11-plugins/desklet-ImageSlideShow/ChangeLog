@@ -1,0 +1,37 @@
+# ChangeLog for x11-plugins/desklet-ImageSlideShow
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/desklet-ImageSlideShow/ChangeLog,v 1.7 2013/07/21 10:21:12 pacho Exp $
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://www.gossamer-threads.com/lists/gentoo/dev/273644
+
+  09 Jun 2013; Mike Gilbert <floppym@gentoo.org>
+  desklet-ImageSlideShow-0.8-r1.ebuild:
+  Depend on virtual/python-imaging.
+
+  09 May 2010; Joe Sapp <nixphoeni@gentoo.org>
+  desklet-ImageSlideShow-0.8-r1.ebuild:
+  Removed SRC_URI since it's defined in the eclass
+
+  08 May 2010; Joe Sapp <nixphoeni@gentoo.org>
+  desklet-ImageSlideShow-0.8-r1.ebuild:
+  Removed old variable DESKLET_NAME; keyworded ~ARCH for all gdesklets-core
+  ARCHes; bumped to EAPI 2
+
+  08 May 2010; Joe Sapp <nixphoeni@gentoo.org>
+  desklet-ImageSlideShow-0.8-r1.ebuild:
+  Updated to prepare for the new eclass
+
+*desklet-ImageSlideShow-0.8-r1 (10 Sep 2009)
+
+  10 Sep 2009; Joe Sapp <nixphoeni@gentoo.org>
+  -desklet-ImageSlideShow-0.8.ebuild, +desklet-ImageSlideShow-0.8-r1.ebuild,
+  +files/ImageSlideShow-0.8-cache-dir.patch:
+  Patched to try to fix bug #271777. Thanks to Peter GAAL for all his work
+  on it.
+
+*desklet-ImageSlideShow-0.8 (28 Apr 2009)
+
+  28 Apr 2009; Joe Sapp <nixphoeni@gentoo.org> +metadata.xml,
+  +desklet-ImageSlideShow-0.8.ebuild:
+  Initial commit. Thanks to Peter Gaal for help on bug #231864.

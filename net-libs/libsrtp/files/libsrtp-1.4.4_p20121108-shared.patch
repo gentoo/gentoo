@@ -1,0 +1,55 @@
+Description: Hack build routines to compile shared library
+Author: loki_val and solar
+Origin: http://sources.gentoo.org/viewcvs.py/gentoo-x86/net-libs/libsrtp/files/libsrtp-1.4.4-shared.patch
+Last-Update: 2010-03-19
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -15,7 +15,7 @@
+ 
+ .PHONY: all test build_table_apps
+ 
+-all: test 
++all: libsrtp.so test
+ 
+ runtest: build_table_apps test
+ 	@echo "running libsrtp test applications..."
+@@ -67,7 +67,7 @@
+ # implicit rules for object files and test apps
+ 
+ %.o: %.c
+-	$(COMPILE) -c $< -o $@
++	$(COMPILE) -fPIC -c $< -o $@
+ 
+ %$(EXE): %.c
+ 	$(COMPILE) $(LDFLAGS) $< -o $@ $(SRTPLIB) $(LIBS)
+@@ -105,6 +105,9 @@
+ 	ar cr libsrtp.a $^
+ 	$(RANLIB) libsrtp.a
+ 
++libsrtp.so: $(srtpobj) $(cryptobj) $(gdoi)
++	$(CC) $(LDFLAGS) -shared -Wl,-soname,libsrtp.so.0 -o libsrtp.so.0.0  $^
++
+ # libcryptomath.a contains general-purpose routines that are used to
+ # generate tables and verify cryptoalgorithm implementations - this
+ # library is not meant to be included in production code
+@@ -198,6 +201,11 @@
+ 	cp $(srcdir)/crypto/include/*.h $(DESTDIR)$(includedir)/srtp
+ 	if [ "$(srcdir)" != "." ]; then cp crypto/include/*.h $(DESTDIR)$(includedir)/srtp; fi
+ 	if [ -f libsrtp.a ]; then cp libsrtp.a $(DESTDIR)$(libdir)/; fi
++	if [ -f libsrtp.so.0.0 ]; then \
++		cp libsrtp.so.0.0 $(DESTDIR)$(libdir)/; \
++		ln -s libsrtp.so.0.0 $(DESTDIR)$(libdir)/libsrtp.so.0; \
++		ln -s libsrtp.so.0.0 $(DESTDIR)$(libdir)/libsrtp.so; \
++	fi
+ 
+ uninstall:
+ 	rm -f $(DESTDIR)$(includedir)/srtp/*.h
+@@ -206,7 +214,7 @@
+ 
+ clean:
+ 	rm -rf $(cryptobj) $(srtpobj) $(cryptomath) TAGS \
+-        libcryptomath.a libsrtp.a core *.core test/core
++        libcryptomath.a libsrtp.a libsrtp.so.0.0 core *.core test/core
+ 	for a in * */* */*/*; do			\
+               if [ -f "$$a~" ] ; then rm -f $$a~; fi;	\
+         done;

@@ -1,0 +1,61 @@
+# ChangeLog for dev-perl/JavaScript-SpiderMonkey
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/JavaScript-SpiderMonkey/ChangeLog,v 1.12 2014/08/23 02:07:17 axs Exp $
+
+*JavaScript-SpiderMonkey-0.210.0-r1 (23 Aug 2014)
+
+  23 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +JavaScript-SpiderMonkey-0.210.0-r1.ebuild,
+  -JavaScript-SpiderMonkey-0.210.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  09 Aug 2013; Ian Stakenvicius <axs@gentoo.org>
+  JavaScript-SpiderMonkey-0.210.0.ebuild:
+  Adjusted deps for dev-lang/spidermonkey to ensure SLOT=0
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org>
+  -JavaScript-SpiderMonkey-0.200.0.ebuild:
+  Cleanup
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop duplication of myself as a maintainer where there is a herd.
+
+*JavaScript-SpiderMonkey-0.210.0 (13 Nov 2012)
+
+  13 Nov 2012; Robin H. Johnson <robbat2@gentoo.org>
+  +JavaScript-SpiderMonkey-0.210.0.ebuild,
+  JavaScript-SpiderMonkey-0.200.0.ebuild:
+  Bump.
+
+  11 Oct 2012; Ian Stakenvicius <axs@gentoo.org> +files/mozjs185.patch,
+  JavaScript-SpiderMonkey-0.200.0.ebuild:
+  support spidermonkey-1.8.5 and newer, fix support for x86_64 (bug 404129)
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -JavaScript-SpiderMonkey-0.20.ebuild:
+  Cleanup
+
+*JavaScript-SpiderMonkey-0.200.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +JavaScript-SpiderMonkey-0.200.0.ebuild:
+  Change version scheme
+
+  15 Aug 2010; Torsten Veller <tove@gentoo.org>
+  -JavaScript-SpiderMonkey-0.19.ebuild:
+  Cleanup
+
+*JavaScript-SpiderMonkey-0.20 (31 May 2010)
+
+  31 May 2010; Torsten Veller <tove@gentoo.org>
+  +JavaScript-SpiderMonkey-0.20.ebuild:
+  Version bump
+
+*JavaScript-SpiderMonkey-0.19 (29 Sep 2008)
+
+  29 Sep 2008; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +JavaScript-SpiderMonkey-0.19.ebuild:
+  Add JavaScript-SpiderMonkey. Dependancy for OpenSRF/Evergreen.

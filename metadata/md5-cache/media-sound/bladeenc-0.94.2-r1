@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=An mp3 encoder
+EAPI=2
+HOMEPAGE=http://bladeenc.mp3.no/
+KEYWORDS=amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://bladeenc.mp3.no/source/bladeenc-0.94.2-src-stable.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9d0c97e5723de48eec702ff3cbaed459

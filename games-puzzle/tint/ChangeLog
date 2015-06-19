@@ -1,0 +1,62 @@
+# ChangeLog for games-puzzle/tint
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/tint/ChangeLog,v 1.17 2015/02/25 21:32:13 tupone Exp $
+
+  25 Feb 2015; Tupone Alfredo <tupone@gentoo.org> tint-0.03b.ebuild:
+  EAPI 5
+
+  08 Nov 2010; Alfredo Tupone <tupone@gentoo.org> tint-0.03b.ebuild,
+  +files/tint-0.03b-ovflfix.patch:
+  Fix overflow. Bug #337233 by flameeyes@gentoo.org
+
+  31 May 2009; Tristan Heaven <nyhm@gentoo.org> tint-0.03b.ebuild:
+  Fix LICENSE: as-is -> BSD
+
+  27 Jun 2008; Brent Baude <ranger@gentoo.org> tint-0.03b.ebuild:
+  stable ppc64, bug 229479
+
+  26 Jun 2008; nixnut <nixnut@gentoo.org> tint-0.03b.ebuild:
+  Stable on ppc wrt bug 229479
+
+  26 Jun 2008; Santiago M. Mola <coldwind@gentoo.org> tint-0.03b.ebuild:
+  amd64 stable wrt bug #229479
+
+  26 Jun 2008; Christian Faulhammer <opfer@gentoo.org> tint-0.03b.ebuild:
+  stable x86, bug 229479
+
+*tint-0.03b (08 Oct 2007)
+
+  08 Oct 2007; Michael Sterrett <mr_bones_@gentoo.org> +tint-0.03b.ebuild:
+  version bump
+
+  15 Aug 2006; Thomas Cort <tcort@gentoo.org> tint-0.03a.ebuild:
+  Stable on amd64 wrt Bug #143961
+
+  18 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> tint-0.03a.ebuild:
+  Add ~x86-fbsd keyword.
+
+  29 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> tint-0.03a.ebuild:
+  Fixed binaries being pre-stripped. Thanks to Tristan Heaven
+  <tristanheaven@gmail.com> for the patch. Closing bug #137726.
+
+  23 Dec 2005; Yuta SATOH <nigoro@gentoo.org> tint-0.03a.ebuild:
+  Stable on ppc64
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> tint-0.03a.ebuild:
+  Stable on ppc.
+
+  21 Dec 2004; Yuta SATOH <nigoro@gentoo.org> tint-0.03a.ebuild:
+  added ~ppc64
+
+  11 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org> tint-0.03a.ebuild:
+  Added ~amd64 KEYWORD and closing bug #69759.
+
+  18 Oct 2004; David Holm <dholm@gentoo.org> tint-0.03a.ebuild:
+  Added to ~ppc.
+
+*tint-0.03a (25 Sep 2004)
+
+  25 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/0.03a-warnings.patch, +tint-0.03a.ebuild:
+  initial commit - ebuild based on the one provided by LepeL via bug #65143
+

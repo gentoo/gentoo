@@ -1,0 +1,177 @@
+# ChangeLog for media-video/pitivi
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/pitivi/ChangeLog,v 1.40 2015/05/26 22:38:56 eva Exp $
+
+  26 May 2015; Gilles Dartiguelongue <eva@gentoo.org> pitivi-0.94.ebuild,
+  +files/pitivi-0.94-unittest.patch:
+  Add support for python3_3 as it works there, raise various dependencies
+  according to configure/check.py, fix unittests.
+
+  24 May 2015; Alexandre Rostovtsev <tetromino@gentoo.org> pitivi-0.94.ebuild:
+  Add pycanberra dep (bug #550294, thanks to Thomas Raschbacher).
+
+  11 Apr 2015; Pacho Ramos <pacho@gentoo.org> -pitivi-0.93.ebuild,
+  pitivi-0.94.ebuild:
+  python[sqlite] is needed, bug #545626 by Fpemud; drop old
+
+*pitivi-0.94 (03 Feb 2015)
+
+  03 Feb 2015; Pacho Ramos <pacho@gentoo.org> +pitivi-0.94.ebuild:
+  Version bump
+
+  02 Dec 2014; Pacho Ramos <pacho@gentoo.org>
+  -files/pitivi-0.13.5-work-with-old-good.patch, -pitivi-0.14.1.ebuild,
+  -pitivi-0.15.2.ebuild:
+  Drop old
+
+  06 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org> pitivi-0.93.ebuild:
+  Little ebuild fixes.
+
+*pitivi-0.93 (06 Apr 2014)
+
+  06 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org> pitivi-0.14.1.ebuild,
+  +pitivi-0.93.ebuild:
+  Version bump, bug #486980.
+
+  11 Mar 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #239126
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> pitivi-0.15.2.ebuild:
+  Fix wrong commit, bug 502160
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> pitivi-0.15.2.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*pitivi-0.15.2 (05 Feb 2013)
+
+  05 Feb 2013; Pacho Ramos <pacho@gentoo.org> +pitivi-0.15.2.ebuild:
+  Version bump
+
+  25 Oct 2012; Gilles Dartiguelongue <eva@gentoo.org> -pitivi-0.13.5.ebuild,
+  -pitivi-0.14.0.ebuild, pitivi-0.14.1.ebuild:
+  Pin gstreamer dependencies to slot 0.10. Replace py-compile hack by call to
+  python eclass. Drop old revisions.
+
+  25 Sep 2012; Nirbheek Chauhan <nirbheek@gentoo.org> metadata.xml:
+  Update metadata.xml; add myself to maintainer, add gnome team, remove hanno
+
+  05 Feb 2012; Mike Gilbert <floppym@gentoo.org> pitivi-0.13.5.ebuild,
+  pitivi-0.14.0.ebuild, pitivi-0.14.1.ebuild:
+  Inherit multilib.
+
+*pitivi-0.14.1 (24 Jul 2011)
+
+  24 Jul 2011; Gilles Dartiguelongue <eva@gentoo.org> +pitivi-0.14.1.ebuild:
+  Version bump.
+
+  10 Jun 2011; Nirbheek Chauhan <nirbheek@gentoo.org> pitivi-0.14.0.ebuild:
+  Fix bug 370677 by adding pyxdg dep, reorder deps with COMMON_DEPEND
+
+*pitivi-0.14.0 (06 Jun 2011)
+
+  06 Jun 2011; Nirbheek Chauhan <nirbheek@gentoo.org> +pitivi-0.14.0.ebuild:
+  Bump to 0.14.0, new feature: effects
+
+  03 Feb 2011; Gilles Dartiguelongue <eva@gentoo.org> -pitivi-0.11.3.ebuild,
+  -pitivi-0.13.1.ebuild, -pitivi-0.13.3.ebuild, pitivi-0.13.5.ebuild:
+  Enable support for multiple python slots installations. Use slot dependency
+  for pygtk. Clean up old revisions.
+
+*pitivi-0.13.5 (31 Jan 2011)
+
+  31 Jan 2011; Arun Raghavan <ford_prefect@gentoo.org> +pitivi-0.13.5.ebuild,
+  +files/pitivi-0.13.5-work-with-old-good.patch:
+  Bump to 0.13.5. Lots of enhancements and bug fixes.
+
+*pitivi-0.13.4 (20 Mar 2010)
+
+  20 Mar 2010; Nirbheek Chauhan <nirbheek@gentoo.org> +pitivi-0.13.4.ebuild:
+  Bump to 0.13.4, enable tests
+
+  04 Oct 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pitivi-0.11.3.ebuild, pitivi-0.13.1.ebuild, pitivi-0.13.3.ebuild:
+  net-zope/zopeinterface renamed to net-zope/zope-interface.
+
+*pitivi-0.13.3 (28 Sep 2009)
+
+  28 Sep 2009; Hanno Boeck <hanno@gentoo.org> +pitivi-0.13.3.ebuild:
+  Version bump, disabled tests as they require x11.
+
+  27 Jun 2009; Hanno Boeck <hanno@gentoo.org> pitivi-0.13.1.ebuild:
+  Add librsvg dependency, fix #275344.
+
+*pitivi-0.13.1 (31 May 2009)
+
+  31 May 2009; Gilles Dartiguelongue <eva@gentoo.org> +pitivi-0.13.1.ebuild:
+  Bump to 0.13.1.
+
+  03 May 2009; Gilles Dartiguelongue <eva@gentoo.org> -pitivi-0.10.3.ebuild,
+  -pitivi-0.11.1.ebuild, pitivi-0.11.3.ebuild:
+  Move to split python dependencies, raise some deps according to .spec and
+  clean up old revisions.
+
+  14 Apr 2009; Hanno Boeck <hanno@gentoo.org>
+  +files/pitivi-0.11.3-reserved-word.patch, pitivi-0.11.3.ebuild:
+  Fix for python 2.6.
+
+  14 Apr 2009; Hanno Boeck <hanno@gentoo.org>
+  +files/pitivi-0.11.3-reserved-word.patch, pitivi-0.11.3.ebuild:
+  Fix for python 2.6.
+
+  24 Mar 2009; Hanno Boeck <hanno@gentoo.org> pitivi-0.11.3.ebuild:
+  Add dep to dbus-pyhton, fixes #263587.
+
+  09 Feb 2009; Hanno Boeck <hanno@gentoo.org> pitivi-0.11.3.ebuild:
+  Re-add setuptools as dep (#258166).
+
+*pitivi-0.11.3 (14 Dec 2008)
+
+  14 Dec 2008; Gilles Dartiguelongue <eva@gentoo.org> pitivi-0.10.3.ebuild,
+  -pitivi-0.11.0.ebuild, +pitivi-0.11.3.ebuild:
+  Bump to 0.11.3
+
+  24 Feb 2008; Gilles Dartiguelongue <eva@gentoo.org> pitivi-0.11.1.ebuild:
+  fix python eclass use, bug #207667
+
+*pitivi-0.11.1 (01 Dec 2007)
+
+  01 Dec 2007; Hanno Boeck <hanno@gentoo.org> +pitivi-0.11.1.ebuild:
+  Version bump.
+
+*pitivi-0.11.0 (19 Oct 2007)
+
+  19 Oct 2007; Hanno Boeck <hanno@gentoo.org> +pitivi-0.11.0.ebuild:
+  Version bump.
+
+*pitivi-0.10.3 (10 Jun 2007)
+
+  10 Jun 2007; Hanno Boeck <hanno@gentoo.org> +pitivi-0.10.3.ebuild:
+  Version bump.
+
+  21 Apr 2007; Hanno Boeck <hanno@gentoo.org> pitivi-0.10.2.ebuild:
+  Fix addpredict usage.
+
+*pitivi-0.10.2 (02 Apr 2007)
+
+  02 Apr 2007; Hanno Boeck <hanno@gentoo.org> +pitivi-0.10.2.ebuild:
+  Version bump.
+
+  03 Feb 2007; Steve Dibb <beandog@gentoo.org> pitivi-0.10.0.ebuild:
+  Add ~amd64, bug 164789
+
+  19 Aug 2006; Hanno Boeck <hanno@gentoo.org> pitivi-0.10.1.ebuild:
+  Re-fix access violations.
+
+*pitivi-0.10.1 (08 Aug 2006)
+
+  08 Aug 2006; Hanno Boeck <hanno@gentoo.org> +pitivi-0.10.1.ebuild:
+  Version bump and some changes by Chris Mayo (bug #138938).
+
+  03 Jun 2006; Hanno Boeck <hanno@gentoo.org> pitivi-0.10.0.ebuild:
+  Fix access violations.
+
+*pitivi-0.10.0 (13 May 2006)
+
+  13 May 2006; Hanno Boeck <hanno@gentoo.org> +metadata.xml,
+  +pitivi-0.10.0.ebuild:
+  Initial commit.

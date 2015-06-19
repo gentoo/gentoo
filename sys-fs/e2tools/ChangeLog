@@ -1,0 +1,10 @@
+# ChangeLog for sys-fs/e2tools
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/e2tools/ChangeLog,v 1.1 2011/12/13 18:30:54 vapier Exp $
+
+*e2tools-0.0.16 (13 Dec 2011)
+
+  13 Dec 2011; Mike Frysinger <vapier@gentoo.org> +e2tools-0.0.16.ebuild,
+  +metadata.xml:
+  Initial ebuild by me.
+

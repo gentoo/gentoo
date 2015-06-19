@@ -1,0 +1,79 @@
+# ChangeLog for dev-lang/mlton
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/mlton/ChangeLog,v 1.17 2015/06/09 14:08:26 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  23 May 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/mlton-20100608-gmp-const.patch, -mlton-20100608.ebuild:
+  Remove old.
+
+*mlton-20130715 (15 Jan 2014)
+
+  15 Jan 2014; Mark Wright <gienah@gentoo.org>
+  +files/mlton-20070826-no-execmem.patch, +files/mlton-20130715-no-PIE.patch,
+  +files/mlton-20130715-split-make-for-pax-mark.patch, +mlton-20130715.ebuild:
+  Bump to mlton-20130715, fixes bug 480750. Thanks to David Brown, jer and Jason
+  Mours for testing and suggestions.
+
+  25 Apr 2013; Mark Wright <gienah@gentoo.org>
+  +files/mlton-20100608-gmp-const.patch, mlton-20100608.ebuild:
+  Fix Bug 452558 - dev-lang/mlton-20100608 fails to build, unknown type name
+  '__gmp_const'.  Fixed by upstream:
+  https://github.com/MLton/mlton/commit/a658a1f4a76a01f568116598800f49b80cf8ee1a
+
+  14 Dec 2012; Ulrich Müller <ulm@gentoo.org> mlton-20100608.ebuild:
+  Fix LICENSE, see files in doc/license directory, bug 444982.
+
+*mlton-20100608 (16 Oct 2012)
+
+  16 Oct 2012; Marijn Schouten <hkBst@gentoo.org>
+  -files/mlton-20040227-obsolete-flags.patch, -mlton-20070826-r1.ebuild,
+  +mlton-20100608.ebuild:
+  bump (fixes bug 378497)
+
+  11 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  mlton-20070826-r1.ebuild:
+  add QA_PRESTRIPPED for binary files. Bug #295110
+
+*mlton-20070826-r1 (10 Nov 2009)
+
+  10 Nov 2009; Heath Caldwell <hncaldwell@gentoo.org>
+  -mlton-20070826.ebuild, +mlton-20070826-r1.ebuild:
+  Make man pages install to proper location. Fixes bug #292616.
+
+  22 Mar 2009; Marijn Schouten <hkBst@gentoo.org> -mlton-20040227.ebuild:
+  rm old ebuild
+
+  23 Aug 2008; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Add GLEP 56 USE flag descriptions.
+
+  06 Aug 2008; Alexis Ballier <aballier@gentoo.org> mlton-20070826.ebuild:
+  Set VARTEXFONTS to prevent potential problems with latex font generation,
+  bug #223077
+
+  24 Apr 2008; Raúl Porcel <armin76@gentoo.org>
+  -files/digest-mlton-20070826:
+  Remove digests
+
+*mlton-20070826 (14 Apr 2008)
+
+  14 Apr 2008; Marijn Schouten <hkBst@gentoo.org> +mlton-20070826.ebuild:
+  bump, bug 110233
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mlton-20040227.ebuild:
+  virtual/glibc -> virtual/libc
+
+*mlton-20040227 (10 Jun 2004)
+
+  10 Jun 2004; Matthieu Sozeau <mattam@gentoo.org> metadata.xml,
+  mlton-20040227.ebuild, files/mlton-20040227-obsolete-flags.patch:
+  New ebuild for source version of mlton (requires mlton-bin to compile).

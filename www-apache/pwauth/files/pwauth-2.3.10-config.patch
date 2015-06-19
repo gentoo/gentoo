@@ -1,0 +1,38 @@
+--- config.h.orig	2013-01-01 19:33:54.053978814 +0400
++++ config.h	2013-01-01 19:35:09.764049695 +0400
+@@ -112,7 +112,7 @@
+ 
+ /* #define SHADOW_NONE		/**/
+ /* #define SHADOW_BSD		/* FreeBSD, NetBSD, OpenBSD, BSDI, OS X */
+-#define SHADOW_SUN		/* Linux, Solaris, IRIX */
++/* #define SHADOW_SUN		/* Linux, Solaris, IRIX */
+ /* #define SHADOW_JFH		/**/
+ /* #define SHADOW_MDW		/**/
+ /* #define SHADOW_AIX		/* AIX */
+@@ -245,7 +245,7 @@
+  * to change the uid list.
+  */
+ 
+-#define SERVER_UIDS 30		/* user "wwwrun" on the author's system */
++/* #define SERVER_UIDS 81		/* user "nobody" */
+ 
+ 
+ /* If MIN_UNIX_UID is defined to an integer, logins with uid numbers less than
+@@ -257,7 +257,7 @@
+  * given value will be accepted).
+  */
+ 
+-#define MIN_UNIX_UID 500	/**/
++/* #define MIN_UNIX_UID 500	/**/
+ 
+ 
+ /* If IGNORE_CASE is defined, the login given is checked in two different
+@@ -285,7 +285,7 @@
+  * SLEEP_LOCK.  SLEEP_TIME defaults to 2 seconds if not defined.
+  */
+ 
+-#define SLEEP_LOCK "/var/run/pwauth.lock"
++#define SLEEP_LOCK "/var/lock/pwauth.lock"
+ 
+ 
+ /* If ENV_METHOD is defined, pwauth expects mod_auth_external to be configured

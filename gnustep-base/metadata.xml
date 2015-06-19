@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The gnustep-base category contains GNUstep base packages.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie gnustep-base enthält die Basispakete der
+		GNUstep-Umgebung.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría gnustep-base contiene los paquetes base de GNUstep.
+	</longdescription>
+	<longdescription lang="ja">
+		gnustep-baseカテゴリーにはGNUstepのベース・パッケージが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De gnustep-base categorie bevat de basispakketten van GNUstep.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm gnustep-base chứa các ứng dụng GNUstep cơ bản.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria gnustep-base contiene i pacchetti base di GNUstep.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria gnustep-base contém os pacotes de base de GNUstep.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria gnustep-base zawiera podstawowe pakiety GNUstep.
+	</longdescription>
+</catmetadata>
+

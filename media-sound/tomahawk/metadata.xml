@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<maintainer>
+		<email>johu@gentoo.org</email>
+		<name>Johannes Huber</name>
+	</maintainer>
+	<use>
+		<flag name="hatchet">Enable support for the synchronisation through Hatchet</flag>
+		<flag name="telepathy">Enable support for the real-time communication framework telepathy</flag>
+	</use>
+</pkgmetadata>
+

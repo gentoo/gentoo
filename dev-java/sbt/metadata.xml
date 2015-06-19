@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+  <email>gienah@gentoo.org></email>
+</maintainer>
+<longdescription lang='en'>
+The interactive build tool.
+Use Scala to define your tasks. Then run them in parallel from the shell. 
+</longdescription>
+<use><flag name='binary'>Install from (Gentoo-compiled) binary instead of building from sources. Set this when you run out of memory during build.</flag></use>
+</pkgmetadata>

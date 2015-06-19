@@ -1,0 +1,24 @@
+diff -Nru squidGuard-1.4.orig/src/sgDiv.c.in squidGuard-1.4/src/sgDiv.c.in
+--- squidGuard-1.4.orig/src/sgDiv.c.in	2008-07-14 18:02:43.000000000 +0200
++++ squidGuard-1.4/src/sgDiv.c.in	2009-11-28 09:33:05.000000000 +0100
+@@ -745,7 +745,7 @@
+       p++;
+       break;
+     case 'u': /* Requested URL */
+-      strcat(buf, req->orig);
++      strncat(buf, req->orig, 2048);
+       p++;
+       break;
+     default:
+diff -Nru squidGuard-1.4.orig/src/sg.h.in squidGuard-1.4/src/sg.h.in
+--- squidGuard-1.4.orig/src/sg.h.in	2007-11-16 17:58:32.000000000 +0100
++++ squidGuard-1.4/src/sg.h.in	2009-11-28 09:33:37.000000000 +0100
+@@ -73,7 +73,7 @@
+ #define REQUEST_TYPE_REDIRECT   2
+ #define REQUEST_TYPE_PASS       3
+ 
+-#define MAX_BUF 4096
++#define MAX_BUF 12288
+ 
+ #define DEFAULT_LOGFILE "squidGuard.log"
+ #define WARNING_LOGFILE "squidGuard.log"

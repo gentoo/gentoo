@@ -1,0 +1,14 @@
+# ChangeLog for media-libs/libpqstego
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libpqstego/ChangeLog,v 1.2 2010/08/09 09:35:16 xarthisius Exp $
+
+  09 Aug 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  libpqstego-0.0.1.ebuild:
+  Renamed cblas to cblas-external wrt bug 330251.
+
+*libpqstego-0.0.1 (02 Mar 2010)
+
+  02 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +libpqstego-0.0.1.ebuild:
+  Initial commit wrt #253152 by Christian Kuka.
+

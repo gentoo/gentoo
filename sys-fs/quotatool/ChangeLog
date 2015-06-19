@@ -1,0 +1,73 @@
+# ChangeLog for sys-fs/quotatool
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/quotatool/ChangeLog,v 1.15 2014/02/15 02:32:06 radhermit Exp $
+
+*quotatool-1.6.2 (15 Feb 2014)
+
+  15 Feb 2014; Tim Harder <radhermit@gentoo.org> +quotatool-1.6.2.ebuild:
+  Version bump.
+
+*quotatool-1.6.1 (04 Feb 2014)
+
+  04 Feb 2014; Tim Harder <radhermit@gentoo.org> +quotatool-1.6.1.ebuild:
+  Version bump.
+
+*quotatool-1.6.0 (23 Jan 2014)
+
+  23 Jan 2014; Tim Harder <radhermit@gentoo.org> +quotatool-1.6.0.ebuild:
+  Version bump.
+
+*quotatool-1.5.0 (05 Sep 2013)
+
+  05 Sep 2013; Tim Harder <radhermit@gentoo.org> +quotatool-1.5.0.ebuild:
+  Version bump.
+
+*quotatool-1.4.13 (17 Jan 2013)
+
+  17 Jan 2013; Mike Frysinger <vapier@gentoo.org>
+  +files/quotatool-1.4.13-ldflags.patch, +quotatool-1.4.13.ebuild:
+  Version bump #452394 by Agostino Sarubbo.
+
+*quotatool-1.4.12 (23 Feb 2012)
+
+  23 Feb 2012; Tim Harder <radhermit@gentoo.org> +quotatool-1.4.12.ebuild:
+  Version bump.
+
+*quotatool-1.4.11 (13 Jan 2011)
+
+  13 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -quotatool-1.4.7.ebuild, -quotatool-1.4.8.ebuild, -quotatool-1.4.9.ebuild,
+  +quotatool-1.4.11.ebuild, +files/quotatool-1.4.11-ldflags.patch:
+  Version bump; remove obsolete non-stable versions; add patch to fix ldflags
+  handling (bug #335955); fix symlinked autotools.
+
+*quotatool-1.4.9 (04 Jun 2007)
+
+  04 Jun 2007; Robin H. Johnson <robbat2@gentoo.org>
+  +quotatool-1.4.9.ebuild:
+  Version bump per Meatoo, contains XFS fix.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*quotatool-1.4.8 (26 Jan 2006)
+
+  26 Jan 2006; Mike Frysinger <vapier@gentoo.org> +quotatool-1.4.8.ebuild:
+  Version bump #120349 by Daniel Webert.
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  quotatool-1.4.6.ebuild:
+  Stable on ppc.
+
+*quotatool-1.4.7 (17 Jul 2005)
+
+  17 Jul 2005; Mike Frysinger <vapier@gentoo.org> +quotatool-1.4.7.ebuild:
+  Version bump.
+
+  17 Oct 2004; David Holm <dholm@gentoo.org> quotatool-1.4.6.ebuild:
+  Added to ~ppc.
+
+*quotatool-1.4.6 (03 Oct 2004)
+
+  03 Oct 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Eloi Granado #33468.

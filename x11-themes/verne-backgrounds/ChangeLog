@@ -1,0 +1,14 @@
+# ChangeLog for x11-themes/verne-backgrounds
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/verne-backgrounds/ChangeLog,v 1.2 2013/02/07 23:09:33 ulm Exp $
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org>
+  verne-backgrounds-15.91.0.1.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+*verne-backgrounds-15.91.0.1 (13 Aug 2011)
+
+  13 Aug 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +verne-backgrounds-15.91.0.1.ebuild, +metadata.xml:
+  Initial import of Fedora 16 backgrounds.
+

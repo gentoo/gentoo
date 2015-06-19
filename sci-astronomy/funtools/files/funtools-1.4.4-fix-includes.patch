@@ -1,0 +1,602 @@
+Author: Ole Streicher <debian@liska.ath.cx>
+Description: The include files are going to be installed in 
+ /usr/include/funtools. So, they should refer to each other by using ""  
+ instead of <> which also searches in the current directory.
+--- a/filter/column.h
++++ b/filter/column.h
+@@ -12,14 +12,14 @@
+ #define	__column_h
+ 
+ #if HAVE_CONFIG_H
+-#include <conf.h>
++#include "conf.h"
+ #endif
+ 
+ #ifdef HAVE_STRING_H
+ #include <string.h>
+ #endif
+ 
+-#include <prsetup.h>
++#include "prsetup.h"
+ _PRbeg
+ 
+ void ColumnLoad _PRx((char *ibuf, int size, int n, int convert, void *obuf));
+--- a/filter/dl.h
++++ b/filter/dl.h
+@@ -2,14 +2,14 @@
+ #define	__dl_h
+ 
+ #if HAVE_CONFIG_H
+-#include <conf.h>
++#include "conf.h"
+ #endif
+ 
+ #ifdef HAVE_DLFCN_H
+ #include <dlfcn.h>
+ #endif
+ 
+-#include <prsetup.h>
++#include "prsetup.h"
+ 
+ _PRbeg
+ 
+--- a/filter/filter.h
++++ b/filter/filter.h
+@@ -12,7 +12,7 @@
+ #define	__filter_h
+ 
+ #if HAVE_CONFIG_H
+-#include <conf.h>
++#include "conf.h"
+ #endif
+ 
+ /* avoid use of system -- its not secure */
+@@ -34,28 +34,28 @@
+ #include <string.h>
+ #endif
+ #include <sys/types.h>
+-#include <prsetup.h>
+-#include <gio.h>
+-#include <file.h>
+-#include <find.h>
+-#include <macro.h>
+-#include <word.h>
+-#include <xalloc.h>
+-#include <strtod.h>
++#include "prsetup.h"
++#include "gio.h"
++#include "file.h"
++#include "find.h"
++#include "macro.h"
++#include "word.h"
++#include "xalloc.h"
++#include "strtod.h"
+ #define USE_XFILEIO 1
+-#include <fitsy.h>
++#include "fitsy.h"
+ #undef USE_XFILEIO
+-#include <idx.h>
+-#include <wcs.h>
+-#include <column.h>
+-#include <tl.h>
+-#include <dl.h>
+-#include <mkrtemp.h>
+-#include <zprocess.h>
+-#include <winprocess.h>
+-#include <parse.h>
++#include "idx.h"
++#include "wcs.h"
++#include "column.h"
++#include "tl.h"
++#include "dl.h"
++#include "mkrtemp.h"
++#include "zprocess.h"
++#include "winprocess.h"
++#include "parse.h"
+ #ifdef USE_LAUNCH
+-#include <xlaunch.h>
++#include "xlaunch.h"
+ #endif
+ 
+ #ifndef OBJPATH
+--- a/filter/idx.h
++++ b/filter/idx.h
+@@ -11,9 +11,9 @@
+ #define	__idx_h
+ 
+ #if HAVE_CONFIG_H
+-#include <conf.h>
++#include "conf.h"
+ #endif
+-#include <prsetup.h>
++#include "prsetup.h"
+ #include <stdio.h>
+ #include <ctype.h>
+ #ifdef HAVE_UNISTD_H
+@@ -22,10 +22,10 @@
+ #ifdef HAVE_STRING_H
+ #include <string.h>
+ #endif
+-#include <fitsy.h>
+-#include <gio.h>
+-#include <xalloc.h>
+-#include <strtod.h>
++#include "fitsy.h"
++#include "gio.h"
++#include "xalloc.h"
++#include "strtod.h"
+ 
+ /* binary search edge */
+ #define IDX_EDGE_LEFT  1
+--- a/filter/tl.h
++++ b/filter/tl.h
+@@ -11,7 +11,7 @@
+ #ifndef	__tl_h
+ #define	__tl_h
+ 
+-#include <prsetup.h>
++#include "prsetup.h"
+ 
+ _PRbeg
+ 
+--- a/fitsy/fitsy.h
++++ b/fitsy/fitsy.h
+@@ -5,13 +5,13 @@
+ #define FITSY_H
+ 
+ #if HAVE_CONFIG_H
+-#include <conf.h>
++#include "conf.h"
+ #endif
+ 
+ #if USE_XFILEIO
+-#include <xfileio.h>
++#include "xfileio.h"
+ #else
+-#include <xfile.h>
++#include "xfile.h"
+ #endif
+ 
+ #ifdef __STDC__
+@@ -30,7 +30,7 @@
+ 
+ #include <ctype.h>
+ 
+-#include <longlong.h>
++#include "longlong.h"
+ 
+ #ifndef NULL
+ #define NULL	0
+--- a/funtools.h
++++ b/funtools.h
+@@ -27,11 +27,11 @@
+ #define FUN_VERSION "1.4.4"
+ 
+ #ifndef FUNTOOLS_PRIVATE
+-#include <prsetup.h>
++#include "prsetup.h"
+ #define USE_XFILEIO 1
+-#include <fitsy.h>
++#include "fitsy.h"
+ #undef USE_XFILEIO
+-#include <wcs.h>
++#include "wcs.h"
+ typedef void *Fun;
+ #endif
+ 
+--- a/funtoolsP.h
++++ b/funtoolsP.h
+@@ -12,7 +12,7 @@
+ #define	__funtoolsP_h
+ 
+ #if HAVE_CONFIG_H
+-#include <conf.h>
++#include "conf.h"
+ #endif
+ 
+ #include <stdio.h>
+@@ -32,20 +32,20 @@
+ #include <getopt.h>
+ #endif
+ #include <sys/types.h>
+-#include <prsetup.h>
++#include "prsetup.h"
+ #define USE_XFILEIO 1
+-#include <fitsy.h>
++#include "fitsy.h"
+ #undef USE_XFILEIO
+-#include <wcs.h>
+-#include <filter.h>
+-#include <file.h>
+-#include <swap.h>
+-#include <word.h>
+-#include <parse.h>
+-#include <xalloc.h>
+-#include <mkrtemp.h>
+-#include <NaN.h>
+-#include <xlaunch.h>
++#include "wcs.h"
++#include "filter.h"
++#include "file.h"
++#include "swap.h"
++#include "word.h"
++#include "parse.h"
++#include "xalloc.h"
++#include "mkrtemp.h"
++#include "NaN.h"
++#include "xlaunch.h"
+ 
+ #ifndef MAXINT
+ #define MAXINT	2147483647
+@@ -338,6 +338,6 @@ int FunView _PRx((Fun fun, char *view, char *vmode, char *fname, int fmax));
+ 
+ _PRend
+ 
+-#include <funtools.h>
++#include "funtools.h"
+ 
+ #endif /* __funtoolsP.h */
+--- a/ofuntools.h
++++ b/ofuntools.h
+@@ -27,11 +27,11 @@
+ #define FUN_VERSION "1.4.4"
+ 
+ #ifndef FUNTOOLS_PRIVATE
+-#include <prsetup.h>
++#include "prsetup.h"
+ #define USE_XFILEIO 1
+-#include <fitsy.h>
++#include "fitsy.h"
+ #undef USE_XFILEIO
+-#include <wcs.h>
++#include "wcs.h"
+ typedef void *Fun;
+ #endif
+ 
+--- a/util/NaN.h.in
++++ b/util/NaN.h.in
+@@ -20,7 +20,7 @@
+ #ifndef	__nan_h
+ #define	__nan_h
+ 
+-#include <prsetup.h>
++#include "prsetup.h"
+ 
+ #define BIGENDIAN @BIGENDIAN@
+ 
+--- a/util/file.h
++++ b/util/file.h
+@@ -12,7 +12,7 @@
+ #define	__file_h
+ 
+ #if HAVE_CONFIG_H
+-#include <conf.h>
++#include "conf.h"
+ #endif
+ 
+ #include <stdio.h>
+@@ -28,9 +28,9 @@
+ #endif
+ #include <sys/types.h>
+ #include <sys/stat.h>
+-#include <prsetup.h>
+-#include <macro.h>
+-#include <xalloc.h>
++#include "prsetup.h"
++#include "macro.h"
++#include "xalloc.h"
+ 
+ _PRbeg
+ int FileExists _PRx((char *filename));
+--- a/util/find.h
++++ b/util/find.h
+@@ -12,7 +12,7 @@
+ #define	__find_h
+ 
+ #if HAVE_CONFIG_H
+-#include <conf.h>
++#include "conf.h"
+ #endif
+ 
+ #include <stdio.h>
+@@ -25,8 +25,8 @@
+ #endif
+ #include <sys/types.h>
+ #include <sys/stat.h>
+-#include <xalloc.h>
+-#include <prsetup.h>
++#include "xalloc.h"
++#include "prsetup.h"
+ 
+ _PRbeg
+ 
+--- a/util/gio.h
++++ b/util/gio.h
+@@ -11,10 +11,10 @@
+ #ifndef _gio_h
+ 
+ #if HAVE_CONFIG_H
+-#include <conf.h>
++#include "conf.h"
+ #endif
+ 
+-#include <xport.h>
++#include "xport.h"
+ 
+ #include <stdio.h>
+ #ifdef HAVE_STRING_H
+@@ -46,8 +46,8 @@
+ #include <sys/stat.h>
+ #include <sys/time.h>
+ 
+-#include <prsetup.h>
+-#include <xalloc.h>
++#include "prsetup.h"
++#include "xalloc.h"
+ 
+ /* use ftello/fseeko (assuming its available) if we are using 64-bit offsets */
+ #if _FILE_OFFSET_BITS == 64
+--- a/util/macro.h
++++ b/util/macro.h
+@@ -12,7 +12,7 @@
+ #define	__macro_h
+ 
+ #if HAVE_CONFIG_H
+-#include <conf.h>
++#include "conf.h"
+ #endif
+ 
+ #include <stdio.h>
+@@ -26,7 +26,7 @@
+ #ifdef HAVE_STDLIB_H
+ #include <stdlib.h>
+ #endif
+-#include <prsetup.h>
++#include "prsetup.h"
+ 
+ typedef char *(*MacroCall)(
+ #ifdef ANSI_FUNC
+--- a/util/mainlib.h
++++ b/util/mainlib.h
+@@ -12,7 +12,7 @@
+ #define	__mainlib_h
+ 
+ #if HAVE_CONFIG_H
+-#include <conf.h>
++#include "conf.h"
+ #endif
+ #ifdef HAVE_STRING_H
+ #include <string.h>
+@@ -29,11 +29,11 @@
+ #include <stdio.h>
+ #include <errno.h>
+ #include <sys/types.h>
+-#include <prsetup.h>
+-#include <xalloc.h>
+-#include <word.h>
+-#include <find.h>
+-#include <gio.h>
++#include "prsetup.h"
++#include "xalloc.h"
++#include "word.h"
++#include "find.h"
++#include "gio.h"
+ 
+ /* types of mainlibs we recognize */
+ #define MAINLIB_ERROR 0
+--- a/util/mkrtemp.h
++++ b/util/mkrtemp.h
+@@ -12,7 +12,7 @@
+ #define	__mkrtemp_h
+ 
+ #if HAVE_CONFIG_H
+-#include <conf.h>
++#include "conf.h"
+ #endif
+ 
+ #include <sys/types.h>
+@@ -31,9 +31,9 @@
+ #ifdef HAVE_STDLIB_H
+ #include <stdlib.h>
+ #endif
+-#include <prsetup.h>
+-#include <word.h>
+-#include <xalloc.h>
++#include "prsetup.h"
++#include "word.h"
++#include "xalloc.h"
+ 
+ #ifdef __APPLE__
+ #define lrand48  random
+--- a/util/parse.h
++++ b/util/parse.h
+@@ -12,7 +12,7 @@
+ #define	__parse_h
+ 
+ #if HAVE_CONFIG_H
+-#include <conf.h>
++#include "conf.h"
+ #endif
+ 
+ #include <stdio.h>
+@@ -33,12 +33,12 @@
+ #endif
+ #include <ctype.h>
+ 
+-#include <prsetup.h>
+-#include <strtod.h>
+-#include <xalloc.h>
+-#include <word.h>
+-#include <gio.h>
+-#include <longlong.h>
++#include "prsetup.h"
++#include "strtod.h"
++#include "xalloc.h"
++#include "word.h"
++#include "gio.h"
++#include "longlong.h"
+ 
+ #define PARSE_DEBUG 1
+ #if PARSE_DEBUG
+--- a/util/strtod.h
++++ b/util/strtod.h
+@@ -11,7 +11,7 @@
+ #ifndef	__strtod_h
+ #define	__strtod_h
+ 
+-#include <prsetup.h>
++#include "prsetup.h"
+ 
+ extern int SAOdtype;
+ 
+--- a/util/swap.h
++++ b/util/swap.h
+@@ -11,7 +11,7 @@
+ #ifndef	__swap_h
+ #define	__swap_h
+ 
+-#include <prsetup.h>
++#include "prsetup.h"
+ 
+ /* data types */
+ #define TY_CHAR		1
+--- a/util/tclmainlib.h
++++ b/util/tclmainlib.h
+@@ -1,4 +1,4 @@
+-#include <mainlib.h>
++#include "mainlib.h"
+ 
+ #if HAVE_TCL
+ 
+--- a/util/winprocess.h
++++ b/util/winprocess.h
+@@ -13,7 +13,7 @@
+ #define	__winprocess_h
+ 
+ #if HAVE_CONFIG_H
+-#include <conf.h>
++#include "conf.h"
+ #endif
+ #include <stdio.h>
+ #ifdef HAVE_UNISTD_H
+@@ -25,7 +25,7 @@
+ #ifdef HAVE_STDLIB_H
+ #include <stdlib.h>
+ #endif
+-#include <prsetup.h>
++#include "prsetup.h"
+ 
+ #if defined(HAVE_CYGWIN) || defined(WIN32)
+ 
+--- a/util/word.h
++++ b/util/word.h
+@@ -12,7 +12,7 @@
+ #define	__word_h
+ 
+ #if HAVE_CONFIG_H
+-#include <conf.h>
++#include "conf.h"
+ #endif
+ #ifdef HAVE_STRING_H
+ #include <string.h>
+@@ -23,8 +23,8 @@
+ #if HAVE_STDLIB_H
+ #include <stdlib.h>
+ #endif
+-#include <prsetup.h>
+-#include <xalloc.h>
++#include "prsetup.h"
++#include "xalloc.h"
+ 
+ /* defines the types of callback procedure we use */
+ typedef char *(*MacroCB)(
+--- a/util/xalloc.h
++++ b/util/xalloc.h
+@@ -12,7 +12,7 @@
+ #define	__xalloc_h
+ 
+ #if HAVE_CONFIG_H
+-#include <conf.h>
++#include "conf.h"
+ #endif
+ 
+ #include <sys/types.h>
+@@ -33,7 +33,7 @@
+ #include <setjmp.h>
+ #endif
+ 
+-#include <prsetup.h>
++#include "prsetup.h"
+ 
+ _PRbeg
+ 
+--- a/util/xfileio.h
++++ b/util/xfileio.h
+@@ -7,7 +7,7 @@
+ #ifndef XFILEIO_H
+ #define XFILEIO_H
+ 
+-#include <gio.h>
++#include "gio.h"
+ 
+ /* define the basic IO routines */
+ typedef GIO File;
+--- a/util/xlaunch.h
++++ b/util/xlaunch.h
+@@ -12,7 +12,7 @@
+ #define	__xlaunch_h
+ 
+ #if HAVE_CONFIG_H
+-#include <conf.h>
++#include "conf.h"
+ #endif
+ 
+ #include <stdio.h>
+@@ -33,10 +33,10 @@
+ #if HAVE_POSIX_SPAWN
+ #include <spawn.h>
+ #endif
+-#include <xport.h>
+-#include <word.h>
+-#include <xalloc.h>
+-#include <prsetup.h>
++#include "xport.h"
++#include "word.h"
++#include "xalloc.h"
++#include "prsetup.h"
+ 
+ #define LAUNCH_ARGS 1024
+ 
+--- a/util/xport.h
++++ b/util/xport.h
+@@ -11,7 +11,7 @@
+ #define	__xport_h
+ 
+ #if HAVE_CONFIG_H
+-#include <conf.h>
++#include "conf.h"
+ #endif
+ 
+ #if HAVE_MINGW32
+--- a/util/zprocess.h
++++ b/util/zprocess.h
+@@ -14,7 +14,7 @@
+ #define	__zprocess_h
+ 
+ #if HAVE_CONFIG_H
+-#include <conf.h>
++#include "conf.h"
+ #endif
+ #include <stdio.h>
+ #ifdef HAVE_UNISTD_H
+@@ -28,8 +28,8 @@
+ #endif
+ #include <sys/time.h>
+ #include <signal.h>
+-#include <xlaunch.h>
+-#include <find.h>
++#include "xlaunch.h"
++#include "find.h"
+ 
+ _PRbeg
+ 

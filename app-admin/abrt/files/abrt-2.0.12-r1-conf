@@ -1,0 +1,27 @@
+# abrtd command-line options
+# Default: ""
+ABRTD_OPTS=""
+
+# Run abrt-harvest-vmcore to make new kdump dumps available for abrtd
+START_VMCORE="yes"
+
+# Install abrt-ccpp hook to watch for segfaults
+START_CCPP="yes"
+
+# Call abrt-dump-oops to log kernel oops
+START_OOPS="yes"
+# log file to watch for kernel oops
+# Default: "/var/log/messages"
+OOPS_WATCH_LOG="/var/log/messages"
+# abrt-dump-oops command-line options
+# Default: "-xD"
+OOPS_DUMP_OPTS="-xD"
+
+# Call abrt-dump-xorg to log X crashes
+START_XORG="yes"
+# log file to watch for X crashes
+# Default: "/var/log/Xorg.0.log"
+XORG_WATCH_LOG="/var/log/Xorg.0.log"
+# abrt-dump-xorg command-line options
+# Default: "-xD"
+XORG_DUMP_OPTS="-xD"

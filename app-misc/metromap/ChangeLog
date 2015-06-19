@@ -1,0 +1,37 @@
+# ChangeLog for app-misc/metromap
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/metromap/ChangeLog,v 1.9 2015/04/08 07:30:32 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> metromap-0.1.4-r1.ebuild:
+  Remove old Python implementations
+
+  08 Nov 2014; Maxim Koltsov <maksbotan@gentoo.org> metromap-0.1.4-r1.ebuild:
+  Add missing sys-devel/gettext DEPEND, thanks to Nikoli.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> metromap-0.1.4-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  08 Apr 2014; Maxim Koltsov <maksbotan@gentoo.org> -metromap-0.1.4.ebuild,
+  metromap-0.1.4-r1.ebuild:
+  Clean old, add missing gnome2-utils inherit
+
+  08 Apr 2014; Maxim Koltsov <maksbotan@gentoo.org> metromap-0.1.4-r1.ebuild:
+  Depend on pygobject, update icon cache, bugs #507060 and #507064. Thanks to
+  Nikoli.
+
+  13 Oct 2013; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Updated Nikoli's e-mail address for easier automatic assignment.
+
+  31 May 2013; Maxim Koltsov <maksbotan@gentoo.org> metromap-0.1.4-r1.ebuild:
+  Fix python depends in 0.1.4-r1. Thanks to Nikoli.
+
+*metromap-0.1.4-r1 (16 Apr 2013)
+
+  16 Apr 2013; Maxim Koltsov <maksbotan@gentoo.org> +metromap-0.1.4-r1.ebuild:
+  Port to python-single-r1 eclass, thanks to Nikoli.
+
+*metromap-0.1.4 (21 May 2012)
+
+  21 May 2012; Maxim Koltsov <maksbotan@gentoo.org> +metadata.xml,
+  +metromap-0.1.4.ebuild:
+  Add app-misc/metromap, bug #260757. Thanks to Nikoli

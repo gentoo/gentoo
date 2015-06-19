@@ -1,0 +1,72 @@
+# ChangeLog for app-misc/lxsplit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/lxsplit/ChangeLog,v 1.22 2015/06/09 11:47:45 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  12 Jan 2011; Justin Lecher <jlec@gentoo.org> -lxsplit-0.2.3.ebuild:
+  Removed old
+
+  11 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> lxsplit-0.2.4.ebuild:
+  x86 stable wrt bug #350689
+
+  07 Jan 2011; Brent Baude <ranger@gentoo.org> lxsplit-0.2.4.ebuild:
+  Marking lxsplit-0.2.4 ppc for bug 350689
+
+  05 Jan 2011; Markos Chandras <hwoarang@gentoo.org> lxsplit-0.2.4.ebuild:
+  Stable on amd64 wrt bug #350689
+
+  05 Jan 2011; Justin Lecher <jlec@gentoo.org> lxsplit-0.2.3.ebuild,
+  lxsplit-0.2.4.ebuild:
+  Some Clean up
+
+*lxsplit-0.2.4 (06 Sep 2009)
+
+  06 Sep 2009; Jeremy Olexa <darkside@gentoo.org> +lxsplit-0.2.4.ebuild:
+  Version bump, Maintainance release. bug 277306
+
+  01 Aug 2009; Jeremy Olexa <darkside@gentoo.org> -lxsplit-0.1.1.ebuild:
+  remove old
+
+  26 Oct 2008; Markus Meier <maekke@gentoo.org> lxsplit-0.2.3.ebuild:
+  amd64/x86 stable, bug #244252
+
+  25 Oct 2008; nixnut <nixnut@gentoo.org> lxsplit-0.2.3.ebuild:
+  Stable on ppc wrt bug 244252
+
+*lxsplit-0.2.3 (17 Sep 2008)
+
+  17 Sep 2008; Peter Volkov <pva@gentoo.org> lxsplit-0.1.1.ebuild,
+  +lxsplit-0.2.3.ebuild:
+  Version bump, bug #236026, thank Martin Krohn for report. Should fix
+  inability to handle >4Gb files, bug #222117, thank J.Taimr for report.
+
+  01 Jun 2007; Christian Faulhammer <opfer@gentoo.org> ChangeLog:
+  modified ChangeLog to meet common format
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> lxsplit-0.1.1.ebuild:
+  stable on amd64
+
+  21 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml:
+  Add metadata (shell-tools)
+
+  10 Jul 2004; Tom Martin <slarti@gentoo.org> lxsplit-0.1.1.ebuild:
+  Marked ~amd64.
+
+  14 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> lxsplit-0.1.1.ebuild:
+  Don't assign default to S; header fix
+
+*lxsplit-0.1.1 (21 Aug 2002)
+
+  21 Aug 2002; Sascha Schwabbauer <cybersystem@gentoo.org> ChangeLog, lxsplit-0.1.1.ebuild :
+  Added ppc to keywords..
+
+*lxsplit-0.1.1 (21 Aug 2002)
+
+  21 Aug 2002; Sascha Schwabbauer <cybersystem@gentoo.org> ChangeLog, lxsplit-0.1.1.ebuild, files/digest-lxsplit-0.1.1 :
+  Initial version in Portage now..
+  Initial Ebuild by Maurizio Disimino <kevin@aptbasilicata.it>

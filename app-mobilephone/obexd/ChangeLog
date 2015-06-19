@@ -1,0 +1,294 @@
+# ChangeLog for app-mobilephone/obexd
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/obexd/ChangeLog,v 1.69 2012/12/13 19:07:26 pacho Exp $
+
+*obexd-0.48 (13 Dec 2012)
+
+  13 Dec 2012; Pacho Ramos <pacho@gentoo.org> +obexd-0.48.ebuild,
+  -obexd-0.44.ebuild, -obexd-0.47.ebuild:
+  Version bump, drop old
+
+  07 Dec 2012; Agostino Sarubbo <ago@gentoo.org> obexd-0.46.ebuild:
+  Stable for ppc64, wrt bug #411015
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> obexd-0.46.ebuild:
+  0.46 version is the right version to keyword, 0.47 is hardmasked and doesn't
+  work with gnome-bluetooth (the one that caused this keywording).
+
+  23 Sep 2012; Anthony G. Basile <blueness@gentoo.org> obexd-0.47.ebuild:
+  keyword ~ppc64, bug #379651
+
+  22 Aug 2012; Michael Weber <xmw@gentoo.org> obexd-0.46.ebuild:
+  ppc stable (bug 411015).
+
+*obexd-0.47 (21 Aug 2012)
+
+  21 Aug 2012; Pacho Ramos <pacho@gentoo.org> +obexd-0.47.ebuild,
+  -obexd-0.45.ebuild:
+  Version bump, drop old.
+
+  12 Aug 2012; Markus Meier <maekke@gentoo.org> obexd-0.46.ebuild:
+  x86 stable, bug #421995
+
+  25 Jun 2012; Markus Meier <maekke@gentoo.org> obexd-0.46.ebuild:
+  arm stable, bug #421995
+
+  20 Jun 2012; Agostino Sarubbo <ago@gentoo.org> obexd-0.46.ebuild:
+  Stable for amd64, wrt bug #421995
+
+*obexd-0.46 (20 May 2012)
+
+  20 May 2012; Pacho Ramos <pacho@gentoo.org> +obexd-0.46.ebuild:
+  Version bump.
+
+  02 May 2012; Jeff Horelick <jdhore@gentoo.org> obexd-0.44.ebuild,
+  obexd-0.45.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  15 Apr 2012; Markus Meier <maekke@gentoo.org> obexd-0.45.ebuild:
+  arm stable, bug #411015
+
+  11 Apr 2012; Jeff Horelick <jdhore@gentoo.org> obexd-0.45.ebuild:
+  marked x86 per bug 411015
+
+  10 Apr 2012; Agostino Sarubbo <ago@gentoo.org> obexd-0.45.ebuild:
+  Stable for amd64, wrt bug #411015
+
+  10 Mar 2012; Pacho Ramos <pacho@gentoo.org> obexd-0.45.ebuild:
+  >=net-wireless/bluez-4.99 is needed as reported by Priit Laes in bug #407641.
+
+*obexd-0.45 (08 Mar 2012)
+
+  08 Mar 2012; Pacho Ramos <pacho@gentoo.org> +obexd-0.45.ebuild,
+  -obexd-0.42.ebuild:
+  Version bump, remove old.
+
+  25 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> obexd-0.44.ebuild:
+  ppc stable wrt #399745
+
+  12 Feb 2012; Jeff Horelick <jdhore@gentoo.org> obexd-0.44.ebuild:
+  x86 stable per bug 399745
+
+  23 Jan 2012; Agostino Sarubbo <ago@gentoo.org> obexd-0.44.ebuild:
+  Stable for amd64, wrt bug #399745
+
+*obexd-0.44 (13 Jan 2012)
+
+  13 Jan 2012; Pacho Ramos <pacho@gentoo.org> +obexd-0.44.ebuild,
+  -obexd-0.43-r1.ebuild:
+  Version bump, remove old.
+
+*obexd-0.43-r1 (01 Jan 2012)
+
+  01 Jan 2012; Justin Lecher <jlec@gentoo.org> -obexd-0.43.ebuild,
+  +obexd-0.43-r1.ebuild:
+  Revbump in order to force people which used the broken ebuild to rebuild
+
+  01 Jan 2012; Justin Lecher <jlec@gentoo.org> obexd-0.43.ebuild:
+  Add missing \
+
+*obexd-0.43 (31 Dec 2011)
+
+  31 Dec 2011; Pacho Ramos <pacho@gentoo.org> +obexd-0.43.ebuild:
+  Version bump, disable debug as it simply appends -g to CFLAGS (bug #381323 by
+  Agostino Sarubbo).
+
+  25 Oct 2011; Pacho Ramos <pacho@gentoo.org> -obexd-0.23.ebuild,
+  -obexd-0.40.ebuild, -obexd-0.41.ebuild:
+  Drop old.
+
+  25 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org> obexd-0.42.ebuild:
+  ppc stable wrt #381271
+
+  04 Sep 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> obexd-0.42.ebuild:
+  x86 stable wrt bug #381271
+
+  31 Aug 2011; Tony Vroon <chainsaw@gentoo.org> obexd-0.42.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo in bug
+  #381271 filed by Pacho Ramos.
+
+  14 Aug 2011; Markus Meier <maekke@gentoo.org> obexd-0.42.ebuild:
+  add ~arm, bug #376613
+
+*obexd-0.42 (19 Jul 2011)
+
+  19 Jul 2011; Pacho Ramos <pacho@gentoo.org> +obexd-0.42.ebuild:
+  Version bump with some fixes for phonebook stuff.
+
+*obexd-0.41 (24 Jun 2011)
+
+  24 Jun 2011; Pacho Ramos <pacho@gentoo.org> -obexd-0.37.ebuild,
+  +obexd-0.41.ebuild:
+  Version bump, remove old.
+
+  29 May 2011; Markos Chandras <hwoarang@gentoo.org> obexd-0.40.ebuild:
+  Stable on amd64 wrt bug #366969
+
+  28 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> obexd-0.40.ebuild:
+  x86 stable wrt bug #366969
+
+*obexd-0.40 (28 Jan 2011)
+
+  28 Jan 2011; Pacho Ramos <pacho@gentoo.org> -obexd-0.34.ebuild,
+  -obexd-0.35.ebuild, +obexd-0.40.ebuild:
+  Version bump, remove old.
+
+  04 Jan 2011; Markos Chandras <hwoarang@gentoo.org> obexd-0.37.ebuild:
+  Stable on amd64 wrt bug #349474
+
+  01 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> obexd-0.37.ebuild:
+  x86 stable wrt bug #349474
+
+*obexd-0.37 (25 Nov 2010)
+
+  25 Nov 2010; Pacho Ramos <pacho@gentoo.org> -obexd-0.29.ebuild,
+  +obexd-0.37.ebuild:
+  Version bump and remove old.
+
+  04 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> obexd-0.34.ebuild:
+  x86 stable wrt bug #343489
+
+  31 Oct 2010; Markos Chandras <hwoarang@gentoo.org> obexd-0.34.ebuild:
+  Stable on amd64 wrt bug #343489
+
+*obexd-0.35 (31 Oct 2010)
+
+  31 Oct 2010; Pacho Ramos <pacho@gentoo.org>
+  -files/obexd-0.21-fix_configure.patch, -obexd-0.28.ebuild,
+  -obexd-0.32.ebuild, -obexd-0.33.ebuild, +obexd-0.35.ebuild:
+  Drop old and version bump:
+	Fix regression on suspend on opening.
+	Fix suspend stream on opening if no data.
+	Fix memory leaks in phonebook-tracker module.
+	Fix not responding Not Found for filtered vcard-listing.
+	Fix not responding Not Found when no entry is found.
+	Fix issue with X-IRMC-CALL-DATETIME format.
+
+*obexd-0.34 (07 Oct 2010)
+
+  07 Oct 2010; Pacho Ramos <pacho@gentoo.org> +obexd-0.34.ebuild:
+  Version bump with upstream bugfixes.
+
+  14 Sep 2010; Markos Chandras <hwoarang@gentoo.org> obexd-0.29.ebuild:
+  Stable on amd64 wrt bug #335319
+
+*obexd-0.33 (10 Sep 2010)
+
+  10 Sep 2010; Pacho Ramos <pacho@gentoo.org> +obexd-0.33.ebuild:
+  Version bump
+
+*obexd-0.32 (08 Sep 2010)
+
+  08 Sep 2010; Pacho Ramos <pacho@gentoo.org> +obexd-0.32.ebuild:
+  Version bump with multiple upstream bugfixes.
+
+  05 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> obexd-0.29.ebuild:
+  x86 stable wrt bug #335319
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org> obexd-0.23.ebuild,
+  obexd-0.28.ebuild, obexd-0.29.ebuild:
+  Drop HPPA keywording (bug #324511).
+
+  18 Jul 2010; Markos Chandras <hwoarang@gentoo.org> obexd-0.28.ebuild:
+  Stable on amd64 wrt bug #328579
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org> obexd-0.28.ebuild:
+  stable x86, bug 328579
+
+*obexd-0.29 (16 Jul 2010)
+
+  16 Jul 2010; Pacho Ramos <pacho@gentoo.org> -obexd-0.21-r2.ebuild,
+  -obexd-0.27.ebuild, +obexd-0.29.ebuild:
+  Version bump with bugfixes. Remove old.
+
+  14 Jul 2010; Christian Faulhammer <fauli@gentoo.org> obexd-0.23.ebuild:
+  stable x86, bug 323459
+
+  26 Jun 2010; <nixnut@gentoo.org> obexd-0.23.ebuild:
+  ppc stable #323459
+
+  24 Jun 2010; Pacho Ramos <pacho@gentoo.org> obexd-0.23.ebuild:
+  stable amd64, bug 323459
+
+*obexd-0.28 (18 Jun 2010)
+
+  18 Jun 2010; Pacho Ramos <pacho@gentoo.org> +obexd-0.28.ebuild,
+  metadata.xml:
+  Version bump, also allow people to enable/disable usb and nokia-backup
+  plugins.
+
+  12 Jun 2010; Pacho Ramos <pacho@gentoo.org> obexd-0.27.ebuild:
+  Add dependency on dev-libs/libical with USE='-eds'; thanks to gionnico for
+  reporting bug 323615
+
+*obexd-0.27 (11 Jun 2010)
+
+  11 Jun 2010; Pacho Ramos <pacho@gentoo.org> +obexd-0.27.ebuild:
+  Version bump with lots of bugfixes over 0.23.
+
+  14 May 2010; Joseph Jezak <josejx@gentoo.org> obexd-0.21-r2.ebuild,
+  obexd-0.23.ebuild:
+  Marked ~ppc for bug #298502.
+
+*obexd-0.23 (08 May 2010)
+
+  08 May 2010; Pacho Ramos <pacho@gentoo.org> -obexd-0.18-r1.ebuild,
+  -obexd-0.22.ebuild, +obexd-0.23.ebuild:
+  Remove old. Version bump with the following changes:
+  * Fix unneeded reset of session after a CONNECT.
+  * Fix folder and object names with enabled auto accept.
+  * Fix agent not being released after transfers complete.
+  * Fix sending full packets to achieve higher throughput.
+  * Add support for mimetype driver to phonebook access.
+  * Add support for mimetype driver to SyncEvolution.
+
+  26 Apr 2010; Christian Faulhammer <fauli@gentoo.org> obexd-0.21-r2.ebuild:
+  stable x86, bug 314521
+
+  13 Apr 2010; Markos Chandras <hwoarang@gentoo.org> obexd-0.21-r2.ebuild:
+  Stable on amd64 wrt bug #314521
+
+  10 Apr 2010; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Taking care of this with Tiziano.
+
+*obexd-0.22 (15 Mar 2010)
+
+  15 Mar 2010; Pacho Ramos <pacho@gentoo.org> +obexd-0.22.ebuild:
+  Version bump with bugfixes
+
+  20 Feb 2010; Hans de Graaff <graaff@gentoo.org> obexd-0.18-r1.ebuild:
+  Fix typo.
+
+*obexd-0.21-r2 (19 Feb 2010)
+
+  19 Feb 2010; Pacho Ramos <pacho@gentoo.org> -obexd-0.21-r1.ebuild,
+  +obexd-0.21-r2.ebuild, +files/obexd-0.21-fix_configure.patch:
+  Fixing bug 305063 properly, thanks to Vinicius Costa Gomes for the patch
+  and help. Removing old and buggy version
+
+*obexd-0.21-r1 (19 Feb 2010)
+*obexd-0.18-r1 (19 Feb 2010)
+
+  19 Feb 2010; Pacho Ramos <pacho@gentoo.org> -obexd-0.18.ebuild,
+  +obexd-0.18-r1.ebuild, -obexd-0.21.ebuild, +obexd-0.21-r1.ebuild,
+  metadata.xml:
+  Revision bump to allow parallel installation with
+  app-mobilephone/obex-data-server when possible, being able to disable
+  server installation. Removing old. Revision bump for 0.21 disabling 'eds'
+  until upstream bug 305063 is fixed.
+
+*obexd-0.21 (13 Feb 2010)
+
+  13 Feb 2010; Pacho Ramos <pacho@gentoo.org> +obexd-0.21.ebuild:
+  Version bump, bug 297930
+
+  04 Feb 2010; Jeroen Roovers <jer@gentoo.org> obexd-0.18.ebuild:
+  Marked ~hppa (bug #298502).
+
+  16 Nov 2009; Nirbheek Chauhan <nirbheek@gentoo.org> obexd-0.18.ebuild:
+  Add ~x86 keyword (compile-tested)
+
+*obexd-0.18 (15 Nov 2009)
+
+  15 Nov 2009; Tiziano Müller <dev-zero@gentoo.org> +obexd-0.18.ebuild:
+  Moved over from my overlay (for bug #285043).

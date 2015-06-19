@@ -1,0 +1,30 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/net-dns/dnsmasq/files/dnsmasq-init-dhcp-r1,v 1.1 2014/10/07 01:01:47 chutzpah Exp $
+
+extra_started_commands="reload"
+
+pidfile="/var/run/dnsmasq.pid"
+command="/usr/sbin/dnsmasq"
+command_args="-x ${pidfile} ${DNSMASQ_OPTS}"
+start_stop_daemon_args="--retry TERM/3/TERM/5"
+
+depend() {
+	provide dns
+	need localmount net
+	after bootmisc
+	use logger
+}
+
+start_pre() {
+	checkpath --owner dnsmasq:dnsmasq \
+		--mode 0644 \
+		--file /var/lib/misc/dnsmasq.leases
+}
+
+reload() {
+	ebegin "Reloading ${RC_SVCNAME}"
+	kill -HUP $(cat "${pidfile}")
+	eend $?
+}

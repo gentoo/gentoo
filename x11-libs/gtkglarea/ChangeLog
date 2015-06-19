@@ -1,0 +1,234 @@
+# ChangeLog for x11-libs/gtkglarea
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkglarea/ChangeLog,v 1.68 2014/06/20 14:45:32 ago Exp $
+
+  20 Jun 2014; Agostino Sarubbo <ago@gentoo.org> gtkglarea-2.1.0.ebuild:
+  Stable for arm, wrt bug #508862
+
+  17 May 2014; Agostino Sarubbo <ago@gentoo.org> gtkglarea-2.1.0.ebuild:
+  Stable for alpha, wrt bug #508862
+
+  14 May 2014; Agostino Sarubbo <ago@gentoo.org> gtkglarea-2.1.0.ebuild:
+  Stable for sparc, wrt bug #508862
+
+  13 May 2014; Agostino Sarubbo <ago@gentoo.org> gtkglarea-2.1.0.ebuild:
+  Stable for ia64, wrt bug #508862
+
+  11 May 2014; Agostino Sarubbo <ago@gentoo.org> gtkglarea-2.1.0.ebuild:
+  Stable for ppc64, wrt bug #508862
+
+  10 May 2014; Agostino Sarubbo <ago@gentoo.org> gtkglarea-2.1.0.ebuild:
+  Stable for ppc, wrt bug #508862
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org> gtkglarea-2.1.0.ebuild:
+  x86 stable, bug 508862
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org> gtkglarea-2.1.0.ebuild:
+  amd64 stable, bug 508862
+
+  02 May 2014; Jeroen Roovers <jer@gentoo.org> gtkglarea-2.1.0.ebuild:
+  Stable for HPPA (bug #508862).
+
+*gtkglarea-2.1.0 (25 Apr 2014)
+
+  25 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org> -gtkglarea-2.0.1.ebuild,
+  +gtkglarea-2.1.0.ebuild:
+  Version bump. Clean up old revision.
+
+  10 Apr 2013; Agostino Sarubbo <ago@gentoo.org> gtkglarea-2.0.1-r1.ebuild:
+  Stable for hppa, wrt bug #458984
+
+  09 Apr 2013; Agostino Sarubbo <ago@gentoo.org> gtkglarea-2.0.1-r1.ebuild:
+  Stable for sh, wrt bug #458984
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> gtkglarea-2.0.1-r1.ebuild:
+  Stable for sparc, wrt bug #458984
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> gtkglarea-2.0.1-r1.ebuild:
+  Stable for alpha, wrt bug #458984
+
+  29 Mar 2013; Agostino Sarubbo <ago@gentoo.org> gtkglarea-2.0.1-r1.ebuild:
+  Stable for ia64, wrt bug #458984
+
+  28 Mar 2013; Agostino Sarubbo <ago@gentoo.org> gtkglarea-2.0.1-r1.ebuild:
+  Stable for arm, wrt bug #458984
+
+  27 Mar 2013; Agostino Sarubbo <ago@gentoo.org> gtkglarea-2.0.1-r1.ebuild:
+  Stable for ppc64, wrt bug #458984
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> gtkglarea-2.0.1-r1.ebuild:
+  Stable for ppc, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> gtkglarea-2.0.1-r1.ebuild:
+  Stable for x86, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> gtkglarea-2.0.1-r1.ebuild:
+  Stable for amd64, wrt bug #458984
+
+*gtkglarea-2.0.1-r1 (21 Jan 2013)
+
+  21 Jan 2013; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gtkglarea-1.2.3-r1.ebuild, gtkglarea-2.0.1.ebuild,
+  +gtkglarea-2.0.1-r1.ebuild:
+  Modernize ebuild. Add a dependency on glu to stable revisions, and avoid
+  linking to libGLU in testing (bug #452976, thanks to Diego Elio Pettenò).
+  Update license and homepage.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> gtkglarea-2.0.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  gtkglarea-2.0.1.ebuild:
+  Fix slot-dep on gtk+
+
+  23 Mar 2011; Gilles Dartiguelongue <eva@gentoo.org> -gtkglarea-1.99.0.ebuild,
+  -gtkglarea-2.0.0.ebuild:
+  Clean up old revisions.
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org> gtkglarea-2.0.1.ebuild:
+  Marking gtkglarea-2.0.1 ppc stable for bug 353436
+
+  21 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> gtkglarea-2.0.1.ebuild:
+  ppc64 stable wrt #353436
+
+  30 Jan 2011; Raúl Porcel <armin76@gentoo.org> gtkglarea-2.0.1.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #348987
+
+  25 Jan 2011; Jeroen Roovers <jer@gentoo.org> gtkglarea-2.0.1.ebuild:
+  Stable for HPPA (bug #348987).
+
+  19 Jan 2011; Markos Chandras <hwoarang@gentoo.org> gtkglarea-2.0.1.ebuild:
+  Stable on amd64 wrt bug #348987
+
+  18 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  gtkglarea-2.0.1.ebuild:
+  x86 stable, bug 348987
+
+  24 Sep 2010; Justin Lecher <jlec@gentoo.org> gtkglarea-2.0.1.ebuild:
+  Keyworded for ~-linux
+
+  17 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  gtkglarea-1.2.3-r1.ebuild, gtkglarea-1.99.0.ebuild,
+  gtkglarea-2.0.0.ebuild, gtkglarea-2.0.1.ebuild:
+  Remove virtual/glu where already virtual/opengl is stated.
+
+*gtkglarea-2.0.1 (02 Aug 2009)
+
+  02 Aug 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +gtkglarea-2.0.1.ebuild:
+  Version bump. Code cleanup and build fixes. New examples.
+
+  25 Aug 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  gtkglarea-1.2.3-r1.ebuild, gtkglarea-1.99.0.ebuild:
+  clean up repoman warnings
+
+*gtkglarea-2.0.0 (25 Aug 2008)
+
+  25 Aug 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +gtkglarea-2.0.0.ebuild:
+  bump to 2.0.0, mostly win32 enhancements.
+
+  15 Jan 2007; Daniel Gryniewicz <dang@gentoo.org>
+  gtkglarea-1.2.3-r1.ebuild:
+  Move to use autotools.eclass.  Bug #160055
+
+  04 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  gtkglarea-1.99.0.ebuild:
+  Fix broken autotools handling.
+
+  30 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> gtkglarea-1.99.0.ebuild:
+  Add correct automake dep; bug #148297
+
+  06 Sep 2006; Javier Villavicencio <the_paya@gentoo.org>
+  gtkglarea-1.99.0.ebuild:
+  Add ~x86-fbsd keyword.
+
+  04 Mar 2006; Luis Medinas <metalgod@gentoo.org> gtkglarea-1.99.0.ebuild:
+  Remove libdir trick because it's not needed and it caused problems.
+
+  19 Aug 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/gtkglarea-1.2.3-m4.patch, gtkglarea-1.2.3-r1.ebuild:
+  Fix aclocal underquoted warnings.
+
+  16 Jul 2005; John N. Laliberte <allanonjl@gentoo.org>
+  gtkglarea-1.99.0.ebuild:
+  add /usr prefix to get_libdir, fixes #98511
+
+  30 May 2005; Simon Stelling <blubb@gentoo.org> gtkglarea-1.99.0.ebuild:
+  make src_install use the function provided by the gnome2 ebuild
+
+  27 May 2005; Herbie Hopkins <herbs@gentoo.org> gtkglarea-1.99.0.ebuild:
+  Added libtoolize to fix multilib build issue.
+
+  11 Apr 2005; Simon Stelling <blubb@gentoo.org> gtkglarea-1.2.3-r1.ebuild,
+  gtkglarea-1.99.0.ebuild:
+  fixed multilib-strict: bug #88676
+
+  01 Feb 2005; foser <foser@gentoo.org> gtkglarea-1.99.0.ebuild :
+  Add pkgconfig dep (#80255)
+
+  08 Aug 2004; Tom Martin <slarti@gentoo.org> :
+  Typo in DESCRIPTION: extention -> extension. Bug 59717.
+
+  29 Jul 2004; Tom Gall <tgall@gentoo.org> gtkglarea-1.99.ebuild:
+  stable on ppc64, bug #57015
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> gtkglarea-1.2.3-r1.ebuild,
+  gtkglarea-1.99.0.ebuild:
+  glibc -> libc
+
+  13 May 2004; Stephen P. Becker <geoman@gentoo.org> gtkglarea-1.99.0.ebuild:
+  Stable on mips.
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> gtkglarea-1.99.0.ebuild:
+  Added IUSE=
+
+  16 Apr 2004; Guy Martin <gmsoft@gentoo.org> gtkglarea-1.2.3-r1.ebuild:
+  Marked stable on hppa.
+
+  16 Mar 2004; Stephen P. Becker <geoman@gentoo.org> gtkglarea-1.99.0.ebuild:
+  Modifed ebuild with gnuconfig to allow building on mips. Added ~mips keyword.
+
+  07 Mar 2004; Jon Portnoy <avenj@gentoo.org> gtkglarea-1.2.3-r1.ebuild :
+  AMD64 keywords.
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> gtkglarea-1.2.3-r1.ebuild:
+  stable on ia64
+
+  20 Nov 2003; Alastair Tse <liquidx@gentoo.org> gtkglarea-1.2.3-r1.ebuild,
+  gtkglarea-1.99.0.ebuild:
+  change SRC_URI on gtkglarea
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> gtkglarea-1.99.0.ebuild:
+  Stable on ia64
+
+  17 Sep 2003; Aron Griffis <agriffis@gentoo.org> gtkglarea-1.2.3-r1.ebuild:
+  Mark stable on alpha
+
+  28 May 2003; Aron Griffis <agriffis@gentoo.org> gtkglarea-1.99.0.ebuild:
+  Mark stable on alpha
+
+*gtkglarea-1.2.3-r1 (20 Jun 2002)
+*gtkglarea-1.99.0 (20 Jun 2002)
+
+  09 Jan 2003; Martin Holzer <mholzer@gentoo.org> gtkglarea-1.99.0.ebuild : 
+  Corrected SRC_URI.
+
+  02 Nov 2002; Olivier Reisch <doctomoe@gentoo.org> :
+  Added ppc keyword.
+
+  20 Jun 2002; Martin Schlemmer <azarah@gentoo.org> :
+  This version adds gtk+-2.0 support.
+
+*gtkglarea-1.2.3 (1 Feb 2002)
+
+  14 Aug 2002; Pieter Van den Abeele <pvdabeel@gentoo.org> :
+  Added ppc keyword
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

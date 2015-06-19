@@ -1,0 +1,73 @@
+# ChangeLog for media-fonts/thaifonts-scalable
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/thaifonts-scalable/ChangeLog,v 1.16 2015/04/28 10:06:05 yngwin Exp $
+
+  28 Apr 2015; Ben de Groot <yngwin@gentoo.org> thaifonts-scalable-0.6.1.ebuild:
+  add arm{,64} love
+
+  08 Apr 2015; Ben de Groot <yngwin@gentoo.org>
+  -thaifonts-scalable-0.4.13.ebuild, -thaifonts-scalable-0.4.17.ebuild,
+  thaifonts-scalable-0.6.1.ebuild:
+  Mark stable to resolve bug #542838. Remove old.
+
+*thaifonts-scalable-0.6.1 (05 Apr 2015)
+
+  05 Apr 2015; Ben de Groot <yngwin@gentoo.org>
+  +thaifonts-scalable-0.6.1.ebuild:
+  version bump; fixes bug #542838
+
+  08 Aug 2012; Johannes Huber <johu@gentoo.org>
+  thaifonts-scalable-0.4.17.ebuild:
+  Stable for x86, wrt bug #419063
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org>
+  thaifonts-scalable-0.4.17.ebuild:
+  Stable for amd64, wrt bug #419063
+
+*thaifonts-scalable-0.4.17 (08 Mar 2012)
+
+  08 Mar 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  +thaifonts-scalable-0.4.17.ebuild, -thaifonts-scalable-0.4.10.ebuild:
+  Bump to latest. Remove overshadowed version.
+
+  04 Dec 2011; Markos Chandras <hwoarang@gentoo.org>
+  thaifonts-scalable-0.4.13.ebuild:
+  Stable on amd64 wrt bug #391535
+
+  01 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  thaifonts-scalable-0.4.13.ebuild:
+  x86 stable wrt bug #391535
+
+  07 Sep 2009; Ryan Hill <dirtyepic@gentoo.org>
+  thaifonts-scalable-0.4.10.ebuild, thaifonts-scalable-0.4.13.ebuild:
+  Fix conf file installation, update message.
+
+  02 Aug 2009; Markus Meier <maekke@gentoo.org>
+  thaifonts-scalable-0.4.10.ebuild:
+  amd64/x86 stable, bug #279860
+
+*thaifonts-scalable-0.4.13 (01 Aug 2009)
+
+  01 Aug 2009; Ben de Groot <yngwin@gentoo.org>
+  +thaifonts-scalable-0.4.13.ebuild:
+  Version bump
+
+  01 Aug 2009; Ben de Groot <yngwin@gentoo.org> metadata.xml:
+  Assign to fonts herd
+
+  05 Jun 2009; Peter Alfredsen <loki_val@gentoo.org> metadata.xml:
+  Retiring, bug 220219.
+
+  30 May 2008; Peter Alfredsen <loki_val@gentoo.org>
+  thaifonts-scalable-0.4.10.ebuild:
+  Update license to use GPLs with font exception
+
+  30 May 2008; Ryan Hill <dirtyepic@gentoo.org>
+  thaifonts-scalable-0.4.10.ebuild:
+  Keyword ~amd64.
+
+*thaifonts-scalable-0.4.10 (28 May 2008)
+
+  28 May 2008; Peter Alfredsen <loki_val@gentoo.org> +metadata.xml,
+  +thaifonts-scalable-0.4.10.ebuild:
+  Initial commit. Fixes bug 216521.

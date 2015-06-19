@@ -1,0 +1,29 @@
+Name the binary 'openrdate' as so not to conflict with the pre-existing ancient
+rdate.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+diff -Nuar openrdate-1.1.3.orig/Makefile.am openrdate-1.1.3/Makefile.am
+--- openrdate-1.1.3.orig/Makefile.am	2007-11-10 21:15:31.000000000 -0800
++++ openrdate-1.1.3/Makefile.am	2008-06-18 14:27:40.001963783 -0700
+@@ -1,15 +1,15 @@
+ SUBDIRS = src
+ 
+-bin_PROGRAMS = rdate
++bin_PROGRAMS = openrdate
+ 
+-rdate_SOURCES= \
++openrdate_SOURCES= \
+         src/rdate.c
+ 
+-rdate_LDADD= \
++openrdate_LDADD= \
+         src/librdate.a
+ 
+ man_MANS= \
+-    docs/rdate.8
++    docs/openrdate.8
+ 
+ EXTRA_DIST= \
+-    docs/rdate.8
++    $(man_MANS)

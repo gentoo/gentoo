@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=app-arch/xz-utils
+DESCRIPTION=Convert a .rpm file to a .tar.gz archive
+EAPI=4
+HOMEPAGE=http://www.slackware.com/config/packages.php
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=BSD-1
+RDEPEND=app-arch/cpio
+SLOT=0
+SRC_URI=mirror://gentoo/rpm2targz-9.0.0.5g.tar.xz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=165373b663912890ac9d94647338fc54

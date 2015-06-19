@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+  <email>vincent.hardy.be@gmail.com</email>
+</maintainer>
+<longdescription>
+eid-mw is Belgian Electronic Identity Card (eID) middleware supplied by the Belgian Federal Government.
+
+With your eID, you can:
+- identify yourself when necessary. All you have to do is insert the card in the reader. All your details then appear automatically on the PC screen.
+- authenticate yourself. This is a way of checking that you are who you say you are. That can be handy on the internet or to enable your children to chat in safety.
+- place a legally binding electronic signature on electronic documents.
+
+These three functions form the basis of the countless applications for your eID. Go to http://welcome-to-e-belgium.be/en/ and check out what can you do with it? and discover all the things you can use the eID for.
+</longdescription>
+</pkgmetadata>

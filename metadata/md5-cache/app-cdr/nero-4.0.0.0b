@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm preinst setup unpack
+DEPEND=>=app-arch/rpm2targz-9.0.0.3g >=sys-apps/sed-4
+DESCRIPTION=Nero Burning ROM for Linux
+EAPI=4
+HOMEPAGE=http://nerolinux.nero.com
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=Nero-EULA-US
+RDEPEND=x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXinerama x11-libs/pango[X]
+RESTRICT=strip mirror test
+SLOT=0
+SRC_URI=x86? ( mirror://nero/nerolinux-4.0.0.0b-x86.rpm ) amd64? ( mirror://nero/nerolinux-4.0.0.0b-x86_64.rpm )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	rpm	b94b54b44f14d6bee3e966c8f5c86fba	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=55ee03823ce5876250f2db066656b324

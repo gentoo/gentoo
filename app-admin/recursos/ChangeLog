@@ -1,0 +1,30 @@
+# ChangeLog for app-admin/recursos
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/recursos/ChangeLog,v 1.10 2014/08/10 01:37:40 patrick Exp $
+
+  10 Aug 2014; Patrick Lauer <patrick@gentoo.org> recursos-2.0.ebuild:
+  Fix description for more repoman happy
+
+  15 Jul 2014; Jeroen Roovers <jer@gentoo.org> recursos-2.0.ebuild:
+  Set USE=graph dependency on net-analyzer/rrdtool (bug #509682).
+
+  20 Oct 2012; Agostino Sarubbo <ago@gentoo.org> recursos-2.0.ebuild:
+  Add ~amd64, wrt bug #438982
+
+  20 Mar 2012; Pacho Ramos <pacho@gentoo.org> recursos-2.0.ebuild:
+  RDEPEND on graphicsmagick also, bug #314203 by Wojciech Porczyk.
+
+  18 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #391429.
+
+  13 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  fix herd
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> recursos-2.0.ebuild:
+  Replacing einfo with elog
+
+*recursos-2.0 (24 Aug 2006)
+
+  24 Aug 2006; J. Alberto Suárez López <bass@gentoo.org>
+  +recursos-2.0.ebuild:
+  First release

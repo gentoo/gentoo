@@ -1,0 +1,139 @@
+# ChangeLog for games-emulation/generator
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/generator/ChangeLog,v 1.33 2015/06/02 04:34:25 mr_bones_ Exp $
+
+  02 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org> generator-0.35_p4.ebuild:
+  add slot dep for repoman
+
+  12 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/generator-0.35_p3-configure.patch,
+  -files/generator-0.35_p3-execstacks.patch,
+  -files/generator-0.35_p3-underlink.patch, -generator-0.35_p3.ebuild:
+  old
+
+  25 Feb 2015; Agostino Sarubbo <ago@gentoo.org> generator-0.35_p4.ebuild:
+  Stable for x86, wrt bug #539932
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> generator-0.35_p4.ebuild:
+  Stable for ppc, wrt bug #539932
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> generator-0.35_p4.ebuild:
+  Stable for amd64, wrt bug #539932
+
+*generator-0.35_p4 (02 Jul 2014)
+
+  02 Jul 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/generator-0.35_p4-configure.patch,
+  +files/generator-0.35_p4-execstacks.patch,
+  +files/generator-0.35_p4-underlink.patch, +generator-0.35_p4.ebuild:
+  patch version bump
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> generator-0.35_p3.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  20 Jun 2011; Tupone Alfredo <tupone@gentoo.org> generator-0.35_p3.ebuild,
+  +files/generator-0.35_p3-underlink.patch:
+  Fix underlink. Bug #370133 by Diego Elio Pettenò
+
+  25 Feb 2011; Kevin McCarthy <signals@gentoo.org> generator-0.35_p3.ebuild:
+  Updated depends from media-libs/jpeg to virtual/jpeg
+
+  28 Nov 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  generator-0.35_p3.ebuild:
+  newer nasm fails with the old asm (bug #294916)
+
+  02 Jun 2008; Markus Rothe <corsair@gentoo.org> generator-0.35_p3.ebuild:
+  Stable on ppc; bug #220427
+
+  05 May 2008; Markus Meier <maekke@gentoo.org> generator-0.35_p3.ebuild:
+  amd64/x86 stable, bug #220427
+
+  17 Mar 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  files/generator-0.35_p3-configure.patch, generator-0.35_p3.ebuild:
+  disable gtk+-1 interface since it's unsupported and generator otherwise fails
+  to build without gtk+-1 available on the system (bug #206373)
+
+  06 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org> generator-0.35.ebuild:
+  QA cleanup: Fix quoting.
+
+*generator-0.35_p3 (25 Jul 2007)
+
+  25 Jul 2007; Tristan Heaven <nyhm@gentoo.org>
+  +files/generator-0.35_p3-configure.patch,
+  +files/generator-0.35_p3-execstacks.patch, +generator-0.35_p3.ebuild:
+  Version bump, bug #184352
+
+  11 Apr 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/generator-0.35-configure.patch,
+  files/generator-0.35-execstacks.patch, generator-0.35-r3.ebuild:
+  stable for x86; fix QA warnings with patch to configure.ac
+
+  07 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org> generator-0.35.ebuild:
+  Change all instances of [ to [[.
+
+  06 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> generator-0.35.ebuild,
+  generator-0.35-r2.ebuild:
+  Removed sed-4 from *DEPEND.
+
+*generator-0.35-r3 (04 Oct 2006)
+
+  04 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/generator-0.35-execstacks.patch, +generator-0.35-r3.ebuild:
+  Revision bump to include the newer version of the patch as well as to remove
+  the executable stacks. Closing bug #129616.
+
+*generator-0.35-r2 (03 Sep 2006)
+
+  03 Sep 2006; <tupone@gentoo.org> files/generator-0.35-gcc.patch,
+  -generator-0.35-r1.ebuild, +generator-0.35-r2.ebuild:
+  Previous exec stack fix was discarded by the 2 stages asm build. Fixed.
+
+  20 Apr 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/generator-0.35-gcc.patch, generator-0.35-r1.ebuild:
+  Cleanup ebuild and fix exec stacks #130539.
+
+*generator-0.35-r1 (30 Mar 2006)
+
+  30 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +generator-0.35-r1.ebuild:
+  Added new ebuild for a patched generator. The original ebuild was written by
+  Machiel Groeneveld <machiel@ideus.nl> and edited by Bernard Cafarelli
+  <voyageur@operamail.com>. Closing bug #76072.
+
+  17 May 2005; Chris Gianelloni <wolf31o2@gentoo.org> generator-0.35.ebuild:
+  Cleanup for bug #92745.
+
+  11 Jul 2004; Tom Martin <slarti@gentoo.org> generator-0.35.ebuild:
+  Marked ~amd64, closing 53460.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  generator-0.35.ebuild:
+  virtual/glibc -> virtual/libc
+
+  27 Jun 2004; Aron Griffis <agriffis@gentoo.org> generator-0.35.ebuild:
+  QA - fix use invocation
+
+  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> generator-0.35.ebuild:
+  don't rdepend on nasm; "use arch" instead of "ARCH == "
+
+  20 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> generator-0.35.ebuild,
+  files/logging.patch, files/netbsd-gcc-3.3.patch:
+  ripped off the patches from netbsd for generator to get the logging working
+  again.
+
+  20 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> generator-0.35.ebuild:
+  fix bug #44709 by turning off logging
+  fixed up old hard-coded gcc flags in configure
+  take out mention of allegro and tcltk - this package looks dead upstream so
+  it doesn't look like allegro and tcltk will ever be supported.
+  changed make to emake -j1 - don't even think about trying to use parallel
+  make with these makefiles - very broken
+
+  20 Dec 2003; David Holm <dholm@gentoo.org> generator-0.35.ebuild:
+  Added a small ppc fix and added to ~ppc.
+
+*generator-0.35 (15 Jul 2003)
+
+  15 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me for #20818.

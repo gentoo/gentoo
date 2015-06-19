@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sci-electronics</herd>
+	<maintainer>
+		<email>xmw@gentoo.org</email>
+		<name>Michael Weber</name>
+	</maintainer>
+	<longdescription>Gtk+ Widgets for live display fluctuating numerical data</longdescription>
+	<use>
+		<flag name="glade">Build with libglade and glade-3 supports, which includes a glade's module for GtkDataBox widget</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">gtkdatabox</remote-id>
+	</upstream>
+</pkgmetadata>

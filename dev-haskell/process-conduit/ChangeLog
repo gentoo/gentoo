@@ -1,0 +1,27 @@
+# ChangeLog for dev-haskell/process-conduit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/process-conduit/ChangeLog,v 1.5 2015/06/06 15:32:10 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*process-conduit-1.2.0.1 (14 Dec 2014)
+
+  14 Dec 2014; Mark Wright <gienah@gentoo.org> +process-conduit-1.2.0.1.ebuild:
+  Bump process-conduit to 1.2.0.1
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*process-conduit-1.1.0.0-r1 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org>
+  +files/process-conduit-1.1.0.0-conduit-1.1.patch,
+  +process-conduit-1.1.0.0-r1.ebuild:
+  Bump process-conduit to 1.1.0.0-r1
+
+*process-conduit-1.0.0.1 (11 Dec 2013)
+
+  11 Dec 2013; Mark Wright <gienah@gentoo.org> +metadata.xml,
+  +process-conduit-1.0.0.1.ebuild:
+  Add process-conduit-1.0.0.1

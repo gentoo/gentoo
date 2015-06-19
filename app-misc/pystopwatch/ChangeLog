@@ -1,0 +1,49 @@
+# ChangeLog for app-misc/pystopwatch
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/pystopwatch/ChangeLog,v 1.10 2015/02/25 15:56:04 ago Exp $
+
+  25 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  pystopwatch-2012.12.24.1-r1.ebuild:
+  Stable for x86, wrt bug #540468
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  pystopwatch-2012.12.24.1-r1.ebuild:
+  Stable for amd64, wrt bug #540468
+
+  18 Feb 2015; Pacho Ramos <pacho@gentoo.org>
+  -pystopwatch-2012.02.17.84795.ebuild, pystopwatch-2012.12.24.1-r1.ebuild:
+  librsvg is needed (#496230), drop old
+
+*pystopwatch-2012.12.24.1-r1 (27 Dec 2014)
+
+  27 Dec 2014; Michał Górny <mgorny@gentoo.org>
+  +pystopwatch-2012.12.24.1-r1.ebuild:
+  Convert to python-single-r1.
+
+  07 Jul 2013; Agostino Sarubbo <ago@gentoo.org>
+  pystopwatch-2012.12.24.1.ebuild:
+  Stable for x86, wrt bug #476052
+
+  07 Jul 2013; Agostino Sarubbo <ago@gentoo.org>
+  pystopwatch-2012.12.24.1.ebuild:
+  Stable for amd64, wrt bug #476052
+
+*pystopwatch-2012.12.24.1 (23 Jan 2013)
+
+  23 Jan 2013; Michael Weber <xmw@gentoo.org> +pystopwatch-2012.12.24.1.ebuild:
+  Version bump
+
+*pystopwatch-2012.02.17.84795 (05 May 2012)
+
+  05 May 2012; Michael Weber <xmw@gentoo.org> -pystopwatch-2011.04.04.1.ebuild,
+  +pystopwatch-2012.02.17.84795.ebuild:
+  Version bump
+
+  20 Feb 2012; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Drop no-herd.
+
+*pystopwatch-2011.04.04.1 (07 Feb 2012)
+
+  07 Feb 2012; Michael Weber <xmw@gentoo.org> +pystopwatch-2011.04.04.1.ebuild,
+  +metadata.xml:
+  Initial import

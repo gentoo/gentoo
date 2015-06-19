@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>ruby</herd>
+	<maintainer>
+		<email>robbat2@gentoo.org</email>
+		<name>Robin H. Johnson</name>
+	</maintainer>
+	<longdescription lang="en">
+		Simple Faraday middleware that uses MultiJson to unobtrusively encode JSON requests and parse JSON responses.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">denro/faraday_middleware-multi_json</remote-id>
+	</upstream>
+</pkgmetadata>

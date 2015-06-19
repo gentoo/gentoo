@@ -1,0 +1,11 @@
+# ChangeLog for app-vim/pdv
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/pdv/ChangeLog,v 1.2 2012/10/19 19:13:32 ago Exp $
+
+  19 Oct 2012; Agostino Sarubbo <ago@gentoo.org> pdv-1.0.1.ebuild:
+  Add ~amd64, wrt to bug #438814
+
+*pdv-1.0.1 (09 Nov 2006)
+
+  09 Nov 2006; Mike Kelly <pioto@gentoo.org> +metadata.xml, +pdv-1.0.1.ebuild:
+  New ebuild. See Bug #137954

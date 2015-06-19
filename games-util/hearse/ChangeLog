@@ -1,0 +1,41 @@
+# ChangeLog for games-util/hearse
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-util/hearse/ChangeLog,v 1.12 2015/03/30 18:27:29 mr_bones_ Exp $
+
+  30 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> hearse-1.5.ebuild:
+  EAPI=5
+
+  20 Feb 2015; Ulrich Müller <ulm@gentoo.org> hearse-1.5.ebuild:
+  [QA] Drop keywords to unstable because of dropped games-roguelike/nethack
+  keywords. Specify license more precisely.
+
+  01 Nov 2010; Michael Sterrett <mr_bones_@gentoo.org> hearse-1.5.ebuild:
+  EAPI=2
+
+  08 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> hearse-1.5.ebuild:
+  Stable on ppc.
+
+  09 May 2005; David Holm <dholm@gentoo.org> hearse-1.5.ebuild:
+  Added to ~ppc.
+
+*hearse-1.5 (02 May 2005)
+
+  02 May 2005; Michael Sterrett <mr_bones_@gentoo.org> +hearse-1.5.ebuild:
+  version bump
+
+  23 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> hearse-1.4.ebuild:
+  don't rdepend on sed
+
+  01 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> hearse-1.4.ebuild:
+  fix DEPEND (bug #43402)
+
+  28 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> hearse-1.4.ebuild:
+  mark stable
+
+*hearse-1.4 (25 Nov 2003)
+
+  25 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> hearse-1.4.ebuild:
+  initial commit; ebuild supplied by Eric Harney via bug 33647 (modified)

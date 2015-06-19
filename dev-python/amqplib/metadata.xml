@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>python</herd>
+	<maintainer>
+		<email>neurogeek@gentoo.org</email>
+		<name>Jesus Rivero</name>
+	</maintainer>
+	<use>
+		<flag name="extras">Install extra tools to generate initial Python mod 
+		from an AMQP XML file</flag>
+	</use>
+	<upstream>
+		<remote-id type="google-code">py-amqplib</remote-id>
+	</upstream>
+</pkgmetadata>

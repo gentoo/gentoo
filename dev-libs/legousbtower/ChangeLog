@@ -1,0 +1,43 @@
+# ChangeLog for dev-libs/legousbtower
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/legousbtower/ChangeLog,v 1.12 2015/06/09 14:19:12 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  28 Jul 2013; Agostino Sarubbo <ago@gentoo.org> legousbtower-0.5.4.ebuild:
+  Stable for ppc, wrt bug #477156
+
+  27 Jul 2013; Agostino Sarubbo <ago@gentoo.org> legousbtower-0.5.4.ebuild:
+  Stable for x86, wrt bug #477156
+
+  21 Jul 2013; Agostino Sarubbo <ago@gentoo.org> legousbtower-0.5.4.ebuild:
+  Stable for amd64, wrt bug #477156
+
+  21 Aug 2012; Julian Ospald <hasufell@gentoo.org> legousbtower-0.5.4.ebuild:
+  fix udev rules install destination
+
+  30 Dec 2010; Jeroen Roovers <jer@gentoo.org> legousbtower-0.5.4.ebuild:
+  Fix quoting. Remove empty DEPEND.
+
+  30 Dec 2010; Jeroen Roovers <jer@gentoo.org> legousbtower-0.5.4.ebuild:
+  Marked ~ppc too.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> legousbtower-0.5.4.ebuild:
+  Remove virtual/libc
+
+  29 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Lars Weiler (Pylon) from metadata.xml (as per #215644). Assigning
+  to maintainer-needed.
+
+  03 Mar 2007; Marius Mauch <genone@gentoo.org> legousbtower-0.5.4.ebuild:
+  Replacing einfo with elog
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*legousbtower-0.5.4 (18 Jun 2006)
+
+  18 Jun 2006; Lars Weiler <pylon@gentoo.org> +files/20-lego.rules,
+  +metadata.xml, +legousbtower-0.5.4.ebuild:
+  Initial commit; thanks to all contributors in Bug #89257.

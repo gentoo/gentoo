@@ -1,0 +1,51 @@
+--- a/Makefile.lib	2014-05-30 13:45:11.756422117 -0400
++++ b/Makefile.lib	2014-05-30 13:47:22.626423230 -0400
+@@ -117,7 +117,7 @@
+  $(sort $(filter-out $(LIB_O_NAME),$(OBJS))) \
+  $(foreach subdir,$(sort $(SUBDIRS)),$(wildcard $(subdir)/$(LIB_O_NAME)))
+ 
+-$(LIB_O_NAME): $(LIB_O_DEPS)
++$(LIB_O_NAME): all-recursive.built $(LIB_O_DEPS)
+ 	$(call cmd,ld_objs)
+ 
+ DEP_FILES_1 = $(foreach src,$(OBJS),.deps/$(src))
+@@ -260,21 +260,36 @@
+ # remaining subdirectories, but return an error at the end.
+ $(RULES_REC):
+ ifneq (,$(findstring k,$(MAKEFLAGS)))
+-	@suberr=0; \
++	@+suberr=0; \
+ 	$(foreach subdir,$(sort $(SUBDIRS)), \
+ 		$(call ncmd,recmake,$(subdir),$(subst -recursive,,$@)) || suberr=1;) \
+ 	exit $$suberr
+ else
+-	@$(foreach subdir,$(sort $(SUBDIRS)), \
++	@+$(foreach subdir,$(sort $(SUBDIRS)), \
+ 		$(call ncmd,recmake,$(subdir),$(subst -recursive,,$@)) || exit 1;)
+ endif
+ 
++all-recursive.built:
++ifneq (,$(findstring k,$(MAKEFLAGS)))
++	@+suberr=0; \
++	$(foreach subdir,$(sort $(SUBDIRS)), \
++		$(call ncmd,recmake,$(subdir),$(subst -recursive.built,,$@)) || suberr=1;) \
++	[ $$suberr == 0 ] && touch $@; \
++	exit $$suberr
++else
++	@+$(foreach subdir,$(sort $(SUBDIRS)), \
++		$(call ncmd,recmake,$(subdir),$(subst -recursive.built,,$@)) || exit 1;) \
++	touch $@
++endif
++
++CLEAN += all-recursive.built
++
+ # Dummy -local rules
+ $(RULES_LOCAL):
+ 
+ # Default deps
+ rule_deps = $(1)-recursive $(1)-default $(1)-local
+-all:	  $(call rule_deps,all)
++all:	  $(subst recursive,recursive.built,$(call rule_deps,all))
+ install:  $(call rule_deps,install)
+ clean:	  $(call rule_deps,clean)
+ cleanall: $(call rule_deps,cleanall)

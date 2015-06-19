@@ -1,0 +1,9 @@
+# ChangeLog for dev-perl/Inline-C
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Inline-C/ChangeLog,v 1.1 2015/02/25 23:16:31 dilfridge Exp $
+
+*Inline-C-0.740.0 (25 Feb 2015)
+
+  25 Feb 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Inline-C-0.740.0.ebuild, +metadata.xml:
+  New package, split off from dev-perl/Inline

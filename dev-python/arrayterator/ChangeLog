@@ -1,0 +1,43 @@
+# ChangeLog for dev-python/arrayterator
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/arrayterator/ChangeLog,v 1.10 2015/04/08 08:05:18 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> arrayterator-1.0.1-r1.ebuild:
+  Drop old Python implementations
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> arrayterator-1.0.1-r1.ebuild:
+  amd64 stable, bug 540290
+
+  23 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -arrayterator-1.0.1.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> arrayterator-1.0.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> arrayterator-1.0.1-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*arrayterator-1.0.1-r1 (12 Feb 2013)
+
+  12 Feb 2013; Michał Górny <mgorny@gentoo.org> +arrayterator-1.0.1-r1.ebuild:
+  Migrate to distutils-r1.
+
+  09 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  arrayterator-1.0.1.ebuild:
+  Set PYTHON_DEPEND.
+
+  08 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  arrayterator-1.0.1.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*arrayterator-1.0.1 (07 Sep 2009)
+
+  07 Sep 2009; Patrick Lauer <patrick@gentoo.org>
+  +arrayterator-1.0.1.ebuild:
+  Bump
+
+*arrayterator-1.0 (03 Feb 2009)
+
+  03 Feb 2009; Patrick Lauer <patrick@gentoo.org> +metadata.xml,
+  +arrayterator-1.0.ebuild:
+  Initial import. Based on an ebuild by Tim Cera. Closes #152284

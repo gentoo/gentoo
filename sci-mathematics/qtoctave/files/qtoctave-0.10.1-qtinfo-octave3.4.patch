@@ -1,0 +1,15 @@
+Description: Make qtinfo compatible with Octave >= 3.4
+Origin: upstream, commit: 282
+Forwarded: not-needed
+Last-Update: 2012-03-11
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/qtoctave/src/scripts_octave/qtinfo.m
++++ b/qtoctave/src/scripts_octave/qtinfo.m
+@@ -1,5 +1,5 @@
+ function qtinfo()
+ 	command=sprintf("qtoctave-info-reader %s > /dev/null", info_file);
+ 	printf("Starting info: %s\n", command);
+-	system(command, 1, "async");
++	system(command, 0, "async");
+ endfunction

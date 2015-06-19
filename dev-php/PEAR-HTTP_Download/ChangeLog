@@ -1,0 +1,79 @@
+# ChangeLog for dev-php/PEAR-HTTP_Download
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-HTTP_Download/ChangeLog,v 1.13 2014/11/06 17:20:09 grknight Exp $
+
+  06 Nov 2014; Brian Evans <grknight@gentoo.org>
+  -PEAR-HTTP_Download-1.1.3-r1.ebuild:
+  Drop old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-HTTP_Download-1.1.3-r1.ebuild, PEAR-HTTP_Download-1.1.4.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  19 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  PEAR-HTTP_Download-1.1.4.ebuild:
+  Stable for amd64, wrt bug #414757
+
+  19 Jun 2012; Jeff Horelick <jdhore@gentoo.org>
+  PEAR-HTTP_Download-1.1.4.ebuild:
+  marked x86 per bug 414757
+
+*PEAR-HTTP_Download-1.1.4 (18 Jan 2012)
+
+  18 Jan 2012; Matti Bickel <mabi@gentoo.org> +PEAR-HTTP_Download-1.1.4.ebuild,
+  -PEAR-HTTP_Download-1.1.3.ebuild:
+  version bump & remove old
+
+  20 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  PEAR-HTTP_Download-1.1.3-r1.ebuild:
+  Stable on amd64 wrt bug #336869
+
+  14 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  PEAR-HTTP_Download-1.1.3-r1.ebuild:
+  stable x86, bug 336869
+
+  12 Jun 2010; <mabi@gentoo.org> PEAR-HTTP_Download-1.1.3-r1.ebuild,
+  metadata.xml:
+  make built_with_use usage obsolete with additional USE="postgres"
+
+*PEAR-HTTP_Download-1.1.3-r1 (12 Jun 2010)
+
+  12 Jun 2010; <mabi@gentoo.org> +PEAR-HTTP_Download-1.1.3-r1.ebuild:
+  EAPI bump, php-5.3 deps, thanks to Tsisaruk V <tsisaruk.v@gmail.com> for
+  the ebuild
+
+  06 Dec 2007; Markus Ullmann <jokey@gentoo.org>
+  -PEAR-HTTP_Download-1.1.1.ebuild, -PEAR-HTTP_Download-1.1.2.ebuild,
+  PEAR-HTTP_Download-1.1.3.ebuild:
+  LICENSE fix from project overlay
+
+  02 Dec 2007; Jakub Moc <jakub@gentoo.org>
+  PEAR-HTTP_Download-1.1.3.ebuild:
+  Fix LICENSE
+
+*PEAR-HTTP_Download-1.1.3 (08 Nov 2007)
+*PEAR-HTTP_Download-1.1.2 (08 Nov 2007)
+
+  08 Nov 2007; Markus Ullmann <jokey@gentoo.org>
+  +PEAR-HTTP_Download-1.1.2.ebuild, +PEAR-HTTP_Download-1.1.3.ebuild:
+  Version bump from project overlay
+
+  28 Oct 2007; Jakub Moc <jakub@gentoo.org> +PEAR-HTTP_Download-1.1.3.ebuild:
+  Version bump
+
+  20 Aug 2007; Markus Ullmann <jokey@gentoo.org>
+  PEAR-HTTP_Download-1.1.1.ebuild:
+  Porting from project overlay
+
+  15 Aug 2007; Jakub Moc <jakub@gentoo.org> PEAR-HTTP_Download-1.1.1.ebuild:
+  USE=minimal for optional dep; add pkg_postinst info
+
+  15 Aug 2007; Jakub Moc <jakub@gentoo.org> +metadata.xml,
+  +PEAR-HTTP_Download-1.1.1.ebuild:
+  Version bump, Bug 158633
+
+*PEAR-HTTP_Download-1.1.1 (29 Sep 2006)
+
+  29 Sep 2006; Sebastian Bergmann <sebastian@gentoo.org> +metadata.xml,
+  +PEAR-HTTP_Download-1.1.1.ebuild:
+  Initial ebuild, closes bug #146998.

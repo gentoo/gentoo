@@ -1,0 +1,50 @@
+diff -Naur vodcatcher-0.2.2.orig/Makefile vodcatcher-0.2.2/Makefile
+--- vodcatcher-0.2.2.orig/Makefile	2010-09-22 21:51:06.000000000 +0200
++++ vodcatcher-0.2.2/Makefile	2010-09-22 21:53:11.000000000 +0200
+@@ -50,8 +50,7 @@
+ ### Includes and Defines (add further entries here):
+ 
+ INCLUDES += -I. -I$(VDRDIR)/include -I$(DVBDIR)/include
+-INCLUDES += `curl-config --cflags` 
+-INCLUDES += -I./tinyxml
++INCLUDES += $(shell curl-config --cflags)
+ 
+ DEFINES += -D_GNU_SOURCE -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
+ DEFINES += -DCXXTEST_ABORT_TEST_ON_FAIL 
+@@ -66,7 +65,8 @@
+ endif
+ 
+ # libcurl, libxml, libxml++
+-LIBS += `curl-config --libs`
++LIBS +=  -lcurl
++LIBS +=  -ltinyxml
+ 
+ ### The source files (add further files here):
+ 
+diff -Naur vodcatcher-0.2.2.orig/sources.mk vodcatcher-0.2.2/sources.mk
+--- vodcatcher-0.2.2.orig/sources.mk	2010-09-22 21:51:06.000000000 +0200
++++ vodcatcher-0.2.2/sources.mk	2010-09-22 21:53:22.000000000 +0200
+@@ -34,11 +34,6 @@
+   src/StreamType.cc \
+   src/SynchedDownloadPool.cc \
+   src/ThreadsafeDownloadPool.cc \
+-  tinyxml/tinystr.cpp \
+-  tinyxml/tinyxml.cpp \
+-  tinyxml/tinyxmlerror.cpp \
+-  tinyxml/tinyxmlparser.cpp \
+-  
+ 
+ SRCS_TESTONLY = \
+   src/DownloadCacheMock.cc \
+diff -Naur vodcatcher-0.2.2.orig/src/RssFeedParser.cc vodcatcher-0.2.2/src/RssFeedParser.cc
+--- vodcatcher-0.2.2.orig/src/RssFeedParser.cc	2010-09-22 21:51:06.000000000 +0200
++++ vodcatcher-0.2.2/src/RssFeedParser.cc	2010-09-22 21:53:44.000000000 +0200
+@@ -22,7 +22,7 @@
+ #include "HtmlToText.h"
+ #include "Feed.h"
+ #include "IDownloadCache.h"
+-#include "tinyxml.h"
++#include <tinyxml.h>
+ #include "Item.h"
+ 
+ using namespace std;

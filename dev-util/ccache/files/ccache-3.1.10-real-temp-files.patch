@@ -1,0 +1,185 @@
+https://lists.samba.org/archive/ccache/2014q4/001246.html
+
+From 5d0f507a4162ac89e05ca633dbc8056454b798f5 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 15 Sep 2014 18:15:02 -0400
+Subject: [PATCH] do not rely on pids being unique
+
+Linux supports creating pid namespaces cheaply and running processes
+inside of them.  When you try to share a single cache among multiple
+such runs, the fact that the code relies on pid numbers as globally
+unique values quickly fails.  Instead, switch to standard mkstemp to
+generate temp files for us.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ ccache.c   | 12 ++++++------
+ ccache.h   |  2 +-
+ manifest.c |  2 +-
+ stats.c    | 10 +++++++++-
+ util.c     | 13 ++++++++-----
+ 5 files changed, 25 insertions(+), 14 deletions(-)
+
+diff --git a/ccache.c b/ccache.c
+index 02dbdfa..1dc0a06 100644
+--- a/ccache.c
++++ b/ccache.c
+@@ -526,8 +526,11 @@ to_cache(struct args *args)
+ 	unsigned added_files = 0;
+ 
+ 	tmp_stdout = format("%s.tmp.stdout.%s", cached_obj, tmp_string());
++	create_empty_file(tmp_stdout);
+ 	tmp_stderr = format("%s.tmp.stderr.%s", cached_obj, tmp_string());
++	create_empty_file(tmp_stderr);
+ 	tmp_obj = format("%s.tmp.%s", cached_obj, tmp_string());
++	create_empty_file(tmp_obj);
+ 
+ 	args_add(args, "-o");
+ 	args_add(args, tmp_obj);
+@@ -579,7 +582,7 @@ to_cache(struct args *args)
+ 		int fd_result;
+ 		char *tmp_stderr2;
+ 
+-		tmp_stderr2 = format("%s.tmp.stderr2.%s", cached_obj, tmp_string());
++		tmp_stderr2 = format("%s.2", tmp_stderr);
+ 		if (x_rename(tmp_stderr, tmp_stderr2)) {
+ 			cc_log("Failed to rename %s to %s: %s", tmp_stderr, tmp_stderr2,
+ 			       strerror(errno));
+@@ -808,6 +808,7 @@ get_object_name_from_cpp(struct args *args, struct mdfour *hash)
+ 	}
+ 
+ 	path_stderr = format("%s/tmp.cpp_stderr.%s", temp_dir, tmp_string());
++	create_empty_file(path_stderr);
+ 	add_pending_tmp_file(path_stderr);
+ 
+ 	time_of_compilation = time(NULL);
+@@ -815,6 +816,7 @@ get_object_name_from_cpp(struct args *args, struct mdfour *hash)
+ 	if (!direct_i_file) {
+ 		path_stdout = format("%s/%s.tmp.%s.%s",
+ 		                     temp_dir, input_base, tmp_string(), i_extension);
++		create_empty_file(path_stdout);
+ 		add_pending_tmp_file(path_stdout);
+ 
+ 		/* run cpp on the input file to obtain the .i */
+@@ -838,11 +843,6 @@ get_object_name_from_cpp(struct args *args, struct mdfour *hash)
+ 		   can skip the cpp stage and directly form the
+ 		   correct i_tmpfile */
+ 		path_stdout = input_file;
+-		if (create_empty_file(path_stderr) != 0) {
+-			cc_log("Failed to create %s: %s", path_stderr, strerror(errno));
+-			stats_update(STATS_ERROR);
+-			failed();
+-		}
+ 		status = 0;
+ 	}
+ 
+diff --git a/ccache.h b/ccache.h
+index 2bc7c87..43ef98d 100644
+--- a/ccache.h
++++ b/ccache.h
+@@ -130,7 +130,7 @@ size_t file_size(struct stat *st);
+ int safe_open(const char *fname);
+ char *x_realpath(const char *path);
+ char *gnu_getcwd(void);
+-int create_empty_file(const char *fname);
++int create_empty_file(char *fname);
+ const char *get_home_directory(void);
+ char *get_cwd();
+ bool same_executable_name(const char *s1, const char *s2);
+diff --git a/manifest.c b/manifest.c
+index 7f02ede..47566d5 100644
+--- a/manifest.c
++++ b/manifest.c
+@@ -633,7 +633,7 @@ manifest_put(const char *manifest_path, struct file_hash *object_hash,
+ 	}
+ 
+ 	tmp_file = format("%s.tmp.%s", manifest_path, tmp_string());
+-	fd2 = safe_open(tmp_file);
++	fd2 = mkstemp(tmp_file);
+ 	if (fd2 == -1) {
+ 		cc_log("Failed to open %s", tmp_file);
+ 		goto out;
+diff --git a/stats.c b/stats.c
+index 2111b65..4ed39c2 100644
+--- a/stats.c
++++ b/stats.c
+@@ -126,11 +126,18 @@ stats_write(const char *path, struct counters *counters)
+ 	size_t i;
+ 	char *tmp_file;
+ 	FILE *f;
++	int fd;
+ 
+ 	tmp_file = format("%s.tmp.%s", path, tmp_string());
+-	f = fopen(tmp_file, "wb");
++	fd = mkstemp(tmp_file);
++	if (fd == -1) {
++		cc_log("Failed to open %s", tmp_file);
++		goto end;
++	}
++	f = fdopen(fd, "wb");
+ 	if (!f) {
+ 		cc_log("Failed to open %s", tmp_file);
++		close(fd);
+ 		goto end;
+ 	}
+ 	for (i = 0; i < counters->size; i++) {
+@@ -138,6 +145,7 @@ stats_write(const char *path, struct counters *counters)
+ 			fatal("Failed to write to %s", tmp_file);
+ 		}
+ 	}
++	/* This also implicitly closes the fd. */
+ 	fclose(f);
+ 	x_rename(tmp_file, path);
+ 
+diff --git a/util.c b/util.c
+index 3b472de..cc630a6 100644
+--- a/util.c
++++ b/util.c
+@@ -195,7 +195,7 @@ copy_file(const char *src, const char *dest, int compress_dest)
+ 	struct stat st;
+ 	int errnum;
+ 
+-	tmp_name = format("%s.%s.XXXXXX", dest, tmp_string());
++	tmp_name = format("%s.%s", dest, tmp_string());
+ 	cc_log("Copying %s to %s via %s (%s)",
+ 	       src, dest, tmp_name, compress_dest ? "compressed": "uncompressed");
+ 
+@@ -427,7 +427,7 @@ tmp_string(void)
+ 	static char *ret;
+ 
+ 	if (!ret) {
+-		ret = format("%s.%u", get_hostname(), (unsigned)getpid());
++		ret = format("%s.%u.XXXXXX", get_hostname(), (unsigned)getpid());
+ 	}
+ 
+ 	return ret;
+@@ -884,12 +884,13 @@ gnu_getcwd(void)
+ 
+ /* create an empty file */
+ int
+-create_empty_file(const char *fname)
++create_empty_file(char *fname)
+ {
+ 	int fd;
+ 
+-	fd = open(fname, O_WRONLY|O_CREAT|O_TRUNC|O_EXCL|O_BINARY, 0666);
++	fd = mkstemp(fname);
+ 	if (fd == -1) {
++		cc_log("Failed to create %s: %s", fname, strerror(errno));
+ 		return -1;
+ 	}
+ 	close(fd);
+@@ -1134,7 +1135,9 @@ x_unlink(const char *path)
+ 		goto out;
+ 	}
+ 	if (unlink(tmp_name) == -1) {
+-		result = -1;
++		/* If it was released in a race, that's OK. */
++		if (errno != ENOENT)
++			result = -1;
+ 	}
+ out:
+ 	free(tmp_name);
+-- 
+2.1.2
+

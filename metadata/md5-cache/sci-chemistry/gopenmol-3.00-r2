@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare setup
+DEPEND=dev-lang/tk dev-tcltk/bwidget media-libs/freeglut virtual/jpeg virtual/opengl x11-libs/libICE x11-libs/libXau x11-libs/libXdmcp x11-libs/libXi x11-libs/libXmu x11-libs/libXxf86vm =dev-lang/python-2*
+DESCRIPTION=Tool for the visualization and analysis of molecular structures
+EAPI=4
+HOMEPAGE=http://www.csc.fi/gopenmol/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=all-rights-reserved
+RDEPEND=dev-lang/tk dev-tcltk/bwidget media-libs/freeglut virtual/jpeg virtual/opengl x11-libs/libICE x11-libs/libXau x11-libs/libXdmcp x11-libs/libXi x11-libs/libXmu x11-libs/libXxf86vm =dev-lang/python-2*
+RESTRICT=mirror
+SLOT=0
+SRC_URI=http://www.csc.fi/gopenmol//distribute/gopenmol-3.00-linux.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c25f0ad76b50c05029a8f74294ae0f4a

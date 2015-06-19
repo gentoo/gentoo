@@ -1,0 +1,9 @@
+DEFINED_PHASES=install postinst unpack
+DESCRIPTION=Collection of IceWM themes
+HOMEPAGE=http://www.icewm.org/ http://themes.freshmeat.net/projects/icecrack/ http://themes.freshmeat.net/projects/icebox/ http://themes.freshmeat.net/projects/cyrusicewm/ http://themes.freshmeat.net/projects/greyscaled/ http://themes.freshmeat.net/projects/ufosightings/ http://themes.freshmeat.net/projects/1in1-xp/
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=GPL-2 public-domain freedist
+RDEPEND=x11-wm/icewm
+SLOT=0
+SRC_URI=http://download.freshmeat.net/themes/icecrack/icecrack-default-2.0.0.tar.gz http://download.freshmeat.net/themes/icebox-red/icebox-red-default-1.2.13.tar.gz http://download.freshmeat.net/themes/cyrusicewm/cyrusicewm-1.0.0.tar http://download.freshmeat.net/themes/greyscaled/greyscaled-stable.tar.gz http://download.freshmeat.net/themes/ufosightings/ufosightings-1.0.0.tar.gz http://download.freshmeat.net/themes/1in1-xp/1in1-xp-default.tar.gz
+_md5_=5e1695979c7f67e1b24dabe4597b1a3c

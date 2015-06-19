@@ -1,0 +1,55 @@
+# ChangeLog for net-analyzer/flowgrind
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/flowgrind/ChangeLog,v 1.11 2014/07/11 12:35:23 jer Exp $
+
+  11 Jul 2014; Jeroen Roovers <jer@gentoo.org> -flowgrind-0.5.9.ebuild,
+  -flowgrind-0.6.1.ebuild, -flowgrind-0.7.ebuild,
+  -files/flowgrind-0.5.8-gentoo.patch:
+  Old.
+
+*flowgrind-0.7.1 (28 May 2014)
+
+  28 May 2014; Tim Harder <radhermit@gentoo.org> +flowgrind-0.7.1.ebuild:
+  Version bump.
+
+*flowgrind-0.7 (11 Apr 2014)
+
+  11 Apr 2014; Tim Harder <radhermit@gentoo.org> +flowgrind-0.7.ebuild:
+  Version bump.
+
+  10 Jul 2013; Jeroen Roovers <jer@gentoo.org> -flowgrind-0.5.8.ebuild,
+  -flowgrind-0.6.0.ebuild:
+  Old.
+
+*flowgrind-0.6.1 (10 Jul 2013)
+
+  10 Jul 2013; Tim Harder <radhermit@gentoo.org> +flowgrind-0.6.1.ebuild:
+  Version bump.
+
+*flowgrind-0.6.0 (25 Apr 2013)
+
+  25 Apr 2013; Tim Harder <radhermit@gentoo.org> +flowgrind-0.6.0.ebuild:
+  Version bump.
+
+*flowgrind-0.5.9 (14 Jan 2013)
+
+  14 Jan 2013; Jeroen Roovers <jer@gentoo.org> +flowgrind-0.5.9.ebuild:
+  Version bump.
+
+  22 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/flowgrind-0.5.8-gentoo.patch, -files/flowgrind-0.5.8-cflags.patch,
+  flowgrind-0.5.8.ebuild:
+  Fix building with automake 1.12 (bug #426484); fix building with forced --as-
+  needed. Patches sent upstream.
+
+  21 Mar 2012; Tim Harder <radhermit@gentoo.org> flowgrind-0.5.8.ebuild:
+  Update HOMEPAGE and SRC_URI.
+
+  18 Mar 2012; Tim Harder <radhermit@gentoo.org> flowgrind-0.5.8.ebuild:
+  Use correct dep.
+
+*flowgrind-0.5.8 (18 Mar 2012)
+
+  18 Mar 2012; Tim Harder <radhermit@gentoo.org> +flowgrind-0.5.8.ebuild,
+  +files/flowgrind-0.5.8-cflags.patch, +metadata.xml:
+  Initial import (bug #344923). Ebuild by me.

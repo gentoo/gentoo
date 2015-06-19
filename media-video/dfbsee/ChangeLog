@@ -1,0 +1,84 @@
+# ChangeLog for media-video/dfbsee
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/dfbsee/ChangeLog,v 1.14 2015/02/16 07:56:56 vapier Exp $
+
+  16 Feb 2015; Mike Frysinger <vapier@gentoo.org> dfbsee-0.7.4-r1.ebuild:
+  Rewrite ebuild to use EAPI=4 so we can depend on DirectFB[png] as pointed out
+  by Toralf Förster #314757 by Diego Elio Pettenò.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> dfbsee-0.7.4-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Aug 2010; Markos Chandras <hwoarang@gentoo.org> dfbsee-0.7.4-r1.ebuild:
+  Stable on amd64 wrt bug #333823
+
+  31 Oct 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/dfbsee-0.7.4-standardtypes.patch, dfbsee-0.7.4-r1.ebuild:
+  Use standard types instead of __ prefixed ones, fixes bug #235783, stop
+  using bindnow-flags, bug #226983, and tc-export CC
+
+  27 Nov 2007; Matthias Schwarzott <zzam@gentoo.org> dfbsee-0.7.4.ebuild,
+  dfbsee-0.7.4-r1.ebuild:
+  Fixed quoting.
+
+  21 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  dfbsee-0.7.4-r1.ebuild:
+  stable x86, bug 193070
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*dfbsee-0.7.4-r1 (17 Dec 2005)
+
+  17 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/dfbsee-0.7.4-direcfb-0.9.24.patch, +files/dfbsee-0.7.4-gcc4.patch,
+  +dfbsee-0.7.4-r1.ebuild:
+  Added patches to build with recent directfb versions and with GCC4. Thanks
+  to Richard Juckes in bugs #114842 and #114843.
+
+  31 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> dfbsee-0.7.4.ebuild:
+  Don't append -Wl,-z,now; use $(bindnow-flags) instead.
+
+  30 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> dfbsee-0.7.4.ebuild:
+  Remove unneeded virtual/x11 dependency as per bug #96481.
+
+  10 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> dfbsee-0.7.4.ebuild:
+  Don't install INSTALL file.
+
+  11 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> dfbsee-0.7.4.ebuild:
+  corrected path for S to fix #76211.also appended some ldflags to get rid of a
+  QA notice.
+
+*dfbsee-0.7.4 (26 Nov 2004)
+
+  26 Nov 2004; Chris White <chriswhite@gentoo.org> +metadata.xml,
+  +dfbsee-0.7.4.ebuild:
+  Step 1 of moving DFBSee to dfbsee.
+
+  26 Nov 2004; Chris White <chriswhite@gentoo.org> -dfbsee-0.7.2.ebuild,
+  dfbsee-0.7.4.ebuild:
+  Getting ready to move this to a proper ebuild policy oriented package.
+  Got the ebuild to install docs.
+
+  13 Aug 2004; Chris White <chriswhite@gentoo.org> +metadata.xml:
+  Adding missing metadata.xml.
+
+  12 Apr 2004; Seemant Kulleen <seemant@gentoo.org> dfbsee-0.7.2.ebuild,
+  dfbsee-0.7.4.ebuild:
+  added pkgconfig to compile time dependency list, closing bug #47349 by: Rob
+  Olsthoorn <rolsthoorn@zonnet.nl>
+
+  02 Jan 2004; Sven Blumenstein <bazik@gentoo.org> dfbsee-0.7.2.ebuild,
+  dfbsee-0.7.4.ebuild:
+  Masked on sparc as DEPEND dev-libs/DirectFB is -sparc.
+
+*dfbsee-0.7.4 (03 May 2003)
+
+  03 May 2003; Michael Nazaroff <naz@gentoo.org> dfbsee-0.7.4.ebuild :
+  Bumped to a new version of DFBSee.
+
+*dfbsee-0.7.2 (12 Jun 2002)
+
+  12 Jun 2002; M.Nazaroff <naz@gentoo.org>  dfbsee-0.7.2.ebuild: 
+  This is the initial release of DFBSee ebuild for portage, this program is a
+  DirectFB video and image viewer.

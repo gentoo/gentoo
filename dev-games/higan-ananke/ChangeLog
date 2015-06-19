@@ -1,0 +1,34 @@
+# ChangeLog for dev-games/higan-ananke
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-games/higan-ananke/ChangeLog,v 1.8 2015/02/15 23:26:11 mr_bones_ Exp $
+
+  15 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> -higan-ananke-092.ebuild:
+  old
+
+  10 Feb 2015; Agostino Sarubbo <ago@gentoo.org> higan-ananke-094.ebuild:
+  Stable for x86, wrt bug #539052
+
+  06 Feb 2015; Agostino Sarubbo <ago@gentoo.org> higan-ananke-094.ebuild:
+  Stable for amd64, wrt bug #539052
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+*higan-ananke-094 (23 Feb 2014)
+
+  23 Feb 2014; Julian Ospald <hasufell@gentoo.org> +higan-ananke-094.ebuild,
+  +files/higan-ananke-094-makefile.patch:
+  version bump
+
+  28 Aug 2013; Agostino Sarubbo <ago@gentoo.org> higan-ananke-092.ebuild:
+  Stable for x86, wrt bug #480788
+
+  17 Aug 2013; Agostino Sarubbo <ago@gentoo.org> higan-ananke-092.ebuild:
+  Stable for amd64, wrt bug #480788
+
+*higan-ananke-092 (09 Jun 2013)
+
+  09 Jun 2013; Julian Ospald <hasufell@gentoo.org> +higan-ananke-092.ebuild,
+  +files/higan-ananke-092-bps-path-fix.patch,
+  +files/higan-ananke-092-makefile.patch, +metadata.xml:
+  initial import

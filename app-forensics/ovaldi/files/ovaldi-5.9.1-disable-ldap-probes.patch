@@ -1,0 +1,32 @@
+--- src/linux/ProbeFactory.cpp	2010-12-10 13:37:00.019140703 +0100
++++ src/linux/ProbeFactory.cpp	2010-08-27 21:23:41.000000000 +0200
+@@ -61,8 +61,6 @@
+ 		probe = XmlFileContentProbe::Instance();
+ 	} else if(objectName.compare("textfilecontent54_object") == 0) {
+ 		probe = TextFileContent54Probe::Instance();
+-	} else if(objectName.compare("ldap_object") == 0) {
+-		probe = LDAPProbe::Instance();
+ 
+ // here are the objects defined in the unix schema
+ 	} else if(objectName.compare("file_object") == 0) {
+--- src/linux/ProbeFactory.h	2010-12-10 13:36:50.315386197 +0100
++++ src/linux/ProbeFactory.h	2010-08-27 21:23:41.000000000 +0200
+@@ -68,7 +68,6 @@
+ #include "RunLevelProbe.h"
+ #include "XinetdProbe.h"
+ #include "InetdProbe.h"
+-#include "LDAPProbe.h"
+ 
+ 
+ 
+--- project/linux/Makefile	2010-12-10 13:49:06.655143160 +0100
++++ project/linux/Makefile	2010-12-10 13:47:37.247382096 +0100
+@@ -49,7 +49,7 @@
+ LIBDIR = -L/usr/local/lib -L/usr/lib
+ 
+ # What libraries do we need?
+-LIBS = -lxerces-c -lxalan-c -lpcre -lpopt -lgcrypt -lldap
++LIBS = -lxerces-c -lxalan-c -lpcre -lpopt -lgcrypt
+ 
+ # Determine what package management system is being used 
+ PACKAGE_RPM  = $(shell /usr/bin/env rpm  --version 2>/dev/null)

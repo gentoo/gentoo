@@ -1,0 +1,95 @@
+#!/sbin/runscript
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# (Written  by Phillip Berndt <phillip.berndt at gmail dot com>)
+# (Modified by Steven Brudenell <steven dot brudenell at gmail>)
+# $Header: /var/cvsroot/gentoo-x86/net-misc/nstx/files/nstxd.init,v 1.1 2009/12/06 19:37:38 robbat2 Exp $
+
+depend() {
+    if [ ! -z "${BIND_INTERFACE}" ] ; then
+        if [ -x /etc/init.d/net.${BIND_INTERFACE} ] ; then
+            need net.${BIND_INTERFACE}
+        fi
+    fi
+
+    # If the user set TUNTAP_INTERFACE, they probably have a net script
+    # configuring that interface. nstxcd is responsible for actually creating
+    # the stupid thing, so we need to run before the config.
+    if [ ! -z "${TUNTAP_INTERFACE}" ] ; then
+        if [ -x /etc/init.d/net.${TUNTAP_INTERFACE} ] ; then
+            before net.${TUNTAP_INTERFACE}
+        fi
+    fi
+}
+
+loadtun() {
+	if [ ! -e /dev/net/tun ]
+	then
+		ebegin "Loading TUN/TAP kernel module"
+		modprobe -q tun
+		eend $?
+	fi
+
+	if [ ! -e /dev/net/tun ]
+	then
+		eend 1 "Failed to load TUN driver! (did you compile your kernel with TUN/TAP support?)"
+		return 1
+	fi
+
+	return 0
+}
+
+checkconfig() {
+	if [ -z "${DOMAIN}" ] ; then
+        eerror "DOMAIN must be set"
+        return 1
+    fi
+
+    [ -z "${TUNTAP_INTERFACE}" ] || NSTXD_OPTS="${NSTXD_OPTS} -I ${TUNTAP_INTERFACE}"
+    [ -z "${TUNTAP_DEVICE}" ]    || NSTXD_OPTS="${NSTXD_OPTS} -d ${TUNTAP_DEVICE}"
+    [ -z "${BIND_INTERFACE}" ]   || NSTXD_OPTS="${NSTXD_OPTS} -i ${BIND_INTERFACE}"
+    [ -z "${CHROOT}" ]           || NSTXD_OPTS="${NSTXD_OPTS} -C ${CHROOT}"
+    [ -z "${NSTXD_USER}" ]       || NSTXD_OPTS="${NSTXD_OPTS} -u ${NSTXD_USER}"
+
+    case "${MODE}" in
+    TUN)
+        NSTXD_OPTS="${NSTXD_OPTS} -t"
+        ;;
+    TAP)
+        NSTXD_OPTS="${NSTXD_OPTS} -T"
+        ;;
+    *)
+        eerror "MODE must be either TUN or TAP"
+        return 1
+        ;;
+    esac
+}
+
+start() {
+    checkconfig || return 1
+
+    loadtun || return 1
+
+	ebegin "Starting nstxd"
+
+	start-stop-daemon \
+        --start \
+        --background \
+        --make-pidfile \
+        --exec /usr/sbin/nstxd \
+        --pidfile "/var/run/nstxd.pid" \
+        -- ${NSTXD_OPTS} ${DOMAIN}
+
+    eend $?
+}
+
+stop() {
+	ebegin "Stopping nstxd"
+
+	start-stop-daemon \
+        --stop \
+        --exec /usr/sbin/nstxd \
+        --pidfile "/var/run/nstxd.pid"
+
+	eend $?
+}

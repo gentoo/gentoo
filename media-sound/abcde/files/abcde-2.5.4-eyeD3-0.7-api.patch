@@ -1,0 +1,22 @@
+Update to eyeD3 >= 0.7.0 API
+
+--- abcde
++++ abcde
+@@ -829,7 +829,7 @@
+						-a "$TRACKARTIST" -t "$TRACKNAME" -Y "$CDYEAR" \
+						-G "$GENREID" -n "${TRACKNUM:-$1}" \
+						${TRACKNUM:+-N "$TRACKS"} \
+-						${ENCODING:+--set-encoding="$ENCODING"} \
++						${ENCODING:+--encoding "$ENCODING"} \
+						${TPE2:+--set-text-frame=TPE2:"$TPE2"} \
+						"$ABCDETEMPDIR/track$1.$OUTPUT"
+					;;
+@@ -3879,7 +3879,7 @@
+	TAGGER="$EYED3"
+	TAGGEROPTS="$ID3V2OPTS"
+	ID3SYNTAX=eyed3
+-	TAGGEROPTS="--set-encoding=utf16-LE $ID3V2OPTS"
++	TAGGEROPTS="--encoding utf16 $ID3V2OPTS"
+ fi
+
+ # NOGAP is specific to lame. Other encoders fail ...

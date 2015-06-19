@@ -1,0 +1,37 @@
+# ChangeLog for dev-haskell/hdbc-mysql
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hdbc-mysql/ChangeLog,v 1.7 2015/06/06 11:21:52 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*hdbc-mysql-0.6.6.1-r2 (03 Jul 2014)
+
+  03 Jul 2014; Mark Wright <gienah@gentoo.org>
+  +files/hdbc-mysql-0.6.6.1-cabal-1.18.patch, +hdbc-mysql-0.6.6.1-r2.ebuild:
+  Fix Bug 514342 - dev-haskell/hdbc-mysql-0.6.6.1-r1 fails to build, based on
+  the hdbc-postgresql patch by gracjan. Add virtual/mysql as suggested by
+  grknight.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*hdbc-mysql-0.6.6.1-r1 (24 Dec 2012)
+
+  24 Dec 2012; Sergei Trofimovich <slyfox@gentoo.org>
+  +hdbc-mysql-0.6.6.1-r1.ebuild, -hdbc-mysql-0.6.6.0.ebuild:
+  Version bump.
+
+  06 Dec 2012; Sergei Trofimovich <slyfox@gentoo.org> hdbc-mysql-0.6.6.0.ebuild:
+  Get rid of 'dev-haskell/time' depend as it's a ghc's core library.
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org>
+  hdbc-mysql-0.6.6.0.ebuild:
+  move dev-haskell/hdbc-mysql/hdbc-mysql-0.6.6.0.ebuild ebuild to
+  mirror://hackage
+
+*hdbc-mysql-0.6.6.0 (02 Jun 2012)
+
+  02 Jun 2012; Mark Wright <gienah@gentoo.org> +hdbc-mysql-0.6.6.0.ebuild,
+  +metadata.xml:
+  Add hdbc-mysql

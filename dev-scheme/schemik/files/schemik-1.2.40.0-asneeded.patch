@@ -1,0 +1,15 @@
+Fixing build with as-needed, respect LDFLAGS
+
+http://bugs.gentoo.org/show_bug.cgi?id=330623
+
+--- Makefile
++++ Makefile
+@@ -4,7 +4,7 @@
+ STATIC_NAME="schemik-i686-linux-static"
+ 
+ all: stack_eval.o types.o functions.o env.o initial_env.o schemik.c rt.o int_funcs.o readline_wrapper.o config.h thread_pool.o parser.o lexer.o errors.o
+-	$(CC) ${COMP_ARGS} `pkg-config --libs --cflags glib-2.0` -o schemik stack_eval.o types.o int_funcs.o functions.o env.o initial_env.o rt.o readline_wrapper.o thread_pool.o parser.o lexer.o errors.o schemik.c -lgc -lpthread -lreadline -lncurses -lm
++	$(CC) $(LDFLAGS) ${COMP_ARGS} -o schemik stack_eval.o types.o int_funcs.o functions.o env.o initial_env.o rt.o readline_wrapper.o thread_pool.o parser.o lexer.o errors.o schemik.c -lgc -lpthread -lreadline -lncurses -lm `pkg-config --libs --cflags glib-2.0`
+ 
+ stack_eval.o: stack_eval.c eval.h vm.h vm.c stack.c stack.h int_funcs.h functions.h rt.h mutex.h types.h config.h dump_vm.c tm_log.c tm_log.h constants.def
+ 	$(CC) ${COMP_ARGS} `pkg-config --cflags glib-2.0` -c stack_eval.c

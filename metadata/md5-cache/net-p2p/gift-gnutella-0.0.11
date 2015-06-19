@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=>=net-p2p/gift-0.11.6 virtual/pkgconfig app-arch/bzip2 dev-libs/libxml2
+DESCRIPTION=The giFT Gnutella plugin
+HOMEPAGE=http://gift.sf.net/
+IUSE=xml
+KEYWORDS=alpha amd64 ia64 ~ppc sparc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=net-p2p/gift-0.11.6
+SLOT=0
+SRC_URI=mirror://sourceforge/gift/gift-gnutella-0.0.11.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f648ea567749eea777110ada0365d80e

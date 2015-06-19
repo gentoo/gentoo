@@ -1,0 +1,154 @@
+# ChangeLog for games-action/bomberclone
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/bomberclone/ChangeLog,v 1.33 2014/12/31 09:52:09 tupone Exp $
+
+  31 Dec 2014; Tupone Alfredo <tupone@gentoo.org> bomberclone-0.11.8.ebuild:
+  Migration to EAPI 4
+
+  05 Sep 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  bomberclone-0.11.8.ebuild:
+  any mod support will do
+
+  18 Jun 2011; Tupone Alfredo <tupone@gentoo.org> bomberclone-0.11.8.ebuild,
+  +files/bomberclone-0.11.8-underlink.patch:
+  Fix underlink. Bug #369301 by Diego Elio Pettenò
+
+  04 Mar 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  bomberclone-0.11.8.ebuild:
+  avoid -Werror (bug #260894)
+
+  14 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  bomberclone-0.11.8.ebuild:
+  EAPI=2; add use-based deps; also install the music (bug #254977)
+
+  25 Jun 2008; nixnut <nixnut@gentoo.org> bomberclone-0.11.8.ebuild:
+  Stable on ppc wrt bug 229305
+
+  25 Jun 2008; Markus Rothe <corsair@gentoo.org> bomberclone-0.11.8.ebuild:
+  Stable on ppc64; bug #229305
+
+  25 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  bomberclone-0.11.8.ebuild:
+  stable x86, bug 229305
+
+  24 Jun 2008; Santiago M. Mola <coldwind@gentoo.org>
+  bomberclone-0.11.8.ebuild:
+  amd64 stable wrt bug #229305.
+
+*bomberclone-0.11.8 (19 Dec 2007)
+
+  19 Dec 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  +bomberclone-0.11.8.ebuild:
+  version bump
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  bomberclone-0.11.7.ebuild:
+  Removing old virtual/x11 dependency.
+
+*bomberclone-0.11.7 (25 Aug 2006)
+
+  25 Aug 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/bomberclone-0.11.6.2-fix-kaboom.patch,
+  -bomberclone-0.11.6.2-r1.ebuild, +bomberclone-0.11.7.ebuild:
+  version bump; clean out old insecure version
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-bomberclone-0.11.6.2, files/digest-bomberclone-0.11.6.2-r1,
+  Manifest:
+  Fixing SHA256 digest, pass four
+
+*bomberclone-0.11.6.2-r1 (12 Feb 2006)
+
+  12 Feb 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/bomberclone-0.11.6.2-fix-kaboom.patch,
+  +bomberclone-0.11.6.2-r1.ebuild:
+  Patch by Tim Yamin to fix security issues #121605.
+
+  13 Jan 2006; Stefan Schweizer <genstef@gentoo.org>
+  bomberclone-0.11.6.2.ebuild:
+  Add modular depends
+
+  03 Oct 2005; Markus Rothe <corsair@gentoo.org>
+  bomberclone-0.11.6.2.ebuild:
+  Stable on ppc64
+
+  27 Aug 2005; Markus Rothe <corsair@gentoo.org>
+  bomberclone-0.11.6.2.ebuild:
+  added ~ppc64
+
+  22 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  bomberclone-0.11.6.2.ebuild:
+  stable on amd64
+
+*bomberclone-0.11.6.2 (15 Apr 2005)
+
+  15 Apr 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +bomberclone-0.11.6.2.ebuild:
+  version bump
+
+*bomberclone-0.11.6 (31 Mar 2005)
+
+  31 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +bomberclone-0.11.6.ebuild:
+  version bump
+
+*bomberclone-0.11.5 (29 Dec 2004)
+
+  29 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  -bomberclone-0.11.2.ebuild, -bomberclone-0.11.3.ebuild,
+  -bomberclone-0.11.4.ebuild, +bomberclone-0.11.5.ebuild:
+  version bump; clean old
+
+*bomberclone-0.11.4 (13 Dec 2004)
+
+  13 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +bomberclone-0.11.4.ebuild:
+  version bump
+
+  01 Oct 2004; Danny van Dyk <kugelfang@gentoo.org> bomberclone-0.11.3.ebuild:
+  Marked ~amd64.
+
+*bomberclone-0.11.3 (01 Sep 2004)
+
+  01 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  -bomberclone-0.11.1.ebuild, +bomberclone-0.11.3.ebuild:
+  version bump (bug #61144); add ~mips back in; clean older version
+
+  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  bomberclone-0.11.1.ebuild:
+  Added IUSE.
+
+  14 Mar 2004; Stephen P. Becker <geoman@gentoo.org>
+  bomberclone-0.11.1.ebuild:
+  Added ~mips keyword.
+
+*bomberclone-0.11.2 (09 Feb 2004)
+
+  09 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  bomberclone-0.11.2.ebuild:
+  version bump
+
+*bomberclone-0.11.1 (01 Feb 2004)
+
+  01 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*bomberclone-0.11.0 (06 Jan 2004)
+
+  06 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  bomberclone-0.10.0.ebuild, bomberclone-0.10.1.ebuild,
+  bomberclone-0.11.0.ebuild:
+  version bump
+
+*bomberclone-0.10.1 (13 Sep 2003)
+
+  13 Sep 2003; Michael Sterrett <msterret@gentoo.org>
+  bomberclone-0.10.1.ebuild:
+  version bump
+
+*bomberclone-0.10.0 (08 Sep 2003)
+
+  08 Sep 2003; Michael Sterrett <msterret@gentoo.org>
+  bomberclone-0.10.0.ebuild:
+  initial commit;  Original ebuild since the user submitted one didn't use the
+  games eclass.  (bug 28184)

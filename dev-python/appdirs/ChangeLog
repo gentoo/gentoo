@@ -1,0 +1,67 @@
+# ChangeLog for dev-python/appdirs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/appdirs/ChangeLog,v 1.12 2015/06/06 19:56:40 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> appdirs-1.2.0-r1.ebuild,
+  appdirs-1.4.0.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> appdirs-1.4.0.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> appdirs-1.4.0.ebuild:
+  amd64 stable, bug 540290
+
+  17 Nov 2014; Justin Lecher <jlec@gentoo.org> appdirs-1.4.0.ebuild,
+  metadata.xml:
+  Add x86 and py3_4 support
+
+*appdirs-1.4.0 (12 Oct 2014)
+
+  12 Oct 2014; Amadeusz Żołnowski <aidecoe@gentoo.org> +appdirs-1.4.0.ebuild:
+  Version bump. Fixes bug #524786.
+
+  appdirs 1.4.0
+
+  - [PR #42] AppAuthor is now optional on Windows
+  - [issue 41] Support Jython on Windows, Mac, and Unix-like platforms. Windows
+    support requires JNA.
+  - [PR #44] Fix incorrect behaviour of the site_config_dir method
+
+  appdirs 1.3.0
+
+  - [Unix, issue 16] Conform to XDG standard, instead of breaking it for
+    everybody
+  - [Unix] Removes gratuitous case mangling of the case, since *nix-es are
+    usually case sensitive, so mangling is not wise
+  - [Unix] Fixes the uterly wrong behaviour in site_data_dir, return result
+    based on XDG_DATA_DIRS and make room for respecting the standard which
+    specifies XDG_DATA_DIRS is a multiple-value variable
+  - [Issue 6] Add *_config_dir which are distinct on nix-es, according to XDG
+    specs; on Windows and Mac return the corresponding *_data_dir
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> appdirs-1.2.0-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  28 Dec 2013; Amadeusz Żołnowski <aidecoe@gentoo.org> -appdirs-1.2.0.ebuild:
+  Removed ebuild using deprecated distutils eclass.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> appdirs-1.2.0-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*appdirs-1.2.0-r1 (20 Jan 2013)
+
+  20 Jan 2013; Michał Górny <mgorny@gentoo.org> +appdirs-1.2.0-r1.ebuild:
+  Migrate to distutils-r1.
+
+*appdirs-1.2.0 (02 Aug 2012)
+
+  02 Aug 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> +appdirs-1.2.0.ebuild,
+  +metadata.xml:
+  Initial ebuild.

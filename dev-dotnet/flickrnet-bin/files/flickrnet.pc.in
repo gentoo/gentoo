@@ -1,0 +1,8 @@
+libdir=@LIBDIR@
+assemblies_dir=${libdir}/mono/FlickrNet
+Libraries=${assemblies_dir}/FlickrNet.dll
+ 
+Name: FlickrNet
+Description: Flickr.Net API Library
+Version: @VERSION@
+Libs: -r:${assemblies_dir}/FlickrNet.dll

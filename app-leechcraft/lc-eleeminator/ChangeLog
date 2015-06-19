@@ -1,0 +1,15 @@
+# ChangeLog for app-leechcraft/lc-eleeminator
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-leechcraft/lc-eleeminator/ChangeLog,v 1.2 2014/08/03 18:50:02 maksbotan Exp $
+
+*lc-eleeminator-0.6.70 (03 Aug 2014)
+
+  03 Aug 2014; Maxim Koltsov <maksbotan@gentoo.org>
+  +lc-eleeminator-0.6.70.ebuild:
+  Bump LeechCraft to 0.6.70, thanks to 0xd34df00d.
+
+*lc-eleeminator-9999 (20 May 2014)
+
+  20 May 2014; Maxim Koltsov <maksbotan@gentoo.org> +lc-eleeminator-9999.ebuild,
+  +metadata.xml:
+  Add lc-eleeminator plugin

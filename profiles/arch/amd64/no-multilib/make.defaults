@@ -1,0 +1,9 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/amd64/no-multilib/make.defaults,v 1.2 2013/02/01 21:28:56 mgorny Exp $
+
+MULTILIB_ABIS="amd64"
+
+# Michał Górny <mgorny@gentoo.org> (26 Jan 2013)
+# Hide the ABI_X86 USE_EXPAND back for non-multilib profile.
+USE_EXPAND_HIDDEN="ABI_X86"

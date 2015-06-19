@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-libs/libxml2 net-misc/curl app-arch/unzip
+DESCRIPTION=cmdline tool to read, parse, merge, and write RSS (and Atom) feeds
+EAPI=5
+HOMEPAGE=http://rsstool.sourceforge.net/
+KEYWORDS=amd64 ppc ppc64 x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=dev-libs/libxml2 net-misc/curl
+SLOT=0
+SRC_URI=mirror://sourceforge/rsstool/rsstool-1.0.1rc2-src.zip
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=69b33da7f9de6a7ac26f76b6f7d6d93a

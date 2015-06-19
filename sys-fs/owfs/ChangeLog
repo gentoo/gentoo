@@ -1,0 +1,137 @@
+# ChangeLog for sys-fs/owfs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/owfs/ChangeLog,v 1.29 2015/06/17 19:46:47 grknight Exp $
+
+*owfs-2.7_p21-r4 (17 Jun 2015)
+
+  17 Jun 2015; Brian Evans <grknight@gentoo.org> +owfs-2.7_p21-r4.ebuild,
+  -owfs-2.7_p21-r3.ebuild:
+  Revbump to fix php dependency and remove deprecated require_php_cli and
+  depend.php.eclass
+
+  25 Mar 2015; Justin Lecher <jlec@gentoo.org> owfs-2.7_p21-r3.ebuild:
+  Fix tcl/tk slotting; bump to EAPI=5
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> -owfs-2.7_p21-r2.ebuild,
+  owfs-2.7_p21-r3.ebuild:
+  Fix tcl/tk slotting; drop old
+
+*owfs-2.7_p21-r3 (26 Dec 2014)
+
+  26 Dec 2014; Michał Górny <mgorny@gentoo.org> +owfs-2.7_p21-r3.ebuild:
+  Convert to distutils-r1.
+
+  17 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  owfs-2.7_p21-r2.ebuild:
+  Replace fixlocalpod with perl_delete_localpod
+
+*owfs-2.7_p21-r2 (03 Apr 2014)
+
+  03 Apr 2014; Tom Wijsman <TomWij@gentoo.org> +owfs-2.7_p21-r2.ebuild,
+  -owfs-2.7_p21-r1.ebuild:
+  [QA] Revision bump. EAPI 5. Support user's CFLAGS and LDFLAGS; fixes bug
+  #331795, reported by Diego.
+
+  22 Mar 2014; Michael Palimaka <kensington@gentoo.org> -owfs-2.7_p21.ebuild:
+  Remove old.
+
+  03 Mar 2013; Wolfram Schlich <wschlich@gentoo.org> metadata.xml:
+  removed myself from metadata.xml, added maintainer-needed@gentoo.org
+
+  25 May 2012; Samuli Suominen <ssuominen@gentoo.org> owfs-2.7_p21.ebuild,
+  owfs-2.7_p21-r1.ebuild:
+  Pull in SLOT="0" of virtual/libusb because libusb-1 is not supported.
+
+  24 May 2012; Mike Frysinger <vapier@gentoo.org> owfs-2.7_p21-r1.ebuild,
+  owfs-2.7_p21.ebuild:
+  Inherit user for enewuser/etc...
+
+  22 May 2012; Samuli Suominen <ssuominen@gentoo.org> owfs-2.7_p21.ebuild,
+  owfs-2.7_p21-r1.ebuild:
+  Use virtual/libusb instead of dev-libs/libusb.
+
+*owfs-2.7_p21-r1 (20 May 2012)
+
+  20 May 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  +owfs-2.7_p21-r1.ebuild, +files/owfs-vendordir.patch:
+  Install perl modules into vendor dir, bug 295113. Acked by tove.
+
+  02 Apr 2012; Pacho Ramos <pacho@gentoo.org> owfs-2.7_p21.ebuild:
+  Drop net-misc/mDNSResponder dependency, bug #405399.
+
+  25 Feb 2012; Patrick Lauer <patrick@gentoo.org> owfs-2.7_p21.ebuild:
+  Restricting pypy and jython
+
+  22 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  owfs-2.7_p21.ebuild:
+  Set SUPPORT_PYTHON_ABIS (bug #316949).
+
+  15 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org> owfs-2.7_p21.ebuild:
+  Use base_src_unpack without arguments.
+
+  26 May 2009; Raúl Porcel <armin76@gentoo.org> owfs-2.7_p21.ebuild:
+  Add ~arm wrt #270463
+
+*owfs-2.7_p21 (25 May 2009)
+
+  25 May 2009; Wolfram Schlich <wschlich@gentoo.org> +owfs-2.7_p21.ebuild:
+  version bump, fix bug #248304
+
+  08 Mar 2009; Petteri Räty <betelgeuse@gentoo.org> owfs-2.7_p4.ebuild:
+  Migrate to EAPI 2.
+
+  22 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  30 May 2008; Wolfram Schlich <wschlich@gentoo.org> -owfs-2.7_p0.ebuild,
+  -owfs-2.7_p0-r1.ebuild, -owfs-2.7_p0-r2.ebuild, -owfs-2.7_p3.ebuild,
+  owfs-2.7_p4.ebuild:
+  removed old versions, fix deps as per bug #221499
+
+  22 Mar 2008; Wolfram Schlich <wschlich@gentoo.org> -owfs-2.7_p0.ebuild,
+  -owfs-2.7_p0-r1.ebuild, -owfs-2.7_p0-r2.ebuild, -owfs-2.7_p3.ebuild:
+  removed old versions
+
+*owfs-2.7_p4 (22 Mar 2008)
+
+  22 Mar 2008; Wolfram Schlich <wschlich@gentoo.org> +owfs-2.7_p4.ebuild:
+  version bump
+
+  24 Feb 2008; Wolfram Schlich <wschlich@gentoo.org> files/owfs.initd:
+  fix variable name in owfs init script wrt bug #203642
+
+*owfs-2.7_p3 (24 Jan 2008)
+
+  24 Jan 2008; Wolfram Schlich <wschlich@gentoo.org> +owfs-2.7_p3.ebuild:
+  version bump
+
+  17 Dec 2007; Wolfram Schlich <wschlich@gentoo.org> files/owfs.confd,
+  files/owfs.initd, files/owftpd.confd, files/owftpd.initd,
+  files/owhttpd.confd, files/owhttpd.initd, files/owserver.confd,
+  files/owserver.initd:
+  change owserver port number to its IANA assigned port 4304, owhttpd and
+  owftpd now use unassigned ones from the 43xx range
+
+*owfs-2.7_p0-r2 (17 Dec 2007)
+
+  17 Dec 2007; Wolfram Schlich <wschlich@gentoo.org> +files/owfs.confd,
+  +files/owfs.initd, files/owftpd.initd, files/owhttpd.initd,
+  files/owserver.initd, +owfs-2.7_p0-r2.ebuild:
+  added owfs FUSE daemon support, small fixup for init scripts
+
+*owfs-2.7_p0-r1 (15 Dec 2007)
+
+  15 Dec 2007; Wolfram Schlich <wschlich@gentoo.org> +files/owftpd.confd,
+  +files/owftpd.initd, +files/owhttpd.confd, +files/owhttpd.initd,
+  +files/owserver.confd, +files/owserver.initd, +owfs-2.7_p0-r1.ebuild:
+  added daemon init scripts and zeroconf USE flag, renamed ftp
+  USE flag to ftpd
+
+  08 Dec 2007; Wolfram Schlich <wschlich@gentoo.org> owfs-2.7_p0.ebuild:
+  fix php check, add ~amd64
+
+*owfs-2.7_p0 (06 Dec 2007)
+
+  06 Dec 2007; Wolfram Schlich <wschlich@gentoo.org> +metadata.xml,
+  +owfs-2.7_p0.ebuild:
+  initial import

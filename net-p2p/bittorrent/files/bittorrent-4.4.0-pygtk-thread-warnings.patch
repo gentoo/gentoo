@@ -1,0 +1,81 @@
+GtkDeprecationWarning: gtk.threads_leave is deprecated, use gtk.gdk.threads_leave instead
+
+--- a/BitTorrent/GUI.py
++++ b/BitTorrent/GUI.py
+@@ -25,9 +25,9 @@ from BitTorrent import app_name, FAQ_URL, languages, language_names
+ from BitTorrent.platform import image_root, read_language_file, write_language_file
+ 
+ def lock_wrap(function, *args):
+-    gtk.threads_enter()
++    gtk.gdk.threads_enter()
+     function(*args)
+-    gtk.threads_leave()
++    gtk.gdk.threads_leave()
+ 
+ def gtk_wrap(function, *args):
+     gobject.idle_add(lock_wrap, function, *args)
+@@ -377,10 +377,10 @@ class AutoScrollingWindow(ScrolledWindow):
+ 
+     def scroll_and_wait(self, amount, lock_held):
+         if not lock_held:
+-            gtk.threads_enter()
++            gtk.gdk.threads_enter()
+         self.scroll_by(0, amount)
+         if not lock_held:
+-            gtk.threads_leave()
++            gtk.gdk.threads_leave()
+         if self.vscrolltimeout is not None:
+             gobject.source_remove(self.vscrolltimeout)
+         self.vscrolltimeout = gobject.timeout_add(100, self.scroll_and_wait, amount, False)
+--- a/bittorrent.py
++++ b/bittorrent.py
+@@ -2742,7 +2742,7 @@ class DownloadInfoFrame(object):
+         if self.config['start_minimized']:
+             self.mainwindow.iconify()
+        
+-        gtk.threads_enter()
++        gtk.gdk.threads_enter()
+ 
+         self.mainwindow.set_border_width(0)
+ 
+@@ -2942,7 +2942,7 @@ class DownloadInfoFrame(object):
+ 
+         self.nag()
+         
+-        gtk.threads_leave()
++        gtk.gdk.threads_leave()
+ 
+     def window_event(self, widget, event, *args):
+         if event.changed_mask == gtk.gdk.WINDOW_STATE_ICONIFIED:
+@@ -3758,14 +3758,14 @@ class MainLoop:
+         self.mainwindow = None
+         self.started = 0
+         
+-        gtk.threads_init()
++        gtk.gdk.threads_init()
+ 
+     def set_mainwindow(self, mainwindow):
+         self.mainwindow = mainwindow
+ 
+     def run(self):
+         self.mainwindow.traythread.start()
+-        gtk.threads_enter()        
++        gtk.gdk.threads_enter()        
+ 
+         if self.mainwindow:
+             self.mainwindow.ssbutton.set_paused(self.mainwindow.config['pause'])
+@@ -3777,12 +3777,12 @@ class MainLoop:
+             self.started = 1
+             gtk.main() 
+         except KeyboardInterrupt:
+-            gtk.threads_leave()
++            gtk.gdk.threads_leave()
+             if self.mainwindow:
+                 self.mainwindow.torrentqueue.set_done()
+             raise
+         
+-        gtk.threads_leave()
++        gtk.gdk.threads_leave()
+ 
+     def quit(self):
+         if self.mainwindow: 

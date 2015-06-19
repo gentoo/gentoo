@@ -1,0 +1,33 @@
+# ChangeLog for media-video/blinkenthemes
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/blinkenthemes/ChangeLog,v 1.8 2012/05/05 08:58:55 jdhore Exp $
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> blinkenthemes-0.10.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  29 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Lars Weiler (Pylon) from metadata.xml (as per #215644). Assigning
+  to maintainer-needed.
+
+  30 Mar 2008; Lars Weiler <pylon@gentoo.org> blinkenthemes-0.10.ebuild:
+  Added dependency to dev-util/pkgconfig; bug #153367 and #205581.
+
+  27 Nov 2007; Matthias Schwarzott <zzam@gentoo.org>
+  blinkenthemes-0.10.ebuild:
+  Fixed quoting.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  28 May 2006; Lars Weiler <pylon@gentoo.org> blinkenthemes-0.10.ebuild:
+  Stable on x86.
+
+  18 Dec 2005; <chainsaw@gentoo.org> blinkenthemes-0.10.ebuild:
+  Keyword ~amd64.
+
+*blinkenthemes-0.10 (18 Dec 2005)
+
+  18 Dec 2005; Lars Weiler <pylon@gentoo.org> +metadata.xml,
+  +blinkenthemes-0.10.ebuild:
+  Themes for blinkensim.  Now everybody has a sample-usage.
+

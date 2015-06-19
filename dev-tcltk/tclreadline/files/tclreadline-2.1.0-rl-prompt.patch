@@ -1,0 +1,12 @@
+diff -ur a/tclreadline.c b/tclreadline.c
+--- a/tclreadline.c	2013-11-16 20:14:28.876272386 +0100
++++ b/tclreadline.c	2013-11-16 20:37:47.455986902 +0100
+@@ -234,7 +234,7 @@
+ 
+ 	    rl_callback_handler_install(
+ 			       objc == 3 ? Tcl_GetStringFromObj(objv[2], 0)
+-			       : "%", TclReadlineLineCompleteHandler);
++			       : "% ", TclReadlineLineCompleteHandler);
+ 
+ 	    Tcl_CreateFileHandler(0, TCL_READABLE,
+ 		TclReadlineReadHandler, (ClientData) NULL);

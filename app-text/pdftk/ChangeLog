@@ -1,0 +1,199 @@
+# ChangeLog for app-text/pdftk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/pdftk/ChangeLog,v 1.47 2015/01/26 11:05:05 mrueg Exp $
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -files/pdftk-1.44-LDFLAGS.patch,
+  -files/pdftk-1.44-Makefile.patch, -files/pdftk-1.45-flags.patch,
+  -pdftk-1.44.ebuild, -pdftk-1.45.ebuild:
+  Remove old.
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pdftk-2.02.ebuild:
+  Stable for x86, wrt bug #517816
+
+  31 Dec 2014; Agostino Sarubbo <ago@gentoo.org> pdftk-2.02.ebuild:
+  Stable for ppc, wrt bug #517816
+
+  27 Dec 2014; Agostino Sarubbo <ago@gentoo.org> pdftk-2.02.ebuild:
+  Stable for amd64, wrt bug #517816
+
+*pdftk-2.02 (10 Aug 2013)
+
+  10 Aug 2013; Tom Wijsman <TomWij@gentoo.org> +files/pdftk-2.02-flags.patch,
+  +pdftk-2.02.ebuild:
+  Version bump to 2.02. Fixes bug #450080, reported by Adam Randall,
+  7v5w7go9ub0o and Jeroen Roovers; applied patch by Ondrej Grover with small
+  fixes to make it work with 2.02 instead of 2.01 as well as to not turn
+  warnings into errors to avoid breakage without purpose.
+
+  03 Jul 2013; Christoph Junghans <ottxor@gentoo.org> pdftk-1.45.ebuild:
+  Added ~amd64-linux (tested by me)
+
+  10 May 2013; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove unused flag description from metadata
+
+*pdftk-1.45 (24 Mar 2013)
+
+  24 Mar 2013; Andreas K. Huettel <dilfridge@gentoo.org> +pdftk-1.45.ebuild,
+  +files/pdftk-1.45-flags.patch:
+  Version bump
+
+  16 Sep 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  pdftk-1.44.ebuild:
+  Keyword ~arm
+
+  28 Jan 2012; Andreas K. Huettel <dilfridge@gentoo.org> -pdftk-1.41-r1.ebuild,
+  -pdftk-1.41-r2.ebuild, -files/pdftk-1.41-gcc-4.3.patch,
+  -files/pdftk-1.41-gcc-4.4.patch, -files/pdftk-1.41-honor-ldflags.patch:
+  Cleanup
+
+  07 Jan 2012; Michael Weber <xmw@gentoo.org> pdftk-1.44.ebuild:
+  ppc stable (bug 370169)
+
+  08 Jun 2011; Markus Meier <maekke@gentoo.org> pdftk-1.44.ebuild:
+  x86 stable, bug #370169
+
+  07 Jun 2011; Markos Chandras <hwoarang@gentoo.org> pdftk-1.44.ebuild:
+  Stable on amd64 wrt bug #370169
+
+*pdftk-1.41-r2 (27 Nov 2010)
+
+  27 Nov 2010; Michael Weber <xmw@gentoo.org> +pdftk-1.41-r2.ebuild,
+  +pdftk-1.44.ebuild, +files/pdftk-1.44-LDFLAGS.patch,
+  +files/pdftk-1.44-Makefile.patch:
+  Revision bump to fix gcc:4.5 problems (bug 339345).
+
+*pdftk-1.44 (27 Nov 2010)
+
+  27 Nov 2010; Michael Weber <xmw@gentoo.org> +pdftk-1.44.ebuild,
+  +files/pdftk-1.44-LDFLAGS.patch, +files/pdftk-1.44-Makefile.patch:
+  Version bump, thanks to dabbot for the ebuild/patches on bug 343361.
+
+  09 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> pdftk-1.41-r1.ebuild:
+  Drop ppc64 wrt #196361, Comment #4
+
+  23 Jun 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  pdftk-1.41-r1.ebuild, metadata.xml:
+  Bring back nodrm USE flag, bug #296455
+
+  14 Nov 2009; Markus Meier <maekke@gentoo.org> pdftk-1.41-r1.ebuild:
+  amd64/x86 stable, bug #275620
+
+  08 Nov 2009; nixnut <nixnut@gentoo.org> pdftk-1.41-r1.ebuild:
+  ppc stable #275620
+
+  23 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> pdftk-1.41-r1.ebuild,
+  +files/pdftk-1.41-gcc-4.4.patch:
+  Fix building with GCC 4.4 wrt #269312.
+
+  11 Jun 2009; Serkan Kaba <serkan@gentoo.org> pdftk-1.41-r1.ebuild:
+  Fix lines that should have been commented. Fixes bug #273624 reported by
+  Pacho Ramos <pacho@condmat1.ciencias.uniovi.es>
+
+*pdftk-1.41-r1 (26 Dec 2008)
+
+  26 Dec 2008; Vlastimil Babka <caster@gentoo.org>
+  +files/pdftk-1.41-gcc-4.3.patch, +files/pdftk-1.41-honor-ldflags.patch,
+  +pdftk-1.41-r1.ebuild:
+  Revbump fixing build with gcc 4.3 (bug #225709 and #235645 and #251796)
+  thanks to patch adapted from Debian submitted by <andrex@mail.ee>. Fixes
+  LDFLAGS and man page (bug #209802 and #234832) thanks to Stephan Springer
+  <Gentoo-bugs@Lini.de>. Uses EAPI2 use deps for gcc[gcj] dep.
+
+  02 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+*pdftk-1.41 (07 May 2007)
+
+  07 May 2007; Stefan Schweizer <genstef@gentoo.org> +pdftk-1.41.ebuild:
+  version bump thanks to Vedran Miletić <rivanvx@fastmail.fm> in bug 157412
+
+  03 May 2007; Markus Rothe <corsair@gentoo.org> pdftk-1.12.ebuild:
+  Stable on ppc64
+
+  17 Apr 2007; Petteri Räty <betelgeuse@gentoo.org> pdftk-1.12.ebuild:
+  Use type -P instead of which. Fixes bug #174176.
+
+  17 Apr 2007; Petteri Räty <betelgeuse@gentoo.org> metadata.xml,
+  pdftk-1.12.ebuild:
+  Add the java herd to metadata and remove virtual/libc dependency.
+
+  12 Mar 2007; Leonardo Boshell <leonardop@gentoo.org> metadata.xml:
+  Removing text-markup herd because of its split, leaving printing as
+  maintainer.
+
+  25 Feb 2007; Markus Rothe <corsair@gentoo.org> pdftk-1.12.ebuild:
+  Added ~ppc64
+
+  03 Sep 2006; Stefan Schweizer <genstef@gentoo.org>
+  -files/pdftk-1.12-gcc-4-compilation.patch, pdftk-1.12.ebuild:
+  Use debian patch because it contains some fixes thanks to Ben Taitelbaum
+  <btaitelb@cs.oberlin.edu> in bug 146015
+
+  05 Jun 2006; Stefan Schweizer <genstef@gentoo.org>
+  +files/pdftk-1.12-user-pw.patch, -pdftk-0.94.1.ebuild, -pdftk-1.00.ebuild,
+  pdftk-1.12.ebuild:
+  Add user_pw only support, thanks to Georg Sauthoff <g_sauthoff@web.de> in
+  bug 127891 and remove old ebuilds
+
+  19 Mar 2006; Martin Ehmsen <ehmsen@gentoo.org>
+  +files/pdftk-1.12-gcc-4-compilation.patch, pdftk-1.12.ebuild:
+  Fixed incorrect einfo about java compilers, bug #125194.
+  Added patch to fix compilation with gcc-4,
+  thanks to Luca Merolla <luca.merolla@tiscalinet.it>, bug #126735.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> pdftk-1.12.ebuild:
+  Stable on ppc.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> pdftk-1.12.ebuild:
+  stable on amd64
+
+  28 Jan 2005; Michael Hanselmann <hansmi@gentoo.org> pdftk-1.12.ebuild:
+  Added to ~ppc.
+
+  10 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> pdftk-1.12.ebuild:
+  added ~amd64 to KEYWORDS. fixes #76754.
+
+  09 Dec 2004; Mamoru KOMACHI <usata@gentoo.org> -pdftk-1.10.ebuild,
+  -pdftk-1.11.ebuild, pdftk-1.12.ebuild:
+  Stable on x86.
+
+*pdftk-1.12 (13 Nov 2004)
+
+  13 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> +pdftk-1.12.ebuild:
+  Version bumped.
+
+*pdftk-1.11 (07 Nov 2004)
+
+  07 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> +pdftk-1.11.ebuild:
+  Version bumped.
+
+*pdftk-1.10 (30 Oct 2004)
+
+  30 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> +pdftk-1.10.ebuild:
+  Version bumped.
+
+  03 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> pdftk-1.00.ebuild:
+  Stable on x86.
+
+*pdftk-1.00 (17 Aug 2004)
+
+  17 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> -pdftk-0.93.ebuild,
+  pdftk-0.94.1.ebuild, +pdftk-1.00.ebuild:
+  Version bumped. Marked 0.94.1 stable on x86.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> pdftk-0.93.ebuild,
+  pdftk-0.94.1.ebuild:
+  virtual/glibc -> virtual/libc
+
+*pdftk-0.94.1 (06 Jun 2004)
+
+  06 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> pdftk-0.93.ebuild,
+  +pdftk-0.94.1.ebuild:
+  Version bumped. Corrected pkg_setup() message, thanks to antoine
+  marmingnon <antoine.marmingnon@wanadoo.fr>. Closing bug #52898
+
+*pdftk-0.93 (15 Mar 2004)
+
+  15 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> pdftk-0.93.ebuild:
+  Initial import. Ebuild submitted by TGL <degrenier@easyconnect.fr>,
+  closing bug #43929

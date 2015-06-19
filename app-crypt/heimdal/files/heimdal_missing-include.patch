@@ -1,0 +1,11 @@
+--- base/test_base.c	2011-09-30 15:58:45.000000000 +0300
++++ base/test_base.c	2011-12-27 23:04:50.482955923 +0200
+@@ -39,6 +39,8 @@
+ #include "heimbase.h"
+ #include "heimbasepriv.h"
+ 
++#include <stdlib.h>
++
+ static void
+ memory_free(heim_object_t obj)
+ {

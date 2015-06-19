@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=gmp? ( dev-libs/gmp )
+DESCRIPTION=Combine interpreter of esoteric languages
+EAPI=5
+HOMEPAGE=http://esco.sourceforge.net/
+IUSE=gmp linguas_ru
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=gmp? ( dev-libs/gmp )
+SLOT=0
+SRC_URI=mirror://sourceforge/esco/esco-src-0.512.tar.gz
+_md5_=ef1869814c3264ab96d25e71a70a6299

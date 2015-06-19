@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<herd>python</herd>
+	<maintainer>
+		<email>andreis.vinogradovs@gmail.com</email>
+	</maintainer>
+	<maintainer>
+		<email>maksbotan@gentoo.org</email>
+		<name>Maxim Koltsov</name>
+	</maintainer>
+	<longdescription>
+	The assets package does content-hash-naming (aka URL fingerprinting) so
+	you can use aggressive caching headers without risking that a client might
+	have an out-of-date version of an asset in its cache. If the content
+	changes, the content-hash-name also changes, resulting in a different URL
+	for each bytewise-unique version of an asset
+</longdescription>
+	<upstream>
+		<remote-id type="launchpad">web-assets</remote-id>
+	</upstream>
+</pkgmetadata>

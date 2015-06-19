@@ -1,0 +1,189 @@
+# ChangeLog for app-emacs/imaxima
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/imaxima/ChangeLog,v 1.47 2015/04/28 17:18:30 ulm Exp $
+
+  28 Apr 2015; Ulrich Müller <ulm@gentoo.org> -imaxima-1.0-r2.ebuild,
+  imaxima-1.0-r3.ebuild:
+  Stable on amd64, bug 502978. Remove old.
+
+  26 Apr 2015; Ulrich Müller <ulm@gentoo.org> imaxima-1.0-r3.ebuild:
+  Change dependency to dev-texlive/texlive-latexrecommended, since breqn.sty
+  from dev-tex/mh seems not to work with recent TeX Live versions. Bug 524114.
+
+  26 Apr 2015; Pacho Ramos <pacho@gentoo.org> imaxima-1.0-r3.ebuild:
+  ppc stable wrt bug #502978
+
+  26 Apr 2015; Pacho Ramos <pacho@gentoo.org> imaxima-1.0-r3.ebuild:
+  x86 stable wrt bug #502978
+
+  11 Sep 2014; Ulrich Müller <ulm@gentoo.org> imaxima-1.0-r3.ebuild:
+  Invoke Emacs with proper flags, bug 522582.
+
+  27 Feb 2014; Ulrich Müller <ulm@gentoo.org> imaxima-1.0-r3.ebuild:
+  Define ELISP_{PATCHES,REMOVE} for elisp.eclass.
+
+*imaxima-1.0-r3 (02 Jan 2013)
+
+  02 Jan 2013; Ulrich Müller <ulm@gentoo.org> imaxima-1.0-r2.ebuild,
+  +imaxima-1.0-r3.ebuild, +files/imaxima-1.0-1.03.patch,
+  +files/imaxima-1.0-mlabel.patch:
+  Fix problem with LaTeX output caused by renamed mlabel symbol in maxima-5.29,
+  bug 448242. Apply some minor updates from imaxima-imath-1.03, see the
+  ChangeLog of the package for details.
+
+  19 Jun 2011; Raúl Porcel <armin76@gentoo.org> imaxima-1.0-r2.ebuild:
+  Drop sparc keywords
+
+  23 May 2010; Ulrich Mueller <ulm@gentoo.org> -imaxima-1.0.ebuild:
+  Remove old.
+
+  23 May 2010; Pacho Ramos <pacho@gentoo.org> imaxima-1.0-r2.ebuild:
+  stable amd64, bug 313823
+
+  07 May 2010; Raúl Porcel <armin76@gentoo.org> imaxima-1.0-r2.ebuild:
+  sparc stable wrt #313823
+
+  16 Apr 2010; Brent Baude <ranger@gentoo.org> imaxima-1.0-r2.ebuild:
+  stable ppc, bug 313823
+
+  09 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  imaxima-1.0-r2.ebuild:
+  stable x86, bug 313823
+
+*imaxima-1.0-r2 (27 Feb 2010)
+
+  27 Feb 2010; Ulrich Mueller <ulm@gentoo.org> -imaxima-1.0-r1.ebuild,
+  +imaxima-1.0-r2.ebuild:
+  Fix GNU Info file.
+
+*imaxima-1.0-r1 (31 Jan 2010)
+
+  31 Jan 2010; Ulrich Mueller <ulm@gentoo.org> +imaxima-1.0-r1.ebuild:
+  Add prefix keywords, change EAPI to 3.
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> imaxima-1.0.ebuild:
+  virtual/ghostscript->app-text/ghostscript-gpl: ghostscript-gpl is the only
+  implementation left in the tree.
+
+  26 Dec 2009; Raúl Porcel <armin76@gentoo.org> imaxima-1.0.ebuild:
+  sparc stable wrt #264649
+
+  20 Dec 2009; Ulrich Mueller <ulm@gentoo.org> imaxima-1.0.ebuild:
+  HOMEPAGE updated.
+
+  07 Oct 2009; nixnut <nixnut@gentoo.org> imaxima-1.0.ebuild:
+  ppc stable #264649
+
+  03 Aug 2009; Markus Meier <maekke@gentoo.org> imaxima-1.0.ebuild:
+  amd64 stable, bug #264649
+
+  21 Jul 2009; Christian Faulhammer <fauli@gentoo.org> imaxima-1.0.ebuild:
+  stable x86, bug 264649
+
+  06 May 2009; Alexis Ballier <aballier@gentoo.org> imaxima-1.0.ebuild:
+  drop texlive 2007 support now that 2008 is stable and 2007 is going away
+
+*imaxima-1.0 (19 Apr 2009)
+
+  19 Apr 2009; Andrey Grozin <grozin@gentoo.org> -imaxima-0.99.ebuild,
+  -imaxima-1.0_rc2.ebuild, +imaxima-1.0.ebuild:
+  Version bump
+
+  25 Mar 2009; Tiago Cunha <tcunha@gentoo.org> imaxima-1.0_rc2.ebuild:
+  keyworded ~arch for sparc, bug 262975
+
+  18 Mar 2009; Ulrich Mueller <ulm@gentoo.org> imaxima-0.99.ebuild,
+  imaxima-1.0_rc2.ebuild:
+  Remove breqn from list of alternative dependencies.
+
+  28 Feb 2009; Ulrich Mueller <ulm@gentoo.org> imaxima-0.99.ebuild,
+  imaxima-1.0_rc2.ebuild:
+  Remove version restriction from maxima dependency.
+
+*imaxima-1.0_rc2 (23 Feb 2009)
+
+  23 Feb 2009; Ulrich Mueller <ulm@gentoo.org> files/50imaxima-gentoo.el,
+  +imaxima-1.0_rc2.ebuild:
+  Version bump. Add examples USE flag.
+
+  04 Sep 2008; Ulrich Mueller <ulm@gentoo.org> imaxima-0.99.ebuild:
+  Fix texlive dependency, thanks aballier.
+
+  04 May 2008; Ulrich Mueller <ulm@gentoo.org> -imaxima-0.98-r1.ebuild:
+  Remove old.
+
+  29 Apr 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  imaxima-0.98-r1.ebuild, imaxima-0.99.ebuild:
+  Added dependency blocking to maxima version >= 5.15, since imaxima is
+  included in these later versions
+
+*imaxima-0.99 (22 Feb 2008)
+
+  22 Feb 2008; Ulrich Mueller <ulm@gentoo.org> -imaxima-0.97a.ebuild,
+  imaxima-0.98-r1.ebuild, +imaxima-0.99.ebuild:
+  Version bump. Change TeX dependency to virtual/latex-base. Remove old.
+
+*imaxima-0.98-r1 (23 Nov 2007)
+
+  23 Nov 2007; Ulrich Mueller <ulm@gentoo.org> files/50imaxima-gentoo.el,
+  imaxima-0.97a.ebuild, -imaxima-0.98.ebuild, +imaxima-0.98-r1.ebuild:
+  Install Emacs Lisp files in a subdirectory of site-lisp.
+
+  03 Nov 2007; Ulrich Mueller <ulm@gentoo.org> imaxima-0.98.ebuild:
+  Inherit elisp instead of elisp-common; restore src_compile.
+
+*imaxima-0.98 (03 Nov 2007)
+
+  03 Nov 2007; Sébastien Fabbro <bicatali@gentoo.org> +imaxima-0.98.ebuild:
+  Version bump
+
+  06 Oct 2007; Ulrich Mueller <ulm@gentoo.org> imaxima-0.94b.ebuild,
+  imaxima-0.97.ebuild, imaxima-0.97a.ebuild:
+  Remove redundant virtual/emacs dependency. Add some quotes.
+
+*imaxima-0.97a (31 Jul 2007)
+
+  31 Jul 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  +imaxima-0.97a.ebuild:
+  Version bump
+
+  23 Feb 2007; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  added longdescription in metadata.xml from gentooscience overlay.
+
+*imaxima-0.97 (23 Feb 2007)
+
+  23 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  -files/imaxima-imaxima.el.patch, metadata.xml, -imaxima-0.9.ebuild,
+  +imaxima-0.97.ebuild:
+  version bump, fixes bug 157133; remove old version and an unused patch;
+  added emacs team to metadata.xml
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  31 Oct 2006; Jeff Gardner <je_fro@gentoo.org>
+  +files/imaxima-0.94b-imaxima.el.patch:
+  Added imaxima-0.94b-imaxima.el.patch
+
+*imaxima-0.94b (31 Oct 2006)
+
+  31 Oct 2006; Jeff Gardner <je_fro@gentoo.org>
+  +files/imaxima-imaxima.el.patch, +imaxima-0.94b.ebuild:
+  Update to address bug #136289.
+
+  24 Aug 2005; Matthew Kennedy <mkennedy@gentoo.org> imaxima-0.9.ebuild:
+  Removing ~amd64.
+
+  01 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org> imaxima-0.9.ebuild:
+  Keywording ~amd64
+
+  28 Nov 2004; Joseph Jezak <josejx@gentoo.org> imaxima-0.9.ebuild:
+  Marked ~ppc for bug #72351.
+
+*imaxima-0.9 (09 Oct 2004)
+
+  09 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +files/50imaxima-gentoo.el, +imaxima-0.9.ebuild:
+  Initial import. Ebuild submitted by Cliff Yapp <smustudent1@yahoo.com> and
+  P.L.Hayes <paul@wolfbone.ath.cx>, closing bug #60148.
+

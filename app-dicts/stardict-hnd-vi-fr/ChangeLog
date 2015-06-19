@@ -1,0 +1,25 @@
+# ChangeLog for app-dicts/stardict-hnd-vi-fr
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/stardict-hnd-vi-fr/ChangeLog,v 1.6 2009/01/23 13:26:13 pva Exp $
+
+  23 Jan 2009; Peter Volkov <pva@gentoo.org>
+  stardict-hnd-vi-fr-20050917.ebuild:
+  Drop stardict dependency as it's provided by stardict.eclass.
+
+  16 Aug 2008; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove pclouds from metadata.xml (#49680)
+
+  01 Feb 2007; Simon Stelling <blubb@gentoo.org>
+  stardict-hnd-vi-fr-20050917.ebuild:
+  add ~amd64
+
+  19 Mar 2006; Mark Loeser <halcy0n@gentoo.org>
+  stardict-hnd-vi-fr-20050917.ebuild:
+  Add DEPEND on app-arch/unzip
+
+*stardict-hnd-vi-fr-20050917 (03 Dec 2005)
+
+  03 Dec 2005; <pclouds@gentoo.org> +metadata.xml,
+  +stardict-hnd-vi-fr-20050917.ebuild:
+  New ebuild for Vietnamese-French Stardict
+

@@ -1,0 +1,13 @@
+Index: lxdvdrip/vamps/Makefile
+===================================================================
+--- lxdvdrip.orig/vamps/Makefile
++++ lxdvdrip/vamps/Makefile
+@@ -21,7 +21,7 @@ CC         = gcc
+ CFLAGS    ?= -O2  -g -D_LARGEFILE_SOURCE -DLARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 \
+ 	       -D_XOPEN_SOURCE=500 -D_BSD_SOURCE -D_REENTRANT
+ CFLAGS    += -Wall
+-LDFLAGS   += -s
++LDFLAGS   +=
+ LOADLIBES += -lm -lpthread -ldvdread
+ 
+ INSTALL   ?= install

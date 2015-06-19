@@ -1,0 +1,23 @@
+#
+# Gentoo Shorewall 4.5 rc file
+#
+BUILD=                                  #Default is to detect the build system
+HOST=gentoo                             #Gentoo GNU Linux
+PREFIX=@GENTOO_PORTAGE_EPREFIX@/usr                             #Top-level directory for shared files, libraries, etc.
+SHAREDIR=${PREFIX}/share                #Directory for arch-neutral files.
+LIBEXECDIR=${PREFIX}/share              #Directory for executable scripts.
+PERLLIBDIR=${PREFIX}/share/shorewall    #Directory to install Shorewall Perl module directory
+CONFDIR=@GENTOO_PORTAGE_EPREFIX@/etc                            #Directory where subsystem configurations are installed
+SBINDIR=@GENTOO_PORTAGE_EPREFIX@/sbin                           #Directory where system administration programs are installed
+MANDIR=${PREFIX}/share/man              #Directory where manpages are installed.
+INITDIR=${CONFDIR}/init.d               #Directory where SysV init scripts are installed.
+INITFILE=${PRODUCT}                     #Name of the product's installed SysV init script
+INITSOURCE=init.gentoo.sh               #Name of the distributed file to be installed as the SysV init script
+ANNOTATED=                              #If non-zero, annotated configuration files are installed
+SYSTEMD=@GENTOO_PORTAGE_EPREFIX@/usr/lib/systemd/system         #Directory where .service files are installed (systems running systemd only)
+SERVICEFILE=gentoo.service              #Name of the distributed file to be installed as systemd service file
+SYSCONFFILE=default.gentoo              #Name of the distributed file to be installed in $SYSCONFDIR
+SYSCONFDIR=${CONFDIR}/conf.d            #Directory where SysV init parameter files are installed
+SPARSE=                                 #If non-empty, only install $PRODUCT/$PRODUCT.conf in $CONFDIR
+VARLIB=@GENTOO_PORTAGE_EPREFIX@/var/lib                         #Directory where product variable data is stored.
+VARDIR=${VARLIB}/${PRODUCT}             #Directory where product variable data is stored.

@@ -1,0 +1,27 @@
+# ChangeLog for dev-java/jsr305
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jsr305/ChangeLog,v 1.5 2011/11/30 11:59:31 grobian Exp $
+
+  30 Nov 2011; Fabian Groffen <grobian@gentoo.org> jsr305-1.0-r1.ebuild:
+  Add Prefix keywords for bug #390017
+
+  25 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> jsr305-1.0-r1.ebuild:
+  ppc/ppc64 stable wrt #345571
+
+  17 Nov 2010; Markus Meier <maekke@gentoo.org> jsr305-1.0-r1.ebuild:
+  amd64/x86 stable, bug #345571
+
+*jsr305-1.0-r1 (15 Oct 2010)
+
+  15 Oct 2010; Steve Arnold <nerdboy@gentoo.org> -jsr305-1.0.ebuild,
+  +jsr305-1.0-r1.ebuild:
+  Switched from svn -r checkout to src tarball (for unmasking).
+
+*jsr305-1.0 (31 Oct 2009)
+
+  31 Oct 2009; Steve Arnold <nerdboy@gentoo.org> +jsr305-1.0.ebuild,
+  +metadata.xml:
+  New ebuild for Java annotations, required for the findbugs byte-code 
+  analyzer.  Since there is no official release yet, this revision seems
+  like the most appropriate (and provides a consistent checkout).
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+  <email>nitro@legroom.net</email>
+  <name>Jared B.</name>
+</maintainer>
+<longdescription>A utility that is designed to open arj archives.</longdescription>
+</pkgmetadata>

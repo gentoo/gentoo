@@ -1,0 +1,170 @@
+# ChangeLog for games-misc/fortune-mod
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod/ChangeLog,v 1.30 2015/02/03 20:34:53 tupone Exp $
+
+  03 Feb 2015; Tupone Alfredo <tupone@gentoo.org> fortune-mod-1.99.1-r2.ebuild:
+  EAPI 5
+
+  03 Mar 2012; Fabian Groffen <grobian@gentoo.org> fortune-mod-1.99.1-r2.ebuild:
+  Marked ~x64-macos
+
+  03 Mar 2012; Fabian Groffen <grobian@gentoo.org> fortune-mod-1.99.1-r2.ebuild:
+  Fix fortunes location used at runtime, bug #405191
+
+  16 Nov 2011; Jeremy Olexa <darkside@gentoo.org> fortune-mod-1.99.1-r2.ebuild:
+  Migrate Gentoo Prefix modifications from overlay. EAPI, arch-specific fixes,
+  KEYWORDS. bug 389943
+
+  08 Oct 2010; Mart Raudsepp <leio@gentoo.org> fortune-mod-1.99.1-r2.ebuild:
+  Drop to ~mips
+
+  25 Jan 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  fortune-mod-1.99.1-r2.ebuild:
+  EAPI=2; tidy
+
+  14 Jan 2008; Fabian Groffen <grobian@gentoo.org>
+  fortune-mod-1.99.1-r2.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  06 Jul 2007; Roy Marples <uberlord@gentoo.org>
+  fortune-mod-1.99.1-r2.ebuild:
+  link against -lintl on non glibc systems when app-text/recode is built with
+  nls, #184399.
+
+  20 Jul 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  fortune-mod-1.99.1-r2.ebuild:
+  Fix lame logic (bug #141129)
+
+  19 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  fortune-mod-1.99.1-r2.ebuild:
+  Link to libcompat in FreeBSD or it won't build, add ~x86-fbsd.
+
+  11 Mar 2006; <Tupone@gentoo.org> +files/01_all_fortune_all-fix.patch,
+  fortune-mod-1.99.1-r2.ebuild:
+  Fix for Bug #103071 (breaks with LC_ALL/LANG set). Thanks to Jordan for report
+
+*fortune-mod-1.99.1-r2 (13 Oct 2005)
+
+  13 Oct 2005; Mike Frysinger <vapier@gentoo.org>
+  files/fortune-mod-1.99.1-gentoo.patch, +fortune-mod-1.99.1-r2.ebuild:
+  Clean up misc crap.
+
+  27 Aug 2005; Markus Rothe <corsair@gentoo.org>
+  fortune-mod-1.99.1-r1.ebuild:
+  Stable on ppc64
+
+  31 Jul 2005; Markus Rothe <corsair@gentoo.org>
+  fortune-mod-1.99.1-r1.ebuild:
+  Added ~ppc64 (bug #100217)
+
+  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  fortune-mod-1.99.1-r1.ebuild:
+  Removed INSTALL file.
+
+  03 Feb 2005; Mike Frysinger <vapier@gentoo.org>
+  -files/fortune-mod-1.99.1-gentoo.diff,
+  +files/fortune-mod-1.99.1-gentoo.patch, fortune-mod-1.99.1-r1.ebuild,
+  -fortune-mod-1.99.1.ebuild:
+  Fix #78928 again since OS X broke it.
+
+*fortune-mod-1.99.1-r1 (01 Feb 2005)
+
+  01 Feb 2005; Kito <kito@gentoo.org> +files/fortune-mod-1.99.1-gentoo.diff,
+  +fortune-mod-1.99.1-r1.ebuild:
+  added patch from Dave Vasilevsky and the Fink project. Fixes error when no
+  charset in envvars. Other minor bug fixes.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  16 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  fortune-mod-1.99.1.ebuild:
+  Stable on sparc
+
+  15 Sep 2004; Guy Martin <gmsoft@gentoo.org> fortune-mod-1.99.1.ebuild:
+  Stable on hppa.
+
+  12 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  fortune-mod-1.99.1.ebuild:
+  stable for x86
+
+  31 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  fortune-mod-1.99.1.ebuild:
+  fix path in fortune man page (bug #60843)
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  fortune-mod-1.0.9708-r1.ebuild, fortune-mod-1.99.1.ebuild:
+  virtual/glibc -> virtual/libc
+
+  13 May 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  fortune-mod-1.99.1.ebuild:
+  off into function; error check sed; E_CFLAGS; error messages
+
+  13 May 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  fortune-mod-1.0.9708-r1.ebuild:
+  correct S; use flag fixing; error messages; tidy
+
+  13 May 2004; Joshua Kinard <kumba@gentoo.org>
+  fortune-mod-1.0.9708-r1.ebuild, fortune-mod-1.99.1.ebuild:
+  Fixed the ebuild so S gets set properly, otherwise the ebuild will fail to cd
+  to the right dir and apply patches. Also added ~sparc and ~mips to the newer
+  1.99 ebuild.
+
+*fortune-mod-1.99.1 (12 May 2004)
+
+  12 May 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  +fortune-mod-1.0.9708-r1.ebuild, +fortune-mod-1.99.1.ebuild,
+  -fortune-mod-9708-r1.ebuild:
+  Moved fortune-mod-9708 to fortune-mod-1.0.9708 and added fortune-mod-1.99.1 as
+  ~x86. This should solve the version change in the upstream packaging. It will
+  require a downgrade for all stable arches, and will even show up as a
+  downgrade on ~arch machines due to the nature of the old versioning. This
+  closes bug #43906.
+
+*fortune-mod-9708-r1 (20 Jul 2002)
+
+  26 Aug 2003; Joshua Kinard <kumba@gentoo.org> fortune-mod-9708-r1.ebuild:
+  Added ~mips to KEYWORDS
+
+  28 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added patches to fix #19842 and clean up.
+
+  05 Jun 2003; Martin Holzer <mholzer@gentoo.org> fortune-mod-9708-r1.ebuild:
+  Added Manpage fix. Closes #20145.
+
+  03 Jun 2003; Tavis Ormandy <taviso@gentoo.org> fortune-mod-9708-r1.ebuild:
+  marking alpha.
+
+  07 Dec 2002; Jack Morgan <jmorgan@gentoo.org> fortune-mod-9708-r1.ebuild :
+  Changed sparc64 to sparc keyword
+
+  19 Sept 2002; Mike Frysinger <vapier@gentoo.org> :
+  Found the proper 'home' for fortune-mod
+
+  23 Aug 2002; J. Alberto Suárez López <bass@gentoo.org> fortune-mod-9708-r1.ebuild:
+  Added advisory about how enable offensive fortune.
+
+  20 Jul 2002; Jose Alberto Suárez López <bass@gentoo.org> fortune-mod-9708-r1.ebuild:
+  Fixed problem with fortune-offensive. If you want it, need edit the
+  ebuild and change $offensive= to $offensive=1
+
+*fortune-mod-9708 (1 Feb 2002)
+
+  19 Sept 2002; Mike Frysinger <vapier@gentoo.org> :
+  Found the proper 'home' for fortune-mod
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> fortune-mod-9708.ebuild :
+  Added LICENSE.
+
+  15 Jul 2002; Owen Stampflee <owen@gentoo.org> :
+
+  Added KEYWORDS.
+
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

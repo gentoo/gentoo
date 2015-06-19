@@ -1,0 +1,554 @@
+# ChangeLog for net-proxy/dante
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/dante/ChangeLog,v 1.86 2015/05/03 06:59:44 jer Exp $
+
+  03 May 2015; Jeroen Roovers <jer@gentoo.org> dante-1.4.0-r2.ebuild:
+  Stable for PPC64 (bug #506794).
+
+  03 May 2015; Jeroen Roovers <jer@gentoo.org> dante-1.4.0-r2.ebuild,
+  dante-1.4.1.ebuild, +files/dante-1.4.0-HAVE_SENDBUF_IOCTL.patch:
+  Fix bad define for HAVE_SENDBUF_IOCTL (bug #547032).
+
+  09 Jan 2015; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Take maintainership of this again, just like 12 years ago.
+
+  07 Jan 2015; Pacho Ramos <pacho@gentoo.org> -dante-1.3.2-r1.ebuild,
+  metadata.xml:
+  Reassign and cleanup as discussed at https://www.mail-archive.com/gentoo-
+  dev@lists.gentoo.org/msg66357.html
+
+  02 Nov 2014; Sven Vermeulen <swift@gentoo.org> dante-1.4.0-r2.ebuild,
+  dante-1.4.1.ebuild:
+  Remove sec-policy/selinux-* dependency from DEPEND but keep in RDEPEND (bug
+  #527698)
+
+  09 Sep 2014; Samuli Suominen <ssuominen@gentoo.org> +files/sockd.conf,
+  +files/socks.conf:
+  Restore two necessary files wrt #522386 by Zhu Sha Zang
+
+  08 Sep 2014; Samuli Suominen <ssuominen@gentoo.org> -dante-1.3.2.ebuild,
+  -dante-1.4.0-r1.ebuild, -dante-1.4.0.ebuild, -dante-1.4.0_pre1-r1.ebuild,
+  -dante-1.4.0_pre1.ebuild, -files/dante-1.4.0_pre1-osdep-format-macro.patch,
+  -files/sockd.conf, -files/socks.conf:
+  old
+
+*dante-1.4.1 (08 Sep 2014)
+
+  08 Sep 2014; Samuli Suominen <ssuominen@gentoo.org> +dante-1.4.1.ebuild:
+  Version bump.
+
+*dante-1.4.0-r2 (19 Aug 2014)
+
+  19 Aug 2014; Rick Farina <zerochaos@gentoo.org> +dante-1.4.0-r2.ebuild:
+  fixing bug #497586 and setting defaults back to 1.4.0_pre settings. avoiding
+  load on arch teams for this tested fix
+
+  13 Jul 2014; Agostino Sarubbo <ago@gentoo.org> dante-1.4.0-r1.ebuild:
+  Stable for ppc, wrt bug #506794
+
+  22 Jun 2014; Chema Alonso <nimiux@gentoo.org> dante-1.4.0-r1.ebuild:
+  Stable for amd64 wrt bug #506794
+
+  15 Jun 2014; Akinori Hattori <hattya@gentoo.org> dante-1.4.0-r1.ebuild:
+  ia64 stable wrt bug #506794
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> dante-1.4.0-r1.ebuild:
+  x86 stable wrt bug #506794
+
+  04 May 2014; Markus Meier <maekke@gentoo.org> dante-1.4.0-r1.ebuild:
+  arm stable, bug #506794
+
+  02 May 2014; Jeroen Roovers <jer@gentoo.org> dante-1.4.0-r1.ebuild:
+  Stable for HPPA (bug #506794).
+
+*dante-1.4.0-r1 (15 Feb 2014)
+
+  15 Feb 2014; Pacho Ramos <pacho@gentoo.org> +dante-1.4.0-r1.ebuild,
+  +files/dante-sockd.service:
+  Add unit file (#500500)
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> dante-1.1.19-r4.ebuild,
+  dante-1.3.2-r1.ebuild, dante-1.3.2.ebuild, dante-1.4.0.ebuild,
+  dante-1.4.0_pre1-r1.ebuild, dante-1.4.0_pre1.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+*dante-1.4.0 (05 Jan 2014)
+
+  05 Jan 2014; Robin H. Johnson <robbat2@gentoo.org> +dante-1.4.0.ebuild,
+  +files/dante-1.4.0-cflags.patch, +files/dante-1.4.0-socksify.patch,
+  +files/dante-1.4.0_pre1-osdep-format-macro.patch, dante-1.4.0_pre1-r1.ebuild,
+  dante-1.4.0_pre1.ebuild, files/dante-1.4.0-osdep-format-macro.patch:
+  Version bump; also restores upnp and libdsocks support.
+
+  05 May 2013; Tom Wijsman <TomWij@gentoo.org> dante-1.1.19-r4.ebuild,
+  dante-1.3.2-r1.ebuild, dante-1.3.2.ebuild, dante-1.4.0_pre1-r1.ebuild,
+  dante-1.4.0_pre1.ebuild, metadata.xml:
+  Replacing AM_CONFIG_HEADER by AC_CONFIG_HEADERS in configure.ac to support
+  sys-devel/automake:1.13, fixes bug #468692 reported by Torsten Kaiser. Thanks
+  to CrowX- and inferit on IRC to point me to this bug.
+
+*dante-1.3.2-r1 (09 Apr 2013)
+*dante-1.4.0_pre1-r1 (09 Apr 2013)
+
+  09 Apr 2013; Tom Wijsman <TomWij@gentoo.org> +dante-1.3.2-r1.ebuild,
+  +dante-1.4.0_pre1-r1.ebuild, +files/dante-1.3.2-sockd-init,
+  dante-1.1.19-r4.ebuild, dante-1.3.2.ebuild, dante-1.4.0_pre1.ebuild:
+  Revision bump of 1.3.2 and 1.4.0_pre1 fix bug #380449 (duplicate bug #465092),
+  meanwhile also added GPL-2 to LICENSE of all versions to fix bug #426122.
+
+  06 Mar 2013; Tom Wijsman <TomWij@gentoo.org>
+  +files/dante-1.4.0-osdep-format-macro.patch, dante-1.4.0_pre1.ebuild:
+  Fix a macro to be variadic. Reported by Ben Kohler, patch contributed by
+  Brennan Shacklett. Fixes bug #460408.
+
+*dante-1.4.0_pre1 (04 Mar 2013)
+
+  04 Mar 2013; Tom Wijsman <TomWij@gentoo.org> +dante-1.4.0_pre1.ebuild:
+  Version bump to 1.4.0_pre1.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> dante-1.3.2.ebuild:
+  keyword ~amd64-fbsd
+
+  25 Mar 2012; Tim Harder <radhermit@gentoo.org> -dante-1.2.3.ebuild,
+  -files/dante-1.2.3-socksify.patch, -dante-1.3.0.ebuild, -dante-1.3.1.ebuild,
+  -dante-1.3.1-r1.ebuild:
+  Remove old.
+
+  13 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> dante-1.1.19-r4.ebuild,
+  dante-1.2.3.ebuild, dante-1.3.0.ebuild, dante-1.3.1.ebuild,
+  dante-1.3.1-r1.ebuild, dante-1.3.2.ebuild:
+  Switch to virtual/shadow.
+
+  16 Dec 2011; Jeremy Olexa <darkside@gentoo.org> dante-1.3.2.ebuild:
+  Inject EPREFIX, bug 389423
+
+  04 Oct 2011; Robin H. Johnson <robbat2@gentoo.org> files/dante-sockd-init:
+  lsof shows files like /.sock{dshmem,slock}XXXXXXX being created by sockd, and
+  failing when / is read-only. Force them to be created in /var/lock instead.
+
+*dante-1.3.2 (04 Aug 2011)
+
+  04 Aug 2011; Tim Harder <radhermit@gentoo.org> +dante-1.3.2.ebuild:
+  Version bump.
+
+*dante-1.3.1-r1 (02 Aug 2011)
+
+  02 Aug 2011; Jeroen Roovers <jer@gentoo.org> +dante-1.3.1-r1.ebuild,
+  +files/dante-1.3.1-flags.patch:
+  Respect CFLAGS thanks to Agostino Sarubbo (bug #377353).
+
+*dante-1.3.1 (26 Jun 2011)
+
+  26 Jun 2011; Tim Harder <radhermit@gentoo.org> +dante-1.3.1.ebuild:
+  Version bump.
+
+*dante-1.3.0 (15 Jun 2011)
+
+  15 Jun 2011; Tim Harder <radhermit@gentoo.org> +dante-1.3.0.ebuild,
+  +files/dante-1.3.0-socksify.patch:
+  Version bump.
+
+*dante-1.2.3 (07 Jun 2011)
+
+  07 Jun 2011; Tim Harder <radhermit@gentoo.org> +dante-1.2.3.ebuild,
+  +files/dante-1.2.3-socksify.patch:
+  Version bump (bug #310255). Update to EAPI 4 and add kerberos and static-libs
+  USE flags.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> dante-1.1.19-r4.ebuild:
+  Remove virtual/libc
+
+  20 Jun 2009; Alin Năstac <mrness@gentoo.org> -dante-1.1.19-r1.ebuild:
+  Remove obsolete revision (#260597).
+
+  27 Mar 2009; Jeroen Roovers <jer@gentoo.org> dante-1.1.19-r4.ebuild:
+  Stable for HPPA (bug #260597).
+
+  18 Mar 2009; Brent Baude <ranger@gentoo.org> dante-1.1.19-r4.ebuild:
+  stable ppc, bug 260597
+
+  15 Mar 2009; Brent Baude <ranger@gentoo.org> dante-1.1.19-r4.ebuild:
+  stable ppc64, bug 260597
+
+  14 Mar 2009; Raúl Porcel <armin76@gentoo.org> dante-1.1.19-r4.ebuild:
+  arm/ia64/s390/sh/sparc stable wrt #260597
+
+  08 Mar 2009; Tobias Klausmann <klausman@gentoo.org>
+  dante-1.1.19-r4.ebuild:
+  Stable on alpha, bug #260597
+
+  08 Mar 2009; Markus Meier <maekke@gentoo.org> dante-1.1.19-r4.ebuild:
+  amd64/x86 stable, bug #260597
+
+  06 Mar 2009; Alin Năstac <mrness@gentoo.org>
+  files/dante-1.1.19-libpam.patch:
+  Remove stupid env variable tests from configure.ac (#260618).
+
+*dante-1.1.19-r4 (05 Mar 2009)
+
+  05 Mar 2009; Alin Năstac <mrness@gentoo.org> files/dante-sockd-init,
+  -dante-1.1.19-r3.ebuild, +dante-1.1.19-r4.ebuild:
+  Second try to fix bashisms in dante-sockd script (#260151).
+
+*dante-1.1.19-r3 (28 Feb 2009)
+
+  28 Feb 2009; Alin Năstac <mrness@gentoo.org> files/dante-sockd-init,
+  -dante-1.1.19-r2.ebuild, +dante-1.1.19-r3.ebuild:
+  Fix bashisms in dante-sockd init.d script (#260151).
+
+  25 Jun 2008; Alin Năstac <mrness@gentoo.org>
+  files/dante-1.1.19-libpam.patch:
+  Remove AC_AIX from configure.ac (#229337).
+
+*dante-1.1.19-r2 (24 Jun 2008)
+
+  24 Jun 2008; Alin Năstac <mrness@gentoo.org>
+  +files/dante-1.1.19-libpam.patch, dante-1.1.19-r1.ebuild,
+  +dante-1.1.19-r2.ebuild:
+  Add flex and bison dependency atoms (#221401). Link libpam only with sockd
+  (#218745).
+
+  03 Feb 2008; Fabian Groffen <grobian@gentoo.org> dante-1.1.19-r1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  17 Jun 2007; Alin Năstac <mrness@gentoo.org>
+  -files/dante-1.1.18-socksify.patch, -dante-1.1.18.ebuild,
+  dante-1.1.19-r1.ebuild:
+  Remove obsolete version.
+
+  14 Jun 2007; Raúl Porcel <armin76@gentoo.org> dante-1.1.19-r1.ebuild:
+  alpha stable wrt #174115
+
+  14 Jun 2007; Alin Năstac <mrness@gentoo.org> dante-1.1.19-r1.ebuild:
+  Disable hack for 2.0 kernels (bug #174115 comment #8).
+
+*dante-1.1.19-r1 (02 May 2007)
+
+  02 May 2007; Alin Năstac <mrness@gentoo.org> files/dante-sockd-init,
+  -dante-1.1.19.ebuild, +dante-1.1.19-r1.ebuild:
+  Use default values for the parameters set in conf.d (#176548).
+
+  22 Apr 2007; Alin Năstac <mrness@gentoo.org> dante-1.1.18.ebuild,
+  dante-1.1.19.ebuild:
+  Use newinitd and newconfd (#174266).
+
+  21 Sep 2006; <blubb@gentoo.org> dante-1.1.19.ebuild:
+  stable on amd64
+
+  20 Sep 2006; Alin Nastac <mrness@gentoo.org>
+  -files/dante-1.1.15-bindresvport.patch,
+  -files/dante-1.1.15-getipnodebyname.patch,
+  -files/dante-1.1.15-optionalpam.patch,
+  -files/dante-1.1.15_pre1-socksify.patch, -dante-1.1.15-r1.ebuild,
+  -dante-1.1.15-r2.ebuild:
+  Remove obsolete versions.
+
+  09 Jul 2006; Joshua Kinard <kumba@gentoo.org> dante-1.1.19.ebuild:
+  Marked stable on mips.
+
+  07 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> dante-1.1.19.ebuild:
+  Depend on virtual/pam instead of sys-libs/pam and add ~x86-fbsd keyword.
+
+  22 Jun 2006; Emanuele Giaquinta <exg@gentoo.org> dante-1.1.19.ebuild:
+  Add ~ppc-macos keyword.
+
+  22 Apr 2006; Markus Rothe <corsair@gentoo.org> dante-1.1.19.ebuild:
+  Stable on ppc64
+
+  19 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org> dante-1.1.19.ebuild:
+  Stable on sparc
+
+  16 Apr 2006; Michael Hanselmann <hansmi@gentoo.org> dante-1.1.19.ebuild:
+  Stable on ppc.
+
+  14 Apr 2006; Alin Nastac <mrness@gentoo.org> dante-1.1.19.ebuild:
+  Stable on x86.
+
+*dante-1.1.19 (06 Mar 2006)
+
+  06 Mar 2006; Alin Nastac <mrness@gentoo.org>
+  +files/dante-1.1.19-socksify.patch, +dante-1.1.19.ebuild:
+  Version bump.
+
+  07 Feb 2006; Simon Stelling <blubb@gentoo.org> dante-1.1.18.ebuild:
+  stable on amd64
+
+  07 Feb 2006; Aron Griffis <agriffis@gentoo.org> dante-1.1.18.ebuild:
+  Mark 1.1.18 stable on alpha
+
+  24 Dec 2005; Alin Nastac <mrness@gentoo.org> files/dante-sockd-init:
+  Remove uneeded pid cleanup from init script, which made stop() to
+  return error code even though it did succeded.
+
+  18 Dec 2005; Markus Rothe <corsair@gentoo.org> dante-1.1.18.ebuild:
+  Stable on ppc64
+
+  18 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> dante-1.1.18.ebuild:
+  Stable on hppa, ppc.
+
+  16 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org> dante-1.1.18.ebuild:
+  Stable on sparc
+
+  16 Nov 2005; Alin Nastac <mrness@gentoo.org>
+  -files/dante-1.1.17-socksify.patch, -dante-1.1.17.ebuild,
+  dante-1.1.18.ebuild:
+  Remove old test version. Mark stable on x86.
+
+  15 Nov 2005; Alin Nastac <mrness@gentoo.org> dante-1.1.17.ebuild,
+  dante-1.1.18.ebuild:
+  Remove libtool and automake from DEPEND (libtoolize isn't used anymore in
+  this versions). Closes #112610.
+
+*dante-1.1.18 (04 Oct 2005)
+
+  04 Oct 2005; Alin Nastac <mrness@gentoo.org>
+  -files/dante-1.1.16-socksify.patch, +files/dante-1.1.18-socksify.patch,
+  -dante-1.1.16.ebuild, +dante-1.1.18.ebuild:
+  Version bump. Remove old test version.
+
+  28 Aug 2005; Marcus D. Hanwell <cryos@gentoo.org> dante-1.1.15-r2.ebuild:
+  Stable on amd64.
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> dante-1.1.15-r2.ebuild:
+  stable on ia64
+
+  17 Aug 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  dante-1.1.15-r2.ebuild:
+  Stable on hppa.
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  dante-1.1.15-r2.ebuild:
+  Stable on ppc.
+
+  23 Jul 2005; Alin Nastac <mrness@gentoo.org> dante-1.1.15-r1.ebuild,
+  dante-1.1.15-r2.ebuild, dante-1.1.16.ebuild, dante-1.1.17.ebuild:
+  Add dependency of sys-apps/shadow for being able to add user sockd when
+  compiled in stage 1 (#94745).
+
+  21 Jul 2005; Mike Frysinger <vapier@gentoo.org> dante-1.1.17.ebuild:
+  Fix autotool crappiness.
+
+  19 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> dante-1.1.15-r2.ebuild:
+  Stable on alpha.
+
+*dante-1.1.17 (16 Jul 2005)
+
+  16 Jul 2005; Alin Nastac <mrness@gentoo.org> dante-1.1.15-r1.ebuild,
+  dante-1.1.15-r2.ebuild, dante-1.1.16.ebuild, +dante-1.1.17.ebuild,
+  +files/dante-1.1.17-socksify.patch:
+  Add libtool to dependencies (#98159). Version bump (#99047).
+
+  07 Jul 2005; Markus Rothe <corsair@gentoo.org> dante-1.1.15-r2.ebuild:
+  Stable on ppc64
+
+  05 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  dante-1.1.15-r2.ebuild:
+  Stable on sparc
+
+*dante-1.1.16 (04 Jul 2005)
+
+  04 Jul 2005; Alin Nastac <mrness@gentoo.org>
+  +files/dante-1.1.16-socksify.patch, dante-1.1.15-r2.ebuild,
+  +dante-1.1.16.ebuild:
+  Mark 1.1.15-r2 stable on x86. Version bumped to 1.1.16.
+
+*dante-1.1.15-r2 (04 Jun 2005)
+
+  04 Jun 2005; Alin Nastac <mrness@gentoo.org> files/dante-sockd-init,
+  +files/sockd.conf, +files/sockd.conf-with-libwrap.patch,
+  +files/sockd.conf-with-pam.patch, +files/socks.conf,
+  +dante-1.1.15-r2.ebuild:
+  Added default configuration files in /etc/socks. Create sockd user, used in
+  user.* parameters of the sockd daemon. Improve init script.
+
+  16 May 2005; Alin Nastac <mrness@gentoo.org> dante-1.1.15-r1.ebuild:
+  Remove unused inheritance of gcc eclass (#92745).
+
+  22 Apr 2005; Alin Nastac <mrness@gentoo.org> :
+  Move from net-misc/dante to net-proxy/dante
+
+  21 Mar 2005; Alin Nastac <mrness@gentoo.org> dante-1.1.15-r1.ebuild:
+  Fix broken build on systems with other version of libtool than 1.5.10 (#86053).
+
+*dante-1.1.15-r1 (22 Feb 2005)
+
+  22 Feb 2005; Alin Nastac <mrness@gentoo.org> +metadata.xml,
+  -files/dante-1.1.14-bindresvport.patch,
+  +files/dante-1.1.15-bindresvport.patch,
+  +files/dante-1.1.15-getipnodebyname.patch, +files/dante-sockd-conf,
+  -files/dante-sockd-conf-1.1.14-r2, +files/dante-sockd-init,
+  -files/dante-sockd-init-1.1.14-r2, +dante-1.1.15-r1.ebuild,
+  -dante-1.1.15.ebuild:
+  Fix broken socks.h and add metadata (#82540).
+
+  19 Feb 2005; Daniel Black <dragonheart@gentoo.org> dante-1.1.15.ebuild:
+  pam missing from IUSE. Thanks to Chetan Reddy <chetan13@gmail.com> for telling
+  me
+
+  18 Feb 2005; Daniel Black <dragonheart@gentoo.org> dante-1.1.15.ebuild:
+  missed dependancy on automake-1.9. Thanks Hardave
+
+  17 Feb 2005; Hardave Riar <hardave@gentoo.org> dante-1.1.15.ebuild:
+  Stable on mips.
+
+  15 Feb 2005; Daniel Black <dragonheart@gentoo.org>
+  -files/dante-1.1.14-socksify.patch, -files/dante-sockd-conf-1.1.14-r2,
+  -files/dante-sockd-init, -dante-1.1.13.ebuild, -dante-1.1.14-r1.ebuild,
+  -dante-1.1.14-r2.ebuild, dante-1.1.15.ebuild, -dante-1.1.15_pre1.ebuild,
+  +files/dante-1.1.15-optionalpam.patch:
+  Pam now optional as per bug #81002. Prior version removed as they were
+  vulnerable. Thanks to Chetan Reddy <chetan13@gmail.com> for bug report
+
+  05 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> dante-1.1.15.ebuild:
+  stable on amd64, also see #80267
+
+  04 Feb 2005; Michael Hanselmann <hansmi@gentoo.org> dante-1.1.15.ebuild:
+  Stable on ppc.
+
+  04 Feb 2005; Bryan Østergaard <kloeri@gentoo.org> dante-1.1.15.ebuild:
+  Stable on alpha, bug 80267.
+
+  03 Feb 2005; Olivier Crete <tester@gentoo.org> dante-1.1.15.ebuild:
+  Stable on x86 wrt security bug 80267
+
+  03 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> dante-1.1.15.ebuild:
+  Stable on sparc wrt #80267
+
+  03 Feb 2005; Markus Rothe <corsair@gentoo.org> dante-1.1.15.ebuild:
+  Stable on ppc64; bug #80267
+
+*dante-1.1.15 (03 Feb 2005)
+
+  03 Feb 2005; petre rodan <kaiowas@gentoo.org> +dante-1.1.15.ebuild:
+  Security related version bump - bug #80267
+
+  26 Jan 2005; petre rodan <kaiowas@gentoo.org> dante-1.1.13.ebuild,
+  dante-1.1.14-r1.ebuild, dante-1.1.14-r2.ebuild, dante-1.1.15_pre1.ebuild:
+  added selinux RDEPEND
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*dante-1.1.15_pre1 (04 Nov 2004)
+
+  04 Nov 2004; Aron Griffis <agriffis@gentoo.org>
+  +files/dante-1.1.15_pre1-socksify.patch, +dante-1.1.15_pre1.ebuild:
+  Update to 1.1.15-pre1
+
+  08 Aug 2004; Tom Martin <slarti@gentoo.org> dante-1.1.13.ebuild,
+  dante-1.1.14-r1.ebuild, dante-1.1.14-r2.ebuild:
+  Typo in DESCRIPTION: implemetation -> implementation. Bug 59717.
+
+  07 Jul 2004; Travis Tilley <lv@gentoo.org> dante-1.1.14-r2.ebuild:
+  stable on amd64
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> dante-1.1.13.ebuild,
+  dante-1.1.14-r1.ebuild, dante-1.1.14-r2.ebuild:
+  change virtual/glibc to virtual/libc
+
+  13 Jun 2004; Aron Griffis <agriffis@gentoo.org> dante-1.1.13.ebuild:
+  Fix use invocation
+
+  07 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> dante-1.1.14-r2.ebuild:
+  Stable on alpha.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> dante-1.1.14-r1.ebuild,
+  dante-1.1.14-r2.ebuild:
+  Add inherit eutils
+
+  15 Apr 2004; Michael McCabe <randy@gentoo.org> dante-1.1.14-r2.ebuild:
+  adding s390 keywords
+
+  05 Mar 2004; Tom Gall <tgall@gentoo.org> dante-1.1.14-r2.ebuild:
+  Marked stable on ppc64
+
+  02 Mar 2004; Jason Wever <weeve@gentoo.org> dante-1.1.14-r2.ebuild:
+  Marked stable on sparc.
+
+  21 Feb 2004; Seemant Kulleen <seemant@gentoo.org> dante-1.1.13.ebuild,
+  dante-1.1.14-r1.ebuild, dante-1.1.14-r2.ebuild:
+  add mips, for irssi repoman violation
+
+*dante-1.1.14-r2 (23 Dec 2003)
+
+  21 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Make sure the manpages point to the right files #42150 by Bob Bell.
+
+  29 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add a little ninja sed to fix compilation with 2.6 headers.
+
+  23 Dec 2003; Robin H. Johnson <robbat2@gentoo.org> dante-1.1.14-r1.ebuild,
+  dante-1.1.14-r2.ebuild, files/dante-sockd-conf-1.1.14-r2,
+  files/dante-sockd-init-1.1.14-r2:
+  take bug #19988, improve on it, and make some things better in general
+
+*dante-1.1.14-r1 (08 Dec 2003)
+
+  08 Dec 2003; Aron Griffis <agriffis@gentoo.org> dante-1.1.14-r1.ebuild,
+  files/dante-1.1.14-bindresvport.patch, files/dante-1.1.14-socksify.patch:
+  Patch socksify to prevent setting of LD_LIBRARY_PATH which breaks operation on
+  alpha (and possibly other platforms). Patch socks.h to prevent conflict with
+  netinet/in.h (better solution than was previously in the ebuild)
+
+*dante-1.1.14 (03 Aug 2003)
+
+  03 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bumpage.
+
+*dante-1.1.13 (15 Jul 2002)
+
+  13 Mar 2003; Guy Martin <gmsoft@gentoo.org> dante-1.1.13.ebuild :
+  Added hppa to keywords.
+
+  04 Mar 2003; Aron Griffis <agriffis@gentoo.org> dante-1.1.13.ebuild:
+  Mark stable on alpha (I don't know when x86, sparc, ppc were marked stable)
+
+  03 Mar 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added CFLAGS fix for gcc-3.2.1 ... you should use 3.2.2 anyways ...
+
+  26 Jan 2002; Jon Nall <nall@gentoo.org> dante-1.1.13.ebuild :
+  added ~ppc
+
+  15 Jul 2002; Ben Lutgens <lamer@gentoo.org> ChangeLog dante-1.1.19.ebuild:
+  Upgraded to 1.1.13, removed entire src_unpack stuff as none of the patches
+  applied cleanly. Also I comment out line 99 of the socks.h before it's
+  installed as it conflicts with a line in /usr/include/netinet/in.h
+
+*dante-1.1.12 (6 Jul 2002)
+
+  6 Jul 2002; phoen][x <phoenix@gentoo.org> dante-1.1.12.ebuild,
+  Added KEYWORDS.
+
+*dante-1.1.9* (6 Jul 2002)
+
+  6 Jul 2002; phoen][x <phoenix@gentoo.org> dante-1.1.9*.ebuild,
+
+  Removing from CVS - source not available anymore.
+
+*dante-1.1.12 (7 Jun 2002)
+
+  7 Jun 2002; Donny Davies <woodchip@gentoo.org> dante-1.1.12.ebuild,
+  dante-1.1.12-exit-code.patch, dante-1.1.12-gcc-3.1.patch,
+  dante-1.1.12-percent-in-log.patch, dante-1.1.12-pre1-pam-syslog.patch :
+
+  Updato to latest release, closing #3250 with some patches to fix
+  build issues.
+
+*dante-1.1.9-r1 (1 May 2002)
+
+  1 May 2002; Donny Davies <woodchip@gentoo.org> dante-1.1.9-r1.ebuild,
+  files/dante-sockd-init :
+
+  Added tcp-wrappers to DEPEND.  Syntax cleanup.  Added initscript for sockd,
+  closing #2223.  Thanks to Per Wigren <wigren@home.se> for writing and
+  contributing the rc-script.
+
+*dante-1.1.9 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

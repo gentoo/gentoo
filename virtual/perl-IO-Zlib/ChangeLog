@@ -1,0 +1,142 @@
+# ChangeLog for virtual/perl-IO-Zlib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/perl-IO-Zlib/ChangeLog,v 1.35 2015/06/06 19:32:09 dilfridge Exp $
+
+*perl-IO-Zlib-1.100.0-r6 (06 Jun 2015)
+
+  06 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-IO-Zlib-1.100.0-r5.ebuild, +perl-IO-Zlib-1.100.0-r6.ebuild:
+  Add Perl 5.22 as provider, remove Perl 5.18 as provider
+
+*perl-IO-Zlib-1.100.0-r5 (08 Nov 2014)
+
+  08 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-IO-Zlib-1.100.0-r4.ebuild, +perl-IO-Zlib-1.100.0-r5.ebuild:
+  Remove Perl 5.16 as provider
+
+*perl-IO-Zlib-1.100.0-r4 (08 Jul 2014)
+
+  08 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-IO-Zlib-1.100.0-r2.ebuild, -perl-IO-Zlib-1.100.0-r3.ebuild,
+  +perl-IO-Zlib-1.100.0-r4.ebuild:
+  Improve dependencies
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  perl-IO-Zlib-1.100.0-r2.ebuild, perl-IO-Zlib-1.100.0-r3.ebuild:
+  Add arm64 love.
+
+  05 Sep 2013; Patrick Lauer <patrick@gentoo.org>
+  perl-IO-Zlib-1.100.0-r3.ebuild:
+  Restore keywords
+
+*perl-IO-Zlib-1.100.0-r3 (14 Aug 2013)
+
+  14 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +perl-IO-Zlib-1.100.0-r3.ebuild:
+  Import from perl-experimental overlay
+
+  18 Feb 2013; Zac Medico <zmedico@gentoo.org> perl-IO-Zlib-1.100.0-r2.ebuild:
+  Add ~arm-linux keyword.
+
+*perl-IO-Zlib-1.100.0-r2 (21 May 2012)
+
+  21 May 2012; Torsten Veller <tove@gentoo.org>
+  -perl-IO-Zlib-1.100.0-r1.ebuild, +perl-IO-Zlib-1.100.0-r2.ebuild:
+  Add perl-5.16 as provider
+
+  28 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  perl-IO-Zlib-1.100.0-r1.ebuild:
+  keyword ~amd64-fbsd
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org> perl-IO-Zlib-1.100.0-r1.ebuild:
+  Drop ~sparc-fbsd KEYWORD
+
+  28 Jun 2011; Torsten Veller <tove@gentoo.org> perl-IO-Zlib-1.100.0-r1.ebuild:
+  Add perl-5.12.4 virtual
+
+*perl-IO-Zlib-1.100.0-r1 (18 Jun 2011)
+
+  18 Jun 2011; Torsten Veller <tove@gentoo.org> -perl-IO-Zlib-1.100.0.ebuild,
+  +perl-IO-Zlib-1.100.0-r1.ebuild:
+  Add perl-5.14 as provider
+
+*perl-IO-Zlib-1.100.0 (20 May 2011)
+
+  20 May 2011; Torsten Veller <tove@gentoo.org> -perl-IO-Zlib-1.10.ebuild,
+  +perl-IO-Zlib-1.100.0.ebuild:
+  Add perl-5.14.0 as provider. Change version scheme
+
+  02 May 2011; Fabian Groffen <grobian@gentoo.org> perl-IO-Zlib-1.10.ebuild:
+  Marked ~x64-freebsd
+
+  22 Jan 2011; Torsten Veller <tove@gentoo.org> perl-IO-Zlib-1.10.ebuild:
+  Add perl-5.12.3 as provider
+
+  17 Jan 2011; Torsten Veller <tove@gentoo.org> -perl-IO-Zlib-1.07.ebuild,
+  -perl-IO-Zlib-1.09.ebuild:
+  Cleanup
+
+  22 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  perl-IO-Zlib-1.10.ebuild:
+  ppc64 stable wrt #333421
+
+  22 Oct 2010; Jeroen Roovers <jer@gentoo.org> perl-IO-Zlib-1.10.ebuild:
+  Stable for HPPA (bug #333421).
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org> perl-IO-Zlib-1.10.ebuild:
+  Marking perl-IO-Zlib-1.10 ppc stable for bug 333421
+
+  12 Sep 2010; Raúl Porcel <armin76@gentoo.org> perl-IO-Zlib-1.10.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #333421
+
+  07 Sep 2010; Torsten Veller <tove@gentoo.org> perl-IO-Zlib-1.10.ebuild:
+  Add perl-5.12.2 as provider
+
+  23 Aug 2010; Markus Meier <maekke@gentoo.org> perl-IO-Zlib-1.10.ebuild:
+  arm stable, bug #333421
+
+  20 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  perl-IO-Zlib-1.10.ebuild:
+  stable x86, bug 333421
+
+  19 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  perl-IO-Zlib-1.10.ebuild:
+  Stable on amd64 wrt bug #333421
+
+  14 Jul 2010; Torsten Veller <tove@gentoo.org> perl-IO-Zlib-1.10.ebuild:
+  Add perl-5.12 as provider
+
+  19 Jan 2010; nixnut <nixnut@gentoo.org> perl-IO-Zlib-1.09.ebuild:
+  ppc stable #288026
+
+  07 Jan 2010; Torsten Veller <tove@gentoo.org> perl-IO-Zlib-1.07.ebuild,
+  perl-IO-Zlib-1.09.ebuild, perl-IO-Zlib-1.10.ebuild:
+  Set empty HOMEPAGE and LICENSE
+
+  15 Dec 2009; Jonathan Callen <abcd@gentoo.org> perl-IO-Zlib-1.09.ebuild,
+  perl-IO-Zlib-1.10.ebuild:
+  QA: Add prefix keywords
+
+  10 Dec 2009; Brent Baude <ranger@gentoo.org> perl-IO-Zlib-1.09.ebuild:
+  Marking perl-IO-Zlib-1.09 ppc64 stable for bug 288026
+
+  04 Dec 2009; Torsten Veller <tove@gentoo.org> perl-IO-Zlib-1.09.ebuild:
+  Stable on amd64 (#288026)
+
+  25 Aug 2009; Torsten Veller <tove@gentoo.org> perl-IO-Zlib-1.09.ebuild:
+  Add support for perl-5.10.1
+
+*perl-IO-Zlib-1.10 (15 Jul 2009)
+
+  15 Jul 2009; Torsten Veller <tove@gentoo.org> +perl-IO-Zlib-1.10.ebuild:
+  Version bump
+
+  07 Jul 2009; Jeroen Roovers <jer@gentoo.org> perl-IO-Zlib-1.09.ebuild:
+  Stable for HPPA too.
+
+*perl-IO-Zlib-1.09 (01 Nov 2008)
+*perl-IO-Zlib-1.07 (01 Nov 2008)
+
+  01 Nov 2008; Yuval Yaari <yuval@gentoo.org> +metadata.xml,
+  +perl-IO-Zlib-1.07.ebuild, +perl-IO-Zlib-1.09.ebuild:
+  Adding virtuals for dual-lifed modules that come with perl-5.10

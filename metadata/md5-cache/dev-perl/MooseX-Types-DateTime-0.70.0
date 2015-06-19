@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-perl/DateTime-0.430.200 >=dev-perl/DateTime-Locale-0.400.100 >=dev-perl/DateTime-TimeZone-0.950.0 >=dev-perl/Moose-0.410.0 >=dev-perl/MooseX-Types-0.300.0 >=dev-perl/namespace-clean-0.80.0 test? ( >=dev-perl/Test-Exception-0.270.0 || ( >=virtual/perl-Test-Simple-1.1.10 >=dev-perl/Test-use-ok-0.20.0 ) ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=DateTime related constraints and coercions for Moose
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/MooseX-Types-DateTime/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/DateTime-0.430.200 >=dev-perl/DateTime-Locale-0.400.100 >=dev-perl/DateTime-TimeZone-0.950.0 >=dev-perl/Moose-0.410.0 >=dev-perl/MooseX-Types-0.300.0 >=dev-perl/namespace-clean-0.80.0 dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/I/IL/ILMARI/MooseX-Types-DateTime-0.07.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=68984ee6dd262f797c089bc64734f25d

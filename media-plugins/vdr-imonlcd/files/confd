@@ -1,0 +1,8 @@
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-imonlcd/files/confd,v 1.2 2011/01/28 23:11:47 idl0r Exp $
+
+#IMONLCD_DEVICE=/dev/lcd0
+
+# Protocol of lcd-device (see lsusb)
+# 0038 - For LCD with ID 15c2:0038 SoundGraph Inc (default)
+# ffdc - For LCD with ID 15c2:ffdc SoundGraph Inc
+#IMONLCD_PROTOCOL=0038

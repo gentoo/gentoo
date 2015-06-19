@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=x11-libs/gtk+:3 >=x11-misc/lightdm-1.2.2
+DESCRIPTION=LightDM GTK+ Greeter
+EAPI=4
+HOMEPAGE=http://launchpad.net/lightdm-gtk-greeter
+IUSE=branding
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86
+LICENSE=GPL-3 LGPL-3 branding? ( CC-BY-3.0 )
+RDEPEND=!!<x11-misc/lightdm-1.1.1 x11-libs/gtk+:3 >=x11-misc/lightdm-1.2.2 x11-themes/gnome-themes-standard x11-themes/gnome-icon-theme
+SLOT=0
+SRC_URI=http://launchpad.net/lightdm-gtk-greeter/2.0/2.0.1/+download/lightdm-gtk-greeter-2.0.1.tar.gz branding? ( http://dev.gentoo.org/~hwoarang/distfiles/lightdm-gentoo-patch-2.tar.gz )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=7bfad55c63bc0558e11f2b60ef6e5b6a

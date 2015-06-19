@@ -1,0 +1,177 @@
+# ChangeLog for dev-libs/libatasmart
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libatasmart/ChangeLog,v 1.52 2015/03/03 06:24:35 dlan Exp $
+
+  02 Mar 2015; Yixun Lan <dlan@gentoo.org> libatasmart-0.19-r1.ebuild:
+  add arm64 support, tested on A53 board
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libatasmart-0.19-r1.ebuild:
+  Stable for alpha, wrt bug #492034
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libatasmart-0.19-r1.ebuild:
+  Stable for ia64, wrt bug #492034
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> libatasmart-0.19-r1.ebuild:
+  Stable for sparc, wrt bug #492034
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> libatasmart-0.19-r1.ebuild:
+  Stable for ppc64, wrt bug #492034
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> libatasmart-0.19-r1.ebuild:
+  Stable for ppc, wrt bug #492034
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> libatasmart-0.19-r1.ebuild:
+  x86 stable, bug #492034
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> libatasmart-0.19-r1.ebuild:
+  amd64 stable, bug #492034
+
+  01 Dec 2013; Markus Meier <maekke@gentoo.org> libatasmart-0.19-r1.ebuild:
+  arm stable, bug #492034
+
+  27 Nov 2013; Jeroen Roovers <jer@gentoo.org> libatasmart-0.19-r1.ebuild:
+  Stable for HPPA (bug #492034).
+
+*libatasmart-0.19-r1 (09 Aug 2013)
+
+  09 Aug 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +libatasmart-0.19-r1.ebuild:
+  Switch to Debian patchset wrt #470874
+
+  28 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> libatasmart-0.19.ebuild:
+  Use virtual/udev instead of sys-fs/udev wrt #444398
+
+  24 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> -libatasmart-0.18.ebuild:
+  old
+
+  19 Aug 2012; Raúl Porcel <armin76@gentoo.org> libatasmart-0.19.ebuild:
+  alpha/ia64/sh/sparc stable wrt #423541
+
+  19 Jul 2012; Markus Meier <maekke@gentoo.org> libatasmart-0.19.ebuild:
+  arm stable, bug #423541
+
+  10 Jul 2012; Brent Baude <ranger@gentoo.org> libatasmart-0.19.ebuild:
+  Marking libatasmart-0.19 ppc64 for bug 423541
+
+  03 Jul 2012; Jeroen Roovers <jer@gentoo.org> libatasmart-0.19.ebuild:
+  Stable for HPPA (bug #423541).
+
+  29 Jun 2012; Brent Baude <ranger@gentoo.org> libatasmart-0.19.ebuild:
+  Marking libatasmart-0.19 ppc for bug 423541
+
+  28 Jun 2012; Jeff Horelick <jdhore@gentoo.org> libatasmart-0.19.ebuild:
+  marked x86 per bug 423541
+
+  27 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libatasmart-0.19.ebuild:
+  Stable for amd64, wrt bug #423541
+
+*libatasmart-0.19 (21 May 2012)
+
+  21 May 2012; Samuli Suominen <ssuominen@gentoo.org> +libatasmart-0.19.ebuild:
+  Version bump.
+
+  19 May 2012; Anthony G. Basile <blueness@gentoo.org> libatasmart-0.18.ebuild:
+  Keyword mips
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> libatasmart-0.18.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  10 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> -libatasmart-0.17.ebuild,
+  -files/libatasmart-0.17-strpool-uninit.patch:
+  old
+
+  10 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> libatasmart-0.18.ebuild:
+  ppc64 stable wrt #392313
+
+  10 Jan 2012; Brent Baude <ranger@gentoo.org> libatasmart-0.18.ebuild:
+  Marking libatasmart-0.18 ppc for bug 392313
+
+  11 Dec 2011; Raúl Porcel <armin76@gentoo.org> libatasmart-0.18.ebuild:
+  alpha/ia64/sh/sparc stable wrt #392313
+
+  08 Dec 2011; Markus Meier <maekke@gentoo.org> libatasmart-0.18.ebuild:
+  arm stable, bug #392313
+
+  07 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> libatasmart-0.18.ebuild:
+  x86 stable wrt bug #392313
+
+  03 Dec 2011; Markos Chandras <hwoarang@gentoo.org> libatasmart-0.18.ebuild:
+  Stable on amd64 wrt bug #392313
+
+  30 Nov 2011; Jeroen Roovers <jer@gentoo.org> libatasmart-0.18.ebuild:
+  Stable for HPPA (bug #392313).
+
+  28 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Maintained now by freedesktop-bugs@ which include gnome@ like before.
+
+*libatasmart-0.18 (31 Oct 2011)
+
+  31 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> +libatasmart-0.18.ebuild:
+  Version bump.
+
+  04 Apr 2011; Samuli Suominen <ssuominen@gentoo.org> libatasmart-0.17.ebuild:
+  USE="static-libs" and punt useless libtool archive.
+
+  04 Jan 2011; Gilles Dartiguelongue <eva@gentoo.org> libatasmart-0.17.ebuild,
+  +files/libatasmart-0.17-strpool-uninit.patch:
+  Add patch for fix build with uclibc, bug #325767.
+
+  29 Oct 2010; Jeroen Roovers <jer@gentoo.org> libatasmart-0.17.ebuild:
+  Stable for HPPA (bug #329621).
+
+  29 Aug 2010; Raúl Porcel <armin76@gentoo.org> libatasmart-0.17.ebuild:
+  arm stable
+
+  14 Aug 2010; Raúl Porcel <armin76@gentoo.org> libatasmart-0.17.ebuild:
+  ia64/sh/sparc stable
+
+  09 Aug 2010; Joseph Jezak <josejx@gentoo.org> libatasmart-0.17.ebuild:
+  Marked ppc stable.
+
+  25 Jul 2010; Tobias Klausmann <klausman@gentoo.org>
+  libatasmart-0.17.ebuild:
+  Stable on alpha, bug #329621
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org> libatasmart-0.17.ebuild:
+  Marked ~hppa too.
+
+  04 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  libatasmart-0.17.ebuild:
+  ppc64 stable wrt #314899
+
+  04 Jun 2010; Markus Meier <maekke@gentoo.org> libatasmart-0.17.ebuild:
+  x86 stable, bug #314899
+
+  22 May 2010; Raúl Porcel <armin76@gentoo.org> libatasmart-0.16.ebuild,
+  libatasmart-0.17.ebuild:
+  Add ~sh
+
+  22 May 2010; Raúl Porcel <armin76@gentoo.org> libatasmart-0.17.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #313563
+
+  13 May 2010; Joseph Jezak <josejx@gentoo.org> libatasmart-0.16.ebuild,
+  libatasmart-0.17.ebuild:
+  Marked ~ppc64 for bug #316277.
+
+  13 May 2010; Joseph Jezak <josejx@gentoo.org> libatasmart-0.16.ebuild,
+  libatasmart-0.17.ebuild:
+  Marked ~ppc for bug #309779.
+
+  03 May 2010; Olivier Crête <tester@gentoo.org> libatasmart-0.17.ebuild:
+  amd64 stable, bug #314899
+
+  03 Apr 2010; Raúl Porcel <armin76@gentoo.org> libatasmart-0.16.ebuild,
+  libatasmart-0.17.ebuild:
+  Add ~arm
+
+*libatasmart-0.17 (04 Nov 2009)
+
+  04 Nov 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +libatasmart-0.17.ebuild:
+  Version bump.
+
+*libatasmart-0.16 (29 Oct 2009)
+
+  29 Oct 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +libatasmart-0.16.ebuild, +metadata.xml:
+  Initial ebuild for GNOME 2.28.

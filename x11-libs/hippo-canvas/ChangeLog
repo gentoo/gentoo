@@ -1,0 +1,90 @@
+# ChangeLog for x11-libs/hippo-canvas
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/hippo-canvas/ChangeLog,v 1.15 2015/04/08 17:28:02 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> hippo-canvas-0.3.0-r2.ebuild:
+  Drop old Python implementations
+
+  29 Jan 2015; Pacho Ramos <pacho@gentoo.org> -hippo-canvas-0.3.0-r1.ebuild:
+  drop old
+
+  29 Jan 2015; Pacho Ramos <pacho@gentoo.org> hippo-canvas-0.3.0-r2.ebuild:
+  x86 stable, bug #530040
+
+  27 Dec 2014; Agostino Sarubbo <ago@gentoo.org> hippo-canvas-0.3.0-r2.ebuild:
+  Stable for amd64, wrt bug #530040
+
+*hippo-canvas-0.3.0-r2 (21 Nov 2014)
+
+  21 Nov 2014; Pacho Ramos <pacho@gentoo.org> +hippo-canvas-0.3.0-r2.ebuild:
+  Use new python eclasses, bump EAPI and comply with gnome2.eclass policies
+
+  16 Feb 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #200380
+
+  04 May 2013; <elvanor@gentoo.org> -hippo-canvas-0.3.0.ebuild,
+  hippo-canvas-0.3.0-r1.ebuild:
+  Bug #448962.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> hippo-canvas-0.3.0.ebuild,
+  hippo-canvas-0.3.0-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org> hippo-canvas-0.3.0.ebuild,
+  hippo-canvas-0.3.0-r1.ebuild:
+  Fix gtk+ slot deps
+
+  23 May 2010; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  hippo-canvas-0.3.0-r1.ebuild:
+  Improvements for #316993.
+
+  22 May 2010; Pacho Ramos <pacho@gentoo.org> hippo-canvas-0.3.0-r1.ebuild:
+  stable amd64, bug 292066
+
+  10 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  hippo-canvas-0.3.0-r1.ebuild:
+  x86 stable wrt bug #292066
+
+*hippo-canvas-0.3.0-r1 (13 Apr 2010)
+
+  13 Apr 2010; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  hippo-canvas-0.3.0.ebuild, +hippo-canvas-0.3.0-r1.ebuild,
+  +files/hippo-canvas-python-override.patch:
+  Fix for #299334 as well QA issues (#292066).
+
+  02 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  hippo-canvas-0.3.0.ebuild:
+  x86 stable wrt bug #292066
+
+*hippo-canvas-0.3.0 (06 Oct 2009)
+
+  06 Oct 2009; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  +hippo-canvas-0.3.0.ebuild, +metadata.xml:
+  Bumped to version 3 and added to the tree. Closing bug #190836. Credits
+  for the ebuild go to 
+  Alexandre Rostovtsev <tetromino@gmail.com>.
+
+  29 Apr 2008; Alexandre Rostovtsev (tetromino) <tetromino@gmail.com>
+  -hippo-canvas-0.2.30.ebuild, +hippo-canvas-0.2.31.ebuild:
+  Version bump.
+
+  04 Apr 2008; Alexandre Rostovtsev (tetromino) <tetromino@gmail.com>
+  -hippo-canvas-0.2.25.ebuild, +hippo-canvas-0.2.30.ebuild:
+  Version bump.
+
+  04 Feb 2008; Alexandre Rostovtsev (tetromino) <tetromino@gmail.com>
+  -files/hippo-canvas-0.2.23-use-python.patch, -hippo-canvas-0.2.23.ebuild,
+  +hippo-canvas-0.2.25.ebuild:
+  Version bump. Re-enabling USE=doc because eautoreconf is no longer needed.
+
+  05 Sep 2007; Jakub Moc <jakub@gentoo.org> hippo-canvas-0.2.23.ebuild:
+  Get rid of unwanted debug USE flag
+
+  04 Sep 2007; Jakub Moc <jakub@gentoo.org> hippo-canvas-0.2.23.ebuild:
+  Use gnome2 eclass properly, clean up ebuild, remove USE=doc until
+  eautoreconf does not fail without gtk-doc installed
+
+  02 Sep 2007; Alexandre Rostovtsev (tetromino) <tetromino@gmail.com>
+  +files/hippo-canvas-0.2.23-use-python.patch, +metadata.xml,
+  +hippo-canvas-0.2.23.ebuild:
+  New ebuild for bug 190836

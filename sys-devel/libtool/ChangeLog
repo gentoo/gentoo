@@ -1,0 +1,1046 @@
+# ChangeLog for sys-devel/libtool
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/libtool/ChangeLog,v 1.257 2015/04/13 08:39:15 ago Exp $
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.6.ebuild:
+  Stable for alpha, wrt bug #540408
+
+  12 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> libtool-2.4.6.ebuild:
+  x86 stable wrt bug #540408
+
+  02 Apr 2015; Markus Meier <maekke@gentoo.org> libtool-2.4.6.ebuild:
+  arm stable, bug #540408
+
+  01 Apr 2015; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.6.ebuild:
+  Stable for sparc, wrt bug #540408
+
+  31 Mar 2015; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.6.ebuild:
+  Stable for ppc64, wrt bug #540408
+
+  28 Mar 2015; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.6.ebuild:
+  Stable for ppc, wrt bug #540408
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.6.ebuild:
+  Stable for amd64, wrt bug #540408
+
+  21 Mar 2015; Mike Frysinger <vapier@gentoo.org> libtool-2.4.6.ebuild:
+  Mark arm64/ia64/m68k/s390/sh stable #540408.
+
+  19 Mar 2015; Jeroen Roovers <jer@gentoo.org> libtool-2.4.6.ebuild:
+  Stable for HPPA (bug #540408).
+
+*libtool-2.4.6-r1 (16 Mar 2015)
+
+  16 Mar 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/libtool-2.4.6-fuse-ld.patch, +libtool-2.4.6-r1.ebuild:
+  Pass through -fuse-ld to the linking steps.
+
+  16 Mar 2015; Mike Frysinger <vapier@gentoo.org> libtool-2.4.4.ebuild:
+  Mark alpha/arm64/ia64/m68k/s390/sh/sparc stable #536696.
+
+  23 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.4.ebuild:
+  Stable for ppc64, wrt bug #536696
+
+  18 Feb 2015; Lars Wendler <polynomial-c@gentoo.org> -libtool-2.4-r1.ebuild,
+  -libtool-2.4-r4.ebuild, libtool-2.4.6.ebuild,
+  -files/libtool-2.4-openmp.patch:
+  Switch back to xz compressed tarball. Removed old versions.
+
+*libtool-2.4.6 (15 Feb 2015)
+
+  15 Feb 2015; Lars Wendler <polynomial-c@gentoo.org> -libtool-2.4.2.ebuild,
+  -libtool-2.4.3.ebuild, -libtool-2.4.3-r1.ebuild, -libtool-2.4.3-r2.ebuild,
+  +libtool-2.4.6.ebuild, -files/libtool-2.4.3-no-clean-gnulib.patch,
+  -files/libtool-2.4.3-test-cmdline_wrap.patch:
+  Version bump. Removed old.
+
+  28 Jan 2015; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.4.ebuild:
+  Stable for ppc, wrt bug #536696
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.4.ebuild:
+  Stable for x86, wrt bug #536696
+
+  22 Jan 2015; Markus Meier <maekke@gentoo.org> libtool-2.4.4.ebuild:
+  arm stable, bug #536696
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.4.ebuild:
+  Stable for amd64, wrt bug #536696
+
+*libtool-2.4.5 (19 Jan 2015)
+
+  19 Jan 2015; Lars Wendler <polynomial-c@gentoo.org> +libtool-2.4.5.ebuild:
+  Version bump.
+
+  17 Jan 2015; Jeroen Roovers <jer@gentoo.org> libtool-2.4.4.ebuild:
+  Stable for HPPA (bug #536696).
+
+  03 Jan 2015;  Rick Farina <zerochaos@gentoo.org> libtool-2.4.3-r2.ebuild:
+  QA band-aid for bug 528178, please feel free to drop the dep on help2man when
+  it's no longer required
+
+*libtool-2.4.4 (15 Dec 2014)
+
+  15 Dec 2014; Lars Wendler <polynomial-c@gentoo.org> +libtool-2.4.4.ebuild:
+  Version bump.
+
+*libtool-2.4.3-r2 (03 Nov 2014)
+
+  03 Nov 2014; Mike Frysinger <vapier@gentoo.org> +libtool-2.4.3-r2.ebuild,
+  -libtool-1.3.5.ebuild, -libtool-1.5.26-r1.ebuild, libtool-9999.ebuild:
+  Split libltdl out of main libtool package per upstream recommendations.
+
+  01 Nov 2014; Mike Frysinger <vapier@gentoo.org> libtool-2.4.3-r1.ebuild:
+  Rework the libtool hack so we do not generate static libs.
+
+  01 Nov 2014; Mike Frysinger <vapier@gentoo.org> libtool-2.4.3-r1.ebuild:
+  Move up the libtool static hack to fix unit tests too #384731 by Markus Oehme.
+
+  01 Nov 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/libtool-2.4.3-test-cmdline_wrap.patch, libtool-2.4.3-r1.ebuild:
+  Fix cmdline_wrap test failures #384731 by Markus Oehme.
+
+  01 Nov 2014; Mike Frysinger <vapier@gentoo.org> libtool-2.4.3-r1.ebuild:
+  Respect EPREFIX during install.
+
+  01 Nov 2014; Mike Frysinger <vapier@gentoo.org> libtool-2.4.3-r1.ebuild:
+  Run tests in parallel
+
+*libtool-2.4.3-r1 (31 Oct 2014)
+
+  31 Oct 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/libtool-2.4.3-no-clean-gnulib.patch, +libtool-2.4.3-r1.ebuild:
+  Do not delete headers installed by gnulib #527200 by Jorge Nerin.
+
+*libtool-2.4.3 (28 Oct 2014)
+
+  28 Oct 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/libtool-2.4.3-use-linux-version-in-fbsd.patch, +libtool-2.4.3.ebuild,
+  -files/1.5.20/libtool-1.5.20-override-LD_LIBRARY_PATH.patch,
+  -files/1.5.20/libtool-1.5.20-version-checking.patch, libtool-9999.ebuild:
+  Version bump.
+
+  27 Oct 2014; Anthony G. Basile <blueness@gentoo.org> libtool-9999.ebuild:
+  Fix libtool-9999 in preparation for 2.4.3
+
+  27 Oct 2014; Mike Frysinger <vapier@gentoo.org> libtool-2.4.2-r1.ebuild:
+  Mark m68k/s390/sh stable.
+
+  15 Sep 2014; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.2-r1.ebuild:
+  Stable for sparc, wrt bug #512012
+
+  23 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.2-r1.ebuild:
+  Stable for ia64, wrt bug #512012
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.2-r1.ebuild:
+  Stable for ppc64, wrt bug #512012
+
+  16 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> libtool-2.4.2-r1.ebuild:
+  alpha stable wrt bug #516180
+
+  16 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> libtool-2.4.2-r1.ebuild:
+  x86 stable wrt bug #516180
+
+  13 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> libtool-2.4.2-r1.ebuild:
+  arm stable wrt bug #516180
+
+  13 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.2-r1.ebuild:
+  Stable for ppc, wrt bug #516180
+
+  12 Jul 2014;  <tgall@gentoo.org> libtool-2.4.2-r1.ebuild:
+  arm64 stable Bug #516180
+
+  12 Jul 2014; Jeroen Roovers <jer@gentoo.org> libtool-2.4.2-r1.ebuild:
+  Stable for HPPA (bug #516180).
+
+  09 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> libtool-2.4.2-r1.ebuild:
+  amd64 stable wrt bug #516180
+
+*libtool-2.4.2-r1 (02 May 2014)
+
+  02 May 2014; Michał Górny <mgorny@gentoo.org> +libtool-2.4.2-r1.ebuild,
+  libtool-9999.ebuild:
+  Introduce multilib support, bug #499390.
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> libtool-2.4.2.ebuild,
+  libtool-9999.ebuild:
+  Add arm64 love.
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> libtool-2.4.2.ebuild:
+  Mark m68k/s390/sh stable.
+
+  07 Jan 2014; Lars Wendler <polynomial-c@gentoo.org> -libtool-1.5.26.ebuild,
+  -libtool-2.2.10.ebuild, -files/1.5.10/libtool-1.5.10-locking.patch,
+  -files/1.5.6/libtool-1.5-filter-host-tags.patch:
+  Removed old versions and files.
+
+  26 Sep 2013; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.2.ebuild:
+  Stable for arm, wrt bug #477178
+
+  25 Sep 2013; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.2.ebuild:
+  Stable for ppc, wrt bug #477178
+
+  23 Sep 2013; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.2.ebuild:
+  Stable for sparc, wrt bug #477178
+
+  23 Sep 2013; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.2.ebuild:
+  Stable for ppc64, wrt bug #477178
+
+  22 Sep 2013; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.2.ebuild:
+  Stable for ia64, wrt bug #477178
+
+  14 Sep 2013; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.2.ebuild:
+  Stable for alpha, wrt bug #477178
+
+  14 Sep 2013; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.2.ebuild:
+  Stable for amd64, wrt bug #477178
+
+  14 Sep 2013; Agostino Sarubbo <ago@gentoo.org> libtool-2.4.2.ebuild:
+  Stable for x86, wrt bug #477178
+
+  12 Sep 2013; Jeroen Roovers <jer@gentoo.org> libtool-2.4.2.ebuild:
+  Stable for HPPA (bug #477178).
+
+  12 Mar 2013; Mike Frysinger <vapier@gentoo.org> libtool-1.5.26-r1.ebuild,
+  libtool-2.4.2.ebuild, libtool-9999.ebuild:
+  Restore epunt_cxx call.
+
+  15 Jan 2013; Mike Frysinger <vapier@gentoo.org> libtool-2.4.2.ebuild,
+  libtool-9999.ebuild:
+  Switch to unpacker eclass for xz.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> libtool-2.4.2.ebuild,
+  libtool-9999.ebuild:
+  keyword ~amd64-fbsd
+
+  09 Apr 2012; Mike Frysinger <vapier@gentoo.org> libtool-2.2.10.ebuild,
+  libtool-2.4-r1.ebuild, libtool-2.4-r4.ebuild, libtool-2.4.2.ebuild,
+  libtool-9999.ebuild:
+  Drop old epunt_cxx calls #410877 by Greg Turner.
+
+  13 Nov 2011; Mike Frysinger <vapier@gentoo.org> libtool-2.4.2.ebuild:
+  Move into unstable.
+
+*libtool-2.4-r4 (20 Oct 2011)
+
+  20 Oct 2011; Mike Frysinger <vapier@gentoo.org> -libtool-2.4-r3.ebuild,
+  +libtool-2.4-r4.ebuild, libtool-2.4.2.ebuild, libtool-9999.ebuild:
+  Have system libtool build static objs by default even when USE=-static-libs
+  #336167#20.
+
+*libtool-2.4.2 (18 Oct 2011)
+
+  18 Oct 2011; Mike Frysinger <vapier@gentoo.org> +libtool-2.4.2.ebuild:
+  Version bump.
+
+  04 Oct 2011; Mike Frysinger <vapier@gentoo.org> libtool-2.2.10.ebuild,
+  libtool-2.4-r1.ebuild, libtool-2.4-r3.ebuild, libtool-9999.ebuild:
+  Turn binutils dep into a blocker, and put it behind USE=test.
+
+*libtool-2.4-r3 (24 Sep 2011)
+
+  24 Sep 2011; Mike Frysinger <vapier@gentoo.org> -libtool-2.4-r2.ebuild,
+  +libtool-2.4-r3.ebuild, libtool-9999.ebuild:
+  Restore libltdl.la and add a comment noting its requirement to prevent future
+  screw-ups #383929 by Francesco Riosa.
+
+*libtool-2.4-r2 (23 Sep 2011)
+
+  23 Sep 2011; Mike Frysinger <vapier@gentoo.org> +libtool-2.4-r2.ebuild,
+  +files/libtool-2.4-openmp.patch, libtool-9999.ebuild:
+  Unify live/release ebuilds again. Add patch from upstream for openmp when
+  linking #349078 by Justin Lecher. Add USE=static-libs support #379047 by
+  Agostino Sarubbo.
+
+  21 Sep 2011; Michał Górny <mgorny@gentoo.org> libtool-9999.ebuild:
+  Migrate to git-2.
+
+  22 Aug 2011; Mike Frysinger <vapier@gentoo.org> libtool-2.2.10.ebuild,
+  libtool-2.4-r1.ebuild:
+  Use new WANT_LIBTOOL=none knob to disable recursive self depend.
+
+  13 Aug 2011; Raúl Porcel <armin76@gentoo.org> libtool-2.4-r1.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #375579
+
+  02 Aug 2011; Jeroen Roovers <jer@gentoo.org> libtool-2.4-r1.ebuild:
+  Stable for HPPA (bug #375579).
+
+  01 Aug 2011; Markus Meier <maekke@gentoo.org> libtool-2.4-r1.ebuild:
+  amd64/arm/x86 stable, bug #375579
+
+  26 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> libtool-2.4-r1.ebuild:
+  ppc/ppc64 stable wrt #375579
+
+  22 Feb 2011; Mike Frysinger <vapier@gentoo.org> libtool-2.2.10.ebuild,
+  libtool-2.4-r1.ebuild:
+  Drop back down to EAPI=2 to ease upgrades #356089 by Chí-Thanh Christopher
+  Nguyễn.
+
+  19 Feb 2011; Mike Frysinger <vapier@gentoo.org> libtool-2.4-r1.ebuild:
+  Block even newer versions of automake #355551 by Tim Yamin.
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> libtool-1.3.5.ebuild:
+  Drop to ~mips
+
+*libtool-2.4-r1 (29 Nov 2010)
+
+  29 Nov 2010; Diego E. Pettenò <flameeyes@gentoo.org> +libtool-2.4-r1.ebuild:
+  Add experimental revision without runtime dependency over autotools, trying
+  to deal with bug #317309.
+
+  13 Nov 2010; Raúl Porcel <armin76@gentoo.org> libtool-2.2.10.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #338092
+
+  10 Nov 2010; Mike Frysinger <vapier@gentoo.org> libtool-2.4.ebuild:
+  Move into ~arch.
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org> libtool-2.2.10.ebuild:
+  Marking libtool-2.2.10 ppc for bug 338092
+
+  13 Oct 2010; Markus Meier <maekke@gentoo.org> libtool-2.2.10.ebuild:
+  arm stable, bug #338092
+
+  06 Oct 2010; Jeroen Roovers <jer@gentoo.org> libtool-2.2.10.ebuild:
+  Stable for HPPA (bug #338092).
+
+  05 Oct 2010; Markus Meier <maekke@gentoo.org> libtool-2.2.10.ebuild:
+  x86 stable, bug #338092
+
+  26 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> libtool-2.2.10.ebuild:
+  ppc64 stable wrt #338092
+
+  24 Sep 2010; Markos Chandras <hwoarang@gentoo.org> libtool-2.2.10.ebuild:
+  Stable on amd64 wrt bug #338092
+
+*libtool-2.4 (23 Sep 2010)
+
+  23 Sep 2010; Mike Frysinger <vapier@gentoo.org> +libtool-2.4.ebuild:
+  Version bump #338448 by Samuli Suominen.
+
+  06 Jul 2010; Mike Frysinger <vapier@gentoo.org> libtool-2.2.10.ebuild:
+  Force newer version of autoconf #327079 by Matt Turner.
+
+  06 Jul 2010; Mike Frysinger <vapier@gentoo.org> libtool-2.2.6.ebuild,
+  libtool-2.2.10.ebuild:
+  Block older automake #304055 by Dennis Nezic.
+
+*libtool-2.2.10 (09 Jun 2010)
+
+  09 Jun 2010; Mike Frysinger <vapier@gentoo.org> +libtool-2.2.10.ebuild:
+  Version bump.
+
+*libtool-2.2.8-r1 (08 Jun 2010)
+
+  08 Jun 2010; Mike Frysinger <vapier@gentoo.org> +libtool-2.2.8-r1.ebuild,
+  +files/libtool-2.2.8-versioning-as-needed-test.patch:
+  Add patch from upstream for as-needed test failures #321551 by Xake.
+  Transition the SLOT (and EAPI) so we can install libtool-1.5.x libltdl ABI
+  in parallel. Require newer binutils to avoid old as-needed test failures.
+  Drop help2man cruft now that the upstream tarball includes the man pages.
+
+*libtool-2.2.8 (05 Jun 2010)
+
+  05 Jun 2010; Mike Frysinger <vapier@gentoo.org> +libtool-2.2.8.ebuild:
+  Version bump.
+
+  25 May 2010; Mike Frysinger <vapier@gentoo.org> libtool-2.2.7b.ebuild:
+  Move into unstable.
+
+*libtool-2.2.7b (21 May 2010)
+
+  21 May 2010; Mike Frysinger <vapier@gentoo.org> +libtool-2.2.7b.ebuild:
+  Version bump.
+
+  09 Dec 2009; Raúl Porcel <armin76@gentoo.org> libtool-2.2.6b.ebuild:
+  alpha/ia64/m68k/s390/sh stable wrt #295535
+
+  09 Dec 2009; Jeroen Roovers <jer@gentoo.org> libtool-2.2.6b.ebuild:
+  Stable for PPC (bug #295535).
+
+  08 Dec 2009; Brent Baude <ranger@gentoo.org> libtool-2.2.6b.ebuild:
+  Marking libtool-2.2.6b ppc64 for bug 295535
+
+  07 Dec 2009; Markus Meier <maekke@gentoo.org> libtool-2.2.6b.ebuild:
+  amd64/arm/x86 stable, bug #295535
+
+  07 Dec 2009; Tiago Cunha <tcunha@gentoo.org> libtool-2.2.6b.ebuild:
+  stable sparc, security bug 295535
+
+  07 Dec 2009; Jeroen Roovers <jer@gentoo.org> libtool-2.2.6b.ebuild:
+  Stable for HPPA (bug #295535).
+
+*libtool-2.2.6b (16 Nov 2009)
+
+  16 Nov 2009; Mike Frysinger <vapier@gentoo.org> +libtool-2.2.6b.ebuild:
+  Version bump.
+
+  13 Oct 2009; Raúl Porcel <armin76@gentoo.org> libtool-2.2.6a.ebuild:
+  ia64/m68k/s390/sh/sparc stable wrt #257399
+
+  04 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> libtool-2.2.6a.ebuild:
+  Replace -Wl,--no-as-needed with function from flag-o-matic eclass.
+
+  29 Sep 2009; Tobias Klausmann <klausman@gentoo.org> libtool-2.2.6a.ebuild:
+  Stable on alpha, bug #257399
+
+*libtool-1.5.26-r1 (28 Sep 2009)
+
+  28 Sep 2009; Mike Frysinger <vapier@gentoo.org> +libtool-1.5.26-r1.ebuild:
+  Add ebuild to install just the old ABI lib.
+
+  27 Sep 2009; Brent Baude <ranger@gentoo.org> libtool-2.2.6a.ebuild:
+  Marking libtool-2.2.6a ppc64 for bug 257399
+
+  20 Sep 2009; nixnut <nixnut@gentoo.org> libtool-2.2.6a.ebuild:
+  ppc stable #257399
+
+  19 Sep 2009; Mike Frysinger <vapier@gentoo.org> libtool-2.2.6a.ebuild:
+  Manually preserve the old libtool library.
+
+  19 Sep 2009; Markus Meier <maekke@gentoo.org> libtool-2.2.6a.ebuild:
+  arm stable, bug #257399
+
+  15 Sep 2009; Olivier Crête <tester@gentoo.org> libtool-2.2.6a.ebuild:
+  Stable on amd64, bug #257399
+
+  15 Sep 2009; Jeroen Roovers <jer@gentoo.org> libtool-2.2.6a.ebuild:
+  Stable for HPPA (bug #257399).
+
+  14 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  libtool-2.2.6a.ebuild:
+  stable x86, bug 257399
+
+  13 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  libtool-2.2.6a.ebuild:
+  Use -Wl,--no-as-needed with binutils older than 2.20 betas to avoid
+  failure of tests #63. Thanks to Dustin Polke, Roberto Sigalotti and
+  Christian Ruppert for helping me track down the issue.
+
+  13 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  libtool-2.2.6a.ebuild, +files/2.2.6a/libtool-2.2.6a-tests-locale.patch:
+  Add backport from upstream to skip over localisation test (#37) when
+  German locale is unavailable; this also fixes the other test failure (#73)
+  since that was just a recursion over the rest of the tests. Solves the
+  blocking issues from bug #257399.
+
+  13 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org> libtool-9999.ebuild:
+  Fix dependencies from current GIT.
+
+  13 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  libtool-2.2.6a.ebuild:
+  Don't run elibtoolize with eautoreconf — stops test #28 from failing.
+
+  28 Jun 2009; Mike Frysinger <vapier@gentoo.org> libtool-2.2.6a.ebuild:
+  Keep libtool from using /bin/sh even if it is bash so people can change on
+  the fly without needing to re-emerge libtool.
+
+  28 Nov 2008; Ulrich Mueller <ulm@gentoo.org>
+  +files/2.2.6a/libtool-2.2.6a-gnuinfo.patch, libtool-2.2.6a.ebuild:
+  Fix GNU Info files, bug 249168.
+
+  26 Oct 2008; Mike Frysinger <vapier@gentoo.org> libtool-2.2.6a.ebuild:
+  Force automake-1.10.1+ #243174.
+
+*libtool-2.2.6a (21 Sep 2008)
+
+  21 Sep 2008; Mike Frysinger <vapier@gentoo.org> +libtool-2.2.6a.ebuild:
+  Version bump #237168 by Conrad Kostecki.
+
+  10 Jun 2008; Mike Frysinger <vapier@gentoo.org> libtool-2.2.4.ebuild:
+  Do not run libtoolize when rebuilding other autotools #225559.
+
+*libtool-2.2.4 (05 May 2008)
+
+  05 May 2008; Mike Frysinger <vapier@gentoo.org> +libtool-2.2.4.ebuild:
+  Version bump.
+
+*libtool-2.2.2-r1 (22 Apr 2008)
+
+  22 Apr 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/libtool-2.2.2-AC_ENABLE_SHARED.patch,
+  +files/libtool-2.2.2-AC_LIBLTDL_CONVENIENCE.patch,
+  +files/libtool-2.2.2-flag-order.patch, +libtool-2.2.2-r1.ebuild:
+  Add some fixes from upstream.
+
+*libtool-2.2.2 (02 Apr 2008)
+
+  02 Apr 2008; Mike Frysinger <vapier@gentoo.org> +libtool-2.2.2.ebuild,
+  libtool-9999.ebuild:
+  Version bump.
+
+*libtool-2.2 (08 Mar 2008)
+
+  08 Mar 2008; Mike Frysinger <vapier@gentoo.org> +libtool-2.2.ebuild:
+  Version bump.
+
+  22 Feb 2008; Jeroen Roovers <jer@gentoo.org> libtool-1.5.26.ebuild:
+  Stable for HPPA (bug #210266).
+
+  18 Feb 2008; Brent Baude <ranger@gentoo.org> libtool-1.5.26.ebuild:
+  stable ppc64, bug 210266
+
+  17 Feb 2008; Raúl Porcel <armin76@gentoo.org> libtool-1.5.26.ebuild:
+  alpha/ia64/sparc stable wrt #210266
+
+  17 Feb 2008; Christoph Mende <angelos@gentoo.org> libtool-1.5.26.ebuild:
+  Stable on amd64, bug #210266
+
+  16 Feb 2008; Markus Meier <maekke@gentoo.org> libtool-1.5.26.ebuild:
+  x86 stable, bug #210266
+
+  15 Feb 2008; nixnut <nixnut@gentoo.org> libtool-1.5.26.ebuild:
+  Stable on ppc wrt bug 210266
+
+*libtool-1.5.26 (01 Feb 2008)
+
+  01 Feb 2008; Mike Frysinger <vapier@gentoo.org> +libtool-1.5.26.ebuild:
+  Version bump.
+
+*libtool-9999 (31 Dec 2007)
+
+  31 Dec 2007; Mike Frysinger <vapier@gentoo.org> +libtool-9999.ebuild:
+  Add live cvs version.
+
+  06 Oct 2007; Tom Gall <tgall@gentoo.org> libtool-1.5.24.ebuild:
+  stable on ppc64 bug #189269
+
+  24 Aug 2007; Raúl Porcel <armin76@gentoo.org> libtool-1.5.24.ebuild:
+  alpha/ia64 stable wrt #189269
+
+  23 Aug 2007; Joshua Kinard <kumba@gentoo.org> libtool-1.5.24.ebuild:
+  Stable on mips, per #189269.
+
+  21 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> libtool-1.5.24.ebuild:
+  Stable on sparc wrt #189269
+
+  21 Aug 2007; Andrej Kacian <ticho@gentoo.org> libtool-1.5.24.ebuild:
+  Stable on x86, bug #189269.
+
+  19 Aug 2007; Jeroen Roovers <jer@gentoo.org> libtool-1.5.24.ebuild:
+  Stable for HPPA (bug #189269).
+
+  18 Aug 2007; nixnut <nixnut@gentoo.org> libtool-1.5.24.ebuild:
+  Stable on ppc wrt bug 189269
+
+  18 Aug 2007; Christoph Mende <angelos@gentoo.org> libtool-1.5.24.ebuild:
+  Stable on amd64 wrt bug #189269
+
+  01 Jul 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  libtool-1.5.23b.ebuild:
+  hppa stable, bug #183102
+
+  29 Jun 2007; Raúl Porcel <armin76@gentoo.org> libtool-1.5.23b.ebuild:
+  alpha/ia64 stable wrt #183102
+
+  29 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  libtool-1.5.23b.ebuild:
+  Stable on sparc wrt #183102
+
+  29 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
+  libtool-1.5.23b.ebuild:
+  stable x86, bug  183102
+
+  27 Jun 2007; Markus Rothe <corsair@gentoo.org> libtool-1.5.23b.ebuild:
+  Stable on ppc64; bug #183102
+
+  26 Jun 2007; Lars Weiler <pylon@gentoo.org> libtool-1.5.23b.ebuild:
+  Stable on ppc; bug #183102.
+
+*libtool-1.5.24 (25 Jun 2007)
+
+  25 Jun 2007; Mike Frysinger <vapier@gentoo.org> +libtool-1.5.24.ebuild:
+  Version bump.
+
+  25 Jun 2007; Joshua Kinard <kumba@gentoo.org> libtool-1.5.23b.ebuild:
+  Stable on mips, per #183102.
+
+  25 Jun 2007; Christoph Mende <angelos@gentoo.org> libtool-1.5.23b.ebuild:
+  Stable on amd64 wrt bug 183102
+
+*libtool-1.5.23b (19 Feb 2007)
+
+  19 Feb 2007; Mike Frysinger <vapier@gentoo.org> +libtool-1.5.23b.ebuild:
+  Version bump.
+
+  08 Dec 2006; Seemant Kulleen <seemant@gentoo.org> libtool-1.5.22.ebuild:
+  fix white space error reported by grobian in #gentoo-dev
+
+  02 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> libtool-1.5.22.ebuild:
+  Use automake 1.10 if present, else fallback to 1.9. Fix stagebuilding with
+  automake 1.10 visible.
+
+  17 Oct 2006; Roy Marples <uberlord@gentoo.org> libtool-1.5.22.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  30 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> libtool-1.5.22.ebuild:
+  Add ~x86-fbsd keyword.
+
+  09 Feb 2006; Joshua Kinard <kumba@gentoo.org> libtool-1.5.22.ebuild:
+  Marked stable on mips for Bug # 118864.
+
+  15 Jan 2006; Jason Wever <weeve@gentoo.org> libtool-1.5.22.ebuild:
+  Stable on SPARC wrt bug #118864.
+
+  15 Jan 2006; Markus Rothe <corsair@gentoo.org> libtool-1.5.22.ebuild:
+  Stable on ppc64
+
+  14 Jan 2006; Jose Luis Rivero <yoswink@gentoo.org> libtool-1.5.22.ebuild:
+  Marked stable on alpha. bug #118864
+
+  13 Jan 2006; <nixnut@gentoo.org> libtool-1.5.22.ebuild:
+  Marked stable on ppc. bug #118864
+
+  13 Jan 2006; Luis Medinas <metalgod@gentoo.org> libtool-1.5.22.ebuild:
+  Stable on amd64. See bug #118864.
+
+  13 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> libtool-1.5.22.ebuild:
+  Stable on x86.
+
+*libtool-1.5.22 (19 Dec 2005)
+
+  19 Dec 2005; Mike Frysinger <vapier@gentoo.org> +libtool-1.5.22.ebuild:
+  Version bump.
+
+  19 Nov 2005; Markus Rothe <corsair@gentoo.org> libtool-1.5.20.ebuild:
+  Stable on ppc64; bug #108846
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> libtool-1.5.20.ebuild:
+  Stable on ppc.
+
+*libtool-1.5.20-r1 (04 Nov 2005)
+
+  04 Nov 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/1.5.20/libtool-1.5.20-version-checking.patch,
+  +libtool-1.5.20-r1.ebuild:
+  Dont use non-portable character classes in Gentoo sanity check #111353 by
+  Erik Månsson.
+
+  18 Oct 2005; Aron Griffis <agriffis@gentoo.org> libtool-1.5.20.ebuild:
+  Mark 1.5.20 stable on alpha
+
+  16 Oct 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/1.5.20/libtool-1.5.20-use-linux-version-in-fbsd.patch,
+  libtool-1.5.20.ebuild:
+  Add patch by Diego Pettenò to tweak versioning styles on Gentoo/FreeBSD
+  hosts #109105.
+
+  13 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org> libtool-1.5.20.ebuild:
+  Stable on sparc wrt #108846
+
+  12 Oct 2005; Andrej Kacian <ticho@gentoo.org> libtool-1.5.20.ebuild:
+  Stable on x86, bug #108846.
+
+  12 Oct 2005; <dang@gentoo.org> libtool-1.5.20.ebuild:
+  Marked stable on amd64
+
+  29 Sep 2005; Mike Frysinger <vapier@gentoo.org>
+  files/1.5.6/libtool-1.5-filter-host-tags.patch:
+  Update the host tags patch to handle the case where user changes their CHOST
+  but doesnt re-emerge libtool.
+
+  25 Sep 2005; Mike Frysinger <vapier@gentoo.org>
+  files/1.5.10/libtool-1.5.10-version-checking.patch,
+  +files/1.5.20/libtool-1.5.20-override-LD_LIBRARY_PATH.patch,
+  libtool-1.5.20.ebuild:
+  Fix bracket quoting in the sanity check and make sure LD_LIBRARY_PATH doesnt
+  clobber wrapped libtool files.
+
+  10 Sep 2005; Martin Schlemmer <azarah@gentoo.org>
+  files/1.5.10/libtool-1.5.10-portage.patch:
+  Fix typo in portage patch, bug #105054.
+
+*libtool-1.5.20 (02 Sep 2005)
+
+  02 Sep 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/1.5.20/libtool-1.5.20-ltmain_sh-max_cmd_len.patch,
+  +libtool-1.5.20.ebuild:
+  Version bump.
+
+  30 Jun 2005; Martin Schlemmer <azarah@gentoo.org>
+  files/1.5.10/libtool-1.5.10-portage.patch,
+  files/1.5.14/libtool-1.5.14-egrep.patch:
+  Fix tests to be sh-complaint.
+
+*libtool-1.5.18-r1 (29 Jun 2005)
+
+  29 Jun 2005; Martin Schlemmer <azarah@gentoo.org>
+  files/1.5.10/libtool-1.5.10-portage.patch,
+  +files/1.5.14/libtool-1.5.14-egrep.patch, libtool-1.5.14.ebuild,
+  libtool-1.5.16.ebuild, libtool-1.5.18.ebuild, +libtool-1.5.18-r1.ebuild:
+  Update portage patch to define EGREP just in case (maybe a bit too much?).
+  Also make sure its global defined as well as LTCC.
+
+*libtool-1.5.18 (18 May 2005)
+
+  18 May 2005; Mike Frysinger <vapier@gentoo.org> +libtool-1.5.18.ebuild:
+  Version bump.
+
+*libtool-1.5.16 (26 Apr 2005)
+
+  26 Apr 2005; Mike Frysinger <vapier@gentoo.org> +libtool-1.5.16.ebuild:
+  Version bump.
+
+  31 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  libtool-1.5.10-r4.ebuild:
+  Stable on alpha, requested by Karol Wojtaszek <sekretarz@gentoo.org>.
+
+*libtool-1.5.14 (13 Mar 2005)
+
+  13 Mar 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/1.5.14/libtool-1.5.14-ltmain_sh-max_cmd_len.patch,
+  +libtool-1.5.14.ebuild:
+  Version bump.
+
+  04 Mar 2005; Daniel Goller <morfic@gentoo.org> libtool-1.5.10-r4.ebuild:
+  Stable on ppc
+
+*libtool-1.5.10-r5 (23 Feb 2005)
+
+  23 Feb 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/1.5.10/libtool-1.5.10-portage.patch, +libtool-1.5.10-r5.ebuild:
+  Update portage.patch to verify that we always have a leading '/' when we
+  replace $D.
+
+  15 Feb 2005; Markus Rothe <corsair@gentoo.org> libtool-1.5.10-r4.ebuild:
+  Stable on ppc64
+
+  15 Feb 2005; Mike Frysinger <vapier@gentoo.org>
+  files/1.5.6/libtool-1.5-filter-host-tags.patch:
+  Add a catch for infer tags with CC=cc just like CC=gcc.
+
+  06 Feb 2005; Joshua Kinard <kumba@gentoo.org> libtool-1.5.10-r4.ebuild:
+  Marked stable on mips.
+
+  01 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  libtool-1.5.10-r4.ebuild:
+  Stable on sparc
+
+*libtool-1.5.10-r4 (27 Jan 2005)
+
+  27 Jan 2005; Mike Frysinger <vapier@gentoo.org>
+  files/1.5.6/libtool-1.5-filter-host-tags.patch, +libtool-1.5.10-r4.ebuild:
+  Fix typo in the tag infer patch.
+
+  22 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  libtool-1.5.2-r7.ebuild:
+  Multilib fixes.
+
+  20 Jan 2005; Mike Frysinger <vapier@gentoo.org> -libtool-1.5.10-r2.ebuild:
+  Push out updated patches.
+
+  19 Jan 2005; Mike Frysinger <vapier@gentoo.org>
+  files/1.4.3/libtool-1.4.2-portage.patch:
+  Touch up portage patch to pass libtools `make check` #70350.
+
+  19 Jan 2005; Mike Frysinger <vapier@gentoo.org>
+  files/1.5.6/libtool-1.5-filter-host-tags.patch:
+  Update the infer tag patch to go both ways #77921.
+
+  03 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*libtool-1.5.10-r2 (17 Dec 2004)
+
+  17 Dec 2004; Mike Frysinger <vapier@gentoo.org> +libtool-1.5.10-r2.ebuild:
+  Remove useless C++ checks #73344. Means we have to run all the autotool
+  stuff ourself (whee!).
+
+  17 Dec 2004; Mike Frysinger <vapier@gentoo.org>
+  -files/1.4.3/libtool-1.4.3-amd64-alias.patch, libtool-1.5.10-r1.ebuild,
+  libtool-1.5.2-r5.ebuild, libtool-1.5.2-r7.ebuild:
+  Remove the amd64-alias patch since gnuconfig_update does all the magic now.
+
+*libtool-1.5.10-r1 (11 Dec 2004)
+
+  11 Dec 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/1.5.10/libtool-1.5.10-version-checking.patch,
+  -files/1.5.6/libtool-1.5.6-libtool_m4-shared_ext.patch,
+  +libtool-1.5.10-r1.ebuild:
+  Rather than guess at variable name changes, perform version sanity checks to
+  make sure that the libtool version being used by configure (via
+  aclocal.m4/libtool.m4) matches that of the local ltmain.sh/libtool files.
+
+  29 Nov 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/1.5.10/libtool-1.5.10-locking.patch, libtool-1.5.10.ebuild:
+  Move to unstable and include patch by Robin Johnson to fix locking issues
+  #40992.
+
+  09 Nov 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/1.5.6/libtool-1.5-filter-host-tags.patch,
+  +files/1.5.6/libtool-1.5.6-libtool_m4-shared_ext.patch,
+  libtool-1.5.10.ebuild:
+  Update the .so and tag guessing patches.
+
+  09 Nov 2004; Mike Frysinger <vapier@gentoo.org> +libtool-1.3.5.ebuild:
+  SLOT-ed version of libtool, no point in building 1.3.5 all the time.
+
+*libtool-1.5.2-r7 (09 Nov 2004)
+
+  09 Nov 2004; Mike Frysinger <vapier@gentoo.org>
+  files/1.5.2/libtool-1.5-filter-host-tags.patch, -libtool-1.5.2-r6.ebuild:
+  Add another check to the CC tag guessing.
+
+*libtool-1.5.2-r6 (04 Nov 2004)
+
+  04 Nov 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/1.5.2/libtool-1.5-filter-host-tags.patch, +libtool-1.5.2-r6.ebuild:
+  Try to impove auto-guessing at --tag #67692.
+
+*libtool-1.5.10 (01 Nov 2004)
+
+  01 Nov 2004; Mike Frysinger <vapier@gentoo.org> +libtool-1.5.10.ebuild,
+  -libtool-1.5.6.ebuild:
+  Version bump.
+
+  25 Sep 2004; Joshua Kinard <kumba@gentoo.org> libtool-1.5.2-r5.ebuild:
+  Marked stable on mips.
+
+  01 Sep 2004; Mike Frysinger <vapier@gentoo.org>
+  files/1.5.2/libtool-1.5.2-libtool_m4-shared_ext.patch:
+  Make sure we quote the grep #47771 by csm@gnu.org.
+
+  15 Jul 2004; Aron Griffis <agriffis@gentoo.org> libtool-1.4.3-r3.ebuild,
+  libtool-1.4.3-r4.ebuild, libtool-1.5.2-r3.ebuild, libtool-1.5.2-r4.ebuild,
+  libtool-1.5.2-r5.ebuild, libtool-1.5.6.ebuild:
+  Fix all the gnuconfig_update screwiness in these ebuilds #57224
+
+  15 Jul 2004; Tom Gall <tgall@gentoo.org> libtool-1.5.2-r5.ebuild:
+  calling multiple gnuconfig_updates in a row kills gnus
+  bug #57224
+
+  10 Jul 2004; Travis Tilley <lv@gentoo.org> libtool-1.5.6.ebuild:
+  it seems that this libtool breaks building .so files for a few ebuilds. next
+  time i test, i guess i'll have to emerge world -e twice instead of just once
+  ;)
+
+  09 Jul 2004; Travis Tilley <lv@gentoo.org> libtool-1.5.6.ebuild:
+  added back keywords for all supported archs
+
+*libtool-1.5.6 (08 Jul 2004)
+
+  08 Jul 2004; Travis Tilley <lv@gentoo.org>
+  +files/1.5.6/libtool-1.5.6-ltmain-SED.patch, +libtool-1.5.6.ebuild:
+  version bump. keyworded -* until i know this wont break anything
+
+  02 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libtool-1.4.1-r10.ebuild, libtool-1.4.3-r3.ebuild, libtool-1.4.3-r4.ebuild,
+  libtool-1.5.2-r3.ebuild, libtool-1.5.2-r4.ebuild, libtool-1.5.2-r5.ebuild:
+  virtual/glibc -> virtual/libc
+
+  24 Jun 2004; <solar@gentoo.org> libtool-1.4.3-r4.ebuild,
+  libtool-1.5.2-r5.ebuild, files/libltdl-uclibc.patch,
+  files/ltconfig-uclibc.patch, files/1.4.3/libtool-1.4.3-uclibc.patch:
+  uclibc support added
+
+  11 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> libtool-1.5.2-r5.ebuild:
+  Stable on alpha.
+
+  27 Apr 2004; Robin H. Johnson <robbat2@gentoo.org> libtool-1.5.2-r5.ebuild:
+  make sure we have the correct version of autoconf
+
+  09 Apr 2004; Travis Tilley <lv@gentoo.org> libtool-1.5.2-r5.ebuild:
+  stable on amd64
+
+  30 Mar 2004; Todd Sunderlin <todd@gentoo.org> libtool-1.5.2-r5.ebuild:
+  set stable on sparc
+
+*libtool-1.5.2-r5 (01 Mar 2004)
+*libtool-1.4.3-r4 (01 Mar 2004)
+
+  01 Mar 2004; Martin Schlemmer <azarah@gentoo.org> libtool-1.4.3-r4.ebuild,
+  libtool-1.5.2-r5.ebuild:
+  Actually remove the correct patch for bug #43244.
+
+*libtool-1.5.2-r4 (29 Feb 2004)
+
+  29 Feb 2004; Martin Schlemmer <azarah@gentoo.org> libtool-1.5.2-r4.ebuild:
+  Remove libtool-1.4.2-fix-linkage-of-cxx-code-with-gcc.patch, as it breaks
+  things for newer gst-plugins, etc (bug #43244).
+
+  18 Feb 2004; Tom Gall <tgall@gentoo.org> libtool-1.5.2-r3.ebuild
+  Fix for ppc64, older 1.3.x libtool needs to have configs etc regenerated
+  so they are aware that ppc64 is a valid build,host,target, follow in amd64
+  footsteps
+
+*libtool-1.5.2-r3 (11 Feb 2004)
+
+  11 Feb 2004; Martin Schlemmer <azarah@gentoo.org> libtool-1.5.2-r3.ebuild,
+  files/1.5.2/libtool-1.5.2-ltmain_sh-max_cmd_len.patch:
+  For older autoconf setups's that do not support libtool.m4, $max_cmd_len
+  are never set, causing all tests against it to fail, resulting in
+  'integer expression expected' errors and possible misbehaviour.
+
+*libtool-1.5.2-r2 (11 Feb 2004)
+
+  11 Feb 2004; Martin Schlemmer <azarah@gentoo.org> libtool-1.5.2-r2.ebuild,
+  files/1.5.2/libtool-1.5.2-libtool_m4-shared_ext.patch:
+  If a package use an older libtool, and libtool.m4 for that package is
+  updated, but not libtool, then we run into an issue where $shared_ext
+  is not set.  This results in libraries being built without '.so'
+  extension, bug #40901.
+
+*libtool-1.5.2-r1 (07 Feb 2004)
+
+  07 Feb 2004; Martin Schlemmer <azarah@gentoo.org> libtool-1.5.2-r1.ebuild:
+  Fix empty VERSION and PACKAGE, bug #39576.
+
+  07 Feb 2004; Martin Schlemmer <azarah@gentoo.org> libtool-1.5.2.ebuild:
+  Mask again as it have some issues.
+
+  06 Feb 2004; Martin Schlemmer <azarah@gentoo.org> libtool-1.5.2.ebuild:
+  Add to testing.
+
+  06 Feb 2004; Martin Schlemmer <azarah@gentoo.org> libtool-1.4.3-r3.ebuild:
+  Bump to stable.
+
+*libtool-1.5.2 (03 Feb 2004)
+
+  03 Feb 2004; Martin Schlemmer <azarah@gentoo.org> libtool-1.5.2.ebuild,
+  files/1.5.2/libtool-1.5-libtool.m4-x86_64.patch,
+  files/1.5.2/libtool-1.5-testfailure.patch:
+  Update version; closes bug #39576.
+
+  22 Dec 2003; Joshua Kinard <kumba@gentoo.org> libtool-1.4.3-r3.ebuild:
+  Added gnuconfig bits to detect systems running mips64 kernels
+
+  16 Nov 2003; Brad House <brad_mssw@gentoo.org> libtool-1.4.3-r3.ebuild:
+  the amd64 _required_ patch was reverted between -r2 and -r3 
+  without reason. Putting it back. Basically when it compiles libtool-1.3.5, that
+  package needs to be re-libtoolized b/c it doesn't know what x86_64 is.
+
+*libtool-1.4.3-r3 (17 Nov 2003)
+
+  17 Nov 2003; Martin Schlemmer <azarah@gentoo.org> libtool-1.4.3-r3.ebuild,
+  files/1.4.3/libtool-1.4.2-expsym-linux.patch,
+  files/1.4.3/libtool-1.4.3-amd64-alias.patch,
+  files/1.4.3/libtool-1.4.3-libtoolize--config-only.patch,
+  files/1.4.3/libtool-1.4.3-pass-thread-flags.patch,
+  files/1.4.3/libtool-1.4.3-quotes.patch:
+  Add more patches from Mandrake.
+
+  25 Sep 2003; Martin Schlemmer <azarah@gentoo.org> libtool-1.4.3-r2.ebuild:
+  Only reinstall missing script if not bootstrap, else we error out.
+
+*libtool-1.4.3-r2 (24 Sep 2003)
+
+  24 Sep 2003; Martin Schlemmer <azarah@gentoo.org> libtool-1.4.3-r2.ebuild,
+  files/1.4.3/libtool-1.4.2-archive-shared.patch,
+  files/1.4.3/libtool-1.4.2-fix-linkage-of-cxx-code-with-gcc.patch,
+  files/1.4.3/libtool-1.4.2-portage.patch,
+  files/1.4.3/libtool-1.4.3-ltmain-SED.patch:
+  With 1.4.3, we have ltmain.in and ltmain.sh which both got patched, but not
+  with all the patches :/ Fix all the patches to only apply to ltmain.in, and
+  then fix the breakage that follows due to us having to remove ltmain.sh.
+
+  17 Sep 2003; Jon Portnoy <avenj@gentoo.org> libtool-1.4.3-r1.ebuild :
+  ia64 keywords.
+
+  02 Aug 2003; Martin Schlemmer <azarah@gentoo.org> libtool-1.4.3-r1.ebuild:
+  Mark stable for all.  (shoot me later)
+
+*libtool-1.4.3-r1 (09 Mar 2003)
+
+  03 Aug 2003; Guy Martin <gmsoft@gentoo.org> libtool-1.4.3-r1.ebuild :
+  Fixed for hppa.
+
+  27 Jun 2003; Joshua Kinard <kumba@gentoo.org> libtool-1.4.3-r1.ebuild:
+  Added ~mips to KEYWORDS
+
+  09 Mar 2003; Martin Schlemmer <azarah@gentoo.org> libtool-1.4.3-r1.ebuild :
+  Add various patches from Mandrake, including one to fix the problem where
+  $SED was not defined if we used autoconf-2.13 ...
+
+  18 Feb 2003; Zach Welch <zwelch@gentoo.org> libtool-1.4.3.ebuild :
+  Added arm to keywords.
+
+  07 Feb 2003; Guy Martin <gmsoft@gentoo.org> libtool-1.4.1-r10-ebuild :
+  Added hppa to keywords.
+
+*libtool-1.4.1-r10 (20 Dec 2002)
+  20 Dec 2002; Jan Seidel <tuxus@gentoo.org> libtool-1.4.1-r10-ebuild :
+  Added mips to keywords
+
+*libtool-1.4.3 (14 Dec 2002)
+
+  26 Feb 2003; Zach Welch <zwelch@gentoo.org> libtool-1.4.1-r10.ebuild,
+  libtool-1.4.3.ebuild:
+  fix arm keywords
+
+  14 Dec 2002; Martin Schlemmer <azarah@gentoo.org> :
+
+  Update version.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*libtool-1.4.2-r2 (20 Oct 2002)
+
+  20 Oct 2002; Martin Schlemmer <azarah@gentoo.org> :
+
+  Spiced up version.
+
+*libtool-1.4.1-r10 (20 Oct 2002)
+
+  20 Oct 2002; Martin Schlemmer <azarah@gentoo.org> :
+
+  Remove the ltmain.sh-hack.patch, as it caused problems with linking
+  dependencies.
+
+*libtool-1.4.1-r9 (3 Jul 2002)
+
+  3 Jul 2002; Martin Schlemmer <azarah@gentoo.org> :
+
+  Fix a bug in libtool-1.4.1-portage.patch-v? .. basically just a type o.  Also
+  Enhanced it to be able to use $PWORKDIR ($WORKDIR in ebuilds) that the latest
+  portage should export.
+
+  27 Jun 2002; Martin Schlemmer <azarah@gentoo.org> :
+
+  Fix a bug in libtool-1.4.1-portage.patch-v5 that has been dropping link dirs
+  and -l? flags.
+
+*libtool-1.4.1-r8 (26 Jun 2002)
+
+  26 Jun 2002; Martin Schlemmer <azarah@gentoo.org> :
+
+  Fix bug #4122.
+
+*libtool-1.4.1-r7 (10 April 2002)
+
+  26 May 2002; M.Schlemmer <azarah@gentoo.org> :
+
+  Update libtool portage patch not to add duplicates.
+
+*libtool-1.4.1-r6 (10 April 2002)
+
+  10 April 2002; M.Schlemmer <azarah@gentoo.org> :
+
+  Made a sligt mistake with $install_libdir in previous patch, should now
+  be fixed.  Enhanced other parts of patch again.
+
+*libtool-1.4.1-r5 (07 April 2002)
+
+  07 April 2002; M.Schlemmer <azarah@gentoo.org> :
+
+  Patch libtool not to include ${D} and ${S} in .la files (enhance previous).
+
+*libtool-1.4.1-r4 (03 April 2002)
+
+  03 April 2002; M.Schlemmer <azarah@gentoo.org> :
+
+  Patch libtool not to include ${D} and ${S} in .la files.
+
+*libtool-1.4.1-r3 (21 March 2002)
+
+  21 March 2002; M.Schlemmer <azarah@gentoo.org> :
+
+  Since -r1, added the relink patch, as well as additional patches that fixes
+  quoting problems, etc
+
+*libtool-1.4.1-r1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,84 @@
+# ChangeLog for gnustep-apps/addresses
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/addresses/ChangeLog,v 1.19 2012/09/23 08:13:49 phajdan.jr Exp $
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> addresses-0.4.8.ebuild:
+  x86 stable wrt bug #433289
+
+  09 Sep 2012; Anthony G. Basile <blueness@gentoo.org> addresses-0.4.8.ebuild:
+  Stable ppc, bug #433289
+
+  07 Sep 2012; Agostino Sarubbo <ago@gentoo.org> addresses-0.4.8.ebuild:
+  Stable for amd64, wrt bug #433289
+
+*addresses-0.4.8 (25 Jul 2012)
+
+  25 Jul 2012; Bernard Cafarelli <voyageur@gentoo.org> +addresses-0.4.8.ebuild:
+  Version bump, clean ebuild
+
+  08 Dec 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  +files/addresses-0.4.7-as-needed.patch, addresses-0.4.7.ebuild:
+  Fix compilation with --as-needed, bug #250169
+
+  16 Nov 2007; Steve Dibb <beandog@gentoo.org> addresses-0.4.7.ebuild:
+  amd64 stable, bug 195990
+
+  08 Nov 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  -files/address-user-root.patch, -files/nonflattened.patch,
+  -addresses-0.4.6-r1.ebuild:
+  Remove old version
+
+  27 Oct 2007; nixnut <nixnut@gentoo.org> addresses-0.4.7.ebuild:
+  Stable on ppc wrt bug 195990
+
+  17 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  addresses-0.4.7.ebuild:
+  stable x86, bug 195990
+
+*addresses-0.4.7 (10 Sep 2007)
+
+  10 Sep 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  +addresses-0.4.7.ebuild:
+  Version bump from the GNUstep overlay
+
+  22 Aug 2007; Roy Marples <uberlord@gentoo.org> addresses-0.4.6-r1.ebuild:
+  Keyworded ~x86-fbsd, #183467 thanks to Nathan Smith.
+
+  18 Aug 2007; Christoph Mende <angelos@gentoo.org>
+  addresses-0.4.6-r1.ebuild:
+  Added ~amd64 wrt bug #170433
+
+  11 Jun 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  -addresses-0.4.6.ebuild:
+  Remove old ebuild
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  addresses-0.4.6-r1.ebuild:
+  Stable on ppc.
+
+  10 Jun 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  addresses-0.4.6-r1.ebuild:
+  updates (and stabilization of Addresses.app) of GNUMail related GNUstep ebuilds
+
+*addresses-0.4.6-r1 (11 Nov 2004)
+
+  11 Nov 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +files/address-user-root.patch, +files/nonflattened.patch,
+  +addresses-0.4.6-r1.ebuild, addresses-0.4.6.ebuild:
+  Mass Update: gnustep.eclass revamped to allow configurable root install;
+  gnustep-base/libs/apps updated to utilize new gnustep.eclass (only versions
+  bumped where files would change); some KEYWORDS were accidentally dropped
+  between version bumps of packages -- this has been resolved; windowmaker
+  correctly supports gnustep now
+
+*addresses-0.4.6 (14 Oct 2004)
+
+  14 Oct 2004; David Holm <dholm@gentoo.org> addresses-0.4.6.ebuild:
+  Added to ~ppc.
+
+  09 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org> :
+  Added package
+

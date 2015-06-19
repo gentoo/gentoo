@@ -1,0 +1,33 @@
+# ChangeLog for app-leechcraft/lc-scroblibre
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-leechcraft/lc-scroblibre/ChangeLog,v 1.6 2014/08/03 19:02:39 maksbotan Exp $
+
+*lc-scroblibre-0.6.70 (03 Aug 2014)
+
+  03 Aug 2014; Maxim Koltsov <maksbotan@gentoo.org>
+  +lc-scroblibre-0.6.70.ebuild:
+  Bump LeechCraft to 0.6.70, thanks to 0xd34df00d.
+
+*lc-scroblibre-0.6.65 (10 Apr 2014)
+
+  10 Apr 2014; Maxim Koltsov <maksbotan@gentoo.org>
+  +lc-scroblibre-0.6.65.ebuild:
+  Bump LeechCraft to 0.5.65, thanks to 0xd34df00d.
+
+  03 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> lc-scroblibre-0.6.60.ebuild:
+  x86 stable wrt bug #500914
+
+  02 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> lc-scroblibre-0.6.60.ebuild:
+  amd64 stable wrt bug #500914
+
+*lc-scroblibre-0.6.60 (08 Jan 2014)
+
+  08 Jan 2014; Maxim Koltsov <maksbotan@gentoo.org>
+  +lc-scroblibre-0.6.60.ebuild:
+  Bump to LeecChraft-0.6.60 release, thanks to 0xd34df00d.
+
+*lc-scroblibre-9999 (27 Dec 2013)
+
+  27 Dec 2013; Maxim Koltsov <maksbotan@gentoo.org> +lc-scroblibre-9999.ebuild,
+  +metadata.xml:
+  Add lc-scroblibre-9999, thanks to 0xd34df00d

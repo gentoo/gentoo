@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=app-arch/rpm app-arch/dpkg bzip2? ( app-arch/bzip2 ) dev-util/debhelper >=app-arch/tar-1.14.91 dev-lang/perl:=[-build(-)]
+DESCRIPTION=Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
+EAPI=5
+HOMEPAGE=http://kitenet.net/programs/alien
+IUSE=+bzip2
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=app-arch/rpm app-arch/dpkg bzip2? ( app-arch/bzip2 ) dev-util/debhelper >=app-arch/tar-1.14.91 dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://debian/pool/main/a/alien/alien_8.93.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=c4b008dd0ccdc46d1aecc0bcee47c92f

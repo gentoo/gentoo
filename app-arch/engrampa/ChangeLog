@@ -1,0 +1,32 @@
+# ChangeLog for app-arch/engrampa
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/engrampa/ChangeLog,v 1.7 2014/12/09 22:35:42 tamiko Exp $
+
+*engrampa-1.8.1 (09 Dec 2014)
+
+  09 Dec 2014; Matthias Maier <tamiko@gentoo.org> +engrampa-1.8.1.ebuild:
+  version bump
+
+  18 Jul 2014; Tom Wijsman <TomWij@gentoo.org> engrampa-1.8.0.ebuild,
+  metadata.xml:
+  USE=-caja fails to build without Caja, temporarily adjust the dependencies to
+  unbreak that. Corrected the metadata.xml description. Bug #517018, reported by
+  Dmitry (sema19689).
+
+  07 Jul 2014; Tom Wijsman <TomWij@gentoo.org> engrampa-1.8.0.ebuild:
+  Add missing itstool dependency; fixes bug #515770, reported by Patrick Lauer.
+
+  02 Jul 2014; Pacho Ramos <pacho@gentoo.org> engrampa-1.8.0.ebuild:
+  x86 stable, bug 513714
+
+  02 Jul 2014; Pacho Ramos <pacho@gentoo.org> engrampa-1.8.0.ebuild:
+  amd64 stable, bug 513714
+
+  07 Jun 2014; Agostino Sarubbo <ago@gentoo.org> engrampa-1.8.0.ebuild:
+  Add ~x86, wrt bug #508072
+
+*engrampa-1.8.0 (27 Apr 2014)
+
+  27 Apr 2014; Tom Wijsman <TomWij@gentoo.org> +engrampa-1.8.0.ebuild,
+  +metadata.xml:
+  Version bump to 1.8.0, continuation of app-arch/mate-file-archiver.

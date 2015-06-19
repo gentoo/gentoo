@@ -1,0 +1,156 @@
+# ChangeLog for gnome-extra/gnome-contacts
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-contacts/ChangeLog,v 1.38 2015/06/09 14:54:46 eva Exp $
+
+*gnome-contacts-3.16.2 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-contacts-3.12.0.ebuild, +gnome-contacts-3.16.2.ebuild:
+  Version bump for Gnome 3.16. Clean up old revision.
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnome-contacts-3.14.2.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnome-contacts-3.14.2.ebuild:
+  amd64 stable, bug 534012
+
+*gnome-contacts-3.14.2 (22 Dec 2014)
+
+  22 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-contacts-3.14.2.ebuild:
+  Version bump for Gnome 3.14.
+
+  01 Nov 2014; Pacho Ramos <pacho@gentoo.org> -gnome-contacts-3.10.1.ebuild:
+  drop old
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gnome-contacts-3.12.0.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gnome-contacts-3.12.0.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  04 May 2014; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gnome-contacts-3.10.1.ebuild:
+  Build fails with vala-0.24
+
+*gnome-contacts-3.12.0 (27 Apr 2014)
+
+  27 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-contacts-3.12.0.ebuild:
+  Version bump for Gnome 3.12.
+
+  26 Apr 2014; Pacho Ramos <pacho@gentoo.org> -gnome-contacts-3.8.3.ebuild:
+  drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gnome-contacts-3.10.1.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gnome-contacts-3.10.1.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-contacts-3.10.1.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-contacts-3.10.1.ebuild:
+  arch stable, bug 888
+
+*gnome-contacts-3.10.1 (24 Dec 2013)
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org> +gnome-contacts-3.10.1.ebuild,
+  -gnome-contacts-3.6.2.ebuild:
+  Version bump for Gnome 3.10
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> gnome-contacts-3.8.3.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> gnome-contacts-3.8.3.ebuild:
+  amd64 stable, bug #478252
+
+  09 Aug 2013; Pacho Ramos <pacho@gentoo.org> -gnome-contacts-3.8.2.ebuild,
+  gnome-contacts-3.6.2.ebuild, gnome-contacts-3.8.3.ebuild:
+  Fix deps
+
+*gnome-contacts-3.8.3 (17 Jul 2013)
+
+  17 Jul 2013; Pacho Ramos <pacho@gentoo.org> +gnome-contacts-3.8.3.ebuild:
+  Version bump
+
+  30 Jun 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-contacts-3.8.2.ebuild:
+  Fix dependencies implied by libgd.
+
+  29 May 2013; Pacho Ramos <pacho@gentoo.org> -gnome-contacts-3.8.1.ebuild,
+  gnome-contacts-3.8.2.ebuild:
+  Regenerate pre-generated sources to prevent bug #471628 by Kobboi, Alexander
+  Tsoy and Evgeny Bobkin. Drop old.
+
+*gnome-contacts-3.8.2 (28 May 2013)
+
+  28 May 2013; Pacho Ramos <pacho@gentoo.org> +gnome-contacts-3.8.2.ebuild,
+  -gnome-contacts-3.8.0.ebuild:
+  Version bump, drop old, vala stuff is always needed at build time
+
+*gnome-contacts-3.8.1 (19 Apr 2013)
+
+  19 Apr 2013; Pacho Ramos <pacho@gentoo.org> +gnome-contacts-3.8.1.ebuild:
+  Version bump
+
+  30 Mar 2013; Pacho Ramos <pacho@gentoo.org> gnome-contacts-3.8.0.ebuild:
+  Don't run vala_src_prepare two times (#463776 by Harris Landgarten).
+
+  29 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-contacts-3.4.1.ebuild:
+  Clean up old revision.
+
+*gnome-contacts-3.8.0 (28 Mar 2013)
+
+  28 Mar 2013; Pacho Ramos <pacho@gentoo.org> +gnome-contacts-3.8.0.ebuild:
+  Version bump for Gnome 3.8
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gnome-contacts-3.6.2.ebuild:
+  Add ~arm, wrt bug #449220
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> gnome-contacts-3.6.2.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> gnome-contacts-3.6.2.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> gnome-contacts-3.6.2.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> gnome-contacts-3.6.2.ebuild:
+  Add ~ppc64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> gnome-contacts-3.6.2.ebuild:
+  Add ~ppc, wrt bug #449220
+
+  19 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gnome-contacts-3.6.2.ebuild:
+  Add some subslot operators.
+
+*gnome-contacts-3.6.2 (18 Dec 2012)
+
+  18 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-contacts-3.2.2.ebuild, +gnome-contacts-3.6.2.ebuild, metadata.xml:
+  Version bump for Gnome 3.6. Fix license.
+
+*gnome-contacts-3.4.1 (14 May 2012)
+
+  14 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +gnome-contacts-3.4.1.ebuild:
+  Version bump for gnome-3.4 with an updated UI.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> gnome-contacts-3.2.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  06 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gnome-contacts-3.2.2.ebuild:
+  Do not check for valac when building from pre-generated C sources; thanks to
+  Gilles Dartiguelongue for noticing.
+
+*gnome-contacts-3.2.2 (04 Nov 2011)
+
+  04 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +gnome-contacts-3.2.2.ebuild, +metadata.xml:
+  Add the new gnome-3.2 contact management application from the gnome overlay.

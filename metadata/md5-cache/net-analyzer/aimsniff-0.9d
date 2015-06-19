@@ -1,0 +1,13 @@
+DEFINED_PHASES=config install postinst prerm setup
+DEPEND=http? ( =www-servers/apache-2* ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=Utility for monitoring and archiving AOL Instant Messenger messages across a network
+EAPI=5
+HOMEPAGE=http://sourceforge.net/projects/aimsniff/
+IUSE=samba mysql http http vhosts
+KEYWORDS=~amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl[gdbm] dev-perl/Net-Pcap dev-perl/NetPacket dev-perl/Unicode-String dev-perl/Proc-Daemon dev-perl/Proc-Simple dev-perl/DBI dev-perl/Unix-Syslog mysql? ( virtual/mysql dev-perl/DBD-mysql ) samba? ( net-fs/samba ) http? ( =www-servers/apache-2* ) >=app-admin/webapp-config-1.50.15
+SLOT=0.9d
+SRC_URI=mirror://sourceforge/aimsniff/aimsniff-0.9d.tar.gz http? ( mirror://sourceforge/aimsniff/was-0.1.2b.tar.gz )
+_eclasses_=depend.apache	1a38534d3f755d1ab1d92ce120bd7dbd	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	webapp	6621f8b5df9f14800054a5953065efeb
+_md5_=c61b0588c0c16472ea6fcb12060cc647

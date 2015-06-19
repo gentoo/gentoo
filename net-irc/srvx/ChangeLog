@@ -1,0 +1,63 @@
+# ChangeLog for net-irc/srvx
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/srvx/ChangeLog,v 1.14 2014/01/08 06:36:54 vapier Exp $
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> srvx-1.3.1.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+  18 Nov 2012; Agostino Sarubbo <ago@gentoo.org> srvx-1.3.1.ebuild:
+  Add ~amd64
+
+  23 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  10 Nov 2007; Raúl Porcel <armin76@gentoo.org> -srvx-1.3.0.2005_p9.ebuild:
+  old
+
+*srvx-1.3.1 (18 Feb 2007)
+
+  18 Feb 2007; Raúl Porcel <armin76@gentoo.org> +srvx-1.3.1.ebuild:
+  Version bump, bug 149685
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  23 Aug 2005; Sven Wegener <swegener@gentoo.org> srvx-1.3.0.2005_p9.ebuild:
+  Change shell from /bin/false to -1 for bug #103421.
+
+  17 Feb 2005; Sven Wegener <swegener@gentoo.org>
+  -srvx-1.3.0.2005_p6.ebuild, -srvx-1.3_p84.ebuild:
+  Removed old ebuilds.
+
+*srvx-1.3.0.2005_p9 (30 Jan 2005)
+
+  30 Jan 2005; Sven Wegener <swegener@gentoo.org>
+  +srvx-1.3.0.2005_p9.ebuild:
+  Version bump, bug #79553.
+
+*srvx-1.3.0.2005_p6 (23 Jan 2005)
+
+  23 Jan 2005; Sven Wegener <swegener@gentoo.org>
+  -srvx-1.3.0.2005_p2.ebuild, +srvx-1.3.0.2005_p6.ebuild:
+  Version bump, bug #79221.
+
+*srvx-1.3.0.2005_p2 (07 Jan 2005)
+
+  07 Jan 2005; Sven Wegener <swegener@gentoo.org>
+  +srvx-1.3.0.2005_p2.ebuild:
+  Version bump, bug #76704.
+
+  21 Dec 2004; Sven Wegener <swegener@gentoo.org> srvx-1.3_p84.ebuild:
+  Added additional SRC_URI location.
+
+*srvx-1.3_p84 (16 Dec 2004)
+
+  16 Dec 2004; Sven Wegener <swegener@gentoo.org> -srvx-1.3_p81.ebuild,
+  +srvx-1.3_p84.ebuild:
+  Version bump. Closes bug #74599.
+
+*srvx-1.3_p81 (16 Dec 2004)
+
+  16 Dec 2004; Sven Wegener <swegener@gentoo.org> +metadata.xml,
+  +files/srvx.conf.d, +files/srvx.init.d, +srvx-1.3_p81.ebuild:
+  Initial import. Closes bug #18700.

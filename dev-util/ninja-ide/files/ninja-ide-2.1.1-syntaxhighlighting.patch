@@ -1,0 +1,43 @@
+https://github.com/ninja-ide/ninja-ide/commit/f19cffa29646f1f9bc015597080b8ebc0ed83530.patch
+https://github.com/ninja-ide/ninja-ide/commit/c722e86c4e497efac56de674c47d5e094ea4c5c5.patch
+
+backported by hasufell@gentoo.org for 2.1.1
+
+--- ninja_ide/gui/editor/highlighter.py
++++ ninja_ide/gui/editor/highlighter.py
+@@ -276,7 +276,7 @@
+         hls = []
+         block = self.currentBlock()
+         user_data = block.userData()
+-        if user_data is None:
++        if user_data is None or not isinstance(user_data, SyntaxUserData):
+             user_data = SyntaxUserData(False)
+         user_data.clear_data()
+         block_number = block.blockNumber()
+@@ -321,7 +321,7 @@
+         hls = []
+         block = self.currentBlock()
+         user_data = block.userData()
+-        if user_data is None:
++        if user_data is None or not isinstance(user_data, SyntaxUserData):
+             user_data = SyntaxUserData(False)
+         user_data.clear_data()
+         block_number = block.blockNumber()
+@@ -409,7 +409,7 @@
+         block = self.document().begin()
+         while block.isValid():
+             user_data = block.userData()
+-            if (user_data is not None) and (user_data.error == True):
++            if (user_data is not None) and isinstance(user_data, SyntaxUserData) and (user_data.error == True):
+                 errors_lines.append(block.blockNumber())
+             block = block.next()
+         return errors_lines
+@@ -462,7 +462,7 @@
+                ((st_fmt == STYLES['comment']) and
+                (self.previousBlockState() != 0))) and \
+                 (len(start_collides) == 0):
+-                if user_data is not None:
++                if user_data is not None and isinstance(user_data, SyntaxUserData):
+                     style = highlight_errors(style, user_data)
+                 self.setFormat(start, length, style)
+             else:

@@ -1,0 +1,9 @@
+# ChangeLog for dev-util/travis-yaml
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/travis-yaml/ChangeLog,v 1.1 2014/06/30 17:00:33 mrueg Exp $
+
+*travis-yaml-0.1.0 (30 Jun 2014)
+
+  30 Jun 2014; Manuel Rüger <mrueg@gentoo.org> +metadata.xml,
+  +travis-yaml-0.1.0.ebuild:
+  Initial ebuild

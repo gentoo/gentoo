@@ -1,0 +1,109 @@
+# ChangeLog for x11-terms/hanterm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/hanterm/ChangeLog,v 1.30 2014/07/05 00:25:41 naota Exp $
+
+  05 Jul 2014; Naohiro Aota <naota@gentoo.org> +files/hanterm-3.1.6-utmp.patch,
+  hanterm-3.1.6-r4.ebuild:
+  Add a patch to build with USE=-utempter. #513892
+
+  19 Dec 2012;  <naota@gentoo.org> hanterm-3.1.6-r2.ebuild,
+  hanterm-3.1.6-r4.ebuild:
+  Fix LICENSE. #446786
+
+  02 Aug 2011; Matt Turner <mattst88@gentoo.org> hanterm-3.1.6-r2.ebuild,
+  hanterm-3.1.6-r4.ebuild:
+  Renamed x11-libs/Xaw3d to x11-libs/libXaw3d.
+
+  10 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  hanterm-3.1.6-r4.ebuild:
+  Respect LDFLAGS. Bug #331815. Thanks to Diego E. 'Flameeyes' Pettenò
+  <flameeyes@gentoo.org> for reporting
+
+  11 Feb 2010; Ulrich Mueller <ulm@gentoo.org> hanterm-3.1.6-r2.ebuild,
+  hanterm-3.1.6-r4.ebuild:
+  Fix LICENSE, bug 298556.
+
+*hanterm-3.1.6-r4 (22 Dec 2008)
+
+  22 Dec 2008; MATSUU Takuto <matsuu@gentoo.org>
+  +files/hanterm-3.1.6-gentoo.patch, files/Hanterm.gentoo,
+  +hanterm-3.1.6-r4.ebuild:
+  Fixed strip issue, bug #252117.
+
+  21 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  06 Feb 2008; Fabian Groffen <grobian@gentoo.org> hanterm-3.1.6-r2.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  hanterm-3.1.6-r2.ebuild:
+  Drop virtual/x11 references.
+
+  20 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  hanterm-3.1.6-r3.ebuild:
+  Remove ppc-macos as we now depend on modular x.
+
+*hanterm-3.1.6-r3 (20 Oct 2006)
+
+  20 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +hanterm-3.1.6-r3.ebuild:
+  Add a new revision depending on modular X that installs in the new
+  app-defaults directory, avoids all the strange symlinking for the /etc
+  app-defaults directory, and make utempter an useflag.
+
+  17 Oct 2006; Emanuele Giaquinta <exg@gentoo.org> hanterm-3.1.6-r2.ebuild:
+  Add missing dep on libutempter.
+
+  14 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  hanterm-3.1.6-r2.ebuild:
+  Add missing libXaw dependency (thanks to Patrick Lauer in bug #150624), this
+  does not solve building though.
+
+  13 Feb 2006; Alastair Tse <liquidx@gentoo.org> hanterm-3.1.6-r2.ebuild:
+  modular-x-ified
+
+  14 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> hanterm-3.1.6-r2.ebuild:
+  Stable on ppc and ppc-macos.
+
+  23 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> hanterm-3.1.6-r2.ebuild:
+  Added to ~ppc-macos.
+
+  03 Sep 2004; Luca Barbato <lu_zero@gentoo.org> hanterm-3.1.6-r2.ebuild:
+  gcc-3.4 fix
+
+  14 Aug 2004; Sven Wegener <swegener@gentoo.org> hanterm-3.1.6-r2.ebuild:
+  Trimmed trailing whitespace.
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> hanterm-3.1.6-r2.ebuild:
+  glibc -> libc
+
+  21 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> hanterm-3.1.6-r2.ebuild:
+  Fixed compilation with xorg-x11, closing bug #54127
+
+  20 Jun 2004; Ian Leitch <port001@gentoo.org> hanterm-3.1.6-r2.ebuild:
+  No need to set S
+
+*hanterm-3.1.6-r2 (24 Jul 2002)
+
+  09 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> hanterm-3.1.6-r2.ebuild,
+  files/Hanterm.gentoo:
+  Updated hangul font path. Added manpage and other docs. Install everything
+  according to FHS.
+
+  02 Jun 2003; Seemant Kulleen <seemant@gentoo.org> hanterm-3.1.6-r1.ebuild,
+  hanterm-3.1.6-r2.ebuild:
+  baekmuk fonts are in media-fonts now
+
+  21 Oct 2002; Calum Selkirk <cselkirk@gentoo.org> hanterm-3.1.6-r2.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  24 Jul 2002; Jays Kwak <jayskwak@gentoo.org> hanterm-3.1.6-r2 :
+  Hanterm config file bug fixed.
+
+*hanterm-3.1.6-r1 (11 Jul 2002)
+
+  11 Jul 2002; Jays Kwak <jayskwak@gentoo.org> hanterm-3.1.6-r1 :
+  Modified default color and fonts in Hanterm config file. Original Hanterm
+  file renamed Hanterm.orig

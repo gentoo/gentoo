@@ -1,0 +1,9 @@
+# ChangeLog for dev-perl/Time-Stopwatch
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Time-Stopwatch/ChangeLog,v 1.1 2013/09/12 14:21:34 dev-zero Exp $
+
+*Time-Stopwatch-1.0.0 (12 Sep 2013)
+
+  12 Sep 2013; Tiziano Müller <dev-zero@gentoo.org>
+  +Time-Stopwatch-1.0.0.ebuild, +metadata.xml:
+  Initial commit

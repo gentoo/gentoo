@@ -1,0 +1,199 @@
+# ChangeLog for dev-php/PEAR-MDB2
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-MDB2/ChangeLog,v 1.47 2015/05/05 13:05:21 grknight Exp $
+
+  05 May 2015; Brian Evans <grknight@gentoo.org> PEAR-MDB2-2.5.0_beta5.ebuild:
+  Drop masked firebird USE due to removal of associated dep
+
+  06 Nov 2014; Brian Evans <grknight@gentoo.org> -PEAR-MDB2-2.5.0_alpha2.ebuild:
+  Drop old
+
+  26 Jan 2014; Ole Markus With <olemarkus@gentoo.org>
+  PEAR-MDB2-2.5.0_alpha2.ebuild, PEAR-MDB2-2.5.0_beta3.ebuild:
+  Removing stable keyword for sh/s390
+
+*PEAR-MDB2-2.5.0_beta5 (03 Nov 2013)
+
+  03 Nov 2013; Matti Bickel <mabi@gentoo.org> +PEAR-MDB2-2.5.0_beta5.ebuild:
+  version bump
+
+  20 May 2013; Ole Markus With <olemarkus@gentoo.org>
+  PEAR-MDB2-2.5.0_alpha2.ebuild, PEAR-MDB2-2.5.0_beta3.ebuild:
+  revert removal of ppc64 stable keyword
+
+  19 May 2013; Ole Markus With <olemarkus@gentoo.org>
+  PEAR-MDB2-2.5.0_alpha2.ebuild, PEAR-MDB2-2.5.0_beta3.ebuild:
+  Dropped stable for ppc64 to fix bad dependency
+
+  03 Dec 2011; Raúl Porcel <armin76@gentoo.org> PEAR-MDB2-2.5.0_beta3.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #388763
+
+  03 Dec 2011; Raúl Porcel <armin76@gentoo.org> PEAR-MDB2-2.5.0_beta3.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #388763
+
+  25 Nov 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  PEAR-MDB2-2.5.0_beta3.ebuild:
+  ppc/ppc64 stable wrt #389807
+
+  13 Nov 2011; Markus Meier <maekke@gentoo.org> PEAR-MDB2-2.5.0_beta3.ebuild:
+  arm stable, bug #388763
+
+  10 Nov 2011; Jeroen Roovers <jer@gentoo.org> PEAR-MDB2-2.5.0_beta3.ebuild:
+  Stable for HPPA (bug #388763).
+
+  04 Nov 2011; Andreas Schuerch <nativemad@gentoo.org>
+  PEAR-MDB2-2.5.0_beta3.ebuild:
+  x86 stable, see bug 388763
+
+  03 Nov 2011; Tony Vroon <chainsaw@gentoo.org> PEAR-MDB2-2.5.0_beta3.ebuild:
+  Marked stable on AMD64 based on arch testing by Ian "idella4" Delaney &
+  Agostino "ago" Sarubbo in security bug #388613.
+
+  27 Dec 2010; <olemarkus@gentoo.org> PEAR-MDB2-2.5.0_beta3.ebuild:
+  Added dependency on dev-php/pear-1.9.1 and above
+
+*PEAR-MDB2-2.5.0_beta3 (11 Sep 2010)
+
+  11 Sep 2010; Matti Bickel <mabi@gentoo.org>
+  -PEAR-MDB2-2.5.0_alpha1.ebuild, -PEAR-MDB2-2.5.0_beta1.ebuild,
+  -PEAR-MDB2-2.5.0_beta2.ebuild, +PEAR-MDB2-2.5.0_beta3.ebuild:
+  cleanup, version bump, eapi bump
+
+*PEAR-MDB2-2.5.0_beta2 (26 Aug 2009)
+
+  26 Aug 2009; Steve Dibb <beandog@gentoo.org>
+  +PEAR-MDB2-2.5.0_beta2.ebuild:
+  Version bump, bug 273684
+
+  28 Jul 2009; Jeremy Olexa <darkside@gentoo.org> -PEAR-MDB2-2.4.1.ebuild:
+  Remove vulnerable versions, bug 271703
+
+  28 Mar 2008; Markus Meier <maekke@gentoo.org>
+  PEAR-MDB2-2.5.0_alpha2.ebuild:
+  amd64 stable, bug #208313
+
+*PEAR-MDB2-2.5.0_beta1 (17 Mar 2008)
+
+  17 Mar 2008; <jokey@gentoo.org> +PEAR-MDB2-2.5.0_beta1.ebuild:
+  Version bump from project overlay
+
+  15 Mar 2008; Jakub Moc <jakub@gentoo.org>
+  +PEAR-MDB2-2.5.0_beta1.ebuild:
+  Version bump, fixes PEAR bugs #12924 and #12991. Add firebird
+  use flags for dev-php/PEAR-MDB2_Driver_ibase.
+
+  10 Feb 2008; Raúl Porcel <armin76@gentoo.org>
+  PEAR-MDB2-2.5.0_alpha2.ebuild:
+  alpha/ia64/sparc stable wrt #208313
+
+  10 Feb 2008; nixnut <nixnut@gentoo.org> PEAR-MDB2-2.5.0_alpha2.ebuild:
+  stable on ppc wrt bug #208313
+
+  03 Feb 2008; Markus Meier <maekke@gentoo.org>
+  PEAR-MDB2-2.5.0_alpha2.ebuild:
+  x86 stable, bug #208313
+
+  01 Feb 2008; Brent Baude <ranger@gentoo.org>
+  PEAR-MDB2-2.5.0_alpha2.ebuild:
+  Marking PEAR-MDB2-2.5.0_alpha2 ppc64 for bug 208313
+
+  31 Jan 2008; Jeroen Roovers <jer@gentoo.org>
+  PEAR-MDB2-2.5.0_alpha2.ebuild:
+  Stable for HPPA (bug #208313).
+
+*PEAR-MDB2-2.5.0_alpha2 (15 Dec 2007)
+
+  15 Dec 2007; Markus Ullmann <jokey@gentoo.org>
+  +PEAR-MDB2-2.5.0_alpha2.ebuild:
+  Version bump from project overlay
+
+  18 Nov 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  PEAR-MDB2-2.5.0_alpha1.ebuild:
+  ppc stable, bug #198446
+
+  14 Nov 2007; Steve Dibb <beandog@gentoo.org>
+  PEAR-MDB2-2.5.0_alpha1.ebuild:
+  amd64 stable, bug 198446
+
+  10 Nov 2007; Jeroen Roovers <jer@gentoo.org>
+  PEAR-MDB2-2.5.0_alpha1.ebuild:
+  Stable for HPPA (bug #198446).
+
+  09 Nov 2007; Raúl Porcel <armin76@gentoo.org>
+  PEAR-MDB2-2.5.0_alpha1.ebuild:
+  alpha/ia64/sparc/x86 stable wrt security #198446
+
+  08 Nov 2007; Markus Rothe <corsair@gentoo.org>
+  PEAR-MDB2-2.5.0_alpha1.ebuild:
+  Stable on ppc64; bug #198446
+
+*PEAR-MDB2-2.5.0_alpha1 (08 Nov 2007)
+
+  08 Nov 2007; Markus Ullmann <jokey@gentoo.org>
+  +PEAR-MDB2-2.5.0_alpha1.ebuild:
+  Version bump from project overlay
+
+  08 Nov 2007; Jakub Moc <jakub@gentoo.org>
+  +PEAR-MDB2-2.5.0_alpha1.ebuild:
+  Version bump, fixes Bug 198446
+
+  22 Oct 2007; Raúl Porcel <armin76@gentoo.org> PEAR-MDB2-2.4.1.ebuild:
+  ia64 stable wrt #192247
+
+  05 Oct 2007; Raúl Porcel <armin76@gentoo.org> PEAR-MDB2-2.4.1.ebuild:
+  alpha/sparc stable wrt #192247
+
+  28 Sep 2007; Christoph Mende <angelos@gentoo.org> PEAR-MDB2-2.4.1.ebuild:
+  Stable on amd64 wrt bug #192247
+
+  26 Sep 2007; Brent Baude <ranger@gentoo.org> PEAR-MDB2-2.4.1.ebuild:
+  Marking PEAR-MDB2-2.4.1 ppc64 stable for bug 192247
+
+  24 Sep 2007; Lars Weiler <pylon@gentoo.org> PEAR-MDB2-2.4.1.ebuild:
+  stable ppc, bug #192247
+
+  21 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  PEAR-MDB2-2.4.1.ebuild:
+  x86 stable, bug 192247
+
+  16 Sep 2007; Jeroen Roovers <jer@gentoo.org> PEAR-MDB2-2.4.1.ebuild:
+  Stable for HPPA (bug #192247).
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org> -PEAR-MDB2-2.1.0.ebuild:
+  Cleanup
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org> -PEAR-MDB2-2.1.0.ebuild:
+  Cleanup
+
+*PEAR-MDB2-2.4.1 (21 May 2007)
+
+  21 May 2007; Anant Narayanan <anant@gentoo.org> +PEAR-MDB2-2.4.1.ebuild:
+  vBump to 2.4.1 and added mssql driver
+
+  25 Nov 2006; Bryan Østergaard <kloeri@gentoo.org> PEAR-MDB2-2.1.0.ebuild:
+  Add ~alpha + ~ia64 keywords, bug 134270.
+
+  19 Jul 2006; Luca Longinotti <chtekk@gentoo.org> PEAR-MDB2-2.1.0.ebuild:
+  Add driver PDEPENDs, doesn't work without drivers.
+
+*PEAR-MDB2-2.1.0 (19 Jul 2006)
+
+  19 Jul 2006; Luca Longinotti <chtekk@gentoo.org> -PEAR-MDB2-2.0.0.ebuild,
+  +PEAR-MDB2-2.1.0.ebuild:
+  Version bump.
+
+  27 May 2006; Luca Longinotti <chtekk@gentoo.org> PEAR-MDB2-2.0.0.ebuild:
+  Added to ~amd64. See bug #134270.
+
+  25 May 2006; Michael Hanselmann <hansmi@gentoo.org>
+  PEAR-MDB2-2.0.0.ebuild:
+  Added to ~hppa, ~ppc64, ~sparc. See bug #134270.
+
+  25 May 2006; <nixnut@gentoo.org> PEAR-MDB2-2.0.0.ebuild:
+  Added ~ppc. bug #134270
+
+*PEAR-MDB2-2.0.0 (25 Feb 2006)
+
+  25 Feb 2006; Sebastian Bergmann <sebastian@gentoo.org> +metadata.xml,
+  +PEAR-MDB2-2.0.0.ebuild:
+  Initial ebuild.

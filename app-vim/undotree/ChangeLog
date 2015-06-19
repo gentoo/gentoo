@@ -1,0 +1,38 @@
+# ChangeLog for app-vim/undotree
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/undotree/ChangeLog,v 1.8 2015/06/19 06:12:09 radhermit Exp $
+
+  19 Jun 2015; Tim Harder <radhermit@gentoo.org> -undotree-4.1.ebuild,
+  -undotree-4.2.ebuild:
+  Remove old.
+
+*undotree-5.0 (19 Jun 2015)
+
+  19 Jun 2015; Tim Harder <radhermit@gentoo.org> +undotree-5.0.ebuild:
+  Version bump.
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  30 Nov 2013; Johannes Huber <johu@gentoo.org> undotree-4.3.ebuild:
+  x86 stable wrt bug #481856
+
+  05 Nov 2013; Tony Vroon <chainsaw@gentoo.org> undotree-4.3.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #481856.
+
+*undotree-4.3 (21 Feb 2013)
+
+  21 Feb 2013; Tim Harder <radhermit@gentoo.org> +undotree-4.3.ebuild:
+  Version bump.
+
+*undotree-4.2 (13 Jan 2013)
+
+  13 Jan 2013; Tim Harder <radhermit@gentoo.org> +undotree-4.2.ebuild:
+  Version bump.
+
+*undotree-4.1 (09 Sep 2012)
+
+  09 Sep 2012; Tim Harder <radhermit@gentoo.org> +undotree-4.1.ebuild,
+  +metadata.xml:
+  Initial import.

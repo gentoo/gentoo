@@ -1,0 +1,46 @@
+# ChangeLog for net-misc/netpipe
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netpipe/ChangeLog,v 1.10 2010/08/26 20:02:10 hwoarang Exp $
+
+*netpipe-1.0.0_beta2-r1 (26 Aug 2010)
+
+  26 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  +netpipe-1.0.0_beta2-r1.ebuild:
+  Patch from Dane Smith <smithdanea@gmail.com> which fixes LDFLAGS (bug
+  #334461), adding missing || dies and other QA fixes
+
+  29 Sep 2007; Santiago M. Mola <coldwind@gentoo.org>
+  netpipe-1.0.0_beta2.ebuild:
+  HOMEPAGE changed (bug 193956), inherit toolchain-funcs, honour CC, remove
+  redundant src_compile and general clean up.
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  netpipe-1.0.0_beta2.ebuild:
+  Stable on ppc.
+
+  03 Sep 2004; David Holm <dholm@gentoo.org> netpipe-1.0.0_beta2.ebuild:
+  Added to ~ppc.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> netpipe-1.0.0_beta2.ebuild:
+  change virtual/glibc to virtual/libc, fix header
+  ebuild created by Matthias Schwarzott <zzam@gmx.de>
+
+*netpipe-1.0.0_beta2 (13 Feb 2003)
+ 
+  13 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*netpipe-1.0.0_beta1 (08 Feb 2003)
+
+  08 Feb 2003; Zach Welch <zwelch@gentoo.org> :
+  Commit to portage
+
+  08 Feb 2003; Matthias Schwarzott <zzam@gmx.de> :
+  Submitted via bugs.gentoo.org, bug 15005
+

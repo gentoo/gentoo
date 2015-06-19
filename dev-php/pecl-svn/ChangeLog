@@ -1,0 +1,36 @@
+# ChangeLog for dev-php/pecl-svn
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-svn/ChangeLog,v 1.6 2014/09/30 01:18:40 grknight Exp $
+
+*pecl-svn-1.0.2-r1 (30 Sep 2014)
+
+  30 Sep 2014; Brian Evans <grknight@gentoo.org> +pecl-svn-1.0.2-r1.ebuild,
+  -pecl-svn-1.0.2.ebuild:
+  Revbump to add 5.6 and drop 5.3 support wrt bug 515098
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pecl-svn-1.0.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  10 May 2013; Patrick Lauer <patrick@gentoo.org> -pecl-svn-1.0.1.ebuild:
+  Remove version with unsatisfiable dependencies
+
+*pecl-svn-1.0.2 (23 Apr 2013)
+
+  23 Apr 2013; Ole Markus With <olemarkus@gentoo.org> +pecl-svn-1.0.2.ebuild:
+  Version bump. Should work with subversion-1.7 and php-5.4
+
+*pecl-svn-1.0.1 (12 Feb 2012)
+
+  12 Feb 2012; Matti Bickel <mabi@gentoo.org> +pecl-svn-1.0.1.ebuild,
+  -pecl-svn-1.0.0-r1.ebuild:
+  version bump
+
+*pecl-svn-1.0.0-r1 (04 Nov 2010)
+
+  04 Nov 2010; Matti Bickel <mabi@gentoo.org> +pecl-svn-1.0.0-r1.ebuild:
+  add version supporting minor version slotting
+
+*pecl-svn-1.0.0 (05 Jul 2010)
+
+  05 Jul 2010; Matti Bickel <mabi@gentoo.org> +pecl-svn-1.0.0.ebuild:
+  import from php-overlay, thanks to Ole Markus With (bug #266971)

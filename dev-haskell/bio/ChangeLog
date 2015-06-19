@@ -1,0 +1,17 @@
+# ChangeLog for dev-haskell/bio
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/bio/ChangeLog,v 1.3 2014/07/25 08:59:34 slyfox Exp $
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*bio-0.5.3-r1 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org> +bio-0.5.3-r1.ebuild:
+  Specify slot 2 for quickcheck 2 in bio
+
+*bio-0.5.3 (12 Sep 2013)
+
+  12 Sep 2013; Sergei Trofimovich <slyfox@gentoo.org> +bio-0.5.3.ebuild,
+  +metadata.xml:
+  A bioinformatics library for haskell (requested by Martin MOKREJŠ).

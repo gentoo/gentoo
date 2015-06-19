@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nepenthes/files/nepenthes.initd,v 1.1 2005/09/09 20:27:25 kaiowas Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting nepenthes"
+	start-stop-daemon --start --quiet --background --exec /usr/sbin/nepenthes -- ${NEPENTHES_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping nepenthes"
+	start-stop-daemon --stop --quiet --retry 5 --exec /usr/sbin/nepenthes
+	eend $?
+}
+

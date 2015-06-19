@@ -1,0 +1,80 @@
+# ChangeLog for dev-python/django-recaptcha
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/django-recaptcha/ChangeLog,v 1.15 2015/06/04 06:33:40 idella4 Exp $
+
+*django-recaptcha-1.0.4 (04 Jun 2015)
+
+  04 Jun 2015; Ian Delaney <idella4@gentoo.org> +django-recaptcha-1.0.4.ebuild:
+  bump
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> django-recaptcha-1.0.3.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> django-recaptcha-1.0.3.ebuild:
+  amd64 stable, bug 540290
+
+*django-recaptcha-1.0.3 (21 Jan 2015)
+
+  21 Jan 2015; Ian Delaney <idella4@gentoo.org> +django-recaptcha-1.0.3.ebuild,
+  -django-recaptcha-0.0.6-r2.ebuild, -django-recaptcha-0.0.9.ebuild,
+  -django-recaptcha-1.0.2.ebuild, -django-recaptcha-1.0.ebuild:
+  bump, unrestrict test phase, rm old
+
+*django-recaptcha-1.0.2 (23 Sep 2014)
+
+  23 Sep 2014; Ian Delaney <idella4@gentoo.org> +django-recaptcha-1.0.2.ebuild:
+  bump; add pypy support
+
+  10 May 2014; Patrick Lauer <patrick@gentoo.org> django-recaptcha-1.0.ebuild:
+  Fix python_compat until django catches up
+
+*django-recaptcha-1.0 (10 May 2014)
+
+  10 May 2014; Ian Delaney <idella4@gentoo.org> +django-recaptcha-1.0.ebuild:
+  bump; drop py2.6 add pypy support, test dep & phase
+
+*django-recaptcha-0.0.9 (26 Apr 2014)
+
+  26 Apr 2014; Ian Delaney <idella4@gentoo.org> +django-recaptcha-0.0.9.ebuild:
+  bump; add py3 support
+
+  30 Mar 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer as talked with him (#398377)
+
+*django-recaptcha-0.0.6-r2 (01 Jun 2013)
+
+  01 Jun 2013; Ian Delaney <idella4@gentoo.org>
+  +django-recaptcha-0.0.6-r2.ebuild, +files/test_settings.py,
+  -django-recaptcha-0.0.4.ebuild, -django-recaptcha-0.0.5.ebuild,
+  -django-recaptcha-0.0.6-r1.ebuild, -django-recaptcha-0.0.6.ebuild,
+  files/django-recaptcha-fields.patch, files/django-recaptcha-settings.patch:
+  revbump, drop pypy to match django, edit recaptcha-fields patch to import
+  added missing source file, add nose for test phase, drop old
+
+*django-recaptcha-0.0.6-r1 (06 Mar 2013)
+
+  06 Mar 2013; Ian Delaney <idella4@gentoo.org>
+  +django-recaptcha-0.0.6-r1.ebuild, +files/django-recaptcha-fields.patch,
+  +files/django-recaptcha-settings.patch, django-recaptcha-0.0.6.ebuild:
+  Patches added for testsuite, migrated to distutils-r1
+
+*django-recaptcha-0.0.6 (22 Feb 2013)
+
+  22 Feb 2013; Patrick Lauer <patrick@gentoo.org>
+  +django-recaptcha-0.0.6.ebuild:
+  Bump
+
+*django-recaptcha-0.0.5 (25 Oct 2012)
+
+  25 Oct 2012; Corentin Chary <iksaif@gentoo.org>
+  +django-recaptcha-0.0.5.ebuild:
+  Bump to 0.0.5.
+
+  30 Sep 2012; Corentin Chary <iksaif@gentoo.org> metadata.xml:
+  Update my mail.
+
+*django-recaptcha-0.0.4 (02 Aug 2012)
+
+  02 Aug 2012; Corentin Chary <iksaif@gentoo.org>
+  +django-recaptcha-0.0.4.ebuild, +metadata.xml:
+  New ebuild.

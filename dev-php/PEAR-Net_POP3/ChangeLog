@@ -1,0 +1,117 @@
+# ChangeLog for dev-php/PEAR-Net_POP3
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Net_POP3/ChangeLog,v 1.29 2014/08/10 20:52:52 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-Net_POP3-1.3.8.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  18 Mar 2012; Matti Bickel <mabi@gentoo.org> -PEAR-Net_POP3-1.3.6-r1.ebuild:
+  remove old
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> PEAR-Net_POP3-1.3.8.ebuild:
+  ia64/sparc stable wrt #396987
+
+  02 Mar 2012; Tobias Klausmann <klausman@gentoo.org>
+  PEAR-Net_POP3-1.3.8.ebuild:
+  Stable on alpha, bug #396987
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> PEAR-Net_POP3-1.3.8.ebuild:
+  Marking PEAR-Net_POP3-1.3.8 ppc64 for bug 396987
+
+  01 Mar 2012; Brent Baude <ranger@gentoo.org> PEAR-Net_POP3-1.3.8.ebuild:
+  Marking PEAR-Net_POP3-1.3.8 ppc for bug 396987
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  PEAR-Net_POP3-1.3.8.ebuild:
+  x86 stable wrt bug #396987
+
+  21 Feb 2012; Jeroen Roovers <jer@gentoo.org> PEAR-Net_POP3-1.3.8.ebuild:
+  Stable for HPPA (bug #396987).
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> PEAR-Net_POP3-1.3.8.ebuild:
+  Stable for amd64, wrt bug #396987
+
+*PEAR-Net_POP3-1.3.8 (15 Jan 2012)
+
+  15 Jan 2012; Matti Bickel <mabi@gentoo.org> -PEAR-Net_POP3-1.3.7.ebuild,
+  +PEAR-Net_POP3-1.3.8.ebuild:
+  version bump & remove old
+
+*PEAR-Net_POP3-1.3.7 (22 Aug 2009)
+
+  22 Aug 2009; Steve Dibb <beandog@gentoo.org> +PEAR-Net_POP3-1.3.7.ebuild:
+  Version bump; add sasl use flag for Auth_SASL
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  21 May 2006; Luca Longinotti <chtekk@gentoo.org>
+  -PEAR-Net_POP3-1.3.6.ebuild:
+  Remove old-style PHP packages.
+
+  30 Mar 2006; Joseph Jezak <josejx@gentoo.org>
+  PEAR-Net_POP3-1.3.6-r1.ebuild:
+  Marked ppc stable for bug #119722.
+
+  18 Mar 2006; Jeroen Roovers <jer@gentoo.org>
+  PEAR-Net_POP3-1.3.6-r1.ebuild:
+  Stable on hppa (bug #119722).
+
+  17 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  PEAR-Net_POP3-1.3.6-r1.ebuild:
+  Mark 1.3.6-r1 stable on alpha/ia64. #119722
+
+  28 Jan 2006; Jeroen Roovers <jer@gentoo.org>
+  PEAR-Net_POP3-1.3.6-r1.ebuild:
+  Marked ~hppa (bug #119722).
+
+  23 Jan 2006; Bryan Østergaard <kloeri@gentoo.org
+  PEAR-Net_POP3-1.3.6-r1.ebuild:
+  Add ~ia64 keyword, bug 119722.
+
+  22 Jan 2006; Simon Stelling <blubb@gentoo.org>
+  PEAR-Net_POP3-1.3.6-r1.ebuild:
+  stable on amd64 wrt bug 119722
+
+  22 Jan 2006; Jason Wever <weeve@gentoo.org> PEAR-Net_POP3-1.3.6-r1.ebuild:
+  Stable on SPARC wrt bug #119722.
+
+  22 Jan 2006; Mark Loeser <halcy0n@gentoo.org>
+  PEAR-Net_POP3-1.3.6-r1.ebuild:
+  Stable on x86; bug #119722
+
+  21 Jan 2006; Markus Rothe <corsair@gentoo.org>
+  PEAR-Net_POP3-1.3.6-r1.ebuild:
+  Stable on ppc64; bug #119722
+
+  22 Nov 2005; Markus Rothe <corsair@gentoo.org>
+  PEAR-Net_POP3-1.3.6-r1.ebuild:
+  Added ~ppc64 keyword; bug #105385
+
+  21 Nov 2005; Joseph Jezak <josejx@gentoo.org>
+  PEAR-Net_POP3-1.3.6-r1.ebuild:
+  Marked ~ppc for bug #105385.
+
+  24 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Net_POP3-1.3.6-r1.ebuild:
+  Add ~amd64.
+
+  08 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Net_POP3-1.3.6-r1.ebuild:
+  Fix RDEPEND.
+
+  18 Sep 2005; Jason Wever <weeve@gentoo.org> PEAR-Net_POP3-1.3.6-r1.ebuild:
+  Added ~sparc keyword.
+
+*PEAR-Net_POP3-1.3.6-r1 (08 Sep 2005)
+
+  08 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  +PEAR-Net_POP3-1.3.6-r1.ebuild:
+  Use new PEAR eclass.
+
+*PEAR-Net_POP3-1.3.6 (07 Sep 2005)
+
+  07 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org> +metadata.xml,
+  +PEAR-Net_POP3-1.3.6.ebuild:
+  Initial ebuild, closes bug 103604.

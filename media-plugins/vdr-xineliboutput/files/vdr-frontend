@@ -1,0 +1,13 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-xineliboutput/files/vdr-frontend,v 1.2 2015/02/21 02:14:47 hd_brummy Exp $
+
+description="Start xineliboutput sxfe/sxfb remote frontend"
+
+source /etc/conf.d/vdr.xineliboutput
+
+command="/usr/bin/vdr-sxfe"
+command_args="${REMOTE_FRONTEND}"
+pidfile="/var/run/vdr-frontend.pid"
+start_stop_daemon_args="--user vdr --group vdr --make-pidfile --background"

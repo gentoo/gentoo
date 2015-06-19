@@ -1,0 +1,57 @@
+# ChangeLog for x11-plugins/i8krellm
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/i8krellm/ChangeLog,v 1.13 2013/06/01 11:39:36 pacho Exp $
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #144305
+
+*i8krellm-2.5-r1 (11 Aug 2010)
+
+  11 Aug 2010; Jim Ramsay <lack@gentoo.org> +i8krellm-2.5-r1.ebuild,
+  +files/i8krellm-2.5-Respect-LDFLAGS.patch:
+  Respect LDFLAGS (Bug #331873)
+
+  12 Mar 2007; Jim Ramsay <lack@gentoo.org> i8krellm-2.5.ebuild:
+  Updated to use new gkrellm-plugin eclass
+
+  22 Feb 2007; Jim Ramsay <lack@gentoo.org> metadata.xml,
+  i8krellm-2.5.ebuild:
+  Removed all reference to gkrellm-1
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  06 Jun 2006; Stefan Schweizer <genstef@gentoo.org> -i8krellm-2.3.ebuild,
+  i8krellm-2.5.ebuild:
+  remove superfluous gtk2 use flag, bug 106560
+
+  24 Mar 2006; Bryan Østergaard <kloeri@gentoo.org i8krellm-2.3.ebuild,
+  i8krellm-2.5.ebuild:
+  Fix HOMEPAGE, thanks to Shyam Mani <fox2mike@gentoo.org>
+
+  08 Mar 2004; Peter Johanson <latexer@gentoo.org> i8krellm-2.3.ebuild,
+  i8krellm-2.5.ebuild:
+  i8kutils moved to app-laptop
+
+*i8krellm-2.5 (02 Oct 2003)
+
+  02 Oct 2003; Heinrich Wendel <lanius@gentoo.org> i8krellm-2.5.ebuild:
+  version bump
+
+*i8krellm-2.3 (13 Feb 2003)
+
+  26 Mar 2003; Graham Forest <vladimir@gentoo.org> i8krellm-2.2.ebuild,
+  i8krellm-2.3.ebuild:
+  Automated cleanup of LICENSE
+
+  13 Feb 2003; Seemant Kulleen <seemant@gentoo.org> i8krellm-2.3.ebuild files/digest-i8krellm-2.3 :
+  version bump thanks to Christoph Hornung <hornung@cs.tu-berlin.de> in bug #15627
+
+*i8krellm-2.2 (12 Feb 2003)
+
+  12 Feb 2003; Seemant Kulleen <seemant@gentoo.org> i8krellm-2.2.ebuild
+  ChangeLog files/digest-i8krellm-2.2 :
+
+  New GKrellM/GKrellM2 plugin for Dell Inspiron and Dell Latitude laptops
+  to control fans and monitor temperatures.  Ebuild by: Christoph Hornung
+  <hornung@cs.tu-berlin.de> in bug #13715.

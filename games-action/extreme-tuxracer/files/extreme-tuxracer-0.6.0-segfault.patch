@@ -1,0 +1,8 @@
+--- physics.cpp
++++ physics.cpp
+@@ -126,3 +126,5 @@
+ 	    TCollidable *trees = &Course.CollArr[0];
++	if (trees == NULL) 
++		return false;
+ 	size_t num_trees = Course.CollArr.size();
+ 	size_t tree_type = trees[0].tree_type;

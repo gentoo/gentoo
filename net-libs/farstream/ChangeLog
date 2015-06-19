@@ -1,0 +1,211 @@
+# ChangeLog for net-libs/farstream
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/farstream/ChangeLog,v 1.55 2015/05/01 12:51:19 eva Exp $
+
+  01 May 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  farstream-0.1.2-r1.ebuild, farstream-0.2.7.ebuild:
+  Clean up keywords of older 0.1 ebuild. Raise gstreamer dependencies in 0.2.7
+  as required by configure.
+
+  29 Mar 2015; Pacho Ramos <pacho@gentoo.org> -farstream-0.2.4.ebuild,
+  farstream-0.1.2-r2.ebuild, farstream-0.2.7.ebuild:
+  Drop msn USE as libmimic will be removed (#489552), drop old.
+
+  29 Mar 2015; Jeroen Roovers <jer@gentoo.org> farstream-0.2.7.ebuild:
+  Stable for HPPA (bug #534012).
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> farstream-0.1.2-r2.ebuild,
+  farstream-0.2.7.ebuild:
+  x86 stable, bug 534012
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> farstream-0.1.2-r2.ebuild:
+  ppc64 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> farstream-0.1.2-r2.ebuild,
+  farstream-0.2.7.ebuild:
+  amd64 stable, bug 534012
+
+  02 Mar 2015; Agostino Sarubbo <ago@gentoo.org> farstream-0.1.2-r2.ebuild:
+  Stable for ppc, wrt bug #540648
+
+  16 Feb 2015; Pacho Ramos <pacho@gentoo.org> farstream-0.2.7.ebuild:
+  Allow fake access to /dev as upstream thinks this is not a bug and it depends
+  on each hardware setup and combination of installed plugins (#539224)
+
+  13 Feb 2015; Pacho Ramos <pacho@gentoo.org> -farstream-0.2.6.ebuild,
+  farstream-0.2.7.ebuild:
+  Prevent sandbox violations, bug #539224
+
+*farstream-0.2.7 (12 Feb 2015)
+
+  12 Feb 2015; Pacho Ramos <pacho@gentoo.org> +farstream-0.2.7.ebuild:
+  Version bump
+
+  08 Feb 2015; Markus Meier <maekke@gentoo.org> farstream-0.1.2-r2.ebuild:
+  arm stable, bug #536694
+
+*farstream-0.2.6 (26 Jan 2015)
+
+  26 Jan 2015; Pacho Ramos <pacho@gentoo.org> +farstream-0.2.6.ebuild,
+  -farstream-0.2.3.ebuild:
+  Version bump, drop old
+
+  19 Jan 2015; Jeroen Roovers <jer@gentoo.org> farstream-0.1.2-r2.ebuild:
+  Stable for HPPA (bug #536694).
+
+  30 Nov 2014; Michał Górny <mgorny@gentoo.org> farstream-0.1.2-r2.ebuild:
+  Add missing REQUIRED_USE.
+
+*farstream-0.1.2-r2 (30 Nov 2014)
+
+  30 Nov 2014; Michał Górny <mgorny@gentoo.org> +farstream-0.1.2-r2.ebuild:
+  Convert the old slot into python-single-r1.
+
+  07 Aug 2014; Jeroen Roovers <jer@gentoo.org> farstream-0.2.4.ebuild:
+  Stable for HPPA (bug #512012).
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> farstream-0.2.4.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> farstream-0.2.4.ebuild:
+  Stable for amd64, wrt bug #512912
+
+*farstream-0.2.4 (15 Jul 2014)
+
+  15 Jul 2014; Pacho Ramos <pacho@gentoo.org> +farstream-0.2.4.ebuild:
+  Version bump
+
+  15 May 2014; Pacho Ramos <pacho@gentoo.org> farstream-0.1.2-r1.ebuild:
+  Parallel build/installing is completely broken for old slot (#434618)
+
+  27 Apr 2014; Pacho Ramos <pacho@gentoo.org> -farstream-0.2.2.ebuild:
+  drop old
+
+  12 Apr 2014; Pacho Ramos <pacho@gentoo.org> farstream-0.1.2-r1.ebuild:
+  Fix depend to proper slot (#507332 by Grant Goodyear)
+
+  28 Mar 2014; Jeroen Roovers <jer@gentoo.org> farstream-0.2.3.ebuild:
+  Stable for HPPA (bug #499954).
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> farstream-0.2.3.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> farstream-0.2.3.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> farstream-0.2.3.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> farstream-0.2.3.ebuild:
+  arch stable, bug 888
+
+*farstream-0.2.3 (13 Dec 2013)
+
+  13 Dec 2013; Pacho Ramos <pacho@gentoo.org> +farstream-0.2.3.ebuild,
+  farstream-0.1.2-r1.ebuild, metadata.xml:
+  Version bump, disable parallel install for old version/slot (#434618)
+
+*farstream-0.1.2-r1 (27 Oct 2013)
+
+  27 Oct 2013; Pacho Ramos <pacho@gentoo.org> +farstream-0.1.2-r1.ebuild:
+  Oops
+
+  27 Oct 2013; Pacho Ramos <pacho@gentoo.org> -farstream-0.1.2-r1.ebuild,
+  metadata.xml:
+  Cleanup due voip herd removal:
+  http://article.gmane.org/gmane.linux.gentoo.devel/88434
+
+  10 Apr 2013; Agostino Sarubbo <ago@gentoo.org> farstream-0.2.2.ebuild:
+  Stable for hppa, wrt bug #458984
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> farstream-0.2.2.ebuild:
+  Stable for sparc, wrt bug #458984
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> farstream-0.2.2.ebuild:
+  Stable for alpha, wrt bug #458984
+
+  29 Mar 2013; Agostino Sarubbo <ago@gentoo.org> farstream-0.2.2.ebuild:
+  Stable for ia64, wrt bug #458984
+
+  28 Mar 2013; Agostino Sarubbo <ago@gentoo.org> farstream-0.2.2.ebuild:
+  Stable for arm, wrt bug #458984
+
+  27 Mar 2013; Agostino Sarubbo <ago@gentoo.org> farstream-0.2.2.ebuild:
+  Stable for ppc64, wrt bug #458984
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> farstream-0.2.2.ebuild:
+  Stable for ppc, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> farstream-0.2.2.ebuild:
+  Stable for x86, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> farstream-0.2.2.ebuild:
+  Stable for amd64, wrt bug #458984
+
+  14 Dec 2012; Michał Górny <mgorny@gentoo.org> metadata.xml:
+  Remove redundant USE=upnp description; it matches the global flag meaning.
+
+*farstream-0.2.2 (08 Dec 2012)
+
+  08 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  farstream-0.1.2-r1.ebuild, +farstream-0.2.2.ebuild:
+  Add farstream-0.2.2 with gstreamer-1.0 support (bug #436238),
+  parallel-installable with the 0.1 versions.
+
+  08 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  farstream-0.1.2-r1.ebuild:
+  Update dependencies for gst-plugins-libnice split. Update license,
+  description, homepage.
+
+  02 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  farstream-0.1.2-r1.ebuild:
+  Pin gstreamer dependencies.
+
+  28 Oct 2012; Raúl Porcel <armin76@gentoo.org> farstream-0.1.2-r1.ebuild:
+  ia64/sparc stable wrt #427544
+
+  16 Oct 2012; Matt Turner <mattst88@gentoo.org> farstream-0.1.2-r1.ebuild:
+  Stable on alpha, bug 427544.
+
+  16 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  farstream-0.1.2-r1.ebuild:
+  stable ppc64, bug #427544
+
+  07 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  farstream-0.1.2-r1.ebuild:
+  stable ppc64, bug #427544
+
+  06 Oct 2012; Markus Meier <maekke@gentoo.org> farstream-0.1.2-r1.ebuild:
+  arm stable, bug #427544
+
+  04 Oct 2012; Agostino Sarubbo <ago@gentoo.org> farstream-0.1.2-r1.ebuild:
+  Stable for amd64, wrt bug #427544
+
+  03 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  farstream-0.1.2-r1.ebuild:
+  x86 stable wrt bug #427544
+
+  02 Oct 2012; Jeroen Roovers <jer@gentoo.org> farstream-0.1.2-r1.ebuild:
+  Stable for HPPA (bug #427544).
+
+  16 Jul 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  farstream-0.1.2-r1.ebuild,
+  +files/farstream-0.1.2-introspection-tag-order.patch:
+  Fix building with gobject-introspection-1.33.x (bug #425096, thanks to Marek
+  Bartosiewicz).
+
+*farstream-0.1.2-r1 (25 Jun 2012)
+
+  25 Jun 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -farstream-0.1.2.ebuild, +farstream-0.1.2-r1.ebuild:
+  Respect introspection USE flag (bug #420405, thanks to Florian Schmaus). Drop
+  broken 0.1.2 ebuild.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> farstream-0.1.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*farstream-0.1.2 (26 Mar 2012)
+
+  26 Mar 2012; Nirbheek Chauhan <nirbheek@gentoo.org> +farstream-0.1.2.ebuild,
+  +metadata.xml:
+  New package farstream, rename of farsight2

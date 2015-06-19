@@ -1,0 +1,97 @@
+# ChangeLog for games-puzzle/sgt-puzzles
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/sgt-puzzles/ChangeLog,v 1.21 2015/04/27 15:54:42 mr_bones_ Exp $
+
+  27 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/sgt-puzzles-9306-gentoo.patch, -sgt-puzzles-9306.ebuild:
+  old
+
+  26 Apr 2015; Pacho Ramos <pacho@gentoo.org> sgt-puzzles-9861.ebuild:
+  x86 stable wrt bug #547136
+
+  20 Apr 2015; Agostino Sarubbo <ago@gentoo.org> sgt-puzzles-9861.ebuild:
+  Stable for amd64, wrt bug #547136
+
+  20 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  sgt-puzzles-99999999.ebuild:
+  improve desktop entry name
+
+  20 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  sgt-puzzles-99999999.ebuild:
+  convert to git; also fixes bug #532604
+
+*sgt-puzzles-9861 (13 Jun 2013)
+
+  13 Jun 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/sgt-puzzles-9861-gentoo.patch, +sgt-puzzles-9861.ebuild:
+  version bump
+
+  24 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/sgt-puzzles-9023-gentoo.patch, -sgt-puzzles-9023.ebuild:
+  old
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> sgt-puzzles-9023.ebuild,
+  sgt-puzzles-9306.ebuild, sgt-puzzles-99999999.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> sgt-puzzles-9306.ebuild:
+  x86 stable wrt bug #400805
+
+  27 Jan 2012; Agostino Sarubbo <ago@gentoo.org> sgt-puzzles-9306.ebuild:
+  Stable for amd64, wrt bug #400805
+
+*sgt-puzzles-9306 (22 Dec 2011)
+
+  22 Dec 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  files/sgt-puzzles-9023-gentoo.patch, +sgt-puzzles-9306.ebuild,
+  +files/sgt-puzzles-9306-gentoo.patch:
+  version bump with patch reroll from Michael (kensington) (bug #395577)
+
+  04 Jan 2011; Markos Chandras <hwoarang@gentoo.org> sgt-puzzles-9023.ebuild:
+  Stable on amd64 wrt bug #350438
+
+  04 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  sgt-puzzles-9023.ebuild:
+  x86 stable wrt bug #350438
+
+*sgt-puzzles-9023 (28 Nov 2010)
+
+  28 Nov 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +sgt-puzzles-9023.ebuild, +files/sgt-puzzles-9023-gentoo.patch:
+  version bump (bug #346831)
+
+  21 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  sgt-puzzles-8972.ebuild:
+  Stable on amd64 wrt bug #335483
+
+  05 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  sgt-puzzles-8972.ebuild:
+  x86 stable wrt bug #335483
+
+*sgt-puzzles-8972 (29 Jul 2010)
+
+  29 Jul 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +sgt-puzzles-8972.ebuild, +files/sgt-puzzles-8972-gentoo.patch:
+  version bump
+
+  29 Jun 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  sgt-puzzles-8906.ebuild, sgt-puzzles-99999999.ebuild:
+  Fix building with live ebuild (bug #323629); honor CC and LDFLAGS; make
+  release and live ebuild converge a bit more
+
+*sgt-puzzles-8906 (01 Apr 2010)
+
+  01 Apr 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +sgt-puzzles-8906.ebuild, +files/sgt-puzzles-8906-gentoo.patch:
+  version bump with patch from Denilson (bug #301789)
+
+  11 Sep 2009; Tupone Alfredo <tupone@gentoo.org>
+  +files/sgt-puzzles-8605-gentoo.patch, sgt-puzzles-8605.ebuild:
+  Fix --as-needed as reported by Bug #281990 by James Rowe <jnrowe@gmail.com>
+
+*sgt-puzzles-99999999 (18 Aug 2009)
+*sgt-puzzles-8605 (18 Aug 2009)
+
+  18 Aug 2009; Mike Frysinger <vapier@gentoo.org> +sgt-puzzles-8605.ebuild,
+  +sgt-puzzles-99999999.ebuild, +metadata.xml:
+  Initial package by Denilson and Eugene Kapun and lumato and me #114102.

@@ -1,0 +1,48 @@
+# ChangeLog for www-misc/log-toolkit
+# Copyright 2000-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-misc/log-toolkit/ChangeLog,v 1.8 2012/11/27 19:42:19 pacho Exp $
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  02 Feb 2008; Benedikt Böhm <hollow@gentoo.org> metadata.xml,
+  log-toolkit-0.9.6.ebuild:
+  use depend.apache wrt #208033
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org> log-toolkit-0.9.6.ebuild:
+  Fixing the DEPEND/RDEPEND for the move of net-www/apache to
+  www-servers/apache (#78622).
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  log-toolkit-0.9.6.ebuild:
+  Masked log-toolkit-0.9.6.ebuild stable for ppc
+
+  30 Aug 2004; David Holm <dholm@gentoo.org> log-toolkit-0.9.6.ebuild:
+  Added to ~ppc.
+
+*log-toolkit-0.9.6 (15 Aug 2004)
+
+  15 Aug 2004; Stuart Herbert <stuart@gentoo.org> +metadata.xml,
+  +log-toolkit-0.9.6.ebuild:
+  Moved from net-www/log-toolkit to www-misc/log-toolkit.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  log-toolkit-0.9.6.ebuild:
+  virtual/glibc -> virtual/libc
+
+  25 May 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  log-toolkit-0.9.6.ebuild:
+  fix depend; use generic src_compile; tidy
+
+*log-toolkit-0.9.6 (22 May 2004)
+
+  22 May 2004; Chuck Short <zul@gentoo.org> log-toolkit-0.9.6.ebuild:
+  Initial version, ebuild initially written by Sven Wegener. <sven.wegener @
+  stealer.net> Closes #51200.

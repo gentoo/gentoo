@@ -1,0 +1,92 @@
+# ChangeLog for app-pda/libopensync-plugin-syncml
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-pda/libopensync-plugin-syncml/ChangeLog,v 1.17 2014/03/09 03:41:44 rhill Exp $
+
+  09 Mar 2014; Ryan Hill <rhill@gentoo.org> metadata.xml:
+  Change my email.
+
+  19 Mar 2011; Ryan Hill <dirtyepic@gentoo.org>
+  libopensync-plugin-syncml-0.39.ebuild, libopensync-plugin-syncml-9999.ebuild,
+  metadata.xml:
+  Use EAPI 4 for REQUIRED_USE.
+
+  19 May 2010; Thilo Bangert <bangert@gentoo.org>
+  libopensync-plugin-syncml-9999.ebuild:
+  fix build - bug #299271 - fix dep on libsyncml
+
+*libopensync-plugin-syncml-0.39 (15 Nov 2009)
+
+  15 Nov 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -libopensync-plugin-syncml-0.36.ebuild,
+  +libopensync-plugin-syncml-0.39.ebuild,
+  libopensync-plugin-syncml-9999.ebuild:
+  Version bump. Restrict tests in 0.39. Clean up 0.36 due to removed
+  libsyncml-0.4.
+
+  19 Sep 2009; Petteri Räty <betelgeuse@gentoo.org>
+  -libopensync-plugin-syncml-0.21.ebuild,
+  -libopensync-plugin-syncml-0.22.ebuild,
+  -libopensync-plugin-syncml-0.35.ebuild:
+  Remove old versions that use built_with_use.
+
+  19 Sep 2009; Petteri Räty <betelgeuse@gentoo.org>
+  libopensync-plugin-syncml-0.36.ebuild:
+  Migrate to EAPI 2 in order to remove built_with_use usage. Don't allow
+  libsyncml-0.5.0 to satisfy dependencies in order to fix bug #269187.
+
+  03 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  13 Jul 2008; Joseph Jezak <josejx@gentoo.org>
+  libopensync-plugin-syncml-0.36.ebuild:
+  Marked ~ppc for bug #197238.
+
+*libopensync-plugin-syncml-0.36 (27 Jan 2008)
+
+  27 Jan 2008; Piotr Jaroszyński <peper@gentoo.org>
+  +libopensync-plugin-syncml-0.36.ebuild:
+  Add 0.36.
+
+*libopensync-plugin-syncml-0.35 (21 Dec 2007)
+
+  21 Dec 2007; Piotr Jaroszyński <peper@gentoo.org>
+  +libopensync-plugin-syncml-0.35.ebuild:
+  Add 0.35.
+
+  07 Dec 2007; Piotr Jaroszyński <peper@gentoo.org>
+  libopensync-plugin-syncml-9999.ebuild:
+  Make obex default.
+
+*libopensync-plugin-syncml-9999 (26 Nov 2007)
+
+  26 Nov 2007; Piotr Jaroszyński <peper@gentoo.org>
+  +libopensync-plugin-syncml-9999.ebuild:
+  Add live svn ebuild.
+
+*libopensync-plugin-syncml-0.22 (28 Mar 2007)
+
+  28 Mar 2007; Piotr Jaroszyński <peper@gentoo.org>
+  -libopensync-plugin-syncml-0.20.ebuild,
+  +libopensync-plugin-syncml-0.22.ebuild:
+  Version bump.
+
+  04 Mar 2007; Marius Mauch <genone@gentoo.org>
+  libopensync-plugin-syncml-0.21.ebuild:
+  Replacing einfo with elog
+
+  13 Feb 2007; Piotr Jaroszyński <peper@gentoo.org>
+  libopensync-plugin-syncml-0.21.ebuild:
+  Add missing src_compile(), bug #166660.
+
+*libopensync-plugin-syncml-0.21 (12 Feb 2007)
+
+  12 Feb 2007; Piotr Jaroszyński <peper@gentoo.org>
+  +libopensync-plugin-syncml-0.21.ebuild:
+  Version bump.
+
+*libopensync-plugin-syncml-0.20 (13 Nov 2006)
+
+  13 Nov 2006; Piotr Jaroszyński <peper@gentoo.org> +metadata.xml,
+  +libopensync-plugin-syncml-0.20.ebuild:
+  New package.
+

@@ -1,0 +1,47 @@
+# ChangeLog for dev-perl/Net-SFTP-Foreign
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-SFTP-Foreign/ChangeLog,v 1.9 2014/10/12 07:29:38 zlogene Exp $
+
+  12 Oct 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -Net-SFTP-Foreign-1.730.0.ebuild:
+  Drop old.
+
+*Net-SFTP-Foreign-1.750.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Net-SFTP-Foreign-1.750.0-r1.ebuild, -Net-SFTP-Foreign-1.750.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  19 Dec 2013; Mikle Kolyada <zlogene@gentoo.org>
+  Net-SFTP-Foreign-1.750.0.ebuild:
+  amd64/x86 stable wrt bug #492204
+
+*Net-SFTP-Foreign-1.750.0 (03 Sep 2013)
+
+  03 Sep 2013; Patrick Lauer <patrick@gentoo.org>
+  +Net-SFTP-Foreign-1.750.0.ebuild:
+  Bump
+
+  10 Jul 2013; Agostino Sarubbo <ago@gentoo.org>
+  Net-SFTP-Foreign-1.730.0.ebuild:
+  Stable for x86, wrt bug #399553
+
+  10 Jul 2013; Agostino Sarubbo <ago@gentoo.org>
+  Net-SFTP-Foreign-1.730.0.ebuild:
+  Stable for amd64, wrt bug #399553
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org> -Net-SFTP-Foreign-1.67.ebuild:
+  Cleanup
+
+*Net-SFTP-Foreign-1.730.0 (04 Nov 2012)
+
+  04 Nov 2012; Torsten Veller <tove@gentoo.org>
+  +Net-SFTP-Foreign-1.730.0.ebuild, metadata.xml:
+  Version bump
+
+*Net-SFTP-Foreign-1.67 (29 Oct 2012)
+
+  29 Oct 2012; Patrick Lauer <patrick@gentoo.org> +Net-SFTP-Foreign-1.67.ebuild,
+  +metadata.xml:
+  Initial import, ebuilds borrowed from entoo / smokeping-overlay on github

@@ -1,0 +1,186 @@
+# ChangeLog for sys-libs/libtermcap-compat
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libtermcap-compat/ChangeLog,v 1.48 2014/12/07 16:32:16 heroxbd Exp $
+
+  07 Dec 2014; Benda Xu <heroxbd@gentoo.org> libtermcap-compat-2.0.8-r3.ebuild:
+  keyword ~arm
+
+  17 Jan 2013; Mike Frysinger <vapier@gentoo.org>
+  libtermcap-compat-2.0.8-r3.ebuild:
+  Update to EAPI=4 and install libtermcap into /usr as prebuilt do not go in /.
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org>
+  libtermcap-compat-2.0.8-r3.ebuild:
+  alpha/sparc stable wrt #400511
+
+  07 Feb 2012; Jeroen Roovers <jer@gentoo.org>
+  libtermcap-compat-2.0.8-r3.ebuild:
+  Stable for HPPA (bug #400511).
+
+  01 Feb 2012; Brent Baude <ranger@gentoo.org>
+  libtermcap-compat-2.0.8-r3.ebuild:
+  Marking libtermcap-compat-2.0.8-r3 ppc for bug 400511
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  libtermcap-compat-2.0.8-r3.ebuild:
+  x86 stable wrt bug #400511
+
+  27 Jan 2012; Agostino Sarubbo <ago@gentoo.org>
+  libtermcap-compat-2.0.8-r3.ebuild:
+  Stable for amd64, wrt bug #400511
+
+*libtermcap-compat-2.0.8-r3 (20 Aug 2011)
+
+  20 Aug 2011; Mike Frysinger <vapier@gentoo.org>
+  +libtermcap-compat-2.0.8-r3.ebuild:
+  Clean up & simplify the build a bit and respect build settings #379273 by
+  Agostino Sarubbo.
+
+  19 Feb 2010; Ulrich Mueller <ulm@gentoo.org>
+  libtermcap-compat-2.0.8-r2.ebuild:
+  Fix LICENSE, bug 305453.
+
+  23 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libtermcap-compat-2.0.8-r2.ebuild:
+  Stable on ppc wrt bug #148858.
+
+  05 Nov 2006; Bryan Østergaard <kloeri@gentoo.org>
+  libtermcap-compat-2.0.8-r2.ebuild:
+  Stable on Alpha, bug 148858.
+
+  27 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  libtermcap-compat-2.0.8-r2.ebuild:
+  Stable on sparc wrt #148858
+
+  15 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libtermcap-compat-2.0.8-r2.ebuild:
+  hppa stable, bug #148858
+
+  06 Oct 2006; Andrej Kacian <ticho@gentoo.org>
+  libtermcap-compat-2.0.8-r2.ebuild:
+  Stable on x86, bug #148858.
+
+  04 Oct 2006; Simon Stelling <blubb@gentoo.org>
+  libtermcap-compat-2.0.8-r2.ebuild:
+  stable on amd64
+
+  29 Sep 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  libtermcap-compat-2.0.8-r2.ebuild:
+  oops... un-stable until mail-client/hap-3.7-r1 is stable
+
+  29 Sep 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  libtermcap-compat-2.0.8-r2.ebuild:
+  stable on ppc (Bug #148858)
+
+  21 Sep 2006; Mike Frysinger <vapier@gentoo.org>
+  libtermcap-compat-2.0.8-r1.ebuild, libtermcap-compat-2.0.8-r2.ebuild:
+  Punt arm/ia64/mips/ppc64/s390 KEYWORDS as no package uses libtermcap-compat
+  and has support in those arches (and we want to kill this package, not
+  extend it).
+
+  29 Aug 2006; <blubb@gentoo.org> libtermcap-compat-2.0.8-r1.ebuild:
+  fix for multilib-strict adherence; bug 145370
+
+*libtermcap-compat-2.0.8-r2 (20 Aug 2005)
+
+  20 Aug 2005; Mike Frysinger <vapier@gentoo.org>
+  +libtermcap-compat-2.0.8-r2.ebuild:
+  Version bump to start deprecating this craptastic package.
+
+  28 Jul 2005; Seemant Kulleen <seemant@gentoo.org>
+  -libtermcap-compat-1.2.3.ebuild, -libtermcap-compat-2.0.8.ebuild,
+  libtermcap-compat-2.0.8-r1.ebuild:
+  cruft ebuild clean out and src_uri fix
+
+  02 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libtermcap-compat-1.2.3-r1.ebuild, libtermcap-compat-1.2.3.ebuild,
+  libtermcap-compat-2.0.8-r1.ebuild, libtermcap-compat-2.0.8.ebuild:
+  virtual/glibc -> virtual/libc
+
+  12 May 2004; Guy Martin <gmsoft@gentoo.org> libtermcap-compat-2.0.8-r1.ebuild:
+  Marked stable on hppa.
+
+  19 Apr 2004; Tom Gall <tgall@gentoo.org>
+  libtermcap-compat-2.0.8-r1.ebuild:
+  marked stable on ppc64
+
+  07 Apr 2004; Brian Jackson <iggy@gentoo.org>
+  libtermcap-compat-2.0.8-r1.ebuild:
+  added s390 keyword
+
+  26 Mar 2004; Aron Griffis <agriffis@gentoo.org>
+  libtermcap-compat-2.0.8-r1.ebuild:
+  stable on alpha and ia64
+
+*libtermcap-compat-2.0.8-r1 (17 Mar 2004)
+
+  17 Mar 2004; Daniel Ahlberg <aliz@gentoo.org>
+  libtermcap-compat-2.0.8-r1.ebuild, files/libtermcap-compat-2.0.8-fPIC.patch:
+  Compile both static and shared lib with -fPIC.
+  Fix symlinks, closing #42709.
+
+  11 Jan 2004; Martin Schlemmer <azarah@gentoo.org>
+  libtermcap-compat-1.2.3-r1.ebuild, libtermcap-compat-1.2.3.ebuild,
+  libtermcap-compat-2.0.8.ebuild:
+  Make sure we link to /lib/libtermcap.so, not /usr/lib/libtermcap.a, bug #4411.
+
+  05 Jan 2004; Seemant Kulleen <seemant@gentoo.org>
+  libtermcap-compat-2.0.8.ebuild:
+  KEYWORD into testing :/
+
+*libtermcap-compat-2.0.8 (30 Dec 2003)
+
+  30 Dec 2003; Seemant Kulleen <seemant@gentoo.org>
+  libtermcap-compat-2.0.8.ebuild:
+  version bump. This incorporates Eric Raymond's latest iteration of the
+  /etc/termcap file, patched with some patches from Mandrake. Additionally,
+  libtermcap's src.rpm was liberally raided for Mandrake patches. This is
+  designed to work with coreutils-5.0.91-r3
+
+  17 Sep 2003; Jon Portnoy <avenj@gentoo.org>
+  libtermcap-compat-1.2.3-r1.ebuild :
+  ia64 keywords.
+
+  17 Sep 2003; Tavis Ormandy <taviso@gentoo.org>
+  libtermcap-compat-1.2.3-r1.ebuild:
+  stable
+
+  08 Sep 2003; Tavis Ormandy <taviso@gentoo.org>
+  libtermcap-compat-1.2.3-r1.ebuild:
+  inherit eutils
+
+*libtermcap-compat-1.2.3-r1 (06 Sep 2003)
+
+  06 Sep 2003; Tavis Ormandy <taviso@gentoo.org>
+  libtermcap-compat-1.2.3-r1.ebuild:
+  libraries owned by user `bin` instead of `root` #24211
+  changed patch command to use `epatch`.
+
+  08 Feb 2003; Guy Martin <gmsoft@gentoo.org> libtermcap-compat-1.2.3.ebuild :
+  Added hppa to keywords.
+
+*libtermcap-compat-1.2.3 (05 Sep 2002)
+
+  27 Feb 2003; Zach Welch <zwelch@gentoo.org> libtermcap-compat-1.2.3.ebuild:
+  add arm keyword
+
+  09 Feb 2003; Jan Seidel <tuxus@gentoo.org> 
+  Added mips to keywords :
+
+  13 Dec 2002; Seemant Kulleen <seemant@gentoo.org>
+  libtermcap-compat-1.2.3.ebuild :
+
+  ChangeLog and README are now properly installed in the docs folder.
+  Thanks to: fede2@fuerzag.ulatina.ac.cr (Alvaro Figueroa) for catching this
+  in bug #12087.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  02 Dec 2002; Will Woods <wwoods@gentoo.org> libtermcap-compat-1.2.3.ebuild:
+  Added alpha keyword.
+
+  12 Sep 2002; Maarten Thibaut <murphy@gentoo.org> libtermcap-compat-1.2.3.ebuild :
+  Added description to ebuild. Added sparc/sparc64 keywords.
+
+  05 Sep 2002; Martin Schlemmer <azarah@gentoo.org> libtermcap-compat-1.2.3.ebuild :
+  Initial version.  This is based on Debian's termcap-compat package.

@@ -1,0 +1,26 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/isapnptools/files/isapnp.rc,v 1.1 2004/10/06 01:41:46 vapier Exp $
+
+check_config() {
+	if [ ! -e /etc/isapnp.conf ] ; then
+		eerror "You need an /etc/isapnp.conf file first"
+		eerror "Theres a sample in docs/isapnptools/txt"
+		return 1
+	fi
+	if [ ! -x /sbin/isapnp ] ; then
+		eerror "You're missing /sbin/isapnp; emerge sys-apps/isapnptools"
+		return 1
+	fi
+
+	return 0
+}
+
+start() {
+	check_config || return 1
+
+	ebegin "Configuring ISA PnP devices"
+	/sbin/isapnp /etc/isapnp.conf
+	eend $?
+}

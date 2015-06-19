@@ -1,0 +1,297 @@
+# ChangeLog for app-editors/gedit-plugins
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/gedit-plugins/ChangeLog,v 1.60 2015/06/09 10:06:51 eva Exp $
+
+*gedit-plugins-3.16.0 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  +gedit-plugins-3.16.0.ebuild:
+  Version bump for Gnome 3.16.
+
+  12 May 2015; Pacho Ramos <pacho@gentoo.org> -gedit-plugins-3.12.1-r1.ebuild,
+  -gedit-plugins-3.12.1.ebuild:
+  Drop old
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> gedit-plugins-3.12.1.ebuild:
+  Remove old Python implementations
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> gedit-plugins-3.14.1.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> gedit-plugins-3.14.1.ebuild:
+  amd64 stable, bug 534012
+
+  19 Dec 2014; Pacho Ramos <pacho@gentoo.org> gedit-plugins-3.12.1-r1.ebuild:
+  amd64 stable, bug 529964
+
+  18 Dec 2014; Pacho Ramos <pacho@gentoo.org> gedit-plugins-3.12.1-r1.ebuild:
+  x86 stable, bug 529964
+
+*gedit-plugins-3.14.1 (15 Dec 2014)
+
+  15 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +gedit-plugins-3.14.1.ebuild, metadata.xml:
+  Version bump for Gnome 3.14.
+
+  01 Dec 2014; Michał Górny <mgorny@gentoo.org> gedit-plugins-3.12.1-r1.ebuild:
+  Add a proper REQUIRED_USE for libpeas compatibility, use python_setup() to use
+  the correct implementation.
+
+  25 Nov 2014; Pacho Ramos <pacho@gentoo.org> gedit-plugins-3.12.1-r1.ebuild:
+  Support python 3.4
+
+*gedit-plugins-3.12.1-r1 (24 Nov 2014)
+
+  24 Nov 2014; Pacho Ramos <pacho@gentoo.org> +gedit-plugins-3.12.1-r1.ebuild,
+  -gedit-plugins-3.10.1.ebuild:
+  Support python 3.4
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gedit-plugins-3.12.1.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gedit-plugins-3.12.1.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  30 Jun 2014; Pacho Ramos <pacho@gentoo.org> gedit-plugins-3.12.1.ebuild:
+  Offending files are only installed with USE python (#515842 by Ilya Gordeev)
+
+*gedit-plugins-3.12.1 (27 Apr 2014)
+
+  27 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +gedit-plugins-3.12.1.ebuild, metadata.xml:
+  Version bump for Gnome 3.12.
+
+  12 Apr 2014; Pacho Ramos <pacho@gentoo.org>
+  -files/gedit-plugins-3.8.3-terminal-background.patch,
+  -gedit-plugins-2.32.0.ebuild, -gedit-plugins-3.8.3-r1.ebuild,
+  gedit-plugins-3.10.1.ebuild, metadata.xml:
+  Fix itstool dependency (#504910 by Chris Reffett), drop old.
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gedit-plugins-3.10.1.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gedit-plugins-3.10.1.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gedit-plugins-3.10.1.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gedit-plugins-3.10.1.ebuild:
+  arch stable, bug 888
+
+*gedit-plugins-3.10.1 (24 Dec 2013)
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org> +gedit-plugins-3.10.1.ebuild:
+  Version bump for Gnome 3.10
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> gedit-plugins-3.8.3-r1.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> gedit-plugins-3.8.3-r1.ebuild:
+  amd64 stable, bug #478252
+
+*gedit-plugins-3.8.3-r1 (26 Oct 2013)
+
+  26 Oct 2013; Pacho Ramos <pacho@gentoo.org>
+  +files/gedit-plugins-3.8.3-terminal-background.patch,
+  +gedit-plugins-3.8.3-r1.ebuild, -gedit-plugins-3.8.2.ebuild,
+  -gedit-plugins-3.8.3.ebuild:
+  Adapt upstream patch from master to let terminal plugin work again
+
+  31 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  -gedit-plugins-3.6.1-r1.ebuild:
+  Remove old
+
+  25 Jul 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  gedit-plugins-3.8.3.ebuild:
+  Add support python3_3.
+
+  30 Jun 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  gedit-plugins-3.8.3.ebuild:
+  Add missing REQUIRED_USE handling for python.
+
+*gedit-plugins-3.8.3 (18 Jun 2013)
+
+  18 Jun 2013; Pacho Ramos <pacho@gentoo.org> +gedit-plugins-3.8.3.ebuild,
+  -gedit-plugins-3.8.1.ebuild, metadata.xml:
+  Version bump, drop old.
+
+*gedit-plugins-3.8.2 (26 May 2013)
+
+  26 May 2013; Pacho Ramos <pacho@gentoo.org> +gedit-plugins-3.8.2.ebuild,
+  -files/gedit-plugins-2.30.0-background-color.patch,
+  -files/gedit-plugins-2.30.0-commander-menu.patch,
+  -files/gedit-plugins-2.30.0-copy-paste.patch,
+  -files/gedit-plugins-2.30.0-edit-menu.patch,
+  -files/gedit-plugins-2.30.0-find-replace.patch,
+  -files/gedit-plugins-2.30.0-keybinding-toggle.patch,
+  -files/gedit-plugins-2.30.0-replace-all.patch, -gedit-plugins-3.8.0.ebuild:
+  Version bump, remove old
+
+*gedit-plugins-3.8.1 (28 Apr 2013)
+
+  28 Apr 2013; Pacho Ramos <pacho@gentoo.org> +gedit-plugins-3.8.1.ebuild:
+  Version bump
+
+*gedit-plugins-3.8.0 (28 Mar 2013)
+
+  28 Mar 2013; Pacho Ramos <pacho@gentoo.org> +gedit-plugins-3.8.0.ebuild:
+  Version bump for Gnome 3.8
+
+  05 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -gedit-plugins-3.4.0.ebuild:
+  Clean up old revision.
+
+*gedit-plugins-3.6.1-r1 (16 Dec 2012)
+
+  16 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gedit-plugins-2.32.0.ebuild, gedit-plugins-3.4.0.ebuild,
+  +gedit-plugins-3.6.1-r1.ebuild:
+  Version bump for gnome-3.6. Update license.
+
+  10 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -gedit-plugins-3.2.1-r1.ebuild, gedit-plugins-3.4.0.ebuild:
+  Punt old pygobject:2[introspection] dep. Drop old.
+
+  10 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gedit-plugins-2.32.0.ebuild:
+  Depend on correct slot of gucharmap (bug #415315, thanks to Kris Hepler).
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> gedit-plugins-2.32.0.ebuild,
+  gedit-plugins-3.2.1-r1.ebuild, gedit-plugins-3.4.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gedit-plugins-2.32.0.ebuild, gedit-plugins-3.2.1-r1.ebuild,
+  gedit-plugins-3.4.0.ebuild:
+  Fix pkg_postinst/postrm error when USE=-python (bug #413723, thanks to Ilya
+  Gordeev).
+
+*gedit-plugins-3.4.0 (22 Apr 2012)
+
+  22 Apr 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +gedit-plugins-3.4.0.ebuild:
+  Version bump with a new dashboard plugin and various fixes. Always install
+  synctex plugin when USE=python. Modernize ebuild (REQUIRED_USE,
+  python_clean_py-compile_files).
+
+  13 Jan 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gedit-plugins-3.2.1-r1.ebuild:
+  Add missing python cairo deps; modernize py-compile idiom.
+
+*gedit-plugins-3.2.1-r1 (03 Nov 2011)
+
+  03 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -gedit-plugins-3.0.7.ebuild, +gedit-plugins-3.2.1-r1.ebuild:
+  Bump to 3.2.1 from the gnome overlay. Drop old. Move to EAPI4 and make sure
+  to optimize the python files that the commander plugin installs in
+  /usr/share.
+
+  21 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gedit-plugins-2.32.0.ebuild:
+  x86 stable wrt bug #385699
+
+  14 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gedit-plugins-2.32.0.ebuild:
+  amd64 stable wrt #385699
+
+  10 Oct 2011; Pacho Ramos <pacho@gentoo.org> -gedit-plugins-2.30.0.ebuild,
+  gedit-plugins-2.32.0.ebuild:
+  Drop .la files as I have just test plugins work still, bug #386665 by Ago.
+  Drop old
+
+  27 Sep 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  gedit-plugins-3.0.7.ebuild:
+  Fix glib[introspection] dependency, pointed out by xarthisius
+
+*gedit-plugins-3.0.7 (16 Aug 2011)
+
+  16 Aug 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +gedit-plugins-3.0.7.ebuild, metadata.xml:
+  Bump to 3.0.7, from gnome overlay for GNOME 3
+
+*gedit-plugins-2.32.0 (24 Jun 2011)
+
+  24 Jun 2011; Pacho Ramos <pacho@gentoo.org> +gedit-plugins-2.32.0.ebuild,
+  metadata.xml:
+  Version bump and handle plugins better (bug #372511 by Sébastien Wilmet),
+  thanks to Alexandre Rostovtsev for pointing to fixed ebuild. Take
+  maintainership.
+
+  02 May 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gedit-plugins-2.30.0.ebuild:
+  Fix dependencies (bug #365591).
+
+  16 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gedit-plugins-2.30.0.ebuild:
+  Fix deprecation warnings.
+
+  23 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gedit-plugins-2.30.0.ebuild:
+  Use SLOT dependencies for x11-libs/vte.
+
+  23 Jan 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  gedit-plugins-2.30.0.ebuild:
+  Pin dependencies to appropriate slots and make use of python eclass for
+  proper mutliple python slots support.
+
+  23 Jan 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  gedit-plugins-2.30.0.ebuild:
+  Pin dependencies to appropriate slots and make use of python eclass for
+  proper mutliple python slots support.
+
+  01 Nov 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  gedit-plugins-2.30.0.ebuild:
+  Add missing gconf-python dependency, bug #339978.
+
+  08 Oct 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -gedit-plugins-2.26.3.ebuild, -gedit-plugins-2.28.0.ebuild:
+  Clean up old revisions.
+
+*gedit-plugins-2.30.0 (18 Jun 2010)
+
+  18 Jun 2010; Pacho Ramos <pacho@gentoo.org> +gedit-plugins-2.30.0.ebuild,
+  +files/gedit-plugins-2.30.0-background-color.patch,
+  +files/gedit-plugins-2.30.0-commander-menu.patch,
+  +files/gedit-plugins-2.30.0-copy-paste.patch,
+  +files/gedit-plugins-2.30.0-edit-menu.patch,
+  +files/gedit-plugins-2.30.0-find-replace.patch,
+  +files/gedit-plugins-2.30.0-keybinding-toggle.patch,
+  +files/gedit-plugins-2.30.0-replace-all.patch:
+  Version bump for Gnome 2.30
+
+  08 Mar 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  gedit-plugins-2.28.0.ebuild:
+  Fix bad intltool rules.
+
+*gedit-plugins-2.28.0 (08 Mar 2010)
+
+  08 Mar 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -gedit-plugins-2.26.2.ebuild, +gedit-plugins-2.28.0.ebuild:
+  Version bump. Do not install unused *.la files, do not let build
+  pre-compile python code. i18n updates and a couple of fixes.
+
+*gedit-plugins-2.26.3 (27 Aug 2009)
+
+  27 Aug 2009; Romain Perier <mrpouet@gentoo.org>
+  +gedit-plugins-2.26.3.ebuild:
+  Version bump to 2.26.3, Misc Bugfixes, translations updated
+
+  17 Aug 2009; Rémi Cardona <remi@gentoo.org> gedit-plugins-2.26.2.ebuild:
+  add ~x86 keyword, fixes bug #281750
+
+  24 Jul 2009; Romain Perier <mrpouet@gentoo.org> gedit-plugins-2.26.2.ebuild,
+  metadata.xml:
+  Fix RDEPEND, some dependencies was missing. Drop ${MY_PV}, Increase eapi to
+  2 and fix missing terminal? ( >=x11-libs/vte-0.19.4[python] ) dep, bug 28470.
+
+  23 Jul 2009; Romain Perier <mrpouet@gentoo.org> gedit-plugins-2.26.2.ebuild,
+  metadata.xml:
+  Move sessionsaver to session global USE flag, and add GCONF_DEBUG=no
+
+*gedit-plugins-2.26.2 (23 Jul 2009)
+
+  23 Jul 2009; Romain Perier <mrpouet@gentoo.org> +gedit-plugins-2.26.2.ebuild,
+  +metadata.xml:
+  New ebuild, imported from bug #28470, thanks to Rajat Vig , Matt Jorde and
+  Martin Klaffenboeck for their works.

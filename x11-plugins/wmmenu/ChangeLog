@@ -1,0 +1,48 @@
+# ChangeLog for x11-plugins/wmmenu
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmenu/ChangeLog,v 1.12 2015/04/17 11:56:48 voyageur Exp $
+
+*wmmenu-1.3 (17 Apr 2015)
+
+  17 Apr 2015; Bernard Cafarelli <voyageur@gentoo.org> +wmmenu-1.3.ebuild,
+  +files/wmmenu-1.3-Makefile.patch:
+  Version bump with new homepage, ebuild cleanup
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> wmmenu-1.2-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  08 Mar 2010; Thomas Anderson <tanderson@gentoo.org> wmmenu-1.2-r1.ebuild:
+  stable amd64, bug 306273
+
+  14 Jan 2009; Michele Noberasco <s4t4n@gentoo.org> files/wmmenu-1.2-Makefile.patch:
+  Prevent automatic stripping of binaries. Closes bug #252110.
+
+  18 Nov 2006; Saleem Abdulrasool <compnerd@gentoo.org> wmmenu-1.2-r1.ebuild:
+  dropping gnome useflag for gnome-1.x removal
+
+  15 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> wmmenu-1.2-r1.ebuild:
+  Fixed DEPEND for libdockapp.
+
+  11 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmmenu-1.2-r1.ebuild:
+  Removed COPYING from dodoc.
+
+  27 Sep 2005; Luis Medinas <metalgod@gentoo.org> wmmenu-1.2-r1.ebuild:
+  Added ~amd64 keyword. Closes bug #107121.
+
+  26 Sep 2005; Michele Noberasco <s4t4n@gentoo.org> wmmenu-1.2-r1.ebuild:
+  Apparently this works nicely enough with whatever version of libdockapp :-(
+
+*wmmenu-1.2-r1 (26 Sep 2005)
+
+  26 Sep 2005; Michele Noberasco <s4t4n@gentoo.org> wmmenu-1.2-r1.ebuild:
+  Revision bump, directly as stable, updating libdockapp dependancy. Closes bug #105530.
+  wmmenu-1.2.ebuild:
+  Wiped out older version.
+
+  24 Jan 2005; Michele Noberasco <s4t4n@gentoo.org> wmmenu-1.2.ebuild:
+  Fix Copyright header. Stable for x86.
+
+*wmmenu-1.2 (22 Dec 2004)
+
+  22 Dec 2004; Michele Noberasco <s4t4n@gentoo.org> wmmenu-1.2.ebuild:
+  Initial import. Thanks to Matt Taylor. Closes #74712.

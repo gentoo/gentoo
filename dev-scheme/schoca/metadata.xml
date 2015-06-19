@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>scheme</herd>
+	<herd>ml</herd>
+	<longdescription lang="en">
+		Schoca is an implementation of the Scheme language. The primary 
+		purpose of Schoca is the use as an embedded extension language 
+		in OCaml applications (e.g. the ibgsclient). 
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">chesslib</remote-id>
+	</upstream>
+</pkgmetadata>

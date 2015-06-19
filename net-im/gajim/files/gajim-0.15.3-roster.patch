@@ -1,0 +1,31 @@
+Index: src/common/config.py
+===================================================================
+--- src/common/config.py	(revision 14330)
++++ src/common/config.py	(revision 14450)
+@@ -163,4 +163,5 @@
+             'roster_width': [ opt_int, 200 ],
+             'roster_height': [ opt_int, 400 ],
++            'roster_hpaned_position': [opt_int, 200],
+             'history_window_width': [ opt_int, 650 ],
+             'history_window_height': [ opt_int, 450 ],
+Index: src/message_window.py
+===================================================================
+--- src/message_window.py	(revision 14114)
++++ src/message_window.py	(revision 14450)
+@@ -1000,5 +1000,5 @@
+         win.resize(size[0], size[1])
+         if win.parent_paned:
+-            win.parent_paned.set_position(parent_size[0])
++            win.parent_paned.set_position(gajim.config.get('roster_hpaned_position'))
+ 
+     def _position_window(self, win, acct, type_):
+Index: src/roster_window.py
+===================================================================
+--- src/roster_window.py	(revision 14436)
++++ src/roster_window.py	(revision 14450)
+@@ -4492,4 +4492,5 @@
+             roster_width = pane.get_child1().allocation.width
+             gajim.config.set('roster_width', roster_width)
++            gajim.config.set('roster_hpaned_position', pane.get_position())
+ 
+ ################################################################################

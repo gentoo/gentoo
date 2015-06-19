@@ -1,0 +1,284 @@
+# ChangeLog for gnome-base/libgnome-keyring
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/libgnome-keyring/ChangeLog,v 1.67 2015/04/08 18:13:25 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> libgnome-keyring-3.12.0.ebuild:
+  Drop old Python implementations
+
+  13 Nov 2014; Pacho Ramos <pacho@gentoo.org>
+  -files/libgnome-keyring-2.32.0-drop-test.patch,
+  -files/libgnome-keyring-2.32.0-hang-tests.patch,
+  -files/libgnome-keyring-2.32.0-run-test.patch,
+  -libgnome-keyring-2.32.0.ebuild:
+  Drop old (#508854)
+
+  14 Oct 2014; Pacho Ramos <pacho@gentoo.org> -libgnome-keyring-3.10.1.ebuild,
+  libgnome-keyring-3.12.0.ebuild:
+  Fix missing dependencies (#522526 by Rick Farina (Zero_Chaos)), drop old
+
+  11 Oct 2014; Markus Meier <maekke@gentoo.org> libgnome-keyring-3.12.0.ebuild:
+  arm stable, bug #512012
+
+  15 Sep 2014; Agostino Sarubbo <ago@gentoo.org> libgnome-keyring-3.12.0.ebuild:
+  Stable for sparc, wrt bug #512012
+
+  25 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libgnome-keyring-3.12.0.ebuild:
+  Stable for alpha, wrt bug #512012
+
+  23 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libgnome-keyring-3.12.0.ebuild:
+  Stable for ia64, wrt bug #512012
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libgnome-keyring-3.12.0.ebuild:
+  Stable for ppc64, wrt bug #512012
+
+  28 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libgnome-keyring-3.12.0.ebuild:
+  Stable for ppc, wrt bug #512012
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libgnome-keyring-3.12.0.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libgnome-keyring-3.12.0.ebuild:
+  Stable for amd64, wrt bug #512912
+
+*libgnome-keyring-3.12.0 (27 Apr 2014)
+
+  27 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +libgnome-keyring-3.12.0.ebuild:
+  Version bump for Gnome 3.12.
+
+  26 Apr 2014; Pacho Ramos <pacho@gentoo.org> -libgnome-keyring-3.8.0.ebuild:
+  drop old
+
+  21 Apr 2014; Agostino Sarubbo <ago@gentoo.org> libgnome-keyring-3.10.1.ebuild:
+  Stable for arm, wrt bug #507568
+
+  19 Apr 2014; Agostino Sarubbo <ago@gentoo.org> libgnome-keyring-3.10.1.ebuild:
+  Stable for sparc, wrt bug #507568
+
+  18 Apr 2014; Agostino Sarubbo <ago@gentoo.org> libgnome-keyring-3.10.1.ebuild:
+  Stable for alpha, wrt bug #507568
+
+  17 Apr 2014; Agostino Sarubbo <ago@gentoo.org> libgnome-keyring-3.10.1.ebuild:
+  Stable for ia64, wrt bug #507568
+
+  16 Apr 2014; Agostino Sarubbo <ago@gentoo.org> libgnome-keyring-3.10.1.ebuild:
+  Stable for ppc64, wrt bug #507568
+
+  14 Apr 2014; Agostino Sarubbo <ago@gentoo.org> libgnome-keyring-3.10.1.ebuild:
+  Stable for ppc, wrt bug #507568
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> libgnome-keyring-3.10.1.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> libgnome-keyring-3.10.1.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> libgnome-keyring-3.10.1.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> libgnome-keyring-3.10.1.ebuild:
+  arch stable, bug 888
+
+*libgnome-keyring-3.10.1 (24 Dec 2013)
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org> +libgnome-keyring-3.10.1.ebuild,
+  -libgnome-keyring-3.6.0.ebuild:
+  Version bump for Gnome 3.10
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> libgnome-keyring-3.8.0.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> libgnome-keyring-3.8.0.ebuild:
+  amd64 stable, bug #478252
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> libgnome-keyring-3.8.0.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  29 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -libgnome-keyring-3.4.1.ebuild, libgnome-keyring-3.8.0.ebuild:
+  Clean up old revision, small policy fixes to 3.8 ebuild.
+
+*libgnome-keyring-3.8.0 (28 Mar 2013)
+
+  28 Mar 2013; Pacho Ramos <pacho@gentoo.org> +libgnome-keyring-3.8.0.ebuild:
+  Version bump for Gnome 3.8
+
+  25 Feb 2013; Zac Medico <zmedico@gentoo.org> libgnome-keyring-3.6.0.ebuild:
+  Add ~arm-linux keyword.
+
+*libgnome-keyring-3.6.0 (17 Dec 2012)
+
+  17 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  libgnome-keyring-2.32.0.ebuild, -libgnome-keyring-3.2.2.ebuild,
+  libgnome-keyring-3.4.1.ebuild, +libgnome-keyring-3.6.0.ebuild, metadata.xml:
+  Version bump for gnome-3.6, now with optional vala bindings. Update license.
+  Drop useless doc USE flag. Switch to global introspection flag. Drop old.
+
+*libgnome-keyring-3.4.1 (13 May 2012)
+
+  13 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +libgnome-keyring-3.4.1.ebuild:
+  Version bump with assorted bugfixes.
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org>
+  libgnome-keyring-3.2.2.ebuild:
+  keyword ~amd64-fbsd
+
+  06 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  libgnome-keyring-3.2.2.ebuild:
+  Restore alpha, arm, ia64, ppc, ppc64, sparc keywords since p11-kit is now
+  keyworded on these arches.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  libgnome-keyring-2.32.0.ebuild, libgnome-keyring-3.2.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  15 Feb 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  libgnome-keyring-2.32.0.ebuild:
+  Move gnome2_src_prepare after eautoreconf (bug #403691, thanks to Kris Hepler
+  for reporting).
+
+  13 Jan 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  libgnome-keyring-2.32.0.ebuild, -libgnome-keyring-3.2.0.ebuild,
+  libgnome-keyring-3.2.2.ebuild:
+  Drop unneeded gconf dependency (bug #398751, thanks to Olof Kindgren for
+  reporting). Drop old.
+
+*libgnome-keyring-3.2.2 (17 Nov 2011)
+
+  17 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -libgnome-keyring-3.0.3-r1.ebuild, +libgnome-keyring-3.2.2.ebuild:
+  Bump, drop old. Small bugfixes.
+
+*libgnome-keyring-3.2.0 (30 Oct 2011)
+
+  30 Oct 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +libgnome-keyring-3.2.0.ebuild:
+  Bump to 3.2.0 from the gnome overlay. Requires gnome-keyring-3.2 (due to
+  changes in gnome-keyring's internal dbus protocol), hence drop alpha, arm,
+  ia64, ppc, ppc64, sparc keywords to match gnome-keyring-3.2.1.
+
+  12 Sep 2011; Pacho Ramos <pacho@gentoo.org> libgnome-keyring-2.32.0.ebuild,
+  +files/libgnome-keyring-2.32.0-drop-test.patch,
+  +files/libgnome-keyring-2.32.0-hang-tests.patch,
+  +files/libgnome-keyring-2.32.0-run-test.patch:
+  Apply multiple fixes for tests, also a one to prevent hangs by Markos
+  Chandras (bug #356141).
+
+  17 Aug 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  libgnome-keyring-2.32.0.ebuild, libgnome-keyring-3.0.3-r1.ebuild:
+  keyword ~sparc-solaris
+
+*libgnome-keyring-3.0.3-r1 (14 Aug 2011)
+
+  14 Aug 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +libgnome-keyring-3.0.3-r1.ebuild:
+  Bump to 3.0.3, from gnome overlay for GNOME 3
+
+  11 Apr 2011; Mart Raudsepp <leio@gentoo.org> libgnome-keyring-2.32.0.ebuild:
+  Add ~mips keyword, bug 323831
+
+  27 Mar 2011; Pacho Ramos <pacho@gentoo.org> libgnome-keyring-2.32.0.ebuild:
+  Recover ~x86-fbsd as this is only a split from old gnome-keyring.
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  -libgnome-keyring-2.30.1.ebuild:
+  Remove old
+
+  22 Mar 2011; Jonathan Callen <abcd@gentoo.org>
+  libgnome-keyring-2.32.0.ebuild:
+  Keyword ~x86-linux
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org>
+  libgnome-keyring-2.32.0.ebuild:
+  Marking libgnome-keyring-2.32.0 ppc stable for bug 353436
+
+  21 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  libgnome-keyring-2.32.0.ebuild:
+  ppc64 stable wrt #353436
+
+  12 Mar 2011; Raúl Porcel <armin76@gentoo.org>
+  libgnome-keyring-2.32.0.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #353436
+
+  24 Feb 2011; Thomas Kahle <tomka@gentoo.org> libgnome-keyring-2.32.0.ebuild:
+  x86 stable per bug 353436
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org>
+  libgnome-keyring-2.32.0.ebuild:
+  Stable on amd64 wrt bug #353436
+
+  19 Oct 2010; Pacho Ramos <pacho@gentoo.org>
+  libgnome-keyring-2.32.0.ebuild:
+  Run tests properly to prevent its failure (bug #340285), thanks to Stef
+  Walter for his tips in upstream report.
+
+  18 Oct 2010; Pacho Ramos <pacho@gentoo.org>
+  libgnome-keyring-2.32.0.ebuild:
+  >=gnome-base/gnome-keyring-2.29[test?] is required to run tests as
+  explained by upstream in
+  https://bugzilla.gnome.org/show_bug.cgi?id=612589#c3
+
+  18 Oct 2010; Raúl Porcel <armin76@gentoo.org>
+  libgnome-keyring-2.30.1.ebuild:
+  alpha/ia64/sh/sparc stable
+
+  14 Oct 2010; Markus Meier <maekke@gentoo.org>
+  libgnome-keyring-2.30.1.ebuild:
+  arm stable, bug #324077
+
+*libgnome-keyring-2.32.0 (09 Oct 2010)
+
+  09 Oct 2010; Pacho Ramos <pacho@gentoo.org>
+  +libgnome-keyring-2.32.0.ebuild:
+  Version bump: Don't try to run daemon tests if DBus is not running, use
+  newer tar version for tarballs so we don't truncate file names, remove
+  erroneous egg-dbus dependency, other bugfixes and translation updates. Set
+  DOCS and remove DISABLE_DEPRECATED flags.
+
+  09 Oct 2010; Pacho Ramos <pacho@gentoo.org>
+  libgnome-keyring-2.30.1.ebuild:
+  Drop -Werror even when building tests (bug #332303 by Markus Meier, Raúl
+  Porcel and others).
+
+  09 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  libgnome-keyring-2.30.1.ebuild:
+  ppc64 stable wrt #324077
+
+  11 Sep 2010; Joseph Jezak <josejx@gentoo.org>
+  libgnome-keyring-2.30.1.ebuild:
+  Marked ppc for bug #324077.
+
+  08 Sep 2010; Fabian Groffen <grobian@gentoo.org>
+  libgnome-keyring-2.30.1.ebuild:
+  Marked ~amd64-linux, bug #336273
+
+  06 Sep 2010; Pacho Ramos <pacho@gentoo.org>
+  libgnome-keyring-2.30.1.ebuild:
+  Fix running tests on console, bug 323661.
+
+  11 Aug 2010; Joseph Jezak <josejx@gentoo.org>
+  libgnome-keyring-2.30.1.ebuild:
+  Marked ~ppc for bug #313563.
+
+  01 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  libgnome-keyring-2.30.1.ebuild:
+  stable x86, bug 324077
+
+  31 Jul 2010; Pacho Ramos <pacho@gentoo.org>
+  libgnome-keyring-2.30.1.ebuild:
+  amd64 stable, bug 324077
+
+  11 Jul 2010; Raúl Porcel <armin76@gentoo.org>
+  libgnome-keyring-2.30.1.ebuild:
+  Add ~alpha/~ia64/~sh/~sparc wrt #323831
+
+  06 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  libgnome-keyring-2.30.1.ebuild:
+  Keyword ~ppc64 wrt #323831
+
+*libgnome-keyring-2.30.1 (13 Jun 2010)
+
+  13 Jun 2010; Pacho Ramos <pacho@gentoo.org>
+  +libgnome-keyring-2.30.1.ebuild, +metadata.xml:
+  Add new version for Gnome 2.30, clean old version.

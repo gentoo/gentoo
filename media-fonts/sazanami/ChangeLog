@@ -1,0 +1,69 @@
+# ChangeLog for media-fonts/sazanami
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/sazanami/ChangeLog,v 1.19 2013/02/05 17:50:40 ulm Exp $
+
+  05 Feb 2013; Ulrich Müller <ulm@gentoo.org> sazanami-20040629.ebuild:
+  Specify LICENSE more precisely, bug 446166.
+
+  02 Feb 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  sazanami-20040629.ebuild:
+  Fix install of non-existant doc.
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  sazanami-20040629.ebuild:
+  Transfer Prefix keywords
+
+  01 Jan 2009; MATSUU Takuto <matsuu@gentoo.org> -sazanami-20040621.ebuild:
+  Removed old version.
+
+  15 Jan 2008; Fabian Groffen <grobian@gentoo.org> sazanami-20040629.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  26 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  sazanami-20040629.ebuild:
+  Add ~x86-fbsd keyword, restrict binchecks and strip.
+
+  11 Jul 2006; Aron Griffis <agriffis@gentoo.org> sazanami-20040629.ebuild:
+  Mark 20040629 stable on ia64
+
+  20 Dec 2004; Yuta SATOH <nigoro@gentoo.org> sazanami-20040629.ebuild:
+  Stable on ppc64
+
+  18 Oct 2004; MATSUU Takuto <matsuu@gentoo.org> sazanami-20040629.ebuild:
+  Stable on sparc and amd64.
+
+  06 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> sazanami-20040629.ebuild:
+  Added to ~ppc-macos.
+
+  29 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> -sazanami-20040618.ebuild,
+  sazanami-20040621.ebuild, sazanami-20040629.ebuild:
+  Stable on x86, alpha and ppc.
+
+  17 Jul 2004; Tom Gall <tgall@gentoo.org> sazanami-20040621.ebuild:
+  stable on ppc64, bug #55517
+
+  05 Jul 2004; MATSUU Takuto <matsuu@gentoo.org> sazanami-20040629.ebuild:
+  Added ~sparc to KEYWORDS.
+
+  02 Jul 2004; MATSUU Takuto <matsuu@gentoo.org> sazanami-20040629.ebuild:
+  Added ~amd64 to KEYWORDS.
+
+*sazanami-20040629 (01 Jul 2004)
+
+  01 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> +sazanami-20040629.ebuild:
+  Version bumped.
+
+*sazanami-20040621 (22 Jun 2004)
+
+  22 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> +sazanami-20040621.ebuild:
+  Version bumped.
+
+*sazanami-20040618 (21 Jun 2004)
+
+  21 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> +sazanami-20040618.ebuild:
+  Initial import. Thanks to tyama at GentooJP ebuild uploader
+  http://ebuild.gentoo.gr.jp/view.php?cat=media-fonts&app=sazanami
+

@@ -1,0 +1,40 @@
+From 08c72f8778a87701586a03dffcce33c7589bc6d7 Mon Sep 17 00:00:00 2001
+From: Peter Cock <p.j.a.cock@googlemail.com>
+Date: Sun, 18 Jan 2015 02:07:54 +0000
+Subject: [PATCH] Clearer error message; update failing test.
+
+One of the orchid examples now returns different enough
+results that the test was failing. The new error message
+makes it much easier to pick another positive example to
+add to the the white-list.
+---
+ Tests/test_NCBI_qblast.py | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/Tests/test_NCBI_qblast.py b/Tests/test_NCBI_qblast.py
+index 88bfe61..19f7b35 100644
+--- a/Tests/test_NCBI_qblast.py
++++ b/Tests/test_NCBI_qblast.py
+@@ -66,7 +66,7 @@ def test_orchid_est(self):
+                         AGCCATGGATTTCTCAGAAGAAAATGATTATACTTCTTAATCAGGCAACTGATATTATCAATTTATGGCA
+                         GCAGAGTGGTGGCTCCTTGTCCCAGCAGCAGTAATTACTTTTTTTTCTCTTTTTGTTTCCAAATTAAGAA
+                         ACATTAGTATCATATGGCTATTTGCTCAATTGCAGATTTCTTTCTTTTGTGAATG""",
+-                        0.0000001, None, ["21554275", "18409071", "296087288"])
++                        0.0000001, None, ["21554275", "18409071", "296087288", "566183510"])
+ 
+     def run_qblast(self, program, database, query, e_value, entrez_filter, expected_hits):
+         try:
+@@ -120,9 +120,10 @@ def run_qblast(self, program, database, query, e_value, entrez_filter, expected_
+                 print("Update this test to have some redundancy...")
+                 for alignment in record.alignments:
+                     print(alignment.hit_id)
+-            assert found_result, "Missing all of %s in alignments" \
+-                % ", ".join(expected_hits)
+-            self.assertTrue(found_result)
++            self.assertTrue(found_result,
++                            "Missing all expected hits (%s), instead have: %s"
++                            % (", ".join(expected_hits),
++                               ", ".join(a.hit_id for a in record.alignments)))
+ 
+         # Check the expected result(s) are found in the descriptions
+         if expected_hits is None:

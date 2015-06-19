@@ -1,0 +1,9 @@
+/var/log/ulogd/ulogd.log /var/log/ulogd/ulogd_syslogemu.log {
+    sharedscripts
+    missingok
+    notifempty
+    create 0640 ulogd
+    postrotate
+        /etc/init.d/ulogd reopen_logs > /dev/null
+    endscript
+}

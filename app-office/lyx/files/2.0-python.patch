@@ -1,0 +1,26 @@
+diff --git a/src/graphics/GraphicsConverter.cpp b/src/graphics/GraphicsConverter.cpp
+index 97c4f68..8f05e62 100644
+--- a/src/graphics/GraphicsConverter.cpp
++++ b/src/graphics/GraphicsConverter.cpp
+@@ -262,7 +262,7 @@ static void build_script(FileName const & from_file,
+ 	LYXERR(Debug::GRAPHICS, "build_script ... ");
+ 	typedef Graph::EdgePath EdgePath;
+ 
+-	script << "#!/usr/bin/env python\n"
++	script << "#!/usr/bin/env python2\n"
+ 		  "# -*- coding: utf-8 -*-\n"
+ 		  "import os, shutil, sys\n\n"
+ 		  "def unlinkNoThrow(file):\n"
+diff --git a/src/support/os.cpp b/src/support/os.cpp
+index f36331c..02f5a93 100644
+--- a/src/support/os.cpp
++++ b/src/support/os.cpp
+@@ -57,7 +57,7 @@ static string const python2(string const & binary, bool verbose = false)
+ string const python()
+ {
+ 	// Check whether the first python in PATH is the right one.
+-	static string command = python2("python -tt");
++	static string command = python2("python2 -tt");
+ 
+ 	if (command.empty()) {
+ 		// It was not, so check whether we can find it elsewhere in 

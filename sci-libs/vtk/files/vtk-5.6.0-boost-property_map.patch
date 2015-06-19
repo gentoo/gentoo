@@ -1,0 +1,13 @@
+diff --git a/Infovis/vtkTreeLayoutStrategy.cxx b/Infovis/vtkTreeLayoutStrategy.cxx
+index 4a764ea..74d0b53 100644
+--- a/Infovis/vtkTreeLayoutStrategy.cxx
++++ b/Infovis/vtkTreeLayoutStrategy.cxx
+@@ -388,7 +388,7 @@ void vtkTreeLayoutStrategy::PrintSelf(ostream& os, vtkIndent indent)
+ #include "vtkTreeToBoostAdapter.h"
+ #include <boost/graph/visitors.hpp>
+ #include <boost/graph/depth_first_search.hpp>
+-#include <boost/property_map.hpp>
++#include <boost/property_map/property_map.hpp>
+ #include <boost/pending/queue.hpp>
+ 
+ using namespace boost;

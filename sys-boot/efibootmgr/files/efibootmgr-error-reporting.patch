@@ -1,0 +1,40 @@
+@@ -, +, @@ 
+---
+ src/lib/efivars_sysfs.c |   16 +++++++++++++---
+ 1 files changed, 13 insertions(+), 3 deletions(-)
+--- a/src/lib/efivars_sysfs.c	
++++ a/src/lib/efivars_sysfs.c	
+@@ -66,6 +66,7 @@ static efi_status_t
+ sysfs_write_variable(const char *filename, efi_variable_t *var)
+ {
+ 	int fd;
++	int rc = EFI_SUCCESS;
+ 	size_t writesize;
+ 	char buffer[PATH_MAX+40];
+ 
+@@ -77,12 +78,21 @@ sysfs_write_variable(const char *filename, efi_variable_t *var)
+ 		return EFI_INVALID_PARAMETER;
+ 	}
+ 	writesize = write(fd, var, sizeof(*var));
++	if (writesize == -1) {
++		if (errno == -ENOSPC)
++			rc = EFI_OUT_OF_RESOURCES;
++		else
++			rc = EFI_INVALID_PARAMETER;
++		goto out;
++	}
+ 	if (writesize != sizeof(*var)) {
+-		close(fd);
+-		return EFI_INVALID_PARAMETER;
++		rc = EFI_INVALID_PARAMETER;
+ 	}
++out:
++	if (rc != EFI_SUCCESS)
++		fprintf(stderr, "Failed to write variable: %s\n", strerror(errno));
+ 	close(fd);
+-	return EFI_SUCCESS;
++	return rc;
+ }
+ 
+ 
+-- 

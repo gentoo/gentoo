@@ -1,0 +1,13 @@
+add missing docs for -e and -r options
+
+--- builtins/ulimit.def
++++ builtins/ulimit.def
+@@ -24,7 +24,7 @@
+ $BUILTIN ulimit
+ $FUNCTION ulimit_builtin
+ $DEPENDS_ON !_MINIX
+-$SHORT_DOC ulimit [-SHacdfilmnpqstuvx] [limit]
++$SHORT_DOC ulimit [-SHacdefilmnpqrstuvx] [limit]
+ Ulimit provides control over the resources available to processes
+ started by the shell, on systems that allow such control.  If an
+ option is given, it is interpreted as follows:

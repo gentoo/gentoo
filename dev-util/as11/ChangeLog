@@ -1,0 +1,35 @@
+# ChangeLog for dev-util/as11
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/as11/ChangeLog,v 1.10 2012/10/15 16:17:38 ago Exp $
+
+  15 Oct 2012; Agostino Sarubbo <ago@gentoo.org> +files/Makefile.patch,
+  as11-1.0.ebuild:
+  EAPI4, respect CFLAGS, wrt to bug #432722
+
+  02 Oct 2010; Thomas Beierlein <tomjbe@gentoo.org> as11-1.0.ebuild:
+  Make package respecting LDFLAGS (bug #338143). Tested on amd64 and
+  keyworded.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> as11-1.0.ebuild:
+  Remove virtual/libc
+
+  04 Aug 2009; <vostorga@gentoo.org> as11-1.0.ebuild:
+  Respecting CC variable, bug #243968
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  07 May 2005; David Holm <dholm@gentoo.org> as11-1.0.ebuild:
+  Added to ~ppc.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> as11-1.0.ebuild:
+  virtual/glibc -> virtual/libc
+
+*as11-1.0 (22 Sep 2003)
+
+  22 Sep 2003; Chuck Short <zul@gentoo.org> as11-1.0.ebuild:
+  Initial version, closes bug #28997. Ebuild contributed by 
+  Mark Lopes <_0o7_@yahoo.com>.

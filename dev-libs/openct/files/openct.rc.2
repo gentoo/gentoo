@@ -1,0 +1,32 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/openct/files/openct.rc.2,v 1.1 2012/06/19 13:56:54 flameeyes Exp $
+
+depend() {
+	need localmount
+}
+
+checkconfig() {
+	if [ ! -e /etc/openct.conf ] ; then
+		eerror "You need an /etc/openct.conf file to run OpenCT"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	checkconfig || return 1
+
+	checkpath -d -m 0750 -o openctd:openct /var/run/openct
+
+	ebegin "Starting OpenCT"
+	/usr/sbin/openct-control init
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping OpenCT"
+	/usr/sbin/openct-control shutdown
+	eend $?
+}

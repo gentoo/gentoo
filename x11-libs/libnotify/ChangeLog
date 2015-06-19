@@ -1,0 +1,426 @@
+# ChangeLog for x11-libs/libnotify
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libnotify/ChangeLog,v 1.115 2015/05/27 13:32:07 tetromino Exp $
+
+  27 May 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -libnotify-0.7.5-r1.ebuild, -libnotify-0.7.6.ebuild:
+  Clean up old.
+
+  27 May 2015; Mikle Kolyada <zlogene@gentoo.org> libnotify-0.7.6-r1.ebuild:
+  arm stable wrt bug #545858
+
+  30 Apr 2015; Jeroen Roovers <jer@gentoo.org> libnotify-0.7.6-r1.ebuild:
+  Stable for PPC64 (bug #545858).
+
+  26 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> libnotify-0.7.6-r1.ebuild:
+  sparc stable wrt bug #545858
+
+  21 Apr 2015; Pacho Ramos <pacho@gentoo.org> libnotify-0.7.6-r1.ebuild:
+  ppc stable wrt bug #545858
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> libnotify-0.7.6-r1.ebuild:
+  Stable for x86, wrt bug #545858
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> libnotify-0.7.6-r1.ebuild:
+  Stable for ia64, wrt bug #545858
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> libnotify-0.7.6-r1.ebuild:
+  Stable for alpha, wrt bug #545858
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> libnotify-0.7.6-r1.ebuild:
+  Stable for amd64, wrt bug #545858
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> libnotify-0.7.5-r1.ebuild,
+  libnotify-0.7.6.ebuild, libnotify-0.7.6-r1.ebuild:
+  Update dependency after package move of eselect modules to app-eselect.
+
+*libnotify-0.7.6-r1 (24 Nov 2014)
+
+  24 Nov 2014; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -libnotify-0.7.5.ebuild, libnotify-0.7.5-r1.ebuild, libnotify-0.7.6.ebuild,
+  +libnotify-0.7.6-r1.ebuild, metadata.xml:
+  Add multilib support, update license, drop old.
+
+*libnotify-0.7.6 (08 Sep 2013)
+
+  08 Sep 2013; Gilles Dartiguelongue <eva@gentoo.org> +libnotify-0.7.6.ebuild:
+  Version bump. Drop USE=doc conditionals, it wasn't used and always installed
+  as per gnome team policy already.
+
+  01 May 2013; Agostino Sarubbo <ago@gentoo.org> libnotify-0.7.5-r1.ebuild:
+  Stable for sh, wrt bug #466004
+
+  22 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libnotify-0.7.5-r1.ebuild:
+  Stable for sparc, wrt bug #466004
+
+  22 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libnotify-0.7.5-r1.ebuild:
+  Stable for ppc, wrt bug #466004
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libnotify-0.7.5-r1.ebuild:
+  Stable for ia64, wrt bug #466004
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libnotify-0.7.5-r1.ebuild:
+  Stable for alpha, wrt bug #466004
+
+  16 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libnotify-0.7.5-r1.ebuild:
+  Stable for arm, wrt bug #466004
+
+  16 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libnotify-0.7.5-r1.ebuild:
+  Stable for ppc64, wrt bug #466004
+
+  15 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libnotify-0.7.5-r1.ebuild:
+  Stable for x86, wrt bug #466004
+
+  15 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libnotify-0.7.5-r1.ebuild:
+  Stable for amd64, wrt bug #466004
+
+  20 Mar 2013; Samuli Suominen <ssuominen@gentoo.org>
+  libnotify-0.7.5-r1.ebuild:
+  Use dev-libs/gobject-introspection-common instead of shipping own copy of
+  introspection.m4 from SRC_URI.
+
+*libnotify-0.7.5-r1 (19 Mar 2013)
+
+  19 Mar 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +libnotify-0.7.5-r1.ebuild:
+  Remove flawed USE="symlink" logic for /usr/bin/notify-send and convert to
+  app-admin/eselect-notify-send wrt #379941 by Michał Górny
+
+  19 Mar 2013; Samuli Suominen <ssuominen@gentoo.org> libnotify-0.7.5.ebuild:
+  Use new EAPI to gain --disable-silent-rules for econf wrt #462320 by Agostino
+  Sarubbo
+
+  19 Mar 2013; Samuli Suominen <ssuominen@gentoo.org> -libnotify-0.7.4.ebuild,
+  -libnotify-0.7.4-r1.ebuild:
+  old
+
+  25 Feb 2013; Zac Medico <zmedico@gentoo.org> libnotify-0.7.5.ebuild:
+  Add ~arm-linux keyword.
+
+  19 Aug 2012; Raúl Porcel <armin76@gentoo.org> libnotify-0.7.5.ebuild:
+  alpha/ia64/sh/sparc stable wrt #422357
+
+  14 Jul 2012; Markus Meier <maekke@gentoo.org> libnotify-0.7.5.ebuild:
+  arm stable, bug #422357
+
+  29 Jun 2012; Brent Baude <ranger@gentoo.org> libnotify-0.7.5.ebuild:
+  Marking libnotify-0.7.5 ppc for bug 422357
+
+  22 Jun 2012; Brent Baude <ranger@gentoo.org> libnotify-0.7.5.ebuild:
+  Marking libnotify-0.7.5 ppc64 for bug 422357
+
+  20 Jun 2012; Jeff Horelick <jdhore@gentoo.org> libnotify-0.7.5.ebuild:
+  marked x86 per bug 422357
+
+  19 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libnotify-0.7.5.ebuild:
+  Stable for amd64, wrt bug #422357
+
+  02 Jun 2012; Anthony G. Basile <blueness@gentoo.org> libnotify-0.7.5.ebuild:
+  Keyword ~mips
+
+  29 May 2012; Alexis Ballier <aballier@gentoo.org> libnotify-0.7.5.ebuild:
+  keyword ~amd64-fbsd
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> libnotify-0.7.4.ebuild,
+  libnotify-0.7.4-r1.ebuild, libnotify-0.7.5.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*libnotify-0.7.5 (31 Mar 2012)
+
+  31 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> +libnotify-0.7.5.ebuild:
+  Version bump.
+
+*libnotify-0.7.4-r1 (23 Jan 2012)
+
+  23 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +libnotify-0.7.4-r1.ebuild, metadata.xml:
+  Rename notify-send to libnotify-notify-send and symlink it to notify-send
+  with USE="symlink" wrt #379941 by Michał Górny
+
+  18 Nov 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -files/libnotify-0.7.1-gtk3-tests.patch, -libnotify-0.7.2.ebuild:
+  old
+
+  18 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> libnotify-0.7.4.ebuild:
+  ppc/ppc64 stable wrt #386573
+
+  23 Oct 2011; Raúl Porcel <armin76@gentoo.org> libnotify-0.7.4.ebuild:
+  alpha/ia64/sh/sparc stable wrt #386573
+
+  17 Oct 2011; Markus Meier <maekke@gentoo.org> libnotify-0.7.4.ebuild:
+  arm stable, bug #386573
+
+  10 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> -libnotify-0.7.3.ebuild,
+  -files/libnotify-0.7.3-gtk3-tests.patch:
+  old
+
+  10 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> libnotify-0.7.4.ebuild:
+  amd64/x86 stable wrt #386573
+
+*libnotify-0.7.4 (08 Sep 2011)
+
+  08 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> +libnotify-0.7.4.ebuild:
+  Version bump.
+
+  21 May 2011; Nirbheek Chauhan <nirbheek@gentoo.org> libnotify-0.7.3.ebuild,
+  +files/libnotify-0.7.3-gtk3-tests.patch:
+  Fix patch that failed to apply
+
+*libnotify-0.7.3 (21 May 2011)
+
+  21 May 2011; Nirbheek Chauhan <nirbheek@gentoo.org> +libnotify-0.7.3.ebuild:
+  Bump to 0.7.3
+
+  01 May 2011; Samuli Suominen <ssuominen@gentoo.org> libnotify-0.7.2.ebuild:
+  Use virtual/notification-daemon.
+
+  29 Apr 2011; Samuli Suominen <ssuominen@gentoo.org> libnotify-0.7.2.ebuild:
+  ppc/ppc64 stable wrt #361093
+
+  23 Apr 2011; Raúl Porcel <armin76@gentoo.org> libnotify-0.7.2.ebuild:
+  alpha/ia64/sh/sparc/x86 stable wrt #361093
+
+  12 Apr 2011; Markus Meier <maekke@gentoo.org> libnotify-0.7.2.ebuild:
+  arm stable, bug #361093
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org> libnotify-0.7.2.ebuild:
+  Stable on amd64 wrt bug #361093
+
+*libnotify-0.7.2 (23 Mar 2011)
+
+  23 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +libnotify-0.7.2.ebuild:
+  Bump to 0.7.2
+
+  16 Mar 2011; Markos Chandras <hwoarang@gentoo.org> libnotify-0.5.2.ebuild:
+  Stable on amd64 wrt bug #359031
+
+  13 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> libnotify-0.4.5.ebuild,
+  libnotify-0.5.2.ebuild, libnotify-0.7.1.ebuild:
+  List x11-misc/notify-osd as notification daemon.
+
+  13 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> libnotify-0.7.1.ebuild:
+  Missing x11-libs/gdk-pixbuf depend wrt #358583 by Dirk Heinrichs.
+
+  05 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> libnotify-0.7.1.ebuild:
+  Use copy of introspection.m4 from
+  http://git.gnome.org/browse/gir-repository/plain/m4/introspection.m4 to pass
+  autotools wrt #353136.
+
+  29 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> libnotify-0.7.1.ebuild:
+  Remove useless libtool archive libnotify.la.
+
+*libnotify-0.7.1 (24 Jan 2011)
+*libnotify-0.5.2 (24 Jan 2011)
+
+  24 Jan 2011; Gilles Dartiguelongue <eva@gentoo.org> libnotify-0.4.5.ebuild,
+  +libnotify-0.5.2.ebuild, +libnotify-0.7.1.ebuild,
+  +files/libnotify-0.7.1-gtk3-tests.patch, metadata.xml:
+  Version bump. 0.5 for last of gtk+:2 only release and 0.7 for testing API
+  breakages, bug #340501. Add knotify to PDEPEND, bug #323593.
+
+  03 Dec 2010; Alex Alexander <wired@gentoo.org> libnotify-0.4.5.ebuild:
+  added x11-wm/awesome to PDEPEND, bug #342259
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org> libnotify-0.4.5.ebuild:
+  Drop HPPA keywording (bug #324511).
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  libnotify-0.4.5.ebuild:
+  Transfer Prefix keywords
+
+  05 May 2009; Raúl Porcel <armin76@gentoo.org> libnotify-0.4.5.ebuild:
+  arm/ia64/sh/sparc stable wrt #263411
+
+  27 Apr 2009; Jeroen Roovers <jer@gentoo.org> libnotify-0.4.5:
+  Stable for HPPA (bug #263411).
+
+  05 Apr 2009; Tobias Klausmann <klausman@gentoo.org>
+  libnotify-0.4.5.ebuild:
+  Stable on alpha, bug #263411
+
+  04 Apr 2009; Markus Meier <maekke@gentoo.org> libnotify-0.4.5.ebuild:
+  amd64/x86 stable, bug #263411
+
+  04 Apr 2009; Brent Baude <ranger@gentoo.org> libnotify-0.4.5.ebuild:
+  stable ppc64, bug 263411
+
+  03 Apr 2009; <chainsaw@gentoo.org> libnotify-0.4.5.ebuild:
+  Add x11-misc/xfce4-notifyd as the third possibility for the notification
+  daemon PDEPEND. Resolves bug #260686 by Joshua Rich.
+
+  26 Mar 2009; Brent Baude <ranger@gentoo.org> libnotify-0.4.5.ebuild:
+  stable ppc, bug 263411
+
+  19 Jan 2009; Peter Volkov <pva@gentoo.org> libnotify-0.4.4.ebuild,
+  libnotify-0.4.5.ebuild:
+  Added notification-daemon{,-xfce} in PDEPEND, to make notify-send
+  workable, thank Christoph Mende in bug #253334.
+
+  18 Jan 2009; Peter Volkov <pva@gentoo.org> libnotify-0.4.4.ebuild,
+  libnotify-0.4.5.ebuild:
+  Dropped dependency on notification-daemon*, bug #253334.
+
+  15 Jan 2009; Peter Alfredsen <loki_val@gentoo.org> metadata.xml:
+  Freedesktop gets libnotify, compnerd retired.
+
+  23 Nov 2008; Mart Raudsepp <leio@gentoo.org> libnotify-0.4.5.ebuild:
+  Fix dbus-glib requirement per configure.ac
+
+*libnotify-0.4.5 (20 Nov 2008)
+
+  20 Nov 2008; Doug Goldstein <cardoe@gentoo.org> +libnotify-0.4.5.ebuild:
+  bug fix release from upstream. adds GtkStatusIcon support
+
+  23 Jun 2008; Samuli Suominen <drac@gentoo.org> libnotify-0.4.4.ebuild:
+  Because repoman ci is broken commit to fix notification-daemon-xfce
+  category failed without error message. Thanks to Mr. Bones.
+
+  14 Dec 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  -libnotify-0.4.3.ebuild:
+  prune unused versions
+
+  01 Aug 2007; Samuli Suominen <drac@gentoo.org> libnotify-0.4.3.ebuild,
+  libnotify-0.4.4.ebuild:
+  Fix fscked up dbus deps for bug 187369.
+
+  15 Jul 2007; nixnut <nixnut@gentoo.org> libnotify-0.4.4.ebuild:
+  Stable on ppc wrt bug 184615
+
+  13 Jul 2007; Raúl Porcel <armin76@gentoo.org> libnotify-0.4.4.ebuild:
+  alpha/ia64 stable wrt #184615
+
+  13 Jul 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  libnotify-0.4.4.ebuild:
+  Stable on amd64/x86 wrt bug #184615.
+
+  12 Jul 2007; Jeroen Roovers <jer@gentoo.org> libnotify-0.4.4.ebuild:
+  Stable for HPPA (bug #184615).
+
+  12 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  libnotify-0.4.4.ebuild:
+  Stable on sparc wrt #184615
+
+  12 Jul 2007; Markus Rothe <corsair@gentoo.org> libnotify-0.4.4.ebuild:
+  Stable on ppc64; bug #184615
+
+  08 Jul 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  libnotify-0.4.3.ebuild, libnotify-0.4.4.ebuild:
+  remove reference to old, removed dbus (bug #183696)
+
+  26 May 2007; Samuli Suominen <drac@gentoo.org> libnotify-0.4.3.ebuild,
+  libnotify-0.4.4.ebuild:
+  Add notification-daemon-xfce as second alternative to notification-daemon.
+
+*libnotify-0.4.4 (28 Feb 2007)
+
+  28 Feb 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  +libnotify-0.4.4.ebuild:
+  Version bump from upstream
+
+  21 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> libnotify-0.4.3.ebuild:
+  Stable on IA64, bug 156662.
+
+  16 Jan 2007; Roy Marples <uberlord@gentoo.org> libnotify-0.4.3.ebuild:
+  Added ~x86-fbsd keyword.
+
+  31 Dec 2006; Bryan Østergaard <kloeri@gentoo.org> libnotify-0.4.3.ebuild:
+  Stable on Alpha, bug 157906.
+
+  05 Dec 2006; Jeroen Roovers <jer@gentoo.org> libnotify-0.4.3.ebuild:
+  Stable for HPPA.
+
+  30 Oct 2006; Jeroen Roovers <jer@gentoo.org> libnotify-0.4.3.ebuild:
+  Marked ~hppa (bug #153433).
+
+  30 Oct 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  -files/libnotify-0.4.2-send-uchar-array.patch, -libnotify-0.4.0.ebuild,
+  -libnotify-0.4.2.ebuild:
+  Taking the shears to the files, pruning all old versions
+
+  30 Oct 2006; Saleem Abdulrasool <compnerd@gentoo.org> libnotify-0.4.3.ebuild:
+  Attempt #? to fix deps for new dbus
+
+  29 Oct 2006; Saleem Abdulrasool <compnerd@gentoo.org> libnotify-0.4.0.ebuild,
+  libnotify-0.4.2.ebuild, libnotify-0.4.3.ebuild:
+  Tweak dbus deps for the upcoming dbus release
+
+  29 Oct 2006; Saleem Abdulrasool <compnerd@gentoo.org> -libnotify-0.3.2.ebuild:
+  prune older version
+
+*libnotify-0.4.3 (15 Oct 2006)
+
+  15 Oct 2006; Saleem Abdulrasool <compnerd@gentoo.org> +libnotify-0.4.3.ebuild:
+  version bump from upstream
+
+  11 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> libnotify-0.4.2.ebuild:
+  Add ~ia64 keyword, bug 147751.
+
+  03 Oct 2006; Aron Griffis <agriffis@gentoo.org> libnotify-0.4.0.ebuild:
+  Mark 0.4.0 ~ia64
+
+  14 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  libnotify-0.4.2.ebuild:
+  Stable on sparc
+
+  17 Aug 2006; Markus Rothe <corsair@gentoo.org> libnotify-0.4.2.ebuild:
+  Stable on ppc64
+
+  24 Jul 2006; Andrej Kacian <ticho@gentoo.org> libnotify-0.4.2.ebuild:
+  Stable on x86, as needed for bug #141001.
+
+  22 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libnotify-0.4.2.ebuild:
+  ppc stable, bug #141001
+
+  21 Jul 2006; Luis Medinas <metalgod@gentoo.org> libnotify-0.4.2.ebuild:
+  Stable on amd64. See bug #141001.
+
+  10 Jul 2006; Thomas Cort <tcort@gentoo.org> libnotify-0.4.2.ebuild:
+  Added ~alpha keyword.
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  libnotify-0.4.2.ebuild:
+  Sorry about that.  Back to ~amd64 with this one.
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  libnotify-0.4.2.ebuild:
+  Stable on amd64.
+
+  26 Jun 2006; Markus Rothe <corsair@gentoo.org> libnotify-0.4.2.ebuild:
+  Added ~ppc64; bug #136906
+
+*libnotify-0.4.2 (24 Jun 2006)
+
+  24 Jun 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/libnotify-0.4.2-send-uchar-array.patch, +libnotify-0.4.2.ebuild:
+  Version bump from upstream, patch from bug #137792
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+*libnotify-0.4.0 (26 Apr 2006)
+
+  26 Apr 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +libnotify-0.4.0.ebuild:
+  Version bump from upstream
+
+  19 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  libnotify-0.3.2.ebuild:
+  Keyworded ~sparc wrt #130313
+
+  28 Feb 2006; Saleem Abdulrasool <compnerd@gentoo.org> metadata.xml:
+  Marking myself as primary maintainer
+
+  26 Feb 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libnotify-0.3.2.ebuild:
+  added to ~ppc, bug #123412
+
+  19 Feb 2006; Luis Medinas <metalgod@gentoo.org> libnotify-0.3.2.ebuild:
+  Added ~amd64 keyword.
+
+*libnotify-0.3.2 (19 Feb 2006)
+
+  19 Feb 2006; Sven Wegener <swegener@gentoo.org> +metadata.xml,
+  +libnotify-0.3.2.ebuild:
+  Initial commit, ebuild written by me.

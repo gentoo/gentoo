@@ -1,0 +1,121 @@
+# ChangeLog for dev-ruby/wirble
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/wirble/ChangeLog,v 1.34 2015/04/21 20:46:58 mrueg Exp $
+
+  21 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -wirble-0.1.3-r2.ebuild:
+  Remove old.
+
+  21 Apr 2015; Pacho Ramos <pacho@gentoo.org> wirble-0.1.3-r3.ebuild:
+  ppc stable wrt bug #545456
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> wirble-0.1.3-r3.ebuild:
+  Stable for x86, wrt bug #545456
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> wirble-0.1.3-r3.ebuild:
+  Stable for amd64, wrt bug #545456
+
+*wirble-0.1.3-r4 (04 Apr 2015)
+
+  04 Apr 2015; Hans de Graaff <graaff@gentoo.org> wirble-0.1.3-r3.ebuild,
+  +wirble-0.1.3-r4.ebuild:
+  Create stable candidate.
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org> wirble-0.1.3-r3.ebuild:
+  Add ruby22 target.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> wirble-0.1.3-r2.ebuild,
+  wirble-0.1.3-r3.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+*wirble-0.1.3-r3 (23 May 2014)
+
+  23 May 2014; Hans de Graaff <graaff@gentoo.org> +wirble-0.1.3-r3.ebuild:
+  Fix compatibility with rake 10. Add ruby20, ruby21.
+
+  19 Apr 2014; Manuel Rüger <mrueg@gentoo.org> wirble-0.1.3-r2.ebuild:
+  Remove ruby18 target. EAPI bump.
+
+  21 Jul 2013; Hans de Graaff <graaff@gentoo.org> -wirble-0.1.3-r1.ebuild:
+  Cleanup.
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> wirble-0.1.3-r2.ebuild:
+  Stable for ppc, wrt bug #475470
+
+  02 Jul 2013; Agostino Sarubbo <ago@gentoo.org> wirble-0.1.3-r2.ebuild:
+  Stable for x86, wrt bug #475470
+
+  02 Jul 2013; Agostino Sarubbo <ago@gentoo.org> wirble-0.1.3-r2.ebuild:
+  Stable for amd64, wrt bug #475470
+
+  14 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata.xml so that it's the same as most other packages.
+
+*wirble-0.1.3-r2 (01 Feb 2012)
+
+  01 Feb 2012; Hans de Graaff <graaff@gentoo.org> +wirble-0.1.3-r2.ebuild:
+  Revision bump to add ruby19, closed bug 401637.
+
+  09 Apr 2011; Hans de Graaff <graaff@gentoo.org> -wirble-0.1.3.ebuild:
+  Remove old version.
+
+  27 Mar 2011; Brent Baude <ranger@gentoo.org> wirble-0.1.3-r1.ebuild:
+  Marking wirble-0.1.3-r1 ppc for bug 352393
+
+  26 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  wirble-0.1.3-r1.ebuild:
+  stable x86, bug 352393
+
+  25 Jan 2011; Markos Chandras <hwoarang@gentoo.org> wirble-0.1.3-r1.ebuild:
+  Stable on amd64 wrt bug #352393
+
+  22 May 2010; Diego E. Pettenò <flameeyes@gentoo.org> wirble-0.1.3.ebuild:
+  Various cleanups.
+
+*wirble-0.1.3-r1 (05 Feb 2010)
+
+  05 Feb 2010; Hans de Graaff <graaff@gentoo.org> +wirble-0.1.3-r1.ebuild:
+  Convert to ruby-fakegem.
+
+  04 Sep 2009; Hans de Graaff <graaff@gentoo.org> -wirble-0.1.2.ebuild:
+  Remove old version.
+
+  03 Sep 2009; Christian Faulhammer <fauli@gentoo.org> wirble-0.1.3.ebuild:
+  stable x86, bug 280668
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> wirble-0.1.3.ebuild:
+  ppc stable #280668
+
+  09 Aug 2009; Tiago Cunha <tcunha@gentoo.org> wirble-0.1.3.ebuild:
+  stable amd64, bug 280668
+
+  07 Aug 2009; Hans de Graaff <graaff@gentoo.org> wirble-0.1.3.ebuild:
+  Remove useless empty DEPEND.
+
+*wirble-0.1.3 (07 Jul 2009)
+
+  07 Jul 2009; Hans de Graaff <graaff@gentoo.org> +wirble-0.1.3.ebuild:
+  Version bump.
+
+  12 Apr 2008; Kenneth Prugh <ken69267@gentoo.org> wirble-0.1.2.ebuild:
+  amd64 stable, bug #217327
+
+  12 Apr 2008; Dawid Węgliński <cla@gentoo.org> wirble-0.1.2.ebuild:
+  Stable on x86 (bug #217327)
+
+  12 Apr 2008; nixnut <nixnut@gentoo.org> wirble-0.1.2.ebuild:
+  Stable on ppc wrt bug 217327
+
+  20 Jun 2007; Christoph Mende <angelos@gentoo.org> wirble-0.1.2.ebuild:
+  Added ~amd64 wrt 181246
+
+  08 Mar 2007; René Nussbaumer <killerfox@gentoo.org> wirble-0.1.2.ebuild:
+  Added to ~ppc.
+
+  04 Mar 2007; Marius Mauch <genone@gentoo.org> wirble-0.1.2.ebuild:
+  Replacing einfo with elog
+
+*wirble-0.1.2 (04 Feb 2007)
+
+  04 Feb 2007; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org>
+  +wirble-0.1.2.ebuild:
+  Initial ebuild by Armando Di Cianno <armando@goodship.net>, #163492

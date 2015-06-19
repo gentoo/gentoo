@@ -1,0 +1,66 @@
+From 62e68d8e2f6e2c473820113fbf46ced9f77111d4 Mon Sep 17 00:00:00 2001
+From: William Jon McCann <jmccann@redhat.com>
+Date: Thu, 03 May 2012 18:10:53 +0000
+Subject: Drop use GTK accel maps
+
+They are confusing, weird, and stored in an obsolete location.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=675392
+---
+diff --git a/src/main.c b/src/main.c
+index 8da5ccc..9bce4b8 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -26,34 +26,6 @@
+ #include "gconf-stock-icons.h"
+ #include "gconf-editor-window.h"
+ 
+-static char *
+-build_accel_filename (void)
+-{
+-	return g_build_filename (g_get_home_dir (), ".gnome2", "accels", PACKAGE, NULL);
+-}
+-
+-static void
+-load_accel_map (void)
+-{
+-	char *map;
+-
+-	map = build_accel_filename ();
+-	gtk_accel_map_load (map);
+-
+-	g_free (map);
+-}
+-
+-static void
+-save_accel_map (void)
+-{
+-	char *map;
+-
+-	map = build_accel_filename ();
+-	gtk_accel_map_save (map);
+-
+-	g_free (map);
+-}
+-
+ gint
+ main (gint argc, gchar **argv)
+ {
+@@ -92,7 +64,6 @@ main (gint argc, gchar **argv)
+ 	/* Register our stock icons */
+         gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (), ICONDIR);
+ 	gconf_stock_icons_register ();
+-	load_accel_map ();
+ 
+         gtk_window_set_default_icon_name ("gconf-editor");
+ 
+@@ -107,7 +78,6 @@ main (gint argc, gchar **argv)
+ 	
+ 	gtk_main ();
+ 
+-	save_accel_map ();
+ 	g_strfreev (remaining_args);
+ 
+ 	return 0;
+--
+cgit v0.9.2

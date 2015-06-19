@@ -1,0 +1,109 @@
+# ChangeLog for net-misc/batman-adv
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/batman-adv/ChangeLog,v 1.16 2014/07/23 22:08:20 xmw Exp $
+
+*batman-adv-2014.2.0 (23 Jul 2014)
+
+  23 Jul 2014; Michael Weber <xmw@gentoo.org> +batman-adv-2014.2.0.ebuild,
+  -batman-adv-2013.0.0_p20130215.ebuild, -batman-adv-2013.1.0.ebuild,
+  -batman-adv-2013.2.0.ebuild, -batman-adv-2013.3.0.ebuild, -files/batman-adv-20
+  13.0.0-0001-fix-skb-leak-in-batadv_dat_snoop_incoming.patch, -files/batman-adv
+  -2013.0.0-0002-check-for-more-types-of-invalid-IP-addres.patch, -files/batman-
+  adv-2013.0.0-0003-filter-ARP-packets-with-invalid-MAC-addre.patch, -files/batm
+  an-adv-2013.0.0-0004-Fix-NULL-pointer-dereference-in-DAT-hash-.patch,
+  metadata.xml:
+  Version bump w/ improved CONFIG_CHECK (thanks  Antonio Quartulli, bug 502230)
+  and USE=mcast, drop old versions.
+
+*batman-adv-2013.4.0 (24 Nov 2013)
+
+  24 Nov 2013; Michael Weber <xmw@gentoo.org> +batman-adv-2013.4.0.ebuild,
+  -batman-adv-2012.3.0.ebuild, -batman-adv-2012.4.0.ebuild,
+  -batman-adv-2013.0.0.ebuild:
+  Version bump, drop old.
+
+*batman-adv-2013.3.0 (05 Aug 2013)
+
+  05 Aug 2013; Michael Weber <xmw@gentoo.org> +batman-adv-2013.3.0.ebuild:
+  Version bump
+
+*batman-adv-2013.2.0 (22 Apr 2013)
+
+  22 Apr 2013; Michael Weber <xmw@gentoo.org> +batman-adv-2013.2.0.ebuild,
+  metadata.xml:
+  Version bump
+
+*batman-adv-2013.1.0 (13 Mar 2013)
+
+  13 Mar 2013; Michael Weber <xmw@gentoo.org> +batman-adv-2013.1.0.ebuild:
+  Version bump
+
+*batman-adv-2013.0.0_p20130215 (17 Feb 2013)
+
+  17 Feb 2013; Michael Weber <xmw@gentoo.org>
+  +batman-adv-2013.0.0_p20130215.ebuild,
+  +files/batman-adv-2013.0.0-0001-fix-skb-leak-in-batadv_dat_snoop_incoming.pat
+  ch,
+  +files/batman-adv-2013.0.0-0002-check-for-more-types-of-invalid-IP-addres.pat
+  ch,
+  +files/batman-adv-2013.0.0-0003-filter-ARP-packets-with-invalid-MAC-addre.pat
+  ch,
+  +files/batman-adv-2013.0.0-0004-Fix-NULL-pointer-dereference-in-DAT-hash-.pat
+  ch:
+  Version bump to patchset of Feb 15th. Thanks Antonio Quartulli, bug 457826.
+
+*batman-adv-2013.0.0 (14 Jan 2013)
+
+  14 Jan 2013; Michael Weber <xmw@gentoo.org> -batman-adv-2011.4.0.ebuild,
+  -batman-adv-2012.1.0.ebuild, -batman-adv-2012.2.0.ebuild,
+  +batman-adv-2013.0.0.ebuild, metadata.xml:
+  Version bump (thanks euscan), drop old.
+
+*batman-adv-2012.4.0 (29 Oct 2012)
+
+  29 Oct 2012; Michael Weber <xmw@gentoo.org> +batman-adv-2012.4.0.ebuild:
+  Version bump.
+
+*batman-adv-2012.3.0 (19 Aug 2012)
+
+  19 Aug 2012; Michael Weber <xmw@gentoo.org> +batman-adv-2012.3.0.ebuild:
+  Version bump (bug 431994).
+
+*batman-adv-2012.2.0 (13 Jun 2012)
+
+  13 Jun 2012; Michael Weber <xmw@gentoo.org> +batman-adv-2012.2.0.ebuild,
+  metadata.xml:
+  Version bump (bug 421015 by Antonio Quartulli and Franz Schrober)
+
+*batman-adv-2012.1.0 (17 Apr 2012)
+
+  17 Apr 2012; Michael Weber <xmw@gentoo.org> -batman-adv-2011.1.0.ebuild,
+  -batman-adv-2011.3.1.ebuild, +batman-adv-2012.1.0.ebuild:
+  Remove old version, version bump w/ CONFIG_BATMAN_ADV_DEBUG=y support (thanks
+  Franz Schrober, bug 412143)
+
+*batman-adv-2011.4.0 (15 Nov 2011)
+
+  15 Nov 2011; Michael Weber <xmw@gentoo.org> +batman-adv-2011.4.0.ebuild:
+  Version bump (thanks Franz Schrober, bug 390539)
+
+*batman-adv-2011.3.1 (14 Nov 2011)
+
+  14 Nov 2011; Michael Weber <xmw@gentoo.org> -batman-adv-2011.3.0.ebuild,
+  +batman-adv-2011.3.1.ebuild:
+  Version bump (bug 381665)
+
+*batman-adv-2011.3.0 (13 Nov 2011)
+
+  13 Nov 2011; Michael Weber <xmw@gentoo.org> +batman-adv-2011.3.0.ebuild:
+  Version bump (thanks to Franz Schrober for the report, bug 381665)
+
+  05 Jun 2011; Michael Weber <xmw@gentoo.org> batman-adv-2011.1.0.ebuild:
+  Use from linux-mod as kernel source instead of uname -r (bug 370023)
+
+*batman-adv-2011.1.0 (20 May 2011)
+
+  20 May 2011; Michael Weber <xmw@gentoo.org> +batman-adv-2011.1.0.ebuild,
+  +metadata.xml:
+  Initial import, thanks to Emil Langrock for the report (bug 368213) and s3d
+  for the initial ebuild.

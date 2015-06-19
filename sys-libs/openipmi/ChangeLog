@@ -1,0 +1,144 @@
+# ChangeLog for sys-libs/openipmi
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/openipmi/ChangeLog,v 1.35 2015/06/12 05:13:28 jer Exp $
+
+  12 Jun 2015; Jeroen Roovers <jer@gentoo.org> openipmi-2.0.18-r1.ebuild:
+  Stable for HPPA (bug #539602).
+
+  11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> openipmi-2.0.18-r1.ebuild:
+  Stable for ppc, wrt bug #539602
+
+  09 Jun 2015; Agostino Sarubbo <ago@gentoo.org> openipmi-2.0.18-r1.ebuild:
+  Stable for x86, wrt bug #539602
+
+  08 Jun 2015; Agostino Sarubbo <ago@gentoo.org> openipmi-2.0.18-r1.ebuild:
+  Stable for amd64, wrt bug #539602
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> openipmi-2.0.18-r1.ebuild:
+  Fix tcl/tk slotting
+
+*openipmi-2.0.18-r1 (26 Dec 2014)
+
+  26 Dec 2014; Michał Górny <mgorny@gentoo.org> +openipmi-2.0.18-r1.ebuild:
+  Convert to python-single-r1.
+
+  29 Jan 2014; Jeroen Roovers <jer@gentoo.org> openipmi-2.0.18.ebuild:
+  Stable for HPPA too.
+
+  30 Oct 2013; Jeroen Roovers <jer@gentoo.org> openipmi-2.0.18.ebuild:
+  Marked ~hppa too.
+
+  19 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Re-assign to sysadmin herd.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> openipmi-1.3.18.ebuild,
+  openipmi-1.4.12.ebuild, openipmi-1.4.14.ebuild, openipmi-1.4.28.ebuild,
+  openipmi-2.0.11.ebuild, openipmi-2.0.16.ebuild, openipmi-2.0.16-r1.ebuild,
+  openipmi-2.0.18.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*openipmi-2.0.18 (21 Feb 2012)
+
+  21 Feb 2012; Robin H. Johnson <robbat2@gentoo.org> +openipmi-2.0.18.ebuild:
+  Version bump.
+
+*openipmi-2.0.16-r1 (31 Oct 2010)
+
+  31 Oct 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  +openipmi-2.0.16-r1.ebuild, +files/openipmi-2.0.16-pthreads.patch:
+  Added fix for bug 338499 (OpenIPMIpthread.pc depends on non-existing
+  pthread.pc)
+
+  16 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  openipmi-2.0.16.ebuild:
+  Fix call to python_mod_optimize(). Call python_mod_cleanup().
+
+  21 Feb 2010; Markos Chandras <hwoarang@gentoo.org> openipmi-2.0.16.ebuild:
+  Stable on amd64 wrt bug #302396
+
+  09 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  openipmi-2.0.16.ebuild:
+  stable x86, bug 302396
+
+  08 Feb 2010; nixnut <nixnut@gentoo.org> openipmi-2.0.16.ebuild:
+  ppc stable #302396
+
+  27 Jan 2010; Robin H. Johnson <robbat2@gentoo.org> openipmi-2.0.11.ebuild,
+  openipmi-2.0.16.ebuild:
+  Bug #298248: Upstream testsuite is broken.
+
+  28 Dec 2009; Robin H. Johnson <robbat2@gentoo.org> openipmi-2.0.16.ebuild:
+  Fix bug #298250 directly.
+
+*openipmi-2.0.16 (28 Dec 2009)
+
+  28 Dec 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +openipmi-2.0.16.ebuild:
+  Version bump. Fix QA issues per bug #219595. Python swig install per bug
+  #290763.
+
+  24 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  openipmi-2.0.11.ebuild:
+  Use emake -j1 for install, as per bug #298250.
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> openipmi-2.0.11.ebuild:
+  ppc stable #282446
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> openipmi-1.3.18.ebuild,
+  openipmi-1.4.12.ebuild, openipmi-1.4.14.ebuild, openipmi-1.4.28.ebuild:
+  Remove virtual/libc
+
+  15 Jul 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  openipmi-2.0.11.ebuild:
+  Stable on x86 wrt bug 214174, even though it only listed amd64. I tested
+  this against HP iLO and Dell BMC on PE1435.
+
+  18 May 2008; Samuli Suominen <drac@gentoo.org> openipmi-1.3.18.ebuild,
+  openipmi-1.4.12.ebuild, openipmi-1.4.14.ebuild, openipmi-1.4.28.ebuild:
+  move pkgconfig and swig to DEPEND also in old versions.
+
+  19 Apr 2008; Mike Frysinger <vapier@gentoo.org> openipmi-2.0.11.ebuild:
+  pkgconfig/swig only goes in DEPEND #217278.
+
+  21 Mar 2008; Robin H. Johnson <robbat2@gentoo.org> openipmi-2.0.11.ebuild:
+  Stable on amd64 per bug #214174, tested with HP iLO by kingtaco.
+
+  11 Nov 2007; Raúl Porcel <armin76@gentoo.org> openipmi-2.0.11.ebuild:
+  Add ~ia64 wrt #198387
+
+  23 Sep 2007; Robin H. Johnson <robbat2@gentoo.org> openipmi-2.0.11.ebuild:
+  Builds on my G5.
+
+*openipmi-2.0.11 (23 Sep 2007)
+*openipmi-1.4.28 (23 Sep 2007)
+
+  23 Sep 2007; Robin H. Johnson <robbat2@gentoo.org>
+  +openipmi-1.4.28.ebuild, +openipmi-2.0.11.ebuild:
+  Bug #145655, version bump.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  03 Nov 2006; <blubb@gentoo.org> openipmi-1.3.18.ebuild:
+  marked ~amd64
+
+*openipmi-1.3.18 (25 Mar 2005)
+
+  25 Mar 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +openipmi-1.3.18.ebuild:
+  Add old stable version for OpenHPI to use.
+
+*openipmi-1.4.14 (25 Mar 2005)
+
+  25 Mar 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +openipmi-1.4.14.ebuild:
+  Version bump.
+
+  28 Feb 2005; Robin H. Johnson <robbat2@gentoo.org> openipmi-1.4.12.ebuild:
+  Missed two deps.
+
+*openipmi-1.4.12 (28 Feb 2005)
+
+  28 Feb 2005; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +openipmi-1.4.12.ebuild:
+  Initial commit, ebuilds by myself.

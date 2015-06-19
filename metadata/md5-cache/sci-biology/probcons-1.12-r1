@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst prepare
+DESCRIPTION=Probabilistic Consistency-based Multiple Alignment of Amino Acid Sequences
+EAPI=5
+HOMEPAGE=http://probcons.stanford.edu/
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+LICENSE=public-domain
+RDEPEND=!sci-geosciences/gmt sci-visualization/gnuplot
+SLOT=0
+SRC_URI=http://probcons.stanford.edu/probcons_v1_12.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ae6434816edc7c0381cbef5eb69ce3c4

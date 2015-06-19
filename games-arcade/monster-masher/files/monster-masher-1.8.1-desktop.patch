@@ -1,0 +1,16 @@
+--- monster-masher.desktop.in.old	2014-11-23 21:20:33.967676333 +0100
++++ monster-masher.desktop.in	2014-11-23 21:21:30.518718141 +0100
+@@ -1,10 +1,9 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ _Name=Monster Masher
+ _Comment=Mash monsters and save the gnomes
+ Exec=monster-masher
+-Icon=monster-masher.png
++Icon=monster-masher
+ Terminal=false
+ Type=Application
+-Categories=GNOME;Application;Game;ArcadeGame;
+-StartupNotification=true
++Categories=GNOME;Game;
++StartupNotify=true

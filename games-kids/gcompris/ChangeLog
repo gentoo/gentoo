@@ -1,0 +1,483 @@
+# ChangeLog for games-kids/gcompris
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-kids/gcompris/ChangeLog,v 1.110 2015/04/19 10:07:32 ago Exp $
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> gcompris-15.02.ebuild:
+  Stable for x86, wrt bug #546306
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> gcompris-15.02.ebuild:
+  Stable for amd64, wrt bug #546306
+
+*gcompris-15.02 (12 Mar 2015)
+
+  12 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gcompris-15.02-build.patch, +gcompris-15.02.ebuild:
+  version bump
+
+  12 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/gcompris-13.11-build.patch, -gcompris-13.11.ebuild:
+  old
+
+  25 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gcompris-14.12.ebuild:
+  Stable for x86, wrt bug #540436
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gcompris-14.12.ebuild:
+  Stable for ppc, wrt bug #540436
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gcompris-14.12.ebuild:
+  Stable for amd64, wrt bug #540436
+
+  18 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> gcompris-14.12.ebuild:
+  remove some cruft
+
+*gcompris-14.12 (19 Jan 2015)
+
+  19 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gcompris-14.12-build.patch, +gcompris-14.12.ebuild,
+  files/gcompris-13.11-build.patch, gcompris-13.11.ebuild:
+  version bump
+
+  15 Feb 2014; Michael Sterrett <mr_bones_@gentoo.org> gcompris-13.11.ebuild:
+  latest librsvg has dropped the gtk use flag (bug #501418)
+
+  28 Jan 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/gcompris-12.11-build.patch, -files/gcompris-12.11-underlinking.patch,
+  -gcompris-12.11-r1.ebuild, -gcompris-12.11.ebuild:
+  old
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> gcompris-13.11.ebuild:
+  Stable for x86, wrt bug #498266
+
+  20 Jan 2014; Agostino Sarubbo <ago@gentoo.org> gcompris-13.11.ebuild:
+  Stable for ppc, wrt bug #498266
+
+  18 Jan 2014; Pacho Ramos <pacho@gentoo.org> gcompris-13.11.ebuild:
+  amd64 stable, bug #498266
+
+*gcompris-13.11 (12 Nov 2013)
+
+  12 Nov 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gcompris-13.11-build.patch, +gcompris-13.11.ebuild:
+  version bump
+
+*gcompris-12.11-r1 (26 Oct 2013)
+
+  26 Oct 2013; Julian Ospald <hasufell@gentoo.org> +gcompris-12.11-r1.ebuild:
+  migrate to python-single-r1
+
+  26 Oct 2013; Julian Ospald <hasufell@gentoo.org> gcompris-12.11.ebuild,
+  +files/gcompris-12.11-underlinking.patch:
+  fix underlinking wrt #488964
+
+  04 Jul 2013; Michael Sterrett <mr_bones_@gentoo.org> gcompris-12.11.ebuild:
+  add slot to libsdl dep
+
+  01 Feb 2013; Michael Sterrett <mr_bones_@gentoo.org> metadata.xml:
+  metadata cleanup
+
+  30 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/gcompris-12.05-build.patch, -gcompris-12.05.ebuild:
+  old
+
+  22 Jan 2013; Agostino Sarubbo <ago@gentoo.org> gcompris-12.11.ebuild:
+  Stable for x86, wrt bug #452696
+
+  21 Jan 2013; Agostino Sarubbo <ago@gentoo.org> gcompris-12.11.ebuild:
+  Stable for ppc, wrt bug #452696
+
+  18 Jan 2013; Chema Alonso <nimiux@gentoo.org> gcompris-12.11.ebuild:
+  Marked stable for amd64 wrt bug #452696
+
+*gcompris-12.11 (29 Nov 2012)
+
+  29 Nov 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gcompris-12.11-build.patch, +gcompris-12.11.ebuild:
+  version bump (bug #445051)
+
+  07 Nov 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gcompris-12.05.ebuild:
+  Slot gstreamer dependencies in preparation for gstreamer-1.0.
+
+  05 Nov 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/gcompris-12.01-build.patch, -gcompris-12.01-r1.ebuild,
+  -gcompris-12.01.ebuild:
+  old
+
+  17 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> gcompris-12.05.ebuild:
+  x86 stable wrt bug #436902
+
+  04 Oct 2012; Anthony G. Basile <blueness@gentoo.org> ChangeLog:
+  gpg signing of Manifest failed, fixing that
+
+  04 Oct 2012; Anthony G. Basile <blueness@gentoo.org> gcompris-12.05.ebuild:
+  stable ppc, bug #436902
+
+  03 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> gcompris-12.05.ebuild:
+  Stable for amd64 wrt bug #436902
+
+  03 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> gcompris-12.05.ebuild:
+  Fix QA issue with desktop files
+
+  02 Oct 2012; Michael Sterrett <mr_bones_@gentoo.org> gcompris-12.05.ebuild:
+  fix locale install (bug #427192)
+
+*gcompris-12.05 (16 Jul 2012)
+
+  16 Jul 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gcompris-12.05-build.patch, +gcompris-12.05.ebuild:
+  version bump
+
+*gcompris-12.01-r1 (16 Jul 2012)
+
+  16 Jul 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  +gcompris-12.01-r1.ebuild:
+  Drop the python use flag because it results in confusing lack of
+  functionality (bug #350795)
+
+  26 May 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/gcompris-9.6.1-build.patch, -gcompris-9.6.1.ebuild:
+  old
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> gcompris-9.6.1.ebuild,
+  gcompris-12.01.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  16 Apr 2012; Brent Baude <ranger@gentoo.org> gcompris-12.01.ebuild:
+  Marking gcompris-12.01 ppc for bug 411541
+
+  15 Apr 2012; Markus Meier <maekke@gentoo.org> gcompris-12.01.ebuild:
+  x86 stable, bug #411541
+
+  13 Apr 2012; Agostino Sarubbo <ago@gentoo.org> gcompris-12.01.ebuild:
+  Stable for amd64, wrt bug #411541
+
+*gcompris-12.01 (26 Jan 2012)
+
+  26 Jan 2012; Michael Sterrett <mr_bones_@gentoo.org> -gcompris-11.12.ebuild,
+  -files/gcompris-11.12-build.patch, +gcompris-12.01.ebuild,
+  +files/gcompris-12.01-build.patch:
+  version bump
+
+*gcompris-11.12 (21 Dec 2011)
+
+  21 Dec 2011; Michael Sterrett <mr_bones_@gentoo.org> -gcompris-11.09.ebuild,
+  -files/gcompris-11.09-build.patch, +gcompris-11.12.ebuild,
+  +files/gcompris-11.12-build.patch:
+  version bump
+
+  11 Nov 2011; Michael Sterrett <mr_bones_@gentoo.org> gcompris-9.6.1.ebuild,
+  gcompris-11.09.ebuild:
+  needs gtk on librsvg (bug #388467)
+
+*gcompris-11.09 (04 Nov 2011)
+
+  04 Nov 2011; Michael Sterrett <mr_bones_@gentoo.org> -gcompris-8.4.12.ebuild,
+  -files/gcompris-8.4.12-build.patch, -gcompris-9.2.2.ebuild,
+  -files/gcompris-9.2.2-build.patch, -files/gcompris-9.2.2-gtk2.22.patch,
+  -gcompris-9.6.ebuild, files/gcompris-9.6.1-build.patch,
+  -files/gcompris-9.6-build.patch, +gcompris-11.09.ebuild,
+  +files/gcompris-11.09-build.patch:
+  version bump
+
+  20 Oct 2011; Pacho Ramos <pacho@gentoo.org> gcompris-9.6.1.ebuild:
+  Drop DEPRECATED flags, bug #387817
+
+  24 Jun 2011; Brent Baude <ranger@gentoo.org> gcompris-9.6.1.ebuild:
+  Marking gcompris-9.6.1 ppc for bug 365101
+
+  25 May 2011; Thomas Kahle <tomka@gentoo.org> gcompris-9.6.1.ebuild:
+  x86 stable per bug 365101
+
+  01 May 2011; Markos Chandras <hwoarang@gentoo.org> gcompris-9.6.1.ebuild:
+  Stable on amd64 wrt bug #365101
+
+  21 Apr 2011; Thomas Kahle <tomka@gentoo.org> gcompris-9.6.ebuild:
+  x86 stable per bug 360727
+
+*gcompris-9.6.1 (14 Apr 2011)
+
+  14 Apr 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  +gcompris-9.6.1.ebuild, +files/gcompris-9.6.1-build.patch:
+  version bump
+
+  27 Mar 2011; Christoph Mende <angelos@gentoo.org> gcompris-9.6.ebuild:
+  Stable on amd64 wrt bug #360727
+
+*gcompris-9.6 (09 Mar 2011)
+
+  09 Mar 2011; Michael Sterrett <mr_bones_@gentoo.org> +gcompris-9.6.ebuild,
+  +files/gcompris-9.6-build.patch:
+  version bump
+
+  28 Jan 2011; Michael Sterrett <mr_bones_@gentoo.org> gcompris-9.5.ebuild,
+  +files/gcompris-9.5-cursor.patch:
+  add upstream patch to fix cursor visibility (bug #353009)
+
+  21 Jan 2011; Michael Sterrett <mr_bones_@gentoo.org> gcompris-9.5.ebuild:
+  add media-plugins/gst-plugins-alsa for bug #351116 - tracked down by Peter
+  Read
+
+*gcompris-9.5 (06 Jan 2011)
+
+  06 Jan 2011; Michael Sterrett <mr_bones_@gentoo.org> +gcompris-9.5.ebuild,
+  +files/gcompris-9.5-build.patch:
+  version bump
+
+  21 Oct 2010; Tupone Alfredo <tupone@gentoo.org> gcompris-9.2.2.ebuild,
+  +files/gcompris-9.2.2-gtk2.22.patch:
+  Remove GTK_DISABLE_DEPRECATED allowing build with x11-libs/gtk+-2.22.
+  Bug #341813 by flameeyes@gentoo.org
+
+  12 Aug 2010; Joseph Jezak <josejx@gentoo.org> gcompris-9.2.2.ebuild:
+  Marked ppc stable for bug #318633.
+
+  11 Jul 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  gcompris-9.2.2.ebuild:
+  build against gtk+-2.20 with sed patch from Egor Y. Egorov (bug #324221)
+
+  16 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gcompris-9.2.2.ebuild:
+  Fix usage of python_set_active_version(), call python_pkg_setup(),
+  simplify src_configure() (bug #324195).
+
+  16 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gcompris-8.4.12.ebuild:
+  Delete call to deprecated python_version() (bug #324195).
+
+  31 May 2010; Markus Meier <maekke@gentoo.org> gcompris-9.2.2.ebuild:
+  amd64/x86 stable, bug #318633
+
+  27 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> gcompris-9.2.2.ebuild:
+  Missing gnome-base/gnome-common DEPEND wrt #311559.
+
+*gcompris-9.2.2 (25 Mar 2010)
+
+  25 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +gcompris-9.2.2.ebuild, +files/gcompris-9.2.2-build.patch:
+  Version bump wrt #310641 by Denis Dupeyron.
+
+  23 Nov 2009; Mounir Lamouri <volkmar@gentoo.org> gcompris-8.4.12.ebuild:
+  Stable for ppc, bug 288655
+
+  25 Oct 2009; Markus Meier <maekke@gentoo.org> gcompris-8.4.12.ebuild:
+  amd64/x86 stable, bug #288655
+
+*gcompris-8.4.12 (31 May 2009)
+
+  31 May 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gcompris-8.4.12-build.patch, +gcompris-8.4.12.ebuild:
+  version bump
+
+  19 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  files/gcompris-8.4.8-build.patch, gcompris-8.4.8.ebuild:
+  use system libs; refine deps a bit more; rebase patch
+
+  17 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  gcompris-6.5.3-r1.ebuild, gcompris-8.4.8.ebuild:
+  needs dev-perl/XML-Parser to build (bug #255296)
+
+*gcompris-8.4.8 (05 Jan 2009)
+
+  05 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gcompris-8.4.8-build.patch, +gcompris-8.4.8.ebuild:
+  version bump
+
+  04 Aug 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  gcompris-8.4.5.ebuild:
+  EAPI=1 for slot deps
+
+  21 Jul 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gcompris-8.4.5-redhat.patch, gcompris-8.4.5.ebuild:
+  fix start up problem with patch from redhat, pointed out by Pacho Ramos in bug
+  #225883
+
+*gcompris-8.4.5 (10 Jun 2008)
+
+  10 Jun 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gcompris-8.4.5-build.patch, +gcompris-8.4.5.ebuild:
+  version bump
+
+  07 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  gcompris-6.5.3-r1.ebuild:
+  QA cleanup: Fix quoting.
+
+*gcompris-8.4.4 (14 Feb 2008)
+
+  14 Feb 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gcompris-8.4.4-build.patch, +gcompris-8.4.4.ebuild:
+  version bump
+
+*gcompris-8.4.3 (13 Feb 2008)
+
+  13 Feb 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gcompris-8.4.3-build.patch, +gcompris-8.4.3.ebuild:
+  version bump
+
+*gcompris-8.4.2 (30 Oct 2007)
+
+  30 Oct 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gcompris-8.4.2-build.patch, -files/gcompris-8.4-build.patch,
+  -gcompris-8.4.ebuild, +gcompris-8.4.2.ebuild:
+  version bump
+
+  11 Oct 2007; Michael Sterrett <mr_bones_@gentoo.org> gcompris-8.4.ebuild:
+  Add gstreamer dep for bug #195372
+
+*gcompris-8.4 (08 Oct 2007)
+
+  08 Oct 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gcompris-8.4-build.patch, +gcompris-8.4.ebuild:
+  version bump - build patch update from Denis Dupeyron (bug #190541)
+
+*gcompris-8.2.2 (10 Mar 2007)
+
+  10 Mar 2007; Tristan Heaven <nyhm@gentoo.org>
+  +files/gcompris-8.2.2-build.patch, +gcompris-8.2.2.ebuild:
+  Version bump, bug #157472
+
+  06 Jan 2007; Tristan Heaven <nyhm@gentoo.org> gcompris-8.2.ebuild:
+  Set WANT_AUTOCONF and WANT_AUTOMAKE
+
+  05 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  gcompris-6.5.3-r1.ebuild:
+  Removing old virtual/x11 dependency.
+
+*gcompris-8.2 (07 Nov 2006)
+
+  07 Nov 2006; Michael Sterrett <mr_bones_@gentoo.org> +gcompris-8.2.ebuild:
+  version bump
+
+  30 Oct 2006; <tupone@gentoo.org> gcompris-8.1.ebuild:
+  Fix gcompris failure in configure. Bug #146843 by Ulrich Mueller
+
+  18 Oct 2006; Tristan Heaven <nyhm@gentoo.org> gcompris-8.1.ebuild:
+  Don't build with -Werror, bug #151868
+
+*gcompris-8.1 (16 Oct 2006)
+
+  16 Oct 2006; Michael Sterrett <mr_bones_@gentoo.org> +gcompris-8.1.ebuild:
+  version bump
+
+*gcompris-7.4-r1 (04 Sep 2006)
+
+  04 Sep 2006; <tupone@gentoo.org> +gcompris-7.4-r1.ebuild:
+  Enabling python (conditionally). Bug #130675 by Graeme Boyd
+
+  23 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  gcompris-6.5.3-r1.ebuild:
+  Removed editor support since it doesn't compile.
+
+*gcompris-7.4 (13 Apr 2006)
+
+  13 Apr 2006; Michael Sterrett <mr_bones_@gentoo.org> +gcompris-7.4.ebuild:
+  version bump
+
+  14 Feb 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  gcompris-6.5.3-r1.ebuild, gcompris-7.2.ebuild:
+  Fix dependencies for modular X (bug #122487).
+
+*gcompris-7.2 (13 Dec 2005)
+
+  13 Dec 2005; Michael Sterrett <mr_bones_@gentoo.org> +gcompris-7.2.ebuild:
+  version bump
+
+*gcompris-7.1.1 (28 Nov 2005)
+
+  28 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +gcompris-7.1.1.ebuild:
+  version bump
+
+  22 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org> gcompris-7.1.ebuild:
+  sqlite support needs python support, disabled for now (bug #113288)
+
+*gcompris-7.1 (22 Nov 2005)
+
+  22 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org> +gcompris-7.1.ebuild:
+  version bump
+
+*gcompris-6.5.3-r1 (21 Nov 2005)
+
+  21 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +gcompris-6.5.3-r1.ebuild:
+  rev bump to run off python support until python 2.4 is supported by upstream
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  07 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  gcompris-6.5.3.ebuild:
+  disable editor for now since it doesn't build for me.
+
+  06 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  gcompris-6.5.3.ebuild:
+  Only dep on gnome-python if USE=python (bug #88063)
+
+*gcompris-6.5.3 (06 Jun 2005)
+
+  06 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +gcompris-6.5.3.ebuild:
+  version bump (bug #90351)
+
+  17 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org> gcompris-6.5.ebuild:
+  don't install the editor desktop file if editor wasn't installed
+
+*gcompris-6.5 (16 Mar 2005)
+
+  16 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org> gcompris-6.1.ebuild,
+  +gcompris-6.5.ebuild:
+  version bump (bug #82411)
+
+  29 Aug 2004; David Holm <dholm@gentoo.org> gcompris-6.1.ebuild:
+  Added to ~ppc.
+
+*gcompris-6.1 (16 Aug 2004)
+
+  16 Aug 2004; Mike Frysinger <vapier@gentoo.org> +gcompris-6.1.ebuild:
+  Version bump #41126 by Felix von Leitner.
+
+  03 Jul 2004; Tom Martin <slarti@gentoo.org> gcompris-4.2-r1.ebuild:
+  Added to ~amd64, thanks to Ingo Kemper <viper@globalworld.de> for reporting in
+  bug 53024.
+
+  03 Jun 2004; Aron Griffis <agriffis@gentoo.org> gcompris-3.2.ebuild,
+  gcompris-4.2-r1.ebuild:
+  Fix use invocation
+
+*gcompris-4.2-r1 (31 Dec 2003)
+
+  31 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
+  Fix segfault when all locale vars are unset in environment (LANG, etc...) #35443.
+
+*gcompris-4.2 (08 Dec 2003)
+
+  31 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
+  Remove all the games.eclass stuff ... this is too gnome-ified atm.
+
+  08 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*gcompris-4.1 (07 Nov 2003)
+
+  07 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*gcompris-3.2 (18 Aug 2003)
+
+  18 Aug 2003; Michael Sterrett <msterret@gentoo.org> gcompris-3.2.ebuild:
+  version bump (bug 26611)
+
+  01 Jul 2003; Michael Sterrett <msterret@gentoo.org> gcompris-3.1.ebuild:
+  use sed -i
+
+*gcompris-3.1 (21 Jun 2003)
+
+  23 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bumped + games.eclass support.  Closes #14911 #15716 #21355.
+
+*gcompris-1.1.0.ebuild (31 julio 2002)
+
+  18 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> gcompris-1.1.0.ebuild :
+  Updated to mirror://sourceforge in SRC_URI.
+
+  31 Jul 2002; J. Alberto Suárez L. <bass@gentoo.org> gcompris-1.1.0.ebuild :
+  First relase.

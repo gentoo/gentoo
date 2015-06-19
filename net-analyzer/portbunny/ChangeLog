@@ -1,0 +1,22 @@
+# ChangeLog for net-analyzer/portbunny
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/portbunny/ChangeLog,v 1.5 2015/04/18 06:33:08 mr_bones_ Exp $
+
+  18 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> -portbunny-1.0.ebuild:
+  old
+
+  10 Feb 2015; Pavlos Ratis <dastergon@gentoo.org> metadata.xml:
+  Drop myself from metadata, add maintainer-needed
+
+  28 Dec 2013; Pavlos Ratis <dastergon@gentoo.org> metadata.xml:
+  add myself as maintainer
+
+  03 Mar 2013; Wolfram Schlich <wschlich@gentoo.org> metadata.xml:
+  removed myself from metadata.xml
+
+*portbunny-1.0_p20080423 (25 Apr 2008)
+*portbunny-1.0 (25 Apr 2008)
+
+  25 Apr 2008; Wolfram Schlich <wschlich@gentoo.org> +metadata.xml,
+  +portbunny-1.0.ebuild, +portbunny-1.0_p20080423.ebuild:
+  initial import

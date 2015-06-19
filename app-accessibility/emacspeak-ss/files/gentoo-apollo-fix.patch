@@ -1,0 +1,24 @@
+diff -Naur emacspeak-ss-1.9.1.old/Makefile.in emacspeak-ss-1.9.1/Makefile.in
+--- emacspeak-ss-1.9.1.old/Makefile.in	2000-05-07 18:51:21.000000000 -0500
++++ emacspeak-ss-1.9.1/Makefile.in	2004-04-22 18:43:20.635283200 -0500
+@@ -3,7 +3,7 @@
+ man1dir=@mandir@/man1
+ exec_prefix = @exec_prefix@
+ bindir=$(prefix)/share/emacs/site-lisp/emacspeak/
+-libdir=$(prefix)/lib/emacs/common/emacspeak/
++libdir=$(prefix)/lib/emacspeak-ss
+ 
+ INSTALL=@INSTALL@
+ VERSION=@VERSION@
+diff -Naur emacspeak-ss-1.9.1.old/apollo.in emacspeak-ss-1.9.1/apollo.in
+--- emacspeak-ss-1.9.1.old/apollo.in	2000-05-07 18:27:31.000000000 -0500
++++ emacspeak-ss-1.9.1/apollo.in	2004-04-22 18:35:09.255401085 -0500
+@@ -101,7 +101,7 @@
+ # write the argument to the synthesizer, and return its response if any
+ proc tts_ping {query} {
+     global tts
+-    set status [exec /usr/lib/emacs/common/emacspeak/ping-apollo "$query" $tts(port) ]
++    set status [exec /usr/lib/emacspeak-ss/ping-apollo "$query" $tts(port) ]
+     return $status
+ }
+ 

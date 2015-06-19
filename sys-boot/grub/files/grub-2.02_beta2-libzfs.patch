@@ -1,0 +1,19 @@
+commit 6ba983559dcffa0fa69c7fc861b5a16b4877a92c
+Author: Mike Gilbert <floppym@gentoo.org>
+Date:   Sat Jan 18 19:41:15 2014 +0100
+
+    	* Makefile.util.def: Link grub-ofpathname with zfs libs.
+
+diff --git a/Makefile.util.def b/Makefile.util.def
+index 83df212..a286a89 100644
+--- a/Makefile.util.def
++++ b/Makefile.util.def
+@@ -384,7 +384,7 @@ program = {
+   ldadd = libgrubgcry.a;
+   ldadd = libgrubkern.a;
+   ldadd = grub-core/gnulib/libgnu.a;
+-  ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBGEOM)';
++  ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
+ };
+ 
+ program = {

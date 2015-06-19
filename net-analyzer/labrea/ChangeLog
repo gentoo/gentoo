@@ -1,0 +1,65 @@
+# ChangeLog for net-analyzer/labrea
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/labrea/ChangeLog,v 1.17 2014/07/12 19:48:43 jer Exp $
+
+  12 Jul 2014; Jeroen Roovers <jer@gentoo.org> -labrea-2.5-r1.ebuild,
+  labrea-2.5-r2.ebuild, files/labrea-2.5-stable-1-incdir.patch:
+  EAPI bump. Clean up patch. Format ewarn properly.
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> labrea-2.5-r2.ebuild:
+  Stable for amd64, wrt bug #454012
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> labrea-2.5-r2.ebuild:
+  Stable for x86, wrt bug #454012
+
+  11 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> labrea-2.5-r1.ebuild,
+  labrea-2.5-r2.ebuild:
+  Remove mirror RESTRICT
+
+*labrea-2.5-r2 (11 Nov 2012)
+
+  11 Nov 2012; Agostino Sarubbo <ago@gentoo.org> +labrea-2.5-r2.ebuild:
+  Eapi4, convert src_install to emake, add ~amd64
+
+  21 May 2012; Kacper Kowalik <xarthisius@gentoo.org> labrea-2.5-r1.ebuild:
+  Add missing inheritance of eutils.eclass
+
+  21 Apr 2010; Christian Faulhammer <fauli@gentoo.org> -labrea-2.5.ebuild:
+  clean up
+
+  21 Apr 2010; Christian Faulhammer <fauli@gentoo.org> labrea-2.5-r1.ebuild:
+  stable x86, bug 316533
+
+*labrea-2.5-r1 (21 Apr 2010)
+
+  21 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  +labrea-2.5-r1.ebuild, +files/labrea-2.5-stable-1-incdir.patch:
+  revision bump to fix compilation issue and some ebuild clean-up for bug
+  277256 by Andrew Savchenko <bircoph AT gmail DOT com>
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> labrea-2.5.ebuild:
+  (QA) RESTRICT clean up.
+
+  19 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  05 Mar 2006; Markus Ullmann <jokey@gentoo.org> labrea-2.5.ebuild:
+  INSTALL cleanup
+
+  15 Feb 2006; Markus Ullmann <jokey@gentoo.org> labrea-2.5.ebuild:
+  Removing virtual/libpcap wrt bug #117898
+
+  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> labrea-2.5.ebuild:
+  changed net-libs/libpcap depend to virtual/libcap
+
+  16 Aug 2004; Eldad Zack <eldad@gentoo.org> labrea-2.5.ebuild:
+  x86 stable
+
+  05 Jul 2004; David Holm <dholm@gentoo.org> labrea-2.5.ebuild:
+  Added to ~ppc.
+
+*labrea-2.5 (05 Jul 2004)
+
+  05 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
+  +labrea-2.5.ebuild:
+  Initial ebuild. Closes #45777.

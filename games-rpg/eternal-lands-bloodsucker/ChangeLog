@@ -1,0 +1,25 @@
+# ChangeLog for games-rpg/eternal-lands-bloodsucker
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/eternal-lands-bloodsucker/ChangeLog,v 1.4 2015/03/01 16:51:39 tupone Exp $
+
+  01 Mar 2015; Tupone Alfredo <tupone@gentoo.org>
+  eternal-lands-bloodsucker-3.0_p20110618.ebuild:
+  EAPI 5
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org>
+  eternal-lands-bloodsucker-3.0.ebuild,
+  eternal-lands-bloodsucker-3.0_p20110618.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+*eternal-lands-bloodsucker-3.0_p20110618 (18 Jun 2011)
+
+  18 Jun 2011; Richard Freeman <rich0@gentoo.org>
+  +eternal-lands-bloodsucker-3.0_p20110618.ebuild:
+  bump - required for new client
+
+*eternal-lands-bloodsucker-3.0 (13 May 2010)
+
+  13 May 2010; Richard Freeman <rich0@gentoo.org>
+  +eternal-lands-bloodsucker-3.0.ebuild, +metadata.xml:
+  Initial commit
+

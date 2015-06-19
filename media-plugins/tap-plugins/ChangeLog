@@ -1,0 +1,146 @@
+# ChangeLog for media-plugins/tap-plugins
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/tap-plugins/ChangeLog,v 1.33 2015/04/19 09:42:47 pacho Exp $
+
+  19 Apr 2015; Pacho Ramos <pacho@gentoo.org> tap-plugins-0.7.3.ebuild:
+  x86 stable wrt bug #535478
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> tap-plugins-0.7.3.ebuild:
+  Stable for amd64, wrt bug #535478
+
+  03 Dec 2014; Alexis Ballier <aballier@gentoo.org> -tap-plugins-0.7.0.ebuild:
+  remove old
+
+*tap-plugins-0.7.3 (03 Dec 2014)
+
+  03 Dec 2014; Alexis Ballier <aballier@gentoo.org> +tap-plugins-0.7.3.ebuild,
+  +files/tap-plugins-0.7.3-cflags-ldflags.patch:
+  version bump
+
+  14 Oct 2012; Raúl Porcel <armin76@gentoo.org> tap-plugins-0.7.0.ebuild,
+  tap-plugins-0.7.2.ebuild:
+  Drop sparc keywords
+
+  08 Oct 2012; Andreas Schuerch <nativemad@gentoo.org>
+  tap-plugins-0.7.2.ebuild:
+  x86 stable, see bug 391089
+
+  06 Oct 2012; Agostino Sarubbo <ago@gentoo.org> tap-plugins-0.7.2.ebuild:
+  Stable for amd64, wrt bug #391089
+
+  06 Oct 2012; Agostino Sarubbo <ago@gentoo.org> -tap-plugins-0.7.0-r1.ebuild,
+  -tap-plugins-0.7.1.ebuild:
+  Remove old
+
+  06 Oct 2012; Agostino Sarubbo <ago@gentoo.org> tap-plugins-0.7.2.ebuild:
+  eapi bump
+
+*tap-plugins-0.7.2 (11 Jul 2012)
+
+  11 Jul 2012; Alexis Ballier <aballier@gentoo.org> +tap-plugins-0.7.2.ebuild:
+  version bump
+
+  12 Jun 2010; Alexis Ballier <aballier@gentoo.org>
+  tap-plugins-0.7.1.ebuild:
+  add missing die calls by Christophe LEFEBVRE, still bug #316621
+
+  12 Jun 2010; Alexis Ballier <aballier@gentoo.org>
+  tap-plugins-0.7.1.ebuild:
+  dont try to install inexistent doc, bug #316621
+
+*tap-plugins-0.7.1 (19 Aug 2009)
+
+  19 Aug 2009; Alexis Ballier <aballier@gentoo.org>
+  +tap-plugins-0.7.1.ebuild:
+  version bump
+
+  06 Jul 2007; Alexis Ballier <aballier@gentoo.org> -tap-plugins-0.1.ebuild,
+  -tap-plugins-0.4.0.ebuild, -tap-plugins-0.5.0.ebuild,
+  -tap-plugins-0.6.0.ebuild:
+  Remove old unused versions
+
+  06 Jul 2007; Alexis Ballier <aballier@gentoo.org> metadata.xml:
+  handle to proaudio herd, fix date in header
+
+*tap-plugins-0.7.0-r1 (06 Jul 2007)
+
+  06 Jul 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/tap-plugins-0.7.0-cflags-ldflags.patch,
+  +tap-plugins-0.7.0-r1.ebuild:
+  multilib strict fix, honour cflags and ldflags
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  19 Jan 2007; Charlie Shepherd <masterdriverz@gentoo.org>
+  tap-plugins-0.4.0.ebuild, tap-plugins-0.5.0.ebuild,
+  tap-plugins-0.6.0.ebuild:
+  Remove RESTRICT="mirror"
+
+  03 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> metadata.xml,
+  tap-plugins-0.1.ebuild, tap-plugins-0.4.0.ebuild,
+  tap-plugins-0.5.0.ebuild, tap-plugins-0.6.0.ebuild,
+  tap-plugins-0.7.0.ebuild:
+  Don't install COPYING file. Remove <maintainer> tag on metadata that was wrong.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  tap-plugins-0.7.0.ebuild:
+  Stable sparc.
+
+  22 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  tap-plugins-0.7.0.ebuild:
+  Added ~sparc.
+
+*tap-plugins-0.7.0 (18 Aug 2004)
+
+  18 Aug 2004; <frank@gentoo.org> metadata.xml, +tap-plugins-0.7.0.ebuild:
+  Version bump to 0.7.0. Closes #60757.
+
+  26 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  tap-plugins-0.6.0.ebuild:
+  Stable amd64, x86.
+
+*tap-plugins-0.6.0 (04 Jul 2004)
+
+  04 Jul 2004; Frank van de Pol <fvdpol@gentoo.org> +tap-plugins-0.6.0.ebuild:
+  Version bump to new upstream release 0.6.0.
+
+  17 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  tap-plugins-0.5.0.ebuild:
+  Fixed up SRC_URI to use mirror:// and added RESTRICT=nomirror.
+
+*tap-plugins-0.5.0 (16 Jun 2004)
+
+  16 Jun 2004; Frank van de Pol <fvdpol@gentoo.org> metadata.xml,
+  +tap-plugins-0.5.0.ebuild:
+  Version bump to 0.5.0; closes bug 51311...
+  
+  From package's changelog:
+  
+  Added TAP Dynamics (Mono & Stereo).
+  
+  Ardour now supports drop-down lists in plugin GUIs, so there are no more long
+  port labels.
+  
+  Minor fixes, improvements, new screenshots ;-)
+
+  14 Jun 2004; David Holm <dholm@gentoo.org> tap-plugins-0.4.0.ebuild:
+  Added to ~ppc.
+
+*tap-plugins-0.4.0 (13 Jun 2004)
+
+  13 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +tap-plugins-0.4.0.ebuild:
+  version bump to 0.4.0, thanks to guaka@303.nu for the ebuild (bug 43493)
+
+  10 May 2004; Travis Tilley <lv@gentoo.org> tap-plugins-0.1.ebuild:
+  added ~amd64 keyword
+
+  26 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  tap-plugins-0.1.ebuild:
+  Cleaned up to make aliz's script happy.  Stable x86.
+
+*tap-plugins-0.1 (26 Jan 2004)
+
+  26 Jan 2004; <torbenh@gentoo.org> metadata.xml, tap-plugins-0.1.ebuild:
+  Initial version by myself.

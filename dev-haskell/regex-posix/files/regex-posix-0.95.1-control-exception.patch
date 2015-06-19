@@ -1,0 +1,56 @@
+diff --git a/Text/Regex/Posix/Wrap.hsc b/Text/Regex/Posix/Wrap.hsc
+index d27b756..a43bcc3 100644
+--- a/Text/Regex/Posix/Wrap.hsc
++++ b/Text/Regex/Posix/Wrap.hsc
+@@ -102,7 +102,7 @@ module Text.Regex.Posix.Wrap(
+ -- string.h is needed for memset
+ 
+ #include "myfree.h"
+-
++         
+ #include "string.h"
+ 
+ #ifndef _POSIX_C_SOURCE
+@@ -131,10 +131,19 @@ import Foreign(Ptr, FunPtr, nullPtr, newForeignPtr,
+                addForeignPtrFinalizer, Storable(peekByteOff), allocaArray,
+                allocaBytes, withForeignPtr,ForeignPtr,plusPtr,peekElemOff)
+ import Foreign.Marshal.Alloc(mallocBytes)
+-import Foreign.C(CSize,CInt,CChar)
++import Foreign.C(CChar)
++#if __GLASGOW_HASKELL__ >= 703
++import Foreign.C(CSize(CSize),CInt(CInt))
++#else
++import Foreign.C(CSize,CInt)
++#endif
+ import Foreign.C.String(peekCAString, CString)
+ import Text.Regex.Base.RegexLike(RegexOptions(..),RegexMaker(..),RegexContext(..),MatchArray)
+-import qualified System.IO.Error as IOERROR(try)
++-- deprecated: import qualified System.IO.Error as IOERROR(try)
++import qualified Control.Exception(try,IOException)
++
++try :: IO a -> IO (Either Control.Exception.IOException a)
++try = Control.Exception.try
+ 
+ type CRegex = ()   -- dummy regex_t used below to read out nsub value
+ 
+@@ -349,8 +358,10 @@ foreign import ccall unsafe "&myregfree"
+ foreign import ccall unsafe "regcomp"
+   c_regcomp :: Ptr CRegex -> CString -> CompOption -> IO ReturnCode
+ 
++{- NOT USED
+ foreign import ccall unsafe "&regfree"
+   c_regfree :: FunPtr (Ptr CRegex -> IO ())
++-}
+ 
+ foreign import ccall unsafe "regexec"
+   c_regexec :: Ptr CRegex -> CString -> CSize
+@@ -460,7 +471,7 @@ wrapError errCode regex_ptr = do
+ ----------
+ wrapCompile flags e pattern = do
+  nullTest pattern "wrapCompile pattern" $ do
+-  e_regex_ptr <- IOERROR.try $ mallocBytes (#const sizeof(regex_t)) -- ioError called if nullPtr
++  e_regex_ptr <- try $ mallocBytes (#const sizeof(regex_t)) -- ioError called if nullPtr
+   case e_regex_ptr of
+     Left ioerror -> return (Left (retOk,"Text.Regex.Posix.Wrap.wrapCompile: IOError from mallocBytes(regex_t) : "++show ioerror))
+     Right raw_regex_ptr -> do
+

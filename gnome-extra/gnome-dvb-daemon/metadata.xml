@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gnome</herd>
+<use>
+	<flag name="totem">Build a plugin for <pkg>media-video/totem</pkg></flag>
+	<flag name="vala">Add support for <pkg>dev-lang/vala</pkg></flag>
+</use>
+</pkgmetadata>

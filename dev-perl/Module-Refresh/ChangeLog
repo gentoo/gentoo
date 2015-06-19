@@ -1,0 +1,134 @@
+# ChangeLog for dev-perl/Module-Refresh
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Module-Refresh/ChangeLog,v 1.32 2015/03/29 09:26:32 jer Exp $
+
+  29 Mar 2015; Jeroen Roovers <jer@gentoo.org>
+  Module-Refresh-0.170.0-r1.ebuild:
+  Marked ~hppa (bug #544064).
+
+  31 Jan 2015; Mikle Kolyada <zlogene@gentoo.org>
+  Module-Refresh-0.170.0-r1.ebuild:
+  Add ~x86-fbsd keyword
+
+  11 Nov 2014; Anthony G. Basile <blueness@gentoo.org>
+  Module-Refresh-0.170.0-r1.ebuild:
+  Keyword ~ppc64 for bug #358465
+
+*Module-Refresh-0.170.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Module-Refresh-0.170.0-r1.ebuild, -Module-Refresh-0.170.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  13 Jan 2013; Markus Meier <maekke@gentoo.org> Module-Refresh-0.170.0.ebuild:
+  add ~arm, bug #449762
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  03 Jun 2012; Torsten Veller <tove@gentoo.org> -Module-Refresh-0.13.ebuild,
+  -Module-Refresh-0.160.0.ebuild:
+  Cleanup
+
+  26 May 2012; Raúl Porcel <armin76@gentoo.org> Module-Refresh-0.13.ebuild,
+  Module-Refresh-0.160.0.ebuild, Module-Refresh-0.170.0.ebuild:
+  Drop ia64 keywords
+
+  16 Apr 2012; Brent Baude <ranger@gentoo.org> Module-Refresh-0.170.0.ebuild:
+  Marking Module-Refresh-0.170.0 ppc for bug 404681
+
+  04 Apr 2012; Jeff Horelick <jdhore@gentoo.org> Module-Refresh-0.170.0.ebuild:
+  marked x86 per bug 404681
+
+  28 Mar 2012; Agostino Sarubbo <ago@gentoo.org> Module-Refresh-0.170.0.ebuild:
+  Stable for amd64, wrt bug #404681
+
+*Module-Refresh-0.170.0 (30 Oct 2011)
+
+  30 Oct 2011; Torsten Veller <tove@gentoo.org> +Module-Refresh-0.170.0.ebuild:
+  Version bump
+
+  29 Jul 2011; Torsten Veller <tove@gentoo.org> -Module-Refresh-0.140.0.ebuild:
+  Cleanup
+
+*Module-Refresh-0.160.0 (15 Apr 2011)
+
+  15 Apr 2011; Torsten Veller <tove@gentoo.org> +Module-Refresh-0.160.0.ebuild:
+  Version bump
+
+*Module-Refresh-0.140.0 (12 Apr 2011)
+
+  12 Apr 2011; Torsten Veller <tove@gentoo.org> +Module-Refresh-0.140.0.ebuild:
+  Version bump
+
+  27 Jun 2010; <nixnut@gentoo.org> Module-Refresh-0.13.ebuild:
+  ppc stable #323529
+
+  30 Sep 2008; Torsten Veller <tove@gentoo.org> -Module-Refresh-0.09.ebuild,
+  -Module-Refresh-0.11.ebuild, Module-Refresh-0.13.ebuild:
+  Cleanup
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org> Module-Refresh-0.13.ebuild:
+  amd64 stable
+
+  11 Jul 2007; Raúl Porcel <armin76@gentoo.org> Module-Refresh-0.13.ebuild:
+  ia64/x86 stable
+
+*Module-Refresh-0.13 (12 May 2007)
+
+  12 May 2007; Michael Cummings <mcummings@gentoo.org>
+  +Module-Refresh-0.13.ebuild:
+  Version bump
+
+*Module-Refresh-0.11 (28 Apr 2007)
+
+  28 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  +Module-Refresh-0.11.ebuild:
+  Version bump
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -Module-Refresh-0.06.ebuild, Module-Refresh-0.09.ebuild:
+  Version bump, thanks seemant
+
+  17 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Module-Refresh-0.09.ebuild:
+  Marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Module-Refresh-0.06.ebuild, Module-Refresh-0.09.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  23 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  Module-Refresh-0.09.ebuild:
+  Keywording amd64
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  Module-Refresh-0.09.ebuild:
+  Mark 0.09 stable on ia64
+
+  01 Apr 2006; <mcummings@gentoo.org> Module-Refresh-0.09.ebuild:
+  Marking stable x86
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  Module-Refresh-0.09.ebuild:
+  Mark 0.09 ~ia64
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Module-Refresh-0.06.ebuild:
+  Marking x86 stable
+
+*Module-Refresh-0.09 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  +Module-Refresh-0.09.ebuild:
+  Version bump
+
+  13 Jun 2005; David Holm <dholm@gentoo.org> Module-Refresh-0.06.ebuild:
+  Added to ~ppc.
+
+*Module-Refresh-0.06 (12 Jun 2005)
+
+  12 Jun 2005; Renat Lumpau <rl03@gentoo.org> +metadata.xml,
+  +Module-Refresh-0.06.ebuild:
+  Initial ebuild. www-apps/rt dependency. Okd by beu.

@@ -1,0 +1,27 @@
+# ChangeLog for app-emacs/outline-magic
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/outline-magic/ChangeLog,v 1.6 2015/06/05 12:34:11 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  20 Feb 2014; Ulrich Müller <ulm@gentoo.org> outline-magic-0.9.ebuild:
+  Update ebuild to EAPI 5. Update HOMEPAGE. Specify LICENSE more precisely.
+
+  22 Feb 2009; Raúl Porcel <armin76@gentoo.org> outline-magic-0.9.ebuild:
+  x86 stable wrt #259145
+
+  19 Feb 2009; Tiago Cunha <tcunha@gentoo.org> outline-magic-0.9.ebuild:
+  stable amd64, bug 259145
+
+  14 Jun 2008; Ulrich Mueller <ulm@gentoo.org> outline-magic-0.9.ebuild:
+  Do not assign SIMPLE_ELISP since elisp.eclass now detects this case
+  automatically.
+
+*outline-magic-0.9 (23 Jan 2008)
+
+  23 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  +files/50outline-magic-gentoo.el, +metadata.xml,
+  +outline-magic-0.9.ebuild:
+  initial commit, taken from Emacs overlay, provided by flameeyes, massaged by
+  ulm

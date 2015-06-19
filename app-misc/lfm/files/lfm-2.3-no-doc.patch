@@ -1,0 +1,12 @@
+--- lfm-2.3/setup.py.orig
++++ lfm-2.3/setup.py
+@@ -56,8 +56,7 @@
+                     'lfm/actions', 'lfm/compress', 'lfm/utils', 'lfm/vfs',
+                     'lfm/config', 'lfm/pyview'],
+       scripts = ['lfm/lfm', 'lfm/pyview'],
+-      data_files = [('share/doc/lfm', DOC_FILES),
+-                    ('share/man/man1', MAN_FILES)]
++      data_files = [('share/man/man1', MAN_FILES)]
+ #      **addargs
+      )
+ 

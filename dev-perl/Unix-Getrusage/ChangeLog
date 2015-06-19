@@ -1,0 +1,23 @@
+# ChangeLog for dev-perl/Unix-Getrusage
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Unix-Getrusage/ChangeLog,v 1.5 2014/06/30 08:12:09 zlogene Exp $
+
+  30 Jun 2014; Mikle Kolyada <zlogene@gentoo.org> Unix-Getrusage-0.030.0.ebuild:
+  Add ~mips keyword
+
+  06 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Reassigning due to Zlogene became Gentoo developer, remove proxy maintainers
+  herd, add perl herd
+
+  27 Apr 2013; Agostino Sarubbo <ago@gentoo.org> Unix-Getrusage-0.030.0.ebuild:
+  Stable for x86, wrt bug #467448
+
+  27 Apr 2013; Agostino Sarubbo <ago@gentoo.org> Unix-Getrusage-0.030.0.ebuild:
+  Stable for amd64, wrt bug #467448
+
+*Unix-Getrusage-0.030.0 (24 Mar 2013)
+
+  24 Mar 2013; Sergey Popov <pinkbyte@gentoo.org>
+  +Unix-Getrusage-0.030.0.ebuild, +metadata.xml:
+  Initial commit, wrt bug #460266. Ebuild by Mikle Kolyada, who will maintain
+  this package through proxy maintainers

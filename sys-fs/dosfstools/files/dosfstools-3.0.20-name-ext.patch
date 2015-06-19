@@ -1,0 +1,29 @@
+avoid fortify warnings about going beyond array bounds as the strcmp
+assumes name[8] and ext[3] are together
+
+--- dosfstools-3.0.20/src/check.c
++++ dosfstools-3.0.20/src/check.c
+@@ -264,7 +264,7 @@
+ {
+     int i, spc, suspicious = 0;
+     const char *bad_chars = atari_format ? "*?\\/:" : "*?<>|\"\\/:";
+-    const unsigned char *name = file->dir_ent.name;
++    const unsigned char *name = file->dir_ent.name_ext;
+     const unsigned char *ext = file->dir_ent.ext;
+ 
+     /* Do not complain about (and auto-correct) the extended attribute files
+--- dosfstools-3.0.20/src/fsck.fat.h
++++ dosfstools-3.0.20/src/fsck.fat.h
+@@ -126,7 +126,12 @@
+ };
+ 
+ typedef struct {
++    union {
++    struct {
+     __u8 name[8], ext[3];	/* name and extension */
++    };
++    __u8 name_ext[11];
++    };
+     __u8 attr;			/* attribute bits */
+     __u8 lcase;			/* Case for base and extension */
+     __u8 ctime_ms;		/* Creation time, milliseconds */

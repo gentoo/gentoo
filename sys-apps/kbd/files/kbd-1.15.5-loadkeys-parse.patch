@@ -1,0 +1,90 @@
+https://bugs.gentoo.org/447440
+
+From 7e06e56157e8431d02e1377cdc44230944203d88 Mon Sep 17 00:00:00 2001
+From: Alexey Gladkov <gladkov.alexey@gmail.com>
+Date: Tue, 11 Dec 2012 14:24:44 +0400
+Subject: [PATCH] Fix regression in 16117ce6ab
+
+Signed-off-by: Alexey Gladkov <gladkov.alexey@gmail.com>
+---
+ src/loadkeys.analyze.l | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/src/loadkeys.analyze.l b/src/loadkeys.analyze.l
+index c18dcea..f817c78 100644
+--- a/src/loadkeys.analyze.l
++++ b/src/loadkeys.analyze.l
+@@ -307,8 +307,10 @@ To                      to|To|TO
+ 				char *s = xstrndup(yytext+1, strlen(yytext)-2);
+ 				/* use static pathname to store *s ? */
+ 				open_include(s);
+-				yy_pop_state();
+-				state_ptr--;
++				while (state_ptr > 0) {
++					yy_pop_state();
++					state_ptr--;
++				}
+ 			}
+ <INCLSTR>[^"]|\"\"|\"[^"\n]*{Eol}	{
+ 				yyerror(_("expected filename between quotes"));
+@@ -323,7 +325,7 @@ To                      to|To|TO
+ 			}
+ {Eol}			{
+ 				line_nr++;
+-				if (state_ptr > 0) {
++				while (state_ptr > 0) {
+ 					yy_pop_state();
+ 					state_ptr--;
+ 				}
+@@ -428,8 +430,10 @@ To                      to|To|TO
+ 			}
+ <STR>\"			{
+ 				*p = '\0';
+-				yy_pop_state();
+-				state_ptr--;
++				while (state_ptr > 0) {
++					yy_pop_state();
++					state_ptr--;
++				}
+ 				return(STRLITERAL);
+ 			}
+ .			{
+--- a/src/loadkeys.analyze.c
++++ b/src/loadkeys.analyze.c
+@@ -1359,8 +1359,10 @@ YY_RULE_SETUP
+ 				char *s = xstrndup(yytext+1, strlen(yytext)-2);
+ 				/* use static pathname to store *s ? */
+ 				open_include(s);
+-				yy_pop_state();
+-				state_ptr--;
++				while (state_ptr > 0) {
++					yy_pop_state();
++					state_ptr--;
++				}
+ 			}
+ 	YY_BREAK
+ case 3:
+@@ -1393,7 +1395,7 @@ YY_RULE_SETUP
+ #line 324 "loadkeys.analyze.l"
+ {
+ 				line_nr++;
+-				if (state_ptr > 0) {
++				while (state_ptr > 0) {
+ 					yy_pop_state();
+ 					state_ptr--;
+ 				}
+@@ -1670,8 +1670,10 @@ YY_RULE_SETUP
+ #line 429 "loadkeys.analyze.l"
+ {
+ 				*p = '\0';
+-				yy_pop_state();
+-				state_ptr--;
++				while (state_ptr > 0) {
++					yy_pop_state();
++					state_ptr--;
++				}
+ 				return(STRLITERAL);
+ 			}
+ 	YY_BREAK
+-- 
+1.8.0.2

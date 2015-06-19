@@ -1,0 +1,13 @@
+# ChangeLog for net-misc/vrrpd
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/vrrpd/ChangeLog,v 1.1 2013/12/03 22:49:22 robbat2 Exp $
+
+*vrrpd-1.0 (03 Dec 2013)
+*vrrpd-1.9 (03 Dec 2013)
+
+  03 Dec 2013; Robin H. Johnson <robbat2@gentoo.org>
+  +files/vrrpd-1.9-rollup.patch, +metadata.xml, +vrrpd-1.0.ebuild,
+  +vrrpd-1.9.ebuild:
+  Initial commit, based on ebuild submitted in bug #166119 by Mark Silinio
+  <silinio@fromru.com>. Cleanups submitted to upstream, and both original 1.0
+  and newer 1.9 version included.

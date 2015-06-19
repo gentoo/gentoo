@@ -1,0 +1,6 @@
+# Copyright 1999-2012 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License, v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/releases/freebsd-9.1/packages,v 1.1 2012/08/07 20:46:10 aballier Exp $
+
+*>=sys-apps/baselayout-2.0.0
+*>=sys-apps/openrc-0.2.5

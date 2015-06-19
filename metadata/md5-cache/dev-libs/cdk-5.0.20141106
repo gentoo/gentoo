@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=sys-libs/ncurses-5.2[unicode?]
+DESCRIPTION=A library of curses widgets
+EAPI=5
+HOMEPAGE=http://dickey.his.com/cdk/cdk.html
+IUSE=examples static-libs unicode
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=BSD
+RDEPEND=>=sys-libs/ncurses-5.2[unicode?]
+SLOT=0/6
+SRC_URI=ftp://invisible-island.net/cdk/cdk-5.0-20141106.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=64b50a0144cdfb6f0b6088fefdd55306

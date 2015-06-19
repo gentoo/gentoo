@@ -1,0 +1,36 @@
+# ChangeLog for media-plugins/vdr-serial
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-serial/ChangeLog,v 1.7 2014/01/14 19:09:24 hd_brummy Exp $
+
+  14 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-serial-0.0.6a.ebuild, vdr-serial-0.0.6a-r1.ebuild:
+  eapi=5; vdr-plugin-2.eclass; rekeyworded ~ARCH; fixed i18n handling, wrt bug
+  414917
+
+  13 Dec 2011; Agostino Sarubbo <ago@gentoo.org> vdr-serial-0.0.6a-r1.ebuild:
+  Stable for AMD64, wrt bug #392865
+
+  11 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  vdr-serial-0.0.6a-r1.ebuild:
+  x86 stable wrt bug #392865
+
+  01 Aug 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-serial-0.0.6a-r1.ebuild:
+  Clean up pre-existing object files, to stop executable stack warnings.
+
+*vdr-serial-0.0.6a-r1 (02 Mar 2007)
+
+  02 Mar 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-serial-0.0.6a.ebuild, +vdr-serial-0.0.6a-r1.ebuild:
+  stabel on x86; new -r1 version will add user 'vdr' to group 'uucp' for full
+  access to device ttyS*
+
+  15 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Assigned to Gentoo VDR Project.
+
+*vdr-serial-0.0.6a (05 Mar 2006)
+
+  05 Mar 2006; Matthias Schwarzott <zzam@gentoo.org> +metadata.xml,
+  +vdr-serial-0.0.6a.ebuild:
+  imported ebuild from gentoo.de
+

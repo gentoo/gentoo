@@ -1,0 +1,25 @@
+# ChangeLog for dev-python/shortuuid
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/shortuuid/ChangeLog,v 1.6 2015/06/03 21:47:34 jlec Exp $
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> shortuuid-0.4.2.ebuild:
+  Drop old Python implementations
+
+  22 Feb 2015; Pacho Ramos <pacho@gentoo.org> shortuuid-0.4.2.ebuild:
+  amd64/x86 stable, bug #540518
+
+  27 Nov 2014; Pacho Ramos <pacho@gentoo.org> shortuuid-0.4.2.ebuild:
+  Support python 3.4
+
+  30 Jun 2014; Mike Gilbert <floppym@gentoo.org> shortuuid-0.4.2.ebuild:
+  Depend on setuptools.
+
+*shortuuid-0.4.2 (27 May 2014)
+
+  27 May 2014; Johann Schmitz <ercpe@gentoo.org> +metadata.xml,
+  +shortuuid-0.4.2.ebuild:
+  Added dev-python/shortuuid-0.4.2 as a test dependency for newer (?) dev-python
+  /django-extensions

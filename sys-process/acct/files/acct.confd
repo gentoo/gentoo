@@ -1,0 +1,13 @@
+# /etc/conf.d/acct
+
+# ACCT_LOG specifies the accounting logging file.
+# Remember to create it manually if it doesn't yet exist.
+
+ACCT_LOG="/var/account/pacct"
+
+# REPORT_OPTS contains arguments for the "sa" command,
+# used for console-reporting.
+# Please run "sa --help" or "man sa" to get a description
+# of available options.
+
+REPORT_OPTS="--sort-real-time --list-all-names --percentage"

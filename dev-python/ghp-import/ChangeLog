@@ -1,0 +1,25 @@
+# ChangeLog for dev-python/ghp-import
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ghp-import/ChangeLog,v 1.5 2015/06/07 13:23:47 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  22 May 2015; Patrick Lauer <patrick@gentoo.org> ghp-import-0.4.1-r1.ebuild:
+  Stable for amd64, dependency of docker-py
+
+*ghp-import-0.4.1-r1 (02 Apr 2015)
+
+  02 Apr 2015; Alex Brandt <alunduil@gentoo.org> +ghp-import-0.4.1-r1.ebuild:
+  add non-UTF-8 patch  Installation was failing on non-UTF8 locales.  This bump
+  adds the patching that has been submitted upstream (https://github.com/davisp
+  /ghp-import/pull/36) to  circumvent this issue.
+
+*ghp-import-0.4.1 (28 Feb 2015)
+
+  28 Feb 2015; Alex Brandt <alunduil@gentoo.org> +ghp-import-0.4.1.ebuild,
+  +metadata.xml:
+  initial add

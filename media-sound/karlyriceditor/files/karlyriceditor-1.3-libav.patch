@@ -1,0 +1,10 @@
+--- src/ffmpeg_headers.h
++++ src/ffmpeg_headers.h
+@@ -32,6 +32,7 @@
+ 
+ #include "libavcodec/avcodec.h"
+ #include "libavformat/avformat.h"
++#include "libavutil/mathematics.h"
+ #include "libswscale/swscale.h"
+ 
+ };

@@ -1,0 +1,28 @@
+Make the building of the webcam-related plugins optional.
+
+Patch by Kevin McCarthy <signals@gentoo.org>
+
+--- configure.ac
++++ configure.ac
+@@ -436,6 +439,10 @@
+ 		AC_MSG_WARN(You need gpgme to compile the aycryption module))
+ fi
+ 
++if test "$enable_webcam" != no; then
++	OPTIONAL_PLUG_DIR="$OPTIONAL_PLUG_DIR image_filter"
++fi
++
+ ###########################################################################
+ # End Optional Modules
+ ###########################################################################
+--- modules/Makefile.am
++++ modules/Makefile.am
+@@ -1,7 +1,7 @@
+ DIST_SUBDIRS = aim-oscar irc jabber msn2 yahoo2 smtp importers \
+ livejournal utility aycryption smileys image_filter
+ 
+-SUBDIRS = @OPTIONAL_PLUG_DIR@ importers utility smileys image_filter
++SUBDIRS = @OPTIONAL_PLUG_DIR@ importers utility smileys
+ 
+ # Gets rid of the datarootdir warning
+ datarootdir=@datarootdir@

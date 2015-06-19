@@ -1,0 +1,15 @@
+http://lists.gnu.org/archive/html/bug-bash/2014-11/msg00178.html
+
+diff --git a/arrayfunc.c b/arrayfunc.c
+index 804e6da..0f900aa 100644
+--- a/arrayfunc.c
++++ b/arrayfunc.c
+@@ -498,7 +498,7 @@ assign_compound_array_list (var, nlist, flags)
+ 
+   for (list = nlist; list; list = list->next)
+     {
+-      iflags = flags;
++      iflags = (flags & ~ASS_APPEND);
+       w = list->word->word;
+ 
+       /* We have a word of the form [ind]=value */

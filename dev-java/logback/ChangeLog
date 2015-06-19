@@ -1,0 +1,9 @@
+# ChangeLog for dev-java/logback
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/logback/ChangeLog,v 1.1 2013/12/23 07:38:53 ercpe Exp $
+
+*logback-1.0.13 (23 Dec 2013)
+
+  23 Dec 2013; Johann Schmitz <ercpe@gentoo.org> +logback-1.0.13.ebuild,
+  +metadata.xml:
+  Added ebuild for logback

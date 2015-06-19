@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>tex</herd>
+<herd>common-lisp</herd>
+<longdescription lang="en">
+	 xindy is an index processor that can be used to generate book-like indexes
+	 for arbitrary document-preparation systems. This includes systems such as
+	 TeX and LaTeX, the roff-family, SGML/XML-based systems (e.g., HTML) that
+	 process some kind of text and generate indexing information. The kernel
+	 system is not fixed to any specific system, but can be configured to work
+	 together with such systems.
+
+	 In comparison to other index processors xindy has several powerful features
+	 that make it an ideal framework for describing and generating complex
+	 indices, addressing especially international indexing. Have a look at
+	 xindy's Overview that describes its most important features!
+</longdescription>
+</pkgmetadata>

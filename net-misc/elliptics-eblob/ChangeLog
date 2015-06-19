@@ -1,0 +1,28 @@
+# ChangeLog for net-misc/elliptics-eblob
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/elliptics-eblob/ChangeLog,v 1.5 2015/03/11 03:48:50 patrick Exp $
+
+*elliptics-eblob-0.22.16 (11 Mar 2015)
+
+  11 Mar 2015; Patrick Lauer <patrick@gentoo.org>
+  +elliptics-eblob-0.22.16.ebuild, -elliptics-eblob-0.18.0.ebuild:
+  Bump, remove old/broken, fixes #542486
+
+  15 Aug 2013; Patrick Lauer <patrick@gentoo.org> elliptics-eblob-0.0.1.ebuild,
+  elliptics-eblob-0.18.0.ebuild:
+  Whitespace
+
+*elliptics-eblob-0.18.0 (28 Jan 2013)
+
+  28 Jan 2013; Patrick Lauer <patrick@gentoo.org>
+  +elliptics-eblob-0.18.0.ebuild:
+  Bump
+
+  24 Oct 2012; Patrick Lauer <patrick@gentoo.org> elliptics-eblob-0.0.1.ebuild:
+  Fixing header
+
+*elliptics-eblob-0.0.1 (24 Oct 2012)
+
+  24 Oct 2012; Patrick Lauer <patrick@gentoo.org> +elliptics-eblob-0.0.1.ebuild,
+  +metadata.xml:
+  Initial commit, updated versions to follow

@@ -1,0 +1,34 @@
+From 75b0930eb392c6389f6e96b0c1df067ae917b962 Mon Sep 17 00:00:00 2001
+From: Robin H. Johnson <robbat2@gentoo.org>
+Date: Sat, 12 May 2007 21:32:53 -0700
+Subject: [PATCH perlbal] Use saner name in process listing.
+
+Normally the binary will turn up in the process list as:
+/usr/bin/perl $SCRIPTNAME
+
+By adding a single line, we can make it be simply '$SCRIPTNAME'.
+This makes writing init.d scripts signficently easier.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+---
+ perlbal |    4 ++++
+ 1 files changed, 4 insertions(+), 0 deletions(-)
+
+diff --git a/perlbal b/perlbal
+index f0149b3..7a9d28c 100755
+--- a/perlbal
++++ b/perlbal
+@@ -37,6 +37,10 @@ my $opt_daemonize;
+ my $opt_config;
+ my $opt_help;
+ my $opt_version;
++
++# Rename binary in process list to make init scripts saner
++$0 = $_ = $0;
++
+ usage(1) unless
+     Getopt::Long::GetOptions(
+                              'daemon'   => \$opt_daemonize,
+-- 
+1.5.1.4
+

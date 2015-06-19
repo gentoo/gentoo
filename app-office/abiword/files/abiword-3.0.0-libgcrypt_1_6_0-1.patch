@@ -1,0 +1,27 @@
+Submitted By:            Armin K. <krejzi at email dot com>
+Date:                    2013-12-21
+Initial Package Version: 3.0.0
+Upstream Status:         Not submitted
+Origin:                  Self
+Description:             Fixes building with libgcrypt 1.6.0
+
+diff -Naur a/plugins/collab/backends/service/xp/tls_tunnel.cpp b/plugins/collab/backends/service/xp/tls_tunnel.cpp
+--- a/plugins/collab/backends/service/xp/tls_tunnel.cpp	2009-09-10 12:46:19.000000000 +0200
++++ b/plugins/collab/backends/service/xp/tls_tunnel.cpp	2013-12-20 19:25:38.728798750 +0100
+@@ -123,11 +123,16 @@
+ 	return 0;
+ }
+ 
++#if GCRYPT_VERSION_NUMBER >= 0x010600
++  GCRY_THREAD_OPTION_PTHREAD_IMPL;
++  static struct gcry_thread_cbs &gcry_threads_tunnel = gcry_threads_pthread;
++#else
+ static struct gcry_thread_cbs gcry_threads_tunnel =
+ { GCRY_THREAD_OPTION_USER, NULL,
+   gcry_tunnel_mutex_init, gcry_tunnel_mutex_destroy,
+   gcry_tunnel_mutex_lock, gcry_tunnel_mutex_unlock,
+   NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL };
++#endif
+ 
+ bool Proxy::tls_tunnel_init() {
+ 	if (gcry_control(GCRYCTL_SET_THREAD_CBS, &tls_tunnel::gcry_threads_tunnel) != 0)

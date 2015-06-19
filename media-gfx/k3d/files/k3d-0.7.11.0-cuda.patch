@@ -1,0 +1,52 @@
+http://k3d.svn.sourceforge.net/viewvc/k3d/trunk/modules/cuda/cuda_mesh_subdivide_edges.cpp?view=patch&r1=1782&r2=1820
+
+--- trunk/modules/cuda/cuda_mesh_subdivide_edges.cpp	2009/03/14 19:27:16	1782
++++ trunk/modules/cuda/cuda_mesh_subdivide_edges.cpp	2009/03/22 22:32:10	1820
+@@ -23,6 +23,7 @@
+         \author Evan Lezar (evanlezar@gmail.com)
+ */
+ 
++#include <k3dsdk/attribute_array_copier.h>
+ #include <k3dsdk/basic_math.h>
+ #include <k3dsdk/document_plugin_factory.h>
+ #include <k3dsdk/imaterial.h>
+@@ -30,8 +31,8 @@
+ #include <k3dsdk/measurement.h>
+ #include <k3dsdk/mesh_modifier.h>
+ #include <k3dsdk/mesh_selection_sink.h>
+-#include <k3dsdk/attribute_array_copier.h>
+ #include <k3dsdk/node.h>
++#include <k3dsdk/polyhedron.h>
+ #include <k3dsdk/selection.h>
+ #include <k3dsdk/utility.h>
+ #include <k3dsdk/vectors.h>
+@@ -41,6 +42,8 @@
+ #include "cuda_device_mesh.h"
+ #include "cuda_mesh_topology_data.h"
+ 
++#include <boost/scoped_ptr.hpp>
++
+ namespace module
+ {
+ 
+@@ -159,7 +162,8 @@
+ 
+         // If there are no valid polyhedra, we give up
+         document().pipeline_profiler().start_execution(*this, "Create:Validate input");
+-        if(!k3d::validate_polyhedra(Input))
++        boost::scoped_ptr<k3d::polyhedron::const_primitive> polyhedron(k3d::polyhedron::validate(Input));
++        if(!polyhedron)
+         {
+             document().pipeline_profiler().finish_execution(*this, "Create:Validate input");
+             return;
+@@ -297,7 +301,8 @@
+     {
+         document().pipeline_profiler().start_execution(*this, "Update:Validate input");
+ 
+-        if(!k3d::validate_polyhedra(Input))
++        boost::scoped_ptr<k3d::polyhedron::const_primitive> polyhedron(k3d::polyhedron::validate(Input));
++				if(!polyhedron)
+         {
+             document().pipeline_profiler().finish_execution(*this, "Update:Validate input");
+             return;
+

@@ -1,0 +1,37 @@
+# ChangeLog for net-misc/6tunnel
+# Copyright 2002-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/6tunnel/ChangeLog,v 1.10 2007/05/14 19:45:45 bangert Exp $
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*6tunnel-0.11_rc1 (22 Nov 2004)
+
+  22 Nov 2004; Daniel Black <dragonheart@gentoo.org> 6tunnel-0.10.ebuild,
+  +6tunnel-0.11_rc1.ebuild:
+  QA fix to the prev version. Version bump too
+
+*6tunnel-0.10 (22 Nov 2004)
+
+  22 Nov 2004; Daniel Black <dragonheart@gentoo.org> -6tunnel-0.09.ebuild,
+  +6tunnel-0.10.ebuild:
+  version bump with lots of fixes. Removed old version cause it is so broken.
+  Bug #71951 refers. Thanks to Grzegorz Kubok <thorgal@rasalom.tl.pl>
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> 6tunnel-0.09.ebuild:
+  change virtual/glibc to virtual/libc
+
+  15 Apr 2004; Michael McCabe <randy@gentoo.org> 6tunnel-0.09.ebuild:
+  adding s390 keyword
+
+  02 Nov 2002; Hannes Mehnert <hannes@gentoo.org> 6tunnel-0.09.ebuild:
+  marked stable for x86
+
+*6tunnel-0.09 (25 Oct 2002)
+
+  25 Oct 2002; Hannes Mehnert <hannes@gentoo.org> 6tunnel-0.09.ebuild,
+  ChangeLog: Initial ebuild. Thanks to kevin@aptbasilicata.it (Maurizio
+  Disimino) for submission (#7952).

@@ -1,0 +1,46 @@
+from http://sourceforge.net/p/gens/patches/25/
+
+--- gens.orig/src/gens/gens_core/cpu/68k/cpu_68k.c	2004-05-22 09:02:12.000000000 -0700
++++ gens/src/gens/gens_core/cpu/68k/cpu_68k.c	2005-03-21 10:52:24.000000000 -0800
+@@ -24,9 +24,9 @@
+ 
+ struct STARSCREAM_PROGRAMREGION M68K_Fetch[] = {
+   {0x000000, 0x3FFFFF, (unsigned) 0x000000},
+-  {0xFF0000, 0xFFFFFF, (unsigned) &Ram_68k[0] - 0xFF0000},
+-  {0xF00000, 0xF0FFFF, (unsigned) &Ram_68k[0] - 0xF00000},
+-  {0xEF0000, 0xEFFFFF, (unsigned) &Ram_68k[0] - 0xEF0000},
++  {0xFF0000, 0xFFFFFF, (unsigned) NULL},
++  {0xF00000, 0xF0FFFF, (unsigned) NULL},
++  {0xEF0000, 0xEFFFFF, (unsigned) NULL},
+   {-1, -1, (unsigned) NULL},
+   {-1, -1, (unsigned) NULL},
+   {-1, -1, (unsigned) NULL}
+@@ -60,7 +60,7 @@
+ 
+ 
+ struct STARSCREAM_PROGRAMREGION S68K_Fetch[] = {
+-  {0x000000, 0x07FFFF, (unsigned) &Ram_Prg[0]},
++  {0x000000, 0x07FFFF, (unsigned) NULL},
+   {-1, -1, (unsigned) NULL},
+   {-1, -1, (unsigned) NULL}
+ };
+@@ -109,6 +109,10 @@
+ int
+ M68K_Init (void)
+ {
++  M68K_Fetch[1].offset=(unsigned) &Ram_68k[0] - 0xFF0000;
++  M68K_Fetch[2].offset=(unsigned) &Ram_68k[0] - 0xF00000;
++  M68K_Fetch[3].offset=(unsigned) &Ram_68k[0] - 0xEF0000;
++  
+   memset (&Context_68K, 0, sizeof (Context_68K));
+ 
+   Context_68K.s_fetch = Context_68K.u_fetch = Context_68K.fetch = M68K_Fetch;
+@@ -134,6 +138,8 @@
+ int
+ S68K_Init (void)
+ {
++  S68K_Fetch[0].offset=(unsigned) &Ram_Prg[0];
++  
+   memset (&Context_68K, 0, sizeof (Context_68K));
+ 
+   Context_68K.s_fetch = Context_68K.u_fetch = Context_68K.fetch = S68K_Fetch;

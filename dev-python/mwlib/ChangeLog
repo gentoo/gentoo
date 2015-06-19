@@ -1,0 +1,193 @@
+# ChangeLog for dev-python/mwlib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/mwlib/ChangeLog,v 1.37 2015/06/07 14:02:20 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> mwlib-0.15.15.ebuild:
+  Drop old Python implementations
+
+  09 Dec 2014; Ian Delaney <idella4@gentoo.org> -mwlib-0.15.10.ebuild,
+  -mwlib-0.15.12.ebuild, -mwlib-0.15.14.ebuild:
+  rm old
+
+  13 Oct 2014; Ian Delaney <idella4@gentoo.org> mwlib-0.15.10.ebuild,
+  mwlib-0.15.12.ebuild, mwlib-0.15.14.ebuild, mwlib-0.15.15.ebuild:
+  add [] to deps where missed
+
+  11 Jun 2014; Tiziano Müller <dev-zero@gentoo.org> mwlib-0.15.15.ebuild:
+  Add missing build-time dependencies required now that we build from a github
+  tarball.
+
+*mwlib-0.15.15 (06 Jun 2014)
+
+  06 Jun 2014; Tiziano Müller <dev-zero@gentoo.org> +mwlib-0.15.15.ebuild:
+  Version bump.
+
+*mwlib-0.15.14 (30 Jan 2014)
+
+  30 Jan 2014; Tiziano Müller <dev-zero@gentoo.org> +mwlib-0.15.14.ebuild:
+  Version bump.
+
+*mwlib-0.15.12 (27 Nov 2013)
+
+  27 Nov 2013; Tiziano Müller <dev-zero@gentoo.org> +mwlib-0.15.12.ebuild,
+  -files/0.15.8-fix-tests.patch,
+  -files/0.15.8-nslave-add-address-parameter.patch, -mwlib-0.14.0.ebuild,
+  -mwlib-0.14.1.ebuild, -mwlib-0.14.3.ebuild, -mwlib-0.15.3.ebuild,
+  -mwlib-0.15.6.ebuild, -mwlib-0.15.7.ebuild, -mwlib-0.15.8-r1.ebuild,
+  -mwlib-0.15.8-r3.ebuild, -mwlib-0.15.8.ebuild:
+  Version bump (bug #481470). Drop old versions.
+
+  12 Sep 2013; Michał Górny <mgorny@gentoo.org> mwlib-0.14.0.ebuild,
+  mwlib-0.14.1.ebuild, mwlib-0.14.3.ebuild, mwlib-0.15.3.ebuild,
+  mwlib-0.15.6.ebuild, mwlib-0.15.7.ebuild, mwlib-0.15.8-r1.ebuild,
+  mwlib-0.15.8-r3.ebuild, mwlib-0.15.8.ebuild:
+  Replace virtual/pyparsing dep with dev-python/pyparsing. The split versions
+  were removed and all in-tree versions support all impls now.
+
+*mwlib-0.15.10 (26 Jul 2013)
+
+  26 Jul 2013; Ian Delaney <idella4@gentoo.org> +mwlib-0.15.10.ebuild:
+  bump; rm 1 test wrt Bug #474874, usual upgrade of deps
+
+*mwlib-0.15.8-r3 (03 Jul 2013)
+
+  03 Jul 2013; Tiziano Müller <dev-zero@gentoo.org>
+  +files/mwlib-purge-cache.cron-r1, +files/nslave.confd-r1,
+  +files/nslave.initd-r1, +files/postman.initd-r1, +mwlib-0.15.8-r3.ebuild,
+  -files/mwlib-purge-cache.cron, -files/nslave.confd, -files/nslave.initd,
+  -files/postman.initd, -mwlib-0.15.8-r2.ebuild:
+  Fix typos in init.d/conf.d and cronjob files.
+
+*mwlib-0.15.8-r2 (01 Jul 2013)
+
+  01 Jul 2013; Tiziano Müller <dev-zero@gentoo.org>
+  +files/0.15.8-nslave-add-address-parameter.patch, +files/mw-qserve.confd,
+  +files/mw-qserve.initd, +files/mw-qserve.logrotate,
+  +files/mwlib-purge-cache.cron, +files/nserve.confd, +files/nserve.initd,
+  +files/nserve.logrotate, +files/nslave.confd, +files/nslave.initd,
+  +files/nslave.logrotate, +files/postman.confd, +files/postman.initd,
+  +files/postman.logrotate, +mwlib-0.15.8-r2.ebuild, metadata.xml:
+  Add init.d scripts to manage servers, thanks to Pat Kläy and Christian
+  Affolter. Add patch which adds an address parameter to nslave.
+
+*mwlib-0.15.8-r1 (01 Jul 2013)
+
+  01 Jul 2013; Tiziano Müller <dev-zero@gentoo.org>
+  +files/0.15.8-fix-tests.patch, +mwlib-0.15.8-r1.ebuild:
+  Migrate to distutils-r1
+
+*mwlib-0.15.8 (22 May 2013)
+
+  22 May 2013; Patrick Lauer <patrick@gentoo.org> +mwlib-0.15.8.ebuild,
+  -mwlib-0.13.5.ebuild, -mwlib-0.13.6.ebuild, -mwlib-0.13.7.ebuild,
+  -mwlib-0.13.8.ebuild:
+  Bump
+
+*mwlib-0.15.7 (02 May 2013)
+
+  02 May 2013; Patrick Lauer <patrick@gentoo.org> +mwlib-0.15.7.ebuild:
+  Bump
+
+*mwlib-0.15.6 (02 Apr 2013)
+
+  02 Apr 2013; Patrick Lauer <patrick@gentoo.org> +mwlib-0.15.6.ebuild:
+  Bump
+
+*mwlib-0.15.3 (20 Mar 2013)
+
+  20 Mar 2013; Patrick Lauer <patrick@gentoo.org> +mwlib-0.15.3.ebuild:
+  Bump
+
+*mwlib-0.14.3 (11 Jan 2013)
+
+  11 Jan 2013; Patrick Lauer <patrick@gentoo.org> +mwlib-0.14.3.ebuild:
+  Bump for #451262
+
+  31 Dec 2012; Michał Górny <mgorny@gentoo.org> mwlib-0.13.5.ebuild,
+  mwlib-0.13.6.ebuild, mwlib-0.13.7.ebuild, mwlib-0.13.8.ebuild,
+  mwlib-0.14.0.ebuild, mwlib-0.14.1.ebuild:
+  Use virtual/pyparsing.
+
+*mwlib-0.14.1 (30 Oct 2012)
+
+  30 Oct 2012; Patrick Lauer <patrick@gentoo.org> +mwlib-0.14.1.ebuild:
+  Bump
+
+*mwlib-0.14.0 (29 Aug 2012)
+
+  29 Aug 2012; Patrick Lauer <patrick@gentoo.org> +mwlib-0.14.0.ebuild:
+  Bump
+
+*mwlib-0.13.8 (28 Jun 2012)
+
+  28 Jun 2012; Patrick Lauer <patrick@gentoo.org> +mwlib-0.13.8.ebuild:
+  Bump
+
+*mwlib-0.13.7 (19 May 2012)
+
+  19 May 2012; Kacper Kowalik <xarthisius@gentoo.org> +mwlib-0.13.7.ebuild:
+  Version bump, fixes #416479 by Ian Delaney <johneed@hotmail.com>. Thanks to
+  Arfrever for fixing test_odfwriter.py
+
+*mwlib-0.13.6 (19 Apr 2012)
+
+  19 Apr 2012; Patrick Lauer <patrick@gentoo.org> +mwlib-0.13.6.ebuild:
+  Bump
+
+*mwlib-0.13.5 (06 Mar 2012)
+
+  06 Mar 2012; Patrick Lauer <patrick@gentoo.org> +mwlib-0.13.5.ebuild,
+  -mwlib-0.12.13.ebuild, -mwlib-0.12.17.ebuild, -mwlib-0.13.3.ebuild:
+  Bump for #407005
+
+  23 Feb 2012; Patrick Lauer <patrick@gentoo.org> mwlib-0.13.3.ebuild:
+  Restricting python some more
+
+  23 Feb 2012; Patrick Lauer <patrick@gentoo.org> mwlib-0.12.13.ebuild,
+  mwlib-0.12.17.ebuild, mwlib-0.13.3.ebuild:
+  Restricting python
+
+*mwlib-0.13.3 (14 Feb 2012)
+
+  14 Feb 2012; Patrick Lauer <patrick@gentoo.org> +mwlib-0.13.3.ebuild:
+  Bump for #402827
+
+*mwlib-0.12.17 (26 Dec 2011)
+
+  26 Dec 2011; Patrick Lauer <patrick@gentoo.org> +mwlib-0.12.17.ebuild:
+  Bump for #389639
+
+  30 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  mwlib-0.12.13.ebuild:
+  Use PyPI mirrors. Fix dependencies.
+
+*mwlib-0.12.13 (20 Jul 2010)
+
+  20 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -mwlib-0.12.12.ebuild, +mwlib-0.12.13.ebuild:
+  Version bump. Fixed dependency on odfpy in setup.py (bug #299740).
+
+  03 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  mwlib-0.12.12.ebuild:
+  Use PYTHON_DEPEND instead of NEED_PYTHON.
+
+  12 Jan 2010; Christian Faulhammer <fauli@gentoo.org> mwlib-0.12.12.ebuild:
+  raise twisted dependency, see bug 297725
+
+  12 Jan 2010; Christian Faulhammer <fauli@gentoo.org> mwlib-0.12.12.ebuild:
+  add ~x86, bug 297725
+
+*mwlib-0.12.12 (21 Dec 2009)
+
+  21 Dec 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +mwlib-0.12.12.ebuild:
+  Version bump (bug #294164). Set SUPPORT_PYTHON_ABIS.
+
+*mwlib-0.10.1 (18 Apr 2009)
+
+  18 Apr 2009; Patrick Lauer <patrick@gentoo.org> +metadata.xml,
+  +mwlib-0.10.1.ebuild:
+  Initial import. Ebuild by Richard Ash. Fixes #266163

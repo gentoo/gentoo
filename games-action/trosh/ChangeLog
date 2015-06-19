@@ -1,0 +1,18 @@
+# ChangeLog for games-action/trosh
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/trosh/ChangeLog,v 1.4 2014/11/25 23:05:59 hasufell Exp $
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  16 Feb 2013; Agostino Sarubbo <ago@gentoo.org> trosh-20.ebuild:
+  Stable for x86, wrt bug #457896
+
+  16 Feb 2013; Agostino Sarubbo <ago@gentoo.org> trosh-20.ebuild:
+  Stable for amd64, wrt bug #457896
+
+*trosh-20 (17 Jan 2013)
+
+  17 Jan 2013; Julian Ospald <hasufell@gentoo.org> +trosh-20.ebuild,
+  +metadata.xml:
+  initial import wrt #452742

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-perl/Unicode-Normalize virtual/perl-ExtUtils-CBuilder >=dev-perl/Module-Build-0.420.0 test? ( virtual/perl-Test-Simple dev-perl/Test-NoWarnings ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Internationalizing Domain Names in Applications (IDNA)
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Net-IDN-Encode/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Unicode-Normalize dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/C/CF/CFAERBER/Net-IDN-Encode-2.201.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=922011791f2521dad3e028ed58177146

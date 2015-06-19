@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=dev-vcs/cvs
+DESCRIPTION=pcc compiler support libs
+EAPI=5
+HOMEPAGE=http://pcc.ludd.ltu.se
+LICENSE=BSD
+SLOT=0
+_eclasses_=cvs	a4cb8da1bb586b224ade5b54f1d2fda0	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=465c3f379e8c0ec1c6cb1ba938991baa

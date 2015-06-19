@@ -1,0 +1,17 @@
+###############################################################################
+# mod_fastcgi.conf
+# include'd by lighttpd.conf.
+# $Header: /var/cvsroot/gentoo-x86/www-servers/lighttpd/files/conf/mod_fastcgi.conf-1.4.13-r2,v 1.1 2007/04/01 23:22:00 robbat2 Exp $
+###############################################################################
+
+server.modules += ("mod_fastcgi")
+fastcgi.server = ( ".php" =>
+		            ( "localhost" =>
+			            (
+				            "socket"		=>		"/var/run/lighttpd/lighttpd-fastcgi-php-" + PID + ".socket",
+				            "bin-path"	=>		"/usr/bin/php-cgi"
+			            )
+		            )
+	            )
+
+# vim: set ft=conf foldmethod=marker et :

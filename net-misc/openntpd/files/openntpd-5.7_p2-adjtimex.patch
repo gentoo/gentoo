@@ -1,0 +1,50 @@
+From eeb97529cd5a332a69a312687e41939eb17f7a81 Mon Sep 17 00:00:00 2001
+From: Brent Cook <busterb@gmail.com>
+Date: Wed, 21 Jan 2015 10:30:37 -0600
+Subject: [PATCH] prefer adjtimex over the deprecated ntp_adjtime on Linux
+
+Thanks to @chneukirchen for the suggestion.
+---
+ compat/adjfreq_linux.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/compat/adjfreq_linux.c b/compat/adjfreq_linux.c
+index 21ee40f..e4a8ae9 100644
+--- a/compat/adjfreq_linux.c
++++ b/compat/adjfreq_linux.c
+@@ -15,7 +15,7 @@
+  */
+ 
+ #include <sys/types.h>
+-# include <sys/timex.h>
++#include <sys/timex.h>
+ 
+ #include <unistd.h>
+ 
+@@ -37,20 +37,20 @@ adjfreq(const int64_t *freq, int64_t *oldfreq)
+ 		txc.modes = ADJ_FREQUENCY;
+ 		txc.freq = *freq / 1e3 / (1LL << 16);
+ 
+-		if ((ntp_adjtime(&txc)) == -1)
+-			log_warn("ntp_adjtime (2) failed");
++		if ((adjtimex(&txc)) == -1)
++			log_warn("adjtimex failed");
+ 
+-		log_debug("ntp_adjtime adjusted frequency by %fppm",
++		log_debug("adjtimex adjusted frequency by %fppm",
+ 			  ((txc.freq * 1e3) *  (1LL<<16) / 1e3 / (1LL << 32)));
+ 	}
+ 	if (oldfreq != NULL) {
+ 		txc.modes = 0;
+-		if ((ntp_adjtime(&txc)) == -1) {
+-			log_warn("ntp_adjtime (1) failed");
++		if ((adjtimex(&txc)) == -1) {
++			log_warn("adjtimex failed");
+ 			return -1;
+ 		}
+ 		newfreq = (txc.freq * 1e3) *  (1LL<<16);
+-		log_debug("ntp_adjtime returns frequency of %fppm",
++		log_debug("adjtimex returns frequency of %fppm",
+ 			  newfreq / 1e3 / (1LL << 32));
+ 		*oldfreq = newfreq;
+ 	}

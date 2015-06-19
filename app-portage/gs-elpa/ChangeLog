@@ -1,0 +1,35 @@
+# ChangeLog for app-portage/gs-elpa
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/gs-elpa/ChangeLog,v 1.7 2015/06/06 07:43:52 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  24 Apr 2015; Jauhien Piatlicki <jauhien@gentoo.org> gs-elpa-9999.ebuild:
+  app-portage/g-sorcery 0.2 release
+
+  22 Apr 2015; Jauhien Piatlicki <jauhien@gentoo.org> gs-elpa-9999.ebuild:
+  master gs-elpa needs features from live g-sorcery
+
+*gs-elpa-0.1.3 (04 Dec 2014)
+
+  04 Dec 2014; Jauhien Piatlicki <jauhien@gentoo.org> +gs-elpa-0.1.3.ebuild,
+  -gs-elpa-0.1.2.ebuild:
+  version bump
+
+  24 Nov 2014; Jauhien Piatlicki <jauhien@gentoo.org> gs-elpa-0.1.2.ebuild,
+  gs-elpa-9999.ebuild:
+  update PYTHON_COMPAT, bug #530368
+
+*gs-elpa-0.1.2 (29 Sep 2014)
+
+  29 Sep 2014; Jauhien Piatlicki <jauhien@gentoo.org> +gs-elpa-0.1.2.ebuild,
+  -gs-elpa-0.1.1.ebuild:
+  version bump
+
+*gs-elpa-9999 (29 Aug 2014)
+*gs-elpa-0.1.1 (29 Aug 2014)
+
+  29 Aug 2014; Jauhien Piatlicki <jauhien@gentoo.org> +gs-elpa-0.1.1.ebuild,
+  +gs-elpa-9999.ebuild, +metadata.xml:
+  initial import

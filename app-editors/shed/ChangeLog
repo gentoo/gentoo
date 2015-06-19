@@ -1,0 +1,96 @@
+# ChangeLog for app-editors/shed
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/shed/ChangeLog,v 1.27 2015/06/09 10:52:26 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  26 Oct 2014; Jeroen Roovers <jer@gentoo.org> shed-1.15.ebuild,
+  +files/shed-1.15-cflags.patch, files/shed-1.15-interix.patch,
+  +files/shed-1.15-tinfo.patch:
+  Fix building against sys-libs/ncurses[tinfo] (bug #526908). Fix DPEND typo.
+  Clean up patch.
+
+  22 Aug 2012; Anthony G. Basile <blueness@gentoo.org> shed-1.15.ebuild:
+  Keyword ~arm, bug #431922
+
+  18 Aug 2012; Christoph Junghans <ottxor@gentoo.org>
+  +files/shed-1.15-interix.patch, shed-1.15.ebuild:
+  add prefix support (bug #430098)
+
+  13 Aug 2011; Akinori Hattori <hattya@gentoo.org> shed-1.12.ebuild,
+  shed-1.13.ebuild:
+  update to EAPI 4.
+
+*shed-1.15 (13 Aug 2011)
+
+  13 Aug 2011; Akinori Hattori <hattya@gentoo.org> +shed-1.15.ebuild:
+  new upstream release. fixes bug #377591.
+
+  08 Feb 2008; Santiago M. Mola <coldwind@gentoo.org> shed-1.13.ebuild:
+  amd64 stable
+
+  26 Jan 2008; Fabian Groffen <grobian@gentoo.org> shed-1.12.ebuild,
+  shed-1.13.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  09 Aug 2007; Akinori Hattori <hattya@gentoo.org> shed-1.13.ebuild:
+  stable on x86.
+
+*shed-1.13 (11 Mar 2007)
+
+  11 Mar 2007; Akinori Hattori <hattya@gentoo.org> -shed-1.11.ebuild,
+  +shed-1.13.ebuild:
+  new upstream release.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  12 Jul 2006; Akinori Hattori <hattya@gentoo.org> shed-1.11.ebuild,
+  shed-1.12.ebuild:
+  use emake for install.
+
+  15 Jun 2006; Scott Stoddard <deltacow@gentoo.org> shed-1.12.ebuild:
+  Stable on amd64. (re. bug 136755)
+
+  10 Jun 2006; Michael Hanselmann <hansmi@gentoo.org> shed-1.12.ebuild:
+  Stable on ppc.
+
+  05 Jun 2006; Akinori Hattori <hattya@gentoo.org> shed-1.12.ebuild:
+  stable on x86.
+
+  11 May 2006; Thomas Cort <tcort@gentoo.org> shed-1.11.ebuild:
+  Stable on amd64.
+
+*shed-1.12 (22 Apr 2006)
+
+  22 Apr 2006; Akinori Hattori <hattya@gentoo.org> -shed-1.10.ebuild,
+  +shed-1.12.ebuild:
+  new upstream release. fixes bug #118019.
+
+  20 Sep 2005; Kito <kito@gentoo.org> shed-1.11.ebuild:
+  ~ppc-macos. Closes Bug 106594
+
+  28 Aug 2005; Luis Medinas <metalgod@gentoo.org> shed-1.11.ebuild:
+  Added ~amd64 keywords. Closes bug #103870.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> shed-1.11.ebuild:
+  Stable on ppc.
+
+  07 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org> shed-1.11.ebuild:
+  mark ~ppc
+
+  07 Dec 2004; Akinori Hattori <hattya@gentoo.org> shed-1.11.ebuild:
+  stable on x86.
+
+*shed-1.11 (03 Nov 2004)
+
+  03 Nov 2004; Akinori Hattori <hattya@gentoo.org> +shed-1.11.ebuild:
+  version bump.
+
+*shed-1.10 (18 Feb 2004)
+
+  18 Feb 2004; Akinori Hattori <hattya@gentoo.org> metadata.xml,
+  shed-1.10.ebuild:
+  Initial revision. Ebuild submitted by Sven Wegener <sven.wegener@stealer.net>
+  in bug #41629.

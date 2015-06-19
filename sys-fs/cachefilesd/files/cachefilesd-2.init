@@ -1,0 +1,54 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/cachefilesd/files/cachefilesd-2.init,v 1.1 2014/06/08 13:13:23 swift Exp $
+
+depend() {
+	need localmount
+	use logger
+	before nfsmount
+}
+
+checkxattr() {
+	local testpath testfile ret
+	# SELinux requires xattrs, so we can assume things work already
+	[ -f /sys/fs/selinux/status ] && return 0;
+	testpath=$(awk '/^[[:space:]]*dir/ {print $2}' /etc/cachefilesd.conf)
+	testfile="${testpath}/.tmp-xattr-test.cachefilesd"
+	touch "${testfile}"
+	# creates a file in the testpath and tries to set an attribute on it to check
+	# if the support is available 
+	attr -s test -V xattr "${testfile}" 2>&1 > /dev/null
+	ret=$?
+	rm -f "${testfile}"
+	[ ${ret} -ne 0 ] && eerror "xattr support missing on the ${testpath} filesystem"
+	return ${ret}
+}
+
+start() {
+	ebegin "Starting cachefilesd"
+	checkxattr || return $? 
+	# check if the cachefiles modules is loaded (or builtin)
+	if [ ! -c /dev/cachefiles ] ; then
+		local ret
+		einfo "/dev/cachefiles doesn't exist, trying to modprobe cachefiles"
+		modprobe cachefiles
+		ret=$?
+		if [ $ret -ne 0 ] ; then
+			eerror "cachefiles modules cannot be loaded so cachefilesd "
+			eerror 	"cannot be started, aborting. Did you build fscache in your "
+			eerror	"kernel? Note that you need a 2.6.30 or better kernel"
+			return $ret
+		fi
+	fi
+	start-stop-daemon --start --pidfile /var/run/cachefilesd.pid --exec /sbin/cachefilesd -- ${OPTIONS}
+	eend $? "Failed to start cachefilesd. Check the system log to see the error"
+
+}
+
+stop() {
+	ebegin "Stopping cachefilesd"
+	start-stop-daemon --stop --exec /sbin/cachefilesd --pidfile /var/run/cachefilesd.pid
+	eend $? "Failed to stop cachefilesd"
+}
+

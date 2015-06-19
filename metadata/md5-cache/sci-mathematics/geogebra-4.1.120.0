@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Mathematics software for geometry
+EAPI=5
+HOMEPAGE=http://www.geogebra.org/cms/en
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3 CC-BY-SA-3.0 BSD public-domain GPL-2 MIT
+RDEPEND=>=virtual/jdk-1.6.0-r1
+SLOT=0
+SRC_URI=https://geogebra.googlecode.com/files/GeoGebra-Unixlike-Installer-4.1.120.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=040e32ed2b62a7c0be6c81e198fdb945

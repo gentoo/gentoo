@@ -1,0 +1,28 @@
+# ChangeLog for media-sound/neutrino
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/neutrino/ChangeLog,v 1.6 2012/07/21 14:30:22 pacho Exp $
+
+  21 Jul 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/neutrino-0.8.4-glib-single-include.patch, neutrino-0.8.4.ebuild:
+  Let it compile against glib-2.32
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> neutrino-0.8.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*neutrino-0.8.4 (15 Feb 2008)
+
+  15 Feb 2008; Samuli Suominen <drac@gentoo.org> -neutrino-0.8.3.ebuild,
+  +neutrino-0.8.4.ebuild:
+  Version bump for libnjb-2.2 compability, thanks to Mr. Bones.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  15 Feb 2006; Diego Pettenò <flameeyes@gentoo.org> neutrino-0.8.3.ebuild:
+  Make pkgconfig and intal only build-time dependencies.
+
+*neutrino-0.8.3 (30 Jul 2005)
+
+  30 Jul 2005; Tony Vroon <chainsaw@gentoo.org> +metadata.xml,
+  +neutrino-0.8.3.ebuild:
+  Initial commit, closes bug #65162.

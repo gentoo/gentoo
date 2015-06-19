@@ -1,0 +1,9 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/autoconf/files/eblits/src_prepare.eblit,v 1.1 2015/03/19 23:49:17 vapier Exp $
+
+eblit-autoconf-src_prepare() {
+	find -name Makefile.in -exec sed -i '/^pkgdatadir/s:$:-@VERSION@:' {} +
+
+	[[ ${#PATCHES[@]} -gt 0 ]] && epatch "${PATCHES[@]}"
+}

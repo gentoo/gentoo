@@ -1,0 +1,18 @@
+--- contrib/pf/pflogd/privsep.c.orig	2007-07-03 09:30:02 -0300
++++ contrib/pf/pflogd/privsep.c	2008-06-13 23:55:39 -0300
+@@ -31,13 +31,14 @@
+ #include <errno.h>
+ #include <fcntl.h>
+ #include <limits.h>
++#include <stdio.h>
++#define HAVE_SNPRINTF
+ #ifndef __FreeBSD__
+ #include <pcap.h>
+ #include <pcap-int.h>
+ #endif
+ #include <pwd.h>
+ #include <signal.h>
+-#include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #ifdef __FreeBSD__

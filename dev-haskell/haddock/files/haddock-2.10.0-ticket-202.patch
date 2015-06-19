@@ -1,0 +1,30 @@
+--- haddock-2.10.0-orig/src/Haddock/Interface/Create.hs	2012-03-04 03:21:18.000000000 +1100
++++ haddock-2.10.0/src/Haddock/Interface/Create.hs	2012-06-27 00:05:37.874840635 +1000
+@@ -35,6 +35,7 @@
+ import Name
+ import Bag
+ import RdrName (GlobalRdrEnv)
++import TcRnTypes
+ 
+ 
+ -- | Use a 'TypecheckedModule' to produce an 'Interface'.
+@@ -50,6 +51,8 @@
+       instances     = modInfoInstances mi
+       exportedNames = modInfoExports mi
+ 
++      (TcGblEnv {tcg_rdr_env = gre}, _) = tm_internals_ tm
++
+   -- The renamed source should always be available to us, but it's best
+   -- to be on the safe side.
+   (group_, mayExports, mayDocHeader) <-
+@@ -59,10 +62,6 @@
+         return (emptyRnGroup, Nothing, Nothing)
+       Just (x, _, y, z) -> return (x, y, z)
+ 
+-  -- The pattern-match should not fail, because createInterface is only
+-  -- done on loaded modules.
+-  Just gre <- liftGhcToErrMsgGhc $ lookupLoadedHomeModuleGRE (moduleName mdl)
+-
+   opts0 <- liftErrMsg $ mkDocOpts (haddockOptions dflags) flags mdl
+   let opts
+         | Flag_IgnoreAllExports `elem` flags = OptIgnoreExports : opts0

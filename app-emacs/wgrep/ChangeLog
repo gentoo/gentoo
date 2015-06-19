@@ -1,0 +1,12 @@
+# ChangeLog for app-emacs/wgrep
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/wgrep/ChangeLog,v 1.2 2015/06/05 12:41:33 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*wgrep-2.1.10 (24 Feb 2015)
+
+  24 Feb 2015; Ulrich Müller <ulm@gentoo.org> +wgrep-2.1.10.ebuild,
+  +files/50wgrep-gentoo.el, +metadata.xml:
+  Initial import. Ebuild contributed by me.

@@ -1,0 +1,169 @@
+# ChangeLog for app-eselect/eselect-oodict
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-oodict/ChangeLog,v 1.1 2015/03/31 16:52:24 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> +eselect-oodict-20100228.ebuild,
+  +metadata.xml:
+  Move package from app-admin to app-eselect category.
+
+  10 Aug 2014; Patrick Lauer <patrick@gentoo.org>
+  eselect-oodict-20100228.ebuild:
+  Fix description for more repoman happy
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  06 Apr 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  -eselect-oodict-20061117.ebuild:
+  Drop old.
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> eselect-oodict-20100228.ebuild:
+  Marking eselect-oodict-20100228 ppc64 for bug 396747
+
+  14 Feb 2012; Brent Baude <ranger@gentoo.org> eselect-oodict-20100228.ebuild:
+  Marking eselect-oodict-20100228 ppc for bug 396747
+
+  05 Feb 2012; Raúl Porcel <armin76@gentoo.org>
+  eselect-oodict-20061117.ebuild:
+  Move to ~sparc
+
+  16 Jan 2012; Agostino Sarubbo <ago@gentoo.org>
+  eselect-oodict-20100228.ebuild:
+  Stable for amd64, wrt bug #396747
+
+  15 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  eselect-oodict-20100228.ebuild:
+  x86 stable wrt bug #396747
+
+*eselect-oodict-20100228 (01 Mar 2010)
+
+  01 Mar 2010; Jonathan Callen <abcd@gentoo.org>
+  -eselect-oodict-20060621.ebuild, -eselect-oodict-20060706.ebuild,
+  -eselect-oodict-20060806.ebuild, +eselect-oodict-20100228.ebuild:
+  Version bump for prefix support; drop old versions
+
+  11 Oct 2009; Mark Loeser <halcy0n@gentoo.org>
+  eselect-oodict-20060621.ebuild, eselect-oodict-20060706.ebuild,
+  eselect-oodict-20060806.ebuild, eselect-oodict-20061117.ebuild:
+  QA fixes; unquoted variables
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Kevin Quinn (kevquinn, #93689) from metadata.xml.
+
+  06 Oct 2007; Tom Gall <tgall@gentoo.org>
+  eselect-oodict-20061117.ebuild:
+  stable on ppc64 bug 182397
+
+  16 Sep 2007; Ferris McCormick <fmccor@gentoo.org>
+  eselect-oodict-20061117.ebuild:
+  Sparc stable.  Pure administration:  This version is identical to previous.
+
+  08 Sep 2007; Joseph Jezak <josejx@gentoo.org>
+  eselect-oodict-20061117.ebuild:
+  Marked ppc stable for bug #182397.
+
+  05 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  eselect-oodict-20061117.ebuild:
+  stable x86, bug 182397
+
+  02 Sep 2007; Wulf C. Krueger <philantrop@gentoo.org> metadata.xml,
+  eselect-oodict-20061117.ebuild:
+  Marked stable on amd64 as per bug 182397.
+
+  26 Dec 2006; Tom Gall <tgall@gentoo.org> 
+  eselect-oodict-20061117.ebuild:
+  added ~ppc64
+
+*eselect-oodict-20061117 (17 Nov 2006)
+
+  17 Nov 2006; Kevin F. Quinn <kevquinn@gentoo.org>
+  +eselect-oodict-20061117.ebuild:
+  Also install all dictionaries to OOo's dictionary.lst - OOo simply merges
+  them if there is more than one for a language.
+
+  06 Aug 2006; Kevin F. Quinn <kevquinn@gentoo.org>
+  +eselect-oodict-20060806.ebuild:
+  Modify to install all dictionaries files for a language where the language
+  has more than one - bug #139669
+
+  03 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  eselect-oodict-20060706.ebuild:
+  Stable on sparc
+
+*eselect-oodict-20060806 (06 Aug 2006)
+
+  18 Jul 2006; Michael Hanselmann <hansmi@gentoo.org>
+  eselect-oodict-20060706.ebuild:
+  Stable on ppc.
+
+  15 Jul 2006; Joshua Jackson <tsunam@gentoo.org>
+  eselect-oodict-20060621.ebuild:
+  Stable x86; for openoffice
+
+  15 Jul 2006; Luis Medinas <metalgod@gentoo.org>
+  eselect-oodict-20060706.ebuild:
+  Stable on amd64. See security bug #138545.
+
+  15 Jul 2006; Luis Medinas <metalgod@gentoo.org>
+  eselect-oodict-20060621.ebuild:
+  Stable on amd64.
+
+  12 Jul 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  eselect-oodict-20060621.ebuild:
+  Stable on sparc
+
+*eselect-oodict-20060706 (06 Jul 2006)
+
+  06 Jul 2006; Kevin F. Quinn <kevquinn@gentoo.org>
+  +eselect-oodict-20060706.ebuild:
+  Support --libdir option for multilib, in particular 32-bit binary builds
+  used on amd64; bug #139228
+
+  05 Jul 2006; Lars Weiler <pylon@gentoo.org>
+  eselect-oodict-20060621.ebuild:
+  Stable on ppc; dependency for bug #139249.
+
+  26 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  eselect-oodict-20060621.ebuild:
+  Keyworded ~sparc wrt #135520
+
+*eselect-oodict-20060621 (21 Jun 2006)
+
+  21 Jun 2006; Kevin F. Quinn <kevquinn@gentoo.org>
+  +eselect-oodict-20060621.ebuild:
+  Fix update action (variable name typo), and handle missing OOo dictionary.lst
+  properly - thanks to suka for pointing out the errors.
+
+*eselect-oodict-20060613 (13 Jun 2006)
+
+  13 Jun 2006; Kevin F. Quinn <kevquinn@gentoo.org>
+  +eselect-oodict-20060613.ebuild:
+  Clean up output when dealing with files installed by other apps; bug #135520c4
+
+  06 Jun 2006; Tom Martin <slarti@gentoo.org>
+  eselect-oodict-20060603.ebuild:
+  Marked ~amd64 for bug #135520.
+
+  04 Jun 2006; Kevin F. Quinn <kevquinn@gentoo.org>
+  -files/oodict.eselect-20060601, -eselect-oodict-20060601.ebuild,
+  eselect-oodict-20060603.ebuild:
+  Remove 20060601
+
+  04 Jun 2006; Kevin F. Quinn <kevquinn@gentoo.org>
+  eselect-oodict-20060603.ebuild:
+  keyword ~ppc
+
+*eselect-oodict-20060603 (03 Jun 2006)
+
+  03 Jun 2006; Kevin F. Quinn <kevquinn@gentoo.org>
+  +eselect-oodict-20060603.ebuild:
+  Update to tidy up messages, provide sensible output when no dictionaries
+  installed.
+
+*eselect-oodict-20060601 (02 Jun 2006)
+
+  02 Jun 2006; Kevin F. Quinn <kevquinn@gentoo.org>
+  +files/oodict.eselect-20060601, +metadata.xml,
+  +eselect-oodict-20060601.ebuild:
+  Initial release

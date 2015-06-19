@@ -1,0 +1,15 @@
+--- configure.in.old	2006-03-31 18:31:26.000000000 +0200
++++ configure.in	2006-03-31 18:44:47.000000000 +0200
+@@ -407,7 +407,11 @@
+ # Let people not build/install docs if they don't have docbook
+ #
+ 
+-AC_CHECK_PROG(HASDOCBOOK, docbook2html, yes, no)
++AC_ARG_ENABLE(docbook,           [  --disable-docbook                Don't build documentation],,)
++
++if test x$enable_docbook != xno; then
++	AC_CHECK_PROG(HASDOCBOOK, docbook2html, yes, no)
++fi
+ 
+ AM_CONDITIONAL(USEDOCBOOK, test "x$HASDOCBOOK" = xyes)
+ 

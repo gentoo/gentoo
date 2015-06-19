@@ -1,0 +1,18 @@
+# ChangeLog for dev-python/astropy-helpers
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/astropy-helpers/ChangeLog,v 1.4 2015/06/06 19:57:55 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> astropy-helpers-0.4.1.ebuild:
+  Drop old Python implementations
+
+*astropy-helpers-0.4.1 (12 Aug 2014)
+
+  12 Aug 2014; Justin Lecher <jlec@gentoo.org> +astropy-helpers-0.4.1.ebuild,
+  +metadata.xml:
+  Import from sci overlay, written by Joseph Jon Booker <joe@neoturbine.net>

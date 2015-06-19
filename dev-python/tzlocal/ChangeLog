@@ -1,0 +1,20 @@
+# ChangeLog for dev-python/tzlocal
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/tzlocal/ChangeLog,v 1.4 2015/06/15 21:54:39 mrueg Exp $
+
+*tzlocal-1.2 (15 Jun 2015)
+
+  15 Jun 2015; Manuel Rüger <mrueg@gentoo.org> +tzlocal-1.2.ebuild:
+  Version bump.
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+*tzlocal-1.1.2 (03 Jan 2015)
+
+  03 Jan 2015; Mike Gilbert <floppym@gentoo.org> +metadata.xml,
+  +tzlocal-1.1.2.ebuild:
+  New ebuild by me.

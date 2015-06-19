@@ -1,0 +1,11 @@
+--- source/snd_qf/snd_mix.c
++++ source/snd_qf/snd_mix.c
+@@ -27,7 +27,7 @@
+ int *snd_p, snd_linear_count, snd_vol, music_vol;
+ short *snd_out;
+ 
+-#if !defined ( id386 ) || defined ( __MACOSX__ )
++#if defined ( PIC ) || !defined ( id386 ) || defined ( __MACOSX__ )
+ #ifdef _WIN32
+ #pragma warning( push )
+ #pragma warning( disable : 4310 )       // cast truncates constant value

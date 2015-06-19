@@ -1,0 +1,57 @@
+# ChangeLog for x11-plugins/wmnetselect
+# Copyright 2002-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmnetselect/ChangeLog,v 1.14 2010/09/02 10:32:10 s4t4n Exp $
+
+  02 Sep 2010; Michele Noberasco <s4t4n@gentoo.org> wmnetselect-0.8-r1.ebuild:
+  Honour Gentoo LDFLAGS. Closes bug #335625.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  wmnetselect-0.8-r1.ebuild:
+  Drop virtual/x11 references.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  31 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  wmnetselect-0.8-r1.ebuild:
+  Fixed DEPEND for modular X.
+
+  11 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmnetselect-0.8.ebuild:
+  Removed COPYING from dodoc.
+
+  04 Sep 2004; Michele Noberasco <s4t4n@gentoo.org> wmnetselect-0.8.ebuild:
+  Remove older ebuild.
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  wmnetselect-0.8-r1.ebuild:
+  Masked wmnetselect-0.8-r1.ebuild stable for ppc
+
+  08 Aug 2004; Tom Martin <slarti@gentoo.org> wmnetselect-0.8-r1.ebuild,
+  wmnetselect-0.8.ebuild:
+  Typo in DESCRIPTION: doclette -> docklet. Bug 59717.
+
+  28 Apr 2004; David Holm <dholm@gentoo.org> wmnetselect-0.8-r1.ebuild:
+  Added to ~ppc.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*wmnetselect-0.8-r1 (9-Feb-2002)
+
+  30 Aug 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
+  Relocated to x11-plugins
+
+  9 Feb 2002; Arcady Genkin <agenkin@thpoon.com> wmnetselect-0.8.ebuild-r1 :
+
+  Fixed to make use of CFLAGS.
+
+*wmnetselect-0.8 (7-Feb-2002)
+
+  7 Feb 2002; Vitaly Kushneriuk <vitaly@gentoo.org> wmnetselect-0.8.ebuild :
+
+  Fixed and added to portage.
+
+  7 Feb 2002; Arcady Genkin <agenkin@thpoon.com>  wmnetselect-0.8.ebuild :
+
+  First version of the package.
+		

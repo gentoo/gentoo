@@ -1,0 +1,13 @@
+diff --git a/src/cyana/putpro.f b/src/cyana/putpro.f
+index d4080f9..4490225 100644
+--- a/src/cyana/putpro.f
++++ b/src/cyana/putpro.f
+@@ -66,7 +66,7 @@ c     ------------------------------------------------------ BMRB header
+      *    '   _Mol_residue_sequence',
+      *    ';'
+         do i=1,nr,20
+-          write (iunit,'(20A1))') (rcode(rnam(j)),j=i,min(nr,i+19))
++          write (iunit,'(20A1)') (rcode(rnam(j)),j=i,min(nr,i+19))
+         end do
+ 
+         write (iunit,'(A)')

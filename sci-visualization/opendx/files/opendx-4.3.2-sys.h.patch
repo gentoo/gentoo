@@ -1,0 +1,23 @@
+diff -aurN dx-4.3.2-orig/configure.ac dx-4.3.2/configure.ac
+--- dx-4.3.2-orig/configure.ac	2007-07-19 00:59:55.000000000 -0500
++++ dx-4.3.2/configure.ac	2007-07-19 01:02:34.000000000 -0500
+@@ -1004,7 +1004,7 @@
+   Xm/ScrolledWP.h Xm/SelectioB.h Xm/SeparatoG.h Xm/SeparatoGP.h Xm/Separator.h \
+   Xm/Text.h Xm/TextF.h Xm/ToggleB.h Xm/ToggleBG.h Xm/Xm.h Xm/XmP.h Xm/XmStrDefs.h \
+   gl.h gl/device.h gl/gl.h invent.h iop/afb.h iop/mov.h iop/pfs.h license.h \
+-  linux/kernel.h linux/sys.h math.h mingw32/dir.h mon.h net/if_arp.h net/route.h \
++  linux/kernel.h math.h mingw32/dir.h mon.h net/if_arp.h net/route.h \
+   os2.h setjmp.h starbase.c.h stddef.h stdio.h synch.h sys/access.h \
+   sys/ipc.h sys/m88kbcs.h sys/mman.h sys/mode.h sys/pstat.h sys/resource.h \
+   sys/svs.h sys/sysconfig.h sys/syslimits.h sys/sysmacros.h ulocks.h x11/xlibxtra.h \
+diff -aurN dx-4.3.2-orig/src/exec/libdx/memory.c dx-4.3.2/src/exec/libdx/memory.c
+--- dx-4.3.2-orig/src/exec/libdx/memory.c	2007-07-19 00:59:54.000000000 -0500
++++ dx-4.3.2/src/exec/libdx/memory.c	2007-07-19 01:01:57.000000000 -0500
+@@ -66,7 +66,6 @@
+ 
+ #if linux
+ #include <linux/kernel.h>
+-#include <linux/sys.h>
+ #include <sys/sysinfo.h>
+ #endif
+ 

@@ -1,0 +1,174 @@
+# ChangeLog for dev-perl/Email-Abstract
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Email-Abstract/ChangeLog,v 1.40 2015/06/13 18:50:03 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Email-Abstract-3.3.0-r1.ebuild, Email-Abstract-3.7.0.ebuild:
+  The Module::Pluggable module is no longer part of core Perl and has been
+  moved to dev-perl
+
+*Email-Abstract-3.3.0-r1 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Email-Abstract-3.3.0-r1.ebuild, -Email-Abstract-3.3.0.ebuild:
+  bumped current stable ebuild(s) EAPI to 5; committed directly to stable as no
+  other changes present and revbump helps stable systems to keep from dieing on
+  perl-5.18 upgrade
+
+*Email-Abstract-3.7.0 (11 Jul 2014)
+
+  11 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> +Email-Abstract-3.7.0.ebuild:
+  Version bump wrt bug #515288
+
+  27 Aug 2012; Raúl Porcel <armin76@gentoo.org> Email-Abstract-3.3.0.ebuild:
+  Drop alpha keywords
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  05 Apr 2012; Torsten Veller <tove@gentoo.org> -Email-Abstract-2.13.2.ebuild,
+  -Email-Abstract-3.001.ebuild:
+  Cleanup
+
+  24 Mar 2012; Raúl Porcel <armin76@gentoo.org> Email-Abstract-2.13.2.ebuild,
+  Email-Abstract-3.001.ebuild, Email-Abstract-3.3.0.ebuild:
+  Drop ia64/sparc keywords
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Email-Abstract-3.3.0.ebuild:
+  x86 stable wrt bug #400095
+
+  03 Mar 2012; Brent Baude <ranger@gentoo.org> Email-Abstract-3.3.0.ebuild:
+  Marking Email-Abstract-3.3.0 ppc64 for bug 400095
+
+  01 Mar 2012; Brent Baude <ranger@gentoo.org> Email-Abstract-3.3.0.ebuild:
+  Marking Email-Abstract-3.3.0 ppc for bug 400095
+
+  25 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  Email-Abstract-3.3.0.ebuild:
+  Stable on alpha, bug #400095
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Email-Abstract-3.3.0.ebuild:
+  Stable for amd64, wrt bug #400095
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Email-Abstract-3.003.ebuild:
+  Cleanup
+
+*Email-Abstract-3.3.0 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org> +Email-Abstract-3.3.0.ebuild:
+  Change version scheme
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org> -Email-Abstract-3.002.ebuild:
+  Cleanup
+
+  19 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  Email-Abstract-3.003.ebuild:
+  Mark ~ppc64 wrt #345439
+
+  05 Dec 2010; Raúl Porcel <armin76@gentoo.org> Email-Abstract-3.003.ebuild:
+  Add ~alpha wrt #345439
+
+*Email-Abstract-3.003 (14 Nov 2010)
+
+  14 Nov 2010; Torsten Veller <tove@gentoo.org>
+  +Email-Abstract-3.003.ebuild:
+  Version bump
+
+*Email-Abstract-3.002 (12 Jun 2010)
+
+  12 Jun 2010; Torsten Veller <tove@gentoo.org>
+  +Email-Abstract-3.002.ebuild:
+  Version bump
+
+  02 Dec 2009; Torsten Veller <tove@gentoo.org> Email-Abstract-3.001.ebuild:
+  Stable on amd64 and x86 (#293622)
+
+  13 Mar 2009; Torsten Veller <tove@gentoo.org>
+  -Email-Abstract-2.13.1.ebuild, -Email-Abstract-2.13.4.ebuild:
+  Cleanup
+
+*Email-Abstract-3.001 (31 Dec 2008)
+
+  31 Dec 2008; Torsten Veller <tove@gentoo.org>
+  +Email-Abstract-3.001.ebuild:
+  Version bump
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org>
+  Email-Abstract-2.13.1.ebuild, Email-Abstract-2.13.2.ebuild,
+  Email-Abstract-2.13.4.ebuild:
+  New virtuals: Class-ISA Module-Pluggable
+
+  08 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  Email-Abstract-2.13.2.ebuild:
+  ia64 stable
+
+  04 Dec 2007; Markus Rothe <corsair@gentoo.org>
+  Email-Abstract-2.13.2.ebuild:
+  Stable on ppc64; bug #198075
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  Email-Abstract-2.13.2.ebuild:
+  amd64 stable
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Email-Abstract-2.13.2.ebuild:
+  Stable on ppc.
+
+  05 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  Email-Abstract-2.13.2.ebuild:
+  alpha/x86 stable
+
+  21 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  Email-Abstract-2.13.2.ebuild:
+  Marking sparc stable
+
+*Email-Abstract-2.13.2 (06 Apr 2007)
+
+  06 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  +Email-Abstract-2.13.2.ebuild:
+  Version bump
+
+  08 Mar 2007; Andrej Kacian <ticho@gentoo.org>
+  Email-Abstract-2.13.1.ebuild:
+  Stable on x86, bug #169152.
+
+  14 Feb 2007; Markus Rothe <corsair@gentoo.org>
+  Email-Abstract-2.13.1.ebuild:
+  Added ~ppc64
+
+  22 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  Email-Abstract-2.13.1.ebuild:
+  Add ~ia64 keyword.
+
+  21 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Email-Abstract-2.13.1.ebuild:
+  ppc stable
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Email-Abstract-2.13.1.ebuild:
+  Stable on Alpha.
+
+  09 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  -Email-Abstract-2.13.ebuild, Email-Abstract-2.13.1.ebuild:
+  Marking amd64, sparc stable; removing stale ebuild
+
+  29 Aug 2006; Fernando J. Pereda <ferdy@gentoo.org>
+  Email-Abstract-2.13.1.ebuild:
+  Added ~alpha. Indirect dependency of Mail-Audit, bug #144481
+
+  28 Aug 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Email-Abstract-2.13.1.ebuild:
+  Added ~ppc, bug 144481
+
+*Email-Abstract-2.13.1 (27 Aug 2006)
+
+  27 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  +Email-Abstract-2.13.1.ebuild:
+  Version bump
+
+*Email-Abstract-2.13 (20 Aug 2006)
+
+  20 Aug 2006; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +Email-Abstract-2.13.ebuild:
+  Dep for Mail-ListDetector

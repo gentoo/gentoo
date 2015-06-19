@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare unpack
+DEPEND=app-arch/unzip virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DESCRIPTION=LaTeX2e macros for journals of the American Physical Society and the American Institute of Physics
+EAPI=2
+HOMEPAGE=http://authors.aps.org/revtex4/
+KEYWORDS=amd64 x86
+LICENSE=LPPL-1.3c
+RDEPEND=>=dev-texlive/texlive-latex-2012 virtual/latex-base
+SLOT=0
+SRC_URI=http://authors.aps.org/revtex4/revtex4-1.zip -> revtex-4.1_p2.zip
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	latex-package	d023314500e725be8c78a868e4771dbb	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=74bc2584bd0e27814f431b6d7ffdb664

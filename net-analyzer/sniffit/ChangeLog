@@ -1,0 +1,102 @@
+# ChangeLog for net-analyzer/sniffit
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sniffit/ChangeLog,v 1.25 2014/07/17 02:15:28 jer Exp $
+
+  17 Jul 2014; Jeroen Roovers <jer@gentoo.org> -sniffit-0.3.7-r1.ebuild,
+  -sniffit-0.3.7-r3.ebuild, sniffit-0.3.7-r4.ebuild,
+  -files/sniffit-0.3.7-flags.patch, -files/sniffit-0.3.7-gcc33.patch,
+  files/sniffit-0.3.7-gentoo.patch, files/sniffit-0.3.7-misc.patch,
+  +files/sniffit-0.3.7-tinfo.patch, metadata.xml:
+  EAPI bump. Clean up patches. Fix building against sys-libs/ncurses[tinfo].
+  Remove short <longdescription>. Make sure nothing is done in libpcap/.
+
+  06 Feb 2013; Agostino Sarubbo <ago@gentoo.org> sniffit-0.3.7-r4.ebuild:
+  Stable for sparc, wrt bug #454014
+
+  31 Jan 2013; Agostino Sarubbo <ago@gentoo.org> sniffit-0.3.7-r4.ebuild:
+  Stable for ppc, wrt bug #454014
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> sniffit-0.3.7-r4.ebuild:
+  Stable for x86, wrt bug #454014
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> sniffit-0.3.7-r4.ebuild:
+  Stable for amd64, wrt bug #454014
+
+*sniffit-0.3.7-r4 (05 Dec 2012)
+
+  05 Dec 2012; Jeroen Roovers <jer@gentoo.org> +sniffit-0.3.7-r4.ebuild:
+  Install binary into sbin by Sergey S. Starikoff (bug #390603).
+
+  05 Dec 2012; Jeroen Roovers <jer@gentoo.org> sniffit-0.3.7-r1.ebuild,
+  sniffit-0.3.7-r3.ebuild:
+  Set LICENSE=BSD by Ulrich Müller (bug #446064).
+
+*sniffit-0.3.7-r3 (16 Sep 2010)
+
+  16 Sep 2010; Jeroen Roovers <jer@gentoo.org> -sniffit-0.3.7-r2.ebuild,
+  +sniffit-0.3.7-r3.ebuild:
+  Remove Debian patching as it is mostly replicated and the epatch call was
+  not working anyway.
+
+  16 Sep 2010; Jeroen Roovers <jer@gentoo.org> sniffit-0.3.7-r2.ebuild:
+  Merge epatch calls. Do not install LICENSE. Fix quoting issues. Remove
+  testing cruft.
+
+*sniffit-0.3.7-r2 (16 Sep 2010)
+
+  16 Sep 2010; Jeroen Roovers <jer@gentoo.org> +sniffit-0.3.7-r2.ebuild,
+  +files/sniffit-0.3.7-flags.patch, files/sniffit-0.3.7-gentoo.patch,
+  +files/sniffit-0.3.7-misc.patch:
+  Respect LDFLAGS (bug #336981). Apply more recent Debian patch. Clean up
+  code. Clean up ebuild.
+
+  15 Jan 2009; Jeroen Roovers <jer@gentoo.org>
+  +files/sniffit-0.3.7-gentoo.patch, sniffit-0.3.7-r1.ebuild:
+  Do not hide compiler warnings. Do not hardcode CFLAGS in Makefile. Do not
+  strip (bug #251985).
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org> -sniffit-0.3.7.ebuild:
+  Cleanup
+
+  20 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  15 Aug 2006; Simon Stelling <blubb@gentoo.org> sniffit-0.3.7-r1.ebuild:
+  stable on amd64
+
+  15 Feb 2006; Markus Ullmann <jokey@gentoo.org> sniffit-0.3.7.ebuild,
+  sniffit-0.3.7-r1.ebuild:
+  Removing virtual/libpcap wrt bug #117898
+
+  13 Jun 2005; Andrej Kacian <ticho@gentoo.org> sniffit-0.3.7-r1.ebuild:
+  Added ~amd64 keyword.
+
+  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> sniffit-0.3.7-r1.ebuild,
+  sniffit-0.3.7.ebuild:
+  changed net-libs/libpcap depend to virtual/libcap
+
+  09 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
+  sniffit-0.3.7-r1.ebuild, sniffit-0.3.7.ebuild:
+  Tidy up. added IUSE.
+
+*sniffit-0.3.7-r1 (28 Jul 2003)
+
+  28 Jul 2003; Martin Schlemmer <azarah@gentoo.org> sniffit-0.3.7-r1.ebuild,
+  files/sniffit-0.3.7-gcc33.patch:
+  Fix gcc-3.3 related issues (bug #25328), thanks to Chandler Carruth
+  <carrbc1@wfu.edu>.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*sniffit-0.3.7 (1 Feb 2002)
+
+  14 Aug 2002; Pieter Van den Abeele <pvdabeel@gentoo.org> :
+  Added ppc keyword
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,14 @@
+# ChangeLog for gnome-extra/cameramonitor
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/cameramonitor/ChangeLog,v 1.2 2014/08/10 21:19:30 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  cameramonitor-0.3.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*cameramonitor-0.3.2 (26 Jan 2013)
+
+  26 Jan 2013; Markos Chandras <hwoarang@gentoo.org>
+  +cameramonitor-0.3.2.ebuild, +metadata.xml:
+  Initial commit. Thanks to PhobosK <phobosk@fastmail.fm> who will maintain it.
+  Bug #447372

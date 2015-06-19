@@ -1,0 +1,97 @@
+# ChangeLog for app-admin/sulfur
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/sulfur/ChangeLog,v 1.20 2015/04/12 19:10:34 mrueg Exp $
+
+  12 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -sulfur-1.0_rc104.ebuild:
+  Remove old.
+
+*sulfur-1.0_rc104-r1 (15 Dec 2014)
+
+  15 Dec 2014; Michał Górny <mgorny@gentoo.org> +sulfur-1.0_rc104-r1.ebuild:
+  Convert to python-single-r1.
+
+*sulfur-1.0_rc104 (25 Aug 2012)
+
+  25 Aug 2012; Fabio Erculiani <lxnay@gentoo.org> -sulfur-1.0_rc38.ebuild,
+  -sulfur-1.0_rc43.ebuild, -sulfur-1.0_rc53.ebuild, -sulfur-1.0_rc59.ebuild,
+  -sulfur-1.0_rc76.ebuild, -sulfur-1.0_rc77.ebuild, -sulfur-1.0_rc80.ebuild,
+  -sulfur-1.0_rc87.ebuild, -sulfur-1.0_rc90.ebuild, +sulfur-1.0_rc104.ebuild:
+  drop old, bump to latest version
+
+*sulfur-1.0_rc90 (23 Mar 2012)
+
+  23 Mar 2012; Fabio Erculiani <lxnay@gentoo.org> +sulfur-1.0_rc90.ebuild:
+  version bump
+
+*sulfur-1.0_rc87 (12 Feb 2012)
+
+  12 Feb 2012; Fabio Erculiani <lxnay@gentoo.org> +sulfur-1.0_rc87.ebuild:
+  version bump
+
+*sulfur-1.0_rc80 (22 Dec 2011)
+
+  22 Dec 2011; Fabio Erculiani <lxnay@gentoo.org> +sulfur-1.0_rc80.ebuild:
+  version bump
+
+*sulfur-1.0_rc77 (23 Nov 2011)
+
+  23 Nov 2011; Fabio Erculiani <lxnay@gentoo.org> +sulfur-1.0_rc77.ebuild:
+  version bump
+
+*sulfur-1.0_rc76 (13 Nov 2011)
+
+  13 Nov 2011; Fabio Erculiani <lxnay@gentoo.org> +sulfur-1.0_rc76.ebuild:
+  version bump
+
+*sulfur-1.0_rc59 (09 Oct 2011)
+
+  09 Oct 2011; Fabio Erculiani <lxnay@gentoo.org> +sulfur-1.0_rc59.ebuild:
+  version bump
+
+*sulfur-1.0_rc53 (18 Sep 2011)
+
+  18 Sep 2011; Fabio Erculiani <lxnay@gentoo.org> +sulfur-1.0_rc53.ebuild:
+  version bump
+
+*sulfur-1.0_rc43 (23 Aug 2011)
+
+  23 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> +sulfur-1.0_rc43.ebuild:
+  version bump
+
+  12 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> -sulfur-1.0_rc37.ebuild:
+  drop older version 1.0_rc37
+
+  12 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> -sulfur-1.0_rc34.ebuild:
+  drop older version 1.0_rc34
+
+  12 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> -sulfur-1.0_rc29.ebuild:
+  drop older version 1.0_rc29
+
+  12 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> -sulfur-1.0_rc27.ebuild:
+  drop older version 1.0_rc27
+
+*sulfur-1.0_rc38 (12 Aug 2011)
+
+  12 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> +sulfur-1.0_rc38.ebuild:
+  version bump
+
+*sulfur-1.0_rc37 (11 Aug 2011)
+
+  11 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> +sulfur-1.0_rc37.ebuild:
+  version bump
+
+*sulfur-1.0_rc34 (07 Aug 2011)
+
+  07 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> +sulfur-1.0_rc34.ebuild:
+  version bump
+
+*sulfur-1.0_rc29 (02 Aug 2011)
+
+  02 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> +sulfur-1.0_rc29.ebuild:
+  version bump
+
+*sulfur-1.0_rc27 (19 Jul 2011)
+
+  19 Jul 2011; Fabio Erculiani <lxnay@gentoo.org> +sulfur-1.0_rc27.ebuild,
+  +metadata.xml:
+  new ebuild

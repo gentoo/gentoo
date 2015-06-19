@@ -1,0 +1,94 @@
+# ChangeLog for dev-ruby/abstract
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/abstract/ChangeLog,v 1.25 2014/12/28 01:04:45 mrueg Exp $
+
+  28 Dec 2014; Manuel Rüger <mrueg@gentoo.org> abstract-1.0.0-r3.ebuild:
+  Add ruby2.2 target.
+
+  11 Nov 2014; Manuel Rüger <mrueg@gentoo.org> abstract-1.0.0-r2.ebuild,
+  abstract-1.0.0-r3.ebuild:
+  Drop jruby target.
+
+  20 Aug 2014; Manuel Rüger <mrueg@gentoo.org> abstract-1.0.0-r2.ebuild,
+  abstract-1.0.0-r3.ebuild:
+  Rubyforge is dead. Update HOMEPAGE.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> abstract-1.0.0-r2.ebuild,
+  abstract-1.0.0-r3.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  24 Apr 2014; Manuel Rüger <mrueg@gentoo.org> abstract-1.0.0-r2.ebuild,
+  abstract-1.0.0-r3.ebuild:
+  Remove ruby18 support.
+
+*abstract-1.0.0-r3 (12 Mar 2014)
+
+  12 Mar 2014; Manuel Rüger <mrueg@gentoo.org> +abstract-1.0.0-r3.ebuild:
+  Add ruby21 target.
+
+  24 Dec 2013; Manuel Rüger <mrueg@gentoo.org> -abstract-1.0.0-r1.ebuild:
+  Cleanup old.
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> abstract-1.0.0-r2.ebuild:
+  Stable for x86, wrt bug #492560
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> abstract-1.0.0-r2.ebuild:
+  amd64 stable, bug #492560
+
+*abstract-1.0.0-r2 (04 Oct 2013)
+
+  04 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +abstract-1.0.0-r2.ebuild:
+  Add ruby20 target
+
+  09 Sep 2013; Manuel Rüger <mrueg@gentoo.org> -abstract-1.0.0.ebuild:
+  Cleanup old.
+
+  27 Jul 2013; Agostino Sarubbo <ago@gentoo.org> abstract-1.0.0-r1.ebuild:
+  Stable for x86, wrt bug #477454
+
+  21 Jul 2013; Agostino Sarubbo <ago@gentoo.org> abstract-1.0.0-r1.ebuild:
+  Stable for amd64, wrt bug #477454
+
+  20 Jul 2013; Hans de Graaff <graaff@gentoo.org> abstract-1.0.0-r1.ebuild:
+  Move ppc,ppc64 keywords forward.
+
+  15 Jan 2013; Rick Farina <zerochaos@gentoo.org> abstract-1.0.0-r1.ebuild,
+  abstract-1.0.0.ebuild:
+  adding ~arm keywords to net-analyzer/metasploit rdeps
+
+  01 May 2012; Raúl Porcel <armin76@gentoo.org> abstract-1.0.0-r1.ebuild:
+  Drop ia64/sparc keywords
+
+  31 Dec 2011; Fabian Groffen <grobian@gentoo.org> abstract-1.0.0-r1.ebuild:
+  Add Prefix keywords, bug #396547
+
+  31 Dec 2011; Fabian Groffen <grobian@gentoo.org> abstract-1.0.0-r1.ebuild:
+  Add Prefix keywords, bug #396547
+
+  07 Aug 2011; Raúl Porcel <armin76@gentoo.org> abstract-1.0.0-r1.ebuild:
+  Add ~ia64/~sparc wrt #351835
+
+  29 Jun 2011; Fabian Groffen <grobian@gentoo.org> abstract-1.0.0-r1.ebuild:
+  Marked ~x86-solaris
+
+  29 Sep 2010; Brent Baude <ranger@gentoo.org> abstract-1.0.0.ebuild:
+  Marking abstract-1.0.0 ~ppc64 for bug 326353
+
+  28 Sep 2010; Brent Baude <ranger@gentoo.org> abstract-1.0.0.ebuild:
+  Marking abstract-1.0.0 ~ppc for bug 326353
+
+*abstract-1.0.0-r1 (10 Sep 2010)
+
+  10 Sep 2010; Hans de Graaff <graaff@gentoo.org> +abstract-1.0.0-r1.ebuild:
+  Add ree18 support.
+
+  30 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  abstract-1.0.0.ebuild:
+  keyworded ~x86, bug 312971
+
+*abstract-1.0.0 (28 Jan 2010)
+
+  28 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +abstract-1.0.0.ebuild, +metadata.xml:
+  Initial import of abstract, not to be confused with the copy previously in
+  the Ruby overlay, based on the old eclasses.

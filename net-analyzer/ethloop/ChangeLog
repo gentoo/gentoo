@@ -1,0 +1,52 @@
+# ChangeLog for net-analyzer/ethloop
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ethloop/ChangeLog,v 1.11 2014/07/11 10:28:42 jer Exp $
+
+  11 Jul 2014; Jeroen Roovers <jer@gentoo.org> ethloop-10-r3.ebuild:
+  EAPI bump.
+
+  20 May 2013; Ulrich Müller <ulm@gentoo.org> ethloop-10-r3.ebuild:
+  Fix LICENSE and add mirror restriction, bug 446052.
+
+  17 Nov 2012; Agostino Sarubbo <ago@gentoo.org> ethloop-10-r3.ebuild:
+  Add ~amd64, wrt bug #443696
+
+  31 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> ethloop-10-r3.ebuild:
+  x86 stable wrt bug #336755
+
+*ethloop-10-r3 (27 Dec 2010)
+
+  27 Dec 2010; Jeroen Roovers <jer@gentoo.org> -ethloop-10-r2.ebuild,
+  +ethloop-10-r3.ebuild, -files/ethloop-10-gcc44.patch,
+  +files/ethloop-10-gcc45.patch:
+  Really really really fix recv call (bug #336755).
+
+*ethloop-10-r2 (01 Dec 2010)
+
+  01 Dec 2010; Jeroen Roovers <jer@gentoo.org> +ethloop-10-r2.ebuild,
+  +files/ethloop-10-gcc44.patch:
+  Fix recv call (bug #336755), add some more includes. Use make command line
+  variables instead of patching Makefile. Remove empty DEPEND.
+
+  23 Jul 2006; Marcelo Goes <vanquirius@gentoo.org> -ethloop-10.ebuild,
+  ethloop-10-r1.ebuild:
+  Mark 10-r1 x86 stable, remove old ebuild.
+
+*ethloop-10-r1 (10 Sep 2005)
+
+  10 Sep 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +files/ethloop-10-gcc4.diff, +ethloop-10-r1.ebuild:
+  Fix hardcoded CC and CFLAGS, include string.h in ethloop.c to avoid warnings
+  and dosbin instead of dobin since this needs root priviledges anyway.
+
+  16 Aug 2004; Eldad Zack <eldad@gentoo.org> ethloop-10.ebuild:
+  x86 stable
+
+  16 Jul 2004; David Holm <dholm@gentoo.org> ethloop-10.ebuild:
+  Added to ~ppc.
+
+*ethloop-10 (11 Jul 2004)
+
+  11 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
+  +ethloop-10.ebuild:
+  Initial ebuild. Submitted by Diego Garcia <diego@envigo.net>. Closes #42275

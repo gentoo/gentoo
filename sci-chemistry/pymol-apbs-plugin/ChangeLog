@@ -1,0 +1,80 @@
+# ChangeLog for sci-chemistry/pymol-apbs-plugin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pymol-apbs-plugin/ChangeLog,v 1.16 2015/04/08 18:22:14 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org>
+  pymol-apbs-plugin-2.1_p26.ebuild:
+  Drop old Python implementations
+
+  13 Aug 2014; Andreas Schuerch <nativemad@gentoo.org>
+  pymol-apbs-plugin-2.1_p26-r1.ebuild:
+  x86 stable, see bug 507142
+
+*pymol-apbs-plugin-2.1_p26-r1 (22 Jul 2014)
+
+  22 Jul 2014; Justin Lecher <jlec@gentoo.org>
+  +pymol-apbs-plugin-2.1_p26-r1.ebuild:
+  Fix double prefix
+
+  10 Jul 2014; Chema Alonso <nimiux@gentoo.org>
+  pymol-apbs-plugin-2.1_p26.ebuild:
+  Stable for amd64 wrt bug #507142
+
+*pymol-apbs-plugin-2.1_p26 (22 Nov 2013)
+
+  22 Nov 2013; Justin Lecher <jlec@gentoo.org>
+  +pymol-apbs-plugin-2.1_p26.ebuild,
+  +files/pymol-apbs-plugin-2.1_p26-tcltk8.6.patch, metadata.xml:
+  Version Bump, add fix for tcltk8.6 support
+
+  19 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  Changed herd to sci-chemistry
+
+*pymol-apbs-plugin-2.1_p24 (11 Nov 2010)
+
+  11 Nov 2010; Justin Lecher <jlec@gentoo.org>
+  +pymol-apbs-plugin-2.1_p24.ebuild:
+  Version Bump
+
+  24 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  pymol-apbs-plugin-0_p18.ebuild:
+  Stable on amd64 wrt bug #309007
+
+  09 Jun 2010; Justin Lecher <jlec@gentoo.org>
+  -pymol-apbs-plugin-0_p11.ebuild, pymol-apbs-plugin-0_p15.ebuild,
+  +pymol-apbs-plugin-0_p18.ebuild:
+  Version Bump, fixes for python.eclass usage, removed old version
+
+*pymol-apbs-plugin-0_p18 (09 Jun 2010)
+
+  09 Jun 2010; Justin Lecher <jlec@gentoo.org>
+  pymol-apbs-plugin-0_p15.ebuild, +pymol-apbs-plugin-0_p18.ebuild:
+  Version Bump, fixes for python.eclass usage
+
+  23 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  pymol-apbs-plugin-0_p15.ebuild:
+  stable x86, bug 309007
+
+  11 Mar 2010; Joseph Jezak <josejx@gentoo.org>
+  pymol-apbs-plugin-0_p15.ebuild:
+  Marked ~ppc.
+
+  23 Feb 2010; Justin Lecher (jlec) <jlec@j-schmitz.net>
+  pymol-apbs-plugin-0_p15.ebuild:
+  RESTRICT_PYTHON_ABIS="3.*"
+
+  19 Feb 2010; Justin Lecher (jlec) <jlec@j-schmitz.net>
+  pymol-apbs-plugin-0_p15.ebuild:
+  keyworded for {amd64,x86}-linux
+
+*pymol-apbs-plugin-0_p15 (11 Feb 2010)
+
+  11 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +pymol-apbs-plugin-0_p15.ebuild:
+  Version Bump, EAPI=3 and multiple python support
+
+*pymol-apbs-plugin-0_p11 (01 Feb 2010)
+
+  01 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +pymol-apbs-plugin-0_p11.ebuild, +metadata.xml:
+  Seperated ebuild for pymol apbs plugin

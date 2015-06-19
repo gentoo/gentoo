@@ -1,0 +1,177 @@
+# ChangeLog for sci-chemistry/pointless
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pointless/ChangeLog,v 1.39 2015/04/08 18:22:13 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pointless-1.6.14-r1.ebuild:
+  Drop old Python implementations
+
+  16 Aug 2013; Justin Lecher <jlec@gentoo.org> pointless-1.6.14-r1.ebuild:
+  Add back python eclass
+
+*pointless-1.6.14-r1 (15 Aug 2013)
+
+  15 Aug 2013; Justin Lecher <jlec@gentoo.org> +pointless-1.6.14-r1.ebuild,
+  metadata.xml:
+  Bump EAPI, drop pointless python.eclass usage
+
+  19 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  Changed herd to sci-chemistry
+
+  19 Oct 2012; Justin Lecher <jlec@gentoo.org> +pointless-1.6.14.ebuild,
+  -pointless-1.6.15.ebuild:
+  Drop broken version
+
+*pointless-1.6.15 (19 Oct 2012)
+
+  19 Oct 2012; Justin Lecher <jlec@gentoo.org> pointless-1.6.2.ebuild,
+  -pointless-1.6.4.ebuild, -pointless-1.6.5.ebuild, -pointless-1.6.11.ebuild,
+  -pointless-1.6.14.ebuild, +pointless-1.6.15.ebuild:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  14 Apr 2012; Andreas Schuerch <nativemad@gentoo.org> pointless-1.6.2.ebuild:
+  x86 stable, see bug 375917, thanks all.
+
+*pointless-1.6.14 (28 Feb 2012)
+
+  28 Feb 2012; Justin Lecher <jlec@gentoo.org> +pointless-1.6.14.ebuild:
+  Version Bump
+
+*pointless-1.6.11 (27 Dec 2011)
+
+  27 Dec 2011; Justin Lecher <jlec@gentoo.org> +pointless-1.6.11.ebuild:
+  Version Bump
+
+  16 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> pointless-1.6.2.ebuild:
+  amd64 restable
+
+  08 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> pointless-1.6.2.ebuild:
+  Revert back to ~arch for security and libpng porting.
+
+  06 Oct 2011; Tony Vroon <chainsaw@gentoo.org> pointless-1.6.2.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo in bug
+  #351753.
+
+*pointless-1.6.5 (04 Oct 2011)
+
+  04 Oct 2011; Justin Lecher <jlec@gentoo.org> +pointless-1.6.5.ebuild:
+  Version Bump
+
+*pointless-1.6.4 (31 Aug 2011)
+
+  31 Aug 2011; Justin Lecher <jlec@gentoo.org> +pointless-1.6.4.ebuild:
+  Version Bump
+
+  28 Aug 2011; Justin Lecher <jlec@gentoo.org> pointless-1.6.2.ebuild:
+  Narrowed dep on ccp4-libs to 6.1.3-r10, #376251
+
+  15 Aug 2011; Justin Lecher <jlec@gentoo.org> pointless-1.6.2.ebuild:
+  Removed unneeded USE=test
+
+  15 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> pointless-1.6.2.ebuild:
+  Marked ~ppc for sci-chemistry/xia2
+
+*pointless-1.6.2 (14 Aug 2011)
+
+  14 Aug 2011; Justin Lecher <jlec@gentoo.org> -pointless-1.5.12.ebuild,
+  -pointless-1.5.14.ebuild, -pointless-1.5.21.ebuild, +pointless-1.6.2.ebuild,
+  metadata.xml:
+  Version Bump and removed broken versions
+  https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=ind1107&L=CCP4BB&F=&S=&P=29208
+  5
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> pointless-1.5.14.ebuild,
+  pointless-1.5.21.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> pointless-1.5.12.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> pointless-1.5.12.ebuild,
+  pointless-1.5.14.ebuild, pointless-1.5.21.ebuild:
+  Added fortran-2.eclass support
+
+*pointless-1.5.21 (12 May 2011)
+
+  12 May 2011; Justin Lecher <jlec@gentoo.org> -pointless-1.5.19.ebuild,
+  +pointless-1.5.21.ebuild:
+  1.5.19 is seriously broken, bump to 21: "specifically, files written in a
+  point group of lower symmetry than the apparent lattice group were not
+  sorted, but were flagged as sorted in the file. This leads to apparent
+  completeness in Scala > 100% and failure to merge properly"
+
+*pointless-1.5.19 (10 Apr 2011)
+
+  10 Apr 2011; Justin Lecher <jlec@gentoo.org> +pointless-1.5.19.ebuild:
+  Version Bump
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  pointless-1.5.12.ebuild:
+  marked ~ppc wrt #303931
+
+  15 Jan 2011; Justin Lecher <jlec@gentoo.org> -pointless-1.4.9.ebuild,
+  -pointless-1.5.7.ebuild, -pointless-1.5.9.ebuild, -pointless-1.5.10.ebuild:
+  Keyworded for ~-linux, tested by me, removed old
+
+*pointless-1.5.14 (15 Jan 2011)
+
+  15 Jan 2011; Justin Lecher <jlec@gentoo.org> +pointless-1.5.14.ebuild:
+  Version Bump, fixed missing deps
+
+*pointless-1.5.12 (15 Dec 2010)
+
+  15 Dec 2010; Justin Lecher <jlec@gentoo.org> +pointless-1.5.12.ebuild:
+  Version Bump, fix for new cctbx stuff
+
+*pointless-1.5.10 (23 Oct 2010)
+
+  23 Oct 2010; Justin Lecher <jlec@gentoo.org> +pointless-1.5.10.ebuild:
+  Version Bump
+
+  25 Sep 2010; Justin Lecher <jlec@gentoo.org> pointless-1.5.9.ebuild:
+  reverted Changes for include paths
+
+  20 Sep 2010; Justin Lecher <jlec@gentoo.org> pointless-1.4.9.ebuild,
+  pointless-1.5.7.ebuild, pointless-1.5.9.ebuild:
+  Fix cctbx version
+
+*pointless-1.5.9 (12 Sep 2010)
+
+  12 Sep 2010; Justin Lecher <jlec@gentoo.org> -pointless-1.5.1.ebuild,
+  -pointless-1.5.2.ebuild, -pointless-1.5.3.ebuild, +pointless-1.5.9.ebuild:
+  Version Bump, cleaned old
+
+*pointless-1.5.7 (08 Jul 2010)
+
+  08 Jul 2010; Justin Lecher <jlec@gentoo.org> +pointless-1.5.7.ebuild:
+  Version Bump
+
+*pointless-1.5.3 (16 Jun 2010)
+
+  16 Jun 2010; Justin Lecher <jlec@gentoo.org> pointless-1.4.9.ebuild,
+  pointless-1.5.1.ebuild, pointless-1.5.2.ebuild, +pointless-1.5.3.ebuild:
+  Version Bump and keyworded for *-linux
+
+*pointless-1.5.2 (29 May 2010)
+
+  29 May 2010; Justin Lecher <jlec@gentoo.org> -pointless-1.4.8.ebuild,
+  +pointless-1.5.2.ebuild:
+  Version Bump
+
+*pointless-1.5.1 (16 May 2010)
+
+  16 May 2010; Justin Lecher <jlec@gentoo.org> +files/1.5.1-gcc4.4.patch,
+  +pointless-1.5.1.ebuild:
+  Version Bump
+
+*pointless-1.4.9 (26 Feb 2010)
+
+  26 Feb 2010; Justin Lecher <jlec@gentoo.org>
+  +pointless-1.4.9.ebuild:
+  Version Bump
+
+*pointless-1.4.8 (06 Feb 2010)
+
+  06 Feb 2010; Justin Lecher <jlec@gentoo.org>
+  +pointless-1.4.8.ebuild, +metadata.xml:
+  Splitted pointless from ccp4

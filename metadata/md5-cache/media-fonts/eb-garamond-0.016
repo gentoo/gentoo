@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm setup
+DEPEND=app-arch/unzip X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=Claude Garamont's humanist typeface from the mid-16th century
+EAPI=5
+HOMEPAGE=http://www.georgduffner.at/ebgaramond/
+IUSE=X
+KEYWORDS=amd64 arm ~arm64 x86
+LICENSE=OFL-1.1
+SLOT=0
+SRC_URI=https://bitbucket.org/georgd/eb-garamond/downloads/EBGaramond-0.016.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	font	b3239d2dc442d1717b9725e2be7cb5d6	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=5b66296e9090257295fba26296965272

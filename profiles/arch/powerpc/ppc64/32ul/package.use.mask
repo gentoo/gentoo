@@ -1,0 +1,6 @@
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ppc64/32ul/package.use.mask,v 1.1 2010/06/24 18:00:09 halcy0n Exp $
+
+# The appropriate dependencies are already keyworded for 32bit, just not 64bit
+gnome-base/gvfs -bluetooth

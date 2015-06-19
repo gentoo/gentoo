@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>netmon</herd>
+	<longdescription lang="en">
+		A set of tools targeted at system administrators. They are conntrack,
+		the userspace command line interface, and conntrackd, the userspace
+		daemon.
+	</longdescription>
+</pkgmetadata>

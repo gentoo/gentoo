@@ -1,0 +1,26 @@
+Title: Language of messages in emerge logs and output
+Author: Andreas K. Huettel <dilfridge@gentoo.org>
+Content-Type: text/plain
+Posted: 2013-08-23
+Revision: 1
+News-Item-Format: 1.0
+
+As of today, messages and logs of emerge do not use the system 
+locale anymore but default to English. The intention behind this
+is to ease the work of bug wranglers and package maintainers, 
+who may have a hard time reading build logs in foreign 
+languages. This change only affects the language of messages 
+in emerge output, nothing else.
+
+If you really want to have e.g. localized compiler error messages
+in your builds, set LC_MESSAGES in your /etc/portage/make.conf.
+Note that submitting localized build logs to the Gentoo Bugzilla
+is discouraged. If maintainers are unable to translate the 
+necessary information from the build log, your bug may be closed
+as NEEDINFO and you may be asked to re-open it submitting an 
+English build log [1] before any further action can be taken.
+
+For more details with respect to localization, see
+https://wiki.gentoo.org/wiki/Localization/HOWTO
+
+[1] LC_MESSAGES=C emerge ...

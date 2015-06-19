@@ -1,0 +1,18 @@
+http://lists.gnu.org/archive/html/libtool/2006-01/msg00012.html
+
+--- ltmain.sh.orig	2007-11-19 17:07:34.946648000 +0100
++++ ltmain.sh	2007-11-19 17:07:57.785975000 +0100
+@@ -3915,8 +3915,11 @@
+ 	     test -n "$hardcode_libdirs"; then
+ 	    libdir="$hardcode_libdirs"
+ 	    if test -n "$hardcode_libdir_flag_spec_ld"; then
+-	      eval dep_rpath=\"$hardcode_libdir_flag_spec_ld\"
+-	    else
++		  case $archive_cmds in
++		  *\$LD*) eval dep_rpath=\"$hardcode_libdir_flag_spec_ld\" ;;
++		  *)      eval dep_rpath=\"$hardcode_libdir_flag_spec\" ;;
++		  esac
++		else
+ 	      eval dep_rpath=\"$hardcode_libdir_flag_spec\"
+ 	    fi
+ 	  fi

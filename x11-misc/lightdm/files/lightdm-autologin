@@ -1,0 +1,6 @@
+auth	optional	pam_env.so
+auth	required	pam_nologin.so
+auth	required	pam_permit.so
+
+account	include		system-local-login
+session	include		system-local-login

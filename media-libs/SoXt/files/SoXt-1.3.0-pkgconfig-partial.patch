@@ -1,0 +1,12 @@
+--- SoXt.pc.in.orig	2013-06-17 11:26:59.998321839 -0700
++++ SoXt.pc.in	2013-06-17 11:28:01.603654611 -0700
+@@ -10,7 +10,8 @@
+ Version: @SOXT_VERSION@
+ Requires: Coin
+ Conflicts:
+-Libs: -L${libdir} @SOGUI_EXTRA_LDFLAGS@ @SOGUI_EXTRA_LIBS@
++Libs: -L${libdir} -lSoXt
++Libs.private:  -L${libdir} @SOGUI_EXTRA_LIBS@
+ Cflags: -I${includedir} @SOGUI_EXTRA_CFLAGS@ @SOGUI_EXTRA_CPPFLAGS@
+ 
+ soxt_host=@host@

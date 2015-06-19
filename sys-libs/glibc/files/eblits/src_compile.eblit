@@ -1,0 +1,24 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/files/eblits/src_compile.eblit,v 1.45 2014/09/10 18:45:21 vapier Exp $
+
+[[ ${EAPI:-0} == [01] ]] && source "${FILESDIR}/eblits/src_configure.eblit"
+
+toolchain-glibc_src_compile() {
+	local t
+	for t in linuxthreads nptl ; do
+		if want_${t} ; then
+			[[ ${EAPI:-0} == [01] ]] && glibc_do_configure ${t}
+			emake -C "$(builddir ${t})" || die "make ${t} for ${ABI} failed"
+		fi
+	done
+}
+
+eblit-glibc-src_compile() {
+	if just_headers ; then
+		[[ ${EAPI:-0} == [01] ]] && toolchain-glibc_headers_configure
+		return
+	fi
+
+	foreach_abi toolchain-glibc_src_compile
+}

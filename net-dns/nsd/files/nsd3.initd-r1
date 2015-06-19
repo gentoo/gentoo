@@ -1,0 +1,66 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/nsd/files/nsd3.initd-r1,v 1.1 2013/04/03 21:06:18 wschlich Exp $
+
+description="NSD is an authoritative-only, high performance, open source name server"
+extra_commands="configtest patch"
+
+# these can be overridden in /etc/conf.d/nsd if necessary
+NSD_CONFIG="${NSD_CONFIG:-/etc/nsd/nsd.conf}"
+NSD_BINARY="${NSD_BINARY:-/usr/sbin/nsd}"
+NSD_CHECKCONF="${NSD_CHECKCONF:-/usr/sbin/nsd-checkconf}"
+NSDC_BINARY="${NSDC_BINARY:-/usr/sbin/nsdc}"
+
+depend() {
+	need net
+	use logger
+}
+
+configtest() {
+	ebegin "Checking ${SVCNAME} configuration"
+	checkconfig
+	eend $?
+}
+
+checkconfig() {
+	if ! test -e "${NSD_CONFIG}"; then
+		eerror "You need to create an appropriate config file."
+		eerror "An example can be found in /etc/nsd/nsd.conf.sample"
+		return 1
+	elif ! "${NSD_CHECKCONF}" "${NSD_CONFIG}"; then
+		eerror "You have errors in your configfile (${NSD_CONFIG})"
+		return $?
+	fi
+	return 0
+}
+
+patch() {
+	local difffile=$(${NSD_CHECKCONF} -o difffile "${NSD_CONFIG}")
+	if ! test -s "${difffile}"; then
+		# no difffile found or difffile empty, so no patching required
+		return 0
+	fi
+	ebegin "Patching NSD zone files"
+	"${NSDC_BINARY}" patch >/dev/null
+	eend $?
+}
+
+start() {
+	ebegin "Starting NSD"
+	checkconfig || return $?
+	local pidfile=$("${NSD_CHECKCONF}" -o pidfile "${NSD_CONFIG}")
+	checkpath --directory --owner nsd:nsd $(dirname "${pidfile}")
+	start-stop-daemon --start --pidfile "${pidfile}" \
+		--exec "${NSD_BINARY}" -- -c "${NSD_CONFIG}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping NSD"
+	checkconfig || return $?
+	local pidfile=$("${NSD_CHECKCONF}" -o pidfile "${NSD_CONFIG}")
+	patch || return $?
+	start-stop-daemon --stop --pidfile "${pidfile}"
+	eend $?
+}

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=dev-libs/libxdg-basedir sys-apps/dbus x11-libs/libXScrnSaver x11-libs/libXft x11-libs/libXinerama
+DESCRIPTION=customizable and lightweight notification-daemon
+EAPI=5
+HOMEPAGE=http://www.knopwob.org/dunst/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-libs/libxdg-basedir sys-apps/dbus x11-libs/libXScrnSaver x11-libs/libXft x11-libs/libXinerama
+SLOT=0
+SRC_URI=http://www.knopwob.org/public/dunst-release/dunst-0.5.0.tar.bz2
+_md5_=4841cd1884564e572437cc8ec1429084

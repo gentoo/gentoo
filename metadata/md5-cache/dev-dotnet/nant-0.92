@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=>=dev-lang/mono-2.0 virtual/pkgconfig
+DESCRIPTION=.NET build tool
+EAPI=4
+HOMEPAGE=http://nant.sourceforge.net/
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/mono-2.0
+SLOT=0
+SRC_URI=mirror://sourceforge/nant/nant-0.92-src.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	mono	203a4295c06155d318bdff9c6b2d5e1c	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=098afa9eb8ab070a9ee39dd24e67d189

@@ -1,0 +1,123 @@
+From a38e3fb554ceeb9b50ed576f45893b01bfc993d8 Mon Sep 17 00:00:00 2001
+From: hasufell <hasufell@gentoo.org>
+Date: Sun, 3 Nov 2013 18:03:05 +0100
+Subject: [PATCH] BUILD: fix autoreconf with automake-1.13
+
+cygnus flavor has been removed from automake-1.13
+---
+ bfd/Makefile.am               | 2 +-
+ bfd/doc/Makefile.am           | 2 +-
+ gdb/gdbtk/Makefile.am         | 2 +-
+ gdb/gdbtk/plugins/Makefile.am | 2 +-
+ libgui/Makefile.am            | 2 +-
+ libgui/library/Makefile.am    | 2 +-
+ libgui/src/Makefile.am        | 2 +-
+ opcodes/Makefile.am           | 2 +-
+ tcl/cygwin/Makefile.am        | 2 +-
+ 9 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/bfd/Makefile.am b/bfd/Makefile.am
+index 8e0a79c..129270c 100644
+--- a/bfd/Makefile.am
++++ b/bfd/Makefile.am
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to generate Makefile.in
+ 
+-AUTOMAKE_OPTIONS = 1.9 cygnus
++AUTOMAKE_OPTIONS = 1.9
+ ACLOCAL_AMFLAGS = -I . -I .. -I ../config
+ 
+ # Uncomment the following line when doing a release.
+diff --git a/bfd/doc/Makefile.am b/bfd/doc/Makefile.am
+index 6ff434a..83f0ba4 100644
+--- a/bfd/doc/Makefile.am
++++ b/bfd/doc/Makefile.am
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to generate Makefile.in
+ 
+-AUTOMAKE_OPTIONS = 1.9 cygnus
++AUTOMAKE_OPTIONS = 1.9
+ 
+ DOCFILES = aoutx.texi  archive.texi archures.texi \
+ 	bfdt.texi  cache.texi coffcode.texi \
+diff --git a/gdb/gdbtk/Makefile.am b/gdb/gdbtk/Makefile.am
+index 530ab66..1361b84 100644
+--- a/gdb/gdbtk/Makefile.am
++++ b/gdb/gdbtk/Makefile.am
+@@ -1,4 +1,4 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-AUTOMAKE_OPTIONS = cygnus
++AUTOMAKE_OPTIONS =
+ SUBDIRS = plugins
+diff --git a/gdb/gdbtk/plugins/Makefile.am b/gdb/gdbtk/plugins/Makefile.am
+index 03fabe7..538681e 100644
+--- a/gdb/gdbtk/plugins/Makefile.am
++++ b/gdb/gdbtk/plugins/Makefile.am
+@@ -1,4 +1,4 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-AUTOMAKE_OPTIONS = cygnus
++AUTOMAKE_OPTIONS =
+ SUBDIRS = @make_subdirs@
+diff --git a/libgui/Makefile.am b/libgui/Makefile.am
+index c2604ed..b99c5a2 100644
+--- a/libgui/Makefile.am
++++ b/libgui/Makefile.am
+@@ -1,4 +1,4 @@
+ ## Process this file with automake to produce Makefile.in.
+ 
+-AUTOMAKE_OPTIONS = cygnus
++AUTOMAKE_OPTIONS =
+ SUBDIRS = library src
+diff --git a/libgui/library/Makefile.am b/libgui/library/Makefile.am
+index a0aae95..9dba223 100644
+--- a/libgui/library/Makefile.am
++++ b/libgui/library/Makefile.am
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in.
+ 
+-AUTOMAKE_OPTIONS = cygnus
++AUTOMAKE_OPTIONS =
+ 
+ ## Convenience variables.
+ TCL = advice.tcl balloon.tcl bbox.tcl bgerror.tcl bindings.tcl \
+diff --git a/libgui/src/Makefile.am b/libgui/src/Makefile.am
+index 1c42b85..8362012 100644
+--- a/libgui/src/Makefile.am
++++ b/libgui/src/Makefile.am
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in.
+ 
+-AUTOMAKE_OPTIONS = cygnus
++AUTOMAKE_OPTIONS =
+ 
+ noinst_LIBRARIES = libgui.a
+ 
+diff --git a/opcodes/Makefile.am b/opcodes/Makefile.am
+index 8cd2be1..6b2ab00 100644
+--- a/opcodes/Makefile.am
++++ b/opcodes/Makefile.am
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to generate Makefile.in
+ 
+-AUTOMAKE_OPTIONS = 1.9 cygnus
++AUTOMAKE_OPTIONS = 1.9
+ ACLOCAL_AMFLAGS = -I .. -I ../config -I ../bfd
+ 
+ SUBDIRS = po
+diff --git a/tcl/cygwin/Makefile.am b/tcl/cygwin/Makefile.am
+index dd1f243..686ba57 100644
+--- a/tcl/cygwin/Makefile.am
++++ b/tcl/cygwin/Makefile.am
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in.
+ 
+-AUTOMAKE_OPTIONS = cygnus
++AUTOMAKE_OPTIONS =
+ 
+ updir=$(srcdir)/..
+ vpath % $(updir)/generic:$(updir)/unix
+-- 
+1.8.4.2
+

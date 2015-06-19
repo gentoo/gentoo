@@ -1,0 +1,40 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/samplicator/files/samplicator.initd,v 1.1 2013/03/03 17:02:11 tomwij Exp $
+
+NAME=${SVCNAME##*.}
+if [ -n "${NAME}" -a "${SVCNAME}" != "samplicator" ]; then
+    PID="/run/samplicator.${NAME}.pid"
+    PNAME=$(echo ${RC_SVCNAME} | sed 's/\..*//g')
+    CONF_DEFAULT="/etc/conf.d/samplicator.${NAME}"
+else
+    PID="/run/samplicator.pid"
+    PNAME=${RC_SVCNAME}
+    CONF_DEFAULT="/etc/conf.d/samplicator"
+fi
+CONF=${CONF:-${CONF_DEFAULT}}
+EXEC=${EXEC:-/usr/bin/samplicate}
+
+depend() {
+        need net
+        provide samplicator
+}
+
+start() {
+        ebegin "Starting samplicator"
+        start-stop-daemon --start --quiet --background --make-pidfile --pidfile ${PID} --exec ${EXEC} -- ${OPTS} ${CONFIG}
+        eend $?
+}
+
+start_post() {
+        pgrep -n $(echo ${PNAME} | sed 's/or/e/') > ${PID}
+}
+
+stop() {
+        ebegin "Stopping samplicator"
+        start-stop-daemon --stop --quiet --pidfile ${PID}
+        rm -f ${PID}
+        eend $?
+}
+

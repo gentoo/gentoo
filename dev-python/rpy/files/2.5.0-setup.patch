@@ -1,0 +1,45 @@
+https://bitbucket.org/lgautier/rpy2/commits/bf38fa9960aa
+# HG changeset patch
+# User Laurent Gautier <lgautier@gmail.com>
+# Date 1415656651 18000
+# Node ID bf38fa9960aacf7ba24a20cfae631aa695fea986
+# Parent  9c1212066f5c980a211b21943f62fd69743ca4bd
+Should fix issue #234
+
+diff --git a/setup.py b/setup.py
+--- a/setup.py
++++ b/setup.py
+@@ -136,8 +136,6 @@
+         return output
+ 
+ def getRinterface_ext():
+-    #r_libs = [os.path.join(RHOME, 'lib'), os.path.join(RHOME, 'modules')]
+-    r_libs = []
+     extra_link_args = []
+     extra_compile_args = []
+     include_dirs = []
+@@ -250,9 +248,9 @@
+             include_dirs = [os.path.join(package_prefix,
+                                          'rpy', 'rinterface'),] + include_dirs,
+             libraries = libraries,
+-            library_dirs = r_libs,
++            library_dirs = library_dirs,
+             define_macros = define_macros,
+-            runtime_library_dirs = r_libs,
++            runtime_library_dirs = library_dirs,
+             extra_compile_args=extra_compile_args,
+             extra_link_args = extra_link_args
+             )
+@@ -266,9 +264,9 @@
+         include_dirs = include_dirs + 
+         [os.path.join('rpy', 'rinterface'), ],
+         libraries = libraries,
+-        library_dirs = r_libs,
++        library_dirs = library_dirs,
+         define_macros = define_macros,
+-        runtime_library_dirs = r_libs,
++        runtime_library_dirs = library_dirs,
+         extra_compile_args=extra_compile_args,
+         extra_link_args = extra_link_args
+         )
+

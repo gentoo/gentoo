@@ -1,0 +1,58 @@
+# ChangeLog for dev-haskell/sha
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/sha/ChangeLog,v 1.12 2015/04/04 09:45:19 gienah Exp $
+
+*sha-1.6.4.2 (04 Apr 2015)
+
+  04 Apr 2015; Mark Wright <gienah@gentoo.org> +sha-1.6.4.2.ebuild:
+  Bump sha to 1.6.4.2
+
+*sha-1.6.4.1-r1 (10 Jan 2015)
+
+  10 Jan 2015; Michael Orlitzky <mjo@gentoo.org> +sha-1.6.4.1-r1.ebuild,
+  -sha-1.6.4.1.ebuild:
+  Revbump to fix test dependencies and phase.
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*sha-1.6.4.1 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org> +sha-1.6.4.1.ebuild:
+  Bump sha to 1.6.4.1
+
+*sha-1.6.4-r1 (21 Feb 2014)
+
+  21 Feb 2014; Sergei Trofimovich <slyfox@gentoo.org> +sha-1.6.4-r1.ebuild,
+  metadata.xml:
+  Version bump.
+
+  21 Jul 2013; Christoph Junghans <ottxor@gentoo.org> sha-1.6.1.ebuild:
+  added ~amd64-linux (tested by me)
+
+*sha-1.6.1 (23 Dec 2012)
+
+  23 Dec 2012; Sergei Trofimovich <slyfox@gentoo.org> +sha-1.6.1.ebuild:
+  Version bump.
+
+  21 Nov 2012; Sergei Trofimovich <slyfox@gentoo.org>
+  +files/sha-1.6.0-no-tests.patch, sha-1.6.0.ebuild:
+  Fix .cabal depends for -f-test mode (bug #444124 by Dennis Lissov)
+
+*sha-1.6.0 (19 Nov 2012)
+
+  19 Nov 2012; Mark Wright <gienah@gentoo.org> +sha-1.6.0.ebuild:
+  Bump sha to 1.6.0
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org> sha-1.5.0.0.ebuild:
+  move dev-haskell/sha/sha-1.5.0.0.ebuild ebuild to mirror://hackage
+
+  15 Feb 2012; Sergei Trofimovich <slyfox@gentoo.org> sha-1.5.0.0.ebuild:
+  Fixed HOMEPAGE (hackage is case sensitive). Noticed by David in bug #403511.
+
+*sha-1.5.0.0 (04 Dec 2011)
+
+  04 Dec 2011; Sergei Trofimovich <slyfox@gentoo.org> +metadata.xml,
+  +sha-1.5.0.0.ebuild:
+  Initian version. Implementations of the SHA suite of message digest functions
+  (dev-vcs/git-annex depend)

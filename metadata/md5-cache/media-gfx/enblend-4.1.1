@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install setup
+DEPEND=media-libs/glew =media-libs/lcms-2* >=media-libs/libpng-1.2.43 media-libs/plotutils[X] media-libs/tiff >=media-libs/vigra-1.8.0 sci-libs/gsl virtual/jpeg gpu? ( media-libs/freeglut ) openexr? ( >=media-libs/openexr-1.0 ) >=dev-libs/boost-1.31.0 virtual/pkgconfig doc? ( media-gfx/transfig sci-visualization/gnuplot[gd] virtual/latex-base )
+DESCRIPTION=Image Blending with Multiresolution Splines
+EAPI=2
+HOMEPAGE=http://enblend.sourceforge.net/
+IUSE=debug doc gpu +image-cache +openexr openmp
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2 VIGRA
+RDEPEND=media-libs/glew =media-libs/lcms-2* >=media-libs/libpng-1.2.43 media-libs/plotutils[X] media-libs/tiff >=media-libs/vigra-1.8.0 sci-libs/gsl virtual/jpeg gpu? ( media-libs/freeglut ) openexr? ( >=media-libs/openexr-1.0 )
+SLOT=0
+SRC_URI=mirror://sourceforge/enblend/enblend-enfuse-4.1.1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=e0bc8fb7e62d5ef8d6edb0cca06716dc

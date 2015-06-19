@@ -1,0 +1,162 @@
+# ChangeLog for media-video/gtk-recordmydesktop
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/gtk-recordmydesktop/ChangeLog,v 1.33 2015/05/23 00:50:20 mrueg Exp $
+
+  23 May 2015; Manuel Rüger <mrueg@gentoo.org>
+  -gtk-recordmydesktop-0.3.8-r1.ebuild, -gtk-recordmydesktop-0.3.8-r2.ebuild:
+  Remove old.
+
+  04 May 2014; Agostino Sarubbo <ago@gentoo.org>
+  gtk-recordmydesktop-0.3.8-r3.ebuild:
+  Stable for x86, wrt bug #502860
+
+  30 Apr 2014; Chema Alonso <nimiux@gentoo.org>
+  gtk-recordmydesktop-0.3.8-r3.ebuild:
+  Stable for amd64 wrt bug #502860
+
+*gtk-recordmydesktop-0.3.8-r3 (06 Dec 2013)
+
+  06 Dec 2013; Rick Farina <zerochaos@gentoo.org>
+  +gtk-recordmydesktop-0.3.8-r3.ebuild:
+  python-updater constantly rebuilds so converting to use python-
+  single-r1.eclass as well as fixing minor .desktop QA warning
+
+  17 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gtk-recordmydesktop-0.3.8-r2.ebuild:
+  x86 stable wrt bug #437034
+
+  03 Oct 2012; Agostino Sarubbo <ago@gentoo.org>
+  gtk-recordmydesktop-0.3.8-r2.ebuild:
+  Stable for amd64, wrt bug #437034
+
+  03 Oct 2012; Ben de Groot <yngwin@gentoo.org>
+  gtk-recordmydesktop-0.3.8-r2.ebuild:
+  Add die
+
+*gtk-recordmydesktop-0.3.8-r2 (03 Oct 2012)
+
+  03 Oct 2012; Ben de Groot <yngwin@gentoo.org>
+  +gtk-recordmydesktop-0.3.8-r2.ebuild:
+  Add sed to fix bug #415225 and migrate to EAPI=4
+
+  12 Mar 2011; Tim Harder <radhermit@gentoo.org>
+  -gtk-recordmydesktop-0.3.8.ebuild:
+  Remove old.
+
+  12 Mar 2011; Thomas Kahle <tomka@gentoo.org>
+  gtk-recordmydesktop-0.3.8-r1.ebuild:
+  x86 stable per bug 356259
+
+  01 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  gtk-recordmydesktop-0.3.8-r1.ebuild:
+  Stable on amd64 wrt bug #356259
+
+  01 Mar 2011; Tim Harder <radhermit@gentoo.org>
+  gtk-recordmydesktop-0.3.8.ebuild, gtk-recordmydesktop-0.3.8-r1.ebuild:
+  Add slot dependencies for gtk+.
+
+*gtk-recordmydesktop-0.3.8-r1 (15 Nov 2010)
+
+  15 Nov 2010; Tim Harder <radhermit@gentoo.org>
+  +gtk-recordmydesktop-0.3.8-r1.ebuild,
+  +files/gtk-recordmydesktop-0.3.8-check-for-jack.patch:
+  Revision bump to fix check for jack support (bug #311689 by Crazycheese).
+  Update to EAPI 3.
+
+  23 Apr 2009; Christian Faulhammer <fauli@gentoo.org>
+  gtk-recordmydesktop-0.3.8:
+  add x11-apps/xwininfo to RDEPEND as reported on bug 265069 by cedk
+
+  07 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  -gtk-recordmydesktop-0.3.7.2.ebuild:
+  clean up
+
+  07 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  gtk-recordmydesktop-0.3.8.ebuild:
+  stable x86, bug 259357
+
+  07 Mar 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  gtk-recordmydesktop-0.3.8.ebuild:
+  stable amd64, bug 259357
+
+*gtk-recordmydesktop-0.3.8 (14 Jan 2009)
+
+  14 Jan 2009; Christian Faulhammer <fauli@gentoo.org>
+  +gtk-recordmydesktop-0.3.8.ebuild:
+  version bump, fixes bug 254418 * remove die messages * fix HOMEPAGE entry
+
+  08 Oct 2008; Diego Pettenò <flameeyes@gentoo.org>
+  gtk-recordmydesktop-0.3.7.2.ebuild:
+  Fix build-time dependencies.
+
+  18 May 2008; Olivier Crête <tester@gentoo.org>
+  gtk-recordmydesktop-0.3.7.2.ebuild:
+  Stable on amd64
+
+  05 May 2008; Olivier Crête <tester@gentoo.org>
+  gtk-recordmydesktop-0.3.7.2.ebuild:
+  Stable on amd64
+
+  20 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  -gtk-recordmydesktop-0.3.6.ebuild, -gtk-recordmydesktop-0.3.7.ebuild:
+  clean up
+
+  07 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  gtk-recordmydesktop-0.3.7.2.ebuild:
+  stable x86
+
+*gtk-recordmydesktop-0.3.7.2 (06 Feb 2008)
+
+  06 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  +gtk-recordmydesktop-0.3.7.2.ebuild:
+  version bump
+
+*gtk-recordmydesktop-0.3.7 (26 Jan 2008)
+
+  26 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  +gtk-recordmydesktop-0.3.7.ebuild:
+  version bump, bug 207142
+
+  12 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  gtk-recordmydesktop-0.3.6.ebuild:
+  stable x86
+
+  23 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  -gtk-recordmydesktop-0.3.5.ebuild:
+  remove old version
+
+  09 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  gtk-recordmydesktop-0.3.5.ebuild:
+  fix homepage for remaining ebuild
+
+  09 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  -gtk-recordmydesktop-0.3.3.1.ebuild, -gtk-recordmydesktop-0.3.4.ebuild:
+  cleanup old versions
+
+*gtk-recordmydesktop-0.3.6 (09 Oct 2007)
+
+  09 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  +gtk-recordmydesktop-0.3.6.ebuild:
+  version bump, fix homepage, bug #195273
+
+  27 Jul 2007; Alexis Ballier <aballier@gentoo.org>
+  gtk-recordmydesktop-0.3.5.ebuild:
+  restrict test, bug #186752
+
+*gtk-recordmydesktop-0.3.5 (26 Jul 2007)
+
+  26 Jul 2007; Alexis Ballier <aballier@gentoo.org>
+  +gtk-recordmydesktop-0.3.5.ebuild:
+  version bump
+
+*gtk-recordmydesktop-0.3.4 (04 Apr 2007)
+
+  04 Apr 2007; Alexis Ballier <aballier@gentoo.org>
+  +gtk-recordmydesktop-0.3.4.ebuild:
+  Version bump, bug #173210
+
+*gtk-recordmydesktop-0.3.3.1 (25 Mar 2007)
+
+  25 Mar 2007; Alexis Ballier <aballier@gentoo.org> +metadata.xml,
+  +gtk-recordmydesktop-0.3.3.1.ebuild:
+  Initial import, thanks to  Rafal Boniecki, bug #164398

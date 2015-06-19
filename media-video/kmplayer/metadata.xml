@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<herd>video</herd>
+	<use>
+		<flag name="npp">Compile the npp backend that plays xembed style browser plugins.</flag>
+	</use>
+</pkgmetadata>

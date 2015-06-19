@@ -1,0 +1,102 @@
+# ChangeLog for dev-java/simplyhtml
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/simplyhtml/ChangeLog,v 1.26 2015/06/09 14:03:10 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> simplyhtml-0.13.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  29 Sep 2012; Fabian Groffen <grobian@gentoo.org> simplyhtml-0.13.1.ebuild:
+  Marked ~x64-macos
+
+  27 Dec 2011; Mark Loeser <halcy0n@gentoo.org> simplyhtml-0.13.1.ebuild:
+  Drop ppc64 simplyhtml-0.13.1.ebuild
+
+  28 Feb 2010; Vlastimil Babka <caster@gentoo.org>
+  -simplyhtml-0.12.3.ebuild, -simplyhtml-0.12.5.ebuild:
+  Remove old.
+
+  15 Jan 2010; Fabian Groffen <grobian@gentoo.org> simplyhtml-0.13.1.ebuild:
+  Marked ~x64-solaris
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  simplyhtml-0.13.1.ebuild:
+  Transfer Prefix keywords
+
+  25 Nov 2009; Markus Meier <maekke@gentoo.org> simplyhtml-0.13.1.ebuild:
+  amd64 stable, bug #276029
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> simplyhtml-0.13.1.ebuild:
+  ppc stable #276029
+
+  04 Jul 2009; Brent Baude <ranger@gentoo.org> simplyhtml-0.13.1.ebuild:
+  Marking simplyhtml-0.13.1 ppc64 for bug 276029
+
+  01 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  simplyhtml-0.13.1.ebuild:
+  stable x86, bug 276029
+
+  01 Jun 2009; nixnut <nixnut@gentoo.org> simplyhtml-0.12.5.ebuild:
+  ppc stable #267737
+
+*simplyhtml-0.13.1 (31 May 2009)
+
+  31 May 2009; Vlastimil Babka <caster@gentoo.org>
+  +simplyhtml-0.13.1.ebuild:
+  Version bump.
+
+  03 May 2009; Markus Meier <maekke@gentoo.org> simplyhtml-0.12.5.ebuild:
+  amd64/x86 stable, bug #267737
+
+  01 May 2009; Brent Baude <ranger@gentoo.org> simplyhtml-0.12.5.ebuild:
+  stable ppc64, bug 267737
+
+*simplyhtml-0.12.5 (28 Mar 2009)
+
+  28 Mar 2009; Vlastimil Babka <caster@gentoo.org>
+  -simplyhtml-0.12.2_pre20071101.ebuild, +simplyhtml-0.12.5.ebuild:
+  Version bump.
+
+  18 Mar 2009; Brent Baude <ranger@gentoo.org> simplyhtml-0.12.3.ebuild:
+  stable ppc, bug 255713
+
+  09 Mar 2009; Markus Meier <maekke@gentoo.org> simplyhtml-0.12.3.ebuild:
+  x86 stable, bug #255713
+
+  27 Jan 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  keyworded ~arch for ppc64, bug 255713
+
+  27 Jan 2009; Brent Baude <ranger@gentoo.org> simplyhtml-0.12.3.ebuild:
+  keyworded ~arch for ppc64, bug 255713
+
+*simplyhtml-0.12.3 (20 Dec 2008)
+
+  20 Dec 2008; Vlastimil Babka <caster@gentoo.org>
+  +simplyhtml-0.12.3.ebuild:
+  Version bump, bug #251458.
+
+  27 Jan 2008; Petteri Räty <betelgeuse@gentoo.org>
+  -simplyhtml-0.12.2_pre20070424.ebuild:
+  Delete old version.
+
+*simplyhtml-0.12.2_pre20071101 (10 Dec 2007)
+
+  10 Dec 2007; Vlastimil Babka <caster@gentoo.org>
+  +simplyhtml-0.12.2_pre20071101.ebuild:
+  New snapshot for new freemind beta.
+
+  26 May 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  simplyhtml-0.12.2_pre20070424.ebuild:
+  Add ~ppc.
+
+  15 May 2007; Alistair John Bush <ali_bush@gentoo.org>
+  simplyhtml-0.12.2_pre20070424.ebuild:
+  Adding to ~amd64
+
+*simplyhtml-0.12.2_pre20070424 (07 May 2007)
+
+  07 May 2007; Vlastimil Babka <caster@gentoo.org> +metadata.xml,
+  +simplyhtml-0.12.2_pre20070424.ebuild:
+  Initial ebuild as dependency of freemind. Had to package CVS snapshot for that.

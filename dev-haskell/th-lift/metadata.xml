@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Derive Template Haskell's Lift class for datatypes.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">mboes/th-lift</remote-id>
+	</upstream>
+</pkgmetadata>

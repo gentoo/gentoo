@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>radio</herd>
+	<use>
+		<flag name="asterisk">net-misc/asterisk channel driver</flag>
+		<flag name="misdn">net-misc/misdn driver</flag>
+		<flag name="gsm-bs">net-wireless/openbsc driver</flag>
+		<flag name="gsm-ms">net-wireless/osmobb driver</flag>
+		<flag name="ss5">CCITT No. 5 support</flag>
+		<flag name="sip">SIP support</flag>
+		<flag name="gsmhr">Support for GSM HR codec using reference code (very slow)</flag>
+	</use>
+</pkgmetadata>
+

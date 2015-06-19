@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DEPEND=virtual/modutils !sys-apps/hwdata-gentoo test? ( sys-apps/pciutils ) >=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=Hardware identification and configuration data
+HOMEPAGE=http://fedora.redhat.com/projects/config-tools/
+IUSE=test
+KEYWORDS=~ppc ~ppc64 ~x86 ~amd64
+LICENSE=GPL-2 MIT
+RDEPEND=virtual/modutils !sys-apps/hwdata-gentoo
+SLOT=0
+SRC_URI=mirror://fedora-dev/releases/9/Everything/source/SRPMS/hwdata-0.217-1.fc9.src.rpm
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	rpm	b94b54b44f14d6bee3e966c8f5c86fba	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8bb35f612873bc4f7af48385256d2300

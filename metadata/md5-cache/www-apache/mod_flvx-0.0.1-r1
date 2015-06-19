@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst setup
+DEPEND==www-servers/apache-2*
+DESCRIPTION=mod_flvx allows to seek inside FLV files for streaming purposes
+HOMEPAGE=http://journal.paul.querna.org/articles/2006/07/11/mod_flvx/
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND==www-servers/apache-2*
+SLOT=0
+SRC_URI=mirror://gentoo/mod_flvx-0.0.1.tar.bz2
+_eclasses_=apache-module	5c4c90da2d68c2dc8391666824f1293c	depend.apache	1a38534d3f755d1ab1d92ce120bd7dbd	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=4f407fcb27f6c722a736df3b79934da3

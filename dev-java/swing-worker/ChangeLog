@@ -1,0 +1,20 @@
+# ChangeLog for dev-java/swing-worker
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/swing-worker/ChangeLog,v 1.2 2009/08/14 18:49:22 maekke Exp $
+
+  14 Aug 2009; Markus Meier <maekke@gentoo.org> swing-worker-1.1.ebuild:
+  amd64/x86 stable, bug #280656
+
+*swing-worker-1.1 (06 Jul 2009)
+
+  06 Jul 2009; Alistair Bush <ali_bush@gentoo.org> +swing-worker-1.1.ebuild,
+  +metadata.xml:
+  Add swing-worker to tree.
+
+  17 Jul 2008; Petteri Räty <betelgeuse@gentoo.org>
+  swing-worker-1.1.ebuild:
+  Keyword ~x86.
+
+  10 Feb 2008; Miroslav Šulc <fordfrog@gentoo.org> Manifest:
+  Redigested
+

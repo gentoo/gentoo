@@ -1,0 +1,62 @@
+# ChangeLog for app-text/rhyme
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/rhyme/ChangeLog,v 1.19 2015/06/09 12:38:28 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  08 Oct 2012; Michael Palimaka <kensington@gentoo.org> -rhyme-0.9.ebuild:
+  Remove old.
+
+  06 Oct 2012; Raúl Porcel <armin76@gentoo.org> rhyme-0.9.ebuild,
+  rhyme-0.9-r1.ebuild:
+  Drop alpha keywords
+
+  26 Dec 2011; Markus Meier <maekke@gentoo.org> rhyme-0.9-r1.ebuild:
+  x86 stable, bug #394061
+
+  16 Dec 2011; Agostino Sarubbo <ago@gentoo.org> rhyme-0.9-r1.ebuild:
+  Stable for AMD64, wrt bug #394061
+
+*rhyme-0.9-r1 (28 Sep 2010)
+
+  28 Sep 2010; Jeroen Roovers <jer@gentoo.org> +rhyme-0.9-r1.ebuild:
+  Respect LDFLAGS (bug #336977). Drop unused dependency and change sed
+  script to not link against termcap or ncurses at all.
+
+  19 Sep 2009; Patrick Lauer <patrick@gentoo.org> rhyme-0.9.ebuild:
+  Restricting tests #277940 and adding ~amd64 keyword
+
+  30 May 2009; Jeremy Olexa <darkside@gentoo.org> rhyme-0.9.ebuild:
+  (non maintainer commit) Respect CC and QA fixes, bug 243744 by Espen Hustad
+
+  14 Jun 2008; Jeremy Olexa <darkside@gentoo.org> rhyme-0.9.ebuild:
+  doesn't work with parallel building, bug #125967
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing taviso from metadata.xml as per #202471. Assigning to
+  maintainer-needed.
+
+  23 Dec 2007; Mark Loeser <halcy0n@gentoo.org> rhyme-0.9.ebuild:
+  Remove call to prepallman bug #140697; fix some quoting
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  07 Oct 2005; Tavis Ormandy <taviso@gentoo.org> rhyme-0.9.ebuild:
+  dont install INSTALL into doc.
+
+  16 Oct 2004; Mike Frysinger <vapier@gentoo.org> rhyme-0.9.ebuild:
+  Fix stupid dependency on sys-libs/libtermcap-compat (i.e. remove it) #64212.
+
+  25 Mar 2004; Martin Holzer <mholzer@gentoo.org> rhyme-0.9.ebuild:
+  fixing depend. see 45343
+
+  19 Sep 2003; Tavis Ormandy <taviso@gentoo.org> rhyme-0.9.ebuild:
+  stable
+
+*rhyme-0.9 (04 Sep 2003)
+
+  04 Sep 2003; Tavis Ormandy <taviso@gentoo.org> rhyme-0.9.ebuild:
+  Initial import, Thanks to Aric LeDell <aledell@rcn.com> for
+  submitting the ebuild in #24735

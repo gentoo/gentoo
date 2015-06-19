@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DEPEND=~mail-client/claws-mail-3.9.0 virtual/pkgconfig
+DESCRIPTION=This plugin enables mail notification via LEDs on some laptops
+HOMEPAGE=http://www.claws-mail.org/
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=~mail-client/claws-mail-3.9.0
+SLOT=0
+SRC_URI=http://www.claws-mail.org/downloads/plugins/acpi_notifier-1.0.28.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=5c2afef35db0a10a94139a319de2af08

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-lisp/asdf-3.1:= doc? ( sys-apps/texinfo >=media-gfx/graphviz-2.26.0 ) pax_kernel? ( sys-apps/paxctl sys-apps/elfix )
+DESCRIPTION=Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
+EAPI=5
+HOMEPAGE=http://sbcl.sourceforge.net/
+IUSE=debug doc source +threads +unicode pax_kernel zlib
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=MIT
+RDEPEND=>=dev-lisp/asdf-3.1:= elibc_glibc? ( >=sys-libs/glibc-2.3 || ( <sys-libs/glibc-2.6[nptl] >=sys-libs/glibc-2.6 ) )
+SLOT=0/1.2.4
+SRC_URI=mirror://sourceforge/sbcl/sbcl-1.2.4-source.tar.bz2 x86? ( mirror://sourceforge/sbcl/sbcl-1.0.58-x86-linux-binary.tar.bz2 ) amd64? ( mirror://sourceforge/sbcl/sbcl-1.2.4-x86-64-linux-binary.tar.bz2 ) ppc? ( mirror://sourceforge/sbcl/sbcl-1.0.28-powerpc-linux-binary.tar.bz2 ) sparc? ( mirror://sourceforge/sbcl/sbcl-1.0.28-sparc-linux-binary.tar.bz2 ) alpha? ( mirror://sourceforge/sbcl/sbcl-1.0.28-alpha-linux-binary.tar.bz2 )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=0ef440bf9365246c1db2fc58ae05b177

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=app-text/dvipng >=app-text/gnome-doc-utils-0.3.2 app-text/scrollkeeper dev-libs/glib:2 dev-libs/libxml2:2 dev-libs/libxslt >=gnome-base/libgnomeui-2.22.1 gnome-base/gconf:2 gnome-base/libglade:2.0 >=media-libs/gstreamer-0.10.20:0.10 x11-libs/gtk+:2 x11-libs/pango virtual/latex-base dev-util/intltool sys-devel/gettext
+DESCRIPTION=Memorization aid based on the Leitner flashcard system
+EAPI=5
+HOMEPAGE=http://homepages.ihug.co.nz/~trmusson/programs.html#ignuit
+IUSE=examples
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-3
+RDEPEND=app-text/dvipng >=app-text/gnome-doc-utils-0.3.2 app-text/scrollkeeper dev-libs/glib:2 dev-libs/libxml2:2 dev-libs/libxslt >=gnome-base/libgnomeui-2.22.1 gnome-base/gconf:2 gnome-base/libglade:2.0 >=media-libs/gstreamer-0.10.20:0.10 x11-libs/gtk+:2 x11-libs/pango virtual/latex-base
+SLOT=0
+SRC_URI=http://homepages.ihug.co.nz/~trmusson/stuff/ignuit-2.20.0.tar.gz
+_md5_=5780abb7d10f885bd1c204ea423f4d56

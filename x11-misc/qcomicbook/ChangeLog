@@ -1,0 +1,238 @@
+# ChangeLog for x11-misc/qcomicbook
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/qcomicbook/ChangeLog,v 1.56 2015/02/20 12:22:28 pinkbyte Exp $
+
+  20 Feb 2015; Sergey Popov <pinkbyte@gentoo.org> -qcomicbook-0.9.0.ebuild:
+  Drop old
+
+  20 Feb 2015; Sergey Popov <pinkbyte@gentoo.org> qcomicbook-0.9.0-r1.ebuild:
+  Stable on x86, wrt bug #538410
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> qcomicbook-0.9.0-r1.ebuild:
+  Stable for amd64, wrt bug #538410
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> qcomicbook-0.9.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*qcomicbook-0.9.0-r1 (09 Feb 2014)
+
+  09 Feb 2014; Sergey Popov <pinkbyte@gentoo.org> -qcomicbook-0.8.2.ebuild,
+  +qcomicbook-0.9.0-r1.ebuild, metadata.xml:
+  Revision bump: EAPI 5, utilize l10n eclass for locale handling, fix desktop
+  file, minor cosmetic fixes. Add Qt herd to metadata. Drop old version
+
+  09 Feb 2014; Sergey Popov <pinkbyte@gentoo.org> qcomicbook-0.9.0.ebuild:
+  Stable on amd64 and x86, wrt bug #437170
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> qcomicbook-0.8.2.ebuild,
+  qcomicbook-0.9.0.ebuild:
+  Move Qt dependencies to the new category
+
+*qcomicbook-0.9.0 (22 Jun 2012)
+
+  22 Jun 2012; Michael Weber <xmw@gentoo.org> +qcomicbook-0.9.0.ebuild:
+  Version bump (bug 421303, thanks teidakankan@gmail.com)
+
+  15 May 2012; Samuli Suominen <ssuominen@gentoo.org> -qcomicbook-0.8.1.ebuild:
+  old
+
+  15 May 2012; Samuli Suominen <ssuominen@gentoo.org> qcomicbook-0.8.2.ebuild:
+  Update HOMEPAGE wrt #416127 by "df"
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> qcomicbook-0.8.2.ebuild:
+  x86 stable wrt bug #404889
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> qcomicbook-0.8.2.ebuild:
+  Stable for amd64, wrt bug #404889
+
+*qcomicbook-0.8.2 (19 Nov 2011)
+
+  19 Nov 2011; Tim Harder <radhermit@gentoo.org> -qcomicbook-0.6.0.ebuild,
+  -qcomicbook-0.7.2.ebuild, +qcomicbook-0.8.2.ebuild:
+  Version bump and remove old.
+
+  13 Nov 2011; Markus Meier <maekke@gentoo.org> qcomicbook-0.8.1.ebuild:
+  x86 stable, bug #378381
+
+  13 Nov 2011; Markos Chandras <hwoarang@gentoo.org> qcomicbook-0.8.1.ebuild:
+  Add qt4 use dependency on poppler. Bug #378381
+
+  10 Aug 2011; Markos Chandras <hwoarang@gentoo.org> qcomicbook-0.8.1.ebuild:
+  Stable on amd64 wrt bug #378381
+
+  17 Jul 2011; Markus Meier <maekke@gentoo.org> qcomicbook-0.7.2.ebuild:
+  x86 stable, bug #374441
+
+  10 Jul 2011; Markos Chandras <hwoarang@gentoo.org> qcomicbook-0.7.2.ebuild:
+  Stable on amd64 wrt bug #374441
+
+*qcomicbook-0.8.1 (08 Jul 2011)
+
+  08 Jul 2011; Markos Chandras <hwoarang@gentoo.org> +qcomicbook-0.8.1.ebuild,
+  metadata.xml:
+  Version bump. Fix metadata.xml
+
+*qcomicbook-0.7.2 (27 May 2011)
+
+  27 May 2011; Kacper Kowalik <xarthisius@gentoo.org> -qcomicbook-0.5.0.ebuild,
+  -qcomicbook-0.7.1.ebuild, +qcomicbook-0.7.2.ebuild:
+  Version bump wrt #363773. Drop old
+
+  28 Nov 2010; Markus Meier <maekke@gentoo.org> qcomicbook-0.6.0.ebuild:
+  x86 stable, bug #346935
+
+  28 Nov 2010; Markos Chandras <hwoarang@gentoo.org> qcomicbook-0.6.0.ebuild:
+  Stable on amd64 wrt bug #346935
+
+*qcomicbook-0.7.1 (27 Nov 2010)
+
+  27 Nov 2010; Kacper Kowalik <xarthisius@gentoo.org> +qcomicbook-0.7.1.ebuild:
+  Version bump wrt #346911. Thanks to r_weber@gmx.net for the report
+
+*qcomicbook-0.6.0 (01 Aug 2010)
+
+  01 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  +qcomicbook-0.6.0.ebuild:
+  Version bump. Bug #330297. Thanks to teidakankan@gmail.com for reporting
+
+  08 Feb 2010; Ben de Groot <yngwin@gentoo.org> -qcomicbook-0.4.4.ebuild:
+  Remove obsoleted version
+
+  08 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  qcomicbook-0.5.0.ebuild:
+  stable x86, bug 303439
+
+  04 Feb 2010; Markos Chandras <hwoarang@gentoo.org>
+  qcomicbook-0.5.0.ebuild:
+  Stable on amd64 wrt bug #303439
+
+  04 Feb 2010; Ben de Groot <yngwin@gentoo.org> qcomicbook-0.5.0.ebuild,
+  metadata.xml:
+  Revert and add an elog message instead
+
+  04 Feb 2010; Ben de Groot <yngwin@gentoo.org> qcomicbook-0.5.0.ebuild,
+  metadata.xml:
+  Add useflags for compressed archives
+
+*qcomicbook-0.5.0 (17 Dec 2009)
+
+  17 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +qcomicbook-0.5.0.ebuild:
+  Version bump.
+
+  21 Nov 2009; Markus Meier <maekke@gentoo.org> qcomicbook-0.4.4.ebuild:
+  x86 stable, bug #289362
+
+  16 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  qcomicbook-0.4.4.ebuild:
+  amd64 stable wrt #289362
+
+*qcomicbook-0.4.4 (30 Sep 2009)
+
+  30 Sep 2009; Ben de Groot <yngwin@gentoo.org> +qcomicbook-0.4.4.ebuild:
+  Version bump
+
+  10 May 2009; Ben de Groot <yngwin@gentoo.org> qcomicbook-0.4.0.ebuild,
+  metadata.xml:
+  Fix eapi-2 migration (bug 269193), whitespace.
+
+  04 May 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  qcomicbook-0.4.0.ebuild:
+  Add missing dependencies, see bug #227747.
+
+  28 Jul 2008; Carsten Lohrke <carlo@gentoo.org> qcomicbook-0.3.4.ebuild:
+  QA: Get rid of deprecated qt_min_version().
+
+  27 Jul 2008; Carsten Lohrke <carlo@gentoo.org> qcomicbook-0.4.0.ebuild:
+  Fix broken split Qt 4.4 dependencies, cf. bug 217161 comment 11.
+
+  31 May 2008; Ben de Groot <yngwin@gentoo.org> qcomicbook-0.4.0.ebuild:
+  Updating deps for split qt4. Applying patch from bug 214154.
+
+  09 Jan 2008; Krzysiek Pawlik <nelchael@gentoo.org>
+  qcomicbook-0.4.0.ebuild:
+  Add missing dev-util/pkgconfig to DEPEND.
+
+*qcomicbook-0.4.0 (13 Nov 2007)
+
+  13 Nov 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  +qcomicbook-0.4.0.ebuild:
+  Version bump.
+
+  21 Aug 2007; Jurek Bartuszek <jurek@gentoo.org> -qcomicbook-0.2.4.ebuild,
+  qcomicbook-0.3.4.ebuild:
+  x86 stable, removing old version (bug #189749)
+
+  21 Aug 2007; Samuli Suominen <drac@gentoo.org>
+  +files/qcomicbook-0.3.4-asneeded.patch, qcomicbook-0.3.4.ebuild:
+  Fix building with --as-needed for bug 187697, thanks to Christian Lemke for
+  reporting. Fix .desktop file Categories.
+
+*qcomicbook-0.3.4 (29 Dec 2006)
+
+  29 Dec 2006; Przemysław Maciąg <troll@gentoo.org>
+  +qcomicbook-0.3.4.ebuild:
+  Version bump (up to 0.3.4). Closing #159415
+
+  22 Oct 2006; David Shakaryan <omp@gentoo.org> qcomicbook-0.2.4.ebuild,
+  -qcomicbook-0.3.2.ebuild, qcomicbook-0.3.3.ebuild:
+  Fix RDEPEND to use unrar or rar. (bug #152326)
+
+*qcomicbook-0.3.3 (28 Sep 2006)
+
+  28 Sep 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +qcomicbook-0.3.3.ebuild:
+  Version bump, see bug #149389.
+
+*qcomicbook-0.3.2 (03 Sep 2006)
+
+  03 Sep 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  -qcomicbook-0.2.5.ebuild, -qcomicbook-0.2.7.ebuild,
+  +qcomicbook-0.3.2.ebuild:
+  Version bump, see bug #144719.
+
+*qcomicbook-0.2.7 (01 Jul 2006)
+
+  01 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +qcomicbook-0.2.7.ebuild:
+  Version bump, see bug #136914.
+
+  21 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  -qcomicbook-0.2.3-r1.ebuild, qcomicbook-0.2.4.ebuild,
+  qcomicbook-0.2.5.ebuild:
+  Fixed DEPEND for modular X.
+
+*qcomicbook-0.2.5 (28 Dec 2005)
+
+  28 Dec 2005; Krzysiek Pawlik <nelchael@gentoo.org>
+  qcomicbook-0.2.4.ebuild, +qcomicbook-0.2.5.ebuild:
+  Version bump. 0.2.4 stable on x86.
+
+  25 Nov 2005; Luis Medinas <metalgod@gentoo.org> qcomicbook-0.2.4.ebuild:
+  Added ~amd64 keyword. Closes bug #108611.
+
+*qcomicbook-0.2.4 (10 Aug 2005)
+
+  10 Aug 2005; Jonathan Smith <smithj@gentoo.org> +qcomicbook-0.2.4.ebuild:
+  minor version bump
+
+  28 Jul 2005; Caleb Tennis <caleb@gentoo.org> qcomicbook-0.2.3-r1.ebuild:
+  Fix qt dep per bug #100235
+
+*qcomicbook-0.2.3-r1 (13 Jul 2005)
+
+  13 Jul 2005; Jonathan Smith <smithj@gentoo.org> -qcomicbook-0.2.3.ebuild,
+  +qcomicbook-0.2.3-r1.ebuild:
+  added icon and desktop entry
+
+  12 Jul 2005; David Holm <dholm@gentoo.org> qcomicbook-0.2.3.ebuild:
+  Added to ~ppc.
+
+  11 Jul 2005; Jonathan Smith <smithj@gentoo.org> qcomicbook-0.2.3.ebuild:
+  moved unrar, rar, zip to RDEPEND (instead of DEPEND)
+
+*qcomicbook-0.2.3 (11 Jul 2005)
+
+  11 Jul 2005; Jonathan Smith <smithj@gentoo.org> +metadata.xml,
+  +qcomicbook-0.2.3.ebuild:
+  #79598: initial commit

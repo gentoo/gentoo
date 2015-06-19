@@ -1,0 +1,67 @@
+# ChangeLog for app-editors/dhex
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/dhex/ChangeLog,v 1.17 2014/03/20 04:15:35 mattst88 Exp $
+
+  20 Mar 2014; Matt Turner <mattst88@gentoo.org> dhex-0.68.ebuild:
+  Added ~mips.
+
+  21 Nov 2012; Michael Palimaka <kensington@gentoo.org> -dhex-0.67.ebuild:
+  Remove old.
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> dhex-0.68.ebuild:
+  Stable for x86, wrt bug #441062
+
+  04 Nov 2012; Agostino Sarubbo <ago@gentoo.org> dhex-0.68.ebuild:
+  Stable for amd64, wrt bug #441062
+
+  15 Sep 2012; Tim Harder <radhermit@gentoo.org> -dhex-0.65.ebuild,
+  -dhex-0.66.ebuild:
+  Remove old.
+
+*dhex-0.68 (15 Sep 2012)
+
+  15 Sep 2012; Tim Harder <radhermit@gentoo.org> +dhex-0.68.ebuild:
+  Version bump.
+
+  11 Sep 2012; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Drop maintainership
+
+  22 Aug 2012; Anthony G. Basile <blueness@gentoo.org> dhex-0.67.ebuild:
+  Keyword ~arm, bug #431922
+
+  10 Aug 2012; Johannes Huber <johu@gentoo.org> dhex-0.67.ebuild:
+  Stable for x86, wrt bug #428852
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> dhex-0.67.ebuild:
+  Stable for amd64, wrt bug #428852
+
+*dhex-0.67 (10 Jun 2012)
+
+  10 Jun 2012; Andreas K. Huettel <dilfridge@gentoo.org> +dhex-0.67.ebuild:
+  Version bump
+
+*dhex-0.66 (08 Apr 2012)
+
+  08 Apr 2012; Andreas K. Huettel <dilfridge@gentoo.org> +dhex-0.66.ebuild:
+  Version bump
+
+  13 Jul 2011; Markus Meier <maekke@gentoo.org> dhex-0.65.ebuild:
+  x86 stable, bug #371971
+
+  18 Jun 2011; Markos Chandras <hwoarang@gentoo.org> dhex-0.65.ebuild:
+  Stable on amd64 wrt bug #371971
+
+  16 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org> -dhex-0.63.ebuild:
+  Remove old
+
+*dhex-0.65 (16 Feb 2011)
+
+  16 Feb 2011; Andreas K. Huettel <dilfridge@gentoo.org> +dhex-0.65.ebuild:
+  Version bump
+
+*dhex-0.63 (30 Jan 2011)
+
+  30 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org> +dhex-0.63.ebuild,
+  +files/dhex-0.63-Makefile.patch, +metadata.xml:
+  New application, fixes bug 121086. Thanks to Adrian Frühwirth for the
+  original ebuild.

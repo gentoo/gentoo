@@ -1,0 +1,52 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ppc32/package.use.mask,v 1.44 2015/06/02 18:24:49 pacho Exp $
+
+# This file requires >=portage-2.1.1
+
+# Pacho Ramos <pacho@gentoo.org> (02 Jun 2015)
+# Missing keywords (02 Jun 2015)
+net-misc/connman openconnect
+
+# Pacho Ramos <pacho@gentoo.org> (15 May 2015)
+# Missing stable
+dev-libs/protobuf python
+
+# Michał Górny <mgorny@gentoo.org> (01 Mar 2015)
+# pidgin-opensteamworks is only available for amd64, ppc32 and x86
+net-im/telepathy-connection-managers -steam
+
+# Pacho Ramos <pacho@gentoo.org> (14 Jan 2015)
+# Missing keywords
+app-misc/workrave mate
+
+# Patrick Lauer <patrick@gentoo.org> (13 Jan 2015)
+# Dependencies lack keywords
+games-fps/lsdldoom shareware
+
+# Julian Ospald <hasufell@gentoo.org> (23 Nov 2013)
+# FIXME: app-arch/innoextract not available under ppc yet
+games-fps/duke3d-data gog
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
+# mono works on this arch (masked in base)
+gnome-extra/zeitgeist-datasources -tomboy
+
+# ranger <ranger@gentoo.org> (17 apr 2012)
+# Remasking llvm in mesa
+
+# ranger <ranger@gentoo.org> (17 apr 2012)
+# masking libvirt for cfengine (bug #412253)
+net-misc/cfengine libvirt
+
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (28 Nov 2010)
+# sys-devel/llvm is keyworded on ppc
+#media-libs/mesa -llvm
+
+# Maciej Mrozowski <reavertm@gentoo.org> (26 Jun 2010)
+# Needs media-libs/simage keyworded, bug 325623
+media-libs/coin simage
+
+#nixnut <nixnut@gentoo.org> (24 jan 2009)
+#don't want zemberek for enchant for ppc32
+app-text/enchant zemberek

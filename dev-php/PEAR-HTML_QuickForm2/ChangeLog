@@ -1,0 +1,76 @@
+# ChangeLog for dev-php/PEAR-HTML_QuickForm2
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-HTML_QuickForm2/ChangeLog,v 1.12 2015/04/14 17:56:03 grknight Exp $
+
+  14 Apr 2015; Brian Evans <grknight@gentoo.org>
+  PEAR-HTML_QuickForm2-2.0.2.ebuild:
+  Fix repoman warning wrt slot operator
+
+*PEAR-HTML_QuickForm2-2.0.2 (31 Oct 2014)
+
+  31 Oct 2014; Brian Evans <grknight@gentoo.org>
+  +PEAR-HTML_QuickForm2-2.0.2.ebuild, -PEAR-HTML_QuickForm2-0.6.1.ebuild,
+  -PEAR-HTML_QuickForm2-2.0.0.ebuild:
+  Version bump; drop old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-HTML_QuickForm2-0.6.1.ebuild, PEAR-HTML_QuickForm2-2.0.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*PEAR-HTML_QuickForm2-2.0.0 (14 Nov 2013)
+
+  14 Nov 2013; Matti Bickel <mabi@gentoo.org>
+  +PEAR-HTML_QuickForm2-2.0.0.ebuild:
+  version bump
+
+  19 Feb 2012; Raúl Porcel <armin76@gentoo.org>
+  PEAR-HTML_QuickForm2-0.6.1.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #396969
+
+  07 Feb 2012; Jeroen Roovers <jer@gentoo.org>
+  PEAR-HTML_QuickForm2-0.6.1.ebuild:
+  Marked ~hppa (bug #396969).
+
+  01 Feb 2012; Samuli Suominen <ssuominen@gentoo.org>
+  PEAR-HTML_QuickForm2-0.6.1.ebuild:
+  Keyword ~ppc/~ppc64 wrt #396969
+
+*PEAR-HTML_QuickForm2-0.6.1 (15 Jan 2012)
+
+  15 Jan 2012; Matti Bickel <mabi@gentoo.org>
+  -PEAR-HTML_QuickForm2-0.2.0.ebuild, -PEAR-HTML_QuickForm2-0.3.0.ebuild,
+  +PEAR-HTML_QuickForm2-0.6.1.ebuild:
+  Version bump, remove old
+
+*PEAR-HTML_QuickForm2-0.3.0 (16 Feb 2010)
+
+  16 Feb 2010; Steve Dibb <beandog@gentoo.org>
+  +PEAR-HTML_QuickForm2-0.3.0.ebuild:
+  Version bump
+
+  06 Dec 2007; Markus Ullmann <jokey@gentoo.org>
+  -PEAR-HTML_QuickForm2-0.1.0.ebuild, PEAR-HTML_QuickForm2-0.2.0.ebuild:
+  LICENSE fix from project overlay
+
+  02 Dec 2007; Jakub Moc <jakub@gentoo.org>
+  PEAR-HTML_QuickForm2-0.2.0.ebuild:
+  Fix LICENSE
+
+*PEAR-HTML_QuickForm2-0.2.0 (08 Nov 2007)
+
+  08 Nov 2007; Markus Ullmann <jokey@gentoo.org>
+  +PEAR-HTML_QuickForm2-0.2.0.ebuild:
+  Version bump from project overlay
+
+  28 Oct 2007; Jakub Moc <jakub@gentoo.org> +PEAR-HTML_QuickForm2-0.2.0.ebuild:
+  Version bump
+
+*PEAR-HTML_QuickForm2-0.1.0 (27 Aug 2007)
+
+  27 Aug 2007; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +PEAR-HTML_QuickForm2-0.1.0.ebuild:
+  Initital commit from project overlay
+
+  15 Aug 2007; Jakub Moc <jakub@gentoo.org> +metadata.xml,
+  +PEAR-HTML_QuickForm2-0.1.0.ebuild:
+  Add a replacement for superseded PEAR-HTML_QuickForm

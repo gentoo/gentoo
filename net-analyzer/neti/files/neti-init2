@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/neti/files/neti-init2,v 1.1 2006/07/20 11:41:58 dragonheart Exp $
+
+depend() {
+    need net
+}
+
+start() {
+	ebegin "Starting netiathome"
+	start-stop-daemon --start --quiet --exec /usr/sbin/neti -- -D
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping netiathome"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/neti
+	eend $?
+}

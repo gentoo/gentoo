@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+	<longdescription>
+		The Burlap web service protocol makes web services usable without
+		requiring a large framework, and without learning yet another
+		alphabet soup of protocols.
+	</longdescription>
+</pkgmetadata>

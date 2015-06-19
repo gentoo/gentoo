@@ -1,0 +1,117 @@
+From a554809b6bdbe29b1f775c89104c1088300685ef Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 28 Dec 2013 10:30:28 +0100
+Subject: [PATCH] Update for gentoo install layout.
+
+---
+ Makefile.config.in                      | 6 +++---
+ Makefile.rules                          | 8 ++++----
+ tools/llvm-config/BuildVariables.inc.in | 1 +
+ tools/llvm-config/Makefile              | 2 ++
+ tools/llvm-config/llvm-config.cpp       | 2 +-
+ utils/FileCheck/Makefile                | 2 +-
+ 6 files changed, 12 insertions(+), 9 deletions(-)
+
+diff --git a/Makefile.config.in b/Makefile.config.in
+index fd4f6ef..b63786c 100644
+--- a/Makefile.config.in
++++ b/Makefile.config.in
+@@ -95,10 +95,10 @@ PROJ_internal_prefix := $(prefix)
+ endif
+ 
+ PROJ_bindir     := $(PROJ_prefix)/bin
+-PROJ_libdir     := $(PROJ_prefix)/lib
++PROJ_libdir     := $(PROJ_prefix)/$(GENTOO_LIBDIR)
+ PROJ_datadir    := $(PROJ_prefix)/share
+-PROJ_docsdir    := $(PROJ_prefix)/docs/llvm
+-PROJ_etcdir     := $(PROJ_prefix)/etc/llvm
++PROJ_docsdir    := $(PROJ_prefix)/share/doc/@PF@
++PROJ_etcdir     := @EPREFIX@/etc/llvm
+ PROJ_includedir := $(PROJ_prefix)/include
+ PROJ_infodir    := $(PROJ_prefix)/info
+ PROJ_mandir     := $(PROJ_prefix)/share/man
+diff --git a/Makefile.rules b/Makefile.rules
+index f0c542b..6cc19fd 100644
+--- a/Makefile.rules
++++ b/Makefile.rules
+@@ -276,7 +276,7 @@ ifeq ($(ENABLE_OPTIMIZED),1)
+   # Don't use -fomit-frame-pointer on Darwin or FreeBSD.
+   ifneq ($(HOST_OS),FreeBSD)
+   ifneq ($(HOST_OS),Darwin)
+-    OmitFramePointer := -fomit-frame-pointer
++    OmitFramePointer :=
+   endif
+   endif
+ 
+@@ -601,7 +601,7 @@ endif
+ ifdef SHARED_LIBRARY
+ ifneq ($(HOST_OS), $(filter $(HOST_OS), Cygwin MingW))
+ ifneq ($(HOST_OS),Darwin)
+-  LD.Flags += $(RPATH) -Wl,'$$ORIGIN'
++  LD.Flags +=
+ endif
+ endif
+ endif
+@@ -641,9 +641,9 @@ ifneq ($(HOST_OS), $(filter $(HOST_OS), Cygwin MingW))
+     ifdef TOOLNAME
+       LD.Flags += $(RPATH) -Wl,'$$ORIGIN/../lib'
+       ifdef EXAMPLE_TOOL
+-        LD.Flags += $(RPATH) -Wl,$(ExmplDir) $(DynamicFlag)
++        LD.Flags += $(DynamicFlag)
+       else
+-        LD.Flags += $(RPATH) -Wl,$(ToolDir) $(DynamicFlag)
++        LD.Flags += $(DynamicFlag)
+     endif
+   endif
+ else
+diff --git a/tools/llvm-config/BuildVariables.inc.in b/tools/llvm-config/BuildVariables.inc.in
+index fe87afb..908acd4 100644
+--- a/tools/llvm-config/BuildVariables.inc.in
++++ b/tools/llvm-config/BuildVariables.inc.in
+@@ -25,3 +25,4 @@
+ #define LLVM_BUILDMODE "@LLVM_BUILDMODE@"
+ #define LLVM_TARGETS_BUILT "@LLVM_TARGETS_BUILT@"
+ #define LLVM_SYSTEM_LIBS "@LLVM_SYSTEM_LIBS@"
++#define LLVM_LIBDIR "@LLVM_LIBDIR@"
+diff --git a/tools/llvm-config/Makefile b/tools/llvm-config/Makefile
+index b20b6bf..0aeba45 100644
+--- a/tools/llvm-config/Makefile
++++ b/tools/llvm-config/Makefile
+@@ -55,6 +55,8 @@ $(ObjDir)/BuildVariables.inc: $(BUILDVARIABLES_SRCPATH) Makefile $(ObjDir)/.dir
+ 	  >> temp.sed
+ 	$(Verb) $(ECHO) 's/@LLVM_TARGETS_BUILT@/$(subst /,\/,$(TARGETS_TO_BUILD))/' \
+ 	  >> temp.sed
++	$(Verb) $(ECHO) 's/@LLVM_LIBDIR@/$(subst /,\/,$(GENTOO_LIBDIR))/' \
++	  >> temp.sed
+ 	$(Verb) $(SED) -f temp.sed < $< > $@
+ 	$(Verb) $(RM) temp.sed
+ 
+diff --git a/tools/llvm-config/llvm-config.cpp b/tools/llvm-config/llvm-config.cpp
+index 7edf5ec..c09b702 100644
+--- a/tools/llvm-config/llvm-config.cpp
++++ b/tools/llvm-config/llvm-config.cpp
+@@ -250,7 +250,7 @@ int main(int argc, char **argv) {
+     ActivePrefix = CurrentExecPrefix;
+     ActiveIncludeDir = ActivePrefix + "/include";
+     ActiveBinDir = ActivePrefix + "/bin";
+-    ActiveLibDir = ActivePrefix + "/lib";
++    ActiveLibDir = ActivePrefix + "/" LLVM_LIBDIR;
+     ActiveIncludeOption = "-I" + ActiveIncludeDir;
+   }
+ 
+diff --git a/utils/FileCheck/Makefile b/utils/FileCheck/Makefile
+index 268b7bc..e7674f9 100644
+--- a/utils/FileCheck/Makefile
++++ b/utils/FileCheck/Makefile
+@@ -15,7 +15,7 @@ USEDLIBS = LLVMSupport.a
+ TOOL_NO_EXPORTS = 1
+ 
+ # Don't install this utility
+-NO_INSTALL = 1
++#NO_INSTALL = 1
+ 
+ include $(LEVEL)/Makefile.common
+ 
+-- 
+1.8.5.2
+

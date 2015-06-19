@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-dock</herd>
+<longdescription>
+wmswallow is a WindowMaker dock applet that makes any application dockable. You 
+can define an action to be taken on a mouseclick if the window does not receive 
+mouseclicks itself, and you can define the size and width of the swallowed 
+window on the commandline. Applications may be started on the commandline and 
+specified via name, class, or window-id.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=>=dev-libs/bglibs-1.025
+DESCRIPTION=A proxy program for two connections set up by a UCSPI server and a UCSPI client
+HOMEPAGE=http://untroubled.org/ucspi-proxy/
+KEYWORDS=x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/bglibs-1.025
+SLOT=0
+SRC_URI=http://untroubled.org/ucspi-proxy/archive/ucspi-proxy-0.97.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=475fb578056d161a50c7eb9be48e270c

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-libs/openssl:0 ~net-analyzer/nessus-core-2.2.9 ~net-analyzer/nessus-libraries-2.2.9 net-libs/libpcap
+DESCRIPTION=A remote security scanner for Linux (nessus-plugins)
+EAPI=4
+HOMEPAGE=http://www.nessus.org/
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=dev-libs/openssl:0 ~net-analyzer/nessus-core-2.2.9 ~net-analyzer/nessus-libraries-2.2.9 net-libs/libpcap
+SLOT=0
+SRC_URI=ftp://ftp.nessus.org/pub/nessus/nessus-2.2.9/src/nessus-plugins-GPL-2.2.9.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=be30a09644ec1319b16864ed030c2ce1

@@ -1,0 +1,730 @@
+# ChangeLog for x11-themes/gnome-backgrounds
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gnome-backgrounds/ChangeLog,v 1.166 2015/06/09 09:36:51 eva Exp $
+
+*gnome-backgrounds-3.16.0 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-backgrounds-3.12.2.ebuild, +gnome-backgrounds-3.16.0.ebuild:
+  Version bump for Gnome 3.16. Clean up old revision.
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnome-backgrounds-3.14.1.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnome-backgrounds-3.14.1.ebuild:
+  amd64 stable, bug 534012
+
+*gnome-backgrounds-3.14.1 (23 Dec 2014)
+
+  23 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-backgrounds-3.14.1.ebuild:
+  Version bump for Gnome 3.14.
+
+  13 Nov 2014; Pacho Ramos <pacho@gentoo.org> -gnome-backgrounds-2.32.0.ebuild,
+  -gnome-backgrounds-3.10.1.ebuild, -gnome-backgrounds-3.12.1.ebuild:
+  Drop old (#508854)
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gnome-backgrounds-3.12.2.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gnome-backgrounds-3.12.2.ebuild:
+  Stable for amd64, wrt bug #512912
+
+*gnome-backgrounds-3.12.2 (31 May 2014)
+
+  31 May 2014; Pacho Ramos <pacho@gentoo.org> +gnome-backgrounds-3.12.2.ebuild:
+  Version bump
+
+  27 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-backgrounds-3.12.1.ebuild:
+  Drop useless blank line.
+
+*gnome-backgrounds-3.12.1 (27 Apr 2014)
+
+  27 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-backgrounds-3.12.1.ebuild:
+  Version bump for Gnome 3.12.
+
+  27 Apr 2014; Pacho Ramos <pacho@gentoo.org> -gnome-backgrounds-3.8.1.ebuild:
+  drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gnome-backgrounds-3.10.1.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gnome-backgrounds-3.10.1.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-backgrounds-3.10.1.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-backgrounds-3.10.1.ebuild:
+  arch stable, bug 888
+
+*gnome-backgrounds-3.10.1 (24 Dec 2013)
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org> +gnome-backgrounds-3.10.1.ebuild,
+  -gnome-backgrounds-3.6.1.ebuild, -gnome-backgrounds-3.8.0.ebuild:
+  Version bump for Gnome 3.10
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> gnome-backgrounds-3.8.1.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> gnome-backgrounds-3.8.1.ebuild:
+  amd64 stable, bug #478252
+
+*gnome-backgrounds-3.8.1 (18 Apr 2013)
+
+  18 Apr 2013; Pacho Ramos <pacho@gentoo.org> +gnome-backgrounds-3.8.1.ebuild:
+  Version bump
+
+  30 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-backgrounds-3.4.2.ebuild:
+  Clean up old revision.
+
+*gnome-backgrounds-3.8.0 (28 Mar 2013)
+
+  28 Mar 2013; Pacho Ramos <pacho@gentoo.org> +gnome-backgrounds-3.8.0.ebuild:
+  Version bump for Gnome 3.8
+
+*gnome-backgrounds-3.6.1 (26 Dec 2012)
+
+  26 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-backgrounds-3.2.0.ebuild, -gnome-backgrounds-3.4.1.ebuild,
+  +gnome-backgrounds-3.6.1.ebuild:
+  Version bump for Gnome 3.6. Clean up old revisions.
+
+*gnome-backgrounds-3.4.2 (10 Aug 2012)
+
+  10 Aug 2012; Gilles Dartiguelongue <eva@gentoo.org
+  +gnome-backgrounds-3.4.2.ebuild:
+  Version bump. Translation updates.
+
+*gnome-backgrounds-3.4.1 (14 May 2012)
+
+  14 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +gnome-backgrounds-3.4.1.ebuild:
+  Version bump.
+
+*gnome-backgrounds-3.2.0 (06 Nov 2011)
+
+  06 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -gnome-backgrounds-3.0.2.ebuild, +gnome-backgrounds-3.2.0.ebuild:
+  Bump to 3.2.0 from the gnome overlay, drop old. No notable changes.
+
+*gnome-backgrounds-3.0.2 (02 Jun 2011)
+
+  02 Jun 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  -gnome-backgrounds-3.0.1.ebuild, +gnome-backgrounds-3.0.2.ebuild:
+  Bump to 3.0.2, updated translations, remove old
+
+*gnome-backgrounds-3.0.1 (30 Apr 2011)
+
+  30 Apr 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  -gnome-backgrounds-2.28.0.ebuild, -gnome-backgrounds-2.30.0.ebuild,
+  +gnome-backgrounds-3.0.1.ebuild:
+  Bump to 3.0.1, remove old
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org>
+  gnome-backgrounds-2.32.0.ebuild:
+  Marking gnome-backgrounds-2.32.0 ppc stable for bug 353436
+
+  21 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  gnome-backgrounds-2.32.0.ebuild:
+  ppc64 stable wrt #353436
+
+  12 Mar 2011; Raúl Porcel <armin76@gentoo.org>
+  gnome-backgrounds-2.32.0.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #353436
+
+  24 Feb 2011; Thomas Kahle <tomka@gentoo.org> gnome-backgrounds-2.32.0.ebuild:
+  x86 stable per bug 353436
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org>
+  gnome-backgrounds-2.32.0.ebuild:
+  Stable on amd64 wrt bug #353436
+
+  17 Oct 2010; Raúl Porcel <armin76@gentoo.org>
+  gnome-backgrounds-2.30.0.ebuild:
+  alpha/ia64/sh/sparc stable wrt #324077
+
+  14 Oct 2010; Markus Meier <maekke@gentoo.org>
+  gnome-backgrounds-2.30.0.ebuild:
+  arm stable, bug #324077
+
+  12 Oct 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-backgrounds-2.24.1.ebuild:
+  Clean up old revision.
+
+*gnome-backgrounds-2.32.0 (12 Oct 2010)
+
+  12 Oct 2010; Pacho Ramos <pacho@gentoo.org>
+  +gnome-backgrounds-2.32.0.ebuild:
+  Version bump for Gnome 2.32: Add individual copyright notices for the
+  images and updated translations.
+
+  07 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  gnome-backgrounds-2.30.0.ebuild:
+  ppc64 stable wrt #324077
+
+  11 Sep 2010; Joseph Jezak <josejx@gentoo.org>
+  gnome-backgrounds-2.30.0.ebuild:
+  Marked ppc for bug #324077.
+
+  24 Aug 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-backgrounds-2.24.0.ebuild:
+  Clean up old revision.
+
+  18 Aug 2010; Markus Meier <maekke@gentoo.org>
+  gnome-backgrounds-2.28.0.ebuild:
+  arm stable, bug #314899
+
+  14 Aug 2010; Raúl Porcel <armin76@gentoo.org>
+  gnome-backgrounds-2.28.0.ebuild:
+  alpha/ia64/sh/sparc stable wrt #314899
+
+  01 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  gnome-backgrounds-2.30.0.ebuild:
+  x86 stable, bug 324077
+
+  31 Jul 2010; Pacho Ramos <pacho@gentoo.org>
+  gnome-backgrounds-2.30.0.ebuild:
+  amd64 stable, bug 324077
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org>
+  gnome-backgrounds-2.24.0.ebuild, gnome-backgrounds-2.24.1.ebuild,
+  gnome-backgrounds-2.28.0.ebuild, gnome-backgrounds-2.30.0.ebuild:
+  Drop HPPA keywording (bug #324511).
+
+*gnome-backgrounds-2.30.0 (13 Jun 2010)
+
+  13 Jun 2010; Pacho Ramos <pacho@gentoo.org>
+  +gnome-backgrounds-2.30.0.ebuild:
+  Add new version for Gnome 2.30.
+
+  04 Jun 2010; Markus Meier <maekke@gentoo.org>
+  gnome-backgrounds-2.28.0.ebuild:
+  x86 stable, bug #314899
+
+  03 May 2010; Olivier Crête <tester@gentoo.org>
+  gnome-backgrounds-2.28.0.ebuild:
+  amd64 stable, bug #314899
+
+  18 Jan 2010; Jeroen Roovers <jer@gentoo.org>
+  gnome-backgrounds-2.24.1.ebuild:
+  Stable for HPPA (bug #281427).
+
+  16 Jan 2010; Raúl Porcel <armin76@gentoo.org>
+  gnome-backgrounds-2.24.1.ebuild:
+  sh stable
+
+  03 Dec 2009; Brent Baude <ranger@gentoo.org>
+  gnome-backgrounds-2.24.1.ebuild:
+  Marking gnome-backgrounds-2.24.1 ppc64 stable for bug 281427
+
+  28 Nov 2009; Raúl Porcel <armin76@gentoo.org>
+  gnome-backgrounds-2.24.1.ebuild:
+  alpha/ia64/sparc stable wrt #281427
+
+  05 Nov 2009; Markus Meier <maekke@gentoo.org>
+  gnome-backgrounds-2.24.1.ebuild:
+  arm stable, bug #281427
+
+*gnome-backgrounds-2.28.0 (29 Oct 2009)
+
+  29 Oct 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-backgrounds-2.28.0.ebuild:
+  New version for GNOME 2.28.
+
+  25 Oct 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-backgrounds-2.20.0.ebuild, -gnome-backgrounds-2.22.0.ebuild:
+  Clean up old revisions.
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> gnome-backgrounds-2.24.1.ebuild:
+  ppc stable #281427
+
+  16 Oct 2009; Markus Meier <maekke@gentoo.org>
+  gnome-backgrounds-2.24.1.ebuild:
+  x86 stable, bug #281427
+
+  08 Oct 2009; Olivier Crête <tester@gentoo.org>
+  gnome-backgrounds-2.24.1.ebuild:
+  Stable on amd64, bug #281427
+
+  28 Apr 2009; Raúl Porcel <armin76@gentoo.org>
+  gnome-backgrounds-2.24.0.ebuild:
+  sh stable
+
+  27 Apr 2009; Jeroen Roovers <jer@gentoo.org> gnome-backgrounds-2.24.0:
+  Stable for HPPA (bug #260063).
+
+  27 Apr 2009; Raúl Porcel <armin76@gentoo.org>
+  gnome-backgrounds-2.24.0.ebuild:
+  arm stable
+
+  12 Apr 2009; Friedrich Oslage <bluebird@gentoo.org>
+  gnome-backgrounds-2.24.0.ebuild:
+  Stable on sparc, bug #260063
+
+*gnome-backgrounds-2.24.1 (19 Mar 2009)
+
+  19 Mar 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-backgrounds-2.24.1.ebuild:
+  Bump to 2.24.1. Background for gnome 2.26 (no you read well...)
+
+  18 Mar 2009; Raúl Porcel <armin76@gentoo.org>
+  gnome-backgrounds-2.24.0.ebuild:
+  alpha/ia64 stable wrt #260063
+
+  15 Mar 2009; Markus Meier <maekke@gentoo.org>
+  gnome-backgrounds-2.24.0.ebuild:
+  x86 stable, bug #260063
+
+  11 Mar 2009; Daniel Gryniewicz <dang@gentoo.org>
+  gnome-backgrounds-2.24.0.ebuild:
+  Marked stable on amd64
+
+  06 Mar 2009; Brent Baude <ranger@gentoo.org>
+  gnome-backgrounds-2.24.0.ebuild:
+  Marking gnome-backgrounds-2.24.0 ppc stable for bug 260063
+
+  05 Mar 2009; Brent Baude <ranger@gentoo.org>
+  gnome-backgrounds-2.24.0.ebuild:
+  Marking gnome-backgrounds-2.24.0 ppc64 stable for bug 260063
+
+  13 Nov 2008; Brent Baude <ranger@gentoo.org>
+  gnome-backgrounds-2.22.0.ebuild:
+  Marking gnome-backgrounds-2.22.0 ppc64 stable for bug 236971
+
+*gnome-backgrounds-2.24.0 (11 Oct 2008)
+
+  11 Oct 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-backgrounds-2.20.0.ebuild, +gnome-backgrounds-2.24.0.ebuild:
+  New version for GNOME 2.24. New set of backgrounds.
+
+  25 Sep 2008; Jeroen Roovers <jer@gentoo.org>
+  gnome-backgrounds-2.22.0.ebuild:
+  Stable for HPPA (bug #236971).
+
+  12 Aug 2008; Raúl Porcel <armin76@gentoo.org>
+  gnome-backgrounds-2.22.0.ebuild:
+  alpha/ia64/sparc stable wrt #229709
+
+  10 Aug 2008; Markus Meier <maekke@gentoo.org>
+  gnome-backgrounds-2.22.0.ebuild:
+  x86 stable, bug #229709
+
+  30 Jul 2008; Brent Baude <ranger@gentoo.org>
+  gnome-backgrounds-2.22.0.ebuild:
+  Marking gnome-backgrounds-2.22.0 ppc stable for bug 229709
+
+  26 Jul 2008; Olivier Crête <tester@gentoo.org>
+  gnome-backgrounds-2.22.0.ebuild:
+  Stable on amd64, bug #229709
+
+*gnome-backgrounds-2.22.0 (17 Mar 2008)
+
+  17 Mar 2008; Mart Raudsepp <leio@gentoo.org>
+  +gnome-backgrounds-2.22.0.ebuild:
+  Version bump for GNOME-2.22 - includes only translation updates
+
+  29 Nov 2007; Jeroen Roovers <jer@gentoo.org>
+  gnome-backgrounds-2.20.0.ebuild:
+  Stable for HPPA (bug #199740).
+
+  26 Nov 2007; Markus Rothe <corsair@gentoo.org>
+  gnome-backgrounds-2.20.0.ebuild:
+  Stable on ppc64; bug #199740
+
+  24 Nov 2007; Brent Baude <ranger@gentoo.org>
+  gnome-backgrounds-2.20.0.ebuild:
+  Marking gnome-backgrounds-2.20.0 ppc stable for bug 199740
+
+  22 Nov 2007; Raúl Porcel <armin76@gentoo.org>
+  gnome-backgrounds-2.20.0.ebuild:
+  alpha/ia64/sparc stable wrt #199740
+
+  21 Nov 2007; Dawid Węgliński <cla@gentoo.org>
+  gnome-backgrounds-2.20.0.ebuild:
+  Stable on x86 (bug #199740)
+
+  20 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  gnome-backgrounds-2.20.0.ebuild:
+  amd64 stable wrt #199740
+
+*gnome-backgrounds-2.20.0 (12 Oct 2007)
+
+  12 Oct 2007; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-backgrounds-2.14.2.1.ebuild, +gnome-backgrounds-2.20.0.ebuild:
+  bump to 2.20.0 and prune 2.14 version
+
+  22 Sep 2007; Tom Gall <tgall@gentoo.org>
+  gnome-backgrounds-2.18.3.ebuild:
+  stable on ppc64
+
+  12 Sep 2007; Roy Marples <uberlord@gentoo.org>
+  gnome-backgrounds-2.18.3.ebuild:
+  Keyworded ~x86-fbsd
+
+  07 Sep 2007; Jeroen Roovers <jer@gentoo.org>
+  gnome-backgrounds-2.18.3.ebuild:
+  Stable for HPPA (bug #185823).
+
+  11 Aug 2007; Andrej Kacian <ticho@gentoo.org>
+  gnome-backgrounds-2.18.3.ebuild:
+  Stable on x86, bug #185823.
+
+  10 Aug 2007; Christoph Mende <angelos@gentoo.org>
+  gnome-backgrounds-2.18.3.ebuild:
+  Stable on amd64 wrt bug #185823
+
+  08 Aug 2007; Raúl Porcel <armin76@gentoo.org>
+  gnome-backgrounds-2.18.3.ebuild:
+  alpha/ia64 stable wrt #185823
+
+  07 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  gnome-backgrounds-2.18.3.ebuild:
+  Stable on ppc wrt bug #185823.
+
+  07 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gnome-backgrounds-2.18.3.ebuild:
+  Stable on sparc wrt #185823
+
+*gnome-backgrounds-2.18.3 (07 Jul 2007)
+
+  07 Jul 2007; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-backgrounds-2.18.3.ebuild:
+  bump to 2.18.3
+
+  05 Jul 2007; Roy Marples <uberlord@gentoo.org>
+  gnome-backgrounds-2.16.2.ebuild:
+  Keyworded ~x86-fbsd.
+
+  21 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  gnome-backgrounds-2.16.2.ebuild:
+  Stable on IA64, bug 156662.
+
+  19 Jan 2007; Jeroen Roovers <jer@gentoo.org>
+  gnome-backgrounds-2.16.2.ebuild:
+  Stable for HPPA (bug #147751).
+
+  14 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  gnome-backgrounds-2.16.2.ebuild:
+  Stable on Alpha.
+
+  21 Dec 2006; Markus Rothe <corsair@gentoo.org>
+  gnome-backgrounds-2.16.2.ebuild:
+  Stable on ppc64; bug #156662
+
+  18 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gnome-backgrounds-2.16.2.ebuild:
+  Stable on sparc too bleh me
+
+  16 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  gnome-backgrounds-2.16.2.ebuild:
+  Stable on ppc wrt bug #156662.
+
+  12 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  gnome-backgrounds-2.16.2.ebuild:
+  Stable on amd64 wrt bug #156662.
+
+  10 Dec 2006; Andrej Kacian <ticho@gentoo.org>
+  gnome-backgrounds-2.16.2.ebuild:
+  Stable on x86, bug #156662.
+
+*gnome-backgrounds-2.16.2 (22 Nov 2006)
+
+  22 Nov 2006; Luis Medinas <metalgod@gentoo.org>
+  -gnome-backgrounds-2.16.1.ebuild, +gnome-backgrounds-2.16.2.ebuild:
+  Version Bump.
+
+  20 Nov 2006; Mart Raudsepp <leio@gentoo.org>
+  -gnome-backgrounds-2.10.2.ebuild, -gnome-backgrounds-2.12.3.1.ebuild:
+  Remove old versions
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  gnome-backgrounds-2.14.2.1.ebuild:
+  Stable on Alpha.
+
+*gnome-backgrounds-2.16.1 (13 Oct 2006)
+
+  13 Oct 2006; Mart Raudsepp <leio@gentoo.org>
+  -gnome-backgrounds-2.15.92.ebuild, +gnome-backgrounds-2.16.1.ebuild:
+  Version bump for translation updates
+
+  13 Sep 2006; Aron Griffis <agriffis@gentoo.org>
+  gnome-backgrounds-2.14.2.1.ebuild:
+  Mark 2.14.2.1 stable on ia64. #139612
+
+*gnome-backgrounds-2.15.92 (07 Sep 2006)
+
+  07 Sep 2006; Daniel Gryniewicz <dang@gentoo.org>
+  +gnome-backgrounds-2.15.92.ebuild:
+  New version for gnome 2.16
+
+  05 Sep 2006; Joshua Kinard <kumba@gentoo.org>
+  gnome-backgrounds-2.10.2.ebuild, gnome-backgrounds-2.12.3.1.ebuild,
+  gnome-backgrounds-2.14.2.1.ebuild:
+  Removing mips keywords as gnome is no longer supported on mips.
+
+  16 Aug 2006; Markus Rothe <corsair@gentoo.org>
+  gnome-backgrounds-2.14.2.1.ebuild:
+  Stable on ppc64
+
+  23 Jul 2006; Daniel Gryniewicz <dang@gentoo.org>
+  -files/Makefile.in.in.patch, -gnome-backgrounds-2.10.0.ebuild,
+  -gnome-backgrounds-2.10.1.ebuild, -gnome-backgrounds-2.12.1.ebuild,
+  -gnome-backgrounds-2.12.2.ebuild, -gnome-backgrounds-2.14.0.ebuild,
+  -gnome-backgrounds-2.14.1.ebuild:
+  Clean up unnecessary versions
+
+  17 Jul 2006; Daniel Gryniewicz <dang@gentoo.org>
+  gnome-backgrounds-2.14.2.1.ebuild:
+  Marked stable on amd64 for bug #139612
+
+  16 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  gnome-backgrounds-2.14.2.1.ebuild:
+  hppa stable, bug #139612
+
+  14 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  gnome-backgrounds-2.14.2.1.ebuild:
+  ppc stable, bug #139612
+
+  12 Jul 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  gnome-backgrounds-2.14.2.1.ebuild:
+  Stable on x86 wrt bug #139612.
+
+  10 Jul 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gnome-backgrounds-2.14.2.1.ebuild:
+  Stable on sparc wrt #139612
+
+*gnome-backgrounds-2.14.2.1 (28 Jun 2006)
+
+  28 Jun 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +gnome-backgrounds-2.14.2.1.ebuild:
+  Version bump from upstream (bug #138039)
+
+  21 Apr 2006; Thomas Cort <tcort@gentoo.org>
+  gnome-backgrounds-2.12.3.1.ebuild:
+  Stable on alpha wrt Bug #126321.
+
+*gnome-backgrounds-2.14.1 (12 Apr 2006)
+
+  12 Apr 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +gnome-backgrounds-2.14.1.ebuild:
+  Version bump for 2.14.1
+
+  24 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  gnome-backgrounds-2.12.3.1.ebuild:
+  Mark 2.12.3.1 stable on ia64
+
+  19 Mar 2006; Markus Rothe <corsair@gentoo.org>
+  gnome-backgrounds-2.12.3.1.ebuild:
+  Stable on ppc64
+
+  18 Mar 2006; Olivier Crête <tester@gentoo.org>
+  gnome-backgrounds-2.12.3.1.ebuild:
+  Stable on amd64 per bug #126321
+
+  17 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  gnome-backgrounds-2.12.3.1.ebuild:
+  Stable on x86 wrt bug #126321.
+
+  17 Mar 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  gnome-backgrounds-2.12.3.1.ebuild:
+  Stable gnome-2.12.3 for ppc, bug #126321
+
+*gnome-backgrounds-2.14.0 (14 Mar 2006)
+
+  14 Mar 2006; Joe McCann <joem@gentoo.org> +files/Makefile.in.in.patch,
+  +gnome-backgrounds-2.14.0.ebuild:
+  new release for gnome-2.14
+
+  14 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gnome-backgrounds-2.12.3.1.ebuild:
+  Stable on hppa
+
+  13 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gnome-backgrounds-2.12.3.1.ebuild:
+  Stable on sparc
+
+*gnome-backgrounds-2.12.3.1 (07 Feb 2006)
+
+  07 Feb 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  -gnome-backgrounds-2.12.3.ebuild, +gnome-backgrounds-2.12.3.1.ebuild:
+  Version bump from upstream to fix build issue
+
+  07 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  gnome-backgrounds-2.12.2.ebuild:
+  Mark 2.12.2 stable on alpha
+
+*gnome-backgrounds-2.12.3 (07 Feb 2006)
+
+  07 Feb 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +gnome-backgrounds-2.12.3.ebuild:
+  Version bump from upstream
+
+  06 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  gnome-backgrounds-2.12.2.ebuild:
+  Mark 2.12.2 stable on ia64
+
+  04 Feb 2006; Guy Martin <gmsoft@gentoo.org>
+  gnome-backgrounds-2.12.2.ebuild:
+  Stable on hppa.
+
+  22 Jan 2006; Markus Rothe <corsair@gentoo.org>
+  gnome-backgrounds-2.12.2.ebuild:
+  Stable on ppc64
+
+  22 Jan 2006; <dang@gentoo.org> gnome-backgrounds-2.12.2.ebuild:
+  Marked stable on amd64 per bug #119634
+
+  22 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  gnome-backgrounds-2.12.2.ebuild:
+  Marked ppc stable for bug #119634; Stabilize Gnome-2.12.2
+
+  22 Jan 2006; Joshua Jackson <tsunam@gentoo.org>
+  gnome-backgrounds-2.12.2.ebuild:
+  Stable on x86 for bug #119634; Stabilize Gnome-2.12.2
+
+  20 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gnome-backgrounds-2.12.2.ebuild:
+  Stable on sparc wrt #119634
+
+  18 Dec 2005; Markus Rothe <corsair@gentoo.org>
+  gnome-backgrounds-2.10.2.ebuild:
+  Stable on ppc64
+
+*gnome-backgrounds-2.12.2 (05 Dec 2005)
+
+  05 Dec 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  +gnome-backgrounds-2.12.2.ebuild:
+  Version bump from upstream
+
+  18 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  gnome-backgrounds-2.10.2.ebuild:
+  Mark 2.10.2 stable on alpha
+
+  10 Oct 2005; Hardave Riar <hardave@gentoo.org>
+  gnome-backgrounds-2.10.2.ebuild:
+  Stable on mips.
+
+  07 Oct 2005; Simon Stelling <blubb@gentoo.org>
+  gnome-backgrounds-2.10.2.ebuild:
+  stable on amd64
+
+*gnome-backgrounds-2.12.1 (07 Oct 2005)
+
+  07 Oct 2005; John N. Laliberte <allanonjl@gentoo.org>
+  -gnome-backgrounds-2.12.0.ebuild, +gnome-backgrounds-2.12.1.ebuild:
+  new version
+
+  06 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gnome-backgrounds-2.10.2.ebuild:
+  Stable on hppa, ppc.
+
+  04 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  gnome-backgrounds-2.10.2.ebuild:
+  Stable on sparc
+
+  03 Oct 2005; John N. Laliberte <allanonjl@gentoo.org>
+  gnome-backgrounds-2.10.2.ebuild:
+  stable on x86
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  gnome-backgrounds-2.10.1.ebuild:
+  Mark 2.10.1 stable on alpha
+
+*gnome-backgrounds-2.12.0 (09 Sep 2005)
+
+  09 Sep 2005; John N. Laliberte <allanonjl@gentoo.org>
+  -gnome-backgrounds-2.11.92.ebuild, +gnome-backgrounds-2.12.0.ebuild:
+  2.12 release vbump
+
+*gnome-backgrounds-2.11.92 (24 Aug 2005)
+
+  24 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  +gnome-backgrounds-2.11.92.ebuild:
+  New version.
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  gnome-backgrounds-2.10.1.ebuild:
+  stable on ia64
+
+*gnome-backgrounds-2.10.2 (14 Aug 2005)
+
+  14 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  +gnome-backgrounds-2.10.2.ebuild:
+  New version.
+
+  12 Jul 2005; Stephen P. Becker <geoman@gentoo.org>
+  gnome-backgrounds-2.10.0.ebuild, gnome-backgrounds-2.10.1.ebuild:
+  stable on mips
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  gnome-backgrounds-2.10.1.ebuild:
+  Add ~alpha keyword.
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  gnome-backgrounds-2.10.0.ebuild:
+  Stable on alpha.
+
+  26 Jun 2005; Guy Martin <gmsoft@gentoo.org>
+  gnome-backgrounds-2.10.1.ebuild:
+  Stable on hppa.
+
+  18 Jun 2005; Markus Rothe <corsair@gentoo.org>
+  gnome-backgrounds-2.10.1.ebuild:
+  Stable on ppc64
+
+  13 Jun 2005; Bryan Østergaard <kloeri@gentoo.org>
+  gnome-backgrounds-2.10.0.ebuild:
+  Add ~alpha keyword.
+
+  12 Jun 2005; Olivier Crête <tester@gentoo.org>
+  gnome-backgrounds-2.10.1.ebuild:
+  Stable on amd64
+
+  12 Jun 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  gnome-backgrounds-2.10.1.ebuild:
+  Stable on ppc.
+
+  09 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  gnome-backgrounds-2.10.1.ebuild:
+  Stable on sparc
+
+  09 Jun 2005; Markus Rothe <corsair@gentoo.org>
+  gnome-backgrounds-2.10.0.ebuild:
+  Stable on ppc64
+
+  08 May 2005; Aron Griffis <agriffis@gentoo.org>
+  gnome-backgrounds-2.10.0.ebuild, gnome-backgrounds-2.10.1.ebuild:
+  add ~ia64
+
+  06 May 2005; Markus Rothe <corsair@gentoo.org>
+  gnome-backgrounds-2.10.0.ebuild, gnome-backgrounds-2.10.1.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*gnome-backgrounds-2.10.1 (17 Apr 2005)
+
+  17 Apr 2005; Joe McCann <joem@gentoo.org>
+  +gnome-backgrounds-2.10.1.ebuild:
+  new version
+
+  23 Mar 2005; Guy Martin <gmsoft@gentoo.org> gnome-backgrounds-2.10.0.ebuild:
+  Added ~hppa (#84701).
+
+  19 Mar 2005; Mike Doty <kingtaco@gentoo.org>
+  gnome-backgrounds-2.10.0.ebuild:
+  ~amd64, bug 85028
+
+  11 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  gnome-backgrounds-2.10.0.ebuild:
+  To ~sparc
+
+*gnome-backgrounds-2.10.0 (09 Mar 2005)
+
+  09 Mar 2005; Joe McCann <joem@gentoo.org> +metadata.xml,
+  +gnome-backgrounds-2.10.0.ebuild:
+  First Release. Contains various backgrounds for the default gnome desktop

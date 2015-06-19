@@ -1,0 +1,8 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/linux/ppc64/packages,v 1.1 2012/03/06 23:38:09 darkside Exp $
+
+# Those are part of the base powerpc profile's @system set, but having them as
+# part of @system makes no sense for Gentoo Prefix.
+-*sys-fs/hfsutils
+-*sys-fs/hfsplusutils

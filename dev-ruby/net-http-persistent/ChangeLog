@@ -1,0 +1,130 @@
+# ChangeLog for dev-ruby/net-http-persistent
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/net-http-persistent/ChangeLog,v 1.27 2015/06/07 18:48:00 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  09 Apr 2015; Hans de Graaff <graaff@gentoo.org>
+  -net-http-persistent-2.9.ebuild:
+  Cleanup.
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org>
+  net-http-persistent-2.9.4.ebuild:
+  Stable for x86, wrt bug #545458
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org>
+  net-http-persistent-2.9.4.ebuild:
+  Stable for amd64, wrt bug #545458
+
+*net-http-persistent-2.9.4-r1 (04 Apr 2015)
+
+  04 Apr 2015; Hans de Graaff <graaff@gentoo.org>
+  net-http-persistent-2.9.4.ebuild, +net-http-persistent-2.9.4-r1.ebuild:
+  Create stable candidate.
+
+  22 Mar 2015; Hans de Graaff <graaff@gentoo.org>
+  net-http-persistent-2.9.4.ebuild:
+  Add ruby22.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> net-http-persistent-2.9.4.ebuild,
+  net-http-persistent-2.9.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  20 Jun 2014; Hans de Graaff <graaff@gentoo.org>
+  net-http-persistent-2.9.4.ebuild:
+  Add ruby21.
+
+  24 Apr 2014; Manuel Rüger <mrueg@gentoo.org>
+  -net-http-persistent-2.9.1.ebuild, -net-http-persistent-2.9.3.ebuild,
+  net-http-persistent-2.9.4.ebuild, net-http-persistent-2.9.ebuild:
+  Remove ruby18 support. Cleanup old.
+
+*net-http-persistent-2.9.4 (13 Feb 2014)
+
+  13 Feb 2014; Manuel Rüger <mrueg@gentoo.org>
+  +net-http-persistent-2.9.4.ebuild:
+  Version bump.
+
+*net-http-persistent-2.9.3 (10 Feb 2014)
+
+  10 Feb 2014; Manuel Rüger <mrueg@gentoo.org>
+  +net-http-persistent-2.9.3.ebuild, -net-http-persistent-2.9-r1.ebuild:
+  Version bump. Cleanup old.
+
+*net-http-persistent-2.9.1 (24 Jan 2014)
+
+  24 Jan 2014; Manuel Rüger <mrueg@gentoo.org>
+  +net-http-persistent-2.9.1.ebuild:
+  Version bump.
+
+*net-http-persistent-2.9-r1 (09 Oct 2013)
+
+  09 Oct 2013; Manuel Rüger <mrueg@gentoo.org>
+  +net-http-persistent-2.9-r1.ebuild, -net-http-persistent-2.7.ebuild,
+  -net-http-persistent-2.8.ebuild:
+  Add ruby20 target. Cleanup old.
+
+  15 Sep 2013; Agostino Sarubbo <ago@gentoo.org> net-http-persistent-2.9.ebuild:
+  Stable for x86, wrt bug #483694
+
+  15 Sep 2013; Agostino Sarubbo <ago@gentoo.org> net-http-persistent-2.9.ebuild:
+  Stable for amd64, wrt bug #483694
+
+*net-http-persistent-2.9 (28 Jul 2013)
+
+  28 Jul 2013; Manuel Rüger <mrueg@gentoo.org> +net-http-persistent-2.9.ebuild:
+  Version bump
+
+  25 Nov 2012; Thomas Kahle <tomka@gentoo.org> net-http-persistent-2.8.ebuild:
+  marked ~x86 per bug 432830
+
+*net-http-persistent-2.8 (11 Nov 2012)
+
+  11 Nov 2012; Hans de Graaff <graaff@gentoo.org>
+  +net-http-persistent-2.8.ebuild:
+  Version bump.
+
+  29 Sep 2012; Fabian Groffen <grobian@gentoo.org>
+  net-http-persistent-2.7.ebuild:
+  Added Prefix keywords, bug #432830
+
+  27 Sep 2012; Samuli Suominen <ssuominen@gentoo.org>
+  net-http-persistent-2.7.ebuild:
+  Keyword ~ppc/~ppc64 wrt #432830
+
+  26 Aug 2012; Hans de Graaff <graaff@gentoo.org>
+  -net-http-persistent-2.6.ebuild:
+  Cleanup.
+
+  14 Jul 2012; Hans de Graaff <graaff@gentoo.org>
+  net-http-persistent-2.7.ebuild:
+  Use modern key size to fix tests with openssl 1.01, bug 426614.
+
+*net-http-persistent-2.7 (14 Jul 2012)
+
+  14 Jul 2012; Hans de Graaff <graaff@gentoo.org>
+  +net-http-persistent-2.7.ebuild:
+  Version bump.
+
+  14 Jul 2012; Hans de Graaff <graaff@gentoo.org>
+  -net-http-persistent-2.3.2.ebuild, -net-http-persistent-2.3.3.ebuild:
+  Remove old versions.
+
+*net-http-persistent-2.6 (09 Apr 2012)
+
+  09 Apr 2012; Hans de Graaff <graaff@gentoo.org>
+  +net-http-persistent-2.6.ebuild:
+  Version bump.
+
+*net-http-persistent-2.3.3 (22 Dec 2011)
+
+  22 Dec 2011; Hans de Graaff <graaff@gentoo.org>
+  +net-http-persistent-2.3.3.ebuild:
+  Version bump.
+
+*net-http-persistent-2.3.2 (18 Dec 2011)
+
+  18 Dec 2011; Hans de Graaff <graaff@gentoo.org>
+  +net-http-persistent-2.3.2.ebuild, +metadata.xml:
+  Initial import. New dependency for dev-ruby/mechanize.

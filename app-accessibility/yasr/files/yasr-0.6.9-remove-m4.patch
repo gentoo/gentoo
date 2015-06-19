@@ -1,0 +1,29 @@
+diff -Naur yasr-0.6.9.orig/Makefile.am yasr-0.6.9/Makefile.am
+--- yasr-0.6.9.orig/Makefile.am	2008-02-02 06:44:05.000000000 -0600
++++ yasr-0.6.9/Makefile.am	2009-02-06 08:37:07.000000000 -0600
+@@ -7,7 +7,6 @@
+ 
+ SUBDIRS = \
+ 	$(yasr_DDIRS) \
+-m4 \
+ 	po
+ 
+ pkgdata_DATA = \
+@@ -25,4 +24,3 @@
+ 	README-fr \
+ 	README-ru
+ 
+-ACLOCAL_AMFLAGS = -I m4
+diff -Naur yasr-0.6.9.orig/configure.in yasr-0.6.9/configure.in
+--- yasr-0.6.9.orig/configure.in	2008-02-02 07:09:04.000000000 -0600
++++ yasr-0.6.9/configure.in	2009-02-06 08:36:43.000000000 -0600
+@@ -59,8 +59,7 @@
+ AM_GNU_GETTEXT(external)
+ AM_GNU_GETTEXT_VERSION([0.17])
+ 
+-AC_OUTPUT([ m4/Makefile 
+-Makefile
++AC_OUTPUT([ Makefile 
+ yasr/Makefile
+ acclogin/Makefile
+ po/Makefile.in

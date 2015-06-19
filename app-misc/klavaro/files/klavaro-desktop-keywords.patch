@@ -1,0 +1,11 @@
+--- data/klavaro.desktop.in 2015-01-07 21:52:37.877646655 -0500
++++ data/klavaro.desktop.in	2015-01-07 21:52:56.391720366 -0500
+@@ -2,7 +2,7 @@
+ Name=Klavaro
+ _Comment=A very flexible and efficient touch typing tutor.
+ # Translators: these are keywords related to the program. CAI above means Computer Aided Instruction. Feel free to add and/or change the keywords in your language.
+-_Keywords=keyboard;typing;tutor;CAI
++_Keywords=keyboard;typing;tutor;CAI;
+ 
+ Exec=klavaro
+ Icon=klavaro

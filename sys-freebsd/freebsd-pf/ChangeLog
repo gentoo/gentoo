@@ -1,0 +1,273 @@
+# ChangeLog for sys-freebsd/freebsd-pf
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-pf/ChangeLog,v 1.52 2015/06/05 16:43:55 mgorny Exp $
+
+  05 Jun 2015; Michał Górny <mgorny@gentoo.org> freebsd-pf-10.1.ebuild:
+  Bump to EAPI=5. Use upstream tarballs.
+
+  24 May 2015; Michał Górny <mgorny@gentoo.org> -freebsd-pf-9.2.ebuild,
+  -freebsd-pf-9.2_rc1.ebuild, -freebsd-pf-9.2_rc2.ebuild,
+  -freebsd-pf-9.2_rc3.ebuild:
+  Remove 9.2. Part of https://github.com/gentoo/gentoo-portage-rsync-
+  mirror/pull/126 by nigoro.
+
+*freebsd-pf-10.1 (08 Mar 2015)
+
+  08 Mar 2015; Michał Górny <mgorny@gentoo.org>
+  +files/freebsd-pf-10.0-libevent.patch, +files/freebsd-pf-10.0-pflogd.patch,
+  +freebsd-pf-10.1.ebuild:
+  Add FreeBSD 10.1 ebuilds, https://github.com/gentoo/gentoo-portage-rsync-
+  mirror/pull/46 by nigoro.
+
+*freebsd-pf-9.2 (09 Nov 2013)
+
+  09 Nov 2013; Alexis Ballier <aballier@gentoo.org> +freebsd-pf-9.2.ebuild:
+  bump to 9.2
+
+*freebsd-pf-9.2_rc3 (26 Aug 2013)
+
+  26 Aug 2013; Alexis Ballier <aballier@gentoo.org> +freebsd-pf-9.2_rc3.ebuild:
+  bump to rc3
+
+*freebsd-pf-9.2_rc2 (22 Aug 2013)
+
+  22 Aug 2013; Alexis Ballier <aballier@gentoo.org> +freebsd-pf-9.2_rc2.ebuild:
+  bump to rc2
+
+  11 Aug 2013; Alexis Ballier <aballier@gentoo.org> freebsd-pf-9.2_rc1.ebuild:
+  update /usr/src/sys symlink after recent changes to -sources
+
+*freebsd-pf-9.2_rc1 (10 Aug 2013)
+
+  10 Aug 2013; Alexis Ballier <aballier@gentoo.org> +freebsd-pf-9.2_rc1.ebuild:
+  Version bump, based on work of Yuta SATOH in bug #476646
+
+  09 Aug 2013; Alexis Ballier <aballier@gentoo.org> -freebsd-pf-9.0.ebuild:
+  remove old
+
+  09 Aug 2013; Alexis Ballier <aballier@gentoo.org> freebsd-pf-9.1.ebuild:
+  depend on the same version of mk-defs, bug #476646 by Yuta SATOH
+
+  18 Jun 2013; Alexis Ballier <aballier@gentoo.org> -freebsd-pf-7.2.ebuild,
+  -freebsd-pf-8.0.ebuild:
+  remove old
+
+  27 Jan 2013; Alexis Ballier <aballier@gentoo.org> -freebsd-pf-9.1_rc1.ebuild,
+  -freebsd-pf-9.1_rc2.ebuild, -freebsd-pf-9.1_rc3.ebuild:
+  remove rc versions
+
+  27 Jan 2013; Alexis Ballier <aballier@gentoo.org> freebsd-pf-9.1.ebuild:
+  pf.conf{,.example} are provided by freebsd-share now, bug #449542 by Yuta
+  SATOH
+
+*freebsd-pf-9.1 (27 Jan 2013)
+
+  27 Jan 2013; Alexis Ballier <aballier@gentoo.org> +freebsd-pf-9.1.ebuild:
+  Bump to 9.1
+
+*freebsd-pf-9.1_rc3 (06 Nov 2012)
+
+  06 Nov 2012; Alexis Ballier <aballier@gentoo.org> +freebsd-pf-9.1_rc3.ebuild:
+  bump to rc3
+
+*freebsd-pf-9.1_rc2 (14 Oct 2012)
+
+  14 Oct 2012; Alexis Ballier <aballier@gentoo.org> +freebsd-pf-9.1_rc2.ebuild:
+  bump to 9.1_rc2
+
+  11 Sep 2012; Alexis Ballier <aballier@gentoo.org> freebsd-pf-7.2.ebuild,
+  freebsd-pf-8.0.ebuild, freebsd-pf-8.2.ebuild, freebsd-pf-9.0.ebuild,
+  freebsd-pf-9.1_rc1.ebuild:
+  inherit user.eclass for enewgroup
+
+*freebsd-pf-9.1_rc1 (11 Sep 2012)
+
+  11 Sep 2012; Alexis Ballier <aballier@gentoo.org> +freebsd-pf-9.1_rc1.ebuild:
+  bump to 9.1_rc1 from bsd overlay by Yuta SATOH, bug #426838 and keyword
+  ~amd64-fbsd
+
+  30 Mar 2012; Alexis Ballier <aballier@gentoo.org> -freebsd-pf-9.0_rc1.ebuild,
+  -freebsd-pf-9.0_rc2.ebuild, -freebsd-pf-9.0_rc3.ebuild:
+  remove old
+
+*freebsd-pf-9.0 (16 Jan 2012)
+
+  16 Jan 2012; Alexis Ballier <aballier@gentoo.org> +freebsd-pf-9.0.ebuild:
+  bump to 9.0
+
+*freebsd-pf-9.0_rc3 (09 Dec 2011)
+
+  09 Dec 2011; Alexis Ballier <aballier@gentoo.org> +freebsd-pf-9.0_rc3.ebuild:
+  bump to 9.0_rc3
+
+*freebsd-pf-9.0_rc2 (07 Dec 2011)
+
+  07 Dec 2011; Alexis Ballier <aballier@gentoo.org> +freebsd-pf-9.0_rc2.ebuild:
+  bump to rc2
+
+*freebsd-pf-9.0_rc1 (07 Nov 2011)
+
+  07 Nov 2011; Alexis Ballier <aballier@gentoo.org> +freebsd-pf-9.0_rc1.ebuild,
+  +files/freebsd-pf-9.0-bpf.patch, +files/freebsd-pf-9.0-getline.patch,
+  +files/freebsd-pf-9.0-libevent.patch,
+  +files/freebsd-pf-9.0-pcap_pollution.patch,
+  +files/freebsd-pf-9.0-pflogd.patch:
+  bump to 9.0_rc1
+
+*freebsd-pf-8.2 (06 Jul 2011)
+
+  06 Jul 2011; Alexis Ballier <aballier@gentoo.org> +freebsd-pf-8.2.ebuild:
+  bump to 8.2
+
+*freebsd-pf-8.0 (19 Mar 2010)
+
+  19 Mar 2010; Alexis Ballier <aballier@gentoo.org> +freebsd-pf-8.0.ebuild:
+  bump to 8.0 from the bsd overlay
+
+  11 Mar 2010; Alexis Ballier <aballier@gentoo.org>
+  -files/freebsd-pf-6.0-pcap.patch, -freebsd-pf-6.2.ebuild,
+  -freebsd-pf-6.2-r1.ebuild, -freebsd-pf-7.1.ebuild:
+  remove old
+
+*freebsd-pf-7.2 (22 May 2009)
+
+  22 May 2009; Alexis Ballier <aballier@gentoo.org> +freebsd-pf-7.2.ebuild:
+  bump to 7.2
+
+*freebsd-pf-7.1 (22 Jan 2009)
+
+  22 Jan 2009; Javier Villavicencio <the_paya@gentoo.org>
+  +files/freebsd-pf-7.0-libevent.patch,
+  +files/freebsd-pf-7.0-pcap_pollution.patch, files/pf.confd,
+  +freebsd-pf-7.1.ebuild:
+  Import 7.1 ebuilds from gentoo-bsd overlay.
+
+*freebsd-pf-6.2-r1 (06 Apr 2007)
+
+  06 Apr 2007; Roy Marples <uberlord@gentoo.org> +freebsd-pf-6.2-r1.ebuild:
+  Bump for a non bash init script.
+
+  23 Feb 2007; Roy Marples <uberlord@gentoo.org> files/pf.initd:
+  Don't force bashisms.
+
+  08 Feb 2007; Javier Villavicencio <the_paya@gentoo.org>
+  freebsd-pf-6.2.ebuild:
+  Build ftp-proxy as well, thanks to Emanuele A. Bagnaschi for reporting in
+  bug 165846.
+
+  18 Jan 2007; Timothy Redaelli <drizzt@gentoo.org> freebsd-pf-6.2.ebuild:
+  Fix .gz.bz2 problem in manpages, thanks to geekounet` for reporting and
+  Flameeyes for fixing
+
+*freebsd-pf-6.2 (15 Jan 2007)
+
+  15 Jan 2007; Timothy Redaelli <drizzt@gentoo.org>
+  -freebsd-pf-6.2_rc2.ebuild, +freebsd-pf-6.2.ebuild:
+  Bump to 6.2 and remove old version.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> -freebsd-pf-6.1.ebuild:
+  Remove 6.1 ebuild.
+
+*freebsd-pf-6.2_rc2 (29 Dec 2006)
+
+  29 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-pf-6.2_beta3.ebuild, -freebsd-pf-6.2_rc1.ebuild,
+  +freebsd-pf-6.2_rc2.ebuild:
+  Bump to rc2 and remove older versions.
+
+*freebsd-pf-6.2_rc1 (19 Nov 2006)
+
+  19 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-pf-6.2_rc1.ebuild:
+  Version bump to 6.2-RC1.
+
+  18 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-pf-6.2_beta2.ebuild:
+  Remove 6.2_beta2.
+
+*freebsd-pf-6.2_beta3 (01 Nov 2006)
+
+  01 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-pf-6.2_beta3.ebuild:
+  Bump to 6.2_beta3.
+
+  19 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Remove 6.2_beta1 ebuild.
+
+  19 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-pf-6.2_beta1.ebuild:
+  Remove 6.2_beta1 ebuild.
+
+*freebsd-pf-6.2_beta2 (05 Oct 2006)
+
+  05 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-pf-6.2_beta2.ebuild:
+  Version 6.2_beta2.
+
+*freebsd-pf-6.2_beta1 (21 Sep 2006)
+
+  21 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-pf-6.2_beta1.ebuild:
+  Add 6.2_beta1 ebuilds.
+
+  27 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-pf-6.0-r1.ebuild:
+  Remove 6.0 version.
+
+  18 Jul 2006; Javier Villavicencio <the_paya@gentoo.org>
+  freebsd-pf-6.1.ebuild:
+  Remove ftp-proxy since it is already installed by freebsd-libexec.
+
+*freebsd-pf-6.1 (09 May 2006)
+
+  09 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-pf-6.1_rc2.ebuild, +freebsd-pf-6.1.ebuild:
+  Update to 6.1-RELEASE.
+
+*freebsd-pf-6.1_rc2 (02 May 2006)
+
+  02 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-pf-6.1_rc1.ebuild, +freebsd-pf-6.1_rc2.ebuild:
+  Update to 6.1_rc2.
+
+  01 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-pf-6.0-r1.ebuild, +freebsd-pf-6.1_rc1.ebuild:
+  Update to 6.1_rc1, install pf.conf as documentation instead than in /etc to
+  avoid confusion with an already in-place configuration file.
+
+*freebsd-pf-6.1_rc1 (01 May 2006)
+
+  01 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-pf-6.1_rc1.ebuild:
+  Update to 6.1_rc1, install pf.conf as documentation instead than in /etc to
+  avoid confusion with an already in-place configuration file.
+
+  20 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-pf-6.0-r1.ebuild:
+  Drop dependency on freebsd-headers.
+
+*freebsd-pf-6.0-r1 (14 Apr 2006)
+
+  14 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> +files/pf.confd,
+  +files/pf.initd, -freebsd-pf-6.0.ebuild, +freebsd-pf-6.0-r1.ebuild:
+  Add init script for pf, based on the one contributed by Robert Sebastian
+  Gerus in bug #129171.
+
+  04 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> freebsd-pf-6.0.ebuild:
+  Add dependency over libpcap.
+
+  04 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/freebsd-pf-6.0-pcap.patch, freebsd-pf-6.0.ebuild:
+  Add patch to allow building using portage's libpcap, see bug #124759.
+
+*freebsd-pf-6.0 (01 Apr 2006)
+
+  01 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> +metadata.xml,
+  +freebsd-pf-6.0.ebuild:
+  Import into portage.
+
+  13 Feb 2006; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Fix compiling. Add pf.conf and pf.os here instead that on baselayout.
+
+  01 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Added freebsd-pf package with tools to maintain pf firewall.

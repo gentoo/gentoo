@@ -1,0 +1,25 @@
+# ChangeLog for app-misc/abduco
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/abduco/ChangeLog,v 1.5 2015/02/20 00:24:17 xmw Exp $
+
+*abduco-0.3 (20 Feb 2015)
+
+  20 Feb 2015; Michael Weber <xmw@gentoo.org> +abduco-0.3.ebuild,
+  -abduco-0.1.ebuild:
+  Version bump bu lorem_ipsum
+
+*abduco-0.2 (24 Nov 2014)
+
+  24 Nov 2014; Michael Weber <xmw@gentoo.org> +abduco-0.2.ebuild:
+  Version bump (Hendrik v. Raven).
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> abduco-0.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  11 Jul 2014; Michael Weber <xmw@gentoo.org> abduco-0.1.ebuild:
+  Adding KEYWORDS ~arm and ~x86
+
+*abduco-0.1 (10 Jul 2014)
+
+  10 Jul 2014; Michael Weber <xmw@gentoo.org> +abduco-0.1.ebuild, +metadata.xml:
+  Initial import, ebuild by lorem_ipsum, respect CC, fail on test-error.

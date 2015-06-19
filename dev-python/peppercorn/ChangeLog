@@ -1,0 +1,48 @@
+# ChangeLog for dev-python/peppercorn
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/peppercorn/ChangeLog,v 1.11 2015/06/07 15:13:42 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> peppercorn-0.4-r1.ebuild,
+  peppercorn-0.5.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> peppercorn-0.5.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> peppercorn-0.5.ebuild:
+  amd64 stable, bug 540290
+
+  18 Oct 2014; Ian Delaney <idella4@gentoo.org> peppercorn-0.5.ebuild:
+  take out un-needed IUSE test flag, dep nose
+
+*peppercorn-0.5 (18 Oct 2014)
+
+  18 Oct 2014; Ian Delaney <idella4@gentoo.org> +peppercorn-0.5.ebuild,
+  -peppercorn-0.3.ebuild, -peppercorn-0.4.ebuild:
+  bump; clean old python impls, add IUSE test, doc and all that goes with them,
+  tidy, remove old
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> peppercorn-0.4-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> peppercorn-0.4-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*peppercorn-0.4-r1 (16 Aug 2013)
+
+  16 Aug 2013; Michał Górny <mgorny@gentoo.org> +peppercorn-0.4-r1.ebuild:
+  Migrate to distutils-r1.
+
+*peppercorn-0.4 (22 Feb 2012)
+
+  22 Feb 2012; Marien Zwart <marienz@gentoo.org> +peppercorn-0.4.ebuild:
+  Version bump, adding Python 3 support.
+
+*peppercorn-0.3 (30 Jul 2011)
+
+  30 Jul 2011; Rafael G. Martins <rafaelmartins@gentoo.org>
+  +peppercorn-0.3.ebuild, +metadata.xml:
+  Initial version. Based on ebuild by Jan Matějka (bug #368013).

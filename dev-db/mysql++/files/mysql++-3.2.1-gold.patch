@@ -1,0 +1,11 @@
+--- Makefile.in.orig	2013-09-27 09:51:48.646667442 -0400
++++ Makefile.in	2013-09-27 09:52:22.026603184 -0400
+@@ -36,7 +36,7 @@
+ CXX = @CXX@
+ CXXFLAGS = @CXXFLAGS@
+ CPPFLAGS = @CPPFLAGS@
+-LDFLAGS = @LDFLAGS@
++LDFLAGS = @LDFLAGS@ @PTHREAD_CFLAGS@
+ 
+ ### Variables: ###
+ 

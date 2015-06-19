@@ -1,0 +1,17 @@
+ pdbcat.C | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/pdbcat.C b/pdbcat.C
+index 0786d9b..387edf9 100644
+--- a/pdbcat.C
++++ b/pdbcat.C
+@@ -17,7 +17,8 @@
+ #include <stdlib.h> // for exit
+ #include <stdio.h>  // for feof() and other file manip stuff
+ #include <string.h> // for strcasecmp
+-#include <iostream.h>
++#include <iostream>
++using namespace std;
+ #include "Common.h"
+ #include "PDBData.h"
+ 

@@ -1,0 +1,48 @@
+# ChangeLog for net-mail/queue-repair
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/queue-repair/ChangeLog,v 1.12 2011/07/11 15:15:31 aballier Exp $
+
+  11 Jul 2011; Alexis Ballier <aballier@gentoo.org> queue-repair-0.9.0.ebuild:
+  keyword ~x86-fbsd
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> queue-repair-0.9.0.ebuild:
+  Drop to ~mips
+
+  12 Dec 2006; Bryan Østergaard <kloeri@gentoo.org>
+  queue-repair-0.9.0.ebuild:
+  Stable on ia64, bug 155137.
+
+  23 Nov 2006; <blubb@gentoo.org> queue-repair-0.9.0.ebuild:
+  stable on amd64
+
+  21 Oct 2006; Michael Hanselmann <hansmi@gentoo.org>
+  queue-repair-0.9.0.ebuild:
+  Stable on ppc64.
+
+  19 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  queue-repair-0.9.0.ebuild:
+  Add ~ia64 keyword, bug 145528.
+
+  29 Sep 2006; Thomas Cort <tcort@gentoo.org> queue-repair-0.9.0.ebuild:
+  Stable on alpha.
+
+  31 Aug 2006; Thomas Cort <tcort@gentoo.org> queue-repair-0.9.0.ebuild:
+  Added ~amd64 keyword.
+
+  30 Aug 2006; Markus Rothe <corsair@gentoo.org> queue-repair-0.9.0.ebuild:
+  Added ~ppc64
+
+  17 Jun 2006; Michael Hanselmann <hansmi@gentoo.org>
+  queue-repair-0.9.0.ebuild:
+  Stable on hppa, mips, ppc, sparc, x86.
+
+  13 Feb 2006; Michael Hanselmann <hansmi@gentoo.org>
+  queue-repair-0.9.0.ebuild:
+  Added to ~x86. Tested by Frank Schmitt.
+
+*queue-repair-0.9.0 (12 Feb 2006)
+
+  12 Feb 2006; Michael Hanselmann <hansmi@gentoo.org> +metadata.xml,
+  +queue-repair-0.9.0.ebuild:
+  Imported, ebuild by me.
+

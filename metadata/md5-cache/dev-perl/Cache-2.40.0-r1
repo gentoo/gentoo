@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=virtual/perl-DB_File-1.72 >=virtual/perl-File-Spec-0.8 >=virtual/perl-Storable-1 >=dev-perl/Digest-SHA1-2.01 dev-perl/Heap >=dev-perl/IO-String-1.02 dev-perl/TimeDate dev-perl/File-NFSLock dev-lang/perl:=[-build(-)]
+DESCRIPTION=the Cache interface
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Cache/
+KEYWORDS=amd64 x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=virtual/perl-DB_File-1.72 >=virtual/perl-File-Spec-0.8 >=virtual/perl-Storable-1 >=dev-perl/Digest-SHA1-2.01 dev-perl/Heap >=dev-perl/IO-String-1.02 dev-perl/TimeDate dev-perl/File-NFSLock dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/C/CL/CLEISHMAN/Cache-2.04.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=4864ba93784c6520d78613e55e359ac7

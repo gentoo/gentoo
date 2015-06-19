@@ -1,0 +1,26 @@
+# ChangeLog for x11-misc/easystroke
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/easystroke/ChangeLog,v 1.4 2015/02/01 11:01:36 jer Exp $
+
+  01 Feb 2015; Jeroen Roovers <jer@gentoo.org> easystroke-0.6.0-r1.ebuild:
+  Add x11-base/xorg-server dependency required for xorg/xserver-properties.h
+  (bug #538386 by Toralf Förster).
+
+  05 Jun 2014; Jeroen Roovers <jer@gentoo.org> easystroke-0.6.0-r1.ebuild:
+  Install all linguas when LINGUAS is unset.
+
+*easystroke-0.6.0-r1 (04 Jun 2014)
+
+  04 Jun 2014; Jeroen Roovers <jer@gentoo.org> +easystroke-0.6.0-r1.ebuild,
+  +files/easystroke-0.6.0-buttons-scroll-send.patch,
+  +files/easystroke-0.6.0-reinstate-signal-handlers.patch:
+  Add upstream patches for bug #512428 by Small Penguin.
+
+*easystroke-0.6.0 (04 Jun 2014)
+
+  04 Jun 2014; Jeroen Roovers <jer@gentoo.org> +easystroke-0.6.0.ebuild,
+  +files/easystroke-0.6.0-cellrendertextish.patch,
+  +files/easystroke-0.6.0-desktop.patch, +files/easystroke-0.6.0-gentoo.patch,
+  +metadata.xml:
+  Initial commit (bug #253783 by ron widler).
+

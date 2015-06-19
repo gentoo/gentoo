@@ -1,0 +1,53 @@
+# ChangeLog for net-irc/irssi-xmpp
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/irssi-xmpp/ChangeLog,v 1.11 2012/12/22 19:10:05 xarthisius Exp $
+
+  22 Dec 2012; Kacper Kowalik <xarthisius@gentoo.org> metadata.xml:
+  Drop myself from metadata.xml
+
+  14 Dec 2012; Agostino Sarubbo <ago@gentoo.org> irssi-xmpp-0.52.ebuild:
+  Stable for x86, wrt bug #440864
+
+  14 Dec 2012; Agostino Sarubbo <ago@gentoo.org> irssi-xmpp-0.52.ebuild:
+  Stable for amd64, wrt bug #440864
+
+  28 Oct 2012; Agostino Sarubbo <ago@gentoo.org> irssi-xmpp-0.52.ebuild:
+  Restore loudmouth[debug] wrt #392613
+
+  28 Oct 2012; Agostino Sarubbo <ago@gentoo.org>
+  -files/irssi-xmpp-0.51-build_system.patch,
+  -files/irssi-xmpp-0.51-implicit_conversion.patch, -irssi-xmpp-0.51.ebuild:
+  Remove old
+
+*irssi-xmpp-0.52 (12 Mar 2012)
+
+  12 Mar 2012; Kacper Kowalik <xarthisius@gentoo.org> +irssi-xmpp-0.52.ebuild:
+  Version bump
+
+  04 Dec 2011; Kacper Kowalik <xarthisius@gentoo.org> irssi-xmpp-0.51.ebuild:
+  Don't depend on loudmouth with debug enabled wrt bug 392613 by Adrian
+  <adrian@planetcoding.net>
+
+*irssi-xmpp-0.51 (05 Sep 2010)
+
+  05 Sep 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  -irssi-xmpp-0.50.ebuild, +irssi-xmpp-0.51.ebuild,
+  +files/irssi-xmpp-0.51-build_system.patch,
+  +files/irssi-xmpp-0.51-implicit_conversion.patch, metadata.xml:
+  Version bump wrt bug 322991. Fix building with --as-needed wrt bug 334861,
+  fix parallel build, fix implicit function conversions that resulted in
+  SIGSEGV on amd64. Fix docs wrt bug 322355. Remove old. Claim ownership
+  with Tobias' blessing.
+
+  15 Dec 2009; Peter Volkov <pva@gentoo.org> metadata.xml:
+  metadata.xml: added required herd tag.
+
+  03 Nov 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  irssi-xmpp-0.50.ebuild:
+  Add ~amd64
+
+*irssi-xmpp-0.50 (03 Nov 2009)
+
+  03 Nov 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  +irssi-xmpp-0.50.ebuild, +metadata.xml:
+  Initial import, ebuild by Tim Weber (#291577)

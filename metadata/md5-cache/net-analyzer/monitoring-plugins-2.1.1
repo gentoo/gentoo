@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure postinst preinst
+DEPEND=dev-lang/perl ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) ssl? ( !gnutls? ( dev-libs/openssl ) gnutls? ( net-libs/gnutls ) ) dns? ( net-dns/bind-tools ) game? ( games-util/qstat ) fping? ( net-analyzer/fping ) samba? ( net-fs/samba ) ssh? ( net-misc/openssh ) snmp? ( dev-perl/Net-SNMP net-analyzer/net-snmp[-minimal] )
+DESCRIPTION=50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
+EAPI=5
+HOMEPAGE=https://www.monitoring-plugins.org/
+IUSE=gnutls ipv6 ldap mysql dns fping game postgres samba snmp ssh +ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-lang/perl ldap? ( net-nds/openldap ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) ssl? ( !gnutls? ( dev-libs/openssl ) gnutls? ( net-libs/gnutls ) ) dns? ( net-dns/bind-tools ) game? ( games-util/qstat ) fping? ( net-analyzer/fping ) samba? ( net-fs/samba ) ssh? ( net-misc/openssh ) snmp? ( dev-perl/Net-SNMP net-analyzer/net-snmp[-minimal] ) !net-analyzer/nagios-plugins
+RESTRICT=test
+SLOT=0
+SRC_URI=https://www.monitoring-plugins.org/download/monitoring-plugins-2.1.1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=629e983f3af2b6c8b6f16329214e2bdc

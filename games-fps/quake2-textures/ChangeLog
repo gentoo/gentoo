@@ -1,0 +1,26 @@
+# ChangeLog for games-fps/quake2-textures
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake2-textures/ChangeLog,v 1.5 2015/01/31 16:35:13 tupone Exp $
+
+  31 Jan 2015; Tupone Alfredo <tupone@gentoo.org>
+  quake2-textures-0_beta8.ebuild:
+  EAPI 5
+
+  24 Apr 2014; Ulrich Müller <ulm@gentoo.org> quake2-textures-0_beta8.ebuild:
+  Update HOMEPAGE and SRC_URI. Fix LICENSE, add mirror and bindist
+  restrictions. Bug 470982.
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org>
+  quake2-textures-0_beta8.ebuild:
+  Replacing einfo with elog
+
+  19 Oct 2006; <tupone@gentoo.org> quake2-textures-0_beta8.ebuild:
+  Added ~amd64 keyword. Bug #140726 by Michael Boone
+
+*quake2-textures-0_beta8 (27 Jun 2006)
+
+  27 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +quake2-textures-0_beta8.ebuild:
+  Initial import. Ebuild by Paul Bredbury <brebs@sent.com>. Closing bug
+  #137529.
+

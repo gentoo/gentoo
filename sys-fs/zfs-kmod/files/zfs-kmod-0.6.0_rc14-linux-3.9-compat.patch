@@ -1,0 +1,32 @@
+commit 3d8c9c9de0a5e1f1b496fcef2750a01a45860b04
+Author: Richard Yao <ryao@cs.stonybrook.edu>
+Date:   Mon Mar 4 15:52:11 2013 -0500
+
+    Linux 3.9 compat: Undefine GCC_VERSION
+    
+    The mainline kernel started defining GCC_VERSION with commit
+    torvalds/linux@3f3f8d2f48acfd8ed3b8e6b7377935da57b27b16. Unfortunately,
+    LZ4 also defines this macro, but the two defintions are incompatible. We
+    undefine GCC_VERSION in lz4.c to handle this.
+    
+    Signed-off-by: Richard Yao <ryao@cs.stonybrook.edu>
+
+diff --git a/module/zfs/lz4.c b/module/zfs/lz4.c
+index b9850c0..8afaad1 100644
+--- a/module/zfs/lz4.c
++++ b/module/zfs/lz4.c
+@@ -243,6 +243,14 @@ lz4_decompress(void *s_start, void *d_start, size_t s_len, size_t d_len, int n)
+ /* Disable restrict */
+ #define	restrict
+ 
++/*
++ * Linux : GCC_VERSION is defined as of 3.9-rc1, so undefine it.
++ * torvalds/linux@3f3f8d2f48acfd8ed3b8e6b7377935da57b27b16
++ */
++#ifdef GCC_VERSION
++#undef GCC_VERSION
++#endif
++
+ #define	GCC_VERSION (__GNUC__ * 100 + __GNUC_MINOR__)
+ 
+ #if (GCC_VERSION >= 302) || (__INTEL_COMPILER >= 800) || defined(__clang__)

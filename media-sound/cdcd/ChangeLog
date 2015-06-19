@@ -1,0 +1,124 @@
+# ChangeLog for media-sound/cdcd
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/cdcd/ChangeLog,v 1.31 2014/12/16 10:42:44 jer Exp $
+
+  16 Dec 2014; Jeroen Roovers <jer@gentoo.org> cdcd-0.6.6-r2.ebuild,
+  +files/cdcd-0.6.6-acinclude.m4, +files/cdcd-0.6.6-configure.patch,
+  -files/cdcd-0.6.6-fbsd.patch:
+  Remove sys-libs/ncurses dependency as nothing uses it (bug #459538).
+
+  19 Jun 2009; Brent Baude <ranger@gentoo.org> cdcd-0.6.6-r2.ebuild:
+  stable ppc64, bug 272102
+
+  10 Jun 2009; Raúl Porcel <armin76@gentoo.org> cdcd-0.6.6-r2.ebuild:
+  sparc stable wrt #272102
+
+  03 Jun 2009; Markus Meier <maekke@gentoo.org> cdcd-0.6.6-r2.ebuild:
+  amd64/x86 stable, bug #272102
+
+  06 Nov 2008; Jeroen Roovers <jer@gentoo.org> cdcd-0.6.6-r2.ebuild:
+  Marked ~hppa too.
+
+*cdcd-0.6.6-r2 (21 Jan 2007)
+
+  21 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -files/cdcd-0.6.4-gentoo.patch, files/cdcd-0.6.6-fbsd.patch,
+  -cdcd-0.6.4.ebuild, -cdcd-0.6.6-r1.ebuild, +cdcd-0.6.6-r2.ebuild:
+  Fix patch so that it actually do something useful for FreeBSD 6.x (what we
+  have now) and 7; add ~x86-fbsd keyword.
+
+  16 Jun 2006; Diego Pettenò <flameeyes@gentoo.org> cdcd-0.6.4.ebuild,
+  cdcd-0.6.6.ebuild, cdcd-0.6.6-r1.ebuild:
+  Remove gnuconfig update.
+
+  08 May 2006; <tcort@gentoo.org> cdcd-0.6.6.ebuild:
+  Removed COPYING from dodoc.
+
+  07 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> cdcd-0.6.4.ebuild,
+  cdcd-0.6.6.ebuild, cdcd-0.6.6-r1.ebuild:
+  Drop virtual/libc dependency.
+
+*cdcd-0.6.6-r1 (17 Aug 2005)
+
+  17 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/cdcd-0.6.6-fbsd.patch, +cdcd-0.6.6-r1.ebuild:
+  Added patch for G/FBSD compatibility, updated HOMEPAGE and removed
+  installation of COPYING file.
+
+  08 Apr 2005; Markus Rothe <corsair@gentoo.org> cdcd-0.6.6.ebuild:
+  Stable on ppc64
+
+  18 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -files/cdcd-0.5.0-r1-gentoo.patch, -cdcd-0.5.0-r1.ebuild:
+  Removed old version. Readded ~ppc64 to ebuild as it seems to have been
+  mistakenly removed.
+
+  04 Oct 2004; Jason Wever <weeve@gentoo.org> cdcd-0.6.6.ebuild:
+  Stable on sparc.
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> cdcd-0.6.6.ebuild:
+  Readding ~sparc.
+
+  03 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> cdcd-0.6.6.ebuild:
+  Stable amd64, x86.
+
+  29 Jul 2004; Tom Gall <tgall@gentoo.org> cdcd-0.64.ebuild:
+  stable on ppc64, bug #55567
+
+  04 Jul 2004; David Holm <dholm@gentoo.org> cdcd-0.6.6.ebuild:
+  Added to ~ppc.
+
+*cdcd-0.6.6 (03 Jul 2004)
+
+  03 Jul 2004; Frank van de Pol <fvdpol@gentoo.org> +cdcd-0.6.6.ebuild:
+  Version bump to 0.6.6. Closes bug #54717.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> cdcd-0.5.0-r1.ebuild,
+  cdcd-0.6.4.ebuild:
+  virtual/glibc -> virtual/libc
+
+  22 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> cdcd-0.5.0-r1.ebuild,
+  cdcd-0.6.4.ebuild:
+  Removed explicit S=.
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> cdcd-0.5.0-r1.ebuild,
+  cdcd-0.6.4.ebuild:
+  Added IUSE.
+
+  07 Apr 2004; Jason Eric Huebel <jhuebel@gentoo.org> :
+  added gnuconfig_update
+
+*cdcd-0.6.4 (19 Jul 2002)
+
+  03 Feb 2003; Stefan Jones <cretin@gentoo.org> files/cdcd-0.5.0-r1-gentoo.patch :
+  Fix build issue. Unmasking
+
+  07 Dec 2002; Jack Morgan <jmorgan@gentoo.org> cdcd-0.6.4.ebuild :
+  Changed sparc64 to sparc keyword
+
+  19 Jul 2002; Seeamnt Kulleen <seemant@gentoo.org> cdcd-0.6.4.ebuild
+  files/digest-cdcd-0.6.4 :
+
+  Version bump. I forget who, might have been a bugzilla report.  Apologies.
+
+*cdcd-0.5.0-r1 (13 Jul 2002)
+
+  18 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> cdcd-0.5.0-r1.ebuild :
+
+  Cleaned the ebuild up a bit.
+
+
+  13 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> cdcd-0.5.0-r1.ebuild :
+
+  Fixed a library ordering issue, found and fixed by Sam Yates (sam@quux.dropbear.id.au).
+  Closes bug #4904.
+
+*cdcd-0.5.0 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

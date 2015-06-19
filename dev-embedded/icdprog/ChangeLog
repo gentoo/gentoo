@@ -1,0 +1,40 @@
+# ChangeLog for dev-embedded/icdprog
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/icdprog/ChangeLog,v 1.12 2015/06/09 13:20:32 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  17 Feb 2012; Tim Harder <radhermit@gentoo.org> icdprog-0.5.ebuild:
+  Remove unnecessary empty (R)DEPEND.
+
+  17 Feb 2012; Tim Harder <radhermit@gentoo.org> -icdprog-0.3.ebuild:
+  Remove old.
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> icdprog-0.5.ebuild:
+  x86 stable wrt bug #396861
+
+*icdprog-0.5 (28 May 2011)
+
+  28 May 2011; Tim Harder <radhermit@gentoo.org> icdprog-0.3.ebuild,
+  +icdprog-0.5.ebuild:
+  Version bump. Update HOMEPAGE, fix repoman quoting warning for old version,
+  bump to EAPI 4, and add ~amd64 keyword.
+
+  14 Jan 2008; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Change metadata.
+
+  28 Jan 2007; Marius Mauch <genone@gentoo.org> icdprog-0.3.ebuild:
+  Replacing einfo with elog
+
+  14 Apr 2004; Daniel Black <dragonheart@gentoo.org> icdprog-0.3.ebuild:
+  QA removed surperflous S=
+
+  05 Mar 2004; Daniel Black <dragonheart@gentoo.org> icdprog-0.3.ebuild:
+  Marked stable on x86
+
+*icdprog-0.3 (05 Dec 2003)
+
+  05 Dec 2003; Robin H. Johnson <robbat2@gentoo.org> icdprog-0.3.ebuild,
+  metadata.xml:
+  initial ebuild by robbat2@gentoo.org

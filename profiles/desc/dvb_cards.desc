@@ -1,0 +1,40 @@
+# Copyright 1999-2006 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/desc/dvb_cards.desc,v 1.9 2009/11/12 18:12:12 billie Exp $
+
+# This file contains descriptions of DVB_CARDS USE_EXPAND flags.
+
+# Keep it sorted.
+
+
+af9005 - DVB_CARDS setting to add support for the afatech af9005 USB1.1 DVB-T Demodulator (Various NoName devices, Terratec Xinergy XE rev.1)
+bcm3510 - DVB_CARDS setting to add support for the Broadcom BCM3510 ATSC demodulator (Air2PC)
+cx18 - DVB_CARDS setting to add support for the Conexant cx23418 chip (Hauppauge HVR1600)
+cx231xx - DVB_CARDS setting to add support for Conexant cx231xx USB Devices
+cx23885 - DVB_CARDS setting to add support for the Conexant cx23885 chip (DViCO FusionHDTV5 Express, Hauppauge WinTV HVR1250 HVR1500 HVR1800 HVR1800lp)
+dibusb-usb1 - DVB_CARDS setting to add support for the dibcom design USB1.1 DVB-T-device (Twinhan, KWorld, Hama, Artec, Compro)
+dibusb-usb2 - DVB_CARDS setting to add support for the dibcom design USB2 DVB-T-device (Grand, LiteOn, YUAN, Typhoon)
+mpc718 - DVB_CARDS setting to add support for the MT352 DVB-T demodulator initialization sequence for Yuan MPC718 cards for use by the cx18 driver.
+nxt200x - DVB_CARDS setting to add support for the nxt200x ATSC Demodulator (Air2PC, Kworld, Aver, ATI)
+opera1 - DVB_CARDS setting to add support for the opera1 USB DVB-S-device (Opera DVB-S1 USB-Box)
+or51132 - DVB_CARDS setting to add support for the or51132 Demodulator (pcHDTV)
+or51211 - DVB_CARDS setting to add support for the or51211 DVB-T Demodulator (Yakumo QuickStick)
+pvrusb2 - DVB_CARDS setting to add support for Conexant cx2584x chips (PVR150, PVR500, Yuan PG600/Diamond PVR-550) 
+sp8870 - DVB_CARDS setting to add support for the sp8870 chip (T Nexus-T premium rev1.2)
+sp887x - DVB_CARDS setting to add support for the sp887x chip (Avermedia DVB-T 761)
+tda10045 - DVB_CARDS setting to add support for the tda10045 DVB-T Demodulator (Hauppauge/TT Nova-T, TT Nova-USB-T)
+tda10046 - DVB_CARDS setting to add support for the tda10046 DVB-T Demodulator (Hauppauge/TT Nova-T, TT Nova-USB-T)
+tda10046lifeview - DVB_CARDS setting to add support for the tda10046 DVB-T Demodulator (Lifeview cards)
+ttpci - DVB_CARDS setting to add support for the Full-Featured Cards built by TechnoTrend, Siemens, Hauppauge
+ttusb-dec - DVB_CARDS setting to add support for the ttusb-dec chip (WinTV NOVA-T USB2)
+usb-a800 - DVB_CARDS setting to add support for the usb-a800 USB DVB-T-device (AVerMedia AVerTV)
+usb-af9015 - DVB_CARDS setting to add support for the usb-af9015 USB DVB-T-device (Avermedia)
+usb-bluebird - DVB_CARDS setting to add support for the bluebird usb-device (DViCO bluebird)
+usb-dib0700 - DVB_CARDS setting to add support for the usb-dib0700 USB DVB-T-device (Hauppauge Nova-T Stick)
+usb-dw2104 - DVB_CARDS setting to add support for the usb-dw2104 USB DVB-S2-device (TeVii S650 DVB-S2 USB)
+usb-dtt200u - DVB_CARDS setting to add support for the usb-dtt200u USB DVB-T-devices (Yakumo, Yuan, Hama, TYPHOON, WideView, V-Gear)
+usb-umt - DVB_CARDS setting to add support for the usb-umt USB2.0-DVB-T-device (Hanftek)
+usb-vp702x - DVB_CARDS setting to add support for the usb-vp702x USB DVB-S-devices (TwinhanDTV, DigitalRise, TYPHOON)
+usb-vp7045 - DVB_CARDS setting to add support for the usb-vp7045 USB DVB-T-devices (TwinhanDTV, DigitalNow, DigitalRise, dnt)
+usb-wt220u - DVB_CARDS setting to add support for the usb-wt220u USB DVB-T-devices (Yakumo, Yuan, TYPHOON, WideView, Freecom, V-Gear, dnt, Redbell)
+vp7041 - DVB_CARDS setting to add support for the vp7041 USB DVB-T-devices (TwinhanDTV)

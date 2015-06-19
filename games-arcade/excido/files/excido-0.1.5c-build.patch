@@ -1,0 +1,29 @@
+--- Makefile
++++ Makefile
+@@ -1,8 +1,8 @@
+-CC=g++
+-CFLAGS=`sdl-config --cflags` #-g -Wall #-O2
++CXX?=g++
++CXXFLAGS+=$(shell sdl-config --cflags) #-g -Wall #-O2
+ #CFLAGS=`sdl-config --cflags` -I./physfs#-g -Wall #-O2
+ OBJS    := ${patsubst %.cpp, %.o, ${wildcard src/*.cpp}}
+-LIBS = -s -Bstatic `sdl-config --static-libs` -lSDL_image -lSDL_ttf -L. -lphysfs -lopenal -Bdynamic -lGL -lGLU  
++LIBS = $(shell sdl-config --libs) -lSDL_image -lSDL_ttf -lphysfs -lopenal -lalut -lGL -lGLU
+ #LIBS = -s -Bstatic `sdl-config --static-libs` SDL_image/*.o SDL_ttf/*.o -L. physfs/*.o openal/*.o -ljpeg -lpng -ltiff -lfreetype -Bdynamic -lGL -lGLU  
+ PREFIX=/usr/local
+ BINDIR=$(PREFIX)/bin/
+@@ -16,12 +16,12 @@
+ 
+ 
+ .cpp.o:
+-	$(CC) $(CFLAGS) $(DEFINES) -o ${patsubst %.cpp, %.o, $<} -c $<
++	$(CXX) $(CXXFLAGS) $(DEFINES) -o ${patsubst %.cpp, %.o, $<} -c $<
+ 	
+ all: $(TARGET) 
+ 
+ $(TARGET): $(OBJS)
+-	$(CC) $(CFLAGS) -o $(TARGET) $(LIBS) $(OBJS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $(TARGET) $(OBJS) $(LIBS)
+ 
+ clean:
+ 	rm -f $(OBJS) $(TARGET)

@@ -1,0 +1,49 @@
+# ChangeLog for media-sound/schismtracker
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/schismtracker/ChangeLog,v 1.9 2012/06/08 11:56:57 phajdan.jr Exp $
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  schismtracker-20120105.ebuild:
+  x86 stable wrt bug #419131
+
+  02 Jun 2012; Agostino Sarubbo <ago@gentoo.org> schismtracker-20120105.ebuild:
+  Stable for amd64, wrt bug #419131
+
+  07 Feb 2012; Sergei Trofimovich <slyfox@gentoo.org>
+  schismtracker-20120105.ebuild:
+  Fix build failure due missing 'auto/' directory. Fixed build failure on native
+  (non-cross) systems with windres binary. Approved by Chainsaw.
+
+  03 Feb 2012; Samuli Suominen <ssuominen@gentoo.org>
+  schismtracker-20110101.ebuild:
+  amd64/x86 stable
+
+  03 Feb 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -schismtracker-20100101.ebuild:
+  old
+
+*schismtracker-20120105 (03 Feb 2012)
+
+  03 Feb 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +schismtracker-20120105.ebuild:
+  Version bump. Closing also #372131 (missing -ldl for symbols like dlopen and
+  dlclose in Makefile.am LDADD -line).
+
+*schismtracker-20110101 (07 May 2011)
+
+  07 May 2011; Christoph Mende <angelos@gentoo.org>
+  +schismtracker-20110101.ebuild:
+  Version bump
+
+*schismtracker-20100101 (31 Oct 2010)
+
+  31 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +schismtracker-20100101.ebuild:
+  Version bump wrt #337975 by Tyler Montbriand.
+
+*schismtracker-20090817 (28 Aug 2009)
+
+  28 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +schismtracker-20090817.ebuild:
+  Initial commit wrt #201264, thanks to "dword ptr" for initial ebuild.
+

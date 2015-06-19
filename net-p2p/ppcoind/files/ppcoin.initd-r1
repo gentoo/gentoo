@@ -1,0 +1,29 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/ppcoind/files/ppcoin.initd-r1,v 1.1 2014/02/25 18:23:04 blueness Exp $
+
+vardir="/var/lib/ppcoin"
+conffile="${vardir}/.ppcoin/ppcoin.conf"
+ppcoind_user="${PPCOIN_USER:-nobody:nobody}"
+
+description="Cryptocurrency forked from Bitcoin which aims to be energy efficiency."
+pidfile="/run/${SVCNAME}.pid"
+command="/usr/bin/ppcoind"
+command_args="${PPCOIN_OPTS}"
+command_background="true"
+start_stop_daemon_args="-u ${ppcoind_user} -e HOME=${vardir} -N ${NICELEVEL:-0} -w 2000"
+
+depend() {
+	need net
+}
+
+start_pre() {
+	checkpath -f -o ${ppcoind_user} -m 0400 ${conffile} || return 1
+
+	if ! grep -q '^rpcpassword=' "${conffile}"; then
+		eerror "Please edit `readlink -f ${conffile}`"
+		eerror "There must be at least a line assigning rpcpassword=something-secure"
+		return 1
+	fi
+}

@@ -1,0 +1,51 @@
+# ChangeLog for dev-perl/App-CLI
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/App-CLI/ChangeLog,v 1.12 2014/08/26 17:18:59 axs Exp $
+
+*App-CLI-0.313.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +App-CLI-0.313.0-r1.ebuild, -App-CLI-0.313.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -App-CLI-0.313.ebuild:
+  Cleanup
+
+*App-CLI-0.313.0 (01 Sep 2011)
+
+  01 Sep 2011; Torsten Veller <tove@gentoo.org> +App-CLI-0.313.0.ebuild:
+  Change version scheme
+
+  03 Apr 2011; Torsten Veller <tove@gentoo.org> -App-CLI-0.08.ebuild:
+  Cleanup
+
+*App-CLI-0.313 (27 Jan 2011)
+
+  27 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> +App-CLI-0.313.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  09 Jan 2010; Fabian Groffen <grobian@gentoo.org> App-CLI-0.08.ebuild:
+  Transfer Prefix keywords
+
+  02 May 2009; Torsten Veller <tove@gentoo.org> -App-CLI-0.07.ebuild:
+  Cleanup
+
+*App-CLI-0.08 (26 Feb 2009)
+
+  26 Feb 2009; Torsten Veller <tove@gentoo.org> +App-CLI-0.08.ebuild:
+  Version bump
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org> App-CLI-0.07.ebuild:
+  New virtuals: Locale-Maketext-Simple Pod-Simple
+
+  16 Aug 2008; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove kang from metadata.xml (#51508)
+
+*App-CLI-0.07 (21 Jun 2007)
+
+  21 Jun 2007; Guillaume Destuynder <kang@gentoo.org> +App-CLI-0.07.ebuild:
+  Initial import. Dependency of dev-util/svk. Submitted by Mark Davies, bug
+  #162743.

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sound</herd>
+<use>
+  <flag name="s7">Enable the s7 extension language (a version of Scheme)</flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>gnome</herd>
+	<use>
+		<flag name="dvi">Enable the built-in DVI viewer</flag>
+		<flag name="libsecret">Enable support for credentials store</flag>
+		<flag name="nautilus">Enable property page extension in <pkg>gnome-base/nautilus</pkg></flag>
+		<flag name="t1lib">Enable the Type-1 fonts for the built-in DVI viewer
+			(<pkg>media-libs/t1lib</pkg>)</flag>
+		<flag name="xps">Enable XPS viewer using <pkg>app-text/libgxps</pkg></flag>
+	</use>
+</pkgmetadata>

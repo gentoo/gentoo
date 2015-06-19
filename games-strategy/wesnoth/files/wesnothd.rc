@@ -1,0 +1,23 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/wesnoth/files/wesnothd.rc,v 1.1 2005/10/20 20:16:27 mr_bones_ Exp $
+
+depend() {
+	use net
+}
+
+start() {
+	ebegin "Starting wesnothd"
+	start-stop-daemon --start --quiet -b -m \
+		--pidfile "GAMES_STATEDIR"/run/wesnothd/wesnothd.pid \
+		-c GAMES_USER_DED:GAMES_GROUP \
+		--exec "GAMES_BINDIR"/wesnothd
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping wesnothd"
+	start-stop-daemon --stop --quiet --pidfile "GAMES_STATEDIR"/run/wesnothd/wesnothd.pid
+	eend $?
+}

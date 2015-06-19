@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3[threads(+)] ) python_targets_python3_4? ( dev-lang/python:3.4[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] >=x11-libs/cairo-1.10.0[svg?,xcb?] xcb? ( x11-libs/xpyb ) virtual/pkgconfig test? ( dev-python/pytest[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] ) dev-lang/python !dev-lang/python[-threads]
+DESCRIPTION=Python bindings for the cairo library
+EAPI=5
+HOMEPAGE=http://cairographics.org/pycairo/ http://pypi.python.org/pypi/pycairo
+IUSE=doc examples +svg test xcb python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=LGPL-3 || ( LGPL-2.1 MPL-1.1 )
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3[threads(+)] ) python_targets_python3_4? ( dev-lang/python:3.4[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] >=x11-libs/cairo-1.10.0[svg?,xcb?] xcb? ( x11-libs/xpyb )
+REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 )
+SLOT=0
+SRC_URI=http://cairographics.org/releases/py2cairo-1.10.0.tar.bz2 http://cairographics.org/releases/pycairo-1.10.0.tar.bz2
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	6d3a3cb5705b9fff1aeb7cfa4e3336fe	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	waf-utils	b5ddb40c4095c9a1a3f6fd49d32fd922
+_md5_=80acb4058281cd1618b274c8b9654356

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=bzip2? ( app-arch/bzip2 ) sys-libs/zlib
+DESCRIPTION=Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
+EAPI=4
+HOMEPAGE=http://www.hercules-390.eu/
+IUSE=bzip2 custom-cflags +suid
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86 ~x64-macos ~x86-macos
+LICENSE=QPL-1.0
+RDEPEND=bzip2? ( app-arch/bzip2 ) sys-libs/zlib
+SLOT=0
+SRC_URI=http://downloads.hercules-390.eu/hercules-3.10.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=3b0248d4adf17e2aa6409f5e56ff04f1

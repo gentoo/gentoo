@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Freeze/unfreeze compression program
+EAPI=4
+HOMEPAGE=http://www.ibiblio.org/pub/Linux/utils/compress/
+KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86
+LICENSE=GPL-1+
+RDEPEND=!<=media-libs/mlt-0.4.2 !media-libs/mlt[melt]
+SLOT=0
+SRC_URI=ftp://ftp.ibiblio.org/pub/Linux/utils/compress/freeze-2.5.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=6068d782ed246db8dec985c79a738c35

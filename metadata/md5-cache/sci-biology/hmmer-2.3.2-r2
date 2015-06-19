@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install test
+DEPEND=pvm? ( sys-cluster/pvm )
+DESCRIPTION=Sequence analysis using profile hidden Markov models
+HOMEPAGE=http://hmmer.janelia.org/
+IUSE=pvm threads
+KEYWORDS=~alpha amd64 ~ia64 ~ppc ppc64 ~sparc x86
+LICENSE=GPL-2
+RDEPEND=pvm? ( sys-cluster/pvm )
+SLOT=0
+SRC_URI=ftp://ftp.genetics.wustl.edu/pub/eddy/hmmer/2.3.2/hmmer-2.3.2.tar.gz
+_md5_=ceeeddbd919fe1b30610582fca869b31

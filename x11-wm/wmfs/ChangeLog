@@ -1,0 +1,15 @@
+# ChangeLog for x11-wm/wmfs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/wmfs/ChangeLog,v 1.2 2015/06/08 18:23:31 jer Exp $
+
+  08 Jun 2015; Jeroen Roovers <jer@gentoo.org> wmfs-201003.ebuild,
+  files/wmfs-201003-desktop.patch:
+  Desktop entry goes into xsessions.
+
+*wmfs-201003 (08 Jun 2015)
+
+  08 Jun 2015; Jeroen Roovers <jer@gentoo.org> +wmfs-201003.ebuild,
+  +files/wmfs-201003-desktop.patch, +files/wmfs-201003-pthread.patch,
+  +metadata.xml:
+  Initial commit.
+

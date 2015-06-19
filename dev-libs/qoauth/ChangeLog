@@ -1,0 +1,89 @@
+# ChangeLog for dev-libs/qoauth
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/qoauth/ChangeLog,v 1.23 2015/02/22 18:32:01 mgorny Exp $
+
+  22 Feb 2015; Michał Górny <mgorny@gentoo.org> qoauth-1.0.1.ebuild:
+  Update dependency on QCA plugins to use USE flags on app-crypt/qca:2
+  unconditionally, to provide a single sane path for dependency resolution. Bug
+  #541066.
+
+  28 Jan 2015; Johannes Huber <johu@gentoo.org> qoauth-1.0.1.ebuild:
+  Adjust dependencies to handle merged plugins in >=app-crypt/qca-2.1.
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> qoauth-1.0.1.ebuild:
+  Stable for ppc64, wrt bug #462890
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> qoauth-1.0.1.ebuild:
+  Move Qt dependencies to the new category
+
+  06 Sep 2012; Tomáš Chvátal <scarabeus@gentoo.org> qoauth-1.0.1.ebuild:
+  Mark ppc and ~ppc64. Per johu's request.
+
+  21 May 2012; Davide Pesavento <pesa@gentoo.org> qoauth-1.0.1.ebuild:
+  EAPI=4
+
+  21 May 2012; Davide Pesavento <pesa@gentoo.org> qoauth-1.0.1.ebuild:
+  Use more qt4-r2 eclass features.
+
+  18 Feb 2012; nixnut <nixnut@gentoo.org> qoauth-1.0.1.ebuild:
+  ~ppc, preparing for #396359
+
+  17 Feb 2012; Davide Pesavento <pesa@gentoo.org> -qoauth-1.0-r1.ebuild,
+  -qoauth-1.0.ebuild, metadata.xml:
+  Remove obsolete versions.
+
+  13 Sep 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #278944
+
+  08 Nov 2010; Dominik Kapusta <ayoy@gentoo.org> qoauth-1.0.1.ebuild:
+  Fixing bug #337643 for real. Missed sedding out test subdirectory when
+  test useflag is undefined.
+
+  20 Oct 2010; Christian Faulhammer <fauli@gentoo.org> qoauth-1.0.1.ebuild:
+  stable x86, bug 341277
+
+  18 Oct 2010; Markos Chandras <hwoarang@gentoo.org> qoauth-1.0.1.ebuild:
+  Stable on amd64 wrt bug #341277
+
+  16 Oct 2010; Dominik Kapusta <ayoy@gentoo.org> qoauth-1.0.1.ebuild,
+  +files/qoauth-1.0.1-disable-ft.patch:
+  Disable functional tests that require network connection and rely on
+  3rd party external server (bug #341267).
+
+  16 Oct 2010; Dominik Kapusta <ayoy@gentoo.org> qoauth-1.0.1.ebuild:
+  Adding x11-libs/qt-test conditional dependency to compile and run tests
+  (bug #337643).
+
+*qoauth-1.0.1 (01 Aug 2010)
+
+  01 Aug 2010; Dominik Kapusta <ayoy@gentoo.org> +qoauth-1.0.1.ebuild:
+  Version bump
+
+  20 Dec 2009; Dominik Kapusta <ayoy@gentoo.org> qoauth-1.0-r1.ebuild:
+  Porting to qt4-r2.eclass
+
+*qoauth-1.0-r1 (27 Nov 2009)
+
+  27 Nov 2009; Dominik Kapusta <ayoy@gentoo.org> +qoauth-1.0-r1.ebuild:
+  Adding static-libs to IUSE
+
+  02 Nov 2009; Dominik Kapusta <ayoy@gentoo.org> -qoauth-0.1.0.ebuild:
+  Removing 0.1.0 ebuild
+
+  02 Nov 2009; Markus Meier <maekke@gentoo.org> qoauth-1.0.ebuild:
+  amd64/x86 stable, bug #291430
+
+  03 Oct 2009; Dominik Kapusta <ayoy@gentoo.org> qoauth-1.0.ebuild,
+  metadata.xml:
+  Removing _debug suffix for debug builds - bug #287489
+
+*qoauth-1.0 (08 Aug 2009)
+
+  08 Aug 2009; Markos Chandras <hwoarang@gentoo.org> +qoauth-1.0.ebuild:
+  Version bump
+
+*qoauth-0.1.0 (14 Jul 2009)
+
+  14 Jul 2009; Markos Chandras <hwoarang@gentoo.org> +qoauth-0.1.0.ebuild,
+  +metadata.xml:
+  Initial commit of qoauth library

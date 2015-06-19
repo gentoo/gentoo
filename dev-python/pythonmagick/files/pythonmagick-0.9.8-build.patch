@@ -1,0 +1,14 @@
+Index: PythonMagick-0.9.8/pythonmagick_src/_Image.cpp
+===================================================================
+--- pythonmagick_src/_Image.cpp
++++ pythonmagick_src/_Image.cpp
+@@ -93,7 +93,7 @@ void Export_pyste_src_Image()
+         .def("colorize", (void (Magick::Image::*)(const unsigned int, const unsigned int, const unsigned int, const Magick::Color&) )&Magick::Image::colorize)
+         .def("colorize", (void (Magick::Image::*)(const unsigned int, const Magick::Color&) )&Magick::Image::colorize)
+         .def("comment", (void (Magick::Image::*)(const std::string&) )&Magick::Image::comment)
+-        .def("compare", &Magick::Image::compare)
++        .def("compare", (bool (Magick::Image::*)(const Magick::Image&) )&Magick::Image::compare)
+         .def("composite", (void (Magick::Image::*)(const Magick::Image&, const ::ssize_t, const ::ssize_t, const MagickCore::CompositeOperator) )&Magick::Image::composite, Magick_Image_composite_overloads_3_4())
+         .def("composite", (void (Magick::Image::*)(const Magick::Image&, const Magick::Geometry&, const MagickCore::CompositeOperator) )&Magick::Image::composite, Magick_Image_composite_overloads_2_3())
+         .def("composite", (void (Magick::Image::*)(const Magick::Image&, const MagickCore::GravityType, const MagickCore::CompositeOperator) )&Magick::Image::composite, Magick_Image_composite_overloads_2_3())
+

@@ -1,0 +1,27 @@
+# ChangeLog for dev-perl/encoding-warnings
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/encoding-warnings/ChangeLog,v 1.5 2014/08/26 15:11:14 axs Exp $
+
+*encoding-warnings-0.110.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +encoding-warnings-0.110.0-r1.ebuild, -encoding-warnings-0.110.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*encoding-warnings-0.110.0 (19 May 2012)
+
+  19 May 2012; Torsten Veller <tove@gentoo.org> -encoding-warnings-0.11.ebuild,
+  +encoding-warnings-0.110.0.ebuild, metadata.xml:
+  Change version scheme. Use default LICENSE. EAPI 4. Run tests. Add to perl herd
+
+  01 Mar 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Add missing cpan remote-id tags in metadata.xml (#406287)
+
+*encoding-warnings-0.11 (29 Jan 2012)
+
+  29 Jan 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  +encoding-warnings-0.11.ebuild, +metadata.xml:
+  New package, dependency of Lab::Measurement

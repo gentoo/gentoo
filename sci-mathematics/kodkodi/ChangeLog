@@ -1,0 +1,21 @@
+# ChangeLog for sci-mathematics/kodkodi
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/kodkodi/ChangeLog,v 1.4 2014/08/10 20:23:30 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> kodkodi-1.5.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  17 Aug 2013; Mark Wright <gienah@gentoo.org> kodkodi-1.5.2.ebuild:
+  Fix: Class files not found via DEPEND in package.env - by adding antlr-3 to
+  JAVA_GENTOO_CLASSPATH. Try to fix bug #458462 - it merges ok with
+  JAVA_PKG_STRICT="true" in my tests.
+
+  24 May 2013; Mark Wright <gienah@gentoo.org> metadata.xml:
+  fix bug 466776 - typo in email address
+
+*kodkodi-1.5.2 (05 Dec 2012)
+
+  05 Dec 2012; Mark Wright <gienah@gentoo.org> +kodkodi-1.5.2.ebuild,
+  +metadata.xml:
+  Add kodkodi. Required for sci-mathematics/isabelle nitpick couter-example
+  checking.

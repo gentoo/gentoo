@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/511892
+
+the scanner needs the generated header file, so make sure it's listed as a
+dependency.  else you see a failure:
+	$ cd sfbpf
+	$ make clean
+	$ make sf_scanner.lo
+	<missing tokdefs.h>
+we'd like to list it as a dep of the object, but automake can use generated
+file names, so it's not easy to list that.
+
+we can't have both of the outputs from grammar.y run the lex, otherwise we
+hit random parallel build failures:
+	$ cd sfbpf
+	$ make clean
+	$ make tokdefs.h sf_grammar.c -j
+	<run yacc twice & fail>
+
+--- a/sfbpf/Makefile.am
++++ b/sfbpf/Makefile.am
+@@ -43,14 +43,16 @@
+ libsfbpf_la_LDFLAGS = -version-info 0:1:0 @XCCFLAGS@
+ 
+ # use of $@ and $< here is a GNU idiom that borks BSD
+-${builddir}/sf_scanner.c: ${srcdir}/scanner.l
++${builddir}/sf_scanner.c: ${srcdir}/scanner.l ${builddir}/tokdefs.h
+ 	@rm -f ${builddir}/sf_scanner.c
+ 	${srcdir}/runlex.sh $(V_LEX) -osf_scanner.c ${srcdir}/scanner.l
+ 
+-${builddir}/tokdefs.h ${builddir}/sf_grammar.c: ${srcdir}/grammar.y
++${builddir}/sf_grammar.c: ${srcdir}/grammar.y
+ 	@rm -f ${builddir}/sf_grammar.c ${builddir}/tokdefs.h
+ 	$(V_YACC) -d ${srcdir}/grammar.y
+ 	mv y.tab.c sf_grammar.c
+ 	mv y.tab.h tokdefs.h
+ 
++${builddir}/tokdefs.h: ${builddir}/sf_grammar.c ; @true
++
+ CLEANFILES = ${builddir}/sf_scanner.c ${builddir}/sf_grammar.c ${builddir}/tokdefs.h ${builddir}/sf_scanner.h

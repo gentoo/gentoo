@@ -1,0 +1,13 @@
+# ChangeLog for app-emacs/dts-mode
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/dts-mode/ChangeLog,v 1.2 2015/06/05 12:27:39 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*dts-mode-0.1.0_pre20141014 (03 Jan 2015)
+
+  03 Jan 2015; Ulrich Müller <ulm@gentoo.org>
+  +dts-mode-0.1.0_pre20141014.ebuild, +files/50dts-mode-gentoo.el,
+  +metadata.xml:
+  Initial import, bug 531400. Ebuild contributed by me.

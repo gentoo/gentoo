@@ -1,0 +1,27 @@
+From ce3b83de6aa689c0cefe0b1e85c03a627b537099 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 12 May 2014 19:46:22 +0200
+Subject: [PATCH] Allow building client without the daemon.
+
+There's no good reason to disallow that, and that's what we specifically
+want to do for multilib.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 0e190ba..c56cf01 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1185,7 +1185,7 @@ fi
+ 
+ BUILD_CLIENT="no   (You need avahi-daemon and D-Bus!)"
+ 
+-if test "x$BUILD_DAEMON" = "xyes" -a "x$HAVE_DBUS" = "xyes" ; then
++if "x$HAVE_DBUS" = "xyes" ; then
+     BUILD_CLIENT=yes
+ fi
+ 
+-- 
+1.9.3
+

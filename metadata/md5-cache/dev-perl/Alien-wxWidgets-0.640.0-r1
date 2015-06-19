@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=x11-libs/wxGTK-2.8.11.0:2.8[X,tiff] >=dev-perl/Module-Pluggable-3.1-r1 >=virtual/perl-ExtUtils-CBuilder-0.24 dev-perl/Module-Build test? ( dev-perl/Test-Pod dev-perl/Test-Pod-Coverage ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Building, finding and using wxWidgets binaries
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Alien-wxWidgets/
+IUSE=test
+KEYWORDS=amd64 ~ia64 x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=x11-libs/wxGTK-2.8.11.0:2.8[X,tiff] >=dev-perl/Module-Pluggable-3.1-r1 dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MD/MDOOTSON/Alien-wxWidgets-0.64.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
+_md5_=65ad6508325f0e0fbf1a1d7128f42633

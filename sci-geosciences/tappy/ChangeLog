@@ -1,0 +1,18 @@
+# ChangeLog for sci-geosciences/tappy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/tappy/ChangeLog,v 1.5 2015/04/08 18:49:15 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> tappy-0.9.0.ebuild:
+  Drop old Python implementations
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  17 Feb 2013; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  set correct maintainer
+
+*tappy-0.9.0 (10 Feb 2013)
+
+  10 Feb 2013; Julian Ospald <hasufell@gentoo.org> +tappy-0.9.0.ebuild,
+  +metadata.xml:
+  initial import wrt #138005 based on Tim Ceras work

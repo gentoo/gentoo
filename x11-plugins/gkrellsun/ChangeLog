@@ -1,0 +1,134 @@
+# ChangeLog for x11-plugins/gkrellsun
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellsun/ChangeLog,v 1.33 2014/08/10 20:01:49 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> gkrellsun-1.0.0-r1.ebuild,
+  gkrellsun-1.0.0-r2.ebuild, gkrellsun-1.0.0-r3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #144305
+
+  21 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gkrellsun-1.0.0-r3.ebuild:
+  x86 stable wrt bug #393997
+
+  16 Dec 2011; Agostino Sarubbo <ago@gentoo.org> gkrellsun-1.0.0-r3.ebuild:
+  Stable for AMD64, wrt bug #393997
+
+*gkrellsun-1.0.0-r3 (11 Aug 2010)
+
+  11 Aug 2010; Jim Ramsay <lack@gentoo.org> +gkrellsun-1.0.0-r3.ebuild,
+  +files/gkrellsun-1.0.0-Respect-LDFLAGS.patch:
+  Respect LDFLAGS (Bug #332223)
+
+*gkrellsun-1.0.0-r2 (28 Jul 2010)
+
+  28 Jul 2010; Jim Ramsay <lack@gentoo.org> +gkrellsun-1.0.0-r2.ebuild,
+  +files/gkrellsun-1.0.0-reenable.patch:
+  Patch double-free of PangoFontDescription (Bug #284504)
+
+  12 Mar 2007; Jim Ramsay <lack@gentoo.org> gkrellsun-1.0.0-r1.ebuild:
+  Updated to use new gkrellm-plugin eclass
+
+  12 Mar 2007; Jim Ramsay <lack@gentoo.org> -gkrellsun-0.12.1.ebuild,
+  -gkrellsun-0.12.2.ebuild:
+  Cleaning up old versions after stabilization
+
+  12 Mar 2007; Bryan Østergaard <kloeri@gentoo.org>
+  gkrellsun-1.0.0-r1.ebuild:
+  Stable on Alpha + IA64.
+
+  22 Feb 2007; Jim Ramsay <lack@gentoo.org> -gkrellsun-0.9.1.ebuild:
+  Version cleanup
+
+*gkrellsun-1.0.0-r1 (21 Feb 2007)
+
+  21 Feb 2007; Jim Ramsay <lack@gentoo.org> metadata.xml,
+  -gkrellsun-1.0.0.ebuild, +gkrellsun-1.0.0-r1.ebuild:
+  Added nls support and cleaned up the ebuild (bug 155610) - Thanks to
+  parafin-spobs@yandex.ru
+
+  04 Feb 2007; Peter Weller (welp) <welp@gentoo.org> gkrellsun-1.0.0.ebuild:
+  Stable on amd64, bug #133806
+
+  24 Jan 2007; Jeroen Roovers <jer@gentoo.org> gkrellsun-1.0.0.ebuild:
+  Stable for HPPA (bug #133806).
+
+  20 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gkrellsun-1.0.0.ebuild:
+  Stable on sparc wrt #133806
+
+  20 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  gkrellsun-1.0.0.ebuild:
+  stable x86, bug #133806
+
+  19 Nov 2006; Matti Bickel <mabi@gentoo.org> gkrellsun-0.9.1.ebuild,
+  gkrellsun-1.0.0.ebuild:
+  Stable on ppc (bug #133806), move 0.9.1 to slot 1 as this package does not
+  work with multiple versions installed (bug #121016)
+
+*gkrellsun-1.0.0 (16 Oct 2006)
+
+  16 Oct 2006; Emanuele Giaquinta <exg@gentoo.org> +gkrellsun-1.0.0.ebuild:
+  Version bump.
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> gkrellsun-0.12.1.ebuild:
+  Mark 0.12.1 stable on alpha
+
+  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org> gkrellsun-0.12.2.ebuild:
+  multilib fixes
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> gkrellsun-0.12.1.ebuild:
+  stable on ia64
+
+*gkrellsun-0.12.2 (22 Jan 2005)
+
+  22 Jan 2005; Lars Weiler <pylon@gentoo.org> +gkrellsun-0.12.2.ebuild:
+  Version bump.
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gkrellsun-0.12.1.ebuild:
+  Masked gkrellsun-0.12.1.ebuild stable for ppc
+
+*gkrellsun-0.12.1 (20 Jul 2004)
+
+  20 Jul 2004; Martin Holzer <mholzer@gentoo.org> +gkrellsun-0.12.1.ebuild:
+  Version bumped. Closes 51481
+
+  05 Apr 2004; Chris Aniszczyk <zx@gentoo.org> gkrellsun-0.9.1.ebuild:
+  Marking stable on hppa
+
+  04 Sep 2003; Aron Griffis <agriffis@gentoo.org> gkrellsun-0.9.1.ebuild:
+  stable on alpha
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*gkrellsun-0.9.1 (01 Dec 2002)
+
+  01 Dec 2002; Seemant Kulleen <seemant@gentoo.org> gkrellsun-0.9.1.ebuild
+  files/digest-gkrellsun-0.9.1 :
+
+  Version bump, which now works with gkrellmoon-0.5 for gkrellm2.  Thanks
+  to: ejwahl@cox.net (Erich Wahl) in bug #10837.
+
+*gkrellsun-0.9 (09 Nov 2002)
+
+  09 Nov 2002; Seemant Kulleen <seemant@gentoo.org> gkrellsun-0.9.ebuild
+  files/digest-gkrellsun-0.9 :
+
+  Version bump -- works with both versions of gkrellm.
+
+*gkrellsun-0.2 (19 Feb 2002)
+
+  11 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
+
+  29 Aug 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
+  Relocated to x11-plugins
+
+  19 Feb 2002; Aron Griffis <agriffis@gentoo.org> gkrellsun-0.2.ebuild:
+
+  Added gkrellsun plugin for gkrellm.  Thanks to Seemant Kulleen for the
+  ebuild.

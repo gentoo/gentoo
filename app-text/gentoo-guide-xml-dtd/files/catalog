@@ -1,0 +1,14 @@
+
+  -- Catalog data for Gentoo Guide XML V2.1 --
+  -- File catalog  --
+
+  -- Gentoo Guide driver file .................................................. --
+
+PUBLIC "-//Gentoo//DTD Guide XML V2.1//EN" "xml-dtd-2.1/guide.dtd"
+
+  -- ISO entity sets ...................................................... --
+
+PUBLIC "ISO 8879:1986//ENTITIES Numeric and Special Graphic//EN" "ent/iso-num.ent"
+PUBLIC "ISO 8879:1986//ENTITIES Publishing//EN" "ent/iso-pub.ent"
+PUBLIC "ISO 8879:1986//ENTITIES Added Latin 1//EN" "ent/iso-lat1.ent"
+

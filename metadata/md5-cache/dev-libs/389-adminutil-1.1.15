@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=virtual/pkgconfig >=dev-libs/nss-3.11.4 >=dev-libs/nspr-4.6.4 >=dev-libs/svrcore-4.0.3 >=dev-libs/cyrus-sasl-2.1.19 >=dev-libs/icu-3.4:= net-nds/openldap
+DESCRIPTION=389 adminutil
+EAPI=5
+HOMEPAGE=http://port389.org/
+IUSE=debug
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2
+RDEPEND=>=dev-libs/nss-3.11.4 >=dev-libs/nspr-4.6.4 >=dev-libs/svrcore-4.0.3 >=dev-libs/cyrus-sasl-2.1.19 >=dev-libs/icu-3.4:= net-nds/openldap
+SLOT=0
+SRC_URI=http://port389.org/sources/389-adminutil-1.1.15.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a1047b9a734ee813c94c83a1c254c15c

@@ -1,0 +1,19 @@
+# Copyright 1999-2015 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/use.mask,v 1.6 2015/06/02 09:15:35 ulm Exp $
+
+# This file masks out USE flags that are simply NOT allowed in the default
+# profile for any architecture.  This works, for example, if a non-default
+# profile (such as the selinux profiles) have a USE flag associated with
+# them.
+
+# ppc and x86/amd64
+x264
+
+# Diego Elio Pettenò <flameeyes@gentoo.org> (27 Aug 2012)
+# netlink is a Linux-specific interface
+-netlink
+
+# Samuli Suominen <ssuominen@gentoo.org> (19 Apr 2013)
+# Linux specific module loading/unloading support
+-kmod

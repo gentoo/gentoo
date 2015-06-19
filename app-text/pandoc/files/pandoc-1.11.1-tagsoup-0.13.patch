@@ -1,0 +1,62 @@
+--- pandoc-1.11.1-orig/pandoc.cabal	2013-03-18 09:26:59.000000000 +1100
++++ pandoc-1.11.1/pandoc.cabal	2013-08-10 12:52:49.969834000 +1000
+@@ -232,7 +232,7 @@
+                  citeproc-hs >= 0.3.7 && < 0.4,
+                  pandoc-types >= 1.10 && < 1.11,
+                  json >= 0.4 && < 0.8,
+-                 tagsoup >= 0.12.5 && < 0.13,
++                 tagsoup >= 0.12.5 && < 0.14,
+                  base64-bytestring >= 0.1 && < 1.1,
+                  zlib >= 0.5 && < 0.6,
+                  highlighting-kate >= 0.5.3.7 && < 0.6,
+--- /dev/null	2013-08-09 12:59:27.506999856 +1000
++++ pandoc-1.11.1/src/Text/Pandoc/Compat/TagSoupEntity.hs	2013-08-10 12:28:14.261739000 +1000
+@@ -0,0 +1,15 @@
++{-# LANGUAGE CPP #-}
++module Text.Pandoc.Compat.TagSoupEntity (lookupEntity
++                          ) where
++
++import qualified Text.HTML.TagSoup.Entity as TE
++
++lookupEntity :: String -> Maybe Char
++#if MIN_VERSION_tagsoup(0,13,0)
++lookupEntity = str2chr . TE.lookupEntity
++  where str2chr :: Maybe String -> Maybe Char
++        str2chr (Just [c]) = Just c
++        str2chr _ = Nothing
++#else
++lookupEntity = TE.lookupEntity
++#endif
+--- pandoc-1.11.1-orig/src/Text/Pandoc/Parsing.hs	2013-03-18 09:26:57.000000000 +1100
++++ pandoc-1.11.1/src/Text/Pandoc/Parsing.hs	2013-08-10 12:28:14.262814000 +1000
+@@ -159,7 +159,7 @@
+ import Text.Pandoc.Shared
+ import qualified Data.Map as M
+ import Text.TeXMath.Macros (applyMacros, Macro, parseMacroDefinitions)
+-import Text.HTML.TagSoup.Entity ( lookupEntity )
++import Text.Pandoc.Compat.TagSoupEntity ( lookupEntity )
+ import Data.Default
+ import qualified Data.Set as Set
+ import Control.Monad.Reader
+--- pandoc-1.11.1-orig/src/Text/Pandoc/Readers/DocBook.hs	2013-03-18 09:26:57.000000000 +1100
++++ pandoc-1.11.1/src/Text/Pandoc/Readers/DocBook.hs	2013-08-10 12:28:14.264936000 +1000
+@@ -4,7 +4,7 @@
+ import Text.Pandoc.Definition
+ import Text.Pandoc.Builder
+ import Text.XML.Light
+-import Text.HTML.TagSoup.Entity (lookupEntity)
++import Text.Pandoc.Compat.TagSoupEntity (lookupEntity)
+ import Data.Generics
+ import Data.Monoid
+ import Data.Char (isSpace)
+--- pandoc-1.11.1-orig/src/Text/Pandoc/XML.hs	2013-03-18 09:26:57.000000000 +1100
++++ pandoc-1.11.1/src/Text/Pandoc/XML.hs	2013-08-10 12:28:17.333957000 +1000
+@@ -39,7 +39,7 @@
+ 
+ import Text.Pandoc.Pretty
+ import Data.Char (ord, isAscii, isSpace)
+-import Text.HTML.TagSoup.Entity (lookupEntity)
++import Text.Pandoc.Compat.TagSoupEntity (lookupEntity)
+ 
+ -- | Remove everything between <...>
+ stripTags :: String -> String

@@ -1,0 +1,401 @@
+# ChangeLog for media-video/cheese
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/cheese/ChangeLog,v 1.94 2015/06/09 22:38:54 eva Exp $
+
+*cheese-3.16.1 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org> +cheese-3.16.1.ebuild:
+  Version bump for Gnome 3.16.
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> cheese-3.14.2.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> cheese-3.14.2.ebuild:
+  amd64 stable, bug 534012
+
+  04 Feb 2015; Pacho Ramos <pacho@gentoo.org> cheese-3.14.2.ebuild:
+  Rekeyword on ia64
+
+*cheese-3.14.2 (24 Dec 2014)
+
+  24 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org> +cheese-3.14.2.ebuild:
+  Version bump for Gnome 3.14. Dropped keywords, bug #523924.
+
+  13 Nov 2014; Pacho Ramos <pacho@gentoo.org> -cheese-2.32.0.ebuild,
+  -cheese-3.10.2.ebuild:
+  Drop old (#508854)
+
+  30 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> -cheese-3.12.1.ebuild,
+  -cheese-3.12.2.ebuild:
+  old
+
+*cheese-3.12.2-r1 (30 Jul 2014)
+
+  30 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> +cheese-3.12.2-r1.ebuild:
+  Revision bump media-video/cheese because dynamic deps doesn't catch
+  virtual/udev[gudev] -> virtual/libgudev upgrade for this package.
+
+  24 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> cheese-2.32.0.ebuild,
+  cheese-3.10.2.ebuild, cheese-3.12.1.ebuild, cheese-3.12.2.ebuild:
+  Use virtual/libgudev with := instead of virtual/udev.
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> cheese-3.12.2.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> cheese-3.12.2.ebuild:
+  Stable for amd64, wrt bug #512912
+
+*cheese-3.12.2 (30 May 2014)
+
+  30 May 2014; Pacho Ramos <pacho@gentoo.org> +cheese-3.12.2.ebuild:
+  Version bump
+
+*cheese-3.12.1 (27 Apr 2014)
+
+  27 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org> +cheese-3.12.1.ebuild:
+  Version bump for Gnome 3.12.
+
+  18 Apr 2014; Pacho Ramos <pacho@gentoo.org> -cheese-3.8.3.ebuild,
+  metadata.xml:
+  drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> cheese-3.10.2.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> cheese-3.10.2.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> cheese-3.10.2.ebuild:
+  Fix wrong commit, bug 502160
+
+*cheese-3.10.2 (24 Dec 2013)
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org> +cheese-3.10.2.ebuild:
+  Version bump for Gnome 3.10
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> cheese-3.8.3.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> cheese-3.8.3.ebuild:
+  amd64 stable, bug #478252
+
+  25 Aug 2013; Gilles Dartiguelongue <eva@gentoo.org> -cheese-3.6.2.ebuild,
+  -cheese-3.8.2.ebuild, cheese-3.8.3.ebuild:
+  Add vala to DEPEND, bug #482416. Remove old revisions.
+
+  01 Aug 2013; Alexandre Rostovtsev <tetromino@gentoo.org> cheese-3.8.2.ebuild,
+  cheese-3.8.3.ebuild:
+  Depend on >=clutter-gst-2.0.6 to avoid GLSL errors (bug #478702, thanks to
+  Jan Vesely).
+
+*cheese-3.8.3 (20 Jul 2013)
+
+  20 Jul 2013; Pacho Ramos <pacho@gentoo.org> +cheese-3.8.3.ebuild,
+  -cheese-3.8.1.ebuild:
+  Version bump, drop old
+
+*cheese-3.8.2 (14 May 2013)
+
+  14 May 2013; Pacho Ramos <pacho@gentoo.org> +cheese-3.8.2.ebuild,
+  -cheese-3.4.2.ebuild, -cheese-3.8.0.ebuild:
+  Version bump, drop old
+
+*cheese-3.8.1 (16 Apr 2013)
+
+  16 Apr 2013; Pacho Ramos <pacho@gentoo.org> +cheese-3.8.1.ebuild:
+  Version bump
+
+*cheese-3.8.0 (28 Mar 2013)
+
+  28 Mar 2013; Pacho Ramos <pacho@gentoo.org> +cheese-3.8.0.ebuild:
+  Version bump for Gnome 3.8
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> cheese-3.6.2.ebuild:
+  Add ~arm, wrt bug #449220
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> cheese-3.6.2.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> cheese-3.6.2.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> cheese-3.6.2.ebuild:
+  Add ~ia64, wrt bug #449220
+
+*cheese-3.6.2 (19 Dec 2012)
+
+  19 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  cheese-2.32.0.ebuild, -cheese-3.2.2.ebuild, cheese-3.4.2.ebuild,
+  +cheese-3.6.2.ebuild, metadata.xml:
+  Version bump for gnome-3.6 and gstreamer-1.0. Update license. Drop old.
+  Switch to global introspection flag.
+
+  11 Dec 2012; Ian Stakenvicius <axs@gentoo.org> cheese-2.32.0.ebuild,
+  cheese-3.2.2.ebuild, cheese-3.4.2.ebuild:
+  virtualized the udev dependency
+
+  25 Oct 2012; Gilles Dartiguelongue <eva@gentoo.org> cheese-3.2.2.ebuild,
+  -cheese-3.4.1.ebuild, cheese-3.4.2.ebuild:
+  Pin gstreamer dependencies to slot 0.10. Drop old revision.
+
+  23 Sep 2012; Anthony G. Basile <blueness@gentoo.org> cheese-3.4.2.ebuild:
+  keyword ~ppc, bug #379651
+
+  23 Sep 2012; Anthony G. Basile <blueness@gentoo.org> cheese-3.4.2.ebuild:
+  keyword ~ppc64, bug #379649
+
+  09 Jul 2012; Brent Baude <ranger@gentoo.org> cheese-3.2.2.ebuild:
+  Marking cheese-3.2.2 ~ppc for bug 379649
+
+*cheese-3.4.2 (24 May 2012)
+
+  24 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +cheese-3.4.2.ebuild:
+  Version bump, translation updates only.
+
+*cheese-3.4.1 (13 May 2012)
+
+  13 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -cheese-3.2.1.ebuild, +cheese-3.4.1.ebuild, metadata.xml:
+  Version bump for gnome-3.4, now with nautilus-sendto support. Forced to drop
+  alpha keyword due to gst-plugins-vp8 and nautilus-sendto; bug will be filed
+  later. Drop old.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> cheese-2.32.0.ebuild,
+  cheese-3.2.1.ebuild, cheese-3.2.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  19 Feb 2012; Tobias Klausmann <klausman@gentoo.org> cheese-3.2.2.ebuild:
+  Keyworded on alpha, bug #379649
+
+*cheese-3.2.2 (16 Nov 2011)
+
+  16 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +cheese-3.2.2.ebuild:
+  Bump, fixes thumbnailing bugs, requires vala:0.14.
+
+*cheese-3.2.1 (04 Nov 2011)
+
+  04 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -cheese-3.0.2.ebuild, +cheese-3.2.1.ebuild:
+  Bump to 3.2.1 from the gnome overlay, drop old. Notable changes: UI
+  improvements, stability fixes.
+
+  21 Oct 2011; Alexandre Rostovtsev <tetromino@gentoo.org> cheese-3.0.2.ebuild:
+  Needs gst-plugins-jpeg for capturing still photos (bug #379649 comment 4).
+  Thanks to Albert W. Hopkins <marduk@python.net> for reporting.
+
+  14 Sep 2011; Pacho Ramos <pacho@gentoo.org> cheese-3.0.2.ebuild:
+  Fix libgee dependency to proper slot.
+
+  10 Sep 2011; Pacho Ramos <pacho@gentoo.org> cheese-2.32.0.ebuild:
+  Fix dependencies as explained in bug #382011.
+
+*cheese-3.0.2 (18 Aug 2011)
+
+  18 Aug 2011; Nirbheek Chauhan <nirbheek@gentoo.org> +cheese-3.0.2.ebuild,
+  metadata.xml:
+  Bump to 3.0.2, from gnome overlay for GNOME 3, keywords dropped: bug 379649
+
+  09 Jun 2011; Sebastian Pipping <sping@gentoo.org> cheese-2.32.0.ebuild:
+  Add >=sys-fs/udev-171[gudev] as an alternative dependency to
+  >=sys-fs/udev-145-r1[extras] (bug #370381)
+
+  31 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> cheese-2.32.0.ebuild:
+  Remove USE="v4l" and gst-plugins-v4l RDEPEND wrt #359647.
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org> cheese-2.32.0.ebuild:
+  Marking cheese-2.32.0 ppc stable for bug 353436
+
+  21 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> cheese-2.32.0.ebuild:
+  ppc64 stable wrt #353436
+
+  20 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> cheese-2.30.1.ebuild,
+  cheese-2.32.0.ebuild:
+  Fix slot-deps on gtk+ and other libs
+
+  12 Mar 2011; Raúl Porcel <armin76@gentoo.org> cheese-2.32.0.ebuild:
+  alpha/ia64/sparc stable wrt #353436
+
+  24 Feb 2011; Thomas Kahle <tomka@gentoo.org> cheese-2.32.0.ebuild:
+  x86 stable per bug 353436
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org> cheese-2.32.0.ebuild:
+  Stable on amd64 wrt bug #353436
+
+  15 Feb 2011; Gilles Dartiguelongue <eva@gentoo.org> cheese-2.32.0.ebuild:
+  Fix gdk-pixbuf/gtk+ USE flag dependencies.
+
+  02 Nov 2010; Arun Raghavan <ford_prefect@gentoo.org> cheese-2.32.0.ebuild:
+  Clarify gnome-desktop dep as being slot 2
+
+  01 Nov 2010; Gilles Dartiguelongue <eva@gentoo.org> cheese-2.32.0.ebuild:
+  Drop python changes, it's unneeded since gnome-doc-utils has been fixed.
+
+*cheese-2.32.0 (29 Oct 2010)
+
+  29 Oct 2010; Pacho Ramos <pacho@gentoo.org> -cheese-2.28.1-r1.ebuild,
+  +cheese-2.32.0.ebuild:
+  Version bump for Gnome 2.32 with bugfixes and translation updates. Also
+  require gtk+ with jpeg support (bug #338198 by klondike).
+
+  17 Oct 2010; Raúl Porcel <armin76@gentoo.org> cheese-2.30.1.ebuild:
+  alpha/ia64/sparc stable wrt #324077
+
+  09 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> cheese-2.30.1.ebuild:
+  ppc64 stable wrt #324077
+
+  20 Sep 2010; Pacho Ramos <pacho@gentoo.org> cheese-2.30.1.ebuild:
+  Add media-libs/gst-plugins-good RDEPEND back as reported by klondike in
+  bug #338127.
+
+  13 Sep 2010; Gilles Dartiguelongue <eva@gentoo.org> -cheese-2.24.3.ebuild,
+  -cheese-2.26.3.ebuild, cheese-2.30.1.ebuild:
+  Add missing gtk-doc, docbook-xml-dtd DEPEND. Keep dbus[X] from previous
+  revisions that was forgotten in overlay.
+
+  11 Sep 2010; Joseph Jezak <josejx@gentoo.org> cheese-2.30.1.ebuild:
+  Marked ppc for bug #324077.
+
+  14 Aug 2010; Raúl Porcel <armin76@gentoo.org> cheese-2.28.1-r1.ebuild:
+  alpha/ia64/sparc stable
+
+  11 Aug 2010; Joseph Jezak <josejx@gentoo.org> cheese-2.28.1-r1.ebuild,
+  cheese-2.30.1.ebuild:
+  Marked ~ppc for bug #313563.
+
+  01 Aug 2010; Christian Faulhammer <fauli@gentoo.org> cheese-2.30.1.ebuild:
+  x86 stable, bug 324077
+
+  31 Jul 2010; Pacho Ramos <pacho@gentoo.org> cheese-2.30.1.ebuild:
+  amd64 stable, bug 324077
+
+  06 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  cheese-2.28.1-r1.ebuild:
+  Keyword ~ppc64 wrt #313563
+
+  15 Jun 2010; Pacho Ramos <pacho@gentoo.org> cheese-2.30.1.ebuild:
+  Raise udev dependency as it requires 'extras', bug #323993 by Panard
+
+*cheese-2.30.1 (13 Jun 2010)
+
+  13 Jun 2010; Pacho Ramos <pacho@gentoo.org> +cheese-2.30.1.ebuild:
+  Add new version for Gnome 2.30.
+
+  04 Jun 2010; Markus Meier <maekke@gentoo.org> cheese-2.28.1-r1.ebuild:
+  x86 stable, bug #314899
+
+  22 May 2010; Raúl Porcel <armin76@gentoo.org> cheese-2.28.1-r1.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #313563
+
+  03 May 2010; Olivier Crête <tester@gentoo.org> cheese-2.28.1-r1.ebuild:
+  amd64 stable, bug #314899
+
+  04 Mar 2010; Gilles Dartiguelongue <eva@gentoo.org> cheese-2.26.3.ebuild,
+  -cheese-2.28.1.ebuild, cheese-2.28.1-r1.ebuild:
+  Needs USE=X on dbus, bug #307665.
+
+  14 Feb 2010; Pacho Ramos <pacho@gentoo.org> cheese-2.24.3.ebuild,
+  cheese-2.26.3.ebuild, cheese-2.28.1.ebuild, cheese-2.28.1-r1.ebuild:
+  It's media-plugins/gst-plugins-xvideo and not media-plugins/gst-plugins-xv
+
+  14 Feb 2010; Pacho Ramos <pacho@gentoo.org> cheese-2.24.3.ebuild:
+  Added a video sink to RDEPEND, bug 304725
+
+  31 Dec 2009; Brent Baude <ranger@gentoo.org> cheese-2.24.3.ebuild:
+  Marking cheese-2.24.3 ~ppc64 for bug 287051
+
+*cheese-2.28.1-r1 (21 Nov 2009)
+
+  21 Nov 2009; Romain Perier <mrpouet@gentoo.org> +cheese-2.28.1-r1.ebuild:
+  Add missing gst-plugins-good pure RDEPEND (for videobalance plugin) per
+  bug #293642, new revision.
+
+*cheese-2.28.1 (29 Oct 2009)
+
+  29 Oct 2009; Gilles Dartiguelongue <eva@gentoo.org> +cheese-2.28.1.ebuild:
+  New version for GNOME 2.28.
+
+  23 Aug 2009; Gilles Dartiguelongue <eva@gentoo.org> cheese-2.24.3.ebuild,
+  -cheese-2.26.2.ebuild, cheese-2.26.3.ebuild:
+  Clean up old revision. Add docbook-xml-dtd-4.3 to DEPEND per bug #281839.
+
+*cheese-2.26.3 (19 Jul 2009)
+
+  19 Jul 2009; Gilles Dartiguelongue <eva@gentoo.org> -cheese-2.26.0.ebuild,
+  +cheese-2.26.3.ebuild:
+  Version bump. Translation updates. Added a video sink to RDEPEND, bug
+  #277480.
+
+*cheese-2.26.2 (18 May 2009)
+
+  18 May 2009; Gilles Dartiguelongue <eva@gentoo.org> +cheese-2.26.2.ebuild:
+  Bump to 2.26.2. Bug fixes and translation updates.
+
+*cheese-2.26.0 (10 May 2009)
+
+  10 May 2009; Gilles Dartiguelongue <eva@gentoo.org> -cheese-2.22.3.ebuild,
+  -cheese-2.24.2.ebuild, +cheese-2.26.0.ebuild:
+  New version for GNOME 2.26. Drop libgnome and gnome-vfs dependency, bug
+  fixes. Clean up old revisions.
+
+  15 Mar 2009; Markus Meier <maekke@gentoo.org> cheese-2.24.3.ebuild:
+  x86 stable, bug #260063
+
+  11 Mar 2009; Daniel Gryniewicz <dang@gentoo.org> cheese-2.24.3.ebuild:
+  Marked stable on amd64
+
+*cheese-2.24.3 (14 Jan 2009)
+
+  14 Jan 2009; Gilles Dartiguelongue <eva@gentoo.org> -cheese-2.24.1.ebuild,
+  +cheese-2.24.3.ebuild:
+  Bump to 2.24.3. Added catalan documentation.
+
+*cheese-2.24.2 (29 Nov 2008)
+
+  29 Nov 2008; Gilles Dartiguelongue <eva@gentoo.org> +cheese-2.24.2.ebuild:
+  Bump to 2.24.2. Various small enhancements, fix memory leaks, updated
+  translations.
+
+*cheese-2.24.1 (20 Oct 2008)
+
+  20 Oct 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  -files/cheese-2.22.0-strcmp-device-name.patch,
+  -files/cheese-2.22.0-webcam-caps.patch, -cheese-2.22.0.ebuild,
+  -cheese-2.22.1.ebuild, -cheese-2.22.2.ebuild, +cheese-2.24.1.ebuild:
+  New version for GNOME 2.24. Lots of small improvments, fullscreen mode,
+  changed default storage directory to a more visible place, dbus
+  interface... Clean up old revisions.
+
+  10 Aug 2008; Markus Meier <maekke@gentoo.org> cheese-2.22.3.ebuild:
+  x86 stable, bug #229709
+
+  26 Jul 2008; Olivier Crête <tester@gentoo.org> cheese-2.22.3.ebuild:
+  Stable on amd64, bug #229709
+
+*cheese-2.22.3 (30 Jun 2008)
+
+  30 Jun 2008; Gilles Dartiguelongue <eva@gentoo.org> +cheese-2.22.3.ebuild:
+  bump to 2.22.3. Get the proper thumbnail for previous photos, more
+  translations.
+
+*cheese-2.22.2 (31 May 2008)
+
+  31 May 2008; Gilles Dartiguelongue <eva@gentoo.org> +cheese-2.22.2.ebuild:
+  New version for GNOME-2.22.2. Bug fixes.
+
+*cheese-2.22.1 (07 Apr 2008)
+
+  07 Apr 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +cheese-2.22.0.ebuild:
+  bump to 2.22.1, bug fixes and translation updates.
+
+*cheese-2.22.0 (23 Mar 2008)
+
+  23 Mar 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/cheese-2.22.0-strcmp-device-name.patch,
+  +files/cheese-2.22.0-webcam-caps.patch,
+  +cheese-2.22.0.ebuild:
+  Initial ebuild for cheese. Thanks to Mikel Olasagasti for ebuild
+  submission and guys on bug #184115.
+  Include fixes from bug #213221.

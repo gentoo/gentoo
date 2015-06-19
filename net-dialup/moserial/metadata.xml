@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gnome</herd>
+<maintainer>
+	<email>steev@gentoo.org</email>
+</maintainer>
+<longdescription lang="en">
+	moserial is a clean, friendly gtk-based serial terminal for the gnome desktop.
+</longdescription>
+</pkgmetadata>

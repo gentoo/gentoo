@@ -1,0 +1,426 @@
+# ChangeLog for net-libs/libnetfilter_conntrack
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libnetfilter_conntrack/ChangeLog,v 1.86 2015/05/05 15:31:05 vapier Exp $
+
+  05 May 2015; Mike Frysinger <vapier@gentoo.org>
+  libnetfilter_conntrack-1.0.4.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  18 Jul 2014; Jeroen Roovers <jer@gentoo.org>
+  -libnetfilter_conntrack-1.0.0.ebuild, -libnetfilter_conntrack-1.0.1.ebuild,
+  -libnetfilter_conntrack-1.0.2.ebuild, metadata.xml:
+  Remove short <longdescription>.
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.4.ebuild:
+  Stable for ia64, wrt bug #474858
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.4.ebuild:
+  Stable for ppc, wrt bug #474858
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.4.ebuild:
+  Stable for ppc64, wrt bug #474858
+
+  15 Dec 2013; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.4.ebuild:
+  Stable for sparc, wrt bug #474858
+
+  06 Oct 2013; Markus Meier <maekke@gentoo.org>
+  libnetfilter_conntrack-1.0.4.ebuild:
+  arm stable, bug #474858
+
+  02 Oct 2013; Jeroen Roovers <jer@gentoo.org>
+  libnetfilter_conntrack-1.0.4.ebuild:
+  Stable for HPPA (bug #474858).
+
+  30 Sep 2013; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.4.ebuild:
+  Stable for x86, wrt bug #474858
+
+  28 Sep 2013; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.4.ebuild:
+  Stable for amd64, wrt bug #474858
+
+*libnetfilter_conntrack-1.0.4 (20 Aug 2013)
+
+  20 Aug 2013; Sergey Popov <pinkbyte@gentoo.org>
+  +libnetfilter_conntrack-1.0.4.ebuild:
+  Version bump
+
+  06 Jul 2013; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.3.ebuild:
+  Stable for alpha, wrt bug #474268
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.3.ebuild:
+  Stable for ppc64, wrt bug #474268
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.3.ebuild:
+  Stable for sparc, wrt bug #474268
+
+  26 Jun 2013; Jeroen Roovers <jer@gentoo.org>
+  libnetfilter_conntrack-1.0.3.ebuild:
+  Stable for HPPA (bug #474268).
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.3.ebuild:
+  Stable for arm, wrt bug #474268
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.3.ebuild:
+  Stable for ia64, wrt bug #474268
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.3.ebuild:
+  Stable for amd64, wrt bug #474268
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.3.ebuild:
+  Stable for x86, wrt bug #474268
+
+  24 Jun 2013; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.3.ebuild:
+  Stable for ppc, wrt bug #474268
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #151880
+
+*libnetfilter_conntrack-1.0.3 (25 Apr 2013)
+
+  25 Apr 2013; Jeroen Roovers <jer@gentoo.org>
+  +libnetfilter_conntrack-1.0.3.ebuild:
+  Version bump (bug #466736).
+
+  21 Feb 2013; Jeroen Roovers <jer@gentoo.org>
+  libnetfilter_conntrack-1.0.2.ebuild:
+  Stable for HPPA (bug #457806).
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.2.ebuild:
+  Stable for sparc, wrt bug #457806
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.2.ebuild:
+  Stable for ia64, wrt bug #457806
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.2.ebuild:
+  Stable for alpha, wrt bug #457806
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.2.ebuild:
+  Stable for ppc64, wrt bug #457806
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.2.ebuild:
+  Stable for ppc, wrt bug #457806
+
+  17 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.2.ebuild:
+  Stable for x86, wrt bug #457806
+
+  16 Feb 2013; Sergey Popov <pinkbyte@gentoo.org>
+  libnetfilter_conntrack-1.0.2.ebuild:
+  Stable on arm, wrt bug #457806
+
+  16 Feb 2013; Sergey Popov <pinkbyte@gentoo.org>
+  libnetfilter_conntrack-1.0.2.ebuild:
+  Stable on amd64, wrt bug #457806
+
+  29 Dec 2012; Jeroen Roovers <jer@gentoo.org>
+  libnetfilter_conntrack-1.0.2.ebuild:
+  Verbose build.
+
+  01 Dec 2012; Raúl Porcel <armin76@gentoo.org>
+  libnetfilter_conntrack-1.0.2.ebuild:
+  Add ~alpha/~ia64/~sparc stable wrt #432974, #439394
+
+  26 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  libnetfilter_conntrack-1.0.2.ebuild:
+  keyword ~arm, bug #439394
+
+  26 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  libnetfilter_conntrack-1.0.2.ebuild:
+  keyword ~ppc64, bug #432974
+
+*libnetfilter_conntrack-1.0.2 (23 Oct 2012)
+
+  23 Oct 2012; Jeroen Roovers <jer@gentoo.org>
+  -libnetfilter_conntrack-0.0.101.ebuild, -libnetfilter_conntrack-0.9.1.ebuild,
+  +libnetfilter_conntrack-1.0.2.ebuild:
+  Version bump.
+
+  14 Oct 2012; Markus Meier <maekke@gentoo.org>
+  libnetfilter_conntrack-1.0.1.ebuild:
+  add ~arm, bug #432974
+
+  11 Sep 2012; Raúl Porcel <armin76@gentoo.org>
+  libnetfilter_conntrack-1.0.0.ebuild:
+  ia64 stable wrt #433076
+
+  02 Sep 2012; Michael Weber <xmw@gentoo.org>
+  libnetfilter_conntrack-1.0.0.ebuild:
+  ppc stable (bug 433076).
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org>
+  libnetfilter_conntrack-1.0.0.ebuild:
+  sparc stable wrt #419265
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org>
+  libnetfilter_conntrack-1.0.0.ebuild:
+  Stable for amd64, wrt bug #419265
+
+  16 Jul 2012; Jeroen Roovers <jer@gentoo.org>
+  libnetfilter_conntrack-1.0.0.ebuild:
+  Stable for HPPA (bug #419265).
+
+  16 Jul 2012; Jeff Horelick <jdhore@gentoo.org>
+  libnetfilter_conntrack-1.0.0.ebuild:
+  marked x86 per bug 419265
+
+*libnetfilter_conntrack-1.0.1 (16 Jul 2012)
+
+  16 Jul 2012; Tim Harder <radhermit@gentoo.org>
+  +libnetfilter_conntrack-1.0.1.ebuild:
+  Version bump.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  libnetfilter_conntrack-0.0.101.ebuild, libnetfilter_conntrack-0.9.1.ebuild,
+  libnetfilter_conntrack-1.0.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  14 Feb 2012; Jeroen Roovers <jer@gentoo.org>
+  -libnetfilter_conntrack-0.0.50.ebuild, -libnetfilter_conntrack-0.0.75.ebuild,
+  -libnetfilter_conntrack-0.0.80.ebuild, -libnetfilter_conntrack-0.0.81.ebuild,
+  -libnetfilter_conntrack-0.0.82.ebuild, -libnetfilter_conntrack-0.0.89.ebuild,
+  -libnetfilter_conntrack-0.0.94.ebuild, -libnetfilter_conntrack-0.0.96.ebuild,
+  -libnetfilter_conntrack-0.0.97.ebuild, -libnetfilter_conntrack-0.0.98.ebuild,
+  -libnetfilter_conntrack-0.0.99.ebuild,
+  -libnetfilter_conntrack-0.0.100.ebuild:
+  Old.
+
+  05 Jan 2012; Tim Harder <radhermit@gentoo.org>
+  libnetfilter_conntrack-0.0.50.ebuild, libnetfilter_conntrack-0.0.75.ebuild,
+  libnetfilter_conntrack-0.0.80.ebuild, libnetfilter_conntrack-0.0.81.ebuild,
+  libnetfilter_conntrack-0.0.82.ebuild, libnetfilter_conntrack-0.0.89.ebuild,
+  libnetfilter_conntrack-0.0.94.ebuild, libnetfilter_conntrack-0.0.96.ebuild,
+  libnetfilter_conntrack-0.0.97.ebuild, libnetfilter_conntrack-0.0.98.ebuild,
+  libnetfilter_conntrack-0.0.99.ebuild, libnetfilter_conntrack-0.0.100.ebuild,
+  libnetfilter_conntrack-0.0.101.ebuild, libnetfilter_conntrack-0.9.1.ebuild,
+  libnetfilter_conntrack-1.0.0.ebuild:
+  Add pkgconfig build dep (bug #382981).
+
+*libnetfilter_conntrack-1.0.0 (05 Jan 2012)
+
+  05 Jan 2012; Tim Harder <radhermit@gentoo.org>
+  +libnetfilter_conntrack-1.0.0.ebuild:
+  Version bump.
+
+  28 Nov 2011; Tim Harder <radhermit@gentoo.org>
+  libnetfilter_conntrack-0.9.1.ebuild:
+  Bump to EAPI 4 and fix autotools-utils usage (bug #392111).
+
+  27 Nov 2011; Tim Harder <radhermit@gentoo.org>
+  libnetfilter_conntrack-0.9.1.ebuild:
+  Build in the source tree.
+
+*libnetfilter_conntrack-0.9.1 (23 May 2011)
+
+  23 May 2011; Jeroen Roovers <jer@gentoo.org>
+  +libnetfilter_conntrack-0.9.1.ebuild:
+  Version bump thanks to Peter Volkov (bug #329059). Add IUSE=static-libs.
+
+  06 Oct 2010; Jeroen Roovers <jer@gentoo.org>
+  libnetfilter_conntrack-0.0.101.ebuild:
+  Stable for HPPA (bug #320219).
+
+  08 Jul 2010; Raúl Porcel <armin76@gentoo.org>
+  libnetfilter_conntrack-0.0.101.ebuild:
+  sparc stable wrt #320219
+
+  30 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  libnetfilter_conntrack-0.0.101.ebuild:
+  x86 stable wrt bug #320219
+
+  25 May 2010; Pacho Ramos <pacho@gentoo.org>
+  libnetfilter_conntrack-0.0.101.ebuild:
+  stable amd64, bug 320219
+
+  25 Jan 2010; Raúl Porcel <armin76@gentoo.org>
+  libnetfilter_conntrack-0.0.50.ebuild,
+  libnetfilter_conntrack-0.0.75.ebuild,
+  libnetfilter_conntrack-0.0.80.ebuild,
+  libnetfilter_conntrack-0.0.81.ebuild,
+  libnetfilter_conntrack-0.0.82.ebuild,
+  libnetfilter_conntrack-0.0.89.ebuild,
+  libnetfilter_conntrack-0.0.94.ebuild,
+  libnetfilter_conntrack-0.0.96.ebuild,
+  libnetfilter_conntrack-0.0.97.ebuild,
+  libnetfilter_conntrack-0.0.98.ebuild,
+  libnetfilter_conntrack-0.0.99.ebuild,
+  libnetfilter_conntrack-0.0.100.ebuild,
+  libnetfilter_conntrack-0.0.101.ebuild:
+  Add ~ia64 wrt #281056
+
+*libnetfilter_conntrack-0.0.101 (28 Dec 2009)
+
+  28 Dec 2009; Wolfram Schlich <wschlich@gentoo.org>
+  +libnetfilter_conntrack-0.0.101.ebuild:
+  version bump
+
+  08 Sep 2009; Mike Auty <ikelos@gentoo.org>
+  libnetfilter_conntrack-0.0.50.ebuild,
+  libnetfilter_conntrack-0.0.75.ebuild,
+  libnetfilter_conntrack-0.0.80.ebuild,
+  libnetfilter_conntrack-0.0.81.ebuild,
+  libnetfilter_conntrack-0.0.82.ebuild,
+  libnetfilter_conntrack-0.0.89.ebuild,
+  libnetfilter_conntrack-0.0.94.ebuild,
+  libnetfilter_conntrack-0.0.96.ebuild,
+  libnetfilter_conntrack-0.0.97.ebuild,
+  libnetfilter_conntrack-0.0.98.ebuild,
+  libnetfilter_conntrack-0.0.99.ebuild,
+  libnetfilter_conntrack-0.0.100.ebuild:
+  Making CONFIG_CHECK non-fatal for userland ebuilds, see bug 283320.
+
+*libnetfilter_conntrack-0.0.100 (26 Jul 2009)
+
+  26 Jul 2009; Cédric Krier <cedk@gentoo.org>
+  +libnetfilter_conntrack-0.0.100.ebuild:
+  Version bump
+
+  03 Mar 2009; Raúl Porcel <armin76@gentoo.org>
+  libnetfilter_conntrack-0.0.99.ebuild:
+  sparc stable wrt #245173
+
+  08 Feb 2009; Markus Meier <maekke@gentoo.org>
+  libnetfilter_conntrack-0.0.99.ebuild:
+  amd64/x86 stable, bug #245173
+
+  06 Feb 2009; Jeroen Roovers <jer@gentoo.org>
+  libnetfilter_conntrack-0.0.99.ebuild:
+  Stable for HPPA (bug #245173).
+
+*libnetfilter_conntrack-0.0.99 (21 Dec 2008)
+
+  21 Dec 2008; Cédric Krier <cedk@gentoo.org>
+  +libnetfilter_conntrack-0.0.99.ebuild:
+  Version bump
+
+*libnetfilter_conntrack-0.0.98 (29 Nov 2008)
+
+  29 Nov 2008; Wolfram Schlich <wschlich@gentoo.org>
+  +libnetfilter_conntrack-0.0.98.ebuild:
+  version bump
+
+*libnetfilter_conntrack-0.0.97 (25 Oct 2008)
+
+  25 Oct 2008; Cédric Krier <cedk@gentoo.org>
+  +libnetfilter_conntrack-0.0.97.ebuild:
+  Version bump
+
+*libnetfilter_conntrack-0.0.96 (16 Aug 2008)
+
+  16 Aug 2008; Cédric Krier <cedk@gentoo.org>
+  +libnetfilter_conntrack-0.0.96.ebuild:
+  Version bump
+
+*libnetfilter_conntrack-0.0.94 (31 May 2008)
+
+  31 May 2008; Cédric Krier <cedk@gentoo.org>
+  +libnetfilter_conntrack-0.0.94.ebuild:
+  Version bump
+
+  09 May 2008; Markus Meier <maekke@gentoo.org>
+  libnetfilter_conntrack-0.0.89.ebuild:
+  amd64 stable, bug #214072
+
+  05 May 2008; Jeroen Roovers <jer@gentoo.org>
+  libnetfilter_conntrack-0.0.89.ebuild:
+  Stable for HPPA (bug #214072).
+
+  08 Apr 2008; Raúl Porcel <armin76@gentoo.org>
+  libnetfilter_conntrack-0.0.89.ebuild:
+  sparc stable wrt #214072
+
+  22 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  libnetfilter_conntrack-0.0.89.ebuild:
+  stable x86, bug 214072
+
+*libnetfilter_conntrack-0.0.89 (08 Mar 2008)
+
+  08 Mar 2008; Cédric Krier <cedk@gentoo.org>
+  +libnetfilter_conntrack-0.0.89.ebuild:
+  Version bump
+
+*libnetfilter_conntrack-0.0.82 (18 Nov 2007)
+
+  18 Nov 2007; Cédric Krier <cedk@gentoo.org>
+  +libnetfilter_conntrack-0.0.82.ebuild:
+  Version bump
+
+  08 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  libnetfilter_conntrack-0.0.80.ebuild:
+  Stable on sparc
+
+*libnetfilter_conntrack-0.0.81 (29 Jul 2007)
+
+  29 Jul 2007; Cédric Krier <cedk@gentoo.org>
+  +libnetfilter_conntrack-0.0.81.ebuild:
+  Version bump
+
+*libnetfilter_conntrack-0.0.80 (01 Jul 2007)
+
+  01 Jul 2007; Cédric Krier <cedk@gentoo.org>
+  +libnetfilter_conntrack-0.0.80.ebuild:
+  Version bump
+
+  16 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  libnetfilter_conntrack-0.0.75.ebuild:
+  Added ~ppc, bug #176568
+
+*libnetfilter_conntrack-0.0.75 (16 Jun 2007)
+
+  16 Jun 2007; Cédric Krier <cedk@gentoo.org>
+  +libnetfilter_conntrack-0.0.75.ebuild:
+  Version bump
+
+  21 May 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  libnetfilter_conntrack-0.0.50.ebuild:
+  Keyworded ~sparc wrt #176568
+
+  16 May 2007; Jeroen Roovers <jer@gentoo.org>
+  libnetfilter_conntrack-0.0.50.ebuild:
+  Marked ~hppa (bug #176568).
+
+  18 Apr 2007; Markus Ullmann <jokey@gentoo.org>
+  -libnetfilter_conntrack-0.0.31.ebuild,
+  libnetfilter_conntrack-0.0.50.ebuild:
+  Use eclass function for check and error message ;) and we're stable on x86 now
+
+  17 Apr 2007; Cedric Krier <cedk@gentoo.org>
+  libnetfilter_conntrack-0.0.50.ebuild:
+  Better fix for bug #165891
+
+  15 Apr 2007; Daniel Black <dragonheart@gentoo.org>
+  libnetfilter_conntrack-0.0.50.ebuild:
+  added ~amd64. Fix kernel version as per bug #165891 comment #3
+
+  10 Feb 2007; Cedric Krier <cedk@gentoo.org>
+  libnetfilter_conntrack-0.0.50.ebuild:
+  Improve kernel check config for bug #165891
+
+*libnetfilter_conntrack-0.0.50 (07 Feb 2007)
+
+  07 Feb 2007; Cedric Krier <cedk@gentoo.org>
+  +libnetfilter_conntrack-0.0.50.ebuild:
+  Version bump
+
+*libnetfilter_conntrack-0.0.31 (13 Nov 2006)
+
+  13 Nov 2006; Cedric Krier <ced@ced.homedns.org> +metadata.xml,
+  +libnetfilter_conntrack-0.0.31.ebuild:
+  New ebuild for libnetfilter_conntrack

@@ -1,0 +1,19 @@
+# ChangeLog for app-dicts/sword-scotsgaelic
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/sword-scotsgaelic/ChangeLog,v 1.3 2014/01/06 00:03:14 creffett Exp $
+
+  06 Jan 2014; Chris Reffett <creffett@gentoo.org>
+  -sword-scotsgaelic-1.1.ebuild, sword-scotsgaelic-1.2.ebuild:
+  EAPI bump
+
+*sword-scotsgaelic-1.2 (16 May 2010)
+
+  16 May 2010; Steve Dibb <beandog@gentoo.org>
+  +sword-scotsgaelic-1.2.ebuild:
+  Version bump
+
+*sword-scotsgaelic-1.1 (13 May 2008)
+
+  13 May 2008; Steve Dibb <beandog@gentoo.org> +metadata.xml,
+  +sword-scotsgaelic-1.1.ebuild:
+  Initial commit

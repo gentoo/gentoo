@@ -1,0 +1,9 @@
+DEFINED_PHASES=install postinst unpack
+DESCRIPTION=Check the status of services running on local/remote machines
+HOMEPAGE=http://www.linvision.com/checkservice/
+KEYWORDS=~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/perl-5.8 >=dev-perl/MailTools-1.58 >=dev-perl/File-Find-Rule-0.26 >=virtual/perl-Getopt-Long-2.34
+SLOT=0
+SRC_URI=http://www.linvision.com/checkservice/files/checkservice-1.2.0.tar.gz
+_md5_=d4393705fdd35e9a08792aa5202c1ec6

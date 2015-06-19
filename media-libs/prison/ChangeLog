@@ -1,0 +1,67 @@
+# ChangeLog for media-libs/prison
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/prison/ChangeLog,v 1.19 2014/08/03 14:54:22 johu Exp $
+
+  03 Aug 2014; Johannes Huber <johu@gentoo.org> -prison-1.0.ebuild:
+  Remove old.
+
+  02 Aug 2014; Agostino Sarubbo <ago@gentoo.org> prison-1.1.1.ebuild:
+  Stable for ppc64, wrt bug #509648
+
+  13 Jul 2014; Agostino Sarubbo <ago@gentoo.org> prison-1.1.1.ebuild:
+  Stable for ppc, wrt bug #509648
+
+  10 Jul 2014; Chema Alonso <nimiux@gentoo.org> prison-1.1.1.ebuild:
+  Stable for amd64 wrt bug #509648
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> prison-1.1.1.ebuild:
+  x86 stable wrt bug #509648
+
+  05 May 2014; Johannes Huber <johu@gentoo.org> -prison-1.1.0.ebuild:
+  Remove old.
+
+*prison-1.1.1 (11 Apr 2014)
+
+  11 Apr 2014; Johannes Huber <johu@gentoo.org> +prison-1.1.1.ebuild:
+  Version bump.
+
+  19 Mar 2014; Johannes Huber <johu@gentoo.org> prison-1.1.0.ebuild:
+  Bump to EAPI 5.
+
+*prison-1.1.0 (19 Mar 2014)
+
+  19 Mar 2014; Manuel Rüger <mrueg@gentoo.org> +prison-1.1.0.ebuild:
+  Version bump.
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> prison-1.0.ebuild:
+  Stable for ppc64, wrt bug #462890
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org> prison-1.0.ebuild:
+  Add ~ppc64, wrt bug #455960
+
+  07 Feb 2013; Naohiro Aota <naota@gentoo.org> prison-1.0.ebuild:
+  Add ~x86-fbsd wrt bug #430072
+
+  11 Jan 2013; Andreas K. Huettel <dilfridge@gentoo.org> prison-1.0.ebuild:
+  Drop ppc64, unfulfilled dependencies
+
+  19 Aug 2012; Tomáš Chvátal <scarabeus@gentoo.org> prison-1.0.ebuild:
+  Stable on ppc wrt bug#431904.
+
+  18 May 2012; Joseph Jezak <josejx@gentoo.org> prison-1.0.ebuild:
+  Marked ~ppc ~ppc64 for bug #402989.
+
+  18 Apr 2012; Markus Meier <maekke@gentoo.org> prison-1.0.ebuild:
+  x86 stable, bug #409403
+
+  04 Apr 2012; Agostino Sarubbo <ago@gentoo.org> prison-1.0.ebuild:
+  Stable for amd64, wrt bug #409403
+
+  31 Mar 2012; Markus Meier <maekke@gentoo.org> prison-1.0.ebuild:
+  add ~arm, bug #402989
+
+*prison-1.0 (23 Dec 2011)
+
+  23 Dec 2011; Johannes Huber <johu@gentoo.org> +metadata.xml,
+  +prison-1.0.ebuild:
+  New package.

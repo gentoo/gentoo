@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=jpeg? ( virtual/jpeg:0 ) lcms? ( media-libs/lcms:2 ) jpeg2k? ( media-libs/jasper ) gimp? ( media-gfx/gimp ) nls? ( sys-devel/gettext ) gimp? ( virtual/pkgconfig )
+DESCRIPTION=Converts the native (RAW) format of various digital cameras into netpbm portable pixmap (.ppm) image
+EAPI=5
+HOMEPAGE=http://www.cybercom.net/~dcoffin/dcraw/
+IUSE=nls gimp jpeg jpeg2k lcms linguas_ca linguas_cs linguas_de linguas_da linguas_eo linguas_es linguas_fr linguas_hu linguas_it linguas_nl linguas_pl linguas_pt linguas_ru linguas_sv linguas_zh_CN linguas_zh_TW
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=jpeg? ( virtual/jpeg:0 ) lcms? ( media-libs/lcms:2 ) jpeg2k? ( media-libs/jasper ) gimp? ( media-gfx/gimp ) media-libs/netpbm
+SLOT=0
+SRC_URI=http://www.cybercom.net/~dcoffin/dcraw/archive/dcraw-9.26.0.tar.gz mirror://gentoo/parse-1.73.tar.bz2 gimp? ( mirror://gentoo/rawphoto-1.32.tar.bz2 )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9b3aef412d908220732762f3b50fe8c7

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>igor@itesten.com</email>
+    <name>Igor Testen</name>
+    <description>Proxy maintainer, assign bugs</description>
+  </maintainer>
+  <maintainer>
+    <email>titanofold@gentoo.org</email>
+    <name>Aaron W. Swenson</name>
+  </maintainer>
+  <longdescription>
+    Command line client for Amazon S3.
+  </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">s3tools</remote-id>
+  </upstream>
+</pkgmetadata>

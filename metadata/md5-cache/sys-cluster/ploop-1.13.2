@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-libs/libxml2 virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=openvz tool and a library to control ploop block devices
+EAPI=5
+HOMEPAGE=http://wiki.openvz.org/Download/ploop
+IUSE=debug static-libs
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libxml2 !<sys-cluster/vzctl-4.8 sys-block/parted sys-fs/e2fsprogs sys-process/lsof sys-apps/findutils
+SLOT=0
+SRC_URI=http://download.openvz.org/utils/ploop/1.13.2/src/ploop-1.13.2.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=4e8e5de47cf11e7072a03798fd90a727

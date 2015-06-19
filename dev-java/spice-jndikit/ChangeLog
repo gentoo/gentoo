@@ -1,0 +1,22 @@
+# ChangeLog for dev-java/spice-jndikit
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/spice-jndikit/ChangeLog,v 1.4 2014/08/10 20:24:00 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> spice-jndikit-1.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  12 Jul 2007; Petteri Räty <betelgeuse@gentoo.org>
+  spice-jndikit-1.2.ebuild:
+  Javadoc in sun-jdk-1.6 starting with u2 works fine so removing the work
+  around from DEPEND. Also DEPEND on dev-java/ant-junit only for src_test as
+  it's stable now.
+
+  02 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  spice-jndikit-1.2.ebuild:
+  Migrate to splitted ant.
+
+*spice-jndikit-1.2 (12 Jan 2007)
+
+  12 Jan 2007; Petteri Räty <betelgeuse@gentoo.org> +metadata.xml,
+  +spice-jndikit-1.2.ebuild:
+  Initial addition. Ebuild done by me. Fixes bug #161526.

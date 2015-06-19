@@ -1,0 +1,147 @@
+# ChangeLog for dev-perl/ExtUtils-XSpp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/ExtUtils-XSpp/ChangeLog,v 1.32 2015/06/13 22:43:50 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  ExtUtils-XSpp-0.170.0.ebuild, ExtUtils-XSpp-0.180.0.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*ExtUtils-XSpp-0.180.0 (18 May 2015)
+
+  18 May 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +ExtUtils-XSpp-0.180.0.ebuild:
+  Version bump
+
+  31 Aug 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -ExtUtils-XSpp-0.160.200.ebuild, -ExtUtils-XSpp-0.160.300.ebuild:
+  Drop old.
+
+  15 May 2013; Agostino Sarubbo <ago@gentoo.org> ExtUtils-XSpp-0.170.0.ebuild:
+  Stable for x86, wrt bug #463046
+
+  15 May 2013; Agostino Sarubbo <ago@gentoo.org> ExtUtils-XSpp-0.170.0.ebuild:
+  Stable for amd64, wrt bug #463046
+
+*ExtUtils-XSpp-0.170.0 (10 Feb 2013)
+
+  10 Feb 2013; Torsten Veller <tove@gentoo.org> +ExtUtils-XSpp-0.170.0.ebuild:
+  Version bump
+
+*ExtUtils-XSpp-0.160.300 (28 Dec 2012)
+
+  28 Dec 2012; Torsten Veller <tove@gentoo.org>
+  +ExtUtils-XSpp-0.160.300.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org> -ExtUtils-XSpp-0.11.ebuild:
+  Cleanup
+
+  11 Dec 2011; Markus Meier <maekke@gentoo.org> ExtUtils-XSpp-0.160.200.ebuild:
+  x86 stable, bug #388765
+
+  04 Dec 2011; Markos Chandras <hwoarang@gentoo.org>
+  ExtUtils-XSpp-0.160.200.ebuild:
+  Stable on amd64 wrt bug #388765
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org>
+  -ExtUtils-XSpp-0.160.100.ebuild:
+  Cleanup
+
+*ExtUtils-XSpp-0.160.200 (04 Jun 2011)
+
+  04 Jun 2011; Torsten Veller <tove@gentoo.org>
+  +ExtUtils-XSpp-0.160.200.ebuild:
+  Version bump
+
+  03 Apr 2011; Torsten Veller <tove@gentoo.org> -ExtUtils-XSpp-0.15.ebuild,
+  -ExtUtils-XSpp-0.160.0.ebuild:
+  Cleanup
+
+*ExtUtils-XSpp-0.160.100 (13 Mar 2011)
+
+  13 Mar 2011; Torsten Veller <tove@gentoo.org>
+  +ExtUtils-XSpp-0.160.100.ebuild:
+  Version bump
+
+*ExtUtils-XSpp-0.160.0 (12 Mar 2011)
+
+  12 Mar 2011; Torsten Veller <tove@gentoo.org> +ExtUtils-XSpp-0.160.0.ebuild:
+  Version bump
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -ExtUtils-XSpp-0.12.ebuild,
+  -ExtUtils-XSpp-0.14.ebuild:
+  Cleanup
+
+*ExtUtils-XSpp-0.15 (17 Aug 2010)
+
+  17 Aug 2010; Torsten Veller <tove@gentoo.org> +ExtUtils-XSpp-0.15.ebuild:
+  Version bump
+
+*ExtUtils-XSpp-0.14 (22 Jul 2010)
+
+  22 Jul 2010; Torsten Veller <tove@gentoo.org> +ExtUtils-XSpp-0.14.ebuild:
+  Version bump
+
+*ExtUtils-XSpp-0.12 (15 Jul 2010)
+
+  15 Jul 2010; Torsten Veller <tove@gentoo.org> +ExtUtils-XSpp-0.12.ebuild:
+  Version bump
+
+  15 Jun 2010; Torsten Veller <tove@gentoo.org> ExtUtils-XSpp-0.11.ebuild:
+  Stable on amd64 and x86 (#323529)
+
+  11 Jun 2010; Torsten Veller <tove@gentoo.org> -ExtUtils-XSpp-0.09.ebuild,
+  -ExtUtils-XSpp-0.10.ebuild:
+  Cleanup
+
+*ExtUtils-XSpp-0.11 (04 May 2010)
+
+  04 May 2010; Torsten Veller <tove@gentoo.org> +ExtUtils-XSpp-0.11.ebuild:
+  Version bump
+
+*ExtUtils-XSpp-0.10 (15 Apr 2010)
+
+  15 Apr 2010; Torsten Veller <tove@gentoo.org> +ExtUtils-XSpp-0.10.ebuild:
+  Version bump
+
+  09 Apr 2010; Torsten Veller <tove@gentoo.org> -ExtUtils-XSpp-0.05.ebuild,
+  -ExtUtils-XSpp-0.06.ebuild, -ExtUtils-XSpp-0.07.ebuild,
+  -ExtUtils-XSpp-0.08.ebuild:
+  Cleanup
+
+*ExtUtils-XSpp-0.09 (11 Feb 2010)
+
+  11 Feb 2010; Torsten Veller <tove@gentoo.org> +ExtUtils-XSpp-0.09.ebuild:
+  Version bump
+
+*ExtUtils-XSpp-0.08 (07 Feb 2010)
+
+  07 Feb 2010; Torsten Veller <tove@gentoo.org> +ExtUtils-XSpp-0.08.ebuild:
+  Version bump
+
+*ExtUtils-XSpp-0.07 (23 Jan 2010)
+
+  23 Jan 2010; Torsten Veller <tove@gentoo.org> +ExtUtils-XSpp-0.07.ebuild:
+  Version bump
+
+*ExtUtils-XSpp-0.06 (17 Jan 2010)
+
+  17 Jan 2010; Torsten Veller <tove@gentoo.org> +ExtUtils-XSpp-0.06.ebuild:
+  Version bump
+
+  12 Oct 2009; Torsten Veller <tove@gentoo.org> -ExtUtils-XSpp-0.04.ebuild:
+  Cleanup
+
+*ExtUtils-XSpp-0.05 (24 Sep 2009)
+
+  24 Sep 2009; Torsten Veller <tove@gentoo.org> +ExtUtils-XSpp-0.05.ebuild:
+  Version bump
+
+*ExtUtils-XSpp-0.04 (10 Aug 2009)
+
+  10 Aug 2009; Torsten Veller <tove@gentoo.org> +ExtUtils-XSpp-0.04.ebuild,
+  +metadata.xml:
+  Initial commit

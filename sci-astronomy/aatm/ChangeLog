@@ -1,0 +1,12 @@
+# ChangeLog for sci-astronomy/aatm
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/aatm/ChangeLog,v 1.2 2012/08/05 21:40:20 bicatali Exp $
+
+  05 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> aatm-0.4.3.1.ebuild:
+  fixed for newer autoconf
+
+*aatm-0.4.3.1 (26 Nov 2011)
+
+  26 Nov 2011; Sébastien Fabbro <bicatali@gentoo.org> +aatm-0.4.3.1.ebuild,
+  +metadata.xml:
+  Initial import

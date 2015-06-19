@@ -1,0 +1,14 @@
+Index: fcron-3.1.1/configure.in
+===================================================================
+--- fcron-3.1.1.orig/configure.in
++++ fcron-3.1.1/configure.in
+@@ -86,7 +86,8 @@ AC_FUNC_WAIT3
+ AC_CHECK_LIB(xnet, shutdown)
+ AC_CHECK_LIB(selinux, getcon, [selinuxavail=1], [selinuxavail=0])
+ AC_CHECK_LIB(audit, audit_open, [auditavail=1], [auditavail=0])
+-AX_LIB_READLINE
++AC_ARG_WITH([readline], AS_HELP_STRING([--without-readline], [Build without readline @<:@default=yes@:>@]))
++AS_IF([test "x$with_readline" != "xno"], [AX_LIB_READLINE], [ax_cv_lib_readline=no])
+ AC_CHECK_FUNC(getloadavg, [getloadavg=1], [getloadavg=0])
+ AC_CHECK_LIB(kstat, kstat_open, [kstat=1], [kstat=0])
+ if test $getloadavg -eq 1; then

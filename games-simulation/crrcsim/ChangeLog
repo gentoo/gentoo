@@ -1,0 +1,46 @@
+# ChangeLog for games-simulation/crrcsim
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-simulation/crrcsim/ChangeLog,v 1.10 2014/06/01 22:27:36 hasufell Exp $
+
+*crrcsim-0.9.12-r1 (01 Jun 2014)
+
+  01 Jun 2014; Julian Ospald <hasufell@gentoo.org> -crrcsim-0.9.12.ebuild,
+  +crrcsim-0.9.12-r1.ebuild, files/crrcsim-buildsystem.patch:
+  respect GAMES variables wrt #494202, install icon and desktop file wrt
+  #494224
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> crrcsim-0.9.12.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  21 Dec 2012; Michael Sterrett <mr_bones_@gentoo.org> crrcsim-0.9.12.ebuild:
+  EAPI=4; eliminate built_with_use
+
+  21 Dec 2012; Michael Sterrett <mr_bones_@gentoo.org> -crrcsim-0.9.11.ebuild:
+  old
+
+  10 May 2012; Michael Weber <xmw@gentoo.org> crrcsim-0.9.12.ebuild:
+  WANT_AUTOMAKE=1.10, doesn't work with >=1.11.2 (bug 415213, thanks Marian
+  Kyral)
+
+*crrcsim-0.9.12 (04 May 2012)
+
+  04 May 2012; Michael Weber <xmw@gentoo.org> +crrcsim-0.9.12.ebuild:
+  Version bump
+
+  23 Apr 2012; Michał Górny <mgorny@gentoo.org> crrcsim-0.9.11.ebuild:
+  Use mirror:// in SRC_URI.
+
+  13 Nov 2011; Michael Weber <xmw@gentoo.org> crrcsim-0.9.11.ebuild,
+  +files/crrcsim-cgal_gmp.patch, files/crrcsim-buildsystem.patch:
+  fix sci-mathematics/cgal[gmp] problem (thanks rinus, bug 390309)
+
+  12 Nov 2011; Michael Weber <xmw@gentoo.org> crrcsim-0.9.11.ebuild:
+  Add dep on sci-mathematics/cgal, fix --docdir, clean up
+
+*crrcsim-0.9.11 (11 Nov 2011)
+
+  11 Nov 2011; Michael Weber <xmw@gentoo.org> +crrcsim-0.9.11.ebuild,
+  +files/crrcsim-buildsystem.patch, +metadata.xml:
+  Initial import (thanks to Piotr Szymaniak and Krzysztof Synowiec for the
+  report, bug 227273)

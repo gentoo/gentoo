@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <herd>sci-geosciences</herd>
+    <herd>postgresql</herd>
+    <longdescription lang="en">
+        Converts OSM planet.osm data to a PostgreSQL / PostGIS database
+        suitable for specific applications like rendering into map tiles by
+        Mapnik or geocoding with Nominatim.
+    </longdescription>
+    <use>
+        <flag name="pbf">
+            Add support for importing the new "Protocolbuffer Binary Format"
+        </flag>
+    </use>
+</pkgmetadata>

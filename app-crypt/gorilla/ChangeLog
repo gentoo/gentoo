@@ -1,0 +1,42 @@
+# ChangeLog for app-crypt/gorilla
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gorilla/ChangeLog,v 1.11 2015/06/08 15:45:12 jlec Exp $
+
+  08 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Correct remote id
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  25 Mar 2015; Justin Lecher <jlec@gentoo.org> -gorilla-1.4.ebuild:
+  Drop old
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> gorilla-1.4-r1.ebuild:
+  Stable for x86, wrt bug #543792
+
+  24 Mar 2015; Agostino Sarubbo <ago@gentoo.org> gorilla-1.4-r1.ebuild:
+  Stable for amd64, wrt bug #543792
+
+*gorilla-1.4-r1 (19 Mar 2015)
+
+  19 Mar 2015; Justin Lecher <jlec@gentoo.org> +gorilla-1.4-r1.ebuild,
+  metadata.xml:
+  Fix tcl/tk slotting; bump EAPI=5; New homepage, bug #350703
+
+  10 Aug 2014; Patrick Lauer <patrick@gentoo.org> gorilla-1.4.ebuild:
+  Fix description for more repoman happy
+
+  13 Feb 2011; Markos Chandras <hwoarang@gentoo.org> gorilla-1.4.ebuild:
+  Stable on amd64 wrt bug #350707
+
+  13 Feb 2011; Thomas Kahle <tomka@gentoo.org> gorilla-1.4.ebuild:
+  x86 stable per bug 350707
+
+  02 Mar 2009; Patrick Lauer <patrick@gentoo.org> gorilla-1.4.ebuild:
+  Small dep fix, closes #260879. Thanks to Dustin Polke.
+
+*gorilla-1.4 (28 Feb 2009)
+
+  28 Feb 2009; Patrick Lauer <patrick@gentoo.org>
+  +files/gorilla-script-destdir.patch, +metadata.xml, +gorilla-1.4.ebuild:
+  Initial import. Fixes #140393. Ebuild contributed by Ben Timby

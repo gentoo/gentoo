@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>tools-portage</herd>
+	<herd>proxy-maintainers</herd>
+	<herd>kde</herd>
+	<longdescription lang="en">Graphical Portage frontend based on KDE4/Qt4</longdescription>
+	<maintainer>
+		<email>galiven@users.sourceforge.net</email>
+		<name>Andrew Schenck</name>
+		<description>Upstream Maintainer (please CC on bugs)</description>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">kuroo</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,44 @@
+From 4c3c9a38272112fe7a6a248ba521d55ac1b66892 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?R=C3=A9mi=20Cardona?= <remi@gentoo.org>
+Date: Sun, 25 Jan 2015 13:02:19 +0100
+Subject: [PATCH] build: use POSIX-compliant 'printf' instead of 'echo'
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fixes the following error when running ./configure with dash:
+
+  checking for QT... yes
+  checking for moc-qt4... no
+  checking for moc... moc
+  configure: error: --with-udev-dir must be an absolute path or 'yes' or
+  'no'. Instead it is '/lib/udev'
+
+As per the Autoconf Manual's section on "Limitations of Shell Builtins":
+
+  The simple echo is probably the most surprising source of portability
+  troubles. It is not possible to use ‘echo’ portably unless both
+  options and escape sequences are omitted.
+
+https://www.gnu.org/software/automake/faq/autoconf.html#echo
+https://bugs.gentoo.org/536540
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index b407686..5c87c7e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -302,7 +302,7 @@ AM_CONDITIONAL(WITH_QT, test "${enable_qt}" = "yes")
+ 
+ AC_ARG_WITH(udev-dir, AS_HELP_STRING([--with-udev-dir=DIR], [Absolute path of the udev base directory. Set to 'no' not to install the udev rules]), [], [with_udev_dir="yes"])
+ if (test "$with_udev_dir" != 'no'); then
+-	if (test "$with_udev_dir" != 'yes' && echo -n "$with_udev_dir" | grep -v -q '^/'); then
++	if (test "$with_udev_dir" != 'yes' && printf '%s' "$with_udev_dir" | grep -v -q '^/'); then
+ 		AC_MSG_ERROR([--with-udev-dir must be an absolute path or 'yes' or 'no'. Instead it is '$with_udev_dir'])
+ 	fi
+ 	if (test "$with_udev_dir" = 'yes'); then
+-- 
+2.2.1
+

@@ -1,0 +1,30 @@
+# ChangeLog for app-crypt/pesign
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/pesign/ChangeLog,v 1.8 2015/06/05 12:08:31 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> pesign-0.108.ebuild:
+  Streamline EAPI=5 usage
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  04 Jun 2015; Pacho Ramos <pacho@gentoo.org> pesign-0.108.ebuild:
+  Needs nspr (#515174)
+
+  18 Apr 2015; Sven Wegener <swegener@gentoo.org> pesign-0.108.ebuild:
+  Rename distfile to include package name.
+
+  13 May 2014; Patrick Lauer <patrick@gentoo.org> pesign-0.108.ebuild:
+  Quoting
+
+  10 Sep 2013; Patrick Lauer <patrick@gentoo.org> pesign-0.108.ebuild:
+  Whitespace
+
+  30 Aug 2013; Greg Kroah-Hartman <gregkh@gentoo.org> metadata.xml:
+  fixed metadata.xml to point to me
+
+*pesign-0.108 (29 Aug 2013)
+
+  29 Aug 2013; Greg Kroah-Hartman <gregkh@gentoo.org> +files/destdir.patch,
+  +metadata.xml, +pesign-0.108.ebuild:
+  0.108 pesign added

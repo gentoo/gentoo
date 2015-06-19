@@ -1,0 +1,349 @@
+# ChangeLog for dev-perl/PAR-Dist
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/PAR-Dist/ChangeLog,v 1.84 2014/10/19 17:48:11 zlogene Exp $
+
+  19 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> -PAR-Dist-0.480.0.ebuild:
+  Drop old.
+
+  31 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> PAR-Dist-0.490.0-r1.ebuild:
+  ia64 stable wrt bug #520850
+
+  31 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> PAR-Dist-0.490.0-r1.ebuild:
+  sparc stable wrt bug #520850
+
+*PAR-Dist-0.490.0-r1 (23 Aug 2014)
+
+  23 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +PAR-Dist-0.490.0-r1.ebuild, -PAR-Dist-0.490.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  01 Feb 2014; Mike Frysinger <vapier@gentoo.org> PAR-Dist-0.490.0.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  22 Jul 2013; Agostino Sarubbo <ago@gentoo.org> PAR-Dist-0.490.0.ebuild:
+  Stable for ppc64, wrt bug #449604
+
+  16 Jul 2013; Jeroen Roovers <jer@gentoo.org> PAR-Dist-0.490.0.ebuild:
+  Stable for HPPA (bug #449604).
+
+  15 Jul 2013; Mikle Kolyada <zlogene@gentoo.org> PAR-Dist-0.490.0.ebuild:
+  amd64/x86 stable wrt bug #449604
+
+*PAR-Dist-0.490.0 (04 Nov 2012)
+
+  04 Nov 2012; Torsten Veller <tove@gentoo.org> +PAR-Dist-0.490.0.ebuild:
+  Version bump
+
+  09 Aug 2012; Fabian Groffen <grobian@gentoo.org> PAR-Dist-0.480.0.ebuild:
+  Marked ~ppc-macos
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  08 May 2012; Brent Baude <ranger@gentoo.org> PAR-Dist-0.480.0.ebuild:
+  Marking PAR-Dist-0.480.0 ppc64 for bug 414937
+
+  06 May 2012; Samuli Suominen <ssuominen@gentoo.org> PAR-Dist-0.480.0.ebuild:
+  Keyword ~ppc/~ppc64 wrt #408399
+
+  06 May 2012; Raúl Porcel <armin76@gentoo.org> PAR-Dist-0.480.0.ebuild:
+  Add ~alpha/~arm/~ia64/~s390/~sh/~sparc wrt #408399
+
+  22 Apr 2012; Fabian Groffen <grobian@gentoo.org> PAR-Dist-0.480.0.ebuild:
+  Marked ~amd64-linux, bug #411647
+
+  05 Apr 2012; Torsten Veller <tove@gentoo.org> -PAR-Dist-0.46.ebuild,
+  -PAR-Dist-0.470.0.ebuild:
+  Cleanup
+
+  05 Apr 2012; Jeff Horelick <jdhore@gentoo.org> PAR-Dist-0.480.0.ebuild:
+  marked x86 per bug 404687
+
+  01 Apr 2012; Raúl Porcel <armin76@gentoo.org> PAR-Dist-0.46.ebuild,
+  PAR-Dist-0.470.0.ebuild, PAR-Dist-0.480.0.ebuild:
+  Drop ia64/sparc keywords
+
+  01 Apr 2012; Fabian Groffen <grobian@gentoo.org> PAR-Dist-0.480.0.ebuild:
+  Marked ~x86-macos
+
+  29 Mar 2012; Jeroen Roovers <jer@gentoo.org> PAR-Dist-0.480.0.ebuild:
+  Stable for HPPA (bug #404687).
+
+  28 Mar 2012; Agostino Sarubbo <ago@gentoo.org> PAR-Dist-0.480.0.ebuild:
+  Stable for amd64, wrt bug #404687
+
+  26 Mar 2012; Naohiro Aota <naota@gentoo.org> PAR-Dist-0.480.0.ebuild:
+  Add ~x86-fbsd. #408399
+
+  24 Mar 2012; Fabian Groffen <grobian@gentoo.org> PAR-Dist-0.480.0.ebuild:
+  Marked ~x64-macos
+
+*PAR-Dist-0.480.0 (06 Nov 2011)
+
+  06 Nov 2011; Torsten Veller <tove@gentoo.org> +PAR-Dist-0.480.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -PAR-Dist-0.47.ebuild:
+  Cleanup
+
+*PAR-Dist-0.470.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org> +PAR-Dist-0.470.0.ebuild:
+  Change version scheme
+
+  24 Apr 2011; Fabian Groffen <grobian@gentoo.org> PAR-Dist-0.47.ebuild:
+  Marked ~x86-solaris, bug #296509
+
+  24 Dec 2009; Torsten Veller <tove@gentoo.org> -PAR-Dist-0.25.ebuild:
+  Cleanup
+
+*PAR-Dist-0.47 (10 Dec 2009)
+
+  10 Dec 2009; Torsten Veller <tove@gentoo.org> +PAR-Dist-0.47.ebuild:
+  Version bump
+
+  28 Oct 2009; Raúl Porcel <armin76@gentoo.org> PAR-Dist-0.46.ebuild:
+  ia64 stable
+
+  07 Oct 2009; Tiago Cunha <tcunha@gentoo.org> PAR-Dist-0.46.ebuild:
+  stable sparc, bug 283969
+
+  18 Sep 2009; Torsten Veller <tove@gentoo.org> PAR-Dist-0.46.ebuild:
+  Stable on amd64 (#283969)
+
+  17 Sep 2009; Jeroen Roovers <jer@gentoo.org> PAR-Dist-0.46.ebuild:
+  Stable for HPPA (bug #283969).
+
+  10 Sep 2009; Christian Faulhammer <fauli@gentoo.org> PAR-Dist-0.46.ebuild:
+  x86 stable, bug 283969
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org> -PAR-Dist-0.44.ebuild,
+  -PAR-Dist-0.45.ebuild:
+  Cleanup
+
+*PAR-Dist-0.46 (02 Aug 2009)
+
+  02 Aug 2009; Torsten Veller <tove@gentoo.org> +PAR-Dist-0.46.ebuild:
+  Version bump
+
+*PAR-Dist-0.45 (12 Jun 2009)
+
+  12 Jun 2009; Torsten Veller <tove@gentoo.org> +PAR-Dist-0.45.ebuild:
+  Version bump
+
+  13 Mar 2009; Torsten Veller <tove@gentoo.org> -PAR-Dist-0.41.ebuild,
+  -PAR-Dist-0.42.ebuild, -PAR-Dist-0.43.ebuild:
+  Cleanup
+
+*PAR-Dist-0.44 (03 Feb 2009)
+
+  03 Feb 2009; Torsten Veller <tove@gentoo.org> +PAR-Dist-0.44.ebuild:
+  Version bump
+
+*PAR-Dist-0.43 (23 Jan 2009)
+
+  23 Jan 2009; Torsten Veller <tove@gentoo.org> +PAR-Dist-0.43.ebuild:
+  Version bump
+
+*PAR-Dist-0.42 (04 Jan 2009)
+
+  04 Jan 2009; Torsten Veller <tove@gentoo.org> +PAR-Dist-0.42.ebuild:
+  Version bump
+
+  30 Dec 2008; Torsten Veller <tove@gentoo.org> -PAR-Dist-0.39.ebuild,
+  -PAR-Dist-0.40.ebuild:
+  Cleanup
+
+*PAR-Dist-0.41 (19 Dec 2008)
+
+  19 Dec 2008; Torsten Veller <tove@gentoo.org> +PAR-Dist-0.41.ebuild:
+  Version bump
+
+*PAR-Dist-0.40 (28 Oct 2008)
+
+  28 Oct 2008; Torsten Veller <tove@gentoo.org> +PAR-Dist-0.40.ebuild:
+  Version bump
+
+  26 Oct 2008; Torsten Veller <tove@gentoo.org> -PAR-Dist-0.31.ebuild,
+  -PAR-Dist-0.34.ebuild, -PAR-Dist-0.36.ebuild, -PAR-Dist-0.37.ebuild:
+  Cleanup
+
+*PAR-Dist-0.39 (21 Oct 2008)
+
+  21 Oct 2008; Torsten Veller <tove@gentoo.org> -PAR-Dist-0.38.ebuild,
+  +PAR-Dist-0.39.ebuild:
+  Version bump. Cleanup
+
+*PAR-Dist-0.38 (20 Oct 2008)
+
+  20 Oct 2008; Torsten Veller <tove@gentoo.org> +PAR-Dist-0.38.ebuild:
+  Version bump
+
+*PAR-Dist-0.37 (09 Oct 2008)
+
+  09 Oct 2008; Torsten Veller <tove@gentoo.org> +PAR-Dist-0.37.ebuild:
+  Version bump
+
+*PAR-Dist-0.36 (05 Oct 2008)
+
+  05 Oct 2008; Torsten Veller <tove@gentoo.org> +PAR-Dist-0.36.ebuild:
+  Version bump
+
+*PAR-Dist-0.34 (29 Sep 2008)
+
+  29 Sep 2008; Torsten Veller <tove@gentoo.org> -PAR-Dist-0.33.ebuild,
+  +PAR-Dist-0.34.ebuild:
+  Version bump. Cleanup
+
+*PAR-Dist-0.33 (20 Sep 2008)
+
+  20 Sep 2008; Torsten Veller <tove@gentoo.org> +PAR-Dist-0.33.ebuild:
+  Version bump
+
+  04 Jul 2008; Torsten Veller <tove@gentoo.org> -PAR-Dist-0.19.ebuild,
+  -PAR-Dist-0.21.ebuild, -PAR-Dist-0.22.ebuild, -PAR-Dist-0.23.ebuild:
+  Cleaning
+
+*PAR-Dist-0.31 (04 Jul 2008)
+
+  04 Jul 2008; Torsten Veller <tove@gentoo.org> +PAR-Dist-0.31.ebuild:
+  Version bump (#223459)
+
+  28 Mar 2008; Jeroen Roovers <jer@gentoo.org> PAR-Dist-0.25.ebuild:
+  Stable for HPPA too.
+
+  17 Dec 2007; Samuli Suominen <drac@gentoo.org> PAR-Dist-0.25.ebuild:
+  amd64 stable
+
+  10 Nov 2007; Raúl Porcel <armin76@gentoo.org> PAR-Dist-0.25.ebuild:
+  ia64/sparc/x86 stable
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org> PAR-Dist-0.23.ebuild:
+  amd64 stable
+
+*PAR-Dist-0.25 (20 Aug 2007)
+
+  20 Aug 2007; Yuval Yaari <yuval@gentoo.org> +PAR-Dist-0.25.ebuild:
+  Version bump
+
+  09 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> PAR-Dist-0.23.ebuild:
+  Stable on sparc
+
+  29 Jul 2007; Raúl Porcel <armin76@gentoo.org> PAR-Dist-0.23.ebuild:
+  ia64/x86 stable
+
+  13 Jul 2007; Raúl Porcel <armin76@gentoo.org> PAR-Dist-0.22.ebuild:
+  ia64/x86 stable
+
+*PAR-Dist-0.23 (25 Jun 2007)
+
+  25 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  +PAR-Dist-0.23.ebuild:
+  Version bump
+
+  21 Jun 2007; Michael Cummings <mcummings@gentoo.org> PAR-Dist-0.22.ebuild:
+  Marking sparc stable
+
+*PAR-Dist-0.22 (12 May 2007)
+
+  12 May 2007; Michael Cummings <mcummings@gentoo.org>
+  +PAR-Dist-0.22.ebuild:
+  Version bump
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> PAR-Dist-0.21.ebuild:
+  Stable on x86, bug #169152.
+
+  22 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> PAR-Dist-0.21.ebuild:
+  Stable on IA64.
+
+  08 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -PAR-Dist-0.18.ebuild, PAR-Dist-0.21.ebuild:
+  Marking sparc stable
+
+  08 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -PAR-Dist-0.08.ebuild, PAR-Dist-0.21.ebuild:
+  Marking amd64 stable
+
+*PAR-Dist-0.21 (06 Nov 2006)
+
+  06 Nov 2006; Michael Cummings <mcummings@gentoo.org>
+  +PAR-Dist-0.21.ebuild:
+  Version bump
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> PAR-Dist-0.19.ebuild:
+  Stable on ia64.
+
+  11 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  -PAR-Dist-0.07.ebuild, -PAR-Dist-0.10.ebuild, -PAR-Dist-0.14.ebuild,
+  -PAR-Dist-0.15.ebuild, -PAR-Dist-0.16.ebuild, -PAR-Dist-0.17.ebuild,
+  PAR-Dist-0.19.ebuild:
+  Marking sparc, amd64 stable; cleaning up old ebuilds
+
+*PAR-Dist-0.19 (05 Sep 2006)
+
+  05 Sep 2006; Yuval Yaari <yuval@gentoo.org> +PAR-Dist-0.19.ebuild:
+  Version bump
+
+*PAR-Dist-0.18 (04 Sep 2006)
+
+  04 Sep 2006; Yuval Yaari <yuval@gentoo.org> +PAR-Dist-0.18.ebuild:
+  Version bump
+
+*PAR-Dist-0.17 (27 Aug 2006)
+
+  27 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  +PAR-Dist-0.17.ebuild:
+  Version bump
+
+*PAR-Dist-0.16 (20 Aug 2006)
+
+  20 Aug 2006; Michael Cummings <mcummings@gentoo.org> PAR-Dist-0.07.ebuild,
+  PAR-Dist-0.08.ebuild, PAR-Dist-0.10.ebuild, PAR-Dist-0.14.ebuild,
+  PAR-Dist-0.15.ebuild, +PAR-Dist-0.16.ebuild:
+  Version bump
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org> PAR-Dist-0.07.ebuild,
+  PAR-Dist-0.08.ebuild, PAR-Dist-0.10.ebuild, PAR-Dist-0.14.ebuild,
+  PAR-Dist-0.15.ebuild:
+  Adding perl dep; fixed DEPEND
+
+*PAR-Dist-0.15 (29 Jul 2006)
+
+  29 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  +PAR-Dist-0.15.ebuild:
+  Version bump
+
+*PAR-Dist-0.14 (23 Jul 2006)
+
+  23 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  +PAR-Dist-0.14.ebuild:
+  Version bump
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> PAR-Dist-0.08.ebuild:
+  Mark 0.08 stable on ia64
+
+*PAR-Dist-0.10 (23 Jun 2006)
+
+  23 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  +PAR-Dist-0.10.ebuild:
+  Version bump upstream
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org> PAR-Dist-0.07.ebuild,
+  PAR-Dist-0.08.ebuild:
+  Marking sparc stable
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org> PAR-Dist-0.08.ebuild:
+  Mark 0.08 ~ia64
+
+*PAR-Dist-0.08 (10 Mar 2006)
+
+  10 Mar 2006; Michael Cummings <mcummings@gentoo.org>
+  +PAR-Dist-0.08.ebuild:
+  Version bump, bug 125503
+
+*PAR-Dist-0.07 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +PAR-Dist-0.07.ebuild:
+  New dep for Module-Signature

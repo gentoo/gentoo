@@ -1,0 +1,46 @@
+# ChangeLog for media-gfx/aewan
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/aewan/ChangeLog,v 1.11 2014/11/20 00:25:03 jer Exp $
+
+  20 Nov 2014; Jeroen Roovers <jer@gentoo.org> aewan-1.0.01-r1.ebuild,
+  files/aewan-1.0.01-tinfo.patch:
+  Fix building against sys-libs/ncurses[-tinfo] (bug #529884).
+
+  03 Nov 2014; Mikle Kolyada <zlogene@gentoo.org>
+  +files/aewan-1.0.01-tinfo.patch, aewan-1.0.01-r1.ebuild:
+  Fix build against sys-libs/ncurses[tinfo] (bug #527838)
+
+  06 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Reassigning due to Zlogene became Gentoo developer, remove proxy maintainers
+  herd
+
+  03 May 2013; Sergey Popov <pinkbyte@gentoo.org> -aewan-1.0.01.ebuild:
+  Drop old revision
+
+  25 Apr 2013; Agostino Sarubbo <ago@gentoo.org> aewan-1.0.01-r1.ebuild:
+  Stable for x86, wrt bug #467180
+
+  25 Apr 2013; Agostino Sarubbo <ago@gentoo.org> aewan-1.0.01-r1.ebuild:
+  Stable for amd64, wrt bug #467180
+
+*aewan-1.0.01-r1 (25 Mar 2013)
+
+  25 Mar 2013; Markos Chandras <hwoarang@gentoo.org> +aewan-1.0.01-r1.ebuild:
+  Revbump for EAPI5. Thanks to Mikle Zlogene Kolyada. Bug #463214
+
+  24 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Package will be maintained by Mikle Kolyada, through proxy maintainers
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #96436
+
+  18 Jan 2010; Peter Volkov <pva@gentoo.org> aewan-1.0.01.ebuild,
+  +files/aewan-1.0.01-debug_aewl-warnings.patch:
+  Fixed warnings, bug #301216, thank matt for report.
+
+*aewan-1.0.01 (15 Jan 2010)
+
+  15 Jan 2010; Peter Volkov <pva@gentoo.org> +aewan-1.0.01.ebuild,
+  +metadata.xml:
+  Initial import, bug #60731, thank Bruno T. C. de Oliveira for report and
+  Denilson for keeping that bug live.

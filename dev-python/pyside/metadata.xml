@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>qt</herd>
+	<use>
+		<flag name="X">Build QtGui and QtTest modules</flag>
+		<flag name="declarative">Build QtDeclarative module</flag>
+		<flag name="designer">Build QtDesigner and QtUiTools modules</flag>
+		<flag name="help">Build QtHelp module</flag>
+		<flag name="multimedia">Build QtMultimedia module</flag>
+		<flag name="opengl">Build QtOpenGL module</flag>
+		<flag name="phonon">Build phonon module</flag>
+		<flag name="script">Build QtScript module</flag>
+		<flag name="scripttools">Build QtScriptTools module</flag>
+		<flag name="sql">Build QtSql module</flag>
+		<flag name="svg">Build QtSvg module</flag>
+		<flag name="webkit">Build QtWebKit module</flag>
+		<flag name="xmlpatterns">Build QtXmlPatterns module</flag>
+	</use>
+</pkgmetadata>

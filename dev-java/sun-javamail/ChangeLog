@@ -1,0 +1,119 @@
+# ChangeLog for dev-java/sun-javamail
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-javamail/ChangeLog,v 1.31 2014/08/10 20:24:39 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> sun-javamail-1.4.3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  17 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -sun-javamail-1.4.1.ebuild,
+  -sun-javamail-1.4.2.ebuild:
+  NM: Cleanup superseded ebuilds.
+
+  05 Feb 2013; Rick Farina <zerochaos@gentoo.org> sun-javamail-1.4.3.ebuild:
+  adding ~arm
+
+  12 May 2012; Alexis Ballier <aballier@gentoo.org> sun-javamail-1.4.3.ebuild:
+  keyword ~amd64-fbsd
+
+  01 Jan 2012; Ralph Sennhauser <sera@gentoo.org> sun-javamail-1.4.1.ebuild,
+  sun-javamail-1.4.2.ebuild, sun-javamail-1.4.3.ebuild:
+  Drop ia64 support #345433
+
+  07 Dec 2011; Fabian Groffen <grobian@gentoo.org> sun-javamail-1.4.3.ebuild:
+  Marked ~sparc64-solaris
+
+  03 May 2011; Fabian Groffen <grobian@gentoo.org> sun-javamail-1.4.3.ebuild:
+  Marked ~x64-freebsd
+
+  05 Nov 2010; Mark Loeser <halcy0n@gentoo.org> sun-javamail-1.4.3.ebuild:
+  Stable for ppc64; bug #314939
+
+  16 Jul 2010; Fabian Groffen <grobian@gentoo.org>
+  sun-javamail-1.4.3.ebuild:
+  Marked ~x64-macos
+
+  21 May 2010; Kenneth Prugh <ken69267@gentoo.org>
+  sun-javamail-1.4.3.ebuild:
+  amd64 stable, bug #314939
+
+  26 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  sun-javamail-1.4.3.ebuild:
+  stable x86, bug 314939
+
+*sun-javamail-1.4.3 (13 Mar 2010)
+
+  13 Mar 2010; Serkan Kaba <serkan@gentoo.org> +sun-javamail-1.4.3.ebuild:
+  Version bump.
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  sun-javamail-1.4.2.ebuild:
+  Transfer Prefix keywords
+
+*sun-javamail-1.4.2 (07 May 2009)
+
+  07 May 2009; Vlastimil Babka <caster@gentoo.org> -sun-javamail-1.4.ebuild,
+  +sun-javamail-1.4.2.ebuild:
+  Version bump, bug #267174. Use virtual for jaf.
+
+  11 Mar 2008; Brent Baude <ranger@gentoo.org> sun-javamail-1.4.1.ebuild:
+  stable ppc64, bug 212658
+
+  08 Mar 2008; William L. Thomson Jr. <wltjr@gentoo.org>
+  sun-javamail-1.4.1.ebuild:
+  amd64 stable, bug #212658.
+
+  08 Mar 2008; Markus Meier <maekke@gentoo.org> sun-javamail-1.4.1.ebuild:
+  x86 stable, bug #212658
+
+  08 Mar 2008; Krzysiek Pawlik <nelchael@gentoo.org>
+  sun-javamail-1.4.1.ebuild:
+  Stable on ppc, see bug #212658.
+
+*sun-javamail-1.4.1 (19 Dec 2007)
+
+  19 Dec 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +sun-javamail-1.4.1.ebuild:
+  Version bump.
+
+  25 Nov 2007; Vlastimil Babka <caster@gentoo.org> sun-javamail-1.4.ebuild:
+  Stop passing build.sysclasspath=ignore to eant, eclass does it now.
+
+  02 Apr 2007; Vlastimil Babka <caster@gentoo.org> sun-javamail-1.4.ebuild:
+  Don't call eant with JAVA_PKG_STRICT=true but pass
+  -Dbuild.sysclasspath=ignore explicitly. Small cleanup.
+
+  01 Apr 2007; Raúl Porcel <armin76@gentoo.org> sun-javamail-1.4.ebuild:
+  Add ~ia64 keyword wrt bug 158687
+
+  29 Jan 2007; Vlastimil Babka <caster@gentoo.org> sun-javamail-1.4.ebuild:
+  Add java-ant-2 to inherit.
+
+  07 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  sun-javamail-1.4.ebuild:
+  Add ~x86-fbsd keyword.
+
+  24 Nov 2006; Markus Rothe <corsair@gentoo.org> sun-javamail-1.4.ebuild:
+  Stable on ppc64; bug #154679
+
+  23 Nov 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  sun-javamail-1.4.ebuild:
+  ppc stable, bug #154679
+
+  23 Nov 2006; <blubb@gentoo.org> sun-javamail-1.4.ebuild:
+  stable on amd64
+
+  10 Nov 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  sun-javamail-1.4.ebuild:
+  Stable on x86.
+
+  27 Sep 2006; Vlastimil Babka <caster@gentoo.org> sun-javamail-1.4.ebuild:
+  Call eant with JAVA_PKG_STRICT=true to fix bug #143246.
+
+  24 Sep 2006; Joshua Nichols <nichoj@gentoo.org> sun-javamail-1.4.ebuild:
+  Added ~ppc64.
+
+*sun-javamail-1.4 (24 Sep 2006)
+
+  24 Sep 2006; Krzysiek Pawlik <nelchael@gentoo.org> +metadata.xml,
+  +sun-javamail-1.4.ebuild:
+  Initial version.

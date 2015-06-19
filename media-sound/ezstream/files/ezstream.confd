@@ -1,0 +1,5 @@
+# Config location
+CONFIGFILE=""
+
+# Options
+EZSTREAM_OPTS=""

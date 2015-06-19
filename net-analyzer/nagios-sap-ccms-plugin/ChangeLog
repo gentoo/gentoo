@@ -1,0 +1,67 @@
+# ChangeLog for net-analyzer/nagios-sap-ccms-plugin
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-sap-ccms-plugin/ChangeLog,v 1.14 2014/01/26 03:45:15 creffett Exp $
+
+  26 Jan 2014; Chris Reffett <creffett@gentoo.org> metadata.xml,
+  nagios-sap-ccms-plugin-0.8.ebuild:
+  Update maintainers (add ahamilto as maintainer, me as proxy, proxy-maint herd
+  too). EAPI bump.
+
+  24 Sep 2012; Mike Frysinger <vapier@gentoo.org>
+  nagios-sap-ccms-plugin-0.7.3-r1.ebuild, nagios-sap-ccms-plugin-0.8.ebuild:
+  QA_DT_HASH (old/deprecated) -> QA_FLAGS_IGNORED (new hotness).
+
+  19 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  -nagios-sap-ccms-plugin-0.7.3.ebuild:
+  Remove old.
+
+  19 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Re-assign to sysadmin herd.
+
+  12 Jun 2012; Zac Medico <zmedico@gentoo.org>
+  nagios-sap-ccms-plugin-0.7.3-r1.ebuild, nagios-sap-ccms-plugin-0.8.ebuild:
+  inherit multilib for get_libdir
+
+  20 Oct 2010; Jeroen Roovers <jer@gentoo.org>
+  nagios-sap-ccms-plugin-0.8.ebuild:
+  And "fix" the librfccm.so related QA warnings.
+
+  20 Oct 2010; Jeroen Roovers <jer@gentoo.org>
+  nagios-sap-ccms-plugin-0.8.ebuild:
+  Install librfccm.so too.
+
+*nagios-sap-ccms-plugin-0.8 (19 Oct 2010)
+
+  19 Oct 2010; Jeroen Roovers <jer@gentoo.org>
+  +nagios-sap-ccms-plugin-0.8.ebuild,
+  +files/nagios-sap-ccms-plugin-0.8-gentoo.patch:
+  Version bump by Elias Probst (bug #283557). Fix quoting issue. Use system
+  iniparser (bug #259717). Respect LDFLAGS (bug #337888), CC.
+
+  07 Mar 2009; Markus Meier <maekke@gentoo.org>
+  nagios-sap-ccms-plugin-0.7.3-r1.ebuild:
+  x86 stable, bug #256177
+
+*nagios-sap-ccms-plugin-0.7.3-r1 (28 Jun 2008)
+
+  28 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  +nagios-sap-ccms-plugin-0.7.3-r1.ebuild:
+  Revbump for nagios-3, fix quotation
+
+  30 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  nagios-sap-ccms-plugin-0.7.3.ebuild:
+  Fix ownership of /usr/nagios/libexec for bug #154293
+
+  14 May 2007; Markus Ullmann <jokey@gentoo.org>
+  nagios-sap-ccms-plugin-0.7.3.ebuild:
+  Stable on x86 wrt bug #178106
+
+  01 May 2007; Marius Mauch <genone@gentoo.org>
+  nagios-sap-ccms-plugin-0.7.3.ebuild:
+  Replacing einfo with elog
+
+*nagios-sap-ccms-plugin-0.7.3 (08 Oct 2006)
+
+  08 Oct 2006; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +nagios-sap-ccms-plugin-0.7.3.ebuild:
+  Initial commit, thanks to Elias Probst in bug #126146 for providing the ebuild

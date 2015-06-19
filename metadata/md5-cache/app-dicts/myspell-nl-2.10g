@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Dutch dictionaries for myspell/hunspell
+EAPI=4
+HOMEPAGE=http://opentaal.org/
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=BSD-2 CC-BY-3.0
+SLOT=0
+SRC_URI=http://opentaal.org/bestanden/license_result/20-woordenlijst-v-210g-voor-openofficeorg-3?bid=20&agree=1 -> myspell-nl-2.10g.oxt http://data.opentaal.org/opentaalbank/thesaurus/download/thes_nl.oxt -> myspell-nl-2.10g_thes.oxt
+_eclasses_=myspell-r2	16f301e982001f671a68d8c364cabbd0
+_md5_=8df9b242d3bf64d852969b395ceee586

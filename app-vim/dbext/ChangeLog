@@ -1,0 +1,156 @@
+# ChangeLog for app-vim/dbext
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/dbext/ChangeLog,v 1.42 2015/06/19 06:40:45 radhermit Exp $
+
+*dbext-21.0 (19 Jun 2015)
+
+  19 Jun 2015; Tim Harder <radhermit@gentoo.org> +dbext-21.0.ebuild:
+  Version bump.
+
+  11 Dec 2014; Tim Harder <radhermit@gentoo.org> -dbext-18.0.ebuild,
+  -dbext-19.0.ebuild:
+  Remove old.
+
+  05 Jan 2014; Agostino Sarubbo <ago@gentoo.org> dbext-20.0.ebuild:
+  Stable for x86, wrt bug #495358
+
+  03 Jan 2014; Chema Alonso <nimiux@gentoo.org> dbext-20.0.ebuild:
+  Stable for amd64 wrt bug #495358
+
+*dbext-20.0 (26 Sep 2013)
+
+  26 Sep 2013; Tim Harder <radhermit@gentoo.org> +dbext-20.0.ebuild:
+  Version bump.
+
+  27 Jul 2013; Agostino Sarubbo <ago@gentoo.org> dbext-19.0.ebuild:
+  Stable for x86, wrt bug #477582
+
+  21 Jul 2013; Agostino Sarubbo <ago@gentoo.org> dbext-19.0.ebuild:
+  Stable for amd64, wrt bug #477582
+
+  01 Jun 2013; Tim Harder <radhermit@gentoo.org> -dbext-13.00.ebuild,
+  -dbext-16.0.ebuild:
+  Remove old.
+
+*dbext-19.0 (01 Jun 2013)
+
+  01 Jun 2013; Tim Harder <radhermit@gentoo.org> +dbext-19.0.ebuild:
+  Version bump.
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> dbext-18.0.ebuild:
+  Stable for x86, wrt bug #457256
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> dbext-18.0.ebuild:
+  Stable for amd64, wrt bug #457256
+
+*dbext-18.0 (13 Jan 2013)
+
+  13 Jan 2013; Tim Harder <radhermit@gentoo.org> +dbext-18.0.ebuild:
+  Version bump.
+
+  04 Dec 2012; <ago@gentoo.org> dbext-16.0.ebuild:
+  Stable for x86, wrt bug #441126
+
+  03 Dec 2012; <ago@gentoo.org> dbext-16.0.ebuild:
+  Stable for amd64, wrt bug #441126
+
+*dbext-16.0 (03 Aug 2012)
+
+  03 Aug 2012; Tim Harder <radhermit@gentoo.org> +dbext-16.0.ebuild:
+  Version bump.
+
+  14 Dec 2011; Tim Harder <radhermit@gentoo.org> -dbext-12.00.ebuild:
+  Remove old.
+
+  14 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> dbext-13.00.ebuild:
+  x86 stable wrt bug #393571
+
+  12 Dec 2011; Agostino Sarubbo <ago@gentoo.org> dbext-13.00.ebuild:
+  Stable for AMD64, wrt bug #393571
+
+  11 Dec 2011; Raúl Porcel <armin76@gentoo.org> dbext-12.00.ebuild,
+  dbext-13.00.ebuild:
+  Drop alpha/ia64/sparc keywords
+
+*dbext-13.00 (25 Jun 2011)
+
+  25 Jun 2011; Tim Harder <radhermit@gentoo.org> +dbext-13.00.ebuild:
+  Version bump.
+
+  10 Mar 2011; Tim Harder <radhermit@gentoo.org> -dbext-2.20.ebuild,
+  -dbext-6.20.ebuild:
+  Remove old.
+
+  14 Nov 2010; Raúl Porcel <armin76@gentoo.org> dbext-12.00.ebuild:
+  alpha/ia64/sparc stable
+
+  14 Nov 2010; Markus Meier <maekke@gentoo.org> dbext-12.00.ebuild:
+  x86 stable, bug #345049
+
+  11 Nov 2010; Markos Chandras <hwoarang@gentoo.org> dbext-12.00.ebuild:
+  Stable on amd64 wrt bug #345049
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org> dbext-2.20.ebuild:
+  Drop to ~mips
+
+*dbext-12.00 (30 Sep 2010)
+
+  30 Sep 2010; Tim Harder <radhermit@gentoo.org> +dbext-12.00.ebuild:
+  Version bump (bug #255240) and update to EAPI=3.
+
+*dbext-6.20 (20 Sep 2008)
+
+  20 Sep 2008; Ali Polatel <hawking@gentoo.org> -dbext-2.10.ebuild,
+  -dbext-2.11.ebuild, -dbext-3.50.ebuild, -dbext-5.20.ebuild,
+  +dbext-6.20.ebuild:
+  Version bump. Keyword ~amd64. Drop old.
+
+*dbext-5.20 (07 Apr 2008)
+
+  07 Apr 2008; Ali Polatel <hawking@gentoo.org> dbext-2.10.ebuild,
+  dbext-2.11.ebuild, dbext-2.20.ebuild, dbext-3.50.ebuild,
+  +dbext-5.20.ebuild:
+  Version bump. License changed to GPL-2. Changed vim dependency to 7.0.
+  Quoting.
+
+*dbext-3.50 (21 Sep 2006)
+
+  21 Sep 2006; Mike Kelly <pioto@gentoo.org> +dbext-3.50.ebuild:
+  Version bump, thanks to Lutz Lange (bug #148502).
+
+  07 Apr 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove ciaranm from metadata.xml.
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> dbext-2.20.ebuild:
+  Mark 2.20 stable on alpha
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> dbext-2.20.ebuild:
+  stable on ia64
+
+  23 Aug 2005; Ciaran McCreesh <ciaranm@gentoo.org> dbext-2.20.ebuild:
+  x86 sparc mips stable
+
+*dbext-2.20 (10 May 2005)
+
+  10 May 2005; Ciaran McCreesh <ciaranm@gentoo.org> +dbext-2.20.ebuild:
+  Version bump
+
+  18 Feb 2005; Ciaran McCreesh <ciaranm@gentoo.org> dbext-2.11.ebuild:
+  x86 sparc mips stable
+
+*dbext-2.11 (21 Jan 2005)
+
+  21 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> +dbext-2.11.ebuild:
+  New version, bug #78704
+
+  31 Oct 2004; Ciaran McCreesh <ciaranm@gentoo.org> dbext-2.10.ebuild:
+  Stable on x86, sparc, mips
+
+  14 Oct 2004; David Holm <dholm@gentoo.org> dbext-2.10.ebuild:
+  Added to ~ppc.
+
+*dbext-2.10 (15 Sep 2004)
+
+  15 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +dbext-2.10.ebuild:
+  New package

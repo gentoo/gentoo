@@ -1,0 +1,24 @@
+# ChangeLog for x11-misc/sxhkd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/sxhkd/ChangeLog,v 1.4 2015/03/17 00:43:45 radhermit Exp $
+
+*sxhkd-0.5.5 (17 Mar 2015)
+
+  17 Mar 2015; Tim Harder <radhermit@gentoo.org> +sxhkd-0.5.5.ebuild:
+  Version bump.
+
+  07 Dec 2014; Tim Harder <radhermit@gentoo.org> sxhkd-0.5.3.ebuild,
+  sxhkd-0.5.4.ebuild:
+  Add missing x11-libs/xcb-util build dep (bug #531792).
+
+*sxhkd-0.5.4 (08 Oct 2014)
+
+  08 Oct 2014; Tim Harder <radhermit@gentoo.org> +sxhkd-0.5.4.ebuild:
+  Version bump.
+
+*sxhkd-0.5.3 (24 Jan 2014)
+
+  24 Jan 2014; Tim Harder <radhermit@gentoo.org> +sxhkd-0.5.3.ebuild,
+  +files/sxhkd-0.5.3-flags.patch, +metadata.xml:
+  Initial import, ebuild by me.
+

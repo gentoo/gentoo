@@ -1,0 +1,170 @@
+# ChangeLog for dev-perl/crypt-idea
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/crypt-idea/ChangeLog,v 1.48 2014/03/19 20:43:11 zlogene Exp $
+
+  19 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> -crypt-idea-1.80.0.ebuild,
+  crypt-idea-1.100.0.ebuild:
+  sparc stable wrt bug #502750; Drop old.
+
+  19 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> crypt-idea-1.100.0.ebuild:
+  ppc stable wrt bug #502750
+
+  19 Mar 2014; Agostino Sarubbo <ago@gentoo.org> crypt-idea-1.100.0.ebuild:
+  Stable for alpha, wrt bug #502750
+
+  18 Mar 2014; Agostino Sarubbo <ago@gentoo.org> crypt-idea-1.100.0.ebuild:
+  Stable for ia64, wrt bug #502750
+
+  14 Mar 2014; Agostino Sarubbo <ago@gentoo.org> crypt-idea-1.100.0.ebuild:
+  Stable for ppc64, wrt bug #502750
+
+  13 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> crypt-idea-1.100.0.ebuild:
+  amd64 stable wrt bug #502750
+
+  09 Mar 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  crypt-idea-1.100.0.ebuild:
+  x86 stable wrt bug #502750
+
+  10 Mar 2014; Jeroen Roovers <jer@gentoo.org> crypt-idea-1.100.0.ebuild:
+  Stable for HPPA (bug #502750).
+
+  09 Mar 2014; Markus Meier <maekke@gentoo.org> crypt-idea-1.100.0.ebuild:
+  arm stable, bug #502750
+
+  15 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> crypt-idea-1.100.0.ebuild,
+  crypt-idea-1.80.0.ebuild:
+  fix LICENSE wrt bug #325037
+
+*crypt-idea-1.100.0 (05 Sep 2013)
+
+  05 Sep 2013; Mikle Kolyada <zlogene@gentoo.org> +crypt-idea-1.100.0.ebuild:
+  version bump, close bug #483682
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -crypt-idea-1.08.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> crypt-idea-1.80.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*crypt-idea-1.80.0 (27 Aug 2011)
+
+  27 Aug 2011; Torsten Veller <tove@gentoo.org> +crypt-idea-1.80.0.ebuild:
+  Change version scheme
+
+  24 Apr 2011; Fabian Groffen <grobian@gentoo.org> crypt-idea-1.08.ebuild:
+  Marked ~x86-solaris, bug #296509
+
+  09 Jan 2010; Fabian Groffen <grobian@gentoo.org> crypt-idea-1.08.ebuild:
+  Transfer Prefix keywords
+
+  03 Jun 2009; Torsten Veller <tove@gentoo.org> -crypt-idea-1.06.ebuild:
+  Cleanup
+
+  16 Apr 2007; Markus Rothe <corsair@gentoo.org> crypt-idea-1.08.ebuild:
+  Stable on ppc64
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> crypt-idea-1.08.ebuild:
+  Stable on x86, bug #169152.
+
+  15 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -crypt-idea-1.02.ebuild, crypt-idea-1.06.ebuild, crypt-idea-1.08.ebuild:
+  Ebuild maintenance
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> crypt-idea-1.08.ebuild:
+  Stable on Alpha.
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  crypt-idea-1.08.ebuild:
+  ppc stable
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  crypt-idea-1.02.ebuild, crypt-idea-1.06.ebuild, crypt-idea-1.08.ebuild:
+  Adding perl dep; fixed header; fixed DEPEND
+
+  02 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  crypt-idea-1.08.ebuild:
+  Marking amd64 stable
+
+  29 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  crypt-idea-1.08.ebuild:
+  Stable on hppa
+
+  11 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  crypt-idea-1.08.ebuild:
+  Marking stable sparc
+
+*crypt-idea-1.08 (24 Apr 2006)
+
+  24 Apr 2006; <mcummings@gentoo.org> +crypt-idea-1.08.ebuild:
+  Version bump
+
+  28 Mar 2006; Aron Griffis <agriffis@gentoo.org> crypt-idea-1.06.ebuild:
+  Mark 1.06 stable on ia64
+
+  27 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  crypt-idea-1.06.ebuild:
+  Stable on hppa
+
+  27 Mar 2006; Markus Rothe <corsair@gentoo.org> crypt-idea-1.06.ebuild:
+  Stable on ppc64
+
+  26 Mar 2006; Michael Hanselmann <hansmi@gentoo.org>
+  crypt-idea-1.06.ebuild:
+  Stable on ppc.
+
+  26 Mar 2006; Michael Cummings <mcummings@gentoo.org>
+  crypt-idea-1.06.ebuild:
+  60+ days, marking stable sparc x86
+
+*crypt-idea-1.06 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  +crypt-idea-1.06.ebuild:
+  Version bump
+
+  25 Nov 2005; Tom Gall <tgall@gentoo.org> crypt-idea-1.02.ebuild:
+  stable on ppc64
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> crypt-idea-1.02.ebuild:
+  Mark 1.02 stable on ia64
+
+  08 Sep 2005; Aron Griffis <agriffis@gentoo.org> crypt-idea-1.02.ebuild:
+  Mark 1.02 stable on alpha
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> crypt-idea-1.02.ebuild:
+  add ~ia64
+
+  06 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  crypt-idea-1.02.ebuild:
+  Stable on sparc
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  crypt-idea-1.02.ebuild:
+  Cleaning for mirror syntax
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  crypt-idea-1.02.ebuild:
+  Stable on ppc.
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> crypt-idea-1.02.ebuild:
+  stable on amd64
+
+  24 Dec 2004; Yuta SATOH <nigoro@gentoo.org> crypt-idea-1.02.ebuild:
+  added ~ppc64
+
+  16 Apr 2004; Michael McCabe <randy@gentoo.org> crypt-idea-1.02.ebuild:
+  adding s390 keywords
+
+  25 Feb 2004; Joshua Kinard <kumba@gentoo.org> crypt-idea-1.02.ebuild:
+  Added ~mips to KEYWORDS to satisfy repoman deps.
+
+  27 Oct 2003; Brad House <brad_mssw@gentoo.org> crypt-idea-1.02.ebuild:
+  add ~amd64 flag
+
+*crypt-idea-1.02 (23 Jun 2003)
+
+  23 Jun 2003; Michael Cummings <mcummings@gentoo.org> crypt-idea-1.02.ebuild:
+  dep for net-ssh

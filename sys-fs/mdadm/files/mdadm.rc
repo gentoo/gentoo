@@ -1,0 +1,26 @@
+#!/sbin/runscript
+# Copyright 1999-2006 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/mdadm/files/mdadm.rc,v 1.2 2006/04/25 05:41:51 vapier Exp $
+
+depend() {
+	use logger dns net
+}
+
+start() {
+	ebegin "Starting mdadm monitor"
+	mdadm --monitor --scan \
+		--daemonise \
+		--pid-file /var/run/mdadm.pid \
+		${MDADM_OPTS}
+	eend $?
+}
+
+stop() {
+	local ret
+	ebegin "Stopping mdadm monitor"
+	start-stop-daemon --stop --pidfile /var/run/mdadm.pid
+	ret=$?
+	rm -f /var/run/mdadm.pid
+	eend ${ret}
+}

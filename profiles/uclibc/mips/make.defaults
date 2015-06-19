@@ -1,0 +1,8 @@
+ARCH="mips"
+ACCEPT_KEYWORDS="mips"
+
+CHOST="set-CHOST-in-your-/etc/make.conf"
+
+FEATURES="-sandbox"
+
+UCLIBC_CPU_DEFAULT="MIPS_ISA_1"

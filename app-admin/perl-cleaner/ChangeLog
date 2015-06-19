@@ -1,0 +1,500 @@
+# ChangeLog for app-admin/perl-cleaner
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/perl-cleaner/ChangeLog,v 1.117 2015/06/15 22:31:51 dilfridge Exp $
+
+*perl-cleaner-2.20 (15 Jun 2015)
+
+  15 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +perl-cleaner-2.20.ebuild:
+  Version bump
+
+  04 Apr 2015; Mike Frysinger <vapier@gentoo.org> perl-cleaner-2.19.ebuild:
+  Mark m68k stable.
+
+  11 Jan 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-cleaner-2.18.ebuild:
+  Remove old
+
+  08 Jan 2015; Mikle Kolyada <zlogene@gentoo.org> perl-cleaner-2.19.ebuild:
+  Mark stable for all
+
+*perl-cleaner-2.19 (27 Dec 2014)
+
+  27 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-cleaner-2.17.ebuild, +perl-cleaner-2.19.ebuild:
+  Version bump
+
+*perl-cleaner-2.18 (13 Dec 2014)
+
+  13 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +perl-cleaner-2.18.ebuild:
+  Version bump for bug 525620
+
+  18 Oct 2014; Mike Frysinger <vapier@gentoo.org> perl-cleaner-2.16.ebuild:
+  Mark m68k/sh stable.
+
+  18 Oct 2014; Mike Frysinger <vapier@gentoo.org> perl-cleaner-2.16.ebuild,
+  perl-cleaner-2.17.ebuild, perl-cleaner-9999.ebuild:
+  Drop empty KEYWORDS.
+
+  27 Sep 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  perl-cleaner-2.17.ebuild, perl-cleaner-9999.ebuild:
+  portage-utils, not gentoolkit - thanks Arfrever
+
+*perl-cleaner-2.17 (27 Sep 2014)
+
+  27 Sep 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +perl-cleaner-2.17.ebuild:
+  Version bump for bug 523880
+
+  27 Sep 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  perl-cleaner-9999.ebuild:
+  Add explicit dependency to PM and gentoolkit
+
+  03 Aug 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-cleaner-2.15.ebuild:
+  Remove old
+
+  26 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> perl-cleaner-2.15.ebuild,
+  perl-cleaner-2.16.ebuild:
+  Mark arm64 stable
+
+  26 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  perl-cleaner-2.16.ebuild, perl-cleaner-9999.ebuild:
+  ... and fix it. :(
+
+  26 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  perl-cleaner-2.16.ebuild, perl-cleaner-9999.ebuild:
+  Add secondary URL
+
+*perl-cleaner-2.16 (26 Jul 2014)
+
+  26 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +perl-cleaner-2.16.ebuild:
+  Version bump straight to stable; only more verbose output, no changed
+  functionality
+
+  23 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-cleaner-2.14.ebuild:
+  Remove old
+
+  06 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> perl-cleaner-2.15.ebuild:
+  Drop hppa from live KEYWORDS
+
+  06 Jul 2014; Jeroen Roovers <jer@gentoo.org> perl-cleaner-2.15.ebuild:
+  Stable for HPPA (bug #516462).
+
+  05 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> perl-cleaner-2.15.ebuild:
+  alpha/amd64/arm/ia64/ppc/ppc64/s390/x86 stable wrt bug #516462
+
+*perl-cleaner-2.15 (05 Jul 2014)
+
+  05 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +perl-cleaner-2.15.ebuild:
+  Version bump for bug 516032
+
+  29 Jun 2014; Mikle Kolyada <zlogene@gentoo.org> -perl-cleaner-2.7.ebuild:
+  Drop old.
+
+  29 Jun 2014; Mikle Kolyada <zlogene@gentoo.org> perl-cleaner-2.14.ebuild:
+  Mark s390 stable
+
+  29 Jun 2014; Mikle Kolyada <zlogene@gentoo.org> perl-cleaner-2.14.ebuild:
+  x86 stable wrt bug #512616
+
+  29 Jun 2014; Mikle Kolyada <zlogene@gentoo.org> perl-cleaner-2.14.ebuild:
+  sparc stable wrt bug #512616
+
+  29 Jun 2014; Mikle Kolyada <zlogene@gentoo.org> perl-cleaner-2.14.ebuild:
+  ppc stable wrt bug #512616
+
+  29 Jun 2014; Mikle Kolyada <zlogene@gentoo.org> perl-cleaner-2.14.ebuild:
+  ppc64 stable wrt bug #512616
+
+  29 Jun 2014; Mikle Kolyada <zlogene@gentoo.org> perl-cleaner-2.14.ebuild:
+  ia64 stable wrt bug #512616
+
+  29 Jun 2014; Mikle Kolyada <zlogene@gentoo.org> perl-cleaner-2.14.ebuild:
+  alpha stable wrt bug #512616
+
+  29 Jun 2014; Jeroen Roovers <jer@gentoo.org> perl-cleaner-2.14.ebuild:
+  Stable for HPPA (bug #512616).
+
+  28 Jun 2014; Mikle Kolyada <zlogene@gentoo.org> perl-cleaner-2.14.ebuild:
+  arm stable wrt bug #512616
+
+  28 Jun 2014; Mikle Kolyada <zlogene@gentoo.org> perl-cleaner-2.14.ebuild:
+  amd64 stable wrt bug #512616
+
+  28 Jun 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-cleaner-2.12.ebuild, -perl-cleaner-2.13.ebuild:
+  Remove old
+
+*perl-cleaner-2.14 (09 Jun 2014)
+
+  09 Jun 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +perl-cleaner-2.14.ebuild:
+  Version bump, fixes bug 497936 and bug 504128
+
+*perl-cleaner-9999 (06 Jun 2014)
+
+  06 Jun 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +perl-cleaner-9999.ebuild:
+  Add live ebuild (no keywords)
+
+*perl-cleaner-2.13 (06 Jun 2014)
+
+  06 Jun 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-cleaner-2.8.ebuild, -perl-cleaner-2.10.ebuild,
+  +perl-cleaner-2.13.ebuild:
+  Version bump for bug 506616; remove old
+
+  19 Jan 2014; Mike Frysinger <vapier@gentoo.org> perl-cleaner-2.10.ebuild,
+  perl-cleaner-2.12.ebuild, perl-cleaner-2.7.ebuild, perl-cleaner-2.8.ebuild:
+  Add arm64 love.
+
+*perl-cleaner-2.12 (29 Apr 2012)
+
+  29 Apr 2012; Torsten Veller <tove@gentoo.org> -perl-cleaner-2.11.ebuild,
+  +perl-cleaner-2.12.ebuild:
+  Fix awk expression
+
+*perl-cleaner-2.11 (29 Apr 2012)
+
+  29 Apr 2012; Torsten Veller <tove@gentoo.org> +perl-cleaner-2.11.ebuild:
+  Support x32 (#413927). Thanks to Tim Harder. EAPI 4. Don't DEPEND on bash
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> perl-cleaner-2.10.ebuild:
+  keyword ~amd64-fbsd
+
+  06 Jan 2012; Mike Frysinger <vapier@gentoo.org> perl-cleaner-2.10.ebuild:
+  Allow newer coreutils to provide realpath.
+
+  06 Aug 2011; Torsten Veller <tove@gentoo.org> perl-cleaner-2.10.ebuild:
+  Use realpath or freebsd-bin (again #376489)
+
+*perl-cleaner-2.10 (05 Aug 2011)
+
+  05 Aug 2011; Torsten Veller <tove@gentoo.org> +perl-cleaner-2.10.ebuild:
+  Use realpath instead of readlink -f (#376489). Support -q/--quie. Check
+  link targets too.
+
+  06 Dec 2010; Torsten Veller <tove@gentoo.org> -perl-cleaner-1.05.ebuild,
+  -perl-cleaner-2.0.ebuild, -perl-cleaner-2.2.ebuild, -perl-cleaner-2.3.ebuild,
+  -perl-cleaner-2.4.ebuild, -perl-cleaner-2.5.ebuild, -perl-cleaner-2.6.ebuild:
+  Cleanup
+
+*perl-cleaner-2.8 (06 Dec 2010)
+
+  06 Dec 2010; Torsten Veller <tove@gentoo.org> +perl-cleaner-2.8.ebuild:
+  Use cave commandline client if paludis is chosen
+
+  13 Nov 2010; Raúl Porcel <armin76@gentoo.org> perl-cleaner-2.7.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #340023
+
+  24 Oct 2010; Markus Meier <maekke@gentoo.org> perl-cleaner-2.7.ebuild:
+  arm stable, bug #340023
+
+  24 Oct 2010; Jeroen Roovers <jer@gentoo.org> perl-cleaner-2.7.ebuild:
+  Stable for HPPA (bug #340023).
+
+  24 Oct 2010; Brent Baude <ranger@gentoo.org> perl-cleaner-2.7.ebuild:
+  Marking perl-cleaner-2.7 ppc for bug 340023
+
+  22 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  perl-cleaner-2.7.ebuild:
+  ppc64 stable wrt #340023
+
+  22 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  perl-cleaner-2.7.ebuild:
+  Stable on amd64 wrt bug #340023
+
+  22 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  perl-cleaner-2.7.ebuild:
+  stable x86, bug 340023
+
+*perl-cleaner-2.7 (22 Oct 2010)
+
+  22 Oct 2010; Torsten Veller <tove@gentoo.org> +perl-cleaner-2.7.ebuild:
+  Version bump. Let leftovers search for old files not only in current INC
+
+*perl-cleaner-2.6 (07 Oct 2010)
+
+  07 Oct 2010; Torsten Veller <tove@gentoo.org> +perl-cleaner-2.6.ebuild:
+  More quoting fixes
+
+*perl-cleaner-2.5 (24 Sep 2010)
+
+  24 Sep 2010; Torsten Veller <tove@gentoo.org> +perl-cleaner-2.5.ebuild:
+  Removes all .ph files which are not up to date
+
+*perl-cleaner-2.4 (30 Aug 2010)
+
+  30 Aug 2010; Torsten Veller <tove@gentoo.org> +perl-cleaner-2.4.ebuild:
+  Always reinstall the virtuals, cause it fails if a perl-core is updated
+  while cleaning
+
+*perl-cleaner-2.3 (02 Aug 2010)
+
+  02 Aug 2010; Torsten Veller <tove@gentoo.org> +perl-cleaner-2.3.ebuild:
+  PKGDIR is a symlink (#330097) and virtual and perl-core versions differ
+  (#330625)
+
+*perl-cleaner-2.2 (14 Jul 2010)
+
+  14 Jul 2010; Torsten Veller <tove@gentoo.org> +perl-cleaner-2.2.ebuild:
+  Version bump. Cleanup
+  Create a smaller set of perl header files *.ph and move them to archlibexp
+  for perl-5.12. Fixes bugs #177833, #292985
+  Fix typo (#315469). Thanks to J.C. Wren.
+
+
+*perl-cleaner-2.0 (16 Feb 2010)
+
+  16 Feb 2010; Torsten Veller <tove@gentoo.org> +perl-cleaner-2.0.ebuild:
+  Do not try to reinstall -MERGING-* packages (#305377)
+
+*perl-cleaner-2_pre091219 (19 Dec 2009)
+
+  19 Dec 2009; Torsten Veller <tove@gentoo.org>
+  +perl-cleaner-2_pre091219.ebuild:
+  Version bump. Add virtuals too for non-identical reinstall
+
+*perl-cleaner-2_pre091024 (24 Oct 2009)
+
+  24 Oct 2009; Torsten Veller <tove@gentoo.org> -perl-cleaner-1.04.1.ebuild,
+  -perl-cleaner-1.04.3.ebuild, -perl-cleaner-2_pre090920.ebuild,
+  -perl-cleaner-2_pre090926.ebuild, +perl-cleaner-2_pre091024.ebuild:
+  Version bump. Cleanup
+
+  11 Oct 2009; Mark Loeser <halcy0n@gentoo.org> perl-cleaner-1.04.1.ebuild:
+  QA fixes; unquoted variables
+
+*perl-cleaner-2_pre091007 (07 Oct 2009)
+
+  07 Oct 2009; Torsten Veller <tove@gentoo.org>
+  +perl-cleaner-2_pre091007.ebuild:
+  Bump. Don't rebuild libperl
+
+*perl-cleaner-2_pre090926 (26 Sep 2009)
+
+  26 Sep 2009; Torsten Veller <tove@gentoo.org>
+  +perl-cleaner-2_pre090926.ebuild:
+  Bump. Do not use binpkg when upgrading
+
+*perl-cleaner-2_pre090920 (20 Sep 2009)
+
+  20 Sep 2009; Torsten Veller <tove@gentoo.org>
+  +perl-cleaner-2_pre090920.ebuild:
+  Bump. Should work with changed useflags (ithreads, debug).
+  Better package-manager support (taken from python-updater).
+
+  05 Feb 2009; Jeremy Olexa <darkside@gentoo.org>
+  perl-cleaner-1.04.1.ebuild, perl-cleaner-1.04.3.ebuild:
+  (non maintainer commit) [QA] fix HOMEPAGE, bug 249679
+
+  07 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  perl-cleaner-1.05.ebuild:
+  amd64 stable wrt bug #208901
+
+  17 Feb 2008; Raúl Porcel <armin76@gentoo.org> perl-cleaner-1.05.ebuild:
+  alpha/ia64 stable wrt #208901
+
+  16 Feb 2008; Markus Meier <maekke@gentoo.org> perl-cleaner-1.05.ebuild:
+  x86 stable, bug #208901
+
+  15 Feb 2008; nixnut <nixnut@gentoo.org> perl-cleaner-1.05.ebuild:
+  Stable on ppc wrt bug 208901
+
+  15 Feb 2008; Jeroen Roovers <jer@gentoo.org> perl-cleaner-1.05.ebuild:
+  Stable for HPPA (bug #208901).
+
+  15 Feb 2008; Ferris McCormick <fmccor@gentoo.org>
+  perl-cleaner-1.05.ebuild:
+  Sparc stable, Bug #208901.
+
+  15 Feb 2008; Brent Baude <ranger@gentoo.org> perl-cleaner-1.05.ebuild:
+  stable ppc64, bug 208901
+
+*perl-cleaner-1.05 (12 Sep 2007)
+
+  12 Sep 2007; Paul Varner <fuzzyray@gentoo.org> +perl-cleaner-1.05.ebuild:
+  New version to work with all baselayouts and FreeBSD sed. (Bug #183989)
+
+  17 Oct 2006; Roy Marples <uberlord@gentoo.org> perl-cleaner-1.04.3.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  10 Sep 2006; Michael Cummings <mcummings@gentoo.org>
+  -perl-cleaner-1.04.ebuild:
+  Cleaning out old ebuild
+
+  04 Sep 2006; Joshua Kinard <kumba@gentoo.org> perl-cleaner-1.04.3.ebuild:
+  Marked stable on mips.
+
+  30 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  perl-cleaner-1.04.3.ebuild:
+  Stable on hppa wrt #145256
+
+  29 Aug 2006; Bryan Østergaard <kloeri@gentoo.org>
+  perl-cleaner-1.04.3.ebuild:
+  Stable on ia64, bug 145256.
+
+  29 Aug 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  perl-cleaner-1.04.3.ebuild:
+  ppc stable, bug #145256
+
+  29 Aug 2006; Brent Baude <ranger@gentoo.org> perl-cleaner-1.04.3.ebuild:
+  Marking perl-cleaner-1.04.3 ppc64 stable for bug #145256
+
+  29 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  perl-cleaner-1.04.3.ebuild:
+  Stable on sparc wrt #145256
+
+  29 Aug 2006; Fernando J. Pereda <ferdy@gentoo.org>
+  perl-cleaner-1.04.3.ebuild:
+  Stable on alpha wrt bug #145256
+
+  29 Aug 2006; Marcus D. Hanwell <cryos@gentoo.org>
+  perl-cleaner-1.04.3.ebuild:
+  Marked stable on amd64, bug 145256.
+
+  29 Aug 2006; Joshua Jackson <tsunam@gentoo.org>
+  perl-cleaner-1.04.3.ebuild:
+  Stable x86; bug #145256
+
+*perl-cleaner-1.04.3 (19 Aug 2006)
+
+  19 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  -perl-cleaner-1.04.2.ebuild, +perl-cleaner-1.04.3.ebuild:
+  Final commit related to bug 142940
+
+  18 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  -perl-cleaner-1.01.ebuild, -perl-cleaner-1.03.ebuild,
+  -perl-cleaner-1.03-r1.ebuild:
+  Cleaning up
+
+*perl-cleaner-1.04.2 (18 Aug 2006)
+
+  18 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  +perl-cleaner-1.04.2.ebuild:
+  Bug 142940, update to h2ph calls
+
+  02 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  perl-cleaner-1.04.1.ebuild:
+  Stable on hppa
+
+  19 Jul 2006; Bryan Østergaard <kloeri@gentoo.org>
+  perl-cleaner-1.04.1.ebuild:
+  Stable on alpha.
+
+  12 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  perl-cleaner-1.04.1.ebuild:
+  Mark 1.04.1 stable on ia64
+
+  11 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  perl-cleaner-1.04.1.ebuild:
+  Keywording sparc and amd64 stable
+
+  01 Jul 2006; Bryan Østergaard <kloeri@gentoo.org>
+  perl-cleaner-1.04.ebuild:
+  Stable on alpha.
+
+  18 Jun 2006; Bryan Østergaard <kloeri@gentoo.org>
+  perl-cleaner-1.04.ebuild:
+  Stable on ia64.
+
+  08 Jun 2006; Joshua Kinard <kumba@gentoo.org> perl-cleaner-1.04.ebuild:
+  Marked stable on mips.
+
+*perl-cleaner-1.04.1 (01 Jun 2006)
+
+  01 Jun 2006; <mcummings@gentoo.org> +perl-cleaner-1.04.1.ebuild:
+  Bug 135080 - ph-clean is removing current ph files as well.
+
+  29 May 2006; Simon Stelling <blubb@gentoo.org> perl-cleaner-1.04.ebuild:
+  stable on amd64 wrt bug 134796
+
+  29 May 2006; Mark Loeser <halcy0n@gentoo.org> perl-cleaner-1.04.ebuild:
+  Stable on x86; bug #134796
+
+  29 May 2006; Guy Martin <gmsoft@gentoo.org> perl-cleaner-1.04.ebuild:
+  Stable on hppa.
+
+  29 May 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  perl-cleaner-1.04.ebuild:
+  ppc stable, bug #134796
+
+  29 May 2006; Markus Rothe <corsair@gentoo.org> perl-cleaner-1.04.ebuild:
+  Stable on ppc64; bug #134796
+
+  29 May 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  perl-cleaner-1.04.ebuild:
+  Stable on sparc wrt #134796
+
+*perl-cleaner-1.04 (28 May 2006)
+
+  28 May 2006; <mcummings@gentoo.org> +perl-cleaner-1.04.ebuild:
+  New version of perl-cleaner, with bug fixes, corrected md5, etc.
+
+*perl-cleaner-1.03-r1 (27 May 2006)
+
+  27 May 2006; <mcummings@gentoo.org> +perl-cleaner-1.03-r1.ebuild:
+  Version bump is because of bug 134449
+
+  27 May 2006; Bryan Østergaard <kloeri@gentoo.org>
+  perl-cleaner-1.03.ebuild:
+  Stable on alpha.
+
+  26 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  perl-cleaner-1.03.ebuild:
+  Stable on amd64 wrt bug #133989.
+
+  26 May 2006; <mcummings@gentoo.org> files/digest-perl-cleaner-1.03,
+  Manifest:
+  Updating digests
+
+  25 May 2006; Guy Martin <gmsoft@gentoo.org> perl-cleaner-1.03.ebuild:
+  Stable on hppa.
+
+  24 May 2006; <nixnut@gentoo.org> perl-cleaner-1.03.ebuild:
+  Stable on ppc. bug #133989
+
+  23 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  perl-cleaner-1.03.ebuild:
+  Stable on x86 wrt bug #133989.
+
+  23 May 2006; <mcummings@gentoo.org> perl-cleaner-1.03.ebuild:
+  Marking stable sparc
+
+  23 May 2006; Markus Rothe <corsair@gentoo.org> perl-cleaner-1.03.ebuild:
+  Stable on ppc64; bug #133989
+
+  31 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  perl-cleaner-1.03.ebuild:
+  Add ~x86-fbsd keyword.
+
+*perl-cleaner-1.03 (20 Feb 2006)
+
+  20 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  +perl-cleaner-1.03.ebuild:
+  New version - better support for multilibs and virtuals
+
+  03 Jul 2005; Michael Cummings <mcummings@gentoo.org>
+  perl-cleaner-1.01.ebuild:
+  RDPEND -> RDEPEND - thanks jakub
+
+*perl-cleaner-1.01 (05 Jun 2005)
+
+  05 Jun 2005; Michael Cummings <mcummings@gentoo.org>
+  -perl-cleaner-1.0.ebuild, +perl-cleaner-1.01.ebuild:
+  Sad to have a version bump already, but the is a code addition to be able to
+  re-emerge everything, even those modules installed under our current version
+  of perl. Comes up if someone (ick) changes from a threaded perl to a
+  non-threaded perl - version doesn't change so perl-cleaner doesn't rebuild
+  anything (though it needs to)
+
+*perl-cleaner-1.0 (05 Jun 2005)
+
+  05 Jun 2005; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +perl-cleaner-1.0.ebuild:
+  Initial import, prepping so perl-cleaner can be called from revdep-rebuilder

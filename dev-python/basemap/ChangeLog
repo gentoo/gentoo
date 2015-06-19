@@ -1,0 +1,194 @@
+# ChangeLog for dev-python/basemap
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/basemap/ChangeLog,v 1.39 2015/06/09 15:04:01 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> basemap-1.0.7-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> basemap-1.0.7-r1.ebuild:
+  amd64 stable, bug 540290
+
+  16 Feb 2015; Ian Delaney <idella4@gentoo.org> basemap-1.0.7-r1.ebuild:
+  fix build / qa issue
+
+*basemap-1.0.7-r1 (15 Feb 2015)
+
+  15 Feb 2015; Ian Delaney <idella4@gentoo.org> +basemap-1.0.7-r1.ebuild,
+  -basemap-1.0.7.ebuild:
+  revbump; convert -> distutils-r1, restrict test phase (see comments), rm old
+
+  02 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -basemap-1.0.6.ebuild:
+  Remove old.
+
+  23 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -basemap-1.0.3.ebuild,
+  -basemap-1.0.4.ebuild, -basemap-1.0.5.ebuild:
+  Remove old.
+
+*basemap-1.0.7 (26 Aug 2013)
+
+  26 Aug 2013; Patrick Lauer <patrick@gentoo.org> +basemap-1.0.7.ebuild:
+  Bump
+
+*basemap-1.0.6 (22 Jan 2013)
+
+  22 Jan 2013; Patrick Lauer <patrick@gentoo.org> +basemap-1.0.6.ebuild:
+  Bump
+
+  19 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> basemap-1.0.5.ebuild,
+  metadata.xml:
+  Fixed testing. Keyworded for ~amd64-linux and ~x86-linux
+
+  09 Nov 2012; Justin Lecher <jlec@gentoo.org> basemap-1.0.3.ebuild,
+  basemap-1.0.4.ebuild, basemap-1.0.5.ebuild, metadata.xml:
+  Inherit missing virtualx, #440040
+
+*basemap-1.0.5 (24 Aug 2012)
+
+  24 Aug 2012; Patrick Lauer <patrick@gentoo.org> +basemap-1.0.5.ebuild:
+  Bump
+
+*basemap-1.0.4 (27 Jun 2012)
+
+  27 Jun 2012; Patrick Lauer <patrick@gentoo.org> +basemap-1.0.4.ebuild:
+  Bump for #423735
+
+  29 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> basemap-1.0.3.ebuild:
+  Fix typo in REQUIRED_USE. Thanks to tomjbe for the spotting.
+
+*basemap-1.0.3 (24 May 2012)
+
+  24 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> +basemap-1.0.3.ebuild,
+  -basemap-1.0.2-r1.ebuild, -basemap-1.0.2.ebuild:
+  Version bump to the latest. Make tests work. Per bug#417257. Patch done by Ian
+  Delaney.
+
+  23 Feb 2012; Patrick Lauer <patrick@gentoo.org> basemap-1.0.2-r1.ebuild,
+  basemap-1.0.2.ebuild:
+  Restricting python
+
+*basemap-1.0.2-r1 (04 Jan 2012)
+
+  04 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/basemap-0.99.3-datadir.patch, -files/basemap-0.99.3-syslib.patch,
+  -basemap-1.0.1.ebuild, +basemap-1.0.2-r1.ebuild:
+  Fix for datadir, bug #396493. Added httplib2 required run dependency
+
+*basemap-1.0.2 (25 Dec 2011)
+
+  25 Dec 2011; Patrick Lauer <patrick@gentoo.org> +basemap-1.0.2.ebuild:
+  Bump for #393591
+
+  18 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org> -basemap-1.0.ebuild:
+  old
+
+*basemap-1.0.1 (24 Feb 2011)
+
+  24 Feb 2011; Sébastien Fabbro <bicatali@gentoo.org> -basemap-0.99.4.ebuild,
+  +basemap-1.0.1.ebuild:
+  Version bump
+
+  12 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  basemap-1.0.ebuild:
+  Ignore nonexistent files (bug #327875).
+
+  09 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  basemap-1.0.ebuild:
+  Set PYTHON_DEPEND. Fix src_install().
+
+*basemap-1.0 (08 Jul 2010)
+
+  08 Jul 2010; Sébastien Fabbro <bicatali@gentoo.org> +basemap-1.0.ebuild:
+  Version bump. Switched to EAPI3
+
+  01 Dec 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  -basemap-0.99.3.ebuild, basemap-0.99.4.ebuild:
+  Removed src_test. Now test it after installation with the simpletest.py in
+  examples
+
+*basemap-0.99.4 (12 Aug 2009)
+
+  12 Aug 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/basemap-0.99.2-syslib.patch, basemap-0.99.3.ebuild,
+  +basemap-0.99.4.ebuild:
+  Version bump and really apply datadir patch
+
+  30 Apr 2009; Patrick Lauer <patrick@gentoo.org> -basemap-0.99.2.ebuild:
+  Remove old
+
+*basemap-0.99.3 (28 Mar 2009)
+
+  28 Mar 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/basemap-0.9.9-syslib.patch, +files/basemap-0.99.3-datadir.patch,
+  +files/basemap-0.99.3-syslib.patch, -files/basemap-0.99-syslib.patch,
+  +basemap-0.99.3.ebuild:
+  Version bump. Now ship data files in /usr/share/basemap
+
+  09 Jan 2009; Patrick Lauer <patrick@gentoo.org> -basemap-0.9.9-r1.ebuild,
+  -basemap-0.99.1.ebuild:
+  Removing old
+
+*basemap-0.99.2 (11 Dec 2008)
+
+  11 Dec 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/basemap-0.99.2-syslib.patch, +basemap-0.99.2.ebuild:
+  Version bump
+
+  05 Dec 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  basemap-0.9.9-r1.ebuild, -basemap-0.99.ebuild, basemap-0.99.1.ebuild:
+  Fixed collision with matplotlib and matplotlib dependency for 0.9.9-r1
+
+  26 Sep 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  basemap-0.99.1.ebuild:
+  Removed doc flag, now docs can be found on
+  http://matplotlib.sourceforge.net/basemap/doc/html/, closing bug #238670
+
+*basemap-0.99.1 (25 Sep 2008)
+
+  25 Sep 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  -basemap-0.9.6.ebuild, +basemap-0.99.1.ebuild:
+  Version bump
+
+*basemap-0.99 (02 Jul 2008)
+
+  02 Jul 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/basemap-0.99-syslib.patch, +basemap-0.99.ebuild:
+  Version bump. Closing bug #229857
+
+*basemap-0.9.9-r1 (13 Feb 2008)
+
+  13 Feb 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  files/basemap-0.9.9-syslib.patch, -basemap-0.9.9.ebuild,
+  +basemap-0.9.9-r1.ebuild:
+  Various fixes including missing dependencies, and not including the system
+  proj library. Also adding a check for the conflict with geos python
+  bindings, see bug #209895
+
+*basemap-0.9.9 (04 Jan 2008)
+
+  04 Jan 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/basemap-0.9.5-syslib.patch, +files/basemap-0.9.9-syslib.patch,
+  -basemap-0.9.5.ebuild, +basemap-0.9.9.ebuild:
+  Version bump
+
+*basemap-0.9.6 (03 Nov 2007)
+
+  03 Nov 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/basemap-0.9.6-syslib.patch, -files/basemap-syslib.patch,
+  -basemap-0.9.4.ebuild, +basemap-0.9.6.ebuild:
+  Version bump
+
+*basemap-0.9.5 (03 May 2007)
+
+  03 May 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/basemap-0.9.5-syslib.patch, +basemap-0.9.5.ebuild:
+  Version bump, basic fixes according to new package structure
+
+*basemap-0.9.4 (24 Feb 2007)
+
+  24 Feb 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/basemap-syslib.patch, +metadata.xml, +basemap-0.9.4.ebuild:
+  Initial import. Close bug #105482 together with dev-python/basemap-data.
+  Thanks Mike Elson <mike.elson@tiscali.de> for his initial ebuild.

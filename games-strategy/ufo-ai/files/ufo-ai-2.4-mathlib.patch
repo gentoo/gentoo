@@ -1,0 +1,29 @@
+http://bugs.gentoo.org/509928
+
+src/common/common.c:261: error: undefined reference to 'sincos'
+src/shared/mathlib.c:476: error: undefined reference to '__acosf_finite'
+[ ... snip ... ]
+collect2: error: ld returned 1 exit status
+
+--- build/modules/ufo.mk
++++ build/modules/ufo.mk
+@@ -9,7 +9,7 @@
+ $(TARGET)_LINKER   := $(CC)
+ $(TARGET)_FILE     := $(TARGET)$(EXE_EXT)
+ $(TARGET)_CFLAGS   += -DCOMPILE_UFO $(BFD_CFLAGS) $(SDL_CFLAGS) $(SDL_TTF_CFLAGS) $(SDL_MIXER_CFLAGS) $(CURL_CFLAGS) $(THEORA_CFLAGS) $(XVID_CFLAGS) $(VORBIS_CFLAGS) $(OGG_CFLAGS) $(MXML_CFLAGS)
+-$(TARGET)_LDFLAGS  += -lpng -ljpeg $(BFD_LIBS) $(INTL_LIBS) $(SDL_TTF_LIBS) $(SDL_MIXER_LIBS) $(OPENGL_LIBS) $(SDL_LIBS) $(CURL_LIBS) $(THEORA_LIBS) $(XVID_LIBS) $(VORBIS_LIBS) $(OGG_LIBS) $(MXML_LIBS) $(SO_LIBS) -lz
++$(TARGET)_LDFLAGS  += -lpng -ljpeg $(BFD_LIBS) $(INTL_LIBS) $(SDL_TTF_LIBS) $(SDL_MIXER_LIBS) $(OPENGL_LIBS) $(SDL_LIBS) $(CURL_LIBS) $(THEORA_LIBS) $(XVID_LIBS) $(VORBIS_LIBS) $(OGG_LIBS) $(MXML_LIBS) $(SO_LIBS) -lz -lm
+ 
+ $(TARGET)_SRCS      = \
+ 	client/cl_console.c \
+--- build/modules/testall.mk
++++ build/modules/testall.mk
+@@ -9,7 +9,7 @@
+ $(TARGET)_LINKER   := $(CC)
+ $(TARGET)_FILE     := $(TARGET)$(EXE_EXT)
+ $(TARGET)_CFLAGS   += -DCOMPILE_UFO -DHARD_LINKED_GAME -DCOMPILE_UNITTESTS $(BFD_CFLAGS) $(SDL_CFLAGS) $(CURL_CFLAGS) $(OGG_CFLAGS) $(MXML_CFLAGS)
+-$(TARGET)_LDFLAGS  += -lcunit -lpng -ljpeg $(BFD_LIBS) $(INTL_LIBS) $(SDL_TTF_LIBS) $(SDL_MIXER_LIBS) $(OPENGL_LIBS) $(SDL_LIBS) $(CURL_LIBS) $(THEORA_LIBS) $(XVID_LIBS) $(VORBIS_LIBS) $(OGG_LIBS) $(MXML_LIBS) $(SO_LIBS) -lz
++$(TARGET)_LDFLAGS  += -lcunit -lpng -ljpeg $(BFD_LIBS) $(INTL_LIBS) $(SDL_TTF_LIBS) $(SDL_MIXER_LIBS) $(OPENGL_LIBS) $(SDL_LIBS) $(CURL_LIBS) $(THEORA_LIBS) $(XVID_LIBS) $(VORBIS_LIBS) $(OGG_LIBS) $(MXML_LIBS) $(SO_LIBS) -lz -lm
+ 
+ $(TARGET)_SRCS      = \
+ 	tests/test_all.c \

@@ -1,0 +1,50 @@
+# ChangeLog for sci-chemistry/bodr
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/bodr/ChangeLog,v 1.11 2015/04/07 14:36:32 jlec Exp $
+
+*bodr-10 (06 Jan 2014)
+
+  06 Jan 2014; Justin Lecher <jlec@gentoo.org> bodr-9-r1.ebuild,
+  +bodr-10.ebuild:
+  Version Bump; punt base.eclass
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #70723
+
+  25 Oct 2010; Fabian Groffen <grobian@gentoo.org> bodr-9-r1.ebuild:
+  Marked ~ppc-macos, bug #342367
+
+*bodr-9-r1 (24 Oct 2010)
+
+  24 Oct 2010; Kacper Kowalik <xarthisius@gentoo.org> -bodr-9.ebuild,
+  +bodr-9-r1.ebuild:
+  Bump to EAPI=3 wrt bug 342367. Drop old.
+
+*bodr-9 (24 Oct 2010)
+
+  24 Oct 2010; Kacper Kowalik <xarthisius@gentoo.org> -bodr-6.ebuild,
+  -files/bodr-6-install.patch, -bodr-8.ebuild, +bodr-9.ebuild:
+  Version bump. Drop old.
+
+*bodr-8 (14 Jun 2008)
+
+  14 Jun 2008; Markus Dittrich <markusle@gentoo.org>
+  +files/bodr-6-install.patch, bodr-6.ebuild, +bodr-8.ebuild:
+  Version bump and general cleanup. Also removed calls to autoconf and
+  friends (fixes bug #205307 and #226613).
+
+  27 Aug 2007; Raúl Porcel <armin76@gentoo.org> bodr-6.ebuild:
+  Add ~x86 wrt #190130
+
+  21 Mar 2007; Marcus D. Hanwell <cryos@gentoo.org> bodr-6.ebuild:
+  Fix ebuild up a little.
+
+  19 Mar 2007; Zac Medico <zmedico@gentoo.org> ChangeLog:
+  Fix broken Manifest due to commit without repoman.
+
+*bodr-6 (19 Mar 2007)
+
+  19 Mar 2007; Marcus D. Hanwell <cryos@gentoo.org> +metadata.xml,
+  +bodr-6.ebuild:
+  Initial import into repository.
+

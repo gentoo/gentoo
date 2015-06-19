@@ -1,0 +1,65 @@
+# ChangeLog for sci-libs/scikits_timeseries
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/scikits_timeseries/ChangeLog,v 1.6 2015/04/08 18:49:15 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org>
+  scikits_timeseries-0.91.3-r1.ebuild:
+  Drop old Python implementations
+
+  12 Aug 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  -scikits_timeseries-0.91.3.ebuild, metadata.xml,
+  scikits_timeseries-0.91.3-r1.ebuild:
+  Fixed for prefix
+
+  31 May 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop dead maintainer email timcera@earthlink.net
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*scikits_timeseries-0.91.3-r1 (09 Feb 2013)
+
+  09 Feb 2013; Justin Lecher <jlec@gentoo.org>
+  +scikits_timeseries-0.91.3-r1.ebuild, metadata.xml:
+  Move to new python eclasses
+
+  08 Jan 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  +scikits_timeseries-0.91.3.ebuild, +metadata.xml:
+  Initial import to the main tree
+
+  04 Dec 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  scikits_timeseries-0.91.3.ebuild:
+  Now depend on common scikits
+
+  29 Jun 2010; Justin Lecher <jlec@gentoo.org>
+  scikits_timeseries-0.91.3.ebuild:
+  Python ABI fixes
+
+  26 Mar 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  scikits_timeseries-0.91.3.ebuild:
+  Added test suite
+
+  26 Mar 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  scikits_timeseries-0.91.3.ebuild:
+  Now really installing docs
+
+  26 Mar 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  scikits_timeseries-0.91.3.ebuild, metadata.xml:
+  Adding x86, cleaning up and removed unused doc flag
+
+*scikits_timeseries-0.91.3 (20 Jan 2010)
+
+  20 Jan 2010; Tim Cera <timcera@earthlink.net>
+  -scikits_timeseries-0.91.1.ebuild, +scikits_timeseries-0.91.3.ebuild:
+  Version bump. Copyright fix. Added correct licenses.
+
+  17 Jun 2009; Tim Cera <timcera@earthlink.net>
+  scikits_timeseries-0.91.1.ebuild, metadata.xml:
+  sci-libs/scikits_timeseries-0.91.1.ebuild: Fixed RDEPEND and DEPEND. 
+  Corrected metadata.xml.
+
+*scikits_timeseries-0.91.1 (17 Jun 2009)
+
+  17 Jun 2009; Tim Cera <timcera@earthlink.net>
+  +scikits_timeseries-0.91.1.ebuild, +metadata.xml:
+  sci-libs/scikits_timeseries-0.91.1.ebuild: Initial ebuild.

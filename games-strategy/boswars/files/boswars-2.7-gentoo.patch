@@ -1,0 +1,12 @@
+diff -ru boswars-2.6.1-src.orig/engine/include/stratagus.h boswars-2.6.1-src/engine/include/stratagus.h
+--- boswars-2.6.1-src.orig/engine/include/stratagus.h	2010-04-11 08:12:18.000000000 -0400
++++ boswars-2.6.1-src/engine/include/stratagus.h	2010-05-22 02:33:50.021377764 -0400
+@@ -133,7 +133,7 @@
+ --  General
+ ----------------------------------------------------------------------------*/
+ #ifndef STRATAGUS_LIB_PATH
+-#define STRATAGUS_LIB_PATH  "."      /// Where to find the data files
++#define STRATAGUS_LIB_PATH  "@GENTOO_DATADIR@"      /// Where to find the data files
+ #endif
+ 
+ #ifndef STRATAGUS_HOME_PATH

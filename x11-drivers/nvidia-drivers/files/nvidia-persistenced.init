@@ -1,0 +1,25 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/files/nvidia-persistenced.init,v 1.2 2014/09/19 22:09:28 jer Exp $
+
+pidfile="/var/run/nvidia-persistenced/nvidia-persistenced.pid"
+
+start() {
+	if ! [ "${NVPD_USER}x" = x ]; then
+		ebegin "Starting nvidia-persistenced for ${NVPD_USER}"
+		NVPD_USER_ARG="--user ${NVPD_USER}"
+	else
+		ebegin "Starting nvidia-persistenced"
+	fi
+	start-stop-daemon --start --quiet --pidfile ${pidfile} \
+		--background --exec /opt/bin/nvidia-persistenced \
+		-- ${NVPD_USER_ARG} ${ARGS}
+	eend $?	
+}
+
+stop() {
+	ebegin "Stopping nvidia-persistenced"
+	start-stop-daemon --stop --quiet --pidfile ${pidfile}
+	eend $?
+}

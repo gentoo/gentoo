@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>web-apps</herd>
+        <maintainer>
+                <email>patrick@gentoo.org</email>
+                <name>Patrick Lauer</name>
+        </maintainer>
+  <use>
+	<flag name="mod_perl">Provide all dependencies for use of mod_perl instead of cgi</flag>
+  </use>
+</pkgmetadata>
+	

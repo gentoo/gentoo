@@ -1,0 +1,56 @@
+# ChangeLog for games-puzzle/construo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/construo/ChangeLog,v 1.18 2015/02/11 06:34:32 mr_bones_ Exp $
+
+  11 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> construo-0.2.2.ebuild:
+  EAPI=5
+
+  20 Jun 2011; Tupone Alfredo <tupone@gentoo.org>
+  files/construo-0.2.2-lGLU.patch:
+  Fix underlink. Bug #369771 by Diego Elio Pettenò
+
+  16 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  construo-0.2.2.ebuild:
+  virtual/glut -> media-libs/glut
+
+  24 Nov 2009; Tupone Alfredo <tupone@gentoo.org> construo-0.2.2.ebuild,
+  +files/construo-0.2.2-lGLU.patch:
+  Adjusting dependency and fix missing GLU in linking command.
+  Fix bug #294293 by flameeyes@gentoo.org
+
+  01 May 2008; Tristan Heaven <nyhm@gentoo.org>
+  +files/construo-0.2.2-gcc43.patch, construo-0.2.2.ebuild:
+  Fix building with gcc-4.3
+
+  26 Dec 2007; Samuli Suominen <drac@gentoo.org> construo-0.2.2.ebuild:
+  amd64 stable wrt #201403
+
+  21 Dec 2007; nixnut <nixnut@gentoo.org> construo-0.2.2.ebuild:
+  Stable on ppc wrt bug 201403
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> construo-0.2.2.ebuild:
+  Remove old virtual/x11 dependency.
+
+  16 Feb 2006; <Tupone@gentoo.org> construo-0.2.2.ebuild:
+  modular X dependency fix
+
+  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org> construo-0.2.2.ebuild:
+  Removed INSTALL file.
+
+  10 Jun 2005; David Holm <dholm@gentoo.org> construo-0.2.2.ebuild:
+  Added to ~ppc.
+
+  04 Apr 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  construo-0.2.2.ebuild:
+  add gcc-3.4 fixup (bug #87644)
+
+  27 May 2004; Danny van Dyk <kugelfang@gentoo.org> construo-0.2.2.ebuild:
+  Marked ~amd64.
+
+*construo-0.2.2 (02 Aug 2003)
+
+  02 Aug 2003; Michael Sterrett <msterret@gentoo.org> construo-0.2.2.ebuild:
+  initial commit. ebuild supplied by Rob Cakebread (modified) via bug 25708.

@@ -1,0 +1,343 @@
+# ChangeLog for games-emulation/sdlmame
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/sdlmame/ChangeLog,v 1.71 2015/04/08 18:10:41 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> sdlmame-0.148_p1-r1.ebuild,
+  sdlmame-0.149.ebuild:
+  Drop old Python implementations
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> sdlmame-0.148_p1-r1.ebuild,
+  sdlmame-0.149.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  27 Feb 2014; Chris Reffett <creffett@gentoo.org> -sdlmame-0.144.ebuild:
+  Remove old version with implicit base.eclass inherit, acked by Mr_Bones_
+
+  22 Nov 2013; Julian Ospald <hasufell@gentoo.org> sdlmame-0.148_p1-r1.ebuild:
+  stable on x86 wrt #486686
+
+  22 Nov 2013; Julian Ospald <hasufell@gentoo.org> sdlmame-0.148_p1-r1.ebuild:
+  fix deps
+
+  03 Nov 2013; Michael Sterrett <mr_bones_@gentoo.org> -sdlmame-0.148_p1.ebuild:
+  old
+
+  03 Nov 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/sdlmame-0.142_p5-makefile.patch,
+  -files/sdlmame-0.142_p5-no-opengl.patch, -sdlmame-0.142_p5.ebuild:
+  old
+
+  02 Oct 2013; Chema Alonso <nimiux@gentoo.org> sdlmame-0.148_p1-r1.ebuild:
+  Stable for amd64 wrt bug #486686
+
+*sdlmame-0.149 (26 Jun 2013)
+
+  26 Jun 2013; Julian Ospald <hasufell@gentoo.org> +sdlmame-0.149.ebuild,
+  +files/sdlmame-0.149-QA.patch, +files/sdlmame-0.149-debugger-linking.patch,
+  +files/sdlmame-0.149-no-opengl.patch, +files/sdlmame-0.149-system-lua.patch:
+  version bump wrt #474638
+
+*sdlmame-0.148_p1-r1 (15 Mar 2013)
+
+  15 Mar 2013; Julian Ospald <hasufell@gentoo.org> +sdlmame-0.148_p1-r1.ebuild:
+  revbump: split out tools, prepare for games-emulation/sdlmess
+
+  12 Feb 2013; Julian Ospald <hasufell@gentoo.org> sdlmame-0.148_p1.ebuild:
+  cosmetic fix, make the sed apply for missing leading whitespaces too
+
+  12 Feb 2013; Julian Ospald <hasufell@gentoo.org> sdlmame-0.148_p1.ebuild:
+  fontconfig is unconditional, fix alsa-sed
+
+*sdlmame-0.148_p1 (12 Feb 2013)
+
+  12 Feb 2013; Julian Ospald <hasufell@gentoo.org> +sdlmame-0.148_p1.ebuild,
+  +files/sdlmame-0.148_p1-makefile.patch,
+  +files/sdlmame-0.148_p1-no-opengl.patch:
+  version bump wrt #425750
+
+  31 Oct 2012; Tupone Alfredo <tupone@gentoo.org>
+  files/sdlmame-0.144-makefile.patch:
+  drop -v option to gcc. Bug #422699 by Diego
+
+  04 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> sdlmame-0.144.ebuild:
+  x86 stable wrt bug #395457
+
+  21 Dec 2011; Agostino Sarubbo <ago@gentoo.org> sdlmame-0.144.ebuild:
+  Stable for AMD64, wrt bug #395457
+
+*sdlmame-0.144 (17 Nov 2011)
+
+  17 Nov 2011; Michael Sterrett <mr_bones_@gentoo.org> -sdlmame-0.136.ebuild,
+  -files/sdlmame-0.136-nodebug.patch, -sdlmame-0.141_p3.ebuild,
+  -sdlmame-0.142.ebuild, -files/sdlmame-0.142-makefile.patch,
+  -sdlmame-0.143_p4.ebuild, -sdlmame-0.143_p5.ebuild,
+  -files/sdlmame-0.143_p4-makefile.patch,
+  -files/sdlmame-0.143_p4-no-opengl.patch,
+  -files/sdlmame-0.143_p5-makefile.patch,
+  -files/sdlmame-0.143_p5-no-opengl.patch, +sdlmame-0.144.ebuild,
+  +files/sdlmame-0.144-makefile.patch, +files/sdlmame-0.144-no-opengl.patch,
+  -files/joymap.dat, -files/mame.ini.in:
+  version bump; drop ppc to ~
+
+  30 Sep 2011; Mike Frysinger <vapier@gentoo.org> sdlmame-0.141_p3.ebuild,
+  sdlmame-0.142.ebuild, sdlmame-0.142_p5.ebuild, sdlmame-0.143_p4.ebuild,
+  sdlmame-0.143_p5.ebuild:
+  Tweak edos2unix invocation to avoid passing non-existent files.
+
+*sdlmame-0.143_p5 (11 Sep 2011)
+
+  11 Sep 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.143_p5.ebuild, +files/sdlmame-0.143_p5-makefile.patch,
+  +files/sdlmame-0.143_p5-no-opengl.patch:
+  version bump (bug #382529)
+
+  04 Sep 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> sdlmame-0.142_p5.ebuild:
+  x86 stable wrt bug #380183
+
+*sdlmame-0.143_p4 (04 Sep 2011)
+
+  04 Sep 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.143_p4.ebuild, +files/sdlmame-0.143_p4-makefile.patch,
+  +files/sdlmame-0.143_p4-no-opengl.patch:
+  version bump
+
+  22 Aug 2011; Tony Vroon <chainsaw@gentoo.org> sdlmame-0.142_p5.ebuild:
+  Marked stable on AMD64 based on arch testing by Ian "idella4" Delaney in bug
+  #380183.
+
+*sdlmame-0.142_p5 (15 Jun 2011)
+
+  15 Jun 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.142_p5.ebuild, files/sdlmame-0.142-makefile.patch,
+  +files/sdlmame-0.142_p5-makefile.patch,
+  +files/sdlmame-0.142_p5-no-opengl.patch:
+  version bump; also works around bug #370657 
+
+  29 May 2011; Markos Chandras <hwoarang@gentoo.org> sdlmame-0.142.ebuild:
+  Stable on amd64 wrt bug #367123
+
+  27 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> sdlmame-0.142.ebuild:
+  x86 stable wrt bug #367123
+
+  22 May 2011; Michael Sterrett <mr_bones_@gentoo.org> sdlmame-0.142.ebuild,
+  +files/sdlmame-0.142-makefile.patch:
+  add patch to have more respect for CFLAGS and LDFLAGS
+
+*sdlmame-0.142 (11 Apr 2011)
+
+  11 Apr 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.142.ebuild:
+  version bump
+
+*sdlmame-0.141_p3 (15 Mar 2011)
+
+  15 Mar 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.141_p3.ebuild:
+  version bump
+
+*sdlmame-0.141_p2 (11 Feb 2011)
+
+  11 Feb 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.141_p2.ebuild:
+  version bump
+
+*sdlmame-0.141_p1 (24 Jan 2011)
+
+  24 Jan 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.141_p1.ebuild:
+  version bump
+
+*sdlmame-0.141 (03 Jan 2011)
+
+  03 Jan 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.141.ebuild:
+  version bump
+
+*sdlmame-0.140_p2 (16 Dec 2010)
+
+  16 Dec 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.140_p2.ebuild:
+  version bump
+
+*sdlmame-0.140_p1 (11 Nov 2010)
+
+  11 Nov 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.140_p1.ebuild:
+  version bump
+
+  22 Oct 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  sdlmame-0.139_p4.ebuild:
+  Avoid linking against gtk+ (used by the built-in debugger) unless
+  USE=debug is specified (bug #336062)
+
+*sdlmame-0.139_p4 (20 Oct 2010)
+
+  20 Oct 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.139_p4.ebuild:
+  version bump
+
+  13 Oct 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  sdlmame-0.139_p3.ebuild:
+  Only convert files that are mentioned in the patchs and only do it for _p
+  ebuilds.
+
+  12 Oct 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  -sdlmame-0.139_p2.ebuild, sdlmame-0.139_p3.ebuild:
+  work around buggy patch version (bug #336004); clean old
+
+*sdlmame-0.139_p3 (20 Sep 2010)
+
+  20 Sep 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.139_p3.ebuild, +files/mame-0.139.ini.in:
+  version bump; cleanup patch from Christian Birchinger via bug #337304
+
+*sdlmame-0.139_p2 (03 Sep 2010)
+
+  03 Sep 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.139_p2.ebuild:
+  version bump
+
+  17 Aug 2010; Michael Sterrett <mr_bones_@gentoo.org> sdlmame-0.136.ebuild,
+  +files/sdlmame-0.136-nodebug.patch:
+  add debug use flag (bug #333219) - patch from Martin Väth
+
+  22 May 2010; Pacho Ramos <pacho@gentoo.org> sdlmame-0.136.ebuild:
+  stable amd64, bug 303487
+
+  24 Mar 2010; Brent Baude <ranger@gentoo.org> sdlmame-0.136.ebuild:
+  stable ppc, bug 303487
+
+  04 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> sdlmame-0.136.ebuild:
+  x86 stable wrt bug #303487
+
+*sdlmame-0.136 (04 Jan 2010)
+
+  04 Jan 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.136.ebuild:
+  version bump
+
+*sdlmame-0.135 (01 Nov 2009)
+
+  01 Nov 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.135.ebuild:
+  version bump
+
+*sdlmame-0.134_p4 (27 Oct 2009)
+
+  27 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.134_p4.ebuild:
+  version bump
+
+*sdlmame-0.134_p1 (26 Sep 2009)
+
+  26 Sep 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.134_p1.ebuild:
+  version bump
+
+*sdlmame-0.133_p2 (13 Aug 2009)
+
+  13 Aug 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.133_p2.ebuild:
+  patch version update
+
+*sdlmame-0.133 (21 Jul 2009)
+
+  21 Jul 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.133.ebuild:
+  version bump
+
+*sdlmame-0.132 (10 Jun 2009)
+
+  10 Jun 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.132.ebuild:
+  version bump
+
+*sdlmame-0.131_p4 (06 Jun 2009)
+
+  06 Jun 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.131_p4.ebuild:
+  version bump
+
+*sdlmame-0.131_p3 (30 May 2009)
+
+  30 May 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.131_p3.ebuild:
+  version bump
+
+*sdlmame-0.131_p2 (18 May 2009)
+
+  18 May 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.131_p2.ebuild:
+  version bump
+
+*sdlmame-0.131_p1 (08 May 2009)
+
+  08 May 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.131_p1.ebuild:
+  version bump
+
+*sdlmame-0.131 (27 Apr 2009)
+
+  27 Apr 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.131.ebuild:
+  version bump
+
+*sdlmame-0.130_p4 (19 Apr 2009)
+
+  19 Apr 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.130_p4.ebuild:
+  version bump
+
+*sdlmame-0.130_p3 (11 Apr 2009)
+
+  11 Apr 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.130_p3.ebuild:
+  version bump
+
+*sdlmame-0.130_p2 (09 Apr 2009)
+
+  09 Apr 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.130_p2.ebuild:
+  version bump
+
+  18 Mar 2009; Brent Baude <ranger@gentoo.org> sdlmame-0.129.ebuild:
+  stable ppc, bug 259567
+
+  08 Mar 2009; Markus Meier <maekke@gentoo.org> sdlmame-0.129.ebuild:
+  amd64/x86 stable, bug #259567
+
+  06 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org> sdlmame-0.129.ebuild:
+  EAPI=2; add slot- and use-based deps
+
+*sdlmame-0.129 (05 Jan 2009)
+
+  05 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdlmame-0.129.ebuild:
+  version bump
+
+  21 Oct 2008; Christian Birchinger <joker@gentoo.org> metadata.xml:
+  Removed myself as maintainer. See bug #232233
+
+*sdlmame-0.127 (16 Oct 2008)
+
+  16 Oct 2008; <tupone@gentoo.org> +sdlmame-0.127.ebuild:
+  Version bump. Bug #232233 by Alessio Cassibba (X-Drum)
+
+*sdlmame-0.125 (16 May 2008)
+
+  16 May 2008; Christian Birchinger <joker@gentoo.org>
+  +sdlmame-0.125.ebuild:
+  Version bump
+
+  24 Apr 2008; Samuli Suominen <drac@gentoo.org> sdlmame-0.124.ebuild,
+  sdlmame-0.124_p3.ebuild:
+  Sed -Werror out of makefile because we get more warnings with GCC 4.3.
+
+*sdlmame-0.124_p3 (24 Apr 2008)
+*sdlmame-0.124 (24 Apr 2008)
+
+  24 Apr 2008; Christian Birchinger <joker@gentoo.org> +files/joymap.dat,
+  +files/mame.ini.in, +files/vector.ini, +metadata.xml,
+  +sdlmame-0.124.ebuild, +sdlmame-0.124_p3.ebuild:
+  Initial release

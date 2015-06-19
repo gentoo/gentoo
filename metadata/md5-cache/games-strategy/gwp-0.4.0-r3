@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=x11-libs/gtk+:2 gnome-base/libgnomeui gnome-base/libglade app-text/rarian dev-libs/libpcre nls? ( virtual/libintl ) opengl? ( x11-libs/gtkglext ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] dev-python/pygtk[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) virtual/pkgconfig nls? ( sys-devel/gettext ) app-arch/xz-utils >=sys-apps/sed-4
+DESCRIPTION=GNOME client for the classic PBEM strategy game VGA Planets 3
+EAPI=5
+HOMEPAGE=http://gwp.lunix.com.ar/
+IUSE=nls opengl python debug python_targets_python2_7
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2 gnome-base/libgnomeui gnome-base/libglade app-text/rarian dev-libs/libpcre nls? ( virtual/libintl ) opengl? ( x11-libs/gtkglext ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] dev-python/pygtk[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] )
+REQUIRED_USE=python? ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=http://gwp.lunix.com.ar/releases/gwp-0.4.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	c9602887773166fe300444712fc7ff98	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	7a178335dbd6ea7f50ed4e3e1c13c1e4	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=f61b61c3f00414e608f94b95349bbe4d

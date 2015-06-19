@@ -1,0 +1,74 @@
+# ChangeLog for app-xemacs/docbookide
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/docbookide/ChangeLog,v 1.21 2014/08/10 18:50:18 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> docbookide-0.08.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  19 Feb 2009; Christian Faulhammer <fauli@gentoo.org>
+  -docbookide-0.07.ebuild:
+  clean up
+
+  12 May 2008; Markus Rothe <corsair@gentoo.org> docbookide-0.08.ebuild:
+  Stable on ppc64
+
+  05 May 2008; Raúl Porcel <armin76@gentoo.org> docbookide-0.08.ebuild:
+  alpha/sparc stable wrt #219332
+
+  02 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  docbookide-0.08.ebuild:
+  stable x86, bug 219332
+
+  30 Apr 2008; nixnut <nixnut@gentoo.org> docbookide-0.08.ebuild:
+  Stable on ppc wrt bug 219332
+
+  26 Apr 2008; Hans de Graaff <graaff@gentoo.org> docbookide-0.08.ebuild:
+  Mark stable on amd64 , bug #219332
+
+  19 Mar 2008; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  A herd should not be listed as maintainer
+
+  28 Feb 2008; Raúl Porcel <armin76@gentoo.org> docbookide-0.08.ebuild:
+  Re-add ~ppc64, removed by mistake
+
+  25 Oct 2007; Hans de Graaff <graaff@gentoo.org> -docbookide-0.06.ebuild:
+  Remove old version
+
+  03 Jun 2007; Hans de Graaff <graaff@gentoo.org> docbookide-0.07.ebuild:
+  Stable on amd64, ppc, ppc64, sparc, x86 as per #175560
+
+  29 May 2007; Raúl Porcel <armin76@gentoo.org> docbookide-0.07.ebuild:
+  alpha stable wrt #175560
+
+*docbookide-0.08 (05 May 2007)
+
+  05 May 2007; Hans de Graaff <graaff@gentoo.org> +docbookide-0.08.ebuild:
+  Version bump: packaging changes only
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*docbookide-0.07 (11 Nov 2006)
+
+  11 Nov 2006; Hans de Graaff <graaff@gentoo.org> +metadata.xml,
+  -docbookide-0.05.ebuild, +docbookide-0.07.ebuild:
+  Version bump; remove old version; add metadata.
+
+  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> docbookide-0.06.ebuild:
+  Stable on alpha
+
+*docbookide-0.06 (22 Feb 2003)
+
+  22 Feb 2003;  <rendhalver@gentoo.org> docbookide-0.05.ebuild docbookide-0.06.ebuild files/digest-docbookide-0.06 :
+  Add ~alpha to KEYWORDS
+
+  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
+  new stable ebuild
+
+  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
+  fix depend on ispell to point to xemacs-ispell
+
+*docbookide-0.05 (16 Dec 2002)
+
+  16 Dec 2002; Rendhalver [Peter Brown] <rendhalver@gentoo.org> :
+  Initial import.

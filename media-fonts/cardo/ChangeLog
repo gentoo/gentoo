@@ -1,0 +1,26 @@
+# ChangeLog for media-fonts/cardo
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/cardo/ChangeLog,v 1.6 2011/08/15 00:52:37 dirtyepic Exp $
+
+  15 Aug 2011; Ryan Hill <dirtyepic@gentoo.org> -cardo-0.98.ebuild,
+  cardo-1.04.ebuild:
+  Stabilize for all due to bug #378489.
+
+*cardo-1.04 (15 Aug 2011)
+
+  15 Aug 2011; Ryan Hill <dirtyepic@gentoo.org> +cardo-1.04.ebuild,
+  metadata.xml:
+  Version bump.
+
+  21 Sep 2009; Markus Meier <maekke@gentoo.org> cardo-0.98.ebuild:
+  amd64/x86 stable, bug #285559
+
+  05 Jun 2009; Peter Alfredsen <loki_val@gentoo.org> metadata.xml:
+  Retiring, bug 220219.
+
+  17 May 2009; Peter Alfredsen <loki_val@gentoo.org> cardo-0.98.ebuild:
+  Keyword ~amd64
+
+  30 May 2008; Sven Wegener <swegener@gentoo.org> ChangeLog:
+  Add missing ChangeLog.
+

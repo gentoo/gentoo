@@ -1,0 +1,11 @@
+--- SFML-1.6/src/SFML/Window/Linux/Joystick.cpp
++++ SFML-1.6/src/SFML/Window/Linux/Joystick.cpp
+@@ -27,7 +27,7 @@
+ ////////////////////////////////////////////////////////////
+ #include <SFML/Window/Joystick.hpp>
+ #include <sstream>
+-
++#include <unistd.h>
+ 
+ namespace sf
+ {

@@ -1,0 +1,12 @@
+# ChangeLog for app-dicts/sword-frebbb
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/sword-frebbb/ChangeLog,v 1.2 2014/01/05 22:51:12 creffett Exp $
+
+  05 Jan 2014; Chris Reffett <creffett@gentoo.org> sword-frebbb-1.1.ebuild:
+  EAPI bump
+
+*sword-frebbb-1.1 (11 Jan 2009)
+
+  11 Jan 2009; Steve Dibb <beandog@gentoo.org> +metadata.xml,
+  +sword-frebbb-1.1.ebuild:
+  Initial commit

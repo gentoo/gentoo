@@ -1,0 +1,31 @@
+# ChangeLog for dev-scheme/greg
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-scheme/greg/ChangeLog,v 1.7 2013/06/02 16:04:34 jlec Exp $
+
+  02 Jun 2013; Justin Lecher <jlec@gentoo.org> greg-2.0.0-r1.ebuild:
+  Fix leading spaces
+
+*greg-2.0.0-r1 (02 Jun 2013)
+
+  02 Jun 2013; Justin Lecher <jlec@gentoo.org> +greg-2.0.0-r1.ebuild,
+  +files/greg-2.0.0-test.patch, metadata.xml:
+  Handle static-libs, implement test phase
+
+  15 Jul 2010; Markus Meier <maekke@gentoo.org> greg-2.0.0.ebuild:
+  x86 stable, bug #326023
+
+  28 Jun 2010; Christoph Mende <angelos@gentoo.org> greg-2.0.0.ebuild:
+  Stable on amd64 wrt bug #326023
+
+  28 Jun 2010; Justin Lecher <jlec@gentoo.org> greg-2.0.0.ebuild:
+  Readded test
+
+  28 Jun 2010; Justin Lecher <jlec@gentoo.org> greg-2.0.0.ebuild:
+  Restrict test and make test not run in src_compile
+
+*greg-2.0.0 (05 Feb 2010)
+
+  05 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org> +greg-2.0.0.ebuild,
+  +metadata.xml:
+  Ebuild written by me
+

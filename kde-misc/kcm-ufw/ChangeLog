@@ -1,0 +1,74 @@
+# ChangeLog for kde-misc/kcm-ufw
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kcm-ufw/ChangeLog,v 1.16 2015/06/04 18:57:32 kensington Exp $
+
+  04 Jun 2015; Michael Palimaka <kensington@gentoo.org> kcm-ufw-0.4.3-r1.ebuild:
+  Move various kde-base packages to kde-apps.
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> kcm-ufw-0.4.3-r1.ebuild:
+  Drop old Python implementations
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> kcm-ufw-0.4.3-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  14 Aug 2013; Michael Palimaka <kensington@gentoo.org> -kcm-ufw-0.4.3.ebuild:
+  Remove old.
+
+  22 Jul 2013; Michael Palimaka <kensington@gentoo.org> kcm-ufw-0.4.3-r1.ebuild:
+  Fix install on 32 bit systems wrt bug #477738.
+
+*kcm-ufw-0.4.3-r1 (11 Jul 2013)
+
+  11 Jul 2013; Michael Palimaka <kensington@gentoo.org>
+  +files/kcm-ufw-0.4.3-linguas.patch, +kcm-ufw-0.4.3-r1.ebuild:
+  Migrate to python-r1, fixing bug #472206. Make linguas handling more compliant
+  with KDE conventions.
+
+  23 Sep 2012; Ian Whyman <thev00d00@gentoo.org> -kcm-ufw-0.4.1-r3.ebuild:
+  Drop old
+
+  14 Jun 2012; Ian Whyman <thev00d00@gentoo.org> kcm-ufw-0.4.3.ebuild:
+  Fix net-firewall/ufw dependency
+
+*kcm-ufw-0.4.3 (13 Jun 2012)
+
+  13 Jun 2012; Ian Whyman <thev00d00@gentoo.org> +kcm-ufw-0.4.3.ebuild:
+  Version bump for new UFW
+
+  19 Apr 2012; Ian Whyman <thev00d00@gentoo.org> +kcm-ufw-0.4.1-r3.ebuild,
+  -kcm-ufw-0.4.2.ebuild:
+  Revert 0.4.2 bump which is incompatable with the in tree UFW
+
+*kcm-ufw-0.4.2 (19 Apr 2012)
+
+  19 Apr 2012; Tomáš Chvátal <scarabeus@gentoo.org> +kcm-ufw-0.4.2.ebuild,
+  -kcm-ufw-0.4.1-r3.ebuild:
+  Add new kcm-ufw version which supports new ufw.
+
+*kcm-ufw-0.4.1-r3 (12 Apr 2012)
+
+  12 Apr 2012; Ian Whyman <thev00d00@gentoo.org> -kcm-ufw-0.4.1-r2.ebuild,
+  +kcm-ufw-0.4.1-r3.ebuild:
+  Revision bump to update ufw dependency, this will prevent breakage of
+  this package when net-firewall/ufw-0.31 is commited shortly.
+
+*kcm-ufw-0.4.1-r2 (03 Feb 2012)
+
+  03 Feb 2012; Maciej Mrozowski <reavertm@gentoo.org> +kcm-ufw-0.4.1-r2.ebuild,
+  -kcm-ufw-0.4.1-r1.ebuild:
+  Revision bump
+
+  03 Feb 2012; Maciej Mrozowski <reavertm@gentoo.org> kcm-ufw-0.4.1-r1.ebuild:
+  Fix installation prefix, bug 402021. Add debug to IUSE.
+
+*kcm-ufw-0.4.1-r1 (19 Jan 2012)
+
+  19 Jan 2012; Ian Whyman <thev00d00@gentoo.org> -kcm-ufw-0.4.1.ebuild,
+  +kcm-ufw-0.4.1-r1.ebuild:
+  Fix linguas
+
+*kcm-ufw-0.4.1 (08 Jan 2012)
+
+  08 Jan 2012; Ian Whyman <thev00d00@gentoo.org> +kcm-ufw-0.4.1.ebuild,
+  +metadata.xml:
+  New ebuild for kcm-ufw

@@ -1,0 +1,230 @@
+# ChangeLog for dev-lang/lazarus
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/lazarus/ChangeLog,v 1.47 2015/05/23 15:46:54 mrueg Exp $
+
+  23 May 2015; Manuel Rüger <mrueg@gentoo.org> -lazarus-1.0.10.ebuild:
+  Remove old.
+
+*lazarus-1.2.6 (24 Nov 2014)
+
+  24 Nov 2014; Tim Harder <radhermit@gentoo.org> +lazarus-1.2.6.ebuild:
+  Version bump.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> lazarus-1.0.10.ebuild,
+  lazarus-1.0.12.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*lazarus-1.2.4 (22 Jun 2014)
+
+  22 Jun 2014; Tim Harder <radhermit@gentoo.org> +lazarus-1.2.4.ebuild:
+  Version bump.
+
+*lazarus-1.2.2 (29 Apr 2014)
+
+  29 Apr 2014; Tim Harder <radhermit@gentoo.org> +lazarus-1.2.2.ebuild:
+  Version bump (bug #508950).
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> lazarus-1.0.12.ebuild:
+  Stable for x86, wrt bug #491544
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> lazarus-1.0.12.ebuild:
+  Stable for ppc, wrt bug #491544
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> lazarus-1.0.12.ebuild:
+  amd64 stable, bug #491544
+
+  26 Oct 2013; Julian Ospald <hasufell@gentoo.org> lazarus-1.0.12.ebuild,
+  metadata.xml:
+  add minimal useflag wrt #349674
+
+  27 Sep 2013; Tim Harder <radhermit@gentoo.org> -lazarus-0.9.26-r4.ebuild,
+  -lazarus-0.9.28.2-r1.ebuild, -lazarus-1.0.4.ebuild,
+  -files/lazarus-0.9.26-clipboard-crash.patch,
+  -files/lazarus-0.9.28.2-bug0015627.patch:
+  Remove old.
+
+*lazarus-1.0.12 (13 Sep 2013)
+
+  13 Sep 2013; Patrick Lauer <patrick@gentoo.org> +lazarus-1.0.12.ebuild:
+  Bump
+
+*lazarus-1.0.10 (26 Jun 2013)
+
+  26 Jun 2013; Julian Ospald <hasufell@gentoo.org> +lazarus-1.0.10.ebuild:
+  version bump
+
+*lazarus-1.0.4 (31 Jan 2013)
+
+  31 Jan 2013; Patrick Lauer <patrick@gentoo.org> +lazarus-1.0.4.ebuild:
+  Bump for #364261
+
+  09 Jul 2012; Ulrich Müller <ulm@gentoo.org> lazarus-0.9.26-r4.ebuild,
+  lazarus-0.9.28.2-r1.ebuild:
+  Update LICENSE, bug 425140.
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org> lazarus-0.9.26-r4.ebuild,
+  lazarus-0.9.28.2-r1.ebuild:
+  Fixed slot deps
+
+  21 Aug 2010; Harald van Dĳk <truedfx@gentoo.org>
+  -lazarus-0.9.28.2.ebuild, +lazarus-0.9.28.2-r1.ebuild,
+  +files/lazarus-0.9.28.2-bug0015627.patch:
+  Fix access violation in TGtk2WSCustomListBox with some GTK+ versions
+  (#333761 by suilenroc1183@yahoo.de)
+
+*lazarus-0.9.28.2-r1 (21 Aug 2010)
+
+  21 Aug 2010; Harald van Dĳk <truedfx@gentoo.org>
+  -lazarus-0.9.28.2.ebuild, +lazarus-0.9.28.2-r1.ebuild,
+  +files/lazarus-0.9.28.2-bug0015627.patch:
+  Fix access violation in TGtk2WSCustomListBox with recent GTK+ (#333761 by
+  suilenroc1183@yahoo.de)
+
+*lazarus-0.9.28.2 (06 Feb 2010)
+
+  06 Feb 2010; Harald van Dĳk <truedfx@gentoo.org>
+  +lazarus-0.9.28.2.ebuild:
+  Version bump (#292561)
+
+*lazarus-0.9.26-r4 (22 Jul 2009)
+
+  22 Jul 2009; Harald van Dĳk <truedfx@gentoo.org>
+  -lazarus-0.9.26-r3.ebuild, +lazarus-0.9.26-r4.ebuild:
+  Re-add RESTRICT=strip (#269221)
+
+  25 Jun 2009; Harald van Dĳk <truedfx@gentoo.org>
+  lazarus-0.9.26-r3.ebuild:
+  Don't try to create fp config files in /usr during build (bug #274518 by
+  Paul Hartman)
+
+  09 Jun 2009; Harald van Dĳk <truedfx@gentoo.org>
+  lazarus-0.9.26-r3.ebuild:
+  Build with clean fpc config
+
+*lazarus-0.9.26-r3 (12 May 2009)
+
+  12 May 2009; Harald van Dĳk <truedfx@gentoo.org>
+  -lazarus-0.9.26-r1.ebuild, -lazarus-0.9.26-r2.ebuild,
+  +lazarus-0.9.26-r3.ebuild, +files/lazarus-0.9.26-clipboard-crash.patch:
+  Fix crashes on clipboard operations, bug #269221
+
+*lazarus-0.9.26-r2 (23 Apr 2009)
+
+  23 Apr 2009; Harald van Dĳk <truedfx@gentoo.org>
+  +lazarus-0.9.26-r2.ebuild:
+  Revision bump to build with fpc 2.2.4
+
+*lazarus-0.9.26-r1 (14 Mar 2009)
+
+  14 Mar 2009; Harald van Dĳk <truedfx@gentoo.org> -lazarus-0.9.26.ebuild,
+  +lazarus-0.9.26-r1.ebuild:
+  Drop RESTRICT=strip, now that binutils is fixed
+
+  07 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  lazarus-0.9.26.ebuild:
+  use EAPI 2 for USE flag check
+
+  07 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  -files/lazarus-0.9.20-fpcsrc.patch, -files/lazarus-0.9.24-cputarget.patch,
+  -lazarus-0.9.22-r1.ebuild, -lazarus-0.9.24.ebuild:
+  clean up
+
+  17 Oct 2008; Harald van Dĳk <truedfx@gentoo.org> lazarus-0.9.26.ebuild:
+  Fix desktop entry icon (#242468 by Renato Caldas)
+
+*lazarus-0.9.26 (15 Oct 2008)
+
+  15 Oct 2008; Harald van Dĳk <truedfx@gentoo.org>
+  +files/lazarus-0.9.26-fpcsrc.patch, +lazarus-0.9.26.ebuild:
+  Version bump (#242200 by Renato Caldas)
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> lazarus-0.9.22-r1.ebuild,
+  lazarus-0.9.24.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  09 Dec 2007; Harald van Dĳk <truedfx@gentoo.org>
+  +files/lazarus-0.9.24-cputarget.patch, lazarus-0.9.24.ebuild:
+  Restore part of Makefile so that non-x86 can build lazarus
+
+*lazarus-0.9.24 (08 Dec 2007)
+
+  08 Dec 2007; Harald van Dĳk <truedfx@gentoo.org> +lazarus-0.9.24.ebuild:
+  Version bump (#201576)
+
+  01 Jul 2007; Harald van Dĳk <truedfx@gentoo.org>
+  lazarus-0.9.22-r1.ebuild:
+  Add RESTRICT=strip, #183604
+
+*lazarus-0.9.22-r1 (06 Apr 2007)
+
+  06 Apr 2007; <truedfx@gentoo.org> -files/lazarus-iconcrash.patch,
+  -lazarus-0.9.22.ebuild, +lazarus-0.9.22-r1.ebuild:
+  Remove the workaround for bug #168168, and depend on a fixed librsvg
+
+*lazarus-0.9.22 (06 Apr 2007)
+
+  06 Apr 2007; <truedfx@gentoo.org> -files/lazarus-0.9.20-lcl-handle.patch,
+  -files/lazarus-0.9.20-lclintf.patch, +files/lazarus-iconcrash.patch,
+  -lazarus-0.9.20-r1.ebuild, +lazarus-0.9.22.ebuild:
+  Version bump with a workaround for bug #168168
+
+  22 Mar 2007; Harald van Dĳk <truedfx@gentoo.org>
+  +files/lazarus-0.9.20-lcl-handle.patch, lazarus-0.9.20-r1.ebuild:
+  Avoid storing pointers in 32-bit variables on amd64
+
+*lazarus-0.9.20-r1 (10 Mar 2007)
+
+  10 Mar 2007; Harald van Dĳk <truedfx@gentoo.org>
+  +files/lazarus-0.9.20-fpcsrc.patch, +files/lazarus-0.9.20-lclintf.patch,
+  -lazarus-0.9.20.ebuild, +lazarus-0.9.20-r1.ebuild:
+  Automatically find fpc source directory, preventing a crash on amd64
+  (#168168). Also, set default LCL interface to gtk2.
+
+  02 Dec 2006; Harald van Dĳk <truedfx@gentoo.org> -lazarus-0.9.10.ebuild,
+  -lazarus-0.9.12.ebuild, -lazarus-0.9.16.ebuild:
+  Remove older versions
+
+  22 Nov 2006; Harald van Dĳk <truedfx@gentoo.org> lazarus-0.9.20.ebuild:
+  Add a warning to change the LCL interface (#155564)
+
+*lazarus-0.9.20 (17 Nov 2006)
+
+  17 Nov 2006; Hanno Boeck <hanno@gentoo.org> +lazarus-0.9.20.ebuild:
+  Bump and preliminary gtk2 support.
+
+  28 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org> lazarus-0.9.16.ebuild:
+  Moved built_with_use to pkg_setup since it's a moot point to use lazarus
+  without the source. Thanks to welp on #gentoo-dev
+
+*lazarus-0.9.16 (22 Sep 2006)
+
+  22 Sep 2006; Harald van Dĳk <truedfx@gentoo.org> +lazarus-0.9.16.ebuild:
+  Version bump
+
+*lazarus-0.9.12 (23 Feb 2006)
+
+  23 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  +lazarus-0.9.12.ebuild:
+  New upstream version to match fpc 2.0.2
+
+  17 Dec 2005; Carsten Lohrke <carlo@gentoo.org> lazarus-0.9.10.ebuild:
+  clean up a bit
+
+  17 Nov 2005; Herbie Hopkins <herbs@gentoo.org> lazarus-0.9.10.ebuild:
+  Marked ~amd64.
+
+*lazarus-0.9.10 (06 Oct 2005)
+
+  06 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  +lazarus-0.9.10.ebuild:
+  Revbump for fpc 2.0.0, added ~ppc, solves bugs #103903, #102889, #99480, #90078
+
+  19 Apr 2005; Elfyn McBratney <beu@gentoo.org> metadata.xml:
+  Remove retired developer from metadata.xml.
+
+*lazarus-0.9.6 (02 Apr 2005)
+
+  02 Apr 2005; Chris White <chriswhite@gentoo.org> +metadata.xml,
+  +lazarus-0.9.6.ebuild:
+  Initial import into the tree. Closes bug #87486. Thanks to expose for the
+  ebuild!

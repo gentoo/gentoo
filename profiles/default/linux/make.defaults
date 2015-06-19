@@ -1,0 +1,58 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/make.defaults,v 1.20 2014/01/21 04:30:28 dirtyepic Exp $
+#
+# System-wide defaults for the Portage system
+# See portage(5) manpage
+#
+# Please avoid enabling things by default in here if possible. Understand any 
+# implications with core packages.  For example, if "java" is in USE and db 
+# has a conditional dependency on java (which it does,) then a JDK will be 
+# pulled in during *emerge system*!
+
+
+# Default starting set of USE flags for all default/linux profiles.
+USE="berkdb crypt ipv6 ncurses nls pam readline ssl tcpd zlib"
+
+# make sure toolchain has sane defaults <tooclhain@gentoo.org>
+USE="${USE} fortran openmp"
+
+# 2010/10/21 - Ole Markus With <olemarkus@gentoo.org>
+# These USE flags were originally inserted here because of PHP
+# and were later removed by me. Reinserting the USE flags again because they are
+# global USE flags that may be expected to be set by other packages.
+USE="${USE} cli pcre session"
+
+# 2006/03/07 - Donnie Berkholz <dberkholz@gentoo.org>
+# Modular X: Support direct rendering by default
+# 2013/01/21 - Andreas K. Huettel <dilfridge@gentoo.org>
+# Re-added following discussion with chithead
+USE="${USE} dri"
+
+# 2006/10/28 - Luca Barbato <lu_zero@gentoo.org>
+# on glibc system you cannot turn it off
+USE="${USE} iconv"
+
+# 2006/06/30 - Donnie Berkholz <dberkholz@gentoo.org>
+# Sane defaults for input drivers
+INPUT_DEVICES="keyboard mouse evdev"
+
+# 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
+# Lowest common denominator defaults for video drivers,
+# except hppa, which lacks v4l so removes it in the hppa profile
+VIDEO_CARDS="dummy fbdev v4l"
+
+# 2008/07/09 - Doug Goldstein <cardoe@gentoo.org>
+# Adding LDFLAGS="-Wl,-O1 for all Linux profiles by default
+# after discussion on the gentoo-dev ML. As we bang out a clear
+# direction with how LDFLAGS will be set by default, this entry
+# may move.
+# 2010/07/12 - Samuli Suominen <ssuominen@gentoo.org>
+# Note that adding LDFLAGS="-Wl,-O1 ${LDFLAGS}" breaks dev-util/boost-build
+# because of whitespace.
+LDFLAGS="-Wl,-O1 -Wl,--as-needed"
+
+# 2009/09/21 Robin H. Johnson <robbat2@gentoo.org>
+# http://archives.gentoo.org/gentoo-dev/msg_dc705dc2c1a45e18a85aa62e8fb17009.xml
+# Build kernel modules from linux-mod by default:
+USE="${USE} modules"

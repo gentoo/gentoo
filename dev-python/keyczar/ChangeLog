@@ -1,0 +1,23 @@
+# ChangeLog for dev-python/keyczar
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/keyczar/ChangeLog,v 1.5 2015/04/08 08:05:25 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> keyczar-0.71c.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> keyczar-0.715.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> keyczar-0.715.ebuild:
+  amd64 stable, bug 540290
+
+*keyczar-0.715 (07 Feb 2015)
+
+  07 Feb 2015; Ian Delaney <idella4@gentoo.org> +keyczar-0.715.ebuild:
+  bump
+
+*keyczar-0.71c (22 Feb 2014)
+
+  22 Feb 2014; Tim Harder <radhermit@gentoo.org> +keyczar-0.71c.ebuild,
+  +metadata.xml:
+  Initial import (bug #345313).

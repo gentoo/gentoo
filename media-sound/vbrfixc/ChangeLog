@@ -1,0 +1,28 @@
+# ChangeLog for media-sound/vbrfixc
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/vbrfixc/ChangeLog,v 1.7 2013/07/21 08:59:50 pacho Exp $
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #92799
+
+  24 Jan 2013; Stefan Briesenick <sbriesen@gentoo.org> vbrfixc-0.24.ebuild:
+  fixed HOMEPAGE and SRC_URI, solving bug #413309.
+
+  29 Jun 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/vbrfixc-0.24-gcc43.patch, vbrfixc-0.24.ebuild:
+  Fix for gcc-4.3, bug #225943. Thanks Derek Dolney <nospam@dolney.com>.
+
+  10 Jul 2007; Christoph Mende <angelos@gentoo.org> vbrfixc-0.24.ebuild:
+  Stable on amd64 wrt bug #184396
+
+  08 Jul 2007; Christian Faulhammer <opfer@gentoo.org> vbrfixc-0.24.ebuild:
+  stable x86, bug 184396
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*vbrfixc-0.24 (19 Mar 2006)
+
+  19 Mar 2006; Stefan Briesenick <sbriesen@gentoo.org>
+  +files/vbrfixc-0.24-bigendian.diff, +metadata.xml, +vbrfixc-0.24.ebuild:
+  initial commit.

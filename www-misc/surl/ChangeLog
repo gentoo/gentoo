@@ -1,0 +1,27 @@
+# ChangeLog for www-misc/surl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-misc/surl/ChangeLog,v 1.5 2015/03/28 23:15:03 mrueg Exp $
+
+  28 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -surl-0.7.0-r1.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> surl-0.7.0-r1.ebuild,
+  surl-0.7.1.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*surl-0.7.1.1 (08 May 2014)
+
+  08 May 2014; Alex Alexander <wired@gentoo.org> +surl-0.7.1.1.ebuild:
+  version bump
+
+*surl-0.7.0-r1 (26 Apr 2010)
+
+  26 Apr 2010; Alex Alexander <wired@gentoo.org> -surl-0.7.0.ebuild,
+  +surl-0.7.0-r1.ebuild:
+  revbump that actually works thanks to Daniel (billie)
+
+*surl-0.7.0 (25 Apr 2010)
+
+  25 Apr 2010; Alex Alexander <wired@gentoo.org> +surl-0.7.0.ebuild,
+  +metadata.xml:
+  new ebuild

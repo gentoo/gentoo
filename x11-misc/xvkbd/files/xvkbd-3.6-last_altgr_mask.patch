@@ -1,0 +1,11 @@
+--- a/xvkbd.c
++++ b/xvkbd.c
+@@ -681,7 +681,7 @@
+     }
+   }
+ 
+-  last_altgr_mask = (altgr_mask | last_altgr_mask);
++  last_altgr_mask = altgr_mask;
+   alt_mask = 0;
+   meta_mask = 0;
+   altgr_mask = 0;

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+DEPEND=dev-vcs/git sys-devel/gnuconfig >=sys-devel/binutils-config-3 zlib? ( sys-libs/zlib ) test? ( dev-util/dejagnu ) nls? ( sys-devel/gettext ) sys-devel/flex virtual/yacc
+DESCRIPTION=Tools necessary to build programs
+EAPI=4
+HOMEPAGE=http://sourceware.org/binutils/
+IUSE=cxx multislot multitarget nls static-libs test vanilla zlib
+LICENSE=|| ( GPL-3 LGPL-3 )
+RDEPEND=>=sys-devel/binutils-config-3 zlib? ( sys-libs/zlib )
+SLOT=git
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	git-2	e28f0d8a9b321431b1e699782851b827	gnuconfig	00a0530e40148c254cebb925df0e87ef	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-binutils	afe11d1a79501d13367f1d1423b3b1ab	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=fa20d2147bc458352a0bf23b9101e55a

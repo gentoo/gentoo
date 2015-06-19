@@ -1,0 +1,39 @@
+# ChangeLog for media-gfx/kcoloredit
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/kcoloredit/ChangeLog,v 1.9 2014/04/26 12:34:34 johu Exp $
+
+  26 Apr 2014; Johannes Huber <johu@gentoo.org> -kcoloredit-2.0.0.ebuild,
+  kcoloredit-2.0.0-r1.ebuild:
+  amd64/x86 stable, remove old.
+
+*kcoloredit-2.0.0-r1 (21 Mar 2014)
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org> +kcoloredit-2.0.0-r1.ebuild:
+  Revision bump to EAPI 5.
+
+  11 Jun 2013; Agostino Sarubbo <ago@gentoo.org> kcoloredit-2.0.0.ebuild:
+  Stable for x86, wrt bug #472986
+
+  11 Jun 2013; Agostino Sarubbo <ago@gentoo.org> kcoloredit-2.0.0.ebuild:
+  Stable for amd64, wrt bug #472986
+
+  29 Oct 2011; Jonathan Callen <abcd@gentoo.org> kcoloredit-2.0.0.ebuild:
+  Bump to EAPI=4; set KDE_HANDBOOK
+
+  11 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  kcoloredit-2.0.0.ebuild, +files/kcoloredit-2.0.0-underlinking.patch:
+  Fix underlinking, bug 371743
+
+  02 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  kcoloredit-2.0.0.ebuild:
+  EAPI3
+
+  09 Aug 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  kcoloredit-2.0.0.ebuild:
+  Remove unnecessary KDE_MINIMAL
+
+*kcoloredit-2.0.0 (21 Feb 2010)
+
+  21 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +kcoloredit-2.0.0.ebuild:
+  Initial commit.

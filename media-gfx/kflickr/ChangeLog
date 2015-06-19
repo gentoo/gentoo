@@ -1,0 +1,70 @@
+# ChangeLog for media-gfx/kflickr
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/kflickr/ChangeLog,v 1.14 2014/03/21 20:44:34 johu Exp $
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org> kflickr-0.9.1_p1.ebuild:
+  Bump to EAPI 5.
+
+  29 Oct 2011; Jonathan Callen <abcd@gentoo.org> kflickr-0.9.1_p1.ebuild:
+  Bump to EAPI=4
+
+  02 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  kflickr-0.9.1_p1.ebuild:
+  EAPI3, use array for DOCS
+
+  22 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/kflickr-0.9.1-desktop-file.diff:
+  Drop stale patch.
+
+*kflickr-0.9.1_p1 (09 Nov 2009)
+
+  09 Nov 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +kflickr-0.9.1_p1.ebuild:
+  Version bump (to snapshot 2009-11-09) wrt #276017, thanks to Coran for
+  reporting.
+
+*kflickr-0.9.1-r1 (10 Feb 2009)
+
+  10 Feb 2009; Carsten Lohrke <carlo@gentoo.org>
+  +files/kflickr-0.9.1-desktop-file.diff, +kflickr-0.9.1-r1.ebuild:
+  Get rid of invalid aRts dependency. Fix non-UTF-8 desktop file.
+
+*kflickr-0.9.1 (20 Jan 2008)
+
+  20 Jan 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  +kflickr-0.9.1.ebuild:
+  Version bump as per bug 206460.
+
+  27 Aug 2007; Wulf C. Krueger <philantrop@gentoo.org> metadata.xml,
+  kflickr-0.8.ebuild:
+  Marked stable on amd64. Brought the lost sheep back to its herd - kde.
+
+*kflickr-0.9 (27 Aug 2007)
+
+  27 Aug 2007; Raúl Porcel <armin76@gentoo.org> kflickr-0.8.ebuild,
+  +kflickr-0.9.ebuild:
+  Version bump, bug #188994, and x86 stable
+
+*kflickr-0.8 (12 Apr 2007)
+
+  12 Apr 2007; Raúl Porcel <armin76@gentoo.org> +kflickr-0.8.ebuild:
+  Version bump, bug 174134 thanks to Gilles Schintgen <gilles at vonet dot lu>
+  for reporting
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove jhuebel from metadata.xml due to retirement.
+
+*kflickr-0.7 (17 Sep 2006)
+
+  17 Sep 2006; Jason Huebel <jhuebel@gentoo.org> -kflickr-0.5.ebuild,
+  kflickr-0.6.ebuild, +kflickr-0.7.ebuild:
+  version bump (0.7), original ebuild courtesy of Gilbert Assaf <gassaf@gmx.de>
+
+*kflickr-0.6 (08 Aug 2006)
+
+  08 Aug 2006; Jason Huebel <jhuebel@gentoo.org> kflickr-0.5.ebuild,
+  +kflickr-0.6.ebuild:
+  kflickr 0.5 stable on amd64 and x86, add kflickr 0.6 testing for amd64 and x86
+
+  06 Jun 2006; Jason Huebel <jhuebel@gentoo.org> +Manifest:
+  initial commit, ebuild from upstream website

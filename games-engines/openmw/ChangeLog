@@ -1,0 +1,34 @@
+# ChangeLog for games-engines/openmw
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-engines/openmw/ChangeLog,v 1.6 2015/01/22 16:44:16 hasufell Exp $
+
+  22 Jan 2015; Julian Ospald <hasufell@gentoo.org> openmw-0.33.0-r2.ebuild:
+  rm cdinstall USE flag wrt #537260
+
+*openmw-0.33.0-r2 (08 Nov 2014)
+
+  08 Nov 2014; Julian Ospald <hasufell@gentoo.org> -openmw-0.33.0-r1.ebuild,
+  +openmw-0.33.0-r2.ebuild:
+  rm unnecessary cg USE dep on dev-games/ogre wrt #528696
+
+*openmw-0.33.0-r1 (07 Nov 2014)
+
+  07 Nov 2014; Julian Ospald <hasufell@gentoo.org> -openmw-0.33.0.ebuild,
+  +openmw-0.33.0-r1.ebuild:
+  fix configuration directory detection wrt #528598
+
+  06 Nov 2014; Julian Ospald <hasufell@gentoo.org> openmw-0.33.0.ebuild:
+  add useful elog
+
+  06 Nov 2014; Julian Ospald <hasufell@gentoo.org> openmw-0.33.0.ebuild,
+  -files/openmw-0.33.0-build.patch, files/openmw-0.33.0-cfg.patch:
+  rm obsolete patch, tweak cfg patch to be more upstream compatible, fix
+  libsdl2 USE flag deps
+
+*openmw-0.33.0 (06 Nov 2014)
+
+  06 Nov 2014; Julian Ospald <hasufell@gentoo.org> +openmw-0.33.0.ebuild,
+  +files/openmw-0.33.0-build.patch, +files/openmw-0.33.0-cfg.patch,
+  +files/openmw-0.33.0-opencs.patch, +metadata.xml:
+  initial import wrt #411295
+

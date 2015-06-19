@@ -1,0 +1,187 @@
+# ChangeLog for app-benchmarks/bonnie++
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/bonnie++/ChangeLog,v 1.41 2015/03/28 23:26:33 mrueg Exp $
+
+  28 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -bonnie++-1.93c.ebuild,
+  -bonnie++-1.95.ebuild:
+  Remove old.
+
+  05 Aug 2014; Patrick Lauer <patrick@gentoo.org> bonnie++-1.93c.ebuild,
+  bonnie++-1.95.ebuild, bonnie++-1.96-r1.ebuild, bonnie++-1.96.ebuild,
+  bonnie++-1.97.ebuild:
+  Make description more repoman-happy
+
+  28 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> bonnie++-1.97.ebuild:
+  Add ~mips keyword wrt bug #518286
+
+*bonnie++-1.97 (10 Dec 2012)
+
+  10 Dec 2012; Patrick Lauer <patrick@gentoo.org> +bonnie++-1.97.ebuild:
+  Bump
+
+  10 Nov 2010; Patrick Lauer <patrick@gentoo.org>
+  -files/bonnie++-1.94-64bit.patch:
+  Removing unneeded file #340180
+
+  10 Nov 2010; Patrick Lauer <patrick@gentoo.org> bonnie++-1.93c.ebuild:
+  Make repoman happy
+
+*bonnie++-1.96-r1 (27 Sep 2010)
+
+  27 Sep 2010; Sebastian Pipping <sping@gentoo.org>
+  +bonnie++-1.96-r1.ebuild, +files/bonnie++-1.96-compile-flags.patch:
+  Respect CFLAGS (bug #239951) and LDFLAGS (bug #337463)
+
+  12 Sep 2010; Michael Weber <xmw@gentoo.org> bonnie++-1.96.ebuild:
+  Added ~arm keyword
+
+  22 May 2010; Pacho Ramos <pacho@gentoo.org> bonnie++-1.96.ebuild:
+  stable amd64, bug 299765
+
+  25 Mar 2010; Jeroen Roovers <jer@gentoo.org> bonnie++-1.96.ebuild:
+  Stable for HPPA (bug #299765).
+
+  11 Mar 2010; Joseph Jezak <josejx@gentoo.org> bonnie++-1.96.ebuild:
+  Marked ppc/ppc64 stable for bug #299765.
+
+  06 Mar 2010; Raúl Porcel <armin76@gentoo.org> bonnie++-1.93c.ebuild,
+  bonnie++-1.96.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #299765 and add unapplied patch wrt bug
+  #303345
+
+  08 Nov 2009; Mark Loeser <halcy0n@gentoo.org> +bonnie++-1.93c.ebuild:
+  Add back the only stable version of bonnie++
+
+*bonnie++-1.96 (08 Nov 2009)
+
+  08 Nov 2009; Patrick Lauer <patrick@gentoo.org> -bonnie++-1.93c.ebuild,
+  +bonnie++-1.96.ebuild:
+  Bump, remove old
+
+  16 Jun 2009; Jeroen Roovers <jer@gentoo.org> bonnie++-1.95.ebuild:
+  Marked ~hppa too.
+
+  30 Apr 2009; Patrick Lauer <patrick@gentoo.org> -bonnie++-1.94.ebuild:
+  Remove old
+
+  08 Apr 2009; Patrick Lauer <patrick@gentoo.org>
+  +files/bonnie++-1.95-homepage.patch, bonnie++-1.95.ebuild:
+  Small fix for manpage, fixes #223801. Thanks to jlec.
+
+*bonnie++-1.95 (08 Mar 2009)
+
+  08 Mar 2009; Patrick Lauer <patrick@gentoo.org> +bonnie++-1.95.ebuild:
+  Bump to 1.95
+
+*bonnie++-1.94 (23 Nov 2008)
+
+  23 Nov 2008; Patrick Lauer <patrick@gentoo.org>
+  +files/bonnie++-1.94-64bit.patch,
+  +files/bonnie++-1.94-missing_include.patch, +bonnie++-1.94.ebuild:
+  Bump to 1.94
+
+  02 May 2008; Tiziano Müller <dev-zero@gentoo.org>
+  +files/bonnie++-1.93c-missing_include.patch, bonnie++-1.93c.ebuild:
+  Added patch to fix compilation problems with gcc-4.3
+
+  17 Sep 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing johnm from metadata.xml (see #186467 for reference).
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  21 May 2006; Markus Rothe <corsair@gentoo.org> bonnie++-1.93c.ebuild:
+  Stable on ppc64
+
+  20 Apr 2006; Brent Baude <ranger@gentoo.org> bonnie++-1.93c.ebuild:
+  Marking bonnie++-1.93c ~ppc64
+
+  27 Feb 2006; Daniel Goller <morfic@gentoo.org> -bonnie++-1.02c-r1.ebuild,
+  -bonnie++-1.03.ebuild:
+  Removing old ebuilds, after QA problems found in outdated version
+
+  31 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org> bonnie++-1.93c.ebuild:
+  Stable on sparc, for real
+
+  30 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org> bonnie++-1.03.ebuild:
+  Stable on sparc
+
+  29 Mar 2005; Aron Griffis <agriffis@gentoo.org> bonnie++-1.93c.ebuild:
+  stable on ia64
+
+  28 Nov 2004; Mike Doty <kingtaco@gentoo.org> :
+  stable on amd64
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  bonnie++-1.03.ebuild, bonnie++-1.93c.ebuild:
+  Masked bonnie++-1.93c.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  bonnie++-1.03.ebuild:
+  Masked bonnie++-1.03.ebuild stable for ppc
+
+  15 Sep 2004; Danny van Dyk <kugelfang@gentoo.org>
+  +files/bonnie++-1.93c-64bit.patch, bonnie++-1.93c.ebuild:
+  Added patch to make bonnie++ compile on 64bit systems. Fixes BUG #63808.
+
+  27 Aug 2004; Daniel Goller <morfic@gentoo.org> bonnie++-1.93c.ebuild:
+  Going gold on x86
+
+*bonnie++-1.93c (22 Jul 2004)
+
+  22 Jul 2004; Daniel Goller <morfic@gentoo.org> +metadata.xml,
+  +bonnie++-1.93c.ebuild:
+  Bumped Version to 1.93c, added metadata.xml
+
+  01 Jun 2004; Aron Griffis <agriffis@gentoo.org> bonnie++-1.02c-r1.ebuild,
+  bonnie++-1.03.ebuild:
+  Fix use invocation
+
+  03 Oct 2003; Aron Griffis <agriffis@gentoo.org> bonnie++-1.03.ebuild:
+  Stable on alpha
+
+  02 Oct 2003; Brad House <brad_mssw@gentoo.org> bonnie++-1.03.ebuild:
+  add ~amd64 flag
+
+*bonnie++-1.02c-r1 (25 Jun 2003)
+
+  01 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Change $DEBUG -> use debug
+
+  25 Jun 2003; Martin Holzer <mholzer@gentoo.org> bonnie++-1.02c-r1.ebuild,
+  bonnie++-1.03.ebuild:
+  Moved app-misc/bonnie++ to app-benchmarks/bonnie++
+
+*bonnie++-1.03 (6 Dec 2002)
+
+  01 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Change $DEBUG -> use debug
+
+  08 Jan 2003; Jack Morgan <jmorgan@gentoo.org> bonnie++-1.03.ebuild :
+  Removed sparc64 keyword 
+
+  4 Jan 2003; George Shapovalov <george@gentoo.org> bonnie++-1.03.ebuild :
+  for whatever reason got this one assigned to me.
+  Checked and committed.
+
+  5 Dec 2002; William McArthur <sandymac@gentoo.org> bonnie++-1.03.ebuild :
+
+  Bummped the ebuild file name and added IUSE and DEPEND lines.
+
+*bonnie++-1.02c-r1 (14 Oct 2002)
+
+  14 Oct 2002; Mike Frysinger <vapier@gentoo.org> :
+  In gcc3.x, 'vector.h' is detected as not being installed (due to the
+  fact that you're *supposed* to call it 'vector') ... and zcav is not
+  built.  if you force the compilation ('make zcav') it will work, just
+  complain that you're using an old header file (#9073)
+  The version bump is because the install would continue even if zcav
+  wasnt created/installed
+
+*bonnie++-1.02c (26 Apr 2002)
+
+  26 Apr 2002; William McArthur <sandymac@gentoo.org> bonnie++-1.02c.ebuild :
+  Just renamed the ebuild for a newer version of the upstream package. Version
+  1.02c fixes "a very serious bug in reporting of seek test results."
+
+*bonnie++-1.02a (1 Feb 2002)

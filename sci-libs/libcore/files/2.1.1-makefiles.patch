@@ -1,0 +1,115 @@
+diff -Nur core-2.1.1.orig/ext/Makefile core-2.1.1/ext/Makefile
+--- core-2.1.1.orig/ext/Makefile	2011-08-06 22:53:29.000000000 +0100
++++ core-2.1.1/ext/Makefile	2011-08-07 00:40:58.000000000 +0100
+@@ -38,16 +38,18 @@
+   endif
+ endif
+ 
+-INCLUDE=-I${CORE_PATH}/inc -I${CORE_PATH}/gmp/include \
+-	-I${CORE_PATH}/mpfr/include
++INCLUDE=-I${CORE_PATH}/inc
+ 
+ 
+ COREX_LIB_LEVEL3=${CORE_PATH}/lib/libcorex++$(VAR)_level3.a
+ COREX_LIB_LEVEL2=${CORE_PATH}/lib/libcorex++$(VAR)_level2.a
+ COREX_LIB_LEVEL1=${CORE_PATH}/lib/libcorex++$(VAR)_level1.a
+-COREX_SHARED_LIB_LEVEL3=${CORE_PATH}/lib/libcorex++$(VAR)_level3.${CORE_DYLIB_EXTENSION}
+-COREX_SHARED_LIB_LEVEL2=${CORE_PATH}/lib/libcorex++$(VAR)_level2.${CORE_DYLIB_EXTENSION}
+-COREX_SHARED_LIB_LEVEL1=${CORE_PATH}/lib/libcorex++$(VAR)_level1.${CORE_DYLIB_EXTENSION}
++COREX_SHARED_LIB_LEVEL3_NAME=libcorex++$(VAR)_level3.${CORE_DYLIB_EXTENSION}.2
++COREX_SHARED_LIB_LEVEL2_NAME=libcorex++$(VAR)_level2.${CORE_DYLIB_EXTENSION}.2
++COREX_SHARED_LIB_LEVEL1_NAME=libcorex++$(VAR)_level1.${CORE_DYLIB_EXTENSION}.2
++COREX_SHARED_LIB_LEVEL3=${CORE_PATH}/lib/$(COREX_SHARED_LIB_LEVEL3_NAME)
++COREX_SHARED_LIB_LEVEL2=${CORE_PATH}/lib/$(COREX_SHARED_LIB_LEVEL2_NAME)
++COREX_SHARED_LIB_LEVEL1=${CORE_PATH}/lib/$(COREX_SHARED_LIB_LEVEL1_NAME)
+ 
+ TARGET=${COREX_LIB_LEVEL3} ${COREX_LIB_LEVEL2} ${COREX_LIB_LEVEL1}
+ 
+@@ -74,11 +76,11 @@
+ 	-@rm -rf $@ 
+ 	$(AR) $@ $?
+ 
+-COREX_SHARED_DEPS=-L${GMP_PREFIX}/lib -lgmp -L${MPFR_PREFIX}/lib -lmpfr -L${CORE_PATH}/lib -lcore++${VAR}
++COREX_SHARED_DEPS= -lgmp -lmpfr -L${CORE_PATH}/lib -lcore++${VAR}
+ 
+ ${COREX_SHARED_LIB_LEVEL3}: ${L3_OBJS}
+ 	-@rm -rf $@ 
+-	$(CXX) $(COREX_SHARED_DEPS) $(CORE_LDFLAGS) -o $@ $?
++	$(CXX) $(LDFLAGS) $(COREX_SHARED_DEPS) $(CORE_LDFLAGS)  -Wl,-soname,$(COREX_SHARED_LIB_LEVEL3_NAME) -o $@ $?
+ 
+ ${COREX_LIB_LEVEL2}: ${L2_OBJS}
+ 	-@rm -rf $@ 
+@@ -86,7 +88,7 @@
+ 
+ ${COREX_SHARED_LIB_LEVEL2}: ${L2_OBJS}
+ 	-@rm -rf $@ 
+-	$(CXX) $(COREX_SHARED_DEPS) $(CORE_LDFLAGS) -o $@ $?
++	$(CXX) $(LDFLAGS) $(COREX_SHARED_DEPS) $(CORE_LDFLAGS) -Wl,-soname,$(COREX_SHARED_LIB_LEVEL2_NAME) -o $@ $?
+ 
+ ${COREX_LIB_LEVEL1}: ${L1_OBJS}
+ 	-@rm -rf $@ 
+@@ -94,7 +96,7 @@
+ 
+ ${COREX_SHARED_LIB_LEVEL1}: ${L1_OBJS}
+ 	-@rm -rf $@ 
+-	$(CXX) $(COREX_SHARED_DEPS) $(CORE_LDFLAGS) -o $@ $?
++	$(CXX) $(LDFLAGS) $(COREX_SHARED_DEPS) $(CORE_LDFLAGS)  -Wl,-soname,$(COREX_SHARED_LIB_LEVEL1_NAME) -o $@ $?
+ 
+ %_level3.o:	%.cpp
+ 	${CXX} $(CORE_CXXFLAGS) -DCORE_LEVEL=3 $(INCLUDE) -c $< -o $@
+diff -Nur core-2.1.1.orig/progs/Make.options core-2.1.1/progs/Make.options
+--- core-2.1.1.orig/progs/Make.options	2011-08-06 22:53:29.000000000 +0100
++++ core-2.1.1/progs/Make.options	2011-08-06 23:31:01.000000000 +0100
+@@ -11,10 +11,8 @@
+ 
+ include $(CORE_PATH)/Make.config
+ 
+-CORE_INC=-I. -I$(CORE_PATH)/inc -I$(CORE_PATH)/mpfr/include \
+-	 -I$(CORE_PATH)/gmp/include
+-CORE_LIB=-L$(CORE_PATH)/lib -L$(CORE_PATH)/mpfr/lib -L$(CORE_PATH)/gmp/lib \
+-	 -lcore++$(VAR) -lmpfr -lgmp
++CORE_INC=-I. -I$(CORE_PATH)/inc
++CORE_LIB=-L$(CORE_PATH)/lib -lcore++$(VAR) -lmpfr -lgmp
+ 
+ COREX_LIB_LEVEL=-lcoreex++$(VAR)_level
+ 
+diff -Nur core-2.1.1.orig/src/Makefile core-2.1.1/src/Makefile
+--- core-2.1.1.orig/src/Makefile	2011-08-06 22:53:29.000000000 +0100
++++ core-2.1.1/src/Makefile	2011-08-07 00:24:38.000000000 +0100
+@@ -23,7 +23,7 @@
+   endif
+ endif
+ 
+-INCLUDE=-I${CORE_PATH}/inc -I${CORE_PATH}/mpfr/include -I${CORE_PATH}/gmp/include
++INCLUDE=-I${CORE_PATH}/inc
+ 
+ # VAR indicates variants of the Core library
+ #	E.g., if VAR=(empty) then we compile the release version.
+@@ -44,7 +44,8 @@
+ 
+ # The following library will be built:
+ CORE_LIB=$(CORE_PATH)/lib/libcore++${VAR}.a
+-CORE_SHARED_LIB=$(CORE_PATH)/lib/libcore++${VAR}.${CORE_DYLIB_EXTENSION}
++CORE_SHARED_LIB_NAME=libcore++${VAR}.${CORE_DYLIB_EXTENSION}.2
++CORE_SHARED_LIB=$(CORE_PATH)/lib/$(CORE_SHARED_LIB_NAME)
+ 
+ TARGET=$(CORE_LIB)
+ 
+@@ -52,7 +53,7 @@
+   TARGET+=$(CORE_SHARED_LIB)
+ endif
+ 
+-DEPS=-L${GMP_PREFIX}/lib -L${MPFR_PREFIX}/lib -lgmp -lmpfr
++DEPS=-lgmp -lmpfr
+ 
+ # =============================================================
+ # RULES  ======================================================
+@@ -64,7 +65,7 @@
+ 	$(AR) $@ $^
+ 
+ ${CORE_SHARED_LIB}:	$(EXPROBJS)
+-	$(CXX) $(DEPS) $(CORE_LDFLAGS) -o $@ $^
++	$(CXX) $(LDFLAGS) $(CORE_LDFLAGS) -Wl,-soname,$(CORE_SHARED_LIB_NAME) $(DEPS) -o $@ $^ $(LIBS)
+ 
+ %${VAR}.o:	%.cpp
+ 	${CXX} $(CORE_CXXFLAGS) $(INCLUDE) -c $< -o $@

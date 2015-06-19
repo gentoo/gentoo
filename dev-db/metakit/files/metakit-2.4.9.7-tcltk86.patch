@@ -1,0 +1,70 @@
+ tcl/mk4tcl.cpp | 10 +++++++---
+ tcl/mk4too.cpp |  6 +++++-
+ 2 files changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/tcl/mk4tcl.cpp b/tcl/mk4tcl.cpp
+index 049bf8e..8d2249e 100755
+--- a/tcl/mk4tcl.cpp
++++ b/tcl/mk4tcl.cpp
+@@ -28,6 +28,10 @@
+ #define MyInitStubs(x) 1
+ #endif 
+ 
++#if 10 * TCL_MAJOR_VERSION + TCL_MINOR_VERSION < 86
++#define Tcl_GetErrorLine(interp) (interp)->errorLine
++#endif
++
+ // definition of valid property name - alpha numerics, underscore, percent,
+ // or any extended utf-8 character
+ #define ISNAME(c)       (isalnum((c)) || (c) == '_' || (c) == '%' || (c) & 0x80)
+@@ -979,7 +983,7 @@ const c4_Property &AsProperty(Tcl_Obj *objPtr, const c4_View &view_) {
+   void *tag = (&view_[0])._seq; // horrific hack to get at c4_Sequence pointer
+   if (objPtr->typePtr !=  &mkPropertyType || objPtr
+     ->internalRep.twoPtrValue.ptr1 != tag) {
+-    Tcl_ObjType *oldTypePtr = objPtr->typePtr;
++    CONST86 Tcl_ObjType *oldTypePtr = objPtr->typePtr;
+ 
+     char type = 'S';
+ 
+@@ -1083,7 +1087,7 @@ int SetCursorFromAny(Tcl_Interp *interp, Tcl_Obj *objPtr) {
+   }
+ 
+   if (objPtr->typePtr !=  &mkCursorType) {
+-    Tcl_ObjType *oldTypePtr = objPtr->typePtr;
++    CONST86 Tcl_ObjType *oldTypePtr = objPtr->typePtr;
+ 
+     const char *string = Tcl_GetStringFromObj(objPtr, 0);
+ 
+@@ -2156,7 +2160,7 @@ int MkTcl::LoopCmd() {
+         _error = TCL_OK;
+       else if (_error == TCL_ERROR) {
+         char msg[100];
+-        sprintf(msg, "\n  (\"mk::loop\" body line %d)", interp->errorLine);
++        sprintf(msg, "\n  (\"mk::loop\" body line %d)", Tcl_GetErrorLine(interp));
+         Tcl_AddObjErrorInfo(interp, msg,  - 1);
+       }
+       break;
+diff --git a/tcl/mk4too.cpp b/tcl/mk4too.cpp
+index 7c845c0..ffcbc4e 100644
+--- a/tcl/mk4too.cpp
++++ b/tcl/mk4too.cpp
+@@ -7,6 +7,10 @@
+ #include <stdio.h>
+ #include <string.h>
+ 
++#if 10 * TCL_MAJOR_VERSION + TCL_MINOR_VERSION < 86
++#define Tcl_GetErrorLine(interp) (interp)->errorLine
++#endif
++
+ ///////////////////////////////////////////////////////////////////////////////
+ // Defined in this file:
+ 
+@@ -612,7 +616,7 @@ int MkView::LoopCmd() {
+           _error = TCL_OK;
+         else if (_error == TCL_ERROR) {
+           char msg[100];
+-          sprintf(msg, "\n  (\"mk::loop\" body line %d)", interp->errorLine);
++          sprintf(msg, "\n  (\"mk::loop\" body line %d)", Tcl_GetErrorLine(interp));
+           Tcl_AddObjErrorInfo(interp, msg,  - 1);
+         }
+         break;

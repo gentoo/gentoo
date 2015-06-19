@@ -1,0 +1,82 @@
+# ChangeLog for dev-ruby/dust
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/dust/ChangeLog,v 1.21 2015/02/01 12:04:49 graaff Exp $
+
+  01 Feb 2015; Hans de Graaff <graaff@gentoo.org> dust-0.1.7-r2.ebuild:
+  Add ruby22.
+
+  03 Nov 2014; Manuel Rüger <mrueg@gentoo.org> dust-0.1.7-r1.ebuild,
+  dust-0.1.7-r2.ebuild:
+  Drop jruby.
+
+  12 Jul 2014; Hans de Graaff <graaff@gentoo.org> dust-0.1.7-r1.ebuild,
+  dust-0.1.7-r2.ebuild:
+  Remove custom SRC_URI for obsolete rubyforge and simply retrieve the gem via
+  rubygems.
+
+*dust-0.1.7-r2 (02 Jun 2014)
+
+  02 Jun 2014; Hans de Graaff <graaff@gentoo.org> +dust-0.1.7-r2.ebuild:
+  Fix SRC_URI to point to our mirrors, bug 512132.
+
+  21 May 2014; Manuel Rüger <mrueg@gentoo.org> dust-0.1.7-r1.ebuild:
+  Remove ruby18 target.
+
+  12 Mar 2014; Manuel Rüger <mrueg@gentoo.org> -dust-0.1.7.ebuild:
+  Cleanup old.
+
+  09 Mar 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> dust-0.1.7-r1.ebuild:
+  x86 stable wrt bug #503552
+
+  07 Mar 2014; Pacho Ramos <pacho@gentoo.org> dust-0.1.7-r1.ebuild:
+  amd64 stable, bug #503552
+
+*dust-0.1.7-r1 (09 Oct 2013)
+
+  09 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +dust-0.1.7-r1.ebuild:
+  Add ruby20 target.
+
+  08 Jul 2013; Hans de Graaff <graaff@gentoo.org> -dust-0.1.6-r1.ebuild:
+  Cleanup.
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> dust-0.1.7.ebuild:
+  Stable for x86, wrt bug #475580
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> dust-0.1.7.ebuild:
+  Stable for amd64, wrt bug #475580
+
+  05 Aug 2012; Hans de Graaff <graaff@gentoo.org> -dust-0.1.6-r2.ebuild:
+  Cleanup.
+
+*dust-0.1.7 (26 Jul 2012)
+
+  26 Jul 2012; Hans de Graaff <graaff@gentoo.org> +dust-0.1.7.ebuild:
+  Version bump. Add ruby19.
+
+*dust-0.1.6-r2 (24 Dec 2011)
+
+  24 Dec 2011; Diego E. Pettenò <flameeyes@gentoo.org> +dust-0.1.6-r2.ebuild:
+  Revision bump: port to EAPI=4 and add ree18 support.
+
+  21 Jul 2010; Christian Faulhammer <fauli@gentoo.org> dust-0.1.6-r1.ebuild:
+  stable x86, bug 321217
+
+  29 Jun 2010; Christoph Mende <angelos@gentoo.org> dust-0.1.6-r1.ebuild:
+  Stable on amd64 wrt bug #321217
+
+  28 Feb 2010; Hans de Graaff <graaff@gentoo.org> -dust-0.1.6.ebuild:
+  Remove old version.
+
+*dust-0.1.6-r1 (12 Jan 2010)
+
+  12 Jan 2010; Hans de Graaff <graaff@gentoo.org> +dust-0.1.6-r1.ebuild:
+  Convert to ruby-fakegem.
+
+  13 Jun 2009; Hans de Graaff <graaff@gentoo.org> dust-0.1.6.ebuild:
+  Add ~x86 keyword.
+
+*dust-0.1.6 (25 Apr 2009)
+
+  25 Apr 2009; Diego E. Pettenò <flameeyes@gentoo.org> +metadata.xml,
+  +dust-0.1.6.ebuild:
+  Initial import of dev-ruby/dust (test dependency for sparklines).

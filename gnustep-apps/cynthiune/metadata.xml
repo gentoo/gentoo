@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gnustep</herd>
+<longdescription>
+Cynthiune (january 2004)
+=========
+
+What is Cynthiune?
+------------------
+Cynthiune is a free software and romantic music player for GNUstep and MacOSX.
+I wrote it originally as a christmas gift to a girl that I liked because she
+could not listen to music on her Mac with a free program. Since then, I decided
+to make it public and add even more features to make it a complete and useable
+media player.
+
+For the moment, it looks pretty much like XMMS, Winamp and similar software.
+Even though it has far less features than those, the essential components of a
+usable and user-friendly program are there in my opinion.
+
+From a programmatic point-of-view, I have decided to write a program that is
+released only when considered bug-free. The free software community lacks,
+IMnsHO, a sense of quality that makes its programs nearly useless to
+lambda users. Not only is it useless, but I think it also gives free software
+a bad reputation. The principle of freedom in "free software" is fundamental
+to me, but it has to be reachable not only by some sort of geeky elite. There
+is no point in telling users that since they have the freedom to enhance those
+programs, they must fix them if they want to use them. Releasing a program
+with too many bugs is of no use and is likely not to interest other fellow
+programmers in the community either.
+
+On the other hand, Apple has published an interesting program called "iTunes".
+Of course, it is not free software but it does implement interesting ideas
+that I would like to include in Cynthiune. For example: CD burning, complete
+playlist management, etc... Personally I find its user interface to be not as
+user-friendly as it could be. My plan is thus to take advantage of my own
+programming skills and sense of aesthetics (and ergonomy) to try to write
+something a little bit different, inspired both by XMMS/Winamp and iTunes.
+Cynthiune is thus currently very basic but its core design is starting to be
+extensible enough that it will not be too much trouble to enhance it.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,26 @@
+# ChangeLog for dev-python/scripttest
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/scripttest/ChangeLog,v 1.5 2015/03/08 23:58:41 pacho Exp $
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> scripttest-1.2-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> scripttest-1.2-r1.ebuild:
+  amd64 stable, bug 540290
+
+*scripttest-1.2-r1 (30 Dec 2014)
+
+  30 Dec 2014; Ian Delaney <idella4@gentoo.org> +scripttest-1.2-r1.ebuild,
+  -scripttest-1.1.1.ebuild, -scripttest-1.2.ebuild:
+  revbump; conversion -> distutils-r1, rm old
+
+*scripttest-1.2 (09 Mar 2012)
+
+  09 Mar 2012; Patrick Lauer <patrick@gentoo.org> +scripttest-1.2.ebuild:
+  Bump
+
+*scripttest-1.1.1 (03 Sep 2011)
+
+  03 Sep 2011; Dirkjan Ochtman <djc@gentoo.org> +scripttest-1.1.1.ebuild,
+  +metadata.xml:
+  Initial version 1.1.1 (for testing sqlalchemy-migrate).

@@ -1,0 +1,22 @@
+# ChangeLog for media-sound/gbsplay
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gbsplay/ChangeLog,v 1.4 2014/08/10 21:06:02 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> gbsplay-0.0.91-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*gbsplay-0.0.91-r1 (30 Jan 2014)
+
+  30 Jan 2014; Tom Wijsman <TomWij@gentoo.org> +gbsplay-0.0.91-r1.ebuild,
+  -gbsplay-0.0.91.ebuild:
+  [QA] Revision bump. EAPI 5. Add LINGUAS support to fix bug #403625, reported
+  by Piotr Szymaniak.
+
+  22 Dec 2008; Markus Meier <maekke@gentoo.org> gbsplay-0.0.91.ebuild:
+  add ~amd64, bug #251863
+
+*gbsplay-0.0.91 (20 Dec 2008)
+
+  20 Dec 2008; <ssuominen@gentoo.org> +gbsplay-0.0.91.ebuild:
+  Initial commit for bug 51115, thanks to Christian Garbs and Tobias
+  Diedrich.

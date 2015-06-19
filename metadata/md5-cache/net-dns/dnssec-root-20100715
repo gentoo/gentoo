@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=dev-libs/libxslt test? ( app-crypt/gnupg )
+DESCRIPTION=The DNSSEC root key(s)
+HOMEPAGE=https://www.iana.org/dnssec/
+IUSE=test
+KEYWORDS=amd64 x86
+LICENSE=public-domain
+SLOT=0
+SRC_URI=http://data.iana.org/root-anchors/root-anchors.xml http://data.iana.org/root-anchors/Kjqmt7v.csr test? ( http://data.iana.org/root-anchors/Kjqmt7v.crt http://data.iana.org/root-anchors/root-anchors.p7s http://data.iana.org/root-anchors/root-anchors.asc http://data.iana.org/root-anchors/icannbundle.pem http://data.iana.org/root-anchors/icann.pgp )
+_md5_=b9362dc64972f0e8141d33fcce890398

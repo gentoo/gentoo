@@ -1,0 +1,33 @@
+# ChangeLog for dev-util/lttng-ust
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/lttng-ust/ChangeLog,v 1.5 2015/05/15 13:14:09 blueness Exp $
+
+  15 May 2015; Anthony G. Basile <blueness@gentoo.org> lttng-ust-2.5.0.ebuild,
+  lttng-ust-2.5.1.ebuild, lttng-ust-2.6.0_rc2.ebuild:
+  Keyword ~arm, ~ppc and ~ppc64.  Bug #549516.
+
+*lttng-ust-2.6.0_rc2 (22 Nov 2014)
+*lttng-ust-2.5.1 (22 Nov 2014)
+
+  22 Nov 2014; Yixun Lan <dlan@gentoo.org> -lttng-ust-2.4.1.ebuild,
+  -lttng-ust-2.4.2.ebuild, +lttng-ust-2.5.1.ebuild,
+  +lttng-ust-2.6.0_rc2.ebuild:
+  bump new, drop old
+
+*lttng-ust-2.5.0 (31 Jul 2014)
+*lttng-ust-2.4.2 (31 Jul 2014)
+
+  31 Jul 2014; Yixun Lan <dlan@gentoo.org> -lttng-ust-2.4.0.ebuild,
+  +lttng-ust-2.4.2.ebuild, +lttng-ust-2.5.0.ebuild:
+  version bump, also drop old
+
+*lttng-ust-2.4.1 (16 May 2014)
+
+  16 May 2014; Yixun Lan <dlan@gentoo.org> +lttng-ust-2.4.1.ebuild:
+  version bump 2.4.1
+
+*lttng-ust-2.4.0 (04 Mar 2014)
+
+  04 Mar 2014; Yixun Lan <dlan@gentoo.org> +lttng-ust-2.4.0.ebuild,
+  +metadata.xml:
+  initial version added, 2.4.0

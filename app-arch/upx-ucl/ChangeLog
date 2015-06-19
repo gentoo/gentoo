@@ -1,0 +1,131 @@
+# ChangeLog for app-arch/upx-ucl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/upx-ucl/ChangeLog,v 1.30 2015/06/09 08:58:49 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  14 May 2015; Michael Sterrett <mr_bones_@gentoo.org> -upx-ucl-3.09.ebuild:
+  old
+
+*upx-ucl-3.91 (09 Jun 2014)
+
+  09 Jun 2014; Patrick Lauer <patrick@gentoo.org> +upx-ucl-3.91.ebuild:
+  Bump
+
+  22 Mar 2014; Michael Palimaka <kensington@gentoo.org> -upx-ucl-3.08.ebuild:
+  Remove old.
+
+  13 Mar 2013; Tom Wijsman <TomWij@gentoo.org> upx-ucl-3.09.ebuild:
+  Fixed minor repoman warning.
+
+*upx-ucl-3.09 (13 Mar 2013)
+
+  13 Mar 2013; Tom Wijsman <TomWij@gentoo.org> +upx-ucl-3.09.ebuild:
+  Non-maintainer commit, version bump to 3.09.
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -upx-ucl-3.07.ebuild:
+  Remove old
+
+*upx-ucl-3.08 (14 Mar 2012)
+
+  14 Mar 2012; Patrick Lauer <patrick@gentoo.org> +upx-ucl-3.08.ebuild,
+  -upx-ucl-3.04.ebuild:
+  Bump
+
+  06 Jan 2011; Mike Frysinger <vapier@gentoo.org> upx-ucl-3.07.ebuild:
+  Block newer upx-bin package and tweak DEPEND.
+
+*upx-ucl-3.07 (06 Jan 2011)
+
+  06 Jan 2011; Mike Frysinger <vapier@gentoo.org> +upx-ucl-3.07.ebuild:
+  Version bump #328061 by Marcin Mirosław.
+
+*upx-ucl-3.04 (20 Mar 2010)
+
+  20 Mar 2010; MATSUU Takuto <matsuu@gentoo.org> +upx-ucl-3.04.ebuild:
+  Version bumped, bug #309503.
+
+  25 Oct 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove drizzt from metadata.xml (#149111)
+
+  12 Oct 2009; Mark Loeser <halcy0n@gentoo.org> upx-ucl-1.25-r1.ebuild,
+  upx-ucl-2.02.ebuild, upx-ucl-2.03.ebuild, upx-ucl-3.00.ebuild,
+  upx-ucl-3.02.ebuild, upx-ucl-3.03.ebuild:
+  QA fixes; unquoted variables and useless dodoc LICENSE
+
+  02 Aug 2009; Víctor Ostorga <vostorga@gentoo.org>
+  +files/upx-ucl-glibc210.patch, upx-ucl-3.00.ebuild, upx-ucl-3.02.ebuild,
+  upx-ucl-3.03.ebuild:
+  Fixing build against glibc 2.10. Bug #279911
+
+  25 Feb 2009; Timothy Redaelli <drizzt@gentoo.org> upx-ucl-3.03.ebuild:
+  Add ~x86-fbsd keyword to upx-ucl (and deps)
+
+*upx-ucl-3.03 (08 Jul 2008)
+
+  08 Jul 2008; Timothy Redaelli <drizzt@gentoo.org> +upx-ucl-3.03.ebuild:
+  Version Bump wrt bug #222739
+
+  16 May 2008; Raúl Porcel <armin76@gentoo.org> upx-ucl-3.02.ebuild:
+  Fix building on sparc, thanks to Friedrich Oslage on bug #217983
+
+*upx-ucl-3.02 (07 May 2008)
+
+  07 May 2008; Timothy Redaelli <drizzt@gentoo.org> +upx-ucl-3.02.ebuild:
+  Version bump wrt bug #218472
+
+*upx-ucl-3.00 (21 Jun 2007)
+
+  21 Jun 2007; Timothy Redaelli <drizzt@gentoo.org> -upx-ucl-2.93.ebuild,
+  +upx-ucl-3.00.ebuild:
+  Version bump wrt bug #182706
+  Thanks to Tim Harder for reporting.
+
+*upx-ucl-2.93 (26 Apr 2007)
+
+  26 Apr 2007; Timothy Redaelli <drizzt@gentoo.org> -upx-ucl-2.91.ebuild,
+  +upx-ucl-2.93.ebuild:
+  New beta version with LZMA support.
+
+*upx-ucl-2.91 (01 Dec 2006)
+*upx-ucl-2.03 (01 Dec 2006)
+
+  01 Dec 2006; Timothy Redaelli <drizzt@gentoo.org> metadata.xml,
+  +upx-ucl-2.03.ebuild, +upx-ucl-2.91.ebuild:
+  Added myself as a maintainer.
+  Version bumped and added masked beta version.
+
+*upx-ucl-2.02 (08 Sep 2006)
+
+  08 Sep 2006; MATSUU Takuto <matsuu@gentoo.org> -upx-ucl-1.24.ebuild,
+  -upx-ucl-1.25.ebuild, +upx-ucl-2.02.ebuild:
+  Version bumped, bug 145049.
+  Removed old versions.
+
+  31 Jan 2006; <solar@gentoo.org> upx-ucl-1.25-r1.ebuild:
+  - get rid of compiler warning when using mcpu with newer gcc. no need to force
+  linking with mcheck when not using valgrind which fixes building with uclibc
+
+*upx-ucl-1.25-r1 (30 Jan 2006)
+
+  30 Jan 2006; <solar@gentoo.org> +metadata.xml,
+  +files/upx-ucl-1.25-pie.patch, +upx-ucl-1.25-r1.ebuild:
+  - add ET_DYN support for position independent executables
+
+*upx-ucl-1.25 (09 Jul 2004)
+
+  09 Jul 2004; MATSUU Takuto <matsuu@gentoo.org> +upx-ucl-1.25.ebuild:
+  Version bumped.
+
+  24 Mar 2004; Jason Wever <weeve@gentoo.org> upx-ucl-1.24.ebuild:
+  Added ~sparc keyword.
+
+  27 Nov 2003; Luca Barbato <lu_zero@gentoo.org> upx-ucl-1.24.ebuild:
+  Marked ~ppc
+
+*upx-ucl-1.24 (01 Nov 2003)
+
+  01 Nov 2003; Brandy Westcott brandy@gentoo.org upx-ucl-1.24.ebuild:
+  Initial import. Thanks to Daniel Black <dragonheart@tpg.com.au> for the
+  ebuild. Closes bug #31493.

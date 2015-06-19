@@ -1,0 +1,16 @@
+Index: csindex-19980713/Makefile
+===================================================================
+--- csindex-19980713.orig/Makefile
++++ csindex-19980713/Makefile
+@@ -1,9 +1,9 @@
+ DEFS=-DOS_SYSV
+ OBJS=csindex.o genind.o mkind.o qsort.o scanid.o scanst.o sortid.o
+-CFLAGS= -O2 $(DEFS)
++CFLAGS+= $(DEFS)
+ 
+ all: csindex
+ 
+ csindex: $(OBJS)
+-	$(CC) -o csindex $(DEFS) $(OBJS) -lm
++	$(CC) $(LDFLAGS) -o csindex $(DEFS) $(OBJS) -lm
+ 

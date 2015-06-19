@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/mogilefs-server/files/mogautomount-init.d-2.50,v 1.1 2011/06/16 08:39:15 robbat2 Exp $
+
+NAME="mogautomount"
+BINARY="/usr/bin/mogautomount"
+
+depend() {
+	use net
+	before mogstored
+}
+
+start() {
+	ebegin "Mounting MogileFS disks"
+	${BINARY} --chmod-mountpoints
+	eend $?
+}
+
+stop() {
+	:
+}
+
+# vim: ft=gentoo-init-d:

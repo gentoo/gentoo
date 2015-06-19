@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>openstack</herd>
+  <maintainer>
+    <email>prometheanfire@gentoo.org</email>
+    <name>Matthew Thode</name>
+  </maintainer>
+  <longdescription lang="en">
+    This is a client for the OpenStack Glance API.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">python-glanceclient</remote-id>
+    <remote-id type="github">openstack/python-glanceclient</remote-id>
+  </upstream>
+</pkgmetadata>

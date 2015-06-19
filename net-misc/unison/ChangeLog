@@ -1,0 +1,309 @@
+# ChangeLog for net-misc/unison
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/unison/ChangeLog,v 1.74 2015/04/07 21:08:33 dilfridge Exp $
+
+  07 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -unison-2.13.16-r1.ebuild:
+  Drop old EAPI=1 version
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> unison-2.13.16-r1.ebuild,
+  unison-2.27.157.ebuild, unison-2.32.52.ebuild, unison-2.40.102.ebuild,
+  unison-2.45.4.ebuild, unison-2.48.3.ebuild:
+  Update dependency after package move of eselect modules to app-eselect.
+
+*unison-2.48.3 (23 Feb 2015)
+
+  23 Feb 2015; Michał Górny <mgorny@gentoo.org> +unison-2.48.3.ebuild:
+  Version bump. https://github.com/gentoo/gentoo-portage-rsync-mirror/pull/48 by
+  damex.
+
+  17 Jan 2015; Benda Xu <heroxbd@gentoo.org> -unison-2.27.57-r1.ebuild,
+  -unison-2.40.65.ebuild:
+  Remove old ebuilds.  Update 2.40.102 tarball manifest, bug 536664, credits
+  Nicolas Porcel.
+
+*unison-2.40.102 (01 Apr 2013)
+
+  01 Apr 2013; Benda Xu <heroxbd@gentoo.org> +unison-2.40.102.ebuild,
+  unison-2.45.4.ebuild:
+  version bump for bug #445055. update to EAPI=5. keyword ~arm.
+
+  18 Jun 2012; Benda Xu <heroxbd@gentoo.org> unison-2.27.157.ebuild:
+  fix patch filename
+
+*unison-2.27.157 (18 Jun 2012)
+
+  18 Jun 2012; Benda Xu <heroxbd@gentoo.org> +unison-2.27.157.ebuild:
+  version bump to 2.27.157, wrt bug 417619. keyword ~amd64-linux
+
+*unison-2.45.4 (11 Jun 2012)
+
+  11 Jun 2012; Benda Xu <heroxbd@gentoo.org> +unison-2.45.4.ebuild:
+  bump to beta version of 2.45.4, bug 420679. Thanks to xmw
+
+*unison-2.40.65 (06 Jun 2012)
+
+  06 Jun 2012; Benda Xu <heroxbd@gentoo.org> +unison-2.40.65.ebuild:
+  bump closing bug 353282. Thanks to Thomas and all the people who commented and
+  pushed
+
+  05 Feb 2012; Raúl Porcel <armin76@gentoo.org> unison-2.13.16-r1.ebuild,
+  unison-2.27.57-r1.ebuild, unison-2.32.52.ebuild:
+  Drop sparc keywords
+
+  05 Aug 2010; Alexis Ballier <aballier@gentoo.org>
+  unison-2.13.16-r1.ebuild, unison-2.27.57-r1.ebuild, unison-2.32.52.ebuild,
+  +files/unison-mymap.patch:
+  import a patch from debian to fix build with ocaml 3.12, bug #331073
+
+  18 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  unison-2.32.52.ebuild:
+  add etags dependency for tests as described in bug 328493 by Olivier Huber
+  <oli DOT huber AT gmail DOT com>
+
+  07 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  unison-2.32.52.ebuild:
+  Transfer Prefix keywords
+
+*unison-2.32.52 (04 Dec 2009)
+
+  04 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +unison-2.32.52.ebuild:
+  Version bump.
+
+  28 Aug 2009; Petteri Räty <betelgeuse@gentoo.org>
+  unison-2.27.57-r1.ebuild:
+  Migrate to EAPI 2 in order to remove built_with_use usage.
+
+  04 Dec 2008; Jeremy Olexa <darkside@gentoo.org> unison-2.13.16-r1.ebuild,
+  unison-2.27.57-r1.ebuild:
+  s/gtk2-ssh-askpass/ssh-askpass-fullscreen/ due to a pkgmove
+
+  03 Jul 2008; Alexis Ballier <aballier@gentoo.org> -unison-2.13.16.ebuild:
+  remove unslotted version
+
+  30 Jun 2008; Raúl Porcel <armin76@gentoo.org> unison-2.27.57-r1.ebuild:
+  sparc stable wrt #229187
+
+  26 Jun 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  unison-2.27.57-r1.ebuild:
+  stable amd64, bug 229187
+
+  25 Jun 2008; nixnut <nixnut@gentoo.org> unison-2.27.57-r1.ebuild:
+  Stable on ppc wrt bug 229187
+
+  24 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  unison-2.27.57-r1.ebuild:
+  stable x86, bug 229187
+
+  24 Jun 2008; Alexis Ballier <aballier@gentoo.org>
+  unison-2.13.16-r1.ebuild, unison-2.27.57-r1.ebuild:
+  Add support for no-ocamlopt installs, bug #229129
+
+  16 Jun 2008; Alexis Ballier <aballier@gentoo.org> unison-2.13.16.ebuild:
+  quote variables and dont dodoc copying
+
+  16 Jun 2008; Alexis Ballier <aballier@gentoo.org>
+  -files/unison-2.12.0-gtk2-bug.patch, -files/unison-2.17.1-io-error.patch,
+  -files/ocaml-3.08-extnames.patch, -unison-2.12.0-r1.ebuild,
+  -unison-2.17.1-r1.ebuild, -unison-2.27.57.ebuild:
+  remove unused versions
+
+*unison-2.13.16-r1 (16 Jun 2008)
+
+  16 Jun 2008; Alexis Ballier <aballier@gentoo.org>
+  +unison-2.13.16-r1.ebuild:
+  slotted 2.13.16 for bug #183019
+
+  13 Jun 2008; Matti Bickel <mabi@gentoo.org> unison-2.27.57-r1.ebuild:
+  ~ppc added (bug #207746)
+
+  14 Apr 2008; Raúl Porcel <armin76@gentoo.org> unison-2.27.57-r1.ebuild:
+  Add ~sparc wrt #207746
+
+  10 Apr 2008; Markus Meier <maekke@gentoo.org> unison-2.27.57-r1.ebuild:
+  add ~x86, bug #207746
+
+*unison-2.27.57-r1 (07 Apr 2008)
+
+  07 Apr 2008; Alexis Ballier <aballier@gentoo.org>
+  +unison-2.27.57-r1.ebuild:
+  Revision bump for slotted version, mainly by Martin von Gagern
+  <Martin.vGagern@gmx.net> in bug #207746 and bug #183019
+
+*unison-2.27.57 (27 Jan 2008)
+
+  27 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/unison-2.27.57-as-needed.patch, +unison-2.27.57.ebuild:
+  Version bump, thanks to everyone in bug #183019, fix build with asneeded,
+  thanks to Santiago M. Mola, bug #189238
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  unison-2.13.16.ebuild, unison-2.17.1-r1.ebuild:
+  Drop virtual/x11 references.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  21 Dec 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  -unison-2.9.1-r1.ebuild:
+  gnome-1.x removal
+
+  15 Nov 2006; Steve Arnold <nerdboy@gentoo.org>
+  +files/unison-2.17.1-io-error.patch, unison-2.17.1-r1.ebuild:
+  Adding a patch for more robust io-handling (back-ported from the current
+  Trunk).  It fixes an I/O failure in unattended sync operations (eg, when
+  used in a cron job).  No telling when the next "official" upstream release
+  will occur...
+
+  12 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org> unison-2.13.16.ebuild:
+  Stable on sparc
+
+  04 Jul 2006; Matthieu Sozeau <mattam@gentoo.org> unison-2.13.16.ebuild,
+  unison-2.17.1-r1.ebuild:
+  Fix typo in font-schumarcher spec.
+
+  04 Jul 2006; Matthieu Sozeau <mattam@gentoo.org> unison-2.13.16.ebuild,
+  -unison-2.17.1.ebuild:
+  Fix latest stable version, removing old beta.
+
+*unison-2.17.1-r1 (04 Jul 2006)
+
+  04 Jul 2006; Matthieu Sozeau <mattam@gentoo.org> unison-2.17.1.ebuild,
+  +unison-2.17.1-r1.ebuild:
+  Adding fix for bug #115376, need a font installed with modular-x.
+
+*unison-2.12.0-r1 (21 Sep 2005)
+*unison-2.13.16 (21 Sep 2005)
+*unison-2.17.1 (21 Sep 2005)
+
+  21 Sep 2005; Matthieu Sozeau <mattam@gentoo.org> +unison-2.12.0-r1.ebuild,
+  -unison-2.12.0.ebuild, -unison-2.13.0.ebuild, +unison-2.13.16.ebuild,
+  +unison-2.17.1.ebuild:
+  Fix for deprecated gtk2 USE flag (bug #106560). Add latest stable and update
+  to latest unstable version.
+
+  01 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> unison-2.12.0.ebuild:
+  Stable on sparc
+
+  13 Aug 2005; Matthieu Sozeau <mattam@gentoo.org> unison-2.12.0.ebuild,
+  unison-2.13.0.ebuild:
+  Fixed wrong URL's.
+
+  02 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> unison-2.12.0.ebuild,
+  unison-2.13.0.ebuild:
+  Keyworded ~sparc
+
+  19 Jul 2005; Matthieu Sozeau <mattam@gentoo.org>
+  +files/ocaml-3.08-extnames.patch, +unison-2.9.1-r1.ebuild:
+  Resurrected old stable version.
+
+  13 Jul 2005; Matthieu Sozeau <mattam@gentoo.org>
+  +files/unison-2.12.0-gtk2-bug.patch, unison-2.12.0.ebuild:
+  Fix for gtk2 bug (#56070 on gnome's bugzilla). Already worked around in 2.13.0.
+  Fixes bug #98883.
+
+  13 Jul 2005; Matthieu Sozeau <mattam@gentoo.org> unison-2.12.0.ebuild,
+  unison-2.13.0.ebuild:
+  Make thread support configurable, minor fixes (doc flag, wrong cd).
+
+*unison-2.12.0 (12 Jul 2005)
+*unison-2.13.0 (12 Jul 2005)
+
+  12 Jul 2005; Matthieu Sozeau <mattam@gentoo.org>
+  -files/ocaml-3.08-extnames.patch, -unison-2.10.2.ebuild,
+  +unison-2.12.0.ebuild, -unison-2.12.2.ebuild, +unison-2.13.0.ebuild,
+  -unison-2.9.1-r1.ebuild:
+  Removed old versions and added latest stable and beta versions. Reworked docs
+  flag (now downloads prebuilt docs). Added static and debug use flags with
+  their usual sense. Now use THREADS=true by default, maybe not good on some
+  arches.
+
+  15 Mar 2005; Seemant Kulleen <seemant@gentoo.org> :
+  Dependency update: net-www/lynx -> www-client/lynx.
+
+  15 Mar 2005; Seemant Kulleen <seemant@gentoo.org> unison-2.12.2.ebuild:
+  Dependency update: net-www/lynx -> www-client/lynx.
+
+*unison-2.12.2 (14 Mar 2005)
+
+  14 Mar 2005; Matthieu Sozeau <mattam@gentoo.org> +unison-2.12.2.ebuild:
+  Add latest beta, thanks to Martin von Gagern <Martin.vGagern@gmx.net> for the
+  new ebuild. Fixes bug #84678.
+
+  18 Feb 2005; Matthieu Sozeau <mattam@gentoo.org> unison-2.10.2.ebuild,
+  unison-2.9.1-r1.ebuild:
+  Add ssh-askpass runtime dependencies (fixes bug #68298).
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  09 Oct 2004; Simon Stelling <blubb@gentoo.org> :
+  added ~amd64
+
+  30 Sep 2004; Tom Martin <slarti@gentoo.org> unison-2.10.2.ebuild:
+  Readded ~amd64 keyword, resolves bug 65926. Thanks to Neil Bothwick
+  <neil@digimed.co.uk> for reporting.
+
+*unison-2.10.2 (25 Sep 2004)
+
+  25 Sep 2004; Matthieu Sozeau <mattam@gentoo.org> +unison-2.10.2.ebuild,
+  -unison-2.9.1.ebuild:
+  New beta version of unison, with brand new lablgtk2 GUI. Thanks to Alan Shmitt
+  <alan.schmitt@polytechnique.org>, for the submission (bug #63107). Removed 
+  old, unused ebuild.
+  
+  19 Aug 2004; Stuart Herbert <stuart@gentoo.org> unison-2.9.1-r1.ebuild,
+  unison-2.9.1.ebuild:
+  Fixed broken SRC_URI settings, requested by tigger@gentoo.org
+  Removed macos KEYWORD; fails repoman checks (bad alexander ;-)
+
+*unison-2.9.1-r1 (09 Aug 2004)
+
+  09 Aug 2004; Matthieu Sozeau <mattam@gentoo.org>
+  +files/ocaml-3.08-extnames.patch, +unison-2.9.1-r1.ebuild, +metadata.xml:
+  Fix compilation bug with ocaml-3.08, thanks for Bardur Arantsson
+  <gentoo@scientician.net> for the patch (bug #59762). Stable on ppc.
+
+  26 Jul 2004; Alexander Plank <alexander@gentoo.org> unison-2.9.1.ebuild:
+  adding macos keyword (thanks Philippe Bouamriou who started bug #57918)
+
+  13 Jul 2004; Travis Tilley <lv@gentoo.org> unison-2.9.1.ebuild:
+  adding back ~amd64 keyword
+
+  14 Jun 2004; Aron Griffis <agriffis@gentoo.org> unison-2.9.1.ebuild:
+  Fix use invocation
+
+  08 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> unison-2.9.1.ebuild:
+  Stable on alpha.
+
+  28 May 2004; Danny van Dyk <kugelfang@gentoo.org> unison-2.9.1.ebuild:
+  Marked -amd64 as dependencies aren't fulfilled anymore.
+
+  13 May 2004; Travis Tilley <lv@gentoo.org> unison-2.9.1.ebuild:
+  added ~amd64 keyword
+
+  14 Apr 2004; <kloeri@gentoo.org> unison-2.9.1.ebuild:
+  Keyworded ~alpha.
+
+  22 Jan 2004; Matthieu Sozeau <mattam@gentoo.org> unison-2.9.1.ebuild:
+  Added ~ppc keyword, fix DEPEND & RDEPEND to avoid problems with (labl)gtk-2
+  packages.
+
+  26 Dec 2003; Jason Wever <weeve@gentoo.org> unison-2.9.1.ebuild:
+  Added sed-fu fix to unison to adjust it's Makefile.OCaml for the new tail
+  syntax.
+
+  23 Dec 2003; Markus Nigbur <pyrania@gentoo.org> unison-2.9.1.ebuild:
+  Fixed tarball and digest issues.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*unison-2.9.1 (17 Jul 2002)
+
+  17 July 2002; George Shapovalov <george@gentoo.org> unison-2.9.1.ebuild, files/digest-unison-2.9.1, ChangeLog :
+
+  Inital release,
+  Two-way cross-platform file synchronizer
+  
+  ebuild submitted by Bardur Arantsson <bardur-gta@odense.kollegienet.dk>

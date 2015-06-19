@@ -1,0 +1,25 @@
+From 37725ccec4d26148dde377d78c71046e8b6a6de9 Mon Sep 17 00:00:00 2001
+From: Davide Pesavento <pesa@gentoo.org>
+Date: Wed, 6 May 2015 22:44:57 +0200
+Subject: [PATCH] Teach syncqt how to handle the QtAssistant compat headers.
+
+See https://bugs.gentoo.org/show_bug.cgi?id=529398#c47
+---
+ bin/syncqt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/bin/syncqt b/bin/syncqt
+index dd94d4d..cc5a7bf 100755
+--- a/bin/syncqt
++++ b/bin/syncqt
+@@ -81,6 +81,7 @@ my %modules = ( # path to module name map
+         "ActiveQt" => "$basedir/src/activeqt",
+         "QtTest" => "$basedir/src/testlib",
+         "QtHelp" => "$basedir/tools/assistant/lib",
++        "QtAssistant" => "$basedir/tools/assistant/compat/lib",
+         "QtDesigner" => "$basedir/tools/designer/src/lib",
+         "QtUiTools" => "$basedir/tools/designer/src/uitools",
+         "QtDBus" => "$basedir/src/dbus",
+-- 
+2.4.0
+

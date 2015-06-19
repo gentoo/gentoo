@@ -1,0 +1,81 @@
+# ChangeLog for x11-plugins/wmmp
+# Copyright 2000-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmp/ChangeLog,v 1.22 2010/09/06 09:48:58 s4t4n Exp $
+
+  06 Sep 2010; Michele Noberasco <s4t4n@gentoo.org> wmmp-0.10.0-r1.ebuild:
+  Honour Gentoo LDFLAGS. Closes bug #335216.
+
+  11 Nov 2007; Raúl Porcel <armin76@gentoo.org> -wmmp-0.10.0.ebuild,
+  wmmp-0.10.0-r1.ebuild:
+  alpha/sparc stable wrt #198740, remove old
+
+  11 Nov 2007; Dawid Węgliński <cla@gentoo.org> wmmp-0.10.0-r1.ebuild:
+  Stable on x86 (bug #198740)
+
+  11 Nov 2007; Samuli Suominen <drac@gentoo.org> wmmp-0.10.0-r1.ebuild:
+  amd64 stable wrt #198740
+
+*wmmp-0.10.0-r1 (28 Jul 2007)
+
+  28 Jul 2007; Samuli Suominen <drac@gentoo.org> +wmmp-0.10.0-r1.ebuild:
+  Set default port to 6600, same as mpd is using and clean up ebuild. Bug
+  146594, thanks to James Rowe for reporting.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; wmmp-0.10.0.ebuild:
+  Drop virtual/x11 references.
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> wmmp-0.10.0.ebuild:
+  (QA) RESTRICT clean up.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  14 Dec 2006; Michael Sterrett <mr_bones_@gentoo.org> -wmmp-0.8.0.ebuild,
+  -wmmp-0.9.1.ebuild, -wmmp-0.9.2.ebuild:
+  clean out old, non-modX ebuilds
+
+  02 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> wmmp-0.10.0.ebuild:
+  Fix dependencies for modular Xorg, thanks to James Rowe in bug #146586.
+
+  07 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> wmmp-0.8.0.ebuild,
+  wmmp-0.9.1.ebuild, wmmp-0.9.2.ebuild, wmmp-0.10.0.ebuild:
+  Don't assume that ld is GNU ld. Removed src_compile as it falls back to
+  default. Don't install COPYING and INSTALL files.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> wmmp-0.10.0.ebuild:
+  Stable sparc.
+
+  12 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> wmmp-0.10.0.ebuild:
+  Stable on alpha.
+
+  14 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> wmmp-0.10.0.ebuild:
+  Stable x86.
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> wmmp-0.10.0.ebuild:
+  Marked stable on amd64.
+
+*wmmp-0.10.0 (14 Mar 2004)
+
+  14 Mar 2004; Martin Holzer <mholzer@gentoo.org> wmmp-0.10.0.ebuild:
+  Version bumped.
+
+  19 Nov 2003; Martin Holzer <mholzer@gentoo.org> wmmp-0.9.2.ebuild:
+  marked x86 stable. Closes #27002.
+
+*wmmp-0.9.2 (09 Oct 2003)
+
+  09 Oct 2003; Martin Holzer <mholzer@gentoo.org> wmmp-0.9.2.ebuild:
+  Version bumped.
+
+*wmmp-0.9.1 (08 Oct 2003)
+
+  08 Oct 2003; Martin Holzer <mholzer@gentoo.org> wmmp-0.9.1.ebuild:
+  Version bumped.
+
+*wmmp-0.8.0 (13 Aug 2003)
+
+  13 Aug 2003; Nick Hadaway <raker@gentoo.org> wmmp-0.8.0.ebuild:
+  New ebuild.  See bug #25159 for the original request.

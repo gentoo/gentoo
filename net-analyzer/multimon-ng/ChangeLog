@@ -1,0 +1,33 @@
+# ChangeLog for net-analyzer/multimon-ng
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/multimon-ng/ChangeLog,v 1.6 2014/04/16 15:01:06 zerochaos Exp $
+
+  16 Apr 2014; Rick Farina <zerochaos@gentoo.org> multimon-ng-1.0.0-r1.ebuild,
+  multimon-ng-9999.ebuild:
+  fixing bug 504344, no longer links to pulse accidently
+
+*multimon-ng-1.0.0-r1 (10 Mar 2014)
+
+  10 Mar 2014; Michael Palimaka <kensington@gentoo.org>
+  +multimon-ng-1.0.0-r1.ebuild, -multimon-ng-1.0.0.ebuild,
+  multimon-ng-9999.ebuild:
+  Pin Qt dependencies to SLOT 4.
+
+  16 Dec 2013; Rick Farina <zerochaos@gentoo.org> multimon-ng-1.0.0.ebuild,
+  multimon-ng-9999.ebuild:
+  fixing bug 493756, thanks to Florian Knodt for report
+
+  28 Jun 2013; Rick Farina <zerochaos@gentoo.org> multimon-ng-1.0.0.ebuild,
+  multimon-ng-9999.ebuild:
+  making pulseaudio optional thanks to chithead
+
+  28 Jun 2013; Rick Farina <zerochaos@gentoo.org> multimon-ng-1.0.0.ebuild,
+  multimon-ng-9999.ebuild:
+  fixing S for stable version
+
+*multimon-ng-1.0.0 (27 Jun 2013)
+*multimon-ng-9999 (27 Jun 2013)
+
+  27 Jun 2013; Rick Farina <zerochaos@gentoo.org> +metadata.xml,
+  +multimon-ng-1.0.0.ebuild, +multimon-ng-9999.ebuild:
+  initial commit of multimon-ng

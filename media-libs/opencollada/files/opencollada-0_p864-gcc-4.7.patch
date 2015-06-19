@@ -1,0 +1,26 @@
+--- common//libBuffer/include/CommonBuffer.h.ori	2012-04-28 15:45:37.621142222 +0200
++++ common//libBuffer/include/CommonBuffer.h	2012-04-28 15:45:28.740797826 +0200
+@@ -11,6 +11,12 @@
+ #ifndef __COMMON_BUFFER_H__
+ #define __COMMON_BUFFER_H__
+ 
++/* size_t for gcc, may want to move this include some place else - campbell */
++#ifdef __GNUC__
++#  include <cstdlib> /* size_t */
++#  include <cstring> /* memcpy */
++#endif
++
+ #include "CommonIBufferFlusher.h"
+ 
+ namespace Common
+--- COLLADAStreamWriter/include/COLLADASWAnnotation.h	2012-01-15 04:37:13.000000000 +0100
++++ COLLADAStreamWriter/include/COLLADASWAnnotation.h	2012-03-14 22:17:51.000000000 +0100
+@@ -219,7 +219,7 @@
+         void add ( 
+             const String &name, 
+             const ValueType::ColladaType &type, 
+-            const T val ) const
++            const T val )
+         {
+             openAnnotation ( name );
+             openValuesElement ( type );

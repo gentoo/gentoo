@@ -1,0 +1,11 @@
+--- main.c.orig	2013-01-01 19:45:32.389626661 +0400
++++ main.c	2013-01-01 19:45:50.524643637 +0400
+@@ -48,7 +48,7 @@
+     char *login, *passwd;
+ #else
+     char login[BFSZ+1], passwd[BFSZ+1];
+-    char *c, *strchr();
++    char *c;
+ #endif
+     int uid,i;
+     int status;

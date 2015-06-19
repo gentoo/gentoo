@@ -1,0 +1,15 @@
+# ChangeLog for dev-perl/Stream-Buffered
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Stream-Buffered/ChangeLog,v 1.2 2014/08/26 15:40:18 axs Exp $
+
+*Stream-Buffered-0.20.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Stream-Buffered-0.20.0-r1.ebuild, -Stream-Buffered-0.20.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+*Stream-Buffered-0.20.0 (04 Nov 2012)
+
+  04 Nov 2012; Torsten Veller <tove@gentoo.org> +Stream-Buffered-0.20.0.ebuild,
+  +metadata.xml:
+  Split from Plack

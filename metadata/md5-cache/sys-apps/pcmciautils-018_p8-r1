@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare setup
+DEPEND=virtual/modutils virtual/yacc sys-devel/flex virtual/pkgconfig
+DESCRIPTION=PCMCIA userspace utilities for Linux
+EAPI=5
+HOMEPAGE=http://packages.qa.debian.org/pcmciautils
+IUSE=debug staticsocket
+KEYWORDS=~amd64 ~arm ~ppc ~sh ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/modutils
+SLOT=0
+SRC_URI=mirror://debian/pool/main/p/pcmciautils/pcmciautils_018.orig.tar.gz mirror://debian/pool/main/p/pcmciautils/pcmciautils_018-8.debian.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=7dd796c1d81dcd0ac0808d94a5208156

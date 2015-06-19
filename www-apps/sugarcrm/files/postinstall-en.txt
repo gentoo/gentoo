@@ -1,0 +1,6 @@
+Point your browser to http:///
+to complete the install. Use web installer.
+
+Please change the permission for ".htaccess" and "config.php" to
+world writable, before doing the setup. After the setup you can
+change the permission back to 640.

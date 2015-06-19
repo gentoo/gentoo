@@ -1,0 +1,13 @@
+diff --git a/drivers/Makefile.am b/drivers/Makefile.am
+index 99614ca..42b3611 100644
+--- a/drivers/Makefile.am
++++ b/drivers/Makefile.am
+@@ -267,5 +267,6 @@ dist_noinst_HEADERS = apc-mib.h apc-hid.h baytech-mib.h bcmxcp.h    \
+
+ # Define a dummy library so that Automake builds rules for the
+ # corresponding object files.  This library is not actually built,
+-EXTRA_LIBRARIES = libdummy.a
+-libdummy_a_SOURCES = main.c dstate.c serial.c
++EXTRA_LIBRARIES =
++#EXTRA_LIBRARIES = libdummy.a
++#libdummy_a_SOURCES = main.c dstate.c serial.c

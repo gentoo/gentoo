@@ -1,0 +1,101 @@
+--- makefile.orig	2007-07-26 19:33:54.000000000 +0200
++++ makefile	2007-10-05 22:54:31.000000000 +0200
+@@ -10,66 +10,66 @@
+ ZLIB = $(O)/adler32.o $(O)/compress.o $(O)/crc32.o $(O)/deflate.o $(O)/gzio.o $(O)/infback.o $(O)/inffast.o $(O)/inflate.o $(O)/inftrees.o $(O)/trees.o $(O)/uncompr.o $(O)/zutil.o
+ #
+ $(EXENAME): $(LF) $(ZLIB)
+-	$(CC) $(LF) $(ZLIB) -o $@
++	$(CC) $(LDFLAGS) $(LF) $(ZLIB) -o $@
+ $(O)/main.o: main.cpp
+-	$(CC) -c main.cpp -o $*.o
++	$(CC) $(CXXFLAGS) -c main.cpp -o $*.o
+ $(O)/pdfFile.o: pdfFile.cpp
+-	$(CC) -c pdfFile.cpp -o $*.o
++	$(CC) $(CXXFLAGS) -c pdfFile.cpp -o $*.o
+ $(O)/pdfObject.o: pdfObject.cpp
+-	$(CC) -c pdfObject.cpp -o $*.o
++	$(CC) $(CXXFLAGS) -c pdfObject.cpp -o $*.o
+ $(O)/pdfEncrypt.o: pdfEncrypt.cpp
+-	$(CC) -c pdfEncrypt.cpp -o $*.o
++	$(CC) $(CXXFLAGS) -c pdfEncrypt.cpp -o $*.o
+ $(O)/pdfNames.o: pdfNames.cpp
+-	$(CC) -c pdfNames.cpp -o $*.o
++	$(CC) $(CXXFLAGS) -c pdfNames.cpp -o $*.o
+ $(O)/pdfFileOutline.o: pdfFileOutline.cpp
+-	$(CC) -c pdfFileOutline.cpp -o $*.o
++	$(CC) $(CXXFLAGS) -c pdfFileOutline.cpp -o $*.o
+ $(O)/pdfXrefTable.o: pdfXrefTable.cpp
+-	$(CC) -c pdfXrefTable.cpp -o $*.o
++	$(CC) $(CXXFLAGS) -c pdfXrefTable.cpp -o $*.o
+ $(O)/string.o: string.cpp
+-	$(CC) -c string.cpp -o $*.o
++	$(CC) $(CXXFLAGS) -c string.cpp -o $*.o
+ $(O)/pdfString.o: pdfString.cpp
+-	$(CC) -c pdfString.cpp -o $*.o
++	$(CC) $(CXXFLAGS) -c pdfString.cpp -o $*.o
+ $(O)/rc4.o: rc4.cpp
+-	$(CC) -c rc4.cpp -o $*.o
++	$(CC) $(CXXFLAGS) -c rc4.cpp -o $*.o
+ $(O)/md5.o: md5.c
+-	$(CC) -c md5.c -o $*.o
++	$(CC) $(CXXFLAGS) -c md5.c -o $*.o
+ $(O)/listeFichiers_linux.o: listeFichiers_linux.cpp
+-	$(CC) -c listeFichiers_linux.cpp -o $*.o
++	$(CC) $(CXXFLAGS) -c listeFichiers_linux.cpp -o $*.o
+ $(O)/diversPdf.o: diversPdf.cpp
+-	$(CC) -c diversPdf.cpp -o $*.o
++	$(CC) $(CXXFLAGS) -c diversPdf.cpp -o $*.o
+ $(O)/strMatcher.o: strMatcher.cpp
+-	$(CC)  -c strMatcher.cpp -o $*.o
++	$(CC) $(CXXFLAGS) -c strMatcher.cpp -o $*.o
+ $(O)/pcre.o: pcre.c
+-	$(CC) -c pcre.c -o $*.o
++	$(CC) $(CXXFLAGS) -c pcre.c -o $*.o
+ $(O)/study.o: study.c
+-	$(CC) -c study.c -o $*.o
++	$(CC) $(CXXFLAGS) -c study.c -o $*.o
+ $(O)/get.o: get.c
+-	$(CC) -c get.c -o $*.o
++	$(CC) $(CXXFLAGS) -c get.c -o $*.o
+ $(O)/maketables.o: maketables.c
+-	$(CC) -c maketables.c -o $*.o
++	$(CC) $(CXXFLAGS) -c maketables.c -o $*.o
+ $(O)/calc.o: calc.cpp
+-	$(CC) -c calc.cpp -o $*.o
++	$(CC) $(CXXFLAGS) -c calc.cpp -o $*.o
+ $(O)/adler32.o: adler32.c zlib.h zconf.h
+-	$(CC) -c adler32.c -o $*.o
++	$(CC) $(CXXFLAGS) -c adler32.c -o $*.o
+ $(O)/compress.o: compress.c zlib.h zconf.h
+-	$(CC) -c compress.c -o $*.o
++	$(CC) $(CXXFLAGS) -c compress.c -o $*.o
+ $(O)/crc32.o: crc32.c zlib.h zconf.h crc32.h
+-	$(CC) -c crc32.c -o $*.o
++	$(CC) $(CXXFLAGS) -c crc32.c -o $*.o
+ $(O)/deflate.o: deflate.c deflate.h zutil.h zlib.h zconf.h
+-	$(CC) -c deflate.c -o $*.o
++	$(CC) $(CXXFLAGS) -c deflate.c -o $*.o
+ $(O)/gzio.o: gzio.c zutil.h zlib.h zconf.h
+-	$(CC) -c gzio.c -o $*.o
++	$(CC) $(CXXFLAGS) -c gzio.c -o $*.o
+ $(O)/infback.o: infback.c zutil.h zlib.h zconf.h inftrees.h inflate.h inffast.h inffixed.h
+-	$(CC) -c infback.c -o $*.o
++	$(CC) $(CXXFLAGS) -c infback.c -o $*.o
+ $(O)/inffast.o: inffast.c zutil.h zlib.h zconf.h inftrees.h inflate.h inffast.h
+-	$(CC) -c inffast.c -o $*.o
++	$(CC) $(CXXFLAGS) -c inffast.c -o $*.o
+ $(O)/inflate.o: inflate.c zutil.h zlib.h zconf.h inftrees.h inflate.h inffast.h inffixed.h
+-	$(CC) -c inflate.c -o $*.o
++	$(CC) $(CXXFLAGS) -c inflate.c -o $*.o
+ $(O)/inftrees.o: inftrees.c zutil.h zlib.h zconf.h inftrees.h
+-	$(CC) -c inftrees.c -o $*.o
++	$(CC) $(CXXFLAGS) -c inftrees.c -o $*.o
+ $(O)/trees.o: trees.c zutil.h zlib.h zconf.h deflate.h trees.h
+-	$(CC) -c trees.c -o $*.o
++	$(CC) $(CXXFLAGS) -c trees.c -o $*.o
+ $(O)/uncompr.o: uncompr.c zlib.h zconf.h
+-	$(CC) -c uncompr.c -o $*.o
++	$(CC) $(CXXFLAGS) -c uncompr.c -o $*.o
+ $(O)/zutil.o: zutil.c zutil.h zlib.h zconf.h
+-	$(CC) -c zutil.c -o $*.o
++	$(CC) $(CXXFLAGS) -c zutil.c -o $*.o

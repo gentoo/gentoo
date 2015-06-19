@@ -1,0 +1,58 @@
+# ChangeLog for app-misc/pip
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/pip/ChangeLog,v 1.17 2014/11/26 00:06:08 dilfridge Exp $
+
+  26 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org> pip-1.2-r2.ebuild:
+  Remove call to perl-module_pkg_postinst
+
+*pip-1.2-r2 (02 Nov 2014)
+
+  02 Nov 2014; Mikle Kolyada <zlogene@gentoo.org> +pip-1.2-r2.ebuild,
+  -pip-1.2-r1.ebuild:
+  Revision bump EAPI=5
+
+  03 Dec 2012;  <ago@gentoo.org> -pip-1.2.ebuild:
+  Remove old
+
+  03 Dec 2012;  <ago@gentoo.org> pip-1.2-r1.ebuild:
+  Stable for x86, wrt bug #373783
+
+  03 Dec 2012; Agostino Sarubbo <ago@gentoo.org> pip-1.2-r1.ebuild:
+  Stable for ppc, wrt bug #373783
+
+  02 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> pip-1.2-r1.ebuild:
+  Stable on amd64, wrt bug #373783
+
+*pip-1.2-r1 (31 Oct 2012)
+
+  31 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> +pip-1.2-r1.ebuild:
+  Revision bump: fix for bug #373783, bump to EAPI 4
+
+  05 Jan 2011; Justin Lecher <jlec@gentoo.org> pip-1.2.ebuild:
+  Some Clean up
+
+  04 Jan 2010; <hwoarang@gentoo.org> pip-1.2.ebuild:
+  Keyworded for amd64 wrt bug #299336
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  28 Nov 2005; <mcumming@gentoo.org> pip-1.2.ebuild:
+  Switched from perl-module to perl-app eclass
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> pip-1.2.ebuild:
+  Stable on ppc.
+
+  29 Nov 2004; Aaron Walker <ka0ttic@gentoo.org> pip-1.2.ebuild:
+  Marked stable on x86.
+
+  21 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml:
+  Add metadata (shell-tools)
+
+*pip-1.2 (03 Sep 2004)
+
+  03 Sep 2004; David Holm <dholm@gentoo.org> pip-1.2.ebuild:
+  Added to ~ppc.
+
+  28 Aug 2004; Tavis Ormandy <taviso@gentoo.org> :
+  inital import

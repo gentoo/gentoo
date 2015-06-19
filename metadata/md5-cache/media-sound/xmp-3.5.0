@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=alsa? ( media-libs/alsa-lib ) audacious? ( media-sound/audacious ) nas? ( media-libs/nas ) pulseaudio? ( media-sound/pulseaudio ) virtual/pkgconfig oss? ( virtual/os-headers )
+DESCRIPTION=Extended Module Player
+EAPI=4
+HOMEPAGE=http://xmp.sourceforge.net/
+IUSE=alsa audacious nas oss pulseaudio
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=alsa? ( media-libs/alsa-lib ) audacious? ( media-sound/audacious ) nas? ( media-libs/nas ) pulseaudio? ( media-sound/pulseaudio )
+SLOT=0
+SRC_URI=mirror://sourceforge/xmp/xmp-3.5.0.tar.gz
+_md5_=f15340ac99a5c57bc2aded372f7b1d42

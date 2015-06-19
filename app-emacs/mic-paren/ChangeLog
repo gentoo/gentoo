@@ -1,0 +1,48 @@
+# ChangeLog for app-emacs/mic-paren
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/mic-paren/ChangeLog,v 1.11 2014/02/10 20:21:21 ulm Exp $
+
+  10 Feb 2014; Ulrich Müller <ulm@gentoo.org> -mic-paren-3.8.ebuild:
+  Remove old.
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> mic-paren-3.11.ebuild:
+  Stable for x86, wrt bug #490108
+
+  27 Nov 2013; Chema Alonso <nimiux@gentoo.org> mic-paren-3.11.ebuild:
+  Stable for amd64 wrt bug #490108
+
+*mic-paren-3.11 (23 Sep 2013)
+
+  23 Sep 2013; Ulrich Müller <ulm@gentoo.org> mic-paren-3.8.ebuild,
+  +mic-paren-3.11.ebuild:
+  Version bump. Specify LICENSE more precisely.
+
+  29 Jan 2009; Christian Faulhammer <fauli@gentoo.org>
+  -mic-paren-3.7.ebuild:
+  clean up
+
+  14 Jun 2008; Ulrich Mueller <ulm@gentoo.org> mic-paren-3.7.ebuild,
+  mic-paren-3.8.ebuild:
+  Do not assign SIMPLE_ELISP since elisp.eclass now detects this case
+  automatically.
+
+  05 Jun 2008; Christian Faulhammer <opfer@gentoo.org> mic-paren-3.8.ebuild:
+  stable x86/amd64, bug 224851
+
+*mic-paren-3.8 (30 Apr 2008)
+
+  30 Apr 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml,
+  +mic-paren-3.8.ebuild:
+  Version bump. LICENSE is GPL-3 now.
+
+  22 Nov 2007; Christian Faulhammer <opfer@gentoo.org> mic-paren-3.7.ebuild:
+  stable x86/amd64
+
+  14 Oct 2007; Ulrich Mueller <ulm@gentoo.org> mic-paren-3.7.ebuild:
+  Keyworded ~amd64 wrt #195512.
+
+*mic-paren-3.7 (23 Sep 2007)
+
+  23 Sep 2007; Ulrich Mueller <ulm@gentoo.org> +files/50mic-paren-gentoo.el,
+  +metadata.xml, +mic-paren-3.7.ebuild:
+  Initial import. Ebuild contributed my me.

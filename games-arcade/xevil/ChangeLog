@@ -1,0 +1,57 @@
+# ChangeLog for games-arcade/xevil
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/xevil/ChangeLog,v 1.16 2015/03/29 16:57:26 mr_bones_ Exp $
+
+  29 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> xevil-2.02_p2-r1.ebuild:
+  EAPI=5
+
+  18 Oct 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  xevil-2.02_p2-r1.ebuild:
+  honor CXX; tidy
+
+  18 Oct 2010; Tupone Alfredo <tupone@gentoo.org> xevil-2.02_p2-r1.ebuild:
+  Respect LDFLAGS. Bug #331897 by flameeyes@gentoo.org
+
+  04 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  xevil-2.02_p2-r1.ebuild, +files/xevil-2.02_p2-glibc-2.10.patch:
+  Fix building with GLIBC 2.10+ wrt #273557 by Arttu Valo.
+
+  06 Jan 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  xevil-2.02_p2-r1.ebuild:
+  use newer debian patch (bug #204478)
+
+*xevil-2.02_p2-r1 (15 Oct 2006)
+
+  15 Oct 2006; <tupone@gentoo.org> +files/xevil-2.02_p2-memErr.patch,
+  -xevil-2.02_p2.ebuild, +xevil-2.02_p2-r1.ebuild:
+  Fixing crash after gcc-4 update. Bug #149004 by Denilson
+
+  23 Jun 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/xevil-2.02_p2-gcc41.patch, xevil-2.02_p2.ebuild:
+  add patch from Tristan Heaven via bug #137673 to avoid prestripping binary and
+  tidy ebuild; bump to latest debian patch
+
+  27 Apr 2006; <Tupone@gentoo.org> +files/xevil-2.02_p2-gcc41.patch,
+  xevil-2.02_p2.ebuild:
+  Fixing compilation on gcc-4.1
+
+  28 Jan 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  xevil-2.02_p2.ebuild:
+  Add modular X dependencies.
+
+  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> xevil-2.02_p2.ebuild:
+  Making games last on inherit line.
+
+  29 Dec 2004; Joseph Jezak <josejx@gentoo.org> xevil-2.02_p2.ebuild:
+  Marked ppc stable.
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> xevil-2.02_p2.ebuild:
+  Added ~ppc.
+
+*xevil-2.02_p2 (25 Jul 2003)
+
+  29 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added debian patch to fix #34390.
+
+  25 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

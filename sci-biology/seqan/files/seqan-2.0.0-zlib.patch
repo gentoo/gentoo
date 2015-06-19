@@ -1,0 +1,15 @@
+ include/seqan/stream/zipstream/zutil.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/seqan/stream/zipstream/zutil.h b/include/seqan/stream/zipstream/zutil.h
+index 2806344..f8b41e6 100644
+--- a/include/seqan/stream/zipstream/zutil.h
++++ b/include/seqan/stream/zipstream/zutil.h
+@@ -152,6 +152,7 @@ extern const char *z_errmsg[10]; /* indexed by 2-zlib_error */
+ 
+          /* functions */
+ 
++#define OF(x) x
+ #ifdef HAVE_STRERROR
+    extern char *strerror OF((int));
+ #  define zstrerror(errnum) strerror(errnum)

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>haskell</herd>
+  <maintainer>
+    <email>haskell@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>flo@geekplace.eu</email>
+    <description>Maintainer, CC him on bugs</description>
+  </maintainer>
+  <longdescription>
+	xmonad-log-applet is for Xmonad users who find the GNOME, MATE, or Xfce panel useful. The applet will show the active workspaces, the title of the selected window or whatever information you send it from your xmonad.hs.
+</longdescription>
+  <upstream>
+    <remote-id type="github">alexkay/xmonad-log-applet</remote-id>
+  </upstream>
+</pkgmetadata>

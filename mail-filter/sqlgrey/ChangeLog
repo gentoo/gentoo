@@ -1,0 +1,74 @@
+# ChangeLog for mail-filter/sqlgrey
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/sqlgrey/ChangeLog,v 1.18 2015/04/23 23:16:16 mrueg Exp $
+
+  23 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -sqlgrey-1.7.6.ebuild:
+  Remove old.
+
+  20 Jul 2014; Pacho Ramos <pacho@gentoo.org> sqlgrey-1.7.6-r1.ebuild:
+  amd64/x86 stable, bug #509376
+
+*sqlgrey-1.7.6-r1 (30 Mar 2014)
+
+  30 Mar 2014; Pacho Ramos <pacho@gentoo.org> +files/sqlgrey.service,
+  +sqlgrey-1.7.6-r1.ebuild:
+  Add unit file (#504152 by Michael Hampicke)
+
+  05 Jun 2012; Zac Medico <zmedico@gentoo.org> sqlgrey-1.7.6.ebuild:
+  inherit user for enewgroup and enewuser
+
+  21 Jun 2011; Eray Aslan <eras@gentoo.org> sqlgrey-1.7.6.ebuild:
+  Fix conditional USE dependency - bug #168179
+
+  17 Oct 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  -sqlgrey-1.6.7.ebuild, -sqlgrey-1.7.4.ebuild:
+  Cleanup
+
+  20 Sep 2009; Markus Meier <maekke@gentoo.org> sqlgrey-1.7.6.ebuild:
+  amd64/x86 stable, bug #283386
+
+  19 Sep 2009; Torsten Veller <tove@gentoo.org> sqlgrey-1.7.6.ebuild:
+  Remove the dev-perl/IO-Multiplex check from pkg_setup because
+  dev-perl/net-server now depends on dev-perl/IO-Multplex.
+
+  15 Jul 2008; Friedrich Oslage <bluebird@gentoo.org> sqlgrey-1.7.6.ebuild:
+  Add ~sparc keyword, requested by agaffney
+
+*sqlgrey-1.7.6 (14 Jun 2008)
+
+  14 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  +files/sqlgrey-1.7.6-init.patch, +sqlgrey-1.7.6.ebuild:
+  Version bump (#169734), keepdir on /var/spool/sqlgrey (#161300), fix
+  initskript (#174505)
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove vivo from metadata.xml due to retirement.
+
+  15 Feb 2007; Daniel Black <dragonheart@gentoo.org> sqlgrey-1.6.7.ebuild,
+  sqlgrey-1.7.4.ebuild:
+  no more prep all as per bug #140699
+
+  30 Jan 2007; Andrej Kacian <ticho@gentoo.org> sqlgrey-1.6.7.ebuild,
+  sqlgrey-1.7.4.ebuild:
+  Added missing dep on dev-perl/Date-Calc. Bug #160262, reported by
+  Killerwhile <perroud at omne.ch>.
+
+  08 Nov 2006; Christian Faulhammer <opfer@gentoo.org> sqlgrey-1.7.4.ebuild:
+  stable x86, bug #152594
+
+  08 Nov 2006; Daniel Gryniewicz <dang@gentoo.org> sqlgrey-1.7.4.ebuild:
+  Marked stable on amd64 for bug #152594
+
+  23 Oct 2006; <vivo@gentoo.org> sqlgrey-1.6.7.ebuild, sqlgrey-1.7.4.ebuild:
+  Added warning to use "latin1" in MySQL as default charset
+
+  22 Oct 2006; Francesco Riosa <vivo@gentoo.org> sqlgrey-1.6.7.ebuild,
+  sqlgrey-1.7.4.ebuild:
+  Added DEPEND to virtual/mailx it need mail program to reach admin
+
+  04 Oct 2006; Francesco Riosa <vivo@gentoo.org> ChangeLog:
+  Initial import.  Ebuild submitted by Lionel Bouton <lionel-dev AT bouton.name>
+  to bug#71535.
+  The ebuild is good quality and already support "emerge --config" so it has
+  only cosmetic changes to the submitted one.
+  Thanks Lionel :-)

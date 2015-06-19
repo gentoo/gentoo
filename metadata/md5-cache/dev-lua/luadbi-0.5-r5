@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=dev-lang/lua-5.1 mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) sqlite? ( >=dev-db/sqlite-3 ) virtual/pkgconfig
+DESCRIPTION=DBI module for Lua
+EAPI=5
+HOMEPAGE=http://code.google.com/p/luadbi/
+IUSE=mysql postgres +sqlite
+KEYWORDS=amd64 ~arm x86
+LICENSE=MIT
+RDEPEND=>=dev-lang/lua-5.1 mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) sqlite? ( >=dev-db/sqlite-3 )
+REQUIRED_USE=|| ( mysql postgres sqlite )
+SLOT=0
+SRC_URI=http://luadbi.googlecode.com/files/luadbi.0.5.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b699c157681b8695b07f0c41e5cd4522

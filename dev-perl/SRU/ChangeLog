@@ -1,0 +1,45 @@
+# ChangeLog for dev-perl/SRU
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/SRU/ChangeLog,v 1.10 2014/10/06 11:50:29 zlogene Exp $
+
+  06 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> -SRU-0.990.0.ebuild:
+  Drop old.
+
+*SRU-1.0.0 (25 Jan 2013)
+
+  25 Jan 2013; Torsten Veller <tove@gentoo.org> +SRU-1.0.0.ebuild:
+  Version bump
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop duplication of myself as a maintainer where there is a herd.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -SRU-0.99.ebuild:
+  Cleanup
+
+*SRU-0.990.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org> +SRU-0.990.0.ebuild:
+  Change version scheme
+
+  24 Dec 2009; Torsten Veller <tove@gentoo.org> -SRU-0.97.ebuild,
+  -SRU-0.98.ebuild:
+  Cleanup
+
+*SRU-0.99 (10 Dec 2009)
+
+  10 Dec 2009; Torsten Veller <tove@gentoo.org> +SRU-0.99.ebuild:
+  Version bump
+
+*SRU-0.98 (22 Nov 2009)
+
+  22 Nov 2009; Robin H. Johnson <robbat2@gentoo.org> +SRU-0.98.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*SRU-0.97 (23 Dec 2008)
+
+  23 Dec 2008; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +SRU-0.97.ebuild:
+  Initial commit. Dep for EverGreen ILS.

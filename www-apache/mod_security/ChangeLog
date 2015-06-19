@@ -1,0 +1,671 @@
+# ChangeLog for www-apache/mod_security
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_security/ChangeLog,v 1.115 2014/10/03 18:15:58 flameeyes Exp $
+
+*mod_security-2.7.7 (03 Oct 2014)
+
+  03 Oct 2014; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.7.7.ebuild:
+  Version bump.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> mod_security-2.7.4.ebuild,
+  mod_security-2.7.5.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*mod_security-2.7.5 (01 Aug 2013)
+
+  01 Aug 2013; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.7.5.ebuild, -mod_security-2.7.3.ebuild:
+  Version bump; remove old.
+
+  09 Jun 2013; Agostino Sarubbo <ago@gentoo.org> mod_security-2.7.4.ebuild:
+  Stable for ppc, wrt bug #471690
+
+  09 Jun 2013; Agostino Sarubbo <ago@gentoo.org> mod_security-2.7.4.ebuild:
+  Stable for sparc, wrt bug #471690
+
+  04 Jun 2013; Agostino Sarubbo <ago@gentoo.org> mod_security-2.7.4.ebuild:
+  Stable for amd64, wrt bug #471690
+
+  04 Jun 2013; Agostino Sarubbo <ago@gentoo.org> mod_security-2.7.4.ebuild:
+  Stable for x86, wrt bug #471690
+
+*mod_security-2.7.4 (29 May 2013)
+
+  29 May 2013; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.7.4.ebuild, -mod_security-2.7.2.ebuild:
+  Version bump; remove old.
+
+  13 Apr 2013; Agostino Sarubbo <ago@gentoo.org> mod_security-2.7.3.ebuild:
+  Stable for sparc, wrt bug #464188
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> mod_security-2.7.3.ebuild:
+  Stable for x86, wrt bug #464188
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> mod_security-2.7.3.ebuild:
+  Stable for ppc, wrt bug #464188
+
+  03 Apr 2013; Agostino Sarubbo <ago@gentoo.org> mod_security-2.7.3.ebuild:
+  Stable for amd64, wrt bug #464188
+
+*mod_security-2.7.3 (29 Mar 2013)
+
+  29 Mar 2013; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.7.3.ebuild, -mod_security-2.7.1.ebuild:
+  Version bump.
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org> mod_security-2.7.2.ebuild:
+  Stable for sparc, wrt bug #457864
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> mod_security-2.7.2.ebuild:
+  Stable for ppc, wrt bug #457864
+
+  17 Feb 2013; Agostino Sarubbo <ago@gentoo.org> mod_security-2.7.2.ebuild:
+  Stable for x86, wrt bug #457864
+
+  17 Feb 2013; Agostino Sarubbo <ago@gentoo.org> mod_security-2.7.2.ebuild:
+  Stable for amd64, wrt bug #457864
+
+  16 Feb 2013; Diego E. Pettenò <flameeyes@gentoo.org>
+  -mod_security-2.7.0.ebuild:
+  Remove old.
+
+  12 Feb 2013; Agostino Sarubbo <ago@gentoo.org> mod_security-2.7.1.ebuild:
+  Stable for sparc, wrt bug #453850
+
+  10 Feb 2013; Agostino Sarubbo <ago@gentoo.org> mod_security-2.7.1.ebuild:
+  Stable for ppc, wrt bug #453850
+
+  03 Feb 2013; Jeff Horelick <jdhore@gentoo.org> mod_security-2.7.1.ebuild:
+  x86 stable wrt bug #453850
+
+  28 Jan 2013; Chema Alonso <nimiux@gentoo.org> mod_security-2.7.1.ebuild:
+  Marked stable for amd64 wrt bug #453850
+
+*mod_security-2.7.2 (25 Jan 2013)
+
+  25 Jan 2013; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.7.2.ebuild:
+  Version bump.
+
+  24 Jan 2013; Diego E. Pettenò <flameeyes@gentoo.org> -files/modsecurity.conf,
+  -mod_security-2.6.6.ebuild, mod_security-2.7.1.ebuild:
+  Remove old version. Fix SRC_URI for new one.
+
+  15 Dec 2012; Raúl Porcel <armin76@gentoo.org> mod_security-2.7.0.ebuild:
+  sparc stable wrt #438724
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  24 Nov 2012; Anthony G. Basile <blueness@gentoo.org>
+  mod_security-2.7.0.ebuild:
+  stable ppc, bug #438724
+
+*mod_security-2.7.1 (15 Nov 2012)
+
+  15 Nov 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.7.1.ebuild:
+  Version bump.
+
+  15 Nov 2012; Andreas Schuerch <nativemad@gentoo.org>
+  mod_security-2.7.0.ebuild:
+  x86 stable, see bug 438724
+
+  14 Nov 2012; Agostino Sarubbo <ago@gentoo.org> mod_security-2.7.0.ebuild:
+  Stable for amd64, wrt bug #438724
+
+  25 Oct 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  -mod_security-2.6.8.ebuild, mod_security-2.7.0.ebuild:
+  Remove 2.6.8 as that version is never going stable. Require a newer version of
+  the CRS so that rules missing IDs are not going to be present.
+
+*mod_security-2.7.0 (17 Oct 2012)
+
+  17 Oct 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.7.0.ebuild, -mod_security-2.7.0_rc3.ebuild:
+  Version bump; fix jit USE flag ./configure handling.
+
+*mod_security-2.6.8 (28 Sep 2012)
+
+  28 Sep 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.6.8.ebuild, -mod_security-2.6.7.ebuild:
+  Version bump.
+
+*mod_security-2.7.0_rc3 (11 Sep 2012)
+
+  11 Sep 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.7.0_rc3.ebuild, -mod_security-2.7.0_rc2.ebuild:
+  Version bump.
+
+*mod_security-2.6.7 (01 Aug 2012)
+
+  01 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.6.7.ebuild, -mod_security-2.6.3.ebuild:
+  Version bump; remove old.
+
+  15 Jul 2012; Raúl Porcel <armin76@gentoo.org> mod_security-2.6.6.ebuild:
+  sparc stable wrt #422973
+
+  03 Jul 2012; Brent Baude <ranger@gentoo.org> mod_security-2.6.6.ebuild:
+  Marking mod_security-2.6.6 ppc for bug 422973
+
+  24 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update USE descriptions.
+
+  24 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  mod_security-2.7.0_rc2.ebuild:
+  Restore sparc KEYWORD as jit is now masked.
+
+*mod_security-2.7.0_rc2 (24 Jun 2012)
+
+  24 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/modsecurity-2.7.conf, +mod_security-2.7.0_rc2.ebuild,
+  -files/2.5.10/99_mod_security.conf,
+  -files/mod_security-2.5.10-as-needed.patch:
+  Version bump to 2.7 RC2; add a new setting to the default config file for
+  httpBL API key. Dropped sparc keyword due to libpcre's jit support.
+
+  22 Jun 2012; Andreas Schuerch <nativemad@gentoo.org>
+  mod_security-2.6.6.ebuild:
+  x86 stable, see bug 422973
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> mod_security-2.6.6.ebuild:
+  Stable for amd64, wrt bug #422973
+
+*mod_security-2.6.6 (16 Jun 2012)
+
+  16 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.6.6.ebuild, -mod_security-2.6.1.ebuild,
+  -mod_security-2.6.5.ebuild, mod_security-2.6.3.ebuild:
+  Version bump; remove old; fix 2.6.3 to use only automake 1.11 (since 1.12 will
+  fail); do not rebuild autotools on the new versions.
+
+  01 Apr 2012; Raúl Porcel <armin76@gentoo.org> mod_security-2.6.3.ebuild:
+  sparc stable wrt #409199
+
+  26 Mar 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  -mod_security-2.5.12.ebuild:
+  Remove ancient version.
+
+  25 Mar 2012; Brent Baude <ranger@gentoo.org> mod_security-2.6.3.ebuild:
+  Marking mod_security-2.6.3 ppc for bug 409199
+
+  24 Mar 2012; Markos Chandras <hwoarang@gentoo.org> mod_security-2.6.3.ebuild:
+  Stable on amd64 wrt bug #409199
+
+  24 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  mod_security-2.6.3.ebuild:
+  x86 stable wrt bug #409199
+
+*mod_security-2.6.5 (21 Mar 2012)
+
+  21 Mar 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.6.5.ebuild, -mod_security-2.6.2.ebuild,
+  -mod_security-2.6.4.ebuild:
+  Version bump; remove old.
+
+*mod_security-2.6.4 (09 Mar 2012)
+
+  09 Mar 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.6.4.ebuild, -mod_security-2.6.4_rc1.ebuild:
+  Version bump.
+
+*mod_security-2.6.4_rc1 (23 Feb 2012)
+
+  23 Feb 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.6.4_rc1.ebuild:
+  Version bump to new release candidate.
+
+*mod_security-2.6.3 (27 Dec 2011)
+
+  27 Dec 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.6.3.ebuild:
+  Version bump.
+
+  18 Dec 2011; Raúl Porcel <armin76@gentoo.org> mod_security-2.6.1.ebuild:
+  sparc stable wrt #383315
+
+*mod_security-2.6.2 (02 Oct 2011)
+
+  02 Oct 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -mod_security-2.6.2_rc1.ebuild, +mod_security-2.6.2.ebuild:
+  Version bump.
+
+  20 Sep 2011; Andreas Schuerch <nativemad@gentoo.org>
+  mod_security-2.6.1.ebuild:
+  x86 stable, see bug 383315
+
+  20 Sep 2011; Tony Vroon <chainsaw@gentoo.org> mod_security-2.6.1.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo in bug
+  #383315.
+
+  17 Sep 2011; Matt Turner <mattst88@gentoo.org> mod_security-2.5.12.ebuild:
+  Drop ~mips, bug 383315.
+
+*mod_security-2.6.2_rc1 (17 Sep 2011)
+
+  17 Sep 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -mod_security-2.5.13-r2.ebuild, +mod_security-2.6.2_rc1.ebuild:
+  Version bump and remove old.
+
+*mod_security-2.6.1 (25 Jul 2011)
+
+  25 Jul 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -mod_security-2.6.0.ebuild, -mod_security-2.6.1_rc1.ebuild,
+  +mod_security-2.6.1.ebuild:
+  Version bump to final 2.6.1; remove 2.6.0 and rc1. Use SF.net mirrors
+  directly from now on to avoid one redirect and respect users' choices.
+
+*mod_security-2.6.1_rc1 (07 Jul 2011)
+
+  07 Jul 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.6.1_rc1.ebuild:
+  Version bump; this version re-introduces the lua USE flag.
+
+*mod_security-2.6.0 (19 May 2011)
+
+  19 May 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -mod_security-2.6.0_rc1.ebuild, -mod_security-2.6.0_rc2.ebuild,
+  +mod_security-2.6.0.ebuild:
+  Bump to final 2.6.0 version.
+
+*mod_security-2.6.0_rc2 (02 May 2011)
+
+  02 May 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.6.0_rc2.ebuild:
+  Bump to newer release candidate.
+
+  19 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  mod_security-2.6.0_rc1.ebuild:
+  Remove autotools inherit.
+
+*mod_security-2.6.0_rc1 (19 Apr 2011)
+
+  19 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.6.0_rc1.ebuild, metadata.xml:
+  Version bump, even though 2.6 series requires a bit more work to be properly
+  usable.
+
+  28 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/modsecurity.conf, -files/2.5.13-r2/79_modsecurity.conf,
+  -files/2.5.13/79_mod_security.conf, -mod_security-2.5.13-r1.ebuild,
+  mod_security-2.5.13-r2.ebuild, metadata.xml:
+  Cleanup ebuild, port to EAPI=3; add geoip USE flag to bring in dev-libs/geoip
+  and set it up.
+
+*mod_security-2.5.13-r2 (23 Mar 2011)
+
+  23 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/2.5.13-r2/79_modsecurity.conf, -mod_security-2.5.12-r1.ebuild,
+  +mod_security-2.5.13-r2.ebuild:
+  Version bump; don't force usage of CRS in the configuration file for the
+  module; rename mod_security to modsecurity in it for consistency with
+  upstream and future Debian.
+
+  26 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  mod_security-2.5.13-r1.ebuild:
+  Marked ~ppc wrt #338548
+
+*mod_security-2.5.13-r1 (09 Jan 2011)
+
+  09 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/2.5.13/79_mod_security.conf, -mod_security-2.5.13.ebuild,
+  +mod_security-2.5.13-r1.ebuild:
+  Revision bump to change the installed modsecurity conf file from 99_ to 79_,
+  makes easier to add site-global rules.
+
+*mod_security-2.5.13 (01 Dec 2010)
+
+  01 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.5.13.ebuild:
+  Version bump.
+
+  24 Oct 2010; Raúl Porcel <armin76@gentoo.org>
+  mod_security-2.5.12-r1.ebuild:
+  Add ~sparc wrt #338548
+
+  13 Oct 2010; Markus Meier <maekke@gentoo.org>
+  mod_security-2.5.12-r1.ebuild:
+  add ~x86, bug #338548
+
+  24 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/mod_security-2.5.9-as-needed.patch,
+  -files/2.1.2/99_mod_security.conf, -mod_security-2.5.9-r1.ebuild,
+  -files/mod_security-2.5.9-broken-autotools.patch,
+  -files/mod_security-2.5.10-broken-autotools.patch,
+  -mod_security-2.5.11-r2.ebuild,
+  -files/mod_security-2.5.11-disable-http-pollution.patch:
+  Cleanup old versions and unused files.
+
+*mod_security-2.5.12-r1 (24 Sep 2010)
+
+  24 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.5.12-r1.ebuild:
+  Add a new revision that doesn't install the Core Rule Set and rather rely
+  on www-apache/modsecurity-crs.
+
+  02 Jun 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove chtekk from metadata.xml (#103720)
+
+  14 Mar 2010; Raúl Porcel <armin76@gentoo.org> mod_security-2.5.12.ebuild:
+  sparc stable wrt #304147
+
+  09 Mar 2010; Joseph Jezak <josejx@gentoo.org> mod_security-2.5.12.ebuild:
+  Marked ppc stable for bug #304147.
+
+  07 Mar 2010; Markus Meier <maekke@gentoo.org> mod_security-2.5.12.ebuild:
+  amd64 stable, bug #304147
+
+  05 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  mod_security-2.5.12.ebuild:
+  stable x86, security bug 304147
+
+*mod_security-2.5.12 (09 Feb 2010)
+
+  09 Feb 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/2.5.10/99_mod_security.conf, -mod_security-2.5.9.ebuild,
+  -mod_security-2.5.11-r1.ebuild, +mod_security-2.5.12.ebuild:
+  Version bump, this version fixes possible security problems. Keep an old
+  version around though as the HTTP Parameter Pollution code changed
+  drastically and might break Rails again.
+
+  28 Dec 2009; Raúl Porcel <armin76@gentoo.org>
+  mod_security-2.5.9-r1.ebuild:
+  sparc stable wrt #293366
+
+  08 Dec 2009; nixnut <nixnut@gentoo.org> mod_security-2.5.9-r1.ebuild:
+  ppc stable #293366
+
+*mod_security-2.5.11-r2 (26 Nov 2009)
+
+  26 Nov 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.5.11-r2.ebuild:
+  Further improved ebuild, using EAPI 2: depend on the presence of unique_id
+  Apache module; create a secured data directory instead of using /tmp;
+  avoid changing the server signature by default (USE=-vanilla).
+
+*mod_security-2.5.11-r1 (21 Nov 2009)
+
+  21 Nov 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -mod_security-2.5.10-r1.ebuild, -mod_security-2.5.11.ebuild,
+  +mod_security-2.5.11-r1.ebuild,
+  +files/mod_security-2.5.11-disable-http-pollution.patch, metadata.xml:
+  Sanitising mod_security: add a vanilla USE flag that restores the original
+  upstream behaviour for the CRS, if disabled (default), then also disable
+  some pretty braindamaged rules. Add warnings about the original rules if
+  vanilla USE flag is enabled or if perl USE flag is enabled. Document in
+  metadata the new vanilla flag as well as the package-local meaning of the
+  perl USE flag. Remove older versions.
+
+  19 Nov 2009; Markus Meier <maekke@gentoo.org>
+  mod_security-2.5.9-r1.ebuild:
+  amd64/x86 stable, bug #293366
+
+*mod_security-2.5.11 (16 Nov 2009)
+
+  16 Nov 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.5.11.ebuild:
+  Version bump. This time disable some draconic/nearly-idiotic rules.
+
+*mod_security-2.5.10-r1 (26 Oct 2009)
+
+  26 Oct 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/2.5.10/99_mod_security.conf, -mod_security-2.5.10.ebuild,
+  +mod_security-2.5.10-r1.ebuild:
+  Revision bump; install the proper ruleset; install a new config file.
+
+  02 Oct 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  mod_security-2.5.10.ebuild,
+  +files/mod_security-2.5.10-broken-autotools.patch:
+  Ooops, fix the missing broken autotools correction.
+
+*mod_security-2.5.10 (01 Oct 2009)
+
+  01 Oct 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.5.10.ebuild, +files/mod_security-2.5.10-as-needed.patch:
+  Version bump.
+
+  27 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  mod_security-2.5.9-r1.ebuild:
+  Also list rule 950907 in the list of draconian rules.
+
+  15 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  mod_security-2.5.9-r1.ebuild:
+  Install modsec-rules-updater in sbin, since it requires root privileges.
+
+  15 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/2.1.2/99_mod_security.conf:
+  Restore one file deleted by mistake.
+
+  14 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/2.1.2/99_mod_security.conf, -mod_security-2.1.2.ebuild,
+  -mod_security-2.1.6.ebuild, -mod_security-2.5.5.ebuild,
+  -mod_security-2.5.6.ebuild, -mod_security-2.5.7.ebuild:
+  Remove older versions.
+
+*mod_security-2.5.9-r1 (14 Jul 2009)
+
+  14 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.5.9-r1.ebuild, +files/mod_security-2.5.9-as-needed.patch,
+  files/mod_security-2.5.9-broken-autotools.patch:
+  Add patch to properly build with --as-needed (thanks to Christian Ruppert
+  in bug #276272 — this required an extra fix to the autotools); add a
+  perl USE flag to disable the update script and add the libwww-perl
+  dependency (thanks again to Christian in bug #275864), and add a notice
+  about the draconic command injection rule (bug #223815 reported by David
+  Sommerseth.
+
+  14 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Add myself as maintainer too since I haven't seen Luca in a while.
+
+  02 Jun 2009; Raúl Porcel <armin76@gentoo.org> mod_security-2.5.9.ebuild:
+  sparc stable wrt #262302
+
+  25 May 2009; Brent Baude <ranger@gentoo.org> mod_security-2.5.9.ebuild:
+  Marking mod_security-2.5.9 ppc for bug 262302
+
+  23 May 2009; Markus Meier <maekke@gentoo.org> mod_security-2.5.9.ebuild:
+  amd64/x86 stable, bug #262302
+
+*mod_security-2.5.9 (22 May 2009)
+
+  22 May 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mod_security-2.5.9.ebuild,
+  +files/mod_security-2.5.9-broken-autotools.patch:
+  Update to version 2.5.9; finally respect flags (if apxs allows to..), have
+  a test function, simplify install.
+
+*mod_security-2.5.7 (01 Jan 2009)
+
+  01 Jan 2009; Benedikt Böhm <hollow@gentoo.org>
+  +mod_security-2.5.7.ebuild:
+  version bump wrt #234424
+
+*mod_security-2.5.6 (01 Jan 2009)
+
+  01 Jan 2009; Benedikt Böhm <hollow@gentoo.org>
+  -mod_security-2.5.1.ebuild, -mod_security-2.5.4.ebuild,
+  +mod_security-2.5.6.ebuild:
+  version bump wrt security #240946
+
+*mod_security-2.5.5 (01 Jul 2008)
+
+  01 Jul 2008; Benedikt Böhm <hollow@gentoo.org>
+  +mod_security-2.5.5.ebuild:
+  version bump wrt #230139
+
+*mod_security-2.5.4 (01 Jun 2008)
+
+  01 Jun 2008; Benedikt Böhm <hollow@gentoo.org>
+  -mod_security-2.1.4_rc1.ebuild, +mod_security-2.5.4.ebuild:
+  version bump wrt #221763
+
+  25 Apr 2008; Benedikt Böhm <hollow@gentoo.org> mod_security-2.5.1.ebuild:
+  install rules-updater wrt #219059
+
+*mod_security-2.5.1 (22 Mar 2008)
+*mod_security-2.1.6 (22 Mar 2008)
+
+  22 Mar 2008; Benedikt Böhm <hollow@gentoo.org>
+  -files/99_mod_security-2.1.1.conf, +mod_security-2.1.6.ebuild,
+  +mod_security-2.5.1.ebuild:
+  version bumps wrt #209632
+
+  31 Jan 2008; Benedikt Böhm <hollow@gentoo.org>
+  files/99_mod_security-2.1.1.conf, files/2.1.2/99_mod_security.conf:
+  cleanup
+
+  29 Jan 2008; Benedikt Böhm <hollow@gentoo.org> mod_security-2.1.2.ebuild,
+  mod_security-2.1.4_rc1.ebuild:
+  fix depend.apache usage wrt #208033
+
+  25 Nov 2007; Benedikt Böhm <hollow@gentoo.org> mod_security-2.1.2.ebuild:
+  fix apache-module eclass usage
+
+*mod_security-2.1.4_rc1 (21 Oct 2007)
+
+  21 Oct 2007; Benedikt Böhm <hollow@gentoo.org>
+  -mod_security-2.1.1.ebuild, +mod_security-2.1.4_rc1.ebuild:
+  version bump
+
+  27 Sep 2007; Raúl Porcel <armin76@gentoo.org> mod_security-2.1.2.ebuild:
+  sparc stable wrt #191973
+
+  19 Sep 2007; Lars Weiler <pylon@gentoo.org> mod_security-2.1.2.ebuild:
+  Stable on ppc; bug #191973.
+
+  17 Sep 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  mod_security-2.1.2.ebuild:
+  Stable on amd64 wrt bug #191973.
+
+  16 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  mod_security-2.1.2.ebuild:
+  stable x86, bug 191973
+
+*mod_security-2.1.2 (08 Sep 2007)
+
+  08 Sep 2007; Benedikt Böhm <hollow@gentoo.org>
+  -files/mod_security-2.1.1-request_interception.patch,
+  +files/2.1.2/99_mod_security.conf, -mod_security-2.1.1-r1.ebuild,
+  +mod_security-2.1.2.ebuild:
+  version bump; fixes #180150, #189995, #191381, #181887, #190301
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org>
+  +files/mod_security-2.1.1-request_interception.patch,
+  +files/99_mod_security-2.1.1.conf, +metadata.xml,
+  +mod_security-2.1.1.ebuild, +mod_security-2.1.1-r1.ebuild:
+  Moving net-www/mod_security to www-apache/mod_security (#81244).
+
+*mod_security-2.1.1-r1 (15 Jun 2007)
+
+  15 Jun 2007; Benedikt Böhm <hollow@gentoo.org>
+  +files/mod_security-2.1.1-request_interception.patch,
+  -files/99_mod_security.conf, -mod_security-1.8.7.ebuild,
+  -mod_security-1.9.4.ebuild, +mod_security-2.1.1-r1.ebuild:
+  remove apache-1 version; fix #180150
+
+  11 May 2007; Steve Dibb <beandog@gentoo.org> mod_security-2.1.1.ebuild:
+  amd64 stable, security bug 169778
+
+  08 May 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  mod_security-2.1.1.ebuild:
+  Stable on sparc wrt security #169778
+
+  08 May 2007; Raúl Porcel <armin76@gentoo.org> mod_security-2.1.1.ebuild:
+  x86 stable wrt security bug 169778
+
+  08 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  mod_security-2.1.1.ebuild:
+  ppc stable, bug #169778
+
+*mod_security-2.1.1 (06 May 2007)
+
+  06 May 2007; Christian Heim <phreak@gentoo.org>
+  +files/99_mod_security-2.1.1.conf, +mod_security-2.1.1.ebuild:
+  Version bump, thanks to Nick Palmer <nicholas and slackers.net> and Julien
+  Allanos <dju at gentoo.org> in #151826 for security #169778.
+
+  14 Jan 2007; Luca Longinotti <chtekk@gentoo.org>
+  -files/1.8.6/99_mod_security.conf, files/99_mod_security.conf,
+  -files/mod_security.conf, mod_security-1.8.7.ebuild,
+  -mod_security-1.9.1.ebuild, mod_security-1.9.4.ebuild:
+  Cleanup.
+
+*mod_security-1.9.4 (05 Jun 2006)
+
+  05 Jun 2006; Benedikt Böhm <hollow@gentoo.org>
+  +mod_security-1.9.4.ebuild:
+  Version bump
+
+  05 Jun 2006; Michael Stewart <vericgar@gentoo.org>
+  -mod_security-1.7.6.ebuild, -mod_security-1.8.6.ebuild,
+  -mod_security-1.8.7_rc2.ebuild:
+  Remove old-style ebuilds
+
+  02 Jun 2006; Luca Longinotti <chtekk@gentoo.org> metadata.xml:
+  Update maintainer metadata.
+
+  18 Apr 2006; Jason Wever <weeve@gentoo.org> mod_security-1.8.7.ebuild:
+  Stable on SPARC.
+
+  19 Feb 2006; Joshua Kinard <kumba@gentoo.org> mod_security-1.9.1.ebuild:
+  Added ~mips to KEYWORDS.
+
+*mod_security-1.9.1 (05 Jan 2006)
+
+  05 Jan 2006; Luca Longinotti <chtekk@gentoo.org>
+  +mod_security-1.9.1.ebuild:
+  Version bump to 1.9.1, fixes bug #115480.
+
+  22 Nov 2005; <dang@gentoo.org> mod_security-1.8.7.ebuild:
+  Marked stable on amd64
+
+  01 Nov 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  mod_security-1.8.7.ebuild:
+  Marked ppc stable, bug #106430
+
+  18 Sep 2005; Michael Stewart <vericgar@gentoo.org>
+  mod_security-1.8.7.ebuild:
+  Stable on x86
+
+  20 Jun 2005; Simon Stelling <blubb@gentoo.org> mod_security-1.8.7.ebuild:
+  added ~amd64 keyword
+
+*mod_security-1.8.7 (06 Mar 2005)
+
+  06 Mar 2005; Elfyn McBratney <beu@gentoo.org> +mod_security-1.8.7.ebuild:
+  Version bump, closes bug #84250.
+
+*mod_security-1.8.7_rc2 (01 Mar 2005)
+
+  01 Mar 2005; Elfyn McBratney <beu@gentoo.org> metadata.xml,
+  +mod_security-1.8.7_rc2.ebuild:
+  Version bump.  Fixes a few segfaults (Apache 2.x only), and a few other bugs.
+
+*mod_security-1.8.6 (09 Jan 2005)
+
+  09 Jan 2005; Benedikt Boehm <hollow@gentoo.org> metadata.xml,
+  +files/1.8.6/99_mod_security.conf, +mod_security-1.8.6.ebuild:
+  Apache herd package refresh
+
+  18 Oct 2004; Jason Wever <weeve@gentoo.org> mod_security-1.7.6.ebuild:
+  Added ~sparc keyword wrt bug #66615.
+
+  04 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  mod_security-1.7.6.ebuild:
+  Masked mod_security-1.7.6.ebuild stable for ppc
+
+  05 Aug 2004; Chuck Short <zul@gentoo.org> mod_security-1.7.6.ebuild:
+  Marked stable for x86.
+
+  05 Jun 2004; David Holm <dholm@gentoo.org> mod_security-1.7.6.ebuild:
+  Added to ~ppc.
+
+*mod_security-1.7.6 (03 Jun 2004)
+
+  03 Jun 2004; Chuck Short <zul@gentoo.org> metadata.xml, mod_security-1.7.6.ebuild,
+  files/99_mod_security.conf, files/mod_security.conf:
+  Initial version,e build written by dju` <dju @ elegiac.net>.
+  Closes #32190.

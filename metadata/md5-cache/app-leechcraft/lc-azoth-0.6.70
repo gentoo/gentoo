@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare pretend test
+DEPEND=~app-leechcraft/lc-core-0.6.70 dev-libs/qjson dev-qt/qtwebkit:4 autoidler? ( x11-libs/libXScrnSaver ) astrality? ( net-libs/telepathy-qt ) otroid? ( net-libs/libotr ) media? ( dev-qt/qt-mobility[multimedia] ) woodpecker? ( dev-libs/kqoauth ) xmpp? ( >=net-libs/qxmpp-0.8.0 media? ( >=net-libs/qxmpp-0.8.0[speex] ) ) xtazy? ( ~app-leechcraft/lc-xtazy-0.6.70 dev-qt/qtdbus:4 ) crypt? ( app-crypt/qca:2[qt4(+)] ) doc? ( app-doc/doxygen[dot] ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) app-arch/xz-utils
+DESCRIPTION=Azoth, the modular IM client for LeechCraft
+EAPI=5
+HOMEPAGE=http://leechcraft.org/
+IUSE=debug doc astrality +acetamide +adiumstyles +autoidler +autopaste +birthdaynotifier +chathistory +crypt +depester +embedmedia +herbicide +hili +isterique +juick +keeso +lastseen +metacontacts media +murm +latex +nativeemoticons +otroid +spell shx +standardstyles +vader velvetbird +woodpecker +xmpp +xtazy
+KEYWORDS=~amd64 ~x86
+LICENSE=Boost-1.0
+RDEPEND=~app-leechcraft/lc-core-0.6.70 dev-libs/qjson dev-qt/qtwebkit:4 autoidler? ( x11-libs/libXScrnSaver ) astrality? ( net-libs/telepathy-qt ) otroid? ( net-libs/libotr ) media? ( dev-qt/qt-mobility[multimedia] ) woodpecker? ( dev-libs/kqoauth ) xmpp? ( >=net-libs/qxmpp-0.8.0 media? ( >=net-libs/qxmpp-0.8.0[speex] ) ) xtazy? ( ~app-leechcraft/lc-xtazy-0.6.70 dev-qt/qtdbus:4 ) crypt? ( app-crypt/qca:2[qt4(+)] ) astrality? ( net-im/telepathy-mission-control net-voip/telepathy-haze ) crypt? ( app-crypt/qca:2[gpg] ) latex? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) virtual/latex-base ) spell? ( app-leechcraft/lc-rosenthal )
+REQUIRED_USE=|| ( standardstyles adiumstyles )
+SLOT=0
+SRC_URI=http://dist.leechcraft.org/LeechCraft/0.6.70/leechcraft-0.6.70.tar.xz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	leechcraft	a759a75a40c745b9d6043c12e026b94e	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=6e7512fa309be9c6443f70b9f3a3cf2b

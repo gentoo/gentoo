@@ -1,0 +1,124 @@
+# ChangeLog for sci-mathematics/normaliz
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/normaliz/ChangeLog,v 1.27 2015/04/24 14:18:38 tomka Exp $
+
+  24 Apr 2015; Thomas Kahle <tomka@gentoo.org>
+  -files/normaliz-2.10-respect-flags.patch,
+  -files/normaliz-2.5-respect-flags.patch, -normaliz-2.10.1.ebuild,
+  -normaliz-2.5-r1.ebuild:
+  remove old
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> normaliz-2.12.2.ebuild:
+  Stable for x86, wrt bug #542270
+
+  09 Mar 2015; Agostino Sarubbo <ago@gentoo.org> normaliz-2.12.2.ebuild:
+  Stable for amd64, wrt bug #542270
+
+  01 Mar 2015; Thomas Kahle <tomka@gentoo.org>
+  +files/normaliz-2.12.2-gcc49.patch, normaliz-2.12.2.ebuild:
+  Fix gcc-4.9 build (541364)
+
+*normaliz-2.12.2 (29 Jan 2015)
+
+  29 Jan 2015; Thomas Kahle <tomka@gentoo.org> +normaliz-2.12.2.ebuild,
+  -files/normaliz-2.11-respect-flags.patch, -normaliz-2.11.ebuild,
+  -normaliz-2.12.1.ebuild:
+  Bump to 2.12.2, cleanup
+
+*normaliz-2.12.1 (25 Oct 2014)
+
+  25 Oct 2014; Thomas Kahle <tomka@gentoo.org>
+  +files/normaliz-2.12.1-respect-flags.patch, +normaliz-2.12.1.ebuild:
+  bump to 2.12.1
+
+*normaliz-2.5-r1 (18 Aug 2014)
+
+  18 Aug 2014; Thomas Kahle <tomka@gentoo.org> +normaliz-2.5-r1.ebuild,
+  -files/normaliz-2.7-respect-flags.patch,
+  -files/normaliz-2.8-respect-flags.patch:
+  Undo drop (bug #520160)
+
+  15 Aug 2014; Justin Lecher <jlec@gentoo.org> -normaliz-2.5-r1.ebuild,
+  -normaliz-2.10.ebuild, metadata.xml:
+  Drop old
+
+  14 Aug 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> normaliz-2.10.1.ebuild:
+  x86 stable wrt bug #509002
+
+  09 Jun 2014; Thomas Kahle <tomka@gentoo.org> normaliz-2.10.1.ebuild,
+  normaliz-2.11.ebuild:
+  Spread more death
+
+  09 Jun 2014; Chema Alonso <nimiux@gentoo.org> normaliz-2.10.1.ebuild:
+  Stable for amd64 wrt bug #509002
+
+*normaliz-2.11 (09 May 2014)
+
+  09 May 2014; Thomas Kahle <tomka@gentoo.org>
+  +files/normaliz-2.11-respect-flags.patch, +normaliz-2.11.ebuild:
+  Bump to 2.11
+
+*normaliz-2.10.1 (27 Jul 2013)
+
+  27 Jul 2013; Thomas Kahle <tomka@gentoo.org> +normaliz-2.10.1.ebuild,
+  -normaliz-2.7.ebuild, -normaliz-2.8.ebuild:
+  bump to 2.10.1, remove old
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> normaliz-2.10.ebuild:
+  Stable for amd64, wrt bug #473564
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> normaliz-2.10.ebuild:
+  Stable for x86, wrt bug #473564
+
+  25 Jun 2013; Thomas Kahle <tomka@gentoo.org> normaliz-2.10.ebuild:
+  Respect users AR tool (bug 474532)
+
+  14 May 2013; Thomas Kahle <tomka@gentoo.org> normaliz-2.10.ebuild:
+  bump to 2.10
+
+*normaliz-2.10 (14 May 2013)
+
+  14 May 2013; Thomas Kahle <tomka@gentoo.org>
+  +files/normaliz-2.10-respect-flags.patch, +normaliz-2.10.ebuild:
+  bump to 2.10
+
+*normaliz-2.8 (12 Nov 2012)
+
+  12 Nov 2012; Thomas Kahle <tomka@gentoo.org>
+  +files/normaliz-2.8-respect-flags.patch, +normaliz-2.8.ebuild:
+  Bump to 2.8
+
+  14 Nov 2011; Diego E. Pettenò <flameeyes@gentoo.org> normaliz-2.5-r1.ebuild,
+  normaliz-2.7.ebuild:
+  QA: cxx conditional was broken, fix it.
+
+  13 Nov 2011; Mike Frysinger <vapier@gentoo.org> normaliz-2.5-r1.ebuild,
+  normaliz-2.7.ebuild:
+  Convert gmp[-nocxx] to gmp[cxx].
+
+  25 Sep 2011; Thomas Kahle <tomka@gentoo.org> normaliz-2.7.ebuild:
+  EAPI=4 and missing dep on boost
+
+*normaliz-2.7 (08 Jul 2011)
+
+  08 Jul 2011; Thomas Kahle <tomka@gentoo.org> +normaliz-2.7.ebuild,
+  +files/normaliz-2.7-respect-flags.patch:
+  Bump to 2.7
+
+  20 Dec 2010; Markos Chandras <hwoarang@gentoo.org> normaliz-2.5-r1.ebuild:
+  Stable on amd64 wrt bug #348318
+
+  12 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  normaliz-2.5-r1.ebuild:
+  x86 stable wrt bug #348318
+
+  04 Nov 2010; Thomas Kahle <tomka@gentoo.org> normaliz-2.5-r1.ebuild,
+  -files/normaliz-2.5-makefile.patch,
+  +files/normaliz-2.5-respect-flags.patch, metadata.xml:
+  Improved metadata.xml and naming of patch
+
+*normaliz-2.5-r1 (03 Nov 2010)
+
+  03 Nov 2010; Thomas Kahle <tomka@gentoo.org> +normaliz-2.5-r1.ebuild,
+  +files/normaliz-2.5-makefile.patch, +metadata.xml:
+  Initial import of normaliz from science overlay

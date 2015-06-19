@@ -1,0 +1,204 @@
+# ChangeLog for media-gfx/wally
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/wally/ChangeLog,v 1.49 2015/03/03 23:10:40 hwoarang Exp $
+
+  03 Mar 2015; Markos Chandras <hwoarang@gentoo.org> -wally-2.4.4.ebuild,
+  wally-2.4.5.ebuild:
+  x86/amd64 stable. Remove old
+
+*wally-2.4.5 (06 Aug 2014)
+
+  06 Aug 2014; Jeroen Roovers <jer@gentoo.org> wally-2.4.4.ebuild,
+  +wally-2.4.5.ebuild, files/wally-2.2.0-disable-kde4.patch,
+  files/wally-2.2.0-disable_popup.patch, files/wally-2.4.4-gold.patch:
+  Version bump.
+
+  25 Jul 2014; Johannes Huber <johu@gentoo.org> wally-2.4.4.ebuild:
+  EAPI 5.
+
+  30 May 2014; Davide Pesavento <pesa@gentoo.org> metadata.xml:
+  Remove qt from metadata.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> wally-2.4.4.ebuild:
+  Move Qt dependencies to the new category
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> wally-2.4.4.ebuild:
+  Don't show elog messages always (#457596)
+
+  19 Apr 2012; Davide Pesavento <pesa@gentoo.org>
+  -files/wally-2.3.2-disable-plugins.patch, -wally-2.4.1.ebuild,
+  -wally-2.4.2.ebuild:
+  Remove old.
+
+  18 Apr 2012; Jeff Horelick <jdhore@gentoo.org> wally-2.4.4.ebuild:
+  marked x86 per bug 412521
+
+  18 Apr 2012; Agostino Sarubbo <ago@gentoo.org> wally-2.4.4.ebuild:
+  Stable for amd64, wrt bug #412521
+
+*wally-2.4.4 (11 Mar 2012)
+
+  11 Mar 2012; Markos Chandras <hwoarang@gentoo.org>
+  +files/wally-2.4.4-gold.patch, +wally-2.4.4.ebuild:
+  Version bump. Bug #406405. Patch for Bug #370327. Thanks to Michael
+  (kensington) <gentoo@scribeofthenile.com>
+
+  25 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> wally-2.4.2.ebuild:
+  x86 stable wrt bug #387737
+
+  20 Oct 2011; Markos Chandras <hwoarang@gentoo.org> wally-2.4.2.ebuild:
+  Stable on amd64 wrt bug #387737
+
+  19 Sep 2011; Markos Chandras <hwoarang@gentoo.org> -wally-2.3.2.ebuild:
+  ^
+
+  18 Sep 2011; Markus Meier <maekke@gentoo.org> wally-2.4.1.ebuild:
+  x86 stable, bug #382479
+
+  13 Sep 2011; Markos Chandras <hwoarang@gentoo.org> wally-2.4.1.ebuild:
+  Stable on amd64 wrt bug #382479
+
+*wally-2.4.2 (10 Sep 2011)
+
+  10 Sep 2011; Markos Chandras <hwoarang@gentoo.org> +wally-2.4.2.ebuild:
+  Version bump
+
+  01 Jun 2011; Markos Chandras <hwoarang@gentoo.org> wally-2.3.2.ebuild,
+  wally-2.4.1.ebuild:
+  Add missing x11-libs/qt-{sql,dbus} dependencies. Bug #369267
+
+  02 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org> wally-2.3.2.ebuild,
+  -wally-2.4.ebuild, wally-2.4.1.ebuild:
+  EAPI3, slotmove to 4, use array for makeargs, remove old
+
+  18 Jan 2011; Markos Chandras <hwoarang@gentoo.org> wally-2.4.1.ebuild:
+  Adjust kdelibs dependency
+
+*wally-2.4.1 (26 Oct 2010)
+
+  26 Oct 2010; Markos Chandras <hwoarang@gentoo.org> +wally-2.4.1.ebuild:
+  Version bump
+
+*wally-2.4 (24 Aug 2010)
+
+  24 Aug 2010; Alex Alexander <wired@gentoo.org> +wally-2.4.ebuild:
+  version bump, bug #334159
+
+  14 Jul 2010; Markos Chandras <hwoarang@gentoo.org> -wally-2.3.0.ebuild,
+  -wally-2.3.1.ebuild:
+  Remove old ebuilds
+
+  14 Jul 2010; Christian Faulhammer <fauli@gentoo.org> wally-2.3.2.ebuild:
+  stable x86, bug 325633
+
+  26 Jun 2010; Christoph Mende <angelos@gentoo.org> wally-2.3.2.ebuild:
+  Stable on amd64 wrt bug #325633
+
+  19 Apr 2010; Markos Chandras <hwoarang@gentoo.org> wally-2.3.2.ebuild,
+  +files/wally-2.3.2-disable-plugins.patch:
+  Disable static qt plugins wrt bug #311343
+
+*wally-2.3.2 (23 Mar 2010)
+
+  23 Mar 2010; Ben de Groot <yngwin@gentoo.org> +wally-2.3.2.ebuild,
+  metadata.xml:
+  Version bump. Co-assign to qt herd.
+
+*wally-2.3.1 (11 Jan 2010)
+
+  11 Jan 2010; <hwoarang@gentoo.org> +wally-2.3.1.ebuild:
+  Version bump
+
+  25 Dec 2009; <hwoarang@gentoo.org> -wally-2.0.1.ebuild,
+  -wally-2.2.0.ebuild:
+  Remove old ebuilds
+
+  16 Dec 2009; Markus Meier <maekke@gentoo.org> wally-2.3.0.ebuild:
+  amd64/x86 stable, bug #296441
+
+*wally-2.3.0 (11 Nov 2009)
+
+  11 Nov 2009; <hwoarang@gentoo.org> +wally-2.3.0.ebuild:
+  Version bump
+
+  18 Oct 2009; Markos Chandras <hwoarang@gentoo.org> -wally-2.0.3.ebuild:
+  Remove old ebuild
+
+*wally-2.2.0 (17 Oct 2009)
+
+  17 Oct 2009; Markos Chandras <hwoarang@gentoo.org> +wally-2.2.0.ebuild,
+  +files/wally-2.2.0-disable-kde4.patch,
+  +files/wally-2.2.0-disable_popup.patch, -files/disable_popup.patch:
+  Version bump. Remove old patch
+
+  05 Oct 2009; Theo Chatzimichos <tampakrap@gentoo.org> wally-2.0.3.ebuild:
+  Use kde4-base eclass in order to have better KDE intergration, also add
+  KDE_REQUIRED="optional"
+
+  07 Jun 2009; Markos Chandras <hwoarang@gentoo.org> -wally-2.0.0.ebuild:
+  Remove old ebuild
+
+  08 May 2009; Markos Chandras <hwoarang@gentoo.org> -wally-2.0.1-r1.ebuild,
+  -wally-2.0.2.ebuild, wally-2.0.3.ebuild:
+  Dropping old ebuilds, using proper cmake-utils eclass. Fixes bug #267776
+
+*wally-2.0.3 (30 Apr 2009)
+
+  30 Apr 2009; Markos Chandras <hwoarang@gentoo.org> +wally-2.0.3.ebuild:
+  Version bump
+
+  29 Mar 2009; Markos Chandras <hwoarang@gentoo.org> wally-2.0.2:
+  Adding qt-svg as dependency. Removing qt-gui as qt-svg pulls it anyway.
+  Fixes bug (#264205)
+
+*wally-2.0.2 (29 Mar 2009)
+
+  29 Mar 2009; Markos Chandras <hwoarang@gentoo.org>
+  +files/disable_popup.patch, metadata.xml, +wally-2.0.2.ebuild:
+  Version bump,remove kdialog popup (patch)
+
+  15 Mar 2009; Raúl Porcel <armin76@gentoo.org> wally-2.0.1.ebuild:
+  x86 stable wrt #262119
+
+  13 Mar 2009; Tiago Cunha <tcunha@gentoo.org> wally-2.0.1.ebuild:
+  stable amd64, bug 262119
+
+  12 Mar 2009; Markos Chandras <hwoarang@gentoo.org> wally-2.0.1-r1:
+  Replacing wrong kde4 use flag
+
+*wally-2.0.1-r1 (11 Mar 2009)
+
+  11 Mar 2009; Markos Chandras <hwoarang@gentoo.org> +wally-2.0.1-r1.ebuild:
+  Adding kde use flag for building optional kde4 wallyplugin
+
+  09 Mar 2009; Ben de Groot <yngwin@gentoo.org> wally-2.0.0, wally-2.0.1:
+  Add needed app-crypt/qca:2 dependency. Fixes bug 247738.
+
+  02 Mar 2009; Markos Chandras <hwoarang@gentoo.org> Manifest:
+  Updating manifest ( fixes bug #260808 )
+
+*wally-2.0.1 (25 Feb 2009)
+
+  25 Feb 2009; Markos Chandras <hwoarang@gentoo.org> -wally-1.3.1.ebuild,
+  -wally-1.3.2.ebuild, wally-2.0.0, +wally-2.0.1.ebuild:
+  Version bump, removing pre-stripped workarounds, removing 1.x series
+  ebuilds
+
+*wally-2.0.0 (09 Feb 2009)
+
+  09 Feb 2009; Markos Chandras <hwoarang@gentoo.org> +wally-2.0.0.ebuild:
+  Version bump to 2.0.0 ( see bug #257899 )
+
+*wally-1.3.2 (20 Oct 2008)
+
+  20 Oct 2008; Ben de Groot <yngwin@gentoo.org> +wally-1.3.2.ebuild:
+  Version bump
+
+  21 Sep 2008; Ben de Groot <yngwin@gentoo.org> wally-1.3.1.ebuild:
+  Make desktop file valid
+
+*wally-1.3.1 (21 Sep 2008)
+
+  21 Sep 2008; Ben de Groot <yngwin@gentoo.org> +metadata.xml,
+  +wally-1.3.1.ebuild:
+  Initial import. Ebuild based on the one by Chad A. Simmons in bug 235687.

@@ -1,0 +1,16 @@
+ mosflm/pilatus_c.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/mosflm/pilatus_c.c b/mosflm/pilatus_c.c
+index 1eaae26..cce5a02 100644
+--- a/mosflm/pilatus_c.c
++++ b/mosflm/pilatus_c.c
+@@ -34,7 +34,7 @@ delete them later */
+   int cbf_int[16];
+   long cbf_int4[16];
+   double cbf_double[16];
+-  char cbf_char[16][24];
++  char cbf_char[16][32];
+   /* temporary from cbfwrap.c - pilatus doesn't have these, so we'll 
+ delete them later */
+   int id, index, iindex;

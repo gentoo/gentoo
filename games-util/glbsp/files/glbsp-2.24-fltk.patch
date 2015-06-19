@@ -1,0 +1,68 @@
+--- gui/local.h.old	2010-11-25 10:27:46.000000000 +0100
++++ gui/local.h	2010-11-25 10:28:58.000000000 +0100
+@@ -43,37 +43,37 @@
+ #include <limits.h>
+ #include <assert.h>
+ 
+-#include <FL/Fl.H>
+-#include <FL/Fl_Box.H>
+-#include <FL/Fl_Browser.H>
+-#include <FL/Fl_Button.H>
+-#include <FL/Fl_Check_Button.H>
+-#include <FL/Fl_Counter.H>
+-#include <FL/Fl_File_Icon.H>
+-#include <FL/Fl_Group.H>
+-#include <FL/Fl_Hold_Browser.H>
+-#include <FL/Fl_Image.H>
+-#include <FL/Fl_Input.H>
+-#include <FL/Fl_Menu_Bar.H>
+-#include <FL/Fl_Menu_Item.H>
+-#include <FL/Fl_Multiline_Output.H>
+-#include <FL/Fl_Multi_Browser.H>
+-#include <FL/Fl_Pack.H>
+-#include <FL/Fl_Pixmap.H>
+-#include <FL/Fl_Return_Button.H>
+-#include <FL/Fl_Round_Button.H>
+-#include <FL/Fl_Scrollbar.H>
+-#include <FL/Fl_Slider.H>
++#include <FL/Fl.h>
++#include <FL/Fl_Box.h>
++#include <FL/Fl_Browser.h>
++#include <FL/Fl_Button.h>
++#include <FL/Fl_Check_Button.h>
++#include <FL/Fl_Counter.h>
++#include <FL/Fl_File_Icon.h>
++#include <FL/Fl_Group.h>
++#include <FL/Fl_Hold_Browser.h>
++#include <FL/Fl_Image.h>
++#include <FL/Fl_Input.h>
++#include <FL/Fl_Menu_Bar.h>
++#include <FL/Fl_Menu_Item.h>
++#include <FL/Fl_Multiline_Output.h>
++#include <FL/Fl_Multi_Browser.h>
++#include <FL/Fl_Pack.h>
++#include <FL/Fl_Pixmap.h>
++#include <FL/Fl_Return_Button.h>
++#include <FL/Fl_Round_Button.h>
++#include <FL/Fl_Scrollbar.h>
++#include <FL/Fl_Slider.h>
+ #ifdef MACOSX
+-#include <FL/Fl_Sys_Menu_Bar.H>
++#include <FL/Fl_Sys_Menu_Bar.h>
+ #endif
+-#include <FL/Fl_Value_Input.H>
+-#include <FL/Fl_Widget.H>
+-#include <FL/Fl_Window.H>
++#include <FL/Fl_Value_Input.h>
++#include <FL/Fl_Widget.h>
++#include <FL/Fl_Window.h>
+ 
+-#include <FL/fl_ask.H>
+-#include <FL/fl_draw.H>
+-#include <FL/Fl_File_Chooser.H>
++#include <FL/fl_ask.h>
++#include <FL/fl_draw.h>
++#include <FL/Fl_File_Chooser.h>
+ 
+ 
+ //

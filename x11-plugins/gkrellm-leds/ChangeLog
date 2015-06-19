@@ -1,0 +1,84 @@
+# ChangeLog for x11-plugins/gkrellm-leds
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-leds/ChangeLog,v 1.23 2013/06/01 11:32:43 pacho Exp $
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #144305
+
+  28 Jul 2010; Jim Ramsay <lack@gentoo.org> gkrellm-leds-0.8.1.ebuild:
+  Test needs manual intervention, so RESTRICT=test (Bug #284168)
+
+*gkrellm-leds-0.8.2 (28 Jul 2010)
+
+  28 Jul 2010; Jim Ramsay <lack@gentoo.org> +gkrellm-leds-0.8.2.ebuild:
+  Version bump (Bug #306027)
+
+  11 Jan 2008; Santiago M. Mola <coldwind@gentoo.org>
+  gkrellm-leds-0.8.1.ebuild:
+  Add missing deps (#204572), change HOMEPAGE, QA fixes.
+
+  09 Mar 2007; Jim Ramsay <lack@gentoo.org> gkrellm-leds-0.8.1.ebuild:
+  Updated to use new gkrellm-plugin eclass
+
+  21 Feb 2007; Jim Ramsay <lack@gentoo.org> -gkrellm-leds-0.6.1.ebuild,
+  -gkrellm-leds-0.8.0.ebuild:
+  Cleaning up old versions for gkrellm-1.2 removal
+
+  21 Feb 2007; Jim Ramsay <lack@gentoo.org> +metadata.xml:
+  Accepting maintainership
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org> gkrellm-leds-0.8.1.ebuild:
+  Stable on amd64.
+
+  28 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> gkrellm-leds-0.8.1.ebuild:
+  added ~amd64 to KEYWORDS. fixes #79781
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  14 Nov 2004; Bryan Østergaard <kloeri@gentoo.org>
+  gkrellm-leds-0.8.1.ebuild:
+  Stable on alpha.
+
+  19 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> gkrellm-leds-0.8.1.ebuild:
+  Added ~alpha keyword.
+
+  29 Feb 2004; Ciaran McCreesh <ciaranm@gentoo.org> gkrellm-leds-0.8.1.ebuild:
+  Stable on sparc
+
+*gkrellm-leds-0.8.1 (17 Jan 2004)
+
+  17 Jan 2004; Martin Holzer <mholzer@gentoo.org> gkrellm-leds-0.8.1.ebuild:
+  Version bumped. Closes 38341
+
+  15 Jan 2004; Aron Griffis <agriffis@gentoo.org> gkrellm-leds-0.8.0.ebuild:
+  stable on alpha
+
+*gkrellm-leds-0.8.0 (14 Dec 2002)
+
+  14 Dec 2002; Seemant Kulleen <seemant@gentoo.org>
+  gkrellm-leds-0.8.0.ebuild files/digest-gkrellm-leds-0.8.0 :
+
+  Version for GKrellM2
+
+*gkrellm-leds-0.6.1 (22 May 2002)
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  11 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
+
+  29 Aug 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
+  Moved to x11-plugins and made the naming scheme gkrellm-leds instead.
+
+  22 May 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

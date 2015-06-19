@@ -1,0 +1,41 @@
+# ChangeLog for dev-python/django-social-auth
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/django-social-auth/ChangeLog,v 1.9 2015/06/07 13:09:41 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org>
+  django-social-auth-0.7.28.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> django-social-auth-0.7.28.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> django-social-auth-0.7.28.ebuild:
+  amd64 stable, bug 540290
+
+*django-social-auth-0.7.28 (18 Mar 2014)
+
+  18 Mar 2014; Ian Delaney <idella4@gentoo.org>
+  +django-social-auth-0.7.28.ebuild, -django-social-auth-0.7.23.ebuild:
+  bump; add IUSE doc, examples, update deps, remove old
+
+  01 Jun 2013; Ian Delaney <idella4@gentoo.org>
+  django-social-auth-0.7.23.ebuild:
+  Add missing deps, change of tarball and SRC_URI, restrict tests
+
+*django-social-auth-0.7.23 (28 May 2013)
+
+  28 May 2013; Ian Delaney <idella4@gentoo.org>
+  +django-social-auth-0.7.23.ebuild, -django-social-auth-0.6.8.ebuild:
+  bump, remove old
+
+  14 Nov 2012; Ian Delaney <idella4@gentoo.org> metadata.xml:
+  Updating maintainer, metadata.xml
+
+*django-social-auth-0.6.8 (25 Apr 2012)
+
+  25 Apr 2012; Theo Chatzimichos <tampakrap@gentoo.org>
+  +django-social-auth-0.6.8.ebuild, +metadata.xml:
+  Initial commit, ebuild by idella4

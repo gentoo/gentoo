@@ -1,0 +1,38 @@
+From dd46d6f8db69ee8d291d63251d841e73070cd526 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sun, 4 Jan 2015 00:09:14 +0100
+Subject: [PATCH] Make python module detection match detected python
+
+Some distribution might provided multiple python and configure can know
+about which exactly though AM_PATH_PYTHON.
+---
+ configure.ac | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index acf7daa..6136ad6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -269,13 +269,14 @@ if test "x$HAVE_RAPPER" = "xno"; then
+ fi
+ 
+ # check for python-rdflib
++AM_PATH_PYTHON([2.7])
++
+ AC_MSG_CHECKING([for python-rdflib])
+-echo "import rdflib" | python - 2>/dev/null
+-if test $? -ne 0 ; then
+-  AC_MSG_FAILURE([failed.  Please install the python-rdflib package.])
+-else
++AS_IF([$PYTHON -c "import rdflib" 2>/dev/null], [
+   AC_MSG_RESULT([yes])
+-fi
++], [
++  AC_MSG_FAILURE([failed.  Please install the python-rdflib package.])
++])
+ 
+ #################################################
+ # Summary
+-- 
+2.3.0
+

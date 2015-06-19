@@ -1,0 +1,64 @@
+# ChangeLog for app-admin/reportmagic
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/reportmagic/ChangeLog,v 1.19 2014/01/21 04:15:05 creffett Exp $
+
+  21 Jan 2014; Chris Reffett <creffett@gentoo.org> reportmagic-2.21.ebuild:
+  EAPI bump
+
+  25 Feb 2011; Kevin McCarthy <signals@gentoo.org> reportmagic-2.21.ebuild:
+  Changed dependency from media-libs/jpeg to virtual/jpeg
+
+  22 Jan 2010; Samuli Suominen <ssuominen@gentoo.org>
+  reportmagic-2.21.ebuild:
+  Require SLOT="0" of media-libs/jpeg for headers.
+
+  11 Oct 2009; Mark Loeser <halcy0n@gentoo.org> reportmagic-2.21.ebuild:
+  QA fixes; unquoted variables
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  15 Jul 2006; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove aliz from metadata.xml as he's retired.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org>
+  files/digest-reportmagic-2.21, Manifest:
+  Fixing duff SHA256 digests: Bug # 131293
+
+  11 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  reportmagic-2.21.ebuild:
+  Virtuals for some perl-core deps
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  reportmagic-2.21.ebuild:
+  dev-perl/File-Temp => perl-core/File-Temp migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  reportmagic-2.21.ebuild:
+  dev-perl/File-Spec => perl-core/File-Spec migration
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> reportmagic-2.21.ebuild:
+  stable on amd64
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  reportmagic-2.21.ebuild:
+  Masked reportmagic-2.21.ebuild stable for ppc
+
+  20 Jun 2004; <pyrania@gentoo.org> reportmagic-2.21.ebuild:
+  Stable on x86.
+
+  24 May 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  reportmagic-2.21.ebuild:
+  fix DESCRIPTION - Peter Jensen (bug #51382); error check sed; tidy
+
+  28 Apr 2004; David Holm <dholm@gentoo.org> reportmagic-2.21.ebuild:
+  Added to ~ppc.
+
+*reportmagic-2.21 (28 Apr 2004)
+
+  28 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> reportmagic-2.21.ebuild:
+  Initial import.

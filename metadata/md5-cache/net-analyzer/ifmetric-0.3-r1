@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=sys-kernel/linux-headers
+DESCRIPTION=Linux tool for setting metrics of all IPv4 routes attached to a given network interface at once
+EAPI=5
+HOMEPAGE=http://0pointer.de/lennart/projects/ifmetric/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://0pointer.de/lennart/projects/ifmetric/ifmetric-0.3.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=907b5da2e2ccb1659c68b65e7cd0756f

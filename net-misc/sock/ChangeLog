@@ -1,0 +1,29 @@
+# ChangeLog for net-misc/sock
+# Copyright 2002-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/sock/ChangeLog,v 1.12 2008/02/04 15:24:11 coldwind Exp $
+
+  04 Feb 2008; Santiago M. Mola <coldwind@gentoo.org> sock-1.1.ebuild:
+  amd64 stable, #206544
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  12 Nov 2004; Simon Stelling <blubb@gentoo.org> sock-1.1.ebuild:
+  added ~amd64
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*sock-1.1 (5 Apr 2002)
+
+  09 Jul 2002; phoen][x <phoenix@gentoo.org> sock-1.1.ebuild :
+  Added KEYWORDS, LICENSE, SLOT.
+
+  5 Apr 2002; Jon Nelson <jnelson@gentoo.org> ChangeLog sock-1.1.ebuild
+  Cleaned up ebuild and ChangeLog
+
+  5 Apr 2002; Jon Nelson <jnelson@gentoo.org> ChangeLog
+  Added new ebuild for sock 1.1
+

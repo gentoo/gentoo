@@ -1,0 +1,30 @@
+# ChangeLog for media-video/bbtools
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/bbtools/ChangeLog,v 1.7 2011/11/20 20:49:51 radhermit Exp $
+
+  20 Nov 2011; Tim Harder <radhermit@gentoo.org> bbtools-1.9.ebuild,
+  files/bbtools-1.9-gentoo.patch:
+  Update to EAPI 4 and respect LDFLAGS (bug #337942).
+
+  01 Dec 2007; Vlastimil Babka <caster@gentoo.org> bbtools-1.9.ebuild:
+  Add ~amd64, works here.
+
+  03 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  10 Jan 2006; Diego Pettenò <flameeyes@gentoo.org> bbtools-1.9.ebuild:
+  Add LFS flags as requested in bug #117928.
+
+  16 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org> bbtools-1.9.ebuild:
+  needs app-arch/unzip; tidy
+
+  10 May 2005; David Holm <dholm@gentoo.org> bbtools-1.9.ebuild:
+  Added to ~ppc.
+
+*bbtools-1.9 (28 Mar 2005)
+
+  28 Mar 2005; Chris White <chriswhite@gentoo.org> +metadata.xml,
+  +files/bbtools-1.9-gentoo.patch, +bbtools-1.9.ebuild:
+  Initial import into the tree. Closes bug #31632. Thanks to swegner for the
+  ebuild!
+

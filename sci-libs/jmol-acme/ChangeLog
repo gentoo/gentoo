@@ -1,0 +1,24 @@
+# ChangeLog for sci-libs/jmol-acme
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/jmol-acme/ChangeLog,v 1.5 2011/06/26 10:21:07 jlec Exp $
+
+  26 Jun 2011; Justin Lecher <jlec@gentoo.org> jmol-acme-1.0.ebuild,
+  metadata.xml:
+  Straight out QA issues
+
+  21 Jan 2010; Markus Dittrich <markusle@gentoo.org> jmol-acme-1.0.ebuild:
+  Changed license ACME -> BSD-2 (see bug #301121).
+
+  02 Sep 2007; Christian Faulhammer <opfer@gentoo.org> jmol-acme-1.0.ebuild:
+  filter jikes
+
+  21 Jun 2007; Vlastimil Babka <caster@gentoo.org> jmol-acme-1.0.ebuild:
+  Add ~x86 keyword, remove bundled .class files in src_unpack(), small style
+  tweaks.
+
+*jmol-acme-1.0 (22 May 2007)
+
+  22 May 2007; Jeff Gardner <je_fro@gentoo.org> +files/src.list,
+  +jmol-acme-1.0.ebuild:
+  Initial import.
+

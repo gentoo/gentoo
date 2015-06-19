@@ -1,0 +1,30 @@
+# ChangeLog for virtual/eject
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/eject/ChangeLog,v 1.8 2015/03/03 10:12:10 dlan Exp $
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> eject-0.ebuild:
+  add arm64 support, tested on A53 board
+
+  04 Jun 2012; Alexey Shvetsov <alexxy@gentoo.org> eject-0.ebuild:
+  [virtual/eject] Works on ~amd64-fbsd
+
+  05 Apr 2012; Mike Frysinger <vapier@gentoo.org> eject-0.ebuild:
+  Allow newer versions of util-linux to provide eject (since it does).
+
+  31 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> eject-0.ebuild:
+  Remove sys-block/unieject because it's masked.
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> eject-0.ebuild:
+  Drop to ~mips
+
+  11 Jan 2010; Ulrich Mueller <ulm@gentoo.org> eject-0.ebuild:
+  Set empty HOMEPAGE.
+
+  28 Dec 2009; Jonathan Callen <abcd@gentoo.org> eject-0.ebuild:
+  Keyword ~amd64-linux ~x86-linux for prefix
+
+*eject-0 (12 Aug 2009)
+
+  12 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> +eject-0.ebuild:
+  Initial commit.
+

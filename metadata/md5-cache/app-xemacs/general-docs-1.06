@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=General XEmacs documentation
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/general-docs-1.06-pkg.tar.gz
+_eclasses_=xemacs-packages	29b865270cd0de904945912d5041f1cc
+_md5_=56d6e615f59dbc32d3fb8b7792fc35a3

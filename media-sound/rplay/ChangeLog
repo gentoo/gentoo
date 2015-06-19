@@ -1,0 +1,79 @@
+# ChangeLog for media-sound/rplay
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/rplay/ChangeLog,v 1.23 2014/08/10 21:11:24 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> rplay-3.3.2-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  07 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  09 Jun 2012; Zac Medico <zmedico@gentoo.org> rplay-3.3.2-r1.ebuild:
+  inherit user for enewgroup and enewuser
+
+  24 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> rplay-3.3.2-r1.ebuild:
+  amd64 stable wrt #309643
+
+  15 Apr 2010; Jeroen Roovers <jer@gentoo.org> rplay-3.3.2-r1.ebuild:
+  Stable for HPPA (bug #309643).
+
+  11 Apr 2010; <nixnut@gentoo.org> rplay-3.3.2-r1.ebuild:
+  ppc stable #309643
+
+  28 Mar 2010; Raúl Porcel <armin76@gentoo.org> rplay-3.3.2-r1.ebuild:
+  alpha/arm/ia64/s390/sparc stable wrt #309643
+
+  21 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  rplay-3.3.2-r1.ebuild:
+  x86 stable wrt bug #309643
+
+  21 Mar 2010; Brent Baude <ranger@gentoo.org> rplay-3.3.2-r1.ebuild:
+  stable ppc64, bug 309643
+
+  15 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> rplay-3.3.2-r1.ebuild,
+  +files/rplay-3.3.2-built-in_function_exit.patch:
+  Fix incompatible implicit declaration of built-in function exit.
+
+*rplay-3.3.2-r1 (07 Sep 2009)
+
+  07 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +rplay-3.3.2-r1.ebuild:
+  Revision -12 from Debian.
+
+  25 Dec 2007; Samuli Suominen <drac@gentoo.org> metadata.xml:
+  media-sound ebuilds without maintainer belongs to sound herd.
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing taviso from metadata.xml as per #202471. Assigning to
+  maintainer-needed.
+
+  07 Aug 2007; Roy Marples <uberlord@gentoo.org> rplay-3.3.2.ebuild:
+  Keyworded ~x86-fbsd, #141142 thanks to Robert Annessi
+
+  03 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  31 Jul 2004; Tom Gall <tgall@gentoo.org> rplay-3.3.2.ebuild:
+  stable on ppc64, bug #57040
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> rplay-3.3.2.ebuild:
+  virtual/glibc -> virtual/libc
+
+  01 Feb 2004; Jon Portnoy <avenj@gentoo.org> rplay-3.3.2.ebuild :
+  AMD64 keywords.
+
+  26 Dec 2003; Jason Wever <weeve@gentoo.org> rplay-3.3.2.ebuild:
+  Marked stable on sparc to fix broken x11-wm/fvwm dependencies.
+
+  26 Dec 2003; Tavis Ormandy <taviso@gentoo.org> rplay-3.3.2.ebuild:
+  fixing #36527
+  minor cleanup
+
+  30 Jul 2003; Tavis Ormandy <taviso@gentoo.org> rplay-3.3.2.ebuild:
+  marking stable
+
+*rplay-3.3.2 (03 Jul 2003)
+
+  03 Jul 2003; Tavis Ormandy <taviso@gentoo.org> metadata.xml,
+  rplay-3.3.2.ebuild:
+  initial import

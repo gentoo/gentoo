@@ -1,0 +1,64 @@
+# ChangeLog for dev-perl/LWPx-ParanoidAgent
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/LWPx-ParanoidAgent/ChangeLog,v 1.12 2014/08/26 19:02:20 axs Exp $
+
+*LWPx-ParanoidAgent-1.70.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +LWPx-ParanoidAgent-1.70.0-r1.ebuild, -LWPx-ParanoidAgent-1.70.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  09 Oct 2011; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove tove from metadata.xml
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -LWPx-ParanoidAgent-1.07.ebuild:
+  Cleanup
+
+*LWPx-ParanoidAgent-1.70.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +LWPx-ParanoidAgent-1.70.0.ebuild:
+  Change version scheme
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org>
+  -LWPx-ParanoidAgent-1.04.ebuild, -LWPx-ParanoidAgent-1.05.ebuild,
+  -LWPx-ParanoidAgent-1.06.ebuild:
+  Cleanup
+
+*LWPx-ParanoidAgent-1.07 (15 Aug 2009)
+
+  15 Aug 2009; Torsten Veller <tove@gentoo.org>
+  +LWPx-ParanoidAgent-1.07.ebuild:
+  Version bump
+
+*LWPx-ParanoidAgent-1.06 (20 Jul 2009)
+
+  20 Jul 2009; Torsten Veller <tove@gentoo.org>
+  +LWPx-ParanoidAgent-1.06.ebuild:
+  Version bump
+
+*LWPx-ParanoidAgent-1.05 (22 Jun 2009)
+
+  22 Jun 2009; Torsten Veller <tove@gentoo.org>
+  +LWPx-ParanoidAgent-1.05.ebuild:
+  Version bump
+
+  01 May 2009; Torsten Veller <tove@gentoo.org>
+  -LWPx-ParanoidAgent-1.03.ebuild:
+  Cleanup
+
+*LWPx-ParanoidAgent-1.04 (31 Oct 2008)
+
+  31 Oct 2008; Torsten Veller <tove@gentoo.org>
+  +LWPx-ParanoidAgent-1.04.ebuild:
+  Version bump
+
+*LWPx-ParanoidAgent-1.03 (01 Aug 2008)
+
+  01 Aug 2008; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +LWPx-ParanoidAgent-1.03.ebuild:
+  Initial commit

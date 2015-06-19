@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>python</herd>
+<longdescription>
+  This project contains extensions to Sphinx to build documentation
+  from Space Telescope Science Institute.
+</longdescription>
+<upstream>
+  <remote-id type="pypi">stsci.sphinxext</remote-id>
+</upstream>
+</pkgmetadata>

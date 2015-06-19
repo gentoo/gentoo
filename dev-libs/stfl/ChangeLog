@@ -1,0 +1,211 @@
+# ChangeLog for dev-libs/stfl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/stfl/ChangeLog,v 1.48 2015/02/15 02:47:16 radhermit Exp $
+
+*stfl-0.24 (15 Feb 2015)
+
+  15 Feb 2015; Tim Harder <radhermit@gentoo.org> +stfl-0.24.ebuild:
+  Version bump.
+
+  22 Jan 2015; Jeroen Roovers <jer@gentoo.org> stfl-0.23.ebuild:
+  Whitespace.
+
+  05 Dec 2014; Agostino Sarubbo <ago@gentoo.org> stfl-0.23.ebuild:
+  Stable for x86, wrt bug #529262
+
+  03 Dec 2014; Agostino Sarubbo <ago@gentoo.org> stfl-0.23.ebuild:
+  Stable for ppc, wrt bug #529262
+
+  26 Nov 2014; Agostino Sarubbo <ago@gentoo.org> stfl-0.23.ebuild:
+  Stable for amd64, wrt bug #529262
+
+  17 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org> stfl-0.22-r2.ebuild,
+  stfl-0.23.ebuild:
+  Replace fixlocalpod with perl_delete_localpod
+
+*stfl-0.22-r2 (09 Nov 2014)
+
+  09 Nov 2014; Mikle Kolyada <zlogene@gentoo.org> +stfl-0.22-r2.ebuild,
+  -stfl-0.22-r1.ebuild:
+  Bump to EAPI=5
+
+*stfl-0.23 (23 Oct 2014)
+
+  23 Oct 2014; Tim Harder <radhermit@gentoo.org> +stfl-0.23.ebuild:
+  Version bump, update to python-r1 (bug #521522 by Ian Stakenvicius).
+
+*stfl-0.22-r1 (26 Oct 2012)
+
+  26 Oct 2012; Tomáš Chvátal <scarabeus@gentoo.org> +stfl-0.22-r1.ebuild,
+  -stfl-0.22.ebuild:
+  Revision bump as the package is fubared due to as-needed. Keep keywords as it
+  really could not work in current setup. Fixes bug#419659.
+
+  25 Feb 2012; Patrick Lauer <patrick@gentoo.org> stfl-0.22.ebuild:
+  Restricting jython
+
+  15 Jan 2012; Tim Harder <radhermit@gentoo.org> -stfl-0.21.ebuild:
+  Remove old.
+
+  15 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> stfl-0.22.ebuild:
+  x86 stable wrt bug #395439
+
+  11 Jan 2012; Agostino Sarubbo <ago@gentoo.org> stfl-0.22.ebuild:
+  Stable for AMD64, wrt bug #395439
+
+  11 Jan 2012; Tim Harder <radhermit@gentoo.org> stfl-0.22.ebuild,
+  +files/stfl-0.22-ruby-sharedlib.patch:
+  Link ruby lib against shared lib.
+
+  11 Jan 2012; Tim Harder <radhermit@gentoo.org> stfl-0.22.ebuild:
+  Fix building ruby support (bug #395569) and update to EAPI 4.
+
+*stfl-0.22 (01 Nov 2011)
+
+  01 Nov 2011; Tim Harder <radhermit@gentoo.org> +stfl-0.22.ebuild,
+  +files/stfl-0.22-soname-symlink.patch:
+  Version bump. Add static-libs use flag.
+
+  13 Sep 2011; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Take over as maintainer.
+
+  13 Sep 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #225633
+
+  19 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  stfl-0.21.ebuild:
+  Fix dependencies (bug #336589).
+
+  24 Jun 2010; Christoph Mende <angelos@gentoo.org> stfl-0.21.ebuild:
+  Stable on amd64 wrt bug #318317
+
+  15 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  stfl-0.21.ebuild:
+  Set SUPPORT_PYTHON_ABIS (bug #312203). Respect LDFLAGS during building libstfl.so.
+
+  15 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  stfl-0.19.ebuild:
+  Delete deprecation warnings.
+
+  05 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> stfl-0.21.ebuild:
+  x86 stable wrt bug #318317
+
+  04 Apr 2010; Thomas Anderson <tanderson@gentoo.org> stfl-0.21.ebuild:
+  Fix usage of python.eclass, thanks to Arfrever for mentioning it.
+
+*stfl-0.21 (03 Apr 2010)
+
+  03 Apr 2010; Thomas Anderson <tanderson@gentoo.org> +stfl-0.21.ebuild,
+  +files/stfl-0.21-python.patch:
+  Add dev-libs/stfl-0.21, thanks to Tim Harder <radhermit@gmail.com> in bug
+  #296735 for initial ebuild updates and patches.
+
+  30 Aug 2009; Thomas Anderson <tanderson@gentoo.org> stfl-0.19.ebuild:
+  stable amd64, bug 281352
+
+  23 May 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  files/stfl-0.19-multilib.patch, stfl-0.19.ebuild:
+  Remove mention of stfl.pyc from Makefiles and stop automatic generation of
+  stfl.pyc by doing 'python -c stfl' in the buildsystem. Also fix a parallel
+  build bug produced (partly) by the stfl.pyc stuff. Thanks to Christian
+  Weiske for the report in bug #262006 and Ihar Hrachyshka for the initial
+  patch.
+
+  07 Mar 2009; Thomas Anderson <gentoofan23@gentoo.org> stfl-0.17.ebuild,
+  stfl-0.18.ebuild, stfl-0.19.ebuild:
+  Transition to eapi 2 use deps
+
+  23 Sep 2008; Markus Rothe <corsair@gentoo.org> stfl-0.19.ebuild:
+  Added ~ppc
+
+  06 Sep 2008; Markus Meier <maekke@gentoo.org> stfl-0.19.ebuild:
+  x86 stable, bug #236506
+
+*stfl-0.19 (03 Sep 2008)
+
+  03 Sep 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  +files/stfl-0.19-multilib.patch, metadata.xml, +stfl-0.19.ebuild:
+  Version bump.
+
+  20 Jul 2008; Greg Kroah-Hartman <gregkh@gentoo.org>
+  files/stfl-0.18-multilib.patch:
+  fix patch for non-64 bit arches for 0.18 install phase
+
+  22 Jun 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  +files/stfl-0.18-multilib.patch, stfl-0.18.ebuild:
+  Fixed multilib bugs; keyworded ~amd64, bug #209304
+
+  30 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Andrej Kacian (Ticho) from metadata.xml (as per #59986). Assigning
+  to maintainer-needed.
+
+  27 Dec 2007; Andrej Kacian <ticho@gentoo.org> -stfl-0.15.ebuild,
+  -stfl-0.16.ebuild:
+  Old ebuilds cleanup.
+
+  27 Dec 2007; Andrej Kacian <ticho@gentoo.org> stfl-0.17.ebuild:
+  Stable on x86.
+
+*stfl-0.18 (27 Dec 2007)
+
+  27 Dec 2007; Andrej Kacian <ticho@gentoo.org> +stfl-0.18.ebuild:
+  Version bump.
+
+  30 Sep 2007; Andrej Kacian <ticho@gentoo.org> stfl-0.17.ebuild:
+  Added a check for unicode-aware ncurses. Patch by Antti Järvinen
+  <netfiniitti at kapsi.fi> in bug #192897.
+
+*stfl-0.17 (04 Sep 2007)
+
+  04 Sep 2007; Andrej Kacian <ticho@gentoo.org> +stfl-0.17.ebuild:
+  Version bump.
+
+*stfl-0.16 (30 Aug 2007)
+
+  30 Aug 2007; Andrej Kacian <ticho@gentoo.org> -stfl-0.8.ebuild,
+  -stfl-0.13.ebuild, -stfl-0.14.ebuild, +stfl-0.16.ebuild:
+  Version bump. Removed old ebuilds.
+
+*stfl-0.15 (26 Jul 2007)
+
+  26 Jul 2007; Andrej Kacian <ticho@gentoo.org> +stfl-0.15.ebuild:
+  Version bump.
+
+*stfl-0.14 (21 Jun 2007)
+
+  21 Jun 2007; Andrej Kacian <ticho@gentoo.org> +stfl-0.14.ebuild:
+  Version bump.
+
+*stfl-0.13 (09 Jun 2007)
+
+  09 Jun 2007; Andrej Kacian <ticho@gentoo.org> -stfl-0.9.ebuild,
+  -stfl-0.10.ebuild, -stfl-0.12.ebuild, +stfl-0.13.ebuild:
+  Version bump and obsolete ebuild purge.
+
+*stfl-0.12 (03 Jun 2007)
+
+  03 Jun 2007; Andrej Kacian <ticho@gentoo.org> +stfl-0.12.ebuild:
+  Version bump.
+
+*stfl-0.10 (03 Jun 2007)
+
+  03 Jun 2007; Andrej Kacian <ticho@gentoo.org> +stfl-0.10.ebuild:
+  Version bump.
+
+*stfl-0.9 (31 May 2007)
+
+  31 May 2007; Andrej Kacian <ticho@gentoo.org> +stfl-0.9.ebuild:
+  Version bump.
+
+  18 Apr 2007; Andrej Kacian <ticho@gentoo.org> stfl-0.8.ebuild:
+  Specify toolchain compiler. Do not build perl or ruby bindings if respective
+  USE flag is disabled, even if perl or ruby is installed on the system. Force
+  -j1 to make, since the build system is weird and tends to break with
+  multiple parallel jobs.
+
+*stfl-0.8 (17 Apr 2007)
+
+  17 Apr 2007; Andrej Kacian <ticho@gentoo.org> +metadata.xml,
+  +stfl-0.8.ebuild:
+  Initial import. Ebuild submitted by Tim Weber <gentoo.bugs at scytale.de> in
+  bug #174975, modified by me.

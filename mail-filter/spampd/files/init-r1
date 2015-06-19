@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/spampd/files/init-r1,v 1.1 2014/04/20 14:17:22 eras Exp $
+
+# Note: spampd configuration file is /etc/conf.d/spampd
+
+depend() {
+	use net
+}
+
+start() {
+	ebegin "Starting spampd"
+	start-stop-daemon --start --quiet \
+		--exec /usr/sbin/spampd.pl -- --pid=/run/spampd.pid \
+			${SPAMPD_OPTS}
+	eend $? "Failed to start spampd"
+}
+
+stop() {
+	ebegin "Stopping spampd"
+	start-stop-daemon --stop --quiet --pidfile /run/spampd.pid
+	eend $? "Failed to stop spampd"
+}

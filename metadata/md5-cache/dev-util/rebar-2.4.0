@@ -1,0 +1,12 @@
+DEFINED_PHASES=install test
+DEPEND=dev-lang/erlang
+DESCRIPTION=A sophisticated build-tool for Erlang projects that follows OTP principles
+EAPI=4
+HOMEPAGE=http://github.com/rebar/rebar
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-lang/erlang
+SLOT=0
+SRC_URI=http://github.com/rebar/rebar/archive/2.4.0.tar.gz -> rebar-2.4.0.tar.gz
+_eclasses_=bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=05a327fb86c70e605688adfb83fa8613

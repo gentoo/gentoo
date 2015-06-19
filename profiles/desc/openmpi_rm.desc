@@ -1,0 +1,10 @@
+# Copyright 1999-2012 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/desc/openmpi_rm.desc,v 1.1 2012/04/18 20:26:12 alexxy Exp $
+
+# This file contains descriptions of OPENMPI_RM USE_EXPAND flags.
+
+# Keep it sorted.
+
+pbs - torque resource manager
+slurm - slurm resource manager

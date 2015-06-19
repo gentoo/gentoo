@@ -1,0 +1,3 @@
+ELLIPTICS_BIN=/usr/bin/dnet_ioserv
+ELLIPTICS_CONF=/etc/elliptics/ioserv.conf
+ELLIPTICS_USER=elliptics

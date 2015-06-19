@@ -1,0 +1,160 @@
+taken from Fedora
+
+http://pkgs.fedoraproject.org/cgit/udftools.git/tree/udftools-1.0.0b3-warningfixes2.patch?h=f22
+
+diff -ur udftools-1.0.0b3/libudffs/file.c udftools-1.0.0b3-new/libudffs/file.c
+--- udftools-1.0.0b3/libudffs/file.c	2002-11-26 08:18:51.000000000 +0100
++++ udftools-1.0.0b3-new/libudffs/file.c	2007-08-23 14:02:07.000000000 +0200
+@@ -576,7 +576,7 @@
+ 	tmp = leBPL_to_cpup(p);
+ found_first:
+ 	tmp |= (~0UL << size);
+-	if (tmp == ~0UL)	/* Are any bits zero? */
++	if (tmp == (uintBPL)~0UL)	/* Are any bits zero? */
+ 		return result + size; /* Nope. */
+ found_middle:
+ 	return result + ffz(tmp);
+diff -ur udftools-1.0.0b3/mkudffs/mkudffs.c udftools-1.0.0b3-new/mkudffs/mkudffs.c
+--- udftools-1.0.0b3/mkudffs/mkudffs.c	2007-08-23 14:32:38.000000000 +0200
++++ udftools-1.0.0b3-new/mkudffs/mkudffs.c	2007-08-23 14:14:42.000000000 +0200
+@@ -72,7 +72,7 @@
+ 	disc->udf_pvd[0] = malloc(sizeof(struct primaryVolDesc));
+ 	memcpy(disc->udf_pvd[0], &default_pvd, sizeof(struct primaryVolDesc));
+ 	memcpy(&disc->udf_pvd[0]->recordingDateAndTime, &ts, sizeof(timestamp));
+-	sprintf(&disc->udf_pvd[0]->volSetIdent[1], "%08lx%s",
++	sprintf((char *)&disc->udf_pvd[0]->volSetIdent[1], "%08lx%s",
+ 		mktime(tm), &disc->udf_pvd[0]->volSetIdent[9]);
+ 	disc->udf_pvd[0]->volIdent[31] = strlen(disc->udf_pvd[0]->volIdent);
+ 	disc->udf_pvd[0]->volSetIdent[127] = strlen(disc->udf_pvd[0]->volSetIdent);
+@@ -289,7 +289,7 @@
+ int write_disc(struct udf_disc *disc)
+ {
+ 	struct udf_extent *start_ext;
+-	int ret;
++	int ret=0;
+ 
+ 	start_ext = disc->head;
+ 
+@@ -299,6 +299,7 @@
+ 			return ret;
+ 		start_ext = start_ext->next;
+ 	}
++	return ret;
+ }
+ 
+ void setup_vrs(struct udf_disc *disc)
+@@ -450,7 +451,7 @@
+ 		struct unallocSpaceEntry *use;
+ 		short_ad *sad;
+ 		int max = (0x3FFFFFFF / disc->blocksize) * disc->blocksize;
+-		int pos;
++		int pos=0;
+ 		long long rem;
+ 
+ 		if (disc->flags & FLAG_STRATEGY4096)
+diff -ur udftools-1.0.0b3/wrudf/ide-pc.c udftools-1.0.0b3-new/wrudf/ide-pc.c
+--- udftools-1.0.0b3/wrudf/ide-pc.c	2002-11-26 08:18:51.000000000 +0100
++++ udftools-1.0.0b3-new/wrudf/ide-pc.c	2007-08-23 14:32:09.000000000 +0200
+@@ -31,6 +31,7 @@
+ #include <sys/types.h>		/* for u_char etc. */
+ #include <linux/cdrom.h>
+ #include <unistd.h>		/* sleep() */
++#include <stdlib.h>
+ 
+ #include "bswap.h"
+ #include "ide-pc.h"
+diff -ur udftools-1.0.0b3/wrudf/wrudf.c udftools-1.0.0b3-new/wrudf/wrudf.c
+--- udftools-1.0.0b3/wrudf/wrudf.c	2007-08-23 14:32:38.000000000 +0200
++++ udftools-1.0.0b3-new/wrudf/wrudf.c	2007-08-23 14:26:41.000000000 +0200
+@@ -245,7 +245,7 @@
+ 	    } else if( strncmp( spm->partIdent.ident, UDF_ID_VIRTUAL, strlen(UDF_ID_VIRTUAL)) == 0 )
+ 		virtualPartitionNum = i;
+ 	}
+-	spm = (char*)spm + spm->partitionMapLength;
++	spm = (struct sparablePartitionMap*)((char*)spm + spm->partitionMapLength);
+     }
+ 
+     if( medium == CDR ) {
+@@ -300,7 +300,7 @@
+ 	    fail("SpaceBitmap not found\n");
+     }
+ 
+-    if (fsdLen = decode_utf8(fsd->fileSetIdent, fsdOut, fsd->fileSetIdent[31]))
++    if ((fsdLen = decode_utf8(fsd->fileSetIdent, fsdOut, fsd->fileSetIdent[31]))>=0)
+         fsdOut[fsdLen] = '\0';
+ 
+     printf("You are going to update fileset '%s'\nProceed (y/N) : ", &fsdOut[1]);
+@@ -605,7 +605,7 @@
+ int
+ main(int argc, char** argv) 
+ { 
+-    int	 	rv;
++    int	 	rv=0;
+     int		cmnd;
+     char	prompt[256];
+     Directory	*d;
+diff -ur udftools-1.0.0b3/wrudf/wrudf-cdrw.c udftools-1.0.0b3-new/wrudf/wrudf-cdrw.c
+--- udftools-1.0.0b3/wrudf/wrudf-cdrw.c	2002-11-26 08:18:51.000000000 +0100
++++ udftools-1.0.0b3-new/wrudf/wrudf-cdrw.c	2007-08-23 14:30:14.000000000 +0200
+@@ -614,7 +614,6 @@
+ readTaggedBlock(uint32_t lbn, uint16_t partition) 
+ {
+     int		i;
+-    uint32_t	blkno;
+     uint8_t	sum, *p;
+     struct generic_desc *block;
+ 
+@@ -634,7 +633,7 @@
+ 	if( strncmp(((struct sparingTable*)block)->sparingIdent.ident, UDF_ID_SPARING, strlen(UDF_ID_SPARING)) != 0 ) {
+ 	    for( i = 0; i < 2048; i++ ) {
+ 		if( ((uint8_t*)block)[i] != 0 ) {
+-		    printf("readTaggedBlock: Empty block %d not all zeroes\n", blkno);
++		    printf("readTaggedBlock: Empty block %d not all zeroes\n", lbn);
+ 		    break;
+ 		}
+ 	    }
+@@ -647,10 +646,10 @@
+ 	    sum += *(p + i);
+ 
+     if( block->descTag.tagChecksum != sum )
+-	fail("readTagged: Checksum error in block %d\n", blkno);
++	fail("readTagged: Checksum error in block %d\n", lbn);
+ 
+     if( block->descTag.descCRC != udf_crc((uint8_t*)block + sizeof(tag), ((tag*)block)->descCRCLength, 0) )
+-	fail("readTagged: CRC error in block %d\n", blkno);
++	fail("readTagged: CRC error in block %d\n", lbn);
+ 
+     return block;
+ }
+@@ -709,8 +708,8 @@
+ writeExtents(char* src, int usesShort, void* extents) 
+ {
+     uint	len, blkno, partitionNumber;
+-    long_ad	*lo;
+-    short_ad	*sh;
++    long_ad	*lo=NULL;
++    short_ad	*sh=NULL;
+ 
+     if( usesShort ) {
+ 	sh = (short_ad*) extents;
+diff -ur udftools-1.0.0b3/wrudf/wrudf-cmnd.c udftools-1.0.0b3-new/wrudf/wrudf-cmnd.c
+--- udftools-1.0.0b3/wrudf/wrudf-cmnd.c	2002-11-26 08:18:51.000000000 +0100
++++ udftools-1.0.0b3-new/wrudf/wrudf-cmnd.c	2007-08-23 14:22:41.000000000 +0200
+@@ -45,7 +45,7 @@
+ int
+ copyFile(Directory *dir, char* inName, char*newName, struct stat *fileStat) 
+ {
+-    int		fd, i, blkno;
++    int		fd, i=0, blkno;
+     uint32_t	nBytes, blkInPkt;
+     uint32_t	maxVarPktSize;		// in bytes
+     struct fileIdentDesc *fid;
+@@ -54,7 +54,7 @@
+ 
+     fd = open(inName, O_RDONLY);
+     if( fd == 0 ) {
+-	printf("'%s' does not exist\n", cmndv[i]);
++	printf("'%s' does not exist\n", inName);
+ 	return CMND_FAILED;
+     }
+ 

@@ -1,0 +1,39 @@
+# ChangeLog for dev-java/jrobin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jrobin/ChangeLog,v 1.7 2015/06/07 08:33:00 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*jrobin-1.6.0-r1 (29 May 2015)
+
+  29 May 2015; James Le Cuirot <chewi@gentoo.org> +jrobin-1.6.0-r1.ebuild,
+  -jrobin-1.6.0.ebuild:
+  Install rrdtool wrapper as jrobin-rrdtool to avoid conflicting with net-
+  analyzer/rrdtool. Closes bug #550522.
+
+*jrobin-1.6.0 (25 May 2015)
+
+  25 May 2015; James Le Cuirot <chewi@gentoo.org> +jrobin-1.6.0.ebuild,
+  -jrobin-1.5.14.ebuild:
+  Version bump. This version isn't locked to Java 6.
+
+  17 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -jrobin-1.5.4.ebuild:
+  NM: Cleanup superseeded ebuilds.
+
+*jrobin-1.5.14 (07 May 2012)
+
+  07 May 2012; Ralph Sennhauser <sera@gentoo.org> +jrobin-1.5.14.ebuild:
+  Version bump. New LGPL-2.1. Clean-up.
+  Require jdk6 due to using internal API. #402485
+  Add a launcher.
+
+  18 Sep 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  jrobin-1.5.4.ebuild:
+  Combined two find commands into one, no real functional change.
+
+*jrobin-1.5.4 (16 Sep 2007)
+
+  16 Sep 2007; William L. Thomson Jr. <wltjr@gentoo.org> +metadata.xml,
+  +jrobin-1.5.4.ebuild:
+  Intial ebuild, dependency for opennms and a useful lib :)

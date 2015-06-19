@@ -1,0 +1,16 @@
+http://code.google.com/p/irqbalance/issues/detail?id=8
+http://code.google.com/p/irqbalance/issues/detail?id=13
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -25,7 +25,9 @@
+  
+ INCLUDES = -I${top_srcdir} 
+ LIBS = $(CAPNG_LDADD) $(GLIB_LIBS)
+-AM_CFLAGS = -g -Os -W -Wall -Wshadow -Wformat -Wundef $(GLIB_CFLAGS) -D_GNU_SOURCE
++AM_CFLAGS = -W -Wall -Wshadow -Wformat -Wundef
++AM_CPPFLAGS = $(GLIB_CFLAGS) -D_GNU_SOURCE
++dist_man_MANS = irqbalance.1
+ noinst_HEADERS = bitmap.h constants.h cpumask.h irqbalance.h non-atomic.h \
+ 	types.h
+ sbin_PROGRAMS = irqbalance

@@ -1,0 +1,31 @@
+# ChangeLog for games-fps/turtlearena
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/turtlearena/ChangeLog,v 1.7 2014/11/25 23:12:29 hasufell Exp $
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> turtlearena-0.6.1.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  06 Aug 2013; Samuli Suominen <ssuominen@gentoo.org> turtlearena-0.6.1.ebuild,
+  +files/turtlearena-0.6.1-freetype.patch:
+  Fix building with libjpeg-turbo extended libjpeg.so.62 API with
+  jpeg_mem_src() and jpeg_mem_dest() wrt #479822 by Julian Ospald. Fix
+  freetype2 related build error wrt #479822#c3.
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> turtlearena-0.6.1.ebuild:
+  Stable for amd64, wrt bug #474382
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> turtlearena-0.6.1.ebuild:
+  Stable for x86, wrt bug #474382
+
+  28 Apr 2013; Julian Ospald <hasufell@gentoo.org> turtlearena-0.6.1.ebuild:
+  update license info
+
+*turtlearena-0.6.1 (28 Apr 2013)
+
+  28 Apr 2013; Julian Ospald <hasufell@gentoo.org> +turtlearena-0.6.1.ebuild,
+  +files/turtlearena-0.6.1-build.patch, +metadata.xml:
+  initial import wrt #467358

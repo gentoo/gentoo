@@ -1,0 +1,87 @@
+# ChangeLog for dev-tex/latex-unicode
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/latex-unicode/ChangeLog,v 1.20 2009/06/17 07:28:41 aballier Exp $
+
+  17 Jun 2009; Alexis Ballier <aballier@gentoo.org>
+  latex-unicode-20041017.ebuild:
+  do not specify compression for doc files in elog messages, bug #272906
+
+  17 Jun 2009; Alexis Ballier <aballier@gentoo.org>
+  -latex-unicode-20030605.ebuild, -latex-unicode-20040307.ebuild:
+  remove old
+
+  03 Sep 2008; Christian Faulhammer <opfer@gentoo.org>
+  latex-unicode-20030605.ebuild, latex-unicode-20040307.ebuild,
+  latex-unicode-20041017.ebuild:
+  remove dependency on virtual/tetex and block
+  dev-texlive/texlive-latexrecommended
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  28 Jan 2007; Marius Mauch <genone@gentoo.org>
+  latex-unicode-20030605.ebuild, latex-unicode-20040307.ebuild,
+  latex-unicode-20041017.ebuild:
+  Replacing einfo with elog
+
+  27 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  latex-unicode-20041017.ebuild:
+  Stable on sparc
+
+  21 May 2006; Markus Rothe <corsair@gentoo.org>
+  latex-unicode-20041017.ebuild:
+  Stable on ppc64
+
+  31 Dec 2005; Markus Rothe <corsair@gentoo.org>
+  latex-unicode-20041017.ebuild:
+  Added ~ppc64
+
+  21 Oct 2005; Mark Loeser <halcy0n@gentoo.org>
+  latex-unicode-20041017.ebuild:
+  Stable on x86
+
+  18 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  latex-unicode-20041017.ebuild:
+  Stable on ppc.
+
+  28 Dec 2004; Dylan Carlson <absinthe@gentoo.org>
+  latex-unicode-20040307.ebuild, latex-unicode-20041017.ebuild:
+  Stable on amd64.
+
+*latex-unicode-20041017 (17 Nov 2004)
+
+  17 Nov 2004; Mamoru KOMACHI <usata@gentoo.org>
+  +latex-unicode-20041017.ebuild:
+  Version bumped.
+
+  18 Aug 2004; Mamoru KOMACHI <usata@gentoo.org>
+  latex-unicode-20040307.ebuild:
+  Do not build cjk files if USE="-cjk". Thanks to Georgi Georgiev
+  <chutz@gg3.net>. See bug #56809.
+
+  06 May 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  latex-unicode-20040307.ebuild:
+  Added ~sparc, #50251
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> latex-unicode-20030605.ebuild:
+  Mark stable on amd64.
+
+  14 Apr 2004; David Holm <dholm@gentoo.org> latex-unicode-20040307.ebuild:
+  Added to ~ppc.
+
+*latex-unicode-20040307 (14 Apr 2004)
+
+  14 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> latex-unicode-20040307.ebuild:
+  Version bumped.
+
+*latex-unicode-20030605 (05 Jan 2004)
+
+  28 Feb 2004; Mamoru KOMACHI <usata@gentoo.org>
+  latex-unicode-20030605.ebuild:
+  Added cjk IUSE flag to make cjk-latex optional. Thanks to Nguyen Thai
+  Ngoc Duy <pclouds@vnlinux.org> for reporting the bug #43159
+
+  05 Jan 2004; Mamoru KOMACHI <usata@gentoo.org>
+  latex-unicode-20030605.ebuild:
+  Initial import. Closing bug #17282
+

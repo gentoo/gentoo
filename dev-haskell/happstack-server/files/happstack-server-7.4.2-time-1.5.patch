@@ -1,0 +1,225 @@
+commit 65b7c1c907cc7a60b088ff8de43edd1e1f1d5165
+Author: Tenor Biel <tenorbiel@gmail.com>
+Date:   Mon Mar 30 02:46:58 2015 -0500
+
+    add version handlers for time-1.5.* and time-1.4.*
+
+diff --git a/src/Happstack/Server/FileServe/BuildingBlocks.hs b/src/Happstack/Server/FileServe/BuildingBlocks.hs
+index eda3727..9650305 100644
+--- a/src/Happstack/Server/FileServe/BuildingBlocks.hs
++++ b/src/Happstack/Server/FileServe/BuildingBlocks.hs
+@@ -65,7 +65,6 @@ import Data.List                    (sort)
+ import Data.Maybe                   (fromMaybe)
+ import           Data.Map           (Map)
+ import qualified Data.Map           as Map
+-import Data.Time                    (UTCTime, formatTime)
+ import Data.Time.Compat             (toUTCTime)
+ import Filesystem.Path.CurrentOS    (commonPrefix, encodeString, decodeString, collapse, append)
+ import Happstack.Server.Monads      (ServerMonad(askRq), FilterMonad, WebMonad)
+@@ -74,12 +73,18 @@ import Happstack.Server.Types       (Length(ContentLength), Request(rqPaths, rqU
+ import System.Directory             (doesDirectoryExist, doesFileExist, getDirectoryContents, getModificationTime)
+ import System.FilePath              ((</>), addTrailingPathSeparator, hasDrive, isPathSeparator, joinPath, takeExtension, isValid)
+ import System.IO                    (IOMode(ReadMode), hFileSize, hClose, openBinaryFile, withBinaryFile)
+-import System.Locale                (defaultTimeLocale)
+ import System.Log.Logger            (Priority(DEBUG), logM)
+ import           Text.Blaze.Html             ((!))
+ import qualified Text.Blaze.Html5            as H
+ import qualified Text.Blaze.Html5.Attributes as A
+ 
++#if MIN_VERSION_time(1,5,0)
++import Data.Time     (UTCTime, formatTime, defaultTimeLocale)
++#else
++import System.Locale (defaultTimeLocale)
++import Data.Time     (UTCTime, formatTime)
++#endif
++
+ -- * Mime-Type / Content-Type
+ 
+ -- |a 'Map' from file extensions to content-types
+diff --git a/src/Happstack/Server/Internal/Clock.hs b/src/Happstack/Server/Internal/Clock.hs
+index 6a16b9b..7d58877 100644
+--- a/src/Happstack/Server/Internal/Clock.hs
++++ b/src/Happstack/Server/Internal/Clock.hs
+@@ -12,9 +12,14 @@ import Control.Monad
+ import Data.IORef
+ import Data.Time.Clock       (UTCTime)
+ import Data.Time.Clock.POSIX (POSIXTime, getPOSIXTime, posixSecondsToUTCTime)
+-import Data.Time.Format      (formatTime)
+ import System.IO.Unsafe
+-import System.Locale
++
++#if MIN_VERSION_time(1,5,0)
++import Data.Time.Format (formatTime, defaultTimeLocale)
++#else
++import Data.Time.Format (formatTime)
++import System.Locale    (defaultTimeLocale)
++#endif
+ 
+ import qualified Data.ByteString.Char8 as B
+ 
+@@ -57,4 +62,4 @@ getApproximatePOSIXTime :: IO POSIXTime
+ getApproximatePOSIXTime = readIORef (cachedPOSIXTime clock)
+ 
+ getApproximateUTCTime :: IO UTCTime
+-getApproximateUTCTime = posixSecondsToUTCTime <$> getApproximatePOSIXTime
+\ No newline at end of file
++getApproximateUTCTime = posixSecondsToUTCTime <$> getApproximatePOSIXTime
+diff --git a/src/Happstack/Server/Internal/Cookie.hs b/src/Happstack/Server/Internal/Cookie.hs
+index b65edbd..ea76345 100644
+--- a/src/Happstack/Server/Internal/Cookie.hs
++++ b/src/Happstack/Server/Internal/Cookie.hs
+@@ -23,10 +23,15 @@ import Data.Data             (Data, Typeable)
+ import Data.List             ((\\), intersperse)
+ import Data.Time.Clock       (UTCTime, addUTCTime, diffUTCTime)
+ import Data.Time.Clock.POSIX (posixSecondsToUTCTime)
+-import Data.Time.Format      (formatTime)
+ import Happstack.Server.Internal.Clock (getApproximateUTCTime)
+ import Text.ParserCombinators.Parsec hiding (token)
+-import System.Locale         (defaultTimeLocale)
++
++#if MIN_VERSION_time(1,5,0)
++import Data.Time.Format (formatTime, defaultTimeLocale)
++#else
++import Data.Time.Format (formatTime)
++import System.Locale    (defaultTimeLocale)
++#endif
+ 
+ -- | a type for HTTP cookies. Usually created using 'mkCookie'.
+ data Cookie = Cookie
+diff --git a/src/Happstack/Server/Internal/LogFormat.hs b/src/Happstack/Server/Internal/LogFormat.hs
+index 5561940..c85ff81 100644
+--- a/src/Happstack/Server/Internal/LogFormat.hs
++++ b/src/Happstack/Server/Internal/LogFormat.hs
+@@ -3,8 +3,12 @@ module Happstack.Server.Internal.LogFormat
+   , formatRequestCombined
+   ) where
+ 
+-import System.Locale (defaultTimeLocale)
++#if MIN_VERSION_time(1,5,0)
++import Data.Time.Format (FormatTime(..), formatTime, defaultTimeLocale)
++#else
+ import Data.Time.Format (FormatTime(..), formatTime)
++import System.Locale    (defaultTimeLocale)
++#endif
+ 
+ -- | Format the time as describe in the Apache combined log format.
+ --   http://httpd.apache.org/docs/2.2/logs.html#combined
+diff --git a/src/Happstack/Server/Response.hs b/src/Happstack/Server/Response.hs
+index 7ae52b3..23f61b0 100644
+--- a/src/Happstack/Server/Response.hs
++++ b/src/Happstack/Server/Response.hs
+@@ -1,6 +1,6 @@
+ {-# LANGUAGE FlexibleContexts, FlexibleInstances, TypeSynonymInstances, ScopedTypeVariables #-}
+ -- | Functions and classes related to generating a 'Response' and setting the response code. For detailed instruction see the Happstack Crash Course: <http://happstack.com/docs/crashcourse/HelloWorld.html#response_code>
+-module Happstack.Server.Response 
++module Happstack.Server.Response
+     ( -- * Converting values to a 'Response'
+       ToMessage(..)
+     , flatten
+@@ -34,24 +34,29 @@ import qualified Data.Text                       as T
+ import qualified Data.Text.Encoding              as T
+ import qualified Data.Text.Lazy                  as LT
+ import qualified Data.Text.Lazy.Encoding         as LT
+-import           Data.Time                       (UTCTime, formatTime)
+ import           Happstack.Server.Internal.Monads         (FilterMonad(composeFilter))
+ import           Happstack.Server.Types          (Response(..), Request(..), nullRsFlags, getHeader, noContentLength, redirect, result, setHeader, setHeaderBS)
+ import           Happstack.Server.SURI           (ToSURI)
+-import           System.Locale                   (defaultTimeLocale)
+ import qualified Text.Blaze.Html                 as Blaze
+ import qualified Text.Blaze.Html.Renderer.Utf8   as Blaze
+ import           Text.Html                       (Html, renderHtml)
+ import qualified Text.XHtml                      as XHtml (Html, renderHtml)
+ 
++#if MIN_VERSION_time(1,5,0)
++import Data.Time     (UTCTime, formatTime, defaultTimeLocale)
++#else
++import Data.Time     (UTCTime, formatTime)
++import System.Locale (defaultTimeLocale)
++#endif
++
+ -- | A low-level function to build a 'Response' from a content-type
+ -- and a 'ByteString'.
+ --
+ -- Creates a 'Response' in a manner similar to the 'ToMessage' class,
+ -- but without requiring an instance declaration.
+--- 
++--
+ -- example:
+--- 
++--
+ -- > import Data.ByteString.Char8 as C
+ -- > import Data.ByteString.Lazy.Char8 as L
+ -- > import Happstack.Server
+@@ -85,7 +90,7 @@ toResponseBS contentType message =
+ --
+ -- > main = serve Nothing $ toResponse "hello, world!"
+ --
+--- Minimal definition: 'toMessage' (and usually 'toContentType'). 
++-- Minimal definition: 'toMessage' (and usually 'toContentType').
+ class ToMessage a where
+     toContentType :: a -> B.ByteString
+     toContentType _ = B.pack "text/plain"
+@@ -194,31 +199,31 @@ modifyResponse = composeFilter
+ --
+ -- A filter for setting the response code. Generally you will use a
+ -- helper function like 'ok' or 'seeOther'.
+--- 
++--
+ -- > main = simpleHTTP nullConf $ do setResponseCode 200
+ -- >                                 return "Everything is OK"
+--- 
++--
+ -- see also: 'resp'
+-setResponseCode :: FilterMonad Response m => 
++setResponseCode :: FilterMonad Response m =>
+                    Int -- ^ response code
+                 -> m ()
+ setResponseCode code
+     = composeFilter $ \r -> r{rsCode = code}
+ 
+ -- | Same as @'setResponseCode' status >> return val@.
+--- 
++--
+ -- Use this if you want to set a response code that does not already
+--- have a helper function. 
+--- 
++-- have a helper function.
++--
+ -- > main = simpleHTTP nullConf $ resp 200 "Everything is OK"
+-resp :: (FilterMonad Response m) => 
++resp :: (FilterMonad Response m) =>
+         Int -- ^ response code
+      -> b   -- ^ value to return
+      -> m b
+ resp status val = setResponseCode status >> return val
+ 
+ -- | Respond with @200 OK@.
+--- 
++--
+ -- > main = simpleHTTP nullConf $ ok "Everything is OK"
+ ok :: (FilterMonad Response m) => a -> m a
+ ok = resp 200
+@@ -239,7 +244,7 @@ movedPermanently uri res = do modifyResponse $ redirect 301 uri
+                               return res
+ 
+ -- | Respond with @302 Found@.
+--- 
++--
+ -- You probably want 'seeOther'. This method is not in popular use anymore, and is generally treated like 303 by most user-agents anyway.
+ found :: (FilterMonad Response m, ToSURI uri) => uri -> res -> m res
+ found uri res = do modifyResponse $ redirect 302 uri
+@@ -284,7 +289,7 @@ forbidden :: (FilterMonad Response m) => a -> m a
+ forbidden = resp 403
+ 
+ -- | Respond with @404 Not Found@.
+--- 
++--
+ -- > main = simpleHTTP nullConf $ notFound "What you are looking for has not been found."
+ notFound :: (FilterMonad Response m) => a -> m a
+ notFound = resp 404
+@@ -324,4 +329,4 @@ prettyResponse res@SendFile{}  =
+     showString "\nrsValidator = " . shows      (rsValidator res).
+     showString "\nsfFilePath  = " . shows      (sfFilePath res) .
+     showString "\nsfOffset    = " . shows      (sfOffset res)   .
+-    showString "\nsfCount     = " $ show       (sfCount res)    
++    showString "\nsfCount     = " $ show       (sfCount res)

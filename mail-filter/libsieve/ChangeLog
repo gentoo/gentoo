@@ -1,0 +1,85 @@
+# ChangeLog for mail-filter/libsieve
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/libsieve/ChangeLog,v 1.21 2014/08/10 21:16:22 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> libsieve-2.2.7.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  13 May 2012; Agostino Sarubbo <ago@gentoo.org> -libsieve-2.2.5.ebuild:
+  Remove old
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> libsieve-2.2.7.ebuild:
+  x86 stable wrt bug #397051
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org> libsieve-2.2.7.ebuild:
+  Stable for amd64, wrt bug #397051
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #118937
+
+  25 Jan 2010; Thilo Bangert <bangert@gentoo.org> libsieve-2.2.5.ebuild,
+  -libsieve-2.2.6.ebuild, libsieve-2.2.7.ebuild:
+  relax blocker (#248097) - remove old
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> libsieve-2.2.5.ebuild,
+  libsieve-2.2.6.ebuild, libsieve-2.2.7.ebuild:
+  Remove virtual/libc
+
+  02 Feb 2009; Thilo Bangert <bangert@gentoo.org> libsieve-2.2.5.ebuild,
+  libsieve-2.2.6.ebuild, libsieve-2.2.7.ebuild:
+  add blocker for net-mail/mailutils due to filecollision (temporary
+  workaround) (bug #248097)
+
+*libsieve-2.2.7 (22 Nov 2008)
+
+  22 Nov 2008; Thilo Bangert <bangert@gentoo.org> +libsieve-2.2.7.ebuild:
+  version bump
+
+  25 Jan 2008; Thilo Bangert <bangert@gentoo.org> libsieve-2.2.5.ebuild,
+  libsieve-2.2.6.ebuild:
+  fix quoting
+
+  02 Nov 2007; Steve Dibb <beandog@gentoo.org> libsieve-2.2.5.ebuild:
+  amd64 stable, bug 195599
+
+  27 Oct 2007; Thilo Bangert <bangert@gentoo.org> libsieve-2.2.6.ebuild:
+  add ~sparc, ~pcc and ~alpha
+
+  27 Oct 2007; Thilo Bangert <bangert@gentoo.org> -libsieve-2.2.1.ebuild,
+  -libsieve-2.2.3.ebuild:
+  remove old versions
+
+*libsieve-2.2.6 (23 Oct 2007)
+
+  23 Oct 2007; Thilo Bangert <bangert@gentoo.org> +libsieve-2.2.6.ebuild:
+  version bump
+
+  11 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  libsieve-2.2.5.ebuild:
+  stable x86, bug 195362
+
+*libsieve-2.2.5 (07 Feb 2007)
+
+  07 Feb 2007; Thilo Bangert <bangert@gentoo.org> +libsieve-2.2.5.ebuild:
+  version bump
+
+*libsieve-2.2.3 (28 Nov 2006)
+
+  28 Nov 2006; Thilo Bangert <bangert@gentoo.org> -libsieve-2.2.2.ebuild,
+  +libsieve-2.2.3.ebuild:
+  remove borked version and bump
+
+*libsieve-2.2.2 (27 Nov 2006)
+
+  27 Nov 2006; Thilo Bangert <bangert@gentoo.org> +libsieve-2.2.2.ebuild:
+  version bump
+
+  11 Nov 2006; Piotr Jaroszyński <peper@gentoo.org> libsieve-2.2.1.ebuild:
+  Add ~amd64 wrt bug #154788.
+
+*libsieve-2.2.1 (04 Nov 2006)
+
+  04 Nov 2006; Thilo Bangert <bangert@gentoo.org> +metadata.xml,
+  +libsieve-2.2.1.ebuild:
+  libsieve - A library for parsing, sorting and filtering your mail. bug #149770
+  dep for DBMail (bug #22331) - thanks go to Aaron.

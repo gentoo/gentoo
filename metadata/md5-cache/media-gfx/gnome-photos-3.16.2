@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
+DEPEND=>=app-misc/tracker-1:= >=dev-libs/glib-2.39.3:2 gnome-base/gnome-desktop:3= >=gnome-base/librsvg-2.26.0 >=dev-libs/libgdata-0.15.2:0= media-libs/babl >=media-libs/gegl-0.3:0.3 >=media-libs/grilo-0.2.6:0.2 >=media-plugins/grilo-plugins-0.2.6:0.2[upnp-av] >=media-libs/exempi-1.99.5 media-libs/lcms:2 >=media-libs/libexif-0.6.14 >=net-libs/gnome-online-accounts-3.8 >=net-libs/libgfbgraph-0.2.1:0.2 >=x11-libs/cairo-1.14 x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-3.15.5:3 dev-util/desktop-file-utils >=dev-util/intltool-0.50.1 virtual/pkgconfig test? ( dev-util/dogtail ) app-arch/xz-utils >=sys-apps/sed-4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Access, organize and share your photos on GNOME
+EAPI=5
+HOMEPAGE=https://wiki.gnome.org/Apps/Photos
+IUSE=test test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+ LGPL-2+
+RDEPEND=>=app-misc/tracker-1:= >=dev-libs/glib-2.39.3:2 gnome-base/gnome-desktop:3= >=gnome-base/librsvg-2.26.0 >=dev-libs/libgdata-0.15.2:0= media-libs/babl >=media-libs/gegl-0.3:0.3 >=media-libs/grilo-0.2.6:0.2 >=media-plugins/grilo-plugins-0.2.6:0.2[upnp-av] >=media-libs/exempi-1.99.5 media-libs/lcms:2 >=media-libs/libexif-0.6.14 >=net-libs/gnome-online-accounts-3.8 >=net-libs/libgfbgraph-0.2.1:0.2 >=x11-libs/cairo-1.14 x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-3.15.5:3
+SLOT=0
+SRC_URI=mirror://gnome/sources/gnome-photos/3.16/gnome-photos-3.16.2.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f	virtualx	73cfc129b4b9ba23aed1abb10c825d86
+_md5_=2ed07fcc1602a44b8ca945622070066f

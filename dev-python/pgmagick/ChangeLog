@@ -1,0 +1,40 @@
+# ChangeLog for dev-python/pgmagick
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pgmagick/ChangeLog,v 1.8 2015/04/08 08:05:14 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pgmagick-0.5.6.ebuild,
+  pgmagick-0.5.7.ebuild:
+  Drop old Python implementations
+
+*pgmagick-0.5.10 (19 Mar 2015)
+
+  19 Mar 2015; Patrick Lauer <patrick@gentoo.org> +pgmagick-0.5.10.ebuild:
+  Bump
+
+*pgmagick-0.5.9 (16 Mar 2015)
+
+  16 Mar 2015; Patrick Lauer <patrick@gentoo.org> +pgmagick-0.5.9.ebuild:
+  Bump
+
+*pgmagick-0.5.8 (20 Aug 2014)
+
+  20 Aug 2014; Ian Delaney <idella4@gentoo.org> +pgmagick-0.5.8.ebuild:
+  bump; drop py2.6, add IUSE test, test dep, test phase
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pgmagick-0.5.6.ebuild,
+  pgmagick-0.5.7.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*pgmagick-0.5.7 (12 Sep 2013)
+
+  12 Sep 2013; Patrick Lauer <patrick@gentoo.org> +pgmagick-0.5.7.ebuild:
+  Bump
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> pgmagick-0.5.6.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*pgmagick-0.5.6 (17 May 2013)
+
+  17 May 2013; Tiziano Müller <dev-zero@gentoo.org> +metadata.xml,
+  +pgmagick-0.5.6.ebuild:
+  Initial commit, ebuild written by me.

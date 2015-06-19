@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-libs/openssl openipmi? ( sys-libs/openipmi ) virtual/os-headers
+DESCRIPTION=Utility for controlling IPMI enabled devices
+HOMEPAGE=http://ipmitool.sf.net/
+IUSE=openipmi
+KEYWORDS=amd64 ~ia64 ppc x86
+LICENSE=BSD
+RDEPEND=dev-libs/openssl
+SLOT=0
+SRC_URI=mirror://sourceforge/ipmitool/ipmitool-1.8.11.tar.gz
+_md5_=1c4646d63e148610ee78f62235456de7

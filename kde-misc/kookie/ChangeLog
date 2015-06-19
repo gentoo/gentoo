@@ -1,0 +1,23 @@
+# ChangeLog for kde-misc/kookie
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kookie/ChangeLog,v 1.5 2014/03/20 22:23:32 johu Exp $
+
+  20 Mar 2014; Johannes Huber <johu@gentoo.org> kookie-0.1.1.ebuild:
+  Bump to EAPI 5.
+
+  29 Oct 2011; Jonathan Callen <abcd@gentoo.org> kookie-0.1.1.ebuild:
+  Bump to EAPI=4
+
+  31 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> -kookie-0.1.ebuild:
+  remove old
+
+*kookie-0.1.1 (06 Jan 2011)
+
+  06 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +kookie-0.1.1.ebuild:
+  Version bump (bug 348353)
+
+*kookie-0.1 (30 Dec 2009)
+
+  30 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> +kookie-0.1.ebuild:
+  Initial commit.

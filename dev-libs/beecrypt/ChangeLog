@@ -1,0 +1,375 @@
+# ChangeLog for dev-libs/beecrypt
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/beecrypt/ChangeLog,v 1.90 2015/06/09 14:12:13 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  14 May 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -beecrypt-4.2.1-r1.ebuild, -beecrypt-4.2.1-r2.ebuild:
+  old
+
+*beecrypt-4.2.1-r3 (06 Mar 2015)
+
+  06 Mar 2015; Patrice Clement <monsieurp@gentoo.org> +beecrypt-4.2.1-r3.ebuild,
+  beecrypt-4.2.1-r2.ebuild:
+  Turn 'threads' USE flag on by default. Fix bug 542250.
+
+  26 Dec 2014; Michał Górny <mgorny@gentoo.org> beecrypt-4.2.1-r2.ebuild:
+  Add missing "use python" conditional.
+
+*beecrypt-4.2.1-r2 (26 Dec 2014)
+
+  26 Dec 2014; Michał Górny <mgorny@gentoo.org> +beecrypt-4.2.1-r2.ebuild:
+  Convert to python-single-r1.
+
+  20 Feb 2013; Zac Medico <zmedico@gentoo.org> beecrypt-4.2.1-r1.ebuild:
+  Add ~arm-linux keyword.
+
+*beecrypt-4.2.1-r1 (07 Feb 2013)
+
+  07 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> +beecrypt-4.2.1-r1.ebuild:
+  Revision bump: EAPI 5, add sub-slot operator for dependency on dev-libs/icu,
+  wrt bug #455900
+
+  06 Sep 2012; Mike Frysinger <vapier@gentoo.org>
+  files/beecrypt-4.2.1-build-system.patch:
+  Drop 32bit/64bit ABI overrides since we already handle these things ourselves
+  #423023 by Robert Trace.
+
+  07 Jun 2012; Michael Palimaka <kensington@gentoo.org>
+  +files/beecrypt-4.2.1-gcc-4.7.patch, beecrypt-4.2.1.ebuild:
+  Fix build with GCC 4.7 wrt bug #413951. Thanks to Olivier Huber
+  <oli.huber@gmail.com> for the patch.
+
+  03 Mar 2012; Pacho Ramos <pacho@gentoo.org> beecrypt-4.2.1.ebuild:
+  Run java-pkg-opt-2_pkg_setup to use jdk when compiling, bug #401803 by DrSlony
+  and fix by Ralph Sennhauser.
+
+  18 Feb 2012; Tomáš Chvátal <scarabeus@gentoo.org> beecrypt-4.2.1.ebuild:
+  Add mising python_pkg_setup wrt bug#404385.
+
+  18 Feb 2012; Tomáš Chvátal <scarabeus@gentoo.org> beecrypt-4.2.1.ebuild:
+  Bump to eapi4 and add static-libs useflag.
+
+  13 Nov 2011; Mike Frysinger <vapier@gentoo.org> beecrypt-4.2.1.ebuild:
+  Convert USE=nocxx to USE=cxx.
+
+  05 Oct 2011; Alexis Ballier <aballier@gentoo.org> beecrypt-4.2.1.ebuild:
+  remove ptex dep as it is going away
+
+  26 Jul 2011; Pacho Ramos <pacho@gentoo.org> -beecrypt-4.1.2-r1.ebuild,
+  -beecrypt-4.1.2-r2.ebuild, -files/beecrypt-4.1.2-base64.patch,
+  -files/beecrypt-4.1.2-build.patch, -files/beecrypt-4.1.2-gcc4.patch,
+  -files/beecrypt-4.1.2-python-Makefile-am.patch,
+  -files/beecrypt-4.1.2-python-debug-py-c.patch,
+  -files/beecrypt-4.1.2-threads.patch, beecrypt-4.2.1.ebuild:
+  This needs python2 (bug #312153 and #362497 by Arfrever and Vadim), remove
+  old.
+
+  03 Apr 2011; Raúl Porcel <armin76@gentoo.org> beecrypt-4.2.1.ebuild:
+  ia64/s390/sh stable wrt #342387
+
+  27 Feb 2011; Tobias Klausmann <klausman@gentoo.org> beecrypt-4.2.1.ebuild:
+  Stable on alpha, bug #342387
+
+  26 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> beecrypt-4.2.1.ebuild:
+  ppc64 stable wrt #342387
+
+  26 Feb 2011; Michael Weber <xmw@gentoo.org> beecrypt-4.2.1.ebuild:
+  ppc/sparc stable (bug 342387)
+
+  12 Feb 2011; Christian Faulhammer <fauli@gentoo.org>
+  beecrypt-4.2.1.ebuild:
+  stable x86, bug 342387
+
+  10 Feb 2011; Markos Chandras <hwoarang@gentoo.org> beecrypt-4.2.1.ebuild:
+  Stable on amd64 wrt bug #342387
+
+  05 Feb 2011; Markus Meier <maekke@gentoo.org> beecrypt-4.2.1.ebuild:
+  arm stable, bug #342387
+
+  04 Feb 2011; Jeroen Roovers <jer@gentoo.org> beecrypt-4.2.1.ebuild:
+  Stable for HPPA (bug #342387).
+
+  14 Dec 2010; Matt Turner <mattst88@gentoo.org> beecrypt-4.1.2-r1.ebuild,
+  beecrypt-4.1.2-r2.ebuild, beecrypt-4.2.1.ebuild:
+  Dropped mips keywords from app-arch/rpm, and this was only keyworded as an
+  rpm dependency, so drop its keywords too.
+
+  06 Apr 2010; Jonathan Callen <abcd@gentoo.org> beecrypt-4.2.1.ebuild:
+  Bump to EAPI=3, add prefix keywords
+
+*beecrypt-4.2.1 (15 Nov 2009)
+
+  15 Nov 2009; Sven Wegener <swegener@gentoo.org> +beecrypt-4.2.1.ebuild,
+  +files/beecrypt-4.2.1-build-system.patch:
+  Version bump, bug #278713.
+
+  15 Nov 2009; Sven Wegener <swegener@gentoo.org> beecrypt-4.1.2-r1.ebuild,
+  beecrypt-4.1.2-r2.ebuild:
+  Fix installation on multilib systems with multilib-strict, bug #293236.
+
+  14 Nov 2009; Daniel Gryniewicz <dang@gentoo.org> beecrypt-4.1.2-r2.ebuild:
+  Fix building with march=native; bug #220267
+
+  12 Sep 2009; Víctor Ostorga <vostorga@gentoo.org> -files/beecrypt-4.1.2-athlon.patch,
+  -files/beecrypt-4.1.2-custom-cflags.patch:
+  Cleaning out unused patches
+
+  30 May 2009; Ulrich Mueller <ulm@gentoo.org> beecrypt-4.1.2-r2.ebuild:
+  Remove app-text/tetex from dependencies, bug 227443.
+
+  25 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  beecrypt-4.1.2-r2.ebuild:
+  keyword ~x86-fbsd
+
+  29 Apr 2008; Alexis Ballier <aballier@gentoo.org>
+  beecrypt-4.1.2-r2.ebuild:
+  Convert to latex-base, fix deps with texlive, bug #213707
+
+  13 Jan 2008; Mike Frysinger <vapier@gentoo.org> beecrypt-4.1.2-r1.ebuild,
+  beecrypt-4.1.2-r2.ebuild:
+  Do not let the configure script decide the lib64. Make it respect the
+  standard configure --libdir option.
+
+  02 Jun 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  -files/beecrypt-3.1.0-alpha.patch, -files/beecrypt-3.1.0-athlon.diff,
+  -files/beecrypt-3.1.0-python2.3.patch, -beecrypt-3.1.0-r2.ebuild:
+  Remove old ebuilds
+
+  02 Jun 2007; Joshua Kinard <kumba@gentoo.org> beecrypt-4.1.2-r1.ebuild:
+  Stable on mips, per #157858.
+
+  05 Mar 2007; Sandro Bonazzola <sanchan@gentoo.org> ChangeLog:
+  Removing myself from metadata.xml as I'm stepping back.
+
+  07 Feb 2007; Sandro Bonazzola <sanchan@gentoo.org>
+  beecrypt-4.1.2-r1.ebuild, beecrypt-4.1.2-r2.ebuild:
+  Replace flag pentium4m with pentium4, fix bug #165635. Thanks to Jiri
+  Pittner <jiri.pittner@jh-inst.cas.cz> for reporting and to Jackub Moc for
+  his patience.
+
+  24 Jan 2007; Alec Warner <antarus@gentoo.org> beecrypt-4.1.2-r2.ebuild:
+  fix minor bug with USE=doc, bug # 163375
+
+*beecrypt-4.1.2-r2 (22 Jan 2007)
+
+  22 Jan 2007; Sandro Bonazzola <sanchan@gentoo.org>
+  +files/beecrypt-4.1.2-base64.patch, -beecrypt-3.1.0-r1.ebuild,
+  +beecrypt-4.1.2-r2.ebuild:
+  New doc use flag for doxygen api documentation. Including a patch from
+  Miloslav Trmac <mitr@redhat.com> from Fedora beecrypt rpm: fix b64encode()
+  for data starting with NUL.
+  Removed obsolete ebuild. Waiting mips stabilization for removing latest 3.x
+  series ebuild.
+
+  12 Jan 2007; Alon Bar-Lev <alonbl@gentoo.org> beecrypt-4.1.2-r1.ebuild:
+  Remove WANT_AUTO*
+
+  04 Jan 2007; Sandro Bonazzola <sanchan@gentoo.org> -beecrypt-4.1.2.ebuild:
+  Removed broken ebuild, obsoleted by 4.1.2-r1. Fix bug #160004, Thanks to
+  Diego Pettenò <flameeyes@gentoo.org> for reporting.
+
+  31 Dec 2006; Bryan Østergaard <kloeri@gentoo.org>
+  beecrypt-4.1.2-r1.ebuild:
+  Add ~alpha keyword, bug 157858.
+
+  26 Dec 2006; Sandro Bonazzola <sanchan@gentoo.org>
+  beecrypt-4.1.2-r1.ebuild:
+  Fix incorrect behaviour with CHOST!="x86_64-..." and any -march flags 
+  related to x86_64.
+
+  26 Dec 2006; Jeroen Roovers <jer@gentoo.org> beecrypt-4.1.2-r1.ebuild:
+  Stable for HPPA (bug #157858).
+
+  21 Dec 2006; Markus Rothe <corsair@gentoo.org> beecrypt-4.1.2-r1.ebuild:
+  Stable on ppc64; bug #157858
+
+  20 Dec 2006; Sandro Bonazzola <sanchan@gentoo.org>
+  beecrypt-4.1.2-r1.ebuild:
+  Fix incorrect behaviour with CHOST="i686-..." and CFLAGS="-march=athlon64
+  ...", bug #158109. Thanks to Robert Golding <robert.golding@gmail.com> for
+  reporting.
+
+  16 Dec 2006; nixnut <nixnut@gentoo.org> beecrypt-4.1.2-r1.ebuild:
+  Stable on ppc wrt bug 157858
+
+  13 Dec 2006; Peter Weller <welp@gentoo.org> ChangeLog:
+  Fixed digest.
+
+  12 Dec 2006; Peter Weller <welp@gentoo.org> beecrypt-4.1.2-r1.ebuild:
+  Added amd64 keyword wrt bug #157858
+
+  12 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  beecrypt-4.1.2-r1.ebuild:
+  Stable on sparc wrt #157858
+
+  12 Dec 2006; Christian Faulhammer <opfer@gentoo.org>
+  beecrypt-4.1.2-r1.ebuild:
+  stable x86, bugs #157858
+
+  13 Nov 2006; Sandro Bonazzola <sanchan@gentoo.org> metadata.xml,
+  beecrypt-4.1.2-r1.ebuild:
+  Adding missing dependencies on virtual/jdk and virtual/jre. Inheriting
+  java-pkg-opt-2 fixing bug# 153750. Thanks to Petteri Räty for his help and
+  Sawk for reporting.
+
+  24 Oct 2006; Alon Bar-Lev <alonbl@gentoo.org>
+  files/beecrypt-4.1.2-build.patch:
+  Fixed athlon64 asm (again), closes again bug#152575
+
+  24 Oct 2006; Sandro Bonazzola <sanchan@gentoo.org>
+  files/beecrypt-4.1.2-build.patch:
+  Fix multilib issues, see bug #152689.
+
+  23 Oct 2006; Alon Bar-Lev <alonbl@gentoo.org>
+  files/beecrypt-4.1.2-build.patch:
+  Fixed stack execution, this is the farest I can
+
+  23 Oct 2006; Alon Bar-Lev <alonbl@gentoo.org>
+  -files/beecrypt-4.1.2-asm.patch, +files/beecrypt-4.1.2-build.patch,
+  -files/beecrypt-4.1.2-configure-ac.patch, beecrypt-4.1.2-r1.ebuild:
+  Fixed athlon64 (again), bug#152575
+
+  23 Oct 2006; Alon Bar-Lev <alonbl@gentoo.org>
+  files/beecrypt-4.1.2-asm.patch:
+  Added athlon64 asm support, bug#152575
+
+  23 Oct 2006; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/beecrypt-4.1.2-asm.patch, +files/beecrypt-4.1.2-threads.patch,
+  beecrypt-4.1.2-r1.ebuild:
+  Fixed assembly and threading issues
+
+  16 Oct 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/beecrypt-4.1.2-gcc4.patch, beecrypt-4.1.2-r1.ebuild:
+  Fixes from upstream for building with gcc-4 #150579 by David Pyke.
+
+  16 Oct 2006; Mike Frysinger <vapier@gentoo.org>
+  files/beecrypt-4.1.2-configure-ac.patch, beecrypt-4.1.2-r1.ebuild:
+  Grab more fixes from upstream so we dont need flag filtering hacks.
+
+  15 Jun 2006; Sandro Bonazzola <sanchan@gentoo.org>
+  +files/beecrypt-4.1.2-configure-ac.patch,
+  +files/beecrypt-4.1.2-python-Makefile-am.patch,
+  +files/beecrypt-4.1.2-python-debug-py-c.patch, +metadata.xml,
+  beecrypt-4.1.2-r1.ebuild:
+  Fixing ebuild headers, adding metadata.xml. Updated without bumping
+  beecrypt-4.1.2-r1 ebuild.
+  This ebuild uses upstream patches from cvs. Fixes python test failures on
+  pentium3, athlon-xp, pentium-mmx; provides a workaround for pentium-m and
+  athlon64. The ebuild is far from perfection, see bug #124900 for known
+  issues. Thanks to Benedikt Boehm, #gentoo-python, #gentoo-amd64-dev, 
+  #gentoo-java for their support.
+
+*beecrypt-4.1.2-r1 (18 Jan 2006)
+
+  18 Jan 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/beecrypt-4.1.2-custom-cflags.patch, +beecrypt-4.1.2-r1.ebuild:
+  Cleanup build system and add sh love.
+
+  11 Aug 2005; Herbie Hopkins <herbs@gentoo.org> beecrypt-4.1.2.ebuild:
+  Fix install path of python module on multilib systems.
+
+  03 Jul 2005; Hardave Riar <hardave@gentoo.org> beecrypt-3.1.0-r2.ebuild:
+  Stable on mips, dep for bug #91792.
+
+*beecrypt-4.1.2 (26 Jun 2005)
+
+  26 Jun 2005; Daniel Black <dragonheart@gentoo.org>
+  +files/beecrypt-4.1.2-athlon.patch, +beecrypt-4.1.2.ebuild:
+  version bump with help from author Bob Deblier
+
+  06 Apr 2005; Markus Rothe <corsair@gentoo.org> beecrypt-3.1.0-r2.ebuild:
+  Stable on ppc64
+
+  02 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  beecrypt-3.1.0-r2.ebuild:
+  Fix compilation on amd64.
+
+  17 Feb 2005; Markus Rothe <corsair@gentoo.org> beecrypt-3.1.0-r2.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  29 Dec 2004; Ilya A. Volynets-Evenbach <iluxa@gentoo.org>
+  beecrypt-3.1.0-r2.ebuild:
+  mark ~mips
+
+*beecrypt-3.1.0-r2 (13 Apr 2004)
+
+  23 Oct 2004; Stefan Jones <cretin@gentoo.org> :
+  Block <app-arch/rpm-4.2 not <app-arch/rpm-4.2.1 so I can downgrade rpm
+
+  16 Apr 2004; Stefan Jones <cretin@gentoo.org> 
+  beecrypt-3.1.0-r2.ebuild:
+  Now bump to stable AFTER testing!
+
+  15 Apr 2004; Stefan Jones <cretin@gentoo.org> 
+  beecrypt-3.1.0-r2.ebuild file/beecrypt-3.1.0-athlon.diff:
+  Patch configure not configure.ac and remove autogen.sh
+  Fixes bugs 47868 and 47852
+
+  13 Apr 2004; Stefan Jones <cretin@gentoo.org> beecrypt-3.1.0-r2.ebuild:
+  New version which will work!
+  ( fix the inline assembly functions nit linking)
+
+  12 Apr 2004; Stefan Jones <cretin@gentoo.org> beecrypt-3.1.0-r1.ebuild:
+  Fix athlon in mcpu or march, #47592
+  
+  11 Apr 2004; Stefan Jones <cretin@gentoo.org> beecrypt-3.1.0-r1.ebuild:
+  Mark as stable for the rest of the archs
+  Also add scanning of CFLAGS to set optimisations
+
+  25 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> beecrypt-3.1.0-r1.ebuild:
+  Stable on amd64.
+
+  24 Jan 2004; Alastair Tse <liquidx@gentoo.org> beecrypt-3.1.0-r1.ebuild,
+  files/beecrypt-3.1.0-python2.3.patch:
+  added patch for python2.3, thanks to Vaclav Slavik <vaclav.slavik@matfyz.cz>
+  (#39282)
+
+  15 Jan 2004; <agriffis@gentoo.org> beecrypt-3.1.0-r1.ebuild:
+  stable on alpha and ia64
+
+  13 Jan 2004; Jon Portnoy <avenj@gentoo.org> beecrypt-3.1.0-r1.ebuild :
+  AMD64 keywords.
+
+  14 Nov 2003; <tuxus@gentoo.org> beecrypt-3.1.0.ebuild:
+  changed mips in ~mips
+
+  13 Nov 2003; <tuxus@gentoo.org> beecrypt-3.1.0.ebuild:
+  added mips to KEYWORDS
+
+  12 Nov 2003; Aron Griffis <agriffis@gentoo.org> beecrypt-3.1.0-r1.ebuild,
+  files/beecrypt-3.1.0-alpha.patch:
+  This library's makefiles are way too smart for its own good. If you update
+  configure.ac, then the makefiles notice and insist on rebuilding half a dozen
+  other things (even after you run autoconf). The end result is that mpopt.s is
+  emptied and undefined symbols appear in the library.
+
+  Modified the patch to affect configure instead of configure.ac so that
+  autoconf isn't required and the build system doesn't screw up.
+
+  11 Nov 2003; Aron Griffis <agriffis@gentoo.org> beecrypt-3.1.0-r1.ebuild:
+  Fix autoconf whoops which caused mpopt.s to fail to build because the
+  makefiles are too smart...
+
+*beecrypt-3.1.0-r1 (11 Nov 2003)
+
+  11 Nov 2003; Aron Griffis <agriffis@gentoo.org> beecrypt-3.1.0-r1.ebuild,
+  files/beecrypt-3.1.0-alpha.patch:
+  Fix installation on alpha to usr /usr/lib instead of /usr/lib64
+
+  28 Oct 2003; Stefan Jones <cretin@gentoo.org> :
+  block <app-arch/rpm-4.2.1 as both provide beecrypt
+  Accident waiting to happen, see #32100
+
+  23 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> beecrypt-3.1.0.ebuild:
+  tidy; use use_with; more error checking/messages
+
+*beecrypt-3.1.0 (21 Oct 2003)
+
+  22 Oct 2003; Stefan Jones <cretin@gentoo.org> :
+  Removed making docs; a lot of bother for no payoff!
+
+  21 Oct 2003; Stefan Jones <cretin@gentoo.org> :
+  New ebuild, required for app-arch/rpm-4.2.1

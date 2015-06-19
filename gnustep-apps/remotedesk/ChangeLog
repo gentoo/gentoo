@@ -1,0 +1,20 @@
+# ChangeLog for gnustep-apps/remotedesk
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/remotedesk/ChangeLog,v 1.4 2008/03/08 13:43:18 coldwind Exp $
+
+  08 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> remotedesk-0.1.ebuild:
+  amd64 stable wrt bug #207381
+
+  30 Jan 2008; Brent Baude <ranger@gentoo.org> remotedesk-0.1.ebuild:
+  Marking remotedesk-0.1 ppc for bug 207381
+
+  25 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  remotedesk-0.1.ebuild:
+  stable x86, bug 207381
+
+*remotedesk-0.1 (13 Sep 2007)
+
+  13 Sep 2007; Bernard Cafarelli <voyageur@gentoo.org> +metadata.xml,
+  +remotedesk-0.1.ebuild:
+  Initial import from the GNUstep overlay
+

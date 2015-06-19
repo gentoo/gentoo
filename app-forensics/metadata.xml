@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-forensics category contains software which helps detect and
+		analyse security breaches.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-forensics enthält Programme welche beim Erkennen
+		und Analysieren von Sicherheitsbrüchen helfen.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-forensics contiene programas para ayudar a detectar
+		y analizar problemas de seguridad.
+	</longdescription>
+	<longdescription lang="ja">
+		app-forensicsカテゴリには安全保侵犯を捜し当てると取調べる
+		ソフトウェアが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De app-forensics categorie bevat applicaties voor het detecteren en
+		analyseren van inbreuken op de veiligheid van het systeem.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-forensics chứa các phần mềm hỗ trợ dò tìm,
+		phân tích các lỗ hổng bảo mật.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-forensics contiene programmi che aiutono a trovare
+		ed analizzare problemi di sicurezza.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-forensics contém programas que ajudam a detectar
+		e analisar problemas de segurança.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-forensics zawiera oprogramowanie ułatwiające
+		przeprowadzanie audytu bezpieczeństwa systemu.
+	</longdescription>
+</catmetadata>
+

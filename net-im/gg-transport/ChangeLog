@@ -1,0 +1,110 @@
+# ChangeLog for net-im/gg-transport
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/gg-transport/ChangeLog,v 1.25 2014/08/05 18:34:20 mrueg Exp $
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> gg-transport-2.2.4.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  16 Dec 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due retirement, #95685
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> gg-transport-2.2.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Apr 2012; Michał Górny <mgorny@gentoo.org> gg-transport-2.2.4.ebuild:
+  Use mirror://github.
+
+  24 Feb 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  -gg-transport-2.2.2-r1.ebuild:
+  Remove old version.
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gg-transport-2.2.4.ebuild:
+  x86 stable wrt bug #404175
+
+  17 Feb 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  gg-transport-2.2.4.ebuild:
+  Add missing dev-libs/expat to RDEPEND, use emake, die if sed fails.
+
+  17 Feb 2012; Agostino Sarubbo <ago@gentoo.org> gg-transport-2.2.4.ebuild:
+  Stable for amd64, wrt bug #404175
+
+  16 Feb 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  gg-transport-2.2.2-r1.ebuild, gg-transport-2.2.4.ebuild:
+  Update home page and download URI.
+
+*gg-transport-2.2.4 (17 Apr 2010)
+
+  17 Apr 2010; Krzysztof Pawlik <nelchael@gentoo.org> +files/jggtrans-2.2.4,
+  +gg-transport-2.2.4.ebuild:
+  Version bump.
+
+  12 May 2008; Krzysiek Pawlik <nelchael@gentoo.org>
+  gg-transport-2.2.2-r1.ebuild:
+  Fix RDEPEND.
+
+  05 May 2008; Krzysiek Pawlik <nelchael@gentoo.org>
+  gg-transport-2.2.2-r1.ebuild:
+  Add missing dependency: dev-util/pkgconfig, see bug #205504.
+
+  10 Nov 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  gg-transport-2.2.2-r1.ebuild:
+  Fix variable quoting.
+
+  12 Jun 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  files/jggtrans-2.2.2-r1, gg-transport-2.2.2-r1.ebuild:
+  Remove dependency on jabberd.
+
+  24 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org> -files/jggtrans,
+  -gg-transport-2.2.1.ebuild:
+  Remove old version.
+
+  24 Oct 2006; Daniel Gryniewicz <dang@gentoo.org>
+  gg-transport-2.2.2-r1.ebuild:
+  Marked ~amd64 for bug #133480
+
+  23 Oct 2006; Andrej Kacian <ticho@gentoo.org>
+  gg-transport-2.2.2-r1.ebuild:
+  Stable on x86, bug #152543.
+
+  04 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  gg-transport-2.2.2-r1.ebuild:
+  Fix header.
+
+*gg-transport-2.2.2-r1 (04 Oct 2006)
+
+  04 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  -files/jggtrans-2.2.1-r1, -files/jggtrans-2.2.2, +files/jggtrans-2.2.2-r1,
+  -gg-transport-2.2.1-r1.ebuild, -gg-transport-2.2.2.ebuild,
+  +gg-transport-2.2.2-r1.ebuild:
+  Updated ebuild to fix several bugs about default config.
+
+*gg-transport-2.2.2 (20 Sep 2006)
+
+  20 Sep 2006; Krzysiek Pawlik <nelchael@gentoo.org> +files/jggtrans-2.2.2,
+  +gg-transport-2.2.2.ebuild:
+  Version bump, see bug #140609.
+
+*gg-transport-2.2.1-r1 (20 Sep 2006)
+
+  20 Sep 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/jggtrans-2.2.1-r1, metadata.xml, +gg-transport-2.2.1-r1.ebuild:
+  Version 2.2.1-r1 uses better init.d script by Lars Strojny
+  <lars@strojny.net>, see bug #125148.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org>
+  files/digest-gg-transport-2.2.1, Manifest:
+  Fixing SHA256 digest, pass four
+
+  22 Mar 2006; Hanno Boeck <hanno@gentoo.org> gg-transport-2.2.1.ebuild:
+  Change description from GG to Gadu-Gadu.
+
+  18 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org>
+  gg-transport-2.2.1.ebuild:
+  Stable on x86. Ebuild cleanup.
+
+*gg-transport-2.2.1 (24 Aug 2005)
+
+  24 Aug 2005; Gustavo Felisberto <humpback@gentoo.org>; +files/jggtrans,
+  +gg-transport-2.2.1.ebuild:
+  Initial import of Gadu transport. Credits to Krzysiek Pawlik in bug #99335.

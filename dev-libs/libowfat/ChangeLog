@@ -1,0 +1,148 @@
+# ChangeLog for dev-libs/libowfat
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libowfat/ChangeLog,v 1.40 2014/12/26 09:27:02 patrick Exp $
+
+  26 Dec 2014; Patrick Lauer <patrick@gentoo.org> -libowfat-0.24.ebuild,
+  -libowfat-0.28-r1.ebuild, -libowfat-0.28.ebuild:
+  Remove old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> libowfat-0.24.ebuild,
+  libowfat-0.28-r1.ebuild, libowfat-0.28.ebuild, libowfat-0.29.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  12 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libowfat-0.29.ebuild:
+  Stable for sparc, wrt bug #417341
+
+  02 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libowfat-0.29.ebuild:
+  Stable for x86, wrt bug #417341
+
+  01 Mar 2014; Pacho Ramos <pacho@gentoo.org> libowfat-0.29.ebuild:
+  amd64 stable, bug #417341
+
+  16 Jan 2014; Jeroen Roovers <jer@gentoo.org> libowfat-0.28-r1.ebuild,
+  libowfat-0.29.ebuild:
+  Drop HPPA keywording.
+
+*libowfat-0.29 (05 Nov 2012)
+
+  05 Nov 2012; Patrick Lauer <patrick@gentoo.org> +libowfat-0.29.ebuild:
+  Bump
+
+  22 Mar 2012; Patrick Lauer <patrick@gentoo.org>
+  +files/libowfat-0.28-GNUmakefile.patch, libowfat-0.28-r1.ebuild:
+  Compile fix for #409139 #383031
+
+  31 Jan 2012; Jeroen Roovers <jer@gentoo.org> libowfat-0.28-r1.ebuild:
+  Marked ~hppa too.
+
+  31 Jan 2012; Jeroen Roovers <jer@gentoo.org> libowfat-0.28-r1.ebuild,
+  metadata.xml:
+  Make dietlibc optional by Rolf Eike Beer (bug #97185). Respect CC.
+
+  31 Jan 2012; Jeroen Roovers <jer@gentoo.org> libowfat-0.28-r1.ebuild:
+  Drop HPPA keywording now that this requires an unsupported version of
+  dev-libs/dietlibc.
+
+  20 Nov 2011; Kacper Kowalik <xarthisius@gentoo.org> libowfat-0.24.ebuild,
+  libowfat-0.28-r1.ebuild, libowfat-0.28.ebuild:
+  ppc/ppc64 keywords dropped wrt #364103
+
+  26 Jul 2010; Guy Martin <gmsoft@gentoo.org> libowfat-0.28-r1.ebuild:
+  Added ~hppa to KEYWORDS.
+
+  12 Sep 2009; Víctor Ostorga <vostorga@gentoo.org>
+  -files/libowfat-0.10-gentoo.diff:
+  Cleaning out unused patch
+
+  10 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  libowfat-0.28-r1.ebuild:
+  append-flags -fomit-frame-pointer wrt #262663.
+
+*libowfat-0.28-r1 (10 Aug 2009)
+
+  10 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +libowfat-0.28-r1.ebuild:
+  Raise dietlibc depend to >= 0.33_pre20090721 wrt #272507.
+
+  04 Jun 2009; Patrick Lauer <patrick@gentoo.org> -libowfat-0.14.ebuild,
+  -libowfat-0.15.ebuild, -libowfat-0.16.ebuild, -libowfat-0.19.2.ebuild,
+  -libowfat-0.22.ebuild:
+  Remove old
+
+  04 Jun 2009; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Taking over maintenance from embedded herd.
+
+*libowfat-0.28 (01 Mar 2009)
+
+  01 Mar 2009; Patrick Lauer <patrick@gentoo.org> +libowfat-0.28.ebuild:
+  Bump to 0.28, fixes #221803
+
+  04 Feb 2007; Steve Dibb <beandog@gentoo.org> libowfat-0.24.ebuild:
+  amd64 stable, bug 157477
+
+  09 Dec 2006; Michael Hanselmann <hansmi@gentoo.org> libowfat-0.24.ebuild:
+  Stable on sparc, x86. See bug #157477.
+
+  08 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libowfat-0.24.ebuild:
+  ppc stable
+
+  31 Mar 2006; Michael Hanselmann <hansmi@gentoo.org> libowfat-0.24.ebuild:
+  Fixed man page installation, provided by Christian Heim, see bug 128243.
+
+  30 Nov 2005; Tom Gall <tgall@gentoo.org> libowfat-0.24.ebuild:
+  stable on ppc64
+
+*libowfat-0.24 (04 Sep 2005)
+
+  04 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> +libowfat-0.24.ebuild:
+  Bumped version, added to ~ppc64.
+
+  12 Jul 2005; Andrej Kacian <ticho@gentoo.org> libowfat-0.22.ebuild:
+  Added ~amd64 keyword.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> libowfat-0.16.ebuild:
+  Stable on ppc.
+
+*libowfat-0.22 (04 Apr 2005)
+
+  04 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> +libowfat-0.22.ebuild:
+  New version of libowfat
+
+*libowfat-0.19.2 (08 May 2004)
+
+  08 May 2004; Daniel Black <dragonheart@gentoo.org> +libowfat-0.19.2.ebuild
+  -libowfat-0.10.ebuild:
+  version bump and removed old version
+
+  24 Mar 2004; Daniel Black <dragonheart@gentoo.org> libowfat-0.10.ebuild,
+  libowfat-0.14.ebuild, libowfat-0.15.ebuild, libowfat-0.16.ebuild:
+  QA - removed surperflous S assignment. Added missing IUSE. Marked stable on
+  x86 and sparc (0.15,0.16). ppc still marked due to dietlib being masked
+
+  03 Feb 2004; Daniel Black <dragonheart@gentoo.org> libowfat-0.16.ebuild:
+  Added ~sparc and ~ppc as they were included previously and this is just a
+  version bump
+
+*libowfat-0.16 (03 Feb 2004)
+
+  03 Feb 2004; Daniel Black <dragonheart@gentoo.org> libowfat-0.16.ebuild,
+  metadata.xml:
+  Version bump. bug #34177 refers. Thanks to Stephane LOEUILLET
+  <bug-gentoo@leroutier.net> and Thilo Bangert <fizzelpark-lists@gmx.net>
+
+*libowfat-0.15 (02 Jul 2003)
+
+  02 Jul 2003; Martin Holzer <mholzer@gentoo.org> libowfat-0.15.ebuild:
+  Version bumped. Ebuild submitted by Nicolas Kaiser <nikai@nikai.net> in #23800.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*libowfat-0.14 (02 Dec 2002)
+
+  02 Dec 2002; Daniel Robbins <drobbins@gentoo.org>: New libowfat release.
+
+*libowfat-0.10 (29 Mar 2002)
+
+  29 Mar 2002; Thilo Bangert <thilo.bangert@gmx.net> ChangeLog : initial
+  release ;-)

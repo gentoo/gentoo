@@ -1,0 +1,38 @@
+--- a/ananke/Makefile
++++ b/ananke/Makefile
+@@ -2,7 +2,7 @@
+ include ../phoenix/Makefile
+ 
+ path := /usr/local/lib
+-flags := $(flags) -O3 -fomit-frame-pointer -I..
++flags := $(flags) $(CXXFLAGS) -I..
+ 
+ all:
+ 	$(compiler) $(cppflags) $(flags) -fPIC -o obj/ananke.o -c ananke.cpp
+@@ -13,7 +13,7 @@
+ else ifeq ($(platform),macosx)
+ 	$(compiler) $(link) -shared -dynamiclib -undefined suppress -flat_namespace -o libananke.dylib obj/ananke.o
+ else
+-	$(compiler) $(link) -shared -Wl,-soname,libananke.so.1 -o libananke.so obj/ananke.o
++	$(compiler) $(link) $(LDFLAGS) -shared -Wl,-soname,libananke.so.1 -o libananke.so obj/ananke.o
+ endif
+ 
+ resource: force
+--- a/nall/Makefile
++++ b/nall/Makefile
+@@ -53,11 +53,11 @@
+     link :=
+   endif
+ 
+-  cflags := -x c -std=c99
+-  objcflags := -x objective-c -std=c99
+-  cppflags := -x c++ -std=c++11
+-  objcppflags := -x objective-c++ -std=c++11
+ endif
++cflags := -x c -std=c99
++objcflags := -x objective-c -std=c99
++cppflags := -x c++ -std=c++11
++objcppflags := -x objective-c++ -std=c++11
+ 
+ # cross-compilation support
+ ifeq ($(arch),x86)

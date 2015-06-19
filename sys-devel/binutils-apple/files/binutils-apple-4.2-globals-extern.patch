@@ -1,0 +1,29 @@
+Externally referenced globals should be marked extern to avoid stuff like this happening:
+
+ld: warning: tentative definition of '_subsections_via_symbols' with size 16 from 'app.o' is being replaced by real definition of smaller size 4 from 'as.o'
+ld: warning: tentative definition of '_subsections_via_symbols' with size 16 from 'atof-ieee.o' is being replaced by real definition of smaller size 4 from 'as.o'
+...
+
+--- cctools-809/as/as.h.orig	2015-01-28 23:52:40.000000000 +0100
++++ cctools-809/as/as.h	2015-01-28 23:52:52.000000000 +0100
+@@ -179,7 +179,7 @@
+ extern char *specific_archflag;
+ 
+ /* TRUE if the .subsections_via_symbols directive was seen */
+-int subsections_via_symbols;
++extern int subsections_via_symbols;
+ 
+ /* -I path options for .includes */
+ struct directory_stack {
+--- cctools-809/as/arm.c.orig	2015-01-28 23:57:23.000000000 +0100
++++ cctools-809/as/arm.c	2015-01-28 23:57:35.000000000 +0100
+@@ -151,8 +151,7 @@
+ # define N_(String) (String)
+ 
+ /* STUFF FROM gas/as.h */
+-#define COMMON
+-COMMON subsegT now_subseg;
++extern subsegT now_subseg;
+ 
+ /* STUFF FROM gas/config/tc-arm.h */
+ #define ARM_FLAG_THUMB 		(1 << 0)	/* The symbol is a Thumb symbol rather than an Arm symbol.  */

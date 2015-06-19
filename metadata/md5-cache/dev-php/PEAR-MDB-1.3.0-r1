@@ -1,0 +1,11 @@
+DEFINED_PHASES=install setup
+DEPEND=dev-lang/php >=dev-php/pear-1.8.1
+DESCRIPTION=PEAR MDB is a merge of the PEAR DB and Metabase php database abstraction layers
+HOMEPAGE=http://pear.php.net/MDB
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
+LICENSE=BSD
+RDEPEND=dev-php/PEAR-XML_Parser dev-lang/php >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=http://pear.php.net/get/MDB-1.3.0.tgz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	php-pear-r1	6199074ba0005674c2291a5a8d0274e2	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9ae46396e4faf68fd412e7686dc551a7

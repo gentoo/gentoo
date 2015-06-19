@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=sys-libs/ncurses dev-libs/openssl readline? ( sys-libs/readline ) X? ( x11-libs/libSM x11-libs/libICE x11-libs/libXmu x11-libs/libX11 )
+DESCRIPTION=A Password Safe compatible command-line password manager
+EAPI=4
+HOMEPAGE=http://nsd.dyndns.org/pwsafe/
+IUSE=X readline
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses dev-libs/openssl readline? ( sys-libs/readline ) X? ( x11-libs/libSM x11-libs/libICE x11-libs/libXmu x11-libs/libX11 )
+SLOT=0
+SRC_URI=http://nsd.dyndns.org/pwsafe/releases/pwsafe-0.2.0.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d8497bd6dbccc75512656fe841205517

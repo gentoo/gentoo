@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-dock</herd>
+<longdescription>
+WMsmixer is a hack to wmmixer which makes some changes to the display
+and adds a few new features, most notably scrollwheel support. It also
+includes a numeric volume indicator.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,56 @@
+# ChangeLog for dev-libs/eio
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/eio/ChangeLog,v 1.10 2015/03/17 00:46:00 vapier Exp $
+
+*eio-9999 (17 Mar 2015)
+*eio-1.7.10 (17 Mar 2015)
+
+  17 Mar 2015; Mike Frysinger <vapier@gentoo.org> +eio-1.7.10.ebuild,
+  +eio-9999.ebuild:
+  Version bump. Import live git ebuild from overlay.
+
+*eio-1.7.9 (12 Nov 2013)
+
+  12 Nov 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> +eio-1.7.9.ebuild,
+  -eio-1.7.5.ebuild, -eio-1.7.6.ebuild:
+  Version bump, drop old
+
+*eio-1.7.8 (28 Aug 2013)
+
+  28 Aug 2013; Mike Frysinger <vapier@gentoo.org> +eio-1.7.8.ebuild:
+  Version bump.
+
+  11 May 2013; Markus Meier <maekke@gentoo.org> eio-1.7.6.ebuild:
+  add ~arm, bug #456736
+
+*eio-1.7.6 (10 Apr 2013)
+
+  10 Apr 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> +eio-1.7.6.ebuild,
+  -eio-1.7.4.ebuild:
+  Version bump, drop old
+
+*eio-1.7.5 (04 Jan 2013)
+
+  04 Jan 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> +eio-1.7.5.ebuild,
+  eio-1.7.4.ebuild:
+  Version bump
+
+  29 Dec 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> eio-1.7.4.ebuild:
+  Add missing eet dependency
+
+*eio-1.7.4 (21 Dec 2012)
+
+  21 Dec 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> -eio-1.7.1.ebuild,
+  -eio-1.7.3.ebuild, +eio-1.7.4.ebuild:
+  Version bump, drop old
+
+*eio-1.7.3 (08 Dec 2012)
+
+  08 Dec 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> +eio-1.7.3.ebuild:
+  Version bump
+
+*eio-1.7.1 (09 Nov 2012)
+
+  09 Nov 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> +eio-1.7.1.ebuild,
+  +metadata.xml:
+  Initial commit

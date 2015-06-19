@@ -1,0 +1,116 @@
+# ChangeLog for dev-python/pygoocanvas
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pygoocanvas/ChangeLog,v 1.30 2015/04/08 08:05:04 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pygoocanvas-0.14.1-r1.ebuild:
+  Drop old Python implementations
+
+  06 Apr 2013; Pacho Ramos <pacho@gentoo.org> -pygoocanvas-0.14.1.ebuild,
+  pygoocanvas-0.14.1-r1.ebuild:
+  gtk-doc is really required to get docs finally installed because package
+  doesn't really provide precompiled docs (#458428 by Nikoli), drop old.
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> pygoocanvas-0.14.1-r1.ebuild:
+  Stable for ppc, wrt bug #458984
+
+  26 Mar 2013; Pacho Ramos <pacho@gentoo.org> pygoocanvas-0.14.1-r1.ebuild:
+  Fix python USE deps, bug #458428 by Nikoli
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> pygoocanvas-0.14.1-r1.ebuild:
+  Stable for x86, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> pygoocanvas-0.14.1-r1.ebuild:
+  Stable for amd64, wrt bug #458984
+
+*pygoocanvas-0.14.1-r1 (12 Jan 2013)
+
+  12 Jan 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  +pygoocanvas-0.14.1-r1.ebuild:
+  Switch to python-r1 and EAPI=5.
+
+  04 May 2012; Patrick Lauer <patrick@gentoo.org> pygoocanvas-0.14.1.ebuild:
+  Migrating dev-util/pkgconfig -> virtual/pkgconfig
+
+  24 Feb 2012; Patrick Lauer <patrick@gentoo.org> pygoocanvas-0.14.1.ebuild:
+  Restricting pypy
+
+  25 Jun 2011; Raúl Porcel <armin76@gentoo.org> pygoocanvas-0.14.1.ebuild:
+  Add ~sparc wrt #371407
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org> pygoocanvas-0.14.1.ebuild:
+  Marking pygoocanvas-0.14.1 ppc stable for bug 353436
+
+  08 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  pygoocanvas-0.14.1.ebuild:
+  Fix slot-deps on gtk+ and other libs
+
+  25 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pygoocanvas-0.14.1.ebuild:
+  Set SUPPORT_PYTHON_ABIS (bug #345519).
+
+  24 Feb 2011; Thomas Kahle <tomka@gentoo.org> pygoocanvas-0.14.1.ebuild:
+  x86 stable per bug 353436
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org> pygoocanvas-0.14.1.ebuild:
+  Stable on amd64 wrt bug #353436
+
+  04 Sep 2009; Patrick Lauer <patrick@gentoo.org>
+  -pygoocanvas-0.10.0.ebuild, -pygoocanvas-0.13.1.ebuild,
+  -pygoocanvas-0.14.0.ebuild:
+  Remove old
+
+  13 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  pygoocanvas-0.14.1.ebuild:
+  Raise pycairo depend to 1.8.4 wrt #269041.
+
+*pygoocanvas-0.14.1 (10 May 2009)
+
+  10 May 2009; Arun Raghavan <ford_prefect@gentoo.org>
+  +pygoocanvas-0.14.1.ebuild:
+  Bump to 0.14.1. Also fixes compatibility with new pycairo (bug #269041)
+
+*pygoocanvas-0.14.0 (18 Mar 2009)
+
+  18 Mar 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +pygoocanvas-0.14.0.ebuild:
+  Bump to 0.14.0.
+
+*pygoocanvas-0.13.1 (18 Jan 2009)
+
+  18 Jan 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +pygoocanvas-0.13.1.ebuild:
+  Bump to 0.13.1.
+
+  27 Oct 2008; Ali Polatel <hawking@gentoo.org> pygoocanvas-0.10.0.ebuild:
+  Use python_need_rebuild.
+
+*pygoocanvas-0.10.0 (01 May 2008)
+
+  01 May 2008; Samuli Suominen <drac@gentoo.org> -pygoocanvas-0.8.0.ebuild,
+  -pygoocanvas-0.9.0.ebuild, +pygoocanvas-0.10.0.ebuild:
+  Version bump wrt #219954, thanks to Dieter Verfaillie for reporting.
+
+  31 Jan 2008; Michael Hanselmann <hansmi@gentoo.org> metadata.xml:
+  Remove myself as maintainer.
+
+  08 Sep 2007; Christoph Mende <angelos@gentoo.org>
+  pygoocanvas-0.9.0.ebuild:
+  Added ~amd64 wrt bug #190230
+
+*pygoocanvas-0.9.0 (20 Aug 2007)
+
+  20 Aug 2007; Michael Hanselmann <hansmi@gentoo.org>
+  -pygoocanvas-0.4.1.ebuild, +pygoocanvas-0.9.0.ebuild:
+  Version bump (bug 189446).
+
+*pygoocanvas-0.8.0 (27 Apr 2007)
+
+  27 Apr 2007; Michael Hanselmann <hansmi@gentoo.org>
+  +pygoocanvas-0.8.0.ebuild:
+  Version bump, bug #176124.
+
+*pygoocanvas-0.4.1 (14 Dec 2006)
+
+  14 Dec 2006; Michael Hanselmann <hansmi@gentoo.org> +metadata.xml,
+  +pygoocanvas-0.4.1.ebuild:
+  Added to portage, ebuild by myself.

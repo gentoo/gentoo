@@ -1,0 +1,42 @@
+# ChangeLog for games-arcade/spacerider
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/spacerider/ChangeLog,v 1.10 2015/04/01 05:09:52 mr_bones_ Exp $
+
+  01 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/spacerider-0.13-font.patch, +files/spacerider-0.13-gcc49.patch,
+  spacerider-0.13.ebuild:
+  first attempt at patch to fix bug #539658
+
+  15 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> spacerider-0.13.ebuild:
+  use deps for libsdl
+
+  05 Jan 2015; Tupone Alfredo <tupone@gentoo.org> spacerider-0.13.ebuild:
+  EAPI 5
+
+  29 Oct 2010; Tupone Alfredo <tupone@gentoo.org> spacerider-0.13.ebuild,
+  +files/spacerider-0.13-ovflfix.patch:
+  Fix overflow. Bug #340166 by flameeyes@gentoo.org
+
+  05 Jan 2010; Joseph Jezak <josejx@gentoo.org> spacerider-0.13.ebuild:
+  Marked ~ppc for bug #293677.
+
+  23 Nov 2009; Markus Meier <maekke@gentoo.org> spacerider-0.13.ebuild:
+  amd64/x86 stable, bug #294141
+
+  14 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  spacerider-0.13.ebuild:
+  EAPI=2
+
+  20 Mar 2008; Tristan Heaven <nyhm@gentoo.org> spacerider-0.13.ebuild:
+  Add ~amd64 keyword
+
+  19 Jan 2008; Tristan Heaven <nyhm@gentoo.org>
+  files/spacerider-0.13-gentoo.patch, spacerider-0.13.ebuild:
+  Remove strip from makefile
+
+*spacerider-0.13 (18 Feb 2007)
+
+  18 Feb 2007; <tupone@gentoo.org> +files/spacerider-0.13-gcc41.patch,
+  +files/spacerider-0.13-gentoo.patch, +metadata.xml,
+  +spacerider-0.13.ebuild:
+  New ebuild. Bug #110104 by Fernando V.

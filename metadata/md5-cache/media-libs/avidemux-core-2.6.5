@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=!<media-video/avidemux-2.6.5:2.6 dev-db/sqlite:3 sdl? ( media-libs/libsdl:0 ) system-ffmpeg? ( >=virtual/ffmpeg-9:0[mp3,theora] ) xv? ( x11-libs/libXv:0 ) vaapi? ( x11-libs/libva:0 ) vdpau? ( x11-libs/libvdpau:0 ) video_cards_fglrx? ( || ( >=x11-drivers/ati-drivers-14.12-r3 x11-libs/xvba-video:0 ) ) virtual/pkgconfig nls? ( sys-devel/gettext ) !system-ffmpeg? ( dev-lang/yasm[nls=] ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Core libraries for a video editor designed for simple cutting, filtering and encoding tasks
+EAPI=5
+HOMEPAGE=http://fixounet.free.fr/avidemux
+IUSE=debug nls sdl system-ffmpeg vaapi vdpau video_cards_fglrx xv
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-1 GPL-2 MIT PSF-2 public-domain
+RDEPEND=nls? ( virtual/libintl:0 ) !<media-video/avidemux-2.6.5:2.6 dev-db/sqlite:3 sdl? ( media-libs/libsdl:0 ) system-ffmpeg? ( >=virtual/ffmpeg-9:0[mp3,theora] ) xv? ( x11-libs/libXv:0 ) vaapi? ( x11-libs/libva:0 ) vdpau? ( x11-libs/libvdpau:0 ) video_cards_fglrx? ( || ( >=x11-drivers/ati-drivers-14.12-r3 x11-libs/xvba-video:0 ) )
+SLOT=2.6
+SRC_URI=mirror://sourceforge/avidemux/2.6.5/avidemux_2.6.5.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=7facbae70e69a6e879e510840d02c1f7

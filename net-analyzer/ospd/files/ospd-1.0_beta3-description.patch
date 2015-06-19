@@ -1,0 +1,18 @@
+ setup.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 5c17dd1..fffea59 100644
+--- a/setup.py
++++ b/setup.py
+@@ -40,8 +40,8 @@ setup(
+     # http://packaging.python.org/en/latest/tutorial.html#version
+     version='1.0+beta3',
+ 
+-    description=('OSPD is a collection of scanner wrappers which share the, ',
+-                 'same communication protocol: OSP (OpenVAS Scanner ',
++    description=('OSPD is a collection of scanner wrappers which share the, '
++                 'same communication protocol: OSP (OpenVAS Scanner '
+                  'Protocol)'),
+     long_description=long_description,
+ 

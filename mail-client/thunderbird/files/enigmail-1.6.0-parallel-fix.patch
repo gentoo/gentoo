@@ -1,0 +1,38 @@
+commit dd4ad2eebd36c84307222ca56c10c073527d7054
+Author: Patrick Brunschwig <patrick@enigmail.net>
+Date:   Sun Nov 24 19:06:23 2013 +0100
+
+    fixed broken parallel full build of TB (patch by Fabio Rossi)
+
+diff --git a/lang/Makefile.in b/lang/Makefile.in
+index 2334d4f..38688e0 100644
+--- a/lang/Makefile.in
++++ b/lang/Makefile.in
+@@ -16,12 +16,12 @@ include $(topsrcdir)/config/config.mk
+ 
+ include $(srcdir)/../util/build.mk
+ 
+-all: export jar
++all: jar
+ 
+ export:
+ 	$(PERL) $(srcdir)/make-lang-xpi.pl $(srcdir)/current-languages.txt $(srcdir)
+ 
+-jar:
++jar: export
+ 	$(MAKEJAR)
+ 
+ clean:
+diff --git a/ui/Makefile.in b/ui/Makefile.in
+index 6309525..13c98ee 100644
+--- a/ui/Makefile.in
++++ b/ui/Makefile.in
+@@ -28,7 +28,7 @@ include $(topsrcdir)/config/config.mk
+ 
+ include $(srcdir)/../util/build.mk
+ 
+-jar:
++jar: dirs
+ 	$(MAKEJAR)
+ 
+ clean:

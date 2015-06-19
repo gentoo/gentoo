@@ -1,0 +1,17 @@
+# ChangeLog for dev-haskell/gnutls
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/gnutls/ChangeLog,v 1.3 2014/07/25 08:59:11 slyfox Exp $
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*gnutls-0.1.5 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org> +gnutls-0.1.5.ebuild:
+  Bump gnutls to 0.1.5
+
+*gnutls-0.1.4 (26 Aug 2013)
+
+  26 Aug 2013; Alexander Vershilov <qnikst@gentoo.org> +gnutls-0.1.4.ebuild,
+  +metadata.xml:
+  dev-haskell/gnutls: initial layout

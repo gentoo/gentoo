@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare setup test
+DEPEND=!=sci-libs/openfoam-1.6* !=sci-libs/openfoam-kernel-1.6* !=sci-libs/openfoam-meta-1.6* !=sci-libs/openfoam-solvers-1.6* !=sci-libs/openfoam-utilities-1.6* !=sci-libs/openfoam-wmake-1.6* sci-visualization/opendx virtual/mpi
+DESCRIPTION=Open Field Operation and Manipulation - CFD Simulation Toolbox
+EAPI=2
+HOMEPAGE=http://www.opencfd.co.uk/openfoam/
+IUSE=examples doc
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!=sci-libs/openfoam-1.6* !=sci-libs/openfoam-kernel-1.6* !=sci-libs/openfoam-meta-1.6* !=sci-libs/openfoam-solvers-1.6* !=sci-libs/openfoam-utilities-1.6* !=sci-libs/openfoam-wmake-1.6* sci-visualization/opendx virtual/mpi
+SLOT=1.6
+SRC_URI=mirror://sourceforge/foam/OpenFOAM-1.6.General.gtgz -> OpenFOAM-1.6.General.tgz x86? ( mirror://sourceforge/foam/OpenFOAM-1.6.linuxGccDPOpt.gtgz -> OpenFOAM-1.6.linuxGccDPOpt.tgz ) amd64? ( mirror://sourceforge/foam/OpenFOAM-1.6.linux64GccDPOpt.gtgz -> OpenFOAM-1.6.linux64GccDPOpt.tgz ) mirror://gentoo/OpenFOAM-1.6-compile.patch.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=2eca830092c44304a0923da1915b28c6

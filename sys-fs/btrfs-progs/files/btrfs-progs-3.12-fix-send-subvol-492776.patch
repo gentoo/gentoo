@@ -1,0 +1,111 @@
+Gentoo-bug: http://bugs.gentoo.org/492776
+
+From: Wang Shilong <wangsl.fnst@cn.fujitsu.com>
+
+Steps to reproduce:
+	# mkfs.btrfs -f /dev/sda
+	# mount /dev/sda /mnt
+	# btrfs subvolume create /mnt/foo
+	# umount /mnt
+	# mount -o subvol=foo /dev/sda /mnt
+	# btrfs sub snapshot -r /mnt /mnt/snap
+	# btrfs send /mnt/snap > /dev/null
+
+We will fail to send '/mnt/snap',this is because btrfs send try to
+open '/mnt/snap' by btrfs internal subvolume path 'foo/snap' rather
+than relative path based on mounted point, this will return us 'no
+such file or directory',this is not right, fix it.
+
+Reported-by: Thomas Scheiblauer <tom@sharkbay.at>
+Signed-off-by: Wang Shilong <wangsl.fnst@cn.fujitsu.com>
+---
+v1->v2:
+	code cleanups(thanks to Stefan)
+---
+ cmds-send.c | 34 ++++++----------------------------
+ 1 file changed, 6 insertions(+), 28 deletions(-)
+
+diff --git a/cmds-send.c b/cmds-send.c
+index 53e9a53..6fdfd7f 100644
+--- a/cmds-send.c
++++ b/cmds-send.c
+@@ -282,31 +282,21 @@ out:
+ 	return ERR_PTR(ret);
+ }
+ 
+-static int do_send(struct btrfs_send *send, u64 root_id, u64 parent_root_id,
+-		   int is_first_subvol, int is_last_subvol)
++static int do_send(struct btrfs_send *send, u64 parent_root_id,
++		   int is_first_subvol, int is_last_subvol, char *subvol)
+ {
+ 	int ret;
+ 	pthread_t t_read;
+ 	pthread_attr_t t_attr;
+ 	struct btrfs_ioctl_send_args io_send;
+-	struct subvol_info *si;
+ 	void *t_err = NULL;
+ 	int subvol_fd = -1;
+ 	int pipefd[2] = {-1, -1};
+ 
+-	si = subvol_uuid_search(&send->sus, root_id, NULL, 0, NULL,
+-			subvol_search_by_root_id);
+-	if (!si) {
+-		ret = -ENOENT;
+-		fprintf(stderr, "ERROR: could not find subvol info for %llu",
+-				root_id);
+-		goto out;
+-	}
+-
+-	subvol_fd = openat(send->mnt_fd, si->path, O_RDONLY | O_NOATIME);
++	subvol_fd = openat(send->mnt_fd, subvol, O_RDONLY | O_NOATIME);
+ 	if (subvol_fd < 0) {
+ 		ret = -errno;
+-		fprintf(stderr, "ERROR: open %s failed. %s\n", si->path,
++		fprintf(stderr, "ERROR: open %s failed. %s\n", subvol,
+ 				strerror(-ret));
+ 		goto out;
+ 	}
+@@ -385,10 +375,6 @@ out:
+ 		close(pipefd[0]);
+ 	if (pipefd[1] != -1)
+ 		close(pipefd[1]);
+-	if (si) {
+-		free(si->path);
+-		free(si);
+-	}
+ 	return ret;
+ }
+ 
+@@ -664,14 +650,6 @@ int cmd_send(int argc, char **argv)
+ 			goto out;
+ 		}
+ 
+-		ret = get_root_id(&send, get_subvol_name(send.root_path, subvol),
+-				&root_id);
+-		if (ret < 0) {
+-			fprintf(stderr, "ERROR: could not resolve root_id "
+-					"for %s\n", subvol);
+-			goto out;
+-		}
+-
+ 		if (!full_send && !parent_root_id) {
+ 			ret = find_good_parent(&send, root_id, &parent_root_id);
+ 			if (ret < 0) {
+@@ -700,8 +678,8 @@ int cmd_send(int argc, char **argv)
+ 			is_first_subvol = 1;
+ 			is_last_subvol = 1;
+ 		}
+-		ret = do_send(&send, root_id, parent_root_id,
+-			      is_first_subvol, is_last_subvol);
++		ret = do_send(&send, parent_root_id, is_first_subvol,
++			      is_last_subvol, subvol);
+ 		if (ret < 0)
+ 			goto out;
+ 
+-- 
+1.8.4
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-btrfs" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html

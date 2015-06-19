@@ -1,0 +1,76 @@
+# ChangeLog for games-fps/lsdldoom
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/lsdldoom/ChangeLog,v 1.18 2015/01/13 02:30:30 patrick Exp $
+
+  13 Jan 2015; Patrick Lauer <patrick@gentoo.org> lsdldoom-1.4.4.4-r1.ebuild:
+  Fix ppc keywording as doom-data lost keywords
+
+  25 Feb 2013; Mike Frysinger <vapier@gentoo.org> lsdldoom-1.5.ebuild:
+  Add arm love.
+
+  10 Jan 2012; Brent Baude <ranger@gentoo.org> lsdldoom-1.5.ebuild:
+  Marking lsdldoom-1.5 ppc for bug 393217
+
+  11 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> lsdldoom-1.5.ebuild:
+  x86 stable wrt bug #393217
+
+*lsdldoom-1.5 (26 Oct 2011)
+
+  26 Oct 2011; Michael Sterrett <mr_bones_@gentoo.org> +lsdldoom-1.5.ebuild,
+  +files/lsdldoom-1.5-paths.patch, metadata.xml:
+  version bump (bug #388297)
+
+  15 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  lsdldoom-1.4.4.4.ebuild:
+  Fix quoting.
+
+*lsdldoom-1.4.4.4-r1 (14 Aug 2007)
+
+  14 Aug 2007; Tristan Heaven <nyhm@gentoo.org>
+  +files/lsdldoom-1.4.4.4-keys.patch, +lsdldoom-1.4.4.4-r1.ebuild:
+  Patch for broken key configuration, bug #103324
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  10 Jan 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  lsdldoom-1.4.4.4.ebuild:
+  Added a blocker on games-fps/prboom for bug #159087.
+
+  06 May 2006; <Tupone@gentoo.org> +files/lsdldoom-1.4.4.4-gcc41.patch,
+  lsdldoom-1.4.4.4.ebuild:
+  Fix for gcc-4.1, bug #130482 by David Morgan
+  Patched only the src/r_bsp.h files
+
+  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  lsdldoom-1.4.4.4.ebuild:
+  Making games last on inherit line.
+
+  15 Jan 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/1.4.4.4-gcc34.patch, +files/1.4.4.4-gentoo-paths.patch,
+  lsdldoom-1.4.4.4.ebuild:
+  Clean up ebuild: add games.eclass support, fix stupid paths, and fix gcc
+  errors #77846 by Pinky.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  11 Mar 2004; Jason Wever <weeve@gentoo.org> lsdldoom-1.4.4.4.ebuild:
+  Marked back to ~sparc to fix broken dependencies. Please in the future learn
+  to use echangelog and repoman, or you will owe me a lifetime supply of pizza.
+
+  25 Sep 2003; Chuck Short <zul@gentoo.org> lsdldoom-1.4.4.4.ebuild:
+  Added sparc to keywords.
+
+*lsdldoom-1.4.4.4 (1 Feb 2002)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> lsdldoom-1.4.4.4.ebuild :
+  Added LICENSE, KEYWORDS.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,114 @@
+# ChangeLog for x11-misc/gtkdialog
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/gtkdialog/ChangeLog,v 1.28 2013/02/13 01:46:21 jer Exp $
+
+  13 Feb 2013; Jeroen Roovers <jer@gentoo.org> -gtkdialog-0.7.20.ebuild,
+  -files/gtkdialog-0.7.20-name_conflict.patch, -gtkdialog-0.8.0.ebuild:
+  Old.
+
+  13 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gtkdialog-0.8.2.ebuild:
+  Stable for x86, wrt bug #455780
+
+  10 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gtkdialog-0.8.2.ebuild:
+  Stable for ppc, wrt bug #455780
+
+  06 Feb 2013; Chema Alonso <nimiux@gentoo.org> gtkdialog-0.8.2.ebuild:
+  Marked stable for amd64 wrt bug #455780
+
+*gtkdialog-0.8.3 (06 Feb 2013)
+
+  06 Feb 2013; Jeroen Roovers <jer@gentoo.org> +gtkdialog-0.8.3.ebuild:
+  Version bump by teidakankan (bug #455772).
+
+*gtkdialog-0.8.2 (30 Oct 2012)
+
+  30 Oct 2012; Jeroen Roovers <jer@gentoo.org> +gtkdialog-0.8.2.ebuild:
+  Version bump.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> gtkdialog-0.7.20.ebuild,
+  gtkdialog-0.8.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*gtkdialog-0.8.0 (12 Oct 2011)
+
+  12 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> +gtkdialog-0.8.0.ebuild:
+  Version bump wrt #386933 by "Walther"
+
+  01 Jun 2009; nixnut <nixnut@gentoo.org> gtkdialog-0.7.20.ebuild:
+  ppc stable #272045
+
+  01 Jun 2009; Markus Meier <maekke@gentoo.org> gtkdialog-0.7.20.ebuild:
+  amd64/x86 stable, bug #272045
+
+*gtkdialog-0.7.20 (01 Jun 2009)
+
+  01 Jun 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +gtkdialog-0.7.20.ebuild, +files/gtkdialog-0.7.20-name_conflict.patch:
+  Version bump wrt #254582, thanks to Gary Richards.
+
+  23 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  gtkdialog-0.59.8.ebuild:
+  amd64 stable
+
+  02 Nov 2006; Olivier Crête <tester@gentoo.org> gtkdialog-0.59.8.ebuild:
+  Marked ~amd64, bug #153230
+
+  29 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/gtkdialog-0.59.8-amd64.patch, gtkdialog-0.59.8.ebuild:
+  Add patch for amd64, see bug #153230.
+
+  23 Oct 2006; David Shakaryan <omp@gentoo.org> gtkdialog-0.59.8.ebuild:
+  Better DEPEND, RDEPEND should not include dev-util/pkgconfig.
+
+  11 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  gtkdialog-0.59.8.ebuild:
+  Add missing dev-util/pkgconfig to DEPEND, see bug #150680.
+
+  02 Nov 2006; Olivier Crête <tester@gentoo.org> gtkdialog-0.59.8.ebuild:
+  Marked ~amd64, bug #153230
+
+  21 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  -gtkdialog-0.59.4.ebuild:
+  Removed old version.
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gtkdialog-0.59.8.ebuild:
+  Stable on ppc.
+
+  01 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org>
+  gtkdialog-0.59.8.ebuild:
+  Stable on x86.
+
+  01 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org>
+  gtkdialog-0.59.4.ebuild, gtkdialog-0.59.8.ebuild:
+  Fixed dodoc not to install COPYING and/or INSTALL.
+
+*gtkdialog-0.59.8 (20 Aug 2005)
+
+  20 Aug 2005; Jonathan Smith <smithj@gentoo.org> -gtkdialog-0.58.8.ebuild,
+  +gtkdialog-0.59.8.ebuild:
+  #101019: version bump
+
+  26 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gtkdialog-0.59.4.ebuild:
+  Stable on ppc.
+
+  19 Jun 2005; Jonathan Smith <smithj@gentoo.org> gtkdialog-0.59.4.ebuild:
+  homepage update, x86 stable
+
+*gtkdialog-0.59.4 (05 Jun 2005)
+
+  05 Jun 2005; Markus Nigbur <pyrania@gentoo.org> +gtkdialog-0.59.4.ebuild:
+  Version bump. Added doc useflag for the examples. See bug #73973.
+
+  01 Jun 2004; Brandon Hale <tseng@gentoo.org> gtkdialog-0.58.8.ebuild:
+  Stable on x86, add IUSE=
+
+  21 Mar 2004; David Holm <dholm@gentoo.org> gtkdialog-0.58.8.ebuild:
+  Added to ~ppc.
+
+*gtkdialog-0.58.8 (20 Mar 2004)
+
+  20 Mar 2004; Markus Nigbur <pyrania@gentoo.org> gtkdialog-0.58.8.ebuild,
+  metadata.xml:
+  Initial import. Closing bug #39869.

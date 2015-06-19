@@ -1,0 +1,69 @@
+# ChangeLog for dev-ruby/ultraviolet
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ultraviolet/ChangeLog,v 1.16 2015/06/08 05:59:57 jlec Exp $
+
+  08 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  12 Apr 2015; Hans de Graaff <graaff@gentoo.org> ultraviolet-1.0.1.ebuild:
+  Add ruby22.
+
+  06 Aug 2014; Manuel Rüger <mrueg@gentoo.org> ultraviolet-1.0.1.ebuild:
+  Add ruby21 target.
+
+  18 Jul 2014; Hans de Graaff <graaff@gentoo.org> ultraviolet-1.0.1.ebuild:
+  Fix USE=doc. Fix HOMEPAGE. Add ruby20.
+
+  16 Mar 2014; Manuel Rüger <mrueg@gentoo.org> ultraviolet-1.0.1.ebuild:
+  Remove ruby18 target.
+
+  05 Oct 2013; Manuel Rüger <mrueg@gentoo.org> -ultraviolet-1.0.0.ebuild:
+  Cleanup old.
+
+*ultraviolet-1.0.1 (22 Jul 2013)
+
+  22 Jul 2013; Manuel Rüger <mrueg@gentoo.org> +ultraviolet-1.0.1.ebuild:
+  Version bump
+
+  02 Jul 2013; Hans de Graaff <graaff@gentoo.org>
+  -ultraviolet-0.10.2-r1.ebuild:
+  Cleanup.
+
+*ultraviolet-1.0.0 (24 Sep 2012)
+
+  24 Sep 2012; Hans de Graaff <graaff@gentoo.org> +ultraviolet-1.0.0.ebuild:
+  Version bump.
+
+  11 Aug 2010; Hans de Graaff <graaff@gentoo.org>
+  -ultraviolet-0.10.2.ebuild:
+  Remove old version.
+
+*ultraviolet-0.10.2-r1 (11 Jul 2010)
+
+  11 Jul 2010; Hans de Graaff <graaff@gentoo.org>
+  +ultraviolet-0.10.2-r1.ebuild:
+  Convert to ruby-fakegem.
+
+  22 May 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  ultraviolet-0.10.2.ebuild:
+  Various cleanups.
+
+  04 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  ultraviolet-0.10.2.ebuild:
+  Transfer Prefix keywords
+
+  07 Aug 2009; Hans de Graaff <graaff@gentoo.org>
+  -ultraviolet-0.10.1.ebuild, ultraviolet-0.10.2.ebuild:
+  Fix dependencies. Remove old version.
+
+*ultraviolet-0.10.2 (28 Jun 2009)
+
+  28 Jun 2009; Hans de Graaff <graaff@gentoo.org>
+  +ultraviolet-0.10.2.ebuild:
+  Version bump with minor bug fixes.
+
+*ultraviolet-0.10.1 (19 Jun 2007)
+
+  19 Jun 2007; Joshua Nichols <nichoj@gentoo.org> +metadata.xml,
+  +ultraviolet-0.10.1.ebuild:
+  Initial version.

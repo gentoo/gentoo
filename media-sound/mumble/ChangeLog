@@ -1,0 +1,256 @@
+# ChangeLog for media-sound/mumble
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mumble/ChangeLog,v 1.53 2014/10/30 21:50:38 tgurr Exp $
+
+*mumble-1.2.8 (30 Oct 2014)
+
+  30 Oct 2014; Timo Gurr <tgurr@gentoo.org> +mumble-1.2.8.ebuild:
+  Version bump, wrt bug #519010.
+
+  06 Jun 2014; Sergey Popov <pinkbyte@gentoo.org> -mumble-1.2.5.ebuild:
+  Security cleanup, wrt bug #510380
+
+  04 Jun 2014; Agostino Sarubbo <ago@gentoo.org> mumble-1.2.6.ebuild:
+  Stable for x86, wrt bug #510380
+
+  04 Jun 2014; Agostino Sarubbo <ago@gentoo.org> mumble-1.2.6.ebuild:
+  Stable for amd64, wrt bug #510380
+
+*mumble-1.2.6 (15 May 2014)
+
+  15 May 2014; Timo Gurr <tgurr@gentoo.org> +mumble-1.2.6.ebuild:
+  Version bump. Fixes security bug #510380 (CVE-2014-3755).
+
+  26 Mar 2014; Timo Gurr <tgurr@gentoo.org> -mumble-1.2.4.ebuild:
+  Remove old.
+
+  15 Feb 2014; Agostino Sarubbo <ago@gentoo.org> mumble-1.2.5.ebuild:
+  Stable for x86, wrt bug #500486
+
+  15 Feb 2014; Agostino Sarubbo <ago@gentoo.org> mumble-1.2.5.ebuild:
+  Stable for amd64, wrt bug #500486
+
+*mumble-1.2.5 (07 Feb 2014)
+
+  07 Feb 2014; Timo Gurr <tgurr@gentoo.org> +mumble-1.2.5.ebuild:
+  Version bump. Fixes security bug #500486 (CVE-2014-004{4,5}).
+
+  17 Nov 2013; Timo Gurr <tgurr@gentoo.org> -mumble-1.2.3-r2.ebuild,
+  -files/mumble-1.2.3-fix-cert-validation.patch,
+  -files/mumble-1.2.3-set-file-permissions.patch:
+  Remove old.
+
+  27 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Voip herd is removed: http://article.gmane.org/gmane.linux.gentoo.devel/88434
+
+  13 Jul 2013; Agostino Sarubbo <ago@gentoo.org> mumble-1.2.4.ebuild:
+  Stable for x86, wrt bug #476266
+
+  13 Jul 2013; Agostino Sarubbo <ago@gentoo.org> mumble-1.2.4.ebuild:
+  Stable for amd64, wrt bug #476266
+
+  07 Jun 2013; Timo Gurr <tgurr@gentoo.org> mumble-1.2.4.ebuild,
+  +files/mumble-1.2.4-speech-dispatcher.patch:
+  Fix building with speech-dispatcher >=0.8 wrt bug #472366.
+
+*mumble-1.2.4 (04 Jun 2013)
+
+  04 Jun 2013; Timo Gurr <tgurr@gentoo.org> -mumble-1.2.4_beta1.ebuild,
+  +mumble-1.2.4.ebuild:
+  Version bump, remove old. Fixes bug #396479,#445960,#472182
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> mumble-1.2.3-r2.ebuild,
+  mumble-1.2.4_beta1.ebuild:
+  Move Qt dependencies to the new category
+
+*mumble-1.2.4_beta1 (16 Nov 2012)
+
+  16 Nov 2012; Timo Gurr <tgurr@gentoo.org> +mumble-1.2.4_beta1.ebuild,
+  -mumble-1.2.3-r1.ebuild:
+  Version bump, remove old.
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> mumble-1.2.3-r1.ebuild,
+  mumble-1.2.3-r2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  18 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> mumble-1.2.3-r2.ebuild:
+  x86 stable wrt bug #403939
+
+  16 Feb 2012; Agostino Sarubbo <ago@gentoo.org> mumble-1.2.3-r2.ebuild:
+  Stable for AMD64, wrt security bug #403845
+
+*mumble-1.2.3-r2 (16 Feb 2012)
+
+  16 Feb 2012; Timo Gurr <tgurr@gentoo.org> -mumble-1.1.8.ebuild,
+  -mumble-1.2.2.ebuild, +mumble-1.2.3-r2.ebuild,
+  +files/mumble-1.2.3-fix-cert-validation.patch,
+  +files/mumble-1.2.3-set-file-permissions.patch:
+  Revbump fixing security issue wrt bug #403939. Removing mDNSResponder wrt
+  upcomming last rite. Added patch for Qt 4.8 SSL. EAPI bump. Remove old.
+
+  14 Jun 2011; Markus Meier <maekke@gentoo.org> mumble-1.2.3-r1.ebuild:
+  amd64/x86 stable, bug #370245
+
+*mumble-1.2.3-r1 (03 Mar 2011)
+
+  03 Mar 2011; Timo Gurr <tgurr@gentoo.org> -mumble-1.2.3.ebuild,
+  +mumble-1.2.3-r1.ebuild:
+  Revbump installing libmumble symlink fixing bug #356525, thanks to Daniel
+  Troeder.
+
+  21 Feb 2011; Timo Gurr <tgurr@gentoo.org> mumble-1.2.3.ebuild:
+  Force bundled celt libraries even when a system celt library is detected,
+  fixes bug #355781.
+
+*mumble-1.2.3 (20 Feb 2011)
+
+  20 Feb 2011; Timo Gurr <tgurr@gentoo.org> -mumble-1.2.3_rc1.ebuild,
+  +mumble-1.2.3.ebuild:
+  Version bump, remove old. Don't use system celt library for compatibility
+  reasons wrt bug #354991.
+
+*mumble-1.2.3_rc1 (07 Dec 2010)
+
+  07 Dec 2010; Timo Gurr <tgurr@gentoo.org> +mumble-1.2.3_rc1.ebuild:
+  Version bump, fix bug #307643 thanks to Nikos Chantziaras.
+
+*mumble-1.2.2 (10 Feb 2010)
+
+  10 Feb 2010; Timo Gurr <tgurr@gentoo.org> -mumble-1.2.1-r1.ebuild,
+  -files/mumble-1.2.1-celt-libnaming.patch, +mumble-1.2.2.ebuild:
+  Version bump, remove old.
+
+*mumble-1.2.1-r1 (02 Feb 2010)
+
+  02 Feb 2010; Timo Gurr <tgurr@gentoo.org> -mumble-1.2.1.ebuild,
+  +mumble-1.2.1-r1.ebuild, +files/mumble-1.2.1-celt-libnaming.patch:
+  Fix usage of newer celt versions wrt bug #293300. Thanks to Dennis
+  Schridde again.
+
+*mumble-1.2.1 (08 Jan 2010)
+
+  08 Jan 2010; Timo Gurr <tgurr@gentoo.org> -mumble-1.2.0.ebuild,
+  +mumble-1.2.1.ebuild:
+  Version bump, remove old.
+
+*mumble-1.2.0 (11 Dec 2009)
+
+  11 Dec 2009; Timo Gurr <tgurr@gentoo.org> -mumble-1.2.0_beta2.ebuild,
+  +mumble-1.2.0.ebuild:
+  Version bump, remove old.
+
+*mumble-1.2.0_beta2 (08 Dec 2009)
+
+  08 Dec 2009; Timo Gurr <tgurr@gentoo.org> -mumble-1.2.0_beta1.ebuild,
+  +mumble-1.2.0_beta2.ebuild:
+  Version bump.
+
+  14 Nov 2009; Timo Gurr <tgurr@gentoo.org> mumble-1.2.0_beta1.ebuild:
+  Depend on >=dev-libs/boost-1.36.0-r1, fixing bug #293156.
+
+  14 Nov 2009; Timo Gurr <tgurr@gentoo.org> mumble-1.2.0_beta1.ebuild:
+  Disable build of 11x client.
+
+*mumble-1.2.0_beta1 (13 Nov 2009)
+
+  13 Nov 2009; Timo Gurr <tgurr@gentoo.org> +mumble-1.2.0_beta1.ebuild,
+  -mumble-1.2.0_pre20090911.ebuild:
+  Version bump.
+
+*mumble-1.2.0_pre20090911 (13 Sep 2009)
+
+  13 Sep 2009; Timo Gurr <tgurr@gentoo.org>
+  -mumble-1.2.0_pre20090808.ebuild, +mumble-1.2.0_pre20090911.ebuild:
+  New snapshot, also fixing bug #281683.
+
+*mumble-1.2.0_pre20090808 (13 Aug 2009)
+
+  13 Aug 2009; Timo Gurr <tgurr@gentoo.org>
+  +mumble-1.2.0_pre20090808.ebuild, metadata.xml:
+  Version bump to latest snapshot. Beware that the new release is not
+  compatible with older versions.
+
+  25 Mar 2009; Timo Gurr <tgurr@gentoo.org> mumble-1.1.8.ebuild:
+  IUSE default love.
+
+  25 Mar 2009; Timo Gurr <tgurr@gentoo.org> mumble-1.1.8.ebuild:
+  Install the shipped .desktop file instead of creating our own.
+
+*mumble-1.1.8 (25 Mar 2009)
+
+  25 Mar 2009; Timo Gurr <tgurr@gentoo.org> -mumble-1.1.7.ebuild,
+  +mumble-1.1.8.ebuild:
+  Version bump, remove old.
+
+*mumble-1.1.7 (30 Jan 2009)
+
+  30 Jan 2009; Timo Gurr <tgurr@gentoo.org> metadata.xml,
+  -mumble-1.1.6-r1.ebuild, +mumble-1.1.7.ebuild:
+  Version bump, fixing bug #256848 (thanks Atman Sense for the diff). Remove
+  old and take over maintainership.
+
+*mumble-1.1.6-r1 (07 Nov 2008)
+
+  07 Nov 2008; Timo Gurr <tgurr@gentoo.org> -mumble-1.1.6.ebuild,
+  +mumble-1.1.6-r1.ebuild:
+  Revision bump removing deprecated XEvIE support, fixing bug #245081 and
+  bug #245557 (Thanks Hal Engel and Rémi Cardona.
+
+*mumble-1.1.6 (22 Oct 2008)
+
+  22 Oct 2008; Timo Gurr <tgurr@gentoo.org> -files/mumble-0.9.4-path.patch,
+  -files/mumble-1.1.1-path.patch, metadata.xml, -mumble-0.9.4.ebuild,
+  -mumble-1.1.1.ebuild, +mumble-1.1.6.ebuild:
+  Version bump, fixing bug #206792 (Thanks Dennis Schridde for the updated
+  ebuild and everyone else who contributed in any way). Remove old.
+
+  28 Jul 2008; Carsten Lohrke <carlo@gentoo.org> mumble-0.9.4.ebuild,
+  mumble-1.1.1.ebuild:
+  QA: Get rid of deprecated qt4_min_version(). Please fix your ebuilds to
+  support split Qt 4.4 dependencies, cf. bug 217161 comment 11.
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> mumble-0.9.4.ebuild,
+  mumble-1.1.1.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  06 Jan 2008; Timothy Redaelli <drizzt@gentoo.org> mumble-1.1.1.ebuild:
+  Fix for speex 1.2_beta3.
+  Bug #204422 and #204462.
+
+*mumble-1.1.1 (23 Dec 2007)
+
+  23 Dec 2007; Timothy Redaelli <drizzt@gentoo.org>
+  +files/mumble-1.1.1-path.patch, +mumble-1.1.1.ebuild:
+  Add new media-sound/mumble for testing wrt bug #183781.
+
+  05 May 2007; Timothy Redaelli <drizzt@gentoo.org>
+  files/mumble-0.9.4-path.patch, mumble-0.9.4.ebuild:
+  Add vanilla use flag and fixed the patch.
+  Thanks to Mikkel Krautz wrt bug #177167.
+
+  01 May 2007; Timothy Redaelli <drizzt@gentoo.org> mumble-0.9.4.ebuild:
+  Remove pch use flags since it does not work anymore. Force
+  >=sys-devel/gcc-3.4. Thanks to Perttu Luukko for reporting wrt #176513. P.s.
+  please don't use forum for bug reporting since we (developers) cannot follow
+  all the forum threads.
+
+  23 Mar 2007; Timothy Redaelli <drizzt@gentoo.org> mumble-0.9.4.ebuild:
+  Oops, I forgot -o to built_with_use (thanks to jabub for reporting)
+
+  28 Feb 2007; Timothy Redaelli <drizzt@gentoo.org> mumble-0.9.4.ebuild:
+  Add use pch (as suggested by X on comment 2 of bug #167428).
+  Accept also qt with sqlite3 use (thanks to desowin wrt bug #166215).
+
+  08 Feb 2007; Timothy Redaelli <drizzt@gentoo.org>
+  -files/mumble-0.9.4-missing_typedefs.patch, mumble-0.9.4.ebuild:
+  Removed mumble-0.9.4_missing-typdefs.patch thanks to Gorch wrt bug #165927
+
+  20 Jan 2007; Timothy Redaelli <drizzt@gentoo.org>
+  +files/mumble-0.9.4-missing_typedefs.patch, mumble-0.9.4.ebuild:
+  Add Gorch patch for missing typedefs on gcc 3, wrt bug #162912.
+
+*mumble-0.9.4 (25 Nov 2006)
+
+  25 Nov 2006; Timothy Redaelli <drizzt@gentoo.org>
+  +files/mumble-0.9.4-path.patch, +metadata.xml, +mumble-0.9.4.ebuild:
+  New ebuild, thanks to Gorch wrt bug #155517

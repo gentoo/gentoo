@@ -1,0 +1,121 @@
+# ChangeLog for dev-perl/Crypt-RIPEMD160
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-RIPEMD160/ChangeLog,v 1.30 2014/08/21 14:26:12 axs Exp $
+
+*Crypt-RIPEMD160-0.50.0-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Crypt-RIPEMD160-0.50.0-r1.ebuild, -Crypt-RIPEMD160-0.50.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org> -Crypt-RIPEMD160-0.04.ebuild:
+  Cleanup
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  17 Jun 2012; Raúl Porcel <armin76@gentoo.org> Crypt-RIPEMD160-0.04.ebuild,
+  Crypt-RIPEMD160-0.50.0.ebuild:
+  Drop alpha/ia64/sparc keywords
+
+  06 May 2012; Brent Baude <ranger@gentoo.org> Crypt-RIPEMD160-0.50.0.ebuild:
+  Marking Crypt-RIPEMD160-0.50.0 ppc for bug 413091
+
+  24 Apr 2012; Agostino Sarubbo <ago@gentoo.org> Crypt-RIPEMD160-0.50.0.ebuild:
+  Stable for amd64, wrt bug #413091
+
+  24 Apr 2012; Jeff Horelick <jdhore@gentoo.org> Crypt-RIPEMD160-0.50.0.ebuild:
+  marked x86 per bug 413091
+
+  24 Apr 2011; Fabian Groffen <grobian@gentoo.org>
+  Crypt-RIPEMD160-0.50.0.ebuild:
+  Marked ~x86-solaris, bug #296509
+
+  11 Apr 2011; Torsten Veller <tove@gentoo.org> Crypt-RIPEMD160-0.50.0.ebuild:
+  Fix MODULE_AUTHOR (#363097). Thanks to Denis Sokolovsky
+
+*Crypt-RIPEMD160-0.50.0 (11 Apr 2011)
+
+  11 Apr 2011; Torsten Veller <tove@gentoo.org> +files/0.50.0-header.patch,
+  +Crypt-RIPEMD160-0.50.0.ebuild:
+  Version bump
+
+  09 Jan 2010; Fabian Groffen <grobian@gentoo.org>
+  Crypt-RIPEMD160-0.04.ebuild:
+  Transfer Prefix keywords
+
+  15 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Crypt-RIPEMD160-0.04.ebuild:
+  Ebuild maintenance
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Crypt-RIPEMD160-0.04.ebuild:
+  Adding perl dep; fixed header; fixed DEPEND
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  Crypt-RIPEMD160-0.04.ebuild:
+  Mark 0.04 stable on ia64
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  Crypt-RIPEMD160-0.04.ebuild:
+  add ~ia64
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Crypt-RIPEMD160-0.03-r2.ebuild, -Crypt-RIPEMD160-0.03-r3.ebuild,
+  Crypt-RIPEMD160-0.04.ebuild:
+  Cleaning
+
+  21 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Crypt-RIPEMD160-0.04.ebuild:
+  Stable on ppc.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  Crypt-RIPEMD160-0.04.ebuild:
+  Stable on alpha.
+
+  09 Jan 2004; <gustavoz@gentoo.org> Crypt-RIPEMD160-0.04.ebuild:
+  marked stable on sparc
+
+*Crypt-RIPEMD160-0.04 (07 Jun 2003)
+
+  07 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  Crypt-RIPEMD160-0.04.ebuild:
+  CPAN update
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*Crypt-RIPEMD160-0.03-r3 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*Crypt-RIPEMD160-0.03-r2 (5 May 2002)
+
+  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> Crypt-RIPEMD160-r2.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  5 May 2002; Seemant Kulleen <seemant@gentoo.org> Crypt-RIPEMD160-r2.ebuild
+  files/digest-Crypt-RIPEMD-160-r2 :
+
+  Converted eclasses.
+
+*Crypt-RIPEMD160-0.03-r1 (3 May 2002)
+
+  3 May 2002; Donny Davies <woodchip@gentoo.org> :
+
+  Added LICENSE, SLOT.
+
+*Crypt-RIPEMD160-0.03 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

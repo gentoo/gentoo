@@ -1,0 +1,178 @@
+# ChangeLog for dev-perl/Email-MIME-Encodings
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Email-MIME-Encodings/ChangeLog,v 1.44 2014/08/31 11:25:01 zlogene Exp $
+
+  31 Aug 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -Email-MIME-Encodings-1.313.0.ebuild, -Email-MIME-Encodings-1.314.0.ebuild:
+  Drop old.
+
+*Email-MIME-Encodings-1.315.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Email-MIME-Encodings-1.315.0-r1.ebuild, -Email-MIME-Encodings-1.315.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  21 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Email-MIME-Encodings-1.315.0.ebuild:
+  ppc stable wrt bug #492138
+
+  21 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Email-MIME-Encodings-1.315.0.ebuild:
+  ppc64 stable wrt bug #492138
+
+  21 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Email-MIME-Encodings-1.315.0.ebuild:
+  sparc stable wrt bug #492138
+
+  21 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Email-MIME-Encodings-1.315.0.ebuild:
+  x86 stable wrt bug #492138
+
+  21 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Email-MIME-Encodings-1.315.0.ebuild:
+  amd64 stable wrt bug #492138
+
+  21 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Email-MIME-Encodings-1.315.0.ebuild:
+  alpha stable wrt bug #492138
+
+  11 Feb 2014; Akinori Hattori <hattya@gentoo.org>
+  Email-MIME-Encodings-1.315.0.ebuild:
+  ia64 stable wrt bug #492138
+
+  06 Sep 2013; Patrick Lauer <patrick@gentoo.org>
+  Email-MIME-Encodings-1.315.0.ebuild:
+  Add missing test dep
+
+*Email-MIME-Encodings-1.315.0 (25 Aug 2013)
+
+  25 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +Email-MIME-Encodings-1.315.0.ebuild:
+  Bump
+
+*Email-MIME-Encodings-1.314.0 (15 Aug 2013)
+
+  15 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +Email-MIME-Encodings-1.314.0.ebuild:
+  Bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -Email-MIME-Encodings-1.313.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org>
+  Email-MIME-Encodings-1.313.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Email-MIME-Encodings-1.313.0 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Email-MIME-Encodings-1.313.0.ebuild:
+  Change version scheme
+
+  18 Mar 2010; Jeremy Olexa <darkside@gentoo.org> Email-MIME-Encodings-1.313.ebuild:
+  add ~x86-solaris ~sparc-solaris kw, as tested on bug 308683
+
+  12 Oct 2009; Torsten Veller <tove@gentoo.org>
+  -Email-MIME-Encodings-1.311.ebuild:
+  Cleanup
+
+  01 Oct 2009; Raúl Porcel <armin76@gentoo.org>
+  Email-MIME-Encodings-1.313.ebuild:
+  ia64/sparc stable wrt #258592
+
+  28 Sep 2009; Tobias Klausmann <klausman@gentoo.org>
+  Email-MIME-Encodings-1.313.ebuild:
+  Stable on alpha, bug #258592
+
+  19 Sep 2009; nixnut <nixnut@gentoo.org> Email-MIME-Encodings-1.313.ebuild:
+  ppc stable #284064
+
+  18 Sep 2009; Torsten Veller <tove@gentoo.org>
+  Email-MIME-Encodings-1.313.ebuild:
+  Stable on amd64 (#284064)
+
+  14 Sep 2009; Tom Gall <tgall@gentoo.org> Email-MIME-Encodings-1.313.ebuild:
+  stable on ppc64, bug #284064
+
+  10 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  Email-MIME-Encodings-1.313.ebuild:
+  stable x86, bug 284064
+
+  02 May 2009; Torsten Veller <tove@gentoo.org>
+  -Email-MIME-Encodings-1.310.ebuild, -Email-MIME-Encodings-1.312.ebuild:
+  Cleanup
+
+*Email-MIME-Encodings-1.313 (17 Apr 2009)
+
+  17 Apr 2009; Torsten Veller <tove@gentoo.org>
+  +Email-MIME-Encodings-1.313.ebuild:
+  Version bump
+
+*Email-MIME-Encodings-1.312 (26 Jan 2009)
+
+  26 Jan 2009; Torsten Veller <tove@gentoo.org>
+  +Email-MIME-Encodings-1.312.ebuild:
+  Version bump
+
+  08 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  Email-MIME-Encodings-1.311.ebuild:
+  alpha/ia64 stable
+
+  04 Dec 2007; Markus Rothe <corsair@gentoo.org>
+  Email-MIME-Encodings-1.311.ebuild:
+  Stable on ppc64; bug #198075
+
+  04 Dec 2007; nixnut <nixnut@gentoo.org> Email-MIME-Encodings-1.311.ebuild:
+  Stable on ppc wrt bug 198075
+
+  03 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  Email-MIME-Encodings-1.311.ebuild:
+  stable x86, bug 198075
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  Email-MIME-Encodings-1.311.ebuild:
+  amd64 stable
+
+  30 Jun 2007; Raúl Porcel <armin76@gentoo.org>
+  Email-MIME-Encodings-1.311.ebuild:
+  Add ~alpha wrt #165190
+
+  21 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  Email-MIME-Encodings-1.311.ebuild:
+  Marking sparc stable
+
+  10 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Email-MIME-Encodings-1.310.ebuild:
+  sparc stable
+
+  08 Apr 2007; Michael Cummings <mcummings@gentoo.org> ChangeLog:
+  Marking amd64 stable
+
+*Email-MIME-Encodings-1.311 (06 Apr 2007)
+
+  06 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  +Email-MIME-Encodings-1.311.ebuild:
+  Version bump
+
+  27 Mar 2007; Matti Bickel <mabi@gentoo.org>
+  Email-MIME-Encodings-1.310.ebuild:
+  ~ppc added (bug #165190)
+
+  27 Mar 2007; Raúl Porcel <armin76@gentoo.org>
+  Email-MIME-Encodings-1.310.ebuild:
+  Add ~ia64 wrt bug 165190
+
+  14 Feb 2007; Markus Rothe <corsair@gentoo.org>
+  Email-MIME-Encodings-1.310.ebuild:
+  Added ~ppc64
+
+*Email-MIME-Encodings-1.310 (05 Feb 2007)
+
+  05 Feb 2007; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +Email-MIME-Encodings-1.310.ebuild:
+  Dep for Email-MIME-Modifier

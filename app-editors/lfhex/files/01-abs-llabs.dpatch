@@ -1,0 +1,19 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 01-abs-llabs.dpatch by Thiemo Seufer
+##
+## DP: Fixes FTBFS due to abs() not being in the global anymore since g++ 4.3
+## (#495467)
+
+diff -up lfhex-0.42.orig/src/reader.cpp lfhex-0.42/src/reader.cpp
+--- lfhex-0.42.orig/src/reader.cpp	2008-10-08 19:25:57.000000000 +0200
++++ lfhex-0.42/src/reader.cpp	2008-10-08 19:26:16.000000000 +0200
+@@ -238,7 +238,7 @@ bool Reader::loadPage(off_t pageIdx)
+     // free the page which is the furthest away from the page we are loading
+ 
+     // this could be trouble if off_t is unsigned!
+-    if( abs(_firstPage - pageIdx) > abs(_lastPage - pageIdx) ) 
++    if( ::llabs(_firstPage - pageIdx) > ::llabs(_lastPage - pageIdx) ) 
+       while(!freePage(_firstPage++));
+     else
+       while(!freePage(_lastPage--));
+

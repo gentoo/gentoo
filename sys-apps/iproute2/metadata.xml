@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>base-system</herd>
+<use>
+	<flag name='berkdb'>build programs that use berkdb (just arpd)</flag>
+	<flag name='iptables'>include support for iptables filtering</flag>
+	<flag name='minimal'>only install ip and tc programs</flag>
+</use>
+</pkgmetadata>

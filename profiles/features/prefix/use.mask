@@ -1,0 +1,28 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/features/prefix/use.mask,v 1.1 2014/01/18 02:01:20 redlizard Exp $
+
+# prefix USE flag should always be unmasked in prefix profiles
+-prefix
+
+# re-add userland GNU
+-userland_GNU
+
+# USE flags inherited by the base/use.defaults file that shouldn't be in Prefix
+cups
+gpm
+
+# USE=pam just does not make sense in Gentoo Prefix. Should be using the host
+# auth system.
+pam
+
+# USE=udev just does not make sense in Gentoo Prefix. bug 293480
+udev
+
+# The JRuby stack adds *alot* of non-tested ebuilds. If someone has time and
+# motivation, please look into porting this to Gentoo Prefix. bug 302563
+ruby_targets_jruby
+
+# suid requires root privilege, which is not support by prefix in general
+# one example: bug 447340.
+suid

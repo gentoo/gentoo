@@ -1,0 +1,136 @@
+# ChangeLog for app-admin/cronolog
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/cronolog/ChangeLog,v 1.33 2015/02/10 11:59:31 dastergon Exp $
+
+  10 Feb 2015; Pavlos Ratis <dastergon@gentoo.org> metadata.xml:
+  Drop myself from metadata, add maintainer-needed
+
+  24 Dec 2013; Pavlos Ratis <dastergon@gentoo.org> metadata.xml:
+  add myself as maintainer
+
+  23 Dec 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #66351
+
+  13 May 2012; Markus Meier <maekke@gentoo.org> cronolog-1.6.2-r4.ebuild:
+  add ~arm, bug #389539
+
+  26 May 2011; Lance Albertson <ramereth@gentoo.org> cronolog-1.6.2-r4.ebuild:
+  Mark stable
+
+  02 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -cronolog-1.6.2-r2.ebuild:
+  Drop old version that requires an old automake.
+
+*cronolog-1.6.2-r4 (26 Jan 2010)
+
+  26 Jan 2010; Robin H. Johnson <robbat2@gentoo.org>
+  +cronolog-1.6.2-r4.ebuild, +files/cronolog-1.6.2-umask.patch:
+  Add umask support to cronolog. Patch by Mike Doty <kingtaco@gentoo.org>,
+  confirmed by myself.
+
+  11 Oct 2009; Mark Loeser <halcy0n@gentoo.org> cronolog-1.6.2-r2.ebuild,
+  cronolog-1.6.2-r3.ebuild:
+  QA fixes; remove redundant settings for WANT_AUTOCONF and WANT_AUTOMAKE to
+  latest
+
+  29 Sep 2008; Benedikt Böhm <hollow@gentoo.org>
+  files/1.6.2-patches/cronolog-large-file-patch.txt,
+  files/1.6.2-patches/cronolog-missing-symlink-patch.txt:
+  fix #238346
+
+  20 Sep 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  cronolog-1.6.2-r3.ebuild:
+  ppc stable, bug #237844
+
+  18 Sep 2008; Markus Meier <maekke@gentoo.org> cronolog-1.6.2-r3.ebuild:
+  x86 stable, bug #237844
+
+  16 Sep 2008; Dawid Węgliński <cla@gentoo.org> cronolog-1.6.2-r3.ebuild:
+  Stable on amd64 (bug #237844)
+
+*cronolog-1.6.2-r3 (06 May 2008)
+
+  06 May 2008; Lance Albertson <ramereth@gentoo.org>
+  +files/1.6.2-patches/cronolog-define-strptime.patch.txt,
+  +files/1.6.2-patches/cronolog-doc.patch.txt,
+  +files/1.6.2-patches/cronolog-getopt-long.patch.txt,
+  +cronolog-1.6.2-r3.ebuild:
+  Add a few patch fixes
+    * Implicit definition of strptime because of missing define #204501
+    * Segfaults if an unknown long option is used #204519
+    * Incorrect documentation for previous link long option #204521
+  
+  Thanks to Carlo Marcelo Arenas Belon <carenas@sajinet.com.pe> for reporting
+  these bugs.
+
+  04 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  cronolog-1.6.2-r2.ebuild:
+  Fix autotools handling, closes bug #148869, patch by Jakub Moc. Applied
+  overriding maintainer that didn't answer in 3 months.
+
+  20 Nov 2005; Lance Albertson <ramereth@gentoo.org>
+  -cronolog-1.6.2-r1.ebuild:
+  * Remove old ebuild
+
+  26 Aug 2005; Lance Albertson <ramereth@gentoo.org>
+  cronolog-1.6.2-r2.ebuild:
+  Stable on amd64
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  cronolog-1.6.2-r2.ebuild:
+  Stable on ppc.
+
+  15 Jun 2005; Lance Albertson <ramereth@gentoo.org>
+  cronolog-1.6.2-r2.ebuild:
+  cleaned out old ebuild and bumped x86
+
+  26 May 2005; Lance Albertson <ramereth@gentoo.org>
+  cronolog-1.6.2-r2.ebuild:
+  Fix autoconf error from #93999, needed autoconf >2.5
+
+*cronolog-1.6.2-r2 (13 May 2005)
+
+  13 May 2005; Lance Albertson <ramereth@gentoo.org> metadata.xml,
+  +cronolog-1.6.2-r2.ebuild:
+  Fixed issue in #76953
+
+  19 Apr 2005; Elfyn McBratney <beu@gentoo.org> metadata.xml:
+  Remove retired developer from metadata.xml.
+
+  02 Jan 2005; Daniel Ahlberg <aliz@gentoo.org> cronolog-1.6.2-r1.ebuild:
+  Removed apache dependency, closing #75925, and did some cleanup.
+
+  31 Dec 2004; Chris White <chriswhite@gentoo.org> +metadata.xml:
+  Adding a metadata.xml file.  This should probably go to apache people.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  cronolog-1.6.2-r1.ebuild, cronolog-1.6.2.ebuild:
+  Masked cronolog-1.6.2.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  cronolog-1.6.2-r1.ebuild:
+  Masked cronolog-1.6.2-r1.ebuild stable for ppc
+
+  09 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  cronolog-1.6.2-r1.ebuild:
+  inherit eutils for epatch
+
+  26 Oct 2003; Brad House <brad_mssw@gentoo.org> cronolog-1.6.2-r1.ebuild:
+  add ~amd64 flag
+
+*cronolog-1.6.2-r1 (13 Oct 2003)
+
+  13 Oct 2003; Daniel Ahlberg <aliz@gentoo.org> cronolog-1.6.2-r1.ebuild:
+  Added patches from cronolog homepage. Requested by Richard Hensel
+  <richhensel@hotmail.com> by email.
+
+  14 Oct 2003; Chuck Short <zul@gentoo.org> cronolog-1.6.2.ebuild:
+  Added ~ia64 to keywords.
+
+*cronolog-1.6.2 (25 Oct 2002)
+  
+  28 Mar 2003; Pieter Van den Abeele <pvdabeel@gentoo.org> : 
+  Ready for testing on ppc: ~ppc
+
+  25 Oct 2002; Donny Davies <woodchip@gentoo.org> :
+  Initial import; thank you mg@connection-net.de.

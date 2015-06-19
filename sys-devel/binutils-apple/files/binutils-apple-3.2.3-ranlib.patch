@@ -1,0 +1,59 @@
+run ranlib before installation so we needn't touch permissions
+
+--- cctools-782/cbtlibs/Makefile	2009-12-16 20:34:18.000000000 +0100
++++ cctools-782/cbtlibs/Makefile.new	2010-07-30 20:08:22.000000000 +0200
+@@ -84,9 +84,9 @@ libsyminfo.a: libsyminfo.o
+ 
+ lib_ofiles_install: lib_ofiles
+ 	$(MKDIRS) $(DSTROOT)$(LOCLIBDIR)
++	ranlib $(DSTROOT)$(LOCLIBDIR)/libsyminfo.a
+ 	install -p -c -m 444 $(SYMROOT)/libsyminfo.a \
+ 		$(DSTROOT)$(LOCLIBDIR)/libsyminfo.a
+-	ranlib $(DSTROOT)$(LOCLIBDIR)/libsyminfo.a
+ 
+ -include $(OFILE_DIR)/Makedep
+ 
+--- cctools-782/libmacho/Makefile	2010-03-30 00:57:21.000000000 +0200
++++ cctools-782/libmacho/Makefile.new	2010-07-30 20:07:57.000000000 +0200
+@@ -357,17 +357,17 @@ macos_lib_ofiles_install: all
+ 	$(MKDIRS) $(DSTROOT)$(ARCHIVEDIR) $(DSTROOT)$(DYLIBDIR)
+ 	if [ $(SRCROOT) = . ];						\
+ 	then								\
++	    ranlib $(DSTROOT)$(ARCHIVEDIR)/libmacho.a;			\
+ 	    install -c -m 444 dtmp_obj/libmacho.a			\
+ 		     $(DSTROOT)$(ARCHIVEDIR)/libmacho.a;		\
+-	    ranlib $(DSTROOT)$(ARCHIVEDIR)/libmacho.a;			\
+ 	    (cd $(DSTROOT)$(ARCHIVEDIR) ;				\
+ 	    rm -f libmacho_debug.a ; ln -s libmacho.a libmacho_debug.a); \
++	    ranlib $(DSTROOT)$(ARCHIVEDIR)/libmacho_profile.a;		\
+ 	    install -c -m 444 ptmp_obj/libmacho_pg.a			 \
+ 		     $(DSTROOT)$(ARCHIVEDIR)/libmacho_profile.a;	\
+-	    ranlib $(DSTROOT)$(ARCHIVEDIR)/libmacho_profile.a;		\
++	    ranlib $(DSTROOT)$(ARCHIVEDIR)/libmacho_static.a;		\
+ 	    install -c -m 444 otmp_obj/libmacho_static.a		\
+ 		     $(DSTROOT)$(ARCHIVEDIR)/libmacho_static.a;		\
+-	    ranlib $(DSTROOT)$(ARCHIVEDIR)/libmacho_static.a;		\
+ 	    install -c -m 555 dtmp_obj/libmacho.dylib			\
+ 		     $(DSTROOT)$(DYLIBDIR)/libmacho.dylib;		\
+ 	    strip -S $(DSTROOT)$(DYLIBDIR)/libmacho.dylib;		\
+@@ -378,17 +378,17 @@ macos_lib_ofiles_install: all
+ 		     $(DSTROOT)$(DYLIBDIR)/libmacho_debug.dylib;	\
+ 	    strip -S $(DSTROOT)$(DYLIBDIR)/libmacho_debug.dylib;	\
+ 	else								\
++	    ranlib $(DSTROOT)$(ARCHIVEDIR)/libmacho.a;			\
+ 	    install -c -m 444 $(SYMROOT)/libmacho.a			\
+ 		     $(DSTROOT)$(ARCHIVEDIR)/libmacho.a;		\
+-	    ranlib $(DSTROOT)$(ARCHIVEDIR)/libmacho.a;			\
+ 	    (cd $(DSTROOT)$(ARCHIVEDIR) ;				\
+ 	    rm -f libmacho_debug.a ; ln -s libmacho.a libmacho_debug.a); \
++	    ranlib $(DSTROOT)$(ARCHIVEDIR)/libmacho_profile.a;		\
+ 	    install -c -m 444 $(SYMROOT)/libmacho_pg.a			 \
+ 		     $(DSTROOT)$(ARCHIVEDIR)/libmacho_profile.a;	\
+-	    ranlib $(DSTROOT)$(ARCHIVEDIR)/libmacho_profile.a;		\
++	    ranlib $(DSTROOT)$(ARCHIVEDIR)/libmacho_static.a;		\
+ 	    install -c -m 444 $(SYMROOT)/libmacho_static.a		\
+ 		     $(DSTROOT)$(ARCHIVEDIR)/libmacho_static.a;		\
+-	    ranlib $(DSTROOT)$(ARCHIVEDIR)/libmacho_static.a;		\
+ 	    install -c -m 555 $(SYMROOT)/libmacho.dylib			\
+ 		     $(DSTROOT)$(DYLIBDIR)/libmacho.dylib;		\
+ 	    strip -S $(DSTROOT)$(DYLIBDIR)/libmacho.dylib;		\

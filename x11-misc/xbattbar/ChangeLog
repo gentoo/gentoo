@@ -1,0 +1,73 @@
+# ChangeLog for x11-misc/xbattbar
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xbattbar/ChangeLog,v 1.19 2015/04/08 17:27:16 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> xbattbar-1.4.4.ebuild,
+  xbattbar-1.4.5.ebuild:
+  Drop old Python implementations
+
+*xbattbar-1.4.5 (12 May 2014)
+
+  12 May 2014; Jeroen Roovers <jer@gentoo.org> +xbattbar-1.4.5.ebuild,
+  +files/xbattbar-1.4.5.patch:
+  Version bump.
+
+*xbattbar-1.4.4 (05 Feb 2014)
+
+  05 Feb 2014; Jeroen Roovers <jer@gentoo.org> +xbattbar-1.4.4.ebuild,
+  +files/xbattbar-1.4.4.patch:
+  Version bump.
+
+  17 Feb 2012; Jeroen Roovers <jer@gentoo.org> -xbattbar-1.4.2.ebuild:
+  Old.
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> xbattbar-1.4.3.ebuild:
+  x86 stable wrt bug #397279
+
+  03 Feb 2012; Brent Baude <ranger@gentoo.org> xbattbar-1.4.3.ebuild:
+  Marking xbattbar-1.4.3 ppc for bug 397279
+
+*xbattbar-1.4.3 (08 Jul 2010)
+
+  08 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> xbattbar-1.4.2.ebuild,
+  +xbattbar-1.4.3.ebuild, +files/xbattbar-1.4.3.patch:
+  Version bump (for ACPI support). Avoiding x11-misc/imake because it's
+  obsolete and keywording ~amd64.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  xbattbar-1.4.2.ebuild:
+  Drop virtual/x11 references.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  11 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org> xbattbar-1.4.2.ebuild:
+  Add missing x11-misc/imake to DEPEND, see bug #150820.
+
+  21 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> xbattbar-1.4.2.ebuild:
+  Fixed DEPEND for modular X.
+
+  20 Nov 2005; Joseph Jezak <josejx@gentoo.org> xbattbar-1.4.2.ebuild:
+  Marked ppc stable for bug #111127.
+
+  01 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org> xbattbar-1.4.2.ebuild:
+  Fixed dodoc not to install COPYING and/or INSTALL.
+
+  28 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  xbattbar-1.4.2.ebuild:
+  mark ~ppc
+
+  01 Jun 2004; Brandon Hale <tseng@gentoo.org> xbattbar-1.4.2.ebuild:
+  Fix depends.
+
+  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+*xbattbar-1.4.2 (19 Jun 2003)
+
+  16 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> xbattbar-1.4.2.ebuild:
+  Marked as stable
+
+  19 Jun 2003; mkeadle <mkeadle@gentoo.org> xbattbar-1.4.2.ebuild:
+  Initial import of xbattbar. thanks to Mamoru Komachi
+  <usata@sodan.ecc.u-tokyo.ac.jp> for the ebuild in bug #21568.

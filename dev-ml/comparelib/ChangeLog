@@ -1,0 +1,63 @@
+# ChangeLog for dev-ml/comparelib
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/comparelib/ChangeLog,v 1.11 2014/11/28 17:45:27 aballier Exp $
+
+  28 Nov 2014; Alexis Ballier <aballier@gentoo.org>
+  comparelib-109.60.00.ebuild:
+  update deps for ocaml 4.02
+
+*comparelib-109.60.00 (19 Jan 2014)
+
+  19 Jan 2014; Alexis Ballier <aballier@gentoo.org>
+  +comparelib-109.60.00.ebuild:
+  version bump
+
+  19 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  -comparelib-109.08.00.ebuild, -comparelib-109.11.00.ebuild,
+  -comparelib-109.15.00.ebuild:
+  remove old
+
+*comparelib-109.27.00 (10 Jun 2013)
+
+  10 Jun 2013; Alexis Ballier <aballier@gentoo.org>
+  +comparelib-109.27.00.ebuild:
+  version bump
+
+*comparelib-109.15.00 (24 May 2013)
+
+  24 May 2013; Alexis Ballier <aballier@gentoo.org>
+  +comparelib-109.15.00.ebuild:
+  version bump
+
+*comparelib-109.11.00 (06 Mar 2013)
+
+  06 Mar 2013; Alexis Ballier <aballier@gentoo.org>
+  +comparelib-109.11.00.ebuild:
+  version bump
+
+  03 Mar 2013; Alexis Ballier <aballier@gentoo.org>
+  -comparelib-108.07.01.ebuild, -comparelib-109.07.00.ebuild:
+  remove old
+
+*comparelib-109.08.00 (08 Feb 2013)
+
+  08 Feb 2013; Alexis Ballier <aballier@gentoo.org>
+  +comparelib-109.08.00.ebuild:
+  version bump
+
+*comparelib-109.07.00 (07 Feb 2013)
+
+  07 Feb 2013; Alexis Ballier <aballier@gentoo.org>
+  +comparelib-109.07.00.ebuild:
+  version bump, eapi 5, add subslot and := deps
+
+  17 Oct 2012; Alexis Ballier <aballier@gentoo.org>
+  comparelib-108.07.01.ebuild:
+  Mirror the distfile, upstream one fails to fetch, bug #438610 by Nick Bowler
+
+*comparelib-108.07.01 (08 Oct 2012)
+
+  08 Oct 2012; Alexis Ballier <aballier@gentoo.org>
+  +comparelib-108.07.01.ebuild, +metadata.xml:
+  initial import, ebuild by me
+

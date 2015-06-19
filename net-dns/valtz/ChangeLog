@@ -1,0 +1,24 @@
+# ChangeLog for net-dns/valtz
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/valtz/ChangeLog,v 1.6 2014/08/10 20:42:51 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> valtz-0.7.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #118937
+
+  03 Dec 2009; Markus Meier <maekke@gentoo.org> valtz-0.7.ebuild:
+  add ~amd64, bug #289412
+
+  25 Jan 2008; Thilo Bangert <bangert@gentoo.org> valtz-0.7.ebuild:
+  die on dobin
+
+  03 Aug 2006; Thilo Bangert <bangert@gentoo.org> ChangeLog:
+  fix ChangeLog 
+
+*valtz-0.7 (03 Aug 2006)
+
+  30 Apr 2006; Thilo Bangert <bangert@gentoo.org> ChangeLog:
+  Initial import. Validation tool for tinydns-data zone files.
+  first commit :) thanks for the warm welcome - lets rock the house

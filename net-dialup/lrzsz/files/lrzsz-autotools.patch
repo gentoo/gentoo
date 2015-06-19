@@ -1,0 +1,264 @@
+diff -Nru lrzsz-0.12.20.orig/acinclude.m4 lrzsz-0.12.20/acinclude.m4
+--- lrzsz-0.12.20.orig/acinclude.m4	1998-12-27 23:08:59.000000000 +0100
++++ lrzsz-0.12.20/acinclude.m4	2010-09-25 00:43:43.000000000 +0200
+@@ -13,7 +13,7 @@
+ lrzsz_cv_decl_errno=yes, lrzsz_cv_decl_errno=no)])
+ AC_MSG_RESULT($lrzsz_cv_decl_errno)
+ if test $lrzsz_cv_decl_errno = yes; then
+-  AC_DEFINE([HAVE_ERRNO_DECLARATION])
++  AC_DEFINE([HAVE_ERRNO_DECLARATION], 1, [[HAVE_ERRNO_DECLARATION]])
+ fi
+ ])
+ 
+@@ -57,7 +57,7 @@
+ ], ac_cv_type_speed_t=yes, ac_cv_type_speed_t=no)])dnl
+ AC_MSG_RESULT($ac_cv_type_speed_t)
+ if test $ac_cv_type_speed_t = no; then
+-  AC_DEFINE([speed_t],long)
++  AC_DEFINE([speed_t],long, [speed_t])
+ fi
+ ])
+ 
+@@ -69,7 +69,7 @@
+ #include <sys/select.h>],
+ [struct tm *tp;], lrzsz_cv_header_sys_select=yes, lrzsz_cv_header_sys_select=no)])
+ if test $lrzsz_cv_header_sys_select = no; then
+-  AC_DEFINE(SYS_TIME_WITHOUT_SYS_SELECT)
++  AC_DEFINE(SYS_TIME_WITHOUT_SYS_SELECT, 1, [SYS_TIME_WITHOUT_SYS_SELECT])
+ fi
+ ])
+ 
+diff -Nru lrzsz-0.12.20.orig/configure.in lrzsz-0.12.20/configure.in
+--- lrzsz-0.12.20.orig/configure.in	1998-12-30 08:50:07.000000000 +0100
++++ lrzsz-0.12.20/configure.in	2010-09-25 00:45:10.000000000 +0200
+@@ -20,6 +20,11 @@
+ AC_SUBST(PACKAGE)
+ AC_SUBST(VERSION)
+ 
++GT_YES="#"
++GT_NO=""
++AC_SUBST(GT_YES)
++AC_SUBST(GT_NO)
++
+ changequote(,)dnl
+ case $VERSION in
+ 	[0-9]*.[0-9]*.[0-9]*) README_ALPHA="README-alpha";;
+@@ -33,25 +38,25 @@
+ 	[if test "$enableval" = "no" ; then 
+ 		:
+ 	  else
+-		AC_DEFINE(ENABLE_TIMESYNC)
++		AC_DEFINE(ENABLE_TIMESYNC, 1, [ENABLE_TIMESYNC])
+ 	  fi],
+-	[AC_DEFINE(ENABLE_TIMESYNC)])
++	[AC_DEFINE(ENABLE_TIMESYNC, 1, [ENABLE_TIMESYNC])])
+ AC_SUBST(ENABLE_TIMESYNC)
+ AC_ARG_ENABLE(pubdir,
+ 	[--enable-pubdir=/path   include support for a public writeable directory],
+ 	[if test "$enableval" = "no" ; then 
+ 		: 
+ 	  else 
+-	    AC_DEFINE_UNQUOTED(PUBDIR,"$enableval")
++	    AC_DEFINE_UNQUOTED(PUBDIR,"$enableval", [PUBDIR])
+ 	  fi])
+ AC_ARG_ENABLE(mkdir,
+ 	[--disable-mkdir   disable support for creating directories (lrz)],
+ 	[if test "$enableval" = "no" ; then 
+ 		:
+ 	  else
+-	  	AC_DEFINE(ENABLE_MKDIR)
++	  	AC_DEFINE(ENABLE_MKDIR, 1, [ENABLE_MKDIR])
+ 	  fi],
+-	[AC_DEFINE(ENABLE_MKDIR)])
++	[AC_DEFINE(ENABLE_MKDIR, 1, [ENABLE_MKDIR])])
+ AC_ARG_ENABLE(syslog,
+ 	[--enable-syslog=FACILITY,{force,default,optional} include syslogsupport],
+ 	[
+@@ -62,7 +67,7 @@
+ 	    *,*)
+ 			level=`echo $enableval|sed -e 's/^.*,//'`
+ 			fac=`echo $enableval|sed -e 's/,.*$//'`
+-			AC_DEFINE_UNQUOTED(ENABLE_SYSLOG,$fac)
++			AC_DEFINE_UNQUOTED(ENABLE_SYSLOG,$fac, [ENABLE_SYSLOG])
+ 			;;
+ 		*)
+ 			lookup_facility=LOG_UUCP
+@@ -70,16 +75,16 @@
+ 			;;
+ 		esac
+ 	  	if test "$level" = "force" ; then
+-		  AC_DEFINE(ENABLE_SYSLOG_FORCE)
++		  AC_DEFINE(ENABLE_SYSLOG_FORCE, 1, [ENABLE_SYSLOG_FORCE])
+ 	  	else 
+ 	  	  if test "$level" = "optional" ; then
+ 	  	    :
+ 	  	  else
+-		    AC_DEFINE(ENABLE_SYSLOG_DEFAULT)
++		    AC_DEFINE(ENABLE_SYSLOG_DEFAULT, 1, [ENABLE_SYSLOG_DEFAULT])
+ 		  fi
+ 	  	fi
+ 	  fi],[
+-		AC_DEFINE(ENABLE_SYSLOG_DEFAULT)
++		AC_DEFINE(ENABLE_SYSLOG_DEFAULT, 1, [ENABLE_SYSLOG_DEFAULT])
+ 		lookup_facility=LOG_UUCP
+ 	  ])
+ 
+@@ -90,8 +95,8 @@
+ dnl AC_PROG_MAKE_SET included in AM_INIT_AUTOMAKE
+ AC_PROG_RANLIB
+ AC_ISC_POSIX
+-AC_AIX
+-AC_MINIX
++AC_USE_SYSTEM_EXTENSIONS
++AM_GNU_GETTEXT
+ AM_C_PROTOTYPES
+ AC_C_CONST
+ AC_C_INLINE
+@@ -113,7 +118,7 @@
+ fi
+ case "$CFLAGS" in
+ *-Wstrict-prototypes*)
+-	AC_DEFINE(STRICT_PROTOTYPES)
++	AC_DEFINE(STRICT_PROTOTYPES, 1, [STRICT_PROTOTYPES])
+ 	;;
+ esac
+ 
+@@ -131,7 +136,7 @@
+ LRZSZ_HEADERS_TERM_IO
+ AC_CHECK_HEADERS(termios.h sys/termios.h termio.h sys/termio.h sgtty.h)
+ AC_CHECK_HEADERS(sys/mman.h utime.h syslog.h sys/syslog.h sys/param.h)
+-AC_CHECK_HEADERS(sys/select.h strings.h arpa/inet.h)
++AC_CHECK_HEADERS(sys/select.h strings.h locale.h arpa/inet.h)
+ 
+ dnl Checks for typedefs, structures, and compiler characteristics.
+ AC_TYPE_SIZE_T
+@@ -153,7 +158,7 @@
+ dnl AC_FUNC_UTIME_NULL
+ AC_FUNC_MMAP
+ AC_FUNC_ALLOCA
+-AC_EGREP_HEADER([struct.*utimbuf], utime.h, AC_DEFINE(HAVE_STRUCT_UTIMBUF))
++AC_EGREP_HEADER([struct.*utimbuf], utime.h, AC_DEFINE(HAVE_STRUCT_UTIMBUF, 1, [HAVE_STRUCT_UTIMBUF]))
+ 
+ AC_CHECK_FUNCS(gettimeofday settimeofday)
+ AC_CHECK_FUNCS(strchr memcpy select vprintf)
+@@ -206,10 +211,10 @@
+ lrzsz_cv_sys_ftime_ok=no,
+ lrzsz_cv_sys_ftime_ok=runtime)])
+ case $lrzsz_cv_sys_ftime_ok in
+-yes) AC_DEFINE(HAVE_FTIME) AC_MSG_RESULT(yes) ;;
++yes) AC_DEFINE(HAVE_FTIME, 1, [HAVE_FTIME]) AC_MSG_RESULT(yes) ;;
+ no)  AC_MSG_RESULT(no)
+ 	AC_MSG_WARN(ftime seems to be buggy) ;;
+-runtime) AC_DEFINE(HAVE_FTIME)
++runtime) AC_DEFINE(HAVE_FTIME, 1, [HAVE_FTIME])
+ 	AC_MSG_RESULT(will check at run time) ;;
+ esac
+ ])
+@@ -223,7 +228,7 @@
+ ])
+ if test $libquark_cv_var_timezone = yes ; then
+ 	AC_MSG_RESULT(yes)
+-	AC_DEFINE(HAVE_TIMEZONE_VAR)
++	AC_DEFINE(HAVE_TIMEZONE_VAR, 1, [HAVE_TIMEZONE_VAR])
+ else
+ 	AC_MSG_RESULT(no)
+ fi
+@@ -245,9 +250,9 @@
+ 	])
+ 	if test $lrzsz_cv_lookup_facility = yes ; then
+ 		AC_MSG_RESULT(yes)
+-		AC_DEFINE_UNQUOTED(ENABLE_SYSLOG,$lookup_facility)
++		AC_DEFINE_UNQUOTED(ENABLE_SYSLOG,$lookup_facility, [ENABLE_SYSLOG])
+ 	else
+-		AC_DEFINE(ENABLE_SYSLOG,LOG_USER)
++		AC_DEFINE(ENABLE_SYSLOG,LOG_USER, [ENABLE_SYSLOG])
+ 		AC_MSG_RESULT(no)
+ 	fi
+ fi
+@@ -257,9 +262,8 @@
+ AC_SUBST(LDFLAGS)
+ AC_SUBST(LIBS)
+ 
+-AM_GNU_GETTEXT
+ 
+-AC_DEFINE_UNQUOTED(LOCALEDIR,"$prefix/$DATADIRNAME")
++AC_DEFINE_UNQUOTED(LOCALEDIR,"$prefix/$DATADIRNAME", [LOCALEDIR])
+ AC_LINK_FILES($nls_cv_header_libgt, $nls_cv_header_intl)
+ 
+ AC_OUTPUT([Makefile intl/Makefile lib/Makefile testsuite/Makefile \
+diff -Nru lrzsz-0.12.20.orig/lib/Makefile.am lrzsz-0.12.20/lib/Makefile.am
+--- lrzsz-0.12.20.orig/lib/Makefile.am	1998-12-27 17:25:26.000000000 +0100
++++ lrzsz-0.12.20/lib/Makefile.am	2010-09-25 00:43:43.000000000 +0200
+@@ -1,5 +1,4 @@
+ noinst_LIBRARIES=libzmodem.a
+-CFLAGS=@CFLAGS@
+ AUTOMAKE_OPTIONS=ansi2knr
+ 
+ EXTRA_DIST = alloca.c ansi2knr.1 ansi2knr.c \
+diff -Nru lrzsz-0.12.20.orig/po/Makefile.in.in lrzsz-0.12.20/po/Makefile.in.in
+--- lrzsz-0.12.20.orig/po/Makefile.in.in	1998-04-26 15:22:40.000000000 +0200
++++ lrzsz-0.12.20/po/Makefile.in.in	2010-09-25 00:43:43.000000000 +0200
+@@ -51,7 +51,7 @@
+ 
+ POTFILES = \
+ 
+-CATALOGS = @CATALOGS@
++CATALOGS = de.gmo
+ CATOBJEXT = @CATOBJEXT@
+ INSTOBJEXT = @INSTOBJEXT@
+ 
+@@ -118,8 +118,8 @@
+ 	for cat in $$catalogs; do \
+ 	  cat=`basename $$cat`; \
+ 	  case "$$cat" in \
+-	    *.gmo) destdir=$(gnulocaledir);; \
+-	    *)     destdir=$(localedir);; \
++	    *.gmo) destdir=$(DESTDIR)$(gnulocaledir);; \
++	    *)     destdir=$(DESTDIR)$(localedir);; \
+ 	  esac; \
+ 	  lang=`echo $$cat | sed 's/\$(CATOBJEXT)$$//'`; \
+ 	  dir=$$destdir/$$lang/LC_MESSAGES; \
+diff -Nru lrzsz-0.12.20.orig/src/Makefile.am lrzsz-0.12.20/src/Makefile.am
+--- lrzsz-0.12.20.orig/src/Makefile.am	1998-12-28 09:38:47.000000000 +0100
++++ lrzsz-0.12.20/src/Makefile.am	2010-09-25 00:43:43.000000000 +0200
+@@ -4,7 +4,6 @@
+ noinst_HEADERS = timing.h zglobal.h zmodem.h
+ datadir = $(prefix)/@DATADIRNAME@
+ localedir = $(datadir)/locale
+-CFLAGS=@CFLAGS@
+ DISTCLEAN_FILES=lrzszbug
+ 
+ LDADD = ../lib/libzmodem.a @INTLLIBS@
+@@ -14,22 +13,16 @@
+ #DEFS = -DLOCALEDIR=\"$(localedir)\" -DOS=\"@host_os@\" -DCPU=\"@host_cpu@\"
+ DEFS = -DNFGVMIN @DEFS@ -DLOCALEDIR=\"$(localedir)\"
+ 
+-install-exec-local:
+-	rm -f $(DESTDIR)/$(bindir)/`echo lsb | sed -e '$(transform)'`
+-	ln $(DESTDIR)/$(bindir)/`echo lsz |sed -e '$(transform)'` \
+-		$(DESTDIR)/$(bindir)/`echo lsb |sed -e '$(transform)'` 
+-	rm -f $(bindir)/`echo lsx | sed -e '$(transform)'`
+-	ln $(DESTDIR)/$(bindir)/`echo lsz |sed -e '$(transform)'` \
+-		$(DESTDIR)/$(bindir)/`echo lsx |sed -e '$(transform)'` 
+-	rm -f $(bindir)/`echo lrb | sed -e '$(transform)'`
+-	ln $(DESTDIR)/$(bindir)/`echo lrz |sed -e '$(transform)'` \
+-		$(DESTDIR)/$(bindir)/`echo lrb |sed -e '$(transform)'` 
+-	rm -f $(bindir)/`echo lrx | sed -e '$(transform)'`
+-	ln $(DESTDIR)/$(bindir)/`echo lrz |sed -e '$(transform)'` \
+-		$(DESTDIR)/$(bindir)/`echo lrx |sed -e '$(transform)'` 
+-#	rm -f $(bindir)/`echo lrzszbug | sed -e '$(transform)'`
+-#	ln $(bindir)/`echo lrzszbug |sed -e '$(transform)'` \
+-#		$(bindir)/`echo lrzszbug |sed -e '$(transform)'` 
++# Caveat: program name transformation is ignored here.
++$(DESTDIR)$(bindir)/lsz $(DESTDIR)$(bindir)/lrz: install-binPROGRAMS
++
++$(DESTDIR)$(bindir)/lsb $(DESTDIR)$(bindir)/lsx: $(DESTDIR)$(bindir)/lsz
++	rm -f $@ ; ln -s `basename $<` $@
++
++$(DESTDIR)$(bindir)/lrb $(DESTDIR)$(bindir)/lrx: $(DESTDIR)$(bindir)/lrz
++	rm -f $@ ; ln -s `basename $<` $@
++
++install-exec-local: $(DESTDIR)$(bindir)/lsb $(DESTDIR)$(bindir)/lsx $(DESTDIR)$(bindir)/lrb $(DESTDIR)$(bindir)/lrx
+ 
+ uninstall-local:
+ 	rm -f $(DESTDIR)/$(bindir)/`echo lsb |sed -e '$(transform)'` 

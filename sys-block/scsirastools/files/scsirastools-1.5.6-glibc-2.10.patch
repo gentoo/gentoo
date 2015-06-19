@@ -1,0 +1,87 @@
+diff -ur scsirastools-1.5.6.orig/src/getmd.c scsirastools-1.5.6/src/getmd.c
+--- scsirastools-1.5.6.orig/src/getmd.c	2007-02-02 21:16:38.000000000 +0200
++++ scsirastools-1.5.6/src/getmd.c	2009-08-05 22:51:00.000000000 +0300
+@@ -81,7 +81,7 @@
+     } else return (-1);  /*not found*/
+ }
+ 
+-static int getline(FILE * fd, char *buf, int len)
++static int get_line(FILE * fd, char *buf, int len)
+ {
+     int i;
+     int ch;
+@@ -119,7 +119,7 @@
+     sraidstr = strlen(raidstr);
+     strcpy(mdpart, "/dev/sda1");	/* default */
+     strcpy(rdev, "/dev/md0");	/* default */
+-    while ((rlen = getline(fd, buf, 80)) > 0) {	/* process each line */
++    while ((rlen = get_line(fd, buf, 80)) > 0) {	/* process each line */
+ 	buf[rlen] = 0;		/* stringify */
+ 	/* look for raiddev string */
+ 	i = findmatch(buf, rlen, raidstr, sraidstr, 0);
+diff -ur scsirastools-1.5.6.orig/src/sgraidmon.c scsirastools-1.5.6/src/sgraidmon.c
+--- scsirastools-1.5.6.orig/src/sgraidmon.c	2007-10-16 01:15:15.000000000 +0300
++++ scsirastools-1.5.6/src/sgraidmon.c	2009-08-05 22:51:00.000000000 +0300
+@@ -330,7 +330,7 @@
+     rdev[0] = 0;	/* default rdev (mddev) */
+     strcpy(mdpart, "/dev/sdz1");	/* default mdpart */
+     foundit = 0;
+-    while ((rlen = getline(fd, buf, 80)) > 0) {	/* process each line */
++    while ((rlen = get_line(fd, buf, 80)) > 0) {	/* process each line */
+ 	buf[rlen] = 0;		/* stringify */
+ 	/* check for comment */
+ 	if (buf[0] == '#') continue;
+@@ -392,7 +392,7 @@
+    if (fd == NULL) return (np);
+    sraidstr = strlen(raidstr);
+    sdevstr = strlen(devstr);
+-   while ((rlen = getline(fd, buf, 80)) > 0) {	/* process each line */
++   while ((rlen = get_line(fd, buf, 80)) > 0) {	/* process each line */
+ 	buf[rlen] = 0;		/* stringify */
+ 	/* check for comment */
+ 	if (buf[0] == '#') continue;
+diff -ur scsirastools-1.5.6.orig/src/sgsafte.c scsirastools-1.5.6/src/sgsafte.c
+--- scsirastools-1.5.6.orig/src/sgsafte.c	2007-09-13 00:45:29.000000000 +0300
++++ scsirastools-1.5.6/src/sgsafte.c	2009-08-05 22:51:00.000000000 +0300
+@@ -231,7 +231,7 @@
+     rdev[0] = 0;	/* default rdev (mddev) */
+     strcpy(mdpart, "/dev/sdz1");	/* default mdpart */
+     foundit = 0;
+-    while ((rlen = getline(fd, buf, 80)) > 0) {	/* process each line */
++    while ((rlen = get_line(fd, buf, 80)) > 0) {	/* process each line */
+ 	buf[rlen] = 0;		/* stringify */
+ 	/* look for raiddev string */
+ 	i = findmatch(buf, rlen, raidstr, sraidstr, 0);
+@@ -284,7 +284,7 @@
+    fd = fopen(raidfile, "r");
+    if (fd == NULL) return (np);
+    sraidstr = strlen(raidstr);
+-   while ((rlen = getline(fd, buf, 80)) > 0) {	/* process each line */
++   while ((rlen = get_line(fd, buf, 80)) > 0) {	/* process each line */
+ 	buf[rlen] = 0;		/* stringify */
+ 	/* look for raiddev string */
+ 	i = findmatch(buf, rlen, raidstr, sraidstr, 0);
+diff -ur scsirastools-1.5.6.orig/src/sgsubmon.c scsirastools-1.5.6/src/sgsubmon.c
+--- scsirastools-1.5.6.orig/src/sgsubmon.c	2007-10-16 17:03:39.000000000 +0300
++++ scsirastools-1.5.6/src/sgsubmon.c	2009-08-05 22:51:00.000000000 +0300
+@@ -159,7 +159,7 @@
+    return;
+ } 
+ 
+-int getline(FILE * fd, char *buf, int len)
++int get_line(FILE * fd, char *buf, int len)
+ {
+     int i;
+     int ch;
+diff -ur scsirastools-1.5.6.orig/src/sgsubmon.h scsirastools-1.5.6/src/sgsubmon.h
+--- scsirastools-1.5.6.orig/src/sgsubmon.h	2007-09-13 00:38:28.000000000 +0300
++++ scsirastools-1.5.6/src/sgsubmon.h	2009-08-05 22:50:59.000000000 +0300
+@@ -124,7 +124,7 @@
+ void itoh(uchar * chp, int len, char *str);
+ void dumpbufr(FILE * fdout, uchar * bufp, int mlen, char *hdr);
+ void dump_buf(FILE * fdout, uchar * bufp, int mlen, char *hdr, char fascii);
+-int  getline(FILE * fd, char *buf, int len) ;
++int  get_line(FILE * fd, char *buf, int len) ;
+ int  findmatch(char *buffer,int sbuf, char *pattern,int spattern,char figncase);
+ int  fillstr(char *to, uchar *from,int len);
+ int  IsSATA(int idev);

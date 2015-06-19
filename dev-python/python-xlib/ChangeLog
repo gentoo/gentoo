@@ -1,0 +1,179 @@
+# ChangeLog for dev-python/python-xlib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-xlib/ChangeLog,v 1.45 2015/06/09 16:55:12 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  27 May 2015; Manuel Rüger <mrueg@gentoo.org> -python-xlib-0.14.ebuild,
+  -python-xlib-0.15_rc1-r1.ebuild:
+  Remove old.
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> python-xlib-0.15_rc1-r2.ebuild:
+  Drop old Python implementations
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> python-xlib-0.15_rc1-r2.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> python-xlib-0.15_rc1-r2.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*python-xlib-0.15_rc1-r2 (24 Feb 2013)
+
+  24 Feb 2013; Michał Górny <mgorny@gentoo.org> +python-xlib-0.15_rc1-r2.ebuild:
+  Migrate to distutils-r1. Install HTML docs only.
+
+  05 Feb 2013; Ian Delaney <idella4@gentoo.org> +files/defs,
+  python-xlib-0.15_rc1-r1.ebuild:
+  Add file defs to newly made files/ by virtue of upstream missing it in the
+  source tarball in -0.15_rc1-r1, fix to jobserver issue by sed statement, fixes
+  Bug #454836 by flameeyes, see https://sourceforge.net/p/python-xlib/bugs/39/
+
+  15 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  python-xlib-0.15_rc1.ebuild:
+  ppc stable wrt #361141
+
+  16 Apr 2011; Raúl Porcel <armin76@gentoo.org> python-xlib-0.14.ebuild,
+  python-xlib-0.15_rc1.ebuild, python-xlib-0.15_rc1-r1.ebuild:
+  Drop alpha/ia64 keywords
+
+  11 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  python-xlib-0.15_rc1.ebuild:
+  x86 stable wrt bug #361141
+
+  02 Apr 2011; Christoph Mende <angelos@gentoo.org>
+  python-xlib-0.15_rc1.ebuild:
+  Stable on amd64 wrt bug #361141
+
+*python-xlib-0.15_rc1-r1 (30 Mar 2011)
+
+  30 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  python-xlib-0.15_rc1.ebuild, +python-xlib-0.15_rc1-r1.ebuild:
+  Rename 0.15_rc1 as 0.15_rc1-r1 and remove USE="doc" from 0.15_rc1 for
+  stabilization wrt #361141, Comment #1 by Agostino Sarubbo.
+
+  28 May 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  python-xlib-0.14.ebuild, python-xlib-0.15_rc1.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*python-xlib-0.15_rc1 (01 Jan 2010)
+
+  01 Jan 2010; Dirkjan Ochtman <djc@gentoo.org>
+  +python-xlib-0.15_rc1.ebuild:
+  Bumped to 0.15_rc1, see bug 281415.
+
+  14 Nov 2009; Raúl Porcel <armin76@gentoo.org> python-xlib-0.14.ebuild:
+  ia64/x86 stable wrt #290200
+
+  08 Nov 2009; nixnut <nixnut@gentoo.org> python-xlib-0.14.ebuild:
+  ppc stable #290200
+
+  08 Nov 2009; Tobias Klausmann <klausman@gentoo.org>
+  python-xlib-0.14.ebuild:
+  Stable on alpha, bug #290200
+
+  24 Oct 2009; Romain Perier <mrpouet@gentoo.org>
+  python-xlib-0.14.ebuild:
+  Stable for amd64 per bug #290200.
+
+  07 Jul 2009; Robert Piasek <dagger@gentoo.org> python-xlib-0.14.ebuild:
+  Keyworded ~arm
+
+  13 May 2008; Ali Polatel <hawking@gentoo.org> python-xlib-0.14.ebuild:
+  Set VARTEXFONTS to avoid possible sandbox issues wrt TeX fonts.
+
+*python-xlib-0.14 (27 Feb 2008)
+
+  27 Feb 2008; Tiziano Müller <dev-zero@gentoo.org>
+  -python-xlib-0.13.ebuild, +python-xlib-0.14.ebuild:
+  Version bump (bug #209483 thanks to Michael Polskienazwisko), added
+  PYTHON_MODNAME. Dropped old version.
+
+  12 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  python-xlib-0.13.ebuild:
+  adjust DEPEND for correct LaTeX virtual, fixes bug 205326 reported by Howard
+  B. Golden <howard_b_golden AT yahoo DOT com>
+
+  17 Jul 2007; Markus Rothe <corsair@gentoo.org> python-xlib-0.13.ebuild:
+  Added ~ppc64
+
+  24 Apr 2007; Peter Weller <welp@gentoo.org> python-xlib-0.12-r3.ebuild:
+  Stable on amd64 wrt bug 175473
+
+  23 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  python-xlib-0.12.ebuild, python-xlib-0.12-r1.ebuild,
+  python-xlib-0.12-r2.ebuild, python-xlib-0.12-r3.ebuild,
+  python-xlib-0.13.ebuild:
+  Unkeyworded ~sparc see #175473
+
+  22 Apr 2007; Raúl Porcel <armin76@gentoo.org> python-xlib-0.12-r3.ebuild:
+  ia64 + x86 stable wrt bug 175473
+
+  22 Apr 2007; Bryan Østergaard <kloeri@gentoo.org>
+  python-xlib-0.12-r3.ebuild, python-xlib-0.13.ebuild:
+  Stable on Alpha, bug 175473.
+
+  21 Apr 2007; Rob Cakebread <pythonhead@gentoo.org>
+  python-xlib-0.13.ebuild:
+  Fixed docs add doc USE. bug #175475
+
+  21 Apr 2007; Matti Bickel <mabi@gentoo.org> python-xlib-0.12-r3.ebuild:
+  ppc stable (bug #175473)
+
+  21 Apr 2007; Rob Cakebread <pythonhead@gentoo.org>
+  python-xlib-0.12-r3.ebuild:
+  Added src_test
+
+*python-xlib-0.13 (21 Apr 2007)
+
+  21 Apr 2007; Rob Cakebread <pythonhead@gentoo.org>
+  +python-xlib-0.13.ebuild:
+  Version bump. Added src_test. Removed doc patches. bug# 169915
+
+  12 Jan 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  files/python-xlib-0.12-coding.patch:
+  Modified coding patch to omit line with Id: tag.
+
+*python-xlib-0.12-r3 (12 Jan 2007)
+
+  12 Jan 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  +files/python-xlib-0.12-coding.patch, +python-xlib-0.12-r3.ebuild:
+  Patch to fix encoding issue (bug #149223), minor cleanup.
+
+*python-xlib-0.12-r2 (08 Feb 2006)
+
+  08 Feb 2006; Lukasz Strzygowski <lucass@gentoo.org>
+  +files/python-xlib-0.12-buflen.patch, +python-xlib-0.12-r2.ebuild:
+  Patch to enlarge buffer (bug #96093).
+
+  24 Apr 2005; Simon Stelling <blubb@gentoo.org> python-xlib-0.12-r1.ebuild:
+  stable on amd64
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  17 Dec 2004; Tom Martin <slarti@gentoo.org> python-xlib-0.12-r1.ebuild:
+  Marked ~amd64.
+
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> python-xlib-0.12.ebuild:
+  Remove default S.
+
+  03 Apr 2004; Lars Weiler <pylon@gentoo.org> python-xlib-0.12-r1.ebuild:
+  stable on ppc
+
+*python-xlib-0.12-r1 (02 Mar 2004)
+
+  02 Mar 2004; <kloeri@gentoo.org> python-xlib-0.12-r1.ebuild,
+  files/python-xlib-0.12-info.patch:
+  Fix missing info dir entries, closing bug #43424.
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> python-xlib-0.12.ebuild:
+  stable on alpha and ia64
+
+*python-xlib-0.12 (17 Dec 2002)
+
+  04 Apr 2003; Alastair Tse <liquidx@gentoo.org> python-xlib-0.12.ebuild:
+  stable bump
+
+  17 Dec 2002; B.Lauwers <blauwers@gentoo.org> :
+  Initial submit. Ebuild submitted by Tom von Schwerdtner.

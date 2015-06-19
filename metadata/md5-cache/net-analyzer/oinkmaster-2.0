@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=Rule management for SNORT
+EAPI=5
+HOMEPAGE=http://oinkmaster.sf.net/
+IUSE=X
+KEYWORDS=amd64 ~arm ppc sparc x86
+LICENSE=BSD
+RDEPEND=>=dev-lang/perl-5.6.1 X? ( dev-perl/perl-tk ) net-misc/wget app-arch/tar app-arch/gzip
+SLOT=0
+SRC_URI=mirror://sourceforge/oinkmaster/oinkmaster-2.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=89b909a7bce402753d2ecc78bf84c352

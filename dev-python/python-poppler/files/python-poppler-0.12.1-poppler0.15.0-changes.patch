@@ -1,0 +1,66 @@
+--- poppler.defs
++++ poppler.defs
+@@ -1760,6 +1760,12 @@
+   (return-type "int")
+ )
+ 
++(define-method get_label
++  (of-object "PopplerPage")
++  (c-name "poppler_page_get_label")
++  (return-type "gchar*")
++)
++
+ (define-method get_duration
+   (of-object "PopplerPage")
+   (c-name "poppler_page_get_duration")
+@@ -1805,9 +1811,15 @@
+   (of-object "PopplerPage")
+   (c-name "poppler_page_get_text")
+   (return-type "char*")
++)
++
++(define-method get_selected_text
++  (of-object "PopplerPage")
++  (c-name "poppler_page_get_selected_text")
++  (return-type "char*")
+   (parameters
+     '("PopplerSelectionStyle" "style")
+-    '("PopplerRectangle*" "rect")
++    '("PopplerRectangle*" "selection")
+   )
+ )
+ 
+@@ -1895,6 +1907,16 @@
+   )
+ )
+ 
++(define-function poppler_page_add_annot
++  (of-object "PopplerPage")
++  (c-name "poppler_page_add_annot")
++  (return-type "none")
++  (parameters
++    '("PopplerAnnot*" "annot")
++    '("GList*" "list")
++  )
++)
++
+ (define-method get_crop_box
+   (of-object "PopplerPage")
+   (c-name "poppler_page_get_crop_box")
+@@ -1904,6 +1926,16 @@
+   )
+ )
+ 
++(define-method get_text_layout
++  (of-object "PopplerPage")
++  (c-name "poppler_page_get_text_layout")
++  (return-type "gboolean")
++  (parameters
++    '("PopplerRectangle**" "rectangles")
++    '("guint*" "n_rectangles")
++  )
++)
++
+ (define-function poppler_rectangle_get_type
+   (c-name "poppler_rectangle_get_type")
+   (return-type "GType")

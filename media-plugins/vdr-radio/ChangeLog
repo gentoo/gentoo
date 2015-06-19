@@ -1,0 +1,125 @@
+# ChangeLog for media-plugins/vdr-radio
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-radio/ChangeLog,v 1.25 2014/01/08 18:27:30 hd_brummy Exp $
+
+  08 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org> -vdr-radio-0.2.4.ebuild,
+  -files/vdr-radio-0.2.4-glibc-2.10.patch:
+  cleanup old, depended on vdr-plugin.eclass
+
+*vdr-radio-0.9.1 (31 Mar 2013)
+
+  31 Mar 2013; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-radio-0.9.1.ebuild:
+  bump
+
+*vdr-radio-0.9.0 (06 May 2012)
+
+  06 May 2012; Joerg Bornkessel <hd_brummy@gentoo.org> -vdr-radio-0.1.4.ebuild,
+  -vdr-radio-0.2.0.ebuild, -files/vdr-radio-0.2.0-vdr-1.5.1.diff,
+  -vdr-radio-0.2.1.ebuild, -vdr-radio-0.2.2.ebuild, -vdr-radio-0.2.3.ebuild,
+  -vdr-radio-0.2.5.ebuild, -files/vdr-radio-0.2.5-glibc-2.10.patch,
+  +vdr-radio-0.9.0.ebuild:
+  bump; eapi=4; vdr-plugin-2.eclass
+
+*vdr-radio-0.2.5 (20 Aug 2009)
+
+  20 Aug 2009; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-radio-0.2.5.ebuild, +files/vdr-radio-0.2.5-glibc-2.10.patch:
+  Version bumped.
+
+  08 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  vdr-radio-0.2.4.ebuild, +files/vdr-radio-0.2.4-glibc-2.10.patch:
+  Fix building with GLIBC 2.10+ wrt #276281.
+
+  28 Apr 2008; Matthias Schwarzott <zzam@gentoo.org> vdr-radio-0.2.0.ebuild,
+  vdr-radio-0.2.4.ebuild:
+  Fixed quoting. Marked 0.2.4 stable on x86.
+
+  19 Oct 2007; Matthias Schwarzott <zzam@gentoo.org> vdr-radio-0.1.4.ebuild,
+  vdr-radio-0.2.0.ebuild, vdr-radio-0.2.1.ebuild, vdr-radio-0.2.2.ebuild,
+  vdr-radio-0.2.3.ebuild, vdr-radio-0.2.4.ebuild:
+  Setting permissions with diropts instead of manual chown.
+
+*vdr-radio-0.2.4 (09 Oct 2007)
+
+  09 Oct 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-radio-0.2.4.ebuild:
+  Version bumped.
+
+*vdr-radio-0.2.3 (19 Sep 2007)
+
+  19 Sep 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-radio-0.2.3.ebuild:
+  Version bumped.
+
+*vdr-radio-0.2.2 (14 Aug 2007)
+
+  14 Aug 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-radio-0.2.2.ebuild:
+  Version bumped.
+
+  03 Aug 2007; Matthias Schwarzott <zzam@gentoo.org> vdr-radio-0.2.1.ebuild:
+  Fixed SRC_URI and digest.
+
+*vdr-radio-0.2.1 (30 Jul 2007)
+
+  30 Jul 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-radio-0.2.1.ebuild:
+  Version bumped.
+
+  25 Mar 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-radio-0.2.0-vdr-1.5.1.diff, vdr-radio-0.2.0.ebuild:
+  patch added; ready for VDR-1.5.x
+
+  13 Mar 2007; Matthias Schwarzott <zzam@gentoo.org> vdr-radio-0.2.0.ebuild:
+  Marked stable on x86.
+
+*vdr-radio-0.2.0 (04 Jan 2007)
+
+  04 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/rc-addon.sh-0.2.0, +vdr-radio-0.2.0.ebuild:
+  Version bumped.
+
+  17 Nov 2006; Matthias Schwarzott <zzam@gentoo.org> files/rc-addon.sh,
+  -vdr-radio-0.1.2.ebuild, -vdr-radio-0.1.3.ebuild:
+  Cleanup of old versions.
+
+  16 Nov 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-radio-0.1.4.ebuild:
+  Marked stable on x86.
+
+*vdr-radio-0.1.4 (15 Aug 2006)
+
+  15 Aug 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-radio-0.1.4.ebuild:
+  Version bumped.
+
+  23 Jul 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-radio-0.1.2.ebuild:
+  Marked stable on x86.
+
+*vdr-radio-0.1.3 (22 Jul 2006)
+
+  22 Jul 2006; Joerg Bornkessel <hd_brummy@gentoo.org> files/rc-addon.sh,
+  metadata.xml, -vdr-radio-0.0.9.ebuild, +vdr-radio-0.1.3.ebuild:
+  version bump; set maintainer gentoo-vdr-project; cleanup old version
+
+*vdr-radio-0.1.2 (27 Apr 2006)
+
+  27 Apr 2006; Joerg Bornkessel <hd_brummy@gentoo.org> metadata.xml,
+  +vdr-radio-0.1.2.ebuild:
+  version bump
+
+  27 Apr 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-radio-0.0.9.ebuild:
+  Marked stable on x86.
+
+  03 Feb 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-radio-0.0.9.ebuild:
+  Added vdr-1.3.41 support.
+
+  29 Jan 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-radio-0.0.9.ebuild:
+  DL URI fixed
+
+*vdr-radio-0.0.9 (09 Jan 2006)
+
+  09 Jan 2006; Joerg Bornkessel <hd_brummy@gentoo.org> +files/rc-addon.sh,
+  +metadata.xml, +vdr-radio-0.0.9.ebuild:
+  initial import; older versions on gentoo.de cvs
+

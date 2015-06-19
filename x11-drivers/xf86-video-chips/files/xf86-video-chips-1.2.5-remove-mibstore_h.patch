@@ -1,0 +1,39 @@
+From 151a1ec855a9ada44907cb6bef06a71e9080504b Mon Sep 17 00:00:00 2001
+From: Adam Jackson <ajax@redhat.com>
+Date: Tue, 25 Sep 2012 12:54:34 +0000
+Subject: Remove mibstore.h
+
+Signed-off-by: Adam Jackson <ajax@redhat.com>
+---
+diff --git a/src/ct_driver.c b/src/ct_driver.c
+index 6f3a5d4..effbc60 100644
+--- a/src/ct_driver.c
++++ b/src/ct_driver.c
+@@ -96,9 +96,6 @@
+ /* All drivers initialising the SW cursor need this */
+ #include "mipointer.h"
+ 
+-/* All drivers implementing backing store need this */
+-#include "mibstore.h"
+-
+ /* All drivers using the mi banking wrapper need this */
+ #ifdef HAVE_ISA
+ #include "mibank.h"
+@@ -4145,7 +4142,6 @@ CHIPSScreenInit(SCREEN_INIT_ARGS_DECL)
+ 	    pBankInfo = NULL;
+ 	    return FALSE;
+ 	}
+-	miInitializeBackingStore(pScreen);
+ 	xf86SetBackingStore(pScreen);
+ 
+ 	/* Initialise cursor functions */
+@@ -4296,7 +4292,6 @@ CHIPSScreenInit(SCREEN_INIT_ARGS_DECL)
+ 	    }
+ 	}
+ 	
+-	miInitializeBackingStore(pScreen);
+ 	xf86SetBackingStore(pScreen);
+ #ifdef ENABLE_SILKEN_MOUSE
+ 	xf86SetSilkenMouse(pScreen);
+--
+cgit v0.9.0.2-2-gbebe

@@ -1,0 +1,73 @@
+# ChangeLog for app-dicts/aspell-la
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-la/ChangeLog,v 1.17 2014/01/05 11:05:07 pacho Exp $
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org>
+  aspell-la-6.0.20020503.0.ebuild:
+  keyword ~amd64-fbsd
+
+  05 Jun 2010; Raúl Porcel <armin76@gentoo.org>
+  aspell-la-6.0.20020503.0.ebuild:
+  alpha/arm/ia64/s390/sh stable wrt #310015
+
+  05 Jun 2010; Raúl Porcel <armin76@gentoo.org>
+  aspell-la-6.0.20020503.0.ebuild:
+  Add ~m68k
+
+  14 May 2010; Jeroen Roovers <jer@gentoo.org>
+  aspell-la-6.0.20020503.0.ebuild:
+  Stable for HPPA (bug #310015).
+
+  05 Apr 2010; Markus Meier <maekke@gentoo.org>
+  aspell-la-6.0.20020503.0.ebuild:
+  amd64/arm/x86 stable, bug #310015
+
+  27 Mar 2010; Tiago Cunha <tcunha@gentoo.org>
+  aspell-la-6.0.20020503.0.ebuild:
+  stable sparc, bug 310015
+
+  24 Mar 2010; Brent Baude <ranger@gentoo.org>
+  aspell-la-6.0.20020503.0.ebuild:
+  Marking aspell-la-6.0.20020503.0 ppc for bug 310015
+
+  21 Mar 2010; Brent Baude <ranger@gentoo.org>
+  aspell-la-6.0.20020503.0.ebuild:
+  Marking aspell-la-6.0.20020503.0 ppc64 for bug 310015
+
+  02 Mar 2009; Peter Volkov <pva@gentoo.org>
+  aspell-la-6.0.20020503.0.ebuild:
+  ~mips keyworded, bug #254425.
+
+  10 Feb 2009; Raúl Porcel <armin76@gentoo.org>
+  aspell-la-6.0.20020503.0.ebuild:
+  Add ~arm/~ia64/~s390/~sh wrt #254425
+
+  06 Feb 2009; Jeroen Roovers <jer@gentoo.org>
+  aspell-la-6.0.20020503.0.ebuild:
+  Marked ~hppa (bug #254425).
+
+  25 Jan 2009; Brent Baude <ranger@gentoo.org>
+  aspell-la-6.0.20020503.0.ebuild:
+  Marking aspell-la-6.0.20020503.0 ~ppc64 for bug 254425
+
+  13 Jan 2009; Peter Volkov <pva@gentoo.org>
+  aspell-la-6.0.20020503.0.ebuild:
+  Define IUSE, thank Tiago Cunha for report in bug #254425.
+
+  13 Jan 2009; Tiago Cunha <tcunha@gentoo.org>
+  aspell-la-6.0.20020503.0.ebuild:
+  keyworded ~arch for sparc, bug 254425
+
+  03 Nov 2007; Roy Marples <uberlord@gentoo.org>
+  aspell-la-6.0.20020503.0.ebuild:
+  Keyworded ~sparc-fbsd and ~x86-fbsd
+
+*aspell-la-6.0.20020503.0 (18 Aug 2007)
+
+  18 Aug 2007; Wulf C. Krueger <philantrop@gentoo.org> +metadata.xml,
+  +aspell-la-6.0.20020503.0.ebuild:
+  Initial ebuild as submitted by Michael Wilcox on bug 156039 for Latin.

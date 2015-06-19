@@ -1,0 +1,38 @@
+# ChangeLog for app-misc/jot
+# Copyright 2000-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/jot/ChangeLog,v 1.12 2015/06/09 11:45:17 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> jot-9.0.ebuild:
+  Stable on ppc.
+
+  09 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org> jot-9.0.ebuild:
+  mark ~ppc
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> jot-9.0.ebuild:
+  stable on amd64
+
+  21 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml:
+  Add metadata (shell-tools)
+
+  10 Jul 2004; Tom Martin <slarti@gentoo.org> jot-9.0.ebuild:
+  Marked ~amd64.
+
+  07 Oct 2003; Joel Hill <hillster@gentoo.org> jot-9.0.ebuild:
+  marking stable.
+
+*jot-9.0 (21 Jun 2003)
+
+  21 Jun 2003; Alastair Tse <liquidx@gentoo.org> jot-9.0.ebuild:
+  converted to use rpm.eclass and other cleanups
+
+*jot-0.9 (22 Apr 2003)
+
+   22 Apr 2003; Jon Portnoy <avenj@gentoo.org> jot-0.9.ebuild :
+   Initial import of jot. Ebuild submitted in bug #19750 by
+   Ryan Shaw <ryan.shaw@stanfordalumni.org>.

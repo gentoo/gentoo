@@ -1,0 +1,48 @@
+# ChangeLog for media-sound/milkytracker
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/milkytracker/ChangeLog,v 1.9 2014/08/29 13:40:33 ssuominen Exp $
+
+  29 Aug 2014; Samuli Suominen <ssuominen@gentoo.org>
+  -files/milkytracker-0.90.80-external_zlib.patch,
+  -files/milkytracker-0.90.85-64bit.patch, -milkytracker-0.90.80.ebuild,
+  -milkytracker-0.90.85.ebuild:
+  old
+
+*milkytracker-0.90.86 (29 Aug 2014)
+
+  29 Aug 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +files/milkytracker-0.90.86-underlinking.patch, +milkytracker-0.90.86.ebuild:
+  Version bump wrt #498650 by Joshua Clayton
+
+  02 Nov 2010; Samuli Suominen <ssuominen@gentoo.org>
+  milkytracker-0.90.85.ebuild:
+  Fix escaping in sed statement wrt #343879 by "Ooblick".
+
+  01 Nov 2010; Samuli Suominen <ssuominen@gentoo.org>
+  milkytracker-0.90.80.ebuild, milkytracker-0.90.85.ebuild:
+  Fix HOMEPAGE and SRC_URI wrt #343741 by Jouni Rinne.
+
+*milkytracker-0.90.85 (31 Oct 2010)
+
+  31 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +milkytracker-0.90.85.ebuild, +files/milkytracker-0.90.85-64bit.patch:
+  Version bump wrt #301891 by "hiyuh" and Kim Nilsson.
+
+  09 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  milkytracker-0.90.80.ebuild:
+  stable x86, bug 331189
+
+  06 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  files/milkytracker-0.90.80-external_zlib.patch:
+  Fix building with -Wl,--as-needed wrt #294396 by Kacper Kowalik.
+
+  22 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  milkytracker-0.90.80.ebuild,
+  +files/milkytracker-0.90.80-external_zlib.patch:
+  Use system zlib wrt #251229.
+
+*milkytracker-0.90.80 (29 Jun 2008)
+
+  29 Jun 2008; Samuli Suominen <drac@gentoo.org>
+  +milkytracker-0.90.80.ebuild:
+  Initial commit for bug 217702, thanks to Christopher O'Neill.

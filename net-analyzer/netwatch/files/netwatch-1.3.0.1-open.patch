@@ -1,0 +1,11 @@
+--- a/netwatch.c
++++ b/netwatch.c
+@@ -2758,7 +2758,7 @@ updatecurrent (HOSTINFO * work, struct i
+       work->plog = open (nam, O_APPEND | O_WRONLY);
+       if (work->plog < 0)
+       {
+-	work->plog = open (nam, O_APPEND | O_CREAT | O_WRONLY);
++	work->plog = open (nam, O_APPEND | O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR);
+ 	st = write (work->plog, &starttime, sizeof (starttime));
+ 	st = write (work->plog, &simmagic, sizeof (simmagic));
+       }

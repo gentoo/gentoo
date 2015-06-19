@@ -1,0 +1,78 @@
+# ChangeLog for games-fps/unreal-tournament-goty
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/unreal-tournament-goty/ChangeLog,v 1.18 2015/06/14 17:25:09 ulm Exp $
+
+  14 Jun 2015; Ulrich Müller <ulm@gentoo.org>
+  unreal-tournament-goty-436.ebuild, unreal-tournament-goty-451.ebuild:
+  [QA] Remove emul-linux-x86-* from dependencies.
+
+  15 Oct 2014; Pacho Ramos <pacho@gentoo.org> unreal-tournament-goty-436.ebuild,
+  unreal-tournament-goty-451.ebuild:
+  Support multilib providers for deps. Bump to EAPI=5.
+
+  01 May 2014; Ulrich Müller <ulm@gentoo.org>
+  unreal-tournament-goty-436.ebuild, unreal-tournament-goty-451.ebuild:
+  Fix LICENSE, add mirror and bindist restrictions, bug 505722.
+
+  05 Feb 2012; Mike Frysinger <vapier@gentoo.org>
+  unreal-tournament-goty-436.ebuild, unreal-tournament-goty-451.ebuild:
+  Move to new unpacker eclass for unpack_makeself.
+
+  16 Jan 2012; Ulrich Müller <ulm@gentoo.org>
+  unreal-tournament-goty-436.ebuild, unreal-tournament-goty-451.ebuild:
+  Migrate to cdrom.eclass, bug 398809.
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org>
+  unreal-tournament-goty-436.ebuild, unreal-tournament-goty-451.ebuild:
+  Replacing einfo with elog
+
+  05 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  unreal-tournament-goty-436.ebuild, unreal-tournament-goty-451.ebuild:
+  Removing old virtual/x11 dependency.
+
+  24 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  unreal-tournament-goty-436.ebuild, unreal-tournament-goty-451.ebuild:
+  Moved cdrom_get_cds to src_unpack since binary packages don't require the
+  original media to install.
+
+  14 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  unreal-tournament-goty-436.ebuild, unreal-tournament-goty-451.ebuild:
+  Moved games_pkg_setup to the beginning of pkg_setup.
+
+  10 Feb 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  unreal-tournament-goty-436.ebuild, unreal-tournament-goty-451.ebuild:
+  Added modular X dependencies and closing bug #121203.
+
+  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  unreal-tournament-goty-451.ebuild:
+  Making games last on inherit line.
+
+  16 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  unreal-tournament-goty-436.ebuild, unreal-tournament-goty-451.ebuild:
+  needs app-arch/unzip; tidy
+
+  10 Aug 2005; Carlos Silva <r3pek@gentoo.org>
+  unreal-tournament-goty-451.ebuild:
+  marked ~amd64. closes bug #102037
+
+  12 May 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  unreal-tournament-goty-436.ebuild, unreal-tournament-goty-451.ebuild:
+  Made X a hard dependency and closing bug #92255.
+
+  03 Jun 2004; Aron Griffis <agriffis@gentoo.org>
+  unreal-tournament-goty-436.ebuild, unreal-tournament-goty-451.ebuild:
+  Fix use invocation
+
+*unreal-tournament-goty-451 (11 Jul 2003)
+
+  11 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump to UTPG patches and fix for #24067.
+
+*unreal-tournament-goty-436 (25 Jun 2003)
+
+  27 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Fix texture install (only 4 minor textures) and add nls support.
+  If we dont want nls, we dont want french/spanish/italian support ;)
+
+  25 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me ! 

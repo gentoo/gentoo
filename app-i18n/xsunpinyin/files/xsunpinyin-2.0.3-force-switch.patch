@@ -1,0 +1,45 @@
+diff --git a/wrapper/xim/SConstruct b/wrapper/xim/SConstruct
+index 9d1cafd..495871d 100644
+--- a/wrapper/xim/SConstruct
++++ b/wrapper/xim/SConstruct
+@@ -32,7 +32,7 @@ imdkit_sources = ['IMdkit/FrameMgr.c',
+                   'IMdkit/IMValues.c']
+ 
+ 
+-cflags='-O2 -g -pipe'
++cflags='-O2 -g -pipe '
+ 
+ # options
+ AddOption('--prefix', dest='prefix', type='string', nargs=1, action='store',
+@@ -52,7 +52,6 @@ def PassVariables(envvar, env):
+ 
+ env = Environment(ENV=os.environ,
+                   CFLAGS=cflags, CXXFLAGS=cflags,
+-                  LINKFLAGS=['-export-dynamic'],
+                   CPPPATH=['.', 'IMdkit'])
+ opts.Update(env)
+ 
+@@ -62,11 +61,6 @@ if GetOption('prefix') is not None:
+ 
+ opts.Save('configure.conf', env)
+ 
+-
+-# set rpath
+-if GetOption('rpath') is not None:
+-    env.Append(LINKFLAGS='-Wl,-R -Wl,%s' % GetOption('rpath'))
+-
+ envvar = [('CC', 'CC'),
+           ('CXX', 'CXX'),
+           ('CFLAGS', 'CFLAGS'),
+@@ -83,7 +77,11 @@ extra_cflags += ' -DSUNPINYIN_XIM_SETTING_DIR=\\"%s\\"' % data_dir
+ 
+ env.Append(CFLAGS=extra_cflags)
+ env.Append(CXXFLAGS=extra_cflags)
++env.Append(LINKFLAGS=' -export-dynamic')
+ 
++# set rpath
++if GetOption('rpath') is not None:
++    env.Append(LINKFLAGS=' -Wl,-R -Wl,%s' % GetOption('rpath'))
+ 
+ #
+ #==============================configure================================

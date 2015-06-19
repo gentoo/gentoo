@@ -1,0 +1,391 @@
+# ChangeLog for www-apache/mod_caucho
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_caucho/ChangeLog,v 1.76 2015/05/09 08:16:46 pacho Exp $
+
+*mod_caucho-4.0.26-r1 (09 May 2015)
+
+  09 May 2015; Pacho Ramos <pacho@gentoo.org> +mod_caucho-4.0.26-r1.ebuild,
+  -mod_caucho-4.0.13.ebuild, -mod_caucho-4.0.14.ebuild,
+  -mod_caucho-4.0.15.ebuild, -mod_caucho-4.0.22.ebuild,
+  -mod_caucho-4.0.25.ebuild:
+  Support apache 2.4 (#532816), drop old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> mod_caucho-4.0.13.ebuild,
+  mod_caucho-4.0.14.ebuild, mod_caucho-4.0.15.ebuild, mod_caucho-4.0.22.ebuild,
+  mod_caucho-4.0.25.ebuild, mod_caucho-4.0.26.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  29 Jun 2013; Patrick Lauer <patrick@gentoo.org> mod_caucho-4.0.26.ebuild:
+  Relax java deps to not make repoman explode so violently
+
+  16 Dec 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due retirement, #95685
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  16 Oct 2012; Patrick Lauer <patrick@gentoo.org> mod_caucho-4.0.26.ebuild:
+  Adding jre dep to make mod_caucho build
+
+  12 Oct 2012; Patrick Lauer <patrick@gentoo.org> mod_caucho-4.0.13.ebuild,
+  mod_caucho-4.0.14.ebuild, mod_caucho-4.0.15.ebuild, mod_caucho-4.0.22.ebuild,
+  mod_caucho-4.0.25.ebuild, mod_caucho-4.0.26.ebuild:
+  Restricting to apache 2.2
+
+  21 Aug 2012; Johannes Huber <johu@gentoo.org> mod_caucho-4.0.26.ebuild:
+  Stable for x86, wrt bug #422239
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> mod_caucho-4.0.26.ebuild:
+  Stable for amd64, wrt bug #422239
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  mod_caucho-4.0.22.ebuild:
+  x86 stable wrt bug #400517
+
+*mod_caucho-4.0.26 (04 Mar 2012)
+
+  04 Mar 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  +mod_caucho-4.0.26.ebuild:
+  Version bump.
+
+  23 Feb 2012; Agostino Sarubbo <ago@gentoo.org> mod_caucho-4.0.22.ebuild:
+  Stable for amd64, wrt bug #400517
+
+  22 Feb 2012; Krzysztof Pawlik <nelchael@gentoo.org> mod_caucho-4.0.22.ebuild,
+  mod_caucho-4.0.25.ebuild:
+  Fix bug #404533 and bug #405193: compilation without JDK and using LDFLAGS.
+
+  17 Feb 2012; Krzysztof Pawlik <nelchael@gentoo.org> mod_caucho-4.0.22.ebuild,
+  mod_caucho-4.0.25.ebuild:
+  Fix building on amd64.
+
+*mod_caucho-4.0.25 (11 Feb 2012)
+
+  11 Feb 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  +mod_caucho-4.0.25.ebuild:
+  Version bump.
+
+*mod_caucho-4.0.22 (06 Sep 2011)
+
+  06 Sep 2011; Krzysztof Pawlik <nelchael@gentoo.org>
+  +mod_caucho-4.0.22.ebuild:
+  Version bump.
+
+*mod_caucho-4.0.15 (15 Mar 2011)
+
+  15 Mar 2011; Krzysztof Pawlik <nelchael@gentoo.org>
+  +mod_caucho-4.0.15.ebuild:
+  Version bump.
+
+  15 Mar 2011; Krzysztof Pawlik <nelchael@gentoo.org>
+  -mod_caucho-3.0.25.ebuild, -mod_caucho-3.1.8.ebuild,
+  -mod_caucho-3.1.9.ebuild, -mod_caucho-3.2.1.ebuild, -mod_caucho-4.0.5.ebuild,
+  -mod_caucho-4.0.6.ebuild, -mod_caucho-4.0.9.ebuild:
+  Remove old versions.
+
+  03 Mar 2011; Thomas Kahle <tomka@gentoo.org> mod_caucho-4.0.13.ebuild:
+  x86 stable per bug 353881
+
+  11 Feb 2011; Markos Chandras <hwoarang@gentoo.org> mod_caucho-4.0.13.ebuild:
+  Stable on amd64 wrt bug #353881
+
+*mod_caucho-4.0.14 (08 Feb 2011)
+
+  08 Feb 2011; Krzysztof Pawlik <nelchael@gentoo.org>
+  +mod_caucho-4.0.14.ebuild:
+  Version bump.
+
+*mod_caucho-4.0.13 (12 Dec 2010)
+
+  12 Dec 2010; Krzysztof Pawlik <nelchael@gentoo.org>
+  +mod_caucho-4.0.13.ebuild:
+  Version bump.
+
+*mod_caucho-4.0.9 (19 Aug 2010)
+
+  19 Aug 2010; Krzysztof Pawlik <nelchael@gentoo.org>
+  +mod_caucho-4.0.9.ebuild:
+  Version bump.
+
+  24 Apr 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  mod_caucho-4.0.6.ebuild:
+  QA: fix eautoreconf call (bug #316897).
+
+*mod_caucho-4.0.6 (19 Apr 2010)
+
+  19 Apr 2010; Krzysztof Pawlik <nelchael@gentoo.org>
+  +mod_caucho-4.0.6.ebuild:
+  Version bump.
+
+*mod_caucho-4.0.5 (02 Apr 2010)
+
+  02 Apr 2010; Krzysztof Pawlik <nelchael@gentoo.org>
+  -mod_caucho-4.0.3.ebuild, +mod_caucho-4.0.5.ebuild:
+  Version bump to Resin 4.0.5.
+
+*mod_caucho-4.0.3 (27 Feb 2010)
+
+  27 Feb 2010; Krzysiek Pawlik <nelchael@gentoo.org>
+  +mod_caucho-4.0.3.ebuild:
+  Version bump.
+
+*mod_caucho-3.1.9 (12 Dec 2009)
+
+  12 Dec 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  +mod_caucho-3.1.9.ebuild:
+  Version bump.
+
+  18 Sep 2009; Benedikt Böhm <hollow@gentoo.org> files/88_mod_caucho.conf,
+  mod_caucho-3.0.25.ebuild, mod_caucho-3.1.8.ebuild,
+  mod_caucho-3.2.1.ebuild:
+  cleanup ebuild and convert to EAPI2
+
+  02 Aug 2009; Markus Meier <maekke@gentoo.org> mod_caucho-3.2.1.ebuild:
+  amd64 stable, bug #275672
+
+  30 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  mod_caucho-3.2.1.ebuild:
+  stable x86, bug 275672
+
+  01 May 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  -mod_caucho-3.0.26.ebuild, -mod_caucho-3.1.6.ebuild:
+  Drop obsolete version.
+
+*mod_caucho-3.2.1 (02 Feb 2009)
+
+  02 Feb 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  +mod_caucho-3.2.1.ebuild:
+  Version bump.
+
+*mod_caucho-3.1.8 (10 Jan 2009)
+
+  10 Jan 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  +mod_caucho-3.1.8.ebuild:
+  Version bump.
+
+*mod_caucho-3.0.26 (10 Jun 2008)
+
+  10 Jun 2008; Krzysiek Pawlik <nelchael@gentoo.org>
+  +mod_caucho-3.0.26.ebuild:
+  Version bump.
+
+  12 May 2008; Krzysiek Pawlik <nelchael@gentoo.org>
+  -mod_caucho-3.0.24.ebuild:
+  Remove old version.
+
+  11 May 2008; Markus Rothe <corsair@gentoo.org> mod_caucho-3.0.25.ebuild:
+  Stable on ppc64; bug #221263
+
+  11 May 2008; Markus Meier <maekke@gentoo.org> mod_caucho-3.0.25.ebuild:
+  x86 stable, bug #221263
+
+  10 May 2008; Krzysiek Pawlik <nelchael@gentoo.org>
+  mod_caucho-3.1.6.ebuild:
+  Use revision 1 of patches.
+
+*mod_caucho-3.1.6 (10 May 2008)
+
+  10 May 2008; Krzysiek Pawlik <nelchael@gentoo.org>
+  -mod_caucho-3.1.3.ebuild, -mod_caucho-3.1.4.ebuild,
+  -mod_caucho-3.1.5.ebuild, +mod_caucho-3.1.6.ebuild:
+  Version bump, removed old versions.
+
+  10 May 2008; Krzysiek Pawlik <nelchael@gentoo.org>
+  mod_caucho-3.0.25.ebuild:
+  Stable on amd64, ppc.
+
+  29 Feb 2008; Brent Baude <ranger@gentoo.org> mod_caucho-3.1.5.ebuild:
+  keyworded ~arch for ppc64, bug 211801
+
+*mod_caucho-3.1.5 (27 Feb 2008)
+
+  27 Feb 2008; Krzysiek Pawlik <nelchael@gentoo.org>
+  +mod_caucho-3.1.5.ebuild:
+  Version bump.
+
+  29 Jan 2008; Benedikt Böhm <hollow@gentoo.org> mod_caucho-3.0.24.ebuild,
+  mod_caucho-3.0.25.ebuild, mod_caucho-3.1.3.ebuild,
+  mod_caucho-3.1.4.ebuild:
+  fix depend.apache usage wrt #208033
+
+  14 Dec 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  mod_caucho-3.1.4.ebuild:
+  Use correct patches for 3.1.4.
+
+  14 Dec 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  mod_caucho-3.1.4.ebuild:
+  Use r1 version of patches.
+
+*mod_caucho-3.1.4 (14 Dec 2007)
+*mod_caucho-3.0.25 (14 Dec 2007)
+
+  14 Dec 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  +mod_caucho-3.0.25.ebuild, +mod_caucho-3.1.4.ebuild:
+  Version bump.
+
+  10 Nov 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  -files/mod_caucho-3.0.22-gentoo.patch,
+  -files/mod_caucho-3.0.22-java.patch, -files/mod_caucho-3.0.22-ssl.patch,
+  -mod_caucho-3.0.22.ebuild, mod_caucho-3.0.24.ebuild:
+  Stable on amd64, see bug #191741.
+
+  10 Nov 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  -files/mod_caucho-3.0.24-disable-sticky-sessions.patch,
+  -files/mod_caucho-3.0.24-gentoo.patch,
+  -files/mod_caucho-3.0.24-java.patch, -files/mod_caucho-3.0.24-ssl.patch,
+  -files/mod_caucho-3.1.3-gentoo.patch, -files/mod_caucho-3.1.3-java.patch,
+  -files/mod_caucho-3.1.3-ssl.patch, mod_caucho-3.0.24.ebuild,
+  mod_caucho-3.1.3.ebuild:
+  Use tarball of patches.
+
+*mod_caucho-3.1.3 (10 Nov 2007)
+
+  10 Nov 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  -files/mod_caucho-3.1.2-gentoo.patch, -files/mod_caucho-3.1.2-java.patch,
+  -files/mod_caucho-3.1.2-ssl.patch, +files/mod_caucho-3.1.3-gentoo.patch,
+  +files/mod_caucho-3.1.3-java.patch, +files/mod_caucho-3.1.3-ssl.patch,
+  -mod_caucho-3.1.2.ebuild, +mod_caucho-3.1.3.ebuild:
+  Version bump for Resin 3.1.3
+
+  06 Nov 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  mod_caucho-3.0.24.ebuild, mod_caucho-3.1.2.ebuild:
+  Fix DEPEND.
+
+  06 Nov 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  mod_caucho-3.0.24.ebuild, mod_caucho-3.1.2.ebuild:
+  Add missing app-arch/unzip to DEPEND.
+
+  13 Oct 2007; Markus Rothe <corsair@gentoo.org> mod_caucho-3.0.24.ebuild:
+  Added ~ppc64; bug #191741
+
+  19 Sep 2007; Lars Weiler <pylon@gentoo.org> mod_caucho-3.0.24.ebuild:
+  Stable on ppc; bug #191741.
+
+  16 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  mod_caucho-3.0.24.ebuild:
+  stable x86, bug 191741
+
+  08 Sep 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  -files/mod_caucho-3.0.23-disable-sticky-sessions.patch,
+  -files/mod_caucho-3.0.23-gentoo.patch,
+  -files/mod_caucho-3.0.23-java.patch, -files/mod_caucho-3.0.23-ssl.patch,
+  -files/mod_caucho-3.1.1-disable-sticky-sessions.patch,
+  -files/mod_caucho-3.1.1-gentoo.patch, -files/mod_caucho-3.1.1-java.patch,
+  -files/mod_caucho-3.1.1-ssl.patch, -mod_caucho-3.0.23-r1.ebuild,
+  -mod_caucho-3.1.1-r1.ebuild:
+  Remove unneeded versions.
+
+*mod_caucho-3.1.2 (17 Aug 2007)
+*mod_caucho-3.0.24 (17 Aug 2007)
+
+  17 Aug 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/mod_caucho-3.0.24-disable-sticky-sessions.patch,
+  +files/mod_caucho-3.0.24-gentoo.patch,
+  +files/mod_caucho-3.0.24-java.patch, +files/mod_caucho-3.0.24-ssl.patch,
+  +files/mod_caucho-3.1.2-gentoo.patch, +files/mod_caucho-3.1.2-java.patch,
+  +files/mod_caucho-3.1.2-ssl.patch, +mod_caucho-3.0.24.ebuild,
+  +mod_caucho-3.1.2.ebuild:
+  Version bump.
+
+*mod_caucho-3.1.1-r1 (16 Jun 2007)
+*mod_caucho-3.0.23-r1 (16 Jun 2007)
+
+  16 Jun 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/mod_caucho-3.0.23-disable-sticky-sessions.patch,
+  +files/mod_caucho-3.1.1-disable-sticky-sessions.patch,
+  -mod_caucho-3.0.23.ebuild, +mod_caucho-3.0.23-r1.ebuild,
+  -mod_caucho-3.1.1.ebuild, +mod_caucho-3.1.1-r1.ebuild:
+  Add a patch for disabling sticky sessions, bug #181886.
+
+*mod_caucho-3.1.1 (15 May 2007)
+*mod_caucho-3.0.23 (15 May 2007)
+
+  15 May 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/mod_caucho-3.0.23-gentoo.patch,
+  +files/mod_caucho-3.0.23-java.patch, +files/mod_caucho-3.0.23-ssl.patch,
+  -files/mod_caucho-3.1.0-gentoo.patch, -files/mod_caucho-3.1.0-java.patch,
+  -files/mod_caucho-3.1.0-ssl.patch, +files/mod_caucho-3.1.1-gentoo.patch,
+  +files/mod_caucho-3.1.1-java.patch, +files/mod_caucho-3.1.1-ssl.patch,
+  +mod_caucho-3.0.23.ebuild, -mod_caucho-3.1.0.ebuild,
+  +mod_caucho-3.1.1.ebuild:
+  Version bumps.
+
+  14 Apr 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/mod_caucho-3.0.22-java.patch, +files/mod_caucho-3.1.0-java.patch,
+  mod_caucho-3.0.22.ebuild, mod_caucho-3.1.0.ebuild:
+  Add a patch to disable looking for JAVA_HOME.
+
+  14 Apr 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  mod_caucho-3.0.22.ebuild, mod_caucho-3.1.0.ebuild:
+  Pass --disable-jni to configure script.
+
+  13 Apr 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/mod_caucho-3.1.0-ssl.patch, mod_caucho-3.1.0.ebuild:
+  Add patch for SSL connections for 3.1.0
+
+  13 Apr 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/mod_caucho-3.0.22-ssl.patch, mod_caucho-3.0.22.ebuild:
+  Add patch for SSL connections.
+
+  03 Feb 2007; Steve Dibb <beandog@gentoo.org> mod_caucho-3.0.22.ebuild:
+  amd64 stable, bug 163278
+
+  26 Jan 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  mod_caucho-3.0.22.ebuild, mod_caucho-3.1.0.ebuild:
+  Works on ppc.
+
+  25 Jan 2007; Luca Longinotti <chtekk@gentoo.org>
+  -files/mod_caucho-3.0.21-gentoo.patch, -mod_caucho-3.0.21.ebuild:
+  Cleanup.
+
+  23 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  mod_caucho-3.0.22.ebuild:
+  stable x86, bug #163278
+
+  15 Jan 2007; Luca Longinotti <chtekk@gentoo.org> metadata.xml,
+  mod_caucho-3.0.21.ebuild, mod_caucho-3.0.22.ebuild,
+  mod_caucho-3.1.0.ebuild:
+  Cleanup.
+
+*mod_caucho-3.1.0 (26 Dec 2006)
+
+  26 Dec 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/mod_caucho-3.1.0-gentoo.patch, +mod_caucho-3.1.0.ebuild:
+  Version bump.
+
+*mod_caucho-3.0.22 (19 Nov 2006)
+
+  19 Nov 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/mod_caucho-3.0.22-gentoo.patch, +mod_caucho-3.0.22.ebuild:
+  Version bump.
+
+  13 Nov 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  mod_caucho-3.0.21.ebuild:
+  Stable on x86 to have complete Resin.
+
+*mod_caucho-3.0.21 (14 Aug 2006)
+
+  14 Aug 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  -files/mod_caucho-3.0.19-gentoo.patch,
+  -files/mod_caucho-3.0.20-gentoo.patch,
+  +files/mod_caucho-3.0.21-gentoo.patch, -mod_caucho-3.0.19.ebuild,
+  -mod_caucho-3.0.20.ebuild, +mod_caucho-3.0.21.ebuild:
+  Version bump, cleaned up old versions.
+
+*mod_caucho-3.0.20 (05 Aug 2006)
+
+  05 Aug 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/mod_caucho-3.0.20-gentoo.patch, +mod_caucho-3.0.20.ebuild:
+  Version bump to match www-servers/resin version.
+
+  27 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  mod_caucho-3.0.19.ebuild:
+  Added -j1 to emake, see bug #141839.
+
+*mod_caucho-3.0.19 (06 Jul 2006)
+
+  06 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/88_mod_caucho.conf, +files/mod_caucho-3.0.19-gentoo.patch,
+  +metadata.xml, +mod_caucho-3.0.19.ebuild:
+  Initial version.

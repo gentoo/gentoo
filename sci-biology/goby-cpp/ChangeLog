@@ -1,0 +1,27 @@
+# ChangeLog for sci-biology/goby-cpp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/goby-cpp/ChangeLog,v 1.5 2015/04/13 08:26:36 jlec Exp $
+
+  13 Apr 2015; Justin Lecher <jlec@gentoo.org> +files/Alignments.proto,
+  +files/Reads.proto, +files/goby-cpp-2.0.1-underlinking.patch,
+  goby-cpp-2.0.1.ebuild:
+  Regenerate protocols, bug #514556
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+*goby-cpp-2.0.1 (19 Jul 2012)
+
+  19 Jul 2012; Justin Lecher <jlec@gentoo.org> +goby-cpp-2.0.1.ebuild:
+  Version Bump, handle static-libs
+
+*goby-cpp-1.9.8.1 (05 Jan 2012)
+
+  05 Jan 2012; Andrey Kislyuk <weaver@gentoo.org> +goby-cpp-1.9.8.1.ebuild:
+  Version bump
+
+*goby-cpp-1.9.7.3 (25 Sep 2011)
+
+  25 Sep 2011; Andrey Kislyuk <weaver@gentoo.org> +goby-cpp-1.9.7.3.ebuild,
+  +metadata.xml:
+  New package, ebuild written by me

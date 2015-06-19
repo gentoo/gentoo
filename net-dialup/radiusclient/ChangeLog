@@ -1,0 +1,108 @@
+# ChangeLog for net-dialup/radiusclient
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/radiusclient/ChangeLog,v 1.28 2014/08/10 20:56:22 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> radiusclient-0.3.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*radiusclient-0.3.2-r1 (27 Jun 2013)
+
+  27 Jun 2013; Sergey Popov <pinkbyte@gentoo.org>
+  +radiusclient-0.3.2-r1.ebuild, +files/radiusclient-0.3.2-64bit-compat.patch:
+  Revision bump: EAPI 5, autotools-utils eclass, install static libraries
+  conditionally, add patch for amd64 compatibility, wrt bug #399433
+
+  06 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  radiusclient-0.3.2.ebuild:
+  Keyword ~arm
+
+  18 Apr 2012; Naohiro Aota <naota@gentoo.org> radiusclient-0.3.2.ebuild:
+  Add ~x86-fbsd. #235785
+
+  03 Mar 2009; Alin Năstac <mrness@gentoo.org> radiusclient-0.3.2.ebuild:
+  Add net-dialup/freeradius-client blocking atom (#234098).
+
+  01 Dec 2008; Alin Năstac <mrness@gentoo.org> radiusclient-0.3.2.ebuild:
+  Add net-dialup/radiusclient-ng blocking dependency atom (#247950).
+
+  23 Jun 2008; Alin Năstac <mrness@gentoo.org>
+  files/pkgsysconfdir-install.patch, radiusclient-0.3.2.ebuild:
+  Sanitize patch (#226791).
+
+  16 Nov 2007; nixnut <nixnut@gentoo.org> radiusclient-0.3.2.ebuild:
+  Stable on ppc wrt bug 198489
+
+  14 Nov 2007; Jeroen Roovers <jer@gentoo.org> radiusclient-0.3.2.ebuild:
+  Stable for HPPA (bug #198489).
+
+  11 Nov 2007; Raúl Porcel <armin76@gentoo.org> radiusclient-0.3.2.ebuild:
+  ia64 stable
+
+  09 Aug 2007; Raúl Porcel <armin76@gentoo.org> radiusclient-0.3.2.ebuild:
+  alpha stable
+
+  30 Jun 2007; Raúl Porcel <armin76@gentoo.org> radiusclient-0.3.2.ebuild:
+  Add ~alpha wrt #176487
+
+  07 May 2007; Jeroen Roovers <jer@gentoo.org> radiusclient-0.3.2.ebuild:
+  Marked ~hppa (bug #176487).
+
+  01 May 2007; Raúl Porcel <armin76@gentoo.org> radiusclient-0.3.2.ebuild:
+  Add ~ia64 wrt bug 176487
+
+  15 Apr 2007; Alin Năstac <mrness@gentoo.org> radiusclient-0.3.2.ebuild:
+  Stable on amd64.
+
+  04 Dec 2006; Alexander H. Færøy <eroyf@gentoo.org>
+  radiusclient-0.3.2.ebuild:
+  Stable on Alpha.
+
+  21 Oct 2006; Thomas Cort <tcort@gentoo.org> radiusclient-0.3.2.ebuild:
+  Added ~alpha keyword.
+
+  07 May 2006; Markus Rothe <corsair@gentoo.org> radiusclient-0.3.2.ebuild:
+  Stable on ppc64; bug #113908
+
+  16 Mar 2006; Alin Nastac <mrness@gentoo.org> radiusclient-0.3.2.ebuild:
+  Remove virtual/libc dependency.
+
+  10 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  radiusclient-0.3.2.ebuild:
+  Stable on sparc
+
+  17 Dec 2005; Markus Rothe <corsair@gentoo.org> radiusclient-0.3.2.ebuild:
+  Added ~ppc64
+
+  02 Oct 2005; Jason Wever <weeve@gentoo.org> radiusclient-0.3.2.ebuild:
+  Added ~sparc keyword wrt bug #105512.
+
+  18 Sep 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  radiusclient-0.3.2.ebuild:
+  Added ~ppc Keyword
+
+  12 Sep 2005; Luis Medinas <metalgod@gentoo.org> radiusclient-0.3.2.ebuild:
+  Added ~amd64 keyword. Fix bug #105512.
+
+  22 May 2005; Alin Nastac <mrness@gentoo.org> -radiusclient-0.4.8.ebuild,
+  -radiusclient-0.5.0.ebuild:
+  Removed versions based on radiusclient-ng tarballs - radiusclient and
+  radiusclient-ng does not implement same functionality. The
+  net-dialup/radiusclient-0.5.0 is now known as
+  net-dialup/radiusclient-ng-0.5.0.
+
+*radiusclient-0.5.0 (16 Apr 2005)
+
+  16 Apr 2005; Alin Nastac <mrness@gentoo.org> radiusclient-0.4.8.ebuild,
+  +radiusclient-0.5.0.ebuild:
+  Mark stable on x86. Version bump.
+
+*radiusclient-0.4.8 (22 Jan 2005)
+
+  22 Jan 2005; Alin Nastac <mrness@gentoo.org> +radiusclient-0.4.8.ebuild:
+  Version bumped using radiusclient-ng sources (see bug #78386).
+
+*radiusclient-0.3.2 (21 Nov 2004)
+
+  21 Nov 2004; Alin Nastac <mrness@gentoo.org> +metadata.xml,
+  +files/pkgsysconfdir-install.patch, +radiusclient-0.3.2.ebuild:
+  Initial import from #71591, thanks to Evan Borgstrom <evan@mirrored.ca>.

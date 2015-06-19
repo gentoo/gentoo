@@ -1,0 +1,17 @@
+# ChangeLog for dev-php/phpdepend
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/phpdepend/ChangeLog,v 1.3 2014/10/30 03:31:19 grknight Exp $
+
+  30 Oct 2014; Brian Evans <grknight@gentoo.org> -phpdepend-0.10.3.ebuild:
+  Drop old
+
+*phpdepend-1.1.1 (25 Nov 2013)
+
+  25 Nov 2013; Matti Bickel <mabi@gentoo.org> +phpdepend-1.1.1.ebuild:
+  version bump (bug #483364)
+
+*phpmd-1.1.0 (25 Mar 2011)
+
+  25 Mar 2011; Ole Markus With <olemarkus@gentoo.org> +phpdepend-0.10.3.ebuild,
+  +metadata.xml:
+  Initial version

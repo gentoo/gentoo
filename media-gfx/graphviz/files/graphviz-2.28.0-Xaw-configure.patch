@@ -1,0 +1,71 @@
+--- configure.ac.old	2011-05-07 05:25:24.000000000 +0200
++++ configure.ac	2011-06-24 13:24:49.000000000 +0200
+@@ -1924,6 +1924,10 @@
+ # so we set HAVE_LIBXPMFORLEFTY instead of the usual HAVE_LIBXPM
+ #
+ 
++AC_ARG_WITH(lefty,
++  [AS_HELP_STRING([--with-lefty=yes],[build lefty])],
++  [],[with_xaw=yes])
++
+ AC_ARG_WITH(Xpmincludedir,
+   [AS_HELP_STRING([--with-Xpmincludedir=DIR],[use Xpm includes from DIR])],
+   [XPM_INCLUDES="-I$withval"])
+@@ -1931,6 +1935,17 @@
+   [AS_HELP_STRING([--with-Xpmlibdir=DIR],[use Xpm libraries from DIR])],
+   [XPM_LIBS="-L$withval"])
+ 
++AC_ARG_WITH(Xawincludedir,
++  [AS_HELP_STRING([--with-Xawincludedir=DIR],[use Xaw includes from DIR])],
++  [XAW_INCLUDES="-I$withval"])
++AC_ARG_WITH(Xawlibdir,
++  [AS_HELP_STRING([--with-Xawlibdir=DIR],[use Xaw libraries from DIR])],
++  [XAW_LIBS="-L$withval"])
++
++if test "x$with_xaw" != "xyes"; then
++  use_lefty="No (disabled)"
++else
++
+ save_CPPFLAGS=$CPPFLAGS
+ save_LDFLAGS=$LDFLAGS
+ CPPFLAGS="$CPPFLAGS $XPM_INCLUDES $X_CFLAGS"
+@@ -1941,18 +1956,10 @@
+    AC_MSG_WARN(Optional Xpm library not available), [-lXmu -lXt -lX11 -lXext $SOCKET_LIBS])
+ LDFLAGS=$save_LDFLAGS
+ CPPFLAGS=$save_CPPFLAGS
+-AC_SUBST(XPM_INCLUDES)
+-AC_SUBST(XPM_LIBS)
+ 
+ dnl -----------------------------------
+ dnl INCLUDES and LIBS for XAW
+ 
+-AC_ARG_WITH(Xawincludedir,
+-  [AS_HELP_STRING([--with-Xawincludedir=DIR],[use Xaw includes from DIR])],
+-  [XAW_INCLUDES="-I$withval"])
+-AC_ARG_WITH(Xawlibdir,
+-  [AS_HELP_STRING([--with-Xawlibdir=DIR],[use Xaw libraries from DIR])],
+-  [XAW_LIBS="-L$withval"])
+ save_CPPFLAGS=$CPPFLAGS
+ save_LDFLAGS=$LDFLAGS
+ CPPFLAGS="$CPPFLAGS $XAW_INCLUDES $X_CFLAGS"
+@@ -1978,12 +1985,17 @@
+ fi
+ LDFLAGS=$save_LDFLAGS
+ CPPFLAGS=$save_CPPFLAGS
++
++fi
++
++AC_SUBST(XPM_INCLUDES)
++AC_SUBST(XPM_LIBS)
+ AC_SUBST(XAW_INCLUDES)
+ AC_SUBST(XAW_LIBS)
+-AM_CONDITIONAL(WITH_XAW, [test "x$with_xaw" != "xno"])
+-if test "x$with_xaw" = "xno"; then
++AM_CONDITIONAL(WITH_XAW, [test "x$with_xaw" = "xyes"])
++if test "x$with_xaw" != "xyes"; then
+     if test "x$no_x" != "xyes"; then
+-	AC_MSG_WARN(Lefty cannot be built)
++	AC_MSG_WARN(Lefty will not be built)
+     fi
+ fi
+ 

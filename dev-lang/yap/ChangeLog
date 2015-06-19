@@ -1,0 +1,393 @@
+# ChangeLog for dev-lang/yap
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/yap/ChangeLog,v 1.83 2014/08/10 20:32:33 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> yap-6.2.2.ebuild,
+  yap-6.3.2.ebuild, yap-6.3.3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  06 Jan 2014; <keri@gentoo.org> -yap-6.3.0.ebuild, -yap-6.3.1.ebuild:
+  Remove old development versions
+
+  11 Nov 2013; <keri@gentoo.org> yap-6.3.3.ebuild:
+  Include upstream MPI reg cache fix
+
+  11 Nov 2013; <keri@gentoo.org> yap-6.3.3.ebuild:
+  Do not install duplicate jpl JAR files
+
+*yap-6.3.3 (10 Nov 2013)
+
+  10 Nov 2013; <keri@gentoo.org> +yap-6.3.3.ebuild:
+  Bump -6.3 development version
+
+  16 Aug 2013; <keri@gentoo.org> yap-6.3.2.ebuild:
+  Respect LDFLAGS, DESTDIR
+
+  13 Sep 2012; <keri@gentoo.org> yap-6.3.2.ebuild:
+  Tidy up determination of kernel flags during configure
+
+  17 Aug 2012; <keri@gentoo.org> yap-6.3.2.ebuild:
+  Fix up parallel make during install phase
+
+  17 Aug 2012; <keri@gentoo.org> yap-6.3.2.ebuild:
+  Lock predicate entries during bootstrap in threaded mode
+
+  18 Jul 2012; <keri@gentoo.org> yap-6.3.2.ebuild:
+  Fix up specification of YAPLIBDIR for Prolog packages. Closes #425216
+
+  01 Jul 2012; <keri@gentoo.org> yap-6.3.2.ebuild:
+  Add src_test stub. libtai check.c confuses default src_test function
+
+  01 Jul 2012; <keri@gentoo.org> yap-6.3.2.ebuild:
+  Fix up functor locking
+
+*yap-6.3.2 (22 Jun 2012)
+
+  22 Jun 2012; <keri@gentoo.org> +yap-6.3.2.ebuild:
+  Version bump
+
+*yap-6.3.1 (22 Jun 2012)
+
+  22 Jun 2012; <keri@gentoo.org> +yap-6.3.1.ebuild, metadata.xml:
+  Version bump
+
+  06 Jun 2012; Zac Medico <zmedico@gentoo.org> yap-6.2.2.ebuild,
+  yap-6.3.0.ebuild:
+  inherit multilib for get_libdir
+
+  07 Feb 2012; <keri@gentoo.org> -yap-6.2.0-r1.ebuild:
+  Remove old version
+
+  01 Feb 2012; Brent Baude <ranger@gentoo.org> yap-6.2.2.ebuild:
+  Marking yap-6.2.2 ppc for bug 399675
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> yap-6.2.2.ebuild:
+  x86 stable wrt bug #399675
+
+  24 Jan 2012; <keri@gentoo.org> yap-6.2.2.ebuild, yap-6.3.0.ebuild:
+  Add ncurses to RDEPEND. Reported in bug #399675.
+
+  22 Jan 2012; Agostino Sarubbo <ago@gentoo.org> yap-6.2.2.ebuild:
+  Stable for amd64, wrt bug #399675
+
+  15 Jan 2012; <keri@gentoo.org> yap-6.2.2.ebuild:
+  Fix up PLStream QA warnings
+
+  15 Jan 2012; <keri@gentoo.org> yap-6.3.0.ebuild:
+  Add ppc gprof, zutil patches
+
+*yap-6.3.0 (15 Jan 2012)
+
+  15 Jan 2012; <keri@gentoo.org> +yap-6.3.0.ebuild:
+  Version bump
+
+  14 Jan 2012; <keri@gentoo.org> yap-6.2.0-r1.ebuild, yap-6.2.2.ebuild:
+  Update YAP homepage
+
+  23 Oct 2011; <keri@gentoo.org> yap-6.2.2.ebuild:
+  Remove unused plstream feature definitions that conflict with ptrace headers
+
+*yap-6.2.2 (22 Oct 2011)
+
+  22 Oct 2011; <keri@gentoo.org> +yap-6.2.2.ebuild:
+  Version bump
+
+  05 Oct 2011; <keri@gentoo.org> yap-6.2.0-r1.ebuild:
+  Do not use internal zlib header handling; this invalidates the need for
+  zutil.h. Closes bug #385277
+
+  14 Jan 2011; <keri@gentoo.org> -yap-5.1.3-r2.ebuild,
+  -files/yap-5.1.3-autoconf-2.64.patch, -files/yap-5.1.3-bootdir.patch,
+  -files/yap-5.1.3-chr.patch, -files/yap-5.1.3-clpbn-examples.patch,
+  -files/yap-5.1.3-config.h.patch, -files/yap-5.1.3-configure.patch,
+  -files/yap-5.1.3-dynamic-lib.patch,
+  -files/yap-5.1.3-fortify_sources-ubuntu.patch,
+  -files/yap-5.1.3-multilib.patch, -files/yap-5.1.3-parallel-make.patch,
+  -files/yap-5.1.3-tkyap.patch, -yap-6.0.1.ebuild, -yap-6.0.2.ebuild,
+  -yap-6.0.3.ebuild, -yap-6.0.4.ebuild, -yap-6.0.5.ebuild,
+  -yap-6.0.5-r1.ebuild, -yap-6.0.6.ebuild, -yap-6.2.0.ebuild:
+  Remove old versions
+
+  13 Jan 2011; Brent Baude <ranger@gentoo.org> yap-6.2.0-r1.ebuild:
+  stable ppc, bug 349163
+
+  21 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> yap-6.2.0-r1.ebuild:
+  x86 stable wrt bug #349163
+
+  21 Dec 2010; <keri@gentoo.org> yap-6.2.0-r1.ebuild:
+  Fix race-condition during parallel install. Reported in bug #349163
+
+  21 Dec 2010; Markos Chandras <hwoarang@gentoo.org> yap-6.2.0-r1.ebuild:
+  Stable on amd64 wrt bug #349163
+
+  18 Dec 2010; <keri@gentoo.org> yap-6.2.0-r1.ebuild:
+  Do not duplicate docsdir
+
+  01 Dec 2010; <keri@gentoo.org> yap-6.2.0-r1.ebuild:
+  Fix ppc Prolog heap initialization; support profiling on ppc
+
+  06 Nov 2010; <keri@gentoo.org> yap-6.2.0-r1.ebuild:
+  Ensure checking saved-state headers works when timezone is not set
+
+  05 Nov 2010; <keri@gentoo.org> yap-6.0.1.ebuild,
+  -files/yap-6.0.1-bootfile.patch, -files/yap-6.0.1-dynamic-lib.patch,
+  -files/yap-6.0.1-mpi-include.patch, -files/yap-6.0.1-multilib.patch,
+  -files/yap-6.0.1-myddas-include.patch, -files/yap-6.0.1-yapsharedir.patch,
+  yap-6.0.2.ebuild, -files/yap-6.0.2-bootfile.patch,
+  -files/yap-6.0.2-dynamic-lib.patch, -files/yap-6.0.2-mpi-include.patch,
+  -files/yap-6.0.2-multilib.patch, -files/yap-6.0.2-myddas-include.patch,
+  -files/yap-6.0.2-yapsharedir.patch, yap-6.0.3.ebuild,
+  -files/yap-6.0.3-install-clause.patch, -files/yap-6.0.3-yapsharedir.patch,
+  yap-6.0.4.ebuild, -files/yap-6.0.4-JAVALIBPATH.patch,
+  -files/yap-6.0.4-chr-sublist.patch, -files/yap-6.0.4-yapsharedir.patch,
+  yap-6.0.5.ebuild, yap-6.0.5-r1.ebuild, -files/yap-6.0.5-JAVALIBPATH.patch,
+  -files/yap-6.0.5-chr-sublist.patch, -files/yap-6.0.5-ldflags.patch,
+  -files/yap-6.0.5-yapsharedir.patch, yap-6.0.6.ebuild,
+  -files/yap-6.0.6-DESTDIR.patch, -files/yap-6.0.6-chr-sublist.patch,
+  -files/yap-6.0.6-itries.patch, -files/yap-6.0.6-ldflags.patch,
+  -files/yap-6.0.6-runpath.patch, -files/yap-6.0.6-yapsharedir.patch,
+  yap-6.2.0.ebuild, yap-6.2.0-r1.ebuild, -files/yap-6.2.0-chr-sublist.patch,
+  -files/yap-6.2.0-have-config.patch,
+  -files/yap-6.2.0-ld-library-path.patch, -files/yap-6.2.0-ldflags.patch,
+  -files/yap-6.2.0-lib-soname.patch, -files/yap-6.2.0-parallel-make.patch,
+  -files/yap-6.2.0-yapsharedir.patch:
+  Bundle patches into tarballs; Closes #344013
+
+  30 Oct 2010; <keri@gentoo.org> yap-6.2.0-r1.ebuild,
+  +files/yap-6.2.0-lib-soname.patch:
+  Ensure libYap.so is generated with a defined SONAME
+
+  30 Oct 2010; <keri@gentoo.org> yap-6.2.0-r1.ebuild,
+  +files/yap-6.2.0-ld-library-path.patch:
+  Add YAPLIBDIR to LD_LIBRARY_PATH when bootstrapping chr
+
+  29 Oct 2010; <keri@gentoo.org> yap-6.2.0-r1.ebuild:
+  Tidy up examples installation; QA - remove die from call to econf, add die
+  to calls to doins
+
+  24 Oct 2010; <keri@gentoo.org> yap-6.2.0-r1.ebuild,
+  +files/yap-6.2.0-parallel-make.patch:
+  Support parallel make install
+
+*yap-6.2.0-r1 (23 Oct 2010)
+
+  23 Oct 2010; <keri@gentoo.org> +yap-6.2.0-r1.ebuild:
+  Yap client mode is unsupported; accordingly, drop tkyap client
+
+  23 Oct 2010; <keri@gentoo.org> yap-6.2.0.ebuild,
+  +files/yap-6.2.0-have-config.patch:
+  Enable Prolog engine to bootstrap with gcc-4.5; QA tidyup - include
+  config.h when compiling SWI packages
+
+*yap-6.2.0 (19 Oct 2010)
+
+  19 Oct 2010; <keri@gentoo.org> +yap-6.2.0.ebuild,
+  +files/yap-6.2.0-chr-sublist.patch, +files/yap-6.2.0-ldflags.patch,
+  +files/yap-6.2.0-yapsharedir.patch:
+  Version bump
+
+*yap-6.0.6 (12 Sep 2010)
+
+  12 Sep 2010; <keri@gentoo.org> +yap-6.0.6.ebuild,
+  +files/yap-6.0.6-DESTDIR.patch, +files/yap-6.0.6-chr-sublist.patch,
+  +files/yap-6.0.6-itries.patch, +files/yap-6.0.6-ldflags.patch,
+  +files/yap-6.0.6-runpath.patch, +files/yap-6.0.6-yapsharedir.patch:
+  Version bump
+
+*yap-6.0.5-r1 (12 Sep 2010)
+
+  12 Sep 2010; <keri@gentoo.org> +yap-6.0.5-r1.ebuild,
+  +files/yap-6.0.5-ldflags.patch:
+  Respect LDFLAGS. Closes #334575
+
+  07 Aug 2010; <keri@gentoo.org> yap-6.0.5.ebuild:
+  Remove redundant configure call to enable-cut-c
+
+*yap-6.0.5 (18 May 2010)
+
+  18 May 2010; <keri@gentoo.org> +yap-6.0.5.ebuild,
+  +files/yap-6.0.5-JAVALIBPATH.patch, +files/yap-6.0.5-chr-sublist.patch,
+  +files/yap-6.0.5-yapsharedir.patch:
+  Version bump
+
+*yap-6.0.4 (15 May 2010)
+
+  15 May 2010; <keri@gentoo.org> +yap-6.0.4.ebuild,
+  +files/yap-6.0.4-JAVALIBPATH.patch, +files/yap-6.0.4-chr-sublist.patch,
+  +files/yap-6.0.4-yapsharedir.patch:
+  Version bump
+
+  10 Apr 2010; <keri@gentoo.org> yap-6.0.3.ebuild,
+  +files/yap-6.0.3-install-clause.patch:
+  Support -O0 in CFLAGS when compiling install_clause()
+
+*yap-6.0.3 (20 Mar 2010)
+
+  20 Mar 2010; <keri@gentoo.org> +yap-6.0.3.ebuild,
+  +files/yap-6.0.3-yapsharedir.patch:
+  Version bump
+
+*yap-6.0.2 (05 Mar 2010)
+
+  05 Mar 2010; <keri@gentoo.org> +yap-6.0.2.ebuild,
+  +files/yap-6.0.2-bootfile.patch, +files/yap-6.0.2-dynamic-lib.patch,
+  +files/yap-6.0.2-mpi-include.patch, +files/yap-6.0.2-multilib.patch,
+  +files/yap-6.0.2-myddas-include.patch, +files/yap-6.0.2-yapsharedir.patch:
+  Version bump
+
+*yap-6.0.1 (03 Mar 2010)
+
+  03 Mar 2010; <keri@gentoo.org> +yap-6.0.1.ebuild,
+  +files/yap-6.0.1-bootfile.patch, +files/yap-6.0.1-dynamic-lib.patch,
+  +files/yap-6.0.1-mpi-include.patch, +files/yap-6.0.1-multilib.patch,
+  +files/yap-6.0.1-myddas-include.patch, +files/yap-6.0.1-yapsharedir.patch:
+  Version bump
+
+  10 Dec 2009; <keri@gentoo.org> -yap-5.1.1.ebuild,
+  -files/yap-5.1.1-SONAME.patch, -files/yap-5.1.1-analyst.patch,
+  -files/yap-5.1.1-configure.patch, -files/yap-5.1.1-jpl.patch,
+  -files/yap-5.1.1-multilib.patch, -files/yap-5.1.1-myddas.patch,
+  -files/yap-5.1.1-parallel-make.patch, -files/yap-5.1.1-tabling.patch,
+  -files/yap-5.1.1-tkyap.patch, -yap-5.1.2.ebuild,
+  -files/yap-5.1.2-SONAME.patch, -files/yap-5.1.2-analyst.patch,
+  -files/yap-5.1.2-chr.patch, -files/yap-5.1.2-config.h.patch,
+  -files/yap-5.1.2-configure.patch, -files/yap-5.1.2-jpl.patch,
+  -files/yap-5.1.2-multilib.patch, -files/yap-5.1.2-parallel-make.patch,
+  -files/yap-5.1.2-tabling.patch, -files/yap-5.1.2-tkyap.patch,
+  -yap-5.1.3.ebuild, -yap-5.1.3-r1.ebuild:
+  Remove old versions
+
+  09 Dec 2009; nixnut <nixnut@gentoo.org> yap-5.1.3-r2.ebuild:
+  ppc stable #295679
+
+  07 Dec 2009; Markus Meier <maekke@gentoo.org> yap-5.1.3-r2.ebuild:
+  amd64/x86 stable, bug #295679
+
+  01 Dec 2009; <keri@gentoo.org> yap-5.1.3-r2.ebuild,
+  +files/yap-5.1.3-autoconf-2.64.patch:
+  Enable reconfigure with autoconf-2.64+. Closes #294171
+
+  16 May 2009; <keri@gentoo.org> files/yap-5.1.3-configure.patch,
+  files/yap-5.1.3-dynamic-lib.patch:
+  Fix loading foreign files from a static Prolog kernel.
+
+*yap-5.1.3-r2 (02 Mar 2009)
+
+  02 Mar 2009; Patrick Lauer <patrick@gentoo.org>
+  +files/yap-5.1.3-fortify_sources-ubuntu.patch, +yap-5.1.3-r2.ebuild:
+  Fixing fcc 4.3.3 / fortify_sources error. Patch from Ubuntu. Closes
+  #260180
+
+  24 Jan 2009; <keri@gentoo.org> files/yap-5.1.3-configure.patch,
+  +files/yap-5.1.3-dynamic-lib.patch, yap-5.1.3-r1.ebuild:
+  Add patch to correctly link dynamic Yap.
+
+  17 Jan 2009; <keri@gentoo.org> +files/yap-5.1.3-clpbn-examples.patch,
+  yap-5.1.3-r1.ebuild:
+  Install Prolog library examples
+
+*yap-5.1.3-r1 (16 Jan 2009)
+
+  16 Jan 2009; <keri@gentoo.org> +files/yap-5.1.3-bootdir.patch,
+  +yap-5.1.3-r1.ebuild:
+  Revbump to install docs and support dynamic-loading
+
+*yap-5.1.3 (27 Jul 2008)
+
+  27 Jul 2008; keri <keri@gentoo.org> +files/yap-5.1.3-chr.patch,
+  +files/yap-5.1.3-config.h.patch, +files/yap-5.1.3-configure.patch,
+  +files/yap-5.1.3-multilib.patch, +files/yap-5.1.3-parallel-make.patch,
+  +files/yap-5.1.3-tkyap.patch, +yap-5.1.3.ebuild:
+  Version bump.
+
+  15 Jul 2008; keri <keri@gentoo.org> +files/yap-5.1.2-config.h.patch,
+  yap-5.1.2.ebuild:
+  Fix up config.h syntax. Thanks to Xavian-Anderson Macpherson and Sven E. in
+  bug #220847.
+
+  16 Feb 2008; keri <keri@gentoo.org> yap-5.1.1.ebuild, yap-5.1.2.ebuild:
+  Move eautoconf to src_unpack. Closes #207442.
+
+  10 Dec 2007; keri <keri@gentoo.org> files/yap-5.1.2-multilib.patch:
+  Fix multilib patch. Closes bug #201754 reported by Nikolay Orlyuk.
+
+  23 Nov 2007; keri <keri@gentoo.org> files/yap-5.1.2-configure.patch:
+  Fix Makefile expansion of shared library extensions in lam package.
+
+*yap-5.1.2 (21 Nov 2007)
+
+  21 Nov 2007; keri <keri@gentoo.org> +files/yap-5.1.2-SONAME.patch,
+  +files/yap-5.1.2-analyst.patch, +files/yap-5.1.2-chr.patch,
+  +files/yap-5.1.2-configure.patch, +files/yap-5.1.2-jpl.patch,
+  +files/yap-5.1.2-multilib.patch, +files/yap-5.1.2-parallel-make.patch,
+  +files/yap-5.1.2-tabling.patch, +files/yap-5.1.2-tkyap.patch,
+  +yap-5.1.2.ebuild:
+  Version bump.
+
+  03 Feb 2007; keri <keri@gentoo.org> +files/yap-5.1.1-parallel-make.patch,
+  yap-5.1.1.ebuild:
+  Parallelize compile of additional libraries.
+
+  03 Feb 2007; keri <keri@gentoo.org> -files/yap-5.0.1-analyst.patch,
+  -files/yap-5.0.1-configure.patch, -files/yap-5.0.1-doc.patch,
+  -files/yap-5.0.1-malloc.patch, -files/yap-5.0.1-rclause.patch,
+  -files/yap-5.0.1-tabling.patch, -files/yap-5.0.1-tkyap.patch,
+  -yap-5.0.1.ebuild:
+  Remove old -5.0.1 version.
+
+  03 Feb 2007; keri <keri@gentoo.org> +files/yap-5.1.1-jpl.patch,
+  yap-5.1.1.ebuild:
+  Ensure jdk VM is found for JPL package.
+
+  23 Jan 2007; nixnut <nixnut@gentoo.org> yap-5.1.1.ebuild:
+  Stable on ppc wrt bug 163123
+
+  22 Jan 2007; Christian Faulhammer <opfer@gentoo.org> yap-5.1.1.ebuild:
+  stable x86, bug #163123
+
+  21 Jan 2007; keri <keri@gentoo.org> files/yap-5.1.1-configure.patch:
+  Ensure AC_HEADER_STDC succeeds in single-threaded invocation.
+
+  20 Jan 2007; keri <keri@gentoo.org> yap-5.1.1.ebuild:
+  Add ~amd64 to KEYWORDS
+
+  20 Jan 2007; keri <keri@gentoo.org> +files/yap-5.1.1-SONAME.patch,
+  yap-5.1.1.ebuild:
+  Generate soname for installed lib.
+
+  20 Jan 2007; keri <keri@gentoo.org> files/yap-5.1.1-multilib.patch,
+  yap-5.1.1.ebuild:
+  Cleanup documentation.
+
+  03 Dec 2006; keri <keri@gentoo.org> +files/yap-5.1.1-multilib.patch,
+  yap-5.1.1.ebuild:
+  Add multilib patch. Bug #147098.
+
+  23 Nov 2006; Francesco Riosa <vivo@gentoo.org> yap-5.1.1.ebuild:
+  dev-db/mysql => virtual/mysql
+
+  17 Sep 2006; keri <keri@gentoo.org> yap-5.0.1.ebuild, yap-5.1.1.ebuild:
+  tcltk USE flag split. Bug #17808.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+*yap-5.1.1 (24 Apr 2006)
+
+  24 Apr 2006; Keri Harris <keri@gentoo.org> +files/yap-5.1.1-analyst.patch,
+  +files/yap-5.1.1-configure.patch, +files/yap-5.1.1-myddas.patch,
+  +files/yap-5.1.1-tabling.patch, +files/yap-5.1.1-tkyap.patch,
+  +yap-5.1.1.ebuild:
+  Version bump.
+
+  24 Mar 2006; Keri Harris <keri@gentoo.org> yap-5.0.1.ebuild:
+  Install info pages.
+
+*yap-5.0.1 (24 Mar 2006)
+
+  24 Mar 2006; Keri Harris <keri@gentoo.org> +files/yap-5.0.1-analyst.patch,
+  +files/yap-5.0.1-configure.patch, +files/yap-5.0.1-doc.patch,
+  +files/yap-5.0.1-malloc.patch, +files/yap-5.0.1-rclause.patch,
+  +files/yap-5.0.1-tabling.patch, +files/yap-5.0.1-tkyap.patch,
+  +metadata.xml, +yap-5.0.1.ebuild:
+  Initial import. Closes bug #124014

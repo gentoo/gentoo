@@ -1,0 +1,246 @@
+# ChangeLog for net-firewall/ebtables
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/ebtables/ChangeLog,v 1.53 2015/05/30 23:57:12 mrueg Exp $
+
+  30 May 2015; Manuel Rüger <mrueg@gentoo.org> -ebtables-2.0.10.2.ebuild,
+  -ebtables-2.0.9.2-r1.ebuild, -ebtables-2.0.9.2-r2.ebuild,
+  -files/ebtables-v2.0.8-2-ethertype-DESTDIR-mkdir.patch,
+  -files/ebtables-v2.0.9-2-LDFLAGS.diff,
+  -files/ebtables-v2.0.9-2-compilation.patch:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> ebtables-2.0.10.2.ebuild,
+  ebtables-2.0.10.4-r1.ebuild, ebtables-2.0.10.4.ebuild,
+  ebtables-2.0.9.2-r1.ebuild, ebtables-2.0.9.2-r2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #96436
+
+*ebtables-2.0.10.4-r1 (19 Dec 2012)
+
+  19 Dec 2012;  <qnikst@gentoo.org> +ebtables-2.0.10.4-r1.ebuild,
+  files/ebtables.initd-r1:
+  non-maint: fix deprecated options in initscript thanks to  Vincent Brillault
+  <gentoo@lerya.net>
+
+  14 Jun 2012; Michael Weber <xmw@gentoo.org> ebtables-2.0.10.4.ebuild:
+  ppc stable (bug 404265)
+
+  13 Jun 2012; Jeff Horelick <jdhore@gentoo.org> ebtables-2.0.10.4.ebuild:
+  marked x86 per bug 404265
+
+  11 Jun 2012; Agostino Sarubbo <ago@gentoo.org> ebtables-2.0.10.4.ebuild:
+  Stable for amd64, wrt bug #404265
+
+*ebtables-2.0.10.4 (17 Dec 2011)
+
+  17 Dec 2011; Peter Volkov <pva@gentoo.org> +ebtables-2.0.10.4.ebuild:
+  Version bump.
+
+  20 Oct 2011; Brent Baude <ranger@gentoo.org> ebtables-2.0.9.2-r2.ebuild:
+  Marking ebtables-2.0.9.2-r2 ppc for bug 373291
+
+*ebtables-2.0.10.2 (13 Aug 2011)
+
+  13 Aug 2011; Peter Volkov <pva@gentoo.org> +ebtables-2.0.10.2.ebuild:
+  Version bump.
+
+  15 Jul 2011; Markus Meier <maekke@gentoo.org> ebtables-2.0.9.2-r2.ebuild:
+  x86 stable, bug #373291
+
+  30 Jun 2011; Markos Chandras <hwoarang@gentoo.org>
+  ebtables-2.0.9.2-r2.ebuild:
+  Stable on amd64 wrt bug #373291
+
+  22 Jun 2011; Peter Volkov <pva@gentoo.org> ebtables-2.0.9.2-r2.ebuild,
+  +files/ebtables-v2.0.9-2-compilation.patch:
+  Fix build issue reported in bug #370953 by Bertrand Jacquin. Added
+  -Wno-strict-aliasing to avoid QA warnings (code is Ok).
+
+*ebtables-2.0.9.2-r2 (19 May 2011)
+
+  19 May 2011; Peter Volkov <pva@gentoo.org>
+  -files/ebtables-v2.0.9-1-LDFLAGS.diff, -ebtables-2.0.9.1.ebuild,
+  -ebtables-2.0.9.1-r1.ebuild, -ebtables-2.0.9.2.ebuild,
+  +ebtables-2.0.9.2-r2.ebuild, -files/ebtables-v2.0.8-2-LDFLAGS.diff,
+  files/ebtables-v2.0.9-2-LDFLAGS.diff, -files/ebtables.confd,
+  -files/ebtables.initd:
+  Install /etc/ethertypes even with USE=static, bug #367379 thank Dirk-Lüder
+  Kreie for report. Respect LDFLAGS when USE=static. Drop old.
+
+  11 Jul 2010; Markus Meier <maekke@gentoo.org> ebtables-2.0.9.2-r1.ebuild:
+  x86 stable, bug #323571
+
+  26 Jun 2010; <nixnut@gentoo.org> ebtables-2.0.9.2-r1.ebuild:
+  ppc stable #323571
+
+  24 Jun 2010; Pacho Ramos <pacho@gentoo.org> ebtables-2.0.9.2-r1.ebuild:
+  stable amd64, bug 323571
+
+*ebtables-2.0.9.2-r1 (09 May 2010)
+
+  09 May 2010; Peter Volkov <pva@gentoo.org> +ebtables-2.0.9.2-r1.ebuild,
+  +files/ebtables.confd-r1, +files/ebtables.initd-r1:
+  Fix ebtables tables detection, bug #314529, thank Veovis for report and
+  suggested fix.
+
+*ebtables-2.0.9.2 (16 Mar 2010)
+
+  16 Mar 2010; Peter Volkov <pva@gentoo.org> +ebtables-2.0.9.2.ebuild,
+  +files/ebtables-v2.0.9-2-LDFLAGS.diff:
+  Version bump, #309479 thank hitachi for report.
+
+  06 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  ebtables-2.0.9.1-r1.ebuild:
+  Further fix typo, this tiem it applies fine.
+
+  05 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  ebtables-2.0.9.1-r1.ebuild:
+  Fix typo.
+
+*ebtables-2.0.9.1-r1 (05 Dec 2009)
+
+  05 Dec 2009; Peter Volkov <pva@gentoo.org> -ebtables-2.0.8.2-r2.ebuild,
+  +ebtables-2.0.9.1-r1.ebuild:
+  Added static USE flag, bug #275460, thank Joakim Tjernlund for report.
+  Drop old.
+
+  08 Nov 2009; nixnut <nixnut@gentoo.org> ebtables-2.0.9.1.ebuild:
+  ppc stable #288289
+
+  25 Oct 2009; Markus Meier <maekke@gentoo.org> ebtables-2.0.9.1.ebuild:
+  amd64/x86 stable, bug #288289
+
+  04 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  ebtables-2.0.8.2-r2.ebuild, ebtables-2.0.9.1.ebuild:
+  Replace -Wl,--no-as-needed with function from flag-o-matic eclass.
+
+*ebtables-2.0.9.1 (22 Jun 2009)
+
+  22 Jun 2009; Peter Volkov <pva@gentoo.org>
+  +files/ebtables-v2.0.9-1-LDFLAGS.diff, +ebtables-2.0.9.1.ebuild:
+  Version bump, fixes 'invalid size 8 != 4', bug #273693 reported by Joakim
+  Tjernlund.
+
+  04 Jan 2009; Markus Meier <maekke@gentoo.org> ebtables-2.0.8.2-r2.ebuild:
+  amd64/x86 stable, bug #252658
+
+  02 Jan 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  ebtables-2.0.8.2-r2.ebuild:
+  ppc stable, bug #252658
+
+*ebtables-2.0.8.2-r2 (13 Oct 2008)
+
+  13 Oct 2008; Peter Volkov <pva@gentoo.org> -ebtables-2.0.8.2-r1.ebuild,
+  +ebtables-2.0.8.2-r2.ebuild:
+  Respect CFLAGS, bug #240890, thank Diego Pettenò for report.
+
+*ebtables-2.0.8.2-r1 (13 Aug 2008)
+
+  13 Aug 2008; Peter Volkov <pva@gentoo.org>
+  +files/ebtables-v2.0.8-2-LDFLAGS.diff,
+  +files/ebtables-v2.0.8-2-ethertype-DESTDIR-mkdir.patch,
+  +ebtables-2.0.8.2-r1.ebuild:
+  Fixed bug #233190, thank Suertreus for report. Also make ebtables respect
+  LDFLAGS.
+
+  11 May 2008; Peter Volkov <pva@gentoo.org>
+  -files/ebtables-2.0.8.1-fix-textrel.patch,
+  -files/ebtables-2.0.8.1-scripts-build.patch, -ebtables-2.0.8.1.ebuild,
+  ebtables-2.0.8.2.ebuild:
+  Removed useless postinst message, bug #221031 reported by Denilson.
+  Removed old ebuild.
+
+  02 Nov 2007; Lars Weiler <pylon@gentoo.org> ebtables-2.0.8.2.ebuild:
+  stable ppc, bug #197750
+
+  02 Nov 2007; Steve Dibb <beandog@gentoo.org> ebtables-2.0.8.2.ebuild:
+  amd64 stable
+
+  01 Nov 2007; Dawid Węgliński <cla@gentoo.org> ebtables-2.0.8.2.ebuild:
+  Stable on x86 (bug #197750)
+
+*ebtables-2.0.8.2 (28 Sep 2007)
+
+  28 Sep 2007; <pva@gentoo.org> -files/ebtables-2.0.6-gcc34.patch,
+  -files/ebtables-2.0.6-gcc4.patch, +files/ebtables-2.0.8.1-ebt-save.diff,
+  -files/README.gentoo.init, files/ebtables.confd, files/ebtables.initd,
+  -ebtables-2.0.6-r1.ebuild, -ebtables-2.0.8.1-r1.ebuild,
+  +ebtables-2.0.8.2.ebuild:
+  Version bump. Finally init script works, thank Lech Perczak <lech.perczak AT
+  multivision.pl>, bug #189315. Remove old.
+
+  10 Sep 2007; Markus Meier <maekke@gentoo.org> ebtables-2.0.8.1.ebuild:
+  stable on x86, wrt bug #191127
+
+  05 Sep 2007; Christoph Mende <angelos@gentoo.org> ebtables-2.0.8.1.ebuild:
+  Stable on amd64
+
+  03 Sep 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  ebtables-2.0.8.1.ebuild:
+  ppc stable, bug #191127
+
+*ebtables-2.0.8.1-r1 (02 Sep 2007)
+
+  02 Sep 2007; <pva@gentoo.org> +files/README.gentoo.init,
+  +files/ebtables.confd, +files/ebtables.initd, -ebtables-2.0.6.ebuild,
+  +ebtables-2.0.8.1-r1.ebuild:
+  Added init scripts into /usr/share/doc. See README.gentoo.init and bug
+  #189315 for details. Thank Lech Perczak <lech.perczak AT multivision.pl> for
+  report.
+
+*ebtables-2.0.8.1 (12 Aug 2007)
+
+  12 Aug 2007; <pva@gentoo.org> +files/ebtables-2.0.8.1-fix-textrel.patch,
+  +files/ebtables-2.0.8.1-scripts-build.patch, metadata.xml,
+  +ebtables-2.0.8.1.ebuild:
+  Version bump. Fixed bug #159371 and bug #167769. Thank Jochen Schlick,
+  Olivier Huber, Richard Benjamin Voigt and others mentioned in that bugs.
+
+  16 Jul 2007; <pva@gentoo.org> metadata.xml:
+  Grabed from solar.
+
+  25 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ebtables-2.0.6-r1.ebuild:
+  Stable on amd64 and x86 wrt bug #142194.
+
+  31 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  ebtables-2.0.6-r1.ebuild:
+  ppc stable, bug #142194
+
+*ebtables-2.0.6-r1 (19 Jan 2006)
+
+  19 Jan 2006; <solar@gentoo.org> +files/ebtables-2.0.6-gcc4.patch,
+  +ebtables-2.0.6-r1.ebuild:
+  - ebtables-2.0.6 does not build with gcc-4.x; Bug #119489
+
+  07 Jun 2005; <solar@gentoo.org> ebtables-2.0.6.ebuild:
+  - ebtables used the host compiler vs the cross compiler while merging. We use
+  toolchain-funcs now
+
+  31 Dec 2004; Sven Wegener <swegener@gentoo.org> ebtables-2.0.6.ebuild:
+  Moved inherit to the top. Don't use variables in HOMEPAGE. Use MY_P.
+
+  11 Dec 2004; <solar@gentoo.org> ebtables-2.0.6.ebuild:
+  stable on x86
+
+  24 Jul 2004; <solar@gentoo.org> ebtables-2.0.6.ebuild:
+  update for ebtables -p support. bug 58116. Reported by Andrej Kacian
+
+  19 Jul 2004; Travis Tilley <lv@gentoo.org>
+  +files/ebtables-2.0.6-gcc34.patch, ebtables-2.0.6.ebuild:
+  added 'inherit eutils', fixed compiling with gcc 3.4, and added ~amd64 keyword
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  ebtables-2.0.6.ebuild:
+  virtual/glibc -> virtual/libc
+
+  19 Jun 2004; David Holm <dholm@gentoo.org> ebtables-2.0.6.ebuild:
+  Added to ~ppc.
+
+*ebtables-2.0.6 (28 Feb 2004)
+
+  28 Feb 2004; <solar@gentoo.org> ebtables-2.0.6.ebuild, metadata.xml:
+  initial import into portage of the ebtable utility that enables basic ethernet
+  frame filtering on a bridge, MAC NAT and brouting.

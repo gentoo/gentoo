@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<use>
+		<flag name="designer">Install plugin for <pkg>dev-qt/designer</pkg></flag>
+		<flag name="vlc">Install VLC Phonon backend</flag>
+		<flag name="zeitgeist">Add support for Zeitgeist event tracking system</flag>
+	</use>
+</pkgmetadata>

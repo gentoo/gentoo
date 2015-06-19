@@ -1,0 +1,43 @@
+# ChangeLog for app-misc/pipeworks
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/pipeworks/ChangeLog,v 1.14 2015/06/09 11:49:45 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #34534
+
+  24 Nov 2009; Jeremy Olexa <darkside@gentoo.org> pipeworks-0.4.ebuild:
+  Add prefix keywords, as tested in prefix overlay
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> pipeworks-0.4.ebuild:
+  Remove virtual/libc
+
+  03 Jan 2009; Christoph Mende <angelos@gentoo.org> pipeworks-0.4.ebuild:
+  QA: Respect CC (bug 243664), respect CFLAGS (bug 240081)
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> pipeworks-0.4.ebuild:
+  stable on amd64
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  pipeworks-0.4.ebuild:
+  Masked pipeworks-0.4.ebuild stable for ppc
+
+  10 Jul 2004; Tom Martin <slarti@gentoo.org> pipeworks-0.4.ebuild:
+  Marked ~amd64.
+
+  07 May 2004; Daniel Black <dragonheart@gentoo.org> pipeworks-0.4.ebuild:
+  x86 keyword added
+
+  28 Mar 2004; David Holm <dholm@gentoo.org> pipeworks-0.4.ebuild:
+  Added to ~ppc.
+
+*pipeworks-0.4 (28 Mar 2004)
+
+  28 Mar 2004; Daniel Black <dragonheart@gentoo.org> metadata.xml,
+  pipeworks-0.4.ebuild:
+  Initial import - thanks to Daniel Fullmer <lsmod@hotmail.com> in bug #44093

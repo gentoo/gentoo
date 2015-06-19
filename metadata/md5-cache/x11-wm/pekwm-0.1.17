@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=media-libs/libpng virtual/jpeg x11-libs/libXpm x11-libs/libXrandr x11-libs/libXrender truetype? ( x11-libs/libXft ) xinerama? ( x11-libs/libXinerama ) virtual/pkgconfig
+DESCRIPTION=A lightweight window manager initially based on aewm++
+EAPI=5
+HOMEPAGE=http://pekwm.org/
+IUSE=contrib debug themes truetype xinerama
+KEYWORDS=amd64 ~mips ppc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=media-libs/libpng virtual/jpeg x11-libs/libXpm x11-libs/libXrandr x11-libs/libXrender truetype? ( x11-libs/libXft ) xinerama? ( x11-libs/libXinerama )
+SLOT=0
+SRC_URI=http://pekwm.org/projects/pekwm/files/pekwm-0.1.17.tar.bz2 themes? ( mirror://gentoo/pekwm-themes.tar.bz2 )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d4d119f09dd891c0d57f55cb61a125dc

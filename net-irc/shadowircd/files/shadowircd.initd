@@ -1,0 +1,39 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/shadowircd/files/shadowircd.initd,v 1.3 2012/03/03 10:53:56 jdhore Exp $
+
+extra_started_commands="reload"
+
+depend() {
+	use dns net
+	provide ircd
+}
+
+start() {
+	if ! [ -d /var/run/shadowircd ]; then
+		ebegin "Creating /var/run/shadowircd for ${SVCNAME}"
+		mkdir /var/run/shadowircd \
+			&& chown :shadowircd /var/run/shadowircd \
+			&& chmod 770 /var/run/shadowircd
+		eend $?
+	fi
+
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --exec /usr/bin/shadowircd-ircd \
+		--user shadowircd --pidfile /var/run/shadowircd/ircd.pid \
+		${SHADOWIRCD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --pidfile /var/run/shadowircd/ircd.pid
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading ${SVCNAME}"
+	start-stop-daemon --signal HUP --pidfile /var/run/shadowircd/ircd.pid
+	eend $?
+}

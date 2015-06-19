@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=>=dev-lang/mono-2.0 >=media-sound/banshee-2.1.0[web] >=gnome-base/gconf-2.0 dev-dotnet/gconf-sharp:2 doc? ( >=app-text/gnome-doc-utils-0.17.3 ) lastfmfingerprint? ( sci-libs/fftw:3.0 media-libs/libsamplerate ) lirc? ( app-misc/lirc ) mirage? ( dev-libs/glib:2 dev-db/sqlite:3 sci-libs/fftw:3.0 media-libs/libsamplerate >=media-libs/gstreamer-0.10.15:0.10 >=media-libs/gst-plugins-base-0.10.15:0.10 ) telepathy? ( dev-dotnet/notify-sharp >=dev-lang/mono-2.4.2 )
+DESCRIPTION=Community-developed plugins for the Banshee media player
+EAPI=4
+HOMEPAGE=http://banshee.fm/
+IUSE=doc lastfmfingerprint lirc lyrics mirage telepathy
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=>=dev-lang/mono-2.0 >=media-sound/banshee-2.1.0[web] >=gnome-base/gconf-2.0 dev-dotnet/gconf-sharp:2 doc? ( >=app-text/gnome-doc-utils-0.17.3 ) lastfmfingerprint? ( sci-libs/fftw:3.0 media-libs/libsamplerate ) lirc? ( app-misc/lirc ) mirage? ( dev-libs/glib:2 dev-db/sqlite:3 sci-libs/fftw:3.0 media-libs/libsamplerate >=media-libs/gstreamer-0.10.15:0.10 >=media-libs/gst-plugins-base-0.10.15:0.10 ) telepathy? ( dev-dotnet/notify-sharp >=dev-lang/mono-2.4.2 ) !media-plugins/banshee-lyrics !media-plugins/banshee-mirage
+SLOT=0
+SRC_URI=http://download.banshee-project.org/banshee-community-extensions/2.2.0/banshee-community-extensions-2.2.0.tar.bz2
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	mono	203a4295c06155d318bdff9c6b2d5e1c	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=19cb69bd70eb348cf530615e18bbe0ae

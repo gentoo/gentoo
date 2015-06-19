@@ -1,0 +1,30 @@
+--- src/gimv_thumb_view.c
++++ src/gimv_thumb_view.c
+@@ -1533,9 +1533,13 @@
+ 
+    gimv_thumb_view_sort_data (tv);
+ 
++#if 0
+    for (node = new_thumb_list; node; node = g_list_next (node))
+       tv->vfuncs->insert_thumb (tv, node->data, tv->summary_mode);
+    g_list_free(new_thumb_list);
++#endif
++
++   gimv_thumb_view_set_widget (tv, tv->tw, tv->container, tv->summary_mode);
+ }
+ 
+ 
+@@ -1577,9 +1581,13 @@
+ 
+    gimv_thumb_view_sort_data (tv);
+ 
++#if 0
+    for (node = new_thumb_list; node; node = g_list_next (node))
+       tv->vfuncs->insert_thumb (tv, node->data, tv->summary_mode);
+    g_list_free(new_thumb_list);
++#endif
++
++   gimv_thumb_view_set_widget (tv, tv->tw, tv->container, tv->summary_mode);
+ }
+ 
+ 

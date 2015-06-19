@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=app-emacs/color-theme >=virtual/emacs-23
+DESCRIPTION=Zenburn color theme for Emacs
+EAPI=4
+HOMEPAGE=http://slinky.imukuppi.org/zenburnpage/ https://github.com/dbrock/zenburn-el
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=app-emacs/color-theme >=virtual/emacs-23
+SLOT=0
+SRC_URI=mirror://gentoo/zenburn-20110907.el.bz2
+_eclasses_=elisp	d13b0507622afb8ac9e3f54e91d58614	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a638b8bd0a49455d1000d357c3443a08

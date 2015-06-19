@@ -1,0 +1,119 @@
+diff -urpN gdal-1.11.1.orig/frmts/pdf/pdfdataset.cpp gdal-1.11.1/frmts/pdf/pdfdataset.cpp
+--- gdal-1.11.1.orig/frmts/pdf/pdfdataset.cpp	2014-09-24 06:47:43.000000000 -0700
++++ gdal-1.11.1/frmts/pdf/pdfdataset.cpp	2015-02-19 13:55:58.714589328 -0800
+@@ -108,12 +108,9 @@ class GDALPDFOutputDev : public SplashOu
+ 
+     public:
+         GDALPDFOutputDev(SplashColorMode colorModeA, int bitmapRowPadA,
+-                         GBool reverseVideoA, SplashColorPtr paperColorA,
+-                         GBool bitmapTopDownA = gTrue,
+-                         GBool allowAntialiasA = gTrue) :
++                         GBool reverseVideoA, SplashColorPtr paperColorA) :
+                 SplashOutputDev(colorModeA, bitmapRowPadA,
+-                                reverseVideoA, paperColorA,
+-                                bitmapTopDownA, allowAntialiasA),
++                                reverseVideoA, paperColorA),
+                 bEnableVector(TRUE),
+                 bEnableText(TRUE),
+                 bEnableBitmap(TRUE) {}
+diff -urpN gdal-1.11.1.orig/frmts/pdf/pdfio.cpp gdal-1.11.1/frmts/pdf/pdfio.cpp
+--- gdal-1.11.1.orig/frmts/pdf/pdfio.cpp	2014-09-24 06:47:43.000000000 -0700
++++ gdal-1.11.1/frmts/pdf/pdfio.cpp	2015-02-19 13:55:58.715589318 -0800
+@@ -39,13 +39,25 @@
+ 
+ CPL_CVSID("$Id: gdal-1.11.1-poppler-0.31.0-support.patch,v 1.1 2015/02/24 00:05:14 xmw Exp $");
+ 
++
++#ifdef POPPLER_BASE_STREAM_HAS_TWO_ARGS
++/* Poppler 0.31.0 is the first one that needs to know the file size */
++static vsi_l_offset VSIPDFFileStreamGetSize(VSILFILE* f)
++{
++    VSIFSeekL(f, 0, SEEK_END);
++    vsi_l_offset nSize = VSIFTellL(f);
++    VSIFSeekL(f, 0, SEEK_SET);
++    return nSize;
++}
++#endif
++
+ /************************************************************************/
+ /*                         VSIPDFFileStream()                           */
+ /************************************************************************/
+ 
+ VSIPDFFileStream::VSIPDFFileStream(VSILFILE* f, const char* pszFilename, Object *dictA):
+ #ifdef POPPLER_BASE_STREAM_HAS_TWO_ARGS
+-                                                        BaseStream(dictA, 0)
++                                                        BaseStream(dictA, (setPos_offset_type)VSIPDFFileStreamGetSize(f))
+ #else
+                                                         BaseStream(dictA)
+ #endif
+@@ -195,7 +207,7 @@ int VSIPDFFileStream::FillBuffer()
+ /*                                getChar()                             */
+ /************************************************************************/
+ 
+-/* The unoptimized version performs a bit well since we must go through */
++/* The unoptimized version performs a bit less since we must go through */
+ /* the whole virtual I/O chain for each character reading. We save a few */
+ /* percent with this extra internal caching */
+ 
+@@ -326,4 +338,47 @@ void VSIPDFFileStream::moveStart(moveSta
+     nPosInBuffer = nBufferLength = -1;
+ }
+ 
++/************************************************************************/
++/*                          hasGetChars()                               */
++/************************************************************************/
++
++GBool VSIPDFFileStream::hasGetChars()
++{
++    return true;
++}
++
++/************************************************************************/
++/*                            getChars()                                */
++/************************************************************************/
++
++int VSIPDFFileStream::getChars(int nChars, Guchar *buffer)
++{
++    int nRead = 0;
++    while (nRead < nChars)
++    {
++        int nToRead = nChars - nRead;
++        if (nPosInBuffer == nBufferLength)
++        {
++            if (!bLimited && nToRead > BUFFER_SIZE)
++            {
++                int nJustRead = (int) VSIFReadL(buffer + nRead, 1, nToRead, f);
++                nPosInBuffer = nBufferLength = -1;
++                nCurrentPos += nJustRead;
++                nRead += nJustRead;
++                break;
++            }
++            else if (!FillBuffer() || nPosInBuffer >= nBufferLength)
++                break;
++        }
++        if( nToRead > nBufferLength - nPosInBuffer )
++            nToRead = nBufferLength - nPosInBuffer;
++
++        memcpy( buffer + nRead, abyBuffer + nPosInBuffer, nToRead );
++        nPosInBuffer += nToRead;
++        nCurrentPos += nToRead;
++        nRead += nToRead;
++    }
++    return nRead;
++}
++
+ #endif
+diff -urpN gdal-1.11.1.orig/frmts/pdf/pdfio.h gdal-1.11.1/frmts/pdf/pdfio.h
+--- gdal-1.11.1.orig/frmts/pdf/pdfio.h	2014-09-24 06:47:43.000000000 -0700
++++ gdal-1.11.1/frmts/pdf/pdfio.h	2015-02-19 13:55:58.715589318 -0800
+@@ -93,6 +93,10 @@ class VSIPDFFileStream: public BaseStrea
+         virtual void       close();
+ 
+     private:
++        /* Added in poppler 0.15.0 */
++        virtual GBool hasGetChars();
++        virtual int getChars(int nChars, Guchar *buffer);
++
+         VSIPDFFileStream  *poParent;
+         GooString         *poFilename;
+         VSILFILE          *f;

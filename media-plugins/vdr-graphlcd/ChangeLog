@@ -1,0 +1,164 @@
+# ChangeLog for media-plugins/vdr-graphlcd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-graphlcd/ChangeLog,v 1.29 2015/02/20 13:30:46 hd_brummy Exp $
+
+  20 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-graphlcd-0.1.9.ebuild:
+  better Description
+
+  06 Nov 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-graphlcd-0.1.9.ebuild:
+  fixed compile, wrt bug 528504; thx to T.Foerster for reporting this
+
+  23 Feb 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-graphlcd-0.1.9.ebuild:
+  eapi=5; converted to vdr-plugin-2.eclass
+
+  23 Feb 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-graphlcd-0.1.5.ebuild:
+  cleanup old, depended on vdr-plugin.eclass
+
+  24 Apr 2012; Michał Górny <mgorny@gentoo.org> vdr-graphlcd-0.1.5.ebuild,
+  vdr-graphlcd-0.1.9.ebuild:
+  Update to use mirror://.
+
+  07 Oct 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-graphlcd-0.1.5.ebuild, vdr-graphlcd-0.1.9.ebuild:
+  moved dead berlios to new project page, minor fixes
+
+  07 Oct 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-graphlcd-0.1.5.ebuild, vdr-graphlcd-0.1.9.ebuild:
+  moved dead berlios to new project page
+
+*vdr-graphlcd-0.1.9 (28 Aug 2011)
+
+  28 Aug 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -vdr-graphlcd-0.1.5-r1.ebuild, -vdr-graphlcd-0.1.8.ebuild,
+  +vdr-graphlcd-0.1.9.ebuild:
+  Version bump to latest to keep in sync with graphlcd-base. Only build tested.
+
+  29 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-graphlcd-0.1.8.ebuild:
+  eapi=3
+
+  26 Dec 2010; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-graphlcd-0.1.5.ebuild, vdr-graphlcd-0.1.5-r1.ebuild,
+  vdr-graphlcd-0.1.8.ebuild:
+  fix #349793; some minor ebuild fixes
+
+*vdr-graphlcd-0.1.8 (03 Dec 2010)
+
+  03 Dec 2010; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-graphlcd-0.1.8.ebuild:
+  version bump; thx to M.Lange on bug #307689
+
+*vdr-graphlcd-0.1.5-r1 (01 Jan 2008)
+
+  01 Jan 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -files/0.1.3/radiotext-lcr-service.diff,
+  -files/vdr-graphlcd-0.1.3-uint64.diff,
+  -files/0.1.4/graphlcd-0.1.4-better-readable-on-medium-displays.diff,
+  -files/0.1.2/radiotext-lcr-service.diff,
+  -files/0.1.3/graphlcd-0.1.3-span.diff,
+  -files/0.1.4/vdr-graphlcd-0.1.4-missing-include.patch,
+  -files/0.1.4/graphlcd-0.1.4-radiotext-lcr-service.diff,
+  -files/0.1.4/graphlcd-0.1.4-span.diff,
+  +files/0.1.5/vdr-graphlcd-0.1.5-missing-freetyp2.diff,
+  -vdr-graphlcd-0.1.2_pre6-r1.ebuild, -vdr-graphlcd-0.1.3.ebuild,
+  -vdr-graphlcd-0.1.3-r1.ebuild, -vdr-graphlcd-0.1.4.ebuild,
+  +vdr-graphlcd-0.1.5-r1.ebuild:
+  fixed bug 203865, thanks to L.Muresan; cleanup
+
+  26 Jun 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/0.1.5/graphlcd-0.1.5_vdr-1.5.3.diff, vdr-graphlcd-0.1.5.ebuild:
+  patch added, fix compile probs with vdr up from 1.5.3
+
+  08 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-graphlcd-0.1.3.ebuild, vdr-graphlcd-0.1.3-r1.ebuild,
+  vdr-graphlcd-0.1.4.ebuild, vdr-graphlcd-0.1.5.ebuild:
+  Changed SRC_URI to mirror://berlios
+
+  17 Apr 2007; Matthias Schwarzott <zzam@gentoo.org> files/rc-addon.sh:
+  Removed bash specific stuff.
+
+  06 Apr 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-graphlcd-0.1.3-r1.ebuild, vdr-graphlcd-0.1.4.ebuild,
+  vdr-graphlcd-0.1.5.ebuild:
+  stabel on x86
+
+*vdr-graphlcd-0.1.5 (02 Mar 2007)
+
+  02 Mar 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/0.1.5/vdr-graphlcd-0.1.5-missing-include.patch,
+  +files/0.1.5/graphlcd-0.1.5-radiotext-lcr-service.diff,
+  +files/0.1.5/graphlcd-0.1.5-span.diff, +vdr-graphlcd-0.1.5.ebuild:
+  version bump; ebuild will add user 'vdr' to group 'lp' for full access to
+  parport device
+
+  05 Feb 2007; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-graphlcd-0.1.4.ebuild:
+  Corrected wrong filename.
+
+  05 Feb 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/0.1.4/vdr-graphlcd-0.1.4-missing-include.patch,
+  vdr-graphlcd-0.1.4.ebuild:
+  Added missing include-statement.
+
+*vdr-graphlcd-0.1.4 (04 Feb 2007)
+
+  04 Feb 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/0.1.4/graphlcd-0.1.4-better-readable-on-medium-displays.diff,
+  +files/0.1.4/graphlcd-0.1.4-radiotext-lcr-service.diff,
+  +files/0.1.4/graphlcd-0.1.4-span.diff, +vdr-graphlcd-0.1.4.ebuild:
+  version bump
+
+  05 Jan 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-graphlcd-0.1.2_pre6-r1.ebuild, vdr-graphlcd-0.1.3.ebuild,
+  vdr-graphlcd-0.1.3-r1.ebuild:
+  einfo converted to elog
+
+  03 Dec 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-graphlcd-0.1.3-uint64.diff, vdr-graphlcd-0.1.3-r1.ebuild:
+  Added patch to compile also with vdr-1.4.4_p1
+
+*vdr-graphlcd-0.1.3-r1 (09 Sep 2006)
+
+  09 Sep 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/0.1.3/graphlcd-0.1.3-span.diff, +vdr-graphlcd-0.1.3-r1.ebuild:
+  -r1 include patch to work with vdr-span
+
+  24 Jul 2006; Joerg Bornkessel <hd_brummy@gentoo.org> metadata.xml,
+  vdr-graphlcd-0.1.3.ebuild:
+  x86; set maintainer to gentoo-vdr-project
+
+*vdr-graphlcd-0.1.3 (03 Mar 2006)
+
+  03 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/0.1.3/radiotext-lcr-service.diff,
+  vdr-graphlcd-0.1.2_pre6-r1.ebuild, +vdr-graphlcd-0.1.3.ebuild:
+  version bump, 0.1.2* removed no more needed block to gentoo.de ebuild
+
+  28 Feb 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  files/0.1.2/radiotext-lcr-service.diff:
+  fixed locking in .diff
+
+  28 Feb 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-graphlcd-0.1.2_pre6-r1.ebuild:
+  stabel on x86
+
+  27 Feb 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/0.1.2/radiotext-lcr-service.diff,
+  vdr-graphlcd-0.1.2_pre6-r1.ebuild:
+  patch added to support vdr-radio, vdr-lcr on glcd; fixed pkg_preinst call;
+  thx to C.Leuschen for the patch
+
+  09 Jan 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-graphlcd-0.1.2_pre6-r1.ebuild:
+  added block to fix conflict with ebuilds on gentoo.de cvs
+
+*vdr-graphlcd-0.1.2_pre6-r1 (08 Jan 2006)
+
+  08 Jan 2006; Joerg Bornkessel <hd_brummy@gentoo.org> +files/confd,
+  +files/rc-addon.sh, +metadata.xml, +vdr-graphlcd-0.1.2_pre6-r1.ebuild:
+  initial import; find older versions on gentoo.de CVS
+

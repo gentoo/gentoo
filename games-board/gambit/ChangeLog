@@ -1,0 +1,15 @@
+# ChangeLog for games-board/gambit
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/gambit/ChangeLog,v 1.2 2014/11/22 02:06:02 sping Exp $
+
+*gambit-1.0.3 (22 Nov 2014)
+
+  22 Nov 2014; Sebastian Pipping <sping@gentoo.org> +gambit-1.0.3.ebuild:
+  Bump to 1.0.3 (which should fix start-up bug #529616)
+
+*gambit-1.0.1 (16 Nov 2014)
+
+  16 Nov 2014; Sebastian Pipping <sping@gentoo.org> +gambit-1.0.1.ebuild,
+  +metadata.xml:
+  New package
+

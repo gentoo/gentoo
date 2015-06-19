@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>games</herd>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>hasufell@gentoo.org</email>
+		<name>Julian Ospald</name>
+		<description>Maintainer. Assign bugs to him</description>
+	</maintainer>
+	<maintainer>
+		<email>daniel@constexpr.org</email>
+		<name>Daniel Scharrer</name>
+		<description>Proxy maintainer. CC him on bugs</description>
+	</maintainer>
+	<use>
+		<flag name='gog'>Extract the data from the GOG.com installer.</flag>
+	</use>
+</pkgmetadata>
+

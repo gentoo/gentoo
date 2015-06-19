@@ -1,0 +1,282 @@
+# ChangeLog for dev-tex/latex2html
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/latex2html/ChangeLog,v 1.55 2013/08/27 20:42:14 aballier Exp $
+
+  27 Aug 2013; Alexis Ballier <aballier@gentoo.org> latex2html-2008-r1.ebuild:
+  keyword ~amd64-fbsd
+
+  25 Jul 2012; Christoph Junghans <ottxor@gentoo.org> latex2html-2008-r1.ebuild:
+  added prefix support (bug #427976)
+
+*latex2html-2008-r1 (25 Feb 2011)
+
+  25 Feb 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +files/latex2html-extract-major-version-2.patch,
+  +latex2html-2008-r1.ebuild:
+  Add match-multiline patch from Debian (author: Roland Stigge
+  <stigge@antcom.de>) to support newer perl versions; fix Netpbm version
+  detection
+
+  12 Jun 2010; Alexis Ballier <aballier@gentoo.org> latex2html-2008.ebuild:
+  do not try to sed a file that does not exist when use=-gif -png is used,
+  bug #298589
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> latex2html-2008.ebuild:
+  virtual/ghostscript->app-text/ghostscript-gpl: ghostscript-gpl is the only
+  implementation left in the tree.
+
+  05 Aug 2009; Alexis Ballier <aballier@gentoo.org> latex2html-2008.ebuild:
+  assign RDEPEND explicitly
+
+  05 Aug 2009; Alexis Ballier <aballier@gentoo.org>
+  -latex2html-2002.2.1_pre20041025-r1.ebuild:
+  remove old
+
+  30 Jan 2009; Jeroen Roovers <jer@gentoo.org> latex2html-2008.ebuild:
+  Stable for HPPA (bug #253990).
+
+  23 Jan 2009; Raúl Porcel <armin76@gentoo.org> latex2html-2008.ebuild:
+  arm/ia64/s390/sh stable wrt #253990
+
+  10 Jan 2009; Markus Meier <maekke@gentoo.org> latex2html-2008.ebuild:
+  amd64/x86 stable, bug #253990
+
+  10 Jan 2009; Tobias Klausmann <klausman@gentoo.org>
+  latex2html-2008.ebuild:
+  Stable on alpha, bug #253990
+
+  09 Jan 2009; Joseph Jezak <josejx@gentoo.org> latex2html-2008.ebuild:
+  Marked ppc/ppc64 stable for bug #253990.
+
+  09 Jan 2009; Ferris McCormick <fmccor@gentoo.org> latex2html-2008.ebuild:
+  Sparc stable, Bug #253990.
+
+*latex2html-2008 (31 Oct 2008)
+
+  31 Oct 2008; Alexis Ballier <aballier@gentoo.org>
+  files/latex2html-convert-length.patch, +files/latex2html-destdir.patch,
+  +latex2html-2008.ebuild:
+  Version bump. Remove files already provided by our latex installs, bug
+  #240980. Install latex files to texmf-site. Apply patch from bug #143831
+  to avoid using obsolete functions.
+
+  14 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  latex2html-2002.2.1_pre20041025-r1.ebuild:
+  virtual/tetex -> virtual/latex-base
+
+  14 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  latex2html-2002.2.1_pre20041025-r1.ebuild:
+  variable quoting
+
+  14 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  -latex2html-2002.2.ebuild, -latex2html-2002.2.1_pre20041025.ebuild:
+  remove old versions
+
+  11 Apr 2007; Jeroen Roovers <jer@gentoo.org>
+  latex2html-2002.2.1_pre20041025-r1.ebuild:
+  Stable for HPPA too.
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  04 Mar 2007; Olivier Crête <tester@gentoo.org>
+  latex2html-2002.2.1_pre20041025-r1.ebuild:
+  Stable on amd64
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  latex2html-2002.2.1_pre20041025-r1.ebuild:
+  Stable on Alpha.
+
+  03 Sep 2006; Michael Hanselmann <hansmi@gentoo.org>
+  latex2html-2002.2.1_pre20041025-r1.ebuild:
+  Stable on ppc.
+
+  30 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  latex2html-2002.2.1_pre20041025-r1.ebuild:
+  Stable on sparc
+
+  24 Aug 2006; Markus Rothe <corsair@gentoo.org>
+  latex2html-2002.2.1_pre20041025-r1.ebuild:
+  Stable on ppc64
+
+  16 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  latex2html-2002.2.1_pre20041025.ebuild:
+  hppa stable, bug #139612
+
+  07 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  latex2html-2002.2.1_pre20041025-r1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  02 Jun 2006; Martin Ehmsen <ehmsen@gentoo.org>
+  +files/latex2html-extract-major-version.patch,
+  latex2html-2002.2.1_pre20041025-r1.ebuild:
+  Fixed the extraction of netpbms major verions number in config/config.pl,
+  bug #122927.
+
+*latex2html-2002.2.1_pre20041025-r1 (23 May 2006)
+
+  23 May 2006; Alexandre Buisse <nattfodd@gentoo.org>
+  +files/latex2html-perl_name.patch,
+  +latex2html-2002.2.1_pre20041025-r1.ebuild:
+  Fix the perl executable name so it can survive perl bumps. Fixes bug #80468.
+
+  12 May 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  latex2html-2002.2.1_pre20041025.ebuild:
+  Added ~hppa
+
+  09 Mar 2006; Martin Ehmsen <ehmsen@gentoo.org>
+  latex2html-2002.2.1_pre20041025.ebuild:
+  Removed INSTALL from dodoc, found by QA script.
+
+  21 Feb 2006; Alexandre Buisse <nattfodd@gentoo.org>
+  +files/latex2html-convert-length.patch, latex2html-2002.2.ebuild,
+  latex2html-2002.2.1_pre20041025.ebuild:
+  Corrects a warning (possibly an error with some perl versions) in make check
+  (bug #122927).
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  latex2html-2002.2.1_pre20041025.ebuild:
+  Mark 2002.2.1_pre20041025 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  latex2html-2002.2.1_pre20041025.ebuild:
+  add ~ia64
+
+  04 Jun 2005; Mamoru KOMACHI <usata@gentoo.org> latex2html-2002.2.ebuild,
+  latex2html-2002.2.1_pre20041025.ebuild:
+  Removed libungif dep; bug #94946.
+
+  21 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  latex2html-2002.2.1_pre20041025.ebuild:
+  Stable on ppc.
+
+  08 Apr 2005; Markus Rothe <corsair@gentoo.org>
+  latex2html-2002.2.1_pre20041025.ebuild:
+  Stable on ppc64
+
+  01 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  latex2html-2002.2.1_pre20041025.ebuild:
+  stable on amd64
+
+  19 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  latex2html-2002.2.1_pre20041025.ebuild:
+  Stable on alpha.
+
+  24 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  latex2html-2002.2.1_pre20041025.ebuild:
+  Stable on sparc
+
+  12 Feb 2005; Mamoru KOMACHI <usata@gentoo.org>
+  latex2html-2002.2.1_pre20041025.ebuild:
+  Don't hardcode perl version to /usr/bin/latex2html; bug #80468.
+
+  10 Feb 2005; Mamoru KOMACHI <usata@gentoo.org>
+  -latex2html-2002.2.1_pre20040108.ebuild,
+  latex2html-2002.2.1_pre20041025.ebuild:
+  Stable on x86.
+
+*latex2html-2002.2.1_pre20041025 (19 Nov 2004)
+
+  19 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> -latex2html-2002.1.ebuild,
+  +latex2html-2002.2.1_pre20041025.ebuild:
+  Added new snapshot.
+
+  23 Jul 2004; Tom Gall <tgall@gentoo.org> latex2html-2002.2.ebuild:
+  stable on ppc64, bug #57657
+
+  18 May 2004; Ferris McCormick <fmccor@gentoo.org>
+  latex2html-2002.2.1_pre20040108.ebuild:
+  Add ~sparc keyword; It's working well for me.
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> latex2html-2002.1.ebuild,
+  latex2html-2002.2.ebuild:
+  Add die following econf for bug 48950
+
+*latex2html-2002.2.1_pre20040108 (24 Apr 2004)
+
+  24 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> latex2html-2002.2.1.ebuild,
+  latex2html-2002.2.1_pre20040108.ebuild:
+  Changed ebuild's name to reflect the date of snapshot.
+  Should fix bug #48682
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> latex2html-2002.2.1.ebuild:
+  Added amd64 keyword.
+
+  09 Feb 2004; Dylan Carlson <absinthe@gentoo.org> latex2html-2002.2.ebuild:
+  added amd64 keyword.
+
+  10 Dec 2003; Mamoru KOMACHI <usata@gentoo.org> :
+  Fixed digest mismatch (Upstream releases different sources with the
+  same name...)
+
+  09 Dec 2003; Heinrich Wendel <lanius@gentoo.org> latex2html-2002.1.ebuild,
+  latex2html-2002.2.1.ebuild, latex2html-2002.2.ebuild:
+  changed app-text/ghostscript to virtual/ghostscript
+
+*latex2html-2002.2.1 (08 Dec 2003)
+
+  08 Dec 2003; Mamoru KOMACHI <usata@gentoo.org> latex2html-2002.1.ebuild,
+  latex2html-2002.2.1.ebuild:
+  Version bumped
+
+*latex2html-2002.2 (08 Nov 2002)
+
+  16 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> latex2html-2002.1.ebuild,
+  latex2html-2002.2.ebuild:
+  Changed app-text/tetex to virtual/tetex.
+
+  10 Mar 2003; Aron Griffis <agriffis@gentoo.org> latex2html-2002.2.ebuild:
+  Mark stable on alpha
+
+  16 Jan 2003; Seemant Kulleen <seemant@gentoo.org> latex2html-2002.2.ebuild :
+
+  Removed dependency on supersed and employed dosed instead (thanks jrray!).
+  Closes bug #13899 by vapier@gentoo.org (SpanKY)
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  08 Nov 2002; Seemant Kulleen <seemant@gentoo.org> latex2html-2002.2.ebuild
+  files/digest-latex2html-2002.2.ebuild :
+
+  Version bump, and fixed the problem in bug #10446 reported by:
+  twanger@bluetwanger.de (Markus Bertheau)
+
+*latex2html-2002.1 (18 Jun 2002)
+
+  22 Apr 2003; Brandon Low <lostlogic@gentoo.org> latex2html-2002.1.ebuild:
+  Change supersed dependencies
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> latex2html-2002.ebuild :
+  Added LICENSE, SLOT.
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> latex2html-2002.1.ebuild :
+  Added LICENSE, SLOT.
+
+  15 Jul 2002; Owen Stampflee <owen@gentoo.org> :
+
+  Added KEYWORDS.
+
+  18 Jun 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  New version (2002-1). Also fixes #3437 (fail on missing /usr/share/latex2html
+  dir). Thanks a lot to Ben Cornett for the submission.
+
+*latex2html-2002 (27 Apr 2002)
+
+  27 Apr 2002; Seemant Kulleen <seemant@gentoo.org> latex2html-2002.ebuild
+  files/digest-latex2html-2002 :
+
+  Version bump.
+
+*latex2html-2000.1b (1 Feb 2002)
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> latex2html-2000.1b.ebuild :
+  Added LICENSE, SLOT.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,406 @@
+--- a/convention/maven-build.xml
++++ b/convention/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/convention/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/config-browser/maven-build.xml
++++ b/config-browser/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/config-browser/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/javatemplates/maven-build.xml
++++ b/javatemplates/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/javatemplates/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/jasperreports/maven-build.xml
++++ b/jasperreports/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/jasperreports/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/jfreechart/maven-build.xml
++++ b/jfreechart/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/jfreechart/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/jsf/maven-build.xml
++++ b/jsf/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/jsf/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/pell-multipart/maven-build.xml
++++ b/pell-multipart/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/pell-multipart/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/plexus/maven-build.xml
++++ b/plexus/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/plexus/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/sitegraph/maven-build.xml
++++ b/sitegraph/maven-build.xml
+@@ -260,13 +260,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/sitegraph/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class" 
+-                   value="org.apache.struts2.sitegraph.SiteGraph"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/sitemesh/maven-build.xml
++++ b/sitemesh/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/sitemesh/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/spring/maven-build.xml
++++ b/spring/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/spring/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/struts1/maven-build.xml
++++ b/struts1/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/struts1/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/tiles/maven-build.xml
++++ b/tiles/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/tiles/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/dojo/maven-build.xml
++++ b/dojo/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/dojo/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/rest/maven-build.xml
++++ b/rest/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/rest/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/portlet/maven-build.xml
++++ b/portlet/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/portlet/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/portlet-tiles/maven-build.xml
++++ b/portlet-tiles/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/portlet-tiles/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/junit/maven-build.xml
++++ b/junit/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/junit/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/testng/maven-build.xml
++++ b/testng/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/testng/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/dwr/maven-build.xml
++++ b/dwr/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/dwr/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/oval/maven-build.xml
++++ b/oval/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/oval/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/osgi/maven-build.xml
++++ b/osgi/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/osgi/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/json/maven-build.xml
++++ b/json/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/json/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/embeddedjsp/maven-build.xml
++++ b/embeddedjsp/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/embeddedjsp/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/gxp/maven-build.xml
++++ b/gxp/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/gxp/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/cdi/maven-build.xml
++++ b/cdi/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/cdi/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 
+--- a/tiles3/maven-build.xml
++++ b/tiles3/maven-build.xml
+@@ -238,12 +238,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/plugins/tiles3/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 

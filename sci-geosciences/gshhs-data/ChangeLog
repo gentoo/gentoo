@@ -1,0 +1,12 @@
+# ChangeLog for sci-geosciences/gshhs-data
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gshhs-data/ChangeLog,v 1.2 2013/11/20 19:27:30 bicatali Exp $
+
+  20 Nov 2013; Sébastien Fabbro <bicatali@gentoo.org> gshhs-data-2.2.0.ebuild:
+  Keyword amd64-linux and x86-linux
+
+*gshhs-data-2.2.0 (27 Dec 2011)
+
+  27 Dec 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  +gshhs-data-2.2.0.ebuild, +metadata.xml:
+  Initial import

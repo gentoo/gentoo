@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>lordvan@gentoo.org</email>
+    <name>Thomas Raschbacher</name>
+  </maintainer>
+  <longdescription>WindowManager that arranges the windows in a tree not a list</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">treewm</remote-id>
+  </upstream>
+</pkgmetadata>

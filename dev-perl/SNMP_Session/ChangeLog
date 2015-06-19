@@ -1,0 +1,145 @@
+# ChangeLog for dev-perl/SNMP_Session
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/SNMP_Session/ChangeLog,v 1.42 2015/05/05 09:06:46 jer Exp $
+
+  05 May 2015; Jeroen Roovers <jer@gentoo.org> -SNMP_Session-1.13-r1.ebuild,
+  SNMP_Session-1.13-r2.ebuild:
+  Stable for PPC64 (bug #509992).
+
+  13 Aug 2014; Agostino Sarubbo <ago@gentoo.org> SNMP_Session-1.13-r2.ebuild:
+  Stable for ppc, wrt bug #509992
+
+  02 Aug 2014; Raúl Porcel <armin76@gentoo.org> SNMP_Session-1.13-r2.ebuild:
+  arm/ia64/sparc stable, bug #509992
+
+  20 Jul 2014; Tobias Klausmann <klausman@gentoo.org>
+  SNMP_Session-1.13-r2.ebuild:
+  Stable on alpha, bug #509992
+
+  15 Jul 2014; Chema Alonso <nimiux@gentoo.org> SNMP_Session-1.13-r2.ebuild:
+  Stable for amd64 wrt bug #509992
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  SNMP_Session-1.13-r2.ebuild:
+  x86 stable wrt bug #509992
+
+  12 May 2014; Jeroen Roovers <jer@gentoo.org> SNMP_Session-1.13-r2.ebuild:
+  Stable for HPPA (bug #509992).
+
+*SNMP_Session-1.13-r2 (10 May 2014)
+
+  10 May 2014; Jeroen Roovers <jer@gentoo.org> +SNMP_Session-1.13-r2.ebuild,
+  +files/SNMP_Session-1.13-Socket6.patch:
+  Add fix for SNMP_Session::pack_sockaddr_in6 redefinition (bug #509986).
+
+  11 Jan 2014;  <zlogene@gentoo.org> -SNMP_Session-1.13.ebuild,
+  SNMP_Session-1.13-r1.ebuild:
+  alpha/ia64/ppc64/ppc/sparc stable wrt bug #495462; Drop old
+
+  03 Jan 2014; Sergey Popov <pinkbyte@gentoo.org> SNMP_Session-1.13-r1.ebuild:
+  Stable on arm, wrt bug #495462
+
+  03 Jan 2014; Sergey Popov <pinkbyte@gentoo.org> SNMP_Session-1.13-r1.ebuild:
+  Stable on amd64 and x86, wrt bug #495462
+
+  01 Jan 2014; Jeroen Roovers <jer@gentoo.org> SNMP_Session-1.13-r1.ebuild:
+  Stable for HPPA (bug #495462).
+
+*SNMP_Session-1.13-r1 (26 Aug 2013)
+
+  26 Aug 2013; Ian Delaney <idella4@gentoo.org> +SNMP_Session-1.13-r1.ebuild,
+  SNMP_Session-1.13.ebuild:
+  revbump -> EAPI 5
+
+  01 Mar 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Add missing cpan remote-id tags in metadata.xml (#406287)
+
+  30 Mar 2011; Michael Weber <xmw@gentoo.org> SNMP_Session-1.13.ebuild:
+  added ~arm (bug 302981)
+
+  28 Dec 2010; Brent Baude <ranger@gentoo.org> SNMP_Session-1.13.ebuild:
+  Marking SNMP_Session-1.13 ppc64 for bug 342475
+
+  26 Nov 2010; Jeroen Roovers <jer@gentoo.org> SNMP_Session-1.13.ebuild:
+  Stable for HPPA (bug #342475).
+
+  20 Oct 2010; Torsten Veller <tove@gentoo.org>
+  -SNMP_Session-0.92-r1.ebuild, -SNMP_Session-1.12.ebuild:
+  Cleanup
+
+  18 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  SNMP_Session-1.13.ebuild:
+  Keyword ~ppc64 wrt #321937.
+
+  27 Jun 2010; <nixnut@gentoo.org> SNMP_Session-1.13.ebuild:
+  ppc stable #323529
+
+  14 May 2010; Jeroen Roovers <jer@gentoo.org> SNMP_Session-1.13.ebuild:
+  Marked ~hppa (bug #311941).
+
+  08 May 2010; Raúl Porcel <armin76@gentoo.org> SNMP_Session-1.13.ebuild:
+  alpha/ia64/sparc stable wrt #314467
+
+  17 Apr 2010; Torsten Veller <tove@gentoo.org> SNMP_Session-1.13.ebuild:
+  Stable on amd64, x86 (#314467)
+
+  18 Mar 2010; Jeremy Olexa <darkside@gentoo.org> SNMP_Session-1.13.ebuild:
+  add ~x86-solaris ~sparc-solaris kw, as tested on bug 308683
+
+*SNMP_Session-1.13 (08 Jan 2010)
+
+  08 Jan 2010; Patrick Lauer <patrick@gentoo.org> +SNMP_Session-1.13.ebuild:
+  Bump for #281501, changed homepage and src_uri
+
+*SNMP_Session-1.12 (30 Jan 2009)
+
+  30 Jan 2009; Torsten Veller <tove@gentoo.org> metadata.xml,
+  +SNMP_Session-1.12.ebuild:
+  Version bump. Fixes #256847.
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -SNMP_Session-0.92.ebuild, SNMP_Session-0.92-r1.ebuild:
+  Ebuild maintenance
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  SNMP_Session-0.92.ebuild, SNMP_Session-0.92-r1.ebuild:
+  Adding perl dep; fixed header; fixed DEPEND
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  SNMP_Session-0.92-r1.ebuild:
+  Mark 0.92-r1 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  SNMP_Session-0.92-r1.ebuild:
+  add ~ia64
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*SNMP_Session-0.92-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*SNMP_Session-0.92 (6 May 2002)
+
+  1 Aug 2002; Calum Selkirk <cselkirk@gentoo.org> SNMP-Session-0.92.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  6 May 2002; Seemant Kulleen <seemant@gentoo.org> SNMP-Session-0.92.ebuild
+  files/digest-SNMP-Session-0.92 :
+
+  Version bump and conversion to eclass.
+
+*SNMP_Session-0.83 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

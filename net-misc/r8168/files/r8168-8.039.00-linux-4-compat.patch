@@ -1,0 +1,14 @@
+diff --git a/src/r8168_n.c b/src/r8168_n.c
+index 9d6f231..c4200d0 100755
+--- a/src/r8168_n.c
++++ b/src/r8168_n.c
+@@ -3291,6 +3291,9 @@ rtl8168_tx_vlan_tag(struct rtl8168_private *tp,
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3,0,0)
+         tag = (tp->vlgrp && vlan_tx_tag_present(skb)) ?
+               TxVlanTag | swab16(vlan_tx_tag_get(skb)) : 0x00;
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4,0,0)
++        tag = (skb_vlan_tag_present(skb)) ?
++              TxVlanTag | swab16(skb_vlan_tag_get(skb)) : 0x00;
+ #else
+         tag = (vlan_tx_tag_present(skb)) ?
+               TxVlanTag | swab16(vlan_tx_tag_get(skb)) : 0x00;

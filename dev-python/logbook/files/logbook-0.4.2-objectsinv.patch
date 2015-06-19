@@ -1,0 +1,11 @@
+Prevent unwanted d'loading of un-needed objects.inv files
+diff -ur logbook-0.4.2.orig/docs/conf.py logbook-0.4.2/docs/conf.py
+--- docs/conf.py	2013-06-02 19:31:32.000000000 +0800
++++ docs/conf.py	2013-06-30 10:50:38.604402792 +0800
+@@ -219,6 +219,3 @@
+      [u'Armin Ronacher, Georg Brandl'], 1)
+ ]
+ 
+-intersphinx_mapping = {
+-    'http://docs.python.org': None
+-}

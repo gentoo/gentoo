@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-dock</herd>
+<longdescription>
+wmtop is a WindowMaker dock app that displays the top 3 CPU-consuming processes 
+in graphical form - like 'top' but pretty and using less real estate on the 
+screen. It functions with just about any Linux distribution with a /proc 
+filesystem and FreeBSD. Under Linux, there is a switch to allow display of 
+physical memory usage rather than CPU usage.
+</longdescription>
+</pkgmetadata>

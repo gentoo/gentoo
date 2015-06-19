@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Command-line burning interface of data and music CDs and DVDs
+HOMEPAGE=http://mybashburn.sourceforge.net/
+IUSE=dvdr flac mp3 normalize vorbis
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=dev-util/dialog app-cdr/cdrdao app-cdr/cdrkit virtual/eject dvdr? ( app-cdr/dvd+rw-tools ) mp3? ( media-sound/lame media-sound/mpg123 ) flac? ( media-libs/flac ) vorbis? ( media-sound/vorbis-tools ) normalize? ( media-sound/normalize )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/mybashburn/mybashburn-1.0.2.tar.bz2
+_md5_=3a625f9dfdd2bcb792ddf2e65e46631f

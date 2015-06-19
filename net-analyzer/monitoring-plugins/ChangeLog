@@ -1,0 +1,13 @@
+# ChangeLog for net-analyzer/monitoring-plugins
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/monitoring-plugins/ChangeLog,v 1.2 2015/02/23 18:26:34 mjo Exp $
+
+  23 Feb 2015; Michael Orlitzky <mjo@gentoo.org> metadata.xml:
+  Update metadata.xml with proxy maintainter info.
+
+*monitoring-plugins-2.1.1 (21 Feb 2015)
+
+  21 Feb 2015; Michael Orlitzky <mjo@gentoo.org> +metadata.xml,
+  +monitoring-plugins-2.1.1.ebuild:
+  New package with standard plugins for Icinga, Naemon, Nagios, etc. by Tomas
+  Mozes (bug #520196).

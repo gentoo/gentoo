@@ -1,0 +1,110 @@
+# ChangeLog for dev-tex/g-brief
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/g-brief/ChangeLog,v 1.33 2014/08/10 21:25:47 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> g-brief-4.0.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> g-brief-4.0.2.ebuild:
+  keyword ~amd64-fbsd
+
+  16 Oct 2011; Fabian Groffen <grobian@gentoo.org> g-brief-4.0.2.ebuild:
+  Marked ~x86-macos
+
+  28 Aug 2011; Fabian Groffen <grobian@gentoo.org> g-brief-4.0.2.ebuild:
+  Marked ~x64-macos
+
+  18 Jan 2011; Fabian Groffen <grobian@gentoo.org> g-brief-4.0.2.ebuild:
+  Marked ~ppc-macos, bug #351946
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org> g-brief-4.0.2.ebuild:
+  Transfer Prefix keywords
+
+  05 Aug 2009; Alexis Ballier <aballier@gentoo.org> -g-brief-4.0.1.ebuild:
+  remove old
+
+  18 Mar 2009; Raúl Porcel <armin76@gentoo.org> g-brief-4.0.2.ebuild:
+  arm/s390/sh stable wrt #253551
+
+  11 Mar 2009; Raúl Porcel <armin76@gentoo.org> g-brief-4.0.2.ebuild:
+  Add ~arm/~s390/~sh
+
+  10 Jan 2009; Markus Meier <maekke@gentoo.org> g-brief-4.0.2.ebuild:
+  amd64/x86 stable, bug #254088
+
+  10 Jan 2009; Raúl Porcel <armin76@gentoo.org> g-brief-4.0.2.ebuild:
+  ia64/sparc stable wrt #254088
+
+  10 Jan 2009; Tobias Klausmann <klausman@gentoo.org> g-brief-4.0.2.ebuild:
+  Stable on alpha, bug #254088
+
+  09 Jan 2009; Joseph Jezak <josejx@gentoo.org> g-brief-4.0.2.ebuild:
+  Marked ppc stable for bug #254088.
+
+  08 Jan 2009; Jeroen Roovers <jer@gentoo.org> g-brief-4.0.2.ebuild:
+  Stable for HPPA (bug #254088).
+
+  07 Jan 2009; Brent Baude <ranger@gentoo.org> g-brief-4.0.2.ebuild:
+  stable ppc64, bug 254088
+
+  06 Oct 2008; Jeroen Roovers <jer@gentoo.org> g-brief-4.0.2.ebuild:
+  Marked ~hppa (bug #237202).
+
+  23 Sep 2008; Raúl Porcel <armin76@gentoo.org> g-brief-4.0.2.ebuild:
+  Add ~ia64 wrt #237202
+
+  21 Sep 2008; Brent Baude <ranger@gentoo.org> g-brief-4.0.2.ebuild:
+  Marking g-brief-4.0.2 ~ppc64 for bug 237202
+
+  02 Sep 2008; Alexis Ballier <aballier@gentoo.org> g-brief-4.0.2.ebuild:
+  keyword ~x86-fbsd
+
+*g-brief-4.0.2 (30 Aug 2008)
+
+  30 Aug 2008; Alexis Ballier <aballier@gentoo.org> +g-brief-4.0.2.ebuild:
+  bump to latest ctan version, install to texmf-site
+
+  29 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Lars Weiler (Pylon) from metadata.xml (as per #215644).
+
+  05 Feb 2008; Fabian Groffen <grobian@gentoo.org> g-brief-4.0.1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  05 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  14 Oct 2005; Aron Griffis <agriffis@gentoo.org> g-brief-4.0.1.ebuild:
+  Mark 4.0.1 stable on alpha
+
+  03 Apr 2005; Lina Pezzella <j4rg0n@gentoo.org> g-brief-4.0.1.ebuild:
+  Testing ppc-macos. Bug #86077. Thanks to Benjamin Braatz for reporting
+
+  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org> g-brief-4.0.1.ebuild:
+  stable on amd64.
+
+  17 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> g-brief-4.0.1.ebuild:
+  Blocks >=tetex-2.96.
+
+  06 May 2004; Ciaran McCreesh <ciaranm@gentoo.org> g-brief-4.0.1.ebuild:
+  Added ~sparc, #50249
+
+  09 Oct 2003; Lars Weiler <pylon@gentoo.org> g-brief-4.0.1.ebuild,
+  metadata.xml:
+  Changed Homepage URL.
+  Masked stable for x86 and ppc.
+
+  26 Sep 2003; Mike Gardiner <obz@gentoo.org> g-brief-4.0.1.ebuild,
+  metadata.xml:
+  Fixed a bug which was causing the ebuild to halt waiting for input, #28240.
+
+*g-brief-4.0.1 (24 Jul 2003)
+
+  24 Jul 2003; Lars Weiler <pylon@gentoo.org> g-brief-4.0.1.ebuild:
+  Initial creation.
+  
+  g-brief will help you writing formless letters in German and English. It
+  accepts a lot of additional commands for address, phone, internet-availability
+  etc.

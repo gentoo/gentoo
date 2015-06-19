@@ -1,0 +1,12 @@
+diff -Nru ivy-1.3.1.vanilla/build.xml ivy-1.3.1/build.xml
+--- ivy-1.3.1.vanilla/build.xml	2006-08-21 16:11:08.000000000 +0200
++++ ivy-1.3.1/build.xml	2006-08-21 16:11:21.000000000 +0200
+@@ -9,7 +9,7 @@
+ 	</target>
+ 
+ 	<target name="resolve" depends="prepare">
+-		<ivy:retrieve/>
++		<!-- <ivy:retrieve/> -->
+ 	</target>
+ 
+ 	<target name="build" depends="resolve">

@@ -1,0 +1,149 @@
+# @GENTOO_PORTAGE_EPREFIX@/etc/mysql/my.cnf: The global mysql configuration file.
+# $Header: /var/cvsroot/gentoo-x86/dev-db/percona-server/files/my.cnf-5.5,v 1.1 2014/07/29 23:14:33 robbat2 Exp $
+
+# The following options will be passed to all MySQL clients
+[client]
+#password					= your_password
+port						= 3306
+socket						= @GENTOO_PORTAGE_EPREFIX@/var/run/mysqld/mysqld.sock
+
+[mysql]
+character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mysql/charsets
+default-character-set=utf8
+
+[mysqladmin]
+character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mysql/charsets
+default-character-set=utf8
+
+[mysqlcheck]
+character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mysql/charsets
+default-character-set=utf8
+
+[mysqldump]
+character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mysql/charsets
+default-character-set=utf8
+
+[mysqlimport]
+character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mysql/charsets
+default-character-set=utf8
+
+[mysqlshow]
+character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mysql/charsets
+default-character-set=utf8
+
+[myisamchk]
+character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mysql/charsets
+
+[myisampack]
+character-sets-dir=@GENTOO_PORTAGE_EPREFIX@/usr/share/mysql/charsets
+
+# use [safe_mysqld] with mysql-3
+[mysqld_safe]
+err-log						= @GENTOO_PORTAGE_EPREFIX@/var/log/mysql/mysql.err
+
+# add a section [mysqld-4.1] or [mysqld-5.0] for specific configurations
+[mysqld]
+character-set-server		= utf8
+user 						= mysql
+port 						= 3306
+socket 						= @GENTOO_PORTAGE_EPREFIX@/var/run/mysqld/mysqld.sock
+pid-file 					= @GENTOO_PORTAGE_EPREFIX@/var/run/mysqld/mysqld.pid
+log-error 					= @GENTOO_PORTAGE_EPREFIX@/var/log/mysql/mysqld.err
+basedir 					= @GENTOO_PORTAGE_EPREFIX@/usr
+datadir 					= @DATADIR@
+skip-external-locking
+key_buffer_size				= 16M
+max_allowed_packet 			= 1M
+table_open_cache 			= 64
+sort_buffer_size 			= 512K
+net_buffer_length 			= 8K
+read_buffer_size 			= 256K
+read_rnd_buffer_size 		= 512K
+myisam_sort_buffer_size 	= 8M
+lc_messages_dir			= @GENTOO_PORTAGE_EPREFIX@/usr/share/mysql
+#Set this to your desired error message language
+lc_messages			= en_US
+
+# security:
+# using "localhost" in connects uses sockets by default
+# skip-networking
+bind-address				= 127.0.0.1
+
+log-bin
+server-id 					= 1
+
+# point the following paths to different dedicated disks
+tmpdir 						= @GENTOO_PORTAGE_EPREFIX@/tmp/
+#log-update 				= @GENTOO_PORTAGE_EPREFIX@/path-to-dedicated-directory/hostname
+
+# you need the debug USE flag enabled to use the following directives,
+# if needed, uncomment them, start the server and issue 
+# #tail -f @GENTOO_PORTAGE_EPREFIX@/tmp/mysqld.sql @GENTOO_PORTAGE_EPREFIX@/tmp/mysqld.trace
+# this will show you *exactly* what's happening in your server ;)
+
+#log						= @GENTOO_PORTAGE_EPREFIX@/tmp/mysqld.sql
+#gdb
+#debug						= d:t:i:o,/tmp/mysqld.trace
+#one-thread
+
+# the following is the InnoDB configuration
+# if you wish to disable innodb instead
+# uncomment just the next line
+#skip-innodb
+#
+# the rest of the innodb config follows:
+# don't eat too much memory, we're trying to be safe on 64Mb boxes
+# you might want to bump this up a bit on boxes with more RAM
+innodb_buffer_pool_size = 16M
+# this is the default, increase it if you have lots of tables
+innodb_additional_mem_pool_size = 2M
+#
+# i'd like to use @GENTOO_PORTAGE_EPREFIX@/var/lib/mysql/innodb, but that is seen as a database :-(
+# and upstream wants things to be under @GENTOO_PORTAGE_EPREFIX@/var/lib/mysql/, so that's the route
+# we have to take for the moment
+#innodb_data_home_dir		= @GENTOO_PORTAGE_EPREFIX@/var/lib/mysql/
+#innodb_log_arch_dir		= @GENTOO_PORTAGE_EPREFIX@/var/lib/mysql/
+#innodb_log_group_home_dir	= @GENTOO_PORTAGE_EPREFIX@/var/lib/mysql/
+# you may wish to change this size to be more suitable for your system
+# the max is there to avoid run-away growth on your machine
+innodb_data_file_path = ibdata1:10M:autoextend:max:128M
+# we keep this at around 25% of of innodb_buffer_pool_size
+# sensible values range from 1MB to (1/innodb_log_files_in_group*innodb_buffer_pool_size)
+innodb_log_file_size = 5M
+# this is the default, increase it if you have very large transactions going on
+innodb_log_buffer_size = 8M
+# this is the default and won't hurt you
+# you shouldn't need to tweak it
+innodb_log_files_in_group=2
+# see the innodb config docs, the other options are not always safe
+innodb_flush_log_at_trx_commit = 1
+innodb_lock_wait_timeout = 50
+innodb_file_per_table
+
+# Uncomment this to get FEDERATED engine support
+#plugin-load=federated=ha_federated.so
+loose-federated
+
+[mysqldump]
+quick
+max_allowed_packet 			= 16M
+
+[mysql]
+# uncomment the next directive if you are not familiar with SQL
+#safe-updates
+
+[isamchk]
+key_buffer_size				= 20M
+sort_buffer_size 			= 20M
+read_buffer 				= 2M
+write_buffer 				= 2M
+
+[myisamchk]
+key_buffer_size				= 20M
+sort_buffer_size 			= 20M
+read_buffer_size			= 2M
+write_buffer_size			= 2M
+
+[mysqlhotcopy]
+interactive-timeout
+

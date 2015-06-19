@@ -1,0 +1,76 @@
+# ChangeLog for sys-boot/mbr
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/mbr/ChangeLog,v 1.4 2012/06/27 14:24:48 kensington Exp $
+
+  27 Jun 2012; Michael Palimaka <kensington@gentoo.org> -mbr-1.1.10.ebuild:
+  Remove old.
+
+  13 Jun 2012; Jeff Horelick <jdhore@gentoo.org> mbr-1.1.11.ebuild:
+  marked x86 per bug 419711
+
+  11 Jun 2012; Agostino Sarubbo <ago@gentoo.org> mbr-1.1.11.ebuild:
+  Stable for amd64, wrt bug #419711
+
+  07 May 2010; Ulrich Mueller <ulm@gentoo.org> +mbr-1.1.10.ebuild,
+  +mbr-1.1.11.ebuild, +metadata.xml:
+  Move package from app-admin to sys-boot category.
+
+  05 Mar 2010; Ulrich Mueller <ulm@gentoo.org> mbr-1.1.11.ebuild:
+  Update dev-vcs/rcs dependency after package move, bug 56967.
+
+  22 Oct 2009; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  Kill longdescription in metadata
+
+*mbr-1.1.11 (20 Oct 2009)
+
+  20 Oct 2009; Víctor Ostorga <vostorga@gentoo.org> +mbr-1.1.11.ebuild:
+  Version bump to 1.1.11 , fixing DEPEND on app-text/rcs when tests are
+  enabled
+
+  24 Apr 2009; Patrick Lauer <patrick@gentoo.org> mbr-1.1.10:
+  Adding ~amd64 keyword. Closes #267007
+
+  14 Oct 2008; Jeremy Olexa <darkside@gentoo.org> mbr-1.1.10.ebuild:
+  (non maintainer commit) pull bin86 out of RDEPEND on app-admin/mbr, since it
+  is not needed at runtime
+
+  28 Jan 2008; Raúl Porcel <armin76@gentoo.org> -mbr-1.1.5.ebuild,
+  -mbr-1.1.9.ebuild, mbr-1.1.10.ebuild:
+  x86 stable, remove old
+
+*mbr-1.1.10 (09 Jan 2008)
+
+  09 Jan 2008; Raúl Porcel <armin76@gentoo.org> mbr-1.1.5.ebuild,
+  mbr-1.1.9.ebuild, +mbr-1.1.10.ebuild:
+  Version bump wrt #167707
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> mbr-1.1.5.ebuild,
+  mbr-1.1.9.ebuild:
+  Replacing einfo with elog
+
+  05 Jan 2007; Danny van Dyk <kugelfang@gentoo.org> -mbr-1.1.8.ebuild:
+  QA: Removed unused versions.
+
+*mbr-1.1.9 (16 Oct 2006)
+
+  16 Oct 2006; Stefan Schweizer <genstef@gentoo.org> +mbr-1.1.9.ebuild:
+  version bump thanks to Alan Hourihane <alanh@fairlite.demon.co.uk> and Jesse
+  Adelman <jesse@boldandbusted.com> in bug 147301
+
+  02 Oct 2005; Sven Wegener <swegener@gentoo.org> mbr-1.1.5.ebuild,
+  mbr-1.1.8.ebuild:
+  QA: Added missing DEPEND on sys-devel/bin86
+
+*mbr-1.1.8 (03 Sep 2005)
+
+  03 Sep 2005; Chris White <chriswhite@gentoo.org> mbr-1.1.5.ebuild,
+  +mbr-1.1.8.ebuild:
+  Version bump per bug #96254. Took out src_compile as it uses the default.
+  Removed into / because do* functions are used.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*mbr-1.1.5 (25 Oct 2002)
+
+  25 Oct 2002; Donny Davies <woodchip@gentoo.org> :
+  Initial import; thank you S.Harmsma@student.rug.nl.

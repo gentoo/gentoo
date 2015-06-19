@@ -1,0 +1,74 @@
+# ChangeLog for dev-python/turbojson
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/turbojson/ChangeLog,v 1.16 2014/12/25 12:09:45 idella4 Exp $
+
+*turbojson-1.3.2-r1 (25 Dec 2014)
+
+  25 Dec 2014; Ian Delaney <idella4@gentoo.org> +turbojson-1.3.2-r1.ebuild,
+  -turbojson-1.1.4.ebuild, -turbojson-1.3-r1.ebuild, -turbojson-1.3.2.ebuild,
+  -turbojson-1.3.ebuild:
+  revbump; conversion -> distutils-r1, drop test phase due to absence of
+  required dep in portage, rm old
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> turbojson-1.3-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  22 Oct 2013; Fabian Groffen <grobian@gentoo.org> turbojson-1.3.2.ebuild:
+  Marked ~x64-macos, bug #487670
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> turbojson-1.3-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  10 May 2013; Patrick Lauer <patrick@gentoo.org> turbojson-1.3-r1.ebuild:
+  Quoting
+
+*turbojson-1.3-r1 (10 Apr 2013)
+
+  10 Apr 2013; Ian Delaney <idella4@gentoo.org> +turbojson-1.3-r1.ebuild:
+  migration to distutils-r1, adding of required deps listed in setup.py
+
+  20 Feb 2012; Patrick Lauer <patrick@gentoo.org> turbojson-1.1.4.ebuild,
+  turbojson-1.3.2.ebuild, turbojson-1.3.ebuild:
+  Fixing SRC_URI for pypi
+
+*turbojson-1.3.2 (08 Feb 2012)
+
+  08 Feb 2012; Patrick Lauer <patrick@gentoo.org> +turbojson-1.3.2.ebuild:
+  Bump for #401951
+
+*turbojson-1.3 (29 Dec 2010)
+
+  29 Dec 2010; Dirkjan Ochtman <djc@gentoo.org> +turbojson-1.3.ebuild:
+  Version bump to turbojson-1.3.
+
+  29 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  turbojson-1.1.4.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  20 Dec 2009; Fabian Groffen <grobian@gentoo.org> turbojson-1.1.4.ebuild:
+  Merged keywords from Prefix
+
+*turbojson-1.1.4 (01 Apr 2009)
+
+  01 Apr 2009; Patrick Lauer <patrick@gentoo.org> +turbojson-1.1.4.ebuild:
+  Bump to 1.1.4, fixes part of #264484
+
+  08 Jan 2009; Patrick Lauer <patrick@gentoo.org> -turbojson-1.0.ebuild,
+  -turbojson-1.1.2.ebuild:
+  Remove old
+
+*turbojson-1.1.3 (02 Jul 2008)
+
+  02 Jul 2008; Rob Cakebread <pythonhead@gentoo.org>
+  +turbojson-1.1.3.ebuild:
+  Version bump.
+
+*turbojson-1.1.2 (04 Jan 2008)
+
+  04 Jan 2008; Ali Polatel <hawking@gentoo.org> +turbojson-1.1.2.ebuild:
+  Version bump. Changed SRC_URI
+
+  05 Feb 2007; Tiziano Müller <dev-zero@gentoo.org>
+  -turbojson-0.9.9.ebuild, +turbojson-1.0.ebuild, +metadata.xml:
+  Initial ebuild. Version bump. Changed SRC_URI and dependencies.. Fixed tests
+  and added ~amd64 keyword and NEED_PYTHON

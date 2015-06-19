@@ -1,0 +1,34 @@
+# ChangeLog for net-irc/ircmap
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/ircmap/ChangeLog,v 1.11 2011/05/15 01:25:56 binki Exp $
+
+  14 May 2011; Nathan Phillip Brink <binki@gentoo.org> ircmap-0.99.ebuild:
+  Fix DESCRIPTION and update HOMEPAGE.
+
+  06 May 2007; Marius Mauch <genone@gentoo.org> ircmap-0.99.ebuild:
+  Replacing einfo with elog
+
+  09 Aug 2006; Sven Wegener <swegener@gentoo.org> ircmap-0.99.ebuild:
+  Move graphviz only to RDEPEND, bug #142730.
+
+  14 Feb 2005; Sven Wegener <swegener@gentoo.org> ircmap-0.99.ebuild:
+  Removed ${D} from insinto.
+
+  24 Jul 2004; Sven Wegener <swegener@gentoo.org> ircmap-0.99.ebuild:
+  Tidied the ebuild.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> ircmap-0.99.ebuild:
+  virtual/glibc -> virtual/libc
+
+  23 Mar 2004; Martin Holzer <mholzer@gentoo.org> ircmap-0.99.ebuild:
+  fixing depend qa issue. see 45343.
+
+  29 Jan 2004; Chuck Short <zul@gentoo.org> ircmap-0.99.ebuild:
+  Header cleanups.
+
+*ircmap-0.99 (12 Dec 2002)
+
+  12 Dec 2002; phoen][x <phoenix@gentoo.org> ChangeLog, ircmap-0.99.ebuild,
+  files/ircmap-0.99 :
+  Initial import.  Ebuild submitted by Paul Belt <gaarde@yahoo.com>.
+  This closes bug #8713.

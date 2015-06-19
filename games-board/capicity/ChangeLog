@@ -1,0 +1,65 @@
+# ChangeLog for games-board/capicity
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/capicity/ChangeLog,v 1.3 2014/10/12 08:53:13 ago Exp $
+
+  12 Oct 2014; Agostino Sarubbo <ago@gentoo.org> capicity-1.0.ebuild:
+  Stable for x86, wrt bug #522572
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> capicity-1.0.ebuild:
+  Stable for amd64, wrt bug #522572
+
+*capicity-1.0 (23 Jan 2014)
+
+  23 Jan 2014; Ulrich Müller <ulm@gentoo.org> +capicity-1.0.ebuild,
+  +metadata.xml:
+  QA: Package move to all-lowercase name, according to naming policy.
+
+*CapiCity-1.0 (23 Jan 2014)
+
+  23 Jan 2014; Julian Ospald <hasufell@gentoo.org> +CapiCity-1.0.ebuild,
+  +metadata.xml:
+  version bump and rename of games-board/capitalism
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> capitalism-0.5.1.ebuild:
+  Move Qt dependencies to the new category
+
+  15 Jan 2011; Markus Meier <maekke@gentoo.org> capitalism-0.5.1.ebuild:
+  x86 stable, bug #350445
+
+*capitalism-0.5.1 (03 Dec 2010)
+
+  03 Dec 2010; Tupone Alfredo <tupone@gentoo.org> +capitalism-0.5.1.ebuild,
+  +files/capitalism-0.5.1-qt47.patch:
+  Version bump to 0.5.1 Bug #306013 by hitachi
+
+  30 Nov 2010; Markus Meier <maekke@gentoo.org> capitalism-0.2-r1.ebuild:
+  x86 stable, bug #347203
+
+*capitalism-0.2-r1 (23 Oct 2010)
+
+  23 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  +capitalism-0.2-r1.ebuild, +files/capitalism-0.2-qt47.patch:
+  Patch to build against Qt-4.7. Bug #338497. Migrated to qt4-r2
+
+  08 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  capitalism-0.2.ebuild:
+  stable x86, bug 302369
+
+*capitalism-0.2 (27 Dec 2009)
+
+  27 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +capitalism-0.2.ebuild:
+  Version bump.
+
+  24 Dec 2009; Pacho Ramos <pacho@gentoo.org> capitalism-0.1.ebuild:
+  amd64 stable, bug 295904
+
+  09 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  capitalism-0.1.ebuild:
+  stable x86, bug 295904
+
+*capitalism-0.1 (05 Nov 2009)
+
+  05 Nov 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +capitalism-0.1.ebuild:
+  Initial commit.

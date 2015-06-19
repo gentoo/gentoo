@@ -1,0 +1,113 @@
+# ChangeLog for app-admin/webmin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/webmin/ChangeLog,v 1.209 2015/06/09 08:47:26 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*webmin-1.730 (05 Jan 2015)
+
+  05 Jan 2015; Yixun Lan <dlan@gentoo.org> -webmin-1.690.ebuild,
+  +webmin-1.730.ebuild, files/gentoo-setup:
+  drop old due to security issue, bug 511624; bump new, bug 534092, thanks
+  PhobosK
+
+*webmin-1.690 (07 Jun 2014)
+
+  07 Jun 2014; Markos Chandras <hwoarang@gentoo.org> +files/webmin.service,
+  +webmin-1.690.ebuild, -webmin-1.680.ebuild, files/gentoo-setup,
+  files/init.d.webmin:
+  Version bump. Fixes bug #511624 thanks to PhobosK <phobosk@fastmail.fm> and
+  Pacho Ramos <pacho@gentoo.org>
+
+*webmin-1.680 (01 May 2014)
+
+  01 May 2014; Markos Chandras <hwoarang@gentoo.org> +webmin-1.680.ebuild,
+  -webmin-1.620.ebuild, -webmin-1.630.ebuild, -webmin-1.660.ebuild:
+  Version bump. Remove old versions. Bug #504782 by PhobosK
+  <phobosk@fastmail.fm>
+
+*webmin-1.660 (21 Nov 2013)
+
+  21 Nov 2013; Patrick Lauer <patrick@gentoo.org> +webmin-1.660.ebuild:
+  Bump
+
+*webmin-1.630 (16 May 2013)
+
+  16 May 2013; Markos Chandras <hwoarang@gentoo.org> +webmin-1.630.ebuild:
+  Version bump. Thanks to PhobosK <phobosk@fastmail.fm>. Bug #470104
+
+*webmin-1.620 (06 Feb 2013)
+
+  06 Feb 2013; Markos Chandras <hwoarang@gentoo.org> +webmin-1.620.ebuild,
+  -files/webmin-1.600-SA51201.patch, -webmin-1.600-r1.ebuild,
+  -webmin-1.610.ebuild, files/gentoo-setup:
+  Version bump. Drop old ebuilds. Bug #455898. Thanks to PhobosK
+  <phobosk@fastmail.fm>
+
+*webmin-1.610 (05 Dec 2012)
+
+  05 Dec 2012; Markos Chandras <hwoarang@gentoo.org> +webmin-1.610.ebuild,
+  metadata.xml:
+  Version bump. Thanks to PhobosK <phobosk@fastmail.fm>. Bug #446134
+
+  07 Nov 2012; Markos Chandras <hwoarang@gentoo.org> webmin-1.600-r1.ebuild:
+  The SA51201 patch does need to apply in the minimal version
+
+*webmin-1.600-r1 (05 Nov 2012)
+
+  05 Nov 2012; Markos Chandras <hwoarang@gentoo.org>
+  +files/webmin-1.600-SA51201.patch, +webmin-1.600-r1.ebuild,
+  -webmin-1.600.ebuild:
+  Revbump to fix security problem in #441840. Thanks to PhobosK
+  <phobosk@fastmail.fm>. Remove old ebuild
+
+  25 Oct 2012; Markos Chandras <hwoarang@gentoo.org> -webmin-1.560-r1.ebuild,
+  -webmin-1.570-r1.ebuild, -webmin-1.580.ebuild, -webmin-1.590.ebuild:
+  Remove old versions
+
+*webmin-1.600 (14 Oct 2012)
+
+  14 Oct 2012; Markos Chandras <hwoarang@gentoo.org> +webmin-1.600.ebuild:
+  Version bump. Thanks to PhobosK <phobosk@fastmail.fm>. Bug #438182
+
+  22 Jul 2012; Markos Chandras <hwoarang@gentoo.org> webmin-1.560-r1.ebuild,
+  webmin-1.570-r1.ebuild, webmin-1.580.ebuild, webmin-1.590.ebuild:
+  Fix LICENSE once again. BSD and GPL-2 should both be set unconditionally
+
+  22 Jul 2012; Markos Chandras <hwoarang@gentoo.org> webmin-1.560-r1.ebuild,
+  webmin-1.570-r1.ebuild, webmin-1.580.ebuild, webmin-1.590.ebuild:
+  Add GPL-2 to LICENSE for init scripts. Bug #425882
+
+*webmin-1.590 (09 Jul 2012)
+
+  09 Jul 2012; Markos Chandras <hwoarang@gentoo.org> +webmin-1.590.ebuild,
+  files/init.d.webmin:
+  Version bump. Bug #425066. Thanks to PhobosK <phobosk@fastmail.fm>
+
+*webmin-1.580 (24 Jan 2012)
+
+  24 Jan 2012; Markos Chandras <hwoarang@gentoo.org> +webmin-1.580.ebuild,
+  files/init.d.webmin:
+  Version bump. Bug #400633. Thanks to PhobosK phobosk@fastmail.fm
+
+*webmin-1.570-r1 (31 Dec 2011)
+*webmin-1.560-r1 (31 Dec 2011)
+
+  31 Dec 2011; Christian Ruppert <idl0r@gentoo.org> -webmin-1.560.ebuild,
+  +webmin-1.560-r1.ebuild, -webmin-1.570.ebuild, +webmin-1.570-r1.ebuild,
+  files/init.d.webmin:
+  Revbump. Don't use deprecated start-stop-daemon options, bug 377843 and bug
+  381895.
+
+*webmin-1.570 (12 Oct 2011)
+
+  12 Oct 2011; Markos Chandras <hwoarang@gentoo.org> +webmin-1.570.ebuild:
+  Version bump. Bug #386063. Thanks to PhobosK <phobosk@fastmail.fm>
+
+*webmin-1.560 (18 Sep 2011)
+
+  18 Sep 2011; Markos Chandras <hwoarang@gentoo.org> +webmin-1.560.ebuild,
+  +files/gentoo-setup, +files/init.d.webmin, +metadata.xml:
+  Re-introduce webmin. Thanks to Dell'Aica Valentino <elettronik@gmail.com> and
+  PhobosK <phobosk@fastmail.fm> for the ebuilds. This fixes bug #348432

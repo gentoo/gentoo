@@ -1,0 +1,30 @@
+# ChangeLog for app-i18n/tagainijisho
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/tagainijisho/ChangeLog,v 1.8 2015/06/07 07:59:38 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*tagainijisho-1.0.3 (05 Apr 2015)
+
+  05 Apr 2015; Denis Dupeyron <calchan@gentoo.org> +tagainijisho-1.0.3.ebuild:
+  Version bump, thanks to Christian Tietz (bug #545266).
+
+  09 May 2014; Denis Dupeyron <calchan@gentoo.org> tagainijisho-1.0.2.ebuild:
+  Fixed bug #509872, thanks to Jouni Rinne.
+
+  08 May 2014; <calchan@gentoo.org> tagainijisho-1.0.2.ebuild:
+  Tested on x86.
+
+  07 May 2014; Denis Dupeyron <calchan@gentoo.org> tagainijisho-1.0.2.ebuild:
+  Add LINGUAS support.
+
+  07 May 2014; Denis Dupeyron <calchan@gentoo.org> tagainijisho-1.0.2.ebuild:
+  Tagaini Jinsho depends on sqlite3 but I can't seem to be able to completely
+  unbundle it either.
+
+*tagainijisho-1.0.2 (06 May 2014)
+
+  06 May 2014; Denis Dupeyron <calchan@gentoo.org> +tagainijisho-1.0.2.ebuild,
+  +metadata.xml:
+  Initial commit.

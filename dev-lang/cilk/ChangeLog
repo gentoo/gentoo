@@ -1,0 +1,29 @@
+# ChangeLog for dev-lang/cilk
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/cilk/ChangeLog,v 1.5 2013/03/04 19:58:28 bicatali Exp $
+
+  04 Mar 2013; Sébastien Fabbro <bicatali@gentoo.org> cilk-5.4.6-r1.ebuild:
+  Added extra precompiler options to help runtime
+
+  13 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> cilk-5.4.6-r1.ebuild,
+  files/cilk-5.4.6-autotools.patch:
+  Respect CFLAGS, but force CILKFLAGS
+
+*cilk-5.4.6-r1 (28 Jun 2012)
+
+  28 Jun 2012; Sébastien Fabbro <bicatali@gentoo.org> +cilk-5.4.6-r1.ebuild,
+  +files/cilk-5.4.6-autotools.patch, -cilk-5.4.6.ebuild:
+  Fixed for automake-1.12, disable force tests, force CFLAGS=-O1 (bug #423553)
+
+  22 Jan 2011; Sébastien Fabbro <bicatali@gentoo.org> cilk-5.4.6.ebuild:
+  Fixed for glibc-2.12. Added static-libs flag, moved to EAPI=2
+
+*cilk-5.4.6 (27 Oct 2008)
+
+  27 Oct 2008; Sébastien Fabbro <bicatali@gentoo.org> +metadata.xml,
+  +cilk-5.4.6.ebuild:
+  Initial import to the main tree. Only minor modifications from the overlay
+
+  20 Feb 2008; Michał Kiedrowicz (esqualante) <esqualante@o2.pl>
+  +metadata.xml, +cilk-5.4.6.ebuild:
+  New Ebuild for bug #210816 thanks to Tommy[D], Ken69267 and tcunha

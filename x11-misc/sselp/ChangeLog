@@ -1,0 +1,43 @@
+# ChangeLog for x11-misc/sselp
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/sselp/ChangeLog,v 1.11 2013/06/11 15:46:55 jer Exp $
+
+  11 Jun 2013; Jeroen Roovers <jer@gentoo.org> sselp-9999.ebuild:
+  Migrated from mercurial to git.
+
+  27 Dec 2012; Christoph Junghans <ottxor@gentoo.org> sselp-9999.ebuild:
+  mercurial.eclass respects  now
+
+  16 Feb 2012; Jeroen Roovers <jer@gentoo.org> sselp-0.2.ebuild,
+  sselp-9999.ebuild:
+  Update HOMEPAGE and SRC_URI.
+
+  30 Mar 2011; Jeroen Roovers <jer@gentoo.org> sselp-0.2.ebuild:
+  Stable for HPPA too.
+
+  22 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> sselp-0.2.ebuild:
+  x86 stable wrt bug #349630
+
+  09 Nov 2010; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Add herd.
+
+  20 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> sselp-0.2.ebuild:
+  Keyword ~ppc64 wrt #324713
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org> sselp-0.2.ebuild:
+  Marked ~ppc (bug #324713).
+
+  24 Sep 2008; Santiago M. Mola <coldwind@gentoo.org> sselp-0.2.ebuild:
+  Added ~amd64 keyword.
+
+*sselp-9999 (15 Sep 2008)
+
+  15 Sep 2008; Jeroen Roovers <jer@gentoo.org> sselp-0.2.ebuild,
+  +sselp-9999.ebuild:
+  Add live ebuild. Improve sed substitions for the static ebuild.
+
+*sselp-0.2 (14 Sep 2008)
+
+  14 Sep 2008; Jeroen Roovers <jer@gentoo.org> +metadata.xml,
+  +sselp-0.2.ebuild:
+  Initial commit.

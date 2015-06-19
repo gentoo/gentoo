@@ -1,0 +1,23 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/bittornado/files/bttrack.rc,v 1.1 2004/07/17 15:12:51 squinky86 Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting bttrack"
+	start-stop-daemon --start --quiet --background --make-pidfile \
+	--pidfile /var/run/bttrack.pid \
+	--exec /usr/bin/bttrack.py -- --port ${PORT} \
+	--dfile ${DFILE} --favicon ${FAVICON} --logfile ${LOGFILE}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping bttrack"
+	start-stop-daemon --stop --quiet --pidfile /var/run/bttrack.pid
+	eend $?
+}

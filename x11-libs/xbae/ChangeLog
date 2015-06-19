@@ -1,0 +1,68 @@
+# ChangeLog for x11-libs/xbae
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/xbae/ChangeLog,v 1.19 2012/10/24 19:47:25 ulm Exp $
+
+  24 Oct 2012; Ulrich Müller <ulm@gentoo.org> xbae-4.60.4.ebuild:
+  Update dependency after package move from x11-libs/openmotif to
+  x11-libs/motif.
+
+  15 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> xbae-4.60.4.ebuild:
+  Running tests in proper directory (bug #431536) and actually restricting them
+  because they are interactive and need X display
+
+  25 May 2012; Justin Lecher <jlec@gentoo.org> xbae-4.60.4.ebuild,
+  metadata.xml:
+  Moved to EAPI=4 and autotools.eclas to handle static-libs
+
+  09 Feb 2012; Justin Lecher <jlec@gentoo.org> xbae-4.60.4.ebuild:
+  Keyworded for ~-linux prefix
+
+  10 Oct 2010; Ulrich Mueller <ulm@gentoo.org> xbae-4.60.4.ebuild:
+  Fix openmotif dependency.
+
+  19 Jul 2010; Sébastien Fabbro <bicatali@gentoo.org> xbae-4.60.4.ebuild,
+  metadata.xml:
+  Switch to EAPI=3, and maintainer from me to sci herd
+
+  18 Sep 2008; Brent Baude <ranger@gentoo.org> ChangeLog:
+  stable ppc64, bug 235754
+
+  17 Sep 2008; Brent Baude <ranger@gentoo.org> xbae-4.60.4.ebuild:
+  stable ppc64, bug 235755
+
+  30 Aug 2008; Brent Baude <ranger@gentoo.org> ChangeLog:
+  stable ppc, bug 235755
+
+  30 Aug 2008; Brent Baude <ranger@gentoo.org> xbae-4.60.4.ebuild:
+  stable ppc, bug 235754
+
+  27 Aug 2008; Raúl Porcel <armin76@gentoo.org> xbae-4.60.4.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #235755
+
+  27 Aug 2008; Thomas Anderson <gentoofan23@gentoo.org> xbae-4.60.4.ebuild:
+  stable amd64, bug 235755
+
+  26 Aug 2008; Jeroen Roovers <jer@gentoo.org> xbae-4.60.4.ebuild:
+  Stable for HPPA (bug #235754).
+
+  27 Jun 2008; Ulrich Mueller <ulm@gentoo.org> xbae-4.60.4.ebuild:
+  Change dependency from virtual/motif to x11-libs/openmotif, bug 224749.
+
+  03 May 2008; Matti Bickel <mabi@gentoo.org> xbae-4.60.4.ebuild:
+  ~ppc added (bug #212198)
+
+  06 Mar 2008; Jeroen Roovers <jer@gentoo.org> xbae-4.60.4.ebuild:
+  Marked ~hppa (bug #212198).
+
+  04 Mar 2008; Raúl Porcel <armin76@gentoo.org> xbae-4.60.4.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #212198
+
+  04 Mar 2008; Brent Baude <ranger@gentoo.org> xbae-4.60.4.ebuild:
+  keyworded ~arch for ppc64, bug 212198
+
+*xbae-4.60.4 (24 Aug 2007)
+
+  24 Aug 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/xbae-4.60.4-Makefile.in.patch, +files/xbae-4.60.4-lxmp.patch,
+  +files/xbae-4.60.4-tmpl.patch, +metadata.xml, +xbae-4.60.4.ebuild:
+  Initial import

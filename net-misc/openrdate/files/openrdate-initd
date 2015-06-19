@@ -1,0 +1,27 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openrdate/files/openrdate-initd,v 1.1 2008/06/18 21:55:26 robbat2 Exp $
+
+depend() {
+	before cron
+	need net
+	use dns
+}
+
+checkconfig() {
+	if [ -z "${RDATE_SERVER}" ] ; then
+		eerror "Please edit /etc/conf.d/openrdate"
+		eerror "I need to know what server to use!"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	checkconfig || return $?
+
+	ebegin "Setting clock via openrdate"
+	/usr/bin/openrdate -s ${OPENRDATE_OPTS} ${RDATE_SERVER} > /dev/null
+	eend $? "Failed to set clock via openrdate"
+}

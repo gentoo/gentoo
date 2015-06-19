@@ -1,0 +1,819 @@
+--- a/po/de.po
++++ b/po/de.po
+@@ -4,7 +4,7 @@
+ "Project-Id-Version: Rubrica 2.0rc1\n"
+ "Report-Msgid-Bugs-To: \n"
+ "POT-Creation-Date: 2008-02-09 00:46+0100\n"
+-"PO-Revision-Date: 2007-08-26 11:18+0200\n"
++"PO-Revision-Date: 2008-09-04 01:51+0200\n"
+ "Last-Translator:  Christian Faulhammer <christian@faulhammer.org>\n"
+ "Language-Team: Italian <tp@lists.linux.it>\n"
+ "MIME-Version: 1.0\n"
+@@ -33,9 +33,8 @@
+ msgstr "Verwandte"
+ 
+ #: ../src/app.c:67
+-#, fuzzy
+ msgid "chat"
+-msgstr "Herz"
++msgstr "Chat"
+ 
+ #: ../src/app.c:69
+ msgid "holidays"
+@@ -43,7 +42,7 @@
+ 
+ #: ../src/app.c:70
+ msgid "hobbies"
+-msgstr "Hobbies"
++msgstr "Hobbys"
+ 
+ #: ../src/app.c:71
+ msgid "sport"
+@@ -51,7 +50,7 @@
+ 
+ #: ../src/app.c:73
+ msgid "bussines"
+-msgstr "geschäftlich"
++msgstr "Geschäftlich"
+ 
+ #: ../src/app.c:74
+ msgid "company"
+@@ -59,7 +58,7 @@
+ 
+ #: ../src/app.c:75
+ msgid "legal"
+-msgstr "rechtlich"
++msgstr "Rechtlich"
+ 
+ #: ../src/app.c:76
+ msgid "office"
+@@ -70,13 +69,12 @@
+ msgstr "Arbeit"
+ 
+ #: ../src/app.c:78
+-#, fuzzy
+ msgid "customers"
+ msgstr "Kunden"
+ 
+ #: ../src/app.c:79
+ msgid "strategies"
+-msgstr "strategisch"
++msgstr "Strategisch"
+ 
+ #: ../src/app.c:81
+ msgid "free software"
+@@ -131,7 +129,7 @@
+ msgstr "Kann %s nicht im Pfad finden"
+ 
+ #: ../src/app.c:736 ../src/app.c:738
+-#, fuzzy, c-format
++#, c-format
+ msgid "Launching %s. Please wait..."
+ msgstr "Lade %s %s.  Bitte warten..."
+ 
+@@ -141,11 +139,11 @@
+ 
+ #: ../src/app.c:1184
+ msgid "_Personal card"
+-msgstr "_persönlicher Kontakt"
++msgstr "_Persönlicher Kontakt"
+ 
+ #: ../src/app.c:1188
+ msgid "_Company card"
+-msgstr "_geschäftlicher Kontakt"
++msgstr "_Geschäftlicher Kontakt"
+ 
+ #. Append Trash page in notebook and initialize
+ #.
+@@ -165,11 +163,11 @@
+ 
+ #: ../src/callbacks.c:78
+ msgid "Confirm overwrite"
+-msgstr ""
++msgstr "Überschreiben bestätigen"
+ 
+ #: ../src/callbacks.c:80
+ msgid "This addressbook exist.Do you want to overwrite?"
+-msgstr ""
++msgstr "Dieses Adressbuch ist schon vorhanden. Wollen Sie es überschreiben?"
+ 
+ #: ../src/callbacks.c:96 ../src/callbacks.c:383
+ #, c-format
+@@ -193,12 +191,12 @@
+ 
+ #: ../src/callbacks.c:221 ../src/callbacks.c:327 ../libral/manager.c:107
+ msgid "All files"
+-msgstr ""
++msgstr "Alle Dateien"
+ 
+ #: ../src/callbacks.c:237
+-#, fuzzy, c-format
++#, c-format
+ msgid "Can't open file %s"
+-msgstr "Kann Datei %s nicht speichern"
++msgstr "Kann Datei %s nicht öffnen"
+ 
+ #: ../src/callbacks.c:315
+ msgid "Save addressbook as..."
+@@ -261,7 +259,7 @@
+ 
+ #: ../src/cards_view.c:271 ../interface/Menu.glade.h:36
+ msgid "Print"
+-msgstr ""
++msgstr "Drucken"
+ 
+ #. display card's name
+ #: ../src/cards_view.c:282 ../src/data_view.c:817 ../src/data_view.c:867
+@@ -419,37 +417,36 @@
+ 
+ #: ../src/filechooser_extra.c:199
+ msgid "_Select the file's type"
+-msgstr ""
++msgstr "Datei_typ wählen"
+ 
+ #: ../src/filechooser_extra.c:303 ../src/filechooser_extra.c:360
+ msgid "Autodetect"
+-msgstr ""
++msgstr "Automatisch"
+ 
+ #: ../src/filechooser_extra.c:307
+ msgid "_Select the file's type (try to autodetect the file format)"
+-msgstr ""
++msgstr "Datei_typ wählen (versuchen, den Typ zu erkennen)"
+ 
+ #: ../src/filechooser_extra.c:313 ../src/filechooser_extra.c:428
+ #, c-format
+ msgid "_Select the file's type (now is active the %s plugin)"
+-msgstr ""
++msgstr "Datei_typ wählen (aktives Plugin ist %s)"
+ 
+ #: ../src/filechooser_extra.c:344
+-#, fuzzy
+ msgid "File's type"
+-msgstr "Adresstyp"
++msgstr "Dateityp"
+ 
+ #: ../src/filechooser_extra.c:348
+ msgid "Description"
+-msgstr ""
++msgstr "Beschreibung"
+ 
+ #: ../src/filechooser_extra.c:352
+ msgid "Extensions"
+-msgstr ""
++msgstr "Erweiterungen"
+ 
+ #: ../src/filechooser_extra.c:361
+ msgid "Try to autodetect the file format"
+-msgstr ""
++msgstr "Automatisch erkennen"
+ 
+ #: ../src/form_card.c:52
+ msgid "None"
+@@ -467,13 +464,11 @@
+ 
+ #. R_RATE_NORMAL
+ #: ../src/form_card.c:55
+-#, fuzzy
+ msgid "High"
+ msgstr "Hoch"
+ 
+ #. R_RATE_HIGH
+ #: ../src/form_card.c:56
+-#, fuzzy
+ msgid "Very high"
+ msgstr "Sehr hoch"
+ 
+@@ -486,27 +481,22 @@
+ msgstr "weiblich"
+ 
+ #: ../src/groups_cb.c:83
+-#, fuzzy
+ msgid "Add new group"
+ msgstr "Neue _Gruppe hinzufügen"
+ 
+ #: ../src/groups_cb.c:211
+-#, fuzzy
+ msgid "Modify group"
+-msgstr "Kontakt bearbeiten"
++msgstr "Gruppe bearbeiten"
+ 
+ #: ../src/groups_cb.c:300 ../src/groups_cb.c:386
+-#, fuzzy
+ msgid "add a ne_w group"
+ msgstr "Neue _Gruppe hinzufügen"
+ 
+ #: ../src/groups_cb.c:304 ../src/groups_cb.c:390
+-#, fuzzy
+ msgid "_modify the group"
+-msgstr "Gruppe _entfernen"
++msgstr "Gruppe _bearbeiten"
+ 
+ #: ../src/groups_cb.c:308 ../src/groups_cb.c:394
+-#, fuzzy
+ msgid "_remove the group"
+ msgstr "Gruppe _entfernen"
+ 
+@@ -561,7 +551,7 @@
+ 
+ #: ../src/preferences.c:107
+ msgid "Icons and text alongside each other"
+-msgstr ""
++msgstr "Symbole und Text nebeneinander"
+ 
+ #: ../src/preferences.c:108
+ msgid "Use Gnome settings"
+@@ -577,7 +567,6 @@
+ msgstr "Andere"
+ 
+ #: ../src/preferences.c:265
+-#, fuzzy
+ msgid "_remove the addressbook"
+ msgstr "Adressbuch _entfernen"
+ 
+@@ -586,17 +575,14 @@
+ msgstr "Adressbuch"
+ 
+ #: ../src/print.c:474
+-#, fuzzy
+ msgid "Sub department"
+ msgstr "Untera_bteilung"
+ 
+ #: ../src/print.c:485
+-#, fuzzy
+ msgid "Manager phone"
+ msgstr "Telefonnummer Leiter"
+ 
+ #: ../src/print.c:489
+-#, fuzzy
+ msgid "Collaborator phone"
+ msgstr "Telefon von Mitarbeiter"
+ 
+@@ -605,17 +591,14 @@
+ msgstr "ist"
+ 
+ #: ../src/search_dialog.c:40
+-#, fuzzy
+ msgid "is before of"
+ msgstr "vor"
+ 
+ #: ../src/search_dialog.c:41
+-#, fuzzy
+ msgid "is after of"
+ msgstr "nach"
+ 
+ #: ../src/search_dialog.c:42
+-#, fuzzy
+ msgid "is between"
+ msgstr "zwischen"
+ 
+@@ -649,7 +632,7 @@
+ 
+ #: ../src/trash_view.c:115
+ msgid "Information"
+-msgstr ""
++msgstr "Info"
+ 
+ #: ../interface/CompanyCard.glade.h:1 ../interface/GroupManager.glade.h:1
+ #: ../interface/PersonalCard.glade.h:1 ../interface/Preferences.glade.h:2
+@@ -702,7 +685,7 @@
+ 
+ #: ../interface/CompanyCard.glade.h:13
+ msgid "Add cards for contact into company"
+-msgstr "Aggiungi una scheda per il contatto nella società"
++msgstr "Karten hinzufügen für die einzelnen Kontakte in der Firma."
+ 
+ #: ../interface/CompanyCard.glade.h:14
+ msgid "C_ompany data"
+@@ -725,9 +708,8 @@
+ msgstr "Firmen_logo"
+ 
+ #: ../interface/CompanyCard.glade.h:19
+-#, fuzzy
+ msgid "Company card manager"
+-msgstr "_geschäftlicher Kontakt"
++msgstr "Geschäftlicher Kontakt"
+ 
+ #: ../interface/CompanyCard.glade.h:20
+ msgid "Contact_s"
+@@ -771,7 +753,7 @@
+ 
+ #: ../interface/CompanyCard.glade.h:30
+ msgid "_Company notes"
+-msgstr "A_nmerkungen zu Firma"
++msgstr "A_nmerkungen zur Firma"
+ 
+ #: ../interface/CompanyCard.glade.h:31 ../interface/PersonalCard.glade.h:49
+ msgid "_Email"
+@@ -872,7 +854,7 @@
+ 
+ #: ../interface/MainWindow.glade.h:9
+ msgid "H_elp"
+-msgstr ""
++msgstr "_Hilfe"
+ 
+ #: ../interface/MainWindow.glade.h:10
+ msgid "Modify selected card"
+@@ -883,14 +865,12 @@
+ msgstr "Den gewählten Kontakt bearbeiten"
+ 
+ #: ../interface/MainWindow.glade.h:12
+-#, fuzzy
+ msgid "New addressbook"
+-msgstr "Adressbuch"
++msgstr "Neues Adressbuch"
+ 
+ #: ../interface/MainWindow.glade.h:13
+-#, fuzzy
+ msgid "New contact"
+-msgstr "Aggiungi un contatto"
++msgstr "Neuer Kontakt"
+ 
+ #: ../interface/MainWindow.glade.h:15
+ msgid "Open/Close the trash"
+@@ -925,14 +905,12 @@
+ msgstr "Den vorherigen Kontakt im Adressbuch anzeigen"
+ 
+ #: ../interface/MainWindow.glade.h:24
+-#, fuzzy
+ msgid "_Edit"
+-msgstr "_Stadt"
++msgstr "_Editieren"
+ 
+ #: ../interface/MainWindow.glade.h:25
+-#, fuzzy
+ msgid "_File"
+-msgstr "Tite_l"
++msgstr "_Datei"
+ 
+ #: ../interface/Menu.glade.h:1
+ msgid "Add a company card "
+@@ -948,7 +926,7 @@
+ 
+ #: ../interface/Menu.glade.h:5
+ msgid "Add this card to printing list"
+-msgstr ""
++msgstr "Karte zur Liste hinzufügen"
+ 
+ #: ../interface/Menu.glade.h:6
+ msgid "Advanced search"
+@@ -967,7 +945,6 @@
+ msgstr "Kontakte"
+ 
+ #: ../interface/Menu.glade.h:12
+-#, fuzzy
+ msgid "Choose where to perform a search"
+ msgstr "Wählen Sie aus, wo Sie suchen wollen"
+ 
+@@ -1000,10 +977,12 @@
+ msgstr "Vornamen"
+ 
+ #: ../interface/Menu.glade.h:26
++#, fuzzy
+ msgid "Hide marked cards for printing"
+ msgstr ""
+ 
+ #: ../interface/Menu.glade.h:27
++#, fuzzy
+ msgid "Hide printable"
+ msgstr ""
+ 
+@@ -1012,17 +991,16 @@
+ msgstr "Nachnamen"
+ 
+ #: ../interface/Menu.glade.h:30
+-#, fuzzy
+ msgid "Mark all cards"
+-msgstr "Tutte le schede"
++msgstr "Alle Karten markieren"
+ 
+ #: ../interface/Menu.glade.h:31
+ msgid "Mark all cards for print"
+-msgstr ""
++msgstr "Alle Karten zum Drucken vormerken"
+ 
+ #: ../interface/Menu.glade.h:32
+ msgid "Mark for printing"
+-msgstr ""
++msgstr "Zum Drucken vormerken"
+ 
+ #: ../interface/Menu.glade.h:33
+ msgid "Men"
+@@ -1033,7 +1011,6 @@
+ msgstr "Kontakt bearbeiten"
+ 
+ #: ../interface/Menu.glade.h:37
+-#, fuzzy
+ msgid "Print this card or marked cards"
+ msgstr "Den gewählten Kontakt drucken"
+ 
+@@ -1046,7 +1023,6 @@
+ msgstr "Suche in"
+ 
+ #: ../interface/Menu.glade.h:41
+-#, fuzzy
+ msgid "Select the columns to show in addressbook's view"
+ msgstr "Anzuzeigende Spalten auswählen"
+ 
+@@ -1059,10 +1035,12 @@
+ msgstr "Spalten zeigen"
+ 
+ #: ../interface/Menu.glade.h:44
++#, fuzzy
+ msgid "Show marked cards for printing"
+ msgstr ""
+ 
+ #: ../interface/Menu.glade.h:45
++#, fuzzy
+ msgid "Show printable"
+ msgstr ""
+ 
+@@ -1071,9 +1049,8 @@
+ msgstr "Telefonnummern"
+ 
+ #: ../interface/Menu.glade.h:48
+-#, fuzzy
+ msgid "Unmark all cards"
+-msgstr "Tutte le schede"
++msgstr "Alle Karten unmarkieren"
+ 
+ #: ../interface/Menu.glade.h:50
+ msgid "Web urls"
+@@ -1096,7 +1073,6 @@
+ msgstr "hoch"
+ 
+ #: ../interface/Menu.glade.h:55
+-#, fuzzy
+ msgid "none"
+ msgstr "Leer"
+ 
+@@ -1146,7 +1122,7 @@
+ 
+ #: ../interface/PersonalCard.glade.h:9
+ msgid "<b>Personal data</b>"
+-msgstr "<b>persönliche Daten</b>"
++msgstr "<b>Persönliche Daten</b>"
+ 
+ #: ../interface/PersonalCard.glade.h:10
+ msgid "<b>Telephone list</b>"
+@@ -1178,7 +1154,7 @@
+ 
+ #: ../interface/PersonalCard.glade.h:21
+ msgid "M_sn"
+-msgstr "Ms_n"
++msgstr "MS_N"
+ 
+ #: ../interface/PersonalCard.glade.h:22
+ msgid "Manag_er's phone"
+@@ -1209,9 +1185,8 @@
+ msgstr "Name des _Partners"
+ 
+ #: ../interface/PersonalCard.glade.h:29
+-#, fuzzy
+ msgid "Personal card manager"
+-msgstr "_persönlicher Kontakt"
++msgstr "Persönlicher Kontakt"
+ 
+ #: ../interface/PersonalCard.glade.h:30
+ msgid "Prefi_x"
+@@ -1278,7 +1253,6 @@
+ msgstr "_Genre"
+ 
+ #: ../interface/PersonalCard.glade.h:53
+-#, fuzzy
+ msgid "_Hobbies and other notes "
+ msgstr "Hobb_ys und andere Anmerkungen"
+ 
+@@ -1316,7 +1290,7 @@
+ 
+ #: ../interface/PersonalCard.glade.h:68
+ msgid "_Second name"
+-msgstr "_zweiter Vorname"
++msgstr "_Zweiter Vorname"
+ 
+ #: ../interface/PersonalCard.glade.h:71
+ msgid "_Title"
+@@ -1328,19 +1302,19 @@
+ 
+ #: ../interface/PersonalCard.glade.h:74
+ msgid "a_im"
+-msgstr "a_im"
++msgstr "A_IM"
+ 
+ #: ../interface/PersonalCard.glade.h:75
+ msgid "ic_q"
+-msgstr "ic_q"
++msgstr "IC_Q"
+ 
+ #: ../interface/PersonalCard.glade.h:76
+ msgid "ja_bber"
+-msgstr "_jabber"
++msgstr "_Jabber"
+ 
+ #: ../interface/PersonalCard.glade.h:77
+ msgid "ya_hoo"
+-msgstr "_yahoo"
++msgstr "_Yahoo"
+ 
+ #: ../interface/Preferences.glade.h:1
+ msgid "  "
+@@ -1392,7 +1366,6 @@
+ msgstr "Wähle_n Sie ein Adressbuch"
+ 
+ #: ../interface/Preferences.glade.h:14
+-#, fuzzy
+ msgid "Choose the addressbook that you want open at rubrica's start"
+ msgstr "Wählen _Sie das Adressbuch, das bei jedem Start geladen werden soll"
+ 
+@@ -1418,16 +1391,15 @@
+ 
+ #: ../interface/Preferences.glade.h:20
+ msgid "Manage i_rc urls with"
+-msgstr "Gestisci gli indirizzi di i_rc con"
++msgstr "IRC-Adressen aufrufen mit"
+ 
+ #: ../interface/Preferences.glade.h:21
+-#, fuzzy
+ msgid "Rubrica preferences"
+-msgstr "Adressbuchsuche"
++msgstr "Rubrica Einstellungen"
+ 
+ #: ../interface/Preferences.glade.h:22
+ msgid "Select from upper list the addressbook to remove"
+-msgstr ""
++msgstr "Zu löschendes Adressbuch von der obigen Liste auswählen"
+ 
+ #: ../interface/Preferences.glade.h:23
+ msgid "Toolbar will sho_w"
+@@ -1507,7 +1479,7 @@
+ 
+ #: ../libral/address.c:63
+ msgid "postal"
+-msgstr "postale"
++msgstr "postale Adresse"
+ 
+ #: ../libral/address.c:64
+ msgid "international"
+@@ -1535,7 +1507,7 @@
+ msgstr "Fehler beim Laden von Plugin %s"
+ 
+ #: ../libral/manager.c:279
+-#, fuzzy, c-format
++#, c-format
+ msgid "Opening plugin %s"
+ msgstr "Öffne Plugin"
+ 
+@@ -1577,58 +1549,48 @@
+ msgstr "Kundenbetreuung"
+ 
+ #: ../plugins/thunderbird/csv_thunderbird.c:116
+-#, fuzzy
+ msgid "first name"
+ msgstr "Vorname"
+ 
+ #: ../plugins/thunderbird/csv_thunderbird.c:117
+-#, fuzzy
+ msgid "last  name"
+ msgstr "Nachname"
+ 
+ #: ../plugins/thunderbird/csv_thunderbird.c:118
+-#, fuzzy
+ msgid "display name"
+ msgstr "Firmen_name"
+ 
+ #: ../plugins/thunderbird/csv_thunderbird.c:119
+-#, fuzzy
+ msgid "nickname"
+ msgstr "Spitzname"
+ 
+ #: ../plugins/thunderbird/csv_thunderbird.c:120
+-#, fuzzy
+ msgid "email 1"
+-msgstr "E-Mail"
++msgstr "E-Mail 1"
+ 
+ #: ../plugins/thunderbird/csv_thunderbird.c:121
+-#, fuzzy
+ msgid "email 2"
+-msgstr "E-Mail"
++msgstr "E-Mail 2"
+ 
+ #: ../plugins/thunderbird/csv_thunderbird.c:122
+-#, fuzzy
+ msgid "tel work"
+ msgstr "Arbeit"
+ 
+ #: ../plugins/thunderbird/csv_thunderbird.c:123
+-#, fuzzy
+ msgid "tel home"
+ msgstr "privat"
+ 
+ #: ../plugins/thunderbird/csv_thunderbird.c:124
+-#, fuzzy
+ msgid "tel fax"
+ msgstr "Fax"
+ 
+ #: ../plugins/thunderbird/csv_thunderbird.c:125
+-#, fuzzy
+ msgid "tel pager"
+ msgstr "Pager"
+ 
+ #: ../plugins/thunderbird/csv_thunderbird.c:126
+ msgid "tel mobile"
+-msgstr ""
++msgstr "Handy"
+ 
+ #: ../plugins/thunderbird/csv_thunderbird.c:127
+ msgid "home street"
+@@ -1639,7 +1601,6 @@
+ msgstr ""
+ 
+ #: ../plugins/thunderbird/csv_thunderbird.c:129
+-#, fuzzy
+ msgid "home city"
+ msgstr "privat"
+ 
+@@ -1648,14 +1609,12 @@
+ msgstr ""
+ 
+ #: ../plugins/thunderbird/csv_thunderbird.c:131
+-#, fuzzy
+ msgid "home zip"
+-msgstr "privat"
++msgstr "Postleitzahl"
+ 
+ #: ../plugins/thunderbird/csv_thunderbird.c:132
+-#, fuzzy
+ msgid "home country"
+-msgstr "Mostra la colonna degli stati"
++msgstr "Land"
+ 
+ #: ../plugins/thunderbird/csv_thunderbird.c:133
+ msgid "work street"
+@@ -1776,7 +1735,6 @@
+ msgstr "_Kompressionsrate Adressbuch"
+ 
+ #: ../rubrica2.schemas.in.h:2
+-#, fuzzy
+ msgid "Addressbooks will be autosaved after any change"
+ msgstr "Adressbücher nach jeder Änderung _sichern"
+ 
+@@ -1787,9 +1745,8 @@
+ msgstr ""
+ 
+ #: ../rubrica2.schemas.in.h:4
+-#, fuzzy
+ msgid "Confirm exit from rubrica"
+-msgstr "_Beenden von Rubrica bestätigen"
++msgstr "Beenden von Rubrica bestätigen"
+ 
+ #: ../rubrica2.schemas.in.h:5
+ msgid ""
+@@ -1812,9 +1769,8 @@
+ msgstr ""
+ 
+ #: ../rubrica2.schemas.in.h:9
+-#, fuzzy
+ msgid "Load addressbooks on startup"
+-msgstr "Diese Adressbücher beim Start automatisch _laden"
++msgstr "Diese Adressbücher beim Start automatisch laden"
+ 
+ #: ../rubrica2.schemas.in.h:10
+ msgid "Rubrica will make a backup of addressbooks before overwrite them"
+--- a/po/fr.po
++++ b/po/fr.po
+@@ -4,7 +4,7 @@
+ "Project-Id-Version: Rubrica 2.0.1\n"
+ "Report-Msgid-Bugs-To: \n"
+ "POT-Creation-Date: 2008-02-09 00:46+0100\n"
+-"PO-Revision-Date: 2007-09-12 21:30+0200\n"
++"PO-Revision-Date: 2008-09-04 12:32+0200\n"
+ "Last-Translator: Julien LESOUEF <julien.lesouef@free.fr>\n"
+ "Language-Team: French <julien.lesouef@free.fr>\n"
+ "MIME-Version: 1.0\n"
+@@ -129,7 +129,7 @@
+ msgstr "Impossible de trouver %s dans votre chemin"
+ 
+ #: ../src/app.c:736 ../src/app.c:738
+-#, fuzzy, c-format
++#, c-format
+ msgid "Launching %s. Please wait..."
+ msgstr "Lance %s %s. Patientez s'il vous pla�t..."
+ 
+@@ -297,7 +297,7 @@
+ #: ../src/cards_view.c:368 ../src/models.c:246 ../src/trash_view.c:125
+ #: ../interface/Menu.glade.h:22
+ msgid "Email"
+-msgstr "Courriel"
++msgstr "Courrier"
+ 
+ #: ../src/cards_view.c:381 ../src/data_view.c:1167 ../src/models.c:240
+ #: ../src/print.c:526 ../src/trash_view.c:130 ../interface/Menu.glade.h:46
+@@ -417,25 +417,24 @@
+ 
+ #: ../src/filechooser_extra.c:199
+ msgid "_Select the file's type"
+-msgstr ""
++msgstr "_Choisir le type du fichier"
+ 
+ #: ../src/filechooser_extra.c:303 ../src/filechooser_extra.c:360
+ msgid "Autodetect"
+-msgstr ""
++msgstr "Automatique"
+ 
+ #: ../src/filechooser_extra.c:307
+ msgid "_Select the file's type (try to autodetect the file format)"
+-msgstr ""
++msgstr "_Choisir le type du fichier (essayer de le trouver automatiquement)"
+ 
+ #: ../src/filechooser_extra.c:313 ../src/filechooser_extra.c:428
+ #, c-format
+ msgid "_Select the file's type (now is active the %s plugin)"
+-msgstr ""
++msgstr "_Choisir le type du fichier (plug-in activ�: %s)"
+ 
+ #: ../src/filechooser_extra.c:344
+-#, fuzzy
+ msgid "File's type"
+-msgstr "<b>Type de fichier</b>"
++msgstr "Type de fichier"
+ 
+ #: ../src/filechooser_extra.c:348
+ msgid "Description"
+@@ -447,7 +446,7 @@
+ 
+ #: ../src/filechooser_extra.c:361
+ msgid "Try to autodetect the file format"
+-msgstr ""
++msgstr "Essayer de le trouver automatiquement"
+ 
+ #: ../src/form_card.c:52
+ msgid "None"
+@@ -762,7 +761,7 @@
+ 
+ #: ../interface/CompanyCard.glade.h:31 ../interface/PersonalCard.glade.h:49
+ msgid "_Email"
+-msgstr "_Courriel"
++msgstr "_Courrier"
+ 
+ #: ../interface/CompanyCard.glade.h:32 ../interface/PersonalCard.glade.h:56
+ msgid "_Lock card"
+@@ -858,9 +857,8 @@
+ msgstr "Supprimer la carte s�lectionn�e"
+ 
+ #: ../interface/MainWindow.glade.h:9
+-#, fuzzy
+ msgid "H_elp"
+-msgstr "_Aidez moi"
++msgstr "_Aide"
+ 
+ #: ../interface/MainWindow.glade.h:10
+ msgid "Modify selected card"
+@@ -913,14 +911,12 @@
+ msgstr "Afficher la carte pr�c�dente du carnet d'adresses"
+ 
+ #: ../interface/MainWindow.glade.h:24
+-#, fuzzy
+ msgid "_Edit"
+-msgstr "Sortie"
++msgstr "_Edition"
+ 
+ #: ../interface/MainWindow.glade.h:25
+-#, fuzzy
+ msgid "_File"
+-msgstr "Fichier"
++msgstr "_Fichier"
+ 
+ #: ../interface/Menu.glade.h:1
+ msgid "Add a company card "
+@@ -980,7 +976,7 @@
+ 
+ #: ../interface/Menu.glade.h:23
+ msgid "Emails"
+-msgstr "Courriels"
++msgstr "Courriers"
+ 
+ #: ../interface/Menu.glade.h:25
+ msgid "First names"
+@@ -2103,10 +2099,10 @@
+ #~ "Je ne peux pas copier l'�l�ment s�lectionn�."
+ 
+ #~ msgid "Primary Email"
+-#~ msgstr "Courriel principal"
++#~ msgstr "Courrier principal"
+ 
+ #~ msgid "Secondary Email"
+-#~ msgstr "Courriel secondaire"
++#~ msgstr "Courrier secondaire"
+ 
+ #~ msgid "Work Phone"
+ #~ msgstr "T�l�phone du travail"
+@@ -3237,7 +3233,7 @@
+ #~ msgstr "V_ille"
+ 
+ #~ msgid "E_mail"
+-#~ msgstr "_Courriel"
++#~ msgstr "_Courrier"
+ 
+ #~ msgid "Fa_x"
+ #~ msgstr "Fa_x"

@@ -1,0 +1,21 @@
+# ChangeLog for app-emacs/hexrgb
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/hexrgb/ChangeLog,v 1.5 2014/05/14 14:21:15 ago Exp $
+
+  14 May 2014; Agostino Sarubbo <ago@gentoo.org> hexrgb-0_p957.ebuild:
+  Stable for sparc, wrt bug #505526
+
+  13 Apr 2014; Agostino Sarubbo <ago@gentoo.org> hexrgb-0_p957.ebuild:
+  Stable for ppc, wrt bug #505526
+
+  12 Apr 2014; Agostino Sarubbo <ago@gentoo.org> hexrgb-0_p957.ebuild:
+  Stable for x86, wrt bug #505526
+
+  11 Apr 2014; Chema Alonso <nimiux@gentoo.org> hexrgb-0_p957.ebuild:
+  Stable for amd64 wrt bug #505526
+
+*hexrgb-0_p957 (22 Feb 2014)
+
+  22 Feb 2014; Ulrich Müller <ulm@gentoo.org> +hexrgb-0_p957.ebuild,
+  +files/50hexrgb-gentoo.el, +metadata.xml:
+  Initial import. Ebuild contributed by me.

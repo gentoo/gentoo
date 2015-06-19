@@ -1,0 +1,54 @@
+# ChangeLog for dev-haskell/hspec-expectations
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hspec-expectations/ChangeLog,v 1.11 2015/06/06 11:29:08 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*hspec-expectations-0.6.1.1 (01 Jan 2015)
+
+  01 Jan 2015; Mark Wright <gienah@gentoo.org>
+  +hspec-expectations-0.6.1.1.ebuild:
+  Bump hspec-expectations to 0.6.1.1
+
+*hspec-expectations-0.6.1 (14 Dec 2014)
+
+  14 Dec 2014; Mark Wright <gienah@gentoo.org> +hspec-expectations-0.6.1.ebuild:
+  Bump hspec-expectations to 0.6.1
+
+  12 Oct 2014; Agostino Sarubbo <ago@gentoo.org>
+  hspec-expectations-0.5.0.1.ebuild:
+  Stable for x86, wrt bug #502678
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org>
+  hspec-expectations-0.5.0.1.ebuild:
+  Stable for amd64, wrt bug #502678
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*hspec-expectations-0.5.0.1 (11 Dec 2013)
+
+  11 Dec 2013; Mark Wright <gienah@gentoo.org>
+  +hspec-expectations-0.5.0.1.ebuild:
+  Bump hspec-expectations to 0.5.0.1
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org>
+  hspec-expectations-0.3.3.ebuild:
+  Stable for x86, wrt bug #488750
+
+  05 Nov 2013; Tony Vroon <chainsaw@gentoo.org>
+  hspec-expectations-0.3.3.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #488750.
+
+*hspec-expectations-0.3.3 (13 Sep 2013)
+
+  13 Sep 2013; Mark Wright <gienah@gentoo.org> +hspec-expectations-0.3.3.ebuild:
+  Bump hspec-expectations to 0.3.3
+
+*hspec-expectations-0.3.2 (20 Jun 2013)
+
+  20 Jun 2013; Alexander Vershilov <qnikst@gentoo.org>
+  +hspec-expectations-0.3.2.ebuild, +metadata.xml:
+  add new version due to #473858

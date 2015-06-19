@@ -1,0 +1,60 @@
+# ChangeLog for games-board/biloba
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/biloba/ChangeLog,v 1.14 2014/10/10 15:25:42 ago Exp $
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> biloba-0.9.3.ebuild:
+  Stable for amd64, wrt bug #522622
+
+  12 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org> biloba-0.9.3.ebuild:
+  EAPI=5; better icon install; tidy
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> biloba-0.9.3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> biloba-0.9.3.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  29 Jun 2013; Michael Sterrett <mr_bones_@gentoo.org> biloba-0.9.3.ebuild:
+  add slot to libsdl dep
+
+  30 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org> -biloba-0.6.ebuild,
+  -files/biloba-0.6-no-X11-dep.patch, -files/biloba-0.6-not-windows.patch:
+  old
+
+  17 Nov 2012; Agostino Sarubbo <ago@gentoo.org> biloba-0.9.3.ebuild:
+  Add ~amd64, wrt bug #442736
+
+  21 Jul 2011; Markus Meier <maekke@gentoo.org> biloba-0.9.3.ebuild:
+  x86 stable, bug #375139
+
+*biloba-0.9.3 (06 May 2011)
+
+  06 May 2011; Michael Sterrett <mr_bones_@gentoo.org> +biloba-0.9.3.ebuild,
+  +files/biloba-0.9.3-no-X11-dep.patch,
+  +files/biloba-0.9.3-not-windows.patch:
+  version bump
+
+  21 Nov 2009; Markus Meier <maekke@gentoo.org> biloba-0.6.ebuild:
+  x86 stable, bug #289064
+
+  14 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org> biloba-0.6.ebuild:
+  EAPI=2; update HOMEPAGE
+
+*biloba-0.6 (04 Jan 2009)
+
+  04 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/biloba-0.6-no-X11-dep.patch, +files/biloba-0.6-not-windows.patch,
+  +biloba-0.6.ebuild:
+  version bump (bug #252813)
+
+  05 Jan 2007; Tristan Heaven <nyhm@gentoo.org> biloba-0.4.ebuild:
+  Set WANT_AUTOCONF and WANT_AUTOMAKE
+
+*biloba-0.4 (02 Oct 2006)
+
+  02 Oct 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/biloba-0.4-fix-es-data-install-path.patch,
+  +files/biloba-0.4-no-X11-dep.patch, +files/biloba-0.4-not-windows.patch,
+  +metadata.xml, +biloba-0.4.ebuild:
+  initial commit - ebuild and patches from TGL via bug #107048

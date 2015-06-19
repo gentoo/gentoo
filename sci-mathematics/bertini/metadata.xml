@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-mathematics</herd>
+  <maintainer>
+    <email>tomka@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+Bertini: Software for Numerical Algebraic Geometry
+
+Facts in brief:
+
+    Purpose: The numerical solution of systems of polynomial equations
+
+    Approach: Homotopy continuation.
+    
+    Authors: Daniel J. Bates, Jonathan D. Hauenstein, Andrew J. Sommese, Charles W. Wampler
+    
+    Background: Bertini is a general-purpose solver, written in C, that was
+    created for research about polynomial continuation.
+</longdescription>
+<use>
+  <flag name="optimization">Accept upstream's choices for -O option.</flag>
+</use>
+</pkgmetadata>

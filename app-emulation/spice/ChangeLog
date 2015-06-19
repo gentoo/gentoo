@@ -1,0 +1,307 @@
+# ChangeLog for app-emulation/spice
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/spice/ChangeLog,v 1.68 2015/04/08 07:30:34 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> spice-0.12.5-r1.ebuild:
+  Remove old Python implementations
+
+  28 Mar 2015; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove unneeded useflag description from metadata.xml
+
+  27 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/spice-0.12.3-CVE-2013-4130.patch,
+  -files/spice-0.12.4-alsa-conditional.patch, -spice-0.12.2.ebuild,
+  -spice-0.12.3-r1.ebuild, -spice-0.12.4-r1.ebuild:
+  old; per dev-zero
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> spice-0.12.5-r1.ebuild:
+  Stable for x86, wrt bug #542722
+
+  12 Mar 2015; Agostino Sarubbo <ago@gentoo.org> spice-0.12.5-r1.ebuild:
+  Stable for amd64, wrt bug #542722
+
+  23 Sep 2014; Tiziano Müller <dev-zero@gentoo.org> spice-0.12.5-r1.ebuild:
+  opus is an automagic dep for client and server, depend on it unconditionally
+  until someone fixes it
+
+  11 Aug 2014; Christian Ruppert <idl0r@gentoo.org> spice-0.12.5-r1.ebuild:
+  Only +client needs the opus dep
+
+*spice-0.12.5-r1 (10 Aug 2014)
+
+  10 Aug 2014; Tiziano Müller <dev-zero@gentoo.org>
+  +files/spice-0.12.5-fix-crash-when-clearing-surface-memory.patch,
+  +files/spice-0.12.5-server-dont-assert-on-invalid-client-message.patch,
+  +spice-0.12.5-r1.ebuild, -spice-0.12.5.ebuild:
+  Rev.bump to pull in media-libs/opus to avoid automagic dep (bug #518546). Pull
+  more patches from upstream.
+
+  06 Aug 2014; Patrick Lauer <patrick@gentoo.org> spice-0.12.2.ebuild,
+  spice-0.12.3-r1.ebuild, spice-0.12.4-r1.ebuild, spice-0.12.5.ebuild:
+  Make description more repoman-happy
+
+*spice-0.12.5 (01 Jul 2014)
+
+  01 Jul 2014; Tiziano Müller <dev-zero@gentoo.org> +files/spice-0.12.5-fix-asse
+  rt-in-mjpeg_encoder_adjust_params_to_bit_rate.patch, +spice-0.12.5.ebuild:
+  Version bump (bug #510844), also make sure that required static-libs are
+  pulled in (bug #476268), do not run auto* anymore (bugs #493112, #514034).
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> spice-0.12.3-r1.ebuild,
+  spice-0.12.4-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+*spice-0.12.4-r1 (05 Nov 2013)
+
+  05 Nov 2013; Christian Ruppert <idl0r@gentoo.org> -spice-0.12.4.ebuild,
+  +spice-0.12.4-r1.ebuild, +files/spice-0.12.4-alsa-conditional.patch:
+  ALSA is only required with USE=client, 490416
+
+  09 Oct 2013; Michał Górny <mgorny@gentoo.org> spice-0.12.3-r1.ebuild,
+  spice-0.12.4.ebuild:
+  Improve Python dependencies using python-any-r1, bug #487352.
+
+  16 Sep 2013; Mike Gilbert <floppym@gentoo.org> spice-0.12.3-r1.ebuild,
+  spice-0.12.4.ebuild:
+  Require a python-r1 compatible version of dev-python/pyparsing, bug 484906.
+
+  12 Sep 2013; Michał Górny <mgorny@gentoo.org> spice-0.12.2.ebuild,
+  spice-0.12.3-r1.ebuild, spice-0.12.4.ebuild:
+  Replace virtual/pyparsing dep with dev-python/pyparsing. The split versions
+  were removed and all in-tree versions support all impls now.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> spice-0.12.3-r1.ebuild,
+  spice-0.12.4.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  27 Jul 2013; Agostino Sarubbo <ago@gentoo.org> spice-0.12.3-r1.ebuild:
+  Stable for x86, wrt bug #477010
+
+  24 Jul 2013; Agostino Sarubbo <ago@gentoo.org> spice-0.12.3-r1.ebuild:
+  Stable for amd64, wrt bug #477010
+
+*spice-0.12.4 (24 Jul 2013)
+
+  24 Jul 2013; Doug Goldstein <cardoe@gentoo.org> +spice-0.12.4.ebuild:
+  Version bump
+
+*spice-0.12.3-r1 (24 Jul 2013)
+
+  24 Jul 2013; Doug Goldstein <cardoe@gentoo.org>
+  +files/spice-0.12.3-CVE-2013-4130.patch, +spice-0.12.3-r1.ebuild,
+  -spice-0.12.3.ebuild:
+  Fix CVE-2013-4130, bug #477010. Add epatch_user during the source prepare
+  phase.
+
+  06 Jun 2013; Doug Goldstein <cardoe@gentoo.org> spice-0.12.3.ebuild:
+  Fix typo
+
+  05 Jun 2013; Doug Goldstein <cardoe@gentoo.org> spice-0.12.3.ebuild:
+  Improvements from Alphat-PC <alphatpc@gmail.com> as well as some other tweaks
+  to make this package installer smoother. bug #472358
+
+  04 Jun 2013; Doug Goldstein <cardoe@gentoo.org>
+  -files/0.10.1-disable-werror.patch, -files/0.10.1-gold.patch,
+  -files/54c660470a5aea19f799c5574cc0d4a707696712.patch, -spice-0.11.3.ebuild,
+  -spice-0.12.0.ebuild:
+  Remove older versions.
+
+*spice-0.12.3 (04 Jun 2013)
+
+  04 Jun 2013; Doug Goldstein <cardoe@gentoo.org> +spice-0.12.3.ebuild:
+  Version bump. Disable USE=client and USE=gui by default and add a note that it
+  will be removed in future versions.
+
+  25 Feb 2013; Agostino Sarubbo <ago@gentoo.org> spice-0.12.2.ebuild:
+  Stable for x86, wrt bug #459100
+
+  25 Feb 2013; Agostino Sarubbo <ago@gentoo.org> spice-0.12.2.ebuild:
+  Stable for amd64, wrt bug #459100
+
+  12 Jan 2013; Doug Goldstein <cardoe@gentoo.org> spice-0.12.2.ebuild:
+  Switch to EAPI=5
+
+*spice-0.12.2 (12 Jan 2013)
+
+  12 Jan 2013; Doug Goldstein <cardoe@gentoo.org> +spice-0.12.2.ebuild:
+  Version bump
+
+  12 Jan 2013; Doug Goldstein <cardoe@gentoo.org> -spice-0.10.0.ebuild,
+  -spice-0.10.1.ebuild, -spice-0.11.0.ebuild, -spice-0.8.1.ebuild,
+  -spice-0.8.2-r1.ebuild:
+  Remove older versions
+
+  01 Jan 2013; Michał Górny <mgorny@gentoo.org> spice-0.11.0.ebuild,
+  spice-0.11.3.ebuild, spice-0.12.0.ebuild:
+  Use virtual/pyparsing.
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org> spice-0.11.3.ebuild:
+  Stable for x86, wrt bug #444222
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org> spice-0.11.3.ebuild:
+  Stable for amd64, wrt bug #444222
+
+  17 Oct 2012; Agostino Sarubbo <ago@gentoo.org> spice-0.11.0.ebuild:
+  Stable for amd64, wrt bug #437212
+
+  05 Oct 2012; Doug Goldstein <cardoe@gentoo.org> spice-0.11.3.ebuild,
+  spice-0.12.0.ebuild:
+  Fix gold patch path. bug #437284
+
+  04 Oct 2012; Doug Goldstein <cardoe@gentoo.org> spice-0.11.0.ebuild,
+  spice-0.11.3.ebuild, spice-0.12.0.ebuild:
+  Need to depend on dev-games/cegui with USE=opengl. bug #432612
+
+  04 Oct 2012; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  Add the virtualization herd so we see the bugs.
+
+  04 Oct 2012; Doug Goldstein <cardoe@gentoo.org> spice-0.11.0.ebuild,
+  spice-0.11.3.ebuild, spice-0.12.0.ebuild:
+  Fix depend on alsa-lib when USE=-client. The configure script requires it
+  unfortunately so we must as well. bug #431236
+
+*spice-0.12.0 (04 Oct 2012)
+*spice-0.11.3 (04 Oct 2012)
+
+  04 Oct 2012; Doug Goldstein <cardoe@gentoo.org> +spice-0.11.3.ebuild,
+  +spice-0.12.0.ebuild:
+  Version bump
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> spice-0.10.0.ebuild:
+  x86 stable wrt bug #407357
+
+  14 Jun 2012; Justin Lecher <jlec@gentoo.org> +files/0.11.0-gold.patch,
+  spice-0.11.0.ebuild:
+  Fix gold patch
+
+  14 Jun 2012; Justin Lecher <jlec@gentoo.org> spice-0.11.0.ebuild,
+  metadata.xml:
+  Readd gold patch
+
+  13 Jun 2012; Tiziano Müller <dev-zero@gentoo.org> spice-0.11.0.ebuild:
+  Added missing dependency on pyparsing.
+
+*spice-0.11.0 (13 Jun 2012)
+
+  13 Jun 2012; Tiziano Müller <dev-zero@gentoo.org> +spice-0.11.0.ebuild:
+  Version bump (drop static USE flag, drop dependency on spice-protocol since it
+  is included).
+
+  07 Jun 2012; Justin Lecher <jlec@gentoo.org> +files/0.10.1-gold.patch,
+  spice-0.10.1.ebuild:
+  Add fix for underlinking detected by gold
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> spice-0.8.1.ebuild,
+  spice-0.8.2-r1.ebuild, spice-0.10.0.ebuild, spice-0.10.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  15 Mar 2012; Agostino Sarubbo <ago@gentoo.org> spice-0.10.0.ebuild,
+  spice-0.10.1.ebuild:
+  Stable for amd64, wrt bug #407357
+
+  09 Mar 2012; Jeff Horelick <jdhore@gentoo.org> spice-0.10.1.ebuild:
+  Keyworded ~x86 wrt bug 402721
+
+  11 Feb 2012; Doug Goldstein <cardoe@gentoo.org> -spice-0.8.2.ebuild:
+  Remove unused version
+
+*spice-0.10.1 (08 Feb 2012)
+
+  08 Feb 2012; Tiziano Müller <dev-zero@gentoo.org>
+  +files/0.10.1-disable-werror.patch, +spice-0.10.1.ebuild, metadata.xml:
+  Version bump. Added patch to disable -Werror (bug #390615, thanks to Alphat-
+  PC). Added flag to enable smartcard support based on app-emulation/libcacard.
+
+  14 Nov 2011; Tiziano Müller <dev-zero@gentoo.org> spice-0.10.0.ebuild:
+  Updated dep to require spice-protocol >=0.10.0 (unfortunately spice and spice-
+  protocol are not always in sync to just depend on ~spice-protocol-${PV}
+
+*spice-0.10.0 (14 Nov 2011)
+
+  14 Nov 2011; Tiziano Müller <dev-zero@gentoo.org> +spice-0.10.0.ebuild,
+  -spice-0.6.4.ebuild, -spice-0.8.0.ebuild, metadata.xml:
+  Version bump. Dropped old.
+
+*spice-0.8.2-r1 (19 Sep 2011)
+
+  19 Sep 2011; Tiziano Müller <dev-zero@gentoo.org>
+  +files/54c660470a5aea19f799c5574cc0d4a707696712.patch,
+  +spice-0.8.2-r1.ebuild:
+  Added patch from upstream git to fix pkg-config file (bug #378907).
+
+  04 Sep 2011; Markus Meier <maekke@gentoo.org> spice-0.8.1.ebuild:
+  x86 stable, bug #369601
+
+  30 Aug 2011; Tony Vroon <chainsaw@gentoo.org> spice-0.8.1.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo in bug
+  #369601.
+
+  26 Jul 2011; Tiziano Müller <dev-zero@gentoo.org> spice-0.8.2.ebuild:
+  Fixed dep on spice-protocol.
+
+*spice-0.8.2 (25 Jul 2011)
+
+  25 Jul 2011; Tiziano Müller <dev-zero@gentoo.org> +spice-0.8.2.ebuild:
+  Version bump (bug #376269).
+
+  29 May 2011; Christian Faulhammer <fauli@gentoo.org> spice-0.8.1.ebuild:
+  add ~x86, bug 368961
+
+*spice-0.8.1 (27 Apr 2011)
+
+  27 Apr 2011; Tiziano Müller <dev-zero@gentoo.org> +spice-0.8.1.ebuild:
+  Version bump.
+
+  18 Apr 2011; Tiziano Müller <dev-zero@gentoo.org> metadata.xml:
+  Removed old USE flag descriptions.
+
+*spice-0.8.0 (18 Apr 2011)
+
+  18 Apr 2011; Tiziano Müller <dev-zero@gentoo.org> -spice-0.7.3.ebuild,
+  +spice-0.8.0.ebuild:
+  Version bump, dropped old unstable.
+
+*spice-0.7.3 (17 Feb 2011)
+*spice-0.6.4 (17 Feb 2011)
+
+  17 Feb 2011; Tiziano Müller <dev-zero@gentoo.org>
+  -files/0001-Added-initial-connection-url-handling-using-the-urip.patch,
+  -spice-0.5.3.ebuild, -spice-0.6.3.ebuild, +spice-0.6.4.ebuild,
+  -spice-0.7.1.ebuild, -spice-0.7.2.ebuild, +spice-0.7.3.ebuild,
+  -files/spice.protocol, -files/spice.schemas:
+  Version bump. Dropped old.
+
+*spice-0.7.2 (05 Feb 2011)
+
+  05 Feb 2011; Tiziano Müller <dev-zero@gentoo.org> +spice-0.7.2.ebuild:
+  Version bump.
+
+  05 Jan 2011; Tiziano Müller <dev-zero@gentoo.org> spice-0.7.1.ebuild,
+  +files/spice.protocol, +files/spice.schemas:
+  Added files for schema/protocol instead of cat'ting them in the ebuild.
+
+*spice-0.7.1 (29 Dec 2010)
+
+  29 Dec 2010; Tiziano Müller <dev-zero@gentoo.org> +spice-0.7.1.ebuild:
+  Version bump, but still without smartcard support (libcacard is needed but
+  doesn't build with our sys-apps/pcsc-lite thus only emulated smartcards would
+  be available).
+
+  18 Nov 2010; Tiziano Müller <dev-zero@gentoo.org> spice-0.5.3.ebuild,
+  spice-0.6.3.ebuild:
+  Replaced media-libs/jpeg by virtual/jpeg as requested by anarchy.
+
+  22 Oct 2010; Tiziano Müller <dev-zero@gentoo.org> spice-0.6.3.ebuild:
+  Added x11-libs/libXfixes depency.
+
+*spice-0.6.3 (21 Oct 2010)
+
+  21 Oct 2010; Tiziano Müller <dev-zero@gentoo.org> +spice-0.6.3.ebuild:
+  Version bump (bug #335936), dropped opengl USE flag since OpenGL-support
+  is currently broken.
+
+*spice-0.5.3 (11 Aug 2010)
+
+  11 Aug 2010; Tiziano Müller <dev-zero@gentoo.org> +spice-0.5.3.ebuild,
+  +metadata.xml:
+  Initial commit, ebuild written by me.

@@ -1,0 +1,14 @@
+diff --git a/Makefile b/Makefile
+index 5e189fc..bfdf175 100644
+--- a/Makefile
++++ b/Makefile
+@@ -20,7 +20,8 @@ $(HALLPROGS): %: %.hs Ganeti/HTools/Version.hs $(HSRCS) Makefile
+ 
+ test live-test: HEXTRA=-fhpc -Wwarn -fno-warn-missing-signatures \
+ 	-fno-warn-monomorphism-restriction -fno-warn-orphans \
+-	-fno-warn-missing-methods -fno-warn-unused-imports
++	-fno-warn-missing-methods -fno-warn-unused-imports \
++	-package $(shell ghc-pkg list | sed -n '/ QuickCheck-1./p')
+ 
+ $(DOCS) : %.html : %
+ 	rst2html -v --strict $< $@

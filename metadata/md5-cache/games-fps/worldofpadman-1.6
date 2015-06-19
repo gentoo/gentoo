@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=sys-libs/zlib !dedicated? ( media-libs/speex virtual/jpeg:0 media-libs/libsdl[opengl,video,X] virtual/opengl virtual/glu openal? ( media-libs/openal ) curl? ( net-misc/curl ) vorbis? ( media-libs/libvorbis ) theora? ( media-libs/libtheora media-libs/libogg ) ) app-arch/unzip
+DESCRIPTION=A cartoon style multiplayer first-person shooter
+EAPI=5
+HOMEPAGE=http://worldofpadman.com/
+IUSE=+curl dedicated maps +openal +theora +vorbis
+KEYWORDS=amd64 x86
+LICENSE=GPL-2 worldofpadman
+RDEPEND=sys-libs/zlib !dedicated? ( media-libs/speex virtual/jpeg:0 media-libs/libsdl[opengl,video,X] virtual/opengl virtual/glu openal? ( media-libs/openal ) curl? ( net-misc/curl ) vorbis? ( media-libs/libvorbis ) theora? ( media-libs/libtheora media-libs/libogg ) ) games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://sourceforge/worldofpadman/wop-1.5-unified.zip mirror://sourceforge/worldofpadman/wop-1.5.x-to-1.6-patch-unified.zip
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=35539703b57ad246a45bd990c014dd8c

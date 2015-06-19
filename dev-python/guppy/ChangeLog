@@ -1,0 +1,97 @@
+# ChangeLog for dev-python/guppy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/guppy/ChangeLog,v 1.22 2015/03/08 23:49:42 pacho Exp $
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> guppy-0.1.10-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> guppy-0.1.10-r1.ebuild:
+  amd64 stable, bug 540290
+
+*guppy-0.1.10-r1 (30 Dec 2014)
+
+  30 Dec 2014; Ian Delaney <idella4@gentoo.org> +guppy-0.1.10-r1.ebuild,
+  -guppy-0.1.10.ebuild, -guppy-0.1.9-r2.ebuild, -guppy-0.1.9.ebuild:
+  revbump; conversion -> distutils-r1, rm old
+
+  03 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> guppy-0.1.10.ebuild:
+  Keyword amd64-linux and x86-linux
+
+*guppy-0.1.10 (02 May 2013)
+
+  02 May 2013; Patrick Lauer <patrick@gentoo.org> +guppy-0.1.10.ebuild:
+  Bump
+
+  08 Nov 2012; Ian Delaney <idella4@gentoo.org>
+  +files/guppy-0.1.9-rm_BrokenTests.patch, guppy-0.1.9-r2.ebuild:
+  Added patch to rem broken tests, test restricts to python2.[56]
+
+  20 Feb 2012; Patrick Lauer <patrick@gentoo.org> guppy-0.1.9-r2.ebuild,
+  guppy-0.1.9.ebuild:
+  Restricting pypy #403825
+
+*guppy-0.1.9-r2 (20 Dec 2011)
+
+  20 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org> -guppy-0.1.9-r1.ebuild,
+  +guppy-0.1.9-r2.ebuild:
+  Revision bump, fix bug 354403 again. Now fix applies only for affected
+  pythons
+
+*guppy-0.1.9-r1 (17 Dec 2011)
+
+  17 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org> +guppy-0.1.9-r1.ebuild:
+  Fix issue with python 2.7, bug 354403. Thanks to Ian Delaney
+
+  11 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  guppy-0.1.9.ebuild:
+  Restrict Jython ABIs. Avoid breaking strict-aliasing rules.
+
+  30 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  guppy-0.1.9.ebuild:
+  Set PYTHON_DEPEND.
+
+  08 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  guppy-0.1.9.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*guppy-0.1.9 (07 Sep 2009)
+
+  07 Sep 2009; Patrick Lauer <patrick@gentoo.org> +guppy-0.1.9.ebuild:
+  Bump
+
+  06 Sep 2009; Christian Ruppert <idl0r@gentoo.org>
+  -files/guppy-0.1.3-skip-tests.patch:
+  Remove unused patch.
+
+  09 Aug 2008; Santiago M. Mola <coldwind@gentoo.org> guppy-0.1.8.ebuild:
+  Add ~amd64 keyword wrt bug #234221
+
+*guppy-0.1.8 (20 Jun 2008)
+
+  20 Jun 2008; Rob Cakebread <pythonhead@gentoo.org> -guppy-0.1.3.ebuild,
+  +guppy-0.1.8.ebuild:
+  Version bump, removed older.
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Marien Zwart (marienz, #107204) from metadata.xml.
+
+*guppy-0.1.6 (09 Nov 2006)
+
+  09 Nov 2006; Marien Zwart <marienz@gentoo.org> +guppy-0.1.6.ebuild:
+  Version bump.
+
+  06 Jun 2006; Carsten Lohrke <carlo@gentoo.org> guppy-0.1.3.ebuild:
+  Fix use of nonexistent versioned virtual/python.
+
+  03 Apr 2006; Aron Griffis <agriffis@gentoo.org> guppy-0.1.3.ebuild:
+  Remove ~ia64 since it segfaults in src_test, thanks to marienz for pointing
+  this out
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> guppy-0.1.3.ebuild:
+  Mark 0.1.3 ~ia64
+
+*guppy-0.1.3 (24 Mar 2006)
+
+  24 Mar 2006; Marien Zwart <marienz@gentoo.org>
+  +files/guppy-0.1.3-skip-tests.patch, +metadata.xml, +guppy-0.1.3.ebuild:
+  New ebuild.

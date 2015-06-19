@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">Class-MethodMaker</remote-id>
+    <remote-id type="cpan-module">Class::MethodMaker</remote-id>
+    <remote-id type="cpan-module">Class::MethodMaker::Constants</remote-id>
+    <remote-id type="cpan-module">Class::MethodMaker::Engine</remote-id>
+    <remote-id type="cpan-module">Class::MethodMaker::OptExt</remote-id>
+    <remote-id type="cpan-module">Class::MethodMaker::V1Compat</remote-id>
+    <remote-id type="cpan-module">Generate</remote-id>
+  </upstream>
+</pkgmetadata>

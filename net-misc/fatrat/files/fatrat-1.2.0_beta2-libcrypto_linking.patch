@@ -1,0 +1,13 @@
+http://git.dolezel.info/?p=fatrat.git;a=commitdiff_plain;h=c799fb1ee91c1affb05aabd580e3c0d59b2223d2
+
+--- fatrat-1.2.0_beta2/CMakeLists.txt
++++ fatrat-1.2.0_beta2/CMakeLists.txt
+@@ -572,7 +572,7 @@
+ # This used to be a workaround until it started causing the exact opposite... oh dear!
+ #STRING(REPLACE "-mt" "" pion-net_LIBRARIES "${pion-net_LIBRARIES}")
+ #message(STATUS ${pion-net_LIBRARIES})
+-target_link_libraries(fatrat -ldl -lpthread ${QT_LIBRARIES} ${libtorrent_LDFLAGS} ${gloox_LDFLAGS} ${curl_LDFLAGS} ${Boost_LIBRARIES} ${pion-net_LIBRARIES} ${QT_ADDITIONAL_LIBS} ${XATTR_LIBRARIES} -export-dynamic)
++target_link_libraries(fatrat -ldl -lpthread ${QT_LIBRARIES} ${libtorrent_LDFLAGS} ${gloox_LDFLAGS} ${curl_LDFLAGS} ${Boost_LIBRARIES} ${pion-net_LIBRARIES} ${QT_ADDITIONAL_LIBS} ${XATTR_LIBRARIES} crypto -export-dynamic)
+ target_link_libraries(fatrat-conf ${QT_LIBRARIES})
+ 
+ set(fatrat_DEV_HEADERS

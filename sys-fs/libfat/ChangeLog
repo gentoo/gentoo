@@ -1,0 +1,9 @@
+# ChangeLog for sys-fs/libfat
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/libfat/ChangeLog,v 1.2 2012/07/03 21:25:52 vapier Exp $
+
+*libfat-0.3a (03 Jul 2012)
+
+  03 Jul 2012; Mike Frysinger <vapier@gentoo.org> +libfat-0.3a.ebuild,
+  +metadata.xml:
+  Initial ebuild by Liam McLoughlin for ChromiumOS.

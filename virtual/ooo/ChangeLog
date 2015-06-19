@@ -1,0 +1,27 @@
+# ChangeLog for virtual/ooo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/ooo/ChangeLog,v 1.7 2015/02/15 21:19:06 dilfridge Exp $
+
+  15 Feb 2015; Andreas K. Huettel <dilfridge@gentoo.org> ooo-0.ebuild:
+  Drop ppc keyword
+
+  17 Apr 2014; Patrick Lauer <patrick@gentoo.org> ooo-0.ebuild:
+  Removing ppc stable keyword as no stable libreoffice version exists #506314
+
+  01 Jun 2012; Tomáš Chvátal <scarabeus@gentoo.org> ooo-0.ebuild:
+  Add there openoffice-bin as we have that in main tree.
+
+  07 Apr 2012; Tomáš Chvátal <scarabeus@gentoo.org> ooo-0.ebuild:
+  Add use for java wrt deps on extensions, preffer source build over the binary.
+
+  02 Sep 2011; Tomáš Chvátal <scarabeus@gentoo.org> ooo-0.ebuild:
+  Punt openoffice as it is gone from main tree for now.
+
+  28 Jul 2011; Michael Sterrett <mr_bones_@gentoo.org> ooo-0.ebuild:
+  sparc doesn't have openoffice at all
+
+*ooo-0 (16 Mar 2011)
+
+  16 Mar 2011; Andreas Proschofsky <suka@gentoo.org> +ooo-0.ebuild,
+  +metadata.xml:
+  Initial commit, see bug #358895

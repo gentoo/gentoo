@@ -1,0 +1,37 @@
+# ChangeLog for sci-libs/htslib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/htslib/ChangeLog,v 1.10 2015/05/27 11:22:38 ago Exp $
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> htslib-1.0.ebuild:
+  Stable for x86, wrt bug #540646
+
+  21 May 2015; Agostino Sarubbo <ago@gentoo.org> htslib-1.0.ebuild:
+  Stable for amd64, wrt bug #540646
+
+*htslib-1.2.1 (18 Feb 2015)
+
+  18 Feb 2015; Justin Lecher <jlec@gentoo.org> +htslib-1.2.1.ebuild:
+  Version Bump, #540352
+
+  06 Jan 2015; Justin Lecher <jlec@gentoo.org> htslib-1.1.ebuild:
+  Fix broken delete of manpage
+
+*htslib-1.1 (06 Jan 2015)
+
+  06 Jan 2015; Justin Lecher <jlec@gentoo.org> +htslib-1.1.ebuild:
+  Version Bump
+
+  20 Sep 2014; Justin Lecher <jlec@gentoo.org> htslib-1.0.ebuild:
+  Fix pc file prefix problems
+
+  20 Sep 2014; Justin Lecher <jlec@gentoo.org> htslib-1.0.ebuild:
+  Fix static-libs handling
+
+  20 Sep 2014; Justin Lecher <jlec@gentoo.org> htslib-1.0.ebuild:
+  Handle static-libs
+
+*htslib-1.0 (20 Sep 2014)
+
+  20 Sep 2014; Justin Lecher <jlec@gentoo.org> +htslib-1.0.ebuild,
+  +metadata.xml:
+  New addition, written by me

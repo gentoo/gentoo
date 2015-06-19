@@ -1,0 +1,11 @@
+--- darkice-1.2/src/PulseAudioDspSource.cpp
++++ darkice-1.2/src/PulseAudioDspSource.cpp
+@@ -43,6 +43,8 @@
+ #include "config.h"
+ #endif
+ 
++#include <stdio.h>
++
+ #include "Util.h"
+ #include "Exception.h"
+ #include "PulseAudioDspSource.h"

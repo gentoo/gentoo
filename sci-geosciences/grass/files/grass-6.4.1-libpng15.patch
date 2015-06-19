@@ -1,0 +1,28 @@
+--- raster/r.out.png/r.out.png.c
++++ raster/r.out.png/r.out.png.c
+@@ -261,9 +261,6 @@
+     png_info_init(info_ptr);
+ #endif
+     png_init_io(png_ptr, fp);
+-    info_ptr->width = win.cols;
+-    info_ptr->height = win.rows;
+-    info_ptr->bit_depth = depth;
+ 
+     /* explicit filter-type (or none) required */
+     if ((filter >= 0) && (filter <= 4)) {
+@@ -302,10 +299,13 @@
+ 	/*if(!gscale->answer){ *//* 24BIT COLOR IMAGE */
+ 
+ 	if (TRUE) {
++	    int color_type;
+ 	    if (do_alpha)
+-		info_ptr->color_type = PNG_COLOR_TYPE_RGB_ALPHA;
++		color_type = PNG_COLOR_TYPE_RGB_ALPHA;
+ 	    else
+-		info_ptr->color_type = PNG_COLOR_TYPE_RGB;
++		color_type = PNG_COLOR_TYPE_RGB;
++
++	    png_set_IHDR(png_ptr, info_ptr, win.cols, win.rows, depth, color_type, PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT, PNG_FILTER_TYPE_DEFAULT);
+ 
+ 	    /* write the png-info struct */
+ 	    png_write_info(png_ptr, info_ptr);

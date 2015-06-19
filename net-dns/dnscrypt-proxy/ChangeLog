@@ -1,0 +1,16 @@
+# ChangeLog for net-dns/dnscrypt-proxy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/dnscrypt-proxy/ChangeLog,v 1.2 2015/01/20 07:40:55 dlan Exp $
+
+*dnscrypt-proxy-1.4.3 (20 Jan 2015)
+
+  20 Jan 2015; Yixun Lan <dlan@gentoo.org> +dnscrypt-proxy-1.4.3.ebuild:
+  version bump, bug 536936, thanks Florian Steinel, Wang Jiajun
+
+*dnscrypt-proxy-1.4.2 (22 Dec 2014)
+
+  22 Dec 2014; Yixun Lan <dlan@gentoo.org> +dnscrypt-proxy-1.4.2.ebuild,
+  +files/dnscrypt-proxy.confd, +files/dnscrypt-proxy.initd,
+  +files/dnscrypt-proxy.service, +metadata.xml:
+  initial version contributed by Jiajun Wang, bug 504074
+

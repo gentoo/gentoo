@@ -1,0 +1,10 @@
+# ChangeLog for dev-perl/Acme-Damn
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Acme-Damn/ChangeLog,v 1.1 2013/07/13 12:40:02 pinkbyte Exp $
+
+*Acme-Damn-0.50.0 (13 Jul 2013)
+
+  13 Jul 2013; Sergey Popov <pinkbyte@gentoo.org> +Acme-Damn-0.50.0.ebuild,
+  +files/Acme-Damn-respect-cflags.patch, +metadata.xml:
+  Initial commit, wrt bug #288177
+

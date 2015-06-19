@@ -1,0 +1,14 @@
+#!/sbin/runscript
+
+start() {
+	ebegin "Starting Regina stack"
+	start-stop-daemon --start --pidfile /var/run/rxstack.pid \
+		--exec /usr/bin/rxstack -- -d
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Regina stack"
+	start-stop-daemon --stop --exec /usr/bin/rxstack
+	eend $?
+}

@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install prepare
+DESCRIPTION=Netkit - routed
+EAPI=5
+HOMEPAGE=ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/
+KEYWORDS=alpha ~amd64 ~mips ppc sparc x86
+LICENSE=BSD GPL-2
+SLOT=0
+SRC_URI=mirror://debian/pool/main/n/netkit-routed/netkit-routed_0.17.orig.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=19e433873d87073551c7ff9088f28532

@@ -1,0 +1,19 @@
+# ChangeLog for net-ftp/oneclickftp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/oneclickftp/ChangeLog,v 1.4 2015/01/29 00:31:57 johu Exp $
+
+  29 Jan 2015; Johannes Huber <johu@gentoo.org> oneclickftp-0.5.1.ebuild:
+  Adjust use dependencies to handle >=app-crypt/qca-2.1.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> oneclickftp-0.5.1.ebuild:
+  Move Qt dependencies to the new category
+
+  29 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  oneclickftp-0.5.1.ebuild, +files/oneclickftp-0.5.1-qt47.patch:
+  Patch to compile with Qt-4.7. Bug #338622
+
+*oneclickftp-0.5.1 (15 Dec 2009)
+
+  15 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +oneclickftp-0.5.1.ebuild:
+  Initial commit.

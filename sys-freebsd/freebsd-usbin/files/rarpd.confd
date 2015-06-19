@@ -1,0 +1,7 @@
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-usbin/files/rarpd.confd,v 1.1 2006/11/19 17:02:29 flameeyes Exp $
+
+# Configuration file for /etc/init.d/rarpd
+
+# To start rarpd only for a given interface, set the
+# following variable
+# RARPD_ONLY_INTERFACE="rl0"

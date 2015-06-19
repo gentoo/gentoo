@@ -1,0 +1,64 @@
+# ChangeLog for dev-haskell/hsql-sqlite3
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hsql-sqlite3/ChangeLog,v 1.3 2014/07/25 09:16:37 slyfox Exp $
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  hsql-sqlite3-1.8.2-r1.ebuild:
+  Drop trailing '.' from description.
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*hsql-sqlite-1.8.2 (28 Oct 2012)
+
+  28 Oct 2012; Sergei Trofimovich <slyfox@gentoo.org> +hsql-sqlite-1.8.2.ebuild:
+  Version bump. Fixed build failure against hsql-1.8.2 (bug #439232 by Patrick
+  Lauer).
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org> hsql-sqlite-1.8.1.ebuild:
+  move dev-haskell/hsql-sqlite/hsql-sqlite-1.8.1.ebuild ebuild to
+  mirror://hackage
+
+  04 Aug 2011; Sergei Trofimovich <slyfox@gentoo.org> -hsql-sqlite-1.7.ebuild:
+  Removed old.
+
+*hsql-sqlite-1.8.1 (04 Aug 2011)
+
+  04 Aug 2011; Sergei Trofimovich <slyfox@gentoo.org>
+  +hsql-sqlite-1.8.1.ebuild:
+  Version bump (ghc-7 compatible)
+
+  12 Jul 2010; Sergei Trofimovich <slyfox@gentoo.org>
+  hsql-sqlite-1.7.ebuild:
+  Fixed bug #278897 (build failure on ghc-6.10+). Thanks to Nikolay Orlyuk
+  <virkony@gmail.com> for the report and fix.
+
+  13 Dec 2007; Duncan Coutts <dcoutts@gentoo.org> hsql-sqlite-1.7.ebuild:
+  Updates for upward compatability with cabal-1.2 and ghc-6.8
+
+  31 Oct 2007; Duncan Coutts <dcoutts@gentoo.org> hsql-sqlite-1.7.ebuild:
+  Drop virtual/ghc in favour of dev-lang/ghc
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+  09 Mar 2006; Duncan Coutts <dcoutts@gentoo.org> hsql-sqlite-1.7.ebuild:
+  Add ~sparc to KEYWORDS. See bug #124902
+
+  01 Mar 2006; Markus Rothe <corsair@gentoo.org> hsql-sqlite-1.7.ebuild:
+  Added ~ppc64; bug #124469
+
+  01 Mar 2006; Michael Hanselmann <hansmi@gentoo.org>
+  hsql-sqlite-1.7.ebuild:
+  Added to ~ppc. See bug #124469.
+
+  23 Feb 2006; Duncan Coutts <dcoutts@gentoo.org> hsql-sqlite-1.7.ebuild:
+  Changed the dep on hsql to use a ~ dep (as suggested by ciaranm)
+
+*hsql-sqlite-1.7 (23 Feb 2006)
+
+  23 Feb 2006; <dcoutts@gentoo.org> +metadata.xml, +hsql-sqlite-1.7.ebuild:
+  Initial import.

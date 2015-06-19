@@ -1,0 +1,46 @@
+--- openssh-6.7p1.orig/sshd_config.5	2014-11-24 10:24:29.356244415 -0800
++++ openssh-6.7p1/sshd_config.5	2014-11-24 10:23:49.415029039 -0800
+@@ -610,21 +610,6 @@
+ The default is
+ .Dq yes .
+ Note that this option applies to protocol version 2 only.
+-.It Cm GSSAPIStrictAcceptorCheck
+-Determines whether to be strict about the identity of the GSSAPI acceptor
+-a client authenticates against.
+-If set to
+-.Dq yes
+-then the client must authenticate against the
+-.Pa host
+-service on the current hostname.
+-If set to
+-.Dq no
+-then the client may authenticate against any service key stored in the
+-machine's default store.
+-This facility is provided to assist with operation on multi homed machines.
+-The default is
+-.Dq yes .
+ .It Cm HostbasedAuthentication
+ Specifies whether rhosts or /etc/hosts.equiv authentication together
+ with successful public key client host authentication is allowed
+@@ -651,6 +636,21 @@
+ attempting to resolve the name from the TCP connection itself.
+ The default is
+ .Dq no .
++.It Cm GSSAPIStrictAcceptorCheck
++Determines whether to be strict about the identity of the GSSAPI acceptor
++a client authenticates against.
++If set to
++.Dq yes
++then the client must authenticate against the
++.Pa host
++service on the current hostname.
++If set to
++.Dq no
++then the client may authenticate against any service key stored in the
++machine's default store.
++This facility is provided to assist with operation on multi homed machines.
++The default is
++.Dq yes .
+ .It Cm HostCertificate
+ Specifies a file containing a public host certificate.
+ The certificate's public key must match a private host key already specified

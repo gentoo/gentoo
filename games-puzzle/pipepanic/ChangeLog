@@ -1,0 +1,26 @@
+# ChangeLog for games-puzzle/pipepanic
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/pipepanic/ChangeLog,v 1.6 2015/02/24 22:05:08 tupone Exp $
+
+  24 Feb 2015; Tupone Alfredo <tupone@gentoo.org> pipepanic-0.1.3.ebuild:
+  EAPI 5
+
+  07 Jan 2010; Joseph Jezak <josejx@gentoo.org> pipepanic-0.1.3.ebuild:
+  Marked ppc stable for bug #297265.
+
+  31 Dec 2009; Markus Meier <maekke@gentoo.org> pipepanic-0.1.3.ebuild:
+  x86 stable, bug #297265
+
+  19 Dec 2009; Pacho Ramos <pacho@gentoo.org> pipepanic-0.1.3.ebuild:
+  amd64 stable, bug 297265
+
+  16 Nov 2009; Mounir Lamouri <volkmar@gentoo.org> pipepanic-0.1.3.ebuild:
+  Keywording for ppc, bug 293231
+
+*pipepanic-0.1.3 (03 Nov 2009)
+
+  03 Nov 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +pipepanic-0.1.3.ebuild, +files/pipepanic-0.1.3-gentoo.patch,
+  +metadata.xml:
+  initial commit (bug #206410)
+

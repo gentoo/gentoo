@@ -1,0 +1,262 @@
+# ChangeLog for dev-lang/gnu-smalltalk
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/gnu-smalltalk/ChangeLog,v 1.52 2013/01/02 22:48:16 pchrist Exp $
+
+  02 Jan 2013; Panagiotis Christopoulos <pchrist@gentoo.org> metadata.xml:
+  I'm taking it from m-n@g.o, araujo, I hope you'll come back and take it again
+
+  20 Dec 2012; Pacho Ramos <pacho@gentoo.org> -gnu-smalltalk-3.2.1.ebuild,
+  -gnu-smalltalk-3.2.2.ebuild, -gnu-smalltalk-3.2.3.ebuild, metadata.xml:
+  Drop maintainer, bug #81411
+
+  06 Jun 2012; Zac Medico <zmedico@gentoo.org> gnu-smalltalk-3.2.1.ebuild,
+  gnu-smalltalk-3.2.2.ebuild, gnu-smalltalk-3.2.3.ebuild,
+  gnu-smalltalk-3.2.4.ebuild:
+  inherit multilib for get_libdir
+
+  24 Apr 2012; Michał Górny <mgorny@gentoo.org> gnu-smalltalk-3.2.1.ebuild,
+  gnu-smalltalk-3.2.2.ebuild, gnu-smalltalk-3.2.3.ebuild,
+  gnu-smalltalk-3.2.4.ebuild:
+  Update to use mirror://.
+
+  10 Oct 2011; Luis F. Araujo <araujo@gentoo.org> gnu-smalltalk-3.2.4.ebuild:
+  Use newer EAPI features. Add EAPI=3
+
+*gnu-smalltalk-3.2.4 (09 Oct 2011)
+
+  09 Oct 2011; Luis F. Araujo <araujo@gentoo.org> +gnu-smalltalk-3.2.4.ebuild,
+  +files/SequenceableCollection-size-3.2.4.patch:
+  Fix: dev-lang/gnu-smalltalk should DEPEND on app-arch/zip (bug#364731).
+  dev-lang/gnu-smalltalk crashes by SequenceableCollection new (bug#364733).
+  dev-lang/gnu-smalltalk-3.2.4 has been released (bug#381609)
+
+*gnu-smalltalk-3.2.3 (21 Dec 2010)
+
+  21 Dec 2010; Luis F. Araujo <araujo@gentoo.org>
+  +gnu-smalltalk-3.2.3.ebuild:
+  Updating to 3.2.3
+
+*gnu-smalltalk-3.2.2 (12 Dec 2010)
+
+  12 Dec 2010; Luis F. Araujo <araujo@gentoo.org>
+  +gnu-smalltalk-3.2.2.ebuild:
+  Updating to version 3.2.2
+
+  27 Jul 2010; Jeroen Roovers <jer@gentoo.org> -gnu-smalltalk-3.2.ebuild:
+  Remove version that collides with sys-devel/autogen (bug #326917).
+
+*gnu-smalltalk-3.2.1 (27 Jul 2010)
+
+  27 Jul 2010; Jeroen Roovers <jer@gentoo.org> +gnu-smalltalk-3.2.1.ebuild:
+  Version bump.
+
+  06 May 2010; Víctor Ostorga <vostorga@gentoo.org>
+  gnu-smalltalk-3.2.ebuild:
+  Specifying EAPI version, dropping redundant econf option, using emake
+  install
+
+*gnu-smalltalk-3.2 (06 May 2010)
+
+  06 May 2010; Víctor Ostorga <vostorga@gentoo.org>
+  +gnu-smalltalk-3.2.ebuild:
+  Version bump, using econf in place of ./configure, fixes bundled copies of
+  libltdl bug 277089
+
+*gnu-smalltalk-3.1 (04 Jan 2010)
+
+  04 Jan 2010; Luis F. Araujo <araujo@gentoo.org> +gnu-smalltalk-3.1.ebuild:
+  Version bump. Fixing bugs #252253 , #251007
+
+*gnu-smalltalk-3.0.5 (01 Jun 2009)
+
+  01 Jun 2009; Luis F. Araujo <araujo@gentoo.org>
+  +gnu-smalltalk-3.0.5.ebuild:
+  Version bump
+
+  21 Apr 2008; Luis F. Araujo <araujo@gentoo.org>
+  -files/gst-stack-2.3.1.patch, -files/gst-stack-2.3.2.patch,
+  -gnu-smalltalk-2.3.1.ebuild, -gnu-smalltalk-2.3.2.ebuild:
+  Removing old versions.
+
+*gnu-smalltalk-3.0.2 (21 Apr 2008)
+
+  21 Apr 2008; Luis F. Araujo <araujo@gentoo.org>
+  +gnu-smalltalk-3.0.2.ebuild:
+  Adding new release and fixing bugs #217777 and #217508
+
+*gnu-smalltalk-3.0.1-r1 (08 Apr 2008)
+
+  08 Apr 2008; Luis F. Araujo <araujo@gentoo.org>
+  +gnu-smalltalk-3.0.1-r1.ebuild:
+  Fixing bug #212436
+
+*gnu-smalltalk-3.0.1 (04 Mar 2008)
+
+  04 Mar 2008; Luis F. Araujo <araujo@gentoo.org>
+  +gnu-smalltalk-3.0.1.ebuild:
+  Version bumping #212238
+
+  13 Jan 2008; Luis F. Araujo <araujo@gentoo.org>
+  gnu-smalltalk-2.3.1.ebuild, gnu-smalltalk-2.3.2.ebuild,
+  gnu-smalltalk-2.3.3.ebuild, gnu-smalltalk-2.3.6.ebuild:
+  Fixing some quotes
+
+  13 Jan 2008; Luis F. Araujo <araujo@gentoo.org>
+  -gnu-smalltalk-2.1.12.ebuild, -gnu-smalltalk-2.2-r1.ebuild:
+  Removing very old keyworded versions.
+
+*gnu-smalltalk-3.0 (13 Jan 2008)
+
+  13 Jan 2008; Luis F. Araujo <araujo@gentoo.org> +gnu-smalltalk-3.0.ebuild:
+  Adding new version and fixing libsigsegv collision. Fixing bugs #197251 ,
+  #205342
+
+*gnu-smalltalk-2.3.6 (23 Sep 2007)
+
+  23 Sep 2007; Luis F. Araujo <araujo@gentoo.org>
+  +files/gst-stack-2.3.6.patch, +gnu-smalltalk-2.3.6.ebuild:
+  Added new version.
+
+  12 Apr 2007; <welp@gentoo.org> gnu-smalltalk-2.3.3.ebuild:
+  Multilib fix, stable on amd64 wrt bug 158434
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove mkennedy from metadata.xml due to retirement.
+
+  22 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  gnu-smalltalk-2.3.3.ebuild:
+  stable x86; bug 158434
+
+*gnu-smalltalk-2.3.3 (22 Feb 2007)
+
+  22 Feb 2007; Luis F. Araujo <araujo@gentoo.org>
+  +files/gst-stack-2.3.3.patch, +gnu-smalltalk-2.3.3.ebuild:
+  New package version. This version fixes bug #158434
+
+*gnu-smalltalk-2.3.2 (05 Feb 2007)
+
+  05 Feb 2007; Luis F. Araujo <araujo@gentoo.org>
+  +files/gst-stack-2.3.2.patch, +gnu-smalltalk-2.3.2.ebuild:
+  New gnu-smalltalk release.
+
+  04 Feb 2007; Steve Dibb <beandog@gentoo.org> gnu-smalltalk-2.3.1.ebuild:
+  amd64 stable, bug 158434
+
+  25 Dec 2006; Luis F. Araujo <araujo@gentoo.org>
+  gnu-smalltalk-2.1.12.ebuild, gnu-smalltalk-2.2-r1.ebuild,
+  gnu-smalltalk-2.3.1.ebuild:
+  Fixed multilib path
+
+*gnu-smalltalk-2.3.1 (18 Dec 2006)
+
+  18 Dec 2006; Luis F. Araujo <araujo@gentoo.org>
+  +files/gst-stack-2.3.1.patch, +gnu-smalltalk-2.3.1.ebuild:
+  Adding new version. Stack patched included.
+
+  08 Dec 2006; Luis F. Araujo <araujo@gentoo.org>
+  gnu-smalltalk-2.1.12.ebuild, gnu-smalltalk-2.2-r1.ebuild,
+  gnu-smalltalk-2.3.ebuild:
+  fixed use_with operation
+
+*gnu-smalltalk-2.3 (07 Dec 2006)
+
+  07 Dec 2006; Luis F. Araujo <araujo@gentoo.org> +gnu-smalltalk-2.3.ebuild:
+  Updated gnu-smalltalk version
+
+  01 Dec 2006; Luis F. Araujo <araujo@gentoo.org>
+  gnu-smalltalk-2.1.12.ebuild, gnu-smalltalk-2.2-r1.ebuild:
+  Tweaking a bit the tcltk -> tcl, tk use flag bug #17808
+
+  29 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  gnu-smalltalk-2.1.12.ebuild, gnu-smalltalk-2.2-r1.ebuild:
+  moved tcltk USE flag over to separate tk and tcl flags, see bug #17808
+
+  05 Nov 2006; Luis F. Araujo <araujo@gentoo.org> -gnu-smalltalk-2.2.ebuild:
+  Removing broken version.
+
+*gnu-smalltalk-2.2-r1 (05 Nov 2006)
+
+  05 Nov 2006; Luis F. Araujo <araujo@gentoo.org>
+  +gnu-smalltalk-2.2-r1.ebuild:
+  Fixing bug #150313
+
+  16 Dec 2005; Mark Loeser <halcy0n@gentoo.org> gnu-smalltalk-2.1.12.ebuild:
+  Stable on x86; bug #115378
+
+*gnu-smalltalk-2.2 (13 Dec 2005)
+
+  13 Dec 2005; Luis f. Araujo <araujo@gentoo.org> +gnu-smalltalk-2.2.ebuild:
+  Added new GST version.
+
+  07 Oct 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  gnu-smalltalk-2.1.12.ebuild:
+  Keywording ~amd64.
+
+  13 Sep 2005; Ferris McCormick <fmccor@gentoo.org>
+  gnu-smalltalk-2.1.12.ebuild:
+  Add ~sparc keyword.  Appears to build and run fine.
+
+*gnu-smalltalk-2.1.12 (05 Sep 2005)
+
+  05 Sep 2005; Luis F. Araujo <araujo@gentoo.org>
+  +gnu-smalltalk-2.1.12.ebuild:
+  Added new version of GST. Many bugs fixed in the package and the ebuild.
+  (proper amd64 support now, recreate an image with the right kernel path).
+
+  22 Aug 2005; Ferris McCormick <fmccor@gentoo.org>
+  gnu-smalltalk-2.1.11.ebuild:
+  Add ~sparc keyword.  Builds and runs all tests successfully, and
+  gst has run well on sparc systems for years.
+
+*gnu-smalltalk-2.1.11 (18 Aug 2005)
+
+  18 Aug 2005; Luis F. Araujo <araujo@gentoo.org>
+  +files/2.1.11-gst-image-temp.patch, +gnu-smalltalk-2.1.11.ebuild:
+  Added new version of GNU SmallTalk. Changed some commands to use
+  ebuilds-scripts
+
+  17 May 2005; Luis F. Araujo <araujo@gentoo.org>
+  gnu-smalltalk-2.1.10-r1.ebuild:
+  Change inheriting gcc by toolchain-funcs
+
+*gnu-smalltalk-2.1.10-r1 (09 Apr 2005)
+
+  09 Apr 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  -files/2.1.8-gst-package-mktemp-gentoo.patch, -gnu-smalltalk-2.1.8.ebuild,
+  -gnu-smalltalk-2.1.10.ebuild, +gnu-smalltalk-2.1.10-r1.ebuild:
+  Corrected permissions on installed packages.xml (was previously root user
+  read/write)
+
+  03 Apr 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  files/50gnu-smalltalk-gentoo.el:
+  Autoload for gst
+
+  03 Apr 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  files/50gnu-smalltalk-gentoo.el, gnu-smalltalk-2.1.10.ebuild:
+  Correct messy Emacs Lisp installation; Include autoload for Emacs
+  interactive function: smalltalk-mode.
+
+  31 Mar 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  gnu-smalltalk-2.1.10.ebuild:
+  Fixed tcltk typo
+
+*gnu-smalltalk-2.1.10 (31 Mar 2005)
+
+  31 Mar 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/2.1.10-gst-image-temp.patch, metadata.xml,
+  +gnu-smalltalk-2.1.10.ebuild:
+  New upstream version; Resolves Bug #78880; Update contributed by Luis F.
+  Araujo <araujo@gentoo.org>; Created Luis maintainer entry to metadata.xml.
+
+  18 Aug 2004; <mkennedy@gentoo.org> gnu-smalltalk-2.1.8.ebuild:
+  Fixed problem with configuration parameters when tcltk is not in USE
+
+  16 Jul 2004; David Holm <dholm@gentoo.org> gnu-smalltalk-2.1.8.ebuild:
+  Added to ~ppc.
+
+*gnu-smalltalk-2.1.8 (08 Jul 2004)
+
+  08 Jul 2004; <mkennedy@gentoo.org> +metadata.xml,
+  +files/2.1.8-gst-package-mktemp-gentoo.patch,
+  +files/50gnu-smalltalk-gentoo.el, +gnu-smalltalk-2.1.8.ebuild:
+  Initial port.  Ebuild contributed by Matthew Kennedy <mkennedy@gentoo.org>

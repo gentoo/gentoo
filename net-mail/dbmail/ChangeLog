@@ -1,0 +1,385 @@
+# ChangeLog for net-mail/dbmail
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/dbmail/ChangeLog,v 1.74 2015/03/22 12:53:43 pacho Exp $
+
+  22 Mar 2015; Pacho Ramos <pacho@gentoo.org> dbmail-3.2.2.ebuild,
+  dbmail-3.2.3.ebuild:
+  Old gmime slot is going to be dropped (#537540)
+
+*dbmail-3.2.3 (25 Jan 2015)
+
+  25 Jan 2015; Thomas Raschbacher <lordvan@gentoo.org> +dbmail-3.2.3.ebuild:
+  new version - bugfix release (Segfault on CONDSTORE)
+
+  24 Jan 2015; Pacho Ramos <pacho@gentoo.org> -dbmail-3.1.13.ebuild,
+  -dbmail-3.1.17.ebuild:
+  Drop older versions needing obsolete gmime slot
+
+  04 Jan 2015; Thomas Raschbacher <lordvan@gentoo.org> -dbmail-3.1.15.ebuild,
+  -dbmail-3.2.0.ebuild:
+  removed vulnerable 3.2.0 (bug #534020) and old ~arch 3.1.15
+
+  02 Jan 2015; Agostino Sarubbo <ago@gentoo.org> dbmail-3.2.2.ebuild:
+  Stable for x86, wrt bug #534020
+
+  02 Jan 2015; Agostino Sarubbo <ago@gentoo.org> dbmail-3.2.2.ebuild:
+  Stable for amd64, wrt bug #534020
+
+*dbmail-3.2.2 (30 Dec 2014)
+
+  30 Dec 2014; Thomas Raschbacher <lordvan@gentoo.org> +dbmail-3.2.2.ebuild:
+  new versions (fixes CRAM-MD5 bug)
+
+*dbmail-3.2.0 (02 Nov 2014)
+
+  02 Nov 2014; Thomas Raschbacher <lordvan@gentoo.org> -dbmail-3.1.9.ebuild,
+  -dbmail-3.1.10.ebuild, -dbmail-3.1.11.ebuild, -dbmail-3.1.12.ebuild,
+  +dbmail-3.2.0.ebuild:
+  removed old versions + added 3.2.0
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> dbmail-3.1.10.ebuild,
+  dbmail-3.1.11.ebuild, dbmail-3.1.12.ebuild, dbmail-3.1.13.ebuild,
+  dbmail-3.1.15.ebuild, dbmail-3.1.17.ebuild, dbmail-3.1.9.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  28 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> dbmail-3.1.13.ebuild:
+  amd64 stable wrt bug #509774
+
+*dbmail-3.1.17 (27 Jul 2014)
+
+  27 Jul 2014; <lordvan@gentoo.org> +dbmail-3.1.17.ebuild:
+  new version
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> dbmail-3.1.13.ebuild:
+  x86 stable wrt bug #509774
+
+*dbmail-3.1.15 (10 Jun 2014)
+
+  10 Jun 2014; Thomas Raschbacher <lordvan@gentoo.org> +dbmail-3.1.15.ebuild:
+  version bump
+
+*dbmail-3.1.13 (22 Mar 2014)
+
+  22 Mar 2014; Thomas Raschbacher <lordvan@gentoo.org> +dbmail-3.1.13.ebuild:
+  added new version
+
+*dbmail-3.1.12 (07 Mar 2014)
+
+  07 Mar 2014; Thomas Raschbacher <lordvan@gentoo.org> +dbmail-3.1.12.ebuild,
+  files/dbmail-imapd.initd, files/dbmail-lmtpd.initd, files/dbmail-pop3d.initd,
+  files/dbmail-timsieved.initd, -dbmail-3.0.2.ebuild:
+  new init scripts (seperate for each service again)
+  version bump and removed 3.0.2
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org> dbmail-3.1.9.ebuild:
+  amd64 stable, bug #498954
+
+*dbmail-3.1.11 (27 Feb 2014)
+
+  27 Feb 2014; Thomas Raschbacher <lordvan@gentoo.org> +dbmail-3.1.11.ebuild:
+  version bump
+
+  23 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> dbmail-3.1.9.ebuild:
+  x86 stable wrt bug #498954
+
+*dbmail-3.1.10 (22 Jan 2014)
+
+  22 Jan 2014; <lordvan@gentoo.org> +dbmail-3.1.10.ebuild:
+  version bump
+
+*dbmail-3.1.9 (09 Jan 2014)
+
+  09 Jan 2014; <lordvan@gentoo.org> -dbmail-3.1.7.ebuild, -dbmail-3.1.8.ebuild,
+  +dbmail-3.1.9.ebuild:
+  added 3.1.9 bugfix release and removed old 3.1.x versions (both affected by
+  bugs)
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> dbmail-3.0.2.ebuild,
+  dbmail-3.1.7.ebuild, dbmail-3.1.8.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+*dbmail-3.1.8 (17 Dec 2013)
+
+  17 Dec 2013; <lordvan@gentoo.org> -dbmail-3.1.2.ebuild, -dbmail-3.1.3.ebuild,
+  -dbmail-3.1.4.ebuild, -dbmail-3.1.6.ebuild, +dbmail-3.1.8.ebuild:
+  removed old versions and added new version
+
+*dbmail-3.1.7 (24 Sep 2013)
+
+  24 Sep 2013; <lordvan@gentoo.org> +dbmail-3.1.7.ebuild:
+  new release
+
+*dbmail-3.1.6 (16 Sep 2013)
+
+  16 Sep 2013; <lordvan@gentoo.org> +dbmail-3.1.6.ebuild:
+  new version
+
+*dbmail-3.1.4 (02 Sep 2013)
+
+  02 Sep 2013; <lordvan@gentoo.org> +dbmail-3.1.4.ebuild:
+  new version (bugfix only release)
+
+*dbmail-3.1.3 (20 Aug 2013)
+
+  20 Aug 2013; <lordvan@gentoo.org> +dbmail-3.1.3.ebuild:
+  version bump (bugfix release)
+
+*dbmail-3.1.2 (12 Aug 2013)
+
+  12 Aug 2013; <lordvan@gentoo.org> +dbmail-3.1.2.ebuild:
+  adding new version (bug #479664)
+
+  25 Dec 2012; Pacho Ramos <pacho@gentoo.org> -dbmail-2.2.11.ebuild,
+  -dbmail-2.2.15.ebuild, -dbmail-2.2.17.ebuild, -dbmail-2.2.9.ebuild:
+  Drop versions needing deprecated gmime:0
+
+  04 Dec 2012;  <ago@gentoo.org> dbmail-3.0.2.ebuild:
+  Stable for x86, wrt bug #439056
+
+  24 Oct 2012; <ago@gentoo.org> dbmail-3.0.2.ebuild:
+  Stable for amd64, wrt bug #439056
+
+*dbmail-3.0.2 (07 Sep 2012)
+
+  07 Sep 2012; <lordvan@gentoo.org> +dbmail-3.0.2.ebuild:
+  new stable release added (from my overlay) fixes bug #404355
+
+  15 Jul 2011; Markus Meier <maekke@gentoo.org> dbmail-2.2.17.ebuild:
+  x86 stable, bug #373503
+
+  01 Jul 2011; Markos Chandras <hwoarang@gentoo.org> dbmail-2.2.17.ebuild:
+  Stable on amd64 wrt bug #373503
+
+*dbmail-2.2.17 (14 Oct 2010)
+
+  14 Oct 2010; <lordvan@gentoo.org> +dbmail-2.2.17.ebuild:
+  added dbmail-2.2.17 (fixes bug #260122 and bug #330073)
+  Thanks to Eray Aslan <eray.aslan@caf.com.tr> for the ebuild fixes
+
+  17 Jun 2010; Patrick Lauer <patrick@gentoo.org> dbmail-2.2.9.ebuild,
+  dbmail-2.2.11.ebuild, dbmail-2.2.15.ebuild:
+  Migrating away from deprecated postgres virtuals
+
+  04 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  dbmail-2.2.11.ebuild, dbmail-2.2.15.ebuild:
+  Delete calls to deprecated python_version(). Call python_mod_cleanup()
+  with paths to Python modules.
+
+*dbmail-2.2.15 (28 Mar 2010)
+
+  28 Mar 2010; <lordvan@gentoo.org> dbmail-2.2.9.ebuild,
+  -dbmail-2.2.10.ebuild, -dbmail-2.2.11_rc3.ebuild,
+  -dbmail-2.2.11_rc3-r1.ebuild, dbmail-2.2.11.ebuild, +dbmail-2.2.15.ebuild,
+  -dbmail-2.3.4.ebuild:
+  fixed bug #251392 (sqlite3 -> sqlite)
+  added 2.2.15, removed 2.2.11_rc3*, removed 2.3.*
+
+  04 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org> dbmail-2.2.9.ebuild,
+  dbmail-2.2.10.ebuild, dbmail-2.2.11_rc3.ebuild,
+  dbmail-2.2.11_rc3-r1.ebuild, dbmail-2.2.11.ebuild, dbmail-2.3.4.ebuild:
+  Fix obvious typos in USE flag checks.
+
+  04 Oct 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  dbmail-2.2.11_rc3-r1.ebuild, dbmail-2.2.11.ebuild:
+  net-zope/zopeinterface renamed to net-zope/zope-interface.
+
+  11 Jul 2009; Torsten Veller <tove@gentoo.org> dbmail-2.2.9.ebuild,
+  dbmail-2.2.10.ebuild, dbmail-2.2.11_rc3.ebuild,
+  dbmail-2.2.11_rc3-r1.ebuild, dbmail-2.2.11.ebuild, dbmail-2.3.4.ebuild:
+  INSTALL.gz -> INSTALL (#272937)
+
+*dbmail-2.2.11 (20 Mar 2009)
+
+  20 Mar 2009; Thomas Raschbacher <lordvan@gentoo.org>
+  +dbmail-2.2.11.ebuild:
+  version bump
+
+*dbmail-2.2.11_rc3-r1 (18 Dec 2008)
+
+  18 Dec 2008; Thomas Raschbacher <lordvan@gentoo.org>
+  +dbmail-2.2.11_rc3-r1.ebuild:
+  added 2.2.11_rc3-r1 which used upstream gentoo init scripts and conf.d
+  file. also now installing ldap schema if USE="ldap", contrib stuff into
+  doc dir and also installing python modules if USE="python"
+
+*dbmail-2.3.4 (01 Dec 2008)
+
+  01 Dec 2008; Thomas Raschbacher <lordvan@gentoo.org> -dbmail-2.2.7.ebuild,
+  -dbmail-2.2.8.ebuild, dbmail-2.2.9.ebuild, dbmail-2.2.10.ebuild,
+  -dbmail-2.2.11_rc1.ebuild, dbmail-2.2.11_rc3.ebuild, -dbmail-2.3.2.ebuild,
+  -dbmail-2.3.3.ebuild, +dbmail-2.3.4.ebuild:
+  removed 2.2.7 and 2.2.8
+  removed old rc and old dev versions. fixed bug 239670 (thanks to Evil
+  Compile Person <bugs@dev.gentooexperimental.org> and tove@gentoo.org)
+  added 2.3.4
+
+  06 Nov 2008; Thomas Raschbacher <lordvan@gentoo.org> ChangeLog:
+  added 2.2.11 rc3
+
+  11 Oct 2008; Gilles Dartiguelongue <eva@gentoo.org> dbmail-2.2.7.ebuild,
+  dbmail-2.2.8.ebuild, dbmail-2.2.9.ebuild, dbmail-2.2.10.ebuild,
+  dbmail-2.2.11_rc1.ebuild, dbmail-2.3.2.ebuild, dbmail-2.3.3.ebuild:
+  Use gmime-2.2*, bug #239412.
+
+*dbmail-2.3.3 (06 Aug 2008)
+*dbmail-2.2.11_rc1 (06 Aug 2008)
+
+  06 Aug 2008; Thomas Raschbacher <lordvan@gentoo.org>
+  files/dbmail-timsieved.initd, +dbmail-2.2.11_rc1.ebuild,
+  dbmail-2.3.2.ebuild, +dbmail-2.3.3.ebuild:
+  Added 2.2.11 rc1 (Bug #233708 thanks to svrmarty <svrmarty@gmx.net>)
+  Added 2.3.3 devel release and fixed download url in 2.3.x
+  Fixed init script (Bug #225427 thanks to Chris Mayo
+  <mayo@clara.co.uk>)
+
+  21 May 2008; Tiziano Müller <dev-zero@gentoo.org> dbmail-2.2.7.ebuild,
+  dbmail-2.2.8.ebuild, dbmail-2.2.9.ebuild, dbmail-2.2.10.ebuild,
+  dbmail-2.3.2.ebuild:
+  Changed dependency for postgresql from dev-db/postgresql to
+  virtual/postgresql-server
+
+*dbmail-2.2.10 (05 May 2008)
+
+  05 May 2008; Thomas Raschbacher <lordvan@gentoo.org>
+  +dbmail-2.2.10.ebuild:
+  added 2.2.10 fixes bug #218136
+  Thanks to svrmarty <svrmarty@gmx.net> for pointing this out
+
+  17 Apr 2008; Markus Meier <maekke@gentoo.org> dbmail-2.2.9.ebuild:
+  amd64/x86 stable, security bug #218154
+
+  11 Apr 2008; Markus Meier <maekke@gentoo.org> dbmail-2.2.8.ebuild:
+  amd64 stable, bug #209964
+
+  28 Feb 2008; Thomas Raschbacher <lordvan@gentoo.org> dbmail-2.3.2.ebuild:
+  hard-masked 2.3.2 again as it should be.
+
+  15 Feb 2008; Michael Sterrett <mr_bones_@gentoo.org> dbmail-2.2.7.ebuild,
+  dbmail-2.2.8.ebuild, dbmail-2.2.9.ebuild, dbmail-2.3.2.ebuild:
+  correct sqlite->sqlite3 in deps
+
+  14 Feb 2008; Christian Faulhammer <opfer@gentoo.org> dbmail-2.2.8.ebuild:
+  stable x86, bug 209964
+
+  13 Feb 2008; Thomas Raschbacher <lordvan@gentoo.org> -dbmail-2.2.5.ebuild,
+  -dbmail-2.2.7_rc2.ebuild, -dbmail-2.2.7_rc3.ebuild,
+  -dbmail-2.2.7_rc4.ebuild, dbmail-2.2.7.ebuild, -dbmail-2.2.8_rc1.ebuild,
+  dbmail-2.2.8.ebuild, dbmail-2.2.9.ebuild, dbmail-2.3.2.ebuild:
+  cleanout of old rcX ebuilds and fixes bug 205448 (thanks to Evil Compile
+  Person <bugs@dev.gentooexperimental.org> for pointing this out)
+
+*dbmail-2.3.2 (12 Feb 2008)
+*dbmail-2.2.9 (12 Feb 2008)
+
+  12 Feb 2008; Thomas Raschbacher <lordvan@gentoo.org> +dbmail-2.2.9.ebuild,
+  +dbmail-2.3.2.ebuild:
+  added 2.2.9 and 2.3.2(hardmasked for now)
+
+  23 Jan 2008; Thomas Raschbacher <lordvan@gentoo.org>
+  dbmail-2.2.8_rc1.ebuild:
+  fixed S= .. in 2.2.8_rc1 fixes bug #202512 Thanks to Alexander Kuznetsov
+  <fiw@mail.ru> for pointing this one out.
+
+*dbmail-2.2.8 (18 Dec 2007)
+
+  18 Dec 2007; Thomas Raschbacher <lordvan@gentoo.org> +dbmail-2.2.8.ebuild:
+  added 2.2.8 release
+
+*dbmail-2.2.8_rc1 (09 Dec 2007)
+
+  09 Dec 2007; Thomas Raschbacher <lordvan@gentoo.org>
+  +dbmail-2.2.8_rc1.ebuild:
+  added 2.2.8 rc1
+
+  14 Nov 2007; Steve Dibb <beandog@gentoo.org> dbmail-2.2.7.ebuild:
+  amd64 stable, bug 198858
+
+  13 Nov 2007; Dawid Węgliński <cla@gentoo.org> dbmail-2.2.7.ebuild:
+  Stable on x86 (bug #198858)
+
+  02 Nov 2007; Steve Dibb <beandog@gentoo.org> dbmail-2.2.7_rc2.ebuild:
+  amd64 stable, bug 195362
+
+*dbmail-2.2.7 (31 Oct 2007)
+
+  31 Oct 2007; Thomas Raschbacher <lordvan@gentoo.org>
+  +dbmail-2.2.7_rc4.ebuild, +dbmail-2.2.7.ebuild:
+  added 2.2.7 release
+
+*dbmail-2.2.7_rc4 (25 Oct 2007)
+
+  25 Oct 2007; Thomas Raschbacher <lordvan@gentoo.org>
+  +dbmail-2.2.7_rc4.ebuild:
+  added 2.2.7 rc4
+
+  12 Oct 2007; Thomas Raschbacher <lordvan@gentoo.org>
+  dbmail-2.2.7_rc2.ebuild:
+  readding x86 (see bug #195362)
+
+*dbmail-2.2.7_rc3 (12 Oct 2007)
+
+  12 Oct 2007; Thomas Raschbacher <lordvan@gentoo.org>
+  dbmail-2.2.7_rc2.ebuild, +dbmail-2.2.7_rc3.ebuild:
+  added 2.2.7 rc3
+  reverted to ~x86 again due to mail-filter/libsieve needing stabilizing first
+  and a bug. please see Bug #195362
+
+  11 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  dbmail-2.2.7_rc2.ebuild:
+  stable x86, bug 195362
+
+  10 Oct 2007; Thomas Raschbacher <lordvan@gentoo.org> -dbmail-2.2.4.ebuild,
+  -dbmail-2.2.5_rc2.ebuild, -dbmail-2.2.5_rc3.ebuild, dbmail-2.2.5.ebuild,
+  -dbmail-2.2.6_rc1.ebuild, -dbmail-2.2.6_rc2.ebuild,
+  -dbmail-2.2.7_rc1.ebuild, dbmail-2.2.7_rc2.ebuild:
+  removed 2.2.4 and old rcX versions + added openldap dependency when
+  USE="ldap". fixes bug #195149 thanks to Brandon Adams <bmadams@gmail.com>
+  for pointing this out.
+
+*dbmail-2.2.7_rc2 (30 Sep 2007)
+*dbmail-2.2.7_rc1 (30 Sep 2007)
+
+  30 Sep 2007; Thomas Raschbacher <lordvan@gentoo.org>
+  +dbmail-2.2.7_rc1.ebuild, +dbmail-2.2.7_rc2.ebuild:
+  added 2.2.7 rc1 and rc2 ebuilds
+
+*dbmail-2.2.6_rc2 (10 Sep 2007)
+
+  10 Sep 2007; Thomas Raschbacher <lordvan@gentoo.org>
+  +dbmail-2.2.6_rc2.ebuild:
+  new rc added
+
+*dbmail-2.2.6_rc1 (16 Jul 2007)
+
+  16 Jul 2007; Thomas Raschbacher <lordvan@gentoo.org>
+  +dbmail-2.2.6_rc1.ebuild:
+  added 2.2.6 rc1 ebuild
+
+*dbmail-2.2.5 (05 Jun 2007)
+
+  05 Jun 2007; Thomas Raschbacher <lordvan@gentoo.org> +dbmail-2.2.5.ebuild:
+  added 2.2.5 version
+
+*dbmail-2.2.5_rc3 (29 May 2007)
+
+  29 May 2007; Thomas Raschbacher <lordvan@gentoo.org>
+  +dbmail-2.2.5_rc3.ebuild:
+  added 2.2.5 rc3
+
+*dbmail-2.2.5_rc2 (15 May 2007)
+
+  15 May 2007; Thomas Raschbacher <lordvan@gentoo.org> metadata.xml,
+  +dbmail-2.2.5_rc2.ebuild:
+  added 2.2.5 rc2 and took maintainership as mentioned by ticho in bug #22331
+
+  17 Apr 2007; Christian Faulhammer <opfer@gentoo.org> dbmail-2.2.4.ebuild:
+  keyworded ~amd64, bug 172696
+
+*dbmail-2.2.4 (26 Mar 2007)
+
+  26 Mar 2007; Andrej Kacian <ticho@gentoo.org> +files/dbmail-imapd.initd,
+  +files/dbmail-lmtpd.initd, +files/dbmail-pop3d.initd,
+  +files/dbmail-timsieved.initd, +metadata.xml, +dbmail-2.2.4.ebuild:
+  Initial import. Ebuild by several people collaborating in bug #22331 (yes,
+  _that_ old!), based on ebuild written by Chris Johnson <cmjohn at
+  mail.utexas.edu>.

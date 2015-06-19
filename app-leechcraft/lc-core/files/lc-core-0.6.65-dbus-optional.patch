@@ -1,0 +1,87 @@
+commit 2e221a116dacf7541af8bfe6110856a70b8a8f70
+Author: 0xd34df00d <0xd34df00d@gmail.com>
+Date:   Mon Jun 16 14:54:15 2014 +0400
+
+    [Core] DBus loaders made optional.
+
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index c138fd5..dc2b8d6 100644
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -5,8 +5,10 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR}
+ 	${Boost_INCLUDE_DIR}
+ 	)
+ 
++option (WITH_DBUS_LOADERS "Build D-Bus loaders on UNIX" OFF)
++
+ if (NOT USE_QT5)
+-	if (NOT WIN32)
++	if (WITH_DBUS_LOADERS)
+ 		set (QT_USE_QTDBUS TRUE)
+ 	endif ()
+ 	set (QT_USE_QTNETWORK TRUE)
+@@ -101,7 +103,7 @@ set (SRCS
+ 	loaders/sopluginloader.cpp
+ 	)
+ 
+-if (UNIX AND NOT APPLE)
++if (WITH_DBUS_LOADERS)
+ 	set (SRCS
+ 		${SRCS}
+ 		loaders/dbuspluginloader.cpp
+@@ -179,6 +181,6 @@ if (USE_QT5)
+ 	QT5_USE_MODULES (leechcraft Gui Network Widgets Xml Sql Script Concurrent DBus Svg)
+ endif ()
+ 
+-if (UNIX AND NOT APPLE)
++if (WITH_DBUS_LOADERS)
+ 	add_subdirectory (loaders/dbus)
+ endif ()
+commit 4017753193a769a8bf7de6a54ec2c66954401e2f
+Author: 0xd34df00d <0xd34df00d@gmail.com>
+Date:   Mon Jun 16 17:15:57 2014 +0400
+
+    [Core] Fixed linking without WITH_DBUS_LOADERS.
+
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index dc2b8d6..5f593ea 100644
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -7,6 +7,10 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR}
+ 
+ option (WITH_DBUS_LOADERS "Build D-Bus loaders on UNIX" OFF)
+ 
++if (WITH_DBUS_LOADERS)
++	add_definitions (-DWITH_DBUS_LOADERS)
++endif ()
++
+ if (NOT USE_QT5)
+ 	if (WITH_DBUS_LOADERS)
+ 		set (QT_USE_QTDBUS TRUE)
+diff --git a/src/core/pluginmanager.cpp b/src/core/pluginmanager.cpp
+index e769715..4cb479a 100644
+--- a/src/core/pluginmanager.cpp
++++ b/src/core/pluginmanager.cpp
+@@ -56,9 +56,11 @@
+ #include "shortcutmanager.h"
+ #include "application.h"
+ #include "loaders/sopluginloader.h"
+-#ifdef Q_OS_LINUX
+-	#include "loaders/dbuspluginloader.h"
++
++#ifdef WITH_DBUS_LOADERS
++#include "loaders/dbuspluginloader.h"
+ #endif
++
+ #include "settingstab.h"
+ 
+ namespace LeechCraft
+@@ -985,7 +987,7 @@ namespace LeechCraft
+ 
+ 	Loaders::IPluginLoader_ptr PluginManager::MakeLoader (const QString& filename)
+ 	{
+-#ifndef Q_OS_LINUX
++#ifndef WITH_DBUS_LOADERS
+ 		return Loaders::IPluginLoader_ptr (new Loaders::SOPluginLoader (filename));
+ #else
+ 		if (DBusMode_)

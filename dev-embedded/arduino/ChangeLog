@@ -1,0 +1,108 @@
+# ChangeLog for dev-embedded/arduino
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/arduino/ChangeLog,v 1.20 2015/04/16 23:04:19 chewi Exp $
+
+*arduino-1.0.5-r1 (16 Apr 2015)
+
+  16 Apr 2015; James Le Cuirot <chewi@gentoo.org> +arduino-1.0.5-r1.ebuild,
+  -arduino-1.0.4.ebuild, -arduino-1.0.5.ebuild:
+  Fix slotting of Java dependencies, straight to stable to avoid immediate
+  breakage. Also remove older unstable version.
+
+  18 Aug 2013; Agostino Sarubbo <ago@gentoo.org> arduino-1.0.5.ebuild:
+  Stable for x86, wrt bug #477092
+
+  24 Jul 2013; Agostino Sarubbo <ago@gentoo.org> arduino-1.0.5.ebuild:
+  Stable for amd64, wrt bug #477092
+
+  16 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #79409
+
+*arduino-1.0.5 (13 Jun 2013)
+
+  13 Jun 2013; Angelo Arrifano <miknix@gentoo.org> +arduino-1.0.5.ebuild:
+  Version bump. #471764
+
+*arduino-1.0.4 (03 Apr 2013)
+
+  03 Apr 2013; Angelo Arrifano <miknix@gentoo.org> -arduino-1.0.3-r1.ebuild,
+  +arduino-1.0.4.ebuild:
+  Version bump, #462558
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> arduino-1.0.3-r1.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  02 Feb 2013; Angelo Arrifano <miknix@gentoo.org> arduino-1.0.3-r1.ebuild:
+  Fix install doc, #455136
+
+  26 Jan 2013; Angelo Arrifano <miknix@gentoo.org> arduino-1.0.3-r1.ebuild:
+  Fix dependencies, fixing #439126
+
+*arduino-1.0.3-r1 (25 Jan 2013)
+
+  25 Jan 2013; Angelo Arrifano <miknix@gentoo.org> -arduino-1.0.3.ebuild,
+  +arduino-1.0.3-r1.ebuild, files/arduino.desktop:
+  Add menu desktop file and icons, bug #453920
+
+*arduino-1.0.3 (07 Jan 2013)
+
+  07 Jan 2013; Angelo Arrifano <miknix@gentoo.org> -arduino-1.0.1.ebuild,
+  -files/arduino-1.0.1-script.patch, +arduino-1.0.3.ebuild,
+  +files/arduino-1.0.3-script.patch:
+  Version hump, thanks mrueg #442130
+
+*arduino-1.0.1 (03 Sep 2012)
+
+  03 Sep 2012; Angelo Arrifano <miknix@gentoo.org> -arduino-1.0.ebuild,
+  +arduino-1.0.1.ebuild, +files/arduino-1.0.1-build.xml.patch,
+  +files/arduino-1.0.1-script.patch, -files/arduino-1.0-prog_char-fix.patch,
+  -files/arduino-1.0-script.patch, -files/Makefile-0011.patch,
+  -arduino-0015-r1.ebuild, -files/Makefile-0015.patch, -arduino-0017.ebuild,
+  -files/Makefile-0017.patch, -files/arduino-script-0017.patch, -files/arduino:
+  Version bump, cleaned up old cruft. Thanks mrueg and others, #420861
+
+  10 Feb 2012; Angelo Arrifano <miknix@gentoo.org> arduino-1.0.ebuild,
+  +files/arduino.desktop:
+  Add menu entry since upstream does not do it.
+
+*arduino-1.0 (10 Feb 2012)
+
+  10 Feb 2012; Angelo Arrifano <miknix@gentoo.org> +arduino-1.0.ebuild,
+  +files/arduino-1.0-prog_char-fix.patch, +files/arduino-1.0-script.patch:
+  Version bump, thanks Jess Haas for providing the ebuild, #303043
+
+  09 Feb 2012; Angelo Arrifano <miknix@gentoo.org> metadata.xml:
+  Add myself as maintaner, remove solar (with his permission)
+
+*arduino-0017 (17 Oct 2009)
+
+  17 Oct 2009; Joe Sapp <nixphoeni@gentoo.org> +arduino-0017.ebuild,
+  +files/Makefile-0017.patch, +files/arduino-script-0017.patch:
+  Version bump (bug #289205)
+
+  24 Apr 2009; Joe Sapp <nixphoeni@gentoo.org> metadata.xml,
+  arduino-0015-r1:
+  -Forgot to remove librxtxSerial.so in src_install with the other external
+   packages I could find (not entirely necessary, but good practice I
+   think)
+  -Added nixphoeni to maintainer list
+
+*arduino-0015-r1 (18 Apr 2009)
+
+  18 Apr 2009; Joe Sapp <nixphoeni@gentoo.org> -arduino-0011.ebuild,
+  -arduino-0015.ebuild, +arduino-0015-r1.ebuild:
+  Fix for amd64 systems - use system libraries instead of upstream-provided
+  libraries. Check for avr-g++ since that's what the IDE will complain
+  about. Also fixed potential security bug (see related bug #189249).
+
+*arduino-0015 (14 Apr 2009)
+
+  14 Apr 2009; <solar@gentoo.org> +files/Makefile-0015.patch,
+  +arduino-0015.ebuild:
+  - version bump. Bug 244969
+
+*arduino-0011 (21 Sep 2008)
+
+  21 Sep 2008; <solar@gentoo.org> +files/Makefile-0011.patch,
+  +files/arduino, +metadata.xml, +arduino-0011.ebuild:
+  - Initial Commit

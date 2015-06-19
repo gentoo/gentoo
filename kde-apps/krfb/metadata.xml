@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<use>
+		<flag name="telepathy">Enable desktop sharing through a telepathy client</flag>
+		<flag name="ktp">Enable displaying of KDE Telepathy contacts</flag>
+	</use>
+</pkgmetadata>

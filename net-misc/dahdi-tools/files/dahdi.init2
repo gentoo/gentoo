@@ -1,0 +1,37 @@
+#!/sbin/runscript
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dahdi-tools/files/dahdi.init2,v 1.1 2009/10/28 11:25:12 chainsaw Exp $
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ ! -f /etc/dahdi/system.conf ]; then
+		eerror "/etc/dahdi/system.conf not found. Nothing to do."
+		return 1
+	fi
+
+	return 0
+}
+
+start() {
+	checkconfig || return 1
+
+	ebegin "Starting DAHDI"
+	/usr/sbin/dahdi_cfg
+	eend $?
+
+	if [ $? -eq 0 -a -r /etc/fxotune.conf ]; then
+		ebegin "Loading DAHDI fxotune.conf"
+		/usr/sbin/fxotune -s
+		eend $?
+	fi
+}
+
+stop() {
+	ebegin "Stopping DAHDI"
+	/usr/sbin/dahdi_cfg -s
+	eend 
+}

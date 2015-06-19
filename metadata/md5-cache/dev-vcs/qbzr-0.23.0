@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm prepare test
+DEPEND=>=dev-vcs/bzr-2.5 >=dev-python/PyQt4-4.1[X] =dev-lang/python-2*
+DESCRIPTION=Qt frontend for Bazaar
+EAPI=3
+HOMEPAGE=https://launchpad.net/qbzr
+KEYWORDS=alpha amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-vcs/bzr-2.5 >=dev-python/PyQt4-4.1[X] =dev-lang/python-2*
+SLOT=0
+SRC_URI=https://edge.launchpad.net/qbzr/0.23/0.23.0/+download/qbzr-0.23.0.tar.gz
+_eclasses_=distutils	92e738ea29389cb3f34778d7a349ac71	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=e2e97493e317640125849be88412a400

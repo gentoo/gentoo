@@ -1,0 +1,11 @@
+# /etc/conf.d/vdr.launcher:
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-launcher/files/confd,v 1.1 2006/03/06 06:07:44 zzam Exp $
+
+# config file for vdr plugin launcher
+
+# If you want to disable some plugins in the laucher plugin,
+# please specify them here
+#   allowed values: list of plugin names
+#   default value: do not exclude any plugin
+#VDR_LAUNCHER_EXCLUDE="plugin1 plugin2"
+

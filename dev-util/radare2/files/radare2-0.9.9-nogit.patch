@@ -1,0 +1,13 @@
+capstone-sync does not work correctly for release tarballs.
+It tries to sync/revert from upstream git repo unconditionaly.
+diff --git a/shlr/Makefile b/shlr/Makefile
+index a1796ce..f8d179a 100644
+--- a/shlr/Makefile
++++ b/shlr/Makefile
+@@ -144,5 +144,5 @@ else
+ 
+ ifeq ($(CS_TAR),)
+-capstone: capstone-sync
++capstone: # capstone-sync
+ 
+ capstone-sync:

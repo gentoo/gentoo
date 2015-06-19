@@ -1,0 +1,10 @@
+# ChangeLog for x11-themes/yasis-icon-theme
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/yasis-icon-theme/ChangeLog,v 1.1 2010/11/11 10:33:57 ssuominen Exp $
+
+*yasis-icon-theme-0.4.2 (11 Nov 2010)
+
+  11 Nov 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +yasis-icon-theme-0.4.2.ebuild:
+  Initial commit.
+

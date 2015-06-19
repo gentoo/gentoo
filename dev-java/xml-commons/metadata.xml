@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+<herd>java</herd>
+
+<longdescription>
+
+These are some of the components that are provided by the Apache XML Commons
+project.
+
+ * Resolver - An XML Entity and URI Resolver donated by Norman Walsh.
+ * Which - A simple environment checking utility for Apache projects by Shane
+   Curcuru
+ * External Interfaces (xml-apis) - An Apache-hosted set of externally-defined
+   standards interfaces, namely DOM, SAX, and JAXP.
+
+</longdescription>
+</pkgmetadata>

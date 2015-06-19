@@ -1,0 +1,23 @@
+# ChangeLog for dev-ruby/debugger-linecache
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/debugger-linecache/ChangeLog,v 1.5 2015/06/07 17:38:15 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  20 Mar 2015; Hans de Graaff <graaff@gentoo.org>
+  debugger-linecache-1.2.0.ebuild:
+  Add ruby22.
+
+  30 Oct 2014; Manuel Rüger <mrueg@gentoo.org> debugger-linecache-1.2.0.ebuild:
+  Drop jruby target.
+
+  31 Dec 2013; Hans de Graaff <graaff@gentoo.org>
+  debugger-linecache-1.2.0.ebuild:
+  Add ruby21. Avoid implicit dependency on git.
+
+*debugger-linecache-1.2.0 (05 Nov 2013)
+
+  05 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +debugger-linecache-1.2.0.ebuild,
+  +metadata.xml:
+  Initial version, dependency for pry-debugger.

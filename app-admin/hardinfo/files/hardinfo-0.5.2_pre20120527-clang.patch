@@ -1,0 +1,24 @@
+https://github.com/lpereira/hardinfo/pull/6
+
+--- hardinfo-0.5.2_pre20120527/hardinfo/util.c
++++ hardinfo-0.5.2_pre20120527/hardinfo/util.c
+@@ -1368,7 +1368,7 @@
+ {
+ 	if (G_UNLIKELY(!_moreinfo)) {
+ 		DEBUG("moreinfo not initialized");
+-		return;
++		return 0;
+ 	}
+ 	
+ 	if (prefix) {
+--- hardinfo-0.5.2_pre20120527/CMakeLists.txt
++++ hardinfo-0.5.2_pre20120527/CMakeLists.txt
+@@ -43,6 +43,8 @@
+ 
+ message(STATUS "Building HardInfo for architecture: ${HARDINFO_OS}-${HARDINFO_ARCH}")
+ 
++add_definitions("-std=gnu89")
++
+ include(FindPkgConfig)
+ pkg_check_modules(GTK REQUIRED gtk+-2.0>=2.10 glib-2.0>=2.10 gthread-2.0>=2.10 gmodule-export-2.0>=2.10)
+ pkg_check_modules(LIBSOUP libsoup-2.4>=2.24)

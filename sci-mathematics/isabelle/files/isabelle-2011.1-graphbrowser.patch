@@ -1,0 +1,11 @@
+--- Isabelle2011-1-orig/lib/browser/build	2011-10-10 01:47:58.000000000 +1100
++++ Isabelle2011-1/lib/browser/build	2012-01-08 12:58:06.041444651 +1100
+@@ -6,6 +6,8 @@
+ #
+ # Requires proper Isabelle settings environment.
+ 
++ISABELLE_HOME="$(cd "$(dirname "${0}")/../.."; pwd -P)"
++source "$ISABELLE_HOME/lib/scripts/getsettings" || exit 2
+ 
+ ## diagnostics
+ 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-biology</herd>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>mmokrejs@gmail.com</email>
+    <name>Martin Mokrejs</name>
+  </maintainer>
+  <longdescription>
+    BEDTools: a flexible suite of utilities for comparing genomic features.
+  </longdescription>
+  <upstream>
+    <remote-id type="google-code">bedtools</remote-id>
+    <remote-id type="github">arq5x/bedtools2</remote-id>
+  </upstream>
+</pkgmetadata>

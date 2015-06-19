@@ -1,0 +1,31 @@
+# ChangeLog for games-puzzle/textmaze
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/textmaze/ChangeLog,v 1.8 2015/02/19 09:06:17 ago Exp $
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> textmaze-1.2.ebuild:
+  Stable for amd64, wrt bug #539728
+
+  11 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> textmaze-1.2.ebuild:
+  EAPI=5
+
+  16 Nov 2009; Mounir Lamouri <volkmar@gentoo.org> textmaze-1.2.ebuild:
+  Keywording for ppc, bug 293226
+
+  05 Nov 2009; Tristan Heaven <nyhm@gentoo.org> textmaze-1.2.ebuild:
+  Add ~amd64 keyword; EAPI=2
+
+  26 Jun 2008; Christian Faulhammer <opfer@gentoo.org> textmaze-1.2.ebuild:
+  stable x86, bug 229491
+
+  07 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org> textmaze-1.2.ebuild:
+  QA cleanup: Fix quoting.
+
+  08 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*textmaze-1.2 (05 Jan 2006)
+
+  05 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +textmaze-1.2.ebuild:
+  Initial import. Ebuild by Adrian Fruehwirth <adrian.fruehwirth@gmx.at>.
+  Closing bug #107190.

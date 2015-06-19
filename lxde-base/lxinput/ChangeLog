@@ -1,0 +1,99 @@
+# ChangeLog for lxde-base/lxinput
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/lxde-base/lxinput/ChangeLog,v 1.28 2015/03/03 08:04:11 dlan Exp $
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> lxinput-0.3.2.ebuild:
+  add arm64 support, tested on A53 board
+
+  23 Feb 2013; Zac Medico <zmedico@gentoo.org> lxinput-0.3.2.ebuild:
+  Add ~arm-linux and ~x86-linux keywords.
+
+  25 Aug 2012; Markos Chandras <hwoarang@gentoo.org> -lxinput-0.1.1.ebuild,
+  -lxinput-0.3.0.ebuild, -lxinput-0.3.1.ebuild:
+  Remove old LXDE packages
+
+  14 Aug 2012; Johannes Huber <johu@gentoo.org> lxinput-0.3.2.ebuild:
+  Stable for x86, wrt bug #430494
+
+  11 Aug 2012; Agostino Sarubbo <ago@gentoo.org> lxinput-0.3.2.ebuild:
+  Stable for amd64, wrt bug #430494
+
+  09 Aug 2012; Anthony G. Basile <blueness@gentoo.org> lxinput-0.3.2.ebuild:
+  Stable arm, bug #430494
+
+  09 Aug 2012; Anthony G. Basile <blueness@gentoo.org> lxinput-0.3.2.ebuild:
+  Stable ppc, bug #430494
+
+  05 Jun 2012; Michael Weber <xmw@gentoo.org> lxinput-0.3.1.ebuild:
+  ppc stable (bug 385189)
+
+*lxinput-0.3.2 (23 May 2012)
+
+  23 May 2012; Markos Chandras <hwoarang@gentoo.org> +lxinput-0.3.2.ebuild:
+  Version bump
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> lxinput-0.1.1.ebuild,
+  lxinput-0.3.0.ebuild, lxinput-0.3.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  09 Oct 2011; Markus Meier <maekke@gentoo.org> lxinput-0.3.1.ebuild:
+  arm stable, bug #385189
+
+  07 Oct 2011; Markos Chandras <hwoarang@gentoo.org> lxinput-0.3.1.ebuild:
+  Stable on amd64 wrt bug #385189
+
+  05 Oct 2011; Andreas Schuerch <nativemad@gentoo.org> lxinput-0.3.1.ebuild:
+  x86 stable, bug 385189
+
+  03 Aug 2011; Markos Chandras <hwoarang@gentoo.org> lxinput-0.3.1.ebuild:
+  Make it EAPI4
+
+*lxinput-0.3.1 (03 Aug 2011)
+
+  03 Aug 2011; Markos Chandras <hwoarang@gentoo.org> +lxinput-0.3.1.ebuild:
+  Version bump
+
+  07 Mar 2011; Tobias Klausmann <klausman@gentoo.org> lxinput-0.3.0.ebuild:
+  Keyworded on alpha, bug #330911
+
+  22 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> lxinput-0.3.0.ebuild:
+  ppc stable wrt #349762
+
+  08 Jan 2011; Markus Meier <maekke@gentoo.org> lxinput-0.3.0.ebuild:
+  arm stable, bug #349762
+
+  04 Jan 2011; Christian Faulhammer <fauli@gentoo.org> lxinput-0.3.0.ebuild:
+  stable x86, bug 349762
+
+  01 Jan 2011; Markos Chandras <hwoarang@gentoo.org> lxinput-0.3.0.ebuild:
+  Stable on amd64 wrt bug #349762
+
+  15 Oct 2010; <vostorga@gentoo.org> lxinput-0.3.0.ebuild:
+  Adding DEPEND on >=dev-util/intltool-0.40.0 , patch thanks to Jacob
+  Godserv <jacobgodserv@gmail.com> bug #329513
+
+*lxinput-0.3.0 (12 Oct 2010)
+
+  12 Oct 2010; Víctor Ostorga <vostorga@gentoo.org> +lxinput-0.3.0.ebuild:
+  Version bump to 0.3.0
+
+  23 Feb 2010; Raúl Porcel <armin76@gentoo.org> lxinput-0.1.1.ebuild:
+  arm stable wrt #306433
+
+  24 Jan 2010; Raúl Porcel <armin76@gentoo.org> lxinput-0.1.1.ebuild:
+  Add ~arm
+
+  21 Nov 2009; nixnut <nixnut@gentoo.org> lxinput-0.1.1.ebuild:
+  ppc stable #292698
+
+  20 Nov 2009; Markus Meier <maekke@gentoo.org> lxinput-0.1.1.ebuild:
+  amd64/x86 stable, bug #292698
+
+  05 Aug 2009; Mounir Lamouri <volkmar@gentoo.org> lxinput-0.1.1.ebuild:
+  Keywording for ppc. Bug 271148
+
+*lxinput-0.1.1 (04 Aug 2009)
+
+  04 Aug 2009; Ben de Groot <yngwin@gentoo.org> +lxinput-0.1.1.ebuild,
+  +metadata.xml:
+  Initial import.

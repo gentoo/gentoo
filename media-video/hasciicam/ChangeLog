@@ -1,0 +1,53 @@
+# ChangeLog for media-video/hasciicam
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/hasciicam/ChangeLog,v 1.13 2014/08/10 20:59:43 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> hasciicam-1.1.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  22 Dec 2011; Samuli Suominen <ssuominen@gentoo.org> hasciicam-1.1.2.ebuild:
+  Remove useless ChangeLog from DOCS.
+
+*hasciicam-1.1.2 (22 Dec 2011)
+
+  22 Dec 2011; Samuli Suominen <ssuominen@gentoo.org> +hasciicam-1.1.2.ebuild:
+  Version bump wrt #395701 by Alessandro Capogna
+
+  22 Dec 2011; Samuli Suominen <ssuominen@gentoo.org> -hasciicam-1.0.ebuild:
+  old
+
+  22 Dec 2011; Samuli Suominen <ssuominen@gentoo.org> hasciicam-1.1.1.ebuild:
+  Remove font-misc-misc from DEPEND as it's only a RDEPEND. Restore audited
+  list of documentation to install.
+
+  22 Dec 2011; Agostino Sarubbo <ago@gentoo.org> hasciicam-1.1.1.ebuild:
+  Added font-misc-misc as RDEPEND by Alessandro Capogna in bug #387909, drop
+  default src_install function
+
+  08 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> hasciicam-1.1.1.ebuild:
+  x86 stable wrt bug #385357
+
+  04 Oct 2011; Tony Vroon <chainsaw@gentoo.org> hasciicam-1.1.1.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Elijah "Armageddon" El Lazkani in bug #385357.
+
+*hasciicam-1.1.1 (28 Mar 2011)
+
+  28 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +hasciicam-1.1.1.ebuild:
+  Version bump; new version supports V4L2 (bug #360967), and no longer
+  overflows buffers (bug #301879).
+
+  24 Nov 2008; <ssuominen@gentoo.org> metadata.xml, hasciicam-1.0.ebuild:
+  Re-assign to media-video and stabilize for x86.
+
+  13 May 2008; Samuli Suominen <drac@gentoo.org> hasciicam-1.0.ebuild:
+  amd64 stable
+
+  02 Feb 2008; Christian Faulhammer <opfer@gentoo.org> hasciicam-1.0.ebuild:
+  keyworded ~x86, bug 208525
+
+*hasciicam-1.0 (01 Feb 2008)
+
+  01 Feb 2008; Samuli Suominen <drac@gentoo.org> +hasciicam-1.0.ebuild:
+  Initial commit.

@@ -1,0 +1,76 @@
+# ChangeLog for x11-misc/gromit
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/gromit/ChangeLog,v 1.20 2014/06/29 22:46:59 dilfridge Exp $
+
+  29 Jun 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -gromit-20041213.ebuild:
+  Remove old
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> gromit-20041213.ebuild,
+  gromit-20041213-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  09 Jan 2012; Brent Baude <ranger@gentoo.org> gromit-20041213-r1.ebuild:
+  Marking gromit-20041213-r1 ppc for bug 358623
+
+  20 Oct 2011; Pacho Ramos <pacho@gentoo.org> gromit-20041213-r1.ebuild:
+  Drop DEPRECATED flags, bug #387833
+
+  10 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gromit-20041213-r1.ebuild:
+  x86 stable wrt bug #358623
+
+  28 Mar 2011; Tim Harder <radhermit@gentoo.org> gromit-20041213.ebuild:
+  Use gtk+ slot dep with old revision too.
+
+  12 Mar 2011; Tim Harder <radhermit@gentoo.org> gromit-20041213-r1.ebuild:
+  Use slot dep for gtk+.
+
+*gromit-20041213-r1 (11 Aug 2010)
+
+  11 Aug 2010; Jeroen Roovers <jer@gentoo.org> +gromit-20041213-r1.ebuild:
+  Do not hardcode CC in Makefile. Respect LDFLAGS (bug #331889).
+
+  21 Apr 2008; Samuli Suominen <drac@gentoo.org> gromit-20041213.ebuild:
+  Move pkgconfig from RDEPEND to DEPEND. Use toolchain-funcs for CC.
+
+  11 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  fix herd
+
+  18 Dec 2006; Charlie Shepherd <masterdriverz@gentoo.org>
+  gromit-20041213.ebuild:
+  Add pkgconfig dep; bug 150677
+
+  15 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  gromit-20041213.ebuild:
+  ppc stable
+
+  10 Sep 2006; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove brix from metadata.xml.
+
+  07 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  gromit-20041213.ebuild:
+  mark ~ppc
+
+  12 Mar 2005; Henrik Brix Andersen <brix@gentoo.org> -gromit-20041014.ebuild:
+  Pruned old version.
+
+  11 Jan 2005; Henrik Brix Andersen <brix@gentoo.org> gromit-20041213.ebuild:
+  Stable on x86.
+
+  20 Dec 2004; Henrik Brix Andersen <brix@gentoo.org> gromit-20041014.ebuild:
+  Stable on x86.
+
+*gromit-20041213 (16 Dec 2004)
+
+  16 Dec 2004; Henrik Brix Andersen <brix@gentoo.org> +gromit-20041213.ebuild:
+  Version bump.
+
+  18 Nov 2004; Henrik Brix Andersen <brix@gentoo.org> gromit-20041014.ebuild:
+  Adhere to CFLAGS.
+
+*gromit-20041014 (18 Nov 2004)
+
+  18 Nov 2004; Henrik Brix Andersen <brix@gentoo.org> +gromit-20041014.ebuild:
+  Initial import, ebuild by me.
+

@@ -1,0 +1,11 @@
+--- jmupdf-0.4.1/jmupdf/src/com/examples/pdf/convert/Pdf_2_Png.java
++++ jmupdf-0.4.1/jmupdf/src/com/examples/pdf/convert/Pdf_2_Png.java
+@@ -26,7 +26,7 @@
+ 			 */
+ 			pdfDoc.saveAsPng(
+ 					1,									// Page number
+-					"e:\\tmp\\Lösung.png",				// PNG file
++					"e:\\tmp\\Loesung.png",				// PNG file
+ 					2f,									// Zoom	
+ 					ImageType.IMAGE_TYPE_RGB);		// Color space. Only RGB, ARGB & Gray.
+ 

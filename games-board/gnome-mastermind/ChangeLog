@@ -1,0 +1,70 @@
+# ChangeLog for games-board/gnome-mastermind
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/gnome-mastermind/ChangeLog,v 1.16 2015/02/14 03:47:43 mr_bones_ Exp $
+
+  14 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  gnome-mastermind-0.3.1-r1.ebuild:
+  use app-text/rarian instead of app-text/scrollkeeper
+
+  05 Dec 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  -gnome-mastermind-0.3.1.ebuild:
+  old
+
+  05 Dec 2014; Agostino Sarubbo <ago@gentoo.org>
+  gnome-mastermind-0.3.1-r1.ebuild:
+  Stable for x86, wrt bug #530122
+
+  03 Dec 2014; Agostino Sarubbo <ago@gentoo.org>
+  gnome-mastermind-0.3.1-r1.ebuild:
+  Stable for ppc, wrt bug #530122
+
+  26 Nov 2014; Agostino Sarubbo <ago@gentoo.org>
+  gnome-mastermind-0.3.1-r1.ebuild:
+  Stable for amd64, wrt bug #530122
+
+*gnome-mastermind-0.3.1-r1 (22 Nov 2014)
+
+  22 Nov 2014; Pacho Ramos <pacho@gentoo.org> +gnome-mastermind-0.3.1-r1.ebuild:
+  Bump to eapi5, fix .desktop file and respect LINGUAS
+
+  29 Oct 2013; Anthony G. Basile <blueness@gentoo.org>
+  gnome-mastermind-0.3.1.ebuild:
+  Keyword ~arm
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> gnome-mastermind-0.3.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  19 Oct 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  gnome-mastermind-0.3.1.ebuild:
+  patch in src_prepare
+
+  22 Jan 2010; Brent Baude <ranger@gentoo.org>
+  gnome-mastermind-0.3.1.ebuild:
+  stable ppc, bug 289154
+
+  29 Oct 2009; Markus Meier <maekke@gentoo.org>
+  gnome-mastermind-0.3.1.ebuild:
+  amd64/x86 stable, bug #289154
+
+*gnome-mastermind-0.3.1 (27 Apr 2008)
+
+  27 Apr 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gnome-mastermind-0.3.1-gentoo.patch,
+  +gnome-mastermind-0.3.1.ebuild:
+  version bump
+
+  19 Mar 2008; Tristan Heaven <nyhm@gentoo.org> gnome-mastermind-0.3.ebuild:
+  Drop games eclass usage
+
+  22 Jan 2008; Tristan Heaven <nyhm@gentoo.org> gnome-mastermind-0.3.ebuild:
+  Add gnome-doc-utils dep, bug #206304
+
+  02 Sep 2007; nixnut <nixnut@gentoo.org> gnome-mastermind-0.3.ebuild:
+  Added ~ppc wrt bug 190250
+
+*gnome-mastermind-0.3 (25 Aug 2007)
+
+  25 Aug 2007; Tupone Alfredo <tupone@gentoo.org>
+  +files/gnome-mastermind-0.3-gentoo.patch, +metadata.xml,
+  +gnome-mastermind-0.3.ebuild:
+  New package, requested via bug #177365 by Mikel Olasagasti.

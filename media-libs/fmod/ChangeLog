@@ -1,0 +1,176 @@
+# ChangeLog for media-libs/fmod
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/fmod/ChangeLog,v 1.42 2014/11/30 12:31:23 pacho Exp $
+
+  30 Nov 2014; Pacho Ramos <pacho@gentoo.org> fmod-3.75.ebuild:
+  Drop amd64 deps as this package isn't even keyworded for amd64
+
+  24 Sep 2012; Mike Frysinger <vapier@gentoo.org> fmod-3.75.ebuild,
+  fmod-4.38.00.ebuild, fmod-4.38.02.ebuild:
+  QA_DT_HASH (old/deprecated) -> QA_FLAGS_IGNORED (new hotness).
+
+  20 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> fmod-4.38.00.ebuild,
+  fmod-4.38.02.ebuild:
+  Use separate LICENSE entries for "BSD" (OggVorbis) and "BSD-2" (Android
+  Support) instead of bundling them all in "fmod" file.
+
+*fmod-4.38.02 (20 Nov 2011)
+
+  20 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> +fmod-4.38.02.ebuild:
+  Version bump.
+
+  04 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> fmod-3.75.ebuild:
+  Use license from README.txt included in fmodapi375linux.tar.gz
+
+  02 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> -fmod-4.26.00.ebuild:
+  old
+
+  02 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> fmod-4.38.00.ebuild:
+  x86 stable wrt bug #294253
+
+  01 Nov 2011; Homer Parker <hparker@gentoo.org> fmod-4.38.00.ebuild:
+  Stable on amd64 fixing bug #294253
+
+*fmod-4.38.00 (30 Oct 2011)
+
+  30 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> +fmod-4.38.00.ebuild:
+  Version bump wrt #320385 by "hitachi"
+
+  25 Nov 2009; Markus Meier <maekke@gentoo.org> fmod-4.26.00.ebuild:
+  amd64/x86 stable, bug #294341
+
+  08 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> fmod-4.26.00.ebuild:
+  Change ln -s back to ln -sf wrt #277096, thanks to Flameeyes.
+
+*fmod-4.26.00 (08 Jul 2009)
+
+  08 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> +fmod-4.26.00.ebuild:
+  Version bump wrt #277039, thanks to Toffanin Mauro.
+
+*fmod-4.25.07-r1 (03 Jun 2009)
+
+  03 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> -fmod-4.24.07.ebuild,
+  -fmod-4.25.07.ebuild, +fmod-4.25.07-r1.ebuild:
+  Simplify the library installation path for -L usage wrt #252400.
+
+*fmod-4.25.07 (21 May 2009)
+
+  21 May 2009; Samuli Suominen <ssuominen@gentoo.org> +fmod-4.25.07.ebuild:
+  Version bump to latest development.
+
+*fmod-4.24.07 (21 May 2009)
+
+  21 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  -fmod-4.08.05-r1.ebuild, -fmod-4.11.03.ebuild, -fmod-4.21.06.ebuild,
+  +fmod-4.24.07.ebuild:
+  Version bump.
+
+  12 May 2009; Samuli Suominen <ssuominen@gentoo.org> fmod-4.21.06.ebuild:
+  Remove unwanted libraries to stop revdep-rebuild from looping wrt #257419.
+
+*fmod-4.21.06 (21 Dec 2008)
+
+  21 Dec 2008; Samuli Suominen <ssuominen@gentoo.org> +fmod-4.21.06.ebuild:
+  Version bump.
+
+*fmod-4.11.03 (03 Jan 2008)
+
+  03 Jan 2008; Samuli Suominen <ssuominen@gentoo.org> +fmod-4.11.03.ebuild:
+  Version bump to latest development release as requested at IRC.
+
+*fmod-4.08.05-r1 (09 Nov 2007)
+
+  09 Nov 2007; Samuli Suominen <ssuominen@gentoo.org> +fmod-4.08.05-r1.ebuild:
+  Add more symlinks for 64bit libraries.
+
+*fmod-4.08.05 (17 Oct 2007)
+
+  17 Oct 2007; Samuli Suominen <ssuominen@gentoo.org> +fmod-4.08.05.ebuild:
+  Version bump to new slot for bug 121506.
+
+*fmod-3.75 (11 Feb 2007)
+
+  11 Feb 2007; Hanno Boeck <hanno@gentoo.org> +fmod-3.75.ebuild:
+  Version bump.
+
+  02 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> fmod-3.73.ebuild,
+  fmod-3.74.ebuild:
+  Restrict stripping. Thanks to Tristan Heaven (nyhm) in bug #137710.
+
+  06 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> fmod-3.73.ebuild,
+  fmod-3.74.ebuild:
+  Drop virtual/libc dependency.
+
+  13 Sep 2005; Simon Stelling <blubb@gentoo.org> fmod-3.73.ebuild,
+  fmod-3.74.ebuild:
+  remove the amd64 keyword wrt bug 91481
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org> fmod-3.74.ebuild:
+  Stable amd64, x86.
+
+  08 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> fmod-3.74.ebuild:
+  tidy; error check file io
+
+*fmod-3.74 (31 Oct 2004)
+
+  31 Oct 2004; Tony Vroon <chainsaw@gentoo.org> +fmod-3.74.ebuild:
+  Version bump as requested by Nickolay Kolchin-Semyonov in bug #69592.
+
+  05 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> -fmod-3.71.ebuild:
+  Removing old version.
+
+  01 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> fmod-3.73.ebuild:
+  Stable amd64.
+
+  13 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> -fmod-3.61.ebuild,
+  -fmod-3.62.ebuild, -fmod-3.70.ebuild:
+  Stable x86.  ~amd64.  Added amd64 compat libs as DEP.
+
+  07 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> :
+  Fixed digest because of crazy upstream devs not bumping versions.
+
+*fmod-3.73 (07 Jun 2004)
+
+  07 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org> fmod-3.73.ebuild:
+  Version bump closes bug #53191. Removed non-x86 ARCHS as this is a binary
+  dist.
+
+  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> fmod-3.71.ebuild :
+  Stable on AMD64.
+
+  11 Apr 2004; Jason Wever <weeve@gentoo.org> fmod-3.61.ebuild,
+  fmod-3.62.ebuild, fmod-3.70.ebuild, fmod-3.71.ebuild:
+  Masked on sparc because the package provides a precompiled x86 only binary
+  library.
+
+  26 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> fmod-3.61.ebuild,
+  fmod-3.62.ebuild, fmod-3.70.ebuild, fmod-3.71.ebuild:
+  .70 and .71 in stable x86.  Added empty IUSE
+
+*fmod-3.71 (29 Feb 2004)
+
+  29 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org> fmod-3.71.ebuild,
+  metadata.xml:
+  Version bump.  Closes bug #43284.
+
+  18 Feb 2004; <augustus@gentoo.org> fmod-3.70.ebuild:
+  Added ~amd64 keyword.
+
+  30 Oct 2003; Luca Barbato <lu_zero@gentoo.org> fmod-3.62.ebuild:
+  Marked ppc
+
+*fmod-3.70 (22 Oct 2003)
+
+  22 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> fmod-3.70.ebuild:
+  version bump; I modified the KEYWORDS to use ~ instead of - for all the
+  archs since I don't know of any reason this package won't work there.
+
+*fmod-3.62 (07 April 2003)
+
+  07 April 2003; Bob Johnson <livewire@gentoo.org>
+	old version missing from www.fmod.org, bumped version.
+
+*fmod-3.61 (03 Mar 2003)
+
+  03 Mar 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Mike Gardiner <driver@iinet.net.au> #13537.

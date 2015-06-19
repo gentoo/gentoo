@@ -1,0 +1,13 @@
+--- ntlm/ntlmdes.c	2003-09-17 19:27:03.000000000 +0000
++++ ntlm/ntlmdes.c	2003-09-17 19:27:40.000000000 +0000
+@@ -60,8 +60,8 @@
+   des_ecb_encrypt (iv, result, ks, DES_ENCRYPT);
+ 
+   /* paranoia */
+-  memset (key, 0, sizeof key);
+-  memset (ks, 0, sizeof ks);
++  memset (&key, 0, sizeof key);
++  memset (&ks, 0, sizeof ks);
+ }
+ 
+ /* Copy and convert to upper case.  If supplied string is shorter than the

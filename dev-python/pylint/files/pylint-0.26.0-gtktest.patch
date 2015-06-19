@@ -1,0 +1,32 @@
+test_gtk_import can't connect to an X, decided by consensus to skip due to onerous 
+overhead required by virtualx eclass to see it pass.
+diff -ur pylint-0.26.0.orig/test/test_regr.py pylint-0.26.0/test/test_regr.py
+--- test/test_regr.py	2012-07-18 14:34:04.000000000 +0800
++++ test/test_regr.py	2013-01-08 06:11:08.846289350 +0800
+@@ -75,16 +75,16 @@
+             sys.path.pop(0)
+             os.chdir(cwd)
+ 
+-    def test_gtk_import(self):
+-        try:
+-            import gtk
+-        except ImportError:
+-            self.skipTest('test skipped: gtk is not available')
+-        except RuntimeError: # RuntimeError when missing display
+-            self.skipTest('no display, can\'t run this test')
+-        linter.check(join(REGR_DATA, 'pygtk_import.py'))
+-        got = linter.reporter.finalize().strip()
+-        self.assertEqual(got, '')
++#    def test_gtk_import(self):
++#        try:
++#            import gtk
++#        except ImportError:
++#            self.skipTest('test skipped: gtk is not available')
++#        except RuntimeError: # RuntimeError when missing display
++#            self.skipTest('no display, can\'t run this test')
++#        linter.check(join(REGR_DATA, 'pygtk_import.py'))
++#        got = linter.reporter.finalize().strip()
++#        self.assertEqual(got, '')
+ 
+     def test_numarray_inference(self):
+         try:

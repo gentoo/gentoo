@@ -1,0 +1,20 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -119,6 +119,8 @@
+ 	rm -f $@
+ 	$(CXX) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ 
++$(NBASEDIR)/libnbase.a: nbase_build
++
+ build-%: %/Makefile
+ 	cd $* && $(MAKE)
+ 
+@@ -152,7 +154,7 @@
+ liblinear_build: $(LIBLINEARDIR)/Makefile
+ 	@echo Compiling liblinear; cd $(LIBLINEARDIR) && $(MAKE) liblinear.a CC="$(CC)" CXX="$(CXX)" CFLAGS="$(CFLAGS)"
+ 
+-build-nmap-update: nmap-update/default_channel.h
++build-nmap-update: nbase_build nmap-update/default_channel.h
+ 
+ #$(LIBPCAPDIR)/Makefile:
+ #	@echo Configuring libpcap; cd $(LIBPCAPDIR); ./configure

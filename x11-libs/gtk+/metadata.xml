@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>gnome</herd>
+  <longdescription>
+    GTK+ is a multi-platform toolkit for creating graphical user
+    interfaces. Offering a complete set of widgets, GTK+ is suitable
+    for projects ranging from small one-off projects to complete
+    application suites.
+  </longdescription>
+  <use>
+    <flag name="broadway">Enable the GDK Broadway backend.</flag>
+    <flag name="cloudprint">Enable printing via Google Cloud Print.</flag>
+    <flag name="colord">Use <pkg>x11-misc/colord</pkg> for color management
+	  in printing</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:gtk:gtk%2B</remote-id>
+  </upstream>
+</pkgmetadata>

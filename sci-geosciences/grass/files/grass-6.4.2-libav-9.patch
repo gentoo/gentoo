@@ -1,0 +1,11 @@
+--- grass-6.4.2.orig/lib/ogsf/gsd_img_mpeg.c	2013-01-18 02:11:37.570025278 +0100
++++ grass-6.4.2/lib/ogsf/gsd_img_mpeg.c	2013-01-18 02:13:01.663022218 +0100
+@@ -159,7 +159,7 @@
+     }
+ 
+     /* open the codec */
+-    if (avcodec_open(c, codec) < 0) {
++    if (avcodec_open2(c, codec, NULL) < 0) {
+ 	G_warning(_("Unable to open codec"));
+ 	return;
+     }

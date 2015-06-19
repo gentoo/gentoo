@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>freedesktop</herd>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:libexpat:expat</remote-id>
+		<remote-id type="sourceforge">expat</remote-id>
+	</upstream>
+</pkgmetadata>

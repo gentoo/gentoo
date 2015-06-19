@@ -1,0 +1,72 @@
+# ChangeLog for dev-ml/variantslib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/variantslib/ChangeLog,v 1.13 2015/06/07 19:15:16 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add bitbucket to remote-id in metadata.xml
+
+  28 Nov 2014; Alexis Ballier <aballier@gentoo.org>
+  variantslib-109.15.02.ebuild:
+  update deps for ocaml 4.02
+
+*variantslib-109.15.02 (19 Jan 2014)
+
+  19 Jan 2014; Alexis Ballier <aballier@gentoo.org>
+  +variantslib-109.15.02.ebuild:
+  version bump
+
+  24 May 2013; Alexis Ballier <aballier@gentoo.org>
+  -variantslib-109.08.00.ebuild, -variantslib-109.11.00.ebuild,
+  -variantslib-109.14.00.ebuild:
+  remove old
+
+*variantslib-109.15.00 (11 Apr 2013)
+
+  11 Apr 2013; Alexis Ballier <aballier@gentoo.org>
+  +variantslib-109.15.00.ebuild:
+  version bump
+
+*variantslib-109.14.00 (24 Mar 2013)
+
+  24 Mar 2013; Alexis Ballier <aballier@gentoo.org>
+  +variantslib-109.14.00.ebuild:
+  version bump
+
+*variantslib-109.11.00 (06 Mar 2013)
+
+  06 Mar 2013; Alexis Ballier <aballier@gentoo.org>
+  +variantslib-109.11.00.ebuild:
+  version bump
+
+  03 Mar 2013; Alexis Ballier <aballier@gentoo.org>
+  -variantslib-108.00.01.ebuild, -variantslib-108.07.01.ebuild,
+  -variantslib-109.07.00.ebuild:
+  remove old
+
+*variantslib-109.08.00 (08 Feb 2013)
+
+  08 Feb 2013; Alexis Ballier <aballier@gentoo.org>
+  +variantslib-109.08.00.ebuild:
+  version bump
+
+*variantslib-109.07.00 (07 Feb 2013)
+
+  07 Feb 2013; Alexis Ballier <aballier@gentoo.org>
+  +variantslib-109.07.00.ebuild:
+  version bump, eapi 5, add subslots and := deps
+
+  17 Oct 2012; Alexis Ballier <aballier@gentoo.org>
+  variantslib-108.07.01.ebuild:
+  Mirror the distfile, upstream one fails to fetch, bug #438610 by Nick Bowler
+
+*variantslib-108.07.01 (08 Oct 2012)
+
+  08 Oct 2012; Alexis Ballier <aballier@gentoo.org>
+  +variantslib-108.07.01.ebuild:
+  version bump
+
+*variantslib-108.00.01 (30 Jun 2012)
+
+  30 Jun 2012; Alexis Ballier <aballier@gentoo.org>
+  +variantslib-108.00.01.ebuild, +metadata.xml:
+  initial import, ebuild by me

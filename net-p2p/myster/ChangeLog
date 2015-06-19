@@ -1,0 +1,42 @@
+# ChangeLog for net-p2p/myster
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/myster/ChangeLog,v 1.10 2008/01/28 17:16:27 betelgeuse Exp $
+
+  27 Jan 2008; Petteri Räty <betelgeuse@gentoo.org> -myster-8.0.ebuild:
+  Remove generation 1 ebuild.
+
+  27 Dec 2007; Dawid Węgliński <cla@gentoo.org> myster-8.0-r1.ebuild:
+  Stable on x86 (bug #203271)
+
+*myster-8.0-r1 (01 Nov 2007)
+
+  01 Nov 2007; Petteri Räty <betelgeuse@gentoo.org> +myster-8.0-r1.ebuild:
+  Migrate to generation 2.
+
+  09 Apr 2007; Petteri Räty <betelgeuse@gentoo.org> myster-8.0.ebuild:
+  Use doenvd for bug #173884.
+
+  21 Feb 2007; Raúl Porcel <armin76@gentoo.org> files/digest-myster-8.0,
+  Manifest:
+  Convert to Manifest2
+
+  20 Mar 2006; Mark Loeser <halcy0n@gentoo.org> myster-8.0.ebuild:
+  Add DEPEND on app-arch/unzip
+
+  30 Jul 2004; Jon Hood <squinky86@gentoo.org> myster-8.0.ebuild:
+  Stable on x86.
+
+  01 Jul 2004; David Holm <dholm@gentoo.org> myster-8.0.ebuild:
+  Added to ~ppc.
+
+  30 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> myster-8.0.ebuild:
+  Unpack in src_unpack; make src_install consistent; error check install;
+  removed nomirror
+
+*myster-8.0 (29 Jun 2004)
+
+  29 Jun 2004; Jon Hood <squinky86@gentoo.org> +metadata.xml,
+  +myster-8.0.ebuild:
+  Initial import. Thanks to Guillaume Marceau <gmarceau@cs.brown.edu> in #55486
+  for this ebuild.
+

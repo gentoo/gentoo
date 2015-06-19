@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/utf8-string-0.1:=[profile?] >=dev-haskell/x11-1.2.1:=[profile?] >=dev-lang/ghc-6.10.4:= x11-libs/libXft >=dev-haskell/cabal-0 virtual/pkgconfig doc? ( dev-haskell/haddock ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
+DESCRIPTION=Bindings to the Xft, X Free Type interface library, and some Xrender parts
+EAPI=5
+HOMEPAGE=http://hackage.haskell.org/package/X11-xft
+IUSE=doc hscolour profile
+KEYWORDS=~amd64 ~ppc64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-haskell/utf8-string-0.1:=[profile?] >=dev-haskell/x11-1.2.1:=[profile?] >=dev-lang/ghc-6.10.4:= x11-libs/libXft
+SLOT=0/0.3.1
+SRC_URI=mirror://hackage/packages/archive/X11-xft/0.3.1/X11-xft-0.3.1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	ghc-package	48ae4e0fd75e1c8047c4b7f507d5debc	haskell-cabal	eee03ecca8dca7a927272dcea2ca53f4	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=83ad444877bc73013a2d0c1a64ba755c

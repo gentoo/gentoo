@@ -1,0 +1,17 @@
+On Tiger (Darwin 8) the whole system (/usr/bin/crt0.o for example) is
+long-branch compiled, so *any* linkage operation causes this warning to
+be raised.  Don't do it.
+
+
+--- ld/parsers/macho_relocatable_file.cpp
++++ ld/parsers/macho_relocatable_file.cpp
+@@ -5532,9 +5532,6 @@
+ 				// this is from -mlong-branch codegen.  We ignore the jump island and make reference to the real target
+ 				if ( nextReloc->r_type() != PPC_RELOC_PAIR ) 
+ 					throw "PPC_RELOC_JBSR missing following pair";
+-				if ( !parser._hasLongBranchStubs )
+-					warning("object file compiled with -mlong-branch which is no longer needed. "
+-							"To remove this warning, recompile without -mlong-branch: %s", parser._path);
+ 				parser._hasLongBranchStubs = true;
+ 				result = true;
+ 				if ( reloc->r_extern() ) {

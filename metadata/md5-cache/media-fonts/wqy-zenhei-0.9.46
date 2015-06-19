@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup
+DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=WenQuanYi Hei-Ti Style (sans-serif) Chinese outline font
+EAPI=5
+HOMEPAGE=http://wenq.org/wqy2/index.cgi?ZenHei
+IUSE=X
+KEYWORDS=amd64 arm ppc ppc64 x86 ~x86-fbsd
+LICENSE=GPL-2-with-font-exception
+RESTRICT=binchecks strip test
+SLOT=0
+SRC_URI=mirror://sourceforge/project/wqy/wqy-zenhei-snapshot/0.9.46-May/wqy-zenhei-0.9.46-May.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	font	b3239d2dc442d1717b9725e2be7cb5d6	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=08767f6ce6a35628ba1a5faa7e4e6300

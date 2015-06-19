@@ -1,0 +1,37 @@
+# ChangeLog for dev-haskell/hamlet
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hamlet/ChangeLog,v 1.7 2014/07/25 08:58:25 slyfox Exp $
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*hamlet-1.2.0 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org> +hamlet-1.2.0.ebuild:
+  Bump hamlet to 1.2.0
+
+*hamlet-1.1.9.2 (09 Mar 2014)
+
+  09 Mar 2014; Mark Wright <gienah@gentoo.org> +hamlet-1.1.9.2.ebuild:
+  Bump hamlet to 1.1.9.2
+
+*hamlet-1.1.7.5 (11 Dec 2013)
+
+  11 Dec 2013; Mark Wright <gienah@gentoo.org> +hamlet-1.1.7.5.ebuild:
+  Bump hamlet to 1.1.7.5
+
+*hamlet-1.1.7.3 (20 Oct 2013)
+
+  20 Oct 2013; Mark Wright <gienah@gentoo.org> +hamlet-1.1.7.3.ebuild:
+  Bump hamlet to 1.1.7.3
+
+*hamlet-1.1.7.2 (13 Sep 2013)
+
+  13 Sep 2013; Mark Wright <gienah@gentoo.org> +hamlet-1.1.7.2.ebuild:
+  Bump hamlet to 1.1.7.2
+
+*hamlet-1.1.7.1 (26 Aug 2013)
+
+  26 Aug 2013; Alexander Vershilov <qnikst@gentoo.org> +hamlet-1.1.7.1.ebuild,
+  +metadata.xml:
+  dev-haskell/hamlet: initial layout

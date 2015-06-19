@@ -1,0 +1,23 @@
+# ChangeLog for www-apps/venus
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/venus/ChangeLog,v 1.5 2012/11/07 15:44:25 tampakrap Exp $
+
+  07 Nov 2012; Theo Chatzimichos <tampakrap@gentoo.org> metadata.xml:
+  re-assign package to me, remove sysadmin
+
+  07 Nov 2012; Theo Chatzimichos <tampakrap@gentoo.org> metadata.xml:
+  Transfer maintainership to sysadmin team
+
+  10 Feb 2012; Patrick Lauer <patrick@gentoo.org> venus-20100911.ebuild:
+  Changing python deps in preparation for 2.4 removal
+
+  12 Sep 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  venus-20100911.ebuild, metadata.xml:
+  Fix metadata entries, use gentoo mirror for tarball
+
+*venus-20100911 (12 Sep 2010)
+
+  12 Sep 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  +venus-20100911.ebuild, +files/postinstall-en.txt, +metadata.xml:
+  Initial commit, special thanks to Arfrever, djc and darkside for their
+  help

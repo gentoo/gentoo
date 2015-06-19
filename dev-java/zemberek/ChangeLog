@@ -1,0 +1,70 @@
+# ChangeLog for dev-java/zemberek
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/zemberek/ChangeLog,v 1.17 2014/06/17 10:39:33 mrueg Exp $
+
+  17 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -zemberek-2.0.ebuild:
+  NM: Cleanup superseeded ebuilds.
+
+  14 Feb 2012; Naohiro Aota <naota@gentoo.org> zemberek-2.1.1.ebuild:
+  Add ~x86-fbsd
+
+  31 May 2009; Markus Meier <maekke@gentoo.org> zemberek-2.1.1.ebuild:
+  amd64 stable, bug #253753
+
+  29 Apr 2009; Christian Faulhammer <fauli@gentoo.org>
+  zemberek-2.1.1.ebuild:
+  stable x86, bug 253753
+
+  26 Apr 2009; Brent Baude <ranger@gentoo.org> zemberek-2.1.1.ebuild:
+  Marking zemberek-2.1.1 ppc for bug 253753
+
+  24 Apr 2009; Brent Baude <ranger@gentoo.org> zemberek-2.1.1.ebuild:
+  Marking zemberek-2.1.1 ppc64 for bug 253753
+
+  23 Apr 2009; Serkan Kaba <serkan@gentoo.org>
+  +files/zemberek-2.1.1-classpathfix.patch, zemberek-2.1.1:
+  Finally fix all the issues in stabilization bug #253753. Thanks to
+  Vlastimil Babka <caster@gentoo.org> for the fix. Migrated to EAPI 2.
+
+  08 Mar 2009; Serkan Kaba <serkan@gentoo.org> zemberek-2.1.1:
+  Add hamcrest-core to test dependencies.
+
+*zemberek-2.1.1 (01 Oct 2008)
+
+  01 Oct 2008; Serkan Kaba <serkan@gentoo.org>
+  -files/zemberek-2.1-287-kitabevi.patch, -zemberek-2.1.ebuild,
+  +zemberek-2.1.1.ebuild:
+  Version bump.
+
+  26 Jul 2008; Markus Rothe <corsair@gentoo.org> zemberek-2.1.ebuild:
+  Added ~ppc; bug #232411
+
+  22 Jul 2008; Markus Rothe <corsair@gentoo.org> zemberek-2.1.ebuild:
+  Added ~ppc64; bug #232411
+
+  10 Jul 2008; Serkan Kaba <serkan@gentoo.org>
+  +files/zemberek-2.1-287-kitabevi.patch:
+  Add missing patch.
+
+*zemberek-2.1 (10 Jul 2008)
+
+  10 Jul 2008; Serkan Kaba <serkan@gentoo.org> -zemberek-2.1_rc1.ebuild,
+  +zemberek-2.1.ebuild:
+  Version bump. Add src_test.
+
+*zemberek-2.1_rc1 (21 Jun 2008)
+
+  21 Jun 2008; Serkan Kaba <serkan@gentoo.org> +zemberek-2.1_rc1.ebuild:
+  Version bump and turn linguas_tr on by default for desktop profile.
+
+  25 Nov 2007; Samuli Suominen <drac@gentoo.org> zemberek-2.0.ebuild:
+  amd64 stable wrt #200242
+
+  25 Nov 2007; Dawid Węgliński <cla@gentoo.org> zemberek-2.0.ebuild:
+  Stable on x86 as dependency of media-video/jubler; see bug #200242 for details
+
+*zemberek-2.0 (04 Aug 2007)
+
+  04 Aug 2007; Miroslav Šulc <fordfrog@gentoo.org> +metadata.xml,
+  +zemberek-2.0.ebuild:
+  Initial ebuild, submitted by Serkan Kaba <serkan_kaba@yahoo.com>, bug #170372.

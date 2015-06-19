@@ -1,0 +1,36 @@
+From aca0ae1faa163bbd60ee8df4b93ae870aa820746 Mon Sep 17 00:00:00 2001
+From: Eric Blake <eblake@redhat.com>
+Date: Wed, 19 Nov 2014 12:13:14 -0700
+Subject: [PATCH 1/1] maint: use portable shell
+
+Reported in https://bugzilla.redhat.com/show_bug.cgi?id=1165827;
+dash complains:
+
+checking for pkcheck... /usr/bin/pkcheck
+checking whether pkcheck supports uid value... yes
+./configure: 63906: test: xno: unexpected operator
+checking for dtrace... no
+
+* configure.ac: Use '=' not '==' in test.
+
+Signed-off-by: Eric Blake <eblake@redhat.com>
+---
+ configure.ac |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 5a670eb..9fd44b2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1389,7 +1389,7 @@ AC_ARG_WITH([firewalld],
+ if test "x$with_firewalld" = "xcheck" ; then
+    with_firewalld=$with_dbus
+ fi
+-if test "x$with_firewalld" == "xyes" ; then
++if test "x$with_firewalld" = "xyes" ; then
+   if test "x$with_dbus" != "xyes" ; then
+      AC_MSG_ERROR([You must have dbus enabled for firewalld support])
+   fi
+-- 
+1.7.1
+

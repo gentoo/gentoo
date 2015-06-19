@@ -1,0 +1,20 @@
+diff --git a/cmake/data/libraw.pc.cmake b/cmake/data/libraw.pc.cmake
+index abe6c03..aede5f2 100644
+--- a/cmake/data/libraw.pc.cmake
++++ b/cmake/data/libraw.pc.cmake
+@@ -9,4 +9,4 @@ URL: http://www.libraw.org
+ Requires:
+ Version: @RAW_LIB_VERSION_STRING@
+ Libs: -L${libdir} -lraw
+-Cflags: -I${includedir}/libraw
++Cflags: -I${includedir}
+diff --git a/cmake/data/libraw_r.pc.cmake b/cmake/data/libraw_r.pc.cmake
+index d74e49a..16134e8 100644
+--- a/cmake/data/libraw_r.pc.cmake
++++ b/cmake/data/libraw_r.pc.cmake
+@@ -9,4 +9,4 @@ URL: http://www.libraw.org
+ Requires:
+ Version: @RAW_LIB_VERSION_STRING@
+ Libs: -L${libdir} -lraw_r
+-Cflags: -I${includedir}/libraw
++Cflags: -I${includedir}

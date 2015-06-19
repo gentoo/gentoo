@@ -1,0 +1,44 @@
+# ChangeLog for dev-python/dpkt
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/dpkt/ChangeLog,v 1.10 2015/03/08 23:45:48 pacho Exp $
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> dpkt-1.8-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> dpkt-1.8-r1.ebuild:
+  amd64 stable, bug 540290
+
+  23 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -dpkt-1.7.ebuild,
+  -dpkt-1.8.ebuild:
+  Remove old.
+
+*dpkt-1.8-r1 (17 Oct 2014)
+
+  17 Oct 2014; Manuel Rüger <mrueg@gentoo.org> +dpkt-1.8-r1.ebuild:
+  Conversion to distutils-r1. Acked by floppym.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> dpkt-1.7.ebuild,
+  dpkt-1.8.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*dpkt-1.8 (03 Jun 2013)
+
+  03 Jun 2013; Patrick Lauer <patrick@gentoo.org> +dpkt-1.8.ebuild:
+  Bump
+
+*dpkt-1.7 (01 Jul 2010)
+
+  01 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -dpkt-1.6.ebuild, -files/dpkt-1.6-python-2.6.patch, +dpkt-1.7.ebuild:
+  Version bump. Set SUPPORT_PYTHON_ABIS.
+
+  16 May 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  dpkt-1.6.ebuild, +files/dpkt-1.6-python-2.6.patch:
+  Fix building with Python 2.6 (bug #267638).
+
+  23 Jun 2007; Lukasz Strzygowski <lucass@gentoo.org> dpkt-1.6.ebuild:
+  Marked ~amd64.
+
+  06 Feb 2007; Tiziano Müller <dev-zero@gentoo.org> +dpkt-1.6.ebuild,
+  +metadata.xml:
+  New ebuild for bug #165530 (thanks to Santiago M. Mola Velasco).

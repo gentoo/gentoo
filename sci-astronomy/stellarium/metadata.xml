@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-astronomy</herd>
+  <maintainer>
+    <email>mr_bones_@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+  Stellarium is a free open source planetarium for your computer. It
+  shows a realistic sky in 3D, just like what you see with the naked
+  eye, binoculars or a telescope. It is being used in planetarium
+  projectors.
+</longdescription>
+  <use>
+    <flag name="stars">Install extra star catalogs</flag>
+    <flag name="sound">Enable sound support</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">stellarium</remote-id>
+  </upstream>
+</pkgmetadata>

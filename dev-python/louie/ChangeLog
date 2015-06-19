@@ -1,0 +1,49 @@
+# ChangeLog for dev-python/louie
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/louie/ChangeLog,v 1.13 2015/01/02 00:05:59 mgorny Exp $
+
+  02 Jan 2015; Michał Górny <mgorny@gentoo.org> louie-1.1-r1.ebuild:
+  Remove obsolete DISTUTILS_SRC_TEST.
+
+*louie-1.1-r1 (31 Dec 2014)
+
+  31 Dec 2014; Ian Delaney <idella4@gentoo.org> +louie-1.1-r1.ebuild:
+  revbump; conversion -> distutils-r1
+
+  05 Mar 2011; Raúl Porcel <armin76@gentoo.org> louie-1.1.ebuild:
+  Drop ia64 keywords
+
+  04 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> louie-1.1.ebuild:
+  ppc64 stable wrt #354797
+
+  04 Mar 2011; Michael Weber <xmw@gentoo.org> louie-1.1.ebuild:
+  ppc stable (bug 354797)
+
+  16 Jan 2011; Raúl Porcel <armin76@gentoo.org> louie-1.1.ebuild:
+  sparc stable and add ~ia64
+
+  07 Jan 2011; Michael Weber <xmw@gentoo.org> louie-1.1.ebuild:
+  added ~sparc keyword (bug 311825)
+
+  30 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  louie-1.1.ebuild:
+  Update EAPI. Fix dependencies. Set SUPPORT_PYTHON_ABIS. Enable tests. Use
+  PyPI mirrors.
+
+  15 Oct 2010; Brent Baude <ranger@gentoo.org> louie-1.1.ebuild:
+  Marking louie-1.1 ~ppc for bug 311825
+
+  12 Aug 2010; Markus Meier <maekke@gentoo.org> louie-1.1.ebuild:
+  amd64/x86 stable, bug #330773
+
+  06 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> louie-1.1.ebuild:
+  Keyword ~ppc64 wrt #311825
+
+  04 Mar 2010; Patrick Lauer <patrick@gentoo.org> louie-1.1.ebuild:
+  Fixing Homepage, thanks to Priit Laes
+
+*louie-1.1 (28 Feb 2009)
+
+  28 Feb 2009; Patrick Lauer <patrick@gentoo.org> +metadata.xml,
+  +louie-1.1.ebuild:
+  Initial import. Fixes #225475. Initial ebuild by Maciej Blizinski.

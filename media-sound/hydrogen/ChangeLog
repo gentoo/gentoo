@@ -1,0 +1,447 @@
+# ChangeLog for media-sound/hydrogen
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/hydrogen/ChangeLog,v 1.103 2013/03/02 21:55:33 hwoarang Exp $
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> hydrogen-0.9.5.ebuild:
+  Move Qt dependencies to the new category
+
+  24 Nov 2012; Alexis Ballier <aballier@gentoo.org> hydrogen-0.9.5.ebuild,
+  +files/hydrogen-0.9.5-gcc47.patch:
+  fix build with gcc 4.7, bug #421913
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> hydrogen-0.9.5.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  11 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> -hydrogen-0.9.4.ebuild,
+  -hydrogen-0.9.4.2.ebuild:
+  [This is a placeholder. Please ignore.]
+
+  07 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> hydrogen-0.9.5.ebuild:
+  x86 stable wrt bug #376885
+
+  02 Aug 2011; Markos Chandras <hwoarang@gentoo.org> hydrogen-0.9.5.ebuild:
+  Stable on amd64 wrt bug #376885
+
+  01 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> hydrogen-0.9.5.ebuild:
+  ppc/ppc64 wrt #376855
+
+  29 Jul 2011; Samuli Suominen <ssuominen@gentoo.org> hydrogen-0.9.5.ebuild,
+  +files/hydrogen-0.9.5-use_lrdf_pkgconfig.patch:
+  Use lrdf.pc to get -I/usr/include/raptor2 (lrdf.h -> raptor.h) with
+  liblrdf-0.4.0-r20
+
+*hydrogen-0.9.5 (08 Apr 2011)
+
+  08 Apr 2011; Alexis Ballier <aballier@gentoo.org> +hydrogen-0.9.5.ebuild:
+  version bump
+
+  24 Oct 2010; Raúl Porcel <armin76@gentoo.org> hydrogen-0.9.4.ebuild,
+  hydrogen-0.9.4.2.ebuild:
+  Drop sparc keywords
+
+*hydrogen-0.9.4.2 (29 Sep 2010)
+
+  29 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +hydrogen-0.9.4.2.ebuild:
+  Version bump wrt #338592 by Diego E. Pettenò.
+
+*hydrogen-0.9.4-r1 (03 May 2010)
+
+  03 May 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +hydrogen-0.9.4-r1.ebuild:
+  Make libarchive optional but enabled by default (upstream scons preferes
+  libtar, we prefer libarchive).
+
+  22 Jan 2010; Raúl Porcel <armin76@gentoo.org> hydrogen-0.9.4.ebuild:
+  sparc stable
+
+  22 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> hydrogen-0.9.4.ebuild:
+  Missing media-libs/libsndfile depend, thanks to armin76 for reporting.
+
+  11 Jan 2010; Jonathan Callen <abcd@gentoo.org> hydrogen-0.9.3-r4.ebuild:
+  Remove usage of kde-functions.eclass; clean up ebuild a bit
+
+  07 Jan 2010; Brent Baude <ranger@gentoo.org> hydrogen-0.9.4.ebuild:
+  Marking hydrogen-0.9.4 ppc for bug 298363
+
+  07 Jan 2010; Brent Baude <ranger@gentoo.org> hydrogen-0.9.4.ebuild:
+  Marking hydrogen-0.9.4 ppc64 for bug 298363
+
+  06 Jan 2010; Markus Meier <maekke@gentoo.org> hydrogen-0.9.4.ebuild:
+  x86 stable, bug #298363
+
+  01 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> hydrogen-0.9.4.ebuild:
+  amd64 stable wrt #298363
+
+*hydrogen-0.9.4 (27 Dec 2009)
+
+  27 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +hydrogen-0.9.4.ebuild:
+  Version bump wrt #298360, thanks to Ben de Groot for reporting.
+
+  27 Dec 2009; Joseph Jezak <josejx@gentoo.org> hydrogen-0.9.3-r4.ebuild:
+  Marked ppc stable for bug #281590.
+
+  10 Oct 2009; Raúl Porcel <armin76@gentoo.org> hydrogen-0.9.3-r4.ebuild:
+  sparc stable wrt #281590
+
+  26 Sep 2009; Brent Baude <ranger@gentoo.org> hydrogen-0.9.3-r4.ebuild:
+  Marking hydrogen-0.9.3-r4 ppc64 for bug 281590
+
+  31 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  hydrogen-0.9.4_rc2.ebuild:
+  export QTDIR to avoid qt3 vs. qt4 confusion wrt #283222 by Silvio Gerli
+
+  30 Aug 2009; Thomas Anderson <tanderson@gentoo.org>
+  hydrogen-0.9.3-r4.ebuild:
+  stable amd64, bug 281590
+
+*hydrogen-0.9.4_rc2 (29 Aug 2009)
+
+  29 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +hydrogen-0.9.4_rc2.ebuild:
+  Version bump.
+
+  16 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  hydrogen-0.9.3-r4.ebuild:
+  stable x86, bug 281590
+
+  01 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  hydrogen-0.9.3-r3.ebuild, hydrogen-0.9.3-r4.ebuild:
+  Remove USE depend for media-libs/alsa-lib[midi].
+
+  29 Jun 2009; Alexis Ballier <aballier@gentoo.org>
+  hydrogen-0.9.3-r4.ebuild:
+  disable parallel make, bug #250230
+
+  07 Jun 2009; Samuli Suominen <ssuominen@gentoo.org>
+  hydrogen-0.9.3-r4.ebuild, +files/hydrogen-0.9.3-gcc44.patch:
+  Fix compile with GCC 4.4 wrt #271890, thanks to Mike Limansky.
+
+  27 Feb 2009; Alexis Ballier <aballier@gentoo.org>
+  hydrogen-0.9.3-r4.ebuild:
+  enable flac by default, the drumkits are in flac; by Dipl.-Ing. (FH)
+  Johannes Neugschwentner <johannes.neugschwentner@gmail.com>, bug #260379
+
+  02 Dec 2008; Brent Baude <ranger@gentoo.org> hydrogen-0.9.3-r3.ebuild:
+  stable ppc64, bug 245695
+
+  30 Nov 2008; Raúl Porcel <armin76@gentoo.org> hydrogen-0.9.3-r3.ebuild:
+  sparc stable wrt #245695
+
+  09 Nov 2008; Markus Meier <maekke@gentoo.org> hydrogen-0.9.3-r3.ebuild:
+  x86 stable, bug #245695
+
+  09 Nov 2008; nixnut <nixnut@gentoo.org> hydrogen-0.9.3-r3.ebuild:
+  Stable on ppc wrt bug 245695
+
+  07 Nov 2008; Santiago M. Mola <coldwind@gentoo.org>
+  hydrogen-0.9.3-r3.ebuild:
+  amd64 stable wrt bug #245695
+
+*hydrogen-0.9.3-r4 (10 Oct 2008)
+
+  10 Oct 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +hydrogen-0.9.3-r4.ebuild:
+  Update to EAPI=2 and USE deps.
+
+  14 Aug 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/hydrogen-0.9.3-gcc43noalsa.patch, hydrogen-0.9.3-r3.ebuild:
+  Fix build with gcc 4.3 without alsa, thanks to Michał W.
+  <michal@gen2.org> for reporting in bug #234754
+
+*hydrogen-0.9.3-r3 (19 May 2008)
+
+  19 May 2008; Samuli Suominen <drac@gentoo.org> hydrogen-0.9.3-r2.ebuild,
+  +hydrogen-0.9.3-r3.ebuild:
+  Revision bump to remove USE portaudio wrt #222841.
+
+  20 Apr 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/hydrogen-0.9.3-gcc43.patch, hydrogen-0.9.3-r2.ebuild:
+  gcc 4.3 build fix by Peter Alfredsen <peter.alfredsen@gmail.com> in bug
+  #218425
+
+  14 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  hydrogen-0.9.3-r2.ebuild:
+  add missing pkgconfig dep, bug #205644
+
+  11 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  hydrogen-0.9.3-r2.ebuild:
+  bah... disable again parallel make... its not that safe after all, bug #194207
+
+  11 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  hydrogen-0.9.3-r2.ebuild:
+  fix homepage
+
+  18 Nov 2007; Alexis Ballier <aballier@gentoo.org>
+  hydrogen-0.9.3-r2.ebuild:
+  add a check for flac cxx use flag, FLAC++ is needed here
+
+  18 Nov 2007; Alexis Ballier <aballier@gentoo.org>
+  -files/hydrogen-0.9.0-asneeded.patch, -hydrogen-0.9.0.ebuild,
+  -hydrogen-0.9.1.ebuild, -hydrogen-0.9.2.ebuild, -hydrogen-0.9.3.ebuild,
+  -hydrogen-0.9.3-r1.ebuild:
+  remove old
+
+  01 Nov 2007; Raúl Porcel <armin76@gentoo.org> hydrogen-0.9.3-r2.ebuild:
+  sparc stable, thanks to Alex Maclean for testing
+
+  13 Oct 2007; Markus Rothe <corsair@gentoo.org> hydrogen-0.9.3-r2.ebuild:
+  Stable on ppc64; bug #191278
+
+  23 Sep 2007; Christoph Mende <angelos@gentoo.org>
+  hydrogen-0.9.3-r2.ebuild:
+  Stable on amd64 wrt bug #191278
+
+  08 Sep 2007; nixnut <nixnut@gentoo.org> hydrogen-0.9.3-r2.ebuild:
+  Stable on ppc wrt bug 191278
+
+  04 Sep 2007; Jurek Bartuszek <jurek@gentoo.org> hydrogen-0.9.3-r2.ebuild:
+  x86 stable (bug #191278)
+
+  09 Jul 2007; Alexis Ballier <aballier@gentoo.org>
+  hydrogen-0.9.3-r2.ebuild:
+  no need to rdepend on docbook-sgml-utils
+
+*hydrogen-0.9.3-r2 (09 Jul 2007)
+
+  09 Jul 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/hydrogen-0.9.3-automagic.patch,
+  +files/hydrogen-0.9.3-desktop-noexec.patch, +hydrogen-0.9.3-r2.ebuild:
+  Call only once the autotools with eautoreconf, do not install destop entry
+  as executable (reported by Josh Saddler), fix automagic on portaudio,
+  regenerate doc with doc useflag, make flac optional, parallel make appears
+  to work thus drop -j1, add missing dep for docbook2html when regenerating
+  doc
+
+  06 Jul 2007; Diego Pettenò <flameeyes@gentoo.org>
+  hydrogen-0.9.3-r1.ebuild:
+  Add a pkg_setup check for midi USE flag in alsa-lib.
+
+  02 Jul 2007; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Hand to newly-born proaudio herd.
+
+  17 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> hydrogen-0.9.2.ebuild,
+  hydrogen-0.9.3.ebuild, hydrogen-0.9.3-r1.ebuild:
+  Don't abuse $ROOT.
+
+*hydrogen-0.9.3-r1 (12 Feb 2007)
+
+  12 Feb 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/hydrogen-0.9.3-flac113.patch, hydrogen-0.9.0.ebuild,
+  hydrogen-0.9.1.ebuild, hydrogen-0.9.2.ebuild, hydrogen-0.9.3.ebuild,
+  +hydrogen-0.9.3-r1.ebuild:
+  ~dep to flac 1.1.2, rev bump in ~arch with a flac 1.1.3 compatibility fix,
+  bug #152007
+
+  02 Feb 2007; Simon Stelling <blubb@gentoo.org> hydrogen-0.9.3.ebuild:
+  multilib-strict fix; bug 155967; credit to Malcolm Lashley
+
+  07 Oct 2006; Eldad Zack <eldad@gentoo.org> hydrogen-0.9.3.ebuild:
+  fixed make problem with -j>2. closes bug #147297. Thanks to Christian Becke
+  <christianbecke@web.de> for reporting. Also removed inexistent TODO from
+  dodoc.
+
+  23 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> hydrogen-0.9.0.ebuild,
+  hydrogen-0.9.1.ebuild, hydrogen-0.9.2.ebuild, hydrogen-0.9.3.ebuild:
+  Remove improper usage of need-autoconf.
+
+  17 May 2006; Mike Doty <kingtaco@gentoo.org> hydrogen-0.9.3.ebuild:
+  amd64 stable, bug 132522
+
+  17 May 2006; Joshua Jackson <tsunam@gentoo.org> hydrogen-0.9.3.ebuild:
+  Stable on x86 again
+
+  16 May 2006; Gustavo Zacarias <gustavoz@gentoo.org> hydrogen-0.9.3.ebuild:
+  Stable on sparc wrt #132522
+
+  16 May 2006; Markus Rothe <corsair@gentoo.org> hydrogen-0.9.3.ebuild:
+  Stable on ppc64; bug #132522
+
+  11 May 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  hydrogen-0.9.3.ebuild:
+  stable on ppc (Bug #132522)
+
+  12 May 2006; Eldad Zack <eldad@gentoo.org>
+  +files/hydrogen-0.9.3-gcc-4.1-tinyxml.h.patch, hydrogen-0.9.3.ebuild:
+  Removed unneeded dep for app-text/docbook-sgml-utils, closes bug #132729.
+  Added useflag for portaudio, closes bug #132848. Added fix for gcc 4.1,
+  closes bug #132726.
+
+  09 May 2006; Joshua Jackson <tsunam@gentoo.org> hydrogen-0.9.3.ebuild:
+  Stable on x86; bug #132522
+
+  07 May 2006; Eldad Zack <eldad@gentoo.org>
+  +files/hydrogen-0.9.0-asneeded.patch,
+  +files/hydrogen-0.9.2-configure.in.patch, metadata.xml,
+  hydrogen-0.9.0.ebuild, hydrogen-0.9.1.ebuild, hydrogen-0.9.2.ebuild,
+  hydrogen-0.9.3.ebuild:
+  Fixed --as-needed issue with 0.9.0 and 0.9.1, fixed configure script for
+  0.9.2 and 0.9.3. Took maintainership. Closes bug #132511.
+
+*hydrogen-0.9.3 (23 Feb 2006)
+
+  23 Feb 2006; Carsten Lohrke <carlo@gentoo.org> +hydrogen-0.9.3.ebuild:
+  Version bump.
+
+*hydrogen-0.9.2 (07 Jan 2006)
+
+  07 Jan 2006; Carsten Lohrke <carlo@gentoo.org> hydrogen-0.9.0.ebuild,
+  hydrogen-0.9.1.ebuild, +hydrogen-0.9.2.ebuild:
+  version bump
+
+  07 Jan 2006; Carsten Lohrke <carlo@gentoo.org> hydrogen-0.9.0.ebuild,
+  hydrogen-0.9.1.ebuild:
+  QA: need-qt() needs to be called after R/DEPEND.
+
+  07 Jul 2005; Caleb Tennis <caleb@gentoo.org> hydrogen-0.9.0.ebuild,
+  hydrogen-0.9.1.ebuild:
+  Fix qt dep
+
+  27 May 2005; Jan Brinkmann <luckyduck@gentoo.org> hydrogen-0.9.1.ebuild:
+  install a .desktop file for hydrogen, fixes #93253
+
+  08 May 2005; Joseph Jezak <josejx@gentoo.org> +files/0.9.1-OSS.patch,
+  hydrogen-0.9.1.ebuild:
+  Added patch to fix white noise when using OSS on ppc.
+
+*hydrogen-0.9.1 (11 Apr 2005)
+
+  11 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> metadata.xml,
+  -files/hydrogen-0.8.2-64bit.patch, -files/hydrogen-0.8.2-gcc34.patch,
+  -files/hydrogen-0.8.2-ui-spacer.patch,
+  -files/hydrogen-0.9.0_beta1-math.patch, -hydrogen-0.8.2-r4.ebuild,
+  +hydrogen-0.9.1.ebuild:
+  new upstream version, fixes #72986. updated maintainer information, chriswhite
+  is retired. did some cleanup.
+
+  05 Apr 2005; Eric Shattow <jnc@gentoo.org> hydrogen-0.9.0.ebuild:
+  Depend on libsndfile. Closes #88053
+
+  11 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> hydrogen-0.9.0.ebuild:
+  added missing qt dependency, fixes #84590
+
+  05 Mar 2005; Markus Rothe <corsair@gentoo.org> hydrogen-0.9.0.ebuild:
+  Stable on ppc64
+
+  03 Jan 2005; Markus Rothe <corsair@gentoo.org> hydrogen-0.9.0.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  hydrogen-0.9.0.ebuild, -hydrogen-0.9.0_beta1.ebuild:
+  Stable amd64, sparc, x86.
+
+  22 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  hydrogen-0.9.0.ebuild:
+  Added to ~sparc.
+
+  12 Nov 2004; Chris White <chriswhite@gentoo.org> hydrogen-0.9.0.ebuild:
+  Readded keywords back like a good little dev.
+
+*hydrogen-0.9.0 (08 Nov 2004)
+
+  08 Nov 2004; Chris White <chriswhite@gentoo.org> +hydrogen-0.9.0.ebuild:
+  Version bump to 0.9.0 per bug 68418. Thanks goes to Eric Shattow for providing
+  the ebuild.
+
+  19 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -hydrogen-0.8.1-r1.ebuild, -hydrogen-0.8.1.ebuild,
+  -hydrogen-0.8.2-r1.ebuild, -hydrogen-0.8.2-r2.ebuild,
+  -hydrogen-0.8.2-r3.ebuild, -hydrogen-0.8.2.ebuild:
+  Removing old versions.
+
+  20 Aug 2004; <frank@gentoo.org> hydrogen-0.9.0_beta1.ebuild:
+  Added media-libs/flac dependency. Closes bug #60977.
+
+*hydrogen-0.9.0_beta1 (18 Aug 2004)
+
+  18 Aug 2004; <frank@gentoo.org> +files/hydrogen-0.9.0_beta1-math.patch,
+  +hydrogen-0.9.0_beta1.ebuild:
+  Version bump to 0.9.0_beta1. Closes bug #59580.
+
+  26 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  hydrogen-0.8.2-r4.ebuild:
+  Stable amd64 and x86.
+
+*hydrogen-0.8.2-r4 (01 Jul 2004)
+
+  01 Jul 2004; Frank van de Pol <fvdpol@gentoo.org>
+  +files/hydrogen-0.8.2-gcc34.patch, +hydrogen-0.8.2-r4.ebuild:
+  New revision to fix a gcc-3.4 compilation error. Closes bug #52185
+
+*hydrogen-0.8.2-r3 (23 Jun 2004)
+
+  23 Jun 2004; Frank van de Pol <fvdpol@gentoo.org> +hydrogen-0.8.2-r3.ebuild:
+  New revision with reworked installation of drumkits and demo songs. Includes
+  new kits, closing bug #54570.
+
+  19 Jun 2004; David Holm <dholm@gentoo.org> hydrogen-0.8.2-r2.ebuild:
+  Added to ~ppc.
+
+*hydrogen-0.8.2-r2 (19 Jun 2004)
+
+  19 Jun 2004; Frank van de Pol <fvdpol@gentoo.org>
+  +files/hydrogen-0.8.2-64bit.patch, +hydrogen-0.8.2-r2.ebuild:
+  Added patch to fix noise on amd64. Closes bug #54340
+
+*hydrogen-0.8.2-r1 (18 Jun 2004)
+
+  18 Jun 2004; Frank van de Pol <fvdpol@gentoo.org> metadata.xml,
+  +files/hydrogen-0.8.2-ui-spacer.patch, +hydrogen-0.8.2-r1.ebuild:
+  Compilation fixes, thanks to Michael Schnake <schnake@composition.de>
+  closes bug #46568
+
+  13 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  hydrogen-0.8.1-r1.ebuild, hydrogen-0.8.1.ebuild, hydrogen-0.8.2.ebuild:
+  Getting rid of virtual/jack.
+
+  28 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  hydrogen-0.8.2.ebuild:
+  Stable x86.
+
+  03 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  hydrogen-0.8.0.ebuild, hydrogen-0.8.1-r1.ebuild, hydrogen-0.8.1.ebuild,
+  hydrogen-0.8.1_beta5.ebuild, hydrogen-0.8.2.ebuild:
+  Adding workaround for QT bug.  Removing old ebuilds.
+
+*hydrogen-0.8.2 (29 Mar 2004)
+
+  29 Mar 2004; <torbenh@gentoo.org> hydrogen-0.8.2.ebuild:
+  Version bump to 0.8.2
+
+  27 Feb 2004; <torbenh@gentoo.org> hydrogen-0.8.1-r1.ebuild,
+  hydrogen-0.8.1.ebuild:
+  Fixed Dependecies
+
+*hydrogen-0.8.1-r1 (22 Jan 2004)
+
+  22 Jan 2004; <torbenh@gentoo.org> hydrogen-0.8.1-r1.ebuild:
+  Added drumkit downloading.
+
+*hydrogen-0.8.1 (21 Jan 2004)
+*hydrogen-0.8.1_beta5 (21 Jan 2004)
+
+  21 Jan 2004; <torbenh@gentoo.org> hydrogen-0.8.0.ebuild,
+  hydrogen-0.8.1.ebuild, hydrogen-0.8.1_beta5.ebuild:
+  Version bump
+
+*hydrogen-0.8.0 (25 May 2003)
+
+  25 May 2003; jje <jje@gentoo.org> hydrogen-0.7.4.ebuild,
+  hydrogen-0.7.4.ebuild, hydrogen-0.7.6.ebuild, hydrogen-0.7.6.ebuild,
+  hydrogen-0.8.0.ebuild:
+  Version bump and removing old versions.
+
+*hydrogen-0.7.6 (12 Apr 2003)
+
+  12 Apr 2003; jje hydrogen-0.7.6.ebuild:
+  Version Bump.
+  
+  Submitted by: Marc Hildebrand
+
+*hydrogen-0.7.4 (09 Mar 2003)
+
+  09 Mar 2003; jje <jje@gentoo.org> hydrogen-0.7.4.ebuild:
+  Initial revision.
+  
+  Submitted by: Marc Hildebrand

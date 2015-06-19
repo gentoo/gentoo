@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=sys-libs/pam-0.75
+DESCRIPTION=Terminal locking program with few additional features
+HOMEPAGE=http://unbeatenpath.net/software/away/
+KEYWORDS=amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/pam-0.75
+SLOT=0
+SRC_URI=http://unbeatenpath.net/software/away/away-0.9.5.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=923fa2ab3073a7dd06212091c9fc826a

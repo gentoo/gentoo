@@ -1,0 +1,39 @@
+# ChangeLog for virtual/acl
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/acl/ChangeLog,v 1.9 2014/06/18 20:53:07 mgorny Exp $
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> acl-0-r2.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+*acl-0-r2 (02 May 2014)
+
+  02 May 2014; Michał Górny <mgorny@gentoo.org> +acl-0-r2.ebuild:
+  Update for multilib sys-apps/acl.
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> acl-0-r1.ebuild:
+  Add arm64 love.
+
+  22 Mar 2013; Jeroen Roovers <jer@gentoo.org> acl-0-r1.ebuild:
+  Stable for HPPA (bug #212517).
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> acl-0-r1.ebuild:
+  keyword ~amd64-fbsd
+
+*acl-0-r1 (05 Mar 2012)
+
+  05 Mar 2012; Mike Frysinger <vapier@gentoo.org> +acl-0-r1.ebuild:
+  Pass through IUSE=static-libs #406109 by Jeff Horelick.
+
+  11 Nov 2011; Jeroen Roovers <jer@gentoo.org> acl-0.ebuild:
+  Drop HPPA keywording (bug #212517).
+
+  29 Dec 2009; Jonathan Callen <abcd@gentoo.org> acl-0.ebuild:
+  Prefix keywords: ~amd64-linux ~ia64-linux ~x86-linux
+
+*acl-0 (29 May 2009)
+
+  29 May 2009; Diego E. Pettenò <flameeyes@gentoo.org> +acl-0.ebuild,
+  +metadata.xml:
+  Initial import of an acl virtual to depend on the proper packages for
+  Linux and FreeBSD.

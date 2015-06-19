@@ -1,0 +1,83 @@
+# ChangeLog for dev-ruby/bourne
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bourne/ChangeLog,v 1.20 2015/06/07 16:52:20 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  10 Apr 2015; Hans de Graaff <graaff@gentoo.org> bourne-1.6.0.ebuild:
+  Add ruby22.
+
+  24 Mar 2015; Markus Meier <maekke@gentoo.org> bourne-1.6.0.ebuild:
+  add ~arm, bug #540978
+
+  31 Dec 2014; Agostino Sarubbo <ago@gentoo.org> bourne-1.6.0.ebuild:
+  Add ~x86, wrt bug #501152
+
+*bourne-1.6.0 (09 Dec 2014)
+
+  09 Dec 2014; Manuel Rüger <mrueg@gentoo.org> +bourne-1.6.0.ebuild:
+  Version bump. Drop x86 keyword, rekeywording in bug 501152
+
+  11 Nov 2014; Manuel Rüger <mrueg@gentoo.org> bourne-1.5.0-r1.ebuild:
+  Drop jruby target.
+
+  05 Nov 2014; Justin Lecher <jlec@gentoo.org> bourne-1.5.0-r1.ebuild,
+  metadata.xml:
+  Keyword for ~x86
+
+  06 Aug 2014; Manuel Rüger <mrueg@gentoo.org> bourne-1.5.0-r1.ebuild:
+  Add ruby21 target.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> bourne-1.5.0-r1.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  15 May 2014; Manuel Rüger <mrueg@gentoo.org> bourne-1.5.0-r1.ebuild:
+  Remove ruby18.
+
+*bourne-1.5.0-r1 (11 Nov 2013)
+
+  11 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +bourne-1.5.0-r1.ebuild,
+  -bourne-1.3.0.ebuild, -bourne-1.5.0.ebuild:
+  Add ruby20 target. Cleanup old.
+
+*bourne-1.5.0 (12 Jul 2013)
+
+  12 Jul 2013; Hans de Graaff <graaff@gentoo.org> +bourne-1.5.0.ebuild:
+  Version bump.
+
+  24 Feb 2013; Hans de Graaff <graaff@gentoo.org> -bourne-1.1.2-r1.ebuild,
+  -bourne-1.2.0.ebuild:
+  Cleanup.
+
+*bourne-1.3.0 (15 Dec 2012)
+
+  15 Dec 2012; Hans de Graaff <graaff@gentoo.org> +bourne-1.3.0.ebuild:
+  Version bump.
+
+*bourne-1.2.0 (18 Oct 2012)
+
+  18 Oct 2012; Hans de Graaff <graaff@gentoo.org> +bourne-1.2.0.ebuild:
+  Version bump.
+
+  04 Aug 2012; Hans de Graaff <graaff@gentoo.org> -bourne-1.1.2.ebuild:
+  Remove version with broken gemspec.
+
+*bourne-1.1.2-r1 (02 Aug 2012)
+
+  02 Aug 2012; Hans de Graaff <graaff@gentoo.org> +bourne-1.1.2-r1.ebuild:
+  Match gemspec versioning to the ebuild. Tested with mocha 0.12.1.
+
+  30 Jul 2012; Hans de Graaff <graaff@gentoo.org> -bourne-1.1.0.ebuild:
+  Cleanup.
+
+*bourne-1.1.2 (07 Apr 2012)
+
+  07 Apr 2012; Hans de Graaff <graaff@gentoo.org> +bourne-1.1.2.ebuild:
+  Version bump.
+
+*bourne-1.1.0 (28 Feb 2012)
+
+  28 Feb 2012; Diego E. Pettenò <flameeyes@gentoo.org> +bourne-1.1.0.ebuild,
+  +metadata.xml:
+  Initial import of the bourne extension to mocha.

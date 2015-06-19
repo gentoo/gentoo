@@ -1,0 +1,36 @@
+# ChangeLog for x11-plugins/wmmisc
+# Copyright 2000-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmisc/ChangeLog,v 1.9 2014/08/10 20:08:16 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> wmmisc-1.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  28 Jun 2008; Markus Meier <maekke@gentoo.org> wmmisc-1.1.ebuild:
+  x86 stable, bug #229583
+
+*wmmisc-1.1 (16 Jan 2008)
+
+  16 Jan 2008; Samuli Suominen <drac@gentoo.org>
+  +files/wmmisc-1.1-build.patch, +wmmisc-1.1.ebuild:
+  Version bump, using a patch to modify build system which is broken more or
+  less.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; wmmisc-0.9.ebuild:
+  Drop virtual/x11 references.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  31 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> wmmisc-0.9.ebuild:
+  Fixed DEPEND for modular X.
+
+  28 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org> wmmisc-0.9.ebuild:
+  mark ~ppc
+
+  26 Jan 2005; Michele Noberasco <s4t4n@gentoo.org> wmmisc-0.9.ebuild:
+  Stable for x86. Fix copyright headers.
+
+*wmmisc-0.9 (28 Nov 2004)
+
+  28 Nov 2004; Michele Noberasco <s4t4n@gentoo.org> wmmisc-0.9.ebuild:
+  Initial import.

@@ -1,0 +1,29 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/litecoind/files/litecoin.initd-r1,v 1.1 2014/02/25 18:11:25 blueness Exp $
+
+vardir="/var/lib/litecoin"
+conffile="${vardir}/.litecoin/litecoin.conf"
+litecoind_user="${LITECOIN_USER:-nobody:nobody}"
+
+description="P2P Internet currency based on Bitcoin but easier to mine."
+pidfile="/run/${SVCNAME}.pid"
+command="/usr/bin/litecoind"
+command_args="${LITECOIN_OPTS}"
+command_background="true"
+start_stop_daemon_args="-u ${litecoind_user} -e HOME=${vardir} -N ${NICELEVEL:-0} -w 2000"
+
+depend() {
+	need net
+}
+
+start_pre() {
+	checkpath -f -o ${litecoind_user} -m 0400 ${conffile} || return 1
+
+	if ! grep -q '^rpcpassword=' "${conffile}"; then
+		eerror "Please edit `readlink -f ${conffile}`"
+		eerror "There must be at least a line assigning rpcpassword=something-secure"
+		return 1
+	fi
+}

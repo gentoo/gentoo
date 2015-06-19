@@ -1,0 +1,24 @@
+# ChangeLog for dev-php/pecl-libevent
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-libevent/ChangeLog,v 1.5 2014/10/10 02:23:30 grknight Exp $
+
+  30 Sep 2014; Brian Evans <grknight@gentoo.org> -pecl-libevent-0.0.4.ebuild,
+  -pecl-libevent-0.1.0.ebuild:
+  Drop old; no more support for 5.3
+
+*pecl-libevent-0.1.0-r1 (15 Aug 2013)
+
+  15 Aug 2013; Ole Markus With <olemarkus@gentoo.org>
+  +pecl-libevent-0.1.0-r1.ebuild:
+  Revbump. Removing php 5.3 support, adding 5.5 support
+
+*pecl-libevent-0.1.0 (03 Jul 2013)
+
+  03 Jul 2013; Matti Bickel <mabi@gentoo.org> +pecl-libevent-0.1.0.ebuild:
+  version bump
+
+*pecl-libevent-0.0.4 (09 Feb 2012)
+
+  09 Feb 2012; Ole Markus With <olemarkus@gentoo.org> +metadata.xml,
+  +pecl-libevent-0.0.4.ebuild:
+  Added initial ebuild for PHP libevent wrapper

@@ -1,0 +1,17 @@
+--- shell-completion/bash
++++ shell-completion/bash
+@@ -52,7 +52,6 @@
+     echo "numbered verbose"
+ }
+ 
+-have ufw &&
+ _ufw()
+ {
+     cur=${COMP_WORDS[COMP_CWORD]}
+@@ -83,5 +82,5 @@
+     fi
+ }
+ 
+-[ "$have" ] && complete -F _ufw ufw
++complete -F _ufw ufw
+ 

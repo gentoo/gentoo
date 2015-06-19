@@ -1,0 +1,300 @@
+# ChangeLog for mail-filter/tmda
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/tmda/ChangeLog,v 1.20 2011/03/27 19:20:44 ranger Exp $
+
+  27 Mar 2011; Brent Baude <ranger@gentoo.org> tmda-1.1.12.ebuild:
+  stable ppc, bug 344525
+
+  08 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> tmda-1.1.12.ebuild:
+  x86 stable wrt bug #344525
+
+  07 Nov 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  tmda-1.1.12.ebuild:
+  Update EAPI. Use Python 2, call python_mod_optimize() and
+  python_mod_cleanup() (bug #313481). Don't install nonexistent
+  documentation files (bug #300511).
+
+*tmda-1.1.12 (07 Jan 2010)
+
+  07 Jan 2010; Patrick Lauer <patrick@gentoo.org> +tmda-1.1.12.ebuild:
+  Bump for #149173, thanks to Sean C. McCord for some fixups
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Jan 2007; Fernando J. Pereda <ferdy@gentoo.org> -tmda-0.92.ebuild,
+  -tmda-1.0.ebuild, -tmda-1.0-r1.ebuild:
+  QA: Clean unused versions.
+
+*tmda-1.1.4 (31 May 2006)
+
+  31 May 2006; Andrej Kacian <ticho@gentoo.org> +tmda-1.1.4.ebuild:
+  Version bump. Closes bug #93414, reported by Oleg Kostyuk
+  <cub.uanic@gmail.com>.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> tmda-1.0.3-r3.ebuild:
+  Stable on ppc.
+
+  14 Dec 2004; Andrej Kacian <ticho@gentoo.org> -tmda-1.0.3-r1.ebuild,
+  -tmda-1.0.3-r2.ebuild, tmda-1.0.3-r3.ebuild, -tmda-1.0.3.ebuild:
+  Stable on x86. Removed previous 1.0.3 revisions.
+
+  12 Nov 2004; Simon Stelling <blubb@gentoo.org> tmda-1.0.3-r3.ebuild:
+  added ~amd64
+
+*tmda-1.0.3-r3 (14 Oct 2004)
+
+  14 Oct 2004; Andrej Kacian <ticho@gentoo.org>
+  +files/tmda-1.0-non-interactive-tty.patch, +tmda-1.0.3-r3.ebuild:
+  Revision bump, apply patch to prevent opening /dev/tty when running in batch
+  mode. See bug #67150, reported by Jesse D. Guardiani <jesse@wingnet.net>.
+
+*tmda-1.0.3-r2 (29 Sep 2004)
+
+  29 Sep 2004; Andrej Kacian <ticho@gentoo.org>
+  files/tmda-1.0-multipart-handling.patch, +tmda-1.0.3-r2.ebuild:
+  Revision bump. Fix multipart-handling patch indentation, so it applies
+  cleanly. Thanks to Jesse D. Guardiani <jesse@wingnet.net> for fixing this.
+  Closes 65753.
+
+  25 Sep 2004; Andrej Kacian <ticho@gentoo.org>
+  +files/tmda-1.0-multipart-handling.patch,
+  -files/tmda-1.0.3-multipart-handling.patch, tmda-1.0.3-r1.ebuild,
+  tmda-1.0.3.ebuild, tmda-1.0.ebuild, +tmda-1.0-r1.ebuild:
+  Apply multipart-handling patch to 1.0 as well (1.0-r1). Do not install
+  contrib/getuserinfo-vpopmail.sh, as it doesn't exist. Renamed
+  multipart-handling patch filename and modified it, so it doesn't change
+  files in live system (nasty one, sorry).
+
+  22 Sep 2004; Andrej Kacian <ticho@gentoo.org> tmda-0.92.ebuild,
+  tmda-1.0.3-r1.ebuild, tmda-1.0.3.ebuild, tmda-1.0.ebuild:
+  Fixed SRC_URI
+
+*tmda-1.0.3-r1 (22 Sep 2004)
+
+  22 Sep 2004; Andrej Kacian <ticho@gentoo.org> +tmda-1.0.3-r1.ebuild:
+  Apply patch to fix multipart message handling. Closes #60367, reported by Chet
+  McNeill <chet@somedec.com>, who also submitted a patch.
+
+*tmda-1.0.3 (03 Sep 2004)
+
+  03 Sep 2004; Andrej Kacian <ticho@gentoo.org> +tmda-1.0.3.ebuild:
+  Version bump to 1.0.3. Closes #45547, reported by Blu3
+  <david+gentoo.org@blue-labs.org>. Added die message in src_compile(). Removed
+  maintainer agenkin (retired) from metadata.xml
+
+  05 Jun 2004; David Holm <dholm@gentoo.org> tmda-1.0.ebuild:
+  Added to ~ppc.
+
+*tmda-1.0 (03 Jun 2004)
+
+  03 Jun 2004; Seemant Kulleen <seemant@gentoo.org> +metadata.xml,
+  +tmda-0.92.ebuild, +tmda-1.0.ebuild:
+  Moved from net-mail/tmda to mail-filter/tmda.
+
+  10 Apr 2004; Jason Wever <weeve@gentoo.org> :
+  Added ~sparc keyword, fixes bug #47411.
+
+*tmda-1.0 (15 Jan 2004)
+
+  15 Jan 2004; Martin Holzer <mholzer@gentoo.org> tmda-1.0.ebuild:
+  Version bumped. Closes 36289.
+
+*tmda-0.92 (10 Dec 2003)
+
+  10 Dec 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Version bump.
+  Changed the official mirror to be http://tmda.sourceforge.net/releases/.
+
+*tmda-0.90 (01 Dec 2003)
+
+  01 Dec 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Version bump.
+
+*tmda-0.89 (17 Nov 2003)
+
+  17 Nov 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Version bump.
+  The docs have a new directory: html/img.
+
+*tmda-0.87 (14 Oct 2003)
+
+  14 Oct 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Version bump.
+
+*tmda-0.86 (02 Oct 2003)
+
+  02 Oct 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Version bump.
+
+*tmda-0.82 (09 Aug 2003)
+
+  09 Aug 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Version bump.
+
+*tmda-0.80 (16 Jun 2003)
+
+  10 Jul 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Depending on Python >=2.2 (bug #23696).
+
+  16 Jun 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Version bump.
+
+*tmda-0.79 (04 Jun 2003)
+
+  04 Jun 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Version bump.
+
+*tmda-0.74 (14 Apr 2003)
+
+  14 Apr 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Updated to 0.74.
+  tmda-cgi is now distributed separately, so somebody would have to write
+  an ebuild for that package now.
+  Made sure all the stuff under contrib/ gets installed.
+
+*tmda-0.71 ( 08 Mar 2003 )
+
+  08 Mar 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Updated to 0.71.
+
+*tmda-0.70 ( 23 Feb 2003 )
+
+  23 Feb 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Updated to 0.70.
+  New contrib scripts for vpomail users.
+  Now packaging all of the the contrib stuff into /usr/lib/tmda/contrib.
+
+*tmda-0.69 ( 05 Feb 2003 )
+
+  05 Feb 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Updated to 0.69.
+
+*tmda-0.68 ( 10 Jan 2003 )
+
+  10 Jan 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Updated to 0.68.
+
+*tmda-0.67 ( 02 Jan 2003 )
+
+  02 Jan 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Updated for 0.67.
+  Packaged the CGI script, included with TMDA.
+ 
+*tmda-0.65 ( 16 Nov 2002 )
+
+  16 Nov 2002; Arcady Genkin <agenkin@thpoon.com> tmda-0.65.ebuild :
+  Version update.
+
+*tmda-0.64 ( 09 Nov 2002 )
+
+  09 Nov 2002; Arcady Genkin <agenkin@thpoon.com> tmda-0.64.ebuild :
+  Version update.  Updated Python dependency to greater or equal than
+  2.1.
+
+*tmda-0.63 ( 30 Oct 2002 )
+
+  30 Oct 2002; Arcady Genkin <agenkin@thpoon.com> tmda-0.63.ebuild :
+  Version 0.63 is released.  Make sure to read UPDATING, as always.
+
+*tmda-0.62 ( 23 Sep 2002 )
+
+  23 Sep 2002; Arcady Genkin <agenkin@thpoon.com> tmda-0.62.ebuild :
+  Version 0.62 is released.
+
+*tmda-0.61 ( 21 Aug 2002 )
+
+  21 Aug 2002; Arcady Genkin <agenkin@thpoon.com> tmda-0.61.ebuild :
+  Version 0.61 is released.
+
+*tmda-0.59 ( 6 Aug 2002 )
+
+  6 Aug 2002; Arcady Genkin <agenkin@thpoon.com> tmda-0.59.ebuild :
+  Version 0.59 is released.
+  One new file installed: /usr/lib/tmda/lisp/tmda.el.  This is a
+  tmda helper for Gnus mail reader.
+
+*tmda-0.58 ( 16 July 2002 )
+
+  16 July 2002; Arcady Genkin <agenkin@thpoon.com> tmda-0.58.ebuild :
+  Version 0.58 is released.
+
+*tmda-0.57 ( 18 June 2002 )
+
+  18 June 2002; Arcady Genkin <agenkin@thpoon.com> tmda-0.57.ebuild :
+  Version 0.57 is released.
+
+*tmda-0.56 ( 30 May 2002 )
+
+  30 May 2002; Arcady Genkin <agenkin@thpoon.com> tmda-0.56.ebuild :
+  Version 0.56 is released.  There are important changes in the program.
+  Please read the documentation in the UPGRADE file.
+
+*tmda-0.55 ( 15 May 2002 )
+
+  15 May 2002; Arcady Genkin <agenkin@thpoon.com> tmda-0.55.ebuild :
+  Version 0.55 is released.
+
+*tmda-0.54 ( 2 May 2002 )
+
+  2 May 2002; Arcady Genkin <agenkin@thpoon.com> tmda-0.54.ebuild :
+  Version 0.54 is released.
+
+*tmda-0.52 ( 24 Apr 2002 )
+
+  24 Apr 2002; Arcady Genkin <agenkin@thpoon.com> tmda-0.52.ebuild :
+  Version 0.52 is released.
+  This is a bugfix release, so everybody should upgrade.
+
+*tmda-0.51 ( 3 Apr 2002 )
+
+  3 Apr 2002; Arcady Genkin <agenkin@thpoon.com> tmda-0.51.ebuild :
+  Version 0.51 is released.
+  This is a bugfix release, so everybody should upgrade.
+
+*tmda-0.50 ( 1 Apr 2002 )
+
+  1 Apr 2002; Arcady Genkin <agenkin@thpoon.com> tmda-0.50.ebuild :
+  Version 0.50 is released.
+
+*tmda-0.49 ( 16 Mar 2002 )
+
+  16 Mar 2002; Arcady Genkin <agenkin@thpoon.com> tmda-0.48.ebuild :
+  Version 0.49 is released.
+
+*tmda-0.48 ( 1 Mar 2002 )
+
+  1 Mar 2002; Arcady Genkin <agenkin@thpoon.com> tmda-0.48.ebuild :
+  Version 0.48 is released.
+  Make sure to read /usr/share/doc/tmda-0.48/UPGRADE.gz for important info
+  if upgrading from a previous version.
+
+*tmda-0.47 ( 19 Feb 2002 )
+
+  14 Feb 2002; Arcady Genkin <agenkin@thpoon.com> tmda-0.47.ebuild :
+  Version 0.47 is released.
+
+*tmda-0.46 ( 8 Feb 2002 )
+
+  14 Feb 2002; Arcady Genkin <agenkin@thpoon.com> tmda-0.46.ebuild :
+  Updated the .ebuild file to reflect suggestions from TMDA's author,
+  Jason R. Mastaler.  Also, shuffled the things around to make the ebuild's
+  organization clearer, and make use of things like 'dobin'.
+  There are no user-visible changes to the package, that's why it is not
+  bumped up to -r1.
+
+  8 Feb 2002; Grant Goodyear <g2boojum@gentoo.org> :
+  Updated to the latest version; removed -0.45.
+  
+*tmda-0.45 ( 5 Feb 2002 )
+
+  5 Feb 2002; Karl Trygve Kalleberg <karltk@gentoo.org> tmda-0.45.ebuild, files/digest-tmda-0.45 :
+  TMDA (Tagged Message Delivery Agent) is an OSI certified software 
+  application designed to significantly reduce the amount of SPAM/UCE
+  (junk-mail) you receive.  TMDA combines a "whitelist" (for known/trusted 
+  senders), a "blacklist" (for undesired senders), and a cryptographically 
+  enhanced confirmation system (for unknown, but legitimate senders).  TMDA 
+  strives to be more effectual, yet less time-consuming than traditional 
+  filters.
+
+

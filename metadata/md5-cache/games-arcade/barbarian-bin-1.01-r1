@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Save Princess Mariana through one-on-one battles with demonic barbarians
+EAPI=5
+HOMEPAGE=http://www.tdbsoft.com/
+KEYWORDS=-* amd64 x86
+LICENSE=CC-BY-NC-ND-2.0
+RDEPEND=sys-libs/libstdc++-v3:5 amd64? ( sys-libs/libstdc++-v3:5[multilib] ) >=media-libs/libsdl-1.2.15-r4[abi_x86_32(-)] games-misc/games-envd
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://www.pcpages.com/tomberrr/downloads/barbarian101_linux.zip
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=4219db9c1ad5c343681c173af83d3d5f

@@ -1,0 +1,10 @@
+# ChangeLog for dev-perl/MooseX-SimpleConfig
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/MooseX-SimpleConfig/ChangeLog,v 1.1 2013/02/03 18:29:52 tove Exp $
+
+*MooseX-SimpleConfig-0.90.0 (03 Feb 2013)
+
+  03 Feb 2013; Torsten Veller <tove@gentoo.org>
+  +MooseX-SimpleConfig-0.90.0.ebuild, +metadata.xml:
+  Initial commit for dev-perl/MooseX-ConfigFromFile
+

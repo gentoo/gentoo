@@ -1,0 +1,56 @@
+# ChangeLog for app-text/o3read
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/o3read/ChangeLog,v 1.18 2012/07/01 11:21:09 jlec Exp $
+
+  01 Jul 2012; Justin Lecher <jlec@gentoo.org> o3read-0.0.4.ebuild,
+  metadata.xml:
+  Respect LDFALGS, #336811; bumped to EAPI=4
+
+  02 Jan 2010; Christian Faulhammer <fauli@gentoo.org> o3read-0.0.4.ebuild:
+  Transfer Prefix keywords
+
+  11 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org> o3read-0.0.4.ebuild:
+  Restrict testsuite; the lynx test is interactive.
+
+  30 Dec 2008; Christoph Mende <angelos@gentoo.org> o3read-0.0.4.ebuild:
+  QA: Respect CC (bug 243738), respect CFLAGS (bug 240139), fix test suite
+
+  18 Oct 2008; nixnut <nixnut@gentoo.org> o3read-0.0.4.ebuild:
+  Stable on ppc wrt bug 233424
+
+  30 Aug 2008; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking o3read-0.0.4 ~ppc for bug 233424
+
+  09 Aug 2008; Santiago M. Mola <coldwind@gentoo.org> o3read-0.0.4.ebuild:
+  amd64 stable wrt bug #233424, thanks to Jonas Pedersen.
+
+  25 Jan 2008; Fabian Groffen <grobian@gentoo.org> o3read-0.0.4.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  15 Aug 2007; Steve Dibb <beandog@gentoo.org> o3read-0.0.4.ebuild:
+  add ~amd64, bug 188983
+
+  21 Feb 2007; Charlie Shepherd <masterdriverz@gentoo.org> metadata.xml:
+  avenj has retired - removing from metadata
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  29 Oct 2005; Fabian Groffen <grobian@gentoo.org> o3read-0.0.4.ebuild:
+  Marked ~ppc-macos (bug #109426)
+
+  02 Jun 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  o3read-0.0.4.ebuild:
+  mark ~ppc
+
+*o3read-0.0.4 (10 Jan 2005)
+
+  10 Jan 2005; Jon Portnoy <avenj@gentoo.org> o3read-0.0.4.ebuild :
+  Security version bump.
+
+*o3read-0.0.3 (27 Nov 2002)
+
+  27 Nov 2002: Seth Chandler <sethbc@gentoo.org>: o3read-0.0.3.ebuild
+  added o3read-0.0.3 to portage.  Ebuild submitted by Jon Portnoy 
+  (avenj@tellink.net).
+

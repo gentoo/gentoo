@@ -1,0 +1,92 @@
+# ChangeLog for app-misc/dailystrips
+# Copyright 2000-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/dailystrips/ChangeLog,v 1.31 2015/06/09 11:38:30 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  dailystrips-1.0.28-r2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  18 Nov 2012; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove beandog wrt #131511
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  24 Jan 2007; Alexander H. Færøy <eroyf@gentoo.org>
+  dailystrips-1.0.28-r2.ebuild:
+  Stable on Alpha; Bug #155879
+
+  23 Nov 2006; <blubb@gentoo.org> dailystrips-1.0.28-r2.ebuild:
+  stable on amd64
+
+  23 Nov 2006; Steve Dibb <beandog@gentoo.org> dailystrips-1.0.28-r1.ebuild,
+  dailystrips-1.0.28-r2.ebuild:
+  Fix perl date deps
+
+  23 Nov 2006; Steve Dibb <beandog@gentoo.org> -dailystrips-1.0.27.ebuild,
+  -dailystrips-1.0.28.ebuild:
+  Remove old versions
+
+  23 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  dailystrips-1.0.28-r2.ebuild:
+  stable x86, bug #155879
+
+  21 Nov 2006; Joseph Jezak <josejx@gentoo.org>
+  dailystrips-1.0.28-r2.ebuild:
+  Marked ppc stable for bug #155879.
+
+  21 Nov 2006; Steve Dibb <beandog@gentoo.org> +metadata.xml:
+  Add metadata, add beandog as maintainer
+
+  12 Jan 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  dailystrips-1.0.28-r2.ebuild:
+  Added to ~amd64, bug #76119
+
+*dailystrips-1.0.28-r2 (10 Dec 2004)
+
+  10 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +dailystrips-1.0.28-r2.ebuild:
+  add dep on dev-perl/DateTime for --date mode (bug #65376)
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  dailystrips-1.0.27.ebuild, dailystrips-1.0.28-r1.ebuild,
+  dailystrips-1.0.28.ebuild:
+  Masked dailystrips-1.0.28.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  dailystrips-1.0.27.ebuild, dailystrips-1.0.28-r1.ebuild:
+  Masked dailystrips-1.0.28-r1.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  dailystrips-1.0.27.ebuild:
+  Masked dailystrips-1.0.27.ebuild stable for ppc
+
+  14 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  dailystrips-1.0.24-r1.ebuild, dailystrips-1.0.24.ebuild,
+  dailystrips-1.0.25.ebuild:
+  tidy old versions
+
+*dailystrips-1.0.28-r1 (14 Jan 2004)
+
+  14 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  dailystrips-1.0.24-r1.ebuild, dailystrips-1.0.24.ebuild,
+  dailystrips-1.0.25.ebuild, dailystrips-1.0.27.ebuild,
+  dailystrips-1.0.28-r1.ebuild:
+  add dailystrips-update script install (bug 38151); more error checking/messages
+
+  09 Jan 2004; Aron Griffis <agriffis@gentoo.org> dailystrips-1.0.28.ebuild:
+  stable on alpha
+
+*dailystrips-1.0.28 (03 Sep 2003)
+
+  03 Sep 2003; Michael Sterrett <msterret@gentoo.org>
+  dailystrips-1.0.28.ebuild:
+  tidy; use sed -i; no need to keepdir /etc since strips.def is installed there.
+
+*dailystrips-1.0.24-r1 (05 Jun 2003)
+*dailystrips-1.0.24 (25 May 2002)
+*dailystrips-1.0.25 (13 Oct 2002)
+*dailystrips-1.0.27 (09 Jun 2003)

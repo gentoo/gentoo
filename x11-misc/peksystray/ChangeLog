@@ -1,0 +1,83 @@
+# ChangeLog for x11-misc/peksystray
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/peksystray/ChangeLog,v 1.20 2013/10/19 15:14:40 pacho Exp $
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due desktop-wm removal
+
+  14 Jan 2010; Samuli Suominen <ssuominen@gentoo.org>
+  peksystray-0.4.0.ebuild, +files/peksystray-0.4.0-asneeded.patch:
+  Fix building with -Wl,--as-needed wrt #248577, thanks to Kacper Kowalik
+  for patch.
+
+  08 Aug 2007; David Shakaryan <omp@gentoo.org>
+  +files/peksystray-0.4.0-ldadd.patch, peksystray-0.4.0.ebuild:
+  Fix AMD64 compile bug; thanks to Kenneth Prugh for patch. (bug #186504)
+
+*peksystray-0.4.0 (24 Jul 2007)
+
+  24 Jul 2007; David Shakaryan <omp@gentoo.org> +peksystray-0.4.0.ebuild:
+  Version bump. (bug #169278)
+
+  22 Jul 2007; David Shakaryan <omp@gentoo.org> peksystray-0.2.1.ebuild,
+  peksystray-0.3.0.ebuild:
+  Remove virtual/x11 from dependencies.
+
+  03 Feb 2007; Steve Dibb <beandog@gentoo.org> peksystray-0.2.1.ebuild,
+  peksystray-0.3.0.ebuild:
+  add ~amd64 and mulitlib support, bug 162530
+
+  05 Jun 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  peksystray-0.3.0.ebuild:
+  Restored dropped keywords.
+
+*peksystray-0.3.0 (05 Jun 2006)
+
+  05 Jun 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +peksystray-0.3.0.ebuild:
+  Version bump, see bug #132552.
+
+  11 Feb 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  -files/peksystray-gcc3-mlsl.diff, -peksystray-0.2.ebuild,
+  peksystray-0.2.1.ebuild:
+  Fixed DEPEND for modular X.
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  peksystray-0.2.1.ebuild:
+  Stable on ppc.
+
+  26 Jul 2005; David Holm <dholm@gentoo.org> peksystray-0.2.1.ebuild:
+  Added to ~ppc.
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  peksystray-0.2.1.ebuild:
+  Stable on alpha.
+
+  19 Jun 2005; Jonathan Smith <smithj@gentoo.org> peksystray-0.2.1.ebuild:
+  stable x86
+
+  30 Jan 2005; Tavis Ormandy <taviso@gentoo.org> peksystray-0.2.1.ebuild,
+  peksystray-0.2.ebuild:
+  configure.in doesnt check AC_PATH_X if set $x_libraries
+  explicitly set with --x-libraries. #79528
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*peksystray-0.2.1 (23 Nov 2004)
+
+  23 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +peksystray-0.2.1.ebuild:
+  Version bumped. Thanks to Thomas Kirchner <gentoo@halffull.org>; bug #71401.
+
+  19 Jun 2004; <pyrania@gentoo.org> peksystray-0.2.ebuild:
+  Removed default ${S}, added IUSE.
+
+  12 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> peksystray-0.2.ebuild:
+  Stable on alpha.
+
+*peksystray-0.2 (10 Jan 2004)
+
+  10 Jan 2004; Tavis Ormandy <taviso@gentoo.org> peksystray-0.2.ebuild,
+  files/peksystray-gcc3-mlsl.diff:
+  Initial import.

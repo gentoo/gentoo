@@ -1,0 +1,84 @@
+# ChangeLog for media-plugins/libvisual-projectm
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/libvisual-projectm/ChangeLog,v 1.17 2013/01/25 13:56:02 ago Exp $
+
+  25 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  libvisual-projectm-2.1.0.ebuild:
+  Stable for amd64, wrt bug #453402
+
+  25 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  libvisual-projectm-2.1.0.ebuild:
+  Stable for x86, wrt bug #453402
+
+*libvisual-projectm-2.1.0 (21 Jan 2013)
+
+  21 Jan 2013; Tomáš Chvátal <scarabeus@gentoo.org>
+  +libvisual-projectm-2.1.0.ebuild:
+  Version bump to 2.1.0.
+
+  21 Jan 2013; Tomáš Chvátal <scarabeus@gentoo.org>
+  -libvisual-projectm-1.2.0.ebuild:
+  Drop oldest overshadowed version.
+
+  08 May 2012; Andreas Schuerch <nativemad@gentoo.org>
+  libvisual-projectm-2.0.1.ebuild:
+  x86 stable, see bug 408487
+
+  07 May 2012; Agostino Sarubbo <ago@gentoo.org>
+  libvisual-projectm-2.0.1.ebuild:
+  Stable for amd64, wrt bug #408487
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  libvisual-projectm-1.2.0.ebuild, libvisual-projectm-2.0.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  16 Mar 2012; Tomáš Chvátal <scarabeus@gentoo.org> +files/2.0.1-gcc4.6.patch,
+  libvisual-projectm-2.0.1.ebuild:
+  Add patch for gcc-4.6. Fixes bug#363167.
+
+*libvisual-projectm-2.0.1 (10 Dec 2009)
+
+  10 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +libvisual-projectm-2.0.1.ebuild:
+  Version bump.
+
+  29 Apr 2009; Markus Meier <maekke@gentoo.org>
+  libvisual-projectm-1.2.0.ebuild:
+  amd64/x86 stable, bug #261851
+
+*libvisual-projectm-1.2.0 (17 Jul 2008)
+
+  17 Jul 2008; Alexis Ballier <aballier@gentoo.org>
+  +libvisual-projectm-1.2.0.ebuild:
+  version bump
+
+  31 May 2008; Alexis Ballier <aballier@gentoo.org>
+  libvisual-projectm-1.1.ebuild:
+  declare empty IUSE, bug #224369
+
+  31 May 2008; Alexis Ballier <aballier@gentoo.org>
+  -libvisual-projectm-0.99.ebuild, -libvisual-projectm-1.0.ebuild:
+  remove old
+
+*libvisual-projectm-1.1 (19 May 2008)
+
+  19 May 2008; Samuli Suominen <drac@gentoo.org>
+  +libvisual-projectm-1.1.ebuild:
+  Version bump.
+
+*libvisual-projectm-1.0 (23 Oct 2007)
+
+  23 Oct 2007; Samuli Suominen <drac@gentoo.org>
+  +libvisual-projectm-1.0.ebuild:
+  Version bump.
+
+  13 Nov 2006; Andrej Kacian <ticho@gentoo.org>
+  libvisual-projectm-0.99.ebuild:
+  Added ~x86 keyword, bug #154846.
+
+*libvisual-projectm-0.99 (06 Nov 2006)
+
+  06 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> +metadata.xml,
+  +libvisual-projectm-0.99.ebuild:
+  Initial import, ProjectM libvisual plugin, thanks to all the users
+  submitting ebuilds and feedback in bug #87870.

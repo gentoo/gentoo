@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>scheme</herd>
+	<maintainer>
+		<email>pchrist@gentoo.org</email>
+		<name>Panagiotis Christopoulos</name>
+	</maintainer>
+	<longdescription lang="en">
+		Ikarus Scheme is a free optimizing incremental native-code compiler for
+		Scheme as specified in the Revised-6 Report on the Algorithmic Language
+		Scheme.
+	</longdescription>
+</pkgmetadata>
+

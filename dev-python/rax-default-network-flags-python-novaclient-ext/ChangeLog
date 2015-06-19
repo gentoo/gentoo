@@ -1,0 +1,46 @@
+# ChangeLog for dev-python/rax-default-network-flags-python-novaclient-ext
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/rax-default-network-flags-python-novaclient-ext/ChangeLog,v 1.8 2015/06/07 15:52:15 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+*rax-default-network-flags-python-novaclient-ext-0.3.1 (07 May 2015)
+
+  07 May 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +rax-default-network-flags-python-novaclient-ext-0.3.1.ebuild,
+  -rax-default-network-flags-python-novaclient-ext-9999.ebuild:
+  bup
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org>
+  rax-default-network-flags-python-novaclient-ext-0.1.3.ebuild:
+  Drop old Python implementations
+
+*rax-default-network-flags-python-novaclient-ext-0.2.4 (12 May 2014)
+
+  12 May 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +rax-default-network-flags-python-novaclient-ext-0.2.4.ebuild:
+  update!
+
+*rax-default-network-flags-python-novaclient-ext-0.1.3-r1 (14 Apr 2014)
+
+  14 Apr 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +rax-default-network-flags-python-novaclient-ext-0.1.3-r1.ebuild,
+  rax-default-network-flags-python-novaclient-ext-9999.ebuild:
+  no more 2.6
+
+  03 May 2013; Matthew Thode <prometheanfire@gentoo.org>
+  rax-default-network-flags-python-novaclient-ext-0.1.3.ebuild,
+  rax-default-network-flags-python-novaclient-ext-9999.ebuild:
+  getting rid of 2.5 support (python-novaclient doesn't support it)
+
+*rax-default-network-flags-python-novaclient-ext-9999 (04 Mar 2013)
+*rax-default-network-flags-python-novaclient-ext-0.1.3 (04 Mar 2013)
+
+  04 Mar 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +rax-default-network-flags-python-novaclient-ext-0.1.3.ebuild,
+  +rax-default-network-flags-python-novaclient-ext-9999.ebuild, +metadata.xml:
+  initial add of rax_default_network_flags_python_novaclient_ext

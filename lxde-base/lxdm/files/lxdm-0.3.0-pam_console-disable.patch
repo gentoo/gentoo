@@ -1,0 +1,8 @@
+--- lxdm-0.2.0.a/pam/lxdm
++++ lxdm-0.2.0.b/pam/lxdm
+@@ -4,4 +4,4 @@
+ session    optional	pam_keyinit.so force revoke
+ session    include	system-auth
+ session    required	pam_loginuid.so
+-session    optional	pam_console.so
++# session    optional	pam_console.so

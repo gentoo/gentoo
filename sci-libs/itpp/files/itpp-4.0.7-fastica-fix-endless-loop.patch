@@ -1,0 +1,93 @@
+diff -ru libitpp-4.0.7/itpp/signal/fastica.cpp libitpp-4.0.7.patched/itpp/signal/fastica.cpp
+--- libitpp-4.0.7/itpp/signal/fastica.cpp	2009-12-27 01:38:47.000000000 +0100
++++ libitpp-4.0.7.patched/itpp/signal/fastica.cpp	2010-07-08 16:32:04.000000000 +0200
+@@ -90,7 +90,7 @@
+ static mat mpower(const mat A, const double y);
+ static ivec getSamples(const int max, const double percentage);
+ static vec sumcol(const mat A);
+-static void fpica(const mat X, const mat whiteningMatrix, const mat dewhiteningMatrix, const int approach, const int numOfIC, const int g, const int finetune, const double a1, const double a2, double myy, const int stabilization, const double epsilon, const int maxNumIterations, const int maxFinetune, const int initState, mat guess, double sampleSize, mat & A, mat & W);
++static bool fpica(const mat X, const mat whiteningMatrix, const mat dewhiteningMatrix, const int approach, const int numOfIC, const int g, const int finetune, const double a1, const double a2, double myy, const int stabilization, const double epsilon, const int maxNumIterations, const int maxFinetune, const int initState, mat guess, double sampleSize, mat & A, mat & W);
+ /*! @} */
+ 
+ namespace itpp
+@@ -124,7 +124,7 @@
+ }
+ 
+ // Call main function
+-void Fast_ICA::separate(void)
++bool Fast_ICA::separate(void)
+ {
+ 
+   int Dim = numOfIC;
+@@ -159,13 +159,14 @@
+ 
+   }
+ 
++  bool result = true; 
+   if (PCAonly == false) {
+ 
+     Dim = whitesig.rows();
+ 
+     if (numOfIC > Dim) numOfIC = Dim;
+ 
+-    fpica(whitesig, whiteningMatrix, dewhiteningMatrix, approach, numOfIC, g, finetune, a1, a2, mu, stabilization, epsilon, maxNumIterations, maxFineTune, initState, guess, sampleSize, A, W);
++    result = fpica(whitesig, whiteningMatrix, dewhiteningMatrix, approach, numOfIC, g, finetune, a1, a2, mu, stabilization, epsilon, maxNumIterations, maxFineTune, initState, guess, sampleSize, A, W);
+ 
+     icasig = W * mixedSig;
+ 
+@@ -174,6 +175,7 @@
+   else { // PCA only : returns E as IcaSig
+     icasig = VecPr;
+   }
++  return result; 
+ }
+ 
+ void Fast_ICA::set_approach(int in_approach) { approach = in_approach; if (approach == FICA_APPROACH_DEFL) finetune = true; }
+@@ -437,7 +439,7 @@
+ 
+ }
+ 
+-static void fpica(const mat X, const mat whiteningMatrix, const mat dewhiteningMatrix, const int approach, const int numOfIC, const int g, const int finetune, const double a1, const double a2, double myy, const int stabilization, const double epsilon, const int maxNumIterations, const int maxFinetune, const int initState, mat guess, double sampleSize, mat & A, mat & W)
++static bool fpica(const mat X, const mat whiteningMatrix, const mat dewhiteningMatrix, const int approach, const int numOfIC, const int g, const int finetune, const double a1, const double a2, double myy, const int stabilization, const double epsilon, const int maxNumIterations, const int maxFinetune, const int initState, mat guess, double sampleSize, mat & A, mat & W)
+ {
+ 
+   int vectorSize = X.rows();
+@@ -511,7 +513,7 @@
+         A = dewhiteningMatrix * B;
+         W = transpose(B) * whiteningMatrix;
+ 
+-        return;
++        return false;
+       }
+ 
+       B = B * mpower(transpose(B) * B , -0.5);
+@@ -769,7 +771,7 @@
+ 
+               } // IF round
+ 
+-              break;
++              return false;
+ 
+             } // IF numFailures > failureLimit
+ 
+@@ -990,5 +992,5 @@
+     } // While round <= numOfIC
+ 
+   } // ELSE Deflation
+-
++  return true; 
+ } // FPICA
+diff -ru libitpp-4.0.7/itpp/signal/fastica.h libitpp-4.0.7.patched/itpp/signal/fastica.h
+--- libitpp-4.0.7/itpp/signal/fastica.h	2009-12-27 01:38:47.000000000 +0100
++++ libitpp-4.0.7.patched/itpp/signal/fastica.h	2010-07-08 16:24:37.000000000 +0200
+@@ -134,8 +134,9 @@
+     \brief Explicit launch of main FastICA function
+ 
+     Explicit launch of the Fast_ICA algorithm.
++    \returns true if algorithm converged and false otherwise
+   */
+-  void separate(void);
++  bool separate(void);
+ 
+   /*!
+     \brief Set approach : FICA_APPROACH_DEFL or FICA_APPROACH_SYMM (default)

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install preinst prepare test
+DEPEND=>=sys-libs/pam-0.78-r2 >=sys-libs/db-4.2.52_p2 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=PAM module for blacklisting of hosts and users on repeated failed authentication attempts
+EAPI=5
+HOMEPAGE=http://pam-abl.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/pam-0.78-r2 >=sys-libs/db-4.2.52_p2
+SLOT=0
+SRC_URI=mirror://sourceforge/pam-abl/pam-abl-0.6.0.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	db-use	82d0e62839f20e1e0d5a2259abd5316f	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=70b719b826f9e44cfb2ace7c9100510b

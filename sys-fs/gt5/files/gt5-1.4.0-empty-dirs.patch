@@ -1,0 +1,11 @@
+--- /usr/bin/gt5.old	2011-01-10 23:01:29.778000092 +0100
++++ /usr/bin/gt5	2011-01-10 23:01:16.577000089 +0100
+@@ -261,7 +261,7 @@
+ 
+ #can du handle depths?
+ DEPTH="$(du --help 2>&1 | "$AWK" '
+-  /depth/{sub(/^[^-]*/,""); sub(/[N ].*/,""); print; exit}
++  /depth/{sub(/^[^-]*/,""); sub(/,[N ].*/,""); print; exit}
+ ')$((MAX_DEPTH+1))"
+ 
+ {

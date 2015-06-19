@@ -1,0 +1,31 @@
+--- a/src/filebrowser.c
++++ b/src/filebrowser.c	
+@@ -866,7 +866,7 @@ filebrowser_get_selection(gboolean from_
+     else
+         tree = glade_xml_get_widget(gnomebaker_getxml(), widget_browser_filelist);
+ 
+-    GtkSelectionData *selection_data = g_new0(GtkSelectionData, 1);
++    GtkSelectionData *selection_data = g_slice_new0(GtkSelectionData);
+     filebrowser_on_drag_data_get(tree, NULL, selection_data, 0, 0, NULL);
+     return selection_data;
+ }
+--- a/src/gnomebaker.c
++++ b/src/gnomebaker.c
+@@ -529,7 +529,7 @@ gnomebaker_on_add_files(gpointer widget,
+         }
+ 
+         /*gtk_selection_data_set_uris(selection_data, uris);*/
+-        selection_data = g_new0(GtkSelectionData, 1);
++        selection_data = g_slice_new0(GtkSelectionData);
+         gtk_selection_data_set(selection_data, selection_data->target, 8,
+                 (const guchar*)text->str, strlen(text->str) * sizeof(gchar));
+         GB_TRACE("gnomebaker_on_add_files - [%s]\n", selection_data->data);
+@@ -1073,7 +1073,7 @@ gnomebaker_select_files_or_folders(const
+         }
+ 
+         /*gtk_selection_data_set_uris(selection_data, uris);*/
+-        selection_data = g_new0(GtkSelectionData, 1);
++        selection_data = g_slice_new0(GtkSelectionData);
+         gtk_selection_data_set(selection_data, selection_data->target, 8,
+             (const guchar*)text->str, strlen(text->str) * sizeof(gchar));
+         GB_TRACE("gnomebaker_select_files_or_folders - [%s]\n", selection_data->data);

@@ -1,0 +1,110 @@
+# ChangeLog for dev-perl/LWP-MediaTypes
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/LWP-MediaTypes/ChangeLog,v 1.31 2014/08/22 16:24:25 axs Exp $
+
+*LWP-MediaTypes-6.20.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +LWP-MediaTypes-6.20.0-r1.ebuild, -LWP-MediaTypes-6.20.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org> LWP-MediaTypes-6.20.0.ebuild:
+  Add arm64 love.
+
+  18 Feb 2013; Zac Medico <zmedico@gentoo.org> LWP-MediaTypes-6.20.0.ebuild:
+  Add ~arm-linux keyword.
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org> -LWP-MediaTypes-6.10.0.ebuild:
+  Cleanup
+
+  19 Aug 2012; Raúl Porcel <armin76@gentoo.org> LWP-MediaTypes-6.20.0.ebuild:
+  alpha/m68k/s390/sh/sparc stable wrt #414747
+
+  14 Jul 2012; Akinori Hattori <hattya@gentoo.org> LWP-MediaTypes-6.20.0.ebuild:
+  ia64 stable wrt bug #414747
+
+  03 Jul 2012; Brent Baude <ranger@gentoo.org> LWP-MediaTypes-6.20.0.ebuild:
+  Marking LWP-MediaTypes-6.20.0 ppc for bug 414747
+
+  29 Jun 2012; Jeroen Roovers <jer@gentoo.org> LWP-MediaTypes-6.20.0.ebuild:
+  Stable for HPPA (bug #414747).
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  22 Jun 2012; Brent Baude <ranger@gentoo.org> LWP-MediaTypes-6.20.0.ebuild:
+  Marking LWP-MediaTypes-6.20.0 ppc64 for bug 414747
+
+  21 Jun 2012; Markus Meier <maekke@gentoo.org> LWP-MediaTypes-6.20.0.ebuild:
+  arm stable, bug #414747
+
+  19 Jun 2012; Agostino Sarubbo <ago@gentoo.org> LWP-MediaTypes-6.20.0.ebuild:
+  Stable for amd64, wrt bug #414747
+
+  19 Jun 2012; Jeff Horelick <jdhore@gentoo.org> LWP-MediaTypes-6.20.0.ebuild:
+  marked x86 per bug 414747
+
+  05 May 2012; Alexis Ballier <aballier@gentoo.org>
+  LWP-MediaTypes-6.20.0.ebuild:
+  keyword ~amd64-fbsd
+
+  01 Mar 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Add missing cpan remote-id tags in metadata.xml (#406287)
+
+*LWP-MediaTypes-6.20.0 (17 Feb 2012)
+
+  17 Feb 2012; Torsten Veller <tove@gentoo.org> +LWP-MediaTypes-6.20.0.ebuild:
+  Version bump
+
+  18 Dec 2011; Mark Loeser <halcy0n@gentoo.org> LWP-MediaTypes-6.10.0.ebuild:
+  Stable for ppc64; bug #386309
+
+  19 Nov 2011; Raúl Porcel <armin76@gentoo.org> LWP-MediaTypes-6.10.0.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #386309
+
+  08 Nov 2011; Tony Vroon <chainsaw@gentoo.org> LWP-MediaTypes-6.10.0.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo & Ian
+  "idella4" Delaney in security bug #386309.
+
+  07 Nov 2011; Jeroen Roovers <jer@gentoo.org> LWP-MediaTypes-6.10.0.ebuild:
+  Stable for HPPA (bug #386309).
+
+  06 Nov 2011; Markus Meier <maekke@gentoo.org> LWP-MediaTypes-6.10.0.ebuild:
+  arm stable, bug #386309
+
+  06 Nov 2011; Andreas Schuerch <nativemad@gentoo.org>
+  LWP-MediaTypes-6.10.0.ebuild:
+  x86 stable, bug 386309. Thanks Myckel Habets.
+
+  06 Nov 2011; Brent Baude <ranger@gentoo.org> LWP-MediaTypes-6.10.0.ebuild:
+  Marking LWP-MediaTypes-6.10.0 ppc stable for bug 386309
+
+  09 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  LWP-MediaTypes-6.10.0.ebuild:
+  Marked ~ppc/~ppc64 wrt #358079
+
+  15 Jun 2011; Naohiro Aota <naota@gentoo.org> LWP-MediaTypes-6.10.0.ebuild:
+  Added ~x86-fbsd, bug #358079
+
+  13 Jun 2011; Matt Turner <mattst88@gentoo.org> LWP-MediaTypes-6.10.0.ebuild:
+  Added ~mips, bug 358079
+
+  15 May 2011; Raúl Porcel <armin76@gentoo.org> LWP-MediaTypes-6.10.0.ebuild:
+  Add ~alpha/~ia64/~m68k/~s390/~sh/~sparc wrt #358079
+
+  24 Apr 2011; Fabian Groffen <grobian@gentoo.org>
+  LWP-MediaTypes-6.10.0.ebuild:
+  (Re)keyword for Prefix, bug #358079
+
+  08 Apr 2011; Markus Meier <maekke@gentoo.org> LWP-MediaTypes-6.10.0.ebuild:
+  add ~arm, bug #358079
+
+  04 Apr 2011; Jeroen Roovers <jer@gentoo.org> LWP-MediaTypes-6.10.0.ebuild:
+  Marked ~hppa (bug #358079).
+
+*LWP-MediaTypes-6.10.0 (09 Mar 2011)
+
+  09 Mar 2011; Torsten Veller <tove@gentoo.org> +LWP-MediaTypes-6.10.0.ebuild,
+  +metadata.xml:
+  Initial commit - unbundled from libwww-perl

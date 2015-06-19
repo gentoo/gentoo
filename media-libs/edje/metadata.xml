@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>enlightenment</herd>
+<use>
+ <flag name='cache'>Enable caching</flag>
+</use>
+<longdescription>
+Edje is a complex graphical design and layout library.
+
+It's purpose is to be a sequel to "Ebits" which to date has serviced the needs of 
+Enlightenment development for version 0.17. The original design paramteres under 
+which Ebits came about were a lot more restricted than the resulting use of them, 
+thus Edje was born.
+
+Edje is a more complex layout engine compared to Ebits. It doesn't pretend to do 
+containering and regular layout like a widget set. It still inherits the more 
+simplistic layout ideas behind Ebits, but it now does them a lot more cleanly, 
+allowing for easy expansion, and the ability to cover much more ground than Ebits 
+ever could. For the purposes of Enlightenment 0.17, Edje should serve all the 
+purposes of creating visual elements (borders of windows, scrollbars, etc.) and 
+allow the designer the ability to animate, layout and control the look and feel of 
+any program using Edje as its basic GUI constructor. This library allows for 
+multiple collections of Layouts in one file, sharing the same image database and 
+thus allowing a whole theme to be conveneintly packaged into 1 file and shipped 
+around.
+
+Edje, unlike Ebits, separates the layout and behavior logic. Edje files ship with an 
+image database, used by all the parts in all the collections to source graphical 
+data. It has a directory of logical part names pointing to the part collection entry 
+ID in the file (thus allowing for multiple logical names to point to the same part 
+collection, allowing for the sharing of data betwene display elements). Each part 
+collection consists of a list of visual parts, as well as a list of programs. A 
+program is a conditionally run program that if a particular event occurs (a button 
+is pressed, a mouse enters or leaves a part) will trigger an action that may affect 
+other parts. In this way a part collection can be "programmed" via its file as to 
+hilight buttons when the mouse passes over them or show hidden parts when a button 
+is clicked somewhere etc. The actions performed in changing from one state to 
+another ar also allowed to transition over a period of time, allowing animation.
+
+This separation and simplistic event driven style of programming can produce almost 
+any look and feel one could want for basic visual elements. Anything more complex is 
+likely the domain of an application or widget set that may use Edje as a conveneient 
+way of being able to configure parts of the display.
+</longdescription>
+</pkgmetadata>

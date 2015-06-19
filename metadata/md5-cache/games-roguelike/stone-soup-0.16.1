@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEPEND=dev-db/sqlite:3 luajit? ( >=dev-lang/luajit-2.0.0 ) sys-libs/zlib !ncurses? ( !tiles? ( sys-libs/ncurses ) ) ncurses? ( sys-libs/ncurses ) tiles? ( media-fonts/dejavu media-libs/freetype:2 media-libs/libpng:0 media-libs/libsdl2[opengl,video] media-libs/sdl2-image[png] virtual/glu virtual/opengl ) dev-lang/perl sys-devel/flex virtual/pkgconfig virtual/yacc tiles? ( sys-libs/ncurses test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost ) ) >=sys-apps/sed-4
+DESCRIPTION=Dungeon Crawl Stone Soup is a role-playing roguelike game of exploration and treasure-hunting in dungeons
+EAPI=5
+HOMEPAGE=http://crawl.develz.org/wordpress/
+IUSE=debug luajit ncurses test +tiles
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT
+RDEPEND=dev-db/sqlite:3 luajit? ( >=dev-lang/luajit-2.0.0 ) sys-libs/zlib !ncurses? ( !tiles? ( sys-libs/ncurses ) ) ncurses? ( sys-libs/ncurses ) tiles? ( media-fonts/dejavu media-libs/freetype:2 media-libs/libpng:0 media-libs/libsdl2[opengl,video] media-libs/sdl2-image[png] virtual/glu virtual/opengl ) games-misc/games-envd
+RESTRICT=test
+SLOT=0
+SRC_URI=https://crawl.develz.org/release/stone_soup-0.16.1.tar.xz http://dev.gentoo.org/~hasufell/distfiles/stone-soup.png http://dev.gentoo.org/~hasufell/distfiles/stone-soup.svg
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	virtualx	73cfc129b4b9ba23aed1abb10c825d86
+_md5_=190bb782de8462ec002835da05107301

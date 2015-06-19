@@ -1,0 +1,546 @@
+# ChangeLog for net-mail/uw-imap
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/uw-imap/ChangeLog,v 1.142 2014/08/10 20:47:17 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> uw-imap-2007f-r1.ebuild,
+  uw-imap-2007f.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  30 Sep 2012; Raúl Porcel <armin76@gentoo.org> uw-imap-2007f-r1.ebuild:
+  alpha/ia64/sparc stable wrt #433329
+
+  27 Sep 2012; Anthony G. Basile <blueness@gentoo.org> uw-imap-2007f-r1.ebuild:
+  stable ppc ppc64, bug #433329
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> uw-imap-2007f-r1.ebuild:
+  x86 stable wrt bug #433329
+
+  08 Sep 2012; Agostino Sarubbo <ago@gentoo.org> uw-imap-2007f-r1.ebuild:
+  Stable for amd64, wrt bug #433329
+
+  05 Sep 2012; Jeroen Roovers <jer@gentoo.org> uw-imap-2007f-r1.ebuild:
+  Stable for HPPA (bug #433329).
+
+*uw-imap-2007f-r1 (11 Jul 2012)
+
+  11 Jul 2012; Eray Aslan <eras@gentoo.org> +uw-imap-2007f-r1.ebuild:
+  Make build system multilib aware
+
+  09 Mar 2012; Eray Aslan <eras@gentoo.org> -uw-imap-2007e-r1.ebuild,
+  -uw-imap-2007e-r2.ebuild:
+  remove old
+
+  08 Mar 2012; Brent Baude <ranger@gentoo.org> uw-imap-2007f.ebuild:
+  Marking uw-imap-2007f ppc64 for bug 391349
+
+  04 Jan 2012; Brent Baude <ranger@gentoo.org> uw-imap-2007f.ebuild:
+  Marking uw-imap-2007f ppc for bug 391349
+
+  01 Jan 2012; Raúl Porcel <armin76@gentoo.org> uw-imap-2007f.ebuild:
+  alpha/ia64/sparc stable wrt #391349
+
+  24 Dec 2011; Eray Aslan <eras@gentoo.org> uw-imap-2007f.ebuild:
+  Fix building with -ssl USE flag - bug #395855
+
+  22 Dec 2011; Markus Meier <maekke@gentoo.org> uw-imap-2007f.ebuild:
+  x86 stable, bug #391349
+
+  26 Nov 2011; Markos Chandras <hwoarang@gentoo.org> uw-imap-2007f.ebuild:
+  Stable on amd64 wrt bug #391349
+
+  22 Nov 2011; Jeroen Roovers <jer@gentoo.org> uw-imap-2007f.ebuild:
+  Stable for HPPA (bug #391349).
+
+*uw-imap-2007f (12 Sep 2011)
+
+  12 Sep 2011; Eray Aslan <eras@gentoo.org> +uw-imap-2007f.ebuild:
+  version bump
+
+*uw-imap-2007e-r2 (17 Jul 2011)
+
+  17 Jul 2011; Eray Aslan <eras@gentoo.org> +uw-imap-2007e-r2.ebuild:
+  install missing headers - bug #375393
+
+  13 Jun 2011; Eray Aslan <eras@gentoo.org> -uw-imap-2007e.ebuild:
+  Remove vulnerable version
+
+  12 Jun 2011; Raúl Porcel <armin76@gentoo.org> uw-imap-2007e-r1.ebuild:
+  alpha/ia64/sparc stable wrt #235227
+
+  07 Jun 2011; Kacper Kowalik <xarthisius@gentoo.org> uw-imap-2007e-r1.ebuild:
+  ppc/ppc64 stable wrt #235277
+
+  05 Jun 2011; Jeroen Roovers <jer@gentoo.org> uw-imap-2007e-r1.ebuild:
+  Stable for HPPA (bug #235227).
+
+  05 Jun 2011; Eray Aslan <eras@gentoo.org> uw-imap-2007e-r1.ebuild:
+  Remove blocker against net-mail/vimap. No longer in the tree.
+
+  05 Jun 2011; Markos Chandras <hwoarang@gentoo.org> uw-imap-2007e-r1.ebuild:
+  Stable on amd64 wrt bug #235227
+
+  04 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> uw-imap-2007e-r1.ebuild:
+  x86 stable wrt security bug #235227
+
+*uw-imap-2007e-r1 (01 Jun 2011)
+
+  01 Jun 2011; Eray Aslan <eras@gentoo.org> +uw-imap-2007e-r1.ebuild:
+  Fix patching - bug #368785. Proper SSL key generation - bug #235227. Tidy up
+  and EAPI bump.
+
+  07 May 2011; Eray Aslan <eras@gentoo.org> uw-imap-2007e.ebuild,
+  +files/uw-imap-ldflags.patch:
+  QA fixes bug 332721. Do not block bincimap bug 290353
+
+  19 Mar 2011; Eray Aslan <eras@gentoo.org> uw-imap-2007e.ebuild:
+  remove old style virtual/imapd
+
+  16 Mar 2011; Eray Aslan <eras@gentoo.org> uw-imap-2007e.ebuild:
+  change to new style virtual/imap-c-client bug 358993
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> uw-imap-2007b.ebuild,
+  uw-imap-2007e.ebuild:
+  Remove virtual/libc
+
+  02 Feb 2009; Raúl Porcel <armin76@gentoo.org> uw-imap-2007e.ebuild:
+  ia64/sparc stable wrt #245425
+
+  31 Jan 2009; Tobias Klausmann <klausman@gentoo.org> uw-imap-2007e.ebuild:
+  Stable on alpha, bug #245425
+
+  24 Jan 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  uw-imap-2007e.ebuild:
+  ppc stable, bug #245425
+
+  22 Jan 2009; Brent Baude <ranger@gentoo.org> uw-imap-2007e.ebuild:
+  Marking uw-imap-2007e ppc64 for bug 245425
+
+  21 Jan 2009; Markus Meier <maekke@gentoo.org> uw-imap-2007e.ebuild:
+  amd64/x86 stable, bug #245425
+
+  20 Jan 2009; Jeroen Roovers <jer@gentoo.org> uw-imap-2007e.ebuild:
+  Stable for HPPA (bug #245425).
+
+*uw-imap-2007e (13 Jan 2009)
+
+  13 Jan 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  -uw-imap-2004g-r2.ebuild, +uw-imap-2007e.ebuild:
+  Version bump, #245425
+
+  20 Sep 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  uw-imap-2007b.ebuild:
+  ppc stable, bug #231258
+
+  25 Aug 2008; Raúl Porcel <armin76@gentoo.org> uw-imap-2007b.ebuild:
+  alpha/ia64 stable wrt #231258
+
+  24 Aug 2008; Markus Rothe <corsair@gentoo.org> uw-imap-2007b.ebuild:
+  Stable on ppc64; bug #231258
+
+  22 Aug 2008; Jeroen Roovers <jer@gentoo.org> uw-imap-2007b.ebuild:
+  Stable for HPPA (bug #231258).
+
+  21 Aug 2008; Friedrich Oslage <bluebird@gentoo.org> uw-imap-2007b.ebuild:
+  Stable on sparc, bug #231258
+
+  20 Aug 2008; Markus Meier <maekke@gentoo.org> uw-imap-2007b.ebuild:
+  amd64/x86 stable, bug #231258
+
+  19 Aug 2008; Christian Hoffmann <hoffie@gentoo.org> metadata.xml,
+  uw-imap-2007b.ebuild:
+  moving uw-mailutils dependency to RDEPEND as it is really only a runtime
+  dependency (hopefully fixing bug 231258 #c17), adding USE flag description
+  to metadata (GLEP 56)
+
+*uw-imap-2007b (24 Jul 2008)
+
+  24 Jul 2008; Christian Hoffmann <hoffie@gentoo.org> +uw-imap-2007b.ebuild:
+  version bump (bug 153281), thanks to Target <target@targ.dyndns.org> for
+  ebuild submission and testing; also fixing license; thanks to dertobi123
+  for approval for this commit
+
+  15 Mar 2008; Mark Loeser <halcy0n@gentoo.org> uw-imap-2004g-r2.ebuild:
+  Add a blocker in RDEPEND on virtual/imapd so we avoid manpage collisions;
+  bug #198633
+
+  01 Apr 2007; Andrej Kacian <ticho@gentoo.org> uw-imap-2004g-r2.ebuild:
+  Also install flstring.h. Bug #160757, reported by Zak Kipling <zak at
+  transversal.com>.
+
+  06 Jan 2007; Fernando J. Pereda <ferdy@gentoo.org>
+  -uw-imap-2004g-r1.ebuild:
+  QA: Clean unused versions.
+
+  07 Oct 2006; Andrej Kacian <ticho@gentoo.org> uw-imap-2004g-r1.ebuild,
+  uw-imap-2004g-r2.ebuild:
+  Correctly (r)depend on xinetd. Pointed out by Massimiliano Adamo
+  <massimilianoadamo at yahoo.it> in bug #123311.
+
+  17 May 2006; Fernando J. Pereda <ferdy@gentoo.org>
+  uw-imap-2004g-r2.ebuild:
+  Stable on alpha.
+
+  21 Feb 2006; Jeroen Roovers <jer@gentoo.org> uw-imap-2004g-r2.ebuild:
+  Stable on hppa.
+
+  07 Feb 2006; Simon Stelling <blubb@gentoo.org> uw-imap-2004g-r2.ebuild:
+  stable on amd64
+
+  23 Jan 2006; Simon Stelling <blubb@gentoo.org> uw-imap-2004g-r2.ebuild:
+  added ~amd64 keyword
+
+  21 Jan 2006; Markus Rothe <corsair@gentoo.org> uw-imap-2004g-r2.ebuild:
+  Stable on ppc64
+
+  15 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  uw-imap-2004g-r2.ebuild:
+  Stable on ppc.
+
+  09 Jan 2006; Jeroen Roovers <jer@gentoo.org> uw-imap-2004g-r2.ebuild:
+  Marked ~hppa (bug #101051).
+
+  08 Jan 2006; Joseph Jezak <josejx@gentoo.org> uw-imap-2004g-r2.ebuild:
+  Marked ~ppc for bug #101051.
+
+  21 Dec 2005; Markus Rothe <corsair@gentoo.org> uw-imap-2004g-r2.ebuild:
+  Added ~ppc64; bug #101051
+
+  20 Dec 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  uw-imap-2004g-r2.ebuild:
+  Stable on sparc
+
+  19 Dec 2005; Andrej Kacian <ticho@gentoo.org> -files/uw-imap.pam,
+  -files/uw-imap.pam-system-auth, -uw-imap-2004a.ebuild,
+  -uw-imap-2004c.ebuild, -uw-imap-2004c-r1.ebuild, -uw-imap-2004c-r2.ebuild,
+  -uw-imap-2004c-r3.ebuild, -uw-imap-2004g.ebuild, uw-imap-2004g-r2.ebuild:
+  Ebuild cleanup. 2004g-r2 stable on x86.
+
+  07 Oct 2005; Simon Stelling <blubb@gentoo.org> uw-imap-2004g-r1.ebuild:
+  marked stable on amd64 wrt bug 108206
+
+  07 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  uw-imap-2004g-r1.ebuild:
+  Stable on hppa, ppc. See bug #108206.
+
+  07 Oct 2005; Andrej Kacian <ticho@gentoo.org> uw-imap-2004g.ebuild,
+  uw-imap-2004g-r1.ebuild, uw-imap-2004g-r2.ebuild:
+  Fix amd64 patch name. Bug #108344.
+
+  06 Oct 2005; Brent Baude <ranger@gentoo.org> uw-imap-2004g-r1.ebuild:
+  Marking uw-imap-2004g-r1 ppc64 for bug 108206
+
+*uw-imap-2004g-r2 (06 Oct 2005)
+
+  06 Oct 2005; Andrej Kacian <ticho@gentoo.org> +uw-imap-2004g-r2.ebuild:
+  Remove pic USEflag, and build c-client with -fPIC unconditionally. Closes
+  bug #101051.
+
+  06 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  uw-imap-2004g-r1.ebuild:
+  Stable on sparc wrt #108206
+
+  06 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  uw-imap-2004g-r1.ebuild:
+  stable on alpha wrt bug #108206
+
+  06 Oct 2005; Andrej Kacian <ticho@gentoo.org> uw-imap-2004g-r1.ebuild:
+  Stable on x86, due to security bug #108206.
+
+*uw-imap-2004g-r1 (06 Oct 2005)
+
+  06 Oct 2005; Andrej Kacian <ticho@gentoo.org> +uw-imap-2004g-r1.ebuild:
+  Split mailutil and mtest utilities to a separate package
+  (net-mail/uw-mailutils), to fix file collisions with pine. Closes bug
+  #105313.
+
+*uw-imap-2004g (05 Oct 2005)
+
+  05 Oct 2005; Andrej Kacian <ticho@gentoo.org> +uw-imap-2004g.ebuild:
+  Version bump, due to security bug #108206.
+
+  27 Jun 2005; Markus Rothe <corsair@gentoo.org> uw-imap-2004c-r3.ebuild:
+  Stable on ppc64
+
+  22 May 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  uw-imap-2004c-r3.ebuild:
+  pseudo-depend on mailbase +pam
+
+  22 May 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  uw-imap-2004c-r3.ebuild:
+  Stable on hppa
+
+  21 May 2005; Markus Rothe <corsair@gentoo.org> uw-imap-2004c-r3.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  10 Mar 2005; Marcus D. Hanwell <cryos@gentoo.org> uw-imap-2004c-r3.ebuild:
+  Tiny cleanup in symlink creation of the .so.
+
+  06 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  uw-imap-2004c-r3.ebuild:
+  Stable on alpha, bug 83797.
+
+  05 Mar 2005; Marcus D. Hanwell <cryos@gentoo.org> uw-imap-2004c-r3.ebuild:
+  Stable on amd64, bug 83797.
+
+  04 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> uw-imap-2004c-r3.ebuild:
+  Stable on sparc wrt #83797
+
+  03 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
+  uw-imap-2004c-r3.ebuild:
+  Stable on ppc.
+
+  03 Mar 2005; Andrej Kacian <ticho@gentoo.org> uw-imap-2004c-r3.ebuild:
+  Stable on x86, bug #83797.
+
+  03 Mar 2005; Andrej Kacian <ticho@gentoo.org> uw-imap-2004c-r3.ebuild:
+  Correction in clearpasswd message.
+
+  03 Mar 2005; Andrej Kacian <ticho@gentoo.org> uw-imap-2004c-r3.ebuild:
+  Take ssl flag into account for clearpasswd.
+
+*uw-imap-2004c-r3 (03 Mar 2005)
+
+  03 Mar 2005; Andrej Kacian <ticho@gentoo.org> uw-imap-2004c-r1.ebuild,
+  +uw-imap-2004c-r3.ebuild:
+  Revision bump to restrict cleartext LOGIN to SSL/TLS sessions by default.
+  Introduced "clearpasswd" USE flag to toggle this restriction. Suggested by
+  Tero Pelander <tpeland@tkukoulu.fi> in bug #83797. 2004c-r1 stable on x86.
+
+  18 Feb 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  uw-imap-2004c-r2.ebuild:
+  Avoid problems if mailbase wasn't build with pam use flag
+
+*uw-imap-2004c-r2 (11 Feb 2005)
+
+  11 Feb 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +uw-imap-2004c-r2.ebuild:
+  Don't install pam.d files. #79240. Depend on mailbase-0.00-r8 at least
+
+  01 Feb 2005; Olivier Crête <tester@gentoo.org> :
+  Stable on x86 per security bug #79874
+
+  30 Jan 2005; Bryan Østergaard <kloeri@gentoo.org> uw-imap-2004c.ebuild:
+  Stable on alpha, bug 79874.
+
+*uw-imap-2004c-r1 (01 Feb 2005)
+
+  01 Feb 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  +files/uw-imap-2004c-amd64-so-fix.patch, +uw-imap-2004c-r1.ebuild:
+  Patched Makefile to build a shared library for amd64, allowing PHP 5 with imap
+  to compile. Also fixed the symlinking of c-client.a for multilib archs, and
+  made the ebuild respect user CFLAGS.
+
+  29 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> uw-imap-2004c.ebuild:
+  stable on amd64.
+
+  29 Jan 2005; Jason Wever <weeve@gentoo.org> uw-imap-2004c.ebuild:
+  Stable on sparc wrt security bug #79874.
+
+  28 Jan 2005; Michael Hanselmann <hansmi@gentoo.org> uw-imap-2004c.ebuild:
+  Stable on ppc.
+
+  28 Jan 2005; Andrej Kacian <ticho@gentoo.org> -uw-imap-2002e-r4.ebuild:
+  Removing aging ebuild.
+
+*uw-imap-2004c (28 Jan 2005)
+
+  28 Jan 2005; Andrej Kacian <ticho@gentoo.org> +uw-imap-2004c.ebuild:
+  Version bump.
+
+  08 Jan 2005; Tom Martin <slarti@gentoo.org> uw-imap-2002e-r4.ebuild:
+  Added missing inherit flag-o-matic to 2002e-r4.
+
+*uw-imap-2002e-r3 (03 Jan 2005)
+
+  03 Jan 2005; Andrej Kacian <ticho@gentoo.org> -uw-imap-2002d-r1.ebuild,
+  -uw-imap-2002d.ebuild, -uw-imap-2002e-r1.ebuild, -uw-imap-2002e-r2.ebuild,
+  -uw-imap-2002e-r3.ebuild, -uw-imap-2002e.ebuild:
+  Old ebuild cleanup. Keeping 2002e-r4 just in case someone needs it.
+
+  03 Jan 2005; Joseph Jezak <josejx@gentoo.org> uw-imap-2004a.ebuild:
+  Marked ppc stable for bug #72323.
+
+  16 Dec 2004; Dylan Carlson <absinthe@gentoo.org> uw-imap-2004a.ebuild:
+  Stable on amd64.
+
+  05 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> uw-imap-2004a.ebuild:
+  Stable on alpha, bug 72323.
+
+  24 Nov 2004; Christian Birchinger <joker@gentoo.org> uw-imap-2004a.ebuild:
+  Added sparc stable keyword
+
+  24 Nov 2004; Andrej Kacian <ticho@gentoo.org> uw-imap-2004a.ebuild:
+  Stable on x86.
+
+  24 Nov 2004; Andrej Kacian <ticho@gentoo.org> uw-imap-2002e-r4.ebuild,
+  uw-imap-2004a.ebuild:
+  Removed mbox USE flag from 2002e-r4 and 2004a, as it is not used at all.
+  Inherit flag-o-matic.
+
+  31 Oct 2004; Bryan Østergaard <kloeri@gentoo.org>
+  uw-imap-2002e-r4.ebuild:
+  Stable on alpha.
+
+  16 Oct 2004; Jason Wever <weeve@gentoo.org> uw-imap-2002e-r4.ebuild:
+  Stable on sparc.
+
+  13 Oct 2004; Guy Martin <gmsoft@gentoo.org> uw-imap-2002e-r4.ebuild:
+  Stable on hppa.
+
+  11 Oct 2004; Andrej Kacian <ticho@gentoo.org> uw-imap-2002e-r4.ebuild:
+  Stable on x86.
+
+*uw-imap-2004a (04 Oct 2004)
+
+  04 Oct 2004; Andrej Kacian <ticho@gentoo.org> +uw-imap-2004a.ebuild:
+  Version bump, closes #57177. Thanks to Mike Gilbert <mdgilber@umich.edu> for
+  the ebuild.
+
+  04 Sep 2004; Jon Hood <squinky86@gentoo.org> uw-imap-2002e-r4.ebuild:
+  Change virtual/glibc --> virtual/libc.
+
+*uw-imap-2002e-r4 (03 Sep 2004)
+
+  03 Sep 2004; Andrej Kacian <ticho@gentoo.org> +uw-imap-2002e-r4.ebuild:
+  Added kerberos USE flag. Ebuild submitted by Bob Smart <Bob.Smart@csiro.au>,
+  closes #34783.
+
+  15 Jul 2004; Robin H. Johnson <robbat2@gentoo.org> :
+  bug #56917, pic stuff.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  uw-imap-2002d-r1.ebuild, uw-imap-2002d.ebuild, uw-imap-2002e-r1.ebuild,
+  uw-imap-2002e-r2.ebuild, uw-imap-2002e.ebuild:
+  virtual/glibc -> virtual/libc
+
+*uw-imap-2002e-r2 (09 May 2004)
+
+  09 May 2004; Robin H. Johnson <robbat2@gentoo.org> uw-imap-2002e-r2.ebuild:
+  bug #50504, and slight ebuild cleanup
+
+  03 Feb 2004; Guy Martin <gmsoft@gentoo.org> uw-imap-2002e-r1.ebuild :
+  Marked stable on hppa.
+
+  10 Jan 2004; Aron Griffis <agriffis@gentoo.org> uw-imap-2002e-r1.ebuild:
+  stable on alpha
+
+  14 Dec 2003; Lars Weiler <pylon@gentoo.org> uw-imap-2002e-r1.ebuild:
+  Make stable on ppc
+  Thanks to Florian Daniel for the testing
+
+  08 Nov 2003; Brad House <brad_mssw@gentoo.org> uw-imap-2002e-r1.ebuild:
+  add amd64 flag
+
+  02 Nov 2003; Christian Birchinger <joker@gentoo.org>
+  uw-imap-2002e-r1.ebuild:
+  Added sparc stable keyword
+
+*uw-imap-2002e-r1 (25 Oct 2003)
+
+  25 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> uw-imap-2002e-r1.ebuild,
+  uw-imap-2002e.ebuild:
+  bump to x86 and install more manpages
+
+*uw-imap-2002e (11 Sep 2003)
+
+  11 Sep 2003; Martin Holzer <mholzer@gentoo.org> uw-imap-2002e.ebuild:
+  Version bumped.
+
+*uw-imap-2002d-r1 (11 Aug 2003)
+
+  11 Aug 2003; Robin H. Johnson <robbat2@gentoo.org> uw-imap-2002d-r1.ebuild:
+  fix bug #18529 and ensure uw-imap is built with -fPIC where appropriate
+
+*uw-imap-2002d (30 May 2003)
+
+  20 Jun 2003; Robin Johnson <robbat2@gentoo.org> uw-imap-2002d.ebuild:
+  Add PROVIDE virtual/imap-c-client.
+
+  30 May 2003; Robin Johnson <robbat2@gentoo.org> uw-imap-2002d.ebuild,
+  files/digest-uw-imap-2002d:
+  Add in the digest file that Prez forgot to commit!
+  Clean hardcoded version numbers out.
+
+  30 May 2003; Preston A. Elder <prez@gentoo.org> uw-imap-2002d.ebuild,
+  files/digest-uw-imap-2002d :
+  Version bump (security issue).
+
+*uw-imap-2002c (25 May 2003)
+
+  27 May 2003; Robin Johnson <robbat2@gentoo.org> uw-imap-2002c.ebuild:
+  Fix bug #21565. Also ensure makefile doesn't ask the interactive question
+  for both SSL cases (assume yes). Fixed a userpriv install bug due to bad
+  permissions (444) inside the initial tarball.
+
+  25 May 2003; Preston A. Elder <prez@gentoo.org> uw-imap-2002c.ebuild,
+  files/digest-uw-imap-2002c files/uw-ipop3s.xinetd :
+  Version bump.
+
+*uw-imap-2002b (12 Jan 2003)
+
+  09 Feb 2003; Dean Bailey <alron@gentoo.org> uw-imap-2002b.ebuild, 
+  uw-imap-2001a-r3.ebuild :
+  Added !net-mail/vimap conflict.
+  
+  15 Apr 2003; Aron Griffis <agriffis@gentoo.org> uw-imap-2002b.ebuild:
+  Add ~alpha to KEYWORDS
+
+  20 Mar 2003; Guy Martin <gmsoft@gentoo.org> uw-imap-2002b.ebuild,
+  uw-imap-2002a.ebuild :
+  Added ~hppa to KEYWORDS.
+
+  12 Jan 2003; Nick Hadaway <raker@gentoo.org> uw-imap-2002b.ebuild,
+  files/digest-uw-imap-2002b :
+  Version bump.
+
+*uw-imap-2002a (26 Dec 2002)
+
+  26 Dec 2002; Nick Hadaway <raker@gentoo.org> uw-imap-2002a.ebuild,
+  files/digest-uw-imap-2002a :
+  Version bump.  No patches this time.  Plaintext passwd file
+  authentication is currently turned of with ssl enabled.  The ssl 
+  certs directory is now /etc/ssl/certs to match with the newest openssl
+  builds.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*uw-imap-2001a-r3 (25 Sep 2002)
+
+  20 Mar 2003; Guy Martin <gmsoft@gento.org> uw-imap-2001a-r3.ebuild,
+  uw-imap-2001a-r2.ebuild :
+  Added hppa to KEYWORDS.
+
+  24 Sep 2002; Nick Hadaway <raker@gentoo.org> uw-imap-2001a-r3.ebuild,
+  files/digest-uw-imap-2001a-r3, files/gentoo-2001a-r3.diff,
+  files/imap-2001a.4-patch-with-delete-fix.bz2 :
+  Added initial Maildir support.  Much testing is needed.
+
+*uw-imap-2001a-r2 (6 Jun 2002)
+
+  17 Aug 2002; Nick Hadaway <raker@gentoo.org> uw-imap-2001a-r2.ebuild :
+  Reverted mailsubdir option change as it may break many client installs.
+  Disabled reverse DNS lookups.  Updated SSL configuration options.
+  Changed imap login timeout from 3 minutes to 1 minute.
+  
+  16 Aug 2002; Nick Hadaway <raker@gentoo.org> uw-imap-2001a-r2.ebuild :
+  Added support for the default mailsubdir to be ~/mail.  Almost
+  added in support for the Y4K leap year bug fix, just in case the
+  maintainer of uw-imap disappears for a millenia or two.
+
+  6 Jun 2002; Donny Davies <woodchip@gentoo.org> uw-imap-2001a-r2.ebuild,
+  uw-imap.pam, uw-imap.pam-system-auth, uw-imap.xinetd, uw-imaps.xinetd,
+  uw-ipop2.xinetd, uw-ipop3.xinetd :
+  Default pam.d/ snippet should use system-auth; close #3218.  Add
+  $Header's, LICENSE, SLOT.
+
+*uw-imap-2001a-r1 (15 Apr 2002)
+  15 Apr 2002; Jared H. Hudson <jhhudso@gentoo.org> :  
+  Made uw-imap install more headers, so that php with imap
+  support will properly compile. Bug #1759
+  Removed virtual/imapUW PROVIDE because php will only DEPEND on
+  uw-imap specifically. pine will also no longer PROVIDE virtual/imapUW
+  now.
+
+*uw-imap-2001a (23 Feb. 2002)
+  22 Feb 2002; Grant Goodyear <g2boojum@gentoo.org>  :
+  New ebuild; submitted by Cristian Martinez <cfuga@itam.mx>.

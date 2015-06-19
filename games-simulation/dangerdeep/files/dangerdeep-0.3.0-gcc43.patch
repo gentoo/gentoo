@@ -1,0 +1,80 @@
+--- src/bspline_test.cpp
++++ src/bspline_test.cpp
+@@ -1,6 +1,7 @@
+ // some test code for the 2d bsplines!
+ #include "bspline.h"
+ #include <fstream>
++#include <cstdlib>
+ using namespace std;
+ 
+ double rnd() { return double(rand())/RAND_MAX; }
+--- src/convoy.h
++++ src/convoy.h
+@@ -27,6 +27,7 @@
+ #include "vector2.h"
+ #include <new>
+ #include <list>
++#include <memory>
+ class ship;
+ 
+ ///\brief Grouping of ships and other objects with central control.
+--- src/date.cpp
++++ src/date.cpp
+@@ -21,6 +21,7 @@
+ // subsim (C)+(W) Markus Petermann and Thorsten Jordan. SEE LICENSE
+ 
+ #include <iomanip>
++#include <cstdlib>
+ #include "date.h"
+ #include "texts.h"
+ 
+--- src/ocean_wave_generator.h
++++ src/ocean_wave_generator.h
+@@ -29,6 +29,7 @@
+ #include "environment.h"
+ #include <complex>
+ #include <vector>
++#include <cstdlib>
+ 
+ // use float fftw (faster) or double (default) ?
+ #ifdef WITH_FLOAT_FFTW
+--- src/ptrlist.h
++++ src/ptrlist.h
+@@ -25,6 +25,7 @@
+ 
+ #include <list>
+ #include <stdexcept>
++#include <memory>
+ 
+ // same as std::list regarding the interface (partly), but handles pointers.
+ template <class T>
+--- src/ptrvector.h
++++ src/ptrvector.h
+@@ -25,6 +25,7 @@
+ 
+ #include <vector>
+ #include <stdexcept>
++#include <memory>
+ 
+ // same as std::vector regarding the interface, but handles pointers.
+ template <class T>
+--- src/sea_object.h
++++ src/sea_object.h
+@@ -27,6 +27,7 @@
+ #include "ptrvector.h"
+ #include <new>
+ #include <stdexcept>
++#include <memory>
+ 
+ #include "vector3.h"
+ #include "angle.h"
+--- src/widget.cpp
++++ src/widget.cpp
+@@ -32,6 +32,7 @@
+ #include "datadirs.h"
+ #include <set>
+ #include <sstream>
++#include <algorithm>
+ using std::vector;
+ using std::list;
+ using std::string;

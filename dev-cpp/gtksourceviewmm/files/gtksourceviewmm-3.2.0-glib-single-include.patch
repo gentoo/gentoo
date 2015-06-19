@@ -1,0 +1,13 @@
+Index: gtksourceviewmm-3.2.0/tests/search/main.cc
+===================================================================
+--- gtksourceviewmm-3.2.0.orig/tests/search/main.cc
++++ gtksourceviewmm-3.2.0/tests/search/main.cc
+@@ -6,7 +6,7 @@
+ #include <cstring>
+ #include <gtkmm.h>
+ #include <gtksourceviewmm.h>
+-#include <glib/gmessages.h>
++#include <glib.h>
+ 
+ using namespace std ;
+ using namespace Gtk;

@@ -1,0 +1,52 @@
+diff -Nur prng-3.0.2.orig/configure.ac prng-3.0.2/configure.ac
+--- prng-3.0.2.orig/configure.ac	2010-10-16 18:47:52.000000000 +0100
++++ prng-3.0.2/configure.ac	2010-10-16 18:49:16.000000000 +0100
+@@ -23,6 +23,7 @@
+ AC_PROG_RANLIB
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
++AC_PROG_LIBTOOL
+ 
+ dnl Checks for typedefs, structures, and compiler characteristics.
+ AC_C_CONST
+@@ -39,6 +40,8 @@
+ dnl Checks for library functions.
+ AC_CHECK_FUNCS(strtoul)
+ 
++AC_CHECK_LIB([m], [pow])
++
+ dnl Set flags for compiler
+ if test X"$GCC" = Xyes ; then
+ 	AC_SUBST(AM_CFLAGS,"-Wall -fomit-frame-pointer")
+diff -Nur prng-3.0.2.orig/examples/Makefile.am prng-3.0.2/examples/Makefile.am
+--- prng-3.0.2.orig/examples/Makefile.am	2010-10-16 18:47:52.000000000 +0100
++++ prng-3.0.2/examples/Makefile.am	2010-10-16 18:48:08.000000000 +0100
+@@ -1,11 +1,11 @@
+ ## Process this file with automake to produce Makefile.in
+ # $Id: prng-3.0.2-shared.patch,v 1.1 2010/12/17 22:36:07 bicatali Exp $
+ 
+-LDADD = $(top_builddir)/src/libprng.a -lm
++LDADD = $(top_builddir)/src/libprng.la -lm
+ 
+ INCLUDES = -I$(top_srcdir)/src
+ 
+-noinst_PROGRAMS = pairs tuples
++check_PROGRAMS = pairs tuples
+ 
+ # clean backup files
+ CLEANFILES = *~
+diff -Nur prng-3.0.2.orig/src/Makefile.am prng-3.0.2/src/Makefile.am
+--- prng-3.0.2.orig/src/Makefile.am	2010-10-16 18:47:52.000000000 +0100
++++ prng-3.0.2/src/Makefile.am	2010-10-16 18:48:08.000000000 +0100
+@@ -3,9 +3,9 @@
+ 
+ INCLUDES = 
+ 
+-lib_LIBRARIES = libprng.a
++lib_LTLIBRARIES = libprng.la
+ 
+-libprng_a_SOURCES = \
++libprng_la_SOURCES = \
+  prng.c \
+  dicg.c \
+  eicg.c \

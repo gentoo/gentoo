@@ -1,0 +1,60 @@
+# ChangeLog for net-im/librvp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/librvp/ChangeLog,v 1.15 2014/08/05 18:34:11 mrueg Exp $
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> librvp-0.9.6.ebuild,
+  librvp-0.9.7.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> librvp-0.9.6.ebuild,
+  librvp-0.9.7.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*librvp-0.9.7 (28 Aug 2009)
+
+  28 Aug 2009; Víctor Ostorga <vostorga@gentoo.org> +librvp-0.9.7.ebuild:
+  Version bump 0.9.7, bug #282614
+
+  28 Aug 2009; Víctor Ostorga <vostorga@gentoo.org> librvp-0.9.6.ebuild:
+  Adding dependency on net-im/pidgin[gtk] , patch thanks to Gef Lebster
+  <gef.kornflakes@gmail.com>, bug 247997
+
+  14 Oct 2008; Jeremy Olexa <darkside@gentoo.org> librvp-0.9.6.ebuild:
+  (non maintainer commit) add missing dep on pkgconfig for net-im/librvp, bug
+  #205496
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Josh Glover (jmglov, #206782) from metadata.xml.
+
+  08 Dec 2007; Olivier Crête <tester@gentoo.org> -librvp-0.4.ebuild,
+  -librvp-0.7.ebuild, librvp-0.9.6.ebuild:
+  Remove versions depending on net-im/gaim
+
+  26 Aug 2007; Wulf C. Krueger <philantrop@gentoo.org> librvp-0.9.6.ebuild:
+  Marked stable on amd64 as per bug 189781.
+
+  24 Aug 2007; Christian Faulhammer <opfer@gentoo.org> librvp-0.9.6.ebuild:
+  stable x86, bug 189781
+
+*librvp-0.9.6 (19 Jun 2007)
+
+  19 Jun 2007; Olivier Crête <tester@gentoo.org> metadata.xml,
+  +librvp-0.9.6.ebuild:
+  Version bump, ported to net-im/pidgin
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*librvp-0.7 (25 Mar 2006)
+
+  25 Mar 2006; Josh Glover <jmglov@gentoo.org> +librvp-0.7.ebuild:
+  Version bump
+
+*librvp-0.4 (25 Jan 2006)
+
+  25 Jan 2006; Josh Glover <jmglov@gentoo.org> +metadata.xml,
+  +librvp-0.4.ebuild:
+  This package was submitted by Josh Glover in bug #120235

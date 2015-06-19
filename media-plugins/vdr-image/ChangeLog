@@ -1,0 +1,204 @@
+# ChangeLog for media-plugins/vdr-image
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-image/ChangeLog,v 1.45 2015/02/08 11:00:57 hd_brummy Exp $
+
+*vdr-image-0.4.0 (08 Feb 2015)
+
+  08 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-image-0.4.0.ebuild,
+  +files/vdr-image-0.4.0-gentoo.diff, -files/rc-addon.sh:
+  bump; cleanup
+
+  08 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -files/vdr-image-0.3.0-gentoo.diff:
+  cleanup
+
+  08 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org> -vdr-image-0.3.0.ebuild:
+  cleanup
+
+  17 Jun 2013; Tomáš Chvátal <scarabeus@gentoo.org>
+  files/vdr-image-0.3.1-ffmpeg-1.patch, vdr-image-0.3.1.ebuild:
+  Update ffmpeg patch to fix libav9 build too. Fixes bug#443428.
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> vdr-image-0.3.1.ebuild:
+  Stable for x86, wrt bug #464540
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> vdr-image-0.3.1.ebuild:
+  Stable for amd64, wrt bug #464540
+
+  17 Jan 2013; Alexis Ballier <aballier@gentoo.org> vdr-image-0.3.1.ebuild,
+  +files/vdr-image-0.3.1-ffmpeg-1.patch:
+  fix build with ffmpeg-1, part of bug #443428
+
+  09 Jan 2013; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-image-0.3.1.ebuild:
+  moved to vdr-plugin-2.eclass; eapi=5; removed empty translation
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> vdr-image-0.3.0.ebuild,
+  vdr-image-0.3.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  24 Apr 2012; Michał Górny <mgorny@gentoo.org> vdr-image-0.3.0.ebuild,
+  vdr-image-0.3.1.ebuild:
+  Update to use mirror://.
+
+*vdr-image-0.3.1 (06 Oct 2011)
+
+  06 Oct 2011; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-image-0.3.0.ebuild,
+  +vdr-image-0.3.1.ebuild, +files/vdr-image-0.3.1-gentoo.diff:
+  migrat to new project url; version bump
+
+  06 Apr 2011; Christian Ruppert <idl0r@gentoo.org> vdr-image-0.3.0.ebuild:
+  Use the new ffmpeg virtual, bug 362097.
+
+  29 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-image-0.2.7-r1.ebuild, -vdr-image-0.2.7.26.ebuild,
+  vdr-image-0.3.0.ebuild:
+  eapi=3; cleanup
+
+  03 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -files/vdr-image-0.2.7.26-gentoo.diff, -files/vdr-image-0.2.7-gentoo.diff,
+  -files/vdr-image-0.2.7-new-ffmpeg.diff, vdr-image-0.3.0.ebuild,
+  -files/ffmpeg-0.4.9_p20080326-new_header.diff:
+  stable x86, bug #347676; cleanup; eapi=2
+
+  22 Dec 2010; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-image-0.3.0.ebuild:
+  marked stable amd64, wrt #347676
+
+  10 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  vdr-image-0.3.0.ebuild:
+  Restore -j1 until bug #278166 is fixed, as parallel build fails.
+
+  16 Jun 2010; Alexis Ballier <aballier@gentoo.org> vdr-image-0.3.0.ebuild:
+  fix build with ffmpeg >= 0.6
+
+*vdr-image-0.3.0 (06 Jan 2009)
+
+  06 Jan 2009; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-image-0.3.0-gentoo.diff, +files/rc-addon-0.3.0.sh,
+  +vdr-image-0.3.0.ebuild:
+  version bump
+
+*vdr-image-0.2.7.26 (25 Oct 2008)
+
+  25 Oct 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-image-0.2.7.26-gentoo.diff, +vdr-image-0.2.7.26.ebuild:
+  added svn snapshot 26, to fix problems with new ffmpeg api changes
+
+  03 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-image-0.2.7-r1.ebuild:
+  Use BUILD_PARAMS instead of VDRPLUGIN_MAKE_TARGET to set make parameters.
+
+  12 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-image-0.2.7-r1.ebuild:
+  Changed PATCHES to be an array. Only RDEPEND on pkgconfig, Bug #217278.
+
+  29 Mar 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -files/vdr-image-0.2.6-gentoo.diff,
+  +files/ffmpeg-0.4.9_p20080326-new_header.diff, -vdr-image-0.2.6-r1.ebuild,
+  -vdr-image-0.2.7.ebuild, vdr-image-0.2.7-r1.ebuild:
+  patch to fix new ffmpeg header structur added; bug #214740
+
+  18 Mar 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -files/vdr-image-0.2.4-gentoo.diff, -files/vdr-image-0.2.5-gentoo.diff,
+  -vdr-image-0.2.4.ebuild, vdr-image-0.2.7-r1.ebuild:
+  stable on x86; cleanup old version
+
+  28 Jul 2007; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-image-0.2.7-r1.ebuild:
+  Use swscaler only for newer ffmpeg versions.
+
+*vdr-image-0.2.7-r1 (05 Jul 2007)
+
+  05 Jul 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-image-0.2.7-new-ffmpeg.diff, +vdr-image-0.2.7-r1.ebuild:
+  Added patch from svn repository to work with newer ffmpeg versions.
+
+  08 Jun 2007; Matthias Schwarzott <zzam@gentoo.org> vdr-image-0.2.4.ebuild,
+  vdr-image-0.2.6-r1.ebuild, vdr-image-0.2.7.ebuild:
+  Changed SRC_URI to mirror://berlios
+
+  08 May 2007; Matthias Schwarzott <zzam@gentoo.org> vdr-image-0.2.7.ebuild:
+  Marked stable on x86.
+
+  17 Apr 2007; Matthias Schwarzott <zzam@gentoo.org> files/rc-addon.sh:
+  Removed bash specific stuff.
+
+  05 Jan 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-image-0.2.4.ebuild, vdr-image-0.2.6-r1.ebuild, vdr-image-0.2.7.ebuild:
+  einfo converted to elog
+
+*vdr-image-0.2.7 (02 Jan 2007)
+
+  02 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-image-0.2.7-gentoo.diff, +vdr-image-0.2.7.ebuild:
+  Version bumped.
+
+  20 Nov 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-image-0.2.6-r1.ebuild:
+  Marked stable on x86, due to Bug #153413.
+
+  09 Nov 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-image-0.2.4.ebuild,
+  vdr-image-0.2.6-r1.ebuild:
+  Added missing things to RDEPEND.
+
+  02 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Assigned package to VDR-Project.
+
+*vdr-image-0.2.6-r1 (01 Jul 2006)
+
+  01 Jul 2006; Matthias Schwarzott <zzam@gentoo.org> files/rc-addon.sh,
+  -vdr-image-0.2.5.ebuild, -vdr-image-0.2.6.ebuild,
+  +vdr-image-0.2.6-r1.ebuild:
+  Removed v0.2.5, corrected startscript-addon which was not working since
+  startscripts moved to /usr/share. Thanks for reporting to micmac from
+  #gentoo-vdr.
+
+  16 May 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-image-0.2.6.ebuild:
+  added eutils to inherit
+
+  08 May 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-image-0.2.5.ebuild:
+  added eutils to inherit
+
+*vdr-image-0.2.6 (01 May 2006)
+
+  01 May 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-image-0.2.6-gentoo.diff, +vdr-image-0.2.6.ebuild:
+  version bump
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-vdr-image-0.2.4, files/digest-vdr-image-0.2.5, Manifest:
+  Fixing SHA256 digest, pass four
+
+  17 Apr 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-image-0.2.4.ebuild:
+  Marked stable on x86
+
+  06 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-image-0.2.5-gentoo.diff, vdr-image-0.2.5.ebuild:
+  add new diff, support for vdr-burn plugin included
+
+*vdr-image-0.2.5 (04 Feb 2006)
+
+  04 Feb 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-image-0.2.5.ebuild:
+  version bump, need >=vdr-1.3.38
+
+  08 Jan 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-image-0.2.4.ebuild:
+  fixed install path
+
+  07 Jan 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-image-0.2.4.ebuild:
+  depend on gentoo-vdr-scripts added, support for EN and DE Lang conf works 
+  now automaticly, small typo fixed
+
+  06 Jan 2006; Matthias Schwarzott <zzam@gentoo.org> files/rc-addon.sh,
+  vdr-image-0.2.4.ebuild:
+  added fix for non parallel makefile, moved some files and added merge-logic
+  for config
+
+*vdr-image-0.2.4 (04 Jan 2006)
+
+  04 Jan 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-image-0.2.4-gentoo.diff, +files/rc-addon.sh, +metadata.xml,
+  +vdr-image-0.2.4.ebuild:
+  initial ebuild on gentoo.org, find older versions on gentoo.de cvs

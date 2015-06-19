@@ -1,0 +1,56 @@
+# ChangeLog for dev-python/pychm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pychm/ChangeLog,v 1.14 2015/06/09 15:59:07 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*pychm-0.8.4-r1 (25 Dec 2014)
+
+  25 Dec 2014; Michał Górny <mgorny@gentoo.org> +pychm-0.8.4-r1.ebuild:
+  Convert to distutils-r1.
+
+  24 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pychm-0.8.4.ebuild:
+  Fix dependencies. Set SUPPORT_PYTHON_ABIS.
+
+  13 May 2008; Peter Volkov <pva@gentoo.org> pychm-0.8.4.ebuild:
+  Moving app-doc/chmlib -> dev-libs/chmlib, bug #220741.
+
+  22 Sep 2007; nixnut <nixnut@gentoo.org> pychm-0.8.4.ebuild:
+  Stable on ppc wrt bug 193269
+
+  22 Sep 2007; Christoph Mende <angelos@gentoo.org> pychm-0.8.4.ebuild:
+  Stable on amd64 wrt bug #193269
+
+  21 Sep 2007; Christian Faulhammer <opfer@gentoo.org> pychm-0.8.4.ebuild:
+  stable x86, bug 193269
+
+  03 Jul 2007; Lukasz Strzygowski <lucass@gentoo.org> -pychm-0.8.2.ebuild,
+  -pychm-0.8.3.ebuild, pychm-0.8.4.ebuild:
+  Dropped old versions. Cleanup.
+
+*pychm-0.8.4 (24 Dec 2006)
+
+  24 Dec 2006; Lukasz Strzygowski <lucass@gentoo.org> +pychm-0.8.4.ebuild:
+  Version bump.
+
+*pychm-0.8.3 (30 May 2006)
+
+  30 May 2006; Lukasz Strzygowski <lucass@gentoo.org> +pychm-0.8.3.ebuild:
+  Version bump.
+
+  04 May 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  pychm-0.8.2.ebuild:
+  mark ~ppc
+
+  22 Jan 2006; Luis Medinas <metalgod@gentoo.org> pychm-0.8.2.ebuild:
+  Added ~amd64 keyword.
+
+  19 Nov 2005; Chris White <chriswhite@gentoo.org> metadata.xml:
+  Added japanese metadata.xml translation thanks to Yoshino-san.
+
+*pychm-0.8.2 (14 Feb 2005)
+
+  14 Feb 2005; Lukasz Strzygowski <lucass@gentoo.org> +pychm-0.8.2.ebuild:
+  Initial commit. Closing bug #40114.

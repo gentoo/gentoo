@@ -1,0 +1,3 @@
+NOTE: HTun requires the Universal TUN/TAP module
+available in the Linux kernel.  Make sure you have
+compiled the tun.o driver as a module!

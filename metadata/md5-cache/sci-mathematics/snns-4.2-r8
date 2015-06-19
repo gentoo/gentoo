@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare unpack
+DEPEND=X? ( x11-libs/libXaw3d ) X? ( x11-proto/xproto ) python? ( =dev-lang/python-2* )
+DESCRIPTION=Stuttgart Neural Network Simulator
+EAPI=3
+HOMEPAGE=http://www-ra.informatik.uni-tuebingen.de/SNNS/
+IUSE=X doc python
+KEYWORDS=amd64 ppc x86
+LICENSE=SNNS-4.2
+RDEPEND=X? ( x11-libs/libXaw3d ) python? ( =dev-lang/python-2* )
+SLOT=0
+SRC_URI=http://www-ra.informatik.uni-tuebingen.de/downloads/SNNS/SNNSv4.2.tar.gz mirror://berlios/snns-dev/snns-4.2-20040227.patch.gz doc? ( http://www-ra.informatik.uni-tuebingen.de/downloads/SNNS/SNNSv4.2.Manual.pdf ) python? ( mirror://berlios/snns-dev/PySNNS-20040605.tar.gz mirror://berlios/snns-dev/PythonFunctionSupport-20050210.patch.gz )
+_eclasses_=distutils	92e738ea29389cb3f34778d7a349ac71	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=5849b1a1989c7234e3153f0fb81d7038

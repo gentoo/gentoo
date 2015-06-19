@@ -1,0 +1,137 @@
+--- gnutls-2.12.23.orig/doc/scripts/gdoc	2011-04-08 02:30:44.000000000 +0200
++++ gnutls-2.12.23/doc/scripts/gdoc	2014-03-10 01:53:28.899566076 +0200
+@@ -7,6 +7,8 @@
+ ## Copyright (c) 2001, 2002 Nikos Mavrogiannopoulos
+ ##                    added -tex
+ ## Copyright (c) 1998 Michael Zucchi
++## Copyright (c) 2013 Adam Sampson
++##                    made highlighting not depend on hash order, for Perl 5.18
+ 
+ # This program is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -143,44 +145,44 @@
+ #  One for each output format
+ 
+ # these work fairly well
+-%highlights_html = ( $type_constant, "<i>\$2</i>",
+-		     $type_func, "<b>\$1</b>",
+-		     $type_struct, "<i>\$1</i>",
+-		     $type_param, "<tt><b>\$1</b></tt>" );
++@highlights_html = ( [$type_constant, "<i>\$2</i>"],
++		     [$type_func, "<b>\$1</b>"],
++		     [$type_struct, "<i>\$1</i>"],
++		     [$type_param, "<tt><b>\$1</b></tt>"] );
+ $blankline_html = "<p>";
+ 
+-%highlights_texinfo = ( $type_constant, "\\\@code{\$2}",
+-			$type_func, "\\\@code{\$1}",
+-			$type_struct, "\\\@code{\$1}",
+-			$type_param, "\\\@code{\$1}" );
++@highlights_texinfo = ( [$type_constant, "\\\@code{\$2}"],
++			[$type_func, "\\\@code{\$1}"],
++			[$type_struct, "\\\@code{\$1}"],
++			[$type_param, "\\\@code{\$1}"] );
+ $blankline_texinfo = "";
+ 
+-%highlights_tex = ( $type_constant, "{\\\\it \$2}",
+-		     $type_func, "{\\\\bf \$1}",
+-		     $type_struct, "{\\\\it \$1}",
+-		     $type_param, "{\\\\bf \$1}" );
++@highlights_tex = ( [$type_constant, "{\\\\it \$2}"],
++		     [$type_func, "{\\\\bf \$1}"],
++		     [$type_struct, "{\\\\it \$1}"],
++		     [$type_param, "{\\\\bf \$1}"] );
+ $blankline_tex = "\\\\";
+ 
+ # sgml, docbook format
+-%highlights_sgml = ( $type_constant, "<replaceable class=\"option\">\$2</replaceable>",
+-		     $type_func, "<function>\$1</function>",
+-		     $type_struct, "<structname>\$1</structname>",
+-		     $type_env, "<envar>\$1</envar>",
+-		     $type_param, "<parameter>\$1</parameter>" );
++@highlights_sgml = ( [$type_constant, "<replaceable class=\"option\">\$2</replaceable>"],
++		     [$type_func, "<function>\$1</function>"],
++		     [$type_struct, "<structname>\$1</structname>"],
++		     [$type_env, "<envar>\$1</envar>"],
++		     [$type_param, "<parameter>\$1</parameter>"] );
+ $blankline_sgml = "</para><para>\n";
+ 
+ # these are pretty rough
+-%highlights_man = ( $type_constant, "\\\\fB\$2\\\\fP",
+-		    $type_func, "\\\\fB\$1\\\\fP",
+-		    $type_struct, "\\\\fB\$1\\\\fP",
+-		    $type_param, "\\\\fI\$1\\\\fP" );
++@highlights_man = ( [$type_constant, "\\\\fB\$2\\\\fP"],
++		    [$type_func, "\\\\fB\$1\\\\fP"],
++		    [$type_struct, "\\\\fB\$1\\\\fP"],
++		    [$type_param, "\\\\fI\$1\\\\fP"] );
+ $blankline_man = "";
+ 
+ # text-mode
+-%highlights_text = ( $type_constant, "\$2",
+-		     $type_func, "\$1",
+-		     $type_struct, "\$1",
+-		     $type_param, "\$1" );
++@highlights_text = ( [$type_constant, "\$2"],
++		     [$type_func, "\$1"],
++		     [$type_struct, "\$1"],
++		     [$type_param, "\$1"] );
+ $blankline_text = "";
+ 
+ 
+@@ -201,7 +203,7 @@
+ 
+ $verbose = 0;
+ $output_mode = "man";
+-%highlights = %highlights_man;
++@highlights = @highlights_man;
+ $blankline = $blankline_man;
+ $modulename = "API Documentation";
+ $sourceversion = strftime "%Y-%m-%d", localtime;
+@@ -210,27 +212,27 @@
+     $cmd = shift @ARGV;
+     if ($cmd eq "-html") {
+ 	$output_mode = "html";
+-	%highlights = %highlights_html;
++	@highlights = @highlights_html;
+ 	$blankline = $blankline_html;
+     } elsif ($cmd eq "-man") {
+ 	$output_mode = "man";
+-	%highlights = %highlights_man;
++	@highlights = @highlights_man;
+ 	$blankline = $blankline_man;
+     } elsif ($cmd eq "-tex") {
+ 	$output_mode = "tex";
+-	%highlights = %highlights_tex;
++	@highlights = @highlights_tex;
+ 	$blankline = $blankline_tex;
+     } elsif ($cmd eq "-texinfo") {
+ 	$output_mode = "texinfo";
+ 	%highlights = %highlights_texinfo;
+-	$blankline = $blankline_texinfo;
++	@blankline = @blankline_texinfo;
+     } elsif ($cmd eq "-text") {
+ 	$output_mode = "text";
+ 	%highlights = %highlights_text;
+-	$blankline = $blankline_text;
++	@blankline = @blankline_text;
+     } elsif ($cmd eq "-docbook") {
+ 	$output_mode = "sgml";
+-	%highlights = %highlights_sgml;
++	@highlights = @highlights_sgml;
+ 	$blankline = $blankline_sgml;
+     } elsif ($cmd eq "-listfunc") {
+ 	$output_mode = "listfunc";
+@@ -322,9 +324,10 @@
+     my $line;
+     my $ret = "";
+ 
+-    foreach $pattern (keys %highlights) {
++    foreach $highlight (@highlights) {
++    	my ($pattern, $replace) = @$highlight;
+ #	print "scanning pattern $pattern ($highlights{$pattern})\n";
+-	$contents =~ s:$pattern:repstr($pattern, $highlights{$pattern}, $1, $2, $3, $4):gse;
++	$contents =~ s:$pattern:repstr($pattern, $replace, $1, $2, $3, $4):gse;
+     }
+     foreach $line (split "\n", $contents) {
+ 	if ($line eq ""){

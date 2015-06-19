@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=app-pda/jpilot-0.99.9 >=app-pda/pilot-link-0.12.3 >=x11-libs/gtk+-2.8.19:2 >=dev-libs/libmal-0.44 virtual/pkgconfig
+DESCRIPTION=Syncmal plugin for jpilot
+EAPI=2
+HOMEPAGE=http://www.jlogday.com/code/syncmal/index.html
+KEYWORDS=~alpha ~amd64 ~ppc ~x86
+LICENSE=GPL-2 MPL-1.0
+RDEPEND=>=app-pda/jpilot-0.99.9 >=app-pda/pilot-link-0.12.3 >=x11-libs/gtk+-2.8.19:2 >=dev-libs/libmal-0.44
+SLOT=0
+SRC_URI=http://www.jlogday.com/code/syncmal/jpilot-syncmal-0.81.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=84e062711994d77bd9bd4fc5db02819c

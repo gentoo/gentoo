@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>samba</herd>
+<maintainer>
+	<email>samba@gentoo.org</email>
+	<name>Samba Team</name>
+</maintainer>
+<longdescription>
+Samba is an Open Source/Free Software suite that provides seamless file and print services to SMB/CIFS clients. Integration with various accounting and antivirus backends. License: GNU General Public License.
+</longdescription>
+<use>
+	<flag name="ads">Enable Active Directory support</flag>
+	<flag name="swat">Enables support for swat configuration gui</flag>
+	<flag name="winbind">Enables support for the winbind auth daemon</flag>
+        <flag name="client">Enables the client part</flag>
+        <flag name="server">Enables the server part</flag>
+	<flag name="netapi">Enable building of netapi bits</flag>
+	<flag name="addns">Enable AD DNS integration</flag>
+	<flag name="aio">Enable asynchronous IO support</flag>
+	<flag name="cluster">Enable support for clustering</flag>
+	<flag name="dmapi">Enable support for DMAPI. This currently works only in combination with XFS.</flag>
+	<flag name="ldb">Enable the ldb tools</flag>
+	<flag name="quota">Enables support for user quotas</flag>
+	<flag name="smbclient">Enable smbclient tool</flag>
+	<flag name="smbsharemodes">Enable special smb share modes (?) </flag>
+	<flag name="smbtav2">Enable Samba Traffic Analyzer version 2 </flag>
+	<flag name="iprint">Enabling iPrint technology by Novell</flag>
+</use>
+</pkgmetadata>

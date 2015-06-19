@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>java</herd>
+<maintainer>
+<email>xmw@gentoo.org</email>
+<name>Michael Weber</name>
+</maintainer>
+<use>
+	<flag name="system-mupdf">Link against system version of app-text/mupdf</flag>
+</use>
+<longdescription>
+JMuPdf is a Java library for rendering PDF, XPS and CBZ (Comic Book) documents. It can render pages and export them into various formats as well as generate a Java buffered image. It has the ability to render the whole page or sections (cropping). It can also extract page text, links, outlines, etc.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,29 @@
+--- iguanaIR-0.93.orig/Makefile.in	2009-12-13 15:27:50.942734390 +0100
++++ iguanaIR-0.93/Makefile.in	2009-12-13 15:29:58.580486676 +0100
+@@ -48,14 +48,14 @@
+ igclient igdaemon: libiguanaIR.so
+ 
+ libiguanaIR.so: iguanaIR.o support.o dataPackets.o pipes.o base.o
+-	$(CC) -shared $(CPPFLAGS) $^ -lpopt -lrt -o $@
++	$(CC) -shared $(CPPFLAGS) $^ -o $@ -lpopt -lrt
+ 
+ igdaemon: daemon.o client-interface.o device-interface.o usbclient.o \
+           list.o compatibility.o
+-	$(CC) $(CPPFLAGS) $(CFLAGS) $^ $(LIBS) -lusb -L. -liguanaIR -o $@
++	$(CC) $(CPPFLAGS) $(CFLAGS) $^ -o $@ -L. -liguanaIR -lusb -lpopt
+ 
+ igclient: client.o list.o
+-	$(CC) $(CPPFLAGS) $^ -lpopt -L. -liguanaIR -o $@
++	$(CC) $(CPPFLAGS) $^ -o $@ -L. -liguanaIR -lpopt
+ 
+ %.o: %.c Makefile iguanaIR.h
+ 	$(CC) -c $(CPPFLAGS) $(CFLAGS) $< -o $@
+@@ -71,7 +71,7 @@
+ 	swig $(CPPFLAGS) -python $<
+ 
+ _iguanaIR.so: iguanaIR_wrap.c
+-	$(CC) $(CPPFLAGS) -shared $(CFLAGS) -Wno-strict-aliasing -Wno-unused -Wno-implicit-function-declaration -Wno-long-long @PYTHON_CPPFLAGS@ $^ -L. -liguanaIR -o $@
++	$(CC) $(CPPFLAGS) -shared $(CFLAGS) -Wno-strict-aliasing -Wno-unused -Wno-implicit-function-declaration -Wno-long-long @PYTHON_CPPFLAGS@ $^ -o $@ -L. -liguanaIR
+ endif
+ 
+ .PHONY: install

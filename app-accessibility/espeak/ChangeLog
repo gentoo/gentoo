@@ -1,0 +1,508 @@
+# ChangeLog for app-accessibility/espeak
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/espeak/ChangeLog,v 1.128 2015/06/09 08:33:54 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  02 Mar 2015; Yixun Lan <dlan@gentoo.org> espeak-1.48.04.ebuild:
+  add arm64 support, tested on A53 board
+
+*espeak-1.48.04 (12 Jun 2014)
+
+  12 Jun 2014; Christopher Brannon <teiresias@gentoo.org>
+  +espeak-1.48.04.ebuild:
+  New upstream version.
+
+  08 Feb 2014; Christopher Brannon <teiresias@gentoo.org>
+  -espeak-1.45.04.ebuild:
+  Remove old version.
+
+  03 Feb 2014; Akinori Hattori <hattya@gentoo.org> espeak-1.47.11-r1.ebuild:
+  ia64 stable wrt bug #494346
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> espeak-1.47.11-r1.ebuild:
+  Stable for alpha, wrt bug #494346
+
+  25 Dec 2013; Markus Meier <maekke@gentoo.org> espeak-1.47.11-r1.ebuild:
+  arm stable, bug #494346
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> espeak-1.47.11-r1.ebuild:
+  Stable for x86, wrt bug #494346
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> espeak-1.47.11-r1.ebuild:
+  Stable for sparc, wrt bug #494346
+
+  22 Dec 2013; Jeroen Roovers <jer@gentoo.org> espeak-1.47.11-r1.ebuild:
+  Stable for HPPA (bug #494346).
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> espeak-1.47.11-r1.ebuild:
+  amd64 stable, bug #494346
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> espeak-1.47.11-r1.ebuild:
+  Stable for ppc64, wrt bug #494346
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> espeak-1.47.11-r1.ebuild:
+  Stable for ppc, wrt bug #494346
+
+  02 Oct 2013; William Hubbs <williamh@gentoo.org> -espeak-1.42.04.ebuild,
+  -espeak-1.45.03.ebuild, -espeak-1.46.01.ebuild, -espeak-1.47.11.ebuild:
+  remove old unstable versions
+
+  01 Oct 2013; William Hubbs <williamh@gentoo.org> espeak-1.47.11-r1.ebuild:
+  drop the required_use line; portaudio and pulseaudio are independent from each
+  other.
+
+  01 Oct 2013; William Hubbs <williamh@gentoo.org> espeak-1.47.11-r1.ebuild:
+  style fixes and use required_use since pulseaudio support will not build
+  without portaudio, thanks to Chainsaw for pointing out the style changes.
+
+*espeak-1.47.11-r1 (01 Oct 2013)
+
+  01 Oct 2013; William Hubbs <williamh@gentoo.org> +espeak-1.47.11-r1.ebuild:
+  Fixes for bug #485934 and bug #485936
+
+  22 Sep 2013; William Hubbs <williamh@gentoo.org> espeak-1.47.11.ebuild:
+  Add overrides for AR and CFLAGS, convert a call to make to emake, use the S
+  variable instead of "cd src" in the src_* functions and make some cosmetic
+  changes. Thanks to ago for pointing these out. This fixes bug #484852.
+
+  12 Jul 2013; William Hubbs <williamh@gentoo.org> espeak-1.47.11.ebuild:
+  remove error message since "rm -rf" does not fail
+
+  12 Jul 2013; William Hubbs <williamh@gentoo.org> espeak-1.47.11.ebuild:
+  remove the blocker so someone can be running espeak when they upgrade
+
+  12 Jul 2013; Patrick Lauer <patrick@gentoo.org> espeak-1.47.11.ebuild:
+  Add blocker to avoid manual file deletion stupidity
+
+*espeak-1.47.11 (11 Jul 2013)
+
+  11 Jul 2013; William Hubbs <williamh@gentoo.org> +espeak-1.47.11.ebuild:
+  version bump for bug #476462
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> espeak-1.46.01.ebuild:
+  Add ~arm, wrt bug #449220
+
+  31 May 2012; Zac Medico <zmedico@gentoo.org> espeak-1.42.04.ebuild,
+  espeak-1.45.03.ebuild, espeak-1.45.04.ebuild, espeak-1.46.01.ebuild:
+  inherit multilib for get_libdir
+
+  08 Mar 2012; Brent Baude <ranger@gentoo.org> espeak-1.45.04.ebuild:
+  Marking espeak-1.45.04 ppc64 for bug 391417
+
+  28 Feb 2012; Brent Baude <ranger@gentoo.org> espeak-1.45.04.ebuild:
+  Marking espeak-1.45.04 ppc for bug 391417
+
+  01 Jan 2012; Raúl Porcel <armin76@gentoo.org> espeak-1.46.01.ebuild:
+  Add ~ia64
+
+*espeak-1.46.01 (18 Dec 2011)
+
+  18 Dec 2011; William Hubbs <williamh@gentoo.org> +espeak-1.46.01.ebuild:
+  version bump and add runtime dependency on media-sound/sox for #391679.
+
+  04 Dec 2011; Raúl Porcel <armin76@gentoo.org> espeak-1.45.04.ebuild:
+  alpha/ia64/sparc stable wrt #391417
+
+  04 Dec 2011; Markos Chandras <hwoarang@gentoo.org> espeak-1.45.04.ebuild:
+  Stable on amd64 wrt bug #391417
+
+  29 Nov 2011; Jeroen Roovers <jer@gentoo.org> espeak-1.45.04.ebuild:
+  Stable for HPPA (bug #391417).
+
+  28 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> espeak-1.45.04.ebuild:
+  x86 stable wrt bug #391417
+
+*espeak-1.45.04 (30 Apr 2011)
+
+  30 Apr 2011; Christopher Brannon <cbrannon@gentoo.org>
+  +espeak-1.45.04.ebuild:
+  New upstream version: 1.45.04.
+
+*espeak-1.45.03 (22 Mar 2011)
+
+  22 Mar 2011; William Hubbs <williamh@gentoo.org> -espeak-1.45.02.ebuild,
+  -files/espeak-1.45.02-fix-libname.patch, +espeak-1.45.03.ebuild:
+  version bump and remove old version
+
+  16 Mar 2011; William Hubbs <williamh@gentoo.org> -espeak-1.40.02.ebuild,
+  -espeak-1.41.01.ebuild, -espeak-1.43.ebuild, -espeak-1.44.05.ebuild,
+  -files/espeak-1.44.05-respect-ldflags.patch, -espeak-1.45.01.ebuild,
+  -files/espeak-1.45.01-fix-libname.patch:
+  remove old versions
+
+*espeak-1.45.02 (16 Mar 2011)
+
+  16 Mar 2011; William Hubbs <williamh@gentoo.org> +espeak-1.45.02.ebuild,
+  +files/espeak-1.45.02-fix-libname.patch:
+  version bump, thanks to Martin Jansa.
+
+*espeak-1.45.01 (16 Mar 2011)
+
+  16 Mar 2011; William Hubbs <williamh@gentoo.org> +espeak-1.45.01.ebuild,
+  +files/espeak-1.45.01-fix-libname.patch:
+  version bump for #358965, thanks to Chris Brannon
+
+  29 Oct 2010; William Hubbs <williamh@gentoo.org> espeak-1.44.05.ebuild:
+  fix file name of ChangeLog.  It should have been ChangeLog.txt.
+
+*espeak-1.44.05 (29 Oct 2010)
+
+  29 Oct 2010; William Hubbs <williamh@gentoo.org> +espeak-1.44.05.ebuild,
+  +files/espeak-1.44.05-respect-ldflags.patch:
+  Version bump, also fixes bug #303094 thanks to Kacper Kowalik.
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org> espeak-1.42.04.ebuild:
+  Stable for HPPA (bug #301793).
+
+*espeak-1.43 (17 Feb 2010)
+
+  17 Feb 2010; William Hubbs <williamh@gentoo.org>
+  -espeak-1.42.04-r1.ebuild, +espeak-1.43.ebuild:
+  version bump
+
+  17 Feb 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  espeak-1.42.04-r1.ebuild:
+  ebeep and epause are no longer available, adjusted pkg_setup a bit.
+
+*espeak-1.42.04-r1 (13 Feb 2010)
+
+  13 Feb 2010; Fabian Groffen <grobian@gentoo.org> espeak-1.42.04.ebuild,
+  +espeak-1.42.04-r1.ebuild:
+  Revert Prefix changes to espeak-1.42.04, apply them in espeak-1.42.04-r1
+  with EAPI=3
+
+  11 Feb 2010; Jonathan Callen <abcd@gentoo.org> espeak-1.42.04.ebuild:
+  Add prefix support, ~amd64-linux/~x86-linux keywords
+
+  10 Feb 2010; Joseph Jezak <josejx@gentoo.org> espeak-1.42.04.ebuild:
+  Marked ppc stable for bug #301793.
+
+  07 Feb 2010; Raúl Porcel <armin76@gentoo.org> espeak-1.42.04.ebuild:
+  alpha/ia64/sparc stable wrt #301793
+
+  01 Feb 2010; Brent Baude <ranger@gentoo.org> espeak-1.42.04.ebuild:
+  stable ppc64, bug 301793
+
+  01 Feb 2010; William Hubbs <williamh@gentoo.org> espeak-1.42.04.ebuild:
+  amd64/x86 stable for bug #301793.
+
+*espeak-1.42.04 (14 Dec 2009)
+
+  14 Dec 2009; William Hubbs <williamh@gentoo.org> +espeak-1.42.04.ebuild:
+  version bump
+
+*espeak-1.41.01 (07 Oct 2009)
+
+  07 Oct 2009; William Hubbs <williamh@gentoo.org> +espeak-1.41.01.ebuild:
+  version bump
+
+  18 May 2009; William Hubbs <williamh@gentoo.org> -espeak-1.39.ebuild,
+  -espeak-1.40.01.ebuild:
+  Removed old versions.
+
+  15 May 2009; Raúl Porcel <armin76@gentoo.org> espeak-1.40.02.ebuild:
+  ia64/sparc stable wrt #265910
+
+  05 May 2009; Jeroen Roovers <jer@gentoo.org> espeak-1.40.02.ebuild:
+  Stable for HPPA (bug #265910).
+
+  26 Apr 2009; Brent Baude <ranger@gentoo.org> espeak-1.40.02.ebuild:
+  stable ppc, bug 265910
+
+  23 Apr 2009; Markus Meier <maekke@gentoo.org> espeak-1.40.02:
+  amd64 stable, bug #265910
+
+  18 Apr 2009; Tobias Klausmann <klausman@gentoo.org> espeak-1.40.02.ebuild:
+  Stable on alpha, bug #265910
+
+  15 Apr 2009; Brent Baude <ranger@gentoo.org> espeak-1.40.02.ebuild:
+  Marking espeak-1.40.02 ppc64 for bug 265910
+
+  01 Apr 2009; William Hubbs <williamh@gentoo.org> espeak-1.40.02.ebuild:
+  Stable on x86 and fixed dependencies.
+
+  09 Mar 2009; Diego E. Pettenò <flameeyes@gentoo.org> espeak-1.39.ebuild,
+  espeak-1.40.01.ebuild, espeak-1.40.02.ebuild:
+  Fix typo.
+
+  11 Jan 2009; William Hubbs <williamh@gentoo.org> -espeak-1.37-r1.ebuild,
+  -espeak-1.38.ebuild:
+  Removed old versions.
+
+  11 Jan 2009; Raúl Porcel <armin76@gentoo.org> espeak-1.39.ebuild:
+  ia64/sparc stable wrt #254103
+
+  10 Jan 2009; Markus Meier <maekke@gentoo.org> espeak-1.39.ebuild:
+  amd64/x86 stable, bug #254103
+
+  09 Jan 2009; Tobias Klausmann <klausman@gentoo.org> espeak-1.39.ebuild:
+  Stable on alpha, bug #254103
+
+  09 Jan 2009; Brent Baude <ranger@gentoo.org> espeak-1.39.ebuild:
+  stable ppc, bug 254103
+
+  08 Jan 2009; Jeroen Roovers <jer@gentoo.org> espeak-1.39.ebuild:
+  Stable for HPPA (bug #254103).
+
+  07 Jan 2009; Brent Baude <ranger@gentoo.org> espeak-1.39.ebuild:
+  stable ppc64, bug 254103
+
+*espeak-1.40.02 (04 Jan 2009)
+
+  04 Jan 2009; William Hubbs <williamh@gentoo.org> +espeak-1.40.02.ebuild:
+  Version bump.
+
+  24 Dec 2008; William Hubbs <williamh@gentoo.org> espeak-1.40.01.ebuild:
+  Removed support for portaudio 18 since it is no longer in the tree.
+
+*espeak-1.40.01 (24 Dec 2008)
+
+  24 Dec 2008; William Hubbs <williamh@gentoo.org> +espeak-1.40.01.ebuild:
+  Version bump.
+
+*espeak-1.39 (19 Sep 2008)
+
+  19 Sep 2008; William Hubbs <williamh@gentoo.org> +espeak-1.39.ebuild:
+  version bump.
+
+*espeak-1.38 (30 Aug 2008)
+
+  30 Aug 2008; William Hubbs <williamh@gentoo.org> +espeak-1.38.ebuild:
+  version bump
+
+  09 Aug 2008; Tobias Klausmann <klausman@gentoo.org> espeak-1.37-r1.ebuild:
+  Stable on alpha, bug #233112
+
+  02 Aug 2008; William Hubbs <williamh@gentoo.org> -espeak-1.25.ebuild,
+  -espeak-1.36.ebuild, -espeak-1.36.02.ebuild, -espeak-1.37.ebuild:
+  Removed old versions.
+
+  02 Aug 2008; Markus Rothe <corsair@gentoo.org> espeak-1.37-r1.ebuild:
+  Stable on ppc64; bug #233112
+
+  01 Aug 2008; nixnut <nixnut@gentoo.org> espeak-1.37-r1.ebuild:
+  Stable on ppc wrt bug 233112
+
+  29 Jul 2008; Jeroen Roovers <jer@gentoo.org> espeak-1.37-r1.ebuild:
+  Stable for HPPA (bug #233112).
+
+  29 Jul 2008; Raúl Porcel <armin76@gentoo.org> espeak-1.37-r1.ebuild:
+  ia64/sparc/x86 stable wrt #233112
+
+  27 Jul 2008; deedra waters <dmwaters@gentoo.org> espeak-1.37-r1.ebuild:
+  stable on amd64
+
+  15 Jun 2008; Raúl Porcel <armin76@gentoo.org> espeak-1.37-r1.ebuild:
+  Add ~ia64 wrt #163285
+
+  12 May 2008; Markus Rothe <corsair@gentoo.org> espeak-1.36.02.ebuild:
+  Stable on ppc64
+
+*espeak-1.37-r1 (26 Apr 2008)
+
+  26 Apr 2008; William Hubbs <williamh@gentoo.org> +espeak-1.37-r1.ebuild:
+  Rev bump to install dictsource directory in /usr/share/espeak-data for
+  #218597.
+
+*espeak-1.37 (20 Apr 2008)
+
+  20 Apr 2008; William Hubbs <williamh@gentoo.org> +espeak-1.37.ebuild:
+  Version bump. Also, for #218597, do not allow both portaudio and
+  pulseaudio in the use flags.
+
+  15 Apr 2008; Jeroen Roovers <jer@gentoo.org> espeak-1.36.02.ebuild:
+  Stable for HPPA (bug #217235).
+
+  12 Apr 2008; Raúl Porcel <armin76@gentoo.org> espeak-1.36.ebuild:
+  sparc stable
+
+  10 Apr 2008; Markus Meier <maekke@gentoo.org> espeak-1.36.ebuild:
+  amd64/x86 stable, bug #216707
+
+  10 Apr 2008; Markus Rothe <corsair@gentoo.org> espeak-1.36.ebuild:
+  Stable on ppc64; bug #216707
+
+  09 Apr 2008; nixnut <nixnut@gentoo.org> espeak-1.36.02.ebuild:
+  Stable on ppc wrt bug #216707
+
+*espeak-1.36.02 (24 Mar 2008)
+
+  24 Mar 2008; William Hubbs <williamh@gentoo.org> +espeak-1.36.02.ebuild:
+  Version bump.
+
+  12 Mar 2008; William Hubbs <williamh@gentoo.org> espeak-1.36.ebuild:
+  Updated the ebuild to pass the correct options to make if neither portaudio
+  nor pulseaudio is in the use flags.
+
+*espeak-1.36 (10 Mar 2008)
+
+  10 Mar 2008; William Hubbs <williamh@gentoo.org>
+  -files/espeak-1.35-makefile.patch, -espeak-1.35.ebuild,
+  +espeak-1.36.ebuild:
+  Version bump and removed old version.
+
+  09 Mar 2008; William Hubbs <williamh@gentoo.org>
+  files/espeak-1.35-makefile.patch:
+  Updated the makefile patch so that espeak builds correctly if no audio option
+  is in the use flags.  Also, I sent this patch upstream.
+
+  08 Mar 2008; William Hubbs <williamh@gentoo.org>
+  -files/espeak-1.19-big-endian.patch,
+  -files/espeak-1.19-ppc64-segfault.patch,
+  -files/espeak-1.20-big-endian.patch,
+  -files/espeak-1.20-ppc64-segfault.patch,
+  -files/espeak-1.22-makefile.patch,
+  -files/espeak-1.26-ppc64-segfault.patch,
+  -files/espeak-1.27-ppc64-segfault.patch, -espeak-1.19.ebuild,
+  -espeak-1.20-r1.ebuild, -espeak-1.22.ebuild, -espeak-1.26.ebuild,
+  -espeak-1.26-r1.ebuild, -espeak-1.27.ebuild, -espeak-1.28.ebuild,
+  -espeak-1.29.ebuild, -espeak-1.30.ebuild, -espeak-1.31.ebuild,
+  -espeak-1.34.ebuild:
+  Major cleanup; removed several old versions.
+
+*espeak-1.35 (08 Mar 2008)
+
+  08 Mar 2008; William Hubbs <williamh@gentoo.org>
+  +files/espeak-1.35-makefile.patch, +espeak-1.35.ebuild:
+  Version bump.
+
+  08 Mar 2008; Markus Rothe <corsair@gentoo.org> espeak-1.34.ebuild:
+  Added ~ppc64; bug #163285
+
+*espeak-1.34 (08 Mar 2008)
+
+  08 Mar 2008; William Hubbs <williamh@gentoo.org> +espeak-1.34.ebuild:
+  Version bump.
+
+*espeak-1.31 (20 Jan 2008)
+
+  20 Jan 2008; William Hubbs <williamh@gentoo.org> +espeak-1.31.ebuild:
+  Version bump.
+
+*espeak-1.30 (01 Jan 2008)
+
+  01 Jan 2008; William Hubbs <williamh@gentoo.org> +espeak-1.30.ebuild:
+  Version bump.
+
+  26 Dec 2007; Christian Heim <phreak@gentoo.org> espeak-1.19.ebuild,
+  espeak-1.20-r1.ebuild, espeak-1.25.ebuild, espeak-1.26.ebuild,
+  espeak-1.26-r1.ebuild, espeak-1.27.ebuild, espeak-1.28.ebuild,
+  espeak-1.29.ebuild:
+  Fix the quotation.
+
+  28 Aug 2007; Jeroen Roovers <jer@gentoo.org> files/digest-espeak-1.29,
+  Manifest:
+  Fixed digest for 1.29.
+
+*espeak-1.29 (28 Aug 2007)
+
+  28 Aug 2007; William Hubbs <williamh@gentoo.org> +espeak-1.29.ebuild:
+  Version bump.
+
+  27 Aug 2007; deedra waters <dmwaters@gentoo.org> espeak-1.25.ebuild:
+  Marking 1.25 stable on amd64
+
+*espeak-1.28 (19 Jul 2007)
+
+  19 Jul 2007; William Hubbs <williamh@gentoo.org> +espeak-1.28.ebuild:
+  Version bump.
+
+*espeak-1.27 (04 Jul 2007)
+
+  04 Jul 2007; William Hubbs <williamh@gentoo.org>
+  +files/espeak-1.27-ppc64-segfault.patch, +espeak-1.27.ebuild:
+  Version bump.
+
+  10 Jun 2007; Jeroen Roovers <jer@gentoo.org> files/digest-espeak-1.26,
+  files/digest-espeak-1.26-r1, Manifest:
+  Fixing digest.
+
+*espeak-1.26-r1 (10 Jun 2007)
+
+  10 Jun 2007; William Hubbs <williamh@gentoo.org>
+  +files/espeak-1.26-ppc64-segfault.patch, +espeak-1.26-r1.ebuild:
+  Rev bump to fix a seg fault on ppc64 for bug #163285.
+
+*espeak-1.26 (09 Jun 2007)
+
+  09 Jun 2007; William Hubbs <williamh@gentoo.org> +espeak-1.26.ebuild:
+  Version bump.
+
+  07 Jun 2007; Fernando J. Pereda <ferdy@gentoo.org> espeak-1.25.ebuild:
+  Added ~alpha as per bug #163285. Thanks to Brian Evans
+  <grknight2k@bluebottle.com> for testing.
+
+  05 Jun 2007; Jeroen Roovers <jer@gentoo.org> espeak-1.25.ebuild:
+  Marked ~hppa (bug #163285).
+
+*espeak-1.25 (19 May 2007)
+
+  19 May 2007; William Hubbs <williamh@gentoo.org> +espeak-1.25.ebuild:
+  Version bump.
+
+  06 May 2007; Tobias Scherbaum <dertobi123@gentoo.org> espeak-1.22.ebuild:
+  Added ~ppc, bug #163285
+
+  20 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> espeak-1.22.ebuild:
+  Keyworded ~sparc wrt #163285
+
+*espeak-1.22 (20 Apr 2007)
+
+  20 Apr 2007; Leonardo Boshell <leonardop@gentoo.org>
+  +files/espeak-1.22-makefile.patch, +espeak-1.22.ebuild:
+  New release. Integrated new logic to fix the byte order and compile the
+  necessary binary files in big-endian machines, as described in bug #163285.
+
+*espeak-1.20-r1 (25 Feb 2007)
+
+  25 Feb 2007; William Hubbs <williamh@gentoo.org> -espeak-1.20.ebuild,
+  +espeak-1.20-r1.ebuild:
+  Rev bump to fix #168066.
+
+*espeak-1.20 (18 Feb 2007)
+
+  18 Feb 2007; William Hubbs <williamh@gentoo.org>
+  +files/espeak-1.20-big-endian.patch,
+  +files/espeak-1.20-ppc64-segfault.patch, +espeak-1.20.ebuild:
+  Version bump.
+
+  10 Feb 2007; Steve Dibb <beandog@gentoo.org> espeak-1.19.ebuild:
+  amd64 stable, bug 163285
+
+  07 Feb 2007; William Hubbs <williamh@gentoo.org>
+  -files/espeak-1.18-64bits.patch, -files/espeak-1.18-parallel.patch,
+  files/espeak-1.19-big-endian.patch, -espeak-1.16.ebuild,
+  -espeak-1.18.ebuild:
+  Removed old versions, also updated espeak-1.19-big-endian.patch.
+
+  06 Feb 2007; William Hubbs <williamh@gentoo.org> espeak-1.19.ebuild:
+  Added patches to fix a segfault on ppc64 and to move ARCH_BIG out of the
+  Makefile.
+
+*espeak-1.19 (31 Jan 2007)
+
+  31 Jan 2007; William Hubbs <williamh@gentoo.org> +espeak-1.19.ebuild:
+  Version bump.
+
+  24 Jan 2007; Leonardo Boshell <leonardop@gentoo.org>
+  +files/espeak-1.18-64bits.patch, +files/espeak-1.18-parallel.patch,
+  espeak-1.18.ebuild:
+  Added a couple of patches to fix compilation in parallel, and in amd64.
+
+*espeak-1.18 (22 Jan 2007)
+
+  22 Jan 2007; Leonardo Boshell <leonardop@gentoo.org> +espeak-1.18.ebuild:
+  New release, as required by the latest gnome-speech. Honour CXXFLAGS. Use
+  the Makefile to install instead of doing it manually.
+
+  06 Nov 2006; Piotr Jaroszyński <peper@gentoo.org> espeak-1.16.ebuild:
+  Add ~amd64 wrt bug #154245.
+
+*espeak-1.16 (29 Oct 2006)
+
+  29 Oct 2006; William Hubbs <williamh@gentoo.org> +metadata.xml,
+  +espeak-1.16.ebuild:
+  Initial commit.
+  Thanks to breb@sent.com for the ebuild which I based this on, in bug 151004.

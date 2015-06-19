@@ -1,0 +1,11 @@
+diff -Naur a/dhcpcd-6.4.3/configure b/dhcpcd-6.4.3/configure
+--- a/dhcpcd-6.4.3/configure	2014-07-30 12:13:12.000000000 -0300
++++ b/dhcpcd-6.4.3/configure	2014-09-04 16:37:06.604044374 -0300
+@@ -493,6 +493,7 @@
+ #include <stdlib.h>
+ int main(void) {
+ 	arc4random();
++	arc4random_uniform();
+ 	return 0;
+ }
+ EOF

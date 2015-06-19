@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>python</herd>
+<longdescription lang="en">
+  Polygon is a python package that handles polygonal shapes in 2D. It contains 
+  Python bindings for gpc, the General Polygon Clipping Library by 
+  Alan Murta and some extensions written in C and pure Python.
+</longdescription>
+</pkgmetadata>

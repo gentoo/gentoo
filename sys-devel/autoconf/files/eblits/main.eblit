@@ -1,0 +1,48 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/autoconf/files/eblits/main.eblit,v 1.1 2015/03/19 23:49:17 vapier Exp $
+
+__EBLITS__="locked-and-loaded"
+
+# eblit-include [--skip] <function> [version]
+eblit-include() {
+	local skipable=false
+	[[ $1 == "--skip" ]] && skipable=true && shift
+	[[ $1 == pkg_* ]] && skipable=true
+
+	local e v func=$1 ver=$2
+	[[ -z ${func} ]] && die "Usage: eblit-include <function> [version]"
+	for v in ${ver:+-}${ver} -${PVR} -${PV} "" ; do
+		e="${FILESDIR}/eblits/${func}${v}.eblit"
+		if [[ -e ${e} ]] ; then
+			source "${e}"
+			return 0
+		fi
+	done
+	${skipable} && return 0
+	die "Could not locate requested eblit '${func}' in ${FILESDIR}/eblits/"
+}
+
+# eblit-run-maybe <function>
+# run the specified function if it is defined
+eblit-run-maybe() {
+	[[ $(type -t "$@") == "function" ]] && "$@"
+}
+
+# eblit-run <function> [version]
+# aka: src_unpack() { eblit-run src_unpack ; }
+eblit-run() {
+	eblit-include --skip common "${*:2}"
+	eblit-include "$@"
+	eblit-run-maybe eblit-$1-pre
+	eblit-${PN}-$1
+	eblit-run-maybe eblit-$1-post
+}
+
+# Copy these into the ebuilds.
+#src_unpack()    { eblit-run src_unpack    ; }
+#src_prepare()   { eblit-run src_prepare   ; }
+#src_configure() { eblit-run src_configure ; }
+#src_compile()   { eblit-run src_compile   ; }
+#src_test()      { eblit-run src_test      ; }
+#src_install()   { eblit-run src_install   ; }

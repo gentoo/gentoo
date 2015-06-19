@@ -1,0 +1,44 @@
+# ChangeLog for dev-python/audioread
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/audioread/ChangeLog,v 1.11 2015/06/03 12:45:09 jlec Exp $
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> audioread-1.0.1.ebuild:
+  Drop old Python implementations
+
+  25 Nov 2014; Pacho Ramos <pacho@gentoo.org> audioread-1.0.1.ebuild:
+  Support python 3.4
+
+  06 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org> audioread-1.0.1.ebuild:
+  Pin gst-python to 0.10 slot
+
+  22 Mar 2014; Michael Palimaka <kensington@gentoo.org> -audioread-0.6.ebuild:
+  Remove old.
+
+  20 Oct 2013; Stanislav Ochotnicky <sochotnicky@gentoo.org> metadata.xml:
+  Move to maintainer-needed
+
+*audioread-1.0.1 (08 Jun 2013)
+
+  08 Jun 2013; Stanislav Ochotnicky <sochotnicky@gentoo.org>
+  +audioread-1.0.1.ebuild,
+  +files/0001-Use-the-print-function-instead-of-the-print-keyword.patch:
+  Version bump, convert to EAPI5
+
+  30 May 2012; Kacper Kowalik <xarthisius@gentoo.org> audioread-0.6.ebuild:
+  Drop empty RESTRICT_PYTHON_ABIS, move all dependencies to RDEPEND
+
+  29 May 2012; Jeff Horelick <jdhore@gentoo.org> audioread-0.6.ebuild:
+  Keyword ~x86
+
+  29 May 2012; Stanislav Ochotnicky <sochotnicky@gentoo.org>
+  audioread-0.6.ebuild:
+  Add forgotten python_abi support for dev-python/audioread
+
+*audioread-0.6 (29 May 2012)
+
+  29 May 2012; Stanislav Ochotnicky <sochotnicky@gentoo.org>
+  +audioread-0.6.ebuild, +metadata.xml:
+  New ebuild for Python module for decoding audio files

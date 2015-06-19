@@ -1,0 +1,40 @@
+# ChangeLog for dev-tex/qtexengine
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/qtexengine/ChangeLog,v 1.9 2015/01/25 23:53:10 pesa Exp $
+
+  25 Jan 2015; Davide Pesavento <pesa@gentoo.org> qtexengine-0.3.ebuild:
+  Switch to sourceforge (bug 537724). Switch to EAPI=5.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> qtexengine-0.3.ebuild:
+  Move Qt dependencies to the new category
+
+  05 Apr 2012; Johannes Huber <johu@gentoo.org>
+  -files/qtexengine-0.2-dynlib.patch, -files/qtexengine-0.2-interpolate.patch,
+  -qtexengine-0.2.ebuild:
+  Remove old.
+
+  05 Apr 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> qtexengine-0.3.ebuild:
+  x86 stable wrt bug #409689
+
+  28 Mar 2012; Agostino Sarubbo <ago@gentoo.org> qtexengine-0.3.ebuild:
+  Stable for amd64, wrt bug #409689
+
+*qtexengine-0.3 (30 Jan 2012)
+
+  30 Jan 2012; Johannes Huber <johu@gentoo.org>
+  +files/qtexengine-0.3-dynlib.patch, +qtexengine-0.3.ebuild:
+  Version bump wrt bug #400737. Thanks to kensington
+  <gentoo@scribeofthenile.com>.
+
+  12 Oct 2010; Justin Lecher <jlec@gentoo.org> qtexengine-0.2.ebuild:
+  Keyworded for ~linux prefix
+
+  26 Apr 2010; Markus Meier <maekke@gentoo.org> qtexengine-0.2.ebuild:
+  amd64/x86 stable, bug #309717
+
+*qtexengine-0.2 (01 Jan 2010)
+
+  01 Jan 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +qtexengine-0.2.ebuild, +files/qtexengine-0.2-dynlib.patch,
+  +files/qtexengine-0.2-interpolate.patch:
+  Initial commit.

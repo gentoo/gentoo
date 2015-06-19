@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=~mail-client/claws-mail-3.9.0 virtual/pkgconfig
+DESCRIPTION=Plugin to add additional headers with download information
+HOMEPAGE=http://www.claws-mail.org/
+KEYWORDS=amd64 ~ppc ppc64 x86
+LICENSE=GPL-3
+RDEPEND=~mail-client/claws-mail-3.9.0
+SLOT=0
+SRC_URI=http://www.claws-mail.org/downloads/plugins/fetchinfo-plugin-0.4.25.tar.gz
+_md5_=9be4149756bcec262656d4ca2451a04e

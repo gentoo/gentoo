@@ -1,0 +1,23 @@
+# ChangeLog for dev-python/remoteobjects
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/remoteobjects/ChangeLog,v 1.5 2015/06/07 16:00:55 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  06 Jan 2015; Ian Delaney <idella4@gentoo.org> remoteobjects-99999999.ebuild:
+  conversion -> distutils-r1
+
+  21 Sep 2011; Michał Górny <mgorny@gentoo.org>
+  remoteobjects-99999999.ebuild:
+  Migrate to git-2.
+
+  07 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  remoteobjects-99999999.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*remoteobjects-99999999 (14 Mar 2011)
+
+  14 Mar 2011; Mike Frysinger <vapier@gentoo.org>   +metadata.xml,
+  +remoteobjects-99999999.ebuild:
+  Initial ebuild.

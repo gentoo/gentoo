@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install preinst prepare unpack
+DEPEND=ecm? ( sci-mathematics/gmp-ecm[-gwnum] ) mpi? ( virtual/mpi ) zlib? ( sys-libs/zlib ) || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DESCRIPTION=A C library implementing a suite of algorithms to factor large integers
+EAPI=5
+HOMEPAGE=http://sourceforge.net/projects/msieve/
+IUSE=zlib +ecm mpi
+LICENSE=public-domain
+RDEPEND=ecm? ( sci-mathematics/gmp-ecm[-gwnum] ) mpi? ( virtual/mpi ) zlib? ( sys-libs/zlib )
+SLOT=0
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=cba3b3d93cdf2ff4d9c4790409c5cf71

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <maintainer>
+    <email>yac@gentoo.org</email>
+    <name>Jan Matějka</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="pypi">alembic</remote-id>
+    <remote-id type="bitbucket">zzzeek/alembic</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,34 @@
+# ChangeLog for x11-themes/mate-backgrounds
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/mate-backgrounds/ChangeLog,v 1.8 2014/12/20 18:06:13 tamiko Exp $
+
+  20 Dec 2014; Matthias Maier <tamiko@gentoo.org>
+  -mate-backgrounds-1.6.1.ebuild:
+  drop out
+
+  26 Oct 2014; Mart Raudsepp <leio@gentoo.org> mate-backgrounds-1.8.0.ebuild:
+  Add ~arm keyword, bug 508072
+
+  02 Jul 2014; Pacho Ramos <pacho@gentoo.org> mate-backgrounds-1.8.0.ebuild:
+  x86 stable, bug 513714
+
+  02 Jul 2014; Pacho Ramos <pacho@gentoo.org> mate-backgrounds-1.8.0.ebuild:
+  amd64 stable, bug 513714
+
+  07 Jun 2014; Agostino Sarubbo <ago@gentoo.org> mate-backgrounds-1.8.0.ebuild:
+  Add ~x86, wrt bug #508072
+
+  04 May 2014; Agostino Sarubbo <ago@gentoo.org> mate-backgrounds-1.6.1.ebuild:
+  Stable for amd64, wrt bug #509268
+
+*mate-backgrounds-1.8.0 (01 May 2014)
+
+  01 May 2014; Tom Wijsman <TomWij@gentoo.org> +mate-backgrounds-1.8.0.ebuild:
+  Version bump to 1.8.0.
+
+*mate-backgrounds-1.6.1 (11 Mar 2014)
+
+  11 Mar 2014; Tom Wijsman <TomWij@gentoo.org> +mate-backgrounds-1.6.1.ebuild,
+  +metadata.xml:
+  New ebuild for x11-themes/mate-backgrounds, a set of backgrounds packaged with
+  the MATE desktop; imported from the mate-overlay, reviewed and adjusted.

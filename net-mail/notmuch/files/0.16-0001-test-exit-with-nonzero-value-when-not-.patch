@@ -1,0 +1,56 @@
+From c1f05bfb791e82776f5759e38c758cedd7e6190f Mon Sep 17 00:00:00 2001
+From: Tomi Ollila <tomi.ollila@iki.fi>
+Date: Sun, 8 Sep 2013 18:53:30 +0300
+Subject: [PATCH] test: exit with nonzero value when not all tests completed
+ successfully
+
+If any of the tests in our test system is not passing the execution
+of the test suite completes with nonzero exit value.
+
+It is better to rely on the exit value of the test system instead
+of some arbitrary strings in test output (or use both).
+---
+ test/aggregate-results.sh | 9 +++++++++
+ test/notmuch-test         | 3 +++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/test/aggregate-results.sh b/test/aggregate-results.sh
+index 732d6ca..b016edb 100755
+--- a/test/aggregate-results.sh
++++ b/test/aggregate-results.sh
+@@ -1,5 +1,7 @@
+ #!/usr/bin/env bash
+ 
++set -eu
++
+ fixed=0
+ success=0
+ failed=0
+@@ -79,3 +81,10 @@ if [ "$skipped" != "0" ]; then
+     tests=$(pluralize "test" $skipped)
+     echo "$skipped $tests skipped."
+ fi
++
++if [ $success -gt 0 -a $fixed -eq 0 -a $failed -eq 0 -a $skipped -eq 0 ]
++then
++    exit 0
++else
++    exit 1
++fi
+diff --git a/test/notmuch-test b/test/notmuch-test
+index 6db7979..aa28bb0 100755
+--- a/test/notmuch-test
++++ b/test/notmuch-test
+@@ -97,6 +97,9 @@ trap - HUP INT TERM
+ 
+ # Report results
+ ./aggregate-results.sh test-results/*
++ev=$?
+ 
+ # Clean up
+ rm -rf test-results corpus.mail
++
++exit $ev
+-- 
+1.8.3.2
+

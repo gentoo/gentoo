@@ -1,0 +1,8 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/10.10/package.use.mask,v 1.1 2014/10/19 17:42:23 grobian Exp $
+
+# Fabian Groffen <grobian@gentoo.org> (10 Apr 2011)
+# as long as util-linux installs uuid.h which breaks the system headers
+# (hence we don't) we can't do uuid support here
+x11-libs/libSM -uuid

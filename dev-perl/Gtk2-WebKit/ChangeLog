@@ -1,0 +1,81 @@
+# ChangeLog for dev-perl/Gtk2-WebKit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Gtk2-WebKit/ChangeLog,v 1.19 2015/05/01 12:06:33 dilfridge Exp $
+
+  01 May 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Gtk2-WebKit-0.90.0-r1.ebuild:
+  dev-perl/extutils-depends just became dev-perl/ExtUtils-Depends
+
+*Gtk2-WebKit-0.90.0-r1 (25 Aug 2014)
+
+  25 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Gtk2-WebKit-0.90.0-r1.ebuild, -Gtk2-WebKit-0.90.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> Gtk2-WebKit-0.90.0.ebuild:
+  Drop sparc keywords
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  21 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Gtk2-WebKit-0.90.0.ebuild:
+  x86 stable wrt bug #416103
+
+  19 May 2012; Agostino Sarubbo <ago@gentoo.org> Gtk2-WebKit-0.90.0.ebuild:
+  Stable for amd64, wrt bug #416103
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org> -Gtk2-WebKit-0.08.ebuild:
+  Cleanup
+
+*Gtk2-WebKit-0.90.0 (13 May 2011)
+
+  13 May 2011; Torsten Veller <tove@gentoo.org> +Gtk2-WebKit-0.90.0.ebuild:
+  Version bump
+
+  21 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  Gtk2-WebKit-0.08.ebuild:
+  Fix slot-deps on gnome libs
+
+  15 Aug 2010; Torsten Veller <tove@gentoo.org> -Gtk2-WebKit-0.07.ebuild:
+  Cleanup
+
+*Gtk2-WebKit-0.08 (31 May 2010)
+
+  31 May 2010; Torsten Veller <tove@gentoo.org> +Gtk2-WebKit-0.08.ebuild:
+  Version bump
+
+  24 Dec 2009; Torsten Veller <tove@gentoo.org> -Gtk2-WebKit-0.06.ebuild:
+  Cleanup
+
+  10 Dec 2009; Raúl Porcel <armin76@gentoo.org> Gtk2-WebKit-0.06.ebuild,
+  Gtk2-WebKit-0.07.ebuild:
+  Add ~sparc
+
+*Gtk2-WebKit-0.07 (10 Nov 2009)
+
+  10 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Gtk2-WebKit-0.07.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org> -Gtk2-WebKit-0.04.ebuild:
+  Cleanup
+
+*Gtk2-WebKit-0.06 (25 Aug 2009)
+
+  25 Aug 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Gtk2-WebKit-0.06.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  27 Feb 2009; Alexis Ballier <aballier@gentoo.org> Gtk2-WebKit-0.04.ebuild:
+  keyword ~amd64
+
+  22 Dec 2008; Torsten Veller <tove@gentoo.org> Gtk2-WebKit-0.04.ebuild:
+  Fix LICENSE (#249869). Thanks to Sergiy Borodych.
+
+*Gtk2-WebKit-0.04 (19 Dec 2008)
+
+  19 Dec 2008; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +Gtk2-WebKit-0.04.ebuild:
+  Initial commit. Needed by media-sound/gmusicbrowser (#249869)

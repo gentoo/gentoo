@@ -1,0 +1,15 @@
+Index: src/c3po/structur.h
+===================================================================
+--- src/c3po/structur.h	(revision 835)
++++ src/c3po/structur.h	(working copy)
+@@ -20,6 +20,10 @@
+ 
+ */
+ 
++#ifdef WCD_UNICODE
++#include <wchar.h>
++#endif
++
+ #ifndef C3PO_BASIC_TYPES_INCLUDED
+ #define C3PO_BASIC_TYPES_INCLUDED
+ 

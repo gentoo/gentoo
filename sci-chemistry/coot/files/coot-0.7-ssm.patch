@@ -1,0 +1,56 @@
+ macros/mmdb-ssm.m4 |   42 +-----------------------------------------
+ 1 files changed, 1 insertions(+), 41 deletions(-)
+
+diff --git a/macros/mmdb-ssm.m4 b/macros/mmdb-ssm.m4
+index 1937a16..6ef547c 100644
+--- a/macros/mmdb-ssm.m4
++++ b/macros/mmdb-ssm.m4
+@@ -22,47 +22,7 @@
+ AC_DEFUN([AM_WITH_MMDBSSM],
+ [AC_PROVIDE([AM_USE_MMDBSSM])
+ 
+-
+-AC_ARG_WITH(ssmlib-prefix, 
+-	AC_HELP_STRING( [--with-ssmlib-prefix=PFX], [Prefix where SSMLib has been installed] ),
+-	[ with_ssmlib_prefix="$withval" ],
+- with_ssmlib_prefix="")
+-
+-AC_MSG_CHECKING([for SSMLib])
+-
+-if test x$with_ssmlib_prefix != x; then
+-
+-   MMDBSSM_CXXFLAGS="-DHAVE_SSMLIB"
+-   MMDBSSM_LIBS="-L$with_ssmlib_prefix/$acl_libdirstem -lssm"
+-
+-ac_mmdb_dirs='
+-.
+-include
+-include/ssm
+-include/mmdb
+-lib
+-src
+-lib/src
+-lib/src/mmdb'
+-
+-   for ac_dir in $ac_mmdb_dirs; do
+-      if test -r "$with_ssmlib_prefix/$ac_dir/ssm_superpose.h"; then
+-         ac_MMDBSSM_CXXFLAGS="-I$with_ssmlib_prefix/$ac_dir"
+-         break
+-      fi
+-   done
+-
+-  MMDBSSM_CXXFLAGS="$MMDBSSM_CXXFLAGS $ac_MMDBSSM_CXXFLAGS"
+-  
+-else 
+-
+-   MMDBSSM_CXXFLAGS=""
+-   MMDBSSM_LIBS=""
+-   with_ssmlib_prefix=no 
+-
+-fi
+-
+-AC_MSG_RESULT([$with_ssmlib_prefix])
++PKG_CHECK_MODULES([MMDBSSM],[ssm])
+ 
+ AC_SUBST(MMDBSSM_CXXFLAGS)
+ AC_SUBST(MMDBSSM_LIBS)

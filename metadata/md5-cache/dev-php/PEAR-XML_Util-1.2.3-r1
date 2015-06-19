@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/php:*[pcre(+)] >=dev-php/PEAR-PEAR-1.8.1
+DESCRIPTION=XML utility class
+EAPI=5
+HOMEPAGE=http://pear.php.net/package/XML_Util
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86
+LICENSE=PHP-2.02
+PDEPEND=dev-php/pear
+RDEPEND=dev-lang/php:*[pcre(+)] >=dev-php/PEAR-PEAR-1.8.1
+SLOT=0
+SRC_URI=http://pear.php.net/get/XML_Util-1.2.3.tgz
+_md5_=1e7ef77a2c46d52c33005f0213009ec0

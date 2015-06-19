@@ -1,0 +1,13 @@
+Fails to build on sparc without using -fPIC
+
+--- libexec/rtld-elf/Makefile.old	2010-01-09 17:17:21 +0100
++++ libexec/rtld-elf/Makefile	2010-01-09 17:17:33 +0100
+@@ -19,7 +19,7 @@
+ MLINKS=		rtld.1 ld-elf.so.1.1 \
+ 		rtld.1 ld.so.1
+ 
+-CFLAGS+=	-fpic -DPIC
++CFLAGS+=	-fPIC -DPIC
+ LDFLAGS+=	-shared -Wl,-Bsymbolic
+ DPADD=		${LIBC_PIC}
+ LDADD=		-lc_pic

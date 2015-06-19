@@ -1,0 +1,26 @@
+diff --git a/src/graphics/GraphicsConverter.cpp b/src/graphics/GraphicsConverter.cpp
+index 97c4f68..8f05e62 100644
+--- a/src/graphics/GraphicsConverter.cpp
++++ b/src/graphics/GraphicsConverter.cpp
+@@ -262,7 +262,7 @@ static void build_script(FileName const & from_file,
+ 	LYXERR(Debug::GRAPHICS, "build_script ... ");
+ 	typedef Graph::EdgePath EdgePath;
+ 
+-	script << "#!/usr/bin/env python\n"
++	script << "#!/usr/bin/env python2\n"
+ 		  "# -*- coding: utf-8 -*-\n"
+ 		  "import os, shutil, sys\n\n"
+ 		  "def unlinkNoThrow(file):\n"
+diff --git a/src/support/os.cpp b/src/support/os.cpp
+index 6984d2c..e6f17ff 100644
+--- a/src/support/os.cpp
++++ b/src/support/os.cpp
+@@ -26,7 +26,7 @@ string const python()
+ {
+ 	// Use the -tt switch so that mixed tab/whitespace indentation is
+ 	// an error
+-	static string const command("python -tt");
++	static string const command("python2 -tt");
+ 	return command;
+ }
+ 

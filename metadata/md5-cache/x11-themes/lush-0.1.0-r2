@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=Lush KDE icon theme
+HOMEPAGE=http://www.kde-look.org/content/show.php?content=5483
+KEYWORDS=alpha amd64 ia64 ppc sparc x86 ~x86-fbsd
+LICENSE=GPL-1
+RESTRICT=strip binchecks
+SLOT=0
+SRC_URI=mirror://gentoo/lush-0.1.0dave.tar.gz
+_md5_=842fb2a3977ccfa5e36d701c39cae469

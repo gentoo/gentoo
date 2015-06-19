@@ -1,0 +1,29 @@
+ src/automake.mk | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/automake.mk b/src/automake.mk
+index 73ff813..8524000 100644
+--- a/src/automake.mk
++++ b/src/automake.mk
+@@ -20,7 +20,7 @@ src_libpspp_core_la_LIBADD = \
+ 	src/data/libdata.la \
+ 	src/libpspp/liblibpspp.la \
+ 	$(LIBXML2_LIBS) $(PG_LIBS) \
+-	gl/libgl.la
++	gl/libgl.la $(CAIRO_LIBS)
+ 
+ src_libpspp_la_SOURCES = 
+ 
+@@ -28,10 +28,11 @@ src_libpspp_la_CFLAGS = $(GSL_CFLAGS)
+ src_libpspp_la_LDFLAGS = -release $(VERSION)
+ 
+ src_libpspp_la_LIBADD = \
++	src/libpspp-core.la \
+ 	src/language/liblanguage.la \
+ 	src/math/libpspp-math.la \
+ 	src/output/liboutput.la \
+-        $(GSL_LIBS)
++        $(GSL_LIBS) $(CAIRO_LIBS) $(LIBXML2_LIBS)
+ 
+ include $(top_srcdir)/src/math/automake.mk
+ include $(top_srcdir)/src/output/automake.mk

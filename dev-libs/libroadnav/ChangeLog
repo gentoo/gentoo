@@ -1,0 +1,59 @@
+# ChangeLog for dev-libs/libroadnav
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libroadnav/ChangeLog,v 1.12 2015/06/09 14:42:13 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  07 Feb 2010; Ryan Hill <dirtyepic@gentoo.org> libroadnav-0.19.ebuild:
+  Remove deprecated use of 'need-wxwidgets gtk2'.
+
+  28 Jul 2009; Ryan Hill <dirtyepic@gentoo.org> -libroadnav-0.18.ebuild:
+  Remove old.
+
+*libroadnav-0.19 (01 Jul 2009)
+
+  01 Jul 2009; Ryan Hill <dirtyepic@gentoo.org> -libroadnav-0.16.ebuild,
+  +libroadnav-0.19.ebuild:
+  Version bump for bug #208412. Remove old.
+
+  26 Dec 2007; Christian Heim <phreak@gentoo.org>
+  -files/digest-libroadnav-0.14, -files/digest-libroadnav-0.15:
+  Cleaning out unused digest files.
+
+  08 Oct 2007; Ryan Hill <dirtyepic@gentoo.org> -libroadnav-0.14.ebuild,
+  -libroadnav-0.15.ebuild, +libroadnav-0.18.ebuild:
+  Version bump for bug #168960 by Andrew Cremins. Note that maps will have to
+  be recompiled after the upgrade.
+
+*libroadnav-0.18 (08 Oct 2007)
+
+  08 Oct 2007; Ryan Hill <dirtyepic@gentoo.org> -libroadnav-0.14.ebuild,
+  -libroadnav-0.15.ebuild, +libroadnav-0.18.ebuild:
+  Version bump for bug #168960 by Andrew Cremins. Note that maps will have to
+  be recompiled after the upgrade.
+
+  16 Jun 2007; Ryan Hill <dirtyepic@gentoo.org> libroadnav-0.16.ebuild:
+  Use wxwidgets.eclass, bug #175632.
+
+  31 May 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove myself as I'm retiring.
+
+*libroadnav-0.16 (27 Nov 2006)
+
+  27 Nov 2006; Bryan Østergaard <kloeri@gentoo.org>
+  +libroadnav-0.16.ebuild:
+  Version bump, bug 154092. Ebuild by Andrew Cremins.
+
+*libroadnav-0.15 (05 Sep 2006)
+
+  05 Sep 2006; Bryan Østergaard <kloeri@gentoo.org>
+  +libroadnav-0.15.ebuild:
+  Version bump, bug 144871. Thanks to Andrew Cremins.
+
+  23 Jul 2006; Bryan Østergaard <kloeri@gentoo.org> ChangeLog:
+  Initial import, ebuild by Andrew Cremins <andrew.cremins@gmail.com>, bug
+  138945.

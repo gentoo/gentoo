@@ -1,0 +1,23 @@
+# ChangeLog for java-virtuals/transaction-api
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/java-virtuals/transaction-api/ChangeLog,v 1.5 2014/12/02 14:28:08 mrueg Exp $
+
+  02 Dec 2014; Manuel Rüger <mrueg@gentoo.org> transaction-api-1.1.ebuild:
+  Update to EAPI=5
+
+  04 Oct 2012; Ralph Sennhauser <sera@gentoo.org> transaction-api-1.1.ebuild:
+  Change license to public-domain. #426800
+
+  02 May 2010; Petteri Räty <betelgeuse@gentoo.org>
+  transaction-api-1.1.ebuild:
+  Remove java-config dependency as java-virtuals-2.eclass has it these days.
+
+  03 Aug 2008; Petteri Räty <betelgeuse@gentoo.org>
+  transaction-api-1.1.ebuild:
+  Stable on arches where we have stable providers available.
+
+*transaction-api-1.1 (03 Aug 2008)
+
+  03 Aug 2008; Petteri Räty <betelgeuse@gentoo.org> +metadata.xml,
+  +transaction-api-1.1.ebuild:
+  Add virtual for transaction api.

@@ -1,0 +1,47 @@
+# ChangeLog for dev-java/osgi-core-api
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/osgi-core-api/ChangeLog,v 1.10 2014/02/12 02:38:42 radhermit Exp $
+
+  12 Feb 2014; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove empty description from metadata.
+
+  12 Feb 2014; Tim Harder <radhermit@gentoo.org> osgi-core-api-4.3.ebuild,
+  osgi-core-api-5.0.0.ebuild:
+  Drop fetch and bindist restrictions since the jars are distributed on public
+  maven repos everywhere.
+
+  24 Dec 2013; Tom Wijsman <TomWij@gentoo.org> osgi-core-api-4.3.ebuild,
+  osgi-core-api-5.0.0.ebuild:
+  Update pkg_nofetch to note to place the file in DISTDIR; fixes bug #493052,
+  reported by Viktar Patotski.
+
+  16 Jul 2013; Tom Wijsman <TomWij@gentoo.org> osgi-core-api-4.3.ebuild,
+  osgi-core-api-5.0.0.ebuild:
+  Update LICENSE to include the OSGi Specification 2.0 license and introduce
+  fetch restriction as the license needs to be explicitly accepted (except for
+  osgi-foundation) to obtain the downloads.
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> osgi-core-api-5.0.0.ebuild:
+  Stable for x86, wrt bug #456528
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> osgi-core-api-5.0.0.ebuild:
+  Stable for amd64, wrt bug #456528
+
+*osgi-core-api-5.0.0 (13 Oct 2012)
+
+  13 Oct 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  +osgi-core-api-5.0.0.ebuild:
+  version bump
+
+  09 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  osgi-core-api-4.3.ebuild:
+  x86 stable wrt bug #396305
+
+  30 Apr 2012; Agostino Sarubbo <ago@gentoo.org> osgi-core-api-4.3.ebuild:
+  Stable for amd64, wrt bug #396305
+
+*osgi-core-api-4.3 (24 Jan 2012)
+
+  24 Jan 2012; Ralph Sennhauser <sera@gentoo.org> +osgi-core-api-4.3.ebuild,
+  +metadata.xml:
+  New package.

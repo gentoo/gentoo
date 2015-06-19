@@ -1,0 +1,105 @@
+# ChangeLog for x11-plugins/wmtimer
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmtimer/ChangeLog,v 1.29 2014/04/07 18:06:45 ssuominen Exp $
+
+  07 Apr 2014; Samuli Suominen <ssuominen@gentoo.org> wmtimer-2.92-r1.ebuild,
+  wmtimer-2.92.ebuild:
+  Use EAPI5 instead of EAPI1.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> wmtimer-2.92.ebuild,
+  wmtimer-2.92-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  07 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> wmtimer-2.92-r1.ebuild:
+  x86 stable wrt bug #391539
+
+  02 Dec 2011; Markos Chandras <hwoarang@gentoo.org> wmtimer-2.92-r1.ebuild:
+  add missing dependencies. stable on amd64. bug #391539
+
+  28 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> wmtimer-2.92.ebuild,
+  wmtimer-2.92-r1.ebuild:
+  Fix slot-dep on gtk+
+
+  28 Oct 2008; Michele Noberasco <s4t4n@gentoo.org> wmtimer-2.9.2-r1.ebuild,
+  wmtimer-2.9.2.ebuild:
+  Reworked magic SEDs to honour Gentoo LDFLAGS.
+
+*wmtimer-2.92-r1 (28 Oct 2008)
+
+  28 Oct 2008; Michele Noberasco <s4t4n@gentoo.org> +wmtimer-2.9.2-r1.ebuild,
+  +wmtimer-counter-fix.patch:
+  Revision bump with patch to correct counter behaviour. Closes bug #242500.
+
+*wmtimer-2.92 (13 Jan 2008)
+
+  13 Jan 2008; Samuli Suominen <drac@gentoo.org> -wmtimer-2.9.2.ebuild,
+  +wmtimer-2.92.ebuild:
+  Version bump to correct versioning scheme with a new ebuild.
+
+  10 Oct 2006; Michele Noberasco <blubb@gentoo.org> wmtimer-2.9.2.ebuild:
+  Added missing libXpm dependancy, closing bug #150656.
+  wmtimer-2.4.ebuild:
+  Autumn clean up.
+
+  07 Feb 2006; Simon Stelling <blubb@gentoo.org> wmtimer-2.9.2.ebuild:
+  stable on amd64
+
+  24 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> wmtimer-2.4.ebuild,
+  wmtimer-2.9.2.ebuild:
+  Fixed DEPEND for modular X.
+
+  17 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  03 Sep 2005; Markus Rothe <corsair@gentoo.org> wmtimer-2.9.2.ebuild:
+  Stable on ppc64
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> wmtimer-2.9.2.ebuild:
+  Stable on ppc.
+
+  29 Aug 2005; Michele Noberasco <s4t4n@gentoo.org> wmtimer-2.9.2.ebuild:
+  stable for x86.
+
+*wmtimer-2.9.2 (14 March 2004)
+
+  14 Mar 2004; Michele Noberasco <s4t4n@gentoo.org> wmtimer-2.9.2.ebuild:
+  Version bump. Closes #84982, reported by André-Sebastian Liebe.
+  wmtimer-2.4.ebuild:
+  Updated copyright headers.
+
+  25 Nov 2004; Jason Wever <weeve@gentoo.org> wmtimer-2.4.ebuild:
+  Added ~sparc keyword.
+
+  23 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> wmtimer-2.4.ebuild:
+  Removing unneccessary dodoc docs.
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> wmtimer-2.4.ebuild:
+  Masked wmtimer-2.4.ebuild stable for ppc
+
+  31 Aug 2004; Tom Gall <tgall@gentoo.org> wmtimer-2.4.ebuild:
+  stable on ppc64, bug #61765
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> wmtimer-2.4.ebuild:
+  glibc -> libc, add sed-4 dep
+
+  11 Jan 2004; Ian Leitch <port001@gentoo.org> wmtimer-2.4.ebuild:
+  Fixed incorrect negation of directories (#37647), added IUSE, split x11 and
+  gtk into RDEPEND
+
+*wmtimer-2.4 (12 August 2002)
+
+  26 Mar 2003; Graham Forest <vladimir@gentoo.org> wmtimer-2.4.ebuild :
+  Automated cleanup of LICENSE
+
+  07 Oct 2002; Nick Hadaway <raker@gentoo.org> wmtimer-2.4.ebuild :
+  Adding missing dependancy on x11-libs/gtk+-1.2*
+
+  04 Oct 2002; Nick Hadaway <raker@gentoo.org> wmtimer-2.4.ebuild :
+  Added CFLAG optimizations and cleaned up src_install()
+
+  16 Sep 2002; Nick Hadaway <raker@gentoo.org> :
+  Moved from app-misc to x11-plugins.
+
+  12 August 2002; Sascha Schwabbauer <cybersystem@gentoo.org> ChangeLog, wmtimer-2.4.ebuild, files/digest-wmtimer-2.4 :
+  Initial version in Portage now..
+  Initial ebuild by Amit Pansare <amittp@yahoo.com>..

@@ -1,0 +1,35 @@
+# ChangeLog for dev-java/jvyamlb
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jvyamlb/ChangeLog,v 1.9 2014/06/17 11:20:50 mrueg Exp $
+
+  17 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -jvyamlb-0.2.2.ebuild:
+  NM: Cleanup superseded ebuilds.
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org> jvyamlb-0.2.5.ebuild:
+  Transfer Prefix keywords
+
+  14 Dec 2009; Peter Volkov <pva@gentoo.org> metadata.xml:
+  Fixed invalid metadata.xml (no DTD found)
+
+  25 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> jvyamlb-0.2.5.ebuild:
+  Keywording for ppc, bug 270910
+
+  05 Jul 2009; Markus Meier <maekke@gentoo.org> jvyamlb-0.2.5.ebuild:
+  amd64 stable, bug #276026
+
+  01 Jul 2009; Christian Faulhammer <fauli@gentoo.org> jvyamlb-0.2.5.ebuild:
+  stable x86, bug 276026
+
+*jvyamlb-0.2.5 (22 May 2009)
+
+  22 May 2009; Vlastimil Babka <caster@gentoo.org> +jvyamlb-0.2.5.ebuild:
+  Version bump, thanks to chewi.
+
+  05 Jan 2009; Markus Meier <maekke@gentoo.org> jvyamlb-0.2.2.ebuild:
+  amd64/x86 stable, bug #251173
+
+*jvyamlb-0.2.2 (16 Nov 2008)
+
+  16 Nov 2008; Miroslav Šulc <fordfrog@gentoo.org> +metadata.xml,
+  +jvyamlb-0.2.2.ebuild:
+  Added ebuild by Chewi from java-overlay, with some fixes from me

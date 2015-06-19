@@ -1,0 +1,49 @@
+# ChangeLog for dev-java/joni
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/joni/ChangeLog,v 1.13 2015/06/07 08:32:43 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*joni-2.1.0 (03 May 2014)
+
+  03 May 2014; Tom Wijsman <TomWij@gentoo.org> +joni-2.1.0.ebuild:
+  Version bump to 2.1.0.
+
+  17 Oct 2010; Vlastimil Babka <caster@gentoo.org> -joni-1.1.3.ebuild:
+  Remove old.
+
+  15 Oct 2010; Brent Baude <ranger@gentoo.org> joni-1.1.4.ebuild:
+  stable ppc, bug 330155
+
+  01 Aug 2010; Markos Chandras <hwoarang@gentoo.org> joni-1.1.4.ebuild:
+  Stable on amd64 wrt bug #330155
+
+  29 Jul 2010; Christian Faulhammer <fauli@gentoo.org> joni-1.1.4.ebuild:
+  stable x86, bug 330155
+
+*joni-1.1.4 (28 Jun 2010)
+
+  28 Jun 2010; Alistair Bush <ali_bush@gentoo.org> +joni-1.1.4.ebuild:
+  Version Bump.
+
+  28 May 2010; Joseph Jezak <josejx@gentoo.org> joni-1.1.3.ebuild:
+  Marked ppc stable for bug #312545.
+
+  23 May 2010; Pacho Ramos <pacho@gentoo.org> joni-1.1.3.ebuild:
+  stable amd64, bug 312545
+
+  26 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> joni-1.1.3.ebuild:
+  x86 stable wrt bug #312545
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org> joni-1.1.3.ebuild:
+  Transfer Prefix keywords
+
+  25 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> ChangeLog:
+  Keywording for ppc, bug 270910
+
+*joni-1.1.3 (22 May 2009)
+
+  22 May 2009; Vlastimil Babka <caster@gentoo.org> +joni-1.1.3.ebuild,
+  +metadata.xml:
+  New package, jruby dependency. Ebuild provided by chewi in java-overlay.

@@ -1,0 +1,189 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id: eselect-xvmc-0.3.eselect,v 1.1 2015/03/31 16:58:41 ulm Exp $
+
+DESCRIPTION="Manage the XvMC implementation used by your system"
+MAINTAINER="cardoe@gentoo.org"
+SVN_DATE='$Date: 2015/03/31 16:58:41 $'
+VERSION=$(svn_date_to_version "${SVN_DATE}" )
+
+XVMCLIBS=(
+"libXvMCNVIDIA_dynamic.so.1"
+"libXvMC.so.1"
+"libviaXvMC.so.1"
+"libviaXvMCPro.so.1"
+"libchromeXvMC.so.1"
+"libchromeXvMCPro.so.1"
+"libXvMCVIA.so"
+"libXvMCVIAPro.so"
+"libI810XvMC.so.1"
+"/usr/lib/libIntelXvMC.so"
+"libAMDXvBA.so.1" )
+XVMCPRETTY=(
+"nvidia"
+"xorg-x11"
+"via"
+"via-pro"
+"openchrome"
+"openchrome-pro"
+"unichrome"
+"unichrome-pro"
+"intel-i815"
+"intel-i915"
+"ati" )
+
+get_implementation_indices() {
+	local ret n
+	for (( n = 0; n < ${#XVMCLIBS[@]}; ++n )); do
+		[[ -e "${ROOT}/usr/lib/${XVMCLIBS[n]}" ]] && ret+=($n)
+	done
+
+	echo ${ret[@]}
+}
+
+get_current_implementation_index() {
+	local n
+	if [[ -f "${ROOT}/etc/X11/XvMCConfig" ]]; then
+		local current=$(< "${ROOT}/etc/X11/XvMCConfig")
+		for (( n = 0; n < ${#XVMCLIBS[@]}; ++n )); do
+			if [[ "${XVMCLIBS[n]}" = "${current}" ]]; then
+				echo "${n}"
+				return
+			fi
+		done
+	fi
+
+	echo "-1"
+}
+
+set_new_implementation() {
+	echo -n "Switching to ${XVMCPRETTY[$1]} XvMC implementation..."
+	touch "${ROOT}/etc/X11/XvMCConfig" 2>&1 > /dev/null
+	if [[ $? -eq 0 ]]; then
+		echo "${XVMCLIBS[$1]}" > "${ROOT}/etc/X11/XvMCConfig"
+		chmod 644 "${ROOT}/etc/X11/XvMCConfig"
+		chown 0:0 "${ROOT}/etc/X11/XvMCConfig"
+		echo " done"
+	else
+		echo " failed!"
+		echo "Insufficient privileges"
+	fi
+}
+
+### list action
+
+## {{{ list stuff
+describe_list() {
+	echo "List Available XvMC implementations"
+}
+
+do_list() {
+	local output n
+	local avail=( $(get_implementation_indices) )
+	local current=$(get_current_implementation_index)
+	write_list_start "Available XvMC implementations  ( $(highlight '*') is current ):"
+
+	if (( ${#avail[@]} )) ; then
+		for n in "${avail[@]}" ; do
+			output[n]="${XVMCPRETTY[n]}"
+			[[ ${current} -eq ${n} ]] && \
+				output[n]+=" $(highlight '*')"
+		done
+		write_numbered_list "${output[@]}"
+	else
+		write_kv_list_entry "(none found)" ""
+	fi
+
+	return 0
+}
+## }}}
+
+### show action
+
+## {{{ show stuff
+describe_show() {
+	echo "Print the current XvMC implementation."
+}
+
+do_show() {
+	local current=$(get_current_implementation_index)
+	write_list_start "Current XvMC implementation:"
+
+	if [[ ${current} -ne -1 ]]; then
+		echo "${XVMCPRETTY[current]}"
+		return 0
+	else
+		echo "(none)"
+		return 2
+	fi
+}
+## }}}
+
+### set action
+
+## {{{ set stuff
+describe_set() {
+	echo "Select the XvMC implementation"
+}
+
+describe_set_parameters() {
+	echo "<target>"
+}
+
+describe_set_options() {
+	echo "<target> : XvMC implementation to activate"
+	echo "--use-old : If an implementation is already set, use that one instead"
+}
+
+do_set() {
+	local current=$(get_current_implementation_index)
+	local avail=( $(get_implementation_indices) )
+	local n new action
+
+	while [[ ${#@} -gt 0 ]]; do
+		local opt=${1}
+		shift
+		case ${opt} in
+			--use-old)
+				if [[ ${current} -gt -1 ]]; then
+					(( ${current} < ${#XVMCPRETTY[@]} )) && action="old-implementation"
+				fi
+				;;
+			*)
+				[[ -z ${action} ]] && action="set-implementation"
+				
+				if is_number ${opt} ; then
+					new=${avail[opt - 1]}
+					if [[ -z ${new} ]]; then
+						die -q "Unrecognized option: ${opt}"
+					fi
+				elif has ${opt} ${XVMCPRETTY[@]}; then
+					for (( n = 0; n < ${#XVMCPRETTY[@]}; ++n )); do
+						[[ "${XVMCPRETTY[n]}" = "${opt}" ]] && new=${n}
+					done
+				else
+					die -q "Unrecognized option: ${opt}"
+				fi
+				;;
+		esac
+	done
+
+	case ${action} in
+		old-implementation)
+			set_new_implementation ${current}
+			return $?
+		;;
+		set-implementation)
+			if [[ -n ${new} ]]; then
+				set_new_implementation ${new}
+				return $?
+			else
+				die -q "Please specify an implementation to set"
+			fi
+		;;
+		*)
+			die -q "Invalid usage of set action."
+	esac
+}
+
+# vim: ts=4 sw=4 noet fdm=marker

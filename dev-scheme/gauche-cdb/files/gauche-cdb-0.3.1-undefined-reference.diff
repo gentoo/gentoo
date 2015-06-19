@@ -1,0 +1,22 @@
+--- Gauche-cdb-0.3.1.orig/cdb.scm
++++ Gauche-cdb-0.3.1/cdb.scm
+@@ -60,7 +60,7 @@
+   (unless (slot-bound? self 'path)
+     (error "path must be set to open cdb database"))
+   (when (cdb-file-of self)
+-    (errorf "cdb ~S already opened" cdb))
++    (errorf "cdb ~s already opened" (cdb-file-of self)))
+   (let ((path (slot-ref self 'path))
+         (rwmode (slot-ref self 'rw-mode)))
+     (case rwmode
+--- Gauche-cdb-0.3.1.orig/cdb.stub
++++ Gauche-cdb-0.3.1/cdb.stub
+@@ -69,7 +69,7 @@
+ 
+  static void cdb_finalize(ScmObj obj, void *data)
+  {
+-   ScmCdb *cdb = SCM_CDB(cdb);
++   ScmCdb *cdb = SCM_CDB(obj);
+    switch (cdb->status) {
+    case OPEN_QUERY:
+      cdb_free(&cdb->cdb); close(cdb_fileno(&cdb->cdb));

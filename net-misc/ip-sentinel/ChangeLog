@@ -1,0 +1,50 @@
+# ChangeLog for net-misc/ip-sentinel
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ip-sentinel/ChangeLog,v 1.13 2014/07/18 16:02:43 jer Exp $
+
+  18 Jul 2014; Jeroen Roovers <jer@gentoo.org> ip-sentinel-0.12.ebuild:
+  EAPI bump.
+
+  12 Mar 2014; Patrick Lauer <patrick@gentoo.org> ip-sentinel-0.12.ebuild:
+  Shorten description for improved repoman happy
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> ip-sentinel-0.12.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #96436
+
+  10 Sep 2008; Peter Volkov <pva@gentoo.org> ip-sentinel-0.12.ebuild:
+  enewuser/enewgroup die on their own. Also use pkg_setup for this
+  functions.
+
+  04 Oct 2007; <pva@gentoo.org> files/ip-sentinel.conf.d:
+  Fixed typo.
+
+  22 Apr 2007; <pva@gentoo.org> ip-sentinel-0.12.ebuild:
+  Use do{conf,init}d, bug #174266.
+
+  15 Sep 2006; Joshua Jackson <tsunam@gentoo.org> ip-sentinel-0.12.ebuild:
+  Stable x86; bug #145348
+
+  28 Aug 2006; Peter Volkov <pva@gentoo.org> files/ip-sentinel.cfg:
+  Fixed small typo.
+
+  11 Jul 2006; Peter Volkov <pva@gentoo.org> files/ip-sentinel.init,
+  ip-sentinel-0.12.ebuild:
+  info replaced with elog.
+
+  08 Jul 2006; Marcelo Goes <vanquirius@gentoo.org> metadata.xml:
+  Add Japanese metadata translation for bug 136268. Thanks to Yoshino
+  <bugzilla_user at mail dot goo dot ne dot jp>.
+
+  05 Jun 2006; Peter Volkov <pva@gentoo.org> files/ip-sentinel.init:
+  Added restart section in init.d script. Just stop/start doesn't work as
+  child process occupies port for some time after stop.
+
+*ip-sentinel-0.12 (15 Jan 2006)
+
+  15 Jan 2006; Peter Volkov <pva@gentoo.org> +files/ip-sentinel.cfg,
+  +files/ip-sentinel.conf.d, +files/ip-sentinel.init, +metadata.xml,
+  +ip-sentinel-0.12.ebuild:
+  Initial bump.

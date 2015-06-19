@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>cluster</herd>
+	<longdescription>
+		VRRP2 implementation. Used for setting up high availability clusters.
+	</longdescription>
+</pkgmetadata>

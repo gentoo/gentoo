@@ -1,0 +1,61 @@
+# ChangeLog for dev-haskell/http-types
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/http-types/ChangeLog,v 1.14 2015/06/06 11:51:16 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*http-types-0.8.6 (04 Apr 2015)
+
+  04 Apr 2015; Mark Wright <gienah@gentoo.org> +http-types-0.8.6.ebuild:
+  Bump http-types to 0.8.6
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> http-types-0.8.2.ebuild,
+  http-types-0.8.3.ebuild, http-types-0.8.5.ebuild:
+  Drop trailing '.' from description.
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*http-types-0.8.5 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org> +http-types-0.8.5.ebuild:
+  Bump http-types to 0.8.5
+
+  05 Mar 2014; Alexander Vershilov <qnikst@gentoo.org> -http-types-0.8.0.ebuild,
+  -http-types-0.8.1.ebuild:
+  drop old
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> http-types-0.8.3.ebuild:
+  Stable for x86, wrt bug #502682
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> http-types-0.8.3.ebuild:
+  amd64 stable, bug #502682
+
+*http-types-0.8.3 (10 Dec 2013)
+
+  10 Dec 2013; Mark Wright <gienah@gentoo.org> +http-types-0.8.3.ebuild:
+  Bump http-types to 0.8.3
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> http-types-0.8.2.ebuild:
+  Stable for x86, wrt bug #488750
+
+  05 Nov 2013; Tony Vroon <chainsaw@gentoo.org> http-types-0.8.2.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #488750.
+
+*http-types-0.8.2 (20 Oct 2013)
+
+  20 Oct 2013; Mark Wright <gienah@gentoo.org> +http-types-0.8.2.ebuild:
+  Bump http-types to 0.8.2
+
+*http-types-0.8.1 (13 Sep 2013)
+
+  13 Sep 2013; Mark Wright <gienah@gentoo.org> +http-types-0.8.1.ebuild:
+  Bump http-types to 0.8.1
+
+*http-types-0.8.0 (26 Aug 2013)
+
+  26 Aug 2013; Alexander Vershilov <qnikst@gentoo.org> +http-types-0.8.0.ebuild,
+  +metadata.xml:
+  dev-haskell/http-types: new version

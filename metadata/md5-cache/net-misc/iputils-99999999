@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install postinst prepare unpack
+DEPEND=arping? ( !net-misc/arping ) rarpd? ( !net-misc/rarpd ) traceroute? ( !net-misc/traceroute ) !static? ( caps? ( sys-libs/libcap ) idn? ( net-dns/libidn ) ipv6? ( ssl? ( gnutls? ( net-libs/gnutls[openssl(+)] net-libs/gnutls ) !gnutls? ( dev-libs/openssl:0 ) ) ) ) static? ( caps? ( sys-libs/libcap[static-libs(+)] ) idn? ( net-dns/libidn[static-libs(+)] ) ipv6? ( ssl? ( gnutls? ( net-libs/gnutls[openssl(+)] net-libs/gnutls[static-libs(+)] ) !gnutls? ( dev-libs/openssl:0[static-libs(+)] ) ) ) ) virtual/os-headers app-text/openjade dev-perl/SGMLSpm app-text/docbook-sgml-dtd app-text/docbook-sgml-utils filecaps? ( sys-libs/libcap ) dev-vcs/git
+DESCRIPTION=Network monitoring tools including ping and ping6
+EAPI=4
+HOMEPAGE=http://www.linuxfoundation.org/collaborate/workgroups/networking/iputils
+IUSE=arping caps clockdiff doc gnutls idn ipv6 rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute +filecaps
+LICENSE=BSD-4
+RDEPEND=arping? ( !net-misc/arping ) rarpd? ( !net-misc/rarpd ) traceroute? ( !net-misc/traceroute ) !static? ( caps? ( sys-libs/libcap ) idn? ( net-dns/libidn ) ipv6? ( ssl? ( gnutls? ( net-libs/gnutls[openssl(+)] net-libs/gnutls ) !gnutls? ( dev-libs/openssl:0 ) ) ) )
+SLOT=0
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fcaps	eeefea88d5fef2853d4c1e3770340302	flag-o-matic	c9602887773166fe300444712fc7ff98	git-2	e28f0d8a9b321431b1e699782851b827	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b986f7f12a3b7f799e6e3b78efd2404c

@@ -1,0 +1,77 @@
+# ChangeLog for media-plugins/gst-plugins-ivorbis
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-ivorbis/ChangeLog,v 1.17 2014/08/21 10:43:16 ago Exp $
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-ivorbis-0.10.36-r1.ebuild:
+  Stable for ppc64, wrt bug #512012
+
+  07 Aug 2014; Jeroen Roovers <jer@gentoo.org>
+  gst-plugins-ivorbis-0.10.36-r1.ebuild:
+  Stable for HPPA (bug #512012).
+
+  28 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-ivorbis-0.10.36-r1.ebuild:
+  Stable for ppc, wrt bug #512012
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-ivorbis-0.10.36-r1.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-ivorbis-0.10.36-r1.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org>
+  gst-plugins-ivorbis-0.10.36-r1.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+*gst-plugins-ivorbis-0.10.36-r1 (10 Jun 2014)
+
+  10 Jun 2014; Michał Górny <mgorny@gentoo.org>
+  +gst-plugins-ivorbis-0.10.36-r1.ebuild:
+  Enable multilib support, bug #493176.
+
+  16 Oct 2013; Jeroen Roovers <jer@gentoo.org>
+  gst-plugins-ivorbis-0.10.36.ebuild:
+  Stable for HPPA (bug #480908).
+
+  13 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-ivorbis-0.10.36.ebuild:
+  Stable for ppc64, wrt bug #480908
+
+  12 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-ivorbis-0.10.36.ebuild:
+  Stable for ppc, wrt bug #480908
+
+  11 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-ivorbis-0.10.36.ebuild:
+  Stable for x86, wrt bug #480908
+
+  10 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-ivorbis-0.10.36.ebuild:
+  Stable for amd64, wrt bug #480908
+
+  29 Sep 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  gst-plugins-ivorbis-0.10.36.ebuild:
+  Drop broken keywords, tremor does not have them.
+
+  12 May 2013; Markus Meier <maekke@gentoo.org>
+  gst-plugins-ivorbis-0.10.36.ebuild:
+  add ~arm, bug #453200
+
+  30 Jan 2013; Alexis Ballier <aballier@gentoo.org>
+  gst-plugins-ivorbis-0.10.36.ebuild:
+  keyword ~amd64-fbsd
+
+  22 Jan 2013; Jeroen Roovers <jer@gentoo.org>
+  gst-plugins-ivorbis-0.10.36.ebuild:
+  Marked ~hppa (bug #453200).
+
+*gst-plugins-ivorbis-0.10.36 (20 Jan 2013)
+
+  20 Jan 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/0.10.36-header-shuffle.patch, +gst-plugins-ivorbis-0.10.36.ebuild,
+  +metadata.xml:
+  Initial ebuild, bug #264329 with keywords copied from gst-plugins-base.

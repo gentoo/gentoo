@@ -1,0 +1,75 @@
+# ChangeLog for media-fonts/arabeyes-fonts
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/arabeyes-fonts/ChangeLog,v 1.19 2009/09/07 00:47:23 dirtyepic Exp $
+
+  07 Sep 2009; Ryan Hill <dirtyepic@gentoo.org> -arabeyes-fonts-1.1.ebuild:
+  Remove old.
+
+  07 Jun 2008; nixnut <nixnut@gentoo.org> arabeyes-fonts-2.0.ebuild:
+  Stable on ppc wrt bug 224865
+
+  07 Jun 2008; Raúl Porcel <armin76@gentoo.org> arabeyes-fonts-2.0.ebuild:
+  ia64 stable wrt #224865
+
+  06 Jun 2008; Peter Volkov <pva@gentoo.org> arabeyes-fonts-2.0.ebuild:
+  amd64 stable, bug #224865.
+
+  06 Jun 2008; Friedrich Oslage <bluebird@gentoo.org>
+  arabeyes-fonts-2.0.ebuild:
+  stable on sparc, bug 224865
+
+  04 Jun 2008; Dawid Węgliński <cla@gentoo.org> arabeyes-fonts-2.0.ebuild:
+  Stable on x86 (bug #224865)
+
+*arabeyes-fonts-2.0 (31 Dec 2007)
+
+  31 Dec 2007; Ryan Hill <dirtyepic@gentoo.org> +arabeyes-fonts-2.0.ebuild:
+  Version bump.  Bug #193246.
+
+  02 Oct 2007; Ryan Hill <dirtyepic@gentoo.org> arabeyes-fonts-1.1.ebuild:
+  Fix quoting.
+
+  01 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  +files/digest-arabeyes-fonts-1.1, Manifest:
+  (QA) Add digests.
+
+  29 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
+  arabeyes-fonts-1.1.ebuild:
+  stable x86, bug 183477
+
+  28 Jun 2007; Christoph Mende <angelos@gentoo.org>
+  arabeyes-fonts-1.1.ebuild:
+  Stable on amd64
+
+  26 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  arabeyes-fonts-1.1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  11 Jul 2006; Aron Griffis <agriffis@gentoo.org> arabeyes-fonts-1.1.ebuild:
+  Mark 1.1 stable on ia64
+
+  23 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  arabeyes-fonts-1.1.ebuild:
+  Stable on sparc
+
+  23 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  arabeyes-fonts-1.1.ebuild:
+  Keyworded ~sparc
+
+  26 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  arabeyes-fonts-1.1.ebuild:
+  Added to ~amd64.
+
+  21 Jan 2005; Lars Weiler <pylon@gentoo.org> arabeyes-fonts-1.1.ebuild:
+  Stable on ppc.
+
+  14 Oct 2004; David Holm <dholm@gentoo.org> arabeyes-fonts-1.1.ebuild:
+  Added to ~ppc.
+
+*arabeyes-fonts-1.1 (29 Sep 2004)
+
+  29 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +arabeyes-fonts-1.1.ebuild:
+  Initial import. Ebuild submitted by Ayman Hourieh <aymanh@gmail.com>.
+  Thanks to Stephen K. Benjamin <skbenja@negeko.net>. This closes bug #62312.
+

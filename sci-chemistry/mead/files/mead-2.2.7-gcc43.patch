@@ -1,0 +1,22 @@
+--- mead-2.2.7.orig/libmead/AtomSet.h
++++ mead-2.2.7/libmead/AtomSet.h
+@@ -31,8 +31,7 @@
+ 
+ #include <map>
+ #include <list>
+-#include <string>
+-using std::string;
++#include <string.h>
+ #include "MEAD/Atom.h"
+ #include "MEAD/Coord.h"
+ #include "MEAD/AtomID.h"
+--- mead-2.2.7.orig/libmead/DielCubeRep.h
++++ mead-2.2.7/libmead/DielCubeRep.h
+@@ -31,6 +31,7 @@
+ 
+ #include "MEAD/CubeLatSpec.h"
+ #include "MEAD/globals.h"
++#include <string.h>
+ 
+ class DielCubeRep {
+ public:

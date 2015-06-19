@@ -1,0 +1,19 @@
+# ChangeLog for sci-biology/phred
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/phred/ChangeLog,v 1.3 2013/03/11 16:36:54 jlec Exp $
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+  07 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org> phred-071220.ebuild:
+  Use elog for fetch error.
+
+*phred-071220 (26 Feb 2009)
+
+  26 Feb 2009; Andrey Kislyuk <weaver@gentoo.org> +metadata.xml,
+  +phred-071220.ebuild:
+  Import from Science overlay
+
+  20 Feb 2009; weaver <weaver@gentoo.org> ChangeLog:
+  New package, ebuild written by me, thanks to Martin Mokrejs
+

@@ -1,0 +1,24 @@
+# ChangeLog for dev-util/emilpro
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/emilpro/ChangeLog,v 1.4 2014/03/26 14:22:00 zerochaos Exp $
+
+  26 Mar 2014; Rick Farina <zerochaos@gentoo.org> emilpro-3-r1.ebuild,
+  emilpro-9999.ebuild:
+  tested on x86
+
+  19 Mar 2014; Rick Farina <zerochaos@gentoo.org> emilpro-9999.ebuild:
+  upstream accepted my cflags patch
+
+*emilpro-3-r1 (19 Mar 2014)
+
+  19 Mar 2014; Rick Farina <zerochaos@gentoo.org> +emilpro-3-r1.ebuild,
+  +files/respect-cflags.patch, +files/use-gentoo-binutils.patch,
+  -emilpro-3.ebuild, emilpro-9999.ebuild, metadata.xml:
+  enable building with system binutils, respect cxxflags
+
+*emilpro-3 (18 Mar 2014)
+*emilpro-9999 (18 Mar 2014)
+
+  18 Mar 2014; Rick Farina <zerochaos@gentoo.org> +emilpro-3.ebuild,
+  +emilpro-9999.ebuild, +metadata.xml:
+  initial commit of emilpro, replaces dissy

@@ -1,0 +1,29 @@
+#!/sbin/runscript
+# Copyright 2005-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/sys-block/partimage/files/partimaged.init.2,v 1.1 2010/11/19 19:36:33 flameeyes Exp $
+
+PARTIMAGED="/usr/sbin/partimaged"
+
+failed_startup() {
+	eerror "The PartImage daemon did not start up correctly."
+	eerror "Perhaps you compiled it with SSL support but forgot to run the ebuild config?"
+	return 1
+}
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting partimaged"
+	start-stop-daemon --start --exec ${PARTIMAGED} \
+	    -- ${PARTIMAGED_OPTS} --daemon
+	eend $? || failed_startup
+}
+
+stop() {
+	ebegin "Stopping partimaged"
+	start-stop-daemon --stop --exec ${PARTIMAGED}
+	eend $?
+}

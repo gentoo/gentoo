@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>cjk</herd>
+<use>
+	<flag name='utempter'>Records user logins. Useful on multi-user
+		systems</flag>
+</use>
+</pkgmetadata>

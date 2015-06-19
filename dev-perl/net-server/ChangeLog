@@ -1,0 +1,328 @@
+# ChangeLog for dev-perl/net-server
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/net-server/ChangeLog,v 1.85 2014/09/27 21:59:08 zlogene Exp $
+
+*net-server-2.8.0 (27 Sep 2014)
+
+  27 Sep 2014; Mikle Kolyada <zlogene@gentoo.org> +net-server-2.8.0.ebuild:
+  Version bump
+
+*net-server-2.7.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +net-server-2.7.0-r1.ebuild, -net-server-2.7.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  10 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> -net-server-0.97.ebuild,
+  -net-server-0.990.0.ebuild, -net-server-2.6.0.ebuild:
+  Drop old
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> net-server-2.7.0.ebuild:
+  Stable for sparc, wrt bug #475794
+
+  13 Jul 2013; Agostino Sarubbo <ago@gentoo.org> net-server-2.7.0.ebuild:
+  Stable for ppc64, wrt bug #475794
+
+  13 Jul 2013; Agostino Sarubbo <ago@gentoo.org> net-server-2.7.0.ebuild:
+  Stable for ppc, wrt bug #475794
+
+  08 Jul 2013; Jeroen Roovers <jer@gentoo.org> net-server-2.7.0.ebuild:
+  Stable for HPPA (bug #475794).
+
+  07 Jul 2013; Agostino Sarubbo <ago@gentoo.org> net-server-2.7.0.ebuild:
+  Stable for ia64, wrt bug #475794
+
+  06 Jul 2013; Agostino Sarubbo <ago@gentoo.org> net-server-2.7.0.ebuild:
+  Stable for alpha, wrt bug #475794
+
+  05 Jul 2013; Agostino Sarubbo <ago@gentoo.org> net-server-2.7.0.ebuild:
+  Stable for x86, wrt bug #475794
+
+  05 Jul 2013; Agostino Sarubbo <ago@gentoo.org> net-server-2.7.0.ebuild:
+  Stable for amd64, wrt bug #475794
+
+*net-server-2.7.0 (02 Mar 2013)
+
+  02 Mar 2013; Jason A. Donenfeld <zx2c4@gentoo.org> +net-server-2.7.0.ebuild:
+  Non-maintainer bump, but it's to fix a kind of time sensitive situation with
+  the erronious Net-Server and dkimproxy.
+
+  05 Oct 2012; Brent Baude <ranger@gentoo.org> net-server-2.6.0.ebuild:
+  Marking net-server-2.6.0 ppc for bug 412881
+
+  17 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> net-server-2.6.0.ebuild:
+  x86 stable wrt security bbug #412881
+
+  07 Sep 2012; Agostino Sarubbo <ago@gentoo.org> net-server-2.6.0.ebuild:
+  Stable for amd64, wrt bug #412881
+
+*net-server-2.6.0 (24 Jul 2012)
+
+  24 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> +net-server-2.6.0.ebuild:
+  Version bump, based on the ebuild by Bernd Lommerzheim in bug #422753. Add an
+  ipv6 USE flag to bring in the (automagic) dependency over IO-Socket-INET6 so
+  that Munin can rely on it.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -net-server-0.99.ebuild:
+  Cleanup
+
+*net-server-0.990.0 (27 Aug 2011)
+
+  27 Aug 2011; Torsten Veller <tove@gentoo.org> +net-server-0.990.0.ebuild:
+  Change version scheme
+
+*net-server-0.99 (15 Jul 2010)
+
+  15 Jul 2010; Torsten Veller <tove@gentoo.org> +net-server-0.99.ebuild:
+  Version bump
+
+  18 Feb 2010; Jeremy Olexa <darkside@gentoo.org> net-server-0.97.ebuild:
+  Add ~arm kw for bug 305631
+
+  15 Sep 2008; Torsten Veller <tove@gentoo.org> -net-server-0.88.ebuild,
+  -net-server-0.94.ebuild, -net-server-0.95.ebuild, -net-server-0.96.ebuild:
+  Cleanup
+
+  28 Mar 2008; Jeroen Roovers <jer@gentoo.org> net-server-0.97.ebuild:
+  Stable for HPPA too.
+
+  13 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  net-server-0.97.ebuild:
+  ppc. stable
+
+  06 Dec 2007; Raúl Porcel <armin76@gentoo.org> net-server-0.97.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+  01 Dec 2007; Markus Rothe <corsair@gentoo.org> net-server-0.97.ebuild:
+  Stable on ppc64
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org> net-server-0.97.ebuild:
+  amd64 stable
+
+*net-server-0.97 (19 Oct 2007)
+
+  19 Oct 2007; Christian Hartmann <ian@gentoo.org> +net-server-0.97.ebuild:
+  Version bump
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  net-server-0.96.ebuild:
+  Stable on ppc.
+
+  11 Jul 2007; Raúl Porcel <armin76@gentoo.org> net-server-0.96.ebuild:
+  alpha/ia64/x86 stable
+
+  07 Jul 2007; Tom Gall <tgall@gentoo.org> net-server-0.96.ebuild:
+  stable on ppc64
+
+  30 Jun 2007; Joshua Kinard <kumba@gentoo.org> net-server-0.96.ebuild:
+  Marked unstable on mips, per #183591.
+
+  21 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  net-server-0.96.ebuild:
+  Marking sparc stable
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  net-server-0.95.ebuild:
+  ppc stable
+
+  14 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  net-server-0.95.ebuild:
+  sparc stable
+
+  09 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  net-server-0.95.ebuild:
+  Marking stable amd64
+
+*net-server-0.96 (29 Mar 2007)
+
+  29 Mar 2007; Christian Hartmann <ian@gentoo.org> +net-server-0.96.ebuild:
+  Version bump
+
+*net-server-0.95 (05 Feb 2007)
+
+  05 Feb 2007; Michael Cummings <mcummings@gentoo.org>
+  +net-server-0.95.ebuild:
+  Version bump
+
+  20 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  +net-server-0.88.ebuild:
+  Reclaiming the dead
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -net-server-0.88.ebuild, net-server-0.94.ebuild:
+  Version bump, thanks seemant
+
+  01 Oct 2006; Christian Hartmann <ian@gentoo.org> -net-server-0.85.ebuild,
+  -net-server-0.87.ebuild, -net-server-0.87-r1.ebuild,
+  -net-server-0.90.ebuild, -net-server-0.93.ebuild:
+  Cleanup; removed vulnerable versions wrt GLSA 200608-18
+
+  03 Sep 2006; Bryan Østergaard <kloeri@gentoo.org> net-server-0.94.ebuild:
+  Stable on ia64.
+
+  09 Aug 2006; Christian Hartmann <ian@gentoo.org> Manifest:
+  fix digest; bug #143360
+
+  08 Aug 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  net-server-0.94.ebuild:
+  Stable on hppa. See bug #142386.
+
+  07 Aug 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  net-server-0.94.ebuild:
+  ppc stable, bug #142386
+
+  07 Aug 2006; Markus Rothe <corsair@gentoo.org> net-server-0.94.ebuild:
+  Stable on ppc64; bug #142386
+
+  06 Aug 2006; Andrej Kacian <ticho@gentoo.org> net-server-0.94.ebuild:
+  Stable on x86, bug #142386.
+
+  06 Aug 2006; Thomas Cort <tcort@gentoo.org> net-server-0.94.ebuild:
+  Stable on alpha wrt security Bug #142386.
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  net-server-0.94.ebuild:
+  Marking stable amd64, sparc, bug 142386
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  net-server-0.85.ebuild, net-server-0.87.ebuild, net-server-0.87-r1.ebuild,
+  net-server-0.88.ebuild, net-server-0.90.ebuild, net-server-0.93.ebuild,
+  net-server-0.94.ebuild:
+  Adding perl dep; fixed DEPEND
+
+*net-server-0.94 (13 Jul 2006)
+
+  13 Jul 2006; Christian Hartmann <ian@gentoo.org> +net-server-0.94.ebuild:
+  Version bump
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> net-server-0.93.ebuild:
+  Mark 0.93 stable on ia64
+
+  05 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  net-server-0.87-r1.ebuild, net-server-0.88.ebuild, net-server-0.90.ebuild,
+  net-server-0.93.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+  29 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  net-server-0.93.ebuild:
+  Stable on hppa
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  net-server-0.90.ebuild, net-server-0.93.ebuild:
+  Marking sparc stable
+
+  25 May 2006; Guy Martin <gmsoft@gentoo.org> net-server-0.88.ebuild,
+  net-server-0.93.ebuild:
+  Stable on hppa.
+
+  14 May 2006; Diego Pettenò <flameeyes@gentoo.org> net-server-0.93.ebuild:
+  Add ~x86-fbsd keyword.
+
+*net-server-0.93 (04 Apr 2006)
+
+  04 Apr 2006; <mcumming@gentoo.org> +net-server-0.93.ebuild:
+  Bug 128710, bumped in support of amavisd-new :)
+
+  17 Mar 2006; Chris White <chriswhite@gentoo.org> net-server-0.88.ebuild:
+  Marked amd64 stable for 0.88.
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> net-server-0.88.ebuild,
+  net-server-0.90.ebuild:
+  Mark 0.88 stable on alpha, mark 0.90 ~alpha
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> net-server-0.88.ebuild,
+  net-server-0.90.ebuild:
+  Mark 0.88 stable on ia64, mark 0.90 ~ia64
+
+  21 Jan 2006; Markus Rothe <corsair@gentoo.org> net-server-0.88.ebuild:
+  Stable on ppc64
+
+  15 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  net-server-0.88.ebuild:
+  Stable on ppc.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  net-server-0.88.ebuild:
+  Marking sparc x86 stable
+
+*net-server-0.90 (08 Jan 2006)
+
+  08 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  +net-server-0.90.ebuild:
+  Version bump, bug 115971
+
+*net-server-0.88 (19 Nov 2005)
+
+  19 Nov 2005; <mcumming@gentoo.org> +net-server-0.88.ebuild:
+  Version bump
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  net-server-0.87-r1.ebuild:
+  Stable on ppc.
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> net-server-0.87.ebuild:
+  add ~ia64
+
+  19 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  net-server-0.87-r1.ebuild:
+  Added to ~ppc.
+
+  07 Jul 2005; Markus Rothe <corsair@gentoo.org> net-server-0.87-r1.ebuild:
+  Stable on ppc64
+
+  18 Jun 2005; Markus Rothe <corsair@gentoo.org> net-server-0.87-r1.ebuild:
+  added ~ppc64
+
+  15 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  net-server-0.87-r1.ebuild:
+  Stable on sparc
+
+  13 Jun 2005; Andrej Kacian <ticho@gentoo.org> net-server-0.87-r1.ebuild:
+  Stable on x86 and amd64, as dependency for mail-filter/postgrey.
+
+  07 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  net-server-0.85.ebuild:
+  Stable on sparc
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  net-server-0.85.ebuild:
+  Stable on ppc.
+
+*net-server-0.87-r1 (30 Apr 2005)
+
+  30 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  net-server-0.85.ebuild, +net-server-0.87-r1.ebuild:
+  Added dep for IO-Multiplex, bug 71536
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  net-server-0.85.ebuild, net-server-0.87.ebuild:
+  Cleaning for mirror
+
+  13 Apr 2005; Simon Stelling <blubb@gentoo.org> net-server-0.85.ebuild:
+  stable on amd64
+
+  06 Feb 2005; Markus Rothe <corsair@gentoo.org> net-server-0.87.ebuild:
+  Stable on ppc64
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  29 Dec 2004; Markus Rothe <corsair@gentoo.org> net-server-0.87.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*net-server-0.87 (06 Jun 2004)
+
+  06 Jun 2004; Michael Cummings <mcummings@gentoo.org> net-server-0.87.ebuild:
+  new version on cpan
+
+  30 May 2004; Bryan Østergaard <kloeri@gentoo.org> net-server-0.85.ebuild:
+  Stable on alpha.
+
+*net-server-0.85 (27 Jun 2003)
+
+  27 Jun 2003; Michael Cummings <mcummings@gentoo.org> net-server-0.85.ebuild:
+  ebuild submitted by Max Kalika <alkern23@yahoo.com> in bug 21432

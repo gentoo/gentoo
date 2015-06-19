@@ -1,0 +1,223 @@
+# ChangeLog for dev-db/opendbx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/opendbx/ChangeLog,v 1.48 2015/06/09 14:47:22 mrueg Exp $
+
+  09 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -opendbx-1.5.0.ebuild:
+  Remove old.
+
+  23 May 2015; Pacho Ramos <pacho@gentoo.org> -opendbx-1.4.5.ebuild,
+  -opendbx-1.4.6.ebuild:
+  Drop old
+
+  23 May 2015; Pacho Ramos <pacho@gentoo.org> opendbx-1.4.5-r1.ebuild:
+  x86 stable, bug #530176
+
+  21 May 2015; Agostino Sarubbo <ago@gentoo.org> opendbx-1.4.5-r1.ebuild:
+  Stable for amd64, wrt bug #530176
+
+*opendbx-1.4.5-r1 (07 May 2015)
+*opendbx-1.5.0-r1 (07 May 2015)
+*opendbx-1.4.6-r1 (07 May 2015)
+
+  07 May 2015; Pacho Ramos <pacho@gentoo.org> +opendbx-1.4.5-r1.ebuild,
+  +opendbx-1.4.6-r1.ebuild, +opendbx-1.5.0-r1.ebuild:
+  Drop sqlite2 support and rename sqlite3 USE to sqlite (#530176)
+
+  15 Mar 2015; Ulrich Müller <ulm@gentoo.org> opendbx-1.4.5.ebuild,
+  opendbx-1.4.6.ebuild, opendbx-1.5.0.ebuild, metadata.xml:
+  Add conditional bindist restriction and remove bindist USE flag, bug 541488.
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org> opendbx-1.4.5.ebuild,
+  opendbx-1.4.6.ebuild, opendbx-1.5.0.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  15 Dec 2014; Alice Ferrazzi <alicef@gentoo.org> metadata.xml:
+  Update email and removed proxy-maintainers herd
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org> opendbx-1.4.5.ebuild,
+  opendbx-1.4.6.ebuild, opendbx-1.5.0.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+  15 Mar 2014; Manuel Rüger <mrueg@gentoo.org> metadata.xml:
+  Add Alice Ferrazzi as maintainer. Proxied by me.
+
+  11 Mar 2014; Pacho Ramos <pacho@gentoo.org> -opendbx-1.4.5-r1.ebuild,
+  metadata.xml:
+  Cleanup due #53266
+
+*opendbx-1.4.5-r1 (10 Mar 2014)
+
+  10 Mar 2014; Sven Wegener <swegener@gentoo.org> +opendbx-1.4.5-r1.ebuild,
+  opendbx-1.4.6.ebuild, opendbx-1.5.0.ebuild, metadata.xml:
+  Add local description for bindist USE flag, bug #448918. Bump EAPI for
+  REQUIRED_USE support.
+
+  28 Oct 2013; Fabian Groffen <grobian@gentoo.org> opendbx-1.4.6.ebuild,
+  opendbx-1.5.0.ebuild:
+  Marked ~x86-solaris
+
+*opendbx-1.5.0 (25 Nov 2012)
+*opendbx-1.4.6 (25 Nov 2012)
+
+  25 Nov 2012; Sven Wegener <swegener@gentoo.org> +opendbx-1.4.6.ebuild,
+  +opendbx-1.5.0.ebuild:
+  Version bumps.
+
+  25 Nov 2012; Sven Wegener <swegener@gentoo.org> opendbx-1.4.5.ebuild:
+  Remove plugin .a and .la files.
+
+  25 Nov 2012; Sven Wegener <swegener@gentoo.org> -opendbx-1.2.4.ebuild,
+  -opendbx-1.2.6.ebuild, -opendbx-1.4.0.ebuild, -opendbx-1.4.4.ebuild:
+  Cleanup.
+
+  29 Jul 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  opendbx-1.4.5.ebuild:
+  Use -j1 for build/install (bug #322221).
+
+  18 Jul 2010; Markos Chandras <hwoarang@gentoo.org> opendbx-1.4.5.ebuild:
+  Stable on amd64 wrt bug #317981
+
+  18 Jul 2010; Christian Faulhammer <fauli@gentoo.org> opendbx-1.4.5.ebuild:
+  stable x86, bug 317981
+
+  17 Jun 2010; Patrick Lauer <patrick@gentoo.org> opendbx-1.2.4.ebuild,
+  opendbx-1.2.6.ebuild, opendbx-1.4.0.ebuild, opendbx-1.4.4.ebuild,
+  opendbx-1.4.5.ebuild:
+  Migrating away from deprecated postgres virtuals
+
+*opendbx-1.4.5 (09 May 2010)
+
+  09 May 2010; Sven Wegener <swegener@gentoo.org> +opendbx-1.4.5.ebuild:
+  Version bump.
+
+  14 Nov 2009; Sven Wegener <swegener@gentoo.org> -opendbx-1.3.11.ebuild:
+  Remove development version, there is a later stable version in the tree.
+
+  14 Nov 2009; Sven Wegener <swegener@gentoo.org> opendbx-1.4.0.ebuild,
+  +opendbx-1.4.4.ebuild:
+  Version bump. Correctly split src_configure() and src_compile().
+
+*opendbx-1.4.4 (14 Nov 2009)
+
+  14 Nov 2009; Sven Wegener <swegener@gentoo.org> +opendbx-1.4.4.ebuild:
+  Version bump.
+
+*opendbx-1.4.0 (23 Mar 2009)
+
+  23 Mar 2009; Sven Wegener <swegener@gentoo.org> +opendbx-1.4.0.ebuild:
+  Version bump.
+
+  22 Feb 2009; Sven Wegener <swegener@gentoo.org>
+  -files/opendbx-1.3.10-gcc-4.3.patch, -opendbx-1.3.8.ebuild,
+  -opendbx-1.3.10.ebuild:
+  Cleanup.
+
+*opendbx-1.3.11 (16 Nov 2008)
+
+  16 Nov 2008; Sven Wegener <swegener@gentoo.org> +opendbx-1.3.11.ebuild:
+  Version bump.
+
+  16 Jul 2008; Luca Longinotti <chtekk@gentoo.org> opendbx-1.2.4.ebuild,
+  opendbx-1.2.6.ebuild, opendbx-1.3.8.ebuild, opendbx-1.3.10.ebuild:
+  Change deps to postgresql-base, we only need to link the libs here.
+
+*opendbx-1.3.10 (18 Jun 2008)
+
+  18 Jun 2008; Sven Wegener <swegener@gentoo.org>
+  +files/opendbx-1.3.10-gcc-4.3.patch, +opendbx-1.3.10.ebuild:
+  Version bump, development version.
+
+  21 May 2008; Tiziano Müller <dev-zero@gentoo.org> opendbx-1.2.4.ebuild,
+  opendbx-1.2.6.ebuild, opendbx-1.3.8.ebuild:
+  Changed dependency for postgresql from dev-db/postgresql to
+  virtual/postgresql-server
+
+  07 May 2008; Sven Wegener <swegener@gentoo.org> -opendbx-1.2.3-r1.ebuild,
+  -opendbx-1.3.6.ebuild:
+  Cleanup.
+
+*opendbx-1.3.8 (06 May 2008)
+*opendbx-1.2.6 (06 May 2008)
+
+  06 May 2008; Sven Wegener <swegener@gentoo.org> +opendbx-1.2.6.ebuild,
+  +opendbx-1.3.8.ebuild:
+  Version bump, both stable and development versions.
+
+  02 May 2008; Markus Meier <maekke@gentoo.org> opendbx-1.2.4.ebuild:
+  amd64/x86 stable, bug #219748
+
+*opendbx-1.3.6 (02 Mar 2008)
+
+  02 Mar 2008; Sven Wegener <swegener@gentoo.org> -opendbx-1.3.4.ebuild,
+  -opendbx-1.3.5.ebuild, +opendbx-1.3.6.ebuild:
+  Version bump.
+
+*opendbx-1.3.5 (17 Feb 2008)
+
+  17 Feb 2008; Sven Wegener <swegener@gentoo.org> +opendbx-1.3.5.ebuild:
+  Version bump.
+
+*opendbx-1.2.4 (20 Jan 2008)
+
+  20 Jan 2008; Sven Wegener <swegener@gentoo.org> +opendbx-1.2.4.ebuild:
+  Version bump.
+
+  08 Dec 2007; Sven Wegener <swegener@gentoo.org> opendbx-1.2.3-r1.ebuild,
+  opendbx-1.3.4.ebuild:
+  Do not die with no backend selected.
+
+  05 Dec 2007; Sven Wegener <swegener@gentoo.org> opendbx-1.2.3-r1.ebuild,
+  opendbx-1.3.4.ebuild:
+  Disable firebird support when bindist USE flag is enabled, bug #200284.
+
+  04 Oct 2007; Sven Wegener <swegener@gentoo.org> -opendbx-1.2.2.ebuild,
+  -opendbx-1.2.3.ebuild, -opendbx-1.3.2.ebuild, -opendbx-1.3.3.ebuild:
+  Cleanup.
+
+*opendbx-1.3.4 (23 Aug 2007)
+
+  23 Aug 2007; Sven Wegener <swegener@gentoo.org> +opendbx-1.3.4.ebuild:
+  Version bump.
+
+*opendbx-1.2.3-r1 (22 Jul 2007)
+
+  22 Jul 2007; Sven Wegener <swegener@gentoo.org> +opendbx-1.2.3-r1.ebuild:
+  Revision bump. Added oracle and firebird support.
+
+*opendbx-1.3.3 (22 Jul 2007)
+
+  22 Jul 2007; Sven Wegener <swegener@gentoo.org> +opendbx-1.3.3.ebuild:
+  Version bump, development release. Added oracle and firebird support.
+
+*opendbx-1.3.2 (07 Jul 2007)
+
+  07 Jul 2007; Sven Wegener <swegener@gentoo.org> +opendbx-1.3.2.ebuild:
+  Version bump, development release.
+
+*opendbx-1.2.3 (07 Jul 2007)
+
+  07 Jul 2007; Sven Wegener <swegener@gentoo.org> +opendbx-1.2.3.ebuild:
+  Version bump.
+
+  07 May 2007; Sven Wegener <swegener@gentoo.org> -opendbx-1.0.3.ebuild,
+  -opendbx-1.2.1.ebuild:
+  Cleanup.
+
+*opendbx-1.2.2 (05 Mar 2007)
+
+  05 Mar 2007; Sven Wegener <swegener@gentoo.org> +opendbx-1.2.2.ebuild:
+  Version bump.
+
+*opendbx-1.2.1 (11 Feb 2007)
+
+  11 Feb 2007; Sven Wegener <swegener@gentoo.org> +opendbx-1.2.1.ebuild:
+  Version bump.
+
+  23 Nov 2006; Francesco Riosa <vivo@gentoo.org> opendbx-1.0.3.ebuild:
+  dev-db/mysql => virtual/mysql
+
+*opendbx-1.0.3 (06 Nov 2006)
+
+  06 Nov 2006; Sven Wegener <swegener@gentoo.org> +metadata.xml,
+  +opendbx-1.0.3.ebuild:
+  Initial commit, ebuild written by me.

@@ -1,0 +1,16 @@
+# ChangeLog for sci-astronomy/sofa_c
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/sofa_c/ChangeLog,v 1.3 2013/07/16 22:46:43 bicatali Exp $
+
+  16 Jul 2013; Sébastien Fabbro <bicatali@gentoo.org> sofa_c-20120301a.ebuild:
+  Forcing non-parallel install hopefully fixing bug #476870
+
+  23 May 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  files/sofa_c-makefile.patch:
+  Fixed tests, thanks Roman Zilka, bug #470950
+
+*sofa_c-20120301a (23 Apr 2013)
+
+  23 Apr 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/sofa_c-makefile.patch, +metadata.xml, +sofa_c-20120301a.ebuild:
+  Initial import

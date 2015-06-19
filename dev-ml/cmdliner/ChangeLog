@@ -1,0 +1,28 @@
+# ChangeLog for dev-ml/cmdliner
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/cmdliner/ChangeLog,v 1.5 2015/04/02 14:39:23 aballier Exp $
+
+  02 Apr 2015; Alexis Ballier <aballier@gentoo.org> cmdliner-0.9.7.ebuild:
+  bump ocaml dep, bug #527318 comment 3
+
+  02 Apr 2015; Alexis Ballier <aballier@gentoo.org> -cmdliner-0.9.5.ebuild,
+  -cmdliner-0.9.6.ebuild:
+  remove old
+
+*cmdliner-0.9.7 (09 Feb 2015)
+
+  09 Feb 2015; Alexis Ballier <aballier@gentoo.org> +cmdliner-0.9.7.ebuild:
+  version bump
+
+*cmdliner-0.9.6 (28 Nov 2014)
+
+  28 Nov 2014; Alexis Ballier <aballier@gentoo.org> +cmdliner-0.9.6.ebuild:
+  version bump
+
+*cmdliner-0.9.5 (29 Oct 2014)
+
+  29 Oct 2014; Alexis Ballier <aballier@gentoo.org> +cmdliner-0.9.5.ebuild,
+  +metadata.xml:
+  initial import, ebuild by Guillaume Horel in bug #520060 with a few
+  modifications by me
+

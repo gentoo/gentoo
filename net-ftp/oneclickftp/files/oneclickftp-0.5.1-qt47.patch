@@ -1,0 +1,13 @@
+Index: oneclickftp-0.5.1/src/ftpwindowimpl.h
+===================================================================
+--- oneclickftp-0.5.1.orig/src/ftpwindowimpl.h
++++ oneclickftp-0.5.1/src/ftpwindowimpl.h
+@@ -38,7 +38,7 @@ class FTPWindowImpl : public QWidget, pu
+ {
+ Q_OBJECT
+ public:
+-	FTPWindowImpl(QString Dir, QString Profile, QString ProxyIP = 0, QString ProxyPort = 0);
++	FTPWindowImpl(QString Dir, QString Profile, QString ProxyIP = QString::number(0), QString ProxyPort = QString::number(0));
+ 	bool Upload(OProfile *ProfiletoUpload, std::vector<OFileConnection*> SelectedFiles);
+ 	bool Download(OProfile *ProfiletoDownload, std::vector<OFileConnection*> SelectedFiles);
+ 

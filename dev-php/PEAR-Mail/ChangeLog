@@ -1,0 +1,206 @@
+# ChangeLog for dev-php/PEAR-Mail
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Mail/ChangeLog,v 1.51 2014/11/06 17:51:06 grknight Exp $
+
+  06 Nov 2014; Brian Evans <grknight@gentoo.org> -PEAR-Mail-1.1.14.ebuild,
+  -PEAR-Mail-1.1.9.ebuild:
+  Drop old
+
+  26 Jan 2014; Ole Markus With <olemarkus@gentoo.org> PEAR-Mail-1.1.14.ebuild,
+  PEAR-Mail-1.1.9.ebuild, PEAR-Mail-1.2.0.ebuild:
+  Removing stable keyword for sh/s390
+
+  10 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  PEAR-Mail-1.2.0.ebuild:
+  ppc stable wrt #294256
+
+  06 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> PEAR-Mail-1.2.0.ebuild:
+  stable for ppc64 wrt #294256
+
+  27 Dec 2010; <olemarkus@gentoo.org> PEAR-Mail-1.2.0.ebuild:
+  Fixed RDEPEND line
+
+  25 Dec 2010; Jeroen Roovers <jer@gentoo.org> PEAR-Mail-1.2.0.ebuild:
+  Stable for HPPA (bug #294256).
+
+  25 Dec 2010; Raúl Porcel <armin76@gentoo.org> PEAR-Mail-1.2.0.ebuild:
+  arm/ia64/s390/sh/sparc stable wrt #294256
+
+  20 Dec 2010; Tobias Klausmann <klausman@gentoo.org> PEAR-Mail-1.2.0.ebuild:
+  Stable on alpha, bug #294256
+
+  20 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  PEAR-Mail-1.2.0.ebuild:
+  x86 stable wrt security bug #294256
+
+  20 Dec 2010; Markos Chandras <hwoarang@gentoo.org> PEAR-Mail-1.2.0.ebuild:
+  Stable on amd64 wrt bug #294256
+
+*PEAR-Mail-1.2.0 (19 Dec 2010)
+
+  19 Dec 2010; Matti Bickel <mabi@gentoo.org> -PEAR-Mail-1.2.0_beta2.ebuild,
+  -PEAR-Mail-1.2.0_beta5.ebuild, +PEAR-Mail-1.2.0.ebuild:
+  version bump (bug #294256)
+
+*PEAR-Mail-1.2.0_beta5 (15 Feb 2010)
+
+  15 Feb 2010; Steve Dibb <beandog@gentoo.org>
+  +PEAR-Mail-1.2.0_beta5.ebuild:
+  Version bump
+
+*PEAR-Mail-1.2.0_beta2 (22 Aug 2009)
+
+  22 Aug 2009; Steve Dibb <beandog@gentoo.org>
+  +PEAR-Mail-1.2.0_beta2.ebuild:
+  Version bump
+
+  06 Dec 2007; Markus Ullmann <jokey@gentoo.org> PEAR-Mail-1.1.9.ebuild,
+  PEAR-Mail-1.1.14.ebuild:
+  LICENSE fix from project overlay
+
+  02 Dec 2007; Jakub Moc <jakub@gentoo.org>
+  PEAR-Mail-1.1.9.ebuild, PEAR-Mail-1.1.14.ebuild:
+  Fix LICENSE
+
+  22 Oct 2007; Raúl Porcel <armin76@gentoo.org> PEAR-Mail-1.1.14.ebuild:
+  ia64 stable wrt #192247
+
+  05 Oct 2007; Raúl Porcel <armin76@gentoo.org> PEAR-Mail-1.1.14.ebuild:
+  alpha/sparc stable wrt #192247
+
+  28 Sep 2007; Christoph Mende <angelos@gentoo.org> PEAR-Mail-1.1.14.ebuild:
+  Stable on amd64 wrt bug #192247
+
+  26 Sep 2007; Brent Baude <ranger@gentoo.org> PEAR-Mail-1.1.14.ebuild:
+  Marking PEAR-Mail-1.1.14 ppc64 stable for bug 192247
+
+  25 Sep 2007; Lars Weiler <pylon@gentoo.org> PEAR-Mail-1.1.14.ebuild:
+  stable ppc, bug #192247
+
+  21 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  PEAR-Mail-1.1.14.ebuild:
+  x86 stable, bug 192247
+
+  16 Sep 2007; Jeroen Roovers <jer@gentoo.org> PEAR-Mail-1.1.14.ebuild:
+  Stable for HPPA (bug #192247).
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org> -PEAR-Mail-1.1.10.ebuild:
+  Cleanup
+
+*PEAR-Mail-1.1.14 (15 Oct 2006)
+
+  15 Oct 2006; Sebastian Bergmann <sebastian@gentoo.org>
+  +PEAR-Mail-1.1.14.ebuild:
+  Version bump for bug #151428.
+
+*PEAR-Mail-1.1.10 (02 Jul 2006)
+
+  02 Jul 2006; Sebastian Bergmann <sebastian@gentoo.org>
+  +PEAR-Mail-1.1.10.ebuild:
+  Version bump for bug #138816.
+
+  21 May 2006; Luca Longinotti <chtekk@gentoo.org> -PEAR-Mail-1.1.4.ebuild,
+  -PEAR-Mail-1.1.6.ebuild:
+  Remove old-style PHP packages.
+
+  17 Feb 2006; Aron Griffis <agriffis@gentoo.org> PEAR-Mail-1.1.9.ebuild:
+  Mark 1.1.9 stable on alpha. #119722
+
+  28 Jan 2006; Markus Rothe <corsair@gentoo.org> PEAR-Mail-1.1.9.ebuild:
+  Stable on ppc64
+
+  27 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  PEAR-Mail-1.1.9.ebuild:
+  Stable on ppc.
+
+  27 Jan 2006; Jeroen Roovers <jer@gentoo.org> PEAR-Mail-1.1.9.ebuild:
+  Stable on hppa (bug #119722).
+
+  23 Jan 2006; Bryan Østergaard <kloeri@gentoo.org PEAR-Mail-1.1.9.ebuild:
+  Add ~ia64 keyword, bug 119722.
+
+  22 Jan 2006; Simon Stelling <blubb@gentoo.org> PEAR-Mail-1.1.9.ebuild:
+  stable on amd64 wrt bug 119722
+
+  22 Jan 2006; Jason Wever <weeve@gentoo.org> PEAR-Mail-1.1.9.ebuild:
+  Stable on SPARC wrt bug #119722.
+
+  22 Jan 2006; Mark Loeser <halcy0n@gentoo.org> PEAR-Mail-1.1.9.ebuild:
+  Stable on x86; bug #119722
+
+  22 Nov 2005; Markus Rothe <corsair@gentoo.org> PEAR-Mail-1.1.9.ebuild:
+  Added ~ppc64 keyword; bug #105385
+
+  21 Nov 2005; Joseph Jezak <josejx@gentoo.org> PEAR-Mail-1.1.9.ebuild:
+  Marked ~ppc for bug #105385.
+
+  24 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Mail-1.1.9.ebuild:
+  Add ~amd64.
+
+  08 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Mail-1.1.9.ebuild:
+  Fix RDEPEND.
+
+*PEAR-Mail-1.1.9 (29 Sep 2005)
+
+  29 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-Mail-1.1.6-r1.ebuild, +PEAR-Mail-1.1.9.ebuild:
+  Version bump.
+
+  11 Sep 2005; Jason Wever <weeve@gentoo.org> PEAR-Mail-1.1.6-r1.ebuild:
+  Added ~sparc keyword.
+
+*PEAR-Mail-1.1.6-r1 (08 Sep 2005)
+
+  08 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  +PEAR-Mail-1.1.6-r1.ebuild:
+  Use new PEAR eclass.
+
+*PEAR-Mail-1.1.6 (12 Jul 2005)
+
+  12 Jul 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-Mail-1.1.5.ebuild, +PEAR-Mail-1.1.6.ebuild:
+  Version bump.
+
+*PEAR-Mail-1.1.5 (27 Jun 2005)
+
+  27 Jun 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  +PEAR-Mail-1.1.5.ebuild:
+  Version bump.
+
+  18 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  PEAR-Mail-1.1.4.ebuild:
+  Stable on ppc.
+
+  06 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  PEAR-Mail-1.1.4.ebuild:
+  Stable on sparc
+
+  06 Apr 2005; Markus Rothe <corsair@gentoo.org> PEAR-Mail-1.1.4.ebuild:
+  Stable on ppc64
+
+  27 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> PEAR-Mail-1.1.4.ebuild:
+  Stable on alpha.
+
+  12 Mar 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Mail-1.1.4.ebuild:
+  Stable on x86 and amd64, see bug 84525.
+
+  09 Mar 2005; Markus Rothe <corsair@gentoo.org> PEAR-Mail-1.1.4.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #84525
+
+  09 Mar 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Mail-1.1.4.ebuild:
+  This package was previously bundled with www-apps/horde-pear. Mark unstable
+  for ARCHes that www-apps/horde-pear-r2 is marked stable for.
+
+  19 Feb 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Mail-1.1.4.ebuild:
+  Mask ~amd64.
+
+*PEAR-Mail-1.1.4 (16 Feb 2005)
+
+  16 Feb 2005; Sebastian Bergmann <sebastian@gentoo.org> +metadata.xml,
+  +PEAR-Mail-1.1.4.ebuild:
+  Initial ebuild for the Mail PEAR package.

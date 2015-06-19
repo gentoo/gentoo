@@ -1,0 +1,21 @@
+# ChangeLog for games-fps/quake3-reaction
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-reaction/ChangeLog,v 1.4 2015/03/27 03:18:18 mr_bones_ Exp $
+
+  27 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  quake3-reaction-3.2.ebuild:
+  update SRC_URI
+
+  25 Apr 2014; Ulrich Müller <ulm@gentoo.org> quake3-reaction-3.2.ebuild:
+  No distribution terms in distfile, therefore LICENSE changed to
+  all-rights-reserved.
+
+  07 Oct 2009; Tristan Heaven <nyhm@gentoo.org> quake3-reaction-3.2.ebuild:
+  EAPI=2; fix MOD_DIR; install icon
+
+*quake3-reaction-3.2 (26 Oct 2006)
+
+  26 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +quake3-reaction-3.2.ebuild:
+  Added new revision for testing which uses the brand-spankin-new
+  games-mods.eclass to reduce ebuild code.

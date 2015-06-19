@@ -1,0 +1,80 @@
+# ChangeLog for net-im/jabber-base
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/jabber-base/ChangeLog,v 1.20 2014/10/26 20:30:35 mrueg Exp $
+
+  26 Oct 2014; Manuel Rüger <mrueg@gentoo.org> -jabber-base-0.00.ebuild:
+  Cleanup old.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> jabber-base-0.00.ebuild,
+  jabber-base-0.01.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> jabber-base-0.00.ebuild,
+  jabber-base-0.01.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+  01 Sep 2012; Anthony G. Basile <blueness@gentoo.org> jabber-base-0.01.ebuild:
+  Stable ppc, bug #427714
+
+  13 Dec 2011; Naohiro Aota <naota@gentoo.org> jabber-base-0.01.ebuild:
+  Add ~x86-fbsd
+
+  05 Nov 2009; Raúl Porcel <armin76@gentoo.org> jabber-base-0.00.ebuild,
+  jabber-base-0.01.ebuild:
+  Add ~arm/~ia64
+
+  11 Jun 2006; Fernando J. Pereda <ferdy@gentoo.org>
+  jabber-base-0.01.ebuild:
+  Stable on alpha, wrt bug #135764
+
+  10 Jun 2006; Jeroen Roovers <jer@gentoo.org> jabber-base-0.01.ebuild:
+  Stable on hppa (bug #135764).
+
+  06 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  jabber-base-0.01.ebuild:
+  Stable on sparc wrt #135764
+
+  06 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  jabber-base-0.01.ebuild:
+  Stable on amd64 and x86 wrt bug #135764.
+
+  06 Jun 2006; Tony Vroon <chainsaw@gentoo.org> jabber-base-0.01.ebuild:
+  Keyword ppc stable wrt bug #135764. Keyword approval: hansmi.
+
+*jabber-base-0.01 (06 Jun 2006)
+
+  06 Jun 2006; Tony Vroon <chainsaw@gentoo.org> metadata.xml,
+  +jabber-base-0.01.ebuild:
+  We can not use fowners & fperms convenience wrappers in pkg_postinst. These
+  will not work; failure is silent.
+
+  08 Apr 2006; Fernando J. Pereda <ferdy@gentoo.org>
+  jabber-base-0.00.ebuild:
+  Really stable on alpha now.
+
+  08 Apr 2006; Jose Luis Rivero <yoswink@gentoo.org> ChangeLog:
+  Stable on alpha wrt #125220
+
+  27 Mar 2006; Joseph Jezak <josejx@gentoo.org> jabber-base-0.00.ebuild:
+  Marked ppc stable for bug #125220.
+
+  22 Mar 2006; Jeroen Roovers <jer@gentoo.org> jabber-base-0.00.ebuild:
+  Stable on hppa (bug #125220).
+
+  09 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  jabber-base-0.00.ebuild:
+  Stable on sparc wrt #125220
+
+  07 Mar 2006; Jeroen Roovers <jer@gentoo.org> jabber-base-0.00.ebuild:
+  Marked ~hppa (bug #125220).
+
+  28 Feb 2006; Gustavo Felisberto <humpback@gentoo.org>;
+  jabber-base-0.00.ebuild:
+  Mardked stable on x86 and amd64.
+
+*jabber-base-0.00 (28 Aug 2005)
+
+  28 Aug 2005; Gustavo Felisberto <humpback@gentoo.org>;
+  +jabber-base-0.00.ebuild:
+  Initial import of base package for jabber related ebuilds (daemons and
+  transports). This will set the user's and directorys used.

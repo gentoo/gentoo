@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=>=dev-libs/glib-2.18:2 dev-qt/linguist-tools:5 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 >=lxde-base/menu-cache-0.4.1 >=x11-libs/libfm-1.2.0 x11-libs/libxcb:= >=dev-util/intltool-0.40 sys-devel/gettext virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Fast lightweight tabbed filemanager (Qt port)
+EAPI=5
+HOMEPAGE=http://pcmanfm.sourceforge.net/
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=GPL-2 LGPL-2.1+
+RDEPEND=>=dev-libs/glib-2.18:2 dev-qt/linguist-tools:5 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 >=lxde-base/menu-cache-0.4.1 >=x11-libs/libfm-1.2.0 x11-libs/libxcb:= x11-misc/xdg-utils virtual/eject virtual/freedesktop-icon-theme
+SLOT=0
+SRC_URI=http://downloads.lxqt.org/lxqt/0.9.0/pcmanfm-qt-0.9.0.tar.xz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c78683482d38f34c23d7b3963ca6a48b

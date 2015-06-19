@@ -1,0 +1,65 @@
+diff -ru audicle-1.0.0.6~/src/audicle_font.cpp audicle-1.0.0.6/src/audicle_font.cpp
+--- audicle-1.0.0.6~/src/audicle_font.cpp	2008-03-30 00:29:37.000000000 +0100
++++ audicle-1.0.0.6/src/audicle_font.cpp	2008-03-30 01:04:46.000000000 +0100
+@@ -201,13 +201,13 @@
+ #ifdef __PLATFORM_WIN32__
+ char fontpath[] = "C:\\WINDOWS\\FONTS\\";
+ #else
+-char fontpath[] = "/define/this/directory/";
++char fontpath[] = "/usr/share/fonts/corefonts/";
+ 
+ #endif
+ #endif
+ 
+-char kernedfontfile[] = "FTGL:verdana.TTF";
+-char monospacedfontfile[] = "FTGL:LUCON.TTF";
++char kernedfontfile[] = "FTGL:verdana.ttf";
++char monospacedfontfile[] = "FTGL:couri.ttf";
+ 
+ 
+ class AudicleFTGLFont : public AudicleFont { 
+@@ -301,13 +301,11 @@
+ #endif
+ 
+     // we should do a directory scan here...
+-    AudicleFont::available_fonts().push_back( "FTGL:ARIAL.TTF" );
+-    AudicleFont::available_fonts().push_back( "FTGL:ARIBLK.TTF" );
+-    AudicleFont::available_fonts().push_back( "FTGL:BYTE.TTF" );
+-    AudicleFont::available_fonts().push_back( "FTGL:COUR.TTF" );
+-    AudicleFont::available_fonts().push_back( "FTGL:LUCON.TTF" );
+-    AudicleFont::available_fonts().push_back( "FTGL:TIMES.TTF" );
+-    AudicleFont::available_fonts().push_back( "FTGL:verdana.TTF" );
++    AudicleFont::available_fonts().push_back( "FTGL:arial.ttf" );
++    AudicleFont::available_fonts().push_back( "FTGL:ariblk.ttf" );
++    AudicleFont::available_fonts().push_back( "FTGL:cour.ttf" );
++    AudicleFont::available_fonts().push_back( "FTGL:times.ttf" );
++    AudicleFont::available_fonts().push_back( "FTGL:verdana.ttf" );
+ 
+ }; 
+ 
+diff -ru audicle-1.0.0.6~/src/audicle_ui_base.cpp audicle-1.0.0.6/src/audicle_ui_base.cpp
+--- audicle-1.0.0.6~/src/audicle_ui_base.cpp	2008-03-30 00:29:37.000000000 +0100
++++ audicle-1.0.0.6/src/audicle_ui_base.cpp	2008-03-30 00:30:32.000000000 +0100
+@@ -47,8 +47,8 @@
+ void init_UI_Fonts() { 
+     if ( _ui_fonts_inited ) return;
+ #ifdef _USE_FTGL_FONTS_
+-    labelFont = AudicleFont::loadFont ( "FTGL:verdana.TTF" );
+-    labelFontMono = AudicleFont::loadFont ( "FTGL:LUCON.TTF" );
++    labelFont = AudicleFont::loadFont ( "FTGL:verdana.ttf" );
++    labelFontMono = AudicleFont::loadFont ( "FTGL:couri.ttf" );
+ #else
+     labelFont = AudicleFont::loadFont ( "OpenGL:variable" ); 
+     labelFontMono = AudicleFont::loadFont ( "OpenGL:variable" ); 
+diff -ru audicle-1.0.0.6~/src/audicle_ui_editor.cpp audicle-1.0.0.6/src/audicle_ui_editor.cpp
+--- audicle-1.0.0.6~/src/audicle_ui_editor.cpp	2008-03-30 00:29:37.000000000 +0100
++++ audicle-1.0.0.6/src/audicle_ui_editor.cpp	2008-03-30 00:30:32.000000000 +0100
+@@ -46,7 +46,7 @@
+ 
+ void init_Buffer_Font() { 
+ #ifdef _USE_FTGL_FONTS_
+-    bufferFont = AudicleFont::loadFont ( "FTGL:LUCON.TTF" );
++    bufferFont = AudicleFont::loadFont ( "FTGL:couri.ttf" );
+ #else
+     bufferFont = AudicleFont::loadFont ( "OpenGL:mono" );
+ #endif

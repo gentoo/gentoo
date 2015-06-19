@@ -1,0 +1,64 @@
+--- qtoctave-0.10.1/qtjs/CMakeLists.txt	2011-01-06 23:48:05.000000000 +0200
++++ qtoctave-0.10.1/qtjs/CMakeLists.txt	2011-02-06 18:16:37.000000000 +0200
+@@ -2,10 +2,5 @@
+ 
+ install(
+ 	DIRECTORY doc
+-	DESTINATION share/doc/qtoctave-utils/qtjs
++	DESTINATION share/qtoctave/qtjs
+ )
+-
+-install(
+-	FILES "instalar.txt" "install.txt"
+-	DESTINATION share/doc/qtoctave-utils/qtjs
+-)
+\ No newline at end of file
+--- qtoctave-0.10.1/qtoctave/src/CMakeLists.txt	2011-01-06 23:48:07.000000000 +0200
++++ qtoctave-0.10.1/qtoctave/src/CMakeLists.txt	2011-02-06 18:15:41.000000000 +0200
+@@ -74,7 +74,7 @@
+ 
+ install (
+ 	DIRECTORY qtoctave_doc
+-	DESTINATION share/doc/qtoctave
++	DESTINATION share/qtoctave
+ 	PATTERN ".svn" EXCLUDE
+ 	)
+ 
+--- qtoctave-0.10.1/qtoctave/src/configure.h.in	2011-01-06 23:48:06.000000000 +0200
++++ qtoctave-0.10.1/qtoctave/src/configure.h.in	2011-02-06 18:15:41.000000000 +0200
+@@ -5,7 +5,7 @@
+ #define HELP_PATH "${CMAKE_INSTALL_PREFIX}/share/doc/octave-html/octave_doc/index.html"
+ #define ICON_PATH "${CMAKE_INSTALL_PREFIX}/share/qtoctave/images"
+ #define LANG_PATH "${CMAKE_INSTALL_PREFIX}/share/qtoctave/lang"
+-#define QTOCTAVE_HELP_PATH "${CMAKE_INSTALL_PREFIX}/share/doc/qtoctave/qtoctave_doc/index.html"
++#define QTOCTAVE_HELP_PATH "${CMAKE_INSTALL_PREFIX}/share/qtoctave/qtoctave_doc/index.html"
+ 
+ #define PKG_CMD_PATH "${CMAKE_INSTALL_PREFIX}/share/qtoctave/pkg-commands.list"
+ #endif
+--- qtoctave-0.10.1/simple_rcs/CMakeLists.txt	2011-01-06 23:48:06.000000000 +0200
++++ qtoctave-0.10.1/simple_rcs/CMakeLists.txt	2011-02-06 18:15:41.000000000 +0200
+@@ -17,6 +17,6 @@
+ 
+ install(
+ 	DIRECTORY design
+-	DESTINATION share/doc/qtoctave-utils/simple_rcs
++	DESTINATION share/qtoctave/simple_rcs
+ 	PATTERN ".svn" EXCLUDE
+ )
+\ No newline at end of file
+--- qtoctave-0.10.1/xmlwidget/CMakeLists.txt	2011-01-06 23:48:06.000000000 +0200
++++ qtoctave-0.10.1/xmlwidget/CMakeLists.txt	2011-02-06 18:15:41.000000000 +0200
+@@ -2,10 +2,10 @@
+ 
+ install(
+ 	DIRECTORY doc
+-	DESTINATION share/doc/qtoctave-utils/xmlwidget
++	DESTINATION share/qtoctave/xmlwidget
+ )
+ 
+ install(
+ 	DIRECTORY examples
+-	DESTINATION share/doc/qtoctave-utils/xmlwidget
++	DESTINATION share/qtoctave/xmlwidget
+ )
+\ No newline at end of file

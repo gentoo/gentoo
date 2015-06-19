@@ -1,0 +1,34 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/alpha/make.defaults,v 1.8 2014/11/23 15:55:19 floppym Exp $
+
+ARCH="alpha"
+ACCEPT_KEYWORDS="alpha"
+
+CHOST="alpha-unknown-linux-gnu"
+CFLAGS="-O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"
+
+# Mike Gilbert <floppym@gentoo.org> (23 Nov 2014)
+# Remove when bug 525510 is resolved.
+USE="python_targets_python3_3 -python_targets_python3_4"
+
+# Michał Górny <mgorny@gentoo.org> (01 Jul 2014)
+# Set ABI & DEFAULT_ABI consistently with ${ARCH}, to make ebuild
+# checks simpler.
+ABI="alpha"
+DEFAULT_ABI="alpha"
+MULTILIB_ABIS="alpha"
+CHOST_alpha="${CHOST}"
+LIBDIR_alpha="lib"
+
+# 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
+# Defaults for video drivers
+VIDEO_CARDS="fbdev glint mach64 mga nv r128 radeon savage tdfx voodoo"
+
+# 2007/02/05 - Chris Gianelloni <wolf31o2@gentoo.org>
+# Defaults for audio drivers. These are copied from x86 (minus modems), since
+# Alpha supports the same busses.
+ALSA_CARDS="ali5451 als4000 bt87x ca0106 cmipci emu10k1 ens1370 ens1371 es1938 es1968 fm801 hda-intel intel8x0 maestro3 trident usb-audio via82xx ymfpci"

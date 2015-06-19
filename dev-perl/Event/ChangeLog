@@ -1,0 +1,282 @@
+# ChangeLog for dev-perl/Event
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Event/ChangeLog,v 1.82 2015/05/10 18:33:04 dilfridge Exp $
+
+*Event-1.240.0 (10 May 2015)
+
+  10 May 2015; Andreas K. Huettel <dilfridge@gentoo.org> +Event-1.240.0.ebuild:
+  Version bump
+
+  13 Jun 2014; Mikle Kolyada <zlogene@gentoo.org> -Event-1.09.ebuild,
+  -Event-1.10.ebuild, -Event-1.200.0.ebuild, Event-1.210.0.ebuild:
+  alpha/amd64/arm/ia64/ppc/ppc64/sparc/x86 stable wrt bug #513062
+
+*Event-1.210.0 (19 Jan 2013)
+
+  19 Jan 2013; Torsten Veller <tove@gentoo.org> +Event-1.210.0.ebuild:
+  Version bump
+
+  09 Oct 2012; Anthony G. Basile <blueness@gentoo.org> Event-1.10.ebuild:
+  stable ppc ppc64, bug #436854
+
+  07 Oct 2012; Agostino Sarubbo <ago@gentoo.org> Event-1.10.ebuild:
+  Stable for amd64, wrt bug #436854
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Event-1.190.0.ebuild:
+  Cleanup
+
+*Event-1.200.0 (05 Aug 2011)
+
+  05 Aug 2011; Torsten Veller <tove@gentoo.org> +Event-1.200.0.ebuild:
+  Version bump
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org> -Event-1.13.ebuild,
+  -Event-1.150.0.ebuild, -Event-1.170.0.ebuild, -Event-1.180.0.ebuild:
+  Cleanup
+
+*Event-1.190.0 (25 Jul 2011)
+
+  25 Jul 2011; Torsten Veller <tove@gentoo.org> +Event-1.190.0.ebuild:
+  Version bump
+
+*Event-1.180.0 (06 Jul 2011)
+
+  06 Jul 2011; Torsten Veller <tove@gentoo.org> +Event-1.180.0.ebuild:
+  Version bump
+
+*Event-1.170.0 (19 May 2011)
+
+  19 May 2011; Torsten Veller <tove@gentoo.org> +Event-1.170.0.ebuild:
+  Version bump
+
+*Event-1.150.0 (03 May 2011)
+
+  03 May 2011; Torsten Veller <tove@gentoo.org> +Event-1.150.0.ebuild:
+  Version bump
+
+  23 Dec 2009; Fabian Groffen <grobian@gentoo.org> Event-1.13.ebuild:
+  Marked ~x86-solaris, bug #296509
+
+  12 Oct 2009; Torsten Veller <tove@gentoo.org> -Event-1.12.ebuild:
+  Cleanup
+
+*Event-1.13 (06 Oct 2009)
+
+  06 Oct 2009; Torsten Veller <tove@gentoo.org> +Event-1.13.ebuild:
+  Version bump
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org> -Event-1.11.ebuild:
+  Cleanup
+
+*Event-1.12 (26 Aug 2009)
+
+  26 Aug 2009; Torsten Veller <tove@gentoo.org> +Event-1.12.ebuild:
+  Version bump
+
+  23 May 2009; Raúl Porcel <armin76@gentoo.org> Event-1.09.ebuild,
+  Event-1.10.ebuild, Event-1.11.ebuild:
+  Add ~arm wrt #270465
+
+  23 Aug 2008; Torsten Veller <tove@gentoo.org> -Event-1.06.ebuild,
+  -Event-1.07.ebuild, -Event-1.08.ebuild:
+  Cleanup
+
+*Event-1.11 (23 Aug 2008)
+
+  23 Aug 2008; Torsten Veller <tove@gentoo.org> +Event-1.11.ebuild:
+  Version bump
+
+  15 Jul 2008; Raúl Porcel <armin76@gentoo.org> Event-1.10.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+*Event-1.10 (29 Apr 2008)
+
+  29 Apr 2008; Yuval Yaari <yuval@gentoo.org> +Event-1.10.ebuild:
+  Version bump
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org> Event-1.09.ebuild:
+  amd64 stable
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org> Event-1.09.ebuild:
+  Stable on ppc.
+
+  09 Jul 2007; Michael Cummings <mcummings@gentoo.org> -Event-1.05.ebuild:
+  Cleaning out stale ebuild
+
+  07 Jul 2007; Tom Gall <tgall@gentoo.org> Event-1.09.ebuild:
+  stable on ppc64
+
+  05 Jul 2007; Raúl Porcel <armin76@gentoo.org> Event-1.09.ebuild:
+  alpha/ia64/x86 stable
+
+  25 Jun 2007; Michael Cummings <mcummings@gentoo.org> Event-1.09.ebuild:
+  Marking sparc stable
+
+*Event-1.09 (24 May 2007)
+
+  24 May 2007; Michael Cummings <mcummings@gentoo.org> +Event-1.09.ebuild:
+  Version bump
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org> Event-1.08.ebuild:
+  ppc stable
+
+  15 Apr 2007; Markus Rothe <corsair@gentoo.org> Event-1.08.ebuild:
+  Stable on ppc64
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> Event-1.08.ebuild:
+  Stable on x86, bug #169152.
+
+  22 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> Event-1.08.ebuild:
+  Stable on Alpha + IA64.
+
+  08 Jan 2007; Michael Cummings <mcummings@gentoo.org> -Event-0.87.ebuild,
+  -Event-1.00.ebuild, Event-1.08.ebuild:
+  Marking sparc stable
+
+  07 Jan 2007; Michael Cummings <mcummings@gentoo.org> Event-0.87.ebuild,
+  Event-1.00.ebuild, Event-1.05.ebuild, Event-1.08.ebuild:
+  Marking amd64 stable
+
+  24 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org> Event-1.07.ebuild:
+  Stable on ppc.
+
+  24 Nov 2006; Michael Cummings <mcummings@gentoo.org> Event-1.07.ebuild:
+  sparc stable
+
+  24 Nov 2006; Michael Cummings <mcummings@gentoo.org> Event-1.07.ebuild:
+  amd64 stable
+
+*Event-1.08 (06 Nov 2006)
+
+  06 Nov 2006; Michael Cummings <mcummings@gentoo.org> +Event-1.08.ebuild:
+  Version bump
+
+*Event-1.07 (21 Oct 2006)
+
+  21 Oct 2006; Michael Cummings <mcummings@gentoo.org> +Event-1.07.ebuild:
+  Version bump
+
+  10 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  files/digest-Event-0.87, files/digest-Event-1.00, files/digest-Event-1.05,
+  Manifest:
+  Updating manifest, bug 150827
+
+  09 Oct 2006; Michael Cummings <mcummings@gentoo.org> Event-1.06.ebuild:
+  Cleaning up stale ebuilds
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org> Event-0.87.ebuild,
+  Event-1.00.ebuild, Event-1.05.ebuild, Event-1.06.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  07 May 2006; Markus Rothe <corsair@gentoo.org> Event-1.06.ebuild:
+  Stable on ppc64
+
+  15 Mar 2006; Markus Rothe <corsair@gentoo.org> Event-1.06.ebuild:
+  Added ~ppc64; bug #126188
+
+  13 Feb 2006; <mcumming@gentoo.org> Event-0.87.ebuild, Event-1.00.ebuild:
+  Virtual for perl-core dep
+
+  06 Feb 2006; Simon Stelling <blubb@gentoo.org> Event-1.06.ebuild:
+  stable on amd64
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> Event-1.06.ebuild:
+  Mark 1.06 stable on ia64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> Event-1.06.ebuild:
+  Mark 1.06 stable on alpha
+
+  15 Jan 2006; Michael Hanselmann <hansmi@gentoo.org> Event-1.06.ebuild:
+  Stable on ppc.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org> Event-1.06.ebuild:
+  marking stable sparc x86
+
+*Event-1.06 (19 Nov 2005)
+
+  19 Nov 2005; Michael Cummings <mcummings@gentoo.org> +Event-1.06.ebuild:
+  Version bump
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> Event-1.05.ebuild:
+  add ~ia64
+
+  03 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> Event-1.00.ebuild:
+  Stable on alpha.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> Event-1.00.ebuild:
+  Stable on ppc.
+
+  24 May 2005; Michael Cummings <mcummings@gentoo.org> :
+  dev-perl/Test => perl-core/Test migration
+
+  22 May 2005; Michael Cummings <mcummings@gentoo.org> Event-1.00.ebuild:
+  Unmasking for sparc
+
+  21 May 2005; Jan Brinkmann <luckyduck@gentoo.org> Event-1.00.ebuild:
+  stable on amd64
+
+  20 May 2005; Michael Cummings <mcummings@gentoo.org> Event-1.00.ebuild:
+  Marking stable for x86
+
+  07 May 2005; Elfyn McBratney <beu@gentoo.org> Event-0.87.ebuild:
+  Move distfile to mirror://gentoo/.
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org> -Event-0.85-r1.ebuild,
+  -Event-0.85-r2.ebuild, Event-0.87.ebuild, Event-1.00.ebuild:
+  cleaning
+
+  19 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> Event-0.87.ebuild:
+  Stable on ppc.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*Event-1.00 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org> Event-1.00.ebuild:
+  new version on cpan
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org> Event-0.87.ebuild:
+  Stable on alpha.
+
+  19 Jan 2004; <gustavoz@gentoo.org> Event-0.87.ebuild:
+  stable on sparc
+
+*Event-0.87 (31 May 2003)
+
+  31 May 2003; Michael Cummings <mcummings@gentoo.org> Event-0.87.ebuild:
+  New verison of the Event module, this time with missing depend for Test.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*Event-0.85-r2 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*Event-0.85-r1 (5 May 2002)
+
+  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> Event-0.85-r1.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  5 May 2002; Seemant Kulleen <seemant@gentoo.org> Event-0.85-r1.ebuild
+  files/digest-Event-0.85-r1 :
+
+  Conversion to eclasses.
+
+*Event-0.85 (21 Apr 2002)
+
+  21 Apr 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  Event-0.85.ebuild, files/digest-Event-0.85 :
+  
+  New ebuild. Resolves bug # 912.
+
+  The Event module provide a central facility to watch for various
+  types of events and invoke a callback when these events occur.

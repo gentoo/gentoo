@@ -1,0 +1,106 @@
+# ChangeLog for app-misc/toilet
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/toilet/ChangeLog,v 1.27 2015/05/31 11:08:14 mrueg Exp $
+
+  31 May 2015; Manuel Rüger <mrueg@gentoo.org> -toilet-0.2.ebuild:
+  Remove old.
+
+  31 May 2015; Mikle Kolyada <zlogene@gentoo.org> toilet-0.3.ebuild:
+  arm stable wrt bug #534882
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> toilet-0.3.ebuild:
+  Stable for x86, wrt bug #534882
+
+  22 Mar 2015; Chema Alonso <nimiux@gentoo.org> toilet-0.3.ebuild:
+  Stable for amd64 wrt bug #534882
+
+  27 Feb 2015; Michael Weber <xmw@gentoo.org> toilet-0.2.ebuild,
+  toilet-0.3.ebuild:
+  Update HOMEPAGE
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> toilet-0.2.ebuild,
+  toilet-0.3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> toilet-0.2.ebuild,
+  toilet-0.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*toilet-0.3 (29 Apr 2012)
+
+  29 Apr 2012; Michael Weber <xmw@gentoo.org> +toilet-0.3.ebuild, metadata.xml:
+  Taking maint, version bump.
+
+  20 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> toilet-0.2.ebuild:
+  Mark ~ppc64
+
+  10 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> toilet-0.2.ebuild:
+  amd64 stable wrt #339723
+
+  10 Oct 2010; Raúl Porcel <armin76@gentoo.org> toilet-0.2.ebuild:
+  arm/x86 stable wrt #339723
+
+  23 Jul 2010; Markus Meier <maekke@gentoo.org> toilet-0.2.ebuild:
+  add ~arm, bug #329389
+
+*toilet-0.2 (22 Jul 2010)
+
+  22 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> +toilet-0.2.ebuild:
+  Version bump wrt #329367 by Tim Harder.
+
+  16 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  files/toilet-0.1-asneeded-and-cflags-2.patch:
+  Fix building with -Wl,--as-needed wrt #272274, thanks to Kacper Kowalik and
+  Diego E. Pettenò.
+
+  11 Jul 2009; <chainsaw@gentoo.org> toilet-0.1-r1.ebuild:
+  Marked stable on AMD64 for bug #275982; tested on a dual Opteron 2354.
+
+  01 Jul 2009; Raúl Porcel <armin76@gentoo.org> toilet-0.1-r1.ebuild:
+  arm stable wrt #275982
+
+  30 Jun 2009; Christian Faulhammer <fauli@gentoo.org> toilet-0.1-r1.ebuild:
+  stable x86, bug 275982
+
+*toilet-0.1-r1 (25 Nov 2008)
+
+  25 Nov 2008; <ssuominen@gentoo.org>
+  files/toilet-0.1-asneeded-and-cflags.patch,
+  +files/toilet-0.1-asneeded-and-cflags-2.patch, toilet-0.1.ebuild,
+  +toilet-0.1-r1.ebuild:
+  As Alexis Ballier pointed out, libcucul got merged into libcaca starting
+  from 0.99_beta16. Reflect this situation in ebuilds.
+
+  25 Nov 2008; <ssuominen@gentoo.org>
+  files/toilet-0.1-asneeded-and-cflags.patch:
+  LDADD -lcaca instead of -lcucul for bug 246907 for forced --as-needed.
+  This is what upstream is trying to do with original Makefile.am, using
+  pkg-config --libs cucul in LDFLAGS which returns -lcaca on system built
+  with asneeded.
+
+  24 Nov 2008; <ssuominen@gentoo.org> metadata.xml:
+  Rename my old e-mail drac at gentoo.org to ssuominen at gentoo.org.
+
+  08 Jul 2008; Javier Villavicencio <the_paya@gentoo.org> toilet-0.1.ebuild:
+  Add ~x86-fbsd.
+
+  07 Jul 2008; Friedrich Oslage <bluebird@gentoo.org> toilet-0.1.ebuild:
+  Add ~sparc keyword, bug #230517
+
+  21 Dec 2007; nixnut <nixnut@gentoo.org> toilet-0.1.ebuild:
+  Added ~ppc wrt bug 201363
+
+  01 Nov 2007; Samuli Suominen <drac@gentoo.org> toilet-0.1.ebuild:
+  Stable on amd64 (bug #197749)
+
+  01 Nov 2007; Dawid Węgliński <cla@gentoo.org> toilet-0.1.ebuild:
+  Stable on x86 (bug #197749)
+
+  12 Aug 2007; Steve Dibb <beandog@gentoo.org> toilet-0.1.ebuild:
+  add ~amd64
+
+*toilet-0.1 (11 Aug 2007)
+
+  11 Aug 2007; Samuli Suominen <drac@gentoo.org>
+  +files/toilet-0.1-asneeded-and-cflags.patch, +toilet-0.1.ebuild:
+  Initial commit.

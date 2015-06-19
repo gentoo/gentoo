@@ -1,0 +1,136 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/dcc/files/dcc.initd,v 1.2 2011/01/25 04:24:43 robbat2 Exp $
+
+depend() {
+	use logger
+	need net
+	before mta
+}
+
+checkconfig() {
+	if [[ ! -f "/etc/dcc/dcc_conf" || ! -r "/etc/dcc/dcc_conf" ]]
+	then
+		eerror "You need a DCC configuration in /etc/dcc/dcc_conf"
+		return 1
+	else
+		source "/etc/dcc/dcc_conf"
+	fi
+}
+
+start() {
+	checkconfig || return 1
+
+	if [[ "${START_DCC_DCCD}" == "yes" ]]
+	then
+		if [[ "${DCCD_ENABLE}" != "on" ]]
+		then
+			einfo "DCCD_ENABLE is not setto 'on' in dcc_conf"
+		else
+			if [[ -x "${DCC_LIBEXEC}/start-dccd" ]]
+			then
+				ebegin "Starting dccd"
+				${DCC_LIBEXEC}/start-dccd >/dev/null 2>&1
+				eend ${?}
+			else
+				eerror "You enabled DCCD but start-dccd is missing or not executable"
+			fi
+		fi
+	fi
+
+	if [[ "${START_DCC_GREY}" == "yes" ]]
+	then
+		if [[ "${GREY_ENABLE}" != "on" ]]
+		then
+			einfo "GREY_ENABLE is not set to 'on' in dcc_conf"
+		else
+			if [[ -x "${DCC_LIBEXEC}/start-grey" ]]
+			then
+				ebegin "Starting grey"
+			${DCC_LIBEXEC}/start-grey >/dev/null 2>&1
+				eend ${?}
+			else
+				eerror "You enabled GREY but start-grey is missing or not executable"
+			fi
+		fi
+	fi
+
+	if [[ "${START_DCC_DCCM}" == "yes" ]]
+	then
+		if [[ "${DCCM_ENABLE}" != "on" ]]
+		then
+			einfo "DCCM_ENABLE is not set to 'on' in dcc_conf"
+		else
+			if [[ -x "${DCC_LIBEXEC}/start-dccm" ]]
+			then
+				ebegin "Starting dccm"
+				${DCC_LIBEXEC}/start-dccm >/dev/null 2>&1
+				eend ${?}
+				for ((dccmtimeout=0 ; dccmtimeout <= 20 ; dccmtimeout++))
+				do
+					if [[ ! -S "${DCC_RUNDIR}/dccm" || ! -r "${DCC_RUNDIR}/dccm" ]]
+					then
+						sleep 1
+					else
+						break
+					fi
+				done
+				chown ${SOCKET_USER:-milter}:${SOCKET_GROUP:-milter} ${DCC_RUNDIR}/dccm 1>/dev/null 2>&1
+				chmod ${SOCKET_MODE:-664} ${DCC_RUNDIR}/dccm 1>/dev/null 2>&1
+				sed -i -e "s:^\-::" ${DCC_RUNDIR}/dccm.pid
+			else
+				eerror "You enabled DCCM but start-dccm is missing or not executable"
+			fi
+		fi
+	fi
+
+	if [[ "${START_DCC_DCCIF}" == "yes" ]]
+	then
+		if [[ "${DCCIFD_ENABLE}" != "on" ]]
+		then
+			einfo "DCCIFD_ENABLE is not set to 'on' in dcc_conf"
+		else
+			if [[ -x "${DCC_LIBEXEC}/start-dccifd" ]]
+			then
+				ebegin "Starting dccif"
+				${DCC_LIBEXEC}/start-dccifd >/dev/null 2>&1
+				eend ${?}
+			else
+				eerror "You enabled DCCIF but start-dccif is missing or not executable"
+			fi
+		fi
+	fi
+}
+
+stop() {
+	checkconfig || return 1
+
+	if [[ -r "${DCC_RUNDIR}/dccifd.pid" ]]
+	then
+		ebegin "Stopping dccif"
+		kill -15 $(< ${DCC_RUNDIR}/dccifd.pid) 2>/dev/null
+		eend ${?}
+	fi
+
+	if [[ -r "${DCC_RUNDIR}/dccm.pid" ]]
+	then
+		ebegin "Stopping dccm"
+		kill -15 $(< ${DCC_RUNDIR}/dccm.pid) 2>/dev/null
+		eend ${?}
+	fi
+
+	if (pidof dccd >/dev/null 2>&1) && [[ -x "${DCC_LIBEXEC}/stop-dccd" ]]
+	then
+		ebegin "Stopping dccd"
+		${DCC_LIBEXEC}/stop-dccd >/dev/null 2>&1
+		eend ${?}
+	fi
+
+	if (pidof dccd >/dev/null 2>&1) && [[ -x "${DCC_LIBEXEC}/stop-dccd" ]]
+	then
+		ebegin "Stopping grey"
+		${DCC_LIBEXEC}/stop-dccd -G >/dev/null 2>&1
+		eend ${?}
+	fi
+}

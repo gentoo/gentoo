@@ -1,0 +1,80 @@
+--- benchmarks/Makefile.orig	2008-04-22 10:16:48.664395478 +0000
++++ benchmarks/Makefile	2008-04-22 10:59:59.815994915 +0000
+@@ -1,43 +1,35 @@
+-# The jneural library (http://voltar-confed.org/jneural/) and lwneuralnet library (http://sourceforge.net/projects/lwneuralnet/) needs to be installed in order to run the benchmarks
+-
+-GCC = gcc
+-G++ = g++
++# The jneural library (http://voltar-confed.org/jneural/) and lwneuralnet library (http://sourceforge.net/projects/lwneuralnet/) needs to be installed in order to run the benchmarks with EXTRA_NEURALS
+ 
+ TARGETS = quality quality_fixed performance performance_fixed shuffle parity two-spirals
+ 
+-CFLAGS = -O3 -finline-functions -funroll-loops -Werror
+-
+ LFLAGS = -lm
+-
+-JNEURALDIR = ../../libraries/jneural/
+-
+-LWNNDIR = ../../libraries/lwneuralnet-0.8/source/
++#EXTRA_NEURALS="-llwneuralnet -ljneural -DJNEURAL"
+ 
+ all: $(TARGETS)
+ 
+ quality: quality.cc
+-	$(G++) $(CFLAGS) $(LFLAGS) -I$(JNEURALDIR)include/ -L$(JNEURALDIR) -I$(LWNNDIR) -L$(LWNNDIR) $< -o $@ -lfloatfann -llwneuralnet -ljneural -lfl
++	$(CXX) $(CXXFLAGS) $(LFLAGS) $< -o $@ -lfloatfann -lfl $(EXTRA_NEURALS)
+ 
+ quality_fixed: quality_fixed.c
+-	$(GCC) $(CFLAGS) $(LFLAGS) $< -o $@ -lfixedfann
++	$(CC) $(CFLAGS) $(LFLAGS) $< -o $@ -lfixedfann
+ 
+ quality_fixed_debug: quality_fixed.c
+-	$(GCC) -ggdb -lm -DDEBUG -Wall -ansi -I../src/ -I../src/include/ ../src/fixedfann.c $< -o $@
++	$(CC) -ggdb -lm -DDEBUG -Wall -ansi -I../src/ -I../src/include/ ../src/fixedfann.c $< -o $@
+ 
+ performance: performance.cc
+-	$(G++) $(CFLAGS) $(LFLAGS) -I$(JNEURALDIR)include/ -L$(JNEURALDIR) -I$(LWNNDIR) -L$(LWNNDIR) $< -o $@ -lfloatfann -llwneuralnet -ljneural -lfl
++	$(CXX) $(CXXFLAGS) $(LFLAGS) $< -o $@ -lfloatfann -lfl $(EXTRA_NEURALS)
+ 
+ performance_fixed: performance.cc
+-	$(G++) $(CFLAGS) $(LFLAGS) -DFIXEDFANN $< -o $@ -lfixedfann
++	$(CXX) $(CXXFLAGS) $(LFLAGS) -DFIXEDFANN $< -o $@ -lfixedfann
+ 
+ shuffle: shuffle.c
+-	$(GCC) $(CFLAGS) $(LFLAGS) $< -o $@ -lfloatfann
++	$(CC) $(CFLAGS) $(LFLAGS) $< -o $@ -lfloatfann
+ 
+ two-spirals: two-spirals.c
+-	$(GCC) $(CFLAGS) $(LFLAGS) $< -o $@
++	$(CC) $(CFLAGS) $(LFLAGS) $< -o $@
+ 
+ parity: parity.c
+-	$(GCC) $(CFLAGS) $(LFLAGS) $< -o $@
++	$(CC) $(CFLAGS) $(LFLAGS) $< -o $@
+ 
+ clean: 
+ 	rm -rf -- $(TARGETS) *~
+--- benchmarks/performance.cc.orig	2008-04-22 10:24:38.604894867 +0000
++++ benchmarks/performance.cc	2008-04-22 10:26:57.436806446 +0000
+@@ -19,9 +19,6 @@
+ 
+ //uncomment lines below to benchmark the libraries
+ 
+-#define JNEURAL
+-#define LWNN
+-
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+--- benchmarks/quality.cc.orig	2008-04-22 10:59:27.814171235 +0000
++++ benchmarks/quality.cc	2008-04-22 10:59:39.570841209 +0000
+@@ -19,9 +19,6 @@
+ 
+ //uncomment lines below to benchmark the libraries
+ 
+-#define JNEURAL
+-#define LWNN
+-
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>

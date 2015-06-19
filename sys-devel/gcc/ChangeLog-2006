@@ -1,0 +1,2869 @@
+# ChangeLog for sys-devel/gcc
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/ChangeLog-2006,v 1.1 2012/01/02 17:47:22 dilfridge Exp $
+
+  30 Dec 2006; Tom Gall <tgall@gentoo.org> gcc-3.4.6-r2.ebuild:
+  stable on ppc64, bug #159250
+
+  30 Dec 2006; Andrej Kacian <ticho@gentoo.org> gcc-3.4.6-r2.ebuild:
+  Stable on x86, bug #159250.
+
+*gcc-2.95.3-r10 (30 Dec 2006)
+
+  30 Dec 2006; Mike Frysinger <vapier@gentoo.org> +gcc-2.95.3-r10.ebuild:
+  Add support for toolchain.eclass #124578 by Harald van Dijk.
+
+  28 Dec 2006; Bryan Østergaard <kloeri@gentoo.org> gcc-3.4.6-r2.ebuild:
+  Stable on  Alpha.
+
+  10 Dec 2006; Bryan Østergaard <kloeri@gentoo.org> gcc-4.1.1-r1.ebuild,
+  gcc-4.1.1-r3.ebuild:
+  Add ~alpha keyword.
+
+  29 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org> gcc-3.4.6-r2.ebuild:
+  Stable on sparc
+
+*gcc-4.1.1-r3 (27 Nov 2006)
+
+  27 Nov 2006; Mike Frysinger <vapier@gentoo.org> +gcc-4.1.1-r3.ebuild:
+  Fix debug regression #155417 and add some fixes for hppa.
+
+  20 Nov 2006; Guy Martin <gmsoft@gentoo.org> gcc-4.1.1-r1.ebuild:
+  Stable on hppa.
+
+  16 Nov 2006; Joseph Jezak <josejx@gentoo.org> gcc-4.1.1-r1.ebuild:
+  Marked ppc stable for bug #155090.
+
+  15 Nov 2006; Luis Medinas <metalgod@gentoo.org> gcc-4.1.1-r1.ebuild:
+  Stable on amd64. Bug #155090.
+
+  14 Nov 2006; Andrej Kacian <ticho@gentoo.org> gcc-4.1.1-r1.ebuild:
+  Stable on x86, bug #155090.
+
+*gcc-4.1.1-r2 (14 Nov 2006)
+
+  14 Nov 2006; Mike Frysinger <vapier@gentoo.org> +gcc-4.1.1-r2.ebuild:
+  Push out accumulated fixes.
+
+  13 Nov 2006; Tom Gall <tgall@gentoo.org> gcc-4.1.1-r1.ebuild:
+  gcc 4.1.1 stable for ppc64. 
+
+  02 Nov 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/4.1.0/gcc-4.1.0-fast-math-i386-Os-workaround.patch,
+  gcc-4.1.1.ebuild, gcc-4.1.1-r1.ebuild:
+  Apply a hackish workaround for uClibc/-Os until 4.1.2 is released.
+
+  26 Oct 2006; <blubb@gentoo.org> gcc-3.3.2-r7.ebuild, gcc-3.4.1-r3.ebuild:
+  remove unused emul-linux-x86 use flag
+
+  18 Oct 2006; Roy Marples <uberlord@gentoo.org> gcc-4.1.1-r1.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  19 Sep 2006; Jason Wever <weeve@gentoo.org> gcc-4.1.1.ebuild,
+  gcc-4.1.1-r1.ebuild:
+  Added ~sparc keywords to gcc-4.1.1 ebuilds.
+
+  09 Sep 2006; Mike Frysinger <vapier@gentoo.org> gcc-3.4.6-r1.ebuild,
+  gcc-3.4.6-r2.ebuild:
+  Do not force libstdc++-v3 anymore #84961.
+
+  06 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> gcc-4.1.1-r1.ebuild:
+  Re-add the ~x86-fbsd keyword, it was protoize once again.
+
+  05 Sep 2006; Joshua Kinard <kumba@gentoo.org> ChangeLog:
+  Mark gcc-4.1.1 stable on mips, with -r1 in unstable.
+
+  05 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> gcc-4.1.1-r1.ebuild:
+  Remove ~x86-fbsd keyword as there are problems building.
+
+*gcc-4.1.1-r1 (03 Sep 2006)
+
+  03 Sep 2006; Mike Frysinger <vapier@gentoo.org> gcc-4.1.1.ebuild,
+  +gcc-4.1.1-r1.ebuild:
+  Push out some fixes.
+
+  30 Aug 2006; Joshua Jackson <tsunam@gentoo.org> gcc-4.1.1.ebuild:
+  Stable x86; its about time for us to get this stable
+
+  30 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org> gcc-4.1.1.ebuild:
+  Stable on amd64.
+
+  14 Aug 2006; <solar@gentoo.org> gcc-3.2.3-r4.ebuild, gcc-3.3.2-r7.ebuild,
+  gcc-3.3.5-r1.ebuild, gcc-3.3.5.20050130-r1.ebuild, gcc-3.3.6.ebuild,
+  gcc-3.3.6-r1.ebuild, gcc-3.4.1-r3.ebuild, gcc-3.4.4-r1.ebuild,
+  gcc-3.4.5.ebuild, gcc-3.4.5-r1.ebuild, gcc-3.4.6.ebuild,
+  gcc-3.4.6-r1.ebuild, gcc-3.4.6-r2.ebuild, gcc-4.0.2-r3.ebuild,
+  gcc-4.0.3.ebuild, gcc-4.1.0-r1.ebuild, gcc-4.1.1.ebuild:
+  - switch default ordering of gcc-config and eselect-compiler to work around
+  portage bug
+
+  28 Jul 2006; Kevin F. Quinn <kevquinn@gentoo.org> gcc-3.3.5-r1.ebuild,
+  gcc-3.3.5.20050130-r1.ebuild, gcc-3.3.6.ebuild, gcc-3.3.6-r1.ebuild,
+  gcc-3.4.4-r1.ebuild, gcc-3.4.5.ebuild, gcc-3.4.5-r1.ebuild,
+  gcc-3.4.6.ebuild, gcc-3.4.6-r1.ebuild, gcc-3.4.6-r2.ebuild:
+  Move rename of rmic/rmiregistry from ebuilds to toolchain.eclass - bug #139918
+
+  13 Jul 2006; Kevin F. Quinn <kevquinn@gentoo.org> gcc-3.3.5-r1.ebuild,
+  gcc-3.3.5.20050130-r1.ebuild, gcc-3.3.6.ebuild, gcc-3.3.6-r1.ebuild,
+  gcc-3.4.4-r1.ebuild, gcc-3.4.5.ebuild, gcc-3.4.5-r1.ebuild,
+  gcc-3.4.6.ebuild, gcc-3.4.6-r1.ebuild, gcc-3.4.6-r2.ebuild:
+  Change names of rmic, rmiregistry to grmic, grmiregistry to avoid conflicts
+  with other java platforms.  Upstream already made this change for the same
+  reason in gcc-4 (bug #139918)
+
+*gcc-3.4.6-r2 (06 Jul 2006)
+
+  06 Jul 2006; Kevin F. Quinn <kevquinn@gentoo.org> +gcc-3.4.6-r2.ebuild:
+  Eliminate ICE in ssp's sweep_string_variable (bug #74457), and stop
+  vanilla and hardenednossp compiler variants from auto-upgrading
+  fstack-protector to fstack-protector-all (bug #104754)
+
+  30 Jun 2006; Mike Frysinger <vapier@gentoo.org> gcc-4.0.2-r3.ebuild,
+  gcc-4.0.3.ebuild, gcc-4.1.0-r1.ebuild, gcc-4.1.1.ebuild:
+
+  27 Jun 2006; Luca Barbato <lu_zero@gentoo.org> gcc-4.1.1.ebuild:
+  Marked stable on ppc
+
+  25 Jun 2006; Guy Martin <gmsoft@gentoo.org> gcc-4.1.1.ebuild:
+  Stable on hppa.
+
+  24 Jun 2006; Markus Rothe <corsair@gentoo.org> gcc-4.1.1.ebuild:
+  Added ~ppc64 to get more user response for bugs
+
+  22 Jun 2006; Mike Frysinger <vapier@gentoo.org> gcc-4.1.1.ebuild:
+  Fix uclibc support #134412.
+
+  20 Jun 2006; Simon Stelling <blubb@gentoo.org> gcc-3.4.6-r1.ebuild:
+  stable on amd64
+
+  19 Jun 2006; Joshua Kinard <kumba@gentoo.org> gcc-4.1.1.ebuild:
+  Added ~mips to KEYWORDS.
+
+  16 Jun 2006; Joshua Kinard <kumba@gentoo.org> gcc-4.1.0-r1.ebuild,
+  gcc-4.1.1.ebuild:
+  Update patchset again to finally fix biild errors on mips64 compilers due to
+  typos in the R10K Cache barriers patch. Also mark 4.1.1 unstable on mips for
+  testing purposes.
+
+  09 Jun 2006; Joshua Kinard <kumba@gentoo.org> gcc-4.1.0-r1.ebuild,
+  gcc-4.1.1.ebuild:
+  Updated the patchball to include a corrected version of the IP28 R10000
+  cache barriers patch. Gcc was mistaking a call to a function in the patch as
+  the ptototype, and later mistaking the actual prototype as the function
+  call.
+
+  31 May 2006; Joseph Jezak <josejx@gentoo.org> gcc-3.4.6-r1.ebuild:
+  Marked ppc stable.
+
+  29 May 2006; Diego Pettenò <flameeyes@gentoo.org> gcc-4.1.1.ebuild:
+  Add ~x86-fbsd keyword (currently profile masked).
+
+  29 May 2006; Guy Martin <gmsoft@gentoo.org> gcc-3.4.4-r1.ebuild,
+  gcc-3.4.5.ebuild, gcc-3.4.5-r1.ebuild:
+  Set KEYWORDS -hppa to gcc-3.4* as it can't build a glibc on hppa 1.1
+
+  29 May 2006; Mark Loeser <halcy0n@gentoo.org> gcc-3.4.6-r1.ebuild:
+  Stable on x86
+
+  28 May 2006; Mark Loeser <halcy0n@gentoo.org> gcc-4.1.1.ebuild:
+  Really fix objc-gc this time; bug #114359. Also add MIPS patches that Kumba
+  mentioned
+
+  28 May 2006; Joshua Kinard <kumba@gentoo.org> gcc-4.1.0-r1.ebuild:
+  Update 4.1.0 w/ two mips patches for R10K support and R10K cache barriers
+  handling. 4.1.1 is forthcoming.
+
+  27 May 2006; Mark Loeser <halcy0n@gentoo.org> gcc-4.1.1.ebuild:
+  Exclude patch for pr22889; bug #110002
+
+  26 May 2006; Bryan Østergaard <kloeri@gentoo.org> gcc-3.4.6-r1.ebuild:
+  Stable on alpha.
+
+*gcc-4.1.1 (25 May 2006)
+
+  25 May 2006; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.1_pre20060517.ebuild, +gcc-4.1.1.ebuild:
+  Bump to 4.1.1 final release
+
+*gcc-4.1.0-r1 (14 May 2006)
+
+  14 May 2006; Mark Loeser <halcy0n@gentoo.org> -gcc-4.1.0.ebuild,
+  +gcc-4.1.0-r1.ebuild:
+  Bump gcc-4.1 so everyone gets the newest changes (no more libstdc++.la and
+  the 1.4 patchset), and bump the 4.2 weekly snapshot
+
+  13 May 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/4.1.0/gcc-4.1.0-cross-compile.patch, gcc-4.1.0.ebuild:
+  Split off cross-compile patch since new changes are incompat from old
+  gcc-4.0.x #133098 by John Bachan.
+
+  11 May 2006; Joshua Kinard <kumba@gentoo.org> gcc-3.4.6-r1.ebuild:
+  Marked stable on mips.
+
+  28 Apr 2006; Markus Rothe <corsair@gentoo.org> gcc-3.4.6-r1.ebuild:
+  Stable on ppc64
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> files/digest-gcc-2.95.3-r9,
+  files/digest-gcc-3.4.1-r3, Manifest:
+  Fixing SHA256 digest, pass four
+
+  25 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org> gcc-3.4.6-r1.ebuild:
+  Stable on sparc
+
+*gcc-3.3.6-r1 (23 Apr 2006)
+
+  23 Apr 2006; Mike Frysinger <vapier@gentoo.org> +gcc-3.3.6-r1.ebuild:
+  Push out accumulated patches.
+
+  21 Apr 2006; Mark Loeser <halcy0n@gentoo.org> files/digest-gcc-3.4.5-r1,
+  Manifest:
+  Fix digest for 3.4.5-r1 patchset
+
+  18 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> gcc-3.4.6-r1.ebuild,
+  gcc-4.1.0.ebuild:
+  Add dependency over virtual/libiconv (for three series of gcc) as it's
+  needed to build gcc also without nls.
+
+*gcc-3.4.6-r1 (18 Apr 2006)
+
+  18 Apr 2006; Mark Loeser <halcy0n@gentoo.org> +gcc-3.4.6-r1.ebuild:
+  Bump 3.4.6 patchset to fix bugs #127190 #126279 and #126871
+
+  12 Apr 2006; Bryan Østergaard <kloeri@gentoo.org> gcc-3.4.6.ebuild:
+  ~alpha 3.4.6 - solves a ld segfault in binutils when emerging gmp.
+
+  11 Apr 2006; Joshua Kinard <kumba@gentoo.org>
+  +files/3.4.2/gcc-3.4.2-mips-ip28_cache_barriers-v4.patch,
+  gcc-3.4.6.ebuild:
+  Added a 4th version of the cache barriers patch for mips to gcc-3.4.6 that
+  shifts the bulk of th generation code to the mips backend vs. being in
+  final.c. This newer patch also has a switch to generate barriers on store
+  only, load only, or both loads and stores, making it suitable for both IP28
+  and R10K IP32 testing. Also keyworded 3.4.6 for ~mips.
+
+  09 Apr 2006; Guy Martin <gmsoft@gentoo.org> gcc-4.1.0.ebuild:
+  Added ~hppa to KEYWORDS.
+
+  08 Apr 2006; <nixnut@gentoo.org> gcc-3.4.6.ebuild:
+  Added ~ppc
+
+  30 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> gcc-3.4.6.ebuild:
+  Add ~x86-fbsd keyword.
+
+  28 Mar 2006; Mark Loeser <halcy0n@gentoo.org> gcc-3.4.5-r1.ebuild:
+  Stable on x86
+
+  28 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> gcc-3.4.6.ebuild:
+  Keyworded ~sparc
+
+  23 Mar 2006; Luis Medinas <metalgod@gentoo.org> gcc-3.4.5.ebuild:
+  Stable on amd64.
+
+  23 Mar 2006; Markus Rothe <corsair@gentoo.org> gcc-3.4.6.ebuild:
+  Added ~ppc64
+
+  18 Mar 2006; Mark Loeser <halcy0n@gentoo.org> gcc-4.0.3.ebuild,
+  gcc-4.1.0.ebuild:
+  Add an exclude for patch 33; bug #126609
+
+*gcc-3.4.6 (18 Mar 2006)
+
+  18 Mar 2006; Mike Frysinger <vapier@gentoo.org> +gcc-3.4.6.ebuild:
+  Version bump #126492 by David Pufer.
+
+  15 Mar 2006; Markus Rothe <corsair@gentoo.org> gcc-3.4.5-r1.ebuild:
+  Added ~ppc64
+
+*gcc-4.0.3 (14 Mar 2006)
+
+  14 Mar 2006; Mark Loeser <halcy0n@gentoo.org> +gcc-4.0.3.ebuild,
+  gcc-4.1.0.ebuild:
+  Bump to gcc-4.0.3, and bump the gcc-4.1.0 patchset
+
+  11 Mar 2006; Mark Loeser <halcy0n@gentoo.org> gcc-4.1.0.ebuild:
+  Fix the uclibc patchset; bug #125395
+
+  10 Mar 2006; Luca Barbato <lu_zero@gentoo.org> gcc-3.4.5-r1.ebuild:
+  Marked ppc
+
+  05 Mar 2006; Luca Barbato <lu_zero@gentoo.org> gcc-4.1.0.ebuild:
+  Marked ~ppc
+
+  03 Mar 2006; Simon Stelling <blubb@gentoo.org>
+  -files/gcc331_use_multilib.amd64.patch, gcc-3.3.2-r7.ebuild,
+  gcc-3.4.1-r3.ebuild:
+  remove code that never gets executed, as well as the patch applied by this
+  code (use multilib && use amd64 == nono)
+
+*gcc-4.1.0 (03 Mar 2006)
+
+  03 Mar 2006; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_pre20060223.ebuild, +gcc-4.1.0.ebuild:
+  Bump to 4.1.0
+
+  02 Mar 2006; Martin Schlemmer <azarah@gentoo.org>
+  +files/awk/fixlafiles.awk-no_gcc_la:
+  Add fixlafiles.awk for gcc's without libtool linker scripts.
+
+  02 Mar 2006; <chrb@gentoo.org> ChangeLog:
+  fix broken manifest (File: files/stubs/gcc-4.1-htb-stub.patch)
+
+  27 Feb 2006; Mark Loeser <halcy0n@gentoo.org> gcc-3.4.5.ebuild,
+  gcc-3.4.5-r1.ebuild:
+  3.4.5 stable on x86; and add 3.4.5-r1 to ~x86
+
+*gcc-4.1.0_pre20060223 (25 Feb 2006)
+
+  25 Feb 2006; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_pre20060219.ebuild, +gcc-4.1.0_pre20060223.ebuild:
+  Bump to gcc-4.1.0_rc2
+
+*gcc-4.1.0_pre20060219 (20 Feb 2006)
+
+  20 Feb 2006; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20060210.ebuild, +gcc-4.1.0_pre20060219.ebuild:
+  Bump to gcc-4.1.0_rc1
+
+  19 Feb 2006; Joshua Kinard <kumba@gentoo.org> gcc-3.4.5.ebuild:
+  Marked stable on mips.
+
+  17 Feb 2006; Aron Griffis <agriffis@gentoo.org> gcc-4.0.2-r3.ebuild:
+  Mark 4.0.2-r3 ~ia64
+
+*gcc-3.4.5-r1 (20 Feb 2006)
+
+  20 Feb 2006; Joshua Kinard <kumba@gentoo.org>
+  +files/3.4.2/gcc-3.4.2-mips-ip28_cache_barriers-v3-ip32r10k.patch,
+  +files/3.4.2/gcc-3.4.2-mips-ip28_cache_barriers-v3.patch,
+  +gcc-3.4.5-r1.ebuild:
+  Update cache barriers patch used for IP28 mips systems. Also include a
+  modified version of the cache barriers patch for experimental IP32 R10K
+  tinkering.
+
+*gcc-4.1.0_beta20060210 (11 Feb 2006)
+
+  11 Feb 2006; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20060203.ebuild, +gcc-4.1.0_beta20060210.ebuild:
+  Weekly gcc-4.1 snapshot bump
+
+*gcc-4.1.0_beta20060203 (04 Feb 2006)
+
+  04 Feb 2006; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20060127.ebuild, +gcc-4.1.0_beta20060203.ebuild:
+  Weekly gcc-4.1 snapshot bump
+
+*gcc-4.1.0_beta20060127 (28 Jan 2006)
+
+  28 Jan 2006; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20060120.ebuild, +gcc-4.1.0_beta20060127.ebuild:
+  Weekly gcc-4.1 snapshot bump
+
+  23 Jan 2006; Mark Loeser <halcy0n@gentoo.org> gcc-4.0.2-r3.ebuild:
+  Remove patches for bug #108231 since they caused issues; bug #118361.
+
+*gcc-4.1.0_beta20060120 (21 Jan 2006)
+
+  21 Jan 2006; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20060113.ebuild, +gcc-4.1.0_beta20060120.ebuild:
+  Bump to new gcc-4.1 snapshot
+
+  14 Jan 2006; Kevin F. Quinn <kevquinn@gentoo.org>
+  +gcc-3.3.5.20050130-r1.ebuild:
+  Re-add gcc-3.3.5.200501300-r1 as it is the current stable for sparc
+  on profiles <2006.0
+
+  14 Jan 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/4.0.2/gcc-4.0.2-softfloat.patch, gcc-4.0.2-r3.ebuild:
+  Update softfloat patch from yuri.
+
+*gcc-4.1.0_beta20060113 (14 Jan 2006)
+
+  14 Jan 2006; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-3.3.5.20050130-r1.ebuild, -gcc-3.3.5.20050130-r2.ebuild,
+  -gcc-3.4.3-r1.ebuild, -gcc-3.4.3.20050110-r2.ebuild, -gcc-4.0.1.ebuild,
+  -gcc-4.1.0_beta20060106.ebuild, +gcc-4.1.0_beta20060113.ebuild:
+  Adding new gcc-4.1 snapshot, and cleaning up old versions
+
+*gcc-4.1.0_beta20060106 (07 Jan 2006)
+
+  07 Jan 2006; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20051230.ebuild, +gcc-4.1.0_beta20060106.ebuild:
+  Weekly 4.1 snapshot bump
+
+  05 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org> gcc-3.4.5.ebuild:
+  Stable on sparc
+
+  02 Jan 2006; Mark Loeser <halcy0n@gentoo.org> gcc-4.0.2-r3.ebuild:
+  Removing the message about reporting bugs upstream. Please report them on
+  bugs.gentoo.org
+
+*gcc-4.0.2-r3 (01 Jan 2006)
+
+  01 Jan 2006; Mark Loeser <halcy0n@gentoo.org> -gcc-4.0.2-r2.ebuild,
+  +gcc-4.0.2-r3.ebuild:
+  New version of the Gentoo patchset; resolves bugs #89911 #101606 #109633
+  #110173
+
+*gcc-4.1.0_beta20051230 (31 Dec 2005)
+
+  31 Dec 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20051223.ebuild, +gcc-4.1.0_beta20051230.ebuild:
+  Bump to newest 4.1 snapshot
+
+  24 Dec 2005; Markus Rothe <corsair@gentoo.org> gcc-3.4.5.ebuild:
+  Added ~ppc64
+
+*gcc-4.1.0_beta20051223 (24 Dec 2005)
+
+  24 Dec 2005; Mark Loeser <halcy0n@gentoo.org>
+  -files/4.1.0/gcc-4.1.0-pr22313.patch, -gcc-4.1.0_beta20051216.ebuild,
+  +gcc-4.1.0_beta20051223.ebuild:
+  Bump to a new gcc-4.1 snapshot. The patch from pr22313 is now included
+  upstream.
+
+  20 Dec 2005; Mark Loeser <halcy0n@gentoo.org> gcc-4.0.1.ebuild,
+  gcc-4.0.2-r2.ebuild, gcc-4.1.0_beta20051216.ebuild:
+  Testing the libstdc++ virtual before marking it stable. Then we can remove
+  it from all of the gcc ebuilds and put it into the binary ebuilds that
+  require it.
+
+*gcc-4.1.0_beta20051216 (17 Dec 2005)
+
+  17 Dec 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20051209.ebuild, +gcc-4.1.0_beta20051216.ebuild:
+  GCC-4.1 snapshot bump
+
+  15 Dec 2005; Gustavo Zacarias <gustavoz@gentoo.org> gcc-3.4.5.ebuild:
+  Gimme ~sparc keywords here
+
+*gcc-4.0.2-r2 (13 Dec 2005)
+
+  13 Dec 2005; Mark Loeser <halcy0n@gentoo.org> -gcc-4.0.2-r1.ebuild,
+  +gcc-4.0.2-r2.ebuild:
+  Bump to use the newest patchset, which removes a patch that introduced ICEs
+  and adds 2 patches to resolve bug #108231
+
+*gcc-4.1.0_beta20051209 (10 Dec 2005)
+
+  10 Dec 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20051202.ebuild, +gcc-4.1.0_beta20051209.ebuild:
+  Bump gcc-4.1 snapshot
+
+  09 Dec 2005; Joshua Kinard <kumba@gentoo.org> gcc-3.4.4-r1.ebuild,
+  gcc-3.4.5.ebuild:
+  Marked 3.4.4-r1 stable; 3.4.5 unstable on mips.
+
+*gcc-3.4.5 (06 Dec 2005)
+
+  06 Dec 2005; Mike Frysinger <vapier@gentoo.org> +gcc-3.4.5.ebuild:
+  Version bump.
+
+*gcc-4.1.0_beta20051202 (03 Dec 2005)
+
+  03 Dec 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20051125.ebuild, +gcc-4.1.0_beta20051202.ebuild:
+  GCC-4.1 snapshot bump
+
+  02 Dec 2005; Mark Loeser <halcy0n@gentoo.org> gcc-3.4.4-r1.ebuild:
+  Stable on x86
+
+  01 Dec 2005; Guy Martin <gmsoft@gentoo.org> gcc-3.3.6.ebuild:
+  Stable on hppa.
+
+*gcc-4.1.0_beta20051125 (26 Nov 2005)
+
+  26 Nov 2005; Mark Loeser <halcy0n@gentoo.org>
+  +files/4.1.0/gcc-4.1.0-pr22313.patch, -gcc-4.1.0_beta20051112.ebuild,
+  +gcc-4.1.0_beta20051125.ebuild:
+  GCC-4.1 snapshot bump.  Also add a patch to fix building on amd64.
+
+  13 Nov 2005; Mark Loeser <halcy0n@gentoo.org> gcc-4.0.1.ebuild,
+  gcc-4.0.2-r1.ebuild, gcc-4.1.0_beta20051112.ebuild:
+  Fix depends for gcc-4 ebuilds so we depend on >=glibc-2.3.6 now
+
+*gcc-4.1.0_beta20051112 (12 Nov 2005)
+
+  12 Nov 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20051105.ebuild, +gcc-4.1.0_beta20051112.ebuild:
+  GCC-4.1 snapshot bump
+
+  10 Nov 2005; Mark Loeser <halcy0n@gentoo.org> gcc-4.0.1.ebuild,
+  gcc-4.0.2-r1.ebuild, gcc-4.1.0_beta20051105.ebuild:
+  Adding dev-libs/mpfr to deps, as it is needed to build fortran for gcc-4
+
+  05 Nov 2005; Mark Loeser <halcy0n@gentoo.org>
+  gcc-4.1.0_beta20051105.ebuild:
+  Fix deps to match those from the gcc-4.0 ebuilds
+
+*gcc-4.1.0_beta20051105 (05 Nov 2005)
+
+  05 Nov 2005; Mark Loeser <halcy0n@gentoo.org>
+  +gcc-4.1.0_beta20051105.ebuild:
+  Adding back the gcc-4.1 snapshots. The installation should be fixed now; bug
+  #100679
+
+  31 Oct 2005; Bryan Østergaard <kloeri@gentoo.org> gcc-3.4.4-r1.ebuild:
+  Stable on alpha.
+
+  31 Oct 2005; Mark Loeser <halcy0n@gentoo.org> gcc-4.0.2-r1.ebuild:
+  Adding 28_all_gcc4-pr19520.patch to GENTOO_PATCH_EXCLUDE due to it causing
+  ICEs in a few packages. I will remove it from the patchset in the next
+  revision
+
+  10 Oct 2005; Mark Loeser <halcy0n@gentoo.org> gcc-4.0.2-r1.ebuild:
+  Remove SPLIT_SPECS for now, until we have a better complete solution; bug
+  #106690
+
+  07 Oct 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gcc-2.95.3-r9.ebuild, gcc-3.2.3-r4.ebuild, gcc-3.3.2-r7.ebuild,
+  gcc-3.3.5-r1.ebuild, gcc-3.3.5.20050130-r1.ebuild,
+  gcc-3.3.5.20050130-r2.ebuild, gcc-3.3.6.ebuild, gcc-3.4.1-r3.ebuild,
+  gcc-3.4.3-r1.ebuild, gcc-3.4.3.20050110-r2.ebuild, gcc-3.4.4-r1.ebuild,
+  gcc-4.0.1.ebuild, gcc-4.0.2-r1.ebuild:
+  Let eselect-compiler be an option instead of sys-devel/gcc-config in DEPEND.
+
+  06 Oct 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/gcc-configure-LANG.patch:
+  Patch to fix LANG issues in older autotools #105485.
+
+*gcc-4.0.2-r1 (04 Oct 2005)
+
+  04 Oct 2005; Mark Loeser <halcy0n@gentoo.org> -gcc-4.0.2.ebuild,
+  +gcc-4.0.2-r1.ebuild:
+  New patchset with a lot of patches from Fedora, as well as patches to fix
+  -fvisibility problems with KDE.
+
+*gcc-4.0.2 (28 Sep 2005)
+
+  28 Sep 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.0.2_pre20050917.ebuild, +gcc-4.0.2.ebuild:
+  Bump to 4.0.2
+
+*gcc-4.0.2_pre20050917 (18 Sep 2005)
+
+  18 Sep 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.0.2_pre20050913.ebuild, +gcc-4.0.2_pre20050917.ebuild:
+  Bump to gcc-4.0.2_rc2
+
+  15 Sep 2005; Mark Loeser <halcy0n@gentoo.org>
+  gcc-4.0.2_pre20050913.ebuild:
+  Enable split spec files.
+
+*gcc-4.0.2_pre20050913 (14 Sep 2005)
+
+  14 Sep 2005; Mark Loeser <halcy0n@gentoo.org>
+  +gcc-4.0.2_pre20050913.ebuild:
+  Bump to gcc-4.0.2_rc1
+
+  11 Sep 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20050902.ebuild:
+  Removing the gcc-4.1 ebuilds for the time being.  When they get to release
+  candidates, I'll add them back.  At this point in time they are way too
+  unstable though.  You can easily continue to use them in your overlay by just
+  renaming the ebuild.
+
+  05 Sep 2005; Jeremy Huddleston <eradicator@gentoo.org> gcc-3.3.6.ebuild:
+  Moving 3.3.6 into stable on x86.
+
+*gcc-4.1.0_beta20050902 (03 Sep 2005)
+
+  03 Sep 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20050826.ebuild, +gcc-4.1.0_beta20050902.ebuild:
+  GCC 4.1 snapshot bump
+
+*gcc-3.4.4-r1 (27 Aug 2005)
+
+  27 Aug 2005; Mike Frysinger <vapier@gentoo.org> +gcc-3.4.4-r1.ebuild:
+  Push out cumulative changes (especially #87631).
+
+*gcc-4.1.0_beta20050826 (26 Aug 2005)
+
+  26 Aug 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20050819.ebuild, +gcc-4.1.0_beta20050826.ebuild:
+  GCC 4.1 snapshot bump
+
+  20 Aug 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/3.2.2/gcc-3.2.2-cross-compile.patch,
+  +files/3.2.2/gcc-3.2.2-no-COPYING-cross-compile.patch, gcc-3.2.2.ebuild:
+  Fix cross-compile support for Playstation 2 targets (ee/iop).
+
+*gcc-4.1.0_beta20050819 (20 Aug 2005)
+
+  20 Aug 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20050813.ebuild, +gcc-4.1.0_beta20050819.ebuild:
+  Bump to newest gcc-4.1 snapshot
+
+  17 Aug 2005; Mike Frysinger <vapier@gentoo.org> gcc-3.3.6.ebuild,
+  gcc-3.4.4.ebuild:
+  Add a patch for arm and one for m68k, a fix for an infinite loop in gcc
+  #102244, and fixes for canadian cross-compiling a native compiler.
+
+  16 Aug 2005; Mark Loeser <halcy0n@gentoo.org> gcc-4.0.1.ebuild:
+  Update 4.0.1's patchset.  Dropped a patch that caused issues on PPC.  Fixes
+  bug #97939
+
+  16 Aug 2005; Jeremy Huddleston <eradicator@gentoo.org> gcc-3.4.4.ebuild:
+  Stable amd64.
+
+*gcc-4.1.0_beta20050813 (13 Aug 2005)
+
+  13 Aug 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20050730.ebuild, +gcc-4.1.0_beta20050813.ebuild:
+  GCC 4.1 snapshot bump
+
+  05 Aug 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/3.4.4/gcc-3.4.4-softfloat.patch, gcc-3.4.4.ebuild:
+  Merge soft-float support by Yuri Vasilevski #75585.
+
+*gcc-4.1.0_beta20050730 (30 Jul 2005)
+
+  30 Jul 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20050723.ebuild, +gcc-4.1.0_beta20050730.ebuild:
+  GCC-4.1 snapshot bump
+
+*gcc-4.1.0_beta20050723 (23 Jul 2005)
+
+  23 Jul 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20050716.ebuild, +gcc-4.1.0_beta20050723.ebuild:
+  Bump to newest gcc-4.1 snapshot
+
+*gcc-4.1.0_beta20050716 (16 Jul 2005)
+
+  16 Jul 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20050709.ebuild, +gcc-4.1.0_beta20050716.ebuild:
+  GCC 4.1 snapshot bump
+
+  10 Jul 2005; Mike Frysinger <vapier@gentoo.org> gcc-3.3.5-r1.ebuild,
+  gcc-3.3.5.20050130-r1.ebuild, gcc-3.3.5.20050130-r2.ebuild,
+  gcc-3.3.6.ebuild, gcc-3.4.3-r1.ebuild, gcc-3.4.3.20050110-r2.ebuild,
+  gcc-3.4.4.ebuild:
+  Dont apply spec-env patch to cross-compilers otherwise native hardened users
+  can screw up their cross-compilers real quick #96162 by Kevin F. Quinn.
+
+*gcc-4.1.0_beta20050709 (10 Jul 2005)
+
+  10 Jul 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20050702.ebuild, +gcc-4.1.0_beta20050709.ebuild:
+  Bumping gcc-4.1 snapshot
+
+  08 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -gcc-2.95.3-r8.ebuild, -gcc-3.3.2.ebuild, -gcc-3.3.2-r5.ebuild,
+  -gcc-3.3.5.20050130.ebuild, -gcc-3.4.3.20050110-r1.ebuild,
+  -files/3.3/gcc33-coreutils-compat.patch.bz2,
+  -files/3.3/gcc33-gentoo-branding-1.patch,
+  -files/3.3/gcc33-gentoo-branding.patch,
+  -files/3.3/gcc33-no-multilib-amd64.patch,
+  -files/3.3/gcc33-propolice-version.patch,
+  -files/3.3.1/gcc331-gentoo-branding.patch,
+  -files/3.3.3/gcc-3.3.3-libiberty-pic.patch,
+  -files/3.3.3/gcc333-gentoo-branding.patch,
+  -files/3.3.3/gcc333-pr15693.patch,
+  -files/3.3.3/gcc333-ssp-3.3.2_1-fixup.patch,
+  -files/3.3.3/gcc333-ssp-3.3_7-fixup.patch,
+  -files/3.3.3/gcc333_pre20040215-gentoo-branding.patch,
+  -files/3.3.3/gcc333_pre20040322-gentoo-branding.patch,
+  -files/3.3.3/gcc333_pre20040408-gentoo-branding.patch,
+  -files/3.3.3/gcc333_pre20040426-gentoo-branding.patch,
+  -files/3.3.4/gcc334-gentoo-branding.patch,
+  -files/3.4.0/gcc-3.4.0-move-propolice-into-glibc.patch,
+  -files/3.4.0/gcc-3.4.0-r6-gentoo-branding.patch,
+  -files/3.4.0/gcc34-ia64-lib64.patch, -files/3.4.0/gcc34-ice-hack.patch,
+  -files/3.4.0/gcc34-multi32-hack.patch,
+  -files/3.4.0/gcc34-ppc64-m32-m64-multilib-only.patch,
+  -files/3.4.1/gcc-3.4.1-gentoo-branding.patch,
+  -files/3.4.1/gcc341-ppc64-mozilla-ICE-fix.patch,
+  -files/3.4.2/gcc-3.4.2-mips-ip28_cache_barriers.patch,
+  -files/3.4.3/35_all_pr18987-fix.patch:
+  Removing old ebuilds and cleaned out unused old patches.
+
+*gcc-4.0.1 (08 Jul 2005)
+
+  08 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org> -gcc-4.0.0.ebuild,
+  -gcc-4.0.1_pre20050702.ebuild, +gcc-4.0.1.ebuild:
+  gcc4 version bump.
+
+  05 Jul 2005; Joshua Kinard <kumba@gentoo.org> gcc-3.4.3.20050110-r2.ebuild,
+  gcc-3.4.4.ebuild:
+  Make 3.4.3.20050110-r2 stable on mips, and bump 3.4.4 into unstable.
+
+*gcc-4.0.1_pre20050702 (03 Jul 2005)
+*gcc-4.1.0_beta20050702 (03 Jul 2005)
+
+  03 Jul 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.0.1_pre20050616.ebuild, -gcc-4.1.0_beta20050625.ebuild,
+  +gcc-4.0.1_pre20050702.ebuild, +gcc-4.1.0_beta20050702.ebuild:
+  Bump to newest gcc4 snapshots.
+
+  28 Jun 2005; Markus Rothe <corsair@gentoo.org> gcc-3.4.4.ebuild:
+  Stable on ppc64
+
+*gcc-4.1.0_beta20050625 (25 Jun 2005)
+
+  25 Jun 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20050618.ebuild, +gcc-4.1.0_beta20050625.ebuild:
+  Bump GCC-4.1 snapshot
+
+  23 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  +files/3.4.4/gcc-3.4_x-avr-news-devs2.patch, gcc-3.4.4.ebuild:
+  Added new avr target device support with blessing from spanky
+
+*gcc-4.1.0_beta20050618 (18 Jun 2005)
+
+  18 Jun 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20050611.ebuild, +gcc-4.1.0_beta20050618.ebuild:
+  GCC 4.1 snapshot bump
+
+*gcc-4.0.1_pre20050616 (18 Jun 2005)
+
+  18 Jun 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.0.1_pre20050607.ebuild, +gcc-4.0.1_pre20050616.ebuild:
+  Bump to the gcc-4.0.1_rc2 snapshot
+
+  13 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> gcc-3.3.6.ebuild:
+  ~sparc happy
+
+*gcc-4.1.0_beta20050611 (11 Jun 2005)
+
+  11 Jun 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.1.0_beta20050604.ebuild, +gcc-4.1.0_beta20050611.ebuild:
+  Bump to new GCC 4.1 snapshot
+
+  11 Jun 2005; Luca Barbato <lu_zero@gentoo.org> gcc-3.4.4.ebuild:
+  BAD typo in gcc-3.4.4 . It is stable, but got wrongly marked stable before
+  time. Since it would be a problem to the early updaters I keep it stable.
+
+*gcc-4.0.1_pre20050607 (09 Jun 2005)
+
+  09 Jun 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.0.1_beta20050602.ebuild, +gcc-4.0.1_pre20050607.ebuild:
+  Committing gcc-4.0.1_rc1 snapshot, and my first gcc4 patchset (thanks Azarah)
+
+  07 Jun 2005; Luca Barbato <lu_zero@gentoo.org> gcc-3.4.4.ebuild:
+  Marked ~ppc
+
+*gcc-4.1.0_beta20050604 (05 Jun 2005)
+
+  05 Jun 2005; <halcyon@gentoo.org> -gcc-4.1.0_beta20050528.ebuild,
+  +gcc-4.1.0_beta20050604.ebuild:
+  Bump to the newest gcc-4.1 snapshot.
+
+*gcc-4.1.0_beta20050528 (03 Jun 2005)
+
+  03 Jun 2005; Mark Loeser <halcy0n@gentoo.org>
+  +gcc-4.1.0_beta20050528.ebuild:
+  Initial commit of a GCC-4.1 snapshot, for all those that want to be on the
+  bleeding edge
+
+*gcc-4.0.1_beta20050602 (03 Jun 2005)
+
+  03 Jun 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.0.1_beta20050526.ebuild, +gcc-4.0.1_beta20050602.ebuild:
+  GCC4 snapshot bump
+
+  01 Jun 2005; Markus Rothe <corsair@gentoo.org> gcc-3.4.4.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*gcc-3.2.2 (28 May 2005)
+
+  28 May 2005; Mike Frysinger <vapier@gentoo.org> +gcc-3.2.2.ebuild:
+  Add gcc for PS2.
+
+*gcc-4.0.1_beta20050526 (28 May 2005)
+
+  28 May 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.0.1_beta20050521.ebuild, +gcc-4.0.1_beta20050526.ebuild:
+  GCC4 snapshot bump
+
+*gcc-3.4.4 (24 May 2005)
+
+  24 May 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/3.4.4/gcc-3.4.4-cross-compile.patch, +gcc-3.4.4.ebuild:
+  Version bumpage.
+
+*gcc-3.3.6 (24 May 2005)
+
+  24 May 2005; Mike Frysinger <vapier@gentoo.org>
+  +gcc-3.3.6.ebuild:
+  Version bumpage.
+
+*gcc-4.0.1_beta20050521 (22 May 2005)
+
+  22 May 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.0.1_beta20050514.ebuild, +gcc-4.0.1_beta20050521.ebuild:
+  GCC4 snapshot bump
+
+*gcc-2.95.3-r9 (21 May 2005)
+
+  21 May 2005; Mike Frysinger <vapier@gentoo.org> +gcc-2.95.3-r9.ebuild:
+  Add patches from Debian/crosstool and try to make more cross-compile friendly.
+
+*gcc-4.0.1_beta20050514 (15 May 2005)
+
+  15 May 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.0.1_beta20050507.ebuild, +gcc-4.0.1_beta20050514.ebuild:
+  Bump gcc4 ebuild to the newest snapshot
+
+  11 May 2005; Martin Schlemmer <azarah@gentoo.org>
+  gcc-4.0.1_beta20050507.ebuild:
+  Fix depends to actually depend on glibc/binutils that sorda makes things
+  work (glibc I only depend on something we can build against, not build at
+  this stage). Remove my patching crud that got included by mistake.
+
+  11 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  gcc-3.4.3.20050110-r2.ebuild, gcc-4.0.1_beta20050507.ebuild:
+  Make latest gcc (3.4 and 4) depend on glibc just for glibc systems.
+
+  10 May 2005; Martin Schlemmer <azarah@gentoo.org>
+  files/awk/fixlafiles.awk, gcc-4.0.0.ebuild, gcc-4.0.1_beta20050507.ebuild:
+  Fixup fixlafiles.awk detecting of gcc CHOST.
+
+*gcc-4.0.1_beta20050507 (08 May 2005)
+
+  08 May 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.0.0_beta20050416.ebuild, +gcc-4.0.1_beta20050507.ebuild:
+  Version bump to the newest GCC4 snapshot.
+
+  23 Apr 2005; Joshua Kinard <kumba@gentoo.org>
+  +files/3.4.2/gcc-3.4.2-mips-ip28_cache_barriers-v2.patch,
+  gcc-3.4.3-r1.ebuild, gcc-3.4.3.20050110-r1.ebuild,
+  gcc-3.4.3.20050110-r2.ebuild:
+  Update the gcc-3.4.3 ebuilds to use a newer IP28 cache barrier patch. Won't
+  affect mainstream Mips systems.
+
+*gcc-4.0.0 (21 Apr 2005)
+
+  21 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org> +gcc-4.0.0.ebuild:
+  Adding ebuild for gcc-4.0.0 release.  This doesn't mean it's supported yet!
+
+*gcc-4.0.0_beta20050416 (17 Apr 2005)
+
+  17 Apr 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.0.0_beta20050409.ebuild, +gcc-4.0.0_beta20050416.ebuild:
+  Bump to newest weekly snapshot.
+
+*gcc-4.0.0_beta20050409 (12 Apr 2005)
+
+  12 Apr 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.0.0_beta20050402.ebuild, +gcc-4.0.0_beta20050409.ebuild:
+  Updating GCC4 ebuild to the newest snapshot
+
+*gcc-3.3.5.20050130-r2 (08 Apr 2005)
+
+  08 Apr 2005; Mike Frysinger <vapier@gentoo.org>
+  +gcc-3.3.5.20050130-r2.ebuild:
+  Add a patch from Debian and the patch to prevent gcc from unlinking /dev/null.
+
+*gcc-3.4.3.20050110-r2 (08 Apr 2005)
+
+  08 Apr 2005; Mike Frysinger <vapier@gentoo.org>
+  +gcc-3.4.3.20050110-r2.ebuild:
+  Add fix for PR/16625 from upstream #88022 by Ed Catmur. Patch to prevent
+  /dev/null from being deleted #79836 by David Wood. Also add a patch for arm
+  PR/16201 and a patch from Debian for m68k.
+
+*gcc-4.0.0_beta20050402 (03 Apr 2005)
+
+  03 Apr 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.0.0_beta20050326.ebuild, +gcc-4.0.0_beta20050402.ebuild:
+  Version bump to the newest GCC4 snapshot
+
+*gcc-4.0.0_beta20050326 (28 Mar 2005)
+
+  28 Mar 2005; Mark Loeser <halcy0n@gentoo.org>
+  -gcc-4.0.0_beta20050305.ebuild, +gcc-4.0.0_beta20050326.ebuild:
+  Version bump to newest GCC4 snapshot
+
+  27 Mar 2005; Hardave Riar <hardave@gentoo.org> gcc-3.4.3-r1.ebuild:
+  Stable on mips.
+
+  21 Mar 2005; <solar@gentoo.org> gcc-3.4.3-r1.ebuild,
+  gcc-3.4.3.20050110-r1.ebuild:
+  - mark ppc pp64 stable for pie/ssp use
+
+*gcc-3.4.3.20050110-r1 (20 Mar 2005)
+
+  20 Mar 2005; Mike Frysinger <vapier@gentoo.org>
+  +gcc-3.4.3.20050110-r1.ebuild:
+  Fix visibility patches #78720, update uclibc support, and add support for
+  arm bigendian.
+
+  19 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gcc-3.4.3-r1.ebuild, gcc-3.4.3.20050110.ebuild:
+  use_multilib -> is_multilib
+
+*gcc-3.3.5.20050130-r1 (19 Mar 2005)
+
+  19 Mar 2005; Mike Frysinger <vapier@gentoo.org>
+  +gcc-3.3.5.20050130-r1.ebuild:
+  Update uclibc patches and split them off into a sep tarball.
+
+  17 Mar 2005; Luca Barbato <lu_zero@gentoo.org> gcc-3.4.3-r1.ebuild:
+  Marked ppc
+
+  15 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gcc-3.3.5.20050130.ebuild:
+  Stable sparc.
+
+  14 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gcc-2.95.3-r8.ebuild:
+  Patched to compile usilg gcc-3.4.
+
+*gcc-4.0.0_beta20050305 (07 Mar 2005)
+
+  07 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +gcc-4.0.0_beta20050305.ebuild:
+  Version bump of gcc-4 for bleeding edge masochists.
+
+  17 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gcc-3.3.5-r1.ebuild, gcc-3.3.5.20050130.ebuild, gcc-3.4.3-r1.ebuild,
+  gcc-3.4.3.20050110.ebuild:
+  Only apply libffi-without-libgcj.patch if we're -build.
+
+  12 Feb 2005; <plasmaroo@gentoo.org> gcc-3.3.5.20050130.ebuild:
+  Mark -ia64 as bootstrapping fails with this version.
+
+  12 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gcc-3.3.5-r1.ebuild, gcc-3.3.5.20050130.ebuild, gcc-3.4.3-r1.ebuild,
+  gcc-3.4.3.20050110.ebuild:
+
+  12 Feb 2005; <plasmaroo@gentoo.org> gcc-3.4.3-r1.ebuild,
+  gcc-3.4.3.20050110.ebuild:
+  Mask 3.4 series -ia64; PINE fails horribly with it but works on 3.3.2...
+
+  10 Feb 2005; Markus Rothe <corsair@gentoo.org> gcc-3.4.3-r1.ebuild:
+  Stable on ppc64
+
+  02 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gcc-3.3.5.20050130.ebuild, gcc-3.4.3-r1.ebuild:
+  Fix bug #80434.
+
+  02 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gcc-3.3.5.20050130.ebuild:
+  Pushing into ~arch.  Re-adds support for tls on sparc.
+
+*gcc-3.3.5.20050130 (01 Feb 2005)
+
+  01 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gcc-3.3.5-r1.ebuild, +gcc-3.3.5.20050130.ebuild, gcc-3.4.3-r1.ebuild,
+  gcc-3.4.3.20050110.ebuild:
+  Fix ordering of data in ebuilds so DESCRIPTION, etc comes after inherit
+  toolchain. Bump gcc-3.3 to reintroduce patchs from fedora which got
+  dropped from 3.3.5 and 3.3.5-r1. This should fix tls issues on sparc
+  (bug #78320), but it is still in 'KEYWORDS=-*' until the PIE patches
+  get updated.
+
+  31 Jan 2005; <plasmaroo@gentoo.org> gcc-3.3.5-r1.ebuild,
+  gcc-3.4.3-r1.ebuild:
+  GCC 3.3.5 eats fluffy bunnies for breakfast and kills IA64 bootstraps, so
+  3.4.3-r1 is going stable as it works. Marking 3.3.5-r1 "-ia64".
+
+  25 Jan 2005; Rob Holland <tigger@gentoo.org> :
+  Don't break the description line by overriding it in the eclass.
+
+  19 Jan 2005; Joshua Kinard <kumba@gentoo.org> gcc-3.4.3-r1.ebuild,
+  gcc-3.4.3.20050110.ebuild:
+  Typo tweaks in some comments in src_unpack.
+
+  19 Jan 2005; Brandon Hale <tseng@gentoo.org> gcc-3.4.3.20050110.ebuild:
+  Re-masking by request, see bug #78666. This GCC is failing with ICE, and 
+  some users report that it cannot even build itself. Hopefully the 
+  SSE2/3 fixes can be sanely backported to a released toolchain instead of 
+  unleashing a random, busted CVS checkout on ~arch.
+
+  16 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gcc-3.4.3.20050110.ebuild:
+  Pushing into ~arch from -*.  This fixes bugs #57602 and #75067.
+
+  11 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> gcc-3.3.5-r1.ebuild:
+  Stable on sparc
+
+*gcc-3.4.3.20050110 (10 Jan 2005)
+
+  10 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +gcc-3.4.3.20050110.ebuild:
+  Bump to a newer version of the 3.4 branch from upstream. This should resolve
+  alot of SIMD issues people are hsving with -msse and others. Should resolve
+  bug #57602, hopefully bug #75067, and all of its kin.
+
+  10 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gcc-3.3.5-r1.ebuild, gcc-3.4.3-r1.ebuild:
+  Moved src_install, pkg_preinst, and pkg_postinst into eclass using
+  gcc-3.3.5-r1 and gcc-3.4.3-r1 as a base. Made env.d script creation more
+  abstract. Fixed up multilib support. Fixed some problems moving libs to
+  incorrect destinations or not moving some libs. Fixed a few
+  cross-compilation problems (but not all yet). Closes bug #76884. Updated
+  src_unpack to do patches based on ${CTARGET} instead of ${ARCH}.
+
+  09 Jan 2005; Joshua Kinard <kumba@gentoo.org>
+  +files/3.4.2/gcc-3.4.2-mips-ip28_cache_barriers.patch, gcc-3.4.3-r1.ebuild:
+  Added patch that introduces cache barriers to be used when building SGI IP28
+  kernels. Only enabled by passing -mip28-cache-barriers. Only patched in if USE
+  ip28 is set, so non-ip28 mips systems will never see this option.
+
+  06 Jan 2005; Mike Frysinger <vapier@gentoo.org> gcc-3.3.5-r1.ebuild:
+  Update pie patches to fix order #72665.
+
+  30 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/3.3.5/gcc-3.3.5-ffecom_gfrt_basictype-prototype.patch,
+  gcc-3.3.5-r1.ebuild:
+  Fixing bad function prototype which causes compilation to fail on some
+  configurations.
+
+  24 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  gcc-3.4.3-r1.ebuild:
+  Make sure ${CTARGET}-g77 is created.
+
+  21 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  gcc-3.4.3-r1.ebuild:
+  sparc64 multilib fixes... /lib is 32bit which confused the ebuild.
+
+*gcc-3.3.5-r1 (04 Dec 2004)
+
+  04 Dec 2004; Travis Tilley <lv@gentoo.org>
+  +files/3.3.4/libffi-without-libgcj.patch, +gcc-3.3.5-r1.ebuild,
+  -gcc-3.3.5.ebuild:
+  added libffi-without-gcj fix, fixed another libpath bug, and updated the pie
+  patches so that sparc works again. the ebuilds and pie patch revisions for
+  the latest 3.3 and 3.4 ebuilds are now in sync. re-keyworded as testing on
+  sparc
+
+  03 Dec 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.3-r1.ebuild:
+  keyworded as testing on previously supported archs, as well as ia64 which
+  works now, yay
+
+  29 Nov 2004; Rob Holland <tigger@gentoo.org> files/gcc-spec-env.patch:
+  fixup gcc_specs patch to handle empty string
+
+  27 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org> gcc-3.3.5.ebuild:
+  -sparc because of weirdness
+
+  26 Nov 2004; Sven Wegener <swegener@gentoo.org> :
+  Added missing digest entries.
+
+  27 Nov 2004; Travis Tilley <lv@gentoo.org>
+  +files/3.4.3/libffi-without-libgcj.patch, gcc-3.4.3-r1.ebuild:
+  1) added a patch that will allow building libffi without gcj. This
+     should make gnustep users happy. ;)
+  2) fixed a few more issues with libraries ending up outside the gcc
+     ${LIBPATH}
+  3) fixed the libtool archive libdir fixing thingie, which has apparently
+     been broken for quite some time without anyone noticing
+
+*gcc-3.4.3-r1 (25 Nov 2004)
+
+  25 Nov 2004; Travis Tilley <lv@gentoo.org> +gcc-3.4.3-r1.ebuild:
+  added a 20041125 branch update. made the logic for controlling
+  {PIE,SSP}-by-default logic even more fine grained, and updated the pie
+  patches to the latest version.
+
+  21 Nov 2004; Travis Tilley <lv@gentoo.org> -gcc-3.1.1-r2.ebuild,
+  -gcc-3.3.1-r5.ebuild, -gcc-3.3.2-r1.ebuild, gcc-3.3.2-r2.ebuild,
+  -gcc-3.3.2-r3.ebuild, -gcc-3.3.2-r4.ebuild, gcc-3.3.2-r5.ebuild,
+  gcc-3.3.2-r7.ebuild, gcc-3.3.2.ebuild, gcc-3.3.3-r3.ebuild,
+  -gcc-3.3.3-r5.ebuild, gcc-3.3.3-r6.ebuild, -gcc-3.3.3.ebuild,
+  gcc-3.3.4-r1.ebuild, gcc-3.3.4-r2.ebuild, -gcc-3.3.ebuild:
+  removed unused versions and changed the SLOT for all gcc 3.3 ebuilds to be
+  3.3 instead of 3.2
+
+  21 Nov 2004; Travis Tilley <lv@gentoo.org> gcc-3.3.5.ebuild:
+  updated manpages and pie patches
+
+  20 Nov 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.3.ebuild:
+  stable on amd64
+
+  20 Nov 2004; Travis Tilley <lv@gentoo.org> gcc-3.3.5.ebuild:
+  added in bounds checking support, fixed some multilib path oddities, and
+  made the ebuild use the newish should_we_gcc_config check for deciding
+  whether or not we should run gcc-config during postinst.
+  NOTE: at the moment 3.3.5 will not compile xgcc when using gcc 3.4
+
+  18 Nov 2004; Ilya A. Volynets-Evenbach <iluxa@gentoo.org> gcc-3.4.3.ebuild:
+  We don't need no stinky libstdc++-v3 on MIPS. Not to mention that 3.4.3 can't
+  compile it anyways
+
+*gcc-3.3.5 (17 Nov 2004)
+
+  17 Nov 2004; Mike Frysinger <vapier@gentoo.org> +gcc-3.3.5.ebuild:
+  Version bump.
+
+  14 Nov 2004; Sven Wegener <swegener@gentoo.org> :
+  Added missing ? after !build in PDEPEND.
+
+  09 Nov 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.3.ebuild:
+  add back in bounds checking support and fix a silly libdir bug (70481)
+
+  07 Nov 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.3.ebuild:
+  updated the pie patch tarball to version 8.7.6.6. this fixes a bug with
+  using the patches on alpha without a binutils that supports -pie. since
+  alpha is not currently keyworded for this ebuild, the revision has not been
+  bumped for this fix.
+
+  07 Nov 2004; Travis Tilley <lv@gentoo.org> gcc-3.3.3-r3.ebuild,
+  gcc-3.3.3-r5.ebuild, gcc-3.3.3-r6.ebuild, gcc-3.3.4-r1.ebuild,
+  gcc-3.3.4-r2.ebuild, gcc-3.4.1-r2.ebuild, gcc-3.4.1-r3.ebuild,
+  gcc-3.4.1.ebuild, gcc-3.4.2-r2.ebuild, gcc-3.4.3.ebuild:
+  changed the f77 USE flag to just plain old fortran
+
+*gcc-3.4.3 (07 Nov 2004)
+
+  07 Nov 2004; Travis Tilley <lv@gentoo.org> -gcc-3.4.2-r3.ebuild,
+  +gcc-3.4.3.ebuild:
+  version bumped. only generate specs-specific gcc configs if hardened gcc is
+  known to work on your arch. updated a few patches from redhat, and added the
+  arm/cross patches to the gcc patch tarball. removed gcc 3.4.2-r3 since the
+  branch update used was made just before the 3.4.3 freeze (dont worry sparc
+  users, this ebuild is keyworded as testing on sparc).
+
+  06 Nov 2004; Joshua Kinard <kumba@gentoo.org> gcc-3.4.2-r3.ebuild:
+  Marked unstable on sparc (Needs cascaded sparc64/gcc34 testing profile).
+
+  31 Oct 2004; Joshua Kinard <kumba@gentoo.org> gcc-3.4.1-r3.ebuild:
+  Marked stable on mips.
+
+  28 Oct 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.2-r3.ebuild:
+  fixed the ppc logic in toolchain.eclass and keyworded 3.4.2-r3 as testing on
+  ppc
+
+  26 Oct 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.2-r3.ebuild:
+  keyword as testing on amd64, mips, ppc64, and x86
+
+  26 Oct 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/3.4.2/400-mips-pr17565.patch, +files/3.4.2/401-ppc-eabi-typo.patch,
+  +files/3.4.2/600-gcc34-arm-ldm-peephole.patch,
+  +files/3.4.2/601-gcc34-arm-ldm.patch,
+  +files/3.4.2/602-sdk-libstdc++-includes.patch,
+  +files/3.4.2/700-pr15068-fix.patch, +files/3.4.2/800-arm-bigendian.patch,
+  +files/3.4.2/810-arm-bigendian-uclibc.patch, gcc-3.4.2-r3.ebuild:
+  Import a bunch of patches from uclibc and merge a bunch of misc
+  cross-compiling fixes.
+
+*gcc-3.4.2-r3 (25 Oct 2004)
+
+  25 Oct 2004; Travis Tilley <lv@gentoo.org> +gcc-3.4.2-r3.ebuild:
+  any patches borrowed from fedora that are no longer in the latest fedora gcc
+  3.4 src rpm have been removed, except for the symbol visibility patches. added
+  20041025 branch update. a few GCC_SPECS and gcc-config related bugs in
+  toolchain.eclass have also been fixed.
+
+  18 Oct 2004; Tom Gall <tgall@gentoo.org> gcc-3.4.1-r3.ebuild:
+  stable on ppc64
+
+  06 Oct 2004; Alexander Gabert <pappy@gentoo.org> gcc-3.4.2-r2.ebuild:
+  added bounds checking by H.T. Brugge to gcc-3.4.2-r2 and toolchain.eclass,
+  notice that PIE+SSP is turned off when boundschecking is active
+
+  05 Oct 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.2-r2.ebuild:
+  made 3.4.2-r2 rdep on gcc-config-1.3.6-r3 to fix the new specs-specific config
+  switching and marked stable on amd64
+
+  05 Oct 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.2-r2.ebuild:
+  revert the multilib-by-default changes, since this seems to be causing
+  problems with hardened, and we havent yet completely figured out how to handle
+  mips' three ABIs.
+  Note: the multilib problem with hardened on amd64 will soon be fixed in
+  hardened-dev-sources, and this will no longer be an issue.
+
+  03 Oct 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.2-r2.ebuild:
+  use create_gcc_env_entry from toolchain.eclass to create gcc-config entries
+  for using the hardened/vanilla specs files
+
+  25 Sep 2004; Travis Tilley <lv@gentoo.org> gcc-3.3.3-r3.ebuild,
+  gcc-3.3.3-r5.ebuild, gcc-3.3.3-r6.ebuild, gcc-3.3.4-r1.ebuild,
+  gcc-3.3.4-r2.ebuild:
+  update uclibc patched ebuilds to work properly with recent libtool eclass
+  changes
+
+  22 Sep 2004; Joshua Kinard <kumba@gentoo.org>
+  +files/3.4.2/gcc-3.4.x-mips-add-march-r10k.patch, gcc-3.4.2-r2.ebuild:
+  Added a patch for mips that adds -march=r10000 and -mtune=r10000 support to
+  gcc.
+
+*gcc-3.4.2-r2 (21 Sep 2004)
+
+  21 Sep 2004; Travis Tilley <lv@gentoo.org>
+  +files/3.4.2/gcc34-fix-sse2_pinsrw.patch,
+  +files/3.4.2/gcc34-m32-no-sse2.patch, -gcc-3.4.2-r1.ebuild,
+  +gcc-3.4.2-r2.ebuild:
+  moved libgcc stuff back into the versioned directory, the libgcc_s-only stuff
+  will be broken out into a seperate ebuild. fixed broken libtool archives.
+  added an sse2 fix from Scott "I also own lv" Ladd, and a workaround that
+  disables sse2 by default for 32bit on both x86 and amd64 until the rest of the
+  wrong-code bugs are fixed. the workaround can be disabled completely by using
+  the -msse2 flag.
+
+  19 Sep 2004; <solar@gentoo.org> files/3.3.4/gcc-3.3.4-spec-env.patch,
+  files/3.4.1/gcc-3.4.1-spec-env.patch:
+  update robs patches from GCC_SPEC to GCC_SPECS so names are consistent in all
+  gcc versions
+
+  19 Sep 2004; <solar@gentoo.org> :
+  restore changelog
+
+*gcc-3.4.1-r3 (19 Sep 2004)
+
+  19 Sep 2004; Rob Holland <tigger@gentoo.org>
+  +files/3.3.4/gcc-3.3.4-spec-env.patch,
+  +files/3.4.1/gcc-3.4.1-spec-env.patch, +gcc-3.3.4-r2.ebuild,
+  +gcc-3.4.1-r3.ebuild:
+  added GCC_SPEC environment variable support
+
+  14 Sep 2004; Luca Barbato <lu_zero@gentoo.org> gcc-3.4.2-r1.ebuild:
+  Marked -ppc
+
+  13 Sep 2004; Travis Tilley <lv@gentoo.org> +files/gcc-spec-env.patch,
+  gcc-3.4.2-r1.ebuild:
+  added a patch from Rob "I own lv" Holland that allows you to switch specs
+  files based on an environment variable (GCC_SPECS) and made gcc build both a
+  vanilla and hardened specs file by default. Eventually this will mean being
+  able to switch between gcc and hardened gcc on the fly. Since neither
+  gcc-config nor portage support this yet, I'm not bumping the revision number.
+
+*gcc-3.4.2-r1 (12 Sep 2004)
+
+  12 Sep 2004; Travis Tilley <lv@gentoo.org> +gcc-3.4.2-r1.ebuild,
+  -gcc-3.4.2.ebuild:
+  re-added uclibc patches and masked for testing
+
+  10 Sep 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.2.ebuild:
+  updated ssp patch to 3.4.1-1. this version includes it's own documentation and
+  will define _SSP_ when stack protection code is being built.
+
+  08 Sep 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.2.ebuild:
+  made gcc default to using multilib on supported archs. add nomultilib to USE
+  to disable.
+
+*gcc-3.4.2 (07 Sep 2004)
+
+  07 Sep 2004; Travis Tilley <lv@gentoo.org> +gcc-3.4.2.ebuild,
+  -gcc-3.4.2_pre20040902.ebuild:
+  version bump. disabled building libjava multilib. this release is masked until
+  the uclibc patches are done, bootstrapping is tested, and the toolchain.eclass
+  changes are tested on ppc and ppc64.
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> gcc-3.4.1-r2.ebuild,
+  gcc-3.4.1.ebuild, gcc-3.4.2_pre20040902.ebuild:
+  Switch to use epause and ebeep, bug #62950
+
+  06 Sep 2004; Luca Barbato <lu_zero@gentoo.org> gcc-3.4.1-r2.ebuild:
+  Marked ppc
+
+*gcc-3.4.2_pre20040902 (05 Sep 2004)
+
+  05 Sep 2004; Travis Tilley <lv@gentoo.org> +gcc-3.4.2_pre20040902.ebuild:
+  - added 3.4.2_pre20040902 for testing and working on the new toolchain.eclass
+  - updated the gcc symbol visibility patch
+  - removed uclibc patches temporarily, they break every time I update gcc
+  - added a hack to make gcj not build multilib
+  - made libgcc_s.so install to /lib{,32,64}
+  - added a potential cross-compile fix that should run the correct target
+    when CCHOST != CHOST
+  - added java gui backport
+
+  31 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> gcc-3.3.4-r1.ebuild:
+  Stable on sparc
+
+  28 Aug 2004; <solar@gentoo.org> gcc-3.4.1-r2.ebuild, gcc-3.4.1.ebuild:
+  We don't want a PDEPEND of libstd++v3 on uclibc.
+
+  26 Aug 2004; Jon Portnoy <avenj@gentoo.org> gcc-3.3.4-r1.ebuild :
+  Stable on x86
+
+  26 Aug 2004; Travis Tilley <lv@gentoo.org> gcc-3.3.4-r1.ebuild:
+  stable on amd64
+
+  26 Aug 2004; <solar@gentoo.org> -gcc-3.3.2-r6.ebuild, -gcc-3.3.3-r1.ebuild,
+  -gcc-3.3.4.ebuild, -gcc-3.4.0-r6.ebuild:
+  pruned a few more ebuilds
+
+  25 Aug 2004; <solar@gentoo.org> -gcc-3.3-r1.ebuild, -gcc-3.3.3-r4.ebuild,
+  -gcc-3.3.3_pre20040130.ebuild, -gcc-3.3.3_pre20040215.ebuild,
+  -gcc-3.3.3_pre20040322.ebuild, gcc-3.3.4-r1.ebuild, gcc-3.4.1-r2.ebuild:
+  removed old/stale ebuilds, marked gcc-3.3.4-r1 stable on arm, keep gcc from
+  scanning for guard symbols when environment variable is set
+
+  25 Aug 2004; Mike Frysinger <vapier@gentoo.org> gcc-2.95.3-r8.ebuild,
+  gcc-3.2.3-r4.ebuild, gcc-3.3-r1.ebuild, gcc-3.3.1-r5.ebuild,
+  gcc-3.3.2-r1.ebuild, gcc-3.3.2-r2.ebuild, gcc-3.3.2-r3.ebuild,
+  gcc-3.3.2-r4.ebuild, gcc-3.3.2-r5.ebuild, gcc-3.3.2-r6.ebuild,
+  gcc-3.3.2-r7.ebuild, gcc-3.3.2.ebuild, gcc-3.3.3-r1.ebuild,
+  gcc-3.3.3-r3.ebuild, gcc-3.3.3-r4.ebuild, gcc-3.3.3-r5.ebuild,
+  gcc-3.3.3-r6.ebuild, gcc-3.3.3.ebuild, gcc-3.3.3_pre20040130.ebuild,
+  gcc-3.3.3_pre20040215.ebuild, gcc-3.3.3_pre20040322.ebuild,
+  gcc-3.3.3_pre20040408-r1.ebuild, gcc-3.3.3_pre20040426.ebuild,
+  gcc-3.3.4-r1.ebuild, gcc-3.3.4.ebuild, gcc-3.3.ebuild, gcc-3.4.0-r6.ebuild,
+  gcc-3.4.1-r2.ebuild, gcc-3.4.1.ebuild:
+  Rip out $COMPILER since it isnt used in such a way that matters.
+
+  20 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> gcc-3.3.4-r1.ebuild:
+  Enabled -O2 for sparc: safe and good
+
+  17 Aug 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.1-r2.ebuild,
+  gcc-3.4.1.ebuild:
+  made gcc depend on media-libs/libart_lgpl when gcj is in USE
+
+  17 Aug 2004; Luca Barbato <lu_zero@gentoo.org> gcc-3.4.1-r2.ebuild:
+  Marked ~ppc
+
+  14 Aug 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.0-r6.ebuild,
+  gcc-3.4.1-r2.ebuild, gcc-3.4.1.ebuild:
+  -mcpu is deprecated on amd64 and x86
+
+  14 Aug 2004; Ilya A. Volynets-Evenbach <iluxa@gentoo.org>
+  files/3.4.1/gcc-3.4.1-mips-n32only.patch,
+  files/3.4.1/gcc-3.4.1-mips-n64only.patch, gcc-3.4.1-r2.ebuild:
+  Make sure all gcc libraries go into version-specific dir on n32-only and
+  n64-only systems
+
+  13 Aug 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.1-r2.ebuild:
+  stable on amd64 :)
+
+  11 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> gcc-3.3.4-r1.ebuild:
+  Keyworded ~sparc
+
+  11 Aug 2004; Travis Tilley <lv@gentoo.org>
+  +files/3.4.1/gcc-3.4.1-glibc-is-native.patch, gcc-3.4.1-r2.ebuild,
+  gcc-3.4.1.ebuild:
+  added a fix for bug 55108, where enabling multilib caused gcc to fail
+  compiling with "Link tests are not allowed after GCC_NO_EXECUTABLES"
+
+  08 Aug 2004; Tom Martin <slarti@gentoo.org> gcc-3.3.3-r3.ebuild,
+  gcc-3.3.3-r4.ebuild, gcc-3.3.3-r5.ebuild, gcc-3.3.3-r6.ebuild,
+  gcc-3.3.4-r1.ebuild, gcc-3.3.4.ebuild, gcc-3.4.0-r6.ebuild,
+  gcc-3.4.1-r2.ebuild, gcc-3.4.1.ebuild:
+  Typo in DESCRIPTION: extentions -> extensions. Bug 59717.
+
+  06 Aug 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/pro-police-docs.patch, gcc-3.3.4-r1.ebuild, gcc-3.4.0-r6.ebuild,
+  gcc-3.4.1-r2.ebuild, gcc-3.4.1.ebuild:
+  Add the pro-police doc patch.
+
+  05 Aug 2004; Ilya A. Volynets-Evenbach <iluxa@gentoo.org>
+  gcc-3.4.1-r2.ebuild:
+  Disable PDEPEND on libstdc++-v3 for n32/n64 systems. gcc-3.3 didn't work on
+  them ever. Not to mention that libstdc++-v3 simply doesn't build as n32.
+  Also add $ABI variable. It should be set in profile for multi-abi capable arches
+
+*gcc-3.4.1-r2 (03 Aug 2004)
+
+  03 Aug 2004; Travis Tilley <lv@gentoo.org>
+  +files/3.4.1/gcc-3.4.1-r2-gentoo-branding.patch, -gcc-3.4.1-r1.ebuild,
+  +gcc-3.4.1-r2.ebuild, gcc-3.4.1.ebuild:
+  new snapshot, among other things it contains an enum fix that's needed to work
+  on porting openoffice to gcc 3.4. removed the old experimental ebuild and
+  keyworded 3.4.1 stable on ppc64 since it also has the ICE fix for mozilla.
+  updated piepatch version to 8.7.6.5
+
+  03 Aug 2004; Tom Gall <tgall@gentoo.org> gcc-3.4.1-r1.ebuild:
+  stable on ppc64
+
+  29 Jul 2004; Alexander Gabert <pappy@gentoo.org> gcc-3.3.4-r1.ebuild:
+  adding hardened dependency for sparc, still not keyworded, but yet to come
+
+  26 Jul 2004; Travis Tilley <lv@gentoo.org>
+  +files/3.4.1/gcc341-ppc64-mozilla-ICE-fix.patch, gcc-3.4.1-r1.ebuild,
+  gcc-3.4.1.ebuild:
+  added a patch that should fix a ppc64 specific internal compiler error that
+  shows up when compiling mozilla
+
+  25 Jul 2004; Daniel Goller <morfic@gentoo.org> gcc-3.4.1.ebuild:
+  Marking ~x86 for gcc 3.4 profile
+
+  25 Jul 2004; Guy Martin <gmsoft@gentoo.org> gcc-3.4.1.ebuild:
+  Marked -hppa. It b0rks glibc and co.
+
+*gcc-3.3.3-r1 (22 Jul 2004)
+
+  22 Jul 2004; Martin Schlemmer <azarah@gentoo.org>
+  +files/3.3.3/gcc333-pr15693.patch, +gcc-3.3.3-r1.ebuild:
+  Bug #57182.  This is sparc only fixup.
+
+  22 Jul 2004; Alexander Gabert <pappy@gentoo.org> gcc-3.3.4-r1.ebuild:
+  fire up hardened changes for sparc and hppa, though still leaving keyworded on
+  sparc
+
+  22 Jul 2004; Alexander Gabert <pappy@gentoo.org> gcc-3.4.1.ebuild:
+  added hppa logic and note for glibc
+
+  20 Jul 2004; Alexander Gabert <pappy@gentoo.org> gcc-3.3.3-r6.ebuild:
+  added hardened auto PIE SSP for sparc
+
+  19 Jul 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.0-r6.ebuild,
+  gcc-3.4.1-r1.ebuild, gcc-3.4.1.ebuild:
+  changed use of gtk2 USE flag to gtk
+
+  14 Jul 2004; <solar@gentoo.org> gcc-3.3.4-r1.ebuild:
+  gcc-3.3.4-r1 marked -hppa ~x86 ~amd64 ~mips ~arm, ~sparc desired
+
+  13 Jul 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.1.ebuild:
+  marking 3.4.1 stable on amd64. fixes bug 56864
+
+  13 Jul 2004; Travis Tilley <lv@gentoo.org> files/awk/fixlafiles.awk:
+  added Martin Schlemmer's new fixlafiles.awk with support for gcc 3.4 lib paths
+
+  11 Jul 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.0-r6.ebuild,
+  gcc-3.4.1-r1.ebuild, gcc-3.4.1.ebuild:
+  xlib peers are deprecated in libjava 3.4.0, switching gcc 3.4 ebuilds to gtk2
+
+*gcc-3.4.1-r1 (10 Jul 2004)
+
+  10 Jul 2004; Travis Tilley <lv@gentoo.org> +gcc-3.4.1-r1.ebuild:
+  now that i've tested it a bit locally, i'm committing a -* masked ebuild with
+  the GCC symbol visibility patch
+  (http://www.nedprod.com/programs/gccvisibility.html) for further testing by
+  hardened + uclibc devs. it should eventually lead to speed increases for
+  hardened, smaller libs for uclibc, and improved load times for everybody. this
+  ebuild also has a few readability cleanups for my own personal sanity.
+
+  07 Jul 2004; Joshua Kinard <kumba@gentoo.org> gcc-3.3.3-r6.ebuild:
+  Marked stable on mips.
+
+*gcc-3.4.1 (05 Jul 2004)
+
+  05 Jul 2004; Travis Tilley <lv@gentoo.org>
+  +files/3.4.1/gcc-3.4.1-gentoo-branding.patch, +gcc-3.4.1.ebuild:
+  new version. please see http://gcc.gnu.org/gcc-3.4/changes.html#3.4.1 for more
+  information.
+
+*gcc-3.3.4-r1 (04 Jul 2004)
+
+  04 Jul 2004; Martin Schlemmer <azarah@gentoo.org> +gcc-3.3.4-r1.ebuild:
+  Update from 3_3-rhl branch.  Add PIE support back.
+
+  02 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> gcc-2.95.3-r8.ebuild,
+  gcc-3.0.4-r6.ebuild, gcc-3.1.1-r2.ebuild, gcc-3.3-r1.ebuild,
+  gcc-3.3.1-r5.ebuild, gcc-3.3.2-r1.ebuild, gcc-3.3.2-r2.ebuild,
+  gcc-3.3.2-r4.ebuild, gcc-3.3.2-r5.ebuild, gcc-3.3.2-r6.ebuild,
+  gcc-3.3.2-r7.ebuild, gcc-3.3.2.ebuild, gcc-3.3.3-r3.ebuild,
+  gcc-3.3.3-r4.ebuild, gcc-3.3.3-r5.ebuild, gcc-3.3.3-r6.ebuild,
+  gcc-3.3.3.ebuild, gcc-3.3.3_pre20040130.ebuild,
+  gcc-3.3.3_pre20040215.ebuild, gcc-3.3.3_pre20040322.ebuild,
+  gcc-3.3.3_pre20040408-r1.ebuild, gcc-3.3.3_pre20040426.ebuild,
+  gcc-3.3.4.ebuild, gcc-3.3.ebuild, gcc-3.4.0-r6.ebuild:
+  virtual/glibc -> virtual/libc
+
+  29 Jun 2004; <solar@gentoo.org> gcc-3.3.3-r6.ebuild, gcc-3.3.4.ebuild,
+  gcc-3.4.0-r6.ebuild, files/3.3.3/gcc-3.3.3-norelro.patch:
+  add norelro patch for uclibc
+
+  28 Jun 2004; <solar@gentoo.org> gcc-3.4.0-r6.ebuild:
+  fwdport uclibc updates from 3.3.4
+
+  27 Jun 2004; Luca Barbato <lu_zero@gentoo.org> :
+  Minor ppc/altivec related fix
+
+  24 Jun 2004; <solar@gentoo.org> gcc-3.3.3-r6.ebuild:
+  backport uclibc updates from 3.3.4
+
+  24 Jun 2004; Aron Griffis <agriffis@gentoo.org> gcc-3.3-r1.ebuild,
+  gcc-3.3.2-r1.ebuild, gcc-3.3.2-r2.ebuild, gcc-3.3.2-r3.ebuild,
+  gcc-3.3.2-r4.ebuild, gcc-3.3.2-r5.ebuild, gcc-3.3.2-r6.ebuild,
+  gcc-3.3.2-r7.ebuild, gcc-3.3.2.ebuild, gcc-3.3.3-r3.ebuild,
+  gcc-3.3.3-r4.ebuild, gcc-3.3.3-r5.ebuild, gcc-3.3.3-r6.ebuild,
+  gcc-3.3.3.ebuild, gcc-3.3.3_pre20040130.ebuild,
+  gcc-3.3.3_pre20040215.ebuild, gcc-3.3.3_pre20040322.ebuild,
+  gcc-3.3.3_pre20040408-r1.ebuild, gcc-3.3.3_pre20040426.ebuild,
+  gcc-3.3.4.ebuild, gcc-3.3.ebuild, gcc-3.4.0-r6.ebuild:
+  Fix use invocation and regenerate broken manifest
+
+*gcc-3.3.4 (20 Jun 2004)
+
+  20 Jun 2004; Martin Schlemmer <azarah@gentoo.org>
+  +files/3.3.4/gcc334-gentoo-branding.patch, +gcc-3.3.4.ebuild:
+  Update version. Add uclibc changes as from Ned Ludd (not sure who they from).
+  PIE support is for the moment disabled, and thus the '-*' in KEYWORDS.
+  Closes bug #54321.
+
+  09 Jun 2004; Alexander Gabert <pappy@gentoo.org> gcc-3.3.3-r6.ebuild:
+  removing the hardened PIE SSP logic for sparc - it breaks glibc compiling with
+  a hardened gcc and until this is sorted out we cannot support it on sparc
+  anyway
+
+  08 Jun 2004; Travis Tilley <lv@gentoo.org> gcc-3.3.3-r6.ebuild:
+  stable on amd64
+
+  08 Jun 2004; <solar@gentoo.org> gcc-3.3.3-r6.ebuild:
+  gcc-3.3.3-r6.ebuild marked stable for upcoming release
+
+  08 Jun 2004; Brandon Hale <tseng@gentoo.org> gcc-3.3.3-r6.ebuild:
+  Start wider testing for 3.3.3-r6, marked ~x86.
+
+*gcc-3.1.1-r2 (07 Jun 2004)
+
+  07 Jun 2004; Mike Frysinger <vapier@gentoo.org> -gcc-3.1.1-r1.ebuild,
+  +gcc-3.1.1-r2.ebuild:
+  Fix long standing env bug #30849 and use epatch instead of patch.
+
+  05 Jun 2004; Travis Tilley <lv@gentoo.org>
+  +files/3.4.0/reiser4-why-do-you-hate-me.patch, gcc-3.4.0-r6.ebuild:
+  added fix for compiling on reiser4 filesystems
+
+  04 Jun 2004; Travis Tilley <lv@gentoo.org>
+  +files/3.4.0/gcc-3.4.0-cc1-no-stack-protector.patch,
+  +files/3.4.0/gcc34-ice-hack.patch, gcc-3.4.0-r6.ebuild:
+  updated the ice hack patch and added a stack protector fix for cc1
+
+  04 Jun 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.0-r6.ebuild:
+  stable on amd64
+
+  04 Jun 2004; Brandon Hale <tseng@gentoo.org>
+  +files/3.3.3/gcc-3.3.3-libiberty-pic.patch, gcc-3.3.3-r6.ebuild:
+  Readd missing libiberty-pic patch for gcc-3.3.3-r6
+
+  03 Jun 2004; Tom Gall <tgall@gentoo.org> gcc-3.4.0-r6.ebuild:
+  stable on ppc64
+
+  02 Jun 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> gcc-3.3.3_pre20040408-r1.ebuild:
+  Masked stable on ppc
+
+  02 Jun 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.0-r6.ebuild:
+  lib64 fix for libgcc_s on ppc64
+
+  02 Jun 2004; Joshua Kinard <kumba@gentoo.org> gcc-3.4.0-r6.ebuild:
+  Added ~mips back to KEYWORDS.
+
+  02 Jun 2004; Travis Tilley <lv@gentoo.org>
+  +files/3.4.0/gcc34-ia64-lib64.patch, +files/3.4.0/gcc34-multi32-hack.patch,
+  +files/3.4.0/gcc34-ppc64-m32-m64-multilib-only.patch, gcc-3.4.0-r6.ebuild:
+  added some last minute multilib fixes for ppc64, ia64, and sparc
+
+*gcc-3.4.0-r6 (01 Jun 2004)
+
+  01 Jun 2004; Travis Tilley <lv@gentoo.org>
+  -files/3.4.0/gcc-3.4-libiberty-pic.patch,
+  -files/3.4.0/gcc-3.4.0-mips-pcrel.diff,
+  -files/3.4.0/gcc-3.4.0-r3-gentoo-branding.patch,
+  +files/3.4.0/gcc-3.4.0-r6-gentoo-branding.patch,
+  -files/3.4.0/gcc34-ppc64-typo-fix.patch, -gcc-3.4.0-r4.ebuild,
+  -gcc-3.4.0-r5.ebuild, +gcc-3.4.0-r6.ebuild:
+  branch update. this release should fix most of the unit-at-a-time problems
+  people have been seeing.
+
+  30 May 2004; Travis Tilley <lv@gentoo.org>
+  +files/3.4.0/gcc34-ppc64-typo-fix.patch, gcc-3.4.0-r5.ebuild:
+  added a typo fix patch for ppc64
+
+  30 May 2004; Ilya A. Volynets-Evenbach <iluxa@gentoo.org>
+  +files/3.4.0/gcc-3.4.0-mips-pcrel.diff, gcc-3.4.0-r5.ebuild:
+  Add n32 & n64 use flags
+  Add n32/n64 patches and build options
+  Allow multilibs on all arches
+
+  28 May 2004; Tom Gall <tgall@gentoo.org> gcc-3.3.3_pre20040408-r1.ebuild:
+  marked as stable for ppc64
+
+  27 May 2004; Aron Griffis <agriffis@gentoo.org> gcc-3.3.2-r5.ebuild:
+  Fix bug 52147: gcc-3.3.2-r5 used to build on ia64, now it doesn't. Demote
+  stable version to 3.3.2-r2, which still builds.
+
+*gcc-3.3.3-r6 (27 May 2004)
+
+  27 May 2004; Alexander Gabert <pappy@gentoo.org>
+  +files/3.3.3/gcc333-ssp-3.3.2_1-fixup.patch, +gcc-3.3.3-r6.ebuild:
+  added preliminary gcc 3.3.3 -r6 version, this one will fix the problems with
+  bug 51386, removing guard from libgcc even UNResolved symbols
+
+*gcc-3.4.0-r5 (26 May 2004)
+
+  26 May 2004; Travis Tilley <lv@gentoo.org> +gcc-3.4.0-r5.ebuild:
+  uclibc related updates and fixes from Peter Mazinger
+
+  26 May 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.0-r4.ebuild:
+  adding ~amd64 keyword. this shouldnt have an effect on most users, as gcc 3.4
+  is profile masked. please switch to the gcc34-amd64-2004.1 profile if you want
+  to install this package on amd64.
+
+  21 May 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.0-r4.ebuild:
+  updated piepatches from Peter Mazinger to 8.7.6.2. the 3.4.0 version should
+  now be as complete as the 3.3.x version. Thanks Peter, you rock! :)
+
+  20 May 2004; <solar@gentoo.org> gcc-3.3.3-r5.ebuild:
+  marked gcc-3.3.3-r5 -* -hppa arm ~x86 ~sparc ~amd64
+
+*gcc-3.4.0-r4 (21 May 2004)
+
+  21 May 2004; Travis Tilley <lv@gentoo.org> -gcc-3.4.0-r3.ebuild,
+  +gcc-3.4.0-r4.ebuild:
+  3.4.0-r3 was horribly broken, so i am doing a revision bump to encourage all
+  users who installed this version to upgrade. i have also removed backwards
+  compatibility support because it was horribly broken on a few archs other than
+  x86 and amd64. please keep gcc 3.3.x or 3.2.x around if you need the older
+  libstdc++ for running binary-only c++ apps.
+
+*gcc-3.4.0-r3 (20 May 2004)
+
+  20 May 2004; Travis Tilley <lv@gentoo.org>
+  +files/3.4.0/gcc-3.4-libiberty-pic.patch,
+  -files/3.4.0/gcc-3.4.0-fno-for-scope.patch,
+  -files/3.4.0/gcc-3.4.0-gentoo-branding.patch,
+  +files/3.4.0/gcc-3.4.0-r3-gentoo-branding.patch, -gcc-3.4.0-r1.ebuild,
+  -gcc-3.4.0-r2.ebuild, +gcc-3.4.0-r3.ebuild:
+  updated gcc 3.4 to a 20040519 snapshot and removed the fno-for-scope and
+  stack-size patches, as they"ve been merged upstream. updated to the latest
+  piessp patches from Peter Mazinger, only with the arm patches temporarily
+  disabled. removed SSP exclusion patch... it should no longer be needed. amd64
+  users beware: this release breaks the ABI slightly, and has a small chance of
+  causing problems. for more information on this ABI break, see
+  http://gcc.gnu.org/ml/gcc/2004-05/msg00911.html
+
+  17 May 2004; Travis Tilley <lv@gentoo.org> gcc-3.3.3-r5.ebuild:
+  added amd64 to the (short) list of archs that can enable automatic PIE + SSP
+
+*gcc-3.3.3-r5 (14 May 2004)
+
+  14 May 2004; Alexander Gabert <pappy@gentoo.org> +gcc-3.3.3-r5.ebuild:
+  added preliminary version for gcc-3.3.3-r5 with latest Mazinger patches and
+  sparc define fix, testing proceeds on intel and sparc
+
+  13 May 2004; Travis Tilley <lv@gentoo.org>
+  +files/3.4.0/gcc-3.4.0-move-propolice-into-glibc.patch, gcc-3.4.0-r2.ebuild:
+  it seems that the new SSP doesnt honor _LIBC_PROVIDES_SSP_, so i've included a
+  patch that adds this functionality back in
+
+*gcc-3.4.0-r2 (12 May 2004)
+
+  12 May 2004; Travis Tilley <lv@gentoo.org> +gcc-3.4.0-r2.ebuild,
+  -gcc-3.4.0.ebuild:
+  added SSP support and updated the piessp patches (mostly) to 8.7.4. note that
+  the piessp patches arent yet as complete as the 3.3.3 version on archs other
+  than x86 and amd64.
+
+  08 May 2004; <solar@gentoo.org> gcc-3.3.3-r4.ebuild:
+  patch updates
+
+  06 May 2004; Travis Tilley <lv@gentoo.org> gcc-3.3.3-r3.ebuild,
+  gcc-3.3.3.ebuild, gcc-3.4.0-r1.ebuild:
+  made the compatibility check look for the actual .so instead of just the
+  versioned directory that contains it because there may or may not be any
+  shared objects to back up... The PPC-specific gcc 3.3.3 ebuilds for some
+  reason install libstdc++ directly to /usr/lib/ on PPC64, so this change should
+  allow gcc 3.4.0-r1 to install on this arch without tar failing.
+
+  06 May 2004; Travis Tilley <lv@gentoo.org> gcc-3.3.3-r3.ebuild,
+  gcc-3.3.3.ebuild, gcc-3.4.0-r1.ebuild:
+  copied the sed magick from 3.3.3-r4 that should fix building gcc with binutils
+  2.15.90.0.3 and then downgrading to a previous version. it disables the
+  --as-needed support that only gets compiled in when using binutils 2.15.90.0.2
+  or higher (proper support of which has been moved back to a gcc 3.5 target)
+
+  06 May 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.0-r1.ebuild:
+  added gcc333_pre20040408-stack-size.patch for testing on ppc64
+
+  04 May 2004; Ilya A. Volynets-Evenbaks <iluxa@gentoo.org> gcc-3.4.0.ebuild:
+  gcc reqires glibc-2.3.3_pre20040420, primarily because of bunch of missing
+  sgidefs.h includes, patch for which is included there.
+
+*gcc-3.4.0-r1 (04 May 2004)
+
+  04 May 2004; Travis Tilley <lv@gentoo.org> +gcc-3.4.0-r1.ebuild:
+  added a compatibility function that backs up your older libstdc++ so that
+  binary applications wont break if/when you uninstall your old compiler
+
+  04 May 2004; <solar@gentoo.org> files/3.3.3/gcc-uclibc-3.3-loop.patch:
+  added gcc-uclibc-3.3-loop.patch
+
+  04 May 2004; <solar@gentoo.org> gcc-3.3.3-r4.ebuild:
+  fixed typo's and limit USE hardened piessp by default to x86 only for now
+
+  03 May 2004; <solar@gentoo.org> gcc-3.3.3-r4.ebuild,
+  files/3.3.3/gcc-3.3.3-uclibc-add-ssp.patch:
+  disable -as-needed from being compiled into gcc specs natively when using
+  >=sys-devel/binutils-2.15.90.0.3. This is done to keep our gcc backwards
+  compatible with binutils. misc pie updates for misc arches
+
+*gcc-3.3.3-r4 (02 May 2004)
+
+  02 May 2004; <solar@gentoo.org> gcc-3.3.3-r3, gcc-3.3.3-r4.ebuild:
+  ARM is having issues with static linking as the spec file calls for
+  crtbeginT.o vs crtbeginS.o so we disable improved handling patch till we can
+  take a closer look. FIXME
+
+  01 May 2004; <solar@gentoo.org> gcc-3.3.3-r4.ebuild:
+  piessp version 8.6.4 from Peter S. Mazinger. Additional patches added redhat
+  ice-hack updated and more uclibc updates
+
+  30 Apr 2004; Tom Gall <tgall@gentoo.org> gcc-3.3.3_pre20040322.ebuild,
+  gcc-3.3.3_pre20040408-r1.ebuild, gcc-3.3.3_pre20040426.ebuild:
+  mark these as ~ppc64. DO NOT MARK stable for ppc64 without talking to me please.
+
+  29 Apr 2004; Mike Frysinger <vapier@gentoo.org> gcc-3.3.3-r3.ebuild,
+  +files/3.3.3/gcc333-debian-arm-getoff.patch,
+  +files/3.3.3/gcc333-debian-arm-ldm.patch:
+  Take two patches from debian gcc-3.3.3 so that it works nicely on arm.
+
+  28 Apr 2004; Travis Tilley <lv@gentoo.org>
+  +files/3.4.0/gcc-3.4.0-fno-for-scope.patch, gcc-3.4.0.ebuild:
+  added fix for bug 49174
+
+  28 Apr 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.0.ebuild:
+  fixed things up a bit and added a check that changes the deprecated -mcpu
+  option to -mtune so that libiberty wont break anymore for people with -mcpu in
+  CFLAGS
+
+  28 Apr 2004; <solar@gentoo.org> gcc-3.3.3-r3.ebuild:
+  More updates for uClibc, cross compiling fixes and addition of
+  --disable-libunwind-exceptions for use with glibc
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> gcc-3.0.4-r6.ebuild:
+  Add flag-o-matic for bug 49179
+
+*gcc-3.3.3_pre20040426 (27 Apr 2004)
+
+  27 Apr 2004; Luca Barbato <lu_zero@gentoo.org>
+  +files/3.3.3/gcc333_pre20040426-gentoo-branding.patch,
+  +gcc-3.3.3_pre20040426.ebuild:
+  New snapshot
+
+  27 Apr 2004; Mike Frysinger <vapier@gentoo.org> gcc-3.4.0.ebuild:
+  cleanup flag stuff and remove CHOST setting with hppa gcc-3.4.0.ebuild
+
+  27 Apr 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.0.ebuild:
+  re-added manpages and made the ebuild automatically die if gcj or multilib are
+  in USE, as these are sure to make gcc 3.4.0 fail at this point...
+
+  26 Apr 2004; Tom Gall <tgall@gentoo.org> gcc-3.4.0.ebuild:
+  fix bug 49111, appears to work quite well on ppc64
+
+  27 Apr 2004; Michael McCabe <randy@gentoo.org> gcc-3.3.3-r3.ebuild:
+  Marked stable on s390
+
+  26 Apr 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.0.ebuild:
+  fix bug where the ebuild tries to nuke libiberty from outside the sandbox
+
+  26 Apr 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.0.ebuild:
+  change settings for mips again... arch set to mips3 and tune set to r4600
+
+  26 Apr 2004; Travis Tilley <lv@gentoo.org> gcc-3.4.0.ebuild:
+  changed mips default arch settings so that march defaults to r4k and not
+  mips3. also removed default mtune setting. thanks for the heads up geoman
+
+*gcc-3.4.0 (26 Apr 2004)
+
+  26 Apr 2004; Travis Tilley <lv@gentoo.org>
+  +files/3.4.0/gcc-3.4.0-gentoo-branding.patch,
+  -files/3.4.0/gcc-3.4.0_pre20040416-gentoo-branding.patch,
+  gcc-3.3.3-r3.ebuild, +gcc-3.4.0.ebuild, -gcc-3.4.0_pre20040416.ebuild:
+  added ebuild for gcc 3.4.0 final, and removed ada from the IUSE of gcc 3.3.3-r3
+
+*gcc-3.3.3-r3 (25 Apr 2004)
+
+  25 Apr 2004; Martin Schlemmer <azarah@gentoo.org> +gcc-3.3.3-r3.ebuild:
+  Update snapshot. Fix objc doc install. Do not build ada until we resolve if we
+  should or not.
+
+  24 Apr 2004; Joshua Kinard <kumba@gentoo.org> gcc-3.3.3.ebuild:
+  Marking gcc-3.3.3 stable on mips, as stages and GRPs are built with it, and
+  it's run fine with no issues.
+
+  22 Apr 2004; Mike Frysinger <vapier@gentoo.org> gcc-3.3.3-r2.ebuild:
+  Change the nogcj flag to gcj.
+
+  21 Apr 2004; Mike Frysinger <vapier@gentoo.org> gcc-3.2-r5 gcc-3.1-r8:
+  These were never released so lets prune them.
+
+  21 Apr 2004; Mike Frysinger <vapier@gentoo.org> gcc-3.2.3-r2 gcc-3.2.3-r3
+  gcc-3.2.3-r4:
+  Bump r4 to stable and clean it up so we can force out r2 and r3 in the future.
+
+  21 Apr 2004; Mike Frysinger <vapier@gentoo.org> gcc-2.95.3-r7 gcc-2.95.3-r8:
+  Clean up ebuilds (filter-flags and similar) and bump r8 to stable for ppc/sparc/alpha
+  so we can trim out r7 in the future.
+
+  21 Apr 2004; Mike Frysinger <vapier@gentoo.org> gcc-3.0.4 gcc-3.1.1-r1:
+  Clean up the ebuild (filter-flags and similar).
+
+  20 Apr 2004; <solar@gentoo.org> gcc-3.3.3-r2.ebuild:
+  add s390 gcc-3.3.3 patch from bug #47915, added USE flags for f77, objc from
+  bug #23171.
+
+*gcc-3.4.0_pre20040416 (19 Apr 2004)
+
+  19 Apr 2004; Travis Tilley <lv@gentoo.org>
+  +files/3.4.0/gcc-3.4.0_pre20040416-gentoo-branding.patch,
+  +gcc-3.4.0_pre20040416.ebuild:
+  initial commit for gcc 3.4.0 pre-release. currently only amd64 is tested well
+  with gcc 3.4, gcj is broken, and some things dont compile properly.
+  PIE-by-default support has been added, but propolice has yet to be ported.
+
+  18 Apr 2004; <solar@gentoo.org> :
+  ChangeLog correction.. instructions on unmasking can be found in
+  /usr/portage/profiles/package.mask
+
+*gcc-3.3.3-r2 (18 Apr 2004)
+
+  18 Apr 2004; <solar@gentoo.org> gcc-3.3.3-r1.ebuild, gcc-3.3.3-r2.ebuild:
+  long awaited piessp functionality in here after alot of local testing.. Many
+  many thanks go to the PaX Team, Peter S. Mazinger (who helped tremendously),
+  and all those who helped getting this version ready.. This gcc-3.3.3-r2.ebuild
+  is currently package.masked but instructions on unmasking can be found in
+  /usr/portage/package.unmask, please test. Note: USE=uclibc might still need a
+  little more work, which we intend to address to before unmasking
+
+*gcc-3.3.3_pre20040408-r1 (15 Apr 2004)
+
+  15 Apr 2004; Luca Barbato <lu_zero@gentoo.org>
+  gcc-3.3.3_pre20040408-r1.ebuild,
+  files/3.3.3/gcc333_pre20040408-gentoo-branding.patch,
+  files/3.3.3/gcc333_pre20040408-stack-size.patch:
+  New Snapshot
+
+  05 Apr 2004; Brian Jackson <iggy@gentoo.org> gcc-3.3.3.ebuild:
+  add s390 to keywords
+
+  04 Apr 2004; Travis Tilley <lv@gentoo.org> gcc-3.3.3.ebuild:
+  added avenjs amd64 fixes to gcc-3.3.3.ebuild
+
+  03 Apr 2004; Jon Portnoy <avenj@gentoo.org> gcc-3.3.3-r1.ebuild :
+  Yanked unnecessary amd64-related construct for finding libc.
+  Bug #46697.
+
+  26 Mar 2004; Jason Wever <weeve@gentoo.org> gcc-3.3.3.ebuild:
+  And on the 5th date, gcc-3.3.3 was stable for sparc, and it was good.
+
+  25 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> gcc-3.2.2-r2.ebuild,
+  gcc-3.2.2.ebuild, gcc-3.2.3-r2.ebuild, gcc-3.2.3-r3.ebuild,
+  gcc-3.2.3-r4.ebuild, gcc-3.3.ebuild:
+  don't use deprecated ? : use syntax
+
+  24 Mar 2004; Luca Barbato <lu_zero@gentoo.org> gcc-3.3.3_pre20040322.ebuild:
+  Fixed SRC_URI
+
+*gcc-3.3.3_pre20040322 (23 Mar 2004)
+
+  23 Mar 2004; Luca Barbato <lu_zero@gentoo.org> gcc-3.3.3_pre20040322.ebuild,
+  files/3.3.3/gcc333_pre20040322-gentoo-branding.patch:
+  New snapshot from the hammer branch.
+
+  22 Mar 2004; Luca Barbato <lu_zero@gentoo.org> gcc-3.3.3_pre20040215.ebuild:
+  Marked again -ppc since it is still too much problematic.
+
+  15 Mar 2004; Joshua Kinard <kumba@gentoo.org> gcc-3.3.2-r5.ebuild,
+  gcc-3.3.2-r6.ebuild:
+  Removed bogus comment from -r6; marked -r5 stable on mips
+
+  09 Mar 2004; <agriffis@gentoo.org> gcc-3.3.2-r5.ebuild:
+  stable on alpha and ia64
+
+  06 Mar 2004; Alexander Gabert <pappy@gentoo.org> :
+  patch updates to let pie-ssp-bounds-check work with propolice patch during the
+  ebuild patching
+
+  06 Mar 2004; Alexander Gabert <pappy@gentoo.org> gcc-3.3.3-r1.ebuild:
+  added support for bug 6148 to the pie-ssp patch, the bounds checker fails with
+  some hunks but coupled with the pie-ssp patch it applies good
+
+  06 Mar 2004; Alexander Gabert <pappy@gentoo.org> gcc-3.3.3-r1.ebuild:
+  added v5 version for hardened pie ssp patch, this will be the release version
+  when testing shows no problems
+
+  01 Mar 2004; Martin Schlemmer <azarah@gentoo.org> files/awk/scanforssp.awk:
+  Add support to detect corrupted filesystem/bad hardware, patch by
+  Carter Smithhart <derheld42@derheld.net>.
+
+  26 Feb 2004; Alexander Gabert <pappy@gentoo.org> gcc-3.3.3-r1.ebuild:
+  added IUSE hardened flag (thx swtaylor)
+
+  26 Feb 2004; Alexander Gabert <pappy@gentoo.org> gcc-3.3.3-r1.ebuild:
+  changed typo in FVER of SSP, fixed up release_version logic a bit
+
+  26 Feb 2004; Alexander Gabert <pappy@gentoo.org> gcc-2.95.3-r7.ebuild,
+  gcc-2.95.3-r8.ebuild, gcc-3.0.4-r6.ebuild, gcc-3.1-r8.ebuild,
+  gcc-3.1.1-r1.ebuild, gcc-3.2.1-r7.ebuild, gcc-3.2.3-r3.ebuild,
+  gcc-3.3-r1.ebuild, gcc-3.3.1-r1.ebuild, gcc-3.3.2-r3.ebuild,
+  gcc-3.3.2.ebuild, gcc-3.3.3-r1.ebuild:
+  changed brackets in SRC_URI for pie-ssp patch, fixed copyright ebuild headers
+  to 2004
+
+  26 Feb 2004; Alexander Gabert <pappy@gentoo.org> gcc-2.95.3-r7.ebuild,
+  gcc-2.95.3-r8.ebuild, gcc-3.0.4-r6.ebuild, gcc-3.1-r8.ebuild,
+  gcc-3.1.1-r1.ebuild, gcc-3.2.1-r7.ebuild, gcc-3.2.3-r3.ebuild,
+  gcc-3.3-r1.ebuild, gcc-3.3.1-r1.ebuild, gcc-3.3.2-r3.ebuild,
+  gcc-3.3.2.ebuild, gcc-3.3.3-r1.ebuild:
+  changed brackets in SRC_URI for pie-ssp patch, fixed copyright ebuild headers
+  to 2004
+
+  26 Feb 2004; Alexander Gabert <pappy@gentoo.org> gcc-3.3.3-r1.ebuild:
+  implemented easier patch logic for SSP and PIE support with Azarah
+
+*gcc-3.3.3-r1 (26 Feb 2004)
+
+  26 Feb 2004; Alexander Gabert <pappy@gentoo.org> gcc-3.3.3-r1.ebuild:
+  changed version_patch logic to use a single variable for assigning the string
+  to the different patch situations
+
+  26 Feb 2004; Alexander Gabert <pappy@gentoo.org> :
+  added preliminary version with hardened support
+
+  22 Feb 2004; Luca Barbato <lu_zero@gentoo.org> gcc-3.3.3_pre20040215.ebuild:
+  Marked ~ppc since seems to build altivec code correctly
+
+  21 Feb 2004; Brad House <brad_mssw@gentoo.org> gcc-3.3.3.ebuild:
+  mark stable for amd64 2004.0 release
+
+*gcc-3.3.3 (18 Feb 2004)
+
+  18 Feb 2004; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.3.ebuild,
+  files/3.3.3/gcc333-gentoo-branding.patch,
+  files/3.3.3/gcc333-ssp-3.3_7-fixup.patch:
+  New release.
+
+*gcc-3.3.3_pre20040215 (16 Feb 2004)
+
+  15 Feb 2004; Tom Gall <tgall@gentoo.org> gcc-3.3.3_pre20040215.ebuild,
+  gcc-3.3.3_pre20040130:
+  Remove gcc-3.3.3_pre20040130, add gcc-3.3.3_pre20040215.ebuild
+  ppc64 prerelease, fixes a rather anoying set of ICEs. 
+  gcc-3.3.2-r6.ebuild was the reference.
+
+  12 Feb 2004; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.2-r5.ebuild,
+  gcc-3.3.2-r7.ebuild:
+  Add nogcj USE flag to turn off building of gcj.
+
+  12 Feb 2004; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.2-r5.ebuild,
+  gcc-3.3.2-r7.ebuild:
+  Add -Os to previous fixup, bug #41322.
+
+  11 Feb 2004; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.2-r5.ebuild,
+  gcc-3.3.2-r7.ebuild:
+  Fix tweaking of -O gcc flag, bug #40863.
+
+  10 Feb 2004; Seemant Kulleen <seemant@gentoo.org>
+  files/fix_libtool_files.sh:
+  spelling correction: Scannig to Scanning
+
+  09 Feb 2004; Bartosch Pixa <darkspecter@gentoo.org> gcc-3.2.3-r4.ebuild:
+  set ppc in keywords
+
+*gcc-3.3.3_pre20040130 (09 Feb 2004)
+
+  09 Feb 2004; Brad House <brad_mssw@gentoo.org> gcc-3.3.3_pre20040130.ebuild,
+  files/gcc333-gentoo-branding.patch:
+  GCC 3.3.3 prerelease as required for PPC64. This ebuild has been based off the
+  gcc-3.3.2-r6.ebuild for reference
+
+  08 Feb 2004; Luca Barbato <lu_zero@gentoo.org>
+  files/3.3.2/gcc332-altivec-fix.patch:
+  Updated the altivec fix for gcc-3.3.2-r7
+
+*gcc-3.3.2-r7 (08 Feb 2004)
+
+  08 Feb 2004; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.2-r7.ebuild:
+  Update snapshot to 20040119. Tweak SSP stuff to scan *before* unpacking and
+  patching.
+
+  07 Feb 2004; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.2-r6.ebuild:
+  Mask again, as it have some issues, bug #40603.
+
+  07 Feb 2004; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.2-r5.ebuild:
+  Bump to stable for x86.
+
+  03 Feb 2004; Joshua Kinard <kumba@gentoo.org> gcc-3.3.2-r4.ebuild:
+  Marked 3.3.2-r4 stable for mips. Stages are built for this, and no problems
+  have been reported so far.
+
+*gcc-3.2.3-r4 (27 Jan 2004)
+
+  27 Jan 2004; Luca Barbato <lu_zero@gentoo.org> gcc-3.2.3-r4.ebuild:
+  Removes the fixinclude headers, fix backported from the 3.3.2 series
+
+*gcc-3.3.2-r6 (21 Jan 2004)
+
+  21 Jan 2004; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.2-r6.ebuild,
+  files/3.3.2/gcc332-altivec-fix.patch:
+  Update snapshot to 20040108; fix SSP scanning to only scan when not already
+  done so, or when libgcc have __guard symbols; add altivec patch from Luca
+  Barbato <lu_zero@gentoo.org>.
+
+  08 Jan 2004; Aron Griffis <agriffis@gentoo.org> gcc-3.2-r5.ebuild,
+  gcc-3.2.2-r2.ebuild, gcc-3.2.2.ebuild, gcc-3.2.3-r2.ebuild,
+  gcc-3.3-r1.ebuild, gcc-3.3.1-r5.ebuild, gcc-3.3.2-r1.ebuild,
+  gcc-3.3.2-r2.ebuild:
+  Lots of keyword updates for ia64. I haven't tested anything past 3.3.2-r2, so
+  I didn't mark them ~ia64 yet
+
+  01 Jan 2004; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.2-r5.ebuild:
+  Unmask again, as scanforssp.awk was fixed (bug #36792).
+
+  31 Dec 2003; <solar@gentoo.org> files/awk/scanforssp.awk:
+  Fix bug that causes awk script to fail when pipe is not closed. Closes bug
+  #36792
+
+  30 Dec 2003; Brad House <brad_mssw@gentoo.org> gcc-3.3.2-r5.ebuild:
+  marking -* bug affects all arches
+
+  30 Dec 2003; Brad House <brad_mssw@gentoo.org> gcc-3.3.2-r5.ebuild:
+  Problems with -r5 on a fresh install of gentoo, I commented
+  inside the ebuild above the KEYWORDS= for more information, marked -amd64, but
+  other arches are probably affected too
+
+  29 Dec 2003; Seemant Kulleen <seemant@gentoo.org> gcc-3.3.2-r5.ebuild,
+  files/scan_libgcc_linked_ssp.sh:
+  spelling fixes, thanks to: Scott Taylor <scott@303underground.com> and Eric
+  Harney <eharney@clemson.edu> in bug #36772
+
+*gcc-3.3.2-r5 (29 Dec 2003)
+
+  29 Dec 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.2-r5.ebuild:
+  Update snapshot to 20031218; update SSP to 3.3-7. Rework guard detection in
+  glibc a bit (fix it to use scan_libgcc_linked_ssp.sh to detect ELF images
+  linked to __guard@GCC and add support for new _LIBC_PROVIDES_SSP_ instead
+  of patch to use __guard and co symbols from glibc).  Thanks to the hardened
+  team, especially Ned Ludd <solar@gentoo.org> for help on the SSP stuff.
+
+*gcc-3.3.2-r4 (14 Dec 2003)
+
+  14 Dec 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.2-r4.ebuild:
+  Update snapshot to 20031201. Remove 'fixed' headers, as they tend to break
+  some builds. Fix DEPEND on glibc for NPTL. Remove some stale sections.
+
+  30 Nov 2003; Alexander Gabert <pappy@gentoo.org> gcc-3.2.3-r3.ebuild,
+  gcc-3.3.2-r3.ebuild:
+  added ccache warnings to the ebuilds, thanks to Strider for pointing this out
+  and providing the workaround
+
+  29 Nov 2003; Brad House <brad_mssw@gentoo.org> gcc-3.3.2-r2.ebuild:
+  mark stable on amd64
+
+  28 Nov 2003; Alexander Gabert <pappy@gentoo.org> gcc-3.2.3-r3.ebuild,
+  gcc-3.3.2-r3.ebuild:
+  added logic for false positives hitting gcc library with guard in it
+
+*gcc-3.2.3-r3 (27 Nov 2003)
+*gcc-3.3.2-r3 (27 Nov 2003)
+
+  10 Dec 2003; Guy Martin <gmsoft@gentoo.org> gcc-3.3.2-r3.ebuild,
+  gcc-3.3.2.ebuild :
+  Fixed little type unkown -> unknown.
+
+  08 Dec 2003; Guy Martin <gmsoft@gentoo.org> gcc-3.3.2-r3.ebuild,
+  gcc-3.3.2.ebuild :
+  Force CHOST="hppa-unknown-linux-gnu" on hppa for stability.
+
+  27 Nov 2003; Alexander Gabert <pappy@gentoo.org> gcc-3.2.3-r3.ebuild,
+  gcc-3.3.2-r3.ebuild, files/3.2.3/gcc-3.2.3-move-propolice-into-glibc.patch:
+  adding bumpee versions of gcc-3.3.2 and gcc-3.2.3 for proper migration of the
+  propolice functions to the glibc, this updated is needed because of bugs like
+  25299 and other related -static -fstack-protector building in the current
+  2.3.2-r3 glibc
+
+  21 Nov 2003; Aron Griffis <agriffis@gentoo.org> gcc-3.3.2-r2.ebuild:
+  Add ~ia64
+
+  20 Nov 2003; Aron Griffis <agriffis@gentoo.org> gcc-3.3.2-r2.ebuild:
+  Mark stable on alpha
+
+  04 Nov 2003; Brad House <brad_mssw@gentoo.org> gcc-3.3.1-r5.ebuild:
+  mark as stable on amd64
+
+  01 Nov 2003; Aron Griffis <agriffis@gentoo.org> gcc-3.3.2-r2.ebuild:
+  Add ~alpha to KEYWORDS
+
+*gcc-3.3.2-r2 (27 Oct 2003)
+
+  19 Nov 2003; Guy Martin <gmsoft@gentoo.org> gcc-3.3.2-r2.ebuild :
+  Added --enable-sjlj-exceptions to ${myconf} on hppa.
+
+  02 Nov 2003, Guy Martin <gmsoft@gentoo.org> gcc-3.3.2-r2.ebuild,
+  gcc-3.3.2-r1.ebuild, gcc-3.3.2.ebuild :
+  Marking gcc-3.3.2-r1 and -r2 -hppa due to a problem with binutils.
+  Marking gcc-3.3.2 as ~hppa which does not suffert of this problem.
+
+  27 Oct 2003; Guy Martin <gmsoft@gentoo.org> gcc-3.3.2-r2.ebuild :
+  Added ~hppa to KEYWORDS.
+
+  27 Oct 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.2-r2.ebuild:
+  Update protector patch to 3.3-5.
+
+*gcc-3.3.2-r1 (26 Oct 2003)
+
+  26 Oct 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.2-r1.ebuild:
+  New snapshot of gcc-3_3-rhl-branch CVS branch that fixes the visibility issues
+  for x86 at least.
+
+  21 Oct 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.2.ebuild:
+  Mask this puppy again until I figure out why it breaks visibility attribute
+  support (and thus NPTL, possibly TLS as well).
+
+*gcc-3.3.2 (21 Oct 2003)
+
+  08 Dec 2003; Guy Martin <gmsoft@gentoo.org> gcc-3.3.2.ebuild :
+  Marked stable on hppa.
+
+  19 Nov 2003; Guy Martin <gmsoft@gentoo.org> gcc-3.3.2.ebuild :
+  Added --enable-sjlj-exceptions to ${myconf} on hppa.
+
+  21 Oct 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.2.ebuild,
+  files/3.3.2/gcc332-gentoo-branding.patch:
+  New version.
+
+  18 Oct 2003; Brad House <brad_mssw@gentoo.org> gcc-3.3.1-r5.ebuild,
+  files/gcc331_use_multilib.amd64.patch:
+  add appropriate changes for amd64, and set ~amd64 in flags
+
+*gcc-3.3.1-r5 (14 Oct 2003)
+
+  15 Oct 2003; Joshua Kinard <kumba@gentoo.org> gcc-3.3.1-r4.ebuild,
+  gcc-3.3.1-r5.ebuild, gcc-3.3.1.ebuild:
+  Added ~sparc to KEYWORDS
+  This will only affect sparc64 users using the gcc33-sparc64 profile
+
+  14 Oct 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.1-r5.ebuild,
+  files/3.3.1/gcc331-pp-fixup.patch:
+  Actually add gcc331-pp-fixup.patch for public use.
+
+  14 Oct 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.1-r5.ebuild:
+  Update CVS snapshot.
+
+  09 Oct 2003; <tuxus@gentoo.org> gcc-3.3.1-r4.ebuild:
+  Added ~mips to Keywords
+
+  04 Oct 2003; Matthew Rickard <frogger@gentoo.org> gcc-3.2.3-r2.ebuild:
+  Marked stable for x86, ppc, sparc, alpha, and mips.
+
+  03 Oct 2003; Brad House <brad_mssw@gentoo.org> gcc-3.3.1-r1.ebuild:
+  mark as stable for amd64
+
+  28 Sep 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.3-r1.ebuild,
+  gcc-3.3.1-r1.ebuild, gcc-3.3.1-r2.ebuild, gcc-3.3.1-r3.ebuild,
+  gcc-3.3.1.ebuild:
+  Exclude PPC mergel miscompilation workaround, as it is fixed in apps according
+  to lu_zero.
+
+*gcc-3.3.1-r4 (28 Sep 2003)
+
+  28 Sep 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.1-r4.ebuild:
+  Update revision. Update ProPolice to 3.3-4. I also took the time and reaped
+  a few of non applied pr fixes for gcc-3_3-branch that is not yet applied to
+  gcc-3_3-rhl-branch we use. I also ported a few fixes that was fixed only 3.4
+  side, and testing my side at least shows no regressions.
+
+  25 Sep 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.1-r3.ebuild:
+  Add gcc-unsharing_lhs.patch resolving bug #29467.  Also marked this ~x86.
+  More info on this bug can be found at:
+  
+    http://gcc.gnu.org/ml/gcc-patches/2003-09/msg00853.html
+
+*gcc-3.3.1-r3 (20 Sep 2003)
+
+  20 Sep 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.1-r3.ebuild:
+  Update CVS snapshot to 20030916 - this should fix the static linking problem
+  with some packages without the hack that broke things for a few people ...
+
+*gcc-3.3.1-r2 (15 Sep 2003)
+
+  15 Sep 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.1-r2.ebuild:
+  Backout to an earlier cvs snapshot (20030815) to fix preprocessor issues (for
+  instance lilo not compiling, bug #28266). Change libgcc.a to a linker script
+  to fix problems with not linking to libc.a when linking static.
+
+*gcc-3.3.1-r1 (07 Sep 2003)
+
+  17 Sep 2003; Jon Portnoy <avenj@gentoo.org> gcc-3.3.1-r1.ebuild :
+  ia64 keywords.
+
+  12 Sep 2003; Joshua Kinard <kumba@gentoo.org> gcc-3.3.1.ebuild:
+  Added ~sparc to Keywords, should only affect users using the gcc33-sparc64-1.4
+  testing profile.  Yell if otherwise.
+
+  09 Sep 2003; George Shapovalov <george@gentoo.org> gcc-3.3.1.ebuild, gcc-3.3.1-r1.ebuild, gcc-3.2.1-r7.ebuild, gcc-3.2.2.ebuild, gcc-3.2.2-r2.ebuild: :
+  Removed "ada" from gcc_lang as month ago for previous versions.
+  Also removed gcc32-ada-make.patch and corresponding epatch invocations
+
+  07 Sep 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.1-r1.ebuild:
+  Update snapshot to 20030904. Fix coreutils patch - it did not catch all broken
+  tail calls.
+
+  24 Aug 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.2.3-r1.ebuild,
+  gcc-3.2.3-r2.ebuild, gcc-3.3-r1.ebuild, gcc-3.3.1.ebuild, gcc-3.3.ebuild:
+  Add hardened-gcc support, bug #26305.
+
+  24 Aug 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.2.2-r2.ebuild,
+  gcc-3.2.2.ebuild, gcc-3.2.3-r1.ebuild, gcc-3.2.3-r2.ebuild,
+  gcc-3.3-r1.ebuild, gcc-3.3.1.ebuild, gcc-3.3.ebuild,
+  files/fix_libtool_files.sh, files/awk/fixlafiles.awk:
+  Fix_libtool_files.sh did not catch a user changing CHOST. Updated
+  fixlafiles.awk and the latest ebuilds to support a fix for this, bug #23466.
+
+*gcc-3.3.1 (10 Aug 2003)
+
+  10 Aug 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.1.ebuild,
+  files/3.3.1/gcc331-gentoo-branding.patch:
+  New version.
+
+  09 Aug 2003; George Shapovalov <george@gentoo.org> gcc-2.95.3-r7.ebuild,gcc-2.95.3-r8.ebuild,gcc-3.0.4-r6.ebuild,gcc-3.1.1-r1.ebuild,gcc-3.1-r8.ebuild,gcc-3.2.3-r1.ebuild,gcc-3.2.3-r2.ebuild,gcc-3.2-r5.ebuild,gcc-3.3.ebuild,gcc-3.3-r1.ebuild
+  Removed "ada" from gcc_lang on listed ebuilds (did not touch three which do some patches,
+  will do them later myself or leave to azarah).
+  See #25178 for details. In short, having ada in --enable-languages does not make gcc build
+  ada support properly (there is more involved, see for example #11204) and makes gcc build fail 
+  on users who have gnat installed.
+  
+  04 Aug 2003; Matthew Rickard <frogger@gentoo.org> gcc-3.3-r1.ebuild:
+  Update 3.3 ebuild to use the latest protector-3.  Also don't patch
+  in ProPolice on HPPA (consistent with the 3.2.x gcc ebuilds).
+
+*gcc-3.2.3-r2 (23 Jul 2003)
+
+  23 Jul 2003; Matthew Rickard <frogger@gentoo.org> gcc-3.2.3-r2.ebuild:
+  New revision includes updated ProPolice protector-10
+  patch.  This fixes the following issues:
+    - Regex functions cause m4 to seg fault
+    - Doesn't protect the 1st function argument when
+      CFLAGS="-O0".
+
+  24 Jul 2003; Martin Schlemmer <azarah@gentoo.org> files/fix_libtool_files.sh:
+  Fix fix_libtool_files.sh to first get the number of parameters, and $1, else
+  some odd settings in /etc/profile may cause $# to be overwritten.
+
+*gcc-3.3-r1 (20 Jul 2003)
+
+  20 Jul 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.3-r1.ebuild,
+  files/3.3/gcc33-coreutils-compat.patch.bz2,
+  files/3.3/gcc33-gentoo-branding-1.patch:
+  New version that rather use the gcc-3_3-rhl-branch branch.  Also add
+  gcc33-coreutils-compat.patch.bz2 to call head/tail corretly as needed
+  by coreutils-5.0.
+
+  20 Jul 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.ebulid,
+  files/3.3/gcc33-no-multilib-amd64.patch:
+  Cleanup amd64 support to rather use a patch.  From Olivier Crete
+  <tester@gentoo.org>.
+
+  20 Jul 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.2.3-r1.ebuild,
+  files/3.2.3/gcc-3.2.3-mergel-fix.patch:
+  There exists a bug in the ebuild patched gcc that prevents hppa from getting
+  build because of default_assemble_visibility is not compiled.  Patch done by
+  Alexander Gabert <pappy@nikita.ath.cx>.
+
+  18 Jul 2003; Will Woods <wwoods@gentoo.org> gcc-3.2.3-r1.ebuild:
+  Marked stable for alpha
+
+  16 Jul 2003; Jay Pfeifer <pfeifer@gentoo.org> gcc-3.2.3-r1.ebuild:
+  set stable on x86
+
+  14 Jul 2003; Matthew Rickard <frogger@gentoo.org> gcc-3.2.3-r1.ebuild:
+  ProPolice does not work on architectures where the stack
+  grows upward (such as HPPA).  Therefore, if the 
+  architecture is HPPA, do not apply the ProPolice patches.
+
+  09 Jul 2003; Matthew Rickard <frogger@gentoo.org> gcc-3.2.3-r1.ebuild:
+  Updated ProPolice to protector-8.  This includes minor
+  bugfixes on PPC that popped up in certain (rare) cases.
+
+  02 Jul 2003; Luca Barbato <lu_zero@gentoo.org> gcc-3.2.3-r1.ebuild:
+  set added the mergel workaround, G4 users should reemerge or change the
+  altivec.h include by hand
+
+  01 Jul 2003; Luca Barbato <lu_zero@gentoo.org> gcc-3.2.3-r1.ebuild:
+  set stable on ppc
+
+  01 Jul 2003; Todd Sunderlin <todd@gentoo.org> gcc-3.2.3-r1.ebuild:
+  set stable on sparc
+
+  14 Jun 2003; Joshua Kinard <kumba@gentoo.org> gcc-3.2.3-r1.ebuild:
+  Changed ~mips to mips in KEYWORDS
+
+  12 Jun 2003; <msterret@gentoo.org> gcc-3.1-r8.ebuild, gcc-3.1.1-r1.ebuild:
+  fix Header
+
+  10 Jun 2003; Tavis Ormandy,,, <taviso@gentoo.org> gcc-2.95.3-r8.ebuild,
+  files/gcc-2.95.3-alpha.diff:
+  new-atexit.diff is not finished for alpha, fixing #18626
+
+  19 May 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.ebuild :
+  Only compile gcj AWT/Swing support if we have the Xlib.h header, else
+  it borks during bootstrap.
+
+*gcc-3.3 (17 May 2003)
+
+  17 May 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.3.ebuild,
+  gcc33-gentoo-branding.patch, gcc33-propolice-version.patch :
+  New version:
+  - Merge cleanups from Spider <spider@gentoo.org>.
+  - Add the manpages (required during bootstrap, as we do not have perl),
+    with some more cleanups.
+  - Add a nice collection of patches from Suse/Debian, thanks to
+    Nicholas Wourms <dragon@gentoo.org> for filtering these.
+  - Add an branch update from the Hammer 3.3 branch with lots of Athlon
+    and Hammer fixes/optimizations.  This also includes the DFA scheduler
+    and profiler updates that should improve things accross the board.
+    Once again, many thanks to Nicholas Wourms <dragon@gentoo.org>.
+  - Add gcj AWT/Swing for people with X and java in USE (thanks again
+    Nicholas =).
+	
+  NOTE:  I urge the faint of heart to leave this for now, as it have
+         deprecated many features, and a lot of packages will have to
+		 be fixed first.
+
+  16 May 2003; Matthew Rickard <frogger@gentoo.org> gcc-3.2.2-r3.ebuild:
+  - Updated ProPolice to Protector-3.2.2-7, fixing the PPC bug and
+      parallel make bug - again we no longer need to apply these
+      separately.
+    - Converted to the new patch implementation as used in the 
+      gcc-3.2.3-r1 ebuild making for easier patch management.  Thanks
+      to Martin Schlemmer <azarah@gentoo.org> for this cleanup.
+
+  16 May 2003; Matthew Rickard <frogger@gentoo.org> gcc-3.2.3-r1.ebuild:
+  Updated ProPolice to Protector-3.2.2-7. This revision includes the PPC bug fix
+  and the parallel make fix, so these no longer need to be applied separately.
+
+*gcc-3.2.3-r1 (29 Apr 2003)
+
+  14 Jun 2003; Guy Martin <gmsoft@gentoo.org> gcc-3.2.3-r1.ebuild :
+  Changed ~hppa to -hppa in KEYWORDS. Too many crazy users are using ~hppa.
+
+  29 Apr 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.2.3-r1.ebuild :
+  Manpages gets regenerated, and as we do not have perl at bootstrap, we need
+  to use a tarball with updated manpages again.  Also fix the build to gzip
+  manpages and info pages.  Fix the build to actually remove man/info pages
+  if 'build' in USE .. this got broken during the gcc-config changes.
+
+*gcc-3.2.3 (28 Apr 2003)
+
+  28 Apr 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.2.3.ebuild,
+  gcc-323-propolice-version.patch, gcc32-c++-classfn-member-template.patch,
+  gcc32-mklibgcc-serialize-crtfiles.patch, gcc323-gentoo-branding.patch,
+  protector-3.2.2-6-PPC.patch :
+  Update version
+  - Add gcc323-gentoo-branding.patch and gcc-3.2.3-tls-update.patch.bz2 thanks
+    to Nicholas Wourms <dragon@gentoo.org>.  He did a great job at porting
+    gcc-3.2.3-tls-update.patch.bz2 from 3.2.2!
+  - Add two patches from Mandrake;  gcc32-c++-classfn-member-template.patch and
+    gcc32-mklibgcc-serialize-crtfiles.patch.
+  - Cleanup the ProPolice stuff.  Also rather use the patch tarball from its
+    homepage then adding the files to cvs.
+  - Get the version patches (gcc323-gentoo-branding.patch and
+    gcc-323-propolice-version.patch) to be more generic to ebuild revisions;
+    added version_patch() for this.
+  - Fix awk/fixlafiles.awk to not change files in /usr/lib/gcc-lib.  This got
+    broken with my previous recursion fix.
+
+  28 Apr 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.2-r5.ebuild :
+  Remove message and 'die' in pkg_setup().
+
+  28 Apr 2003; Luca Barbato <lu_zero@gentoo.org> gcc-3.2.2-r2.ebuild :
+  Unmasked on ppc
+
+  24 Mar 2003; Martin Schlemmer <azarah@gentoo.org> :
+  - Fix latest ebuild to only build static if we are just building the C
+    frontend, else some C++ packages fails when trying to link to libstdc++.so,
+    bug #18050.
+  - One more effort to try and fix the corner cases where an upgrade borks
+    python, and thus portage, resulting in /etc/ld.so.conf not being updated.
+
+*gcc-3.2.2-r2 (21 Mar 2003)
+
+  21 Mar 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.2.2-r2.ebuild,
+  gcc32-pr7768.patch, gcc32-pr8213.patch, gcc32-pr9732.patch,
+  gcc322-pr8746.patch, gcc322-pr9888.patch, gcc322-ggc_page-speedup.patch,
+  gcc-3.2.2-branch-update-20030322.patch, gcc-3.2.2-tls-update2.patch :
+  
+  - Update to gcc-3_2 branch 2003-03-22 (gcc-3.2.2-branch-update-20030322.patch)
+  - Update TLS patch (gcc-3.2.2-tls-update2.patch) for 2003-03-22 CVS branch.
+  - Add gcc322-pr9888.patch to fix a out of range 'loop' instructions for the
+    K6 family of processors.  Many thanks to Jim Bray <jb@as220.org> for his
+    work in getting this resolved with the gcc devs, and bringing it to my
+    attention (included in branch-update).
+  - Add gcc322-pr8746.patch to fix corner cases of miscompilation on K6 arch.
+  - Get gcc to decreases the number of times the collector has to be run
+    by increasing its memory workspace, bug #16548, thanks to
+    Garen <garen@garen.net>, patch gcc322-ggc_page-speedup.patch.
+  - Also added some other PR bugfixes.
+
+  09 Mar 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.2.2*.ebuild :
+  Fix handling of fix_libtool_files.sh to be more $FILESDIR independant.
+  We basically install it to /sbin now, and then call it from there.  Also
+  export LD_LIBRARY_PATH with new gcc library path in it to prevent gcc-config
+  from borking when run.  This will hopefully fix bugs #15288, #16632, #16797.
+
+*gcc-3.2.2-r3 (03 Mar 2003)
+
+  25 Apr 2003; Matthew Rickard <frogger@gentoo.org> gcc-3.2.2-r3.ebuild:
+  Added files/3.2.2/protector_parallel_make.patch which
+  fixes the errors we've been seeing when using >= -j2
+  as addressed in bug 18091.
+
+  24 Apr 2003; Matthew Rickard <frogger@gentoo.org> gcc-3.2.2-r3.ebuild,
+  files/3.2.2/protector.c:
+  Fixed the ProPolice PPC segfault issue on certain packages.
+  Thanks to Hiroaki Etoh <ETOH@jp.ibm.com> for the quick fix
+  for this problem.
+
+  20 Apr 2003; Matthew Rickard <frogger@gentoo.org> gcc-3.2.2-r3.ebuild,
+  files/3.2.2/protector.patch:
+  Updated to the latest ProPolice patch, Protector-6.  This should resolve the
+  problems experienced with the Protector-5 patch.  This was due to a bug in the
+  patch enabling the protection by default.
+
+  11 Apr 2003; Matthew Rickard <frogger@gentoo.org> gcc-3.2.2-r3.ebuild,
+  manifest, files/3.2.2/protector.patch:
+  Downgraded ProPolice to protector-4.  With Protector-5 GCC seems to
+  die on bootstrap with 1.4-rc4.  It also seems to be the source of the
+  unresolved symbols seen previously.  We'll stay with -4 for now.
+
+  10 Apr 2003; Matthew Rickard <frogger@gentoo.org> gcc-3.2.2-r3.ebuild,
+  manifest:
+  Removing -fstack-protector from ALLOWED_FLAGS.  This leads
+  to unresolved symbols in builds of certain packages.
+
+  09 Apr 2003; Matthew Rickard <frogger@gentoo.org> gcc-3.2.2-r3.ebuild,
+  files/3.2.2/protector.patch:
+  Updated ProPolice to protector-3.2.2-5
+
+  31 Mar 2003; Matthew Rickard <frogger@gentoo.org> gcc-3.2.2-r3.ebuild:
+  Moved ProPolice related files from $FILEDIR/3.2 to $FILESDIR/3.2.2
+
+  26 Mar 2003; Matthew Rickard <frogger@gentoo.org> gcc-3.2.2-r3.ebuild,
+  files/3.2/protector.patch:
+  - Updated ProPolice patch to protector-3.2.2-4.tar.gz
+  - Removed unneeded comments in ebuild about a patch we aren't applying anymore.
+  - Added gcc-322-r3-propolice-version.patch which will add propolice to the
+    gcc version string.  This is necessary for xfree to build correctly with
+    stack protection.
+  - Added -fstack-protector to the list of known good CFLAGS
+
+  05 Mar 2003; Joshua Brindle <method@gentoo.org> gcc-3.2.2-r3.ebuild :
+  replace-flags for pentium4 for bug #16867, add optimizations for x86 only  
+
+  03 Mar 2003; Joshua Brindle <method@gentoo.org> gcc-3.2.2-r3.ebuild :
+  Fixed strip-flags to allow certain known stable optimizations including:
+  -O -O1 -O2 -Os -O3 -mcpu -march -pipe -g -freorder-blocks -fprefetch-loop-arrays
+
+*gcc-3.2.2-r1 (23 Feb 2003)
+
+  25 Feb 2003; Nicholas Wourms <dragon@gentoo.org> gcc-3.2.2-r1.ebuild :
+  Fix mips depends so they actually work.
+
+  24 Feb 2003; Nicholas Wourms <dragon@gentoo.org> gcc-3.2.2-r1.ebuild :
+  Mark testing for mips.  Changed DEPENDS to a lower binutils *only* for mips,
+  since .18 generates really b0rked asm and tests prove that .16 works just fine.
+
+  23 Feb 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.2.2-r1.ebuild :
+  Update from cvs to add __thread support.
+
+*gcc-3.2.2 (06 Feb 2003)
+
+  27 May 2003; Guy Martin <gmsoft@gentoo.org> gcc-3.2.2.ebuild :
+  Downgrading DEPEND to binutils >=2.13.90.0.16 for hppa.
+
+  29 Mar 2003; Christian Birchinger <joker@gentoo.org> gcc-3.2.2.ebuild:
+  Added sparc stable keyword
+
+  25 Feb 2003; Nicholas Wourms <dragon@gentoo.org> gcc-3.2.2.ebuild :
+  Fix mips depends so they actually work.
+
+  24 Feb 2003; Nicholas Wourms <dragon@gentoo.org> gcc-3.2.2.ebuild :
+  Mark stable for mips.  Changed DEPENDS to a lower binutils *only* for mips,
+  since .18 generates really b0rked asm and tests prove that .16 works just fine.
+
+  24 Feb 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.2.2.ebuild :
+  Mark stable for x86.
+
+  22 Feb 2003; Guy Martin <gmsoft@gentoo.org> gcc-3.2.2.ebuild :
+  Commited stable for hppa.
+
+  22 Feb 2003; Zach Welch <zwelch@gentoo.org> gcc-3.2.2.ebuild :
+  Added patch for arm to disable floating point math
+
+  21 Feb 2003; Zach Welch <zwelch@gentoo.org> gcc-3.2.2.ebuild :
+  Added patch for arm to fix incorrect code generation
+
+  21 Feb 2003; Aron Griffis <agriffis@gentoo.org> gcc-3.2.2.ebuild :
+  Mark 3.2.2 stable on alpha -- it's the best we've got so far!
+
+  18 Feb 2003; Zach Welch <zwelch@gentoo.org> gcc-3.2.2.ebuild :
+  Added arm to keywords.
+
+  08 Feb 2003; Guy Martin <gmsoft@gentoo.org> gcc-3.2.2.ebuild :
+  Added hppa to keywords.
+
+  06 Feb 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.2.2.ebuild :
+  Update version.
+
+*gcc-3.2.2_pre20030131 (02 Feb 2003)
+
+  02 Feb 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.2.2_pre20030131.ebuild :
+  New snapshot.  This should close bug #14699.
+
+*gcc-3.2.1-r7 (18 Jan 2003)
+
+  18 Jan 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.2.1-r7.ebuild :
+  Add some patches from Mandrake/Suse.
+
+*gcc-3.2.1-r6 (16 Dec 2002)
+
+  13 Feb 2003; Mark Guertin <gerk@gentoo.org> gcc-3.2.1-r6.ebuild :
+  set ppc in keywords
+
+  19 Jan 2003; Jan Seidel <tuxus@gentoo.org> :
+  Added mips to keywords
+
+  08 Jan 2003; Seemant Kulleen <seemant@gentoo.org> gcc-3.2.1-r6.ebuild :
+
+  Stable for sparc.
+
+  08 Jan 2003; Martin Schlemmer <azarah@gentoo.org> gcc-3.2.1-r6.ebuild :
+  Mark stable for x86.  Do not merge with C[XX]FLAGS="-march=k6[-2]", as
+  it causes problems, bug #12791.
+
+  28 Dec 2002; Jack Morgan <jmorgan@gentoo.org> gcc-3.2.1.ebuild :
+  Changing ~sparc to sparc
+
+  23 Dec 2002; Martin Schlemmer <azarah@gentoo.org> :
+  Fix to use get_number_of_jobs to set -j.
+  
+  16 Dec 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.2.1*.ebuild :
+  Fix to set CC and CXX properly.
+
+  16 Dec 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.2.1-r1.ebuild,
+  gcc-3.2.1-r6.ebuild, gcc-2.95.3-r7.ebuild gcc-3.2.1*.ebuild :
+
+  Install and touch manpages if we do not have perl, as they started to
+  use perl to generate the manpages ...  If we do not do this, gcc fails
+  to build during bootstrap.
+
+  Install the /lib/cpp and /usr/bin/cc wrappers for other common used gcc's.
+
+*gcc-3.2.1-r1 (16 Dec 2002)
+
+  16 Dec 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.2.1-r1.ebuild,
+  gcc-3.2.1-r6.ebuild :
+
+  Update with patches from Redhat, and also update with patch against 2002-12-08
+  CVS branch.  For -r6, changed the /lib/cpp and /usr/bin/cc symlinks to wrapper
+  scripts, which is more generic if we do not fisically switch gcc profiles.
+
+  15 Dec 2002; Martin Schlemmer <azarah@gentoo.org> gcc-2.95.3-r*.ebuild :
+  Fix CXX to equal 'g++'.  For some reason I was under the impression that
+  gcc3 was the only gcc that needed this.  This should close bugs #11589
+  and #12169.  Ill figure some way to get this fixed painlessly for
+  most users ...
+
+  13 Dec 2002; Mark Guertin <gerk@gentoo.org> gcc-3.2.1.ebuild :
+  Marked stable for ppc.
+
+  12 Dec 2002; Jan Seidel <tuxus@gentoo.org> gcc-3.2.1.ebuild :
+  Added mips to keywords.
+
+  10 Dec 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.2.1.ebuild :
+  Mark as stable for x86.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> :
+  Changed sparc ~sparc keywords.
+ 
+  03 Dec 2002; Martin Schlemmer <azarah@gentoo.org> :
+  Also set CC and CXX in /etc/env.d/05gcc.
+
+  01 Dec 2002; Olivier Reisch <doctomoe@gentoo.org> gcc-3.2-r4.ebuild :
+  Definitely fine now, marking it ppc stable. Moving on to 3.2.1 :)
+
+  25 Nov 2002; Olivier Reisch <doctomoe@gentoo.org> gcc-3.2-r4.ebuild :
+  Changed -ppc to ~ppc, we have been able to make it compile fine on a few
+  test machines. Will test further before marking it ppc stable eventually.
+
+  24 Nov 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.2.1.ebuild,
+  gcc-3.2.1-r5.ebuild :
+
+  Get these to run ${FILESDIR}/fix_libtool_files.sh, and thus fix libtool
+  linker scripts to reference the right gcc version ...  This should close
+  bug #11094.
+
+*gcc-3.2.1 (21 Nov 2002)
+*gcc-3.2.1-r5 (21 Nov 2002)
+
+  21 Nov 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.2.1.ebuild,
+  gcc-3.2.1-r5.ebuild :
+
+  Update to new version.  Multi arch version is -r5.
+
+  21 Nov 2002; Olivier Reisch <doctomoe@gentoo.org> gcc-3.2-r4.ebuild :
+  
+  Added -ppc, it does not compile on PPC test machine.
+
+  20 Nov 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.2-r4.ebuild :
+
+  Mark as stable.
+
+*gcc-3.2-r5 (10 Oct 2002)
+
+  10 Nov 2002; Martin Schlemmer <azarah@gentoo.org> :
+
+  New multi version/arch version.  Updated with patches
+  from Mandrake/Redhat/Suse.  Have SLOT=$PV if CCHOST=CHOST.
+
+*gcc-3.2-r4 (10 Oct 2002)
+
+  10 Nov 2002; Martin Schlemmer <azarah@gentoo.org> :
+
+  Updated with patches from Mandrake/Redhat/Suse.
+
+*gcc-2.95.3-r8 (10 Oct 2002)
+
+  03 Arp 2003; Martin Holzer <mholzer@gentoo.org> gcc-2.95.3-r8.ebuild :
+  Filtering out -ggdb. Closes #8229.
+
+  08 Jan 2003; Seemant Kulleen <seemant@gentoo.org> gcc-2.95.3-r8.ebuild :
+
+  Marked stable for x86
+
+  10 Nov 2002; Martin Schlemmer <azarah@gentoo.org> :
+
+  New multi version/arch version.
+
+*gcc-3.2-r3 (28 Oct 2002)
+
+  28 Oct 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.2-r3.ebuild :
+
+  Initial version that support alpha version of new multi version/arch
+  scheme.  Very ALPHA, so use at your own risk!!
+
+*gcc-3.2-r2 (20 Oct 2002)
+
+  20 Oct 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.2-r2.ebuild :
+
+  Add patches to compile under glibc-2.3.1.
+
+*gcc-3.2-r1 (27 Aug 2002)
+
+  9 Sep 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.2-r1.ebuild :
+
+  Remove symlinks that are installed to /usr/lib/gcc-lib/$CHOST/$PV/include,
+  as it may cause the build to fail.
+
+  27 Aug 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.2-r1.ebuild :
+
+  Update the "misconstruct function call frame" bug patches.  This resolves
+  bug #7071, thanks to Steven Wong <wongs15@tartarus.uwa.edu.au>.  Updated
+  info can be found at:
+
+    http://archive.linuxfromscratch.org/mail-archives/lfs-dev/2002/08/0588.html
+
+  Good patch site to keep in mind (reminder to myself):
+
+    http://www.zipworld.com.au/~gschafer/lfs-tweaks.html
+
+  21 Aug 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  Filter -fomit-frame-pointer flag, which causes problems as reported in
+  bug #6641.
+
+  15 Aug 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.2.ebuild :
+
+  Add back gcc-3-deopt.patch.  Also add gcc-3-deopt-doc.patch.  Update
+  the docs that gets installed, as well as added html pages for libstdc++-v3.
+
+*gcc-3.2 (15 Aug 2002)
+
+  15 Aug 2002; Daniel Robbins <drobbins@gentoo.org> gcc-3.2.ebuild :
+
+  Update to latest version
+
+*gcc-3.2_pre-r1 (15 Aug 2002)
+
+  15 Aug 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.2_pre-r1 :
+  
+  New snapshot.
+
+  Fixes a bug in gcc-3.1 and above ... -maccumulate-outgoing-args flag (added
+  in gcc-3.1) causes gcc to misconstruct the function call frame in many cases.
+  Thanks to Ronald Hummelink <ronald@hummelink.xs4all.nl> for bringing it to
+  our attention.
+  
+    http://archive.linuxfromscratch.org/mail-archives/lfs-dev/2002/08/
+    http://archive.linuxfromscratch.org/mail-archives/lfs-dev/2002/08/0319.html
+    http://archive.linuxfromscratch.org/mail-archives/lfs-dev/2002/08/0350.html
+    http://archive.linuxfromscratch.org/mail-archives/lfs-dev/2002/08/0410.html
+    http://gcc.gnu.org/ml/gcc/2002-08/msg00731.html
+
+  NOTE to myself: I still have to apply the patch to the manpage *after*
+  compile.
+
+  Add --enable-__cxa_atexit to ./configure, fixing bug #6430.
+
+*gcc-3.1.1-r1 (30 Jul 2002)
+
+  30 Jul 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.1.1-r1 :
+
+  Gcc-3.1.1 final.  Also fixed it to be able to disable java.
+  Major cleanups from 3.1.1.
+
+*gcc-3.2_pre (28 Jul 2002)
+
+  30 Jul 2002; Mark Guertin <gerk@gentoo.org> gcc-3.2_pre :
+  Added ppc to keywords
+
+  30 Jul 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.2_pre :
+
+  Some cleanups.  Use the "java" USE flag to enable/disable java
+  as it add a bit to compile time.
+
+  28 Jul 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.2_pre :
+
+  Add CVS version of gcc-3.2.
+
+*gcc-3.1.1 (07 Jul 2002)
+
+  7 Jul 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.1.1 :
+
+  Add snapshot for gcc-3.1.1.  This fixes the internal compiler
+  errors with "-march=pentium4" for me at least (had with gcc-3.1).
+
+*gcc-3.1-r8 (03 Jul 2002)
+
+  6 Jul 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.1-r8 :
+
+  Update the fix for bug #4411, as the old caused ncurses, among things
+  not to link properly if an older version was installed.  The sed
+  rule is now:
+
+  sed -e "s:%{L\*} %(link_libgcc):%{L\*} -L/lib %(link_libgcc):" specs
+
+
+  3 Jul 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.1-r8 :
+
+  Move all the libs to the version specific directory.  Add a fix for
+  bug #4411, which should be considered *very* experimental.
+
+  3 Jul 2002; Martin Schlemmer <azarah@gentoo.org> :
+  Add the /usr/bin/$CHOST-g++ symlink, as it is needed now for
+  some weird reason.
+
+*gcc-2.95.3-r7 (29 Jun 2002)
+
+  29 Jun 2002; Martin Schlemmer <azarah@gentoo.org> :
+  Remove texinfo as we have an ebuild again. 
+
+  This new patch for the atexit problem occured with glibc-2.2.3 should
+  work with glibc-2.2.4.  This closes bug #3987 and #4004.
+  
+    http://archive.linuxfromscratch.org/mail-archives/lfs-dev/2001/08/0476.html
+    http://archive.linuxfromscratch.org/mail-archives/lfs-dev/2001/08/0589.html
+  
+  Something to note, is that this patch makes gcc crash if its given
+  the "-mno-ieee-fp" flag ... libvorbis is an good example of this.
+  This however is on of those which one we want fixed most cases :/
+  
+  Also fix bug #3527, which was caused by a stray symlink on downgrading from
+  gcc-3.x.
+
+*gcc-3.1-r7 (29 June 2002)
+
+  29 June 2002; Brandon Low <lostlogic@gentoo.org> gcc-3.1-r6.ebuild :
+
+  Make sure that static linking against gcc libraries works with a little
+  sed magic :).
+
+  25 Jun 2002; Martin Schlemmer <azarah@gentoo.org> texinfo providing ebuilds :
+  Add ibiblio to SRC_URI for all texinfo providing ebuilds (2.95.3 and 3.0.4);
+  resolve bug #1777.
+
+*gcc-3.1-r6 (10 June 2002)
+
+  11 June 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.1-r6.ebuild :
+
+  Update version checking.
+
+  10 June 2002; Bart Verwilst <verwilst@gentoo.org> Changelog:
+ 
+  Remove curses.h and ncurses.h from the installation, so it doesn't 
+  conflict with our ncurses package.
+
+
+*gcc-3.1-r5 (29 May 2002)
+
+  29 May 2002; Matthew Kennedy <azarah@gentoo.org> gcc-3.1-r5.ebuild,
+  ChangeLog, files/digest-gcc-3.1-r5 :
+
+  Fixes how we check for already install gcc's.
+
+*gcc-3.1-r4 (25 May 2002)
+
+  25 May 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.1-r4.ebuild :
+
+  Fix some more files that got installed in the wrong location.  From
+  gcc-3.1, locales is installed in $datadir, so we should not set that
+  to a custom dir, and since libgcj.jar now have the version appended,
+  it should not be a problem with multiple version installs anymore.
+
+*gcc-3.1-r3 (25 May 2002)
+
+  25 May 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.1-r3.ebuild :
+
+  Added some Redhat/Suse/Mandrake patches.
+
+*gcc-3.1-r2 (24 May 2002)
+
+  24 May 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.1-r2.ebuild :
+
+  Use the correct library versions in src_install().
+
+*gcc-3.1-r1 (20 May 2002) 
+  20 May 2002; Spider <spider@gentoo.org> gcc-3.1-r1.ebuild :
+  removed all texinfo references in gcc 3.1 ebuild. 
+  
+*gcc-3.1 (17 May 2002)
+
+  17 May 2002; Preston Elder <prez@gentoo.org> gcc-3.1 :
+
+  Added the 3.1 ebuild.
+
+*gcc-3.0.4-r6 (2 May 2002)
+
+  3 May 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.0.4-r6 :
+
+  Fix some typo's thanks to Jared H. Hudson.
+
+*gcc-3.0.4-r5 (2 May 2002)
+
+  2 May 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.0.4-r5 :
+
+  Only move .la files for parallel builds, else some packages (KDE *grin*)
+  fails to build.
+
+*gcc-2.95.3-r6 (30 Apr 2002)
+
+  30 Apr 2002; Daniel Robbins <drobbins@gentoo.org>: removed libiberty.a as
+  binutils installs it.  This closes bug #2266.
+
+*gcc-3.0.4-r4 (25 Apr 2002)
+
+  25 Apr 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.0.4-r4 :
+
+  Only apply the gcc3-program-transform.patch patch if building 
+  a multiple install of gcc.
+
+  17 Apr 2002; Martin Schlemmer <azarah@gentoo.org> gcc-3.0.4-r3 :
+
+  Move .la files to gcc internal dir to fix gcc2+libtool problems
+  of trying to link /usr/lib/libstdc++.so.
+
+*gcc-3.0.4-r3 (16 Apr 2002)
+
+  16 Apr 2002; Martin Schlemmer <azarah@gentoo.org> :
+
+  Moved the manpages to version spesific ones.  More cleanups.
+  Moved libgcj.jar to /usr/lib/gcc-$PV.
+
+*gcc-3.0.4-r2 (15 Apr 2002)
+
+  15 Apr 2002; Martin Schlemmer <azarah@gentoo.org> :
+
+  This build enables us to have multiple versions of gcc
+  installed.
+
+*gcc-3.0.4 (1 Mar 2002)
+
+  1 Mar 2002; Grant Goodyear <g2boojum@gentoo.org> :
+
+  Added 3.0.4.  It looks like using the --disable-checks
+  command fixes most of the sandbox violations that we had
+  with 3.0.3 (or 3.0.4 no longer tries to update system
+  headers; I'm not sure which).
+  
+*gcc-2.95.3-r5 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

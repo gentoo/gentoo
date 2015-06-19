@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prepare unpack
+DEPEND=dev-db/sqlite:3 virtual/pkgconfig dev-util/scons
+DESCRIPTION=SunPinyin is a SLM (Statistical Language Model) based IME
+EAPI=3
+HOMEPAGE=http://sunpinyin.googlecode.com
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=LGPL-2.1 CDDL
+RDEPEND=dev-db/sqlite:3
+SLOT=0
+SRC_URI=http://sunpinyin.googlecode.com/files/sunpinyin-2.0.3.tar.gz http://open-gram.googlecode.com/files/dict.utf8.tar.bz2 http://open-gram.googlecode.com/files/lm_sc.t3g.arpa.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	scons-utils	988e24b9e2e4642189b4e97c03e5ae71	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f54230d172f38bbae9c0da28eca2b284

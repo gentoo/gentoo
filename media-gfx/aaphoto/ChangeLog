@@ -1,0 +1,14 @@
+# ChangeLog for media-gfx/aaphoto
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/aaphoto/ChangeLog,v 1.2 2013/12/13 14:21:18 pinkbyte Exp $
+
+  13 Dec 2013; Sergey Popov <pinkbyte@gentoo.org> aaphoto-0.43.1.ebuild:
+  Stable on amd64 and x86, wrt bug #493698
+
+*aaphoto-0.43.1 (07 Nov 2013)
+
+  07 Nov 2013; Sergey Popov <pinkbyte@gentoo.org> +aaphoto-0.43.1.ebuild,
+  +metadata.xml:
+  Initial commit, wrt bug #486110. Package will be maintained by Ferenc Erki
+  <erkiferenc AT gmail.com> through proxy maintainers
+

@@ -1,0 +1,62 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/udftools/files/pktcdvd.init,v 1.2 2008/10/31 20:07:41 dsd Exp $
+
+depend() {
+	need localmount modules
+}
+
+checkconfig() {
+	if ! [ -e /dev/pktcdvd/control ]; then
+		eerror "Could not find packet-writing control device at /dev/pktcdvd/control"
+		eerror "Please ensure that your kernel includes packet writing support,"
+		eerror "and if modular, ensure that the module is loaded."
+		return 1
+	fi
+}
+
+get_rw_devices() {
+	devices_raw=$(sed -re '/^drive name:/I!d; s/.*:\s+//' /proc/sys/dev/cdrom/info)
+	count=0
+	for i in $devices_raw; do
+		eval "devices_$count=\"\$i\""
+		count=$(( $count + 1 ))
+	done
+	devs=""
+
+	cdrw_caps=$(sed -re '/^Can write CD-RW:/I!d; s/.*:\s+//' /proc/sys/dev/cdrom/info)
+
+	count=0
+	for i in $cdrw_caps; do
+		[ "$i" -eq 1 ] && eval "devs=\"\$devs \$devices_$count\""
+		count=$(( $count + 1 ))
+	done
+
+	echo ${devs}
+}
+
+start() {
+	checkconfig || return 1
+
+	for i in $(get_rw_devices)
+	do
+		devnode="/dev/${i}"
+		[ -e "${devnode}" ] || continue
+
+		/usr/bin/pktsetup "${i}" "${devnode}" > /dev/null
+		[ -e "/dev/pktcdvd/${i}" ] || continue
+		chmod 660 "/dev/pktcdvd/${i}"
+		chgrp cdrw "/dev/pktcdvd/${i}"
+	done
+}
+
+stop() {
+	checkconfig || return 1
+	
+	for i in $(get_rw_devices)
+	do
+		/usr/bin/pktsetup -d "${i}" > /dev/null
+	done
+}
+

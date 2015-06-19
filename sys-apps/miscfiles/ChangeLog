@@ -1,0 +1,176 @@
+# ChangeLog for sys-apps/miscfiles
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/miscfiles/ChangeLog,v 1.48 2014/01/18 03:28:41 vapier Exp $
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> miscfiles-1.5-r1.ebuild:
+  Add arm64 love.
+
+  15 Jul 2012; Raúl Porcel <armin76@gentoo.org> miscfiles-1.5-r1.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #422181
+
+  28 Jun 2012; Brent Baude <ranger@gentoo.org> miscfiles-1.5-r1.ebuild:
+  Marking miscfiles-1.5-r1 ppc for bug 422181
+
+  28 Jun 2012; Markus Meier <maekke@gentoo.org> miscfiles-1.5-r1.ebuild:
+  arm stable, bug #422181
+
+  27 Jun 2012; Jeroen Roovers <jer@gentoo.org> miscfiles-1.5-r1.ebuild:
+  Stable for HPPA (bug #422181).
+
+  22 Jun 2012; Brent Baude <ranger@gentoo.org> miscfiles-1.5-r1.ebuild:
+  Marking miscfiles-1.5-r1 ppc64 for bug 422181
+
+  20 Jun 2012; Jeff Horelick <jdhore@gentoo.org> miscfiles-1.5-r1.ebuild:
+  marked x86 per bug 422181
+
+  19 Jun 2012; Agostino Sarubbo <ago@gentoo.org> miscfiles-1.5-r1.ebuild:
+  Stable for amd64, wrt bug #422181
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> miscfiles-1.5-r1.ebuild:
+  keyword ~amd64-fbsd
+
+*miscfiles-1.5-r1 (10 Apr 2012)
+
+  10 Apr 2012; Ulrich Müller <ulm@gentoo.org> +miscfiles-1.5-r1.ebuild:
+  Update Unicode file to version 6.1.0 (with permission from vapier).
+
+  29 Dec 2010; Ulrich Mueller <ulm@gentoo.org> miscfiles-1.5.ebuild:
+  Add build-time dependency on xz-utils, bug 346091.
+
+  18 Nov 2010; Jeremy Olexa <darkside@gentoo.org> miscfiles-1.5.ebuild:
+  Fix for Gentoo Prefix, bug 345935 by Dan Wallis
+
+*miscfiles-1.5 (17 Nov 2010)
+
+  17 Nov 2010; Mike Frysinger <vapier@gentoo.org> +miscfiles-1.5.ebuild:
+  Version bump #345839 by Jeroen Roovers.
+
+  08 Oct 2010; Mart Raudsepp <leio@gentoo.org> miscfiles-1.4.2.ebuild:
+  Drop to ~mips
+
+  12 Sep 2010; Jonathan Callen <abcd@gentoo.org> miscfiles-1.4.2-r1.ebuild:
+  Add prefix support and keywords, switch to EAPI=3
+
+  11 Mar 2010; Sebastian Pipping <sping@gentoo.org> miscfiles-1.4.2.ebuild,
+  miscfiles-1.4.2-r1.ebuild:
+  Fix homepage (bug #261519)
+
+  04 Mar 2010; Jeroen Roovers <jer@gentoo.org> miscfiles-1.4.2-r1.ebuild:
+  Stable for PPC (bug #293265).
+
+  04 Mar 2010; Jeroen Roovers <jer@gentoo.org> miscfiles-1.4.2-r1.ebuild:
+  Stable for HPPA (bug #293265).
+
+  26 Feb 2010; Brent Baude <ranger@gentoo.org> miscfiles-1.4.2-r1.ebuild:
+  Marking miscfiles-1.4.2-r1 ppc64 for bug 293265
+
+  24 Feb 2010; Markos Chandras <hwoarang@gentoo.org>
+  miscfiles-1.4.2-r1.ebuild:
+  Stable on amd64 wrt bug #293265
+
+  23 Feb 2010; Raúl Porcel <armin76@gentoo.org> miscfiles-1.4.2-r1.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #293265
+
+  23 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  miscfiles-1.4.2-r1.ebuild:
+  stable x86, bug 293265
+
+  07 Jan 2010; Alexis Ballier <aballier@gentoo.org>
+  miscfiles-1.4.2-r1.ebuild:
+  Add blocker for freebsd-share colliding with it and keyword for -fbsd
+
+*miscfiles-1.4.2-r1 (17 Oct 2009)
+
+  17 Oct 2009; Ulrich Mueller <ulm@gentoo.org> miscfiles-1.4.2.ebuild,
+  +miscfiles-1.4.2-r1.ebuild:
+  Update unicode file from unicode.org, add unicode to LICENSE, bug 257352.
+  Don't install GNU-manifesto twice.
+
+  27 Apr 2009; Mike Frysinger <vapier@gentoo.org> miscfiles-1.4.2:
+  Check for create-cracklib-dict in PATH before trying to run it #265932 by
+  James Rowe.
+
+  30 Dec 2006; Mike Frysinger <vapier@gentoo.org> miscfiles-1.4.2.ebuild:
+  Regenerate the cracklib dictionary in pkg_postinst from all dict files
+  #114690 by Philippe Troin.
+
+  29 May 2005; <solar@gentoo.org> miscfiles-1.3-r1.ebuild:
+  - update sys-apps/miscfiles to use libc expanded variable elibc_uclibc vs
+  uclibc so USE=-* works
+
+*miscfiles-1.4.2 (12 Jan 2005)
+
+  12 Jan 2005; Mike Frysinger <vapier@gentoo.org> +miscfiles-1.4.2.ebuild:
+  Version bump.
+
+  22 Sep 2004; Robin H. Johnson <robbat2@gentoo.org> miscfiles-1.3-r1.ebuild:
+  libc is NOT needed, come on people, this only installs textfiles...
+
+  21 Jun 2004; <solar@gentoo.org> miscfiles-1.2-r1.ebuild,
+  miscfiles-1.3-r1.ebuild, miscfiles-1.3.ebuild:
+  clean unneeded things in a native-uclibc envionment. Added dep of gzip and
+  glibc
+
+  27 Jun 2003; Seemant Kulleen <seemant@gentoo.org> miscfiles-1.3-r2.ebuild:
+  masking -- this screws up ispell in general
+
+  24 Jun 2003; Aron Griffis <agriffis@gentoo.org> miscfiles-1.3-r2.ebuild:
+  Mark stable on alpha
+
+*miscfiles-1.3-r2 (13 Jun 2003)
+
+  22 Jun 2003; Joshua Kinard <kumba@gentoo.org> miscfiles-1.3-r2.ebuild:
+  Changed ~sparc & ~mips to sparc & mips in KEYWORDS
+
+  13 Jun 2003; Seemant Kulleen <seemant@gentoo.org> miscfiles-1.3-r2.ebuild:
+  prevent installing /usr/share/dict/words as ispell's english dictionary
+  becomes a hybrid of British and American. Closes bug #8992 by Arkadiusz
+  Mucha <arkmch@priv4.onet.pl>
+
+*miscfiles-1.3-r1 (08 Mar 2003)
+
+  06 Jul 2003; Guy Martin <gmsoft@gentoo.org> miscfiles-1.3-r1.ebuild :
+  Marked stable on hppa.
+
+  08 Mar 2003; Seemant Kulleen <seemant@gentoo.org> miscfiles-1.3-r1.ebuild,
+  files/miscfiles-1.3-Makefile.diff:
+  Added extra dict words. Thanks to a patch by anko1894@uosis.mif.vu.lt in bug
+  #17087
+
+  21 Feb 2003; Zach Welch <zwelch@gentoo.org> miscfiles-1.3.ebuild :
+  Added arm to keywords.
+
+  09 Feb 2003; Guy Martin <gmsoft@gentoo.org> miscfiles-1.3.ebuild :
+  Added hppa to keywords.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*miscfiles-1.3 (17 Jul 2002)
+
+  18 Jan 2003; Jan Seidel <tuxus@gentoo.org> :
+  Added mips to keywords
+
+  08 Aug 2002; Seemant Kulleen <seemant@gentoo.org> miscfiles-1.3.ebuild :
+
+  FHS compliance.
+
+  17 Jul 2002; Seemant Kulleen <seemant@gentoo.org> miscfiles-1.3.ebuild
+  files/digest-miscfiles-1.3 :
+
+  Version bump.
+
+*miscfiles-1.2-r1 (1 Feb 2002)
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> miscfiles-1.2.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> miscfiles-1.2-r1.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

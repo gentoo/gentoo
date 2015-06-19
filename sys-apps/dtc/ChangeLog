@@ -1,0 +1,110 @@
+# ChangeLog for sys-apps/dtc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/dtc/ChangeLog,v 1.27 2015/05/30 10:55:59 maekke Exp $
+
+  30 May 2015; Markus Meier <maekke@gentoo.org> dtc-1.4.1.ebuild:
+  arm stable, bug #535644
+
+  20 May 2015; Mikle Kolyada <zlogene@gentoo.org> dtc-1.4.1.ebuild:
+  x86 stable wrt bug #535644
+
+  19 May 2015; Chema Alonso <nimiux@gentoo.org> dtc-1.4.1.ebuild:
+  Stable for amd64 wrt bug #535644
+
+  15 May 2015; Pacho Ramos <pacho@gentoo.org> dtc-1.4.1.ebuild:
+  ppc stable wrt bug #535644
+
+*dtc-1.4.1-r1 (06 May 2015)
+
+  06 May 2015; Mike Frysinger <vapier@gentoo.org> +dtc-1.4.1-r1.ebuild,
+  +files/dtc-1.4.1-echo-n.patch, +files/dtc-1.4.1-missing-syms.patch:
+  Add fix from upstream for missing symbols.
+
+  01 May 2015; Jeroen Roovers <jer@gentoo.org> dtc-1.4.1.ebuild:
+  Stable for PPC64 (bug #535644).
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> dtc-1.4.1.ebuild:
+  add arm64 support, tested on A53 board
+
+  17 Nov 2014; Mike Frysinger <vapier@gentoo.org> dtc-1.4.1.ebuild,
+  dtc-9999.ebuild:
+  Restore arm keywords in newer versions.
+
+*dtc-1.4.1 (17 Nov 2014)
+
+  17 Nov 2014; Mike Frysinger <vapier@gentoo.org> +dtc-1.4.1.ebuild,
+  dtc-9999.ebuild:
+  Version bump.
+
+  04 Jun 2014; Agostino Sarubbo <ago@gentoo.org> dtc-1.4.0.ebuild:
+  Stable for x86, wrt bug #507796
+
+  04 Jun 2014; Agostino Sarubbo <ago@gentoo.org> dtc-1.4.0.ebuild:
+  Stable for amd64, wrt bug #507796
+
+*dtc-1.4.0 (02 Aug 2013)
+
+  02 Aug 2013; Mike Frysinger <vapier@gentoo.org> +dtc-1.4.0.ebuild:
+  Version bump.
+
+  08 Apr 2013; Mike Frysinger <vapier@gentoo.org> dtc-1.3.0-r1.ebuild,
+  dtc-1.3.0.ebuild:
+  Add arm lovin.
+
+*dtc-1.3.0-r1 (10 Nov 2012)
+
+  10 Nov 2012; Mike Frysinger <vapier@gentoo.org> +dtc-1.3.0-r1.ebuild,
+  +files/dtc-1.3.0-fdtdump.patch, dtc-1.3.0.ebuild, dtc-9999.ebuild:
+  Backport fix from upstream for renaming ftdump to fdtdump #372895 by dacook.
+
+  03 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> -dtc-1.0.0.ebuild,
+  -files/dtc-1.0.0-Makefile.patch, -dtc-1.2.0.ebuild:
+  old
+
+  03 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> dtc-1.3.0.ebuild:
+  amd64/ppc/ppc64/x86 stable wrt #439678
+
+  03 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> dtc-1.3.0.ebuild,
+  dtc-9999.ebuild:
+  Rename ftdump to ftdump.dtc if present wrt #372895 by "dacook"
+
+*dtc-9999 (17 Oct 2011)
+
+  17 Oct 2011; Mike Frysinger <vapier@gentoo.org> +dtc-9999.ebuild:
+  Add a live git ebuild.
+
+*dtc-1.3.0 (15 Jun 2011)
+
+  15 Jun 2011; Diego E. Pettenò <flameeyes@gentoo.org> +dtc-1.3.0.ebuild:
+  Version bump; remove -Werror and pre-defined CFLAGS; bump to EAPI=4; use
+  parallel make for tests as well.
+
+  05 Jan 2011; Markos Chandras <hwoarang@gentoo.org> dtc-1.2.0.ebuild:
+  Stable on amd64 wrt bug #346681
+
+  25 Nov 2010; Christian Faulhammer <fauli@gentoo.org> dtc-1.2.0.ebuild:
+  stable x86, bug 346681
+
+*dtc-1.2.0 (03 Nov 2010)
+
+  03 Nov 2010; Luca Barbato <lu_zero@gentoo.org> +dtc-1.2.0.ebuild:
+  Version Bump
+
+  06 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> dtc-1.0.0.ebuild,
+  +files/dtc-1.0.0-Makefile.patch:
+  Respect environment flags wrt #241986 by Diego E. Pettenò.
+
+  20 Feb 2008; Santiago M. Mola <coldwind@gentoo.org> dtc-1.0.0.ebuild:
+  Add ~amd64 wrt bug #209995
+
+  13 Feb 2008; Dawid Węgliński <cla@gentoo.org> dtc-1.0.0.ebuild:
+  Add ~x86 keyword (bug #209995)
+
+  08 Jan 2008; Brent Baude <ranger@gentoo.org> dtc-1.0.0.ebuild:
+  Marking dtc-1.0.0 ppc and ppc64 stable to support the development PS3 profile
+
+*dtc-1.0.0 (07 Dec 2007)
+
+  07 Dec 2007; Luca Barbato <lu_zero@gentoo.org> +metadata.xml,
+  +dtc-1.0.0.ebuild:
+  First commit (imported from cell overlay)

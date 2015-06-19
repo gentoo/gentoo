@@ -1,0 +1,19 @@
+# ChangeLog for net-wireless/crackle
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/crackle/ChangeLog,v 1.4 2014/08/10 20:34:39 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> crackle-0.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  17 Mar 2014; Rick Farina <zerochaos@gentoo.org> crackle-0.1.ebuild:
+  restrict tests since there are no tests but there is a test.c and it breaks
+  when make test is run
+
+  05 Mar 2014; Rick Farina <zerochaos@gentoo.org> crackle-0.1.ebuild:
+  move from sbin to bin to follow upstream
+
+*crackle-0.1 (05 Mar 2014)
+
+  05 Mar 2014; Rick Farina <zerochaos@gentoo.org> +crackle-0.1.ebuild,
+  +files/flags.patch, +metadata.xml:
+  crackle, initial import, based on request from Pentoo

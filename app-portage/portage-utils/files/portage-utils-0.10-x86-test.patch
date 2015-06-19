@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/412067
+
+--- tests/profile/dotest	19 May 2012 13:20:20 -0000	1.2
++++ tests/profile/dotest	8 Jun 2012 04:42:04 -0000
+@@ -31,10 +31,11 @@ unset $(qenv | awk '{print $1}')
+ 
+ # test vars that should default to known values.
+ # cannot test too many more as portage's default
+-# make.globals will kick in.
++# make.globals will kick in.  also can't test
++# some vars (e.g. PORTAGE_BINHOST) that we default
++# on some platforms.
+ tenv inv ROOT /
+ tenv inv ARCH
+-tenv inv PORTAGE_BINHOST
+ 
+ # this validates simple stuff
+ tenv 1 ARCH x86

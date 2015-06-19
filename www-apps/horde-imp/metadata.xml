@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>web-apps</herd>
+<longdescription>
+IMP is the Internet Messaging Program. It is written in PHP and provides 
+webmail access to IMAP and POP3 accounts.
+</longdescription>
+</pkgmetadata>

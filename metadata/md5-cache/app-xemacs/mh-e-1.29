@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=Front end support for MH
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=app-xemacs/gnus app-xemacs/mail-lib app-xemacs/xemacs-base app-xemacs/speedbar app-xemacs/rmail app-xemacs/tm app-xemacs/apel app-xemacs/sh-script app-xemacs/fsf-compat app-xemacs/xemacs-devel app-xemacs/net-utils app-xemacs/xemacs-eterm app-xemacs/os-utils app-xemacs/ecrypto app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/mh-e-1.29-pkg.tar.gz
+_eclasses_=xemacs-packages	29b865270cd0de904945912d5041f1cc
+_md5_=efec974cb7db84bf1b6f1c0944ce0427

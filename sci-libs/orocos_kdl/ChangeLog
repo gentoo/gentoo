@@ -1,0 +1,15 @@
+# ChangeLog for sci-libs/orocos_kdl
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/orocos_kdl/ChangeLog,v 1.2 2014/10/31 10:17:51 aballier Exp $
+
+  31 Oct 2014; Alexis Ballier <aballier@gentoo.org> orocos_kdl-1.3.0.ebuild,
+  orocos_kdl-9999.ebuild:
+  keyword ~arm
+
+*orocos_kdl-9999 (30 Oct 2014)
+*orocos_kdl-1.3.0 (30 Oct 2014)
+
+  30 Oct 2014; Alexis Ballier <aballier@gentoo.org> +orocos_kdl-1.3.0.ebuild,
+  +orocos_kdl-9999.ebuild, +metadata.xml:
+  initial import, ebuild by me
+

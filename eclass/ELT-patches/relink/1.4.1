@@ -1,0 +1,124 @@
+--- ltmain.sh	Sun Aug 12 18:08:05 2001
++++ ltmain.sh	Tue Aug 28 18:55:13 2001
+@@ -827,6 +827,7 @@
+     linker_flags=
+     dllsearchpath=
+     lib_search_path=`pwd`
++    inst_prefix_dir=
+ 
+     avoid_version=no
+     dlfiles=
+@@ -959,6 +960,11 @@
+ 	  prev=
+ 	  continue
+ 	  ;;
++        inst_prefix)
++	  inst_prefix_dir="$arg"
++	  prev=
++	  continue
++	  ;;
+ 	release)
+ 	  release="-$arg"
+ 	  prev=
+@@ -1167,6 +1173,11 @@
+ 	continue
+ 	;;
+ 
++      -inst-prefix-dir)
++	prev=inst_prefix
++	continue
++	;;
++
+       # The native IRIX linker understands -LANG:*, -LIST:* and -LNO:*
+       # so, if we see these flags be careful not to treat them like -L
+       -L[A-Z][A-Z]*:*)
+@@ -2231,7 +2242,16 @@
+ 	    if test "$hardcode_direct" = yes; then
+ 	      add="$libdir/$linklib"
+ 	    elif test "$hardcode_minus_L" = yes; then
+-	      add_dir="-L$libdir"
++	      # Try looking first in the location we're being installed to.
++	      add_dir=
++	      if test -n "$inst_prefix_dir"; then
++		case "$libdir" in
++		[\\/]*)
++		  add_dir="-L$inst_prefix_dir$libdir"
++		  ;;
++		esac
++	      fi
++	      add_dir="$add_dir -L$libdir"
+ 	      add="-l$name"
+ 	    elif test "$hardcode_shlibpath_var" = yes; then
+ 	      case :$finalize_shlibpath: in
+@@ -2241,7 +2261,16 @@
+ 	      add="-l$name"
+ 	    else
+ 	      # We cannot seem to hardcode it, guess we'll fake it.
+-	      add_dir="-L$libdir"
++	      # Try looking first in the location we're being installed to.
++	      add_dir=
++	      if test -n "$inst_prefix_dir"; then
++		case "$libdir" in
++		[\\/]*)
++		  add_dir="-L$inst_prefix_dir$libdir"
++		  ;;
++		esac
++	      fi
++	      add_dir="$add_dir -L$libdir"
+ 	      add="-l$name"
+ 	    fi
+ 
+@@ -4321,7 +4350,7 @@
+ 	fi
+       done
+       # Quote the link command for shipping.
+-      relink_command="cd `pwd`; $SHELL $0 --mode=relink $libtool_args"
++      relink_command="cd `pwd`; $SHELL $0 --mode=relink $libtool_args @inst_prefix_dir@"
+       relink_command=`$echo "X$relink_command" | $Xsed -e "$sed_quote_subst"`
+ 
+       # Only create the output if not a dry run.
+@@ -4622,12 +4651,30 @@
+ 	dir="$dir$objdir"
+ 
+ 	if test -n "$relink_command"; then
++	  # Determine the prefix the user has applied to our future dir.
++	  inst_prefix_dir=`$echo "$destdir" | sed "s%$libdir\$%%"`
++
++	  # Don't allow the user to place us outside of our expected
++	  # location b/c this prevents finding dependent libraries that
++	  # are installed to the same prefix.
++	  if test "$inst_prefix_dir" = "$destdir"; then
++	    $echo "$modename: error: cannot install \`$file' to a directory not ending in $libdir" 1>&2
++	    exit 1
++	  fi
++
++	  if test -n "$inst_prefix_dir"; then
++	    # Stick the inst_prefix_dir data into the link command.
++	    relink_command=`$echo "$relink_command" | sed "s%@inst_prefix_dir@%-inst-prefix-dir $inst_prefix_dir%"`
++	  else
++	    relink_command=`$echo "$relink_command" | sed "s%@inst_prefix_dir@%%"`
++	  fi
++
+ 	  $echo "$modename: warning: relinking \`$file'" 1>&2
+ 	  $show "$relink_command"
+ 	  if $run eval "$relink_command"; then :
+ 	  else
+ 	    $echo "$modename: error: relink \`$file' with the above command before installing it" 1>&2
+-	    continue
++	    exit 1
+ 	  fi
+ 	fi
+ 
+@@ -4782,7 +4829,11 @@
+ 	    if test "$finalize" = yes && test -z "$run"; then
+ 	      tmpdir="/tmp"
+ 	      test -n "$TMPDIR" && tmpdir="$TMPDIR"
+-	      tmpdir="$tmpdir/libtool-$$"
++              tmpdir=`mktemp -d $tmpdir/libtool-XXXXXX 2> /dev/null`
++              if test $? = 0 ; then :
++              else
++                tmpdir="$tmpdir/libtool-$$"
++              fi
+ 	      if $mkdir -p "$tmpdir" && chmod 700 "$tmpdir"; then :
+ 	      else
+ 		$echo "$modename: error: cannot create temporary directory \`$tmpdir'" 1>&2

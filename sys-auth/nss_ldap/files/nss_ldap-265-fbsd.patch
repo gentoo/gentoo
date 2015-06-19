@@ -1,0 +1,432 @@
+--- Makefile.am.orig	2009-11-06 05:28:08.000000000 -0500
++++ Makefile.am		2010-01-12 23:24:17.000000000 -0500
+@@ -9,8 +9,12 @@
+ if AIX
+ INST_GID=system
+ else
++if FreeBSD
++INST_GID=wheel
++else
+ INST_GID=root
+ endif
++endif
+ 
+ EXTRA_DIST = CVSVersionInfo.txt ChangeLog \
+ 	     AUTHORS ANNOUNCE NEWS INSTALL README LICENSE.OpenLDAP COPYING\
+@@ -23,7 +27,7 @@
+ 	ldap-alias.c ldap-service.c ldap-schema.c ldap-ethers.c \
+ 	ldap-bp.c ldap-automount.c util.c ltf.c snprintf.c resolve.c \
+ 	dnsconfig.c irs-nss.c pagectrl.c ldap-sldap.c ldap-init-krb5-cache.c \
+-	vers.c
++	vers.c bsdnss.c
+ 
+ nss_ldap_so_LDFLAGS = @nss_ldap_so_LDFLAGS@
+ 
+@@ -103,11 +107,10 @@
+ 		$(mkinstalldirs) $(DESTDIR)$(dir $(NSS_LDAP_PATH_CONF)); \
+ 		$(INSTALL_DATA) -o $(INST_UID) -g $(INST_GID) $(srcdir)/ldap.conf $(DESTDIR)$(NSS_LDAP_PATH_CONF); \
+ 	fi
+-	$(INSTALL_DATA) -o $(INST_UID) -g $(INST_GID) $(srcdir)/nsswitch.ldap $(DESTDIR)$(sysconfdir)/nsswitch.ldap; 
+ 
+ uninstall-local:
+ 	@$(NORMAL_UNINSTALL)
+ 
+ vers.c: $(top_srcdir)/CVSVersionInfo.txt
+-	CVSVERSIONDIR=$(top_srcdir) ./vers_string -v
++	$(top_srcdir)/vers_string -v
+ 
+
+--- configure.in.orig		   2007-10-29 06:30:12.000000000 -0700
++++ configure.in		   2008-09-26 20:38:20.000000000 -0700
+@@ -97,11 +97,15 @@
+ linux*) nss_ldap_so_LDFLAGS="-shared -Wl,-Bdynamic -Wl,--version-script,\$(srcdir)/exports.linux" ;;
+ *) nss_ldap_so_LDFLAGS="-shared -Wl,-Bdynamic" ;;
+ esac
++case "$target_os" in
++freebsd*) TARGET_OS=FreeBSD ;;
++esac
+ 
+ AM_CONDITIONAL(GCC, test "$GCC" = "yes")
+ AM_CONDITIONAL(GLIBC, test "$target_os" = "linux" -o "$target_os" = "linux-gnu")
+ AM_CONDITIONAL(AIX, test "$TARGET_OS" = AIX)
+ AM_CONDITIONAL(HPUX, test "$TARGET_OS" = HPUX)
++AM_CONDITIONAL(FreeBSD, test "$TARGET_OS" = FreeBSD)
+ 
+ AM_CONDITIONAL(USE_NATIVE_LINKER, test -n "$nss_ldap_so_LD")
+ 
+@@ -153,7 +157,6 @@
+   aix*) AC_CHECK_HEADERS(irs.h usersec.h) ;;
+   hpux*) AC_CHECK_HEADERS(nsswitch.h) ;;
+   *) AC_CHECK_HEADERS(nss.h)
+-     AC_CHECK_HEADERS(nsswitch.h)
+      AC_CHECK_HEADERS(irs.h) ;;
+ esac
+ AC_CHECK_HEADERS(thread.h)
+@@ -232,7 +235,6 @@
+ AC_CHECK_FUNCS(gethostbyname)
+ AC_CHECK_FUNCS(nsdispatch)
+ AC_CHECK_LIB(pthread_nonshared, main)
+-AC_CHECK_FUNCS(pthread_atfork)
+ AC_CHECK_FUNCS(pthread_once)
+ AC_CHECK_FUNCS(ether_aton)
+ AC_CHECK_FUNCS(ether_ntoa)
+
+--- ldap-ethers.c.orig	2009-11-06 10:28:08.000000000 +0000
++++ ldap-ethers.c	2009-12-23 17:01:14.000000000 +0000
+@@ -217,9 +217,9 @@
+     }
+ 
+   snprintf(fullmac, sizeof(fullmac), "%02x:%02x:%02x:%02x:%02x:%02x",
+-	   addr->ether_addr_octet[0], addr->ether_addr_octet[1],
+-	   addr->ether_addr_octet[2], addr->ether_addr_octet[3],
+-	   addr->ether_addr_octet[4], addr->ether_addr_octet[5]);
++	   addr->octet[0], addr->octet[1],
++	   addr->octet[2], addr->octet[3],
++	   addr->octet[4], addr->octet[5]);
+ 
+   LA_INIT(a);
+   LA_STRING(a) = ether_ntoa(addr);
+@@ -343,14 +343,14 @@
+ 	if (i != 6)
+ 		return NULL;
+ 	for (i = 0; i < 6; i++)
+-		ep.ether_addr_octet[i] = t[i];
++		ep.octet[i] = t[i];
+ 
+	return &ep;
+ }
+ #endif /* !HAVE_ETHER_ATON */
+ 
+ #ifndef HAVE_ETHER_NTOA
+-#define EI(i)	(unsigned int)(e->ether_addr_octet[(i)])
++#define EI(i)	(unsigned int)(e->octet[(i)])
+ static char *ether_ntoa (const struct ether_addr *e)
+ {
+ 	static char s[18];
+
+--- ldap-ethers.h.orig	2009-11-06 10:28:08.000000000 +0000
++++ ldap-ethers.h	2009-12-23 17:02:06.000000000 +0000
+@@ -32,7 +32,7 @@
+ 
+ #ifndef HAVE_STRUCT_ETHER_ADDR
+ struct ether_addr {
+-  u_char ether_addr_octet[6];
++  u_char octet[6];
+ };
+ #endif
+ 
+--- ldap-nss.c.orig	Sat May 27 16:23:40 2006
++++ ldap-nss.c		Sat May 27 16:23:52 2006
+@@ -69,7 +69,7 @@
+ #endif
+ 
+ /* Try to handle systems with both SASL libraries installed */
+-#if defined(HAVE_SASL_SASL_H) && defined(HAVE_SASL_AUXPROP_REQUEST)
++#if defined(HAVE_SASL_SASL_H) 
+ #include <sasl/sasl.h>
+ #elif defined(HAVE_SASL_H)
+ #include <sasl.h>
+
+--- ldap-pwd.c.orig	2008-10-30 21:50:15.000000000 +0100
++++ ldap-pwd.c		2008-12-06 00:37:30.216966282 +0100
+@@ -21,7 +21,10 @@
+ static char rcsId[] =
+   "$Id: nss_ldap-265-fbsd.patch,v 1.1 2014/02/17 05:41:10 prometheanfire Exp $";
+ 
++#include <sys/types.h>
++#include <unistd.h>
+ #include "config.h"
++ 
+ 
+ #ifdef HAVE_PORT_BEFORE_H
+ #include <port_before.h>
+@@ -90,9 +93,13 @@
+   size_t tmplen;
+   char *tmp;
+ 
+-  if (_nss_ldap_oc_check (e, "shadowAccount") == NSS_SUCCESS)
+-    {
++/*  if (_nss_ldap_oc_check (e, "shadowAccount") == NSS_SUCCESS)
++ *   {
++ */
+       /* don't include password for shadowAccount */
++  if (geteuid() != 0) 
++  {
++    /* don't include password for non-root users */
+       if (buflen < 3)
+ 	return NSS_TRYAGAIN;
+ 
+@@ -163,6 +170,15 @@
+     }
++
++#ifdef HAVE_LOGIN_CLASSES 
++  stat =
++    _nss_ldap_assign_attrval (e, AT (loginClass), &pw->pw_class, &buffer,
++    			                &buflen);
++  if (stat != NSS_SUCCESS)
++    (void) _nss_ldap_assign_emptystring (&pw->pw_class, &buffer, &buflen);
++#endif
++
+ 
+   stat =
+     _nss_ldap_assign_attrval (e, AT (homeDirectory), &pw->pw_dir, &buffer,
+ 			      &buflen);
+   if (stat != NSS_SUCCESS)
+
+--- ldap-schema.c	2009-08-29 09:21:43.000000000 -0400
++++ ldap-schema.c	2009-08-28 12:09:52.000000000 -0400
+@@ -334,6 +334,9 @@
+ #ifdef HAVE_PASSWD_PW_EXPIRE
+   (*pwd_attrs)[i++] = AT (shadowExpire);
+ #endif /* HAVE_PASSWD_PW_EXPIRE */
++#ifdef HAVE_LOGIN_CLASSES
++  (*pwd_attrs)[i++] = AT (loginClass);
++#endif
+   (*pwd_attrs)[i] = NULL;
+ }
+ 
+--- ldap-schema.h	2009-08-29 09:21:43.000000000 -0400
++++ ldap-schema.h	2009-08-29 06:37:18.000000000 -0400
+@@ -24,7 +24,7 @@
+ #define _LDAP_NSS_LDAP_LDAP_SCHEMA_H
+ 
+ /* max number of attributes per object class */
+-#define ATTRTAB_SIZE	15
++#define ATTRTAB_SIZE	16
+ 
+ /**
+  * function to initialize global lookup filters.
+@@ -153,6 +153,10 @@
+ #define AT_gecos                  "gecos"
+ #define AT_homeDirectory          "homeDirectory"
+
++#ifdef HAVE_LOGIN_CLASSES
++/* FreeBSD extension -Jacob Myers <jacob@whotokspaz.org> */
++#define AT_loginClass           "loginClass"
++#endif
+ /*
+  * ( nisSchema.2.1 NAME 'shadowAccount' SUP top AUXILIARY
+  *   DESC 'Additional attributes for shadow passwords'            
+
+--- /dev/null	       2013-04-13 01:27:01.290932001 +0200
++++ bsdnss.c	       2013-04-14 03:17:47.794195349 +0200
+@@ -0,0 +1,219 @@
++#include <errno.h>
++#include <stdlib.h>
++#include <sys/param.h>
++#include <netinet/in.h>
++#include <pwd.h>
++#include <grp.h>
++#include <nss.h>
++#include <nsswitch.h>
++#include <netdb.h>
++
++extern enum nss_status _nss_ldap_getgrent_r(struct group *, char *, size_t,
++    int *);
++extern enum nss_status _nss_ldap_getgrnam_r(const char *, struct group *,
++    char *, size_t, int *);
++extern enum nss_status _nss_ldap_getgrgid_r(gid_t gid, struct group *, char *,
++    size_t, int *);
++extern enum nss_status _nss_ldap_setgrent(void);
++extern enum nss_status _nss_ldap_endgrent(void);
++extern enum nss_status _nss_ldap_initgroups_dyn(const char *, gid_t, long int *,
++	     		   long int *, gid_t **, long int, int *);
++
++extern enum nss_status _nss_ldap_getpwent_r(struct passwd *, char *, size_t,
++    int *);
++extern enum nss_status _nss_ldap_getpwnam_r(const char *, struct passwd *,
++    char *, size_t, int *);
++extern enum nss_status _nss_ldap_getpwuid_r(gid_t gid, struct passwd *, char *,
++    size_t, int *);
++extern enum nss_status _nss_ldap_setpwent(void);
++extern enum nss_status _nss_ldap_endpwent(void);
++
++extern enum nss_status _nss_ldap_gethostbyname_r (const char *name, struct hostent * result,
++	     		   char *buffer, size_t buflen, int *errnop,
++			   		    int *h_errnop);
++
++extern enum nss_status _nss_ldap_gethostbyname2_r (const char *name, int af, struct hostent * result,
++	     		    char *buffer, size_t buflen, int *errnop,
++			    	 	      int *h_errnop);
++extern enum nss_status _nss_ldap_gethostbyaddr_r (struct in_addr * addr, int len, int type,
++	     		   struct hostent * result, char *buffer,
++			   	  	     size_t buflen, int *errnop, int *h_errnop);
++
++NSS_METHOD_PROTOTYPE(__nss_compat_getgrnam_r);
++NSS_METHOD_PROTOTYPE(__nss_compat_getgrgid_r);
++NSS_METHOD_PROTOTYPE(__nss_compat_getgrent_r);
++NSS_METHOD_PROTOTYPE(__nss_compat_setgrent);
++NSS_METHOD_PROTOTYPE(__nss_compat_endgrent);
++static NSS_METHOD_PROTOTYPE(__freebsd_getgroupmembership);
++
++NSS_METHOD_PROTOTYPE(__nss_compat_getpwnam_r);
++NSS_METHOD_PROTOTYPE(__nss_compat_getpwuid_r);
++NSS_METHOD_PROTOTYPE(__nss_compat_getpwent_r);
++NSS_METHOD_PROTOTYPE(__nss_compat_setpwent);
++NSS_METHOD_PROTOTYPE(__nss_compat_endpwent);
++
++NSS_METHOD_PROTOTYPE(__nss_compat_gethostbyname);
++NSS_METHOD_PROTOTYPE(__nss_compat_gethostbyname2);
++NSS_METHOD_PROTOTYPE(__nss_compat_gethostbyaddr);
++
++static ns_mtab methods[] = {
++{ NSDB_GROUP, "getgrnam_r", __nss_compat_getgrnam_r, _nss_ldap_getgrnam_r },
++{ NSDB_GROUP, "getgrgid_r", __nss_compat_getgrgid_r, _nss_ldap_getgrgid_r },
++{ NSDB_GROUP, "getgrent_r", __nss_compat_getgrent_r, _nss_ldap_getgrent_r },
++{ NSDB_GROUP, "setgrent",   __nss_compat_setgrent,   _nss_ldap_setgrent },
++{ NSDB_GROUP, "endgrent",   __nss_compat_endgrent,   _nss_ldap_endgrent },
++{ NSDB_GROUP, "getgroupmembership",  __freebsd_getgroupmembership, NULL },
++
++{ NSDB_PASSWD, "getpwnam_r", __nss_compat_getpwnam_r, _nss_ldap_getpwnam_r },
++{ NSDB_PASSWD, "getpwuid_r", __nss_compat_getpwuid_r, _nss_ldap_getpwuid_r },
++{ NSDB_PASSWD, "getpwent_r", __nss_compat_getpwent_r, _nss_ldap_getpwent_r },
++{ NSDB_PASSWD, "setpwent",   __nss_compat_setpwent,   _nss_ldap_setpwent },
++{ NSDB_PASSWD, "endpwent",   __nss_compat_endpwent,   _nss_ldap_endpwent },
++
++{ NSDB_HOSTS, "gethostbyname", __nss_compat_gethostbyname, _nss_ldap_gethostbyname_r },
++{ NSDB_HOSTS, "gethostbyaddr", __nss_compat_gethostbyaddr, _nss_ldap_gethostbyaddr_r },
++{ NSDB_HOSTS, "gethostbyname2", __nss_compat_gethostbyname2, _nss_ldap_gethostbyname2_r },
++
++{ NSDB_GROUP_COMPAT, "getgrnam_r", __nss_compat_getgrnam_r, _nss_ldap_getgrnam_r },
++{ NSDB_GROUP_COMPAT, "getgrgid_r", __nss_compat_getgrgid_r, _nss_ldap_getgrgid_r },
++{ NSDB_GROUP_COMPAT, "getgrent_r", __nss_compat_getgrent_r, _nss_ldap_getgrent_r },
++{ NSDB_GROUP_COMPAT, "setgrent",   __nss_compat_setgrent,   _nss_ldap_setgrent },
++{ NSDB_GROUP_COMPAT, "endgrent",   __nss_compat_endgrent,   _nss_ldap_endgrent },
++
++{ NSDB_PASSWD_COMPAT, "getpwnam_r", __nss_compat_getpwnam_r, _nss_ldap_getpwnam_r },
++{ NSDB_PASSWD_COMPAT, "getpwuid_r", __nss_compat_getpwuid_r, _nss_ldap_getpwuid_r },
++{ NSDB_PASSWD_COMPAT, "getpwent_r", __nss_compat_getpwent_r, _nss_ldap_getpwent_r },
++{ NSDB_PASSWD_COMPAT, "setpwent",   __nss_compat_setpwent,   _nss_ldap_setpwent },
++{ NSDB_PASSWD_COMPAT, "endpwent",   __nss_compat_endpwent,   _nss_ldap_endpwent },
++
++};
++
++
++ns_mtab *
++nss_module_register(const char *source, unsigned int *mtabsize,
++    nss_module_unregister_fn *unreg)
++{
++	*mtabsize = sizeof(methods)/sizeof(methods[0]);
++	*unreg = NULL;
++	return (methods);
++}
++
++int __nss_compat_gethostbyname(void *retval, void *mdata, va_list ap)
++{
++	enum nss_status		(*fn)(const char *, struct hostent *, char *, size_t, int *, int *);
++	const char 		*name;
++	struct hostent 		*result;
++	char   			buffer[1024];
++	size_t				buflen = 1024;
++	int 				       errnop;
++	int					h_errnop;
++	int						af;
++	enum nss_status					status;
++	fn = mdata;
++	name = va_arg(ap, const char*);
++	af = va_arg(ap,int);
++	result = va_arg(ap,struct hostent *);
++	status = fn(name, result, buffer, buflen, &errnop, &h_errnop);
++	status = __nss_compat_result(status,errnop);
++	h_errno = h_errnop;
++	return (status);
++}
++
++int __nss_compat_gethostbyname2(void *retval, void *mdata, va_list ap)
++{
++	enum nss_status		(*fn)(const char *, struct hostent *, char *, size_t, int *, int *);
++	const char 		*name;
++	struct hostent 		*result;
++	char   			buffer[1024];
++	size_t				buflen = 1024;
++	int 				       errnop;
++	int					h_errnop;
++	int						af;
++	enum nss_status					status;
++	fn = mdata;
++	name = va_arg(ap, const char*);
++	af = va_arg(ap,int);
++	result = va_arg(ap,struct hostent *);
++	status = fn(name, result, buffer, buflen, &errnop, &h_errnop);
++	status = __nss_compat_result(status,errnop);
++	h_errno = h_errnop;
++	return (status);
++}
++
++int __nss_compat_gethostbyaddr(void *retval, void *mdata, va_list ap)
++{
++	struct in_addr	*addr;
++	int    		len;
++	int			type;
++	struct hostent		*result;
++	char   			buffer[1024];
++	size_t				buflen = 1024;
++	int				       errnop;
++	int					h_errnop;
++	enum nss_status (*fn)(struct in_addr *, int, int, struct hostent *, char *, size_t, int *, int *);
++	enum nss_status status;
++	fn = mdata;
++	addr = va_arg(ap, struct in_addr*);
++	len = va_arg(ap,int);
++	type = va_arg(ap,int);
++	result = va_arg(ap, struct hostent*);
++	status = fn(addr, len, type, result, buffer, buflen, &errnop, &h_errnop);
++	status = __nss_compat_result(status,errnop);
++	h_errno = h_errnop;
++	return (status);
++}
++
++static int
++__gr_addgid(gid_t gid, gid_t *groups, int maxgrp, int *groupc)
++{
++	int	ret, dupc;
++
++	/* skip duplicates */
++	for (dupc = 0; dupc < MIN(maxgrp, *groupc); dupc++) {
++	    if (groups[dupc] == gid)
++	       		     return 1;
++			     }
++
++	ret = 1;
++	if (*groupc < maxgrp)			/* add this gid */
++	   groups[*groupc] = gid;
++	   else
++		ret = 0;
++		(*groupc)++;
++		return ret;
++}
++
++static int __freebsd_getgroupmembership(void *retval, void *mdata, va_list ap)
++{
++	int err;
++	enum nss_status s;
++	const char *user	= va_arg(ap, const char *);
++	gid_t group 		  = va_arg(ap, gid_t);
++	gid_t *groups 		    = va_arg(ap, gid_t *);
++	int limit 		      = va_arg(ap, int);
++	int *size 		      	= va_arg(ap, int*);
++	gid_t *tmpgroups;
++	long int lstart, lsize;
++	int i;
++
++	tmpgroups = malloc(limit * sizeof(gid_t));
++	if (tmpgroups == NULL)
++	   return NS_TRYAGAIN;
++
++	/* insert primary membership */
++	__gr_addgid(group, groups, limit, size);
++
++	lstart = 0;
++	lsize = limit;
++	s = _nss_ldap_initgroups_dyn(user, group, &lstart, &lsize,
++	  &tmpgroups, 0, &err);
++	  if (s == NSS_STATUS_SUCCESS) {
++	     for (i = 0; i < lstart; i++)
++	     	     __gr_addgid(tmpgroups[i], groups, limit, size);
++		     			       s = NSS_STATUS_NOTFOUND;
++					       }
++
++	free(tmpgroups);
++
++	return __nss_compat_result(s, err);
++}

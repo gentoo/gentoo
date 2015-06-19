@@ -1,0 +1,126 @@
+# ChangeLog for media-plugins/vdr-osdpip
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-osdpip/ChangeLog,v 1.27 2015/05/27 11:09:08 ago Exp $
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> vdr-osdpip-0.1.2-r1.ebuild:
+  Stable for x86, wrt bug #549690
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> vdr-osdpip-0.1.2-r1.ebuild:
+  Stable for amd64, wrt bug #549690
+
+*vdr-osdpip-0.1.2-r1 (28 Feb 2015)
+
+  28 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-osdpip-0.1.2-r1.ebuild:
+  compile fix libav10/11, wrt bug 540850, thx to T.Foerster for
+  testing,reporting
+
+  31 Aug 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-osdpip-0.1.1-r1.ebuild:
+  cleanup old
+
+  02 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-osdpip-0.1.1.ebuild, vdr-osdpip-0.1.2.ebuild:
+  eapi5; stable amd64 x86, wrt bug 495766
+
+  17 Jun 2013; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/vdr-osdpip-libav-9.patch, vdr-osdpip-0.1.2.ebuild:
+  Apply libav patch to build with libav9. Fixes bug#443196.
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> vdr-osdpip-0.1.1-r1.ebuild:
+  Stable for x86, wrt bug #464542
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> vdr-osdpip-0.1.1-r1.ebuild:
+  Stable for amd64, wrt bug #464542
+
+  04 Apr 2013; Alexis Ballier <aballier@gentoo.org> vdr-osdpip-0.1.2.ebuild:
+  apply ffmpeg-1 compat patch in 0.1.2 too...
+
+*vdr-osdpip-0.1.2 (31 Mar 2013)
+
+  31 Mar 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-osdpip-0.1.2.ebuild:
+  bump
+
+  22 Jan 2013; Alexis Ballier <aballier@gentoo.org> vdr-osdpip-0.1.1-r1.ebuild,
+  +files/vdr-osdpip-0.1.1-ffmpeg-1.patch:
+  fix build with ffmpeg-1, part of bug #443196
+
+*vdr-osdpip-0.1.1-r1 (20 Oct 2012)
+
+  20 Oct 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-osdpip-0.0.10.ebuild, -files/vdr-osdpip-0.0.10-avutil50.patch,
+  -vdr-osdpip-0.1.0.ebuild, +vdr-osdpip-0.1.1-r1.ebuild:
+  vdr-plugin-2.eclass, fixed append string
+
+  01 Jul 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-osdpip-0.1.1.ebuild:
+  stable amd64 x86, bug 419117
+
+*vdr-osdpip-0.1.1 (21 Feb 2012)
+
+  21 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-osdpip-0.1.0.ebuild,
+  +vdr-osdpip-0.1.1.ebuild:
+  version bump
+
+*vdr-osdpip-0.1.0 (15 Sep 2011)
+
+  15 Sep 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-osdpip-0.1.0.ebuild:
+  version bump; thx to M.Perrudin on #379103
+
+  06 Apr 2011; Christian Ruppert <idl0r@gentoo.org> vdr-osdpip-0.0.10.ebuild:
+  Use the new ffmpeg virtual, bug 362101. QA Fix: Assign DEPEND.
+
+  16 Jun 2010; Alexis Ballier <aballier@gentoo.org>
+  vdr-osdpip-0.0.10.ebuild:
+  fix build with ffmpeg >= 0.6
+
+  22 Sep 2009; Alexis Ballier <aballier@gentoo.org>
+  vdr-osdpip-0.0.10.ebuild, +files/vdr-osdpip-0.0.10-avutil50.patch:
+  fix build with latest ffmpeg
+
+  17 Dec 2008; <ssuominen@gentoo.org> vdr-osdpip-0.0.10.ebuild:
+  x86 stable, because current stable doesn't link against -lswscale.
+
+  06 May 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-osdpip-0.0.8-r1.ebuild, vdr-osdpip-0.0.8-r2.ebuild,
+  vdr-osdpip-0.0.9.ebuild:
+  Remove hardcoded sed path.
+
+*vdr-osdpip-0.0.10 (04 May 2008)
+
+  04 May 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-osdpip-0.0.10.ebuild:
+  Version bumped. This version has own support for newer ffmpeg.
+
+*vdr-osdpip-0.0.9 (28 Apr 2008)
+
+  28 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-osdpip-0.0.9-ffmpeg-0.4.9_p20080326-new_header.diff,
+  +vdr-osdpip-0.0.9.ebuild:
+  Version bumped.
+
+  28 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-osdpip-0.0.8-r1.ebuild, vdr-osdpip-0.0.8-r2.ebuild:
+  Fixed quoting.
+
+  29 Mar 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/ffmpeg-0.4.9_p20080326-new_header.diff, vdr-osdpip-0.0.8-r2.ebuild:
+  keyword ~amd64; patch to fix new ffmpeg header structur added; bug #214740
+
+*vdr-osdpip-0.0.8-r2 (24 Jun 2007)
+
+  24 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-osdpip-0.0.8-vdr-1.5.0.diff, +vdr-osdpip-0.0.8-r2.ebuild:
+  Make it compile with vdr-1.5
+
+  19 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-osdpip-0.0.8-r1.ebuild:
+  Marked stable on x86.
+
+*vdr-osdpip-0.0.8-r1 (06 Jul 2006)
+
+  06 Jul 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-osdpip-0.0.8-gcc4.diff, +files/vdr-osdpip-0.0.8-includes.diff,
+  +metadata.xml, +vdr-osdpip-0.0.8-r1.ebuild:
+  Imported ebuild from gentoo.de. Added patch for gcc4 compatibility.

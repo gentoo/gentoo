@@ -1,0 +1,31 @@
+# ChangeLog for dev-ruby/hiera-eyaml
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/hiera-eyaml/ChangeLog,v 1.7 2015/06/07 17:55:32 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*hiera-eyaml-2.0.8 (21 Apr 2015)
+
+  21 Apr 2015; Hans de Graaff <graaff@gentoo.org> +hiera-eyaml-2.0.8.ebuild:
+  Version bump.
+
+  18 Apr 2015; Hans de Graaff <graaff@gentoo.org> hiera-eyaml-2.0.7.ebuild:
+  Add missing test dependency on app-admin/puppet.
+
+  07 Apr 2015; Hans de Graaff <graaff@gentoo.org> hiera-eyaml-2.0.7.ebuild:
+  Add missing test dependency on dev-util/aruba.
+
+*hiera-eyaml-2.0.7 (04 Mar 2015)
+
+  04 Mar 2015; Hans de Graaff <graaff@gentoo.org> +hiera-eyaml-2.0.7.ebuild:
+  Version bump. Fix broken tests. Fix broken dependencies.
+
+  12 Feb 2015; Patrick Lauer <patrick@gentoo.org> hiera-eyaml-2.0.6.ebuild:
+  Whitespace
+
+*hiera-eyaml-2.0.6 (12 Feb 2015)
+
+  12 Feb 2015; Robin H. Johnson <robbat2@gentoo.org> +hiera-eyaml-2.0.6.ebuild,
+  +metadata.xml:
+  Initial commit.

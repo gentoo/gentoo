@@ -1,0 +1,19 @@
+# ChangeLog for dev-embedded/tavrasm
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/tavrasm/ChangeLog,v 1.3 2010/05/07 01:35:12 jer Exp $
+
+*tavrasm-1.22-r1 (07 May 2010)
+
+  07 May 2010; Jeroen Roovers <jer@gentoo.org> +tavrasm-1.22-r1.ebuild,
+  +files/tavrasm-1.22-gentoo.patch:
+  Adhere to CC, CFLAGS, LDFLAGS. Prevent implicit RDEPEND (bug #221319).
+  Make dobin fail.
+
+  05 Sep 2009; Markus Meier <maekke@gentoo.org> tavrasm-1.22.ebuild:
+  add ~amd64, bug #276484
+
+*tavrasm-1.22 (16 Sep 2005)
+
+  16 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> +metadata.xml,
+  +tavrasm-1.22.ebuild:
+  Initial import, ebuild written by myself.

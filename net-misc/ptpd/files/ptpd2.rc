@@ -1,0 +1,57 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ptpd/files/ptpd2.rc,v 1.1 2015/06/12 10:55:53 mgorny Exp $
+
+PTPD_CONFIGFILE=${PTPD_CONFIGFILE:-/etc/${RC_SVCNAME}.conf}
+PTPD_STATEFILE_DIR=${PTPD_STATEFILE_DIR:-/var/run}
+PTPD_STATEFILE=${PTPD_STATEFILE:-${PTPD_STATEFILE_DIR}/${RC_SVCNAME}.status}
+PTPD_PIDFILE_DIR=${PTPD_PIDFILE_DIR:-/var/run}
+PTPD_PIDFILE=${PTPD_PIDFILE:-${PTPD_PIDFILE_DIR}/${RC_SVCNAME}.pid}
+
+extra_commands="checkconfig"
+extra_started_commands="reload"
+command="/usr/sbin/ptpd2"
+command_args="--global:lock_file=$PTPD_PIDFILE --global:status_file=$PTPD_STATEFILE -c $PTPD_CONFIGFILE $PTPD_OPTS"
+pidfile="${PTPD_PIDFILE}"
+description="Precise Time Protocol daemon"
+
+
+depend() {
+	use net dns logger
+}
+
+checkconfig() {
+	ebegin "Checking ${SVCNAME} configuration"
+	msgout="$($command -k $command_args 2>&1)"
+	RETVAL=$?
+
+	# colorize output
+	echo "$msgout" | while read ln; do
+		if [[ "$ln" == *ignored* ]]; then
+			ewarn "$ln"
+		elif [[ "$ln" != "Configuration OK" ]]; then
+			eerror "$ln"
+		fi
+	done
+
+	eend $RETVAL
+}
+
+start() {
+	checkconfig || return 1
+
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --exec ${command} \
+		--pidfile ${pidfile} \
+		-- ${command_args}
+	eend $?
+}
+
+reload() {
+	checkconfig || return 1
+
+	ebegin "Reloading ${SVCNAME} configuration"
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+	eend $?
+}

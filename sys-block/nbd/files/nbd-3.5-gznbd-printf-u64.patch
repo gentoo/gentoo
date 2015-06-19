@@ -1,0 +1,59 @@
+From 90024f17b682e20a34f35a6ccb437edc10eb5c3b Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 2 Dec 2013 00:22:46 -0500
+Subject: [PATCH 1/2] gznbd: use PRId64 for printing 64bit types
+
+Gcc complains about printing these 64bit types:
+
+gznbd.c:199:1: warning: format '%Ld' expects argument of type 'long long int',
+	but argument 5 has type 'u64' [-Wformat]
+
+Use the standard defines from inttypes.h to avoid this issue.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ gznbd/gznbd.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/gznbd/gznbd.c b/gznbd/gznbd.c
+index 09f3d49..bb41156 100644
+--- a/gznbd/gznbd.c
++++ b/gznbd/gznbd.c
+@@ -40,6 +40,7 @@
+ #include <fcntl.h>
+ #include <syslog.h>
+ #include <unistd.h>
++#include <inttypes.h>
+ 
+ #include <sys/ioctl.h>
+ #include <sys/types.h>
+@@ -95,7 +96,7 @@ int main(int argc, char **argv)
+       fprintf(stderr,"%s: %s does not appear to be a valid size\n",argv[0],argv[3]);
+       exit(1);
+     }
+-    printf("%s: file=%s, size=%Ld\n",argv[0],argv[2],size);
++    printf("%s: file=%s, size=%"PRId64"\n",argv[0],argv[2],size);
+   } else {
+     char buffer[BLOCK];
+     int result;
+@@ -110,7 +111,7 @@ int main(int argc, char **argv)
+     }
+ 
+     if(result==0){
+-      printf("size=%Ld\n",size);
++      printf("size=%"PRId64"\n",size);
+     } else {
+       printf("failed\n");
+       if(result<0){
+@@ -195,7 +196,7 @@ int main(int argc, char **argv)
+     from=ntohll(request.from);
+ 
+ #ifdef TRACE
+-fprintf(stderr,"%s: len=%d, from=%Ld\n",argv[0],len,from);
++fprintf(stderr,"%s: len=%d, from=%"PRId64"\n",argv[0],len,from);
+ #endif
+ 
+     if(request.magic!=htonl(NBD_REQUEST_MAGIC)){
+-- 
+1.8.4.3
+

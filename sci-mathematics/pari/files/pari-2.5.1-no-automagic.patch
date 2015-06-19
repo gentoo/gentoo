@@ -1,0 +1,100 @@
+diff -Nur pari-2.5.1.orig/config/get_config_options pari-2.5.1/config/get_config_options
+--- pari-2.5.1.orig/config/get_config_options	2012-08-01 18:32:03.000000000 +0100
++++ pari-2.5.1/config/get_config_options	2012-08-01 20:57:09.000000000 +0100
+@@ -83,10 +83,12 @@
+   --with-ncurses-lib=*|--with-ncurses=*)
+       with_ncurses_lib=`echo "$1" | sed -e 's/[-a-z]*=//'` ;;
+ 
++  --without-qt|--with-qt=no) without_qt=yes ;;
+   --with-qt) with_qt=yes ;;
+   --with-qt=*)
+       with_qt=`echo "$1" | sed -e 's/[-a-z]*=//'` ;;
+ 
++  --without-fltk|--with-fltk=no) without_fltk=yes ;;
+   --with-fltk) with_fltk=yes ;;
+   --with-fltk=*)
+       with_fltk=`echo "$1" | sed -e 's/[-a-z]*=//'` ;;
+@@ -158,7 +160,9 @@
+   --with-gmp-lib=DIR          specify location of gmp libs
+ 
+   --with-qt[=DIR]        use the Qt graphical library [prefix for Qt dir.]
++  --without-qt           do not try to use the Qt lib
+   --with-fltk[=DIR]      use the FLTK graphical library [prefix for FLTK dir.]
++  --without-fltk         do not try to use the FLTK lib
+ 
+ EOT
+ exit 1
+diff -Nur pari-2.5.1.orig/config/get_fltk pari-2.5.1/config/get_fltk
+--- pari-2.5.1.orig/config/get_fltk	2012-08-01 18:32:03.000000000 +0100
++++ pari-2.5.1/config/get_fltk	2012-08-01 22:28:23.000000000 +0100
+@@ -2,6 +2,9 @@
+   with_fltk=yes
+ fi
+ FLTKDIR=
++if test -z "$without_fltk; then
++   FLTKDIR="`fltk-config --prefix 2>/dev/null`"
++fi
+ case "$with_fltk" in
+ yes)
+    pth=$libpth; lib=fltk; . ./locatelib
+diff -Nur pari-2.5.1.orig/config/get_graphic_lib pari-2.5.1/config/get_graphic_lib
+--- pari-2.5.1.orig/config/get_graphic_lib	2012-08-01 18:32:03.000000000 +0100
++++ pari-2.5.1/config/get_graphic_lib	2012-08-01 22:16:57.000000000 +0100
+@@ -11,6 +11,7 @@
+ else
+   if test -n "$with_fltk"; then which_graphic_lib=fltk; fi
+   if test -n "$with_qt";   then which_graphic_lib=Qt; fi
++  if test -n "$without_fltk" -a -n "$without_qt"; then which_graphic_lib=none; fi
+   if test "$which_graphic_lib" != none; then
+     case $osname in
+       mingw) case $which_graphic_lib in
+@@ -41,7 +42,7 @@
+ case $which_graphic_lib in
+   auto|fltk)
+     . ./get_fltk # FLTKDIR, FLTK_LIBS
+-    if test -z "$FLTKDIR"; then
++    if test -z "`fltk-config --ldflags 2> /dev/null`"; then
+       case $which_graphic_lib in fltk) which_graphic_lib=none;; esac
+     else
+       which_graphic_lib=fltk
+diff -Nur pari-2.5.1.orig/config/get_Qt pari-2.5.1/config/get_Qt
+--- pari-2.5.1.orig/config/get_Qt	2012-08-01 18:32:03.000000000 +0100
++++ pari-2.5.1/config/get_Qt	2012-08-01 20:39:28.000000000 +0100
+@@ -5,7 +5,7 @@
+ case "$with_qt" in
+ yes)
+    pth="/usr/local/lib /usr/local/share /usr/lib /usr/share"
+-   QTDIR=`locatedir qt4/bin $pth`
++   QTDIR=`locatedir qt4 $pth`
+    QTLIB="-lQtCore -lQtGui"
+    which_graphic_lib=Qt4
+    if test -z "$QTDIR"; then
+diff -Nur pari-2.5.1.orig/config/Makefile.SH pari-2.5.1/config/Makefile.SH
+--- pari-2.5.1.orig/config/Makefile.SH	2012-08-01 18:32:03.000000000 +0100
++++ pari-2.5.1/config/Makefile.SH	2012-08-01 21:08:20.000000000 +0100
+@@ -65,12 +65,12 @@
+   PLOTLIBS="-L\$(QTDIR)/lib $QTLIB"
+   graph=plotQt;;
+ Qt4)
+-  PLOTCFLAGS='-D__FANCY_WIN__ -I$(QTDIR)/include'
+-  PLOTLIBS="-L\$(QTDIR)/lib $QTLIB"
++  PLOTCFLAGS='-D__FANCY_WIN__ `pkg-config --cflags QtGui`'
++  PLOTLIBS="`pkg-config --libs QtGui`"
+   graph=plotQt4;;
+ fltk)
+-  PLOTCFLAGS="-I\$(FLTKDIR)/include $X11_INC"
+-  PLOTLIBS="-L\$(FLTKDIR)/lib -lfltk $FLTK_LIBS"
++  PLOTCFLAGS="`fltk-config --cxxflags` $X11_INC"
++  PLOTLIBS="`fltk-config --ldflags`"
+   postconfig='-fltk-config --post '
+   graph=plotfltk;;
+ win32)
+@@ -254,7 +254,7 @@
+ GMPINCLUDE = $GMPINCLUDE
+ # Graphic library.
+ QTDIR      = "$QTDIR"
+-MOC        = \$(QTDIR)/bin/moc
++MOC        = "`which moc`"
+ PLOTCFLAGS = $PLOTCFLAGS
+ PLOTLIBS   = $PLOTLIBS
+ CPLUSPLUS  = g++

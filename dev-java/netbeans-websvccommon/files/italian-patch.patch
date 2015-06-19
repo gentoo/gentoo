@@ -1,0 +1,13 @@
+Index: xjc/src/com/sun/tools/xjc/MessageBundle_it.properties
+===================================================================
+--- xjc/src/com/sun/tools/xjc/MessageBundle_it.properties	(revision 3965)
++++ xjc/src/com/sun/tools/xjc/MessageBundle_it.properties	(working copy)
+@@ -125,7 +125,7 @@
+ 
+ # see java.text.SimpleDateFormat for format syntax
+ # Format should not be changed, English locale is used to transform this string into a real date. Letters can be translated but the user should known that java.text.SimpleDateFormat is responsible for formatting (meaning of symbols can be found at http://docs.oracle.com/javase/tutorial/i18n/format/simpleDateFormat.html).
+-Driver.DateFormat = aaaa.MM.gg
++Driver.DateFormat = yyyy.MM.dd
+ 
+ # see java.text.SimpleDateFormat for format syntax
+ # Format should not be changed, English locale is used to transform this string into a real time. Letters can be translated but the user should known that java.text.SimpleDateFormat is responsible for formatting (meaning of symbols can be found at http://docs.oracle.com/javase/tutorial/i18n/format/simpleDateFormat.html).

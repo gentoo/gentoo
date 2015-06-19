@@ -1,0 +1,9 @@
+# ChangeLog for sys-cluster/charmdebug
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/charmdebug/ChangeLog,v 1.1 2013/12/13 20:11:02 nicolasbock Exp $
+
+*charmdebug-6.2.0-r1 (13 Dec 2013)
+
+  13 Dec 2013; Nicolas Bock <nicolasbock@gentoo.org>
+  +charmdebug-6.2.0-r1.ebuild, +metadata.xml:
+  sys-cluster/charmdebug: Copied latest ebuild from sci overlay.

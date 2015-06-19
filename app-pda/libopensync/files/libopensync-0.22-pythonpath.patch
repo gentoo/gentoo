@@ -1,0 +1,63 @@
+diff --git a/acinclude.m4 b/acinclude.m4
+index 2bf9951..a3b617c 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -1008,9 +1008,9 @@ AC_DEFUN([AC_PROG_SWIG],[
+                         if test -z "$available_patch" ; then
+                                 [available_patch=0]
+                         fi
+-                        if test $available_major -ne $required_major \
+-                                -o $available_minor -ne $required_minor \
+-                                -o $available_patch -lt $required_patch ; then
++                        if test $available_major -lt $required_major \
++                                -a $available_minor -lt $required_minor \
++                                -a $available_patch -lt $required_patch ; then
+                                 AC_MSG_WARN([SWIG version >= $1 is required.  You have $swig_version.  You should look at http://www.swig.org])
+                                 SWIG='echo "Error: SWIG version >= $1 is required.  You have '"$swig_version"'.  You should look at http://www.swig.org" ; false'
+                         else
+@@ -1114,7 +1114,7 @@ AC_DEFUN([AC_PYTHON_DEVEL],[
+ 	AC_MSG_CHECKING([for Python include path])
+ 	python_path=`echo $PYTHON | sed "s,/bin.*$,,"`
+ 	for i in "$python_path/include/python$PYTHON_VERSION/" "$python_path/include/python/" "$python_path/" ; do
+-		python_path=`find $i -type f -name Python.h -print | sed "1q"`
++		python_path=`find $i -type f -name Python.h -print 2>/dev/null | sed "1q"`
+ 		if test -n "$python_path" ; then
+ 			break
+ 		fi
+@@ -1129,8 +1129,8 @@ AC_DEFUN([AC_PYTHON_DEVEL],[
+ 	# Check for Python library path
+ 	AC_MSG_CHECKING([for Python library path])
+ 	python_path=`echo $PYTHON | sed "s,/bin.*$,,"`
+-	for i in "$python_path/lib/python$PYTHON_VERSION/config/" "$python_path/lib/python$PYTHON_VERSION/" "$python_path/lib/python/config/" "$python_path/lib/python/" "$python_path/" ; do
+-		python_path=`find $i -type f -name libpython$PYTHON_VERSION.* -print | sed "1q"`
++	for i in "$python_path/lib/python$PYTHON_VERSION/config/" "$python_path/lib/python$PYTHON_VERSION/" "$python_path/lib/python/config/" "$python_path/lib/python/" "$python_path/lib/" ; do
++		python_path=`find $i -type f -name libpython$PYTHON_VERSION.* -print 2>/dev/null | sed "1q"`
+ 		if test -n "$python_path" ; then
+ 			break
+ 		fi
+@@ -1142,16 +1142,21 @@ AC_DEFUN([AC_PYTHON_DEVEL],[
+ 	fi
+ 	AC_SUBST([PYTHON_LDFLAGS],["-L$python_path -lpython$PYTHON_VERSION"])
+ 	#
+-	python_site=`echo $python_path | sed "s/config/site-packages/"`
+-	AC_SUBST([PYTHON_SITE_PKG],[$python_site])
++	# site-packages directory
++	#
++	AC_MSG_CHECKING(python site-packages)
++	PYTHON_SITE_PKG=`$PYTHON -c "from distutils.sysconfig import get_python_lib; \
++	            print get_python_lib()"`
++	AC_MSG_RESULT($PYTHON_SITE_PKG)
++	AC_SUBST(PYTHON_SITE_PKG)
+ 	#
+ 	# libraries which must be linked in when embedding
+ 	#
+ 	AC_MSG_CHECKING(python extra libraries)
+ 	PYTHON_EXTRA_LIBS=`$PYTHON -c "import distutils.sysconfig; \
+                 conf = distutils.sysconfig.get_config_var; \
+-                print conf('LOCALMODLIBS')+' '+conf('LIBS')"
+-	AC_MSG_RESULT($PYTHON_EXTRA_LIBS)`
++                print conf('LOCALMODLIBS')+' '+conf('LIBS')"`
++	AC_MSG_RESULT($PYTHON_EXTRA_LIBS)
+ 	AC_SUBST(PYTHON_EXTRA_LIBS)
+ ])
+ dnl as-ac-expand.m4 0.2.0

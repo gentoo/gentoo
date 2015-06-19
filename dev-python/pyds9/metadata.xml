@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci-astronomy</herd>
+<longdescription lang="en">
+  The XPA messaging system provides seamless communication between
+  many kinds of Unix programs, including Tcl/Tk programs such as
+  ds9. The pyds9 module uses a  Python interface to XPA to communicate
+  with ds9. It supports communication with all of ds9’s XPA access
+  points.
+</longdescription>
+</pkgmetadata>

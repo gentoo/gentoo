@@ -1,0 +1,54 @@
+# ChangeLog for net-mail/eps
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/eps/ChangeLog,v 1.13 2011/06/23 11:28:51 eras Exp $
+
+  23 Jun 2011; Eray Aslan <eras@gentoo.org> -eps-1.5.ebuild:
+  Remove old
+
+  22 Jun 2011; Brent Baude <ranger@gentoo.org> eps-1.7.ebuild:
+  Marking eps-1.7 ppc for bug 370461
+
+  14 Jun 2011; Markus Meier <maekke@gentoo.org> eps-1.7.ebuild:
+  x86 stable, bug #370461
+
+*eps-1.7 (25 Sep 2010)
+
+  25 Sep 2010; Tim Harder <radhermit@gentoo.org> +eps-1.7.ebuild:
+  Version bump (fixes bug #321641, thanks to hitachi for reporting), add
+  ~amd64 keyword, update to EAPI=3, and respect users CFLAGS (bug #241046).
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> eps-1.5.ebuild:
+  Remove virtual/libc
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Jan 2007; Fernando J. Pereda <ferdy@gentoo.org> -eps-1.2.ebuild:
+  QA: Clean unused versions.
+
+  05 Mar 2005; Joseph Jezak <josejx@gentoo.org> eps-1.5.ebuild:
+  Marked ppc stable for bug #83848.
+
+  03 Mar 2005; Fernando J. Pereda <ferdy@gentoo.org> eps-1.5.ebuild:
+  x86 stable. wrt #83848
+
+*eps-1.5 (05 Jan 2005)
+
+  05 Jan 2005; Andrej Kacian <ticho@gentoo.org> metadata.xml,
+  eps-1.2.ebuild, +eps-1.5.ebuild:
+  Version bump. Closes #76773, reported by Matt Brookings <matt@inter7.com>.
+  Fix Makefile not to use cp -p during install. Install docs. Add
+  longdescription to metadata.xml.
+
+  24 Nov 2004; Andrej Kacian <ticho@gentoo.org> eps-1.2.ebuild:
+  Stable on x86.
+
+  17 Oct 2004; David Holm <dholm@gentoo.org> eps-1.2.ebuild:
+  Added to ~ppc.
+
+*eps-1.2 (25 Sep 2004)
+
+  25 Sep 2004; Andrej Kacian <ticho@gentoo.org> +metadata.xml,
+  +eps-1.2.ebuild:
+  Initial version. Ebuild submitted by Mark Gilbert <mg_gentoo@yahoo.com>.
+

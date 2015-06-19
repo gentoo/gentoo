@@ -1,0 +1,76 @@
+# $Header: /var/cvsroot/gentoo-x86/app-admin/syslog-ng/files/syslog-ng.logrotate.hardened,v 1.3 2010/04/05 22:19:33 zorry Exp $
+#
+# Syslog-ng logrotate snippet for Hardened Gentoo Linux
+# contributed by Maciej Grela
+#
+# Updated bug #284669
+
+# Generic
+/var/log/debug /var/log/syslog /var/log/kern.log {
+    sharedscripts
+    missingok
+    postrotate
+        /etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+    endscript
+}
+
+# System services
+/var/log/cron.log /var/log/daemon.log /var/log/lpr.log /var/log/uucp.log {
+    sharedscripts
+    missingok
+    postrotate
+        /etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+    endscript
+}
+
+# User log
+/var/log/user.log {
+    sharedscripts
+    missingok
+    postrotate
+        /etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+    endscript
+}
+
+# News system
+/var/log/news/news.crit /var/log/news/news.err /var/log/news/news.notice {
+    sharedscripts
+    missingok
+    postrotate
+        /etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+    endscript
+}
+
+# Mail system
+/var/log/mail.log /var/log/mail.info /var/log/mail.err /var/log/mail.warn {
+    sharedscripts
+    missingok
+    postrotate
+        /etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+    endscript
+}
+
+# Hardened logs
+/var/log/avc.log /var/log/audit.log /var/log/pax.log /var/log/grsec.log {
+    sharedscripts
+    missingok
+    postrotate
+        /etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+    endscript
+}
+
+# Authentication
+/var/log/auth.log {
+    sharedscripts
+    postrotate
+        /etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+    endscript
+}
+
+# the rest
+/var/log/messages {
+    sharedscripts
+    postrotate
+        /etc/init.d/syslog-ng reload > /dev/null 2>&1 || true
+    endscript
+}

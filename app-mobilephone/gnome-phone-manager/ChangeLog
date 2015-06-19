@@ -1,0 +1,275 @@
+# ChangeLog for app-mobilephone/gnome-phone-manager
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/gnome-phone-manager/ChangeLog,v 1.59 2015/06/13 10:00:21 pacho Exp $
+
+  13 Jun 2015; Pacho Ramos <pacho@gentoo.org>
+  gnome-phone-manager-0.69-r1.ebuild:
+  Needs rebuilding with eds subslot bumps
+
+  21 Nov 2014; Pacho Ramos <pacho@gentoo.org> -gnome-phone-manager-0.69.ebuild:
+  Drop old
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gnome-phone-manager-0.69-r1.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gnome-phone-manager-0.69-r1.ebuild:
+  Stable for amd64, wrt bug #512912
+
+*gnome-phone-manager-0.69-r1 (25 Jun 2014)
+
+  25 Jun 2014; Pacho Ramos <pacho@gentoo.org>
+  +gnome-phone-manager-0.69-r1.ebuild:
+  plugin is not buildable any more, bug #512204 by Juergen Rose
+
+  18 Apr 2014; Pacho Ramos <pacho@gentoo.org> -gnome-phone-manager-0.66.ebuild,
+  -gnome-phone-manager-0.68.ebuild:
+  Drop old
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-phone-manager-0.69.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-phone-manager-0.69.ebuild:
+  arch stable, bug 888
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> gnome-phone-manager-0.69.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> gnome-phone-manager-0.69.ebuild:
+  amd64 stable, bug #478252
+
+  07 Apr 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  The package is in fact maintained only by gnome herd for a long time
+
+*gnome-phone-manager-0.69 (07 Apr 2013)
+
+  07 Apr 2013; Pacho Ramos <pacho@gentoo.org>
+  +files/0001-Adapt-to-Evolution-Data-Server-API-changes.patch,
+  +gnome-phone-manager-0.69.ebuild:
+  Version bump, also fixes building with eds-3.6
+
+  02 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  gnome-phone-manager-0.66.ebuild, gnome-phone-manager-0.68.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  25 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gnome-phone-manager-0.68.ebuild:
+  Drop ppc keyword due to gnome-bluetooth-3 dep (bug #390345).
+
+*gnome-phone-manager-0.68 (20 Nov 2011)
+
+  20 Nov 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-phone-manager-0.68.ebuild:
+  Version bump. Port to gtk+:3.
+
+  27 Oct 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gnome-phone-manager-0.66.ebuild:
+  Slot gtkspell dependency to 2 in preparation for gtkspell-3.
+
+  17 Oct 2011; Pacho Ramos <pacho@gentoo.org> -gnome-phone-manager-0.65.ebuild:
+  Remove old.
+
+  05 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  gnome-phone-manager-0.66.ebuild:
+  ppc stable wrt #369909
+
+  14 Jul 2011; Thomas Kahle <tomka@gentoo.org> gnome-phone-manager-0.66.ebuild:
+  x86 stable per bug 369909
+
+  01 Jul 2011; Markos Chandras <hwoarang@gentoo.org>
+  gnome-phone-manager-0.66.ebuild:
+  Stable on amd64 wrt bug #278255
+
+  18 Jun 2011; Pacho Ramos <pacho@gentoo.org> gnome-phone-manager-0.66.ebuild:
+  gnome-bluetooth is also needed for phonemgr, bug #372125 by Diego Elio
+  Pettenò.
+
+  16 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  gnome-phone-manager-0.65.ebuild, gnome-phone-manager-0.66.ebuild:
+  Fix slot-deps on gtk+ and other libs
+
+*gnome-phone-manager-0.66 (21 Feb 2011)
+
+  21 Feb 2011; Pacho Ramos <pacho@gentoo.org> +gnome-phone-manager-0.66.ebuild:
+  Version bump: Add a gnome-bluetooth plugin to configure new paired phones
+  (behind 'gnome' USE flag), fix automatic phone reconnection, migrate from
+  libglade to GtkBuilder, translation updates.
+
+  25 Nov 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-phone-manager-0.60.ebuild:
+  Clean up old revision.
+
+  30 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  gnome-phone-manager-0.65.ebuild:
+  stable x86, bug 319959
+
+  26 Jun 2010; <nixnut@gentoo.org> gnome-phone-manager-0.65.ebuild:
+  ppc stable #319959
+
+  14 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  gnome-phone-manager-0.65.ebuild:
+  Stable on amd64 wrt bug #319959
+
+  11 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  gnome-phone-manager-0.60.ebuild, gnome-phone-manager-0.65.ebuild:
+  Drop bluez-libs support wrt #301630.
+
+  26 Sep 2009; Mart Raudsepp <leio@gentoo.org>
+  -files/gnome-phone-manager-0.8-as-needed.patch,
+  -files/gnome-phone-manager-0.8-pixmaps.patch,
+  -gnome-phone-manager-0.8-r1.ebuild:
+  Remove old, which is not bluez-4 enabled
+
+  11 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  gnome-phone-manager-0.60.ebuild:
+  stable x86, bug 231639
+
+*gnome-phone-manager-0.65 (04 May 2009)
+
+  04 May 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-phone-manager-0.40.ebuild, -gnome-phone-manager-0.50.ebuild,
+  -gnome-phone-manager-0.51.ebuild, +gnome-phone-manager-0.65.ebuild:
+  Bump to 0.65. Clean up old revisions.
+
+  28 Mar 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-phone-manager-0.8-r1.ebuild:
+  Call intltoolize when needed, bug #262943.
+
+  01 Mar 2009; Tiziano Müller <dev-zero@gentoo.org>
+  gnome-phone-manager-0.60.ebuild:
+  Added net-wireless/bluez as possible dep for bluetooth
+
+  24 Jul 2008; Alin Năstac <mrness@gentoo.org>
+  gnome-phone-manager-0.60.ebuild:
+  Fix gnokii dependency atom (#232300).
+
+*gnome-phone-manager-0.60 (12 Jul 2008)
+
+  12 Jul 2008; Alin Năstac <mrness@gentoo.org>
+  +gnome-phone-manager-0.60.ebuild:
+  Version bump.
+
+*gnome-phone-manager-0.51 (05 Jun 2008)
+
+  05 Jun 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-phone-manager-0.51.ebuild:
+  bump to 0.51. Add spell checking to "Send Message", fix accessing devices
+  via IrDA, USB and serial cables.
+
+*gnome-phone-manager-0.50 (13 Mar 2008)
+
+  13 Mar 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-phone-manager-0.8.ebuild, -gnome-phone-manager-0.20.ebuild,
+  -gnome-phone-manager-0.30.ebuild, +gnome-phone-manager-0.50.ebuild:
+  bump to 0.50 and cleanup old revisions
+
+*gnome-phone-manager-0.40 (10 Feb 2008)
+
+  10 Feb 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-phone-manager-0.40.ebuild:
+  bump to 0.40
+
+  13 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  gnome-phone-manager-0.8-r1.ebuild:
+  stable x86, bug 198845
+
+*gnome-phone-manager-0.8-r1 (12 Nov 2007)
+
+  12 Nov 2007; Mart Raudsepp <leio@gentoo.org>
+  +gnome-phone-manager-0.8-r1.ebuild:
+  Fix up compatibility with gtk+-2.12 for v0.8 too for bug 196813
+
+*gnome-phone-manager-0.30 (29 Oct 2007)
+
+  29 Oct 2007; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-phone-manager-0.30.ebuild:
+  bump to 0.30
+
+  28 Oct 2007; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-phone-manager-0.20.ebuild:
+  raise dependency on net-wireless/gnome-bluetooth
+
+  24 Oct 2007; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-phone-manager-0.20.ebuild:
+  bump to 0.20
+
+  18 Aug 2007; Alin Năstac <mrness@gentoo.org>
+  gnome-phone-manager-0.8.ebuild:
+  Update HOMEPAGE.
+
+  16 Jan 2007; Alin Năstac <mrness@gentoo.org>
+  -gnome-phone-manager-0.7.ebuild:
+  Remove old version.
+
+  15 Nov 2006; Alin Nastac <mrness@gentoo.org>
+  gnome-phone-manager-0.8.ebuild:
+  Stable on x86.
+
+  07 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  gnome-phone-manager-0.8.ebuild:
+  Added ~ppc
+
+*gnome-phone-manager-0.8 (06 Oct 2006)
+
+  06 Oct 2006; Alin Nastac <mrness@gentoo.org>
+  +files/gnome-phone-manager-0.8-as-needed.patch,
+  +files/gnome-phone-manager-0.8-pixmaps.patch,
+  -gnome-phone-manager-0.6.ebuild, +gnome-phone-manager-0.8.ebuild:
+  Remove obsolete version. Version bump (#150307).
+
+  25 Jun 2006; Alin Nastac <mrness@gentoo.org>
+  gnome-phone-manager-0.7.ebuild:
+  Stable on x86 (#122262).
+
+*gnome-phone-manager-0.7 (11 May 2006)
+
+  11 May 2006; Alin Nastac <mrness@gentoo.org>
+  -files/gnome-phone-manager-0.6-aclocal_openobex.patch,
+  +files/gnome-phone-manager-0.7-as-needed.patch,
+  +files/gnome-phone-manager-0.7-pixmaps.patch,
+  -gnome-phone-manager-0.6-r1.ebuild, +gnome-phone-manager-0.7.ebuild:
+  Version bump (#132833). Remove unneeded dependency on libsig++ (#132827).
+  Add patch which fixes linkage & runtime problems when LDFLAGS contains
+  --as-needed.
+
+*gnome-phone-manager-0.6-r1 (23 Apr 2006)
+
+  23 Apr 2006; Alin Nastac <mrness@gentoo.org>
+  +files/gnome-phone-manager-0.6-aclocal_openobex.patch,
+  +gnome-phone-manager-0.6-r1.ebuild:
+  Fix configure error when build against >=dev-libs/openobex-1.1 (#122262).
+
+  25 Feb 2006; Alin Nastac <mrness@gentoo.org>
+  -files/gnome-phone-manager-0.4-gcc3.patch,
+  -gnome-phone-manager-0.4.ebuild:
+  Remove old version.
+
+  02 Jan 2006; Alin Nastac <mrness@gentoo.org>
+  gnome-phone-manager-0.6.ebuild:
+  Mark stable on x86.
+
+  19 Sep 2005; Alin Nastac <mrness@gentoo.org> metadata.xml,
+  gnome-phone-manager-0.4.ebuild, gnome-phone-manager-0.6.ebuild:
+  Update descriptions.
+
+*gnome-phone-manager-0.6 (10 Sep 2005)
+
+  10 Sep 2005; Carlos Silva <r3pek@gentoo.org>
+  +gnome-phone-manager-0.6.ebuild:
+  Version bump. Thx to Octavio Ruiz on bug #105423
+
+  21 Jul 2005; Alin Nastac <mrness@gentoo.org>
+  gnome-phone-manager-0.4.ebuild:
+  Stable on x86.
+
+  14 May 2005; Alin Nastac <mrness@gentoo.org> metadata.xml:
+  Moved from net-wireless/gnome-phone-manager to
+  app-mobilephone/gnome-phone-manager.
+
+*gnome-phone-manager-0.4 (08 May 2005)
+
+  08 May 2005; Alin Nastac <mrness@gentoo.org>
+  +files/gnome-phone-manager-0.4-gcc3.patch, +metadata.xml,
+  +gnome-phone-manager-0.4.ebuild:
+  Initial import from bug #54448.

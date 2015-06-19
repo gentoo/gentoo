@@ -1,0 +1,61 @@
+# ChangeLog for net-analyzer/mk-livestatus
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/mk-livestatus/ChangeLog,v 1.11 2015/04/08 18:01:21 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> mk-livestatus-1.2.2_p3.ebuild:
+  Drop old Python implementations
+
+  22 Mar 2014; Michael Palimaka <kensington@gentoo.org>
+  -mk-livestatus-1.2.0_p2.ebuild:
+  Remove old.
+
+  22 Feb 2014; Christian Ruppert <idl0r@gentoo.org> metadata.xml:
+  Remove myself as maintainer
+
+*mk-livestatus-1.2.2_p3 (03 Dec 2013)
+
+  03 Dec 2013; Christian Ruppert <idl0r@gentoo.org>
+  -mk-livestatus-1.2.2_p2.ebuild, +mk-livestatus-1.2.2_p3.ebuild,
+  -files/mk-livestatus-1.2.2_p2-no-strip.diff,
+  -files/mk-livestatus-1.2.2_p2-test-RequireRcsKeywords.diff,
+  +files/mk-livestatus-1.2.2_p3-no-strip.diff,
+  +files/mk-livestatus-1.2.2_p3-test-RequireRcsKeywords.diff:
+  Bump to _p3...
+
+*mk-livestatus-1.2.2_p2 (03 Dec 2013)
+
+  03 Dec 2013; Christian Ruppert <idl0r@gentoo.org>
+  -mk-livestatus-1.1.8.ebuild, -mk-livestatus-1.1.10_p1.ebuild,
+  +mk-livestatus-1.2.2_p2.ebuild, +files/mk-livestatus-1.2.2_p2-no-strip.diff,
+  +files/mk-livestatus-1.2.2_p2-test-RequireRcsKeywords.diff,
+  -files/gcc-4.7-compile.patch:
+  Version bump. Cleanup. Bug 482026, thanks to Bertrand Jacquin
+  <beber@meleeweb.net>
+
+  22 Dec 2012; Agostino Sarubbo <ago@gentoo.org> mk-livestatus-1.2.0_p2.ebuild:
+  Add ~ppc, wrt bug #429088
+
+*mk-livestatus-1.2.0_p2 (03 Sep 2012)
+
+  03 Sep 2012; Christian Ruppert <idl0r@gentoo.org>
+  +mk-livestatus-1.2.0_p2.ebuild:
+  Version bump
+
+  03 Sep 2012; Christian Ruppert <idl0r@gentoo.org>
+  mk-livestatus-1.1.10_p1.ebuild, +files/gcc-4.7-compile.patch:
+  Add missing includes patch, fixes bug 425182 and bug 433800
+
+*mk-livestatus-1.1.10_p1 (27 Apr 2011)
+
+  27 Apr 2011; Christian Ruppert <idl0r@gentoo.org> mk-livestatus-1.1.8.ebuild,
+  +mk-livestatus-1.1.10_p1.ebuild:
+  Version bump to 1.1.10_p1.
+
+  11 Mar 2011; Torsten Veller <tove@gentoo.org> mk-livestatus-1.1.8.ebuild:
+  Change dependency: Thread-Queue is a core module
+
+*mk-livestatus-1.1.8 (30 Jan 2011)
+
+  30 Jan 2011; Christian Ruppert <idl0r@gentoo.org>
+  +mk-livestatus-1.1.8.ebuild, +metadata.xml:
+  Initial commit for net-analyzer/mk-livestatus

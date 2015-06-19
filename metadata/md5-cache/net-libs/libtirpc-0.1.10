@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=kerberos? ( net-libs/libgssglue )
+DESCRIPTION=Transport Independent RPC library (SunRPC replacement)
+HOMEPAGE=http://libtirpc.sourceforge.net/
+IUSE=kerberos
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=kerberos? ( net-libs/libgssglue )
+SLOT=0
+SRC_URI=mirror://sourceforge/libtirpc/libtirpc-0.1.10.tar.bz2
+_md5_=f1292f4b320396094ed130dd56ad73ac

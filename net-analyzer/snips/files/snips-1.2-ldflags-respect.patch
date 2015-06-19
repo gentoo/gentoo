@@ -1,0 +1,184 @@
+diff -uNr snips-1.2.ORIG/etherload/Makefile.mid snips-1.2/etherload/Makefile.mid
+--- snips-1.2.ORIG/etherload/Makefile.mid	2012-06-26 14:43:15.818552541 +0100
++++ snips-1.2/etherload/Makefile.mid	2012-06-26 14:48:11.983571994 +0100
+@@ -19,7 +19,7 @@
+ INITFILES = etherload
+ 
+ $(TARG):  $(OBJS)
+-	$(CC) -o etherload $(CFLAGS) $(OBJS) $(LIBS)
++	$(CC) -o etherload $(CFLAGS) $(OBJS) $(LDFLAGS) $(LIBS)
+ 
+ standalone:  clean
+ 	make CFLAGS="$(CFLAGS) -DSTANDALONE" $(TARG)
+diff -uNr snips-1.2.ORIG/lib/Makefile.mid snips-1.2/lib/Makefile.mid
+--- snips-1.2.ORIG/lib/Makefile.mid	2012-06-26 14:43:15.791552541 +0100
++++ snips-1.2/lib/Makefile.mid	2012-06-26 14:44:51.073558777 +0100
+@@ -49,7 +49,7 @@
+ 	   echo "Generating  ../perl-module/Makefile"; \
+ 	   (cd ../perl-module; \
+ 	    perl Makefile.PL \
+-		CC="$(CC)" LD="$(CC)" OPTIMIZE="$(CFLAGS)" LIBS="$(LIBS)" \
++		CC="$(CC)" LD="$(CC)" OPTIMIZE="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" LIBS="$(LIBS)" \
+ 		INSTALLSITELIB=$(ROOTDIR)/lib/perl INSTALLSITEARCH=$(ROOTDIR)/lib/perl INSTALLARCHLIB=$(ROOTDIR)/lib/perl INSTALLMAN3DIR=$(MANDIR) ; \
+ 	   ) >/dev/null ;\
+ 	 fi
+diff -uNr snips-1.2.ORIG/nsmon/Makefile.mid snips-1.2/nsmon/Makefile.mid
+--- snips-1.2.ORIG/nsmon/Makefile.mid	2012-06-26 14:43:15.817552541 +0100
++++ snips-1.2/nsmon/Makefile.mid	2012-06-26 14:47:26.847568340 +0100
+@@ -14,7 +14,7 @@
+ 
+ 
+ $(TARG): $(OBJS) Makefile
+-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(PROGLIBS) -o $@
++	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LIBS) $(PROGLIBS) -o $@
+ 
+ install: installdir $(TARG)
+ 	$(INSTALL) -c -m 751 $(TARG) $(BINDIR)/
+diff -uNr snips-1.2.ORIG/ntpmon/Makefile.mid snips-1.2/ntpmon/Makefile.mid
+--- snips-1.2.ORIG/ntpmon/Makefile.mid	2012-06-26 14:43:15.807552541 +0100
++++ snips-1.2/ntpmon/Makefile.mid	2012-06-26 14:46:28.392565438 +0100
+@@ -13,7 +13,7 @@
+ INITFILES = ntpmon
+ 
+ $(TARG): $(OBJS) Makefile
+-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(PROGLIBS) -o $@
++	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LIBS) $(PROGLIBS) -o $@
+ 
+ 
+ install: installdir $(TARG)
+diff -uNr snips-1.2.ORIG/pingmon/Makefile.mid snips-1.2/pingmon/Makefile.mid
+--- snips-1.2.ORIG/pingmon/Makefile.mid	2012-06-26 14:43:15.819552541 +0100
++++ snips-1.2/pingmon/Makefile.mid	2012-06-26 14:48:57.503574984 +0100
+@@ -23,7 +23,7 @@
+ INITFILES = ippingmon rpcpingmon
+ 
+ $(TARG): $(OBJS) Makefile
+-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(PROGLIBS) -o $@
++	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LIBS) $(PROGLIBS) -o $@
+ 
+ install: installdir $(TARG)
+ 	$(INSTALL) -c -m 751 $(TARG) $(BINDIR)/ ;
+diff -uNr snips-1.2.ORIG/pingmon/multiping/Makefile.mid snips-1.2/pingmon/multiping/Makefile.mid
+--- snips-1.2.ORIG/pingmon/multiping/Makefile.mid	2012-06-26 14:43:15.819552541 +0100
++++ snips-1.2/pingmon/multiping/Makefile.mid	2012-06-26 14:48:25.751573031 +0100
+@@ -11,7 +11,7 @@
+ OBJS = 	multiping.o
+ 
+ $(TARG):	$(OBJS) Makefile
+-	$(CC) $(CFLAGS) $(OBJS) $(PROGLIBS) -o $(TARG)
++	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(PROGLIBS) -o $(TARG)
+ 
+ install:  installdir  $(TARG)
+ 	$(INSTALL) -c -m 4711 $(TARG) $(BINDIR)/
+diff -uNr snips-1.2.ORIG/pingmon/rpcping/Makefile.mid snips-1.2/pingmon/rpcping/Makefile.mid
+--- snips-1.2.ORIG/pingmon/rpcping/Makefile.mid	2012-06-26 14:43:15.819552541 +0100
++++ snips-1.2/pingmon/rpcping/Makefile.mid	2012-06-26 14:48:46.799574327 +0100
+@@ -13,7 +13,7 @@
+ OBJS = 	rpcping.o
+ 
+ $(TARG):	$(OBJS) Makefile
+-	$(CC) $(CFLAGS) $(OBJS) $(PROGLIBS) -o $(TARG)
++	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(PROGLIBS) -o $(TARG)
+ 
+ install:  installdir  $(TARG)
+ 	$(INSTALL) -c -m 751 $(TARG) $(BINDIR)/
+diff -uNr snips-1.2.ORIG/portmon/Makefile.mid snips-1.2/portmon/Makefile.mid
+--- snips-1.2.ORIG/portmon/Makefile.mid	2012-06-26 14:43:15.796552541 +0100
++++ snips-1.2/portmon/Makefile.mid	2012-06-26 14:45:28.936561270 +0100
+@@ -11,7 +11,7 @@
+ PROGLIBS  =
+ 
+ $(TARG):	$(OBJS)  Makefile
+-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(TARG)
++	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LIBS) -o $(TARG)
+ 
+ #
+ install:  installdir $(TARG)
+diff -uNr snips-1.2.ORIG/radiusmon/Makefile.mid snips-1.2/radiusmon/Makefile.mid
+--- snips-1.2.ORIG/radiusmon/Makefile.mid	2012-06-26 14:43:15.815552541 +0100
++++ snips-1.2/radiusmon/Makefile.mid	2012-06-26 14:46:41.096566075 +0100
+@@ -13,7 +13,7 @@
+ INITFILES = radiusmon
+ 
+ $(TARG): $(OBJS) Makefile
+-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(PROGLIBS) -o $@
++	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LIBS) $(PROGLIBS) -o $@
+ 
+ 
+ install: installdir $(TARG)
+diff -uNr snips-1.2.ORIG/snipslog/Makefile.mid snips-1.2/snipslog/Makefile.mid
+--- snips-1.2.ORIG/snipslog/Makefile.mid	2012-06-26 14:43:15.817552541 +0100
++++ snips-1.2/snipslog/Makefile.mid	2012-06-26 14:47:47.263570500 +0100
+@@ -15,7 +15,7 @@
+ INITFILES = snipslogd
+ 
+ $(TARG):	$(OBJS) Makefile
+-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(PROGLIBS) -o $(TARG)
++	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LIBS) $(PROGLIBS) -o $(TARG)
+ 
+ snipslogtest:  snipslogtest.o
+ 	$(CC) $(CFLAGS) -DTEST -o snipslogtest snipslogtest.c  $(LIBS)
+diff -uNr snips-1.2.ORIG/snipstv/Makefile.mid snips-1.2/snipstv/Makefile.mid
+--- snips-1.2.ORIG/snipstv/Makefile.mid	2012-06-26 14:43:15.818552541 +0100
++++ snips-1.2/snipstv/Makefile.mid	2012-06-26 14:47:56.599570885 +0100
+@@ -17,7 +17,7 @@
+ 	update_msgwin.o  update_promptwin.o update_title.o
+ 
+ $(TARG):	$(OBJS) Makefile
+-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(PROGLIBS) -o $@
++	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LIBS) $(PROGLIBS) -o $@
+ 
+ install:   installdir  $(TARG)
+ 	$(INSTALL) -c -m 751 $(TARG) $(BINDIR)
+diff -uNr snips-1.2.ORIG/tksnips/Makefile.mid snips-1.2/tksnips/Makefile.mid
+--- snips-1.2.ORIG/tksnips/Makefile.mid	2012-06-26 14:43:15.792552541 +0100
++++ snips-1.2/tksnips/Makefile.mid	2012-06-26 14:45:03.849559610 +0100
+@@ -15,7 +15,7 @@
+ all:	$(TARG)
+ 
+ ndaemon: $(OBJS) Makefile
+-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(PROGLIBS) -o $@
++	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LIBS) $(PROGLIBS) -o $@
+ 
+ tkSnips:  tkSnips.tix
+ 	@echo "Doing substitutions on tkSnips" ;\
+diff -uNr snips-1.2.ORIG/tpmon/Makefile.mid snips-1.2/tpmon/Makefile.mid
+--- snips-1.2.ORIG/tpmon/Makefile.mid	2012-06-26 14:43:15.788552541 +0100
++++ snips-1.2/tpmon/Makefile.mid	2012-06-26 14:44:04.585555459 +0100
+@@ -11,7 +11,7 @@
+ PROGLIBS  =
+ 
+ $(TARG): $(OBJS) Makefile
+-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $@
++	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LIBS) -o $@
+ 
+ ######
+ # small testing program to demonstrate the throughput() function
+diff -uNr snips-1.2.ORIG/trapmon/Makefile.mid snips-1.2/trapmon/Makefile.mid
+--- snips-1.2.ORIG/trapmon/Makefile.mid	2012-06-26 14:43:15.816552541 +0100
++++ snips-1.2/trapmon/Makefile.mid	2012-06-26 14:47:17.560568478 +0100
+@@ -17,7 +17,7 @@
+ INITFILES = trapmon
+ 
+ $(TARG):	$(OBJS) Makefile
+-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(PROGLIBS) -o $@
++	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LIBS) $(PROGLIBS) -o $@
+ 
+ install: $(TARG)
+ 	$(INSTALL) -c -m 4750 $(TARG) $(BINDIR)/
+diff -uNr snips-1.2.ORIG/utility/Makefile.mid snips-1.2/utility/Makefile.mid
+--- snips-1.2.ORIG/utility/Makefile.mid	2012-06-26 14:43:15.801552541 +0100
++++ snips-1.2/utility/Makefile.mid	2012-06-26 14:45:49.512562573 +0100
+@@ -25,10 +25,10 @@
+ all:	$(CPROGS) sed
+ 
+ display_snips_datafile:	display_snips_datafile.o
+-	$(CC) $(CFLAGS)  $@.o $(LIBS) $(PROGLIBS) -o $@
++	$(CC) $(CFLAGS)  $@.o $(LDFLAGS) $(LIBS) $(PROGLIBS) -o $@
+ 
+ eventselect:	eventselect.o
+-	$(CC) $(CFLAGS)  $@.o $(LIBS) $(PROGLIBS) -o $@
++	$(CC) $(CFLAGS)  $@.o $(LDFLAGS) $(LIBS) $(PROGLIBS) -o $@
+ 
+ 
+ sed:

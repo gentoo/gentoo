@@ -1,0 +1,138 @@
+# ChangeLog for dev-dotnet/ikvm-bin
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/ikvm-bin/ChangeLog,v 1.27 2012/12/08 04:06:50 zerochaos Exp $
+
+  08 Dec 2012; Rick Farina <zerochaos@gentoo.org> ikvm-bin-7.1.4532.2.ebuild:
+  revert improper x86 stabilization wrt #435202 comment 2
+
+  07 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ikvm-bin-7.1.4532.2.ebuild:
+  x86 stable wrt bug #435202
+
+  05 Nov 2012; Ulrich Müller <ulm@gentoo.org> ikvm-bin-0.46.0.2.ebuild,
+  ikvm-bin-7.1.4532.2.ebuild:
+  Fix LICENSE, bug 437166. Thanks to Ben Sagal <bensagal@gmail.com>.
+
+*ikvm-bin-7.1.4532.2 (21 Jul 2012)
+
+  21 Jul 2012; Pacho Ramos <pacho@gentoo.org> +ikvm-bin-7.1.4532.2.ebuild:
+  Version bump.
+
+  16 Jun 2012; Agostino Sarubbo <ago@gentoo.org> -ikvm-bin-0.46.0.1.ebuild:
+  Remove old as requested by Pacho Ramos, <pacho@gentoo.org>
+
+  22 May 2012; Agostino Sarubbo <ago@gentoo.org> ikvm-bin-0.46.0.2.ebuild:
+  Stable for amd64, wrt bug #407701
+
+  09 Apr 2012; Markus Meier <maekke@gentoo.org> ikvm-bin-0.46.0.2.ebuild:
+  x86 stable, bug #407701
+
+*ikvm-bin-0.46.0.2 (21 Jan 2012)
+
+  21 Jan 2012; Pacho Ramos <pacho@gentoo.org> +ikvm-bin-0.46.0.2.ebuild,
+  -ikvm-bin-0.44.0.6.ebuild:
+  Version bump, drop old.
+
+  05 Nov 2011; Markos Chandras <hwoarang@gentoo.org> ikvm-bin-0.46.0.1.ebuild:
+  Stable on amd64 wrt bug #389181
+
+  04 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ikvm-bin-0.46.0.1.ebuild:
+  x86 stable wrt bug #389181
+
+*ikvm-bin-0.46.0.1 (10 Sep 2011)
+
+  10 Sep 2011; Pacho Ramos <pacho@gentoo.org> -ikvm-bin-0.42.0.6.ebuild,
+  -ikvm-bin-0.44.0.5.ebuild, +ikvm-bin-0.46.0.1.ebuild:
+  Version bump, remove old and fix links gac managing (bug #380645 by Juergen
+  Rose).
+
+  30 Jun 2011; Christoph Mende <angelos@gentoo.org> ikvm-bin-0.44.0.6.ebuild:
+  Stable on amd64 wrt bug #371163
+
+  21 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ikvm-bin-0.44.0.6.ebuild:
+  x86 stable wrt bug #371163
+
+*ikvm-bin-0.44.0.6 (06 Dec 2010)
+
+  06 Dec 2010; Pacho Ramos <pacho@gentoo.org> +ikvm-bin-0.44.0.6.ebuild:
+  Version bump:
+  - Backported various build system improvements.
+  - Backported IKVM.Reflection ILGenerator exception table sorting bug fix
+  (when running on Mono).
+  - Backported Mono 2.8 mcs build workarounds.
+  - Backported support for boolean, byte, char and short non-final static field
+  constant attributes.
+  - Backported core assembly detection fix.
+  - Backported fix to make sure that ikvmc (and ikvmstub) can find assemblies
+  that are part of a multi assembly (shared class loader) group (if the 
+  assembly is in the same directory as the main assembly of the group).
+  - Backported fix for regression in stack trace printing of .NET (not
+  remapped) exceptions introduced in 0.44. The .NET stack trace should not be 
+  included in the message.
+  - Backported fix for ikvmc sometimes incorrectly handling
+  InternalsVisibleToAttributes in multi assembly builds.
+  - Backported fix for regression introduced with fault handlers. Exception
+  handlers inside fault handlers could be ignored.
+  - Backported fix for #3086040. Volatile stores require a memory barrier.
+
+  23 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  ikvm-bin-0.42.0.6.ebuild:
+  Stable on amd64 wrt bug #336851
+
+*ikvm-bin-0.44.0.5 (12 Sep 2010)
+
+  12 Sep 2010; Pacho Ramos <pacho@gentoo.org> -ikvm-bin-0.14.ebuild,
+  -ikvm-bin-0.34.0.2.ebuild, -ikvm-bin-0.36.0.5.ebuild,
+  -ikvm-bin-0.42.0.3.ebuild, +ikvm-bin-0.44.0.5.ebuild, -files/ikvm.pc.in:
+  Version bump, add some missing die statements and install dlls in a better
+  way. Remove old.
+
+  12 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ikvm-bin-0.42.0.6.ebuild:
+  x86 stable wrt bug #336851
+
+*ikvm-bin-0.42.0.6 (04 Jul 2010)
+
+  04 Jul 2010; Pacho Ramos <pacho@gentoo.org> +ikvm-bin-0.42.0.6.ebuild:
+  Version bump with bugfixes.
+
+*ikvm-bin-0.42.0.3 (27 Feb 2010)
+
+  27 Feb 2010; Patrick Lauer <patrick@gentoo.org> +ikvm-bin-0.42.0.3.ebuild:
+  Bump
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Peter Johanson (latexer, #206688) from metadata.xml.
+
+*ikvm-bin-0.36.0.5 (31 Dec 2007)
+
+  31 Dec 2007; Jurek Bartuszek <jurek@gentoo.org>
+  +files/ikvm-0.36.0.5.pc.in, +ikvm-bin-0.36.0.5.ebuild:
+  Version bump
+
+  28 Jun 2007; Jurek Bartuszek <jurek@gentoo.org> ikvm-bin-0.34.0.2.ebuild:
+  Fixed SRC_URI (bug #183478)
+
+*ikvm-bin-0.34.0.2 (27 Jun 2007)
+
+  27 Jun 2007; Jurek Bartuszek <jurek@gentoo.org> +files/ikvm.pc.in,
+  +ikvm-bin-0.34.0.2.ebuild:
+  Version bump
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  21 May 2005; Tom Martin <slarti@gentoo.org> ChangeLog:
+  Marked ~amd64.
+
+  19 May 2005; Peter Johanson <latexer@gentoo.org> ikvm-bin-0.14.ebuild:
+  Fix the SRC_URI.
+
+*ikvm-bin-0.14 (18 May 2005)
+
+  18 May 2005; Peter Johanson <latexer@gentoo.org> +metadata.xml,
+  +ikvm-bin-0.14.ebuild:
+  Add new ikvm-bin as packaged by Ximian. Makes installing ikvm not require a
+  java + jikes installation.

@@ -1,0 +1,50 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/amule/files/amuled.initd,v 1.4 2007/07/23 12:07:54 armin76 Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	if ! test -f "${AMULEHOME}/.aMule/amule.conf"; then
+		eerror "You must start and configure amuled before launch it. Sorry."
+		return 1
+	fi
+
+	if pgrep -u ${AMULEUSER} amuled >/dev/null; then
+		eerror "An instance of aMule webserver is already running"
+		return 1
+	fi
+	if [ -e /var/run/amuled.pid ]; then
+		 rm /var/run/amuled.pid
+	fi
+
+	ebegin "Starting aMule Daemon"
+	env HOME="${AMULEHOME}" start-stop-daemon --start \
+		--quiet --background \
+		--make-pidfile --pidfile /var/run/amuled.pid \
+		-c ${AMULEUSER} \
+		-x /usr/bin/amuled >${LOG}
+	
+	sleep 2
+	if ! pgrep -u ${AMULEUSER} amuled > /dev/null; then
+		eerror "aMule daemon can't be started! Check logfile: ${LOG}"
+	fi
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping aMule daemon -- please wait"
+	start-stop-daemon --oknodo --stop --pidfile /var/run/amuled.pid &>/dev/null
+	eend $?
+}
+
+restart() {
+	svc_stop
+	while `pgrep -u ${AMULEUSER} amuled >/dev/null`; do
+		sleep 1
+	done
+	svc_start
+}

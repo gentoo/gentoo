@@ -1,0 +1,41 @@
+# ChangeLog for dev-python/iniparse
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/iniparse/ChangeLog,v 1.11 2015/04/08 08:05:13 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> iniparse-0.4-r1.ebuild:
+  Drop old Python implementations
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -iniparse-0.4.ebuild:
+  Remove old.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> iniparse-0.4-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> iniparse-0.4-r1.ebuild:
+  Stable for x86, wrt bug #463076
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> iniparse-0.4-r1.ebuild:
+  Stable for amd64, wrt bug #463076
+
+  09 Feb 2013; Mike Gilbert <floppym@gentoo.org> iniparse-0.4-r1.ebuild:
+  Die on test failure.
+
+*iniparse-0.4-r1 (09 Feb 2013)
+
+  09 Feb 2013; Mike Gilbert <floppym@gentoo.org> +iniparse-0.4-r1.ebuild:
+  Convert to distutils-r1.
+
+  24 May 2012; Johannes Huber <johu@gentoo.org> iniparse-0.4.ebuild:
+  Stable for x86, wrt bug #410859
+
+  06 May 2012; Agostino Sarubbo <ago@gentoo.org> iniparse-0.4.ebuild:
+  Stable for amd64, wrt bug #410859
+
+  19 Aug 2011; Markos Chandras <hwoarang@gentoo.org> iniparse-0.4.ebuild:
+  Fix dependencies, HOMEPAGE and LICENSE. Add src_test(). Patch by Arfrever.
+
+*iniparse-0.4 (10 Aug 2011)
+
+  10 Aug 2011; Tomáš Chvátal <scarabeus@gentoo.org> +iniparse-0.4.ebuild,
+  +metadata.xml:
+  Initial commit. Fixes bug #279529. Ebuild from sabayon overlay.

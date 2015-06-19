@@ -1,0 +1,118 @@
+# ChangeLog for sys-apps/ipmiutil
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/ipmiutil/ChangeLog,v 1.26 2014/06/28 17:59:02 jer Exp $
+
+  28 Jun 2014; Jeroen Roovers <jer@gentoo.org> ipmiutil-2.9.3.ebuild:
+  Whitespace.
+
+  28 Jun 2014; Jeroen Roovers <jer@gentoo.org> ipmiutil-2.9.3.ebuild,
+  +files/ipmiutil-2.9.3-flags.patch, +files/ipmiutil-2.9.3-tmpdir.patch:
+  Fix building with FEATURES=distcc (chokes on TMPDIR being set, respect
+  CFLAGS.
+
+*ipmiutil-2.9.3 (28 Jun 2014)
+
+  28 Jun 2014; Robin H. Johnson <robbat2@gentoo.org> +ipmiutil-2.9.3.ebuild:
+  Bump.
+
+  30 Oct 2013; Jeroen Roovers <jer@gentoo.org> ipmiutil-2.8.5.ebuild:
+  Marked ~hppa too.
+
+  26 Dec 2012; Jeff Horelick <jdhore@gentoo.org> ipmiutil-2.8.5.ebuild:
+  marked x86 per bug 441510
+
+  13 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> ipmiutil-2.8.5.ebuild:
+  Add missing 'die' statement, stable on amd64 wrt bug #441510
+
+  21 Aug 2012; Johannes Huber <johu@gentoo.org> ipmiutil-2.8.2.ebuild:
+  Stable for x86, wrt bug #422175
+
+*ipmiutil-2.8.5 (19 Aug 2012)
+
+  19 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> +ipmiutil-2.8.5.ebuild,
+  -ipmiutil-2.6.7.ebuild:
+  Version bump; OpenRC init scripts are still missing and there is only a static
+  library, work on this package is required.
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> ipmiutil-2.8.2.ebuild:
+  Stable for amd64, wrt bug #422175
+
+  03 Aug 2012; Markos Chandras <hwoarang@gentoo.org> ipmiutil-2.8.2.ebuild:
+  Stable on amd64 wrt bug #422175
+
+  04 Apr 2012; Jeff Horelick <jdhore@gentoo.org> ipmiutil-2.7.7.ebuild:
+  marked x86 per bug 400487
+
+*ipmiutil-2.8.2 (14 Mar 2012)
+
+  14 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> +ipmiutil-2.8.2.ebuild:
+  Version bump. Install systemd service files. Enable SHA256 support by
+  default.
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> ipmiutil-2.7.7.ebuild:
+  Stable for amd64, wrt bug #400487
+
+*ipmiutil-2.7.7 (18 Aug 2011)
+
+  18 Aug 2011; Patrick McLean <chutzpah@gentoo.org> +ipmiutil-2.7.7.ebuild:
+  Version bump.
+
+  18 Jul 2010; Markos Chandras <hwoarang@gentoo.org> ipmiutil-2.6.7.ebuild:
+  Stable on amd64 wrt bug #328637
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  ipmiutil-2.6.7.ebuild:
+  stable x86, bug 328637
+
+  16 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> ipmiutil-2.6.7.ebuild:
+  Set initto target for install to avoid them ending up in /etc.
+
+*ipmiutil-2.6.7 (16 Jul 2010)
+
+  16 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +ipmiutil-2.6.7.ebuild:
+  Version bump.
+
+*ipmiutil-2.3.7 (22 May 2009)
+
+  22 May 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/ipmiutil-1.6.0-link-external-freeipmi.diff, +ipmiutil-2.3.7.ebuild,
+  +files/ipmiutil-2.3.7+glibc-2.10.patch:
+  Remove old file; bump to latest version (2.3.7) closing bug #264331; add
+  patch to build with glibc 2.10 closing bug #270541.
+
+  07 Aug 2008; Markus Meier <maekke@gentoo.org> ipmiutil-2.1.1.ebuild:
+  amd64/x86 stable, bug #233569
+
+  01 Aug 2008; Tiziano Müller <dev-zero@gentoo.org> ChangeLog:
+  Removed unused patch
+
+*ipmiutil-2.1.2 (01 Aug 2008)
+
+  01 Aug 2008; Tiziano Müller <dev-zero@gentoo.org> -ipmiutil-1.6.0.ebuild,
+  +ipmiutil-2.1.2.ebuild:
+  Version bump. Dropped old version.
+
+*ipmiutil-2.1.1 (25 Apr 2008)
+
+  25 Apr 2008; Tiziano Müller <dev-zero@gentoo.org>
+  -files/2.1.0-various_compile_issues.patch, -ipmiutil-2.1.0.ebuild,
+  +ipmiutil-2.1.1.ebuild:
+  Version bump (upstream included my patch).
+
+*ipmiutil-2.1.0 (22 Apr 2008)
+
+  22 Apr 2008; Tiziano Müller <dev-zero@gentoo.org>
+  +files/2.1.0-various_compile_issues.patch, metadata.xml,
+  +ipmiutil-2.1.0.ebuild:
+  Version bump (bug #199989). Fixed various compile issues (upstream bug
+  #1948890).
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*ipmiutil-1.6.0 (25 Mar 2005)
+
+  25 Mar 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +files/ipmiutil-1.6.0-link-external-freeipmi.diff, +ipmiutil-1.6.0.ebuild:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

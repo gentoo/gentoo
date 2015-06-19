@@ -1,0 +1,56 @@
+# ChangeLog for dev-php/PEAR-Calendar
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Calendar/ChangeLog,v 1.12 2014/11/06 15:03:30 grknight Exp $
+
+  06 Nov 2014; Brian Evans <grknight@gentoo.org> -PEAR-Calendar-0.5.4.ebuild:
+  Drop old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-Calendar-0.5.4.ebuild, PEAR-Calendar-0.5.5.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*PEAR-Calendar-0.5.5 (24 Mar 2013)
+
+  24 Mar 2013; Matti Bickel <mabi@gentoo.org> +PEAR-Calendar-0.5.5.ebuild,
+  -PEAR-Calendar-0.5.3.ebuild:
+  cleanup, version bump
+
+*PEAR-Calendar-0.5.4 (22 Aug 2009)
+
+  22 Aug 2009; Steve Dibb <beandog@gentoo.org> +PEAR-Calendar-0.5.4.ebuild:
+  Version bump
+
+  05 Dec 2007; Markus Ullmann <jokey@gentoo.org> PEAR-Calendar-0.5.3.ebuild:
+  LICENSE fix from project overlay
+
+  02 Dec 2007; Jakub Moc <jakub@gentoo.org> PEAR-Calendar-0.5.3.ebuild:
+  Fix LICENSE
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  25 Nov 2006; Bryan Østergaard <kloeri@gentoo.org>
+  PEAR-Calendar-0.5.3.ebuild:
+  Add ~alpha + ~ia64 keywords, bug 134270.
+
+  27 May 2006; Luca Longinotti <chtekk@gentoo.org> ChangeLog:
+  Added to ~amd64. See bug #134270.
+
+  25 May 2006; Michael Hanselmann <hansmi@gentoo.org>
+  PEAR-Calendar-0.5.3.ebuild:
+  Added to ~hppa, ~ppc64, ~sparc. See bug #134270.
+
+  25 May 2006; <nixnut@gentoo.org> PEAR-Calendar-0.5.3.ebuild:
+  Added ~ppc. bug #134270
+
+*PEAR-Calendar-0.5.3 (10 Nov 2005)
+
+  10 Nov 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-Calendar-0.5.2.ebuild, +PEAR-Calendar-0.5.3.ebuild:
+  Version bump.
+
+*PEAR-Calendar-0.5.2 (25 Oct 2005)
+
+  25 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org> +metadata.xml,
+  +PEAR-Calendar-0.5.2.ebuild:
+  Initial ebuild, closes bug 110226.

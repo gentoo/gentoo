@@ -1,0 +1,13 @@
+Index: htmlc-2.6.0/config/Makefile.in
+===================================================================
+--- htmlc-2.6.0.orig/config/Makefile.in
++++ htmlc-2.6.0/config/Makefile.in
+@@ -36,7 +36,7 @@ MANDIR = \$(PREFIXINSTALLDIR)/man/man\$(
+ 
+ # The Caml compilers (those defaults should be OK)
+ CAMLDEP = \$(OCAML_COMMAND_SEARCH_PATH)ocamldep
+-CAML_FLAGS = -w A -warn-error A #-safe-string
++CAML_FLAGS = -w A #-safe-string
+ CAMLBYT_FLAGS = \$(CAML_FLAGS) -g -annot
+ CAMLBYT = \$(OCAML_COMMAND_SEARCH_PATH)ocamlc \$(CAMLBYT_FLAGS)
+ CAMLBIN_FLAGS = \$(CAML_FLAGS) -inline 10000

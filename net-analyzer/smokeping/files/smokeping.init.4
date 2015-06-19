@@ -1,0 +1,75 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="${opts} dump reload restore"
+
+depend() {
+	need net
+	use dns
+}
+
+checkconfig() {
+	if [ ! -f "/etc/smokeping/config" ] ; then
+		eerror "You need /etc/smokeping/config to run smokeping!"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+
+	checkpath -d -m 0755 -o smokeping:smokeping /run/smokeping
+	checkpath -d -m 0755 -o smokeping:smokeping /var/cache/smokeping
+
+	ebegin "Starting smokeping"
+	LC_ALL=C \
+	start-stop-daemon --start --name smokeping \
+		--pidfile /run/smokeping/smokeping.pid \
+		--exec /usr/bin/smokeping \
+		--user smokeping:smokeping
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping smokeping"
+	start-stop-daemon --stop \
+		--pidfile /run/smokeping/smokeping.pid
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading smokeping"
+	/usr/bin/smokeping --reload 1>/dev/null 2>&1
+	eend $?
+}
+
+dump() {
+	ebegin "Dumping smokeping rrd files to XML for backup or upgrade use"
+	if service_started "${myservice}" ; then
+		eerror "You need to stop smokeping before dumping files!"
+		return 1
+	fi
+	for f in `find /var/lib/smokeping -name '*.rrd' -print` ; do
+		f_xml=`dirname $f`/`basename $f .rrd`.xml
+		rrdtool dump "$f" > "${f_xml}"
+		chown root:0 "${f_xml}"
+	done
+	eend $?
+}
+
+restore() {
+	ebegin "Restoring smokeping rrd files from XML dump files"
+	if service_started "${myservice}" ; then
+		eerror "You need to stop smokeping before restoring files!"
+		return 1
+	fi
+	for f in `find /var/lib/smokeping -name '*.xml' -print` ; do
+		f_rrd=`dirname $f`/`basename $f .xml`.rrd
+		mv -f "${f_rrd}" "${f_rrd}.bak"
+		chown root:0 "${f_rrd}.bak"
+		rrdtool restore "$f" "${f_rrd}"
+		chown smokeping:smokeping "${f_rrd}"
+	done
+	eend $?
+}

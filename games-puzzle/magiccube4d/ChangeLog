@@ -1,0 +1,46 @@
+# ChangeLog for games-puzzle/magiccube4d
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/magiccube4d/ChangeLog,v 1.14 2015/03/27 09:12:01 ago Exp $
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> magiccube4d-2.2.ebuild:
+  Stable for amd64, wrt bug #544474
+
+  22 Feb 2015; Tupone Alfredo <tupone@gentoo.org> magiccube4d-2.2.ebuild:
+  EAPI 5
+
+  14 Apr 2013; Ulrich Müller <ulm@gentoo.org> magiccube4d-2.2.ebuild:
+  Fix LICENSE, see readme-unix.txt file.
+
+  15 Oct 2010; Tupone Alfredo <tupone@gentoo.org> magiccube4d-2.2.ebuild,
+  +files/magiccube4d-2.2-ldflags.patch:
+  Respect LDFLAGS. Bug #335142 by flameeyes@gentoo.org
+
+  22 Oct 2007; Christoph Mende <angelos@gentoo.org>
+  +files/magiccube4d-2.2-64bit-ptr.patch, magiccube4d-2.2.ebuild:
+  Fixed compilation on amd64 and ~amd64 added
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  magiccube4d-2.2.ebuild:
+  Remove old virtual/x11 dependency.
+
+  19 May 2006; <Tupone@gentoo.org> +files/magiccube4d-2.2-gcc41.patch,
+  magiccube4d-2.2.ebuild:
+  Fix emerge with gcc-4.1
+
+  17 Feb 2006; <Tupone@gentoo.org> magiccube4d-2.2.ebuild:
+  Modular X dependency fix
+
+  29 Dec 2004; Joseph Jezak <josejx@gentoo.org> magiccube4d-2.2.ebuild:
+  Marked ppc stable.
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org>
+  +files/magiccube4d-EventHandler.patch, magiccube4d-2.2.ebuild:
+  Added ~ppc and gcc-3.4 fixes.
+
+*magiccube4d-2.2 (22 Jun 2003)
+
+  22 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me #22533.

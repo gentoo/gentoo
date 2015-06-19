@@ -1,0 +1,57 @@
+# ChangeLog for x11-misc/openbox-menu
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/openbox-menu/ChangeLog,v 1.12 2014/11/03 12:47:22 jer Exp $
+
+  03 Nov 2014; Jeroen Roovers <jer@gentoo.org> -openbox-menu-0.3.6.8.ebuild,
+  -openbox-menu-0.5.0.ebuild, -files/openbox-menu-0.3.6.8-build.patch:
+  Old.
+
+  03 Nov 2014; Agostino Sarubbo <ago@gentoo.org> openbox-menu-0.5.1.ebuild:
+  Stable for x86, wrt bug #527212
+
+  30 Oct 2014; Agostino Sarubbo <ago@gentoo.org> openbox-menu-0.5.1.ebuild:
+  Stable for amd64, wrt bug #527212
+
+*openbox-menu-0.7.0 (28 Oct 2014)
+
+  28 Oct 2014; Jeroen Roovers <jer@gentoo.org> +openbox-menu-0.7.0.ebuild:
+  Version bump.
+
+*openbox-menu-0.5.1 (17 Sep 2014)
+
+  17 Sep 2014; Jeroen Roovers <jer@gentoo.org> -openbox-menu-0.3.6.7.ebuild,
+  +openbox-menu-0.5.1.ebuild, -files/openbox-menu-0.3.6.7-build.patch,
+  metadata.xml:
+  Version bump (bug #522596 by José Romildo Malaquias).
+
+*openbox-menu-0.5.0 (24 Aug 2013)
+
+  24 Aug 2013; Julian Ospald <hasufell@gentoo.org> +openbox-menu-0.5.0.ebuild,
+  +files/openbox-menu-0.5.0-build.patch, metadata.xml:
+  version bump wrt #481922
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> openbox-menu-0.3.6.8.ebuild:
+  Stable for amd64, wrt bug #474442
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> openbox-menu-0.3.6.8.ebuild:
+  Stable for x86, wrt bug #474442
+
+*openbox-menu-0.3.6.8 (03 Dec 2012)
+
+  03 Dec 2012; Julian Ospald <hasufell@gentoo.org>
+  +openbox-menu-0.3.6.8.ebuild, +files/openbox-menu-0.3.6.8-build.patch,
+  metadata.xml:
+  version bump
+
+  27 Aug 2012; Johannes Huber <johu@gentoo.org> openbox-menu-0.3.6.7.ebuild:
+  Stable for x86, wrt bug #432736
+
+  26 Aug 2012; Agostino Sarubbo <ago@gentoo.org> openbox-menu-0.3.6.7.ebuild:
+  Stable for amd64, wrt bug #432736
+
+*openbox-menu-0.3.6.7 (24 Jul 2012)
+
+  24 Jul 2012; Julian Ospald <hasufell@gentoo.org>
+  +openbox-menu-0.3.6.7.ebuild, +files/openbox-menu-0.3.6.7-build.patch,
+  +metadata.xml:
+  initial commit wrt #427794

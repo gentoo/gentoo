@@ -1,0 +1,176 @@
+# ChangeLog for net-libs/gsoap
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/gsoap/ChangeLog,v 1.35 2015/04/14 02:58:15 patrick Exp $
+
+*gsoap-2.8.22 (14 Apr 2015)
+
+  14 Apr 2015; Patrick Lauer <patrick@gentoo.org> +gsoap-2.8.22.ebuild:
+  Bump
+
+  15 Dec 2014; Lars Wendler <polynomial-c@gentoo.org> -gsoap-2.8.17.ebuild,
+  -gsoap-2.8.18.ebuild:
+  Removed old.
+
+*gsoap-2.8.21 (15 Dec 2014)
+
+  15 Dec 2014; Patrick Lauer <patrick@gentoo.org> +gsoap-2.8.21.ebuild:
+  Bump
+
+*gsoap-2.8.19 (17 Nov 2014)
+
+  17 Nov 2014; Patrick Lauer <patrick@gentoo.org> +gsoap-2.8.19.ebuild:
+  Bump
+
+*gsoap-2.8.18 (07 Sep 2014)
+
+  07 Sep 2014; Lars Wendler <polynomial-c@gentoo.org> -gsoap-2.8.15.ebuild,
+  -gsoap-2.8.16.ebuild, +gsoap-2.8.18.ebuild,
+  -files/gsoap-2.7.15-use_libtool.patch, -files/gsoap-2.7-fedora-openssl.patch:
+  Version bump. Removed old.
+
+*gsoap-2.8.17 (10 Dec 2013)
+
+  10 Dec 2013; Patrick Lauer <patrick@gentoo.org> +gsoap-2.8.17.ebuild:
+  Bump
+
+  18 Oct 2013; Lars Wendler <polynomial-c@gentoo.org> +gsoap-2.8.12.ebuild:
+  Readded gsoap-2.8.12 as this is the last version working with
+  app-emulation/virtualbox[vboxwebsrv] (bug #456354).
+
+  20 Sep 2013; Lars Wendler <polynomial-c@gentoo.org> -gsoap-2.8.14.ebuild:
+  Removed old.
+
+*gsoap-2.8.16 (04 Sep 2013)
+
+  04 Sep 2013; Patrick Lauer <patrick@gentoo.org> +gsoap-2.8.16.ebuild:
+  Bump
+
+*gsoap-2.8.15 (15 May 2013)
+
+  15 May 2013; Patrick Lauer <patrick@gentoo.org> +gsoap-2.8.15.ebuild:
+  Bump
+
+  10 May 2013; Lars Wendler <polynomial-c@gentoo.org> -gsoap-2.8.9.ebuild,
+  -gsoap-2.8.10.ebuild, -gsoap-2.8.11.ebuild, -gsoap-2.8.12.ebuild,
+  -gsoap-2.8.13.ebuild, gsoap-2.8.14.ebuild:
+  Fixed configure.in for >=automake-1.13 (bug #468264). Removed old versions.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*gsoap-2.8.14 (22 Feb 2013)
+
+  22 Feb 2013; Patrick Lauer <patrick@gentoo.org> +gsoap-2.8.14.ebuild:
+  Bump
+
+*gsoap-2.8.13 (29 Jan 2013)
+
+  29 Jan 2013; Patrick Lauer <patrick@gentoo.org> +gsoap-2.8.13.ebuild:
+  Bump
+
+*gsoap-2.8.12 (11 Jan 2013)
+
+  11 Jan 2013; Patrick Lauer <patrick@gentoo.org> +gsoap-2.8.12.ebuild:
+  Bump
+
+*gsoap-2.8.11 (19 Oct 2012)
+
+  19 Oct 2012; Patrick Lauer <patrick@gentoo.org> +gsoap-2.8.11.ebuild:
+  Bump
+
+*gsoap-2.8.10 (23 Aug 2012)
+
+  23 Aug 2012; Patrick Lauer <patrick@gentoo.org> +gsoap-2.8.10.ebuild,
+  -gsoap-2.8.0.ebuild, -gsoap-2.8.1.ebuild, -gsoap-2.8.8.ebuild:
+  Bump
+
+*gsoap-2.8.9 (17 Jul 2012)
+
+  17 Jul 2012; Patrick Lauer <patrick@gentoo.org> +gsoap-2.8.9.ebuild:
+  Bump
+
+*gsoap-2.8.8 (24 Mar 2012)
+
+  24 Mar 2012; Markos Chandras <hwoarang@gentoo.org> +gsoap-2.8.8.ebuild:
+  Non-maintainer version bump. Fixes bug #389883
+
+  18 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #118003.
+
+*gsoap-2.8.1 (19 Jan 2011)
+
+  19 Jan 2011; Lars Wendler <polynomial-c@gentoo.org> -gsoap-2.7.13.ebuild,
+  +gsoap-2.8.1.ebuild:
+  Version bump. Removed old.
+
+  05 Oct 2010; Markus Meier <maekke@gentoo.org> gsoap-2.7.17.ebuild:
+  amd64/x86 stable, bug #338796
+
+  02 Oct 2010; Lars Wendler <polynomial-c@gentoo.org> gsoap-2.7.17.ebuild,
+  gsoap-2.8.0.ebuild:
+  Removed static-libs USE flag as the concerning configure option is gone.
+
+*gsoap-2.8.0 (26 Sep 2010)
+
+  26 Sep 2010; Lars Wendler <polynomial-c@gentoo.org> +gsoap-2.8.0.ebuild:
+  Version bump. Still no fix for failing parallel make (-j > 1).
+
+  27 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org> gsoap-2.7.17.ebuild:
+  Adding missing dependency on app-arch/unzip.
+
+  03 Jun 2010; Lars Wendler <polynomial-c@gentoo.org> -gsoap-2.7.14.ebuild,
+  gsoap-2.7.17.ebuild:
+  Really fixing bug #320901. Removed interim version 2.7.14 again.
+
+*gsoap-2.7.17 (03 Jun 2010)
+*gsoap-2.7.14 (03 Jun 2010)
+
+  03 Jun 2010; Lars Wendler <polynomial-c@gentoo.org> -gsoap-2.7.9f.ebuild,
+  -gsoap-2.7.12.ebuild, -gsoap-2.7.12-r1.ebuild,
+  -files/gsoap-2.7.12-fix-pre-iso-headers.patch, +gsoap-2.7.14.ebuild,
+  -gsoap-2.7.15.ebuild, +gsoap-2.7.17.ebuild, metadata.xml:
+  Version bumps to latest available version (2.7.17) and latest version
+  which works with virtualbox-ose (2.7.14). Removed old versions. Added
+  myself as maintainer.
+
+*gsoap-2.7.15 (19 May 2010)
+
+  19 May 2010; Patrick Lauer <patrick@gentoo.org>
+  +files/gsoap-2.7.10-fedora-install_soapcpp2_wsdl2h_aux.patch,
+  +gsoap-2.7.15.ebuild, +files/gsoap-2.7.15-use_libtool.patch,
+  +files/gsoap-2.7-fedora-openssl.patch:
+  Bump and fixes from dev-zero, closes #306915
+
+  09 Nov 2009; Markus Meier <maekke@gentoo.org> gsoap-2.7.13.ebuild:
+  amd64 stable, bug #289618
+
+  19 Oct 2009; Christian Faulhammer <fauli@gentoo.org> gsoap-2.7.13.ebuild:
+  stable x86, bug 289618
+
+  21 Sep 2009; Christian Faulhammer <fauli@gentoo.org> gsoap-2.7.9f.ebuild:
+  stable x86, bug 285451
+
+*gsoap-2.7.13 (17 Aug 2009)
+
+  17 Aug 2009; Patrick Lauer <patrick@gentoo.org> +gsoap-2.7.13.ebuild,
+  +files/gsoap-2.7-fix-pre-iso-headers.patch:
+  Bump to 2.7.13. Thanks to Alessio Cassibba. Renames patch.
+
+*gsoap-2.7.12-r1 (05 Mar 2009)
+
+  05 Mar 2009; Patrick Lauer <patrick@gentoo.org>
+  +files/gsoap-2.7.12-fix-pre-iso-headers.patch, +gsoap-2.7.12-r1.ebuild:
+  Fixing failure in some of the examples. Patch by Alessio Cassibba
+  (X-Drum). Fixes #261042
+
+  04 Mar 2009; Patrick Lauer <patrick@gentoo.org> gsoap-2.7.9f.ebuild,
+  gsoap-2.7.12.ebuild:
+  Fixing typo in DESCRIPTION
+
+*gsoap-2.7.12 (03 Mar 2009)
+*gsoap-2.7.9f (03 Mar 2009)
+
+  03 Mar 2009; Patrick Lauer <patrick@gentoo.org> +metadata.xml,
+  +gsoap-2.7.9f.ebuild, +gsoap-2.7.12.ebuild:
+  Initial Import from jokey overlay. Dep of newer virtualbox-ose. Ebuilds by
+  Alessio Cassibba.

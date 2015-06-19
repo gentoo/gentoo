@@ -1,0 +1,51 @@
+# ChangeLog for app-crypt/oclhashcat-lite-bin
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/oclhashcat-lite-bin/ChangeLog,v 1.10 2014/01/01 09:26:10 patrick Exp $
+
+  01 Jan 2014; Patrick Lauer <patrick@gentoo.org>
+  -oclhashcat-lite-bin-0.14.ebuild:
+  Remove old version with unsatisfiable deps #496276
+
+  24 Aug 2013; Rick Farina <zerochaos@gentoo.org>
+  oclhashcat-lite-bin-0.15.ebuild:
+  newer ati-drivers can be used with --force so we allow it
+
+  29 Apr 2013; Rick Farina <zerochaos@gentoo.org>
+  oclhashcat-lite-bin-0.15.ebuild:
+  ebuild cleanup, fix tests, fix running as user
+
+*oclhashcat-lite-bin-0.15 (23 Apr 2013)
+
+  23 Apr 2013; Rick Farina <zerochaos@gentoo.org>
+  +oclhashcat-lite-bin-0.15.ebuild, metadata.xml:
+  version bump and some minor improvements
+
+  11 Mar 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -oclhashcat-lite-bin-0.10.ebuild, -oclhashcat-lite-bin-0.13.ebuild:
+  Drop versions that depend on old ati-drivers.
+
+*oclhashcat-lite-bin-0.14 (03 Feb 2013)
+
+  03 Feb 2013; Rick Farina <zerochaos@gentoo.org>
+  +oclhashcat-lite-bin-0.14.ebuild:
+  version bump, users must now agree to eula with each release
+
+*oclhashcat-lite-bin-0.13 (31 Dec 2012)
+
+  31 Dec 2012; Rick Farina <zerochaos@gentoo.org>
+  +oclhashcat-lite-bin-0.13.ebuild:
+  version bump
+
+  04 Jul 2012; Rick Farina <zerochaos@gentoo.org>
+  oclhashcat-lite-bin-0.10.ebuild:
+  minor QA with ebuild, again
+
+  04 Jul 2012; Rick Farina <zerochaos@gentoo.org>
+  oclhashcat-lite-bin-0.10.ebuild:
+  move loader and simplify ebuild with a for loop
+
+*oclhashcat-lite-bin-0.10 (02 Jul 2012)
+
+  02 Jul 2012; Rick Farina <zerochaos@gentoo.org> +metadata.xml,
+  +oclhashcat-lite-bin-0.10.ebuild:
+  initial commit of oclhashcat-lite-bin

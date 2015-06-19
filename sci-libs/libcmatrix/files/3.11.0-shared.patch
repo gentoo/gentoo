@@ -1,0 +1,80 @@
+diff --git a/Makefile.in b/Makefile.in
+index 1361371..1448e76 100755
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -13,8 +13,8 @@ AR=@AR@
+ 
+ # You shouldn't need to alter anything below here
+ 
+-COMPILE=$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c
+-ALLOPTFLAGS=$(OPTFLAGS) -DNDEBUG
++COMPILE=$(CXX) $(CPPFLAGS) $(CXXFLAGS) -fPIC -c
++#ALLOPTFLAGS=$(OPTFLAGS) -DNDEBUG
+ 
+ LOCALOBJS= local/CrystalSystem.o local/CrystalGeneric.o local/MoleculeStructure.o
+ COREOBJS= coredefs/complex.o coredefs/common.o coredefs/diagonal.o coredefs/diagonalise.o coredefs/power.o coredefs/invert.o coredefs/transforms.o coredefs/blocking.o coredefs/mixed.o coredefs/realtransforms.o coredefs/Chebyshev.o
+@@ -36,7 +36,7 @@ ALLTHROBJS=$(UNSAFEOBJS:.o=_r.o) $(ALLSAFEOBJS)
+ 
+ ROOT=..
+ 
+-first: lib/libcmatrix.a
++first: lib/libcmatrix.so.3.11.0
+ 
+ #%.o: %.f
+ #	@F77@ @FFLAGS@ -c -o $@ $<
+@@ -68,25 +68,25 @@ tempclean:
+ #	-cd optim; @CLEAN@
+ #	-cd local; @CLEAN@
+ 
+-lib/libcmatrix.a: $(ALLNORMOBJS)
+-	$(AR) $@ $(ALLNORMOBJS)
+-	chmod a+rx $@
+-	$(RANLIB) $@
+-
+-lib/libcmatrix_p.a: $(ALLPROFOBJS)
+-	$(AR)  $@ $(ALLPROFOBJS)
+-	chmod a+rx $@
+-	$(RANLIB) $@
+-
+-lib/libcmatrix-g.a: $(ALLGOBJS)
+-	$(AR)  $@  $(ALLGOBJS)
+-	chmod a+rx $@
+-	$(RANLIB) $@
+-
+-lib/libcmatrix_r.a: $(ALLTHROBJS)
+-	$(AR) @MTFLAGS@ $@ $(ALLTHROBJS)
+-	chmod a+rx $@
+-	$(RANLIB) $@
++lib/libcmatrix.so.3.11.0: $(ALLNORMOBJS)
++	$(CXX) $(LDFLAGS) -fPIC -shared -Wl,--soname,libcmatrix.so.3 -o $@ $(ALLNORMOBJS) -lrt @ATLAS_LIBS@
++	ln -sf libcmatrix.so.3.11.0 lib/libcmatrix.so.3
++	ln -sf libcmatrix.so.3.11.0 lib/libcmatrix.so
++
++lib/libcmatrix_p.so.3.11.0: $(ALLPROFOBJS)
++	$(CXX) $(LDFLAGS) -fPIC -shared -Wl,--soname,libcmatrix.so.3 -o $@ $(ALLPROFOBJS) -lrt @ATLAS_LIBS@
++	ln -sf libcmatrix_p.so.3.11.0 lib/libcmatrix_p.so.3
++	ln -sf libcmatrix_p.so.3.11.0 lib/libcmatrix_p.so
++
++lib/libcmatrix-g.so.3.11.0: $(ALLGOBJS)
++	$(CXX) $(LDFLAGS) -fPIC -shared -Wl,--soname,libcmatrix.so.3 -o $@ $(ALLGOBJS) -lrt @ATLAS_LIBS@
++	ln -sf libcmatrix-g.so.3.11.0 lib/libcmatrix-g.so.3
++	ln -sf libcmatrix-g.so.3.11.0 lib/libcmatrix-g.so
++
++lib/libcmatrix.so_r.3.11.0: $(ALLTHROBJS)
++	$(CXX) $(LDFLAGS) -fPIC -shared -Wl,--soname,libcmatrix.so.3 -o $@ $(ALLTHROBJS) -lrt @ATLAS_LIBS@
++	ln -sf libcmatrix_r.so.3.11.0 lib/libcmatrix_r.so.3
++	ln -sf libcmatrix_r.so.3.11.0 lib/libcmatrix_r.so
+ 
+ @CONFIGLEAF@.tar.gz:
+ 	cd $(ROOT) ; tar --exclude lib/* --exclude *.o --exclude=*~ --exclude=Makefile --exclude=include/config.h --exclude=config.status -cvf @CONFIGLEAF@.tar @CONFIGLEAF@
+diff --git a/configure.ac b/configure.ac
+index c0ae0e1..50dcd5a 100755
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,5 +1,6 @@
+ AC_INIT(configure.ac)
+ AC_CONFIG_HEADER(include/config.h)
++LT_INIT
+ 
+ DEFAR="ar ru"
+ MAKEEXTRA=

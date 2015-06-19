@@ -1,0 +1,16 @@
+--- ./Zend/acinclude.m4	2013-03-20 15:09:27.000000000 +0100
++++ ./Zend/acinclude.m4.new	2013-03-25 21:35:27.654016588 +0100
+@@ -17,12 +17,7 @@
+       if test -n "$bison_version_vars"; then
+         set $bison_version_vars
+         bison_version="${1}.${2}"
+-        for bison_check_version in $bison_version_list; do
+-          if test "$bison_version" = "$bison_check_version"; then
+-            php_cv_bison_version="$bison_check_version (ok)"
+-            break
+-          fi
+-        done
++        php_cv_bison_version="$bison_version (ok)"
+       fi
+     ])
+   fi

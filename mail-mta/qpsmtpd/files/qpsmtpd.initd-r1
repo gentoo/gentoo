@@ -1,0 +1,62 @@
+#!/sbin/runscript
+
+pidfile=/run/qpsmtpd/qpsmtpd.pid
+
+depend() {
+	use logger dns ypbind amavisd mysql postgresql antivirus postfix_greylist net saslauthd
+	provide mta
+}
+
+checkconfig() {
+	if ! [ -d "${QPSMTPD_CONFIG:-/etc/qpsmtpd}" ]; then
+		eerror "Configuration directory ${QPSMTPD_CONFIG:-/etc/qpsmtpd} does not exist."
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting qpsmtpd [${QPSMTPD_SERVER_TYPE}] server"
+	HOME="/var/spool/qpsmtpd"
+	local QPSMTPD_SERVER_BIN=""
+	local myopts=""
+	export QPSMTPD_CONFIG=${QPSMTPD_CONFIG}
+	for foo in PERL_UNICODE LANG LC_TIME LC_ALL BASH_ENV ENV CDPATH IFS
+	do
+		unset ${foo}
+	done
+	case "${QPSMTPD_SERVER_TYPE}" in
+		prefork)
+			QPSMTPD_SERVER_BIN="/usr/bin/qpsmtpd-prefork"
+			QPSMTPD_OPTIONS="$(echo "${QPSMTPD_OPTIONS}" | sed "s:\-\-pid\-file[\t ]\{1,99\}[^ ]*::gI")"
+			# Option --pid-file is mentioned in the help of the prefork server
+			# but does not work when specified.
+			# QPSMTPD_OPTIONS="${QPSMTPD_OPTIONS} --pid-file ${pidfile}"
+			myopts="${myopts} --make-pidfile --pidfile ${pidfile}"
+			;;
+		async)
+			QPSMTPD_SERVER_BIN="/usr/sbin/qpsmtpd-async"
+			myopts="${myopts} --background --make-pidfile --pidfile ${pidfile}"
+			;;
+		forkserver|*)
+			QPSMTPD_SERVER_BIN="/usr/bin/qpsmtpd-forkserver"
+			QPSMTPD_OPTIONS="$(echo "${QPSMTPD_OPTIONS}" | sed "s:\-\-pid\-file[\t ]\{1,99\}[^ ]*::gI")"
+			QPSMTPD_OPTIONS="$(echo "${QPSMTPD_OPTIONS}" | sed "s:[\t ]\{0,99\}\-d[\t ]\{1,99\}|[\t ]\{1,99\}\-d[\t ]\{0,99\}::gI")"
+			QPSMTPD_OPTIONS="$(echo "${QPSMTPD_OPTIONS}" | sed "s:[\t ]\{0,99\}\-\detach[\t ]\{1,99\}|[\t ]\{1,99\}\-\-detach[\t ]\{0,99\}::gI")"
+			QPSMTPD_OPTIONS="${QPSMTPD_OPTIONS} --pid-file ${pidfile} --detach"
+			myopts="${myopts} --pidfile ${pidfile}"
+			;;
+	esac
+	start-stop-daemon --start --nicelevel ${QPSMTPD_NICELEVEL:-0} \
+		--quiet ${myopts} \
+		--exec ${QPSMTPD_SERVER_BIN} \
+		-- ${QPSMTPD_OPTIONS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping qpsmtpd [${QPSMTPD_SERVER_TYPE}] server"
+	start-stop-daemon --stop --quiet --pidfile ${pidfile}
+	eend $?
+}

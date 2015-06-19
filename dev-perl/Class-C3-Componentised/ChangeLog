@@ -1,0 +1,87 @@
+# ChangeLog for dev-perl/Class-C3-Componentised
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-C3-Componentised/ChangeLog,v 1.17 2014/08/26 16:06:46 axs Exp $
+
+*Class-C3-Componentised-1.1.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Class-C3-Componentised-1.1.0-r1.ebuild, -Class-C3-Componentised-1.1.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  04 Aug 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Class-C3-Componentised-1.1.0.ebuild:
+  Fix DESCRIPTION
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop duplication of myself as a maintainer where there is a herd.
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org>
+  Class-C3-Componentised-1.1.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -Class-C3-Componentised-1.0.900.ebuild:
+  Cleanup
+
+*Class-C3-Componentised-1.1.0 (09 Aug 2011)
+
+  09 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Class-C3-Componentised-1.1.0.ebuild:
+  Version bump
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org>
+  -Class-C3-Componentised-1.0.600.ebuild,
+  -Class-C3-Componentised-1.0.800.ebuild:
+  Cleanup
+
+*Class-C3-Componentised-1.0.900 (20 Mar 2011)
+
+  20 Mar 2011; Torsten Veller <tove@gentoo.org>
+  +Class-C3-Componentised-1.0.900.ebuild:
+  Version bump
+
+  27 Feb 2011; Torsten Veller <tove@gentoo.org>
+  -Class-C3-Componentised-1.0.700.ebuild:
+  Cleanup
+
+*Class-C3-Componentised-1.0.800 (26 Feb 2011)
+
+  26 Feb 2011; Torsten Veller <tove@gentoo.org>
+  +Class-C3-Componentised-1.0.800.ebuild:
+  Version bump
+
+*Class-C3-Componentised-1.0.700 (24 Feb 2011)
+*Class-C3-Componentised-1.0.600 (24 Feb 2011)
+
+  24 Feb 2011; Torsten Veller <tove@gentoo.org>
+  +Class-C3-Componentised-1.0.600.ebuild,
+  +Class-C3-Componentised-1.0.700.ebuild,
+  -Class-C3-Componentised-1.0006.ebuild:
+  Version bump. Convert to new version scheme. Looks like a downgrade
+
+  23 Dec 2009; Fabian Groffen <grobian@gentoo.org>
+  Class-C3-Componentised-1.0006.ebuild:
+  Marked ~x86-solaris, bug #296509
+
+  12 Oct 2009; Torsten Veller <tove@gentoo.org>
+  -Class-C3-Componentised-1.0005.ebuild:
+  Cleanup
+
+*Class-C3-Componentised-1.0006 (09 Sep 2009)
+
+  09 Sep 2009; Torsten Veller <tove@gentoo.org>
+  +Class-C3-Componentised-1.0006.ebuild:
+  Version bump
+
+  23 Jun 2009; Torsten Veller <tove@gentoo.org>
+  Class-C3-Componentised-1.0005.ebuild:
+  Merge with perl-experimental version
+
+*Class-C3-Componentised-1.0005 (23 Jun 2009)
+
+  23 Jun 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Class-C3-Componentised-1.0005.ebuild, +metadata.xml:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

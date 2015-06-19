@@ -1,0 +1,17 @@
+--- aiccu/unix-console/main.c
++++ aiccu/unix-console/main.c
+@@ -471,6 +471,14 @@
+ 	 */
+ 	if (aiccu_setup(hTunnel, true))
+ 	{
++
++		/* Running setup script */
++		if (g_aiccu->setupscript)
++		{
++			aiccu_exec("%s", g_aiccu->setupscript);
++		}
++
++
+ 		/* We need to stay running when doing Heartbeat or AYIYA */
+ 		if (	strcasecmp(hTunnel->sType, "6in4-heartbeat") == 0 ||
+ 			strcasecmp(hTunnel->sType, "ayiya") == 0)

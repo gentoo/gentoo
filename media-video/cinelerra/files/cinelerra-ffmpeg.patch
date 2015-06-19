@@ -1,0 +1,76 @@
+Fix build with ffmpeg/libav trunk / 0.7
+
+Index: cinelerra-20101104/cinelerra/ffmpeg.C
+===================================================================
+--- cinelerra-20101104.orig/cinelerra/ffmpeg.C
++++ cinelerra-20101104/cinelerra/ffmpeg.C
+@@ -364,12 +364,15 @@ int FFMPEG::decode(uint8_t *data, long d
+ 
+ 	// NOTE: frame must already have data space allocated
+ 	
++	AVPacket pkt;
+ 	got_picture = 0;
+-	int length = avcodec_decode_video(context,
++	av_init_packet( &pkt );
++	pkt.data = data;
++	pkt.size = data_size;
++	int length = avcodec_decode_video2(context,
+ 					  picture,
+ 					  &got_picture,
+-					  data,
+-					  data_size);
++					  &pkt);
+ 	
+ 	if (length < 0) {
+ 		printf("FFMPEG::decode error decoding frame\n");
+Index: cinelerra-20101104/quicktime/qtffmpeg.c
+===================================================================
+--- cinelerra-20101104.orig/quicktime/qtffmpeg.c
++++ cinelerra-20101104/quicktime/qtffmpeg.c
+@@ -181,6 +181,7 @@ static int decode_wrapper(quicktime_t *f
+  
+ 	if(!result) 
+ 	{ 
++		AVPacket pkt;
+ 
+ 
+ // No way to determine if there was an error based on nonzero status.
+@@ -189,11 +190,13 @@ static int decode_wrapper(quicktime_t *f
+ 			ffmpeg->decoder_context[current_field]->skip_frame = AVDISCARD_NONREF /* AVDISCARD_BIDIR */;
+ 		else
+ 			ffmpeg->decoder_context[current_field]->skip_frame = AVDISCARD_DEFAULT;
+-		result = avcodec_decode_video(ffmpeg->decoder_context[current_field], 
++		av_init_packet( &pkt );
++		pkt.data = ffmpeg->work_buffer;
++		pkt.size = bytes + header_bytes;
++		result = avcodec_decode_video2(ffmpeg->decoder_context[current_field], 
+ 			&ffmpeg->picture[current_field], 
+ 			&got_picture, 
+-			ffmpeg->work_buffer, 
+-			bytes + header_bytes);
++			&pkt);
+ 
+ 
+ 
+Index: cinelerra-20101104/quicktime/wma.c
+===================================================================
+--- cinelerra-20101104.orig/quicktime/wma.c
++++ cinelerra-20101104/quicktime/wma.c
+@@ -195,11 +195,14 @@ printf("decode 2 %x %llx %llx\n", chunk_
+ 			chunk_size);
+ #else
+ 		bytes_decoded = AVCODEC_MAX_AUDIO_FRAME_SIZE;
+-		result = avcodec_decode_audio2(codec->decoder_context,
++		AVPacket pkt;
++		av_init_packet( &pkt );
++		pkt.data = codec->packet_buffer;
++		pkt.size = chunk_size;
++		result = avcodec_decode_audio3(codec->decoder_context,
+ 			(int16_t*)(codec->work_buffer + codec->output_size * sample_size),
+ 			&bytes_decoded,
+-			codec->packet_buffer,
+-			chunk_size);
++			&pkt);
+ #endif
+ 
+ 		pthread_mutex_unlock(&ffmpeg_lock);

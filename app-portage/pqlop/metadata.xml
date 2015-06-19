@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>lk4d4math@gmail.com</email>
+    <name>Alexandr Morozov</name>
+    <description>Author and maintainer of package</description>
+  </maintainer>
+  <maintainer>
+    <email>maksbotan@gentoo.org</email>
+    <name>Maxim Koltsov</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="bitbucket">LK4D4/pqlop</remote-id>
+  </upstream>
+</pkgmetadata>

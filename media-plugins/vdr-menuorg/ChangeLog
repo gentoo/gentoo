@@ -1,0 +1,73 @@
+# ChangeLog for media-plugins/vdr-menuorg
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-menuorg/ChangeLog,v 1.14 2014/08/31 11:20:39 hd_brummy Exp $
+
+  31 Aug 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-menuorg-0.4.5.ebuild:
+  cleanup old
+
+  23 Feb 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-menuorg-0.4.4.ebuild, vdr-menuorg-0.4.5.ebuild:
+  cleanup old; eapi=5; converted to vdr-plugin-2.eclass
+
+*vdr-menuorg-0.5.1 (31 Mar 2013)
+
+  31 Mar 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-menuorg-0.5.1.ebuild:
+  bump
+
+  08 Feb 2012; Christian Ruppert <idl0r@gentoo.org> vdr-menuorg-0.4.5.ebuild:
+  Use thirdpartymirror
+
+*vdr-menuorg-0.4.5 (08 Feb 2012)
+
+  08 Feb 2012; Christian Ruppert <idl0r@gentoo.org> +vdr-menuorg-0.4.5.ebuild:
+  Version bump
+
+  23 Dec 2009; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-menuorg-0.4.4.ebuild:
+  eapi=2; bug #297976
+
+  11 Aug 2009; Matthias Schwarzott <zzam@gentoo.org>
+  -vdr-menuorg-0.3.ebuild, -vdr-menuorg-0.3.2.ebuild,
+  -vdr-menuorg-0.4.3.ebuild, -files/vdr-menuorg-0.4.3-gcc43.diff,
+  vdr-menuorg-0.4.4.ebuild:
+  Removed old ebuilds
+
+*vdr-menuorg-0.4.4 (19 Aug 2008)
+
+  19 Aug 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-menuorg-0.4.4.ebuild:
+  Version bumped.
+
+  20 Jun 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-menuorg-0.4.3-gcc43.diff, vdr-menuorg-0.4.3.ebuild:
+  Fixed compilation with gcc-4.3.
+
+  20 Jun 2008; Matthias Schwarzott <zzam@gentoo.org> vdr-menuorg-0.3.ebuild,
+  vdr-menuorg-0.3.2.ebuild, vdr-menuorg-0.4.3.ebuild:
+  Explicitly select 2.6 slot for libxmlpp dep, Bug #228523. Add missing
+  glibmm dep.
+
+*vdr-menuorg-0.4.3 (02 Apr 2008)
+
+  02 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-menuorg-0.4.3.ebuild:
+  Version bumped.
+
+*vdr-menuorg-0.3.2 (12 Jan 2008)
+
+  12 Jan 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-menuorg-0.3.2.ebuild:
+  Version bumped. This fixes some small bugs and adds italian translation.
+
+  09 Oct 2007; Joerg Bornkessel <hd_brummy@gentoo.org> +files/rc-addon.sh,
+  vdr-menuorg-0.3.ebuild:
+  added rc-addon.sh to use xml config file in own config dir
+
+*vdr-menuorg-0.3 (08 Oct 2007)
+
+  08 Oct 2007; Matthias Schwarzott <zzam@gentoo.org> +metadata.xml,
+  +vdr-menuorg-0.3.ebuild:
+  Initial import of ebuild, written by hd_brummy.
+

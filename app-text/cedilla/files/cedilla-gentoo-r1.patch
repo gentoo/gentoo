@@ -1,0 +1,22 @@
+diff -Naur cedilla-0.3.orig/cedilla-config cedilla-0.3/cedilla-config
+--- cedilla-0.3.orig/cedilla-config	2002-02-18 11:53:39.000000000 +0000
++++ cedilla-0.3/cedilla-config	2003-06-02 20:36:44.000000000 +0000
+@@ -2,14 +2,14 @@
+ CLISP=/usr/bin/clisp
+ 
+ # Where the main Cedilla binary will be installed
+-BINDIR=/usr/bin
++BINDIR=${ED%/}/usr/bin
+ 
+ # Where the cedilla-config.lisp file lives
+-ETCDIR=/etc
++ETCDIR=${ED%/}/etc
+ 
+ # Where Cedilla's FASL files will be kept
+-LIBDIR=/usr/lib/cedilla
++LIBDIR=${ED%/}/usr/lib/cedilla
+ 
+ # Where the cedilla(1) manual page will be installed
+-MANDIR=/usr/share/man/man1
++MANDIR=${ED%/}/usr/share/man/man1
+ 

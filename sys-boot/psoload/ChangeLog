@@ -1,0 +1,14 @@
+# ChangeLog for sys-boot/psoload
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/psoload/ChangeLog,v 1.3 2009/06/15 15:51:42 flameeyes Exp $
+
+  15 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> psoload-2.0.ebuild:
+  Ignore prestripped proprietary files.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*psoload (14 Nov 2004)
+
+  14 Nov 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

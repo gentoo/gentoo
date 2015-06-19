@@ -1,0 +1,26 @@
+# ChangeLog for games-fps/etqw-data
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/etqw-data/ChangeLog,v 1.6 2012/01/16 20:17:04 ulm Exp $
+
+  16 Jan 2012; Ulrich Müller <ulm@gentoo.org> etqw-data-1.0.ebuild:
+  Migrate to cdrom.eclass, bug 398809.
+
+  14 Dec 2011; Mike Frysinger <vapier@gentoo.org> etqw-data-1.0.ebuild:
+  The games.eclass has dropped GAMES_CHECK_LICENSE support (since portage now
+  has ACCEPT_LICENSE), so drop it here too.
+
+  17 Nov 2011; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Change developer's email
+
+  13 Jul 2010; Christian Faulhammer <fauli@gentoo.org> etqw-data-1.0.ebuild:
+  stable x86, bug 309995
+
+  23 May 2010; Pacho Ramos <pacho@gentoo.org> etqw-data-1.0.ebuild:
+  stable amd64, bug 309995
+
+*etqw-data-1.0 (06 Sep 2008)
+
+  06 Sep 2008; Tristan Heaven <nyhm@gentoo.org> +metadata.xml,
+  +etqw-data-1.0.ebuild:
+  Initial commit, bug #198078
+

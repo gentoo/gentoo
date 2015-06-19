@@ -1,0 +1,29 @@
+# ChangeLog for dev-util/peg
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/peg/ChangeLog,v 1.5 2015/01/02 19:09:05 rafaelmartins Exp $
+
+*peg-0.1.15-r1 (02 Jan 2015)
+
+  02 Jan 2015; Rafael G. Martins <rafaelmartins@gentoo.org>
+  +peg-0.1.15-r1.ebuild:
+  Fixed cross-compilation issues
+
+  10 May 2014;  <jauhien@gentoo.org> peg-0.1.15.ebuild:
+  fixes in ebuild: thanks to jlec
+
+*peg-0.1.15 (09 May 2014)
+
+  09 May 2014; Jauhien Piatlicki <jauhien@gentoo.org> +peg-0.1.15.ebuild,
+  metadata.xml:
+  version bump / add me as maintainer
+
+*peg-0.1.13 (22 Sep 2013)
+
+  22 Sep 2013; Rafael G. Martins <rafaelmartins@gentoo.org> +peg-0.1.13.ebuild:
+  Version bump
+
+*peg-0.1.9 (24 Feb 2013)
+
+  24 Feb 2013; Rafael G. Martins <rafaelmartins@gentoo.org> +peg-0.1.9.ebuild,
+  +metadata.xml:
+  Initial commit.

@@ -1,0 +1,27 @@
+# ChangeLog for dev-haskell/word8
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/word8/ChangeLog,v 1.5 2015/04/03 22:06:09 gienah Exp $
+
+*word8-0.1.2 (03 Apr 2015)
+
+  03 Apr 2015; Mark Wright <gienah@gentoo.org> +word8-0.1.2.ebuild:
+  Bump word8 to 0.1.2
+
+*word8-0.1.1 (14 Dec 2014)
+
+  14 Dec 2014; Mark Wright <gienah@gentoo.org> +word8-0.1.1.ebuild:
+  Bump word8 to 0.1.1
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*word8-0.0.4 (20 Oct 2013)
+
+  20 Oct 2013; Mark Wright <gienah@gentoo.org> +word8-0.0.4.ebuild:
+  Bump word8 to 0.0.4
+
+*word8-0.0.3 (26 Aug 2013)
+
+  26 Aug 2013; Alexander Vershilov <qnikst@gentoo.org> +metadata.xml,
+  +word8-0.0.3.ebuild:
+  dev-haskell/word8: initial layout

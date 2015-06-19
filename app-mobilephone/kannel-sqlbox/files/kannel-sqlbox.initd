@@ -1,0 +1,34 @@
+#!/sbin/runscript
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/kannel-sqlbox/files/kannel-sqlbox.initd,v 1.1 2009/09/25 01:17:26 mrness Exp $
+
+KANNEL_SERVICE=${SVCNAME#*-}
+
+depend() {
+	need kannel-bearerbox
+	before kannel-smsbox
+}
+
+checkconfig() {
+	if [ ! -f /etc/kannel/kannel.conf ] ; then
+		eerror "/etc/kannel/kannel.conf file doesn't exists!"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+
+	ebegin "Starting kannel ${KANNEL_SERVICE}"
+	start-stop-daemon --start --quiet --exec /usr/sbin/${KANNEL_SERVICE} -- \
+		--daemonize --user kannel --logfile /var/log/kannel/${KANNEL_SERVICE}.log \
+		--pid-file /var/run/kannel/${KANNEL_SERVICE}.pid /etc/kannel/sqlbox.conf
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping kannel ${KANNEL_SERVICE}"
+	start-stop-daemon --stop --verbose --pidfile /var/run/kannel/${KANNEL_SERVICE}.pid
+	eend $?
+}

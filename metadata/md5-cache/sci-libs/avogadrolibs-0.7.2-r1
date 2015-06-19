@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=test? ( dev-cpp/gtest ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Advanced molecule editor and visualizer 2 - libraries
+EAPI=5
+HOMEPAGE=http://www.openchemistry.org/
+IUSE=doc opengl qt4 static-plugins test vtk
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD GPL-2+
+RDEPEND=>=sci-chemistry/molequeue-0.7 sci-libs/chemkit sci-libs/hdf5:= opengl? ( dev-qt/qtopengl:4 media-libs/glew ) qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) vtk? ( sci-libs/vtk )
+REQUIRED_USE=qt4? ( opengl )
+SLOT=0
+SRC_URI=mirror://sourceforge/project/avogadro/avogadro2/0.7.2/avogadrolibs-0.7.2.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b7920f36ace088b01427ef7f36aa044c

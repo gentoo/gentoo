@@ -1,0 +1,68 @@
+# ChangeLog for sci-libs/getdata
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/getdata/ChangeLog,v 1.15 2015/04/07 14:41:31 jlec Exp $
+
+*getdata-0.8.5 (14 Sep 2014)
+
+  14 Sep 2014; Justin Lecher <jlec@gentoo.org> -getdata-0.8.0.ebuild,
+  +getdata-0.8.5.ebuild, +files/getdata-0.8.5-out-of-source.patch,
+  +files/getdata-0.8.5-serial-test.patch, metadata.xml:
+  Version Bump; backport fix for old automake, #514516; convert to new python
+  eclasses and EAPI=5
+
+  18 Oct 2012; Justin Lecher <jlec@gentoo.org> getdata-0.8.0.ebuild,
+  metadata.xml:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  14 Oct 2012; Justin Lecher <jlec@gentoo.org> getdata-0.8.0.ebuild:
+  Prepare for fortran2.eclass update
+
+  22 Sep 2012; Kacper Kowalik <xarthisius@gentoo.org> -getdata-0.6.3-r1.ebuild,
+  -getdata-0.6.3.ebuild, -getdata-0.7.3.ebuild, getdata-0.8.0.ebuild:
+  Drop old, add missing dependency on virtual/fortran. Fixes bug #435930 by Ben
+  Longbons <b.r.longbons@gmail.com>
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> getdata-0.8.0.ebuild,
+  metadata.xml:
+  Fixed perl diretory install, keyword amd64-linux x86-linux
+
+*getdata-0.8.0 (17 Jul 2012)
+
+  17 Jul 2012; Justin Lecher <jlec@gentoo.org> +getdata-0.8.0.ebuild:
+  Version Bump
+
+  19 Sep 2011; Justin Lecher <jlec@gentoo.org> getdata-0.6.3-r1.ebuild,
+  getdata-0.7.3.ebuild:
+  Added RESTRICT_PYTHON_ABIS=3.*
+
+*getdata-0.7.3 (13 Sep 2011)
+
+  13 Sep 2011; Justin Lecher <jlec@gentoo.org> +getdata-0.7.3.ebuild:
+  Version Bump
+
+  13 Sep 2011; Justin Lecher <jlec@gentoo.org> getdata-0.6.3-r1.ebuild:
+  Fix: build contains leading spaces on line
+
+*getdata-0.6.3-r1 (13 Sep 2011)
+
+  13 Sep 2011; Justin Lecher <jlec@gentoo.org> +getdata-0.6.3-r1.ebuild,
+  metadata.xml:
+  Cleaned and enhanced ebuild
+
+  13 Sep 2011; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  sci takes maintainer ship
+
+  13 Sep 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #278944
+
+  14 Nov 2010; Justin Lecher <jlec@gentoo.org> getdata-0.6.3.ebuild,
+  metadata.xml:
+  Move local USE lzma to global USE
+
+*getdata-0.6.3 (13 Sep 2010)
+
+  13 Sep 2010; Dominik Kapusta <ayoy@gentoo.org> +getdata-0.6.3.ebuild,
+  +metadata.xml:
+  Initial commit for getdata. Ebuild by Matěj Laitl <strohel@gmail.com>
+  (bug #335017).

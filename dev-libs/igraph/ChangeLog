@@ -1,0 +1,61 @@
+# ChangeLog for dev-libs/igraph
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/igraph/ChangeLog,v 1.13 2015/06/09 14:18:27 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  14 May 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/igraph-0.6.5-unbundle.patch, -igraph-0.6.5.ebuild,
+  -igraph-0.7.1.ebuild:
+  old
+
+*igraph-0.7.1-r1 (07 Jul 2014)
+
+  07 Jul 2014; Manuel Rüger <mrueg@gentoo.org> +igraph-0.7.1-r1.ebuild:
+  Add subslot.
+
+*igraph-0.7.1 (26 Jun 2014)
+
+  26 Jun 2014; Manuel Rüger <mrueg@gentoo.org>
+  +files/igraph-0.7.1-unbundle.patch, +igraph-0.7.1.ebuild:
+  Version bump. Tests still fail.
+
+  26 Jun 2014; Michael Palimaka <kensington@gentoo.org>
+  -files/igraph-0.6.4-unbundle.patch, -igraph-0.6.4.ebuild:
+  Remove old.
+
+*igraph-0.6.5 (18 Apr 2014)
+
+  18 Apr 2014; Manuel Rüger <mrueg@gentoo.org>
+  +files/igraph-0.6.5-unbundle.patch, +igraph-0.6.5.ebuild:
+  Version bump.
+
+  09 Mar 2013; Vadim Kuznetsov vadimk@gentoo.org metadata.xml:
+  maintainer needed
+
+  01 Mar 2013; Justin Lecher <jlec@gentoo.org> igraph-0.6.4.ebuild:
+  Swap DEPEND/RDEPEND, thanks Mr_Bones spotting this mistake
+
+  27 Feb 2013; Justin Lecher <jlec@gentoo.org> igraph-0.6.4.ebuild,
+  files/igraph-0.6.4-unbundle.patch:
+  Use detected pkg-config instead of generic
+
+  23 Feb 2013; Justin Lecher <jlec@gentoo.org> igraph-0.6.4.ebuild:
+  Add missing dep on virtual/pkgconfig
+
+*igraph-0.6.4 (21 Feb 2013)
+
+  21 Feb 2013; Justin Lecher <jlec@gentoo.org> -igraph-0.5.4.ebuild,
+  +igraph-0.6.4.ebuild, +files/igraph-0.6.4-unbundle.patch, metadata.xml:
+  Version Bump; unbundle correctly and use pkg-config to detect sys libs,
+  #445114; fix tests, #421773; drop old
+
+  20 Feb 2012; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Drop no-herd.
+
+*igraph-0.5.4 (13 Nov 2011)
+
+  13 Nov 2011; Vadim Kuznetsov <vadimk@gentoo.org> +igraph-0.5.4.ebuild,
+  +metadata.xml:
+  igraph initial ebuild

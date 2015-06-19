@@ -1,0 +1,119 @@
+# ChangeLog for app-misc/golly
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/golly/ChangeLog,v 1.25 2015/06/09 17:38:24 xmw Exp $
+
+*golly-2.6 (09 Jun 2015)
+*golly-2.7 (09 Jun 2015)
+
+  09 Jun 2015; Michael Weber <xmw@gentoo.org> +golly-2.6.ebuild,
+  +golly-2.7.ebuild:
+  Version bump (thanks Maks Verver, bugs 494782).
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> golly-2.4-r1.ebuild,
+  golly-2.5.ebuild:
+  Remove old Python implementations
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> golly-2.4-r1.ebuild,
+  golly-2.5.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> golly-2.4-r1.ebuild:
+  Stable for amd64, wrt bug #474144
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> golly-2.4-r1.ebuild:
+  Stable for x86, wrt bug #474144
+
+*golly-2.5 (21 Jun 2013)
+
+  21 Jun 2013; Michael Weber <xmw@gentoo.org> +golly-2.5.ebuild,
+  -golly-2.3-r1.ebuild, golly-2.4-r1.ebuild:
+  Version bump by Maks Verver (bug 473968), respect AR (bug 447748), drop old.
+
+*golly-2.4-r1 (15 May 2013)
+
+  15 May 2013; Michael Weber <xmw@gentoo.org> +golly-2.4-r1.ebuild:
+  Add icon (thanks Samuel BAUER, bug 469608), python-single-r1 eclass.
+
+  26 Dec 2012; Jeff Horelick <jdhore@gentoo.org> golly-2.4.ebuild:
+  marked x86 per bug 447700
+
+  19 Dec 2012; Agostino Sarubbo <ago@gentoo.org> golly-2.4.ebuild:
+  Stable for amd64, wrt bug #447700
+
+*golly-2.4 (18 Jun 2012)
+
+  18 Jun 2012; Michael Weber <xmw@gentoo.org> -golly-2.2.ebuild,
+  -golly-2.2-r1.ebuild, -files/golly-2.2-perl-5.14.patch, -golly-2.3.ebuild,
+  golly-2.3-r1.ebuild, +golly-2.4.ebuild:
+  Version bump (thanks Maks Verver, bug 421485), drop old, remove eutils
+  eclass.
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> golly-2.3-r1.ebuild:
+  x86 stable wrt bug #418605
+
+  01 Jun 2012; Agostino Sarubbo <ago@gentoo.org> golly-2.3-r1.ebuild:
+  Stable for amd64, wrt bug #418605
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> golly-2.3.ebuild:
+  x86 stable wrt bug #403411
+
+*golly-2.3-r1 (14 Feb 2012)
+
+  14 Feb 2012; Michael Weber <xmw@gentoo.org> golly-2.3.ebuild,
+  +golly-2.3-r1.ebuild:
+  Adding sys-libs/zlib dependency and revbump to fix CXXFLAGS, thanks Agostino
+  Sarubbo (bug 403573)
+
+  14 Feb 2012; Agostino Sarubbo <ago@gentoo.org> golly-2.3.ebuild:
+  Stable for amd64, wrt bug #403411
+
+*golly-2.3 (27 Dec 2011)
+
+  27 Dec 2011; Michael Weber <xmw@gentoo.org> +golly-2.3.ebuild,
+  -files/golly-separate-data-directory.patch:
+  Version bump (thanks Maks Verver, bug 395757)
+
+*golly-2.2-r1 (27 Sep 2011)
+
+  27 Sep 2011; Michael Weber <xmw@gentoo.org> -golly-2.1.ebuild,
+  -golly-2.1-r1.ebuild, -files/golly-2.1-as-needed.patch,
+  -files/golly-2.1-perl-ldopts.patch, -files/golly-2.1-python-amd64.patch,
+  golly-2.2.ebuild, +golly-2.2-r1.ebuild, +files/golly-2.2-perl-5.14.patch:
+  Remove old versons, add dep on <perl-5.14 and revbump for perl-5.14 patch by
+  Maks Verver (bug 384057)
+
+  22 Mar 2011; Thomas Kahle <tomka@gentoo.org> golly-2.2.ebuild:
+  x86 stable per bug 357447
+
+  06 Mar 2011; Markos Chandras <hwoarang@gentoo.org> golly-2.2.ebuild:
+  Stable on amd64 wrt bug #357447
+
+*golly-2.2 (25 Nov 2010)
+
+  25 Nov 2010; Michael Weber <xmw@gentoo.org> +golly-2.2.ebuild:
+  Version bump, thanks to Maks Verver <maksverver@geocities.com> for his report
+  and ebuild on bug #346405.
+
+  01 Nov 2010; Christian Faulhammer <fauli@gentoo.org> golly-2.1-r1.ebuild:
+  stable x86, bug 342889
+
+  28 Oct 2010; Markos Chandras <hwoarang@gentoo.org> golly-2.1-r1.ebuild:
+  Stable on amd64 wrt bug #342889
+
+*golly-2.1-r1 (24 Sep 2010)
+
+  24 Sep 2010; Michael Weber <xmw@gentoo.org> +golly-2.1-r1.ebuild:
+  Added dev-lang/perl[ithreads], fixes bug 338192, thanks Maks Verver.
+
+*golly-2.1 (16 Sep 2010)
+
+  16 Sep 2010; Michael Weber <xmw@gentoo.org> +golly-2.1.ebuild,
+  +files/golly-2.1-as-needed.patch, +files/golly-2.1-perl-ldopts.patch,
+  +files/golly-2.1-python-amd64.patch,
+  +files/golly-separate-data-directory.patch, +metadata.xml:
+  Initial import from sunrise overlay. Thanks to Maks Verver
+  <maksverver@geocities.com> on bug #323219 for the ebuild and patches,
+  great work.

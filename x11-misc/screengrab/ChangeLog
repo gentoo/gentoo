@@ -1,0 +1,141 @@
+# ChangeLog for x11-misc/screengrab
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/screengrab/ChangeLog,v 1.32 2015/03/03 22:56:21 hwoarang Exp $
+
+  03 Mar 2015; Markos Chandras <hwoarang@gentoo.org>
+  -screengrab-0.9.90-r1.ebuild, -screengrab-0.9.96.ebuild:
+  Remove old
+
+  07 Sep 2014; Markos Chandras <hwoarang@gentoo.org> screengrab-1.0.ebuild:
+  amd64/x86 stable
+
+*screengrab-1.0 (16 Aug 2013)
+
+  16 Aug 2013; Markos Chandras <hwoarang@gentoo.org>
+  +files/screengrab-1.0-detect-lib64.patch, +screengrab-1.0.ebuild,
+  metadata.xml:
+  Version bump. Thanks to upstream maintainer Artem Galichkin
+  <doomer3d@gmail.com> for the ebuild
+
+  12 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> screengrab-0.9.96.ebuild:
+  Stable on amd64 and x86, wrt bug #473098
+
+  12 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> screengrab-0.9.96.ebuild:
+  Add missing call to cmake-utils_src_prepare
+
+*screengrab-0.9.96 (04 May 2013)
+
+  04 May 2013; Markos Chandras <hwoarang@gentoo.org> +screengrab-0.9.96.ebuild:
+  Version bump. Bug #468024
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org>
+  screengrab-0.9.90-r1.ebuild:
+  Move Qt dependencies to the new category
+
+  30 Jun 2012; Johannes Huber <johu@gentoo.org> -screengrab-0.9.85.ebuild:
+  Remove old.
+
+  30 Jun 2012; Jeff Horelick <jdhore@gentoo.org> screengrab-0.9.90-r1.ebuild:
+  marked x86 per bug 424223
+
+  30 Jun 2012; Agostino Sarubbo <ago@gentoo.org> screengrab-0.9.90-r1.ebuild:
+  Stable for amd64, wrt bug #424223
+
+*screengrab-0.9.90-r1 (19 Jun 2012)
+
+  19 Jun 2012; Davide Pesavento <pesa@gentoo.org> +screengrab-0.9.90-r1.ebuild,
+  -screengrab-0.9.90.ebuild:
+  EAPI=4, fix sed expression to really install docs into the right dir (bug
+  421915), add missing dep on libX11.
+
+*screengrab-0.9.90 (11 Apr 2012)
+
+  11 Apr 2012; Markos Chandras <hwoarang@gentoo.org> +screengrab-0.9.90.ebuild:
+  version bump
+
+  06 Apr 2012; Davide Pesavento <pesa@gentoo.org> -screengrab-0.9.1.ebuild:
+  Remove old.
+
+  24 Nov 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #290906
+
+  19 Nov 2011; Markos Chandras <hwoarang@gentoo.org> screengrab-0.9.85.ebuild:
+  Stable on amd64 wrt bug #387741
+
+  17 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  screengrab-0.9.85.ebuild:
+  x86 stable wrt bug #387741
+
+  13 Nov 2011; Markos Chandras <hwoarang@gentoo.org> screengrab-0.9.85.ebuild:
+  Respect CXXFLAGS thanks to Agostino Sarubbo (ago). Bug #387741
+
+*screengrab-0.9.85 (19 Aug 2011)
+
+  19 Aug 2011; Markos Chandras <hwoarang@gentoo.org> +screengrab-0.9.85.ebuild:
+  Version bump
+
+  20 May 2011; Markos Chandras <hwoarang@gentoo.org>
+  -screengrab-0.8.1-r1.ebuild, -screengrab-0.9.ebuild:
+  remove old
+
+  13 Mar 2011; Markos Chandras <hwoarang@gentoo.org> screengrab-0.9.1.ebuild:
+  Stable on amd64 wrt bug #358545
+
+  13 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  screengrab-0.9.1.ebuild:
+  x86 stable wrt bug #358545
+
+*screengrab-0.9.1 (22 Jan 2011)
+
+  22 Jan 2011; Markos Chandras <hwoarang@gentoo.org> +screengrab-0.9.1.ebuild:
+  Version bump
+
+*screengrab-0.9 (19 Jan 2011)
+
+  19 Jan 2011; Markos Chandras <hwoarang@gentoo.org> +screengrab-0.9.ebuild:
+  Version bump
+
+  04 Nov 2010; Markos Chandras <hwoarang@gentoo.org>
+  -screengrab-0.6.1-r1.ebuild, screengrab-0.8.1-r1.ebuild:
+  Stable on amd64 wrt bug #343117. Remove old ebuild
+
+  04 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  screengrab-0.8.1-r1.ebuild:
+  x86 stable wrt bug #343117
+
+*screengrab-0.8.1-r1 (29 Oct 2010)
+
+  29 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  -screengrab-0.8.1.ebuild, +screengrab-0.8.1-r1.ebuild:
+  Patch sources to find documentation in the correct location. Bug #343117
+
+*screengrab-0.8.1 (05 Oct 2010)
+
+  05 Oct 2010; Tomas Touceda <chiiph@gentoo.org> +screengrab-0.8.1.ebuild,
+  metadata.xml:
+  Add myself as co-maintainer, version bump, and fix doc install dir
+
+  28 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  -screengrab-0.6.1.ebuild:
+  Remove old ebuild
+
+  15 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  screengrab-0.6.1-r1.ebuild:
+  stable x86, bug 325643
+
+  26 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  screengrab-0.6.1-r1.ebuild:
+  Stable on amd64 wrt bug #325643
+
+*screengrab-0.6.1-r1 (13 Apr 2010)
+
+  13 Apr 2010; Markos Chandras <hwoarang@gentoo.org>
+  +screengrab-0.6.1-r1.ebuild:
+  Revbump to fix documentation installation wrt bug #314495
+
+*screengrab-0.6.1 (02 Mar 2010)
+
+  02 Mar 2010; Markos Chandras <hwoarang@gentoo.org>
+  +screengrab-0.6.1.ebuild, +metadata.xml:
+  Initial commit of screengrab application. Fixes bug #307093. Thanks to
+  tuupic <me@tuupic.org.ru> for the initial ebuild. 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>ultrabug@gentoo.org</email>
+		<name>Alexys Jacob</name>
+	</maintainer>
+	<maintainer>
+		<email>bugs@bergstroem.nu</email>
+		<name>Johan Bergström</name>
+		<description>Proxy Maintainer. CC on bugs</description>
+	</maintainer>
+	<longdescription lang="en">
+	MongoDB MMS agents collection.
+	</longdescription>
+	<use>
+		<flag name="monitoring">Install the monitoring agent</flag>
+	</use>
+</pkgmetadata>
+

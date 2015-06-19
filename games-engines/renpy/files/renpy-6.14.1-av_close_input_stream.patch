@@ -1,0 +1,11 @@
+--- module/ffdecode.c
++++ module/ffdecode.c
+@@ -1356,7 +1356,7 @@
+     if (is->video_stream >= 0)
+         stream_component_close(is, is->video_stream);
+     if (is->ic) {
+-        av_close_input_stream(is->ic);
++        av_close_input_file(is->ic);
+         is->ic = NULL;
+     }
+         

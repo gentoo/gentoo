@@ -1,0 +1,40 @@
+# ChangeLog for app-admin/389-console
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/389-console/ChangeLog,v 1.8 2014/08/18 19:47:08 creffett Exp $
+
+*389-console-1.1.7-r1 (18 Aug 2014)
+
+  18 Aug 2014; Christopher Reffett <2011creffett@gentoo.org>
+  +389-console-1.1.7-r1.ebuild, -389-console-1.1.7.ebuild:
+  QA: revbump to EAPI 5, drop old
+
+  26 Jun 2014; Michael Palimaka <kensington@gentoo.org>
+  -389-console-1.1.6.ebuild:
+  Remove old.
+
+  22 Jun 2014; Fabio Erculiani <lxnay@gentoo.org> metadata.xml:
+  reset to maintainer-needed@
+
+  11 Jul 2012; Fabio Erculiani <lxnay@gentoo.org> 389-console-1.1.6.ebuild,
+  389-console-1.1.7.ebuild:
+  drop app-admin/389-admin-console dependency, not strictly needed, see bug
+  #368457
+
+  26 Jan 2012; Fabio Erculiani <lxnay@gentoo.org> 389-console-1.1.6.ebuild,
+  389-console-1.1.7.ebuild, -files/fedora.png:
+  move binary files remotely, closes bug #370911
+
+*389-console-1.1.7 (14 Aug 2011)
+
+  14 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> +389-console-1.1.7.ebuild:
+  version bump
+
+  17 Oct 2010; Fabio Erculiani <lxnay@gentoo.org> 389-console-1.1.6.ebuild:
+  tweak jdk/jre RDEPEND
+
+*389-console-1.1.6 (11 Jul 2010)
+
+  11 Jul 2010; Fabio Erculiani <lxnay@gentoo.org> +389-console-1.1.6.ebuild,
+  +files/fedora.png, +metadata.xml:
+  new ebuild, part of 389 Directory Server (http://port389.org), closes bug
+  #309551

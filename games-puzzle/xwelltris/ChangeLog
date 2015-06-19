@@ -1,0 +1,48 @@
+# ChangeLog for games-puzzle/xwelltris
+# Copyright 2000-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/xwelltris/ChangeLog,v 1.14 2015/01/06 19:17:09 mr_bones_ Exp $
+
+  06 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org> xwelltris-1.0.1.ebuild:
+  EAPI=5
+
+  15 Mar 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  xwelltris-1.0.1.ebuild:
+  update src_uri (bug #213460)
+
+  19 Jan 2008; Tristan Heaven <nyhm@gentoo.org> xwelltris-1.0.1.ebuild:
+  Remove sdl USE flag, bug #206404
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  xwelltris-1.0.1.ebuild:
+  Remove old virtual/x11 dependency.
+
+  29 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  xwelltris-1.0.1.ebuild:
+  Fixed binaries being pre-stripped. Thanks to Tristan Heaven
+  <tristanheaven@gmail.com> for the patch. Closing bug #137741.
+
+  20 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  xwelltris-1.0.1.ebuild:
+  Added modular X dependencies and closing bug #119724.
+
+  31 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  xwelltris-1.0.1.ebuild:
+  tidy
+
+  29 Dec 2004; Joseph Jezak <josejx@gentoo.org> xwelltris-1.0.1.ebuild:
+  Marked ppc stable.
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> xwelltris-1.0.1.ebuild:
+  Added ~ppc.
+
+  12 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> xwelltris-1.0.1.ebuild:
+  add media-libs/sdl-image for bug 33322; need sed >= 4; more error
+  checking/messages
+
+*xwelltris-1.0.1 (12 Jul 2003)
+
+  12 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me for algfrig.

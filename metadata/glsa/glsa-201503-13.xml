@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201503-13">
+  <title>BusyBox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in BusyBox, allowing
+    context dependent attackers to load arbitrary kernel modules, execute
+    arbitrary files, or cause a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">busybox</product>
+  <announced>March 29, 2015</announced>
+  <revised>March 29, 2015: 1</revised>
+  <bug>515254</bug>
+  <bug>537978</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-apps/busybox" auto="yes" arch="*">
+      <unaffected range="ge">1.23.1</unaffected>
+      <vulnerable range="lt">1.23.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>BusyBox is set of tools for embedded systems and is a replacement for
+      GNU Coreutils.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in BusyBox.  Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A context-dependent attacker can load kernel modules without privileges
+      by nullifying enforced module
+      prefixes. Execution of arbitrary files or a Denial of Service can be
+      caused through the included vulnerable LZO library.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All BusyBox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/busybox-1.23.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-4607">CVE-2014-4607</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9645">CVE-2014-9645</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 18 Mar 2015 18:23:03 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Sun, 29 Mar 2015 17:08:00 +0000">
+    BlueKnight
+  </metadata>
+</glsa>

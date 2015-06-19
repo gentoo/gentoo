@@ -1,0 +1,18 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+start() {
+	start-stop-daemon --start --chuid freenet --exec /bin/sh /var/freenet/run.sh start 2>/dev/null
+	eend 0
+}
+
+status() {
+	start-stop-daemon --start --chuid freenet --exec /bin/sh /var/freenet/run.sh status 2>/dev/null
+	eend 0
+}
+
+stop() {
+	start-stop-daemon --start --chuid freenet --exec /bin/sh /var/freenet/run.sh stop 2>/dev/null
+	eend 0
+}

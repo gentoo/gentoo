@@ -1,0 +1,157 @@
+# ChangeLog for dev-db/sqliteodbc
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/sqliteodbc/ChangeLog,v 1.37 2014/08/30 12:12:04 mgorny Exp $
+
+  30 Aug 2014; Michał Górny <mgorny@gentoo.org> sqliteodbc-0.99.ebuild:
+  Replace einstall with emake install, bug #521428.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> sqliteodbc-0.96.ebuild,
+  sqliteodbc-0.99.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*sqliteodbc-0.99 (30 Jan 2013)
+
+  30 Jan 2013; Patrick Lauer <patrick@gentoo.org> +sqliteodbc-0.99.ebuild:
+  Bump
+
+  09 Sep 2012; Michael Palimaka <kensington@gentoo.org>
+  -files/sqliteodbc-0.83-respect_LDFLAGS.patch, -sqliteodbc-0.87.ebuild,
+  -sqliteodbc-0.94.ebuild:
+  Remove old.
+
+  08 Sep 2012; Anthony G. Basile <blueness@gentoo.org> sqliteodbc-0.96.ebuild:
+  Stable ppc, bug #433207
+
+  07 Sep 2012; Johannes Huber <johu@gentoo.org> sqliteodbc-0.96.ebuild:
+  Stable for x86, wrt bug #433207
+
+  07 Sep 2012; Agostino Sarubbo <ago@gentoo.org> sqliteodbc-0.96.ebuild:
+  Stable for amd64, wrt bug #433207
+
+*sqliteodbc-0.96 (30 Jul 2012)
+
+  30 Jul 2012; Patrick Lauer <patrick@gentoo.org> +sqliteodbc-0.96.ebuild:
+  Bump
+
+  04 Jun 2012; Zac Medico <zmedico@gentoo.org> sqliteodbc-0.87.ebuild,
+  sqliteodbc-0.94.ebuild:
+  inherit multilib for get_libdir
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -sqliteodbc-0.93.ebuild:
+  Remove old
+
+*sqliteodbc-0.94 (05 May 2012)
+
+  05 May 2012; Michael Weber <xmw@gentoo.org> +sqliteodbc-0.94.ebuild:
+  Version bump
+
+  05 May 2012; Michael Weber <xmw@gentoo.org> sqliteodbc-0.93.ebuild:
+  Add ~arm keyword, requested by Anton Romanov (bug 409433)
+
+*sqliteodbc-0.93 (24 Mar 2012)
+
+  24 Mar 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/sqliteodbc-0.93-respect_LDFLAGS.patch, +sqliteodbc-0.93.ebuild,
+  -sqliteodbc-0.83.ebuild, -sqliteodbc-0.86.ebuild:
+  Version bump (#409437 by Anton Romanov), drop static stuff and remove old.
+
+  22 Oct 2010; Brent Baude <ranger@gentoo.org> sqliteodbc-0.87.ebuild:
+  stable ppc, bug 341317
+
+  20 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  sqliteodbc-0.87.ebuild:
+  stable x86, bug 341317
+
+  18 Oct 2010; Markos Chandras <hwoarang@gentoo.org> sqliteodbc-0.87.ebuild:
+  Stable on amd64 wrt bug #341317
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org> sqliteodbc-0.86.ebuild:
+  stable ppc, bug 326821
+
+*sqliteodbc-0.87 (10 Sep 2010)
+
+  10 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +sqliteodbc-0.87.ebuild:
+  Version bump.
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  sqliteodbc-0.86.ebuild:
+  stable x86, bug 326821
+
+  06 Jul 2010; Markos Chandras <hwoarang@gentoo.org> sqliteodbc-0.86.ebuild:
+  Stable on amd64 wrt bug #326821
+
+*sqliteodbc-0.86 (04 Jun 2010)
+
+  04 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -files/sqliteodbc-0.77-iodbc.patch, -sqliteodbc-0.79.ebuild,
+  +sqliteodbc-0.86.ebuild:
+  Version bump.
+
+  20 Nov 2009; Markus Meier <maekke@gentoo.org> sqliteodbc-0.83.ebuild:
+  x86 stable, bug #288562
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> sqliteodbc-0.83.ebuild:
+  ppc stable #288562
+
+  11 Oct 2009; Romain Perier <mrpouet@gentoo.org>
+  sqliteodbc-0.83.ebuild:
+  Stable for amd64 per bug #288562.
+
+*sqliteodbc-0.83 (07 Sep 2009)
+
+  07 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +sqliteodbc-0.83.ebuild, +files/sqliteodbc-0.83-respect_LDFLAGS.patch:
+  Version bump. Respect CC and LDFLAGS.
+
+  08 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  sqliteodbc-0.79.ebuild:
+  Rename "sqlite3" USE flag to "sqlite" (bug #251401).
+
+  13 Jul 2009; <vostorga@gentoo.org> sqliteodbc-0.79.ebuild:
+  Fixing libraries location. Closes bug #276581
+
+  09 Jan 2009; Brent Baude <ranger@gentoo.org> sqliteodbc-0.79.ebuild:
+  stable ppc, bug 250822
+
+  04 Jan 2009; Markus Meier <maekke@gentoo.org> sqliteodbc-0.79.ebuild:
+  amd64/x86 stable, bug #250822
+
+*sqliteodbc-0.79 (14 Oct 2008)
+
+  14 Oct 2008; Jeremy Olexa <darkside@gentoo.org>
+  -files/sqliteodbc-0.64-gentoo.patch, +files/sqliteodbc-0.77-iodbc.patch,
+  -sqliteodbc-0.64.ebuild, -sqliteodbc-0.64-r1.ebuild,
+  -sqliteodbc-0.70.ebuild, +sqliteodbc-0.79.ebuild:
+  (non maintainer commit) remove old, broke versions. Add new version from
+  Ingo Bormuth in bug #162180
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  01 Jan 2007; Petteri Räty <betelgeuse@gentoo.org> metadata.xml:
+  Removed arj as he is retired
+
+  11 Dec 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  sqliteodbc-0.70.ebuild:
+  Keyword ~ppc.
+
+*sqliteodbc-0.70 (13 Nov 2006)
+
+  13 Nov 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  +sqliteodbc-0.70.ebuild:
+  (#144826, #151696) Bump since arj doesn't seem to be around.
+
+*sqliteodbc-0.64 (02 Feb 2006)
+
+  02 Feb 2006; Anders Rune Jensen <arj@gentoo.org> +sqliteodbc-0.64-r1.ebuild:
+  Allow one to select sqlite library to compile against. Fixes #121185
+	
+  23 Apr 2005; Sven Wegener <swegener@gentoo.org> sqliteodbc-0.64.ebuild:
+  Fixed invalid atoms in *DEPEND.
+
+*sqliteodbc-0.64 (22 Apr 2005)
+
+  22 Apr 2005; Anders Rune Jensen <arj@gentoo.org> +sqliteodbc-0.64.ebuild:
+  New package. Fixes #56259.

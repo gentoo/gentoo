@@ -1,0 +1,11 @@
+diff -Naur a/configure.ac b/configure.ac
+--- a/configure.ac	2014-03-03 04:05:33.110522943 +0100
++++ b/configure.ac	2014-03-03 04:06:44.165518094 +0100
+@@ -1774,7 +1774,6 @@
+             HAVE_GALLIUM_R300=yes
+             PKG_CHECK_MODULES([RADEON], [libdrm_radeon >= $LIBDRM_RADEON_REQUIRED])
+             gallium_require_drm_loader
+-            gallium_require_llvm "Gallium R300"
+             GALLIUM_DRIVERS_DIRS="$GALLIUM_DRIVERS_DIRS r300"
+             gallium_check_st "radeon/drm" "r300/dri" "" "" ""
+             DRICOMMON_NEED_LIBDRM=yes

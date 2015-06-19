@@ -1,0 +1,17 @@
+# ChangeLog for dev-perl/XML-Entities
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-Entities/ChangeLog,v 1.3 2015/06/13 22:53:14 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  XML-Entities-1.0.100.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+  09 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  XML-Entities-1.0.100.ebuild:
+  Correct license
+
+*XML-Entities-1.0.100 (09 Oct 2014)
+
+  09 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +XML-Entities-1.0.100.ebuild, +metadata.xml:
+  New package, requested by jmbsvicetto for ocsinventory-ng

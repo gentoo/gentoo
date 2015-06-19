@@ -1,0 +1,49 @@
+# ChangeLog for net-p2p/hx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/hx/ChangeLog,v 1.12 2015/01/31 01:51:51 patrick Exp $
+
+  31 Jan 2015; Patrick Lauer <patrick@gentoo.org> hx-0.4.11.ebuild:
+  Remove redundant want_autoconf=latest
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> hx-0.4.11.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  16 Aug 2008; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove kang from metadata.xml (#51508)
+
+  06 Apr 2007; Petteri Räty <betelgeuse@gentoo.org> metadata.xml,
+  hx-0.4.11.ebuild:
+  Fix qualudis warnings.
+
+  06 Apr 2007; Petteri Räty <betelgeuse@gentoo.org> -hx-0.4.10-r1.ebuild:
+  Remove old version. Fixes bug #160044.
+
+  06 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org> hx-0.4.11.ebuild:
+  ppc stable, bug #173110
+
+  04 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> hx-0.4.11.ebuild:
+  Fix broken autotools handling.
+
+  29 Oct 2006; Guillaume Destuynder <kang@gentoo.org> hx-0.4.11.ebuild:
+  Marked stable for x86
+
+*hx-0.4.11 (20 Sep 2006)
+
+  20 Sep 2006; Guillaume Destuynder <kang@gentoo.org> +hx-0.4.11.ebuild:
+  fixed hx building on gcc4, and removed libtermcap building dependency. bump
+  ot 0.4.11
+
+*hx-0.4.10-r1 (13 Mar 2005)
+
+  13 Mar 2005; Guillaume Destuynder <kang@gentoo.org> +hx-0.4.10-r1.ebuild,
+  -hx-0.4.10.ebuild:
+  Removed ipv6 support option as its half broken upstream and causes all sort of
+  problems. Fixed libtoolization.
+
+  29 Aug 2004; Guillaume Destuynder <kang@gentoo.org> hx-0.4.10.ebuild:
+  Marked stable on x86 and ppc
+
+*hx-0.4.10 (28 Jul 2004)
+
+  28 Jul 2004; Guillaume Destuynder <kang@gentoo.org>:
+  Initial import.  Ebuild submitted by myself.

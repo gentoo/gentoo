@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm prepare setup
+DEPEND=app-text/recode virtual/awk sys-apps/grep sys-apps/sed || ( net-misc/wget www-client/lynx ) >=sys-devel/libtool-2.2.6b python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) )
+DESCRIPTION=Library to check account numbers and bank codes of German banks
+EAPI=4
+HOMEPAGE=http://ktoblzcheck.sourceforge.net/
+IUSE=python
+KEYWORDS=amd64 ppc ~ppc64 ~sparc x86
+LICENSE=LGPL-2.1
+RDEPEND=app-text/recode virtual/awk sys-apps/grep sys-apps/sed || ( net-misc/wget www-client/lynx ) python? ( || ( =dev-lang/python-2.7* =dev-lang/python-2.6* ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/ktoblzcheck/ktoblzcheck-1.39.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=55c1fd075991e1b326b582656035afe9

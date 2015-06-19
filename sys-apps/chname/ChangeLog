@@ -1,0 +1,32 @@
+# ChangeLog for sys-apps/chname
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/chname/ChangeLog,v 1.8 2014/08/10 20:23:33 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> chname-1.0-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  15 Jun 2014; Robin H. Johnson <robbat2@gentoo.org> chname-1.0-r1.ebuild:
+  amd64 stable.
+
+  11 May 2012; Michael Palimaka <kensington@gentoo.org> -chname-1.0.ebuild:
+  Remove old.
+
+*chname-1.0-r1 (30 Dec 2010)
+
+  30 Dec 2010; Jeroen Roovers <jer@gentoo.org> +chname-1.0-r1.ebuild:
+  Respect LDFLAGS (bug #337865), CC. Reword postinst message.
+
+  17 Sep 2010; Robin H. Johnson <robbat2@gentoo.org> chname-1.0.ebuild:
+  Builds fine with no sources installed.
+
+  15 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  06 Feb 2007; Michael Marineau <marineam@gentoo.org> chname-1.0.ebuild:
+  Set ~amd64 keyword
+
+*chname-1.0 (03 Feb 2007)
+
+  03 Feb 2007; Michael Marineau <marineam@gentoo.org> +metadata.xml,
+  +chname-1.0.ebuild:
+  First release

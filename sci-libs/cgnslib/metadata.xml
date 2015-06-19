@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <use>
+    <flag name="legacy">Enable or disable building legacy code (3.0 compatible)</flag>
+  </use>
+  <maintainer>
+    <email>slis@gentoo.org</email>
+  </maintainer>
+  <upstream>
+    <remote-id type="sourceforge">cgns</remote-id>
+  </upstream>
+</pkgmetadata>

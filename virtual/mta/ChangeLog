@@ -1,0 +1,47 @@
+# ChangeLog for virtual/mta
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/mta/ChangeLog,v 1.13 2014/01/18 04:15:44 vapier Exp $
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> mta-1.ebuild:
+  Add arm64 love.
+
+  17 Mar 2013; Jason A. Donenfeld <zx2c4@gentoo.org> mta-1.ebuild:
+  Fix typo.
+
+  17 Mar 2013; Jason A. Donenfeld <zx2c4@gentoo.org> mta-0.ebuild, mta-1.ebuild:
+  Add OpenSMTPD to the list of MTAs.
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org> mta-1.ebuild:
+  Add ~arm-linux keyword.
+
+*mta-1 (13 Feb 2013)
+
+  13 Feb 2013; Eray Aslan <eras@gentoo.org> +mta-1.ebuild:
+  Change default mta - bug #450812
+
+  07 Nov 2012; Eray Aslan <eras@gentoo.org> mta-0.ebuild:
+  mail-mta/nbsmtp is no longer in the tree
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> mta-0.ebuild:
+  keyword ~amd64-fbsd
+
+  08 Dec 2011; Fabian Groffen <grobian@gentoo.org> mta-0.ebuild:
+  Marked ~sparc64-solaris
+
+  24 Apr 2011; Eray Aslan <eras@gentoo.org> mta-0.ebuild:
+  add note that citadel is from sunrise
+
+  24 Apr 2011; Eray Aslan <eras@gentoo.org> mta-0.ebuild:
+  add mail-mta/citadel to RDEPEND - bug #364401
+
+  22 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org> mta-0.ebuild:
+  Update msmtp dependency to relate to the mta USE flags like I've done for the
+  new ssmtp.
+
+  22 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org> mta-0.ebuild:
+  Prepare for new ssmtp with optional mta support (bug #289973).
+
+*mta-0 (28 Mar 2011)
+
+  28 Mar 2011; Eray Aslan <eras@gentoo.org> +mta-0.ebuild, +metadata.xml:
+  initial commit - bug 360305

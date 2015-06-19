@@ -1,0 +1,13 @@
+Allocate enough elements for array of func ptrs, bug 123976.
+
+--- otpCalc-0.97.orig/callbacks.c
++++ otpCalc-0.97/callbacks.c
+@@ -81,7 +81,7 @@
+ void calculate(void)
+ {
+ 
+-	void (*hashes[4])();
++	void (*hashes[5])();
+ 
+ 	gchar *challenge, *passwd, *message, *response;
+ 	struct tokens *set;

@@ -1,0 +1,75 @@
+# ChangeLog for sci-libs/coinor-clp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/coinor-clp/ChangeLog,v 1.7 2014/02/04 10:33:16 jlec Exp $
+
+  04 Feb 2014; Justin Lecher <jlec@gentoo.org> coinor-clp-1.15.6-r1.ebuild:
+  Fix typo
+
+  04 Feb 2014; Justin Lecher <jlec@gentoo.org> coinor-clp-1.15.6-r1.ebuild:
+  Move preparations to src_prepare; use usex()
+
+  04 Feb 2014; Justin Lecher <jlec@gentoo.org> coinor-clp-1.15.6-r1.ebuild:
+  Fix the common coinor pkg-config installation problem
+
+  17 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  coinor-clp-1.15.6-r1.ebuild:
+  When sparse flag is not set and glpk is, workaround bundled amd in glpk <
+  4.52, bug #498242
+
+  15 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  coinor-clp-1.15.6-r1.ebuild:
+  Cleanup, as-needed applied upstream
+
+*coinor-clp-1.15.6-r1 (14 Jan 2014)
+
+  14 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-clp-1.15.6-r1.ebuild, +files/coinor-clp-1.15.6-overflow.patch,
+  -coinor-clp-1.15.6.ebuild:
+  Forced building of Aboca solver, fixed as-needed and and leak
+
+*coinor-clp-1.15.6 (14 Jan 2014)
+
+  14 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-clp-1.15.6.ebuild, +files/coinor-clp-1.15.6-mpi-header.patch,
+  +metadata.xml:
+  Initial import in main tree
+
+*coinor-clp-1.15.5 (07 Dec 2013)
+
+  07 Dec 2013; Sébastien Fabbro <bicatali@gentoo.org> +coinor-clp-1.15.5.ebuild,
+  -coinor-clp-1.15.2.ebuild:
+  sci-libs/coinor-clp: Version bump
+
+  17 Jul 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/coinor-clp-1.15.1-mpi-header.patch, coinor-clp-1.15.2.ebuild:
+  sci-libs/coinor-clp: Patch was not applied upstream
+
+*coinor-clp-1.15.2 (17 Jul 2013)
+
+  17 Jul 2013; Sébastien Fabbro <bicatali@gentoo.org> +coinor-clp-1.15.2.ebuild,
+  -coinor-clp-1.15.1.ebuild, -files/coinor-clp-1.15.1-mpi-header.patch:
+  sci-libs/coinor-clp: Version bump
+
+*coinor-clp-1.15.1 (19 Jun 2013)
+
+  19 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> +coinor-clp-1.15.1.ebuild,
+  +files/coinor-clp-1.15.1-mpi-header.patch, -coinor-clp-1.15.0.ebuild:
+  sci-libs/coinor-clp: Version bump and patch for mpi
+
+*coinor-clp-1.15.0 (26 May 2013)
+
+  26 May 2013; Sébastien Fabbro <bicatali@gentoo.org> +coinor-clp-1.15.0.ebuild,
+  -coinor-clp-1.14.8.ebuild:
+  sci-libs/coinor-clp: Version bump
+
+*coinor-clp-1.14.8 (29 Jan 2013)
+
+  29 Jan 2013; Sébastien Fabbro <bicatali@gentoo.org> +coinor-clp-1.14.8.ebuild,
+  -coinor-clp-1.14.6.ebuild:
+  sci-libs/coinor-clp: Version bump
+
+*coinor-clp-1.14.6 (16 Jul 2012)
+
+  16 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org> +coinor-clp-1.14.6.ebuild,
+  +metadata.xml:
+  sci-libs/coinor-clp: Initial import

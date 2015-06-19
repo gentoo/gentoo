@@ -1,0 +1,52 @@
+commit 7b6243157f042a7bde353abc6fb22aadad6d9e2d
+Author: Floris Bos <bos@je-eigen-domein.nl>
+Date:   2014-12-29 00:02:33 +0100
+
+    Fix libva related compile errors
+    
+    - Make h264.c compile with recent libva version by including va_compat.h
+    - Only enable libva if libva-x11 is installed
+    - Modified configure help text
+      Previous help text suggested libva was only build when --with-libva
+      was specified, while actual behavior is to build it by default.
+    
+    Warning: THIS CODE IS UNTESTED. Lacking a h.264 capable VNC server
+    Also no attempt is made to support platforms not using X11
+    
+    Signed-off-by: Floris Bos <bos@je-eigen-domein.nl>
+
+diff --git a/configure.ac b/configure.ac
+index ca9f3b3..fe8b1de 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -150,12 +150,11 @@ AM_CONDITIONAL(HAVE_LIBSSL, test ! -z "$SSL_LIBS")
+ 
+ 
+ # See if we want libva support
+-# TODO: check if library actually exists
+ AH_TEMPLATE(CONFIG_LIBVA, [Build libva support])
+ AC_ARG_WITH(libva,
+-[  --with-libva                   build libva support],,)
++[  --without-libva         disable support for libva],,)
+ if test "x$with_libva" != "xno"; then
+-    AC_CHECK_LIB(va, vaInitialize,
++    AC_CHECK_LIB(va-x11, vaGetDisplay,
+         VA_LIBS="-lva -lva-x11"
+         [AC_DEFINE(CONFIG_LIBVA) CONFIG_LIBVA="true"], ,)
+ fi
+diff --git a/libvncclient/h264.c b/libvncclient/h264.c
+index 1d94454..c63a713 100644
+--- a/libvncclient/h264.c
++++ b/libvncclient/h264.c
+@@ -20,6 +20,10 @@
+ #ifdef LIBVNCSERVER_CONFIG_LIBVA
+ 
+ #include <X11/Xlib.h>
++#include <va/va_version.h>
++#if VA_CHECK_VERSION(0,34,0)
++#include <va/va_compat.h>
++#endif
+ #include <va/va_x11.h>
+ 
+ enum _slice_types {
+

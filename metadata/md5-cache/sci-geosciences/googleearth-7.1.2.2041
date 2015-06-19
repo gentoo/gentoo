@@ -1,0 +1,14 @@
+DEFINED_PHASES=install nofetch postinst postrm preinst prepare unpack
+DEPEND=dev-util/patchelf >=sys-apps/sed-4
+DESCRIPTION=A 3D interface to the planet
+EAPI=5
+HOMEPAGE=http://earth.google.com/
+IUSE=+bundled-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=googleearth GPL-2
+RDEPEND=dev-libs/glib:2 dev-libs/nspr media-libs/fontconfig media-libs/freetype net-misc/curl sys-devel/gcc[cxx] sys-libs/zlib virtual/glu virtual/opengl virtual/ttf-fonts x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXi x11-libs/libXext x11-libs/libXrender x11-libs/libXau x11-libs/libXdmcp !bundled-libs? ( dev-db/sqlite:3 dev-libs/expat dev-libs/nss sci-libs/gdal sci-libs/proj )
+RESTRICT=mirror splitdebug
+SLOT=0
+SRC_URI=x86? ( http://dl.google.com/dl/earth/client/current/google-earth-stable_current_i386.deb -> GoogleEarthLinux-7.1.2.2041_i386.deb ) amd64? ( http://dl.google.com/dl/earth/client/current/google-earth-stable_current_amd64.deb -> GoogleEarthLinux-7.1.2.2041_amd64.deb )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=6963b643c839a8584b37bcdf02927a48

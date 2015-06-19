@@ -1,0 +1,39 @@
+# ChangeLog for games-puzzle/anagramarama
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/anagramarama/ChangeLog,v 1.10 2015/03/21 11:52:45 jlec Exp $
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> anagramarama-0.2.ebuild:
+  use ecvs_clean
+
+  13 Feb 2015; Tupone Alfredo <tupone@gentoo.org> anagramarama-0.2.ebuild:
+  EAPI 5
+
+  14 Nov 2013; Michael Sterrett <mr_bones_@gentoo.org> anagramarama-0.2.ebuild:
+  tidy
+
+  08 Feb 2009; Tupone Alfredo <tupone@gentoo.org>
+  +files/anagramarama-0.2-gentoo.patch, anagramarama-0.2.ebuild:
+  Fix --as-needed bug #247416 by flameeyes@gentoo.org
+
+  15 Aug 2006; Thomas Cort <tcort@gentoo.org> anagramarama-0.2.ebuild:
+  Stable on amd64 wrt Bug #143961
+
+  02 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  anagramarama-0.2.ebuild:
+  use doins -r; tidy
+
+  29 Dec 2004; Joseph Jezak <josejx@gentoo.org> anagramarama-0.2.ebuild:
+  Marked ppc stable.
+
+  11 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  anagramarama-0.2.ebuild:
+  Added ~amd64 KEYWORD and closing bug #69610.
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> anagramarama-0.2.ebuild:
+  Added ~ppc.
+
+*anagramarama-0.2 (08 Sep 2004)
+
+  08 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> +metadata.xml,
+  +anagramarama-0.2.ebuild:
+  initial commit; ebuild provided by Greg Watson via bug #63339

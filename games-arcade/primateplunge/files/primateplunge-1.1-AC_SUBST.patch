@@ -1,0 +1,26 @@
+--- configure.ac.orig
++++ configure.ac
+@@ -7,12 +7,12 @@
+ 
+ AC_INIT([primateplunge], [1.1], [primateplunge@aelius.com])
+ 
+-AC_CONFIG_SRCDIR( src/game.c )
++AC_CONFIG_SRCDIR(src/game.c)
+ AC_CANONICAL_SYSTEM
+ 
+ dnl Version 1.7 of automake is recommended
+-AM_INIT_AUTOMAKE( 1.7 )
+-AM_CONFIG_HEADER( src/config.h )
++AM_INIT_AUTOMAKE(1.7)
++AM_CONFIG_HEADER(src/config.h)
+ 
+ 
+ 
+@@ -29,7 +29,6 @@
+ 			[ PREFSFILE="~/.primateplunge" ]
+ )
+ 
+-AC_SUBST( GAMEDATADIR )
+ AC_DEFINE_DIR( GAMEDATADIR, GAMEDATADIR, [Location of game resource files] )
+ AC_DEFINE_UNQUOTED( PREFSFILE, "$PREFSFILE", [Location of preferences file] )
+ 

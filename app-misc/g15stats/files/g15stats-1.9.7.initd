@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/g15stats/files/g15stats-1.9.7.initd,v 1.1 2011/08/03 08:11:00 robbat2 Exp $
+
+PIDFILE=/var/run/${SVCNAME}.pid
+
+depend() {
+	need g15daemon
+        after xdm
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --background --make-pidfile --pidfile ${PIDFILE} --exec \
+		/usr/bin/g15stats -- "${EXTRA_OPTS}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stoping ${SVCNAME}"
+	start-stop-daemon --stop --pidfile ${PIDFILE} --name g15stats
+	eend $?
+}

@@ -1,0 +1,13 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id: mpg123.eselect-0.1,v 1.1 2015/03/31 16:51:42 ulm Exp $
+
+DESCRIPTION="Manage /usr/bin/mpg123 implementation"
+MAINTAINER="ssuominen@gentoo.org"
+VERSION="0.1"
+
+SYMLINK_PATH=/usr/bin/mpg123
+SYMLINK_TARGETS=( mpg123-mpg123 mpg321-mpg123 )
+SYMLINK_DESCRIPTION='mpg123 binary'
+
+inherit bin-symlink

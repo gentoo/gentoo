@@ -1,0 +1,25 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/rbldnsd/files/initd-0.997a,v 1.1 2013/12/12 03:00:03 mjo Exp $
+
+start() {
+    ebegin "Starting rbldnsd"
+
+    start-stop-daemon --start --quiet --pidfile /run/rbldnsd.pid \
+	--exec /usr/sbin/rbldnsd -- \
+	-r /var/db/rbldnsd \
+	-p /run/rbldnsd.pid \
+	$(for x in ${LISTEN}; do echo "-b ${x}"; done) \
+	${OPTIONS} \
+	${ZONES}
+
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping rbldnsd"
+    start-stop-daemon --stop --quiet --pidfile /run/rbldnsd.pid \
+	--exec /usr/sbin/rbldnsd
+    eend $?
+}

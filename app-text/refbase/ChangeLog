@@ -1,0 +1,49 @@
+# ChangeLog for app-text/refbase
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/refbase/ChangeLog,v 1.10 2015/06/09 12:37:51 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  30 Apr 2010; <mabi@gentoo.org> refbase-0.9.5.ebuild:
+  fix depend for upcoming php-5.3 (done by Tsisaruk V
+  <tsisaruk.v@gmail.com>)
+
+*refbase-0.9.5 (01 Aug 2009)
+
+  01 Aug 2009; Alex Legler <a3li@gentoo.org> -refbase-0.8.0.ebuild,
+  -refbase-0.9.0.ebuild, +refbase-0.9.5.ebuild:
+  Non-maintainer commit: Version bump for security bug 261384. Removing
+  vulnerable versions.
+
+*refbase-0.9.0 (12 Feb 2008)
+
+  12 Feb 2008; Markus Dittrich <markusle@gentoo.org> refbase-0.8.0.ebuild,
+  +refbase-0.9.0.ebuild:
+  Version bump and added check for php USE flags (see bug #151857).
+
+  05 Feb 2008; Benedikt Böhm <hollow@gentoo.org> refbase-0.8.0.ebuild:
+  merge from webapps overlay wrt #208584
+
+  02 Feb 2008; Benedikt Böhm <hollow@gentoo.org> refbase-0.8.0.ebuild:
+  use depend.apache eclass wrt #208033. Do not depend on mysql in web
+  apps.
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org> refbase-0.8.0.ebuild:
+  Fixing the DEPEND/RDEPEND for the move of net-www/apache to
+  www-servers/apache (#78622).
+
+  23 Nov 2006; Francesco Riosa <vivo@gentoo.org> refbase-0.8.0.ebuild:
+  dev-db/mysql => virtual/mysql
+
+  17 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  files/postinstall-en.txt:
+  See INSTALL.gz, not INSTALL. Also a note to change the version number in
+  files/postinstall-en.txt on bumps.
+
+*refbase-0.8.0 (17 Oct 2006)
+
+  17 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/postinstall-en.txt, +metadata.xml, +refbase-0.8.0.ebuild:
+  (#111476) New package: Web-based solution for managing scientific
+  literature, references and citations (Urs Joss).

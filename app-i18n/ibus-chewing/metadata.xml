@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>cjk</herd>
+	<longdescription lang="en">The Chewing engine for IBus platform. It provides Chinese input method from libchewing.</longdescription>
+	<upstream>
+		<remote-id type="google-code">ibus</remote-id>
+	</upstream>
+</pkgmetadata>

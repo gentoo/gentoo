@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup unpack
+DEPEND=virtual/commonlisp dev-lisp/asdf doc? ( virtual/texi2dvi ) dev-lisp/common-lisp-controller >=virtual/emacs-23
+DESCRIPTION=SLIME, the Superior Lisp Interaction Mode (Extended)
+HOMEPAGE=http://common-lisp.net/project/slime/
+IUSE=doc
+KEYWORDS=amd64 ppc ~sparc x86
+LICENSE=GPL-2 xref.lisp
+RDEPEND=virtual/commonlisp dev-lisp/asdf >=virtual/emacs-23
+SLOT=0
+SRC_URI=mirror://gentoo/slime-2.0_p20080731.tar.bz2 mirror://gentoo/slime-2.0_p20080731-patches.tar.bz2
+_eclasses_=common-lisp	c0762703d46ef354d2354f7d73b80008	common-lisp-common	cc88c2e76410141434593a63f108303b	elisp	d13b0507622afb8ac9e3f54e91d58614	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=eab77be427c2c49bd0aac60c5a12411c

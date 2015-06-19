@@ -1,0 +1,70 @@
+diff -uNr nonolith-connect-1.1.ORIG/SConstruct nonolith-connect-1.1/SConstruct
+--- nonolith-connect-1.1.ORIG/SConstruct	2012-03-22 10:02:11.398944187 +0000
++++ nonolith-connect-1.1/SConstruct	2012-03-22 10:05:23.149936839 +0000
+@@ -1,7 +1,21 @@
+ import sys, os, shutil
++import SCons.Util
+ 
+ env = Environment()
+ 
++if os.environ.has_key('CC'):
++   env['CC'] = os.environ['CC']
++if os.environ.has_key('CFLAGS'):
++   env['CCFLAGS'] += SCons.Util.CLVar(os.environ['CFLAGS'])
++if os.environ.has_key('CXX'):
++   env['CXX'] = os.environ['CXX']
++if os.environ.has_key('CXXFLAGS'):
++   env['CXXFLAGS'] += SCons.Util.CLVar(os.environ['CXXFLAGS'])
++if os.environ.has_key('LDFLAGS'):
++   env['LINKFLAGS'] += SCons.Util.CLVar(os.environ['LDFLAGS'])
++if "$CCFLAGS" in env['CXXCOM']:
++   env['CXXCOM'] = env['CXXCOM'].replace("$CCFLAGS","")
++
+ opts = Variables()
+ opts.Add(BoolVariable("mingwcross", "Cross-compile with mingw for Win32", 0))
+ opts.Add(BoolVariable("boost_static", "Statically link against Boost", 0))
+@@ -95,8 +109,7 @@
+ sources = Glob('*.cpp') +  Glob('streaming_device/*.cpp') + ['cee/cee.cpp', 'bootloader/bootloader.cpp']
+ 
+ json = env.Library('json', 
+-	Glob('libjson/Source/*.cpp'),
+-	CCFLAGS = "-c -O3 -ffast-math -fexpensive-optimizations".split()
++	Glob('libjson/Source/*.cpp')
+ )
+ 
+ websocketpp = env.Library('websocketpp', ['websocketpp/src/'+i for i in [
+@@ -107,7 +120,7 @@
+                 'websocket_session.cpp',
+                 'sha1/sha1.cpp',
+                 'base64/base64.cpp'
+-            ]], CCFLAGS=['-g', '-O3'])
++            ]])
+ 
+ 
+ libusb_cflags = []
+@@ -121,14 +134,22 @@
+ 	libusb_os = ['os/poll_windows.c', 'os/windows_usb.c', 'os/threads_windows.c']
+ 	libusb_cflags += ['-D OS_WINDOWS', '-DPOLL_NFDS_TYPE=unsigned int', '-D WINVER=0x0501']
+ 
+-libusb = env.Library('libusb_nonolith', ['libusb/libusb/'+i for i in [
++env_libusb = env.Clone()
++env_libusb.Append(CPPFLAGS=libusb_cflags)
++env_libusb.Append(CFLAGS=['-Ilibusb', '-Ilibusb/libusb'])
++
++libusb = env_libusb.Library('libusb_nonolith', ['libusb/libusb/'+i for i in [
+ 				'core.c',
+ 				'descriptor.c',
+ 				'io.c',
+ 				'sync.c',
+-			]+libusb_os], CFLAGS=['-g', '-O3', '-Ilibusb', '-Ilibusb/libusb']+libusb_cflags) 
++			]+libusb_os]) 
+ 
+ 
+ libs += boostlibs
+ 
+-env.Program('nonolith-connect', sources, LIBS=libs, CCFLAGS=['-Wall', '-g', '-O3', '-Ilibusb', '-Iwebsocketpp/src', '-shared'], FRAMEWORKS=frameworks)
++env_main = env.Clone()
++env_main.Append(CXXFLAGS=['-Ilibusb', '-Iwebsocketpp/src', '-Wall'])
++#env_main.Append(LINKFLAGS=['-shared'])
++env_main.Program('nonolith-connect', sources, LIBS=libs, FRAMEWORKS=frameworks)
++

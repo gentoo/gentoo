@@ -1,0 +1,14 @@
+--- libmcal.orig/icalroutines.h	2003-01-28 18:45:21.000000000 +0100
++++ libmcal/icalroutines.h	2013-02-04 01:54:27.833995640 +0100
+@@ -48,8 +48,10 @@
+ 
+ 
+ /* ICAL parser. */
++#ifndef ical_yytext
+ extern char	*ical_yytext;
+-extern int	ical_yyleng;
++extern size_t	ical_yyleng;
++#endif
+ int		ical_yylex(void);
+ void		ical_usebuf(const char *buf, size_t size);
+ void		ical_preprocess(char *buf, size_t *size);

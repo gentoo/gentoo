@@ -1,0 +1,10 @@
+# ChangeLog for app-crypt/aescrypt
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/aescrypt/ChangeLog,v 1.1 2013/02/01 23:37:09 alonbl Exp $
+
+*aescrypt-3.0.6b (01 Feb 2013)
+
+  01 Feb 2013; Alon Bar-Lev <alonbl@gentoo.org> +aescrypt-3.0.6b.ebuild,
+  +files/aescrypt-3.0.6b-build.patch, +files/aescrypt-3.0.6b-iconv.patch,
+  +metadata.xml:
+  Initial import, useful for initramfs

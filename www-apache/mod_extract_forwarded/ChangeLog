@@ -1,0 +1,44 @@
+# ChangeLog for www-apache/mod_extract_forwarded
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_extract_forwarded/ChangeLog,v 1.9 2015/05/17 11:05:03 pacho Exp $
+
+  17 May 2015; Pacho Ramos <pacho@gentoo.org>
+  mod_extract_forwarded-2.0.3_pre2015052015.ebuild:
+  Looks like it's not compatible with 2.2 (#549034)
+
+*mod_extract_forwarded-2.0.3_pre2015052015 (09 May 2015)
+
+  09 May 2015; Pacho Ramos <pacho@gentoo.org>
+  +mod_extract_forwarded-2.0.3_pre2015052015.ebuild:
+  Support apache 2.4 (#532824)
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  mod_extract_forwarded-2.0.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  12 Oct 2012; Patrick Lauer <patrick@gentoo.org>
+  mod_extract_forwarded-2.0.2.ebuild:
+  Restricting to apache 2.2
+
+  25 Feb 2011; Christian Ruppert <idl0r@gentoo.org>
+  mod_extract_forwarded-2.0.2.ebuild metadata.xml:
+  Make the mod_proxy dependency optional, bug 347703.
+
+  17 Sep 2009; Benedikt Böhm <hollow@gentoo.org>
+  mod_extract_forwarded-2.0.2.ebuild:
+  stable on amd64 & x86
+
+  31 Jan 2008; Benedikt Böhm <hollow@gentoo.org>
+  files/98_mod_extract_forwarded.conf, metadata.xml:
+  update metadata; cleanup
+
+*mod_extract_forwarded-2.0.2 (31 Dec 2007)
+
+  31 Dec 2007; Benedikt Böhm <hollow@gentoo.org>
+  +files/98_mod_extract_forwarded.conf, +metadata.xml,
+  +mod_extract_forwarded-2.0.2.ebuild:
+  initial ebuild, #200895

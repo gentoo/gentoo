@@ -1,0 +1,227 @@
+# ChangeLog for app-editors/ted
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/ted/ChangeLog,v 1.64 2014/09/02 11:13:08 pacho Exp $
+
+  02 Sep 2014; Pacho Ramos <pacho@gentoo.org> ted-2.23.ebuild:
+  Fix build with freetype-2.5
+
+  03 Jul 2013; Michael Palimaka <kensington@gentoo.org>
+  -files/ted-2.21-make.patch, -ted-2.22.ebuild:
+  Remove old.
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> ted-2.23.ebuild:
+  Stable for sparc, wrt bug #470322
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> ted-2.23.ebuild:
+  Stable for x86, wrt bug #470322
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> ted-2.23.ebuild:
+  Stable for amd64, wrt bug #470322
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> ted-2.23.ebuild:
+  Stable for ppc, wrt bug #470322
+
+*ted-2.23 (01 Apr 2013)
+
+  01 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> +ted-2.23.ebuild,
+  +files/ted-2.23-make.patch:
+  Version bump
+
+  01 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> ted-2.22.ebuild:
+  Fix QA issues in desktop file, wrt bug #461252. Thanks to Agostino Sarubbo
+  for discovering this issue
+
+  01 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> ted-2.22.ebuild:
+  Add missing dependency on x11-libs/libXft
+
+  15 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> ted-2.22.ebuild:
+  Respect AR and RANLIB, wrt bug #461256. Thanks to Agostino Sarubbo for
+  discovering this issue
+
+  14 Mar 2013; Michael Palimaka <kensington@gentoo.org>
+  -files/ted-2.21-libpng15.patch, -ted-2.21.ebuild:
+  Remove old.
+
+  14 Mar 2013; Agostino Sarubbo <ago@gentoo.org> ted-2.22.ebuild:
+  Stable for sparc, wrt bug #461062
+
+  12 Mar 2013; Agostino Sarubbo <ago@gentoo.org> ted-2.22.ebuild:
+  Stable for ppc, wrt bug #461062
+
+  10 Mar 2013; Agostino Sarubbo <ago@gentoo.org> ted-2.22.ebuild:
+  Stable for x86, wrt bug #461062
+
+  10 Mar 2013; Agostino Sarubbo <ago@gentoo.org> ted-2.22.ebuild:
+  Stable for amd64, wrt bug #461062
+
+*ted-2.22 (30 Jan 2013)
+
+  30 Jan 2013; Patrick Lauer <patrick@gentoo.org> +ted-2.22.ebuild:
+  Bump
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> ted-2.21.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  03 Mar 2012; Pacho Ramos <pacho@gentoo.org> +files/ted-2.21-make.patch,
+  ted-2.21.ebuild:
+  Make rtf2pdf.sh accessible from /usr/bin (bug #347926 by James Broadhead) and
+  fix parallel make (bug 385485 by Ian Delaney).
+
+  23 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> -ted-2.20.ebuild,
+  -files/ted-2.20-libpng14.patch:
+  old
+
+  23 Oct 2011; Raúl Porcel <armin76@gentoo.org> ted-2.21.ebuild:
+  sparc stable wrt #385205
+
+  15 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org> ted-2.21.ebuild:
+  ppc stable wrt #385205
+
+  06 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> ted-2.21.ebuild:
+  amd64 stable wrt #385205
+
+  06 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> ted-2.21.ebuild:
+  Export CC so full compiler name is used. Missing libXpm depend wrt #371213 by
+  Piotr Szymaniak
+
+  04 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> ted-2.21.ebuild:
+  x86 stable wrt bug #385205
+
+  13 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> ted-2.21.ebuild,
+  +files/ted-2.21-libpng15.patch:
+  Fix building with libpng15 wrt #378335 by Diego Elio Pettenò
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #81177
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> ted-2.20.ebuild,
+  ted-2.21.ebuild:
+  Fix slot-dep on gtk+
+
+  25 Feb 2011; Kevin McCarthy <signals@gentoo.org> ted-2.20.ebuild,
+  ted-2.21.ebuild:
+  Update depends from media-libs/jpeg to virtual/jpeg
+
+  24 May 2010; Harald van Dĳk <truedfx@gentoo.org> -ted-2.12.ebuild,
+  -ted-2.17-r1.ebuild, -files/ted-2.17-motif.patch:
+  Remove old versions
+
+  24 May 2010; Pacho Ramos <pacho@gentoo.org> ted-2.20.ebuild:
+  stable amd64, bug 317785
+
+  24 May 2010; Raúl Porcel <armin76@gentoo.org> ted-2.20.ebuild:
+  sparc stable wrt #317785
+
+  10 May 2010; nixnut <nixnut@gentoo.org> ted-2.20.ebuild:
+  ppc stable #317785
+
+  10 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> ted-2.20.ebuild:
+  x86 stable wrt bug #317785
+
+*ted-2.21 (30 Apr 2010)
+
+  30 Apr 2010; Harald van Dĳk <truedfx@gentoo.org> +ted-2.21.ebuild:
+  Version bump (#317833)
+
+  08 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> ted-2.20.ebuild,
+  +files/ted-2.20-libpng14.patch:
+  Fix building with libpng14.
+
+  22 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> ted-2.20.ebuild:
+  Require SLOT="0" of media-libs/jpeg for headers.
+
+*ted-2.20 (24 Aug 2009)
+
+  24 Aug 2009; Harald van Dĳk <truedfx@gentoo.org> +ted-2.20.ebuild:
+  Version bump (#281909)
+
+  11 Jan 2009; Harald van Dĳk <truedfx@gentoo.org> ted-2.17-r1.ebuild:
+  Regenerate all configure scripts to fix locale issues
+
+  14 Sep 2008; Harald van Dĳk <truedfx@gentoo.org> metadata.xml:
+  List myself as maintainer
+
+  14 Sep 2008; Harald van Dĳk <truedfx@gentoo.org>
+  +files/ted-2.17-motif.patch, ted-2.17-r1.ebuild:
+  Fix Motif detection (#154997)
+
+*ted-2.17-r1 (18 Jan 2008)
+
+  18 Jan 2008; Ryan Hill <dirtyepic@gentoo.org> ted-2.12.ebuild,
+  -ted-2.17.ebuild, +ted-2.17-r1.ebuild:
+  Revision bump.
+  	- rewrote src_install to not blow away ${T} (Bug #154997)
+  	- backport fix for building with userpriv to stable ebuild (Bug #196939)
+  	- general ebuild cleanup and QA
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 Jan 2007; Danny van Dyk <kugelfang@gentoo.org> -ted-2.11.ebuild,
+  -ted-2.12-r1.ebuild:
+  QA: Removed unused versions.
+
+  28 Aug 2005; Luis Medinas <metalgod@gentoo.org> ted-2.17.ebuild:
+  Added ~amd64 keywords. Closes bug #103872.
+
+*ted-2.17 (31 Mar 2005)
+
+  31 Mar 2005; Spider <spider@gentoo.org> +ted-2.17.ebuild:
+  New version, appears to be working ok.  Fonts are a bit iffy (X bitmap fonts)
+
+*ted-2.12-r1 (28 Mar 2005)
+
+  28 Mar 2005; Spider <spider@gentoo.org> +ted-2.12-r1.ebuild:
+  Added a small build-fix to get around userpriv. The buildscript has a test
+  for RPM_BUILD_ROOT, so I'm just using that.
+  The package appears to have issues with missing fonts, not too sure if I have
+  100% functionality here. 
+
+  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> metadata.xml,
+  ted-2.11.ebuild, ted-2.12.ebuild:
+  QA - IUSE fix
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> ted-2.11.ebuild,
+  ted-2.12.ebuild:
+  Add die following econf for bug 48950
+
+  06 Apr 2004; <spider@gentoo.org> :
+  I just got a note from the author that 2.15 is broken (tables support) but
+  that we should expect 2.16 in the next two months.
+
+  11 Jan 2004; Heinrich Wendel <lanius@gentoo.org> ted-2.11.ebuild,
+  ted-2.12.ebuild:
+  fixed motif dep
+
+  11 Jan 2004; Heinrich Wendel <lanius@gentoo.org> ted-2.11.ebuild,
+  ted-2.12.ebuild:
+  fixed motif dep
+
+*ted-2.12 (24 Dec 2002)
+
+  02 apr 2003; <spider@gentoo.org> ted-2.11.ebuild, ted-2.12.ebuild:
+  Removed xpm depend per bug 1446
+
+  29 Mar 2003; Alastair Tse <liquidx@gentoo.org> ted-2.11.ebuild,
+  ted-2.12.ebuild:
+  replace openmotif with virtual/motif
+
+  12 Mar 2003; Martin Holzer <mholzer@gentoo.org> ted-2.11.ebuild
+  ted-2.12.ebuild:
+  added cd ${S}. Closes #17344
+
+  24 Dec 2002; Martin Holzer <mholzer@gentoo.org> : ted-2.11.ebuild files/digest-ted-2.12 ChangeLog :
+  Version pump submitted by Mark Hollomon #12625.
+  
+
+*ted-2.11 (09 Jul 2002)
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+  06 Aug 2002; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
+
+  09 Jul 2002; Phil Bordelon <sunflare@gentoo.org> ted-2.11.ebuild :
+  New package.  Original ebuild submitted by Mark Hollomon
+  <markholloman@comcast.net>--see Bug #3668.  Cleaned it up,
+  lintool'd and repoman'd.

@@ -1,0 +1,161 @@
+# ChangeLog for app-vim/enhancedcommentify
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/enhancedcommentify/ChangeLog,v 1.37 2011/01/07 23:07:50 radhermit Exp $
+
+  07 Jan 2011; Tim Harder <radhermit@gentoo.org>
+  -enhancedcommentify-2.1-r4.ebuild, -enhancedcommentify-2.2.ebuild:
+  Remove old
+
+  07 Jan 2011; Brent Baude <ranger@gentoo.org>
+  enhancedcommentify-2.3.ebuild:
+  stable ppc, bug 345089
+
+  14 Nov 2010; Raúl Porcel <armin76@gentoo.org>
+  enhancedcommentify-2.3.ebuild:
+  alpha/ia64/sparc stable
+
+  14 Nov 2010; Markus Meier <maekke@gentoo.org>
+  enhancedcommentify-2.3.ebuild:
+  x86 stable, bug #345089
+
+  11 Nov 2010; Markos Chandras <hwoarang@gentoo.org>
+  enhancedcommentify-2.3.ebuild:
+  Stable on amd64 wrt bug #345089
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org>
+  enhancedcommentify-2.1-r4.ebuild:
+  Drop to ~mips
+
+*enhancedcommentify-2.3 (16 Apr 2008)
+
+  16 Apr 2008; Ali Polatel <hawking@gentoo.org>
+  enhancedcommentify-2.1-r4.ebuild, enhancedcommentify-2.2.ebuild,
+  +enhancedcommentify-2.3.ebuild:
+  Version bump. Quoting.
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove ka0ttic from metadata.xml due to retirement.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*enhancedcommentify-2.2 (03 Mar 2006)
+
+  03 Mar 2006; Ciaran McCreesh <ciaranm@gentoo.org>
+  +enhancedcommentify-2.2.ebuild:
+  Version bump, bug #101781
+
+  08 Jul 2005; Aaron Walker <ka0ttic@gentoo.org>
+  -enhancedcommentify-2.1-r1.ebuild, -enhancedcommentify-2.1-r3.ebuild:
+  Tidy old ebuilds.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  enhancedcommentify-2.1-r4.ebuild:
+  Stable on ppc.
+
+  01 Apr 2005; <blubb@gentoo.org> enhancedcommentify-2.1-r4.ebuild:
+  stable on amd64
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org>
+  enhancedcommentify-2.1-r4.ebuild:
+  stable on ia64
+
+  31 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  enhancedcommentify-2.1-r4.ebuild:
+  Stable on alpha.
+
+  28 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  enhancedcommentify-2.1-r4.ebuild:
+  x86 sparc mips stable
+
+*enhancedcommentify-2.1-r4 (01 Mar 2005)
+
+  01 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> metadata.xml,
+  +files/enhancedcommentify-2.1-extra-ft-support.patch,
+  +enhancedcommentify-2.1-r4.ebuild:
+  Revision bump; added support for a sleu of filetypes.
+
+  12 Feb 2005; Aaron Walker <ka0ttic@gentoo.org>
+  enhancedcommentify-2.1-r3.ebuild:
+  Add fstab ft support.
+
+*enhancedcommentify-2.1-r3 (27 Jan 2005)
+
+  27 Jan 2005; Aaron Walker <ka0ttic@gentoo.org>
+  files/enhancedcommentify-2.1-gentooisms.patch,
+  -enhancedcommentify-2.1-r2.ebuild, +enhancedcommentify-2.1-r3.ebuild:
+  Revision bump; updated gentooisms patch that includes support for
+  gentoo-{conf,init}-d filetypes.
+
+*enhancedcommentify-2.1-r2 (23 Jan 2005)
+
+  23 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  +files/enhancedcommentify-2.1-gentooisms.patch,
+  +enhancedcommentify-2.1-r2.ebuild:
+  Added gentooisms, thanks to ka0ttic in bug #79185
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  -enhancedcommentify-2.0.ebuild:
+  Tidy up old versions
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  21 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  enhancedcommentify-2.1-r1.ebuild:
+  Can't install ctx and enhancedcommentify at the same time, bug #74897
+
+  19 Sep 2004; Bryan Østergaard,,, <kloeri@gentoo.org>
+  enhancedcommentify-2.1-r1.ebuild:
+  Stable on alpha.
+
+  09 Sep 2004; Danny van Dyk <kugelfang@gentoo.org>
+  enhancedcommentify-2.1-r1.ebuild:
+  Marked stable on amd64.
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  enhancedcommentify-2.1-r1.ebuild:
+  Stable on x86
+
+  03 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  enhancedcommentify-2.1-r1.ebuild:
+  Help text, bug #62559
+
+*enhancedcommentify-2.1-r1 (29 Jun 2004)
+
+  29 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  +enhancedcommentify-2.1-r1.ebuild, -enhancedcommentify-2.1.ebuild:
+  Remove 2.1, add 2.1-r1 to fix bug 55462
+
+  12 May 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  enhancedcommentify-2.1.ebuild:
+  Stable on sparc, mips
+
+*enhancedcommentify-2.1 (11 Apr 2004)
+
+  11 Apr 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  enhancedcommentify-2.1.ebuild:
+  Version bump
+
+  04 Apr 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  enhancedcommentify-2.0.ebuild:
+  Stable on mips
+
+  15 Mar 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  enhancedcommentify-2.0.ebuild:
+  Stable on sparc, added ~mips
+
+  23 Jan 2004; Aron Griffis <agriffis@gentoo.org>
+  enhancedcommentify-2.0.ebuild:
+  stable on alpha and ia64
+
+  05 Dec 2003; Ciaran McCreesh <ciaranm@gentoo.org>
+  enhancedcommentify-2.0.ebuild:
+  Added ~ppc to keywords
+
+*enhancedcommentify-2.0 (19 Nov 2003)
+
+  19 Nov 2003; Ciaran McCreesh <ciaranm@gentoo.org>
+  enhancedcommentify-2.0.ebuild, metadata.xml:
+  new ebuild
+

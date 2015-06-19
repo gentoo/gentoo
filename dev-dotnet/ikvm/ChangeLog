@@ -1,0 +1,195 @@
+# ChangeLog for dev-dotnet/ikvm
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/ikvm/ChangeLog,v 1.39 2012/12/08 04:08:14 zerochaos Exp $
+
+  08 Dec 2012; Rick Farina <zerochaos@gentoo.org> ikvm-7.1.4532.2.ebuild:
+  revert improper x86 stabilization wrt #435202 comment 2
+
+  07 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> ikvm-7.1.4532.2.ebuild:
+  x86 stable wrt bug #435202
+
+  05 Nov 2012; Ulrich Müller <ulm@gentoo.org> ikvm-0.46.0.1.ebuild,
+  ikvm-0.46.0.2.ebuild, ikvm-7.1.4532.2.ebuild:
+  Fix LICENSE, bug 437166. Thanks to Ben Sagal <bensagal@gmail.com>.
+
+  21 Jul 2012; Pacho Ramos <pacho@gentoo.org> ikvm-0.46.0.2.ebuild,
+  ikvm-7.1.4532.2.ebuild:
+  Use proper jdk slots to build, bug #422603 by Ralph Sennhauser.
+
+*ikvm-7.1.4532.2 (21 Jul 2012)
+
+  21 Jul 2012; Pacho Ramos <pacho@gentoo.org> +files/ikvm-7.1.4532.2-key.patch,
+  +ikvm-7.1.4532.2.ebuild:
+  Version bump.
+
+  22 May 2012; Agostino Sarubbo <ago@gentoo.org> ikvm-0.46.0.2.ebuild:
+  Stable for amd64, wrt bug #407701
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> ikvm-0.46.0.1.ebuild,
+  ikvm-0.46.0.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  09 Apr 2012; Markus Meier <maekke@gentoo.org> ikvm-0.46.0.2.ebuild:
+  x86 stable, bug #407701
+
+  28 Feb 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/ikvm-0.46.0.2-unmappable-character.patch, ikvm-0.46.0.2.ebuild:
+  Fix unmappable character for encoding ASCII, bug #399729 by Dennis Schridde;
+  restrict to jdk:1.6, bug #405933
+
+*ikvm-0.46.0.2 (21 Jan 2012)
+
+  21 Jan 2012; Pacho Ramos <pacho@gentoo.org> +ikvm-0.46.0.2.ebuild,
+  -files/ikvm-0.44.0.5-key.patch, -ikvm-0.44.0.6.ebuild:
+  Version bump, drop old.
+
+  10 Nov 2011; Kacper Kowalik <xarthisius@gentoo.org> ikvm-0.46.0.1.ebuild:
+  ppc stable wrt #389181
+
+  05 Nov 2011; Markos Chandras <hwoarang@gentoo.org> ikvm-0.46.0.1.ebuild:
+  Stable on amd64 wrt bug #389181
+
+  04 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> ikvm-0.46.0.1.ebuild:
+  x86 stable wrt bug #389181
+
+*ikvm-0.46.0.1 (10 Sep 2011)
+
+  10 Sep 2011; Pacho Ramos <pacho@gentoo.org> -ikvm-0.44.0.5.ebuild,
+  +ikvm-0.46.0.1.ebuild, +files/ikvm-0.46.0.1-key.patch:
+  Version bump, remove old.
+
+*ikvm-0.44.0.6 (06 Dec 2010)
+
+  06 Dec 2010; Pacho Ramos <pacho@gentoo.org> +ikvm-0.44.0.6.ebuild:
+  Version bump:
+  - Backported various build system improvements.
+  - Backported IKVM.Reflection ILGenerator exception table sorting bug fix
+  (when running on Mono).
+  - Backported Mono 2.8 mcs build workarounds.
+  - Backported support for boolean, byte, char and short non-final static field
+  constant attributes.
+  - Backported core assembly detection fix.
+  - Backported fix to make sure that ikvmc (and ikvmstub) can find assemblies
+  that are part of a multi assembly (shared class loader) group (if the 
+  assembly is in the same directory as the main assembly of the group).
+  - Backported fix for regression in stack trace printing of .NET (not
+  remapped) exceptions introduced in 0.44. The .NET stack trace should not be 
+  included in the message.
+  - Backported fix for ikvmc sometimes incorrectly handling
+  InternalsVisibleToAttributes in multi assembly builds.
+  - Backported fix for regression introduced with fault handlers. Exception
+  handlers inside fault handlers could be ignored.
+  - Backported fix for #3086040. Volatile stores require a memory barrier.
+
+*ikvm-0.44.0.5 (12 Sep 2010)
+
+  12 Sep 2010; Pacho Ramos <pacho@gentoo.org> -ikvm-0.8.0.0.ebuild,
+  -ikvm-0.14.0.1.ebuild, -ikvm-0.14.0.1-r1.ebuild, -ikvm-0.14.0.1-r2.ebuild,
+  -ikvm-0.20.0.0.ebuild, -ikvm-0.34.0.2.ebuild, -ikvm-0.36.0.5.ebuild,
+  -files/ikvm-0.36.0.5.pc.in, -ikvm-0.36.0.11.ebuild,
+  -ikvm-0.36.0.11-r1.ebuild, +ikvm-0.44.0.5.ebuild,
+  +files/ikvm-0.44.0.5-key.patch, -files/ikvm.pc.in, +files/mono.snk.uu,
+  -files/script-template:
+  Version bump with bugfixes (bug #331649 by Dennis Schridde), add some
+  missing die statements. Remove old versions, even the oldest and stable
+  x86 one since this just bumped version is the only one compiling and
+  working ok (fixing bug #254522 and #306819 by Juergen Rose and Patrick
+  Lauer) and no other ebuild in the tree relies on it.
+
+*ikvm-0.36.0.11-r1 (28 Dec 2008)
+
+  28 Dec 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +ikvm-0.36.0.11-r1.ebuild:
+  Fix pkgconfig file
+
+*ikvm-0.36.0.11 (30 Nov 2008)
+
+  30 Nov 2008; Peter Alfredsen <loki_val@gentoo.org> +ikvm-0.36.0.11.ebuild:
+  Bump for mono-2
+
+  30 May 2008; Jurek Bartuszek <jurek@gentoo.org> ikvm-0.8.0.0.ebuild,
+  ikvm-0.14.0.1.ebuild, ikvm-0.14.0.1-r1.ebuild, ikvm-0.14.0.1-r2.ebuild,
+  ikvm-0.20.0.0.ebuild, ikvm-0.34.0.2.ebuild, ikvm-0.36.0.5.ebuild:
+  Added dev-util/pkgconfig dependency (bug #206101)
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Peter Johanson (latexer, #206688) from metadata.xml.
+
+  02 Jan 2008; Jurek Bartuszek <jurek@gentoo.org> -files/key.snk,
+  ikvm-0.36.0.5.ebuild:
+  Fixed sandbox violation errors (bug #204107)
+
+*ikvm-0.36.0.5 (31 Dec 2007)
+
+  31 Dec 2007; Jurek Bartuszek <jurek@gentoo.org>
+  +files/ikvm-0.36.0.5.pc.in, +files/key.snk, +ikvm-0.36.0.5.ebuild:
+  Version bump
+
+  28 Jul 2007; Jurek Bartuszek <jurek@gentoo.org> ikvm-0.34.0.2.ebuild:
+  Removed windows-only libraries (fixing bug #186837)
+
+  01 Jul 2007; Jurek Bartuszek <jurek@gentoo.org> ikvm-0.34.0.2.ebuild:
+  Increased amount of startup memory
+
+  29 Jun 2007; Jurek Bartuszek <jurek@gentoo.org> ikvm-0.34.0.2.ebuild:
+  Switching from ecj to javac (bug #183526)
+
+*ikvm-0.34.0.2 (26 Jun 2007)
+
+  26 Jun 2007; Jurek Bartuszek <jurek@gentoo.org> ikvm-0.14.0.1.ebuild,
+  ikvm-0.14.0.1-r1.ebuild, ikvm-0.14.0.1-r2.ebuild, ikvm-0.20.0.0.ebuild,
+  +ikvm-0.34.0.2.ebuild:
+  Version bump
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 Feb 2007; Jurek Bartuszek <jurek@gentoo.org> ikvm-0.14.0.1.ebuild,
+  ikvm-0.14.0.1-r1.ebuild, ikvm-0.14.0.1-r2.ebuild, ikvm-0.20.0.0.ebuild:
+  Replaced ftp://ftp.gnu.org/gnu with mirror://gnu fixing bug #163185.
+
+  19 Mar 2006; Mark Loeser <halcy0n@gentoo.org> ikvm-0.14.0.1.ebuild,
+  ikvm-0.14.0.1-r1.ebuild, ikvm-0.14.0.1-r2.ebuild, ikvm-0.20.0.0.ebuild:
+  Add DEPEND on app-arch/unzip
+
+*ikvm-0.20.0.0 (03 Nov 2005)
+*ikvm-0.14.0.1-r2 (03 Nov 2005)
+
+  03 Nov 2005; Peter Johanson <latexer@gentoo.org> files/ikvm.pc.in,
+  +ikvm-0.14.0.1-r2.ebuild, +ikvm-0.20.0.0.ebuild:
+  New release, and revision bump the previous one to push out pkgconfig file
+  changes to try to be multilib proper.
+
+  03 Jun 2005; David Holm <dholm@gentoo.org> ikvm-0.14.0.1-r1.ebuild:
+  Added to ~ppc.
+
+  19 May 2005; Tom Martin <slarti@gentoo.org> ikvm-0.14.0.1-r1.ebuild:
+  Marked ~amd64, and also add a small multilib fix.
+
+  18 May 2005; Peter Johanson <latexer@gentoo.org> ikvm-0.8.0.0.ebuild,
+  ikvm-0.14.0.1.ebuild, ikvm-0.14.0.1-r1.ebuild:
+  Block new ikvm-bin package.
+
+*ikvm-0.14.0.1-r1 (18 May 2005)
+
+  18 May 2005; Peter Johanson <latexer@gentoo.org> +files/ikvm.pc.in,
+  +ikvm-0.14.0.1-r1.ebuild:
+  Revision bump to include pkg-config file needed by new monodevelop.
+
+*ikvm-0.14.0.1 (13 May 2005)
+
+  13 May 2005; Peter Johanson <latexer@gentoo.org> +files/script-template,
+  ikvm-0.8.0.0.ebuild, +ikvm-0.14.0.1.ebuild:
+  Bump, and mark 0.8.0.0 stable.
+
+  10 Mar 2005; Peter Johanson <latexer@gentoo.org> ikvm-0.8.0.0.ebuild:
+  mono moved from dev-dotnet -> dev-lang
+
+  18 Oct 2004; David Holm <dholm@gentoo.org> ikvm-0.8.0.0.ebuild:
+  Added to ~ppc.
+
+*ikvm-0.8.0.0 (30 Jun 2004)
+
+  30 Jun 2004; Peter Johanson <latexer@gentoo.org> +metadata.xml,
+  +ikvm-0.8.0.0.ebuild:
+  Initial commit. Version that goess with mono-1.0

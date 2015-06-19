@@ -1,0 +1,67 @@
+Need en_US.utf8 to run some tests - bug #376667
+
+--- maildrop/Makefile.am	2011-04-04 15:58:58.000000000 +0000
++++ maildrop/Makefile.am	2011-07-28 10:29:43.000000000 +0000
+@@ -75,8 +75,12 @@
+ 	maildrop.lsm testsuite.txt.idn testsuite.txt.noidn
+ 
+ check-am:
++if HAS_EN_US
+ 	@chmod +x testsuite
+ 	./testsuite | cmp -s - $(srcdir)/$(TESTSUITE)
++else
++	echo ' Need en_US.utf8 to run tests'
++endif
+ 
+ noinst_DATA=maildrop.html maildrop.1 maildropfilter.html maildropfilter.7 \
+ 	maildropgdbm.html maildropgdbm.7
+--- maildrop/configure.in	2011-05-17 20:36:04.000000000 +0000
++++ maildrop/configure.in	2011-07-28 10:58:57.000000000 +0000
+@@ -200,6 +200,15 @@
+ AC_TYPE_SIGNAL
+ AC_CHECK_FUNCS(setgroups setlocale)
+ 
++check_en_US() {
++locale -a | grep en_US.utf8 > /dev/null
++return $?
++}
++
++AC_MSG_CHECKING([for en_US.utf8])
++AM_CONDITIONAL([HAS_EN_US], [check_en_US])
++AM_COND_IF([HAS_EN_US],[AC_MSG_RESULT([yes])],[AC_MSG_RESULT([not found])])
++
+ AC_CHECK_FUNC(getpgrp, HAS_GETPGRP=1, HAS_GETPGRP=0)
+ AC_DEFINE_UNQUOTED(HAS_GETPGRP,$HAS_GETPGRP,
+ 	[ Whether getpgrp() is available ])
+--- rfc2045/Makefile.am	2011-04-04 15:59:47.000000000 +0000
++++ rfc2045/Makefile.am	2011-07-29 09:28:41.000000000 +0000
+@@ -76,7 +76,11 @@
+ TESTSUITE=testsuite.txt.noidn
+ endif
+ 
++if HAS_EN_US
+ check-am:
+ 	@SHELL@ $(srcdir)/testsuite | cmp -s - $(srcdir)/$(TESTSUITE)
+ 	@SHELL@ $(srcdir)/testsuitemm | cmp -s - $(srcdir)/testsuitemm.txt
+ 	@SHELL@ $(srcdir)/testrfc3676parsersuite | diff -U 3 $(srcdir)/testrfc3676parsersuite.txt -
++else
++	echo ' Need en_US.utf8 to run tests'
++endif
+--- rfc2045/configure.in	2011-04-04 15:59:47.000000000 +0000
++++ rfc2045/configure.in	2011-07-29 09:28:34.000000000 +0000
+@@ -59,6 +59,15 @@
+ AC_CHECK_FUNC(strncasecmp,,CFLAGS="$CFLAGS -Dstrncasecmp=strnicmp")
+ AC_CHECK_FUNC(strcasecmp,,CFLAGS="$CFLAGS -Dstrcasecmp=stricmp")
+ 
++check_en_US() {
++locale -a | grep en_US.utf8 > /dev/null
++return $?
++}
++
++AC_MSG_CHECKING([for en_US.utf8])
++AM_CONDITIONAL([HAS_EN_US], [check_en_US])
++AM_COND_IF([HAS_EN_US],[AC_MSG_RESULT([yes])],[AC_MSG_RESULT([not found])])
++
+ AC_ARG_WITH(package, [], package="$withval",
+ 	[
+ 		package="$PACKAGE"

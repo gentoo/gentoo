@@ -1,0 +1,12 @@
+DEFINED_PHASES=install nofetch postinst unpack
+DEPEND=>=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=A remote security scanner for Linux
+HOMEPAGE=http://www.nessus.org/
+IUSE=X
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=GPL-2 Nessus-EULA
+RESTRICT=mirror fetch strip
+SLOT=0
+SRC_URI=x86? ( Nessus-5.0.1-es6.i686.rpm ) amd64? ( Nessus-5.0.1-es6.x86_64.rpm )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	rpm	b94b54b44f14d6bee3e966c8f5c86fba	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b602e40b70b586140005d23ebc519eb5

@@ -1,0 +1,29 @@
+# ChangeLog for app-vim/neocomplcache
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/neocomplcache/ChangeLog,v 1.6 2014/03/03 23:32:39 pacho Exp $
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org> neocomplcache-7.1.ebuild:
+  amd64 stable, bug #481880
+
+  23 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  neocomplcache-7.1.ebuild:
+  x86 stable wrt bug #481880
+
+  18 Sep 2012; Tim Harder <radhermit@gentoo.org> -neocomplcache-6.0.ebuild:
+  Remove old.
+
+*neocomplcache-7.1 (18 Sep 2012)
+
+  18 Sep 2012; Tim Harder <radhermit@gentoo.org> +neocomplcache-7.1.ebuild:
+  Version bump.
+
+*neocomplcache-6.1 (14 Sep 2011)
+
+  14 Sep 2011; Tim Harder <radhermit@gentoo.org> +neocomplcache-6.1.ebuild:
+  Version bump (bug #382897 by Alec M.). Use github mirror.
+
+*neocomplcache-6.0 (22 May 2011)
+
+  22 May 2011; Tim Harder <radhermit@gentoo.org> +neocomplcache-6.0.ebuild,
+  +metadata.xml:
+  Initial import.

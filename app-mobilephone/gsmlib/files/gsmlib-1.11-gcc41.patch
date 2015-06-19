@@ -1,0 +1,52 @@
+diff -ur gsmlib-1.11-orig/gsmlib/gsm_map_key.h gsmlib-1.11/gsmlib/gsm_map_key.h
+--- gsmlib-1.11-orig/gsmlib/gsm_map_key.h	2006-02-25 19:20:52.000000000 -0500
++++ gsmlib-1.11/gsmlib/gsm_map_key.h	2006-02-25 19:23:01.000000000 -0500
+@@ -78,7 +78,7 @@
+   // MapKey members
+   
+   template <class SortedStore>
+-    bool gsmlib::operator<(const MapKey<SortedStore> &x,
++    bool operator<(const MapKey<SortedStore> &x,
+                            const MapKey<SortedStore> &y)
+     {
+       assert(&x._myStore == &y._myStore);
+@@ -103,7 +103,7 @@
+     }
+ 
+   template <class SortedStore>
+-    bool gsmlib::operator==(const MapKey<SortedStore> &x,
++    bool operator==(const MapKey<SortedStore> &x,
+                             const MapKey<SortedStore> &y)
+     {
+       assert(&x._myStore == &y._myStore);
+diff -ur gsmlib-1.11-orig/gsmlib/gsm_me_ta.h gsmlib-1.11/gsmlib/gsm_me_ta.h
+--- gsmlib-1.11-orig/gsmlib/gsm_me_ta.h	2006-02-25 19:20:52.000000000 -0500
++++ gsmlib-1.11/gsmlib/gsm_me_ta.h	2006-02-25 19:21:48.000000000 -0500
+@@ -294,8 +294,8 @@
+     // 3 disable phone receive RF circuits only
+     // 4 disable phone both transmit and receive RF circuits
+     // 5...127 implementation-defined
+-    int MeTa::getFunctionalityLevel() throw(GsmException);
+-    void MeTa::setFunctionalityLevel(int level) throw(GsmException);
++    int getFunctionalityLevel() throw(GsmException);
++    void setFunctionalityLevel(int level) throw(GsmException);
+ 
+     // return battery charge status (+CBC):
+     // 0 ME is powered by the battery
+@@ -389,13 +389,13 @@
+     void setCallWaitingLockStatus(FacilityClass cl,
+                                   bool lock)throw(GsmException);
+ 
+-    void MeTa::setCLIRPresentation(bool enable) throw(GsmException);
++    void setCLIRPresentation(bool enable) throw(GsmException);
+     //(+CLIR)
+     
+     // 0:according to the subscription of the CLIR service
+     // 1:CLIR invocation
+     // 2:CLIR suppression
+-    int MeTa::getCLIRPresentation() throw(GsmException);
++    int getCLIRPresentation() throw(GsmException);
+ 
+     friend class Phonebook;
+     friend class SMSStore;
+

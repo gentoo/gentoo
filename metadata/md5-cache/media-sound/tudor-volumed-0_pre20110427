@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare setup unpack
+DEPEND=media-libs/alsa-lib x11-libs/libX11 x11-proto/xproto
+DESCRIPTION=Lightweight, desktop environment agnostic volume management daemon
+EAPI=4
+HOMEPAGE=https://github.com/darvid/tudor-volumed
+KEYWORDS=amd64 x86
+LICENSE=BSD
+RDEPEND=media-libs/alsa-lib x11-libs/libX11
+SLOT=0
+SRC_URI=https://github.com/darvid/tudor-volumed/tarball/7fc04cb2fb71e6f8815ddd87fd7ef5d02022edeb -> tudor-volumed-0_pre20110427.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vcs-snapshot	58b766562c9fbfb3268b04e33cdf2f66
+_md5_=45992fedf9a8918131788dbcb02d20a9

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=>=gnome-base/libglade-2.4:2.0 >=x11-libs/gtk+-2.6:2 app-arch/bzip2 dev-libs/openssl media-libs/fontconfig >=dev-util/scons-0.96 virtual/pkgconfig
+DESCRIPTION=Direct connect client, looks and works like famous DC++
+EAPI=2
+HOMEPAGE=https://launchpad.net/linuxdcpp
+IUSE=debug
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=gnome-base/libglade-2.4:2.0 >=x11-libs/gtk+-2.6:2 app-arch/bzip2 dev-libs/openssl
+SLOT=0
+SRC_URI=http://launchpad.net/linuxdcpp/1.0/1.0.3/+download/linuxdcpp-1.0.3.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9994d62fb8156660bc6b9432cf95150b

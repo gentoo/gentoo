@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=tRNA detection in large-scale genome sequences
+EAPI=3
+HOMEPAGE=http://lowelab.ucsc.edu/tRNAscan-SE/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=mirror://gentoo/trnascan-se-1.23.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=48f26e43d0a6fae41f3b42b87f882f21

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-perl/Archive-Extract dev-perl/Archive-Zip dev-perl/Capture-Tiny dev-perl/File-ShareDir dev-perl/File-Which dev-perl/Text-Patch media-libs/libsdl virtual/perl-Archive-Tar virtual/perl-Digest-SHA virtual/perl-ExtUtils-CBuilder virtual/perl-ExtUtils-MakeMaker dev-perl/Module-Build virtual/perl-File-Spec virtual/perl-File-Temp dev-lang/perl:=[-build(-)]
+DESCRIPTION=building, finding and using SDL binaries
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Alien-SDL/
+KEYWORDS=amd64 hppa x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Archive-Extract dev-perl/Archive-Zip dev-perl/Capture-Tiny dev-perl/File-ShareDir dev-perl/File-Which dev-perl/Text-Patch media-libs/libsdl virtual/perl-Archive-Tar virtual/perl-Digest-SHA virtual/perl-ExtUtils-CBuilder virtual/perl-ExtUtils-MakeMaker dev-perl/Module-Build virtual/perl-File-Spec virtual/perl-File-Temp dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/F/FR/FROGGS/Alien-SDL-1.440.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=709c4240a8a5eeb073fda8ed595cd543

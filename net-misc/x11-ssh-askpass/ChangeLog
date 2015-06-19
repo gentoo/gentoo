@@ -1,0 +1,118 @@
+# ChangeLog for net-misc/x11-ssh-askpass
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/x11-ssh-askpass/ChangeLog,v 1.29 2012/12/15 15:45:04 ulm Exp $
+
+  15 Dec 2012; Ulrich Müller <ulm@gentoo.org>
+  x11-ssh-askpass-1.2.4.1-r1.ebuild:
+  Update LICENSE, HPND according to README file, bug 445876.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org>
+  x11-ssh-askpass-1.2.4.1-r1.ebuild:
+  Remove virtual/libc
+
+  21 Aug 2008; Doug Goldstein <cardoe@gentoo.org>
+  x11-ssh-askpass-1.2.4.1-r1.ebuild:
+  fix depends as per bug #221429
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  x11-ssh-askpass-1.2.4.1-r1.ebuild:
+  Drop virtual/x11 references.
+
+  29 Aug 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/stupid-imake.diff, -x11-ssh-askpass-1.2.2-r1.ebuild:
+  clean out old, non-modX ebuild
+
+  24 Jul 2006; Jose Luis Rivero <yoswink@gentoo.org>
+  x11-ssh-askpass-1.2.4.1-r1.ebuild:
+  Stable on alpha wrt bug #140640. Tested by Mike Hlavac
+  <mike@flyingpenguins.org>.
+
+  18 Jul 2006; Joshua Jackson <tsunam@gentoo.org>
+  x11-ssh-askpass-1.2.4.1-r1.ebuild:
+  Stable x86; bug #140640
+
+  16 Jul 2006; Jason Wever <weeve@gentoo.org>
+  x11-ssh-askpass-1.2.4.1-r1.ebuild:
+  Stable on SPARC wrt bug #140640.
+
+  16 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  x11-ssh-askpass-1.2.4.1-r1.ebuild:
+  ppc stable, bug #140640
+
+  09 Apr 2006; Olivier Crête <tester@gentoo.org>
+  x11-ssh-askpass-1.2.4.1-r1.ebuild:
+  Stable on amd64
+
+  04 Apr 2006; Aron Griffis <agriffis@gentoo.org>
+  x11-ssh-askpass-1.2.4.1-r1.ebuild:
+  Mark 1.2.4.1-r1 stable on ia64
+
+  07 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  x11-ssh-askpass-1.2.4.1-r1.ebuild:
+  Mark 1.2.4.1-r1 ~ia64
+
+  04 Jan 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  x11-ssh-askpass-1.2.4.1-r1.ebuild:
+  Adding mod-x deps.
+
+*x11-ssh-askpass-1.2.4.1-r1 (17 Oct 2005)
+
+  17 Oct 2005; Doug Goldstein <cardoe@gentoo.org>
+  -x11-ssh-askpass-1.2.4.1.ebuild, +x11-ssh-askpass-1.2.4.1-r1.ebuild:
+  get_libdir fixes to work with openssh's use of ssh-askpass
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  x11-ssh-askpass-1.2.2-r1.ebuild:
+  Mark 1.2.2-r1 stable on alpha
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org>
+  x11-ssh-askpass-1.2.2-r1.ebuild, x11-ssh-askpass-1.2.4.1.ebuild:
+  change virtual/glibc to virtual/libc, add IUSE
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org>
+  x11-ssh-askpass-1.2.2-r1.ebuild:
+  Add inherit eutils
+
+  10 Mar 2004; Daniel Ahlberg <aliz@gentoo.org>
+  x11-ssh-askpass-1.2.4.1.ebuild:
+  Adding amd64 keyword. Closing #44159.
+
+*x11-ssh-askpass-1.2.4.1 (22 Feb 2004)
+
+  22 Feb 2004; Daniel Ahlberg <aliz@gentoo.org>
+  x11-ssh-askpass-1.2.4.1.ebuild:
+  Version bump. Found by daniel webert <daniel_webert@web.de> in #40922.
+
+  09 Jul 2003; Martin Holzer <mholzer@gentoo.org>
+  x11-ssh-askpass-1.2.2-r1.ebuild, x11-ssh-askpass-1.2.2.ebuild:
+  Updated Homepage. Closes #23862
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*x11-ssh-askpass-1.2.2-r1 (04 Apr 2002)
+
+  17 Apr 2003; Graham Forest <vladimir@gentoo.org>
+  x11-ssh-askpass-1.2.2-r1.ebuild, x11-ssh-askpass-1.2.2.ebuild:
+  set ~ppc in keywords
+
+  25 Mar 2003; Aron Griffis <agriffis@gentoo.org>
+  x11-ssh-askpass-1.2.2-r1.ebuild:
+  Add ~alpha to KEYWORDS
+
+  09 Jul 2002; phoen][x <phoenix@gentoo.org> x11-ssh-askpass-1.2.2-r1.ebuild :
+  Added KEYWORDS, LICENSE, SLOT.
+
+  04 Apr 2002; Spider <spider@gentoo.org>
+  added CDEBUGFLAGS=${CFLAGS} to close bug 1505
+  
+*x11-ssh-askpass-1.2.2 (1 Feb 2002)
+
+  09 Jul 2002; phoen][x <phoenix@gentoo.org> x11-ssh-askpass-1.2.2.ebuild :
+  Added KEYWORDS, LICENSE, SLOT.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

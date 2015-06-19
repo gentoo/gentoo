@@ -1,0 +1,88 @@
+# ChangeLog for x11-plugins/wmmemmon
+# Copyright 2002-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmemmon/ChangeLog,v 1.26 2015/05/07 22:53:15 mrueg Exp $
+
+  07 May 2015; Manuel Rüger <mrueg@gentoo.org> -wmmemmon-1.0.1.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> wmmemmon-1.0.1.ebuild,
+  wmmemmon-1.0.2_pre2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  15 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org> wmmemmon-1.0.1.ebuild,
+  wmmemmon-1.0.2_pre2.ebuild:
+  Update HOMEPAGE and SRC_URI, thanks Lorenz in bug #394607
+
+  26 May 2011; Michele Noberasco <s4t4n@gentoo.org> wmmemmon-1.0.2_pre2.ebuild,
+  wmmemmon-1.0.1.ebuild:
+  Fixed HOMEPAGE and SRC_URI. Closes bug #367167.
+
+  27 Jun 2008; Raúl Porcel <armin76@gentoo.org> wmmemmon-1.0.2_pre2.ebuild:
+  alpha/sparc/x86 stable wrt #229581
+
+  27 Jun 2008; Brent Baude <ranger@gentoo.org> wmmemmon-1.0.2_pre2.ebuild:
+  stable ppc64, bug 229581
+
+  26 Jun 2008; nixnut <nixnut@gentoo.org> wmmemmon-1.0.2_pre2.ebuild:
+  Stable on ppc wrt bug 229581
+
+  26 Jun 2008; Santiago M. Mola <coldwind@gentoo.org>
+  wmmemmon-1.0.2_pre2.ebuild:
+  amd64 stable wrt bug #229581
+
+*wmmemmon-1.0.2_pre2 (16 Jan 2008)
+
+  16 Jan 2008; Samuli Suominen <drac@gentoo.org>
+  +wmmemmon-1.0.2_pre2.ebuild:
+  Version bump.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  wmmemmon-1.0.1.ebuild:
+  Drop virtual/x11 references.
+
+  17 Jul 2006; Michele Noberasco <s4t4n@gentoo.org> wmmemmon-1.0.1.ebuild:
+  Fixed HOMEPAGE and SRC_URI. Closes bug #140294.
+
+  31 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> wmmemmon-1.0.1.ebuild:
+  Fixed DEPEND for modular X.
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> wmmemmon-1.0.1.ebuild:
+  Mark 1.0.1 stable on alpha
+
+  06 Feb 2005; Markus Rothe <corsair@gentoo.org> wmmemmon-1.0.1.ebuild:
+  Stable on ppc64
+
+  05 Feb 2005; Bryan Østergaard <kloeri@gentoo.org> wmmemmon-1.0.1.ebuild:
+  ~alpha keyword, bug 78660.
+
+  23 Dec 2004; Markus Rothe <corsair@gentoo.org> wmmemmon-1.0.1.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #74952
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  wmmemmon-1.0.1.ebuild:
+  Masked wmmemmon-1.0.1.ebuild stable for ppc
+
+  03 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmmemmon-0.7.0.ebuild:
+  Remove old ebuilds...
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> wmmemmon-0.7.0.ebuild,
+  wmmemmon-1.0.1.ebuild:
+  glibc -> libc
+
+  13 Apr 2004; Don Seiler <rizzo@gentoo.org>; wmmemmon-0.7.0.ebuild,
+  wmmemmon-1.0.1.ebuild:
+  Changed dependency to virtual/x11 to work with x11-base/xorg-x11
+
+*wmmemmon-1.0.1 (16 Oct 2003)
+
+  16 Oct 2003; Nick Hadaway <raker@gentoo.org> wmmemmon-1.0.1.ebuild:
+  Version bump.  A fix for 2.6 kernels among other things.  See bug 
+  #25475
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*wmmemmon-0.7.0 (04 Oct 2002)
+
+  04 Oct 2002; Nick Hadaway <raker@gentoo.org> wmmemmon-0.7.0.ebuild,
+  files/digest-wmmemmon-0.7.0 :
+  Initial adding of ebuild to portage.

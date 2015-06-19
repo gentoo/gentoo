@@ -1,0 +1,19 @@
+# ChangeLog for app-portage/distpatch
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/distpatch/ChangeLog,v 1.3 2012/04/23 17:41:04 mgorny Exp $
+
+  23 Apr 2012; Michał Górny <mgorny@gentoo.org> distpatch-0.1.1.ebuild:
+  Use mirror:// in SRC_URI.
+
+*distpatch-0.1.1 (21 Aug 2011)
+
+  21 Aug 2011; Rafael G. Martins <rafaelmartins@gentoo.org>
+  -distpatch-0.1.ebuild, +distpatch-0.1.1.ebuild:
+  Version bump.
+
+*distpatch-0.1 (11 Aug 2011)
+
+  11 Aug 2011; Rafael G. Martins <rafaelmartins@gentoo.org>
+  +distpatch-0.1.ebuild, +metadata.xml:
+  Initial commit.
+

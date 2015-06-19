@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Snapper is a command-line program for filesystem snapshot management.
+		It can create, delete and compare snapshots and undo changes done
+		between  snapshots. It supports both btrfs and ext4.
+	</longdescription>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>pastas4@gmail.com</email>
+		<name>Dainius Masiliūnas (GreatEmerald)</name>
+		<description>maintainer, assign bugs</description>
+	</maintainer>
+	<maintainer>
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+		<description>co-maintainer, CC bugs</description>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>aschnell@suse.de</email>
+			<name>Arvin Schnell</name>
+		</maintainer>
+		<changelog>https://raw.github.com/openSUSE/snapper/master/package/snapper.changes</changelog>
+		<bugs-to>https://bugzilla.novell.com/</bugs-to>
+		<remote-id type="github">openSUSE/snapper</remote-id>
+	</upstream>
+	<use>
+		<flag name='xattr'>
+		Add support for getting and setting POSIX extended attributes, through
+		<pkg>sys-apps/attr</pkg>.
+		</flag>
+		<flag name='btrfs'>Include Btrfs support <pkg>sys-fs/btrfs-progs</pkg></flag>
+		<flag name='ext4'>Include Ext4 support <pkg>sys-fs/e2fsprogs</pkg></flag>
+		<flag name='lvm'>Enable LVM thinprovisioned snapshots support <pkg>sys-fs/lvm2</pkg></flag>
+	</use>
+</pkgmetadata>

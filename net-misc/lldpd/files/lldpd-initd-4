@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/lldpd/files/lldpd-initd-4,v 1.1 2014/10/13 18:06:06 chutzpah Exp $
+
+name=lldpd
+pidfile=/run/lldpd.pid
+command=/usr/sbin/lldpd
+retry="TERM/10/KILL/5"
+command_args="${LLDPD_OPTS}"
+
+depend() {
+	use net
+}
+
+start_pre() {
+	checkpath --directory /run/lldpd
+}
+
+# vim:ft=gentoo-init-d:noet:ts=4:sts=4:sw=4:

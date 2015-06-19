@@ -1,0 +1,192 @@
+# ChangeLog for sci-libs/ogdi
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/ogdi/ChangeLog,v 1.46 2015/04/04 20:58:25 zlogene Exp $
+
+  04 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> ogdi-3.2.0_beta2.ebuild:
+  ppc64 stable wrt bug #413635
+
+  05 Jan 2015; Alexis Ballier <aballier@gentoo.org> ogdi-3.2.0_beta2.ebuild:
+  keyword ~arm
+
+  09 Aug 2014; Agostino Sarubbo <ago@gentoo.org> ogdi-3.2.0_beta2.ebuild:
+  Stable for ppc, wrt bug #413635
+
+  08 Aug 2014; <mad@gentoo.org> ogdi-3.2.0_beta2.ebuild:
+  x86 stable, see bug 413635
+
+  01 Aug 2014; Raúl Porcel <armin76@gentoo.org> ogdi-3.2.0_beta2.ebuild:
+  Drop sparc keyword
+
+  09 Jul 2014; Patrick Lauer <patrick@gentoo.org> ogdi-3.1.5-r1.ebuild:
+  Drop keywords for unsatisfiable dependencies on proj
+
+  18 Jun 2014; Tobias Klausmann <klausman@gentoo.org> ogdi-3.2.0_beta2.ebuild:
+  Stable on alpha, bug #413635
+
+  18 Jan 2014; Pacho Ramos <pacho@gentoo.org> ogdi-3.2.0_beta2.ebuild:
+  amd64 stable, bug #413635
+
+  14 Jan 2014; Justin Lecher <jlec@gentoo.org> ogdi-3.2.0_beta2.ebuild:
+  Fix deps, #497860
+
+  07 Jan 2014; Justin Lecher <jlec@gentoo.org> -ogdi-3.1.6.ebuild,
+  ogdi-3.2.0_beta2.ebuild, +files/ogdi-3.2.0_beta2-proj480.patch, metadata.xml:
+  Fix proj-4.8 compatibility, thanks Thomas Beutin for the patch, #413635
+
+  27 Feb 2013; Jeroen Roovers <jer@gentoo.org> ogdi-3.1.5-r1.ebuild,
+  ogdi-3.1.6.ebuild, ogdi-3.2.0_beta2.ebuild:
+  Drop HPPA keywording.
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, #24135.
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> ogdi-3.2.0_beta2.ebuild:
+  keyword amd64-linux x86-linux
+
+  26 Apr 2012; Justin Lecher <jlec@gentoo.org> ChangeLog, Manifest:
+  Correct typo in ChangeLog
+
+  26 Apr 2012; Justin Lecher <jlec@gentoo.org> ogdi-3.1.5-r1.ebuild,
+  ogdi-3.1.6.ebuild, ogdi-3.2.0_beta2.ebuild:
+  Restrict proj version to <4.8 as projects.h no longer installed as a public
+  include file, #413635
+
+  26 Apr 2012; Justin Lecher <jlec@gentoo.org> ogdi-3.1.5-r1.ebuild,
+  ogdi-3.1.6.ebuild, ogdi-3.2.0_beta2.ebuild, metadata.xml:
+  Drop unnessecary die
+
+  17 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  files/ogdi-3.2.0_beta2-64b.patch:
+  Minimalise the patch so our cvs wont fck it up with the $ replaces.
+
+  17 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org> ogdi-3.2.0_beta2.ebuild,
+  +files/ogdi-3.2.0_beta2-64b.patch:
+  Fix one issue with 64b patched post release in upstream repo.
+
+*ogdi-3.2.0_beta2 (17 Jun 2011)
+
+  17 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +ogdi-3.2.0_beta2.ebuild, +files/ogdi-3.2.0_beta2-endianess.patch,
+  +files/ogdi-3.2.0_beta2-subdirs.patch:
+  Add latest ogdi we should stabilise.
+
+  17 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org> ogdi-3.1.6.ebuild:
+  Move to eapi4.
+
+*ogdi-3.1.6 (24 Jun 2010)
+
+  24 Jun 2010; Justin Lecher <jlec@gentoo.org> -ogdi-3.1.4-r1.ebuild,
+  +ogdi-3.1.6.ebuild, +files/ogdi-3.1.6-fpic.patch,
+  +files/ogdi-3.1.6-unbundle-libs.patch:
+  Version Bump, hopefully fixing bug 264724
+
+  01 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  ogdi-3.1.5-r1.ebuild:
+  Use -j1 for build (bug #299239).
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  25 May 2006; Jeroen Roovers <jer@gentoo.org> ogdi-3.1.5-r1.ebuild:
+  Marked stable on hppa (bug #98593).
+
+  23 May 2006; Markus Rothe <corsair@gentoo.org> ogdi-3.1.5-r1.ebuild:
+  Stable on ppc64
+
+  08 Feb 2006; Aron Griffis <agriffis@gentoo.org> ogdi-3.1.5-r1.ebuild:
+  Mark 3.1.5-r1 stable on alpha
+
+  21 Nov 2005; Simon Stelling <blubb@gentoo.org> ogdi-3.1.5-r1.ebuild:
+  stable on amd64; bug 98593
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> ogdi-3.1.5-r1.ebuild:
+  Stable on ppc.
+
+  01 Nov 2005; Steve Arnold <nerdboy@gentoo.org>
+  +files/ogdi-3.1.4-fpic.patch, -ogdi-3.1.1-r1.ebuild, ogdi-3.1.4-r1.ebuild,
+  -ogdi-3.1.5.ebuild:
+  added fPIC patch and cleaned up ebuilds; stable bump for sparc and x86.
+
+  03 Aug 2005; Herbie Hopkins <herbs@gentoo.org> ogdi-3.1.1-r1.ebuild,
+  ogdi-3.1.4-r1.ebuild, ogdi-3.1.5.ebuild, ogdi-3.1.5-r1.ebuild:
+  Removed --with-proj option so the --with-projlib option doesn't get ignored.
+
+  03 Aug 2005; Steve Arnold <nerdboy@gentoo.org> ogdi-3.1.1-r1.ebuild,
+  ogdi-3.1.4-r1.ebuild, ogdi-3.1.5.ebuild, ogdi-3.1.5-r1.ebuild:
+  fixed oops in projlib path
+
+  03 Aug 2005; Steve Arnold <nerdboy@gentoo.org> ogdi-3.1.1-r1.ebuild,
+  ogdi-3.1.4-r1.ebuild, ogdi-3.1.5.ebuild, ogdi-3.1.5-r1.ebuild:
+  Generalized lib install path and fixed ARCH typo.  This one should
+  be good, in theory...
+
+  02 Aug 2005; Herbie Hopkins <herbs@gentoo.org> ogdi-3.1.5-r1.ebuild:
+  Multilib fixes.
+
+*ogdi-3.1.5-r1 (02 Aug 2005)
+
+  02 Aug 2005; Danny van Dyk <kugelfang@gentoo.org>
+  +files/ogdi-3.1.5-fpic.patch, +ogdi-3.1.5-r1.ebuild:
+  Bumped to 3.1.5-r1 to fix build on PIC-dependent arches and affected shared
+  libraryies on all other arches.
+
+  30 Jul 2005; Steve Arnold <nerdboy@gentoo.org> ogdi-3.1.1-r1.ebuild,
+  ogdi-3.1.4-r1.ebuild, ogdi-3.1.5.ebuild:
+  fixed sparc install issues (sandbox violations) so it should work
+  correctly on other arches (in theory).  This is a mostly stealth update,
+  since it won't help people for whom it already worked...
+
+*ogdi-3.1.5 (23 Jul 2005)
+*ogdi-3.1.1-r1 (23 Jul 2005)
+
+  23 Jul 2005; Steve Arnold <nerdboy@gentoo.org> -ogdi-3.1.1.ebuild,
+  +ogdi-3.1.1-r1.ebuild, -ogdi-3.1.4.ebuild, +ogdi-3.1.5.ebuild:
+  replaced borked versions with -r1's and added new version (sorry,
+  I couldn't commit the one below until I fixed a couple deps first)
+
+*ogdi-3.1.4-r1 (21 Jul 2005)
+
+  21 Jul 2005; Steve Arnold <nerdboy@gentoo.org> +ogdi-3.1.4-r1.ebuild:
+  fixed some build errors revealed by the new toolchain -
+    TARGET not set properly and internal proj borkage
+
+  11 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org> ogdi-3.1.4.ebuild:
+  ppc stable, #98593
+
+  11 Jul 2005; Markus Rothe <corsair@gentoo.org> ogdi-3.1.4.ebuild:
+  Stable on ppc64 (bug #98593)
+
+  10 Jul 2005; Steve Arnold <nerdboy@gentoo.org> ogdi-3.1.1.ebuild,
+  ogdi-3.1.4.ebuild:
+  bumping x86 and sparc to stable
+
+  26 May 2005; Sven Wegener <swegener@gentoo.org> metadata.xml:
+  Herd name is 'sci' not 'sci-herd'
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> ogdi-3.1.1.ebuild:
+  Stable on ppc.
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> ogdi-3.1.4.ebuild:
+  Dependency update: dev-libs/proj -> sci-libs/proj.
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> ogdi-3.1.1.ebuild:
+  Dependency update: dev-libs/proj -> sci-libs/proj.
+
+*ogdi-3.1.4 (28 Dec 2004)
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +ogdi-3.1.1.ebuild, +ogdi-3.1.4.ebuild:
+  Moved from dev-libs/ogdi to sci-libs/ogdi.
+
+*ogdi-3.1.4 (18 Dec 2004)
+
+  18 Dec 2004; Steve Arnold <nerdboy@gentoo.org> +metadata.xml,
+  ogdi-3.1.1.ebuild, +ogdi-3.1.4.ebuild:
+  bumped 3.1.1 to x86 and added cleaned-up 3.1.4 to ~
+
+*ogdi-3.1.1 (04 Jan 2003)
+
+  04 Jan 2003; George Shapovalov <george@gentoo.org> ChangeLog, ogdi-3.1.1.ebuild, files/digest-ogdi-3.1.1 :
+  initial release
+  open geographical datastore interface
+  ebuild submitted by Nathaniel C. Domingo  <nathaniel.domingo@upd.edu.ph>

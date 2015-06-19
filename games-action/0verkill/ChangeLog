@@ -1,0 +1,76 @@
+# ChangeLog for games-action/0verkill
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/0verkill/ChangeLog,v 1.19 2014/12/30 12:50:37 tupone Exp $
+
+  30 Dec 2014; Tupone Alfredo <tupone@gentoo.org> 0verkill-0.16-r3.ebuild:
+  Migrating to EAPI 4
+
+  08 Nov 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  0verkill-0.16-r3.ebuild, +files/0verkill-0.16-CC.patch:
+  honor CC
+
+  08 Nov 2010; Alfredo Tupone <tupone@gentoo.org> 0verkill-0.16-r3.ebuild,
+  +files/0verkill-0.16-ovflfix.patch:
+  Fix overflow. Bug #337188 by flameeyes@gentoo.org
+
+  07 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  0verkill-0.16-r3.ebuild:
+  QA cleanup: Fix quoting.
+
+  16 Nov 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/0verkill-0.16-docs.patch, -files/0.16-docs.patch,
+  +files/0verkill-0.16-gentoo-paths.patch, -files/0.16-gentoo-paths.patch,
+  +files/0verkill-0.16-home-overflow.patch, -files/0.16-home-overflow.patch,
+  +files/0verkill-0.16-segv.patch, 0verkill-0.16-r3.ebuild:
+  add bounds patch from Ewgenij Starostin (bug #197556); QA fixes; patch name
+  standardizing
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  0verkill-0.16-r3.ebuild:
+  Removing old virtual/x11 dependency.
+
+*0verkill-0.16-r3 (10 Jun 2006)
+
+  10 Jun 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/0verkill-0.16-underflow-check.patch, +0verkill-0.16-r3.ebuild:
+  Fix remote crash #136222.
+
+  30 Apr 2006; Sven Blumenstein <bazik@gentoo.org> 0verkill-0.16-r2.ebuild:
+  Added sparc keyword.
+
+  28 Jan 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  0verkill-0.16-r2.ebuild:
+  Add modular X dependencies.
+
+  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  0verkill-0.16-r2.ebuild:
+  Added sed to remove extra -O3 from CFLAGS.
+
+  03 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  0verkill-0.16-r2.ebuild:
+  error check sed; fix use invocation
+
+  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  0verkill-0.16-r2.ebuild:
+  virtual/x11
+
+*0verkill-0.16-r2 (08 Jan 2004)
+
+  08 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Don't edit paths in data files, screws md5sums.  Chdir instead #37419.
+
+*0verkill-0.16-r1 (30 Nov 2003)
+
+  05 Jan 2004; Jon Portnoy <avenj@gentoo.org> :
+  AMD64 keywords.
+
+  30 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added HOME overflow patch #33701.
+
+*0verkill-0.16 (11 Jul 2003)
+
+  26 Oct 2003; David Holm <dholm@gentoo.org> 0verkill-0.16.ebuild:
+  Added to ~ppc.
+
+  11 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Henrik Johansson <henrik_johansson@home.se> #17639.

@@ -1,0 +1,19 @@
+#!/sbin/runscript
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting Tvheadend"
+	start-stop-daemon --start --quiet --exec /usr/bin/tvheadend \
+		-- -f -C -u ${TVHEADEND_USER} -g ${TVHEADEND_GROUP} \
+		-c ${TVHEADEND_CONFIG} ${TVHEADEND_OPTIONS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Tvheadend"
+	start-stop-daemon --stop --quiet --pidfile /var/run/tvheadend.pid
+	eend $?
+}

@@ -1,0 +1,59 @@
+# ChangeLog for games-arcade/vor
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/vor/ChangeLog,v 1.15 2014/07/16 01:54:53 mr_bones_ Exp $
+
+  16 Jul 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/vor-0.5.4-underlink.patch, -vor-0.5.4.ebuild:
+  old
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> vor-0.5.5.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  30 Mar 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/vor-0.5.5-underlink.patch, vor-0.5.5.ebuild:
+  add underlink patch from Ted Tanberry via bug #505794
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> vor-0.5.5.ebuild:
+  Stable for ppc, wrt bug #458050
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> vor-0.5.5.ebuild:
+  Stable for x86, wrt bug #458050
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> vor-0.5.5.ebuild:
+  Stable for amd64, wrt bug #458050
+
+*vor-0.5.5 (18 Jan 2013)
+
+  18 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org> +vor-0.5.5.ebuild:
+  version bump (bug #452312)
+
+  24 Aug 2012; Michael Sterrett <mr_bones_@gentoo.org> vor-0.5.4.ebuild:
+  any mod support will do
+
+  19 May 2011; Tupone Alfredo <tupone@gentoo.org> vor-0.5.4.ebuild,
+  +files/vor-0.5.4-underlink.patch:
+  Fix underlink. Bug #367455 by Diego Elio Pettenò
+
+  06 Jan 2010; Joseph Jezak <josejx@gentoo.org> vor-0.5.4.ebuild:
+  Marked ppc stable for bug #288964.
+
+  29 Oct 2009; Markus Meier <maekke@gentoo.org> vor-0.5.4.ebuild:
+  amd64/x86 stable, bug #288964
+
+*vor-0.5.4 (30 May 2009)
+
+  30 May 2009; Tristan Heaven <nyhm@gentoo.org> +vor-0.5.4.ebuild:
+  Version bump
+
+  19 Mar 2008; Tristan Heaven <nyhm@gentoo.org> vor-0.5.3.ebuild:
+  Add ~amd64 keyword
+
+  28 May 2007; nixnut <nixnut@gentoo.org> vor-0.5.3.ebuild:
+  Added ~ppc wrt bug 179890
+
+*vor-0.5.3 (22 May 2007)
+
+  22 May 2007; Tristan Heaven <nyhm@gentoo.org> +metadata.xml,
+  +vor-0.5.3.ebuild:
+  Initial commit, bug #128384

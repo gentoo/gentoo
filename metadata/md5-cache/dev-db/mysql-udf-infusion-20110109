@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare setup
+DEPEND=>=virtual/mysql-5.1
+DESCRIPTION=New functions for MySQL implemented as UDF
+EAPI=4
+HOMEPAGE=http://www.xarg.org/2010/11/mysql-my-new-playground/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=virtual/mysql-5.1
+SLOT=0
+SRC_URI=https://github.com/infusion/udf_infusion/tarball/8599a9c -> infusion-udf_infusion-8599a9c.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=17b760b961ffa3c54f6269d8be650518

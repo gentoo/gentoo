@@ -1,0 +1,81 @@
+# ChangeLog for games-puzzle/five-or-more
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/five-or-more/ChangeLog,v 1.20 2015/06/09 15:17:01 eva Exp $
+
+*five-or-more-3.16.1 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  -five-or-more-3.12.2.ebuild, +five-or-more-3.16.1.ebuild:
+  Version bump for Gnome 3.16. Clean up old revision.
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> five-or-more-3.14.1.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> five-or-more-3.14.1.ebuild:
+  amd64 stable, bug 534012
+
+*five-or-more-3.14.1 (22 Dec 2014)
+
+  22 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  -five-or-more-3.10.2.ebuild, -five-or-more-3.12.1.ebuild,
+  +five-or-more-3.14.1.ebuild:
+  Version bump for Gnome 3.14. Clean up old revisions.
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> five-or-more-3.12.2.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> five-or-more-3.12.2.ebuild:
+  Stable for amd64, wrt bug #512912
+
+*five-or-more-3.12.2 (30 May 2014)
+
+  30 May 2014; Pacho Ramos <pacho@gentoo.org> +five-or-more-3.12.2.ebuild:
+  Version bump
+
+*five-or-more-3.12.1 (27 Apr 2014)
+
+  27 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +five-or-more-3.12.1.ebuild:
+  Version bump for Gnome 3.12.
+
+  26 Apr 2014; Pacho Ramos <pacho@gentoo.org> -five-or-more-3.8.2.ebuild:
+  drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> five-or-more-3.10.2.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> five-or-more-3.10.2.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> five-or-more-3.10.2.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> five-or-more-3.10.2.ebuild:
+  arch stable, bug 888
+
+*five-or-more-3.10.2 (24 Dec 2013)
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org> +five-or-more-3.10.2.ebuild:
+  Version bump for Gnome 3.10
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> five-or-more-3.8.2.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> five-or-more-3.8.2.ebuild:
+  amd64 stable, bug #478252
+
+  06 Nov 2013; Pacho Ramos <pacho@gentoo.org> five-or-more-3.8.2.ebuild:
+  x86 keyword, bug #476710
+
+  31 Aug 2013; Sergey Popov <pinkbyte@gentoo.org> five-or-more-3.8.2.ebuild:
+  Add ~arm keyword, wrt bug #476710
+
+  12 Aug 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  five-or-more-3.8.2.ebuild:
+  Replace itstools by yelp-tools like other games ebuilds.
+
+*five-or-more-3.8.2 (30 Jun 2013)
+
+  30 Jun 2013; Pacho Ramos <pacho@gentoo.org> +five-or-more-3.8.2.ebuild,
+  +metadata.xml:
+  Add game splitted from gnome-games by upstream

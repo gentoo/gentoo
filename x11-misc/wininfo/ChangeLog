@@ -1,0 +1,50 @@
+# ChangeLog for x11-misc/wininfo
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/wininfo/ChangeLog,v 1.14 2012/05/05 04:53:45 jdhore Exp $
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> wininfo-0.7.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 Mar 2011; Kevin McCarthy <signals@gentoo.org> wininfo-0.7.ebuild:
+  Slotted gtk+ depend and EAPI=2 bump to support it.
+
+  02 Feb 2008; Samuli Suominen <drac@gentoo.org>
+  +files/wininfo-0.7-desktop-entry.patch, wininfo-0.7.ebuild:
+  amd64 stable wrt #208450, install correct documentation and fix desktop entry.
+
+  15 Nov 2006; Krzysiek Pawlik <nelchael@gentoo.org> wininfo-0.7.ebuild:
+  Add missing deps, see bug #155214.
+
+  23 Oct 2006; David Shakaryan <omp@gentoo.org> wininfo-0.7.ebuild:
+  RDEPEND should not have dev-util/pkgconfig.
+
+  11 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org> wininfo-0.7.ebuild:
+  Add missing dev-util/pkgconfig to DEPEND, see bug #150816.
+
+  01 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org> wininfo-0.7.ebuild:
+  Fixed install, thanks to James Rowe <jnrowe@ukfsn.org>, see bug #138138.
+
+  21 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> wininfo-0.7.ebuild:
+  Fixed DEPEND for modular X.
+
+  10 Dec 2005; Luis Medinas <metalgod@gentoo.org> wininfo-0.7.ebuild:
+  Added ~amd64 keyword.
+
+  02 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org> wininfo-0.7.ebuild:
+  Fixed dodoc not to install COPYING and/or INSTALL.
+
+  26 Jul 2005; David Holm <dholm@gentoo.org> wininfo-0.7.ebuild:
+  Added to ~ppc.
+
+  20 Jun 2005; Jonathan Smith <smithj@gentoo.org> wininfo-0.7.ebuild:
+  stable x86
+
+  15 Jun 2005; Jonathan Smith <smithj@gentoo.org> wininfo-0.7.ebuild:
+  fixed src_uri for #90152
+
+*wininfo-0.7 (05 Dec 2004)
+
+  05 Dec 2004; Markus Nigbur <pyrania@gentoo.org> +metadata.xml,
+  +wininfo-0.7.ebuild:
+  Initial import.
+

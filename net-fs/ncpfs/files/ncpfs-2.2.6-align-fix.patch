@@ -1,0 +1,12 @@
+diff -Naurp ncpfs-2.2.6.orig/lib/ndslib.c ncpfs-2.2.6/lib/ndslib.c
+--- ncpfs-2.2.6.orig/lib/ndslib.c	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6/lib/ndslib.c	2014-08-12 21:07:35.559190454 -0400
+@@ -957,7 +957,7 @@ static NWDSCCODE nds_beginauth2(
+ 	NWDSCCODE err;
+ 	int n1, n3;
+ 	u_int16_t n3a;
+-	char rpb_b[DEFAULT_MESSAGE_LEN];
++	char rpb_b[DEFAULT_MESSAGE_LEN] __attribute__ ((aligned (4)));
+ 	Buf_T rpb;
+     	size_t k1tl;
+     

@@ -1,0 +1,17 @@
+# ChangeLog for media-sound/xmms2-scrobbler
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/xmms2-scrobbler/ChangeLog,v 1.2 2012/12/04 19:38:57 slyfox Exp $
+
+  04 Dec 2012; Sergei Trofimovich <slyfox@gentoo.org>
+  xmms2-scrobbler-0.4.0.ebuild:
+  Fixed license to be MIT (bug #445950 by Ulrich Müller)
+
+*xmms2-scrobbler-0.4.0 (03 Mar 2012)
+
+  03 Mar 2012; Sergei Trofimovich <slyfox@gentoo.org>
+  +files/xmms2-scrobbler-0.4.0-ld-order.patch,
+  +files/xmms2-scrobbler-0.4.0-ldflags.patch,
+  +files/xmms2-scrobbler-0.4.0-libs.patch, +metadata.xml,
+  +xmms2-scrobbler-0.4.0.ebuild:
+  Initial ebuild by Alexander Tsoy  (bug #341939). I slightly cleaned it and
+  added --as-needed fixes.

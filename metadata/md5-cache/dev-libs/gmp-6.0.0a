@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare test
+DEPEND=sys-devel/m4 app-arch/xz-utils
+DESCRIPTION=Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers
+EAPI=4
+HOMEPAGE=http://gmplib.org/
+IUSE=doc cxx pgo static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+LICENSE=|| ( LGPL-3+ GPL-2+ )
+RDEPEND=abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20131008-r1 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )
+SLOT=0
+SRC_URI=mirror://gnu/gmp/gmp-6.0.0a.tar.xz ftp://ftp.gmplib.org/pub/gmp-6.0.0a/gmp-6.0.0a.tar.xz doc? ( http://gmplib.org/gmp-man-6.0.0a.pdf )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	0983c7893df461213a05f791cc7dea6d	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=dc98f1787fe042fd3c7979c094d18dd6

@@ -1,0 +1,178 @@
+From 27454d1e55b2a5cefc3cc1044d036add9ee9a6d3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Diego=20Elio=20Petten=C3=B2?= <flameeyes@flameeyes.eu>
+Date: Tue, 22 May 2012 16:25:37 -0700
+Subject: [PATCH] aapl: fix building with gcc-4.7.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Starting with GCC 4.7, you have to explicit methods inherited from
+base templates, otherwise it will refuse to build.
+
+---
+
+The URL reported in the README is no longer registered, so I couldn't
+find a way to report this to an upstream project.
+
+Signed-off-by: Diego Elio Pettenò <flameeyes@flameeyes.eu>
+---
+ aapl/avlcommon.h  |   12 ++++++------
+ aapl/bstcommon.h  |   16 ++++++++--------
+ aapl/bubblesort.h |    2 +-
+ aapl/mergesort.h  |    2 +-
+ 4 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/aapl/avlcommon.h b/aapl/avlcommon.h
+index 06983bc..2e3c190 100644
+--- a/aapl/avlcommon.h
++++ b/aapl/avlcommon.h
+@@ -881,9 +881,9 @@ template <AVLMEL_TEMPDEF> Element *AvlTree<AVLMEL_TEMPUSE>::
+ 		}
+ 
+ #ifdef AVL_BASIC
+-		keyRelation = compare( *element, *curEl );
++		keyRelation = this->compare( *element, *curEl );
+ #else
+-		keyRelation = compare( element->BASEKEY(getKey()), 
++		keyRelation = this->compare( element->BASEKEY(getKey()),
+ 				curEl->BASEKEY(getKey()) );
+ #endif
+ 
+@@ -920,7 +920,7 @@ template <AVLMEL_TEMPDEF> Element *AvlTree<AVLMEL_TEMPUSE>::
+ 	long keyRelation;
+ 
+ 	while (curEl) {
+-		keyRelation = compare( *element, *curEl );
++		keyRelation = this->compare( *element, *curEl );
+ 
+ 		/* Do we go left? */
+ 		if ( keyRelation < 0 )
+@@ -969,7 +969,7 @@ template <AVLMEL_TEMPDEF> Element *AvlTree<AVLMEL_TEMPUSE>::
+ 			return element;
+ 		}
+ 
+-		keyRelation = compare( key, curEl->BASEKEY(getKey()) );
++		keyRelation = this->compare( key, curEl->BASEKEY(getKey()) );
+ 
+ 		/* Do we go left? */
+ 		if ( keyRelation < 0 ) {
+@@ -1023,7 +1023,7 @@ template <AVLMEL_TEMPDEF> Element *AvlTree<AVLMEL_TEMPUSE>::
+ 			return element;
+ 		}
+ 
+-		keyRelation = compare(key, curEl->getKey());
++		keyRelation = this->compare(key, curEl->getKey());
+ 
+ 		/* Do we go left? */
+ 		if ( keyRelation < 0 ) {
+@@ -1058,7 +1058,7 @@ template <AVLMEL_TEMPDEF> Element *AvlTree<AVLMEL_TEMPUSE>::
+ 	long keyRelation;
+ 
+ 	while (curEl) {
+-		keyRelation = compare( key, curEl->BASEKEY(getKey()) );
++		keyRelation = this->compare( key, curEl->BASEKEY(getKey()) );
+ 
+ 		/* Do we go left? */
+ 		if ( keyRelation < 0 )
+diff --git a/aapl/bstcommon.h b/aapl/bstcommon.h
+index 888717f..7c53ff3 100644
+--- a/aapl/bstcommon.h
++++ b/aapl/bstcommon.h
+@@ -361,7 +361,7 @@ template <BST_TEMPL_DEF> bool BstTable<BST_TEMPL_USE>::
+ 		}
+ 
+ 		mid = lower + ((upper-lower)>>1);
+-		keyRelation = compare(key, GET_KEY(*mid));
++		keyRelation = this->compare(key, GET_KEY(*mid));
+ 
+ 		if ( keyRelation < 0 )
+ 			upper = mid - 1;
+@@ -373,12 +373,12 @@ template <BST_TEMPL_DEF> bool BstTable<BST_TEMPL_USE>::
+ 
+ 			lower = mid - 1;
+ 			while ( lower != lowEnd && 
+-					compare(key, GET_KEY(*lower)) == 0 )
++					this->compare(key, GET_KEY(*lower)) == 0 )
+ 				lower--;
+ 
+ 			upper = mid + 1;
+ 			while ( upper != highEnd && 
+-					compare(key, GET_KEY(*upper)) == 0 )
++					this->compare(key, GET_KEY(*upper)) == 0 )
+ 				upper++;
+ 			
+ 			low = (Element*)lower + 1;
+@@ -419,7 +419,7 @@ template <BST_TEMPL_DEF> Element *BstTable<BST_TEMPL_USE>::
+ 		}
+ 
+ 		mid = lower + ((upper-lower)>>1);
+-		keyRelation = compare(key, GET_KEY(*mid));
++		keyRelation = this->compare(key, GET_KEY(*mid));
+ 
+ 		if ( keyRelation < 0 )
+ 			upper = mid - 1;
+@@ -457,7 +457,7 @@ template <BST_TEMPL_DEF> Element *BstTable<BST_TEMPL_USE>::
+ 		}
+ 
+ 		mid = lower + ((upper-lower)>>1);
+-		keyRelation = compare(key, GET_KEY(*mid));
++		keyRelation = this->compare(key, GET_KEY(*mid));
+ 
+ 		if ( keyRelation < 0 )
+ 			upper = mid - 1;
+@@ -508,7 +508,7 @@ template <BST_TEMPL_DEF> Element *BstTable<BST_TEMPL_USE>::
+ 		}
+ 
+ 		mid = lower + ((upper-lower)>>1);
+-		keyRelation = compare(key, GET_KEY(*mid));
++		keyRelation = this->compare(key, GET_KEY(*mid));
+ 
+ 		if ( keyRelation < 0 )
+ 			upper = mid - 1;
+@@ -603,7 +603,7 @@ template <BST_TEMPL_DEF> Element *BstTable<BST_TEMPL_USE>::
+ 		}
+ 
+ 		mid = lower + ((upper-lower)>>1);
+-		keyRelation = compare(GET_KEY(el), GET_KEY(*mid));
++		keyRelation = this->compare(GET_KEY(el), GET_KEY(*mid));
+ 
+ 		if ( keyRelation < 0 )
+ 			upper = mid - 1;
+@@ -662,7 +662,7 @@ template <BST_TEMPL_DEF> Element *BstTable<BST_TEMPL_USE>::
+ 		}
+ 
+ 		mid = lower + ((upper-lower)>>1);
+-		keyRelation = compare(GET_KEY(el), GET_KEY(*mid));
++		keyRelation = this->compare(GET_KEY(el), GET_KEY(*mid));
+ 
+ 		if ( keyRelation < 0 )
+ 			upper = mid - 1;
+diff --git a/aapl/bubblesort.h b/aapl/bubblesort.h
+index bcc2fb6..f0f4ce5 100644
+--- a/aapl/bubblesort.h
++++ b/aapl/bubblesort.h
+@@ -72,7 +72,7 @@ template <class T, class Compare> void BubbleSort<T,Compare>::
+ 		changed = false;
+ 		for ( long i = 0; i < len-pass; i++ ) {
+ 			/* Do we swap pos with the next one? */
+-			if ( compare( data[i], data[i+1] ) > 0 ) {
++			if ( this->compare( data[i], data[i+1] ) > 0 ) {
+ 				char tmp[sizeof(T)];
+ 
+ 				/* Swap the two items. */
+diff --git a/aapl/mergesort.h b/aapl/mergesort.h
+index 68b8426..8cefa73 100644
+--- a/aapl/mergesort.h
++++ b/aapl/mergesort.h
+@@ -110,7 +110,7 @@ template< class T, class Compare> void MergeSort<T,Compare>::
+ 		}
+ 		else {
+ 			/* Both upper and lower left. */
+-			if ( compare(*lower, *upper) <= 0 )
++			if ( this->compare(*lower, *upper) <= 0 )
+ 				memcpy( dest++, lower++, sizeof(T) );
+ 			else
+ 				memcpy( dest++, upper++, sizeof(T) );
+-- 
+1.7.8.6
+

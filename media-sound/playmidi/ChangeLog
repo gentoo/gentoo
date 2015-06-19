@@ -1,0 +1,54 @@
+# ChangeLog for media-sound/playmidi
+# Copyright 2000-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/playmidi/ChangeLog,v 1.14 2007/12/11 15:48:24 fmccor Exp $
+
+  11 Dec 2007; Ferris McCormick <fmccor@gentoo.org> playmidi-2.5-r2.ebuild:
+  Sparc stable --- Bug #200822 (missing linux/awe_voice.h file).
+
+  30 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  playmidi-2.5-r2.ebuild:
+  stable x86, bug 200822
+
+  30 Nov 2007; Steve Dibb <beandog@gentoo.org> playmidi-2.5-r2.ebuild:
+  amd64 stable, bug 200822
+
+*playmidi-2.5-r2 (25 Jul 2007)
+
+  25 Jul 2007; Samuli Suominen <drac@gentoo.org>
+  +files/playmidi-2.5-includes.patch, +playmidi-2.5-r2.ebuild:
+  Fix building with current linux-headers >=2.6.22.
+
+  22 Jul 2007; Samuli Suominen <drac@gentoo.org> playmidi-2.5-r1.ebuild:
+  Remove virtual/x11 references.
+
+  03 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  27 Jan 2006; Andrej Kacian <ticho@gentoo.org> playmidi-2.5-r1.ebuild:
+  Ported dependencies for modular X.
+
+*playmidi-2.5-r1 (18 Jan 2005)
+
+  18 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/CAN-2005-0020.patch, +playmidi-2.5-r1.ebuild, -playmidi-2.5.ebuild:
+  Revbump for security bug #78429.
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> playmidi-2.5.ebuild:
+  Stable amd64, sparc.
+
+  10 May 2004; Michael Sterrett <mr_bones_@gentoo.org> playmidi-2.5.ebuild:
+  fix bug #50517; use emake; fix use usage; tidy
+
+  08 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> playmidi-2.5.ebuild,
+  files/playmidi-2.5.patch:
+  Added missing patch to cvs.
+
+  31 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> playmidi-2.5.ebuild:
+  Stable x86.  Ebuild cleanup.
+
+*playmidi-2.5 (25 Jan 2004)
+
+  25 Jan 2004; Jeremy Huddleston <eradicator@gentoo.org> playmidi-2.5.ebuild:
+  playmidi is a midi player with command-line, curses, svgalib, and gtk based
+  GUIs
+

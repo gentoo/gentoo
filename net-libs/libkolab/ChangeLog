@@ -1,0 +1,116 @@
+# ChangeLog for net-libs/libkolab
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libkolab/ChangeLog,v 1.30 2015/01/02 14:27:58 mrueg Exp $
+
+*libkolab-0.5.3 (02 Jan 2015)
+
+  02 Jan 2015; Manuel Rüger <mrueg@gentoo.org> +libkolab-0.5.3.ebuild:
+  Version bump.
+
+  28 Nov 2014; Manuel Rüger <mrueg@gentoo.org> -libkolab-0.4.1.ebuild:
+  Cleanup old.
+
+  28 Nov 2014; Agostino Sarubbo <ago@gentoo.org> libkolab-0.5.2.ebuild:
+  Stable for ppc64, wrt bug #530880
+
+  28 Nov 2014; Agostino Sarubbo <ago@gentoo.org> libkolab-0.5.2.ebuild:
+  Stable for ppc, wrt bug #530880
+
+  27 Nov 2014; Agostino Sarubbo <ago@gentoo.org> libkolab-0.5.2.ebuild:
+  Stable for amd64, wrt bug #530880
+
+  27 Nov 2014; Agostino Sarubbo <ago@gentoo.org> libkolab-0.5.2.ebuild:
+  Stable for x86, wrt bug #530880
+
+  18 Nov 2014; Manuel Rüger <mrueg@gentoo.org>
+  -files/libkolab-0.4.2-cmake-2.8.11.patch:
+  Cleanup unused patches.
+
+  22 Oct 2014; Michael Palimaka <kensington@gentoo.org> libkolab-0.4.1.ebuild:
+  Pass correct option for toggling tests wrt bug #526396.
+
+  12 Oct 2014; Michael Palimaka <kensington@gentoo.org> -libkolab-0.4.2.ebuild,
+  -libkolab-0.5.0.ebuild:
+  Remove old.
+
+*libkolab-0.5.2 (20 Jul 2014)
+
+  20 Jul 2014; Manuel Rüger <mrueg@gentoo.org> +libkolab-0.5.2.ebuild,
+  libkolab-0.5.0.ebuild:
+  Version bump.
+
+*libkolab-0.5.0 (21 Feb 2014)
+
+  21 Feb 2014; Michael Palimaka <kensington@gentoo.org> +libkolab-0.5.0.ebuild:
+  Version bump.
+
+*libkolab-0.4.2 (15 Sep 2013)
+
+  15 Sep 2013; Johannes Huber <johu@gentoo.org>
+  +files/libkolab-0.4.2-cmake-2.8.11.patch, +libkolab-0.4.2.ebuild:
+  Version bump wrt bug #484206.
+
+  30 May 2013; Michael Palimaka <kensington@gentoo.org> libkolab-0.4.1.ebuild:
+  Add USE dependency default in preparation for the removal of the semantic-
+  desktop USE flag.
+
+  05 May 2013; Johannes Huber <johu@gentoo.org> -libkolab-0.3.2.ebuild:
+  Remove old.
+
+  05 May 2013; Agostino Sarubbo <ago@gentoo.org> libkolab-0.4.1.ebuild:
+  Stable for ppc64, wrt bug #466074
+
+  01 May 2013; Agostino Sarubbo <ago@gentoo.org> libkolab-0.4.1.ebuild:
+  Stable for ppc, wrt bug #466074
+
+  30 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libkolab-0.4.1.ebuild:
+  Stable for x86, wrt bug #466074
+
+  29 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libkolab-0.4.1.ebuild:
+  Stable for amd64, wrt bug #466074
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libkolab-0.3.2.ebuild:
+  Stable for ppc64, wrt bug #462890
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org> libkolab-0.4.1.ebuild:
+  Add ~ppc64, wrt bug #455960
+
+*libkolab-0.4.1 (29 Jan 2013)
+
+  29 Jan 2013; Michael Palimaka <kensington@gentoo.org> +libkolab-0.4.1.ebuild,
+  -files/libkolab-fix-include.patch, -libkolab-0.2.0.ebuild:
+  Version bump wrt bug #453680. Remove old.
+
+  01 Dec 2012; Michael Palimaka <kensington@gentoo.org> libkolab-0.2.0.ebuild,
+  libkolab-0.3.2.ebuild:
+  Correct dependencies wrt bug #445318.
+
+  30 Nov 2012; <ago@gentoo.org> libkolab-0.3.2.ebuild:
+  Stable for ppc, wrt bug #442394
+
+  30 Nov 2012; Michael Palimaka <kensington@gentoo.org> libkolab-0.2.0.ebuild,
+  libkolab-0.3.2.ebuild:
+  Fix HOMEPAGE.
+
+  23 Nov 2012; Agostino Sarubbo <ago@gentoo.org> libkolab-0.3.2.ebuild:
+  Stable for x86, wrt bug #442394
+
+  23 Nov 2012; Agostino Sarubbo <ago@gentoo.org> libkolab-0.3.2.ebuild:
+  Stable for amd64, wrt bug #442394
+
+  17 Oct 2012; Markus Meier <maekke@gentoo.org> libkolab-0.3.2.ebuild:
+  add ~arm, bug #430072
+
+*libkolab-0.3.2 (26 Sep 2012)
+
+  26 Sep 2012; Chris Reffett <creffett@gentoo.org> +libkolab-0.3.2.ebuild:
+  Version bump
+
+  26 Sep 2012; Chris Reffett <creffett@gentoo.org> libkolab-0.2.0.ebuild:
+  Fix licenses
+
+*libkolab-0.2.0 (01 Aug 2012)
+
+  01 Aug 2012; Johannes Huber <johu@gentoo.org> +libkolab-0.2.0.ebuild,
+  +files/libkolab-fix-include.patch, +metadata.xml:
+  Initial commit. Import from kde overlay. Needed for KDE SC 4.9.0.

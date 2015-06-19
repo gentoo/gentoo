@@ -1,0 +1,15 @@
+#!/sbin/runscript
+
+start() {
+  ebegin "Starting up wmacpimond daemon"
+	touch /var/tmp/wmacpimon.prc
+  start-stop-daemon --start --quiet --exec /usr/bin/wmacpimond -- /var/tmp/wmacpimon.prc >/dev/null
+  eend $? "Failed to start wmacpimond"
+}
+
+stop() {
+  ebegin "Shutting down wmacpimond daemon"
+	killall wmacpimonmd &>/dev/null
+	rm /var/tmp/wmacpimon.prc &>/dev/null
+  eend $? "Failed to stop wmacpimond"
+}

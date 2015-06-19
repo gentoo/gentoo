@@ -1,0 +1,39 @@
+# ChangeLog for games-puzzle/hangman
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/hangman/ChangeLog,v 1.11 2015/02/21 17:50:20 tupone Exp $
+
+  21 Feb 2015; Tupone Alfredo <tupone@gentoo.org> hangman-0.9.2.ebuild:
+  EAPI 5
+
+  28 May 2010; Tupone Alfredo <tupone@gentoo.org> hangman-0.9.2.ebuild:
+  Fix collision with games-misc/bsd-games. Bug #301003
+
+  11 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> hangman-0.9.2.ebuild:
+  EAPI=2; build with gcc43
+
+  14 Mar 2007; Tristan Heaven <nyhm@gentoo.org> hangman-0.9.2.ebuild:
+  Install menu entry, bug #160222
+
+  15 Aug 2006; Thomas Cort <tcort@gentoo.org> hangman-0.9.2.ebuild:
+  Stable on amd64 wrt Bug #143961
+
+  29 Dec 2004; Joseph Jezak <josejx@gentoo.org> hangman-0.9.2.ebuild:
+  Marked ppc stable.
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> hangman-0.9.2.ebuild:
+  Added ~ppc.
+
+  10 May 2004; Jason Wever <weeve@gentoo.org> hangman-0.9.2.ebuild:
+  Added ~sparc keyword.
+
+*hangman-0.9.2 (12 Apr 2004)
+
+  12 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> hangman-0.9.2.ebuild:
+  version bump
+
+*hangman-0.9 (05 Mar 2004)
+
+  05 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> hangman-0.9.ebuild,
+  metadata.xml:
+  initial commit
+

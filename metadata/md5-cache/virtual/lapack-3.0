@@ -1,0 +1,6 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for Linear Algebra Package FORTRAN 77 (LAPACK) implementation
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd
+RDEPEND=|| ( sci-libs/lapack-reference >=sci-libs/mkl-9.1.023 >=sci-libs/acml-3.6 )
+SLOT=0
+_md5_=410f7e258f0449a5dc94b54beeec9d76

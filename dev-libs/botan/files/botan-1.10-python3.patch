@@ -1,0 +1,24 @@
+Make configure script work for Python 3.
+
+In Python 3, map returns an iterable, not a list, so for a subsequent map to
+work we have to convert that to a list explicitely.  This should work for
+Python 2 just as well, so the patch can be applied unconditionally.
+
+2013-09-21 Martin von Gagern
+
+References:
+https://bugs.gentoo.org/485490
+
+Index: Botan-1.10.5/configure.py
+===================================================================
+--- Botan-1.10.5.orig/configure.py
++++ Botan-1.10.5/configure.py
+@@ -1780,7 +1780,7 @@ def main(argv = None):
+                 gcc_version = stdout.strip()
+ 
+                 logging.info('Detected gcc version %s' % (gcc_version))
+-                return map(int, gcc_version.split('.')[0:2])
++                return [int(c) for c in gcc_version.split('.')[0:2]]
+             except OSError:
+                 logging.warning('Could not execute %s for version check' % (gcc_bin))
+                 return None

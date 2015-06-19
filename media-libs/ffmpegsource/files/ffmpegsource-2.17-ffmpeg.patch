@@ -1,0 +1,102 @@
+https://bugs.gentoo.org/show_bug.cgi?id=417983
+Backported from upstream.
+
+Index: ffms-2.17-src/configure.in
+===================================================================
+--- ffms-2.17-src.orig/configure.in
++++ ffms-2.17-src/configure.in
+@@ -135,7 +135,7 @@ AC_DEFUN([TEST_LIBAV],
+             #include <libavcodec/avcodec.h>
+             #include <libswscale/swscale.h>
+             ]],[[
+-                avcodec_init();
++                av_register_all();
+                 swscale_version();
+                 #ifdef FFMS_USE_FFMPEG_COMPAT
+                 int bogus = CODEC_ID_G2M;
+Index: ffms-2.17-src/include/ffmscompat.h
+===================================================================
+--- ffms-2.17-src.orig/include/ffmscompat.h
++++ ffms-2.17-src/include/ffmscompat.h
+@@ -84,6 +84,14 @@
+ #	else
+ #		define FFMS_CALCULATE_DELAY (CodecContext->has_b_frames + (CodecContext->thread_count - 1))
+ #	endif
++#       if VERSION_CHECK(LIBAVCODEC_VERSION_INT, <, 54, 25, 0, 54, 51, 100)
++#               define FFMS_ID(x) (CODEC_ID_##x)
++#               define FFMS_CodecID CodecID
++#       else
++#               define FFMS_ID(x) (AV_CODEC_ID_##x)
++#               define FFMS_CodecID AVCodecID
++#               undef CodecID
++#       endif
+ #endif
+ 
+ #ifdef LIBAVUTIL_VERSION_INT
+Index: ffms-2.17-src/src/core/codectype.cpp
+===================================================================
+--- ffms-2.17-src.orig/src/core/codectype.cpp
++++ ffms-2.17-src/src/core/codectype.cpp
+@@ -25,7 +25,7 @@
+ 
+ typedef struct CodecTags {
+ 	char str[20];
+-	CodecID id;
++	FFMS_CodecID id;
+ } CodecTags;
+ 
+ static const CodecTags mkv_codec_tags[] = {
+@@ -92,7 +92,7 @@ static const CodecTags mkv_codec_tags[]
+ };
+ 
+ typedef struct AVCodecTag {
+-	enum CodecID id;
++	enum FFMS_CodecID id;
+ 	unsigned int tag;
+ } AVCodecTag;
+ 
+@@ -400,7 +400,7 @@ const char *GetLAVCSampleFormatName(AVSa
+ 	}
+ }
+ 
+-CodecID MatroskaToFFCodecID(char *Codec, void *CodecPrivate, unsigned int FourCC, unsigned int BitsPerSample) {
++FFMS_CodecID MatroskaToFFCodecID(char *Codec, void *CodecPrivate, unsigned int FourCC, unsigned int BitsPerSample) {
+ 	/* Look up native codecs */
+ 	for(int i = 0; mkv_codec_tags[i].id != CODEC_ID_NONE; i++){
+ 		if(!strncmp(mkv_codec_tags[i].str, Codec,
+@@ -408,7 +408,7 @@ CodecID MatroskaToFFCodecID(char *Codec,
+ 
+ 				// Uncompressed and exotic format fixup
+ 				// This list is incomplete
+-				CodecID CID = mkv_codec_tags[i].id;
++				FFMS_CodecID CID = mkv_codec_tags[i].id;
+ 				switch (CID) {
+ 					case CODEC_ID_PCM_S16LE:
+ 						switch (BitsPerSample) {
+Index: ffms-2.17-src/src/core/codectype.h
+===================================================================
+--- ffms-2.17-src.orig/src/core/codectype.h
++++ ffms-2.17-src/src/core/codectype.h
+@@ -27,5 +27,5 @@ extern "C" {
+ #include "ffmscompat.h"
+ 
+ FFMS_TrackType HaaliTrackTypeToFFTrackType(int TT);
+-CodecID MatroskaToFFCodecID(char *Codec, void *CodecPrivate, unsigned int FourCC = 0, unsigned int BitsPerSample = 0);
++FFMS_CodecID MatroskaToFFCodecID(char *Codec, void *CodecPrivate, unsigned int FourCC = 0, unsigned int BitsPerSample = 0);
+ const char *GetLAVCSampleFormatName(AVSampleFormat s);
+Index: ffms-2.17-src/src/core/matroskaparser.h
+===================================================================
+--- ffms-2.17-src.orig/src/core/matroskaparser.h
++++ ffms-2.17-src/src/core/matroskaparser.h
+@@ -32,6 +32,11 @@
+ #ifndef MATROSKA_PARSER_H
+ #define	MATROSKA_PARSER_H
+ 
++/* Make sure we undefine CodecID, since libavcodec defines it as AVCodec ID */
++#ifdef CodecID
++#undef CodecID
++#endif
++
+ /* Random notes:
+  *
+  * The parser does not process frame data in any way and does not read it into

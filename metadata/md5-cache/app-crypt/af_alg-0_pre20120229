@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-libs/openssl
+DESCRIPTION=AF_ALG for OpenSSL
+EAPI=5
+HOMEPAGE=http://carnivore.it/2011/04/23/openssl_-_af_alg
+KEYWORDS=~amd64 ~x86
+LICENSE=openssl
+RDEPEND=dev-libs/openssl
+SLOT=0
+SRC_URI=http://src.carnivore.it/users/common/af_alg/snapshot/af_alg-7b13512edbd77c35d20edb4e53d5d83eeaf05d52.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=211eb20a71cfc46a9697ddb0617d9a8f

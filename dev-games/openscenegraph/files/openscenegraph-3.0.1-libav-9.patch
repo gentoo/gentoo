@@ -1,0 +1,284 @@
+Patch by lu_zero
+https://bugs.gentoo.org/show_bug.cgi?id=439606
+upstream svn rev. 13335 contains similar changes.
+no need to upstream this patch.
+
+diff -burN OpenSceneGraph-3.0.1.old//CMakeModules/FindFFmpeg.cmake OpenSceneGraph-3.0.1/CMakeModules/FindFFmpeg.cmake
+--- OpenSceneGraph-3.0.1.old//CMakeModules/FindFFmpeg.cmake	2011-04-19 13:40:22.000000000 +0200
++++ OpenSceneGraph-3.0.1/CMakeModules/FindFFmpeg.cmake	2012-11-22 13:59:28.303401170 +0100
+@@ -131,20 +131,16 @@
+     SET(FFMPEG_FOUND "YES")
+ 
+     SET(FFMPEG_INCLUDE_DIRS
+-        ${FFMPEG_LIBAVFORMAT_INCLUDE_DIRS} ${FFMPEG_LIBAVFORMAT_INCLUDE_DIRS}/libavformat
+-        ${FFMPEG_LIBAVDEVICE_INCLUDE_DIRS} ${FFMPEG_LIBAVDEVICE_INCLUDE_DIRS}/libavdevice
+-        ${FFMPEG_LIBAVCODEC_INCLUDE_DIRS} ${FFMPEG_LIBAVCODEC_INCLUDE_DIRS}/libavcodec
+-        ${FFMPEG_LIBAVUTIL_INCLUDE_DIRS} ${FFMPEG_LIBAVUTIL_INCLUDE_DIRS}/libavutil
++        ${FFMPEG_LIBAVFORMAT_INCLUDE_DIRS}
++        ${FFMPEG_LIBAVDEVICE_INCLUDE_DIRS}
++        ${FFMPEG_LIBAVCODEC_INCLUDE_DIRS}
++        ${FFMPEG_LIBAVUTIL_INCLUDE_DIRS}
+     )
+ 
+     IF (FFMPEG_STDINT_INCLUDE_DIR)
+         SET(FFMPEG_INCLUDE_DIRS
+             ${FFMPEG_INCLUDE_DIRS}
+             ${FFMPEG_STDINT_INCLUDE_DIR}
+-            ${FFMPEG_STDINT_INCLUDE_DIR}/libavformat
+-            ${FFMPEG_STDINT_INCLUDE_DIR}/libavdevice
+-            ${FFMPEG_STDINT_INCLUDE_DIR}/libavcodec
+-            ${FFMPEG_STDINT_INCLUDE_DIR}/libavutil
+         )
+     ENDIF()
+ 
+diff -burN OpenSceneGraph-3.0.1.old//src/osgPlugins/ffmpeg/FFmpegDecoderAudio.cpp OpenSceneGraph-3.0.1/src/osgPlugins/ffmpeg/FFmpegDecoderAudio.cpp
+--- OpenSceneGraph-3.0.1.old//src/osgPlugins/ffmpeg/FFmpegDecoderAudio.cpp	2011-04-19 13:40:22.000000000 +0200
++++ OpenSceneGraph-3.0.1/src/osgPlugins/ffmpeg/FFmpegDecoderAudio.cpp	2012-11-22 15:03:53.668601596 +0100
+@@ -89,7 +89,7 @@
+         //    m_context->flags |= CODEC_FLAG_TRUNCATED;
+ 
+         // Open codec
+-        if (avcodec_open(m_context, p_codec) < 0)
++        if (avcodec_open2(m_context, p_codec, NULL) < 0)
+             throw std::runtime_error("avcodec_open() failed");
+     }
+ 
+Binary files OpenSceneGraph-3.0.1.old//src/osgPlugins/ffmpeg/.FFmpegDecoderAudio.cpp.swp and OpenSceneGraph-3.0.1/src/osgPlugins/ffmpeg/.FFmpegDecoderAudio.cpp.swp differ
+diff -burN OpenSceneGraph-3.0.1.old//src/osgPlugins/ffmpeg/FFmpegDecoder.cpp OpenSceneGraph-3.0.1/src/osgPlugins/ffmpeg/FFmpegDecoder.cpp
+--- OpenSceneGraph-3.0.1.old//src/osgPlugins/ffmpeg/FFmpegDecoder.cpp	2011-07-15 12:25:12.000000000 +0200
++++ OpenSceneGraph-3.0.1/src/osgPlugins/ffmpeg/FFmpegDecoder.cpp	2012-11-22 15:59:39.569775078 +0100
+@@ -64,21 +64,12 @@
+         
+             OSG_NOTICE<<"Attempting to stream "<<filename<<std::endl;
+ 
+-            AVFormatParameters formatParams;
+-            memset(&formatParams, 0, sizeof(AVFormatParameters));
+             AVInputFormat *iformat;
++            AVDictionary *options = NULL;
+ 
+-            formatParams.channel = 0;
+-            formatParams.standard = 0;
+-#if 1
+-            formatParams.width = 320;
+-            formatParams.height = 240;
+-#else
+-            formatParams.width = 640;
+-            formatParams.height = 480;
+-#endif            
+-            formatParams.time_base.num = 1;
+-            formatParams.time_base.den = 30;
++            av_dict_set(&options, "video_size", "320x240", 0);
++
++            av_dict_set(&options, "framerate", "1/30", 0);
+ 
+             std::string format = "video4linux2";
+             iformat = av_find_input_format(format.c_str());
+@@ -92,7 +83,7 @@
+                 OSG_NOTICE<<"Failed to find input format: "<<format<<std::endl;
+             }
+ 
+-            int error = av_open_input_file(&p_format_context, filename.c_str(), iformat, 0, &formatParams);
++            int error = avformat_open_input(&p_format_context, filename.c_str(), iformat, &options);
+             if (error != 0)
+             {
+                 std::string error_str;
+@@ -110,21 +101,21 @@
+                     default: error_str = "Unknown error"; break;
+                 }
+ 
+-                throw std::runtime_error("av_open_input_file() failed : " + error_str);
++                throw std::runtime_error("avformat_open_input() failed : " + error_str);
+             }
+         }
+         else
+         {
+             AVInputFormat* av_format = (parameters ? parameters->getFormat() : 0);
+-            AVFormatParameters* av_params = (parameters ? parameters->getFormatParameter() : 0);
+-            if (av_open_input_file(&p_format_context, filename.c_str(), av_format, 0, av_params) !=0 )
++            AVDictionary* av_options = (parameters ? parameters->getOptions() : NULL);
++            if (avformat_open_input(&p_format_context, filename.c_str(), av_format, &av_options) !=0 )
+                 throw std::runtime_error("av_open_input_file() failed");
+         }
+         
+         m_format_context.reset(p_format_context);
+ 
+         // Retrieve stream info
+-        if (av_find_stream_info(p_format_context) < 0)
++        if (avformat_find_stream_info(p_format_context, NULL) < 0)
+             throw std::runtime_error("av_find_stream_info() failed");
+ 
+         m_duration = double(m_format_context->duration) / AV_TIME_BASE;
+@@ -134,7 +125,7 @@
+         m_clocks.reset(m_start);
+ 
+         // Dump info to stderr
+-        dump_format(p_format_context, 0, filename.c_str(), false);
++        av_dump_format(p_format_context, 0, filename.c_str(), false);
+ 
+         // Find and open the first video and audio streams (note that audio stream is optional and only opened if possible)
+ 
+@@ -292,7 +283,7 @@
+         // Read the next frame packet
+         if (av_read_frame(m_format_context.get(), &packet) < 0)
+         {
+-            if (url_ferror(m_format_context->pb) == 0)
++            if (m_format_context->pb->eof_reached == 0)
+                 end_of_stream = true;
+             else
+                 throw std::runtime_error("av_read_frame() failed");
+Binary files OpenSceneGraph-3.0.1.old//src/osgPlugins/ffmpeg/.FFmpegDecoder.cpp.swp and OpenSceneGraph-3.0.1/src/osgPlugins/ffmpeg/.FFmpegDecoder.cpp.swp differ
+diff -burN OpenSceneGraph-3.0.1.old//src/osgPlugins/ffmpeg/FFmpegDecoder.hpp OpenSceneGraph-3.0.1/src/osgPlugins/ffmpeg/FFmpegDecoder.hpp
+--- OpenSceneGraph-3.0.1.old//src/osgPlugins/ffmpeg/FFmpegDecoder.hpp	2011-04-19 13:40:22.000000000 +0200
++++ OpenSceneGraph-3.0.1/src/osgPlugins/ffmpeg/FFmpegDecoder.hpp	2012-11-22 15:59:18.895774005 +0100
+@@ -46,8 +46,8 @@
+         {
+             if (_ptr) 
+             {
+-                OSG_NOTICE<<"Calling av_close_input_file("<<_ptr<<")"<<std::endl;
+-                av_close_input_file(_ptr);
++                OSG_NOTICE<<"Calling avformat_close_input("<<_ptr<<")"<<std::endl;
++                avformat_close_input(&_ptr);
+             }
+             _ptr = 0;
+         }
+@@ -151,8 +151,7 @@
+ 
+ inline double FFmpegDecoder::creation_time() const
+ {
+-   if(m_format_context) return m_format_context->timestamp;
+-   else return HUGE_VAL;
++    return HUGE_VAL;
+ }
+ 
+ inline double FFmpegDecoder::duration() const
+diff -burN OpenSceneGraph-3.0.1.old//src/osgPlugins/ffmpeg/FFmpegDecoderVideo.cpp OpenSceneGraph-3.0.1/src/osgPlugins/ffmpeg/FFmpegDecoderVideo.cpp
+--- OpenSceneGraph-3.0.1.old//src/osgPlugins/ffmpeg/FFmpegDecoderVideo.cpp	2011-04-19 13:40:22.000000000 +0200
++++ OpenSceneGraph-3.0.1/src/osgPlugins/ffmpeg/FFmpegDecoderVideo.cpp	2012-11-22 16:01:30.906780849 +0100
+@@ -83,7 +83,7 @@
+     m_context = stream->codec;
+ 
+     // Trust the video size given at this point
+-    // (avcodec_open seems to sometimes return a 0x0 size)
++    // (avcodec_open2 seems to sometimes return a 0x0 size)
+     m_width = m_context->width;
+     m_height = m_context->height;
+     findAspectRatio();
+@@ -105,8 +105,8 @@
+     //    m_context->flags |= CODEC_FLAG_TRUNCATED;
+ 
+     // Open codec
+-    if (avcodec_open(m_context, m_codec) < 0)
+-        throw std::runtime_error("avcodec_open() failed");
++    if (avcodec_open2(m_context, m_codec, NULL) < 0)
++        throw std::runtime_error("avcodec_open2() failed");
+ 
+     // Allocate video frame
+     m_frame.reset(avcodec_alloc_frame());
+Binary files OpenSceneGraph-3.0.1.old//src/osgPlugins/ffmpeg/.FFmpegDecoderVideo.cpp.swp and OpenSceneGraph-3.0.1/src/osgPlugins/ffmpeg/.FFmpegDecoderVideo.cpp.swp differ
+diff -burN OpenSceneGraph-3.0.1.old//src/osgPlugins/ffmpeg/FFmpegParameters.cpp OpenSceneGraph-3.0.1/src/osgPlugins/ffmpeg/FFmpegParameters.cpp
+--- OpenSceneGraph-3.0.1.old//src/osgPlugins/ffmpeg/FFmpegParameters.cpp	2011-07-15 12:25:12.000000000 +0200
++++ OpenSceneGraph-3.0.1/src/osgPlugins/ffmpeg/FFmpegParameters.cpp	2012-11-22 17:20:09.019025477 +0100
+@@ -8,7 +8,7 @@
+ #if LIBAVCODEC_VERSION_MAJOR >= 53
+ extern "C"
+ {
+-    #include <parseutils.h>
++    #include <libavutil/parseutils.h>
+ }
+ #define av_parse_video_frame_size av_parse_video_size
+ #define av_parse_video_frame_rate av_parse_video_rate
+@@ -19,7 +19,7 @@
+ 
+     extern "C"
+     {
+-        #include <pixdesc.h>
++        #include <libavutil/pixdesc.h>
+     }
+     
+     inline PixelFormat osg_av_get_pix_fmt(const char *name) { return av_get_pix_fmt(name); }
+@@ -34,14 +34,15 @@
+ 
+ 
+ FFmpegParameters::FFmpegParameters() :
+-    m_format(0)
+-{
+-    memset(&m_parameters, 0, sizeof(m_parameters));
+-}
++    m_format(0),
++    m_options(NULL)
++{}
+ 
+ 
+ FFmpegParameters::~FFmpegParameters()
+-{}
++{
++    av_dict_free(&m_options);
++}
+ 
+ 
+ void FFmpegParameters::parse(const std::string& name, const std::string& value)
+@@ -59,40 +60,19 @@
+     }
+     else if (name == "pixel_format")
+     {
+-        m_parameters.pix_fmt = osg_av_get_pix_fmt(value.c_str());
++        av_dict_set(&m_options, "pixel_format", value.c_str(), 0);
+     }
+     else if (name == "frame_size")
+     {
+-        int frame_width = 0, frame_height = 0;
+-        if (av_parse_video_frame_size(&frame_width, &frame_height, value.c_str()) < 0)
+-        {
+-            OSG_NOTICE<<"Failed to apply frame size: "<<value.c_str()<<std::endl;
+-            return;
+-        }
+-        if ((frame_width % 2) != 0 || (frame_height % 2) != 0)
+-        {
+-            OSG_NOTICE<<"Frame size must be a multiple of 2: "<<frame_width<<"x"<<frame_height<<std::endl;
+-            return;
+-        }
+-        m_parameters.width = frame_width;
+-        m_parameters.height = frame_height;
++        av_dict_set(&m_options, "video_size", value.c_str(), 0);
+     }
+     else if (name == "frame_rate")
+     {
+-        AVRational frame_rate;
+-        if (av_parse_video_frame_rate(&frame_rate, value.c_str()) < 0)
+-        {
+-            OSG_NOTICE<<"Failed to apply frame rate: "<<value.c_str()<<std::endl;
+-            return;
+-        }
+-        m_parameters.time_base.den = frame_rate.num;
+-        m_parameters.time_base.num = frame_rate.den;
++        av_dict_set(&m_options, "framerate", value.c_str(), 0);
+     }
+     else if (name == "audio_sample_rate")
+     {
+-        int audio_sample_rate = 44100;
+-        std::stringstream ss(value); ss >> audio_sample_rate;
+-        m_parameters.sample_rate = audio_sample_rate;
++        av_dict_set(&m_options, "sample_rate", value.c_str(), 0);
+     }
+ }
+ 
+diff -burN OpenSceneGraph-3.0.1.old//src/osgPlugins/ffmpeg/FFmpegParameters.hpp OpenSceneGraph-3.0.1/src/osgPlugins/ffmpeg/FFmpegParameters.hpp
+--- OpenSceneGraph-3.0.1.old//src/osgPlugins/ffmpeg/FFmpegParameters.hpp	2011-04-19 13:40:22.000000000 +0200
++++ OpenSceneGraph-3.0.1/src/osgPlugins/ffmpeg/FFmpegParameters.hpp	2012-11-22 15:23:27.490662455 +0100
+@@ -21,14 +21,14 @@
+     bool isFormatAvailable() const { return m_format!=NULL; }
+     
+     AVInputFormat* getFormat() { return m_format; }
+-    AVFormatParameters* getFormatParameter() { return &m_parameters; }
++    AVDictionary* getOptions() { return m_options; }
+     
+     void parse(const std::string& name, const std::string& value);
+ 
+ protected:
+ 
+     AVInputFormat* m_format;
+-    AVFormatParameters m_parameters;
++    AVDictionary* m_options;
+ };
+ 
+ 

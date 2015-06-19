@@ -1,0 +1,94 @@
+# ChangeLog for dev-ruby/flog
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/flog/ChangeLog,v 1.20 2015/03/20 14:04:27 graaff Exp $
+
+  20 Mar 2015; Hans de Graaff <graaff@gentoo.org> flog-4.3.2.ebuild:
+  Add ruby22.
+
+  20 Mar 2015; Hans de Graaff <graaff@gentoo.org> -flog-4.3.0.ebuild,
+  -flog-4.3.1.ebuild:
+  Cleanup.
+
+*flog-4.3.2 (03 Feb 2015)
+
+  03 Feb 2015; Hans de Graaff <graaff@gentoo.org> +flog-4.3.2.ebuild:
+  Version bump.
+
+*flog-4.3.1 (10 Jan 2015)
+
+  10 Jan 2015; Manuel Rüger <mrueg@gentoo.org> +flog-4.3.1.ebuild:
+  Version bump.
+
+  29 Oct 2014; Manuel Rüger <mrueg@gentoo.org> -flog-4.2.0.ebuild,
+  -flog-4.2.1.ebuild, flog-4.3.0.ebuild:
+  Drop jruby target. Cleanup old.
+
+*flog-4.3.0 (20 Jul 2014)
+
+  20 Jul 2014; Manuel Rüger <mrueg@gentoo.org> +flog-4.3.0.ebuild:
+  Version bump. Add ruby21 target.
+
+*flog-4.2.1 (30 May 2014)
+
+  30 May 2014; Hans de Graaff <graaff@gentoo.org> +flog-4.2.1.ebuild:
+  Version bump.
+
+  21 May 2014; Manuel Rüger <mrueg@gentoo.org> -flog-4.1.2.ebuild,
+  flog-4.2.0.ebuild:
+  Remove ruby18 target. Cleanup old.
+
+*flog-4.2.0 (07 Nov 2013)
+
+  07 Nov 2013; Hans de Graaff <graaff@gentoo.org> +flog-4.2.0.ebuild:
+  Version bump.
+
+*flog-4.1.2 (05 Nov 2013)
+
+  05 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +flog-4.1.2.ebuild,
+  -flog-4.1.1.ebuild:
+  Version bump. Add ruby20 target. Cleanup old.
+
+  02 Nov 2013; Manuel Rüger <mrueg@gentoo.org> -flog-3.2.3.ebuild,
+  -flog-4.1.2.ebuild:
+  Cleanup old.
+
+*flog-4.1.2 (07 Sep 2013)
+
+  07 Sep 2013; Manuel Rüger <mrueg@gentoo.org> +flog-4.1.2.ebuild:
+  Version bump.
+
+*flog-4.1.1 (04 Sep 2013)
+
+  04 Sep 2013; Manuel Rüger <mrueg@gentoo.org> +flog-4.1.1.ebuild:
+  Version bump.
+
+  11 Aug 2013; Hans de Graaff <graaff@gentoo.org> -flog-2.5.3.ebuild:
+  Cleanup.
+
+*flog-3.2.3 (27 Jun 2013)
+
+  27 Jun 2013; Hans de Graaff <graaff@gentoo.org> +flog-3.2.3.ebuild:
+  Version bump.
+
+  16 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> flog-2.5.3.ebuild:
+  Update after Ruby packages move.
+
+  06 Aug 2012; Hans de Graaff <graaff@gentoo.org> -flog-2.5.2.ebuild:
+  Cleanup.
+
+*flog-2.5.3 (07 Oct 2011)
+
+  07 Oct 2011; Hans de Graaff <graaff@gentoo.org> -flog-2.5.1.ebuild,
+  +flog-2.5.3.ebuild:
+  Version bump.
+
+*flog-2.5.2 (12 Aug 2011)
+
+  12 Aug 2011; Hans de Graaff <graaff@gentoo.org> +flog-2.5.2.ebuild:
+  Version bump.
+
+*flog-2.5.1 (19 Mar 2011)
+
+  19 Mar 2011; Hans de Graaff <graaff@gentoo.org> +flog-2.5.1.ebuild,
+  +metadata.xml:
+  Initial import from graaff overlay. Closed bug 234770.

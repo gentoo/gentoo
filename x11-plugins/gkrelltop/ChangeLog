@@ -1,0 +1,158 @@
+# ChangeLog for x11-plugins/gkrelltop
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrelltop/ChangeLog,v 1.39 2013/06/01 11:38:25 pacho Exp $
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #144305
+
+  02 Sep 2012; Raúl Porcel <armin76@gentoo.org> gkrelltop-2.2.11.ebuild,
+  gkrelltop-2.2.11-r1.ebuild, gkrelltop-2.2.13.ebuild:
+  Drop alpha/sparc keywords
+
+*gkrelltop-2.2.13 (30 Aug 2012)
+
+  30 Aug 2012; Jim Ramsay <jim_ramsay@gentoo.org> +gkrelltop-2.2.13.ebuild,
+  gkrelltop-2.2.11-r1.ebuild, gkrelltop-2.2.11.ebuild:
+  Bug #363591: Version bump to 2.2.13
+
+  10 Aug 2012; Johannes Huber <johu@gentoo.org> gkrelltop-2.2.11-r1.ebuild:
+  Stable for x86, wrt bug #422397
+
+  08 Aug 2012; Brent Baude <ranger@gentoo.org> gkrelltop-2.2.11-r1.ebuild:
+  Marking gkrelltop-2.2.11-r1 ppc for bug 422397
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> gkrelltop-2.2.11-r1.ebuild:
+  Stable for amd64, wrt bug #422397
+
+*gkrelltop-2.2.11-r1 (24 Jan 2011)
+
+  24 Jan 2011; Jim Ramsay <lack@gentoo.org> +gkrelltop-2.2.11-r1.ebuild:
+  Applied user patch to fix CFLAGS and LDFLAGS (Bug #333989)
+
+  05 Sep 2009; Markus Meier <maekke@gentoo.org> gkrelltop-2.2.11.ebuild:
+  amd64 stable, bug #271463
+
+  25 Aug 2009; Raúl Porcel <armin76@gentoo.org> gkrelltop-2.2.11.ebuild:
+  sparc stable wrt #271463
+
+  17 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  gkrelltop-2.2.11.ebuild:
+  stable x86, bug 271463
+
+  04 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  gkrelltop-2.2.11.ebuild:
+  Stable on alpha, bug #271463
+
+  31 May 2009; nixnut <nixnut@gentoo.org> gkrelltop-2.2.11.ebuild:
+  ppc stable #271463
+
+  28 May 2009; Jim Ramsay <lack@gentoo.org> gkrelltop-2.2.11.ebuild:
+  Fixed dependency so install with USE=-X doesn't fail (Now requires
+  app-admin/gkrellm[X=])
+
+*gkrelltop-2.2.11 (26 Apr 2008)
+
+  26 Apr 2008; Jim Ramsay <lack@gentoo.org> +gkrelltop-2.2.11.ebuild:
+  Version bump - 2.2.11 is released (bug #219006)
+
+  12 Jun 2007; Jim Ramsay <lack@gentoo.org> -gkrelltop-2.2.4.ebuild,
+  -gkrelltop-2.2.6.ebuild:
+  Old version cleanup
+
+  02 Jun 2007; Raúl Porcel <armin76@gentoo.org> gkrelltop-2.2.6-r1.ebuild:
+  alpha stable wrt #176144
+
+  26 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  gkrelltop-2.2.6-r1.ebuild:
+  amd64 stable, bug 176144
+
+  07 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  gkrelltop-2.2.6-r1.ebuild:
+  ppc stable, bug #176144
+
+  26 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gkrelltop-2.2.6-r1.ebuild:
+  Stable on sparc wrt #176144
+
+  26 Apr 2007; Raúl Porcel <armin76@gentoo.org> gkrelltop-2.2.6-r1.ebuild:
+  x86 stable wrt #176144
+
+  20 Mar 2007; Jim Ramsay <lack@gentoo.org> gkrelltop-2.2.6-r1.ebuild:
+  Fixed headless (USE="-X") build issue
+
+  12 Mar 2007; Jim Ramsay <lack@gentoo.org> -gkrelltop-2.2.ebuild,
+  -gkrelltop-2.2.2.ebuild, -gkrelltop-2.2.3.ebuild, gkrelltop-2.2.4.ebuild,
+  gkrelltop-2.2.6.ebuild, gkrelltop-2.2.6-r1.ebuild:
+  Updated to use new gkrellm-plugin eclass, and cleaned up old versions
+
+  22 Feb 2007; Jim Ramsay <lack@gentoo.org> metadata.xml:
+  Accepting maintainership
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+*gkrelltop-2.2.6-r1 (22 Jan 2007)
+
+  22 Jan 2007; Alec Warner <antarus@gentoo.org> +gkrelltop-2.2.6-r1.ebuild:
+  add gkrelltopd.so for bug 101191
+
+  13 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org> gkrelltop-2.2.4.ebuild:
+  alpha stable
+
+  22 May 2005; Jason Wever <weeve@gentoo.org> gkrelltop-2.2.4.ebuild:
+  Marked 2.2.4 stable on SPARC and removed executable permissions on
+  metadata.xml so that committing via repoman will work again.
+
+*gkrelltop-2.2.6 (19 May 2005)
+
+  19 May 2005; Martin Holzer <mholzer@gentoo.org> +gkrelltop-2.2.6.ebuild:
+  Version bumped.
+
+  19 May 2005; Martin Holzer <mholzer@gentoo.org> gkrelltop-2.2.4.ebuild:
+  x86 stable
+
+  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org> gkrelltop-2.2.4.ebuild:
+  multilib fixes.
+
+  25 Mar 2005; Danny van Dyk <kugelfang@gentoo.org> gkrelltop-2.2.4.ebuild:
+  Marked stable on amd64.
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gkrelltop-2.2.2.ebuild, gkrelltop-2.2.3.ebuild, gkrelltop-2.2.4.ebuild:
+  Masked gkrelltop-2.2.4.ebuild stable for ppc
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gkrelltop-2.2.2.ebuild, gkrelltop-2.2.3.ebuild:
+  Masked gkrelltop-2.2.3.ebuild stable for ppc
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gkrelltop-2.2.2.ebuild:
+  Masked gkrelltop-2.2.2.ebuild stable for ppc
+
+  10 Jul 2004; Tom Martin <slarti@gentoo.org> gkrelltop-2.2.4.ebuild:
+  Marked ~amd64.
+
+*gkrelltop-2.2.4 (22 Jun 2004)
+
+  22 Jun 2004; Martin Holzer <mholzer@gentoo.org> gkrelltop-2.2.4.ebuild:
+  Version bumped. Closes 52738
+
+*gkrelltop-2.2.3 (01 Jun 2004)
+
+  01 Jun 2004; Martin Holzer <mholzer@gentoo.org> gkrelltop-2.2.3.ebuild:
+  Version bumped. Closes 52226
+
+*gkrelltop-2.2.2 (26 May 2004)
+
+  26 May 2004; Martin Holzer <mholzer@gentoo.org> gkrelltop-2.2.2.ebuild,
+  metadata.xml:
+  Version bumped. Closes 51776
+
+  20 Jan 2004; Aron Griffis <agriffis@gentoo.org> gkrelltop-2.2.ebuild:
+  stable on alpha
+
+*gkrelltop-2.2 (23 Oct 2003)
+
+  23 Oct 2003; Martin Holzer <mholzer@gentoo.org> gkrelltop-2.2.ebuild:
+  initial ebuild. submitted by Ciaran McCreesh <ciaranm@firedrop.org.uk> in
+  #29382.

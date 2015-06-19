@@ -1,0 +1,52 @@
+diff --git a/mclibs-2006.dfsg.2.orig/Makefile b/mclibs-2006.dfsg.2.orig/Makefile
+index f3c89fd..780499e 100644
+--- a/mclibs-2006.dfsg.2.orig/Makefile
++++ b/mclibs-2006.dfsg.2.orig/Makefile
+@@ -89,9 +89,6 @@ install-includes:
+ 	done ; \
+ 	done
+ 
+-	# install some symlinks, e.g. herwig$$version -> herwig
+-	rm -f $(DESTDIR)$(includedir)/herwig && \
+-		ln -sf herwig59 $(DESTDIR)$(includedir)/herwig
+ 	rm -rf $(DESTDIR)$(includedir)/isajet758
+ 	mv $(DESTDIR)$(includedir)/isajet $(DESTDIR)$(includedir)/isajet758
+ 	ln -sf isajet758 $(DESTDIR)$(includedir)/isajet
+@@ -128,14 +125,12 @@ install-arch: install-includes
+ 	fi
+ 
+ 	# ... and mclibs documentation
+-	for dir in cojets eurodec herwig isajet pdflib ; do \
++	for dir in cojets eurodec isajet pdflib ; do \
+ 		install -d -m 0755 $(MCDOC)/$$dir ; \
+ 	done
+ 	install -p -m 0644 $(CERN_DOCDIR)/cojets.txt $(MCDOC)/cojets/
+ 	install -p -m 0644 $(CERN_DOCDIR)/isa* $(MCDOC)/isajet/
+ 	install -p -m 0644 $(CERN_DOCDIR)/eurodec.txt $(MCDOC)/eurodec/
+-	install -p -m 0644 $(CVSCOSRC)/mclibs/herwig/doc/herwig59 \
+-		$(MCDOC)/herwig/herwig59.txt
+ 	install -p -m 0644 $(CVSCOSRC)/mclibs/pdf/dpdf/pdfdoc.doc \
+ 		$(MCDOC)/pdflib/pdfdoc.txt
+ 
+diff --git a/mclibs-2006.dfsg.2.orig/src/mclibs/Imakefile b/mclibs-2006.dfsg.2.orig/src/mclibs/Imakefile
+index 0c9867d..0f04f1b 100644
+--- a/mclibs-2006.dfsg.2.orig/src/mclibs/Imakefile
++++ b/mclibs-2006.dfsg.2.orig/src/mclibs/Imakefile
+@@ -6,7 +6,7 @@
+    to them and their dependents.  They have already been purged from
+    Debianized source code.  Also, re-order libs so that dependent ones
+    come after dependees. */
+-LIBDIRS= cojets eurodec pdf photos herwig isajet
++LIBDIRS= cojets eurodec pdf photos isajet
+ 
+ SUBDIRS = $(LIBDIRS)
+ 
+@@ -16,7 +16,7 @@ InstallLibSubdirs($(LIBDIRS))
+ InstallSharedLibSubdirs($(LIBDIRS))
+ 
+ /* Again, purge Pythia, Jetset and dependents. */
+-INCLUDEDIRS= cojets eurodec herwig isajet pdf
++INCLUDEDIRS= cojets eurodec isajet pdf
+ 
+ InstallIncludeSubdirs($(INCLUDEDIRS))
+ 

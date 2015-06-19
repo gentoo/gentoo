@@ -1,0 +1,20 @@
+# ChangeLog for dev-java/bnd-junit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/bnd-junit/ChangeLog,v 1.4 2015/06/07 08:30:27 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> bnd-junit-2.1.0.ebuild:
+  Move test deps to DEPEND
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> bnd-junit-2.1.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*bnd-junit-2.1.0 (05 Jul 2013)
+
+  05 Jul 2013; Tom Wijsman <TomWij@gentoo.org> +bnd-junit-2.1.0.ebuild,
+  +metadata.xml:
+  New ebuild for dev-java/bnd-junit, testing dependency for dev-java/libg and
+  dev-java/bndlib; not currently used due to failing tests (circular dependency
+  problem, broken tests) but added for completeness.

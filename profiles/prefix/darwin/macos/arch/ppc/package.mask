@@ -1,0 +1,11 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/arch/ppc/package.mask,v 1.4 2013/12/22 15:59:49 phajdan.jr Exp $
+
+# The 32-bits profile is inherited by the 64-bits one!
+# All the Mac OS X profiles inherit from their matching arch profile here.
+
+
+# Fabian Groffen <grobian@gentoo.org> (5 Mar 2012)
+# Apple removed entire PowerPC support from ld in ld64-128.2
+>=sys-devel/binutils-apple-4.3

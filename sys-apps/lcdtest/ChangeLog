@@ -1,0 +1,23 @@
+# ChangeLog for sys-apps/lcdtest
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/lcdtest/ChangeLog,v 1.24 2014/05/01 19:54:44 maksbotan Exp $
+
+  01 May 2014; Maxim Koltsov <maksbotan@gentoo.org> lcdtest-1.18.ebuild:
+  Drop usage of base.eclass (bug #508168), update icon cache (bug #508166), fix
+  media-libs/libsdl dependency (bug #508170). Thanks to Nikoli.
+
+  13 Oct 2013; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Updated Nikoli's e-mail address for easier automatic assignment.
+
+  24 Aug 2013; Markus Meier <maekke@gentoo.org> lcdtest-1.18.ebuild:
+  add ~x86, bug #481474
+
+  18 Aug 2013; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Added proxy-maintainers herd.
+
+*lcdtest-1.18 (17 Apr 2013)
+
+  17 Apr 2013; Tony Vroon <chainsaw@gentoo.org> +files/1.18-build-system.patch,
+  +lcdtest-1.18.ebuild, +metadata.xml:
+  Reintroduction of a previously removed package. Ebuild by Gavin Pryke &
+  Nikoli; closes bug #328137.

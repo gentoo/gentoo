@@ -1,0 +1,23 @@
+diff -ruN collectd-4.10.2.orig/configure.in collectd-4.10.2/configure.in
+--- collectd-4.10.2.orig/configure.in	2010-11-27 11:10:38.000000000 +0100
++++ collectd-4.10.2/configure.in	2011-02-07 21:55:22.000000000 +0100
+@@ -1109,18 +1109,7 @@
+ AM_CONDITIONAL(BUILD_WITH_LIBRESOLV, test "x$with_libresolv" = "xyes")
+ 
+ dnl Check for HAL (hardware abstraction library)
+-with_libhal="yes"
+-AC_CHECK_LIB(hal,libhal_device_property_exists,
+-	     [AC_DEFINE(HAVE_LIBHAL, 1, [Define to 1 if you have 'hal' library])],
+-	     [with_libhal="no"])
+-if test "x$with_libhal" = "xyes"; then
+-	if test "x$PKG_CONFIG" != "x"; then
+-		BUILD_WITH_LIBHAL_CFLAGS="`pkg-config --cflags hal`"
+-		BUILD_WITH_LIBHAL_LIBS="`pkg-config --libs hal`"
+-		AC_SUBST(BUILD_WITH_LIBHAL_CFLAGS)
+-		AC_SUBST(BUILD_WITH_LIBHAL_LIBS)
+-	fi
+-fi
++with_libhal="no"
+ 
+ m4_divert_once([HELP_WITH], [
+ collectd additional packages:])

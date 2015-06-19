@@ -1,0 +1,204 @@
+# ChangeLog for dev-perl/Jcode
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Jcode/ChangeLog,v 1.61 2014/08/22 21:00:09 axs Exp $
+
+*Jcode-2.70.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Jcode-2.70.0-r1.ebuild, -Jcode-2.70.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  08 Aug 2012; Naohiro Aota <naota@gentoo.org> Jcode-2.70.0.ebuild:
+  Add ~x86-fbsd wrt bug #428248
+
+  06 Aug 2012; Alexis Ballier <aballier@gentoo.org> Jcode-2.70.0.ebuild:
+  keyword ~amd64-fbsd
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -Jcode-2.06.ebuild:
+  Cleanup
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> Jcode-2.70.0.ebuild:
+  ia64/s390/sh/sparc stable wrt #400155
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> Jcode-2.70.0.ebuild:
+  x86 stable wrt bug #400155
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> Jcode-2.70.0.ebuild:
+  Marking Jcode-2.70.0 ppc64 for bug 400155
+
+  29 Feb 2012; Markus Meier <maekke@gentoo.org> Jcode-2.70.0.ebuild:
+  arm stable, bug #400155
+
+  27 Feb 2012; Brent Baude <ranger@gentoo.org> Jcode-2.70.0.ebuild:
+  Marking Jcode-2.70.0 ppc for bug 400155
+
+  27 Feb 2012; Jeroen Roovers <jer@gentoo.org> Jcode-2.70.0.ebuild:
+  Stable for HPPA (bug #400155).
+
+  25 Feb 2012; Tobias Klausmann <klausman@gentoo.org> Jcode-2.70.0.ebuild:
+  Stable on alpha, bug #400155
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Jcode-2.70.0.ebuild:
+  Stable for amd64, wrt bug #400155
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Jcode-2.07.ebuild:
+  Cleanup
+
+*Jcode-2.70.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org> +Jcode-2.70.0.ebuild:
+  Change version scheme
+
+  15 Sep 2008; Torsten Veller <tove@gentoo.org> -Jcode-2.03.ebuild:
+  Cleanup
+
+*Jcode-2.07 (15 Sep 2008)
+
+  15 Sep 2008; Torsten Veller <tove@gentoo.org> +Jcode-2.07.ebuild:
+  Version bump
+
+  16 Apr 2007; Markus Rothe <corsair@gentoo.org> Jcode-2.06.ebuild:
+  Stable on ppc64
+
+  21 Mar 2007; Michael Cummings <mcummings@gentoo.org> Jcode-2.06.ebuild:
+  Keywording ~mips, tested on swarm, bug 123679 related
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> Jcode-2.06.ebuild:
+  Stable on x86, bug #169152.
+
+  23 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> Jcode-2.06.ebuild:
+  Stable on hppa
+
+  21 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org> Jcode-2.06.ebuild:
+  ppc stable
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> Jcode-2.06.ebuild:
+  Stable on Alpha.
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> Jcode-2.06.ebuild:
+  Stable on ia64.
+
+  10 Oct 2006; Michael Cummings <mcummings@gentoo.org> -Jcode-0.83.ebuild,
+  -Jcode-0.87.ebuild, Jcode-2.03.ebuild, -Jcode-2.05.ebuild,
+  Jcode-2.06.ebuild:
+  Keywording sparc, amd64 stable; cleaned out stale ebuilds
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org> Jcode-0.83.ebuild,
+  Jcode-0.87.ebuild, Jcode-2.03.ebuild, Jcode-2.05.ebuild,
+  Jcode-2.06.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org> Jcode-0.83.ebuild,
+  Jcode-0.87.ebuild, Jcode-2.03.ebuild, Jcode-2.05.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+  02 Jul 2006; Michael Cummings <mcummings@gentoo.org> Jcode-2.03.ebuild:
+  Marking stable amd64
+
+*Jcode-2.06 (02 Jul 2006)
+
+  02 Jul 2006; Christian Hartmann <ian@gentoo.org> +Jcode-2.06.ebuild:
+  Version bump; added RDEPEND; added tests
+
+*Jcode-2.05 (24 Jun 2006)
+
+  24 Jun 2006; Michael Cummings <mcummings@gentoo.org> +Jcode-2.05.ebuild:
+  Version bump upstream
+
+  28 May 2006; Bryan Østergaard <kloeri@gentoo.org> Jcode-2.03.ebuild:
+  Stable on alpha.
+
+  21 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org> Jcode-2.03.ebuild:
+  Stable on hppa
+
+  31 Mar 2006; Michael Hanselmann <hansmi@gentoo.org> Jcode-2.03.ebuild:
+  Stable on ppc.
+
+  28 Mar 2006; Aron Griffis <agriffis@gentoo.org> Jcode-2.03.ebuild:
+  Mark 2.03 stable on ia64
+
+  27 Mar 2006; Markus Rothe <corsair@gentoo.org> Jcode-2.03.ebuild:
+  Stable on ppc64
+
+  26 Mar 2006; Michael Cummings <mcummings@gentoo.org> Jcode-2.03.ebuild:
+  Marking stable sparc and x86
+
+  13 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> Jcode-0.83.ebuild,
+  Jcode-0.87.ebuild, Jcode-2.03.ebuild:
+  Keyworded ~hppa wrt #125189
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org> Jcode-0.83.ebuild,
+  Jcode-0.87.ebuild, Jcode-2.03.ebuild:
+  Virtuals for perl-core
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> Jcode-0.87.ebuild:
+  Mark 0.87 stable on ia64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> Jcode-0.87.ebuild:
+  Mark 0.87 stable on alpha
+
+*Jcode-2.03 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org> +Jcode-2.03.ebuild:
+  Version bump
+
+  27 Nov 2005; Tom Gall <tgall@gentoo.org> Jcode-0.87.ebuild:
+  stable on ppc64
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> Jcode-0.87.ebuild:
+  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> Jcode-0.83.ebuild:
+  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
+
+  23 Dec 2004; Yuta SATOH <nigoro@gentoo.org> Jcode-0.87.ebuild:
+  added ~ppc64
+
+*Jcode-0.87 (30 Jul 2004)
+
+  30 Jul 2004; Michael Cummings <mcummings@gentoo.org> +Jcode-0.87.ebuild:
+  New version on CPAN
+
+  16 Apr 2004; Michael Cummings <mcummings@gentoo.org> Jcode-0.83.ebuild:
+  Syntax fix for newdepend, bug 29064
+
+  27 Feb 2004; Michael Cummings <mcummings@gentoo.org> Jcode-0.80-r1.ebuild,
+  Jcode-0.80.ebuild, Jcode-0.83.ebuild:
+  Removing old; last 2 archs confirmed that current was good in bug 41772
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> Jcode-0.83.ebuild:
+  stable on alpha and ia64
+
+  21 Jan 2004; <gustavoz@gentoo.org> Jcode-0.83.ebuild:
+  stable on sparc
+
+*Jcode-0.83 (31 May 2003)
+
+  31 May 2003; Michael Cummings <mcummings@gentoo.org> Jcode-0.83.ebuild:
+  New version on CPAN
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+
+  forced version bump to install into correct locations
+
+*Jcode-0.80-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*Jcode-0.80 (28 Jun 2002)
+
+  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> Jcode-0.80.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  28 Jun 2002; Seemant Kulleen <seemant@gentoo.org> Jcode-0.80.ebuild
+  files/digest-Jcode-0.80 :
+
+  New package courtesy of: rac@intrigue.com (Robert Coie) in bug #4064

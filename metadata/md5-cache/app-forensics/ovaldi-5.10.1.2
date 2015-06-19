@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=rpm? ( app-arch/rpm ) dev-libs/libgcrypt:0 dev-libs/libpcre dev-libs/xalan-c dev-libs/xerces-c ldap? ( net-nds/openldap )
+DESCRIPTION=Free implementation of OVAL
+EAPI=3
+HOMEPAGE=http://oval.mitre.org/language/interpreter.html
+IUSE=ldap rpm selinux
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=rpm? ( app-arch/rpm ) dev-libs/libgcrypt:0 dev-libs/libpcre dev-libs/xalan-c dev-libs/xerces-c ldap? ( net-nds/openldap ) selinux? ( sys-libs/libselinux )
+SLOT=0
+SRC_URI=mirror://sourceforge/ovaldi/ovaldi-5.10.1.2-src.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=dd5fb5e6f30778e2318c5302c5a5f59c

@@ -1,0 +1,22 @@
+# ChangeLog for net-analyzer/nagios-check_pidfile
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-check_pidfile/ChangeLog,v 1.5 2014/01/26 03:03:36 creffett Exp $
+
+  26 Jan 2014; Chris Reffett <creffett@gentoo.org> metadata.xml,
+  nagios-check_pidfile-1.ebuild:
+  Add proxy-maintainer, EAPI bump
+
+  21 Jan 2014; Samuel Damashek <sdamashek@gentoo.org> metadata.xml:
+  Remove proxy-maint herd, change email to my gentoo address
+
+  15 Dec 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add Samuel Damashek <samuel.damashek@gmail.com> as proxy-maintainer
+
+  20 Jun 2013; Benedikt Böhm <hollow@gentoo.org> metadata.xml:
+  remove myself from maintainers
+
+*nagios-check_pidfile-1 (17 Dec 2012)
+
+  17 Dec 2012; Benedikt Böhm <hollow@gentoo.org>
+  +nagios-check_pidfile-1.ebuild, +metadata.xml:
+  add net-analyzer/nagios-check_pidfile

@@ -1,0 +1,10 @@
+--- pwcheck/pwcheck_getspnam.c	1999-08-26 19:22:44.000000000 +0300
++++ pwcheck/pwcheck_getspnam.c	2011-11-30 13:22:24.601023316 +0200
+@@ -24,6 +24,7 @@
+ ******************************************************************/
+ 
+ #include <shadow.h>
++#include <string.h>
+ 
+ extern char *crypt();
+ 

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=>=media-libs/dssi-0.9.0 x11-libs/gtk+:2 >=media-libs/liblo-0.12 >=media-sound/fluidsynth-1.0.3 virtual/pkgconfig
+DESCRIPTION=DSSI Soft Synth Interface
+EAPI=2
+HOMEPAGE=http://dssi.sourceforge.net/
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/dssi-0.9.0 x11-libs/gtk+:2 >=media-libs/liblo-0.12 >=media-sound/fluidsynth-1.0.3
+SLOT=0
+SRC_URI=mirror://sourceforge/dssi/fluidsynth-dssi-1.0.0.tar.gz
+_md5_=3c5cf6d2a50253ea00306da8536c4812

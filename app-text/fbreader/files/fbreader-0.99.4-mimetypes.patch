@@ -1,0 +1,6 @@
+diff -r -U1 fbreader-0.99.4.orig/fbreader/desktop/desktop fbreader-0.99.4/fbreader/desktop/desktop
+--- fbreader-0.99.4.orig/fbreader/desktop/desktop	2012-11-30 19:41:25.000000000 +0700
++++ fbreader-0.99.4/fbreader/desktop/desktop	2014-07-10 20:56:33.527638562 +0700
+@@ -23 +23,2 @@
+ Categories=Office;Viewer;Literature;
++MimeType=application/epub+zip;application/rtf;application/x-fictionbook+xml;application/x-zip-compressed-fb2;application/x-mobipocket-ebook;application/xhtml+xml;text/html;text/plain;

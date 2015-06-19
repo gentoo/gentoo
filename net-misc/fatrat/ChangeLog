@@ -1,0 +1,30 @@
+# ChangeLog for net-misc/fatrat
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/fatrat/ChangeLog,v 1.6 2015/05/16 11:04:10 pacho Exp $
+
+  16 May 2015; Pacho Ramos <pacho@gentoo.org> fatrat-1.2.0_beta2.ebuild:
+  Rename jabber to xmpp USE (#216300)
+
+  10 Dec 2014; Lars Wendler <polynomial-c@gentoo.org>
+  fatrat-1.2.0_beta2.ebuild:
+  Added dev-qt/qtdbus to RDEPEND (bug #532130).
+
+  05 Jan 2014; Lars Wendler <polynomial-c@gentoo.org>
+  fatrat-1.2.0_beta2.ebuild, +files/fatrat-1.2.0_beta2-libcrypto_linking.patch:
+  Added upstream patch for missing linking against libcrypto. Thanks to Bob Wya
+  for reporting this problem in bug #496808.
+
+  08 Sep 2013; Lars Wendler <polynomial-c@gentoo.org>
+  fatrat-1.2.0_beta2.ebuild:
+  Fixed dependency on qtgui. Thanks to Nikoli for reporting this in bug
+  #484186.
+
+  10 Jul 2013; Patrick Lauer <patrick@gentoo.org> fatrat-1.2.0_beta2.ebuild:
+  Fixing qtgui deps for qt-4.8.5
+
+*fatrat-1.2.0_beta2 (28 Jun 2013)
+
+  28 Jun 2013; Lars Wendler <polynomial-c@gentoo.org>
+  +fatrat-1.2.0_beta2.ebuild, +files/fatrat-1.2.0_beta2-build.patch,
+  +metadata.xml:
+  Initial commit. Fixes bug #220231.

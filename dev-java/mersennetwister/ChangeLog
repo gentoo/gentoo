@@ -1,0 +1,18 @@
+# ChangeLog for dev-java/mersennetwister
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/mersennetwister/ChangeLog,v 1.3 2012/12/10 22:17:57 ulm Exp $
+
+  10 Dec 2012; Ulrich Müller <ulm@gentoo.org>
+  mersennetwister-0_pre23765.ebuild:
+  Fix LICENSE, see header in MersenneTwister.java, bug 444864.
+
+  09 Mar 2009; Markus Meier <maekke@gentoo.org>
+  mersennetwister-0_pre23765.ebuild:
+  amd64/x86 stable, bug #260962
+
+*mersennetwister-0_pre23765 (28 Jan 2009)
+
+  28 Jan 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +mersennetwister-0_pre23765.ebuild:
+  Initial commit. Fixes bug 244925
+

@@ -1,0 +1,10 @@
+# Options to pass to the lircd process
+
+# for devices with lirc-kernel-module
+#LIRCD_OPTS="-d /dev/lirc0"
+#LIRCD_OPTS="-d /dev/lirc"
+
+# for devices using the input-layer
+#LIRCD_OPTS="-H devinput -d /dev/input/by-path/pci-0000:00:0a.0--event-ir"
+# This should work, Bug #235107
+#LIRCD_OPTS="-H devinput -d name=*DVB*"

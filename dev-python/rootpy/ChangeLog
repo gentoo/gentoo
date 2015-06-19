@@ -1,0 +1,18 @@
+# ChangeLog for dev-python/rootpy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/rootpy/ChangeLog,v 1.4 2015/01/23 02:10:36 mrueg Exp $
+
+  23 Jan 2015; Manuel Rüger <mrueg@gentoo.org> rootpy-0.7.1.ebuild:
+  Add missing quotes.
+
+  28 Dec 2014; Mike Gilbert <floppym@gentoo.org> rootpy-0.7.1.ebuild:
+  s/PYTHON_USE_WITH/PYTHON_REQ_USE/
+
+  08 May 2014; Benda Xu <heroxbd@gentoo.org> rootpy-0.7.1.ebuild:
+  declare DISTUTILS_SINGLE_IMPL=1 because sci-lib/root inherits python-single-r1
+
+*rootpy-0.7.1 (12 Aug 2013)
+
+  12 Aug 2013; Sébastien Fabbro <bicatali@gentoo.org> +metadata.xml,
+  +rootpy-0.7.1.ebuild:
+  Initial import

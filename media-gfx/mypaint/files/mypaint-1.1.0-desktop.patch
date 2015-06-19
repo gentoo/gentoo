@@ -1,0 +1,24 @@
+From: Andrew Chadwick <andrewc-git@piffle.org>
+Date: Tue, 8 Jan 2013 13:53:01 +0000
+Subject: desktop: remove deprecated Encoding key
+
+The Encoding key is deprecated as of 1.0 of the Desktop Entry Specification
+(8 Jan 2012)
+
+http://standards.freedesktop.org/desktop-entry-spec/1.0/apc.html
+---
+ desktop/mypaint.desktop |    1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/desktop/mypaint.desktop b/desktop/mypaint.desktop
+index 9850b54..24383db 100644
+--- a/desktop/mypaint.desktop
++++ b/desktop/mypaint.desktop
+@@ -1,6 +1,5 @@
+ [Desktop Entry]
+ Version=1.0
+-Encoding=UTF-8
+ Name=MyPaint
+ TryExec=mypaint
+ Exec=mypaint %f
+-- 

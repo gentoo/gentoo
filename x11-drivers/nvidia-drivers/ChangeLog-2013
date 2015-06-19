@@ -1,0 +1,2678 @@
+# ChangeLog for x11-drivers/nvidia-drivers
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/ChangeLog-2013,v 1.1 2014/01/01 18:45:57 dilfridge Exp $
+
+  01 Jan 2014; Jeroen Roovers <jer@gentoo.org> -nvidia-drivers-304.116.ebuild:
+  Old.
+
+  31 Dec 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-96.43.23.ebuild,
+  nvidia-drivers-319.76.ebuild:
+  Do not die when something in FILESDIR is missing.
+
+  31 Dec 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-331.20.ebuild:
+  Revert xorg-server version change (bug #494460).
+
+  31 Dec 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-304.117.ebuild:
+  Stable for AMD64 x86 too.
+
+  31 Dec 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-173.14.39.ebuild,
+  nvidia-drivers-304.117.ebuild, nvidia-drivers-319.76.ebuild,
+  nvidia-drivers-331.20.ebuild:
+  Raise x11-base/xorg-server dependencies (bug #494460 by Philipp Leonhardt).
+
+  18 Dec 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-96.43.23.ebuild,
+  nvidia-drivers-173.14.39.ebuild:
+  Update older ebuilds to use new download site (bug #494626 by Gustav
+  Schaffter).
+
+  14 Dec 2013; Jeroen Roovers <jer@gentoo.org> -nvidia-drivers-325.15.ebuild:
+  Old.
+
+  14 Dec 2013; Jeroen Roovers <jer@gentoo.org>
+  -nvidia-drivers-173.14.38.ebuild, nvidia-drivers-173.14.39.ebuild,
+  -nvidia-drivers-319.49.ebuild, -nvidia-drivers-319.60.ebuild:
+  Stable for AMD64 x86 too.
+
+*nvidia-drivers-304.117 (13 Dec 2013)
+
+  13 Dec 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-304.117.ebuild:
+  Version bump.
+
+*nvidia-drivers-173.14.39 (07 Dec 2013)
+
+  07 Dec 2013; Jeroen Roovers <jer@gentoo.org>
+  +nvidia-drivers-173.14.39.ebuild:
+  Version bump (bug #493526 by Ulenrich).
+
+  06 Dec 2013; Jeroen Roovers <jer@gentoo.org> -nvidia-drivers-304.108.ebuild,
+  -nvidia-drivers-310.51.ebuild, -nvidia-drivers-313.30.ebuild,
+  nvidia-drivers-319.76.ebuild:
+  Stable for AMD64 x86 too.
+
+*nvidia-drivers-319.76 (03 Dec 2013)
+
+  03 Dec 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-319.76.ebuild:
+  Version bump by Ulenrich (bug #493160).
+
+  02 Dec 2013; Mike Gilbert <floppym@gentoo.org> nvidia-drivers-331.20.ebuild:
+  Restore pax-usercopy patch; passing ${P} to epatch is stupid.
+
+  18 Nov 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-304.116.ebuild,
+  nvidia-drivers-331.20.ebuild:
+  Stable for AMD64 x86 too.
+
+  17 Nov 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-173.14.38.ebuild,
+  nvidia-drivers-304.116.ebuild, nvidia-drivers-325.15.ebuild,
+  nvidia-drivers-331.20.ebuild:
+  Move /etc/modprobe.d/nvidia.conf sed call to pkg_preinst (bug #491414).
+
+  13 Nov 2013; Mike Gilbert <floppym@gentoo.org> nvidia-drivers-331.20.ebuild:
+  Comment out broken pax-usercopy patch.
+
+  07 Nov 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-173.14.38.ebuild:
+  Raise max kernel version for 173*.
+
+*nvidia-drivers-304.116 (06 Nov 2013)
+
+  06 Nov 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-304.116.ebuild:
+  Version bump.
+
+*nvidia-drivers-331.20 (06 Nov 2013)
+
+  06 Nov 2013; Jeroen Roovers <jer@gentoo.org> -nvidia-drivers-331.13.ebuild,
+  -nvidia-drivers-331.17.ebuild, +nvidia-drivers-331.20.ebuild:
+  Version bump.
+
+  02 Nov 2013; Jeroen Roovers <jer@gentoo.org> -nvidia-drivers-325.08.ebuild,
+  nvidia-drivers-325.15.ebuild:
+  Stable for AMD64 x86 too.
+
+  23 Oct 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-319.60.ebuild:
+  Stable for AMD64 x86 too.
+
+*nvidia-drivers-331.17 (23 Oct 2013)
+
+  23 Oct 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-331.17.ebuild:
+  Version bump.
+
+  12 Oct 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-96.43.23.ebuild,
+  nvidia-drivers-173.14.38.ebuild, nvidia-drivers-304.108.ebuild,
+  nvidia-drivers-310.51.ebuild, nvidia-drivers-313.30.ebuild,
+  nvidia-drivers-319.49.ebuild, nvidia-drivers-319.60.ebuild,
+  nvidia-drivers-325.08.ebuild, nvidia-drivers-325.15.ebuild,
+  nvidia-drivers-331.13.ebuild:
+  Use readme.gentoo.eclass (bug #457594).
+
+  10 Oct 2013; Jeroen Roovers <jer@gentoo.org>
+  +files/nvidia-drivers-331.13-pax-usercopy.patch, nvidia-drivers-331.13.ebuild:
+  New PaX patch by Martin Väth (bug #487492).
+
+*nvidia-drivers-331.13 (05 Oct 2013)
+
+  05 Oct 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-331.13.ebuild:
+  Version bump.
+
+*nvidia-drivers-319.60 (02 Oct 2013)
+
+  02 Oct 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-319.60.ebuild:
+  Version bump.
+
+  24 Sep 2013; Jeroen Roovers <jer@gentoo.org> -nvidia-drivers-173.14.37.ebuild:
+  Old.
+
+  13 Sep 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-173.14.38.ebuild,
+  -nvidia-drivers-304.88.ebuild, -nvidia-drivers-319.32.ebuild:
+  Stable for AMD64 x86 too.
+
+  13 Sep 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-304.88.ebuild,
+  nvidia-drivers-304.108.ebuild, nvidia-drivers-310.51.ebuild,
+  nvidia-drivers-313.30.ebuild, nvidia-drivers-319.32.ebuild,
+  nvidia-drivers-319.49.ebuild, nvidia-drivers-325.08.ebuild,
+  nvidia-drivers-325.15.ebuild:
+  nvidia-drivers -> PN.
+
+  05 Sep 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-173.14.38.ebuild:
+  Raise compatible kernel to 3.11.
+
+  05 Sep 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-173.14.38.ebuild:
+  Remove unneeded die()s.
+
+  05 Sep 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-304.108.ebuild:
+  Stable for AMD64 x86 too.
+
+*nvidia-drivers-173.14.38 (05 Sep 2013)
+
+  05 Sep 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-173.14.38.ebuild:
+  Version bump.
+
+  27 Aug 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-319.49.ebuild:
+  Stable for AMD64 x86 too.
+
+*nvidia-drivers-304.108 (26 Aug 2013)
+
+  26 Aug 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-304.108.ebuild:
+  Version bump (bug #482460 by Jack).
+
+  23 Aug 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-319.49.ebuild:
+  Raise compatible kernel version by one.
+
+*nvidia-drivers-319.49 (20 Aug 2013)
+
+  20 Aug 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-319.49.ebuild:
+  Version bump.
+
+  06 Aug 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-325.15.ebuild:
+  Do not apply nvidia-drivers-pax-const.patch (bug #479944 by Martin Väth).
+
+*nvidia-drivers-325.15 (06 Aug 2013)
+
+  06 Aug 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-325.15.ebuild:
+  Version bump (bug #479864 by Ingo Kemper).
+
+  25 Jul 2013; Jeroen Roovers <jer@gentoo.org> -nvidia-drivers-319.23.ebuild:
+  Old.
+
+  25 Jul 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-304.88.ebuild:
+  Update compatible kernel version.
+
+  22 Jul 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-96.43.23.ebuild,
+  nvidia-drivers-173.14.37.ebuild, nvidia-drivers-304.88.ebuild,
+  nvidia-drivers-310.51.ebuild, nvidia-drivers-313.30.ebuild,
+  nvidia-drivers-319.23.ebuild, nvidia-drivers-319.32.ebuild,
+  nvidia-drivers-325.08.ebuild:
+  Remove path from nvidia-bug-report.sh message (bug #477746 by Mark Finnegan).
+
+  15 Jul 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-319.32.ebuild:
+  Stable for AMD64 x86 too.
+
+*nvidia-drivers-325.08 (03 Jul 2013)
+
+  03 Jul 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-325.08.ebuild:
+  Version bump.
+
+  03 Jul 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-173.14.37.ebuild,
+  nvidia-drivers-304.88.ebuild, nvidia-drivers-310.51.ebuild,
+  nvidia-drivers-313.30.ebuild, nvidia-drivers-319.32.ebuild,
+  nvidia-drivers-96.43.23.ebuild:
+  Ask people not to file bug reports (bug #447566 comment #116).
+
+  26 Jun 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-96.43.23.ebuild:
+  Clean up.
+
+*nvidia-drivers-319.32 (26 Jun 2013)
+
+  26 Jun 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-319.32.ebuild:
+  Version bump.
+
+  09 Jun 2013; Jeroen Roovers <jer@gentoo.org> -nvidia-drivers-319.17.ebuild,
+  nvidia-drivers-319.23.ebuild:
+  Stable for AMD64 x86 too.
+
+  27 May 2013; Jeroen Roovers <jer@gentoo.org> -nvidia-drivers-310.44.ebuild,
+  nvidia-drivers-310.51.ebuild:
+  Stable for AMD64 x86 too.
+
+  26 May 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-319.17.ebuild:
+  Stable for AMD64 X86 too.
+
+*nvidia-drivers-319.23 (23 May 2013)
+
+  23 May 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-319.23.ebuild:
+  Version bump.
+
+  13 May 2013; Jeroen Roovers <jer@gentoo.org>
+  -nvidia-drivers-173.14.36.ebuild, nvidia-drivers-173.14.37.ebuild:
+  Stable for AMD64 X86 (bug #467364).
+
+  10 May 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-310.51.ebuild:
+  Update compatible kernel version.
+
+*nvidia-drivers-310.51 (10 May 2013)
+
+  10 May 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-310.51.ebuild:
+  Version bump.
+
+  09 May 2013; Jeroen Roovers <jer@gentoo.org> files/nvidia-smi.init:
+  Fix pid file path.
+
+  09 May 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-304.88.ebuild,
+  nvidia-drivers-310.44.ebuild, nvidia-drivers-313.30.ebuild,
+  nvidia-drivers-319.17.ebuild:
+  Clean up and shorten SRC_URI.
+
+  03 May 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-319.17.ebuild:
+  Update kernel version compatibility.
+
+  03 May 2013; Jeroen Roovers <jer@gentoo.org> -nvidia-drivers-319.12.ebuild:
+  Old beta.
+
+*nvidia-drivers-319.17 (03 May 2013)
+
+  03 May 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-319.17.ebuild:
+  Version bump.
+
+  01 May 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-96.43.23.ebuild,
+  nvidia-drivers-173.14.36.ebuild, nvidia-drivers-173.14.37.ebuild,
+  nvidia-drivers-304.88.ebuild, nvidia-drivers-310.44.ebuild,
+  nvidia-drivers-313.30.ebuild, nvidia-drivers-319.12.ebuild:
+  Set dependencies on multilib-abi vroom-fondled 32-bit libraries (bug
+  #466752).
+
+  10 Apr 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-319.12.ebuild:
+  Add xz-utils to DEPEND.
+
+*nvidia-drivers-319.12 (10 Apr 2013)
+
+  10 Apr 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-319.12.ebuild:
+  Beta version bump.
+
+  07 Apr 2013; Jeroen Roovers <jer@gentoo.org> -nvidia-drivers-304.84.ebuild,
+  -nvidia-drivers-310.40.ebuild, -nvidia-drivers-313.26.ebuild:
+  Old.
+
+  07 Apr 2013; Vicente Olivert Riera <vincent@gentoo.org>
+  nvidia-drivers-304.88.ebuild, nvidia-drivers-310.44.ebuild,
+  nvidia-drivers-313.30.ebuild:
+  304.88, 310.44 and 313.30 stable for amd64 and x86, wrt bug #464248
+
+  06 Apr 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-173.14.37.ebuild,
+  nvidia-drivers-304.88.ebuild, nvidia-drivers-310.44.ebuild:
+  Update maximum kernel versions.
+
+*nvidia-drivers-173.14.37 (06 Apr 2013)
+
+  06 Apr 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-173.14.37.ebuild:
+  Version bump.
+
+*nvidia-drivers-313.30 (03 Apr 2013)
+*nvidia-drivers-310.44 (03 Apr 2013)
+*nvidia-drivers-304.88 (03 Apr 2013)
+
+  03 Apr 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-304.88.ebuild,
+  +nvidia-drivers-310.44.ebuild, +nvidia-drivers-313.30.ebuild:
+  Version bump (bug #464248).
+
+  02 Apr 2013; Jeroen Roovers <jer@gentoo.org> -nvidia-drivers-304.64.ebuild,
+  -nvidia-drivers-310.32.ebuild, -nvidia-drivers-313.18.ebuild:
+  Old.
+
+  31 Mar 2013; Jeff Horelick <jdhore@gentoo.org> nvidia-drivers-304.84.ebuild,
+  nvidia-drivers-310.40.ebuild, nvidia-drivers-313.26.ebuild:
+  marked x86 per bug 461664
+
+  30 Mar 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-173.14.36.ebuild,
+  nvidia-drivers-304.64.ebuild, nvidia-drivers-304.84.ebuild,
+  nvidia-drivers-310.32.ebuild, nvidia-drivers-310.40.ebuild,
+  nvidia-drivers-313.18.ebuild, nvidia-drivers-313.26.ebuild,
+  nvidia-drivers-96.43.23.ebuild:
+  Update NVIDIA license (bug #463872 by Richard Yao).
+
+  23 Mar 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-96.43.23.ebuild:
+  Fix building against kernel *.4 (bug #462830 by dizstu).
+
+  14 Mar 2013; Jeroen Roovers <jer@gentoo.org> -files/09nvidia,
+  -files/nvidia-drivers-190.53-2.6.33.patch,
+  -files/nvidia-blacklist-vga-pmu-registers-256-304.diff, -files/nvidia,
+  -files/nvidia-autostart.desktop:
+  Old.
+
+  14 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> nvidia-drivers-304.84.ebuild,
+  nvidia-drivers-310.40.ebuild, nvidia-drivers-313.26.ebuild:
+  Stable on amd64, wrt bug #461664
+
+*nvidia-drivers-310.40 (09 Mar 2013)
+
+  09 Mar 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-310.40.ebuild:
+  Version bump (bug #460806).
+
+  07 Mar 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-96.43.23.ebuild,
+  nvidia-drivers-173.14.36.ebuild, nvidia-drivers-304.64.ebuild,
+  nvidia-drivers-304.84.ebuild, nvidia-drivers-310.32.ebuild,
+  nvidia-drivers-313.18.ebuild, nvidia-drivers-313.26.ebuild:
+  Add GPL-2 to LICENSE and bindist/mirror to RESTRICT for nvidia-settings (bug
+  #460460).
+
+  06 Mar 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-313.26.ebuild:
+  Remove unneeded x11-libs/pangox-compat dependency.
+
+*nvidia-drivers-313.26 (05 Mar 2013)
+
+  05 Mar 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-313.26.ebuild:
+  Version bump (bug #460416).
+
+  05 Mar 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-96.43.23.ebuild,
+  nvidia-drivers-173.14.36.ebuild, nvidia-drivers-304.64.ebuild,
+  nvidia-drivers-304.84.ebuild, nvidia-drivers-310.32.ebuild,
+  nvidia-drivers-313.18.ebuild:
+  Fix typo.
+
+*nvidia-drivers-304.84 (04 Mar 2013)
+
+  04 Mar 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-304.84.ebuild:
+  Version bump.
+
+  04 Mar 2013; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Remove zerochaos.
+
+  04 Mar 2013; Rick Farina <zerochaos@gentoo.org> metadata.xml:
+  adding myself as maintainer
+
+  03 Mar 2013; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  Removed myself from involvement in nvidia-drivers
+
+  02 Mar 2013; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-173.14.36.ebuild, nvidia-drivers-304.64.ebuild,
+  nvidia-drivers-310.32.ebuild, nvidia-drivers-313.18.ebuild,
+  nvidia-drivers-96.43.23.ebuild:
+  Clarify ewarn language
+
+  02 Mar 2013; Doug Goldstein <cardoe@gentoo.org>
+  -files/nvidia-drivers-313.18-builddir-config.patch,
+  -files/nvidia-drivers-313.18-linux-3.7+.patch,
+  -files/nvidia-drivers-313.18-linux-3.8+.patch, nvidia-drivers-313.18.ebuild:
+  Revert non-maintainer changes per bug #447566.
+
+  02 Mar 2013; Samuli Suominen <ssuominen@gentoo.org>
+  nvidia-drivers-313.18.ebuild, +files/nvidia-drivers-313.18-linux-3.8+.patch:
+  Fix missing -I flag to get headers from arch/x86/include/uapi in use with
+  Linux 3.8.x wrt #447566, Comment #38
+
+  24 Feb 2013; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-310.32.ebuild:
+  stable on amd64 and x86 for stability fixes and new X.org Video ABI support
+
+  22 Feb 2013; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-96.43.23.ebuild, nvidia-drivers-173.14.36.ebuild,
+  nvidia-drivers-304.64.ebuild, nvidia-drivers-310.32.ebuild,
+  nvidia-drivers-313.18.ebuild:
+  Add generic message to let people know they're on their own for newer kernels
+
+  22 Feb 2013; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-96.43.20.ebuild, -nvidia-drivers-173.14.35.ebuild,
+  -nvidia-drivers-295.75.ebuild:
+  Remove more versions
+
+  22 Feb 2013; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-295.71.ebuild, -nvidia-drivers-304.60.ebuild,
+  -nvidia-drivers-310.19.ebuild:
+  Remove some older versions
+
+  12 Feb 2013; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-310.32.ebuild:
+  Update xorg-server ABI compatible version.
+
+*nvidia-drivers-310.32 (12 Feb 2013)
+
+  12 Feb 2013; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-310.32.ebuild:
+  Version bump by Ben Kohler (bug #455172).
+
+  12 Feb 2013; Mike Frysinger <vapier@gentoo.org>
+  +files/nvidia-drivers-313.18-builddir-config.patch,
+  +files/nvidia-drivers-313.18-linux-3.7+.patch, nvidia-drivers-313.18.ebuild:
+  Fix building with kernels that split obj & src dirs.  Fix building against
+  linux-3.7+ #447566 by Martin Väth.
+
+  20 Jan 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due retirement, bug #35242
+
+  17 Jan 2013; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-313.18.ebuild:
+  Fix X.org server depend
+
+*nvidia-drivers-313.18 (16 Jan 2013)
+
+  16 Jan 2013; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-313.18.ebuild:
+  Version bump
+
+  19 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  nvidia-drivers-96.43.20.ebuild, nvidia-drivers-96.43.23.ebuild,
+  nvidia-drivers-173.14.35.ebuild, nvidia-drivers-173.14.36.ebuild,
+  nvidia-drivers-295.71.ebuild, nvidia-drivers-295.75.ebuild,
+  nvidia-drivers-304.60.ebuild, nvidia-drivers-304.64.ebuild,
+  nvidia-drivers-310.19.ebuild:
+  Depend on pangox-compat if using pango-1.32.
+
+  11 Dec 2012; Samuli Suominen <ssuominen@gentoo.org>
+  nvidia-drivers-295.71.ebuild, nvidia-drivers-295.75.ebuild,
+  nvidia-drivers-304.60.ebuild, nvidia-drivers-304.64.ebuild,
+  nvidia-drivers-310.19.ebuild:
+  Use udev.eclass to install nvidia udev rules.
+
+  19 Nov 2012; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-310.19.ebuild:
+  Fix bad directory reference
+
+  19 Nov 2012; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-96.43.23.ebuild:
+  Lower x11-base/xorg-server dependency (bug #443926).
+
+*nvidia-drivers-310.19 (19 Nov 2012)
+
+  19 Nov 2012; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-310.19.ebuild:
+  Version bump. Supports OpenGL 4.3 as well as additional 32-bit libraries on
+  64-bit multilib installs.
+
+  18 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  nvidia-drivers-173.14.36.ebuild, nvidia-drivers-304.60.ebuild,
+  nvidia-drivers-304.64.ebuild, nvidia-drivers-96.43.23.ebuild:
+  stable on amd64 and x86
+
+  18 Nov 2012; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-295.75.ebuild:
+  Stabilize on x86 based on a user report in bug #435700 since x86 is falling
+  way behind.
+
+  18 Nov 2012; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-302.17-r1.ebuild, -nvidia-drivers-304.37-r1.ebuild,
+  -nvidia-drivers-304.43.ebuild, -nvidia-drivers-304.48.ebuild,
+  -nvidia-drivers-304.51.ebuild:
+  Remove older versions
+
+  14 Nov 2012; Agostino Sarubbo <ago@gentoo.org> nvidia-drivers-96.43.23.ebuild:
+  stable for amd64, wrt to bug #438246
+
+  14 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  nvidia-drivers-173.14.36.ebuild:
+  Stable for amd64, wrt bug #438246
+
+  13 Nov 2012; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-304.60.ebuild:
+  Stabilize 304.60 for amd64. bug #438246
+
+*nvidia-drivers-304.64 (07 Nov 2012)
+
+  07 Nov 2012; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-304.64.ebuild:
+  Version bump.
+
+  19 Oct 2012; Agostino Sarubbo <ago@gentoo.org> nvidia-drivers-295.75.ebuild:
+  Stable for AMD64, wrt bug #435700
+
+*nvidia-drivers-304.60 (19 Oct 2012)
+
+  19 Oct 2012; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-304.60.ebuild:
+  Version bump.
+
+*nvidia-drivers-173.14.36 (17 Oct 2012)
+
+  17 Oct 2012; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-96.43.23.ebuild,
+  +nvidia-drivers-173.14.36.ebuild:
+  Version bump. Fix x11-base/xorg-server version dep.
+
+*nvidia-drivers-96.43.23 (09 Oct 2012)
+
+  09 Oct 2012; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-96.43.23.ebuild:
+  Version bump by dptr1988 (bug #437618).
+
+*nvidia-drivers-295.75 (30 Sep 2012)
+
+  30 Sep 2012; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-295.75.ebuild:
+  Version bump in the 295.x series.
+
+*nvidia-drivers-304.51 (25 Sep 2012)
+
+  25 Sep 2012; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-304.51.ebuild:
+  Bug fix release
+
+  24 Sep 2012; Mike Frysinger <vapier@gentoo.org>
+  nvidia-drivers-173.14.35.ebuild, nvidia-drivers-295.71.ebuild,
+  nvidia-drivers-302.17-r1.ebuild, nvidia-drivers-304.37-r1.ebuild,
+  nvidia-drivers-304.43.ebuild, nvidia-drivers-304.48.ebuild,
+  nvidia-drivers-96.43.20.ebuild:
+  QA_DT_HASH (old/deprecated) -> QA_FLAGS_IGNORED (new hotness).
+
+  19 Sep 2012; Alexis Ballier <aballier@gentoo.org>
+  nvidia-drivers-304.48.ebuild:
+  Do not try to install an icon that does not exist in the FreeBSD tarball.
+
+  13 Sep 2012; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-304.48.ebuild:
+  Make the xinitrc executable. bug #434936
+
+*nvidia-drivers-304.48 (13 Sep 2012)
+
+  13 Sep 2012; Doug Goldstein <cardoe@gentoo.org> +files/95-nvidia-settings,
+  +nvidia-drivers-304.48.ebuild:
+  Version bump. Should fix X.org input issues. fix bug #414725
+
+  29 Aug 2012; Doug Goldstein <cardoe@gentoo.org>
+  -files/195.30-unified-arch.patch,
+  -files/nvidia-drivers-173.14.30-2.6.39.patch,
+  -files/nvidia-drivers-260.19.44-2.6.39.patch, -nvidia-drivers-295.59.ebuild,
+  -files/256.35-unified-arch.patch, -nvidia-drivers-295.59-r1.ebuild,
+  -files/libGL.la-r2:
+  Remove older version and unused patches.
+
+  29 Aug 2012; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-304.43.ebuild:
+  Change how QA_PREBUILT is set based on Mike Gilbert <floppym@gentoo.org>
+  suggestion. bug #432370
+
+  29 Aug 2012; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-304.43.ebuild,
+  +files/nvidia-drivers-pax-const.patch,
+  +files/nvidia-drivers-pax-usercopy.patch:
+  Use Stefan Reimer <it@startux.de> Quark's overlay patches for PAX hacks by
+  popular demand. bug #385837.
+
+*nvidia-drivers-304.43 (28 Aug 2012)
+
+  28 Aug 2012; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-304.43.ebuild:
+  Version bump. Supports xorg-server 1.13 now.
+
+  22 Aug 2012; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-304.37-r1.ebuild:
+  Sometimes committing from an iPad is not optimal. fix bug in last commit.
+
+  22 Aug 2012; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-304.37-r1.ebuild:
+  Fix OpenCL issue for amd64 multilib profiles related to previous patch.
+  bug #432252.
+
+*nvidia-drivers-304.37-r1 (21 Aug 2012)
+
+  21 Aug 2012; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-304.37.ebuild, +nvidia-drivers-304.37-r1.ebuild:
+  Fix issue with OpenCL library not being installed. Fix from Serge Gavrilov
+  <serge@pdmi.ras.ru>. bug #431998
+
+  17 Aug 2012; Andreas Schuerch <nativemad@gentoo.org>
+  nvidia-drivers-295.59-r1.ebuild, nvidia-drivers-295.71.ebuild:
+  x86 stable, see bug 429614
+
+  16 Aug 2012; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-304.37.ebuild:
+  Remove extra mask protection.
+
+  16 Aug 2012; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-304.22.ebuild:
+  Remove the beta 304 version.
+
+*nvidia-drivers-304.37 (16 Aug 2012)
+
+  16 Aug 2012; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-304.37.ebuild:
+  Version bump. fixes #286445, #236260, #356395, #388725, #412707, #413461,
+  #431262. Not a final fix for #414725.
+
+  13 Aug 2012; Rick Farina <zerochaos@gentoo.org>
+  nvidia-drivers-295.59-r1.ebuild, nvidia-drivers-295.71.ebuild:
+  marking stable per testing by AxS (bug #429614)
+
+  10 Aug 2012; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-96.43.20.ebuild,
+  nvidia-drivers-173.14.35.ebuild, nvidia-drivers-295.59.ebuild,
+  nvidia-drivers-295.59-r1.ebuild, nvidia-drivers-295.71.ebuild,
+  nvidia-drivers-302.17-r1.ebuild, nvidia-drivers-304.22.ebuild:
+  Depend on x11-libs/pango[X] when installing nvidia-settings, by Nicolas
+  Bigaouette (bug #430760).
+
+  10 Aug 2012; Jeroen Roovers <jer@gentoo.org> files/nvidia-autostart.desktop:
+  Fix quoting to satisfy desktop-file-validate.
+
+  10 Aug 2012; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-96.43.20.ebuild,
+  -nvidia-drivers-173.14.34.ebuild, nvidia-drivers-173.14.35.ebuild,
+  nvidia-drivers-295.59.ebuild, nvidia-drivers-295.59-r1.ebuild,
+  nvidia-drivers-295.71.ebuild, nvidia-drivers-302.17-r1.ebuild,
+  nvidia-drivers-304.22.ebuild, metadata.xml:
+  Inherit user for egetent.
+
+  10 Aug 2012; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-173.14.35.ebuild:
+  Stable for AMD64 (bug #426642).
+
+*nvidia-drivers-295.71 (08 Aug 2012)
+
+  08 Aug 2012; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-295.71.ebuild:
+  Fix CVE-2012-xxxx. With access to /dev/nvidia* a malicious user could
+  exploit the VGA window size to read/write from kernel memory and gain root
+  access.
+
+  06 Aug 2012; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-96.43.20.ebuild, nvidia-drivers-173.14.34.ebuild,
+  nvidia-drivers-173.14.35.ebuild:
+  Don't call 'use' in the global scope.
+
+*nvidia-drivers-302.17-r1 (05 Aug 2012)
+*nvidia-drivers-295.59-r1 (05 Aug 2012)
+
+  05 Aug 2012; Doug Goldstein <cardoe@gentoo.org>
+  +files/nvidia-blacklist-vga-pmu-registers-256-304.diff,
+  +nvidia-drivers-295.59-r1.ebuild, -nvidia-drivers-302.17.ebuild,
+  +nvidia-drivers-302.17-r1.ebuild:
+  Fix CVE-2012-xxxx. With access to /dev/nvidia* a malicious user could exploit
+  the VGA window size to read/write from kernel memory and gain root access.
+
+  25 Jul 2012; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-304.22.ebuild:
+  New approach to QA warning prevention. Don't prevent prelinking. Fix white
+  space bugs. Let people know this is under development.
+
+  25 Jul 2012; Doug Goldstein <cardoe@gentoo.org> -files/eblits/donvidia.eblit,
+  -files/eblits/mtrr_check.eblit, -files/eblits/src_install-libs.eblit,
+  -files/eblits/want_tls.eblit:
+  Remove some unneeded bits.
+
+  23 Jul 2012; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-304.22.ebuild,
+  files/nvidia-drivers-settings.desktop:
+  Fix issue with icon/menu entry and dohtml. bug #427720
+
+  22 Jul 2012; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-304.22.ebuild,
+  metadata.xml:
+  Make the installation of the X.org driver, OpenGL libraries, XvMC libraries,
+  and VDPAU libraries optional by the X USE flag. bug #413461. Based on work by
+  Amir Aupov <fads93@gmail.com>
+
+  22 Jul 2012; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-304.22.ebuild,
+  +files/nvidia-drivers-settings.desktop, files/nvidia-autostart.desktop:
+  Update desktop entries to match Ubuntu a little bit which installs
+  nvidia-settings from both the drivers package as well as nvidia-settings
+  package as well. Fix desktop entry deprecation. bug #236260
+
+  22 Jul 2012; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-304.22.ebuild,
+  +files/nvidia-autostart.desktop:
+  Add nvidia-settings autostart file utilizing XDG support similar to Ubuntu.
+  bug #414725
+
+  22 Jul 2012; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-304.22.ebuild:
+  Check for HIGHMEM support as its required. bug #356395
+
+*nvidia-drivers-304.22 (22 Jul 2012)
+
+  22 Jul 2012; Doug Goldstein <cardoe@gentoo.org>
+  +files/50nvidia-prelink-blacklist, +nvidia-drivers-304.22.ebuild,
+  +files/nvidia-smi.init:
+  Refactor the ebuild for easier maintenance.
+  Improve kernel feature detection (bug #412707, #286445, #329597).
+  Add init script for SMI to control the fan when X is not running (bug
+  #388725,
+  init script from Stuart Finlayson <stu@santa-li.com>).
+  Block the drivers from being prelinked (bug #420285. prelink script by Norman
+  Back <gentoo@thebacks.co.uk>).
+
+  22 Jul 2012; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-96.43.20.ebuild, nvidia-drivers-173.14.34.ebuild,
+  nvidia-drivers-173.14.35.ebuild, nvidia-drivers-295.59.ebuild,
+  nvidia-drivers-302.17.ebuild:
+  Remove notice about compiz and AddARGBGLXVisuals per bug #427608
+
+  17 Jul 2012; Jeff Horelick <jdhore@gentoo.org>
+  nvidia-drivers-173.14.35.ebuild:
+  marked x86 per bug 426642
+
+  14 Jul 2012; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-173.14.31.ebuild:
+  Remove another older version
+
+  14 Jul 2012; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-295.40.ebuild, -nvidia-drivers-295.49.ebuild,
+  -nvidia-drivers-295.53.ebuild:
+  Remove older versions
+
+  05 Jul 2012; Jeff Horelick <jdhore@gentoo.org> nvidia-drivers-295.53.ebuild,
+  nvidia-drivers-295.59.ebuild:
+  marked x86 per bug 421475
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> nvidia-drivers-295.59.ebuild:
+  Stable for AMD64, wrt bug #421475
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> nvidia-drivers-295.53.ebuild:
+  Stable for AMD64, wrt bug #421475
+
+*nvidia-drivers-302.17 (16 Jun 2012)
+
+  16 Jun 2012; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-302.17.ebuild:
+  Version bump for the 302 series. Has not undergone as much testing as the 295
+  series so if you run into anything. Step back to the 295 series.
+
+*nvidia-drivers-295.59 (13 Jun 2012)
+*nvidia-drivers-173.14.35 (13 Jun 2012)
+
+  13 Jun 2012; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-173.14.35.ebuild, +nvidia-drivers-295.59.ebuild:
+  Bump to 295.59 for DPMS blanking fixes with DisplayPort and new hardware
+  support. Bump 173.14.35 to fix libGL.so loading in 32-bit X servers.
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  nvidia-drivers-173.14.34.ebuild:
+  x86 stable wrt bug #419475
+
+  05 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  nvidia-drivers-173.14.34.ebuild:
+  Stable for amd64, wrt bug #419475
+
+  04 Jun 2012; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-173.14.34.ebuild, nvidia-drivers-295.49.ebuild:
+  Document the symlink creation a little bit better. Create some more symlinks
+  that aren't used by quiets Portage's QA notices.
+
+  25 May 2012; Jeff Horelick <jdhore@gentoo.org> nvidia-drivers-295.49.ebuild:
+  marked x86 per bug 416993
+
+  22 May 2012; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-173.14.34.ebuild:
+  Fix build issue with linux-mod eclass and changes to the NVIDIA build process
+  for newer kernels. bug #417093
+
+  22 May 2012; Agostino Sarubbo <ago@gentoo.org> nvidia-drivers-295.49.ebuild:
+  Stable for amd64, wrt bug #416993
+
+  21 May 2012; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-173.14.34.ebuild, nvidia-drivers-295.40.ebuild,
+  nvidia-drivers-295.49.ebuild, nvidia-drivers-295.53.ebuild:
+  Fix GTK+ depends.
+
+  21 May 2012; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-290.10.ebuild, -nvidia-drivers-290.10-r2.ebuild,
+  -nvidia-drivers-295.20-r1.ebuild:
+  Remove older versions
+
+  21 May 2012; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-173.14.34.ebuild, nvidia-drivers-295.49.ebuild,
+  nvidia-drivers-295.53.ebuild:
+  Dropped the custom-cflags USE flag in favor of calling epatch_user to give
+  users more flexibility.
+
+*nvidia-drivers-173.14.34 (21 May 2012)
+
+  21 May 2012; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-173.14.34.ebuild:
+  Version bump for the 173.x series. Supports newer kernels and newer
+  xorg-servers. Additionally support some of the tweaks and changes that have
+  happened in the 295.x series.
+
+*nvidia-drivers-295.53 (21 May 2012)
+
+  21 May 2012; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-290.10.ebuild,
+  nvidia-drivers-290.10-r2.ebuild, nvidia-drivers-295.20-r1.ebuild,
+  nvidia-drivers-295.40.ebuild, nvidia-drivers-295.49.ebuild,
+  +nvidia-drivers-295.53.ebuild:
+  Version bump to support Linux 3.4.x and fix missing depend on GTK+ when
+  installing nvidia-settings. bug #415795 and bug #414645
+
+  16 May 2012; Alexis Ballier <aballier@gentoo.org>
+  nvidia-drivers-295.49.ebuild:
+  Add support for x86_64 FreeBSD. Do not try to install 32bits libs if multilib
+  is not requested as the FreeBSD x86_64 package does not provide 32bits libs.
+  Merge most of x86-fbsd code under kernel_FreeBSD as the x86 and x86_64
+  packages are similar. Keyword ~amd64-fbsd.
+
+  04 May 2012; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-295.49.ebuild,
+  metadata.xml:
+  Rename the 'gtk' USE flag to 'tools' since its more appropriate.
+
+  04 May 2012; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-295.33.ebuild:
+  Remove older version
+
+*nvidia-drivers-295.49 (04 May 2012)
+
+  04 May 2012; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-295.49.ebuild:
+  Version bump
+
+  25 Apr 2012; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-173.14.31.ebuild:
+  Install nvidia-settings like the 96 driver does (bug #376593).
+
+  24 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  nvidia-drivers-295.40.ebuild:
+  fixes for FreeBSD: update paths, do not try to install unavailable libs and
+  desktop entries.
+
+  15 Apr 2012; Markus Meier <maekke@gentoo.org> nvidia-drivers-295.40.ebuild:
+  x86 stable, bug #411617
+
+  15 Apr 2012; Agostino Sarubbo <ago@gentoo.org> nvidia-drivers-295.40.ebuild:
+  Stable for amd64, wrt bug #411617
+
+*nvidia-drivers-295.40 (11 Apr 2012)
+
+  11 Apr 2012; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-295.40.ebuild:
+  Version bump to address CVE-2012-0946.
+
+  11 Apr 2012; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-295.33.ebuild:
+  Fix 295.33 for Linux 3.3.x. bug #408841
+
+  11 Apr 2012; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-290.10.ebuild,
+  nvidia-drivers-290.10-r2.ebuild, nvidia-drivers-295.20-r1.ebuild:
+  Mark drivers that don't work with glibc 2.15 as depending on earlier
+  versions. bug #490905
+
+  11 Apr 2012; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-275.09.07.ebuild, -nvidia-drivers-275.43.ebuild:
+  Remove older 275.x series
+
+  06 Apr 2012; Doug Goldstein <cardoe@gentoo.org> files/nvidia.udev-rule:
+  Break the udev rule into two pieces because a user on bug #376527 had a
+  problem with the combined rule on udev-171-r5. It worked fine after he
+  recompiled udev but obviously since there was an issue we should just use it
+  broken out. bug #376527
+
+  06 Apr 2012; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-295.33.ebuild:
+  Script needs to be executable
+
+  06 Apr 2012; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-295.33.ebuild,
+  +files/nvidia.udev-rule, +files/nvidia-udev.sh:
+  Add support for creating device nodes for NVIDIA graphics cards when not
+  using X. Users of CUDA only specificially need this. Work for this done by
+  Rick Farina <sidhayn@gmail.com> bug #376527
+
+  26 Mar 2012; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-295.33.ebuild:
+  ebuild updates that were meant to be committed part of the original commit.
+
+*nvidia-drivers-295.33 (23 Mar 2012)
+
+  23 Mar 2012; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-295.33.ebuild:
+  Version bump. Move the binaries from /usr/bin to /opt/bin.
+
+  21 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  nvidia-drivers-295.20-r1.ebuild:
+  Use $OUTPUT instead of $SOURCES for the generated headers wrt #408841,
+  Comment #10 by Ingo Kemper
+
+  21 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  nvidia-drivers-295.20-r1.ebuild:
+  Fix building with Linux 3.3.x wrt #408841
+
+  20 Mar 2012; Agostino Sarubbo <ago@gentoo.org>
+  nvidia-drivers-295.20-r1.ebuild:
+  Stable for amd64, wrt bug #408905
+
+  19 Mar 2012; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-295.20-r1.ebuild:
+  The 295.20 drivers are compatible with xorg-server-1.12.
+
+*nvidia-drivers-290.10-r2 (15 Feb 2012)
+*nvidia-drivers-295.20-r1 (15 Feb 2012)
+
+  15 Feb 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  +nvidia-drivers-290.10-r2.ebuild, +nvidia-drivers-295.20-r1.ebuild,
+  -nvidia-drivers-290.10-r1.ebuild, -nvidia-drivers-295.20.ebuild:
+  Move libcuda and libnvidia-compiler back to /usr/lib since they're not
+  creating any conflicts now. That will allow to use CUDA without explicit
+  eselect opencl. Fixes bug 403495 by Michal Januszewski <spock@gentoo.org>
+
+*nvidia-drivers-295.20 (14 Feb 2012)
+
+  14 Feb 2012; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-295.20.ebuild:
+  Version bump
+
+*nvidia-drivers-275.43 (14 Feb 2012)
+
+  14 Feb 2012; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-275.28.ebuild, -nvidia-drivers-275.36.ebuild,
+  +nvidia-drivers-275.43.ebuild, -nvidia-drivers-285.05.09-r1.ebuild,
+  -nvidia-drivers-290.06.ebuild:
+  Remove old versions and bump the long lived stable version
+
+  07 Feb 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  nvidia-drivers-290.10-r1.ebuild:
+  Run eselect opencl during pkg_postinst wrt bug 402407 by Benjamin Schindler
+  <bschindler@student.ethz.ch> Add missing files to QA_* though some warnigs
+  still slip through
+
+  05 Feb 2012; Mike Frysinger <vapier@gentoo.org>
+  nvidia-drivers-96.43.20.ebuild, nvidia-drivers-173.14.31.ebuild,
+  nvidia-drivers-275.09.07.ebuild, nvidia-drivers-275.28.ebuild,
+  nvidia-drivers-275.36.ebuild, nvidia-drivers-285.05.09-r1.ebuild,
+  nvidia-drivers-290.06.ebuild, nvidia-drivers-290.10.ebuild,
+  nvidia-drivers-290.10-r1.ebuild:
+  Move to new unpacker eclass for unpack_makeself.
+
+*nvidia-drivers-290.10-r1 (04 Feb 2012)
+
+  04 Feb 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  +nvidia-drivers-290.10-r1.ebuild, metadata.xml:
+  Add revbump that installs OpenCL related libraries in place that doesn't
+  create conflicts and is expected by app-admin/opencl
+
+  18 Jan 2012; Ulrich Müller <ulm@gentoo.org> nvidia-drivers-96.43.20.ebuild,
+  nvidia-drivers-173.14.31.ebuild, nvidia-drivers-275.09.07.ebuild,
+  nvidia-drivers-275.28.ebuild, nvidia-drivers-275.36.ebuild,
+  nvidia-drivers-285.05.09-r1.ebuild, nvidia-drivers-290.06.ebuild,
+  nvidia-drivers-290.10.ebuild:
+  Inherit portability.eclass wrt bug 398801.
+
+  26 Dec 2011; Markus Meier <maekke@gentoo.org> nvidia-drivers-290.10.ebuild:
+  x86 stable, bug #394399
+
+  16 Dec 2011; Agostino Sarubbo <ago@gentoo.org> nvidia-drivers-290.10.ebuild:
+  Stable for AMD64, wrt bug #394399
+
+  07 Dec 2011; Jeroen Roovers <jer@gentoo.org> -nvidia-drivers-96.43.19.ebuild,
+  -nvidia-drivers-173.14.30.ebuild:
+  Old.
+
+*nvidia-drivers-290.10 (30 Nov 2011)
+*nvidia-drivers-275.36 (30 Nov 2011)
+
+  30 Nov 2011; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-275.36.ebuild, +nvidia-drivers-290.10.ebuild:
+  Add new long lived version and official versions
+
+  30 Nov 2011; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-270.41.19.ebuild, -nvidia-drivers-285.05.09.ebuild:
+  Remove older releases
+
+  15 Nov 2011; Tony Vroon <chainsaw@gentoo.org> nvidia-drivers-96.43.20.ebuild,
+  nvidia-drivers-173.14.31.ebuild, nvidia-drivers-285.05.09-r1.ebuild:
+  Marked stable on AMD64 based on arch testing by Michael "n0idx80" Harrison in
+  bug #388453. Expedited on a single report due to build failures with the
+  current stable kernel.
+
+  13 Nov 2011; Markus Meier <maekke@gentoo.org>
+  nvidia-drivers-285.05.09-r1.ebuild:
+  x86 stable, bug #388453
+
+  13 Nov 2011; Markus Meier <maekke@gentoo.org>
+  nvidia-drivers-173.14.31.ebuild:
+  x86 stable, bug #388453
+
+  13 Nov 2011; Markus Meier <maekke@gentoo.org> nvidia-drivers-96.43.20.ebuild:
+  x86 stable, bug #388453
+
+*nvidia-drivers-290.06 (04 Nov 2011)
+
+  04 Nov 2011; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-290.06.ebuild:
+  Version bump the latest beta drivers which provide xorg-server-1.11 support.
+
+*nvidia-drivers-285.05.09-r1 (27 Oct 2011)
+
+  27 Oct 2011; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-285.05.09.ebuild, +nvidia-drivers-285.05.09-r1.ebuild:
+  Change around a bunch of symlink behaviors
+
+  27 Oct 2011; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-280.13.ebuild, -nvidia-drivers-285.03.ebuild:
+  Remove some older versions.
+
+  05 Oct 2011; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-285.05.09.ebuild:
+  Due to a regression in X that requires a deprecated function to be copied
+  into the nvidia-drivers binary component, there is a significant performance
+  degradation with xorg-server-1.11. As a result I'm re-marking this release as
+  not supporting xorg-server-1.11. bug #385669
+
+*nvidia-drivers-285.05.09 (04 Oct 2011)
+
+  04 Oct 2011; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-285.05.09.ebuild:
+  Version bump
+
+  18 Sep 2011; Markus Meier <maekke@gentoo.org>
+  nvidia-drivers-275.09.07.ebuild:
+  x86 stable, bug #382835
+
+  16 Sep 2011; Tony Vroon <chainsaw@gentoo.org>
+  nvidia-drivers-275.09.07.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo & Ian
+  "idella4" Delaney in bug #382835.
+
+*nvidia-drivers-275.28 (14 Sep 2011)
+
+  14 Sep 2011; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-275.28.ebuild:
+  Add the extremely buggy 275.28 version which claims to have xorg-server-1.11
+  support to statisfy users desire for the latest and greatest, even if its
+  broken.
+
+*nvidia-drivers-285.03 (13 Sep 2011)
+*nvidia-drivers-280.13 (13 Sep 2011)
+
+  13 Sep 2011; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-275.19.ebuild, -nvidia-drivers-275.21.ebuild,
+  +nvidia-drivers-280.13.ebuild, +nvidia-drivers-285.03.ebuild:
+  Bump beta nvidia-drivers. 280.13 is an official release but suffers from bug
+  #375615
+
+  13 Sep 2011; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-173.14.28.ebuild, -nvidia-drivers-256.53.ebuild,
+  -nvidia-drivers-260.19.44.ebuild, -nvidia-drivers-270.41.06.ebuild:
+  Purge older versions
+
+  31 Jul 2011; Markus Meier <maekke@gentoo.org>
+  nvidia-drivers-270.41.19.ebuild:
+  x86 stable, bug #375587
+
+  31 Jul 2011; Markus Meier <maekke@gentoo.org>
+  nvidia-drivers-173.14.30.ebuild:
+  x86 stable, bug #371779
+
+  28 Jul 2011; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-96.43.20.ebuild:
+  Patch does not apply to 96.
+
+*nvidia-drivers-275.21 (26 Jul 2011)
+*nvidia-drivers-173.14.31 (26 Jul 2011)
+*nvidia-drivers-96.43.20 (26 Jul 2011)
+
+  26 Jul 2011; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-96.43.20.ebuild, +nvidia-drivers-173.14.31.ebuild,
+  +nvidia-drivers-275.21.ebuild:
+  Version bumps. Adds support for xorg-server 1.10 in the legacy drivers. Fix
+  KDE4 KWin issues in the 173.14.x series. Fix a multitude of issues in the
+  275.x series.
+
+  19 Jul 2011; Christoph Mende <angelos@gentoo.org>
+  nvidia-drivers-270.41.19.ebuild:
+  Stable on amd64 wrt bug #375587
+
+*nvidia-drivers-275.19 (18 Jul 2011)
+
+  18 Jul 2011; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-275.19.ebuild:
+  Version bump to latest stable drivers
+
+  14 Jul 2011; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-96.43.19.ebuild:
+  Set proper xorg-server version dependency (bug #375215).
+
+  23 Jun 2011; Markos Chandras <hwoarang@gentoo.org>
+  nvidia-drivers-173.14.30.ebuild:
+  Stable on amd64 wrt bug #371779
+
+  15 Jun 2011; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-260.19.36.ebuild, -nvidia-drivers-270.41.03.ebuild:
+  Remove older versions
+
+*nvidia-drivers-275.09.07 (14 Jun 2011)
+
+  14 Jun 2011; Jeroen Roovers <jer@gentoo.org>
+  +nvidia-drivers-275.09.07.ebuild:
+  Version bump.
+
+  14 Jun 2011; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-96.43.19.ebuild,
+  nvidia-drivers-173.14.28.ebuild, nvidia-drivers-173.14.30.ebuild,
+  nvidia-drivers-256.53.ebuild, nvidia-drivers-260.19.36.ebuild,
+  nvidia-drivers-260.19.44.ebuild, nvidia-drivers-270.41.03.ebuild,
+  nvidia-drivers-270.41.06.ebuild, nvidia-drivers-270.41.19.ebuild:
+  Set CC instead of HOST_CC or cross-compiling will fail.
+
+  31 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  nvidia-drivers-260.19.44.ebuild, nvidia-drivers-270.41.06.ebuild:
+  x86 stable wrt bug #368393 and bug #368395
+
+  29 May 2011; Markos Chandras <hwoarang@gentoo.org>
+  nvidia-drivers-260.19.44.ebuild, nvidia-drivers-270.41.06.ebuild:
+  Stable on amd64 wrt bug #368393 and bug #368395
+
+  28 May 2011; Mike Frysinger <vapier@gentoo.org>
+  nvidia-drivers-96.43.19.ebuild, nvidia-drivers-173.14.28.ebuild,
+  +files/nvidia-drivers-173.14.30-2.6.39.patch, nvidia-drivers-256.53.ebuild,
+  nvidia-drivers-260.19.36.ebuild, nvidia-drivers-260.19.44.ebuild,
+  +files/nvidia-drivers-260.19.44-2.6.39.patch:
+  Fix building with linux-2.6.39 #368939 by Alex Buell.
+
+*nvidia-drivers-270.41.19 (22 May 2011)
+
+  22 May 2011; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-270.41.19.ebuild:
+  Bump to the latest release in the 270 series.
+
+  11 May 2011; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-256.44-r1.ebuild, -nvidia-drivers-256.52.ebuild,
+  -nvidia-drivers-260.19.21.ebuild, -nvidia-drivers-260.19.26.ebuild,
+  -nvidia-drivers-260.19.29.ebuild, -nvidia-drivers-270.18.ebuild:
+  Remove older versions that are no longer supported or superceded by newer
+  stable versions.
+
+*nvidia-drivers-270.41.06 (11 May 2011)
+
+  11 May 2011; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-270.41.06.ebuild:
+  version bump
+
+*nvidia-drivers-173.14.30 (11 May 2011)
+
+  11 May 2011; Jeroen Roovers <jer@gentoo.org>
+  +nvidia-drivers-173.14.30.ebuild:
+  Version bump thanks to Tupone Alfredo (bug #366543).
+
+  24 Apr 2011; Ulrich Mueller <ulm@gentoo.org> nvidia-drivers-96.43.19.ebuild,
+  nvidia-drivers-173.14.28.ebuild, nvidia-drivers-256.44-r1.ebuild,
+  nvidia-drivers-256.52.ebuild, nvidia-drivers-256.53.ebuild,
+  nvidia-drivers-260.19.21.ebuild, nvidia-drivers-260.19.26.ebuild,
+  nvidia-drivers-260.19.29.ebuild, nvidia-drivers-260.19.36.ebuild,
+  nvidia-drivers-260.19.44.ebuild, nvidia-drivers-270.18.ebuild,
+  nvidia-drivers-270.41.03.ebuild:
+  Remove dependency on virtual/modutils, it is redundant with linux-mod.eclass,
+  bug 358891.
+
+  14 Apr 2011; Jeroen Roovers <jer@gentoo.org> -nvidia-drivers-96.43.16.ebuild,
+  -nvidia-drivers-96.43.18.ebuild, -nvidia-drivers-173.14.25.ebuild,
+  -nvidia-drivers-173.14.27.ebuild, -nvidia-drivers-190.53-r1.ebuild,
+  -nvidia-drivers-195.36.24.ebuild, -nvidia-drivers-195.36.31.ebuild,
+  -nvidia-drivers-256.44.ebuild:
+  Remove versions that need <xorg-server-1.7.99 (bug #344827).
+
+  13 Apr 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  nvidia-drivers-270.41.03.ebuild:
+  add a couple more libraries to the TEXTRELS variable for x86
+
+*nvidia-drivers-270.41.03 (12 Apr 2011)
+
+  12 Apr 2011; Justin Lecher <jlec@gentoo.org>
+  +nvidia-drivers-270.41.03.ebuild:
+  Non-Maintainer Version Bump, #357113
+
+  09 Apr 2011; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-96.43.19.ebuild:
+  Install nvidia-settings appropriate for this version (bug #304255).
+
+*nvidia-drivers-260.19.44 (07 Apr 2011)
+
+  07 Apr 2011; Justin Lecher <jlec@gentoo.org>
+  +nvidia-drivers-260.19.44.ebuild:
+  Non-Maintainer Version Bump
+
+  04 Apr 2011; Justin Lecher <jlec@gentoo.org> nvidia-drivers-270.18.ebuild:
+  Depend on correct Xorg Server ABI, #359841
+
+  21 Mar 2011; Thomas Kahle <tomka@gentoo.org> nvidia-drivers-260.19.36.ebuild:
+  x86 stable per bug 357409
+
+  07 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  nvidia-drivers-260.19.36.ebuild:
+  Stable on amd64 wrt bug #357409
+
+*nvidia-drivers-270.18 (24 Jan 2011)
+
+  24 Jan 2011; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-270.18.ebuild:
+  Add new nvidia-drivers beta. Adds a new library and adds initial support for
+  X.org 1.10
+
+*nvidia-drivers-260.19.36 (24 Jan 2011)
+
+  24 Jan 2011; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-260.19.36.ebuild:
+  Version bump. Some minor fixes from upstream.
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  nvidia-drivers-96.43.19.ebuild, nvidia-drivers-173.14.28.ebuild,
+  nvidia-drivers-260.19.29.ebuild:
+  stable x86, bug 348186
+
+  24 Dec 2010; Samuli Suominen <ssuominen@gentoo.org>
+  nvidia-drivers-96.43.19.ebuild, nvidia-drivers-260.19.29.ebuild:
+  amd64 stable wrt #348186
+
+  23 Dec 2010; Richard Freeman <rich0@gentoo.org>
+  nvidia-drivers-173.14.28.ebuild:
+  amd64 stable - 348186
+
+*nvidia-drivers-260.19.29 (14 Dec 2010)
+
+  14 Dec 2010; Jeroen Roovers <jer@gentoo.org>
+  +nvidia-drivers-260.19.29.ebuild:
+  Version bump (bug #347371).
+
+*nvidia-drivers-173.14.28 (06 Dec 2010)
+
+  06 Dec 2010; Jeroen Roovers <jer@gentoo.org>
+  +nvidia-drivers-173.14.28.ebuild:
+  Version bump by radfoj (bug #342361).
+
+*nvidia-drivers-260.19.26 (01 Dec 2010)
+
+  01 Dec 2010; Michał Januszewski <spock@gentoo.org>
+  +nvidia-drivers-260.19.26.ebuild:
+  Version bump. This is a beta version (and thus masked), but it is also the
+  first 260.x release that works with GF330M.
+
+  20 Nov 2010; Jeroen Roovers <jer@gentoo.org> nvidia-drivers-96.43.19.ebuild:
+  Free xorg-server dependency (bug #345929).
+
+*nvidia-drivers-96.43.19 (19 Nov 2010)
+
+  19 Nov 2010; Jeroen Roovers <jer@gentoo.org> +nvidia-drivers-96.43.19.ebuild:
+  Version bump by Miguel R. Caudevilla (bug #345929).
+
+*nvidia-drivers-260.19.21 (18 Nov 2010)
+
+  18 Nov 2010; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-260.19.06.ebuild, -nvidia-drivers-260.19.12.ebuild,
+  +nvidia-drivers-260.19.21.ebuild:
+  Bump to the latest official release. Remove beta releases.
+
+*nvidia-drivers-260.19.12 (15 Oct 2010)
+
+  15 Oct 2010; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-260.19.12.ebuild:
+  Version bump for new upstream release. Added a note about what USE=gtk
+  does when you disable it.
+
+  14 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  nvidia-drivers-96.43.18.ebuild, nvidia-drivers-173.14.27.ebuild,
+  nvidia-drivers-195.36.31.ebuild:
+  stable x86, bug 332501
+
+  21 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  nvidia-drivers-96.43.18.ebuild, nvidia-drivers-173.14.27.ebuild,
+  nvidia-drivers-195.36.31.ebuild:
+  Stable on amd64. Bug #332501
+
+*nvidia-drivers-260.19.06 (20 Sep 2010)
+
+  20 Sep 2010; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-260.19.04.ebuild, +nvidia-drivers-260.19.06.ebuild:
+  beta version bump
+
+  11 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -nvidia-drivers-185.18.36-r1.ebuild:
+  Remove version depending on deprecated xorg-server.
+
+*nvidia-drivers-260.19.04 (08 Sep 2010)
+
+  08 Sep 2010; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-260.19.04.ebuild:
+  Version bump for latest beta release
+
+*nvidia-drivers-256.53 (31 Aug 2010)
+
+  31 Aug 2010; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-256.53.ebuild:
+  version bump
+
+  30 Aug 2010; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-256.44-r1.ebuild, nvidia-drivers-256.52.ebuild:
+  fix up blocker with media-video/nvidia-settings
+
+  30 Aug 2010; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-256.44-r1.ebuild, nvidia-drivers-256.52.ebuild:
+  Implement installing nvidia-settings when USE=gtk is enabled as discussed
+  in bug #304255
+
+  30 Aug 2010; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-256.52.ebuild:
+  Fix xorg-server depend to properly include the 1.9 series
+
+  30 Aug 2010; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-96.43.14.ebuild, -nvidia-drivers-173.14.22.ebuild,
+  -nvidia-drivers-195.36.15.ebuild, -nvidia-drivers-256.35.ebuild:
+  Clear out some older versions that have been supplanted by newer stable
+  versions
+
+  30 Aug 2010; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-71.86.11.ebuild:
+  Removee versions that rely on xorg-server-1.4 or older (which is no longer
+  in the tree).
+
+*nvidia-drivers-256.52 (30 Aug 2010)
+*nvidia-drivers-256.44-r1 (30 Aug 2010)
+
+  30 Aug 2010; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-256.44-r1.ebuild, +nvidia-drivers-256.52.ebuild:
+  version bump and several clean ups to bring the ebuild up to the state of
+  the current unmasked ebuilds
+
+*nvidia-drivers-256.44 (04 Aug 2010)
+
+  04 Aug 2010; Michał Januszewski <spock@gentoo.org>
+  +nvidia-drivers-256.44.ebuild:
+  Version bump.
+
+  30 Jul 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  nvidia-drivers-71.86.11.ebuild, nvidia-drivers-96.43.14.ebuild,
+  nvidia-drivers-96.43.16.ebuild, nvidia-drivers-96.43.18.ebuild,
+  nvidia-drivers-173.14.22.ebuild, nvidia-drivers-173.14.25.ebuild,
+  nvidia-drivers-173.14.27.ebuild, nvidia-drivers-185.18.36-r1.ebuild,
+  nvidia-drivers-190.53-r1.ebuild, nvidia-drivers-195.36.15.ebuild,
+  nvidia-drivers-195.36.24.ebuild, nvidia-drivers-195.36.31.ebuild,
+  nvidia-drivers-256.35.ebuild:
+  Depend on proper emul lib to fix bug #330249.
+
+  27 Jul 2010; Michał Januszewski <spock@gentoo.org>
+  nvidia-drivers-256.35.ebuild:
+  Add a dependency on x11-libs/libXvMC (bug #321061).
+
+  20 Jul 2010; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-173.14.27.ebuild:
+  Conditionally install CUDA support if it was found in the package.
+  Apparently 173.14.27 drops CUDA. fixes bug #328681
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  nvidia-drivers-173.14.25.ebuild:
+  stable x86, bug 327003
+
+  16 Jul 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  nvidia-drivers-173.14.25.ebuild:
+  amd64 stable, bug 327003
+
+*nvidia-drivers-173.14.27 (16 Jul 2010)
+*nvidia-drivers-96.43.18 (16 Jul 2010)
+
+  16 Jul 2010; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-96.43.18.ebuild, +nvidia-drivers-173.14.27.ebuild:
+  bump available legacy drivers. Added support for xorg-server-1.8 in
+  nvidia-drivers-173.14.27
+
+  15 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  nvidia-drivers-96.43.16.ebuild:
+  Stable on amd64 wrt bug #326323
+
+*nvidia-drivers-195.36.31 (13 Jul 2010)
+
+  13 Jul 2010; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-180.60.ebuild, -nvidia-drivers-190.42-r3.ebuild,
+  -nvidia-drivers-190.53.ebuild, -nvidia-drivers-195.30.ebuild,
+  +nvidia-drivers-195.36.31.ebuild:
+  Version bump to the latest 195.36.x. Remove older versions that will no
+  longer be supported. Fix bug #317049 while I'm at it
+
+  10 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  nvidia-drivers-96.43.16.ebuild:
+  stable x86, bug 326323
+
+  07 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  nvidia-drivers-195.36.24.ebuild:
+  x86 stable wrt bug #325513
+
+  30 Jun 2010; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Correct description.
+
+  26 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  nvidia-drivers-195.36.24.ebuild:
+  amd64 stable wrt #325513
+
+  24 Jun 2010; Michał Januszewski <spock@gentoo.org>
+  +files/256.35-unified-arch.patch, nvidia-drivers-256.35.ebuild:
+  Add a patch for the 'x86' unified kernel architecture.
+
+*nvidia-drivers-256.35 (24 Jun 2010)
+
+  24 Jun 2010; Michał Januszewski <spock@gentoo.org>
+  +nvidia-drivers-256.35.ebuild:
+  Version bump.
+
+*nvidia-drivers-195.36.24 (25 Apr 2010)
+
+  25 Apr 2010; Justin Lecher <jlec@gentoo.org>
+  +nvidia-drivers-195.36.24.ebuild:
+  Version Bump on permission, #315141
+
+  24 Mar 2010; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-195.36.15.ebuild:
+  clean up some QA warnings
+
+  24 Mar 2010; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-195.36.15.ebuild:
+  add missing nvidia.icd to fix bug #310277
+
+  17 Mar 2010; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-173.14.20.ebuild:
+  still adding back 173.14.20, but repoman doesn't let me stable it right
+  away since the ebuild was stable when it was removed..
+
+  17 Mar 2010; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-173.14.20.ebuild:
+  add back 173.14.20 at the request of Giao Phan <casret@pobox.com> for bug
+  #294089
+
+*nvidia-drivers-195.36.15 (17 Mar 2010)
+
+  17 Mar 2010; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-195.36.15.ebuild:
+  add upstream's pre-release version of the 195.x.y series. Still needs to
+  be tested on further kernels and x86 before unmasking
+
+  10 Mar 2010; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-71.86.09.ebuild, -nvidia-drivers-96.43.13.ebuild,
+  -nvidia-drivers-173.14.20.ebuild, -nvidia-drivers-173.14.20-r1.ebuild,
+  -nvidia-drivers-185.18.36.ebuild, -nvidia-drivers-190.29.ebuild:
+  spring cleaning
+
+  10 Mar 2010; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-195.36.03.ebuild:
+  remove the broken drivers
+
+  28 Feb 2010; Fabio Erculiani <lxnay@gentoo.org>
+  nvidia-drivers-190.53-r1.ebuild,
+  +files/nvidia-drivers-190.53-2.6.33.patch:
+  add 2.6.33 kernel support to 190.53
+
+*nvidia-drivers-173.14.25 (27 Feb 2010)
+
+  27 Feb 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  +nvidia-drivers-173.14.25.ebuild:
+  Version bump, bug 305713
+
+*nvidia-drivers-96.43.16 (15 Feb 2010)
+
+  15 Feb 2010; Jeroen Roovers <jer@gentoo.org>
+  +nvidia-drivers-96.43.16.ebuild:
+  Version bump thanks to John Brendler (bug #304841).
+
+  09 Feb 2010; Pacho Ramos <pacho@gentoo.org>
+  nvidia-drivers-96.43.14.ebuild, nvidia-drivers-173.14.22.ebuild,
+  nvidia-drivers-185.18.36-r1.ebuild, nvidia-drivers-190.42-r3.ebuild:
+  amd64 stable, bug 299560
+
+*nvidia-drivers-195.36.03 (08 Feb 2010)
+
+  08 Feb 2010; Michał Januszewski <spock@gentoo.org>
+  +nvidia-drivers-195.36.03.ebuild:
+  Beta version bump (bug #303821).
+
+  07 Feb 2010; Michał Januszewski <spock@gentoo.org>
+  +files/195.30-unified-arch.patch, nvidia-drivers-195.30.ebuild:
+  Add support for the unified 'x86' kernel architecture.
+
+*nvidia-drivers-195.30 (07 Feb 2010)
+
+  07 Feb 2010; Michał Januszewski <spock@gentoo.org>
+  +nvidia-drivers-195.30.ebuild:
+  Add the latest beta drivers with support for CUDA 3.0.
+
+  01 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  nvidia-drivers-96.43.14.ebuild, nvidia-drivers-173.14.22.ebuild,
+  nvidia-drivers-185.18.36-r1.ebuild, nvidia-drivers-190.42-r3.ebuild:
+  stable x86, bug 299560
+
+*nvidia-drivers-190.53-r1 (04 Jan 2010)
+
+  04 Jan 2010; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-190.53-r1.ebuild:
+  revert the change to install VDPAU drivers to /usr/lib/vdpau since
+  libvdpau's dlopen() usage is incorrect. Stop gap ebuild until the issue is
+  discussed further with upstream.
+
+  21 Dec 2009; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-190.42-r2.ebuild:
+  remove old version
+
+  21 Dec 2009; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-190.53.ebuild:
+  version bump
+
+  17 Dec 2009; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-190.53.ebuild:
+  as stated in bug #296947, this breaks VDPAU, but apparently peper, who's
+  not a maintainer knows better.
+
+*nvidia-drivers-190.53 (16 Dec 2009)
+
+  16 Dec 2009; Piotr Jaroszyński <peper@gentoo.org>
+  +nvidia-drivers-190.53.ebuild:
+  Add 190.53.
+
+  28 Nov 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-71.86.09.ebuild, nvidia-drivers-71.86.11.ebuild:
+  fix bug #276815
+
+  28 Nov 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-185.18.36.ebuild, nvidia-drivers-185.18.36-r1.ebuild:
+  remove defunct compat_device_check. bug #294896 and bug #294623
+
+  21 Nov 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-185.18.36.ebuild:
+  stabilize for bug #290555
+
+  21 Nov 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-71.86.11.ebuild:
+  stabilize for bug #290561
+
+*nvidia-drivers-96.43.14 (13 Nov 2009)
+
+  13 Nov 2009; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-96.43.14.ebuild:
+  version bump for xorg-server 1.7 support. ebuild uses the refactored
+  ebuild as a base
+
+*nvidia-drivers-173.14.22 (13 Nov 2009)
+
+  13 Nov 2009; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-173.14.22.ebuild:
+  version bump for xorg-server 1.7 support. ebuild uses the refactored
+  ebuild as a base
+
+  12 Nov 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-190.42-r3.ebuild:
+  fix bash syntax error
+
+*nvidia-drivers-190.29 (09 Nov 2009)
+
+  09 Nov 2009; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-190.29.ebuild:
+  add 190.29 series for OpenCL support
+
+  06 Nov 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-190.42-r3.ebuild:
+  oops. fix issue where we might remove vdpau and cuda files
+
+  06 Nov 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-190.42-r3.ebuild:
+  more FreeBSD fixes
+
+*nvidia-drivers-190.42-r3 (06 Nov 2009)
+
+  06 Nov 2009; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-190.42-r3.ebuild:
+  remove generation of libGL.la since eselect-opengl-1.0.9 and newer no
+  longer uses it. refactor installation of libraries to fix FreeBSD issues
+
+  06 Nov 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-190.42-r2.ebuild:
+  add NV_X11_DRV and NV_X11_EXT to deal with different location of files on
+  FreeBSD
+
+  03 Nov 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-190.42-r2.ebuild:
+  clean up x86 QA_ settings
+
+  03 Nov 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-185.18.36-r1.ebuild, -nvidia-drivers-190.42-r1.ebuild,
+  nvidia-drivers-190.42-r2.ebuild:
+  no longer need to block newer mesa since eselect-opengl has been updated.
+  remove older revision of 190.42
+
+  01 Nov 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  nvidia-drivers-173.14.20.ebuild, nvidia-drivers-173.14.20-r1.ebuild,
+  nvidia-drivers-180.60.ebuild, nvidia-drivers-185.18.36.ebuild,
+  nvidia-drivers-185.18.36-r1.ebuild, nvidia-drivers-190.42-r1.ebuild,
+  nvidia-drivers-190.42-r2.ebuild:
+  fix typo in elog (bug #291397)
+
+*nvidia-drivers-190.42-r2 (31 Oct 2009)
+
+  31 Oct 2009; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-190.42-r2.ebuild:
+  reworked the ebuild for an overall improvement. Should fix several obscure
+  issues people have with different profiles. remove usage of non-TLS
+  libraries since Gentoo has TLS glibc's. still a work in progress for other
+  clean ups.
+
+  29 Oct 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-185.18.36.ebuild, nvidia-drivers-185.18.36-r1.ebuild:
+  Quadro NVS 140 support fixed in 185.18.36
+
+*nvidia-drivers-173.14.20-r1 (29 Oct 2009)
+
+  29 Oct 2009; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-173.14.20-r1.ebuild:
+  install nvidia-smi application and nvidia-xconfig man page
+
+  29 Oct 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-185.18.36.ebuild, nvidia-drivers-185.18.36-r1.ebuild,
+  nvidia-drivers-190.42-r1.ebuild:
+  fix QA_EXECSTACKS issue with libXvMCNVIDIA as reported in bug #290258
+
+  29 Oct 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-71.86.09.ebuild, nvidia-drivers-71.86.11.ebuild,
+  nvidia-drivers-96.43.13.ebuild, nvidia-drivers-173.14.20.ebuild,
+  nvidia-drivers-180.60.ebuild, nvidia-drivers-185.18.36.ebuild,
+  nvidia-drivers-185.18.36-r1.ebuild, nvidia-drivers-190.42-r1.ebuild:
+  >=media-libs/mesa-7.6 makes changes to the libGL.la behavior with eselect
+  that will cause OpenGL to be broken
+
+  29 Oct 2009; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-185.18.14.ebuild, -nvidia-drivers-185.18.29.ebuild,
+  -nvidia-drivers-185.18.31.ebuild, -nvidia-drivers-190.18.ebuild,
+  -nvidia-drivers-190.25.ebuild, -nvidia-drivers-190.32.ebuild,
+  -nvidia-drivers-190.36.ebuild, -nvidia-drivers-190.40.ebuild,
+  -nvidia-drivers-190.42.ebuild:
+  cull older version
+
+  29 Oct 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-190.42.ebuild, nvidia-drivers-190.42-r1.ebuild:
+  fix xorg-server version dependency
+
+  27 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  nvidia-drivers-190.42.ebuild, nvidia-drivers-190.42-r1.ebuild:
+  Remove <x11-base/xorg-server-1.6.99 depend because they are working with
+  xorg-server-1.7.1.
+
+  26 Oct 2009; Jeroen Roovers <jer@gentoo.org>
+  -nvidia-drivers-96.43.09.ebuild, -nvidia-drivers-96.43.11.ebuild,
+  -nvidia-drivers-173.14.15.ebuild, -nvidia-drivers-173.14.18.ebuild,
+  -nvidia-drivers-180.29.ebuild:
+  Remove old 96, 173 and 180.
+
+  26 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  nvidia-drivers-96.43.13.ebuild, nvidia-drivers-173.14.20.ebuild:
+  amd64 stable wrt #281302
+
+  22 Oct 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-185.18.36-r1.ebuild, nvidia-drivers-190.42-r1.ebuild:
+  don't install the vdpau headers since libvdpau provides those now
+
+*nvidia-drivers-190.42-r1 (22 Oct 2009)
+*nvidia-drivers-185.18.36-r1 (22 Oct 2009)
+
+  22 Oct 2009; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-185.18.36-r1.ebuild, +nvidia-drivers-190.42-r1.ebuild:
+  Update to new way of shipping VDPAU wrapper in its own library from
+  Freedesktop after discussing distro packaging with NVIDIA.
+
+*nvidia-drivers-190.42 (22 Oct 2009)
+
+  22 Oct 2009; Piotr Jaroszyński <peper@gentoo.org>
+  +nvidia-drivers-190.42.ebuild:
+  Add 190.42.
+
+  22 Oct 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-185.18.31.ebuild, nvidia-drivers-185.18.36.ebuild,
+  nvidia-drivers-190.32.ebuild, nvidia-drivers-190.36.ebuild,
+  nvidia-drivers-190.40.ebuild:
+  add note about needing to add QA_LDFLAGS for nvidia-smi
+
+*nvidia-drivers-185.18.36 (21 Oct 2009)
+
+  21 Oct 2009; Jeroen Roovers <jer@gentoo.org>
+  +nvidia-drivers-185.18.36.ebuild:
+  Version bump (bug #288591).
+
+*nvidia-drivers-190.40 (17 Oct 2009)
+
+  17 Oct 2009; Piotr Jaroszyński <peper@gentoo.org>
+  +nvidia-drivers-190.40.ebuild:
+  Add 190.40.
+
+  06 Oct 2009; Jeroen Roovers <jer@gentoo.org>
+  nvidia-drivers-71.86.09.ebuild, nvidia-drivers-71.86.11.ebuild,
+  nvidia-drivers-96.43.09.ebuild, nvidia-drivers-96.43.11.ebuild,
+  nvidia-drivers-96.43.13.ebuild, nvidia-drivers-173.14.15.ebuild,
+  nvidia-drivers-173.14.18.ebuild, nvidia-drivers-173.14.20.ebuild,
+  nvidia-drivers-180.29.ebuild, nvidia-drivers-180.60.ebuild,
+  nvidia-drivers-185.18.14.ebuild, nvidia-drivers-185.18.29.ebuild,
+  nvidia-drivers-185.18.31.ebuild, nvidia-drivers-190.18.ebuild,
+  nvidia-drivers-190.25.ebuild, nvidia-drivers-190.32.ebuild,
+  nvidia-drivers-190.36.ebuild:
+  Remove elibc_glibc dependency for now as it breaks horribly.
+
+  06 Oct 2009; Jeroen Roovers <jer@gentoo.org>
+  nvidia-drivers-71.86.09.ebuild, nvidia-drivers-71.86.11.ebuild,
+  nvidia-drivers-96.43.09.ebuild, nvidia-drivers-96.43.11.ebuild,
+  nvidia-drivers-96.43.13.ebuild, nvidia-drivers-173.14.15.ebuild,
+  nvidia-drivers-173.14.18.ebuild, nvidia-drivers-173.14.20.ebuild,
+  nvidia-drivers-180.29.ebuild, nvidia-drivers-180.60.ebuild,
+  nvidia-drivers-185.18.14.ebuild, nvidia-drivers-185.18.29.ebuild,
+  nvidia-drivers-185.18.31.ebuild, nvidia-drivers-190.18.ebuild,
+  nvidia-drivers-190.25.ebuild, nvidia-drivers-190.32.ebuild,
+  nvidia-drivers-190.36.ebuild:
+  Replace built_with_use (bug #286961), go EAPI=2 compliant.
+
+*nvidia-drivers-190.36 (27 Sep 2009)
+
+  27 Sep 2009; Piotr Jaroszyński <peper@gentoo.org>
+  +nvidia-drivers-190.36.ebuild:
+  Add 190.36.
+
+  26 Sep 2009; Michał Januszewski <spock@gentoo.org>
+  nvidia-drivers-190.32.ebuild:
+  Fix bug #283572 (add a check for CONFIG_LOCKDEP).
+
+  26 Sep 2009; Michał Januszewski <spock@gentoo.org>
+  nvidia-drivers-185.18.31.ebuild, nvidia-drivers-190.32.ebuild:
+  Fix bug #281895 (install manual pages). Also install the nvidia-smi tool
+  and prepare support for OpenCL (note that the current drivers do NOT
+  support OpenCL).
+
+*nvidia-drivers-190.32 (21 Sep 2009)
+
+  21 Sep 2009; Alex Alexander <wired@gentoo.org>
+  +nvidia-drivers-190.32.ebuild:
+  version bump, beta 190.32
+
+  19 Sep 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -nvidia-drivers-71.86.07.ebuild:
+  Cleanup. Removal of old xorg versions.
+
+*nvidia-drivers-190.25 (02 Sep 2009)
+
+  02 Sep 2009; Piotr Jaroszyński <peper@gentoo.org>
+  +nvidia-drivers-190.25.ebuild:
+  Add 190.25.
+
+  29 Aug 2009; Jeroen Roovers <jer@gentoo.org>
+  nvidia-drivers-96.43.13.ebuild:
+  Stable for x86 (bug #273539).
+
+  27 Aug 2009; Raúl Porcel <armin76@gentoo.org>
+  nvidia-drivers-173.14.20.ebuild:
+  x86 stable
+
+*nvidia-drivers-71.86.11 (23 Aug 2009)
+
+  23 Aug 2009; Jeroen Roovers <jer@gentoo.org>
+  +nvidia-drivers-71.86.11.ebuild:
+  Version bump (bug #280244).
+
+  03 Aug 2009; Michał Januszewski <spock@gentoo.org>
+  nvidia-drivers-185.18.29.ebuild, nvidia-drivers-185.18.31.ebuild:
+  Add a device compatibility check (bug #280031, #279542). Users of graphics
+  cards known to be incompatible with a particular version of the drivers
+  will now be warned about the incompatibility when installing the package.
+
+*nvidia-drivers-173.14.20 (03 Aug 2009)
+
+  03 Aug 2009; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-173.14.20.ebuild:
+  bump 173.x.y series to 173.14.20
+
+  03 Aug 2009; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  update maintainer info
+
+  03 Aug 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-180.29.ebuild, nvidia-drivers-180.60.ebuild,
+  nvidia-drivers-185.18.14.ebuild, nvidia-drivers-185.18.29.ebuild,
+  nvidia-drivers-185.18.31.ebuild, nvidia-drivers-190.18.ebuild,
+  -files/eblits/paravirt_check.eblit:
+  remove paravirt check again. bug #264375 again
+
+  02 Aug 2009; <chainsaw@gentoo.org> nvidia-drivers-71.86.09.ebuild,
+  nvidia-drivers-96.43.11.ebuild:
+  Completely unable to find testers with sufficiently old hardware on AMD64
+  kit; doing a Nike on this in agreement with Jeremy "darkside" Olexa &
+  VQuicksilver. Closes bug #275495.
+
+*nvidia-drivers-185.18.31 (01 Aug 2009)
+
+  01 Aug 2009; Michał Januszewski <spock@gentoo.org>
+  +nvidia-drivers-185.18.31.ebuild:
+  Version bump.
+
+  31 Jul 2009; <chainsaw@gentoo.org> nvidia-drivers-173.14.18.ebuild,
+  nvidia-drivers-180.60.ebuild:
+  Marked stable as requested by Doug Goldstein <cardoe@gentoo.org> in bug
+  #275495. Testing by Víctor "VQuicksilver" Enríquez on a Club3D GeForce
+  7600GS.
+
+*nvidia-drivers-185.18.29 (29 Jul 2009)
+
+  29 Jul 2009; Michał Januszewski <spock@gentoo.org>
+  +nvidia-drivers-185.18.29.ebuild:
+  Version bump (bug #279542).
+
+*nvidia-drivers-190.18 (27 Jul 2009)
+
+  27 Jul 2009; Michał Januszewski <spock@gentoo.org>
+  +nvidia-drivers-190.18.ebuild:
+  Add the latest beta version of the NVIDIA drivers. This is the first
+  version of the drivers in the tree to support CUDA 2.3. This ebuild should
+  remain masked.
+
+*nvidia-drivers-185.18.14 (25 Jul 2009)
+
+  25 Jul 2009; Michał Januszewski <spock@gentoo.org>
+  +nvidia-drivers-185.18.14.ebuild:
+  Version bump (bug #265238).
+
+  22 Jul 2009; Michał Januszewski <spock@gentoo.org> metadata.xml:
+  Add myself as a maintainer.
+
+*nvidia-drivers-96.43.13 (02 Jul 2009)
+
+  02 Jul 2009; Jeroen Roovers <jer@gentoo.org>
+  +nvidia-drivers-96.43.13.ebuild:
+  Version bump.
+
+  29 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  nvidia-drivers-71.86.09.ebuild, nvidia-drivers-96.43.11.ebuild,
+  nvidia-drivers-173.14.18.ebuild, nvidia-drivers-180.60.ebuild:
+  stable x86, bug 275495
+
+  29 Jun 2009; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Add myself as maintainer.
+
+  24 Jun 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-71.86.09.ebuild, nvidia-drivers-96.43.11.ebuild,
+  nvidia-drivers-173.14.18.ebuild:
+  update supported xorg-server version
+
+  14 Jun 2009; Mike Frysinger <vapier@gentoo.org> +files/nvidia-169.07:
+  Restore nvidia-169.07 as it is still in use by newer ebuilds.
+
+  12 Jun 2009; Doug Goldstein <cardoe@gentoo.org>
+  -files/NVIDIA_i2c-hwmon.patch, nvidia-drivers-96.43.09.ebuild,
+  nvidia-drivers-96.43.11.ebuild, nvidia-drivers-173.14.15.ebuild,
+  nvidia-drivers-173.14.18.ebuild, nvidia-drivers-180.29.ebuild,
+  nvidia-drivers-180.60.ebuild:
+  remove NVIDIA_i2c-hwmon.patch as requested by NVIDIA as this isn't safe
+  with certain NVIDIA skus.
+
+  12 Jun 2009; Doug Goldstein <cardoe@gentoo.org>
+  -files/nvidia-2.6.28.patch, -nvidia-drivers-71.86.06.ebuild,
+  -nvidia-drivers-71.86.08.ebuild, -nvidia-drivers-96.43.07.ebuild,
+  -nvidia-drivers-96.43.10.ebuild, -nvidia-drivers-100.14.19.ebuild,
+  -files/nvidia-169.07, -nvidia-drivers-173.14.09.ebuild,
+  -nvidia-drivers-173.14.12.ebuild, -nvidia-drivers-173.14.16.ebuild,
+  -nvidia-drivers-173.14.17.ebuild, -nvidia-drivers-177.80.ebuild,
+  -nvidia-drivers-177.82.ebuild, -nvidia-drivers-180.22.ebuild,
+  -nvidia-drivers-180.27.ebuild, -nvidia-drivers-180.37.ebuild,
+  -nvidia-drivers-180.41.ebuild, -nvidia-drivers-180.44.ebuild,
+  -nvidia-drivers-180.51.ebuild, -files/NVIDIA_glx-makefile.patch:
+  cull old versions
+
+  12 Jun 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-180.22.ebuild, nvidia-drivers-180.27.ebuild,
+  nvidia-drivers-180.29.ebuild, nvidia-drivers-180.37.ebuild,
+  nvidia-drivers-180.41.ebuild, nvidia-drivers-180.44.ebuild,
+  nvidia-drivers-180.51.ebuild, nvidia-drivers-180.60.ebuild:
+  fix paravirt check. bug #261696
+
+*nvidia-drivers-180.60 (27 May 2009)
+
+  27 May 2009; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-180.60.ebuild:
+  version bump. fix QA checks
+
+  06 May 2009; Mike Frysinger <vapier@gentoo.org>
+  nvidia-drivers-71.86.06.ebuild, nvidia-drivers-71.86.07.ebuild,
+  nvidia-drivers-71.86.08.ebuild, nvidia-drivers-71.86.09.ebuild,
+  nvidia-drivers-96.43.07.ebuild, nvidia-drivers-96.43.09.ebuild,
+  nvidia-drivers-96.43.10.ebuild, nvidia-drivers-96.43.11.ebuild,
+  nvidia-drivers-100.14.19.ebuild, nvidia-drivers-173.14.09.ebuild,
+  nvidia-drivers-173.14.12.ebuild, nvidia-drivers-173.14.15.ebuild,
+  nvidia-drivers-173.14.16.ebuild, nvidia-drivers-173.14.17.ebuild,
+  nvidia-drivers-173.14.18.ebuild, nvidia-drivers-177.80.ebuild,
+  nvidia-drivers-177.82.ebuild, nvidia-drivers-180.22.ebuild,
+  nvidia-drivers-180.27.ebuild, nvidia-drivers-180.29.ebuild,
+  nvidia-drivers-180.37.ebuild, nvidia-drivers-180.41.ebuild,
+  nvidia-drivers-180.44.ebuild, nvidia-drivers-180.51.ebuild:
+  Install modprobe.d file as nvidia.conf.
+
+*nvidia-drivers-180.51 (19 Apr 2009)
+
+  19 Apr 2009; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-180.51.ebuild:
+  version bump
+
+*nvidia-drivers-180.44 (30 Mar 2009)
+
+  30 Mar 2009; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-180.44.ebuild:
+  add latest driver release
+
+*nvidia-drivers-173.14.18 (23 Mar 2009)
+*nvidia-drivers-71.86.09 (23 Mar 2009)
+
+  23 Mar 2009; <ricmm@gentoo.org> +nvidia-drivers-71.86.09.ebuild,
+  +nvidia-drivers-173.14.18.ebuild:
+  Version bumps.
+
+*nvidia-drivers-180.41 (23 Mar 2009)
+
+  23 Mar 2009; <ricmm@gentoo.org> +nvidia-drivers-180.41.ebuild:
+  Version bump. See http://www.nvnews.net/vbulletin/showthread.php?p=1963540
+
+*nvidia-drivers-173.14.17 (17 Mar 2009)
+*nvidia-drivers-96.43.11 (17 Mar 2009)
+
+  17 Mar 2009; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-96.43.11.ebuild, +nvidia-drivers-173.14.17.ebuild:
+  version bumps
+
+  17 Mar 2009; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-180.29.ebuild:
+  mark 180.29 stable
+
+*nvidia-drivers-180.37 (09 Mar 2009)
+
+  09 Mar 2009; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-180.35.ebuild, +nvidia-drivers-180.37.ebuild:
+  version bump for several bugs including errors with signal handling.
+  remove broken version
+
+  28 Feb 2009; Markus Meier <maekke@gentoo.org> metadata.xml:
+  custom-cflags is a global USE-flag
+
+*nvidia-drivers-180.35 (25 Feb 2009)
+
+  25 Feb 2009; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-180.35.ebuild:
+  newer version. adds GPU support. fixes OpenGL 3.0 and VDPAU issues.
+
+*nvidia-drivers-180.29 (11 Feb 2009)
+
+  11 Feb 2009; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-180.29.ebuild:
+  version bump
+
+*nvidia-drivers-173.14.16 (04 Feb 2009)
+
+  04 Feb 2009; Ricardo Mendoza <ricmm@gentoo.org>
+  +nvidia-drivers-173.14.16.ebuild:
+  Version bump. See http://www.nvnews.net/vbulletin/showthread.php?t=126937
+
+*nvidia-drivers-71.86.08 (03 Feb 2009)
+
+  03 Feb 2009; Ricardo Mendoza <ricmm@gentoo.org>
+  +nvidia-drivers-71.86.08.ebuild:
+  Version bump. See http://www.nvnews.net/vbulletin/showthread.php?t=126955
+
+*nvidia-drivers-96.43.10 (03 Feb 2009)
+
+  03 Feb 2009; Ricardo Mendoza <ricmm@gentoo.org>
+  +nvidia-drivers-96.43.10.ebuild:
+  Version bump. See http://www.nvnews.net/vbulletin/showthread.php?t=126954
+
+  31 Jan 2009; Alexis Ballier <aballier@gentoo.org>
+  nvidia-drivers-96.43.09.ebuild:
+  Backport the missing bits from the 100. ebuild for x86-fbsd and keyword it
+  since this is apparently the version I need for my GeForce2 MX 400
+
+*nvidia-drivers-180.27 (30 Jan 2009)
+
+  30 Jan 2009; Daniel Gryniewicz <dang@gentoo.org>
+  +nvidia-drivers-180.27.ebuild:
+  Proxy bump to nvidia-drivers-180.27 for cardoe
+
+  20 Jan 2009; Peter Alfredsen <loki_val@gentoo.org>
+  nvidia-drivers-96.43.09.ebuild:
+  Non-maintainer commit: Changing <x11-base/xorg-server-1.4.99 to
+  <x11-base/xorg-server-1.5.99 per bug 252359. Tested on Geforce FX 5600,
+  works as well as can be expected. Two users reported it working on bug
+  252359.
+
+*nvidia-drivers-180.22 (16 Jan 2009)
+
+  16 Jan 2009; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-180.22.ebuild:
+  add new version. add vdpau support
+
+  25 Dec 2008; Markus Meier <maekke@gentoo.org>
+  nvidia-drivers-71.86.07.ebuild, nvidia-drivers-96.43.09.ebuild,
+  nvidia-drivers-173.14.15.ebuild, nvidia-drivers-177.82.ebuild:
+  x86 stable, bug #252482
+
+  25 Dec 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  nvidia-drivers-71.86.07.ebuild, nvidia-drivers-96.43.09.ebuild,
+  nvidia-drivers-173.14.15.ebuild, nvidia-drivers-177.82.ebuild:
+  stable amd64, bug 252482. Stable for linux 2.6.27 stabilization
+
+  25 Dec 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/nvidia-2.6.28.patch, nvidia-drivers-177.82.ebuild:
+  Add patch from upstream for linux 2.6.28 support.
+
+*nvidia-drivers-173.14.15 (19 Dec 2008)
+
+  19 Dec 2008; <ricmm@gentoo.org> +nvidia-drivers-173.14.15.ebuild:
+  Version bump. Fixes compilation issues with newer kernels.
+
+*nvidia-drivers-96.43.09 (18 Dec 2008)
+
+  18 Dec 2008; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-96.43.09.ebuild:
+  add beta version of 96.x.y legacy drivers for kernel 2.6.27 support. Fixes
+  bug #242476
+
+  18 Dec 2008; Doug Goldstein <cardoe@gentoo.org>
+  -files/NVIDIA_kernel-169.12-2286310.diff,
+  -files/NVIDIA_kernel-173.08-2404825.diff,
+  -files/NVIDIA_kernel-173.14.05-2419292.diff:
+  remove files that went along with removed versions
+
+  18 Dec 2008; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-177.80.ebuild, nvidia-drivers-177.82.ebuild:
+  Fix incorrectly not replacing CFLAGS when requested. bug #241800
+
+  18 Dec 2008; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-100.14.09.ebuild, -nvidia-drivers-100.14.11.ebuild,
+  -nvidia-drivers-100.14.23.ebuild, -nvidia-drivers-169.07.ebuild,
+  -nvidia-drivers-169.09.ebuild, -nvidia-drivers-169.09-r1.ebuild,
+  -nvidia-drivers-169.12.ebuild, -nvidia-drivers-173.08.ebuild,
+  -nvidia-drivers-173.14.05.ebuild, -nvidia-drivers-177.13.ebuild,
+  -nvidia-drivers-177.67.ebuild, -nvidia-drivers-177.68.ebuild,
+  -nvidia-drivers-177.70.ebuild:
+  remove outdated releases that no longer have support
+
+  18 Dec 2008; Doug Goldstein <cardoe@gentoo.org>
+  +files/eblits/donvidia.eblit, +files/eblits/mtrr_check.eblit,
+  +files/eblits/paravirt_check.eblit, +files/eblits/src_install-libs.eblit,
+  +files/eblits/want_tls.eblit:
+  Add eblits in the same fashion as sys-libs/glibc that contain commonly
+  used code between all the different versions of nvidia-drivers
+
+*nvidia-drivers-71.86.07 (17 Dec 2008)
+
+  17 Dec 2008; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-71.86.07.ebuild:
+  add 71.86.07 to the tree for 2.6.27 kernel support. This ebuild is
+  refactored like my past refactoring of the ebuilds. More changes to come.
+  Please report issues if you spot them in the ebuild, or suggest
+  improvements.
+
+  13 Dec 2008; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-71.86.06.ebuild, nvidia-drivers-96.43.07.ebuild,
+  nvidia-drivers-100.14.19.ebuild, nvidia-drivers-100.14.23.ebuild,
+  nvidia-drivers-169.07.ebuild, nvidia-drivers-169.09.ebuild,
+  nvidia-drivers-169.09-r1.ebuild, nvidia-drivers-169.12.ebuild,
+  nvidia-drivers-173.08.ebuild, nvidia-drivers-173.14.05.ebuild,
+  nvidia-drivers-173.14.09.ebuild, nvidia-drivers-173.14.12.ebuild,
+  nvidia-drivers-177.13.ebuild, nvidia-drivers-177.67.ebuild,
+  nvidia-drivers-177.68.ebuild, nvidia-drivers-177.70.ebuild,
+  nvidia-drivers-177.80.ebuild, nvidia-drivers-177.82.ebuild:
+  update all versions to specify the exact xorg-server versions they're
+  compatible with
+
+  06 Dec 2008; Mike Frysinger <vapier@gentoo.org>
+  nvidia-drivers-177.80.ebuild, nvidia-drivers-177.82.ebuild:
+  Use unpack_makeself rather than executing the script.
+
+*nvidia-drivers-177.82 (03 Dec 2008)
+
+  03 Dec 2008; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-177.82.ebuild:
+  driver version bump. fixes known issues with firefox 3 image corruption.
+  mobile GPU resume from S3 issues. mobile GPU hotkey issues.
+
+*nvidia-drivers-177.80 (13 Oct 2008)
+
+  13 Oct 2008; Ricardo Mendoza <ricmm@gentoo.org>
+  +nvidia-drivers-177.80.ebuild:
+  Version bump for new stable release as per bug #238969. Release notes can be
+  found at http://www.nvnews.net/vbulletin/showthread.php?t=120679
+
+*nvidia-drivers-177.70 (28 Aug 2008)
+
+  28 Aug 2008; Ricardo Mendoza <ricmm@gentoo.org>
+  +nvidia-drivers-177.70.ebuild:
+  Version bump for masked beta. Release highlights at
+  http://www.nvnews.net/vbulletin/showthread.php?p=1759793
+
+*nvidia-drivers-177.68 (27 Aug 2008)
+
+  27 Aug 2008; Ricardo Mendoza <ricmm@gentoo.org>
+  +nvidia-drivers-177.68.ebuild:
+  Version bump for masked beta per bug #235851. Also changed SRC_URI to the
+  generic URL due to being unable to find the file in the US mirror
+
+*nvidia-drivers-177.67 (20 Aug 2008)
+
+  20 Aug 2008; Ricardo Mendoza <ricmm@gentoo.org>
+  +nvidia-drivers-177.67.ebuild:
+  Version bump for masked beta per bug #235231. Release highlights at
+  http://www.nvnews.net/vbulletin/showthread.php?t=118085
+
+  18 Aug 2008; Ricardo Mendoza <ricmm@gentoo.org> metadata.xml:
+  Change maintainer
+
+  05 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*nvidia-drivers-173.14.12 (31 Jul 2008)
+
+  31 Jul 2008; <chainsaw@gentoo.org> nvidia-drivers-173.14.09.ebuild,
+  +nvidia-drivers-173.14.12.ebuild:
+  Version bump as requested by Wyatt Epp <epp.8@osu.edu> in bug #233418.
+  Ensure SYSVIPC is enabled as per cucu ionut <cuciferus@gmail.com> in bug
+  #213157. Patch to respect custom CFLAGS by boris64 <genzilla@boris64.net>
+  closes bug #230273. Paravirt exports now usable, delete unnecessary check
+  as per Patrizio Bassi <hetfield666@gmail.com> in bug #232883.
+
+  22 Jul 2008; <chainsaw@gentoo.org>
+  -files/NVIDIA_kernel-71.86.04-2305230.diff,
+  -files/NVIDIA_kernel-96.43.05-2290218.diff,
+  -nvidia-drivers-71.86.01.ebuild, -nvidia-drivers-71.86.04.ebuild,
+  nvidia-drivers-71.86.06.ebuild, -nvidia-drivers-96.43.01.ebuild,
+  -nvidia-drivers-96.43.05.ebuild, nvidia-drivers-96.43.07.ebuild:
+  X86 following the AMD64 lead in fasttrack stable for 71 & 96 branch
+  drivers. Arch testing by hoffie, permission granted by tsunam. Closes bug
+  #232624 by Mike Hammill <michael@hammill.name>. Cleaned up old ebuilds.
+
+  17 Jul 2008; <chainsaw@gentoo.org> nvidia-drivers-71.86.06.ebuild,
+  nvidia-drivers-96.43.07.ebuild:
+  Fasttrack AMD64 stable for 2.6.26-capable drivers in the 71 & 96 branches
+  that owners of older GeForces are stuck with. Compile & QA tested by
+  CCIEChad.
+
+*nvidia-drivers-96.43.07 (17 Jul 2008)
+*nvidia-drivers-71.86.06 (17 Jul 2008)
+
+  17 Jul 2008; <chainsaw@gentoo.org> +nvidia-drivers-71.86.06.ebuild,
+  +nvidia-drivers-96.43.07.ebuild:
+  New upstream releases, both fix secondary TV output sometimes being black
+  & white on some GPUs and are compatible with the newly released 2.6.26
+  kernel. Install modprobe control file to /etc/modprobe.d instead of the
+  deprecated /etc/modules.d location, closes bug #213878.
+
+  08 Jul 2008; Christian Faulhammer <opfer@gentoo.org>
+  nvidia-drivers-173.14.09.ebuild:
+  stable x86, bug 230369, thanks to all the testers
+
+  01 Jul 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  nvidia-drivers-173.14.09.ebuild:
+  stable amd64, bug 230369
+
+*nvidia-drivers-177.13 (19 Jun 2008)
+
+  19 Jun 2008; <chainsaw@gentoo.org> +nvidia-drivers-177.13.ebuild:
+  Masked beta driver 177.13; unsupported by nVidia. Adds support for GeForce
+  GTX 260 & 280 products. Upstream release announcement at
+  http://www.nvnews.net/vbulletin/showthread.php?t=114955
+
+*nvidia-drivers-173.14.09 (17 Jun 2008)
+
+  17 Jun 2008; <chainsaw@gentoo.org> +nvidia-drivers-173.14.09.ebuild:
+  Version bump, closes bug #224109. With thanks to Ludovic F.
+  <fludo@tvs2net.ch> for drawing my attention to this bugfix release.
+
+*nvidia-drivers-173.14.05 (28 May 2008)
+
+  28 May 2008; <chainsaw@gentoo.org>
+  +files/NVIDIA_kernel-173.14.05-2419292.diff,
+  +nvidia-drivers-173.14.05.ebuild:
+  Version bump. Supported release, upstream release highlights are at
+  http://www.nvnews.net/vbulletin/showthread.php?t=113919.
+
+  21 May 2008; <chainsaw@gentoo.org>
+  +files/NVIDIA_kernel-71.86.04-2305230.diff,
+  nvidia-drivers-71.86.04.ebuild:
+  Add patch to allow building on 2.6.25 kernels; thanks to Andreas
+  <andreas.schuerch@nativenet.ch>. No revision bump, the module didnt build
+  for affected users. Closes bug #223047.
+
+  09 May 2008; Mark Loeser <halcy0n@gentoo.org>
+  nvidia-drivers-173.08.ebuild:
+  Works on x86 for me, marking ~x86
+
+  08 May 2008; <chainsaw@gentoo.org>
+  files/NVIDIA_kernel-173.08-2404825.diff:
+  Upstream corrected the patch after the fact, update it. No revision bump
+  as the package is masked.
+
+  07 May 2008; <chainsaw@gentoo.org>
+  nvidia-drivers-71.86.01.ebuild, nvidia-drivers-71.86.04.ebuild,
+  nvidia-drivers-96.43.01.ebuild, nvidia-drivers-96.43.05.ebuild,
+  nvidia-drivers-100.14.09.ebuild, nvidia-drivers-100.14.11.ebuild,
+  nvidia-drivers-100.14.19.ebuild, nvidia-drivers-100.14.23.ebuild:
+  Quote variables where appropriate.
+
+*nvidia-drivers-173.08 (07 May 2008)
+
+  07 May 2008; <chainsaw@gentoo.org>
+  +files/NVIDIA_kernel-173.08-2404825.diff, +nvidia-drivers-173.08.ebuild:
+  Masked beta driver 173.08 with upstream patch from Zander (
+  http://www.nvnews.net/vbulletin/showpost.php?p=1648357&postcount=35 ) for
+  >=2.6.26-rc1 compatibility. Dropped keywords as this has only been tested
+  on 2.6.26-rc1-00166-gc0a1811 SMP x86_64 so far. Now installs module
+  control file in modprobe.d where it belongs. Upstream advises to use PAT
+  over MTRR. Some reports of low performance and 2D corruption, tread
+  carefully.
+
+  18 Apr 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/NVIDIA_kernel-96.43.05-2290218.diff,
+  nvidia-drivers-96.43.05.ebuild:
+  Add fix from upstream for building with linux-2.6.25 #218178.
+
+  18 Apr 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/NVIDIA_kernel-169.12-2286310.diff, nvidia-drivers-169.12.ebuild:
+  Add fix from upstream for building with linux-2.6.25 #218178.
+
+  10 Apr 2008; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-169.09-r1.ebuild:
+  revert previous commit due to it breaking the stable tree. it also flies
+  in the face of nvidia-drivers maintenance policies.
+
+  10 Apr 2008; William L. Thomson Jr. <wltjr@gentoo.org>
+  nvidia-drivers-169.09-r1.ebuild:
+  De-stablizing package, lost 3+ hours debugging why a stable machine X was
+  at 99% for any 2d operation, thunderbird etc.
+
+  19 Mar 2008; Raúl Porcel <armin76@gentoo.org>
+  nvidia-drivers-96.43.05.ebuild:
+  x86 stable
+
+  05 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  nvidia-drivers-169.09-r1.ebuild:
+  stable x86, bug 212290
+
+  04 Mar 2008; Olivier Crête <tester@gentoo.org>
+  nvidia-drivers-169.09-r1.ebuild:
+  Stable on amd64, bug #212290
+
+*nvidia-drivers-169.12 (28 Feb 2008)
+
+  28 Feb 2008; Doug Goldstein <cardoe@gentoo.org> +nvidia-drivers-169.12.ebuild:
+  version bump
+
+  18 Feb 2008; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-169.09-r1.ebuild:
+  revert libwfb.so change requested in bug #202978
+
+*nvidia-drivers-169.09-r1 (15 Feb 2008)
+
+  15 Feb 2008; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-169.09-r1.ebuild:
+  new ebuild that should fix bug #207298, #207299, #167413, #184593, #188552,
+  and #187149. and #202978, depending on the results of the discussion and
+  added work around for bug #137000
+
+*nvidia-drivers-96.43.05 (04 Feb 2008)
+*nvidia-drivers-71.86.04 (04 Feb 2008)
+
+  04 Feb 2008; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-71.86.04.ebuild, +nvidia-drivers-96.43.05.ebuild:
+  new legacy driver releases for newer kernels and X.org servers
+
+*nvidia-drivers-169.09 (22 Jan 2008)
+
+  22 Jan 2008; Doug Goldstein <cardoe@gentoo.org> nvidia-drivers-169.07.ebuild,
+  +nvidia-drivers-169.09.ebuild:
+  QA_WX_LOAD addition. new nvidia-drivers version
+
+  22 Jan 2008; Doug Goldstein <cardoe@gentoo.org> +files/nvidia-169.07,
+  nvidia-drivers-169.07.ebuild:
+  provide newer /etc/modules.d file
+
+*nvidia-drivers-169.07 (16 Jan 2008)
+
+  16 Jan 2008; Doug Goldstein <cardoe@gentoo.org> +nvidia-drivers-169.07.ebuild:
+  starting to rewrite the ebuild a bit. commiting masked so people can tinker
+
+  26 Dec 2007; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-100.14.19.ebuild, nvidia-drivers-100.14.23.ebuild:
+  fix patch to nvidia-xconfig on FreeBSD. bug #199761
+
+  21 Dec 2007; Doug Goldstein <cardoe@gentoo.org>
+  -nvidia-drivers-1.0.7185.ebuild, -nvidia-drivers-1.0.9639.ebuild:
+  remove old versions
+
+  21 Dec 2007; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-100.14.19.ebuild, nvidia-drivers-100.14.23.ebuild:
+  apply patch only when linux. bug #199759
+
+  20 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  nvidia-drivers-71.86.01.ebuild:
+  stable x86, bug 186490
+
+  14 Nov 2007; Steve Dibb <beandog@gentoo.org>
+  nvidia-drivers-71.86.01.ebuild, nvidia-drivers-96.43.01.ebuild:
+  amd64 stable, bug 186490
+
+  12 Nov 2007; Peter Weller <welp@gentoo.org>
+  nvidia-drivers-100.14.19.ebuild:
+  Stable on amd64 wrt bug 186490
+
+*nvidia-drivers-100.14.23 (01 Nov 2007)
+
+  01 Nov 2007; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-100.14.23.ebuild:
+  adding beta NVIDIA driver for user demand. bug #196679
+
+  31 Oct 2007; Raúl Porcel <armin76@gentoo.org>
+  nvidia-drivers-96.43.01.ebuild:
+  x86 stable
+
+  29 Oct 2007; Markus Ullmann <jokey@gentoo.org>
+  nvidia-drivers-100.14.19.ebuild:
+  Stable on x86
+
+  29 Oct 2007; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-100.14.19.ebuild:
+  add x86-fbsd support for 100.14.19 since it's been released now
+
+  07 Oct 2007; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-1.0.7185.ebuild, nvidia-drivers-1.0.9639.ebuild,
+  nvidia-drivers-71.86.01.ebuild, nvidia-drivers-96.43.01.ebuild,
+  nvidia-drivers-100.14.09.ebuild, nvidia-drivers-100.14.11.ebuild,
+  nvidia-drivers-100.14.19.ebuild:
+  Quote some old $ROOT usage
+
+  07 Oct 2007; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-71.86.01.ebuild, nvidia-drivers-96.43.01.ebuild,
+  nvidia-drivers-100.14.19.ebuild:
+  nvidia-driver uses ACPI if it's installed. Add USE based dep on it.
+
+  01 Oct 2007; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-100.14.09.ebuild, nvidia-drivers-100.14.11.ebuild:
+  mark the depends as not supporting xorg-server 1.4
+
+*nvidia-drivers-96.43.01 (27 Sep 2007)
+*nvidia-drivers-71.86.01 (27 Sep 2007)
+
+  27 Sep 2007; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-71.86.01.ebuild, +nvidia-drivers-96.43.01.ebuild,
+  nvidia-drivers-100.14.19.ebuild:
+  bump both nvidia legacy drivers to their latest revisions. Remove hack since
+  it's no longer needed.
+
+  20 Sep 2007; Chris Gianelloni <wolf31o2@gentoo.org> -files/nvidia-2,
+  -files/NVIDIA_kernel-2.6.19.patch, files/nvidia,
+  nvidia-drivers-1.0.7185.ebuild, -nvidia-drivers-1.0.8776-r1.ebuild,
+  -nvidia-drivers-1.0.9631-r1.ebuild, nvidia-drivers-1.0.9639.ebuild,
+  -nvidia-drivers-1.0.9746-r1.ebuild, -nvidia-drivers-1.0.9755-r1.ebuild,
+  nvidia-drivers-100.14.09.ebuild, nvidia-drivers-100.14.11.ebuild,
+  nvidia-drivers-100.14.19.ebuild:
+  Removing older ebuilds where newer ebuilds in the same class have the same
+  KEYWORDS or better, moving nvidia-2 to nvidia, since nothing uses the old
+  file anymore, simplified sed by changing ${PACKAGE} to PACKAGE, and changed
+  a newins to doins, since we were not renaming anything.
+
+*nvidia-drivers-100.14.19 (18 Sep 2007)
+
+  18 Sep 2007; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-100.14.19.ebuild:
+  new drivers from nVidia. no FreeBSD support.
+
+  26 Aug 2007; Anant Narayanan <anant@gentoo.org> Manifest:
+  Fix Manifest
+
+  30 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  nvidia-drivers-1.0.7185.ebuild, nvidia-drivers-1.0.8776-r1.ebuild,
+  nvidia-drivers-1.0.9631-r1.ebuild, nvidia-drivers-1.0.9639.ebuild,
+  nvidia-drivers-1.0.9746-r1.ebuild, nvidia-drivers-1.0.9755-r1.ebuild,
+  nvidia-drivers-100.14.09.ebuild, nvidia-drivers-100.14.11.ebuild:
+  Move eselect-opengl into DEPEND only, so it can be uninstalled later.
+
+  28 Jul 2007; Steve Dibb <beandog@gentoo.org>
+  nvidia-drivers-1.0.7185.ebuild, nvidia-drivers-1.0.9639.ebuild,
+  nvidia-drivers-100.14.09.ebuild:
+  amd64 stable, bug 183567
+
+  20 Jul 2007; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-1.0.7185.ebuild:
+  remove i2c-hwmon, libnvidia-cfg, nvidia-xconfig, and README.txt from 7185
+  since they don't exist
+
+  19 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  nvidia-drivers-1.0.7185.ebuild, nvidia-drivers-1.0.9639.ebuild,
+  nvidia-drivers-100.14.09.ebuild
+  x86 stable wrt security #183567
+
+  19 Jul 2007; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-100.14.09.ebuild:
+  adding back 100.14.09 based off 100.14.11 ebuild
+
+  18 Jul 2007; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-1.0.7185.ebuild, nvidia-drivers-1.0.9639.ebuild,
+  nvidia-drivers-100.14.11.ebuild:
+  QA EXECSTACK handling
+
+*nvidia-drivers-1.0.7185 (14 Jul 2007)
+
+  14 Jul 2007; Doug Goldstein <cardoe@gentoo.org>
+  +nvidia-drivers-1.0.7185.ebuild:
+  add 1.0.7185 drivers
+
+*nvidia-drivers-1.0.9639 (14 Jul 2007)
+
+  14 Jul 2007; Doug Goldstein <cardoe@gentoo.org>
+  -files/nvidia-settings.desktop, -files/nvidia-settings.png,
+  +nvidia-drivers-1.0.9639.ebuild, -nvidia-drivers-100.14.09.ebuild,
+  nvidia-drivers-100.14.11.ebuild:
+  add ebuild for 1.0.9639 drivers. Merge in updates from 100.14.11 drivers.
+  Removed old 100.14.09 drivers. No longer build nvidia-settings part of the
+  drivers but PDEPEND on it via gtk USE flag. Other misc cleanups.
+
+  13 Jul 2007; Doug Goldstein <doug@gentoo.org>
+  nvidia-drivers-100.14.11.ebuild:
+  fix bug #185171
+
+  12 Jul 2007; Doug Goldstein <cardoe@gentoo.org>
+  nvidia-drivers-100.14.11.ebuild:
+  Fixes #177231, #182622, #184432, #184795
+
+  07 Jul 2007; Doug Goldstein <cardoe@gentoo.org> +files/nvidia-2,
+  +files/NVIDIA_i2c-hwmon.patch, +files/nvidia-settings.desktop,
+  +files/nvidia-settings.png, nvidia-drivers-100.14.11.ebuild:
+  work in progress. fixes bug #183567, #169740, #182933, #184432. More will be
+  fixed before unmask
+
+  05 Jul 2007; Mike Frysinger <vapier@gentoo.org>
+  nvidia-drivers-1.0.8776-r1.ebuild, nvidia-drivers-1.0.9631-r1.ebuild,
+  nvidia-drivers-1.0.9746-r1.ebuild, nvidia-drivers-1.0.9755-r1.ebuild,
+  nvidia-drivers-100.14.09.ebuild, nvidia-drivers-100.14.11.ebuild:
+  If glibc does not have IUSE=nptl, assume it is enabled as newer versions
+  only support nptl.
+
+*nvidia-drivers-100.14.11 (04 Jul 2007)
+
+  04 Jul 2007; Christian Parpart <trapni@gentoo.org>
+  +nvidia-drivers-100.14.11.ebuild:
+  version bump to 100.14.11
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  nvidia-drivers-1.0.8776-r1.ebuild, nvidia-drivers-1.0.9631-r1.ebuild:
+  (QA) RESTRICT clean up.
+
+  01 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  nvidia-drivers-1.0.8776-r1.ebuild, nvidia-drivers-1.0.9631-r1.ebuild,
+  nvidia-drivers-1.0.9746-r1.ebuild, nvidia-drivers-1.0.9755-r1.ebuild,
+  nvidia-drivers-100.14.09.ebuild:
+  (QA) RESTRICT="multilib-pkg-force" -> EMULTILIB_PKG="true"
+
+*nvidia-drivers-100.14.09 (19 Jun 2007)
+
+  19 Jun 2007; Christian Parpart <trapni@gentoo.org>
+  +nvidia-drivers-100.14.09.ebuild:
+  version bump. wrt bug #176135 and bug #175674
+
+  13 Apr 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  -nvidia-drivers-1.0.8776.ebuild, nvidia-drivers-1.0.8776-r1.ebuild:
+  Stable on amd64/x86 wrt bug #114893.
+
+*nvidia-drivers-1.0.9755-r1 (13 Mar 2007)
+*nvidia-drivers-1.0.9746-r1 (13 Mar 2007)
+*nvidia-drivers-1.0.9631-r1 (13 Mar 2007)
+*nvidia-drivers-1.0.8776-r1 (13 Mar 2007)
+
+  13 Mar 2007; Jeremy Huddleston <eradicator@gentoo.org>
+  +nvidia-drivers-1.0.8776-r1.ebuild, -nvidia-drivers-1.0.9631.ebuild,
+  +nvidia-drivers-1.0.9631-r1.ebuild, -nvidia-drivers-1.0.9746.ebuild,
+  +nvidia-drivers-1.0.9746-r1.ebuild, -nvidia-drivers-1.0.9755.ebuild,
+  +nvidia-drivers-1.0.9755-r1.ebuild:
+  Install libnvidia-cfg.so.  Fixes bug #114893.
+
+*nvidia-drivers-1.0.9755 (07 Mar 2007)
+
+  07 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  +nvidia-drivers-1.0.9755.ebuild:
+  Version bump to latest version of the drivers.
+
+  19 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  nvidia-drivers-1.0.8776.ebuild, nvidia-drivers-1.0.9631.ebuild,
+  nvidia-drivers-1.0.9746.ebuild:
+  Removing dlloader USE flag wrt bug #166759.
+
+  07 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  nvidia-drivers-1.0.8776.ebuild, nvidia-drivers-1.0.9631.ebuild,
+  nvidia-drivers-1.0.9746.ebuild:
+  Fixed the executable stack warnings with a patch from Vlastimil Babka
+  <caster@gentoo.org> and closing bug #114894.
+
+  07 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  -nvidia-drivers-1.0.8774.ebuild, -nvidia-drivers-1.0.9742.ebuild:
+  Cleaning up some older versions.
+
+*nvidia-drivers-1.0.9746 (28 Dec 2006)
+
+  28 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +nvidia-drivers-1.0.9746.ebuild:
+  Added version 9746 and closing bug #158889.
+
+  26 Dec 2006; Mike Frysinger <vapier@gentoo.org>
+  nvidia-drivers-1.0.9742.ebuild:
+  Style touchups and create relative symlinks in /usr/lib.
+
+  12 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  nvidia-drivers-1.0.9631.ebuild, nvidia-drivers-1.0.9742.ebuild:
+  Update Gentoo/FreeBSD support with a patch from Timothy Redaelli
+  <drizzt@gentoo.org>. Closing bug #157625.
+
+  06 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -nvidia-drivers-1.0.9629.ebuild, nvidia-drivers-1.0.9742.ebuild:
+  Added patch from Joshua Napoli <jnapoli@actuality-systems.com> to install
+  libnvidia-wfb and closing bug #155532. Removing 9629, as it has problems
+  with NV2x cards.
+
+  05 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  files/NVIDIA_kernel-2.6.19.patch:
+  Updated the NVIDIA_kernel-2.6.19.patch and closing bug #156978.
+
+*nvidia-drivers-1.0.9631 (05 Dec 2006)
+
+  05 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +nvidia-drivers-1.0.9631.ebuild:
+  Version bump to 1.0.9631 for bug #157194. This should also close bug
+  #105656, bug #150080, bug #154739, and bug #156886.
+
+  05 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> files/nvidia:
+  Updated the nvidia file which installs to /etc/modules.d for bug #139756.
+
+  04 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  nvidia-drivers-1.0.8774.ebuild, nvidia-drivers-1.0.8776.ebuild,
+  nvidia-drivers-1.0.9629.ebuild, nvidia-drivers-1.0.9742.ebuild:
+  Fixing up executable stacks and closing bug #114894.
+
+  10 Nov 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/1.0.9626/NVIDIA-1.0.9626-i2c.diff, -nvidia-drivers-1.0.9626.ebuild:
+  Removing the 1.0-9626 driver, since it has been known to cause a black
+  screen at X startup and is superceded by the 9629 driver.
+
+*nvidia-drivers-1.0.9742 (09 Nov 2006)
+*nvidia-drivers-1.0.9629 (09 Nov 2006)
+
+  09 Nov 2006; Kristopher Kersey <augustus@gentoo.org>
+  +nvidia-drivers-1.0.9629.ebuild, +nvidia-drivers-1.0.9742.ebuild:
+  Added new stable driver 1.0.9629 and unstable driver 1.0.9742.
+
+  24 Oct 2006; Simon Stelling <blubb@gentoo.org>
+  nvidia-drivers-1.0.8776.ebuild:
+  stable on amd64
+
+  24 Oct 2006; Joshua Jackson <tsunam@gentoo.org>
+  nvidia-drivers-1.0.8776.ebuild:
+  Stable x86; bug #151635
+
+  20 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  nvidia-drivers-1.0.8774.ebuild, nvidia-drivers-1.0.8776.ebuild,
+  nvidia-drivers-1.0.9626.ebuild:
+  Added fix for bug #145968.
+
+*nvidia-drivers-1.0.8776 (20 Oct 2006)
+
+  20 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/1.0.8178/NVIDIA-1.0.8178-1423627.diff,
+  -files/1.0.8178/NVIDIA-1.0.8178-1427453.diff,
+  -files/1.0.8178/NVIDIA-1.0.8178-1435131.diff,
+  -files/1.0.8178/NVIDIA-1.0.8178-1450608.diff,
+  -files/1.0.8178/NVIDIA-1.0.8178-1453708.diff,
+  -files/1.0.8178/NVIDIA-1.0.8178-U012206.diff,
+  -nvidia-drivers-1.0.8178.ebuild, +nvidia-drivers-1.0.8776.ebuild:
+  Added 8776 for bug #151635 and removing 8178, since it is vulnerable.
+
+  18 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  nvidia-drivers-1.0.8178.ebuild, nvidia-drivers-1.0.8774.ebuild,
+  nvidia-drivers-1.0.9626.ebuild:
+  Use pkg2 for AMD64 since the other ones don't ship the 32-bit libraries. How
+  lame is that? Closing bug #151759.
+
+  17 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/1.0.9625/NVIDIA-1.0.9625-i2c.diff,
+  +files/1.0.9626/NVIDIA-1.0.9626-i2c.diff, nvidia-drivers-1.0.8178.ebuild,
+  nvidia-drivers-1.0.8774.ebuild, -nvidia-drivers-1.0.9625.ebuild,
+  nvidia-drivers-1.0.9626.ebuild:
+  Changed pkg1 and pkg2 to pkg0 for bug #146182.
+
+  17 Oct 2006; Olivier Crête <tester@gentoo.org>
+  nvidia-drivers-1.0.9626.ebuild:
+  Patch version is 1.0.9625
+
+  16 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  nvidia-drivers-1.0.9626.ebuild:
+  It looks like the i2c patch is still needed.
+
+*nvidia-drivers-1.0.9626 (16 Oct 2006)
+
+  16 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +nvidia-drivers-1.0.9626.ebuild:
+  Updated to 1.0.9626, which adds support for NVIDIA Quadro Plex configurations.
+
+  13 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/NVIDIA_kernel-2.6.19.patch:
+  Added patch from Daniel Drake <dsd@gentoo.org> for compiling on 2.6.19 and
+  closing bug #151177.
+
+  12 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/1.0.8178/NVIDIA-1.0.8178-1423627.diff,
+  +files/1.0.8178/NVIDIA-1.0.8178-1427453.diff,
+  +files/1.0.8178/NVIDIA-1.0.8178-1435131.diff,
+  +files/1.0.8178/NVIDIA-1.0.8178-1450608.diff,
+  +files/1.0.8178/NVIDIA-1.0.8178-1453708.diff,
+  +files/1.0.8178/NVIDIA-1.0.8178-U012206.diff,
+  ,files/1.0.8762/NVIDIA-1.0.8762-U062606.diff:
+  Added patches from nvnews.net for 8178, removing 8762, and adding a notice
+  to 9625 about AddARGBGLXVisuals for compiz.
+
+  09 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  nvidia-drivers-1.0.8178.ebuild, -nvidia-drivers-1.0.8762.ebuild,
+  nvidia-drivers-1.0.8762-r1.ebuild, nvidia-drivers-1.0.8774.ebuild,
+  nvidia-drivers-1.0.9625.ebuild:
+  Removed virtual/x11 from dependencies, removed blocker on nvidia-kernel and
+  nvidia-glx, since they're no longer in the tree, changed nostrip to strip,
+  and added QA variables for TEXTRELS and EXECSTACK for amd64 and x86. Closing
+  bug #114894.
+
+  04 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  nvidia-drivers-1.0.8178.ebuild, nvidia-drivers-1.0.8762.ebuild,
+  nvidia-drivers-1.0.8762-r1.ebuild, nvidia-drivers-1.0.8774.ebuild,
+  nvidia-drivers-1.0.9625.ebuild:
+  Removed PROVIDE=virtual/opengl since opengl is a new-style virtual.
+
+  04 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  nvidia-drivers-1.0.8774.ebuild:
+  Stable on amd64/x86 for bug #144549.
+
+  04 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  nvidia-drivers-1.0.8178.ebuild:
+  Stable on amd64/x86 for bug #143814.
+
+  25 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/1.0.9625/NVIDIA-1.0.9625-i2c.diff, nvidia-drivers-1.0.9625.ebuild:
+  Added patch from Zander to remove i2c functionality from the drivers until
+  it is fixed upstream.
+
+  25 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  nvidia-drivers-1.0.8178.ebuild, nvidia-drivers-1.0.8762.ebuild,
+  nvidia-drivers-1.0.8762-r1.ebuild, nvidia-drivers-1.0.8774.ebuild,
+  nvidia-drivers-1.0.9625.ebuild:
+  Commented out the Makefile patch.
+
+*nvidia-drivers-1.0.9625 (25 Sep 2006)
+*nvidia-drivers-1.0.8178 (25 Sep 2006)
+
+  25 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/NVIDIA_glx-makefile.patch, +nvidia-drivers-1.0.8178.ebuild,
+  nvidia-drivers-1.0.8762.ebuild, nvidia-drivers-1.0.8762-r1.ebuild,
+  nvidia-drivers-1.0.8774.ebuild, +nvidia-drivers-1.0.9625.ebuild:
+  Added 8178 ebuild for bug #143814.  Also added a (masked) 9625 beta ebuild.
+
+  27 Aug 2006; Hanno Boeck <hanno@gentoo.org> files/libGL.la-r2:
+  Fix libdir in libGL.la (bug #140982).
+
+  27 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>
+  nvidia-drivers-1.0.8774.ebuild:
+  Remove blocker on xorg-server 1.1.
+
+  25 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org> +metadata.xml:
+  Someone forgot to add metadata.
+
+*nvidia-drivers-1.0.8774 (25 Aug 2006)
+
+  25 Aug 2006; Kristopher Kersey <augustus@gentoo.org>
+  +nvidia-drivers-1.0.8774.ebuild:
+  Added ebuild for NVIDIA driver release 1.0-8774.
+
+  08 Aug 2006; Joshua Jackson <tsunam@gentoo.org>
+  nvidia-drivers-1.0.8762-r1.ebuild:
+  Stable x86; bug #140922
+
+  06 Aug 2006; Simon Stelling <blubb@gentoo.org>
+  nvidia-drivers-1.0.8762-r1.ebuild:
+  stable on amd64
+
+*nvidia-drivers-1.0.8762-r1 (07 Jul 2006)
+
+  07 Jul 2006; Kristopher Kersey <augustus@gentoo.org>
+  +files/1.0.8762/NVIDIA-1.0.8762-U062606.diff,
+  +nvidia-drivers-1.0.8762-r1.ebuild:
+  Added Zander's patch to allow building with latest kernels (>=
+  2.6.17-rc4-mm1, >= 2.6.17-git7).
+
+  06 Jul 2006; Kristopher Kersey <augustus@gentoo.org>
+  nvidia-drivers-1.0.8762.ebuild:
+  Quick fix to close bug #133138.
+
+*nvidia-drivers-1.0.8762 (06 Jul 2006)
+
+  06 Jul 2006; Kristopher Kersey <augustus@gentoo.org> +files/09nvidia,
+  +files/NVIDIA_glx-defines.patch, +files/NVIDIA_glx-glheader.patch,
+  +files/libGL.la-r2, +files/nvidia, +nvidia-drivers-1.0.8762.ebuild:
+  Initial import of x11-drivers/nvidia-drivers that will take the place of
+  media-video/nvidia-kernel and media-video/nvidia-glx.

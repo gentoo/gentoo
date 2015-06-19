@@ -1,0 +1,44 @@
+# ChangeLog for games-puzzle/brainparty
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/brainparty/ChangeLog,v 1.10 2015/01/23 21:44:21 mr_bones_ Exp $
+
+  23 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/brainparty-0.61-gcc49.patch, brainparty-0.61.ebuild,
+  files/brainparty-0.61-savegame.patch:
+  EAPI=5; add patch from Martin Väth to fix compile with gcc49 (bug #537338)
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> brainparty-0.61.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  15 Jan 2011; Markus Meier <maekke@gentoo.org> brainparty-0.61.ebuild:
+  x86 stable, bug #350778
+
+  12 Jan 2011; Markos Chandras <hwoarang@gentoo.org> brainparty-0.61.ebuild:
+  Stable on amd64 wrt bug #350778
+
+*brainparty-0.61 (28 Nov 2010)
+
+  28 Nov 2010; Tupone Alfredo <tupone@gentoo.org> +brainparty-0.61.ebuild,
+  +files/brainparty-0.61-savegame.patch:
+  Version bump to 0.61 Bug #329209 by throw_away_2002@yahoo.com
+
+  31 May 2010; Markus Meier <maekke@gentoo.org> brainparty-0.5.ebuild:
+  x86 stable, bug #318351
+
+  25 May 2010; Pacho Ramos <pacho@gentoo.org> brainparty-0.5.ebuild:
+  stable amd64, bug 318351
+
+  03 Apr 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  brainparty-0.5.ebuild:
+  fix building with --as-needed (bug #312883) with patch from Johannes Rauh
+
+  02 Apr 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  brainparty-0.5.ebuild, +files/brainparty-0.5-savegame.patch:
+  savegame patch, also from Chris Coleman
+
+*brainparty-0.5 (02 Apr 2010)
+
+  02 Apr 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +brainparty-0.5.ebuild, +metadata.xml:
+  initial commit - ebuild submitted by Chris Coleman via bug #312473

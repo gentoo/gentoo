@@ -1,0 +1,34 @@
+# ChangeLog for media-sound/qpitch
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/qpitch/ChangeLog,v 1.8 2015/04/02 15:40:31 kensington Exp $
+
+*qpitch-1.0.1-r1 (02 Apr 2015)
+
+  02 Apr 2015; Michael Palimaka <kensington@gentoo.org> +qpitch-1.0.1-r1.ebuild:
+  EAPI bump.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> qpitch-1.0.1.ebuild:
+  Move Qt dependencies to the new category
+
+  13 Jun 2011; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove myself from metadata.xml
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org> qpitch-1.0.1.ebuild:
+  stable x86, bug 327005
+
+  05 Jul 2010; Maciej Mrozowski <reavertm@gentoo.org> qpitch-1.0.1.ebuild:
+  amd64 stable, bug 327005
+
+  05 Jul 2010; Maciej Mrozowski <reavertm@gentoo.org> qpitch-1.0.1.ebuild:
+  DOCS is array now.
+
+  15 Aug 2009; Markos Chandras <hwoarang@gentoo.org> qpitch-1.0.1.ebuild:
+  Update homepage
+
+*qpitch-1.0.1 (08 Jun 2009)
+
+  08 Jun 2009; Markos Chandras <hwoarang@gentoo.org> +qpitch-1.0.1.ebuild,
+  +metadata.xml:
+  Initial commit of qpitch package. Thanks to Nico Schlömer, kavol@email.cz
+  and
+  Gokdeniz Karadag for the initial ebuilds. Fixes bug 235630

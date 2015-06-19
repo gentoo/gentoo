@@ -1,0 +1,60 @@
+--- work.orig/src/wl/sys/wl_cfg80211.c	2012-11-05 21:12:30.402421835 +0100
++++ work/src/wl/sys/wl_cfg80211.c	2012-11-05 21:21:13.962421835 +0100
+@@ -40,9 +40,15 @@ u32 wl_dbg_level = WL_DBG_ERR | WL_DBG_I
+ 
+ static s32 wl_cfg80211_change_iface(struct wiphy *wiphy, struct net_device *ndev,
+            enum nl80211_iftype type, u32 *flags, struct vif_params *params);
+-static s32 __wl_cfg80211_scan(struct wiphy *wiphy, struct net_device *ndev,
++static s32 __wl_cfg80211_scan(struct wiphy *wiphy,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 6, 0)
++           struct net_device *ndev,
++#endif
+            struct cfg80211_scan_request *request, struct cfg80211_ssid *this_ssid);
+-static s32 wl_cfg80211_scan(struct wiphy *wiphy, struct net_device *ndev,
++static s32 wl_cfg80211_scan(struct wiphy *wiphy,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 6, 0)
++           struct net_device *ndev,
++#endif
+            struct cfg80211_scan_request *request);
+ static s32 wl_cfg80211_set_wiphy_params(struct wiphy *wiphy, u32 changed);
+ static s32 wl_cfg80211_join_ibss(struct wiphy *wiphy, struct net_device *dev,
+@@ -496,10 +502,16 @@ wl_cfg80211_change_iface(struct wiphy *w
+ }
+ 
+ static s32
+-__wl_cfg80211_scan(struct wiphy *wiphy, struct net_device *ndev,
++__wl_cfg80211_scan(struct wiphy *wiphy,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 6, 0)
++		   struct net_device *ndev,
++#endif
+                    struct cfg80211_scan_request *request,
+                    struct cfg80211_ssid *this_ssid)
+ {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 6, 0)
++	struct net_device *ndev = request->wdev->netdev;
++#endif
+ 	struct wl_priv *wl = ndev_to_wl(ndev);
+ 	struct cfg80211_ssid *ssids;
+ 	struct wl_scan_req *sr = wl_to_sr(wl);
+@@ -570,13 +582,20 @@ scan_out:
+ }
+ 
+ static s32
+-wl_cfg80211_scan(struct wiphy *wiphy, struct net_device *ndev,
++wl_cfg80211_scan(struct wiphy *wiphy,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 6, 0)
++                 struct net_device *ndev,
++#endif
+                  struct cfg80211_scan_request *request)
+ {
+ 	s32 err = 0;
+ 
+ 	CHECK_SYS_UP();
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 6, 0)
+ 	err = __wl_cfg80211_scan(wiphy, ndev, request, NULL);
++#else
++	err = __wl_cfg80211_scan(wiphy, request, NULL);
++#endif
+ 	if (err) {
+ 		WL_DBG(("scan error (%d)\n", err));
+ 		return err;

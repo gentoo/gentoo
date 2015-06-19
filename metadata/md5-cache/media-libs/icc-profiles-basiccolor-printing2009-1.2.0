@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=ICC profiles for printing/offset
+EAPI=4
+HOMEPAGE=http://www.freedesktop.org/wiki/OpenIcc/ProfilePackages
+KEYWORDS=~amd64 ~x86
+LICENSE=ZLIB
+SLOT=0
+SRC_URI=mirror://sourceforge/openicc/basICColor-Profiles/icc-profiles-basiccolor-printing2009-1.2.0.tar.bz2
+_md5_=8ca2469b6d5efbe115a78a99ce3de673

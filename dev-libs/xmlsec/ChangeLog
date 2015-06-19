@@ -1,0 +1,174 @@
+# ChangeLog for dev-libs/xmlsec
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/xmlsec/ChangeLog,v 1.41 2015/05/02 09:53:58 jer Exp $
+
+  02 May 2015; Jeroen Roovers <jer@gentoo.org> xmlsec-1.2.20.ebuild:
+  Marked ~ppc64 (bug #534688).
+
+  28 Dec 2014; Agostino Sarubbo <ago@gentoo.org> xmlsec-1.2.20.ebuild:
+  Stable for x86, wrt bug #533044
+
+  26 Dec 2014; Agostino Sarubbo <ago@gentoo.org> xmlsec-1.2.20.ebuild:
+  Stable for amd64, wrt bug #533044
+
+*xmlsec-1.2.20 (10 Oct 2014)
+
+  10 Oct 2014; Tim Harder <radhermit@gentoo.org> +xmlsec-1.2.20.ebuild:
+  Version bump.
+
+  01 Mar 2014; Michał Górny <mgorny@gentoo.org> xmlsec-1.2.18.ebuild,
+  xmlsec-1.2.19.ebuild:
+  Update libgcrypt dep to use slot :0.
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> xmlsec-1.2.19.ebuild:
+  Stable for x86, wrt bug #475688
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> xmlsec-1.2.19.ebuild:
+  Stable for amd64, wrt bug #475688
+
+*xmlsec-1.2.19 (02 May 2013)
+
+  02 May 2013; Tim Harder <radhermit@gentoo.org> +xmlsec-1.2.19.ebuild:
+  Version bump (bug #467470), add doc and static-libs use flags.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> xmlsec-1.2.18.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Jun 2011; Markos Chandras <hwoarang@gentoo.org> -xmlsec-1.2.17.ebuild:
+  Remove old ebuilds. Requested by Arfrever
+
+  19 Jun 2011; Markus Meier <maekke@gentoo.org> xmlsec-1.2.18.ebuild:
+  x86 stable, bug #371669
+
+  18 Jun 2011; Markos Chandras <hwoarang@gentoo.org> xmlsec-1.2.18.ebuild:
+  Stable on amd64 wrt bug #371669
+
+*xmlsec-1.2.18 (14 May 2011)
+
+  14 May 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +xmlsec-1.2.18.ebuild:
+  Version bump.
+
+  05 Apr 2011; Christoph Mende <angelos@gentoo.org> xmlsec-1.2.17.ebuild:
+  Stable on amd64 wrt bug #361397
+
+  04 Apr 2011; Thomas Kahle <tomka@gentoo.org> xmlsec-1.2.17.ebuild:
+  x86 stable per bug 361397
+
+*xmlsec-1.2.17 (03 Apr 2011)
+
+  03 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +xmlsec-1.2.17.ebuild:
+  Version bump (bug #361397).
+
+  24 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> xmlsec-1.2.16.ebuild:
+  x86 stable wrt bug #323915
+
+  17 Jun 2010; Christoph Mende <angelos@gentoo.org> xmlsec-1.2.16.ebuild:
+  Stable on amd64 wrt bug #323915
+
+  28 May 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  xmlsec-1.2.16.ebuild:
+  Fix configuration (bug #321783).
+
+*xmlsec-1.2.16 (27 May 2010)
+
+  27 May 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -xmlsec-1.2.15.ebuild, +xmlsec-1.2.16.ebuild, metadata.xml:
+  Version bump.
+
+*xmlsec-1.2.15 (29 Apr 2010)
+
+  29 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -xmlsec-1.2.14.ebuild, +xmlsec-1.2.15.ebuild:
+  Version bump.
+
+*xmlsec-1.2.14 (05 Dec 2009)
+
+  05 Dec 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -xmlsec-1.2.12.ebuild,
+  -files/xmlsec-1.2.12-fix_implicit_declaration.patch,
+  -files/xmlsec-1.2.12-min_hmac_size.patch, -xmlsec-1.2.13.ebuild,
+  +xmlsec-1.2.14.ebuild:
+  Version bump (bug #295912).
+
+*xmlsec-1.2.13 (17 Sep 2009)
+
+  17 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -xmlsec-1.2.11.ebuild, -files/xmlsec-1.2.11-gnutls.patch,
+  +xmlsec-1.2.13.ebuild:
+  Version bump.
+
+*xmlsec-1.2.12 (29 Jul 2009)
+
+  29 Jul 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +xmlsec-1.2.12.ebuild,
+  +files/xmlsec-1.2.12-fix_implicit_declaration.patch,
+  +files/xmlsec-1.2.12-min_hmac_size.patch:
+  Version bump (bug #277876).
+
+  03 May 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  xmlsec-1.2.11.ebuild, +files/xmlsec-1.2.11-gnutls.patch:
+  Fix building with >=net-libs/gnutls-2.7.1.
+
+  11 May 2008; Alon Bar-Lev <alonbl@gentoo.org> xmlsec-1.2.11.ebuild:
+  Remove autoconf dependency, bug#221551, fixup RDEPEND
+
+*xmlsec-1.2.11 (10 Nov 2007)
+
+  10 Nov 2007; Alon Bar-Lev <alonbl@gentoo.org> -xmlsec-1.2.9.ebuild,
+  -xmlsec-1.2.9-r1.ebuild, -xmlsec-1.2.10.ebuild, +xmlsec-1.2.11.ebuild:
+  Version bump, cleanup.
+
+*xmlsec-1.2.10 (04 Jun 2007)
+
+  04 Jun 2007; Robin H. Johnson <robbat2@gentoo.org> +xmlsec-1.2.10.ebuild:
+  Version bump, per Meatoo.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*xmlsec-1.2.9-r1 (26 Jan 2006)
+
+  26 Jan 2006; Marcelo Goes <vanquirius@gentoo.org>
+  -files/xmlsec-1.2.2-nss-nspr-configure.in.patch, +files/nss.patch,
+  -xmlsec-1.2.5.ebuild, -xmlsec-1.2.8.ebuild, +xmlsec-1.2.9-r1.ebuild:
+  Add fixes from bug 113548 regarding nss and nspr. Many thanks to Hanno
+  Meyer-Thurow <h dot mth at web dot de>.
+
+  29 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> xmlsec-1.2.5.ebuild,
+  xmlsec-1.2.8.ebuild, xmlsec-1.2.9.ebuild:
+  Do not dodoc INSTALL, other misc fixes.
+
+*xmlsec-1.2.9 (20 Aug 2005)
+
+  20 Aug 2005; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  +xmlsec-1.2.9.ebuild:
+  version bump
+
+*xmlsec-1.2.8 (26 Jun 2005)
+
+  26 Jun 2005; Daniel Black <dragonheart@gentoo.org> +xmlsec-1.2.8.ebuild:
+  version bump
+
+  07 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> -xmlsec-1.2.2.ebuild:
+  clean old ebuild
+
+  01 Jan 2005; Daniel Ahlberg <aliz@gentoo.org> xmlsec-1.2.5.ebuild:
+  Enable pkg-config, closing #52488.
+
+  18 Oct 2004; David Holm <dholm@gentoo.org> xmlsec-1.2.5.ebuild:
+  Added to ~ppc.
+
+  17 Jun 2004; Jason Wever <weeve@gentoo.org> xmlsec-1.2.5.ebuild:
+  Added ~sparc keyword.
+
+*xmlsec-1.2.5 (26 May 2004)
+
+  26 May 2004; Daniel Ahlberg <aliz@gentoo.org> xmlsec-1.2.5.ebuild:
+  Version bump and gnutls use flag, closing #51270.
+
+*xmlsec-1.2.2 (04 Jan 2004)
+
+  04 Jan 2004; Daniel Ahlberg <aliz@gentoo.org> xmlsec-1.2.2.ebuild:
+  Initial import. Ebuild submitted by Rigo Ketelings <rigo@home.nl> in #9429.

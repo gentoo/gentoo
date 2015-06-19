@@ -1,0 +1,32 @@
+# ChangeLog for media-sound/taginfo
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/taginfo/ChangeLog,v 1.9 2011/03/28 22:59:11 ssuominen Exp $
+
+  28 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> taginfo-1.2-r1.ebuild:
+  Respect CXXFLAGS and LDFLAGS wrt #335694 by Diego Elio Pettenò.
+
+  24 Nov 2008; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Re-assign to sound herd.
+
+  22 Mar 2007; Peter Weller <welp@gentoo.org> taginfo-1.2-r1.ebuild:
+  Stable on amd64
+
+  22 Mar 2007; Raúl Porcel <armin76@gentoo.org> taginfo-1.2-r1.ebuild:
+  x86 stable
+
+  22 Mar 2007; Samuli Suominen <drac@gentoo.org> metadata.xml:
+  Take maintainership. Stop installing binaries to /usr/local/bin and other
+  minor fixes..
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove jhuebel from metadata.xml due to retirement.
+
+  02 Jul 2006; Jason Huebel <jhuebel@gentoo.org> taginfo-1.2.ebuild:
+  stable on x86 and amd64
+
+*taginfo-1.2 (20 May 2006)
+
+  20 May 2006; Jason Huebel <jhuebel@gentoo.org> +metadata.xml,
+  +taginfo-1.2.ebuild:
+  initial ebuild
+

@@ -1,0 +1,33 @@
+# ChangeLog for www-apache/mod_access_dnsbl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_access_dnsbl/ChangeLog,v 1.7 2015/04/04 06:16:05 mr_bones_ Exp $
+
+  04 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -mod_access_dnsbl-0.01.ebuild:
+  old
+
+*mod_access_dnsbl-0.02 (17 Dec 2014)
+
+  17 Dec 2014; Michael Orlitzky <mjo@gentoo.org> +mod_access_dnsbl-0.02.ebuild:
+  Version bump for apache-2.4.x support, bug #532780.
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  16 Oct 2012; Patrick Lauer <patrick@gentoo.org> mod_access_dnsbl-0.01.ebuild:
+  Restricting to apache 2.2
+
+  27 Jan 2008; Benedikt Böhm <hollow@gentoo.org> metadata.xml:
+  update metadata
+
+  27 Jan 2008; Benedikt Böhm <hollow@gentoo.org>
+  files/10_mod_access_dnsbl.conf, mod_access_dnsbl-0.01.ebuild:
+  cleanup
+
+*mod_access_dnsbl-0.01 (10 Sep 2007)
+
+  10 Sep 2007; Benedikt Böhm <hollow@gentoo.org>
+  +files/10_mod_access_dnsbl.conf, +metadata.xml,
+  +mod_access_dnsbl-0.01.ebuild:
+  initial version

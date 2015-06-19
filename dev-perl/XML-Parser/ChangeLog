@@ -1,0 +1,252 @@
+# ChangeLog for dev-perl/XML-Parser
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-Parser/ChangeLog,v 1.70 2015/03/04 13:58:36 monsieurp Exp $
+
+*XML-Parser-2.440.0 (04 Mar 2015)
+
+  04 Mar 2015; Patrice Clement <monsieurp@gentoo.org>
+  +XML-Parser-2.440.0.ebuild:
+  Version bump.
+
+  05 Aug 2014; Mike Frysinger <vapier@gentoo.org> XML-Parser-2.410.0-r2.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  31 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> -XML-Parser-2.410.0.ebuild,
+  XML-Parser-2.410.0-r2.ebuild:
+  Stable for all; Drop old.
+
+*XML-Parser-2.410.0-r2 (31 Jul 2014)
+
+  31 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +XML-Parser-2.410.0-r2.ebuild, -XML-Parser-2.410.0-r1.ebuild:
+  EAPI bump
+
+  06 Apr 2014; Mike Frysinger <vapier@gentoo.org> XML-Parser-2.410.0-r1.ebuild,
+  XML-Parser-2.410.0.ebuild:
+  Add arm64 love.
+
+  21 Feb 2013; Zac Medico <zmedico@gentoo.org> XML-Parser-2.410.0-r1.ebuild:
+  Add ~arm-linux keyword.
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org> XML-Parser-2.410.0-r1.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+*XML-Parser-2.410.0-r1 (07 Aug 2012)
+
+  07 Aug 2012; Fabian Groffen <grobian@gentoo.org>
+  +XML-Parser-2.410.0-r1.ebuild:
+  Fix expat detection for FreeBSD that silently went unnoticed.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  03 Jun 2012; Torsten Veller <tove@gentoo.org> -XML-Parser-2.36-r1.ebuild:
+  Cleanup
+
+  28 May 2012; Raúl Porcel <armin76@gentoo.org> XML-Parser-2.410.0.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #410367
+
+  13 May 2012; Fabian Groffen <grobian@gentoo.org> XML-Parser-2.410.0.ebuild:
+  Marked ~m68k-mint, bug #415405
+
+  13 May 2012; Fabian Groffen <grobian@gentoo.org> XML-Parser-2.410.0.ebuild:
+  Marked ~x64-freebsd
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> XML-Parser-2.410.0.ebuild:
+  keyword ~amd64-fbsd
+
+  17 Apr 2012; Brent Baude <ranger@gentoo.org> XML-Parser-2.410.0.ebuild:
+  Marking XML-Parser-2.410.0 ppc64 for bug 410367
+
+  16 Apr 2012; Brent Baude <ranger@gentoo.org> XML-Parser-2.410.0.ebuild:
+  Marking XML-Parser-2.410.0 ppc for bug 410367
+
+  06 Apr 2012; Markus Meier <maekke@gentoo.org> XML-Parser-2.410.0.ebuild:
+  arm stable, bug #410367
+
+  04 Apr 2012; Jeff Horelick <jdhore@gentoo.org> XML-Parser-2.410.0.ebuild:
+  marked x86 per bug 410367
+
+  03 Apr 2012; Jeroen Roovers <jer@gentoo.org> XML-Parser-2.410.0.ebuild:
+  Stable for HPPA (bug #410367).
+
+  02 Apr 2012; Agostino Sarubbo <ago@gentoo.org> XML-Parser-2.410.0.ebuild:
+  Stable for amd64, wrt bug #410367
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org> XML-Parser-2.36-r1.ebuild,
+  XML-Parser-2.410.0.ebuild:
+  Drop ~sparc-fbsd KEYWORD
+
+  29 Jul 2011; Torsten Veller <tove@gentoo.org> -XML-Parser-2.36.ebuild,
+  -XML-Parser-2.40.ebuild:
+  Cleanup
+
+*XML-Parser-2.410.0 (03 Jun 2011)
+
+  03 Jun 2011; Torsten Veller <tove@gentoo.org> +XML-Parser-2.410.0.ebuild:
+  Version bump
+
+  05 Nov 2010; Samuli Suominen <ssuominen@gentoo.org>
+  XML-Parser-2.36-r1.ebuild:
+  ppc64 stable wrt #341865
+
+*XML-Parser-2.40 (16 Sep 2010)
+
+  16 Sep 2010; Torsten Veller <tove@gentoo.org> +XML-Parser-2.40.ebuild:
+  Version bump. Use EXPATLIBPATH and EXPATINCPATH
+
+  27 Jun 2010; <nixnut@gentoo.org> XML-Parser-2.36-r1.ebuild:
+  ppc stable #323529
+
+  08 May 2010; Raúl Porcel <armin76@gentoo.org> XML-Parser-2.36-r1.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #314467
+
+  04 May 2010; Jeroen Roovers <jer@gentoo.org> XML-Parser-2.36-r1.ebuild:
+  Stable for HPPA (bug #314467).
+
+  18 Apr 2010; Markus Meier <maekke@gentoo.org> XML-Parser-2.36-r1.ebuild:
+  arm stable, bug #314467
+
+  17 Apr 2010; Torsten Veller <tove@gentoo.org> XML-Parser-2.36-r1.ebuild:
+  Stable on amd64, x86 (#314467)
+
+  29 Jan 2010; Torsten Veller <tove@gentoo.org> XML-Parser-2.36-r1.ebuild:
+  Fix LICENSE: same terms as perl (#301969). Maintenance
+
+*XML-Parser-2.36-r1 (14 Jan 2010)
+
+  14 Jan 2010; Fabian Groffen <grobian@gentoo.org>
+  +XML-Parser-2.36-r1.ebuild:
+  Revbump to include fix for Prefix, bug #294758, transfer Prefix keywords
+
+  07 May 2009; Torsten Veller <tove@gentoo.org> -XML-Parser-2.34.ebuild,
+  -XML-Parser-2.34-r1.ebuild:
+  Cleanup
+
+  06 May 2009; Jeroen Roovers <jer@gentoo.org> XML-Parser-2.36.ebuild:
+  Stable for HPPA (bug #268265).
+
+  03 May 2009; Brent Baude <ranger@gentoo.org> XML-Parser-2.36.ebuild:
+  stable ppc64, bug 268265
+
+  02 May 2009; nixnut <nixnut@gentoo.org> XML-Parser-2.36.ebuild:
+  ppc stable #268265
+
+  02 May 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  XML-Parser-2.36.ebuild:
+  stable amd64, bug 268265
+
+  18 Jul 2008; Raúl Porcel <armin76@gentoo.org> XML-Parser-2.36.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+*XML-Parser-2.36 (29 Apr 2008)
+
+  29 Apr 2008; Yuval Yaari <yuval@gentoo.org> +XML-Parser-2.36.ebuild:
+  Version bump
+
+*XML-Parser-2.34-r1 (12 Aug 2007)
+
+  12 Aug 2007; Samuli Suominen <drac@gentoo.org> +XML-Parser-2.34-r1.ebuild:
+  Revision bump XML-Parser to avoid problems with expat upgrade. No changes
+  made to ebuild itself.
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -XML-Parser-2.31.ebuild, -XML-Parser-2.31-r1.ebuild,
+  XML-Parser-2.34.ebuild:
+  Version bump, thanks seemant
+
+  21 Dec 2006; Roy Marples <uberlord@gentoo.org> XML-Parser-2.34.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  XML-Parser-2.31.ebuild, XML-Parser-2.31-r1.ebuild, XML-Parser-2.34.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  05 Jul 2006; Christian Hartmann <ian@gentoo.org> XML-Parser-2.31.ebuild,
+  XML-Parser-2.31-r1.ebuild, XML-Parser-2.34.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed header; fixed DEPEND
+
+  31 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> XML-Parser-2.34.ebuild:
+  Add ~x86-fbsd keyword.
+
+  14 Aug 2005; Kito <kito@gentoo.org> XML-Parser-2.34.ebuild:
+  ~ppc-macos keyword.
+
+  24 May 2005; Herbie Hopkins <herbs@gentoo.org> XML-Parser-2.34.ebuild:
+  Multilib fix.
+
+  19 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  XML-Parser-2.34.ebuild:
+  Stable on ppc.
+
+  04 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  XML-Parser-2.31-r1.ebuild, XML-Parser-2.31.ebuild, XML-Parser-2.34.ebuild:
+  bug 76590
+
+  28 Jun 2004; Tom Gall <tgall@gentoo.org> XML-Parser-2.34.ebuild:
+  stable on ppc64
+
+  01 Apr 2004; <randy@gentoo.org> XML-Parser-2.34.ebuild:
+  adding s390 keywords
+
+  26 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org> XML-Parser-2.34.ebuild:
+  stable on hppa
+
+  23 Mar 2004; Joshua Kinard <kumba@gentoo.org> XML-Parser-2.31-r1.ebuild,
+  XML-Parser-2.31.ebuild, XML-Parser-2.34.ebuild:
+  Marked 2.31-r1 stable on mips and added ~mips to 2.34.
+
+  04 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org> XML-Parser-2.34.ebuild:
+  stable on sparc
+
+  27 Feb 2004; Michael Cummings <mcummings@gentoo.org> XML-Parser-2.33.ebuild:
+  Cleaning up
+
+  27 Feb 2004; Michael Cummings <mcummings@gentoo.org> XML-Parser-2.34.ebuild:
+  Unmasking for x86 after 87 days
+
+  18 Jan 2004; <tuxus@gentoo.org> XML-Parser-2.31-r1.ebuild:
+  Added ~mips to KEYWORDS.
+
+  07 Jan 2004; <agriffis@gentoo.org> XML-Parser-2.34.ebuild:
+  stable on alpha and ia64
+
+*XML-Parser-2.34 (02 Dec 2003)
+
+  02 Dec 2003; <max@gentoo.org> XML-Parser-2.34.ebuild:
+  Bump to version 2.34.  Needed for xmltv-0.5.24
+
+*XML-Parser-2.33 (31 Jul 2003)
+
+  31 Jul 2003; Michael Cummings <mcummings@gentoo.org> XML-Parser-2.33.ebuild:
+  CPAN Version bump;installs good, appears to be good, testing needed.
+
+*XML-Parser-2.31-r1 (29 Oct 2002)
+
+  16 Apr 2003; Guy Martin <gmsoft@gentoo.org> XML-Parser-2.31-r1.ebuild :
+  Added hppa to KEYWORDS.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*XML-Parser-2.31 (6 May 2002)
+
+  24 Jul 2002; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
+
+  6 May 2002; Seemant Kulleen <seemant@gentoo.org> XML-Parser-2.31.ebuild
+  files/digest-XML-Parser-2.31 :
+
+  Version update and conversion to eclass
+
+*XML-Parser-2.30 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

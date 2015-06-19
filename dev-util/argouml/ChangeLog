@@ -1,0 +1,160 @@
+# ChangeLog for dev-util/argouml
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/argouml/ChangeLog,v 1.37 2015/04/23 00:22:33 mrueg Exp $
+
+  23 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -argouml-0.29.2.ebuild,
+  -argouml-0.32.2.ebuild:
+  Remove old.
+
+  06 May 2012; Agostino Sarubbo <ago@gentoo.org> argouml-0.34.ebuild:
+  Stable for amd64, wrt bug #379387
+
+  05 May 2012; Brent Baude <ranger@gentoo.org> argouml-0.34.ebuild:
+  Marking argouml-0.34 ppc for bug 379387
+
+  05 May 2012; Markus Meier <maekke@gentoo.org> argouml-0.34.ebuild:
+  x86 stable, bug #379387
+
+  06 Feb 2012; Ralph Sennhauser <sera@gentoo.org> -argouml-0.24.ebuild,
+  -argouml-0.26.ebuild, -argouml-0.29.2-r1.ebuild, -argouml-0.30.2.ebuild,
+  argouml-0.32.2.ebuild, argouml-0.34.ebuild, -files/argouml.png:
+  Use shipped png. #370921
+  Move to freedesktop category Development. #373017
+  Remove old/unused.
+
+*argouml-0.34 (03 Feb 2012)
+
+  03 Feb 2012; <fordfrog@gentoo.org> +argouml-0.34.ebuild:
+  Version bump
+
+*argouml-0.32.2 (22 Jun 2011)
+
+  22 Jun 2011; Alistair Bush <ali_bush@gentoo.org> +argouml-0.32.2.ebuild:
+  Version Bump.
+
+*argouml-0.30.2 (18 Jan 2011)
+
+  18 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org> +argouml-0.30.2.ebuild:
+  Version bump
+
+  01 Feb 2010; Markus Meier <maekke@gentoo.org> argouml-0.29.2.ebuild:
+  amd64/x86 stable, bug #300395
+
+  19 Jan 2010; nixnut <nixnut@gentoo.org> argouml-0.29.2.ebuild:
+  ppc stable #300395
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  argouml-0.29.2-r1.ebuild:
+  Transfer Prefix keywords
+
+*argouml-0.29.2-r1 (10 Jan 2010)
+
+  10 Jan 2010; Petteri Räty <betelgeuse@gentoo.org>
+  +argouml-0.29.2-r1.ebuild, +files/argouml.png:
+  Add desktop launcher. Fixes bug #283741.
+
+*argouml-0.29.2 (29 Nov 2009)
+
+  29 Nov 2009; Miroslav Šulc <fordfrog@gentoo.org> +argouml-0.29.2.ebuild:
+  Version bump
+
+*argouml-0.26 (31 Oct 2008)
+
+  31 Oct 2008; Steve Arnold <nerdboy@gentoo.org> +argouml-0.26.ebuild:
+  Updated to current upstream release, with minor src path changes...
+
+  30 Aug 2008; Brent Baude <ranger@gentoo.org> argouml-0.24.ebuild:
+  stable ppc, bug 235280
+
+  22 Aug 2008; Markus Meier <maekke@gentoo.org> argouml-0.24.ebuild:
+  amd64/x86 stable, bug #235280
+
+  02 Feb 2008; Vlastimil Babka <caster@gentoo.org>
+  -argouml-0.18.1-r1.ebuild, -argouml-0.19.6.ebuild:
+  Remove gen-1 versions.
+
+*argouml-0.24 (28 Jan 2008)
+
+  28 Jan 2008; Vlastimil Babka <caster@gentoo.org> +argouml-0.24.ebuild:
+  Version bump, bug #125696. Still binary though, just wanted to get a gen-2
+  eclasses based of the latest upstream stable version, so we can remove the
+  gen-1 ebuilds. Work on 0.25.x development versions and building from source
+  will go as time permits and users demand.
+
+  12 Jan 2008; Fabian Groffen <grobian@gentoo.org> argouml-0.19.6.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  19 Jan 2007; Charlie Shepherd <masterdriverz@gentoo.org>
+  argouml-0.18.1-r1.ebuild, argouml-0.19.6.ebuild:
+  QA: remove invalid RESTRICT="mirror"
+
+  05 Nov 2005; Fabian Groffen <grobian@gentoo.org> argouml-0.19.6.ebuild:
+  Marked ~ppc-macos (bug #111583)
+
+*argouml-0.19.6 (02 Oct 2005)
+
+  02 Oct 2005; Gustavo Felisberto <humpback@gentoo.org>;
+  +argouml-0.19.6.ebuild:
+  Bump with SRC_URI update.
+
+*argouml-0.18.1-r1 (10 Sep 2005)
+
+  10 Sep 2005; Thomas Matthijs <axxo@gentoo.org> -argouml-0.16.ebuild,
+  -argouml-0.16.1.ebuild, -argouml-0.18.1.ebuild, +argouml-0.18.1-r1.ebuild:
+  Fix bug 105194
+
+  26 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> argouml-0.18.1.ebuild:
+  Fix cp -a usage for Gentoo/FreeBSD.
+
+*argouml-0.18.1 (14 May 2005)
+
+  14 May 2005; Jan Brinkmann <luckyduck@gentoo.org> +argouml-0.18.1.ebuild:
+  new upstream version, fixes #91321
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> argouml-0.16.ebuild,
+  argouml-0.16.1.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+*argouml-0.16.1 (24 Nov 2004)
+
+  24 Nov 2004; Chris Aniszczyk <zx@gentoo.org> +argouml-0.16.1.ebuild:
+  Version bump. Closes #71375
+
+  18 Nov 2004; Simon Stelling <blubb@gentoo.org> argouml-0.16.ebuild:
+  added ~amd64
+
+  15 Aug 2004; Chris Aniszczyk <zx@gentoo.org> -argouml-0.14.1.ebuild,
+  -argouml-0.14.ebuild, -argouml-0.15.6.ebuild:
+  Clean up
+
+*argouml-0.16 (15 Aug 2004)
+
+  15 Aug 2004; Chris Aniszczyk <zx@gentoo.org> +argouml-0.16.ebuild:
+  Version bump. Closes #59393
+
+*argouml-0.15.6 (22 Jun 2004)
+
+  22 Jun 2004; David Holm <dholm@gentoo.org> +argouml-0.15.6.ebuild:
+  Version bump.
+
+  03 Jun 2004; Aron Griffis <agriffis@gentoo.org> argouml-0.14.1.ebuild,
+  argouml-0.14.ebuild:
+  Fix use invocation
+
+*argouml-0.14.1 (19 May 2004)
+
+  19 May 2004; David Holm <dholm@gentoo.org> +argouml-0.14.1.ebuild:
+  Version bump.
+
+  18 Mar 2004; David Holm <dholm@gentoo.org> argouml-0.14.ebuild:
+  Added to ~ppc.
+
+*argouml-0.14 (18 Mar 2004)
+
+  18 Mar 2004; Chris Aniszczyk <zx@gentoo.org> argouml-0.14.ebuild,
+  metadata.xml:
+  Initial Import. Thanks to Olivier Crete <tester@gentoo.org> for the initial
+  ebuild. Closes #28730

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>graphics</herd>
+
+  <maintainer>
+    <email>hasufell@gentoo.org</email>
+    <name>Julian Ospald</name>
+  </maintainer>
+
+  <maintainer>
+    <email>lu_zero@gentoo.org</email>
+    <name>Luca Barbato</name>
+  </maintainer>
+
+  <longdescription>
+    Blender, the open source software for 3D modeling, animation,
+    rendering, post-production, interactive creation and playback.
+  </longdescription>
+
+  <use>
+    <flag name='game-engine' restrict='&gt;=media-gfx/blender-2.50'>
+      Adds Game Engine support to Blender.
+    </flag>
+    <flag name='collada'>
+      Add support for Collada interchange format through
+      <pkg>media-libs/opencollada</pkg>.
+    </flag>
+    <flag name='cycles'>
+      Build cycles renderer (requires <pkg>media-libs/openimageio</pkg> and
+      <pkg>dev-libs/boost</pkg>).
+    </flag>
+    <flag name='dds'>
+      Adds DDS textures support to Blender.
+    </flag>
+    <flag name='player'>
+      Build the Blender Player. THis requires the Game engine.
+    </flag>
+    <flag name='elbeem'>
+      Adds surface fluid simulation to Blender using El'Beem library.
+    </flag>
+    <flag name="doc">
+      Build C and Python API documentation directly from the source code.
+    </flag>
+    <flag name="redcode">
+      This flag add support for RED CODE camera digital format (5K HD
+      images *.r3d) - EXPERIMENTAL.
+    </flag>
+    <flag name="boost">
+      Enable features depending on boost.
+    </flag>
+	<flag name="bullet">
+      Enable Bullet (Physics Engine).
+	</flag>
+	<flag name="colorio">
+      Enable OpenColorIO color management.
+	</flag>
+	<flag name="ndof">
+      Enable NDOF input devices (SpaceNavigator and friends).
+  </flag>
+  <flag name="openimageio">Enable OpenImageIO Support</flag>
+  <flag name="opennl">Enable use of Open Numerical Library</flag>
+  </use>
+</pkgmetadata>

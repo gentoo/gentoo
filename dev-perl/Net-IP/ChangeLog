@@ -1,0 +1,168 @@
+# ChangeLog for dev-perl/Net-IP
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-IP/ChangeLog,v 1.49 2014/10/19 07:35:35 zlogene Exp $
+
+  19 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> -Net-IP-1.250.0.ebuild:
+  Drop old.
+
+*Net-IP-1.260.0-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Net-IP-1.260.0-r1.ebuild, -Net-IP-1.260.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> Net-IP-1.260.0.ebuild:
+  Stable for s390, wrt bug #456580
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> Net-IP-1.260.0.ebuild:
+  Stable for hppa, wrt bug #456580
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> Net-IP-1.260.0.ebuild:
+  Stable for sh, wrt bug #456580
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> Net-IP-1.260.0.ebuild:
+  Stable for sparc, wrt bug #456580
+
+  30 Mar 2013; Agostino Sarubbo <ago@gentoo.org> Net-IP-1.260.0.ebuild:
+  Stable for alpha, wrt bug #456580
+
+  30 Mar 2013; Agostino Sarubbo <ago@gentoo.org> Net-IP-1.260.0.ebuild:
+  Stable for x86, wrt bug #456580
+
+  28 Mar 2013; Agostino Sarubbo <ago@gentoo.org> Net-IP-1.260.0.ebuild:
+  Stable for ia64, wrt bug #456580
+
+  27 Mar 2013; Agostino Sarubbo <ago@gentoo.org> Net-IP-1.260.0.ebuild:
+  Stable for ppc64, wrt bug #456580
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> Net-IP-1.260.0.ebuild:
+  Stable for ppc, wrt bug #456580
+
+  26 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> Net-IP-1.260.0.ebuild:
+  Stable on arm, wrt bug #456580
+
+  25 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> Net-IP-1.260.0.ebuild:
+  Stable on amd64, wrt bug #456580
+
+*Net-IP-1.260.0 (03 Dec 2012)
+
+  03 Dec 2012; Torsten Veller <tove@gentoo.org> +Net-IP-1.260.0.ebuild:
+  Version bump
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org> Net-IP-1.250.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  13 Dec 2011; Naohiro Aota <naota@gentoo.org> Net-IP-1.250.0.ebuild:
+  Add ~x86-fbsd
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Net-IP-1.25-r1.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Net-IP-1.250.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Net-IP-1.250.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org> +Net-IP-1.250.0.ebuild:
+  Change version scheme
+
+  21 Jan 2010; Torsten Veller <tove@gentoo.org> Net-IP-1.25-r1.ebuild:
+  Ebuild maintenance. EAPI=2. Fix LICENSE. mips -> ~mips
+
+  10 Jan 2010; Fabian Groffen <grobian@gentoo.org> Net-IP-1.25-r1.ebuild:
+  Transfer Prefix keywords
+
+  30 Sep 2008; Torsten Veller <tove@gentoo.org> -Net-IP-1.24.ebuild,
+  -Net-IP-1.25.ebuild, Net-IP-1.25-r1.ebuild:
+  Cleanup
+
+  16 Apr 2007; Markus Rothe <corsair@gentoo.org> Net-IP-1.25-r1.ebuild:
+  Stable on ppc64
+
+*Net-IP-1.25-r1 (30 Mar 2007)
+
+  30 Mar 2007; Michael Cummings <mcummings@gentoo.org>
+  +files/initip-0.patch, +Net-IP-1.25-r1.ebuild:
+  bug 169288 bug 153171, rt# 20265 - Net-IP patched to handle 0.0.0.0 addresses
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> Net-IP-1.25.ebuild:
+  Stable on x86, bug #169152.
+
+  04 Dec 2006; Alexander H. Færøy <eroyf@gentoo.org> Net-IP-1.25.ebuild:
+  Stable on MIPS.
+
+  04 Nov 2006; Alexander H. Færøy <eroyf@gentoo.org> Net-IP-1.25.ebuild:
+  Stable on alpha
+
+  23 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> Net-IP-1.25.ebuild:
+  Stable on hppa
+
+  21 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org> Net-IP-1.25.ebuild:
+  ppc stable
+
+  21 Oct 2006; Aron Griffis <agriffis@gentoo.org> Net-IP-1.25.ebuild:
+  Mark 1.25 stable on ia64
+
+  21 Oct 2006; Michael Cummings <mcummings@gentoo.org> Net-IP-1.25.ebuild:
+  Marking sparc stable
+
+  21 Oct 2006; Michael Cummings <mcummings@gentoo.org> Net-IP-1.24.ebuild,
+  Net-IP-1.25.ebuild:
+  Marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org> Net-IP-1.24.ebuild,
+  Net-IP-1.25.ebuild:
+  Adding perl dep; fixed DEPEND
+
+*Net-IP-1.25 (25 May 2006)
+
+  25 May 2006; Christian Hartmann <ian@gentoo.org> +Net-IP-1.25.ebuild:
+  Version bump
+
+  24 Apr 2006; Joshua Kinard <kumba@gentoo.org> Net-IP-1.24.ebuild:
+  Marked stable on mips.
+
+  13 Mar 2006; Chris White <chriswhite@gentoo.org> Net-IP-1.24.ebuild:
+  ppc stable.
+
+  06 Mar 2006; Chris White <chriswhite@gentoo.org> Net-IP-1.24.ebuild:
+  amd64 stable for 1.24.
+
+  26 Feb 2006; Joshua Kinard <kumba@gentoo.org> Net-IP-1.24.ebuild:
+  Added ~mips to KEYWORDS.
+
+  20 Feb 2006; Markus Rothe <corsair@gentoo.org> Net-IP-1.24.ebuild:
+  Stable on ppc64
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> Net-IP-1.24.ebuild:
+  Mark 1.24 stable on ia64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> Net-IP-1.24.ebuild:
+  Mark 1.24 stable on alpha
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org> Net-IP-1.24.ebuild:
+  Marking sparc x86 stable
+
+  03 Jan 2006; <plasmaroo@gentoo.org> Net-IP-1.24.ebuild:
+  Mark ~ia64, bug #112508.
+
+  02 Dec 2005; Fernando J. Pereda <ferdy@gentoo.org> Net-IP-1.24.ebuild:
+  marked ~alpha wrt bug #112508
+
+  01 Dec 2005; Luis Medinas <metalgod@gentoo.org> Net-IP-1.24.ebuild:
+  Added ~amd64 keyword. bug #112508.
+
+  14 Nov 2005; Brent Baude <ranger@gentoo.org> Net-IP-1.24.ebuild:
+  Marking Net-IP-1.24 ~ppc64 per bug 112508
+
+  14 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> Net-IP-1.24.ebuild:
+  Added to ~hppa, ~ppc. See bug #112508.
+
+*Net-IP-1.24 (14 Nov 2005)
+
+  14 Nov 2005; <mcumming@gentoo.org> +metadata.xml, +Net-IP-1.24.ebuild:
+  New dep for Net-DNS

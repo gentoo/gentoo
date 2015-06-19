@@ -1,0 +1,1134 @@
+# ChangeLog for dev-python/pygtk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pygtk/ChangeLog,v 1.305 2015/04/08 08:04:51 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pygtk-2.24.0-r4.ebuild:
+  Drop old Python implementations
+
+  26 Apr 2014; Pacho Ramos <pacho@gentoo.org> -pygtk-2.24.0-r3.ebuild:
+  drop old
+
+  21 Apr 2014; Agostino Sarubbo <ago@gentoo.org> pygtk-2.24.0-r4.ebuild:
+  Stable for arm, wrt bug #507568
+
+  19 Apr 2014; Agostino Sarubbo <ago@gentoo.org> pygtk-2.24.0-r4.ebuild:
+  Stable for sparc, wrt bug #507568
+
+  18 Apr 2014; Agostino Sarubbo <ago@gentoo.org> pygtk-2.24.0-r4.ebuild:
+  Stable for alpha, wrt bug #507568
+
+  17 Apr 2014; Agostino Sarubbo <ago@gentoo.org> pygtk-2.24.0-r4.ebuild:
+  Stable for ia64, wrt bug #507568
+
+  16 Apr 2014; Agostino Sarubbo <ago@gentoo.org> pygtk-2.24.0-r4.ebuild:
+  Stable for ppc64, wrt bug #507568
+
+  14 Apr 2014; Agostino Sarubbo <ago@gentoo.org> pygtk-2.24.0-r4.ebuild:
+  Stable for ppc, wrt bug #507568
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> pygtk-2.24.0-r4.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> pygtk-2.24.0-r4.ebuild:
+  arch stable, bug 888
+
+  22 Dec 2013; Jeroen Roovers <jer@gentoo.org> pygtk-2.24.0-r4.ebuild:
+  Stable for HPPA (bug #478252).
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> pygtk-2.24.0-r4.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> pygtk-2.24.0-r4.ebuild:
+  amd64 stable, bug #478252
+
+  02 Oct 2013; Alexandre Rostovtsev <tetromino@gentoo.org>
+  pygtk-2.24.0-r4.ebuild, +files/pygtk-2.24.0-test_dialog.patch:
+  Fix test failure (bug #486602, thanks to eroen).
+
+*pygtk-2.24.0-r4 (29 Sep 2013)
+
+  29 Sep 2013; Pacho Ramos <pacho@gentoo.org>
+  +files/pygtk-2.24.0-fix-leaks.patch, +files/pygtk-2.24.0-test-fail.patch,
+  +pygtk-2.24.0-r4.ebuild:
+  Upstream patch for fixing leaks, make tests exit with right result
+
+  03 May 2013; Samuli Suominen <ssuominen@gentoo.org> -pygtk-2.24.0-r2.ebuild:
+  old
+
+  03 May 2013; Samuli Suominen <ssuominen@gentoo.org> pygtk-2.24.0-r3.ebuild:
+  Use AC_CONFIG_HEADERS instead of AM_CONFIG_HEADER for automake-1.13
+  compability wrt #466968 by Alphat-PC
+
+  10 Apr 2013; Agostino Sarubbo <ago@gentoo.org> pygtk-2.24.0-r3.ebuild:
+  Stable for hppa, wrt bug #458984
+
+  09 Apr 2013; Agostino Sarubbo <ago@gentoo.org> pygtk-2.24.0-r3.ebuild:
+  Stable for sh, wrt bug #458984
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> pygtk-2.24.0-r3.ebuild:
+  Stable for sparc, wrt bug #458984
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> pygtk-2.24.0-r3.ebuild:
+  Stable for alpha, wrt bug #458984
+
+  29 Mar 2013; Agostino Sarubbo <ago@gentoo.org> pygtk-2.24.0-r3.ebuild:
+  Stable for ia64, wrt bug #458984
+
+  28 Mar 2013; Agostino Sarubbo <ago@gentoo.org> pygtk-2.24.0-r3.ebuild:
+  Stable for arm, wrt bug #458984
+
+  27 Mar 2013; Agostino Sarubbo <ago@gentoo.org> pygtk-2.24.0-r3.ebuild:
+  Stable for ppc64, wrt bug #458984
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> pygtk-2.24.0-r3.ebuild:
+  Stable for ppc, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> pygtk-2.24.0-r3.ebuild:
+  Stable for x86, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> pygtk-2.24.0-r3.ebuild:
+  Stable for amd64, wrt bug #458984
+
+*pygtk-2.24.0-r3 (01 Feb 2013)
+
+  01 Feb 2013; Gilles Dartiguelongue <eva@gentoo.org> -pygtk-2.24.0-r1.ebuild,
+  +pygtk-2.24.0-r3.ebuild:
+  Version bump with EAPI=5 and python-r1 goodness.
+
+  13 May 2012; Alexis Ballier <aballier@gentoo.org> pygtk-2.24.0-r2.ebuild:
+  keyword ~amd64-fbsd
+
+  04 May 2012; Patrick Lauer <patrick@gentoo.org> pygtk-2.24.0-r1.ebuild,
+  pygtk-2.24.0-r2.ebuild:
+  Migrating dev-util/pkgconfig -> virtual/pkgconfig
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> pygtk-2.24.0-r2.ebuild:
+  alpha/ia64/sh/sparc stable wrt #393007
+
+  05 Mar 2012; Brent Baude <ranger@gentoo.org> pygtk-2.24.0-r2.ebuild:
+  Marking pygtk-2.24.0-r2 ppc stable for bug 393007
+
+  05 Mar 2012; Brent Baude <ranger@gentoo.org> pygtk-2.24.0-r2.ebuild:
+  Marking pygtk-2.24.0-r2 ppc64 stable for bug 393007
+
+  22 Feb 2012; Patrick Lauer <patrick@gentoo.org> pygtk-2.24.0-r1.ebuild,
+  pygtk-2.24.0-r2.ebuild:
+  Restricting pypy
+
+  18 Jan 2012; Markus Meier <maekke@gentoo.org> pygtk-2.24.0-r2.ebuild:
+  arm stable, bug #393007
+
+  14 Jan 2012; Markus Meier <maekke@gentoo.org> pygtk-2.24.0-r2.ebuild:
+  x86 stable, bug #393007
+
+  31 Dec 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  pygtk-2.24.0-r1.ebuild, pygtk-2.24.0-r2.ebuild:
+  Do not move py-compile so it stays executable; thanks to Ionic for reporting.
+
+  31 Dec 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  pygtk-2.24.0-r1.ebuild, pygtk-2.24.0-r2.ebuild:
+  Simplify py-compile fix.
+
+  31 Dec 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  pygtk-2.24.0-r1.ebuild, pygtk-2.24.0-r2.ebuild:
+  Fix py-compile idiom for automake-1.11.2 compatibility.
+
+  29 Dec 2011; Pacho Ramos <pacho@gentoo.org> pygtk-2.24.0-r2.ebuild:
+  amd64 stable, bug 393007
+
+  20 Dec 2011; Jeroen Roovers <jer@gentoo.org> pygtk-2.24.0-r2.ebuild:
+  Stable for HPPA (bug #393007).
+
+  21 Nov 2011; Pacho Ramos <pacho@gentoo.org>
+  -files/pygtk-2.22.0-disable-broken-tests.patch,
+  -files/pygtk-2.22.0-wakeupfd-fix.patch, -pygtk-2.22.0-r1.ebuild,
+  -pygtk-2.23.2.ebuild, pygtk-2.24.0-r2.ebuild:
+  Call gnome2_environment_reset to let tests pass without permissions problems
+  (bug #245103), note that it will only work if you have, at least,
+  glib-2.30.1-r1. Drop old.
+
+*pygtk-2.24.0-r2 (10 Nov 2011)
+
+  10 Nov 2011; Mike Frysinger <vapier@gentoo.org>
+  +files/pygtk-2.14.1-libdir-pc.patch, +pygtk-2.24.0-r2.ebuild:
+  Add libdir to pkg-config file for cross-compiling.
+
+  05 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org> pygtk-2.24.0-r1.ebuild:
+  ppc/ppc64 stable wrt #369909
+
+  20 Aug 2011; Jeroen Roovers <jer@gentoo.org> pygtk-2.24.0-r1.ebuild:
+  Stable for HPPA (bug #369909).
+
+  13 Aug 2011; Raúl Porcel <armin76@gentoo.org> pygtk-2.24.0-r1.ebuild:
+  alpha/ia64/sh/sparc stable wrt #369909
+
+  17 Jul 2011; Markus Meier <maekke@gentoo.org> pygtk-2.24.0-r1.ebuild:
+  arm stable, bug #369909
+
+  14 Jul 2011; Thomas Kahle <tomka@gentoo.org> pygtk-2.24.0-r1.ebuild:
+  x86 stable per bug 369909
+
+  01 Jul 2011; Markos Chandras <hwoarang@gentoo.org> pygtk-2.24.0-r1.ebuild:
+  Stable on amd64 wrt bug #278255
+
+*pygtk-2.24.0-r1 (03 Apr 2011)
+
+  03 Apr 2011; Pacho Ramos <pacho@gentoo.org> -pygtk-2.24.0.ebuild,
+  +pygtk-2.24.0-r1.ebuild:
+  Always enable glade support as talked on IRC since most pygtk apps won't ever
+  be ported away from glade.
+
+*pygtk-2.24.0 (02 Apr 2011)
+
+  02 Apr 2011; Pacho Ramos <pacho@gentoo.org> +pygtk-2.24.0.ebuild,
+  metadata.xml:
+  Version bump, glade support is now optional.
+
+*pygtk-2.23.2 (28 Mar 2011)
+
+  28 Mar 2011; Gilles Dartiguelongue <eva@gentoo.org> -pygtk-2.17.0.ebuild,
+  -pygtk-2.22.0.ebuild, +pygtk-2.23.2.ebuild:
+  Version bump. Add gtk-2.24 support, document updates.
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org> pygtk-2.22.0-r1.ebuild:
+  Marking pygtk-2.22.0-r1 ppc stable for bug 353436
+
+  21 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> pygtk-2.22.0-r1.ebuild:
+  ppc64 stable wrt #353436
+
+  16 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> pygtk-2.17.0.ebuild,
+  pygtk-2.22.0.ebuild, pygtk-2.22.0-r1.ebuild:
+  Fix slot-deps on gtk+ and other libs
+
+  12 Mar 2011; Raúl Porcel <armin76@gentoo.org> pygtk-2.22.0-r1.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #353436
+
+  07 Mar 2011; Jeroen Roovers <jer@gentoo.org> pygtk-2.22.0-r1.ebuild:
+  Stable for HPPA (bug #353436).
+
+  24 Feb 2011; Thomas Kahle <tomka@gentoo.org> pygtk-2.22.0-r1.ebuild:
+  x86 stable per bug 353436
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org> pygtk-2.22.0-r1.ebuild:
+  Stable on amd64 wrt bug #353436
+
+*pygtk-2.22.0-r1 (03 Feb 2011)
+
+  03 Feb 2011; Pacho Ramos <pacho@gentoo.org> +pygtk-2.22.0-r1.ebuild,
+  +files/pygtk-2.22.0-wakeupfd-fix.patch:
+  Fix 100% CPU load when apps receive SIGCHLD, bug #353599 by Antoine Martin.
+
+  19 Jan 2011; Gilles Dartiguelongue <eva@gentoo.org> pygtk-2.17.0.ebuild,
+  pygtk-2.22.0.ebuild, +files/pygtk-2.22.0-disable-broken-tests.patch:
+  Be less brutal with tests suppression.
+
+*pygtk-2.22.0 (19 Jan 2011)
+
+  19 Jan 2011; Pacho Ramos <pacho@gentoo.org> -pygtk-2.16.0-r1.ebuild,
+  -files/pygtk-2.16.0-gdkcolor-fix.patch, +pygtk-2.22.0.ebuild:
+  Version bump with lots of bugfixes and gtk+-2.22 compatible, skip broken test
+  (upstream bug #636589) and test wanting to write outside sandbox (bug
+  #245103). Remove old.
+
+  17 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pygtk-2.16.0-r1.ebuild, pygtk-2.17.0.ebuild:
+  Restrict Jython ABIs.
+
+  08 Jan 2011; Brent Baude <ranger@gentoo.org> pygtk-2.17.0.ebuild:
+  Marking pygtk-2.17.0 ppc for bug 343161
+
+  05 Dec 2010; Raúl Porcel <armin76@gentoo.org> pygtk-2.17.0.ebuild:
+  alpha/ia64/sh/sparc stable wrt #343161
+
+  06 Nov 2010; Markus Meier <maekke@gentoo.org> pygtk-2.17.0.ebuild:
+  arm stable, bug #343161
+
+  04 Nov 2010; Jeroen Roovers <jer@gentoo.org> pygtk-2.17.0.ebuild:
+  Stable for HPPA (bug #343161).
+
+  03 Nov 2010; Samuli Suominen <ssuominen@gentoo.org> pygtk-2.17.0.ebuild:
+  ppc64 stable wrt #343161
+
+  03 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> pygtk-2.17.0.ebuild:
+  x86 stable wrt bug #343161
+
+  29 Oct 2010; Markos Chandras <hwoarang@gentoo.org> pygtk-2.17.0.ebuild:
+  Stable on amd64 wrt bug #343161
+
+  02 Oct 2010; Fabian Groffen <grobian@gentoo.org> pygtk-2.17.0.ebuild:
+  Marked ~x64-macos, bug #333981
+
+*pygtk-2.17.0 (13 Aug 2010)
+
+  13 Aug 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -pygtk-2.14.1-r1.ebuild, -pygtk-2.14.1-r2.ebuild,
+  -files/pygtk-2.14.1-fix-numpy-warning.patch,
+  -files/pygtk-2.14.1-gtktoggle.patch, -files/pygtk-2.14.1-ltihooks.patch,
+  -files/pygtk-2.14.1-numpy.patch, +pygtk-2.17.0.ebuild:
+  Version bump, closes #328713. Load of bug fixes, closes #301658. Clean up
+  old revisions.
+
+  12 Jul 2010; Jeroen Roovers <jer@gentoo.org> pygtk-2.16.0-r1.ebuild:
+  Stable for HPPA (bug #312881).
+
+  06 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  pygtk-2.16.0-r1.ebuild:
+  ppc64 stable wrt #312881
+
+  27 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pygtk-2.16.0-r1.ebuild:
+  Require Python >=2.6 (bug #283275).
+
+  15 May 2010; Raúl Porcel <armin76@gentoo.org> pygtk-2.16.0-r1.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #312881
+
+  18 Apr 2010; <nixnut@gentoo.org> pygtk-2.16.0-r1.ebuild:
+  ppc stable #312881
+
+  13 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  pygtk-2.16.0-r1.ebuild:
+  stable x86, bug 312881
+
+  06 Apr 2010; Markos Chandras <hwoarang@gentoo.org> pygtk-2.16.0-r1.ebuild:
+  Stable on amd64 wrt bug #312881
+
+  01 Mar 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pygtk-2.16.0-r1.ebuild:
+  Fix dependencies (bug #306825).
+
+  11 Jan 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pygtk-2.14.1-r2.ebuild, pygtk-2.16.0.ebuild, pygtk-2.16.0-r1.ebuild:
+  Don't call python_need_rebuild().
+
+  11 Oct 2009; Fabian Groffen <grobian@gentoo.org> pygtk-2.16.0-r1.ebuild:
+  Merge from Prefix
+
+*pygtk-2.16.0-r1 (09 Sep 2009)
+
+  09 Sep 2009; Arun Raghavan <ford_prefect@gentoo.org>
+  +pygtk-2.16.0-r1.ebuild, +files/pygtk-2.16.0-gdkcolor-fix.patch:
+  Fix crash in gdk.color_from_hsv. (Bug #283093)
+
+  06 Sep 2009; Brent Baude <ranger@gentoo.org> pygtk-2.14.1-r1.ebuild:
+  Marking pygtk-2.14.1-r1 ppc64 for bug 279391
+
+*pygtk-2.16.0 (29 Aug 2009)
+
+  29 Aug 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pygtk-2.16.0.ebuild:
+  Version bump.
+
+*pygtk-2.14.1-r2 (27 Aug 2009)
+
+  27 Aug 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pygtk-2.14.1-r2.ebuild:
+  Set SUPPORT_PYTHON_ABIS (bug #282857).
+
+  19 Aug 2009; Jeroen Roovers <jer@gentoo.org> pygtk-2.14.1-r1.ebuild:
+  Stable for HPPA (bug #279391).
+
+  16 Aug 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pygtk-2.12.1-r2.ebuild, pygtk-2.14.1.ebuild, pygtk-2.14.1-r1.ebuild:
+  Inherit alternatives.eclass (bug #281714).
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> pygtk-2.14.1-r1.ebuild:
+  ppc stable #279391
+
+  02 Aug 2009; Raúl Porcel <armin76@gentoo.org> pygtk-2.14.1-r1.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #279391
+
+  31 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  pygtk-2.14.1-r1.ebuild:
+  stable x86, bug 279391
+
+  30 Jul 2009; Jeremy Olexa <darkside@gentoo.org> pygtk-2.14.1-r1.ebuild:
+  amd64 stable, bug 279391
+
+*pygtk-2.14.1-r1 (26 Jul 2009)
+
+  26 Jul 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +pygtk-2.14.1-r1.ebuild, +files/pygtk-2.14.1-fix-numpy-warning.patch,
+  +files/pygtk-2.14.1-gtktoggle.patch, +files/pygtk-2.14.1-ltihooks.patch,
+  +files/pygtk-2.14.1-numpy.patch:
+  Version bump. fix tests with python-2.6, bug #268315. Switch to numpy, bug
+  #185692. Fix GtkToggleButton bug with gtk+-2.16, bug #275449.
+
+  04 May 2009; Jeroen Roovers <jer@gentoo.org> pygtk-2.14.1.ebuild:
+  Stable for HPPA (bug #260063).
+
+  22 Apr 2009; Mart Raudsepp <leio@gentoo.org> -pygtk-2.14.0.ebuild:
+  Remove old
+
+  21 Apr 2009; Raúl Porcel <armin76@gentoo.org> pygtk-2.14.1.ebuild:
+  arm/ia64/sh/sparc stable wrt #266668
+
+  20 Apr 2009; Markus Meier <maekke@gentoo.org> pygtk-2.14.1:
+  x86 stable, bug #266668
+
+  19 Apr 2009; Brent Baude <ranger@gentoo.org> pygtk-2.14.1.ebuild:
+  Marking pygtk-2.14.1 ppc64 and ppc for bug 266668
+
+  18 Apr 2009; Thomas Anderson <gentoofan23@gentoo.org> pygtk-2.14.1.ebuild:
+  stable amd64, bug 266668
+
+  18 Apr 2009; Tobias Klausmann <klausman@gentoo.org> pygtk-2.14.1.ebuild:
+  Stable on alpha, bug #266668
+
+  12 Apr 2009; Friedrich Oslage <bluebird@gentoo.org> ChangeLog:
+  Stable on sparc, bug #260063
+
+  30 Mar 2009; Raúl Porcel <armin76@gentoo.org> pygtk-2.14.0.ebuild:
+  arm/sh/sparc stable
+
+  18 Mar 2009; Raúl Porcel <armin76@gentoo.org> pygtk-2.14.0.ebuild:
+  alpha/ia64 stable wrt #260063
+
+  15 Mar 2009; Markus Meier <maekke@gentoo.org> pygtk-2.14.0.ebuild:
+  x86 stable, bug #260063
+
+  11 Mar 2009; Daniel Gryniewicz <dang@gentoo.org> pygtk-2.14.0.ebuild:
+  Marked stable on amd64
+
+*pygtk-2.14.1 (08 Mar 2009)
+
+  08 Mar 2009; Gilles Dartiguelongue <eva@gentoo.org> +pygtk-2.14.1.ebuild:
+  Bump to 2.14.1. Documentation enhancements.
+
+  06 Mar 2009; Brent Baude <ranger@gentoo.org> pygtk-2.14.0.ebuild:
+  Marking pygtk-2.14.0 ppc stable for bug 260063
+
+  05 Mar 2009; Brent Baude <ranger@gentoo.org> pygtk-2.14.0.ebuild:
+  Marking pygtk-2.14.0 ppc64 stable for bug 260063
+
+  22 Feb 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -files/pygtk-2.12.0-extrafuncs.patch, -pygtk-2.12.0.ebuild,
+  -pygtk-2.13.0.ebuild:
+  Clean up old revisions, closes #226323.
+
+  21 Feb 2009; Raúl Porcel <armin76@gentoo.org> pygtk-2.12.1-r2.ebuild:
+  arm/sh stable wrt #226323
+
+*pygtk-2.14.0 (02 Feb 2009)
+
+  02 Feb 2009; Gilles Dartiguelongue <eva@gentoo.org> +pygtk-2.14.0.ebuild:
+  Bump to 2.14.0. Bug fixes.
+
+  29 Nov 2008; Gilles Dartiguelongue <eva@gentoo.org> -pygtk-2.10.6.ebuild,
+  -pygtk-2.12.0-r1.ebuild, -pygtk-2.12.1.ebuild:
+  Clean up old revisions.
+
+  13 Nov 2008; Brent Baude <ranger@gentoo.org> pygtk-2.12.1-r2.ebuild:
+  Marking pygtk-2.12.1-r2 ppc64 stable for bug 236971
+
+  27 Oct 2008; Ali Polatel <hawking@gentoo.org> pygtk-2.10.6.ebuild,
+  pygtk-2.12.0.ebuild, pygtk-2.12.0-r1.ebuild, pygtk-2.12.1.ebuild,
+  pygtk-2.12.1-r2.ebuild, pygtk-2.13.0.ebuild:
+  Use python_need_rebuild.
+
+  19 Oct 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/pygtk-2.13.0-fix-codegen-location.patch:
+  adding forgotten patch.
+
+*pygtk-2.13.0 (19 Oct 2008)
+
+  19 Oct 2008; Gilles Dartiguelongue <eva@gentoo.org> +pygtk-2.13.0.ebuild:
+  New version for GNOME 2.24. Wrap more APIs, support GTK-2.14 and bug
+  fixes.
+
+  25 Sep 2008; Jeroen Roovers <jer@gentoo.org> pygtk-2.12.1-r2.ebuild:
+  Stable for HPPA (bug #236971).
+
+  23 Aug 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  pygtk-2.12.1-r2.ebuild:
+  codegen patch doesn't work properly without eautomake, bug #233337.
+
+  12 Aug 2008; Raúl Porcel <armin76@gentoo.org> pygtk-2.12.1-r2.ebuild:
+  alpha/ia64/sparc stable wrt #229709
+
+  10 Aug 2008; Markus Meier <maekke@gentoo.org> pygtk-2.12.1-r2.ebuild:
+  x86 stable, bug #229709
+
+  30 Jul 2008; Brent Baude <ranger@gentoo.org> pygtk-2.12.1-r2.ebuild:
+  Marking pygtk-2.12.1-r2 ppc stable for bug 229709
+
+  26 Jul 2008; Olivier Crête <tester@gentoo.org> pygtk-2.12.1-r2.ebuild:
+  Stable on amd64, bug #229709
+
+*pygtk-2.12.1-r2 (29 May 2008)
+
+  29 May 2008; Rémi Cardona <remi@gentoo.org> -pygtk-2.12.1-r1.ebuild,
+  +pygtk-2.12.1-r2.ebuild:
+  force revbump
+
+  29 May 2008; Daniel Gryniewicz <dang@gentoo.org>
+  files/pygtk-2.12.1-fix-codegen-location.patch:
+  Set exec_prefix in codegen patch; bug #194343
+
+*pygtk-2.12.1-r1 (28 May 2008)
+
+  28 May 2008; Rémi Cardona <remi@gentoo.org>
+  +files/pygtk-2.12.1-fix-amd64.patch,
+  +files/pygtk-2.12.1-fix-codegen-location.patch, +pygtk-2.12.1-r1.ebuild:
+  fix bug #194343 and bug #209531, add amd64 keyword back
+
+  25 Apr 2008; Samuli Suominen <drac@gentoo.org>
+  +files/pygtk-2.12.0-extrafuncs.patch, +pygtk-2.12.0-r1.ebuild:
+  Restore pygtk-2.12.0-r1 from Attic.
+
+  24 Apr 2008; Samuli Suominen <drac@gentoo.org> pygtk-2.12.1.ebuild:
+  Marked -amd64 because of bug 209531.
+
+  31 Mar 2008; <ricmm@gentoo.org> pygtk-2.10.6.ebuild:
+  Drop to ~mips due to unstable deps
+
+  20 Mar 2008; Gilles Dartiguelongue <eva@gentoo.org> pygtk-2.12.1.ebuild:
+  remove useless doc installation, fix bug #205676 again
+
+  09 Mar 2008; Gilles Dartiguelongue <eva@gentoo.org> -pygtk-2.8.6.ebuild,
+  pygtk-2.12.1.ebuild:
+  remove opengl dependencies, fix bug #212434
+  remove custom SRC_URI, fix bug #205676
+  remove old revision
+
+*pygtk-2.12.1 (06 Jan 2008)
+
+  06 Jan 2008; Gilles Dartiguelongue <eva@gentoo.org> +pygtk-2.12.1.ebuild:
+  bump to 2.12.1
+   * removing parallel build limitation
+   * reactivate tests
+   * use emake in src_install
+
+*pygtk-2.12.0-r1 (22 Dec 2007)
+
+  22 Dec 2007; Daniel Gryniewicz <dang@gentoo.org>
+  +files/pygtk-2.12.0-extrafuncs.patch, +pygtk-2.12.0-r1.ebuild:
+  Bump to 2.12.0-r1
+  	- Install gtk-extrafuncs.def; bug #202140
+
+  27 Nov 2007; Jeroen Roovers <jer@gentoo.org> pygtk-2.12.0.ebuild:
+  Stable for HPPA (bug #199322).
+
+  20 Nov 2007; Markus Rothe <corsair@gentoo.org> pygtk-2.12.0.ebuild:
+  Stable on ppc64; bug #199322
+
+  17 Nov 2007; Raúl Porcel <armin76@gentoo.org> pygtk-2.12.0.ebuild:
+  alpha/ia64/sparc stable wrt #199322
+
+  17 Nov 2007; nixnut <nixnut@gentoo.org> pygtk-2.12.0.ebuild:
+  Stable on ppc wrt bug 199322
+
+  17 Nov 2007; Dawid Węgliński <cla@gentoo.org> pygtk-2.12.0.ebuild:
+  Stable on x86 (bug #199322)
+
+  16 Nov 2007; Samuli Suominen <drac@gentoo.org> pygtk-2.12.0.ebuild:
+  amd64 stable wrt #199322
+
+  06 Nov 2007; Raúl Porcel <armin76@gentoo.org> pygtk-2.10.6.ebuild:
+  sparc stable wrt #193339
+
+  08 Oct 2007; Tom Gall <tgall@gentoo.org> pygtk-2.10.6.ebuild:
+  stable on ppc64
+
+*pygtk-2.12.0 (27 Sep 2007)
+
+  27 Sep 2007; Mart Raudsepp <leio@gentoo.org> +pygtk-2.12.0.ebuild:
+  Adding 2.12 series, to go along with gtk+-2.12 for Gnome 2.20
+
+  27 Sep 2007; Raúl Porcel <armin76@gentoo.org> pygtk-2.10.6.ebuild:
+  alpha/ia64 stable wrt #193339
+
+  26 Sep 2007; Joshua Kinard <kumba@gentoo.org> pygtk-2.10.6.ebuild:
+  Stable on mips, per #193339.
+
+  25 Sep 2007; Jeroen Roovers <jer@gentoo.org> pygtk-2.10.6.ebuild:
+  Stable for HPPA (bug #193339).
+
+  22 Sep 2007; Tobias Scherbaum <dertobi123@gentoo.org> pygtk-2.10.6.ebuild:
+  ppc stable, bug #193339
+
+  21 Sep 2007; Chris Gianelloni <wolf31o2@gentoo.org> pygtk-2.10.6.ebuild:
+  Stable on amd64 wrt bug #193339.
+
+  21 Sep 2007; Chris Gianelloni <wolf31o2@gentoo.org> pygtk-2.10.6.ebuild:
+  Stable on x86 wrt bug #193339.
+
+  18 Jul 2007; Roy Marples <uberlord@gentoo.org> pygtk-2.10.6.ebuild:
+  true isn't always in /bin
+
+*pygtk-2.10.6 (17 Jul 2007)
+
+  17 Jul 2007; <metalgod@gentoo.org> +pygtk-2.10.6.ebuild:
+  Version Bump.
+
+  29 Jun 2007; Mart Raudsepp <leio@gentoo.org> -pygtk-2.6.1.ebuild,
+  -pygtk-2.6.2.ebuild, -pygtk-2.10.3.ebuild:
+  Remove old
+
+  02 Jun 2007; Brent Baude <ranger@gentoo.org> pygtk-2.10.4.ebuild:
+  Marking pygtk-2.10.4 ppc stable for bug #171107
+
+  31 May 2007; Jeroen Roovers <jer@gentoo.org> pygtk-2.10.4.ebuild:
+  Stable for HPPA (bug #171107).
+
+  31 May 2007; Daniel Gryniewicz <dang@gentoo.org> pygtk-2.10.4.ebuild:
+  Marked stable on amd64 for bug #171107
+
+  31 May 2007; Brent Baude <ranger@gentoo.org> pygtk-2.10.4.ebuild:
+  Marking pygtk-2.10.4 ppc64 stable for bug #171107
+
+  30 May 2007; Raúl Porcel <armin76@gentoo.org> pygtk-2.10.4.ebuild:
+  alpha/ia64 stable wrt #171107
+
+  29 May 2007; Andrej Kacian <ticho@gentoo.org> pygtk-2.10.4.ebuild:
+  Stable on x86, bug #171107.
+
+  29 May 2007; Gustavo Zacarias <gustavoz@gentoo.org> pygtk-2.10.4.ebuild:
+  Stable on sparc wrt #171107
+
+  27 May 2007; Joshua Kinard <kumba@gentoo.org> pygtk-2.10.4.ebuild:
+  Eh, stable this one on mips too -- needed for another dep.
+
+  27 May 2007; Joshua Kinard <kumba@gentoo.org> pygtk-2.10.3.ebuild:
+  Stable on mips.
+
+  18 Mar 2007; Marien Zwart <marienz@gentoo.org> pygtk-2.6.1.ebuild,
+  pygtk-2.6.2.ebuild, pygtk-2.8.6.ebuild, pygtk-2.10.3.ebuild,
+  pygtk-2.10.4.ebuild:
+  Skip the tests instead of ignoring their failure.
+
+  16 Feb 2007; Roy Marples <uberlord@gentoo.org> pygtk-2.10.4.ebuild:
+  Added ~x86-fbsd keyword.
+
+*pygtk-2.10.4 (09 Feb 2007)
+
+  09 Feb 2007; Lukasz Strzygowski <lucass@gentoo.org> +pygtk-2.10.4.ebuild:
+  - Version bump
+  - Fixed docs installation
+  - Fixed bug #165672
+  - Added examples use-flag
+  - Added NEED_PYTHON=2.3.5
+
+  20 Jan 2007; Jeroen Roovers <jer@gentoo.org> pygtk-2.10.3.ebuild:
+  Stable for HPPA (bug #156662).
+
+  16 Jan 2007; Daniel Gryniewicz <dang@gentoo.org> pygtk-2.10.3.ebuild:
+  Make it install more recent docs.  Bug #106708
+
+  14 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> pygtk-2.10.3.ebuild:
+  Stable on Alpha.
+
+  09 Jan 2007; Mart Raudsepp <leio@gentoo.org>
+  -files/pygtk-2.10.1-tree-model.patch, -pygtk-2.8.2.ebuild,
+  -pygtk-2.8.4.ebuild, -pygtk-2.10.1.ebuild, -pygtk-2.10.1-r1.ebuild:
+  Remove old versions
+
+  06 Jan 2007; Tiziano Müller <dev-zero@gentoo.org> pygtk-2.6.1.ebuild,
+  pygtk-2.6.2.ebuild:
+  Dropped gnome USE-flag for 2.6.x (bug #104671)
+
+  21 Dec 2006; Markus Rothe <corsair@gentoo.org> pygtk-2.10.3.ebuild:
+  Stable on ppc64; bug #156662
+
+  21 Dec 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  -pygtk-0.6.11.ebuild, -pygtk-0.6.11-r1.ebuild:
+  gnome-1.x removal
+
+  18 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> pygtk-2.10.3.ebuild:
+  Stable on sparc
+
+  16 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org> pygtk-2.10.3.ebuild:
+  Stable on ppc wrt bug #156662.
+
+  12 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> pygtk-2.10.3.ebuild:
+  Stable on amd64 wrt bug #156662.
+
+  10 Dec 2006; Andrej Kacian <ticho@gentoo.org> pygtk-2.10.3.ebuild:
+  Stable on x86, bug #156662.
+
+*pygtk-2.10.3 (13 Oct 2006)
+
+  13 Oct 2006; Mart Raudsepp <leio@gentoo.org> +pygtk-2.10.3.ebuild:
+  Version bump. Should fix the treemodel issues and work with python2.5, bugs
+  148247 and 150002
+
+  02 Oct 2006; Daniel Gryniewicz <dang@gentoo.org> pygtk-2.10.1-r1.ebuild:
+  Fix apparently breaks things
+
+*pygtk-2.10.1-r1 (30 Sep 2006)
+
+  30 Sep 2006; Daniel Gryniewicz <dang@gentoo.org>
+  +files/pygtk-2.10.1-tree-model.patch, +pygtk-2.10.1-r1.ebuild:
+  Add tree-model fix from bug #148247
+
+  26 Sep 2006; Javier Villavicencio <the_paya@gentoo.org>
+  pygtk-2.8.6.ebuild:
+  Add ~x86-fbsd keyword.
+
+  15 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> pygtk-2.10.1.ebuild:
+  Remove arm and sh until they've keyworded pygobject
+
+  12 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> pygtk-2.10.1.ebuild:
+  Fix unqouted paths
+
+*pygtk-2.10.1 (07 Sep 2006)
+
+  07 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> +pygtk-2.10.1.ebuild:
+  New version for gnome 2.16
+
+  04 Sep 2006; Joshua Kinard <kumba@gentoo.org> pygtk-2.8.6.ebuild:
+  Marked stable on mips.
+
+  20 Aug 2006; Thomas Cort <tcort@gentoo.org> pygtk-2.8.6.ebuild:
+  Stable on alpha.
+
+  16 Aug 2006; Markus Rothe <corsair@gentoo.org> pygtk-2.8.6.ebuild:
+  Stable on ppc64
+
+  03 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org> pygtk-2.8.6.ebuild:
+  Stable on sparc
+
+  01 Aug 2006; Tom Gall <tgall@gentoo.org> pygtk-0.6.11-r1.ebuild:
+  added ~ppc64
+
+  17 Jul 2006; Daniel Gryniewicz <dang@gentoo.org> pygtk-2.8.6.ebuild:
+  Marked stable on amd64 for bug #139612
+
+  16 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org> pygtk-2.8.6.ebuild:
+  hppa stable, bug #139612
+
+  14 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org> ChangeLog:
+  ppc stable, bug #139612
+
+  13 Jul 2006; Aron Griffis <agriffis@gentoo.org> pygtk-2.8.6.ebuild:
+  Mark 2.8.6 stable on ia64
+
+  12 Jul 2006; Chris Gianelloni <wolf31o2@gentoo.org> pygtk-2.8.6.ebuild:
+  Stable on x86 wrt bug #139612.
+
+  13 May 2006; John N. Laliberte <allanonjl@gentoo.org>
+  files/digest-pygtk-2.6.1, files/digest-pygtk-2.6.2, Manifest:
+  fix broken digests committed by qa team when pygtk 2.6.x was re-added. by
+  re-adding pygtk 2.6.x, pygtk <-> pycairo still have circular deps. waiting
+  on mips to keyword pygtk 2.8.x to remove again. see bug #108808. fixes
+  #133200
+
+  13 May 2006; Mark Loeser <halcy0n@gentoo.org> +pygtk-2.6.1.ebuild,
+  +pygtk-2.6.2.ebuild:
+  Add 2.6 series back since they are the only ones marked for mips
+
+  12 May 2006; John N. Laliberte <allanonjl@gentoo.org> -pygtk-2.6.1.ebuild,
+  -pygtk-2.6.2.ebuild:
+  remove 2.6.x series of pygtk
+
+*pygtk-2.8.6 (24 Apr 2006)
+
+  24 Apr 2006; Alastair Tse <liquidx@gentoo.org> +pygtk-2.8.6.ebuild:
+  version bump
+
+  24 Apr 2006; Alastair Tse <liquidx@gentoo.org> -pygtk-1.99.13-r1.ebuild,
+  -pygtk-2.0.0.ebuild, -pygtk-2.0.0-r1.ebuild, -pygtk-2.2.0.ebuild,
+  -pygtk-2.4.1.ebuild, -pygtk-2.6.0.ebuild, -pygtk-2.8.0-r1.ebuild,
+  -pygtk-2.8.0-r2.ebuild:
+  cleanup old ebuilds
+
+*pygtk-2.8.4 (09 Feb 2006)
+
+  09 Feb 2006; John N. Laliberte <allanonjl@gentoo.org> +pygtk-2.8.4.ebuild:
+  new version
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> pygtk-2.8.2.ebuild:
+  Mark 2.8.2 stable on ia64
+
+  03 Feb 2006; Guy Martin <gmsoft@gentoo.org> pygtk-2.8.2.ebuild:
+  Stable on hppa.
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> pygtk-2.8.2.ebuild:
+  Mark 2.8.2 stable on alpha
+
+  22 Jan 2006; <dang@gentoo.org> pygtk-2.8.2.ebuild:
+  Marked stable on amd64 per bug #119634
+
+  22 Jan 2006; Markus Rothe <corsair@gentoo.org> pygtk-2.8.2.ebuild:
+  Stable on ppc64
+
+  22 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org> pygtk-2.8.2.ebuild:
+  Marked ppc stable for bug #119634; Stabilize Gnome-2.12.2
+
+  22 Jan 2006; Joshua Jackson <tsunam@gentoo.org> pygtk-2.8.2.ebuild:
+  Stable on x86 for bug #119634; Stabilize Gnome-2.12.2
+
+  20 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org> pygtk-2.8.2.ebuild:
+  Stable on sparc wrt #119634
+
+  26 Dec 2005; Bryan Østergaard <kloeri@gentoo.org pygtk-2.8.0-r2.ebuild,
+  pygtk-2.8.2.ebuild:
+  ~alpha keyword.
+
+  15 Dec 2005; Bryan Østergaard <kloeri@gentoo.org pygtk-2.8.0-r1.ebuild,
+  pygtk-2.8.0-r2.ebuild, pygtk-2.8.2.ebuild:
+  Adjust python dependency to 2.3.5.
+
+  19 Nov 2005; Chris White <chriswhite@gentoo.org> metadata.xml:
+  Added japanese metadata.xml translation thanks to Yoshino-san.
+
+  31 Oct 2005; Bryan Østergaard <kloeri@gentoo.org> pygtk-2.8.2.ebuild:
+  ~ia64 keyword.
+
+*pygtk-2.8.2 (29 Oct 2005)
+
+  29 Oct 2005; John N. Laliberte <allanonjl@gentoo.org> +pygtk-2.8.2.ebuild:
+  new version, #109385
+
+  20 Oct 2005; Tom Gall <tgall@gentoo.org> pygtk-2.8.0-r2:
+  added ~ppc64, bug #108808
+
+*pygtk-2.8.0-r2 (15 Oct 2005)
+
+  15 Oct 2005; John N. Laliberte <allanonjl@gentoo.org>
+  +pygtk-2.8.0-r2.ebuild:
+  remove gnome useflag for libglade, fixes #103056
+
+  14 Oct 2005; John N. Laliberte <allanonjl@gentoo.org> pygtk-2.8.0.ebuild:
+  make pycairo >=0.9.0 due to bug #107331
+
+  11 Oct 2005; John N. Laliberte <allanonjl@gentoo.org> pygtk-2.8.0.ebuild:
+  remove support for alpha, arm, hppa, ia64, mips, ppc64, filed bugs.
+
+  03 Oct 2005; Hardave Riar <hardave@gentoo.org> pygtk-2.6.1.ebuild:
+  Stable on mips.
+
+*pygtk-2.8.0 (12 Sep 2005)
+
+  12 Sep 2005; John N. Laliberte <allanonjl@gentoo.org> -pygtk-2.7.4.ebuild,
+  +pygtk-2.8.0.ebuild:
+  2.12 release vbump, fix where gtk-docs get installed #105511, thanks to Ed
+  Catmur.
+
+*pygtk-2.7.4 (26 Aug 2005)
+
+  26 Aug 2005; John N. Laliberte <allanonjl@gentoo.org> +pygtk-2.7.4.ebuild:
+  new version
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> pygtk-2.6.1.ebuild:
+  stable on ia64
+
+  01 Aug 2005; Simon Stelling <blubb@gentoo.org> pygtk-2.6.1.ebuild:
+  stable on amd64
+
+  26 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> pygtk-2.6.1.ebuild:
+  Stable on alpha.
+
+  21 Jul 2005; Markus Rothe <corsair@gentoo.org> pygtk-2.6.1.ebuild:
+  Stable on ppc64
+
+*pygtk-2.6.2 (19 Jul 2005)
+
+  19 Jul 2005; Lukasz Strzygowski <lucass@gentoo.org> +pygtk-2.6.2.ebuild:
+  Version bump.
+
+  18 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> pygtk-2.6.1.ebuild:
+  Stable on sparc
+
+  17 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org> pygtk-2.6.1.ebuild:
+  ppc stable
+
+  16 Jul 2005; John N. Laliberte <allanonjl@gentoo.org> pygtk-2.6.1.ebuild:
+  marking 2.6.1 stable on x86
+
+  11 Jul 2005; Stephen P. Becker <geoman@gentoo.org> pygtk-2.4.1.ebuild,
+  pygtk-2.6.1.ebuild:
+  added mips keywords to satisfy gnome repoman deps
+
+  08 Apr 2005; Markus Rothe <corsair@gentoo.org> pygtk-2.4.1.ebuild,
+  pygtk-2.6.0.ebuild, pygtk-2.6.1.ebuild:
+  Stable on ppc64/added ~ppc64 to KEYWORDS
+
+*pygtk-2.6.1 (16 Mar 2005)
+
+  16 Mar 2005; Alastair Tse <liquidx@gentoo.org> +pygtk-2.6.1.ebuild:
+  version bump
+
+  15 Mar 2005; Alastair Tse <liquidx@gentoo.org> pygtk-2.4.1.ebuild,
+  pygtk-2.6.0.ebuild:
+  more multilib fixes
+
+  08 Mar 2005; Alastair Tse <liquidx@gentoo.org> pygtk-2.6.0.ebuild:
+  add python numeric dep
+
+*pygtk-2.6.0 (08 Mar 2005)
+
+  08 Mar 2005; Alastair Tse <liquidx@gentoo.org> -pygtk-2.4.0.ebuild,
+  +pygtk-2.6.0.ebuild:
+  version bump, now requires gtk+-2.6. fix get_libdir in pkg_postinst and
+  pkg_postrm. (#76791)
+
+  26 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org> pygtk-2.4.1.ebuild:
+  Multilib fixes.
+
+  04 Feb 2005; Bryan Østergaard <kloeri@gentoo.org> pygtk-2.4.1.ebuild:
+  Stable on alpha.
+
+  26 Jan 2005; Lukasz Strzygowski <lucass@gentoo.org> -pygtk-2.3.92.ebuild,
+  -pygtk-2.3.93.ebuild, -pygtk-2.3.94.ebuild, -pygtk-2.3.96.ebuild,
+  -pygtk-2.3.97.ebuild:
+  Removed old unstable branch.
+
+  09 Jan 2005; Sven Wegener <swegener@gentoo.org> pygtk-2.4.1.ebuild:
+  Added missing digest entries. Added missing parentheses in SRC_URI.
+
+  08 Jan 2005; Bryan Østergaard <kloeri@gentoo.org> pygtk-2.4.1.ebuild:
+  Add doc USE flag, patch by Fernando Serboncini in bug 75308.
+
+  03 Jan 2005; Joseph Jezak <josejx@gentoo.org> pygtk-2.4.1.ebuild:
+  Marked ppc stable for bug #74333.
+
+  22 Dec 2004; Dylan Carlson <absinthe@gentoo.org> pygtk-2.4.1.ebuild:
+  Stable on amd64, bug 74333.
+
+  22 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org> pygtk-2.4.1.ebuild:
+  Stable on sparc
+
+  22 Dec 2004; Lukasz Strzygowski <lucass@gentoo.org> pygtk-2.4.0.ebuild,
+  pygtk-2.4.1.ebuild:
+  Marked stable on x86.
+
+*pygtk-2.4.1 (05 Nov 2004)
+
+  05 Nov 2004; Lukasz Strzygowski <lucass@gentoo.org> +pygtk-2.4.1.ebuild:
+  Version bump.
+
+  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org> pygtk-2.2.0.ebuild:
+  stable on amd64.
+
+  12 Oct 2004; Guy Martin <gmsoft@gentoo.org> pygtk-2.2.0.ebuild:
+  Stable on hppa.
+
+  10 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> pygtk-2.2.0.ebuild:
+  Stable on alpha.
+
+*pygtk-2.4.0 (03 Oct 2004)
+
+  03 Oct 2004; Lukasz Strzygowski <lucass@gentoo.org> +pygtk-2.4.0.ebuild:
+  Version bump. Updated dependencies.
+
+*pygtk-2.3.97 (28 Sep 2004)
+
+  28 Sep 2004; Lukasz Strzygowski <lucass@gentoo.org> +pygtk-2.3.97.ebuild:
+  Version bump.
+
+  30 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> pygtk-2.2.0.ebuild:
+  Stable on sparc
+
+*pygtk-2.3.96 (24 Aug 2004)
+
+  24 Aug 2004; Lukasz Strzygowski <lucass@gentoo.org> +pygtk-2.3.96.ebuild:
+  Version bump.
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> pygtk-2.2.0.ebuild:
+  Stable on x86.
+
+  29 Jul 2004; Tom Gall <tgall@gentoo.org> pygtk-2.2.0.ebuild:
+  stable on ppc64, bug #57015
+
+*pygtk-2.3.94 (29 Jul 2004)
+
+  29 Jul 2004; Lukasz Strzygowski <lucass@gentoo.org> +pygtk-2.3.94.ebuild:
+  Version bump.
+
+*pygtk-2.3.93 (25 Jul 2004)
+
+  25 Jul 2004; Lukasz Strzygowski <lucass@gentoo.org> +pygtk-2.3.93.ebuild:
+  Version bump. Now it install also examples. Added src_test.
+
+  20 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> pygtk-0.6.11-r1.ebuild,
+  pygtk-1.99.13-r1.ebuild, pygtk-2.0.0-r1.ebuild, pygtk-2.0.0.ebuild,
+  pygtk-2.2.0.ebuild, pygtk-2.3.92.ebuild:
+  dev-python/PyOpenGL is now dev-python/pyopengl - adjust dependencies
+  accordingly.
+
+*pygtk-2.3.92 (10 Jul 2004)
+
+  10 Jul 2004; Lukasz Strzygowski <lucass@gentoo.org> metadata.xml,
+  pygtk-0.6.11-r1.ebuild, pygtk-2.0.0.ebuild, pygtk-2.2.0.ebuild, pygtk-0.6.11.ebuild,
+  pygtk-1.99.13-r1.ebuild, pygtk-2.0.0-r1.ebuild, pygtk-2.3.92.ebuild:
+  Added and hardmasked ebuild for 2.3.92 (unstable branch). Added
+  long description to metadata.xml. Updated homepage's url to http://www.pygtk.org/.
+
+  04 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> pygtk-2.0.0-r1.ebuild:
+  Stable on alpha.
+
+  13 May 2004; Stephen P. Becker <geoman@gentoo.org> pygtk-2.0.0-r1.ebuild:
+  Stable on mips.
+
+  07 May 2004; Bryan Østergaard <kloeri@gentoo.org> pygtk-0.6.11.ebuild,
+  pygtk-1.99.13-r1.ebuild:
+  Add missing IUSE.
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> pygtk-0.6.11-r1.ebuild:
+  Add die following econf for bug 48950
+
+  18 Apr 2004; Guy Martin <gmsoft@gentoo.org> pygtk-2.0.0-r1.ebuild,
+  pygtk-2.2.0.ebuild:
+  Marked stable on hppa.
+
+  10 Apr 2004; Alastair Tse <liquidx@gentoo.org> pygtk-2.0.0-r1.ebuild,
+  pygtk-2.2.0.ebuild:
+  restrict parallel builds (#45776)
+
+  16 Mar 2004; Stephen P. Becker <geoman@gentoo.org> pygtk-2.0.0-r1.ebuild:
+  Added ~mips keyword.
+
+  12 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org> pygtk-2.0.0-r1.ebuild:
+  stable on sparc
+
+*pygtk-2.2.0_rc1 (11 Mar 2004)
+
+  11 Mar 2004; Alastair Tse <liquidx@gentoo.org> pygtk-0.6.11-r1.ebuild,
+  pygtk-2.0.0-r1.ebuild, pygtk-2.2.0.ebuild, pygtk-2.2.0_rc1.ebuild:
+  bump x11-libs/gtk+ dep to 2.2
+
+*pygtk-2.2.0 (11 Mar 2004)
+
+  11 Mar 2004; Bryan Østergaard <kloeri@gentoo.org> pygtk-2.2.0.ebuild:
+  Version bump, bug #44378.
+
+  09 Mar 2004; <agriffis@gentoo.org> pygtk-2.0.0.ebuild:
+  stable on alpha and ia64
+
+*pygtk-2.0.0-r1 (24 Jan 2004)
+*pygtk-0.6.11-r1 (24 Jan 2004)
+	
+  24 Jan 2004; Alastair Tse <liquidx@gentoo.org> pygtk-0.6.11-r1.ebuild,
+  pygtk-2.0.0-r1.ebuild:
+  fix pyc/pyo cleanup, fix pygtk.{py,pth} conflicts when installing
+  pygtk-2.0 and pygtk-0.6 in different orders using alternatives.eclass. 
+  add pyopengl dependencies instead of einfo at the end.
+
+  14 Jan 2004; Aron Griffis <agriffis@gentoo.org> pygtk-0.6.11.ebuild:
+  stable on alpha for bug 31858
+
+  09 Jan 2004; Aron Griffis <agriffis@gentoo.org> pygtk-1.99.16.ebuild,
+  pygtk-2.0.0.ebuild:
+  stable on alpha
+
+  29 Nov 2003; Brad House <brad_mssw@gentoo.org> pygtk-2.0.0.ebuild:
+  mark stable on amd64
+
+  25 Nov 2003; Jason Wever <weeve@gentoo.org> pygtk-2.0.0.ebuild:
+  Marked stable on sparc, resolves bug #31858.
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> pygtk-1.99.13-r1.ebuild:
+  Stable on ia64
+
+  01 Nov 2003; Jason Wever <weeve@gentoo.org> pygtk-0.6.11.ebuild:
+  Marked stable for sparc in regards to bug #31858.
+
+  24 Oct 2003; Bartosch Pixa <darkspecter@gentoo.org> pygtk-0.6.11.ebuild:
+  set ppc in keywords
+
+  24 Oct 2003; Alastair Tse <liquidx@gentoo.org> pygtk-2.0.0.ebuild:
+  stable bump for x86
+
+  22 Oct 2003; Bartosch Pixa <darkspecter@gentoo.org> pygtk-2.0.0.ebuild:
+  set ppc in keywords
+
+  07 Oct 2003; Alastair Tse <liquidx@gentoo.org> pygtk-2.0.0.ebuild:
+  remove inherit debug
+
+  27 Sep 2003; Bartosch Pixa <darkspecter@gentoo.org> pygtk-1.99.16.ebuild:
+  set ppc in keywords
+
+*pygtk-2.0.0 (03 Sep 2003)
+
+  03 Sep 2003; Alastair Tse <liquidx@gentoo.org> pygtk-1.99.17.ebuild,
+  pygtk-2.0.0.ebuild:
+  version bump
+
+  29 Aug 2003; Mike Gardiner <obz@gentoo.org> pygtk-1.99.13-r1.ebuild,
+  pygtk-1.99.16.ebuild:
+  Corrected SLOT to 2
+
+*pygtk-1.99.18 (28 Aug 2003)
+
+  28 Aug 2003; Mike Gardiner <obz@gentoo.org> pygtk-1.99.18.ebuild:
+  New version
+
+  28 Aug 2003; Mike Gardiner <obz@gentoo.org> pygtk-1.99.16.ebuild,
+  pygtk-1.99.17.ebuild:
+  Added >=pkgconfig-0.9 to depends, see bug #26573
+
+*pygtk-1.99.17 (01 Aug 2003)
+
+  01 Aug 2003; foser <foser@gentoo.org> pygtk-1.99.17.ebuild,metadata.xml :
+  New version, added gnome as herd
+
+  12 Jun 2003; <msterret@gentoo.org> pygtk-1.99.13-r1.ebuild,
+  pygtk-1.99.16.ebuild:
+  fix Header
+
+*pygtk-1.99.16 (31 Mar 2003)
+
+  31 Mar 2003; foser <foser@gentoo.org> pygtk-1.99.16.ebuild :
+  New version
+
+*pygtk-1.99.15 (09 Feb 2003)
+
+  09 Feb 2003; foser <foser@gentoo.org> pygtk-1.99.15.ebuild :
+  New version
+
+*pygtk-0.6.11 (06 Dec 2002)
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  06 Dec 2002; foser <foser@gentoo.org> pygtk-0.6.11.ebuild :
+  New version
+
+*pygtk-1.99.13-r1 (01 Nov 2002)
+
+  13 Nov 2002; Mark Guertin <gerk@gentoo.org> pygtk-1.99.13-r1.ebuild :
+  backed down to ~ppc.  Don't want dev builds of this sort which are 
+  not backwards compatible overwriting the proper relase.
+
+  01 Nov 2002; foser <foser@gentoo.org> pygtk-1.99.13-r1.ebuild :
+  Enabled threads support
+
+*pygtk-1.99.13 (23 Oct 2002) 
+
+  24 Oct 2002; foser <foser@gentoo.org> pygtk-1.99.13.ebuild :
+  removed the author line, it made emerge ignore the ebuild  
+
+  23 Oct 2002; Spider <spider@gentoo.org> pygtk-1.99.13.ebuild :
+  finally got this in, closing bug #3700. thanks foser@gentoo.org for the actual work
+  
+*pygtk-0.6.9 (19 Jun 2002)
+
+  29 Jul 2002; George Shapovalov <george@gentoo.org> pygtk-0.6.8-r1.ebuild, pygtk-0.6.8-r2.ebuild, pygtk-0.6.9.ebuild, pygtk-1.99.9.ebuild, pygtk-1.99.10.ebuild :
+
+  Added KEYWORDS,SLOT,LICENSE (where missing),
+  header clean-ups
+
+  19 Jun 2002; Gabriele Giorgetti <stroke@gentoo.org> pygtk-0.6.9.ebuild
+  New version, updated dependencies. Close bug #3891
+
+*pygtk-1.99.10 (13 Jun 2002)
+  21 Aug 2002; Mark Guertin <gerk@gentoo.org> pygtk-1.99.10.ebuild :
+  Added ppc to keywords  
+
+  13 Jun 2002; Spider <spider@gentoo.org> pygtk-1.99.10.ebuild :
+  I've got a headache so this is a simple bump to the next level.  and remember kids dont play in the playgrounds.
+  
+*pygtk-1.99.9 (24 Apr 2002)
+  24 Apr 2002; Spider <spider@gentoo.org> pygtk-1.99.9.ebuild pygtk-0.6.8-r2.ebuild
+  Add SLOT
+  update to gtk2
+  
+
+*pygtk-0.6.8-r1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

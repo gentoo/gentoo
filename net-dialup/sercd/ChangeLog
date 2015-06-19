@@ -1,0 +1,20 @@
+# ChangeLog for net-dialup/sercd
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/sercd/ChangeLog,v 1.2 2014/12/04 07:14:50 pinkbyte Exp $
+
+*sercd-3.0.0-r1 (04 Dec 2014)
+
+  04 Dec 2014; Sergey Popov <pinkbyte@gentoo.org> -sercd-3.0.0.ebuild,
+  +sercd-3.0.0-r1.ebuild, files/sercd.confd, files/sercd.initd,
+  files/sercd.xinetd:
+  Revision bump: EAPI 5, epatch_user, replace einstall with default src_install
+  phase function call wrt bug #521584, replace /var/lock with /run/lock,
+  replace /var/run with /run in default configuration. Drop old revision
+
+*sercd-3.0.0 (22 Mar 2009)
+
+  22 Mar 2009; Alin Năstac <mrness@gentoo.org> +files/sercd.confd,
+  +files/sercd.initd, +files/sercd.xinetd, +metadata.xml,
+  +sercd-3.0.0.ebuild:
+  Initial import from bug 263176.
+

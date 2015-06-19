@@ -1,0 +1,22 @@
+# $Header: /var/cvsroot/gentoo-x86/profiles/uclibc/mips/use.mask,v 1.7 2009/03/03 12:49:06 pva Exp $
+
+# Henrik Brix Andersen <brix@gentoo.org>
+# According to the mips herd, we currently have no way of testing
+# pcmcia on mips, bug #90359
+pcmcia
+
+# Luca Longinotti <chtekk@gentoo.org>
+# Mask php USE on MIPS profiles
+php
+
+# Diego Pettenò <flameeyes@gentoo.org> (6 Dec 2006)
+# Unmask specific MIPS ALSA drivers
+-alsa_cards_au1x00
+
+# Daniel Black <dragonheart@gentoo.org> (28 Feb 2007)
+# Use mask l7-filter for iptables dependency - bug #150343 until mips tested
+l7filter
+
+# Peter Volkov <pva@gentoo.org> MPI was never tested on mips, but
+# some programs with this useflag are useful, e.g #227631
+mpi

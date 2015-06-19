@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=app-editors/vim dev-perl/File-ShareDir-Install dev-perl/Test-File-ShareDir dev-perl/File-ShareDir dev-perl/Class-Tiny dev-perl/Path-Tiny test? ( dev-perl/Test-Pod-Coverage dev-perl/Pod-Coverage dev-perl/Path-Class dev-perl/XML-Parser dev-perl/Test-Pod ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Syntax highlighting using vim
+EAPI=5
+HOMEPAGE=https://github.com/rwstauner/Text-VimColor
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=app-editors/vim dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RW/RWSTAUNER/Text-VimColor-0.26.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=a84f4e3c0d52929d3999bb53a259ae95

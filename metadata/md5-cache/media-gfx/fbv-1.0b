@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=gif? ( media-libs/giflib ) jpeg? ( virtual/jpeg ) png? ( media-libs/libpng )
+DESCRIPTION=simple program to view pictures on a linux framebuffer device
+EAPI=4
+HOMEPAGE=http://freshmeat.net/projects/fbv/
+IUSE=gif jpeg png
+KEYWORDS=~amd64 arm ~ppc ppc64 sh x86
+LICENSE=GPL-2
+RDEPEND=gif? ( media-libs/giflib ) jpeg? ( virtual/jpeg ) png? ( media-libs/libpng )
+SLOT=0
+SRC_URI=http://s-tech.elsat.net.pl/fbv/fbv-1.0b.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=225dcb2f4572461a05b14ca9cf78aadd

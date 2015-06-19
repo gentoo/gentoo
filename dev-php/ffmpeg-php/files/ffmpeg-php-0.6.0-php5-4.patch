@@ -1,0 +1,29 @@
+--- ffmpeg-php-0.6.0.orig/ffmpeg_movie.c.bak	2013-02-24 16:44:31.162791000 +0200
++++ ffmpeg-php-0.6.0/ffmpeg_movie.c	2013-02-24 16:45:20.632791000 +0200
+@@ -308,7 +308,7 @@
+     } 
+ 
+     if (persistent) {
+-        list_entry *le;
++        zend_rsrc_list_entry *le;
+         /* resolve the fully-qualified path name to use as the hash key */
+         fullpath = expand_filepath(filename, NULL TSRMLS_CC);
+ 
+@@ -343,7 +343,7 @@
+             }
+             
+         } else { /* no existing persistant movie, create one */
+-            list_entry new_le;
++            zend_rsrc_list_entry new_le;
+             ffmovie_ctx = _php_alloc_ffmovie_ctx(1);
+ 
+             if (_php_open_movie_file(ffmovie_ctx, filename)) {
+@@ -357,7 +357,7 @@
+             new_le.ptr = ffmovie_ctx;
+ 
+             if (FAILURE == zend_hash_update(&EG(persistent_list), hashkey, 
+-                        hashkey_length+1, (void *)&new_le, sizeof(list_entry),
++                        hashkey_length+1, (void *)&new_le, sizeof(zend_rsrc_list_entry),
+                         NULL)) {
+                 php_error_docref(NULL TSRMLS_CC, E_WARNING, 
+                         "Failed to register persistent resource");

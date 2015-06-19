@@ -1,0 +1,537 @@
+From a144c07915e82607bbc76791251e8e576e17149e Mon Sep 17 00:00:00 2001
+From: Slava Dubrovskiy <dubrsl@altlinux.ru>
+Date: Thu, 6 Sep 2012 20:18:45 +0300
+Subject: [PATCH 2/2] Fix build with boost 1.51.0
+
+---
+ libs/boost-lib/boost/filesystem/v2/fstream.hpp     | 26 +++++++++++-----------
+ libs/boost-lib/boost/filesystem/v2/operations.hpp  |  2 +-
+ libs/boost-lib/boost/filesystem/v2/path.hpp        | 24 ++++++++++----------
+ libs/boost-lib/boost/filesystem/v3/path.hpp        |  6 ++---
+ libs/boost-lib/libs/filesystem/v2/src/v2_path.cpp  |  4 ++--
+ .../boost/logging/writer/on_dedicated_thread.hpp   |  2 +-
+ .../samples/scenarios/ded_loger_one_filter.cpp     |  2 +-
+ .../samples/scenarios/ts_loger_one_filter.cpp      |  2 +-
+ .../logging/samples/scenarios/your_scenario.cpp    |  2 +-
+ .../tests/test_simple_tss/test_simple_tss.cpp      |  2 +-
+ .../test_ts_resource.cpp                           |  4 ++--
+ .../logging/tests/test_tss/test_tss_objects.cpp    |  2 +-
+ src/mbase/project/table.cpp                        |  2 +-
+ src/mgui/author/script.cpp                         |  2 +-
+ src/mgui/editor/toolbar.cpp                        |  2 +-
+ src/mgui/mux.cpp                                   |  2 +-
+ src/mgui/project/add.cpp                           |  6 ++---
+ src/mgui/project/mconstructor.cpp                  |  2 +-
+ src/mgui/project/serialize.cpp                     |  2 +-
+ src/mgui/win_utils.cpp                             |  2 +-
+ src/mlib/filesystem.cpp                            | 15 ++-----------
+ 21 files changed, 51 insertions(+), 62 deletions(-)
+
+diff --git a/libs/boost-lib/boost/filesystem/v2/fstream.hpp b/libs/boost-lib/boost/filesystem/v2/fstream.hpp
+index bdcd485..101ed30 100644
+--- a/libs/boost-lib/boost/filesystem/v2/fstream.hpp
++++ b/libs/boost-lib/boost/filesystem/v2/fstream.hpp
+@@ -488,27 +488,27 @@ namespace boost
+       std::ios_base::openmode mode )
+     {
+       return std::basic_filebuf<charT,traits>::open(
+-        file_ph.file_string().c_str(), mode ) == 0 ? 0 : this;
++        file_ph.string().c_str(), mode ) == 0 ? 0 : this;
+     }
+ #  endif
+ 
+     template <class charT, class traits>
+     basic_ifstream<charT,traits>::basic_ifstream( const path & file_ph )
+       : std::basic_ifstream<charT,traits>(
+-          file_ph.file_string().c_str(), std::ios_base::in ) {}
++          file_ph.string().c_str(), std::ios_base::in ) {}
+ 
+     template <class charT, class traits>
+     basic_ifstream<charT,traits>::basic_ifstream( const path & file_ph,
+       std::ios_base::openmode mode )
+       : std::basic_ifstream<charT,traits>(
+-          file_ph.file_string().c_str(), mode ) {}
++          file_ph.string().c_str(), mode ) {}
+     
+ #   if !BOOST_WORKAROUND( BOOST_MSVC, <= 1200 ) // VC++ 6.0 can't handle this
+     template <class charT, class traits>
+     void basic_ifstream<charT,traits>::open( const path & file_ph )
+     {
+       std::basic_ifstream<charT,traits>::open(
+-        file_ph.file_string().c_str(), std::ios_base::in );
++        file_ph.string().c_str(), std::ios_base::in );
+     }
+     
+     template <class charT, class traits>
+@@ -516,27 +516,27 @@ namespace boost
+       std::ios_base::openmode mode )
+     {
+       std::basic_ifstream<charT,traits>::open(
+-        file_ph.file_string().c_str(), mode );
++        file_ph.string().c_str(), mode );
+     }
+ #   endif
+ 
+     template <class charT, class traits>
+     basic_ofstream<charT,traits>::basic_ofstream( const path & file_ph )
+       : std::basic_ofstream<charT,traits>(
+-          file_ph.file_string().c_str(), std::ios_base::out ) {}
++          file_ph.string().c_str(), std::ios_base::out ) {}
+ 
+     template <class charT, class traits>
+     basic_ofstream<charT,traits>::basic_ofstream( const path & file_ph,
+       std::ios_base::openmode mode )
+       : std::basic_ofstream<charT,traits>(
+-          file_ph.file_string().c_str(), mode ) {}
++          file_ph.string().c_str(), mode ) {}
+     
+ #   if !BOOST_WORKAROUND( BOOST_MSVC, <= 1200 ) // VC++ 6.0 can't handle this
+     template <class charT, class traits>
+     void basic_ofstream<charT,traits>::open( const path & file_ph )
+     {
+       std::basic_ofstream<charT,traits>::open(
+-        file_ph.file_string().c_str(), std::ios_base::out );
++        file_ph.string().c_str(), std::ios_base::out );
+     }
+     
+     template <class charT, class traits>
+@@ -544,14 +544,14 @@ namespace boost
+       std::ios_base::openmode mode )
+     {
+       std::basic_ofstream<charT,traits>::open(
+-        file_ph.file_string().c_str(), mode );
++        file_ph.string().c_str(), mode );
+     }
+ #   endif
+ 
+     template <class charT, class traits>
+     basic_fstream<charT,traits>::basic_fstream( const path & file_ph )
+       : std::basic_fstream<charT,traits>(
+-          file_ph.file_string().c_str(),
++          file_ph.string().c_str(),
+           std::ios_base::in|std::ios_base::out ) {}
+ 
+ 
+@@ -559,14 +559,14 @@ namespace boost
+     basic_fstream<charT,traits>::basic_fstream( const path & file_ph,
+       std::ios_base::openmode mode )
+       : std::basic_fstream<charT,traits>(
+-          file_ph.file_string().c_str(), mode ) {}
++          file_ph.string().c_str(), mode ) {}
+ 
+ #   if !BOOST_WORKAROUND( BOOST_MSVC, <= 1200 ) // VC++ 6.0 can't handle this
+     template <class charT, class traits>
+     void basic_fstream<charT,traits>::open( const path & file_ph )
+     {
+       std::basic_fstream<charT,traits>::open(
+-        file_ph.file_string().c_str(), std::ios_base::in|std::ios_base::out );
++        file_ph.string().c_str(), std::ios_base::in|std::ios_base::out );
+     }
+ 
+     template <class charT, class traits>
+@@ -574,7 +574,7 @@ namespace boost
+       std::ios_base::openmode mode )
+     {
+       std::basic_fstream<charT,traits>::open(
+-        file_ph.file_string().c_str(), mode );
++        file_ph.string().c_str(), mode );
+     }
+ #   endif
+   } // namespace filesystem2
+diff --git a/libs/boost-lib/boost/filesystem/v2/operations.hpp b/libs/boost-lib/boost/filesystem/v2/operations.hpp
+index 9bd35cd..ad08cc3 100644
+--- a/libs/boost-lib/boost/filesystem/v2/operations.hpp
++++ b/libs/boost-lib/boost/filesystem/v2/operations.hpp
+@@ -1081,7 +1081,7 @@ namespace boost
+       {
+         return path().filename();
+       }
+-      typename Path::string_type leaf() const
++      typename Path::string_type filename().string() const
+       {
+         return path().filename();
+       }
+diff --git a/libs/boost-lib/boost/filesystem/v2/path.hpp b/libs/boost-lib/boost/filesystem/v2/path.hpp
+index d159c37..580b635 100644
+--- a/libs/boost-lib/boost/filesystem/v2/path.hpp
++++ b/libs/boost-lib/boost/filesystem/v2/path.hpp
+@@ -232,11 +232,11 @@ namespace boost
+ 
+       // observers
+       const string_type & string() const         { return m_path; }
+-      const string_type file_string() const;
+-      const string_type directory_string() const { return file_string(); }
++      const string_type string() const;
++      const string_type string() const { return string(); }
+ 
+-      const external_string_type external_file_string() const { return Traits::to_external( *this, file_string() ); }
+-      const external_string_type external_directory_string() const { return Traits::to_external( *this, directory_string() ); }
++      const external_string_type external_file_string() const { return Traits::to_external( *this, string() ); }
++      const external_string_type external_directory_string() const { return Traits::to_external( *this, string() ); }
+ 
+       basic_path   root_path() const;
+       string_type  root_name() const;
+@@ -248,7 +248,7 @@ namespace boost
+       string_type  extension() const;
+ 
+ # ifndef BOOST_FILESYSTEM_NO_DEPRECATED
+-      string_type  leaf() const            { return filename(); }
++      string_type  filename().string() const            { return filename(); }
+       basic_path   branch_path() const     { return parent_path(); }
+       bool         has_leaf() const        { return !m_path.empty(); }
+       bool         has_branch_path() const { return !parent_path().empty(); }
+@@ -309,8 +309,8 @@ namespace boost
+       // are only minor differences between generic and native path grammars.
+       // Private members might be quite different in other implementations,
+       // particularly where there were wide differences between portable and
+-      // native path formats, or between file_string() and
+-      // directory_string() formats, or simply that the implementation
++      // native path formats, or between string() and
++      // string() formats, or simply that the implementation
+       // was willing expend additional memory to achieve greater speed for
+       // some operations at the expense of other operations.
+ 
+@@ -338,8 +338,8 @@ namespace boost
+       basic_path( const string_type & str, name_check ) { operator/=( str ); }
+       basic_path( const typename string_type::value_type * s, name_check )
+         { operator/=( s );}
+-      string_type native_file_string() const { return file_string(); }
+-      string_type native_directory_string() const { return directory_string(); }
++      string_type native_file_string() const { return string(); }
++      string_type native_directory_string() const { return string(); }
+       static bool default_name_check_writable() { return false; } 
+       static void default_name_check( name_check ) {}
+       static name_check default_name_check() { return 0; }
+@@ -647,13 +647,13 @@ namespace boost
+             if ( !path1_arg.empty() )
+             {
+               target += ": \"";
+-              target += path1_arg.file_string();
++              target += path1_arg.string();
+               target += "\"";
+             }
+             if ( !path2_arg.empty() )
+             {
+               target += ", \"";
+-              target += path2_arg.file_string();
++              target += path2_arg.string();
+               target += "\"";
+             }
+           }
+@@ -1294,7 +1294,7 @@ namespace boost
+ 
+     template<class String, class Traits>
+     const String
+-    basic_path<String, Traits>::file_string() const
++    basic_path<String, Traits>::string() const
+     {
+ #   ifdef BOOST_WINDOWS_PATH
+       // for Windows, use the alternate separator, and bypass extra 
+diff --git a/libs/boost-lib/boost/filesystem/v3/path.hpp b/libs/boost-lib/boost/filesystem/v3/path.hpp
+index 0caa19f..fe3c975 100644
+--- a/libs/boost-lib/boost/filesystem/v3/path.hpp
++++ b/libs/boost-lib/boost/filesystem/v3/path.hpp
+@@ -389,7 +389,7 @@ namespace filesystem3
+     //  recently deprecated functions supplied by default
+     path&  normalize()              { return m_normalize(); }
+     path&  remove_leaf()            { return remove_filename(); }
+-    path   leaf() const             { return filename(); }
++    path   filename().string() const             { return filename(); }
+     path   branch_path() const      { return parent_path(); }
+     bool   has_leaf() const         { return !m_pathname.empty(); }
+     bool   has_branch_path() const  { return !parent_path().empty(); }
+@@ -399,8 +399,8 @@ namespace filesystem3
+ # if defined(BOOST_FILESYSTEM_DEPRECATED)
+     //  deprecated functions with enough signature or semantic changes that they are
+     //  not supplied by default 
+-    const std::string file_string() const               { return string(); }
+-    const std::string directory_string() const          { return string(); }
++    const std::string string() const               { return string(); }
++    const std::string string() const          { return string(); }
+     const std::string native_file_string() const        { return string(); }
+     const std::string native_directory_string() const   { return string(); }
+     const string_type external_file_string() const      { return native(); }
+diff --git a/libs/boost-lib/libs/filesystem/v2/src/v2_path.cpp b/libs/boost-lib/libs/filesystem/v2/src/v2_path.cpp
+index 7adeaff..4fc0343 100644
+--- a/libs/boost-lib/libs/filesystem/v2/src/v2_path.cpp
++++ b/libs/boost-lib/libs/filesystem/v2/src/v2_path.cpp
+@@ -107,13 +107,13 @@ namespace boost
+     //        if ( !path1.empty() )
+     //        {
+     //          target += ": \"";
+-    //          target += path1.file_string();
++    //          target += path1.string();
+     //          target += "\"";
+     //        }
+     //        if ( !path2.empty() )
+     //        {
+     //          target += ", \"";
+-    //          target += path2.file_string();
++    //          target += path2.string();
+     //          target += "\"";
+     //        }
+     //      }
+diff --git a/libs/boost-logging/boost/logging/writer/on_dedicated_thread.hpp b/libs/boost-logging/boost/logging/writer/on_dedicated_thread.hpp
+index 7b0aa71..a4a6f28 100644
+--- a/libs/boost-logging/boost/logging/writer/on_dedicated_thread.hpp
++++ b/libs/boost-logging/boost/logging/writer/on_dedicated_thread.hpp
+@@ -166,7 +166,7 @@ private:
+             }
+ 
+             boost::xtime to_wait;
+-            xtime_get(&to_wait, boost::TIME_UTC);
++            xtime_get(&to_wait, boost::TIME_UTC_);
+             to_wait.sec += sleep_ms / 1000;
+             to_wait.nsec += (sleep_ms % 1000) * (NANOSECONDS_PER_SECOND / 1000);
+             to_wait.sec += to_wait.nsec / NANOSECONDS_PER_SECOND ;
+diff --git a/libs/boost-logging/lib/logging/samples/scenarios/ded_loger_one_filter.cpp b/libs/boost-logging/lib/logging/samples/scenarios/ded_loger_one_filter.cpp
+index 1d934da..d45beb4 100644
+--- a/libs/boost-logging/lib/logging/samples/scenarios/ded_loger_one_filter.cpp
++++ b/libs/boost-logging/lib/logging/samples/scenarios/ded_loger_one_filter.cpp
+@@ -103,7 +103,7 @@ BOOST_DEFINE_LOG(g_l, log_type)
+ void do_sleep(int ms) {
+     using namespace boost;
+     xtime next;
+-    xtime_get( &next, TIME_UTC);
++    xtime_get( &next, TIME_UTC_);
+     next.nsec += (ms % 1000) * 1000000;
+ 
+     int nano_per_sec = 1000000000;
+diff --git a/libs/boost-logging/lib/logging/samples/scenarios/ts_loger_one_filter.cpp b/libs/boost-logging/lib/logging/samples/scenarios/ts_loger_one_filter.cpp
+index 9746319..4b9f845 100644
+--- a/libs/boost-logging/lib/logging/samples/scenarios/ts_loger_one_filter.cpp
++++ b/libs/boost-logging/lib/logging/samples/scenarios/ts_loger_one_filter.cpp
+@@ -95,7 +95,7 @@ BOOST_DEFINE_LOG(g_l, log_type)
+ void do_sleep(int ms) {
+     using namespace boost;
+     xtime next;
+-    xtime_get( &next, TIME_UTC);
++    xtime_get( &next, TIME_UTC_);
+     next.nsec += (ms % 1000) * 1000000;
+ 
+     int nano_per_sec = 1000000000;
+diff --git a/libs/boost-logging/lib/logging/samples/scenarios/your_scenario.cpp b/libs/boost-logging/lib/logging/samples/scenarios/your_scenario.cpp
+index d447f24..f5ad955 100644
+--- a/libs/boost-logging/lib/logging/samples/scenarios/your_scenario.cpp
++++ b/libs/boost-logging/lib/logging/samples/scenarios/your_scenario.cpp
+@@ -124,7 +124,7 @@ BOOST_DEFINE_LOG(g_log_dbg, finder::logger )
+ void do_sleep(int ms) {
+     using namespace boost;
+     xtime next;
+-    xtime_get( &next, TIME_UTC);
++    xtime_get( &next, TIME_UTC_);
+     next.nsec += (ms % 1000) * 1000000;
+ 
+     int nano_per_sec = 1000000000;
+diff --git a/libs/boost-logging/lib/logging/tests/test_simple_tss/test_simple_tss.cpp b/libs/boost-logging/lib/logging/tests/test_simple_tss/test_simple_tss.cpp
+index 627618e..205d07a 100644
+--- a/libs/boost-logging/lib/logging/tests/test_simple_tss/test_simple_tss.cpp
++++ b/libs/boost-logging/lib/logging/tests/test_simple_tss/test_simple_tss.cpp
+@@ -75,7 +75,7 @@ using namespace logging;
+ 
+ void do_sleep(int ms) {
+     xtime next;
+-    xtime_get( &next, TIME_UTC);
++    xtime_get( &next, TIME_UTC_);
+     next.nsec += (ms % 1000) * 1000000;
+ 
+     int nano_per_sec = 1000000000;
+diff --git a/libs/boost-logging/lib/logging/tests/test_ts_resouce_with_cache/test_ts_resource.cpp b/libs/boost-logging/lib/logging/tests/test_ts_resouce_with_cache/test_ts_resource.cpp
+index 0bee896..2217c12 100644
+--- a/libs/boost-logging/lib/logging/tests/test_ts_resouce_with_cache/test_ts_resource.cpp
++++ b/libs/boost-logging/lib/logging/tests/test_ts_resouce_with_cache/test_ts_resource.cpp
+@@ -167,7 +167,7 @@ void test_resource(int idx) {
+ 
+ void do_sleep(int ms) {
+     xtime next;
+-    xtime_get( &next, TIME_UTC);
++    xtime_get( &next, TIME_UTC_);
+     next.nsec += (ms % 1000) * 1000000;
+ 
+     int nano_per_sec = 1000000000;
+@@ -262,7 +262,7 @@ int g_run_period_secs = 200;
+ 
+ int main()
+ {
+-    xtime_get( &g_start, TIME_UTC);
++    xtime_get( &g_start, TIME_UTC_);
+ 
+     for ( int i = 0; i < g_update_thread_count; ++i)
+         thread t(&update_thread);
+diff --git a/libs/boost-logging/lib/logging/tests/test_tss/test_tss_objects.cpp b/libs/boost-logging/lib/logging/tests/test_tss/test_tss_objects.cpp
+index b8e1ba6..14c8281 100644
+--- a/libs/boost-logging/lib/logging/tests/test_tss/test_tss_objects.cpp
++++ b/libs/boost-logging/lib/logging/tests/test_tss/test_tss_objects.cpp
+@@ -98,7 +98,7 @@ private:
+ 
+ void do_sleep(int ms) {
+     xtime next;
+-    xtime_get( &next, TIME_UTC);
++    xtime_get( &next, TIME_UTC_);
+     next.nsec += (ms % 1000) * 1000000;
+ 
+     int nano_per_sec = 1000000000;
+diff --git a/src/mbase/project/table.cpp b/src/mbase/project/table.cpp
+index 33ee15a..feb851a 100644
+--- a/src/mbase/project/table.cpp
++++ b/src/mbase/project/table.cpp
+@@ -427,7 +427,7 @@ void GetThemeList(Str::List& t_lst)
+         {
+             for( fs::directory_iterator itr(dir), end; itr != end; ++itr )
+                 if( IsFrameDir(*itr) )
+-                    t_lst.push_back(itr->leaf());
++                    t_lst.push_back(itr->path().filename().string());
+         }
+     }
+ 
+diff --git a/src/mgui/author/script.cpp b/src/mgui/author/script.cpp
+index aa2b494..0c34a08 100644
+--- a/src/mgui/author/script.cpp
++++ b/src/mgui/author/script.cpp
+@@ -370,7 +370,7 @@ static std::string SrcFilename(VideoItem vi)
+ static std::string PrefixCnvPath(VideoItem vi, const std::string& out_dir)
+ {
+     std::string dst_fname = boost::format("%1%.%2%") % GetAuthorNumber(vi) 
+-        % fs::path(SrcFilename(vi)).leaf() % bf::stop;
++        % fs::path(SrcFilename(vi)).filename().string() % bf::stop;
+     return AppendPath(out_dir, dst_fname);
+ }
+ 
+diff --git a/src/mgui/editor/toolbar.cpp b/src/mgui/editor/toolbar.cpp
+index e549490..c6f15b3 100644
+--- a/src/mgui/editor/toolbar.cpp
++++ b/src/mgui/editor/toolbar.cpp
+@@ -287,7 +287,7 @@ Toolbar::Toolbar(): selTool(MakeSelectionToolImage()), txtTool(MakeTextToolLabel
+     	    if( fs::is_directory(dir) )
+     	    {    
+     		boost_foreach( const fs::path& pth, dir_range(dir) )
+-    		    o_lst.push_back(pth.filename());
++    		    o_lst.push_back(pth.filename().string());
+     	    }
+     	}
+     	std::sort(o_lst.begin(), o_lst.end(), &ByExtName);
+diff --git a/src/mgui/mux.cpp b/src/mgui/mux.cpp
+index 4b4a5fa..0864bc2 100644
+--- a/src/mgui/mux.cpp
++++ b/src/mgui/mux.cpp
+@@ -72,7 +72,7 @@ void SetDialogStrict(Gtk::Dialog& dlg, int min_wdh, int min_hgt, bool set_resiza
+ 
+ static bool RunMuxing(const std::string& dest_path, const std::string& args)
+ {
+-    Gtk::Dialog dlg(BF_("Muxing \"%1%\"") % fs::path(dest_path).leaf() % bf::stop);
++    Gtk::Dialog dlg(BF_("Muxing \"%1%\"") % fs::path(dest_path).filename().string() % bf::stop);
+     SetDialogStrict(dlg, 400, -1);
+ 
+     Gtk::TextView& txt_view = NewManaged<Gtk::TextView>();
+diff --git a/src/mgui/project/add.cpp b/src/mgui/project/add.cpp
+index db4df17..0425a9b 100644
+--- a/src/mgui/project/add.cpp
++++ b/src/mgui/project/add.cpp
+@@ -420,7 +420,7 @@ void TryAddMediaQuiet(const std::string& fname, const std::string& desc)
+ static std::string StandFNameOut(const fs::path& pth)
+ {
+     return "<span style=\"italic\" underline=\"low\">" + 
+-                    pth.leaf() + "</span>";
++                    pth.filename().string() + "</span>";
+ }
+ 
+ #if GTK_CHECK_VERSION(2,18,0)
+@@ -454,7 +454,7 @@ StorageItem CheckExists(const fs::path& pth, RefPtr<MediaStore> ms)
+ 
+ void OneMediaError(const fs::path& err_pth, const std::string& desc)
+ {
+-    AddMediaError(BF_("Can't add file \"%1%\".") % err_pth.leaf() % bf::stop, desc);
++    AddMediaError(BF_("Can't add file \"%1%\".") % err_pth.filename().string() % bf::stop, desc);
+ }
+ 
+ void TryAddMedias(const Str::List& paths, MediaBrowser& brw,
+@@ -465,7 +465,7 @@ void TryAddMedias(const Str::List& paths, MediaBrowser& brw,
+     {
+         const std::string fname = paths[0];
+         fs::path pth(fname); 
+-        std::string leaf = pth.leaf();
++        std::string leaf = pth.filename().string();
+         {
+             static re::pattern dvd_video_vob("(VIDEO_TS|VTS_[0-9][0-9]_[0-9]).VOB", 
+                                               re::pattern::perl|re::pattern::icase);
+diff --git a/src/mgui/project/mconstructor.cpp b/src/mgui/project/mconstructor.cpp
+index 12e2f49..7ad2546 100644
+--- a/src/mgui/project/mconstructor.cpp
++++ b/src/mgui/project/mconstructor.cpp
+@@ -961,7 +961,7 @@ void RunConstructor(const std::string& prj_file_name, bool ask_save_on_exit)
+         static const fs::directory_iterator end_itr;
+         for( fs::directory_iterator itr(DataDirPath("bmd-icons"));
+             itr != end_itr; ++itr )
+-            pix_lst.push_back(Gdk::Pixbuf::create_from_file(itr->string()));
++            pix_lst.push_back(Gdk::Pixbuf::create_from_file(itr->path().string()));
+         Gtk::Window::set_default_icon_list(pix_lst);
+     
+         ActionFunctor after_fnr = BuildConstructor(app, prj_file_name);
+diff --git a/src/mgui/project/serialize.cpp b/src/mgui/project/serialize.cpp
+index 12b3c3a..2340b0b 100644
+--- a/src/mgui/project/serialize.cpp
++++ b/src/mgui/project/serialize.cpp
+@@ -71,7 +71,7 @@ static std::string MakeProjectTitle(bool with_path_breakdown = false)
+         return "untitled.bmd";
+ 
+     fs::path full_path(db.GetProjectFName());
+-    std::string res_str = full_path.leaf();
++    std::string res_str = full_path.filename().string();
+     if( with_path_breakdown )
+         res_str += " (" + full_path.branch_path().string() + ")";
+     return res_str;
+diff --git a/src/mgui/win_utils.cpp b/src/mgui/win_utils.cpp
+index 28ad9dd..175e241 100644
+--- a/src/mgui/win_utils.cpp
++++ b/src/mgui/win_utils.cpp
+@@ -418,7 +418,7 @@ bool CheckKeepOrigin(const std::string& fname)
+     bool res = false;
+     if( fs::exists(fname) && 
+         (Gtk::RESPONSE_OK != MessageBox(BF_("A file named \"%1%\" already exists. Do you want to replace it?")
+-                                        % fs::path(fname).leaf() % bf::stop,
++                                        % fs::path(fname).filename().string() % bf::stop,
+                                         Gtk::MESSAGE_QUESTION, Gtk::BUTTONS_OK_CANCEL, 
+                                         _("Replacing the file overwrite its contents."),
+                                         true)) )
+diff --git a/src/mlib/filesystem.cpp b/src/mlib/filesystem.cpp
+index bb84860..5d4f39c 100644
+--- a/src/mlib/filesystem.cpp
++++ b/src/mlib/filesystem.cpp
+@@ -47,7 +47,7 @@ const char* FindExtDot(const char* name)
+ 
+ std::string get_basename(const fs::path& pth)
+ {
+-    std::string name_s = pth.leaf();
++    std::string name_s = pth.filename().string();
+     const char* name = name_s.c_str();
+ 
+     //if( const char* dot = strstr(name, ".") )
+@@ -58,24 +58,13 @@ std::string get_basename(const fs::path& pth)
+ 
+ std::string get_extension(const fs::path& pth)
+ {
+-    std::string name_s = pth.leaf();
++    std::string name_s = pth.filename().string();
+ 
+     if( const char* dot = FindExtDot(name_s.c_str()) )
+         return std::string(dot+1);
+     return std::string();
+ }
+ 
+-// глобальная установка проверки имен файлов
+-class tune_boost_filesystem
+-{
+-    public:
+-    tune_boost_filesystem()
+-    {
+-        // чтоб любые символы в именах файлов позволялись, для utf8
+-        fs::path::default_name_check(fs::native);
+-    }
+-} tune_boost_filesystem_obj;
+-
+ namespace Project
+ {
+ 
+-- 
+1.7.11.7
+

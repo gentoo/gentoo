@@ -1,0 +1,43 @@
+# ChangeLog for dev-ruby/launchy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/launchy/ChangeLog,v 1.9 2015/04/13 18:26:46 graaff Exp $
+
+  13 Apr 2015; Hans de Graaff <graaff@gentoo.org> launchy-2.4.3.ebuild:
+  Add blocker on x11-misc/launchy to avoid file collisions, bug 545170.
+
+  13 Apr 2015; Hans de Graaff <graaff@gentoo.org> -launchy-2.3.0-r1.ebuild,
+  -launchy-2.4.2.ebuild:
+  Cleanup.
+
+  11 Apr 2015; Hans de Graaff <graaff@gentoo.org> launchy-2.4.3.ebuild:
+  Add ruby22.
+
+  11 Mar 2015; Agostino Sarubbo <ago@gentoo.org> launchy-2.4.3.ebuild:
+  Add ~x86, wrt bug #510614
+
+*launchy-2.4.3 (03 Nov 2014)
+
+  03 Nov 2014; Manuel Rüger <mrueg@gentoo.org> +launchy-2.4.3.ebuild:
+  Version bump.
+
+*launchy-2.4.2 (29 Sep 2014)
+
+  29 Sep 2014; Hans de Graaff <graaff@gentoo.org> +launchy-2.4.2.ebuild,
+  +files/launchy-2.4.2-drop-failing-test.patch:
+  Version bump.
+
+  05 Jun 2014; Hans de Graaff <graaff@gentoo.org> launchy-2.3.0-r1.ebuild:
+  Add ruby21.
+
+*launchy-2.3.0-r1 (11 Nov 2013)
+
+  11 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +launchy-2.3.0-r1.ebuild,
+  -launchy-2.3.0.ebuild:
+  Add ruby20 target. Cleanup old. Drop simplecov dependency.
+
+*launchy-2.3.0 (02 Aug 2013)
+
+  02 Aug 2013; Manuel Rüger <mrueg@gentoo.org>
+  +files/launchy-2.3.0-drop-failing-test.patch, +launchy-2.3.0.ebuild,
+  +metadata.xml:
+  Initial version, taken from ruby-overlay

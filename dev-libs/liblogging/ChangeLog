@@ -1,0 +1,32 @@
+# ChangeLog for dev-libs/liblogging
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/liblogging/ChangeLog,v 1.7 2015/01/19 12:09:25 ultrabug Exp $
+
+*liblogging-1.0.5 (19 Jan 2015)
+
+  19 Jan 2015; Ultrabug <ultrabug@gentoo.org> +liblogging-1.0.5.ebuild:
+  version bump fix #536772 thx to Thomas D.
+
+  05 Oct 2014; Agostino Sarubbo <ago@gentoo.org> liblogging-1.0.4.ebuild:
+  Stable for x86, wrt bug #524290
+
+  05 Oct 2014; Agostino Sarubbo <ago@gentoo.org> liblogging-1.0.4.ebuild:
+  Stable for amd64, wrt bug #524290
+
+  01 Oct 2014; Jeroen Roovers <jer@gentoo.org> liblogging-1.0.4.ebuild:
+  Stable for HPPA (bug #524058).
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> liblogging-1.0.2.ebuild,
+  liblogging-1.0.4.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*liblogging-1.0.4 (04 May 2014)
+
+  04 May 2014; Ultrabug <ultrabug@gentoo.org> +liblogging-1.0.4.ebuild:
+  version bump fix #508224 thx to clabbe.montjoie and Thomas D.
+
+*liblogging-1.0.2 (10 Mar 2014)
+
+  10 Mar 2014; Ultrabug <ultrabug@gentoo.org> +liblogging-1.0.2.ebuild,
+  +metadata.xml:
+  initial ebuild wrt #501976 thanks to Thomas D.

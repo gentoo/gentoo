@@ -1,0 +1,37 @@
+# ChangeLog for dev-java/jlayer
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jlayer/ChangeLog,v 1.9 2010/05/24 15:05:23 caster Exp $
+
+  24 May 2010; Vlastimil Babka <caster@gentoo.org> -jlayer-1.0.ebuild:
+  Remove old.
+
+  22 May 2010; Kenneth Prugh <ken69267@gentoo.org> jlayer-1.0.1.ebuild:
+  amd64 stable, bug #309227
+
+  21 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> jlayer-1.0.1.ebuild:
+  x86 stable wrt bug #309227
+
+  01 Mar 2010; Alistair Bush <ali_bush@gentoo.org> jlayer-1.0.1.ebuild:
+  Fixed javadoc generation.
+
+*jlayer-1.0.1 (13 Feb 2010)
+
+  13 Feb 2010; Serkan Kaba <serkan@gentoo.org> jlayer-1.0.ebuild,
+  +jlayer-1.0.1.ebuild:
+  Version bump.
+
+  10 Jun 2008; Kenneth Prugh <ken69267@gentoo.org> jlayer-1.0.ebuild:
+  amd64 stable, bug #220191
+
+  09 May 2008; Christian Faulhammer <opfer@gentoo.org> jlayer-1.0.ebuild:
+  stable x86, bug 220191
+
+  19 Mar 2008; Vlastimil Babka <caster@gentoo.org> jlayer-1.0.ebuild:
+  Add ~amd64.
+
+*jlayer-1.0 (08 May 2007)
+
+  08 May 2007; Petteri Räty <betelgeuse@gentoo.org> +metadata.xml,
+  +jlayer-1.0.ebuild:
+  Initial addition. Ebuild written by me.
+

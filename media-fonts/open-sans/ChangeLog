@@ -1,0 +1,12 @@
+# ChangeLog for media-fonts/open-sans
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/open-sans/ChangeLog,v 1.2 2015/04/28 10:01:38 yngwin Exp $
+
+  28 Apr 2015; Ben de Groot <yngwin@gentoo.org> open-sans-1.ebuild:
+  stable
+
+*open-sans-1 (29 Mar 2015)
+
+  29 Mar 2015; Ben de Groot <yngwin@gentoo.org> +metadata.xml,
+  +open-sans-1.ebuild:
+  Initial commit from bug #542332

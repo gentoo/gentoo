@@ -1,0 +1,28 @@
+From e7cc50705bed20e160bd4b637b23f57270f580a8 Mon Sep 17 00:00:00 2001
+From: Daniel Stoeckel <dstoeckel@bioinf.uni-sb.de>
+Date: Sat, 6 Apr 2013 01:06:55 +0200
+Subject: [PATCH] PDBFile:Fix compilation with gcc 4.8
+
+Apparently the automatic conversion from boost::shared_ptr<CrystalInfo>
+to boost::shared_ptr<PersistentObject> is no longer supported.
+Just change the type of the pointer and work around this issue.
+---
+ source/FORMAT/PDBFileDetails.C | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/source/FORMAT/PDBFileDetails.C b/source/FORMAT/PDBFileDetails.C
+index 97c2572..aedc5db 100644
+--- a/source/FORMAT/PDBFileDetails.C
++++ b/source/FORMAT/PDBFileDetails.C
+@@ -901,7 +901,7 @@ namespace BALL
+ 	{
+ 		if (!(current_protein_->hasProperty("CRYSTALINFO")))
+ 		{
+-			boost::shared_ptr<CrystalInfo> temp_ptr(new CrystalInfo());
++			boost::shared_ptr<PersistentObject> temp_ptr(new CrystalInfo());
+ 			current_protein_->setProperty(NamedProperty("CRYSTALINFO", temp_ptr));
+ 		}
+ 
+-- 
+1.9.1
+

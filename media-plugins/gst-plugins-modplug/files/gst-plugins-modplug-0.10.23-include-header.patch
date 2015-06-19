@@ -1,0 +1,29 @@
+From fd4cb22ae42b146e327b12aa0507b59520ba1db2 Mon Sep 17 00:00:00 2001
+From: Iain Lane <iain.lane@canonical.com>
+Date: Tue, 10 Sep 2013 08:48:32 +0000
+Subject: [PATCH] modplug: Specify directory when including stdafx.h
+
+modplug stopped exposing their directory in their pcfile, meaining
+consumers accessing the headers directly fail to build.
+
+http://sourceforge.net/p/modplug-xmms/git/ci/75e9b166982ed637b59ef7cbc1835a09f768923e/
+---
+ ext/modplug/gstmodplug.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ext/modplug/gstmodplug.cc b/ext/modplug/gstmodplug.cc
+index 47154cf..a968c4a 100644
+--- a/ext/modplug/gstmodplug.cc
++++ b/ext/modplug/gstmodplug.cc
+@@ -54,7 +54,7 @@
+ #define WORDS_BIGENDIAN 0
+ #endif
+ 
+-#include <stdafx.h>
++#include <libmodplug/stdafx.h>
+ #include <libmodplug/sndfile.h>
+ 
+ #include "gstmodplug.h"
+-- 
+1.8.5.3
+

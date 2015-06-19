@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
+DEPEND=>=dev-libs/glib-2.39.90:2 >=x11-libs/gtk+-3.13.4:3[introspection?] >=gnome-base/gnome-desktop-2.91.6:3= >=media-libs/libcanberra-0.26[gtk3] >=media-libs/clutter-1.13.2:1.0[introspection?] >=media-libs/clutter-gtk-0.91.8:1.0 >=media-libs/clutter-gst-2.0.6:2.0 media-libs/cogl:1.0=[introspection?] media-video/gnome-video-effects x11-libs/gdk-pixbuf:2[jpeg,introspection?] x11-libs/libX11 x11-libs/libXtst media-libs/gstreamer:1.0[introspection?] media-libs/gst-plugins-base:1.0[introspection?,ogg,pango,theora,vorbis,X] virtual/libgudev:= introspection? ( >=dev-libs/gobject-introspection-0.6.7 ) || ( dev-lang/vala:0.28 dev-lang/vala:0.26 ) app-text/docbook-xml-dtd:4.3 app-text/yelp-tools dev-libs/appstream-glib dev-libs/libxml2:2 dev-util/gdbus-codegen >=dev-util/gtk-doc-am-1.14 >=dev-util/intltool-0.50 virtual/pkgconfig x11-proto/xf86vidmodeproto test? ( dev-libs/glib:2[utils] ) app-arch/xz-utils >=sys-apps/sed-4 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=A cheesy program to take pictures and videos from your webcam
+EAPI=5
+HOMEPAGE=https://wiki.gnome.org/Apps/Cheese
+IUSE=+introspection test test
+KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2+
+RDEPEND=>=dev-libs/glib-2.39.90:2 >=x11-libs/gtk+-3.13.4:3[introspection?] >=gnome-base/gnome-desktop-2.91.6:3= >=media-libs/libcanberra-0.26[gtk3] >=media-libs/clutter-1.13.2:1.0[introspection?] >=media-libs/clutter-gtk-0.91.8:1.0 >=media-libs/clutter-gst-2.0.6:2.0 media-libs/cogl:1.0=[introspection?] media-video/gnome-video-effects x11-libs/gdk-pixbuf:2[jpeg,introspection?] x11-libs/libX11 x11-libs/libXtst media-libs/gstreamer:1.0[introspection?] media-libs/gst-plugins-base:1.0[introspection?,ogg,pango,theora,vorbis,X] virtual/libgudev:= introspection? ( >=dev-libs/gobject-introspection-0.6.7 ) media-libs/gst-plugins-bad:1.0 media-libs/gst-plugins-good:1.0 media-plugins/gst-plugins-jpeg:1.0 media-plugins/gst-plugins-v4l2:1.0 media-plugins/gst-plugins-vpx:1.0
+SLOT=0/7
+SRC_URI=mirror://gnome/sources/cheese/3.16/cheese-3.16.1.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vala	09bc7da1a93142c9eb90786e6f6b39d2	versionator	cd0bcdb170807e4a1984115e9d53a26f	virtualx	73cfc129b4b9ba23aed1abb10c825d86
+_md5_=b718238ebcb60978c90b1f0bf6be7b21

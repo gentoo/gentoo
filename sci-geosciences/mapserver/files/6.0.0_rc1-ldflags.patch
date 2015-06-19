@@ -1,0 +1,89 @@
+diff -urN mapserver-6.0.0-rc1.old/Makefile.in mapserver-6.0.0-rc1/Makefile.in
+--- mapserver-6.0.0-rc1.old/Makefile.in	2011-05-02 12:10:03.000000000 +0200
++++ mapserver-6.0.0-rc1/Makefile.in	2011-05-02 16:29:31.000000000 +0200
+@@ -264,7 +264,7 @@
+ # STATIC_LIBS is full filename with path of libs that will be statically linked
+ STATIC_LIBS= $(GD_STATIC)
+ 
+-EXE_LDFLAGS =	$(RUNPATHS) -L. -lmapserver $(SUP_LIBS) $(STATIC_LIBS)
++EXE_LIBS =	$(RUNPATHS) -L. -lmapserver $(SUP_LIBS) $(STATIC_LIBS)
+ 
+ RM= /bin/rm -f
+ 
+@@ -351,59 +351,59 @@
+ 	&& ln -f -s $(LIBMAP_SH_VER) $(LIBMAP_SHARED)
+ 
+ shp2pdf: $(LIBMAP_STATIC) shp2pdf.o mapserver.h
+-	$(LD) $(CFLAGS) shp2pdf.o $(EXE_LDFLAGS) -o shp2pdf
++	$(LD) $(CFLAGS) shp2pdf.o $(LDFLAGS) -o shp2pdf $(EXE_LIBS)
+ 
+ shp2img: $(LIBMAP_STATIC)  shp2img.o mapserver.h
+-	$(LD) $(CFLAGS) shp2img.o $(EXE_LDFLAGS) -o shp2img
++	$(LD) $(CFLAGS) shp2img.o $(LDFLAGS) -o shp2img $(EXE_LIBS)
+ 
+ sym2img: $(LIBMAP_STATIC)   sym2img.o mapserver.h
+-	$(LD) $(CFLAGS) sym2img.o $(EXE_LDFLAGS) -o sym2img
++	$(LD) $(CFLAGS) sym2img.o $(LDFLAGS) -o sym2img $(EXE_LIBS)
+ 
+ legend: $(LIBMAP_STATIC)  legend.o mapserver.h
+-	$(LD) $(CFLAGS) legend.o $(EXE_LDFLAGS) -o legend
++	$(LD) $(CFLAGS) legend.o $(LDFLAGS) -o legend $(EXE_LIBS)
+ 
+ scalebar: $(LIBMAP_STATIC)  scalebar.o mapserver.h
+-	$(LD) $(CFLAGS) scalebar.o $(EXE_LDFLAGS) -o scalebar
++	$(LD) $(CFLAGS) scalebar.o $(LDFLAGS) -o scalebar $(EXE_LIBS)
+ 
+ mapserv: mapserv.h maptile.h $(LIBMAP_STATIC)  mapserv.o cgiutil.o maptile.o mapserver.h
+-	$(LD) $(CFLAGS) mapserv.o cgiutil.o maptile.o $(EXE_LDFLAGS) -o mapserv
++	$(LD) $(CFLAGS) mapserv.o cgiutil.o maptile.o $(LDFLAGS) -o mapserv $(EXE_LIBS)
+ 
+ shpindex: $(LIBMAP_STATIC) shpindex.o mapserver.h
+-	$(LD) $(CFLAGS) shpindex.o $(EXE_LDFLAGS) -o shpindex
++	$(LD) $(CFLAGS) shpindex.o $(LDFLAGS) -o shpindex $(EXE_LIBS)
+ 
+ shptree: $(LIBMAP_STATIC) shptree.o mapserver.h
+-	$(LD) $(CFLAGS) shptree.o $(EXE_LDFLAGS) -o shptree
++	$(LD) $(CFLAGS) shptree.o $(LDFLAGS) -o shptree $(EXE_LIBS)
+ 
+ shptreevis: $(LIBMAP_STATIC) shptreevis.o mapserver.h
+-	$(LD) $(CFLAGS) shptreevis.o $(EXE_LDFLAGS) -o shptreevis
++	$(LD) $(CFLAGS) shptreevis.o $(LDFLAGS) -o shptreevis $(EXE_LIBS)
+ 
+ shptreetst: $(LIBMAP_STATIC) shptreetst.o mapserver.h
+-	$(LD) $(CFLAGS) shptreetst.o $(EXE_LDFLAGS) -o shptreetst
++	$(LD) $(CFLAGS) shptreetst.o $(LDFLAGS) -o shptreetst $(EXE_LIBS)
+ 
+ sortshp: $(LIBMAP_STATIC) sortshp.o mapserver.h
+-	$(LD) $(CFLAGS) sortshp.o $(EXE_LDFLAGS) -o sortshp
++	$(LD) $(CFLAGS) sortshp.o $(LDFLAGS) -o sortshp $(EXE_LIBS)
+ 
+ tile4ms: $(LIBMAP_STATIC) tile4ms.o mapserver.h
+-	$(LD) $(CFLAGS) tile4ms.o $(EXE_LDFLAGS) -o tile4ms
++	$(LD) $(CFLAGS) tile4ms.o $(LDFLAGS) -o tile4ms $(EXE_LIBS)
+ 
+ msencrypt: $(LIBMAP_STATIC) msencrypt.o mapserver.h
+-	$(LD) $(CFLAGS) msencrypt.o $(EXE_LDFLAGS) -o msencrypt
++	$(LD) $(CFLAGS) msencrypt.o $(LDFLAGS) -o msencrypt $(EXE_LIBS)
+ 
+ testexpr: $(LIBMAP_STATIC) testexpr.o mapparser.o maplexer.o mapserver.h
+-	$(LD) $(CFLAGS) testexpr.o $(EXE_LDFLAGS) -o testexpr
++	$(LD) $(CFLAGS) testexpr.o $(LDFLAGS) -o testexpr $(EXE_LIBS)
+ 
+ testcopy: $(LIBMAP_STATIC) testcopy.o mapcopy.o mapserver.h
+-	$(LD) $(CFLAGS) testcopy.o $(EXE_LDFLAGS) -o testcopy
++	$(LD) $(CFLAGS) testcopy.o $(LDFLAGS) -o testcopy $(EXE_LIBS)
+ 
+ test_mapcrypto: $(LIBMAP_STATIC) mapcrypto.c mapserver.h
+-	$(CC) $(CFLAGS) mapcrypto.c -DTEST_MAPCRYPTO $(EXE_LDFLAGS) -o test_mapcrypto
++	$(CC) $(CFLAGS) mapcrypto.c -DTEST_MAPCRYPTO $(LDFLAGS) -o test_mapcrypto $(EXE_LIBS)
+ 
+ mapscriptvars:	Makefile
+ 	touch mapscriptvars
+ 	pwd > mapscriptvars
+ 	echo $(IGNORE_MISSING_DATA) $(USE_POINT_Z_M) $(STRINGS) @ALL_ENABLED@ >> mapscriptvars
+ 	echo -I. $(PROJ_INC) $(GD_INC) $(TTF_INC) $(JPEG_INC) $(SDE_INC) $(OGR_INC) $(GDAL_INC) $(GEOS_INC) >> mapscriptvars
+-	echo $(EXE_LDFLAGS) >> mapscriptvars
++	echo $(EXE_LIBS) >> mapscriptvars
+ 	echo $(STATIC_LIBS) >> mapscriptvars
+ 	grep '#define MS_VERSION ' mapserver.h >> mapscriptvars
+ 

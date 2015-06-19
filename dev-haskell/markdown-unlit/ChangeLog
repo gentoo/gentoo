@@ -1,0 +1,19 @@
+# ChangeLog for dev-haskell/markdown-unlit
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/markdown-unlit/ChangeLog,v 1.4 2014/07/25 08:59:19 slyfox Exp $
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> markdown-unlit-0.2.0.1.ebuild:
+  Stable for x86, wrt bug #488750
+
+  05 Nov 2013; Tony Vroon <chainsaw@gentoo.org> markdown-unlit-0.2.0.1.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #488750.
+
+*markdown-unlit-0.2.0.1 (20 Jun 2013)
+
+  20 Jun 2013; Alexander Vershilov <qnikst@gentoo.org>
+  +markdown-unlit-0.2.0.1.ebuild, +metadata.xml:
+  add markdown-unlit-0.2.0.1 due to #473858

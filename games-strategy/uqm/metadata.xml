@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>games</herd>
+  <use>
+    <flag name="music">download and install music files (large)</flag>
+    <flag name="remix">download and install music remix files (large)</flag>
+    <flag name="voice">download and install voice files (large)</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">sc2</remote-id>
+  </upstream>
+</pkgmetadata>

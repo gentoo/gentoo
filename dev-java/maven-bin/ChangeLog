@@ -1,0 +1,497 @@
+# ChangeLog for dev-java/maven-bin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/maven-bin/ChangeLog,v 1.92 2015/03/31 18:58:00 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> maven-bin-1.1-r3.ebuild,
+  maven-bin-2.0.11.ebuild, maven-bin-2.0.11-r2.ebuild, maven-bin-2.2.1.ebuild,
+  maven-bin-2.2.1-r2.ebuild, maven-bin-3.0.4-r1.ebuild, maven-bin-3.1.0.ebuild,
+  maven-bin-3.1.0-r1.ebuild, maven-bin-3.1.1.ebuild, maven-bin-3.2.3.ebuild,
+  maven-bin-3.2.5.ebuild:
+  Update dependency after package move of eselect modules to app-eselect.
+
+*maven-bin-3.2.5 (19 Jan 2015)
+
+  19 Jan 2015; Patrice Clement <monsieurp@gentoo.org> +maven-bin-3.2.5.ebuild:
+  Fix bug 534358: version bump to 3.2.5 courtesy of Thanh Ha.
+
+  27 Nov 2014; Patrice Clement <monsieurp@gentoo.org> maven-bin-3.2.3.ebuild:
+  Add guava:14 dependency. Change virtual-jdk to version 1.6.
+
+*maven-bin-3.2.3 (26 Nov 2014)
+
+  26 Nov 2014; Patrice Clement <monsieurp@gentoo.org> +maven-bin-3.2.3.ebuild:
+  Version bump to 3.2.3. See bug #526994.
+
+  10 Mar 2014; Johannes Huber <johu@gentoo.org> maven-bin-3.1.1.ebuild:
+  ~x86 added, bug #491036
+
+*maven-bin-3.1.1 (11 Nov 2013)
+
+  11 Nov 2013; Tom Wijsman <TomWij@gentoo.org> +maven-bin-3.1.1.ebuild:
+  Version bump to 3.1.1, unbundled more dependencies. Fixes bug #490996,
+  reported by Wang Xuerui.
+
+  14 Aug 2013; Tom Wijsman <TomWij@gentoo.org> maven-bin-3.1.0-r1.ebuild:
+  Move commons-logging under a has_version check just like the other two
+  choices. Fixes bug #480700, reported by spyder on IRC as well as Maciej
+  Piechotka on the bug.
+
+*maven-bin-3.1.0-r1 (10 Aug 2013)
+
+  10 Aug 2013; Tom Wijsman <TomWij@gentoo.org> +maven-bin-3.1.0-r1.ebuild:
+  Revision bump, because package.env could possible change. A first step to fix
+  up dependencies for bug #472850, cuts 2 or more optional dependencies; after
+  which we need to deal with bug #477436 as well as unbundle more dependencies
+  where possible. Thanks to wojtek for reporting and researching the situation.
+
+*maven-bin-3.1.0 (19 Jul 2013)
+
+  19 Jul 2013; Tom Wijsman <TomWij@gentoo.org> +maven-bin-3.1.0.ebuild:
+  Version bump to 3.1.0. Fixes bug #472850, reported by Joerg Schaible. Also
+  fixes up some missing dependencies, remaining dependencies are listed in bug
+  #477436.
+
+  22 Dec 2012; Agostino Sarubbo <ago@gentoo.org> maven-bin-1.1-r1.ebuild,
+  maven-bin-1.1-r3.ebuild, maven-bin-2.0.11-r2.ebuild, maven-bin-2.0.11.ebuild,
+  maven-bin-2.2.1-r2.ebuild, maven-bin-2.2.1.ebuild, maven-bin-3.0.4-r1.ebuild:
+  Stable for ppc, wrt bug #446404
+
+  12 Dec 2012; Agostino Sarubbo <ago@gentoo.org> maven-bin-1.1-r3.ebuild,
+  maven-bin-2.0.11-r2.ebuild, maven-bin-2.2.1-r2.ebuild,
+  maven-bin-3.0.4-r1.ebuild:
+  Stable for x86, wrt bug #446404
+
+  12 Dec 2012; Agostino Sarubbo <ago@gentoo.org> maven-bin-1.1-r3.ebuild,
+  maven-bin-2.0.11-r2.ebuild, maven-bin-2.2.1-r2.ebuild,
+  maven-bin-3.0.4-r1.ebuild:
+  Stable for amd64, wrt bug #446404
+
+  07 Dec 2012; Miroslav Šulc <fordfrog@gentoo.org> maven-bin-1.1-r1.ebuild,
+  maven-bin-1.1-r3.ebuild, maven-bin-2.0.11.ebuild, maven-bin-2.0.11-r2.ebuild,
+  maven-bin-2.2.1.ebuild, maven-bin-2.2.1-r2.ebuild, maven-bin-3.0.4-r1.ebuild:
+  fixed SRC_URI according to the change in apache mirrors (bug #446224)
+
+  12 Jun 2012; Ralph Sennhauser <sera@gentoo.org> -maven-bin-1.0.2-r2.ebuild,
+  -maven-bin-1.1-r2.ebuild, -maven-bin-2.0.10.ebuild,
+  -maven-bin-2.0.11-r1.ebuild, -maven-bin-2.1.0.ebuild,
+  -maven-bin-2.1.0-r1.ebuild, -maven-bin-2.2.1-r1.ebuild,
+  -maven-bin-3.0.ebuild, -maven-bin-3.0.2.ebuild, -maven-bin-3.0.3.ebuild,
+  -maven-bin-3.0.3-r1.ebuild, -maven-bin-3.0.4.ebuild:
+  Drop slots 1.0 and 2.1 as no longer offered upstream.
+  Remove old.
+
+*maven-bin-3.0.4-r1 (12 Jun 2012)
+*maven-bin-2.2.1-r2 (12 Jun 2012)
+*maven-bin-2.0.11-r2 (12 Jun 2012)
+*maven-bin-1.1-r3 (12 Jun 2012)
+
+  12 Jun 2012; Ralph Sennhauser <sera@gentoo.org> +maven-bin-1.1-r3.ebuild,
+  +maven-bin-2.0.11-r2.ebuild, +maven-bin-2.2.1-r2.ebuild,
+  +maven-bin-3.0.4-r1.ebuild:
+  Add app-admin/eselect-java as preferred provider of eselect maven.
+
+*maven-bin-3.0.4 (26 Jan 2012)
+
+  26 Jan 2012; Miroslav Šulc <fordfrog@gentoo.org> +maven-bin-3.0.4.ebuild:
+  Version bump
+
+*maven-bin-3.0.3-r1 (14 Dec 2011)
+*maven-bin-2.2.1-r1 (14 Dec 2011)
+*maven-bin-2.1.0-r1 (14 Dec 2011)
+*maven-bin-2.0.11-r1 (14 Dec 2011)
+*maven-bin-1.1-r2 (14 Dec 2011)
+*maven-bin-1.0.2-r2 (14 Dec 2011)
+
+  14 Dec 2011; Ralph Sennhauser <sera@gentoo.org> -maven-bin-1.0.2-r1.ebuild,
+  +maven-bin-1.0.2-r2.ebuild, +maven-bin-1.1-r2.ebuild,
+  +maven-bin-2.0.11-r1.ebuild, +maven-bin-2.1.0-r1.ebuild,
+  +maven-bin-2.2.1-r1.ebuild, +maven-bin-3.0.3-r1.ebuild:
+  EAPI bump, make prefix aware.
+  Fix symlink name in slot 1.0 and 1.1.
+  Call eselect maven update when appropriate. #355507, thanks to Kasun
+  Gajasinghe <kasun.gajasinghe@gmail.com> for providing a series of patches.
+
+  18 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> maven-bin-2.0.11.ebuild,
+  maven-bin-2.1.0.ebuild, maven-bin-2.2.1.ebuild:
+  ppc stable wrt #310331
+
+*maven-bin-3.0.3 (10 Mar 2011)
+
+  10 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org> +maven-bin-3.0.3.ebuild:
+  Version bump
+
+  20 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org> maven-bin-1.1-r1.ebuild:
+  Marking maven 1.1 back stable
+
+*maven-bin-1.0.2-r1 (20 Jan 2011)
+
+  20 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org> -maven-bin-1.0.2.ebuild,
+  +maven-bin-1.0.2-r1.ebuild, -maven-bin-1.1.ebuild, +maven-bin-1.1-r1.ebuild:
+  Fixed slotting issue I caused with adding maven 1.0.2, bug #352211
+
+  19 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org> maven-bin-1.0.2.ebuild:
+  Removed not needed post install message
+
+  19 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org> maven-bin-1.1.ebuild:
+  Marked 1.1 stable again
+
+  19 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org> +maven-bin-1.1.ebuild,
+  -maven-bin-1.1-r1.ebuild:
+  Changed 1.1-r1 back to 1.1
+
+  19 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org> maven-bin-1.1-r1.ebuild:
+  Marked version 1.1 back stable as it was just reslotted from slot 1.0 to slot
+  1.1
+
+*maven-bin-1.1-r1 (19 Jan 2011)
+
+  19 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org> +maven-bin-1.0.2.ebuild,
+  -maven-bin-1.1.ebuild, +maven-bin-1.1-r1.ebuild:
+  Resurrected version 1.0.2, reslotted version 1.1 to slot 1.1, removed version
+  1.1 that was in slot 1.0 and added information about reslotting to 1.0.2
+  ebuild
+
+*maven-bin-3.0.2 (15 Jan 2011)
+
+  15 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org> +maven-bin-3.0.2.ebuild:
+  version bump
+
+  29 Oct 2010; Vlastimil Babka <caster@gentoo.org> -maven-bin-2.0.8.ebuild,
+  -maven-bin-2.0.9.ebuild, -maven-bin-2.0.10-r1.ebuild,
+  maven-bin-2.0.11.ebuild, maven-bin-2.1.0.ebuild, maven-bin-2.2.1.ebuild:
+  Add the configuration to CONFIG_PROTECT, bug #342901.
+
+*maven-bin-3.0 (29 Oct 2010)
+
+  29 Oct 2010; Vlastimil Babka <caster@gentoo.org> +maven-bin-3.0.ebuild:
+  Version bump, thanks to jieryn in java-experimental overlay.
+
+  25 Jun 2010; Christoph Mende <angelos@gentoo.org> maven-bin-2.0.11.ebuild,
+  maven-bin-2.1.0.ebuild, maven-bin-2.2.1.ebuild:
+  Stable on amd64 wrt bug #310331
+
+  26 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  maven-bin-2.0.11.ebuild, maven-bin-2.1.0.ebuild, maven-bin-2.2.1.ebuild:
+  x86 stable wrt bug #310331
+
+*maven-bin-2.0.11 (20 Mar 2010)
+
+  20 Mar 2010; Petteri Räty <betelgeuse@gentoo.org>
+  +maven-bin-2.0.11.ebuild:
+  Version bump. Fixes bug #308961.
+
+  26 Oct 2009; Mounir Lamouri <volkmar@gentoo.org>
+  maven-bin-2.0.10-r1.ebuild, maven-bin-2.1.0.ebuild,
+  maven-bin-2.2.1.ebuild:
+  Re-Keywording for ppc, bug 269616
+
+*maven-bin-2.2.1 (11 Sep 2009)
+
+  11 Sep 2009; Miroslav Šulc <fordfrog@gentoo.org> +maven-bin-2.2.1.ebuild:
+  Version bump. maven-2.2.1 contains jdk 1.5 jar so it needs
+  >=virtual/jdk-1.5
+
+*maven-bin-2.1.0 (12 May 2009)
+*maven-bin-2.0.10-r1 (12 May 2009)
+
+  12 May 2009; Alistair Bush <ali_bush@gentoo.org>
+  +maven-bin-2.0.10-r1.ebuild, +maven-bin-2.1.0.ebuild:
+  Add support for eselect-maven. Required as mvn have made possible
+  incompatiable changes to 2.1.
+
+  27 Apr 2009; Brent Baude <ranger@gentoo.org> maven-bin-2.0.10.ebuild:
+  Marking maven-bin-2.0.10 ppc for bug 265108
+
+  18 Apr 2009; Markus Meier <maekke@gentoo.org> maven-bin-2.0.10:
+  amd64/x86 stable, bug #265018
+
+*maven-bin-2.0.10 (04 Mar 2009)
+
+  04 Mar 2009; Alistair Bush <ali_bush@gentoo.org> +maven-bin-2.0.10.ebuild:
+  Version Bump.
+
+  25 Oct 2008; nixnut <nixnut@gentoo.org> maven-bin-2.0.9.ebuild:
+  Stable on ppc wrt bug 242982
+
+  23 Oct 2008; Markus Meier <maekke@gentoo.org> maven-bin-2.0.9.ebuild:
+  amd64/x86 stable, bug #242982
+
+*maven-bin-2.0.9 (10 Apr 2008)
+
+  10 Apr 2008; Petteri Räty <betelgeuse@gentoo.org>
+  +maven-bin-2.0.9.ebuild:
+  Version bump. Fixes bug #217207.
+
+  06 Apr 2008; Petteri Räty <betelgeuse@gentoo.org>
+  -maven-bin-1.0.2.ebuild, -maven-bin-2.0.7.ebuild:
+  Delete old versions.
+
+  28 Mar 2008; Markus Meier <maekke@gentoo.org> maven-bin-2.0.8.ebuild:
+  amd64 stable, bug #208512
+
+  08 Mar 2008; William L. Thomson Jr. <wltjr@gentoo.org>
+  maven-bin-1.1.ebuild:
+  amd64 stable, bug #212655.
+
+  08 Mar 2008; Markus Meier <maekke@gentoo.org> maven-bin-1.1.ebuild:
+  x86 stable, bug #212655
+
+  08 Mar 2008; Krzysiek Pawlik <nelchael@gentoo.org> maven-bin-1.1.ebuild:
+  Stable on ppc, see bug #212655.
+
+  05 Feb 2008; Petteri Räty <betelgeuse@gentoo.org> maven-bin-1.1.ebuild:
+  Switch to JDK >=1.4 as we have 1.4 bytecode in the installed jars.
+
+*maven-bin-1.1 (05 Feb 2008)
+
+  05 Feb 2008; Petteri Räty <betelgeuse@gentoo.org> +maven-bin-1.1.ebuild:
+  Version bump. Fixes bug #183487.
+
+  02 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  maven-bin-1.0.2.ebuild:
+  quote variable and die message
+
+  02 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  maven-bin-2.0.8.ebuild:
+  x86 stable, bug #208512
+
+  01 Feb 2008; Krzysiek Pawlik <nelchael@gentoo.org> maven-bin-2.0.8.ebuild:
+  Stable on ppc, see bug #208512.
+
+  01 Feb 2008; Petteri Räty <betelgeuse@gentoo.org>
+  -maven-bin-2.0.6.ebuild:
+  Remove old version.
+
+  18 Dec 2007; Krzysiek Pawlik <nelchael@gentoo.org> maven-bin-2.0.8.ebuild:
+  Fix SRC_URI, bug #202678.
+
+  16 Dec 2007; Markus Meier <maekke@gentoo.org> maven-bin-2.0.7.ebuild:
+  x86 stable, bug #202137
+
+  16 Dec 2007; Samuli Suominen <drac@gentoo.org> maven-bin-2.0.7.ebuild:
+  amd64 stable wrt #202137
+
+  13 Dec 2007; Krzysiek Pawlik <nelchael@gentoo.org> maven-bin-2.0.7.ebuild:
+  Stable on ppc, bug #202137.
+
+  13 Dec 2007; Petteri Räty <betelgeuse@gentoo.org> maven-bin-2.0.8.ebuild:
+  Register jar. Fixes bug #168860.
+
+*maven-bin-2.0.8 (13 Dec 2007)
+
+  13 Dec 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +maven-bin-2.0.8.ebuild:
+  Version bump. Fixes bug #201566.
+
+*maven-bin-2.0.7 (06 Jul 2007)
+
+  06 Jul 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +maven-bin-2.0.7.ebuild:
+  Version bump for bug #182777.
+
+  06 May 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -maven-bin-2.0.4.ebuild, -maven-bin-2.0.5.ebuild, maven-bin-2.0.6.ebuild:
+  Stable on amd64, bug #176872. Removed older versions in same slot with same
+  keywords
+
+  06 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  maven-bin-2.0.6.ebuild:
+  ppc stable
+
+  03 May 2007; Raúl Porcel <armin76@gentoo.org> maven-bin-2.0.6.ebuild:
+  x86 stable wrt bug 176872
+
+  12 Apr 2007; <welp@gentoo.org> maven-bin-2.0.5.ebuild:
+  Stable on amd64 wrt bug 173251
+
+  06 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  maven-bin-2.0.5.ebuild:
+  ppc stable, bug #173251
+
+  06 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  maven-bin-2.0.5.ebuild:
+  stable x86, bug 173251
+
+*maven-bin-2.0.6 (03 Apr 2007)
+
+  03 Apr 2007; Joshua Nichols <nichoj@gentoo.org> +maven-bin-2.0.6.ebuild:
+  Version bump, see bug #173094.
+
+*maven-bin-2.0.5 (15 Feb 2007)
+
+  15 Feb 2007; Joshua Nichols <nichoj@gentoo.org> +maven-bin-2.0.5.ebuild:
+  Version bump.
+
+  11 Feb 2007; Vlastimil Babka <caster@gentoo.org> -files/25maven,
+  -files/maven-bin-1.0-script.patch, -maven-bin-1.0_rc3.ebuild,
+  -maven-bin-2.0.2.ebuild:
+  Cleanup.
+
+  10 Feb 2007; nixnut <nixnut@gentoo.org> maven-bin-1.0.2.ebuild:
+  Stable on ppc wrt bug 163984
+
+  03 Feb 2007; Steve Dibb <beandog@gentoo.org> maven-bin-1.0.2.ebuild,
+  maven-bin-2.0.4.ebuild:
+  amd64 stable, bug 163984
+
+  02 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  maven-bin-1.0.2.ebuild, maven-bin-2.0.4.ebuild:
+  stable x86; bug #163984
+
+*maven-bin-2.0.4 (01 Jul 2006)
+
+  01 Jul 2006; Joshua Nichols <nichoj@gentoo.org> +maven-bin-2.0.4.ebuild:
+  Version bump (bug #127952), and removing use of Java eclasses, since they
+  aren't needed / used.
+
+  29 May 2006; Simon Stelling <blubb@gentoo.org> maven-bin-2.0.2.ebuild:
+  stable on amd64
+
+  25 May 2006; Michael Hanselmann <hansmi@gentoo.org>
+  maven-bin-2.0.2.ebuild:
+  Stable on ppc.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-maven-bin-1.0_rc3, files/digest-maven-bin-1.0.2,
+  files/digest-maven-bin-2.0.2, Manifest:
+  Fixing SHA256 digest, pass four
+
+  15 Apr 2006; Mark Loeser <halcy0n@gentoo.org> maven-bin-2.0.2.ebuild:
+  Stable on x86; bug #129082
+
+  07 Apr 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  maven-bin-2.0.2.ebuild:
+  mark ~ppc (Bug #129083)
+
+  12 Mar 2006; <nichoj@gentoo.org> -maven-bin-1.0_rc4.ebuild,
+  -maven-bin-1.0.ebuild, -maven-bin-2.0.1-r1.ebuild:
+  Pruned older versions with same keywords.
+
+*maven-bin-1.0.2 (19 Jan 2006)
+
+  19 Jan 2006; Joshua Nichols <nichoj@gentoo.org> +files/maven,
+  +maven-bin-1.0.2.ebuild:
+  Version bump.
+
+*maven-bin-2.0.2 (19 Jan 2006)
+
+  19 Jan 2006; Joshua Nichols <nichoj@gentoo.org> +maven-bin-2.0.2.ebuild:
+  Version bump.
+
+*maven-bin-2.0.1-r1 (06 Jan 2006)
+
+  06 Jan 2006; Joshua Nichols <nichoj@gentoo.org> -maven-bin-2.0.ebuild,
+  -maven-bin-2.0.1.ebuild, +maven-bin-2.0.1-r1.ebuild:
+  Version bump to fix bug #117902. Removed old ebuilds with same keywords.
+
+*maven-bin-2.0.1 (16 Dec 2005)
+
+  16 Dec 2005; Joshua Nichols <nichoj@gentoo.org> +maven-bin-2.0.1.ebuild:
+  Version bump (bug #110431).
+
+*maven-bin-2.0 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Nichols <nichoj@gentoo.org> +maven-bin-2.0.ebuild:
+  Version bump (bug #110431).
+
+  21 Nov 2005; Joshua Nichols <nichoj@gentoo.org> maven-bin-1.0.ebuild, +files/maven-bin-1.0-script.patch: 
+  Added a patch to fix 1.0's script (bug #96729).
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  02 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  maven-bin-1.0_rc3.ebuild, maven-bin-1.0_rc4.ebuild, maven-bin-1.0.ebuild:
+  Don't use -d option with cp.
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> maven-bin-1.0_rc3.ebuild:
+  stable on amd64
+
+  29 Oct 2004; Thomas Matthijs <axxo@gentoo.org> maven-bin-1.0.ebuild,
+  maven-bin-1.0_rc3.ebuild, maven-bin-1.0_rc4.ebuild:
+  removed nomirror
+
+  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org> maven-bin-1.0_rc3.ebuild,
+  maven-bin-1.0_rc4.ebuild:
+  keywords ~amd64 to close #66602.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+*maven-bin-1.0 (30 Jul 2004)
+*maven-bin-1.0_rc4 (30 Jul 2004)
+*maven-bin-1.0_rc3 (30 Jul 2004)
+
+  30 Jul 2004; Thomas Matthijs <axxo@gentoo.org> +metadata.xml,
+  +files/25maven, +maven-bin-1.0.ebuild, +maven-bin-1.0_rc3.ebuild,
+  +maven-bin-1.0_rc4.ebuild:
+  move dev-java/maven dev-java/maven-bin
+
+  18 Jul 2004; Thomas Matthijs <axxo@gentoo.org> maven-1.0.ebuild:
+  ~amd64
+
+*maven-1.0 (14 Jul 2004)
+
+  14 Jul 2004; Thomas Matthijs <axxo@gentoo.org> +maven-1.0.ebuild:
+  version bump
+
+*maven-1.0_rc4 (03 Jul 2004)
+
+  03 Jul 2004; Chris Aniszczyk <zx@gentoo.org> +maven-1.0_rc4.ebuild:
+  Version bump
+
+  15 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> maven-1.0_rc2.ebuild,
+  maven-1.0_rc3.ebuild:
+  PROVIDE is for virtuals
+
+  25 May 2004; Chris Aniszczyk <zx@gentoo.org> maven-1.0_rc2.ebuild:
+  Marking stable on x86 & ppc
+
+*maven-1.0_rc3 (25 May 2004)
+
+  25 May 2004; Chris Aniszczyk <zx@gentoo.org> +maven-1.0_rc3.ebuild:
+  Version bump. Closes #51568
+
+  27 Mar 2004; David Holm <dholm@gentoo.org> maven-1.0_rc2.ebuild:
+  Added to ~ppc.
+
+*maven-1.0_rc2 (30 Mar 2004)
+
+  30 Mar 2004; Chris Aniszczyk <zx@gentoo.org> maven-1.0_rc2.ebuild:
+  Version bump.
+  Closes #45607
+
+*maven-1.0_rc1 (20 Nov 2003)
+
+  20 Nov 2003; Adrian Almenar <strider@gentoo.org> maven-1.0_rc1.ebuild:
+  Moved to stable.
+
+  02 Oct 2003; Adrian Almenar <strider@gentoo.org> :
+  Version bump, new RC
+
+*maven-1.0_beta10 (22 Sep 2003)
+
+  22 Sep 2003; Adrian Almenar <strider@gentoo.org> maven-1.0_beta10.ebuild, metadata.xml,
+  files/25maven:
+  New maven version, should fix problems found in beta9 and bug #21743, its now
+  working for me. Also updated metadata.xml.
+
+*maven-1.0_beta9 (23 Apr 2003)
+
+  23 Apr 2003; Adrian Almenar <strider@gentoo.org> maven-1.0_beta9.ebuild:
+  Added new version ebuild. Updated the new homepage of maven project, now
+  a top level apache project.
+
+*maven-1.0_beta8 (17 Mar 2003)
+
+  17 Mar 2003; Dylan Carlson <absinthe@gentoo.org> maven-1.0_beta8.ebuild, files/25maven:
+  Initial import.
+  
+  Thanks to Stéphane Mor <stephanemor@yahoo.fr> in bug # 15669 for the
+  submission.
+  
+  Maven is a Java project management and project comprehension tool. Maven is
+  based on the concept of a project object model (POM) in that all the artifacts
+  produced by Maven are a result of consulting a well defined model for your
+  project. Builds, documentation, source metrics, and source cross-references
+  are all controlled by your POM.

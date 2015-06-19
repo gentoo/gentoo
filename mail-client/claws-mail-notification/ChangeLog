@@ -1,0 +1,413 @@
+# ChangeLog for mail-client/claws-mail-notification
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail-notification/ChangeLog,v 1.86 2013/05/08 04:00:03 fauli Exp $
+
+  08 May 2013; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-notification-0.31.ebuild:
+  prepare plugin for mail-client/claws-mail-3.9.1
+
+  04 Jan 2013; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-notification-0.30.ebuild:
+  clean up
+
+  03 Jan 2013; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-notification-0.31.ebuild:
+  reintroduce deletion of .a and .la files
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  claws-mail-notification-0.31.ebuild:
+  Stable for x86, wrt bug #448968
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  claws-mail-notification-0.31.ebuild:
+  Stable for amd64, wrt bug #448968
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  claws-mail-notification-0.31.ebuild:
+  Stable for ppc, wrt bug #448968
+
+*claws-mail-notification-0.31 (20 Nov 2012)
+
+  20 Nov 2012; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-notification-0.31.ebuild:
+  version bump
+
+  20 Nov 2012; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-notification-0.29.ebuild:
+  clean up
+
+  31 Oct 2012; Andreas Schuerch <nativemad@gentoo.org>
+  claws-mail-notification-0.30.ebuild:
+  x86 stable, see bug 437814
+
+  24 Oct 2012; Agostino Sarubbo <ago@gentoo.org>
+  claws-mail-notification-0.30.ebuild:
+  Stable for amd64, wrt bug #437814
+
+  16 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  claws-mail-notification-0.30.ebuild:
+  stable ppc, bug #437814
+
+*claws-mail-notification-0.30 (30 Jun 2012)
+
+  30 Jun 2012; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-notification-0.30.ebuild:
+  version bump
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  claws-mail-notification-0.29.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  11 Apr 2012; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-notification-0.28.ebuild:
+  clean up
+
+  07 Apr 2012; Markus Meier <maekke@gentoo.org>
+  claws-mail-notification-0.29.ebuild:
+  x86 stable, bug #387547
+
+  04 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #206112
+
+  28 Feb 2012; Brent Baude <ranger@gentoo.org>
+  claws-mail-notification-0.29.ebuild:
+  Marking claws-mail-notification-0.29 ppc stable for bug 387547
+
+  25 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  claws-mail-notification-0.29.ebuild:
+  Stable for amd64, wrt bug #387547
+
+*claws-mail-notification-0.29 (26 Dec 2011)
+
+  26 Dec 2011; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-notification-0.29.ebuild:
+  version bump for bug 395381 by Justin
+
+  26 Dec 2011; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-notification-0.27.ebuild:
+  clean up
+
+  06 Nov 2011; Brent Baude <ranger@gentoo.org>
+  claws-mail-notification-0.28.ebuild:
+  Marking claws-mail-notification-0.28 ppc stable for bug 387547
+
+  29 Oct 2011; Markos Chandras <hwoarang@gentoo.org>
+  claws-mail-notification-0.28.ebuild:
+  Stable on amd64 wrt bug #387547
+
+  24 Oct 2011; Markus Meier <maekke@gentoo.org>
+  claws-mail-notification-0.28.ebuild:
+  x86 stable, bug #387547
+
+*claws-mail-notification-0.28 (30 Aug 2011)
+
+  30 Aug 2011; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-notification-0.28.ebuild:
+  version bump
+
+  31 Jul 2011; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-notification-0.26.ebuild:
+  clean up
+
+  16 Jul 2011; Markos Chandras <hwoarang@gentoo.org>
+  claws-mail-notification-0.27.ebuild:
+  Stable on amd64 wrt bug #372957
+
+  29 Jun 2011; Markus Meier <maekke@gentoo.org>
+  claws-mail-notification-0.27.ebuild:
+  x86 stable, bug #372957
+
+  26 Jun 2011; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-notification-0.27.ebuild,
+  +files/claws-mail-notification-0.27-libnotify-0.7-extra.patch:
+  Finally fix the brain-dead configuration checks for libnotify, thanks to
+  detrito from upstream bug
+  http://www.thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=2392 and
+  Matteo 'The Peach' Pescarin from bug 368355
+
+*claws-mail-notification-0.27 (10 Apr 2011)
+
+  10 Apr 2011; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-notification-0.27.ebuild:
+  version bump
+
+  31 Jan 2011; Samuli Suominen <ssuominen@gentoo.org>
+  claws-mail-notification-0.26.ebuild,
+  +files/claws-mail-notification-0.26-libnotify-0.7.patch:
+  Fix building with x11-libs/libnotify >= 0.7.
+
+  15 Jan 2011; Markus Meier <maekke@gentoo.org>
+  claws-mail-notification-0.26.ebuild:
+  x86 stable, bug #350513
+
+  04 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  claws-mail-notification-0.26.ebuild:
+  Stable on amd64 wrt bug #350513
+
+  23 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-notification-0.25.ebuild, claws-mail-notification-0.26.ebuild:
+  add a die after emake and don't install NEWS file (no contents)
+
+*claws-mail-notification-0.26 (22 Nov 2010)
+
+  22 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-notification-0.26.ebuild:
+  version bump
+
+  22 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-notification-0.24.ebuild:
+  clean up
+
+  07 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  claws-mail-notification-0.25.ebuild:
+  Stable on amd64 wrt bug #331395
+
+  06 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-notification-0.25.ebuild:
+  stable x86, bug 331395
+
+  20 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-notification-0.22.ebuild,
+  -claws-mail-notification-0.23.ebuild:
+  clean up
+
+*claws-mail-notification-0.25 (12 Jun 2010)
+
+  12 Jun 2010; Christian Faulhammer <fauli@gentoo.org> +claws-mail-notification-0.25.ebuild:
+  version bump, bug 319161
+
+  11 Mar 2010; Markus Meier <maekke@gentoo.org>
+  claws-mail-notification-0.24.ebuild:
+  amd64 stable, bug #304353
+
+  11 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-notification-0.24.ebuild:
+  stable x86, bug 304353
+
+*claws-mail-notification-0.24 (08 Jan 2010)
+
+  08 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-notification-0.24.ebuild:
+  version bump
+
+*claws-mail-notification-0.23 (18 Oct 2009)
+
+  18 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-notification-0.23.ebuild:
+  version bump, bug 289070
+
+  26 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-notification-0.21.ebuild:
+  clean up
+
+  01 Aug 2009; Jeremy Olexa <darkside@gentoo.org>
+  claws-mail-notification-0.22.ebuild:
+  amd64 stable, bug 278682
+
+  24 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-notification-0.22.ebuild:
+  stable x86, bug 278682
+
+  06 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-notification-0.22.ebuild:
+  fix Claws version number
+
+*claws-mail-notification-0.22 (06 Jul 2009)
+
+  06 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-notification-0.20.ebuild,
+  +claws-mail-notification-0.22.ebuild:
+  version bump and clean up
+
+  02 Jul 2009; Markus Meier <maekke@gentoo.org>
+  claws-mail-notification-0.21.ebuild:
+  amd64 stable, bug #273294
+
+  09 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-notification-0.21.ebuild:
+  stable x86, bug 273294
+
+*claws-mail-notification-0.21 (29 Apr 2009)
+
+  29 Apr 2009; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-notification-0.21.ebuild:
+  version bump, bug 266782 by microbiolog AT gmail.com
+
+  14 Mar 2009; nixnut <nixnut@gentoo.org>
+  claws-mail-notification-0.20.ebuild:
+  ~ppc'd
+
+  29 Jan 2009; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-notification-0.19.ebuild:
+  clean up
+
+  25 Jan 2009; Markus Meier <maekke@gentoo.org>
+  claws-mail-notification-0.20.ebuild:
+  amd64/x86 stable, bug #256165
+
+  22 Dec 2008; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-notification-0.20.ebuild:
+  raise version on mail-client/claws-mail dependency
+
+*claws-mail-notification-0.20 (22 Dec 2008)
+
+  22 Dec 2008; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-notification-0.20.ebuild:
+  version bump
+
+  08 Dec 2008; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-notification-0.17.ebuild:
+  clean up
+
+  28 Nov 2008; Markus Meier <maekke@gentoo.org>
+  claws-mail-notification-0.19.ebuild:
+  amd64/x86 stable, bug #248760
+
+  28 Nov 2008; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
+  Change my email address
+
+  25 Nov 2008; Christian Faulhammer <opfer@gentoo.org> ChangeLog:
+  fix ChangeLog
+
+  25 Nov 2008; Christian Faulhammer <opfer@gentoo.org>
+  -claws-mail-notification-0.16.ebuild:
+  clean up
+
+*claws-mail-notification-0.19 (16 Oct 2008)
+
+  16 Oct 2008; Christian Faulhammer <opfer@gentoo.org>
+  +claws-mail-notification-0.19.ebuild:
+  version bump for bug 239927
+
+  04 Aug 2008; Markus Meier <maekke@gentoo.org>
+  claws-mail-notification-0.17.ebuild:
+  amd64/x86 stable, bug #233817
+
+*claws-mail-notification-0.17 (30 Jun 2008)
+
+  30 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  +claws-mail-notification-0.17.ebuild:
+  version bump
+
+  23 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  -claws-mail-notification-0.12.ebuild,
+  -claws-mail-notification-0.12.1.ebuild,
+  -claws-mail-notification-0.13.ebuild,
+  -claws-mail-notification-0.14.ebuild,
+  -claws-mail-notification-0.15.ebuild:
+  clean up
+
+  21 Jun 2008; Christian Faulhammer <opfer@gentoo.org> metadata.xml:
+  correct email address of Ken
+
+  14 Jun 2008; Kenneth Prugh <ken69267@gentoo.org>
+  claws-mail-notification-0.16.ebuild:
+  amd64 stable, bug #222167
+
+  11 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  claws-mail-notification-0.16.ebuild:
+  stable x86, bug 222167
+
+  11 Jun 2008; Christian Faulhammer <opfer@gentoo.org> metadata.xml:
+  Changing maintainers
+
+  30 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Andrej Kacian (Ticho) from metadata.xml (as per #59986).
+
+  29 May 2008; Mark Loeser <halcy0n@gentoo.org>
+  claws-mail-notification-0.12.ebuild,
+  claws-mail-notification-0.12.1.ebuild,
+  claws-mail-notification-0.13.ebuild, claws-mail-notification-0.14.ebuild,
+  claws-mail-notification-0.15.ebuild, claws-mail-notification-0.16.ebuild:
+  Fix RDEPEND on pkgconfig; bug #217278
+
+*claws-mail-notification-0.16 (12 May 2008)
+
+  12 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  +claws-mail-notification-0.16.ebuild:
+  version bump for bug 218708
+
+  13 Feb 2008; Andrej Kacian <ticho@gentoo.org>
+  claws-mail-notification-0.12.ebuild,
+  claws-mail-notification-0.12.1.ebuild,
+  claws-mail-notification-0.13.ebuild, claws-mail-notification-0.14.ebuild,
+  +claws-mail-notification-0.15.ebuild:
+  Version bump. Depend on pkgconfig (bug #205864). commit
+
+*claws-mail-notification-0.15 (13 Feb 2008)
+
+  13 Feb 2008; Andrej Kacian <ticho@gentoo.org>
+  claws-mail-notification-0.12.ebuild,
+  claws-mail-notification-0.12.1.ebuild,
+  claws-mail-notification-0.13.ebuild, claws-mail-notification-0.14.ebuild,
+  +claws-mail-notification-0.15.ebuild:
+  Version bump. Depend on pkgconfig (bug #205864).
+
+*claws-mail-notification-0.14 (28 Dec 2007)
+
+  28 Dec 2007; Andrej Kacian <ticho@gentoo.org>
+  +claws-mail-notification-0.14.ebuild:
+  Version bump. Bug #202634 by Joe <joacher at gmx.de>.
+
+*claws-mail-notification-0.13 (29 Nov 2007)
+
+  29 Nov 2007; Andrej Kacian <ticho@gentoo.org>
+  -claws-mail-notification-0.7.ebuild, -claws-mail-notification-0.8.ebuild,
+  -claws-mail-notification-0.9.ebuild, -claws-mail-notification-0.10.ebuild,
+  -claws-mail-notification-0.11.ebuild, claws-mail-notification-0.12.ebuild,
+  claws-mail-notification-0.12.1.ebuild,
+  +claws-mail-notification-0.13.ebuild:
+  Version bump, ebuild cleanup.
+
+*claws-mail-notification-0.12.1 (18 Sep 2007)
+
+  18 Sep 2007; Andrej Kacian <ticho@gentoo.org>
+  +claws-mail-notification-0.12.1.ebuild:
+  Version bump.
+
+  13 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  claws-mail-notification-0.12.ebuild:
+  x86 stable, security bug 190104
+
+*claws-mail-notification-0.12 (03 Sep 2007)
+
+  03 Sep 2007; Andrej Kacian <ticho@gentoo.org>
+  +claws-mail-notification-0.12.ebuild:
+  Version bump.
+
+*claws-mail-notification-0.11 (07 Jul 2007)
+
+  07 Jul 2007; <ticho@gentoo.org> +claws-mail-notification-0.11.ebuild:
+  Version bump.
+
+*claws-mail-notification-0.10 (16 Apr 2007)
+
+  16 Apr 2007; Andrej Kacian <ticho@gentoo.org>
+  +claws-mail-notification-0.10.ebuild:
+  Version bump.
+
+*claws-mail-notification-0.9 (27 Feb 2007)
+
+  27 Feb 2007; Andrej Kacian <ticho@gentoo.org>
+  +claws-mail-notification-0.9.ebuild:
+  Version bump.
+
+  25 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  claws-mail-notification-0.7.ebuild:
+  stable x86; bug #163611
+
+*claws-mail-notification-0.8 (09 Jan 2007)
+
+  09 Jan 2007; Andrej Kacian <ticho@gentoo.org>
+  +claws-mail-notification-0.8.ebuild:
+  Version bump.
+
+  04 Jan 2007; Steve Dibb <beandog@gentoo.org>
+  claws-mail-notification-0.7.ebuild:
+  add ~amd64, bug 153151
+
+*claws-mail-notification-0.7 (19 Dec 2006)
+
+  19 Dec 2006; Andrej Kacian <ticho@gentoo.org> +metadata.xml,
+  +claws-mail-notification-0.7.ebuild:
+  This is the new name of mail-client/sylpheed-claws-notification.

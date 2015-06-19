@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare setup
+DEPEND=app-shells/tcsh dev-lang/perl media-libs/libpng:0= X? ( media-libs/fontconfig x11-libs/motif:0= x11-libs/libICE x11-libs/libX11 x11-libs/libXft x11-libs/libXmu x11-libs/libXt )
+DESCRIPTION=Development toolkit and applications for computational biology, including NCBI BLAST
+EAPI=5
+HOMEPAGE=http://www.ncbi.nlm.nih.gov/
+IUSE=doc static-libs X
+KEYWORDS=~alpha amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=public-domain
+RDEPEND=app-shells/tcsh dev-lang/perl media-libs/libpng:0= X? ( media-libs/fontconfig x11-libs/motif:0= x11-libs/libICE x11-libs/libX11 x11-libs/libXft x11-libs/libXmu x11-libs/libXt )
+SLOT=0
+SRC_URI=ftp://ftp.ncbi.nlm.nih.gov/blast/executables/release/2.2.26/ncbi.tar.gz -> ncbi-tools-2.2.26.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=59c48b64d478c006253208f9f478fe5c

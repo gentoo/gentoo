@@ -1,0 +1,82 @@
+# ChangeLog for games-util/antimicro
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-util/antimicro/ChangeLog,v 1.17 2015/03/25 13:44:44 ago Exp $
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> antimicro-2.10.1.ebuild:
+  Stable for x86, wrt bug #541554
+
+  28 Feb 2015; Agostino Sarubbo <ago@gentoo.org> antimicro-2.10.1.ebuild:
+  Stable for amd64, wrt bug #541554
+
+  15 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> -antimicro-2.3.3.ebuild:
+  old
+
+*antimicro-2.10.1 (28 Jan 2015)
+
+  28 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org> +antimicro-2.10.1.ebuild:
+  version bump (bug #524102)
+
+  22 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org> -antimicro-2.2.ebuild,
+  -files/antimicro-2.2-build.patch:
+  old
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+*antimicro-2.3.3 (27 May 2014)
+
+  27 May 2014; Julian Ospald <hasufell@gentoo.org> -antimicro-1.0.ebuild,
+  -antimicro-2.0.ebuild, -antimicro-2.1.ebuild, +antimicro-2.3.3.ebuild,
+  -files/antimicro-1.2-desktopfile.patch,
+  -files/antimicro-2.0-desktopfile.patch:
+  version bump, rm old
+
+*antimicro-2.2 (22 Apr 2014)
+
+  22 Apr 2014; Julian Ospald <hasufell@gentoo.org> +antimicro-2.2.ebuild,
+  +files/antimicro-2.2-build.patch:
+  version bump
+
+*antimicro-2.1 (01 Mar 2014)
+
+  01 Mar 2014; Julian Ospald <hasufell@gentoo.org> +antimicro-2.1.ebuild:
+  version bump
+
+  20 Jan 2014; Michael Sterrett <mr_bones_@gentoo.org> -antimicro-1.1.ebuild,
+  -antimicro-1.2.ebuild:
+  old
+
+*antimicro-2.0 (05 Jan 2014)
+
+  05 Jan 2014; Julian Ospald <hasufell@gentoo.org> +antimicro-2.0.ebuild,
+  +files/antimicro-2.0-desktopfile.patch:
+  version bump
+
+*antimicro-1.2 (14 Dec 2013)
+
+  14 Dec 2013; Julian Ospald <hasufell@gentoo.org> +antimicro-1.2.ebuild,
+  +files/antimicro-1.2-desktopfile.patch:
+  version bump
+
+*antimicro-1.1 (03 Oct 2013)
+
+  03 Oct 2013; Julian Ospald <hasufell@gentoo.org> +antimicro-1.1.ebuild,
+  -antimicro-0.8.ebuild:
+  version bump
+
+  28 Aug 2013; Agostino Sarubbo <ago@gentoo.org> antimicro-1.0.ebuild:
+  Stable for x86, wrt bug #480802
+
+  13 Aug 2013; Agostino Sarubbo <ago@gentoo.org> antimicro-1.0.ebuild:
+  Stable for amd64, wrt bug #480802
+
+*antimicro-1.0 (13 Jul 2013)
+
+  13 Jul 2013; Julian Ospald <hasufell@gentoo.org> +antimicro-1.0.ebuild:
+  version bump wrt #476680
+
+*antimicro-0.8 (24 Jun 2013)
+
+  24 Jun 2013; Julian Ospald <hasufell@gentoo.org> +antimicro-0.8.ebuild,
+  +metadata.xml:
+  initial import wrt #473846

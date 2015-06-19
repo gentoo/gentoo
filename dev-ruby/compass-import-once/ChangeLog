@@ -1,0 +1,10 @@
+# ChangeLog for dev-ruby/compass-import-once
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/compass-import-once/ChangeLog,v 1.1 2014/10/05 06:56:19 graaff Exp $
+
+*compass-import-once-1.0.5 (05 Oct 2014)
+
+  05 Oct 2014; Hans de Graaff <graaff@gentoo.org>
+  +compass-import-once-1.0.5.ebuild, +metadata.xml:
+  Initial import. New dependency for dev-ruby/compass.
+

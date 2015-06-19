@@ -1,0 +1,17 @@
+Remove deprecated/useless entries causing validation warnings.
+
+--- kpovmodeler.desktop
++++ kpovmodeler.desktop
+@@ -49,12 +49,8 @@
+ GenericName[tr]=Povray Modelleyici
+ GenericName[x-test]=xxPovray Modelerxx
+ GenericName[zh_HK]=Povray 建模器
+-Path=
+ ServiceTypes=KParts/ReadOnlyPart,KParts/ReadWritePart,Browser/View,KPovModeler/Document
+-SwallowExec=
+-SwallowTitle=
+ Terminal=false
+ Type=Application
+ X-KDE-Library=libkpovmodelerpart
+ Categories=Qt;KDE;Graphics;
+-Encoding=UTF-8

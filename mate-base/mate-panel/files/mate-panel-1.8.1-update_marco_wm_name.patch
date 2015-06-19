@@ -1,0 +1,11 @@
+--- a/applets/wncklet/workspace-switcher.c
++++ b/applets/wncklet/workspace-switcher.c
+@@ -143,6 +143,8 @@
+ 
+ 	if (!wm_name)
+ 		pager->wm = PAGER_WM_UNKNOWN;
++	else if (strcmp(wm_name, "Metacity (Marco)") == 0)
++		pager->wm = PAGER_WM_MARCO;
+ 	else if (strcmp(wm_name, "Marco") == 0)
+ 		pager->wm = PAGER_WM_MARCO;
+ 	else if (strcmp(wm_name, "Compiz") == 0)

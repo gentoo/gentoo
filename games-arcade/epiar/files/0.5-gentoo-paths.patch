@@ -1,0 +1,59 @@
+--- src/system/path.c.orig	2004-03-28 04:42:23.329963224 -0500
++++ src/system/path.c	2004-03-28 04:42:47.375307776 -0500
+@@ -187,6 +187,7 @@
+ 			free(stripped);
+ 		if (argv)
+ 			free(argv);
++		goto portage_path;
+ 		return (0);
+ 	}
+ 
+@@ -212,6 +213,11 @@
+ 		free(stripped);
+ 	if (argv)
+ 		free(argv);
++
++portage_path:
++	if (game_path) free(game_path);
++	game_path = (char *)malloc(sizeof(char) * strlen("/usr/share/games/epiar/\0"));
++	sprintf(game_path, "/usr/share/games/epiar/");
+ 
+ 	return (0);
+ }
+--- src/input/input.c.orig	2004-03-28 04:48:49.925191816 -0500
++++ src/input/input.c	2004-03-28 04:52:57.184602672 -0500
+@@ -240,7 +240,10 @@
+ *
+ ******************************************************************************/
+ int load_input_cfg(void) {
+-	FILE *fp = fopen("./.epiar-input.ecf", "rb");
++	char filename[1024];
++	FILE *fp;
++	snprintf(filename, 1000, "%s/.epiar-input.ecf", getenv("HOME"));
++	fp = fopen(filename, "rb");
+ 
+ 	/* make sure all keys are enabled */
+ 	unlock_keys();
+@@ -282,7 +285,7 @@
+ 	} else {
+ 		float file_version = 0.0f;
+ 		/* read the file into the struct */
+-		fp = fopen("./.epiar-input.ecf", "rb");
++		fp = fopen(filename, "rb");
+ 
+ 		if (fp == NULL) {
+ 			fprintf(stdout, "Could not open \"./.epiar-input.ecf\" for reading, assuming default bindings.\n");
+@@ -472,10 +475,12 @@
+ }
+ 
+ void save_keybindings(void) {
++	char filename[1024];
+ 	float file_version = 0.2f;
+ 	FILE *fp;
+ 
+-	fp = fopen("./.epiar-input.ecf", "wb");
++	snprintf(filename, 1000, "%s/.epiar-input.ecf", getenv("HOME"));
++	fp = fopen(filename, "wb");
+ 	if (fp == NULL) {
+ 		fprintf(stdout, "Could not create '~/.epiar-input.ecf' to save keybindings\n");
+ 		return;

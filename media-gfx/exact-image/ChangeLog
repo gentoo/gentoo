@@ -1,0 +1,56 @@
+# ChangeLog for media-gfx/exact-image
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/exact-image/ChangeLog,v 1.12 2015/05/23 01:22:13 mrueg Exp $
+
+  23 May 2015; Manuel Rüger <mrueg@gentoo.org> -exact-image-0.8.1.ebuild:
+  Remove old.
+
+  30 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  exact-image-0.8.1.ebuild, exact-image-0.8.1-r1.ebuild:
+  Drop lcms support, bug 526816
+
+  09 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  exact-image-0.8.1.ebuild, exact-image-0.8.1-r1.ebuild:
+  The libperl ebuild is only a dummy and will be removed; libperl is provided
+  by dev-lang/perl.
+
+*exact-image-0.8.1-r1 (06 Oct 2012)
+
+  06 Oct 2012; Pacho Ramos <pacho@gentoo.org> +exact-image-0.8.1-r1.ebuild:
+  Include various fixes from Kevin Pyle, bug #339248.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> exact-image-0.8.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  17 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> exact-image-0.8.1.ebuild,
+  +files/exact-image-0.8.1-libpng15.patch:
+  Fix building with libpng15 wrt #383203 by Diego Elio Pettenò
+
+  08 Nov 2010; Markus Meier <maekke@gentoo.org> exact-image-0.8.1.ebuild:
+  change jpeg dep to virtual/jpeg
+
+  23 Oct 2010; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove myself from metadata
+
+  08 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  exact-image-0.8.1.ebuild:
+  Fixed hardcoded libdir and python paths leading to broken installation wrt
+  bug #327171
+
+*exact-image-0.8.1 (21 Jun 2010)
+
+  21 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +exact-image-0.8.1.ebuild:
+  Version bump wrt #319411. Fix automagic libpng and zlib depend wrt
+  #319409. Restrict lcms depend to old version.
+
+  12 May 2010; Samuli Suominen <ssuominen@gentoo.org>
+  exact-image-0.7.5.ebuild, +files/exact-image-0.7.5-libpng14.patch:
+  Fix building with libpng14 wrt #319399 by Helmut Jarausch.
+
+*exact-image-0.7.5 (07 Jan 2010)
+
+  07 Jan 2010; <hwoarang@gentoo.org> +exact-image-0.7.5.ebuild,
+  +metadata.xml:
+  Initial commit of exact-image application. Fixes bug #249032. Ebuild taken
+  from sunrise overlay

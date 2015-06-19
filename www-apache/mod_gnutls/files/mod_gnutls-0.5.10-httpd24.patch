@@ -1,0 +1,18 @@
+
+Fix for httpd 2.4.
+
+--- mod_gnutls-0.5.10/src/gnutls_hooks.c.httpd24
++++ mod_gnutls-0.5.10/src/gnutls_hooks.c
+@@ -750,7 +750,12 @@ int mgs_hook_pre_connection(conn_rec * c
+ 		return DECLINED;
+ 	}
+ 
++#if AP_MODULE_MAGIC_AT_LEAST(20111130, 0)
++        /* ### this is a bizarre test -- jorton */
++	if (c->client_addr->hostname || strcmp(c->client_ip,c->local_ip) == 0) {
++#else
+ 	if (c->remote_addr->hostname || apr_strnatcmp(c->remote_ip,c->local_ip) == 0) {
++#endif
+         /* Connection initiated by Apache (mod_proxy) => ignore */
+                 return OK;
+         }

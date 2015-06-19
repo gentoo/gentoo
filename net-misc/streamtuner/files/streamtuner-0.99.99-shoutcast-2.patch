@@ -1,0 +1,5 @@
+--- src/plugins/shoutcast/shoutcast.c
++++ src/plugins/shoutcast/shoutcast.c
+@@ -40,1 +40,1 @@
+-#define SHOUTCAST_ROOT		"http://www.shoutcast.com/"
++#define SHOUTCAST_ROOT		"http://classic.shoutcast.com/"

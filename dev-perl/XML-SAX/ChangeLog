@@ -1,0 +1,292 @@
+# ChangeLog for dev-perl/XML-SAX
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-SAX/ChangeLog,v 1.87 2015/04/05 02:07:06 vapier Exp $
+
+  05 Apr 2015; Mike Frysinger <vapier@gentoo.org> XML-SAX-0.990.0-r1.ebuild:
+  Mark arm64/m68k stable.
+
+  02 Mar 2015; Yixun Lan <dlan@gentoo.org> XML-SAX-0.990.0-r1.ebuild:
+  add arm64 support, tested on A53 board
+
+  28 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  XML-SAX-0.990.0-r1.ebuild:
+  Remove call to perl-module_pkg_postinst, does not do anything outside
+  perl-core
+
+*XML-SAX-0.990.0-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +XML-SAX-0.990.0-r1.ebuild, -XML-SAX-0.990.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  25 Feb 2013; Zac Medico <zmedico@gentoo.org> XML-SAX-0.990.0.ebuild:
+  Add ~arm-linux keyword.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> XML-SAX-0.990.0.ebuild:
+  keyword ~amd64-fbsd
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -XML-SAX-0.16.ebuild,
+  -XML-SAX-0.960.0.ebuild:
+  Cleanup
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> XML-SAX-0.990.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #400269
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> XML-SAX-0.990.0.ebuild:
+  Marking XML-SAX-0.990.0 ppc for bug 400117
+
+  03 Mar 2012; Brent Baude <ranger@gentoo.org> XML-SAX-0.990.0.ebuild:
+  Marking XML-SAX-0.990.0 ppc64 for bug 400269
+
+  02 Mar 2012; Markus Meier <maekke@gentoo.org> XML-SAX-0.990.0.ebuild:
+  arm stable, bug #400269
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> XML-SAX-0.990.0.ebuild:
+  x86 stable wrt bug #400269
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> XML-SAX-0.990.0.ebuild:
+  Stable for amd64, wrt bug #400269
+
+  18 Feb 2012; Jeroen Roovers <jer@gentoo.org> XML-SAX-0.990.0.ebuild:
+  Stable for HPPA (bug #400269).
+
+  19 Sep 2011; Torsten Veller <tove@gentoo.org> XML-SAX-0.990.0.ebuild:
+  Depend on XML-SAX-Base which was split from XML-SAX again
+
+*XML-SAX-0.990.0 (19 Sep 2011)
+
+  19 Sep 2011; Robin H. Johnson <robbat2@gentoo.org> +XML-SAX-0.990.0.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -XML-SAX-0.96.ebuild:
+  Cleanup
+
+*XML-SAX-0.960.0 (27 Aug 2011)
+
+  27 Aug 2011; Torsten Veller <tove@gentoo.org> +XML-SAX-0.960.0.ebuild:
+  Change version scheme
+
+  29 May 2011; Fabian Groffen <grobian@gentoo.org> XML-SAX-0.96.ebuild:
+  Marked ~x64-macos, bug #368563
+
+  21 Jan 2010; Torsten Veller <tove@gentoo.org> XML-SAX-0.16.ebuild:
+  mips -> ~mips
+
+  14 Jan 2010; Fabian Groffen <grobian@gentoo.org> XML-SAX-0.96.ebuild:
+  Transfer Prefix keywords
+
+  16 Aug 2009; Torsten Veller <tove@gentoo.org> -files/entities.patch:
+  Remove unused patch
+
+  15 Sep 2008; Torsten Veller <tove@gentoo.org> -XML-SAX-0.13.ebuild,
+  -XML-SAX-0.14-r1.ebuild, -XML-SAX-0.15.ebuild, -XML-SAX-0.15-r1.ebuild:
+  Cleanup
+
+*XML-SAX-0.96 (24 Aug 2008)
+
+  24 Aug 2008; Torsten Veller <tove@gentoo.org> +XML-SAX-0.96.ebuild:
+  Version bump
+
+  28 Mar 2008; Jeroen Roovers <jer@gentoo.org> XML-SAX-0.16.ebuild:
+  Stable for HPPA too.
+
+  19 Nov 2007; Joshua Kinard <kumba@gentoo.org> XML-SAX-0.16.ebuild:
+  Stable on mips.
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org> XML-SAX-0.16.ebuild:
+  amd64 stable
+
+  06 Oct 2007; Tom Gall <tgall@gentoo.org> XML-SAX-0.16.ebuild:
+  stable on ppc64
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org> XML-SAX-0.16.ebuild:
+  Stable on ppc.
+
+  09 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> XML-SAX-0.16.ebuild:
+  Stable on sparc
+
+  30 Jul 2007; Raúl Porcel <armin76@gentoo.org> XML-SAX-0.16.ebuild:
+  alpha/ia64/x86 stable
+
+  14 Jul 2007; Raúl Porcel <armin76@gentoo.org> XML-SAX-0.15-r1.ebuild:
+  alpha/ia64/x86 stable
+
+  07 Jul 2007; Tom Gall <tgall@gentoo.org> XML-SAX-0.15-r1.ebuild:
+  stable on ppc64
+
+*XML-SAX-0.16 (29 Jun 2007)
+
+  29 Jun 2007; Michael Cummings <mcummings@gentoo.org> +XML-SAX-0.16.ebuild:
+  Version bump
+
+  12 May 2007; Joshua Kinard <kumba@gentoo.org> XML-SAX-0.15-r1.ebuild:
+  Stable on mips.
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  XML-SAX-0.15-r1.ebuild:
+  ppc stable
+
+  14 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  XML-SAX-0.15-r1.ebuild:
+  Marking sparc stable
+
+  09 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  XML-SAX-0.15-r1.ebuild:
+  Marking stable amd64
+
+*XML-SAX-0.15-r1 (04 Mar 2007)
+
+  04 Mar 2007; Michael Cummings <mcummings@gentoo.org>
+  +XML-SAX-0.15-r1.ebuild:
+  Moving ParserDetail.ini setting to postinst, bug 168988, thanks Martin :)
+
+*XML-SAX-0.15 (17 Feb 2007)
+
+  17 Feb 2007; Michael Cummings <mcummings@gentoo.org> +XML-SAX-0.15.ebuild:
+  Version bump
+
+  20 Oct 2006; Aron Griffis <agriffis@gentoo.org> XML-SAX-0.14-r1.ebuild:
+  Mark 0.14-r1 stable on alpha
+
+  04 Sep 2006; Joshua Kinard <kumba@gentoo.org> XML-SAX-0.14-r1.ebuild:
+  Marked stable on mips.
+
+  30 Aug 2006; Michael Hanselmann <hansmi@gentoo.org>
+  XML-SAX-0.14-r1.ebuild:
+  Stable on ppc.
+
+  17 Aug 2006; Markus Rothe <corsair@gentoo.org> XML-SAX-0.14-r1.ebuild:
+  Stable on ppc64
+
+  15 Aug 2006; Joshua Jackson <tsunam@gentoo.org> XML-SAX-0.14-r1.ebuild:
+  Stable x86; bug #127735
+
+  12 Aug 2006; Michael Cummings <mcummings@gentoo.org> -XML-SAX-0.12.ebuild,
+  XML-SAX-0.13.ebuild, -XML-SAX-0.14.ebuild, XML-SAX-0.14-r1.ebuild:
+  Cleaning up
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org> XML-SAX-0.12.ebuild,
+  XML-SAX-0.13.ebuild, XML-SAX-0.14.ebuild, XML-SAX-0.14-r1.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> XML-SAX-0.14-r1.ebuild:
+  Mark 0.14-r1 stable on ia64
+
+  05 Jul 2006; Christian Hartmann <ian@gentoo.org> XML-SAX-0.12.ebuild,
+  XML-SAX-0.13.ebuild, XML-SAX-0.14.ebuild, XML-SAX-0.14-r1.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed header; fixed DEPEND
+
+*XML-SAX-0.14-r1 (02 Jul 2006)
+
+  02 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  +files/encodings.patch, +files/entities.patch, XML-SAX-0.13.ebuild,
+  XML-SAX-0.14.ebuild, +XML-SAX-0.14-r1.ebuild:
+  Marking stable. Also including a lost patch for SAX that fixes bug 127735
+
+  29 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org> XML-SAX-0.14.ebuild:
+  Stable on hppa
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org> XML-SAX-0.14.ebuild:
+  Marking sparc stable
+
+*XML-SAX-0.14 (26 Apr 2006)
+
+  26 Apr 2006; <mcummings@gentoo.org> +XML-SAX-0.14.ebuild:
+  Version bump
+
+  24 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> XML-SAX-0.13.ebuild:
+  Add ~x86-fbsd keyword.
+
+  13 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> XML-SAX-0.13.ebuild:
+  Stable on sparc
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> XML-SAX-0.13.ebuild:
+  Mark 0.13 stable on ia64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> XML-SAX-0.13.ebuild:
+  Mark 0.13 stable on alpha
+
+  21 Jan 2006; Markus Rothe <corsair@gentoo.org> XML-SAX-0.13.ebuild:
+  Stable on ppc64
+
+  15 Jan 2006; Michael Hanselmann <hansmi@gentoo.org> XML-SAX-0.13.ebuild:
+  Stable on ppc.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org> XML-SAX-0.13.ebuild:
+  marking sparc x86 stable
+
+*XML-SAX-0.13 (27 Nov 2005)
+
+  27 Nov 2005; Michael Cummings <mcummings@gentoo.org> +XML-SAX-0.13.ebuild:
+  Version bump
+
+  19 Oct 2005; Rene Nussbaumer <killerfox@gentoo.org> XML-SAX-0.12.ebuild:
+  Unstable on hppa.
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org> XML-SAX-0.12.ebuild:
+  Mark 0.12 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> XML-SAX-0.12.ebuild:
+  add ~ia64
+
+  29 May 2005; Markus Rothe <corsair@gentoo.org> XML-SAX-0.12.ebuild:
+  Stable on ppc64
+
+  11 Apr 2005; Markus Rothe <corsair@gentoo.org> XML-SAX-0.12.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  04 Jan 2005; Michael Cummings <mcummings@gentoo.org> XML-SAX-0.12.ebuild:
+  bug 76590
+
+  02 Aug 2004; Robert Coie <rac@gentoo.org> XML-SAX-0.12.ebuild:
+  get perl out of global scope
+
+  01 May 2004; Michael Cummings <mcummings@gentoo.org> XML-SAX-0.12.ebuild:
+  Syntax change in the echo - seems to have changed between versions of XML-SAX,
+  but not reflected in the ebuild. Should finally close 30704
+
+  16 Feb 2004; Michael Cummings,,, <mcummings@gentoo.org>
+  XML-SAX-0.10-r1.ebuild, XML-SAX-0.10-r2.ebuild:
+  Cleaning house
+
+  18 Jan 2004; <tuxus@gentoo.org> XML-SAX-0.12.ebuild:
+  Added ~mips to KEYWORDS.
+
+*XML-SAX-0.12 (02 Jan 2003)
+  
+  02 Jan 2003; Michael Cummings <mcummings@gentoo.org> XML-SAX-0.12.ebuild :
+  Version bump because 1) older version no longer available and 2) needed as dep  for bug 12148
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+
+  forced version bump to install into correct locations
+
+*XML-SAX-0.10-r2 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*XML-SAX-0.10-r1 (6 May 2002)
+  
+  24 Sep 2002; <mcummings@gentoo.org> : Corrected perl Makefile syntax
+
+  1 Aug 2002; Calum Selkirk <cselkirk@gentoo.org> XML-SAX-0.10-r1.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  6 May 2002; Seemant Kulleen <seemant@gentoo.org> XML-SAX-0.10-r1.ebuild
+  files/digest-XML-SAX-0.10-r1 :
+
+  eclassed
+
+*XML-SAX-0.10 (2002/03/25)
+
+  25 Mar 2002; CC. Salvesen <calle@ioslo.net> All:
+  
+  Initial ebuild. dev-perl/XML-LibXML depends on this one. 

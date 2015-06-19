@@ -1,0 +1,80 @@
+--- projects/rscriptd/rscriptd.conf.org	2013-01-12 15:44:46.000000000 +0200
++++ projects/rscriptd/rscriptd.conf	2013-01-12 15:45:44.000000000 +0200
+@@ -1,8 +1,68 @@
+-LogFileName=/var/log/rscriptd.log
+-ExecutersNum=1
+-ConfigDir=/etc/rscriptd
+-Password=123456
+-Port=9999
+-UserTimeout=60
+-ScriptOnConnect=/etc/stargazer/OnConnect
+-ScriptOnDisconnect=/etc/stargazer/OnDisconnect
++################################################################################
++#                         Rscriptd Configuration file                          #
++################################################################################
++
++# LOG file name
++# Parameter: optional
++# Value: file path
++# Default: /var/log/rscriptd.log
++LogFileName = /var/log/rscriptd.log
++
++# Amount of rscriptd-exec processes.
++# These processes are responsible for the execution of scripts 
++# OnConnect and OnDisconnect.
++# Amount of processes means how many scripts can be executed simultaneously.
++# Recommend to leave 1 to avoid errors when executing scripts
++# Parameter: optional
++# Value: 1 ... 1024
++# Default: 1
++ExecutersNum = 1
++
++# Message queue identifier for the script executer.
++# It may be changed if there're a needs to run multiple copies of rscriptd.
++# Warning: If you do not understand it, do not touch this setting!
++# Parameter: optional
++# Value: 0 ... 2 ^ 32
++# Default: 5555
++# ExecMsgKey = 5555
++
++# The path to directory where config files are
++# Parameter: optional
++# Value: directory path
++# Default: /etc/rscriptd
++ConfigDir = /etc/rscriptd
++
++# Defines password for the encryption exchange between
++# Stargazer server and rscriptd.
++# Parameter: optional
++# Value: any
++# Default: 123456
++Password = 123456
++
++# Defines port number for communication between
++# Stargazer server and rscriptd.
++# Parameter: optional
++# Value: 1 ... 65535
++# Default: 9999
++Port = 9999
++
++# User timeout. If Stargazer does not respond during this time,
++# the user will be disconnected.
++# Parameter: optional
++# Values: 5 ... 600
++# Default: 60
++UserTimeout = 60
++
++# Defines file which runs when user gets access
++# Parameter: optional
++# Value: file path
++# Default: /etc/rscriptd/OnConnect
++ScriptOnConnect = /etc/rscriptd/OnConnect
++
++# Defines file which runs when user loses access
++# Parameter: optional
++# Value: file path
++# Default: /etc/rscriptd/OnDisconnect
++ScriptOnDisconnect = /etc/rscriptd/OnDisconnect
++
++################################################################################
+\ No newline at end of file

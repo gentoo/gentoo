@@ -1,0 +1,55 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Daemon script for pglinux"
+extra_commands="reload forcereload update"
+
+depend() {
+	need net
+}
+
+PIDFILE=@PID_DIR@/pgld.pid
+PGLCMD=@PGLCMDPATH@
+
+start() {
+	ebegin "Starting pglinux daemon"
+
+	if [ "${RC_CMD}" = "restart" ]; then
+		sleep 3
+	fi
+
+	$PGLCMD start
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping pglinux daemon"
+	$PGLCMD stop_quick
+	eend $?
+}
+
+status() {
+	ebegin "Checking status of pglinux daemon"
+	$PGLCMD status
+	eend $?
+}
+
+reload() {
+	ebegin "reload config"
+	$PGLCMD reload
+	eend $?
+}
+
+forcereload() {
+	ebegin "force config reload"
+	$PGLCMD force-reload
+	eend $?
+}
+
+update() {
+	ebegin "Force update of lists"
+	$PGLCMD update
+	eend $?
+}
+

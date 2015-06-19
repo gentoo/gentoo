@@ -1,0 +1,20 @@
+Index: cardlayer/src/pinpadlib.h
+===================================================================
+--- cardlayer/src/pinpadlib.h	(revision 1501)
++++ cardlayer/src/pinpadlib.h	(revision 1502)
+@@ -43,13 +43,14 @@
+ #endif
+ #ifndef NO_DIALOGS
+ #include "../dialogs/src/dialogs.h"
++#endif
+ #ifdef __APPLE__
+ typedef void* BEID_DIALOGHANDLE;
+ #else
+ typedef unsigned long BEID_DIALOGHANDLE;
+ #endif
+-#endif
+ 
++
+ namespace eIDMW
+ {
+ #ifdef EIDMW_PF_EXPORT

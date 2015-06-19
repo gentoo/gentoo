@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/527986
+
+--- a/gfxdrivers/cle266/uc_overlay.c    2015-02-10 15:26:24.931309401 -0800
++++ b/gfxdrivers/cle266/uc_overlay.c    2015-02-10 15:26:47.229309401 -0800
+@@ -246,7 +246,7 @@
+     dfb_surface_flip(surface, false);
+
+     ucovl->field = 0;
+-    ucovl->lock = lock;
++    ucovl->lock = left_lock;
+
+     ret = uc_ovl_update(ucdrv, ucovl, UC_OVL_FLIP, surface, left_lock);
+     if (ret)

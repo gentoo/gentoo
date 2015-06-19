@@ -1,0 +1,42 @@
+# ChangeLog for sci-chemistry/mead
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/mead/ChangeLog,v 1.8 2010/04/19 17:49:23 jlec Exp $
+
+*mead-2.2.7-r1 (19 Apr 2010)
+
+  19 Apr 2010; Justin Lecher <jlec@gentoo.org> mead-2.2.7.ebuild,
+  +mead-2.2.7-r1.ebuild, +files/mead-2.2.7-respect-flags.patch,
+  -files/respect-cflags.patch:
+  respect LDFLAGS, #316059
+
+  19 Apr 2010; Justin Lecher <jlec@gentoo.org> -mead-2.2.5.ebuild,
+  mead-2.2.7.ebuild:
+  Removed old version, removed python support, as numeric is gone
+
+*mead-2.2.7 (15 Feb 2009)
+
+  15 Feb 2009; Ryan Hill <dirtyepic@gentoo.org>
+  +files/mead-2.2.7-gcc43.patch, +files/mead-2.2.7-respect-cflags.patch,
+  +mead-2.2.7.ebuild:
+  Version bump and gcc-4.3 fix by Joel on bug #250423.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org>
+  files/digest-mead-2.2.5, Manifest:
+  Transition to Manifest2.
+
+  01 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Remove myself as maintainer so it goes to all of the sci-chemistry team.
+
+  20 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  (#148281) Change herd to sci-chemistry from sci.
+
+  07 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Update to my new email address.
+
+*mead-2.2.5 (17 Dec 2005)
+
+  17 Dec 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/respect-cflags.patch, +metadata.xml, +mead-2.2.5.ebuild:
+  New electrostatic potential package: Macroscopic Electrostatics with Atomic
+  Detail.
+

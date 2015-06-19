@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=dev-libs/mpfr dev-libs/gmp doc? ( app-doc/doxygen[latex] )
+DESCRIPTION=Robust numerical and geometric computation library
+EAPI=4
+HOMEPAGE=http://www.cs.nyu.edu/exact/core_pages/
+IUSE=doc static-libs
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=QPL-1.0
+SLOT=0
+SRC_URI=http://cs.nyu.edu/exact/core/download/core/core-2.1.1.tgz doc? ( http://cs.nyu.edu/exact/core/download/core/core-2.1.doc.tgz )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=f91de00b40d2c15b09004996f4dd7121

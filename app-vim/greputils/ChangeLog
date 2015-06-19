@@ -1,0 +1,67 @@
+# ChangeLog for app-vim/greputils
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/greputils/ChangeLog,v 1.18 2013/11/05 13:54:24 chainsaw Exp $
+
+  05 Nov 2013; Tony Vroon <chainsaw@gentoo.org> greputils-2.8.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #481854.
+
+  11 Nov 2010; Tim Harder <radhermit@gentoo.org> -greputils-2.3.ebuild,
+  -greputils-2.4.ebuild:
+  Drop old versions.
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org> greputils-2.3.ebuild,
+  greputils-2.4.ebuild, greputils-2.8.ebuild:
+  Drop to ~mips
+
+  25 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> greputils-2.8.ebuild:
+  Added ~amd64.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  20 Nov 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  greputils-2.8.ebuild:
+  stable on ppc
+
+  07 Apr 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove ciaranm from metadata.xml.
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> greputils-2.8.ebuild:
+  Mark 2.8 stable on alpha
+
+  07 Sep 2005; Aron Griffis <agriffis@gentoo.org> greputils-2.8.ebuild:
+  Mark 2.8 stable on ia64
+
+  07 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> greputils-2.8.ebuild:
+  x86 sparc mips stable
+
+*greputils-2.8 (10 Aug 2005)
+
+  10 Aug 2005; Ciaran McCreesh <ciaranm@gentoo.org> +greputils-2.8.ebuild:
+  Version bump, bug #101779
+
+  17 May 2005; Aaron Walker <ka0ttic@gentoo.org> greputils-2.3.ebuild,
+  greputils-2.4.ebuild:
+  Fix deps for bug 92840. 2.3 requires >=genutils-1.13, 2.4 needs >=1.15.
+
+  18 Feb 2005; Ciaran McCreesh <ciaranm@gentoo.org> greputils-2.4.ebuild:
+  x86 sparc mips stable
+
+*greputils-2.4 (21 Jan 2005)
+
+  21 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> +greputils-2.4.ebuild:
+  New version, bug #78708
+
+  31 Oct 2004; Ciaran McCreesh <ciaranm@gentoo.org> greputils-2.3.ebuild:
+  Stable on x86, sparc, mips
+
+  15 Oct 2004; David Holm <dholm@gentoo.org> greputils-2.3.ebuild:
+  Added to ~ppc.
+
+*greputils-2.3 (09 Sep 2004)
+
+  09 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +greputils-2.3.ebuild:
+  New package
+

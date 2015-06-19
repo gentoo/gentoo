@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+
+	<longdescription lang="en">
+		Flying Saucer is a 100% Java XHTML+CSS renderer, including support
+		for table pagination, margin boxes, running elements, named pages,
+		and more.
+	</longdescription>
+</pkgmetadata>

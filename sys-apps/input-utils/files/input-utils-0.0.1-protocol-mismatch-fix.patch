@@ -1,0 +1,22 @@
+Patch from https://bugs.gentoo.org/attachment.cgi?id=262203&action=diff
+
+--- input.c.orig	2011-02-12 02:29:40.308989368 -0500
++++ input.c	2011-02-12 02:30:21.209265625 -0500
+@@ -46,17 +46,6 @@ 
+ 	if (verbose)
+ 		fprintf(stderr,"%s\n",filename);
+ 
+-	if (-1 == ioctl(fd,EVIOCGVERSION,&version)) {
+-		perror("ioctl EVIOCGVERSION");
+-		close(fd);
+-		return -1;
+-	}
+-	if (EV_VERSION != version) {
+-		fprintf(stderr, "protocol version mismatch (expected %d, got %d)\n",
+-			EV_VERSION, version);
+-		close(fd);
+-		return -1;
+-	}
+ 	return fd;
+ }
+ 

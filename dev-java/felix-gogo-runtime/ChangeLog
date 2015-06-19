@@ -1,0 +1,11 @@
+# ChangeLog for dev-java/felix-gogo-runtime
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/felix-gogo-runtime/ChangeLog,v 1.1 2013/10/02 22:13:23 tomwij Exp $
+
+*felix-gogo-runtime-0.10.0 (02 Oct 2013)
+
+  02 Oct 2013; Tom Wijsman <TomWij@gentoo.org>
+  +felix-gogo-runtime-0.10.0.ebuild, +files/felix-gogo-runtime-0.10.0-build.xml,
+  +files/felix-gogo-runtime-0.10.0-event-properties-to-map.patch, +metadata.xml:
+  New package for dev-java/felix-gogo-runtime, Felix Gogo Runtime. Indirect
+  dependency needed for Struts 2.

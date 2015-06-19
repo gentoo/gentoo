@@ -1,0 +1,13 @@
+https://sourceforge.net/tracker/?func=detail&aid=3599717&group_id=18136&atid=318136
+
+--- a/quotasys.c
++++ b/quotasys.c
+@@ -642,7 +642,7 @@
+ 		die(2, _("Cannot initialize mountpoint scan.\n"));
+ 	while ((mnt = get_next_mount())) {
+ #ifndef RPC
+-		if (nfs_fstype(mnt->mnt_type))
++		if (nfs_fstype(mnt->me_type))
+ 			continue;
+ #endif
+ 		if (fmt == -1 || count) {

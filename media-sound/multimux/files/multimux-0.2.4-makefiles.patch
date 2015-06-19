@@ -1,0 +1,13 @@
+Index: multimux-0.2.4/Makefile
+===================================================================
+--- multimux-0.2.4.orig/Makefile
++++ multimux-0.2.4/Makefile
+@@ -17,7 +17,7 @@ multimux.o
+ all:
+ 	$(CC) $(CFLAGS) -c $(SRC1)
+ 
+-	$(CC) -o multimux   $(OBJECT1) $(LIBRARY)
++	$(CC) $(LDFLAGS) -o multimux   $(OBJECT1) $(LIBRARY)
+ 
+ # DEPENDENCIES
+ multimux.o : multimux.c multimux.h

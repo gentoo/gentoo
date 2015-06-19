@@ -1,0 +1,62 @@
+# ChangeLog for x11-plugins/matchbox-applet-volume
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/matchbox-applet-volume/ChangeLog,v 1.15 2014/08/10 20:02:21 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  matchbox-applet-volume-0.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  07 Apr 2014; Samuli Suominen <ssuominen@gentoo.org>
+  matchbox-applet-volume-0.1.ebuild:
+  Use EAPI5 instead of EAPI1.
+
+  04 Jun 2012; Michael Weber <xmw@gentoo.org> matchbox-applet-volume-0.1.ebuild:
+  ppc stable (bug 309407)
+
+  05 Mar 2012; Thomas Kahle <tomka@gentoo.org>
+  matchbox-applet-volume-0.1.ebuild:
+  marked x86 per bug 309407
+
+  04 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #112268
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  matchbox-applet-volume-0.1.ebuild:
+  Stable for amd64, wrt bug #309407
+
+  05 Mar 2011; Angelo Arrifano <miknix@gentoo.org>
+  matchbox-applet-volume-0.1.ebuild:
+  Added DEPEND on slotted gtk+-2, to work with upcoming gtk-3.
+
+  14 Dec 2009; Yuri Vasilevski <yvasilev@gentoo.org>
+  matchbox-applet-volume-0.1.ebuild:
+  Fixed dodoc QA notice, fixes bug #296840. Thanks flameeyes.
+
+  14 Mar 2009; <solar@gentoo.org> matchbox-applet-volume-0.1.ebuild:
+  keyword ~amd64
+
+  13 Jul 2008; Joseph Jezak <josejx@gentoo.org>
+  matchbox-applet-volume-0.1.ebuild:
+  Marked ~ppc for bug #211803.
+
+  27 Feb 2008; Yuri Vasilevski <yvasilev@gentoo.org>
+  matchbox-applet-volume-0.1.ebuild:
+  Updated HOMEPAGE and SRC_URI to it's new location
+  http://matchbox-project.org/ (Bug #211244).
+
+  26 Sep 2007; Jeroen Roovers <jer@gentoo.org>
+  matchbox-applet-volume-0.1.ebuild:
+  Marked ~hppa too.
+
+  07 Aug 2006; <yvasilev@gentoo.org> matchbox-applet-volume-0.1.ebuild:
+  Added ~arm keyword.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> Manifest:
+  Fixing duff SHA256 digests: Bug # 131293
+
+*matchbox-applet-volume-0.1 (13 Mar 2006)
+
+  13 Mar 2006; <yvasilev@gentoo.org> +metadata.xml,
+  +matchbox-applet-volume-0.1.ebuild:
+  - Initial import. Original ebuild by Priit Laes, modifications by Björn
+  Ruberg and Yuri Vasilevski.

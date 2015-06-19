@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Mister House, an open source home automation program with X10 support
+EAPI=5
+HOMEPAGE=http://misterhouse.sf.net/
+IUSE=tk mysql
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-1
+RDEPEND=dev-lang/perl tk? ( dev-perl/perl-tk dev-perl/Tk-CursorControl ) mysql? ( dev-perl/DBD-mysql ) || ( app-accessibility/festival app-accessibility/flite ) dev-perl/GD virtual/perl-DB_File dev-perl/TermReadKey virtual/perl-Time-HiRes dev-perl/Audio-Mixer dev-perl/Text-LevenshteinXS
+SLOT=0
+SRC_URI=mirror://sourceforge/misterhouse/misterhouse-2.105.tar.gz
+_md5_=97606410adcb5eb51f55f14ae47d27cc

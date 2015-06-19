@@ -1,0 +1,36 @@
+# configuraton file for /etc/init.d/capi
+
+###
+### Common settings
+###
+
+# should 'capidrv' be loaded?
+CAPI_LOAD_CAPIDRV="no"
+
+# deactivate cards on stop (USB-Cards have to be re-plugged then)?
+CAPI_UNLOAD_CARDS="yes"
+
+###
+### USB Hotplug
+###
+
+# do you want to use USB hotplug?
+# if disabled, you have to configure your device in /etc/capi.conf
+CAPI_HOTPLUG_USB="yes"
+
+# should via hotplug added cards generate a beep?
+CAPI_HOTPLUG_BEEP="yes"
+
+# should capi-usb handle hotplug-events for mISDN cards?
+CAPI_HOTPLUG_MISDN="yes"
+
+###
+### Bluetooth CIP
+###
+
+# blank-seperated list of CIP devices to connect. You need
+# started Bluez stack and already peered devices to make
+# this work. Bluetooth devices will be connected after
+# ISA/PCI/(USB) devices. Leave empty to disable feature.
+#CAPI_CIP_DEVICES="00:11:22:33:44:55 DE:AD:BE:EF:47:11"
+

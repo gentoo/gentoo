@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm setup
+DEPEND=app-arch/unzip X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=OpenType and TrueType Unicode fonts from the Free UCS Outline Fonts Project
+EAPI=5
+HOMEPAGE=http://savannah.nongnu.org/projects/freefont/
+IUSE=X
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-fbsd ~x86-linux
+LICENSE=GPL-3
+RESTRICT=strip binchecks
+SLOT=0
+SRC_URI=mirror://gnu/freefont/freefont-ttf-20120503.zip mirror://gnu/freefont/freefont-otf-20120503.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	font	b3239d2dc442d1717b9725e2be7cb5d6	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=282489a2880380c09d863058fc374980

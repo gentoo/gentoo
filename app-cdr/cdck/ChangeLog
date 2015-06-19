@@ -1,0 +1,26 @@
+# ChangeLog for app-cdr/cdck
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdck/ChangeLog,v 1.4 2015/05/18 19:12:51 zzam Exp $
+
+  18 May 2015; Matthias Schwarzott <zzam@gentoo.org> cdck-0.7.0-r1.ebuild,
+  metadata.xml:
+  Update description and longdescription as suggested in bug #496268.
+
+*cdck-0.7.0-r1 (18 May 2015)
+
+  18 May 2015; Matthias Schwarzott <zzam@gentoo.org> -cdck-0.7.0.ebuild,
+  +cdck-0.7.0-r1.ebuild:
+  Port to EAPI 5. Fixes error in pod file, bug #513920.
+
+*cdck-0.7.0 (15 Jun 2008)
+
+  15 Jun 2008; Samuli Suominen <drac@gentoo.org> -cdck-0.6.0.ebuild,
+  +cdck-0.7.0.ebuild:
+  Version bump.
+
+*cdck-0.6.0 (19 Jul 2007)
+
+  19 Jul 2007; Matthias Schwarzott <zzam@gentoo.org> +metadata.xml,
+  +cdck-0.6.0.ebuild:
+  Initial import of ebuild written by me.
+

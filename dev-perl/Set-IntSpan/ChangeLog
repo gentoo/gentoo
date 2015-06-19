@@ -1,0 +1,219 @@
+# ChangeLog for dev-perl/Set-IntSpan
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Set-IntSpan/ChangeLog,v 1.55 2014/10/12 16:49:03 zlogene Exp $
+
+  12 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> -Set-IntSpan-1.160.0.ebuild:
+  Drop old.
+
+*Set-IntSpan-1.190.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Set-IntSpan-1.190.0-r1.ebuild, -Set-IntSpan-1.190.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  09 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> Set-IntSpan-1.190.0.ebuild:
+  alpha stable wrt bug #495470
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> Set-IntSpan-1.190.0.ebuild:
+  amd64 stable, bug #495470
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Set-IntSpan-1.190.0.ebuild:
+  x86 stable wrt bug #495470
+
+  11 Feb 2014; Jeroen Roovers <jer@gentoo.org> Set-IntSpan-1.190.0.ebuild:
+  Stable for HPPA (bug #495470).
+
+*Set-IntSpan-1.190.0 (25 Aug 2013)
+
+  25 Aug 2013; Patrick Lauer <patrick@gentoo.org> +Set-IntSpan-1.190.0.ebuild:
+  Bump
+
+  30 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  Set-IntSpan-1.160.0.ebuild:
+  Keyword amd64-linux and x86-linux
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -Set-IntSpan-1.14.ebuild:
+  Cleanup
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> Set-IntSpan-1.14.ebuild,
+  Set-IntSpan-1.160.0.ebuild:
+  Drop ia64/sparc keywords
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Set-IntSpan-1.160.0.ebuild:
+  x86 stable wrt bug #400215
+
+  25 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  Set-IntSpan-1.160.0.ebuild:
+  Stable on alpha, bug #400215
+
+  24 Feb 2012; Jeroen Roovers <jer@gentoo.org> Set-IntSpan-1.160.0.ebuild:
+  Stable for HPPA (bug #400215).
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Set-IntSpan-1.160.0.ebuild:
+  Stable for amd64, wrt bug #400215
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Set-IntSpan-1.160.ebuild:
+  Cleanup
+
+*Set-IntSpan-1.160.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +Set-IntSpan-1.160.0.ebuild:
+  Change version scheme
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -Set-IntSpan-1.12.ebuild,
+  -Set-IntSpan-1.13.ebuild, -Set-IntSpan-1.15.ebuild:
+  Cleanup
+
+*Set-IntSpan-1.160 (12 Jan 2011)
+
+  12 Jan 2011; Torsten Veller <tove@gentoo.org> +Set-IntSpan-1.160.ebuild:
+  Version bump
+
+  13 Nov 2010; Raúl Porcel <armin76@gentoo.org> Set-IntSpan-1.14.ebuild:
+  alpha/ia64/sparc stable wrt #341865
+
+*Set-IntSpan-1.15 (06 Nov 2010)
+
+  06 Nov 2010; Torsten Veller <tove@gentoo.org> +Set-IntSpan-1.15.ebuild:
+  Version bump
+
+  05 Nov 2010; Markos Chandras <hwoarang@gentoo.org>
+  Set-IntSpan-1.14.ebuild:
+  Stable on amd64 wrt bug #341865
+
+  05 Nov 2010; Jeroen Roovers <jer@gentoo.org> Set-IntSpan-1.14.ebuild:
+  Stable for HPPA (bug #341865).
+
+  04 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  Set-IntSpan-1.14.ebuild:
+  x86 stable, bug 341865
+
+*Set-IntSpan-1.14 (15 Jul 2010)
+
+  15 Jul 2010; Torsten Veller <tove@gentoo.org> +Set-IntSpan-1.14.ebuild:
+  Version bump
+
+  02 Aug 2008; Torsten Veller <tove@gentoo.org> -Set-IntSpan-1.08.ebuild,
+  -Set-IntSpan-1.09.ebuild, -Set-IntSpan-1.10.ebuild,
+  -Set-IntSpan-1.11.ebuild:
+  Cleanup
+
+*Set-IntSpan-1.13 (02 Aug 2008)
+
+  02 Aug 2008; Torsten Veller <tove@gentoo.org> +Set-IntSpan-1.13.ebuild:
+  Version bump
+
+  19 Mar 2008; Jeroen Roovers <jer@gentoo.org> Set-IntSpan-1.12.ebuild:
+  Stable for HPPA too.
+
+  17 Dec 2007; Samuli Suominen <drac@gentoo.org> Set-IntSpan-1.12.ebuild:
+  amd64 stable
+
+  06 Dec 2007; Raúl Porcel <armin76@gentoo.org> Set-IntSpan-1.12.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+*Set-IntSpan-1.12 (19 Oct 2007)
+
+  19 Oct 2007; Christian Hartmann <ian@gentoo.org> +Set-IntSpan-1.12.ebuild:
+  Version bump
+
+  13 Jul 2007; Raúl Porcel <armin76@gentoo.org> Set-IntSpan-1.11.ebuild:
+  alpha/ia64/x86 stable
+
+  21 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  Set-IntSpan-1.10.ebuild, Set-IntSpan-1.11.ebuild:
+  Marking sparc stable
+
+  15 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  Set-IntSpan-1.11.ebuild:
+  Marking amd64 stable
+
+*Set-IntSpan-1.11 (06 Apr 2007)
+
+  06 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  +Set-IntSpan-1.11.ebuild:
+  Version bump
+
+*Set-IntSpan-1.10 (11 Mar 2007)
+
+  11 Mar 2007; Michael Cummings <mcummings@gentoo.org>
+  +Set-IntSpan-1.10.ebuild:
+  Version bump
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> Set-IntSpan-1.09.ebuild:
+  Stable on x86, bug #169152.
+
+  20 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  +Set-IntSpan-1.08.ebuild:
+  Re-instating Set-IntSpan-1.08 from attic
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -Set-IntSpan-1.07.ebuild, -Set-IntSpan-1.08.ebuild,
+  Set-IntSpan-1.09.ebuild:
+  Version bump, thanks seemant
+
+  17 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Set-IntSpan-1.09.ebuild:
+  marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Set-IntSpan-1.07.ebuild, Set-IntSpan-1.08.ebuild, Set-IntSpan-1.09.ebuild:
+  Adding perl dep; fixed header; fixed DEPEND
+
+  18 Jul 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Set-IntSpan-1.09.ebuild:
+  Stable on alpha.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> Set-IntSpan-1.09.ebuild:
+  Mark 1.09 stable on ia64
+
+  29 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Set-IntSpan-1.09.ebuild:
+  Stable on hppa
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  Set-IntSpan-1.09.ebuild:
+  Marking sparc stable
+
+*Set-IntSpan-1.09 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  +Set-IntSpan-1.09.ebuild:
+  Version bump upstream
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> Set-IntSpan-1.08.ebuild:
+  Mark 1.08 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> Set-IntSpan-1.08.ebuild:
+  add ~ia64
+
+  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  Set-IntSpan-1.08.ebuild:
+  Stable on alpha.
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  Set-IntSpan-1.07.ebuild, Set-IntSpan-1.08.ebuild:
+  Cleaning for mirror
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*Set-IntSpan-1.08 (06 Jun 2004)
+
+  06 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  Set-IntSpan-1.08.ebuild:
+  new version on cpan
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org> Set-IntSpan-1.07.ebuild:
+  Stable on alpha.
+
+*Set-IntSpan-1.07 (23 Dec 2003)
+
+  23 Dec 2003; <rac@gentoo.org> Set-IntSpan-1.07.ebuild:
+  Initial import based on bug 34203

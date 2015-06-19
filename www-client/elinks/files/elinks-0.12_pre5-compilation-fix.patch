@@ -1,0 +1,12 @@
+diff -Naurp elinks-0.12pre5-orig//src/intl/charsets.c elinks-0.12pre5/src/intl/charsets.c
+--- elinks-0.12pre5-orig//src/intl/charsets.c	2010-04-04 12:19:02.000000000 +0200
++++ elinks-0.12pre5/src/intl/charsets.c	2010-04-04 12:19:20.000000000 +0200
+@@ -821,7 +821,7 @@ free_utf_table(void)
+ 
+ 	/* Cast away const.  */
+ 	for (i = 128; i < 256; i++)
+-		mem_free((unsigned char *) utf_table[i].u.str);
++		mem_free(utf_table[i].u.str);
+ }
+ 
+ static struct conv_table *

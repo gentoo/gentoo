@@ -1,0 +1,35 @@
+# ChangeLog for sys-process/fuser-bsd
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/fuser-bsd/ChangeLog,v 1.7 2010/03/24 15:15:31 the_paya Exp $
+
+  24 Mar 2010; Javier Villavicencio <the_paya@gentoo.org>
+  fuser-bsd-1142334561.ebuild:
+  Fix dep while building a stage1.
+
+  13 Mar 2010; Alexis Ballier <aballier@gentoo.org>
+  fuser-bsd-1142334561.ebuild:
+  Import patches from FreeBSD ports to fix build on 8.0
+
+  18 Jul 2009; Alexis Ballier <aballier@gentoo.org>
+  fuser-bsd-1142334561.ebuild:
+  depend on fbsd-mk-defs to avoid failures when building stages
+
+  18 Oct 2006; Roy Marples <uberlord@gentoo.org>
+  fuser-bsd-1142334561.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  12 Sep 2006; Roy Marples <uberlord@gentoo.org> -files/fuser-return.patch,
+  fuser-bsd-1142334561.ebuild:
+  Pull the return value patch as it goes againsta POSIX standard.
+  Just as easy to check stdout, which is what we shall do!
+
+  10 Sep 2006; Roy Marples <uberlord@gentoo.org> +files/fuser-return.patch,
+  fuser-bsd-1142334561.ebuild:
+  Ensure that fuser returns non zero if no files are found
+
+*fuser-bsd-1142334561 (10 Sep 2006)
+
+  10 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> +metadata.xml,
+  +fuser-bsd-1142334561.ebuild:
+  Initial import, fuser(1) utility for FreeBSD, needed for newer baselayout.
+

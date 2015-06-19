@@ -1,0 +1,155 @@
+# ChangeLog for sys-cluster/ploop
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ploop/ChangeLog,v 1.39 2015/06/14 07:54:39 zlogene Exp $
+
+  14 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> -ploop-1.12.2.ebuild,
+  -ploop-1.12.ebuild:
+  Drop old.
+
+  09 Jun 2015; Agostino Sarubbo <ago@gentoo.org> ploop-1.13.2.ebuild:
+  Stable for x86, wrt bug #551412
+
+  08 Jun 2015; Agostino Sarubbo <ago@gentoo.org> ploop-1.13.2.ebuild:
+  Stable for amd64, wrt bug #551412
+
+*ploop-1.13.2 (01 May 2015)
+
+  01 May 2015; Maxim Koltsov <maksbotan@gentoo.org> +ploop-1.13.2.ebuild:
+  Bump to 1.13.2, thanks to slepnoga
+
+  23 Apr 2015; Maxim Koltsov <maksbotan@gentoo.org> -ploop-1.11.ebuild:
+  Clean old versions, thanks to Andreis Vinogradovs
+
+*ploop-1.12.2 (11 Mar 2015)
+
+  11 Mar 2015; Vladimir Smirnov <civil@gentoo.org> +ploop-1.12.2.ebuild:
+  Version bump, thanks to Andreis Vinogradovs
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> ploop-1.12.ebuild:
+  Stable for x86, wrt bug #535668
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> ploop-1.12.ebuild:
+  Stable for amd64, wrt bug #535668
+
+*ploop-1.12 (20 Aug 2014)
+
+  20 Aug 2014; Maxim Koltsov <maksbotan@gentoo.org> +ploop-1.12.ebuild,
+  -ploop-1.9.ebuild:
+  Bump to 1.12, drop obsolete postinst message, thanks to slepnoga. Clean old.
+
+  27 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> ploop-1.11.ebuild:
+  amd64 stable wrt bug #515870
+
+  26 Jul 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> ploop-1.11.ebuild:
+  x86 stable wrt bug #515870
+
+  10 Apr 2014; Maxim Koltsov <maksbotan@gentoo.org> -ploop-1.6.ebuild,
+  -ploop-1.8.ebuild:
+  Clean old, thanks to slepnoga.
+
+*ploop-1.11 (09 Apr 2014)
+
+  09 Apr 2014; Vladimir Smirnov <civil@gentoo.org> +ploop-1.11.ebuild:
+  Version bump, requested by proxy maintainer
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> ploop-1.9.ebuild:
+  Stable for x86, wrt bug #495946
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> ploop-1.9.ebuild:
+  amd64 stable, bug #495946
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due vserver removal
+
+  05 Sep 2013; Agostino Sarubbo <ago@gentoo.org> ploop-1.8.ebuild:
+  Stable for x86, wrt bug #482394
+
+  04 Sep 2013; Alexander Vershilov <qnikst@gentoo.org> -ploop-1.7.1.ebuild:
+  sys-cluster/ploop: remove old version
+
+  04 Sep 2013; Alexander Vershilov <qnikst@gentoo.org> -ploop-1.7.ebuild:
+  sys-cluster/ploop: remove old version
+
+*ploop-1.9 (04 Sep 2013)
+
+  04 Sep 2013; Alexander Vershilov <qnikst@gentoo.org> +ploop-1.9.ebuild:
+  sys-cluster/ploop: bump up to 1.9
+
+  31 Aug 2013; Agostino Sarubbo <ago@gentoo.org> ploop-1.8.ebuild:
+  Stable for amd64, wrt bug #482394
+
+*ploop-1.8 (14 Jul 2013)
+
+  14 Jul 2013; Alexander Vershilov <qnikst@gentoo.org> +ploop-1.8.ebuild:
+  add ploop-1.8 thanks to slepnoga
+
+*ploop-1.7.1 (11 Jun 2013)
+
+  11 Jun 2013; Alexander Vershilov <qnikst@gentoo.org> +ploop-1.7.1.ebuild:
+  ploop version bump, thanks to slepnoga
+
+*ploop-1.7 (03 Jun 2013)
+
+  03 Jun 2013; Maxim Koltsov <maksbotan@gentoo.org> +ploop-1.7.ebuild:
+  Bump to 1.7, thanks to slepnoga.
+
+  12 May 2013; Maxim Koltsov <maksbotan@gentoo.org> -ploop-1.4.ebuild,
+  -ploop-1.5.ebuild:
+  Remove old versions, thanks to slepnoga
+
+  02 May 2013; Sergey Popov <pinkbyte@gentoo.org> -ploop-1.2.ebuild,
+  ploop-1.4.ebuild:
+  Backport CFLAGS fix wrt bug #452088, drop old version
+
+  30 Apr 2013; Agostino Sarubbo <ago@gentoo.org> ploop-1.4.ebuild:
+  Stable for x86, wrt bug #467760
+
+  30 Apr 2013; Agostino Sarubbo <ago@gentoo.org> ploop-1.4.ebuild:
+  Stable for amd64, wrt bug #467760
+
+  15 Apr 2013; Agostino Sarubbo <ago@gentoo.org> ploop-1.6.ebuild:
+  Stable for x86, wrt bug #452068
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> ploop-1.6.ebuild:
+  Stable for amd64, wrt bug #452068
+
+*ploop-1.6 (22 Feb 2013)
+
+  22 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> +ploop-1.6.ebuild,
+  +files/ploop.tmpfiles:
+  Version bump, thanks to Andreis Vinogradovs
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #96436
+
+  15 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Add proxy maintainers herd
+
+  15 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> ploop-1.5.ebuild:
+  Add USE-flag 'debug' for debug builds, do not do debug build by default, wrt
+  bug #452088. Thanks to Agostino Sarubbo for discovering this issue
+
+  15 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> ploop-1.2.ebuild,
+  ploop-1.4.ebuild, ploop-1.5.ebuild:
+  Respect AR and RANLIB, wrt bug #452092. Thanks to Agostino Sarubbo for
+  discovering this issue
+
+  02 Jan 2013; Maxim Koltsov <maksbotan@gentoo.org> metadata.xml:
+  Add slepnoga as maintainer
+
+*ploop-1.5 (10 Dec 2012)
+
+  10 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> +ploop-1.5.ebuild:
+  Version bump, wrt bug #437686. Thanks to Andreis Vinogradovs, ebuild is taken
+  from rion overlay with some improvements
+
+*ploop-1.4 (17 Jul 2012)
+
+  17 Jul 2012; Peter Volkov <pva@gentoo.org> +ploop-1.4.ebuild:
+  Version bump. Fixed multilib issue.
+
+*ploop-1.2 (03 May 2012)
+
+  03 May 2012; Peter Volkov <pva@gentoo.org> +ploop-1.2.ebuild,
+  +files/ploop-1.2-soname.patch, +metadata.xml:
+  Initial import. New tool from parallels. Enjoy!

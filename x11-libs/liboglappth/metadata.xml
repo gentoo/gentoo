@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci-chemistry</herd>
+<longdescription>
+Ghemical supports both quantum-mechanics (semi-empirical and ab initio) models 
+and molecular mechanics models (there is an experimental Tripos 5.2-like force 
+field for organic molecules). Also a tool for reduced protein models is 
+included. Geometry optimization, molecular dynamics and a large set of 
+visualization tools are currently available.
+</longdescription>
+</pkgmetadata>

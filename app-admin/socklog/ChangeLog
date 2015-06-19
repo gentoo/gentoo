@@ -1,0 +1,48 @@
+# ChangeLog for app-admin/socklog
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/socklog/ChangeLog,v 1.11 2011/08/28 22:43:50 vapier Exp $
+
+  28 Aug 2011; Mike Frysinger <vapier@gentoo.org> socklog-2.1.0.ebuild,
+  +files/socklog-2.1.0-headers.patch:
+  Clean up EAPI clean up #380249 by Michael. Add patch to fix up missing header
+  includes fo func prototypes.
+
+  15 Jun 2011; Jeroen Roovers <jer@gentoo.org> -socklog-2.0.2.ebuild,
+  -socklog-2.0.2-r1.ebuild, -files/socklog-2.0.2-tryto-race-fix.patch:
+  [Look up, it is all happening up there, not here.]
+
+*socklog-2.1.0 (15 Jun 2011)
+
+  15 Jun 2011; Jeroen Roovers <jer@gentoo.org> +socklog-2.1.0.ebuild:
+  Version bump. Update runit version dependency for runsvctrl -> sv change. Set
+  proper S instead of cd-ing constantly. Remove empty DEPEND. Do not install
+  nearly empty README.
+
+  07 Apr 2011; Ultrabug <ultrabug@gentoo.org> socklog-2.0.2.ebuild,
+  socklog-2.0.2-r1.ebuild:
+  migrate ebuilds to new-style virtual, wrt #358881
+
+  11 Oct 2009; Mark Loeser <halcy0n@gentoo.org> socklog-2.0.2.ebuild:
+  QA fixes; unquoted variables
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*socklog-2.0.2-r1 (15 Feb 2006)
+
+  15 Feb 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/socklog-2.0.2-tryto-race-fix.patch, +socklog-2.0.2-r1.ebuild:
+  Fix from upstream for race condition #122784 by Alex Efros.
+
+*socklog-2.0.2 (12 Apr 2005)
+
+  12 Apr 2005; Mike Frysinger <vapier@gentoo.org> +socklog-2.0.2.ebuild:
+  Version bump #88762 by Thilo Bangert.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> socklog-1.5.0.ebuild:
+  Dependency update: sys-apps/runit -> sys-process/runit.
+
+*socklog-1.5.0 (09 Oct 2004)
+
+  09 Oct 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Torne Wuff #39263.

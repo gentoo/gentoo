@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=app-arch/unzip || ( >=app-text/stardict-2.4.2 app-text/sdcv app-text/goldendict ) gzip? ( app-arch/gzip app-text/dictd )
+DESCRIPTION=Stardict Dictionary Vietnamese to German
+HOMEPAGE=http://forum.vnoss.org/viewtopic.php?id=1818
+IUSE=gzip
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://james.dyndns.ws/pub/Dictionary/StarDict-James/VietDuc12K.zip
+_eclasses_=stardict	0377e6bf21060f0d18a39ea68f54a162
+_md5_=f8a9db8225bfb59460f39ea39b6030d0

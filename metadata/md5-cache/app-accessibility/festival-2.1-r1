@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=~app-accessibility/speech-tools-2.1 >=sys-libs/ncurses-5.6-r2
+DESCRIPTION=Festival Text to Speech engine
+EAPI=2
+HOMEPAGE=http://www.cstr.ed.ac.uk/projects/festival/
+KEYWORDS=alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=FESTIVAL HPND BSD rc regexp-UofT free-noncomm
+RDEPEND=~app-accessibility/speech-tools-2.1 >=sys-libs/ncurses-5.6-r2
+SLOT=0
+SRC_URI=http://www.festvox.org/packed/festival/2.1/festival-2.1-release.tar.gz http://www.festvox.org/packed/festival/2.1/festlex_CMU.tar.gz http://www.festvox.org/packed/festival/2.1/festlex_OALD.tar.gz http://www.festvox.org/packed/festival/2.1/festlex_POSLEX.tar.gz http://www.festvox.org/packed/festival/2.1/festvox_cmu_us_awb_cg.tar.gz http://www.festvox.org/packed/festival/2.1/festvox_cmu_us_rms_cg.tar.gz http://www.festvox.org/packed/festival/2.1/festvox_cmu_us_slt_arctic_hts.tar.gz http://www.festvox.org/packed/festival/2.1/festvox_rablpc16k.tar.gz http://www.festvox.org/packed/festival/2.1/festvox_kallpc16k.tar.gz http://www.festvox.org/packed/festival/2.1/speech_tools-2.1-release.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=ca797c5cf085b5de6528433482846580

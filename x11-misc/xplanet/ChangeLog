@@ -1,0 +1,316 @@
+# ChangeLog for x11-misc/xplanet
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xplanet/ChangeLog,v 1.81 2014/01/24 19:48:26 jer Exp $
+
+*xplanet-1.3.0-r1 (24 Jan 2014)
+
+  24 Jan 2014; Jeroen Roovers <jer@gentoo.org> xplanet-1.3.0.ebuild,
+  +xplanet-1.3.0-r1.ebuild:
+  Only apply giflib patch in unstable (bug #497188).
+
+  27 Dec 2013; Robin H. Johnson <robbat2@gentoo.org>
+  +files/xplanet-1.3.0-giflib.patch, xplanet-1.3.0.ebuild:
+  Bug #488406: newer giflib compile fixes.
+
+  03 Jul 2012; Brent Baude <ranger@gentoo.org> xplanet-1.3.0.ebuild:
+  Marking xplanet-1.3.0 ppc for bug 422393
+
+  22 Jun 2012; Brent Baude <ranger@gentoo.org> xplanet-1.3.0.ebuild:
+  Marking xplanet-1.3.0 ppc64 for bug 422393
+
+  20 Jun 2012; Jeff Horelick <jdhore@gentoo.org> xplanet-1.3.0.ebuild:
+  marked x86 per bug 422393
+
+  19 Jun 2012; Agostino Sarubbo <ago@gentoo.org> xplanet-1.3.0.ebuild:
+  Stable for amd64, wrt bug #422393
+
+*xplanet-1.3.0 (05 May 2012)
+
+  05 May 2012; Samuli Suominen <ssuominen@gentoo.org> +xplanet-1.3.0.ebuild:
+  Version bump. Missing virtual/pkgconfig for USE="truetype" and
+  x11-libs/pango. Missing -I/usr/include/netpbm for finding pnm.h
+  (flag-o-matic.eclass).
+
+  12 Nov 2011; Justin Lecher <jlec@gentoo.org> xplanet-1.2.2.ebuild:
+  Corrected slotting for png and tiff and EPAI=4 usage
+
+  11 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> -xplanet-1.2.1.ebuild,
+  -files/xplanet-1.2.1-gentoo.patch:
+  old
+
+  11 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> xplanet-1.2.2.ebuild:
+  ppc/ppc64 stable wrt #385795
+
+  08 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> xplanet-1.2.2.ebuild:
+  x86 stable wrt bug #385795
+
+  06 Oct 2011; Markos Chandras <hwoarang@gentoo.org> xplanet-1.2.2.ebuild:
+  Stable on amd64 wrt bug #385795
+
+*xplanet-1.2.2 (16 Sep 2011)
+
+  16 Sep 2011; Markos Chandras <hwoarang@gentoo.org> +xplanet-1.2.2.ebuild:
+  Version bump. Also fixes bug #383215
+
+  08 Nov 2010; Krzysztof Pawlik <nelchael@gentoo.org> xplanet-1.2.1.ebuild:
+  Change dependency: media-libs/jpeg -> virtual/jpeg.
+
+  04 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> xplanet-1.2.1.ebuild:
+  ppc64 stable wrt #323027
+
+  26 Jun 2010; <nixnut@gentoo.org> xplanet-1.2.1.ebuild:
+  ppc stable #323027
+
+  20 Jun 2010; Markus Meier <maekke@gentoo.org> xplanet-1.2.1.ebuild:
+  x86 stable, bug #323027
+
+  10 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> xplanet-1.2.1.ebuild:
+  amd64 stable wrt #323027
+
+*xplanet-1.2.1 (26 Jul 2009)
+
+  26 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> +xplanet-1.2.1.ebuild,
+  +files/xplanet-1.2.1-gentoo.patch:
+  Fix building with GCC 4.4 and other issues wrt #277937, thanks to Zeev
+  Tarantov.
+
+  03 May 2008; Samuli Suominen <drac@gentoo.org>
+  +files/xplanet-1.2.0-gcc43.patch, xplanet-1.2.0.ebuild:
+  Fix building with GCC 4.3 wrt #214047, thanks to Michal Kiedrowicz.
+
+  01 Jul 2007; Samuli Suominen <drac@gentoo.org> xplanet-1.2.0.ebuild:
+  Clean up.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  06 May 2006; Krzysiek Pawlik <nelchael@gentoo.org> xplanet-1.2.0.ebuild:
+  Fix deps for building with -X in USE. See bug #132418.
+
+  21 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> xplanet-1.2.0.ebuild:
+  Fixed DEPEND for modular X.
+
+  15 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> -xplanet-1.1.1.ebuild,
+  -xplanet-1.1.2-r1.ebuild:
+  Removed old versions.
+
+  19 Nov 2005; Rene Nussbaumer <killerfox@gentoo.org> xplanet-1.2.0.ebuild:
+  Stable on hppa.
+
+  04 Nov 2005; Mark Loeser <halcy0n@gentoo.org> xplanet-1.2.0.ebuild:
+  Stable on x86; bug #111124
+
+  03 Nov 2005; Jose Luis Rivero <yoswink@gentoo.org> xplanet-1.2.0.ebuild:
+  Stable on alpha wrt bug #111124
+
+  02 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org> xplanet-1.2.0.ebuild:
+  Stable on sparc wrt #111124
+
+  02 Nov 2005; Luis Medinas <metalgod@gentoo.org> xplanet-1.2.0.ebuild:
+  Marked Stable on amd64. Bug #111124.
+
+  01 Nov 2005; Brent Baude <ranger@gentoo.org> xplanet-1.2.0.ebuild:
+  Marking xplanet-1.2.0 ppc64 stable per bug request 111124
+
+  01 Nov 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  xplanet-1.2.0.ebuild:
+  Marked ppc stable, bug #111124
+
+  01 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org> xplanet-1.1.1.ebuild,
+  xplanet-1.1.2-r1.ebuild, xplanet-1.2.0.ebuild:
+  Fixed dodoc not to install COPYING and/or INSTALL.
+
+*xplanet-1.2.0 (17 Jun 2005)
+
+  17 Jun 2005; Don Seiler <rizzo@gentoo.org> +xplanet-1.2.0.ebuild:
+  Version bump
+
+*xplanet-1.1.2-r1 (15 Jun 2005)
+
+  15 Jun 2005; Jonathan Smith <smithj@gentoo.org> -xplanet-1.1.2.ebuild,
+  +xplanet-1.1.2-r1.ebuild:
+  a few silly ebuild fixes
+
+*xplanet-1.1.2 (13 Jun 2005)
+
+  13 Jun 2005; Don Seiler <rizzo@gentoo.org> metadata.xml,
+  +xplanet-1.1.2.ebuild:
+  Version bump
+
+  24 May 2005; Don Seiler <rizzo@gentoo.org> xplanet-1.1.1.ebuild:
+  Removing dependency on libungif, should only use giflib from now on. Closes
+  bug #93445.
+
+  24 May 2005; Don Seiler <rizzo@gentoo.org> xplanet-1.1.1.ebuild:
+  Depending on virtual/glut, closes bug #93444.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  27 Aug 2004; Tom Gall <tgall@gentoo.org> xplanet-1.1.1.ebuild:
+  stable on ppc64, bug #59353
+
+  12 Aug 2004; <SeJo@gentoo.org> xplanet-1.1.1.ebuild:
+  stable on ppc
+
+  09 Aug 2004; Guy Martin <gmsoft@gentoo.org> xplanet-1.1.1.ebuild:
+  Stable on hppa.
+
+  06 Aug 2004; Don Seiler <rizzo@gentoo.org> xplanet-1.1.1.ebuild:
+  Putting ~hppa back in.
+
+  06 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> xplanet-1.1.1.ebuild:
+  Stable on alpha, bug 58915.
+
+  02 Aug 2004; Don Seiler <rizzo@gentoo.org> xplanet-1.1.1.ebuild:
+  Adding ~ppc, thanks to JoseJX in #gentoo-ppc for testing
+
+  31 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> xplanet-1.1.1.ebuild:
+  Marked stable on amd64.
+
+  30 Jul 2004; Gustavo Zacarias <gustavoz@gentoo.org> xplanet-1.1.1.ebuild:
+  Stable on sparc wrt #58915
+
+  30 Jul 2004; Don Seiler <rizzo@gentoo.org> xplanet-1.1.1.ebuild:
+  Stable on x86
+
+  28 Jul 2004; Don Seiler <rizzo@gentoo.org> xplanet-1.1.1.ebuild:
+  Conditionally depending on virtual/x11, fixes Bug #58705.  Thanks
+  to Tyler Lund.
+
+*xplanet-1.1.1 (23 Jul 2004)
+
+  23 Jul 2004; Don Seiler <rizzo@gentoo.org> +xplanet-1.1.1.ebuild:
+  Version bump
+
+*xplanet-1.1.0 (22 Jul 2004)
+
+  22 Jul 2004; Don Seiler <rizzo@gentoo.org> metadata.xml,
+  +xplanet-1.1.0.ebuild:
+  Version bump
+
+  19 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> xplanet-1.0.8.ebuild:
+  Added ~alpha keyword.
+
+  15 Jul 2004; Gustavo Zacarias <gustavoz@gentoo.org> xplanet-1.0.8.ebuild:
+  Keyworded ~sparc
+
+  03 Jul 2004; <pyrania@gentoo.org> xplanet-1.0.8.ebuild:
+  Stable on x86.
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> xplanet-0.94-r1.ebuild,
+  xplanet-1.0.1.ebuild, xplanet-1.0.3.ebuild, xplanet-1.0.8.ebuild:
+  add sed-4 dep
+
+  28 Jun 2004; <augustus@gentoo.org> xplanet-1.0.8.ebuild:
+  1.0.8 marked ~amd64.  Bug 51963.
+
+  12 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> xplanet-1.0.1.ebuild:
+  Stable on alpha.
+
+*xplanet-1.0.8 (02 Jun 2004)
+
+  02 Jun 2004; Ian Leitch <port001@gentoo.org> +xplanet-1.0.8.ebuild:
+  Version bump, #51851
+
+  26 May 2004; Ian Leitch <port001@gentoo.org> xplanet-0.94-r1.ebuild,
+  xplanet-1.0.1.ebuild, xplanet-1.0.3.ebuild:
+  Added NEWS, ChangeLog, README.config to dodoc - #50180
+
+  26 May 2004; Danny van Dyk <kugelfang@gentoo.org> xplanet-1.0.3.ebuild:
+  Marked ~amd64.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> xplanet-0.94-r1.ebuild:
+  Add inherit eutils
+
+  27 Apr 2004; Gustavo Zacarias <gustavoz@gentoo.org> xplanet-1.0.3.ebuild:
+  Stable on sparc
+
+  15 Apr 2004; Jason Wever <weeve@gentoo.org> xplanet-1.0.3.ebuild:
+  Added ~sparc keyword.
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> xplanet-1.0.1.ebuild,
+  xplanet-1.0.3.ebuild:
+  Marked stable on x86.
+
+  25 Jan 2004; Markus Nigbur <pyrania@gentoo.org> xplanet-0.94-r1.ebuild,
+  xplanet-1.0.1.ebuild, xplanet-1.0.3.ebuild:
+  mirror://sourceforge for the wise.
+
+*xplanet-1.0.3 (24 Jan 2004)
+
+  24 Jan 2004; Brandon Hale <tseng@gentoo.org> xplanet-1.0.3.ebuild:
+  Version bump, closes bug 38458. Remove ~mips from 1.0.1, as a few
+  dependencies are masked.
+
+  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+*xplanet-1.0.1 (17 Mar 2003)
+
+  05 May 2003; foser <foser@gentoo.org> xplanet-{0.94-r1,1.0.1}.ebuild :
+  Re-enabling truetype support (#15340)
+
+  17 Mar 2003; Graham Forest <vladimir@gentoo.org> xplanet-1.0.1.ebuild:
+  version bump
+
+*xplanet-1.0.0 (13 Mar 2003)
+
+  13 Mar 2003; Seemant Kulleen <seemant@gentoo.org> xplanet-1.0.0.ebuild:
+  version bump
+
+*xplanet-0.94-r1 (23 Aug 2002)
+
+  11 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Made a simple gcc3 patch #21096.
+
+  07 Feb 2003: Jason Wever <weeve@gentoo.org> xplanet-0.94-r1.ebuild :
+  Changed ~sparc keyword to sparc.
+
+  20 Jan 2003: Jason Wever <weeve@gentoo.org> xplanet-0.94-r1.ebuild:
+  Added ~sparc to keywords
+
+  23 Aug 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  xplanet-0.94-r1.ebuild, files/digest-xplanet-0.94-r1 :
+
+  Fixed GCC3.2 include re-ordering bug.
+	
+*xplanet-0.94 (27 May 2002)
+
+  15 Jul 2002; Mark Guertin <gerk@gentoo.org>
+  Added ppc to keywords
+
+  27 May 2002; Seemant Kulleen <seemant@gentoo.org> xplanet-0.94.ebuild
+  files/digest-xplanet-0.94 :
+
+  Added USE dependent virtual/opengl to DEPEND list, thanks to
+  gwenn.gueguen@libertysurf.fr (Gwenn) in bug #3056.  Then, version bumped
+  and added USE dependent png, tiff and jpeg to the list as well.
+
+*xplanet-0.93-r1 (27 Mar 2002)
+
+  27 Mar 2002; Seemant Kulleen <seemant@gentoo.org> xplanet-0.93-r1.ebuild :
+
+  man page/LFH compliance submitted by Matthew Kennedy
+
+*xplanet-0.93 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> skel.ChangeLog :
+  
+  This changelog is targetted to users. This means that the comments should be
+  well explained and written in clean English. 
+  
+  Every new version or revision of the package has to be marked by a '*'
+  seperator line as above. Changements since the last revision have to be
+  added to the top of the file, underneath the initial copyright and cvs header
+  comments, in exactly the same format as this comment.
+  
+  This means that you start with header line that has the following format :
+  
+      date; your_name <your_email> changed_file1, changed_file2 :
+	  
+  Below that line your explanation should follow. It has to be indented,
+  paragraphed and wrapped at a linewidth of 80 characters.
+  
+  Any details about what exactly changed in the code should be added as a
+  message when the changes are committed to cvs, not in this file.

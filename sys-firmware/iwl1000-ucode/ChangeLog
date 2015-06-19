@@ -1,0 +1,53 @@
+# ChangeLog for sys-firmware/iwl1000-ucode
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-firmware/iwl1000-ucode/ChangeLog,v 1.3 2012/11/18 11:36:04 pacho Exp $
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+  03 Oct 2012; Mike Frysinger <vapier@gentoo.org>
+  iwl1000-ucode-128.50.3.1.ebuild, iwl1000-ucode-39.31.5.1.ebuild:
+  Drop useless DEPEND strings -- these work fine w/out udev or hotplug.
+
+  06 Aug 2012; Ulrich Müller <ulm@gentoo.org> +iwl1000-ucode-39.31.5.1.ebuild,
+  +iwl1000-ucode-128.50.3.1.ebuild, +metadata.xml:
+  Package moved from net-wireless to sys-firmware, bug 429868.
+
+  24 Sep 2011; Ulrich Mueller <ulm@gentoo.org> iwl1000-ucode-39.31.5.1.ebuild:
+  Output a warning in pkg_pretend if the kernel is too old, bug 384125.
+
+  23 Sep 2011; Ulrich Mueller <ulm@gentoo.org>
+  +iwl1000-ucode-128.50.3.1.ebuild:
+  Restore iwl1000-ucode-128.50.3.1 in SLOT 3, bug 384125.
+
+  22 Sep 2011; Ulrich Mueller <ulm@gentoo.org>
+  -iwl1000-ucode-128.50.3.1.ebuild:
+  Remove old.
+
+  18 Sep 2011; Markus Meier <maekke@gentoo.org> iwl1000-ucode-39.31.5.1.ebuild:
+  x86 stable, bug #382509
+
+  16 Sep 2011; Tony Vroon <chainsaw@gentoo.org> iwl1000-ucode-39.31.5.1.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo, Ian
+  "idella4" Delaney & Tomáš "Mepho" Pružina in bug #382509.
+
+*iwl1000-ucode-39.31.5.1 (31 May 2011)
+
+  31 May 2011; Ulrich Mueller <ulm@gentoo.org> +iwl1000-ucode-39.31.5.1.ebuild:
+  Version bump, bug 369559. This is actually an upgrade, in spite of the
+  decreased upstream version number.
+
+  23 Aug 2010; Markus Meier <maekke@gentoo.org>
+  iwl1000-ucode-128.50.3.1.ebuild:
+  x86 stable, bug #333835
+
+  23 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  iwl1000-ucode-128.50.3.1.ebuild:
+  Stable on amd64 wrt bug #333835
+
+*iwl1000-ucode-128.50.3.1 (06 May 2010)
+
+  06 May 2010; Ulrich Mueller <ulm@gentoo.org>
+  +iwl1000-ucode-128.50.3.1.ebuild, +metadata.xml:
+  Initial import. Ebuild contributed by kazuya08@gmail.com in bug 296352,
+  with modifications by me.

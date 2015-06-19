@@ -1,0 +1,512 @@
+diff -Nur grib_api-1.9.16.orig/configure.ac grib_api-1.9.16/configure.ac
+--- grib_api-1.9.16.orig/configure.ac	2012-04-18 20:59:05.000000000 +0100
++++ grib_api-1.9.16/configure.ac	2012-04-18 20:59:24.000000000 +0100
+@@ -24,21 +24,9 @@
+ AC_CONFIG_HEADER([src/config.h])
+ AM_INIT_AUTOMAKE($PACKAGE_NAME,[${PACKAGE_VERSION}],[http://www.ecmwf.int])
+ 
+-definition_files_path=/usr/local/share/grib_api/definitions
+-samples_files_path=/usr/local/share/grib_api/samples
+-default_perl_install='${prefix}/perl'
+-
+-
+-if test "$prefix" != 'NONE' ; then
+-  definition_files_path=${prefix}/share/definitions
+-  samples_files_path=${prefix}/share/samples
+-  default_perl_install=${prefix}/perl
+-fi
+-
+-if test "$datadir" != '${datarootdir}' ; then
+-   definition_files_path=$datadir/definitions
+-fi
+-
++definition_files_path=${datadir}/$PACKAGE_NAME/definitions
++samples_files_path=${datadir}/$PACKAGE_NAME/samples
++default_perl_install=${prefix}/perl
+ 
+ AC_DEFINE_UNQUOTED(GRIB_API_MAIN_VERSION,$GRIB_API_MAIN_VERSION,Grib Api version)
+ AC_DEFINE_UNQUOTED(GRIB_API_MAJOR_VERSION,$GRIB_API_MAJOR_VERSION,Grib Api Major release)
+@@ -62,19 +50,20 @@
+ AC_PROG_LEX
+ AC_PROG_F77(pgf90 pgf77 xlf gfortran f77 g77 f90 ifort) 
+ AC_PROG_FC(pgf90 xlf90 gfortran f90 ifort) 
++AC_PROG_LIBTOOL
+ 
+ dnl check availability of pthreads
+ AC_ARG_ENABLE([pthread],
+   [AC_HELP_STRING([--enable-pthread],
+-                  [enable POSIX thread ])],
+-    GRIB_PTHREADS=1 , GRIB_PTHREADS=0
+-)
++                  [enable POSIX thread ])])
+ 
+-if test $GRIB_PTHREADS -eq 1
++if test x"$enable_pthread" = x"yes"
+ then
++GRIB_PTHREADS=1
+ AC_GRIB_PTHREADS
+ AC_GRIB_LINUX_PTHREADS
+ else
++GRIB_PTHREADS=0
+ GRIB_LINUX_PTHREADS=0
+ fi
+ 
+@@ -97,9 +86,9 @@
+ AC_ARG_ENABLE([ieee-native],
+   [AC_HELP_STRING([--disable-ieee-native],
+                   [disable ieee native packing])],
+-     without_ieee=1,without_ieee=0)
++     with_ieee=$enableval,with_ieee=no)
+ 
+-if test $without_ieee -eq 1
++if test x"$with_ieee" = x"yes"
+ then
+ AC_DEFINE_UNQUOTED(IEEE_LE,0,1-> ieee little endian float/double 0->no ieee little endian float/double)
+ AC_DEFINE_UNQUOTED(IEEE_BE,0,1-> ieee big endian float/double 0->no ieee big endian float/double)
+@@ -120,36 +109,47 @@
+ AC_ARG_ENABLE([align-memory],
+   [AC_HELP_STRING([--enable-align-memory],
+                   [enable memory alignement])],
+-AC_DEFINE_UNQUOTED(GRIB_MEM_ALIGN,1,memory alignment required) ,
+-	 )
++with_mem_align=$enableval)
+ 
++if test x"$with_mem_align" = x"yes"
++then
++AC_DEFINE_UNQUOTED(GRIB_MEM_ALIGN,1,memory alignment required)
++fi
+ dnl use vectorised code     
+ AC_ARG_ENABLE([vector],
+   [AC_HELP_STRING([--enable-vector],
+                   [enable vectorised code ])],
+-	 vectorise=1,vectorise=0)
+-
++	 with_vectorise=$enableval, vectorise=0)
++if test x"$with_vectorise" = x"yes"
++then
++vectorise=1
++fi
+ AC_DEFINE_UNQUOTED(VECTOR,$vectorise,vectorised code) 
+ 
+ dnl enable memory management
+ AC_ARG_ENABLE([memory-management],
+   [AC_HELP_STRING([--enable-memory-management],
+                   [enable memory ])],
+-AC_DEFINE_UNQUOTED(MANAGE_MEM,1,memory management) ,
++with_manage_mem=$enableval,
+ AC_DEFINE_UNQUOTED(MANAGE_MEM,0,memory management) 
+ 	 )
++if test x"$with_manage_mem" = x"yes"
++then
++AC_DEFINE_UNQUOTED(MANAGE_MEM,1,memory management)
++fi
+ 
+ dnl enable development configuration
+ DEVEL_RULES='' 
+ AC_ARG_ENABLE([development],
+   [AC_HELP_STRING([--enable-development],
+-                  [enable development configuration ])],
+-    GRIB_DEVEL=1 , GRIB_DEVEL=0
+-)
+-if test $GRIB_DEVEL -eq 1
++                  [enable development configuration ])])
++
++if test x"$enable_development" = x"yes"
+ then
++   GRIB_DEVEL=1
+    DEVEL_RULES='extrules.am'
+ else
++   GRIB_DEVEL=0
+    DEVEL_RULES='dummy.am'
+ fi
+ AC_SUBST(DEVEL_RULES)
+@@ -186,14 +186,14 @@
+ AC_ARG_ENABLE([fortran],
+   [AC_HELP_STRING([--disable-fortran],
+                   [disable fortran interface])],
+-     without_fortran=1,without_fortran=0)
++     with_fortran=$enableval,with_fortran=yes)
+ 
+ if test "x$FC" = "x"
+ then
+-  without_fortran=1
++  with_fortran=no
+ fi
+ 
+-if test $without_fortran -ne 1
++if test x$"with_fortran" = x"yes"
+ then
+   FORTRAN_MOD=fortran
+   AC_SUBST(FORTRAN_MOD)
+@@ -262,8 +262,8 @@
+ AC_ARG_ENABLE([timer],
+   [AC_HELP_STRING([--enable-timer],
+                   [enable timer])],
+-     with_timer=1,with_timer=0)
+-if test ${with_timer} -eq 1
++     with_timer=$enable_val,with_timer=no)
++if test x"${with_timer}" = x"yes"
+ then
+   AC_DEFINE(GRIB_TIMER,1,1->Timer on 0->Timer off)
+ else
+@@ -275,8 +275,8 @@
+ AC_ARG_ENABLE([omp-packing],
+   [AC_HELP_STRING([--enable-omp-packing],
+                   [enable OpenMP multithreaded packing])],
+-     with_omp=1,with_omp=0)
+-if test ${with_omp} -eq 1
++     with_omp=$enableval,with_omp=no)
++if test x"${with_omp}" = x"yes"
+ then
+   AC_DEFINE(OMP_PACKING,1,1->OpenMP packing 0->single thread packing)
+ else
+@@ -291,8 +291,6 @@
+ if test $netcdf_dir != 'none'
+ then
+ 	with_netcdf=1
+-	CFLAGS="$CFLAGS -I${netcdf_dir}/include"
+-    LDFLAGS="$LDFLAGS -L${netcdf_dir}/lib"
+     AC_CHECK_LIB(netcdf,nc_open,netcdf_ok=1,netcdf_ok=0)
+ 	if test $netcdf_ok -eq 0
+ 	then
+@@ -312,7 +310,7 @@
+ AC_ARG_ENABLE([jpeg],
+   [AC_HELP_STRING([--disable-jpeg],
+                   [disable jpeg 2000 for grib 2 decoding/encoding])],
+-     without_jpeg=1,without_jpeg=0)
++     with_jpeg=$enableval,with_jpeg=yes)
+ 
+ AC_ARG_WITH([jasper],
+         [AC_HELP_STRING([--with-jasper=JASPER],
+@@ -322,12 +320,6 @@
+ JASPER_DIR=$jasper_dir
+ AC_SUBST(JASPER_DIR)
+ 
+-if test $jasper_dir != 'system'
+-then
+-  CFLAGS="$CFLAGS -I${jasper_dir}/include"
+-  LDFLAGS="$LDFLAGS -L${jasper_dir}/lib"
+-fi
+-
+ AC_ARG_WITH([openjpeg],
+         [AC_HELP_STRING([--with-openjpeg=OPENJPEG],
+ 	    [use specified openjpeg installation directory])],
+@@ -336,13 +328,7 @@
+ OPENJPEG_DIR=$openjpeg_dir
+ AC_SUBST(OPENJPEG_DIR)
+ 
+-if test $openjpeg_dir != 'system'
+-then
+-  CFLAGS="$CFLAGS -I${openjpeg_dir}/include"
+-  LDFLAGS="$LDFLAGS -L${openjpeg_dir}/lib"
+-fi
+-
+-if test $without_jpeg -ne 1
++if test x"$with_jpeg" = x"yes"
+ then
+     AC_DEFINE(HAVE_JPEG,1,JPEG enabled)
+     AC_CHECK_LIB(jasper,jas_stream_memopen,jasper_ok=1,jasper_ok=0)
+@@ -429,9 +415,9 @@
+ AC_ARG_ENABLE([install-system-perl],
+         [AC_HELP_STRING([--enable-install-system-perl],
+ 		                [perl modules will install in the standard perl installation ])],
+-        enable_perl_install='yes', enable_perl_install='no')
++        enable_perl_install=$enableval, enable_perl_install=no)
+ 
+-if test "$enable_perl_install" = 'yes'
++if test x"$enable_perl_install" = x"yes"
+ then
+     PERL_INSTALL_OPTIONS=""
+ fi
+@@ -461,7 +447,7 @@
+ builddir=`pwd`
+ 
+ dnl Options to pass when configuring Perl grib_api
+-GRIB_API_LIB="${builddir}/src/grib_api.a"
++GRIB_API_LIB="${builddir}/src/libgrib_api.la"
+ GRIB_API_INC="${builddir}/src"
+ AC_ARG_WITH([perl-options],
+   [AC_HELP_STRING([--with-perl-options=[OPTIONS]], [options to pass on command-line when
+diff -Nur grib_api-1.9.16.orig/definitions/installDefinitions.sh grib_api-1.9.16/definitions/installDefinitions.sh
+--- grib_api-1.9.16.orig/definitions/installDefinitions.sh	2012-04-18 20:59:04.000000000 +0100
++++ grib_api-1.9.16/definitions/installDefinitions.sh	2012-04-18 20:59:24.000000000 +0100
+@@ -44,7 +44,7 @@
+ echo checking definition files compatibility...
+ for file in `find . -name '*.def' -print`
+ do
+-  ${grib_api_bin}/parser $file 
++  ${grib_api_bin}/grib_parser $file 
+ done
+ if [ $? != 0 ]
+ then
+diff -Nur grib_api-1.9.16.orig/examples/C/Makefile.am grib_api-1.9.16/examples/C/Makefile.am
+--- grib_api-1.9.16.orig/examples/C/Makefile.am	2012-04-18 20:59:04.000000000 +0100
++++ grib_api-1.9.16/examples/C/Makefile.am	2012-04-18 20:59:24.000000000 +0100
+@@ -30,7 +30,7 @@
+ 
+ INCLUDES =  -I$(top_builddir)/src
+ 
+-LDADD = $(top_builddir)/src/libgrib_api.a
++LDADD = $(top_builddir)/src/libgrib_api.la
+ DEPENDENCIES = $(LDADD)
+ 
+ EXTRA_DIST =$(TESTS) include.sh
+diff -Nur grib_api-1.9.16.orig/examples/F90/Makefile.am grib_api-1.9.16/examples/F90/Makefile.am
+--- grib_api-1.9.16.orig/examples/F90/Makefile.am	2012-04-18 20:59:04.000000000 +0100
++++ grib_api-1.9.16/examples/F90/Makefile.am	2012-04-18 20:59:24.000000000 +0100
+@@ -37,7 +37,7 @@
+ 
+ AM_FCFLAGS = $(F90_MODULE_FLAG)$(top_builddir)/fortran
+ 
+-LDADD = $(top_builddir)/fortran/libgrib_api_f90.a $(top_builddir)/src/libgrib_api.a
++LDADD = $(top_builddir)/fortran/libgrib_api_f90.la $(top_builddir)/src/libgrib_api.la
+ DEPENDENCIES = $(LDADD)
+ 
+ EXTRA_DIST =$(TESTS) include.sh
+diff -Nur grib_api-1.9.16.orig/examples/python/include.sh grib_api-1.9.16/examples/python/include.sh
+--- grib_api-1.9.16.orig/examples/python/include.sh	2012-04-18 20:59:04.000000000 +0100
++++ grib_api-1.9.16/examples/python/include.sh	2012-04-18 20:59:24.000000000 +0100
+@@ -14,6 +14,8 @@
+ 
+ PYTHONPATH=$cpath/python:$PYTHONPATH
+ export PYTHONPATH
++LD_LIBRARY_PATH=$cpath/src/.libs:$LD_LIBRARY_PATH
++export LD_LIBRARY_PATH
+ 
+ set -u
+ 
+diff -Nur grib_api-1.9.16.orig/examples/python/Makefile.am grib_api-1.9.16/examples/python/Makefile.am
+--- grib_api-1.9.16.orig/examples/python/Makefile.am	2012-04-18 20:59:04.000000000 +0100
++++ grib_api-1.9.16/examples/python/Makefile.am	2012-04-18 20:59:24.000000000 +0100
+@@ -10,7 +10,7 @@
+ iterator_SOURCES = iterator.c
+ count_messages_SOURCES = count_messages.c
+ INCLUDES =  -I$(top_builddir)/src
+-LDADD = $(top_builddir)/src/libgrib_api.a
++LDADD = $(top_builddir)/src/libgrib_api.la
+ DEPENDENCIES = $(LDADD)
+ 
+ EXTRA_DIST = $(TESTS) include.sh clone.py count_messages.py get.py index.py iterator.py keys_iterator.py multi_write.py nearest.py print_data.py samples.py set.py set_missing.py binary_message.py set_pv.py
+diff -Nur grib_api-1.9.16.orig/fortran/Makefile.am grib_api-1.9.16/fortran/Makefile.am
+--- grib_api-1.9.16.orig/fortran/Makefile.am	2012-04-18 20:59:04.000000000 +0100
++++ grib_api-1.9.16/fortran/Makefile.am	2012-04-18 20:59:24.000000000 +0100
+@@ -2,14 +2,14 @@
+ 
+ AM_CFLAGS =  @WARN_PEDANTIC@
+ 
+-lib_LIBRARIES = libgrib_api_f77.a libgrib_api_f90.a
++lib_LTLIBRARIES = libgrib_api_f77.la libgrib_api_f90.la
+ include_HEADERS = grib_api_f77.h
+ 
+-libgrib_api_f77_a_SOURCES= grib_fortran.c grib_f77.c 
+-libgrib_api_f77_a_DEPENDENCIES = $(top_builddir)/src/libgrib_api.a
++libgrib_api_f77_la_SOURCES= grib_fortran.c grib_f77.c 
++libgrib_api_f77_la_DEPENDENCIES = $(top_builddir)/src/libgrib_api.la
+ 
+-libgrib_api_f90_a_SOURCES= grib_fortran.c grib_f90.f90 
+-libgrib_api_f90_a_DEPENDENCIES = $(top_builddir)/src/libgrib_api.a grib_api_externals.h grib_api_visibility.h grib_api_constants.h grib_kinds.h
++libgrib_api_f90_la_SOURCES= grib_fortran.c grib_f90.f90 
++libgrib_api_f90_la_DEPENDENCIES = $(top_builddir)/src/libgrib_api.la grib_api_externals.h grib_api_visibility.h grib_api_constants.h grib_kinds.h
+ 
+ libgrib_api_fortran_prototypes= grib_fortran.c
+ 
+@@ -26,7 +26,7 @@
+ 
+ ## Make sure these will be cleaned even when they're not built by
+ ## default.
+-CLEANFILES = libgrib_api_f77.a libgrib_api_f90.a grib_f90.f90 *.mod grib_types grib_kinds.h
++CLEANFILES = libgrib_api_f77.la libgrib_api_f90.la grib_f90.f90 *.mod grib_types grib_kinds.h
+ 
+ #noinst_HEADERS = 
+ 
+diff -Nur grib_api-1.9.16.orig/perl/GRIB-API/Makefile.PL.in grib_api-1.9.16/perl/GRIB-API/Makefile.PL.in
+--- grib_api-1.9.16.orig/perl/GRIB-API/Makefile.PL.in	2012-04-18 20:59:05.000000000 +0100
++++ grib_api-1.9.16/perl/GRIB-API/Makefile.PL.in	2012-04-18 20:59:24.000000000 +0100
+@@ -19,5 +19,5 @@
+     INC               => '-I@GRIB_API_INC@', # e.g., '-I. -I/usr/include/other'
+ 	# Un-comment this if you add C files to link with later:
+     # OBJECT            => '$(O_FILES)', # link all the C files too
+-	depend           => { "API.o" => "../../src/libgrib_api.a" }
++	depend           => { "API.o" => "../../src/libgrib_api.la" }
+ );
+diff -Nur grib_api-1.9.16.orig/perl/Makefile.am grib_api-1.9.16/perl/Makefile.am
+--- grib_api-1.9.16.orig/perl/Makefile.am	2012-04-18 20:59:05.000000000 +0100
++++ grib_api-1.9.16/perl/Makefile.am	2012-04-18 20:59:24.000000000 +0100
+@@ -16,10 +16,10 @@
+ $(PERLMAKEFILE): $(PERLMAKEMAKER)
+ 	cd $(API_DIR) && @PERL@ Makefile.PL @PERL_INSTALL_OPTIONS@ @PERL_MAKE_OPTIONS@ @PERL_LD_OPTIONS@ 
+ 
+-$(PERLLIB): $(PERLMAKEFILE) $(top_builddir)/src/libgrib_api.a
++$(PERLLIB): $(PERLMAKEFILE) $(top_builddir)/src/libgrib_api.la
+ 	cd $(API_DIR) && $(MAKE)
+ 
+-$(top_builddir)/src/libgrib_api.a: $(top_builddir)/src/Makefile
++$(top_builddir)/src/libgrib_api.la: $(top_builddir)/src/Makefile
+ 	cd $(top_builddir)/src  && $(MAKE)
+ 
+ install-exec-perl: $(PERLMAKEFILE)
+diff -Nur grib_api-1.9.16.orig/python/Makefile.am grib_api-1.9.16/python/Makefile.am
+--- grib_api-1.9.16.orig/python/Makefile.am	2012-04-18 20:59:05.000000000 +0100
++++ grib_api-1.9.16/python/Makefile.am	2012-04-18 20:59:24.000000000 +0100
+@@ -23,7 +23,7 @@
+ 			swig_wrap_numpy.py
+ 
+ # What I want installed
+-pdir = $(libdir)/python$(PYTHON_VERSION)/site-packages/grib_api
++pdir = $(libdir)/python$(PYTHON_VERSION)/site-packages
+ p_DATA = \
+ 	_gribapi_swig.so \
+ 	gribapi.py \
+diff -Nur grib_api-1.9.16.orig/python/setup.py.in grib_api-1.9.16/python/setup.py.in
+--- grib_api-1.9.16.orig/python/setup.py.in	2012-04-18 20:59:05.000000000 +0100
++++ grib_api-1.9.16/python/setup.py.in	2012-04-18 20:59:24.000000000 +0100
+@@ -17,7 +17,8 @@
+ build_dir = '@BUILD_DIR@'
+ add_attribute(
+     include_dirs = os.path.join(build_dir,'src'),
+-    extra_objects = os.path.join(build_dir,'src','libgrib_api.a')
++    library_dirs = os.path.join(build_dir,'src','.libs'),
++    libraries = 'grib_api'
+ )
+ 
+ with_jasper = '@LIB_JASPER@'
+diff -Nur grib_api-1.9.16.orig/src/extrules.am grib_api-1.9.16/src/extrules.am
+--- grib_api-1.9.16.orig/src/extrules.am	2012-04-18 20:59:05.000000000 +0100
++++ grib_api-1.9.16/src/extrules.am	2012-04-18 20:59:24.000000000 +0100
+@@ -9,7 +9,7 @@
+ 	cmp ../python/grib_errors.h grib_errors.h.new || (p4 edit ../python/grib_errors.h ; cp grib_errors.h.new ../python/grib_errors.h)
+ 
+ 
+-proto:;-p4 edit grib_api_prototypes.h;mkptypes -A $(libgrib_api_a_prototypes) $(libgrib_api_extra_prototypes) > grib_api_prototypes.h
++proto:;-p4 edit grib_api_prototypes.h;mkptypes -A $(libgrib_api_la_prototypes) $(libgrib_api_extra_prototypes) > grib_api_prototypes.h
+ test:all;(cd ../tests; make tests)
+ 
+ templates:
+diff -Nur grib_api-1.9.16.orig/src/Makefile.am grib_api-1.9.16/src/Makefile.am
+--- grib_api-1.9.16.orig/src/Makefile.am	2012-04-18 20:59:05.000000000 +0100
++++ grib_api-1.9.16/src/Makefile.am	2012-04-18 20:59:24.000000000 +0100
+@@ -7,10 +7,10 @@
+ #  -DYYDEBUG
+ 
+ 
+-lib_LIBRARIES = libgrib_api.a
++lib_LTLIBRARIES = libgrib_api.la
+ include_HEADERS = grib_api.h
+ 
+-libgrib_api_a_prototypes= \
++libgrib_api_la_prototypes= \
+ 	action.c \
+          action_class_alias.c \
+          action_class_gen.c \
+@@ -143,7 +143,6 @@
+            grib_accessor_class_spectral_truncation.c \
+            grib_accessor_class_time.c \
+            grib_accessor_class_transient.c \
+-           grib_accessor_class_g1_half_byte_codeflag.c \
+            grib_accessor_class_values.c \
+ 		   grib_accessor_class_simple_packing_error.c \
+            grib_accessor_class_data_simple_packing.c \
+@@ -286,10 +285,10 @@
+ 
+ libgrib_api_extra_prototypes = grib_bits_any_endian.c grib_bits_any_endian_simple.c
+ 
+-libgrib_api_a_SOURCES = $(libgrib_api_a_prototypes) grib_yacc.c  grib_lex.c
++libgrib_api_la_SOURCES = $(libgrib_api_la_prototypes) grib_yacc.c  grib_lex.c
+ 
+-libgrib_api_a_LIBADD = @LIBOBJS@
+-libgrib_api_a_DEPENDENCIES = grib_api.h $(libgrib_api_a_LIBADD)
++libgrib_api_la_LIBADD = @LIBOBJS@
++libgrib_api_la_DEPENDENCIES = grib_api.h $(libgrib_api_la_LIBADD)
+ 
+ 
+ # set the include path
+@@ -297,7 +296,7 @@
+ 
+ ## Make sure these will be cleaned even when they're not built by
+ ## default.
+-CLEANFILES = libgrib_api.a
++CLEANFILES = libgrib_api.la
+ 
+ 
+ noinst_HEADERS = grib_api_internal.h \
+diff -Nur grib_api-1.9.16.orig/tests/definitions.sh grib_api-1.9.16/tests/definitions.sh
+--- grib_api-1.9.16.orig/tests/definitions.sh	2012-04-18 20:59:05.000000000 +0100
++++ grib_api-1.9.16/tests/definitions.sh	2012-04-18 20:59:24.000000000 +0100
+@@ -15,6 +15,6 @@
+ 
+ for file in `find $GRIB_DEFINITION_PATH -name '*.def' -print`
+ do
+-  ${tools_dir}parser $file > $REDIRECT
++  ${tools_dir}grib_parser $file > $REDIRECT
+ done
+ 
+diff -Nur grib_api-1.9.16.orig/tests/Makefile.am grib_api-1.9.16/tests/Makefile.am
+--- grib_api-1.9.16.orig/tests/Makefile.am	2012-04-18 20:59:05.000000000 +0100
++++ grib_api-1.9.16/tests/Makefile.am	2012-04-18 20:59:24.000000000 +0100
+@@ -31,7 +31,7 @@
+ 	 gribex_perf_SOURCES = gribex_perf.c
+ 	 gribex_perf_SOURCES = gauss_sub.c
+ 
+-     LDADD = $(top_builddir)/src/libgrib_api.a $(EMOS_LIB)
++     LDADD = $(top_builddir)/src/libgrib_api.la $(EMOS_LIB)
+ 
+      INCLUDES   = -I$(top_builddir)/src
+ 
+diff -Nur grib_api-1.9.16.orig/tigge/Makefile.am grib_api-1.9.16/tigge/Makefile.am
+--- grib_api-1.9.16.orig/tigge/Makefile.am	2012-04-18 20:59:04.000000000 +0100
++++ grib_api-1.9.16/tigge/Makefile.am	2012-04-18 20:59:24.000000000 +0100
+@@ -12,5 +12,5 @@
+ 
+ INCLUDES =  -I$(top_builddir)/src
+ 
+-LDADD = $(top_builddir)/src/libgrib_api.a
++LDADD = $(top_builddir)/src/libgrib_api.la
+ DEPENDENCIES = $(LDADD)
+diff -Nur grib_api-1.9.16.orig/tools/Makefile.am grib_api-1.9.16/tools/Makefile.am
+--- grib_api-1.9.16.orig/tools/Makefile.am	2012-04-18 20:59:05.000000000 +0100
++++ grib_api-1.9.16/tools/Makefile.am	2012-04-18 20:59:24.000000000 +0100
+@@ -3,9 +3,9 @@
+ 
+ AM_YFLAGS = -d
+ 
+-noinst_LIBRARIES = libgrib_tools.a
++noinst_LTLIBRARIES = libgrib_tools.la
+ 
+-libgrib_tools_a_SOURCES = grib_tools.c \
++libgrib_tools_la_SOURCES = grib_tools.c \
+                         grib_options.c
+ 
+ 
+@@ -13,7 +13,7 @@
+                grib_debug grib_info grib_filter grib_ls grib_dump \
+ 			   grib2ppm grib_set grib_get grib_get_data grib_copy grib_repair \
+ 			   grib_packing grib_cmp grib_convert  grib_distance grib_corruption_check\
+-			   grib_compare grib_list_keys parser grib_count grib_index_build grib1to2 \
++			   grib_compare grib_list_keys grib_parser grib_count grib_index_build grib1to2 \
+ 			   gg_sub_area_check grib_moments
+ 
+ noinst_PROGRAMS =  gaussian grib_diff mars_request xref all_keys #compile #dumpload grib_compare_old
+@@ -31,7 +31,7 @@
+ grib_histogram_SOURCES   =  grib_histogram.c
+ grib_distance_SOURCES   =  grib_distance.c
+ grib_debug_SOURCES   =  grib_debug.c
+-parser_SOURCES      =  parser.c
++grib_parser_SOURCES      =  parser.c
+ grib_list_keys_SOURCES      =  list_keys.c
+ all_keys_SOURCES      =  all_keys.c
+ grib2ppm_SOURCES    =  grib2ppm.c
+@@ -62,12 +62,12 @@
+ 
+ INCLUDES =  -I$(top_builddir)/src
+ 
+-LDADD = libgrib_tools.a $(top_builddir)/src/libgrib_api.a
++LDADD = libgrib_tools.la $(top_builddir)/src/libgrib_api.la
+ DEPENDENCIES = $(LDADD)
+ 
+ ## Make sure these will be cleaned even when they're not built by
+ ## default.
+-CLEANFILES = libgrib_tools.a
++CLEANFILES = libgrib_tools.la
+ 
+ grib1to2$(EXEEXT): grib1to2.txt
+ 	sed "s:toolsdir:$(bindir):" grib1to2.txt > grib1to2

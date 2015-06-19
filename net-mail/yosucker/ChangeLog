@@ -1,0 +1,187 @@
+# ChangeLog for net-mail/yosucker
+# Copyright 2000-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/yosucker/ChangeLog,v 1.43 2014/08/10 20:47:44 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> yosucker-73.ebuild,
+  yosucker-75.ebuild, yosucker-77.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  06 Nov 2013; Patrick Lauer <patrick@gentoo.org> yosucker-73.ebuild,
+  yosucker-75.ebuild, yosucker-77.ebuild:
+  Shorten description, make repoman happier
+
+*yosucker-77 (29 Mar 2007)
+
+  29 Mar 2007; Andrej Kacian <ticho@gentoo.org> -yosucker-69.ebuild,
+  -yosucker-71.ebuild, +yosucker-77.ebuild:
+  Version bump. Removed obsolete ebuilds.
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*yosucker-75 (22 Apr 2006)
+
+  22 Apr 2006; Fernando J. Pereda <ferdy@gentoo.org> +yosucker-75.ebuild:
+  Version bump as per bug #130847
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org> yosucker-69.ebuild,
+  yosucker-71.ebuild, yosucker-73.ebuild:
+  Virtuals for perl-core
+
+  07 Feb 2006; Simon Stelling <blubb@gentoo.org> yosucker-73.ebuild:
+  stable on amd64
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> yosucker-73.ebuild:
+  Stable on ppc.
+
+  24 Oct 2005; Andrej Kacian <ticho@gentoo.org> yosucker-73.ebuild:
+  Stable on x86.
+
+*yosucker-73 (22 Sep 2005)
+
+  22 Sep 2005; Andrej Kacian <ticho@gentoo.org> metadata.xml,
+  +yosucker-73.ebuild:
+  Version bump, closes bug #105002. Improved wording on upgrade ewarn message.
+  Removed abhishek from metadata.
+
+  12 Jun 2005; Joseph Jezak <josejx@gentoo.org> yosucker-71.ebuild:
+  Marked ppc stable for bug #95168.  Tested by nixnut.
+
+  09 Jun 2005; Olivier Crête <tester@gentoo.org> yosucker-71.ebuild:
+  New version and mark 0.1.10 stable on x86 and add amd64 keyword
+
+  06 Jun 2005; Andrej Kacian <ticho@gentoo.org> yosucker-71.ebuild:
+  Stable on x86, as per bug #95168.
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> yosucker-69.ebuild:
+  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> yosucker-71.ebuild:
+  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
+
+  24 May 2005; Michael Cummings <mcummings@gentoo.org> yosucker-69.ebuild,
+  yosucker-71.ebuild:
+  dev-perl/Digest-MD5 => perl-core/Digest-MD5
+
+*yosucker-71 (08 May 2005)
+
+  08 May 2005; Andrej Kacian <ticho@gentoo.org> +yosucker-71.ebuild:
+  Version bump. Closes #91920, reported by Dale K. Williamson
+  <jadmech1@yahoo.com>.
+
+  02 May 2005; Andrej Kacian <ticho@gentoo.org> -yosucker-65.ebuild,
+  -yosucker-67.ebuild:
+  Ebuild cleanup.
+
+  02 May 2005; Michael Hanselmann <hansmi@gentoo.org> yosucker-69.ebuild:
+  Stable on ppc.
+
+  02 May 2005; Andrej Kacian <ticho@gentoo.org> yosucker-69.ebuild:
+  Stable on x86, upstream claims that previous versions can corrupt messages.
+  Bug #91102.
+
+*yosucker-69 (02 May 2005)
+
+  02 May 2005; Andrej Kacian <ticho@gentoo.org> +yosucker-69.ebuild:
+  Version bump. Closes #91102, reported by Jesse Adelman
+  <jesse@boldandbusted.com>.
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org> yosucker-67.ebuild:
+  Stable on ppc.
+
+  15 Mar 2005; Andrej Kacian <ticho@gentoo.org> yosucker-67.ebuild:
+  Marked stable on x86, because earlier versions are somewhat buggy with
+  current yahoo interface, while this version fixes it. Dale K. Williamson
+  <jadmech1@yahoo.com> has reported it to work flawlessly with several
+  accounts. Bug #84634.
+
+*yosucker-67 (09 Mar 2005)
+
+  09 Mar 2005; Andrej Kacian <ticho@gentoo.org> -yosucker-59.ebuild,
+  yosucker-65.ebuild, +yosucker-67.ebuild:
+  Version bump. Closes #84634, reported by Dale K. Williamson
+  <jadmech1@yahoo.com>. Marked yosucker-65 stable and removed yosucker 59, as
+  it is no longer usable.
+
+*yosucker-65 (28 Jan 2005)
+
+  28 Jan 2005; Andrej Kacian <ticho@gentoo.org> -yosucker-55.ebuild,
+  +yosucker-65.ebuild:
+  Version bump. Closing #79498, reported by jesse farinacci <xjlfx@yahoo.com>.
+  Removing old version.
+
+  23 Sep 2004; Andrej Kacian <ticho@gentoo.org>
+  -files/yosucker-53-no-redirect.patch:
+  Removed unused patch from files/
+
+  23 Sep 2004; Andrej Kacian <ticho@gentoo.org> yosucker-59.ebuild:
+  Stable on x86.
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> yosucker-55.ebuild,
+  yosucker-59.ebuild:
+  Switch to use epause and ebeep, bug #62950
+
+*yosucker-59 (26 Jun 2004)
+
+  26 Jun 2004; Seemant Kulleen <seemant@gentoo.org> +yosucker-59.ebuild:
+  version bump, as requested by: Daniel Webert <daniel_webert@web.de> in bug
+  #54577. Note that abhishek had this to say: on't worry about the thing about
+  needing a bump to work because 55+that patch works fine. So if you can't bump
+  it its not a big deal.
+
+  23 Jun 2004; Abhishek Amit <abhishek@gentoo.org> -yosucker-51a.ebuild,
+  -yosucker-53-r1.ebuild, -yosucker-53.ebuild, yosucker-55.ebuild:
+  Bumped yosucker-55 to stable on x86 and removed broken versions.
+
+*yosucker-55 (15 Jun 2004)
+
+  15 Jun 2004; Abhishek Amit <abhishek@gentoo.org> +files/sputnik.patch,
+  +yosucker-55.ebuild:
+  Bumped to version 55 and added patch to work with new interface
+
+*yosucker-53-r1 (08 May 2004)
+
+  08 May 2004; Abhishek Amit <abhishek@gentoo.org>
+  +files/yosucker-53-no-redirect.patch, +yosucker-53-r1.ebuild:
+  Added no-redirect patch. Thanks to Jefery F and Jonathan Rodgers
+  <jonner@teegra.net> in bug #50432.
+
+  02 May 2004; David Holm <dholm@gentoo.org> yosucker-53.ebuild:
+  Added to ~ppc.
+
+*yosucker-53 (01 May 2004)
+
+  01 May 2004; Abhishek Amit <abhishek@gentoo.org> +yosucker-53.ebuild:
+  Version bump. Closes bug #42156
+
+  28 Mar 2004; Jon Portnoy <avenj@gentoo.org> yosucker-51a.ebuild :
+  AMD64 keywords.
+
+*yosucker-51a (24 Nov 2003)
+
+  05 Dec 2003; Abhishek Amit <abhishek@gentoo.org> yosucker-51a.ebuild:
+  Bump to stable
+
+  24 Nov 2003; Abhishek Amit <abhishek@gentoo.org> yosucker-51a.ebuild:
+  Version Bump
+
+*yosucker-41 (05 Oct 2003)
+
+  05 Oct 2003; Abhishek Amit <abhishek@gentoo.org> yosucker-41.ebuild:
+  Version bump.
+
+*yosucker-39 (02 Oct 2003)
+
+  02 Oct 2003; Abhishek Amit <abhishek@gentoo.org> yosucker-37.ebuild,
+  yosucker-39.ebuild:
+  Bump yosucker-37 to stable and add yosucker-39
+
+*yosucker-37 (12 Sep 2003)
+
+  12 Sep 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml, yosucker-37.ebuild:
+  Version bump. Closes #28181. Thanks to matt@mqatrombone.net
+
+*yosucker-29 (29 Jun 2003)
+
+  29 Jun 2003; Abhishek Amit <andrd@gentoo.org> yosucker-29.ebuild:
+  Initial import.

@@ -1,0 +1,51 @@
+# ChangeLog for media-sound/tempest_for_eliza
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/tempest_for_eliza/ChangeLog,v 1.14 2015/03/22 15:37:44 mrueg Exp $
+
+  22 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -tempest_for_eliza-1.0.5.ebuild:
+  Remove superseded stable version.
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org>
+  tempest_for_eliza-1.0.5.ebuild, tempest_for_eliza-1.0.5-r1.ebuild:
+  Drop sparc keywords
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  tempest_for_eliza-1.0.5-r1.ebuild:
+  x86 stable wrt bug #397109
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  tempest_for_eliza-1.0.5-r1.ebuild:
+  Stable for amd64, wrt bug #397109
+
+*tempest_for_eliza-1.0.5-r1 (12 Sep 2010)
+
+  12 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  +tempest_for_eliza-1.0.5-r1.ebuild:
+  Respect LDFLAGS. Bug #335533
+
+  11 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  tempest_for_eliza-1.0.5.ebuild:
+  Fix prestripping and -Werror wrt #260917
+
+  03 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> tempest_for_eliza-1.0.5.ebuild:
+  Added to ~ppc.
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  tempest_for_eliza-1.0.5.ebuild:
+  Stable amd64, sparc.
+
+  19 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  tempest_for_eliza-1.0.5.ebuild:
+  ~amd64 ~sparc
+
+  01 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  tempest_for_eliza-1.0.5.ebuild:
+  Stable on x86.
+
+*tempest_for_eliza-1.0.5 (11 Jul 2003)
+
+  11 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

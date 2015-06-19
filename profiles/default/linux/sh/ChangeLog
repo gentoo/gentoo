@@ -1,0 +1,33 @@
+# ChangeLog for the default/linux/sh profile directory
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/sh/ChangeLog,v 1.5 2014/03/19 22:18:04 dilfridge Exp $
+
+  19 Mar 2014; Andreas K. Huettel <dilfridge@gentoo.org> 13.0/desktop/eapi,
+  13.0/desktop/gnome/eapi, 13.0/desktop/kde/eapi, 13.0/developer/eapi,
+  13.0/eapi, +eapi:
+  Increase EAPI to 5
+
+  16 Mar 2014; Andreas K. Huettel <dilfridge@gentoo.org> -10.0/deprecated,
+  -10.0/desktop/deprecated, -10.0/desktop/eapi, -10.0/desktop/gnome/deprecated,
+  -10.0/desktop/gnome/eapi, -10.0/desktop/gnome/parent,
+  -10.0/desktop/kde/deprecated, -10.0/desktop/kde/eapi,
+  -10.0/desktop/kde/parent, -10.0/desktop/parent, -10.0/developer/deprecated,
+  -10.0/developer/eapi, -10.0/developer/parent, -10.0/eapi, -10.0/parent,
+  -10.0/server/deprecated, -10.0/server/eapi, -10.0/server/parent:
+  Remove deprecated 10.0 profiles
+
+  09 Feb 2013; Andreas K. Huettel <dilfridge@gentoo.org> +10.0/deprecated,
+  +10.0/desktop/deprecated, +10.0/desktop/gnome/deprecated,
+  +10.0/desktop/kde/deprecated, +10.0/developer/deprecated,
+  +10.0/server/deprecated:
+  Deprecate 10.0 profiles
+
+  18 Jan 2013; Andreas K. Huettel <dilfridge@gentoo.org> ChangeLog:
+  Fix ChangeLog header
+
+  18 Jan 2013; Andreas K. Huettel <dilfridge@gentoo.org> +13.0/desktop/eapi,
+  +13.0/desktop/gnome/eapi, +13.0/desktop/gnome/parent, +13.0/desktop/kde/eapi,
+  +13.0/desktop/kde/parent, +13.0/desktop/parent, +13.0/developer/eapi,
+  +13.0/developer/parent, +13.0/eapi, +13.0/parent:
+  Copy profile tree 10.0 to 13.0 and adapt inheritance
+

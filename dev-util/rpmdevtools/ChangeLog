@@ -1,0 +1,27 @@
+# ChangeLog for dev-util/rpmdevtools
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/rpmdevtools/ChangeLog,v 1.5 2013/06/04 21:40:34 bicatali Exp $
+
+  04 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> rpmdevtools-8.3-r1.ebuild:
+  Keyword amd64-linux and x86-linux
+
+*rpmdevtools-8.3-r1 (13 Mar 2013)
+
+  13 Mar 2013; Stanislav Ochotnicky <sochotnicky@gentoo.org>
+  +rpmdevtools-8.3-r1.ebuild:
+  Temporary fix for #426828 by adding checkbashisms to depends
+
+*rpmdevtools-8.3 (04 Dec 2012)
+
+  04 Dec 2012; Tomáš Chvátal <scarabeus@gentoo.org> +rpmdevtools-8.3.ebuild,
+  -rpmdevtools-8.2.ebuild:
+  Version bump to latest, drop older.
+
+  20 Feb 2012; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Drop no-herd.
+
+*rpmdevtools-8.2 (19 Feb 2012)
+
+  19 Feb 2012; Stanislav Ochotnicky <sochotnicky@gentoo.org>
+  +rpmdevtools-8.2.ebuild, +metadata.xml:
+  Adding rpmdevtoos: Collection of rpm packaging related utilities

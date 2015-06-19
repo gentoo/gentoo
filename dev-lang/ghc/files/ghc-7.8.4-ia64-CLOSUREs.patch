@@ -1,0 +1,66 @@
+From b677ba51cf8131a6f6ddcdfee8dd2a8c4c2b4ac7 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <siarheit@google.com>
+Date: Sat, 17 Jan 2015 14:27:13 +0000
+Subject: [PATCH 1/3] CMM: add a mechanism to import C data labels
+
+Fixes threaded runtime on ia64.
+sm_mutex there was not referenced correctly.
+
+Signed-off-by: Sergei Trofimovich <siarheit@google.com>
+---
+ compiler/cmm/CmmParse.y | 4 ++++
+ rts/Exception.cmm       | 2 +-
+ rts/PrimOps.cmm         | 6 +++---
+ 3 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/compiler/cmm/CmmParse.y.source b/compiler/cmm/CmmParse.y.source
+index 6b51e51..fd9489b 100644
+--- a/compiler/cmm/CmmParse.y.source
++++ b/compiler/cmm/CmmParse.y.source
+@@ -575,6 +575,10 @@ importName
+         : NAME  
+         { ($1, mkForeignLabel $1 Nothing ForeignLabelInExternalPackage IsFunction) }
+ 
++        -- as previous 'NAME', but 'IsData'
++        | 'CLOSURE' NAME
++        { ($2, mkForeignLabel $2 Nothing ForeignLabelInExternalPackage IsData) }
++
+         -- A label imported with an explicit packageId.
+         | STRING NAME
+         { ($2, mkCmmCodeLabel (fsToPackageKey (mkFastString $1)) $2) }
+diff --git a/rts/Exception.cmm b/rts/Exception.cmm
+index 5007ef3..8d19c14 100644
+--- a/rts/Exception.cmm
++++ b/rts/Exception.cmm
+@@ -13,7 +13,7 @@
+ #include "Cmm.h"
+ #include "RaiseAsync.h"
+ 
+-import ghczmprim_GHCziTypes_True_closure;
++import CLOSURE ghczmprim_GHCziTypes_True_closure;
+ 
+ /* -----------------------------------------------------------------------------
+    Exception Primitives
+diff --git a/rts/PrimOps.cmm b/rts/PrimOps.cmm
+index 3e8612c..2e6ca46 100644
+--- a/rts/PrimOps.cmm
++++ b/rts/PrimOps.cmm
+@@ -28,12 +28,12 @@
+ import pthread_mutex_lock;
+ import pthread_mutex_unlock;
+ #endif
+-import base_ControlziExceptionziBase_nestedAtomically_closure;
++import CLOSURE base_ControlziExceptionziBase_nestedAtomically_closure;
+ import EnterCriticalSection;
+ import LeaveCriticalSection;
+-import ghczmprim_GHCziTypes_False_closure;
++import CLOSURE ghczmprim_GHCziTypes_False_closure;
+ #if defined(USE_MINIINTERPRETER) || !defined(mingw32_HOST_OS)
+-import sm_mutex;
++import CLOSURE sm_mutex;
+ #endif
+ 
+ /*-----------------------------------------------------------------------------
+-- 
+2.2.1
+

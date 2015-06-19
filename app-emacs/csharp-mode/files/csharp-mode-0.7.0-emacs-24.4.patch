@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/528374
+
+--- a/csharp-mode.el
++++ b/csharp-mode.el
+@@ -125,6 +125,10 @@
+ 		  (stringp byte-compile-dest-file))
+ 	     (cons (file-name-directory byte-compile-dest-file) load-path)
+ 	   load-path)))
++    (and (= emacs-major-version 24)
++	 (= emacs-minor-version 4)
++	 (null emacs-repository-version)
++	 (require 'cl))
+     (load "cc-mode" nil t)
+     (load "cc-fonts" nil t)
+     (load "cc-langs" nil t)))

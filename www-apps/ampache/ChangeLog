@@ -1,0 +1,262 @@
+# ChangeLog for www-apps/ampache
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/ampache/ChangeLog,v 1.52 2014/08/10 20:12:40 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> ampache-3.4.3.ebuild,
+  ampache-3.5.3-r1.ebuild, ampache-3.5.4.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  22 Jun 2012; Matti Bickel <mabi@gentoo.org> -ampache-3.4.4.ebuild,
+  -ampache-3.5.3.ebuild, ampache-3.5.3-r1.ebuild, ampache-3.5.4.ebuild:
+  remove ebuilds wrt bug #297709, fix doc install location wrt bug #365581, drop
+  unneeded depend.php usage
+
+*ampache-3.5.4 (09 Dec 2010)
+
+  09 Dec 2010; Tim Harder <radhermit@gentoo.org> +ampache-3.5.4.ebuild,
+  metadata.xml:
+  Version bump (bug #307263 by Adam Grissom). Add USE flags to install optional
+  dependencies for the default transcoding support (bug #249306 by Vytautas
+  Jakutis).
+
+  20 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  ampache-3.5.3-r1.ebuild:
+  Stable on amd64 wrt bug #336869
+
+  14 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  ampache-3.5.3-r1.ebuild:
+  x86 stable, bug 336869
+
+*ampache-3.5.3-r1 (03 Jul 2010)
+
+  03 Jul 2010; Matti Bickel <mabi@gentoo.org> +ampache-3.5.3-r1.ebuild:
+  eapi bump for php-5.3 (bug #298205)
+
+  20 Dec 2009; Michael Marineau <marineam@gentoo.org> ampache-3.5.3.ebuild:
+  Require php's hash use flag, bug #262764
+
+*ampache-3.5.3 (20 Dec 2009)
+
+  20 Dec 2009; Michael Marineau <marineam@gentoo.org> +ampache-3.5.3.ebuild:
+  Vesrion bump, includes a security fix
+
+  09 May 2009; Raúl Porcel <armin76@gentoo.org> ampache-3.4.4.ebuild:
+  Add ~sparc wrt #268989
+
+*ampache-3.4.4 (26 Dec 2008)
+
+  26 Dec 2008; Michael Marineau <marineam@gentoo.org> +ampache-3.4.4.ebuild:
+  Bump to 3.4.4
+
+  21 Sep 2008; wrobel@gentoo.org -ampache-3.3.3.5.ebuild:
+  Removed vulnerable ampache-3.3.3.5 (#237483).
+
+  19 Sep 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  ampache-3.4.3.ebuild:
+  ppc stable, bug #237483
+
+  17 Sep 2008; Markus Meier <maekke@gentoo.org> ampache-3.4.3.ebuild:
+  x86 stable, bug #237483
+
+  17 Sep 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  ampache-3.4.3.ebuild:
+  stable amd64, security bug 237483
+
+*ampache-3.4.3 (15 Sep 2008)
+
+  15 Sep 2008; wrobel@gentoo.org -ampache-3.4.ebuild, -ampache-3.4.1.ebuild,
+  +ampache-3.4.3.ebuild:
+  Added ampache-3.4.3, removed ampache-3.4, -3.4.1 in response to sec issue
+  #237483.
+
+*ampache-3.4.1 (31 May 2008)
+
+  31 May 2008; Michael Marineau <marineam@gentoo.org> +ampache-3.4.1.ebuild:
+  Version bump, bugfix release.
+
+*ampache-3.4 (20 May 2008)
+
+  20 May 2008; Michael Marineau <marineam@gentoo.org> +ampache-3.4.ebuild:
+  Version bump to make vollmer happy.
+
+  22 Feb 2008; Benedikt Böhm <hollow@gentoo.org> ampache-3.3.3.5.ebuild:
+  add need_httpd_cgi wrt #208584
+
+  17 Feb 2008; Benedikt Böhm <hollow@gentoo.org> metadata.xml,
+  ampache-3.3.3.5.ebuild:
+  fix need_php call
+
+  17 Feb 2008; Benedikt Böhm <hollow@gentoo.org> ampache-3.3.3.5.ebuild:
+  remove virtual/httpd-php (already implied by need_php)
+
+  17 Feb 2008; Benedikt Böhm <hollow@gentoo.org>
+  -files/ampache-webinstall.txt, -ampache-3.3.1.7.ebuild,
+  -ampache-3.3.2.1.ebuild, -ampache-3.3.3.4.ebuild, ampache-3.3.3.5.ebuild:
+  merge from webapp overlay; remove old versions
+
+  05 Feb 2008; Jakub Moc <jakub@gentoo.org> ampache-3.3.3.5.ebuild:
+  Fix quoting.
+
+  04 Sep 2007; Christoph Mende <angelos@gentoo.org> ampache-3.3.3.5.ebuild:
+  Stable on amd64 wrt security bug #189607
+
+  03 Sep 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  ampache-3.3.3.5.ebuild:
+  ppc stable, bug #189607
+
+  24 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  ampache-3.3.3.4.ebuild:
+  ppc stable, bug #185478
+
+*ampache-3.3.3.5 (20 Aug 2007)
+
+  20 Aug 2007; Michael Marineau <marineam@gentoo.org> -ampache-3.3.3.ebuild,
+  -ampache-3.3.3.1.ebuild, -ampache-3.3.3.3.ebuild, +ampache-3.3.3.5.ebuild:
+  Version bump, fixes 2 non-critical sql injection issues.
+  Clean out a few old versions.
+
+  16 Aug 2007; Christoph Mende <angelos@gentoo.org> ampache-3.3.3.4.ebuild:
+  Stable on amd64 wrt bug #185478
+
+  24 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  ampache-3.3.3.4.ebuild:
+  stable x86, bug 185478
+
+*ampache-3.3.3.4 (24 Jul 2007)
+
+  24 Jul 2007; Michael Marineau <marineam@gentoo.org>
+  +ampache-3.3.3.4.ebuild:
+  Version bump
+
+*ampache-3.3.3.3 (11 Jun 2007)
+
+  11 Jun 2007; Michael Marineau <marineam@gentoo.org>
+  +ampache-3.3.3.3.ebuild:
+  Version bump
+
+*ampache-3.3.3.1 (20 May 2007)
+
+  20 May 2007; Michael Marineau <marineam@gentoo.org>
+  +ampache-3.3.3.1.ebuild:
+  Version bump
+
+*ampache-3.3.3 (11 Feb 2007)
+
+  11 Feb 2007; Michael Marineau <marineam@gentoo.org> +ampache-3.3.3.ebuild:
+  Version bump
+
+  05 Feb 2007; Steve Dibb <beandog@gentoo.org> ampache-3.3.2.1.ebuild:
+  amd64 stable, bug 156964
+
+  02 Jan 2007; Michael Marineau <marineam@gentoo.org>
+  ampache-3.3.1.7.ebuild, ampache-3.3.2.1.ebuild:
+  Remove direct mysql depend as per bug #159781
+
+  23 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  ampache-3.3.2.1.ebuild:
+  Stable on ppc wrt bug #156964.
+
+  04 Dec 2006; Christian Faulhammer <opfer@gentoo.org>
+  ampache-3.3.2.1.ebuild:
+  stable x86, bug #156964
+
+  23 Nov 2006; Francesco Riosa <vivo@gentoo.org> ChangeLog:
+  dev-db/mysql => virtual/mysql
+
+  23 Nov 2006; Francesco Riosa <vivo@gentoo.org> ampache-3.3.1.7.ebuild,
+  ampache-3.3.2.1.ebuild:
+  dev-db/mysql => virtual/mysql
+
+*ampache-3.3.2.1 (17 Oct 2006)
+
+  17 Oct 2006; Michael Marineau <marineam@gentoo.org> -ampache-3.3.2.ebuild,
+  +ampache-3.3.2.1.ebuild:
+  Security release, if you have register_globals on you should upgrade.
+  (or better yet, turn register_globals off)
+
+*ampache-3.3.2 (06 Oct 2006)
+
+  06 Oct 2006; Michael Marineau <marineam@gentoo.org> +files/installdoc.txt,
+  -ampache-3.3.2_beta3.ebuild, +ampache-3.3.2.ebuild:
+  Version bump to new stable series, closes bug #150059
+
+  19 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> ampache-3.3.1.7.ebuild:
+  Marked ~amd64 bug #147406
+
+*ampache-3.3.2_beta3 (10 Jul 2006)
+
+  10 Jul 2006; Michael Marineau <marineam@gentoo.org>
+  -files/ampache-3.3.1.7-webinstall.txt, +files/ampache-webinstall.txt,
+  ampache-3.3.1.7.ebuild, +ampache-3.3.2_beta3.ebuild:
+  Add beta version
+
+  07 Jun 2006; Michael Marineau <marineam@gentoo.org>
+  ampache-3.3.1.7.ebuild:
+  Check for required PHP features before installing.
+
+*ampache-3.3.1.7 (10 Feb 2006)
+
+  10 Feb 2006; Michael Marineau <marineam@gentoo.org>
+  -files/ampache-3.3.1.6-webinstall.txt,
+  +files/ampache-3.3.1.7-webinstall.txt, -ampache-3.3.1.6.ebuild,
+  +ampache-3.3.1.7.ebuild:
+  Security fix release
+
+  29 Nov 2005; Michael Marineau <marineam@gentoo.org>
+  -files/ampache-3.3.1.5-webinstall.txt,
+  +files/ampache-3.3.1.6-webinstall.txt:
+  Forgot to bump the instructions' version number
+
+*ampache-3.3.1.6 (29 Nov 2005)
+
+  29 Nov 2005; Michael Marineau <marineam@gentoo.org>
+  -ampache-3.3.1.5.ebuild, +ampache-3.3.1.6.ebuild:
+  The previous release didn't really fix the security issue after all, but
+  this one does.
+
+*ampache-3.3.1.5 (28 Nov 2005)
+
+  28 Nov 2005; Michael Marineau <marineam@gentoo.org>
+  -files/ampache-3.3.1.4-webinstall.txt,
+  +files/ampache-3.3.1.5-webinstall.txt, -ampache-3.3.1.4.ebuild,
+  +ampache-3.3.1.5.ebuild:
+  Security Fix for bug #110554
+
+  09 Oct 2005; Doug Goldstein <cardoe@gentoo.org> ampache-3.3.1.4.ebuild:
+  Fixing PHP depends bug #105419
+
+*ampache-3.3.1.4 (14 Aug 2005)
+
+  14 Aug 2005; Michael Marineau <marineam@gentoo.org>
+  -files/ampache-3.3.1.2-webinstall.txt,
+  -files/ampache-3.3.1.3-webinstall.txt,
+  +files/ampache-3.3.1.4-webinstall.txt, -ampache-3.3.1.2.ebuild,
+  -ampache-3.3.1.3.ebuild, +ampache-3.3.1.4.ebuild:
+  Security update, new xml-rpc expoit.
+
+*ampache-3.3.1.2 (07 Jul 2005)
+
+  07 Jul 2005; Michael Marineau <marineam@gentoo.org>
+  -files/ampache-3.3.1.1-webinstall.txt,
+  +files/ampache-3.3.1.2-webinstall.txt, -ampache-3.3.1.1.ebuild,
+  +ampache-3.3.1.2.ebuild:
+  Security Update. This fixes the XML-RPC issues. Thanks to Karl Vollmer for
+  the reminder.
+
+  27 Jun 2005; David Holm <dholm@gentoo.org> ampache-3.3.1.1.ebuild:
+  Added to ~ppc.
+
+*ampache-3.3.1.1 (27 Jun 2005)
+
+  27 Jun 2005; Michael Marineau <marineam@gentoo.org>
+  +files/ampache-3.3.1.1-webinstall.txt, -ampache-3.3.1.ebuild,
+  +ampache-3.3.1.1.ebuild:
+  A little ebuild bump. Also cleaned up a couple things, closing bug #93544
+  again. Hopefully all is happy now.
+
+*ampache-3.3.1 (27 Jun 2005)
+
+  27 Jun 2005; Michael Marineau <marineam@gentoo.org> +metadata.xml,
+  +ampache-3.3.1.ebuild:
+  Initial commit. Ebuild contributed by Steven Coutts <scoutts@bcs.org.uk>.
+  Closes bug #93544.

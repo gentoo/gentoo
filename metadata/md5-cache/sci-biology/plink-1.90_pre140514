@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=app-arch/unzip virtual/pkgconfig
+DESCRIPTION=Whole genome association analysis toolset
+EAPI=5
+HOMEPAGE=http://pngu.mgh.harvard.edu/~purcell/plink/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib virtual/cblas virtual/lapack
+SLOT=0
+SRC_URI=http://pngu.mgh.harvard.edu/~purcell/static/bin/plink140514/plink_src.zip -> plink-1.90_pre140514.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f53fbc84883abb6cbd0777726aef0ac7

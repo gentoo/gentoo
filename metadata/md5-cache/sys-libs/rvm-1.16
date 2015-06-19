@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=>=sys-libs/lwp-2.0 sys-apps/grep sys-devel/libtool sys-devel/gcc
+DESCRIPTION=Recoverable Virtual Memory (used by Coda)
+HOMEPAGE=http://www.coda.cs.cmu.edu/
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=sys-libs/lwp-2.0
+SLOT=1
+SRC_URI=http://www.coda.cs.cmu.edu/pub/rvm/src/rvm-1.16.tar.gz
+_md5_=c0ec2857ed9956589489103608cab6d2

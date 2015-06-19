@@ -1,0 +1,227 @@
+# ChangeLog for x11-proto/xf86bigfontproto
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-proto/xf86bigfontproto/ChangeLog,v 1.55 2015/04/12 18:49:53 mrueg Exp $
+
+  12 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -xf86bigfontproto-1.2.0.ebuild:
+  Remove old.
+
+  15 Jun 2014; Mike Frysinger <vapier@gentoo.org>
+  xf86bigfontproto-1.2.0-r1.ebuild:
+  Add arm64 love.
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86bigfontproto-1.2.0-r1.ebuild:
+  Stable for x86, wrt bug #475480
+
+  07 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86bigfontproto-1.2.0-r1.ebuild:
+  Stable for sparc, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86bigfontproto-1.2.0-r1.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  05 Oct 2013; Markus Meier <maekke@gentoo.org>
+  xf86bigfontproto-1.2.0-r1.ebuild:
+  arm stable, bug #475480
+
+  05 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86bigfontproto-1.2.0-r1.ebuild:
+  Stable for alpha, wrt bug #475480
+
+  04 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86bigfontproto-1.2.0-r1.ebuild:
+  Stable for ppc64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86bigfontproto-1.2.0-r1.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  02 Oct 2013; Jeroen Roovers <jer@gentoo.org>
+  xf86bigfontproto-1.2.0-r1.ebuild:
+  Stable for HPPA (bug #475480).
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86bigfontproto-1.2.0-r1.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*xf86bigfontproto-1.2.0-r1 (25 Feb 2013)
+
+  25 Feb 2013; Michał Górny <mgorny@gentoo.org>
+  +xf86bigfontproto-1.2.0-r1.ebuild:
+  Enable multilib.
+
+  21 Feb 2013; Zac Medico <zmedico@gentoo.org> xf86bigfontproto-1.2.0.ebuild:
+  Add ~arm-linux keyword.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  xf86bigfontproto-1.2.0.ebuild:
+  keyword ~amd64-fbsd
+
+  05 Nov 2010; Markus Duft <mduft@gentoo.org> xf86bigfontproto-1.2.0.ebuild:
+  migrate to xorg-2 eclass, raise EAPI accordingly.
+
+  10 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86bigfontproto-1.1.2.ebuild:
+  rm
+
+  14 Jun 2010; Fabian Groffen <grobian@gentoo.org>
+  xf86bigfontproto-1.2.0.ebuild:
+  Marked ~x64-macos, bug #323945
+
+  19 Jan 2010; Raúl Porcel <armin76@gentoo.org>
+  xf86bigfontproto-1.2.0.ebuild:
+  s390 stable wrt #294958
+
+  18 Jan 2010; Raúl Porcel <armin76@gentoo.org>
+  xf86bigfontproto-1.2.0.ebuild:
+  alpha/ia64/sh/sparc stable wrt #294958
+
+  14 Jan 2010; Markus Meier <maekke@gentoo.org>
+  xf86bigfontproto-1.2.0.ebuild:
+  arm stable, bug #294958
+
+  14 Jan 2010; Jeroen Roovers <jer@gentoo.org>
+  xf86bigfontproto-1.2.0.ebuild:
+  Stable for HPPA (bug #294958).
+
+  14 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  xf86bigfontproto-1.2.0.ebuild:
+  Transfer Prefix keywords
+
+  27 Dec 2009; Joseph Jezak <josejx@gentoo.org>
+  xf86bigfontproto-1.2.0.ebuild:
+  Marked ppc stable for bug #294958.
+
+  15 Dec 2009; Brent Baude <ranger@gentoo.org>
+  xf86bigfontproto-1.2.0.ebuild:
+  Marking xf86bigfontproto-1.2.0 ppc64 stable for bug 294958
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  xf86bigfontproto-1.2.0.ebuild:
+  x86 stable, bug 294958
+
+  10 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  xf86bigfontproto-1.2.0.ebuild:
+  amd64 stable wrt #294958
+
+*xf86bigfontproto-1.2.0 (19 Sep 2009)
+
+  19 Sep 2009; Rémi Cardona <remi@gentoo.org>
+  +xf86bigfontproto-1.2.0.ebuild:
+  bump to 1.2.0
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  xf86bigfontproto-1.1.2.ebuild:
+  fix repoman warnings
+
+  06 Aug 2007; Donnie Berkholz <dberkholz@gentoo.org>; ChangeLog:
+  Restore missing parts of changelog that were accidentally deleted.
+
+  04 Feb 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  xf86bigfontproto-1.1.2.ebuild:
+  Drop mirroring restriction.  Thanks to Zhang Le of bug #163088.
+
+  19 Jul 2006; Guy Martin <gmsoft@gentoo.org> xf86bigfontproto-1.1.2.ebuild:
+  Stable on hppa.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  xf86bigfontproto-1.1.2.ebuild:
+  Mark 1.1.2 stable on ia64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  xf86bigfontproto-1.1.2.ebuild:
+  arm/sh stable
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  xf86bigfontproto-1.1.2.ebuild:
+  ppc/sparc/mips/alpha stable
+
+  30 Jun 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-xf86bigfontproto-1.1.2, Manifest:
+  Fix digest.
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  xf86bigfontproto-1.1.2.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org>
+  xf86bigfontproto-1.1.2.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  xf86bigfontproto-1.1.2.ebuild:
+  x86 stable.
+
+  28 Apr 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+  31 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xf86bigfontproto-1.1.2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  24 Mar 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  xf86bigfontproto-1.1.2.ebuild:
+  (#127306) Digests changed between release candidates and final release for
+  the same tarballs.
+
+  09 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  xf86bigfontproto-1.1.2.ebuild:
+  Mark 1.1.2 ~ia64
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org>
+  xf86bigfontproto-1.1.2.ebuild:
+  Added ~ppc64
+
+  31 Jan 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  xf86bigfontproto-1.1.2.ebuild:
+  Unstable on hppa.
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xf86bigfontproto-1.1.1.ebuild:
+  Pull old versions.
+
+  26 Dec 2005; Stefaan De Roeck <stefaan@gentoo.org>
+  xf86bigfontproto-1.1.2.ebuild:
+  Marked ~alpha
+
+*xf86bigfontproto-1.1.2 (17 Dec 2005)
+
+  17 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86bigfontproto-1.1.2.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -xf86bigfontproto-1.1.ebuild:
+  Pull old versions.
+
+*xf86bigfontproto-1.1.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +xf86bigfontproto-1.1.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  28 Aug 2005; MATSUU Takuto <matsuu@gentoo.org>
+  xf86bigfontproto-1.1.ebuild:
+  Added ~sh to KEYWORDS.
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org>
+  xf86bigfontproto-1.1.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org>
+  xf86bigfontproto-1.1.ebuild:
+  Marked ~amd64
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org>
+  xf86bigfontproto-1.1.ebuild:
+  Add ~sparc keyword (modular X testing on sparc).
+
+*xf86bigfontproto-1.1 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +xf86bigfontproto-1.1.ebuild:
+  Initial commit for modular X

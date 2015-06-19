@@ -1,0 +1,36 @@
+--- gnutls-2.12.20/libextra/Makefile.am
++++ gnutls-2.12.20/libextra/Makefile.am
+@@ -69,7 +69,7 @@
+ if ENABLE_MINITASN1
+ libgnutls_openssl_la_LIBADD += ../lib/minitasn1/libminitasn1.la
+ else
+-libgnutls_openssl_la_LDFLAGS += $(LTLIBTASN1)
++libgnutls_openssl_la_LIBADD += $(LTLIBTASN1)
+ endif
+ 
+ if HAVE_LD_OUTPUT_DEF
+@@ -89,8 +89,9 @@
+ libgnutls_extra_la_SOURCES += \
+ 	ext_inner_application.h ext_inner_application.c gnutls_ia.c
+ 
++cryptolib_ldadd =
+ if !ENABLE_NETTLE
+-libgnutls_extra_la_LIBADD += $(LTLIBGCRYPT)
++cryptolib_ldadd = $(LTLIBGCRYPT)
+ endif
+ 
+ # Rest
+@@ -104,11 +105,10 @@
+ DISTCLEANFILES += $(defexec_DATA)
+ 
+ libgnutls_extra_la_LDFLAGS += \
+-	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) \
+-	$(LZO_LIBS)
++	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+ 
+ libgnutls_extra_la_LIBADD += ../lib/gl/liblgnu.la gl/libxgnu.la \
+-	../lib/libgnutls.la
++	../lib/libgnutls.la $(cryptolib_ldadd) $(LZO_LIBS)
+ 
+ if HAVE_LD_VERSION_SCRIPT
+ libgnutls_extra_la_LDFLAGS += \

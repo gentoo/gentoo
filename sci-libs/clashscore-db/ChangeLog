@@ -1,0 +1,29 @@
+# ChangeLog for sci-libs/clashscore-db
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/clashscore-db/ChangeLog,v 1.7 2015/04/03 15:55:33 jlec Exp $
+
+  03 Apr 2015; Justin Lecher <jlec@gentoo.org> clashscore-db-3.17.ebuild,
+  metadata.xml:
+  add binchecks and strip to RESTRICT
+
+  13 Jun 2012; Jeff Horelick <jdhore@gentoo.org> clashscore-db-3.17.ebuild:
+  marked x86 per bug 419879
+
+  12 Jun 2012; Agostino Sarubbo <ago@gentoo.org> clashscore-db-3.17.ebuild:
+  Stable for amd64, wrt bug #419879
+
+  12 Jun 2012; Justin Lecher <jlec@gentoo.org> clashscore-db-3.17.ebuild:
+  Define S, thanks agostino for kicking me
+
+  06 Jun 2012; Justin Lecher <jlec@gentoo.org> clashscore-db-3.17.ebuild,
+  metadata.xml:
+  Move to EAPI=4
+
+  23 Jul 2010; Justin Lecher <jlec@gentoo.org> clashscore-db-3.17.ebuild:
+  Keyworded for *-linux prefix
+
+*clashscore-db-3.17 (22 Jul 2010)
+
+  22 Jul 2010; Justin Lecher <jlec@gentoo.org> +clashscore-db-3.17.ebuild,
+  +metadata.xml:
+  New addition

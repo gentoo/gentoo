@@ -1,0 +1,29 @@
+# ChangeLog for net-analyzer/gsm-receiver
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/gsm-receiver/ChangeLog,v 1.6 2015/04/08 18:01:22 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> gsm-receiver-9999.ebuild:
+  Drop old Python implementations
+
+  05 Feb 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/0001-gsm-receiver-build-against-gnuradio-3.7.patch,
+  gsm-receiver-9999.ebuild:
+  Add patch for gnuradio-3.7 compatibility.
+
+  10 Jul 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  gsm-receiver-9999.ebuild:
+  Not compatible with gnuradio-3.7 yet.
+
+  29 Jun 2013; Rick Farina <zerochaos@gentoo.org> gsm-receiver-9999.ebuild:
+  fixing subslot dep on gnuradio
+
+  26 May 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  gsm-receiver-9999.ebuild:
+  Remove reference to sample capture file that was dropped upstream, reported by
+  zerochaos.
+
+*gsm-receiver-9999 (12 Aug 2012)
+
+  12 Aug 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +gsm-receiver-9999.ebuild, +metadata.xml:
+  Initial commit, ebuild by me. Thanks to zerochaos for testing.

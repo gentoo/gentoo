@@ -1,0 +1,50 @@
+# ChangeLog for dev-perl/Const-Fast
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Const-Fast/ChangeLog,v 1.13 2014/11/09 10:37:51 zlogene Exp $
+
+  09 Nov 2014; Mikle Kolyada <zlogene@gentoo.org> Const-Fast-0.14.0-r1.ebuild:
+  Add ~ppc keyword wrt bug #518644
+
+*Const-Fast-0.14.0-r1 (25 Oct 2014)
+
+  25 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Const-Fast-0.14.0-r1.ebuild:
+  Fix dependencies, bug 518644
+
+*Const-Fast-0.14.0 (30 Jul 2014)
+
+  30 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> +Const-Fast-0.14.0.ebuild:
+  Version bump
+
+  30 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> Const-Fast-0.13.0.ebuild:
+  Stable for all
+
+  13 Jun 2014; Mikle Kolyada <zlogene@gentoo.org> Const-Fast-0.13.0.ebuild:
+  Bump to EAPI=5
+
+  16 Apr 2013; Vicente Olivert Riera <vincent@gentoo.org>
+  Const-Fast-0.13.0.ebuild:
+  Adding ~ppc keyword for dev-perl/PDL and his dependences, wrt bug #449762
+
+  08 Feb 2013; Sébastien Fabbro <bicatali@gentoo.org> Const-Fast-0.13.0.ebuild:
+  Keyword amd64-linux and x86-linux
+
+  13 Jan 2013; Markus Meier <maekke@gentoo.org> Const-Fast-0.13.0.ebuild:
+  add ~arm, bug #449762
+
+  08 Jan 2013; Torsten Veller <tove@gentoo.org> -Const-Fast-0.11.0.ebuild:
+  Cleanup
+
+*Const-Fast-0.13.0 (08 Sep 2012)
+
+  08 Sep 2012; Torsten Veller <tove@gentoo.org> +Const-Fast-0.13.0.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Const-Fast-0.11.0 (16 Jun 2012)
+
+  16 Jun 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +Const-Fast-0.11.0.ebuild, +metadata.xml:
+  Initial import

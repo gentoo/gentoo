@@ -1,0 +1,46 @@
+# ChangeLog for app-text/expander
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/expander/ChangeLog,v 1.13 2014/08/06 07:09:34 patrick Exp $
+
+  06 Aug 2014; Patrick Lauer <patrick@gentoo.org> expander-2.0.5-r1.ebuild:
+  Make description more repoman-happy
+
+  17 Oct 2012; Agostino Sarubbo <ago@gentoo.org> expander-2.0.5-r1.ebuild:
+  Add ~amd64, EAPI4
+
+*expander-2.0.5-r1 (18 Sep 2010)
+
+  18 Sep 2010; Jeroen Roovers <jer@gentoo.org> -expander-2.0.5.ebuild,
+  +expander-2.0.5-r1.ebuild, files/expander-2.0.5-gentoo.patch:
+  Respect LDFLAGS (bug #336155, and do not duplicate in the emake call what
+  the patch was already trying to do). Do not set empty DEPEND. Merge cd
+  into emake call.
+
+  02 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  expander-2.0.5.ebuild:
+  Transfer Prefix keywords
+
+  30 Dec 2008; Christoph Mende <angelos@gentoo.org> expander-2.0.5.ebuild:
+  QA: Respect CC (bug 243728), respect CFLAGS
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  25 Jan 2008; Fabian Groffen <grobian@gentoo.org> expander-2.0.5.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  11 May 2007; Thilo Bangert <bangert@gentoo.org> +metadata.xml:
+  add metadata.xml
+
+  28 Jan 2007; Marius Mauch <genone@gentoo.org> expander-2.0.5.ebuild:
+  Replacing einfo with elog
+
+  12 Oct 2005; Fabian Groffen <grobian@gentoo.org> expander-2.0.5.ebuild:
+  Marked ~ppc-macos (bug #108631)
+
+*expander-2.0.5 (30 Oct 2003)
+
+  30 Oct 2003; Brandy Westcott brandy@gentoo.org expander-2.0.5.ebuild:
+  Initial import. Expander is a utility that acts as a filter for text editors.
+  Closes bug #30604.

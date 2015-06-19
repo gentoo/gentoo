@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst prepare
+DESCRIPTION=ImageSlideShow Control for gDesklets
+EAPI=2
+HOMEPAGE=http://gdesklets.de/index.php?q=control/view/211
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/python-imaging >=gnome-extra/gdesklets-core-0.36.1-r3
+SLOT=0
+SRC_URI=http://gdesklets.de/files/controls/ImageSlideShow/ImageSlideShow-0.8.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	gdesklets	f4d993afddca34073713cc2a27e45c0a	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=1aa3af8b2177f57535c3237ac73c8222

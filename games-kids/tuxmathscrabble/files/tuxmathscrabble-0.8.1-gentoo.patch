@@ -1,0 +1,92 @@
+--- TuxMathScrabble/tms.py.old	2015-02-02 22:19:30.894373011 +0100
++++ TuxMathScrabble/tms.py	2015-02-02 22:20:19.530320947 +0100
+@@ -1258,7 +1258,7 @@
+ 		if not os.path.exists(infname):
+ 			
+ 			master_fname=os.path.join(self.env.fontdir,'.tms_config_master')
+-			candidate=os.path.join('/','usr','share','games','tuxmathscrabble','.tms_config_master')
++			candidate=os.path.join('@GENTOO_DATADIR@','.tms_config_master')
+ 			if os.path.exists(candidate):
+ 				master_fname=candidate
+ 			
+--- .tms_config_master.old	2015-02-02 22:21:59.655216399 +0100
++++ .tms_config_master	2015-02-02 22:25:33.754003432 +0100
+@@ -380,66 +380,66 @@
+ 		'wtype':'wx.SpinCtrl',
+ 	},
+ 	'FONT_APPNAME':{
+-		'default_path':'./Font',
++		'default_path':'@GENTOO_DATADIR@/Font',
+ 		'default_value':'mickey.ttf',
+ 		'descr':'',
+ 		'dtype':'wx.String',
+-		'path':'./Font',
++		'path':'@GENTOO_DATADIR@/Font',
+ 		'showme':-1,
+ 		'tooltip':'Font to be used for application name overlay.',
+ 		'value':'mickey.ttf',
+ 		'wtype':'wx.FileDialog',
+ 	},
+ 	'FONT_BFONT':{
+-		'default_path':'./Font',
++		'default_path':'@GENTOO_DATADIR@/Font',
+ 		'default_value':'Bluehigh.ttf',
+ 		'descr':'',
+ 		'dtype':'wx.String',
+-		'path':'./Font',
++		'path':'@GENTOO_DATADIR@/Font',
+ 		'showme':0,
+ 		'tooltip':'Button Font',
+ 		'value':'Bluehigh.ttf',
+ 		'wtype':'wx.FileDialog',
+ 	},
+ 	'FONT_CFONT':{
+-		'default_path':'./Font',
++		'default_path':'@GENTOO_DATADIR@/Font',
+ 		'default_value':'arialbd.ttf',
+ 		'descr':'',
+ 		'dtype':'wx.String',
+-		'path':'./Font',
++		'path':'@GENTOO_DATADIR@/Font',
+ 		'showme':0,
+ 		'tooltip':'Character font used for tile characters',
+ 		'value':'arialbd.ttf',
+ 		'wtype':'wx.FileDialog',
+ 	},
+ 	'FONT_HUD':{
+-		'default_path':'./Font',
++		'default_path':'@GENTOO_DATADIR@/Font',
+ 		'default_value':'aqua_pfont.ttf',
+ 		'descr':'',
+ 		'dtype':'wx.String',
+-		'path':'./Font',
++		'path':'@GENTOO_DATADIR@/Font',
+ 		'showme':0,
+ 		'tooltip':'The default font to be used for other overlay information (credits, etc).',
+ 		'value':'aqua_pfont.ttf',
+ 		'wtype':'wx.FileDialog',
+ 	},
+ 	'FONT_OVERLAY':{
+-		'default_path':'./Font',
++		'default_path':'@GENTOO_DATADIR@/Font',
+ 		'default_value':'arial.ttf',
+ 		'descr':'',
+ 		'dtype':'wx.String',
+-		'path':'./Font',
++		'path':'@GENTOO_DATADIR@/Font',
+ 		'showme':0,
+ 		'tooltip':'The default font to be used for other overlay information (credits, etc).',
+ 		'value':'arial.ttf',
+ 		'wtype':'wx.FileDialog',
+ 	},
+ 	'FONT_PFONT':{
+-		'default_path':'./Font',
++		'default_path':'@GENTOO_DATADIR@/Font',
+ 		'default_value':'Bluehigh.ttf',
+ 		'descr':'',
+ 		'dtype':'wx.String',
+-		'path':'./Font',
++		'path':'@GENTOO_DATADIR@/Font',
+ 		'showme':0,
+ 		'tooltip':'Point value font (ie lower right corner of tiles)',
+ 		'value':'Bluehigh.ttf',

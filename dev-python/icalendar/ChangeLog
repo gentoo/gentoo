@@ -1,0 +1,226 @@
+# ChangeLog for dev-python/icalendar
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/icalendar/ChangeLog,v 1.48 2015/06/07 13:34:05 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*icalendar-3.9.0 (04 Apr 2015)
+
+  04 Apr 2015; Ian Delaney <idella4@gentoo.org> +icalendar-3.9.0.ebuild,
+  -icalendar-2.2.ebuild, -icalendar-3.5.ebuild:
+  bump; rm old
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> icalendar-3.8.4.ebuild:
+  Stable for x86, wrt bug #535332
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org> icalendar-3.8.4.ebuild:
+  Stable for amd64, wrt bug #535332
+
+*icalendar-3.8.4 (07 Nov 2014)
+
+  07 Nov 2014; Ian Delaney <idella4@gentoo.org> +icalendar-3.8.4.ebuild,
+  -icalendar-3.7.ebuild, -icalendar-3.8.2.ebuild, -icalendar-3.8.3.ebuild:
+  bump; remove some old
+
+*icalendar-3.8.3 (09 Sep 2014)
+
+  09 Sep 2014; Ian Delaney <idella4@gentoo.org> +icalendar-3.8.3.ebuild:
+  bump
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> icalendar-2.2.ebuild,
+  icalendar-3.5.ebuild, icalendar-3.7.ebuild, icalendar-3.8.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*icalendar-3.8.2 (27 Jul 2014)
+
+  27 Jul 2014; Ian Delaney <idella4@gentoo.org> +icalendar-3.8.2.ebuild,
+  -icalendar-3.8.1.ebuild:
+  bump, rm prior -3.8.1
+
+*icalendar-3.8.1 (22 Jul 2014)
+
+  22 Jul 2014; Ian Delaney <idella4@gentoo.org> +icalendar-3.8.1.ebuild,
+  -icalendar-3.6.1.ebuild, -icalendar-3.6.2.ebuild:
+  bump, rm old
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> icalendar-3.5.ebuild,
+  icalendar-3.6.1.ebuild, icalendar-3.6.2.ebuild, icalendar-3.7.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+*icalendar-3.7 (07 Jun 2014)
+
+  07 Jun 2014; Ian Delaney <idella4@gentoo.org> +icalendar-3.7.ebuild,
+  -icalendar-3.1.ebuild, -icalendar-3.2-r1.ebuild, -icalendar-3.2.ebuild,
+  -icalendar-3.3.ebuild, -icalendar-3.4.ebuild:
+  bump, drop py2.6 pypy2_0, add pytest as testrunner, tidy, rm some old
+
+*icalendar-3.6.2 (09 May 2014)
+
+  09 May 2014; Patrick Lauer <patrick@gentoo.org> +icalendar-3.6.2.ebuild:
+  Bump
+
+  16 Apr 2014; Ian Delaney <idella4@gentoo.org> icalendar-3.6.1.ebuild:
+  add py3 support, fixes Bug #507560
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> icalendar-3.3.ebuild,
+  icalendar-3.4.ebuild, icalendar-3.5.ebuild, icalendar-3.6.1.ebuild:
+  Add support for the new PyPy slotting.
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> icalendar-3.5.ebuild:
+  amd64 stable, bug #450172
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> icalendar-3.5.ebuild:
+  x86 stable wrt bug #450172
+
+*icalendar-3.6.1 (28 Jan 2014)
+
+  28 Jan 2014; Ian Delaney <idella4@gentoo.org> +icalendar-3.6.1.ebuild:
+  bump
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> icalendar-3.3.ebuild,
+  icalendar-3.4.ebuild, icalendar-3.5.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*icalendar-3.5 (08 Jul 2013)
+
+  08 Jul 2013; Patrick Lauer <patrick@gentoo.org> +icalendar-3.5.ebuild:
+  Bump
+
+  08 Jul 2013; Ian Delaney <idella4@gentoo.org> icalendar-3.4.ebuild:
+  Shift deps to RDEPEND, fixes Bug #475824
+
+  23 Jun 2013; Ian Delaney <idella4@gentoo.org> icalendar-3.4.ebuild:
+  upgrade ebuild re eclass
+
+  16 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #79409
+
+*icalendar-3.4 (02 May 2013)
+
+  02 May 2013; Patrick Lauer <patrick@gentoo.org> +icalendar-3.4.ebuild:
+  Bump
+
+  09 Mar 2013; Ian Delaney <idella4@gentoo.org> icalendar-3.3.ebuild:
+  pypy support added
+
+*icalendar-3.3 (22 Feb 2013)
+
+  22 Feb 2013; Patrick Lauer <patrick@gentoo.org> +icalendar-3.3.ebuild:
+  Bump
+
+*icalendar-3.2-r1 (22 Jan 2013)
+
+  22 Jan 2013; Ian Delaney <idella4@gentoo.org> +icalendar-3.2-r1.ebuild:
+  revbump, migrated to -r1
+
+*icalendar-3.2 (21 Jan 2013)
+
+  21 Jan 2013; Patrick Lauer <patrick@gentoo.org> +icalendar-3.2.ebuild:
+  Bump
+
+  09 Nov 2012; Joe Sapp <nixphoeni@gentoo.org> -icalendar-2.1_p20100409.ebuild:
+  Remove old version
+
+*icalendar-3.1 (30 Oct 2012)
+
+  30 Oct 2012; Patrick Lauer <patrick@gentoo.org> +icalendar-3.1.ebuild:
+  Bump
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> icalendar-2.2.ebuild:
+  x86 stable wrt bug #400327
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> icalendar-2.2.ebuild:
+  Stable for amd64, wrt bug #400327
+
+  09 Dec 2011; Naohiro Aota <naota@gentoo.org> icalendar-2.2.ebuild:
+  Add ~x86-fbsd
+
+  02 Sep 2011; Joe Sapp <nixphoeni@gentoo.org> icalendar-2.2.ebuild:
+  Removed eutils inherit
+
+*icalendar-2.2 (31 Aug 2011)
+
+  31 Aug 2011; Joe Sapp <nixphoeni@gentoo.org> +icalendar-2.2.ebuild,
+  metadata.xml:
+  Version bump; added 'doc' USE flag
+
+  12 Apr 2011; Thomas Kahle <tomka@gentoo.org> icalendar-2.1_p20100409.ebuild:
+  x86 stable per bug 358713
+
+  14 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  icalendar-2.1_p20100409.ebuild:
+  Stable on amd64 wrt bug #358713
+
+  26 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -icalendar-2.0.1.ebuild:
+  Delete.
+
+  14 Aug 2010; Joe Sapp <nixphoeni@gentoo.org> icalendar-2.0.1.ebuild,
+  icalendar-2.1-r1.ebuild:
+  Fixed patch locations for old ebuilds (bug #332665)
+
+  04 Aug 2010; Joe Sapp <nixphoeni@gentoo.org>
+  -files/01_all_UIDGenerator-fix.patch,
+  -files/02_all_vDatetime-tzinfo-fix.patch,
+  -files/03_all_duration-fix.patch,
+  -files/04_all_date-type-test-in-vDDDTypes.patch,
+  -files/05_all_utf8-multi-octet-fix.patch,
+  -files/06_all_test.py-use-set.patch,
+  +files/2.1_p20100409/01_all_UIDGenerator-fix.patch,
+  +files/2.1_p20100409/02_all_vDatetime-tzinfo-fix.patch,
+  +files/2.1_p20100409/03_all_duration-fix.patch,
+  +files/2.1_p20100409/04_all_date-type-test-in-vDDDTypes.patch,
+  +files/2.1_p20100409/05_all_utf8-multi-octet-fix.patch,
+  +files/2.1_p20100409/06_all_test.py-use-set.patch,
+  +files/2.1_p20100409/07_all_vGeo.from_ical-test-fix.patch,
+  icalendar-2.1_p20100409.ebuild:
+  Reorganized patch directories for future expansion;
+  added a patch to fix doctests with Python 2.7 (bug #327931)
+
+  25 Apr 2010; Joe Sapp <nixphoeni@gentoo.org>
+  -files/icalendar-2.0.1-UIDGenerator-fix.patch,
+  -files/icalendar-2.1-vDatetime-tzinfo-fix.patch:
+  Renamed existing patches
+
+*icalendar-2.1_p20100409 (25 Apr 2010)
+
+  25 Apr 2010; Joe Sapp <nixphoeni@gentoo.org>
+  +files/01_all_UIDGenerator-fix.patch, icalendar-2.0.1.ebuild,
+  +files/02_all_vDatetime-tzinfo-fix.patch, icalendar-2.1-r1.ebuild,
+  +files/03_all_duration-fix.patch, +icalendar-2.1_p20100409.ebuild,
+  +files/04_all_date-type-test-in-vDDDTypes.patch,
+  +files/05_all_utf8-multi-octet-fix.patch,
+  +files/06_all_test.py-use-set.patch:
+  Added an ebuild to include patches flying across the mailing list. It's
+  unknown when upstream will release a version incorporating these fixes.
+
+  08 Feb 2010; Peter Volkov <pva@gentoo.org> icalendar-2.0.1.ebuild,
+  icalendar-2.1-r1.ebuild:
+  Add inherit eutils for epatch.
+
+  03 Feb 2010; Markus Meier <maekke@gentoo.org> icalendar-2.1-r1.ebuild:
+  amd64/x86 stable, bug #301953
+
+*icalendar-2.1-r1 (20 Dec 2009)
+
+  20 Dec 2009; Joe Sapp <nixphoeni@gentoo.org> -icalendar-2.1.ebuild,
+  +icalendar-2.1-r1.ebuild, +files/icalendar-2.1-vDatetime-tzinfo-fix.patch:
+  Added pending vDatetime.ical() patch from
+  http://codespeak.net/pipermail/icalendar-dev/2009-July/000139.html
+
+*icalendar-2.1 (19 Dec 2009)
+
+  19 Dec 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +icalendar-2.1.ebuild:
+  Version bump. Set SUPPORT_PYTHON_ABIS.
+
+  19 Sep 2009; Markus Meier <maekke@gentoo.org> icalendar-2.0.1.ebuild:
+  amd64/x86 stable, bug #285035
+
+*icalendar-2.0.1 (04 Jul 2009)
+
+  04 Jul 2009; Joe Sapp <nixphoeni@gentoo.org> +icalendar-2.0.1.ebuild,
+  +files/icalendar-2.0.1-UIDGenerator-fix.patch, +metadata.xml:
+  Initial commit - bug #111822

@@ -1,0 +1,37 @@
+# ChangeLog for games-roguelike/mazesofmonad
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-roguelike/mazesofmonad/ChangeLog,v 1.7 2015/02/07 06:23:14 mr_bones_ Exp $
+
+  07 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  mazesofmonad-1.0.9-r2.ebuild:
+  ws
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  24 Nov 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  mazesofmonad-1.0.9-r2.ebuild, metadata.xml:
+  Added 'haskell' herd t maintainers, fix rdepend on gmp.
+
+*mazesofmonad-1.0.9-r2 (16 Oct 2014)
+
+  16 Oct 2014; Julian Ospald <hasufell@gentoo.org>
+  +mazesofmonad-1.0.9-r2.ebuild, -mazesofmonad-1.0.9-r1.ebuild:
+  add missing ghc-package phase function
+
+*mazesofmonad-1.0.9-r1 (03 Sep 2014)
+
+  03 Sep 2014; Julian Ospald <hasufell@gentoo.org> -mazesofmonad-1.0.8.ebuild,
+  -mazesofmonad-1.0.9.ebuild, +mazesofmonad-1.0.9-r1.ebuild:
+  fix deps, rm old
+
+*mazesofmonad-1.0.9 (02 Sep 2014)
+
+  02 Sep 2014; Julian Ospald <hasufell@gentoo.org> +mazesofmonad-1.0.9.ebuild:
+  version bump -.-
+
+*mazesofmonad-1.0.8 (02 Sep 2014)
+
+  02 Sep 2014; Julian Ospald <hasufell@gentoo.org> +mazesofmonad-1.0.8.ebuild,
+  +metadata.xml:
+  initial import

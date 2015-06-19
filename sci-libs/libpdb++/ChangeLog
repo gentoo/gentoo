@@ -1,0 +1,21 @@
+# ChangeLog for sci-libs/libpdb++
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/libpdb++/ChangeLog,v 1.3 2012/10/18 16:57:39 jlec Exp $
+
+  18 Oct 2012; Justin Lecher <jlec@gentoo.org> libpdb++-040728-r1.ebuild,
+  files/libpdb++-040728-dynlib+flags.patch:
+  Fix silent errors
+
+*libpdb++-040728-r1 (18 Oct 2012)
+
+  18 Oct 2012; Justin Lecher <jlec@gentoo.org> libpdb++-040728.ebuild,
+  +libpdb++-040728-r1.ebuild, +files/libpdb++-040728-dynlib+flags.patch,
+  metadata.xml:
+  Straighten ebuild by cleaning the buildsystem
+
+*libpdb++-040728 (07 Mar 2010)
+
+  07 Mar 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +files/040728-dynlib.patch, +libpdb++-040728.ebuild, +metadata.xml:
+  C++ lib to handle pdb files
+

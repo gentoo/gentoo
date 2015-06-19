@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=app-shells/scsh-0.6.6
+DESCRIPTION=Installation tool for the Scheme Untergrund Library
+HOMEPAGE=http://lamp.epfl.ch/~schinz/scsh_packages/
+IUSE=scsh
+KEYWORDS=~x86
+LICENSE=BSD
+RDEPEND=>=app-shells/scsh-0.6.6
+SLOT=0
+SRC_URI=http://lamp.epfl.ch/~schinz/scsh_packages/scsh-install-lib-1.3.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	scsh	057db77563e4394a9e4eda7ef52d5785	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=1fb2da78e0dfb6e3defcb8ecd6e4674d

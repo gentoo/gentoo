@@ -1,0 +1,27 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ntp/files/sntp.rc,v 1.1 2013/07/06 07:15:02 pacho Exp $
+
+depend() {
+	before cron portmap
+	after net
+	use dns logger
+}
+
+checkconfig() {
+	if [ -z "${SNTP_OPTS}" ] ; then
+		eerror "Please edit /etc/conf.d/sntp"
+		eerror "I need to know what server/options to use!"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	checkconfig || return $?
+
+	ebegin "Setting clock via SNTP"
+	/usr/bin/sntp ${SNTP_OPTS}
+	eend $? "Failed to set clock"
+}

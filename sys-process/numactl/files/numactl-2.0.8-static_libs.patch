@@ -1,0 +1,86 @@
+Build static libs without -fPIC and only if BUILD_STATIC=yes
+
+https://bugs.gentoo.org/379849
+
+Patch written by Kacper Kowalik <xarthisius@gentoo.org>
+--- a/Makefile
++++ b/Makefile
+@@ -7,6 +7,8 @@
+ # for compatibility with old releases
+ CFLAGS += ${OPT_CFLAGS}
+ override CFLAGS += -I.
++# build static libraries by default
++BUILD_STATIC ?= yes
+ 
+ # find out if compiler supports __thread
+ THREAD_SUPPORT := $(shell if $(CC) $(CFLAGS) threadtest.c -o threadtest \
+@@ -24,6 +26,7 @@
+ 
+ CLEANFILES := numactl.o libnuma.o numactl numademo numademo.o distance.o \
+ 	      memhog libnuma.so libnuma.so.1 numamon numamon.o syscall.o bitops.o \
++	      distance.pic.o libnuma.pic.o syscall.pic.o \
+ 	      memhog.o util.o stream_main.o stream_lib.o shm.o stream clearcache.o \
+ 	      test/pagesize test/tshared test/mynode.o test/tshared.o mt.o empty.o empty.c \
+ 	      test/mynode test/ftok test/prefered test/randmap \
+@@ -40,11 +43,16 @@
+ libdir := ${prefix}/$(shell ./getlibdir)
+ docdir := ${prefix}/share/doc
+ 
++NUMA_LIBS = libnuma.so
++ifeq ($(BUILD_STATIC),yes)
++NUMA_LIBS+= libnuma.a
++endif
++
+ all: numactl migratepages migspeed libnuma.so numademo numamon memhog \
+      test/tshared stream test/mynode test/pagesize test/ftok test/prefered \
+      test/randmap test/nodemap test/distance test/tbitmap test/move_pages \
+      test/mbind_mig_pages test/migrate_pages test/realloc_test libnuma.a \
+-     test/node-parse numastat
++     test/node-parse numastat ${NUMA_LIBS}
+ 
+ numactl: numactl.o util.o shm.o bitops.o libnuma.so
+ 
+@@ -81,13 +89,14 @@
+ 
+ libnuma.so.1: versions.ldscript
+ 
+-libnuma.so.1: libnuma.o syscall.o distance.o affinity.o sysfs.o rtnetlink.o
++libnuma.so.1: libnuma.pic.o syscall.pic.o distance.pic.o affinity.pic.o sysfs.pic.o rtnetlink.pic.o
+ 	${CC} ${LDFLAGS} -shared -Wl,-soname=libnuma.so.1 -Wl,--version-script,versions.ldscript -Wl,-init,numa_init -Wl,-fini,numa_fini -o libnuma.so.1 $(filter-out versions.ldscript,$^)
+ 
+ libnuma.so: libnuma.so.1
+ 	ln -sf libnuma.so.1 libnuma.so
+ 
+-libnuma.o : CFLAGS += -fPIC
++%.pic.o: %.c
++	${CC} -fPIC ${CPPFLAGS} ${CFLAGS} -c $< -o $@
+ 
+ AR ?= ar
+ RANLIB ?= ranlib
+@@ -95,16 +104,6 @@
+ 	$(AR) rc $@ $^
+ 	$(RANLIB) $@
+ 
+-distance.o : CFLAGS += -fPIC
+-
+-syscall.o : CFLAGS += -fPIC
+-
+-affinity.o : CFLAGS += -fPIC
+-
+-sysfs.o : CFLAGS += -fPIC
+-
+-rtnetlink.o : CFLAGS += -fPIC
+-
+ test/tshared: test/tshared.o libnuma.so
+ 
+ test/mynode: test/mynode.o libnuma.so
+@@ -143,7 +148,9 @@
+ 	mkdir -p ${libdir}
+ 	install -m 0755 libnuma.so.1 ${libdir}
+ 	cd ${libdir} ; ln -sf libnuma.so.1 libnuma.so
++ifeq ($(BUILD_STATIC),yes)
+ 	install -m 0644 libnuma.a ${libdir}
++endif
+ 	mkdir -p ${prefix}/include
+ 	install -m 0644 numa.h numaif.h numacompat1.h ${prefix}/include
+ 	install -m 0755 numastat ${prefix}/bin

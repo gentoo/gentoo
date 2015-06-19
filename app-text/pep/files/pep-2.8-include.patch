@@ -1,0 +1,10 @@
+--- a/main.c	1995-08-11 02:00:00.000000000 +0200
++++ b/main.c	2010-08-26 23:57:03.000000000 +0200
+@@ -91,6 +91,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ #include <string.h>
+ #include <ctype.h>
+ #include "pep.h"

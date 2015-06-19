@@ -1,0 +1,110 @@
+change the install path, as by default everything is dumped right under
+the prefix. After fixing install paths, now fix the source so the
+program can find the moved resources.
+	
+diff --git a/CMakeGlobals.txt b/CMakeGlobals.txt
+index da74970..1537bff 100644
+--- a/CMakeGlobals.txt
++++ b/CMakeGlobals.txt
+@@ -103,7 +103,7 @@ else()
+    else()
+      set(RSTUDIO_INSTALL_BIN bin)
+    endif()
+-   set(RSTUDIO_INSTALL_SUPPORTING .)
++   set(RSTUDIO_INSTALL_SUPPORTING ${DISTRO_SHARE})
+ endif()
+ 
+ # if the install prefix is /usr/local then tweak as appropriate
+diff --git a/src/cpp/server/CMakeLists.txt b/src/cpp/server/CMakeLists.txt
+index af4db1c..96b767e 100644
+--- a/src/cpp/server/CMakeLists.txt
++++ b/src/cpp/server/CMakeLists.txt
+@@ -142,7 +142,7 @@ if (UNIX AND NOT APPLE)
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_INITD_DEBIAN_SCRIPT}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_DEBIAN_SCRIPT})
+    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_DEBIAN_SCRIPT}
+-           DESTINATION ${RSERVER_INITD_DEBIAN_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_INITD_DEBIAN_DIR})
+ 
+    # install configured redhat init.d script
+    set(RSERVER_INITD_REDHAT_DIR "extras/init.d/redhat")
+@@ -150,7 +150,7 @@ if (UNIX AND NOT APPLE)
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_INITD_REDHAT_SCRIPT}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_REDHAT_SCRIPT})
+    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_REDHAT_SCRIPT}
+-           DESTINATION ${RSERVER_INITD_REDHAT_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_INITD_REDHAT_DIR})
+ 
+    # install configured suse init.d script
+    set(RSERVER_INITD_SUSE_DIR "extras/init.d/suse")
+@@ -158,13 +158,13 @@ if (UNIX AND NOT APPLE)
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_INITD_SUSE_SCRIPT}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_SUSE_SCRIPT})
+    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_SUSE_SCRIPT}
+-           DESTINATION ${RSERVER_INITD_SUSE_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_INITD_SUSE_DIR})
+ 
+    # install pam profile
+    set(RSERVER_PAM_DIR "extras/pam")
+    set(RSERVER_PAM_PROFILE "${RSERVER_PAM_DIR}/rstudio")
+    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_PAM_PROFILE}
+-           DESTINATION ${RSERVER_PAM_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_PAM_DIR})
+ 
+    # install configured apparmor profile
+    set(RSERVER_APPARMOR_DIR "extras/apparmor")
+@@ -172,9 +172,9 @@ if (UNIX AND NOT APPLE)
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_APPARMOR_PROFILE}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_APPARMOR_PROFILE})
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_APPARMOR_PROFILE}
+-           DESTINATION ${RSERVER_APPARMOR_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_APPARMOR_DIR})
+    install(PROGRAMS ${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_APPARMOR_DIR}/apparmor-profile-load
+-           DESTINATION ${RSERVER_APPARMOR_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_APPARMOR_DIR})
+ 
+    # install configured upstart profile
+    set(RSERVER_UPSTART_DIR "extras/upstart")
+@@ -182,6 +182,6 @@ if (UNIX AND NOT APPLE)
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_UPSTART_PROFILE}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_UPSTART_PROFILE})
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_UPSTART_PROFILE}
+-           DESTINATION ${RSERVER_UPSTART_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_UPSTART_DIR})
+ 
+ endif()
+diff --git a/src/cpp/server/ServerOptions.cpp b/src/cpp/server/ServerOptions.cpp
+index 77a63f1..f0d25f0 100644
+--- a/src/cpp/server/ServerOptions.cpp
++++ b/src/cpp/server/ServerOptions.cpp
+@@ -201,7 +201,7 @@ ProgramStatus Options::read(int argc, char * const argv[])
+ 
+    // convert relative paths by completing from the system installation
+    // path (this allows us to be relocatable)
+-   resolvePath(installPath, &wwwLocalPath_);
++   resolvePath(installPath.childPath(DISTRO_SHARE), &wwwLocalPath_);
+    resolvePath(installPath, &authPamHelperPath_);
+    resolvePath(installPath, &rsessionPath_);
+    resolvePath(installPath, &rldpathPath_);
+diff --git a/src/cpp/session/SessionOptions.cpp b/src/cpp/session/SessionOptions.cpp
+index 0df1081..777cc6a 100644
+--- a/src/cpp/session/SessionOptions.cpp
++++ b/src/cpp/session/SessionOptions.cpp
+@@ -314,12 +314,12 @@ core::ProgramStatus Options::read(int argc, char * const argv[])
+    }
+ 
+    // convert relative paths by completing from the app resource path
+-   resolvePath(resourcePath, &rResourcesPath_);
++   resolvePath(resourcePath.childPath(DISTRO_SHARE), &rResourcesPath_);
+    resolvePath(resourcePath, &agreementFilePath_);
+-   resolvePath(resourcePath, &wwwLocalPath_);
+-   resolvePath(resourcePath, &coreRSourcePath_);
+-   resolvePath(resourcePath, &modulesRSourcePath_);
+-   resolvePath(resourcePath, &sessionPackagesPath_);
++   resolvePath(resourcePath.childPath(DISTRO_SHARE), &wwwLocalPath_);
++   resolvePath(resourcePath.childPath(DISTRO_SHARE), &coreRSourcePath_);
++   resolvePath(resourcePath.childPath(DISTRO_SHARE), &modulesRSourcePath_);
++   resolvePath(resourcePath.childPath(DISTRO_SHARE), &sessionPackagesPath_);
+    resolvePostbackPath(resourcePath, &rpostbackPath_);
+ #ifdef _WIN32
+    resolvePath(resourcePath, &consoleIoPath_);

@@ -1,0 +1,26 @@
+--- tests/bin/start-jenkins.sh.orig	2015-01-02 23:10:17.000000000 +0100
++++ tests/bin/start-jenkins.sh	2015-01-30 16:35:27.058035074 +0100
+@@ -19,6 +19,8 @@
+     echo 0 | nc $jenkins_addr $jenkins_cport
+ }
+ 
++cp -v /opt/jenkins/jenkins.war $jenkins_war 
++
+ if [[ ! -e $jenkins_war ]]; then
+     echo "Downloading jenkins.war ..."
+     curl -L $jenkins_war_url > $jenkins_war
+@@ -31,7 +33,6 @@
+ 
+ if [[ $(unzip -l $jenkins_war | egrep "plugins/(mercurial)|(git).hpi" | wc -l) -ne 2 ]]; then
+     echo "Adding git and hg plugins to jenkins.war ..."
+-    wget -c $hg_hpi_url $git_hpi_url -P "${here}/../tmp/WEB-INF/plugins"
+     (cd ${here}/../tmp && zip jenkins.war ./WEB-INF/plugins/*.hpi)
+ fi
+ 
+@@ -57,4 +58,4 @@
+ 
+ [[ $jenkins_running -ne 0 ]] && exit 1
+ 
+-wait $java_pid
++#wait $java_pid
+

@@ -1,0 +1,10 @@
+# ChangeLog for sys-apps/intel-performance-counter-monitor
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/intel-performance-counter-monitor/ChangeLog,v 1.1 2015/05/20 06:10:32 dlan Exp $
+
+*intel-performance-counter-monitor-2.8 (20 May 2015)
+
+  20 May 2015; Yixun Lan <dlan@gentoo.org>
+  +intel-performance-counter-monitor-2.8.ebuild, +metadata.xml:
+  initial ebuild contributed by Brendan 'undersys' Horan
+

@@ -1,0 +1,32 @@
+Index: csrc/Makefile
+===================================================================
+--- src/csrc.orig/Makefile
++++ src/csrc/Makefile
+@@ -28,11 +28,8 @@ fec8-jinterf.o: fec-jinterf.c
+ 		-I$(JAVA_HOME)/include/linux fec-jinterf.c \
+ 		-o fec8-jinterf.o
+ 
+-fec8.o: fec.h fec8.S
+-	$(CC) $(CFLAGS) -DGF_BITS=8 -c -o fec8.o fec8.S
+-
+-fec8.S: fec.c Makefile
+-	$(CC) $(CFLAGS) -DGF_BITS=8 -S -o fec8.S fec.c
++fec8.o: fec.h fec.c
++	$(CC) $(CFLAGS) -DGF_BITS=8 -c -o fec8.o fec.c
+ 
+ libfec16.so: fec16.o fec16-jinterf.o
+ 	$(CC) $(LDFLAGS) -shared fec16-jinterf.o fec16.o -o libfec16.so
+@@ -42,11 +39,8 @@ fec16-jinterf.o: fec-jinterf.c
+ 		-I$(JAVA_HOME)/include/linux fec-jinterf.c \
+ 		-o fec16-jinterf.o
+ 
+-fec16.o: fec.h fec16.S
+-	$(CC) $(CFLAGS) -DGF_BITS=16 -c -o fec16.o fec16.S
+-
+-fec16.S: fec.c Makefile
+-	$(CC) $(CFLAGS) -DGF_BITS=16 -S -o fec16.S fec.c
++fec16.o: fec.h fec.c
++	$(CC) $(CFLAGS) -DGF_BITS=16 -c -o fec16.o fec.c
+ 
+ clean:
+ 	- rm -f *.o *.S fec *.so

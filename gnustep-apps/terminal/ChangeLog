@@ -1,0 +1,187 @@
+# ChangeLog for gnustep-apps/terminal
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/terminal/ChangeLog,v 1.33 2013/03/17 15:18:14 hwoarang Exp $
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  28 Dec 2012; Samuli Suominen <ssuominen@gentoo.org> terminal-0.9.7.ebuild,
+  terminal-0.9.8.ebuild:
+  Only block old release of xfce4-terminal because the binary "Terminal" was
+  renamed to "xfce4-terminal"
+
+  11 Oct 2012; Andreas Schuerch <nativemad@gentoo.org> terminal-0.9.8.ebuild:
+  x86 stable, see bug 429080
+
+  15 Aug 2012; Anthony G. Basile <blueness@gentoo.org> terminal-0.9.8.ebuild:
+  Stable ppc, bug #429080
+
+  14 Aug 2012; Agostino Sarubbo <ago@gentoo.org> terminal-0.9.8.ebuild:
+  Stable for amd64, wrt bug #429080
+
+*terminal-0.9.8 (07 Jun 2012)
+
+  07 Jun 2012; Bernard Cafarelli <voyageur@gentoo.org>
+  -terminal-0.9.5_pre20060324-r1.ebuild, -terminal-0.9.5.ebuild,
+  -files/terminal-0.9.5_pre20060324-gnustep-base1.15.patch,
+  -files/terminal-0.9.5_pre20060324-size_t.patch,
+  -files/terminal-0.9.5_pre20060324-solaris.patch, -terminal-0.9.6.ebuild,
+  +terminal-0.9.8.ebuild:
+  Version bump, mainly a bug fix and maintenance release. Remove old versions
+
+  07 Jun 2012; Michael Weber <xmw@gentoo.org> terminal-0.9.7.ebuild:
+  ppc stable (bug 397049)
+
+  07 Apr 2012; Markus Meier <maekke@gentoo.org> terminal-0.9.7.ebuild:
+  x86 stable, bug #397049
+
+  04 Feb 2012; Agostino Sarubbo <ago@gentoo.org> terminal-0.9.7.ebuild:
+  Stable for amd64, wrt bug #397049
+
+  05 Aug 2011; Samuli Suominen <ssuominen@gentoo.org>
+  terminal-0.9.5_pre20060324-r1.ebuild, terminal-0.9.5.ebuild,
+  terminal-0.9.6.ebuild, terminal-0.9.7.ebuild:
+  Block x11-terms/terminal until upstream has renamed binary to something
+  different wrt #376257 by Diego Elio Pettenò
+
+*terminal-0.9.7 (25 May 2010)
+
+  25 May 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +terminal-0.9.7.ebuild:
+  Version bump, mostly bugfix and compatibility with last GNUstep release
+
+*terminal-0.9.6 (15 Jan 2010)
+
+  15 Jan 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +terminal-0.9.6.ebuild:
+  Bump, bugfixes and support for reversed colors
+
+*terminal-0.9.5 (26 May 2009)
+
+  26 May 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  +terminal-0.9.5.ebuild:
+  Version bump, finally a new stable release
+
+  08 Dec 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  terminal-0.9.5_pre20060324-r1.ebuild:
+  Fix compilation with --as-needed, bug #250173
+
+  08 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  terminal-0.9.5_pre20060324-r1.ebuild:
+  amd64 stable wrt bug #207381
+
+  30 Jan 2008; Brent Baude <ranger@gentoo.org>
+  terminal-0.9.5_pre20060324-r1.ebuild:
+  Marking terminal-0.9.5_pre20060324-r1 ppc for bug 207381
+
+  25 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  terminal-0.9.5_pre20060324-r1.ebuild:
+  stable x86, bug 207381
+
+  10 Dec 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  +files/terminal-0.9.5_pre20060324-gnustep-base1.15.patch,
+  terminal-0.9.5_pre20060324-r1.ebuild:
+  Add patch to make it compile with gnustep-base 1.15
+
+*terminal-0.9.5_pre20060324-r1 (10 Sep 2007)
+
+  10 Sep 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  +files/terminal-0.9.5_pre20060324-size_t.patch,
+  +files/terminal-0.9.5_pre20060324-solaris.patch,
+  -terminal-0.9.5_pre20050315.ebuild, -terminal-0.9.5_pre20060324.ebuild,
+  +terminal-0.9.5_pre20060324-r1.ebuild:
+  Version bump from the GNUstep overlay
+  Remove old versions
+
+  22 Aug 2007; Christoph Mende <angelos@gentoo.org>
+  terminal-0.9.5_pre20060324.ebuild:
+  Added ~amd64 wrt bug #170433
+
+  22 Aug 2007; Roy Marples <uberlord@gentoo.org>
+  terminal-0.9.5_pre20060324.ebuild:
+  Keyworded ~x86-fbsd, #183467 thanks to Nathan Smith.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*terminal-0.9.5_pre20060324 (25 Mar 2006)
+
+  25 Mar 2006; Fabian Groffen <grobian@gentoo.org>
+  -terminal-0.9.5_pre20050110.ebuild, terminal-0.9.5_pre20050315.ebuild,
+  +terminal-0.9.5_pre20060324.ebuild:
+  Removed old CVS ebuild, fixed and bumped
+
+*terminal-0.9.5_pre20050315 (17 Mar 2005)
+
+  17 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -terminal-0.9.5_pre20041116.ebuild, +terminal-0.9.5_pre20050315.ebuild:
+  ebuild updates for GNUstep base, libs, and apps across the board; proper
+  versions (to be stabilized, in due time) added where apropos, cvs-pull
+  versions updated where needed
+
+*terminal-0.9.5_pre20050110 (12 Jan 2005)
+
+  12 Jan 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -terminal-0.9.5_pre20040927.ebuild, +terminal-0.9.5_pre20050110.ebuild:
+  Version bump
+
+*terminal-0.9.5_pre20041116 (04 Dec 2004)
+
+  04 Dec 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +terminal-0.9.5_pre20041116.ebuild:
+  General version bump
+
+*terminal-0.9.5_pre20040909 (11 Nov 2004)
+
+  11 Nov 2004; Armando Di Cianno <fafhrd@gentoo.org> -terminal-0.9.4.ebuild,
+  -terminal-0.9.5_pre20040909.ebuild, terminal-0.9.5_pre20040927.ebuild:
+  Mass Update: gnustep.eclass revamped to allow configurable root install;
+  gnustep-base/libs/apps updated to utilize new gnustep.eclass (only versions
+  bumped where files would change); some KEYWORDS were accidentally dropped
+  between version bumps of packages -- this has been resolved; windowmaker
+  correctly supports gnustep now
+
+  18 Oct 2004; David Holm <dholm@gentoo.org> :
+  Added to ~ppc.
+
+  17 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  terminal-0.9.5_pre20040927.ebuild:
+  Ready for testing on ~ppc.
+
+*terminal-0.9.5_pre20040927 (28 Sep 2004)
+
+  28 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +terminal-0.9.5_pre20040927.ebuild:
+  Version bump; pre release date specd live cvs pull.
+
+  23 Jul 2004; Armando Di Cianno,,, <armando@gentoo.org>
+  terminal-0.9.4.ebuild:
+  Changed referenced categories in ebuilds to reflect recent epkgmove changes.
+
+*terminal-0.9.4 (23 Jul 2004)
+
+  23 Jul 2004; Armando Di Cianno,,, <armando@gentoo.org> +metadata.xml,
+  +terminal-0.9.4.ebuild:
+  Moved from app-gnustep/terminal to gnustep-apps/terminal.
+
+  22 Jul 2004; Armando Di Cianno,,, <armando@gentoo.org>
+  terminal-0.9.4.ebuild:
+  Changing the eclass to gnustep-old
+
+  22 Jul 2004; Armando Di Cianno,,, <armando@gentoo.org>
+  terminal-0.9.4.ebuild:
+  Changing the eclass to gnustep-old
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> terminal-0.9.4.ebuild:
+  Added IUSE=
+
+  18 Oct 2003; Nick Hadaway <raker@gentoo.org> terminal-0.9.4.ebuild:
+  Fixed the policy violation of setting ${A}
+
+  28 Jul 2003; Nick Hadaway <raker@gentoo.org> terminal-0.9.4.ebuild:
+  Changed the description as noted on bug #25402.
+
+*terminal-0.9.4 (16 Jul 2003)
+
+  16 Jul 2003; Michele Balistreri <brain@gentoo.org> terminal-0.9.4.ebuild:
+  New ebuild.

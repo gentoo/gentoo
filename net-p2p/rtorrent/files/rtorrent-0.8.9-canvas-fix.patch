@@ -1,0 +1,299 @@
+Index: rtorrent/src/display/window_download_list.h
+===================================================================
+--- rtorrent/src/display/window_download_list.h	(revision 1163)
++++ rtorrent/src/display/window_download_list.h	(working copy)
+@@ -59,6 +59,10 @@
+   virtual void        redraw();
+ 
+   void                set_view(core::View* l);
++  void                set_done_fg_color(int64_t color);
++  void                set_done_bg_color(int64_t color);
++  void                set_active_fg_color(int64_t color);
++  void                set_active_bg_color(int64_t color);
+ 
+ private:
+   core::View*         m_view;
+Index: rtorrent/src/display/canvas.cc
+===================================================================
+--- rtorrent/src/display/canvas.cc	(revision 1163)
++++ rtorrent/src/display/canvas.cc	(working copy)
+@@ -92,6 +92,10 @@
+   m_isInitialized = true;
+ 
+   initscr();
++  start_color();
++  use_default_colors();
++  init_pair(2, -1, -1);
++  init_pair(1, -1, -1);
+   raw();
+   noecho();
+   nodelay(stdscr, TRUE);
+Index: rtorrent/src/display/window_download_list.cc
+===================================================================
+--- rtorrent/src/display/window_download_list.cc	(revision 1163)
++++ rtorrent/src/display/window_download_list.cc	(working copy)
+@@ -37,6 +37,7 @@
+ #include "config.h"
+ 
+ #include <rak/algorithm.h>
++#include <torrent/rate.h>
+ 
+ #include "core/download.h"
+ #include "core/view.h"
+@@ -96,12 +97,30 @@
+     char* position;
+     char* last = buffer + m_canvas->width() - 2 + 1;
+ 
++    if( pos >= m_canvas->height() ) break;
+     position = print_download_title(buffer, last, *range.first);
+-    m_canvas->print(0, pos++, "%c %s", range.first == m_view->focus() ? '*' : ' ', buffer);
++    m_canvas->print(0, pos, "%c %s", range.first == m_view->focus() ? '*' : ' ', buffer);
++    if( (*range.first)->is_done() ) {
++      if( (*range.first)->info()->up_rate()->rate() != 0 ) {
++        m_canvas->set_attr(0, pos, m_canvas->width()-1, A_BOLD, 2);
++      } else {
++        m_canvas->set_attr(0, pos, m_canvas->width()-1, A_NORMAL, 2);
++      }
++    } else if( (*range.first)->info()->is_active() ) {
++      if( (*range.first)->info()->down_rate()->rate() != 0 ) {
++        m_canvas->set_attr(0, pos, m_canvas->width()-1, A_BOLD, 1);
++      } else {
++        m_canvas->set_attr(0, pos, m_canvas->width()-1, A_NORMAL, 1);
++      }
++    }
++    pos++;
++
++    if( pos >= m_canvas->height() ) break;
+     
+     position = print_download_info(buffer, last, *range.first);
+     m_canvas->print(0, pos++, "%c %s", range.first == m_view->focus() ? '*' : ' ', buffer);
+ 
++    if( pos >= m_canvas->height() ) break;
+     position = print_download_status(buffer, last, *range.first);
+     m_canvas->print(0, pos++, "%c %s", range.first == m_view->focus() ? '*' : ' ', buffer);
+ 
+@@ -109,4 +128,41 @@
+   }    
+ }
+ 
++void
++WindowDownloadList::set_done_fg_color(int64_t color) {
++  short fg, bg;
++  pair_content(2, &fg, &bg);
++  if( color < 0 ) color = -1;
++  color = color % 8;
++  init_pair(2, (short)color, bg);
+ }
++
++void
++WindowDownloadList::set_done_bg_color(int64_t color) {
++  short fg, bg;
++  pair_content(2, &fg, &bg);
++  if( color < 0 ) color = -1;
++  color = color % 8;
++  init_pair(2, fg, (short)color);
++}
++
++void
++WindowDownloadList::set_active_fg_color(int64_t color) {
++  short fg, bg;
++  pair_content(1, &fg, &bg);
++  if( color < 0 ) color = -1;
++  color = color % 8;
++  init_pair(1, (short)color, bg);
++}
++
++void
++WindowDownloadList::set_active_bg_color(int64_t color) {
++  short fg, bg;
++  pair_content(1, &fg, &bg);
++  if( color < 0 ) color = -1;
++  color = color % 8;
++  init_pair(1, fg, (short)color);
++}
++ 
++}
++
+Index: rtorrent/src/command_network.cc
+===================================================================
+--- rtorrent/src/command_network.cc	(revision 1163)
++++ rtorrent/src/command_network.cc	(working copy)
+@@ -742,4 +742,13 @@
+   CMD2_ANY         ("dht.statistics",        std::bind(&core::DhtManager::dht_statistics, control->dht_manager()));
+   CMD2_ANY         ("dht.throttle.name",     std::bind(&core::DhtManager::throttle_name, control->dht_manager()));
+   CMD2_ANY_STRING_V("dht.throttle.name.set", std::bind(&core::DhtManager::set_throttle_name, control->dht_manager(), std::placeholders::_2));
++
++  CMD2_ANY        ("set_done_fg_color",   std::bind(&ui::Root::get_done_fg_color, control->ui()));
++  CMD2_ANY_VALUE_V("done_fg_color",       std::bind(&ui::Root::set_done_fg_color, control->ui(), std::placeholders::_2));
++  CMD2_ANY        ("set_done_bg_color",   std::bind(&ui::Root::get_done_bg_color, control->ui()));
++  CMD2_ANY_VALUE_V("done_bg_color",       std::bind(&ui::Root::set_done_bg_color, control->ui(), std::placeholders::_2));
++  CMD2_ANY        ("set_active_fg_color", std::bind(&ui::Root::get_active_fg_color, control->ui()));
++  CMD2_ANY_VALUE_V("active_fg_color",     std::bind(&ui::Root::set_active_fg_color, control->ui(), std::placeholders::_2));
++  CMD2_ANY        ("set_active_bg_color", std::bind(&ui::Root::get_active_bg_color, control->ui()));
++  CMD2_ANY_VALUE_V("active_bg_color",     std::bind(&ui::Root::set_active_bg_color, control->ui(), std::placeholders::_2));
+ }
+Index: rtorrent/src/ui/download_list.cc
+===================================================================
+--- rtorrent/src/ui/download_list.cc	(revision 1163)
++++ rtorrent/src/ui/download_list.cc	(working copy)
+@@ -137,6 +137,11 @@
+   current_view()->next_focus();
+ }
+ 
++display::WindowDownloadList*
++DownloadList::current_window_list() {
++  return dynamic_cast<ElementDownloadList*>(m_uiArray[DISPLAY_DOWNLOAD_LIST])->window();
++}
++
+ void
+ DownloadList::activate_display(Display displayType) {
+   if (!is_active())
+Index: rtorrent/src/ui/download_list.h
+===================================================================
+--- rtorrent/src/ui/download_list.h	(revision 1163)
++++ rtorrent/src/ui/download_list.h	(working copy)
+@@ -101,6 +101,7 @@
+   void                activate_display(Display d);
+ 
+   core::View*         current_view();
++  display::WindowDownloadList* current_window_list();
+   void                set_current_view(const std::string& name);
+ 
+   void                slot_open_uri(SlotOpenUri s) { m_slotOpenUri = s; }
+Index: rtorrent/src/ui/element_download_list.h
+===================================================================
+--- rtorrent/src/ui/element_download_list.h	(revision 1163)
++++ rtorrent/src/ui/element_download_list.h	(working copy)
+@@ -60,6 +60,7 @@
+   void                disable();
+ 
+   core::View*         view() { return m_view; }
++  WDownloadList*      window() { return m_window; }
+   void                set_view(core::View* l);
+ 
+   void                receive_command(const char* cmd);
+Index: rtorrent/src/ui/root.cc
+===================================================================
+--- rtorrent/src/ui/root.cc	(revision 1163)
++++ rtorrent/src/ui/root.cc	(working copy)
+@@ -44,6 +44,7 @@
+ 
+ #include "core/manager.h"
+ #include "display/frame.h"
++#include "display/window_download_list.h"
+ #include "display/window_http_queue.h"
+ #include "display/window_title.h"
+ #include "display/window_input.h"
+@@ -65,7 +66,11 @@
+   m_windowTitle(NULL),
+   m_windowHttpQueue(NULL),
+   m_windowInput(NULL),
+-  m_windowStatusbar(NULL) {
++  m_windowStatusbar(NULL),
++  done_fg_color(-1),
++  done_bg_color(-1),
++  active_fg_color(-1),
++  active_bg_color(-1) {
+ }
+ 
+ void
+@@ -97,6 +102,10 @@
+   setup_keys();
+ 
+   m_downloadList->activate(rootFrame->frame(1));
++  m_downloadList->current_window_list()->set_done_fg_color(done_fg_color);
++  m_downloadList->current_window_list()->set_done_bg_color(done_bg_color);
++  m_downloadList->current_window_list()->set_active_fg_color(active_fg_color);
++  m_downloadList->current_window_list()->set_active_bg_color(active_bg_color);
+ }
+ 
+ void
+@@ -219,7 +228,47 @@
+     torrent::set_max_unchoked(maxUnchoked);
+ }
+ 
++int
++Root::get_done_fg_color() {
++  return done_fg_color;
++}
++
+ void
++Root::set_done_fg_color(int64_t color) {
++  done_fg_color = color;
++}
++
++int
++Root::get_done_bg_color() {
++  return done_bg_color;
++}
++
++void
++Root::set_done_bg_color(int64_t color) {
++  done_bg_color = color;
++}
++
++int
++Root::get_active_fg_color() {
++  return active_fg_color;
++}
++
++void
++Root::set_active_fg_color(int64_t color) {
++  active_fg_color = color;
++}
++
++int
++Root::get_active_bg_color() {
++  return active_bg_color;
++}
++
++void
++Root::set_active_bg_color(int64_t color) {
++  active_bg_color = color;
++}
++
++void
+ Root::adjust_down_throttle(int throttle) {
+   set_down_throttle(std::max<int>(torrent::down_throttle_global()->max_rate() / 1024 + throttle, 0));
+ }
+Index: rtorrent/src/ui/root.h
+===================================================================
+--- rtorrent/src/ui/root.h	(revision 1163)
++++ rtorrent/src/ui/root.h	(working copy)
+@@ -82,7 +82,16 @@
+   // Rename to raw or something, make base function.
+   void                set_down_throttle_i64(int64_t throttle) { set_down_throttle(throttle >> 10); }
+   void                set_up_throttle_i64(int64_t throttle)   { set_up_throttle(throttle >> 10); }
++  int                 get_done_fg_color();
++  void                set_done_fg_color(int64_t color);
++  int                 get_done_bg_color();
++  void                set_done_bg_color(int64_t color);
++  int                 get_active_fg_color();
++  void                set_active_fg_color(int64_t color);
++  int                 get_active_bg_color();
++  void                set_active_bg_color(int64_t color);
+ 
++
+   void                adjust_down_throttle(int throttle);
+   void                adjust_up_throttle(int throttle);
+ 
+@@ -93,6 +102,11 @@
+ 
+   input::TextInput*   current_input();
+ 
++  int64_t                done_fg_color;
++  int64_t                done_bg_color;
++  int64_t                active_fg_color;
++  int64_t                active_bg_color;
++
+ private:
+   void                setup_keys();
+ 
+@@ -105,6 +119,7 @@
+   WStatusbar*         m_windowStatusbar;
+ 
+   input::Bindings     m_bindings;
++
+ };
+ 
+ }

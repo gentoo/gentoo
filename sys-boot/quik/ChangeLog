@@ -1,0 +1,97 @@
+# ChangeLog for sys-boot/quik
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/quik/ChangeLog,v 1.14 2011/04/10 14:22:23 ulm Exp $
+
+  10 Apr 2011; Ulrich Mueller <ulm@gentoo.org> quik-2.1.6.ebuild:
+  Don't PROVIDE virtual/bootloader, bug 359971.
+
+  10 Feb 2010; Joseph Jezak <josejx@gentoo.org> quik-2.1.6.ebuild,
+  files/headers.patch:
+  Added fix for bug #247659, cleaned up ebuild.
+
+  11 May 2008; Samuli Suominen <drac@gentoo.org> quik-2.1.6.ebuild:
+  Move rpm2targz to DEPEND wrt #220213.
+
+  05 Dec 2006; Joseph Jezak <josejx@gentoo.org> +files/headers.patch,
+  quik-2.1.6.ebuild:
+  Added patch to fix compiling with newer kernel headers.
+
+  27 Nov 2006; Joseph Jezak <josejx@gentoo.org> quik-2.1.6.ebuild:
+  Marked ppc stable.
+
+*quik-2.1.6 (26 May 2005)
+
+  26 May 2005; Joseph Jezak <josejx@gentoo.org>
+  -files/quik-2.0.1.0-fclose-bug.patch, -files/quik-2.0.1.0-gcc-321.patch,
+  +files/md-fix.diff, -quik-2.0.1.0-r1.ebuild, -quik-2.0.1.0-r2.ebuild,
+  -quik-2.0.1.0-r3.ebuild, -quik-2.0.1k.ebuild, +quik-2.1.6.ebuild:
+  Added latest version and removed old versions.
+
+  22 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  quik-2.0.1.0-r1.ebuild, quik-2.0.1.0-r2.ebuild, quik-2.0.1.0-r3.ebuild,
+  quik-2.0.1k.ebuild:
+  set HOMEPAGE to something clickable
+
+  06 Nov 2004; Daniel Black <dragonheart@gentoo.org> quik-2.0.1.0-r1.ebuild,
+  quik-2.0.1.0-r2.ebuild, quik-2.0.1.0-r3.ebuild, quik-2.0.1k.ebuild:
+  Changed to use $(tc-getCC) as per bug 70113. Thanks spanky
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  quik-2.0.1.0-r1.ebuild, quik-2.0.1.0-r2.ebuild, quik-2.0.1.0-r3.ebuild,
+  quik-2.0.1k.ebuild:
+  virtual/glibc -> virtual/libc
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> quik-2.0.1k.ebuild:
+  Add inherit toolchain-funcs eutils
+
+*quik-2.0.1.0-r3 (08 Dec 2003)
+
+  08 Dec 2003; Seemant Kulleen <seemant@gentoo.org> metadata.xml,
+  quik-2.0.1.0-r1.ebuild, quik-2.0.1.0-r2.ebuild, quik-2.0.1.0-r3.ebuild,
+  quik-2.0.1k.ebuild, files/quik-2.0.1.0-fclose-bug.patch,
+  files/quik-2.0.1.0-gcc-321.patch:
+  moved from sys-apps to sys-boot
+
+*quik-2.0.1k (10 Jun 2003)
+
+  10 Jun 2003; Graham Forest <vladimir@gentoo.org> Manifest,
+  quik-2.0.1k.ebuild:
+  Added 2.0.1k, which uses completely different patches. It's currently
+  package.masked, due to needing testing, but it should compile on gcc 3.x now
+
+*quik-2.0.1.0-r3 (04 Feb 2003)
+
+  24 Feb 2003; Nicholas Wourms <dragon@gentoo.org> quik-2.0.1.0-r3.ebuild :
+  This is definitely not for mips.
+
+  04 Feb 2003; Jon Nall <nall@gentoo.org> files/quik-2.0.1.0-fclose-bug.patch :
+  fixed patch to avoid SIGSEGV. this closes bug #14817
+
+*quik-2.0.1.0-r2 (28 Jan 2003)
+  
+  24 Feb 2003; Nicholas Wourms <dragon@gentoo.org> quik-2.0.1.0-r2.ebuild :
+  This is definitely not for mips.
+
+  28 Jan 2003; Jon Nall <nall@gentoo.org> quik-2.0.1.0-r2.ebuild :
+  fixed to work with gcc-3.2.1 (fixed gentoo bug #14655)
+  
+*quik-2.0.1.0-r1 (24 Apr 2002)
+
+  24 Feb 2003; Nicholas Wourms <dragon@gentoo.org> quik-2.0.1.0-r1.ebuild :
+  This is definitely not for mips.
+
+  06 Jan 2003; Seemant Kulleen <seemant@gentoo.org> quik-2.0.1.0-r1.ebuild :
+
+  PROVIDE=virtual/bootloader
+
+  29 Sep 2002; Donny Davies <woodchip@gentoo.org> quik-2.0.1.0-r1.ebuild :
+  Now uses mount-boot eclass, #7903.
+
+  24 Sep 2002; Owen Stampflee <owen@gentoo.org> quik-2.0.1.0-r1.ebuild :
+  Fixed some linker wackiness on GCC 3.2 systems.
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> quik-2.0.1.0-r1.ebuild :
+  Added LICENSE, SLOT.
+
+Wed Apr 24 10:34:56 2002 CEST; pvdabeel <pvdabeel@gentoo.org> all:
+This is an initial .ebuild for quik-2.0.1.0-r1 for ppc machines.

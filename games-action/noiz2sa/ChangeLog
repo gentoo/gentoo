@@ -1,0 +1,50 @@
+# ChangeLog for games-action/noiz2sa
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/noiz2sa/ChangeLog,v 1.13 2015/01/01 19:35:56 tupone Exp $
+
+  01 Jan 2015; Tupone Alfredo <tupone@gentoo.org> noiz2sa-0.51a.ebuild:
+  EAPI 4
+
+  22 Jun 2012; Tupone Alfredo <tupone@gentoo.org>
+  files/noiz2sa-0.51a-underlink.patch:
+  Build with gcc-4.7 Bug #422771 by flameeyes@gentoo.org
+
+  13 Jun 2012; Michael Sterrett <mr_bones_@gentoo.org> noiz2sa-0.51a.ebuild:
+  tidy
+
+  14 Jun 2011; Tupone Alfredo <tupone@gentoo.org> noiz2sa-0.51a.ebuild,
+  +files/noiz2sa-0.51a-underlink.patch:
+  Tidy and fix underlink. Bug #368885 by Diego Elio Pettenò
+
+  15 Sep 2010; Michael Sterrett <mr_bones_@gentoo.org> noiz2sa-0.51a.ebuild:
+  respect LDFLAGS (bug #337476)
+
+  25 Jan 2010; Michael Sterrett <mr_bones_@gentoo.org> noiz2sa-0.51a.ebuild:
+  EAPI=2; tidy
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> noiz2sa-0.51a.ebuild:
+  Replacing einfo with elog
+
+  27 Nov 2006; <blubb@gentoo.org> noiz2sa-0.51a.ebuild:
+  stable on amd64
+
+  21 Apr 2006; <Tupone@gentoo.org> +files/noiz2sa-0.51a-gcc41.patch,
+  noiz2sa-0.51a.ebuild:
+  Fix for gcc-4.1 series
+
+  20 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> noiz2sa-0.51a.ebuild:
+  Added pkg_postinst section to inform the user about how to get sound support
+  and closing bug #126864.
+
+  17 Jun 2005; Tom Martin <slarti@gentoo.org> noiz2sa-0.51a.ebuild:
+  Marked ~amd64.
+
+  21 Dec 2004; Joseph Jezak <josejx@gentoo.org> noiz2sa-0.51a.ebuild:
+  Marked ~ppc.
+
+*noiz2sa-0.51a (13 Dec 2004)
+
+  13 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> +metadata.xml,
+  +noiz2sa-0.51a.ebuild:
+  initial commit - ebuild submitted by Atzm Watanabe via bug #53227
+

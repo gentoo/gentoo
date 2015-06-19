@@ -1,0 +1,81 @@
+# ChangeLog for net-im/ysm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/ysm/ChangeLog,v 1.20 2014/08/05 18:34:13 mrueg Exp $
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> ysm-2.9.9.1.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  21 May 2014; Manuel Rüger <mrueg@gentoo.org> ysm-2.9.9.1.ebuild:
+  EAPI bump.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> ysm-2.9.9.1.ebuild:
+  Remove virtual/libc
+
+  03 Jun 2008; Santiago M. Mola <coldwind@gentoo.org> -ysm-2.8.1-r1.ebuild,
+  -ysm-2.9.0.ebuild, -ysm-2.9.6.ebuild, -ysm-2.9.8.ebuild:
+  Remove old.
+
+  28 Mar 2008; Brent Baude <ranger@gentoo.org> ysm-2.9.9.1.ebuild:
+  Marking ysm-2.9.9.1 ppc for bug 215045
+
+  27 Mar 2008; Markus Meier <maekke@gentoo.org> ysm-2.9.9.1.ebuild:
+  amd64/x86 stable, bug #215045
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> ysm-2.8.1-r1.ebuild,
+  ysm-2.9.0.ebuild, ysm-2.9.6.ebuild, ysm-2.9.8.ebuild, ysm-2.9.9.1.ebuild:
+  (QA) RESTRICT clean up.
+
+  09 Jun 2007; Karol Pasternak <reb@gentoo.org> +ysm-2.9.9.1.ebuild:
+  version bump, bug #156986
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  29 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-ysm-2.8.1-r1,
+  files/digest-ysm-2.9.0, files/digest-ysm-2.9.6, Manifest:
+  Fix SHA256 digests.
+
+*ysm-2.9.8 (19 Feb 2006)
+
+  19 Feb 2006; Karol Pasternak <reb@gentoo.org> +metadata.xml,
+  +ysm-2.9.8.ebuild:
+  New version, added missing metadata
+
+  31 Aug 2004; David Holm <dholm@gentoo.org> ysm-2.9.6.ebuild:
+  Added to ~ppc.
+
+*ysm-2.9.6 (06 Aug 2004)
+
+  06 Aug 2004; Daniel Ahlberg <aliz@gentoo.org> ysm-2.9.0.ebuild, 
+  ysm-2.9.6.ebuild:
+  + Version bump found by yunus <yunussg@hotmail.com> in #58462.
+  + Unmasked 2.9.0.
+  + Removed old version.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> ysm-2.7.1.ebuild,
+  ysm-2.8.1-r1.ebuild, ysm-2.9.0.ebuild:
+  virtual/glibc -> virtual/libc
+
+*ysm-2.9.0 (17 Sep 2003)
+
+  17 Sep 2003; Daniel Ahlberg <aliz@gentoo.org> ysm-2.9.0.ebuild :
+  Version bump. Ebuild contributed by Michael Postmann <michael.postmann@gmx.at> in #26403.
+
+*ysm-2.8.1-r1 (17 Sep 2003)
+
+  17 Sep 2003; Daniel Ahlberg <aliz@gentoo.org> ysm-2.8.1-r1.ebuild :
+  Fixes installation of binaries and man page.
+  Ebuild contributed by Michael Postmann <michael.postmann@gmx.at> in #26403.
+
+*ysm-2.8.1 (04 May 2003)
+
+  04 May 2003; Daniel Ahlberg <aliz@gentoo.org> ysm-2.8.1.ebuild :
+  Version bump. Found by Filipe Almeida <filipe@rnl.ist.utl.pt> in #12112.
+
+*ysm-2.7.1 (14 Aug 2002)
+
+  14 Aug 2002; Daniel Ahlberg <aliz@gentoo.org> ysm-2.7.1.ebuild:
+  Added installation of man page and docs.
+
+  14 Aug 2002; Daniel Ahlberg <aliz@gentoo.org> ysm-2.7.1.ebuild:
+  Initial import. Ebuild submitted by Filipe Almeida <filipe@rnl.ist.utl.pt>.

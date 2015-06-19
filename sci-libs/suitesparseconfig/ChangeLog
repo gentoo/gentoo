@@ -1,0 +1,47 @@
+# ChangeLog for sci-libs/suitesparseconfig
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/suitesparseconfig/ChangeLog,v 1.12 2015/02/27 11:07:51 ago Exp $
+
+  27 Feb 2015; Agostino Sarubbo <ago@gentoo.org> suitesparseconfig-4.2.1.ebuild:
+  Stable for sparc, wrt bug #534624
+
+  22 Feb 2015; Matt Turner <mattst88@gentoo.org> suitesparseconfig-4.2.1.ebuild:
+  Drop alpha keyword.
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> suitesparseconfig-4.2.1.ebuild:
+  Stable for x86, wrt bug #534624
+
+  18 Jan 2015; Agostino Sarubbo <ago@gentoo.org> suitesparseconfig-4.2.1.ebuild:
+  Stable for ppc64, wrt bug #534624
+
+  17 Jan 2015; Agostino Sarubbo <ago@gentoo.org> suitesparseconfig-4.2.1.ebuild:
+  Stable for ppc, wrt bug #534624
+
+  13 Jan 2015; Jeroen Roovers <jer@gentoo.org> suitesparseconfig-4.2.1.ebuild:
+  Stable for HPPA (bug #534624).
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> suitesparseconfig-4.2.1.ebuild:
+  Stable for amd64, wrt bug #534624
+
+  04 Jan 2015; Justin Lecher <jlec@gentoo.org> -suitesparseconfig-4.0.2.ebuild,
+  suitesparseconfig-4.2.1.ebuild, metadata.xml:
+  Drop old
+
+  04 Mar 2014; Vicente Olivert Riera <vincent@gentoo.org>
+  suitesparseconfig-4.2.1.ebuild:
+  Add ~mips keyword.
+
+*suitesparseconfig-4.2.1 (24 Jun 2013)
+
+  24 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +suitesparseconfig-4.2.1.ebuild:
+  Version bump
+
+  08 Dec 2012; Markus Meier <maekke@gentoo.org> suitesparseconfig-4.0.2.ebuild:
+  add ~arm, bug #440908
+
+*suitesparseconfig-4.0.2 (12 Nov 2012)
+
+  12 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +suitesparseconfig-4.0.2.ebuild, +metadata.xml:
+  Initial import

@@ -1,0 +1,34 @@
+--- Makefile.in
++++ Makefile.in
+@@ -44,17 +44,19 @@
+ 	./mkinstalldirs $(i_bindir) $(i_mandir)
+ 
+ install_prog: $(progs)
++	mkdir -p $(i_bindir)
+ 	if test -f xspect; then \
+-	   $(INSTALL_PROGRAM) -s -m 755 xspect $(i_bindir); fi
++	   $(INSTALL_PROGRAM) -m 755 xspect $(i_bindir); fi
+ 	if test -f vgaspect; then \
+-	   $(INSTALL_PROGRAM) -s -m 4755 vgaspect $(i_bindir); fi
++	   $(INSTALL_PROGRAM) -m 4755 vgaspect $(i_bindir); fi
+ 
+ install_man:
++	mkdir -p $(i_mandir)
+ 	$(INSTALL_DATA) ./xspect.1 $(i_mandir)
+ 	$(INSTALL_DATA) ./tapeout.1 $(i_mandir)
+ 	(cd $(i_mandir); rm -f vgaspect.1; ln -s xspect.1 vgaspect.1)
+ 
+-install: installdirs install_prog install_man
++install: install_prog install_man
+ 
+ z80_c_objs=z80.o z80optab.o z80_step.o spperif.o spect.o rom48.o \
+            z80_op1.o z80_op2.o z80_op3.o z80_op4.o z80_op5.o z80_op6.o
+@@ -88,7 +90,7 @@
+ 	./sp_to_s < i386emul.sp > i386emul.s
+ 
+ i386emul.o: i386emul.s
+-	$(CC) -c $(CFLAGS) i386emul.s
++	$(CC) -c $(ASFLAGS) -Xassembler --noexecstack i386emul.s
+ 
+ sp_to_s: sp_to_s.o
+ 	$(CC) -o sp_to_s $(LDFLAGS) sp_to_s.o

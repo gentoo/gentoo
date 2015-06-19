@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile configure install preinst prepare unpack
+DEPEND=sci-libs/gsl dev-util/scons || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DESCRIPTION=Open source implementation of IF97 steam tables
+EAPI=5
+HOMEPAGE=http://freesteam.sourceforge.net/
+LICENSE=GPL-2
+RDEPEND=sci-libs/gsl
+SLOT=0
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	scons-utils	988e24b9e2e4642189b4e97c03e5ae71	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=efc53bd6d8e78b3e5b08ce920ca297dc

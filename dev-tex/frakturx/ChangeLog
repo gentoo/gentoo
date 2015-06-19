@@ -1,0 +1,22 @@
+# ChangeLog for dev-tex/frakturx
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/frakturx/ChangeLog,v 1.4 2011/11/04 09:24:49 chainsaw Exp $
+
+  04 Nov 2011; Tony Vroon <chainsaw@gentoo.org> frakturx-20070103.ebuild:
+  Marked stable on AMD64 based on arch testing by Ian "idella4" Delaney &
+  Agostino "ago" Sarubbo in bug #382639.
+
+  01 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  frakturx-20070103.ebuild:
+  x86 stable wrt bug #382639
+
+  11 Sep 2011; Ulrich Mueller <ulm@gentoo.org> frakturx-20070103.ebuild:
+  Change ebuild to EAPI 4.
+
+*frakturx-20070103 (12 Jan 2009)
+
+  12 Jan 2009; Ulrich Mueller <ulm@gentoo.org> +metadata.xml,
+  +frakturx-20070103.ebuild:
+  Initial import, from gentoo.de overlay. Ebuild contributed by me,
+  bug 254592.
+

@@ -1,0 +1,15 @@
+--- torsocks-1.2.orig/src/torsocks.c	2011-10-25 17:49:50.000000000 -0400
++++ torsocks-1.2/src/torsocks.c	2012-02-21 11:09:20.000000000 -0500
+@@ -124,9 +124,9 @@
+ #define LOAD_ERROR(s,l) { \
+     const char *error; \
+     error = dlerror(); \
+-    show_msg(l, "The symbol %s() was not found in any shared " \
+-                     "library. The error reported was: %s!\n", s, \
+-                     (error)?error:"not found"); \
++    if (error) \
++        show_msg(l, "The symbol %s() was not found in any shared " \
++            "library. The error reported was: %s!\n", s, error); \
+     dlerror(); \
+     }
+     pthread_mutex_lock(&torsocks_init_mutex);

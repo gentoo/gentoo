@@ -1,0 +1,84 @@
+# ChangeLog for net-nds/389-admin
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-nds/389-admin/ChangeLog,v 1.15 2014/12/18 13:19:07 pacho Exp $
+
+  18 Dec 2014; Pacho Ramos <pacho@gentoo.org> 389-admin-1.1.31.ebuild:
+  Should work with 2.4 too as explained at bug #532778
+
+  02 Nov 2014; Sven Vermeulen <swift@gentoo.org> 389-admin-1.1.31.ebuild:
+  Remove sec-policy/selinux-* dependency from DEPEND but keep in RDEPEND (bug
+  #527698)
+
+  22 Jun 2014; Fabio Erculiani <lxnay@gentoo.org> metadata.xml:
+  reset to maintainer-needed@
+
+  04 Mar 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  389-admin-1.1.31.ebuild:
+  Add subslot dependency on dev-libs/icu
+
+*389-admin-1.1.31 (14 Mar 2013)
+
+  14 Mar 2013; Fabio Erculiani <lxnay@gentoo.org> +389-admin-1.1.31.ebuild,
+  -389-admin-1.1.23.ebuild:
+  version bump, migrate to openldap
+
+  14 Mar 2013; Fabio Erculiani <lxnay@gentoo.org> -389-admin-1.1.16.ebuild:
+  drop older versions
+
+  16 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> 389-admin-1.1.23.ebuild:
+  fix compilation with selinux USE flag on, hopefully fixes bug 379309
+
+*389-admin-1.1.23 (14 Aug 2011)
+
+  14 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> +389-admin-1.1.23.ebuild:
+  version bump
+
+*389-admin-1.1.16 (14 Jun 2011)
+
+  14 Jun 2011; Fabio Erculiani <lxnay@gentoo.org>
+  -files/1.1.14_backports/0000-selinux-crash-fix.patch,
+  +389-admin-1.1.16.ebuild, -389-admin-1.1.11_rc1-r1.ebuild,
+  -389-admin-1.1.13.ebuild,
+  -files/1.1.14_backports/0001-ssl-segfault-fix.patch:
+  version bump, fixes Gentoo bug #371633, drop older releases
+
+*389-admin-1.1.13 (11 Jan 2011)
+
+  11 Jan 2011; Fabio Erculiani <lxnay@gentoo.org>
+  +files/1.1.14_backports/0000-selinux-crash-fix.patch,
+  +389-admin-1.1.13.ebuild,
+  +files/1.1.14_backports/0001-ssl-segfault-fix.patch:
+  version bump
+
+*389-admin-1.1.11_rc1-r1 (12 Nov 2010)
+
+  12 Nov 2010; Fabio Erculiani <lxnay@gentoo.org> files/389-admin.initd,
+  -389-admin-1.1.11_rc1.ebuild, +389-admin-1.1.11_rc1-r1.ebuild:
+  init script tweak, always need 389-ds service
+
+  17 Oct 2010; Fabio Erculiani <lxnay@gentoo.org>
+  389-admin-1.1.11_rc1.ebuild:
+  tweak apache2 dependencies a bit, make them more atomic
+
+  15 Jul 2010; Fabio Erculiani <lxnay@gentoo.org> metadata.xml:
+  update metadata.xml, herd
+
+  11 Jul 2010; Fabio Erculiani <lxnay@gentoo.org>
+  389-admin-1.1.11_rc1.ebuild:
+  improve DEPEND/RDEPEND split
+
+*389-admin-1.1.11_rc1 (11 Jul 2010)
+
+  11 Jul 2010; Fabio Erculiani <lxnay@gentoo.org>
+  +files/389-admin-cfgstuff-1.patch,
+  +files/1.1.11_rc1/0001-gentoo-apache-names.patch,
+  +files/1.1.11_rc1/0003-find-mod_nss.m4.patch,
+  +files/1.1.11_rc1/0004-rpath-fix.configure.ac.patch,
+  +files/1.1.11_rc1/0010-gentoo_selinux_makefile.patch,
+  +files/1.1.11_rc1/48_mod_admserv.conf,
+  +files/1.1.11_rc1/48_mod_restartd.conf, +files/389-admin.confd,
+  +files/389-admin.initd, +389-admin-1.1.11_rc1.ebuild,
+  +files/restart-ds-admin, +files/start-ds-admin, +files/stop-ds-admin,
+  +metadata.xml:
+  new ebuild, part of 389 Directory Server (http://port389.org), closes bug
+  #309575

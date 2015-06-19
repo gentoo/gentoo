@@ -1,0 +1,36 @@
+# ChangeLog for media-libs/mash
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/mash/ChangeLog,v 1.10 2013/02/02 22:51:46 ago Exp $
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> mash-0.2.0-r1.ebuild:
+  Add ~arm, wrt bug #449220
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> mash-0.2.0-r1.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> mash-0.2.0-r1.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> mash-0.2.0-r1.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> mash-0.2.0-r1.ebuild:
+  Add ~ppc64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> mash-0.2.0-r1.ebuild:
+  Add ~ppc, wrt bug #449220
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> mash-0.2.0-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  14 Jan 2012; Markus Meier <maekke@gentoo.org> mash-0.2.0-r1.ebuild:
+  x86 stable, bug #393007
+
+  29 Dec 2011; Pacho Ramos <pacho@gentoo.org> mash-0.2.0-r1.ebuild:
+  amd64 stable, bug 393007
+
+*mash-0.2.0-r1 (28 Oct 2011)
+
+  28 Oct 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +mash-0.2.0-r1.ebuild, +metadata.xml:
+  New ebuild, moved from gnome overlay. Needed for gnome-color-manager-3.2.

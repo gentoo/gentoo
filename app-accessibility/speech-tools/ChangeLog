@@ -1,0 +1,439 @@
+# ChangeLog for app-accessibility/speech-tools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/speech-tools/ChangeLog,v 1.97 2015/06/09 12:45:09 mrueg Exp $
+
+  09 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -speech-tools-2.1-r1.ebuild:
+  Remove old.
+
+  17 May 2015; Pacho Ramos <pacho@gentoo.org> speech-tools-2.1-r2.ebuild:
+  ppc64 stable wrt bug #510600
+
+  13 May 2015; Mikle Kolyada <zlogene@gentoo.org> speech-tools-2.1-r2.ebuild:
+  sparc stable wrt bug #510600
+
+  26 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> speech-tools-2.1-r2.ebuild:
+  ia64 stable wrt bug #510600
+
+  18 Apr 2015; Pacho Ramos <pacho@gentoo.org> speech-tools-2.1-r2.ebuild:
+  x86 stable wrt bug #510600
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> speech-tools-2.1-r2.ebuild:
+  Stable for alpha, wrt bug #510600
+
+  02 Mar 2015; Agostino Sarubbo <ago@gentoo.org> speech-tools-2.1-r2.ebuild:
+  Stable for ppc, wrt bug #510600
+
+  23 Jan 2015; Jeroen Roovers <jer@gentoo.org> speech-tools-2.1-r2.ebuild:
+  Stable for HPPA (bug #510600).
+
+  20 Jan 2015; Christopher Brannon <teiresias@gentoo.org>
+  speech-tools-2.1-r3.ebuild:
+  Fix use of deprecated `find` syntax, which was breaking the build for some.
+
+*speech-tools-2.1-r3 (20 Jan 2015)
+
+  20 Jan 2015; Christopher Brannon <teiresias@gentoo.org>
+  +speech-tools-2.1-r3.ebuild:
+  Remove unnecessary bcat tool (see bug #418301).
+
+  11 Jan 2015; Chema Alonso <nimiux@gentoo.org> speech-tools-2.1-r2.ebuild:
+  Stable for amd64 wrt bug #510600
+
+  07 Jan 2015; Pacho Ramos <pacho@gentoo.org>
+  +files/speech-tools-2.1-underlinking.patch,
+  -files/speech-tools-1.2.96_beta-gcc42.patch,
+  -files/speech-tools-1.2.96_beta-gcc43-include.patch,
+  -files/speech-tools-1.2.96_beta-gcc44.patch,
+  -speech-tools-1.2.96_beta-r2.ebuild, -speech-tools-1.2.96_beta.ebuild,
+  -speech-tools-2.0.95_beta.ebuild, speech-tools-2.1-r2.ebuild:
+  Fix underlinking, bug #493204 by Jaakko Perttilä; drop old
+
+  07 Aug 2013; <neurogeek@gentoo.org> speech-tools-2.1-r2.ebuild:
+  Bumped rev on patchset and added a patch to fix ncurses[tinfo]. Closes
+  #457562 and #459556
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> speech-tools-2.1-r2.ebuild:
+  Add ~arm, wrt bug #449220
+
+  28 Dec 2012; Ulrich Müller <ulm@gentoo.org> speech-tools-1.2.96_beta.ebuild,
+  speech-tools-1.2.96_beta-r2.ebuild, speech-tools-2.0.95_beta.ebuild,
+  speech-tools-2.1-r1.ebuild, speech-tools-2.1-r2.ebuild:
+  Fix LICENSE, see README file, bug 447290.
+
+*speech-tools-2.1-r2 (03 Dec 2012)
+
+  03 Dec 2012; Jesus Rivero <neurogeek@gentoo.org> +speech-tools-2.1-r2.ebuild:
+  Revbump. Fixes bugs #421789 and #438628
+
+  31 May 2012; Zac Medico <zmedico@gentoo.org>
+  speech-tools-1.2.96_beta-r2.ebuild, speech-tools-1.2.96_beta.ebuild,
+  speech-tools-2.0.95_beta.ebuild, speech-tools-2.1-r1.ebuild:
+  inherit multilib for get_libdir
+
+  18 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  speech-tools-1.2.96_beta.ebuild, speech-tools-1.2.96_beta-r2.ebuild,
+  speech-tools-2.0.95_beta.ebuild, speech-tools-2.1-r1.ebuild:
+  Remove USE="esd" because media-sound/esound isn't in tree anymore.
+
+  29 Dec 2011; Mark Loeser <halcy0n@gentoo.org> speech-tools-2.1-r1.ebuild:
+  Stable for ppc/ppc64; bug #380773
+
+  24 Sep 2011; Raúl Porcel <armin76@gentoo.org> speech-tools-2.1-r1.ebuild:
+  alpha/ia64/sparc stable wrt #380773
+
+  04 Sep 2011; Markus Meier <maekke@gentoo.org> speech-tools-2.1-r1.ebuild:
+  x86 stable, bug #380773
+
+  01 Sep 2011; Jeroen Roovers <jer@gentoo.org> speech-tools-2.1-r1.ebuild:
+  Stable for HPPA (bug #380773).
+
+  27 Aug 2011; Markos Chandras <hwoarang@gentoo.org>
+  speech-tools-2.1-r1.ebuild:
+  Stable on amd64 wrt bug #380773
+
+  26 Aug 2011; Jesus Rivero <neurogeek@gentoo.org>
+  speech-tools-2.1-r1.ebuild:
+  Changes to DEPEND wrt bug #380511. Added fix for prefix wrt bug #309983
+
+*speech-tools-2.1-r1 (22 Mar 2011)
+
+  22 Mar 2011; Jeroen Roovers <jer@gentoo.org> -speech-tools-2.1.ebuild,
+  +speech-tools-2.1-r1.ebuild:
+  Fix "[: use: unary operator expected". Bump revision because this can affect
+  installed files.
+
+  17 Mar 2011; Jesus Rivero <neurogeek@gentoo.org> speech-tools-2.1.ebuild:
+  Changed patchset URI from devspace to mirror://gentoo.
+
+*speech-tools-2.1 (02 Mar 2011)
+
+  02 Mar 2011; Jesus Rivero <neurogeek@gentoo.org> +speech-tools-2.1.ebuild:
+  Version bump. Some changes to the ebuild. No more renaming of /usr/bin/dp
+  and fixes to LDFLAGS wrt bug #332723.
+
+  13 Jul 2010; Jesus Rivero <neurogeek@gentoo.org>
+  speech-tools-2.0.95_beta.ebuild:
+  Reverted change to emake -j1. Parallel make does not work. Closes bug
+  #326493
+
+  01 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  speech-tools-1.2.96_beta-r2.ebuild, speech-tools-2.0.95_beta.ebuild:
+  Fix -Wl,--no-as-needed to $(no-as-needed) in -1.2.96_beta-r2.ebuild and
+  remove it entirely from -2.0.95_beta.ebuild wrt #246726.
+
+*speech-tools-2.0.95_beta (30 Jun 2010)
+
+  30 Jun 2010; Jesus Rivero <neurogeek@gentoo.org>
+  +speech-tools-2.0.95_beta.ebuild:
+  Version bump.
+
+  19 May 2010; Jesus Rivero <neurogeek@gentoo.org>
+  speech-tools-1.2.96_beta-r2.ebuild:
+  Fixed SRC_URI
+
+*speech-tools-1.2.96_beta-r2 (23 Apr 2010)
+
+  23 Apr 2010; Jesus Rivero <neurogeek@gentoo.org>
+  -speech-tools-1.2.96_beta-r1.ebuild, +speech-tools-1.2.96_beta-r2.ebuild:
+  Removed resynth (bug #253556) and fixed soname bug #224915 by adding a
+  patchset
+
+*speech-tools-1.2.96_beta-r1 (13 Mar 2010)
+
+  13 Mar 2010; Jesus Rivero <neurogeek@gentoo.org>
+  +speech-tools-1.2.96_beta-r1.ebuild:
+  Renamed /usr/bin/dp to /usr/bin/speech-dp wrt bug #287983
+
+  23 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  speech-tools-1.2.96_beta.ebuild,
+  +files/speech-tools-1.2.96_beta-gcc44.patch:
+  Fix building with glibc-2.10+ wrt #271607, thanks to hirakendu.
+
+  12 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  speech-tools-1.2.96_beta.ebuild:
+  Block sys-power/powerman wrt #268473.
+
+  15 Mar 2009; William Hubbs <williamh@gentoo.org> metadata.xml:
+  Added neurogeek as maintainer.
+
+  03 Feb 2009; Patrick Lauer <patrick@gentoo.org>
+  speech-tools-1.2.96_beta.ebuild:
+  Homepage fix, closes #257245
+
+  20 Mar 2008; William Hubbs <williamh@gentoo.org> -files/58speech-tools:
+  Removed a file that I missed.
+
+  20 Mar 2008; William Hubbs <williamh@gentoo.org>
+  -files/speech-tools-1.2.95_beta-gcc41-amd64-int-pointer.patch,
+  -files/speech-tools-1.2.95_beta-gcc41-amd64.patch,
+  -files/speech-tools-1.2.95_beta-gcc41.patch,
+  -files/speech-tools-gcc3.3.diff, -speech-tools-1.2.3-r2.ebuild,
+  -speech-tools-1.2.3-r3.ebuild, -speech-tools-1.2.95_beta.ebuild,
+  -speech-tools-1.2.95_beta-r1.ebuild:
+  Removed old versions.
+
+  13 Mar 2008; William Hubbs <williamh@gentoo.org>
+  speech-tools-1.2.96_beta.ebuild:
+  This package was part of festival-1.95-beta, which was keyworded ~x86-fbsd.
+  I looked over the patch for 1.95-beta and found that the change is in this
+  version.  So, since festival 1.95-beta included this and was keyworded for
+  this arch, I am adding the keyword to this package.
+
+  03 Mar 2008; Raúl Porcel <armin76@gentoo.org>
+  speech-tools-1.2.96_beta.ebuild:
+  alpha/ia64/sparc stable wrt #209081
+
+  10 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  speech-tools-1.2.96_beta.ebuild:
+  ppc stable, bug #209081
+
+  07 Feb 2008; Jeroen Roovers <jer@gentoo.org>
+  speech-tools-1.2.96_beta.ebuild:
+  Stable for HPPA (bug #209081).
+
+  07 Feb 2008; Brent Baude <ranger@gentoo.org>
+  speech-tools-1.2.96_beta.ebuild:
+  stable ppc64, bug 209081
+
+  06 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  speech-tools-1.2.96_beta.ebuild:
+  stable x86 amd64, bug 209081
+
+  12 Jan 2008; William Hubbs <williamh@gentoo.org>
+  +files/speech-tools-1.2.96_beta-gcc43-include.patch,
+  speech-tools-1.2.96_beta.ebuild:
+  Applied patch from bug #204453 for gcc4.3.
+  Thanks to dirtyepic@gentoo.org.
+
+  31 Aug 2007; William Hubbs <williamh@gentoo.org>
+  +files/speech-tools-1.2.96_beta-gcc42.patch,
+  speech-tools-1.2.96_beta.ebuild:
+  Fixed gcc 4.2 compilation bug #190576.
+  Thanks to jhront@wanadoo.fr for the patch.
+
+  29 Aug 2007; William Hubbs <williamh@gentoo.org>
+  speech-tools-1.2.96_beta.ebuild:
+  Fixed the blocker for older versions of festival closing #190518.
+
+*speech-tools-1.2.96_beta (28 Aug 2007)
+
+  28 Aug 2007; William Hubbs <williamh@gentoo.org>
+  +speech-tools-1.2.96_beta.ebuild:
+  Version bump #188820.
+  Also, I have been able to re-instate festival's dependency on this package for
+  this version.
+
+  11 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  speech-tools-1.2.3-r2.ebuild:
+  Use doenvd for bug #173884.
+
+  19 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  speech-tools-1.2.95_beta-r1.ebuild:
+  Stable on Alpha.
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  speech-tools-1.2.95_beta-r1.ebuild:
+  Stable on ia64.
+
+  03 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  speech-tools-1.2.95_beta-r1.ebuild:
+  Stable on x86 wrt bug #148851.
+
+  01 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  speech-tools-1.2.95_beta-r1.ebuild:
+  hppa stable, bug #148851
+
+  29 Sep 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  speech-tools-1.2.95_beta-r1.ebuild:
+  stable on ppc (Bug #148851)
+
+  26 Sep 2006; Jason Wever <weeve@gentoo.org>
+  speech-tools-1.2.95_beta-r1.ebuild:
+  Stable on SPARC wrt bug #148851.
+
+  25 Sep 2006; <blubb@gentoo.org> speech-tools-1.2.95_beta-r1.ebuild:
+  stable on amd64
+
+  24 Sep 2006; Markus Rothe <corsair@gentoo.org>
+  speech-tools-1.2.95_beta-r1.ebuild:
+  Stable on ppc64; bug #148851
+
+*speech-tools-1.2.95_beta-r1 (24 Sep 2006)
+
+  24 Sep 2006; William Hubbs <williamh@gentoo.org>
+  +speech-tools-1.2.95_beta-r1.ebuild:
+  This rev bump fixes a typo in the shared lib installation portion of the ebuild
+  for bug #148851.
+
+*speech-tools-1.2.95_beta (21 Sep 2006)
+
+  21 Sep 2006; William Hubbs <williamh@gentoo.org>
+  +files/speech-tools-1.2.95_beta-gcc41-amd64-int-pointer.patch,
+  +files/speech-tools-1.2.95_beta-gcc41-amd64.patch,
+  +files/speech-tools-1.2.95_beta-gcc41.patch,
+  +speech-tools-1.2.95_beta.ebuild:
+  Version bump.
+  This also includes patches originally contributed by Ed Catmur.
+  Another thing to note is that festival no longer depends on this package.
+  Festival now downloads the speech tools source and builds from its own copy
+  since it #includes some of the source files themselves.
+Closes #146906.
+
+  19 Jul 2006; <psi29a@gentoo.org> speech-tools-1.2.3-r2.ebuild,
+  speech-tools-1.2.3-r3.ebuild:
+  stable on mips
+
+  12 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  speech-tools-1.2.3-r3.ebuild:
+  Mark 1.2.3-r3 stable on ia64
+
+  05 Jun 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  speech-tools-1.2.3-r3.ebuild:
+  Stable amd64 and sparc.
+
+  27 Mar 2006; Aron Griffis <agriffis@gentoo.org> ChangeLog:
+  . #112842
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  speech-tools-1.2.3-r2.ebuild:
+  Mark 1.2.3-r2 stable on alpha
+
+  24 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  speech-tools-1.2.3-r3.ebuild:
+  Don't call chown with root:root. Call sed with -e to state the expression.
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  speech-tools-1.2.3-r2.ebuild:
+  stable on ia64
+
+  30 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -speech-tools-1.2.3-r1.ebuild:
+  Removing old cruft.
+
+  28 Jul 2005; Guy Martin <gmsoft@gentoo.org> speech-tools-1.2.3-r2.ebuild,
+  speech-tools-1.2.3-r3.ebuild:
+  Stable on hppa.
+
+*speech-tools-1.2.3-r3 (24 Jul 2005)
+
+  24 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +speech-tools-1.2.3-r3.ebuild:
+  Added esd support and cleaned up the ebuild thanks to Florian Wesch
+  <dividuum-gentoo@bl0rg.net>, Vincent Poinot <vincent.poinot@wanadoo.fr>, and
+  Stian Skjelstad <stian@nixia.no>. Closes bugs #84721, #87979, and #91962.
+  Also, we now use the proper compilers.
+
+  04 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  speech-tools-1.2.3-r2.ebuild:
+  Add ~alpha keyword.
+
+  09 Jun 2005; Markus Rothe <corsair@gentoo.org>
+  speech-tools-1.2.3-r2.ebuild:
+  Stable on ppc64
+
+  11 May 2005; Aron Griffis <agriffis@gentoo.org>
+  speech-tools-1.2.3-r2.ebuild:
+  add ~ia64
+
+  27 Apr 2005; Markus Rothe <corsair@gentoo.org>
+  speech-tools-1.2.3-r2.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  06 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  speech-tools-1.2.3-r2.ebuild:
+  Stable on ppc.
+
+  27 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -files/1.2.3-gcc3.4.patch, speech-tools-1.2.3-r1.ebuild,
+  speech-tools-1.2.3-r2.ebuild:
+  Moved the gcc34 patch to the gentoo mirrors.
+
+*speech-tools-1.2.3-r2 (09 Feb 2005)
+
+  09 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +speech-tools-1.2.3-r2.ebuild:
+  Move things to more LSB-FHS friendly locations.
+
+  05 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  speech-tools-1.2.3-r1.ebuild:
+  Force ncurses over libtermcap.
+
+*speech-tools-1.2.3-r1 (03 Jan 2005)
+
+  03 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +speech-tools-1.2.3-r1.ebuild, -speech-tools-1.2.3.ebuild:
+  Revision bump without resetting KEYWORDS. This is forcing a re-emerge of the
+  package on systems which had a broken version of cpio installed. See bug
+  #74882. Also better multilib support.
+
+  02 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  speech-tools-1.2.3.ebuild:
+  Add libtermcap-compat option to RDEPEND.
+
+  07 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  speech-tools-1.2.3.ebuild:
+  Added ncurses DEP.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  speech-tools-1.2.3.ebuild:
+  Masked speech-tools-1.2.3.ebuild stable for ppc
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> speech-tools-1.2.3.ebuild:
+  add sed-4 dep
+
+  25 May 2004; Jon Hood <squinky86@gentoo.org>
+  +files/speech-tools-gcc3.3.diff, speech-tools-1.2.3.ebuild:
+  add patch for gcc3.3 back in
+
+  18 May 2004; Mike Frysinger <vapier@gentoo.org> +files/1.2.3-gcc3.4.patch,
+  -files/speech-tools-gcc3.3.diff, speech-tools-1.2.3.ebuild:
+  Add gcc-3.4 patch #50331 by Ed Catmur. Also clean up ebuild in general (CFLAGS
+  and such) and add consolidate the gcc-3.3 patch with the 3.4 one.
+
+  21 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  speech-tools-1.2.3.ebuild:
+  Added doc to IUSE.
+
+  18 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  speech-tools-1.2.3.ebuild:
+  -j1 for bug #46442.
+
+  30 Mar 2004; Todd Sunderlin <todd@gentoo.org> speech-tools-1.2.3.ebuild:
+  set stable on sparc
+
+  25 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  speech-tools-1.2.3.ebuild:
+  keyworded ~sparc, fixed #41329
+
+  21 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  speech-tools-1.2.3.ebuild:
+  Added docs
+
+  16 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> metadata.xml,
+  speech-tools-1.2.3.ebuild, files/58speech-tools,
+  files/speech-tools-gcc3.3.diff:
+  Moved from media-sound/speech-tools to app-accessibility/speech-tools.
+
+  29 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  speech-tools-1.2.3.ebuild:
+  Change compile-time paths in scripts to fix bug #36128. Removed USE=static
+  options as they bork.
+
+  25 Feb 2004; Sven Blumenstein <bazik@gentoo.org> speech-tools-1.2.3.ebuild:
+  Broken on sparc, see bug 41329.
+
+  18 Feb 2004; <augustus@gentoo.org> speech-tools-1.2.3.ebuild:
+  Added amd64 to keywords. festival works fine on AMD64. Marked stable since
+  it's the only release.
+
+  11 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  speech-tools-1.2.3.ebuild:
+  Stable on x86
+
+*speech-tools-1.2.3 (20 Jul 2003)
+
+  20 Jul 2003; jje <jje@gentoo.org> speech-tools-1.2.3.ebuild,
+  files/58speech-tools, files/speech-tools-gcc3.3.diff:
+  Initial revision. More of the bounty from #22053.
+  
+  Submitted by: Paul Giordano <giordano@covad.net>

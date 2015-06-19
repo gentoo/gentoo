@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+	<email>phobosk@kbfx.net</email>
+	<name>PhobosK</name>
+	<description>Proxy maintainer. Assign bugs to him.</description>
+</maintainer>
+<longdescription>
+Cryptkeeper is a Linux system tray applet that manages EncFS encrypted folders.
+It allows users to mount and unmount encfs folders, to change the password and
+to create new crypted folders. It integrates with a preferred file manager.
+</longdescription>
+</pkgmetadata>

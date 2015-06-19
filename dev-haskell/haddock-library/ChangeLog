@@ -1,0 +1,9 @@
+# ChangeLog for dev-haskell/haddock-library
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/haddock-library/ChangeLog,v 1.1 2014/12/13 14:05:08 gienah Exp $
+
+*haddock-library-1.1.1 (13 Dec 2014)
+
+  13 Dec 2014; Mark Wright <gienah@gentoo.org> +haddock-library-1.1.1.ebuild,
+  +metadata.xml:
+  Add haddock-library

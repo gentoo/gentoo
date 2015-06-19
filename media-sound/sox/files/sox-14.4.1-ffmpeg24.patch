@@ -1,0 +1,17 @@
+Index: sox-14.4.1/src/ffmpeg.c
+===================================================================
+--- sox-14.4.1.orig/src/ffmpeg.c
++++ sox-14.4.1/src/ffmpeg.c
+@@ -263,8 +263,12 @@ static int stopread(sox_format_t * ft)
+   if (ffmpeg->audio_stream >= 0)
+     stream_component_close(ffmpeg, ffmpeg->audio_stream);
+   if (ffmpeg->ctxt) {
++#if LIBAVFORMAT_VERSION_INT > AV_VERSION_INT(53,25,0)
++    avformat_close_input(&ffmpeg->ctxt);
++#else
+     av_close_input_file(ffmpeg->ctxt);
+     ffmpeg->ctxt = NULL; /* safety */
++#endif
+   }
+ 
+   free(ffmpeg->audio_buf_raw);

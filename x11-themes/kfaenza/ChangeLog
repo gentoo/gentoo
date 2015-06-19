@@ -1,0 +1,42 @@
+# ChangeLog for x11-themes/kfaenza
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/kfaenza/ChangeLog,v 1.8 2013/04/26 18:06:44 scarabeus Exp $
+
+  26 Apr 2013; Tomáš Chvátal <scarabeus@gentoo.org> -kfaenza-0.8.9.ebuild,
+  kfaenza-0.8.9-r1.ebuild:
+  Stabilise on amd64 and x86. Remove older.
+
+*kfaenza-0.8.9-r1 (11 Feb 2013)
+
+  11 Feb 2013; Maxim Koltsov <maksbotan@gentoo.org> +kfaenza-0.8.9-r1.ebuild,
+  metadata.xml:
+  Add missing and additional icons, use 'branding' use flag. Based on patch by
+  Alexander Mezin (mezin.alexander at gmail.com), bug #456702
+
+  13 Feb 2012; Tomáš Chvátal <scarabeus@gentoo.org> -kfaenza-0.8.8.ebuild,
+  kfaenza-0.8.9.ebuild, metadata.xml:
+  Add kde herd as backup, stable on amd64 and x86 as it works pretty fine.
+
+  15 Jan 2012; Torsten Veller <tove@gentoo.org> kfaenza-0.8.8.ebuild,
+  kfaenza-0.8.9.ebuild:
+  Fix cvs keyword in the header (#398773)
+
+*kfaenza-0.8.9 (08 Nov 2011)
+
+  08 Nov 2011; Maxim Koltsov <maksbotan@gentoo.org> -kfaenza-0.8.7.ebuild,
+  +kfaenza-0.8.9.ebuild:
+  Bump to 0.8.9, drop 0.8.7. Bug #389655
+
+*kfaenza-0.8.8 (23 Oct 2011)
+
+  23 Oct 2011; Maxim Koltsov <maksbotan@gentoo.org> +kfaenza-0.8.8.ebuild:
+  Bump to 0.8.8, bug 388107
+
+  15 Oct 2011; Maxim Koltsov <maksbotan@gentoo.org> kfaenza-0.8.7.ebuild:
+  Fix download link
+
+*kfaenza-0.8.7 (15 Oct 2011)
+
+  15 Oct 2011; Maxim Koltsov <maksbotan@gentoo.org> +kfaenza-0.8.7.ebuild,
+  +metadata.xml:
+  Initial ebuild from bug #384569. Thanks to Adam <fitzadam@hotmail.com>.

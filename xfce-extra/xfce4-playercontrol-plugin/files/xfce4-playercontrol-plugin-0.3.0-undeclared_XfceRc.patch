@@ -1,0 +1,12 @@
+http://bugs.gentoo.org/344199
+
+--- panel-plugin/libcommon.h
++++ panel-plugin/libcommon.h
+@@ -31,6 +31,7 @@
+ 
+ #include <glib.h>
+ #include <gtk/gtk.h>
++#include <libxfce4util/libxfce4util.h>
+ #include <libxfce4panel/xfce-panel-plugin.h>
+ #include "playercontrol_plugin.h"
+ #include "playerctrl.h"

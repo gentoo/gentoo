@@ -1,0 +1,26 @@
+#!/sbin/runscript
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-bootparamd/files/bootparamd.initd,v 1.1 2010/09/15 03:24:15 xmw Exp $
+
+[ -e /etc/conf.d/bootparamd ] && . /etc/conf.d/bootparamd
+
+rpc_bin=/usr/sbin/rpc.bootparamd
+
+depend() {
+	use ypbind net
+	need portmap 
+	after quota
+}
+
+start() {
+	ebegin "Starting bootparamd"
+	${rpc_bin} ${OPTS_RPC_BOOTPARAMD}
+	eend $? "make sure DNOTIFY support is enabled ..."
+}
+
+stop() {
+	ebegin "Stopping bootparamd"
+	start-stop-daemon --stop --exec ${rpc_bin}
+	eend $?
+}

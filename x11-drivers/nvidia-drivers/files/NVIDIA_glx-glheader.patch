@@ -1,0 +1,13 @@
+--- usr/include/GL/gl.g.orig	2004-07-17 19:56:59.789410584 +1000
++++ usr/include/GL/gl.h	2004-07-17 19:59:08.844791184 +1000
+@@ -66,6 +66,10 @@
+ typedef double GLclampd;
+ typedef void GLvoid;
+ 
++/* Patching for some better defines in the global system */
++#ifndef GL_GLEXT_LEGACY
++#include <GL/glext.h>
++#endif
+ 
+ /*************************************************************/
+ 

@@ -1,0 +1,20 @@
+#
+#	The Shoreline Firewall (Shorewall) Packet Filtering Firewall - V4.6
+#
+[Unit]
+Description=Shorewall IPv4 firewall
+Documentation=man:shorewall(8) http://www.shorewall.net/Documentation_Index.html
+Wants=network-online.target
+After=network-online.target
+Conflicts=iptables.service firewalld.service iptables-restore.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+EnvironmentFile=/etc/conf.d/shorewall
+StandardOutput=syslog
+ExecStart=/sbin/shorewall $OPTIONS start $STARTOPTIONS
+ExecStop=/sbin/shorewall $OPTIONS stop $STOPOPTIONS
+
+[Install]
+WantedBy=basic.target

@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install setup unpack
+DEPEND=>=app-text/zathura-0.3.1 dev-libs/glib:2= app-arch/libarchive:= x11-libs/cairo:= x11-libs/gdk-pixbuf:= virtual/pkgconfig dev-vcs/git
+DESCRIPTION=Comic book plug-in for zathura with 7zip, rar, tar and zip support
+EAPI=5
+HOMEPAGE=http://pwmt.org/projects/zathura/
+LICENSE=ZLIB
+RDEPEND=>=app-text/zathura-0.3.1 dev-libs/glib:2= app-arch/libarchive:= x11-libs/cairo:= x11-libs/gdk-pixbuf:= app-arch/p7zip app-arch/tar app-arch/unrar app-arch/unzip
+SLOT=0
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=bb4b68c29e6adda0533e2c8ffee01544

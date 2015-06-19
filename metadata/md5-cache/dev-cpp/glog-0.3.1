@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=gflags? ( dev-cpp/gflags ) test? ( dev-cpp/gmock dev-cpp/gtest )
+DESCRIPTION=Google's C++ logging library
+EAPI=4
+HOMEPAGE=http://code.google.com/p/google-glog/
+IUSE=gflags static-libs test
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=BSD
+RDEPEND=gflags? ( dev-cpp/gflags )
+SLOT=0
+SRC_URI=http://google-glog.googlecode.com/files/glog-0.3.1-1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c3fd40f09fc6b2876a73531f4ee5c58e

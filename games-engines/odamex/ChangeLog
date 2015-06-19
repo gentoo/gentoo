@@ -1,0 +1,83 @@
+# ChangeLog for games-engines/odamex
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-engines/odamex/ChangeLog,v 1.18 2015/01/26 22:40:56 mr_bones_ Exp $
+
+  26 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/odamex-0.6.2-build.patch, -files/odamex-0.6.2-libagar.patch,
+  -files/odamex-0.6.3-build.patch, -odamex-0.6.2.ebuild, -odamex-0.6.3.ebuild:
+  old
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> odamex-0.6.2.ebuild,
+  odamex-0.6.3.ebuild, odamex-0.6.4.ebuild, odamex-0.7.0.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+*odamex-0.7.0 (27 Mar 2014)
+
+  27 Mar 2014; Julian Ospald <hasufell@gentoo.org> +odamex-0.7.0.ebuild,
+  +files/2-odamex-0.7.0-cmake-options.patch,
+  +files/1-odamex-0.7.0-install-rules.patch,
+  +files/odamex-0.7.0-miniupnpc.patch,
+  +files/4-odamex-0.7.0-odalauncher-bin-path.patch,
+  +files/3-odamex-0.7.0-wad-search-path.patch:
+  version bump
+
+  30 Sep 2013; Agostino Sarubbo <ago@gentoo.org> odamex-0.6.4.ebuild:
+  Stable for x86, wrt bug #486232
+
+  28 Sep 2013; Agostino Sarubbo <ago@gentoo.org> odamex-0.6.4.ebuild:
+  Stable for amd64, wrt bug #486232
+
+*odamex-0.6.4 (31 Jul 2013)
+
+  31 Jul 2013; Julian Ospald <hasufell@gentoo.org> -odamex-0.6.1.ebuild,
+  -files/odamex-0.6.1-build.patch, +odamex-0.6.4.ebuild,
+  +files/2-odamex-0.6.4-cmake-options.patch,
+  +files/1-odamex-0.6.4-install-rules.patch,
+  +files/4-odamex-0.6.4-odalauncher-bin-path.patch,
+  +files/3-odamex-0.6.4-wad-search-path.patch:
+  version bump, remove old
+
+  06 Jul 2013; Agostino Sarubbo <ago@gentoo.org> odamex-0.6.3.ebuild:
+  Stable for x86, wrt bug #474376
+
+  06 Jul 2013; Agostino Sarubbo <ago@gentoo.org> odamex-0.6.3.ebuild:
+  Stable for amd64, wrt bug #474376
+
+*odamex-0.6.3 (27 Apr 2013)
+
+  27 Apr 2013; Julian Ospald <hasufell@gentoo.org> +odamex-0.6.3.ebuild,
+  +files/odamex-0.6.3-build.patch:
+  version bump
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  23 Feb 2013; Julian Ospald <hasufell@gentoo.org> odamex-0.6.2.ebuild,
+  +files/odamex-0.6.2-libagar.patch:
+  fix bug #458902
+
+  16 Feb 2013; Agostino Sarubbo <ago@gentoo.org> odamex-0.6.2.ebuild:
+  Stable for x86, wrt bug #457894
+
+  16 Feb 2013; Agostino Sarubbo <ago@gentoo.org> odamex-0.6.2.ebuild:
+  Stable for amd64, wrt bug #457894
+
+*odamex-0.6.2 (15 Dec 2012)
+
+  15 Dec 2012; Julian Ospald <hasufell@gentoo.org> +odamex-0.6.2.ebuild,
+  +files/odamex-0.6.2-build.patch:
+  version bump
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> odamex-0.6.1.ebuild:
+  x86 stable wrt bug #432726
+
+  26 Aug 2012; Agostino Sarubbo <ago@gentoo.org> odamex-0.6.1.ebuild:
+  Stable for amd64, wrt bug #432726
+
+  20 Jul 2012; Julian Ospald <hasufell@gentoo.org>
+  +files/odamex-0.6.1-build.patch, +metadata.xml:
+  initial import with Mike Wood wrt bug #197228

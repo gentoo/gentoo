@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=!!dev-qt/qtphonon:4 qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 designer? ( dev-qt/designer:4 ) ) qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 designer? ( dev-qt/designer:5 ) ) pulseaudio? ( dev-libs/glib:2 >=media-sound/pulseaudio-0.9.21[glib] ) zeitgeist? ( dev-libs/libqzeitgeist ) qt4? ( >=dev-util/automoc-0.9.87 ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=KDE multimedia API
+EAPI=5
+HOMEPAGE=https://projects.kde.org/projects/kdesupport/phonon
+IUSE=aqua debug designer gstreamer pulseaudio +qt4 qt5 +vlc zeitgeist
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=LGPL-2.1
+PDEPEND=aqua? ( media-libs/phonon-qt7 ) gstreamer? ( >=media-libs/phonon-gstreamer-4.8.0[qt4?,qt5?] ) vlc? ( >=media-libs/phonon-vlc-0.8.0[qt4?,qt5?] )
+RDEPEND=!!dev-qt/qtphonon:4 qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 designer? ( dev-qt/designer:4 ) ) qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 designer? ( dev-qt/designer:5 ) ) pulseaudio? ( dev-libs/glib:2 >=media-sound/pulseaudio-0.9.21[glib] ) zeitgeist? ( dev-libs/libqzeitgeist )
+REQUIRED_USE=|| ( qt4 qt5 ) zeitgeist? ( qt4 )
+SLOT=0
+SRC_URI=mirror://kde/stable/phonon/4.8.3/src/phonon-4.8.3.tar.xz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=e4b563ded084dfc107da1ca9885f10df

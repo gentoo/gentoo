@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>dotnet</herd>
+<use>
+	<flag name='pax_kernel'>Enable if the user plans to run the package under a pax enabled hardened kernel</flag>
+	<flag name='xen'>Make mono generate code that is considerably faster on xen VMs but slightly slower on for normal systems.</flag>
+</use>
+</pkgmetadata>

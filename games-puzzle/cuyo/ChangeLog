@@ -1,0 +1,127 @@
+# ChangeLog for games-puzzle/cuyo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/cuyo/ChangeLog,v 1.29 2015/03/12 19:26:40 mr_bones_ Exp $
+
+  12 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> -cuyo-2.0.0.ebuild,
+  -files/cuyo-2.0.0-gentoo.patch:
+  old
+
+*cuyo-2.0.0 (18 Feb 2015)
+
+  18 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> +cuyo-2.0.0.ebuild,
+  +files/cuyo-2.0.0-gentoo.patch, -cuyo-2.1.2.ebuild,
+  -files/cuyo-2.1.2-gcc44.patch, -files/cuyo-2.1.2-gentoo.patch:
+  version bump (upstream version number method changed) (bug #459070); clean old
+  (but looks newer) version
+
+*cuyo-2.1.2 (18 Feb 2015)
+
+  18 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> +cuyo-2.1.2.ebuild,
+  +files/cuyo-2.1.2-gcc44.patch, +files/cuyo-2.1.2-gentoo.patch,
+  files/cuyo-2.1.1-gcc44.patch, files/cuyo-2.1.1-gentoo.patch:
+  version bump (bug #395389) with work from kensington
+
+  18 Feb 2015; Tupone Alfredo <tupone@gentoo.org> cuyo-2.1.1.ebuild:
+  EAPI 5
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> cuyo-2.1.1.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  01 Sep 2012; Michael Sterrett <mr_bones_@gentoo.org> cuyo-2.1.1.ebuild:
+  any mod support will do
+
+  07 Jan 2010; Joseph Jezak <josejx@gentoo.org> cuyo-2.1.1.ebuild:
+  Marked ppc stable for bug #299412.
+
+  05 Jan 2010; Christian Faulhammer <fauli@gentoo.org> cuyo-2.1.1.ebuild:
+  stable x86, bug 299412
+
+  04 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> cuyo-2.1.1.ebuild:
+  amd64 stable wrt #299412
+
+*cuyo-2.1.1 (30 Dec 2009)
+
+  30 Dec 2009; Michael Sterrett <mr_bones_@gentoo.org> +cuyo-2.1.1.ebuild,
+  +files/cuyo-2.1.1-gcc44.patch, +files/cuyo-2.1.1-gentoo.patch,
+  metadata.xml:
+  version bump (bug #298798) with ebuild submission from Samuli Suominen
+
+  17 Feb 2009; Michael Sterrett <mr_bones_@gentoo.org> cuyo-1.8.6.ebuild:
+  EAPI=2; add desktop entry (bug #259237)
+
+  22 Jun 2008; Michael Sterrett <mr_bones_@gentoo.org> cuyo-1.8.6.ebuild:
+  use slot dep instead of qt3 function
+
+  19 Feb 2008; nixnut <nixnut@gentoo.org> cuyo-1.8.6.ebuild:
+  Stable on ppc wrt bug 210368
+
+  18 Feb 2008; Santiago M. Mola <coldwind@gentoo.org> cuyo-1.8.6.ebuild:
+  amd64 stable wrt bug #210368
+
+  11 Dec 2007; Tupone Alfredo <tupone@gentoo.org> cuyo-1.8.6.ebuild:
+  Fix build: use moc from qt3 instead of the one in PATH
+
+*cuyo-1.8.6 (27 May 2007)
+
+  27 May 2007; Tupone Alfredo <tupone@gentoo.org>
+  +files/cuyo-1.8.6-gcc4.patch, +cuyo-1.8.6.ebuild:
+  Version bump. Bug #160072 by Pacho Ramos
+
+  08 Oct 2006; Tristan Heaven <nyhm@gentoo.org> cuyo-1.8.5.ebuild:
+  Use qt3 eclass
+
+  15 Aug 2006; Thomas Cort <tcort@gentoo.org> cuyo-1.8.5.ebuild:
+  Stable on amd64 wrt Bug #143961
+
+  16 Feb 2006; <Tupone@gentoo.org> cuyo-1.8.5.ebuild:
+  modular X dependency fix
+
+  07 Jul 2005; Caleb Tennis <caleb@gentoo.org> cuyo-1.8.5.ebuild:
+  Fix qt dep
+
+  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org> cuyo-1.8.5.ebuild:
+  Removed INSTALL file.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  01 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> cuyo-1.8.5.ebuild:
+  use kde-functions to set PATH before compile (bug #70861)
+
+  19 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> -cuyo-1.8.1.ebuild:
+  clean older version
+
+*cuyo-1.8.5 (06 Nov 2004)
+
+  06 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> +cuyo-1.8.5.ebuild:
+  version bump; added amd64 per bug #69615
+
+*cuyo-1.8.1 (13 Sep 2003)
+
+  13 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Set QT to work with any version again.
+
+*cuyo-1.6.1 (27 Dec 2002)
+
+  27 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
+  Dropped qt ver back to 2 while qt3 issues are worked out.
+  Added games eclass support.
+
+*cuyo-1.6.0_beta2 (28 Nov 2002)
+
+  28 Nov 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+  New version for qt3. Marked as testing initially.
+
+*cuyo-1.05 (23 Oct 2002)
+
+  23 Oct 2002; Spider <spider@gentoo.org> cuyo-1.05.ebuild :
+  updated version with bugfixes
+
+*cuyo-1.03 (01 Apr 2002)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> cuyo-1.03.ebuild :
+  Added LICENSE, KEYWORDS.
+
+  1 Apr 2002; Spider <spide@gentoo.org>:
+  Adding this highly addictive game to portage.

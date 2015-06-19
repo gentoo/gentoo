@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<herd>ayatana</herd>
+	<maintainer>
+		<email>ayatana-bugs@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="introspection">Use <pkg>dev-libs/gobject-introspection</pkg> for introspection</flag>
+	</use>
+	<upstream>
+		<remote-id type="launchpad">libindicate</remote-id>
+	</upstream>
+</pkgmetadata>

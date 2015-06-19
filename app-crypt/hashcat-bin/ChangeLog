@@ -1,0 +1,59 @@
+# ChangeLog for app-crypt/hashcat-bin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/hashcat-bin/ChangeLog,v 1.12 2015/02/28 21:59:15 alonbl Exp $
+
+*hashcat-bin-0.49 (28 Feb 2015)
+
+  28 Feb 2015; Alon Bar-Lev <alonbl@gentoo.org> +hashcat-bin-0.49.ebuild:
+  Version bump, bug#540406
+
+*hashcat-bin-0.47 (05 May 2014)
+
+  05 May 2014; Alon Bar-Lev <alonbl@gentoo.org> +hashcat-bin-0.47.ebuild,
+  -hashcat-bin-0.39.ebuild, -hashcat-bin-0.40.ebuild, -hashcat-bin-0.41.ebuild,
+  -hashcat-bin-0.42.ebuild, -hashcat-bin-0.44.ebuild:
+  Version bump, bug#509616. Cleanup old
+
+*hashcat-bin-0.46 (20 Sep 2013)
+
+  20 Sep 2013; Rick Farina <zerochaos@gentoo.org> +hashcat-bin-0.46.ebuild:
+  version bump
+
+*hashcat-bin-0.44 (22 Apr 2013)
+
+  22 Apr 2013; Rick Farina <zerochaos@gentoo.org> +hashcat-bin-0.44.ebuild:
+  version bump, avx and xop support similar to jtr ebuild
+
+*hashcat-bin-0.42 (07 Jan 2013)
+
+  07 Jan 2013; Rick Farina <zerochaos@gentoo.org> +hashcat-bin-0.42.ebuild:
+  version bump, thanks to ago for poking me with bug #450604
+
+*hashcat-bin-0.41 (26 Sep 2012)
+
+  26 Sep 2012; Rick Farina <zerochaos@gentoo.org> +hashcat-bin-0.41.ebuild:
+  bump
+
+  25 Aug 2012; Rick Farina <zerochaos@gentoo.org> hashcat-bin-0.39.ebuild,
+  hashcat-bin-0.40.ebuild:
+  fix loader re bug #432740
+
+*hashcat-bin-0.40 (06 Aug 2012)
+
+  06 Aug 2012; Rick Farina <zerochaos@gentoo.org> +hashcat-bin-0.40.ebuild:
+  version bump to 0.40 and MacOSX (prefix) support
+
+  04 Jul 2012; Rick Farina <zerochaos@gentoo.org> hashcat-bin-0.39.ebuild:
+  minor QA for ebuild
+
+  03 Jul 2012; Rick Farina <zerochaos@gentoo.org> hashcat-bin-0.39.ebuild:
+  fix loader location and minor ebuild style improvements
+
+  02 Jul 2012; Rick Farina <zerochaos@gentoo.org> hashcat-bin-0.39.ebuild:
+  trade RESTRICT=binchecks for QA_PREBUILT
+
+*hashcat-bin-0.39 (01 Jul 2012)
+
+  01 Jul 2012; Rick Farina <zerochaos@gentoo.org> +hashcat-bin-0.39.ebuild,
+  +metadata.xml:
+  initial

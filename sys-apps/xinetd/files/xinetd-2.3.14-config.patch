@@ -1,0 +1,9 @@
+--- contrib/xinetd.conf
++++ contrib/xinetd.conf
+@@ -22,5 +22,5 @@
+ #
+ #	no_access	=
+-#	only_from	=
++	only_from	= localhost
+ #	max_load	= 0
+ 	cps		= 50 10

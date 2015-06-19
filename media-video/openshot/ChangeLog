@@ -1,0 +1,24 @@
+# ChangeLog for media-video/openshot
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/openshot/ChangeLog,v 1.5 2015/05/23 20:29:56 pacho Exp $
+
+  23 May 2015; Pacho Ramos <pacho@gentoo.org> openshot-1.4.3.ebuild:
+  Drop unneeded sox dep (#547114 by SN (Enlik), use new libav/ffmpeg handling
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> openshot-1.4.3.ebuild:
+  Drop old Python implementations
+
+  14 Nov 2014; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Maintainer needed.
+
+  13 Nov 2013; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Changed maintainers due to bug #490560.
+
+*openshot-1.4.3 (11 Nov 2013)
+
+  11 Nov 2013; Tom Wijsman <TomWij@gentoo.org> +metadata.xml,
+  +openshot-1.4.3.ebuild:
+  New ebuild for media-video/openshot; a free, open-source, non-linear video
+  editor to create and edit videos and movies. Proxied commit for Galym
+  Kerimbekov (housegregory299), whom will be proxy maintaining this package.
+  Fixes bug #283673.

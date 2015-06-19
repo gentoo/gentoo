@@ -1,0 +1,9 @@
+# ChangeLog for x11-terms/pangoterm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/pangoterm/ChangeLog,v 1.1 2015/03/24 07:51:19 tranquility Exp $
+
+*pangoterm-0.0_pre20150323 (24 Mar 2015)
+
+  24 Mar 2015; Ole Reifschneider <tranquility@gentoo.org> +metadata.xml,
+  +pangoterm-0.0_pre20150323.ebuild:
+  Initial commit

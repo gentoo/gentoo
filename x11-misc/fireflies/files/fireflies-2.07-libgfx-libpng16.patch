@@ -1,0 +1,15 @@
+raster-png.cxx: In function ‘ByteRaster* read_png_image(const char*)’:
+raster-png.cxx:104:47: error: ‘memcpy’ was not declared in this scope
+       memcpy(pixel, row_pointers[row], nbytes);
+                                              ^
+
+--- libgfx/src/raster-png.cxx
++++ libgfx/src/raster-png.cxx
+@@ -16,6 +16,7 @@
+ #ifdef HAVE_LIBPNG
+ 
+ #include <png.h>
++#include <string.h> /* memcpy() */
+ 
+ ByteRaster *read_png_image(const char *file_name)
+ {

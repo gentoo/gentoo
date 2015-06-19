@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-voip/gnugk/files/gnugk.rc6,v 1.1 2007/04/14 07:56:56 genstef Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting H.323 Gatekeeper"
+	start-stop-daemon --start --quiet --background \
+		--exec /usr/sbin/gnugk -- ${OPTIONS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping H.323 Gatekeeper"
+	start-stop-daemon --stop --quiet --pidfile /var/run/gnugk.pid
+	eend $?
+}

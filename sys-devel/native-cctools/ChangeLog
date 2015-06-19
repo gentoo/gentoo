@@ -1,0 +1,46 @@
+# ChangeLog for sys-devel/native-cctools
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/native-cctools/ChangeLog,v 1.6 2014/12/29 09:07:57 grobian Exp $
+
+  29 Dec 2014; Fabian Groffen <grobian@gentoo.org> native-cctools-1.ebuild,
+  native-cctools-2.ebuild, native-cctools-4.ebuild:
+  Change HOMEPAGE to an existing page, bug #533760
+
+*native-cctools-4 (08 Nov 2013)
+
+  08 Nov 2013; Michael Haubenwallner <haubi@gentoo.org> -files/aix-mkexpfile-1,
+  +files/aix-2/ld, +files/aix-2/mkexpfile, +files/aix-2/nm,
+  -native-cctools-3.ebuild, +native-cctools-4.ebuild:
+  Wrapp AIX nm for long TMPDIR. Group AIX wrappers in one subdir.
+
+*native-cctools-3 (05 Nov 2013)
+
+  05 Nov 2013; Michael Haubenwallner <haubi@gentoo.org> +files/aix-mkexpfile-1,
+  +native-cctools-3.ebuild:
+  Add mkexpfile helper v1 for AIX.
+
+*native-cctools-2 (07 Jun 2011)
+
+  07 Jun 2011; Michael Haubenwallner <haubi@gentoo.org> +files/ld-aix-2,
+  +native-cctools-2.ebuild:
+  (AIX Import File) need to list symbols with type 'SECdef' too
+
+  28 Feb 2011; Michael Haubenwallner <haubi@gentoo.org> files/ld-aix-1:
+  use /bin/ksh via /usr/bin/env, for bug#282539
+
+  09 Feb 2011; Michael Haubenwallner <haubi@gentoo.org> +files/ld-aix-1,
+  +native-cctools-1.ebuild, +metadata.xml:
+  On AIX, wrap ld to support '-soname' flag (#213277).
+  Moved from prefix-overlay to gentoo-x86.
+
+  17 Dec 2008; Fabian Groffen <grobian@gentoo.org> native-cctools-1.ebuild:
+  On Darwin, make sure we never link gnu-libtool as libtool, or br0rk4ge will
+  be guaranteed
+
+*native-cctools-1 (09 Feb 2011)
+
+  21 Mar 2007; Fabian Groffen <grobian@gentoo.org> +files/ld-aix-1,
+  +native-cctools-1.ebuild, +metadata.xml:
+  Initial commit of native-cctools, a wrapper package around native installed
+  cctools (ld, as, ar, etc) for operating systems where GNU binutils doesn't
+  work, or the linker sources are unavailable.

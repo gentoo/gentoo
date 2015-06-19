@@ -1,0 +1,8 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/desc/office_implementation.desc,v 1.1 2013/03/23 08:40:18 scarabeus Exp $
+
+# This file contains descriptions of OFFICE USE_EXPAND flags.
+
+libreoffice - use the app-office/libreoffice{,-bin} implementation for extensions
+openoffice - use the app-office/openoffice{,-bin} implementation for extensions

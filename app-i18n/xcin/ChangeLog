@@ -1,0 +1,87 @@
+# ChangeLog for app-i18n/xcin
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/xcin/ChangeLog,v 1.21 2011/11/20 23:40:31 matsuu Exp $
+
+*xcin-2.5.3_pre3-r3 (20 Nov 2011)
+
+  20 Nov 2011; MATSUU Takuto <matsuu@gentoo.org> +xcin-2.5.3_pre3-r3.ebuild,
+  +files/xcin-2.5.3_pre3-ldflags.patch, +files/xcin-2.5.3_pre3-make.patch:
+  Fixed dodoc issue, bug #374811. Respect LDFLAGS, bug #334849. Clean up.
+
+  29 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  xcin-2.5.3_pre3-r2.ebuild, +files/xcin-2.5.3_pre3-glibc-2.10.patch:
+  Fix building with GLIBC 2.10+ wrt #298015.
+
+  04 May 2008; nixnut <nixnut@gentoo.org> xcin-2.5.3_pre3-r2.ebuild:
+  Stable on ppc wrt bug 148096
+
+  01 May 2008; Markus Meier <maekke@gentoo.org> xcin-2.5.3_pre3-r2.ebuild:
+  x86 stable, bug #148096
+
+*xcin-2.5.3_pre3-r2 (30 Apr 2008)
+
+  30 Apr 2008; Samuli Suominen <drac@gentoo.org> -xcin-2.5.2.3.ebuild,
+  -xcin-2.5.3_pre2.ebuild, +xcin-2.5.3_pre3-r2.ebuild:
+  Version bump wrt #219349, closing also #159660. Commit for treecleaners to
+  avoid removing; thanks to Peter Alfredsen.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xcin-2.5.3_pre3-r1.ebuild:
+  Fix xcinrc installation, bug #132341 thanks to Chris Gianelloni (wolf31o2).
+
+  21 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  xcin-2.5.3_pre3-r1.ebuild:
+  Stable on ppc.
+
+  27 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
+  xcin-2.5.3_pre3-r1.ebuild:
+  Added to ~ppc.
+
+  22 Mar 2005; Mamoru KOMACHI <usata@gentoo.org> -xcin-2.5.3_pre3.ebuild,
+  xcin-2.5.3_pre3-r1.ebuild:
+  Stable on x86.
+
+*xcin-2.5.3_pre3-r1 (10 Feb 2005)
+
+  10 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> +xcin-2.5.3_pre3-r1.ebuild:
+  Changed xcin library path. (to not install files under X11 distribution's
+  directory)
+
+*xcin-2.5.3_pre3 (22 Jun 2004)
+
+  22 Jun 2004; Mamoru KOMACHI <usata@gentoo.org>
+  +files/xcin-chewing.diff, +xcin-2.5.3_pre3.ebuild:
+  Applied libchewing patch. Special thanks to Palatis <palatis@gentoo.org.tw>
+  and Benny Chuang <bennyc@gentoo.org>, closing bug #52133
+
+  03 May 2004; David Holm <dholm@gentoo.org> xcin-2.5.3_pre2.ebuild:
+  Added to ~ppc.
+
+  04 Nov 2003; Alastair Tse <liquidx@gentoo.org> xcin-2.5.3_pre2.ebuild,
+  files/xcin-2.5.3_pre2-db3.patch:
+  added db-3 patch from Palatis <palatis@gentoo.org.tw> (#32655)
+
+  23 May 2003; Alastair Tse <liquidx@gentoo.org> files/gentoo-xcinrc:
+  fix wrong xcin path in xcinrc
+
+*xcin-2.5.3_pre2 (11 Oct 2002)
+
+  11 Oct 2002; Stuart Bouyer <stubear@gentoo.org> ChangeLog,
+  xcin-2.5.3_pre2.ebuild :
+
+  Initial ebuild submitted by Lloyd Huang <lloyd@coventive.com>
+  Now has support for libtabe.
+
+*xcin-2.5.2.3 (1 Aug 2002)
+
+  20 Oct 2002; Calum Selkirk <cselkirk@gentoo.org> xcin-2.5.2.3.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  27 Jul 2002; Stuart Bouyer <stubear@gentoo.org> xcin-2.5.2.3.ebuild:
+
+  Initial ebuild of XCIN, currently doesnt have bimsphone module or libtabe
+  support until I build and test a db2 ebuild. 

@@ -1,0 +1,58 @@
+commit 89aa167726d12f9ae0b53c01a2fdc54601fc3cc5
+Author: Jim Nelson <jim@yorba.org>
+Date:   Wed May 29 11:52:09 2013 -0700
+
+    Build with LibRaw 0.15: Closes #7012
+    
+    LibRaw 0.15 removed document-mode processing, which, as their release
+    notes say, "no one uses".  Compile error were nothing more than
+    missing symbols -- Shotwell wasn't using it either.
+
+diff --git a/src/photos/GRaw.vala b/src/photos/GRaw.vala
+index f57886e..b7c3922 100644
+--- a/src/photos/GRaw.vala
++++ b/src/photos/GRaw.vala
+@@ -21,12 +21,6 @@ public enum Colorspace {
+     XYZ = 5
+ }
+ 
+-public enum DocMode {
+-    STANDARD = 0,
+-    GRAYSCALE = 1,
+-    GRAYSCALE_NO_WHITE_BALANCE = 2
+-}
+-
+ public errordomain Exception {
+     UNSPECIFIED,
+     UNSUPPORTED_FILE,
+@@ -167,10 +161,6 @@ public class Processor {
+         throw_exception("adjust_sizes_info_only", proc.adjust_sizes_info_only());
+     }
+     
+-    public void document_mode_processing() throws Exception {
+-        throw_exception("document_mode_processing", proc.document_mode_processing());
+-    }
+-    
+     public unowned LibRaw.ImageOther get_image_other() {
+         return proc.get_image_other();
+     }
+@@ -244,7 +234,6 @@ public class Processor {
+         // threshold
+         output_params->half_size = half_size;
+         // four_color_rgb
+-        output_params->document_mode = GRaw.DocMode.STANDARD;
+         output_params->highlight = GRaw.HighlightMode.CLIP;
+         output_params->use_auto_wb = true;
+         output_params->use_camera_wb = true;
+diff --git a/vapi/libraw.vapi b/vapi/libraw.vapi
+index 05de461..a8a0a4d 100644
+--- a/vapi/libraw.vapi
++++ b/vapi/libraw.vapi
+@@ -104,7 +104,6 @@ public struct OutputParams {
+     public float threshold;
+     public bool half_size;
+     public bool four_color_rgb;
+-    public int document_mode;
+     public int highlight;
+     public bool use_auto_wb;
+     public bool use_camera_wb;

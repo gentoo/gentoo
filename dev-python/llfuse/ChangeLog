@@ -1,0 +1,81 @@
+# ChangeLog for dev-python/llfuse
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/llfuse/ChangeLog,v 1.20 2015/04/08 08:05:19 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> llfuse-0.39.ebuild,
+  llfuse-0.40.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> llfuse-0.40.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> llfuse-0.40.ebuild:
+  amd64 stable, bug 540290
+
+  03 Apr 2014; Tim Harder <radhermit@gentoo.org> llfuse-0.40.ebuild:
+  Add python3_4 support and call distutils-r1_python_prepare_all in
+  python_prepare_all.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> llfuse-0.39.ebuild,
+  llfuse-0.40.ebuild:
+  Add support for the new PyPy slotting.
+
+*llfuse-0.40 (03 Dec 2013)
+
+  03 Dec 2013; Tim Harder <radhermit@gentoo.org> +llfuse-0.40.ebuild:
+  Version bump.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> llfuse-0.39.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  21 Jul 2013; Tim Harder <radhermit@gentoo.org> -llfuse-0.37.1.ebuild,
+  -llfuse-0.38.ebuild:
+  Remove old.
+
+  21 Jul 2013; Tim Harder <radhermit@gentoo.org> llfuse-0.39.ebuild:
+  Use system setuptools (bug #436346).
+
+  08 Jul 2013; Ian Delaney <idella4@gentoo.org> llfuse-0.39.ebuild:
+  Add pypy support, IUSE examples
+
+*llfuse-0.39 (22 May 2013)
+
+  22 May 2013; Patrick Lauer <patrick@gentoo.org> +llfuse-0.39.ebuild:
+  Bump
+
+*llfuse-0.38 (06 Jan 2013)
+
+  06 Jan 2013; Tim Harder <radhermit@gentoo.org> +llfuse-0.38.ebuild:
+  Version bump. Migrate to distutils-r1.
+
+  09 May 2012; Mike Gilbert <floppym@gentoo.org> llfuse-0.37.1.ebuild:
+  Set PYTHON_DEPEND.
+
+  04 May 2012; Patrick Lauer <patrick@gentoo.org> llfuse-0.37.1.ebuild:
+  Migrating dev-util/pkgconfig -> virtual/pkgconfig
+
+  22 Feb 2012; Patrick Lauer <patrick@gentoo.org> llfuse-0.37.1.ebuild:
+  Restricting pypy and jython
+
+  13 Dec 2011; Tim Harder <radhermit@gentoo.org> -llfuse-0.36.ebuild,
+  -llfuse-0.37.ebuild:
+  Remove old.
+
+*llfuse-0.37.1 (13 Dec 2011)
+
+  13 Dec 2011; Tim Harder <radhermit@gentoo.org> +llfuse-0.37.1.ebuild:
+  Version bump.
+
+*llfuse-0.37 (08 Dec 2011)
+
+  08 Dec 2011; Tim Harder <radhermit@gentoo.org> +llfuse-0.37.ebuild:
+  Version bump.
+
+  16 Oct 2011; Tim Harder <radhermit@gentoo.org> llfuse-0.36.ebuild:
+  Add pypi homepage.
+
+*llfuse-0.36 (16 Oct 2011)
+
+  16 Oct 2011; Tim Harder <radhermit@gentoo.org> +llfuse-0.36.ebuild,
+  +metadata.xml:
+  Initial import.

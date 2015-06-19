@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/pbbuttonsd/files/pbbuttonsd.rc6,v 1.3 2005/09/25 15:34:57 lu_zero Exp $
+
+depend() {
+	use alsasound
+}
+
+start() {
+	ebegin "Starting pbbuttonsd"
+	/usr/bin/pbbuttonsd -d > /dev/null
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping pbbuttonsd"
+	start-stop-daemon --stop --quiet --exec /usr/bin/pbbuttonsd
+	eend $?
+}

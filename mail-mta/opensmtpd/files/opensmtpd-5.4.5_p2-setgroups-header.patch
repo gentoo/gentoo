@@ -1,0 +1,22 @@
+diff -ru opensmtpd-5.4.4p1/smtpd/ca.c opensmtpd-5.4.4p1-modified/smtpd/ca.c
+--- opensmtpd-5.4.4p1/smtpd/ca.c	2014-12-24 11:46:55.000000000 +0100
++++ opensmtpd-5.4.4p1-modified/smtpd/ca.c	2015-01-08 17:09:37.845328217 +0100
+@@ -30,6 +30,7 @@
+ #include <imsg.h>
+ #include <pwd.h>
+ #include <err.h>
++#include <grp.h>
+ 
+ #include <openssl/ssl.h>
+ #include <openssl/pem.h>
+diff -ru opensmtpd-5.4.4p1/smtpd/pony.c opensmtpd-5.4.4p1-modified/smtpd/pony.c
+--- opensmtpd-5.4.4p1/smtpd/pony.c	2014-12-24 11:46:55.000000000 +0100
++++ opensmtpd-5.4.4p1-modified/smtpd/pony.c	2015-01-08 17:09:47.117393942 +0100
+@@ -35,6 +35,7 @@
+ #include <time.h>
+ #include <unistd.h>
+ #include <vis.h>
++#include <grp.h>
+ 
+ #include "smtpd.h"
+ #include "log.h"

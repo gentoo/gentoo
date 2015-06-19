@@ -1,0 +1,50 @@
+# Copyright 1999-2012 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License, v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/releases/freebsd-9.2/package.mask,v 1.1 2013/08/09 14:09:22 aballier Exp $
+
+# Make sure we don't get wrong versions
+<sys-freebsd/freebsd-pam-modules-9.2_alpha
+>sys-freebsd/freebsd-pam-modules-9.2.99
+<sys-freebsd/freebsd-rescue-9.2_alpha
+>sys-freebsd/freebsd-rescue-9.2.99
+<sys-freebsd/freebsd-pf-9.2_alpha
+>sys-freebsd/freebsd-pf-9.2.99
+<sys-freebsd/freebsd-mk-defs-9.2_alpha
+>sys-freebsd/freebsd-mk-defs-9.2.99
+<sys-freebsd/freebsd-lib-9.2_alpha
+>sys-freebsd/freebsd-lib-9.2.99
+<sys-freebsd/freebsd-libexec-9.2_alpha
+>sys-freebsd/freebsd-libexec-9.2.99
+<sys-freebsd/freebsd-bin-9.2_alpha
+>sys-freebsd/freebsd-bin-9.2.99
+<sys-freebsd/freebsd-sbin-9.2_alpha
+>sys-freebsd/freebsd-sbin-9.2.99
+<sys-freebsd/freebsd-ubin-9.2_alpha
+>sys-freebsd/freebsd-ubin-9.2.99
+<sys-freebsd/freebsd-usbin-9.2_alpha
+>sys-freebsd/freebsd-usbin-9.2.99
+<sys-freebsd/freebsd-share-9.2_alpha
+>sys-freebsd/freebsd-share-9.2.99
+<sys-freebsd/freebsd-contrib-9.2_alpha
+>sys-freebsd/freebsd-contrib-9.2.99
+<sys-freebsd/freebsd-cddl-9.2_alpha
+>sys-freebsd/freebsd-cddl-9.2.99
+<sys-freebsd/boot0-9.2_alpha
+>sys-freebsd/boot0-9.2.99
+<sys-freebsd/freebsd-sources-9.2_alpha
+>sys-freebsd/freebsd-sources-9.2.99
+
+# Alexis Ballier <aballier@gentoo.org> (19 Jul 2008)
+# JDK/JRE 1.5 are specific to fbsd 6 and 5
+=virtual/jdk-1.5*
+=virtual/jre-1.5*
+
+# Alexis Ballier <aballier@gentoo.org> (07 Nov 2011)
+# It is in freebsd-ubin starting from FreeBSD 9.0
+sys-process/fuser-bsd
+
+# Alexis Ballier <aballier@gentoo.org> (11 May 2012)
+# freebsd-lib provides a utempter compatible interface starting from FreeBSD 9.0
+# via libulog.
+# this package does not build anymore as it requires utmp
+sys-libs/libutempter

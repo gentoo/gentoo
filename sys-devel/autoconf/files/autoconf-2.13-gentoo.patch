@@ -1,0 +1,36 @@
+--- configure.orig	Wed Feb 28 20:51:53 2001
++++ configure	Wed Feb 28 20:52:03 2001
+@@ -654,12 +654,10 @@
+   echo "$ac_t""no" 1>&6
+ fi
+ 
+-if test "$PERL" != no; then
+-  SCRIPTS=autoscan
+-else
+-  echo "configure: warning: autoscan will not be built since perl is not found" 1>&2
++if test "$PERL" = no; then
++  PERL=/usr/bin/perl
+ fi
+-
++SCRIPTS=autoscan
+ ac_aux_dir=
+ for ac_dir in $srcdir $srcdir/.. $srcdir/../..; do
+   if test -f $ac_dir/install-sh; then
+--- configure.orig	Wed Feb 28 20:53:24 2001
++++ configure.in	Wed Feb 28 20:53:28 2001
+@@ -14,12 +14,10 @@
+ AC_PATH_PROG(PERL, perl, no)
+ AC_SUBST(PERL)dnl
+ AC_SUBST(SCRIPTS)dnl
+-if test "$PERL" != no; then
+-  SCRIPTS=autoscan
+-else
+-  AC_MSG_WARN(autoscan will not be built since perl is not found)
++if test "$PERL" = no; then
++  PERL=/usr/bin/perl
+ fi
+-
++SCRIPTS=autoscan
+ AC_PROG_INSTALL
+ 
+ # Work with the GNU or Cygnus source tree layout.

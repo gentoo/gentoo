@@ -1,0 +1,380 @@
+diff -up gdl-0.9.4/src/allix.hpp.reorder gdl-0.9.4/src/allix.hpp
+--- gdl-0.9.4/src/allix.hpp.reorder	2012-12-11 10:39:35.000000000 -0700
++++ gdl-0.9.4/src/allix.hpp	2013-10-04 10:59:22.666594845 -0600
+@@ -344,9 +344,9 @@ private:
+ public:
+   AllIxAllIndexedT( ArrayIndexVectorT* ixList_, SizeT acRank_, SizeT nIx_, const SizeT* varStride_)
+     : ixList( ixList_)
++    , varStride( varStride_)
+     , acRank( acRank_)
+     , nIx( nIx_)
+-    , varStride( varStride_)
+   {}
+   ~AllIxAllIndexedT() {}
+ 
+@@ -384,11 +384,11 @@ private:
+ public:
+   AllIxNewMultiT( ArrayIndexVectorT* ixList_, SizeT acRank_, SizeT nIx_, const SizeT* varStride_, SizeT* nIterLimit_, SizeT* stride_)
+     : ixList( ixList_)
+-    , acRank( acRank_)
+-    , nIx( nIx_)
+     , varStride( varStride_)
+     , nIterLimit( nIterLimit_)
+     , stride( stride_)
++    , acRank( acRank_)
++    , nIx( nIx_)
+   {
+     add = 0;
+ 	assert( varStride[0] == 1);
+@@ -440,10 +440,10 @@ private:
+ public:
+   AllIxNewMulti2DT( ArrayIndexVectorT* ixList_, SizeT nIx_, const SizeT* varStride_, SizeT* nIterLimit_, SizeT* stride_)
+     : ixList( ixList_)
+-    , nIx( nIx_)
+     , varStride( varStride_)
+     , nIterLimit( nIterLimit_)
+     , stride( stride_)
++    , nIx( nIx_)
+   {
+     add = 0;
+ 	if( !(*ixList)[0]->Indexed())
+@@ -499,11 +499,11 @@ private:
+ public:
+   AllIxNewMultiNoneIndexedT( ArrayIndexVectorT* ixList_, SizeT acRank_, SizeT nIx_, const SizeT* varStride_, SizeT* nIterLimit_, SizeT* stride_)
+     : ixList( ixList_)
+-    , acRank( acRank_)
+-    , nIx( nIx_)
+     , varStride( varStride_)
+     , nIterLimit( nIterLimit_)
+     , stride( stride_)
++    , acRank( acRank_)
++    , nIx( nIx_)
+   {
+ 	assert( varStride[0] == 1);
+     add = 0;
+@@ -548,10 +548,10 @@ private:
+ public:
+   AllIxNewMultiNoneIndexed2DT( ArrayIndexVectorT* ixList_, SizeT nIx_, const SizeT* varStride_, SizeT* nIterLimit_, SizeT* stride_)
+     : ixList( ixList_)
+-    , nIx( nIx_)
+     , varStride( varStride_)
+     , nIterLimit( nIterLimit_)
+     , stride( stride_)
++    , nIx( nIx_)
+   {
+ 		assert( varStride[0] == 1);
+ 		ixListStride[0] = (*ixList)[0]->GetStride();
+@@ -593,11 +593,11 @@ public:
+   AllIxNewMultiOneVariableIndexNoIndexT( RankT gt1Rank, SizeT add_,
+ 								  ArrayIndexVectorT* ixList_, SizeT acRank_, SizeT nIx_, const SizeT* varStride_, SizeT* nIterLimit_, SizeT* stride_)
+ 	: ixList( ixList_)
+-    , acRank( acRank_)
+-    , nIx( nIx_)
+     , varStride( varStride_)
+     , nIterLimit( nIterLimit_)
+     , stride( stride_)
++    , acRank( acRank_)
++    , nIx( nIx_)
+ 	, add( add_)
+ 	, variableIndex( gt1Rank)
+ 	{
+@@ -642,11 +642,11 @@ public:
+ 					 SizeT acRank_, SizeT nIx_, const SizeT* varStride_, 
+ 					 SizeT* nIterLimit_, SizeT* stride_)
+     : ixList( ixList_)
+-    , acRank( acRank_)
+-    , nIx( nIx_)
+     , varStride( varStride_)
+     , nIterLimit( nIterLimit_)
+     , stride( stride_)
++    , acRank( acRank_)
++    , nIx( nIx_)
+     , add( add_)
+     , variableIndex( gt1Rank)
+     {
+diff -up gdl-0.9.4/src/arrayindex.hpp.reorder gdl-0.9.4/src/arrayindex.hpp
+--- gdl-0.9.4/src/arrayindex.hpp.reorder	2013-09-17 10:46:19.000000000 -0600
++++ gdl-0.9.4/src/arrayindex.hpp	2013-10-04 11:00:58.849879562 -0600
+@@ -303,7 +303,7 @@ private:
+   RangeT s;
+   BaseGDL* rawData; // for overloaded object indexing
+ 
+-  CArrayIndexScalar( const CArrayIndexScalar& c): s( c.s), sInit( c.sInit) 
++  CArrayIndexScalar( const CArrayIndexScalar& c):  sInit( c.sInit), s( c.s)
+   {
+     assert( c.rawData != NULL);
+     rawData = c.rawData->Dup();
+diff -up gdl-0.9.4/src/arrayindexlistnoassoct.hpp.reorder gdl-0.9.4/src/arrayindexlistnoassoct.hpp
+--- gdl-0.9.4/src/arrayindexlistnoassoct.hpp.reorder	2013-07-04 17:24:44.000000000 -0600
++++ gdl-0.9.4/src/arrayindexlistnoassoct.hpp	2013-10-04 11:24:02.893867004 -0600
+@@ -59,8 +59,8 @@ public:
+   { nParam = 0;}
+ 
+   ArrayIndexListOneNoAssocT( const ArrayIndexListOneNoAssocT& cp):
+-	cleanupIx(),
+     ArrayIndexListT( cp),
++	cleanupIx(),
+     ix( cp.ix->Dup()),
+     allIx( NULL)
+   {
+diff -up gdl-0.9.4/src/arrayindexlistt.hpp.reorder gdl-0.9.4/src/arrayindexlistt.hpp
+--- gdl-0.9.4/src/arrayindexlistt.hpp.reorder	2013-09-17 10:46:19.000000000 -0600
++++ gdl-0.9.4/src/arrayindexlistt.hpp	2013-10-04 11:23:35.607069888 -0600
+@@ -130,8 +130,8 @@ public:
+   { nParam = 0;}
+ 
+   ArrayIndexListOneT( const ArrayIndexListOneT& cp):
+-	cleanupIx(),
+     ArrayIndexListT( cp),
++	cleanupIx(),
+     ix( cp.ix->Dup()),
+     allIx( NULL)
+   {
+diff -up gdl-0.9.4/src/deviceps.hpp.reorder gdl-0.9.4/src/deviceps.hpp
+--- gdl-0.9.4/src/deviceps.hpp.reorder	2013-07-03 15:48:06.000000000 -0600
++++ gdl-0.9.4/src/deviceps.hpp	2013-10-04 13:14:48.283746779 -0600
+@@ -441,9 +441,9 @@ private:
+   }
+ 
+ public:
+-  DevicePS(): Graphics(), fileName( "gdl.ps"), actStream( NULL), color(0), 
+-    decomposed( 0), encapsulated(false), scale(1.), XPageSize(17.78), YPageSize(12.7),
+-    XOffset(0.0),YOffset(0.0)
++  DevicePS(): Graphics(), fileName( "gdl.ps"), actStream( NULL),
++    XPageSize(17.78), YPageSize(12.7), XOffset(0.0),YOffset(0.0),
++    color(0), decomposed( 0), encapsulated(false), scale(1.)
+   {
+     name = "PS";
+ 
+diff -up gdl-0.9.4/src/dnode.cpp.reorder gdl-0.9.4/src/dnode.cpp
+--- gdl-0.9.4/src/dnode.cpp.reorder	2012-09-18 08:19:18.000000000 -0600
++++ gdl-0.9.4/src/dnode.cpp	2013-10-04 12:02:48.601416601 -0600
+@@ -55,9 +55,10 @@ DNode::DNode( const DNode& cp):
+ //   keepRight( false),
+   CommonAST( cp), //down(), right(), 
+   lineNumber( cp.getLine()), cData(NULL), 
+-  var(cp.var), arrIxList(NULL),arrIxListNoAssoc(NULL), 
++  var(cp.var),
+   libFun( cp.libFun),
+   libPro( cp.libPro),
++  arrIxList(NULL),arrIxListNoAssoc(NULL), 
+   labelStart( cp.labelStart), labelEnd( cp.labelEnd)
+ {
+   if( cp.cData != NULL) cData = cp.cData->Dup();
+diff -up gdl-0.9.4/src/dnode.hpp.reorder gdl-0.9.4/src/dnode.hpp
+diff -up gdl-0.9.4/src/dpro.cpp.reorder gdl-0.9.4/src/dpro.cpp
+--- gdl-0.9.4/src/dpro.cpp.reorder	2013-09-17 03:03:25.000000000 -0600
++++ gdl-0.9.4/src/dpro.cpp	2013-10-04 13:05:23.169223727 -0600
+@@ -200,8 +200,8 @@ DSubUD::~DSubUD()
+ DSubUD::DSubUD(const string& n,const string& o,const string& f) : 
+   DSub(n,o), file(f),
+   tree( NULL),
+-  labelList(),
+   compileOpt(GDLParser::NONE),
++  labelList(),
+   nForLoops( 0)
+ {
+   if( o != "")
+diff -up gdl-0.9.4/src/envt.cpp.reorder gdl-0.9.4/src/envt.cpp
+--- gdl-0.9.4/src/envt.cpp.reorder	2013-09-25 05:55:21.000000000 -0600
++++ gdl-0.9.4/src/envt.cpp	2013-10-04 13:08:17.081114086 -0600
+@@ -107,15 +107,15 @@ void EnvUDT::operator delete( void *ptr)
+ 
+ 
+ EnvBaseT::EnvBaseT( ProgNodeP cN, DSub* pro_): 
+-  env(), 
+   toDestroy(),
++  env(), 
+   pro(pro_),
+-  extra(NULL),
+-  newEnv(NULL), 
+   callingNode( cN),
+   lineNumber( 0),
+-  obj(false)
+-  ,ptrToReturnValue(NULL)
++  obj(false),
++  extra(NULL),
++  newEnv(NULL), 
++  ptrToReturnValue(NULL)
+ //, toDestroyInitialIndex( toDestroy.size())
+ {}
+ 
+diff -up gdl-0.9.4/src/envt.hpp.reorder gdl-0.9.4/src/envt.hpp
+--- gdl-0.9.4/src/envt.hpp.reorder	2013-09-26 04:47:48.000000000 -0600
++++ gdl-0.9.4/src/envt.hpp	2013-10-04 10:55:21.892428311 -0600
+@@ -863,7 +863,7 @@ public:
+   typedef SizeT size_type;
+   typedef EnvUDT* pointer_type;
+   
+-  EnvStackT(): sz(defaultStackDepth), top(0) 
++  EnvStackT(): top(0), sz(defaultStackDepth) 
+   {
+     envStackFrame = new EnvUDT* [ sz+1];
+     envStack = envStackFrame + 1;
+diff -up gdl-0.9.4/src/gdlexception.cpp.reorder gdl-0.9.4/src/gdlexception.cpp
+--- gdl-0.9.4/src/gdlexception.cpp.reorder	2013-06-23 17:07:32.000000000 -0600
++++ gdl-0.9.4/src/gdlexception.cpp	2013-10-04 14:00:32.102348401 -0600
+@@ -43,9 +43,9 @@ GDLException::GDLException(DLong eC, con
+   errorNodeP( NULL),
+   errorCode(eC),
+   line( 0), col( 0), prefix( pre),
++  arrayexprIndexeeFailed(false),
+   ioException( false),
+-  targetEnv( NULL),
+-  arrayexprIndexeeFailed(false)
++  targetEnv( NULL)
+ {
+ if(decorate && interpreter!=NULL && interpreter->CallStack().size()>0) 
+ {
+@@ -97,9 +97,9 @@ GDLException::GDLException(const RefDNod
+   errorNodeP( NULL),
+   errorCode(-1),
+   line( 0), col( 0), prefix( true),
++  arrayexprIndexeeFailed(false),
+   ioException( false),
+-  targetEnv( NULL),
+-  arrayexprIndexeeFailed(false)
++  targetEnv( NULL)
+ {
+ if(interpreter!=NULL && interpreter->CallStack().size()>0) 
+ {
+@@ -122,9 +122,9 @@ GDLException::GDLException(DLong eC, con
+   errorNodeP( NULL),
+   errorCode(eC),
+   line( 0), col( 0), prefix( true),
++  arrayexprIndexeeFailed(false),
+   ioException( false),
+-  targetEnv( NULL),
+-  arrayexprIndexeeFailed(false)
++  targetEnv( NULL)
+ {
+ if(interpreter!=NULL && interpreter->CallStack().size()>0) 
+ {
+@@ -148,9 +148,9 @@ GDLException::GDLException(const ProgNod
+   errorNodeP( eN),
+   errorCode(-1),
+   line( 0), col( 0), prefix( true),
++  arrayexprIndexeeFailed(false),
+   ioException( false),
+-  targetEnv( NULL),
+-  arrayexprIndexeeFailed(false)
++  targetEnv( NULL)
+ {
+ if( overWriteNode && interpreter!=NULL && interpreter->CallStack().size()>0) 
+ {
+@@ -177,9 +177,9 @@ GDLException::GDLException(DLong eC, con
+   errorNodeP( eN),
+   errorCode(eC),
+   line( 0), col( 0), prefix( true),
++  arrayexprIndexeeFailed(false),
+   ioException( false),
+-  targetEnv( NULL),
+-  arrayexprIndexeeFailed(false)
++  targetEnv( NULL)
+ {
+   if( overWriteNode && interpreter!=NULL && interpreter->CallStack().size()>0) 
+   {
+@@ -207,9 +207,9 @@ GDLException::GDLException(SizeT l, Size
+   errorNodeP( NULL),
+   errorCode(-1),
+   line( l), col( c), prefix( true),
++  arrayexprIndexeeFailed(false),
+   ioException( false),
+-  targetEnv( NULL),
+-  arrayexprIndexeeFailed(false)
++  targetEnv( NULL)
+ {
+   if(interpreter!=NULL && interpreter->CallStack().size()>0) 
+   {
+@@ -232,8 +232,8 @@ GDLException::GDLException(DLong eC, Siz
+   errorNodeP( NULL),
+   errorCode(eC),
+   line( l), col( c), prefix( true),
+-  targetEnv( NULL),
+-  arrayexprIndexeeFailed(false)
++  arrayexprIndexeeFailed(false),
++  targetEnv( NULL)
+ {
+   if(interpreter!=NULL && interpreter->CallStack().size()>0) 
+   {
+diff -up gdl-0.9.4/src/gdlexception.hpp.reorder gdl-0.9.4/src/gdlexception.hpp
+--- gdl-0.9.4/src/gdlexception.hpp.reorder	2013-06-23 17:07:32.000000000 -0600
++++ gdl-0.9.4/src/gdlexception.hpp	2013-10-04 11:12:58.332125288 -0600
+@@ -66,18 +66,18 @@ public:
+ 		  errorNodeP( NULL),
+ 		  errorCode(-1),
+ 		  line( 0), col( 0), prefix( true),
++		  arrayexprIndexeeFailed(false),
+ 		  ioException( false),
+-		  targetEnv( NULL),
+-		  arrayexprIndexeeFailed(false)
++		  targetEnv( NULL)
+   {}
+   GDLException( DLong eC): ANTLRException(), 
+     errorNode(static_cast<RefDNode>(antlr::nullAST)),
+ 		  errorNodeP( NULL),
+ 		  errorCode(eC),
+ 		  line( 0), col( 0), prefix( true),
++		  arrayexprIndexeeFailed(false),
+ 		  ioException( false),
+-		  targetEnv( NULL),
+-		  arrayexprIndexeeFailed(false)
++		  targetEnv( NULL)
+   {}
+   GDLException(const std::string& s, bool pre = true, bool decorate=true);
+   GDLException(const RefDNode eN, const std::string& s);
+diff -up gdl-0.9.4/src/prognode.cpp.reorder gdl-0.9.4/src/prognode.cpp
+--- gdl-0.9.4/src/prognode.cpp.reorder	2013-09-27 18:47:49.000000000 -0600
++++ gdl-0.9.4/src/prognode.cpp	2013-10-04 14:01:11.490342867 -0600
+@@ -54,19 +54,19 @@ return nonCopyNodeLookupArray;
+ 
+ // tanslation RefDNode -> ProgNode
+ ProgNode::ProgNode( const RefDNode& refNode):
++  ttype( refNode->getType()),
++  text( refNode->getText()),
+ 	keepRight( false),
+ 	keepDown( false),
+ 	breakTarget( NULL),
+-  ttype( refNode->getType()),
+-  text( refNode->getText()),
+   down( NULL), 
+   right( NULL),
+-  lineNumber( refNode->getLine()),
+   cData( refNode->StealCData()), // stealing is crucial here because references might exist
++  var( refNode->var),
+   // as arrayindices
+-  libPro( refNode->libPro),
+   libFun( refNode->libFun),
+-  var( refNode->var),
++  libPro( refNode->libPro),
++  lineNumber( refNode->getLine()),
+   arrIxList( refNode->StealArrIxList()),
+   arrIxListNoAssoc( refNode->StealArrIxNoAssocList()),
+ //   arrIxList( refNode->CloneArrIxList()),
+diff -up gdl-0.9.4/src/prognodeexpr.cpp.reorder gdl-0.9.4/src/prognodeexpr.cpp
+--- gdl-0.9.4/src/prognodeexpr.cpp.reorder	2013-09-26 05:08:39.000000000 -0600
++++ gdl-0.9.4/src/prognodeexpr.cpp	2013-10-04 13:20:36.660155916 -0600
+@@ -49,18 +49,18 @@ BinaryExprNC::BinaryExprNC( const RefDNo
+ }
+ 
+ ProgNode::ProgNode(): // for NULLProgNode
++  ttype( antlr::Token::NULL_TREE_LOOKAHEAD),
++  text( "NULLProgNode"),
+ 	keepRight( false),
+ 	keepDown( false),
+ 	breakTarget( NULL),
+-  ttype( antlr::Token::NULL_TREE_LOOKAHEAD),
+-  text( "NULLProgNode"),
+   down( NULL), 
+   right( NULL),
+-  lineNumber( 0),
+   cData( NULL),
+-  libPro( NULL),
+-  libFun( NULL),
+   var( NULL),
++  libFun( NULL),
++  libPro( NULL),
++  lineNumber( 0),
+   labelStart( 0),
+   labelEnd( 0)
+ {}

@@ -1,0 +1,19 @@
+--- src/wmfire.c.orig	2010-06-28 23:53:35.000000000 +0200
++++ src/wmfire.c	2010-06-28 23:54:35.000000000 +0200
+@@ -150,6 +150,8 @@
+ int
+ main(int argc, char **argv)
+ {
++	/* This is needed to proper dockapp work on >=GTK+-2.18 */
++	setenv("GDK_NATIVE_WINDOWS", "1", 0);
+ 	GdkEvent *event;
+ 	GdkCursor *cursor;
+ 	int i;
+@@ -632,6 +634,7 @@
+ 
+ 	/* Moved after gdk_window_show due to change in GTK 2.4 */
+ 	XSetWMHints(GDK_WINDOW_XDISPLAY(bm.win), win, &wmhints);
++	gdk_window_show(bm.iconwin);
+ 
+ 	if (bm.x > 0 || bm.y > 0)
+ 		gdk_window_move(bm.win, bm.x, bm.y);

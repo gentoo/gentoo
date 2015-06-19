@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DEPEND=dev-lang/lua:* net-nds/openldap virtual/pkgconfig
+DESCRIPTION=Simple interface from Lua to OpenLDAP
+EAPI=5
+HOMEPAGE=http://git.zx2c4.com/lualdap/about/
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/lua:*
+SLOT=0
+SRC_URI=http://git.zx2c4.com/lualdap/snapshot/lualdap-1.2.0.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=1b279686860a5d998a1424fef4974920

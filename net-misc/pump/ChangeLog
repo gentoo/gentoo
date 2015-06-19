@@ -1,0 +1,260 @@
+# ChangeLog for net-misc/pump
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/pump/ChangeLog,v 1.62 2013/06/01 21:42:55 pinkbyte Exp $
+
+  01 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> pump-0.8.24-r4.ebuild:
+  Add workaround to epatch call to make sure that patches are applied in right
+  order, wrt bug #471666. Thanks to Pavel Riha for discovering this issue and
+  Jeroen Roovers for suggested patch
+
+  22 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> -pump-0.8.24-r3.ebuild:
+  Drop old revision
+
+  22 Feb 2013; Agostino Sarubbo <ago@gentoo.org> pump-0.8.24-r4.ebuild:
+  Stable for ppc, wrt bug #457458
+
+  22 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> pump-0.8.24-r4.ebuild:
+  Stable on arm, wrt bug #457458
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org> pump-0.8.24-r4.ebuild:
+  Stable for sparc, wrt bug #457458
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org> pump-0.8.24-r4.ebuild:
+  Stable for ia64, wrt bug #457458
+
+  20 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> pump-0.8.24-r4.ebuild:
+  Respect AR, wrt bug #458482. Thanks to Agostino Sarubbo for discovering this
+  issue
+
+  20 Feb 2013; Jeroen Roovers <jer@gentoo.org> pump-0.8.24-r4.ebuild:
+  Stable for HPPA (bug #457458).
+
+  20 Feb 2013; Agostino Sarubbo <ago@gentoo.org> pump-0.8.24-r4.ebuild:
+  Stable for x86, wrt bug #457458
+
+  20 Feb 2013; Agostino Sarubbo <ago@gentoo.org> pump-0.8.24-r4.ebuild:
+  Stable for amd64, wrt bug #457458
+
+*pump-0.8.24-r4 (12 Jan 2013)
+
+  12 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> +pump-0.8.24-r4.ebuild:
+  Revision bump: EAPI 5, epatch_user support, new upstream patchset, generic
+  cleanups
+
+  16 Dec 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due retirement, #95685
+
+  15 Apr 2011; Ulrich Mueller <ulm@gentoo.org> pump-0.8.24-r3.ebuild:
+  Don't PROVIDE virtual/dhcpc, bug 358827.
+
+  15 Mar 2011; Krzysztof Pawlik <nelchael@gentoo.org> pump-0.8.24-r3.ebuild:
+  Do not install useless locale files (bug #358007), use emake.
+
+  02 May 2009; Krzysiek Pawlik <nelchael@gentoo.org> -pump-0.8.24.ebuild,
+  -files/pump-0.8.24-gentoo.patch, -files/pump-0.8.24-redefinition.patch:
+  Remove old version.
+
+  29 Apr 2009; Jeroen Roovers <jer@gentoo.org> pump-0.8.24-r3.ebuild:
+  Stable for HPPA (bug #264688).
+
+  26 Apr 2009; Brent Baude <ranger@gentoo.org> pump-0.8.24-r3.ebuild:
+  stable ppc, bug 264688
+
+  10 Apr 2009; Raúl Porcel <armin76@gentoo.org> pump-0.8.24-r3.ebuild:
+  arm/ia64/sparc stable wrt #264688
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org> pump-0.8.24-r3.ebuild:
+  amd64/x86 stable, bug #264688
+
+*pump-0.8.24-r3 (07 Mar 2009)
+
+  07 Mar 2009; Krzysiek Pawlik <nelchael@gentoo.org> -pump-0.8.24-r2.ebuild,
+  +pump-0.8.24-r3.ebuild:
+  Revision bump: fix bug #260929 (static linking against popt), respect
+  LDFLAGS.
+
+  16 Feb 2009; Krzysiek Pawlik <nelchael@gentoo.org> Manifest:
+  Fix digest.
+
+*pump-0.8.24-r2 (12 Feb 2009)
+
+  12 Feb 2009; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml,
+  -pump-0.8.24-r1.ebuild, +pump-0.8.24-r2.ebuild:
+  Revision bump, see bug #258582. Changed maintainer.
+
+*pump-0.8.24-r1 (23 Dec 2008)
+
+  23 Dec 2008; Mike Pagano <mpagano@gentoo.org> +pump-0.8.24-r1.ebuild:
+  Add version that builds and works wrt bug #198121 (gcc43).
+
+  29 Dec 2007; Christian Heim <phreak@gentoo.org>
+  +files/pump-0.8.24-redefinition.patch, pump-0.8.24.ebuild:
+  Adding patch for compilation against dev-libs/popt-1.12, as N is already
+  defined in popt.h. This keeps it working with current stable dev-libs/popt,
+  which doesn't have the define in popt.h. Thanks to Preston Crow
+  <pc_gentoo_bugzilla at crowcastle.net> in #201958 for the idea.
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing uberlord from metadata.xml as per #199318. Assigning to
+  maintainer-needed.
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  23 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org> pump-0.8.24.ebuild:
+  Stable on hppa wrt #134896
+
+  13 Jul 2006; Aron Griffis <agriffis@gentoo.org> pump-0.8.24.ebuild:
+  Mark 0.8.24 stable on ia64
+
+  04 Jun 2006; Mark Loeser <halcy0n@gentoo.org> pump-0.8.24.ebuild:
+  Stable on x86; bug #134896
+
+  01 Jun 2006; Jory A. Pratt <anarchy@gentoo.org> pump-0.8.24.ebuild:
+  stable on amd64 wrt bug #134896
+
+  30 May 2006; Jason Wever <weeve@gentoo.org> pump-0.8.24.ebuild:
+  Stable on SPARC wrt bug #134896.
+
+  30 May 2006; Luca Barbato <lu_zero@gentoo.org> pump-0.8.24.ebuild:
+  Marked ppc, requested in bug #134896
+
+*pump-0.8.24 (30 Apr 2006)
+
+  30 Apr 2006; <roy@gentoo.org> +files/pump-0.8.24-gentoo.patch,
+  +pump-0.8.24.ebuild:
+  Version bump, #131650 thanks to Dick Marinus.
+
+*pump-0.8.21-r9 (07 Apr 2006)
+
+  07 Apr 2006; Roy Marples <uberlord@gentoo.org>
+  +files/pump-0.8.21-gentoo-2.patch, +pump-0.8.21-r9.ebuild:
+  New patch, now with resolvconf support.
+  Actually we don't unpatch it from Debians patch, but whatever ;)
+
+*pump-0.8.21-r8 (18 Nov 2005)
+
+  18 Nov 2005; Roy Marples <uberlord@gentoo.org>
+  +files/pump-0.8.21-gcc4.patch, +pump-0.8.21-r8.ebuild:
+  Fixed gcc4 compilation warnings.
+  Only install specific po files if LINGUAS is set.
+
+  06 Oct 2005; Roy Marples <uberlord@gentoo.org> -files/pump.conf,
+  -pump-0.8.11-r1.ebuild, -pump-0.8.19-r1.ebuild:
+  Punted old ebuilds.
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> pump-0.8.21-r7.ebuild:
+  stable on ia64
+
+  20 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> pump-0.8.21-r7.ebuild:
+  Stable on ppc and hppa (bug #102585).
+
+  16 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> pump-0.8.21-r7.ebuild:
+  Stable on sparc wrt #102585
+
+  15 Aug 2005; Roy Marples <uberlord@gentoo.org> pump-0.8.21-r7.ebuild:
+  Stable on amd64 and x86.
+
+*pump-0.8.21-r7 (15 Jul 2005)
+
+  15 Jul 2005; Roy Marples <uberlord@gentoo.org>
+  files/pump-0.8.21-gentoo.diff, -pump-0.8.21-r6.ebuild,
+  +pump-0.8.21-r7.ebuild:
+  Fixed two bad pointers - thanks to DaPhreak in IRC.
+  Re-enabled building with -fPIC and CFLAGS.
+
+*pump-0.8.21-r6 (14 Jul 2005)
+
+  14 Jul 2005; Roy Marples <uberlord@gentoo.org>
+  files/pump-0.8.21-gentoo.diff, -pump-0.8.21-r5.ebuild,
+  +pump-0.8.21-r6.ebuild:
+  Fixed --keep-up. Needs to be used when starting instead of releasing now. 
+
+*pump-0.8.21-r5 (14 Jul 2005)
+
+  14 Jul 2005; Roy Marples <uberlord@gentoo.org>
+  files/pump-0.8.21-gentoo.diff, -pump-0.8.21-r4.ebuild,
+  +pump-0.8.21-r5.ebuild:
+  Integrated Debians pump patchset which fixes a few things.
+
+*pump-0.8.21-r4 (13 Jul 2005)
+
+  13 Jul 2005; Roy Marples <uberlord@gentoo.org>
+  files/pump-0.8.21-gentoo.diff, -pump-0.8.21-r3.ebuild,
+  +pump-0.8.21-r4.ebuild:
+  Enable the creation of /etc/ntp.conf and the --no-ntp option
+
+*pump-0.8.21-r3 (01 Jul 2005)
+
+  01 Jul 2005; Roy Marples <uberlord@gentoo.org>
+  +files/pump-0.8.21-gentoo.diff, -files/pump-0.8-gentoo.diff,
+  -pump-0.8.21-r2.ebuild, +pump-0.8.21-r3.ebuild:
+  Fixed an issue with not dropping the broadcast route
+
+*pump-0.8.21-r2 (01 Jul 2005)
+
+  01 Jul 2005; Roy Marples <uberlord@gentoo.org>
+  -files/pump-0.8.21-gentoo-disable-before-setup.diff,
+  +files/pump-0.8-gentoo.diff,
+  -files/pump-0.8-gentoo-etcdir-routemetric.diff, -pump-0.8.21-r1.ebuild,
+  +pump-0.8.21-r2.ebuild:
+  Combined the new features I've done into one Gentoo patch including :-
+  Enable the --script option to specify a script to run on DHCP actions
+  Enable the --keep-up option to keep interfaces up when we release
+  
+  The --keep-up option makes the disable-before-setup patch redundant
+
+*pump-0.8.21-r1 (30 Jun 2005)
+
+  30 Jun 2005; Roy Marples <uberlord@gentoo.org>
+  +files/pump-0.8.21-gentoo-disable-before-setup.diff,
+  +files/pump-0.8-gentoo-etcdir-routemetric.diff, -pump-0.8.21.ebuild,
+  +pump-0.8.21-r1.ebuild:
+  Enable the -e (--etc-dir) option to specify where to make
+  resolv.conf - default /etc
+  
+  Enable the -m (--route-metric) option to specify the default
+  metric applied to routes
+  
+  For some reason, pump doesn't disable the interface before
+  applying it's setup - this resulted in a duplicate route, so we
+  re-introduce the old behaviour
+
+*pump-0.8.21 (27 Apr 2005)
+
+  27 Apr 2005; Brian Jackson <iggy@gentoo.org> pump-0.8.19-r1.ebuild,
+  +pump-0.8.21.ebuild:
+  version bump, fix bug #64831
+
+*pump-0.8.11-r1 (08 Mar 2004)
+*pump-0.8.19-r1 (08 Mar 2004)
+
+  08 Mar 2004; Seemant Kulleen <seemant@gentoo.org> pump-0.8.11-r1.ebuild,
+  pump-0.8.11.ebuild, pump-0.8.19-r1.ebuild, pump-0.8.19.ebuild:
+  revision bumps to PROVIDE virtual/dhcpc, thanks to a request by William Hubbs
+  <kc5eiv@kc5eiv.homeip.net> on the gentoo-dev mailing list:
+  http://article.gmane.org/gmane.linux.gentoo.devel/11579
+
+*pump-0.8.19 (14 Sep 2003)
+
+  14 Sep 2003; <iggy@gentoo.org> pump-0.8.19.ebuild:
+  version bump thanks to hillster
+
+*pump-0.8.11 (1 Feb 2002)
+
+  17 Jan 2003; Mike Frysinger <vapier@gentoo.org> :
+  Removed init.d script ... see Bug 8917.
+
+  04 Dec 2002; Calum Selkirk <cselkirk@gentoo.org> pump-0.8.11.ebuild :
+  Added ppc to KEYWORDS.
+
+  09 Jul 2002; phoen][x <phoenix@gentoo.org> pump-0.8.11.ebuild :
+  Added KEYWORDS, LICENSE, SLOT.
+  Removed pump-0.8.3 from the tree.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

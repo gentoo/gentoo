@@ -1,0 +1,17 @@
+--- a/src/whowatch.c
++++ b/src/whowatch.c
+@@ -436,12 +436,12 @@
+ 		gettimeofday(&after, 0);
+ 		tv.tv_sec -= (after.tv_sec - before.tv_sec);
+ 		if(retval > 0) {
+-			int key = read_key();
++			int key = getkey();
+ 			key_action(key);
+ 		}
+ 		if(tv.tv_sec <= 0) {
+ 			ticks++;
+-			periodic();
++			main_periodic();
+ 			tv.tv_sec = TIMEOUT;
+ 		}
+ #endif

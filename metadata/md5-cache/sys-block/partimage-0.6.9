@@ -1,0 +1,13 @@
+DEFINED_PHASES=config configure install postinst prepare setup
+DEPEND=!static? ( pam? ( virtual/pam ) ) app-arch/bzip2 >=dev-libs/newt-0.52 >=sys-libs/slang-2 sys-libs/zlib ssl? ( dev-libs/openssl ) nls? ( sys-devel/gettext )
+DESCRIPTION=Console-based application to efficiently save raw partition data to an image file
+EAPI=4
+HOMEPAGE=http://www.partimage.org/
+IUSE=nls nologin pam ssl static
+KEYWORDS=amd64 ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=!static? ( pam? ( virtual/pam ) ) !static? ( app-arch/bzip2 >=dev-libs/newt-0.52 >=sys-libs/slang-2 sys-libs/zlib ssl? ( dev-libs/openssl ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/partimage/partimage-0.6.9.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=5bf1e031c499f21e956cb1ace9b40c06

@@ -1,0 +1,49 @@
+# ChangeLog for sys-block/lsiutil
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/lsiutil/ChangeLog,v 1.9 2013/06/10 12:18:31 dev-zero Exp $
+
+*lsiutil-1.62-r1 (10 Jun 2013)
+
+  10 Jun 2013; Tiziano Müller <dev-zero@gentoo.org> +lsiutil-1.62-r1.ebuild,
+  -lsiutil-1.62.ebuild:
+  Properly fix fetch restriction and QA warnings about prestripped binaries (in
+  the same way as megamgr), redigest since upstream changed archive and install
+  to /opt/bin instead of /usr/sbin.
+
+  03 Mar 2013; Wolfram Schlich <wschlich@gentoo.org> metadata.xml:
+  removed myself from metadata.xml
+
+  07 May 2012; Patrick Lauer <patrick@gentoo.org> lsiutil-1.62.ebuild:
+  Adding fetch restriction as upstream disallows direct fetching now
+
+*lsiutil-1.62 (21 Jun 2011)
+
+  21 Jun 2011; Christian Ruppert <idl0r@gentoo.org> -lsiutil-1.60-r1.ebuild,
+  +lsiutil-1.62.ebuild, -files/LsiUtil_ReadMe.txt, metadata.xml:
+  Version bump. Fixes bug 356623 and bug 358731.
+
+  02 Sep 2009; Robin H. Johnson <robbat2@gentoo.org> lsiutil-1.60-r1.ebuild:
+  Cleanup ebuild slightly, and add linux-headers dep to avoid compile
+  failures due to uint64_t.
+
+*lsiutil-1.60-r1 (07 May 2009)
+
+  07 May 2009; Wolfram Schlich <wschlich@gentoo.org>
+  +files/LsiUtil_ReadMe.txt, -lsiutil-1.60.ebuild, +lsiutil-1.60-r1.ebuild:
+  added upstream readme
+
+  13 Jan 2009; Samuli Suominen <ssuominen@gentoo.org> lsiutil-1.60.ebuild:
+  Add missing DEPEND app-arch/unzip wrt #254809. Remove unnecessary quoting
+  from assigment. Add missing dies from compile and dosbin.
+
+*lsiutil-1.60 (11 Nov 2008)
+
+  11 Nov 2008; Wolfram Schlich <wschlich@gentoo.org> -lsiutil-1.52.ebuild,
+  +lsiutil-1.60.ebuild:
+  version bump, removed old version (vanished from the vendor site)
+
+*lsiutil-1.52 (01 Feb 2008)
+
+  01 Feb 2008; Wolfram Schlich <wschlich@gentoo.org> +metadata.xml,
+  +lsiutil-1.52.ebuild:
+  initial import

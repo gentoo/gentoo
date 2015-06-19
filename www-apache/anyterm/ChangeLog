@@ -1,0 +1,135 @@
+# ChangeLog for www-apache/anyterm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/anyterm/ChangeLog,v 1.25 2014/08/10 20:13:32 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> anyterm-1.1.29.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  07 Jul 2012; Mike Gilbert <floppym@gentoo.org>
+  +files/anyterm-1.1.29-boost-1.50.patch, anyterm-1.1.29.ebuild:
+  Fix build failure with Boost 1.50. Patch by Arfrever.
+
+  12 Dec 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  anyterm-1.1.29.ebuild:
+  Fix dependencies (bug #293087).
+
+  17 Sep 2009; Benedikt Böhm <hollow@gentoo.org> -anyterm-1.1.28.ebuild:
+  cleanup
+
+*anyterm-1.1.29 (17 Jul 2009)
+
+  17 Jul 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -files/50_anyterm.conf, -files/anyterm-1.1.15-browser-gentoo.patch,
+  -files/anyterm-1.1.15-postinst-en.txt,
+  -files/anyterm-1.1.22-respect-flags.patch, +anyterm-1.1.29.ebuild,
+  +files/anyterm-1.1.29-gcc-4.4.patch:
+  Version bump. Fix building with GCC 4.4 (bug #278154).
+
+  31 May 2009; Markus Meier <maekke@gentoo.org> anyterm-1.1.28.ebuild:
+  add ~amd64, bug #265763
+
+  09 Mar 2009; Petteri Räty <betelgeuse@gentoo.org> -anyterm-1.1.16.ebuild,
+  -anyterm-1.1.22.ebuild, -anyterm-1.1.24.ebuild:
+  Remove old versions.
+
+*anyterm-1.1.28 (24 Jan 2009)
+
+  24 Jan 2009; Peter Volkov <pva@gentoo.org>
+  +files/anyterm-1.1.28-respect-LDFLAGS.patch, +files/anyterm.conf.d,
+  +files/anyterm.init.d, +anyterm-1.1.28.ebuild:
+  Version bump, #237655, thank Arfrever Frehtes Taifersar Arahesis and Moshe
+  Kamensky.
+
+  23 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*anyterm-1.1.24 (01 Jul 2008)
+
+  01 Jul 2008; Benedikt Böhm <hollow@gentoo.org> +anyterm-1.1.24.ebuild:
+  version bump wrt #229977
+
+  01 Jun 2008; Benedikt Böhm <hollow@gentoo.org>
+  +files/anyterm-1.1.22-respect-flags.patch, anyterm-1.1.22.ebuild:
+  fix #214377
+
+  23 Mar 2008; Benedikt Böhm <hollow@gentoo.org> anyterm-1.1.16.ebuild:
+  fix depend.apache usage wrt #208033
+
+*anyterm-1.1.22 (22 Mar 2008)
+
+  22 Mar 2008; Benedikt Böhm <hollow@gentoo.org> +anyterm-1.1.22.ebuild:
+  version bump wrt #209865
+
+  23 Feb 2008; Benedikt Böhm <hollow@gentoo.org> metadata.xml,
+  -anyterm-1.1.15.ebuild:
+  fix metadata; remove old version
+
+*anyterm-1.1.16 (10 Jan 2008)
+
+  10 Jan 2008; Benedikt Böhm <hollow@gentoo.org> files/50_anyterm.conf,
+  +anyterm-1.1.16.ebuild:
+  version bump, #203928
+
+  06 Jan 2008; Benedikt Böhm <hollow@gentoo.org>
+  -files/anyterm-1.1.8-apachemod-Makefile.patch,
+  -files/anyterm-1.1.8-browser-gentoo.patch,
+  -files/anyterm-1.1.8-common-extern.patch,
+  -files/anyterm-1.1.8-libpbe-no-pg_config.patch,
+  -files/anyterm-1.1.8-postinst-en.txt, -anyterm-1.1.8-r2.ebuild,
+  anyterm-1.1.15.ebuild:
+  fix #203928; cleanup
+
+*anyterm-1.1.15 (08 Sep 2007)
+
+  08 Sep 2007; Benedikt Böhm <hollow@gentoo.org>
+  +files/anyterm-1.1.15-browser-gentoo.patch,
+  +files/anyterm-1.1.15-postinst-en.txt, +anyterm-1.1.15.ebuild:
+  version bump
+
+  01 Sep 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing twp from metadata due to his retirement (see #190561 for reference).
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org> anyterm-1.1.8-r2.ebuild:
+  Fixing the DEPEND/RDEPEND for the move of net-www/apache to
+  www-servers/apache (#78622). Fixing the DEPEND/RDEPEND for the move of
+  net-www/mod_auth_pam to www-apache/mod_auth_pam.
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org> anyterm-1.1.8-r2.ebuild:
+  Fixing the DEPEND/RDEPEND for the move of net-www/apache to
+  www-servers/apache (#78622).
+
+  26 May 2007; Luca Longinotti <chtekk@gentoo.org> anyterm-1.1.8-r2.ebuild:
+  Fix bug #179840.
+
+  15 Jan 2007; Luca Longinotti <chtekk@gentoo.org> metadata.xml,
+  anyterm-1.1.8-r2.ebuild:
+  Add Apache herd, cleanup.
+
+*anyterm-1.1.8-r2 (25 Jan 2006)
+
+  25 Jan 2006; Tom Payne <twp@gentoo.org>
+  +files/anyterm-1.1.8-postinst-en.txt, files/50_anyterm.conf,
+  files/anyterm-1.1.8-browser-gentoo.patch, -anyterm-1.1.8-r1.ebuild,
+  +anyterm-1.1.8-r2.ebuild:
+  Improved default security and webapp support. Thanks webapp and apache herds.
+
+*anyterm-1.1.8-r1 (24 Jan 2006)
+
+  24 Jan 2006; Tom Payne <twp@gentoo.org>
+  files/anyterm-1.1.8-browser-gentoo.patch, -anyterm-1.1.8.ebuild,
+  +anyterm-1.1.8-r1.ebuild:
+  Fix dumb anyterm_command configuration error.
+
+*anyterm-1.1.8 (23 Jan 2006)
+
+  23 Jan 2006; Tom Payne <twp@gentoo.org>
+  +files/anyterm-1.1.8-browser-gentoo.patch, +files/50_anyterm.conf,
+  +files/anyterm-1.1.8-apachemod-Makefile.patch,
+  +files/anyterm-1.1.8-common-extern.patch,
+  +files/anyterm-1.1.8-libpbe-no-pg_config.patch, +metadata.xml,
+  +anyterm-1.1.8.ebuild:
+  Initial version. Bug # 98647.

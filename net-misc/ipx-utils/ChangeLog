@@ -1,0 +1,73 @@
+# ChangeLog for net-misc/ipx-utils
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ipx-utils/ChangeLog,v 1.22 2013/02/05 18:17:09 ulm Exp $
+
+  05 Feb 2013; Ulrich Müller <ulm@gentoo.org> -ipx-utils-1.1-r2.ebuild,
+  ipx-utils-1.1-r3.ebuild, -files/ipx.init-r1, files/ipx.init:
+  Fix LICENSE, see COPYING file, bug 451570. Remove old.
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> ipx-utils-1.1-r2.ebuild,
+  ipx-utils-1.1-r3.ebuild:
+  Drop s390/sparc keywords
+
+  12 Jul 2012; Ian Stakenvicius <axs@gentoo.org> ipx-utils-1.1-r2.ebuild,
+  ipx-utils-1.1-r3.ebuild:
+  added GPL-2 to LICENSE per bug 426062
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> ipx-utils-1.1-r3.ebuild:
+  x86 stable wrt bug #419305
+
+  05 Jun 2012; Brent Baude <ranger@gentoo.org> ipx-utils-1.1-r3.ebuild:
+  Marking ipx-utils-1.1-r3 ppc64 for bug 419305
+
+  02 Jun 2012; Markos Chandras <hwoarang@gentoo.org> ipx-utils-1.1-r3.ebuild:
+  Stable on amd64 wrt bug #419305
+
+*ipx-utils-1.1-r3 (11 Feb 2012)
+
+  11 Feb 2012; Pacho Ramos <pacho@gentoo.org> +files/ipx.init-r1,
+  +ipx-utils-1.1-r3.ebuild:
+  Fix init script, bug #238688 by Laszlo Valko.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> ipx-utils-1.1-r2.ebuild:
+  Remove virtual/libc
+
+  22 Apr 2007; Christian Heim <phreak@gentoo.org>
+  files/ipx-utils-1.1-makefile.patch, ipx-utils-1.1-r2.ebuild:
+  Use newconfd/newinitd for #174266; Properly quote variables.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  27 Jul 2006; Patrick McLean <chutzpah@gentoo.org> ipx-utils-1.1-r2.ebuild:
+  Add ~amd64 (bug #123393). Also add no-herd/maintainer-needed metadata.xml.
+
+  28 Oct 2004; Mike Frysinger <vapier@gentoo.org>
+  files/ipx-utils-1.1-proc.patch:
+  Fix a typo in the proc patch #67642.
+
+*ipx-utils-1.1-r1 (16 Oct 2004)
+
+  16 Oct 2004; Mike Frysinger <vapier@gentoo.org>
+  -files/ipx-utils-1.1-gentoo.diff, +files/ipx-utils-1.1-makefile.patch,
+  +files/ipx-utils-1.1-proc.patch, +ipx-utils-1.1-r1.ebuild,
+  -ipx-utils-1.1.ebuild:
+  Clean up and fix /proc updates #67642 by Josef Kovacs.
+
+  02 Oct 2004; Markus Nigbur <pyrania@gentoo.org> ipx-utils-1.1.ebuild:
+  hooray for epatch!
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> ipx-utils-1.1.ebuild:
+  change virtual/glibc to virtual/libc
+
+  16 Apr 2004; Michael McCabe <randy@gentoo.org> ipx-utils-1.1.ebuild:
+  Adding s390 keywords
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*ipx-utils-1.1 (22 Jul 2002)
+
+  22 Jul 2002; Martin Schlemmer <azarah@gentoo.org> ipx-utils-1.1.ebuild, ipx.init, ipx.confd :
+  Initial import. Ebuild submitted by myself.
+
+

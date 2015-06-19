@@ -1,0 +1,20 @@
+--- GNUDoku.C
++++ GNUDoku.C
+@@ -25,6 +25,7 @@
+ #include <cstdlib>
+ #include <cstdio>
+ #include <ctime>
++#include <cstring>
+ 
+ #include <vector>
+ #include <cassert>
+--- sudoku.C
++++ sudoku.C
+@@ -10,6 +10,7 @@
+ #include <cstdio>
+ #include <cstdlib>
+ #include <ctime>
++#include <cstring>
+ 
+ #include <map>
+ namespace sudoku

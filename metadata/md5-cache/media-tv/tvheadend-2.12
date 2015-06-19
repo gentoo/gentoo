@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=virtual/linuxtv-dvb-headers
+DESCRIPTION=A combined DVB receiver, Digital Video Recorder and Live TV streaming server
+EAPI=4
+HOMEPAGE=http://www.lonelycoder.com/hts/
+IUSE=avahi xmltv
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=virtual/linuxtv-dvb-headers avahi? ( net-dns/avahi ) xmltv? ( media-tv/xmltv )
+SLOT=0
+SRC_URI=http://www.lonelycoder.com/debian/dists/hts/main/source/hts-tvheadend_2.12.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=420bc6e4dd382da7cad942ba3574cc7b

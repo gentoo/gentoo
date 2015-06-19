@@ -1,0 +1,49 @@
+# ChangeLog for games-rpg/queen
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/queen/ChangeLog,v 1.14 2013/01/25 00:50:34 mr_bones_ Exp $
+
+  25 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org> -queen-0-r1.ebuild:
+  old
+
+  13 Jan 2013; Agostino Sarubbo <ago@gentoo.org> queen-1.ebuild:
+  Stable for x86, wrt bug #447168
+
+  14 Dec 2012; Chema Alonso <nimiux@gentoo.org> queen-1.ebuild:
+  Stable for amd64 wrt bug #447168
+
+*queen-1 (11 Nov 2012)
+
+  11 Nov 2012; Michael Sterrett <mr_bones_@gentoo.org> +queen-1.ebuild:
+  update and add language support with ebuild from Calchan
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org> queen-0-r1.ebuild:
+  Drop sparc keywords, move to ~ppc as scummvm is not stable
+
+  05 Jul 2007; Markus Rothe <corsair@gentoo.org> queen-0-r1.ebuild:
+  Added ~ppc64; bug #183570
+
+*queen-0-r1 (24 May 2007)
+
+  24 May 2007; Tupone Alfredo <tupone@gentoo.org> +queen-0-r1.ebuild:
+  Added a menu entry. Bug #159762 by Pacho Ramos
+
+  25 Aug 2006; Jason Wever <weeve@gentoo.org> queen-0.ebuild:
+  Stable on SPARC.
+
+  16 Aug 2006; Simon Stelling <blubb@gentoo.org> queen-0.ebuild:
+  stable on amd64
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> queen-0.ebuild:
+  Marked ppc stable.
+
+  11 Apr 2004; Jason Wever <weeve@gentoo.org> queen-0.ebuild:
+  Added ~sparc keyword.
+
+  30 Mar 2004; David Holm <dholm@gentoo.org> queen-0.ebuild:
+  Added to ~ppc.
+
+*queen-0 (30 Mar 2004)
+
+  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> metadata.xml,
+  queen-0.ebuild:
+  initial commit; ebuild submitted by Stephan Schiffel via bug #44812

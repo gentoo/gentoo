@@ -1,0 +1,33 @@
+# ChangeLog for app-i18n/fcitx-hangul
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/fcitx-hangul/ChangeLog,v 1.8 2015/05/01 05:33:47 jer Exp $
+
+  01 May 2015; Jeroen Roovers <jer@gentoo.org> fcitx-hangul-0.3.0.ebuild:
+  Stable for PPC64 (bug #540844).
+
+  19 Apr 2015; Anthony G. Basile <blueness@gentoo.org>
+  fcitx-hangul-0.2.1.ebuild, fcitx-hangul-0.3.0.ebuild:
+  Keyword ~ppc and ~ppc64.  Bug #498686.
+
+  08 Mar 2014; Pacho Ramos <pacho@gentoo.org> fcitx-hangul-0.3.0.ebuild:
+  amd64 stable, bug 498688
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> fcitx-hangul-0.2.1.ebuild:
+  Stable for ppc, wrt bug #461512
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> fcitx-hangul-0.2.1.ebuild:
+  Stable for x86, wrt bug #461512
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> fcitx-hangul-0.2.1.ebuild:
+  Stable for amd64, wrt bug #461512
+
+*fcitx-hangul-0.3.0 (24 Jul 2013)
+
+  24 Jul 2013; Ben de Groot <yngwin@gentoo.org> +fcitx-hangul-0.3.0.ebuild:
+  Version bump
+
+*fcitx-hangul-0.2.1 (31 Jan 2013)
+
+  31 Jan 2013; Ben de Groot <yngwin@gentoo.org> +fcitx-hangul-0.2.1.ebuild,
+  +metadata.xml:
+  Initial commit. Ebuild based on the one by Wang Jiajun in gentoo-zh overlay.

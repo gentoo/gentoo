@@ -1,0 +1,7 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for Module-Loaded
+EAPI=5
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
+RDEPEND=|| ( =dev-lang/perl-5.22* =dev-lang/perl-5.20* ~perl-core/Module-Loaded-0.80.0 ) !<perl-core/Module-Loaded-0.80.0 !>perl-core/Module-Loaded-0.80.0-r999
+SLOT=0
+_md5_=b1efa295b7ef60a67a9866f2b0cb97f5

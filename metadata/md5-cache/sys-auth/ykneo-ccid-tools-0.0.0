@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare
+DEPEND=sys-apps/pcsc-lite sys-apps/help2man dev-util/gengetopt virtual/pkgconfig
+DESCRIPTION=Tools for Yubico's YubiKey NEO in CCID mode
+EAPI=5
+HOMEPAGE=https://github.com/Yubico/ykneo-ccid-tools
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=sys-apps/pcsc-lite
+SLOT=0
+SRC_URI=http://yubico.github.io/ykneo-ccid-tools/releases/ykneo-ccid-tools-0.0.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438
+_md5_=419a92a2770a7c3d810373e5a90fe031

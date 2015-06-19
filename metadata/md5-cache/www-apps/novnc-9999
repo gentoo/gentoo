@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=dev-vcs/git
+DESCRIPTION=noVNC is a VNC client implemented using HTML5 technologies
+EAPI=5
+HOMEPAGE=http://kanaka.github.com/noVNC/
+LICENSE=LGPL-3
+RDEPEND=dev-python/numpy
+SLOT=0
+_eclasses_=git-2	e28f0d8a9b321431b1e699782851b827
+_md5_=8b420e5b9abfd46721026c878eb00f53

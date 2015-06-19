@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sci-chemistry</herd>
+	<longdescription>
+    GPeriodic is a program for looking up various data about elements from the
+    periodic table, based on the GTK2 toolkit. It also features a command line
+    interface.
+  </longdescription>
+</pkgmetadata>

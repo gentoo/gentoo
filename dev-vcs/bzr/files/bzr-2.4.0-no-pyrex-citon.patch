@@ -1,0 +1,33 @@
+--- setup.py.orig	2011-08-16 17:18:11.280853205 +0200
++++ setup.py	2011-08-16 17:20:12.597637778 +0200
+@@ -178,28 +178,8 @@
+ from distutils.errors import CCompilerError, DistutilsPlatformError
+ from distutils.extension import Extension
+ ext_modules = []
+-try:
+-    try:
+-        from Cython.Distutils import build_ext
+-        from Cython.Compiler.Version import version as pyrex_version
+-    except ImportError:
+-        print("No Cython, trying Pyrex...")
+-        from Pyrex.Distutils import build_ext
+-        from Pyrex.Compiler.Version import version as pyrex_version
+-except ImportError:
+-    have_pyrex = False
+-    # try to build the extension from the prior generated source.
+-    print("")
+-    print("The python package 'Pyrex' is not available."
+-          " If the .c files are available,")
+-    print("they will be built,"
+-          " but modifying the .pyx files will not rebuild them.")
+-    print("")
+-    from distutils.command.build_ext import build_ext
+-else:
+-    have_pyrex = True
+-    pyrex_version_info = tuple(map(int, pyrex_version.split('.')))
+-
++have_pyrex = False
++from distutils.command.build_ext import build_ext
+ 
+ class build_ext_if_possible(build_ext):
+ 

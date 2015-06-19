@@ -1,0 +1,233 @@
+diff -ruN pvpgn-1.8.0rc2.orig/conf/bnetd.conf.in pvpgn-1.8.0rc2/conf/bnetd.conf.in
+--- pvpgn-1.8.0rc2.orig/conf/bnetd.conf.in	2005-09-19 08:17:50.000000000 -0400
++++ pvpgn-1.8.0rc2/conf/bnetd.conf.in	2006-08-16 23:34:10.000000000 -0400
+@@ -50,22 +50,22 @@
+ # - "prefix" : prefix to use for all pvpgn tables (default "")               #
+ #                                                                            #
+ # Examples:                                                                  #
+-# storage_path = file:mode=plain;dir=/usr/local/var/users;clan=/usr/local/var/clans;team=/usr/local/var/teams;default=/usr/local/etc/bnetd_default_user.plain
+-# storage_path = file:mode=cdb;dir=/usr/local/var/userscdb;clan=/usr/local/var/clans;team=/usr/local/var/teams;default=/usr/local/etc/bnetd_default_user.cdb
++# storage_path = file:mode=plain;dir=%statedir%/users;clan=%statedir%/clans;team=%statedir%/teams;default=%confdir%/bnetd_default_user.plain
++# storage_path = file:mode=cdb;dir=%statedir%/userscdb;clan=%statedir%/clans;team=%statedir%/teams;default=%confdir%/bnetd_default_user.cdb
+ # storage_path = sql:mode=mysql;host=127.0.0.1;name=PVPGN;user=pvpgn;pass=pvpgnrocks;default=0;prefix=pvpgn_
+ # storage_path = sql:mode=pgsql;host=127.0.0.1;name=pvpgn;user=pvpgn;pass=pvpgnrocks;default=0;prefix=pvpgn_
+-# storage_path = sql:mode=sqlite3;name=/usr/local/var/users.db;default=0;prefix=pvpgn_
++# storage_path = sql:mode=sqlite3;name=%statedir%/users.db;default=0;prefix=pvpgn_
+ # storage_path = sql:mode=odbc;name=PVPGN;prefix=pvpgn_
+ #
+ # WARNING!! you MUST change "DBlayoutfile" bellow configuration directive to 
+ # sql_DB_layout2.conf to be able to use "sql2" !!!
+ # storage_path = sql2:mode=mysql;host=127.0.0.1;name=PVPGN;user=pvpgn;pass=pvpgnrocks;default=0;prefix=pvpgn2_
+ # storage_path = sql2:mode=pgsql;host=127.0.0.1;name=pvpgn;user=pvpgn;pass=pvpgnrocks;default=0;prefix=pvpgn2_
+-# storage_path = sql2:mode=sqlite3;name=/usr/local/var/users.db;default=0;prefix=pvpgn2_
++# storage_path = sql2:mode=sqlite3;name=%statedir%/users.db;default=0;prefix=pvpgn2_
+ # storage_path = sql2:mode=odbc;name=PVPGN;prefix=pvpgn2_
+ #----------------------------------------------------------------------------#
+ 
+-storage_path = file:mode=plain;dir=/usr/local/var/users;clan=/usr/local/var/clans;team=/usr/local/var/teams;default=/usr/local/etc/bnetd_default_user.plain
++storage_path = file:mode=plain;dir=%statedir%/users;clan=%statedir%/clans;team=%statedir%/teams;default=%confdir%/bnetd_default_user.plain
+ 
+ #                                                                            #
+ ##############################################################################
+@@ -76,35 +76,35 @@
+ # Use absolute paths in these lines to avoid problems!                       #
+ #----------------------------------------------------------------------------#
+ 
+-filedir     = /usr/local/var/files
+-reportdir   = /usr/local/var/reports
+-chanlogdir  = /usr/local/var/chanlogs
+-motdfile    = /usr/local/etc/bnmotd.txt
+-issuefile   = /usr/local/etc/bnissue.txt
+-channelfile = /usr/local/etc/channel.conf
+-newsfile    = /usr/local/etc/news.txt
+-adfile      = /usr/local/etc/ad.conf
+-topicfile   = /usr/local/etc/topics.conf
+-ipbanfile   = /usr/local/etc/bnban.conf
+-helpfile    = /usr/local/etc/bnhelp.conf
+-mpqfile     = /usr/local/etc/autoupdate.conf
+-logfile     = /usr/local/var/bnetd.log
+-realmfile   = /usr/local/etc/realm.conf
+-maildir     = /usr/local/var/bnmail
+-versioncheck_file = /usr/local/etc/versioncheck.conf
+-mapsfile    = /usr/local/etc/bnmaps.conf
+-xplevelfile = /usr/local/etc/bnxplevel.conf
+-xpcalcfile  = /usr/local/etc/bnxpcalc.conf
+-#pidfile    = /usr/local/var/bnetd.pid
+-ladderdir   = /usr/local/var/ladders
+-command_groups_file = /usr/local/etc/command_groups.conf
+-tournament_file = /usr/local/etc/tournament.conf
+-statusdir   = /usr/local/var/status
+-aliasfile   = /usr/local/etc/bnalias.conf
+-anongame_infos_file = /usr/local/etc/anongame_infos.conf
+-DBlayoutfile = /usr/local/etc/sql_DB_layout.conf
+-supportfile = /usr/local/etc/supportfile.conf
+-transfile   = /usr/local/etc/address_translation.conf
++filedir     = %datadir%
++reportdir   = %statedir%/reports
++chanlogdir  = %statedir%/chanlogs
++motdfile    = %confdir%/bnmotd.txt
++issuefile   = %confdir%/bnissue.txt
++channelfile = %confdir%/channel.conf
++newsfile    = %confdir%/news.txt
++adfile      = %confdir%/ad.conf
++topicfile   = %confdir%/topics.conf
++ipbanfile   = %confdir%/bnban.conf
++helpfile    = %confdir%/bnhelp.conf
++mpqfile     = %confdir%/autoupdate.conf
++logfile     = %logdir%/bnetd.log
++realmfile   = %confdir%/realm.conf
++maildir     = %statedir%/bnmail
++versioncheck_file = %confdir%/versioncheck.conf
++mapsfile    = %confdir%/bnmaps.conf
++xplevelfile = %confdir%/bnxplevel.conf
++xpcalcfile  = %confdir%/bnxpcalc.conf
++#pidfile    = /var/run/bnetd/bnetd.pid
++ladderdir   = %confdir%/ladders
++command_groups_file = %confdir%/command_groups.conf
++tournament_file = %confdir%/tournament.conf
++statusdir   = %statedir%/status
++aliasfile   = %confdir%/bnalias.conf
++anongame_infos_file = %confdir%/anongame_infos.conf
++DBlayoutfile = %confdir%/sql_DB_layout.conf
++supportfile = %confdir%/supportfile.conf
++transfile   = %confdir%/address_translation.conf
+ 
+ fortunecmd  = /usr/games/fortune
+ 
+diff -ruN pvpgn-1.8.0rc2.orig/conf/d2cs.conf.in pvpgn-1.8.0rc2/conf/d2cs.conf.in
+--- pvpgn-1.8.0rc2.orig/conf/d2cs.conf.in	2005-09-29 01:37:33.000000000 -0400
++++ pvpgn-1.8.0rc2/conf/d2cs.conf.in	2006-08-16 23:35:43.000000000 -0400
+@@ -86,16 +86,16 @@
+ # Use absolute paths in these lines to avoid problems!				#
+ #-------------------------------------------------------------------------------#
+ #										#
+-logfile			=	/usr/local/var/d2cs.log
+-charsavedir		=	/usr/local/var/charsave
+-charinfodir		=	/usr/local/var/charinfo
+-bak_charsavedir		=	/usr/local/var/bak/charsave
+-bak_charinfodir		=	/usr/local/var/bak/charinfo
+-ladderdir		=	/usr/local/var/ladders
+-newbiefile		=	/usr/local/var/files/newbie.save
+-transfile		=	/usr/local/etc/address_translation.conf
+-d2gsconffile		=	/usr/local/etc/d2server.ini
+-#pidfile		=	/usr/local/var/d2cs.pid
++logfile			=	%logdir%/d2cs.log
++charsavedir		=	%statedir%/charsave
++charinfodir		=	%statedir%/charinfo
++bak_charsavedir		=	%statedir%/bak/charsave
++bak_charinfodir		=	%statedir%/bak/charinfo
++ladderdir		=	%statedir%/ladders
++newbiefile		=	%statedir%/files/newbie.save
++transfile		=	%confdir%/address_translation.conf
++d2gsconffile		=	%confdir%/d2server.ini
++#pidfile		=	/var/run/bnetd/d2cs.pid
+ 
+ #										#
+ #################################################################################
+diff -ruN pvpgn-1.8.0rc2.orig/conf/d2dbs.conf.in pvpgn-1.8.0rc2/conf/d2dbs.conf.in
+--- pvpgn-1.8.0rc2.orig/conf/d2dbs.conf.in	2005-08-24 23:58:18.000000000 -0400
++++ pvpgn-1.8.0rc2/conf/d2dbs.conf.in	2006-08-16 23:36:58.000000000 -0400
+@@ -49,14 +49,14 @@
+ # File and Path section								#
+ # Use absolute paths in these lines to avoid problems!				#
+ #-------------------------------------------------------------------------------#
+-logfile		=	/usr/local/var/d2dbs.log
+-logfile-gs	=	/usr/local/var/d2dbs-gs.log
+-charsavedir	=	/usr/local/var/charsave
+-charinfodir	=	/usr/local/var/charinfo
+-ladderdir	=	/usr/local/var/ladders
+-bak_charsavedir	=	/usr/local/var/bak/charsave
+-bak_charinfodir	=	/usr/local/var/bak/charinfo
+-#pidfile	=	/usr/local/var/d2dbs.pid
++logfile		=	%logdir%/d2dbs.log
++logfile-gs	=	%logdir%/d2dbs-gs.log
++charsavedir	=	%statedir%/charsave
++charinfodir	=	%statedir%/charinfo
++ladderdir	=	%statedir%/ladders
++bak_charsavedir	=	%statedir%/bak/charsave
++bak_charinfodir	=	%statedir%/bak/charinfo
++#pidfile	=	/var/run/bnetd/d2dbs.pid
+ 
+ #										#
+ #################################################################################
+ 
+diff -ruN pvpgn-1.8.0rc2.orig/src/Makefile.in pvpgn-1.8.0rc2/src/Makefile.in
+--- pvpgn-1.8.0rc2.orig/src/Makefile.in	2005-07-29 02:11:38.000000000 +0600
++++ pvpgn-1.8.0rc2/src/Makefile.in	2005-09-23 15:10:02.968342144 +0600
+@@ -23,22 +23,23 @@
+ bindir		= @bindir@
+ sbindir		= @sbindir@
+ mandir		= @mandir@
+-confdir		= @sysconfdir@
+-sharedir	= @localstatedir@
+-filesdir	= @localstatedir@/files
+-usersdir	= @localstatedir@/users
+-userscdbdir	= @localstatedir@/userscdb
+-clandir		= @localstatedir@/clans
+-teamdir		= @localstatedir@/teams
+-bnmaildir	= @localstatedir@/bnmail
+-reportsdir	= @localstatedir@/reports
+-chanlogsdir	= @localstatedir@/chanlogs
+-charinfodir     = @localstatedir@/charinfo
+-charsavedir     = @localstatedir@/charsave
+-ladderdir       = @localstatedir@/ladders
+-statusdir       = @localstatedir@/status
+-bak_charsavedir = @localstatedir@/bak/charsave
+-bak_charinfodir = @localstatedir@/bak/charinfo
++confdir		= @sysconfdir@/pvpgn
++statedir	= @localstatedir@/pvpgn
++filesdir	= @datadir@/pvpgn
++usersdir	= @localstatedir@/pvpgn/users
++userscdbdir	= @localstatedir@/pvpgn/userscdb
++clandir		= @localstatedir@/pvpgn/clans
++bnmaildir	= @localstatedir@/pvpgn/bnmail
++reportsdir	= @localstatedir@/pvpgn/reports
++chanlogsdir	= @localstatedir@/pvpgn/chanlogs
++charinfodir	= @localstatedir@/pvpgn/charinfo
++charsavedir	= @localstatedir@/pvpgn/charsave
++ladderdir	= @localstatedir@/pvpgn/ladders
++statusdir	= @localstatedir@/pvpgn/status
++bak_charsavedir	= @localstatedir@/pvpgn/bak/charsave
++bak_charinfodir	= @localstatedir@/pvpgn/bak/charinfo
++logdir		= @localstatedir@/pvpgn/log
++
+ 
+ SRC_SRCDIR	= @srcdir@
+ SRC_BINDIR	= @srcdir@/../bin
+@@ -677,7 +678,8 @@
+ 
+ .PHONY: install-share
+ install-share:
+-	${INSTALL_DIRS} ${DESTDIR}/${sharedir} ${DESTDIR}/${filesdir} ${DESTDIR}/${usersdir} ${DESTDIR}/${userscdbdir} ${DESTDIR}/${bnmaildir} ${DESTDIR}/${reportsdir} \
++	${INSTALL_DIRS} ${DESTDIR}/${datadir} ${DESTDIR}/${statedir} \
++	${DESTDIR}/${filesdir} ${DESTDIR}/${usersdir} ${DESTDIR}/${userscdbdir} ${DESTDIR}/${bnmaildir} ${DESTDIR}/${reportsdir} \
+ 	${DESTDIR}/${chanlogsdir} ${DESTDIR}/${charinfodir} ${DESTDIR}/${charsavedir} ${DESTDIR}/${bak_charsavedir} \
+ 	${DESTDIR}/${bak_charinfodir} ${DESTDIR}/${ladderdir} ${DESTDIR}/${statusdir} \
+ 	${DESTDIR}/${clandir} ${DESTDIR}/${teamdir}
+@@ -728,21 +730,21 @@
+ .PHONY: uninstall-share
+ uninstall-share:
+ 	@list='${SHARES}'; for p in $$list; do \
+-	  ${ECHO} "  ${RMF} ${sharedir}/$$p"; \
+-	  ${RMF} ${sharedir}/$$p; \
++	  ${ECHO} "  ${RMF} ${filesdir}/$$p"; \
++	  ${RMF} ${filesdir}/$$p; \
+ 	done
+ 
+ ${SRC_CONFDIR}/bnetd.conf: ${SRC_CONFDIR}/bnetd.conf.in ${SRC_SRCDIR}/config.status
+ 	@${RMF} $@
+-	${SED} -e "s@/usr/local/var/@${sharedir}/@g" -e "s@/usr/local/etc/@${confdir}/@g" ${SRC_CONFDIR}/bnetd.conf.in > $@
++	${SED} -e "s@%datadir%@${filesdir}/@g" -e "s@%confdir%@${confdir}/@g" -e "s@%statedir%@${statedir}@g" -e "s@%logdir%@${logdir}@g" ${SRC_CONFDIR}/bnetd.conf.in > $@
+ 
+ ${SRC_CONFDIR}/d2cs.conf: ${SRC_CONFDIR}/d2cs.conf.in ${SRC_SRCDIR}/config.status
+ 	@${RMF} $@
+-	${SED} -e "s@/usr/local/var/@${sharedir}/@g" -e "s@/usr/local/etc/@${confdir}/@g" ${SRC_CONFDIR}/d2cs.conf.in > $@
++	${SED} -e "s@%datadir%@${filesdir}/@g" -e "s@%confdir%@${confdir}/@g" -e "s@%statedir%@${statedir}@g" -e "s@%logdir%@${logdir}@g" ${SRC_CONFDIR}/d2cs.conf.in > $@
+ 
+ ${SRC_CONFDIR}/d2dbs.conf: ${SRC_CONFDIR}/d2dbs.conf.in ${SRC_SRCDIR}/config.status
+ 	@${RMF} $@
+-	${SED} -e "s@/usr/local/var/@${sharedir}/@g" -e "s@/usr/local/etc/@${confdir}/@g" ${SRC_CONFDIR}/d2dbs.conf.in > $@
++	${SED} -e "s@%datadir%@${filesdir}/@g" -e "s@%confdir%@${confdir}/@g" -e "s@%statedir%@${statedir}@g" -e "s@%logdir%@${logdir}@g" ${SRC_CONFDIR}/d2dbs.conf.in > $@
+ 
+ ${SRC_ACDIR}/ansi2knr: ${SRC_ACDIR}/ansi2knr.o
+ 	@${RMF} $@

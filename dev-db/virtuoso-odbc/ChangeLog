@@ -1,0 +1,159 @@
+# ChangeLog for dev-db/virtuoso-odbc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/virtuoso-odbc/ChangeLog,v 1.40 2015/05/08 15:50:09 jer Exp $
+
+  08 May 2015; Jeroen Roovers <jer@gentoo.org> virtuoso-odbc-6.1.8.ebuild:
+  Stable for PPC64 (bug #548746).
+
+*virtuoso-odbc-6.1.8 (07 Mar 2014)
+
+  07 Mar 2014; Chris Reffett <creffett@gentoo.org> +virtuoso-odbc-6.1.8.ebuild,
+  virtuoso-odbc-6.1.6.ebuild:
+  Version bump. Update for changes to virtuoso.eclass
+
+  26 Apr 2013; Chris Reffett <creffett@gentoo.org>
+  +files/virtuoso-odbc-6.1.6-am_config_header.patch, virtuoso-odbc-6.1.6.ebuild:
+  Add patch for automake-1.13 build wrt bug 466954
+
+  20 Sep 2012; Tomáš Chvátal <scarabeus@gentoo.org> -virtuoso-odbc-6.1.4.ebuild,
+  virtuoso-odbc-6.1.6.ebuild:
+  ppc/ppc64 stable wrt bug#435080. kick older.
+
+  17 Sep 2012; Agostino Sarubbo <ago@gentoo.org> virtuoso-odbc-6.1.6.ebuild:
+  Stable for amd64, wrt bug #435080
+
+  17 Sep 2012; Agostino Sarubbo <ago@gentoo.org> virtuoso-odbc-6.1.6.ebuild:
+  Stable for x86, wrt bug #435080
+
+*virtuoso-odbc-6.1.6 (05 Aug 2012)
+
+  05 Aug 2012; Chris Reffett <creffett@gentoo.org> +virtuoso-odbc-6.1.6.ebuild,
+  -virtuoso-odbc-6.1.5.ebuild:
+  Version bump, remove 6.1.5 because it's somewhat broken and unsupported for
+  KDE 4.9.
+
+*virtuoso-odbc-6.1.5 (13 Jul 2012)
+
+  13 Jul 2012; Chris Reffett <creffett@gentoo.org> +virtuoso-odbc-6.1.5.ebuild:
+  Version bump to 6.1.5
+
+  23 May 2012; Johannes Huber <johu@gentoo.org> -virtuoso-odbc-6.1.3.ebuild:
+  Remove old.
+
+  23 May 2012; Jeff Horelick <jdhore@gentoo.org> virtuoso-odbc-6.1.4.ebuild:
+  marked x86 per bug 404631
+
+  20 May 2012; Agostino Sarubbo <ago@gentoo.org> virtuoso-odbc-6.1.4.ebuild:
+  Stable for amd64, wrt bug #404631
+
+  19 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  virtuoso-odbc-6.1.4.ebuild:
+  ppc/ppc64 stable wrt #404631
+
+  18 May 2012; Alexis Ballier <aballier@gentoo.org> virtuoso-odbc-6.1.4.ebuild:
+  keyword ~amd64-fbsd
+
+  13 May 2012; <creffett@gentoo.org> metadata.xml:
+  Added myself as co-maintainer to metadata.xml
+
+  26 Apr 2012; Johannes Huber <johu@gentoo.org> -virtuoso-odbc-6.1.2.ebuild:
+  Remove old.
+
+  13 Jan 2012; Johannes Huber <johu@gentoo.org> virtuoso-odbc-6.1.4.ebuild:
+  Revert x86, wrong version marked stable see bug #375171.
+
+  13 Jan 2012; Agostino Sarubbo <ago@gentoo.org> virtuoso-odbc-6.1.3.ebuild:
+  Stable for X86, wrt bug #375171
+
+  28 Dec 2011; Mark Loeser <halcy0n@gentoo.org> virtuoso-odbc-6.1.3.ebuild:
+  Stable for ppc/ppc64; bug #375171
+
+  26 Dec 2011; Markus Meier <maekke@gentoo.org> virtuoso-odbc-6.1.4.ebuild:
+  x86 stable, bug #394113
+
+*virtuoso-odbc-6.1.4 (24 Nov 2011)
+
+  24 Nov 2011; Maciej Mrozowski <reavertm@gentoo.org>
+  +virtuoso-odbc-6.1.4.ebuild:
+  Version bump
+
+  05 Sep 2011; Tony Vroon <chainsaw@gentoo.org> virtuoso-odbc-6.1.3.ebuild:
+  Marked stable on AMD64 based on arch testing by Ian "idella4" Delaney in bug
+  #375171 filed by Maciej "reavertm" Mrozowski.
+
+  01 May 2011; Mark Loeser <halcy0n@gentoo.org> virtuoso-odbc-6.1.2.ebuild:
+  Stable on ppc64
+
+  20 Apr 2011; Maciej Mrozowski <reavertm@gentoo.org>
+  virtuoso-odbc-6.1.3.ebuild:
+  Drop static libs entirely.
+
+*virtuoso-odbc-6.1.3 (20 Apr 2011)
+
+  20 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -virtuoso-odbc-6.1.1.ebuild, +virtuoso-odbc-6.1.3.ebuild:
+  Version bump to latest. Drop older.
+
+  23 Oct 2010; Brent Baude <ranger@gentoo.org> virtuoso-odbc-6.1.2.ebuild:
+  Marking virtuoso-odbc-6.1.2 ppc for bug 333115
+
+  10 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  virtuoso-odbc-6.1.2.ebuild:
+  Stable on amd64 wrt bug #333115
+
+  12 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  virtuoso-odbc-6.1.2.ebuild:
+  x86 stable wrt bug #333115
+
+  03 Sep 2010; Joseph Jezak <josejx@gentoo.org> virtuoso-odbc-6.1.1.ebuild:
+  Marked ppc64 stable for bug #322791.
+
+  09 Aug 2010; Joseph Jezak <josejx@gentoo.org> virtuoso-odbc-6.1.1.ebuild:
+  Marked ppc stable for bug #322791.
+
+*virtuoso-odbc-6.1.2 (14 Jul 2010)
+
+  14 Jul 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  +virtuoso-odbc-6.1.2.ebuild:
+  Version bump 6.1.2
+
+  27 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  virtuoso-odbc-6.1.1.ebuild:
+  x86 stable, bug 322791
+
+  24 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  virtuoso-odbc-6.1.1.ebuild:
+  Stable on amd64 wrt bug #322791
+
+  19 May 2010; Robert Piasek <dagger@gentoo.org> virtuoso-odbc-6.1.1.ebuild:
+  added ~arm keyword
+
+  06 May 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  -files/6.1.0/6.1.0-common.patch, -virtuoso-odbc-6.1.0.ebuild:
+  Remove old
+
+  02 May 2010; Alexis Ballier <aballier@gentoo.org>
+  virtuoso-odbc-6.1.1.ebuild:
+  keyword ~x86-fbsd
+
+*virtuoso-odbc-6.1.1 (06 Apr 2010)
+
+  06 Apr 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  +virtuoso-odbc-6.1.1.ebuild:
+  Version bump 6.1.1
+
+  16 Feb 2010; Joseph Jezak <josejx@gentoo.org> virtuoso-odbc-6.1.0.ebuild:
+  Marked ~ppc/~ppc64 for bug #304365.
+
+  10 Feb 2010; Jonathan Callen <abcd@gentoo.org> virtuoso-odbc-6.1.0.ebuild:
+  Add ~amd64-linux/~x86-linux keywords; bump to EAPI=3
+
+  09 Feb 2010; Maciej Mrozowski <reavertm@gentoo.org> metadata.xml:
+  Fixed my email
+
+*virtuoso-odbc-6.1.0 (08 Feb 2010)
+
+  08 Feb 2010; Alexey Shvetsov <alexxy@gentoo.org>
+  +files/6.1.0/6.1.0-common.patch, +virtuoso-odbc-6.1.0.ebuild,
+  +metadata.xml:
+  Initial import. bug #254295

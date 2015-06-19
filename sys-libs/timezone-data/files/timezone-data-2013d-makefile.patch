@@ -1,0 +1,95 @@
+ - Fix up default paths
+ - Support env DESTDIR / LDFLAGS / CFLAGS / CC
+ - Use awk instead of nawk
+ - Don't build/install libtz.a
+ - Don't install man-pages provided by sys-apps/man-pages
+ - Move zic zdump to sbin and tzselect to bin ala glibc
+ - Install posix zoneinfo into zoneinfo/posix/ instead of zoneinfo-posix/ ala glibc
+ - Install leaps zoneinfo into zoneinfo/right/ ala glibc
+ - Disable broken web test
+ - Make sure tzselect uses #!/bin/bash and not #!/bin/ksh
+ - Flags to the linking are passed as LDFLAGS, not LFLAGS
+ - LDFLAGS was missed for the 'date' target
+
+--- a/Makefile
++++ b/Makefile
+@@ -46,5 +46,5 @@
+ # Everything gets put in subdirectories of. . .
+ 
+-TOPDIR=		/usr/local
++TOPDIR=		$(DESTDIR)/usr
+ 
+ # "Compiled" time zone information is placed in the "TZDIR" directory
+@@ -52,5 +52,5 @@
+ # Use an absolute path name for TZDIR unless you're just testing the software.
+ 
+-TZDIR=		$(TOPDIR)/etc/zoneinfo
++TZDIR=		$(TOPDIR)/share/zoneinfo
+ 
+ # Types to try, as an alternative to time_t.  int64_t should be first.
+@@ -59,5 +59,5 @@
+ # The "tzselect", "zic", and "zdump" commands get installed in. . .
+ 
+-ETCDIR=		$(TOPDIR)/etc
++SBINDIR=		$(TOPDIR)/sbin
+ 
+ # If you "make INSTALL", the "date" command gets installed in. . .
+@@ -67,5 +67,5 @@
+ # Manual pages go in subdirectories of. . .
+ 
+-MANDIR=		$(TOPDIR)/man
++MANDIR=		$(TOPDIR)/share/man
+ 
+ # Library functions are put in an archive in LIBDIR.
+@@ -293,6 +293,8 @@
+ ###############################################################################
+ 
+-cc=		cc
+-CC=		$(cc) -DTZDIR=\"$(TZDIR)\"
++CC+=		-DTZDIR=\"$(TZDIR)\"
++ifeq ($(NLS),1)
++CC += -DHAVE_GETTEXT=1 -DTZ_DOMAIN=\"libc\"
++endif
+ 
+ TZCSRCS=	zic.c localtime.c asctime.c scheck.c ialloc.c
+@@ -335,11 +337,13 @@
+ ALL:		all date
+ 
+-install:	all $(DATA) $(REDO) $(TZLIB) $(MANS) $(TABDATA)
++install:	all $(DATA) $(REDO) $(MANS) $(TABDATA)
+ 		$(ZIC) -y $(YEARISTYPE) \
+ 			-d $(TZDIR) -l $(LOCALTIME) -p $(POSIXRULES)
+ 		-rm -f $(TZDIR)/iso3166.tab $(TZDIR)/zone.tab
+ 		cp iso3166.tab zone.tab $(TZDIR)/.
+-		-mkdir $(TOPDIR) $(ETCDIR)
+-		cp tzselect zic zdump $(ETCDIR)/.
++		-mkdir $(TOPDIR) $(SBINDIR)
++		cp zic zdump $(SBINDIR)/.
++		-mkdir $(TOPDIR) $(BINDIR)
++		cp tzselect $(BINDIR)/.
+ 		-mkdir $(TOPDIR) $(MANDIR) \
+ 			$(MANDIR)/man3 $(MANDIR)/man5 $(MANDIR)/man8
+@@ -351,6 +355,4 @@
+ 			$(MANDIR)/man8/zic.8
+ 		cp newctime.3 newtzset.3 $(MANDIR)/man3/.
+-		cp tzfile.5 $(MANDIR)/man5/.
+-		cp tzselect.8 zdump.8 zic.8 $(MANDIR)/man8/.
+ 
+ INSTALL:	ALL install date.1
+@@ -392,7 +394,7 @@
+ # to using them, or vice versa.
+ other_two:	zic leapseconds $(TDATA)
+-		$(ZIC) -y $(YEARISTYPE) -d $(TZDIR)-posix -L /dev/null $(TDATA)
++		$(ZIC) -y $(YEARISTYPE) -d $(TZDIR)/posix -L /dev/null $(TDATA)
+ 		$(ZIC) -y $(YEARISTYPE) \
+-			-d $(TZDIR)-leaps -L leapseconds $(TDATA)
++			-d $(TZDIR)/right -L leapseconds $(TDATA)
+ 
+ posix_right:	posix_only other_two
+@@ -422,5 +424,5 @@
+ 		chmod +x $@
+ 
+-check:		check_character_set check_tables check_web
++check:		check_character_set check_tables
+ 
+ check_character_set: $(ENCHILADA)

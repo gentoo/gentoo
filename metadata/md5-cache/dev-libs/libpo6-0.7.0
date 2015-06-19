@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=Hyperdex libpo6 support library
+EAPI=4
+HOMEPAGE=http://hyperdex.org
+KEYWORDS=~amd64
+LICENSE=BSD
+SLOT=0
+SRC_URI=http://hyperdex.org/src/libpo6-0.7.0.tar.gz
+_md5_=045e23512ab95b74bc92c27fb3085722

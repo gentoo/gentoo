@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install setup
+DEPEND=dev-libs/libgpg-error sys-fs/lvm2 sys-apps/util-linux dev-libs/libgcrypt:0 openssl? ( dev-libs/openssl:0 )
+DESCRIPTION=a free, pretty much fully featured and stable TrueCrypt implementation
+EAPI=5
+HOMEPAGE=https://github.com/bwalex/tc-play
+IUSE=openssl
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=dev-libs/libgpg-error sys-fs/lvm2 sys-apps/util-linux dev-libs/libgcrypt:0 openssl? ( dev-libs/openssl:0 )
+SLOT=0
+SRC_URI=https://github.com/bwalex/tc-play/archive/v2.0.tar.gz -> tc-play-2.0.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=01c0c89a8e96cb21c8f5602c9064fa23

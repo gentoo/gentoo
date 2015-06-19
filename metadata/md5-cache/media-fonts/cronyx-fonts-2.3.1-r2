@@ -1,0 +1,9 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=x11-apps/mkfontdir
+DESCRIPTION=Cronyx Cyrillic bitmap fonts for X
+HOMEPAGE=http://koi8.pp.ru/frame.html?xwin.html#xwin_fonts
+KEYWORDS=alpha amd64 arm ia64 ppc s390 sh sparc x86 ~x86-fbsd
+LICENSE=freedist
+SLOT=0
+SRC_URI=http://koi8.pp.ru/dist/x6rus-2.3.1-bin.tgz
+_md5_=08d91461234f3f540839bae89e809b60

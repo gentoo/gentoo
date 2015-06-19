@@ -1,0 +1,55 @@
+# ChangeLog for games-arcade/jardinains
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/jardinains/ChangeLog,v 1.14 2015/06/01 21:40:34 mr_bones_ Exp $
+
+  01 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org> jardinains-2.0-r1.ebuild:
+  clean up app-emulation/emul-linux which has been removed
+
+  12 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> -jardinains-2.0.ebuild:
+  old
+
+  25 Feb 2015; Agostino Sarubbo <ago@gentoo.org> jardinains-2.0-r1.ebuild:
+  Stable for x86, wrt bug #540608
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> jardinains-2.0-r1.ebuild:
+  Stable for amd64, wrt bug #540608
+
+  08 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> jardinains-2.0-r1.ebuild:
+  fix patch application
+
+  26 Jun 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  jardinains-2.0-r1.ebuild, jardinains-2.0.ebuild:
+  updated KEYWORDS to mask all non i386-capable arches
+
+*jardinains-2.0-r1 (26 Jun 2014)
+
+  26 Jun 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +jardinains-2.0-r1.ebuild:
+  bumped EAPI to 5, converted deps to gx86-multilib, added missing deps
+
+  28 Dec 2012; Tupone Alfredo <tupone@gentoo.org> jardinains-2.0.ebuild:
+  Use QA_PREBUILT. Bug #442636 by Diego Elio Pettenò
+
+  22 May 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove humpback from metadata.xml (#34793)
+
+  27 Feb 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  jardinains-2.0.ebuild:
+  x86 stable wrt bug #303607
+
+  05 Jan 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  jardinains-2.0.ebuild:
+  skip installing OSX fork files (bug #295782)
+
+  29 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  jardinains-2.0.ebuild:
+  EAPI=2; fix deps (bug #204228)
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> jardinains-2.0.ebuild:
+  Replacing einfo with elog
+
+*jardinains-2.0 (02 Feb 2007)
+
+  02 Feb 2007; Gustavo Felisberto <humpback@gentoo.org>; +files/strings-pt.patch,
+  +metadata.xml, +jardinains-2.0.ebuild:
+  Initial import. Will clean it up VERY SOON!

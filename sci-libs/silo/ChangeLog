@@ -1,0 +1,15 @@
+# ChangeLog for sci-libs/silo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/silo/ChangeLog,v 1.2 2015/01/08 12:31:38 slis Exp $
+
+*silo-4.10.2 (08 Jan 2015)
+
+  08 Jan 2015; Sławek Lis <slis@gentoo.org> +files/silo-4.10.2-qtlibs.patch,
+  +files/silo-4.10.2-tests.patch, +silo-4.10.2.ebuild:
+  version bump
+
+*silo-4.9.1 (24 Jul 2014)
+
+  24 Jul 2014; Sławek Lis <slis@gentoo.org> +files/silo-4.9.1-qtlibs.patch,
+  +files/silo-4.9.1-tests.patch, +metadata.xml, +silo-4.9.1.ebuild:
+  added silo package

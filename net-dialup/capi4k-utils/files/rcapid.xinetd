@@ -1,0 +1,13 @@
+service rcapid
+{
+	port			= 2662 
+ 	socket_type		= stream
+ 	wait			= no
+ 	user			= root
+	type			= unlisted
+ 	server			= /usr/sbin/rcapid 
+	server_args		= -l 5 
+ 	log_on_success		+= USERID
+ 	log_on_failure		+= USERID
+ 	disable			 = yes
+}

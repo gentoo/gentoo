@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND==x11-misc/lineakd-0.9.0* x11-proto/inputproto
+DESCRIPTION=Mute/unmute and other macros for LINEAK
+HOMEPAGE=http://lineak.sourceforge.net
+IUSE=debug
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND==x11-misc/lineakd-0.9.0* x11-proto/inputproto
+SLOT=0
+SRC_URI=mirror://sourceforge/lineak/lineak-defaultplugin-0.9.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c0012834937ea270c6c3c633596d40b9

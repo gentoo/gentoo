@@ -1,0 +1,35 @@
+diff --git a/src/cmp/cmploc.lsp b/src/cmp/cmploc.lsp
+index ca6a93d..87e6232 100644
+--- src/cmp/cmploc.lsp
++++ src/cmp/cmploc.lsp
+@@ -98,7 +98,7 @@
+            (and (eq (car loc) 'C-INLINE)
+                 (eq (sixth loc) 'VALUES)))))
+ 
+-(defun loc-immediate-value-p (loc &aux head)
++(defun loc-immediate-value-p (loc)
+   (cond ((eq loc t)
+          (values t t))
+         ((eq loc nil)
+@@ -112,9 +112,9 @@
+                (values t value))))
+         ((atom loc)
+          (values nil nil))
+-
+-        ((member head '(fixnum-value character-value long-float-value
+-                        double-float-value single-float-value))
++        ((member (first loc)
++                 '(fixnum-value character-value long-float-value
++                   double-float-value single-float-value))
+          (values t (second loc)))
+         (t
+          (values nil nil))))
+@@ -123,7 +123,7 @@
+   (baboon :format-control "Unknown location found in ~A~%~S"
+           :format-arguments (list where loc)))
+ 
+-(defun wt-loc (loc &aux fd)
++(defun wt-loc (loc)
+   (cond ((consp loc)
+          (let ((fd (gethash (car loc) *wt-loc-dispatch-table*)))
+            (if fd

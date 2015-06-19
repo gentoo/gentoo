@@ -1,0 +1,14 @@
+--- libwapcaplet-0.2.1/Makefile
++++ libwapcaplet-0.2.1/Makefile
+@@ -17,10 +17,7 @@
+ 	-Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes \
+ 	-Wmissing-declarations -Wnested-externs
+ # BeOS/Haiku standard library headers issue warnings
+-ifneq ($(TARGET),beos)
+-  WARNFLAGS := $(WARNFLAGS) -Werror
+-endif
+-CFLAGS := -D_BSD_SOURCE -I$(CURDIR)/include/ \
++CFLAGS := -D_DEFAULT_SOURCE -I$(CURDIR)/include/ \
+ 	-I$(CURDIR)/src $(WARNFLAGS) $(CFLAGS)
+ ifneq ($(GCCVER),2)
+   CFLAGS := $(CFLAGS) -std=c99

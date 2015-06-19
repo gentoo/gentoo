@@ -1,0 +1,104 @@
+# ChangeLog for media-sound/audex
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/audex/ChangeLog,v 1.21 2015/06/04 19:04:15 kensington Exp $
+
+  04 Jun 2015; Michael Palimaka <kensington@gentoo.org> audex-0.79.ebuild:
+  Move various kde-base packages to kde-apps.
+
+  31 Jan 2015; Johannes Huber <johu@gentoo.org> -audex-0.78.ebuild:
+  Remove old.
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org> audex-0.79.ebuild:
+  Stable for amd64, wrt bug #535488
+
+*audex-0.79 (24 Nov 2014)
+
+  24 Nov 2014; Michael Palimaka <kensington@gentoo.org> +audex-0.79.ebuild,
+  -audex-0.77_beta1.ebuild:
+  Version bump. Remove old.
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> audex-0.78.ebuild:
+  Stable for amd64, wrt bug #524804
+
+*audex-0.78 (14 Jun 2014)
+
+  14 Jun 2014; Chris Reffett <creffett@gentoo.org> +audex-0.78.ebuild:
+  Bump wrt bug 513172
+
+*audex-0.77_beta1 (17 Sep 2013)
+
+  17 Sep 2013; Johannes Huber <johu@gentoo.org> +audex-0.77_beta1.ebuild,
+  -audex-0.74_beta1.ebuild, -files/audex-0.74_beta1-gcc47.patch:
+  Version bump wrt bug #485060. Remove old.
+
+  02 May 2012; Johannes Huber <johu@gentoo.org>
+  +files/audex-0.74_beta1-gcc47.patch, audex-0.74_beta1.ebuild:
+  Add upstream patch to fix build with gcc47 spotted by Michael (kensington)
+  <gentoo@scribeofthenile.com> wrt bug #414147.
+
+  28 Oct 2011; Jonathan Callen <abcd@gentoo.org> audex-0.74_beta1.ebuild:
+  Bump to EAPI=4
+
+*audex-0.74_beta1 (05 Feb 2011)
+
+  05 Feb 2011; Timo Gurr <tgurr@gentoo.org> -audex-0.72_beta1.ebuild,
+  -files/audex-0.72_beta1-MkdirJob.patch, -files/audex-0.72_beta1-gcc45.patch,
+  +audex-0.74_beta1.ebuild:
+  Version bump to audex-0.74_beta1, remove old.
+
+  02 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  audex-0.72_beta1.ebuild:
+  EAPI3, slotmove to 4, use add_kdebase_dep
+
+  22 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  audex-0.72_beta1.ebuild, +files/audex-0.72_beta1-gcc45.patch:
+  Fix gcc-4.5 build failures wrt bug #323547
+
+  20 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  audex-0.72_beta1.ebuild, +files/audex-0.72_beta1-MkdirJob.patch:
+  Fix building with KDE 4.4.x wrt #310491 by Marco DR.
+
+  05 Mar 2010; Dror Levin <spatz@gentoo.org> audex-0.72_beta1.ebuild:
+  Fix HOMEPAGE and SRC_URI, bug 275162.
+
+*audex-0.72_beta1 (13 Sep 2009)
+
+  13 Sep 2009; Timo Gurr <tgurr@gentoo.org> -audex-0.71_beta5.ebuild,
+  +audex-0.72_beta1.ebuild:
+  Version bump, remove old.
+
+*audex-0.71_beta5 (29 Jun 2009)
+
+  29 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -audex-0.71_beta3.ebuild, +audex-0.71_beta5.ebuild:
+  Version bump. Per bug #275775.
+
+  24 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  audex-0.71_beta3.ebuild:
+  Fix wrong homepage. Per bug #275162.
+
+*audex-0.71_beta3 (17 Jun 2009)
+
+  17 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -audex-0.71_beta2.ebuild, +audex-0.71_beta3.ebuild:
+  Version bump. Add KDE_LINGUAS. Per bug #274563.
+
+*audex-0.71_beta2 (20 May 2009)
+
+  20 May 2009; Timo Gurr <tgurr@gentoo.org> -audex-0.71_beta1.ebuild,
+  +audex-0.71_beta2.ebuild:
+  Version bump.
+
+*audex-0.71_beta1 (15 May 2009)
+
+  15 May 2009; Timo Gurr <tgurr@gentoo.org> -audex-0.70_beta1.ebuild,
+  +audex-0.71_beta1.ebuild:
+  Version bump. Various bugfixes, added translations and an optimized
+  MP4/M4A (AAC) preset, be sure to delete your profiles and create a new one
+  to make use of the improvements.
+
+*audex-0.70_beta1 (30 Apr 2009)
+
+  30 Apr 2009; Timo Gurr <tgurr@gentoo.org> +metadata.xml,
+  +audex-0.70_beta1.ebuild:
+  Initial ebuild.

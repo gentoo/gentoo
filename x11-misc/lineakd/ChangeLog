@@ -1,0 +1,222 @@
+# ChangeLog for x11-misc/lineakd
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/lineakd/ChangeLog,v 1.54 2012/09/12 01:36:56 jer Exp $
+
+  12 Sep 2012; Jeroen Roovers <jer@gentoo.org> lineakd-0.9.0-r1.ebuild,
+  files/lineakd-0.9.0-DELL-XPS-M1330-XOrg-1_5.patch,
+  files/lineakd-0.9.0-gcc43.patch:
+  Clean up ebuild, patches.
+
+  22 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  lineakd-0.9.0-r1.ebuild,
+  +files/lineakd-0.9.0-DELL-XPS-M1330-XOrg-1_5.patch:
+  Keyboard layout for DELL-XPS-M1330-XOrg-1_5 wrt #265123 by Michele Caini.
+
+  21 Mar 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  -lineakd-0.9.0_pre1.ebuild:
+  Remove old versions.
+
+  22 Apr 2008; Samuli Suominen <drac@gentoo.org>
+  +files/lineakd-0.9.0-gcc43.patch, lineakd-0.9.0-r1.ebuild:
+  Fix building with GCC 4.3, thanks to Peter Alfredsen wrt #218784.
+
+  07 Jan 2008; Krzysiek Pawlik <nelchael@gentoo.org>
+  lineakd-0.9.0_pre1.ebuild, lineakd-0.9.0-r1.ebuild:
+  Add missing x11-proto/inputproto to DEPEND, see bug #204595.
+
+  28 Jul 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  lineakd-0.9.0-r1.ebuild:
+  Marked stable on amd64 as per bug 185400.
+
+  23 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  lineakd-0.9.0-r1.ebuild:
+  stable x86, bug 185400
+
+  22 Jul 2007; Santiago M. Mola <coldwind@gentoo.org>
+  lineakd-0.9.0_pre1.ebuild:
+  virtual/x11 removed.
+
+  17 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  lineakd-0.9.0-r1.ebuild:
+  Stable on sparc wrt #185400
+
+  15 Jul 2007; nixnut <nixnut@gentoo.org> lineakd-0.9.0-r1.ebuild:
+  Stable on ppc wrt bug 185400
+
+  04 Jun 2007; Samuli Suominen <drac@gentoo.org> lineakd-0.9.0-r1.ebuild:
+  Add elog for evtest.
+
+*lineakd-0.9.0-r1 (04 Jun 2007)
+
+  04 Jun 2007; Samuli Suominen <drac@gentoo.org> -lineakd-0.9.0.ebuild,
+  +lineakd-0.9.0-r1.ebuild:
+  Force -j1 for emake install and install evtest utility. Thanks to rbu at
+  gentoo.org.
+
+*lineakd-0.9.0 (03 Jun 2007)
+
+  03 Jun 2007; Samuli Suominen <drac@gentoo.org> +lineakd-0.9.0.ebuild:
+  Version bump.
+
+  22 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  lineakd-0.9.0_pre1.ebuild:
+  Stable on sparc
+
+  14 Mar 2007; Simon Stelling <blubb@gentoo.org> lineakd-0.9.0_pre1.ebuild:
+  stable on amd64; bug 170191
+
+  10 Mar 2007; nixnut <nixnut@gentoo.org> lineakd-0.9.0_pre1.ebuild:
+  Stable on ppc wrt bug 170191
+
+  10 Mar 2007; Raúl Porcel <armin76@gentoo.org> lineakd-0.9.0_pre1.ebuild:
+  x86 stable wrt bug 170191
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  02 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  -files/lkey-cast.patch, -lineakd-0.8.2.ebuild, lineakd-0.8.4.ebuild,
+  lineakd-0.9.0_pre1.ebuild:
+  Keyworded ~sparc wrt #145970 and cleanup
+
+  01 Jan 2007; Matti Bickel <mabi@gentoo.org>
+  files/lineakd-0.8.4-mandestdir.patch:
+  fix creation of man8 dirs (bug #145970)
+
+  15 Nov 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  -lineakd-0.8.3-r1.ebuild, -files/lineakd-0.8.3-lineakkb.def.patch:
+  Remove old version.
+
+  20 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/lineakd-0.8.4-defconfig.patch, lineakd-0.8.4.ebuild:
+  Add patch for default config, see bug #151886.
+
+  24 Sep 2006; Michael Hanselmann <hansmi@gentoo.org> lineakd-0.8.4.ebuild:
+  Stable on ppc.
+
+  09 Sep 2006; Thomas Cort <tcort@gentoo.org> lineakd-0.8.4.ebuild:
+  Stable on amd64 wrt Bug #145970.
+
+  03 Sep 2006; Krzysiek Pawlik <nelchael@gentoo.org> lineakd-0.8.4.ebuild:
+  Stable on x86. See bug #145970.
+
+  17 Apr 2006; Robin H. Johnson <robbat2@gentoo.org>
+  lineakd-0.9.0_pre1.ebuild:
+  One-liner fix for 0.9 to make the mandir before installing to it.
+
+  26 Mar 2006; Stefan Schweizer <genstef@gentoo.org> lineakd-0.8.2.ebuild,
+  +lineakd-0.9.0_pre1.ebuild:
+  version bump
+
+*lineakd-0.9.0_pre1 (26 Mar 2006)
+
+  26 Mar 2006; Stefan Schweizer <genstef@gentoo.org>
+  +lineakd-0.9.0_pre1.ebuild:
+  version bump
+
+  15 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> -lineakd-0.8.3.ebuild,
+  lineakd-0.8.3-r1.ebuild, lineakd-0.8.4.ebuild:
+  Fixed DEPEND for modular X. Removed old version.
+
+*lineakd-0.8.4 (25 Dec 2005)
+
+  25 Dec 2005; Stefan Schweizer <genstef@gentoo.org>
+  +files/lineakd-0.8.4-mandestdir.patch, +lineakd-0.8.4.ebuild:
+  version bump
+
+  21 Nov 2005; Joseph Jezak <josejx@gentoo.org> lineakd-0.8.3-r1.ebuild:
+  Marked ppc stable for bug #111282.
+
+  05 Nov 2005; Luis Medinas <metalgod@gentoo.org> lineakd-0.8.3-r1.ebuild:
+  Marked Stable on amd64. Bug #111282.
+
+  03 Nov 2005; Mark Loeser <halcy0n@gentoo.org> lineakd-0.8.3-r1.ebuild:
+  Stable on x86; bug #111282
+
+  02 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org> lineakd-0.8.2.ebuild,
+  lineakd-0.8.3.ebuild, lineakd-0.8.3-r1.ebuild:
+  Fixed dodoc not to install COPYING and/or INSTALL.
+
+*lineakd-0.8.3-r1 (25 Oct 2005)
+
+  25 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/lineakd-0.8.3-lineakkb.def.patch, -lineakd-0.7.2.ebuild,
+  +lineakd-0.8.3-r1.ebuild:
+  Fix bug 109294 - typos in lineakkb.def, removed old ebuild.
+
+  17 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  22 Jun 2005; Ferris McCormick <fmccor@gentoo.org> lineakd-0.8.3.ebuild:
+  Remove ~sparc keyword (See Bug 89801).  Version 0.8.3 assumes headers
+  are -2.6.xx, but sparc currently must use -2.4.  The comments at the
+  cited bug explain how to fix this, but for now sparc testing must remain
+  at version 0.8.2, which does build without incident.
+
+  19 Jun 2005; Jonathan Smith <smithj@gentoo.org> lineakd-0.8.3.ebuild:
+  x86 stable
+
+  19 Jun 2005; Jonathan Smith <smithj@gentoo.org> -lineakd-0.6.1.ebuild,
+  -lineakd-0.7.ebuild:
+  ebuild cleanup
+
+*lineakd-0.8.3 (12 Mar 2005)
+
+  12 Mar 2005; Stefan Schweizer <genstef@gentoo.org> +lineakd-0.8.3.ebuild:
+  Version bump thanks to Alexander Brüning <ab277@gmx.de> in bug 84964
+
+  27 Feb 2005; Ferris McCormick <fmccor@gentoo.org> lineakd-0.8.2.ebuild:
+  Add ~sparc keyword at user request (Bug 83497); builds and seems to run.
+
+  14 Jan 2005; Tom Martin <slarti@gentoo.org> lineakd-0.8.2.ebuild:
+  Marked ~amd64.
+
+*lineakd-0.8.2 (22 Nov 2004)
+
+  22 Nov 2004; Stefan Schweizer <genstef@gentoo.org> +lineakd-0.8.2.ebuild:
+  Version bump thanks to Craig Duquette <cduquette@gmail.com>, Alexander
+  Mieland <dma147@mieland-programming.de> for contributed ebuilds in bug 60119
+
+  07 Nov 2004; <pyrania@gentoo.org> +files/lkey-cast.patch,
+  lineakd-0.7.2.ebuild:
+  Bugfix for amd64. See bug #63378.
+
+  24 Apr 2004; Ian Leitch <port001@gentoo.org> lineakd-0.6.1.ebuild,
+  lineakd-0.7.2.ebuild, lineakd-0.7.ebuild:
+  Depend on virtual/x11 instead of x11-base/xfree
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> lineakd-0.7.2.ebuild,
+  lineakd-0.7.ebuild:
+  Marked stable. Ebuild fixup.
+
+*lineakd-0.7.2 (13 Dec 2003)
+*lineakd-0.7 (13 Dec 2003)
+
+  13 Dec 2003; Ian Leitch <port001@gentoo.org> lineakd-0.6.1.ebuild,
+  lineakd-0.7.2.ebuild, lineakd-0.7.ebuild:
+  Version bump. 0.7 and 0.6.1 marked stable on x86. #35737
+
+  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+  11 Oct 2003; Heinrich Wendel <lanius@gentoo.org> lineakd-0.4_pre3.ebuild,
+  lineakd-0.6_alpha2.ebuild:
+  bump, clean up
+
+*lineakd-0.6.1 (15 Sep 2003)
+
+  15 Sep 2003; Seemant Kulleen <seemant@gentoo.org> lineakd-0.6.1.ebuild:
+  Version bump, thanks to: Bel Zébute <tecknojunky@tecknojunky.com> in bug #26661
+
+*lineakd-0.6_alpha2 (08 Apr 2003)
+
+  08 Apr 2003; Seemant Kulleen <seemant@gentoo.org> lineakd-0.6_alpha2.ebuild:
+  Version bump
+
+*lineakd-0.4_pre3 (12 Feb 2003)
+
+  14 Mar 2003; Seemant Kulleen <seemant@gentoo.org> lineakd-0.4_pre3.ebuild:
+  gzip the documentation
+
+  12 Feb 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Initial import. Ebuild submitted by Evan Teran <emt3734@rit.edu> in #6240.

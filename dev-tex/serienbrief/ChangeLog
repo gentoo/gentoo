@@ -1,0 +1,66 @@
+# ChangeLog for dev-tex/serienbrief
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/serienbrief/ChangeLog,v 1.12 2015/03/29 00:04:03 mrueg Exp $
+
+  29 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -serienbrief-0.2.2.ebuild,
+  -serienbrief-0.2.3.ebuild:
+  Remove old.
+
+*serienbrief-0.2.4 (17 May 2013)
+
+  17 May 2013; Alexis Ballier <aballier@gentoo.org> +serienbrief-0.2.4.ebuild:
+  version bump, by Tobias Leupold, bug #449198
+
+*serienbrief-0.2.3 (22 May 2012)
+
+  22 May 2012; Johannes Huber <johu@gentoo.org> +serienbrief-0.2.3.ebuild,
+  -serienbrief-0.2-r2.ebuild, -serienbrief-0.2.1.ebuild:
+  Version bump, remove old wrt bug #417121.
+
+*serienbrief-0.2.2 (11 Jun 2010)
+
+  11 Jun 2010; Alexis Ballier <aballier@gentoo.org>
+  +serienbrief-0.2.2.ebuild:
+  version bump, by Tobias Leupold <tobias.leupold@web.de>, bug #322451
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org> serienbrief-0.2-r2.ebuild,
+  serienbrief-0.2.1.ebuild:
+  New virtuals: Term-ANSIColor
+
+*serienbrief-0.2.1 (02 Oct 2008)
+
+  02 Oct 2008; Alexis Ballier <aballier@gentoo.org>
+  +serienbrief-0.2.1.ebuild:
+  version bump by Tobias Leupold <tobias.leupold@web.de>, bug #238491
+
+  05 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  serienbrief-0.2-r2.ebuild:
+  Depend on latex-base, add ~amd64
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+*serienbrief-0.2-r2 (01 Feb 2007)
+
+  01 Feb 2007; Alexandre Buisse <nattfodd@gentoo.org>
+  -serienbrief-0.2.ebuild, -serienbrief-0.2-r1.ebuild,
+  +serienbrief-0.2-r2.ebuild:
+  HOMEPAGE and SRC_URI changed.
+
+*serienbrief-0.2-r1 (10 Dec 2006)
+
+  10 Dec 2006; Alexandre Buisse <nattfodd@gentoo.org>
+  +serienbrief-0.2-r1.ebuild:
+  Changed perl-Getopt-Long dep to virtual (bug #157675).
+
+  29 Aug 2006; Alexandre Buisse <nattfodd@gentoo.org>
+  serienbrief-0.2.ebuild:
+  Added LINGUAS switch for the DE LC_MESSAGES file (thanks to Tobias Leupold
+  on bug #141271).
+
+*serienbrief-0.2 (25 Jul 2006)
+
+  25 Jul 2006; Alexandre Buisse <nattfodd@gentoo.org> +metadata.xml,
+  +serienbrief-0.2.ebuild:
+  Initial commit. Ebuild submitted by Tobias Leupold (who is also upstream) in
+  bug #141271.

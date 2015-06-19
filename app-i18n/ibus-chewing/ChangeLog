@@ -1,0 +1,233 @@
+# ChangeLog for app-i18n/ibus-chewing
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-chewing/ChangeLog,v 1.37 2015/04/05 15:49:30 kensington Exp $
+
+  05 Apr 2015; Michael Palimaka <kensington@gentoo.org>
+  -files/ibus-chewing-1.3.10-cflags.patch,
+  -files/ibus-chewing-1.3.10-fix_save_setting.patch,
+  -files/ibus-chewing-1.3.10-ibus-1.4.patch,
+  -files/ibus-chewing-1.4.3-content-type.patch, -ibus-chewing-1.3.10-r1.ebuild,
+  -ibus-chewing-1.3.10.ebuild, -ibus-chewing-1.4.2.ebuild,
+  -ibus-chewing-1.4.3-r1.ebuild:
+  Remove old.
+
+*ibus-chewing-1.4.7 (08 Apr 2014)
+
+  08 Apr 2014; Naohiro Aota <naota@gentoo.org> +ibus-chewing-1.4.7.ebuild:
+  version bump
+
+*ibus-chewing-1.4.3-r1 (30 Dec 2013)
+
+  30 Dec 2013; Naohiro Aota <naota@gentoo.org>
+  +files/ibus-chewing-1.4.3-content-type.patch, +ibus-chewing-1.4.3-r1.ebuild,
+  -ibus-chewing-1.4.3.ebuild:
+  Apply a patch to set content type method.
+
+*ibus-chewing-1.4.3 (22 Dec 2012)
+
+  22 Dec 2012;  <naota@gentoo.org> +ibus-chewing-1.4.3.ebuild:
+  Version bump wrt #447416
+
+*ibus-chewing-1.4.2 (29 Aug 2012)
+
+  29 Aug 2012; Naohiro Aota <naota@gentoo.org> +ibus-chewing-1.4.2.ebuild,
+  ibus-chewing-1.3.10-r1.ebuild:
+  Version bump. #433018
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> ibus-chewing-1.3.10.ebuild,
+  ibus-chewing-1.3.10-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*ibus-chewing-1.3.10-r1 (11 Mar 2012)
+
+  11 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +ibus-chewing-1.3.10-r1.ebuild,
+  +files/ibus-chewing-1.3.10-fix_save_setting.patch:
+  Fix saving of configuration wrt #407779 by Jack Chen
+
+  10 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -ibus-chewing-1.2.0.20100209.ebuild, -ibus-chewing-1.3.6.20100730.ebuild,
+  -ibus-chewing-1.3.9.2.ebuild, -files/ibus-chewing-1.3.9.2-cflags.patch:
+  old
+
+  10 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  ibus-chewing-1.3.10.ebuild, +files/ibus-chewing-1.3.10-ibus-1.4.patch:
+  Fix building with app-i18n/ibus >= 1.4.0 wrt #407695 by Jack Chen. Move
+  ibus-chewing.schemas from /gconf to /etc/gconf.
+
+*ibus-chewing-1.3.10 (01 Nov 2011)
+
+  01 Nov 2011; Naohiro Aota <naota@gentoo.org> +ibus-chewing-1.3.10.ebuild,
+  +files/ibus-chewing-1.3.10-cflags.patch:
+  Version bump. ebuild based on Victor Tseng <palatis@gmail.com>
+
+*ibus-chewing-1.3.9.2 (02 Apr 2011)
+
+  02 Apr 2011; MATSUU Takuto <matsuu@gentoo.org>
+  -ibus-chewing-1.3.4.20100605.ebuild, -ibus-chewing-1.3.4.20100608.ebuild,
+  -ibus-chewing-1.3.5.20100706.ebuild, +ibus-chewing-1.3.9.2.ebuild,
+  +files/ibus-chewing-1.3.9.2-cflags.patch:
+  Version bumped. Removed old versions.
+
+*ibus-chewing-1.3.6.20100730 (01 Aug 2010)
+
+  01 Aug 2010; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-chewing-1.3.6.20100730.ebuild:
+  Version bumped.
+
+*ibus-chewing-1.3.5.20100706 (13 Jul 2010)
+
+  13 Jul 2010; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-chewing-1.3.5.20100706.ebuild:
+  Version bumped.
+
+*ibus-chewing-1.3.4.20100608 (16 Jun 2010)
+
+  16 Jun 2010; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-chewing-1.3.4.20100608.ebuild:
+  Version bumped.
+
+*ibus-chewing-1.3.4.20100605 (05 Jun 2010)
+
+  05 Jun 2010; MATSUU Takuto <matsuu@gentoo.org>
+  -ibus-chewing-1.2.0.20090917.ebuild, -ibus-chewing-1.2.0.20091211.ebuild,
+  -ibus-chewing-1.2.0.20100125.ebuild, -ibus-chewing-1.2.99.20100212.ebuild,
+  -ibus-chewing-1.2.99.20100317.ebuild, +ibus-chewing-1.3.4.20100605.ebuild:
+  Version bumped. Removed old versions.
+
+*ibus-chewing-1.2.99.20100317 (19 Mar 2010)
+
+  19 Mar 2010; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-chewing-1.2.99.20100317.ebuild:
+  Version bumped.
+
+*ibus-chewing-1.2.99.20100212 (12 Feb 2010)
+*ibus-chewing-1.2.0.20100209 (12 Feb 2010)
+
+  12 Feb 2010; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-chewing-1.2.0.20100209.ebuild, +ibus-chewing-1.2.99.20100212.ebuild:
+  Version bumped.
+
+*ibus-chewing-1.2.0.20100125 (25 Jan 2010)
+
+  25 Jan 2010; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-chewing-1.2.0.20100125.ebuild:
+  Version bumped.
+
+*ibus-chewing-1.2.0.20091211 (16 Dec 2009)
+
+  16 Dec 2009; MATSUU Takuto <matsuu@gentoo.org>
+  -ibus-chewing-1.0.10.20090523.ebuild, -ibus-chewing-1.2.0.20090624.ebuild,
+  -ibus-chewing-1.2.0.20090818.ebuild, -ibus-chewing-1.2.0.20090831.ebuild,
+  +ibus-chewing-1.2.0.20091211.ebuild:
+  Version bumped. Removed old versions.
+
+*ibus-chewing-1.2.0.20090917 (17 Sep 2009)
+
+  17 Sep 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-chewing-1.2.0.20090917.ebuild:
+  Version bumped.
+
+*ibus-chewing-1.2.0.20090831 (01 Sep 2009)
+
+  01 Sep 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-chewing-1.2.0.20090831.ebuild:
+  Version bumped.
+
+*ibus-chewing-1.2.0.20090818 (24 Aug 2009)
+
+  24 Aug 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-chewing-1.2.0.20090818.ebuild:
+  Version bumped.
+
+*ibus-chewing-1.2.0.20090624 (24 Jun 2009)
+
+  24 Jun 2009; MATSUU Takuto <matsuu@gentoo.org>
+  -ibus-chewing-1.0.8.20090428.ebuild, +ibus-chewing-1.2.0.20090624.ebuild:
+  Version bumped.
+
+*ibus-chewing-1.0.10.20090523 (31 May 2009)
+
+  31 May 2009; MATSUU Takuto <matsuu@gentoo.org>
+  -ibus-chewing-1.0.4.20090323.ebuild, -ibus-chewing-1.0.5.20090330.ebuild,
+  -ibus-chewing-1.0.6.20090403.ebuild, -ibus-chewing-1.0.7.20090414.ebuild,
+  +ibus-chewing-1.0.10.20090523.ebuild:
+  Version bumped. Removed old versions.
+
+*ibus-chewing-1.0.8.20090428 (07 May 2009)
+
+  07 May 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-chewing-1.0.8.20090428.ebuild:
+  Version bumped.
+
+*ibus-chewing-1.0.7.20090414 (14 Apr 2009)
+
+  14 Apr 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-chewing-1.0.7.20090414.ebuild:
+  Version bumped.
+
+*ibus-chewing-1.0.6.20090403 (03 Apr 2009)
+
+  03 Apr 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-chewing-1.0.6.20090403.ebuild:
+  Version bumped.
+
+*ibus-chewing-1.0.5.20090330 (30 Mar 2009)
+
+  30 Mar 2009; MATSUU Takuto <matsuu@gentoo.org>
+  -files/ibus-chewing-1.0.0.20090220-gentoo.patch,
+  -ibus-chewing-1.0.2.20090302.ebuild, -ibus-chewing-1.0.3.20090311.ebuild,
+  +ibus-chewing-1.0.5.20090330.ebuild:
+  Version bumped. Removed old versions.
+
+*ibus-chewing-1.0.4.20090323 (23 Mar 2009)
+
+  23 Mar 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-chewing-1.0.4.20090323.ebuild:
+  Version bumped.
+
+*ibus-chewing-1.0.3.20090311 (11 Mar 2009)
+
+  11 Mar 2009; MATSUU Takuto <matsuu@gentoo.org>
+  -ibus-chewing-0.1.1.20081023.ebuild, -ibus-chewing-1.0.0.20090220.ebuild,
+  +ibus-chewing-1.0.3.20090311.ebuild:
+  Version bumped. Removed old versions.
+
+*ibus-chewing-1.0.2.20090302 (02 Mar 2009)
+
+  02 Mar 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-chewing-1.0.2.20090302.ebuild:
+  Version bumped.
+
+*ibus-chewing-1.0.0.20090220 (25 Feb 2009)
+
+  25 Feb 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +files/ibus-chewing-1.0.0.20090220-gentoo.patch,
+  +ibus-chewing-1.0.0.20090220.ebuild:
+  Version bumped.
+
+  05 Feb 2009; MATSUU Takuto <matsuu@gentoo.org>
+  -ibus-chewing-0.1.1.20080917.ebuild, ibus-chewing-0.1.1.20081023.ebuild:
+  Fixed dependency. Removed old version.
+
+*ibus-chewing-0.1.1.20081023 (23 Oct 2008)
+
+  23 Oct 2008; MATSUU Takuto <matsuu@gentoo.org>
+  -ibus-chewing-0.1.1.20080901.ebuild, +ibus-chewing-0.1.1.20081023.ebuild:
+  Version bumped. Removed old version.
+
+*ibus-chewing-0.1.1.20080917 (21 Sep 2008)
+
+  21 Sep 2008; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-chewing-0.1.1.20080917.ebuild:
+  Version bumped.
+
+  06 Sep 2008; MATSUU Takuto <matsuu@gentoo.org>
+  ibus-chewing-0.1.1.20080901.ebuild:
+  Fixed DESCRIPTION.
+
+*ibus-chewing-0.1.1.20080901 (06 Sep 2008)
+
+  06 Sep 2008; MATSUU Takuto <matsuu@gentoo.org> +metadata.xml,
+  +ibus-chewing-0.1.1.20080901.ebuild:
+  Initial import.

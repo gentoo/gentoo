@@ -1,0 +1,38 @@
+# ChangeLog for dev-python/tracing
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/tracing/ChangeLog,v 1.8 2015/04/08 08:05:07 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> tracing-0.7-r1.ebuild,
+  tracing-0.8.ebuild:
+  Drop old Python implementations
+
+  08 Sep 2014; Chema Alonso <nimiux@gentoo.org> tracing-0.8.ebuild:
+  Stable for amd64 wrt bug #516726
+
+  26 Jul 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> tracing-0.8.ebuild:
+  x86 stable wrt bug #516726
+
+*tracing-0.8 (09 Aug 2013)
+
+  09 Aug 2013; Marc Schiffbauer <mschiff@gentoo.org> +tracing-0.8.ebuild,
+  -tracing-0.6.ebuild, -tracing-0.7.ebuild:
+  Bump version. Remove older versions
+
+*tracing-0.7-r1 (18 Apr 2013)
+
+  18 Apr 2013; Ian Delaney <idella4@gentoo.org> +tracing-0.7-r1.ebuild:
+  migration -> distutils-r1
+
+  07 Oct 2012; Marc Schiffbauer <mschiff@gentoo.org> tracing-0.7.ebuild:
+  Fix build
+
+*tracing-0.7 (06 Oct 2012)
+
+  06 Oct 2012; Marc Schiffbauer <mschiff@gentoo.org> +tracing-0.7.ebuild:
+  Version bump.
+
+*tracing-0.6 (15 Jun 2012)
+
+  15 Jun 2012; Marc Schiffbauer <mschiff@gentoo.org> +tracing-0.6.ebuild,
+  +metadata.xml:
+  Initial commit of tracing.

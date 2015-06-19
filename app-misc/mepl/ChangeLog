@@ -1,0 +1,46 @@
+# ChangeLog for app-misc/mepl
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/mepl/ChangeLog,v 1.14 2013/07/21 09:32:57 pacho Exp $
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #473480
+
+  29 Oct 2012; Agostino Sarubbo <ago@gentoo.org> mepl-0.45.ebuild:
+  Add ~amd64, wrt bug #439882
+
+  16 Sep 2010; Patrick Kursawe <phosphan@gentoo.org> mepl-0.45.ebuild:
+  Respects LDFLAGS now, see bug #337653.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> mepl-0.45.ebuild:
+  Remove virtual/libc
+
+  07 Apr 2009; Patrick Kursawe <phosphan@gentoo.org> +files/gcc433.patch,
+  mepl-0.45.ebuild:
+  Patch for gcc 4.3.3, see bug #264286
+
+  11 Jan 2009; Patrick Kursawe <phosphan@gentoo.org> mepl-0.45.ebuild:
+  Bug #243658: Respects  and  now, inserted a missing include directive.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  21 Jul 2005; David Holm <dholm@gentoo.org> mepl-0.45.ebuild:
+  Added to ~ppc.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  20 Nov 2003; Patrick Kursawe <phosphan@gentoo.org> mepl-0.45.ebuild:
+  Fixing access violation with /etc/mepl.conf
+
+  28 Mar 2003; Patrick Kursawe <phosphan@gentoo.org> mepl-0.45.ebuild :
+  marked as stable for x86
+
+*mepl-0.45 (17 Mar 2003)
+
+  17 Mar 2003; Patrick Kursawe <phosphan@gentoo.org> mepl-0.45.ebuild
+  files/digest-mepl-0.45 ChangeLog :
+  Initial import. Closes bug #17019.

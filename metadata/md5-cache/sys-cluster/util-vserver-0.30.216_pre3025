@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst setup test
+DEPEND=>=dev-libs/dietlibc-0.33_pre20110403 dev-libs/beecrypt net-firewall/iptables net-misc/vconfig sys-apps/iproute2 || ( >=sys-apps/coreutils-6.10-r1 sys-apps/mktemp )
+DESCRIPTION=Linux-VServer admin utilities
+EAPI=4
+HOMEPAGE=http://www.nongnu.org/util-vserver/
+KEYWORDS=~alpha amd64 ~sparc x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/beecrypt net-firewall/iptables net-misc/vconfig sys-apps/iproute2 || ( >=sys-apps/coreutils-6.10-r1 sys-apps/mktemp )
+SLOT=0
+SRC_URI=http://people.linux-vserver.org/~dhozac/t/uv-testing/util-vserver-0.30.216-pre3025.tar.bz2
+_eclasses_=bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=024ae30988cb6f0f20617e558242e208

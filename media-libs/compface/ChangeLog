@@ -1,0 +1,171 @@
+# ChangeLog for media-libs/compface
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/compface/ChangeLog,v 1.52 2014/12/30 18:12:45 maekke Exp $
+
+  30 Dec 2014; Markus Meier <maekke@gentoo.org> compface-1.5.2.ebuild:
+  arm stable, bug #528710
+
+  29 Nov 2014; Akinori Hattori <hattya@gentoo.org> -compface-1.5.1.ebuild,
+  -files/compface-1.5.1-destdir.diff, metadata.xml:
+  remove old ebuild
+
+  10 Nov 2014; Jeroen Roovers <jer@gentoo.org> compface-1.5.2.ebuild:
+  Stable for HPPA (bug #528710).
+
+  02 Jun 2012; Alexis Ballier <aballier@gentoo.org> compface-1.5.2.ebuild:
+  keyword ~amd64-fbsd
+
+  13 Aug 2011; Akinori Hattori <hattya@gentoo.org> compface-1.5.1.ebuild,
+  files/compface-1.5.1-destdir.diff, compface-1.5.2.ebuild,
+  files/compface-1.5.2-destdir.diff:
+  update to EAPI 4.
+
+  26 Sep 2010; Michael Weber <xmw@gentoo.org> compface-1.5.2.ebuild:
+  Added ~arm keyword
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  compface-1.5.2.ebuild:
+  Transfer Prefix keywords
+
+  16 Aug 2009; Akinori Hattori <hattya@gentoo.org> -compface-1.4.ebuild,
+  -files/compface-1.4-destdir.diff, -files/compface-1.4-errno.diff:
+  cleaned out old ebuild(s).
+
+  16 Aug 2009; Akinori Hattori <hattya@gentoo.org> compface-1.5.2.ebuild:
+  cleanup.
+
+  29 Aug 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing bcowan from metadata due to his retirement (see #133108 for
+  reference).
+
+  08 Jul 2007; Diego Pettenò <flameeyes@gentoo.org> compface-1.5.2.ebuild:
+  Don't prestrip binaries.
+
+  17 Mar 2007; Steve Dibb <beandog@gentoo.org> compface-1.5.2.ebuild:
+  amd64 stable
+
+  28 Feb 2007; Roy Marples <uberlord@gentoo.org> compface-1.5.2.ebuild:
+  Added ~x86-fbsd keyword.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  17 Feb 2007; Fabian Groffen <grobian@gentoo.org> compface-1.4.ebuild,
+  compface-1.5.1.ebuild, compface-1.5.2.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> compface-1.5.2.ebuild:
+  Stable on Alpha.
+
+  30 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org> compface-1.5.2.ebuild:
+  Stable on sparc
+
+  14 Jul 2006; Akinori Hattori <hattya@gentoo.org> compface-1.4.ebuild,
+  compface-1.5.1.ebuild, compface-1.5.2.ebuild:
+  use emake for install. and 1.5.2 is unnecessary to invoke autoconf.
+
+  24 May 2006; Michael Hanselmann <hansmi@gentoo.org> compface-1.5.2.ebuild:
+  Stable on ppc.
+
+  23 May 2006; Markus Rothe <corsair@gentoo.org> compface-1.5.2.ebuild:
+  Stable on ppc64
+
+  04 May 2006; Akinori Hattori <hattya@gentoo.org> -compface-1.5.ebuild,
+  compface-1.5.2.ebuild:
+  stable on x86 and ia64.
+
+  07 Feb 2006; Simon Stelling <blubb@gentoo.org> compface-1.5.1.ebuild:
+  stable on amd64
+
+*compface-1.5.2 (13 Nov 2005)
+
+  13 Nov 2005; Akinori Hattori <hattya@gentoo.org>
+  +files/compface-1.5.2-destdir.diff, +compface-1.5.2.ebuild:
+  new upstream release. fixes bug #111005.
+
+  19 Sep 2005; Seemant Kulleen <seemant@gentoo.org> compface-1.5.1.ebuild:
+  crlf fix thanks to James Rowe in bug #106246
+
+  19 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> compface-1.5.1.ebuild:
+  Stable on alpha.
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> compface-1.5.1.ebuild:
+  Stable on ppc64
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> compface-1.5.1.ebuild:
+  Stable on ppc.
+
+  22 May 2005; Rene Nussbaumer <killerfox@gentoo.org> compface-1.5.1.ebuild:
+  Stable on hppa
+
+  15 May 2005; Jason Wever <weeve@gentoo.org> compface-1.5.1.ebuild:
+  Stable on SPARC.
+
+  08 May 2005; Aron Griffis <agriffis@gentoo.org> compface-1.5.1.ebuild:
+  stable on ia64
+
+  28 Apr 2005; Akinori Hattori <hattya@gentoo.org> compface-1.5.1.ebuild:
+  stable on x86.
+
+  30 Jan 2005; <gongloo@gentoo.org> compface-1.4.ebuild:
+  Stable on ppc-macos.
+
+*compface-1.5.1 (26 Jan 2005)
+
+  26 Jan 2005; Akinori Hattori <hattya@gentoo.org>
+  +files/compface-1.5.1-destdir.diff, +compface-1.5.1.ebuild:
+  new upstream release. fixes bug #79035.
+
+  07 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  files/compface-1.5-destdir.diff, compface-1.5.ebuild:
+  Fixed destdir patch.
+
+*compface-1.5 (07 Jan 2005)
+
+  07 Jan 2005; Akinori Hattori <hattya@gentoo.org> +compface-1.5.ebuild,
+  +files/compface-1.5-destdir.diff:
+  new upstream release. fixes bug #76063.
+
+  05 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/compface-1.4-destdir.diff:
+  Made a DESTDIR patch and use that to fix installation on multilib systems.
+
+  01 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> compface-1.4.ebuild:
+  Added to ~ppc-macos; bug #65610.
+
+  20 Jul 2004; Tom Gall <tgall@gentoo.org> compface-1.4.ebuild:
+  stable on ppc64, bug #57174
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> compface-1.4.ebuild:
+  virtual/glibc -> virtual/libc
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> compface-1.4.ebuild:
+  stable on ia64
+
+  14 Nov 2003; Brad House <brad_mssw@gentoo.org> compface-1.4.ebuild:
+  mark stable on amd64
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*compface-1.4 (1 Feb 2002)
+
+  06 Jul 2003; Guy martin <gmsoft@gentoo.org> compface-1.4.ebuild :
+  Added hppa to KEYWORDS.
+
+  05 Mar 2003; Aron Griffis <agriffis@gentoo.org> compface-1.4.ebuild:
+  Mark stable on alpha
+
+  27 Feb 2003; Seemant Kulleen <seemant@gentoo.org> compface-1.4.ebuild,
+  files/compface-1.4-errno.diff:
+  added fix for errno brokenness caused by newest glibc
+
+  07 Aug 2002; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

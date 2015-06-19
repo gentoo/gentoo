@@ -1,0 +1,14 @@
+Fix implicit functions declarations
+
+--- xbatt.c
++++ xbatt.c
+@@ -47,6 +47,9 @@
+ #include <time.h>
+ #include <sys/file.h>
+ #include <sys/ioctl.h>
++#include <unistd.h>
++#include <stdlib.h>
++#include <X11/IntrinsicP.h>
+ #include <X11/StringDefs.h>
+ #include <X11/Intrinsic.h>
+ #include <X11/Shell.h>

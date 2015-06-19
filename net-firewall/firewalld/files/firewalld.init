@@ -1,0 +1,13 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/firewalld/files/firewalld.init,v 1.2 2012/11/07 08:14:00 cardoe Exp $
+
+description="FirewallD"
+command=/usr/sbin/firewalld
+pidfile=/var/run/firewalld.pid
+
+depend() {
+	need dbus
+	provide iptables ip6tables ebtables
+}

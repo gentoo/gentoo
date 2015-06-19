@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>pacho@gentoo.org</email>
+		<name>Pacho Ramos</name>
+	</maintainer>
+	<maintainer>
+		<email>rei4dan@gmail.com</email>
+		<name>My Th</name>
+	</maintainer>
+	<longdescription>
+	A rewrite of the original Bumblebee service, providing an elegant and stable
+	means of managing Optimus hybrid graphics chipsets. A primary goal of this
+	project is to not only enable use of the discrete GPU for rendering, but
+	also to enable smart power management of the dGPU when it's not in use.
+</longdescription>
+	<use>
+		<flag name="bbswitch">Add dependency on <pkg>sys-kernel/bbswitch</pkg> for
+			PM feature</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">Bumblebee-Project/Bumblebee</remote-id>
+	</upstream>
+</pkgmetadata>

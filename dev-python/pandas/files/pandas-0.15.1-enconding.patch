@@ -1,0 +1,21 @@
+From c4bcc2054bfd2f89b640bea0c9a109b0184d6710 Mon Sep 17 00:00:00 2001
+From: Francesc Via <f@gaxan.com>
+Date: Sat, 29 Nov 2014 16:44:09 +0000
+Subject: [PATCH] BUG: moving the utf encoding line to the first line (before
+ from __future ..)
+
+---
+ pandas/tests/test_format.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pandas/tests/test_format.py b/pandas/tests/test_format.py
+index 3e85347..ba3daf1 100644
+--- a/pandas/tests/test_format.py
++++ b/pandas/tests/test_format.py
+@@ -1,5 +1,5 @@
+-from __future__ import print_function
+ # -*- coding: utf-8 -*-
++from __future__ import print_function
+ import re
+ 
+ from pandas.compat import range, zip, lrange, StringIO, PY3, lzip, u

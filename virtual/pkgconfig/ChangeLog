@@ -1,0 +1,88 @@
+# ChangeLog for virtual/pkgconfig
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/pkgconfig/ChangeLog,v 1.28 2014/07/22 12:40:29 ssuominen Exp $
+
+  22 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> -pkgconfig-0.ebuild:
+  old
+
+  22 Jul 2014; Mike Frysinger <vapier@gentoo.org> pkgconfig-0-r1.ebuild:
+  Mark stable for m68k/s390/sh/sparc.
+
+  19 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> pkgconfig-0-r1.ebuild:
+  Mark ia64 stable
+
+  18 Jul 2014; Matt Turner <mattst88@gentoo.org> pkgconfig-0-r1.ebuild:
+  alpha stable, bug 516106.
+
+  16 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> pkgconfig-0-r1.ebuild:
+  ppc64 stable wrt bug #516106
+
+  13 Jul 2014; Agostino Sarubbo <ago@gentoo.org> pkgconfig-0-r1.ebuild:
+  Stable for ppc, wrt bug #516106
+
+  13 Jul 2014;  <tgall@gentoo.org> pkgconfig-0-r1.ebuild:
+  arm64 stable bug #516106
+
+  09 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> pkgconfig-0-r1.ebuild:
+  x86 stable wrt bug #516106
+
+  06 Jul 2014; Markus Meier <maekke@gentoo.org> pkgconfig-0-r1.ebuild:
+  arm stable, bug #516106
+
+  05 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> pkgconfig-0-r1.ebuild:
+  amd64 stable wrt bug #516106
+
+  05 Jul 2014; Jeroen Roovers <jer@gentoo.org> pkgconfig-0-r1.ebuild:
+  Stable for HPPA (bug #516106).
+
+*pkgconfig-0-r1 (30 Mar 2014)
+
+  30 Mar 2014; Michał Górny <mgorny@gentoo.org> +pkgconfig-0-r1.ebuild:
+  Enable multilib support.
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> pkgconfig-0.ebuild:
+  Add arm64 love.
+
+  21 Feb 2013; Zac Medico <zmedico@gentoo.org> pkgconfig-0.ebuild:
+  Add ~arm-linux keyword.
+
+  16 Sep 2012; Samuli Suominen <ssuominen@gentoo.org> pkgconfig-0.ebuild:
+  Force latest dev-util/pkgconfig to ensure installed pkg.m4 is up to date.
+
+  31 Jul 2012; Samuli Suominen <ssuominen@gentoo.org> pkgconfig-0.ebuild:
+  Remove dev-util/pkg-config-lite wrt #425292
+
+  12 Jun 2012; Jeff Horelick <jdhore@gentoo.org> pkgconfig-0.ebuild:
+  Move dev-util/pkgconf to being the 2nd choice. The pkg-config USE flag for it
+  is now on by default, it's been extensively tested in Gentoo, it's stable on 2
+  arches (with more to come) and it's used by default in Funtoo now.
+
+  28 May 2012; Richard Yao <ryao@gentoo.org> pkgconfig-0.ebuild:
+  Remove superfluous userland_BSD from IUSE
+
+  27 May 2012; Richard Yao <ryao@gentoo.org> pkgconfig-0.ebuild:
+  Add missing userland_BSD to IUSE
+
+  27 May 2012; Samuli Suominen <ssuominen@gentoo.org> pkgconfig-0.ebuild:
+  Leave dev-util/pkgconfig-openbsd as last since it's not to be considered as
+  supported yet. Restore dropped version enforcement for dev-util/pkgconfig due
+  to known issues with broken pkg.m4 in 0.25.
+
+  27 May 2012; Richard Yao <ryao@gentoo.org> pkgconfig-0.ebuild:
+  Change order on Gentoo/*BSD, bug #417693
+
+  19 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org> pkgconfig-0.ebuild:
+  Do not allow ancient versions of dev-util/pkgconfig, they cause interesting
+  build failures (e.g. bug #416057, reported by pingouin21).
+
+  04 May 2012; Samuli Suominen <ssuominen@gentoo.org> pkgconfig-0.ebuild:
+  Include dev-util/pkgconfig-openbsd[pkg-config].
+
+  02 May 2012; Mike Frysinger <vapier@gentoo.org> pkgconfig-0.ebuild:
+  Sync stable keywords with dev-util/pkgconfig.
+
+*pkgconfig-0 (01 May 2012)
+
+  01 May 2012; Mike Frysinger <vapier@gentoo.org> pkgconfig-0.ebuild,
+  metadata.xml:
+  Initial ebuild.

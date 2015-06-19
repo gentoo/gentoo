@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=C library that resolves names asynchronously
+EAPI=4
+HOMEPAGE=http://c-ares.haxx.se/
+IUSE=static-libs
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc64-solaris
+LICENSE=MIT
+SLOT=0
+SRC_URI=http://c-ares.haxx.se/download/c-ares-1.10.0.tar.gz
+_md5_=e568ca950bee295dffebc7d37b5c2829

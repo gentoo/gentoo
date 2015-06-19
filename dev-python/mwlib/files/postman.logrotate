@@ -1,0 +1,7 @@
+/var/log/mwlib/postman.log {
+    su mwlib mwlib
+    missingok
+    postrotate
+        /etc/init.d/postman restart > /dev/null 2>&1
+    endscript
+}

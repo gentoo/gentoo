@@ -1,0 +1,23 @@
+# ChangeLog for dev-ruby/rspec-its
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rspec-its/ChangeLog,v 1.5 2015/06/07 19:32:02 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Apr 2015; Hans de Graaff <graaff@gentoo.org> rspec-its-1.2.0.ebuild:
+  Add rspec 2.x keywords since this code was extracted from it.
+
+  25 Mar 2015; Hans de Graaff <graaff@gentoo.org> rspec-its-1.2.0.ebuild:
+  Add ruby22.
+
+*rspec-its-1.2.0 (21 Feb 2015)
+
+  21 Feb 2015; Manuel Rüger <mrueg@gentoo.org> +rspec-its-1.2.0.ebuild:
+  Version bump.
+
+*rspec-its-1.1.0 (28 Dec 2014)
+
+  28 Dec 2014; Hans de Graaff <graaff@gentoo.org> +rspec-its-1.1.0.ebuild,
+  +metadata.xml:
+  Initial import. New dependency for app-admin/puppet-lint.

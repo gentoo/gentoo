@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>xmw@gentoo.org</email>
+		<name>Michael Weber</name>
+	</maintainer>
+	<longdescription lang="en">
+		Text based LDAP client which uses your standard editor for viewing and
+		changing entries.
+	</longdescription>
+<use>
+	<flag name="gnutls">Use net-libs/gnutls instead of dev-libs/openssl</flag>
+</use>
+</pkgmetadata>

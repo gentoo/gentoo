@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=dev-python/PyQt4 dev-python/kaa-metadata =dev-lang/python-2*
+DESCRIPTION=GUI application for automatic downloading/uploading of subtitles for videofiles
+EAPI=5
+HOMEPAGE=http://www.subdownloader.net/
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=dev-python/PyQt4 dev-python/kaa-metadata =dev-lang/python-2*
+SLOT=0
+SRC_URI=http://launchpad.net/subdownloader/trunk/2.0.18/+download/subdownloader_2.0.18.orig.tar.gz -> subdownloader-2.0.18.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=6612c70805174b1decbb2b39c2d26839

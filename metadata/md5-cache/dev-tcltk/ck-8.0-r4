@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure prepare
+DEPEND=dev-lang/tk sys-libs/ncurses[gpm] sys-libs/gpm virtual/pkgconfig
+DESCRIPTION=A curses based toolkit for tcl
+EAPI=5
+HOMEPAGE=http://www.ch-werner.de/ck/
+KEYWORDS=amd64 x86
+LICENSE=BSD
+RDEPEND=dev-lang/tk sys-libs/ncurses[gpm] sys-libs/gpm
+SLOT=0
+SRC_URI=http://www.ch-werner.de/ck/ck8.0.tar.gz http://dev.gentoo.org/~jlec/distfiles/ck-8.0-tcl8.6.patch.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d3517489863c904baeac47ea7f6a34a4

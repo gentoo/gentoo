@@ -1,0 +1,35 @@
+From a61601a487394cbd5970c3b736aea71bf277ecc1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tim-Philipp=20M=C3=BCller?= <tim.muller@collabora.co.uk>
+Date: Sat, 16 Oct 2010 20:13:52 +0100
+Subject: [PATCH] tests: require check >= 0.9.7 for unit tests, and fix for new API
+
+The check API changed slightly. Fix things for the new API.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=632258
+---
+ tests/check/gnetcheck.h |    8 ++++----
+ 1 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tests/check/gnetcheck.h b/tests/check/gnetcheck.h
+index aeb9f68..14b6c28 100644
+--- a/tests/check/gnetcheck.h
++++ b/tests/check/gnetcheck.h
+@@ -311,11 +311,11 @@ int main (int argc, char **argv)				\
+ gboolean _gnet_check_run_test_func (const gchar * func_name);
+ 
+ static inline void
+-__gnet_tcase_add_test (TCase * tc, TFun tf, const gchar * func_name,
+-    int sig, int start, int end)
++__gnet_tcase_add_test (TCase * tc, TFun tf, const char * fname, int signal,
++    int allowed_exit_value, int start, int end)
+ {
+-  if (_gnet_check_run_test_func (func_name)) {
+-    _tcase_add_test (tc, tf, func_name, sig, start, end);
++  if (_gnet_check_run_test_func (fname)) {
++    _tcase_add_test (tc, tf, fname, signal, allowed_exit_value, start, end);
+   }
+ }
+ 
+-- 
+1.7.3.1
+

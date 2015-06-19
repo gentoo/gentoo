@@ -1,0 +1,10 @@
+# ChangeLog for x11-themes/elementary-xfce-icon-theme
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/elementary-xfce-icon-theme/ChangeLog,v 1.1 2015/04/22 04:11:02 calchan Exp $
+
+*elementary-xfce-icon-theme-0.4_p20150327 (22 Apr 2015)
+
+  22 Apr 2015; Denis Dupeyron <calchan@gentoo.org>
+  +elementary-xfce-icon-theme-0.4_p20150327.ebuild, +metadata.xml:
+  Initial commit.
+

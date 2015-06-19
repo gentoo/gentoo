@@ -1,0 +1,49 @@
+# ChangeLog for games-strategy/dominions2
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/dominions2/ChangeLog,v 1.13 2015/06/01 20:49:09 mr_bones_ Exp $
+
+  01 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org> dominions2-2.16.ebuild:
+  clean up app-emulation/emul-linux which has been removed
+
+  13 Oct 2014; Michał Górny <mgorny@gentoo.org> dominions2-2.16.ebuild:
+  Support multilib providers for deps. Bump to EAPI=5.
+
+  04 May 2014; Ulrich Müller <ulm@gentoo.org> dominions2-2.16.ebuild:
+  Change LICENSE to all-rights-reserved, add bindist restriction, bug 505758.
+
+  06 Jun 2013; Alfredo Tupone <tupone@gentoo.org> dominions2-2.16.ebuild:
+  Fixing broken homepage. Bug #471806 by Jonas Stein
+
+  16 Jan 2012; Ulrich Müller <ulm@gentoo.org> dominions2-2.16.ebuild:
+  Migrate to cdrom.eclass, bug 398809.
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> ChangeLog:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> dominions2-2.16.ebuild:
+  Replacing einfo with elog
+
+  28 Feb 2007; Tristan Heaven <nyhm@gentoo.org> dominions2-2.16.ebuild:
+  Fix quoting, bug #168723
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  dominions2-2.16.ebuild:
+  Changed nostrip to strip.
+
+  27 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  dominions2-2.16.ebuild:
+  Fixed dependencies on media-libs/libsdl and migrated to modular X.
+
+  21 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  dominions2-2.16.ebuild:
+  Added addition dir variable to games_make_wrapper for bug #109793.
+
+*dominions2-2.16 (05 Oct 2005)
+
+  05 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +dominions2-2.16.ebuild:
+  Initial import. Ebuild by Alex Linke <incubation.11@freenet.de> and modified
+  by me. Tested on amd64 and x86. Closing bug #36706.

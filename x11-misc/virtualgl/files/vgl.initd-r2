@@ -1,0 +1,30 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/virtualgl/files/vgl.initd-r2,v 1.1 2013/05/26 18:46:27 pacho Exp $
+
+# TODO: description="*" and other OpenRC 0.9+ candies
+
+depend() {
+	need xdm
+	after sshd
+}
+
+start() {
+	ebegin "Starting VirtualGL"
+	truncate --size=0 /var/lib/VirtualGL/vgl_xauth_key
+
+	# Check if XAUTHORITY was set successfully, if not wait a bit and let X to start
+	[ -z "$XAUTHORITY" ] && sleep 3 && set_xauth
+	[ -e "$XAUTHORITY" ] || sleep 3
+	xauth -f /var/lib/VirtualGL/vgl_xauth_key add $DISPLAY . `xauth -f $XAUTHORITY list | awk '{print $3;exit}'` && \
+		chmod 644 /var/lib/VirtualGL/vgl_xauth_key
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping VirtualGL"
+	[ -f /var/lib/VirtualGL/vgl_xauth_key ] && \
+		rm /var/lib/VirtualGL/vgl_xauth_key
+	eend $?
+}

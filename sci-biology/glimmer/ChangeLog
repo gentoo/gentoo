@@ -1,0 +1,65 @@
+# ChangeLog for sci-biology/glimmer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/glimmer/ChangeLog,v 1.14 2015/05/27 16:32:11 jlec Exp $
+
+  27 May 2015; Justin Lecher <jlec@gentoo.org> -glimmer-3.02-r2.ebuild:
+  Drop old
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> glimmer-3.02-r3.ebuild:
+  Stable for x86, wrt bug #550436
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> glimmer-3.02-r3.ebuild:
+  Stable for amd64, wrt bug #550436
+
+*glimmer-3.02b (26 May 2015)
+*glimmer-3.02-r3 (26 May 2015)
+
+  26 May 2015; Justin Lecher <jlec@gentoo.org>
+  +files/glimmer-3.02b-jobserver-fix.patch, +files/glimmer-3.02b-ldflags.patch,
+  +files/glimmer-3.02b-rename_extract.patch, +glimmer-3.02-r3.ebuild,
+  +glimmer-3.02b.ebuild, -glimmer-3.02-r1.ebuild:
+  Version Bump and patch for file collision, thanks Martin Mokrejs for the fix,
+  bug #247394; Respect CXX, CXXFLAGS and LDFLAGS
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+  16 Jul 2010; Markos Chandras <hwoarang@gentoo.org> glimmer-3.02-r2.ebuild:
+  Stable on amd64 wrt bug #328415
+
+  16 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  glimmer-3.02-r2.ebuild:
+  stable x86, bug 328415
+
+*glimmer-3.02-r2 (03 Apr 2010)
+
+  03 Apr 2010; Justin Lecher <jlec@gentoo.org> +glimmer-3.02-r2.ebuild,
+  +files/glimmer-3.02-jobserver-fix.patch:
+  jobserver fix, #299482, Thanks Myckel Habets
+  LDFLAGS/CFLAGS etc repected
+
+  03 Jan 2010; Pacho Ramos <pacho@gentoo.org> glimmer-3.02-r1.ebuild:
+  amd64 stable, bug 298762
+
+  29 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  glimmer-3.02-r1.ebuild:
+  stable x86, bug 298762
+
+  28 Dec 2009; Andrey Kislyuk <weaver@gentoo.org>
+  +files/glimmer-3.02-glibc210.patch, glimmer-3.02-r1.ebuild:
+  QA fixes, including bug 298223
+
+*glimmer-3.02-r1 (04 Jan 2009)
+
+  04 Jan 2009; weaver <weaver@gentoo.org> -glimmer-3.02.ebuild,
+  +glimmer-3.02-r1.ebuild:
+  Collision block, bug 247394
+
+  30 Sep 2008; Jeremy Olexa <darkside@gentoo.org> glimmer-3.02.ebuild:
+  add ~amd64 kw based on Chad's testing. bug #239162
+
+*glimmer-3.02 (07 Sep 2008)
+
+  07 Sep 2008; weaver <weaver@gentoo.org> +metadata.xml,
+  +glimmer-3.02.ebuild:
+  Import from science overlay

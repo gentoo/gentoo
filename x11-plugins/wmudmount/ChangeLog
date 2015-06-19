@@ -1,0 +1,83 @@
+# ChangeLog for x11-plugins/wmudmount
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmudmount/ChangeLog,v 1.19 2015/04/19 10:38:40 ago Exp $
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> wmudmount-2.2.ebuild:
+  Stable for amd64, wrt bug #517702
+
+  01 Apr 2015; Andreas Schuerch <nativemad@gentoo.org> wmudmount-2.2.ebuild:
+  x86 stable, see bug 517702
+
+*wmudmount-2.2 (28 Feb 2014)
+
+  28 Feb 2014; Bernard Cafarelli <voyageur@gentoo.org> +wmudmount-2.2.ebuild:
+  Version bump
+
+*wmudmount-2.1 (24 Feb 2014)
+
+  24 Feb 2014; Bernard Cafarelli <voyageur@gentoo.org> +wmudmount-2.1.ebuild:
+  Version bump
+
+*wmudmount-2.0 (09 Feb 2014)
+
+  09 Feb 2014; Bernard Cafarelli <voyageur@gentoo.org> +wmudmount-2.0.ebuild:
+  Version bump, major rewrite for gtk+:3 and udisks:2
+
+*wmudmount-1.13 (06 Jul 2012)
+
+  06 Jul 2012; Samuli Suominen <ssuominen@gentoo.org> +wmudmount-1.13.ebuild,
+  +files/wmudmount-headers.patch:
+  Version bump.
+
+  06 Jul 2012; Samuli Suominen <ssuominen@gentoo.org> -wmudmount-1.8.ebuild,
+  -files/wmudmount-1.8-libnotify-0.7.patch:
+  old
+
+  06 Jul 2012; Samuli Suominen <ssuominen@gentoo.org> wmudmount-1.11.ebuild:
+  amd64/x86 stable
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> wmudmount-1.8.ebuild,
+  wmudmount-1.11.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  27 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> wmudmount-1.8.ebuild,
+  wmudmount-1.11.ebuild:
+  Pin to SLOT="0" of sys-fs/udisks.
+
+  19 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> wmudmount-1.11.ebuild:
+  Remove unused inherit flag-o-matic and duplicate
+  --disable-dependency-tracking.
+
+*wmudmount-1.11 (19 Mar 2012)
+
+  19 Mar 2012; Bernard Cafarelli <voyageur@gentoo.org> +wmudmount-1.11.ebuild:
+  And version bump, spotted by ssuominen
+
+  19 Mar 2012; Bernard Cafarelli <voyageur@gentoo.org> wmudmount-1.8.ebuild:
+  Requires convert at build time, thanks Piotr Szymaniak in bug #408649
+
+  29 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> wmudmount-1.8.ebuild,
+  +files/wmudmount-1.8-libnotify-0.7.patch:
+  Fix building with x11-libs/libnotify >= 0.7.
+
+*wmudmount-1.8 (26 Dec 2010)
+
+  26 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> +wmudmount-1.8.ebuild:
+  Version bump.
+
+*wmudmount-1.6 (29 Jun 2010)
+
+  29 Jun 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  -wmudmount-1.4.ebuild, +wmudmount-1.6.ebuild:
+  Version bump
+
+*wmudmount-1.5 (19 May 2010)
+
+  19 May 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +wmudmount-1.5.ebuild:
+  Version bump
+
+*wmudmount-1.4 (07 Apr 2010)
+
+  07 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> +wmudmount-1.4.ebuild:
+  Initial commit wrt #313395 by Bernard Cafarelli.

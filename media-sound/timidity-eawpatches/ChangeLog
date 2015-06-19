@@ -1,0 +1,183 @@
+# ChangeLog for media-sound/timidity-eawpatches
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/timidity-eawpatches/ChangeLog,v 1.42 2015/03/31 19:37:48 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org>
+  timidity-eawpatches-12-r5.ebuild:
+  Update dependency after package move of eselect modules to app-eselect.
+
+  02 Dec 2012; Ulrich Müller <ulm@gentoo.org>
+  timidity-eawpatches-12-r5.ebuild:
+  Fix LICENSE, free only for non-commercial use and not to be sold for profit,
+  bug 441636.
+
+  24 Nov 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -timidity-eawpatches-12-r4.ebuild:
+  Cleanup old version using timidity-update.
+
+  29 Sep 2007; Samuli Suominen <drac@gentoo.org>
+  timidity-eawpatches-12-r5.ebuild:
+  Keyworded and marked stable on arm wrt #156160 and #191283 so they won't
+  block FLAC 1.1.4 anymore.
+
+  19 Aug 2007; Samuli Suominen <drac@gentoo.org>
+  timidity-eawpatches-12-r4.ebuild:
+  arm stable.
+
+  24 Feb 2007; Jeroen Roovers <jer@gentoo.org>
+  timidity-eawpatches-12-r5.ebuild:
+  Stable for HPPA (bug #156160).
+
+  06 Feb 2007; Simon Stelling <blubb@gentoo.org>
+  timidity-eawpatches-12-r5.ebuild:
+  stable on amd64; bug 161386
+
+  14 Jan 2007; Joseph Jezak <josejx@gentoo.org>
+  timidity-eawpatches-12-r5.ebuild:
+  Marked ppc stable for bug #161386.
+
+  12 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  timidity-eawpatches-12-r5.ebuild:
+  stable x86, bug #161386
+
+  11 Jan 2007; Markus Rothe <corsair@gentoo.org>
+  timidity-eawpatches-12-r5.ebuild:
+  Stable on ppc64; bug #161386
+
+  10 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  timidity-eawpatches-12-r5.ebuild:
+  Stable on sparc wrt #161386 and #156160
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  timidity-eawpatches-12-r4.ebuild:
+  Convert to use elog.
+
+  03 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  timidity-eawpatches-12-r5.ebuild:
+  Restrict binchecks and strip, only installs datafiles.
+
+  03 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  timidity-eawpatches-12-r5.ebuild:
+  Fix eselect-timidity dependency.
+
+  01 Dec 2006; Markus Rothe <corsair@gentoo.org>
+  timidity-eawpatches-12-r5.ebuild:
+  Added ~ppc64; bug #156160
+
+  28 Nov 2006; Joseph Jezak <josejx@gentoo.org>
+  timidity-eawpatches-12-r5.ebuild:
+  Marked ~ppc for bug #156160.
+
+  25 Nov 2006; Stefan Schweizer <genstef@gentoo.org>
+  timidity-eawpatches-12-r5.ebuild:
+  ~x86, bug 156160
+
+*timidity-eawpatches-12-r5 (24 Nov 2006)
+
+  24 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +timidity-eawpatches-12-r5.ebuild:
+  Remove dependency on timidity++ (so that these patchsets can be used with
+  libmodplug when it will work), remove message regarding timidity-updater,
+  and use eselect timidity to set the current patchset if none was selected
+  before.
+
+  22 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  timidity-eawpatches-12-r4.ebuild:
+  Add ~x86-fbsd keyword.
+
+  12 Jul 2006; Stefan Schweizer <genstef@gentoo.org>
+  timidity-eawpatches-12-r4.ebuild:
+  Do not use xargs because it does not work for functions
+
+  15 Jun 2006; Markus Ullmann <jokey@gentoo.org>
+  timidity-eawpatches-12-r4.ebuild:
+  You're ~ARMed now ;)
+
+  23 May 2006; Markus Rothe <corsair@gentoo.org>
+  timidity-eawpatches-12-r4.ebuild:
+  Stable on ppc64
+
+  03 May 2006; Markus Rothe <corsair@gentoo.org>
+  timidity-eawpatches-12-r4.ebuild:
+  Added ~ppc64; bug #109375
+
+  28 Mar 2005; Guy Martin <gmsoft@gentoo.org>
+  timidity-eawpatches-12-r4.ebuild:
+  Stable on hppa.
+
+  28 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -files/timidity-eawpatches-12-gentoo.diff,
+  -timidity-eawpatches-12-r2.ebuild, -timidity-eawpatches-12-r3.ebuild:
+  Cleaned out old versions.
+
+  22 Dec 2004; Joseph Jezak <josejx@gentoo.org>
+  timidity-eawpatches-12-r4.ebuild:
+  Marked ppc stable.
+
+  23 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  timidity-eawpatches-12-r4.ebuild:
+  Stable amd64, sparc, x86.
+
+*timidity-eawpatches-12-r4 (23 Sep 2004)
+
+  23 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +timidity-eawpatches-12-r4.ebuild:
+  Revision bump to make use of the timidity-update script provided by ohn
+  Richard Moser <nigelenki@comcast.net>.
+
+  03 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  timidity-eawpatches-12-r3.ebuild:
+  Stable sparc
+
+  04 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  timidity-eawpatches-12-r3.ebuild:
+  Added ~sparc.  Stable x86, amd64.
+
+*timidity-eawpatches-12-r3 (15 Jun 2004)
+
+  15 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -timidity-eawpatches-12-r1.ebuild, +timidity-eawpatches-12-r3.ebuild,
+  -timidity-eawpatches-12.ebuild:
+  Revbump to have the ebuild install the default config in /etc
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  timidity-eawpatches-12-r1.ebuild, timidity-eawpatches-12-r2.ebuild,
+  timidity-eawpatches-12.ebuild:
+  Added IUSE.
+
+  01 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  timidity-eawpatches-12-r1.ebuild, timidity-eawpatches-12-r2.ebuild:
+  Stable on x86.
+
+  30 Mar 2004; Daniel Ahlberg <aliz@gentoo.org>
+  timidity-eawpatches-12-r2.ebuild:
+  Adding amd64 keyword. Closing #45757.
+
+  08 Dec 2003; <spider@gentoo.org> timidity-eawpatches-12.ebuild:
+  QA drive, bug #35127
+
+  31 Oct 2003; David Holm <dholm@gentoo.org> timidity-eawpatches-12-r2.ebuild:
+  Added to ~ppc.
+
+  12 Jun 2003; <msterret@gentoo.org> timidity-eawpatches-12-r2.ebuild:
+  fix Header
+
+*timidity-eawpatches-12-r2 (22 Mar 2003)
+
+  22 Mar 2003; jje <jje@gentoo.org> timidity-eawpatches-12-r2.ebuild:
+  Updated ebuild that removes dep on rar and simplifies config.
+  
+  Submitted by: Jordan <lx_xero@zapo.net>
+
+*timidity-eawpatches-12-r1 (03 Dec 2002)
+
+	03 Dec 2002; Aron Griffis <agriffis@gentoo.org> timidity-eawpatches-12-r1:
+
+	Fix some installation issues with hints from Chris Moeller
+	<kode54@earthlink.net>.  Fixes BUG #8753
+
+*timidity-eawpatches-12 (19 May 2002)
+
+	19 May 2002; Aron Griffis <agriffis@gentoo.org> timidity-eawpatches-12:
+
+	Set of patches for use with timidity++.

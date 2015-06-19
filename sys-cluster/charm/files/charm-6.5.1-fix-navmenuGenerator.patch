@@ -1,0 +1,30 @@
+From 8b699f6c49df26b979da397b47c7dc7a099ed6b6 Mon Sep 17 00:00:00 2001
+From: Nicolas Bock <nicolasbock@gmail.com>
+Date: Sat, 28 Sep 2013 07:47:36 -0600
+Subject: [PATCH] Properly test for None return value in navmenuGenerator.py
+
+---
+ doc/navmenuGenerator.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/doc/navmenuGenerator.py b/doc/navmenuGenerator.py
+index c10afb5..5e5b97c 100755
+--- a/doc/navmenuGenerator.py
++++ b/doc/navmenuGenerator.py
+@@ -13,7 +13,12 @@ fileName = sys.argv[1];
+ soup = BeautifulSoup(open(fileName), "lxml")
+ 
+ # Get just the table of contents from the index page
+-toc = soup.find("ul","ChildLinks").extract()
++toc = soup.find("ul","ChildLinks")
++
++if toc == None:
++  sys.exit(0)
++
++toc = toc.extract()
+ 
+ # Retain only part and chapter titles
+ for sctn in toc.select("li > ul > li > ul"):
+-- 
+1.8.1.5
+

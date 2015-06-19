@@ -1,0 +1,33 @@
+diff -Naur mplayer-1.2_pre20150214/libao2/ao_pulse.c mplayer-1.2_pre20150214_2/libao2/ao_pulse.c
+--- mplayer-1.2_pre20150214/libao2/ao_pulse.c	2015-02-15 06:30:21.000000000 +1000
++++ mplayer-1.2_pre20150214_2/libao2/ao_pulse.c	2015-05-17 14:07:07.615640169 +1000
+@@ -53,6 +53,8 @@
+ 
+ static int broken_pause;
+ 
++static size_t bytes_per_sample;
++
+ LIBAO_EXTERN(pulse)
+ 
+ #define GENERIC_ERR_MSG(ctx, str) \
+@@ -201,6 +203,8 @@
+     }
+ 
+     pa_channel_map_init_auto(&map, ss.channels, PA_CHANNEL_MAP_ALSA);
++    bytes_per_sample = af_fmt2bits(ao_data.format) / 8;
++    bytes_per_sample *= ao_data.channels;
+     ao_data.bps = pa_bytes_per_second(&ss);
+ 
+     if (!(mainloop = pa_threaded_mainloop_new())) {
+@@ -297,6 +301,11 @@
+ 
+ /** Play the specified data to the pulseaudio server */
+ static int play(void* data, int len, int flags) {
++    //Align length to frame size
++    len=len - (len % bytes_per_sample);
++    if (len==0) {
++      return 0;
++    }
+     pa_threaded_mainloop_lock(mainloop);
+     if (pa_stream_write(stream, data, len, NULL, 0, PA_SEEK_RELATIVE) < 0) {
+         GENERIC_ERR_MSG(context, "pa_stream_write() failed");

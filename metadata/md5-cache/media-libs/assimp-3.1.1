@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=boost? ( dev-libs/boost ) samples? ( x11-libs/libX11 virtual/opengl media-libs/freeglut ) sys-libs/zlib sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Importer library to import assets from 3D files
+EAPI=5
+HOMEPAGE=http://assimp.sourceforge.net/
+IUSE=+boost samples static tools
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=BSD
+RDEPEND=boost? ( dev-libs/boost ) samples? ( x11-libs/libX11 virtual/opengl media-libs/freeglut ) sys-libs/zlib
+SLOT=0
+SRC_URI=mirror://sourceforge/assimp/assimp-3.1.1.zip
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=b1e24cb93dc3238b00ee60300c3b4bad

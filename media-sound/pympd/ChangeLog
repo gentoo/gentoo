@@ -1,0 +1,118 @@
+# ChangeLog for media-sound/pympd
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/pympd/ChangeLog,v 1.28 2012/05/05 08:48:22 mgorny Exp $
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> pympd-0.08.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Mar 2011; Christoph Mende <angelos@gentoo.org> pympd-0.08.1.ebuild:
+  Respect LDFLAGS (bug #333745)
+
+  16 Feb 2011; <angelos@gentoo.org> pympd-0.08.1.ebuild, metadata.xml:
+  Fixed gtk+[jpeg] dependency (bug #354279)
+
+  31 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> pympd-0.08.1.ebuild:
+  Restrict Python to 2.x wrt #313969.
+
+  28 May 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pympd-0.08.1.ebuild:
+  Delete call to deprecated python_version().
+
+  26 May 2009; Christian Faulhammer <fauli@gentoo.org> pympd-0.08.1.ebuild:
+  stable x86, bug 270782
+
+  22 May 2009; Samuli Suominen <ssuominen@gentoo.org> -pympd-0.06.1.ebuild,
+  -pympd-0.07.ebuild, pympd-0.08.1.ebuild,
+  +files/pympd-0.08.1-desktop-entry.patch:
+  Improve desktop entry and scalable icon install and stabilize amd64.
+
+  30 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Andrej Kacian (Ticho) from metadata.xml (as per #59986).
+
+  29 May 2008; Ali Polatel <hawking@gentoo.org> pympd-0.06.ebuild,
+  pympd-0.06.1.ebuild, pympd-0.07.ebuild, pympd-0.08.1.ebuild:
+  Multilib love. Remove redundant python_version in pkg_postrm.
+
+  22 Apr 2008; Raúl Porcel <armin76@gentoo.org> pympd-0.08.1.ebuild:
+  Add ~sparc
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> pympd-0.06.ebuild,
+  pympd-0.06.1.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  14 Jan 2008; Tony Vroon <chainsaw@gentoo.org> pympd-0.06.ebuild,
+  pympd-0.06.1.ebuild, pympd-0.08.1.ebuild:
+  Add pkgconfig dependency for the Evil Compile Person
+  <bugs@dev.gentooexperimental.org>, closes bug #205610. Quoted a few
+  variables on the way.
+
+*pympd-0.08.1 (26 May 2007)
+
+  26 May 2007; Andrej Kacian <ticho@gentoo.org> +pympd-0.08.1.ebuild:
+  Version bump. Bug #177882, by Tony Harmelink <aceofaces at gmail.com>.
+
+  26 May 2007; Samuli Suominen <drac@gentoo.org> pympd-0.07.ebuild:
+  inherit eutils for built_with_use.
+
+  11 Feb 2007; Andrej Kacian <ticho@gentoo.org> pympd-0.06.ebuild,
+  pympd-0.06.1.ebuild, pympd-0.07.ebuild:
+  Add x11-themes/gnome-icon-theme to RDEPEND to fix broken icons. Bug #166092,
+  reported by Roy <yvan.royon at gmail.com>.
+
+  01 Jan 2007; Sven Wegener <swegener@gentoo.org> pympd-0.06.ebuild,
+  pympd-0.07.ebuild:
+  Use full atoms for built_with_use.
+
+  04 Dec 2006; <ticho@gentoo.org> pympd-0.06.ebuild, pympd-0.07.ebuild:
+  Warn user if GTK+ was built without jpeg USE flag. Warning suggested by
+  Avuton Olrich <avuton at gmail.com>.
+
+  09 Sep 2006; <nixnut@gentoo.org> pympd-0.07.ebuild:
+  Added ~ppc
+
+*pympd-0.07 (22 Jul 2006)
+
+  22 Jul 2006; Andrej Kacian <ticho@gentoo.org> +pympd-0.07.ebuild:
+  Version bump. Use ebuild from bug #139710, submitted by Samuli Suominen
+  <sasuomin at uusikaupunki.fi>.
+
+*pympd-0.06.1 (22 Mar 2006)
+
+  22 Mar 2006; <ticho@gentoo.org> +pympd-0.06.1.ebuild:
+  Version bump.
+
+  18 Mar 2006; <ticho@gentoo.org> -pympd-0.05.ebuild, -pympd-0.05.2.ebuild,
+  pympd-0.06.ebuild:
+  0.06 stable on x86. Pruned obsolete ebuilds.
+
+  18 Feb 2006; Andrej Kacian <ticho@gentoo.org> pympd-0.06.ebuild:
+  Fixed the build procedure, so we don't need to sed the Makefile. Added a
+  warning about removing ~/.pympd. Thanks go to Natan 'whatah' Zohar.
+
+*pympd-0.06 (18 Feb 2006)
+
+  18 Feb 2006; Andrej Kacian <ticho@gentoo.org> +pympd-0.06.ebuild:
+  Version bump. Bug #122799, reported by Anton Romanov <theli at ukr.net>.
+
+  19 Nov 2005; Luis Medinas <metalgod@gentoo.org> pympd-0.05.2.ebuild:
+  Added ~amd64 keyword. Closes bug #112877.
+
+*pympd-0.05.2 (18 Nov 2005)
+
+  18 Nov 2005; Andrej Kacian <ticho@gentoo.org> -pympd-0.04.ebuild,
+  +pympd-0.05.2.ebuild:
+  Version bump. Closes bug #112843, by Anton Romanov <theli at ukr.net>.
+	Removed 0.04.
+
+*pympd-0.05 (18 Oct 2005)
+
+  18 Oct 2005; Andrej Kacian <ticho@gentoo.org> +pympd-0.05.ebuild:
+  Version bump. Added a desktop entry. Closes bug #109700, by Anton Romanov
+  <theli at ukr.net>.
+
+*pympd-0.04 (16 Oct 2005)
+
+  16 Oct 2005; Andrej Kacian <ticho@gentoo.org> +metadata.xml,
+  +pympd-0.04.ebuild:
+  Initial import. Closes bug #103107, by Anton Romanov <theli at ukr.net>.
+

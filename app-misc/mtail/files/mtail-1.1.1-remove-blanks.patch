@@ -1,0 +1,52 @@
+--- mtail.orig	2003-11-07 19:02:34.000000000 +0000
++++ mtail	2003-11-07 19:19:18.000000000 +0000
+@@ -46,6 +46,7 @@
+ verbose = 0
+ silent = 0
+ active = 0
++remove_blanks = 0
+ 
+ # sets up the interrupt handler, calls processargs(), sets up and starts the
+ # tailers.
+@@ -119,6 +120,8 @@
+             if line[len(line)-1] == '\n':
+                 line = line[:len(line)-1]
+             line = filter(line)
++            if remove_blanks and not line:
++                continue
+             lock.acquire()
+             try:
+                 if (multiple or verbose) and (not silent) \
+@@ -138,12 +141,14 @@
+     global verbose
+     global silent
+     global config_file
++    global remove_blanks
+     filenames = []
+     lines = None
+     follow = 0
+     try:
+         opts, pargs = getopt.getopt(sys.argv[1:], 'fn:?hvq', ["follow",
+-            "lines=", "help", "verbose", "quiet", "silent", "config="])
++            "lines=", "help", "verbose", "quiet", "silent", "config=",
++            "remove-blanks"])
+     except getopt.error:
+         print 'unrecognized option!'
+         print
+@@ -163,6 +168,8 @@
+             silent = 1
+         elif opt[0] in ['--config']:
+             config_file = opt[1]
++        elif opt[0] in ['--remove-blanks']:
++            remove_blanks = 1
+     if lines == None:
+         lines = 10
+     for filename in pargs:
+@@ -186,6 +193,7 @@
+     print '      -v, --verbose          always output headers giving file names'
+     print '      -q, --quiet, --silent  never output headers giving file names'
+     print '      --config=FILE          use config file FILE instead of ~/.mtailrc'
++    print '      --remove-blanks        do not display blank lines'
+     print
+     print 'with more than one filename, mtail will precede each chunk from'
+     print 'each with a header giving the file name. if no filenames are given'

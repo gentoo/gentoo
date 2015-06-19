@@ -1,0 +1,44 @@
+# ChangeLog for sci-libs/dsdp
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/dsdp/ChangeLog,v 1.9 2013/02/21 21:38:53 jlec Exp $
+
+  21 Feb 2013; Justin Lecher <jlec@gentoo.org> dsdp-5.8-r2.ebuild,
+  metadata.xml:
+  Use tc-getPKG_CONFIG from toolchain-funcs.eclass instead of plain pkg-config
+
+  09 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/dsdp-5.8-malloc.patch, dsdp-5.8-r2.ebuild:
+  keyword amd64-linux, x86-linux, and adapted changes from the science overlay
+  for macos prefix, thanks Francois Bissey
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> dsdp-5.8-r2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*dsdp-5.8-r2 (04 Apr 2012)
+
+  04 Apr 2012; Justin Lecher <jlec@gentoo.org> -dsdp-5.8-r1.ebuild,
+  +dsdp-5.8-r2.ebuild:
+  Fix underlinking, #410735
+
+*dsdp-5.8-r1 (17 Jan 2012)
+
+  17 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org> -dsdp-5.8.ebuild,
+  +dsdp-5.8-r1.ebuild:
+  Now installs header files as well, bug #399035
+
+  28 Jun 2011; Justin Lecher <jlec@gentoo.org> dsdp-5.8.ebuild, metadata.xml:
+  Fix sed on *FLAGS from : to |
+
+  05 Jun 2011; Justin Lecher <jlec@gentoo.org> dsdp-5.8.ebuild,
+  +files/dsdp-5.8-gold.patch:
+  Make it gold resistant, #370109
+
+  14 Mar 2011; Sébastien Fabbro <bicatali@gentoo.org> dsdp-5.8.ebuild,
+  +files/dsdp-5.8-readsdpa.patch:
+  Fixed leak in one of the examples
+
+*dsdp-5.8 (07 Mar 2011)
+
+  07 Mar 2011; Sébastien Fabbro <bicatali@gentoo.org> +dsdp-5.8.ebuild,
+  +metadata.xml:
+  Initial import

@@ -1,0 +1,42 @@
+# ChangeLog for dev-ruby/nagios
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/nagios/ChangeLog,v 1.10 2015/06/07 18:44:30 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  08 Feb 2015; Hans de Graaff <graaff@gentoo.org> nagios-0.0.4-r1.ebuild:
+  Add ruby22.
+
+  02 Aug 2014; Manuel Rüger <mrueg@gentoo.org> nagios-0.0.4-r1.ebuild:
+  Add ruby21 support.
+
+  07 May 2014; Manuel Rüger <mrueg@gentoo.org> -nagios-0.0.4.ebuild,
+  nagios-0.0.4-r1.ebuild:
+  Remove ruby18 target. Cleanup old.
+
+*nagios-0.0.4-r1 (19 Oct 2013)
+
+  19 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +nagios-0.0.4-r1.ebuild,
+  -nagios-0.0.3.ebuild:
+  Add ruby20 target. Remove old.
+
+  20 Jun 2013; Benedikt Böhm <hollow@gentoo.org> metadata.xml:
+  remove myself from maintainers
+
+  21 Dec 2012; Corentin Chary <iksaif@gentoo.org> metadata.xml:
+  /ruby>/ruby/
+
+  17 Dec 2012; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  Add ruby herd.
+
+*nagios-0.0.4 (17 Dec 2012)
+
+  17 Dec 2012; Hans de Graaff <graaff@gentoo.org> +nagios-0.0.4.ebuild:
+  Add the latest version.
+
+*nagios-0.0.3 (17 Dec 2012)
+
+  17 Dec 2012; Benedikt Böhm <hollow@gentoo.org> +nagios-0.0.3.ebuild,
+  +metadata.xml:
+  add dev-ruby/nagios

@@ -1,0 +1,172 @@
+# ChangeLog for x11-libs/glamor
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/glamor/ChangeLog,v 1.45 2015/02/24 08:38:05 ago Exp $
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> glamor-0.6.0-r1.ebuild:
+  Stable for alpha, wrt bug #530652
+
+  23 Feb 2015; Agostino Sarubbo <ago@gentoo.org> glamor-0.6.0-r1.ebuild:
+  Stable for sparc, wrt bug #530652
+
+  22 Feb 2015; Agostino Sarubbo <ago@gentoo.org> glamor-0.6.0-r1.ebuild:
+  Stable for ia64, wrt bug #530652
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> glamor-0.6.0-r1.ebuild:
+  Stable for ppc64, wrt bug #530652
+
+  20 Feb 2015; Agostino Sarubbo <ago@gentoo.org> glamor-0.6.0-r1.ebuild:
+  Stable for ppc, wrt bug #530652
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> glamor-0.6.0-r1.ebuild:
+  Stable for x86, wrt bug #530652
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org> glamor-0.6.0-r1.ebuild:
+  Stable for amd64, wrt bug #530652
+
+  15 Nov 2014; Mike Frysinger <vapier@gentoo.org> glamor-0.6.0-r1.ebuild,
+  glamor-0.6.0.ebuild:
+  Fix eclass inherit order so autotools-utils does not stomp on xorg-2 setup
+  #506416 by Nikoli.
+
+  21 Jul 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -glamor-0.5-r1.ebuild, -glamor-0.5.1-r1.ebuild, -glamor-0.5.1.ebuild,
+  -glamor-0.5.ebuild, glamor-0.6.0-r1.ebuild, glamor-0.6.0.ebuild:
+  Make mesa dependency more strict, bug #516706
+
+  19 Apr 2014; Agostino Sarubbo <ago@gentoo.org> glamor-0.6.0.ebuild:
+  Stable for sparc, wrt bug #500368
+
+  18 Apr 2014; Agostino Sarubbo <ago@gentoo.org> glamor-0.6.0.ebuild:
+  Stable for alpha, wrt bug #500368
+
+  17 Apr 2014; Agostino Sarubbo <ago@gentoo.org> glamor-0.6.0.ebuild:
+  Stable for ia64, wrt bug #500368
+
+  16 Apr 2014; Agostino Sarubbo <ago@gentoo.org> glamor-0.6.0.ebuild:
+  Stable for ppc64, wrt bug #500368
+
+  08 Apr 2014; Agostino Sarubbo <ago@gentoo.org> glamor-0.6.0.ebuild:
+  Stable for ppc, wrt bug #500368
+
+  06 Apr 2014; Agostino Sarubbo <ago@gentoo.org> glamor-0.6.0.ebuild:
+  Stable for x86, wrt bug #500368
+
+*glamor-0.6.0-r1 (30 Mar 2014)
+
+  30 Mar 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/glamor-0.6.0-glamor_egl_create_argb8888.patch, +glamor-0.6.0-r1.ebuild:
+  Fix X server crash, bug #505574.
+
+  27 Mar 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  glamor-0.6.0.ebuild:
+  Work around parallel install failure, bug #488124.
+
+  27 Mar 2014; Agostino Sarubbo <ago@gentoo.org> glamor-0.6.0.ebuild:
+  Stable for amd64, wrt bug #500368
+
+  11 Feb 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/glamor-0.6.0-xv-add-missing-include.patch, glamor-0.6.0.ebuild:
+  fix xv build against pre 1.13 servers, bug #499442.
+
+*glamor-0.6.0 (26 Jan 2014)
+
+  26 Jan 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +glamor-0.6.0.ebuild:
+  Version bump.
+
+*glamor-0.5.1-r1 (25 Nov 2013)
+
+  25 Nov 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +glamor-0.5.1-r1.ebuild, glamor-0.5.1.ebuild:
+  Revbump for bug #488906 and revert changes to stable ebuild.
+
+  24 Nov 2013; Magnus Granberg <zorry@gentoo.org> glamor-0.5.1.ebuild:
+  Fix bug 488906 fail to load driver with hardened compiler
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org> glamor-0.5.1.ebuild:
+  Stable for x86, wrt bug #475480
+
+  07 Oct 2013; Agostino Sarubbo <ago@gentoo.org> glamor-0.5.1.ebuild:
+  Stable for sparc, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org> glamor-0.5.1.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  05 Oct 2013; Agostino Sarubbo <ago@gentoo.org> glamor-0.5.1.ebuild:
+  Stable for alpha, wrt bug #475480
+
+  04 Oct 2013; Agostino Sarubbo <ago@gentoo.org> glamor-0.5.1.ebuild:
+  Stable for ppc64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org> glamor-0.5.1.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org> glamor-0.5.1.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*glamor-0.5.1 (15 Sep 2013)
+
+  15 Sep 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +glamor-0.5.1.ebuild:
+  Version bump, bug #484990.
+
+*glamor-0.5-r1 (12 Mar 2013)
+
+  12 Mar 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +glamor-0.5-r1.ebuild, glamor-0.5.ebuild:
+  New revision for EAPI change, enable rebuilding of the xorg module.
+
+  30 Dec 2012; Agostino Sarubbo <ago@gentoo.org> glamor-0.5.ebuild:
+  Stable for alpha, wrt bug #440872
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org> glamor-0.5.ebuild:
+  Stable for sparc, wrt bug #440872
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org> glamor-0.5.ebuild:
+  Stable for ia64, wrt bug #440872
+
+  08 Dec 2012; Agostino Sarubbo <ago@gentoo.org> glamor-0.5.ebuild:
+  Stable for ppc64, wrt bug #440872
+
+  28 Nov 2012; Brent Baude <ranger@gentoo.org> glamor-0.5.ebuild:
+  Marking glamor-0.5 ppc stable for bug 440872
+
+  18 Nov 2012; Agostino Sarubbo <ago@gentoo.org> glamor-0.5.ebuild:
+  Stable for x86, wrt bug #440872
+
+  16 Nov 2012; Agostino Sarubbo <ago@gentoo.org> glamor-0.5.ebuild:
+  Stable for amd64, wrt bug #440872
+
+  07 Nov 2012; Anthony G. Basile <blueness@gentoo.org> glamor-0.5.ebuild:
+  keyword ~ppc ~ppc64, bug #414295
+
+*glamor-0.5 (11 Aug 2012)
+
+  11 Aug 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +glamor-0.5.ebuild, -files/glamor-0.4.1-xorg-server-1.13.patch,
+  -glamor-0.4.1-r1.ebuild, -glamor-0.4.1.ebuild:
+  Version bump.
+
+*glamor-0.4.1-r1 (08 Aug 2012)
+
+  08 Aug 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/glamor-0.4.1-xorg-server-1.13.patch, +glamor-0.4.1-r1.ebuild:
+  Fix building against xorg-server-1.13, bug #428786.
+
+  31 Jul 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  glamor-0.4.1.ebuild:
+  Not compatible with xorg-server-1.13 yet
+
+  17 Jun 2012; Raúl Porcel <armin76@gentoo.org> glamor-0.4.1.ebuild:
+  Add ~ia64 wrt #414295
+
+  07 May 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  glamor-0.4.1.ebuild:
+  Depend on mesa[gbm].
+
+*glamor-0.4.1 (01 May 2012)
+
+  01 May 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +glamor-0.4.1.ebuild, +metadata.xml:
+  Initial import from the x11 overlay, thanks to alexxy for pointing out
+  installation path issues.

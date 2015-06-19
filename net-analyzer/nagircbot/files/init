@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagircbot/files/init,v 1.1 2008/04/12 19:22:14 caleb Exp $
+
+depend() {
+    use net
+}
+
+start() {
+    ebegin "Starting nagircbot"
+    start-stop-daemon --start -x /usr/bin/nagircbot -- $BOTCONF
+    eend $? "Failed to start nagircbot"
+}
+
+stop() {
+    ebegin "Stopping nagircbot"
+    start-stop-daemon --stop -x /usr/bin/nagircbot
+    eend $? "Failed to stop nagircbot"
+}

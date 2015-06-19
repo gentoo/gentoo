@@ -1,0 +1,263 @@
+# ChangeLog for www-apache/libapreq2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/libapreq2/ChangeLog,v 1.52 2014/11/18 23:40:26 dilfridge Exp $
+
+  18 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  libapreq2-2.13-r1.ebuild:
+  Replace perl-module_pkg_setup with perl_set_version
+
+  16 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  libapreq2-2.13-r1.ebuild:
+  Replace fixlocalpod with perl_delete_localpod
+
+  28 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> -libapreq2-2.13.ebuild,
+  libapreq2-2.13-r1.ebuild:
+  Merge stable keywords from -r0; Drop old.
+
+*libapreq2-2.13-r1 (24 Aug 2014)
+
+  24 Aug 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +libapreq2-2.13-r1.ebuild:
+  Bump to EAPI 5
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  13 Aug 2011; Peter Volkov <pva@gentoo.org> -libapreq2-2.08-r2.ebuild,
+  -libapreq2-2.12.ebuild:
+  Drop old.
+
+  24 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> libapreq2-2.13.ebuild:
+  ppc/ppc64 stable wrt #373317
+
+  15 Jul 2011; Markus Meier <maekke@gentoo.org> libapreq2-2.13.ebuild:
+  x86 stable, bug #373317
+
+  30 Jun 2011; Markos Chandras <hwoarang@gentoo.org> libapreq2-2.13.ebuild:
+  Stable on amd64 wrt bug #373317
+
+  19 Jun 2011; Raúl Porcel <armin76@gentoo.org> libapreq2-2.08-r2.ebuild,
+  libapreq2-2.12.ebuild, libapreq2-2.13.ebuild:
+  Drop alpha/sparc keywords
+
+  27 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> libapreq2-2.12.ebuild:
+  x86 stable wrt bug #368469
+
+  25 May 2011; Brent Baude <ranger@gentoo.org> libapreq2-2.12.ebuild:
+  Marking libapreq2-2.12 ppc for bug 368469
+
+  24 May 2011; Markos Chandras <hwoarang@gentoo.org> libapreq2-2.12.ebuild:
+  Stable on amd64 wrt bug #368469
+
+*libapreq2-2.13 (24 May 2011)
+
+  24 May 2011; Peter Volkov <pva@gentoo.org> +libapreq2-2.13.ebuild:
+  Version bump.
+
+  05 Sep 2009; Torsten Veller <tove@gentoo.org> libapreq2-2.08-r2.ebuild,
+  libapreq2-2.12.ebuild:
+  Add INSTALLDIRS=vendor to install perl modules to vendor_perl (#283723)
+
+*libapreq2-2.12 (27 Jun 2009)
+
+  27 Jun 2009; Patrick Lauer <patrick@gentoo.org> +libapreq2-2.12.ebuild:
+  Bump to 2.12, fixes #275390
+
+  26 May 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  libapreq2-2.08-r2.ebuild:
+  Add pkg_setup().
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org> libapreq2-2.08-r2.ebuild:
+  New virtuals: version
+
+  22 Mar 2008; Benedikt Böhm <hollow@gentoo.org> -libapreq2-2.08.ebuild:
+  get rid of old libapreq2 ebuild (finally)
+
+  22 Mar 2008; Markus Meier <maekke@gentoo.org> libapreq2-2.08-r2.ebuild:
+  amd64 stable, bug #205225
+
+  31 Jan 2008; Benedikt Böhm <hollow@gentoo.org> libapreq2-2.08-r2.ebuild:
+  fix depend.apache usage wrt #208033 (again)
+
+  29 Jan 2008; Benedikt Böhm <hollow@gentoo.org> files/76_mod_apreq.conf,
+  metadata.xml, libapreq2-2.08.ebuild:
+  fix depend.apache usage wrt #208033; update metadata; cleanup
+
+  27 Jan 2008; Benedikt Böhm <hollow@gentoo.org>
+  -files/libapreq2-2.0-binloc.patch, -files/libapreq2-2.0-sandbox.patch,
+  files/76_mod_apreq.conf, -libapreq2-2.07.ebuild,
+  -libapreq2-2.07-r1.ebuild, -libapreq2-2.08-r1.ebuild:
+  cleanup
+
+  15 Jan 2008; Raúl Porcel <armin76@gentoo.org> libapreq2-2.08-r2.ebuild:
+  alpha/sparc stable wrt #205225
+
+  10 Jan 2008; Markus Meier <maekke@gentoo.org> libapreq2-2.08-r2.ebuild:
+  x86 stable, bug #205225
+
+  10 Jan 2008; Brent Baude <ranger@gentoo.org> libapreq2-2.08-r2.ebuild:
+  Marking libapreq2-2.08-r2 ppc64 for bug 205225
+
+  10 Jan 2008; Brent Baude <ranger@gentoo.org> libapreq2-2.08-r2.ebuild:
+  Marking libapreq2-2.08-r2 ppc for bug 205225
+
+  25 Nov 2007; Benedikt Böhm <hollow@gentoo.org> libapreq2-2.08-r2.ebuild:
+  fix apache-module eclass usage
+
+  26 Aug 2007; Benedikt Böhm <hollow@gentoo.org> libapreq2-2.08-r2.ebuild:
+  fix #189831
+
+*libapreq2-2.08-r2 (19 Aug 2007)
+
+  19 Aug 2007; Benedikt Böhm <hollow@gentoo.org> files/76_mod_apreq.conf,
+  +libapreq2-2.08-r2.ebuild:
+  fix #187017
+
+  19 Aug 2007; Benedikt Böhm <hollow@gentoo.org>
+  +files/libapreq2-2.0-binloc.patch, +files/libapreq2-2.0-sandbox.patch,
+  +files/76_mod_apreq.conf, +files/libapreq2-2.08-doc.patch, +metadata.xml,
+  +libapreq2-2.07.ebuild, +libapreq2-2.07-r1.ebuild, +libapreq2-2.08.ebuild,
+  +libapreq2-2.08-r1.ebuild:
+  move from www-misc/libapreq2 and perl herd to www-apache/libapreq2 and
+  apache herd
+
+  30 Jul 2007; Raúl Porcel <armin76@gentoo.org> libapreq2-2.08-r1.ebuild:
+  alpha/x86 stable
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org> libapreq2-2.08.ebuild,
+  libapreq2-2.08-r1.ebuild:
+  Fixing the DEPEND/RDEPEND for the move of net-www/apache to
+  www-servers/apache (#78622).
+
+  16 Jul 2007; Michael Cummings <mcummings@gentoo.org>
+  libapreq2-2.08-r1.ebuild:
+  sparc stable
+
+  28 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  libapreq2-2.08-r1.ebuild:
+  Changed postint from einfo to elog so new portage can display
+
+*libapreq2-2.08-r1 (31 May 2007)
+
+  31 May 2007; Michael Cummings <mcummings@gentoo.org>
+  +libapreq2-2.08-r1.ebuild:
+  Bug 177467, perl modules. Thanks bor :)
+
+  20 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  libapreq2-2.08.ebuild:
+  stable amd64, bug 178194
+
+*libapreq2-2.08 (05 May 2007)
+
+  05 May 2007; Michael Cummings <mcummings@gentoo.org>
+  +files/libapreq2-2.08-doc.patch, +libapreq2-2.08.ebuild:
+  Bug 158170 for the version bump; also fixed a doxygen compilation problem
+  and fixed multilib-strict support
+
+  01 May 2007; Markus Rothe <corsair@gentoo.org> libapreq2-2.07-r1.ebuild:
+  Added ~ppc64; bug #175872
+
+  26 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  libapreq2-2.07-r1.ebuild:
+  Added missing dep on dev-perl/version, bug 159882
+
+  13 Mar 2007; Raúl Porcel <armin76@gentoo.org> libapreq2-2.07-r1.ebuild:
+  x86 stable
+
+  21 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  libapreq2-2.07-r1.ebuild:
+  Marking sparc stable
+
+  20 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  +files/libapreq2-2.0-binloc.patch, +files/libapreq2-2.0-sandbox.patch,
+  +files/76_mod_apreq.conf, +metadata.xml, +libapreq2-2.07.ebuild,
+  +libapreq2-2.07-r1.ebuild:
+  Moving libapreq2, bug 162120
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> libapreq2-2.07.ebuild:
+  Stable on Alpha.
+
+*libapreq2-2.07-r1 (21 Aug 2006)
+
+  21 Aug 2006; Yuval Yaari <yuval@gentoo.org> +libapreq2-2.07-r1.ebuild:
+  (Bug #129432) Revision-bump; removed un-needed dep (app-doc/doxygen -- only
+  needed when building apreq from svn)
+
+  20 Aug 2006; Yuval Yaari <yuval@gentoo.org> -libapreq2-2.04.03.ebuild,
+  -libapreq2-2.06.ebuild:
+  security cleanup (bug #140543)
+
+  02 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  libapreq2-2.07.ebuild:
+  Marking stable amd64
+
+  04 Jun 2006; Michael Stewart <vericgar@gentoo.org> libapreq2-2.07.ebuild:
+  Address dependency issues caused by depend.apache. Refer to bug 107127.
+
+  11 Apr 2006; <mcummings@gentoo.org> libapreq2-2.07.ebuild:
+  Marking sparc stable
+
+  09 Apr 2006; <mcummings@gentoo.org> libapreq2-2.07.ebuild:
+  Syntax fixes, closes bug 77547
+
+  08 Apr 2006; Bryan Østergaard <kloeri@gentoo.org libapreq2-2.07.ebuild:
+  Stable on x86, bug 128610.
+
+  03 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libapreq2-2.07.ebuild:
+  ppc stable, bug #128610
+
+  11 Mar 2006; Michael Hanselmann <hansmi@gentoo.org> libapreq2-2.06.ebuild:
+  Stable on ppc.
+
+  27 Feb 2006; <mcumming@gentoo.org> libapreq2-2.07.ebuild:
+  Removed doc from iuse - no longer do i use. ha.
+
+  27 Feb 2006; <mcumming@gentoo.org> libapreq2-2.07.ebuild:
+  Trailing white space, oh the humanity (thanks rl03 for noticing both typos btw)
+
+  27 Feb 2006; <mcumming@gentoo.org> libapreq2-2.07.ebuild:
+  doxygen is no longer optional; syntax in unpack
+
+*libapreq2-2.07 (26 Feb 2006)
+
+  26 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  libapreq2-2.06.ebuild, +libapreq2-2.07.ebuild:
+  Marking 2.06 stable, adding 2.07
+
+  14 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> libapreq2-2.06.ebuild:
+  keyworded ~alpha, wrt bug #102503
+
+  14 Aug 2005; Michael Cummings <mcummings@gentoo.org>
+  libapreq2-2.06.ebuild:
+  Keywording sparc
+
+*libapreq2-2.06 (03 Aug 2005)
+
+  03 Aug 2005; Michael Cummings <mcummings@gentoo.org>
+  +files/76_mod_apreq.conf, +libapreq2-2.06.ebuild:
+  Another product of rendhalver, tested and true, with some mods for
+  documentation by myself. With this commit I will be removing the
+  package.mask entry for this.
+
+*libapreq2-2.04.03 (10 May 2005)
+
+  10 May 2005; Elfyn McBratney <beu@gentoo.org>
+  +files/libapreq2-2.0-binloc.patch, +files/libapreq2-2.0-sandbox.patch,
+  +metadata.xml, +libapreq2-2.04.03.ebuild:
+  dev-perl/libapreq{,2} -> www-apache
+
+  09 May 2005; Elfyn McBratney <beu@gentoo.org> libapreq2-2.04.03.ebuild:
+  dev-perl/mod_perl -> www-apache/mod_perl
+
+  11 Apr 2005; Christian Parpart <trapni@gentoo.org>
+  libapreq2-2.04.03.ebuild:
+  fixed licence item
+
+*libapreq2-2.04.03 (28 Sep 2004)
+
+  28 Sep 2004; Robert Coie <rac@gentoo.org> +files/libapreq2-2.0-binloc.patch,
+  +files/libapreq2-2.0-sandbox.patch, +libapreq2-2.04.03.ebuild:
+  mod_perl 2 version of libapreq. tests are not perfect yet, and reliability is
+  suspect

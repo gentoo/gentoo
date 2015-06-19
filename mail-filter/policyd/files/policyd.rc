@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/policyd/files/policyd.rc,v 1.1 2007/01/10 21:21:56 strerror Exp $
+
+depend() {
+	before mta
+	provide postfix_greylist
+}
+
+start() {
+	ebegin "Starting policyd"
+	start-stop-daemon --name policyd --start --quiet --exec /usr/sbin/policyd \
+		-- -c ${POLICYD_CONFIG}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping policyd"
+	start-stop-daemon --stop --quiet --pidfile /var/run/policyd.pid
+	eend $?
+}

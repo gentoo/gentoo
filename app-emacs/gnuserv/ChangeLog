@@ -1,0 +1,155 @@
+# ChangeLog for app-emacs/gnuserv
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/gnuserv/ChangeLog,v 1.37 2015/03/31 17:42:16 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> gnuserv-3.12.8-r2.ebuild:
+  Update dependency after package move of eselect modules to app-eselect.
+
+  23 Mar 2014; Ulrich Müller <ulm@gentoo.org> -gnuserv-3.12.8.ebuild,
+  gnuserv-3.12.8-r2.ebuild, -files/gnuserv-3.12.7-path-xemacs.patch,
+  -files/50gnuserv-gentoo-3.12.8-r2.el, files/50gnuserv-gentoo.el:
+  Remove old.
+
+  23 Mar 2014; Agostino Sarubbo <ago@gentoo.org> gnuserv-3.12.8-r2.ebuild:
+  Stable for x86, wrt bug #503110
+
+  17 Mar 2014; Chema Alonso <nimiux@gentoo.org> gnuserv-3.12.8-r2.ebuild:
+  Stable for amd64 wrt bug #503110
+
+  18 Feb 2014; Ulrich Müller <ulm@gentoo.org> gnuserv-3.12.8-r2.ebuild:
+  Add missing elisp-site-regen call to postinst and postrm phases.
+
+  17 Feb 2014; Ulrich Müller <ulm@gentoo.org> gnuserv-3.12.8-r2.ebuild:
+  Add strong blockers against app-editors/xemacs versions that are installing
+  gnuserv binaries without an -xemacs suffix.
+
+*gnuserv-3.12.8-r2 (17 Feb 2014)
+
+  17 Feb 2014; Ulrich Müller <ulm@gentoo.org> -gnuserv-3.12.8-r1.ebuild,
+  +gnuserv-3.12.8-r2.ebuild, +files/50gnuserv-gentoo-3.12.8-r2.el,
+  +files/gnuclient.desktop:
+  Install binaries with -emacs suffix to avoid file collisions with XEmacs;
+  active versions of gnuclient and gnudoit can now be selected with the
+  gnuclient eselect module, bug 177936. Install the gnuserv binary under
+  /usr/libexec and set the path in the site-init file accordingly. Install a
+  desktop entry with USE=X.
+
+*gnuserv-3.12.8-r1 (15 Feb 2014)
+
+  15 Feb 2014; Ulrich Müller <ulm@gentoo.org> +gnuserv-3.12.8-r1.ebuild:
+  Recent XEmacs includes a gnuserv that is no longer compatible with this
+  standalone version. Install binary programs, instead of splitting them off
+  to app-emacs/gnuserv-programs. Add blockers against that package and against
+  app-editors/xemacs.
+
+  30 Apr 2010; Fabian Groffen <grobian@gentoo.org> gnuserv-3.12.8.ebuild:
+  Marked ~x86-linux and ~ppc-macos
+
+  21 Jun 2009; Ulrich Mueller <ulm@gentoo.org> gnuserv-3.12.8.ebuild:
+  Fix dependency since the xemacs virtual is gone.
+
+  29 Mar 2009; Ulrich Mueller <ulm@gentoo.org> gnuserv-3.12.8.ebuild:
+  Use autopatch feature of elisp.eclass.
+
+  12 Oct 2008; Ulrich Mueller <ulm@gentoo.org> gnuserv-3.12.8.ebuild:
+  Add missing SITEFILE definition.
+
+  27 Aug 2008; Ulrich Mueller <ulm@gentoo.org> -gnuserv-3.12.7-r1.ebuild,
+  gnuserv-3.12.8.ebuild:
+  Use eclass default instead of elisp-comp, bug 235442. Remove old.
+
+  01 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  gnuserv-3.12.8.ebuild:
+  stable x86/amd64
+
+*gnuserv-3.12.8 (31 Oct 2007)
+
+  31 Oct 2007; Ulrich Mueller <ulm@gentoo.org> +gnuserv-3.12.8.ebuild:
+  Version bump.
+
+  22 Aug 2007; Ulrich Mueller <ulm@gentoo.org> -gnuserv-3.12.5.ebuild,
+  -gnuserv-3.12.7.ebuild:
+  Remove old versions.
+
+  22 Aug 2007; Christoph Mende <angelos@gentoo.org>
+  gnuserv-3.12.7-r1.ebuild:
+  Stable on amd64 wrt bug #186608
+
+  02 Aug 2007; Christian Faulhammer <opfer@gentoo.org>
+  gnuserv-3.12.7-r1.ebuild:
+  stable x86, bug 186608
+
+  25 Jul 2007; Ulrich Mueller <ulm@gentoo.org> gnuserv-3.12.5.ebuild,
+  gnuserv-3.12.7.ebuild, gnuserv-3.12.7-r1.ebuild:
+  Remove SITEFILE definition since it is the eclass default.
+
+  03 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  gnuserv-3.12.7-r1.ebuild:
+  removed src_install (make use of DOCS variable and elisp.eclass)
+
+  21 Jun 2007; Christoph Mende <angelos@gentoo.org>
+  gnuserv-3.12.7-r1.ebuild:
+  Added ~amd64 wrt bug 180292
+
+  16 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  gnuserv-3.12.7-r1.ebuild:
+  Added ~ppc, bug #180292
+
+*gnuserv-3.12.7-r1 (29 May 2007)
+
+  29 May 2007; Ulrich Mueller <ulm@gentoo.org>
+  +files/gnuserv-3.12.7-path-xemacs.patch, +gnuserv-3.12.7-r1.ebuild:
+  Binary programs moved to new package app-emacs/gnuserv-programs to avoid
+  file collisions with XEmacs, bug #177936. Search for gnuserv binary also in
+  XEmacs directory; use system-configuration to determine exec-path in
+  gnuserv.el.
+
+  19 May 2007; Ulrich Mueller <ulm@gentoo.org> gnuserv-3.12.7.ebuild:
+  Add IUSE="X" and missing libXau dependency. Add messages to die commands.
+
+  07 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/50gnuserv-gentoo.el:
+  add load path correctly, fixes bug 169588, reported by Ulrich Mueller
+  <ulm@kph.uni-mainz.de>
+
+  08 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/digest-gnuserv-3.12.5, files/digest-gnuserv-3.12.7, Manifest:
+  recreate Manifest
+
+  08 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  -gnuserv-3.12.4.ebuild:
+  clean up
+
+  24 Oct 2005; Joseph Jezak <josejx@gentoo.org> gnuserv-3.12.7.ebuild:
+  Marked ~ppc.
+
+  03 May 2005; Mamoru KOMACHI <usata@gentoo.org> gnuserv-3.12.5.ebuild,
+  gnuserv-3.12.7.ebuild:
+  Fixed bug #86572.
+
+  03 May 2005; Mamoru KOMACHI <usata@gentoo.org> gnuserv-3.12.4.ebuild,
+  gnuserv-3.12.5.ebuild, gnuserv-3.12.7.ebuild:
+  Unset LDFLAGS; bug #83112.
+
+*gnuserv-3.12.7 (12 Apr 2005)
+
+  12 Apr 2005; Mamoru KOMACHI <usata@gentoo.org> +gnuserv-3.12.7.ebuild:
+  Version bumped.
+
+*gnuserv-3.12.5 (09 Nov 2002)
+
+  09 Nov 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  gnuserv-3.12.5.ebuild, files/digest-gnuserv-3.12.5 :
+
+  New version. Resolves bug #10282.
+
+*gnuserv-3.12.4 (31 Oct 2002)
+
+  02 Nov 2003; Jason Shoemaker <kutsuya@gentoo.org> gnuserv-3.12.4 : The 
+  tarball was moved to an archive for older versions. Fixed location.
+
+  31 Oct 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  gnuserv-3.12.4.ebuild, files/50gnuserv-gentoo.el, 
+  files/digest-gnuserv-3.12.4 :
+
+  Initial import.

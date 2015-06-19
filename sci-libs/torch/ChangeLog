@@ -1,0 +1,47 @@
+# ChangeLog for sci-libs/torch
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/torch/ChangeLog,v 1.10 2012/08/03 20:20:35 bicatali Exp $
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml,
+  torch-3.1.ebuild:
+  keyword amd64-linux x86-linux
+
+  24 Jul 2010; Justin Lecher <jlec@gentoo.org> +files/3.1-prll.patch,
+  torch-3.ebuild, torch-3.1.ebuild:
+  Parallel build fix
+
+  15 Mar 2010; Sébastien Fabbro <bicatali@gentoo.org> torch-3.1.ebuild:
+  Now install headers, thanks Joshua Rich for the patch, bug #309225
+
+*torch-3.1 (13 Feb 2010)
+
+  13 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org> +torch-3.1.ebuild:
+  Version Bump per 184500
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> torch-3.ebuild:
+  Remove virtual/libc
+
+  02 Jun 2006; Markus Dittrich <markusle@gentoo.org> torch-3.ebuild:
+  Added missing backslashes that caused problems with sed. This fixes
+  bug #132728.
+
+  24 Aug 2005; Patrick Kursawe <phosphan@gentoo.org> torch-3.ebuild:
+  No longer using cp -a (bug #103487)
+
+  09 May 2005; Herbie Hopkins <herbs@gentoo.org> torch-3.ebuild:
+  Don't add -malign-double on amd64, keyworded ~amd64.
+
+*torch-3 (28 Dec 2004)
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +torch-3.ebuild:
+  Moved from dev-libs/torch to sci-libs/torch.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> torch-3.ebuild:
+  virtual/glibc -> virtual/libc
+
+*torch-3 (17 Jun 2004)
+
+  17 Jun 2004; Patrick Kursawe <phosphan@gentoo.org> metadata.xml,
+  torch-3.ebuild:
+  Initial version.

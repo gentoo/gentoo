@@ -1,0 +1,22 @@
+--- audit-2.4.1/bindings/python/Makefile.am
++++ audit-2.4.1/bindings/python/Makefile.am
+@@ -27,5 +27,6 @@
+ 
+ auparse_la_SOURCES = auparse_python.c
+ auparse_la_CPPFLAGS = -I$(top_srcdir)/auparse $(AM_CPPFLAGS) -I@PYINCLUDEDIR@ -fno-strict-aliasing
+-auparse_la_LDFLAGS = -module -avoid-version -Wl,-z,relro
++auparse_la_CFLAGS = -shared
++auparse_la_LDFLAGS = -module -avoid-version -shared -Wl,-z,relro
+ auparse_la_LIBADD = ${top_builddir}/auparse/libauparse.la ${top_builddir}/lib/libaudit.la
+--- audit-2.4.1/swig/Makefile.am
++++ audit-2.4.1/swig/Makefile.am
+@@ -27,7 +27,8 @@
+ pyexec_PYTHON = audit.py
+ pyexec_LTLIBRARIES = _audit.la
+ pyexec_SOLIBRARIES = _audit.so
+-_audit_la_LDFLAGS = -module -avoid-version -Wl,-z,relro
++_audit_la_CFLAGS = -shared
++_audit_la_LDFLAGS = -module -avoid-version -shared -Wl,-z,relro
+ _audit_la_HEADERS: $(top_builddir)/config.h 
+ _audit_la_DEPENDENCIES =${top_srcdir}/lib/libaudit.h ${top_builddir}/lib/libaudit.la
+ nodist__audit_la_SOURCES  = audit_wrap.c

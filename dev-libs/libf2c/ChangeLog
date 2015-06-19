@@ -1,0 +1,258 @@
+# ChangeLog for dev-libs/libf2c
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libf2c/ChangeLog,v 1.68 2015/05/27 17:27:48 jlec Exp $
+
+  27 May 2015; Justin Lecher <jlec@gentoo.org> -libf2c-20110801-r3.ebuild:
+  Drop old
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> libf2c-20110801-r4.ebuild:
+  Stable for x86, wrt bug #542232
+
+  21 May 2015; Agostino Sarubbo <ago@gentoo.org> libf2c-20110801-r4.ebuild:
+  Stable for amd64, wrt bug #542232
+
+  17 May 2015; Pacho Ramos <pacho@gentoo.org> libf2c-20110801-r4.ebuild:
+  ppc64 stable wrt bug #542232
+
+  15 May 2015; Pacho Ramos <pacho@gentoo.org> libf2c-20110801-r4.ebuild:
+  ppc stable wrt bug #542232
+
+*libf2c-20110801-r4 (02 Feb 2015)
+
+  02 Feb 2015; Justin Lecher <jlec@gentoo.org> +libf2c-20110801-r4.ebuild,
+  +files/libf2c-20110801-format-security.patch:
+  Add patch for format-security, #538342; thanks Ted Tanberry for the patch
+
+  03 Feb 2014; Justin Lecher <jlec@gentoo.org>
+  -files/20070912-link-shared-libf2c-correctly.patch,
+  -files/20090407-main.patch:
+  Drop old patches
+
+  26 Jun 2013; Justin Lecher <jlec@gentoo.org> -libf2c-20110801-r2.ebuild:
+  Drop old
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libf2c-20110801-r3.ebuild:
+  Stable for amd64, wrt bug #469000
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libf2c-20110801-r3.ebuild:
+  Stable for x86, wrt bug #469000
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libf2c-20110801-r3.ebuild:
+  Stable for ppc64, wrt bug #469000
+
+  24 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libf2c-20110801-r3.ebuild:
+  Stable for ppc, wrt bug #469000
+
+*libf2c-20110801-r3 (08 May 2013)
+
+  08 May 2013; Justin Lecher <jlec@gentoo.org> +libf2c-20110801-r3.ebuild,
+  +files/libf2c-20110801-64bit-long.patch, metadata.xml:
+  Fix long on 64bit systems, #468352
+
+  06 Nov 2012; Ulrich Müller <ulm@gentoo.org> libf2c-20110801-r2.ebuild:
+  LICENSE is "HPND" according to Notice in tarball.
+
+  18 Oct 2012; Justin Lecher <jlec@gentoo.org> -libf2c-20070912.ebuild,
+  -libf2c-20090407-r1.ebuild:
+  Drop old
+
+  16 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  libf2c-20110801-r2.ebuild:
+  stable ppc ppc64, bug #433493
+
+  06 Oct 2012; Raúl Porcel <armin76@gentoo.org> libf2c-20090407-r1.ebuild,
+  libf2c-20110801-r2.ebuild:
+  Drop alpha keywords
+
+  07 Sep 2012; Johannes Huber <johu@gentoo.org> libf2c-20110801-r2.ebuild:
+  Stable for x86, wrt bug #433493
+
+  07 Sep 2012; Agostino Sarubbo <ago@gentoo.org> libf2c-20110801-r2.ebuild:
+  Stable for amd64, wrt bug #433493
+
+  04 Sep 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  files/libf2c-20110801-main.patch:
+  Clean patch
+
+*libf2c-20110801-r2 (04 Sep 2012)
+
+  04 Sep 2012; Justin Lecher <jlec@gentoo.org> -libf2c-20110801-r1.ebuild,
+  +libf2c-20110801-r2.ebuild, +files/libf2c-20110801-main.patch:
+  Adding new main() patch, #421975
+
+*libf2c-20110801-r1 (31 Aug 2012)
+
+  31 Aug 2012; Justin Lecher <jlec@gentoo.org> libf2c-20090407-r1.ebuild,
+  -libf2c-20110801.ebuild, +libf2c-20110801-r1.ebuild, metadata.xml:
+  Drop main.patch, #421975
+
+*libf2c-20110801 (19 Jun 2012)
+
+  19 Jun 2012; Sébastien Fabbro <bicatali@gentoo.org> +libf2c-20110801.ebuild,
+  metadata.xml:
+  Version bump. Switch to EAPI4, use tc-getLD and added longdescription
+
+  06 Jun 2012; Zac Medico <zmedico@gentoo.org> libf2c-20070912.ebuild,
+  libf2c-20090407-r1.ebuild:
+  inherit multilib for get_libdir
+
+  31 Mar 2012; Tobias Klausmann <klausman@gentoo.org>
+  libf2c-20090407-r1.ebuild:
+  Stable on alpha, bug #354033
+
+  13 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  libf2c-20090407-r1.ebuild:
+  ppc64 stable wrt #354033
+
+  01 Jun 2011; Brent Baude <ranger@gentoo.org> libf2c-20090407-r1.ebuild:
+  Marking libf2c-20090407-r1 ppc stable for bug 354033
+
+  09 May 2011; Thomas Kahle <tomka@gentoo.org> libf2c-20090407-r1.ebuild:
+  x86 stable per bug 354033
+
+  30 Apr 2011; Raúl Porcel <armin76@gentoo.org> libf2c-20070912.ebuild,
+  libf2c-20090407-r1.ebuild:
+  Drop alpha/sparc keywords
+
+  26 Apr 2011; Christoph Mende <angelos@gentoo.org>
+  libf2c-20090407-r1.ebuild:
+  Stable on amd64 wrt bug #364011
+
+  24 Feb 2011; Justin Lecher <jlec@gentoo.org> libf2c-20070912.ebuild,
+  libf2c-20090407-r1.ebuild:
+  Correct license to as-is, #356271
+
+  11 May 2010; Justin Lecher <jlec@gentoo.org> libf2c-20090407-r1.ebuild:
+  Keyworded for ~amd64-linux ~x86-linux
+
+*libf2c-20090407-r1 (07 May 2010)
+
+  07 May 2010; Justin Lecher <jlec@gentoo.org>
+  files/20090407-link-shared-libf2c-correctly.patch,
+  -libf2c-20090407.ebuild, +files/20090407-main.patch,
+  +libf2c-20090407-r1.ebuild:
+  Fixed undefined symbols
+
+  31 Mar 2010; Justin Lecher <jlec@gentoo.org> libf2c-20090407.ebuild:
+  USE static -> statis-libs, #312465
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> libf2c-20070912.ebuild:
+  Remove virtual/libc
+
+*libf2c-20090407 (07 Apr 2009)
+
+  07 Apr 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/libf2c-20021004-shared-object.patch,
+  files/20070912-link-shared-libf2c-correctly.patch,
+  +files/20090407-link-shared-libf2c-correctly.patch,
+  -libf2c-20021004-r1.ebuild, +libf2c-20090407.ebuild:
+  Version bump (bug #263725, thanks to jlec) and fixed for as-needed (bug
+  #248350). Added a static use flag for static library building switch.
+
+  26 Nov 2008; Brent Baude <ranger@gentoo.org> libf2c-20070912.ebuild:
+  stable ppc64, bug 245830
+
+  14 Nov 2008; Raúl Porcel <armin76@gentoo.org> libf2c-20070912.ebuild:
+  alpha/sparc stable wrt #245830
+
+  08 Nov 2008; Markus Meier <maekke@gentoo.org> libf2c-20070912.ebuild:
+  amd64/x86 stable, bug #245830
+
+  08 Nov 2008; nixnut <nixnut@gentoo.org> libf2c-20070912.ebuild:
+  Stable on ppc wrt bug 245830
+
+  06 Nov 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  files/20070912-link-shared-libf2c-correctly.patch, libf2c-20070912.ebuild:
+  Really including soname into shared library
+
+  08 Jul 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  libf2c-20070912.ebuild:
+  Explicitly specify RDEPEND so unzip doesn't get sucked into it (Sébastien
+  Fabbro).
+
+  08 Jul 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  libf2c-20070912.ebuild:
+  Fix minor syntax errors.
+
+*libf2c-20070912 (08 Jul 2008)
+
+  08 Jul 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/20070912-link-shared-libf2c-correctly.patch,
+  +libf2c-20070912.ebuild:
+  Bump to latest upstream code. (#164397) Provide SONAME in libf2c.so. Also
+  links libf2c with libm so we don't get any undefined symbols.
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing kugelfang from metadata.xml as per #46972.
+
+  23 Aug 2007; Roy Marples <uberlord@gentoo.org> libf2c-20051004.ebuild:
+  Keyworded ~x86-fbsd.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*libf2c-20051004 (14 May 2006)
+
+  14 May 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  +files/20051004-add-ofiles-dep.patch, +libf2c-20051004.ebuild:
+  Bump. Changes: Work correctly when writing to a file after reading from it;
+  Add libf2c.so makefile rule; Stop forcing the rounding precision on x86
+  (only affects use of 'f2c -trapuv'). Also, mirror a versioned zip file
+  instead of the unversioned upstream one.
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> libf2c-20021004-r1.ebuild:
+  Mark 20021004-r1 stable on alpha
+
+  15 May 2005; Danny van Dyk <kugelfang@gentoo.org>
+  libf2c-20021004-r1.ebuild:
+  Inherits toolchain-funcs now instead of deprecated gcc eclass.
+
+  05 May 2005; Danny van Dyk <kugelfang@gentoo.org>
+  libf2c-20021004-r1.ebuild, -libf2c-20021004.ebuild:
+  Removed libf2c-20021004. Fixed DEPEND in -r1, (thx to Jeremy Warren).
+
+  17 Feb 2005; Bryan Østergaard <kloeri@gentoo.org>
+  libf2c-20021004-r1.ebuild:
+  ~alpha keyword.
+
+  10 Jan 2005; Markus Rothe <corsair@gentoo.org> libf2c-20021004-r1.ebuild:
+  Stable on ppc64
+
+  09 Sep 2004; Philippe Trottier <tchiwam@gentoo.org> libf2c-20021004-r1.ebuild:
+  Marked ~ppc64
+
+  06 Aug 2004; Ferris McCormick <fmccor@gentoo.org> libf2c-20021004-r1.ebuild:
+  Stable for sparc (part of bug 55386).
+
+  06 Aug 2004; Danny van Dyk <kugelfang@gentoo.org> libf2c-20021004-r1.ebuild:
+  Marked stable on amd64, ppc and x86.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libf2c-20021004-r1.ebuild, libf2c-20021004.ebuild:
+  virtual/glibc -> virtual/libc
+
+  01 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> libf2c-20021004-r1.ebuild:
+  Marked ~sparc on behalf of ciaranm.
+
+  01 Jul 2004; David Holm <dholm@gentoo.org> libf2c-20021004-r1.ebuild:
+  Added to ~ppc.
+
+*libf2c-20021004-r1 (01 Jul 2004)
+
+  01 Jul 2004; Danny van Dyk <kugelfang@gentoo.org>
+  +files/libf2c-20021004-shared-object.patch, +libf2c-20021004-r1.ebuild:
+  Patched the makefile.u to produce a shared object with -fPIC. (see BUG #55386)
+
+  07 Apr 2004; Travis Tilley <lv@gentoo.org> libf2c-20021004.ebuild:
+  added ~amd64 to keywords
+
+  07 Jul 2003; Michael Sterrett <msterret@gentoo.org> libf2c-20021004.ebuild:
+  more error checking
+
+  02 Nov 2002; Hannes Mehnert <hannes@gentoo.org> libf2c-20021004.ebuild:
+  marked stable for x86
+
+*libf2c-20021004 (28 Oct 2002)
+
+  28 Oct 2002; Hannes Mehnert <hannes@gentoo.org> libf2c-20021004.ebuild,
+  ChangeLog: Initial ebuild. Thanks to a-tenderholt@northwestern.edu.

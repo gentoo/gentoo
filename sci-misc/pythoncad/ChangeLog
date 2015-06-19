@@ -1,0 +1,46 @@
+# ChangeLog for sci-misc/pythoncad
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/pythoncad/ChangeLog,v 1.11 2015/04/08 18:22:37 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pythoncad-1.37-r1.ebuild:
+  Drop old Python implementations
+
+  08 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> -pythoncad-1.37.ebuild:
+  Drop old revision
+
+*pythoncad-1.37-r1 (01 Jun 2013)
+
+  01 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> +pythoncad-1.37-r1.ebuild:
+  Revision bump: EAPI 5 and distutils-r1 eclass
+
+  01 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> pythoncad-1.37.ebuild:
+  Change HOMEPAGE, wrt bug #460330
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #151880
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> pythoncad-1.37.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  06 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pythoncad-1.37.ebuild:
+  Set SUPPORT_PYTHON_ABIS (bug #316241).
+
+*pythoncad-1.37 (10 Mar 2010)
+
+  10 Mar 2010; Cédric Krier <cedk@gentoo.org> -pythoncad-1.36.ebuild,
+  +pythoncad-1.37.ebuild, +files/pythoncad-1.37-png.patch:
+  Version bump
+
+  07 Feb 2010; Peter Volkov <pva@gentoo.org> pythoncad-1.36.ebuild:
+  Add inherit eutils: domenu is defined there.
+
+  30 Oct 2008; Christoph Mende <angelos@gentoo.org> pythoncad-1.36.ebuild:
+  Added ~amd64
+
+*pythoncad-1.36 (16 Jun 2007)
+
+  16 Jun 2007; Cédric Krier <cedk@gentoo.org> +metadata.xml,
+  +pythoncad-1.36.ebuild:
+  New ebuild thanks to Mr. Bones., Rob Cakebread, Lukasz Strzygowski, r0g1,
+  David Grant, Alastair Tse

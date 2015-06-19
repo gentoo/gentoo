@@ -1,0 +1,38 @@
+# ChangeLog for dev-vcs/topgit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/topgit/ChangeLog,v 1.9 2015/01/02 22:45:04 mgorny Exp $
+
+  02 Jan 2015; Michał Górny <mgorny@gentoo.org> -topgit-0.8.ebuild:
+  Remove old (bash-completion.eclass cleanup).
+
+  08 Dec 2014; Mikle Kolyada <zlogene@gentoo.org> topgit-0.9.ebuild:
+  x86 stable wrt bug #521716
+
+  08 Oct 2014; Manuel Rüger <mrueg@gentoo.org> topgit-0.9.ebuild:
+  Mark stable on amd64. See bug #521716.
+
+  26 Aug 2014; Michał Górny <mgorny@gentoo.org> topgit-0.9.ebuild:
+  Remove needless USE=bash-completion. Install completion file using a correct
+  name for autoloading.
+
+*topgit-0.9 (11 Aug 2014)
+
+  11 Aug 2014; Christian Ruppert <idl0r@gentoo.org> +topgit-0.9.ebuild:
+  Version bump, bug 518956
+
+  02 Mar 2013; Christoph Junghans <ottxor@gentoo.org> topgit-0.8.ebuild:
+  switched to virtual/awk (bug #455728)
+
+  17 Jul 2010; Markos Chandras <hwoarang@gentoo.org> topgit-0.8.ebuild:
+  Stable on amd64 wrt bug #328479
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org> topgit-0.8.ebuild:
+  stable x86, bug 328479
+
+*topgit-0.8 (05 Jun 2010)
+
+  05 Jun 2010; Christian Ruppert <idl0r@gentoo.org> +topgit-0.8.ebuild,
+  +metadata.xml:
+  Initial commit, bug 250516, thanks to Alexander Potashev
+  <aspotashev@gmail.com> and Benjamin Bannier
+  <bbannier+gentoo_bugs@gmail.com>.

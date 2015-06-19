@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Web Server vulnerability scanner
+HOMEPAGE=http://www.cirt.net/Nikto2
+IUSE=ssl
+KEYWORDS=~amd64 ~ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl >=net-analyzer/nmap-3.00 ssl? ( dev-libs/openssl )
+SLOT=0
+SRC_URI=http://www.cirt.net/source/nikto/ARCHIVE/nikto-1.36.tar.gz
+_md5_=ec0949b5e9023c0b006f83ff0e618a5a

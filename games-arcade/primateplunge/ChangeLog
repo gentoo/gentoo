@@ -1,0 +1,54 @@
+# ChangeLog for games-arcade/primateplunge
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/primateplunge/ChangeLog,v 1.13 2014/05/16 19:21:26 mr_bones_ Exp $
+
+  16 May 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/primateplunge-1.1-AC_SUBST.patch, primateplunge-1.1-r1.ebuild:
+  EAPI=5
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> primateplunge-1.1-r1.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  21 Apr 2013; Ulrich Müller <ulm@gentoo.org> primateplunge-1.1-r1.ebuild:
+  Fix LICENSE, add mirror and bindist restriction, bug 465850. Update SRC_URI.
+
+  15 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  primateplunge-1.1-r1.ebuild:
+  EAPI=2; HOMEPAGE tweak (bug #289211)
+
+  22 Jun 2008; Markus Meier <maekke@gentoo.org> primateplunge-1.1-r1.ebuild:
+  x86 stable, bug #227643
+
+  20 Jun 2008; Kenneth Prugh <ken69267@gentoo.org>
+  primateplunge-1.1-r1.ebuild:
+  amd64 stable, bug #227643
+
+  19 Jun 2008; nixnut <nixnut@gentoo.org> primateplunge-1.1-r1.ebuild:
+  Stable on ppc wrt bug 227643
+
+*primateplunge-1.1-r1 (29 May 2007)
+
+  29 May 2007; Tupone Alfredo <tupone@gentoo.org>
+  +primateplunge-1.1-r1.ebuild:
+  Added menu entry. Bug #160242 by Pacho Ramos
+
+  24 Apr 2007; Timothy Redaelli <drizzt@gentoo.org>
+  primateplunge-1.1.ebuild:
+  Add ~x86-fbsd keyword.
+  Thanks to Nathan Smith for reporting wrt bug #175779
+
+  25 Sep 2006; <blubb@gentoo.org> primateplunge-1.1.ebuild:
+  stable on amd64
+
+  02 Jun 2006; <Tupone@gentoo.org> primateplunge-1.1.ebuild:
+  Added ~amd64 keyword, bug 134784 by Matija Suklje
+
+  15 May 2006; Joseph Jezak <josejx@gentoo.org> primateplunge-1.1.ebuild:
+  Added ~ppc.
+
+*primateplunge-1.1 (25 Mar 2006)
+
+  25 Mar 2006; Stefan Schweizer <genstef@gentoo.org> +metadata.xml,
+  +primateplunge-1.1.ebuild:
+  New ebuild by myself

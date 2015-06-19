@@ -1,0 +1,354 @@
+# ChangeLog for dev-perl/Module-Pluggable
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Module-Pluggable/ChangeLog,v 1.38 2015/06/13 19:23:43 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Module-Pluggable-4.700.0.ebuild, Module-Pluggable-4.800.0.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Module-Pluggable-4.700.0.ebuild, +Module-Pluggable-4.800.0.ebuild,
+  +metadata.xml:
+  Move from perl-core to dev-perl
+
+  08 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -Module-Pluggable-4.600.0.ebuild:
+  Remove old
+
+  23 Sep 2014; Agostino Sarubbo <ago@gentoo.org>
+  Module-Pluggable-4.700.0.ebuild:
+  Stable for sparc, wrt bug #504786
+
+  22 Sep 2014; Agostino Sarubbo <ago@gentoo.org>
+  Module-Pluggable-4.700.0.ebuild:
+  Stable for x86, wrt bug #504786
+
+  22 Sep 2014; Agostino Sarubbo <ago@gentoo.org>
+  Module-Pluggable-4.700.0.ebuild:
+  Stable for ia64, wrt bug #504786
+
+  21 Sep 2014; Agostino Sarubbo <ago@gentoo.org>
+  Module-Pluggable-4.700.0.ebuild:
+  Stable for ppc, wrt bug #504786
+
+  21 Sep 2014; Agostino Sarubbo <ago@gentoo.org>
+  Module-Pluggable-4.700.0.ebuild:
+  Stable for ppc64, wrt bug #504786
+
+  17 Sep 2014; Jeroen Roovers <jer@gentoo.org> Module-Pluggable-4.700.0.ebuild:
+  Stable for HPPA (bug #504786).
+
+  31 Aug 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Module-Pluggable-4.700.0.ebuild:
+  arm stable wrt bug #504786
+
+  28 Jul 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Module-Pluggable-4.700.0.ebuild:
+  amd64 stable wrt bug #381424
+
+  24 Jul 2014; Tobias Klausmann <klausman@gentoo.org>
+  Module-Pluggable-4.700.0.ebuild:
+  Stable on alpha, bug #381424
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  Module-Pluggable-4.600.0.ebuild, Module-Pluggable-4.700.0.ebuild,
+  Module-Pluggable-4.800.0.ebuild:
+  Add arm64 love.
+
+  17 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  Module-Pluggable-4.600.0.ebuild:
+  Mark sh stable.
+
+  31 Dec 2013; Mikle Kolyada <zlogene@gentoo.org>
+  -Module-Pluggable-3.900.0.ebuild, -Module-Pluggable-4.0.0.ebuild,
+  -Module-Pluggable-4.300.0.ebuild, -Module-Pluggable-4.500.0.ebuild:
+  Drop old
+
+*Module-Pluggable-4.800.0 (14 Aug 2013)
+
+  14 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +Module-Pluggable-4.800.0.ebuild:
+  Bump
+
+*Module-Pluggable-4.700.0 (13 Mar 2013)
+
+  13 Mar 2013; Torsten Veller <tove@gentoo.org>
+  +Module-Pluggable-4.700.0.ebuild:
+  Version bump
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  Module-Pluggable-4.600.0.ebuild:
+  Stable for sparc, wrt bug #458122
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  Module-Pluggable-4.600.0.ebuild:
+  Stable for ia64, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  Module-Pluggable-4.600.0.ebuild:
+  Stable for alpha, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  Module-Pluggable-4.600.0.ebuild:
+  Stable for ppc, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  Module-Pluggable-4.600.0.ebuild:
+  Stable for ppc64, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  Module-Pluggable-4.600.0.ebuild:
+  Stable for x86, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  Module-Pluggable-4.600.0.ebuild:
+  Stable for amd64, wrt bug #458122
+
+  28 Jan 2013; Naohiro Aota <naota@gentoo.org> Module-Pluggable-4.600.0.ebuild:
+  Add ~x86-fbsd wrt #454264
+
+  28 Jan 2013; Jeroen Roovers <jer@gentoo.org> Module-Pluggable-4.600.0.ebuild:
+  Marked ~hppa (bug #454264).
+
+*Module-Pluggable-4.600.0 (27 Jan 2013)
+
+  27 Jan 2013; Torsten Veller <tove@gentoo.org>
+  +Module-Pluggable-4.600.0.ebuild:
+  Version bump
+
+*Module-Pluggable-4.500.0 (17 Nov 2012)
+
+  17 Nov 2012; Torsten Veller <tove@gentoo.org>
+  +Module-Pluggable-4.500.0.ebuild:
+  Version bump
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org>
+  Module-Pluggable-4.300.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+*Module-Pluggable-4.300.0 (22 Aug 2012)
+
+  22 Aug 2012; Torsten Veller <tove@gentoo.org>
+  +Module-Pluggable-4.300.0.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  06 May 2012; Raúl Porcel <armin76@gentoo.org>
+  Module-Pluggable-3.900.0.ebuild, Module-Pluggable-4.0.0.ebuild:
+  Add ~arm/~s390/~sh
+
+*Module-Pluggable-4.0.0 (02 May 2012)
+
+  02 May 2012; Torsten Veller <tove@gentoo.org> +Module-Pluggable-4.0.0.ebuild:
+  Version bump
+
+*Module-Pluggable-3.900.0 (20 May 2011)
+
+  20 May 2011; Torsten Veller <tove@gentoo.org> -Module-Pluggable-3.9.ebuild,
+  +Module-Pluggable-3.900.0.ebuild:
+  Change version scheme
+
+  23 Dec 2009; Fabian Groffen <grobian@gentoo.org>
+  Module-Pluggable-3.9.ebuild:
+  Marked ~x86-solaris, bug #296509
+
+  16 Dec 2009; Jonathan Callen <abcd@gentoo.org>
+  Module-Pluggable-3.9.ebuild:
+  QA: Transfer prefix keywords
+
+  28 Apr 2009; Torsten Veller <tove@gentoo.org>
+  -Module-Pluggable-3.6.ebuild, -Module-Pluggable-3.8.ebuild:
+  Cleanup
+
+  25 Apr 2009; Raúl Porcel <armin76@gentoo.org>
+  Module-Pluggable-3.9.ebuild:
+  ia64 stable wrt #266103
+
+  19 Apr 2009; Tiago Cunha <tcunha@gentoo.org> Module-Pluggable-3.9.ebuild:
+  stable sparc, bug 266103
+
+  19 Apr 2009; Markus Meier <maekke@gentoo.org> Module-Pluggable-3.9:
+  amd64/x86 stable, bug #266103
+
+  18 Apr 2009; Tobias Klausmann <klausman@gentoo.org>
+  Module-Pluggable-3.9.ebuild:
+  Stable on alpha, bug #266103
+
+  18 Apr 2009; nixnut <nixnut@gentoo.org> Module-Pluggable-3.9.ebuild:
+  ppc stable #266103
+
+  15 Apr 2009; Brent Baude <ranger@gentoo.org> Module-Pluggable-3.9.ebuild:
+  Marking Module-Pluggable-3.9 ppc64 for bug 266103
+
+*Module-Pluggable-3.9 (18 Mar 2009)
+
+  18 Mar 2009; Torsten Veller <tove@gentoo.org>
+  +Module-Pluggable-3.9.ebuild:
+  Version bump
+
+  01 Nov 2008; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +Module-Pluggable-3.6.ebuild, +Module-Pluggable-3.8.ebuild:
+  dev-perl => perl-core migration
+
+  01 Nov 2008; Torsten Veller <tove@gentoo.org> Module-Pluggable-3.6.ebuild,
+  Module-Pluggable-3.8.ebuild:
+  New virtuals: module-build
+
+*Module-Pluggable-3.8 (20 Sep 2008)
+
+  20 Sep 2008; Torsten Veller <tove@gentoo.org>
+  +Module-Pluggable-3.8.ebuild:
+  Version bump. Remove Class-Inspector from DEPEND
+
+  15 Sep 2008; Torsten Veller <tove@gentoo.org>
+  -Module-Pluggable-3.1-r1.ebuild, -Module-Pluggable-3.2.ebuild,
+  -Module-Pluggable-3.4.ebuild, -Module-Pluggable-3.5.ebuild:
+  Cleanup
+
+  08 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  Module-Pluggable-3.6.ebuild:
+  ia64 stable
+
+  04 Dec 2007; Markus Rothe <corsair@gentoo.org>
+  Module-Pluggable-3.6.ebuild:
+  Stable on ppc64; bug #198075
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  Module-Pluggable-3.6.ebuild:
+  amd64 stable
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Module-Pluggable-3.6.ebuild:
+  Stable on ppc.
+
+  11 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  Module-Pluggable-3.6.ebuild:
+  alpha/x86 stable
+
+  21 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  Module-Pluggable-3.6.ebuild:
+  Marking sparc stable
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Module-Pluggable-3.5.ebuild:
+  ppc stable
+
+  14 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Module-Pluggable-3.5.ebuild:
+  sparc stable
+
+*Module-Pluggable-3.6 (10 Apr 2007)
+
+  10 Apr 2007; Yuval Yaari <yuval@gentoo.org> +Module-Pluggable-3.6.ebuild:
+  Version bump
+
+  09 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Module-Pluggable-3.5.ebuild:
+  Marking stable amd64
+
+  08 Mar 2007; Andrej Kacian <ticho@gentoo.org> Module-Pluggable-3.4.ebuild:
+  Stable on x86, bug #169152.
+
+  14 Feb 2007; Markus Rothe <corsair@gentoo.org>
+  Module-Pluggable-3.5.ebuild:
+  Added ~ppc64
+
+*Module-Pluggable-3.5 (05 Feb 2007)
+
+  05 Feb 2007; Michael Cummings <mcummings@gentoo.org>
+  +Module-Pluggable-3.5.ebuild:
+  Version bump
+
+  08 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Module-Pluggable-3.4.ebuild:
+  Marking sparc stable
+
+  07 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -Module-Pluggable-2.97.ebuild, -Module-Pluggable-3.01.ebuild,
+  Module-Pluggable-3.1-r1.ebuild, Module-Pluggable-3.2.ebuild,
+  Module-Pluggable-3.4.ebuild:
+  Marking amd64 stable
+
+*Module-Pluggable-3.4 (29 Nov 2006)
+
+  29 Nov 2006; Yuval Yaari <yuval@gentoo.org> +Module-Pluggable-3.4.ebuild:
+  Version bump
+
+*Module-Pluggable-3.2 (19 Nov 2006)
+
+  19 Nov 2006; Michael Cummings <mcummings@gentoo.org>
+  +Module-Pluggable-3.2.ebuild:
+  Version bump
+
+  21 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Module-Pluggable-3.1-r1.ebuild:
+  ppc stable
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Module-Pluggable-3.1-r1.ebuild:
+  Stable on Alpha.
+
+  15 Oct 2006; Aron Griffis <agriffis@gentoo.org>
+  Module-Pluggable-3.1-r1.ebuild:
+  Mark 3.1-r1 ~ia64. #144122
+
+  08 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Module-Pluggable-3.1-r1.ebuild:
+  Marking stable sparc, amd64
+
+  29 Aug 2006; Fernando J. Pereda <ferdy@gentoo.org>
+  Module-Pluggable-3.1-r1.ebuild:
+  Added ~alpha. Indirect dependency of Mail-Audit, bug #144481
+
+  28 Aug 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Module-Pluggable-3.1-r1.ebuild:
+  Added ~ppc, bug 144481
+
+  17 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Module-Pluggable-2.97.ebuild:
+  Marking amd64 stable
+
+  16 Aug 2006; <yuval@gentoo.org> -Module-Pluggable-3.1.ebuild:
+  Cleaning up
+
+*Module-Pluggable-3.1-r1 (16 Aug 2006)
+
+  16 Aug 2006; <yuval@gentoo.org> +Module-Pluggable-3.1-r1.ebuild:
+  Revision bump. Added a missing dep on dev-perl/Class-Inspector
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Module-Pluggable-2.97.ebuild, Module-Pluggable-3.01.ebuild,
+  Module-Pluggable-3.1.ebuild:
+  Adding perl dep; fixed DEPEND
+
+*Module-Pluggable-3.1 (23 Jul 2006)
+
+  23 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  +Module-Pluggable-3.1.ebuild:
+  Version bump
+
+  18 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  Module-Pluggable-2.97.ebuild, Module-Pluggable-3.01.ebuild:
+  Forcing mb version
+
+*Module-Pluggable-3.01 (23 Jun 2006)
+
+  23 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  +Module-Pluggable-3.01.ebuild:
+  Version bump upstream
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  Module-Pluggable-2.97.ebuild:
+  Marking sparc stable
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  Module-Pluggable-2.97.ebuild:
+  Keywording ~amd64
+
+*Module-Pluggable-2.97 (20 Apr 2006)
+
+  20 Apr 2006; <mcummings@gentoo.org> +metadata.xml,
+  +Module-Pluggable-2.97.ebuild:
+  Dep for perl-critic

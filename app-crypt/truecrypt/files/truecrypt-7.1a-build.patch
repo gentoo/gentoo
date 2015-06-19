@@ -1,0 +1,16 @@
+Add dl library, bug#481060.
+
+---
+
+diff -urNp truecrypt-7.1a-source.org/Main/Main.make truecrypt-7.1a-source/Main/Main.make
+--- truecrypt-7.1a-source.org/Main/Main.make	2012-02-07 12:36:48.000000000 +0200
++++ truecrypt-7.1a-source/Main/Main.make	2013-12-08 21:50:07.224586712 +0200
+@@ -105,7 +105,7 @@ TC_VERSION = $(shell grep VERSION_STRING
+ 
+ $(APPNAME): $(LIBS) $(OBJS)
+ 	@echo Linking $@
+-	$(CXX) -o $(APPNAME) $(LFLAGS) $(OBJS) $(LIBS) $(FUSE_LIBS) $(WX_LIBS)
++	$(CXX) -o $(APPNAME) $(LFLAGS) $(OBJS) $(LIBS) $(FUSE_LIBS) $(WX_LIBS) -ldl
+ 
+ ifeq "$(TC_BUILD_CONFIG)" "Release"
+ ifndef NOSTRIP

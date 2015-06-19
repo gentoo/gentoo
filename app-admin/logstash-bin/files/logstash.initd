@@ -1,0 +1,33 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+LOGSTASH_USER=${LOGSTASH_USER:-root}
+LOGSTASH_GROUP=${LOGSTASH_GROUP:-root}
+LOGFILE="/var/log/logstash/logstash.log"
+
+command="/opt/logstash/bin/logstash"
+command_args="agent --config /etc/logstash/conf.d/*.conf --log ${LOGFILE}"
+extra_commands="checkconfig"
+command_background="true"
+start_stop_daemon_args="--user=\"${LOGSTASH_USER}\""
+pidfile="/run/logstash/logstash.pid"
+
+depend() {
+	use net
+	after elasticsearch
+}
+
+checkconfig() {
+	ebegin "Checking your configuration"
+	${command} ${command_args} --configtest
+	eend $? "Configuration error. Please fix your configuration files."
+}
+
+start_pre() {
+	checkconfig || return 1
+
+	checkpath -d -o "${LOGSTASH_USER}":"${LOGSTASH_GROUP}" -m750 "$(dirname "${pidfile}")"
+	checkpath -d -o "${LOGSTASH_USER}":"${LOGSTASH_GROUP}" -m750 "$(dirname "${LOGFILE}")"
+	checkpath -f -o "${LOGSTASH_USER}":"${LOGSTASH_GROUP}" -m640 "${LOGFILE}"
+}

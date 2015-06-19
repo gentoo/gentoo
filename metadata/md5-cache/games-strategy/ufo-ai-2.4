@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=!dedicated? ( virtual/opengl virtual/glu media-libs/libsdl media-libs/sdl-image[jpeg,png] media-libs/sdl-ttf media-libs/sdl-mixer virtual/jpeg media-libs/libpng:0 media-libs/libogg media-libs/libvorbis x11-proto/xf86vidmodeproto ) net-misc/curl sys-devel/gettext sys-libs/zlib editor? ( dev-libs/libxml2 virtual/jpeg media-libs/openal x11-libs/gtkglext x11-libs/gtksourceview:2.0 )
+DESCRIPTION=UFO: Alien Invasion - X-COM inspired strategy game
+EAPI=5
+HOMEPAGE=http://ufoai.sourceforge.net/
+IUSE=debug dedicated editor
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://sourceforge/ufoai/ufoai-2.4-source.tar.bz2 mirror://sourceforge/ufoai/ufoai-2.4-data.tar http://mattn.ninex.info/1maps.pk3
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=f3dd0dda4e231dc8ebec0905d9e22dfe

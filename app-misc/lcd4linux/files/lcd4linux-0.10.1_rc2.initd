@@ -1,0 +1,23 @@
+#!/sbin/runscript
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/lcd4linux/files/lcd4linux-0.10.1_rc2.initd,v 1.1 2007/04/30 19:10:56 rbu Exp $
+
+PIDFILE=/var/run/lcd4linux.pid
+DAEMON=/usr/bin/lcd4linux
+
+depend() {
+	use net
+}
+
+start() {
+	ebegin "Starting lcd4linux"
+	start-stop-daemon --start --quiet --pidfile ${PIDFILE} --exec ${DAEMON}
+	eend $? "Failed to start lcd4linux. Did you remember to set up /etc/lcd4linux.conf?"
+}
+
+stop() {
+	ebegin "Stopping lcd4linux"
+	start-stop-daemon --stop --quiet --oknodo --exec ${DAEMON} --pidfile ${PIDFILE}
+	eend $?
+}

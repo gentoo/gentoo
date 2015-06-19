@@ -1,0 +1,2 @@
+You should now edit the Apache configs that have been installed into your
+Apache confdir.

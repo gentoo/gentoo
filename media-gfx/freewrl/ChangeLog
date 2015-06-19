@@ -1,0 +1,265 @@
+# ChangeLog for media-gfx/freewrl
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/freewrl/ChangeLog,v 1.59 2014/05/01 14:16:11 axs Exp $
+
+  01 May 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +files/freewrl-2.3.3-ld.gold.patch, freewrl-1.22.13-r3.ebuild,
+  freewrl-2.3.3.ebuild:
+  fix library underlinking issue that caused link breakage with ld.gold
+
+  25 Apr 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org> freewrl-2.3.3.ebuild:
+  fixed distfile on new version
+
+  22 Apr 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org> metadata.xml:
+  added long description to metadata
+
+*freewrl-2.3.3 (22 Apr 2014)
+
+  22 Apr 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org> +freewrl-2.3.3.ebuild,
+  freewrl-9999.ebuild, metadata.xml:
+  version bump
+
+  14 Mar 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +files/freewrl-1.22.13-java-fix.patch, -freewrl-1.22.13-r1.ebuild,
+  freewrl-1.22.13-r3.ebuild, freewrl-9999.ebuild:
+  more java build fixes; remove old
+
+  12 Mar 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  freewrl-1.22.13-r1.ebuild, freewrl-1.22.13-r3.ebuild, freewrl-9999.ebuild:
+  fixed configuration error when building against spidermonkeys older than
+  1.8.5; migrated live ebuild to new git upstream repo
+
+*freewrl-1.22.13-r3 (23 Dec 2013)
+
+  23 Dec 2013; Ian Stakenvicius <axs@gentoo.org>
+  +files/freewrl-1.22.13-desktop.patch, +freewrl-1.22.13-r3.ebuild,
+  -freewrl-1.22.13-r2.ebuild, freewrl-9999.ebuild:
+  fixed freewrl.desktop as per bug 495108
+
+  09 Aug 2013; Ian Stakenvicius <axs@gentoo.org> freewrl-1.22.13-r1.ebuild,
+  freewrl-1.22.13-r2.ebuild, freewrl-9999.ebuild:
+  Adjusted deps for dev-lang/spidermonkey to ensure SLOT=0
+
+*freewrl-9999 (29 May 2013)
+
+  29 May 2013; Ian Stakenvicius <axs@gentoo.org> +freewrl-9999.ebuild:
+  added live ebuild. NOTE, upstream does NOT keep HEAD in a buildable state,
+  ymmv
+
+*freewrl-1.22.13-r2 (04 Nov 2012)
+
+  04 Nov 2012; Ian Stakenvicius <axs@gentoo.org> freewrl-1.22.13-r1.ebuild,
+  +freewrl-1.22.13-r2.ebuild:
+  reduce elog spam, add EAPI=5 ebuild with slot-operator dep on spidermonkey
+
+  24 Oct 2012; Ulrich Müller <ulm@gentoo.org> freewrl-1.22.13-r1.ebuild:
+  Update dependency after package move from x11-libs/openmotif to
+  x11-libs/motif.
+
+*freewrl-1.22.13-r1 (05 Sep 2012)
+
+  05 Sep 2012; Ian Stakenvicius <axs@gentoo.org> -freewrl-1.22.13.ebuild,
+  +freewrl-1.22.13-r1.ebuild:
+  revbump since the last patch was for a runtime issue instead of build-time
+  (thanks Ian)
+
+  29 Aug 2012; Ian Stakenvicius <axs@gentoo.org>
+  files/freewrl-1.22.13-fontconfig-match.patch:
+  fixed bad patch in last commit
+
+  29 Aug 2012; Ian Stakenvicius <axs@gentoo.org> freewrl-1.22.13.ebuild,
+  +files/freewrl-1.22.13-fontconfig-match.patch:
+  fixed upstream bug id 3553666 re compatibility with fontconfig-2.90, thanks
+  to Ian Abbott for reporting
+
+  28 Jun 2012; Ian Stakenvicius <axs@gentoo.org> freewrl-1.22.13.ebuild,
+  +files/freewrl-1.22.13-mozjs187-config.patch:
+  patched in support for spidermonkey-1.8.7
+
+  13 Jun 2012; Ian Stakenvicius <axs@gentoo.org> freewrl-1.22.13.ebuild:
+  updated ebuild to use new upstream tarball, fixes minor build system issue
+  with plugin
+
+  08 Jun 2012; Zac Medico <zmedico@gentoo.org> freewrl-1.22.13.ebuild:
+  inherit multilib for get_libdir
+
+*freewrl-1.22.13 (06 Jun 2012)
+
+  06 Jun 2012; Ian Stakenvicius <axs@gentoo.org> -freewrl-1.22.12_pre2.ebuild,
+  +freewrl-1.22.13.ebuild:
+  New release + remove old
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> freewrl-1.22.12_pre2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  01 Dec 2011; Ian Stakenvicius <axs@gentoo.org> freewrl-1.22.12_pre2.ebuild:
+  fixed expat lib path error, bug 376863 (reopened)
+
+  22 Nov 2011; Ian Stakenvicius <axs@gentoo.org> freewrl-1.22.12_pre2.ebuild,
+  metadata.xml:
+  fixed dependencies to rely directly on spidermonkey instead of optionally on
+  xulrunner, and to rely on npapi-sdk instead of xulrunner or firefox
+
+  13 Oct 2011; Ian Stakenvicius <axs@gentoo.org> ChangeLog:
+  Taking over maintainership, thanks Patrick!
+
+  29 Jul 2011; Patrick Lauer <patrick@gentoo.org> -freewrl-1.22.10-r1.ebuild:
+  Remove old
+
+  28 Jul 2011; Patrick Lauer <patrick@gentoo.org> -freewrl-1.22.9.ebuild,
+  -freewrl-1.22.10.ebuild:
+  Remove old
+
+*freewrl-1.22.12_pre2 (28 Jul 2011)
+
+  28 Jul 2011; Patrick Lauer <patrick@gentoo.org> +freewrl-1.22.12_pre2.ebuild,
+  metadata.xml:
+  Bump, modified ebuild by Ian
+
+  22 Jun 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  freewrl-1.22.10-r1.ebuild:
+  Fix spidermonkey version for the new versioning scheme
+
+  21 May 2011; Samuli Suominen <ssuominen@gentoo.org>
+  freewrl-1.22.10-r1.ebuild:
+  Use -lmozjs instead of -ljs and force at least spidermonkey >= 1.9 wrt
+  #361663 by Ian Stakenvicius.
+
+*freewrl-1.22.10-r1 (02 Apr 2011)
+
+  02 Apr 2011; Samuli Suominen <ssuominen@gentoo.org> freewrl-1.22.10.ebuild,
+  +freewrl-1.22.10-r1.ebuild:
+  Rename USE="static" to USE="static-libs" wrt #361659. Force spidermonkey as
+  javascript engine until xulrunner-2 support is available wrt #361663.
+
+  01 Apr 2011; Patrick Lauer <patrick@gentoo.org> freewrl-1.22.9.ebuild,
+  freewrl-1.22.10.ebuild:
+  Fixing xulrunner dep for #361289
+
+  28 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> freewrl-1.22.9.ebuild,
+  freewrl-1.22.10.ebuild:
+  Use virtual/jpeg.
+
+*freewrl-1.22.10 (02 Nov 2010)
+
+  02 Nov 2010; Patrick Lauer <patrick@gentoo.org> +freewrl-1.22.10.ebuild:
+  Bump for #343449
+
+  10 Oct 2010; Ulrich Mueller <ulm@gentoo.org> freewrl-1.22.9.ebuild:
+  Fix openmotif dependency.
+
+*freewrl-1.22.9 (26 Aug 2010)
+
+  26 Aug 2010; Patrick Lauer <patrick@gentoo.org> -freewrl-1.22.6-r1.ebuild,
+  -freewrl-1.22.8.ebuild, +freewrl-1.22.9.ebuild:
+  Bump
+
+  25 Jul 2010; Nirbheek Chauhan <nirbheek@gentoo.org>
+  freewrl-1.22.6-r1.ebuild, freewrl-1.22.8.ebuild:
+  Fix references for pkgmove from www-client/mozilla-firefox ->
+  www-client/firefox
+
+*freewrl-1.22.8 (08 Jun 2010)
+
+  08 Jun 2010; Patrick Lauer <patrick@gentoo.org> +freewrl-1.22.8.ebuild,
+  metadata.xml:
+  Bump, thanks to Ian for the patch
+
+  10 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  freewrl-1.22.6-r1.ebuild, +files/freewrl-1.22.6-libpng14.patch:
+  Fix building with libpng14.
+
+*freewrl-1.22.6-r1 (08 Feb 2010)
+
+  08 Feb 2010; Patrick Lauer <patrick@gentoo.org> +freewrl-1.22.6-r1.ebuild,
+  +files/freewrl-1.22.6-xulrunner192-fixes.patch:
+  Fix for xulrunner-1.9.2 by Ian Stakenvicius, fixes #303183
+
+  01 Feb 2010; Markus Meier <maekke@gentoo.org> freewrl-1.22.5.ebuild:
+  x86 stable, bug #300602
+
+  14 Jan 2010; <hwoarang@gentoo.org> freewrl-1.22.5.ebuild:
+  Stable on amd64 wrt bug #300602
+
+*freewrl-1.22.6 (07 Jan 2010)
+
+  07 Jan 2010; Patrick Lauer <patrick@gentoo.org> +freewrl-1.22.6.ebuild:
+  Bump
+
+  05 Oct 2009; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Taking over package from hanno with ian as proxy maintainer
+
+*freewrl-1.22.5 (05 Oct 2009)
+
+  05 Oct 2009; Patrick Lauer <patrick@gentoo.org> +freewrl-1.22.5.ebuild,
+  metadata.xml:
+  Bump to 1.22.5, fixes #192840. Thanks to Ian Stakenvicius for the updated
+  ebuild
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  freewrl-1.16.1.ebuild, freewrl-1.18.10.ebuild, freewrl-1.18.14.ebuild,
+  freewrl-1.19.1.ebuild:
+  Drop virtual/x11 references.
+
+*freewrl-1.19.1 (02 Apr 2007)
+
+  02 Apr 2007; Hanno Boeck <hanno@gentoo.org> +freewrl-1.19.1.ebuild:
+  Version bump.
+
+*freewrl-1.18.14 (13 Feb 2007)
+
+  13 Feb 2007; Hanno Boeck <hanno@gentoo.org> +freewrl-1.18.14.ebuild:
+  Version bump.
+
+*freewrl-1.18.10 (17 Jan 2007)
+
+  17 Jan 2007; Hanno Boeck <hanno@gentoo.org> +files/freewrl-makefile,
+  +freewrl-1.18.10.ebuild:
+  Version bump and don't install fonts any more, depend on ttf-bitstream-vera
+  instead and set a symlink.
+
+  27 Aug 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/FreeWRL-1.06+gentoo_pd.diff, -freewrl-1.06.ebuild:
+  clean out old, non-modX ebuild
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org> freewrl-1.06.ebuild,
+  freewrl-1.16.1.ebuild:
+  Virtuals for perl-core
+
+  18 Jan 2006; Hanno Boeck <hanno@gentoo.org> freewrl-1.16.1.ebuild:
+  Modular X dependencies.
+
+  14 Jan 2006; Hanno Boeck <hanno@gentoo.org> freewrl-1.16.1.ebuild:
+  Fails with parallel build, set MAKEOPTS to -j1.
+
+  30 Dec 2005; <mcumming@gentoo.org> freewrl-1.06.ebuild:
+  Migrating libnet to perl-core
+
+  20 Dec 2005; Hanno Boeck <hanno@gentoo.org> freewrl-1.06.ebuild:
+  Remove dep on saxon-bin (bug #109622).
+
+*freewrl-1.16.1 (20 Dec 2005)
+
+  20 Dec 2005; Hanno Boeck <hanno@gentoo.org>
+  +files/freewrl-1.16.1-disable-rpm.patch,
+  +files/freewrl-1.16.1-plugin-install.patch,
+  +files/freewrl-1.16.1-use-java-home.patch, +freewrl-1.16.1.ebuild:
+  Version bump, thanks to basic in bug #74706.
+
+  16 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> freewrl-1.06.ebuild:
+  Remove GNUish cp -a call. Bug #103487.
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> freewrl-1.06.ebuild:
+  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
+
+  24 May 2005; Michael Cummings <mcummings@gentoo.org> freewrl-1.06.ebuild:
+  dev-perl/Digest-MD5 => perl-core/Digest-MD5
+
+  01 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> freewrl-1.06.ebuild:
+  dev-java/saxon -> dev-java/saxon-bin
+
+*freewrl-1.06 (27 Jun 2004)
+
+  27 Jun 2004; Hanno Boeck <hanno@gentoo.org>
+  +files/FreeWRL-1.06+gentoo_pd.diff, +freewrl-1.06.ebuild:
+  User submitted ebuild from Denis Pitzalis in bug #22358.

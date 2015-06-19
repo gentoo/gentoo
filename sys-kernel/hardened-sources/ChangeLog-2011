@@ -1,0 +1,3133 @@
+# ChangeLog for sys-kernel/hardened-sources
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/hardened-sources/ChangeLog-2011,v 1.1 2012/01/01 20:57:23 dilfridge Exp $
+
+  29 Dec 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r82.ebuild:
+  Missing bump to 2.6.32.51
+
+*hardened-sources-2.6.32-r83 (29 Dec 2011)
+
+  29 Dec 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r83.ebuild:
+  Based on 2.6.32.51 + genpatches-2.6.32-46 +
+  grsecurity-2.2.2-2.6.32.51-201112222105
+
+*hardened-sources-3.1.6 (27 Dec 2011)
+
+  27 Dec 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-3.1.6.ebuild:
+  Based on 3.1.6 + genpatches-3.1-8 + grsecurity-2.2.2-3.1.6-201112222105
+
+*hardened-sources-2.6.32-r82 (27 Dec 2011)
+
+  27 Dec 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r82.ebuild:
+  Based on 2.6.32.50 + genpatches-2.6.32-46 +
+  grsecurity-2.2.2-2.6.32.51-201112222105
+
+  15 Dec 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r73.ebuild, -hardened-sources-3.0.8.ebuild:
+  Remove deprecated versions, bug #390363
+
+*hardened-sources-3.1.5 (15 Dec 2011)
+
+  15 Dec 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-3.1.5.ebuild:
+  Based on 3.1.5 + genpatches-3.1-8 + grsecurity-2.2.2-3.1.5-201112101853
+
+*hardened-sources-2.6.32-r81 (15 Dec 2011)
+
+  15 Dec 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r81.ebuild:
+  Based on 2.6.32.50 + genpatches-2.6.32-46 +
+  grsecurity-2.2.2-2.6.32.50-201112102010
+
+*hardened-sources-3.1.4-r1 (10 Dec 2011)
+
+  10 Dec 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-3.1.4-r1.ebuild:
+  Based on 3.1.4 + genpatches-3.1-6 + grsecurity-2.2.2-3.1.4-201112082139
+
+*hardened-sources-2.6.32-r80 (10 Dec 2011)
+
+  10 Dec 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r80.ebuild:
+  Based on 2.6.32.49 + genpatches-2.6.32-45 +
+  grsecurity-2.2.2-2.6.32.49-201112082138
+
+*hardened-sources-3.1.4 (04 Dec 2011)
+
+  04 Dec 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-3.1.4.ebuild:
+  Based on 3.1.4 + genpatches-3.1-6 + grsecurity-2.2.2-3.1.4-201112021740
+
+*hardened-sources-2.6.32-r79 (04 Dec 2011)
+
+  04 Dec 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r79.ebuild:
+  Based on 2.6.32.49 + genpatches-2.6.32-45 +
+  grsecurity-2.2.2-2.6.32.49-201111292107
+
+  01 Dec 2011; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-3.0.4-r5.ebuild:
+  Stable amd64, x86
+
+*hardened-sources-3.1.3 (30 Nov 2011)
+
+  30 Nov 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-3.1.3.ebuild:
+  Based on 3.1.3 + genpatches-3.1-6 + grsecurity-2.2.2-3.1.3-201111262001
+
+*hardened-sources-2.6.32-r78 (30 Nov 2011)
+
+  30 Nov 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r78.ebuild:
+  Based on 2.6.32.49 + genpatches-2.6.32-45 +
+  grsecurity-2.2.2-2.6.32.49-201111262001
+
+*hardened-sources-3.1.1-r1 (23 Nov 2011)
+
+  23 Nov 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-3.1.1-r1.ebuild:
+  Based on 3.1.1 + genpatches-3.1-4 + grsecurity-2.2.2-3.1.1-201111201943
+
+*hardened-sources-2.6.32-r77 (23 Nov 2011)
+
+  23 Nov 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r77.ebuild:
+  Based on 2.6.32.48 + genpatches-2.6.32-44 +
+  grsecurity-2.2.2-2.6.32.48-201111201943
+
+  23 Nov 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r69.ebuild, -hardened-sources-2.6.32-r70.ebuild,
+  -hardened-sources-2.6.32-r71.ebuild, -hardened-sources-2.6.32-r72.ebuild,
+  -hardened-sources-3.0.7.ebuild, -hardened-sources-3.0.7-r1.ebuild:
+  Remove deprecated versions, bug #388381
+
+  23 Nov 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r31.ebuild, -hardened-sources-2.6.32-r34.ebuild,
+  -hardened-sources-2.6.36-r6.ebuild:
+  Removed old stable versions
+
+*hardened-sources-3.1.1 (19 Nov 2011)
+
+  19 Nov 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-3.1.1.ebuild:
+  Based on 3.1.1 + genpatches-3.1-4 + grsecurity-2.2.2-3.1.1-201111181902
+
+*hardened-sources-2.6.32-r76 (19 Nov 2011)
+
+  19 Nov 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r76.ebuild:
+  Based on 2.6.32.48 + genpatches-2.6.32-44 +
+  grsecurity-2.2.2-2.6.32.48-201111181902
+
+  19 Nov 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-3.0.9.ebuild:
+  Broken module handling
+
+  17 Nov 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r22.ebuild, -hardened-sources-2.6.32-r23.ebuild,
+  -hardened-sources-2.6.34-r6.ebuild, -hardened-sources-2.6.35-r7.ebuild:
+  Remove older grsecurity-2.2.0 based kernels
+
+*hardened-sources-3.0.9 (15 Nov 2011)
+
+  15 Nov 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-3.0.9.ebuild:
+  Based on 3.0.9 + genpatches-3.0-9 + grsecurity-2.2.2-3.0.9-201111121310
+
+*hardened-sources-3.0.8-r1 (15 Nov 2011)
+
+  15 Nov 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-3.0.8-r1.ebuild:
+  Based on 3.0.8 + genpatches-3.0-9 + grsecurity-2.2.2-3.0.8-201111010529
+
+*hardened-sources-2.6.32-r75 (15 Nov 2011)
+
+  15 Nov 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r75.ebuild:
+  Based on 2.6.32.48 + genpatches-2.6.32-44 +
+  grsecurity-2.2.2-2.6.32.48-201111121310
+
+*hardened-sources-2.6.32-r74 (15 Nov 2011)
+
+  15 Nov 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r74.ebuild:
+  Based on 2.6.32.46 + genpatches-2.6.32-43 +
+  grsecurity-2.2.2-2.6.32.46-201111010529
+
+*hardened-sources-3.0.8 (30 Oct 2011)
+
+  30 Oct 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-3.0.8.ebuild:
+  Based on 3.0.8 + genpatches-3.0-9 + grsecurity-2.2.2-3.0.8-201110250925
+
+*hardened-sources-2.6.32-r73 (30 Oct 2011)
+
+  30 Oct 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r73.ebuild:
+  Based on 2.6.32.46 + genpatches-2.6.32-43 +
+  grsecurity-2.2.2-2.6.32.46-201110250925
+
+*hardened-sources-2.6.32-r72 (30 Oct 2011)
+
+  30 Oct 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r72.ebuild:
+  Add deblob support, bug #388241
+
+*hardened-sources-3.0.7-r1 (30 Oct 2011)
+
+  30 Oct 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-3.0.7-r1.ebuild:
+  Add deblob support, bug #388241
+
+*hardened-sources-3.0.7 (23 Oct 2011)
+
+  23 Oct 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-3.0.7.ebuild:
+  Based on 3.0.7 + genpatches-3.0-8 + grsecurity-2.2.2-3.0.7-201110200052
+
+*hardened-sources-2.6.32-r71 (23 Oct 2011)
+
+  23 Oct 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r71.ebuild:
+  Based on 2.6.32.46 + genpatches-2.6.32-43 +
+  grsecurity-2.2.2-2.6.32.46-201110200052
+
+  23 Oct 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-3.0.4-r2.ebuild, -hardened-sources-3.0.4-r3.ebuild:
+  Removed, bug #387877
+
+  23 Oct 2011; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-3.0.4-r4.ebuild:
+  Stable amd64, x86. Bug #387877
+
+  19 Oct 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r67.ebuild, -hardened-sources-3.0.4-r1.ebuild:
+  Removed buggy versions, bug #371021
+
+  19 Oct 2011; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-3.0.4-r2.ebuild:
+  Stable on amd64 and x86
+
+  19 Oct 2011; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.32-r68.ebuild:
+  Stable on amd64 and x86
+
+  09 Oct 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r65.ebuild, -hardened-sources-2.6.32-r66.ebuild,
+  -hardened-sources-3.0.3-r1.ebuild, -hardened-sources-3.0.4.ebuild:
+  Remove deprecated versions
+
+*hardened-sources-3.0.4-r5 (08 Oct 2011)
+
+  08 Oct 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-3.0.4-r5.ebuild:
+  Based on 3.0.4 + genpatches-3.0-7 + grsecurity-2.2.2-3.0.4-201110080819
+
+*hardened-sources-2.6.32-r70 (08 Oct 2011)
+
+  08 Oct 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r70.ebuild:
+  Based on 2.6.32.46 + genpatches-2.6.32-43 +
+  grsecurity-2.2.2-2.6.32.46-201110080819
+
+  08 Oct 2011; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-3.0.4-r1.ebuild:
+  Stable on amd64 and x86
+
+  08 Oct 2011; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.32-r67.ebuild:
+  Stable on amd64 and x86
+
+*hardened-sources-3.0.4-r4 (27 Sep 2011)
+
+  27 Sep 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-3.0.4-r4.ebuild:
+  Based on 3.0.4 + genpatches-3.0-5 + grsecurity-2.2.2-3.0.4-201109261052
+
+*hardened-sources-2.6.32-r69 (27 Sep 2011)
+
+  27 Sep 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r69.ebuild:
+  Based on 2.6.32.46 + genpatches-2.6.32-43 +
+  grsecurity-2.2.2-2.6.32.46-201109261052
+
+*hardened-sources-3.0.4-r3 (22 Sep 2011)
+
+  22 Sep 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-3.0.4-r3.ebuild:
+  Based on 3.0.4 + genpatches-3.0-5 + grsecurity-2.2.2-3.0.4-201109190917
+
+  17 Sep 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.39-r6.ebuild:
+  Reintroduce 2.6.39-r6 for more testing, requested by dman777
+
+*hardened-sources-3.0.4-r2 (15 Sep 2011)
+
+  15 Sep 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-3.0.4-r2.ebuild:
+  Based on 3.0.4 + genpatches-3.0-5 + grsecurity-2.2.2-3.0.4-201109150655
+
+*hardened-sources-2.6.32-r68 (15 Sep 2011)
+
+  15 Sep 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r68.ebuild:
+  Based on 2.6.32.46 + genpatches-2.6.32-43 +
+  grsecurity-2.2.2-2.6.32.46-201109150655
+
+  13 Sep 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r64.ebuild, -hardened-sources-2.6.39-r12.ebuild,
+  -hardened-sources-2.6.39-r13.ebuild, -hardened-sources-3.0.3.ebuild:
+  Removed deprecated versions
+
+*hardened-sources-3.0.4-r1 (04 Sep 2011)
+
+  04 Sep 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-3.0.4-r1.ebuild:
+  Based on 3.0.4 + genpatches-3.0-5 + grsecurity-2.2.2-3.0.4-201109011725
+
+*hardened-sources-2.6.32-r67 (04 Sep 2011)
+
+  04 Sep 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r67.ebuild:
+  Based on 2.6.32.46 + genpatches-2.6.32-43 +
+  grsecurity-2.2.2-2.6.32.46-201109021814
+
+  01 Sep 2011; Anthony G. Basile <blueness@gentoo.org> ChangeLog:
+  Fix gpg signiture on Manifest
+
+*hardened-sources-3.0.4 (01 Sep 2011)
+
+  01 Sep 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-3.0.4.ebuild:
+  Based on 3.0.4 + genpatches-3.0-4 + grsecurity-2.2.2-3.0.4-201108301903
+
+*hardened-sources-2.6.32-r66 (01 Sep 2011)
+
+  01 Sep 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r66.ebuild:
+  Based on 2.6.32.46 + genpatches-2.6.32-43 +
+  grsecurity-2.2.2-2.6.32.46-201108301903
+
+  30 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r59.ebuild, -hardened-sources-2.6.32-r60.ebuild,
+  -hardened-sources-2.6.32-r61.ebuild, -hardened-sources-2.6.32-r62.ebuild,
+  -hardened-sources-2.6.32-r63.ebuild, -hardened-sources-2.6.39-r10.ebuild,
+  -hardened-sources-2.6.39-r11.ebuild:
+  Remove old versions
+
+*hardened-sources-3.0.3-r1 (28 Aug 2011)
+
+  28 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-3.0.3-r1.ebuild:
+  Based on 3.0.3 + genpatches-3.0-3 + grsecurity-2.2.2-3.0.3-201108262310
+
+*hardened-sources-2.6.32-r65 (28 Aug 2011)
+
+  28 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r65.ebuild:
+  Based on 2.6.32.45 + genpatches-2.6.32-40 +
+  grsecurity-2.2.2-2.6.32.45-201108262310
+
+*hardened-sources-3.0.3 (25 Aug 2011)
+
+  25 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-3.0.3.ebuild:
+  Based on 3.0.3 + genpatches-3.0-3 + grsecurity-2.2.2-3.0.3-201108232250
+
+*hardened-sources-2.6.32-r64 (25 Aug 2011)
+
+  25 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r64.ebuild:
+  Based on 2.6.32.45 + genpatches-2.6.32-40 +
+  grsecurity-2.2.2-2.6.32.45-201108232250
+
+*hardened-sources-2.6.39-r13 (24 Aug 2011)
+
+  24 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.39-r13.ebuild:
+  Based on 2.6.39.4 + genpatches-2.6.39-6 +
+  grsecurity-2.2.2-2.6.39.4-201108211939
+
+*hardened-sources-2.6.32-r63 (24 Aug 2011)
+
+  24 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r63.ebuild:
+  Based on 2.6.32.45 + genpatches-2.6.32-40 +
+  grsecurity-2.2.2-2.6.32.45-201108211939
+
+*hardened-sources-2.6.39-r12 (16 Aug 2011)
+
+  16 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.39-r12.ebuild:
+  Based on 2.6.39.4 + genpatches-2.6.39-6 +
+  grsecurity-2.2.2-2.6.39.4-201108141242
+
+*hardened-sources-2.6.32-r62 (16 Aug 2011)
+
+  16 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r62.ebuild:
+  Based on 2.6.32.44 + genpatches-2.6.32-40 +
+  grsecurity-2.2.2-2.6.32.44-201108141242
+
+*hardened-sources-2.6.39-r11 (15 Aug 2011)
+
+  15 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.39-r11.ebuild:
+  Based on 2.6.39.4 + genpatches-2.6.39-6 +
+  grsecurity-2.2.2-2.6.39.4-201108132040
+
+*hardened-sources-2.6.32-r61 (12 Aug 2011)
+
+  12 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r61.ebuild:
+  Based on 2.6.32.44 + genpatches-2.6.32-40 +
+  grsecurity-2.2.2-2.6.32.44-201108111959
+
+  12 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.39-r8.ebuild:
+  Stable on amd64 and x86
+
+  12 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.32-r58.ebuild:
+  Stable on amd64 and x86
+
+  10 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.39-r9.ebuild:
+  Remove broken kernel, bug #378449
+
+  09 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r56.ebuild, -hardened-sources-2.6.32-r57.ebuild,
+  -hardened-sources-2.6.39-r6.ebuild, -hardened-sources-2.6.39-r7.ebuild:
+  Remove old versions
+
+*hardened-sources-2.6.39-r10 (09 Aug 2011)
+
+  09 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.39-r10.ebuild:
+  Based on 2.6.39.4 + genpatches-2.6.39-6 +
+  grsecurity-2.2.2-2.6.39.4-201108071438
+
+*hardened-sources-2.6.32-r60 (09 Aug 2011)
+
+  09 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r60.ebuild:
+  Based on 2.6.32.43 + genpatches-2.6.32-40 +
+  grsecurity-2.2.2-2.6.32.43-201108071948
+
+*hardened-sources-2.6.39-r9 (07 Aug 2011)
+
+  07 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.39-r9.ebuild:
+  Based on 2.6.39.4 + genpatches-2.6.39-5 +
+  grsecurity-2.2.2-2.6.39.4-201108052113
+
+*hardened-sources-2.6.32-r59 (07 Aug 2011)
+
+  07 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r59.ebuild:
+  Based on 2.6.32.43 + genpatches-2.6.32-40 +
+  grsecurity-2.2.2-2.6.32.43-201108052033
+
+  25 Jul 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r53.ebuild, -hardened-sources-2.6.32-r54.ebuild,
+  -hardened-sources-2.6.32-r55.ebuild, -hardened-sources-2.6.39-r3.ebuild,
+  -hardened-sources-2.6.39-r4.ebuild, -hardened-sources-2.6.39-r5.ebuild:
+  Removed old versions
+
+*hardened-sources-2.6.39-r8 (25 Jul 2011)
+
+  25 Jul 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.39-r8.ebuild:
+  Based on 2.6.39.3 + genpatches-2.6.39-5 +
+  grsecurity-2.2.2-2.6.39.3-201107191826
+
+*hardened-sources-2.6.32-r58 (25 Jul 2011)
+
+  25 Jul 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r58.ebuild:
+  Based on 2.6.32.43 + genpatches-2.6.32-40 +
+  grsecurity-2.2.2-2.6.32.43-201107191826
+
+*hardened-sources-2.6.39-r7 (18 Jul 2011)
+
+  18 Jul 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.39-r7.ebuild:
+  Based on 2.6.39.3 + genpatches-2.6.39-5 +
+  grsecurity-2.2.2-2.6.39.3-201107161559
+
+*hardened-sources-2.6.32-r57 (18 Jul 2011)
+
+  18 Jul 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r57.ebuild:
+  Based on 2.6.32.43 + genpatches-2.6.32-40 +
+  grsecurity-2.2.2-2.6.32.43-201107142110
+
+  13 Jul 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r50.ebuild, -hardened-sources-2.6.32-r51.ebuild,
+  -hardened-sources-2.6.32-r52.ebuild, -hardened-sources-2.6.39.ebuild,
+  -hardened-sources-2.6.39-r1.ebuild, -hardened-sources-2.6.39-r2.ebuild:
+  Removed deprecated versions
+
+*hardened-sources-2.6.39-r6 (13 Jul 2011)
+
+  13 Jul 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.39-r6.ebuild:
+  Based on 2.6.39.3 + genpatches-2.6.39-4 +
+  grsecurity-2.2.2-2.6.39.3-201107090923
+
+*hardened-sources-2.6.32-r56 (13 Jul 2011)
+
+  13 Jul 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r56.ebuild:
+  Based on 2.6.32.42 + genpatches-2.6.32-39 +
+  grsecurity-2.2.2-2.6.32.42-201107090923
+
+*hardened-sources-2.6.39-r5 (06 Jul 2011)
+
+  06 Jul 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.39-r5.ebuild:
+  Based on 2.6.39.2 + genpatches-2.6.39-4 +
+  grsecurity-2.2.2-2.6.39.2-201107011911
+
+*hardened-sources-2.6.32-r55 (06 Jul 2011)
+
+  06 Jul 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r55.ebuild:
+  Based on 2.6.32.42 + genpatches-2.6.32-39 +
+  grsecurity-2.2.2-2.6.32.42-201107011911
+
+*hardened-sources-2.6.39-r4 (29 Jun 2011)
+
+  29 Jun 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.39-r4.ebuild:
+  Based on 2.6.39.2 + genpatches-2.6.39-4 +
+  grsecurity-2.2.2-2.6.39.2-201106281648
+
+*hardened-sources-2.6.32-r54 (29 Jun 2011)
+
+  29 Jun 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r54.ebuild:
+  Based on 2.6.32.42 + genpatches-2.6.32-39 +
+  grsecurity-2.2.2-2.6.32.42-201106281648
+
+*hardened-sources-2.6.39-r3 (24 Jun 2011)
+
+  24 Jun 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.39-r3.ebuild:
+  Based on 2.6.39.1 + genpatches-2.6.39-2 +
+  grsecurity-2.2.2-2.6.39.1-201106211740
+
+*hardened-sources-2.6.32-r53 (24 Jun 2011)
+
+  24 Jun 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r53.ebuild:
+  Based on 2.6.32.41 + genpatches-2.6.32-38 +
+  grsecurity-2.2.2-2.6.32.41-201106211740
+
+*hardened-sources-2.6.39-r2 (17 Jun 2011)
+
+  17 Jun 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.39-r2.ebuild:
+  Based on 2.6.39.1 + genpatches-2.6.39-2 +
+  grsecurity-2.2.2-2.6.39.1-201106132135
+
+*hardened-sources-2.6.32-r52 (17 Jun 2011)
+
+  17 Jun 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r52.ebuild:
+  Based on 2.6.32.41 + genpatches-2.6.32-38 +
+  grsecurity-2.2.2-2.6.32.41-201106132135
+
+  11 Jun 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.37-r5.ebuild, -hardened-sources-2.6.37-r6.ebuild:
+  Removed deprecated versions
+
+*hardened-sources-2.6.39-r1 (11 Jun 2011)
+
+  11 Jun 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.39-r1.ebuild:
+  Based on 2.6.39.1 + genpatches-2.6.39-2 +
+  grsecurity-2.2.2-2.6.39.1-201106071941
+
+*hardened-sources-2.6.32-r51 (11 Jun 2011)
+
+  11 Jun 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r51.ebuild:
+  Based on 2.6.32.41 + genpatches-2.6.32-38 +
+  grsecurity-2.2.2-2.6.32.41-201106071941
+
+*hardened-sources-2.6.39 (07 Jun 2011)
+
+  07 Jun 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.39.ebuild:
+  Based on 2.6.39.1 + genpatches-2.6.39-1 +
+  grsecurity-2.2.2-2.6.39.1-201106061957
+
+*hardened-sources-2.6.32-r50 (07 Jun 2011)
+
+  07 Jun 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r50.ebuild:
+  Based on 2.6.32.41 + genpatches-2.6.32-38 +
+  grsecurity-2.2.2-2.6.32.41-201106061735
+
+  03 Jun 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r46.ebuild, -hardened-sources-2.6.32-r47.ebuild,
+  -hardened-sources-2.6.32-r48.ebuild, -hardened-sources-2.6.38.ebuild,
+  -hardened-sources-2.6.38-r4.ebuild, -hardened-sources-2.6.38-r5.ebuild:
+  Removed deprecated versions
+
+  03 Jun 2011; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.32-r49.ebuild, hardened-sources-2.6.38-r6.ebuild:
+  Stable amd64 x86
+
+*hardened-sources-2.6.38-r6 (25 May 2011)
+
+  25 May 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.38-r6.ebuild:
+  Based on 2.6.38.7 + genpatches-2.6.38-7 +
+  grsecurity-2.2.2-2.6.38.7-201105222331
+
+*hardened-sources-2.6.32-r49 (25 May 2011)
+
+  25 May 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r49.ebuild:
+  Based on 2.6.32.40 + genpatches-2.6.32-37 +
+  grsecurity-2.2.2-2.6.32.40-201105222331
+
+*hardened-sources-2.6.38-r5 (20 May 2011)
+
+  20 May 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.38-r5.ebuild:
+  Based on 2.6.38.6 + genpatches-2.6.38-6 +
+  grsecurity-2.2.2-2.6.38.6-201105182052
+
+*hardened-sources-2.6.32-r48 (20 May 2011)
+
+  20 May 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r48.ebuild:
+  Based on 2.6.32.40 + genpatches-2.6.32-37 +
+  grsecurity-2.2.2-2.6.32.40-201105182052
+
+  12 May 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r41.ebuild, -hardened-sources-2.6.32-r43.ebuild,
+  -hardened-sources-2.6.32-r44.ebuild, -hardened-sources-2.6.32-r45.ebuild:
+  Removed deprecated versions
+
+  12 May 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.38-r3.ebuild:
+  Bug #365871
+
+  12 May 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.38-r1.ebuild, -hardened-sources-2.6.38-r2.ebuild:
+  See bugs #365871, #365915, #366281
+
+*hardened-sources-2.6.38-r4 (12 May 2011)
+
+  12 May 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.38-r4.ebuild:
+  Based on 2.6.38.6 + genpatches-2.6.38-6 +
+  grsecurity-2.2.2-2.6.38.6-201105111839
+
+*hardened-sources-2.6.32-r47 (12 May 2011)
+
+  12 May 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r47.ebuild:
+  Based on 2.6.32.40 + genpatches-2.6.32-37 +
+  grsecurity-2.2.2-2.6.32.40-201105111839
+
+*hardened-sources-2.6.38-r3 (11 May 2011)
+
+  11 May 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.38-r3.ebuild:
+  Based on 2.6.38.4 + genpatches-2.6.38-4 +
+  grsecurity-2.2.2-2.6.38.4-201105021909
+
+*hardened-sources-2.6.32-r46 (11 May 2011)
+
+  11 May 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r46.ebuild:
+  Based on 2.6.32.39 + genpatches-2.6.32-36 +
+  grsecurity-2.2.2-2.6.32.39-201104301754
+
+*hardened-sources-2.6.38-r2 (28 Apr 2011)
+
+  28 Apr 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.38-r2.ebuild:
+  Based on 2.6.38.4 + genpatches-2.6.38-4 +
+  grsecurity-2.2.2-2.6.38.4-201104232142
+
+*hardened-sources-2.6.32-r45 (28 Apr 2011)
+
+  28 Apr 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r45.ebuild:
+  Based on 2.6.32.39 + genpatches-2.6.32-36 +
+  grsecurity-2.2.2-2.6.32.39-201104232142
+
+*hardened-sources-2.6.38-r1 (20 Apr 2011)
+
+  20 Apr 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.38-r1.ebuild:
+  Based on 2.6.38.3 + genpatches-2.6.38-3 +
+  grsecurity-2.2.2-2.6.38.3-201104191737
+
+*hardened-sources-2.6.32-r44 (20 Apr 2011)
+
+  20 Apr 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r44.ebuild:
+  Based on 2.6.32.38 + genpatches-2.6.32-36 +
+  grsecurity-2.2.2-2.6.32.38-201104191737
+
+  19 Apr 2011; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.32-r42.ebuild:
+  Stable on ppc64
+
+  18 Apr 2011; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.37-r7.ebuild:
+  Stable on amd64, x86
+
+  18 Apr 2011; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.32-r42.ebuild:
+  Stable on amd64, x86
+
+  29 Mar 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.37.ebuild, -hardened-sources-2.6.37-r1.ebuild,
+  -hardened-sources-2.6.37-r2.ebuild, -hardened-sources-2.6.37-r3.ebuild,
+  -hardened-sources-2.6.37-r4.ebuild:
+  Removed deprecated hardened-sources-2.6.37-rX versions
+
+  29 Mar 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r35.ebuild, -hardened-sources-2.6.32-r36.ebuild,
+  -hardened-sources-2.6.32-r37.ebuild, -hardened-sources-2.6.32-r38.ebuild,
+  -hardened-sources-2.6.32-r39.ebuild, -hardened-sources-2.6.32-r40.ebuild:
+  Removed deprecated hardened-sources-2.6.32-rX versions
+
+*hardened-sources-2.6.38 (29 Mar 2011)
+
+  29 Mar 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.38.ebuild:
+  Based on 2.6.38.2 + genpatches-2.6.38.2 +
+  grsecurity-2.2.2-2.6.38.2-201103281752
+
+*hardened-sources-2.6.32-r43 (29 Mar 2011)
+
+  29 Mar 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r43.ebuild:
+  Based on 2.6.32.36 + genpatches-2.6.32.36 +
+  grsecurity-2.2.2-2.6.32.36-201103281752
+
+*hardened-sources-2.6.37-r7 (22 Mar 2011)
+
+  22 Mar 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.37-r7.ebuild:
+  Based on vanilla 2.6.37.4 + genpatches-2.6.37.5 +
+  grsecurity-2.2.1-2.6.37.4-201103211735
+
+*hardened-sources-2.6.32-r42 (22 Mar 2011)
+
+  22 Mar 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r42.ebuild:
+  Based on vanilla 2.6.32.33 + genpatches-2.6.32.34 +
+  grsecurity-2.2.1-2.6.32.33-201103211735
+
+*hardened-sources-2.6.32-r41 (19 Mar 2011)
+
+  19 Mar 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r41.ebuild:
+  Based on vanilla 2.6.32.32 + genpatches-2.6.32.34 +
+  grsecurity-2.2.1-2.6.32.32-201103122250
+
+*hardened-sources-2.6.37-r6 (19 Mar 2011)
+
+  19 Mar 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.37-r6.ebuild:
+  Based on vanilla 2.6.37.3 + genpatches-2.6.37.4 +
+  grsecurity-2.2.1-2.6.37.3-201103122250
+
+*hardened-sources-2.6.37-r5 (07 Mar 2011)
+
+  07 Mar 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.37-r5.ebuild:
+  Based on vanilla 2.6.37.2 + genpatches-2.6.37.2 +
+  grsecurity-2.2.1-2.6.37.2-201103021740
+
+*hardened-sources-2.6.32-r40 (07 Mar 2011)
+
+  07 Mar 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r40.ebuild:
+  Based on vanilla 2.6.32.30 + genpatches-2.6.32-32 +
+  grsecurity-2.2.1-2.6.32.30-201103021740
+
+  04 Mar 2011; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.32-r39.ebuild, hardened-sources-2.6.37-r4.ebuild:
+  Fixed minor error to pkg_postinst() message.
+
+*hardened-sources-2.6.37-r4 (01 Mar 2011)
+
+  01 Mar 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.37-r4.ebuild:
+  Based on vanilla 2.6.37.2 + genpatches-2.6.37-2 +
+  grsecurity-2.2.1-2.6.37.2-201102271552
+
+*hardened-sources-2.6.32-r39 (01 Mar 2011)
+
+  01 Mar 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r39.ebuild:
+  Based on vanilla 2.6.32.29 + genpatches-2.6.32-31 +
+  grsecurity-2.2.1-2.6.32.29-201102271552
+
+*hardened-sources-2.6.37-r3 (21 Feb 2011)
+
+  21 Feb 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.37-r3.ebuild:
+  Same codebase as hardened-sources-2.6.37-r2, updated predefined GRSEC/PaX
+
+*hardened-sources-2.6.32-r38 (21 Feb 2011)
+
+  21 Feb 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r38.ebuild:
+  Same codebase as hardened-sources-2.6.32-r37, updated predefined GRSEC/PaX
+  settings
+
+*hardened-sources-2.6.37-r2 (18 Feb 2011)
+
+  18 Feb 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.37-r2.ebuild:
+  Based on vanilla 2.6.37 + genpatches-2.6.37-1 +
+  grsecurity-2.2.1-2.6.37-201102152009
+
+*hardened-sources-2.6.32-r37 (18 Feb 2011)
+
+  18 Feb 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r37.ebuild:
+  Based on vanilla 2.6.32.28 + genpatches-2.6.32-30 +
+  grsecurity-2.2.1-2.6.32.28-201102151944
+
+  08 Feb 2011; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.34-r6.ebuild:
+  Dropped stable amd64 keyword.
+
+  03 Feb 2011; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.36-r9.ebuild:
+  Stable on amd64, ppc64, x86
+
+  03 Feb 2011; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.32-r34.ebuild:
+  Stable on amd64, ppc64, x86
+
+*hardened-sources-2.6.37-r1 (29 Jan 2011)
+
+  29 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.37-r1.ebuild:
+  Based on vanilla 2.6.37 + genpatches-2.6.37-1 +
+  grsecurity-2.2.1-2.6.37-201101272240
+
+*hardened-sources-2.6.32-r36 (29 Jan 2011)
+
+  29 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r36.ebuild:
+  Based on vanilla 2.6.32.28 + genpatches-2.6.32-30 +
+  grsecurity-2.2.1-2.6.32.28-201101272313
+
+  28 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r30.ebuild, -hardened-sources-2.6.32-r32.ebuild,
+  -hardened-sources-2.6.32-r33.ebuild, -hardened-sources-2.6.36-r5.ebuild,
+  -hardened-sources-2.6.36-r7.ebuild, -hardened-sources-2.6.36-r8.ebuild:
+  Removed deprecated versions
+
+  20 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.28-r9.ebuild:
+  Deprecated
+
+*hardened-sources-2.6.37 (20 Jan 2011)
+
+  20 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.37.ebuild:
+  Based on vanilla 2.6.37 + genpatches-2.6.37-1 +
+  grsecurity-2.2.1-2.6.37-201101172105
+
+*hardened-sources-2.6.32-r35 (20 Jan 2011)
+
+  20 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r35.ebuild:
+  Based on vanilla 2.6.32.28 + genpatches-2.6.32-30 +
+  grsecurity-2.2.1-2.6.32.28-201101170305
+
+*hardened-sources-2.6.36-r9 (15 Jan 2011)
+
+  15 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.36-r9.ebuild:
+  Based on vanilla 2.6.36.3 + genpatches-2.6.36-10 +
+  grsecurity-2.2.1-2.6.36.3-201101131705
+
+*hardened-sources-2.6.32-r34 (15 Jan 2011)
+
+  15 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r34.ebuild:
+  Based on vanilla 2.6.32.28 + genpatches-2.6.32-30 +
+  grsecurity-2.2.1-2.6.32.28-201101131705
+
+*hardened-sources-2.6.36-r8 (07 Jan 2011)
+
+  07 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.36-r8.ebuild:
+  Based on vanilla 2.6.36.2 + genpatches-2.6.36-8 +
+  grsecurity-2.2.1-2.6.36.2-201101052002
+
+*hardened-sources-2.6.32-r33 (07 Jan 2011)
+
+  07 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r33.ebuild:
+  Based on vanilla 2.6.32.27 + genpatches-2.6.32-29 +
+  grsecurity-2.2.1-2.6.32.27-201101052002
+
+*hardened-sources-2.6.36-r7 (27 Dec 2010)
+
+  27 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.36-r7.ebuild:
+  Based on vanilla 2.6.36.2 + genpatches-2.6.36-7 +
+  grsecurity-2.2.1-2.6.36.2-201012221906
+
+*hardened-sources-2.6.32-r32 (27 Dec 2010)
+
+  27 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r32.ebuild:
+  Based on vanilla 2.6.32.27 + genpatches-2.6.32-29 +
+  grsecurity-2.2.1-2.6.32.27-201012182005
+
+  21 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r24.ebuild, -hardened-sources-2.6.32-r25.ebuild,
+  -hardened-sources-2.6.32-r26.ebuild, -hardened-sources-2.6.32-r27.ebuild,
+  -hardened-sources-2.6.32-r29.ebuild, -hardened-sources-2.6.35-r4.ebuild,
+  -hardened-sources-2.6.35-r5.ebuild, -hardened-sources-2.6.35-r6.ebuild,
+  -hardened-sources-2.6.36.ebuild, -hardened-sources-2.6.36-r1.ebuild,
+  -hardened-sources-2.6.36-r2.ebuild, -hardened-sources-2.6.36-r4.ebuild:
+  Removed deprecated versions
+
+  20 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.32-r31.ebuild, hardened-sources-2.6.36-r6.ebuild:
+  amd64, ppc64, x86 fast track stabilization. See CVE-2010-4258,
+  CVE-2010-3849, CVE-2010-3850
+
+*hardened-sources-2.6.36-r6 (14 Dec 2010)
+
+  14 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.36-r6.ebuild:
+  Based on vanilla 2.6.36.2 + genpatches-2.6.36-7 +
+  grsecurity-2.2.1-2.6.36.2-201012121726
+
+*hardened-sources-2.6.32-r31 (14 Dec 2010)
+
+  14 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r31.ebuild:
+  Based on vanilla 2.6.32.27 + genpatches-2.6.32-29 +
+  grsecurity-2.2.1-2.6.32.27-201012130740
+
+  09 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.32-r30.ebuild, hardened-sources-2.6.36-r5.ebuild:
+  Fixed bug #348238
+
+*hardened-sources-2.6.36-r5 (09 Dec 2010)
+
+  09 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.36-r5.ebuild:
+  Based on vanilla-2.6.36.1 + genpatches-2.6.36-6 +
+  grsecurity-2.2.1-2.6.36.1-201012040057
+
+*hardened-sources-2.6.32-r30 (09 Dec 2010)
+
+  09 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r30.ebuild:
+  Based on vanilla-2.6.32.26 + genpatches-2.6.32-28 +
+  grsecurity-2.2.1-2.6.32.26-201012040057
+
+*hardened-sources-2.6.36-r4 (02 Dec 2010)
+
+  02 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.36-r4.ebuild:
+  Based on vanilla-2.6.36.1 + genpatches-.2.6.36-5 +
+  grsecurity-2.2.1-2.6.36.1-201011280939
+
+*hardened-sources-2.6.32-r29 (02 Dec 2010)
+
+  02 Dec 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r29.ebuild:
+  Based on vanilla-2.6.32.26 + genpatches-2.6.32-27 +
+  grsecurity-2.2.1-2.6.32.26-201011280939
+
+  30 Nov 2010; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r28.ebuild, -hardened-sources-2.6.36-r3.ebuild:
+  Removed because of multiple breakage (pulseaudio, install, etc).
+
+*hardened-sources-2.6.36-r3 (29 Nov 2010)
+
+  29 Nov 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.36-r3.ebuild:
+  hardened-sources-2.6.36-r3 based on 2.6.36.1 + genpatches +
+  grsecurity-2.2.1-2.6.36.1-201011261834
+
+*hardened-sources-2.6.32-r28 (29 Nov 2010)
+
+  29 Nov 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r28.ebuild:
+  hardened-sources-2.6.32-r28 based on 2.6.32.26 + genpatches +
+  grsecurity-2.2.1-2.6.32.26-201011261834
+
+  28 Nov 2010; Robin H. Johnson <robbat2@gentoo.org> Manifest:
+  Update Manifest for deblob 2.6.36.
+
+*hardened-sources-2.6.36-r2 (18 Nov 2010)
+
+  18 Nov 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.36-r2.ebuild:
+  hardened-sources-2.6.36-r2 based on 2.6.36 + genpatches +
+  grsecurity-2.2.0-2.6.36-201011151726
+
+*hardened-sources-2.6.32-r27 (18 Nov 2010)
+
+  18 Nov 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r27.ebuild:
+  hardened-sources-2.6.32-r27 based on 2.6.32.25 + genpatches +
+  grsecurity-2.2.0-2.6.32.25-201011151726
+
+*hardened-sources-2.6.36-r1 (14 Nov 2010)
+
+  14 Nov 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.36-r1.ebuild:
+  hardened-sources-2.6.36-r1 based on 2.6.36 + genpatches +
+  grsecurity-2.2.0-2.6.36-201011131640
+
+*hardened-sources-2.6.32-r26 (14 Nov 2010)
+
+  14 Nov 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r26.ebuild:
+  hardened-sources-2.6.32-r26 based on 2.6.32.25 + genpatches +
+  grsecurity-2.2.0-2.6.32.25-201011131640
+
+*hardened-sources-2.6.36 (07 Nov 2010)
+
+  07 Nov 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.36.ebuild:
+  hardened-sources-2.6.36 based on 2.6.36 + genpatches +
+  grsecurity-2.2.0-2.6.36-201011062054
+
+*hardened-sources-2.6.35-r7 (07 Nov 2010)
+
+  07 Nov 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.35-r7.ebuild:
+  hardened-sources-2.6.35-r7 based on 2.6.35.8 + genpatches +
+  grsecurity-2.2.0-2.6.35.8-201011062054
+
+*hardened-sources-2.6.32-r25 (07 Nov 2010)
+
+  07 Nov 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r25.ebuild:
+  hardened-sources-2.6.32-r25 based on 2.6.32.25 + genpatches +
+  grsecurity-2.2.0-2.6.32.25-201011062054
+
+*hardened-sources-2.6.35-r6 (02 Nov 2010)
+*hardened-sources-2.6.32-r24 (02 Nov 2010)
+
+  02 Nov 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r24.ebuild, +hardened-sources-2.6.35-r6.ebuild:
+  hardened-sources-2.6.32-r24 based on 2.6.32.25 + genpatches +
+  grsecurity-2.2.0-2.6.32.25-201010311944
+  hardened-sources-2.6.35-r6 based on 2.6.35.8 + genpatches +
+  grsecurity-2.2.0-2.6.35.8-201010311944
+
+  02 Nov 2010; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.32-r23.ebuild:
+  ppc64 stable, bug #343535
+
+*hardened-sources-2.6.35-r5 (24 Oct 2010)
+*hardened-sources-2.6.32-r23 (24 Oct 2010)
+
+  24 Oct 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r23.ebuild, +hardened-sources-2.6.35-r5.ebuild:
+  hardened-sources-2.6.32-r23 based on 2.6.32.24 + genpatches +
+  grsec-2.2.0-2.6.32.24-201010232009
+  hardened-sources-2.6.35-r5 based on 2.6.35.7 + genpatches +
+  grsec-2.2.0-2.6.35.7-201010232009
+
+  24 Oct 2010; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.32-r22.ebuild:
+  Broken on ppc/ppc64, bug #341915#c6
+
+  24 Oct 2010; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r16.ebuild, -hardened-sources-2.6.32-r17.ebuild,
+  -hardened-sources-2.6.32-r18.ebuild, -hardened-sources-2.6.32-r19.ebuild,
+  -hardened-sources-2.6.32-r20.ebuild, -hardened-sources-2.6.32-r21.ebuild,
+  -hardened-sources-2.6.34-r4.ebuild, -hardened-sources-2.6.34-r5.ebuild,
+  -hardened-sources-2.6.35.ebuild, -hardened-sources-2.6.35-r1.ebuild,
+  -hardened-sources-2.6.35-r2.ebuild, -hardened-sources-2.6.35-r3.ebuild:
+  Removing vulnerable kernels where possible, bug #341801
+
+  21 Oct 2010; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.32-r22.ebuild:
+  x86 stable, bug #341915
+
+  20 Oct 2010; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.32-r22.ebuild:
+  amd64 stable, bug #341915
+
+*hardened-sources-2.6.35-r4 (20 Oct 2010)
+*hardened-sources-2.6.32-r22 (20 Oct 2010)
+
+  20 Oct 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r22.ebuild, +hardened-sources-2.6.35-r4.ebuild:
+  hardened-sources-2.6.32-r22 based on 2.6.32.24 + genpatches +
+  grsec-2.2.0-2.6.32.24-201010191911
+  hardened-sources-2.6.35-r4 based on 2.6.35.7 + genpatches +
+  grsec-2.2.0-2.6.35.7-201010191911
+  Addresses security bug #341801
+
+*hardened-sources-2.6.35-r3 (16 Oct 2010)
+*hardened-sources-2.6.32-r21 (16 Oct 2010)
+
+  16 Oct 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r21.ebuild, +hardened-sources-2.6.35-r3.ebuild:
+  hardened-sources-2.6.32-r21 based on 2.6.32.24 + genpatches +
+  grsec-2.2.0-2.6.32.24-201010121028
+  hardened-sources-2.6.35-r3 based on 2.6.35.7 + genpatches +
+  grsec-2.2.0-2.6.35.7-201010121028
+
+*hardened-sources-2.6.35-r2 (07 Oct 2010)
+
+  07 Oct 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.35-r2.ebuild:
+  hardened-sources-2.6.35-r2 based on 2.6.35.7 + genpatches +
+  grsec-2.2.0-2.6.35.7-201010021153
+
+*hardened-sources-2.6.32-r20 (06 Oct 2010)
+
+  06 Oct 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r20.ebuild:
+  hardened-sources-2.6.32-r20 based on 2.6.32.24 + genpatches +
+  grsec-2.2.0-2.6.32.24-201010021153 
+
+*hardened-sources-2.6.35-r1 (30 Sep 2010)
+*hardened-sources-2.6.32-r19 (30 Sep 2010)
+
+  30 Sep 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r19.ebuild, +hardened-sources-2.6.35-r1.ebuild:
+  hardened-sources-2.6.32-r19 based on 2.6.32.23 + genpatches +
+  grsec-2.2.0-2.6.32.23-201009272133
+  hardened-sources-2.6.35-r1 based on 2.6.35.6 + genpatches +
+  grsec-2.2.0-2.6.35.6-201009281623
+
+*hardened-sources-2.6.35 (28 Sep 2010)
+
+  28 Sep 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.35.ebuild:
+  hardened-sources-2.6.35 based on grsec-2.2.0-2.6.35.6-201009262116 
+
+  21 Sep 2010; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r14.ebuild, -hardened-sources-2.6.32-r15.ebuild,
+  hardened-sources-2.6.32-r18.ebuild, -hardened-sources-2.6.34-r2.ebuild,
+  -hardened-sources-2.6.34-r3.ebuild, hardened-sources-2.6.34-r6.ebuild:
+  Fast track stabilization. See bug #338273. Removed older versions.
+
+*hardened-sources-2.6.34-r6 (17 Sep 2010)
+*hardened-sources-2.6.32-r18 (17 Sep 2010)
+
+  17 Sep 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r18.ebuild, +hardened-sources-2.6.34-r6.ebuild:
+  hardened-sources-2.6.32-r18 based on 2.6.32.21 + genpatches +
+  grsec-2.2.0-2.6.32.21-201009162222
+  hardened-sources-2.6.34-r6 based on 2.6.34.7 + genpatches +
+  grsec-2.2.0-2.6.34.7-201009162222
+  Addresses IA32 syscall exploit.
+
+*hardened-sources-2.6.34-r5 (15 Sep 2010)
+*hardened-sources-2.6.32-r17 (15 Sep 2010)
+
+  15 Sep 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r17.ebuild, +hardened-sources-2.6.34-r5.ebuild:
+  hardened-sources-2.6.32-r17 based on 2.6.32.21 + genpatches +
+  grsec-2.2.0-2.6.32.21-201009130811
+  hardened-sources-2.6.34-r5 based on 2.6.34.6 + genpatches +
+  grsec-2.2.0-2.6.34.6-201009130754
+
+*hardened-sources-2.6.34-r4 (07 Sep 2010)
+*hardened-sources-2.6.32-r16 (07 Sep 2010)
+
+  07 Sep 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r16.ebuild, +hardened-sources-2.6.34-r4.ebuild:
+  hardened-sources-2.6.32-r16 based on 2.6.32.21 +
+  grsec-2.2.0-2.6.32.21-201009032133
+  hardened-sources-2.6.34-r4 based on 2.6.34.6 +
+  grsec-2.2.0-2.6.34.6-201009041352
+
+  02 Sep 2010; Anthony G. Basile <blueness@gentoo.org> ChangeLog:
+  hardened-sources-2.6.32-r15 based on 2.6.32.21 +
+  grsec-2.2.0-2.6.32.21-201008292122
+  hardened-sources-2.6.34-r3 based on 2.6.34.6 +
+  grsec-2.2.0-2.6.34.6-201008292122
+
+*hardened-sources-2.6.34-r3 (02 Sep 2010)
+*hardened-sources-2.6.32-r15 (02 Sep 2010)
+
+  02 Sep 2010; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r10.ebuild, -hardened-sources-2.6.32-r11.ebuild,
+  -hardened-sources-2.6.32-r12.ebuild, -hardened-sources-2.6.32-r13.ebuild,
+  +hardened-sources-2.6.32-r15.ebuild, -hardened-sources-2.6.34-r1.ebuild,
+  +hardened-sources-2.6.34-r3.ebuild:
+  Bumps and remove deprecated versions
+
+*hardened-sources-2.6.34-r2 (21 Aug 2010)
+
+  21 Aug 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.34-r2.ebuild:
+  Based on vanilla 2.6.34.4 + genpatches + grsec-2.2.0-2.6.34.4-201008131840
+
+*hardened-sources-2.6.32-r14 (21 Aug 2010)
+
+  21 Aug 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r14.ebuild:
+  Based on vanilla 2.6.32.19 + genpatches +
+  grsec-2.2.0-2.6.32.19-201008131840
+
+*hardened-sources-2.6.32-r13 (14 Aug 2010)
+
+  14 Aug 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r13.ebuild:
+  Based on vanilla 2.6.32.18 + genpatches +
+  grsecurity-2.2.0-2.6.32.18-201008112233
+
+  03 Aug 2010; Robin H. Johnson <robbat2@gentoo.org> Manifest:
+  kernel-2 deblob support for 2.6.35; bug #324505: deblob-check usage.
+
+  01 Aug 2010; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-2.6.32-r9.ebuild:
+  Stable ppc64. Bug #326885
+
+*hardened-sources-2.6.32-r12 (24 Jul 2010)
+
+  24 Jul 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r12.ebuild:
+  Parallels fix incorporated into hardened-sources-2.6.34-r1
+
+*hardened-sources-2.6.34-r1 (24 Jul 2010)
+
+  24 Jul 2010; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.34.ebuild, +hardened-sources-2.6.34-r1.ebuild:
+  Fixes bug #328275
+
+  21 Jul 2010; <chainsaw@gentoo.org> metadata.xml:
+  Address metadata concerns by Jeroen "rej" Roovers <rej@gentoo.org> raised
+  on gentoo-dev.
+
+  21 Jul 2010; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Correct mail address.
+
+  18 Jul 2010; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.25-r13.ebuild, -hardened-sources-2.6.26-r9.ebuild,
+  -hardened-sources-2.6.28-r7.ebuild, -hardened-sources-2.6.29.ebuild,
+  -hardened-sources-2.6.32-r8.ebuild:
+  Removing outdated releases
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  hardened-sources-2.6.32-r9.ebuild:
+  stable x86, bug 326885
+
+  13 Jul 2010; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-2.6.32-r7.ebuild:
+  Removed for security. Bug #325573
+
+*hardened-sources-2.6.34 (13 Jul 2010)
+
+  13 Jul 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.34.ebuild:
+  Initial commit based on mainline 2.6.34.1 and grsec-2.2.0.
+
+*hardened-sources-2.6.32-r11 (13 Jul 2010)
+
+  13 Jul 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r11.ebuild:
+  New patchset based on mainline 2.6.32.16 and grsec-2.2.0. Bug #327263
+
+  06 Jul 2010; <chainsaw@gentoo.org> hardened-sources-2.6.32-r9.ebuild:
+  Marked stable on AMD64 as requested by Anthony G. Basile
+  <blueness@gentoo.org> in bug #326885. Operational testing done for 1 week
+  on roughly two dozen HP Proliant DL365 G1 and DL385 G2 systems.
+
+*hardened-sources-2.6.32-r10 (30 Jun 2010)
+
+  30 Jun 2010; Anthony G. Basile <blueness@gentoo.org>
+  +hardened-sources-2.6.32-r10.ebuild:
+  New patchset based on mainline 2.6.32.15 and grsec-2.2.0. Bug #325227.
+
+  29 Jun 2010; Anthony G. Basile <blueness@gentoo.org> metadata.xml:
+  Added myself to the metadata.xml
+
+*hardened-sources-2.6.32-r9 (11 Jun 2010)
+
+  11 Jun 2010; <chainsaw@gentoo.org> +hardened-sources-2.6.32-r9.ebuild:
+  New patchset by Anthony G Basile, based on mainline 2.6.32.15 sources.
+
+*hardened-sources-2.6.32-r8 (01 Jun 2010)
+
+  01 Jun 2010; <chainsaw@gentoo.org> +hardened-sources-2.6.32-r8.ebuild:
+  New patchset by Anthony G Basile, based on mainline 2.6.32.14 sources.
+
+  27 May 2010; <chainsaw@gentoo.org> hardened-sources-2.6.32-r7.ebuild:
+  Update SRC_URI to point to mirror network now that the distfile has
+  propagated.
+
+*hardened-sources-2.6.32-r7 (26 May 2010)
+
+  26 May 2010; <chainsaw@gentoo.org> +hardened-sources-2.6.32-r7.ebuild,
+  metadata.xml:
+  New 2.6.32-based release by Anthony G Basile, Robin H. Johnson & Matthew
+  Summers.
+
+  26 Apr 2010; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Update Manifest for deblob support in kernel-2 eclass.
+
+  31 May 2009; nixnut <nixnut@gentoo.org> hardened-sources-2.6.28-r9.ebuild:
+  ppc stable
+
+  29 May 2009; Gordon Malm <gengor@gentoo.org>
+  -hardened-sources-2.6.28-r6.ebuild, hardened-sources-2.6.28-r9.ebuild:
+  Stable amd64/x86 and remove old.
+
+*hardened-sources-2.6.29 (25 May 2009)
+
+  25 May 2009; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.29.ebuild:
+  Initial 2.6.29 release. Thanks to Kerin Millar for providing and testing
+  release candidates.
+
+*hardened-sources-2.6.28-r9 (25 May 2009)
+
+  25 May 2009; Gordon Malm <gengor@gentoo.org>
+  -hardened-sources-2.6.28-r8.ebuild, +hardened-sources-2.6.28-r9.ebuild:
+  Fix x86-32 boot failure (regression vs. 2.6.28-r7).
+
+*hardened-sources-2.6.28-r8 (18 May 2009)
+
+  18 May 2009; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.28-r8.ebuild:
+  Bump to Linux 2.6.28.10, latest genpatches, PaX updates. Fixes bug #256067
+  and #262862 among others.
+
+  01 May 2009; Gordon Malm <gengor@gentoo.org>
+  hardened-sources-2.6.25-r13.ebuild, hardened-sources-2.6.26-r9.ebuild,
+  hardened-sources-2.6.28-r6.ebuild, hardened-sources-2.6.28-r7.ebuild:
+  Remove unnecessary mirror://gentoo from SRC_URI.
+
+  05 Apr 2009; nixnut <nixnut@gentoo.org> hardened-sources-2.6.28-r7.ebuild:
+  ppc stable
+
+  30 Mar 2009; Gordon Malm <gengor@gentoo.org>
+  -hardened-sources-2.6.28-r4.ebuild, hardened-sources-2.6.28-r7.ebuild:
+  Stable amd64/x86 and remove old.
+
+*hardened-sources-2.6.28-r7 (27 Mar 2009)
+
+  27 Mar 2009; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.28-r7.ebuild:
+  Add Linux 2.6.28.9. Fix bugs 263424, 263870.
+
+  22 Mar 2009; Gordon Malm <gengor@gentoo.org>
+  -hardened-sources-2.6.27-r7.ebuild, -hardened-sources-2.6.27-r8.ebuild,
+  -hardened-sources-2.6.28-r1.ebuild, -hardened-sources-2.6.28-r2.ebuild,
+  -hardened-sources-2.6.28-r3.ebuild, hardened-sources-2.6.28-r6.ebuild:
+  Stable amd64/x86 and remove old versions.
+
+  22 Mar 2009; nixnut <nixnut@gentoo.org> hardened-sources-2.6.28-r6.ebuild:
+  ppc stable
+
+*hardened-sources-2.6.28-r6 (21 Mar 2009)
+
+  21 Mar 2009; Gordon Malm <gengor@gentoo.org>
+  -hardened-sources-2.6.28-r5.ebuild, +hardened-sources-2.6.28-r6.ebuild:
+  Minor fix to ensure RTC is properly selected when GRKERNSEC_IO is enabled.
+
+*hardened-sources-2.6.28-r5 (20 Mar 2009)
+
+  20 Mar 2009; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.28-r5.ebuild:
+  Bump genpatches. Grsecurity patch bump, fixes bug #262752.
+
+  20 Mar 2009; Gordon Malm <gengor@gentoo.org>
+  hardened-sources-2.6.28-r4.ebuild:
+  Stable amd64/x86.
+
+*hardened-sources-2.6.28-r4 (18 Mar 2009)
+
+  18 Mar 2009; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.28-r4.ebuild:
+  Bump to Linux 2.6.28.8. PaX update fixes oops in SANITIZE feature,
+  compilation with CPA_DEBUG and more.
+
+  17 Mar 2009; Gordon Malm <gengor@gentoo.org>
+  hardened-sources-2.6.28-r3.ebuild:
+  Quick stable amd64/x86.
+
+*hardened-sources-2.6.28-r3 (15 Mar 2009)
+
+  15 Mar 2009; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.28-r3.ebuild:
+  Adds latest PaX changes fixing some boot issues, ext4 fixes for bug #262507.
+
+  14 Mar 2009; nixnut <nixnut@gentoo.org> hardened-sources-2.6.28-r2.ebuild:
+  ppc stable
+
+  13 Mar 2009; Gordon Malm <gengor@gentoo.org>
+  hardened-sources-2.6.28-r2.ebuild:
+  Stable amd64/x86.
+
+*hardened-sources-2.6.28-r2 (11 Mar 2009)
+
+  11 Mar 2009; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.28-r2.ebuild:
+  Version bump bringing in latest grsecurity patch.
+
+*hardened-sources-2.6.28-r1 (09 Mar 2009)
+
+  09 Mar 2009; Gordon Malm <gengor@gentoo.org>
+  -hardened-sources-2.6.28.ebuild, +hardened-sources-2.6.28-r1.ebuild:
+  Version bump and remove old.
+
+  07 Mar 2009; nixnut <nixnut@gentoo.org> hardened-sources-2.6.27-r8.ebuild:
+  ppc stable
+
+  01 Mar 2009; Gordon Malm <gengor@gentoo.org>
+  hardened-sources-2.6.27-r8.ebuild:
+  Remove amd64 testing keyword, bug 256226.
+
+  01 Mar 2009; Gordon Malm <gengor@gentoo.org>
+  hardened-sources-2.6.27-r8.ebuild:
+  Revert amd64 stable, bug #256226.
+
+  01 Mar 2009; Gordon Malm <gengor@gentoo.org>
+  hardened-sources-2.6.27-r8.ebuild:
+  Stable on amd64/x86.
+
+  24 Feb 2009; Gordon Malm <gengor@gentoo.org>
+  -hardened-sources-2.6.27-r6.ebuild:
+  Remove old 2.6.27 release.
+
+*hardened-sources-2.6.27-r8 (24 Feb 2009)
+
+  24 Feb 2009; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.27-r8.ebuild:
+  Bump to latest genpatches, Linux 2.6.27.19, PaX updates. Fixes bug #256067
+  and probably more.
+
+  04 Feb 2009; nixnut <nixnut@gentoo.org> hardened-sources-2.6.26-r9.ebuild:
+  ppc stable
+
+*hardened-sources-2.6.28 (25 Jan 2009)
+
+  25 Jan 2009; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.28.ebuild:
+  Initial 2.6.28 release.
+
+*hardened-sources-2.6.27-r7 (25 Jan 2009)
+
+  25 Jan 2009; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.27-r7.ebuild:
+  Bump to Linux 2.6.27.13.
+
+  25 Jan 2009; Gordon Malm <gengor@gentoo.org>
+  hardened-sources-2.6.26-r9.ebuild:
+  Stable amd64/x86.
+
+  24 Jan 2009; Gordon Malm <gengor@gentoo.org>
+  -hardened-sources-2.6.27-r3.ebuild, -hardened-sources-2.6.27-r4.ebuild,
+  -hardened-sources-2.6.27-r5.ebuild:
+  Remove problem versions.
+
+*hardened-sources-2.6.27-r6 (24 Jan 2009)
+
+  24 Jan 2009; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.27-r6.ebuild:
+  Revert PaX test29 to test30 changes. Fixes bug 256226.
+
+*hardened-sources-2.6.27-r5 (24 Jan 2009)
+
+  24 Jan 2009; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.27-r5.ebuild:
+  Bump to genpatches-10 (includes Linux 2.6.27.{11,12}) and fix bugs 253733,
+  254843.
+
+  23 Jan 2009; Gordon Malm <gengor@gentoo.org>
+  -hardened-sources-2.6.25-r11.ebuild, -hardened-sources-2.6.25-r12.ebuild,
+  -hardened-sources-2.6.26-r7.ebuild, -hardened-sources-2.6.26-r8.ebuild:
+  Remove problem versions.
+
+  23 Jan 2009; nixnut <nixnut@gentoo.org>
+  hardened-sources-2.6.25-r13.ebuild:
+  ppc stable
+
+  21 Jan 2009; Gordon Malm <gengor@gentoo.org>
+  hardened-sources-2.6.25-r13.ebuild:
+  Fasttrack stable amd64/x86.
+
+*hardened-sources-2.6.26-r9 (21 Jan 2009)
+
+  21 Jan 2009; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.26-r9.ebuild:
+  Revert RLIMIT_STACK false-positives-avoidance patch. Bugs 253733, 254843
+
+*hardened-sources-2.6.25-r13 (20 Jan 2009)
+
+  20 Jan 2009; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.25-r13.ebuild:
+  Revert RLIMIT_STACK false-positives-avoidance patch. Bugs 253733, 254843
+
+  20 Jan 2009; nixnut <nixnut@gentoo.org>
+  hardened-sources-2.6.25-r12.ebuild:
+  ppc stable
+
+  17 Jan 2009; Gordon Malm <gengor@gentoo.org>
+  hardened-sources-2.6.25-r12.ebuild:
+  Stable amd64/x86.
+
+  14 Jan 2009; Gordon Malm <gengor@gentoo.org>
+  -hardened-sources-2.6.25-r10.ebuild, -hardened-sources-2.6.26-r6.ebuild,
+  -hardened-sources-2.6.27-r2.ebuild:
+  Clean out old versions.
+
+*hardened-sources-2.6.27-r4 (14 Jan 2009)
+*hardened-sources-2.6.26-r8 (14 Jan 2009)
+*hardened-sources-2.6.25-r12 (14 Jan 2009)
+
+  14 Jan 2009; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.25-r12.ebuild, +hardened-sources-2.6.26-r8.ebuild,
+  +hardened-sources-2.6.27-r4.ebuild:
+  2.6.25-r12: Fixes bugs #249729, #250548, #252688, #254907
+  2.6.26-r8: Fixes bugs #249729, #250548, #252688, #254907
+  2.6.27-r4: Update to latest genpatches (includes Linux 2.6.27.10) and
+  grsecurity patch. Fixes bugs #249729, #250511, #250548, #252688, #254907
+
+  15 Dec 2008; nixnut <nixnut@gentoo.org>
+  hardened-sources-2.6.25-r11.ebuild:
+  Stable on ppc
+
+  09 Dec 2008; Gordon Malm <gengor@gentoo.org>
+  hardened-sources-2.6.25-r11.ebuild:
+  Stable amd64/x86.
+
+*hardened-sources-2.6.27-r3 (07 Dec 2008)
+
+  07 Dec 2008; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.27-r3.ebuild:
+  Bump to latest genpatches, including Linux 2.6.27.8. Bump grsec/pax patches.
+  Fixes bug #248754, #249729 and #246607.
+
+  03 Dec 2008; Gordon Malm <gengor@gentoo.org>
+  -hardened-sources-2.6.25-r9.ebuild, -hardened-sources-2.6.26-r5.ebuild:
+  Remove old versions.
+
+*hardened-sources-2.6.26-r7 (03 Dec 2008)
+*hardened-sources-2.6.25-r11 (03 Dec 2008)
+
+  03 Dec 2008; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.25-r11.ebuild, +hardened-sources-2.6.26-r7.ebuild:
+  2.6.25-r11: Fixes bugs 246607, 246710, 247453 and 248754.
+  2.6.26-r7: Fixes bugs 246607, 246710, 246763, 247453 and 248754.
+  Both include many backports from 2.6.27.{6,7} -stable releases.
+
+  24 Nov 2008; Gordon Malm <gengor@gentoo.org>
+  -hardened-sources-2.6.27.ebuild, -hardened-sources-2.6.27-r1.ebuild:
+  Remove versions broken on ARCHes != x86/amd64.
+
+*hardened-sources-2.6.27-r2 (24 Nov 2008)
+
+  24 Nov 2008; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.27-r2.ebuild:
+  Bump to Linux 2.6.27.7 and latest grsecurity patch.
+
+  19 Nov 2008; Gordon Malm <gengor@gentoo.org>
+  -hardened-sources-2.6.25-r8.ebuild, -hardened-sources-2.6.26-r4.ebuild:
+  Remove old versions.
+
+  19 Nov 2008; Gordon Malm <gengor@gentoo.org>
+  hardened-sources-2.6.27.ebuild, hardened-sources-2.6.27-r1.ebuild:
+  Remove all but ~amd64 & ~x86 keywords (broken elsewhere).
+
+  16 Nov 2008; nixnut <nixnut@gentoo.org>
+  hardened-sources-2.6.25-r10.ebuild:
+  Stable on ppc
+
+  15 Nov 2008; Gordon Malm <gengor@gentoo.org>
+  hardened-sources-2.6.25-r10.ebuild:
+  Stable amd64/x86.
+
+*hardened-sources-2.6.26-r6 (12 Nov 2008)
+
+  12 Nov 2008; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.26-r6.ebuild:
+  Bump to Linux 2.6.26.8 and fix security bug #245650.
+
+*hardened-sources-2.6.25-r10 (12 Nov 2008)
+
+  12 Nov 2008; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.25-r10.ebuild:
+  Update to Linux 2.6.25.20 and fix bugs #245427, #245650.
+
+*hardened-sources-2.6.27-r1 (09 Nov 2008)
+
+  09 Nov 2008; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.27-r1.ebuild:
+  Bump to stable kernel 2.6.27.5 and latest grsecurity patch.
+
+*hardened-sources-2.6.27 (04 Nov 2008)
+
+  04 Nov 2008; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.27.ebuild:
+  Initial 2.6.27 release.
+
+*hardened-sources-2.6.26-r5 (03 Nov 2008)
+
+  03 Nov 2008; Gordon Malm <gengor@gentoo.org>
+  -hardened-sources-2.6.25-r7.ebuild, -hardened-sources-2.6.26-r2.ebuild,
+  +hardened-sources-2.6.26-r5.ebuild:
+  2.6.26-r5: Bump to Linux 2.6.26.7, PaX updates.
+  Clean out some old versions.
+
+  02 Nov 2008; nixnut <nixnut@gentoo.org> hardened-sources-2.6.25-r9.ebuild:
+  Stable on ppc
+
+  30 Oct 2008; Gordon Malm <gengor@gentoo.org>
+  hardened-sources-2.6.25-r9.ebuild:
+  Stable on amd64/x86.
+
+*hardened-sources-2.6.25-r9 (26 Oct 2008)
+
+  26 Oct 2008; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.25-r9.ebuild:
+  Update to Linux 2.6.25.19
+
+  15 Oct 2008; nixnut <nixnut@gentoo.org> hardened-sources-2.6.25-r8.ebuild:
+  Stable on ppc
+
+*hardened-sources-2.6.26-r4 (14 Oct 2008)
+
+  14 Oct 2008; Gordon Malm <gengor@gentoo.org>
+  -hardened-sources-2.6.26-r3.ebuild, +hardened-sources-2.6.26-r4.ebuild:
+  Update to latest grsecurity patch, fixing building of non-modular kernels.
+
+*hardened-sources-2.6.26-r3 (12 Oct 2008)
+
+  12 Oct 2008; Gordon Malm <gengor@gentoo.org>
+  hardened-sources-2.6.25-r8.ebuild, -hardened-sources-2.6.26-r1.ebuild,
+  +hardened-sources-2.6.26-r3.ebuild:
+  2.6.26-r3: Update to Linux 2.6.26.6 and latest grsecurity patch.
+  2.6.26-r1: Removed.
+  2.6.25-r8: Stable amd64/x86.
+
+*hardened-sources-2.6.25-r8 (09 Oct 2008)
+
+  09 Oct 2008; Gordon Malm <gengor@gentoo.org>
+  -hardened-sources-2.6.25-r4.ebuild, -hardened-sources-2.6.25-r5.ebuild,
+  -hardened-sources-2.6.25-r6.ebuild, +hardened-sources-2.6.25-r8.ebuild:
+  Update to genpatches-11 and Linux 2.6.25.18. Remove old versions.
+
+  20 Sep 2008; nixnut <nixnut@gentoo.org> hardened-sources-2.6.25-r7.ebuild:
+  Stable on ppc
+
+  17 Sep 2008; Gordon Malm <gengor@gentoo.org>
+  hardened-sources-2.6.25-r7.ebuild:
+  Stable amd64/x86.
+
+*hardened-sources-2.6.26-r2 (13 Sep 2008)
+
+  13 Sep 2008; Gordon Malm <gengor@gentoo.org>
+  -hardened-sources-2.6.26.ebuild, +hardened-sources-2.6.26-r2.ebuild:
+  2.6.26-r2: Update to Linux 2.6.26.5, new grsecurity patch adding
+  PAX_REFCOUNT feature, fix bug #237473 (CVE-2008-3525). 2.6.26: Removed.
+
+*hardened-sources-2.6.25-r7 (13 Sep 2008)
+
+  13 Sep 2008; Gordon Malm <gengor@gentoo.org>
+  +hardened-sources-2.6.25-r7.ebuild:
+  Add 2.6.25-r7, fixing bug #237473 (CVE-2008-3525) and a PaX bug.
+
+  10 Sep 2008; Gordon Malm <gengor@gentoo.org>
+  hardened-sources-2.6.25-r4.ebuild, hardened-sources-2.6.25-r5.ebuild,
+  hardened-sources-2.6.25-r6.ebuild, hardened-sources-2.6.26.ebuild,
+  hardened-sources-2.6.26-r1.ebuild:
+  Update DESCRIPTION and HGPV_URI.
+
+*hardened-sources-2.6.25-r6 (09 Sep 2008)
+
+  09 Sep 2008; Gordon Malm <gengor@gentoo.org>
+  -hardened-sources-2.6.24-r3.ebuild, +hardened-sources-2.6.25-r6.ebuild:
+  2.6.25-r6: Update to Linux 2.6.25.17.
+  2.6.24-r3: Removed.
+
+  08 Sep 2008; Gordon Malm <gengor@gentoo.org>
+  hardened-sources-2.6.25-r5.ebuild:
+  Stable on amd64/x86
+
+  07 Sep 2008; Gordon Malm <gengor@gentoo.org> metadata.xml:
+  Update my email address.
+
+  31 Aug 2008; nixnut <nixnut@gentoo.org> hardened-sources-2.6.25-r4.ebuild:
+  stable on ppc
+
+*hardened-sources-2.6.26-r1 (23 Aug 2008)
+*hardened-sources-2.6.25-r5 (23 Aug 2008)
+
+  23 Aug 2008; Bryan D. Stine <battousai@gentoo.org>
+  -hardened-sources-2.6.23-r13.ebuild, -hardened-sources-2.6.25-r3.ebuild,
+  hardened-sources-2.6.25-r4.ebuild, +hardened-sources-2.6.25-r5.ebuild,
+  +hardened-sources-2.6.26-r1.ebuild:
+  Bump to 2.6.25-r5 for updated patches and upstream .10 kernel, fixing
+  security bug #235221. Bump to 2.6.26-r1 for upstream .3 kernel, also
+  fixing security bug #235221. Marked 2.6.25-r4 stable on amd64 and x86.
+  Removed 2.6.23-r13 and 2.6.25-r3. Commit on behalf of Gordon Malm
+  (gengor).
+
+*hardened-sources-2.6.26 (18 Aug 2008)
+*hardened-sources-2.6.25-r4 (18 Aug 2008)
+
+  18 Aug 2008; <solar@gentoo.org> -hardened-sources-2.6.25-r2.ebuild,
+  +hardened-sources-2.6.25-r4.ebuild, +hardened-sources-2.6.26.ebuild:
+  - proxy commit for gengor 2.6.26: Initial 2.6.26 release. 2.6.25-r4: Update
+  to Linux 2.6.25.15. Fixes security bugs #234799, #234803 and #234812.
+  2.6.25-r2: Removed.
+
+  16 Aug 2008; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove phreak from metadata.xml (#96398)
+
+*hardened-sources-2.6.25-r3 (31 Jul 2008)
+
+  31 Jul 2008; <solar@gentoo.org> -hardened-sources-2.6.24-r2.ebuild,
+  -hardened-sources-2.6.25.ebuild, -hardened-sources-2.6.25-r1.ebuild,
+  +hardened-sources-2.6.25-r3.ebuild:
+  - 2.6.25-r3: Update to Linux 2.6.25.13 and new grsecurity patch. Multiple
+  fixes, including security bug #231750.
+
+  28 Jul 2008; nixnut <nixnut@gentoo.org> hardened-sources-2.6.24-r3.ebuild:
+  Stable on ppc
+
+*hardened-sources-2.6.25-r2 (05 Jul 2008)
+
+  05 Jul 2008; <solar@gentoo.org> -hardened-sources-2.6.23-r11.ebuild,
+  -hardened-sources-2.6.23-r12.ebuild, hardened-sources-2.6.24-r3.ebuild,
+  +hardened-sources-2.6.25-r2.ebuild:
+  2.6.23-r4: Stable x86/amd64
+  2.6.25-r2: Update to Linux 2.6.25.10 and latest grsecurity release.
+  2.6.23-r{11,12}: Removed due to multiple vulns.
+  (gengor & kerframil)
+
+  04 Jul 2008; nixnut <nixnut@gentoo.org>
+  hardened-sources-2.6.23-r13.ebuild:
+  Stable on ppc
+
+*hardened-sources-2.6.25-r1 (30 Jun 2008)
+
+  30 Jun 2008; <solar@gentoo.org> hardened-sources-2.6.23-r13.ebuild,
+  +hardened-sources-2.6.25-r1.ebuild:
+  2.6.25-r1: Brings in Linux -stable tree patches 2.6.25.{7,8,9} and newer
+  grsecurity release. 2.6.23-r13: x86/amd64 stable
+
+*hardened-sources-2.6.25 (17 Jun 2008)
+*hardened-sources-2.6.24-r3 (17 Jun 2008)
+*hardened-sources-2.6.23-r13 (17 Jun 2008)
+
+  17 Jun 2008; <solar@gentoo.org> +hardened-sources-2.6.23-r13.ebuild,
+  +hardened-sources-2.6.24-r3.ebuild, +hardened-sources-2.6.25.ebuild:
+  * 2.6.23-r13: Fixes security bugs #198997, #212136, #222331, #222635,
+  #224647, #225461, other fixes. * 2.6.24-r3: Fixes security bugs #212136,
+  #222331, #222635, #224647, #225461, grsec/PaX updates/fixes, other fixes. *
+  2.6.25: Initial 2.6.25 release.
+
+  15 May 2008; <solar@gentoo.org> hardened-sources-2.6.23-r12.ebuild:
+  - fasttrack to stable x86/amd64
+
+  11 May 2008; Sven Wegener <swegener@gentoo.org> Manifest:
+  Fix broken digest for linux-2.6.24.tar.bz2.
+
+*hardened-sources-2.6.24-r2 (11 May 2008)
+*hardened-sources-2.6.23-r12 (11 May 2008)
+
+  11 May 2008; <solar@gentoo.org> -hardened-sources-2.6.23-r7.ebuild,
+  -hardened-sources-2.6.23-r9.ebuild, -hardened-sources-2.6.23-r10.ebuild,
+  +hardened-sources-2.6.23-r12.ebuild, -hardened-sources-2.6.24.ebuild,
+  -hardened-sources-2.6.24-r1.ebuild, +hardened-sources-2.6.24-r2.ebuild:
+  proxy commit for gengor. 2.6.23-r11 shortlog: Fixes security bugs 220691,
+  220975, 220979, 221123. 2.6.24-r2 not-so-shortlog: Fixes bug 215442,
+  security bugs 219901, 220691, 220975, 220979, 221123. New
+  genpatches/grsecurity with numerous updates & fixes. 2.6.23-r7->2.6.23-r10
+  should be removed as far as I'm concerned, everything else remove due to
+  vulnerable to numerous security bugs or brokeness.
+
+  10 May 2008; nixnut <nixnut@gentoo.org>
+  hardened-sources-2.6.23-r11.ebuild:
+  Stable on ppc
+
+  05 May 2008; <solar@gentoo.org> hardened-sources-2.6.23-r11.ebuild:
+  - -r11 stable on x86/amd64
+
+*hardened-sources-2.6.23-r11 (01 May 2008)
+
+  01 May 2008; <solar@gentoo.org> +hardened-sources-2.6.23-r11.ebuild:
+  - version bump to fix ulgy linux bugs
+
+*hardened-sources-2.6.24-r1 (30 Apr 2008)
+
+  30 Apr 2008; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.24-r1.ebuild:
+  Revision bump (thanks to Kerin and Gordon, again), pulling
+  genpatches-2.6.24-7, solving #219089. Additionally contains further security
+  fixes plus some minor updates.
+
+*hardened-sources-2.6.23-r10 (30 Apr 2008)
+
+  30 Apr 2008; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.23-r10.ebuild:
+  Revision bump (thanks to Kerin and Gordon, again), solving #213811, #219089.
+  Additional contains "various other fixes".
+
+  09 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Update the longdescription in metadata, thanks to Gordon Malm.
+
+  08 Apr 2008; nixnut <nixnut@gentoo.org> hardened-sources-2.6.23-r9.ebuild:
+  Stable on ppc wrt bug #213255
+
+  07 Apr 2008; <solar@gentoo.org> -hardened-sources-2.4.35-r2.ebuild,
+  -hardened-sources-2.6.23-r8.ebuild, hardened-sources-2.6.23-r9.ebuild:
+  - stable on x86/amd64 per request. Removed obsolete ebuilds
+
+*hardened-sources-2.6.24 (07 Apr 2008)
+
+  07 Apr 2008; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.24.ebuild:
+  Adding ebuild for hardened-sources-2.6.24 (many thanks to Kerin Millar
+  <kerframil at gmail.com> and Gordon Malm <bugs-gentoo-org-02 at bumpin.org>
+  for the many contributions and their continued effort in #216612) based on
+  2.6.24 and genpatches-2.6.24-5.
+  
+  The current ebuild/patchset contains these things:
+  * Incoporates unmodified grsec-2.1.11-2.6.24.4-200803262003 patch
+  * Introduces bespoke server and workstation oriented security levels
+  * VDSO_COMPAT cannot be enabled during runtime if PaX is enabled
+
+  30 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix the metadata.xml (Kerin isn't a dev, though he and Gordon are
+  maintaining it).
+
+  24 Mar 2008; Christian Heim <phreak@gentoo.org>
+  hardened-sources-2.4.35-r2.ebuild:
+  Fixing SRC_URI for 2.4.35-r2.
+
+*hardened-sources-2.6.23-r9 (22 Mar 2008)
+
+  22 Mar 2008; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.23-r9.ebuild:
+  * Revision bump, rebasing the patchset against genpatches-2.6.23-10.
+  * Change the default GIDs for some grsecurity options
+  * Revamp the Hardened [Gentoo] security level and make it the default level
+  * Fixing compilation on ia64 with CONFIG_MODULES=y (loadable module support)
+  * Fix a recursive lock -- call to capable() within ptrace_attach()
+  * Fix bug that allows audit and iscsi operations to be controlled via netlink
+
+*hardened-sources-2.6.23-r8 (27 Feb 2008)
+
+  27 Feb 2008; <solar@gentoo.org> +hardened-sources-2.6.23-r8.ebuild:
+  - version bump from Kerin Millar bug 210026
+
+  17 Feb 2008; <solar@gentoo.org> metadata.xml,
+  -hardened-sources-2.4.33.4.ebuild, -hardened-sources-2.6.20-r6.ebuild,
+  -hardened-sources-2.6.20-r10.ebuild, -hardened-sources-2.6.23-r4.ebuild,
+  -hardened-sources-2.6.23-r6.ebuild, hardened-sources-2.6.23-r7.ebuild:
+  - stable on x86 and remove old ebuilds
+
+  15 Feb 2008; <solar@gentoo.org> hardened-sources-2.6.23-r7.ebuild:
+  - stable on amd64 per request of amd64 lead
+
+*hardened-sources-2.6.23-r7 (11 Feb 2008)
+
+  11 Feb 2008; <solar@gentoo.org> +hardened-sources-2.6.23-r7.ebuild:
+  - version bump from kerin.millar
+  Changes:
+  
+  * Bump to genpatches-base-2.6.23-9
+  * Ported grsecurity-2.1.11-2.6.23.14-200801231800 to 2.6.23.15
+  * Disables COMPAT_VDSO in x86/defconfig
+  * Removes bogus symbols ACPI_SLEEP_PROC_(FS|SLEEP) from x86_64/defconfig
+
+  25 Jan 2008; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.22-r8.ebuild:
+  Cleaning up old versions.
+
+*hardened-sources-2.6.23-r6 (25 Jan 2008)
+
+  25 Jan 2008; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.23-r5.ebuild, +hardened-sources-2.6.23-r6.ebuild:
+  Revision bump, pulling in the latest genpatches.
+
+*hardened-sources-2.6.23-r5 (24 Dec 2007)
+
+  24 Dec 2007; Christian Heim <phreak@gentoo.org>
+  hardened-sources-2.4.35-r2.ebuild, hardened-sources-2.6.20-r6.ebuild,
+  hardened-sources-2.6.20-r10.ebuild, hardened-sources-2.6.22-r8.ebuild,
+  hardened-sources-2.6.23-r4.ebuild, +hardened-sources-2.6.23-r5.ebuild:
+  Revision bump, for the promised updated grsec snapshot. Also changing SRC_URI.
+
+  24 Dec 2007; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.22-r7.ebuild, -hardened-sources-2.6.23.ebuild,
+  -hardened-sources-2.6.23-r1.ebuild, -hardened-sources-2.6.23-r2.ebuild,
+  -hardened-sources-2.6.23-r3.ebuild:
+  Cleaning out some unused, old versions.
+
+  24 Dec 2007; Christian Heim <phreak@gentoo.org>
+  hardened-sources-2.6.23-r4.ebuild:
+  Marking hardened-sources-2.6.23-r4 stable on amd64 and x86. I know it ain't
+  in the tree for long, but there isn't much of a difference between this and
+  -r3. Only this revision pulls in 2.6.23.11 and 2.6.23.12 from genpatches.
+
+*hardened-sources-2.6.23-r4 (23 Dec 2007)
+
+  23 Dec 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.23-r4.ebuild:
+  Revision bump, grabbing the lastest genpatches release (2.6.23.12 that is).
+
+*hardened-sources-2.6.23-r3 (04 Dec 2007)
+
+  04 Dec 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.23-r3.ebuild:
+  Revision bump, pulling in 2.6.23.9.
+
+*hardened-sources-2.6.23-r2 (25 Nov 2007)
+
+  25 Nov 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.23-r2.ebuild:
+  Updated patchset, thanks to solar.
+
+*hardened-sources-2.6.23-r1 (31 Oct 2007)
+
+  31 Oct 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.23-r1.ebuild:
+  Revision bump, pulling in the snapshot from 30. October 2007 (18:50).
+
+  29 Oct 2007; <solar@gentoo.org> metadata.xml:
+  - update metadata.xml
+
+  25 Oct 2007; Christian Heim <phreak@gentoo.org>
+  hardened-sources-2.6.22-r8.ebuild:
+  Marking 2.6.22-r8 stable on amd64 and x86.
+
+  21 Oct 2007; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.4.35.ebuild, -hardened-sources-2.4.35-r1.ebuild,
+  -hardened-sources-2.6.21-r4.ebuild:
+  Removing old ebuilds.
+
+*hardened-sources-2.4.35-r2 (21 Oct 2007)
+
+  21 Oct 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.4.35-r2.ebuild:
+  Revision bump for 2.4.35. Includes new snapshot and the lastest Linux stable
+  patches.
+
+*hardened-sources-2.6.22-r8 (21 Oct 2007)
+
+  21 Oct 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.22-r8.ebuild:
+  Yet another new patch, hopefully fixing the remaining issues we had w/
+  2.6.22. Candidate for stabling.
+
+*hardened-sources-2.6.23 (13 Oct 2007)
+
+  13 Oct 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.23.ebuild:
+  Initial hardened-sources-2.6.23. If people still have problems w/ bug
+  194276, try setting CONFIG_PCI_GODIRECT=y instead of CONFIG_PCI_GOANY.
+
+  11 Oct 2007; Christian Heim <phreak@gentoo.org>
+  hardened-sources-2.6.20-r10.ebuild:
+  Pulling in yet another new genpatches version, fixing the PWC bug for real.
+
+  04 Oct 2007; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.22-r5.ebuild, -hardened-sources-2.6.22-r6.ebuild:
+  Removing old versions.
+
+*hardened-sources-2.6.22-r7 (01 Oct 2007)
+
+  01 Oct 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.22-r7.ebuild:
+  Revision bump, pulling in a newer patch. Should fix #194276.
+
+  30 Sep 2007; Christian Heim <phreak@gentoo.org>
+  hardened-sources-2.6.20-r10.ebuild:
+  Marking hardened-sources-2.6.20-r10 stable on x86 and amd64 (on courtesy of
+  Mike Doty).
+
+*hardened-sources-2.6.22-r6 (26 Sep 2007)
+
+  26 Sep 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.22-r6.ebuild:
+  Revision bump, grabbing up till Linux 2.6.22.9.
+
+  24 Sep 2007; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.22-r3.ebuild, -hardened-sources-2.6.22-r4.ebuild:
+  Cleaning up further.
+
+*hardened-sources-2.6.20-r10 (24 Sep 2007)
+
+  24 Sep 2007; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.20-r8.ebuild, -hardened-sources-2.6.20-r9.ebuild,
+  +hardened-sources-2.6.20-r10.ebuild:
+  Revision bump, pulling in Linux 2.6.20.20. Removing some of the older
+  revisions.
+
+*hardened-sources-2.6.22-r5 (22 Sep 2007)
+
+  22 Sep 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.22-r5.ebuild:
+  Revision bump, pulling in genpatches-2.6.22-8 for CVE-2007-4573.
+
+  17 Sep 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing johnm from metadata.xml (see #186467 for reference).
+
+*hardened-sources-2.6.22-r4 (17 Sep 2007)
+
+  17 Sep 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.22-r4.ebuild:
+  Revision bump, hopefully fixing all those weird PAX failures.
+
+  01 Sep 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Updating the metadata.xml.
+
+  01 Sep 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing tocharian from metadata due to his retirement (see #71718 for
+  reference).
+
+*hardened-sources-2.6.20-r9 (30 Aug 2007)
+
+  30 Aug 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.20-r9.ebuild:
+  Revision bump for 2.6.20.18 (thanks to kerframil in #gentoo-hardened).
+
+  29 Aug 2007; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.4.34.ebuild, -hardened-sources-2.4.34.5.ebuild,
+  -hardened-sources-2.6.20-r2.ebuild, -hardened-sources-2.6.20-r5.ebuild,
+  -hardened-sources-2.6.20-r7.ebuild, -hardened-sources-2.6.21-r3.ebuild,
+  -hardened-sources-2.6.22.ebuild, -hardened-sources-2.6.22-r1.ebuild,
+  -hardened-sources-2.6.22-r2.ebuild:
+  Removing some redundant versions.
+
+*hardened-sources-2.4.35-r1 (29 Aug 2007)
+
+  29 Aug 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.4.35-r1.ebuild:
+  Revision bump, new grsecurity patch.
+
+*hardened-sources-2.6.20-r8 (26 Aug 2007)
+
+  26 Aug 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.20-r8.ebuild:
+  Revision bump for Linux 2.6.20.17.
+
+*hardened-sources-2.6.22-r3 (22 Aug 2007)
+
+  22 Aug 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.22-r3.ebuild:
+  Revision bump for Linux 2.6.22.4.
+
+  16 Aug 2007; Christian Heim <phreak@gentoo.org>
+  hardened-sources-2.6.22-r2.ebuild:
+  Updated patchset, to fix the alignment against 2.6.22.3.
+
+*hardened-sources-2.6.22-r2 (16 Aug 2007)
+
+  16 Aug 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.22-r2.ebuild:
+  Revision bump for Linux 2.6.22.3.
+
+*hardened-sources-2.4.35 (16 Aug 2007)
+
+  16 Aug 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.4.35.ebuild:
+  Version bump, initial version for Linux 2.4.35.
+
+*hardened-sources-2.6.21-r4 (16 Aug 2007)
+
+  16 Aug 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.21-r4.ebuild:
+  Revision bump for Linux 2.6.21.6.
+
+*hardened-sources-2.6.20-r7 (16 Aug 2007)
+
+  16 Aug 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.20-r7.ebuild:
+  Revision bump for Linux 2.6.20.16.
+
+*hardened-sources-2.6.22-r1 (13 Aug 2007)
+
+  13 Aug 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.22-r1.ebuild:
+  Yet another revision bump.
+
+*hardened-sources-2.6.22 (10 Aug 2007)
+
+  10 Aug 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.22.ebuild:
+  Initial release for 2.6.22. If you are using hardened-sources on a desktop
+  machine (P4 or newer), be aware you might need to disable
+  CONFIG_PAX_PAGEEXEC.
+
+  04 Aug 2007; Christian Heim <phreak@gentoo.org>
+  hardened-sources-2.6.20-r6.ebuild:
+  Stabling hardened-sources-2.6.20-r6 for amd64, ppc and x86 due to Linux
+  2.6.20.15.
+
+  10 Jul 2007; Christian Heim <phreak@gentoo.org>
+  hardened-sources-2.6.20-r5.ebuild:
+  Marking hardened-sources-2.6.20-r5 stable on ppc.
+
+  10 Jul 2007; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.4.32-r6.ebuild, -hardened-sources-2.4.32-r7.ebuild:
+  Cleanup.
+
+*hardened-sources-2.6.20-r6 (08 Jul 2007)
+
+  08 Jul 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.20-r6.ebuild:
+  Revision bump, grabbing yet another stable release.
+
+  17 Jun 2007; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.18-r6.ebuild, -hardened-sources-2.6.20-r4.ebuild,
+  -hardened-sources-2.6.21-r2.ebuild:
+  Removing older ebuilds, hardened-sources-2.6.18-r6 seems to have gotten the
+  alpha stable KEYWORD by mistake.
+
+  17 Jun 2007; Christian Heim <phreak@gentoo.org>
+  hardened-sources-2.6.20-r5.ebuild:
+  Stabling hardened-sources-2.6.20-r5 due to security bug #181647 (as
+  genpatches-2.6.20-12.base contains up to Linux 2.6.20.14) on amd64 and x86.
+
+*hardened-sources-2.6.21-r3 (12 Jun 2007)
+
+  12 Jun 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.21-r3.ebuild:
+  Revision bump for hardened-sources-2.6.21, incorporating various CVE (some
+  of them critical), two stable releases (2.6.21.4,2.6.21.5) and some other
+  love.
+
+*hardened-sources-2.6.20-r5 (11 Jun 2007)
+
+  11 Jun 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.20-r5.ebuild:
+  Revision bump for hardened-sources-2.6.20, incorporating various CVE (some
+  of them critical), two stable releases (2.6.20.13,2.6.20.14) and some other
+  love.
+
+*hardened-sources-2.4.34.5 (11 Jun 2007)
+
+  11 Jun 2007; Alexander Gabert <pappy@gentoo.org>
+  +hardened-sources-2.4.34.5.ebuild:
+  added new hardened-sources 2.4 version, thx to phreak, solar, pipacs
+
+  30 May 2007; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.18.ebuild, hardened-sources-2.6.20-r2.ebuild:
+  Marking 2.6.20-r2 stable on ppc with permission of Gysbert. Removing more
+  stale ebuild(s).
+
+  30 May 2007; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.14-r7.ebuild, -hardened-sources-2.6.16-r11.ebuild,
+  -hardened-sources-2.6.17-r1.ebuild, -hardened-sources-2.6.19-r6.ebuild,
+  -hardened-sources-2.6.20.ebuild, -hardened-sources-2.6.20-r1.ebuild:
+  Doing some cleanups, remove stale ebuilds.
+
+  26 May 2007; Christian Heim <phreak@gentoo.org>
+  hardened-sources-2.6.21-r2.ebuild:
+  Fixing the grsecurity patch, had one '};' too much.
+
+*hardened-sources-2.6.21-r2 (26 May 2007)
+
+  26 May 2007; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.21.ebuild, -hardened-sources-2.6.21-r1.ebuild,
+  +hardened-sources-2.6.21-r2.ebuild:
+  Revision bump, including Linux 2.6.21.3 (fixing CVE-2007-2451). Updating the
+  grsecurity patch to 2.1.10-2.6.21.1-200705221918.
+
+*hardened-sources-2.6.20-r4 (26 May 2007)
+
+  26 May 2007; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.20-r3.ebuild, +hardened-sources-2.6.20-r4.ebuild:
+  Revision bump, including Linux 2.6.20.12 (which in fact fixed some security
+  bugs, at the very least CVE-2007-2451). Possible candidate for stable marking.
+
+  15 May 2007; Christian Heim <phreak@gentoo.org>
+  hardened-sources-2.6.20-r3.ebuild:
+  Looks like hardened-sources-2.6.20-r3 needs a new patch, as 2.6.20.11
+  introduced a change in arch/sparc64/kernel/pci_iommu.c, which made the
+  grsecurity patch fail in that exact same hunk.
+
+*hardened-sources-2.6.20-r3 (15 May 2007)
+
+  15 May 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.20-r3.ebuild, +hardened-sources-2.6.21-r1.ebuild:
+  Revision bump, incorporating Linux 2.6.20.11.
+
+*hardened-sources-2.6.21-r1 (11 May 2007)
+
+  11 May 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.21-r1.ebuild:
+  Revision bump, hopefully fixing the GRSECURITY/GRKERNSEC mixup pipacs
+  mentioned in #177234.
+
+  07 May 2007; Kevin F. Quinn <kevquinn@gentoo.org>
+  files/digest-hardened-sources-2.6.21, Manifest:
+  Fix Manifest/digest for linux-2.6.21.tar.bz2
+
+  06 May 2007; Christian Heim <phreak@gentoo.org>
+  hardened-sources-2.6.21.ebuild:
+  Bumping the hardened-patches version, needed for the fix for #177234.
+
+*hardened-sources-2.6.21 (02 May 2007)
+
+  02 May 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.21.ebuild:
+  Version bump, Linux 2.6.21-hardened.
+
+  29 Apr 2007; Christian Heim <phreak@gentoo.org>
+  hardened-sources-2.6.20-r2.ebuild:
+  Adding ~ia64 on Ned's request.
+
+  29 Apr 2007; Christian Heim <phreak@gentoo.org>
+  hardened-sources-2.6.20-r2.ebuild:
+  Fixing the included grsecurity patch, wasn't alligning due to the Index:
+  header line(s).
+
+  29 Apr 2007; Christian Heim <phreak@gentoo.org>
+  hardened-sources-2.6.20-r2.ebuild:
+  Stabilizing hardened-sources-2.6.20-r2 on amd64 and x86.
+
+*hardened-sources-2.6.20-r2 (10 Apr 2007)
+
+  10 Apr 2007; Raúl Porcel <armin76@gentoo.org>
+  +hardened-sources-2.6.20-r2.ebuild:
+  Version bump, on behalf of phreak
+
+*hardened-sources-2.6.20-r1 (04 Apr 2007)
+
+  04 Apr 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.20-r1.ebuild:
+  Revision bump, grabbing a newer grsecurity snapshot.
+
+*hardened-sources-2.6.20 (25 Mar 2007)
+
+  25 Mar 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.20.ebuild:
+  Finally a hardened-sources version for 2.6.20; many people have been waiting
+  for this. Thanks to Steve for preliminary testing, thanks to Ned for the
+  testbox.
+
+  16 Mar 2007; Tony Vroon <chainsaw@gentoo.org>
+  hardened-sources-2.6.18-r6.ebuild:
+  Marked stable on amd64 and x86. AMD64 keyword ack'ed by welp.
+
+*hardened-sources-2.6.18-r6 (16 Mar 2007)
+
+  16 Mar 2007; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.18-r5.ebuild, +hardened-sources-2.6.18-r6.ebuild:
+  Fixing CVE-2007-1000 locally (hardened/), thanks to Tony for pushing. And
+  yes I screwed up, this is tagged as 2.6.18-5 and not 2.6.18-6 as it's
+  supposed to be.
+
+  06 Mar 2007; Christian Heim <phreak@gentoo.org> ChangeLog:
+  Fixing the Manifest, the previous one was broken (as in still had the
+  deleted ebuild in it).
+
+  06 Mar 2007; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.16-r10.ebuild, -hardened-sources-2.6.18-r4.ebuild,
+  +hardened-sources-2.6.18-r5.ebuild:
+  Bumping the ~arch'ed 2.6.18 version, pulling in genpatches-2.6.18-10 for
+  Linux 2.6.18.8. Also cleaning up the older version.
+
+*hardened-sources-2.6.18-r5 (06 Mar 2007)
+
+  06 Mar 2007; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.16-r10.ebuild, -hardened-sources-2.6.18-r4.ebuild,
+  +hardened-sources-2.6.18-r5.ebuild:
+  Bumping the ~arch'ed 2.6.18 version, pulling in genpatches-2.6.18-10 for
+  Linux 2.6.18.8. Also cleaning up the older version.
+
+  24 Feb 2007; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.19-r3.ebuild, -hardened-sources-2.6.19-r4.ebuild,
+  -hardened-sources-2.6.19-r5.ebuild:
+  Removing some of the old version, that didn't work.
+
+*hardened-sources-2.6.19-r6 (12 Feb 2007)
+
+  12 Feb 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.19-r6.ebuild:
+  Revision bump, including a new grsec version fixing #166235.
+
+*hardened-sources-2.4.34 (24 Jan 2007)
+
+  24 Jan 2007; Alexander Gabert <pappy@gentoo.org>
+  Manifest:
+  updating Manifest with checksums of new tarball and ebuild
+
+  24 Jan 2007; Alexander Gabert <pappy@gentoo.org>
+  +hardened-sources-2.4.34.ebuild:
+  I added new hardened sources 2.4 update, this is a critical path
+  security bugfix - all users of h-s are strongly advised
+  to update their existing hardened sources to this version.
+  It contains a fix for a kernel vulnerability that is pertaining
+  to the PaX changes to virtual memory management, possibly leading
+  to a local kernel exploit ... see grsecurity.net forums and homepage
+
+  23 Jan 2007; Christian Heim <phreak@gentoo.org>
+  files/digest-hardened-sources-2.6.19-r5, Manifest:
+  Fixing the patch-tarball digest.
+
+*hardened-sources-2.6.19-r5 (23 Jan 2007)
+
+  23 Jan 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.19-r5.ebuild:
+  Revision bump, closing the recently discovered PaX expand_stack()
+  vulnerability.
+
+*hardened-sources-2.6.19-r4 (14 Jan 2007)
+
+  14 Jan 2007; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.19-r4.ebuild:
+  Revision bump, pulling in linux-2.6.19.2 and grsecurity 2.1.10 - thus
+  dropping the randomized PID feature.
+
+  11 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  hardened-sources-2.4.33.4.ebuild:
+  stable x86, bug #161171
+
+*hardened-sources-2.6.19-r3 (27 Dec 2006)
+
+  27 Dec 2006; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.19-r2.ebuild, +hardened-sources-2.6.19-r3.ebuild:
+  Revision bump for bug #157186 and #158786.
+
+*hardened-sources-2.6.18-r4 (27 Dec 2006)
+
+  27 Dec 2006; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.18-r3.ebuild, +hardened-sources-2.6.18-r4.ebuild:
+  Revision bump for bug #157186.
+
+*hardened-sources-2.6.19-r2 (23 Dec 2006)
+
+  23 Dec 2006; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.19-r1.ebuild, +hardened-sources-2.6.19-r2.ebuild:
+  Revision bump to pull in genpatches-2.6.19-3 for #157186.
+
+  17 Dec 2006; Christian Heim <phreak@gentoo.org>
+  hardened-sources-2.6.14-r7.ebuild, hardened-sources-2.6.16-r10.ebuild,
+  hardened-sources-2.6.16-r11.ebuild, hardened-sources-2.6.17-r1.ebuild,
+  hardened-sources-2.6.18.ebuild, hardened-sources-2.6.18-r3.ebuild,
+  hardened-sources-2.6.19-r1.ebuild:
+  Adding 4453_grsec-2.1.9-2.6.19-io-kmem-sysctl.patch to UNIPATCH_EXLUDE,
+  adding correct HOMEPAGE and adjusting DESCRIPTION (thanks to Alexander).
+
+*hardened-sources-2.4.33.4 (17 Dec 2006)
+
+  17 Dec 2006; Alexander Gabert <pappy@gentoo.org>
+  +hardened-sources-2.4.33.4.ebuild:
+  new 2.4.33.4 version including grsec and fixes, thanks to phreak for help
+  and quilting
+
+*hardened-sources-2.6.19-r1 (14 Dec 2006)
+
+  14 Dec 2006; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.19.ebuild, +hardened-sources-2.6.19-r1.ebuild:
+  Revision bump, fixing #158107 (thanks to Petre Rodan <kaiowas at gentoo.org>
+  for reporting).
+
+*hardened-sources-2.6.19 (13 Dec 2006)
+
+  13 Dec 2006; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.19.ebuild:
+  And finally 2.6.19, thanks to Ned (who prepared the inital patchset) and
+  Brad for providing that prompt update.
+
+*hardened-sources-2.6.18-r3 (13 Dec 2006)
+
+  13 Dec 2006; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.18-r1.ebuild, -hardened-sources-2.6.18-r2.ebuild,
+  +hardened-sources-2.6.18-r3.ebuild:
+  Revision bump, excluding the faulty patch. Thanks to Anakim Border and Peter
+  S. Mazinger. Closes #157409 for now. Also removing the previous revisions.
+
+  09 Dec 2006; Christian Heim <phreak@gentoo.org> Manifest:
+  Fixing the metadata.xml Manifest entry (thanks to xaid and ml8128 in #gentoo-hardened).
+
+  08 Dec 2006; nixnut <nixnut@gentoo.org> hardened-sources-2.6.18.ebuild:
+  Stable on ppc wrt bug 157356
+
+  07 Dec 2006; Christian Faulhammer <opfer@gentoo.org>
+  hardened-sources-2.6.18.ebuild:
+  stable x86, bug #157356
+
+*hardened-sources-2.6.18-r2 (06 Dec 2006)
+
+  06 Dec 2006; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.18-r2.ebuild:
+  Revision bump, including 2.6.18.5 (via genpatches) and
+  4454_grsec-2.1.9-2.6.18.2-io-kmem-sysctl.patch based on Peter Mazinger and
+  Ned Ludd's original patch. Thanks to Alexander Gabert (pappy) for the
+  redesign.
+
+  06 Dec 2006; Christian Heim <phreak@gentoo.org>
+  hardened-sources-2.6.18.ebuild:
+  Marking hardened-sources-2.6.18 stable on amd64 (see bug #157356, on behalf
+  of Mike Doty).
+
+*hardened-sources-2.6.18-r1 (23 Nov 2006)
+
+  23 Nov 2006; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.18-r1.ebuild:
+  Revision bump to genpatches-2.6.18-4 (including 2.6.18.3).
+
+*hardened-sources-2.6.18 (11 Nov 2006)
+
+  11 Nov 2006; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.18.ebuild:
+  Version bump, thanks to Alexander Gabert we're finally at 2.6.18.
+
+  18 Oct 2006; <solar@gentoo.org> hardened-sources-2.6.17-r1.ebuild:
+  - mark amd64 stable also. bug #151877
+
+  18 Oct 2006; <solar@gentoo.org> hardened-sources-2.6.17-r1.ebuild:
+  - mark 2.6.17-r1 stable
+
+  27 Aug 2006; Christian Heim <phreak@gentoo.org>
+  -hardened-sources-2.6.17.ebuild, hardened-sources-2.6.17-r1.ebuild:
+  Removing old ebuild, removing unipatch from newer ebuild (need to fix it!).
+
+*hardened-sources-2.6.17-r1 (26 Aug 2006)
+
+  26 Aug 2006; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.17-r1.ebuild:
+  Revision bump to genpatches-2.6.17-8 (including .9 and .10) and updating the
+  grsecurity patch.
+
+*hardened-sources-2.6.17 (17 Aug 2006)
+
+  17 Aug 2006; Christian Heim <phreak@gentoo.org>
+  +hardened-sources-2.6.17.ebuild:
+  Bumping the hardened-sources-2.6 series to 2.6.17, using
+  genpatches-2.6.17-6.base.
+
+  07 Aug 2006; <solar@gentoo.org> hardened-sources-2.6.16-r11.ebuild:
+  - stable on x86 and amd64
+
+*hardened-sources-2.6.16-r11 (15 Jul 2006)
+
+  15 Jul 2006; <solar@gentoo.org> -hardened-sources-2.4.32-r3.ebuild,
+  -hardened-sources-2.4.32-r4.ebuild, -hardened-sources-2.4.32-r5.ebuild,
+  -hardened-sources-2.6.14-r8.ebuild, -hardened-sources-2.6.16-r7.ebuild,
+  -hardened-sources-2.6.16-r9.ebuild, +hardened-sources-2.6.16-r11.ebuild:
+  - 2.6.16 bumped for CVE-2006-3626 ; digest fix for 2.4.32-r6 ; removed old
+  crusty ebuilds
+
+  14 Jul 2006; John Mylchreest <johnm@gentoo.org>
+  hardened-sources-2.6.16-r10.ebuild:
+  marking stable on x86 and amd64
+
+  13 Jul 2006; <solar@gentoo.org> hardened-sources-2.4.32-r6.ebuild:
+  - 2.4.32-r6 stable on x86. RSBAC state unknown
+
+*hardened-sources-2.4.32-r7 (10 Jul 2006)
+
+  10 Jul 2006; Guillaume Destuynder <kang@gentoo.org>
+  +hardened-sources-2.4.32-r7.ebuild:
+  Bump PaX for RSBAC to test-17
+
+*hardened-sources-2.6.16-r9 (03 Jul 2006)
+
+  03 Jul 2006; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.16-r6.ebuild, +hardened-sources-2.6.16-r9.ebuild:
+  hardened-sources-2.6.16 bump to latest -base.
+
+*hardened-sources-2.4.32-r6 (30 Jun 2006)
+
+  30 Jun 2006; <solar@gentoo.org> -hardened-sources-2.4.32-r2.ebuild,
+  hardened-sources-2.4.32-r4.ebuild, +hardened-sources-2.4.32-r6.ebuild:
+  - backport CVE-2006-0039, CVE-2006-1857 and CVE-2006-1858 and new grsecurity
+  sysctl controlable resource logging
+
+*hardened-sources-2.6.16-r7 (05 Jun 2006)
+
+  05 Jun 2006; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.16-r5.ebuild, +hardened-sources-2.6.16-r7.ebuild:
+  push new 2.6.16 release in preparation for stable
+
+  22 May 2006; <solar@gentoo.org> :
+  - redigest bug 134002
+
+*hardened-sources-2.4.32-r5 (16 May 2006)
+
+  16 May 2006; Guillaume Destuynder <kang@gentoo.org>
+  +hardened-sources-2.4.32-r5.ebuild:
+  Fixes rsbac common patching (new patch in new -r5 patchset)
+
+*hardened-sources-2.4.32-r4 (13 May 2006)
+
+  13 May 2006; <solar@gentoo.org> hardened-sources-2.4.32-r3.ebuild,
+  +hardened-sources-2.4.32-r4.ebuild:
+  - security bumps
+
+*hardened-sources-2.6.16-r6 (03 May 2006)
+
+  03 May 2006; John Mylchreest <johnm@gentoo.org>
+  +hardened-sources-2.6.16-r6.ebuild:
+  bump hardened-2.6.16 to 2.6.16.12 and latest grsec snapshot
+
+  28 Apr 2006; John Mylchreest <johnm@gentoo.org>
+  hardened-sources-2.6.14-r8.ebuild:
+  fix x86_64 build problem, this will delay the digest issue again for a short
+  while but it will sort itself out
+
+  28 Apr 2006; John Mylchreest <johnm@gentoo.org>
+  hardened-sources-2.6.14-r8.ebuild:
+  bump hardened patchset
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org>
+  files/digest-hardened-sources-2.4.32-r2,
+  files/digest-hardened-sources-2.4.32-r3,
+  files/digest-hardened-sources-2.6.14-r8, Manifest:
+  Fixing duff SHA256 digests: Bug # 131293
+
+*hardened-sources-2.6.16-r5 (27 Apr 2006)
+
+  27 Apr 2006; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.14-r6.ebuild, hardened-sources-2.6.14-r8.ebuild,
+  -hardened-sources-2.6.16-r4.ebuild, +hardened-sources-2.6.16-r5.ebuild:
+  stablise 2.6.14-r8 on x86 & amd64, bump 2.6.16 to fix CVE-2006-1863 &
+  cleanup of old uneccessary sources
+
+  20 Apr 2006; John Mylchreest <johnm@gentoo.org> ChangeLog:
+  fix digest
+
+*hardened-sources-2.6.14-r8 (20 Apr 2006)
+
+  20 Apr 2006; John Mylchreest <johnm@gentoo.org>
+  +hardened-sources-2.6.14-r8.ebuild:
+  fix CVE-2006-1056, CVE-2006-1525, CVE-2006-1524
+
+  20 Apr 2006; John Mylchreest <johnm@gentoo.org> ChangeLog:
+  Turning on gpg-signing again, and recomitting
+
+*hardened-sources-2.6.16-r4 (20 Apr 2006)
+
+  20 Apr 2006; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.16-r2.ebuild, -hardened-sources-2.6.16-r3.ebuild,
+  +hardened-sources-2.6.16-r4.ebuild:
+  Fix numerous security vulns
+
+*hardened-sources-2.4.32-r3 (16 Apr 2006)
+
+  16 Apr 2006; <solar@gentoo.org> -hardened-sources-2.4.30-r1.ebuild,
+  -hardened-sources-2.4.31.ebuild, -hardened-sources-2.4.32-r1.ebuild,
+  +hardened-sources-2.4.32-r3.ebuild, -hardened-sources-2.4.32.ebuild:
+  - security bump for bug #112791. Removed old ebuilds
+
+*hardened-sources-2.6.16-r3 (15 Apr 2006)
+
+  15 Apr 2006; John Mylchreest <johnm@gentoo.org>
+  +hardened-sources-2.6.16-r3.ebuild:
+  Removing silly localversion which I missed
+
+*hardened-sources-2.6.14-r7 (14 Apr 2006)
+
+  14 Apr 2006; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.14-r5.ebuild, +hardened-sources-2.6.14-r7.ebuild:
+  Fixes CVE-2006-0744, CVE-2006-0744, CVE-2006-1522, CVE-2006-1242
+
+*hardened-sources-2.6.16-r2 (13 Apr 2006)
+
+  13 Apr 2006; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.16.ebuild, -hardened-sources-2.6.16-r1.ebuild,
+  +hardened-sources-2.6.16-r2.ebuild:
+  Removing vulnerable 2.6.16 kernels. Bumping grsec, re-enabling reiserfs sec
+  labels, dropping USERGROUP define fixes, since these were merged mainstream.
+
+*hardened-sources-2.6.16-r1 (11 Apr 2006)
+
+  11 Apr 2006; John Mylchreest <johnm@gentoo.org>
+  +hardened-sources-2.6.16-r1.ebuild:
+  Bumping to include ppc build fix and 2.6.16.3
+
+  06 Apr 2006; Joshua Jackson <tsunam@gentoo.org>
+  hardened-sources-2.6.14-r6.ebuild:
+  Stable on x86; bug #127718
+
+*hardened-sources-2.6.16 (31 Mar 2006)
+
+  31 Mar 2006; John Mylchreest <johnm@gentoo.org>
+  +hardened-sources-2.6.16.ebuild:
+  Bumping to new version of grsec, and kernel base. New squashfs. Based on
+  2.6.16.1
+
+  30 Mar 2006; Marcus D. Hanwell <cryos@gentoo.org>
+  hardened-sources-2.6.14-r6.ebuild:
+  Stable on amd64, bug 127718.
+
+  28 Mar 2006; <nixnut@gentoo.org> hardened-sources-2.6.14-r6.ebuild:
+  Stable on ppc. Bug #127718
+
+  15 Mar 2006; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.11-r15.ebuild, -hardened-sources-2.6.14-r3.ebuild,
+  -hardened-sources-2.6.14-r4.ebuild:
+  Cleanup.
+
+*hardened-sources-2.6.14-r6 (15 Mar 2006)
+
+  15 Mar 2006; John Mylchreest <johnm@gentoo.org>
+  +hardened-sources-2.6.14-r6.ebuild:
+  Fixes grsec policy recreation bug and adds a
+  >=sys-apps/gradm-2.1.8.200601212342-r1 depend.
+
+  02 Mar 2006; <solar@gentoo.org> hardened-sources-2.4.32-r2.ebuild:
+  - stable on x86
+
+  19 Feb 2006; Michael Hanselmann <hansmi@gentoo.org>
+  hardened-sources-2.6.14-r5.ebuild:
+  Stable on ppc.
+
+*hardened-sources-2.6.14-r5 (01 Feb 2006)
+
+  01 Feb 2006; John Mylchreest <johnm@gentoo.org>
+  +hardened-sources-2.6.14-r5.ebuild:
+  fixing every known exploit
+
+*hardened-sources-2.4.32-r2 (26 Jan 2006)
+
+  26 Jan 2006; <solar@gentoo.org> hardened-sources-2.4.32-r1.ebuild,
+  +hardened-sources-2.4.32-r2.ebuild:
+  - mark 2.4.32-r1 stable. added 2.4.32-r2 with 2.1.8-grsec patch
+
+*hardened-sources-2.6.14-r4 (12 Jan 2006)
+
+  12 Jan 2006; <solar@gentoo.org> +hardened-sources-2.6.14-r4.ebuild:
+  - version bump for new genpatches which fix up a few sec holes
+
+*hardened-sources-2.4.32-r1 (05 Jan 2006)
+
+  05 Jan 2006; <solar@gentoo.org> +hardened-sources-2.4.32-r1.ebuild:
+  - revision bump to add misc vital linux kernel security patches.
+
+*hardened-sources-2.6.14-r3 (30 Dec 2005)
+
+  30 Dec 2005; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.14-r2.ebuild, +hardened-sources-2.6.14-r3.ebuild:
+  Marking stable, and bumping for sec vuln. Fixes bugs #117171, #117040
+
+  28 Dec 2005; John Mylchreest <johnm@gentoo.org>
+  hardened-sources-2.6.14-r2.ebuild:
+  making x86 & amd64 stable following testing.
+
+*hardened-sources-2.6.14-r2 (27 Dec 2005)
+
+  27 Dec 2005; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.14-r1.ebuild, +hardened-sources-2.6.14-r2.ebuild:
+  Fixing bugs 116832 115771 114635, updating grsec, removing selinux/pax
+  network hooks.
+
+  06 Dec 2005; John Mylchreest <johnm@gentoo.org>
+  hardened-sources-2.6.14-r1.ebuild:
+  bumping to stable early for sec fix on x86 & amd64
+
+*hardened-sources-2.6.14-r1 (05 Dec 2005)
+
+  05 Dec 2005; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.14.ebuild, +hardened-sources-2.6.14-r1.ebuild:
+  bumping to genpatches 2.6.14-5, security fixup. Also bumping grsec patchset.
+
+  04 Dec 2005; <solar@gentoo.org> hardened-sources-2.4.32.ebuild:
+  - stable on x86 security bug #114227 CAN-2005-3257
+
+*hardened-sources-2.4.32 (19 Nov 2005)
+
+  19 Nov 2005; Guillaume Destuynder <kang@gentoo.org>
+  +hardened-sources-2.4.32.ebuild:
+  Bump to 2.4.32, includes RSBAC+PaX patchset with a local 'rsbac' keyword.
+  Add the 'rsbac' USE flag in /etc/portage/package.use for hardened-sources to
+  have RSBAC instead of GrSecurity patchset. (echo sys-kernel/hardened-sources
+  rsbac >> /etc/portage/package.use)
+
+*hardened-sources-2.6.14 (14 Nov 2005)
+
+  14 Nov 2005; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.13-r2.ebuild, +hardened-sources-2.6.14.ebuild:
+  Bumping 2.6 series to 2.6.14.2
+
+*hardened-sources-2.6.13-r2 (20 Oct 2005)
+
+  20 Oct 2005; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.13.ebuild, -hardened-sources-2.6.13-r1.ebuild,
+  +hardened-sources-2.6.13-r2.ebuild:
+  Fixes minor build error in ppc.
+
+*hardened-sources-2.6.13-r1 (17 Oct 2005)
+
+  17 Oct 2005; John Mylchreest <johnm@gentoo.org>
+  +hardened-sources-2.6.13-r1.ebuild:
+  Updating grsec to latest snapshot. Fixes some minor issues. Updating to
+  2.6.13.4, fixes some major amd64 stability problems.
+
+*hardened-sources-2.6.13 (16 Sep 2005)
+
+  16 Sep 2005; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.11-r14.ebuild, +hardened-sources-2.6.13.ebuild:
+  2.6.13.1 with grsec testing patches. Lots of changes, to name a few big
+  ones: inotify now in kernel, RBAC has moved to chained-hash tables so RBAC
+  users should test this thoroughly.
+
+  01 Jul 2005; <solar@gentoo.org> hardened-sources-2.4.31.ebuild:
+  - stable on x86
+
+*hardened-sources-2.6.11-r15 (27 Jun 2005)
+
+  27 Jun 2005; John Mylchreest <johnm@gentoo.org>
+  +hardened-sources-2.6.11-r15.ebuild:
+  Fixes CAN-2005-1763, CAN-2005-1265 & CAN-2005-176. Also fixes problem with
+  grsec redefining curr_ip struct.
+
+*hardened-sources-2.4.31 (20 Jun 2005)
+
+  20 Jun 2005; <solar@gentoo.org> +hardened-sources-2.4.31.ebuild:
+  initial import of 2.4.31 tree
+
+*hardened-sources-2.6.11-r14 (14 Jun 2005)
+
+  14 Jun 2005; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.11-r13.ebuild, +hardened-sources-2.6.11-r14.ebuild:
+  Updating inotify, grsec, updating to 11-14 genpatches.base, restructuring
+  naming scheme to abide by genpatches
+
+*hardened-sources-2.6.11-r13 (18 May 2005)
+
+  18 May 2005; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.11-r12.ebuild, +hardened-sources-2.6.11-r13.ebuild:
+  Managed to mangle the Makefile patch from grsec, to miss out the grsec
+  target. sorry about that. Fixes bug #93022
+
+*hardened-sources-2.6.11-r12 (17 May 2005)
+
+  17 May 2005; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.10-r3.ebuild, -hardened-sources-2.6.11-r1.ebuild,
+  +hardened-sources-2.6.11-r12.ebuild:
+  Cleanup older sources. Update to 2.6.11.10 - fixes several sec vulns. Also
+  merges in genpatches-base
+
+*hardened-sources-2.6.11-r12 (17 May 2005)
+
+  17 May 2005; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.10-r3.ebuild, -hardened-sources-2.6.11-r1.ebuild,
+  +hardened-sources-2.6.11-r12.ebuild:
+  Cleanup older sources. Update to 2.6.11.10 - fixes several sec vulns. Also
+  merges in genpatches-base
+
+  29 Apr 2005; <solar@gentoo.org> -files/2.4.27-CAN-2004-0394.patch,
+  -files/2.4.27-cmdline-race.patch,
+  -files/2.4.28-grsec-2.1.0-pax-mmap-pgtables.patch,
+  -files/2.4.28-grsec-binfmt_a.out.patch,
+  -files/2.4.28-grsec-cmdline-race.patch,
+  -files/2.4.28-selinux-binfmt_a.out.patch,
+  -files/2.4.28-selinux-cmdline-race.patch,
+  -hardened-sources-2.4.28-r5.ebuild, -hardened-sources-2.4.29.ebuild,
+  hardened-sources-2.4.30-r1.ebuild, -hardened-sources-2.4.30.ebuild:
+  - mark .30-r1 stable and remove older vuln ebuilds from the tree. filesdir
+  cleanup..
+
+*hardened-sources-2.4.30-r1 (21 Apr 2005)
+
+  21 Apr 2005; <solar@gentoo.org> +hardened-sources-2.4.30-r1.ebuild:
+  - disable aout by default
+
+*hardened-sources-2.4.30 (18 Apr 2005)
+
+  18 Apr 2005; <solar@gentoo.org> +hardened-sources-2.4.30.ebuild:
+  - 2.4.30 version bump. Adds 4008_CAN-2004-1056 back which was lost in 2.4.29
+  and an optional optimize for size -Os patch with a gcc-3.4 fix for embedded
+  use
+
+*hardened-sources-2.4.29 (30 Mar 2005)
+
+  30 Mar 2005; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.29.ebuild:
+  New hardened-patches-2.4-29.0 patchball.
+  Removed SELinux support, upgraded GRSecurity to 2.1.4.
+
+*hardened-sources-2.4.28-r5 (06 Mar 2005)
+
+  06 Mar 2005; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.28-r5.ebuild:
+  Added a fix for a PaX vulnerability.
+
+26 Jan 2005; Adam Mondl <tocharian@gentoo.org>
+  hardened-sources-2.4.28-r4.ebuild:
+  Stable on x86
+
+  23 Jan 2005; <solar@gentoo.org> hardened-sources-2.4.27-r3.ebuild,
+  hardened-sources-2.4.28-r1.ebuild, hardened-sources-2.4.28-r2.ebuild,
+  hardened-sources-2.4.28-r3.ebuild, hardened-sources-2.4.28-r4.ebuild,
+  hardened-sources-2.4.28.ebuild, hardened-sources-2.6.10-r3.ebuild:
+  - fixed/added RDEPEND= in all kernel-2 ebuilds
+
+*hardened-sources-2.4.28-r4 (21 Jan 2005)
+
+  21 Jan 2005; Adam Mondl <tocharian@gentoo.org>
+  +hardened-sources-2.4.28-r4.ebuild:
+  Fix vc_resize local DoS, ip_options_get memory leak, and ARP bug in 2.4
+  backport of neighbour hash updates.
+
+  21 Jan 2005; Adam Mondl <tocharian@gentoo.org>
+  hardened-sources-2.4.28-r3.ebuild:
+  Stable on x86
+
+*hardened-sources-2.6.10-r3 (20 Jan 2005)
+
+  20 Jan 2005; Brandon Hale <tseng@gentoo.org>
+  +hardened-sources-2.6.10-r3.ebuild:
+  Dual commit hardened-(dev-)sources-2.6.10 to here for the upcoming merge 
+  in 2005.0
+
+  17 Jan 2005; Adam Mondl <tocharian@gentoo.org>
+  -hardened-sources-2.4.27-r2.ebuild, hardened-sources-2.4.28-r1.ebuild,
+  hardened-sources-2.4.28-r2.ebuild:
+  Mark stable on x86
+
+*hardened-sources-2.4.28-r3 (17 Jan 2005)
+
+  17 Jan 2005; Adam Mondl <tocharian@gentoo.org>
+  +hardened-sources-2.4.28-r3.ebuild:
+  Fix SMP page fault handler vuln, and update device-mapper and evms patches.
+
+  14 Jan 2005; Adam Mondl <tocharian@gentoo.org>
+  hardened-sources-2.4.28.ebuild:
+  Mark stable on x86.
+
+*hardened-sources-2.4.28-r2 (13 Jan 2005)
+
+  13 Jan 2005; Adam Mondl <tocharian@gentoo.org>
+  +hardened-sources-2.4.28-r2.ebuild:
+  Updates security fixes and adds squashfs 2.1 support. Thanks to Peter S.
+  Mazinger for grsecurity patches as well.
+
+*hardened-sources-2.4.28-r1 (23 Dec 2004)
+
+  23 Dec 2004; <plasmaroo@gentoo.org> +hardened-sources-2.4.28-r1.ebuild:
+  Security bump. Thank tocharian for rolling a new patchset...
+
+  28 Nov 2004; <solar@gentoo.org> +files/2.4.28-grsec-binfmt_a.out.patch,
+  +files/2.4.28-grsec-cmdline-race.patch,
+  +files/2.4.28-selinux-binfmt_a.out.patch,
+  +files/2.4.28-selinux-cmdline-race.patch, hardened-sources-2.4.28.ebuild:
+  - Round up remaining security patches that appear to be missing in 2.4.28. -
+  PaX standalone updated to current. hgpv=28.1
+
+*hardened-sources-2.4.28 (28 Nov 2004)
+
+  28 Nov 2004; <solar@gentoo.org> +hardened-sources-2.4.28.ebuild:
+  security bump. Thank tocharian for rolling a new patchset
+
+*hardened-sources-2.4.27-r3 (08 Sep 2004)
+
+  08 Sep 2004; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.27-r3.ebuild:
+  Applies the new 2.4-27.2 patchball which updates
+  GRSecurity to the 2.0.1 version.
+
+*hardened-sources-2.4.27-r2 (31 Aug 2004)
+
+  31 Aug 2004; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.27-r2.ebuild:
+  Version bump. 
+  This version uses the new 2.4-27.1 patchball which updates 
+  both the SELinux PaX hooks patch and the SELinux headers.
+
+*hardened-sources-2.4.27-r1 (09 Aug 2004)
+
+  09 Aug 2004; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.27-r1.ebuild,
+  -hardened-sources-2.4.27.ebuild,
+  +files/2.4.27-cmdline-race.patch:
+  Version bump, fix for cmdline race. See bug #59905.
+
+*hardened-sources-2.4.26-r6 (09 Aug 2004)
+
+  09 Aug 2004; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.26-r6.ebuild,
+  -hardened-sources-2.4.26-r5.ebuild,
+  -hardened-sources-2.4.26-r4.ebuild,
+  +files/2.4.26-cmdline-race.patch:
+  Version bump, fix for cmdline race. See bug #59905.
+
+*hardened-sources-2.4.27 (08 Aug 2004)
+
+  08 Aug 2004; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.27.ebuild,
+  +files/2.4.27-CAN-2004-0394.patch:
+  Ported the patchball to the 2.4.27 kernel version.
+
+*hardened-sources-2.4.26-r5 (07 Aug 2004)
+
+  07 Aug 2004; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.26-r5.ebuild:
+  Updated to use the new hardened-patches-2.4-26.1 patchball.
+  It adds the following features:
+  - Squashfs
+  - Ebtables
+  - Netdev random (core+drivers)
+  - Watchdog Timer (WDT) fix.
+
+*hardened-sources-2.4.26-r4 (04 Aug 2004)
+
+  04 Aug 2004; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.26-r4.ebuild,
+  +files/2.4.26-CAN-2004-0415.patch,
+  -hardened-sources-2.4.26-3:
+  Version bump, fix for CAN 0415, see bug #59378.
+  
+*hardened-sources-2.4.26-r3 (22 Jul 2004)
+
+  22 Jul 2004; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.26-r3.ebuild,
+  +files/2.4.26-CAN-2004-0497.patch,
+  -hardened-sources-2.4.26-r2.ebuild:
+  Version bump, fixed CAN 0497, see bug #56171.
+  
+*hardened-sources-2.4.26-r2 (29 Jun 2004)
+
+  29 Jun 2004; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.26-r2.ebuild,
+  +files/2.4.26-CAN-2004-0495.patch,
+  +files/2.4.26-CAN-2004-0535.patch,
+  -hardened-sources-2.4.26-r1.ebuild:
+  Fixes for both CAN 0495 and 0535, see bug #54976
+
+  23 Jun 2004; Aron Griffis <agriffis@gentoo.org>
+  hardened-sources-2.4.26-r1.ebuild:
+  QA - fix use invocation
+
+*hardened-sources-2.4.26-r1 (22 June 2004)
+
+  22 June 2004; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.26-r1.ebuild,
+  +files/2.4.26-CAN-2004-0394.patch, 
+  +files/2.4.26-signal-race.patch,
+  -hardened-sources-2.4.26.ebuild,
+  -hardened-sources-2.4.24-r3.ebuild:
+  Version bump for the CAN-2004-0394 issue and bug #53804
+  Marked 2.4.26-r1 as stable, removed 2.4.26 and 2.4.24-r3
+  
+  
+  31 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  hardened-sources-2.4.24-r3.ebuild, hardened-sources-2.4.26.ebuild:
+  Masked hardened-sources-2.4.26.ebuild broken for ppc
+
+  31 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  hardened-sources-2.4.24-r3.ebuild:
+  Masked hardened-sources-2.4.24-r3.ebuild broken for ppc
+
+*hardened-sources-2.4.26 (29 May 2004)
+
+ 29 May 2004; Andrea Luzzardi <scox@gentoo.org>
+ +hardened-sources-2.4.26.ebuild:
+ Updated hardened-sources for the 2.4.26 kernel
+ Removed broken components, updated almost everything.
+ 
+*hardened-sources-2.4.24-r3 (17 Apr 2004)
+
+  17 Apr 2004; <plasmaroo@gentoo.org>
+  +files/hardened-sources-2.4.24.CAN-2004-0010.patch,
+  +files/hardened-sources-2.4.24.CAN-2004-0177.patch,
+  +files/hardened-sources-2.4.24.CAN-2004-0178.patch,
+  +hardened-sources-2.4.24-r3.ebuild:
+  Added patches for the CAN-2004-0010, CAN-2004-0177 and CAN-2004-0178
+  vulnerabilities. Old revisions removed.
+
+*hardened-sources-2.4.24-r2 (15 Apr 2004)
+
+  15 Apr 2004; <plasmaroo@gentoo.org>
+  +files/hardened-sources-2.4.24.CAN-2004-0109.patch,
+  -hardened-sources-2.4.24-r1.ebuild, +hardened-sources-2.4.24-r2.ebuild:
+  Version bump for the CAN-2004-0109 issue; bug #47881.
+
+  12 Apr 2004; Daniel Ahlberg <aliz@gentoo.org>
+  hardened-sources-2.4.22-r2.ebuild, hardened-sources-2.4.24-r1.ebuild:
+  Add eutils to inherit.
+
+*hardened-sources-2.4.24-r1 (19 Feb 2004)
+
+  19 Feb 2004; <plasmaroo@gentoo.org> hardened-sources-2.4.24-r1.ebuild,
+  files/hardened-sources-2.4.24.munmap.patch:
+  Added the patch for the mremap/munmap vulnerability. Bug #42024.
+
+*hardened-sources-2.4.24 (06 Feb 2004)
+
+  06 Feb 2004; Andrea Luzzardi <scox@gentoo.org>
+  hardened-sources-2.4.24.ebuild:
+  Version bump, updated most of the components.
+  This release includes the following:
+
+  - Hardened security
+  - Netfilter patch-o-matic 20031219
+  - FreeSWAN 2.04 & x509 1.4.8
+  - EVMS 2.2.2
+  - XFS 1.3.1
+  - cryptoloop jari
+  - grsecurity 2.0-rc4
+  - SELinux
+  - PaX 200402060000
+  - PaX Obscurity 200308302223
+  - Others...
+
+  Neither -ck nor systrace are included anymore.
+
+*hardened-sources-2.4.22-r2 (05 Jan 2004)
+
+  05 Jan 2004; Andrea Luzzardi <scox@gentoo.org>
+  hardened-sources-2.4.22-r2.ebuild:
+  Version bump for the 'mremap' and the 'rtc' vulnerabilities.
+
+*hardened-sources-2.4.22-r1 (02 Dec 2003)
+
+  02 Dec 2003; Brian Jackson <iggy@gentoo.org>
+  hardened-sources-2.4.22-r1.ebuild: Fix up a little booboo from earlier.
+
+  02 Dec 2003; Brian Jackson <iggy@gentoo.org>
+  hardened-sources-2.4.22-r1.ebuild: 
+  Version bump for the 'do_brk' vulnerability.
+
+  01 Dec 2003; Brian Jackson <iggy@gentoo.org>
+  hardened-sources-2.4.20-r2.ebuild, hardened-sources-2.4.20-r3.ebuild,
+  hardened-sources-2.4.20-r4.ebuild, hardened-sources-2.4.21.ebuild,
+  hardened-sources-2.4.22.ebuild, files/do_brk_fix.patch:
+  Fix the 'do_brk' vulnerability.
+
+  03 Nov 2003; Matthew Rickard <frogger@gentoo.org>
+  hardened-sources-2.4.22.ebuild:
+  - Removed the src_install() portion for SELinux flask
+    components.  These are no longer handled in the kernel
+    so this code was not necessary.
+
+  29 Oct 2003; Matthew Rickard <frogger@gentoo.org> hardened-sources-2.4.22.ebuild:
+  New 2.4.22 based hardened-sources thanks to
+  Phil West <p.west@computer.org>.
+  
+  These sources include:
+  	- New SELinux API
+  	- Updated CK-base
+  	- Updated GRSec
+  	- Systrace
+  	- SuperFreeS/WAN 1.99.8
+  	- Propolice kernel build support
+  	- EVMS
+  	- Other various security related patches
+
+*hardened-sources-2.4.21 (14 Sep 2003)
+
+  14 Sep 2003; Matthew Rickard <frogger@gentoo.org> hardened-sources-2.4.21.ebuild:
+  Updated hardened-sources based on the 2.4.21 Linux kernel.
+  This includes updates to most major components such as:
+    - ck-base-0306300059
+    - selinux-2.4-2003071106
+    - grsecurity-2.0-rc1
+    - Updated IPTables patch-o-matic
+    - Updated SuperFreeS/WAN
+
+  Thanks to Phil West <pwest@computer.org> for his work in getting this
+  updated patch set ready for the 2.4.21 based kernel.
+  
+  16 Jun 2003; Matthew Rickard <frogger@gentoo.org> :
+  Initial import of hardened-sources-2.4.20-r4.  This revision
+  includes only a few changes, but one of these is an important
+  security fix.  It is recommended all users of hardened-sources
+  upgrade to this release.
+
+  	- ioperm bug fix
+  	- fixed compilation failure when building without GRSec
+
+  SAL (Secure Auditing for Linux) is NOT included in this revision
+  due to time constraints, but is planned for inclusion in the near
+  future.
+
+*hardened-sources-2.4.20-r2 (12 Jun 2003)
+
+  12 Jun 2003; <msterret@gentoo.org> hardened-sources-2.4.20-r2.ebuild,
+  hardened-sources-2.4.20-r3.ebuild:
+  Add Header...
+
+  08 Jun 2003; Matthew Rickard <frogger@gentoo.org>
+  hardened-sources-2.4.20-r3.ebuild:
+  Removed warnings from ebuild.  This kernel should be safe to
+  use at this point.
+
+*hardened-sources-2.4.20-r3 (08 Jun 2003)
+
+  08 Jun 2003; Matthew Rickard <frogger@gentoo.org>
+  hardened-sources-2.4.20-r3.ebuild:
+  New revision.  Includes the following changes over -r2:
+
+  - ck7-base (O(1), preempt, low latency)
+  - Super FreeS/WAN 1.99.7rc2
+  - PaX for the LSM/SELinux branch
+  - GRSecurity 2.0-pre4 (role based access control)
+  - Systrace 1.3
+  - EXT3 fixes
+  - EVMS 2.0.1
+  - GCC 3.1+ compile optimizations
+  - ProPolice kernel build support
+  - Hashing table security fixes
+
+*hardened-sources-2.4.20-r1 (09 Apr 2003)
+
+  23 Apr 2003; Matthew Rickard <frogger@gentoo.org> Manifest:
+  Initial import of hardened-sources-r2.  This new
+  ebuild includes many new performance and security
+  related patches.  As in -r1, it will patch in
+  LSM/SELinux if "selinux" is in USE, otherwise it
+  will patch in GRSecurity.  The following patches
+  are included in this revision:
+
+    - O(1) Scheduler, Low Latency, and Preempt
+  	(pulled from the base CK patch)
+    - ptrace exploit patch for the LSM kernel
+  	(the GRSec patch already fixes this)
+    - LSM 2.4-2003040709
+    - SELinux 2.4-2003040709
+    - Systrace v1.2
+    - IPTables patch-o-matic base patches - 20030107
+    - CryptoAPI 2.4.20.1 w/ loop-jari patch
+    - Super FreeS/WAN 1.99.6.1
+    - GRSecurity 1.9.9g
+    - MPPE
+    - EXT3 data journal fix
+    - CIPE 1.5.4
+
+  12 Apr 2003; Matthew Rickard <frogger@gentoo.org>
+  hardened-sources-2.4.20-r1.ebuild, manifest:
+  Updated to install flask components correctly for selinux.
+
+  12 Apr 2003; Matthew Rickard <frogger@gentoo.org>
+  hardened-sources-2.4.20-r1.ebuild:
+  LSM/SELinux is now patched in when "selinux" is in USE.  Otherwise, GRSecurity
+  is patched in instead.  Ptrace patches for selinux have also been added.  In
+  either case, systrace support will be patched in as well.
+
+  09 Apr 2003; Matthew Rickard <frogger@gentoo.org>
+  hardened-sources-2.4.20-r1.ebuild, hardened-sources-2.4.20.ebuild, manifest:
+  Revision bump for new sources.
+  
+  09 Apr 2003; Matthew Rickard <frogger@gentoo.org>
+  hardened-sources-2.4.20-r1.ebuild:
+  Now includes LSM1, GRSec-2.0-pre1, and systrace-v1.2.
+
+*hardened-sources-2.4.20 (30 Mar 2003)
+  
+  30 Mar 2003; Joshua Brindle <method@gentoo.org>
+  hardened-sources-2.4.20.ebuild:
+  Initial import, only has systrace support.
+

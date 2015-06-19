@@ -1,0 +1,22 @@
+--- src/Makefile	2005-10-27 12:58:53.000000000 +0200
++++ src/Makefile	2013-03-08 22:20:52.360922189 +0100
+@@ -20,16 +20,14 @@
+ 
+ # $Id: htun-0.9.6-makefile.patch,v 1.1 2013/03/12 04:35:43 pinkbyte Exp $
+ 
+-
+-CFLAGS = -I../include -I. -O -W -Wall -g -D_REENTRANT #-pg -a
+-LDFLAGS = -lfl -lpthread # -flex for linux, solaris ?
+-LEX_CFLAGS = -I../include -I. -g -D_REENTRANT #-pg -a
++CFLAGS := $(CFLAGS) -I../include -I. -O -W -Wall -D_REENTRANT
++LDFLAGS := $(LDFLAGS) -lfl -lpthread
++LEX_CFLAGS = -I../include -I. -D_REENTRANT
+ 
+ # in Linux, LFLAGS is empty. In Solaris, LFLAGS = -lnsl -lsocket
+ #LFLAGS = -lnsl -lsocket
+ 
+ VPATH	= .:../include
+-CC      := gcc
+ LEX     = flex
+ YACC    = yacc
+ INCLUDE := $(wildcard ../include/*.h)

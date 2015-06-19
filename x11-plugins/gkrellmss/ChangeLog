@@ -1,0 +1,139 @@
+# ChangeLog for x11-plugins/gkrellmss
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellmss/ChangeLog,v 1.37 2014/04/07 19:58:47 ssuominen Exp $
+
+  07 Apr 2014; Samuli Suominen <ssuominen@gentoo.org> gkrellmss-2.6-r1.ebuild,
+  gkrellmss-2.6-r2.ebuild, gkrellmss-2.6.ebuild:
+  Use EAPI5 instead of EAPI1. Missing inherit eutils for epatch.
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #144305
+
+  18 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> gkrellmss-2.6.ebuild,
+  gkrellmss-2.6-r1.ebuild, gkrellmss-2.6-r2.ebuild:
+  Remove no-op USE="esd" because media-sound/esound isn't in tree anymore.
+
+  11 Aug 2010; Jim Ramsay <lack@gentoo.org> -files/gkrellmss-patch-2.3.diff,
+  files/gkrellmss-2.6-Respect-LDFLAGS.patch:
+  Patchfile cleanup
+
+*gkrellmss-2.6-r2 (11 Aug 2010)
+
+  11 Aug 2010; Jim Ramsay <lack@gentoo.org> +gkrellmss-2.6-r2.ebuild,
+  +files/gkrellmss-2.6-Respect-LDFLAGS.patch:
+  Patch to respect LDFLAGS (Bug #331809)
+
+  03 Aug 2009; Jim Ramsay <lack@gentoo.org> gkrellmss-2.6.ebuild,
+  gkrellmss-2.6-r1.ebuild:
+  Adding IUSE=+alsa to fully satisfy Bug #279786
+
+  03 Aug 2009; Jim Ramsay <lack@gentoo.org> gkrellmss-2.6.ebuild,
+  gkrellmss-2.6-r1.ebuild:
+  Moved checks to pkg_setup (Bug #279786)
+
+  04 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  gkrellmss-2.6-r1.ebuild:
+  Stable on alpha, bug #271463
+
+  31 May 2009; Markus Meier <maekke@gentoo.org> gkrellmss-2.6-r1.ebuild:
+  amd64/x86 stable, bug #271463
+
+  31 May 2009; nixnut <nixnut@gentoo.org> gkrellmss-2.6-r1.ebuild:
+  ppc stable #271463
+
+  28 Jul 2008; Jim Ramsay <lack@gentoo.org> gkrellmss-2.6.ebuild,
+  gkrellmss-2.6-r1.ebuild:
+  Added 'die' if you try to build without at least one of USE=alsa or
+  USE=esd (Bug #233025)
+
+*gkrellmss-2.6-r1 (11 Apr 2008)
+
+  11 Apr 2008; Jim Ramsay <lack@gentoo.org> +gkrellmss-2.6-r1.ebuild:
+  Fixes build problems with fftw-2 by using fftw-3 instead (Bug 204569)
+
+  12 Jun 2007; Jim Ramsay <lack@gentoo.org> -gkrellmss-2.3.ebuild,
+  -gkrellmss-2.4.ebuild:
+  Old version cleanup
+
+  01 Jun 2007; Christoph Mende <angelos@gentoo.org> gkrellmss-2.6.ebuild:
+  Stable on amd64 wrt bug 176144
+
+  07 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  gkrellmss-2.6.ebuild:
+  ppc stable, bug #176144
+
+  26 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> gkrellmss-2.6.ebuild:
+  Stable on sparc wrt #176144
+
+  26 Apr 2007; Raúl Porcel <armin76@gentoo.org> gkrellmss-2.6.ebuild:
+  x86 stable wrt #176144
+
+  26 Apr 2007; Jim Ramsay <lack@gentoo.org> gkrellmss-2.3.ebuild,
+  gkrellmss-2.4.ebuild, gkrellmss-2.6.ebuild:
+  Updated to use gkrellm-plugin.eclass
+
+  22 Feb 2007; Jim Ramsay <lack@gentoo.org> +metadata.xml:
+  Accepting maintainership
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  26 Jul 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  gkrellmss-2.3.ebuild, gkrellmss-2.4.ebuild, gkrellmss-2.6.ebuild:
+  Homepage moved - reported by John Holden (Bug #85831)
+
+  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org> gkrellmss-2.6.ebuild:
+  multilib fixes
+
+  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org> gkrellmss-2.4.ebuild:
+  Stable on amd64.
+
+  02 Jan 2005; Martin Holzer <mholzer@gentoo.org> +gkrellmss-2.6.ebuild:
+  Version bumped. Ebuild submitted by Kai Zimmermann
+  <kai@rrz-raisdorf.de> in 51479.
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gkrellmss-2.3.ebuild, gkrellmss-2.4.ebuild:
+  Masked gkrellmss-2.4.ebuild stable for ppc
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gkrellmss-2.3.ebuild:
+  Masked gkrellmss-2.3.ebuild stable for ppc
+
+  10 Jul 2004; Tom Martin <slarti@gentoo.org> gkrellmss-2.4.ebuild:
+  Marked ~amd64.
+
+  03 Jul 2004; <pyrania@gentoo.org> gkrellmss-2.4.ebuild:
+  Fixed ALSA check sandbox violation. See bug #44408.
+
+  19 Jun 2004; <pyrania@gentoo.org> gkrellmss-2.4.ebuild:
+  Stable on x86.
+
+  12 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> gkrellmss-2.4.ebuild:
+  Removing S=
+
+*gkrellmss-2.4 (06 Mar 2004)
+
+  06 Mar 2004; Martin Holzer <mholzer@gentoo.org> gkrellmss-2.4.ebuild:
+  Verison bumped. Closes 42833
+
+  03 Mar 2004; Martin Holzer <mholzer@gentoo.org> gkrellmss-2.3.ebuild:
+  adding restricter depend. closes 43575
+
+  01 Mar 2004; Markus Nigbur <pyrania@gentoo.org> gkrellmss-2.3.ebuild:
+  Stable on x86.
+
+  20 Jan 2004; Aron Griffis <agriffis@gentoo.org> gkrellmss-2.3.ebuild:
+  add ~alpha
+
+*gkrellmss-2.3 (12 Feb 2003)
+
+  26 Mar 2003; Graham Forest <vladimir@gentoo.org> gkrellmss-2.3.ebuild:
+  Automated cleanup of LICENSE
+
+  12 Feb 2003; Seemant Kulleen <seemant@gentoo.org> ChangeLog
+  gkrellmss-2.3.ebuild files/gkrellmss-2.3-gentoo.diff
+  files/digest-gkrellmss-2.3 :
+
+  New sound scope plugin which uses EsounD, for GKrellM2.  Submitted by:
+  Alex Revo <accessps@yahoo.com> in bug #13692.

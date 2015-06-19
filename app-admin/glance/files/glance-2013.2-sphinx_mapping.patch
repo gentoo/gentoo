@@ -1,0 +1,12 @@
+diff -ur glance-2013.2.orig/doc/source/conf.py glance-2013.2/doc/source/conf.py
+--- doc/source/conf.py	2013-10-17 21:39:46.000000000 +0800
++++ doc/source/conf.py	2013-11-13 18:51:29.099839976 +0800
+@@ -250,8 +250,3 @@
+ 
+ # If false, no module index is generated.
+ #latex_use_modindex = True
+-
+-# Example configuration for intersphinx: refer to the Python standard library.
+-intersphinx_mapping = {'python': ('http://docs.python.org/', None),
+-                       'nova': ('http://nova.openstack.org', None),
+-                       'swift': ('http://swift.openstack.org', None)}

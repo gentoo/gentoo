@@ -1,0 +1,22 @@
+diff --git a/js/src/jsapi-tests/Makefile.in b/js/src/jsapi-tests/Makefile.in
+--- a/js/src/jsapi-tests/Makefile.in
++++ b/js/src/jsapi-tests/Makefile.in
+@@ -55,17 +55,17 @@ CPPSRCS = \
+   testSameValue.cpp \
+   testDebugger.cpp \
+   testDefineGetterSetterNonEnumerable.cpp \
+   testExtendedEq.cpp \
+   $(NULL)
+ 
+ DEFINES         += -DEXPORT_JS_API
+ 
+-LIBS      = $(NSPR_LIBS) $(DEPTH)/$(LIB_PREFIX)js_static.$(LIB_SUFFIX)
++LIBS      = $(DEPTH)/$(LIB_PREFIX)js_static.$(LIB_SUFFIX) $(NSPR_LIBS)
+ 
+ LOCAL_INCLUDES += -I$(topsrcdir) -I..
+ 
+ ifdef _MSC_VER
+ ifdef WINCE
+ WIN32_EXE_LDFLAGS += -ENTRY:mainACRTStartup
+ endif
+ endif

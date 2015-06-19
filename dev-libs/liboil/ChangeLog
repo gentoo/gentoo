@@ -1,0 +1,372 @@
+# ChangeLog for dev-libs/liboil
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/liboil/ChangeLog,v 1.99 2015/04/30 04:42:11 jer Exp $
+
+  30 Apr 2015; Jeroen Roovers <jer@gentoo.org> liboil-0.3.17-r2.ebuild:
+  Stable for PPC64 (bug #525748).
+
+  02 Mar 2015; Agostino Sarubbo <ago@gentoo.org> liboil-0.3.17-r2.ebuild:
+  Stable for ppc, wrt bug #525748
+
+  15 Jan 2015; Raúl Porcel <armin76@gentoo.org> liboil-0.3.17-r2.ebuild:
+  alpha/ia64/sh/sparc stable wrt #525748
+
+  25 Oct 2014; Markus Meier <maekke@gentoo.org> liboil-0.3.17-r2.ebuild:
+  arm stable, bug #525748
+
+  23 Oct 2014; Pacho Ramos <pacho@gentoo.org> liboil-0.3.17-r2.ebuild:
+  amd64/x86 stable, bug #525748
+
+  20 Oct 2014; Jeroen Roovers <jer@gentoo.org> liboil-0.3.17-r2.ebuild:
+  Stable for HPPA (bug #525748).
+
+*liboil-0.3.17-r2 (10 Aug 2013)
+
+  10 Aug 2013; Alexis Ballier <aballier@gentoo.org> +liboil-0.3.17-r2.ebuild:
+  Convert to multilib and stack it for medialibs r10
+
+*liboil-0.3.17-r1 (29 Oct 2012)
+
+  29 Oct 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  liboil-0.3.17.ebuild, +liboil-0.3.17-r1.ebuild,
+  +files/liboil-0.3.17-amd64-cpuid.patch:
+  Add upstream patch to fix CPU detection on amd64. Add prefix keywords (bug
+  #440082, thanks to Christoph Junghans). Remove useless doc USE flag, and
+  install docs in the location where tools like devhelp expect them. Punt .la
+  files, and make static libs optional.
+
+  06 Jun 2012; Zac Medico <zmedico@gentoo.org> liboil-0.3.17.ebuild:
+  inherit eutils for epatch
+
+  13 Feb 2012; Mike Frysinger <vapier@gentoo.org> liboil-0.3.17.ebuild,
+  +files/liboil-0.3.17-x32.patch:
+  Add patch for x32 systems.
+
+  08 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> liboil-0.3.17.ebuild:
+  ppc64 stable wrt #319969
+
+  19 Jun 2010; Raúl Porcel <armin76@gentoo.org> liboil-0.3.17.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #319969
+
+  25 May 2010; Pacho Ramos <pacho@gentoo.org> liboil-0.3.17.ebuild:
+  stable amd64, bug 319969
+
+  24 May 2010; <nixnut@gentoo.org> liboil-0.3.17.ebuild:
+  ppc stable #319969
+
+  21 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> liboil-0.3.17.ebuild:
+  x86 stable wrt bug #319969
+
+  20 May 2010; Jeroen Roovers <jer@gentoo.org> liboil-0.3.17.ebuild:
+  Stable for HPPA (bug #319969).
+
+*liboil-0.3.17 (16 Apr 2010)
+
+  16 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> +liboil-0.3.17.ebuild:
+  Version bump.
+
+  13 Nov 2009; Joseph Jezak <josejx@gentoo.org> liboil-0.3.16.ebuild:
+  Marked ppc64 stable.
+
+  03 Nov 2009; Jeroen Roovers <jer@gentoo.org> liboil-0.3.16.ebuild:
+  Stable for HPPA (bug #290761).
+
+  18 Oct 2009; Raúl Porcel <armin76@gentoo.org> liboil-0.3.16.ebuild:
+  arm/ia64/sh/sparc stable
+
+  02 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> liboil-0.3.16.ebuild:
+  Stable for ppc, bug 285370
+
+  29 Sep 2009; Tobias Klausmann <klausman@gentoo.org> liboil-0.3.16.ebuild:
+  Stable on alpha, bug #285370
+
+  22 Sep 2009; Markus Meier <maekke@gentoo.org> liboil-0.3.16.ebuild:
+  amd64 stable, bug #285370
+
+  22 Sep 2009; Christian Faulhammer <fauli@gentoo.org> liboil-0.3.16.ebuild:
+  stable x86, security bug 285370
+
+  02 May 2009; Daniel Gryniewicz <dang@gentoo.org> liboil-0.3.16.ebuild:
+  Move glib dep to slot dep; bug #268216
+
+*liboil-0.3.16 (05 Apr 2009)
+
+  05 Apr 2009; Ben de Groot <yngwin@gentoo.org> +liboil-0.3.16.ebuild:
+  Version bump
+
+*liboil-0.3.15-r1 (08 Mar 2009)
+
+  08 Mar 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +liboil-0.3.15-r1.ebuild:
+  Bump to 0.3.5-r1.
+   * Don't build tests if not requested, bug #226219.
+   * Don't build examples if not requested bug #226303.
+   * Don't depend on glib if examples are not built, bug #204002.
+   * Don't forced uneeded make -j1, bug #236012.
+
+  08 Mar 2009; Joshua Kinard <kumba@gentoo.org> liboil-0.3.15.ebuild:
+  Added ~mips to KEYWORDS.
+
+  25 Dec 2008; <ssuominen@gentoo.org> metadata.xml:
+  Reassign to freedesktop herd.
+
+  02 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing zaheerm as a maintainer since he was retired.
+
+  04 Oct 2008; Brent Baude <ranger@gentoo.org> liboil-0.3.15.ebuild:
+  Marking liboil-0.3.15 ppc64 for bug 232054
+
+  23 Sep 2008; Jeroen Roovers <jer@gentoo.org> liboil-0.3.15.ebuild:
+  Stable for HPPA (bug #232054).
+
+  07 Aug 2008; Tobias Klausmann <klausman@gentoo.org> ChangeLog:
+  Stable on alpha, bug #232054
+
+  31 Jul 2008; Raúl Porcel <armin76@gentoo.org> liboil-0.3.15.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #232054
+
+  30 Jul 2008; Brent Baude <ranger@gentoo.org> liboil-0.3.15.ebuild:
+  Marking liboil-0.3.15 ppc stable for bug 232054
+
+  26 Jul 2008; Olivier Crête <tester@gentoo.org> liboil-0.3.15.ebuild:
+  Stable on amd64, bug #232054
+
+*liboil-0.3.15 (02 Jul 2008)
+
+  02 Jul 2008; Samuli Suominen <drac@gentoo.org> +liboil-0.3.15.ebuild:
+  Version bump.
+
+  16 Apr 2008; Markus Rothe <corsair@gentoo.org> liboil-0.3.14.ebuild:
+  Added ~ppc64; bug #175420
+
+*liboil-0.3.14 (03 Apr 2008)
+
+  03 Apr 2008; Zaheer Abbas Merali <zaheerm@gentoo.org> +liboil-0.3.14.ebuild:
+  version bump
+
+  12 Feb 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +files/liboil-0.3.12-dontbuild-examples.patch, liboil-0.3.12.ebuild:
+  Add patch to avoid building examples, as we would be deleting them right
+  afterward. See upstream bug #14468.
+
+  19 Sep 2007; Christoph Mende <angelos@gentoo.org> liboil-0.3.12.ebuild:
+  Stable on amd64 wrt bug #192822
+
+  17 Sep 2007; Jeroen Roovers <jer@gentoo.org> liboil-0.3.12.ebuild:
+  Stable for HPPA (bug #192822).
+
+  13 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  liboil-0.3.12.ebuild:
+  ppc. stable
+
+  26 Jul 2007; Raúl Porcel <armin76@gentoo.org> liboil-0.3.12.ebuild:
+  alpha/ia64/x86 stable
+
+  25 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> liboil-0.3.12.ebuild:
+  Stable on sparc
+
+  14 Jul 2007; Raúl Porcel <armin76@gentoo.org> liboil-0.3.11.ebuild:
+  alpha/ia64/x86 stable
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> liboil-0.3.6-r1.ebuild,
+  liboil-0.3.7.ebuild:
+  (QA) RESTRICT clean up.
+
+  25 Jun 2007; Mike Frysinger <vapier@gentoo.org> liboil-0.3.11.ebuild:
+  Move to arm stable for #167487.
+
+*liboil-0.3.12 (22 Jun 2007)
+
+  22 Jun 2007; Hanno Boeck <hanno@gentoo.org> +liboil-0.3.12.ebuild:
+  Version bump.
+
+  10 May 2007; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  Fix metadata
+
+  21 Apr 2007; Markus Rothe <corsair@gentoo.org> liboil-0.3.11.ebuild:
+  Back to ~ppc64
+
+*liboil-0.3.11 (19 Apr 2007)
+
+  19 Apr 2007; Hanno Boeck <hanno@gentoo.org> +liboil-0.3.11.ebuild:
+  Version bump.
+
+  06 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  liboil-0.3.10-r1.ebuild:
+  ppc stable
+
+  12 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  liboil-0.3.10-r1.ebuild:
+  stable x86; bug 163541
+
+  31 Jan 2007; Markus Rothe <corsair@gentoo.org> liboil-0.3.10-r1.ebuild:
+  Stable on ppc64; bug #163541
+
+  28 Jan 2007; Jeroen Roovers <jer@gentoo.org> liboil-0.3.10-r1.ebuild:
+  Stable for HPPA (bug #163541).
+
+  27 Jan 2007; Olivier Crête <tester@gentoo.org> liboil-0.3.10-r1.ebuild:
+  Stable on amd64 for bug #163541
+
+  23 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  liboil-0.3.10-r1.ebuild:
+  Stable on sparc
+
+  31 Dec 2006; Ryan Hill <dirtyepic@gentoo.org> liboil-0.3.10-r1.ebuild:
+  Fix multiple inheritance.
+
+  21 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  liboil-0.3.10-r1.ebuild:
+  Back to ~sparc
+
+  11 Dec 2006; Peter Volkov <pva@gentoo.org>
+  files/liboil-0.3.10-sse2revert.diff:
+  Fix for broken patch, bug #157819. Thank Pawel Kilian for report.
+
+*liboil-0.3.10-r1 (11 Dec 2006)
+
+  11 Dec 2006; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  +files/liboil-0.3.10-sse2revert.diff, +liboil-0.3.10-r1.ebuild:
+  fix sse2 check and use flag-o-matic
+
+*liboil-0.3.10 (05 Dec 2006)
+
+  05 Dec 2006; Hanno Boeck <hanno@gentoo.org> +liboil-0.3.10.ebuild:
+  Version bump, some minor fixes.
+
+  05 Dec 2006; Hanno Boeck <hanno@gentoo.org> liboil-0.3.6-r1.ebuild,
+  liboil-0.3.7.ebuild, liboil-0.3.8-r1.ebuild:
+  Correct license is BSD-2.
+
+*liboil-0.3.8-r1 (25 Jul 2006)
+*liboil-0.3.6-r1 (25 Jul 2006)
+
+  25 Jul 2006; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  -liboil-0.3.6.ebuild, +liboil-0.3.6-r1.ebuild, -liboil-0.3.8.ebuild,
+  +liboil-0.3.8-r1.ebuild:
+  Force CFLAGS to -O2 -g to not crash software that deps on liboil
+
+  16 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> liboil-0.3.8.ebuild:
+  Add ~x86-fbsd keyword.
+
+  08 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org> liboil-0.3.7.ebuild,
+  liboil-0.3.8.ebuild:
+  -sparc broke and broke
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-liboil-0.2.0,
+  files/digest-liboil-0.2.2, files/digest-liboil-0.3.1,
+  files/digest-liboil-0.3.2, files/digest-liboil-0.3.3,
+  files/digest-liboil-0.3.6, files/digest-liboil-0.3.7,
+  files/digest-liboil-0.3.8, Manifest:
+  Fixing SHA256 digest, pass four
+
+*liboil-0.3.8 (04 Apr 2006)
+
+  04 Apr 2006; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  +liboil-0.3.8.ebuild:
+  version bump
+
+  08 Feb 2006; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  +files/liboil-0.3.7-convfix.diff, liboil-0.3.7.ebuild:
+  fix compile on ppc, fixes bug
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> liboil-0.3.6.ebuild:
+  Mark 0.3.6 stable on alpha
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> liboil-0.3.6.ebuild:
+  Mark 0.3.6 stable on ia64
+
+  03 Feb 2006; Guy Martin <gmsoft@gentoo.org> liboil-0.3.6.ebuild:
+  Stable on hppa.
+
+*liboil-0.3.7 (03 Feb 2006)
+
+  03 Feb 2006; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  +liboil-0.3.7.ebuild:
+  version bump
+
+  22 Jan 2006; Markus Rothe <corsair@gentoo.org> liboil-0.3.6.ebuild:
+  Stable on ppc64
+
+  22 Jan 2006; <dang@gentoo.org> liboil-0.3.6.ebuild:
+  Marked stable on amd64 per bug #119634
+
+  22 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org> liboil-0.3.6.ebuild:
+  Marked ppc stable for bug #119634; Stabilize Gnome-2.12.2
+
+  22 Jan 2006; Joshua Jackson <tsunam@gentoo.org> liboil-0.3.6.ebuild:
+  Stable on x86 for bug #119634
+
+  21 Jan 2006; Jeroen Roovers <jer@gentoo.org> liboil-0.3.6.ebuild:
+  Marked ~hppa (bug #105807).
+
+  20 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org> liboil-0.3.6.ebuild:
+  Stable on sparc
+
+  27 Nov 2005; Zaheer Abbas Merali <zaheerm@gentoo.org> liboil-0.3.3.ebuild:
+  fixes bug #109270
+
+*liboil-0.3.6 (18 Nov 2005)
+
+  18 Nov 2005; <zaheer@gentoo.org> +liboil-0.3.6.ebuild:
+  version bump
+
+*liboil-0.3.3 (11 Oct 2005)
+
+  11 Oct 2005; <zaheer@gentoo.org> +liboil-0.3.3.ebuild:
+  version bump
+
+  06 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org> liboil-0.3.2.ebuild:
+  marked ~alpha wrt bug #105807
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> liboil-0.3.2.ebuild:
+  Mark 0.3.2 ~ia64 #105807
+
+  18 Sep 2005; Markus Rothe <corsair@gentoo.org> liboil-0.3.2.ebuild:
+  Added ~ppc64 (bug #105807)
+
+  24 Jun 2005; Zaheer Abbas Merali <zaheerm@gentoo.org> liboil-0.2.0.ebuild,
+  liboil-0.2.2.ebuild, liboil-0.3.1.ebuild, liboil-0.3.2.ebuild:
+  slot liboil
+
+*liboil-0.3.2 (08 Jun 2005)
+
+  08 Jun 2005; Zaheer Abbas Merali <zaheerm@gentoo.org> metadata.xml,
+  +liboil-0.3.2.ebuild:
+  version bump
+
+*liboil-0.3.1 (18 Mar 2005)
+
+  18 Mar 2005; Don Seiler <rizzo@gentoo.org> +liboil-0.3.1.ebuild:
+  Version bump, closes bug #85776
+
+  27 Nov 2004; Luca Barbato <lu_zero@gentoo.org>
+  +files/liboil-0.2.2-clobber-list.patch, liboil-0.2.2.ebuild:
+  Another fix for ppc
+
+*liboil-0.2.2 (23 Nov 2004)
+
+  23 Nov 2004; Don Seiler <rizzo@gentoo.org> +liboil-0.2.2.ebuild:
+  Version bump, should work with gcc 3.4.x now
+
+*liboil-0.2.1 (20 Nov 2004)
+
+  20 Nov 2004; Luca Barbato <lu_zero@gentoo.org> +liboil-0.2.1.ebuild:
+  New version, ppc issues are eventually fixed
+
+  20 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org> liboil-0.2.0.ebuild:
+  Keyworded ~amd64, bug #71270
+
+  17 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> liboil-0.2.0.ebuild:
+  Keyworded ~sparc wrt #71270
+
+  17 Nov 2004; Luca Barbato <lu_zero@gentoo.org>
+  +files/liboil-0.2.0-altivec.patch, liboil-0.2.0.ebuild:
+  Fixed for ppc
+
+*liboil-0.2.0 (16 Nov 2004)
+
+  16 Nov 2004; Don Seiler <rizzo@gentoo.org> +metadata.xml,
+  +liboil-0.2.0.ebuild:
+  Initial add.  Closes bug #71270.

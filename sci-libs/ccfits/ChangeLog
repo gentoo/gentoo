@@ -1,0 +1,23 @@
+# ChangeLog for sci-libs/ccfits
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/ccfits/ChangeLog,v 1.4 2012/08/03 17:20:43 bicatali Exp $
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> ccfits-2.4.ebuild:
+  keyword amd64-linux x86-linux
+
+*ccfits-2.4 (13 Jan 2012)
+
+  13 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org> -ccfits-2.2.ebuild,
+  -ccfits-2.3.ebuild, +ccfits-2.4.ebuild:
+  Version bump
+
+*ccfits-2.3 (24 Nov 2010)
+
+  24 Nov 2010; Sébastien Fabbro <bicatali@gentoo.org> +ccfits-2.3.ebuild:
+  Bump
+
+*ccfits-2.2 (20 Jan 2010)
+
+  20 Jan 2010; Sébastien Fabbro <bicatali@gentoo.org> +ccfits-2.2.ebuild,
+  +files/ccfits-2.2-makefile.patch, +metadata.xml:
+  Initial import

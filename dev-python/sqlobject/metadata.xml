@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>python</herd>
+	<longdescription>SQLObject is an object-relational mapper. It allows you to translate RDBMS table rows into Python objects and manipulate
+	those objects to transparently manipulate the database.</longdescription>
+	<longdescription lang="ja">SQLObject はオブジェクト・リレーショナル・マッパです。これはデータベースの操作を明瞭にするため、RDBMS のテーブル列を Python
+	言語のオブジェクトとして操作できるようにします。</longdescription>
+	<upstream>
+		<remote-id type="pypi">SQLObject</remote-id>
+	</upstream>
+</pkgmetadata>

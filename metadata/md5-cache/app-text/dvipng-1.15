@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=dev-libs/kpathsea media-libs/gd[jpeg,png] media-libs/libpng:0= virtual/latex-base sys-libs/zlib truetype? ( >=media-libs/freetype-2.1.5 ) virtual/texi2dvi test? ( dev-texlive/texlive-fontsrecommended )
+DESCRIPTION=Translate DVI files into PNG or GIF graphics
+EAPI=5
+HOMEPAGE=http://dvipng.sourceforge.net/
+IUSE=truetype test
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
+LICENSE=LGPL-3+ Texinfo-manual
+RDEPEND=dev-libs/kpathsea media-libs/gd[jpeg,png] media-libs/libpng:0= virtual/latex-base sys-libs/zlib truetype? ( >=media-libs/freetype-2.1.5 )
+SLOT=0
+SRC_URI=mirror://sourceforge/dvipng/dvipng-1.15.tar.gz
+_md5_=d1e6e62ff5c8ca149cdba8b367ef3bb7

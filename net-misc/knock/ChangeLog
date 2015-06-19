@@ -1,0 +1,191 @@
+# ChangeLog for net-misc/knock
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/knock/ChangeLog,v 1.57 2015/04/19 09:42:35 pacho Exp $
+
+  19 Apr 2015; Pacho Ramos <pacho@gentoo.org> knock-0.7.ebuild:
+  x86 stable wrt bug #535602
+
+  01 Apr 2015; Agostino Sarubbo <ago@gentoo.org> knock-0.7.ebuild:
+  Stable for sparc, wrt bug #535602
+
+  28 Mar 2015; Agostino Sarubbo <ago@gentoo.org> knock-0.7.ebuild:
+  Stable for ppc, wrt bug #535602
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> knock-0.7.ebuild:
+  Stable for amd64, wrt bug #535602
+
+*knock-0.7 (30 Jul 2014)
+
+  30 Jul 2014; Michael Weber <xmw@gentoo.org> +knock-0.7.ebuild,
+  -files/knock-0.5-gcc-4.3.patch, -files/knockd.confd, -files/knockd.initd,
+  -knock-0.5-r2.ebuild:
+  Version bump (euscan), drop old.
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> knock-0.6.ebuild:
+  Stable for sparc, wrt bug #474278
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> knock-0.6.ebuild:
+  Stable for amd64, wrt bug #474278
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> knock-0.6.ebuild:
+  Stable for x86, wrt bug #474278
+
+  24 Jun 2013; Agostino Sarubbo <ago@gentoo.org> knock-0.6.ebuild:
+  Stable for ppc, wrt bug #474278
+
+*knock-0.6 (21 Apr 2013)
+
+  21 Apr 2013; Michael Weber <xmw@gentoo.org> +knock-0.6.ebuild:
+  Version bump
+
+  13 Jun 2012; Michael Weber <xmw@gentoo.org> -knock-0.5-r1.ebuild,
+  -knock-0.5.ebuild:
+  drop old
+
+  13 Jun 2012; Michael Weber <xmw@gentoo.org> knock-0.5-r2.ebuild:
+  sparc stable (bug 419307)
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> knock-0.5-r2.ebuild:
+  x86 stable wrt bug #419307
+
+  04 Jun 2012; Michael Weber <xmw@gentoo.org> knock-0.5-r2.ebuild:
+  ppc stable (bug 419307)
+
+  04 Jun 2012; Agostino Sarubbo <ago@gentoo.org> knock-0.5-r2.ebuild:
+  Stable for amd64, wrt bug #419307
+
+*knock-0.5-r2 (15 Feb 2012)
+
+  15 Feb 2012; Michael Weber <xmw@gentoo.org> +knock-0.5-r2.ebuild,
+  +files/knockd.confd.2, +files/knockd.initd.2:
+  Revbump to fix buildsystem problems and adept to openrc (thanks Diego Elio
+  Pettenò for the updates, bug 403925)
+
+  21 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> knock-0.5-r1.ebuild:
+  x86 stable wrt bug #393985
+
+  16 Dec 2011; Agostino Sarubbo <ago@gentoo.org> knock-0.5-r1.ebuild:
+  Stable for AMD64, wrt bug #393985
+
+  31 Aug 2010; Michael Weber <xmw@gentoo.org> knock-0.5-r1.ebuild,
+  metadata.xml:
+  Made knockd daemon optional with IUSE server, fixes bug 311257.
+
+*knock-0.5-r1 (31 Aug 2010)
+
+  31 Aug 2010; Michael Weber <xmw@gentoo.org> +knock-0.5-r1.ebuild,
+  metadata.xml:
+  Revision bump to fix bug #332897, thanks to Sebastian
+  <indigo176@blinkenshell.org>. Die more, EAPI-2.
+
+  23 Aug 2009; Jeremy Olexa <darkside@gentoo.org> -files/knockd.conf.patch,
+  -files/nonblock.patch:
+  remove unused patches
+
+  25 Sep 2008; Ali Polatel <hawking@gentoo.org> metadata.xml:
+  Added myself to metadata.xml.
+
+  26 Jul 2008; <wormo@gentoo.org> +files/knock-0.5-gcc-4.3.patch,
+  knock-0.5.ebuild:
+  gcc 4.3 compile fix from Christian Ruppert (bug #232966)
+
+  27 Dec 2007; Raúl Porcel <armin76@gentoo.org> -knock-0.3.ebuild,
+  -knock-0.3.1.ebuild, -knock-0.4.ebuild, knock-0.5.ebuild:
+  Fix HOMEPAGE, bug #183303, cleanup
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing pyrania from metadata.xml as per #26352. Assigning to
+  maintainer-needed.
+
+  26 Mar 2007; Alec Warner <antarus@gentoo.org> knock-0.3.1.ebuild,
+  knock-0.4.ebuild, knock-0.5.ebuild:
+  Remove dependency on portage: ref bug 162516
+
+  13 Mar 2007; Raúl Porcel <armin76@gentoo.org> knock-0.5.ebuild:
+  x86 stable
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  25 Nov 2006; nixnut <nixnut@gentoo.org> knock-0.5.ebuild:
+  Stable on ppc wrt bug 156162
+
+  29 Aug 2006; Luis Medinas <metalgod@gentoo.org> knock-0.5.ebuild:
+  Stable on amd64.
+
+  27 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org> knock-0.5.ebuild:
+  Stable on sparc
+
+  26 Feb 2006; <dams@gentoo.org> knock-0.5.ebuild:
+  keyworded as ~ppc
+
+  20 Feb 2006; Markus Ullmann <jokey@gentoo.org> knock-0.3.ebuild,
+  knock-0.3.1.ebuild, knock-0.4.ebuild, knock-0.5.ebuild:
+  Removing virtual/libpcap wrt bug #117898
+
+  19 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org> knock-0.5.ebuild:
+  Keyworded ~sparc
+
+*knock-0.5 (03 Oct 2005)
+
+  03 Oct 2005; Markus Nigbur <pyrania@gentoo.org> +knock-0.5.ebuild:
+  Version bump.
+
+  04 Sep 2005; Daniel Black <dragonheart@gentoo.org> -knock-0.1.ebuild:
+  removed 0.1 - patch problems
+
+*knock-0.4 (14 Mar 2005)
+
+  14 Mar 2005; Markus Nigbur <pyrania@gentoo.org> +knock-0.4.ebuild:
+  Version bump. Closing bug #78356.
+
+  30 Jan 2005; Daniel Black <dragonheart@gentoo.org> knock-0.1.ebuild,
+  knock-0.3.1.ebuild, knock-0.3.ebuild:
+  Transition dependancy from net-libs/libpcap to virtual/libpcap
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  01 Nov 2004; Mike Frysinger <vapier@gentoo.org> knock-0.3.1.ebuild:
+  Fix broken patching.
+
+  27 Oct 2004; <pyrania@gentoo.org> knock-0.3.1.ebuild:
+  Removed nonblock patch for 0.3.1.
+
+*knock-0.3.1 (26 Oct 2004)
+
+  26 Oct 2004; <pyrania@gentoo.org> +knock-0.3.1.ebuild:
+  Version bump.
+
+  01 Oct 2004; <pyrania@gentoo.org> knock-0.3.ebuild:
+  Marked stable on x86.
+
+  26 Sep 2004; <pyrania@gentoo.org> -files/knock-0.3-nonblock.patch,
+  +files/nonblock.patch, knock-0.1.ebuild, knock-0.3.ebuild:
+  Fixed up some dumbness. Closing bug #64341.
+
+  27 Aug 2004; <pyrania@gentoo.org> +files/knockd.conf.patch,
+  knock-0.1.ebuild, +files/knock-0.3-nonblock.patch, knock-0.3.ebuild:
+  Closed bugs #59315, #59265 and #59251. Thanks to Per Cederberg
+  <per@percederberg.net>.
+
+  18 Jul 2004; Daniel Ahlberg <aliz@gentoo.org> knock-0.3.ebuild:
+  Added amd64 keyword, closing #57090.
+
+  12 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> knock-0.1.ebuild,
+  knock-0.3.ebuild:
+  Remove whitespace from CVS header to make repoman happy.
+
+  03 Jul 2004; <pyrania@gentoo.org> knock-0.3.ebuild:
+  Depending on net-libs/libpcap. Closing bug #55131.
+
+*knock-0.3 (12 Jun 2004)
+
+  12 Jun 2004; <pyrania@gentoo.org> knock-0.1.ebuild, +knock-0.3.ebuild:
+  Version bump. Closing bug #49077.
+
+*knock-0.1 (15 Apr 2004)
+
+  15 Apr 2004; Markus Nigbur <pyrania@gentoo.org> metadata.xml,
+  files/knockd.confd, files/knockd.initd:
+  Initial import.

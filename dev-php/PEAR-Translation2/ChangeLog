@@ -1,0 +1,162 @@
+# ChangeLog for dev-php/PEAR-Translation2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Translation2/ChangeLog,v 1.34 2014/08/10 20:56:50 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-Translation2-2.0.4.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  10 Jun 2012; Matti Bickel <mabi@gentoo.org>
+  -PEAR-Translation2-2.0.0_rc3.ebuild:
+  remove old
+
+  09 Feb 2012; Jeroen Roovers <jer@gentoo.org> PEAR-Translation2-2.0.4.ebuild:
+  Stable for HPPA (bug #399359).
+
+  01 Feb 2012; Samuli Suominen <ssuominen@gentoo.org>
+  PEAR-Translation2-2.0.4.ebuild:
+  ppc/ppc64 stable wrt #399359
+
+  29 Jan 2012; Raúl Porcel <armin76@gentoo.org>
+  PEAR-Translation2-2.0.4.ebuild:
+  alpha/ia64/sparc stable
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  PEAR-Translation2-2.0.4.ebuild:
+  x86 stable wrt bug #399359
+
+  19 Jan 2012; Agostino Sarubbo <ago@gentoo.org>
+  PEAR-Translation2-2.0.4.ebuild:
+  Stable for amd64, wrt bug #399359
+
+  19 Jan 2012; Matti Bickel <mabi@gentoo.org>
+  -PEAR-Translation2-2.0.0_rc1.ebuild:
+  remove old
+
+*PEAR-Translation2-2.0.4 (26 Mar 2011)
+
+  26 Mar 2011; <olemarkus@gentoo.org> +PEAR-Translation2-2.0.4.ebuild:
+  Version bump. Bug #360003. Thanks to Denny
+
+*PEAR-Translation2-2.0.1 (22 Aug 2009)
+
+  22 Aug 2009; Steve Dibb <beandog@gentoo.org>
+  +PEAR-Translation2-2.0.1.ebuild:
+  Version bump
+
+  29 Mar 2008; Markus Meier <maekke@gentoo.org>
+  PEAR-Translation2-2.0.0_rc3.ebuild:
+  amd64 stable, bug #208313
+
+*PEAR-Translation2-2.0.0_rc4 (26 Feb 2008)
+
+  26 Feb 2008; Raúl Porcel <armin76@gentoo.org>
+  +PEAR-Translation2-2.0.0_rc4.ebuild:
+  Version bump, import from the php overlay
+
+  23 Feb 2008; Jakub Moc <jakub@gentoo.org>
+  +PEAR-Translation2-2.0.0_rc4.ebuild:
+  Version bump
+
+  10 Feb 2008; Raúl Porcel <armin76@gentoo.org>
+  PEAR-Translation2-2.0.0_rc3.ebuild:
+  alpha/ia64/sparc stable wrt #208313
+
+  10 Feb 2008; nixnut <nixnut@gentoo.org>
+  PEAR-Translation2-2.0.0_rc3.ebuild:
+  stable on ppc wrt bug #208313
+
+  03 Feb 2008; Markus Meier <maekke@gentoo.org>
+  PEAR-Translation2-2.0.0_rc3.ebuild:
+  x86 stable, bug #208313
+
+  01 Feb 2008; Brent Baude <ranger@gentoo.org>
+  PEAR-Translation2-2.0.0_rc3.ebuild:
+  Marking PEAR-Translation2-2.0.0_rc3 ppc64 for bug 208313
+
+  31 Jan 2008; Jeroen Roovers <jer@gentoo.org>
+  PEAR-Translation2-2.0.0_rc3.ebuild:
+  Stable for HPPA (bug #208313).
+
+*PEAR-Translation2-2.0.0_rc3 (06 Dec 2007)
+
+  06 Dec 2007; Markus Ullmann <jokey@gentoo.org>
+  -files/PEAR-Translation2-2.0.0_rc2-scriptdir.patch,
+  -PEAR-Translation2-2.0.0_rc2.ebuild, +PEAR-Translation2-2.0.0_rc3.ebuild:
+  LICENSE fix from project overlay and version bump
+
+  06 Dec 2007; Jakub Moc <jakub@gentoo.org>
+  +PEAR-Translation2-2.0.0_rc3.ebuild:
+  Version bump
+
+*PEAR-Translation2-2.0.0_rc2 (29 Nov 2007)
+
+  29 Nov 2007; Markus Ullmann <jokey@gentoo.org>
+  +files/PEAR-Translation2-2.0.0_rc2-scriptdir.patch,
+  +PEAR-Translation2-2.0.0_rc2.ebuild:
+  Version bump from project overlay
+
+  25 Nov 2007; Jakub Moc <jakub@gentoo.org>
+  +files/PEAR-Translation2-2.0.0_rc2-scriptdir.patch,
+  +PEAR-Translation2-2.0.0_rc2.ebuild:
+  Version bump, fix script install location
+
+  22 Oct 2007; Raúl Porcel <armin76@gentoo.org>
+  PEAR-Translation2-2.0.0_rc1.ebuild:
+  ia64 stable wrt #192247
+
+  05 Oct 2007; Raúl Porcel <armin76@gentoo.org>
+  PEAR-Translation2-2.0.0_rc1.ebuild:
+  alpha/sparc stable wrt #192247
+
+  28 Sep 2007; Christoph Mende <angelos@gentoo.org>
+  PEAR-Translation2-2.0.0_rc1.ebuild:
+  Stable on amd64 wrt bug #192247
+
+  26 Sep 2007; Brent Baude <ranger@gentoo.org>
+  PEAR-Translation2-2.0.0_rc1.ebuild:
+  Marking PEAR-Translation2-2.0.0_rc1 ppc64 stable for bug 192247
+
+  24 Sep 2007; Lars Weiler <pylon@gentoo.org>
+  PEAR-Translation2-2.0.0_rc1.ebuild:
+  stable ppc, bug #192247
+
+  21 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  PEAR-Translation2-2.0.0_rc1.ebuild:
+  x86 stable, bug 192247
+
+  16 Sep 2007; Jeroen Roovers <jer@gentoo.org>
+  PEAR-Translation2-2.0.0_rc1.ebuild:
+  Stable for HPPA (bug #192247).
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org>
+  -PEAR-Translation2-2.0.0_beta9.ebuild:
+  Cleanup
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  25 Nov 2006; Bryan Østergaard <kloeri@gentoo.org>
+  PEAR-Translation2-2.0.0_beta9.ebuild:
+  Add ~alpha + ~ia64 keywords, bug 134270.
+
+  27 May 2006; Luca Longinotti <chtekk@gentoo.org>
+  PEAR-Translation2-2.0.0_beta9.ebuild:
+  Added to ~amd64. See bug #134270.
+
+  25 May 2006; Michael Hanselmann <hansmi@gentoo.org>
+  PEAR-Translation2-2.0.0_beta9.ebuild:
+  Added to ~hppa, ~ppc64, ~sparc. See bug #134270.
+
+  25 May 2006; <nixnut@gentoo.org> PEAR-Translation2-2.0.0_beta9.ebuild:
+  Added ~ppc. bug #134270
+
+  07 Mar 2006; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Translation2-2.0.0_beta9.ebuild:
+  Fix bug 125160.
+
+*PEAR-Translation2-2.0.0_beta9 (28 Feb 2006)
+
+  28 Feb 2006; Sebastian Bergmann <sebastian@gentoo.org> +metadata.xml,
+  +PEAR-Translation2-2.0.0_beta9.ebuild:
+  Initial ebuild.

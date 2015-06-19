@@ -1,0 +1,23 @@
+--- maui-3.2.6p21/src/moab/MPBSI.c.orig	2010-03-16 12:54:09.000000000 +0100
++++ maui-3.2.6p21/src/moab/MPBSI.c	2010-03-16 12:57:07.000000000 +0100
+@@ -6406,6 +6406,7 @@
+   int tindex;
+ 
+   char tmpHostName[MAX_MLINE];
++  char tmpTaskList[MAX_MLINE+10];
+ 
+   mnode_t *N;
+ 
+@@ -6458,10 +6459,10 @@
+       }
+     else
+       {
+-      sprintf(TSBuf,"%s%s:ppn=%d",
+-        TSBuf,
++	snprintf (tmpTaskList,MAX_MLINE+10,"%s:ppn=%d",
+         tmpHostName,
+         NL[tindex].TC);
++	MUStrCat(TSBuf,tmpTaskList,BufSize);
+       }
+     }  /* END for (tindex) */
+ 

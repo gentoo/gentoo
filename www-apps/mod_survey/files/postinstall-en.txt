@@ -1,0 +1,4 @@
+0. Copy ${VHOST_ROOT}/${PN}/survey.conf to your Apache modules directory.
+
+1. Restart Apache and test your installation:
+ http://${VHOST_HOSTNAME}/mod_survey

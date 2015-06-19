@@ -1,0 +1,9 @@
+# ChangeLog for dev-python/jsonmerge
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/jsonmerge/ChangeLog,v 1.1 2015/06/10 07:25:37 zmedico Exp $
+
+*jsonmerge-1.1.0 (10 Jun 2015)
+
+  10 Jun 2015; Zac Medico <zmedico@gentoo.org> +jsonmerge-1.1.0.ebuild,
+  +metadata.xml:
+  Add jsonmerge.

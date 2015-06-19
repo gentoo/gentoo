@@ -1,0 +1,63 @@
+# ChangeLog for app-i18n/libtabe
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/libtabe/ChangeLog,v 1.17 2012/06/14 09:15:59 ago Exp $
+
+  14 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libtabe-0.2.6.1.2.ebuild:
+  Stable for amd64, wrt bug #418587
+
+  14 Jun 2012; Jeff Horelick <jdhore@gentoo.org> libtabe-0.2.6.1.2.ebuild:
+  marked x86 per bug 418587
+
+  14 Jun 2012; Naohiro Aota <naota@gentoo.org>
+  +files/libtabe-0.2.6-ldflags.patch, libtabe-0.2.6.1.2.ebuild:
+  Add patch to handle LDFLAGS properly.
+
+*libtabe-0.2.6.1.2 (02 Jun 2009)
+
+  02 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +libtabe-0.2.6.1.2.ebuild:
+  Bump debian patch (make it semi-automatic to bump, too) so that it does
+  not fail with --as-needed; use sequential calls to make to avoid failing
+  with parallel make.
+
+  01 May 2008; Markus Meier <maekke@gentoo.org>
+  -files/libtabe-0.2.5-db3.patch, -libtabe-0.2.5.ebuild:
+  old
+
+  01 May 2008; Markus Meier <maekke@gentoo.org> libtabe-0.2.6.ebuild:
+  x86 stable, bug #148096
+
+  30 Apr 2008; nixnut <nixnut@gentoo.org> libtabe-0.2.6.ebuild:
+  Stable on ppc wrt bug 148096
+
+*libtabe-0.2.6 (29 Apr 2008)
+
+  29 Apr 2008; Samuli Suominen <drac@gentoo.org>
+  +files/libtabe-0.2.6-fabs.patch, +libtabe-0.2.6.ebuild:
+  Version bump wrt #219348 using ebuild by Peter Alfredsen.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  07 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> libtabe-0.2.5.ebuild:
+  Stable on ppc.
+
+  03 May 2004; David Holm <dholm@gentoo.org> libtabe-0.2.5.ebuild:
+  Added to ~ppc.
+
+  03 Nov 2003; Alastair Tse <liquidx@gentoo.org> libtabe-0.2.5.ebuild,
+  files/libtabe-0.2.5-db3.patch:
+  db-3 patch thanks to Palatis <palatis@gentoo.org.tw> (#32655)
+
+*libtabe-0.2.5 (11 Oct 2002)
+
+  07 Mar 2003; Alastair Tse <liquidx@gentoo.org> libtabe-0.2.5.ebuild:
+  Make it explicitly include db3 headers.
+
+  11 Oct 2002; Stuart Bouyer <stubear@gentoo.org> ChangeLog,
+  libtabe-0.2.5.ebuild :
+
+  Initial ebuild submitted by Lloyd Huang <lloyd@coventive.com>

@@ -1,0 +1,30 @@
+http://bugs.gentoo.org/122035
+
+--- output-swf.c
++++ output-swf.c
+@@ -24,7 +24,6 @@
+ #include "spline.h"
+ #include "color.h"
+ #include "output-swf.h"
+-#include <ming.h>
+ 
+ #define FPS 24.0
+ #define IMGID 1
+
+--- output-swf.h
++++ output-swf.h
+@@ -23,6 +23,7 @@
+ #define OUTPUTSWF_H 
+ 
+ #include "output.h"
++#include <ming.h>
+ 
+ int output_swf_writer(FILE* file, at_string name,
+ 		      int llx, int lly, int urx, int ury, 
+@@ -31,4 +32,6 @@
+ 		      at_msg_func msg_func, 
+ 		      at_address msg_data);
+ 
++void fileOutputMethod(byte b, void *data);
++
+ #endif /* Not def: OUTPUTSWF_H */

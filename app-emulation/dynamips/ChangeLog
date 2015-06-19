@@ -1,0 +1,102 @@
+# ChangeLog for app-emulation/dynamips
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/dynamips/ChangeLog,v 1.19 2015/06/09 11:07:58 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  06 Apr 2015; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Reassign package, as Aaron Bauman is Gentoo developer now
+
+*dynamips-0.2.14-r1 (28 Nov 2014)
+
+  28 Nov 2014; Sergey Popov <pinkbyte@gentoo.org> -dynamips-0.2.14.ebuild,
+  +dynamips-0.2.14-r1.ebuild:
+  Revision bump: add use flag for building without IPv6 support, drop redundant
+  function definitions. Drop old revision
+
+*dynamips-0.2.14 (28 Nov 2014)
+
+  28 Nov 2014; Ian Delaney <idella4@gentoo.org> +dynamips-0.2.14.ebuild,
+  +files/0.2.14-docs.patch, -dynamips-0.2.10.ebuild,
+  -files/dynamips-0.2.10-makefile.patch:
+  bump; build system has changed to cmake, patch to remove install_doc function
+  from cmake, drop disused patch & oldest version, closes bug #527550
+
+  26 Nov 2014; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Reassigning to new maintainer
+
+  13 Jun 2014; Sergey Popov <pinkbyte@gentoo.org> dynamips-0.2.10.ebuild,
+  dynamips-0.2.12.ebuild:
+  Set app-arch/unzip as build-time only dependency
+
+*dynamips-0.2.12 (13 Jun 2014)
+
+  13 Jun 2014; Sergey Popov <pinkbyte@gentoo.org> -dynamips-0.2.8-r1.ebuild,
+  +dynamips-0.2.12.ebuild, -files/dynamips-0.2.8-makefile.patch,
+  +files/dynamips-0.2.12-makefile.patch:
+  Version bump, wrt bug #511914, thanks to Aaron Bauman <aaron AT
+  flappyport.com>. Drop old version
+
+*dynamips-0.2.10 (20 Oct 2013)
+
+  20 Oct 2013; Sergey Popov <pinkbyte@gentoo.org> -dynamips-0.2.8_rc3.ebuild,
+  -dynamips-0.2.8.ebuild, -files/dynamips-0.2.8_rc3-makefile.patch,
+  +dynamips-0.2.10.ebuild, +files/dynamips-0.2.10-makefile.patch:
+  Version bump, drop old
+
+*dynamips-0.2.8-r1 (25 Aug 2013)
+
+  25 Aug 2013; Sergey Popov <pinkbyte@gentoo.org> +dynamips-0.2.8-r1.ebuild:
+  Revision bump: do not link to libelf statically, wrt bug #480940. Thanks to
+  James Cloos for discovering this issue
+
+  25 Aug 2013; Sergey Popov <pinkbyte@gentoo.org>
+  -dynamips-0.2.8_rc2-r1.ebuild, dynamips-0.2.8_rc3.ebuild,
+  dynamips-0.2.8.ebuild, -files/dynamips-0.2.8_rc2-makefile.patch:
+  Fix dependency on dev-libs/elfutils, wrt bug #480940. Drop old revision
+
+  15 Jul 2013; Sergey Popov <pinkbyte@gentoo.org>
+  +files/dynamips-0.2.8-makefile.patch:
+  Add missing makefile patch
+
+*dynamips-0.2.8 (15 Jul 2013)
+
+  15 Jul 2013; Sergey Popov <pinkbyte@gentoo.org> +dynamips-0.2.8.ebuild:
+  Version bump, wrt bug #476708. EAPI 5, enable verbose build, get rid of base
+  eclass, respect compiler
+
+  15 Jul 2013; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Add myself as primary maintainer, permission granted by Tony Vroon
+
+  05 May 2012; Peter Volkov <pva@gentoo.org> dynamips-0.2.8_rc3.ebuild:
+  Update HOMEPAGE.
+
+*dynamips-0.2.8_rc3 (17 May 2011)
+
+  17 May 2011; Tony Vroon <chainsaw@gentoo.org> +dynamips-0.2.8_rc3.ebuild,
+  +files/dynamips-0.2.8_rc3-makefile.patch:
+  Version bump to the GNS3 community release. All the hard patching work done
+  by Jan Bednar in bug #365049; ported to EAPI=3.
+
+  17 Oct 2010; <chainsaw@gentoo.org>
+  files/dynamips-0.2.8_rc2-makefile.patch:
+  Patch rediffed as per feedback by Samuli Suominen.
+
+*dynamips-0.2.8_rc2-r1 (17 Oct 2010)
+
+  17 Oct 2010; <chainsaw@gentoo.org> -dynamips-0.2.8_rc2.ebuild,
+  +dynamips-0.2.8_rc2-r1.ebuild, files/dynamips-0.2.8_rc2-makefile.patch:
+  Instill LDFLAGS respect into upstream Makefile. Closes bug #338169 by
+  Diego Elio "Flameeyes" Pettenò.
+
+  25 Aug 2009; Raúl Porcel <armin76@gentoo.org> dynamips-0.2.8_rc2.ebuild:
+  Add ~x86 wrt #281315
+
+*dynamips-0.2.8_rc2 (07 Aug 2009)
+
+  07 Aug 2009; <chainsaw@gentoo.org> +dynamips-0.2.8_rc2.ebuild,
+  +files/dynamips-0.2.8_rc2-makefile.patch, +metadata.xml:
+  Initial commit, ebuild sourced from Sunrise overlay but modified slightly.
+  With a warm thank you to Sergey Khalavchuck, Chad A. Simmons, Duncan
+  Lockwood, Mark Silinio and "haad". Closes bug #154491.

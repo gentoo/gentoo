@@ -1,0 +1,47 @@
+# ChangeLog for dev-util/rebar
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/rebar/ChangeLog,v 1.10 2015/04/04 07:51:26 djc Exp $
+
+*rebar-2.5.0 (04 Apr 2015)
+
+  04 Apr 2015; Dirkjan Ochtman <djc@gentoo.org> +rebar-2.5.0.ebuild:
+  Version bump rebar to 2.5.0
+
+  17 Jan 2015; Dirkjan Ochtman <djc@gentoo.org> -rebar-2.2.0.ebuild,
+  -rebar-2.3.0.ebuild:
+  Remove old versions
+
+*rebar-2.4.0 (17 Jan 2015)
+
+  17 Jan 2015; Dirkjan Ochtman <djc@gentoo.org> +rebar-2.4.0.ebuild:
+  Version bump rebar to 2.4.0
+
+*rebar-2.3.1 (23 Dec 2014)
+
+  23 Dec 2014; Dirkjan Ochtman <djc@gentoo.org> +rebar-2.3.1.ebuild:
+  Version bump rebar to 2.3.1
+
+  28 May 2014; Dirkjan Ochtman <djc@gentoo.org> -rebar-2.0.0.ebuild:
+  Remove old version
+
+*rebar-2.3.0 (28 May 2014)
+
+  28 May 2014; Dirkjan Ochtman <djc@gentoo.org> +rebar-2.3.0.ebuild:
+  Version bump rebar to 2.3.0
+
+*rebar-2.2.0 (30 Mar 2014)
+
+  30 Mar 2014; Dirkjan Ochtman <djc@gentoo.org> +rebar-2.2.0.ebuild:
+  Version bump rebar to 2.2.0.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  05 Oct 2012; Dirkjan Ochtman <djc@gentoo.org> metadata.xml:
+  Update proxy-maintainer information.
+
+*rebar-2.0.0 (05 Oct 2012)
+
+  05 Oct 2012; Dirkjan Ochtman <djc@gentoo.org> +rebar-2.0.0.ebuild,
+  +metadata.xml:
+  Initial rebar ebuild (bug 437104).

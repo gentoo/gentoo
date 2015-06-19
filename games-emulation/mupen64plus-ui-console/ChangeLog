@@ -1,0 +1,24 @@
+# ChangeLog for games-emulation/mupen64plus-ui-console
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/mupen64plus-ui-console/ChangeLog,v 1.4 2014/08/15 10:20:03 mgorny Exp $
+
+*mupen64plus-ui-console-2.0-r1 (15 Aug 2014)
+
+  15 Aug 2014; Michał Górny <mgorny@gentoo.org>
+  +mupen64plus-ui-console-2.0-r1.ebuild, metadata.xml:
+  Remove games team maintainership following the Council decision. Use standard
+  install layout.
+
+  19 Dec 2013; Michał Górny <mgorny@gentoo.org>
+  mupen64plus-ui-console-2.0.ebuild:
+  Update SRC_URI following the upstream move to github.
+
+  16 Dec 2013; Michał Górny <mgorny@gentoo.org>
+  mupen64plus-ui-console-2.0.ebuild:
+  Remove implicit CPU flags from the Makefiles. Support epatch_user.
+
+*mupen64plus-ui-console-2.0 (15 Dec 2013)
+
+  15 Dec 2013; Michał Górny <mgorny@gentoo.org> +metadata.xml,
+  +mupen64plus-ui-console-2.0.ebuild:
+  Introduce the console UI for mupen64plus-2.0.

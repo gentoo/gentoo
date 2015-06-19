@@ -1,0 +1,36 @@
+# ChangeLog for x11-misc/gbdfed
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/gbdfed/ChangeLog,v 1.6 2011/06/20 07:13:06 pva Exp $
+
+*gbdfed-1.6 (20 Jun 2011)
+
+  20 Jun 2011; Peter Volkov <pva@gentoo.org> -gbdfed-1.4.ebuild,
+  +gbdfed-1.6.ebuild:
+  Version bump. Fixed underlinking to X11, bug #369891 thank Diego Elio
+  Pettenò for report. Drop old.
+
+  11 Feb 2010; Ulrich Mueller <ulm@gentoo.org> gbdfed-1.4.ebuild,
+  gbdfed-1.5.ebuild:
+  Fix LICENSE, bug 298556.
+
+*gbdfed-1.5 (09 Oct 2009)
+
+  09 Oct 2009; Peter Volkov <pva@gentoo.org> +gbdfed-1.5.ebuild:
+  Version bump.
+
+  08 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> gbdfed-1.4.ebuild,
+  +files/gbdfed-1.4-glibc-2.10.patch:
+  Fix building with GLIBC 2.10+ wrt #274218, thanks to Alexander Meinke for
+  patch.
+
+  16 Dec 2008; Peter Volkov <pva@gentoo.org> gbdfed-1.4.ebuild:
+  Some GTK+ types/functions used in gbdfed were deprecated thus drop all
+  _DISABLE_DEPRECATED from build, fixes build issue, bug #248562, thank
+  Diego E. 'Flameeyes' Pettenò for report.
+
+*gbdfed-1.4 (23 May 2008)
+
+  23 May 2008; Ryan Hill <dirtyepic@gentoo.org> +metadata.xml,
+  +gbdfed-1.4.ebuild:
+  Initial import, bug #118771.
+

@@ -1,0 +1,210 @@
+# ChangeLog for x11-themes/gtk-theme-switch
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-theme-switch/ChangeLog,v 1.46 2012/05/05 04:10:06 jdhore Exp $
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> gtk-theme-switch-2.1.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org>
+  gtk-theme-switch-2.1.0.ebuild:
+  Stable for HPPA (bug #322951).
+
+  17 Jul 2010; Raúl Porcel <armin76@gentoo.org>
+  gtk-theme-switch-2.1.0.ebuild:
+  alpha/ia64/sparc stable wrt #322951
+
+  04 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  gtk-theme-switch-2.1.0.ebuild:
+  ppc64 stable wrt #322951
+
+  26 Jun 2010; <nixnut@gentoo.org> gtk-theme-switch-2.1.0.ebuild:
+  ppc stable #322951
+
+  16 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  gtk-theme-switch-2.1.0.ebuild:
+  amd64 stable wrt #322951
+
+  16 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gtk-theme-switch-2.1.0.ebuild:
+  x86 stable wrt bug #322951
+
+*gtk-theme-switch-2.1.0 (02 Apr 2010)
+
+  02 Apr 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +gtk-theme-switch-2.1.0.ebuild:
+  Version bump.
+
+  06 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  gtk-theme-switch-2.0.0_rc2-r2.ebuild:
+  Transfer Prefix keywords
+
+  20 Apr 2008; Samuli Suominen <drac@gentoo.org>
+  gtk-theme-switch-2.0.0_rc2-r2.ebuild:
+  Move pkgconfig from RDEPEND to DEPEND. Use toolchain-funcs for CC, respect
+  CFLAGS, use emake, use die messages and fix quoting.
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing seemant from metadata.xml as per #202469.
+
+  15 Oct 2007; Markus Rothe <corsair@gentoo.org>
+  gtk-theme-switch-1.0.1-r2.ebuild:
+  Stable on ppc64
+
+  16 Apr 2007; Markus Rothe <corsair@gentoo.org> ChangeLog:
+  Stable on ppc64
+
+  09 Oct 2006; Javier Villavicencio <the_paya@gentoo.org>
+  gtk-theme-switch-2.0.0_rc2-r2.ebuild:
+  Keyworded ~x86-fbsd.
+
+  09 Oct 2006; Seemant Kulleen <seemant@gentoo.org>
+  gtk-theme-switch-2.0.0_rc2-r2.ebuild:
+  add missing compile time dep on pkgconfig, closing bug #150619 by Patrick Lauer
+
+  01 Jun 2006; Seemant Kulleen <seemant@gentoo.org>
+  gtk-theme-switch-1.0.1-r2.ebuild:
+  fix the man page and stuff, so it all installs like switch2 anyway. should
+  fix bug #129687 by Pawel Kilian
+
+  19 Nov 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  gtk-theme-switch-1.0.1-r2.ebuild, gtk-theme-switch-2.0.0_rc2-r2.ebuild:
+  Stable on hppa.
+
+  16 Nov 2005; Markus Rothe <corsair@gentoo.org>
+  gtk-theme-switch-2.0.0_rc2-r2.ebuild:
+  Stable on ppc64
+
+  02 Nov 2005; Luis Medinas <metalgod@gentoo.org>
+  gtk-theme-switch-1.0.1-r2.ebuild:
+  Marked Stable on amd64. Bug #111100.
+
+  01 Nov 2005; Brent Baude <ranger@gentoo.org>
+  gtk-theme-switch-1.0.1-r2.ebuild, gtk-theme-switch-2.0.0_rc2-r2.ebuild:
+  Marking both gtk-theme-switch-2.0.0_rc2-r2 and gtk-theme-switch-1.0.1-r2
+  ppc64 stable for bug 111100
+
+  31 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org>
+  -gtk-theme-switch-1.0.1-r1.ebuild, -gtk-theme-switch-2.0.0_rc2-r1.ebuild:
+  Removed obsolete ebuilds. Fixed ChangeLog.
+
+  03 Oct 2005; Markus Rothe <corsair@gentoo.org>
+  gtk-theme-switch-2.0.0_rc2-r2.ebuild:
+  Stable on ppc64
+
+  17 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  02 Aug 2005; Markus Rothe <corsair@gentoo.org>
+  gtk-theme-switch-2.0.0_rc2-r2.ebuild:
+  Added ~ppc64
+
+  07 Jul 2005; John N. Laliberte <allanonjl@gentoo.org>
+  gtk-theme-switch-2.0.0_rc2-r2.ebuild:
+  fix for bug #91847, fix symlink
+
+  09 May 2005; Aron Griffis <agriffis@gentoo.org>
+  gtk-theme-switch-2.0.0_rc2-r2.ebuild:
+  stable on ia64
+
+*gtk-theme-switch-2.0.0_rc2-r2 (22 Mar 2005)
+*gtk-theme-switch-1.0.1-r2 (22 Mar 2005)
+
+  22 Mar 2005; Seemant Kulleen <seemant@gentoo.org>
+  -gtk-theme-switch-1.0.1.ebuild, -gtk-theme-switch-2.0.0_rc2.ebuild:
+  remove stale ebuilds
+
+  22 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  gtk-theme-switch-1.0.1-r1.ebuild:
+  Stable on alpha.
+
+  22 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  gtk-theme-switch-1.0.1-r1.ebuild:
+  Stable on sparc, thanks seemant
+
+  30 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gtk-theme-switch-1.0.1-r1.ebuild, gtk-theme-switch-2.0.0_rc2-r1.ebuild:
+  Masked gtk-theme-switch-2.0.0_rc2-r1.ebuild stable for ppc
+
+  30 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gtk-theme-switch-1.0.1-r1.ebuild:
+  Masked gtk-theme-switch-1.0.1-r1.ebuild stable for ppc
+
+  05 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  gtk-theme-switch-2.0.0_rc2-r1.ebuild:
+  Stable on sparc
+
+  09 Jul 2004; Bryan Østergaard <kloeri@gentoo.org>
+  gtk-theme-switch-2.0.0_rc2-r1.ebuild:
+  Stable on alpha.
+
+  07 Jul 2004; Travis Tilley <lv@gentoo.org>
+  gtk-theme-switch-2.0.0_rc2-r1.ebuild:
+  stable on amd64
+
+  19 Jun 2004; <pyrania@gentoo.org> gtk-theme-switch-1.0.1-r1.ebuild,
+  gtk-theme-switch-1.0.1.ebuild, gtk-theme-switch-2.0.0_rc2-r1.ebuild,
+  gtk-theme-switch-2.0.0_rc2.ebuild:
+  Added IUSE, stable on x86, removed  default.
+
+  04 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  gtk-theme-switch-1.0.1-r1.ebuild, gtk-theme-switch-1.0.1.ebuild:
+  remove unused function from ebuild
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org>
+  gtk-theme-switch-1.0.1-r1.ebuild, gtk-theme-switch-2.0.0_rc2-r1.ebuild,
+  gtk-theme-switch-2.0.0_rc2.ebuild:
+  Add inherit eutils
+
+  26 Mar 2004; foser <foser@gentoo.org> gtk-theme-switch-2*.ebuild :
+  Fix build with gtk+-2.4 (#45105)
+
+  13 Mar 2004; Stephen P. Becker <geoman@gentoo.org>
+  gtk-theme-switch-2.0.0_rc2-r1.ebuild:
+  Added ~mips keyword.
+
+  09 Mar 2004; Tom Gall <tgall@gentoo.org> 
+  gtk-theme-switch-1.0.1-r1.ebuild gtk-theme-switch-2.0.0_rc2-r1.ebuild:
+  removed ppc64, we're not ready yet!
+
+*gtk-theme-switch-2.0.0_rc2-r1 (02 Jan 2004)
+
+  02 Jan 2004; Seemant Kulleen <seemant@gentoo.org>
+  gtk-theme-switch-2.0.0_rc2-r1.ebuild:
+  similar patch for switch2, so it doesn't show gtk1 themes
+
+*gtk-theme-switch-1.0.1-r1 (02 Jan 2004)
+
+  02 Jan 2004; Seemant Kulleen <seemant@gentoo.org>
+  gtk-theme-switch-1.0.1-r1.ebuild:
+  added a patch to make switch1 not read any gtk2 themes. The patch is courtesy
+  of: Peter Willis <psyphreak@phreaker.net> (psypete)
+
+  16 Mar 2003; foser <foser@gentoo.org> gtk-theme-switch*.ebuild :
+  Fixed KEYWORDS, removed *
+
+*gtk-theme-switch-2.0.0_rc2 (9 Jun 2002)
+
+  26 Mar 2003; Graham Forest <vladimir@gentoo.org>
+  gtk-theme-switch-1.0.1.ebuild, gtk-theme-switch-2.0.0_rc2.ebuild:
+  Automated cleanup of LICENSE
+
+  9 Jun 2002; Seemant Kulleen <seemant@gentoo.org>
+  gtk-theme-switch-2.0.0_rc2.ebuild files/digest-gtk-theme-switch-2.0.0_rc2:
+
+  This is designed to work with GTK+-2 themes
+
+*gtk-theme-switch-1.0.1 (06 may 2002)
+
+  11 Jun 2002; J. Alberto Suárez L. <bass@gentoo.org> gtk-theme-switch-1.0.1.ebuild:
+
+  added doc
+
+  01 Jun 2002; Bruce A. Locke <blocke@shivan.org> gtk-theme-switch-1.0.1.ebuild:
+
+  Fixed GTK+ Dependency
+
+  06 may 2002 ; José Alberto Suárez López <bass@gentoo.org> ChangeLog :
+	First Relase 
+
+  31 May 2002; J. Alberto Suárez L. <bass@gentoo.org> gtk-theme-switch :
+  	Fisex problem with gtk.

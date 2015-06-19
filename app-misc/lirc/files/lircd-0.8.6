@@ -1,0 +1,41 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/lirc/files/lircd-0.8.6,v 1.2 2010/05/21 02:32:36 beandog Exp $
+
+PIDFILE=/var/run/lirc/${SVCNAME}.pid
+LIRCD_SYMLINKFILE=/dev/lircd
+LIRCD_SOCKET=/var/run/lirc/lircd
+
+depend() {
+	need localmount
+	use modules
+	provide lirc
+}
+
+start() {
+	local retval
+	ebegin "Starting lircd"
+	rm -f ${LIRCD_SOCKET} && ln -s ${LIRCD_SOCKET} ${LIRCD_SYMLINKFILE}
+	if [ $? -ne 0 ]; then
+		eend $? "Unable to create symbolic link ${LIRCD_SYMLINKFILE}"
+		return 1
+	fi
+
+	start-stop-daemon --start --quiet --pidfile "${PIDFILE}" --exec /usr/sbin/lircd -- \
+		-P "${PIDFILE}" ${LIRCD_OPTS}
+	retval=$?
+
+	if [ ${retval} -ne 0 ]; then
+		rm -f ${LIRCD_SOCKET}
+	fi
+
+	eend ${retval}
+}
+
+stop() {
+	ebegin "Stopping lircd"
+	rm -f ${LIRCD_SYMLINKFILE}
+	start-stop-daemon --stop --quiet --pidfile "${PIDFILE}" --exec /usr/sbin/lircd
+	eend $?
+}

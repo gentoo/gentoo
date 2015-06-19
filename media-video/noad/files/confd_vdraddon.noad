@@ -1,0 +1,72 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/noad/files/confd_vdraddon.noad,v 1.1 2012/07/04 21:33:43 hd_brummy Exp $
+
+#########
+##
+# 	run Noad
+# 	available Parameter
+# 	no | yes
+#
+VDR_USE_NOAD="yes"
+
+##	do online scan while recording
+#	you can choose between
+#		no   - disable online scan
+#		live - scan only live recordings online (named @...)
+#		all  - scan all recordings with online mode
+#	available Parameter
+#	no | live | all
+#
+NOAD_ONLINE="no"
+
+##	Use this nice-level when running noad / or no-niceness
+#	available Parameter
+#	no | 0 ... 19
+#NOAD_NICE_LEVEL="no"
+NOAD_NICE_LEVEL="18"
+
+##	use ac3 detection
+# 	available Parameter
+# 	yes | no
+#
+NOAD_AC3="yes"
+
+##	detect jumping logos
+# 	available Parameter
+# 	yes | no
+#
+NOAD_JUMP="yes"
+
+##	detect overlaps
+#	available Parameter
+#	yes | no
+#
+NOAD_OVERLAP="yes"
+
+##	send an OSD-Message to localhost:2001 ( >=vdr-1.7.15 localhost:6419 )
+#	for start and end 
+# 	available Parameter
+# 	yes | no
+#
+NOAD_MESSAGES="yes"
+
+##	only scan if sharemarks did not produce an ptsmarks.vdr file
+#	available Parameter
+#	yes | no
+NOAD_ONLY_SCAN_IF_NO_PTSMARKS="yes"
+
+##	only scan if there are no cut-marks already there (cutting while vdr still records)
+#	available Parameter
+#	yes | no
+NOAD_ONLY_SCAN_IF_NO_MARKS="yes"
+
+##	add your own parameter here,
+# 	yust run 'noad' in konsole for more parameter
+NOAD_PARAMETER=""
+
+
+
+
+
+

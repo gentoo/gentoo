@@ -1,0 +1,135 @@
+# ChangeLog for dev-php/propel-generator
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/propel-generator/ChangeLog,v 1.16 2014/08/10 21:05:09 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  propel-generator-1.6.4.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  17 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  -propel-generator-1.5.1.ebuild:
+  QA: Punt version with broken deps
+
+  15 May 2013; Ole Markus With <olemarkus@gentoo.org>
+  propel-generator-1.6.4.ebuild:
+  Fix dependency on php's xsl extension
+
+  03 Jul 2012; Matti Bickel <mabi@gentoo.org> propel-generator-1.5.1.ebuild,
+  propel-generator-1.6.4.ebuild:
+  depend.php function calls are superflous in this case
+
+*propel-generator-1.6.4 (31 Jan 2012)
+
+  31 Jan 2012; Ole Markus With <olemarkus@gentoo.org>
+  +propel-generator-1.6.4.ebuild:
+  Version bump and URL fix. Bug 394783
+
+  21 Jun 2010; Matti Bickel <mabi@gentoo.org> propel-generator-1.5.1.ebuild:
+  correct SRC_URI (bug #323817)
+
+  01 Jun 2010; <mabi@gentoo.org> -propel-generator-1.2.1.ebuild:
+  remove old
+
+*propel-generator-1.5.1 (29 May 2010)
+
+  29 May 2010; <mabi@gentoo.org> -propel-generator-1.3.0_beta2.ebuild,
+  -propel-generator-1.3.0_beta3.ebuild,
+  -propel-generator-1.3.0_beta4.ebuild, +propel-generator-1.5.1.ebuild:
+  version bump, depends on dev-php/pear-1.9.0-1 because of pear channel name
+  change
+
+*propel-generator-1.3.0_beta4 (26 Feb 2008)
+
+  26 Feb 2008; Raúl Porcel <armin76@gentoo.org>
+  +propel-generator-1.3.0_beta4.ebuild:
+  Version bump, import from the php overlay
+
+  19 Feb 2008; Jakub Moc <jakub@gentoo.org>
+  +propel-generator-1.3.0_beta4.ebuild:
+  Version bump
+
+*propel-generator-1.3.0_beta3 (24 Dec 2007)
+
+  24 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  +propel-generator-1.3.0_beta3.ebuild:
+  Version bump from the php-overlay
+
+  21 Dec 2007; Jakub Moc <jakub@gentoo.org>
+  +propel-generator-1.3.0_beta3.ebuild:
+  Version bump
+
+*propel-generator-1.3.0_beta2 (20 Mar 2007)
+
+  20 Mar 2007; Luca Longinotti <chtekk@gentoo.org>
+  +propel-generator-1.3.0_beta2.ebuild:
+  Version bump.
+
+*propel-generator-1.2.1 (18 Mar 2007)
+
+  18 Mar 2007; Luca Longinotti <chtekk@gentoo.org>
+  -files/ForeignKey.php.patch, metadata.xml, -propel-generator-1.2.0.ebuild,
+  +propel-generator-1.2.1.ebuild:
+  Cleanup, version bump.
+
+*propel-generator-1.2.0 (20 Sep 2006)
+
+  20 Sep 2006; Sebastian Bergmann <sebastian@gentoo.org>
+  -propel-generator-1.1.1.ebuild, -propel-generator-1.2.0_rc2.ebuild,
+  +propel-generator-1.2.0.ebuild:
+  Version bump.
+
+*propel-generator-1.2.0_rc2 (19 Sep 2006)
+
+  19 Sep 2006; Sebastian Bergmann <sebastian@gentoo.org>
+  +propel-generator-1.2.0_rc2.ebuild:
+  Version bump.
+
+  11 Jan 2006; Sebastian Bergmann <sebastian@gentoo.org>
+  +files/ForeignKey.php.patch, propel-generator-1.1.1.ebuild:
+  Fix bug 118674.
+
+  01 Jan 2006; Sebastian Bergmann <sebastian@gentoo.org> +metadata.xml,
+  +propel-generator-1.1.1.ebuild:
+  Moved from dev-php/propel-generator to dev-php5/propel-generator.
+
+  18 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  propel-generator-1.1.1.ebuild:
+  Fix bug 109601.
+
+  12 Oct 2005; Gustavo Felisberto <humpback@gentoo.org>;
+  propel-generator-1.1.1.ebuild:
+  Added ~amd64 to KEYWORDS
+
+*propel-generator-1.1.1 (18 Sep 2005)
+
+  18 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -propel-generator-1.1.0.ebuild, +propel-generator-1.1.1.ebuild:
+  Version bump.
+
+  10 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  propel-generator-1.1.0.ebuild:
+  Use new PEAR eclass.
+
+  10 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  propel-generator-1.1.0.ebuild:
+  Fix (R)DEPEND, KEYWORDS.
+
+  07 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  propel-generator-1.1.0.ebuild:
+  Changed RDEPEND from dev-php/php-5 to dev-lang/php-5.
+
+  18 Apr 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -propel-generator-1.0.0.ebuild:
+  Remove old version.
+
+*propel-generator-1.1.0 (12 Apr 2005)
+
+  12 Apr 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  +propel-generator-1.1.0.ebuild:
+  Version bump.
+
+*propel-generator-1.0.0 (15 Mar 2005)
+
+  15 Mar 2005; Sebastian Bergmann <sebastian@gentoo.org> +metadata.xml,
+  +propel-generator-1.0.0.ebuild:
+  New ebuild.

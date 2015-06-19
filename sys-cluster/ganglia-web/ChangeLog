@@ -1,0 +1,77 @@
+# ChangeLog for sys-cluster/ganglia-web
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ganglia-web/ChangeLog,v 1.17 2014/04/16 14:54:27 jsbronder Exp $
+
+  16 Apr 2014; Justin Bronder <jsbronder@gentoo.org> -ganglia-web-3.5.6.ebuild,
+  -ganglia-web-3.5.6-r1.ebuild:
+  cleanup old
+
+  13 Apr 2014; Agostino Sarubbo <ago@gentoo.org> ganglia-web-3.5.8-r1.ebuild:
+  Stable for ppc, wrt bug #462500
+
+  12 Apr 2014; Agostino Sarubbo <ago@gentoo.org> ganglia-web-3.5.8-r1.ebuild:
+  Stable for x86, wrt bug #462500
+
+  05 Apr 2014; Agostino Sarubbo <ago@gentoo.org> ganglia-web-3.5.8-r1.ebuild:
+  Stable for amd64, wrt bug #462500
+
+*ganglia-web-3.5.10-r1 (23 Dec 2013)
+*ganglia-web-3.5.8-r1 (23 Dec 2013)
+*ganglia-web-3.5.6-r1 (23 Dec 2013)
+
+  23 Dec 2013; Justin Bronder <jsbronder@gentoo.org>
+  +ganglia-web-3.5.6-r1.ebuild, -ganglia-web-3.5.8.ebuild,
+  +ganglia-web-3.5.8-r1.ebuild, -ganglia-web-3.5.10.ebuild,
+  +ganglia-web-3.5.10-r1.ebuild, +files/CVE-2013-6395-fix-xss.patch:
+  Add patch to fix CVE-2013-6395 (#492580).
+
+*ganglia-web-3.5.10 (11 Jul 2013)
+
+  11 Jul 2013; Justin Bronder <jsbronder@gentoo.org>
+  +ganglia-web-3.5.10.ebuild:
+  version bump
+
+  22 Jun 2013; Justin Bronder <jsbronder@gentoo.org> -ganglia-web-3.5.2.ebuild:
+  remove old
+
+*ganglia-web-3.5.8 (21 Jun 2013)
+
+  21 Jun 2013; Justin Bronder <jsbronder@gentoo.org> +ganglia-web-3.5.8.ebuild:
+  bump
+
+  24 Feb 2013; Agostino Sarubbo <ago@gentoo.org> ganglia-web-3.5.6.ebuild:
+  Stable for x86, wrt bug #456812
+
+  24 Feb 2013; Agostino Sarubbo <ago@gentoo.org> ganglia-web-3.5.6.ebuild:
+  Stable for amd64, wrt bug #456812
+
+  24 Feb 2013; Agostino Sarubbo <ago@gentoo.org> ganglia-web-3.5.6.ebuild:
+  Stable for ppc, wrt bug #456812
+
+*ganglia-web-3.5.6 (15 Feb 2013)
+
+  15 Feb 2013; Justin Bronder <jsbronder@gentoo.org> -ganglia-web-3.5.4.ebuild,
+  +ganglia-web-3.5.6.ebuild:
+  Version bump, contains fix for CVE-2013-0275. Drop old unstable.
+
+*ganglia-web-3.5.4 (09 Feb 2013)
+
+  09 Feb 2013; Justin Bronder <jsbronder@gentoo.org> +ganglia-web-3.5.4.ebuild:
+  Version bump (#453128)
+
+  22 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  ganglia-web-3.5.2.ebuild:
+  stable ppc, bug #428776
+
+  22 Sep 2012; Agostino Sarubbo <ago@gentoo.org> ganglia-web-3.5.2.ebuild:
+  Stable for amd64, wrt bug #428776
+
+  19 Sep 2012; Andreas Schuerch <nativemad@gentoo.org>
+  ganglia-web-3.5.2.ebuild:
+  x86 stable, see bug 428776
+
+*ganglia-web-3.5.2 (04 Sep 2012)
+
+  04 Sep 2012; Justin Bronder <jsbronder@gentoo.org> +ganglia-web-3.5.2.ebuild,
+  +metadata.xml:
+  Add sys-cluster/ganglia-web to match upstream development. Resolves #428776

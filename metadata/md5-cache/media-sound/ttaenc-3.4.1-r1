@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=sys-apps/sed
+DESCRIPTION=True Audio Compressor Software
+EAPI=4
+HOMEPAGE=http://tta.sourceforge.net
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/tta/ttaenc-3.4.1-src.tgz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=308d053e31b0fa4c65424ae81d0bcd13

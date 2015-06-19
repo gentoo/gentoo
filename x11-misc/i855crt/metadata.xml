@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>desktop-misc</herd>
+	<longdescription lang="en">
+i855crt is a tool to send the output of a i855-based graphic card to the
+external VGA, primarily used for presentations.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">i855crt</remote-id>
+	</upstream>
+</pkgmetadata>

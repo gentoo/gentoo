@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=dev-vcs/git
+DESCRIPTION=A fork of crhodes' fork of danb's fork of the CLX library, an X11 client for Common Lisp
+EAPI=5
+HOMEPAGE=https://github.com/sharplispers/clx http://www.cliki.net/CLX
+LICENSE=CLX
+PDEPEND=virtual/commonlisp
+RDEPEND=!dev-lisp/cl-clx
+RESTRICT=mirror
+SLOT=0
+_eclasses_=common-lisp-3	b69798cfa8d750d59a6fbb5f22a3fd67	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=786e4ff4bb90e6b44c21a915bdd4dd54

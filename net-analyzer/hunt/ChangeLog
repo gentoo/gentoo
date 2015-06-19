@@ -1,0 +1,50 @@
+# ChangeLog for net-analyzer/hunt
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/hunt/ChangeLog,v 1.13 2014/07/12 14:29:33 jer Exp $
+
+*hunt-1.5-r2 (12 Jul 2014)
+
+  12 Jul 2014; Jeroen Roovers <jer@gentoo.org> hunt-1.5-r1.ebuild,
+  +hunt-1.5-r2.ebuild, +files/hunt-1.5-exit.patch, +files/hunt-1.5-flags.patch,
+  +files/hunt-1.5-log2.patch:
+  EAPI bump. Fix missing include, move log2 function to its own namespace,
+  convert sed scripts to patch.
+
+  17 Jan 2012; Jeroen Roovers <jer@gentoo.org> -hunt-1.5.ebuild:
+  Old.
+
+  15 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> hunt-1.5-r1.ebuild:
+  x86 stable wrt bug #397129
+
+  03 Jan 2012; Jeroen Roovers <jer@gentoo.org> hunt-1.5-r1.ebuild:
+  Remove empty DEPEND.
+
+*hunt-1.5-r1 (09 Sep 2010)
+
+  09 Sep 2010; Jeroen Roovers <jer@gentoo.org> +hunt-1.5-r1.ebuild:
+  Respect LDFLAGS (bug #336094), CFLAGS, CC.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> hunt-1.5.ebuild:
+  Remove virtual/libc
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  19 Jul 2005; David Holm <dholm@gentoo.org> hunt-1.5.ebuild:
+  Added to ~ppc.
+
+  15 May 2005; Konstantin Arkhipov <voxus@gentoo.org> hunt-1.5.ebuild:
+  Added ~amd64 keyword wrt bug #92521. Header fixed.
+
+  08 Nov 2004; Eldad Zack <eldad@gentoo.org> hunt-1.5.ebuild:
+  Homepage update, thanks to Jason Cavett <jason.cavett@gmail.com>, Closes
+  #70426.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> hunt-1.5.ebuild,
+  +metadata.xml:
+  change virtual/glibc to virtual/libc, add metadata.xml, add IUSE
+
+*hunt-1.5 (02 Feb 2004)
+
+  02 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Diego Garcia #40123.

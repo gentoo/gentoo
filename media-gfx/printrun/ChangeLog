@@ -1,0 +1,25 @@
+# ChangeLog for media-gfx/printrun
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/printrun/ChangeLog,v 1.6 2014/08/13 20:15:11 amynka Exp $
+
+  13 Aug 2014; Amy Winston <amynka@gentoo.org> metadata.xml:
+  3dprint herd added
+
+  10 Aug 2014; Amy Winston <amynka@gentoo.org> printrun-20140730.ebuild:
+  No py in binaries patch added
+
+  10 Aug 2014; Amy Winston <amynka@gentoo.org>
+  +files/printrun-no-py-in-binaries.patch:
+  No py in binaries patch added
+
+  09 Aug 2014; Amy Winston <amynka@gentoo.org> printrun-20140730.ebuild:
+  Removing 2_6 python. Deprecated
+
+  09 Aug 2014; Amy Winston <amynka@gentoo.org> printrun-20140730.ebuild:
+  Missing dependency added.
+
+*printrun-20140730 (07 Aug 2014)
+
+  07 Aug 2014; Amy Winston <amynka@gentoo.org> +metadata.xml,
+  +printrun-20140730.ebuild:
+  Initial commit. Package for 3D printing

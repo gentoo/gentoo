@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=dev-lang/go-1.3
+DESCRIPTION=FUSE bindings for Go
+EAPI=5
+HOMEPAGE=https://github.com/hanwen/go-fuse
+KEYWORDS=~amd64
+LICENSE=BSD
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/hanwen/go-fuse/archive/ffed29ec8b88f61c1b8954134cc48ef03bb26ce1.tar.gz -> go-fuse-0_p20150422.tar.gz
+_md5_=829ad6ce2ad3b7e2ceff782295317c80

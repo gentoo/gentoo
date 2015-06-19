@@ -1,0 +1,32 @@
+# ChangeLog for dev-ml/ocaml-expect
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocaml-expect/ChangeLog,v 1.7 2013/12/11 19:29:07 aballier Exp $
+
+*ocaml-expect-0.0.4 (11 Dec 2013)
+
+  11 Dec 2013; Alexis Ballier <aballier@gentoo.org> +ocaml-expect-0.0.4.ebuild:
+  version bump
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  02 Mar 2013; Alexis Ballier <aballier@gentoo.org> ocaml-expect-0.0.3.ebuild:
+  eapi5, define subslot and use slotdep
+
+  02 Mar 2013; Alexis Ballier <aballier@gentoo.org> -ocaml-expect-0.0.2.ebuild:
+  remove old
+
+*ocaml-expect-0.0.3 (08 Oct 2012)
+
+  08 Oct 2012; Alexis Ballier <aballier@gentoo.org> +ocaml-expect-0.0.3.ebuild:
+  version bump
+
+  27 Mar 2012; Alexis Ballier <aballier@gentoo.org> ocaml-expect-0.0.2.ebuild:
+  convert to oasis.eclass
+
+*ocaml-expect-0.0.2 (22 Feb 2011)
+
+  22 Feb 2011; Alexis Ballier <aballier@gentoo.org> +ocaml-expect-0.0.2.ebuild,
+  +metadata.xml:
+  Initial import, ebuild by Vladimir Ivanov <v.ivanov@ymail.com>, bug #355763,
+  with improvements by me.

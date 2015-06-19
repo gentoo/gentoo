@@ -1,0 +1,69 @@
+# ChangeLog for app-emacs/paredit
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/paredit/ChangeLog,v 1.14 2014/03/25 20:33:46 ulm Exp $
+
+  25 Mar 2014; Ulrich Müller <ulm@gentoo.org> -paredit-22.ebuild:
+  Remove old.
+
+*paredit-23-r1 (18 Feb 2014)
+
+  18 Feb 2014; Ulrich Müller <ulm@gentoo.org> -paredit-23.ebuild,
+  +paredit-23-r1.ebuild:
+  Fix names of installed files, bug 501642.
+
+*paredit-23 (15 Feb 2014)
+
+  15 Feb 2014; Ulrich Müller <ulm@gentoo.org> -paredit-21.ebuild,
+  +paredit-23.ebuild:
+  Version bump. Remove old.
+
+*paredit-22 (09 Oct 2010)
+
+  09 Oct 2010; Ulrich Mueller <ulm@gentoo.org> +paredit-22.ebuild:
+  Version bump. LICENSE changed from BSD to GPL-3.
+
+  24 Nov 2009; Christian Faulhammer <fauli@gentoo.org> paredit-21.ebuild:
+  import changes from Prefix overlay
+
+  29 Jan 2009; Christian Faulhammer <fauli@gentoo.org>
+  -paredit-20-r1.ebuild:
+  clean up
+
+*paredit-21 (25 Jul 2008)
+
+  25 Jul 2008; Ulrich Mueller <ulm@gentoo.org>
+  -paredit-21_beta20080429.ebuild, +paredit-21.ebuild:
+  Version bump; remove beta.
+
+*paredit-21_beta20080429 (06 Jul 2008)
+
+  06 Jul 2008; Ulrich Mueller <ulm@gentoo.org> paredit-20-r1.ebuild,
+  +paredit-21_beta20080429.ebuild:
+  Add beta version, request by Stelian Ionescu. LICENSE changed to BSD.
+  Repackage distfiles since upstream tends to change them after release.
+
+*paredit-20-r1 (15 Sep 2007)
+
+  15 Sep 2007; Ulrich Mueller <ulm@gentoo.org> files/50paredit-gentoo.el,
+  -paredit-20.ebuild, +paredit-20-r1.ebuild:
+  Upstream changed both paredit-20.{el,html} without changing version;
+  recompute digest. Add paredit-mode also to slime-mode-hook.
+
+  28 May 2007; Ulrich Mueller <ulm@gentoo.org> files/digest-paredit-20,
+  Manifest:
+  Upstream changed paredit-20.html again; recompute digest. Fixes bug #180077.
+
+  26 Sep 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  files/digest-paredit-20, Manifest:
+  Digest changed upstream.
+
+  12 Jun 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  files/digest-paredit-20, Manifest:
+  Upstream changes paredit-20.html without changing version -- recompute digest.
+
+*paredit-20 (19 May 2006)
+
+  19 May 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/50paredit-gentoo.el, +metadata.xml, +paredit-20.ebuild:
+  Initial port.  Ebuild contributed by Matthew Kennedy <mkennedy@gentoo.org>.
+

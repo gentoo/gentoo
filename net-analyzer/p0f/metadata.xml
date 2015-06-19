@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>netmon</herd>
+<longdescription>p0f performs passive OS detection based on SYN packets.</longdescription>
+</pkgmetadata>

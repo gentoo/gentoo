@@ -1,0 +1,26 @@
+# ChangeLog for app-laptop/easy-slow-down-manager
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/easy-slow-down-manager/ChangeLog,v 1.5 2014/04/19 03:23:58 twitch153 Exp $
+
+  19 Apr 2014; Devan Franchini <twitch153@gentoo.org>
+  +files/easy-slow-down-manager-0.3-kernel-3.10-1.patch,
+  easy-slow-down-manager-0.3.ebuild:
+  Adds patch to compile on systems with kernel-3.10.1 and up
+
+  25 Sep 2013;  <christoph@gentoo.org> metadata.xml:
+  Remove myself from metadata since I do not own a Samsung laptop anymore
+
+  02 Jul 2013; Vicente Olivert Riera <vincent@gentoo.org>
+  easy-slow-down-manager-0.3.ebuild:
+  amd64 x86 stable
+
+  13 Jul 2011; Christoph Mende <angelos@gentoo.org>
+  easy-slow-down-manager-0.3.ebuild,
+  +files/easy-slow-down-manager-0.3-kv_dir.patch:
+  Use KV_DIR instead of /lib/modules/KV_FULL/build (bug #374835)
+
+*easy-slow-down-manager-0.3 (22 Jun 2011)
+
+  22 Jun 2011; Christoph Mende <angelos@gentoo.org>
+  +easy-slow-down-manager-0.3.ebuild, +metadata.xml:
+  Initial import

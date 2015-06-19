@@ -1,0 +1,29 @@
+# ChangeLog for dev-python/llvmlite
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/llvmlite/ChangeLog,v 1.6 2015/06/03 20:07:37 jlec Exp $
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+*llvmlite-0.2.2 (17 Mar 2015)
+
+  17 Mar 2015; Patrick Lauer <patrick@gentoo.org> +llvmlite-0.2.2.ebuild,
+  llvmlite-0.2.1.ebuild:
+  Bump, fix llvm dep
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> llvmlite-0.2.1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> llvmlite-0.2.1.ebuild:
+  amd64 stable, bug 540290
+
+*llvmlite-0.2.1 (20 Dec 2014)
+
+  20 Dec 2014; Patrick Lauer <patrick@gentoo.org> +llvmlite-0.2.1.ebuild:
+  Bump, using fixed tarball from pypi
+
+*llvmlite-0.2.0 (19 Dec 2014)
+
+  19 Dec 2014; Patrick Lauer <patrick@gentoo.org> +llvmlite-0.2.0.ebuild,
+  +metadata.xml:
+  Initial import, dep of numba, ebuild by me

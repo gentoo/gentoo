@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install setup unpack
+DEPEND=mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) >=sys-apps/sed-4
+DESCRIPTION=Simple yet powerful mailing list manager for qmail
+HOMEPAGE=http://www.ezmlm.org
+IUSE=mysql postgres
+KEYWORDS=alpha amd64 hppa ~mips ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql ) virtual/qmail
+SLOT=0
+SRC_URI=http://cr.yp.to/software/ezmlm-0.53.tar.gz http://www.ezmlm.org/archive/6.0.0/ezmlm-idx-6.0.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fixheadtails	c6fd1fc49c9dc11924f28a1406f251a0	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=51eb3e6a037598ad89b5c0ab80702e6f

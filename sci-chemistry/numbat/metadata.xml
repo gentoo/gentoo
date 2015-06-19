@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-chemistry</herd>
+  <maintainer>
+    <email>jlec@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+Numbat is a user friendly software that fits dX-tensor to a set of PCS 
+measurements and a structure from a PDB file. It has also been designed to 
+assist in the semi automatic process of PCS assignment. A detailed description 
+of the software can be found in this publication: 
+
+Christophe Schmitz, Mitchell J. Stanton-Cook, Xun-Cheng Su, Gottfried Otting, 
+and Thomas Huber (2008). Numbat: an interactive software tool for fitting 
+Δχ-tensors to molecular coordinates using pseudocontact shifts. Journal of 
+Biomolecular NMR. 41:179-189.
+</longdescription>
+</pkgmetadata>

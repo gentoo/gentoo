@@ -1,0 +1,47 @@
+# ChangeLog for app-backup/dirvish
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/dirvish/ChangeLog,v 1.5 2014/08/10 01:54:02 patrick Exp $
+
+  10 Aug 2014; Patrick Lauer <patrick@gentoo.org> dirvish-1.2.1.ebuild:
+  Fix description for more repoman happy
+
+  23 Dec 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #66351
+
+  12 Feb 2012; Raúl Porcel <armin76@gentoo.org> dirvish-1.2.1.ebuild:
+  Drop sparc keywords
+
+  28 Apr 2008; Lance Albertson <ramereth@gentoo.org> -dirvish-1.2.ebuild,
+  dirvish-1.2.1.ebuild:
+  * Move from app-admin -> app-backup per bug #145721
+  * Stable on amd64 for 1.2.1 per bug #214933
+  * Remove 1.2 per bug #214933
+  * QA fixes
+
+  28 Mar 2008; nixnut <nixnut@gentoo.org> dirvish-1.2.1.ebuild:
+  Stable on ppc wrt bug 214933
+
+  22 Oct 2006; Piotr Jaroszyński <peper@gentoo.org> dirvish-1.2.1.ebuild:
+  Add ~amd64 keyword. Bug #129872.
+
+  03 Sep 2006; Jason Wever <weeve@gentoo.org> dirvish-1.2.1.ebuild:
+  Added ~sparc keyword wrt bug #145721.
+
+  20 Nov 2005; Lance Albertson <ramereth@gentoo.org> dirvish-1.2.ebuild,
+  dirvish-1.2.1.ebuild:
+  * Stable on x86
+
+  22 Jul 2005; David Holm <dholm@gentoo.org> dirvish-1.2.1.ebuild:
+  Added to ~ppc.
+
+*dirvish-1.2.1 (28 Apr 2005)
+
+  28 Apr 2005; Daniel Black <dragonheart@gentoo.org> metadata.xml,
+  dirvish-1.2.ebuild, +dirvish-1.2.1.ebuild:
+  revision bump. Corrected license to OSL-2.0. Added herd app-backup to metadata
+
+*dirvish-1.2 (08 Apr 2005)
+
+  08 Apr 2005; Lance Albertson <ramereth@gentoo.org>
+  +files/master.conf.example, +metadata.xml, +dirvish-1.2.ebuild:
+  New ebuild, thanks to jochen <jochen.eisinger@gmx.de> #59954

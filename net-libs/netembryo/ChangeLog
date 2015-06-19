@@ -1,0 +1,14 @@
+# ChangeLog for net-libs/netembryo
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/netembryo/ChangeLog,v 1.2 2012/05/05 02:54:26 jdhore Exp $
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> netembryo-0.1.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*netembryo-0.1.1 (27 Oct 2009)
+
+  27 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +netembryo-0.1.1.ebuild:
+  Initial commit wrt #274807, thanks to Michelangelo Scopelliti for
+  reporting.
+

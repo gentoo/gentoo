@@ -1,0 +1,24 @@
+--- iputils/rarpd.c.mps	2004-06-10 15:27:01.000000000 +0200
++++ iputils/rarpd.c	2004-06-10 15:26:29.000000000 +0200
+@@ -42,7 +42,9 @@ int listen_arp;
+ char *ifname;
+ char *tftp_dir = "/etc/tftpboot";
+ 
++#ifndef __UCLIBC__
+ extern int ether_ntohost(char *name, unsigned char *ea);
++#endif
+ void usage(void) __attribute__((noreturn));
+ 
+ struct iflink
+@@ -305,7 +307,11 @@ struct rarp_map *rarp_lookup(int ifindex
+ 				6,
+ 			};
+ 
++#ifndef __UCLIBC__
+ 			if (ether_ntohost(ename, lladdr) != 0 ||
++#else
++			if (
++#endif
+ 			    (hp = gethostbyname(ename)) == NULL) {
+ 				if (verbose)
+ 					syslog(LOG_INFO, "not found in /etc/ethers");

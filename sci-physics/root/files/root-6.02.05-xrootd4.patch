@@ -1,0 +1,11 @@
+https://sft.its.cern.ch/jira/browse/ROOT-6998
+--- root-6.02.05/net/netxng/src/TNetXNGFile.cxx.orig	2015-02-09 11:59:47.000000000 +0300
++++ root-6.02.05/net/netxng/src/TNetXNGFile.cxx	2015-04-05 11:32:31.893127758 +0300
+@@ -28,6 +28,7 @@
+ #include <XrdCl/XrdClFile.hh>
+ #include <XrdCl/XrdClXRootDResponses.hh>
+ #include <XrdCl/XrdClDefaultEnv.hh>
++#include <XrdVersion.hh>
+ #include <iostream>
+ 
+ //------------------------------------------------------------------------------

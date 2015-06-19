@@ -1,0 +1,22 @@
+http://bugs.gentoo.org/319661
+
+LDFLAGS is only used with the shared lib, so dont link against the static zlib
+
+--- a/configure
++++ b/configure
+@@ -19,7 +19,6 @@
+ fi
+ 
+ STATICLIB=libz.a
+-LDFLAGS="${LDFLAGS} -L. ${STATICLIB}"
+ VER=`sed -n -e '/VERSION "/s/.*"\(.*\)".*/\1/p' < zlib.h`
+ VER3=`sed -n -e '/VERSION "/s/.*"\([0-9]*\\.[0-9]*\\.[0-9]*\).*/\1/p' < zlib.h`
+ VER2=`sed -n -e '/VERSION "/s/.*"\([0-9]*\\.[0-9]*\)\\..*/\1/p' < zlib.h`
+@@ -174,7 +173,6 @@
+              LDSHARED=${LDSHARED-"cc -shared -Wl,-soname,libz.so.1"} ;;
+   OSF1\ V4*) SFLAGS=${CFLAGS-"-O -std1"}
+              CFLAGS=${CFLAGS-"-O -std1"}
+-             LDFLAGS="${LDFLAGS} -Wl,-rpath,."
+              LDSHARED=${LDSHARED-"cc -shared  -Wl,-soname,libz.so -Wl,-msym -Wl,-rpath,$(libdir) -Wl,-set_version,${VER}:1.0"} ;;
+   OSF1*)     SFLAGS=${CFLAGS-"-O -std1"}
+              CFLAGS=${CFLAGS-"-O -std1"}

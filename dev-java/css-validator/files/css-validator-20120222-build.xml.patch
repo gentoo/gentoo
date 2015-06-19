@@ -1,0 +1,37 @@
+Index: build.xml
+===================================================================
+RCS file: /sources/public/2002/css-validator/build.xml,v
+retrieving revision 1.23
+diff -u -r1.23 build.xml
+--- build.xml	1 Nov 2011 07:51:20 -0000	1.23
++++ build.xml	22 Feb 2012 23:57:47 -0000
+@@ -75,10 +75,10 @@
+     <copy file="tmp/htmlparser-1.3.1/htmlparser-1.3.1.jar" tofile="lib/htmlparser-1.3.1.jar"/>
+   </target>
+ 
+-	<target name="build" description="Builds the validator" depends="prepare">
++	<target name="build" description="Builds the validator">
+ 		<mkdir dir="./build"/>
+ 		<javac classpathref="build.class.path" destdir="./build" encoding="UTF-8"
+-           debug="yes" includes="org/w3c/**" srcdir="." source="1.6" target="1.6"/>
++           includes="org/w3c/**" srcdir="."/>
+ 		<copy todir="./build">
+       <fileset dir="./">
+         <include name="org/**"/>
+@@ -91,7 +91,7 @@
+ 	<target name="jigsaw" description="Builds the validator for Jigsaw" depends="prepare">
+ 		<mkdir dir="./build"/>
+ 		<javac classpathref="build.class.path" destdir="." encoding="UTF-8"
+-           debug="yes" source="1.6" target="1.6">
++           >
+ 			<src path="./org/w3c"/>
+ 		</javac>
+ 	</target>
+@@ -99,6 +99,7 @@
+ 	<target name="javadoc" description="Generates API docs">
+ 		<mkdir dir="./javadoc"/>
+ 		<javadoc 
++			classpathref="build.class.path"
+ 			packagenames="org.w3c.*"
+ 			sourcepath="./"
+ 			destdir="./javadoc"

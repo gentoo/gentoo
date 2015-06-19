@@ -1,0 +1,334 @@
+# ChangeLog for dev-perl/Class-Autouse
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-Autouse/ChangeLog,v 1.82 2014/08/22 20:51:14 axs Exp $
+
+*Class-Autouse-2.10.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Class-Autouse-2.10.0-r1.ebuild, -Class-Autouse-2.10.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  08 Jan 2013; Torsten Veller <tove@gentoo.org> -Class-Autouse-2.0.0.ebuild:
+  Cleanup
+
+  30 Sep 2012; Raúl Porcel <armin76@gentoo.org> Class-Autouse-2.0.0.ebuild,
+  Class-Autouse-2.10.0.ebuild:
+  Drop alpha keywords
+
+  09 Aug 2012; Brent Baude <ranger@gentoo.org> Class-Autouse-2.10.0.ebuild:
+  Marking Class-Autouse-2.10.0 ppc for bug 418795
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> Class-Autouse-2.10.0.ebuild:
+  Stable for amd64, wrt bug #418795
+
+  02 Aug 2012; Jeroen Roovers <jer@gentoo.org> Class-Autouse-2.10.0.ebuild:
+  Stable for HPPA (bug #418795).
+
+  31 Jul 2012; Johannes Huber <johu@gentoo.org> Class-Autouse-2.10.0.ebuild:
+  Stable for x86, wrt bug #418795
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -Class-Autouse-1.29.ebuild:
+  Cleanup
+
+  19 Mar 2012; Raúl Porcel <armin76@gentoo.org> Class-Autouse-1.29.ebuild,
+  Class-Autouse-2.0.0.ebuild, Class-Autouse-2.10.0.ebuild:
+  Drop ia64/sparc keywords
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Class-Autouse-2.0.0.ebuild:
+  x86 stable wrt bug #400051
+
+  27 Feb 2012; Brent Baude <ranger@gentoo.org> Class-Autouse-2.0.0.ebuild:
+  Marking Class-Autouse-2.0.0 ppc for bug 400051
+
+  27 Feb 2012; Jeroen Roovers <jer@gentoo.org> Class-Autouse-2.0.0.ebuild:
+  Stable for HPPA (bug #400051).
+
+  25 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  Class-Autouse-2.0.0.ebuild:
+  Stable on alpha, bug #400051
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Class-Autouse-2.0.0.ebuild:
+  Stable for amd64, wrt bug #400051
+
+*Class-Autouse-2.10.0 (04 Feb 2012)
+
+  04 Feb 2012; Torsten Veller <tove@gentoo.org> +Class-Autouse-2.10.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Class-Autouse-2.ebuild:
+  Cleanup
+
+*Class-Autouse-2.0.0 (01 Sep 2011)
+
+  01 Sep 2011; Torsten Veller <tove@gentoo.org> +Class-Autouse-2.0.0.ebuild:
+  Change version scheme
+
+*Class-Autouse-2 (18 Jan 2011)
+
+  18 Jan 2011; Torsten Veller <tove@gentoo.org> +Class-Autouse-2.ebuild:
+  Version bump
+
+  09 Jan 2010; Fabian Groffen <grobian@gentoo.org>
+  Class-Autouse-1.29.ebuild:
+  Transfer Prefix keywords
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org> -Class-Autouse-1.27.ebuild:
+  Cleanup
+
+  22 Jul 2009; Jeremy Olexa <darkside@gentoo.org> Class-Autouse-1.29.ebuild:
+  amd64 stable, bug 278093
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> Class-Autouse-1.29.ebuild:
+  ppc stable #278093
+
+  02 Jul 2009; Jeroen Roovers <jer@gentoo.org> Class-Autouse-1.29.ebuild:
+  Stable for HPPA too.
+
+  15 Jul 2008; Raúl Porcel <armin76@gentoo.org> Class-Autouse-1.29.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+*Class-Autouse-1.29 (29 Apr 2008)
+
+  29 Apr 2008; Yuval Yaari <yuval@gentoo.org> +Class-Autouse-1.29.ebuild:
+  Version bump
+
+  05 May 2007; Christian Hartmann <ian@gentoo.org>
+  -Class-Autouse-1.03.ebuild, -Class-Autouse-1.23.ebuild,
+  -Class-Autouse-1.24.ebuild, -Class-Autouse-1.26.ebuild:
+  Cleanup
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> Class-Autouse-1.27.ebuild:
+  Stable on x86, bug #169152.
+
+  26 Feb 2007; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.27.ebuild:
+  Keywording ~mips, tested on swarm
+
+  23 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Class-Autouse-1.27.ebuild:
+  Stable on hppa
+
+  21 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Class-Autouse-1.27.ebuild:
+  ppc stable
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Class-Autouse-1.27.ebuild:
+  Stable on Alpha.
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Class-Autouse-1.27.ebuild:
+  Stable on ia64.
+
+  08 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.03.ebuild, -Class-Autouse-1.12.ebuild,
+  -Class-Autouse-1.17.ebuild, -Class-Autouse-1.21.ebuild,
+  Class-Autouse-1.23.ebuild, Class-Autouse-1.24.ebuild,
+  Class-Autouse-1.26.ebuild, Class-Autouse-1.27.ebuild:
+  Marking amd64, sparc stable; cleaning up
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Class-Autouse-1.26.ebuild:
+  ppc stable
+
+*Class-Autouse-1.27 (04 Sep 2006)
+
+  04 Sep 2006; Yuval Yaari <yuval@gentoo.org> +Class-Autouse-1.27.ebuild:
+  Version bump
+
+  04 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.03.ebuild, Class-Autouse-1.12.ebuild,
+  Class-Autouse-1.17.ebuild, Class-Autouse-1.21.ebuild,
+  Class-Autouse-1.23.ebuild, Class-Autouse-1.24.ebuild,
+  Class-Autouse-1.26.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  14 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.12.ebuild:
+  Forcing mb version
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> Class-Autouse-1.26.ebuild:
+  Mark 1.26 stable on ia64
+
+  03 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  Class-Autouse-1.03.ebuild, Class-Autouse-1.12.ebuild,
+  Class-Autouse-1.17.ebuild, Class-Autouse-1.21.ebuild,
+  Class-Autouse-1.23.ebuild, Class-Autouse-1.24.ebuild,
+  Class-Autouse-1.26.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+  02 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.26.ebuild:
+  Marking stable amd64
+
+  29 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Class-Autouse-1.26.ebuild:
+  Stable on hppa
+
+  11 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.26.ebuild:
+  Marking stable sparc
+
+  27 May 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Class-Autouse-1.24.ebuild:
+  Stable on alpha.
+
+*Class-Autouse-1.26 (24 Apr 2006)
+
+  24 Apr 2006; <mcummings@gentoo.org> +Class-Autouse-1.26.ebuild:
+  Version bump
+
+  29 Mar 2006; Aron Griffis <agriffis@gentoo.org> Class-Autouse-1.24.ebuild:
+  Mark 1.24 stable on ia64
+
+  27 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Class-Autouse-1.24.ebuild:
+  Stable on hppa
+
+  23 Mar 2006; Michael Hanselmann <hansmi@gentoo.org>
+  Class-Autouse-1.24.ebuild:
+  Stable on ppc.
+
+  22 Mar 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.24.ebuild:
+  Marking stable sparc and x86
+
+  13 Feb 2006; <mcumming@gentoo.org> Class-Autouse-1.03.ebuild,
+  Class-Autouse-1.12.ebuild, Class-Autouse-1.17.ebuild,
+  Class-Autouse-1.21.ebuild, Class-Autouse-1.23.ebuild,
+  Class-Autouse-1.24.ebuild:
+  Virtual for perl-core dep
+
+  06 Feb 2006; Simon Stelling <blubb@gentoo.org> Class-Autouse-1.21.ebuild:
+  stable on amd64
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> Class-Autouse-1.21.ebuild:
+  Mark 1.21 stable on ia64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> Class-Autouse-1.21.ebuild:
+  Mark 1.21 stable on alpha
+
+*Class-Autouse-1.24 (22 Jan 2006)
+
+  22 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  +Class-Autouse-1.24.ebuild:
+  Version bump
+
+  18 Jan 2006; Guy Martin <gmsoft@gentoo.org> Class-Autouse-1.21.ebuild,
+  Class-Autouse-1.23.ebuild:
+  Stable on hppa.
+
+  15 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  Class-Autouse-1.21.ebuild:
+  Stable on ppc.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.21.ebuild:
+  Marking stable sparc x86
+
+*Class-Autouse-1.23 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  +Class-Autouse-1.23.ebuild:
+  Version bump upstream
+
+  30 Dec 2005; <mcumming@gentoo.org> Class-Autouse-1.12.ebuild,
+  Class-Autouse-1.17.ebuild, Class-Autouse-1.21.ebuild:
+  Scalar-List-Utils migrated to perl-core
+
+*Class-Autouse-1.21 (12 Nov 2005)
+
+  12 Nov 2005; Michael Cummings <mcummings@gentoo.org>
+  +Class-Autouse-1.21.ebuild:
+  Version bump upstream
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org> Class-Autouse-1.17.ebuild:
+  Mark 1.17 stable on ia64
+
+  08 Sep 2005; Aron Griffis <agriffis@gentoo.org> Class-Autouse-1.17.ebuild:
+  Mark 1.17 stable on alpha
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> Class-Autouse-1.17.ebuild:
+  add ~ia64
+
+  18 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Class-Autouse-1.17.ebuild:
+  Stable on ppc.
+
+  15 Aug 2005; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.17.ebuild:
+  Marking stable x86 and sparc
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.17.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.12.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.03.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+*Class-Autouse-1.17 (24 Apr 2005)
+
+  24 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Class-Autouse-0.7.ebuild, +Class-Autouse-1.17.ebuild:
+  version bump, cleaning
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Class-Autouse-1.12.ebuild:
+  Stable on ppc.
+
+  16 Mar 2005; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.12.ebuild:
+  Removed old style directive
+
+  22 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Class-Autouse-1.12.ebuild:
+  Added ExtUtils-AutoInstall dep wrt #77610, sparc stable
+
+  22 Jan 2005; Bryan Østergaard <kloeri@gentoo.org>
+  Class-Autouse-1.12.ebuild:
+  Stable on alpha.
+
+  21 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.12.ebuild:
+  Unmasking for x86
+
+  12 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Class-Autouse-0.7.ebuild:
+  Stable on sparc
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*Class-Autouse-1.12 (06 Dec 2004)
+
+  06 Dec 2004; Michael Cummings <mcummings@gentoo.org>
+  +Class-Autouse-1.12.ebuild:
+  New version on CPAN
+
+  24 May 2004; Bryan Østergaard <kloeri@gentoo.org> Class-Autouse-1.03.ebuild:
+  Stable on alpha.
+
+  16 Apr 2004; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.03.ebuild:
+  Syntax fix for newdepend, bug 29064
+
+*Class-Autouse-1.03 (22 Dec 2003)
+
+  22 Dec 2003; <rac@gentoo.org> Class-Autouse-1.03.ebuild:
+  Version bump, add testing
+
+*Class-Autouse-0.7 (02 Jun 2003)
+
+  02 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-0.7.ebuild:
+  Fills bug 21791

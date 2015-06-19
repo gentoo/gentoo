@@ -1,0 +1,224 @@
+# ChangeLog for net-irc/loqui
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/loqui/ChangeLog,v 1.52 2014/08/10 20:53:28 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> loqui-0.5.4.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  22 Jul 2014; Pacho Ramos <pacho@gentoo.org> -loqui-0.4.4.ebuild,
+  -loqui-0.5.3.ebuild:
+  Drop old (#513912)
+
+  10 May 2014; Agostino Sarubbo <ago@gentoo.org> loqui-0.5.4.ebuild:
+  Stable for ppc, wrt bug #502882
+
+  04 May 2014; Agostino Sarubbo <ago@gentoo.org> loqui-0.5.4.ebuild:
+  Stable for x86, wrt bug #502882
+
+  30 Apr 2014; Chema Alonso <nimiux@gentoo.org> loqui-0.5.4.ebuild:
+  Stable for amd64 wrt bug #502882
+
+*loqui-0.5.4 (14 Jan 2014)
+
+  14 Jan 2014; Patrick Lauer <patrick@gentoo.org> +loqui-0.5.4.ebuild:
+  Bump
+
+  11 Sep 2012; Raúl Porcel <armin76@gentoo.org> loqui-0.4.4.ebuild,
+  loqui-0.5.3.ebuild:
+  Drop sparc keywords
+
+  26 Aug 2012; Michael Weber <xmw@gentoo.org> loqui-0.5.3.ebuild:
+  ppc stable (bug 428060).
+
+  10 Aug 2012; Johannes Huber <johu@gentoo.org> loqui-0.5.3.ebuild:
+  Stable for x86, wrt bug #428060
+
+  03 Aug 2012; Markos Chandras <hwoarang@gentoo.org> loqui-0.5.3.ebuild:
+  Stable on amd64 wrt bug #428060
+
+*loqui-0.5.3 (24 Jul 2012)
+
+  24 Jul 2012; Pacho Ramos <pacho@gentoo.org> +loqui-0.5.3.ebuild:
+  Version bump, this also solves glib-2.32 compilation.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> loqui-0.4.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org> loqui-0.4.4.ebuild:
+  Fix gtk+ slot deps
+
+  25 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> loqui-0.4.4.ebuild:
+  amd64 stable and clean up.
+
+  10 Oct 2006; Sven Wegener <swegener@gentoo.org> -loqui-0.4.1.ebuild:
+  Cleanup.
+
+  13 Aug 2006; Jason Wever <weeve@gentoo.org> loqui-0.4.4.ebuild:
+  Stable on SPARC.
+
+  05 Aug 2006; Michael Hanselmann <hansmi@gentoo.org> loqui-0.4.4.ebuild:
+  Stable on ppc.
+
+  02 Aug 2006; Sven Wegener <swegener@gentoo.org> loqui-0.4.4.ebuild:
+  Install .desktop file into the right place.
+
+  01 Aug 2006; Andrej Kacian <ticho@gentoo.org> loqui-0.4.4.ebuild:
+  Stable on x86, bug #142464.
+
+  04 Jul 2006; Daniel Gryniewicz <dang@gentoo.org> loqui-0.4.4.ebuild:
+  Marked ~amd64
+
+  18 Mar 2006; Sven Wegener <swegener@gentoo.org> -loqui-0.4.2.ebuild:
+  Remove unneeded ebuild.
+
+*loqui-0.4.4 (29 Oct 2005)
+
+  29 Oct 2005; Sven Wegener <swegener@gentoo.org> +loqui-0.4.4.ebuild:
+  Version bump, bug #109668
+
+  25 Sep 2005; Sven Wegener <swegener@gentoo.org> -loqui-0.3.9.ebuild:
+  Removed old ebuild.
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> loqui-0.4.1.ebuild:
+  Stable on ppc.
+
+  01 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> loqui-0.4.1.ebuild:
+  Stable on sparc
+
+*loqui-0.4.2 (31 Aug 2005)
+
+  31 Aug 2005; Sven Wegener <swegener@gentoo.org> -loqui-0.4.0.ebuild,
+  loqui-0.4.1.ebuild, +loqui-0.4.2.ebuild:
+  Version bump. Marked 0.4.1 stable on x86. Added missing dev-util/pkgconfig
+  dependency.
+
+*loqui-0.4.1 (21 Jul 2005)
+
+  21 Jul 2005; Sven Wegener <swegener@gentoo.org> +loqui-0.4.1.ebuild:
+  Version bump, bug #99812.
+
+*loqui-0.4.0 (07 Jul 2005)
+
+  07 Jul 2005; Sven Wegener <swegener@gentoo.org> -loqui-0.4.0_pre2.ebuild,
+  +loqui-0.4.0.ebuild:
+  Version bump, bug #98213.
+
+  09 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> loqui-0.3.9.ebuild:
+  Stable on sparc
+
+*loqui-0.4.0_pre2 (07 Jun 2005)
+
+  07 Jun 2005; Sven Wegener <swegener@gentoo.org> -loqui-0.4.0_pre1.ebuild,
+  +loqui-0.4.0_pre2.ebuild:
+  Version bump.
+
+*loqui-0.4.0_pre1 (19 May 2005)
+
+  19 May 2005; Sven Wegener <swegener@gentoo.org> loqui-0.3.9.ebuild,
+  +loqui-0.4.0_pre1.ebuild:
+  Version bump, bug #93165.
+
+  30 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> loqui-0.3.9.ebuild:
+  Keyworded ~sparc
+
+  22 Apr 2005; Sven Wegener <swegener@gentoo.org> -loqui-0.3.6.ebuild:
+  Removed old ebuild.
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> loqui-0.3.9.ebuild:
+  Stable on ppc.
+
+  21 Jan 2005; Sven Wegener <swegener@gentoo.org> -loqui-0.3.8.ebuild,
+  loqui-0.3.9.ebuild:
+  Marked stable on x86. Removed old ebuild.
+
+*loqui-0.3.9 (13 Nov 2004)
+
+  13 Nov 2004; Sven Wegener <swegener@gentoo.org> -loqui-0.2.5.ebuild,
+  -loqui-0.3.7.ebuild, loqui-0.3.8.ebuild, +loqui-0.3.9.ebuild:
+  Version bump. Marked 0.3.8 stable on x86. Removed old ebuilds.
+
+*loqui-0.3.8 (12 Sep 2004)
+
+  12 Sep 2004; Sven Wegener <swegener@gentoo.org> +loqui-0.3.8.ebuild:
+  Version bump.
+
+*loqui-0.3.7 (17 Jul 2004)
+
+  17 Jul 2004; Sven Wegener <swegener@gentoo.org> loqui-0.3.6.ebuild,
+  +loqui-0.3.7.ebuild:
+  Version bump. Removed old ebuilds. Marked 0.3.6 stable in x86.
+
+  10 Jul 2004; Sven Wegener <swegener@gentoo.org> loqui-0.2.4.ebuild,
+  loqui-0.2.5.ebuild, loqui-0.3.3.ebuild:
+  Tidied the ebuilds. Marked 0.3.3 stable on x86.
+
+*loqui-0.3.6 (17 Jun 2004)
+
+  17 Jun 2004; Sven Wegener <swegener@gentoo.org> -loqui-0.2.2.ebuild,
+  -loqui-0.2.3.ebuild, loqui-0.3.3.ebuild, +loqui-0.3.6.ebuild:
+  Version bump, closes bug #53776. Removed the dependency on dev-perl/XML-Parser
+  for loqui-0.3.* as they build fine without it. Removed some older ebuilds.
+
+*loqui-0.3.3 (09 Jun 2004)
+
+  09 Jun 2004; Chuck Short <zul@gentoo.org> loqui-0.3.3.ebuild:
+  Version bump, closes #50912.
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> loqui-0.2.2.ebuild,
+  loqui-0.2.3.ebuild, loqui-0.2.4.ebuild, loqui-0.2.5.ebuild:
+  Masked loqui-0.2.5.ebuild stable for ppc
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> loqui-0.2.2.ebuild,
+  loqui-0.2.3.ebuild, loqui-0.2.4.ebuild:
+  Masked loqui-0.2.4.ebuild stable for ppc
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> loqui-0.2.2.ebuild,
+  loqui-0.2.3.ebuild:
+  Masked loqui-0.2.3.ebuild stable for ppc
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> loqui-0.2.2.ebuild:
+  Masked loqui-0.2.2.ebuild stable for ppc
+
+  23 Mar 2004; Chuck Short <zul@gentoo.org> loqui-0.1.18.ebuild, loqui-0.1.19.ebuild:
+  Removed old versions.
+
+*loqui-0.2.5 (11 Mar 2004)
+
+  11 Mar 2004; Chuck Short <zul@gentoo.org> loqui-0.2.5.ebuild:
+  Version bump, closes #44031.
+
+*loqui-0.2.4 (05 Mar 2004)
+
+  05 Mar 2004; Chuck Short <zul@gentoo.org> loqui-0.2.4.ebuild:
+  Version bump, closes #43488.
+
+  05 Mar 2004; Chuck Short <zul@gentoo.org> loqui-0.2.3.ebuild:
+  Marked stable for x86.
+
+*loqui-0.2.3 (20 Feb 2004)
+
+  20 Feb 2004; Chuck Short <zul@gentoo.org> loqui-0.2.3.ebuild:
+  Version bump, closes #42158.
+
+*loqui-0.2.2 (05 Feb 2004)
+
+  05 Feb 2004; Chuck Short <zul@gentoo.org> loqui-0.1.18.ebuild,
+  loqui-0.1.19.ebuild, loqui-0.2.2.ebuild:
+  Header fixes.
+
+*loqui-0.2.2 (05 Feb 2004)
+
+  05 Feb 2004; Chuck Short <zul@gentoo.org> loqui-0.2.2.ebuild:
+  Version bump, added depend on dev-perl/XML-Parser.
+  Closes #40290.
+
+*loqui-0.1.19 (30 Sep 2003)
+
+  30 Sep 2003; Chuck Short <zul@gentoo.org> metadata.xml:
+  Version bump, closed bug #29979.
+
+*loqui-0.1.18 (07 Sep 2003)
+
+  07 Sep 2003; Chuck Short <zul@gentoo.org> loqui-0.1.18.ebuild:
+  Initial version, ebuild submitted by Ryosuke KUTSUNA 
+  <ryosuke@cool.email.ne.jp>. Closes bug #27863.

@@ -1,0 +1,293 @@
+# ChangeLog for media-fonts/liberation-fonts
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/liberation-fonts/ChangeLog,v 1.51 2015/04/08 18:15:03 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org>
+  liberation-fonts-2.00.1-r1.ebuild:
+  Drop old Python implementations
+
+  07 Mar 2015; Ben de Groot <yngwin@gentoo.org> -liberation-fonts-1.07.2.ebuild,
+  -liberation-fonts-2.00.1.ebuild, liberation-fonts-2.00.1-r1.ebuild:
+  Mark latest version stable (bug #530448). Drop some old ebuilds.
+
+  22 Feb 2015; Jeff Gardner <je_fro@gentoo.org> liberation-fonts-1.07.2.ebuild,
+  liberation-fonts-2.00.0-r1.ebuild, liberation-fonts-2.00.1.ebuild,
+  liberation-fonts-2.00.1-r1.ebuild:
+  Trivial cleanup
+
+*liberation-fonts-1.07.4 (21 Feb 2015)
+
+  21 Feb 2015; Ben de Groot <yngwin@gentoo.org> +liberation-fonts-1.07.4.ebuild:
+  version bump (bug #517600)
+
+  11 Apr 2014; Jeff Gardner <je_fro@gentoo.org>
+  liberation-fonts-2.00.1-r1.ebuild:
+  Python unneeded without fontforge. Thanks Arfrever Frehtes Taifersar
+  Arahesis.
+
+*liberation-fonts-2.00.1-r1 (11 Apr 2014)
+
+  11 Apr 2014; Jeff Gardner <je_fro@gentoo.org>
+  +liberation-fonts-2.00.1-r1.ebuild:
+  Fix for bug #487786 and #472756 thanks to Sander Sweers.
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  liberation-fonts-2.00.0-r1.ebuild, liberation-fonts-2.00.1.ebuild:
+  Add arm64 love.
+
+  04 Sep 2013; Jeff Gardner <je_fro@gentoo.org> liberation-fonts-2.00.1.ebuild:
+  Re-adding 60-liberation.conf, fixing bug #482840 thanks to Derek Dolney
+
+  12 Jun 2013; Jeff Gardner <je_fro@gentoo.org> liberation-fonts-2.00.1.ebuild:
+  Change +fontforge dependency thanks to Jouni Rinne in bug #472756
+
+  09 Jun 2013; Jeff Gardner <je_fro@gentoo.org> liberation-fonts-2.00.1.ebuild:
+  Add dev-python/fonttools thanks to Jouni Rinne in bug #472756
+
+*liberation-fonts-2.00.1 (08 Jun 2013)
+
+  08 Jun 2013; Jeff Gardner <je_fro@gentoo.org>
+  +liberation-fonts-2.00.1.ebuild:
+  Version bump, thanks to Ivan Atienza in bug #471948
+
+  16 Jan 2013; Fabian Groffen <grobian@gentoo.org>
+  liberation-fonts-2.00.0-r1.ebuild:
+  Marked ~x64-solaris
+
+  08 Dec 2012; Markus Meier <maekke@gentoo.org>
+  liberation-fonts-2.00.0-r1.ebuild:
+  add ~arm, bug #440908
+
+  25 Aug 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  liberation-fonts-2.00.0-r1.ebuild:
+  Remove the gpl2 from desc as the fonts are under ofl license.
+
+*liberation-fonts-2.00.0-r1 (24 Aug 2012)
+
+  24 Aug 2012; Jeff Gardner <je_fro@gentoo.org>
+  +files/2.00.0/60-liberation.conf, -liberation-fonts-2.00.0.ebuild,
+  +liberation-fonts-2.00.0-r1.ebuild:
+  Remove Arial Narrow thanks to Aleksey Kunitskiy in bug #432228
+
+  18 Aug 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  liberation-fonts-2.00.0.ebuild:
+  Stable everywhere per discussion with upstream (fixes lo bugs).
+
+*liberation-fonts-2.00.0 (17 Aug 2012)
+
+  17 Aug 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  +liberation-fonts-2.00.0.ebuild, -liberation-fonts-1.07.0-r2.ebuild,
+  -liberation-fonts-1.07.1.ebuild:
+  Version bump to latest. Drop older.
+
+  31 May 2012; Justin Lecher <jlec@gentoo.org> liberation-fonts-1.07.2.ebuild:
+  Keyworded for ~-linux, tested by me
+
+  13 Apr 2012; Jeff Gardner <je_fro@gentoo.org> liberation-fonts-1.07.1.ebuild,
+  liberation-fonts-1.07.2.ebuild:
+  Removing stale unzip dependency thanks to df in bug #411243
+
+  01 Apr 2012; Raúl Porcel <armin76@gentoo.org>
+  liberation-fonts-1.07.2.ebuild:
+  alpha/ia64/sparc stable wrt #408163
+
+  24 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  liberation-fonts-1.07.2.ebuild:
+  x86 stable wrt bug #408163
+
+  16 Mar 2012; Brent Baude <ranger@gentoo.org> liberation-fonts-1.07.2.ebuild:
+  Marking liberation-fonts-1.07.2 ppc for bug 408163
+
+  16 Mar 2012; Brent Baude <ranger@gentoo.org> liberation-fonts-1.07.2.ebuild:
+  Marking liberation-fonts-1.07.2 ppc64 for bug 408163
+
+  15 Mar 2012; Agostino Sarubbo <ago@gentoo.org>
+  liberation-fonts-1.07.2.ebuild:
+  Stable for amd64, wrt bug #408163
+
+*liberation-fonts-1.07.2 (14 Mar 2012)
+
+  14 Mar 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  +liberation-fonts-1.07.2.ebuild:
+  Version bump to latest.
+
+  14 Feb 2012; Torsten Veller <tove@gentoo.org>
+  liberation-fonts-1.07.0-r2.ebuild:
+  Fix ebuild header (#398773)
+
+  15 Jan 2012; Torsten Veller <tove@gentoo.org> liberation-fonts-1.07.1.ebuild:
+  Fix cvs keyword in the header (#398773)
+
+  08 Jan 2012; Ryan Hill <dirtyepic@gentoo.org> -liberation-fonts-1.04.ebuild,
+  -liberation-fonts-1.05.ebuild, -liberation-fonts-1.06.0.20100721-r1.ebuild,
+  -liberation-fonts-1.07.0.ebuild, liberation-fonts-1.07.0-r2.ebuild:
+  Mark ppc64 stable (bug #386887), remove old.
+
+  06 Nov 2011; Brent Baude <ranger@gentoo.org>
+  liberation-fonts-1.07.0-r2.ebuild:
+  Marking liberation-fonts-1.07.0-r2 ppc for bug 386887
+
+  23 Oct 2011; Raúl Porcel <armin76@gentoo.org>
+  liberation-fonts-1.07.0-r2.ebuild:
+  alpha/ia64/sparc stable wrt #386887
+
+  14 Oct 2011; Markos Chandras <hwoarang@gentoo.org>
+  liberation-fonts-1.07.0-r2.ebuild:
+  Stable on amd64 wrt bug #386887
+
+  13 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  liberation-fonts-1.07.0-r2.ebuild:
+  x86 stable wrt bug #386887
+
+*liberation-fonts-1.07.1 (12 Oct 2011)
+
+  12 Oct 2011; Peter Volkov <pva@gentoo.org> +liberation-fonts-1.07.1.ebuild:
+  Version bump, bug #385185 wrt Hans.
+
+*liberation-fonts-1.07.0-r2 (11 Sep 2011)
+
+  11 Sep 2011; Peter Volkov <pva@gentoo.org>
+  -liberation-fonts-1.07.0-r1.ebuild, +liberation-fonts-1.07.0-r2.ebuild:
+  Fixed installation with USE=-fontforge now too, again bug #379505 wrt Nikolay
+  S. Rybaloff
+
+*liberation-fonts-1.07.0-r1 (09 Sep 2011)
+
+  09 Sep 2011; Peter Volkov <pva@gentoo.org> liberation-fonts-1.07.0.ebuild,
+  +liberation-fonts-1.07.0-r1.ebuild:
+  Fixed installation with USE=fontforge, bug #379505 thank Nikolay S. Rybaloff
+  for report and fix.
+
+  07 Sep 2011; Jeff Gardner <je_fro@gentoo.org> liberation-fonts-1.07.0.ebuild:
+  Add unzip to DEPEND fixing bug #380051 thanks to g0del.
+
+*liberation-fonts-1.07.0 (16 Aug 2011)
+
+  16 Aug 2011; Jeff Gardner <je_fro@gentoo.org>
+  +liberation-fonts-1.07.0.ebuild:
+  New version, thanks to Hans in #377165
+
+*liberation-fonts-1.06.0.20100721-r1 (03 May 2011)
+
+  03 May 2011; Jeff Gardner <je_fro@gentoo.org> files/60-liberation.conf,
+  -liberation-fonts-1.06.0.20100721.ebuild,
+  +liberation-fonts-1.06.0.20100721-r1.ebuild:
+  Adding Liberation Sans Narrow to 60-liberation.conf thanks to Alex Domingo in
+  bug #365317
+
+  20 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  liberation-fonts-1.04.ebuild:
+  No stable keywords for prefix
+
+*liberation-fonts-1.06.0.20100721 (19 Jan 2011)
+
+  19 Jan 2011; Dror Levin <spatz@gentoo.org>
+  +liberation-fonts-1.06.0.20100721.ebuild, metadata.xml:
+  Version bump.
+
+  15 Oct 2010; Brent Baude <ranger@gentoo.org> liberation-fonts-1.05.ebuild:
+  stable ppc, bug 338351
+
+  09 Oct 2010; Raúl Porcel <armin76@gentoo.org>
+  liberation-fonts-1.05.ebuild:
+  alpha/ia64/sparc stable wrt #338351
+
+  30 Sep 2010; Brent Baude <ranger@gentoo.org> liberation-fonts-1.05.ebuild:
+  stable ppc64, bug 338351
+
+  26 Sep 2010; Markus Meier <maekke@gentoo.org>
+  liberation-fonts-1.05.ebuild:
+  x86 stable, bug #338351
+
+  24 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  liberation-fonts-1.05.ebuild:
+  Stable on amd64 wrt bug #338351
+
+*liberation-fonts-1.05 (11 Jun 2010)
+
+  11 Jun 2010; Peter Volkov <pva@gentoo.org> -liberation-fonts-1.03.ebuild,
+  +liberation-fonts-1.05.ebuild, metadata.xml:
+  Version bump, bug #323323, thank Thilo Bangert for report. Drop old.
+
+  03 Feb 2010; Jeff Gardner <je_fro@gentoo.org>
+  liberation-fonts-1.04.ebuild:
+  Stabilizing, thanks to darkside, fauli, and pva.
+
+  07 Sep 2009; Ryan Hill <dirtyepic@gentoo.org>
+  liberation-fonts-1.03.ebuild, liberation-fonts-1.04.ebuild:
+  Drop pkg_postinst message, handled by eclass now.
+
+*liberation-fonts-1.04 (30 Sep 2008)
+*liberation-fonts-1.03 (30 Sep 2008)
+
+  30 Sep 2008; Jeff Gardner <je_fro@gentoo.org> +files/60-liberation.conf,
+  +metadata.xml, +liberation-fonts-1.03.ebuild,
+  +liberation-fonts-1.04.ebuild:
+  Moved from liberation-fonts-ttf and added latest version.
+  Thanks to Pacho Ramos on bug #236420.
+
+  24 Feb 2008; Raúl Porcel <armin76@gentoo.org>
+  liberation-fonts-ttf-3-r1.ebuild:
+  alpha/sparc stable
+
+  29 Jan 2008; Ryan Hill <dirtyepic@gentoo.org>
+  liberation-fonts-ttf-3-r1.ebuild:
+  Change pkg_postinst to recommend eselect fontconfig instead of giving manual
+  directions.
+
+  23 Jan 2008; Raúl Porcel <armin76@gentoo.org>
+  liberation-fonts-ttf-3-r1.ebuild:
+  Add ~alpha/~ia64/~sparc
+
+  08 Jan 2008; <pva@gentoo.org> liberation-fonts-ttf-3-r1.ebuild:
+  FONT_CONF now array, bug 201834.
+
+  08 Sep 2007; Markus Meier <maekke@gentoo.org>
+  liberation-fonts-ttf-3-r1.ebuild:
+  stable on x86, wrt bug #191461
+
+  06 Sep 2007; Christoph Mende <angelos@gentoo.org>
+  liberation-fonts-ttf-3-r1.ebuild:
+  Stable on amd64
+
+  06 Sep 2007; Luca Barbato <lu_zero@gentoo.org>
+  liberation-fonts-ttf-3-r1.ebuild:
+  Marked ppc and ppc64
+
+  29 Jul 2007; Ryan Hill <dirtyepic@gentoo.org>
+  liberation-fonts-ttf-3-r1.ebuild:
+  Specify path in FONT_CONF.
+
+  24 Jul 2007; Ryan Hill <dirtyepic@gentoo.org>
+  -liberation-fonts-ttf-3.ebuild:
+  Remove old.
+
+  15 Jul 2007; Ryan Hill <dirtyepic@gentoo.org> +files/60-liberation.conf,
+  -files/liberation-fonts-ttf-fontconfig.txt,
+  liberation-fonts-ttf-3-r1.ebuild:
+  Use FONT_CONF and fix pkg_postinst.
+
+  12 Jun 2007; Diego Pettenò <flameeyes@gentoo.org>
+  liberation-fonts-ttf-3-r1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  12 Jun 2007; Jeff Gardner <je_fro@gentoo.org>
+  liberation-fonts-ttf-3-r1.ebuild:
+  Clarifying pkg description wrt bug #181740
+
+  11 Jun 2007; Luca Barbato <lu_zero@gentoo.org>
+  liberation-fonts-ttf-3.ebuild, liberation-fonts-ttf-3-r1.ebuild:
+  Marked ~ppc ~ppc64
+
+*liberation-fonts-ttf-3-r1 (10 Jun 2007)
+
+  10 Jun 2007; Jeff Gardner <je_fro@gentoo.org>
+  liberation-fonts-ttf-3.ebuild, +liberation-fonts-ttf-3-r1.ebuild:
+  Bumping to -r1 with addition of fontconfig file.
+
+  10 Jun 2007; Jeff Gardner <je_fro@gentoo.org>
+  +files/liberation-fonts-ttf-fontconfig.txt, liberation-fonts-ttf-3.ebuild:
+  Adding fontconfig file. Thanks to Ed Catmur and Wouter Bolsterlee.
+
+  05 Jun 2007; Jeff Gardner <je_fro@gentoo.org> ChangeLog:
+  Initial import.

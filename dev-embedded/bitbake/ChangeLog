@@ -1,0 +1,256 @@
+# ChangeLog for dev-embedded/bitbake
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/bitbake/ChangeLog,v 1.62 2015/06/07 08:27:02 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  02 Nov 2014; Tim Harder <radhermit@gentoo.org> bitbake-1.17.0.ebuild,
+  bitbake-9999.ebuild:
+  Drop python2_6 support that's gone from the tree.
+
+  02 Nov 2014; Tim Harder <radhermit@gentoo.org> -bitbake-1.14.0.ebuild,
+  -bitbake-1.15.3.ebuild:
+  Remove old.
+
+  02 Nov 2014; Tim Harder <radhermit@gentoo.org> bitbake-1.17.0.ebuild,
+  bitbake-9999.ebuild:
+  Update HOMEPAGE.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> bitbake-1.17.0.ebuild,
+  bitbake-9999.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  12 May 2013; Mike Gilbert <floppym@gentoo.org> bitbake-1.14.0.ebuild,
+  bitbake-1.15.3.ebuild:
+  Remove dependency on pysqlite.
+
+  24 Mar 2013; Mike Frysinger <vapier@gentoo.org> bitbake-1.17.0.ebuild:
+  Stabilize for all #456482.
+
+  14 Jan 2013; Tim Harder <radhermit@gentoo.org> bitbake-9999.ebuild:
+  Fix live ebuild too.
+
+  14 Jan 2013; Tim Harder <radhermit@gentoo.org> bitbake-1.17.0.ebuild:
+  Use correct variable name to specify python use flag deps.
+
+  05 Jan 2013; Tim Harder <radhermit@gentoo.org> bitbake-1.17.0.ebuild,
+  bitbake-9999.ebuild:
+  Simplify dependencies.
+
+  08 Dec 2012; Tim Harder <radhermit@gentoo.org> -bitbake-1.15.1-r1.ebuild,
+  -bitbake-1.15.2.ebuild:
+  Remove old.
+
+*bitbake-1.17.0 (08 Dec 2012)
+
+  08 Dec 2012; Tim Harder <radhermit@gentoo.org> +bitbake-1.17.0.ebuild,
+  bitbake-9999.ebuild:
+  Version bump and update live ebuild. Migrate to distutils-r1 eclass.
+
+*bitbake-1.15.3 (02 Aug 2012)
+
+  02 Aug 2012; Tim Harder <radhermit@gentoo.org> +bitbake-1.15.3.ebuild:
+  Version bump.
+
+  14 Jun 2012; Tim Harder <radhermit@gentoo.org> -bitbake-1.10.2.ebuild:
+  Remove old.
+
+  14 Jun 2012; Michael Weber <xmw@gentoo.org> bitbake-1.14.0.ebuild:
+  ppc stable (bug 403759)
+
+*bitbake-1.15.2 (01 May 2012)
+
+  01 May 2012; Tim Harder <radhermit@gentoo.org> +bitbake-1.15.2.ebuild:
+  Version bump.
+
+  04 Apr 2012; Jeff Horelick <jdhore@gentoo.org> bitbake-1.14.0.ebuild:
+  marked x86 per bug 403759
+
+  17 Mar 2012; Tim Harder <radhermit@gentoo.org> bitbake-9999.ebuild:
+  Add updates to live ebuild.
+
+  17 Mar 2012; Tim Harder <radhermit@gentoo.org> -bitbake-1.15.1.ebuild:
+  Remove old.
+
+*bitbake-1.15.1-r1 (17 Mar 2012)
+
+  17 Mar 2012; Tim Harder <radhermit@gentoo.org> +bitbake-1.15.1-r1.ebuild:
+  Revbump to add dependency on futures (fixes bug #406945).
+
+  17 Feb 2012; Tim Harder <radhermit@gentoo.org> bitbake-1.14.0.ebuild,
+  bitbake-1.15.1.ebuild:
+  Die on failure.
+
+  17 Feb 2012; Agostino Sarubbo <ago@gentoo.org> bitbake-1.14.0.ebuild:
+  Stable for amd64, wrt bug #403759
+
+  15 Feb 2012; Tim Harder <radhermit@gentoo.org> -bitbake-1.12.0.ebuild,
+  -bitbake-1.13.2.ebuild, -bitbake-1.13.3.ebuild:
+  Remove old.
+
+*bitbake-1.15.1 (15 Feb 2012)
+
+  15 Feb 2012; Tim Harder <radhermit@gentoo.org> +bitbake-1.15.1.ebuild:
+  Version bump.
+
+*bitbake-1.14.0 (10 Nov 2011)
+
+  10 Nov 2011; Tim Harder <radhermit@gentoo.org> +bitbake-1.14.0.ebuild:
+  Version bump.
+
+  19 Aug 2011; Tim Harder <radhermit@gentoo.org> bitbake-1.13.2.ebuild,
+  bitbake-1.13.3.ebuild:
+  Add ~ppc keywords for newer versions as well.
+
+  19 Aug 2011; Tim Harder <radhermit@gentoo.org> -bitbake-1.8.18-r1.ebuild:
+  Remove old
+
+  15 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> bitbake-1.10.2.ebuild:
+  ppc stable wrt #362333
+
+*bitbake-1.13.3 (02 Aug 2011)
+
+  02 Aug 2011; Tim Harder <radhermit@gentoo.org> +bitbake-1.13.3.ebuild:
+  Version bump.
+
+*bitbake-1.13.2 (16 Jul 2011)
+
+  16 Jul 2011; Tim Harder <radhermit@gentoo.org> +bitbake-1.13.2.ebuild:
+  Version bump.
+
+*bitbake-1.12.0 (09 Jun 2011)
+
+  09 Jun 2011; Tim Harder <radhermit@gentoo.org> bitbake-1.10.2.ebuild,
+  +bitbake-1.12.0.ebuild, bitbake-9999.ebuild:
+  Version bump. Use the git-2 eclass and update dependencies for the live
+  ebuild.
+
+  07 May 2011; Thomas Kahle <tomka@gentoo.org> bitbake-1.10.2.ebuild:
+  x86 stable per bug 362333
+
+  26 Apr 2011; Christoph Mende <angelos@gentoo.org> bitbake-1.10.2.ebuild:
+  Stable on amd64 wrt bug #362333
+
+  06 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  bitbake-1.8.18-r1.ebuild:
+  Fix deprecation warning.
+
+  26 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  bitbake-1.10.2.ebuild, bitbake-9999.ebuild:
+  Fix dependencies. Call python_pkg_setup().
+
+*bitbake-1.10.2 (26 Jan 2011)
+
+  26 Jan 2011; Tim Harder <radhermit@gentoo.org> +bitbake-1.10.2.ebuild,
+  bitbake-9999.ebuild:
+  Version bump to the latest release. Update live ebuild to use git (bug
+  #348196). Improve python-related support (bug #312143) and add doc USE flag.
+
+  15 Aug 2010; Mike Frysinger <vapier@gentoo.org> bitbake-1.8.18-r1.ebuild:
+  Stabilize for all #325261 by Evgeniy Dushistov.
+
+*bitbake-1.8.18-r1 (23 Jun 2010)
+
+  23 Jun 2010; Mike Frysinger <vapier@gentoo.org> +bitbake-1.8.18-r1.ebuild,
+  bitbake-9999.ebuild:
+  Port by Priit Laes to distutils eclass #310479.
+
+  23 Jun 2010; Mike Frysinger <vapier@gentoo.org> bitbake-1.8.18.ebuild:
+  Stabilize for everyone.
+
+*bitbake-1.8.18 (09 Feb 2010)
+
+  09 Feb 2010; Mike Frysinger <vapier@gentoo.org> +bitbake-1.8.18.ebuild:
+  Version bump #302451 by Christian Gmeiner.
+
+  09 Feb 2010; Mike Frysinger <vapier@gentoo.org> bitbake-1.8.12.ebuild:
+  Stabilize for everyone.
+
+  02 Jan 2009; Mike Frysinger <vapier@gentoo.org> bitbake-9999.ebuild:
+  Unify svn version with releases.
+
+*bitbake-1.8.12 (02 Jan 2009)
+
+  02 Jan 2009; Mike Frysinger <vapier@gentoo.org> +bitbake-1.8.12.ebuild:
+  Version bump #253329 by Anatoly Shipitsin.
+
+*bitbake-1.8.10 (10 Oct 2008)
+
+  10 Oct 2008; <solar@gentoo.org> +bitbake-1.8.10.ebuild:
+  - Version bump. Bug #241116
+
+  02 May 2008; Denis Dupeyron <calchan@gentoo.org> bitbake-1.8.4.ebuild,
+  bitbake-1.8.6.ebuild, bitbake-1.8.8.ebuild:
+  Fixed SRC_URI, see bug #218657.
+
+  25 Aug 2007; Mike Frysinger <vapier@gentoo.org> bitbake-1.8.8.ebuild,
+  bitbake-9999.ebuild:
+  Pull in dev-python/pysqlite as we need it.
+
+*bitbake-1.8.8 (19 Aug 2007)
+
+  19 Aug 2007; Mike Frysinger <vapier@gentoo.org> +bitbake-1.8.8.ebuild:
+  Version bump #189421 by Luis Vitorio Crgnini.
+
+*bitbake-1.8.6 (09 Jul 2007)
+
+  09 Jul 2007; Mike Frysinger <vapier@gentoo.org> +bitbake-1.8.6.ebuild:
+  Version bump #184707 by Claes Mogren.
+
+  24 Jun 2007; Piotr Jaroszyński <peper@gentoo.org> bitbake-9999.ebuild:
+  (QA) Don't use KEYWORDS="-*". bug #160519.
+
+*bitbake-1.8.4 (11 Jun 2007)
+
+  11 Jun 2007; Mike Frysinger <vapier@gentoo.org> +bitbake-1.8.4.ebuild:
+  Version bump #181034 by Luis Vitorio Cargnini.
+
+*bitbake-1.6.6 (17 Feb 2007)
+
+  17 Feb 2007; Mike Frysinger <vapier@gentoo.org> +bitbake-1.6.6.ebuild:
+  Version bump #167168 by Claes Mogren.
+
+*bitbake-1.6.2 (22 Dec 2006)
+
+  22 Dec 2006; Mike Frysinger <vapier@gentoo.org> +bitbake-1.6.2.ebuild:
+  Version bump #158650 by Radek Podgorny.
+
+*bitbake-1.6.0 (06 Sep 2006)
+
+  06 Sep 2006; Mike Frysinger <vapier@gentoo.org> +bitbake-1.6.0.ebuild:
+  Version bump #146399 by pavlix.
+
+*bitbake-1.4.2 (07 Jun 2006)
+
+  07 Jun 2006; Mike Frysinger <vapier@gentoo.org> +bitbake-1.4.2.ebuild:
+  Version bump #135122 by Jan Boysen.
+
+*bitbake-1.4.0 (23 Apr 2006)
+
+  23 Apr 2006; Mike Frysinger <vapier@gentoo.org> +bitbake-1.4.0.ebuild:
+  Version bump #130905 by Bryan Jacobs.
+
+*bitbake-1.3.3 (29 Mar 2006)
+
+  29 Mar 2006; Mike Frysinger <vapier@gentoo.org> +bitbake-1.3.3.ebuild:
+  Version bump #127384 by Richard Kung.
+
+*bitbake-1.3.2 (02 Feb 2006)
+
+  02 Feb 2006; Mike Frysinger <vapier@gentoo.org> +bitbake-1.3.2.ebuild:
+  Version bump #121037 by Radek Podgorny.
+
+*bitbake-9999 (02 Feb 2006)
+
+  02 Feb 2006; Mike Frysinger <vapier@gentoo.org> -bitbake-0.ebuild,
+  +bitbake-9999.ebuild:
+  Rename version since we have real releases now.
+
+  08 Mar 2005; Mike Frysinger <vapier@gentoo.org> bitbake-0.ebuild:
+  Add memory patch #84402 by David Anes.
+
+*bitbake-0 (20 Jan 2004)
+
+  20 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

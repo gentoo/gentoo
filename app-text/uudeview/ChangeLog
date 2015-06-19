@@ -1,0 +1,125 @@
+# ChangeLog for app-text/uudeview
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/uudeview/ChangeLog,v 1.32 2010/04/06 01:29:35 abcd Exp $
+
+  06 Apr 2010; Jonathan Callen <abcd@gentoo.org> uudeview-0.5.20-r1.ebuild:
+  Bump to EAPI=3, add prefix keywords
+
+  10 Nov 2009; Jonathan Callen <abcd@gentoo.org> uudeview-0.5.20-r1.ebuild:
+  List all patches to be applied directly; clean up ebuild
+
+  29 May 2009; Robert Buchholz <rbu@gentoo.org> -uudeview-0.5.20.ebuild:
+  Remove ebuild that is vulnerable to GLSA 200808-11, bug #271750.
+
+  03 Aug 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  uudeview-0.5.20-r1.ebuild:
+  ppc stable, bug #222275
+
+  03 Aug 2008; Tobias Heinlein <keytoaster@gentoo.org>
+  uudeview-0.5.20-r1.ebuild:
+  amd64 stable wrt security bug #222275
+
+  30 Jul 2008; Raúl Porcel <armin76@gentoo.org> uudeview-0.5.20-r1.ebuild:
+  sparc/x86 stable wrt #222275
+
+*uudeview-0.5.20-r1 (28 Jul 2008)
+
+  28 Jul 2008; Robert Buchholz <rbu@gentoo.org>
+  -files/uudeview-0.5.18-optimize_size.patch,
+  +files/uudeview-0.5.20-CVE-2004-2265.patch,
+  +files/uudeview-0.5.20-CVE-2008-2266.patch,
+  +files/uudeview-0.5.20-bugfixes.patch, +files/uudeview-0.5.20-man.patch,
+  +files/uudeview-0.5.20-rename.patch, +uudeview-0.5.20-r1.ebuild:
+  Non-maintainer bump
+  Pull in source patches from Debian
+  * Fix temporary file issue (CVE-2004-2265, CVE-2008-2266, bug #222275)
+  * Update uudeview man page, include uuwish man page
+  * Several bug fixes
+  
+  Other changes:
+  * Remove dead 'debug' use flag
+  * Remove old patch
+
+  17 Jan 2008; Fabian Groffen <grobian@gentoo.org> uudeview-0.5.20.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  21 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  uudeview-0.5.20.ebuild:
+  removed tcl and X USE flags as they are just useless. USE=tk now properly
+  builds the X version of the software
+
+  28 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  uudeview-0.5.20.ebuild:
+  moved tcltk USE flag over to separate tk and tcl flags, see bug #17808
+
+  26 Nov 2005; Fabian Groffen <grobian@gentoo.org> uudeview-0.5.20.ebuild:
+  Marked ~ppc-macos (bug #109433)
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> uudeview-0.5.20.ebuild:
+  stable on amd64
+
+  19 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> uudeview-0.5.20.ebuild:
+  Marked ~amd64.
+
+  02 Jun 2004; Aron Griffis <agriffis@gentoo.org> uudeview-0.5.20.ebuild:
+  Fix use invocation
+
+  20 Apr 2004; Daniel Black <dragonheart@gentoo.org> metadata.xml,
+  uudeview-0.5.20.ebuild:
+  QA - removed runtime dependance on autoconf
+
+  27 Mar 2004; David Holm <dholm@gentoo.org> uudeview-0.5.20.ebuild:
+  Added to ~ppc.
+
+  26 Mar 2004; Jason Wever <weeve@gentoo.org> uudeview-0.5.20.ebuild:
+  Stable on sparc wrt bug #44859.
+
+*uudeview-0.5.20 (26 Mar 2004)
+
+  26 Mar 2004; Seemant Kulleen <seemant@gentoo.org> uudeview-0.5.13.ebuild,
+  uudeview-0.5.18.ebuild, uudeview-0.5.20.ebuild:
+  update for security fix as per bug #44859, by Jeff Patterson <helixj@yahoo.ca>
+  and contributed to heavily by: CondorDES <condor-gentoo@condordes.net>
+
+  22 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> uudeview-0.5.18.ebuild,
+  files/uudeview-0.5.18-optimize_size.patch:
+  Fix compilation with -Os and get handling of optimization to configure right. Closing #42466.
+
+  24 Aug 2003; Michael Sterrett <msterret@gentoo.org> uudeview-0.5.18.ebuild:
+  use emake; add error message; tidy
+
+*uudeview-0.5.18 (08 Nov 2002)
+
+  01 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Cleanup ... use econf, use_enable, and debug USE flag
+
+  13 Jan 2003; Nick Hadaway <raker@gentoo.org> uudeview-0.5.18.ebuild :
+  Added DEBUGBUILD support so those with -g options in their make.conf
+  don't get them stripped out by configure.
+
+  12 Jan 2003; Nick Hadaway <raker@gentoo.org> uudeview-0.5.18.ebuild :
+  Changed from emake to make.
+
+  08 Nov 2002; Hanno Boeck <hanno@gentoo.org> uudeview-0.5.18.ebuild :
+  New version.
+
+*uudeview-0.5.13 (04 Jun 2002)
+
+  01 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Cleanup ... use econf, use_enable, and debug USE flag
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> uudeview-0.5.13.ebuild :
+  Added KEYWORDS, SLOT.
+
+  03 Jun 2002; George Shapovalov <george@gentoo.org> uudeview-0.5.13.ebuild, files/digest-uudeview-0.5.13 :
+  
+  First submission
+  From the home page:
+
+   UUDeview is a program that helps you transmit and receive binary files over 
+   the Internet, using electronic mail or newsgroups The UUDeview package includes 
+   both an encoder and a decoder. The decoder automatically detects the type of 
+   encoding used, offering MIME's Base64 and BinHex as well as the popular 
+   uuencoding and the less frequently used xxencoding methods. Recently, support 
+   for the popular yEnc encoding was also added. The encoder runs the other way 
+   around and encodes a binary file for sending it by mail or news. 

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare setup unpack
+DEPEND==sys-freebsd/freebsd-lib-8.2*[ipv6?,atm?,netware?] =sys-freebsd/freebsd-libexec-8.2* >=dev-libs/expat-2.0.1 ssl? ( dev-libs/openssl ) dev-libs/libedit sys-libs/readline || ( sys-process/cronie sys-process/vixie-cron ) atm? ( net-analyzer/bsnmp ) !build? ( =sys-freebsd/freebsd-sources-8.2* ) =sys-freebsd/freebsd-mk-defs-8.2* virtual/pmake virtual/pmake
+DESCRIPTION=FreeBSD sbin utils
+EAPI=2
+HOMEPAGE=http://www.freebsd.org/
+IUSE=atm ipfilter +pf ipv6 build ssl +cxx netware profile
+KEYWORDS=~sparc-fbsd ~x86-fbsd
+LICENSE=BSD
+RDEPEND==sys-freebsd/freebsd-lib-8.2*[ipv6?,atm?,netware?] =sys-freebsd/freebsd-libexec-8.2* >=dev-libs/expat-2.0.1 ssl? ( dev-libs/openssl ) dev-libs/libedit sys-libs/readline || ( sys-process/cronie sys-process/vixie-cron ) atm? ( net-analyzer/bsnmp )
+SLOT=0
+SRC_URI=mirror://gentoo/freebsd-sbin-8.2.tar.bz2 mirror://gentoo/freebsd-contrib-8.2.tar.bz2 mirror://gentoo/freebsd-lib-8.2.tar.bz2 mirror://gentoo/freebsd-libexec-8.2.tar.bz2 mirror://gentoo/freebsd-usbin-8.2.tar.bz2 mirror://gentoo/freebsd-etc-8.2.tar.bz2 build? ( mirror://gentoo/freebsd-sys-8.2.tar.bz2 )
+_eclasses_=bsdmk	a5323161d86b178920afb5e31a9e5d3f	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	freebsd	35f498d509155233569460a87c40fdda	multilib	62927b3db3a589b0806255f3a002d5d3	portability	a45c088f246ef5091e029f6285d7ce42	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=b374c98400e1eb4effe87faed2f38fd3

@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install postinst postrm preinst prerm
+DESCRIPTION=bootloader for the SuperH Lantank
+HOMEPAGE=http://www.linux-sh.org/
+KEYWORDS=-* sh
+LICENSE=GPL-2+ BSD
+RESTRICT=strip
+SLOT=0
+SRC_URI=mirror://gentoo/sh-lilo-sel-20040408.tar.gz
+_eclasses_=mount-boot	02dd3bb4c5f025fef0fc3ade0f27c217
+_md5_=d4404b2b5ba82222d71bb87be5e08963

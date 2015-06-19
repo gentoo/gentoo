@@ -1,0 +1,274 @@
+<!-- *********************************************************************
+     *** THIS IS THE FLATTENED DTD. DO NOT EDIT THIS DTD BY HAND, EDIT ***
+     *** THE CUSTOMIZATION LAYER AND REGNERATE THE FLATTENED DTD! ********
+     ********************************************************************* -->
+
+<!-- ====================================================================== -->
+
+<!-- Gentoo Guide XML V1.0 DTD
+     Copyright (C) 2001 Gentoo Technologies Inc.
+     http://www.gentoo.org/gentoo/guide
+
+     See COPYRIGHT for more information
+
+     Please direct all questions and comments about this DTD to
+     Achim Gottinger <achim@gentoo.org>.
+
+     Common declaration:
+
+     <?xml version="1.0"?>
+     <!DOCTYPE guide
+       PUBLIC "-//Gentoo//DTD Guide XML V1.0//EN"
+       "http://www.gentoo.org/gentoo/guide/guide.dtd">
+                                                                            -->
+<!-- ====================================================================== -->
+<!ENTITY lt	"&#60;">
+<!ENTITY gt	 "&#62;">
+
+<!--================== Imported Names ====================================-->
+
+<!ENTITY % URI "CDATA">
+<!ENTITY % Character "CDATA">
+<!ENTITY % Text "CDATA">
+
+<!--================== Imported Names ====================================-->
+
+<!-- Parameter Entities -->
+
+<!ENTITY % list "UL | OL">
+
+<!ENTITY % preformatted "PRE">
+
+<!-- a color using sRGB: #RRGGBB as Hex values -->
+<!ENTITY % Color "CDATA">
+
+<!-- There are also 16 widely known color names with their sRGB values:
+
+    Black  = #000000    Green  = #008000
+    Silver = #C0C0C0    Lime   = #00FF00
+    Gray   = #808080    Olive  = #808000
+    White  = #FFFFFF    Yellow = #FFFF00
+    Maroon = #800000    Navy   = #000080
+    Red    = #FF0000    Blue   = #0000FF
+    Purple = #800080    Teal   = #008080
+    Fuchsia= #FF00FF    Aqua   = #00FFFF
+ -->
+
+ <!--=================== Generic Attributes ===============================-->
+
+ <!ENTITY % coreattrs "id ID #IMPLIED">
+ <!ENTITY % attrs "%coreattrs;">
+
+ <!ENTITY % align "align (left|center|right|justify)  #IMPLIED">
+
+ <!--=================== Text Markup ======================================-->
+
+ <!ENTITY % fontstyle "I | B">
+ <!ENTITY % phrase "CODE">
+ <!ENTITY % special "A | IMG | BR | FONT">
+ <!ENTITY % inline "#PCDATA | %fontstyle; | %phrase; | %special;">
+<!ELEMENT I  (%inline;)*>
+<!ATTLIST I %attrs;>
+<!ELEMENT B  (%inline;)*>
+<!ATTLIST B %attrs;>
+<!ELEMENT CODE  (%inline;)*>
+<!ATTLIST CODE %attrs;>
+
+<!ELEMENT FONT (%inline;)*>
+<!ATTLIST FONT
+  %coreattrs;
+  size        CDATA          #IMPLIED
+  color       %Color;        #IMPLIED
+  face        CDATA          #IMPLIED
+  >
+
+<!ELEMENT BR EMPTY>
+
+<!--================== HTML content models ===============================-->
+
+<!ENTITY % block "P | %preformatted; | %list; | TABLE">
+<!ENTITY % flow "%inline; | %block;">
+
+<!--=================== Document Body ====================================-->
+
+<!ELEMENT BODY (%flow;)* >
+<!ATTLIST BODY
+  %attrs;
+>
+
+<!--================== The Anchor Element ================================-->
+
+<!ELEMENT A (%inline;)*>
+<!ATTLIST A
+    %attrs;
+    name  CDATA  #IMPLIED
+    href  %URI;  #IMPLIED
+  >
+
+<!--=================== Images ===========================================-->
+
+<!ENTITY % Length "CDATA">
+
+<!ENTITY % Pixels "CDATA">
+
+<!ENTITY % IAlign "(top|middle|bottom|left|right)">
+
+<!ELEMENT IMG EMPTY>
+<!ATTLIST IMG
+  %attrs;
+  src         %URI;          #REQUIRED
+  alt         %Text;         #IMPLIED
+  name    CDATA          #IMPLIED
+  height   %Length;       #IMPLIED
+  width     %Length;       #IMPLIED
+  align      %IAlign;       #IMPLIED
+  border      %Pixels;       #IMPLIED
+  hspace      %Pixels;       #IMPLIED
+  vspace      %Pixels;       #IMPLIED
+  >
+
+<!--=================== Paragraphs =======================================-->
+
+<!ELEMENT P (%inline;)*>
+<!ATTLIST P
+  %attrs;
+  %align;
+  >
+
+<!--=================== Preformatted Text ================================-->
+
+<!-- excludes markup for images and changes in font size -->
+<!ENTITY % pre.exclusion "IMG">
+
+<!ELEMENT PRE (#PCDATA | A | BR | FONT | %fontstyle; | %phrase;)*>
+<!ATTLIST PRE
+  %attrs;
+  >
+
+<!--=================== Lists ============================================-->
+
+<!-- definition lists - DT for term, DD for its definition -->
+
+<!ELEMENT DL  (DT|DD)+>
+<!ATTLIST DL
+  %attrs;
+  compact     (compact)      #IMPLIED
+  >
+
+<!ELEMENT DT (%inline;)*>
+<!ATTLIST DT
+  %attrs;
+  >
+
+<!ELEMENT DD (%flow;)*>
+<!ATTLIST DD
+  %attrs;
+  >
+
+<!-- Ordered lists (OL) Numbering style
+
+    1   arablic numbers     1, 2, 3, ...
+    a   lower alpha         a, b, c, ...
+    A   upper alpha         A, B, C, ...
+    i   lower roman         i, ii, iii, ...
+    I   upper roman         I, II, III, ...
+
+    The style is applied to the sequence number which by default
+    is reset to 1 for the first list item in an ordered list.
+
+    This can't be expressed directly in SGML due to case folding.
+-->
+
+<!ENTITY % OLStyle "CDATA">
+
+<!ELEMENT OL  (LI)+>
+<!ATTLIST OL
+  %attrs;
+  type        %OLStyle;      #IMPLIED
+  compact     (compact)      #IMPLIED
+  start       NMTOKEN         #IMPLIED
+  >
+
+<!-- Unordered Lists (UL) bullet styles -->
+<!ENTITY % ULStyle "(disc|square|circle)">
+
+<!ELEMENT UL (LI)+>
+<!ATTLIST UL
+  %attrs;
+  type        %ULStyle;      #IMPLIED
+  compact     (compact)      #IMPLIED
+  >
+
+<!ENTITY % LIStyle "CDATA">
+
+<!ELEMENT LI  (%flow;)*>
+<!ATTLIST LI
+  %attrs;
+  type        %LIStyle;      #IMPLIED
+  value       NMTOKEN     #IMPLIED
+  >
+
+<!--======================= Tables =======================================-->
+
+ <!-- horizontal alignment attributes for cell contents -->
+<!ENTITY % cellhalign  "align      (left|center|right|justify|char) #IMPLIED">
+
+<!-- vertical alignment attributes for cell contents -->
+<!ENTITY % cellvalign "valign (top|middle|bottom|baseline) #IMPLIED">
+
+<!ELEMENT TABLE (TR+)>
+<!ATTLIST TABLE
+  %attrs;
+  width       %Length;       #IMPLIED
+  border      %Pixels;       #IMPLIED
+  >
+
+<!ENTITY % CAlign "(top|bottom|left|right)">
+
+<!ELEMENT TR (TH|TD)+>
+<!ATTLIST TR
+  %attrs;
+  %cellhalign;
+  %cellvalign;
+  >
+
+<!-- TH is for headers, TD for data, but for cells acting as both use TD -->
+
+<!ELEMENT TH  (%flow;)*>
+<!ATTLIST TH
+  %attrs;
+  %cellhalign;
+  %cellvalign;
+  width       %Length;       #IMPLIED
+  height      %Length;       #IMPLIED
+  >
+
+<!ELEMENT TD  (%flow;)*>
+<!ATTLIST TD
+  %attrs;
+  rowspan    NMTOKEN #IMPLIED
+  colspan    NMTOKEN  #IMPLIED
+  %cellhalign;
+  %cellvalign;
+  width       %Length;       #IMPLIED
+  height      %Length;       #IMPLIED
+  >
+
+<!--===================== Gentoo Specific =================================-->
+
+<!ELEMENT TITLE (#PCDATA)>
+<!ELEMENT AUTHOR (#PCDATA)>
+<!ATTLIST AUTHOR
+    title %Text; #IMPLIED
+    email %Text; #IMPLIED
+>
+<!ELEMENT DATE (#PCDATA)>
+<!ELEMENT VERSION (#PCDATA)>
+<!ELEMENT ABSTRACT (#PCDATA)>
+<!ELEMENT CHAPTER (TITLE,SECTION+)>
+<!ATTLIST CHAPTER
+    link %Text; #IMPLIED
+    >
+
+<!ELEMENT SECTION (TITLE, BODY)>
+<!ELEMENT GUIDE (TITLE, (AUTHOR+ & DATE & VERSION? & ABSTRACT?),CHAPTER+)>

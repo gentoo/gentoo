@@ -1,0 +1,30 @@
+# ChangeLog for sys-apps/noexec
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/noexec/ChangeLog,v 1.9 2010/05/21 23:46:31 hwoarang Exp $
+
+  21 May 2010; Markos Chandras <hwoarang@gentoo.org> noexec-1.1.0.ebuild:
+  Keyworded for amd64 wrt bug #318791
+
+  15 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  13 May 2006; Joseph Jezak <josejx@gentoo.org> noexec-1.1.0.ebuild:
+  Marked ppc stable for solar.
+
+  26 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  noexec-1.1.0.ebuild:
+  mark ~ppc
+
+  06 Nov 2004; <pyrania@gentoo.org> noexec-1.1.0.ebuild:
+  Marked stable on x86.
+
+  30 Jun 2004; Aron Griffis <agriffis@gentoo.org> noexec-1.1.0.ebuild:
+  sync IUSE (missing)
+
+*noexec-1.1.0 (22 Feb 2004)
+
+  22 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Eric Harney #39035.

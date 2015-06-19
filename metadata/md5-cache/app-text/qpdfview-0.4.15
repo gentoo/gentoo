@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=cups? ( net-print/cups ) djvu? ( app-text/djvu ) fitz? ( >=app-text/mupdf-1.7:= ) postscript? ( app-text/libspectre ) qt4? ( dev-qt/qtcore:4[iconv] dev-qt/qtgui:4 dbus? ( dev-qt/qtdbus:4 ) pdf? ( app-text/poppler[qt4] ) sqlite? ( dev-qt/qtsql:4[sqlite] ) svg? ( dev-qt/qtsvg:4 ) ) qt5? ( dev-qt/linguist-tools:5 dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dbus? ( dev-qt/qtdbus:5 ) pdf? ( >=app-text/poppler-0.26.4[qt5] ) sqlite? ( dev-qt/qtsql:5[sqlite] ) svg? ( dev-qt/qtsvg:5 ) ) !svg? ( virtual/freedesktop-icon-theme ) virtual/pkgconfig
+DESCRIPTION=A tabbed document viewer
+EAPI=5
+HOMEPAGE=http://launchpad.net/qpdfview
+IUSE=cups dbus djvu fitz +pdf postscript +qt4 qt5 sqlite +svg synctex linguas_ast linguas_az linguas_be linguas_bg linguas_bs linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_en_GB linguas_eo linguas_es linguas_eu linguas_fi linguas_fr linguas_gl linguas_he linguas_hr linguas_id linguas_it linguas_kk linguas_ky linguas_lt linguas_ms linguas_my linguas_pl linguas_pt linguas_pt_BR linguas_ro linguas_ru linguas_sk linguas_sv linguas_th linguas_tr linguas_ug linguas_uk linguas_vi linguas_zh_CN
+KEYWORDS=~amd64 ~arm ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=cups? ( net-print/cups ) djvu? ( app-text/djvu ) fitz? ( >=app-text/mupdf-1.7:= ) postscript? ( app-text/libspectre ) qt4? ( dev-qt/qtcore:4[iconv] dev-qt/qtgui:4 dbus? ( dev-qt/qtdbus:4 ) pdf? ( app-text/poppler[qt4] ) sqlite? ( dev-qt/qtsql:4[sqlite] ) svg? ( dev-qt/qtsvg:4 ) ) qt5? ( dev-qt/linguist-tools:5 dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dbus? ( dev-qt/qtdbus:5 ) pdf? ( >=app-text/poppler-0.26.4[qt5] ) sqlite? ( dev-qt/qtsql:5[sqlite] ) svg? ( dev-qt/qtsvg:5 ) ) !svg? ( virtual/freedesktop-icon-theme )
+REQUIRED_USE=^^ ( qt4 qt5 ) ?? ( fitz pdf )
+SLOT=0
+SRC_URI=https://launchpad.net/qpdfview/trunk/0.4.15/+download/qpdfview-0.4.15.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	l10n	33bde4fb0cfd3a21a277b66bfd837e19	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	55ebcc6f3269308d226969c26704e343	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c1aa542eb792380c5ccfbf081837d28d

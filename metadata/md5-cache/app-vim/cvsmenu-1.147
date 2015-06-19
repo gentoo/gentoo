@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: CVS(NT) integration script
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=1245
+KEYWORDS=amd64 ppc x86
+LICENSE=LGPL-2
+RDEPEND=dev-vcs/cvs || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/cvsmenu-1.147.tar.bz2 http://dev.gentoo.org/~radhermit/vim/cvsmenu-1.147.tar.bz2
+_eclasses_=vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=14a0f27d1c58e14cc54fe8553cda23aa

@@ -1,0 +1,96 @@
+package goby;
+
+option java_package = "edu.cornell.med.icb.goby.reads";
+option optimize_for = SPEED;
+
+message ReadCollection {
+     repeated ReadEntry reads = 1;
+}
+
+message ReadEntry {
+  /*
+    Index of a read.
+  */
+  required uint32 read_index = 1;
+   /*
+    Index of the barcode, if any.
+  */
+  optional uint32 barcode_index = 10;
+  /*
+     Read identifier/name may be present.
+  */
+  optional string read_identifier = 23;
+  /*
+     Additional description about the read (from Fasta/Q format).
+   */
+  optional string description = 22;
+  /*
+    Length of the sequence.
+   */
+  required uint32 read_length = 2;
+  /*
+    Sequence, encoded as ascii characters stored in single bytes.
+   */
+  optional bytes sequence = 3;
+  /*
+   The second sequence in a pair. Stored the same way as the sequence attribute.
+  */
+  optional bytes sequence_pair = 5;
+  /*
+    Length of the second sequence in a pair.
+  */
+  optional uint32 read_length_pair = 6;
+  /*
+    Quality scores in Phred units, stored as single bytes (0-255).
+  */
+  optional bytes quality_scores = 4;
+  /*
+    Quality scores for the second sequence in a pair. Stored as the 'qualityScores' attribute.
+   */
+  optional bytes quality_scores_pair = 7;
+  /*
+    Compressed stream of data. The first byte indicates the compression/decompression method (codec). The remaining bytes are
+    content compressed with the codec.
+  */
+  optional bytes compressed_data = 8;
+  /*
+     Stores meta-data about the reads. Typically meta-data is stored in the very first read of a
+     read collection, with the understanding that the meta-data applies to all the reads in the
+     collection. Meta-data can be used to store information about when the sample was sequenced,
+     or other information of interest. The key-value pair format is sufficiently flexible to
+     accomodate a variety of needs. The following keys are pre-defined. Please use pre-defined
+     keys so that automated tools can use metadata in relatively standard way. Please note that
+     some keys provide a format for the value. This format should also be followed to garantee
+     that meta data can be used computationally in fully automatic manner.
+
+     key="sequencing-run-start-date" value="MM/DD/YYYY" Used to record when the sequencing run
+     was initiated on the instrument. Can be used to detect batch effect in a large set of samples.
+     key="platform" value="<free-text>". Value is free text, but the following terms are pre-defined.
+      Illumina GaIIx
+      Illumina HiSeq 1000
+      Illumina HiSeq 2000
+      Helicos Heliscope
+      LifeTech 5500 SOLiD
+      LifeTech 5500xl SOLiD
+      Roche 454 GS FLX Ti
+
+      key="organism" value="species name"
+      Since Goby 1.9.1
+  */
+  repeated MetaData meta_data = 25;
+
+}
+/*
+ A message to store a key/value pair and represent metadata about reads.
+ Since Goby 1.9.1
+ */
+message MetaData {
+ /*
+   Provides the key. See examples in the documentation of meta_data for ReadEntry.
+ */
+ required string key=1;
+ /*
+   Describes the value associated with the key. See examples in the documentation of meta_data for ReadEntry.
+ */
+ required string value=2;
+}

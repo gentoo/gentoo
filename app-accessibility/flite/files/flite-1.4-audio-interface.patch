@@ -1,0 +1,22 @@
+--- configure.in	2009-08-15 06:46:38.000000000 +1000
++++ configure.in	2011-08-30 00:53:26.000000000 +1000
+@@ -304,7 +304,6 @@
+ 	[  --with-audio          with specific audio support (none linux freebsd etc) ],
+         AUDIODRIVER=$with_audio )
+ 
+-if test "x$AUDIODEFS" = x; then
+     case "$AUDIODRIVER" in
+ 	linux|oss)
+ 	    AUDIODRIVER=oss
+@@ -325,9 +324,10 @@
+ 	    ;;
+ 	none)
+ 	    AUDIODEFS=-DCST_AUDIO_NONE
++	    AUDIOLIBS=
+ 	    ;;
+     esac
+-fi
++
+ AC_SUBST(AUDIODRIVER)
+ AC_SUBST(AUDIODEFS)
+ AC_SUBST(AUDIOLIBS)

@@ -1,0 +1,176 @@
+# ChangeLog for app-cdr/cdemu-daemon
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdemu-daemon/ChangeLog,v 1.13 2015/03/27 10:15:08 ago Exp $
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> cdemu-daemon-3.0.2.ebuild:
+  Stable for x86, wrt bug #544156
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> cdemu-daemon-3.0.2.ebuild:
+  Stable for amd64, wrt bug #544156
+
+*cdemu-daemon-3.0.2 (21 Feb 2015)
+
+  21 Feb 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -cdemu-daemon-2.1.0.ebuild, cdemu-daemon-2.1.1.ebuild,
+  +cdemu-daemon-3.0.2.ebuild,
+  -files/cdemu-daemon-2.1.0-DISABLE_DEPRECATED.patch:
+  Version bump, adds image writing (bug #518590, thanks to Rafał Mużyło).
+  Drop old.
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> cdemu-daemon-2.1.1.ebuild:
+  Stable for x86, wrt bug #494802
+
+  19 Jan 2014; Pacho Ramos <pacho@gentoo.org> cdemu-daemon-2.1.1.ebuild:
+  amd64 stable, bug 494802
+
+*cdemu-daemon-2.1.1 (08 Oct 2013)
+
+  08 Oct 2013; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -cdemu-daemon-2.0.0.ebuild, +cdemu-daemon-2.1.1.ebuild:
+  Version bump; bad sector emulation is now off by default. Remove old.
+
+  20 Jul 2013; Agostino Sarubbo <ago@gentoo.org> cdemu-daemon-2.1.0.ebuild:
+  Stable for x86, wrt bug #477004
+
+  20 Jul 2013; Agostino Sarubbo <ago@gentoo.org> cdemu-daemon-2.1.0.ebuild:
+  Stable for amd64, wrt bug #477004
+
+  29 Jun 2013; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -cdemu-daemon-1.5.0.ebuild:
+  Remove old.
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> cdemu-daemon-2.0.0.ebuild:
+  Stable for amd64, wrt bug #473538
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> cdemu-daemon-2.0.0.ebuild:
+  Stable for x86, wrt bug #473538
+
+*cdemu-daemon-2.1.0 (17 Jun 2013)
+
+  17 Jun 2013; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +cdemu-daemon-2.1.0.ebuild,
+  +files/cdemu-daemon-2.1.0-DISABLE_DEPRECATED.patch:
+  Version bump, adds support for non-blocking I/O and device addition/removal
+  (bug #472784, thanks to Henrik Stokseth and Rafał Mużyło).
+
+*cdemu-daemon-2.0.0 (28 Jan 2013)
+*cdemu-daemon-1.5.0 (28 Jan 2013)
+
+  28 Jan 2013; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +cdemu-daemon-1.5.0.ebuild, +cdemu-daemon-2.0.0.ebuild, +metadata.xml:
+  Rename cdemud to cdemu-daemon to follow upstream convention and executable
+  name. Version bump (bug #451748, thanks to Agostino Sarubbo). Update to
+  EAPI5. Update license. Drop old.
+
+  20 Apr 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -files/cdemud.conf.d-1.1.0, -files/cdemud.init.d-1.1.0, -cdemud-1.2.0.ebuild:
+  old
+
+  09 Apr 2012; Markus Meier <maekke@gentoo.org> cdemud-1.5.0.ebuild:
+  x86 stable, bug #406941
+
+  20 Mar 2012; Agostino Sarubbo <ago@gentoo.org> cdemud-1.5.0.ebuild:
+  Stable for amd64, wrt bug #406941
+
+  22 Feb 2012; Jeroen Roovers <jer@gentoo.org> cdemud-1.5.0.ebuild:
+  Marked ~hppa (bug #300331).
+
+*cdemud-1.5.0 (22 Jan 2012)
+
+  22 Jan 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -cdemud-1.3.0.ebuild, +cdemud-1.5.0.ebuild:
+  Bump, now uses glib's gdbus instead of dbus-glib. Drop old.
+
+  18 Jan 2012; Agostino Sarubbo <ago@gentoo.org> cdemud-1.4.0.ebuild:
+  Stable for amd64, wrt bug #397709
+
+*cdemud-1.4.0 (23 Nov 2011)
+
+  23 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org> cdemud-1.2.0.ebuild,
+  cdemud-1.3.0.ebuild, +cdemud-1.4.0.ebuild:
+  Bump, port to EAPI4, update description. Cdemud is now dbus-activated on use,
+  so an init script is no longer needed. (bug #384331)
+
+  22 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org> metadata.xml:
+  Add myself as maintainer.
+
+  22 Nov 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #82110
+
+  04 Aug 2011; Samuli Suominen <ssuominen@gentoo.org> cdemud-1.3.0.ebuild:
+  Remove unnecessary sys-fs/sysfsutils depend wrt #347215 by Rafał Mużyło.
+
+  01 Nov 2010; Peter Volkov <pva@gentoo.org> cdemud-1.3.0.ebuild:
+  Unify HOMEPAGE with {g,}cdemu
+
+*cdemud-1.3.0 (19 Oct 2010)
+
+  19 Oct 2010; Peter Volkov <pva@gentoo.org> +cdemud-1.3.0.ebuild:
+  Version bump.
+
+  09 Feb 2010; Peter Volkov <pva@gentoo.org> files/cdemud.init.d-1.1.0:
+  Remove bashism from init script, bug #303847 by Michał Górny
+
+  01 Feb 2010; Peter Volkov <pva@gentoo.org> cdemud-1.2.0.ebuild:
+  Version up vhba dependency, bug #278696, thank Henrik Stokseth for report.
+
+  01 Feb 2010; Peter Volkov <pva@gentoo.org> -cdemud-1.1.0.ebuild,
+  -cdemud-1.1.0-r1.ebuild, -files/cdemu-daemon-1.1.0-fix1.diff,
+  cdemud-1.2.0.ebuild:
+  amd64 stable, bug #296868. Dropped old.
+
+  16 Jan 2010; Christian Faulhammer <fauli@gentoo.org> cdemud-1.2.0.ebuild:
+  stable x86, bug 296868
+
+*cdemud-1.2.0 (23 Oct 2009)
+
+  23 Oct 2009; Peter Volkov <pva@gentoo.org> +cdemud-1.2.0.ebuild:
+  Version bump, bug #279908, thank Fabio Cavallo for report.
+
+  30 Mar 2009; Tiziano Müller <dev-zero@gentoo.org>
+  files/cdemud.init.d-1.1.0:
+  Removed bashishms from init-script.
+
+  15 Mar 2009; Tiziano Müller <dev-zero@gentoo.org>
+  files/cdemud.init.d-1.1.0:
+  Forgot to remove the -d switch (bug #233904).
+
+*cdemud-1.1.0-r1 (12 Mar 2009)
+
+  12 Mar 2009; Tiziano Müller <dev-zero@gentoo.org>
+  +files/cdemud.conf.d-1.1.0, +files/cdemud.init.d-1.1.0,
+  +files/cdemu-daemon-1.1.0-fix1.diff, +cdemud-1.1.0-r1.ebuild:
+  Added upstream fix1.diff, fixing dependencies (using EAPI=2), ebuild
+  cleanup, updated conf.d/init.d scripts (bugs #255402, #238431, #233904).
+
+  22 Aug 2008; Markus Meier <maekke@gentoo.org> cdemud-1.0.0.ebuild:
+  amd64 stable, bug #232566
+
+  09 Aug 2008; Marcelo Goes <vanquirius@gentoo.org> cdemud-1.1.0.ebuild:
+  Add dependencies for bug 233876. Thanks to Zdenek Behan <behanz at seznam
+  dot cz> and <liquitsnake at gmx dot net>.
+
+*cdemud-1.1.0 (03 Aug 2008)
+
+  03 Aug 2008; Marcelo Goes <vanquirius@gentoo.org> +cdemud-1.1.0.ebuild:
+  1.1.0 version bump for bug 232996. Thanks to Yaroslav Isakov
+  <yaroslav.isakov at gmail dot com>.
+
+  26 Jun 2008; Santiago M. Mola <coldwind@gentoo.org> cdemud-1.0.0.ebuild:
+  Add ~amd64 keyword wrt bug #198672
+
+  06 Jun 2008; Christian Faulhammer <opfer@gentoo.org> cdemud-1.0.0.ebuild:
+  stable x86, bug 224825
+
+*cdemud-1.0.0 (19 May 2008)
+
+  19 May 2008; Marcelo Goes <vanquirius@gentoo.org> +files/cdemud.conf.d,
+  +files/cdemud.init.d, +metadata.xml, +cdemud-1.0.0.ebuild:
+  Add cdemud for bug 198672 - userspace cdemu. Thanks to Daniel Lin <ephemient
+  at gmail dot com>, Daniel Fullmer <cgibreak at gmail dot com>, Sebastian
+  Stammler <stammler at stud.tu-darmstadt.de>, Rafal Muzylo <galtgendo at o2
+  dot pl>, Jan Bessai <Jan.Bessai at gmx dot de>, Pham Ngoc Hai <pngochai at
+  yahoo dot com>, Petr Sykora <petr.sykora at gmail dot com>, Dirk Best
+  <fatplumber at gmx dot de>, Marcel Schmedes <sm at kleinreich dot de>, Vladi
+  <vladimir.elisseev at gmail dot com>, Ambroz BIzjak <ambro at b4ever dot
+  net> and anyone I missed.

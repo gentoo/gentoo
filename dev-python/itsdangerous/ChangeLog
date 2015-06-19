@@ -1,0 +1,70 @@
+# ChangeLog for dev-python/itsdangerous
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/itsdangerous/ChangeLog,v 1.17 2015/06/03 19:45:59 jlec Exp $
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  15 May 2015; Anthony G. Basile <blueness@gentoo.org> itsdangerous-0.21.ebuild,
+  itsdangerous-0.22.ebuild, itsdangerous-0.23.ebuild, itsdangerous-0.24.ebuild:
+  Keyword ~arm.  Bug #549516.
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> itsdangerous-0.21.ebuild,
+  itsdangerous-0.22.ebuild, itsdangerous-0.23.ebuild, itsdangerous-0.24.ebuild:
+  Drop old Python implementations
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org> itsdangerous-0.24.ebuild:
+  Stable for x86, wrt bug #518474
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org> itsdangerous-0.24.ebuild:
+  Stable for amd64, wrt bug #518474
+
+  11 Aug 2014; Anthony G. Basile <blueness@gentoo.org> itsdangerous-0.21.ebuild,
+  itsdangerous-0.22.ebuild, itsdangerous-0.23.ebuild, itsdangerous-0.24.ebuild:
+  Keyword ~ppc, ~ppc64 for bug #519618
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> itsdangerous-0.21.ebuild,
+  itsdangerous-0.22.ebuild, itsdangerous-0.23.ebuild, itsdangerous-0.24.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*itsdangerous-0.24 (03 Apr 2014)
+
+  03 Apr 2014; Tim Harder <radhermit@gentoo.org> +itsdangerous-0.24.ebuild:
+  Version bump, add python3_4 support.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> itsdangerous-0.21.ebuild,
+  itsdangerous-0.22.ebuild, itsdangerous-0.23.ebuild:
+  Add support for the new PyPy slotting.
+
+  19 Mar 2014; Ian Delaney <idella4@gentoo.org> itsdangerous-0.23.ebuild:
+  fix test phase; rm un-needed dep nose, IUSE test, fixes Bug #503744 by an
+  eroen
+
+  11 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org> itsdangerous-0.23.ebuild:
+  Added python-3.2 compat
+
+  06 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org> itsdangerous-0.23.ebuild:
+  Keyword amd64-linux and x86-linux
+
+*itsdangerous-0.23 (25 Jan 2014)
+
+  25 Jan 2014; Tim Harder <radhermit@gentoo.org> +itsdangerous-0.23.ebuild:
+  Version bump, run tests.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> itsdangerous-0.21.ebuild,
+  itsdangerous-0.22.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*itsdangerous-0.22 (17 Jul 2013)
+
+  17 Jul 2013; Tim Harder <radhermit@gentoo.org> +itsdangerous-0.22.ebuild:
+  Version bump.
+
+  27 Jun 2013; Mike Gilbert <floppym@gentoo.org> itsdangerous-0.21.ebuild:
+  Depend on setuptools.
+
+*itsdangerous-0.21 (14 Jun 2013)
+
+  14 Jun 2013; Rafael G. Martins <rafaelmartins@gentoo.org>
+  +itsdangerous-0.21.ebuild, +metadata.xml:
+  Initial commit. Dependency for dev-python/flask

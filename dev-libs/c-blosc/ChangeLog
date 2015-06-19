@@ -1,0 +1,53 @@
+# ChangeLog for dev-libs/c-blosc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/c-blosc/ChangeLog,v 1.13 2015/06/07 08:46:20 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*c-blosc-1.5.3 (02 Apr 2015)
+
+  02 Apr 2015; Justin Lecher <jlec@gentoo.org> +c-blosc-1.5.3.ebuild,
+  +files/c-blosc-1.5.3-shared-libs.patch, c-blosc-1.3.2.ebuild,
+  c-blosc-1.3.5.ebuild:
+  Version Bump, bug #544770; fix version string for lz4 dep to compatible
+  version, bug #516432
+
+  09 Mar 2015; Pacho Ramos <pacho@gentoo.org> c-blosc-1.3.2.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> c-blosc-1.3.2.ebuild:
+  amd64 stable, bug 540290
+
+*c-blosc-1.3.2 (17 Feb 2015)
+
+  17 Feb 2015; Justin Lecher <jlec@gentoo.org> +c-blosc-1.3.2.ebuild:
+  Readd old version for dev-python/blz
+
+  17 Feb 2015; Justin Lecher <jlec@gentoo.org> -c-blosc-1.3.2.ebuild,
+  metadata.xml:
+  Drop old
+
+  16 Feb 2015; Pacho Ramos <pacho@gentoo.org> c-blosc-1.3.5.ebuild:
+  amd64/x86 stable, bug #531740
+
+  27 Jun 2014; Sébastien Fabbro <bicatali@gentoo.org> c-blosc-1.3.5.ebuild:
+  Using sub-slotted deps
+
+*c-blosc-1.3.5 (14 Apr 2014)
+
+  14 Apr 2014; Sébastien Fabbro <bicatali@gentoo.org> +c-blosc-1.3.5.ebuild,
+  metadata.xml:
+  Version bump
+
+  10 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org> c-blosc-1.3.2.ebuild:
+  Add minimal docs
+
+  06 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  Fixed use flags
+
+*c-blosc-1.3.2 (06 Feb 2014)
+
+  06 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org> +c-blosc-1.3.2.ebuild,
+  +files/c-blosc-1.3.2-shared-libs.patch, +metadata.xml:
+  Initial import

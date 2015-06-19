@@ -1,0 +1,15 @@
+# ChangeLog for dev-perl/Business-ISSN
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Business-ISSN/ChangeLog,v 1.2 2014/08/26 14:58:55 axs Exp $
+
+*Business-ISSN-0.910.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Business-ISSN-0.910.0-r1.ebuild, -Business-ISSN-0.910.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+*Business-ISSN-0.910.0 (11 Sep 2012)
+
+  11 Sep 2012; Torsten Veller <tove@gentoo.org> +Business-ISSN-0.910.0.ebuild,
+  +metadata.xml:
+  Initial commit for biber (#428818)

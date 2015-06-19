@@ -1,0 +1,21 @@
+# /etc/conf.d/sshd: config file for /etc/init.d/sshd
+
+# Where is your sshd_config file stored?
+
+SSHD_CONFDIR="/etc/ssh"
+
+
+# Any random options you want to pass to sshd.
+# See the sshd(8) manpage for more info.
+
+SSHD_OPTS=""
+
+
+# Pid file to use (needs to be absolute path).
+
+#SSHD_PIDFILE="/var/run/sshd.pid"
+
+
+# Path to the sshd binary (needs to be absolute path).
+
+#SSHD_BINARY="/usr/sbin/sshd"

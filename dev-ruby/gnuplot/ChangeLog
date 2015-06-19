@@ -1,0 +1,112 @@
+# ChangeLog for dev-ruby/gnuplot
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/gnuplot/ChangeLog,v 1.25 2015/05/09 05:56:07 graaff Exp $
+
+  09 May 2015; Hans de Graaff <graaff@gentoo.org> gnuplot-2.6.2-r2.ebuild:
+  Use rm -f to avoid issues like bug 540182.
+
+  20 Mar 2015; Hans de Graaff <graaff@gentoo.org> gnuplot-2.6.2-r2.ebuild:
+  Document problems with ruby22.
+
+  03 Nov 2014; Manuel Rüger <mrueg@gentoo.org> -gnuplot-2.6.2-r1.ebuild,
+  gnuplot-2.6.2-r2.ebuild:
+  Drop jruby. Cleanup old.
+
+*gnuplot-2.6.2-r2 (15 May 2014)
+
+  15 May 2014; Manuel Rüger <mrueg@gentoo.org> +gnuplot-2.6.2-r2.ebuild,
+  gnuplot-2.6.2-r1.ebuild:
+  Add ruby21 target. Remove ruby18.
+
+  02 Nov 2013; Manuel Rüger <mrueg@gentoo.org> -gnuplot-2.6.0.ebuild,
+  -gnuplot-2.6.2.ebuild:
+  Cleanup old.
+
+*gnuplot-2.6.2-r1 (09 Oct 2013)
+
+  09 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +gnuplot-2.6.2-r1.ebuild:
+  Add ruby20 target.
+
+*gnuplot-2.6.2 (02 Feb 2013)
+
+  02 Feb 2013; Hans de Graaff <graaff@gentoo.org> +gnuplot-2.6.2.ebuild:
+  Version bump.
+
+  02 Feb 2013; Hans de Graaff <graaff@gentoo.org> -gnuplot-2.4.1.ebuild,
+  -gnuplot-2.5.0.ebuild:
+  Cleanup.
+
+*gnuplot-2.6.0 (22 Nov 2012)
+
+  22 Nov 2012; Hans de Graaff <graaff@gentoo.org> +gnuplot-2.6.0.ebuild:
+  Version bump.
+
+*gnuplot-2.5.0 (06 Aug 2012)
+
+  06 Aug 2012; Hans de Graaff <graaff@gentoo.org> +gnuplot-2.5.0.ebuild:
+  Version bump.
+
+  06 Aug 2012; Hans de Graaff <graaff@gentoo.org> -gnuplot-2.3.6.ebuild:
+  Cleanup.
+
+  01 Jul 2012; Raúl Porcel <armin76@gentoo.org> gnuplot-2.3.6.ebuild,
+  gnuplot-2.4.1.ebuild:
+  Drop alpha keywords
+
+*gnuplot-2.4.1 (08 Apr 2012)
+
+  08 Apr 2012; Hans de Graaff <graaff@gentoo.org> +gnuplot-2.4.1.ebuild:
+  Version bump.
+
+  08 Apr 2012; Hans de Graaff <graaff@gentoo.org> -gnuplot-2.3.4.ebuild,
+  -gnuplot-2.3.5.ebuild:
+  Version bump.
+
+*gnuplot-2.3.6 (05 Mar 2011)
+
+  05 Mar 2011; Hans de Graaff <graaff@gentoo.org> +gnuplot-2.3.6.ebuild:
+  Version bump.
+
+*gnuplot-2.3.5 (30 Jan 2011)
+
+  30 Jan 2011; Hans de Graaff <graaff@gentoo.org> +gnuplot-2.3.5.ebuild:
+  Version bump.
+
+  29 Aug 2010; Hans de Graaff <graaff@gentoo.org> -gnuplot-2.3.1.ebuild,
+  -gnuplot-2.3.3.ebuild:
+  Remove old versions.
+
+  29 Aug 2010; Hans de Graaff <graaff@gentoo.org> gnuplot-2.3.4.ebuild:
+  Add ~alpha and ~ppc keywords per the report in bug 330913 by Kazuyoshi
+  Furutaka.
+
+*gnuplot-2.3.4 (07 Aug 2010)
+
+  07 Aug 2010; Hans de Graaff <graaff@gentoo.org> +gnuplot-2.3.4.ebuild:
+  Version bump, now with documentation and tests.
+
+*gnuplot-2.3.3 (31 Jul 2010)
+
+  31 Jul 2010; Hans de Graaff <graaff@gentoo.org> +gnuplot-2.3.3.ebuild:
+  Version bump.
+
+  25 Jun 2010; Hans de Graaff <graaff@gentoo.org> -gnuplot-2.2.ebuild:
+  Remove old version.
+
+  22 May 2010; Diego E. Pettenò <flameeyes@gentoo.org> gnuplot-2.2.ebuild:
+  Various cleanups.
+
+*gnuplot-2.3.1 (30 Apr 2010)
+
+  30 Apr 2010; Hans de Graaff <graaff@gentoo.org> +gnuplot-2.3.1.ebuild:
+  Version bump. Convert to ruby-fakegem.
+
+  22 Aug 2009; Hans de Graaff <graaff@gentoo.org> gnuplot-2.2.ebuild:
+  Add missing CVS header. Add explicit empty DEPEND.
+
+*gnuplot-2.2 (05 Jul 2009)
+
+  05 Jul 2009; Hans de Graaff <graaff@gentoo.org> +gnuplot-2.2.ebuild,
+  +metadata.xml:
+  Initial import. Thanks to Bonne Eggleston and Kevin Fullerton for
+  providing ebuilds in bug #141616.

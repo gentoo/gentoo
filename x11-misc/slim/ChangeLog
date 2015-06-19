@@ -1,0 +1,613 @@
+# ChangeLog for x11-misc/slim
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/slim/ChangeLog,v 1.139 2014/12/05 21:01:34 axs Exp $
+
+  05 Dec 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +files/slim-1.3.6-freetype.patch, slim-1.3.6-r3.ebuild, slim-1.3.6-r4.ebuild:
+  fixed CMakeLists.txt to include all freetype headers, bug 517270
+
+  20 Sep 2014; Jeroen Roovers <jer@gentoo.org> slim-1.3.6-r3.ebuild,
+  slim-1.3.6-r4.ebuild:
+  Update HOMEPAGE (bug #523334 by Philip P.).
+
+  28 Feb 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +files/slim-1.3.6-drop-zlib.patch, slim-1.3.6-r3.ebuild, slim-1.3.6-r4.ebuild:
+  added missing x11-libs/libXrandr dependency, bug 503036; dropped unnecessary
+  configure requirement for zlib
+
+*slim-1.3.6-r4 (03 Feb 2014)
+
+  03 Feb 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +files/slim-1.3.6-fix-slimlock-nopam-v2.patch, +slim-1.3.6-r4.ebuild,
+  -files/slim-1.3.4-config.diff, -files/slim-1.3.5-glibc217-crypt.patch,
+  -files/slim-1.3.5-honour-cflags.patch,
+  -files/slim-1.3.5-systemd-service.patch, -slim-1.3.5-r4.ebuild:
+  install slimlock suid, bug 500204; remove old
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.6-r3.ebuild:
+  Stable for ppc64, wrt bug #491492
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.6-r3.ebuild:
+  Stable for ppc, wrt bug #491492
+
+  17 Dec 2013; Ian Stakenvicius <axs@gentoo.org> -slim-1.3.5-r2.ebuild,
+  -slim-1.3.5-r3.ebuild:
+  remove vulnerable versions, re bug 487688
+
+  17 Dec 2013; Raúl Porcel <armin76@gentoo.org> slim-1.3.5-r3.ebuild,
+  slim-1.3.5-r4.ebuild, slim-1.3.6-r3.ebuild:
+  sparc stable wrt #484912
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> slim-1.3.6-r3.ebuild:
+  x86 stable, bug #491492
+
+  30 Nov 2013; Markus Meier <maekke@gentoo.org> slim-1.3.6-r3.ebuild:
+  arm stable, bug #491492
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> slim-1.3.6-r3.ebuild:
+  amd64 stable, bug #491492
+
+  28 Oct 2013; Ian Stakenvicius <axs@gentoo.org>
+  +files/slim-1.3.6-fix-slimlock-nopam.patch, slim-1.3.6-r3.ebuild:
+  fixed build system to not try and install slimlock if it wasnt built, bug
+  489610
+
+  25 Oct 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r4.ebuild:
+  arm stable wrt bug #487688
+
+  25 Oct 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r4.ebuild:
+  Stable for x86, wrt bug #487688
+
+  25 Oct 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r4.ebuild:
+  Stable for ppc, wrt bug #487688
+
+  25 Oct 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r4.ebuild:
+  Stable for amd64, wrt bug #487688
+
+*slim-1.3.6-r3 (24 Oct 2013)
+
+  24 Oct 2013; Ian Stakenvicius <axs@gentoo.org> +files/slim-1.3.6-config.diff,
+  +files/slim-1.3.6-session-chooser.patch,
+  +files/slim-1.3.6-systemd-session.patch, +slim-1.3.6-r3.ebuild,
+  -slim-1.3.6-r2.ebuild:
+  fixed regression for session-chooser (bug 489078), changed default session
+  list to be from xsession .desktop files, changed operation of -nodaemon and
+  slim.service to fix systemd session issue after multiple logins
+  (bugs.freedesktop.org/show_bug.cgi?id=62866)
+
+*slim-1.3.6-r2 (23 Oct 2013)
+
+  23 Oct 2013; Ian Stakenvicius <axs@gentoo.org> +slim-1.3.6-r2.ebuild,
+  -slim-1.3.6-r1.ebuild:
+  add pam.d entry for slimlock to fix bug 489010
+
+  23 Oct 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r4.ebuild:
+  Stable for ppc64, wrt bug #487688
+
+*slim-1.3.5-r4 (22 Oct 2013)
+
+  22 Oct 2013; Ian Stakenvicius <axs@gentoo.org>
+  +files/slim-1.3.5-glibc217-crypt.patch, +slim-1.3.5-r4.ebuild:
+  backported security fix for bug 487688
+
+*slim-1.3.6-r1 (17 Oct 2013)
+
+  17 Oct 2013; Ian Stakenvicius <axs@gentoo.org>
+  +files/slim-1.3.6-libslim-cmake-fixes.patch, +slim-1.3.6-r1.ebuild,
+  -files/slim-1.3.6-lib-linking.patch, -slim-1.3.6.ebuild:
+  revbump and patch adjustment for build system to fix bug 488388
+
+*slim-1.3.6 (17 Oct 2013)
+
+  17 Oct 2013; Ian Stakenvicius <axs@gentoo.org>
+  +files/slim-1.3.6-honour-cflags.patch, +files/slim-1.3.6-lib-linking.patch,
+  +files/slim-1.3.6-strip-systemd-unit-install.patch, +slim-1.3.6.ebuild,
+  -slim-1.3.5-r1.ebuild:
+  version bump, remove old
+
+  26 Sep 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r3.ebuild:
+  Stable for arm, wrt bug #484912
+
+  25 Sep 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r3.ebuild:
+  Stable for ppc, wrt bug #484912
+
+  23 Sep 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r3.ebuild:
+  Stable for ppc64, wrt bug #484912
+
+  22 Sep 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r3.ebuild:
+  Stable for x86, wrt bug #484912
+
+  15 Sep 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r3.ebuild:
+  Stable for amd64, wrt bug #484912
+
+*slim-1.3.5-r3 (22 Aug 2013)
+
+  22 Aug 2013; Ian Stakenvicius <axs@gentoo.org>
+  +files/slim-1.3.5-disable-ck-for-systemd.patch, +slim-1.3.5-r3.ebuild:
+  if slim is started from its systemd service file then don't let it try to set
+  up a consolekit session
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r2.ebuild:
+  Stable for sparc, wrt bug #475192
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r2.ebuild:
+  Stable for arm, wrt bug #475192
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r2.ebuild:
+  Stable for x86, wrt bug #475192
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r2.ebuild:
+  Stable for amd64, wrt bug #475192
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r2.ebuild:
+  Stable for ppc64, wrt bug #475192
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r2.ebuild:
+  Stable for ppc, wrt bug #475192
+
+*slim-1.3.5-r2 (14 Feb 2013)
+
+  14 Feb 2013; Ian Stakenvicius <axs@gentoo.org>
+  +files/slim-1.3.5-honour-cflags.patch, +slim-1.3.5-r2.ebuild,
+  -files/14509-fix-keyboard-in-tty-from-which-slim-is-lauched.patch,
+  -files/15287-fix-pam-authentication-with-pam_unix2.patch,
+  -files/252280-fix-default_user-focus_passwd.patch,
+  -files/261359-fix-SIGTERM-freeze.patch,
+  -files/261713-restart-xserver-if-killed.patch,
+  -files/346037-stop_setting_host_for_pam_ck_connector_so.patch,
+  -files/slim-1.3.2-bsd-install.patch, -files/slim-1.3.2-ck.patch,
+  -files/slim-1.3.2-libpng15.patch, -files/slim-1.3.2-r3-config.diff,
+  -slim-1.3.2-r7.ebuild:
+  remove old, fix cflags override (bug 456144)
+
+  12 Feb 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r1.ebuild:
+  Stable for sparc, wrt bug #455856
+
+  11 Feb 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r1.ebuild:
+  Stable for arm, wrt bug #455856
+
+  10 Feb 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r1.ebuild:
+  Stable for ppc, wrt bug #455856
+
+  10 Feb 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r1.ebuild:
+  Stable for ppc64, wrt bug #455856
+
+  08 Feb 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r1.ebuild:
+  Stable for x86, wrt bug #455856
+
+  08 Feb 2013; Agostino Sarubbo <ago@gentoo.org> slim-1.3.5-r1.ebuild:
+  Stable for amd64, wrt bug #455856
+
+  07 Feb 2013; Ian Stakenvicius <axs@gentoo.org> slim-1.3.5-r1.ebuild:
+  fixed slot operator on libpng , bug 456084
+
+  06 Feb 2013; Ian Stakenvicius <axs@gentoo.org> slim-1.3.5-r1.ebuild:
+  bump to EAPI5 and put slot-operator dep on libpng
+
+  06 Feb 2013; Ian Stakenvicius <axs@gentoo.org> -slim-1.3.4-r2.ebuild,
+  -files/slim-1.3.4-arm.patch, -files/slim-1.3.4-libpng.patch,
+  -files/slim-1.3.4-pam-end.patch, -files/slim.service:
+  remove old
+
+*slim-1.3.5-r1 (06 Feb 2013)
+
+  06 Feb 2013; Ian Stakenvicius <axs@gentoo.org> -slim-1.3.5.ebuild,
+  +slim-1.3.5-r1.ebuild:
+  revbumped due to changes on disk
+
+  06 Feb 2013; Ian Stakenvicius <axs@gentoo.org> slim-1.3.5.ebuild,
+  +files/slim-1.3.5-systemd-service.patch:
+  fix install path of slim.service file, bug 455116
+
+*slim-1.3.5 (31 Dec 2012)
+
+  31 Dec 2012; Ian Stakenvicius <axs@gentoo.org> +slim-1.3.5.ebuild,
+  +files/slim-1.3.5-arm.patch:
+  version bump; better utf8 support, various fixes plus upstream systemd
+  support
+
+*slim-1.3.4-r2 (29 Dec 2012)
+
+  29 Dec 2012; Kacper Kowalik <xarthisius@gentoo.org> +files/slim.service,
+  +slim-1.3.4-r2.ebuild, -slim-1.3.4-r1.ebuild:
+  Install systemd unitfile, drop old
+
+  04 Nov 2012; Ian Stakenvicius <axs@gentoo.org> slim-1.3.2-r7.ebuild,
+  slim-1.3.4-r1.ebuild:
+  made pkg_postinst messages relevant based on emerge context to reduce elog
+  spam
+
+  05 Oct 2012; Ian Stakenvicius <axs@gentoo.org> slim-1.3.4-r1.ebuild,
+  +files/slim-1.3.4-arm.patch:
+  swapped snprintf for sprintf to support arm's broken C++98 (bug 430502)
+
+*slim-1.3.4-r1 (05 Oct 2012)
+
+  05 Oct 2012; Ian Stakenvicius <axs@gentoo.org> -files/slim-1.3.3-config.diff,
+  -slim-1.3.4.ebuild, +slim-1.3.4-r1.ebuild, +files/slim-1.3.4-config.diff,
+  +files/slim-1.3.4-pam-end.patch:
+  force default vt07 (bug 436620) and ensure pam session isn't erroneously
+  cleaned during child execution (cause for krb5 ticket cache not existing in
+  bug 436556)
+
+*slim-1.3.4 (27 Jun 2012)
+
+  27 Jun 2012; Ian Stakenvicius <axs@gentoo.org>
+  -files/405579-fix-numlock.patch, -slim-1.3.3.ebuild,
+  -files/slim-1.3.3-xmu-cmakelists.patch, +slim-1.3.4.ebuild,
+  +files/slim-1.3.4-libpng.patch:
+  version bump; remove old
+
+  23 Jun 2012; Luca Barbato <lu_zero@gentoo.org> slim-1.3.3.ebuild:
+  Tested on efikamx
+
+  19 May 2012; Anthony G. Basile <blueness@gentoo.org> slim-1.3.3.ebuild:
+  Keyword mips
+
+  10 May 2012; Ian Stakenvicius <axs@gentoo.org> slim-1.3.3.ebuild,
+  +files/slim-1.3.3-xmu-cmakelists.patch:
+  Fixed CMake check to find libXmu via X11 instead of GLUT, bug 414891
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> slim-1.3.2-r7.ebuild,
+  slim-1.3.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  19 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> -slim-1.3.2-r6.ebuild,
+  -files/slim-1.3.2-r2-config.diff, -files/Xsession-r2:
+  old
+
+  17 Mar 2012; Raúl Porcel <armin76@gentoo.org> slim-1.3.2-r7.ebuild:
+  sparc stable wrt #401135
+
+  05 Mar 2012; Ian Stakenvicius <axs@gentoo.org>
+  +files/405579-fix-numlock.patch, slim-1.3.3.ebuild:
+  fixed numlock issue, bug #405579 -- thanks to Vincent for the patch.
+
+*slim-1.3.3 (23 Feb 2012)
+
+  23 Feb 2012; Ian Stakenvicius <axs@gentoo.org> -slim-1.3.2-r3.ebuild,
+  +slim-1.3.3.ebuild, +files/slim-1.3.3-config.diff, -files/Xsession:
+  Version bump, cleaned up old ebuilds. No major changes to 1.3.3 compared to
+  1.3.2-r7
+
+  01 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> slim-1.3.2-r7.ebuild:
+  ppc/ppc64 stable wrt #401135
+
+  31 Jan 2012; Ian Stakenvicius <axs@gentoo.org> slim-1.3.2-r7.ebuild:
+  Stable for x86, wrt bug #401135 and thanks to Zlogene for confirmation
+
+  30 Jan 2012; Agostino Sarubbo <ago@gentoo.org> slim-1.3.2-r7.ebuild:
+  Stable for amd64, wrt bug #401135
+
+  18 Dec 2011; Raúl Porcel <armin76@gentoo.org> slim-1.3.2-r6.ebuild:
+  sparc stable wrt #386813
+
+  15 Dec 2011; Jeroen Roovers <jer@gentoo.org> files/slim-1.3.2-ck.patch:
+  Fix building with USE=-consolekit (bug #394845).
+
+*slim-1.3.2-r7 (14 Dec 2011)
+
+  14 Dec 2011; Ian Stakenvicius <axs@gentoo.org> -slim-1.3.2-r5.ebuild,
+  +slim-1.3.2-r7.ebuild, +files/slim-1.3.2-ck.patch, +files/Xsession-r3,
+  metadata.xml:
+  Added experimental native consolekit support via -r7, and removed old -r5
+  ebuild as -r6 is stable on some archs
+
+  13 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> slim-1.3.2-r6.ebuild:
+  x86 stable wrt bug #386813
+
+  13 Oct 2011; Ian Stakenvicius <axs@gentoo.org> ChangeLog:
+  Taking over maintainership, thanks darkside!
+
+  12 Oct 2011; Markos Chandras <hwoarang@gentoo.org> slim-1.3.2-r6.ebuild:
+  Stable on amd64 wrt bug #386813
+
+*slim-1.3.2-r6 (07 Sep 2011)
+
+  07 Sep 2011; Jeremy Olexa <darkside@gentoo.org>
+  +files/252280-fix-default_user-focus_passwd.patch, +slim-1.3.2-r6.ebuild,
+  +files/slim-1.3.2-r3-config.diff:
+  revision bump to fix bug 252280 by Ian Stakenvicius
+
+*slim-1.3.2-r5 (19 Aug 2011)
+
+  19 Aug 2011; Jeremy Olexa <darkside@gentoo.org> -slim-1.3.2-r4.ebuild,
+  +slim-1.3.2-r5.ebuild, files/Xsession-r2:
+  revbump for consolekit fixes by Ian Stakenvicius
+
+*slim-1.3.2-r4 (16 Aug 2011)
+
+  16 Aug 2011; Jeremy Olexa <darkside@gentoo.org> +slim-1.3.2-r4.ebuild,
+  +files/Xsession-r2:
+  New Xsession script, bug 334111 by Ian Stakenvicius
+
+  09 Aug 2011; Samuli Suominen <ssuominen@gentoo.org> slim-1.3.2-r3.ebuild,
+  +files/slim-1.3.2-libpng15.patch:
+  Fix building with libpng15 wrt #378505 by Ian Stakenvicius and Diego Elio
+  Pettenò
+
+  27 May 2011; Naohiro Aota <naota@gentoo.org> slim-1.3.2-r3.ebuild,
+  +files/slim-1.3.2-bsd-install.patch:
+  Add ~x86-fbsd keyword; add patch for bsd install
+
+  10 Jan 2011; Brent Baude <ranger@gentoo.org> slim-1.3.2-r3.ebuild:
+  stable ppc, bug 348542
+
+  04 Jan 2011; Michael Weber <xmw@gentoo.org> slim-1.3.2-r3.ebuild:
+  sparc stable (bug 348542)
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> slim-1.3.2-r3.ebuild:
+  amd64/ppc64 stable wrt #348542
+
+  18 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> slim-1.3.2-r3.ebuild:
+  x86 stable wrt bug #348542
+
+*slim-1.3.2-r3 (02 Dec 2010)
+
+  02 Dec 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +files/346037-stop_setting_host_for_pam_ck_connector_so.patch,
+  +slim-1.3.2-r3.ebuild:
+  Don't set host to avoid bad interaction with pam_ck_connector.so from
+  sys-auth/consolekit and use "system-local-login" wrt #346037 by Matthias
+  Gehre.
+
+  07 Nov 2010; Samuli Suominen <ssuominen@gentoo.org> slim-1.3.2-r1.ebuild,
+  slim-1.3.2-r2.ebuild:
+  Use virtual/jpeg wrt #327487.
+
+  27 Sep 2010; Jeremy Olexa <darkside@gentoo.org> slim-1.3.2-r1.ebuild,
+  slim-1.3.2-r2.ebuild, metadata.xml:
+  Drop frivolous 'screenshot' USE flag that wasn't being used - no change to
+  files-on-disk since slim.conf spells out what users need to do. Modify
+  metadata.xml to reflect reality
+
+*slim-1.3.2-r2 (20 Sep 2010)
+
+  20 Sep 2010; Jeremy Olexa <darkside@gentoo.org>
+  -slim-1.3.1_p20091114.ebuild, -files/slim-1.3.1-config.diff,
+  -files/slim-1.3.1-gcc4.4.patch, -slim-1.3.2.ebuild, +slim-1.3.2-r2.ebuild,
+  -files/slim-1.3.2-config.diff, +files/slim-1.3.2-r2-config.diff,
+  +files/Xsession:
+  Revbump to vastly improve the session handling. Work done by Ian
+  Stakenvicius in bug 334111. Also remove old and cleanup.
+
+  12 Sep 2010; Raúl Porcel <armin76@gentoo.org> slim-1.3.2-r1.ebuild:
+  sparc stable wrt #333661
+
+  12 Sep 2010; Joseph Jezak <josejx@gentoo.org> slim-1.3.2-r1.ebuild:
+  Marked ppc stable for bug #333661.
+
+  06 Sep 2010; Brent Baude <ranger@gentoo.org> slim-1.3.2-r1.ebuild:
+  Marking slim-1.3.2-r1 ppc64 for bug 333661
+
+  28 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> slim-1.3.2-r1.ebuild:
+  x86 stable wrt security bug #333661
+
+  28 Aug 2010; Markos Chandras <hwoarang@gentoo.org> slim-1.3.2-r1.ebuild:
+  Stable on amd64 wrt bug #333661
+
+*slim-1.3.2-r1 (24 Aug 2010)
+
+  24 Aug 2010; Jeremy Olexa <darkside@gentoo.org>
+  +files/261359-fix-SIGTERM-freeze.patch, +slim-1.3.2-r1.ebuild,
+  +files/slim-1.3.2-r1-config.diff:
+  Revision bump which should improve shutdown behavior by patching a SIGTERM
+  issue and changing the pid file to slim.pid instead of slim.lock. Thanks
+  to Grygoriy I. Fuchedzhy and others in bug 261359
+
+*slim-1.3.2 (31 Jul 2010)
+
+  31 Jul 2010; Jeremy Olexa <darkside@gentoo.org> +slim-1.3.2.ebuild,
+  +files/slim-1.3.2-config.diff:
+  Upstream version bump with minor changes, bug 328447. Drop screenshot USE
+  flag and suggest a method with comments in the conf file, bug 252241
+
+  21 May 2010; Jeremy Olexa <darkside@gentoo.org> -slim-1.3.1-r4.ebuild,
+  -slim-1.3.1-r5.ebuild, slim-1.3.1_p20091114.ebuild:
+  Solve circular dep issues with USE=branding enabled by using PDEPEND. bug
+  320913, reported by Ed Wiget
+
+  11 May 2010; Samuli Suominen <ssuominen@gentoo.org>
+  slim-1.3.1_p20091114.ebuild:
+  Use pkg-config to find libpng wrt #319065 by Rafael G. Martins.
+
+  10 May 2010; Samuli Suominen <ssuominen@gentoo.org>
+  slim-1.3.1_p20091114.ebuild:
+  Link to -lpng instead of -lpng12 for libpng14 to work wrt #319065 by
+  Philip Taffner.
+
+  04 May 2010; Raúl Porcel <armin76@gentoo.org>
+  slim-1.3.1_p20091114.ebuild:
+  sparc stable wrt #270345
+
+  15 Apr 2010; Markus Meier <maekke@gentoo.org> slim-1.3.1_p20091114.ebuild:
+  amd64 stable, bug #270345
+
+  15 Apr 2010; Brent Baude <ranger@gentoo.org> slim-1.3.1_p20091114.ebuild:
+  Marking slim-1.3.1_p20091114 ppc for bug 270345
+
+  12 Apr 2010; Brent Baude <ranger@gentoo.org> slim-1.3.1_p20091114.ebuild:
+  Marking slim-1.3.1_p20091114 ppc64 for bug 270345
+
+  08 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  slim-1.3.1_p20091114.ebuild:
+  x86 stable wrt security bug #270345
+
+*slim-1.3.1_p20091114 (28 Mar 2010)
+
+  28 Mar 2010; Jeremy Olexa <darkside@gentoo.org>
+  +files/14509-fix-keyboard-in-tty-from-which-slim-is-lauched.patch,
+  +files/15287-fix-pam-authentication-with-pam_unix2.patch,
+  +files/261713-restart-xserver-if-killed.patch,
+  +slim-1.3.1_p20091114.ebuild:
+  New trunk snapshot as prepared by Doktor Notor in bug 306961. Fixes/closes
+  bugs 261713, 270345, 297655 including security bug
+
+  20 Mar 2010; Raúl Porcel <armin76@gentoo.org> slim-1.3.1-r5.ebuild:
+  sparc stable wrt #302473
+
+  17 Feb 2010; Markus Meier <maekke@gentoo.org> slim-1.3.1-r5.ebuild:
+  x86 stable, bug #302473
+
+  10 Feb 2010; Joseph Jezak <josejx@gentoo.org> slim-1.3.1-r5.ebuild:
+  Marked ppc stable for bug #302473.
+
+  06 Feb 2010; Markos Chandras <hwoarang@gentoo.org> slim-1.3.1-r5.ebuild:
+  Stable on amd64 wrt bug #302473
+
+  27 Jan 2010; Brent Baude <ranger@gentoo.org> slim-1.3.1-r5.ebuild:
+  stable ppc64, bug 302473
+
+*slim-1.3.1-r5 (25 Mar 2009)
+
+  25 Mar 2009; Jeremy Olexa <darkside@gentoo.org>
+  +files/slim-1.3.1-gcc4.4.patch, +files/slim.logrotate,
+  +slim-1.3.1-r5.ebuild:
+  Add logrotate support by Daniel Pielmeier (billie) bug 262034 & gcc-4.4
+  patch reported in bug 252745
+
+  21 Mar 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  -files/slim-1.3.0-gcc43.patch, -slim-1.3.0-r1.ebuild,
+  -slim-1.3.1-r1.ebuild:
+  Remove old versions.
+
+  20 Mar 2009; Joseph Jezak <josejx@gentoo.org> slim-1.3.1-r4.ebuild:
+  Marked ppc/ppc64 stable for bug #261124.
+
+  07 Mar 2009; Raúl Porcel <armin76@gentoo.org> slim-1.3.1-r4.ebuild:
+  sparc/x86 stable wrt #261124
+
+  06 Mar 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  slim-1.3.1-r4.ebuild:
+  stable amd64, bug 261124
+
+*slim-1.3.1-r4 (26 Dec 2008)
+
+  26 Dec 2008; Jeremy Olexa <darkside@gentoo.org>
+  files/slim-1.3.1-config.diff, -slim-1.3.1-r3.ebuild,
+  +slim-1.3.1-r4.ebuild:
+  Fix config file mistake by me, reported in bug #252353
+
+*slim-1.3.1-r3 (26 Dec 2008)
+
+  26 Dec 2008; Jeremy Olexa <darkside@gentoo.org>
+  files/slim-1.3.1-config.diff, -slim-1.3.1-r2.ebuild,
+  +slim-1.3.1-r3.ebuild:
+  Add USE=branding, if set the default slim theme will be our very own
+  developer's (nightmorph@g.o) theme, yay. Also, make slim start as a daemon
+  again, bug #252353
+
+*slim-1.3.1-r2 (23 Dec 2008)
+
+  23 Dec 2008; Jeremy Olexa <darkside@gentoo.org>
+  +files/slim-1.3.1-config.diff, metadata.xml, -slim-1.3.0-r2.ebuild,
+  +slim-1.3.1-r2.ebuild:
+  New slim.conf patch (bug 250722) by Nico R. Wohlgemuth. Converted to EAPI-2
+  since portage-2.1.6.2 will be stable any day now. add screenshot use flag to
+  dep on imagemagick
+
+  12 Dec 2008; Raúl Porcel <armin76@gentoo.org> slim-1.3.1-r1.ebuild:
+  sparc/x86 stable wrt #248448
+
+  29 Nov 2008; Joseph Jezak <josejx@gentoo.org> slim-1.3.1-r1.ebuild:
+  Marked ppc stable for bug #248448. Going stable early to allow the removal
+  of 1.3.0-r1.
+
+  26 Nov 2008; Raúl Porcel <armin76@gentoo.org> ChangeLog:
+  sparc/x86 stable wrt #248448
+
+  24 Nov 2008; Brent Baude <ranger@gentoo.org> slim-1.3.1-r1.ebuild:
+  stable ppc64, bug 248448
+
+  23 Nov 2008; Jeremy Olexa <darkside@gentoo.org> slim-1.3.1-r1.ebuild:
+  amd64 stable, bug #248448
+
+*slim-1.3.1-r1 (23 Nov 2008)
+
+  23 Nov 2008; Jeremy Olexa <darkside@gentoo.org> -slim-1.3.1.ebuild,
+  +slim-1.3.1-r1.ebuild:
+  on second though, the proper fix is to rev bump slim to lose the coreutils
+  dep, bug #215661
+
+  23 Nov 2008; Jeremy Olexa <darkside@gentoo.org> slim-1.3.1.ebuild:
+  remove corefonts from explicit RDEPEND, not needed as seen in bug #215661
+
+  26 Sep 2008; Jeremy Olexa <darkside@gentoo.org> slim-1.3.1.ebuild:
+  re-add ~ppc64 to 1.3.1, they snuck up on me and added the keyword
+
+  26 Sep 2008; Jeremy Olexa <darkside@gentoo.org> +slim-1.3.1.ebuild:
+  version bump, thanks to Daniel Pielmeier in bug #238801
+
+  26 Sep 2008; Alexis Ballier <aballier@gentoo.org> slim-1.3.0-r2.ebuild:
+  keyword ~ppc64, working fine on a PowerMac 970
+
+  22 Sep 2008; Jeremy Olexa <darkside@gentoo.org> slim-1.3.0-r1.ebuild,
+  slim-1.3.0-r2.ebuild:
+  clean up postinst and add words about USE=pam for bug #238328. Thanks to
+  nightmorph for investigating
+
+  20 Sep 2008; Raúl Porcel <armin76@gentoo.org> slim-1.3.0-r2.ebuild:
+  Re-add ~sparc/~x86 wrt #238159
+
+*slim-1.3.0-r2 (20 Sep 2008)
+
+  20 Sep 2008; Jeremy Olexa <darkside@gentoo.org> metadata.xml,
+  +slim-1.3.0-r2.ebuild:
+  modify x11-misc/slim to now show your login in wtmp/utmp. added dep, hence
+  dropped keywords. thanks to Andrew Stimpson for the fix in bug #218523
+
+  27 Aug 2008; Brent Baude <ranger@gentoo.org> slim-1.3.0-r1.ebuild:
+  stable ppc, bug 209540
+
+  25 Aug 2008; Christoph Mende <angelos@gentoo.org> slim-1.3.0-r1.ebuild:
+  Respect LDFLAGS, bug 232176 and dropped maintainership
+
+  05 May 2008; Samuli Suominen <drac@gentoo.org>
+  +files/slim-1.3.0-gcc43.patch, slim-1.3.0-r1.ebuild:
+  Fix building with GCC 4.3 wrt #213154, thanks to B. Nutzer.
+
+  27 Jan 2008; Christoph Mende <angelos@gentoo.org> -slim-1.2.6.ebuild,
+  -slim-1.3.0.ebuild, slim-1.3.0-r1.ebuild:
+  Stable on amd64 and remove old
+
+  27 Jan 2008; Raúl Porcel <armin76@gentoo.org> slim-1.3.0-r1.ebuild:
+  sparc/x86 stable
+
+  01 Jan 2008; Christoph Mende <angelos@gentoo.org> slim-1.3.0-r1.ebuild:
+  Install a default pam.d file and honor XSESSION
+
+*slim-1.3.0-r1 (27 Oct 2007)
+
+  27 Oct 2007; Christoph Mende <angelos@gentoo.org> +slim-1.3.0-r1.ebuild:
+  Fixed PAM handling, bug 197225 by Florian Wagner
+
+  08 Sep 2007; nixnut <nixnut@gentoo.org> slim-1.3.0.ebuild:
+  Added ~ppc wrt bug 188305
+
+  02 Sep 2007; Christoph Mende <angelos@gentoo.org> slim-1.3.0.ebuild:
+  Stable on amd64
+
+  13 Aug 2007; Christoph Mende <angelos@gentoo.org> slim-1.2.6.ebuild:
+  Stable on amd64
+
+*slim-1.3.0 (03 Aug 2007)
+
+  03 Aug 2007; Christoph Mende <angelos@gentoo.org> metadata.xml,
+  +slim-1.3.0.ebuild:
+  Taking over maintainership and bump to 1.3.0
+
+  12 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> slim-1.2.6.ebuild:
+  Stable on sparc
+
+  30 May 2007; Gustavo Zacarias <gustavoz@gentoo.org> slim-1.2.6.ebuild:
+  Keyworded ~sparc wrt #180204
+
+  02 May 2007; Samuli Suominen <drac@gentoo.org> slim-1.2.6.ebuild:
+  Keyword ~amd64.
+
+*slim-1.2.6 (02 May 2007)
+
+  02 May 2007; Samuli Suominen <drac@gentoo.org> +metadata.xml,
+  +slim-1.2.6.ebuild:
+  Initial commit from Sunrise Overlay for bugs 107526, 176150. Thanks to Jakub
+  Moc.

@@ -1,0 +1,134 @@
+# ChangeLog for media-libs/avidemux-plugins
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/avidemux-plugins/ChangeLog,v 1.22 2015/01/29 17:25:10 mgorny Exp $
+
+  29 Jan 2015; Michał Górny <mgorny@gentoo.org>
+  avidemux-plugins-2.6.2-r2.ebuild, avidemux-plugins-2.6.3.ebuild,
+  avidemux-plugins-2.6.4-r1.ebuild, avidemux-plugins-2.6.4.ebuild,
+  avidemux-plugins-2.6.5-r1.ebuild, avidemux-plugins-2.6.5.ebuild,
+  avidemux-plugins-2.6.7.ebuild, avidemux-plugins-2.6.8.ebuild,
+  avidemux-plugins-9999.ebuild:
+  Convert to CPU_FLAGS_X86.
+
+  14 Nov 2014; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Remove myself.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  avidemux-plugins-2.6.2-r2.ebuild, avidemux-plugins-2.6.3.ebuild,
+  avidemux-plugins-2.6.4-r1.ebuild, avidemux-plugins-2.6.4.ebuild,
+  avidemux-plugins-2.6.5-r1.ebuild, avidemux-plugins-2.6.5.ebuild,
+  avidemux-plugins-2.6.7.ebuild, avidemux-plugins-2.6.8.ebuild,
+  avidemux-plugins-9999.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*avidemux-plugins-2.6.8 (17 Mar 2014)
+
+  17 Mar 2014; Tom Wijsman <TomWij@gentoo.org> +avidemux-plugins-2.6.8.ebuild:
+  Version bump to 2.6.8; fixes bug #504780, reported by Frank Krömmelbein.
+
+*avidemux-plugins-2.6.7 (17 Dec 2013)
+
+  17 Dec 2013; Tom Wijsman <TomWij@gentoo.org> +avidemux-plugins-2.6.7.ebuild,
+  avidemux-plugins-9999.ebuild, metadata.xml:
+  Version bump to 2.6.7; fixes bug #493730, reported by Frank Krömmelbein. Added
+  USE flag vdpau; fixes bug #490260, reported by Nikoli.
+
+*avidemux-plugins-2.6.5-r1 (01 Sep 2013)
+
+  01 Sep 2013; Tom Wijsman <TomWij@gentoo.org>
+  +avidemux-plugins-2.6.5-r1.ebuild:
+  Revision bump to install command line plugins; because avidemux3_cli has been
+  brought back in media-video/avidemux, this package needs a rebuild. Requested
+  by Nikoli, also see https://gist.github.com/TomWij/92c50218c51b33a16978 which
+  shows which files get added by the rebuild.
+
+*avidemux-plugins-2.6.5 (01 Sep 2013)
+
+  01 Sep 2013; Tom Wijsman <TomWij@gentoo.org> +avidemux-plugins-2.6.5.ebuild:
+  Version bump to 2.6.5.
+
+  01 Sep 2013; Tom Wijsman <TomWij@gentoo.org> avidemux-plugins-9999.ebuild:
+  Preparation for 2.6.5, make use of python-single-r1 and fix up shebangs, fixes
+  bug #467254.
+
+  31 Aug 2013; Tom Wijsman <TomWij@gentoo.org> avidemux-plugins-9999.ebuild:
+  Preparation for 2.6.5, fixed up src_install phase to properly call the
+  preinstall and install targets (without calling the all target) for each
+  process; as a result, all plugins get properly installed.
+
+  09 Aug 2013; Ian Stakenvicius <axs@gentoo.org> avidemux-plugins-2.6.3.ebuild,
+  avidemux-plugins-2.6.4-r1.ebuild, avidemux-plugins-2.6.4.ebuild:
+  Adjusted deps for dev-lang/spidermonkey to ensure SLOT=0
+
+*avidemux-plugins-9999 (17 Jul 2013)
+
+  17 Jul 2013; Tom Wijsman <TomWij@gentoo.org> +avidemux-plugins-9999.ebuild:
+  Made 9999 ebuild that uses upstream's git, applied various cmake related
+  ebuild fixes to simplify maintenance; thanks to Nikoli for the suggestion.
+
+  12 Jul 2013; Tom Wijsman <TomWij@gentoo.org> avidemux-plugins-2.6.4-r1.ebuild,
+  avidemux-plugins-2.6.4.ebuild:
+  Loosen up avidemux dependency to allow revision bumps to be made.
+
+  12 Jul 2013; Tom Wijsman <TomWij@gentoo.org> avidemux-plugins-2.6.4-r1.ebuild,
+  avidemux-plugins-2.6.4.ebuild:
+  Heavily clean up ebuild to make it shorter, use the eclass more and lowercase
+  variables; fix up faac, faad and xvideo by instead introducing proper aac and
+  xv USE flags as reported by Nikoli.
+
+  12 Jul 2013; Tom Wijsman <TomWij@gentoo.org> avidemux-plugins-2.6.4-r1.ebuild,
+  metadata.xml:
+  Removed freetype2 USE flag because there is truetype already; which is the
+  global USE flag to be used for freetype. Thanks to Nikoli.
+
+*avidemux-plugins-2.6.4-r1 (12 Jul 2013)
+
+  12 Jul 2013; Tom Wijsman <TomWij@gentoo.org>
+  +avidemux-plugins-2.6.4-r1.ebuild,
+  +files/avidemux-plugins-2.6.4-optional-pulse.patch, metadata.xml:
+  Revision bump. Fix up dependencies that are enabled by default as well as
+  those that are disabled by default; they were not automagic as checks were
+  present, I just did not notice them. This was incorrect due to wrongly
+  checking the dependencies in my early developer days, as well as adding the
+  cmake arguments in a sub phase of the configure phase instead of for the whole
+  configure phase; I need to make sure I check USE="-*" and USE="*" in the
+  future and look closer at cmake files to avoid this. Fixes bug #476602,
+  reported by Nikoli.
+
+  07 Jul 2013; Tom Wijsman <TomWij@gentoo.org> avidemux-plugins-2.6.2-r2.ebuild,
+  avidemux-plugins-2.6.3.ebuild, avidemux-plugins-2.6.4.ebuild:
+  Add sub slot operator for media-libs/x264 dependency.
+
+*avidemux-plugins-2.6.4 (16 May 2013)
+
+  16 May 2013; Tom Wijsman <TomWij@gentoo.org> +avidemux-plugins-2.6.4.ebuild:
+  Version bump to 2.6.4.
+
+  16 May 2013; Tom Wijsman <TomWij@gentoo.org> avidemux-plugins-2.6.2-r2.ebuild,
+  avidemux-plugins-2.6.3.ebuild:
+  If avidemux-plugins will be build with qt4, avidemux needs to have that USE
+  flag set as well.
+
+*avidemux-plugins-2.6.3 (29 Mar 2013)
+
+  29 Mar 2013; Tom Wijsman <TomWij@gentoo.org> +avidemux-plugins-2.6.3.ebuild,
+  metadata.xml:
+  Version bump to 2.6.3. Reworked USE flags to be more specific to each avidemux
+  package, the way it is meant to be; introduced additional support for some
+  libraries through USE flags as a consequence.
+
+*avidemux-plugins-2.6.2-r2 (24 Mar 2013)
+
+  24 Mar 2013; Tom Wijsman <TomWij@gentoo.org>
+  +avidemux-plugins-2.6.2-r2.ebuild, -avidemux-plugins-2.6.2-r1.ebuild:
+  Revision bump. Now that the package is revised, the install target for
+  avidemux-plugins became available because avidemux is seen as present on the
+  system; changed preinstall to install in the avidemux-plugins ebuild such that
+  the plugins are properly installed. Fixes bug #462514 and bug #462516.
+
+*avidemux-plugins-2.6.2-r1 (20 Mar 2013)
+
+  20 Mar 2013; Tom Wijsman <TomWij@gentoo.org>
+  +avidemux-plugins-2.6.2-r1.ebuild, +metadata.xml:
+  New package: Removed gtk USE flag, fixes bug #461988. Split plugins to its own
+  package, fixes bug #462098.

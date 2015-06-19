@@ -1,0 +1,142 @@
+# ChangeLog for games-rpg/egoboo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/egoboo/ChangeLog,v 1.33 2015/03/01 16:32:30 tupone Exp $
+
+  01 Mar 2015; Tupone Alfredo <tupone@gentoo.org> egoboo-2.8.1.ebuild:
+  EAPI 5
+
+  30 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org> -egoboo-2.7.4.ebuild,
+  -files/2.22-amd64.patch, -files/2.22-endian.patch,
+  -files/egoboo-2.7.4-enet.patch, -files/egoboo-2.7.4-underlink.patch:
+  old
+
+  30 Oct 2012; <ago@gentoo.org> egoboo-2.8.1.ebuild:
+  Stable for amd64, wrt bug #437314
+
+  17 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> egoboo-2.8.1.ebuild:
+  x86 stable wrt bug #437314
+
+  11 Oct 2012; Michael Sterrett <mr_bones_@gentoo.org> egoboo-2.8.1.ebuild:
+  add libsdl[joystick] dep (bug #438044)
+
+  11 Oct 2012; Anthony G. Basile <blueness@gentoo.org> egoboo-2.8.1.ebuild:
+  stable ppc, bug #437314
+
+  02 Jul 2012; Michael Sterrett <mr_bones_@gentoo.org> egoboo-2.8.1.ebuild:
+  tidy; use emake
+
+*egoboo-2.8.1 (30 Apr 2012)
+
+  30 Apr 2012; Tupone Alfredo <tupone@gentoo.org> +egoboo-2.8.1.ebuild,
+  +files/egoboo-2.8.1-gentoo.patch:
+  Version bump to 2.8.1 Bug #366731 by Matija "hook" Šuklje
+
+  18 Jun 2011; Tupone Alfredo <tupone@gentoo.org> egoboo-2.7.4.ebuild,
+  +files/egoboo-2.7.4-underlink.patch:
+  Fix underlink. Bug #369467 by Diego Elio Pettenò
+
+  12 Aug 2010; Joseph Jezak <josejx@gentoo.org> egoboo-2.7.4.ebuild:
+  Marked ppc stable for bug #310943.
+
+  15 Jul 2010; Markos Chandras <hwoarang@gentoo.org> egoboo-2.7.4.ebuild:
+  Stable on amd64 wrt bug #310943
+
+  15 Jul 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  files/egoboo-2.7.4-enet.patch:
+  honor LDFLAGS (bug #328313)
+
+  14 Jul 2010; Tomáš Chvátal <scarabeus@gentoo.org> egoboo-2.7.4.ebuild:
+  Block dependency on the enet version.
+
+  24 Mar 2010; Christian Faulhammer <fauli@gentoo.org> egoboo-2.7.4.ebuild:
+  stable x86, bug 310943
+
+  21 Feb 2010; Tupone Alfredo <tupone@gentoo.org> egoboo-2.2.2-r1.ebuild,
+  -egoboo-2.22-r1.ebuild:
+  Moving 2.22 to 2.2.2 (last step)
+
+*egoboo-2.2.2-r1 (21 Feb 2010)
+
+  21 Feb 2010; Tupone Alfredo <tupone@gentoo.org> +egoboo-2.2.2-r1.ebuild,
+  egoboo-2.7.4.ebuild:
+  Using right compiler. Moving 2.22 to 2.2.2 (1st pass)
+
+  21 Feb 2010; Tupone Alfredo <tupone@gentoo.org> egoboo-2.7.4.ebuild:
+  Adding net-libs/enet dependency
+
+*egoboo-2.7.4 (20 Feb 2010)
+
+  20 Feb 2010; Tupone Alfredo <tupone@gentoo.org> +egoboo-2.7.4.ebuild,
+  +files/egoboo-2.7.4-enet.patch:
+  Version bump to 2.7.4 Bug #193403 by Matija Suklje (hook)
+  Fix ELF file installed in /usr/share. Bug #305243 by flameeyes@gentoo.org
+
+*egoboo-2.22-r1 (27 May 2007)
+
+  27 May 2007; Tupone Alfredo <tupone@gentoo.org> +egoboo-2.22-r1.ebuild:
+  Adding menu entry. Bug #160208 by Pacho Ramos
+
+  24 Apr 2006; Scott Stoddard <deltacow@gentoo.org> files/2.22-amd64.patch:
+  Fixed DOS formatting noticed by vapier.
+
+  24 Apr 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  files/2.22-amd64.patch, egoboo-2.22.ebuild:
+  fix amd patch (bug #131092); use doins; tidy
+
+  14 Mar 2006; Scott Stoddard <deltacow@gentoo.org> +files/2.22-amd64.patch,
+  egoboo-2.22.ebuild:
+  Added patch to determine correct endianness for amd64 submitted by Bruno 
+  Roggeri <bruno.roggeri@metz.supelec.fr> and marked ~amd64.
+
+  14 Mar 2006; Michael Sterrett <mr_bones_@gentoo.org> egoboo-2.22.ebuild:
+  X is implicit
+
+  17 May 2005; Chris Gianelloni <wolf31o2@gentoo.org> egoboo-2.22.ebuild:
+  Cleanup for bug #92745.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> egoboo-2.22.ebuild:
+  virtual/glibc -> virtual/libc
+
+  15 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> egoboo-2.22.ebuild:
+  inherit eutils for epatch
+
+  15 Feb 2004; David Holm <dholm@gentoo.org> egoboo-2.22.ebuild,
+  files/2.22-endian.patch:
+  Added a patch to make egoboo compile on ppc. Keyworded ~ppc.
+
+  08 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> egoboo-2.22.ebuild,
+  files/egoboo-2.22.sh:
+  try to make things actually work (bug 37474); use games eclass
+
+  01 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> egoboo-2.22.ebuild:
+  chown user.group -> chown user:group
+
+*egoboo-2.22 (18 Sep 2002)
+
+  31 Jan 2003; Martin Holzer <mholzer@gentoo.org> egoboo-2.22.ebuild :
+  Change SRC_URI to use mirror://sourceforge.
+
+  06 Dec 2003; Mark Guertin <gerk@gentoo.org> egoboo-2.22.ebuild :
+  set -ppc to keywords, has upstream endian issues
+
+  18 Sep 2002: Matthew Kennedy <mkennedy@gentoo.org>
+  egoboo-2.22.ebuild, ChangeLog :
+
+  Filter -march=pentium4 or -march=athlon*. Replace with i686.
+    
+  20 Jul 2002: Jose Alberto Suárez López <bass@gentoo.org> egoboo-2.22.ebuild :
+  Fixed bug #5272. Only moving env variables to other section.
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> egoboo-2.22.ebuild :
+  Added KEYWORDS.
+
+  20 June 2002; George Shapovalov <george@gentoo.org> all :
+
+  corrected ebuild to let regular users run egoboo,
+  committed the ebuild
+
+  31 May 2002; Sean P. Kane <spk42@spkane.org> egoboo-2.22.ebuild :
+  First egoboo ebuild

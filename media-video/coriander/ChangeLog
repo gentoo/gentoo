@@ -1,0 +1,137 @@
+# ChangeLog for media-video/coriander
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/coriander/ChangeLog,v 1.23 2015/02/05 16:40:00 pacho Exp $
+
+*coriander-2.0.2 (05 Feb 2015)
+
+  05 Feb 2015; Pacho Ramos <pacho@gentoo.org> +coriander-2.0.2.ebuild,
+  -coriander-2.0.0.ebuild:
+  Version bump, drop old
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> coriander-2.0.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  14 Feb 2012; Ulrich Müller <ulm@gentoo.org> coriander-2.0.0.ebuild:
+  QA: Fix ebuild header, bug 403707.
+
+  13 Sep 2011; Pacho Ramos <pacho@gentoo.org> -coriander-2.0.0_rc6.ebuild:
+  Drop old.
+
+  13 Sep 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #99651
+
+*coriander-2.0.0 (28 Oct 2008)
+
+  28 Oct 2008; Stefaan De Roeck <stefaan@gentoo.org>
+  +coriander-2.0.0.ebuild:
+  Version bump to 2.0.0, fixing bug #242240
+
+  27 Apr 2008; Stefaan De Roeck <stefaan@gentoo.org>
+  -coriander-2.0.0_pre6.ebuild, -coriander-2.0.0_rc1-r1.ebuild:
+  Purge older versions, fixes part of bug #218105 (because ffmpeg is not
+  supported in the latest coriander)
+
+  30 Jan 2008; Stefaan De Roeck <stefaan@gentoo.org>
+  coriander-2.0.0_rc6.ebuild:
+  No ffmpeg support for now, disabled by upstream because it is in development
+
+  30 Jan 2008; Stefaan De Roeck <stefaan@gentoo.org>
+  coriander-2.0.0_rc6.ebuild:
+  Fix bug #205578: dev-util/pkgconfig is required to build
+
+  26 Jan 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  coriander-2.0.0_rc6.ebuild:
+  add missing ffmpeg to IUSE
+
+*coriander-2.0.0_rc6 (24 Jan 2008)
+
+  24 Jan 2008; Stefaan De Roeck <stefaan@gentoo.org>
+  +coriander-2.0.0_rc6.ebuild:
+  Bumping to newer version, supporting media-libs/libdc1394-2.0.0
+
+  14 Jan 2008; Stefaan De Roeck <stefaan@gentoo.org> metadata.xml:
+  Assigning this package to stefaan, updating metadata.xml
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing seemant from metadata.xml as per #202469. Assigning to
+  maintainer-needed.
+
+  27 Nov 2007; Matthias Schwarzott <zzam@gentoo.org>
+  coriander-2.0.0_pre6.ebuild, coriander-2.0.0_rc1-r1.ebuild:
+  Fixed quoting.
+
+  21 Dec 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  -coriander-1.0.0.ebuild:
+  gnome-1.x removal
+
+*coriander-2.0.0_rc1-r1 (07 Dec 2006)
+
+  07 Dec 2006; Daniel Drake <dsd@gentoo.org>
+  +files/coriander-2.0.0_rc1-ffmpeg-configure.patch,
+  +coriander-2.0.0_rc1-r1.ebuild:
+  Fix ffmpeg configure-time behaviour thanks to Gad Kadosh in bug #133143
+
+*coriander-2.0.0_rc1 (15 Sep 2006)
+
+  15 Sep 2006; Daniel Drake <dsd@gentoo.org> +coriander-2.0.0_rc1.ebuild:
+  Version bump
+
+*coriander-2.0.0_pre6 (08 Jun 2006)
+
+  08 Jun 2006; Seemant Kulleen <seemant@gentoo.org>
+  -coriander-2.0.0_pre4.ebuild, coriander-2.0.0_pre5.ebuild,
+  +coriander-2.0.0_pre6.ebuild:
+  version bump and dep string fix
+
+*coriander-2.0.0_pre5 (20 Mar 2006)
+
+  20 Mar 2006; Seemant Kulleen <seemant@gentoo.org>
+  +coriander-2.0.0_pre5.ebuild:
+  version bump to latest upstream release and will only work with the pre6
+  series from libdc1394
+
+*coriander-2.0.0_pre4 (03 Nov 2005)
+
+  03 Nov 2005; Seemant Kulleen <seemant@gentoo.org>
+  coriander-2.0.0_pre3.ebuild, +coriander-2.0.0_pre4.ebuild:
+  version bump to, you know, actually *work* with libdc1394-2.0.0-pre4
+
+*coriander-2.0.0_pre3 (29 Aug 2005)
+
+  29 Aug 2005; Seemant Kulleen <seemant@gentoo.org>
+  +coriander-2.0.0_pre3.ebuild:
+  Version bump to newest prerelease -- this is a gnome2 app finally
+
+  26 Aug 2005; Seemant Kulleen <seemant@gentoo.org> +metadata.xml:
+  add metadata
+
+  26 Aug 2005; Seemant Kulleen <seemant@gentoo.org>
+  +coriander-1.0.0_pre3.ebuild, +coriander-1.0.0.ebuild:
+  moved this from media-plugins to media-video, where it belongs. Same
+  question as libdc1394 applies here. Why media-plugins, for crying out loud?
+
+  26 Aug 2005; Seemant Kulleen <seemant@gentoo.org>
+  coriander-1.0.0_pre3.ebuild, coriander-1.0.0.ebuild:
+  moved libdc1394 from media-plugins to media-libs
+
+  25 Jan 2005; Markus Rothe <corsair@gentoo.org> coriander-1.0.0.ebuild:
+  Stable on ppc64
+
+  04 Dec 2004; Markus Rothe <corsair@gentoo.org> coriander-1.0.0.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #72995
+
+*coriander-1.0.0 (10 Oct 2004); Pieter Van den Abeele <pvdabeel@gentoo.org>
+
+  10 Oct 2004; Stewart Allen <srallen@mweb.co.za> coriander-1.0.0.ebuild:
+  Coriander is a Linux graphical user interface (GUI) that let you control a 
+  Digital Camera through the IEEE1394 bus. Added ~x86 to KEYWORDS.
+  Changed ">=media-plugins/libdc1394-1.0.0" in DEPEND. 
+  Version Bump.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+*coriander-1.0.0_pre3 (09 Aug 2004)
+
+  09 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> coriander-1.0.0_pre3.ebuild:
+  provides v4l compatibility for Apple iSight under linux 

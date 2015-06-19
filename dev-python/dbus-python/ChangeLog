@@ -1,0 +1,498 @@
+# ChangeLog for dev-python/dbus-python
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/dbus-python/ChangeLog,v 1.143 2015/04/08 08:05:14 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> dbus-python-1.2.0-r1.ebuild:
+  Drop old Python implementations
+
+*dbus-python-1.2.0-r1 (23 Nov 2014)
+
+  23 Nov 2014; Mike Gilbert <floppym@gentoo.org> +dbus-python-1.2.0-r1.ebuild,
+  -dbus-python-1.2.0.ebuild:
+  Revbump for last change.
+
+  23 Nov 2014; Mike Gilbert <floppym@gentoo.org> dbus-python-1.2.0.ebuild:
+  Update py-compile to fix pyc file installation, bug 529502.
+
+  20 Jun 2014; Ian Delaney <idella4@gentoo.org> dbus-python-1.2.0.ebuild:
+  add py3.4 support
+
+  26 Apr 2014; Pacho Ramos <pacho@gentoo.org> dbus-python-1.2.0.ebuild:
+  Adapt to latest pygobject don't providing python2.6 support
+
+  05 Jan 2014; Fabian Groffen <grobian@gentoo.org> dbus-python-1.2.0.ebuild:
+  Marked ~m68k-mint, bug #494512
+
+  24 Aug 2013; Samuli Suominen <ssuominen@gentoo.org>
+  -dbus-python-1.1.1-r1.ebuild:
+  old
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.2.0.ebuild:
+  Stable for ppc64, wrt bug #453086
+
+  02 Jun 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.2.0.ebuild:
+  Stable for sh, wrt bug #453086
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.2.0.ebuild:
+  Stable for sparc, wrt bug #453086
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.2.0.ebuild:
+  Stable for s390, wrt bug #453086
+
+  18 May 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.2.0.ebuild:
+  Stable for alpha, wrt bug #453086
+
+  18 May 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.2.0.ebuild:
+  Stable for ia64, wrt bug #453086
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.2.0.ebuild:
+  Stable for ppc, wrt bug #453086
+
+  15 May 2013; Jeroen Roovers <jer@gentoo.org> dbus-python-1.2.0.ebuild:
+  Stable for HPPA (bug #453086).
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.2.0.ebuild:
+  Stable for arm, wrt bug #453086
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.2.0.ebuild:
+  Stable for x86, wrt bug #453086
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.2.0.ebuild:
+  Stable for amd64, wrt bug #453086
+
+  10 May 2013; Samuli Suominen <ssuominen@gentoo.org>
+  -dbus-python-1.0.0.ebuild, -dbus-python-1.1.1.ebuild,
+  -files/dbus-python-1.0.0-test-socket-tmpdir.patch:
+  old
+
+*dbus-python-1.2.0 (10 May 2013)
+
+  10 May 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +dbus-python-1.2.0.ebuild:
+  Version bump.
+
+  10 Apr 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.1.1-r1.ebuild:
+  Stable for s390, wrt bug #458992
+
+  03 Apr 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.1.1-r1.ebuild:
+  Revert because pygobject requires too much unstable deps
+
+  03 Apr 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.1.1-r1.ebuild:
+  Stable for s390, wrt bug #458992
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.1.1-r1.ebuild:
+  Stable for sh, wrt bug #458992
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.1.1-r1.ebuild:
+  Stable for sparc, wrt bug #458992
+
+  28 Mar 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.1.1-r1.ebuild:
+  Stable for ia64, wrt bug #458992
+
+  23 Mar 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.1.1-r1.ebuild:
+  Stable for alpha, wrt bug #458992
+
+  23 Mar 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.1.1-r1.ebuild:
+  Stable for arm, wrt bug #458992
+
+  23 Mar 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.1.1-r1.ebuild:
+  Stable for ppc64, wrt bug #458992
+
+  22 Mar 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.1.1-r1.ebuild:
+  Stable for ppc, wrt bug #458992
+
+  16 Mar 2013; Jeroen Roovers <jer@gentoo.org> dbus-python-1.1.1-r1.ebuild:
+  Stable for HPPA (bug #458992).
+
+  15 Mar 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.1.1-r1.ebuild:
+  Stable for x86, wrt bug #458992
+
+  15 Mar 2013; Agostino Sarubbo <ago@gentoo.org> dbus-python-1.1.1-r1.ebuild:
+  Stable for amd64, wrt bug #458992
+
+  20 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  dbus-python-1.1.1-r1.ebuild:
+  Fix test dependency now that latest pygobject is unmasked. Thanks to Nikoli
+  for noticing.
+
+  18 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  dbus-python-1.1.1-r1.ebuild:
+  Generate API docs only when using python-2.7 since epydoc is incompatible
+  with python3 (bug #447642, thanks to Juergen Rose).
+
+*dbus-python-1.1.1-r1 (10 Dec 2012)
+
+  10 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +dbus-python-1.1.1-r1.ebuild:
+  Update to python-r1.eclass and EAPI5.
+
+  14 Oct 2012; Raúl Porcel <armin76@gentoo.org> dbus-python-1.1.1.ebuild:
+  ia64/m68k/s390/sh/sparc stable wrt #416725
+
+  14 Oct 2012; Matt Turner <mattst88@gentoo.org> dbus-python-1.1.1.ebuild:
+  Stable on alpha, bug 416725.
+
+  25 Jul 2012; Markus Meier <maekke@gentoo.org> dbus-python-1.1.1.ebuild:
+  arm stable, bug #416725
+
+  21 Jul 2012; Jeff Horelick <jdhore@gentoo.org> dbus-python-1.1.1.ebuild:
+  marked x86 per bug 416725
+
+  21 Jul 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -files/dbus-python-0.83.1-workaround-broken-test.patch,
+  -dbus-python-0.84.0.ebuild, -dbus-python-1.1.0.ebuild:
+  old
+
+  21 Jul 2012; Samuli Suominen <ssuominen@gentoo.org> dbus-python-1.1.1.ebuild:
+  amd64/ppc/ppc64 stable wrt #416725
+
+  20 Jul 2012; Jeroen Roovers <jer@gentoo.org> dbus-python-1.1.1.ebuild:
+  Stable for HPPA (bug #416725).
+
+  15 Jul 2012; Raúl Porcel <armin76@gentoo.org> dbus-python-1.0.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #403843
+
+  12 Jul 2012; Akinori Hattori <hattya@gentoo.org> dbus-python-1.0.0.ebuild:
+  ia64 stable wrt bug #403843
+
+*dbus-python-1.1.1 (27 Jun 2012)
+
+  27 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +dbus-python-1.1.1.ebuild:
+  Version bump.
+
+  15 May 2012; Samuli Suominen <ssuominen@gentoo.org> dbus-python-1.1.0.ebuild:
+  This is ready to enter ~arch. Forward ~amd64-fbsd from dbus-python-1.0.0
+  here.
+
+  13 May 2012; Alexis Ballier <aballier@gentoo.org> dbus-python-1.0.0.ebuild:
+  keyword ~amd64-fbsd
+
+*dbus-python-1.1.0 (11 May 2012)
+
+  11 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +dbus-python-1.1.0.ebuild:
+  Version bump.
+
+  05 May 2012; Raúl Porcel <armin76@gentoo.org> dbus-python-1.0.0.ebuild:
+  Revert
+
+  05 May 2012; Raúl Porcel <armin76@gentoo.org> dbus-python-1.0.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #403843
+
+  04 May 2012; Patrick Lauer <patrick@gentoo.org> dbus-python-0.84.0.ebuild,
+  dbus-python-1.0.0.ebuild:
+  Migrating dev-util/pkgconfig -> virtual/pkgconfig
+
+  12 Mar 2012; Markus Meier <maekke@gentoo.org> dbus-python-1.0.0.ebuild:
+  arm stable, bug #403843
+
+  12 Mar 2012; Jeff Horelick <jdhore@gentoo.org> dbus-python-1.0.0.ebuild:
+  marked x86 per bug 403843
+
+  09 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> dbus-python-1.0.0.ebuild:
+  amd64/ppc/ppc64 stable wrt #403843
+
+  29 Feb 2012; Mike Gilbert <floppym@gentoo.org>
+  +files/dbus-python-1.0.0-test-socket-tmpdir.patch, dbus-python-1.0.0.ebuild:
+  Fix test failure on systems with long values in PORTAGE_TMPDIR. Bug 405985.
+  Thanks to Ian Delaney for reporting here and upstream.
+
+  27 Feb 2012; Jeroen Roovers <jer@gentoo.org> dbus-python-1.0.0.ebuild:
+  Stable for HPPA (bug #403843).
+
+  25 Feb 2012; Patrick Lauer <patrick@gentoo.org> dbus-python-0.84.0.ebuild,
+  dbus-python-1.0.0.ebuild:
+  Fixing accidental double asterisk
+
+  20 Feb 2012; Patrick Lauer <patrick@gentoo.org> dbus-python-0.84.0.ebuild,
+  dbus-python-1.0.0.ebuild:
+  Fixing pypy restricts to actually work
+
+  01 Feb 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -dbus-python-0.83.2.ebuild:
+  old
+
+  01 Feb 2012; Samuli Suominen <ssuominen@gentoo.org>
+  dbus-python-0.84.0.ebuild:
+  ppc/ppc64 stable wrt #387257
+
+  26 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> dbus-python-1.0.0.ebuild:
+  tidy
+
+  26 Jan 2012; Mike Gilbert <floppym@gentoo.org> dbus-python-1.0.0.ebuild:
+  Support Python 3.1. Backported from Progress Overlay. Patch by Arfrever.
+
+*dbus-python-1.0.0 (25 Jan 2012)
+
+  25 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +dbus-python-1.0.0.ebuild:
+  Version bump wrt #400825 by "teidakankan"
+
+  12 Dec 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  dbus-python-0.84.0.ebuild:
+  Trivial fix for rst2html build failure in non-unicode locales (bug #363679,
+  thanks to David Fox et al. for reporting).
+
+  27 Nov 2011; Raúl Porcel <armin76@gentoo.org> dbus-python-0.84.0.ebuild:
+  alpha/ia64/sh/sparc stable wrt #387257
+
+  31 Oct 2011; Markos Chandras <hwoarang@gentoo.org> dbus-python-0.84.0.ebuild:
+  Restrict PyPy ABIs. Disable tests with 2.4 and 2.5 Python ABIs. Clean ebuild.
+  Patch by Arfrever.
+
+  29 Oct 2011; Markus Meier <maekke@gentoo.org> dbus-python-0.84.0.ebuild:
+  arm stable, bug #387257
+
+  23 Oct 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  dbus-python-0.83.2.ebuild, dbus-python-0.84.0.ebuild:
+  Use correct slot of pygobject.
+
+  23 Oct 2011; Markus Meier <maekke@gentoo.org> dbus-python-0.84.0.ebuild:
+  x86 stable, bug #387257
+
+  19 Oct 2011; Jeroen Roovers <jer@gentoo.org> dbus-python-0.84.0.ebuild:
+  Stable for HPPA (bug #387257).
+
+  16 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  dbus-python-0.84.0.ebuild:
+  amd64 stable wrt #387257
+
+  16 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Drop semi-inactive maintainers and use herd.
+
+*dbus-python-0.84.0 (28 Jul 2011)
+
+  28 Jul 2011; Patrick Lauer <patrick@gentoo.org> +dbus-python-0.84.0.ebuild:
+  Bump for #368943
+
+  20 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  dbus-python-0.83.2.ebuild:
+  ppc64 stable wrt #353708
+
+  28 Feb 2011; Brent Baude <ranger@gentoo.org> dbus-python-0.83.2.ebuild:
+  stable ppc, bug 353708
+
+  21 Feb 2011; Jeroen Roovers <jer@gentoo.org> dbus-python-0.83.2.ebuild:
+  Stable for HPPA (bug #353708).
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org> dbus-python-0.83.2.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #353708
+
+  11 Feb 2011; Markos Chandras <hwoarang@gentoo.org> dbus-python-0.83.2.ebuild:
+  Stable on amd64 wrt bug #353708
+
+  09 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  dbus-python-0.83.2.ebuild:
+  x86 stable wrt bug #353708
+
+  24 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  dbus-python-0.83.0-r1.ebuild, dbus-python-0.83.1.ebuild,
+  dbus-python-0.83.2.ebuild:
+  Restrict Jython ABIs.
+
+*dbus-python-0.83.2 (24 Dec 2010)
+
+  24 Dec 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +dbus-python-0.83.2.ebuild:
+  Version bump.
+
+  22 May 2010; Raúl Porcel <armin76@gentoo.org>
+  dbus-python-0.83.0-r1.ebuild, dbus-python-0.83.1.ebuild:
+  Drop s390 keywords
+
+  08 Mar 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  dbus-python-0.83.0-r1.ebuild, dbus-python-0.83.1.ebuild:
+  pyrex is unnecessary, bug #308503.
+
+*dbus-python-0.83.1 (01 Mar 2010)
+
+  01 Mar 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  +dbus-python-0.83.1.ebuild,
+  +files/dbus-python-0.83.1-workaround-broken-test.patch:
+  Version bump, bug #306329. Workaround test problems, bug #288629.
+
+  17 Feb 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  dbus-python-0.83.0-r1.ebuild:
+  Do not install pointless .la file, bug #299101. Install documentation in
+  one place, bug #299102.
+
+  20 Jan 2010; Jonathan Callen <abcd@gentoo.org>
+  dbus-python-0.83.0-r1.ebuild:
+  Add prefix keywords, support
+
+  11 Jan 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  dbus-python-0.83.0-r1.ebuild:
+  Don't call python_need_rebuild() (bug #300523).
+
+  31 Oct 2009; Brent Baude <ranger@gentoo.org> dbus-python-0.83.0-r1.ebuild:
+  Marking dbus-python-0.83.0-r1 ppc64 for bug 287548
+
+  28 Oct 2009; Raúl Porcel <armin76@gentoo.org>
+  dbus-python-0.83.0-r1.ebuild:
+  ia64/s390/sh/sparc stable wrt #287548
+
+  21 Oct 2009; Markus Meier <maekke@gentoo.org>
+  dbus-python-0.83.0-r1.ebuild:
+  arm stable, bug #287548
+
+  21 Oct 2009; Jeroen Roovers <jer@gentoo.org> dbus-python-0.83.0-r1.ebuild:
+  Stable for HPPA (bug #287548).
+
+  18 Oct 2009; Tobias Klausmann <klausman@gentoo.org>
+  dbus-python-0.83.0-r1.ebuild:
+  Stable on alpha, bug #287548
+
+  09 Oct 2009; Markus Meier <maekke@gentoo.org>
+  dbus-python-0.83.0-r1.ebuild:
+  amd64/x86 stable, bug #287548
+
+  07 Oct 2009; nixnut <nixnut@gentoo.org> dbus-python-0.83.0-r1.ebuild:
+  ppc stable #287548
+
+  03 Oct 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  dbus-python-0.83.0-r1.ebuild:
+  Add "doc" USE flag.
+
+  02 Aug 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  dbus-python-0.83.0-r1.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  10 Mar 2009; Petteri Räty <betelgeuse@gentoo.org> metadata.xml:
+  Remove steev from metadata.xml as he isn't associated with this package
+  specially.
+
+  10 Mar 2009; Petteri Räty <betelgeuse@gentoo.org>
+  dbus-python-0.83.0-r1.ebuild:
+  Add examples use flag.
+
+*dbus-python-0.83.0-r1 (15 Feb 2009)
+
+  15 Feb 2009; Patrick Lauer <patrick@gentoo.org>
+  +dbus-python-0.83.0-r1.ebuild:
+  Fixing dbus dep of 0.83 to fix #258967
+
+  18 Jan 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -dbus-python-0.71.ebuild, dbus-python-0.80.2.ebuild,
+  dbus-python-0.82.4.ebuild, dbus-python-0.83.0.ebuild:
+  remove useless die, use emake in 0.83 and add call to python_need_rebuild
+  per bug #244560.
+
+  13 Jan 2009; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  gentopia is becoming freedesktop
+
+  08 Sep 2008; Jeroen Roovers <jer@gentoo.org> dbus-python-0.82.4.ebuild:
+  Stable for HPPA (bug #212244).
+
+  31 Aug 2008; Markus Meier <maekke@gentoo.org> dbus-python-0.82.4.ebuild:
+  amd64 stable, bug #212244
+
+  24 Aug 2008; Markus Rothe <corsair@gentoo.org> dbus-python-0.82.4.ebuild:
+  Stable on ppc64; bug #212244
+
+*dbus-python-0.83.0 (15 Aug 2008)
+
+  15 Aug 2008; Doug Goldstein <cardoe@gentoo.org>
+  -dbus-python-0.81.0.ebuild, -dbus-python-0.82.2.ebuild,
+  -dbus-python-0.82.3.ebuild, +dbus-python-0.83.0.ebuild:
+  remove old versions. add new version.
+  http://lists.freedesktop.org/archives/dbus/2008-July/010162.html
+
+  01 Aug 2008; nixnut <nixnut@gentoo.org> dbus-python-0.82.4.ebuild:
+  Stable on ppc wrt bug 212244
+
+  28 Jul 2008; Raúl Porcel <armin76@gentoo.org> dbus-python-0.82.4.ebuild:
+  alpha/ia64/x86 stable wrt #212244
+
+  27 Jul 2008; Friedrich Oslage <bluebird@gentoo.org>
+  dbus-python-0.82.4.ebuild:
+  Stable on sparc, bug #212244
+
+  29 May 2008; Ali Polatel <hawking@gentoo.org> dbus-python-0.80.2.ebuild,
+  dbus-python-0.81.0.ebuild, dbus-python-0.82.2.ebuild,
+  dbus-python-0.82.3.ebuild, dbus-python-0.82.4.ebuild:
+  python_mod_optimize is ROOT aware.
+
+  27 Feb 2008; Mart Raudsepp <leio@gentoo.org> dbus-python-0.82.4.ebuild:
+  Since 0.82.4 dbus-python is under the more permissive MIT license, adjust
+  ebuild
+
+  05 Jan 2008; Ali Polatel <hawking@gentoo.org> dbus-python-0.82.4.ebuild:
+  Removed dbus/Makefile.in from sed as it no longer exists in this version,
+  bug 204372. quoting.
+
+*dbus-python-0.82.4 (04 Jan 2008)
+
+  04 Jan 2008; Doug Klima <cardoe@gentoo.org> +dbus-python-0.82.4.ebuild:
+  version bump
+
+*dbus-python-0.82.3 (08 Dec 2007)
+
+  08 Dec 2007; Doug Klima <cardoe@gentoo.org> +dbus-python-0.82.3.ebuild:
+  upstream version bump
+
+  07 Sep 2007; Doug Goldstein <cardoe@gentoo.org> dbus-python-0.82.2.ebuild:
+  bug #191590. Appears this is an issue with the old python-config. -r5 and
+  higher use the new one
+
+*dbus-python-0.82.2 (06 Sep 2007)
+
+  06 Sep 2007; Doug Goldstein <cardoe@gentoo.org>
+  +dbus-python-0.82.2.ebuild:
+  ver bump
+
+  07 Jul 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  dbus-python-0.80.2.ebuild, dbus-python-0.81.0.ebuild:
+  Add missing IUSE="test"
+
+  06 Jul 2007; Ali Polatel <hawking@gentoo.org> dbus-python-0.71.ebuild,
+  dbus-python-0.80.2.ebuild, dbus-python-0.81.0.ebuild:
+  generate .pyc/.pyo files properly, use python & multilib instead of
+  distutils (bug 176612)
+
+  22 Jun 2007; Raúl Porcel <armin76@gentoo.org> dbus-python-0.80.2.ebuild:
+  alpha stable wrt #174810
+
+  22 Jun 2007; Doug Goldstein <cardoe@gentoo.org> dbus-python-0.80.2.ebuild,
+  dbus-python-0.81.0.ebuild:
+  add dev-python/pygobject to DEPEND when building with FEATURES=test
+
+*dbus-python-0.81.0 (13 May 2007)
+
+  13 May 2007; Doug Goldstein <cardoe@gentoo.org>
+  +dbus-python-0.81.0.ebuild:
+  rev bump
+
+  13 May 2007; Joshua Kinard <kumba@gentoo.org> dbus-python-0.71.ebuild,
+  dbus-python-0.80.2.ebuild:
+  Add ~mips to KEYWORDS for both package versions.
+
+  07 May 2007; Daniel Gryniewicz <dang@gentoo.org>
+  dbus-python-0.80.2.ebuild:
+  Marked stable on amd64 for bug #174810
+
+  05 May 2007; nixnut <nixnut@gentoo.org> dbus-python-0.80.2.ebuild:
+  Stable on ppc wrt bug 174810
+
+  03 May 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  dbus-python-0.80.2.ebuild:
+  Stable on sparc wrt #174810
+
+  03 May 2007; Jeroen Roovers <jer@gentoo.org> dbus-python-0.80.2.ebuild:
+  Stable for HPPA (bug #174810).
+
+  29 Apr 2007; Raúl Porcel <armin76@gentoo.org> dbus-python-0.80.2.ebuild:
+  ia64 + x86 stable wrt #174810
+
+  28 Apr 2007; Markus Rothe <corsair@gentoo.org> dbus-python-0.80.2.ebuild:
+  Stable on ppc64; bug #174810
+
+  04 Apr 2007; Bryan Østergaard <kloeri@gentoo.org>
+  dbus-python-0.71.ebuild:
+  Stable on Alpha.
+
+*dbus-python-0.80.2 (14 Mar 2007)
+
+  14 Mar 2007; Doug Goldstein <cardoe@gentoo.org>
+  -dbus-python-0.80.1-r1.ebuild, +dbus-python-0.80.2.ebuild:
+  rev bump. Fixes memory leaks

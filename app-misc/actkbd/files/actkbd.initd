@@ -1,0 +1,32 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/actkbd/files/actkbd.initd,v 1.1 2013/03/14 19:50:09 scarabeus Exp $
+
+checkconfig() {
+	if [ ! -f ${CONFIG} ] ; then
+		eerror "Config file \"${CONFIG}\" does not exist. Create it prior launching the daemon."
+		return 1
+	fi
+	if [ ! -c ${EVENT_DEVICE} ] ; then
+		eerror "Device \"${EVENT_DEVICE}\" is not valid pointer to input provider."
+		return 1
+	fi
+}
+
+depend() {
+	before acpid
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting actkbd"
+	start-stop-daemon --start --quiet --pidfile ${PIDFILE} --exec /usr/bin/actkbd -- -c "${CONFIG}" -D -q -x -l -p "${PIDFILE}" -d "${EVENT_DEVICE}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping actkbd"
+	start-stop-daemon --stop --quiet --pidfile ${PIDFILE} --exec /usr/bin/actkbd
+	eend $?
+}

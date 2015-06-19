@@ -1,0 +1,73 @@
+# ChangeLog for app-vim/xquery-syntax
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/xquery-syntax/ChangeLog,v 1.18 2013/05/14 05:18:37 radhermit Exp $
+
+  14 May 2013; Tim Harder <radhermit@gentoo.org> -xquery-syntax-0.1.ebuild:
+  Remove old.
+
+  14 May 2013; Tim Harder <radhermit@gentoo.org> xquery-syntax-0.1-r1.ebuild:
+  Fix quoting QA warning.
+
+  07 Dec 2012; Ulrich Müller <ulm@gentoo.org> xquery-syntax-0.1.ebuild,
+  xquery-syntax-0.1-r1.ebuild:
+  Fix LICENSE, bug 445808.
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org> xquery-syntax-0.1.ebuild,
+  xquery-syntax-0.1-r1.ebuild:
+  Drop to ~mips
+
+  23 Nov 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  xquery-syntax-0.1-r1.ebuild:
+  stable on ppc
+
+  20 Aug 2006; <malc@gentoo.org> xquery-syntax-0.1-r1.ebuild:
+  Stable on amd64
+
+  07 Apr 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove ciaranm from metadata.xml.
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  xquery-syntax-0.1-r1.ebuild:
+  Mark 0.1-r1 stable on alpha
+
+  07 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  xquery-syntax-0.1-r1.ebuild:
+  Mark 0.1-r1 stable on ia64
+
+  07 Sep 2005; Markus Rothe <corsair@gentoo.org>
+  xquery-syntax-0.1-r1.ebuild:
+  Stable on ppc64
+
+  07 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  xquery-syntax-0.1-r1.ebuild:
+  x86 sparc mips stable
+
+  08 Aug 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  xquery-syntax-0.1.ebuild, xquery-syntax-0.1-r1.ebuild:
+  Tidy up post-install messages
+
+*xquery-syntax-0.1-r1 (08 Aug 2005)
+
+  08 Aug 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  +xquery-syntax-0.1-r1.ebuild:
+  Use hi def link rather than hi link. Bug #101788, bug #101804.
+
+  12 Jun 2005; David Holm <dholm@gentoo.org> xquery-syntax-0.1.ebuild:
+  Added to ~ppc.
+
+  06 Apr 2005; Markus Rothe <corsair@gentoo.org> xquery-syntax-0.1.ebuild:
+  Stable on ppc64
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> xquery-syntax-0.1.ebuild:
+  stable on ia64
+
+  06 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  xquery-syntax-0.1.ebuild:
+  x86 sparc mips stable
+
+*xquery-syntax-0.1 (27 Feb 2005)
+
+  27 Feb 2005; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +xquery-syntax-0.1.ebuild:
+  New package
+

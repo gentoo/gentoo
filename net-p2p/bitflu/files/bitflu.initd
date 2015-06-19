@@ -1,0 +1,47 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/bitflu/files/bitflu.initd,v 1.1 2011/06/30 16:02:44 blueness Exp $
+
+DAEMON=/usr/sbin/bitflu.pl
+PIDDIR=/var/run/bitflu
+PIDFILE=${PIDDIR}/bitflu.pid
+CONFFILE=/etc/bitflu/bitflu.config
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ ! -f ${CONFFILE} ]; then
+		eerror "No config file ${CONFFILE}"
+		return 1
+	fi
+
+	if [ ! -d ${PIDDIR} ] && ! mkdir -p ${PIDDIR}; then
+		eerror "Failed to create ${PIDDIR}"
+		return 1
+	fi
+
+	chown bitflu:bitflu ${PIDDIR}
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting bitflu"
+	start-stop-daemon --start --pidfile "${PIDFILE}" --user bitflu:bitflu \
+		--exec "${DAEMON}" -- --config="${CONFFILE}" --daemon -q >/dev/null 2>&1
+	eend $?
+}
+
+stop() {
+	ebegin "Stoping bitflu"
+	start-stop-daemon --stop --pidfile "${PIDFILE}" --exec "${DAEMON}"
+	eend $?
+}
+
+restart() {
+	svc_stop
+	sleep 2
+	svc_start
+}

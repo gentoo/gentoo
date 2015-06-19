@@ -1,0 +1,56 @@
+# ChangeLog for sci-physics/jaxodraw
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/jaxodraw/ChangeLog,v 1.13 2014/03/28 10:49:32 tomwij Exp $
+
+*jaxodraw-2.0.1-r1 (28 Mar 2014)
+
+  28 Mar 2014; Tom Wijsman <TomWij@gentoo.org> +jaxodraw-2.0.1-r1.ebuild,
+  -jaxodraw-2.0.1.ebuild:
+  Revision bump, adapt to new icon location and install desktop entry instead of
+  menu item; fixes bug #426756, this fix has been contributed by David Zaslavsky
+  (diazona).
+
+  16 Dec 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due retirement, #95685
+
+  15 Mar 2011; Krzysztof Pawlik <nelchael@gentoo.org> -jaxodraw-2.0.0.ebuild:
+  Remove old version.
+
+*jaxodraw-2.0.1 (02 Apr 2010)
+
+  02 Apr 2010; Krzysztof Pawlik <nelchael@gentoo.org>
+  +jaxodraw-2.0.1.ebuild:
+  Version bump.
+
+  07 Apr 2009; Serkan Kaba <serkan@gentoo.org> jaxodraw-2.0.0:
+  Fix installation with source USE flag reported in bug #265243 by Robert
+  Bradbury <robert.bradbury@gmail.com>
+
+  21 Mar 2009; Krzysiek Pawlik <nelchael@gentoo.org> -jaxodraw-1.3.2.ebuild:
+  Remove old versions.
+
+*jaxodraw-2.0.0 (22 Feb 2009)
+
+  22 Feb 2009; Krzysiek Pawlik <nelchael@gentoo.org> +jaxodraw-2.0.0.ebuild:
+  Version bump, see bug #259447.
+
+  12 May 2008; Krzysiek Pawlik <nelchael@gentoo.org> jaxodraw-1.3.2.ebuild:
+  Rename tex USE flag, see bug #196745.
+
+  03 Aug 2007; Petteri Räty <betelgeuse@gentoo.org> jaxodraw-1.3.2.ebuild:
+  Migrate to splitted ant and QA fixes.
+
+  03 Mar 2007; Krzysiek Pawlik <nelchael@gentoo.org> jaxodraw-1.3.2.ebuild:
+  Fix bug #168729 - installing axodraw.sty.
+
+  14 Oct 2006; Joshua Nichols <nichoj@gentoo.org> jaxodraw-1.3.2.ebuild:
+  Keyworded ~amd64.
+
+  14 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org> jaxodraw-1.3.2.ebuild:
+  Needs dev-java/ant.
+
+*jaxodraw-1.3.2 (13 Oct 2006)
+
+  13 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org> +metadata.xml,
+  +jaxodraw-1.3.2.ebuild:
+  Initial version of JaxoDraw.

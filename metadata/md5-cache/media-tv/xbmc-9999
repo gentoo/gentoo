@@ -1,0 +1,8 @@
+DEFINED_PHASES=-
+DESCRIPTION=Stub ebuild to migrate people to media-tv/kodi
+EAPI=5
+HOMEPAGE=http://kodi.tv/ http://kodi.wiki/
+LICENSE=metapackage
+RDEPEND=media-tv/kodi
+SLOT=0
+_md5_=f4374d8f36bd15cc2731f456a2d767b3

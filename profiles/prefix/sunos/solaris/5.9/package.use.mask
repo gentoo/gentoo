@@ -1,0 +1,8 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/sunos/solaris/5.9/package.use.mask,v 1.1 2011/11/16 15:44:41 grobian Exp $
+
+# Fabian Groffen <grobian@gentoo.org> (16 Nov 2011)
+# jit not supported on sparc
+dev-libs/libpcre jit
+

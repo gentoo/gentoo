@@ -1,0 +1,41 @@
+--- kadmin/Makefile.am.orig	2010-11-25 12:39:31.000000000 +0000
++++ kadmin/Makefile.am	2011-02-14 21:37:29.000000000 +0000
+@@ -64,10 +64,10 @@
+ 	$(top_builddir)/lib/krb5/libkrb5.la \
+ 	$(LIB_hcrypto) \
+ 	$(top_builddir)/lib/asn1/libasn1.la \
+-	$(LIB_roken) \
+ 	$(DBLIB)
+ 
+ kadmind_LDADD = $(top_builddir)/lib/kadm5/libkadm5srv.la \
++	$(LIB_roken) \
+ 	../lib/gssapi/libgssapi.la \
+ 	$(LDADD_common) \
+ 	$(LIB_pidfile) \
+@@ -78,12 +78,14 @@
+ 	$(top_builddir)/lib/kadm5/libkadm5srv.la \
+ 	$(top_builddir)/lib/sl/libsl.la \
+ 	$(LIB_readline) \
++	$(LIB_roken) \
+ 	$(LDADD_common) \
+ 	$(LIB_dlopen)
+ 
+ add_random_users_LDADD = \
+ 	$(top_builddir)/lib/kadm5/libkadm5clnt.la \
+ 	$(top_builddir)/lib/kadm5/libkadm5srv.la \
++	$(LIB_roken) \
+ 	$(LDADD_common) \
+ 	$(LIB_dlopen)
+ 
+--- tests/plugin/check-pac.in.orig	2010-11-25 12:39:31.000000000 +0000
++++ tests/plugin/check-pac.in	2011-02-16 13:24:50.000000000 +0000
+@@ -62,7 +62,8 @@
+ test_apreq="${TESTS_ENVIRONMENT} ../../lib/krb5/test_ap-req"
+ 
+ KRB5_CONFIG="${objdir}/krb5.conf"
+-export KRB5_CONFIG
++LD_PRELOAD="../../lib/roken/.libs/libroken.so"
++export KRB5_CONFIG LD_PRELOAD
+ 
+ rm -f ${keytabfile}
+ rm -f current-db*

@@ -1,0 +1,85 @@
+# ChangeLog for net-nntp/brag
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-nntp/brag/ChangeLog,v 1.10 2015/03/20 15:41:43 jlec Exp $
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> -brag-1.4.1.ebuild,
+  brag-1.4.3.ebuild, metadata.xml:
+  Fix tcl/tk slotting;drop old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> brag-1.4.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  19 Mar 2012; Raúl Porcel <armin76@gentoo.org> brag-1.4.1.ebuild,
+  brag-1.4.3.ebuild:
+  Drop sparc keywords
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> brag-1.4.3.ebuild:
+  x86 stable wrt bug #400457
+
+  24 Feb 2012; Brent Baude <ranger@gentoo.org> brag-1.4.3.ebuild:
+  Marking brag-1.4.3 ppc for bug 400457
+
+*brag-1.4.3 (07 Oct 2011)
+
+  07 Oct 2011; Tim Harder <radhermit@gentoo.org> +brag-1.4.3.ebuild:
+  Version bump. Update to EAPI 4.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  27 Dec 2005; Jason Wever <weeve@gentoo.org> brag-1.4.1.ebuild:
+  Stable on SPARC.
+
+*brag-1.4.1 (17 Jan 2005)
+
+  17 Jan 2005; Sven Wegener <swegener@gentoo.org> +metadata.xml,
+  +brag-1.4.1.ebuild:
+  Moved from net-news/brag to net-nntp/brag.
+
+  17 Oct 2004; Sven Wegener <swegener@gentoo.org>
+  -files/brag-1.2.9-r1-gentoo.patch, -brag-1.2.9-r1.ebuild,
+  -brag-1.2.9-r2.ebuild:
+  Removed old ebuilds and files.
+
+  11 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> brag-1.4.1.ebuild:
+  Added amd64 keyword, closing #63676.
+
+  08 Aug 2004; Tom Martin <slarti@gentoo.org> brag-1.2.9-r1.ebuild,
+  brag-1.2.9-r2.ebuild, brag-1.4.1.ebuild:
+  Typo in DESCRIPTION: attachements -> attachments. Bug 59717.
+
+  05 Jul 2004; Sven Wegener <swegener@gentoo.org> brag-1.2.9-r1.ebuild,
+  brag-1.2.9-r2.ebuild, -brag-1.2.9.ebuild, brag-1.4.1.ebuild:
+  Marked 1.4.1 stable on x86. Cleaned the ebuilds up.
+
+  19 Jun 2004; Sven Wegener <swegener@gentoo.org> +metadata.xml:
+  Added metadata.xml
+
+*brag-1.4.1 (29 May 2004)
+
+  29 May 2004; <mkennedy@gentoo.org> +brag-1.4.1.ebuild:
+  New upstream version
+
+  11 May 2004; Jason Wever <weeve@gentoo.org> brag-1.2.9-r2.ebuild:
+  Added ~sparc keyword.
+
+*brag-1.2.9-r2 (27 Aug 2003)
+
+  27 Aug 2003; Matthew Kennedy <mkennedy@gentoo.org> brag-1.2.9-r2.ebuild:
+  net-news/yydecode is also a dependency
+
+*brag-1.2.9-r1 (11 Feb 2003)
+
+  11 Feb 2003; Rajiv Manglani <rajiv@gentoo.org> brag-1.2.9-r1.ebuild :
+
+  moved to x86 stable. added ppc to KEYWORDS. changed dependencies
+  to run-time dependencies. added "-m <max>" patch submitted by
+  Julian Gorfajn <joules@gorfajn.com>.
+
+*brag-1.2.9 (15 Nov 2002)
+
+  15 Nov 2002; phoen][x <phoenix@gentoo.org> brag-1.2.9.ebuild, ChangeLog,
+  files/digest-brag-1.2.9 :
+
+  Initial import.  Ebuild submitted by AutoBot <autobot@midsouth.rr.com>.
+  Thanks for the contribution.

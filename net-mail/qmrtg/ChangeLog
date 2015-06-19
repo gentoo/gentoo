@@ -1,0 +1,37 @@
+# ChangeLog for net-mail/qmrtg
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/qmrtg/ChangeLog,v 1.8 2014/07/18 15:56:36 jer Exp $
+
+  18 Jul 2014; Jeroen Roovers <jer@gentoo.org> qmrtg-2.1-r1.ebuild,
+  +files/qmrtg-2.1-TAI_STR_LEN.patch, files/mrtg.cfg.patch,
+  files/qmrtg.conf.sample.patch:
+  EAPI bump. Fix an off-by-one.
+
+  12 Feb 2010; Jeroen Roovers <jer@gentoo.org> qmrtg-2.1-r1.ebuild:
+  Fix quoting.
+
+  12 Feb 2010; Jeroen Roovers <jer@gentoo.org> -qmrtg-2.1.ebuild:
+  Remove old.
+
+*qmrtg-2.1-r1 (12 Feb 2010)
+
+  12 Feb 2010; Jeroen Roovers <jer@gentoo.org> qmrtg-2.1.ebuild,
+  +qmrtg-2.1-r1.ebuild, files/mrtg.cfg.patch, files/qmrtg.conf.sample.patch:
+  Fix paths in patches. Respect CFLAGS (bug #241058).
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> qmrtg-2.1.ebuild:
+  Remove virtual/libc
+
+  12 Jul 2009; Mark Loeser <halcy0n@gentoo.org> qmrtg-2.1.ebuild:
+  Fix elog statement; bug #272941
+
+  12 Jun 2007; Marius Mauch <genone@gentoo.org> qmrtg-2.1.ebuild:
+  Replacing einfo with elog
+
+*qmrtg-2.1 (08 Oct 2006)
+
+  08 Oct 2006; Markus Ullmann <jokey@gentoo.org> +files/mrtg.cfg.patch,
+  +files/qmrtg.conf.sample.patch, +metadata.xml, +qmrtg-2.1.ebuild:
+  Initial import wrt bug #71417 thanks to Angelo Leto and Gudleik Rasch for
+  providing the ebuild in bug #71417
+

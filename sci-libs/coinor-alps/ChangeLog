@@ -1,0 +1,49 @@
+# ChangeLog for sci-libs/coinor-alps
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/coinor-alps/ChangeLog,v 1.4 2014/02/04 09:46:38 jlec Exp $
+
+  04 Feb 2014; Justin Lecher <jlec@gentoo.org> coinor-alps-1.4.9.ebuild:
+  Add missing die and use usex; user proper autotools-utils functions
+
+*coinor-alps-1.4.9 (04 Feb 2014)
+
+  04 Feb 2014; Justin Lecher <jlec@gentoo.org> +coinor-alps-1.4.9.ebuild,
+  -coinor-alps-1.4.8.ebuild:
+  Version Bump
+
+  15 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  coinor-alps-1.4.8.ebuild:
+  Fixed license, cleanup, as-needed applied upstream
+
+*coinor-alps-1.4.8 (14 Jan 2014)
+
+  14 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-alps-1.4.8.ebuild, +metadata.xml:
+  Initial import in main tree
+
+*coinor-alps-1.4.7 (07 Dec 2013)
+
+  07 Dec 2013; Sébastien Fabbro <bicatali@gentoo.org> +coinor-alps-1.4.7.ebuild,
+  -coinor-alps-1.4.4.ebuild:
+  sci-libs/coinor-alps: Version bump
+
+*coinor-alps-1.4.4 (17 Jul 2013)
+
+  17 Jul 2013; Sébastien Fabbro <bicatali@gentoo.org> +coinor-alps-1.4.4.ebuild,
+  -coinor-alps-1.4.3.ebuild:
+  sci-libs/coinor-alps: Version bump
+
+*coinor-alps-1.4.3 (26 May 2013)
+
+  26 May 2013; Sébastien Fabbro <bicatali@gentoo.org> +coinor-alps-1.4.3.ebuild,
+  -coinor-alps-1.4.2.ebuild:
+  sci-libs/coinor-alps: Version bump
+
+  29 Jan 2013; Sébastien Fabbro <bicatali@gentoo.org> coinor-alps-1.4.2.ebuild:
+  sci-libs/coinor-alps: Add missing coinor-cgl dependency for tests
+
+*coinor-alps-1.4.2 (16 Jul 2012)
+
+  16 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org> +coinor-alps-1.4.2.ebuild,
+  +metadata.xml:
+  sci-libs/coinor-alps: Initial import

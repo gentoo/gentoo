@@ -1,0 +1,47 @@
+# ChangeLog for dev-python/python-digest
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-digest/ChangeLog,v 1.12 2015/06/07 19:34:16 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add bitbucket to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> python-digest-1.7-r1.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> python-digest-1.7-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> python-digest-1.7-r1.ebuild:
+  amd64 stable, bug 540290
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> python-digest-1.7-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> python-digest-1.7-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*python-digest-1.7-r1 (30 May 2013)
+
+  30 May 2013; Ian Delaney <idella4@gentoo.org> +python-digest-1.7-r1.ebuild,
+  -python-digest-1.7.ebuild:
+  revbump, migrate -> distutils-r1, drop old ebuild
+
+  14 Nov 2012; Ian Delaney <idella4@gentoo.org> metadata.xml:
+  Updating maintainer, metadata.xml
+
+  04 May 2012; Corentin Chary <iksaif@gentoo.org> python-digest-1.7.ebuild:
+  Fix DESCRIPTION
+
+  27 Apr 2012; Theo Chatzimichos <tampakrap@gentoo.org>
+  python-digest-1.7.ebuild:
+  Add ~x86
+
+*python-digest-1.7 (27 Apr 2012)
+
+  27 Apr 2012; Theo Chatzimichos <tampakrap@gentoo.org>
+  +files/python-digest-1.7-unittest.patch, +metadata.xml,
+  +python-digest-1.7.ebuild:
+  Initial commit, ebuild by idella4

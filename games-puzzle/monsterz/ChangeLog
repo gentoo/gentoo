@@ -1,0 +1,149 @@
+# ChangeLog for games-puzzle/monsterz
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/monsterz/ChangeLog,v 1.38 2015/04/08 18:11:57 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> monsterz-0.7.1-r3.ebuild:
+  Drop old Python implementations
+
+  29 Dec 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -monsterz-0.7.1-r2.ebuild:
+  old
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> monsterz-0.7.1-r3.ebuild:
+  Stable for ppc, wrt bug #488840
+
+  17 Dec 2013; Raúl Porcel <armin76@gentoo.org> monsterz-0.7.1-r2.ebuild,
+  monsterz-0.7.1-r3.ebuild:
+  Drop sparc, x86 stable wrt #488840
+
+  24 Oct 2013; Tony Vroon <chainsaw@gentoo.org> monsterz-0.7.1-r3.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #488840.
+
+  21 Oct 2013; Jeroen Roovers <jer@gentoo.org> monsterz-0.7.1-r3.ebuild:
+  Stable for HPPA (bug #488840).
+
+  28 Aug 2013; Julian Ospald <hasufell@gentoo.org> monsterz-0.7.1-r2.ebuild,
+  monsterz-0.7.1-r3.ebuild:
+  fix licenses wrt #482802
+
+  26 Aug 2013; Julian Ospald <hasufell@gentoo.org> monsterz-0.7.1-r3.ebuild:
+  games last on inherit line
+
+*monsterz-0.7.1-r3 (26 Aug 2013)
+
+  26 Aug 2013; Julian Ospald <hasufell@gentoo.org> +monsterz-0.7.1-r3.ebuild:
+  fix python handling wrt #482578
+
+  19 Sep 2012; Michael Sterrett <mr_bones_@gentoo.org> monsterz-0.7.1-r2.ebuild:
+  any mod support will do
+
+  11 Feb 2010; Jeroen Roovers <jer@gentoo.org> monsterz-0.7.1-r2.ebuild:
+  Stable for HPPA (bug #288656).
+
+  23 Nov 2009; Mounir Lamouri <volkmar@gentoo.org> monsterz-0.7.1-r2.ebuild:
+  Stable for ppc, bug 288656
+
+  18 Nov 2009; Raúl Porcel <armin76@gentoo.org> monsterz-0.7.1-r2.ebuild:
+  sparc stable wrt #288656
+
+  25 Oct 2009; Markus Meier <maekke@gentoo.org> monsterz-0.7.1-r2.ebuild:
+  amd64/x86 stable, bug #288656
+
+*monsterz-0.7.1-r2 (23 May 2009)
+
+  23 May 2009; Tristan Heaven <nyhm@gentoo.org> +monsterz-0.7.1-r2.ebuild,
+  +files/monsterz-0.7.1-blit.patch:
+  Patch from Fedora to fix blitting error with pygame-1.8, bug #263854
+
+  11 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  monsterz-0.7.1-r1.ebuild:
+  EAPI=2; add use-based deps
+
+  23 Jun 2008; Jeroen Roovers <jer@gentoo.org> monsterz-0.7.1-r1.ebuild:
+  Stable for HPPA (bug #228603).
+
+  22 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  monsterz-0.7.1-r1.ebuild:
+  stable x86, bug 228603
+
+  21 Jun 2008; nixnut <nixnut@gentoo.org> monsterz-0.7.1-r1.ebuild:
+  Stable on ppc wrt bug 228603
+
+  21 Jun 2008; Friedrich Oslage <bluebird@gentoo.org>
+  monsterz-0.7.1-r1.ebuild:
+  Stable on sparc, bug #228603
+
+  20 Jun 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  monsterz-0.7.1-r1.ebuild:
+  amd64 stable, bug #228603
+
+*monsterz-0.7.1-r1 (14 May 2008)
+
+  14 May 2008; Tristan Heaven <nyhm@gentoo.org>
+  +files/monsterz-0.7.1-64bit.patch, +monsterz-0.7.1-r1.ebuild:
+  Patch from Debian for bug #208329
+
+*monsterz-0.7.1 (15 Mar 2008)
+
+  15 Mar 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/monsterz-0.7.1-gentoo.patch, +monsterz-0.7.1.ebuild:
+  version bump
+
+  25 Jun 2007; Jeroen Roovers <jer@gentoo.org> monsterz-0.7.0.ebuild:
+  Stable for HPPA too.
+
+  24 Nov 2006; Tristan Heaven <nyhm@gentoo.org> monsterz-0.7.0.ebuild:
+  Install desktop entry, bug #156143
+
+*monsterz-0.7.0 (12 May 2006)
+
+  12 May 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/monsterz-0.7.0-gentoo.patch, +monsterz-0.7.0.ebuild:
+  version bump
+
+  17 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org> monsterz-0.6.1.ebuild:
+  Removed INSTALL from dodoc.
+
+  17 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org> monsterz-0.6.1.ebuild:
+  Moved games_pkg_setup to beginning of pkg_setup.
+
+  31 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/monsterz-0.4.2-gentoo.patch, -files/monsterz-0.6.0-gentoo.patch,
+  -monsterz-0.4.2.ebuild, -monsterz-0.6.0.ebuild:
+  clean old files
+
+  30 Oct 2005; Ferris McCormick <fmccor@gentoo.org> monsterz-0.6.1.ebuild:
+  Add ~sparc keyword.  Appears to run fine.
+
+*monsterz-0.6.1 (25 Oct 2005)
+
+  25 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/monsterz-0.6.1-gentoo.patch, +monsterz-0.6.1.ebuild:
+  version bump
+
+  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org> ChangeLog:
+  Removed INSTALL file.
+
+  10 Jun 2005; David Holm <dholm@gentoo.org> monsterz-0.6.0.ebuild:
+  Added to ~ppc.
+
+*monsterz-0.6.0 (09 Apr 2005)
+
+  09 Apr 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/monsterz-0.6.0-gentoo.patch, +monsterz-0.6.0.ebuild:
+  Version bump.
+
+*monsterz-0.4.2 (24 Mar 2005)
+
+  24 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/monsterz-0.4.2-gentoo.patch, +monsterz-0.4.2.ebuild:
+  version bump
+
+  18 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org> monsterz-0.4.1.ebuild:
+  make sure media-libs/sdl-mixer was built with USE=mikmod; tidy
+
+*monsterz-0.4.1 (18 Mar 2005)
+
+  18 Mar 2005; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Julien Cayzac #84751.

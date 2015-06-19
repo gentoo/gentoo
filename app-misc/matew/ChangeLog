@@ -1,0 +1,32 @@
+# ChangeLog for app-misc/matew
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/matew/ChangeLog,v 1.11 2015/06/09 11:48:01 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> matew-1.9.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  22 Mar 2014; Samuel Damashek <sdamashek@gentoo.org> matew-1.9.ebuild:
+  Update URL and description thanks to Jonas Stein.
+
+  18 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> matew-1.9.ebuild:
+  Remove virtual/libc
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove scox from metadata.xml due to retirement.
+
+  02 Jan 2007; Renat Lumpau <rl03@gentoo.org> matew-1.9.ebuild:
+  einfo to elog, bug 139814
+
+  18 Jun 2006; Renat Lumpau <rl03@gentoo.org> matew-1.9.ebuild:
+  Remove invalid dep (bug #136436).
+
+*matew-1.9 (08 Apr 2004)
+
+  08 Apr 2004; Andrea Luzzardi <scox@gentoo.org> matew-1.9.ebuild :
+  Initial import.  Ebuild submitted by Bernardo Damele <bernardo@linux.it>.

@@ -1,0 +1,37 @@
+#!/sbin/runscript
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/arpwatch/files/arpwatch.initd,v 1.1 2007/06/02 22:37:16 jokey Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	for IFACE in ${IFACES}
+	do
+		ebegin "Starting arpwatch on ${IFACE}"
+		DATAFILE=/var/lib/arpwatch/${IFACE}.dat
+		[ ! -f ${DATAFILE} ] && touch ${DATAFILE}
+
+		if [ -z ${ARPUSER} ]; then
+			start-stop-daemon --start --quiet --pidfile=/var/run/arpwatch.${IFACE}.pid --exec \
+			/usr/sbin/arpwatch -- -i ${IFACE} -f ${DATAFILE} -P /var/run/arpwatch.${IFACE}.pid ${OPTIONS}
+		else
+			chown ${ARPUSER} ${DATAFILE}
+			start-stop-daemon --start --quiet --pidfile=/var/run/arpwatch.${IFACE}.pid --exec \
+			/usr/sbin/arpwatch -- -i $IFACE -u ${ARPUSER} -f ${DATAFILE} -P /var/run/arpwatch.${IFACE}.pid ${OPTIONS}
+		fi
+		eend $?
+	done
+}
+
+stop() {
+	for IFACE in ${IFACES}
+	do
+		ebegin "Stopping arpwatch on ${IFACE}"
+		start-stop-daemon --stop --quiet --pidfile=/var/run/arpwatch.${IFACE}.pid --exec \
+		/usr/sbin/arpwatch
+		eend $?
+	done
+}

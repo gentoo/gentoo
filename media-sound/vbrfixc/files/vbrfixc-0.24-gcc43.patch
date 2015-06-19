@@ -1,0 +1,11 @@
+diff -ur vbrfixc-0.24/vbrfixc/vbrfix.cpp vbrfixc-0.24.dmd/vbrfixc/vbrfix.cpp
+--- vbrfixc-0.24/vbrfixc/vbrfix.cpp	2003-07-17 13:58:21.000000000 -0400
++++ vbrfixc-0.24.dmd/vbrfixc/vbrfix.cpp	2008-06-11 11:26:42.000000000 -0400
+@@ -16,6 +16,7 @@
+  ***************************************************************************/
+ #include "vbrfix.h"
+ //#include "stdafx.h"//include in mfc version
++#include <cstring>
+ int getXHpos(int ver,int chan);
+ VbrFix::VbrFix(){
+   frameptrs=NULL;flags=0;

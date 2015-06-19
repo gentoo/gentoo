@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=quick and easy command line automation tool built on top of expect
+HOMEPAGE=http://expect-lite.sourceforge.net/
+IUSE=debug examples
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-tcltk/expect debug? ( dev-tcltk/tclx )
+SLOT=0
+SRC_URI=mirror://sourceforge/expect-lite/expect-lite_4.6.0.tar.gz
+_md5_=59f41d913e78ac2bacb39c4ac97ed4a7

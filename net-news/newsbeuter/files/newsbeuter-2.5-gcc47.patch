@@ -1,0 +1,61 @@
+--- newsbeuter-2.5/src/controller.cpp
++++ newsbeuter-2.5/src/controller.cpp
+@@ -30,6 +30,7 @@
+ #include <ctime>
+ #include <cassert>
+ #include <signal.h>
++#include <unistd.h>
+ #include <sys/utsname.h>
+ #include <langinfo.h>
+ #include <libgen.h>
+--- newsbeuter-2.5/src/google_api.cpp
++++ newsbeuter-2.5/src/google_api.cpp
+@@ -7,6 +7,8 @@
+ #include <config.h>
+ #include <utils.h>
+ 
++#include <unistd.h>
++
+ #include <curl/curl.h>
+ 
+ #define GREADER_LOGIN					"https://www.google.com/accounts/ClientLogin"
+--- newsbeuter-2.5/src/pb_controller.cpp
++++ newsbeuter-2.5/src/pb_controller.cpp
+@@ -12,6 +12,7 @@
+ #include <pwd.h>
+ #include <cstdlib>
+ #include <signal.h>
++#include <unistd.h>
+ 
+ #include <keymap.h>
+ #include <configcontainer.h>
+--- newsbeuter-2.5/src/queueloader.cpp
++++ newsbeuter-2.5/src/queueloader.cpp
+@@ -8,6 +8,8 @@
+ #include <config.h>
+ #include <libgen.h>
+ 
++#include <unistd.h>
++
+ using namespace newsbeuter;
+ 
+ namespace podbeuter {
+--- newsbeuter-2.5/src/reloadthread.cpp
++++ newsbeuter-2.5/src/reloadthread.cpp
+@@ -1,5 +1,6 @@
+ #include <reloadthread.h>
+ #include <logger.h>
++#include <unistd.h>
+ 
+ namespace newsbeuter {
+ 
+--- newsbeuter-2.5/src/utils.cpp
++++ newsbeuter-2.5/src/utils.cpp
+@@ -11,6 +11,7 @@
+ #include <libgen.h>
+ #include <sys/utsname.h>
+ 
++#include <unistd.h>
+ #include <sstream>
+ #include <locale>
+ #include <cwchar>

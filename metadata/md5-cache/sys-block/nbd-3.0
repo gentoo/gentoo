@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install
+DEPEND=>=dev-libs/glib-2.0 zlib? ( sys-libs/zlib ) virtual/pkgconfig
+DESCRIPTION=Userland client/server for kernel network block device
+EAPI=4
+HOMEPAGE=http://nbd.sourceforge.net/
+IUSE=zlib
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/glib-2.0 zlib? ( sys-libs/zlib )
+SLOT=0
+SRC_URI=mirror://sourceforge/nbd/nbd-3.0.tar.bz2
+_md5_=b9931b90a1884010ffcd87829dc43807

@@ -1,0 +1,10 @@
+--- src/qt-console/bat.pro.in.orig	2010-07-20 18:28:50.000000000 +0000
++++ src/qt-console/bat.pro.in	2010-07-20 18:29:25.000000000 +0000
+@@ -26,6 +26,7 @@
+ QMAKE_LINK   = $${LIBTOOL_LINK} $(CXX)
+ QMAKE_INSTALL_PROGRAM = $${LIBTOOL_INSTALL} install -m @SBINPERM@ -p
+ QMAKE_CLEAN += .libs/* bat
++QMAKE_LFLAGS += @LDFLAGS@
+ 
+ qwt {
+   INCLUDEPATH += @QWT_INC@ 

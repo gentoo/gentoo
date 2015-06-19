@@ -1,0 +1,22 @@
+# ChangeLog for media-gfx/crwinfo
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/crwinfo/ChangeLog,v 1.5 2012/07/01 10:40:27 jlec Exp $
+
+  01 Jul 2012; Justin Lecher <jlec@gentoo.org> crwinfo-0.2.ebuild:
+  Respect LDFLAGS, #337406; bumped to EAPI=4
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  14 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove swtaylor from metadata.xml due to retiring.
+
+*crwinfo-0.2 (26 Jan 2005)
+
+  26 Jan 2005; Scott W Taylor <swtaylor@gentoo.org> +crwinfo-0.2.ebuild:
+  initial commit
+

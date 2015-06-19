@@ -1,0 +1,11 @@
+--- test/sieve.lua~	2002-10-31 03:52:58.000000000 +0100
++++ test/sieve.lua	2008-02-20 17:44:22.468281121 +0100
+@@ -14,7 +14,7 @@
+     while 1 do
+       local n = g()
+       if n == nil then return end
+-      if math.mod(n, p) ~= 0 then coroutine.yield(n) end
++      if math.fmod(n, p) ~= 0 then coroutine.yield(n) end
+     end
+   end)
+ end

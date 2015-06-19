@@ -1,0 +1,14 @@
+# ChangeLog for media-libs/libde265
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libde265/ChangeLog,v 1.2 2015/01/29 17:35:51 mgorny Exp $
+
+  29 Jan 2015; Michał Górny <mgorny@gentoo.org> libde265-0.9.ebuild,
+  libde265-9999.ebuild:
+  Switch to CPU_FLAGS_X86.
+
+*libde265-9999 (20 Nov 2014)
+*libde265-0.9 (20 Nov 2014)
+
+  20 Nov 2014; Yixun Lan <dlan@gentoo.org> +libde265-0.9.ebuild,
+  +libde265-9999.ebuild, +metadata.xml:
+  initial ebuild added by me, bug 528684

@@ -1,0 +1,124 @@
+# ChangeLog for media-fonts/urwvn-fonts
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/urwvn-fonts/ChangeLog,v 1.33 2015/02/21 17:24:15 yngwin Exp $
+
+  21 Feb 2015; Ben de Groot <yngwin@gentoo.org> urwvn-fonts-3.05.ebuild:
+  Add Aladdin license for URW Garamond (bug #434262). Bump to EAPI=5. Tighten up
+  formatting.
+
+  25 May 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -urwvn-fonts-3.04.ebuild:
+  QA: drop old.
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org> urwvn-fonts-3.05.ebuild:
+  Stable for HPPA (bug #323575).
+
+  11 Jul 2010; Raúl Porcel <armin76@gentoo.org> urwvn-fonts-3.05.ebuild:
+  alpha/arm/ia64/s390/sh/sparc/x86 stable wrt #323575
+
+  26 Jun 2010; <nixnut@gentoo.org> urwvn-fonts-3.05.ebuild:
+  ppc stable #323575
+
+  24 Jun 2010; Pacho Ramos <pacho@gentoo.org> urwvn-fonts-3.05.ebuild:
+  stable amd64, bug 323575
+
+  12 May 2010; Peter Volkov <pva@gentoo.org> urwvn-fonts-3.05.ebuild:
+  Fixed SRC_URI, bug #319073, thank David Zaslavsky for report.
+
+*urwvn-fonts-3.05 (08 May 2010)
+
+  08 May 2010; Peter Volkov <pva@gentoo.org> +files/65-urwvn.conf,
+  urwvn-fonts-3.04.ebuild, +urwvn-fonts-3.05.ebuild:
+  Version bump. Thank upstream developer Reinhard Kotucha for notification
+  and warning about Vn Utopia font rename.
+
+  24 Oct 2009; Peter Volkov <pva@gentoo.org> urwvn-fonts-3.04.ebuild:
+  Fixed HOMEPAGE and updated a bit description, bug #289176, thank Alexey
+  Portnov for report.
+
+  20 Aug 2008; Jeroen Roovers <jer@gentoo.org> urwvn-fonts-3.04.ebuild:
+  Stable for HPPA (bug #234972).
+
+  19 Aug 2008; Peter Volkov <pva@gentoo.org> -urwvn-fonts-2.0.ebuild,
+  -urwvn-fonts-3.02.ebuild:
+  Remove old.
+
+  19 Aug 2008; Peter Volkov <pva@gentoo.org> urwvn-fonts-3.04.ebuild:
+  amd64 stable, bug #234972.
+
+  16 Aug 2008; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove pclouds from metadata.xml (#49680)
+
+  24 Feb 2008; Raúl Porcel <armin76@gentoo.org> urwvn-fonts-3.04.ebuild:
+  alpha stable
+
+  23 Jan 2008; Raúl Porcel <armin76@gentoo.org> urwvn-fonts-3.04.ebuild:
+  Add ~alpha
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org> urwvn-fonts-3.04.ebuild:
+  x86 stable
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*urwvn-fonts-3.04 (04 Dec 2006)
+
+  04 Dec 2006; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org>
+  +urwvn-fonts-3.04.ebuild:
+  Added 3.04
+
+  26 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  urwvn-fonts-3.02.ebuild:
+  Add ~x86-fbsd keyword.
+
+  07 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  urwvn-fonts-3.02.ebuild:
+  Stable on sparc
+
+  01 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  urwvn-fonts-3.02.ebuild:
+  ppc stable, bug #145688
+
+  12 Jul 2006; Aron Griffis <agriffis@gentoo.org> urwvn-fonts-3.02.ebuild:
+  Mark 3.02 stable on ia64
+
+*urwvn-fonts-3.02 (28 May 2006)
+
+  28 May 2006; <pclouds@gentoo.org> -urwvn-fonts-3.0_rc3.ebuild,
+  +urwvn-fonts-3.02.ebuild:
+  Removed 3.0_rc3. Added 3.02
+
+  20 Mar 2006; Mark Loeser <halcy0n@gentoo.org> urwvn-fonts-3.0_rc3.ebuild:
+  Add DEPEND on app-arch/unzip
+
+  10 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  urwvn-fonts-2.0.ebuild:
+  Added to ~hppa, ~ppc.
+
+  10 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  urwvn-fonts-3.0_rc3.ebuild:
+  Added to ~hppa, ~ppc.
+
+*urwvn-fonts-3.0_rc3 (03 Dec 2005)
+
+  03 Dec 2005; <pclouds@gentoo.org> +urwvn-fonts-3.0_rc3.ebuild:
+  Version bump
+
+  23 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  urwvn-fonts-2.0.ebuild:
+  Stable on sparc
+
+  23 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  urwvn-fonts-2.0.ebuild:
+  Added ~sparc
+
+  19 Aug 2005; <pclouds@gentoo.org> urwvn-fonts-2.0.ebuild:
+  Stable on x86
+
+  24 Apr 2005; Diego Pettenò <flameeyes@gentoo.org> urwvn-fonts-2.0.ebuild:
+  Marked ~amd64.
+
+*urwvn-fonts-2.0 (20 Nov 2004)
+
+  20 Nov 2004; <pclouds@gentoo.org> +metadata.xml, +urwvn-fonts-2.0.ebuild:
+  Initial ebuild for urwvn

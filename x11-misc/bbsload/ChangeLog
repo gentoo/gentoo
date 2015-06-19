@@ -1,0 +1,116 @@
+# ChangeLog for x11-misc/bbsload
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/bbsload/ChangeLog,v 1.28 2013/10/19 15:04:28 pacho Exp $
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> -bbsload-0.2.8.ebuild,
+  metadata.xml:
+  Cleanup due desktop-wm removal
+
+  02 Jan 2013; Brent Baude <ranger@gentoo.org> bbsload-0.2.8.ebuild,
+  bbsload-0.2.9.ebuild:
+  Reverting .2.8 and .2.9 back to ~ppc
+
+  29 Nov 2012; Brent Baude <ranger@gentoo.org> bbsload-0.2.9.ebuild:
+  Marking bbsload-0.2.9 ppc for bug 429234
+
+  25 Nov 2012; Kacper Kowalik <xarthisius@gentoo.org> bbsload-0.2.8.ebuild,
+  bbsload-0.2.9.ebuild:
+  Add missing dependency on helvetica font wrt #429234 c#3 by Agostino Sarubbo
+  <ago@gentoo.org>. Thanks to James Cloos <cloos@jhcloos.com> for providing
+  solution
+
+  09 Sep 2012; Raúl Porcel <armin76@gentoo.org> bbsload-0.2.8.ebuild,
+  bbsload-0.2.9.ebuild:
+  Drop sparc keywords
+
+  16 Aug 2012; Johannes Huber <johu@gentoo.org> bbsload-0.2.8.ebuild,
+  bbsload-0.2.9.ebuild:
+  Drop x86 to ~, doesnt pass runtime tests, noticed while processing bug
+  #429234.
+
+*bbsload-0.2.9 (04 Jun 2012)
+
+  04 Jun 2012; Michael Weber <xmw@gentoo.org> +bbsload-0.2.9.ebuild:
+  Version bump, adding ~amd64 keyword (reported by df, bug 415815)
+
+  04 Jun 2012; Michael Weber <xmw@gentoo.org> bbsload-0.2.8.ebuild:
+  Fix HOMEPAGE, EAPI-4 (reported by df, bug 415815)
+
+  16 Apr 2011; Ulrich Mueller <ulm@gentoo.org> bbsload-0.2.8.ebuild:
+  Remove bogus dependency on virtual/blackbox, bug 358825.
+
+  17 Dec 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/bbsload-0.2.8-as-needed.patch, +files/bbsload-0.2.8-gcc43.patch,
+  -bbsload-0.2.6.ebuild, bbsload-0.2.8.ebuild:
+  Fix bug 248554, thanks Bent Karwatzki <spasswolf@web.de>. Fixed building
+  with forced as-needed to test the gcc-4 patch.
+
+  22 Sep 2008; David Shakaryan <omp@gentoo.org> metadata.xml:
+  Change herd from commonbox to desktop-wm.
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove ka0ttic from metadata.xml due to retirement.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  03 Dec 2006; David Shakaryan <omp@gentoo.org> bbsload-0.2.8.ebuild:
+  Fix automake dependency. (bug #150666)
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> bbsload-0.2.8.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  06 Jun 2004; Jason Wever <weeve@gentoo.org> bbsload-0.2.8.ebuild:
+  Stable on sparc.
+
+  06 May 2004; Brandon Hale <tseng@gentoo.org> bbsload-0.2.8.ebuild:
+  Fix explicit RDEPEND
+
+  06 May 2004; Brandon Hale <tseng@gentoo.org> bbsload-0.2.8.ebuild:
+  Stable on x86
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> bbsload-0.2.6.ebuild,
+  bbsload-0.2.8.ebuild:
+  Removed S=, added IUSE=
+
+  30 Oct 2003; Brandon Hale <tseng@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+*bbsload-0.2.8 (19 Jun 2003)
+
+  19 Jun 2003; mkeadle <mkeadle@gentoo.org> bbsload-0.2.5-r1.ebuild,
+  bbsload-0.2.5-r1.ebuild, bbsload-0.2.5-r2.ebuild, bbsload-0.2.5-r2.ebuild,
+  bbsload-0.2.8.ebuild:
+  bump to latest upsdtream stable. added automake to DEPEND. breaks with emake
+  now.
+
+*bbsload-0.2.8 (19 Jun 2003)
+
+  19 Jun 2003; mkeadle <mkeadle@gentoo.org> bbsload-0.2.8.ebuild:
+  bump to latest upstream stable. marked ~x86 ~sparc
+
+*bbsload-0.2.6 (12 Dec 2002)
+
+  12 Dec 2002; Matt Keadle <mkeadle@gentoo.org> bbsload-0.2.6.ebuild
+  files/digest-bbsload-0.2.6
+
+  Bump to latest version. Also fixes compile problems with gcc3.x
+  as mentioned in bug #5438
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*bbsload-0.2.5-r2 (15 Mar 2002)
+
+  15 Mar 2002; Seemant Kulleen <seemant@gentoo.org> bbsload-0.2.5-r2.ebuild
+
+  Updated the DEPENDS to virtual/blackbox
+
+*bbsload-0.2.5-r1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

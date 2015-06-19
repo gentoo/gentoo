@@ -1,0 +1,39 @@
+# ChangeLog for sys-process/nmon
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/nmon/ChangeLog,v 1.8 2014/10/28 12:01:05 jer Exp $
+
+  28 Oct 2014; Jeroen Roovers <jer@gentoo.org> nmon-14i.ebuild:
+  Fix building against sys-libs/ncurses[tinfo] (bug #505114).
+
+  26 Jun 2014; Michael Palimaka <kensington@gentoo.org> -nmon-14g.ebuild:
+  Remove old.
+
+*nmon-14i (19 Mar 2014)
+
+  19 Mar 2014; Lars Wendler <polynomial-c@gentoo.org> +nmon-14i.ebuild:
+  Version bump.
+
+  31 Jul 2012; Michael Palimaka <kensington@gentoo.org> -nmon-14f.ebuild:
+  Remove old.
+
+*nmon-14g (13 Dec 2011)
+
+  13 Dec 2011; Jeroen Roovers <jer@gentoo.org> -nmon-13g.ebuild,
+  -nmon-14a.ebuild, +nmon-14g.ebuild:
+  Version bump.
+
+*nmon-14f (23 Jan 2011)
+
+  23 Jan 2011; Sebastian Pipping <sping@gentoo.org> +nmon-14f.ebuild:
+  Bump to 14f
+
+*nmon-14a (03 Sep 2010)
+
+  03 Sep 2010; Jeroen Roovers <jer@gentoo.org> +nmon-14a.ebuild:
+  Version bump.
+
+*nmon-13g (04 Aug 2010)
+
+  04 Aug 2010; Mike Frysinger <vapier@gentoo.org> +nmon-13g.ebuild,
+  +metadata.xml:
+  Initial ebuild #132948 by Aaron Tygart.

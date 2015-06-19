@@ -1,0 +1,86 @@
+# ChangeLog for app-editors/lpe
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/lpe/ChangeLog,v 1.26 2013/03/07 15:24:26 ssuominen Exp $
+
+  07 Mar 2013; Samuli Suominen <ssuominen@gentoo.org> lpe-1.2.6.13.ebuild:
+  Use pkg-config to query ncurses libraries wrt #459540 by Diego Elio Pettenò
+  Remove unused libtool archive (.la) files for plugins.
+
+  16 Nov 2011; Michael Weber <xmw@gentoo.org> lpe-1.2.6.13.ebuild:
+  Adding sys-libs/ncurses to RDEPEND (thanks Michael, bug 381021)
+
+  23 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> lpe-1.2.6.13.ebuild,
+  +files/lpe-1.2.6.13-make-382.patch:
+  Fix building with make >= 3.82 wrt #335324 by Diego E. Pettenò.
+
+  05 Apr 2010; Jonathan Callen <abcd@gentoo.org> lpe-1.2.6.13.ebuild:
+  Bump to EAPI=3, add prefix keywords
+
+  15 Feb 2009; Daniel Black <dragonheart@gentoo.org> lpe-1.2.6.13.ebuild:
+  QA - no more preparealldocs
+
+  10 Mar 2008; Samuli Suominen <drac@gentoo.org>
+  -files/lpe-1.2.6.12-slang.patch, -lpe-1.2.6.12.ebuild,
+  lpe-1.2.6.13.ebuild:
+  amd64 stable wrt #212786
+
+  10 Mar 2008; Raúl Porcel <armin76@gentoo.org> lpe-1.2.6.13.ebuild:
+  sparc stable wrt #212786
+
+  09 Mar 2008; nixnut <nixnut@gentoo.org> lpe-1.2.6.13.ebuild:
+  Stable on ppc wrt bug 212786
+
+  09 Mar 2008; Markus Meier <maekke@gentoo.org> lpe-1.2.6.13.ebuild:
+  x86 stable, bug #212786
+
+  10 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org> lpe-1.2.6.13.ebuild:
+  Added ~ppc, bug #209497
+
+  10 Feb 2008; Samuli Suominen <drac@gentoo.org> lpe-1.2.6.13.ebuild:
+  Unkeyword ~ppc because slang-2 is not keyworded yet.
+
+  09 Feb 2008; Samuli Suominen <drac@gentoo.org>
+  -files/lpe-1.2.6.13-slang-2.patch, lpe-1.2.6.13.ebuild:
+  Fix lpe to work with slang 2.1.3.
+
+  25 Jan 2008; Samuli Suominen <drac@gentoo.org> -lpe-1.2.6.ebuild:
+  Remove unused version.
+
+  25 Jan 2008; Ferris McCormick <fmccor@gentoo.org> lpe-1.2.6.12.ebuild:
+  Sparc stable, Bug #207281, with fixes suggested by drac@gentoo.org and make
+  ==> emake.
+
+  24 Jan 2008; Christian Faulhammer <opfer@gentoo.org> lpe-1.2.6.12.ebuild:
+  stable x86, bug 207281
+
+  24 Jan 2008; nixnut <nixnut@gentoo.org> lpe-1.2.6.12.ebuild:
+  Stable on ppc wrt bug 207281
+
+*lpe-1.2.6.13 (24 Jan 2008)
+
+  24 Jan 2008; Samuli Suominen <drac@gentoo.org>
+  +files/lpe-1.2.6.13-slang-2.patch, lpe-1.2.6.ebuild, lpe-1.2.6.12.ebuild,
+  +lpe-1.2.6.13.ebuild:
+  Version bump. Fix slang depend for old versions wrt #141947.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*lpe-1.2.6.12 (25 Jun 2005)
+
+  25 Jun 2005; Markus Nigbur <pyrania@gentoo.org> +files/lpe-1.2.6.12-slang.patch,
+  +lpe-1.2.6.12.ebuild:
+  Version bump. See bug #80398 for details (debian took maintainership).
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> lpe-1.2.6.ebuild:
+  Masked lpe-1.2.6.ebuild stable for ppc
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> lpe-1.2.6.ebuild:
+  Marking stable.
+
+*lpe-1.2.6 (04 Oct 2003)
+
+  04 Oct 2003; Markus Nigbur <pyrania@gentoo.org> lpe-1.2.6.ebuild,
+  files/lpe-1.2.6-gentoo.patch:
+  Initial import. (bug 7859)
+

@@ -1,0 +1,750 @@
+# ChangeLog for app-backup/amanda
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/amanda/ChangeLog,v 1.119 2015/06/09 09:00:32 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  21 May 2015; Agostino Sarubbo <ago@gentoo.org> amanda-3.3.7.ebuild:
+  Stable for amd64, wrt bug #549626
+
+  17 May 2015; Pacho Ramos <pacho@gentoo.org> amanda-3.3.7.ebuild:
+  ppc64 stable wrt bug #549626
+
+*amanda-3.3.7 (03 Apr 2015)
+
+  03 Apr 2015; Ian Delaney <idella4@gentoo.org> +amanda-3.3.7.ebuild,
+  amanda-3.3.3-r1.ebuild, amanda-3.3.5.ebuild:
+  bump, patch fix from bug #537248 dropped, no longer required, request from
+  proxy maintainer from bug #529074
+
+  03 Apr 2015; Ian Delaney <idella4@gentoo.org>
+  +files/local-amanda-perl5.20.patch, amanda-3.3.3-r1.ebuild,
+  amanda-3.3.5.ebuild:
+  patch to fix build failure, sourced by proxy maintianer and C. Head from
+  upstream in Bug #537248, confirmed with runtests
+
+  22 Jan 2015; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Sync e-mail address.
+
+  10 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org> amanda-3.3.3.ebuild,
+  amanda-3.3.3-r1.ebuild, amanda-3.3.5.ebuild:
+  Replace perlinfo with perl_set_version
+
+*amanda-3.3.5 (23 Jun 2014)
+
+  23 Jun 2014; Robin H. Johnson <robbat2@gentoo.org> +amanda-3.3.5.ebuild,
+  amanda-3.3.3-r1.ebuild, amanda-3.3.3.ebuild:
+  Bump per bug #510936. Drop virtual/inetd dep per bug #506028.
+
+  21 May 2014; Sergey Popov <pinkbyte@gentoo.org> amanda-3.3.3.ebuild,
+  amanda-3.3.3-r1.ebuild:
+  Get rid of base_* functions, replace them by default ones, wrt bug #507224.
+  Add dependency on dev-perl/XML-Simple for non-minimal builds, wrt bug #506372
+
+  11 Jan 2014; Robin H. Johnson <robbat2@gentoo.org> amanda-3.3.3-r1.ebuild,
+  amanda-3.3.3.ebuild:
+  Bug #483120: Respect AR
+
+  11 Jan 2014; Robin H. Johnson <robbat2@gentoo.org> amanda-3.3.3-r1.ebuild,
+  amanda-3.3.3.ebuild:
+  Bug #484980: Build fix for USE=minimal.
+
+  11 Jan 2014; Pacho Ramos <pacho@gentoo.org> amanda-3.3.3-r1.ebuild:
+  ppc/ppc64 stable, bug #494576
+
+  27 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> amanda-3.3.3-r1.ebuild:
+  x86 stable wrt bug #494576
+
+  27 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> amanda-3.3.3-r1.ebuild:
+  amd64 stable wrt bug #494576
+
+  24 Dec 2013; Tom Wijsman <TomWij@gentoo.org>
+  -files/amanda-2.6.0_p2-coreutils.patch,
+  -files/amanda-2.6.0_p2-syslocpath.patch,
+  -files/amanda-2.6.0p2-amcrypt-ossl-asym-race-fix.patch,
+  -files/amanda-r4593.patch, -files/amanda-r4595.patch,
+  -files/amanda-r4698.patch, -files/amanda-xinetd-2.6.0_p2-r2,
+  -files/s3-list-keys.diff, -files/s3.c.part2.diff:
+  [QA] Remove unused files.
+
+*amanda-3.3.3-r1 (23 Nov 2013)
+
+  23 Nov 2013; Pacho Ramos <pacho@gentoo.org> +amanda-3.3.3-r1.ebuild,
+  +files/amanda.service-r1:
+  Improve systemd unit file (#491842 by Stefan G. Weichinger)
+
+  10 Sep 2013; Ian Delaney <idella4@gentoo.org> -amanda-2.6.0_p2-r4.ebuild,
+  -amanda-2.6.1_p2.ebuild, -amanda-3.2.1.ebuild, -amanda-3.2.2.ebuild,
+  -amanda-3.2.3.ebuild, -amanda-3.3.0.ebuild, -amanda-3.3.1.ebuild,
+  amanda-3.3.3.ebuild, metadata.xml:
+  drop all old in light of 3.3.3 now made stable
+
+  05 Sep 2013; Agostino Sarubbo <ago@gentoo.org> amanda-3.3.3.ebuild:
+  Stable for x86, wrt bug #480040
+
+  05 Sep 2013; Agostino Sarubbo <ago@gentoo.org> amanda-3.3.3.ebuild:
+  Stable for ppc64, wrt bug #480040
+
+  31 Aug 2013; Agostino Sarubbo <ago@gentoo.org> amanda-3.3.3.ebuild:
+  Stable for amd64, wrt bug #480040
+
+  26 Aug 2013; Agostino Sarubbo <ago@gentoo.org> amanda-3.3.3.ebuild:
+  Stable for ppc, wrt bug #480040
+
+  09 Apr 2013; Fabio Erculiani <lxnay@gentoo.org> amanda-3.3.3.ebuild:
+  QA violation, systemd unit files must be installed unconditionally, fixing on
+  behalf of robbat2@
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  26 Feb 2013; Robin H. Johnson <robbat2@gentoo.org> amanda-2.6.0_p2-r4.ebuild,
+  amanda-2.6.1_p2.ebuild, amanda-3.2.1.ebuild, amanda-3.2.2.ebuild,
+  amanda-3.2.3.ebuild, amanda-3.3.0.ebuild, amanda-3.3.1.ebuild,
+  amanda-3.3.3.ebuild:
+  Bug #376169: avoid blkid writes from /usr/sbin/dump testing.
+
+*amanda-3.2.3 (26 Feb 2013)
+*amanda-3.3.3 (26 Feb 2013)
+
+  26 Feb 2013; Robin H. Johnson <robbat2@gentoo.org> +amanda-3.2.3.ebuild,
+  +amanda-3.3.3.ebuild, +files/amanda.service, +files/amanda.socket,
+  amanda-2.6.0_p2-r4.ebuild, amanda-2.6.1_p2.ebuild, amanda-3.2.1.ebuild,
+  amanda-3.2.2.ebuild, amanda-3.3.0.ebuild, amanda-3.3.1.ebuild:
+  Bump of 3.3.3 per bug #428026 (has GLIBC2.16 support). Bump of 3.2.3 per bug
+  #436896 (no GLIBC2.16 support). Bug #455640: virtual/awk.
+
+  14 Dec 2012; Ulrich Müller <ulm@gentoo.org> amanda-2.6.0_p2-r4.ebuild,
+  amanda-2.6.1_p2.ebuild, amanda-3.2.1.ebuild, amanda-3.2.2.ebuild,
+  amanda-3.3.0.ebuild, amanda-3.3.1.ebuild:
+  Fix LICENSE, bug 444408.
+
+  01 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> amanda-3.3.1.ebuild:
+  x86 stable wrt bug #434756
+
+  30 Sep 2012; Raúl Porcel <armin76@gentoo.org> amanda-2.6.0_p2-r4.ebuild,
+  amanda-3.2.1.ebuild:
+  Moved to ~sparc
+
+  30 Sep 2012; Anthony G. Basile <blueness@gentoo.org> amanda-3.3.1.ebuild:
+  stable ppc ppc64, bug #434756
+
+  30 Sep 2012; Agostino Sarubbo <ago@gentoo.org> amanda-3.3.1.ebuild:
+  Stable for amd64, wrt bug #434756
+
+  24 May 2012; Mike Frysinger <vapier@gentoo.org> amanda-2.6.0_p2-r4.ebuild,
+  amanda-2.6.1_p2.ebuild, amanda-3.2.1.ebuild, amanda-3.2.2.ebuild,
+  amanda-3.3.0.ebuild, amanda-3.3.1.ebuild:
+  Inherit user for enewuser/etc...
+
+*amanda-3.3.1 (17 May 2012)
+
+  17 May 2012; Robin H. Johnson <robbat2@gentoo.org> +amanda-3.3.1.ebuild,
+  +files/amanda-r4593.patch, +files/amanda-r4595.patch,
+  +files/amanda-r4698.patch:
+  Bump with patches for bug #415587 glib breakage.
+
+  17 May 2012; Jeroen Roovers <jer@gentoo.org> amanda-3.2.1.ebuild,
+  amanda-3.2.2.ebuild:
+  Add missing dev-libs/libxslt dependency (bug #381307).
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> amanda-2.6.1_p2.ebuild,
+  amanda-3.2.1.ebuild, amanda-3.2.2.ebuild, amanda-3.3.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  16 Nov 2011; Robin H. Johnson <robbat2@gentoo.org> amanda-2.6.1_p2.ebuild,
+  amanda-3.2.1.ebuild, amanda-3.2.2.ebuild, amanda-3.3.0.ebuild:
+  Disallow automagic testing of IPv6 working test when IPv6 build is requested.
+  Otherwise breaks the configure when building USE=ipv6 on a buildhost without
+  an IPv6 kernel.
+
+*amanda-3.3.0 (13 Oct 2011)
+
+  13 Oct 2011; Christian Ruppert <idl0r@gentoo.org> -amanda-3.1.2-r1.ebuild,
+  -amanda-3.1.3.ebuild, +amanda-3.3.0.ebuild:
+  Version bump to 3.3.0, fixes bug 361533 and bug 381307.
+
+  13 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> amanda-3.2.1.ebuild:
+  amd64/ppc/ppc64 stable wrt #359333
+
+  25 Apr 2011; Raúl Porcel <armin76@gentoo.org> amanda-3.2.1.ebuild:
+  sparc stable wrt #359333
+
+  11 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> amanda-3.2.1.ebuild:
+  x86 stable wrt bug #359333
+
+  18 Mar 2011; Christian Ruppert <idl0r@gentoo.org>
+  -files/amanda-inetd.amanda.sample-2.5.1_p3-r1,
+  -files/amanda-xinetd-2.5.1_p3-r1:
+  Remove unused files.
+
+*amanda-3.2.2 (17 Mar 2011)
+
+  17 Mar 2011; Christian Ruppert <idl0r@gentoo.org> -amanda-2.6.0_p2-r1.ebuild,
+  -amanda-2.6.0_p2-r2.ebuild, -amanda-2.6.0_p2-r3.ebuild, -amanda-3.1.2.ebuild,
+  -amanda-3.2.0_beta1.ebuild, -amanda-3.2.0.ebuild, +amanda-3.2.2.ebuild:
+  Version bump to 3.2.2, bug 359287. Remove some older versions.
+
+  29 Dec 2010; Christian Ruppert <idl0r@gentoo.org> amanda-3.2.1.ebuild:
+  Move elog block regarding the AMANDA_SERVER environment variable into
+  pkg_setup. Install the sample cronjob only on non-minimal setups. Remove the
+  --without-krb4-security option since it's no longer valid.
+
+  28 Dec 2010; Christian Ruppert <idl0r@gentoo.org> amanda-3.2.1.ebuild:
+  Fix libcurl dependency again.
+
+  28 Dec 2010; Christian Ruppert <idl0r@gentoo.org> amanda-3.2.1.ebuild:
+  Make curl and readline optional.
+
+  28 Dec 2010; Christian Ruppert <idl0r@gentoo.org> amanda-3.2.1.ebuild:
+  Fix amandahomedir in amaddclient and amserverconfig to use /var/spool/amanda
+  instead of /var/spool/amanda/lib/amanda.
+
+*amanda-3.2.1 (19 Dec 2010)
+
+  19 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> +amanda-3.2.1.ebuild:
+  Version bump.
+
+*amanda-3.2.0 (07 Dec 2010)
+
+  07 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> +amanda-3.2.0.ebuild:
+  Bug #344317: version bump.
+
+  27 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  amanda-2.6.0_p2-r4.ebuild, +files/amanda-2.6.0_p2-coreutils.patch:
+  Fix install with recent automake and coreutils wrt #328755 by "Chris".
+
+  11 Oct 2010; Robin H. Johnson <robbat2@gentoo.org>
+  -files/patch-tar-1.14.90, -files/amanda-amandahosts,
+  -files/amanda-inetd.amanda.sample, -files/amanda-xinetd,
+  -files/example_disklist:
+  Bug #340169: cleanup unused AUX files.
+
+*amanda-3.1.3 (05 Oct 2010)
+
+  05 Oct 2010; Robin H. Johnson <robbat2@gentoo.org> +amanda-3.1.3.ebuild:
+  Version bump for remote exec security vuln in 3.1.2. Older than 3.1.2 are
+  not vulnerable.
+
+*amanda-3.2.0_beta1 (30 Sep 2010)
+
+  30 Sep 2010; Robin H. Johnson <robbat2@gentoo.org>
+  +amanda-3.2.0_beta1.ebuild:
+  Beta version of Amanda 3.2, ebuild thanks to proxy maintainer Stefan G.
+  Weichinger <monitor@oops.co.at>.
+
+  12 Sep 2010; Robin H. Johnson <robbat2@gentoo.org> amanda-3.1.2-r1.ebuild:
+  Bug #331111: Some of the testsuite fails if you have an old version of
+  amanda and run the testsuite of the new version after building it but
+  before installing it.
+
+*amanda-3.1.2-r1 (10 Sep 2010)
+
+  10 Sep 2010; Robin H. Johnson <robbat2@gentoo.org> amanda-2.6.1_p2.ebuild,
+  +amanda-3.1.2-r1.ebuild:
+  Bug #300100: missing xinet file. Bug #296633: Disable syntax tests. Bug
+  #296634: Fix perl install location. Bug #300098: Clean up pointless .la
+  files.
+
+*amanda-3.1.2 (10 Sep 2010)
+
+  10 Sep 2010; Robin H. Johnson <robbat2@gentoo.org> +amanda-3.1.2.ebuild:
+  Bug #322779: Major version bump. If you use a tape changer, please review
+  the NEWS and amanda-changers manpage.
+
+  08 May 2010; Robin H. Johnson <robbat2@gentoo.org> amanda-2.6.1_p2.ebuild:
+  Fix missing / that broke binpkg merges of amanda.
+
+  17 Jan 2010; Robin H. Johnson <robbat2@gentoo.org> amanda-2.6.1_p2.ebuild:
+  If installing from a binpkg, then ${T} does not exist, so look at the
+  just-installed copy of the env.d file.
+
+  22 Nov 2009; Robin H. Johnson <robbat2@gentoo.org> -amanda-2.4.5.ebuild,
+  -amanda-2.4.5_p1.ebuild, -files/amanda-2.4.5-4tb-holding-disk.patch,
+  -files/amanda-2.4.5-amverify-loop-detect.patch,
+  -files/amanda-2.4.5-samba-printf.patch, -amanda-2.5.1_p3-r1.ebuild,
+  -amanda-2.5.1_p3-r2.ebuild, -amanda-2.5.1_p3-r4.ebuild,
+  -files/amanda-2.5.1_p2-tar-1.16.patch,
+  -files/amanda-2.5.1_p3-displayunit.patch, -amanda-2.5.2_p1.ebuild,
+  -amanda-2.5.2_p1-r1.ebuild, -amanda-2.5.2_p1-r2.ebuild,
+  -amanda-2.5.2_p1-r3.ebuild, -amanda-2.5.2_p1-r4.ebuild,
+  -amanda-2.5.2_p1-r5.ebuild, -files/amanda-2.5.2_p1-chg-multi.patch,
+  -files/amanda-2.5.2_p1-fix-asneeded.patch,
+  -files/amanda-2.5.2p1-amcrypt-ossl-asym-race-fix.patch:
+  The 2.4 and 2.5 series no longer compile with modern autoconf. If you have
+  a really old server that you need to talk to, you can get them from the
+  CVS Attic.
+
+  22 Nov 2009; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Add Dustin from upstream to metadata.
+
+  22 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  amanda-2.6.0_p2-r4.ebuild:
+  Bug #283753: Fix perl module install location.
+
+*amanda-2.6.1_p2 (22 Nov 2009)
+
+  22 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +amanda-2.6.1_p2.ebuild, +files/amanda-xinetd-2.6.1_p1-client,
+  +files/amanda-xinetd-2.6.1_p1-server:
+  Bug #266024: version bump. Thanks to MATSUU Takuto <matsuu@gentoo.org> for
+  the submission. Was delayed by bugs in _p1, fixed by upstream in _p2 now.
+
+  09 May 2009; Ferris McCormick <fmccor@gentoo.org>
+  amanda-2.6.0_p2-r4.ebuild:
+  Sparc stable, Bug #264456.
+
+  27 Apr 2009; Brent Baude <ranger@gentoo.org> amanda-2.6.0_p2-r4.ebuild:
+  Marking amanda-2.6.0_p2-r4 ppc for bug 264456
+
+  13 Apr 2009; Brent Baude <ranger@gentoo.org> amanda-2.6.0_p2-r4.ebuild:
+  Marking amanda-2.6.0_p2-r4 ppc64 for bug 264456
+
+  10 Apr 2009; Robin H. Johnson <robbat2@gentoo.org>
+  amanda-2.6.0_p2-r4.ebuild:
+  Bug #265294: One of the cases of the Amanda env special file broke the
+  upgrade where I had turned a bit off in the previous commit.
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org> amanda-2.6.0_p2-r4.ebuild:
+  amd64/x86 stable, bug #264456
+
+  05 Apr 2009; Robin H. Johnson <robbat2@gentoo.org>
+  amanda-2.6.0_p2-r4.ebuild:
+  Cleanup env tempfile that was installed, and make ipv6 non-automagic.
+
+  05 Apr 2009; Robin H. Johnson <robbat2@gentoo.org>
+  amanda-2.6.0_p2-r4.ebuild:
+  DB mode selection is not available in 2.6.
+
+  05 Apr 2009; Robin H. Johnson <robbat2@gentoo.org>
+  amanda-2.6.0_p2-r4.ebuild:
+  Update of the installed docs for 2.6.0_p2-r4, removes some spurious
+  warnings of docs that no longer exist.
+
+  01 Apr 2009; Robin H. Johnson <robbat2@gentoo.org>
+  amanda-2.6.0_p2-r4.ebuild:
+  Fix minor issue from bug #264456 (comment 4), creating directories.
+
+  01 Apr 2009; Robin H. Johnson <robbat2@gentoo.org>
+  amanda-2.5.2_p1-r5.ebuild:
+  Just change the ebuild so automake runs earlier.
+
+  26 Nov 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +files/amanda-2.6.0_p2-syslocpath.patch, amanda-2.6.0_p2-r4.ebuild:
+  Bug #248838, avoid a too-generic binary named dump in /usr/bin.
+
+*amanda-2.6.0_p2-r4 (19 Nov 2008)
+
+  19 Nov 2008; Robin H. Johnson <robbat2@gentoo.org> metadata.xml,
+  +amanda-2.6.0_p2-r4.ebuild:
+  Split out devpay support, as it is not for all users, thanks to Lisa
+  Seelye <lisa@thedoh.com>.
+
+  24 Sep 2008; Robin H. Johnson <robbat2@gentoo.org>
+  amanda-2.6.0_p2-r2.ebuild, amanda-2.6.0_p2-r3.ebuild:
+  Bug 238017, refix the migration of amandates. Sorry to the ~arch users.
+  You will need to fix it up yourself from the snafu location if you did rm
+  at the old location.
+
+  23 Sep 2008; Robin H. Johnson <robbat2@gentoo.org>
+  files/amanda-2.5.2p1-amcrypt-ossl-asym-race-fix.patch,
+  files/amanda-2.6.0p2-amcrypt-ossl-asym-race-fix.patch:
+  Quick fix of to better suppress the extra output from dd, that was causing
+  a non-critical "STRANGE" warning during backups.
+
+*amanda-2.6.0_p2-r3 (22 Sep 2008)
+*amanda-2.5.2_p1-r5 (22 Sep 2008)
+
+  22 Sep 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +files/amanda-2.5.2p1-amcrypt-ossl-asym-race-fix.patch,
+  +files/amanda-2.6.0p2-amcrypt-ossl-asym-race-fix.patch,
+  +amanda-2.5.2_p1-r5.ebuild, +amanda-2.6.0_p2-r3.ebuild:
+  Fixup a nasty race condition in encryption of backups. amaespipe suffers
+  from the same problem and is not yet fixed.
+
+*amanda-2.6.0_p2-r2 (19 Sep 2008)
+
+  19 Sep 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +files/amanda-inetd.amanda.sample-2.6.0_p2-r2,
+  +files/amanda-xinetd-2.6.0_p2-r2, +amanda-2.6.0_p2-r2.ebuild:
+  Revision bump to solve bug #238017. Fixes (x)inetd scripts, plus tries to
+  do automatic migration of amandates from /etc to the new location.
+
+  18 Sep 2008; Robin H. Johnson <robbat2@gentoo.org>
+  -amanda-2.6.0_p1.ebuild, -amanda-2.6.0_p2.ebuild:
+  These older 2.6.0 builds should not be used, they had problems. Use
+  2.6.0_p2-r1 instead.
+
+*amanda-2.6.0_p2-r1 (18 Sep 2008)
+
+  18 Sep 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +files/s3-list-keys.diff, +files/s3.c.part2.diff,
+  +amanda-2.6.0_p2-r1.ebuild, metadata.xml:
+  Ready for prime-time, with S3 patches tested by Lisa Seelye
+  <lisa@thedoh.com> (former Gentoo dev :-).
+
+*amanda-2.6.0_p2 (03 Sep 2008)
+
+  03 Sep 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +amanda-2.6.0_p2.ebuild:
+  Version bump.
+
+  13 Aug 2008; Robin H. Johnson <robbat2@gentoo.org> amanda-2.4.5.ebuild,
+  amanda-2.4.5_p1.ebuild, amanda-2.5.1_p3-r1.ebuild,
+  amanda-2.5.1_p3-r2.ebuild, amanda-2.5.1_p3-r4.ebuild,
+  amanda-2.5.2_p1.ebuild, amanda-2.5.2_p1-r1.ebuild,
+  amanda-2.5.2_p1-r2.ebuild, amanda-2.5.2_p1-r3.ebuild,
+  amanda-2.5.2_p1-r4.ebuild, amanda-2.6.0_p1.ebuild:
+  Make repoman happy.
+
+*amanda-2.6.0_p1 (13 Aug 2008)
+
+  13 Aug 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +amanda-2.6.0_p1.ebuild:
+  Really early testing for new Amanda version. Should work with libtool-2.2
+  unlike earlier releases.
+
+  23 Jul 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*amanda-2.5.2_p1-r4 (26 Jun 2008)
+
+  26 Jun 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +files/amanda-2.5.2_p1-chg-multi.patch,
+  +files/amanda-2.5.2_p1-fix-asneeded.patch, +amanda-2.5.2_p1-r4.ebuild:
+  Fix bugs #212970, #192296, #217507. Text dbmode is the only one left
+  supported by upstream.
+
+  08 Feb 2008; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Change proxyied maintainer email.
+
+  09 Oct 2007; Robin H. Johnson <robbat2@gentoo.org> amanda-2.4.5.ebuild,
+  amanda-2.4.5_p1.ebuild, amanda-2.5.1_p3-r1.ebuild,
+  amanda-2.5.1_p3-r2.ebuild, amanda-2.5.1_p3-r4.ebuild,
+  amanda-2.5.2_p1.ebuild, amanda-2.5.2_p1-r1.ebuild,
+  amanda-2.5.2_p1-r2.ebuild, amanda-2.5.2_p1-r3.ebuild:
+  Fix quoting in all ebuilds.
+
+*amanda-2.5.2_p1-r3 (06 Sep 2007)
+
+  06 Sep 2007; Robin H. Johnson <robbat2@gentoo.org>
+  +amanda-2.5.2_p1-r3.ebuild:
+  Fix problem with env.d generation. If you see errors about some vars during
+  upgrading, please ignore them.
+
+*amanda-2.5.2_p1-r2 (01 Aug 2007)
+
+  01 Aug 2007; Robin H. Johnson <robbat2@gentoo.org>
+  +amanda-2.5.2_p1-r2.ebuild:
+  Document the custom env.d foo that our Amanda package does to allow users to
+  customize their install. Add AMANDA_TAR to the list of settings, to allow
+  users to specify implementation like STar instead of GNU tar.
+
+*amanda-2.5.2_p1-r1 (24 Jul 2007)
+
+  24 Jul 2007; Robin H. Johnson <robbat2@gentoo.org>
+  +amanda-2.5.2_p1-r1.ebuild:
+  The default configuration that was installed did not have the subsitutations
+  for the user config made to it.
+
+*amanda-2.5.2_p1 (20 Jul 2007)
+
+  20 Jul 2007; Robin H. Johnson <robbat2@gentoo.org>
+  +amanda-2.5.2_p1.ebuild:
+  New upstream version, bump thanks to Stefan G. Weichinger <sgw@oops.co.at>.
+
+  20 May 2007; Robin H. Johnson <robbat2@gentoo.org>:
+  Please note that amanda-2.5.2 should NOT be added to the Portage tree.
+  It has upstream issues, and it's recommended that we wait for 2.5.3
+  instead.
+
+  20 May 2007; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Add sgw as a proxy developer for Amanda. Please CC him on all Amanda bugs.
+
+*amanda-2.5.1_p3-r4 (10 Apr 2007)
+
+  10 Apr 2007; Robin H. Johnson <robbat2@gentoo.org>
+  -amanda-2.5.1_p3-r3.ebuild, +amanda-2.5.1_p3-r4.ebuild:
+  Bug #173898 - fix IUSE. Bug #173354 - krb4 is being dropped from Gentoo.
+
+  09 Apr 2007; Robin H. Johnson <robbat2@gentoo.org> amanda-2.4.5.ebuild,
+  amanda-2.4.5_p1.ebuild, amanda-2.5.1_p3-r1.ebuild,
+  amanda-2.5.1_p3-r2.ebuild, amanda-2.5.1_p3-r3.ebuild:
+  Bug #173884, move to doenvd instead of insinto env.d.
+
+*amanda-2.5.1_p3-r3 (07 Apr 2007)
+
+  07 Apr 2007; Robin H. Johnson <robbat2@gentoo.org>
+  +amanda-2.5.1_p3-r3.ebuild:
+  Add support for nearly all other authentication methods - bug #171812, patch
+  thanks to Stefan G. Weichinger <monitor@oops.co.at>. Also do a cleanup of
+  several bits of lingering oldness in the ebuild, and ensure that the right
+  binaries are always locked down setuid properly.
+
+  26 Mar 2007; Alec Warner <antarus@gentoo.org> amanda-2.4.5.ebuild,
+  amanda-2.5.1_p3-r1.ebuild, amanda-2.5.1_p3-r2.ebuild:
+  Remove dependency on portage: ref bug 162516
+
+*amanda-2.5.1_p3-r2 (08 Mar 2007)
+
+  08 Mar 2007; Robin H. Johnson <robbat2@gentoo.org>
+  +amanda-2.5.1_p3-r2.ebuild:
+  Make sure --with-debugging is always enabled per upstream, to avoid
+  breakages with tape changers.
+
+  07 Mar 2007; Robin H. Johnson <robbat2@gentoo.org>
+  -amanda-2.5.1_p2.ebuild, -amanda-2.5.1_p3.ebuild:
+  Remove the builds of amanda-2.5.1_p[23] that caused brokenness. You must
+  upgrade to p3-r1!.
+
+*amanda-2.5.1_p3-r1 (07 Mar 2007)
+
+  07 Mar 2007; Robin H. Johnson <robbat2@gentoo.org>
+  +files/amanda-amandahosts-client-2.5.1_p3-r1,
+  +files/amanda-amandahosts-server-2.5.1_p3-r1,
+  +files/amanda-inetd.amanda.sample-2.5.1_p3-r1,
+  +files/amanda-xinetd-2.5.1_p3-r1, +files/example_disklist-2.5.1_p3-r1,
+  +files/amanda-2.5.1_p3-displayunit.patch, +amanda-2.5.1_p3-r1.ebuild:
+  Add proper p3 changes from upstream developer Stefan G. Weichinger
+  (monitor@oops.co.at). This moves the builds to using the new Amanda auth
+  system. If you use localhost in your disklist you should replace it with the
+  actual hostname! Please also see the syntax changes to amandahosts. We also
+  support USE=minimal now to build clients.
+
+*amanda-2.5.1_p3 (05 Mar 2007)
+
+  05 Mar 2007; Jeroen Roovers <jer@gentoo.org> +amanda-2.5.1_p3.ebuild:
+  Version bump.
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> amanda-2.4.5.ebuild,
+  amanda-2.4.5_p1.ebuild, amanda-2.5.1_p2.ebuild:
+  Replacing einfo with elog
+
+  13 Dec 2006; Jeroen Roovers <jer@gentoo.org>
+  +files/amanda-2.5.1_p2-tar-1.16.patch, amanda-2.5.1_p2.ebuild:
+  Added tar 1.16 patch, added IUSE=minimal, both requested in bug #127725.
+
+*amanda-2.5.1_p2 (12 Dec 2006)
+
+  12 Dec 2006; Jeroen Roovers <jer@gentoo.org> metadata.xml,
+  +amanda-2.5.1_p2.ebuild:
+  Version bump (bug #127725).
+
+  09 Aug 2006; Brent Baude <ranger@gentoo.org> amanda-2.4.5_p1.ebuild:
+  Marking amanda-2.4.5_p1 ~ppc64 for bug # 142829
+
+  13 Jul 2006; Robin H. Johnson <robbat2@gentoo.org> amanda-2.4.5.ebuild,
+  amanda-2.4.5_p1.ebuild:
+  Bug #140119, double $D/$D.
+
+  14 Jun 2006; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Update metadata.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> files/digest-amanda-2.4.5,
+  files/digest-amanda-2.4.5_p1, Manifest:
+  Fixing duff SHA256 digests: Bug # 131293
+
+  30 Jan 2006; Robin H. Johnson <robbat2@gentoo.org> Manifest:
+  Manifest fix.
+
+  29 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org> amanda-2.4.5_p1.ebuild:
+  Dependency update: media-gfx/gnuplot -> sci-visualization/gnuplot.
+
+  29 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org> amanda-2.4.5.ebuild:
+  Dependency update: media-gfx/gnuplot -> sci-visualization/gnuplot.
+
+  31 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> amanda-2.4.5.ebuild,
+  amanda-2.4.5_p1.ebuild:
+  Use -1 instead of /bin/false as default shell.
+
+  12 Dec 2005; Robin H. Johnson <robbat2@gentoo.org>
+  -amanda-2.4.4-r3.ebuild, -amanda-2.4.4_p2.ebuild,
+  -amanda-2.4.4_p2-r1.ebuild, -amanda-2.4.4_p2-r2.ebuild,
+  -amanda-2.4.4_p3.ebuild:
+  Remove old versions of amanda, 2.4.5 has been in tree for 6 months.
+
+*amanda-2.4.5_p1 (12 Dec 2005)
+
+  12 Dec 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +amanda-2.4.5_p1.ebuild:
+  Version bump. Security fixes in fd handling.
+
+  14 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> amanda-2.4.5.ebuild:
+  Stable on ppc.
+
+  12 Aug 2005; Robin H. Johnson <robbat2@gentoo.org> amanda-2.4.5.ebuild:
+  Stable 2.4.5 on x86.
+
+  05 Aug 2005; Aron Griffis <agriffis@gentoo.org> amanda-2.4.4_p3.ebuild,
+  amanda-2.4.5.ebuild:
+  Add -j1 to emake cmdline. This package doesn't build reliably when make is
+  parallelized
+
+  04 Jul 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +files/patch-tar-1.14.90, +files/amanda-2.4.5-4tb-holding-disk.patch,
+  +files/amanda-2.4.5-amverify-loop-detect.patch,
+  +files/amanda-2.4.5-samba-printf.patch, +files/amanda-amandahosts,
+  +files/amanda-cron, +files/amanda-devfs,
+  +files/amanda-inetd.amanda.sample, +files/amanda-profile,
+  +files/amanda-xinetd, +files/example_amanda.conf, +files/example_disklist,
+  +files/example_global.conf, +metadata.xml, +amanda-2.4.4-r3.ebuild,
+  +amanda-2.4.4_p2.ebuild, +amanda-2.4.4_p2-r1.ebuild,
+  +amanda-2.4.4_p2-r2.ebuild, +amanda-2.4.4_p3.ebuild, +amanda-2.4.5.ebuild:
+  Moved from app-admin/amanda to app-backup/amanda.
+
+*amanda-2.4.5 (08 Jun 2005)
+
+  08 Jun 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +files/amanda-2.4.5-4tb-holding-disk.patch,
+  +files/amanda-2.4.5-amverify-loop-detect.patch,
+  +files/amanda-2.4.5-samba-printf.patch, +amanda-2.4.5.ebuild:
+  Amanda version bump to 2.4.5. Fixed bugs 91084, 83829, 51370.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> amanda-2.4.4_p3.ebuild:
+  stable on amd64
+
+  18 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  amanda-2.4.4_p3.ebuild:
+  Stable on ppc.
+
+  15 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> amanda-2.4.4-r3.ebuild,
+  amanda-2.4.4_p2.ebuild, amanda-2.4.4_p2-r1.ebuild,
+  amanda-2.4.4_p2-r2.ebuild, amanda-2.4.4_p3.ebuild:
+  Dependency update: sys-apps/mtx -> sys-block/mtx.
+
+  18 Dec 2004; Simon Stelling <blubb@gentoo.org> amanda-2.4.4_p3.ebuild:
+  removed myconf=" `use_with pic`" line, it's apparently not needed and
+  prevented from building amanda on amd64
+
+  10 Dec 2004; Andrej Kacian <ticho@gentoo.org> amanda-2.4.4-r3.ebuild,
+  amanda-2.4.4_p2-r1.ebuild, amanda-2.4.4_p2-r2.ebuild,
+  amanda-2.4.4_p2.ebuild, amanda-2.4.4_p3.ebuild:
+  Changed mail-client/mailx to virtual/mailx in DEPEND. See bug #73972.
+
+  24 Nov 2004; Robin H. Johnson <robbat2@gentoo.org> amanda-2.4.4_p3.ebuild:
+  Fix bug #66842 properly.
+
+  21 Nov 2004; Robin H. Johnson <robbat2@gentoo.org>
+  +files/patch-tar-1.14.90:
+  Fix bugs #51370, #66842, #69105.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  amanda-2.4.4-r3.ebuild, amanda-2.4.4_p2-r1.ebuild:
+  Masked amanda-2.4.4_p2-r1.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  amanda-2.4.4-r3.ebuild:
+  Masked amanda-2.4.4-r3.ebuild stable for ppc
+
+*amanda-2.4.4_p3 (15 Jul 2004)
+
+  15 Jul 2004; Robin H. Johnson <robbat2@gentoo.org> amanda-2.4.4_p3.ebuild:
+  new upstream version.
+
+*amanda-2.4.4_p2-r2 (15 Jul 2004)
+
+  15 Jul 2004; Robin H. Johnson <robbat2@gentoo.org>
+  amanda-2.4.4_p2-r2.ebuild:
+  fix bug #56931.
+
+  04 Jul 2004; Robin H. Johnson <robbat2@gentoo.org>
+  amanda-2.4.4_p2-r1.ebuild, files/amanda-profile:
+  fix bug #52941, #52944.
+
+  30 May 2004; Robin H. Johnson <robbat2@gentoo.org> amanda-2.4.4-r3.ebuild,
+  amanda-2.4.4_p2-r1.ebuild, amanda-2.4.4_p2.ebuild:
+  mailx move
+
+  29 May 2004; Robin H. Johnson <robbat2@gentoo.org>
+  amanda-2.4.4_p2-r1.ebuild:
+  stable on x86 (only a tiny change from -r0)
+
+*amanda-2.4.4_p2-r1 (29 May 2004)
+
+  29 May 2004; Robin H. Johnson <robbat2@gentoo.org>
+  amanda-2.4.4_p2-r1.ebuild, amanda-2.4.4_p2.ebuild, files/amanda-devfs:
+  add note for tape changer, and enable qde support.
+
+  20 Apr 2004; Daniel Black <dragonheart@gentoo.org> amanda-2.4.4-r3.ebuild,
+  amanda-2.4.4_p2.ebuild:
+  QA - removed runtime dependance on automake and autoconf
+
+*amanda-2.4.4_p2 (13 Apr 2004)
+
+  13 Apr 2004; Robin H. Johnson <robbat2@gentoo.org> amanda-2.4.4_p2.ebuild,
+  metadata.xml:
+  add new version as per bug #38770, block out xfs for sparc only, so sparc can
+  use amanda too! Add metadata.xml.
+
+  31 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> amanda-2.4.4-r3.ebuild:
+  Adding amd64 keyword, closing #46209.
+
+  15 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> amanda-2.4.4-r3.ebuild:
+  don't assign default to S
+
+  15 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> amanda-2.4.4-r1.ebuild,
+  amanda-2.4.4-r2.ebuild, amanda-2.4.4.ebuild:
+  clean extra ebuilds
+
+*amanda-2.4.4-r3 (07 Jan 2004)
+
+  07 Jan 2004; Robin H. Johnson <robbat2@gentoo.org> amanda-2.4.4-r1.ebuild,
+  amanda-2.4.4-r2.ebuild, amanda-2.4.4-r3.ebuild, amanda-2.4.4.ebuild:
+  fix bug #37400 with a better default
+
+  24 Dec 2003; Robin H. Johnson <robbat2@gentoo.org> amanda-2.4.4-r1.ebuild,
+  amanda-2.4.4-r2.ebuild, amanda-2.4.4.ebuild:
+  fix bug #36316.
+
+  09 Dec 2003; Jason Wever <weeve@gentoo.org> amanda-2.4.4-r1.ebuild,
+  amanda-2.4.4-r2.ebuild, amanda-2.4.4.ebuild:
+  Masked on sparc as it needs xfsdump and xfs isn't available on sparc atm.
+
+  28 Nov 2003; Robin H. Johnson <robbat2@gentoo.org> amanda-2.4.4-r1.ebuild,
+  amanda-2.4.4-r2.ebuild:
+  another typo fix
+
+  28 Nov 2003; Robin H. Johnson <robbat2@gentoo.org> amanda-2.4.4-r2.ebuild:
+  fix minor blip in how i processed vars
+
+*amanda-2.4.4-r2 (13 Nov 2003)
+
+  13 Nov 2003; Robin H. Johnson <robbat2@gentoo.org> amanda-2.4.4-r2.ebuild:
+  fix amanda depend glitches per bug #33381
+
+  06 Nov 2003; Robin H. Johnson <robbat2@gentoo.org> amanda-2.4.4-r1.ebuild,
+  amanda-2.4.4.ebuild:
+  : instead of . for chown
+
+  10 Jul 2003; Robin H. Johnson <robbat2@gentoo.org> amanda-2.4.4-r1.ebuild:
+  Marking as stable on x86 as it works in a production environment for me.
+
+  10 Jul 2003; Robin H. Johnson <robbat2@gentoo.org> amanda-2.4.4-r1.ebuild:
+  Fix bug #24158 
+  Move the amandahosts file to /etc/amanda, and provide a symlink to it.
+
+  08 Jul 2003; Robin H. Johnson <robbat2@gentoo.org> amanda-2.4.4-r1.ebuild:
+  Fix userpriv+sandbox issue in ebuild.
+
+*amanda-2.4.4-r1 (08 Jul 2003)
+
+  08 Jul 2003; Robin H. Johnson <robbat2@gentoo.org> amanda-2.4.4-r1.ebuild,
+  files/amanda-amandahosts, files/amanda-inetd.amanda.sample,
+  files/amanda-profile, files/amanda-xinetd:
+  Large improvements to the ebuild configuration system, using the same
+  environment variables. Now we also preserve them in an env.d file, which also
+  adds the CONFIG_PROTECT entry I missed before. Also update many config files
+  to be dynamically filled in from the env variables.
+
+*amanda-2.4.4 (26 Jun 2003)
+
+  26 June 2003; Robin H. Johnson <robbat2@gentoo.org> Manifest,
+  files/amanda-devfs, files/example_disklist, files/amanda-cron,
+  files/amanda-xinetd, files/amanda-profile, files/example_amanda.conf,
+  files/amanda-amandahosts, files/digest-amanda-2.4.4,
+  files/example_global.conf, amanda-2.4.4.ebuild, ChangeLog:
+  Initial import. Russell Adams <demo@demosthenes.org> submitted a reasonable
+  ebuild for amanda in bug #19403. I have merged the good elements of all
+  available amanda ebuild into this new ebuild. Bugs #10782, #13948, #16118,
+  #18466, #19403.

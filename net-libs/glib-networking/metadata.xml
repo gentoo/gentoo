@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>gnome</herd>
+  <use>
+    <flag name="libproxy">Use <pkg>net-libs/libproxy</pkg> for getting
+		the HTTP/HTTPS/SOCKS proxy configuration</flag>
+	<flag name="gnome">Extract HTTP/HTTPS/SOCKS proxy configuration
+		stored using GSettings</flag>
+  </use>
+</pkgmetadata>

@@ -1,0 +1,49 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Wed Jun 27 23:41:12 UTC 2012
+Subject: build system
+
+respect flags
+
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -54,40 +54,13 @@
+ link_directories("${Boost_LIBRARY_DIRS}")
+ include_directories(SYSTEM "${Boost_INCLUDE_DIR}")
+ 
+-add_cxxflag("-Wall")
+-add_cxxflag("-Wextra")
+-add_cxxflag("-Wformat=2")
+-add_cxxflag("-Wundef")
+-add_cxxflag("-Wpointer-arith")
+-add_cxxflag("-Wcast-qual")
+-add_cxxflag("-Woverloaded-virtual")
+-add_cxxflag("-Wlogical-op")
+-add_cxxflag("-Wliteral-conversion")
+-add_cxxflag("-Wshift-overflow")
+-add_cxxflag("-Woverflow")
+-add_cxxflag("-Wbool-conversions")
+-add_cxxflag("-Wconversion")
+-add_cxxflag("-Wsign-conversion")
+-add_cxxflag("-Wmissing-declarations")
+-add_cxxflag("-Wredundant-decls")
+-
+ if(DEBUG_EXTRA)
+ 	add_cxxflag("-ftrapv") # to add checks for (undefined) signed integer overflow
+ 	add_cxxflag("-fbounds-checking")
+ 	add_cxxflag("-fcatch-undefined-behavior")
+ 	add_cxxflag("-Wstrict-aliasing=1")
+-else()
+-	# -Wuninitialized causes too many false positives - thanks very much, gcc
+-	add_cxxflag("-Wno-uninitialized")
+-	# (clang only) Conflicts with using const variables for configuration.
+-	add_cxxflag("-Wno-constant-logical-operand")
+-	add_cxxflag("-Wno-unneeded-internal-declaration")
+-	add_cxxflag("-Wno-unused-function")
+ endif()
+ 
+-# Because i'm lazy
+-add_cxxflag("-Wl,--as-needed")
+-
+ check_symbol_exists(isatty "unistd.h" HAVE_ISATTY)
+ check_symbol_exists(ioctl "sys/ioctl.h" HAVE_IOCTL)
+ 

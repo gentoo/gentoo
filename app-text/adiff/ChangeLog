@@ -1,0 +1,50 @@
+# ChangeLog for app-text/adiff
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/adiff/ChangeLog,v 1.13 2010/12/28 15:34:09 ranger Exp $
+
+  28 Dec 2010; Brent Baude <ranger@gentoo.org> adiff-1.4.ebuild:
+  stable ppc64, bug 329897
+
+  28 Aug 2010; Raúl Porcel <armin76@gentoo.org> adiff-1.4.ebuild:
+  alpha/ia64 stable wrt #329897
+
+  31 Jul 2010; Markos Chandras <hwoarang@gentoo.org> adiff-1.4.ebuild:
+  Stable on amd64 wrt bug #329897
+
+  26 Jul 2010; Christian Faulhammer <fauli@gentoo.org> adiff-1.4.ebuild:
+  stable x86, bug 329897
+
+  26 Jul 2010; Jeroen Roovers <jer@gentoo.org> adiff-1.4.ebuild:
+  Fake src_unpack() to suppress unpack() warning.
+
+  05 Apr 2010; Jonathan Callen <abcd@gentoo.org> adiff-1.4.ebuild:
+  Add prefix keywords
+
+  19 May 2009; Brent Baude <ranger@gentoo.org> adiff-1.4.ebuild:
+  keyworded ~arch for ppc64, bug 269944
+
+  03 Sep 2008; Tristan Heaven <nyhm@gentoo.org> -adiff-1.2.ebuild,
+  adiff-1.4.ebuild:
+  Block app-arch/atool, bug #227037
+
+*adiff-1.4 (19 Jan 2008)
+
+  19 Jan 2008; Fabian Groffen <grobian@gentoo.org> adiff-1.2.ebuild,
+  +adiff-1.4.ebuild:
+  Dropped ppc-macos keyword, fixed quoting, fixed homepage, version bumped.
+
+  29 Aug 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing agriffis from metadata due to his retirement (see #182294 for
+  reference).
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  08 Oct 2005; Fabian Groffen <grobian@gentoo.org> adiff-1.2.ebuild:
+  Marking ~ppc-macos (bug #108459)
+
+*adiff-1.2 (15 Aug 2005)
+
+  15 Aug 2005; Aron Griffis <agriffis@gentoo.org> +adiff-1.2.ebuild:
+  New ebuild for adiff, a wordwise diff program
+

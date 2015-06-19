@@ -1,0 +1,54 @@
+# ChangeLog for app-emacs/df-mode
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/df-mode/ChangeLog,v 1.9 2015/04/02 02:51:16 ulm Exp $
+
+  02 Apr 2015; Ulrich Müller <ulm@gentoo.org> df-mode-20050509.ebuild:
+  Update HOMEPAGE, bug 544802.
+
+  27 Jan 2015; Ulrich Müller <ulm@gentoo.org> df-mode-20050509.ebuild:
+  Update HOMEPAGE, bug 537928. Specify LICENSE more precisely.
+
+  11 Nov 2011; Ulrich Mueller <ulm@gentoo.org> df-mode-20050509.ebuild:
+  Remove very old postinst message. Bump EAPI to 4.
+
+  03 Mar 2009; Ulrich Mueller <ulm@gentoo.org> df-mode-20050509.ebuild:
+  Regenerate site-init file in pkg_postinst.
+
+  06 Dec 2008; Christian Faulhammer <fauli@gentoo.org>
+  -files/50df-gentoo.el, -df-mode-1.5.ebuild:
+  clean up
+
+  14 Jun 2008; Ulrich Mueller <ulm@gentoo.org> df-mode-20050509.ebuild:
+  Do not assign SIMPLE_ELISP since elisp.eclass now detects this case
+  automatically.
+
+  13 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  df-mode-20050509.ebuild:
+  stable amd64, bug 205551
+
+  13 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  df-mode-20050509.ebuild:
+  stable x86, bug 205551
+
+*df-mode-20050509 (14 Dec 2007)
+*df-mode-1.5 (14 Dec 2007)
+
+  14 Dec 2007; Ulrich Mueller <ulm@gentoo.org> +files/50df-gentoo.el,
+  +files/50df-mode-gentoo.el, +metadata.xml, +df-mode-1.5.ebuild,
+  +df-mode-20050509.ebuild:
+  Package move from df to df-mode. Version bump; new upstream and HOMEPAGE.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  29 Sep 2005; Joseph Jezak <josejx@gentoo.org> df-1.5.ebuild:
+  Marked ~ppc.
+
+  01 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org> df-1.5.ebuild:
+  Keywording ~amd64.
+
+*df-1.5 (31 Oct 2002)
+
+  31 Oct 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  df-1.5.ebuild, files/50df-gentoo.el, files/digest-df-1.5 :
+  Initial import.

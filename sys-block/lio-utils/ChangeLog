@@ -1,0 +1,14 @@
+# ChangeLog for sys-block/lio-utils
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/lio-utils/ChangeLog,v 1.2 2012/05/25 16:42:53 alexxy Exp $
+
+  25 May 2012; Alexey Shvetsov <alexxy@gentoo.org> lio-utils-9999.ebuild:
+  [sys-block/lio-utils] Fix pkg_setup
+
+*lio-utils-9999 (16 Apr 2012)
+
+  16 Apr 2012; Alexey Shvetsov <alexxy@gentoo.org> +files/snmp-makefile.patch,
+  +files/target.initd, +files/tools-makefile.patch, +lio-utils-9999.ebuild,
+  +metadata.xml:
+  [sys-block/lio-utils] Initial import
+

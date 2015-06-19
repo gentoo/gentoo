@@ -1,0 +1,77 @@
+# ChangeLog for dev-python/django-ldapdb
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/django-ldapdb/ChangeLog,v 1.15 2015/06/07 13:06:58 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org>
+  -django-ldapdb-0.1.0_p20130921.ebuild, metadata.xml:
+  Add pypi to remote-id in metadata.xml; drop old
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org>
+  django-ldapdb-0.1.0_p20130921.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> django-ldapdb-0.3.2.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> django-ldapdb-0.3.2.ebuild:
+  amd64 stable, bug 540290
+
+*django-ldapdb-0.3.2 (09 Jul 2014)
+
+  09 Jul 2014; Ian Delaney <idella4@gentoo.org> +django-ldapdb-0.3.2.ebuild,
+  -django-ldapdb-0.1.0_p20120424-r1.ebuild,
+  -django-ldapdb-0.1.0_p20120424.ebuild, -django-ldapdb-0.1.0_p20130712.ebuild:
+  drop py2.6, switch SRC_URI to pypi, drop IUSE examples, doc due to absence of
+  content in tarball's source, based on patch by D. Bogomolov from Bug #516688,
+  fixes said bug, rm most old snapshots
+
+*django-ldapdb-0.1.0_p20130921 (21 Sep 2013)
+
+  21 Sep 2013; Theo Chatzimichos <tampakrap@gentoo.org>
+  +django-ldapdb-0.1.0_p20130921.ebuild:
+  New snapshot, taken from gentoo/django-ldapdb fork, okupy_v2 branch Simplify
+  ebuild Add mockldap dependency
+
+*django-ldapdb-0.1.0_p20130712 (16 Jul 2013)
+
+  16 Jul 2013; Mike Gilbert <floppym@gentoo.org>
+  +django-ldapdb-0.1.0_p20130712.ebuild, -django-ldapdb-0.2.0_p20130712.ebuild:
+  Fix version number; 0.2.0 has never been released and setup.py says 0.1.0.
+
+  13 Jul 2013; Ian Delaney <idella4@gentoo.org>
+  django-ldapdb-0.2.0_p20130712.ebuild:
+  Unrestrict test phase, disable test set demanding an ldap server to which to
+  connect
+
+*django-ldapdb-0.2.0_p20130712 (12 Jul 2013)
+
+  12 Jul 2013; Ian Delaney <idella4@gentoo.org>
+  +django-ldapdb-0.2.0_p20130712.ebuild, django-ldapdb-0.1.0_p20120424.ebuild:
+  Making a manufactured bump by way of a fresh snapshot
+
+*django-ldapdb-0.1.0_p20120424-r1 (12 Jul 2013)
+
+  12 Jul 2013; Michał Górny <mgorny@gentoo.org>
+  +django-ldapdb-0.1.0_p20120424-r1.ebuild:
+  Convert to distutils-r1. Drop tests as they require LDAP server.
+
+  14 Nov 2012; Ian Delaney <idella4@gentoo.org> metadata.xml:
+  Updating maintainer, metadata.xml
+
+  20 May 2012; Theo Chatzimichos <tampakrap@gentoo.org>
+  django-ldapdb-0.1.0_p20120424.ebuild:
+  pypy && jython restricted; django -> RDEPEND; test phase set to use use
+  django's manage.py, test examples excluded from tests
+
+  25 Apr 2012; Theo Chatzimichos <tampakrap@gentoo.org>
+  django-ldapdb-0.1.0_p20120424.ebuild:
+  Add ~x86
+
+*django-ldapdb-0.1.0_p20120424 (25 Apr 2012)
+
+  25 Apr 2012; Theo Chatzimichos <tampakrap@gentoo.org>
+  +django-ldapdb-0.1.0_p20120424.ebuild, +metadata.xml:
+  Initial commit, ebuild by idella4

@@ -1,0 +1,11 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/aix/package.use.mask,v 1.2 2012/02/16 12:46:57 haubi Exp $
+
+# Michael Haubenwallner <haubi@gentoo.org> (16 Feb 2012)
+# JIT implementation in pcre does not know about AIX.
+dev-libs/libpcre jit
+
+# Michael Haubenwallner <haubi@gentoo.org> (08 May 2009)
+# IBM does not provide "Java Communications API support" for AIX
+dev-java/ibm-jdk-bin javacomm

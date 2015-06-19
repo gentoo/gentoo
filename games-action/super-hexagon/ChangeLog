@@ -1,0 +1,51 @@
+# ChangeLog for games-action/super-hexagon
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/super-hexagon/ChangeLog,v 1.12 2015/02/10 10:13:31 ago Exp $
+
+  10 Feb 2015; Agostino Sarubbo <ago@gentoo.org> super-hexagon-20141027.ebuild:
+  Stable for x86, wrt bug #539306
+
+  08 Feb 2015; Agostino Sarubbo <ago@gentoo.org> super-hexagon-20141027.ebuild:
+  Stable for amd64, wrt bug #539306
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+*super-hexagon-20141027 (12 Nov 2014)
+
+  12 Nov 2014; Julian Ospald <hasufell@gentoo.org> -super-hexagon-16.ebuild,
+  -super-hexagon-07252014.ebuild, +super-hexagon-20141027.ebuild:
+  version bump
+
+*super-hexagon-07252014 (06 Aug 2014)
+
+  06 Aug 2014; Julian Ospald <hasufell@gentoo.org>
+  +super-hexagon-07252014.ebuild:
+  version bump
+
+  18 Mar 2014; Michael Sterrett <mr_bones_@gentoo.org> -super-hexagon-15.ebuild:
+  old
+
+  18 Aug 2013; Julian Ospald <hasufell@gentoo.org> super-hexagon-16.ebuild:
+  stable amd64, x86 wrt #480814
+
+*super-hexagon-16 (10 May 2013)
+
+  10 May 2013; Julian Ospald <hasufell@gentoo.org> +super-hexagon-16.ebuild:
+  version bump
+
+  10 May 2013; Julian Ospald <hasufell@gentoo.org> super-hexagon-15.ebuild,
+  metadata.xml:
+  remove bundled-glew useflag since 1.6 is gone wrt #469284
+
+  09 May 2013; Julian Ospald <hasufell@gentoo.org> super-hexagon-15.ebuild:
+  restrict splitdebug
+
+  23 Mar 2013; Julian Ospald <hasufell@gentoo.org> super-hexagon-15.ebuild:
+  use unpack_zip from unpacker.eclass
+
+*super-hexagon-15 (21 Mar 2013)
+
+  21 Mar 2013; Julian Ospald <hasufell@gentoo.org> +super-hexagon-15.ebuild,
+  +metadata.xml:
+  initial import

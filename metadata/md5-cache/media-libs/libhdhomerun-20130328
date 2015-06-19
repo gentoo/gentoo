@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install prepare
+DESCRIPTION=SiliconDust HDHomeRun Utilties
+EAPI=5
+HOMEPAGE=http://www.silicondust.com/support/hdhomerun/downloads/linux/
+KEYWORDS=~amd64
+LICENSE=LGPL-3+
+SLOT=0
+SRC_URI=http://download.silicondust.com/hdhomerun/libhdhomerun_20130328.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b95cb69602d8b394a62f1855a9a18c21

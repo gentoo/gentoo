@@ -1,0 +1,92 @@
+# ChangeLog for app-xemacs/sh-script
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/sh-script/ChangeLog,v 1.27 2014/08/10 19:30:44 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> sh-script-1.22.ebuild,
+  sh-script-1.24.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  22 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> sh-script-1.24.ebuild:
+  ppc64 stable wrt #369897
+
+  03 Jul 2011; Markos Chandras <hwoarang@gentoo.org> sh-script-1.24.ebuild:
+  Stable on amd64 wrt bug #369897
+
+  28 Jun 2011; Brent Baude <ranger@gentoo.org> sh-script-1.24.ebuild:
+  Marking sh-script-1.24 ppc stable for bug 369897
+
+  25 Jun 2011; Raúl Porcel <armin76@gentoo.org> sh-script-1.24.ebuild:
+  alpha/sparc stable wrt #369897
+
+  12 Jun 2011; Thomas Kahle <tomka@gentoo.org> sh-script-1.24.ebuild:
+  x86 stable per bug 369897
+
+*sh-script-1.24 (22 Feb 2009)
+
+  22 Feb 2009; Hans de Graaff <graaff@gentoo.org> +sh-script-1.24.ebuild:
+  Version bump with minor improvements
+
+  20 Feb 2009; Christian Faulhammer <fauli@gentoo.org>
+  -sh-script-1.21.ebuild:
+  clean up
+
+  12 May 2008; Markus Rothe <corsair@gentoo.org> sh-script-1.22.ebuild:
+  Stable on ppc64
+
+  05 May 2008; Raúl Porcel <armin76@gentoo.org> sh-script-1.22.ebuild:
+  alpha/sparc stable wrt #219332
+
+  02 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  sh-script-1.22.ebuild:
+  stable x86, bug 219332
+
+  30 Apr 2008; nixnut <nixnut@gentoo.org> sh-script-1.22.ebuild:
+  Stable on ppc wrt bug 219332
+
+  26 Apr 2008; Hans de Graaff <graaff@gentoo.org> sh-script-1.22.ebuild:
+  Mark stable on amd64 , bug #219332
+
+  19 Mar 2008; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  A herd should not be listed as maintainer
+
+  25 Oct 2007; Hans de Graaff <graaff@gentoo.org> -sh-script-1.17.ebuild:
+  Remove old version
+
+  03 Jun 2007; Hans de Graaff <graaff@gentoo.org> sh-script-1.21.ebuild:
+  Stable on amd64, ppc, ppc64, sparc, x86 as per #175560
+
+  29 May 2007; Raúl Porcel <armin76@gentoo.org> sh-script-1.21.ebuild:
+  alpha stable wrt #175560
+
+*sh-script-1.22 (05 May 2007)
+
+  05 May 2007; Hans de Graaff <graaff@gentoo.org> +sh-script-1.22.ebuild:
+  Version bump: bug fixes
+
+*sh-script-1.21 (12 Nov 2006)
+
+  12 Nov 2006; Hans de Graaff <graaff@gentoo.org> +metadata.xml,
+  -sh-script-1.16.ebuild, +sh-script-1.21.ebuild:
+  Version bump; remove old version; add metadata.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> sh-script-1.17.ebuild:
+  Stable on ppc.
+
+  09 Aug 2004; Tom Gall <tgall@gentoo.org> sh-script-1.17.ebuild:
+  stable on ppc64, bug #57174
+
+  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> sh-script-1.17.ebuild:
+  Stable on alpha
+
+*sh-script-1.17 (22 Feb 2003)
+
+  22 Feb 2003;  <rendhalver@gentoo.org> sh-script-1.16.ebuild sh-script-1.17.ebuild files/digest-sh-script-1.17 :
+  Add ~alpha to KEYWORDS
+
+  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
+  new stable ebuild
+
+*sh-script-1.16 (16 Dec 2002)
+
+  16 Dec 2002; Rendhalver [Peter Brown] <rendhalver@gentoo.org> :
+  Initial import.

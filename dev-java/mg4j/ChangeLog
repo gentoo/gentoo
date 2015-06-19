@@ -1,0 +1,63 @@
+# ChangeLog for dev-java/mg4j
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/mg4j/ChangeLog,v 1.22 2014/08/10 20:21:29 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> mg4j-0.9.1-r2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  17 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -mg4j-0.9.1-r1.ebuild:
+  NM: Cleanup superseded ebuilds.
+
+  04 Mar 2014; Pacho Ramos <pacho@gentoo.org> mg4j-0.9.1-r2.ebuild:
+  amd64 stable, bug 315557
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org> mg4j-0.9.1-r2.ebuild:
+  amd64 stable, bug #474160
+
+  23 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> mg4j-0.9.1-r2.ebuild:
+  x86 stable wrt bug #474160
+
+*mg4j-0.9.1-r2 (27 Sep 2012)
+
+  27 Sep 2012; Ralph Sennhauser <sera@gentoo.org> +mg4j-0.9.1-r2.ebuild:
+  Require >=jdk-1.5 for javacc-5.0. #315557
+  EAPI bump and make better use of eclasses.
+
+  24 Mar 2008; Petteri Räty <betelgeuse@gentoo.org> -mg4j-0.9.1.ebuild:
+  Remove generation 1 ebuild.
+
+  02 Mar 2008; Wulf C. Krueger <philantrop@gentoo.org> mg4j-0.9.1-r1.ebuild:
+  Marked stable on amd64 as per bug 196952.
+
+  26 Dec 2007; Markus Meier <maekke@gentoo.org> mg4j-0.9.1-r1.ebuild:
+  x86 stable, bug #196952
+
+*mg4j-0.9.1-r1 (28 Apr 2007)
+
+  28 Apr 2007; Krzysiek Pawlik <nelchael@gentoo.org> +mg4j-0.9.1-r1.ebuild:
+  Migrated to generation 2.
+
+  03 Feb 2007; Petteri Räty <betelgeuse@gentoo.org> metadata.xml,
+  mg4j-0.9.1.ebuild:
+  Remove trailing white space and shorten DESCRIPTION.
+
+  03 Feb 2007; Petteri Räty <betelgeuse@gentoo.org> mg4j-0.9.1.ebuild:
+  Relax dev-java/colt dependency to not match only a subset of slot 0.
+
+  11 May 2005; Saleem Abdulrasool <compnerd@gentoo.org> mg4j-0.9.1.ebuild:
+  Fixing broken digests
+
+  15 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> mg4j-0.9.1.ebuild:
+  added support for the source useflag, cosmetic changes.
+
+  05 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> mg4j-0.9.1.ebuild:
+  stable on amd64 and x86
+
+  20 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> mg4j-0.9.1.ebuild:
+  added missing jikes dependency.
+
+*mg4j-0.9.1 (04 Dec 2004)
+
+  04 Dec 2004; Karl Trygve Kalleberg <karltk@gentoo.org> mg4j-0.9.1.ebuild:
+  Initial import. Ebuild submitted by Jan Brinkmann <lucky@the-luckyduck.de>.
+  Fixes #63278.

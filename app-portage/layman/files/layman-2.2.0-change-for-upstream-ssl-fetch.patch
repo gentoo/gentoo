@@ -1,0 +1,38 @@
+From 81f1545f1371931d560492e8b323096d4befc775 Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Fri, 17 Oct 2014 19:40:38 -0700
+Subject: [PATCH] remotedb.py: Change for upstream ssl-fetch change
+
+---
+ layman/remotedb.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/layman/remotedb.py b/layman/remotedb.py
+index f0f7ea9..b866bd7 100644
+--- a/layman/remotedb.py
++++ b/layman/remotedb.py
+@@ -57,7 +57,7 @@ class RemoteDB(DbBase):
+         self.detached_urls = []
+         self.signed_urls = []
+         self.proxies = config.proxies
+-        
++
+         self.urls  = [i.strip()
+             for i in config['overlays'].split('\n') if len(i)]
+ 
+@@ -116,9 +116,11 @@ class RemoteDB(DbBase):
+         need_gpg = [False, True, True]
+         # setup the ssl-fetch output map
+         connector_output = {
+-            'info':  self.output.debug,
++            'info':  self.output.info,
++            'debug': self.output.debug,
+             'error': self.output.error,
+             'kwargs-info': {'level': 2},
++            'kwargs-debug': {'level': 2},
+             'kwargs-error':{'level': None},
+         }
+         fetcher = Connector(connector_output, self.proxies, USERAGENT)
+-- 
+2.0.5
+

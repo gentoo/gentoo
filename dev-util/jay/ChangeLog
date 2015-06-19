@@ -1,0 +1,51 @@
+# ChangeLog for dev-util/jay
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/jay/ChangeLog,v 1.10 2012/12/02 22:44:22 ulm Exp $
+
+  02 Dec 2012; Ulrich Müller <ulm@gentoo.org> jay-1.1.1-r2.ebuild:
+  Fix LICENSE, see copyright.html in zipball. Bug 445654.
+
+  19 Aug 2012; Christoph Junghans <ottxor@gentoo.org> jay-1.1.1-r2.ebuild:
+  added prefix keywords
+
+  06 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> jay-1.1.1-r2.ebuild,
+  -files/mono.snk:
+  Upload binary file mono.snk to mirrors wrt #373253 by Matt Turner
+
+  15 Mar 2012; Ralph Sennhauser <sera@gentoo.org> jay-1.1.1-r2.ebuild:
+  Add missing build dep app-arch/unzip. #372621
+
+  29 Apr 2011; Mark Loeser <halcy0n@gentoo.org> metadata.xml:
+  Invalid herd: mono -> dotnet
+
+  25 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> jay-1.1.1-r2.ebuild:
+  Keywording for ppc, bug 270910
+
+  19 Sep 2009; Markus Meier <maekke@gentoo.org> jay-1.1.1-r2.ebuild:
+  amd64/x86 stable, bug #284304
+
+  12 May 2009; Peter Alfredsen <loki_val@gentoo.org> +files/mono.snk:
+  Add mono.snk required for mono assembly.
+
+  12 May 2009; Alistair Bush <ali_bush@gentoo.org> jay-1.1.1-r2.ebuild:
+  Add mono support. Thanks to loki_val. see #265912
+
+*jay-1.1.1-r2 (15 Apr 2009)
+
+  15 Apr 2009; Alistair Bush <ali_bush@gentoo.org> +metadata.xml,
+  +jay-1.1.1-r2.ebuild:
+  Move jay from java-overlay
+
+  13 Apr 2009; James Le Cuirot <chewi@aura-online.co.uk> -jay-1.1.1-r1.ebuild,
+  +jay-1.1.1-r2.ebuild:
+  I forgot about LDFLAGS. Fixes bug #265993.
+
+  12 Apr 2009; James Le Cuirot <chewi@aura-online.co.uk> -jay-1.1.1.ebuild,
+  +jay-1.1.1-r1.ebuild:
+  Use java_prepare. Fix makefiles to respect CC, CFLAGS and JAVACFLAGS.
+
+*jay-1.1.1 (22 Mar 2009)
+
+  22 Mar 2009; James Le Cuirot <chewi@aura-online.co.uk> +jay-1.1.1.ebuild:
+  Initial import. Only builds jay binary and yydebug.jar, not jay.jar or any of
+  the C# stuff, for the sake of my sanity.

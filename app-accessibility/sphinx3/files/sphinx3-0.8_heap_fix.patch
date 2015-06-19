@@ -1,0 +1,34 @@
+diff -uNr sphinx3-0.8.orig/python/setup.py sphinx3-0.8/python/setup.py
+--- sphinx3-0.8.orig/python/setup.py	2008-12-31 23:20:08.000000000 -0500
++++ sphinx3-0.8/python/setup.py	2011-11-17 09:46:57.000000000 -0500
+@@ -8,15 +8,10 @@
+     define_macros = []
+ 
+ module = Extension('_sphinx3',
+-                   include_dirs = ['../../sphinxbase/include',
+-                                   '../include',
+-                                   '/usr/local/include/sphinxbase/',
+-                                   '/usr/local/include/sphinx3',
+-                                   ],
++                   include_dirs = ['../include',
++                                   '@GENTOO_PORTAGE_EPREFIX@/usr/include/sphinxbase'],
+ 		   define_macros = define_macros,
+-		   library_dirs = ['../../sphinxbase/src/libsphinxbase/.libs',
+-				'../src/libs3decoder/.libs',
+-				'../../sphinxbase/lib/debug',
++		   library_dirs = ['../src/libs3decoder/.libs',
+ 				'../lib/debug',
+ 				],
+                    libraries = ['sphinxbase', 's3decoder'],
+diff -uNr sphinx3-0.8.orig/src/libs3decoder/libsearch/vithist.c sphinx3-0.8/src/libs3decoder/libsearch/vithist.c
+--- sphinx3-0.8.orig/src/libs3decoder/libsearch/vithist.c	2008-12-31 13:27:56.000000000 -0500
++++ sphinx3-0.8/src/libs3decoder/libsearch/vithist.c	2011-11-17 09:46:24.000000000 -0500
+@@ -647,7 +647,7 @@
+ {
+     int32 se, fe, filler_done, th;
+     vithist_entry_t *ve;
+-    heap_t h;
++    heap_t *h;
+     s3wid_t *wid;
+     int32 i;
+ 

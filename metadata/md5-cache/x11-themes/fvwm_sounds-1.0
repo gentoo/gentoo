@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=Sounds for use with FVWM
+HOMEPAGE=http://www.fvwm.org/
+KEYWORDS=~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86
+LICENSE=GPL-2 FVWM
+RDEPEND=>=x11-wm/fvwm-2.6.2
+SLOT=0
+SRC_URI=http://www.fvwm.org/generated/sounds_download/fvwm_sounds.tgz
+_md5_=de4b7081efc8282377ea581428f717eb

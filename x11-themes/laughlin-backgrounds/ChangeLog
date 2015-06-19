@@ -1,0 +1,32 @@
+# ChangeLog for x11-themes/laughlin-backgrounds
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/laughlin-backgrounds/ChangeLog,v 1.6 2015/06/03 20:54:46 mrueg Exp $
+
+  03 Jun 2015; Manuel Rüger <mrueg@gentoo.org>
+  -laughlin-backgrounds-13.92.0.1.ebuild:
+  Remove old.
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org>
+  laughlin-backgrounds-13.92.0.1.ebuild, laughlin-backgrounds-14.1.0.3.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  20 Jun 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  laughlin-backgrounds-13.92.0.1.ebuild:
+  Point SRC_URI to rpm hosted in my devspace since it is no longer available at
+  upstream's mirrors
+
+  26 Jan 2012; Thomas Kahle <tomka@gentoo.org>
+  laughlin-backgrounds-14.1.0.3.ebuild:
+  x86 stable per bug 361335
+
+  23 Jan 2012; Agostino Sarubbo <ago@gentoo.org>
+  laughlin-backgrounds-14.1.0.3.ebuild:
+  Stable for amd64, wrt bug #361335
+
+*laughlin-backgrounds-14.1.0.3 (09 Mar 2011)
+*laughlin-backgrounds-13.92.0.1 (09 Mar 2011)
+
+  09 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +laughlin-backgrounds-13.92.0.1.ebuild,
+  +laughlin-backgrounds-14.1.0.3.ebuild, +metadata.xml:
+  Initial import of backgrounds ebuilds.

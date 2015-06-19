@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>kerberos</herd>
+<longdescription lang="en">GNU Shishi, a free implementation of the Kerberos 5 network security system</longdescription>
+<use>
+  <flag name="des">Enable DES related encryption/checksum types.</flag>
+  <flag name="3des">Enable 3DES encryption/checksum type.</flag>
+  <flag name="aes">Enable AES encryption/checksum types.</flag>
+  <flag name="md">Enable unkeyed MD4/MD5 checksum types.</flag>
+  <flag name="null">Enable dummy NULL encryption/checksum type.</flag>
+  <flag name="arcfour">Enable ARCFOUR encryption/checksum type.</flag>
+</use>
+</pkgmetadata>
+

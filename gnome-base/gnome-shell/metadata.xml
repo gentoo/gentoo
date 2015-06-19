@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gnome</herd>
+<use>
+	<flag name="i18n">Enable support for enhanced input methods through
+		<pkg>app-i18n/ibus</pkg></flag>
+	<flag name="openrc-force">Skip systemd dependency (#480336),
+		enabling this flag will become your setup to be fully
+		unsupported by upstream and downstream Gnome team. Do not
+		try to enable it unless completely needed</flag>
+</use>
+</pkgmetadata>

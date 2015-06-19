@@ -1,0 +1,855 @@
+# ChangeLog for media-sound/easytag
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/easytag/ChangeLog,v 1.200 2015/04/25 10:33:11 jer Exp $
+
+  25 Apr 2015; Jeroen Roovers <jer@gentoo.org> easytag-2.2.2.ebuild,
+  easytag-2.2.3.ebuild, easytag-2.2.4.ebuild, easytag-2.2.5.ebuild,
+  easytag-2.2.6.ebuild:
+  Marked ~ppc64 (bug #503608).
+
+*easytag-2.2.6 (26 Mar 2015)
+
+  26 Mar 2015; Ben de Groot <yngwin@gentoo.org> +easytag-2.2.6.ebuild:
+  version bump
+
+*easytag-2.2.5 (25 Nov 2014)
+
+  25 Nov 2014; Tim Harder <radhermit@gentoo.org> +easytag-2.2.5.ebuild:
+  Version bump.
+
+*easytag-2.2.4 (08 Oct 2014)
+
+  08 Oct 2014; Tony Vroon <chainsaw@gentoo.org> +easytag-2.2.4.ebuild:
+  Version bump, incorporating stability fixes around file handling & CDDB
+  integration. As requested by Manuel Rüger in bug #524546.
+
+*easytag-2.2.3 (01 Aug 2014)
+
+  01 Aug 2014; Lars Wendler <polynomial-c@gentoo.org> +easytag-2.2.3.ebuild:
+  Version bump.
+
+  19 Jul 2014; Tobias Klausmann <klausman@gentoo.org> easytag-2.2.2.ebuild:
+  Keyworded on alpha, bug #503608
+
+  11 May 2014; Ben de Groot <yngwin@gentoo.org> easytag-2.2.2.ebuild:
+  Fix required use
+
+  11 May 2014; Ben de Groot <yngwin@gentoo.org> easytag-2.2.2.ebuild,
+  metadata.xml:
+  Restore gtk2 useflag which was dropped for no good reason
+
+  09 May 2014; Samuli Suominen <ssuominen@gentoo.org> easytag-2.2.2.ebuild:
+  Reposition DOCS in the ebuild.
+
+  09 May 2014; Samuli Suominen <ssuominen@gentoo.org> -easytag-2.1.10-r1.ebuild,
+  -easytag-2.1.7-r2.ebuild, -easytag-2.1.9-r2.ebuild, -easytag-2.2.0-r1.ebuild,
+  -easytag-2.2.0.ebuild, -files/easytag-2.1.6-load-from-txt.patch,
+  -files/easytag-2.1.7-gold.patch, -files/easytag-2.1.7-new_libmp4v2.patch,
+  metadata.xml:
+  old
+
+  09 May 2014; Samuli Suominen <ssuominen@gentoo.org> easytag-2.2.2.ebuild:
+  Restore ~amd64-linux which was dropped for unknown reason.
+
+*easytag-2.2.2 (09 May 2014)
+
+  09 May 2014; Samuli Suominen <ssuominen@gentoo.org> +easytag-2.2.2.ebuild:
+  Version bump wrt #508992 by Manuel Rüger
+
+*easytag-2.2.0-r1 (20 Apr 2014)
+
+  20 Apr 2014; Ben de Groot <yngwin@gentoo.org> +easytag-2.2.0-r1.ebuild,
+  metadata.xml:
+  Restore gtk2 option for users who want to avoid gtk3 (the new default for this
+  package). Since upstream still offers this option, we should not take this
+  option away from our users.
+
+  17 Apr 2014; Samuli Suominen <ssuominen@gentoo.org> easytag-2.2.0.ebuild:
+  Pull in latest dependencies because upstream.ac is not up to date wrt #507570
+  by Jeroen Roovers
+
+  13 Apr 2014; Jeroen Roovers <jer@gentoo.org> easytag-2.2.0.ebuild:
+  Marked ~hppa (bug #503608).
+
+  13 Apr 2014; Samuli Suominen <ssuominen@gentoo.org> easytag-2.2.0.ebuild:
+  Missing LGPL-2 and LGPL-2.1 from LICENSE (with and without "any later version"
+  in the package headers)
+
+  13 Apr 2014; Samuli Suominen <ssuominen@gentoo.org> easytag-2.2.0.ebuild:
+  Punt useless USE="nls" since it doesn't save any dependencies and LINGUAS
+  environment variable is usable for determining which files will be emerged
+  into the filesystem.
+
+*easytag-2.2.0 (13 Apr 2014)
+
+  13 Apr 2014; Samuli Suominen <ssuominen@gentoo.org> +easytag-2.2.0.ebuild,
+  metadata.xml:
+  Version bump.
+
+  21 Mar 2014; Jeroen Roovers <jer@gentoo.org> easytag-2.1.10-r1.ebuild:
+  Marked ~hppa (bug #503608).
+
+*easytag-2.1.10-r1 (07 Mar 2014)
+*easytag-2.1.9-r2 (07 Mar 2014)
+
+  07 Mar 2014; Lars Wendler <polynomial-c@gentoo.org> -easytag-2.1.9-r1.ebuild,
+  +easytag-2.1.9-r2.ebuild, -easytag-2.1.10.ebuild, +easytag-2.1.10-r1.ebuild:
+  Revbump to make easytag find its locales (bug #503698).
+
+*easytag-2.1.10 (06 Mar 2014)
+
+  06 Mar 2014; Lars Wendler <polynomial-c@gentoo.org> -easytag-2.1.9.ebuild,
+  +easytag-2.1.10.ebuild:
+  Version bump. Removed old. Dropped some keywords due to new build-time
+  dependency dev-util/appdata-tools.
+
+*easytag-2.1.9-r1 (08 Feb 2014)
+
+  08 Feb 2014; Lars Wendler <polynomial-c@gentoo.org> +easytag-2.1.9-r1.ebuild:
+  Added a bunch of fixes as requested by upstream maintainer in bug #500654.
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> easytag-2.1.8.ebuild:
+  Stable for sparc, wrt bug #492250
+
+  19 Jan 2014; Lars Wendler <polynomial-c@gentoo.org> easytag-2.1.9.ebuild:
+  Added app-text/yelp-tools to DEPEND (bug #498628).
+
+*easytag-2.1.9 (19 Jan 2014)
+
+  19 Jan 2014; Lars Wendler <polynomial-c@gentoo.org> +easytag-2.1.9.ebuild:
+  Version bump by Manuel Rueger (bug #498442).
+
+  19 Jan 2014; Agostino Sarubbo <ago@gentoo.org> easytag-2.1.8.ebuild:
+  Stable for ppc64, wrt bug #492250
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> easytag-2.1.8.ebuild:
+  Stable for alpha, wrt bug #492250
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> easytag-2.1.8.ebuild:
+  Stable for ppc, wrt bug #492250
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> easytag-2.1.8.ebuild:
+  Stable for x86, wrt bug #492250
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> easytag-2.1.8.ebuild:
+  amd64 stable, bug #492250
+
+  01 Jan 2014; Jeroen Roovers <jer@gentoo.org> easytag-2.1.8.ebuild:
+  Stable for HPPA (bug #492250).
+
+  13 Feb 2013; Tim Harder <radhermit@gentoo.org> easytag-2.1.8.ebuild,
+  +files/easytag-2.1.8-taglib.patch:
+  Fix check for taglib (bug #456976).
+
+  12 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  files/easytag-2.1.8-desktop.patch:
+  Remove inode/directory from MimeType line to prevent easytag from acting as
+  default filemanager.
+
+*easytag-2.1.8 (12 Feb 2013)
+
+  12 Feb 2013; Tim Harder <radhermit@gentoo.org> +easytag-2.1.8.ebuild,
+  +files/easytag-2.1.8-desktop.patch, +files/easytag-2.1.8-docs.patch,
+  +files/easytag-2.1.8-werror.patch:
+  Version bump.
+
+  10 Feb 2013; Tim Harder <radhermit@gentoo.org> easytag-2.1.7-r2.ebuild:
+  Update HOMEPAGE (bug #456378).
+
+  29 Jul 2012; Samuli Suominen <ssuominen@gentoo.org> -easytag-2.1.6-r3.ebuild,
+  -files/easytag-2.1.6-cddb.patch, -files/easytag-2.1.6-desktop_entry.patch,
+  -files/easytag-2.1.6-new_libmp4v2.patch:
+  old
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> easytag-2.1.7-r2.ebuild:
+  alpha/sparc stable wrt #376391
+
+  03 Jun 2012; Michael Weber <xmw@gentoo.org> easytag-2.1.7-r2.ebuild:
+  ppc stable (bug 376391)
+
+  23 May 2012; Jeroen Roovers <jer@gentoo.org> easytag-2.1.7-r2.ebuild:
+  Stable for HPPA (bug #376391).
+
+  23 May 2012; Brent Baude <ranger@gentoo.org> easytag-2.1.7-r2.ebuild:
+  Marking easytag-2.1.7-r2 ppc64 for bug 376391
+
+  23 May 2012; Jeff Horelick <jdhore@gentoo.org> easytag-2.1.7-r2.ebuild:
+  marked x86 per bug 376391
+
+  22 May 2012; Agostino Sarubbo <ago@gentoo.org> easytag-2.1.7-r2.ebuild:
+  Stable for amd64, wrt bug #376391
+
+  20 May 2012; Samuli Suominen <ssuominen@gentoo.org> easytag-2.1.7-r2.ebuild:
+  Use has_version to apply -2.1.7-new_libmp4v2.patch only if
+  media-libs/libmp4v2 >= 1.9.1_p479 wrt #376391
+
+  19 May 2012; Samuli Suominen <ssuominen@gentoo.org> easytag-2.1.6-r3.ebuild,
+  easytag-2.1.7-r2.ebuild:
+  Ensure libmp4v2 headers are present by forcing correct SLOT
+
+  19 May 2012; Samuli Suominen <ssuominen@gentoo.org> -easytag-2.1.6-r4.ebuild,
+  -easytag-2.1.7-r1.ebuild:
+  old
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> easytag-2.1.6-r3.ebuild,
+  easytag-2.1.6-r4.ebuild, easytag-2.1.7-r1.ebuild, easytag-2.1.7-r2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*easytag-2.1.7-r2 (09 Apr 2012)
+
+  09 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> +easytag-2.1.7-r2.ebuild,
+  +files/easytag-2.1.7-new_libmp4v2.patch:
+  Compability patch for libmp4v2 >= r479 wrt #409281 by Tim Harder
+
+*easytag-2.1.7-r1 (02 Mar 2012)
+
+  02 Mar 2012; Tim Harder <radhermit@gentoo.org> -easytag-2.1.7.ebuild,
+  +easytag-2.1.7-r1.ebuild:
+  Revbump to re-add patch and remove old.
+
+  27 Feb 2012; Justin Lecher <jlec@gentoo.org> easytag-2.1.7.ebuild,
+  +files/easytag-2.1.7-gold.patch:
+  Add patch to fix underlinking detected by linking with gold
+
+*easytag-2.1.7 (26 Feb 2012)
+
+  26 Feb 2012; Tim Harder <radhermit@gentoo.org> +easytag-2.1.7.ebuild:
+  Version bump (bug #400981).
+
+*easytag-2.1.6-r4 (29 Jul 2010)
+
+  29 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +easytag-2.1.6-r4.ebuild, +files/easytag-2.1.6-load-from-txt.patch:
+  Include "load from txt" patch from Fedora wrt #329575 by Leonid Podolny.
+
+  04 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  easytag-2.1.6-r3.ebuild:
+  ppc64 stable wrt #320515
+
+  10 Jun 2010; Jeroen Roovers <jer@gentoo.org> easytag-2.1.6-r3.ebuild:
+  Stable for HPPA (bug #320515).
+
+  30 May 2010; Raúl Porcel <armin76@gentoo.org> easytag-2.1.6-r3.ebuild:
+  alpha/sparc stable wrt #320515
+
+  28 May 2010; Markus Meier <maekke@gentoo.org> easytag-2.1.6-r3.ebuild:
+  x86 stable, bug #320515
+
+  24 May 2010; <nixnut@gentoo.org> easytag-2.1.6-r3.ebuild:
+  ppc stable #320515
+
+  21 May 2010; Markos Chandras <hwoarang@gentoo.org>
+  easytag-2.1.6-r3.ebuild:
+  Stable on amd64 wrt bug #320515
+
+  07 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  easytag-2.1.6-r3.ebuild:
+  Transfer Prefix keywords
+
+*easytag-2.1.6-r3 (21 Dec 2009)
+
+  21 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +easytag-2.1.6-r3.ebuild, +files/easytag-2.1.6-cddb.patch:
+  Upstream patch for CDDB searching wrt #279375.
+
+  10 Oct 2009; Raúl Porcel <armin76@gentoo.org> easytag-2.1.6-r2.ebuild:
+  sparc stable wrt #280793
+
+  31 Aug 2009; Brent Baude <ranger@gentoo.org> easytag-2.1.6-r2.ebuild:
+  stable ppc64, bug 280793
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> easytag-2.1.6-r2.ebuild:
+  ppc stable #280793
+
+  29 Aug 2009; Tobias Klausmann <klausman@gentoo.org>
+  easytag-2.1.6-r2.ebuild:
+  Stable on alpha, bug #280793
+
+  25 Aug 2009; Jeroen Roovers <jer@gentoo.org> easytag-2.1.6-r2.ebuild:
+  Stable for HPPA (bug #280793).
+
+  15 Aug 2009; Markus Meier <maekke@gentoo.org> easytag-2.1.6-r2.ebuild:
+  amd64/x86 stable, bug #280793
+
+  13 Jul 2009; Joseph Jezak <josejx@gentoo.org> easytag-2.1.6-r1.ebuild:
+  Marked ppc stable for bug #272966.
+
+*easytag-2.1.6-r2 (10 Jul 2009)
+
+  10 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  easytag-2.1.6-r1.ebuild, easytag-2.1.6-r2.ebuild,
+  +files/easytag-2.1.6-new_libmp4v2.patch, metadata.xml:
+  Support >= libmp4v2 1.9.0.
+
+  25 Jun 2009; Raúl Porcel <armin76@gentoo.org> easytag-2.1.6-r1.ebuild:
+  sparc stable wrt #272966
+
+  19 Jun 2009; Brent Baude <ranger@gentoo.org> easytag-2.1.6-r1.ebuild:
+  stable ppc64, bug 272966
+
+  16 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  easytag-2.1.6-r1.ebuild:
+  Stable on alpha, bug #272966
+
+  10 Jun 2009; Markus Meier <maekke@gentoo.org> easytag-2.1.6-r1.ebuild:
+  amd64/x86 stable, bug #272966
+
+  10 Jun 2009; Markus Meier <maekke@gentoo.org> easytag-2.1.6-r1.ebuild:
+  fix EAPI=2 usage
+
+  07 Jun 2009; Jeroen Roovers <jer@gentoo.org> easytag-2.1.6-r1.ebuild:
+  Stable for HPPA (bug #272966).
+
+*easytag-2.1.6-r1 (06 Jun 2009)
+
+  06 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> -easytag-2.1.6.ebuild,
+  +easytag-2.1.6-r1.ebuild, +files/easytag-2.1.6-desktop_entry.patch:
+  Remove x-directory/normal from MimeType or else it replaces Nautilus as
+  default Places handler wrt #272198, thanks to Jeff Kowalczyk for
+  reporting.
+
+  29 Jul 2008; Samuli Suominen <ssuominen@gentoo.org> easytag-2.1.6.ebuild:
+  Rev bump id3lib dep. to force recompilation, in order to fix bugs #233273
+  and #233240
+
+*easytag-2.1.6 (28 Jul 2008)
+
+  28 Jul 2008; Samuli Suominen <ssuominen@gentoo.org>
+  -files/easytag-2.1.3-desktop-entry.patch, -easytag-2.1.3.ebuild,
+  +easytag-2.1.6.ebuild:
+  Version bump wrt #232752, thanks to ScytheMan <scytheman666 at gmail.com>
+  for reporting.
+
+  05 May 2008; Jeroen Roovers <jer@gentoo.org> easytag-2.1.5.ebuild:
+  Stable for HPPA (bug #219716).
+
+  01 May 2008; Santiago M. Mola <coldwind@gentoo.org> easytag-2.1.5.ebuild:
+  amd64 stable wrt bug #219716
+
+  29 Apr 2008; Brent Baude <ranger@gentoo.org> easytag-2.1.5.ebuild:
+  stable ppc, bug 219716
+
+  29 Apr 2008; Raúl Porcel <armin76@gentoo.org> easytag-2.1.5.ebuild:
+  alpha/sparc/x86 stable wrt #219716
+
+  29 Apr 2008; Brent Baude <ranger@gentoo.org> easytag-2.1.5.ebuild:
+  stable ppc64, bug 219716
+
+  29 Apr 2008; Samuli Suominen <ssuominen@gentoo.org> easytag-2.1.5.ebuild:
+  Force --enable-ogg when USE speex is selected wrt #211086, thanks to
+  Vasileios P. Lourdas for reporting.
+
+*easytag-2.1.5 (27 Jan 2008)
+
+  27 Jan 2008; Samuli Suominen <ssuominen@gentoo.org> -easytag-2.1.4.ebuild,
+  +easytag-2.1.5.ebuild:
+  Version bump.
+
+*easytag-2.1.4 (11 Dec 2007)
+
+  11 Dec 2007; Samuli Suominen <ssuominen@gentoo.org> +easytag-2.1.4.ebuild:
+  Version bump.
+
+  22 Nov 2007; Samuli Suominen <ssuominen@gentoo.org>
+  +files/easytag-2.1.3-desktop-entry.patch, easytag-2.1.3.ebuild:
+  Update .desktop file to latest spec, and apply russian translation, thanks
+  to Peter Volkov.
+
+  19 Nov 2007; Raúl Porcel <armin76@gentoo.org> easytag-2.1.3.ebuild:
+  alpha/sparc stable wrt #199454
+
+  18 Nov 2007; Joseph Jezak <josejx@gentoo.org> easytag-2.1.3.ebuild:
+  Marked ppc64 stable for bug #199454.
+
+  17 Nov 2007; Dawid Węgliński <cla@gentoo.org> easytag-2.1.3.ebuild:
+  Stable on x86 (bug #199454)
+
+  17 Nov 2007; Jeroen Roovers <jer@gentoo.org> easytag-2.1.3.ebuild:
+  Stable for HPPA (bug #199454).
+
+  17 Nov 2007; nixnut <nixnut@gentoo.org> easytag-2.1.3.ebuild:
+  Stable on ppc wrt bug 199454
+
+  17 Nov 2007; Samuli Suominen <ssuominen@gentoo.org> easytag-2.1.3.ebuild:
+  amd64 stable wrt #199454
+
+*easytag-2.1.3 (16 Oct 2007)
+
+  16 Oct 2007; Samuli Suominen <ssuominen@gentoo.org> +easytag-2.1.3.ebuild:
+  Version bump.
+
+*easytag-2.1.2 (12 Jul 2007)
+
+  12 Jul 2007; Samuli Suominen <ssuominen@gentoo.org>
+  -files/easytag-2.1.1-include.patch, -easytag-2.1.1.ebuild,
+  +easytag-2.1.2.ebuild:
+  Version bump.
+
+  08 Jul 2007; Samuli Suominen <ssuominen@gentoo.org>
+  +files/easytag-2.1.1-include.patch, easytag-2.1.1.ebuild:
+  Fix implicit declaration of function Log_Print by including log.h in
+  id3v24_tag.c.
+
+*easytag-2.1.1 (05 Jul 2007)
+
+  05 Jul 2007; Samuli Suominen <ssuominen@gentoo.org>
+  -files/easytag-2.1-strict-aliasing.patch, -easytag-2.1-r1.ebuild,
+  +easytag-2.1.1.ebuild:
+  Version bump.
+
+  05 Jun 2007; Raúl Porcel <armin76@gentoo.org> -easytag-1.1.ebuild,
+  easytag-2.0.ebuild:
+  alpha stable and remove old wrt #145777
+
+*easytag-2.1-r1 (08 May 2007)
+
+  08 May 2007; Samuli Suominen <ssuominen@gentoo.org>
+  +files/easytag-2.1-strict-aliasing.patch, -easytag-2.1.ebuild,
+  +easytag-2.1-r1.ebuild:
+  Fix strict aliasing rules.
+
+*easytag-2.1 (08 May 2007)
+
+  08 May 2007; Samuli Suominen <ssuominen@gentoo.org> -easytag-2.0.2.ebuild,
+  +easytag-2.1.ebuild:
+  Version bump.
+
+*easytag-2.0.2 (02 May 2007)
+
+  02 May 2007; Samuli Suominen <ssuominen@gentoo.org> -easytag-2.0.1.ebuild,
+  +easytag-2.0.2.ebuild:
+  Version bump.
+
+  30 Apr 2007; Marius Mauch <genone@gentoo.org> easytag-1.1.ebuild:
+  Replacing einfo with elog
+
+  20 Apr 2007; Joseph Jezak <josejx@gentoo.org> easytag-2.0.ebuild:
+  Marked ppc stable for bug #145777.
+
+*easytag-2.0.1 (20 Apr 2007)
+
+  20 Apr 2007; Samuli Suominen <ssuominen@gentoo.org> +easytag-2.0.1.ebuild:
+  Version bump and add wavpack support. Thanks to Pietro Franchi in bug 175319.
+
+  17 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> easytag-2.0.ebuild:
+  Stable on sparc wrt #145777
+
+  16 Apr 2007; Jeroen Roovers <jer@gentoo.org> easytag-2.0.ebuild:
+  Stable for HPPA (bug #145777).
+
+  15 Apr 2007; Andrej Kacian <ticho@gentoo.org> easytag-2.0.ebuild:
+  Stable on x86, bug #145777.
+
+  15 Apr 2007; Markus Rothe <corsair@gentoo.org> easytag-2.0.ebuild:
+  Stable on ppc64; bug #145777
+
+  15 Apr 2007; Olivier Crête <tester@gentoo.org> easytag-2.0.ebuild:
+  Stable on amd64 for bug #145777
+
+*easytag-2.0 (05 Mar 2007)
+
+  05 Mar 2007; Samuli Suominen <ssuominen@gentoo.org>
+  -files/easytag-ape-fix.patch, -easytag-1.99.11.ebuild,
+  -easytag-1.99.12.ebuild, -easytag-1.99.13.ebuild, +easytag-2.0.ebuild:
+  Version bump for bug 168617. Remove old ones.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*easytag-1.99.13 (12 Dec 2006)
+
+  12 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +easytag-1.99.13.ebuild:
+  Version bump and closing bug #157792.
+
+  28 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> easytag-1.1.ebuild,
+  easytag-1.99.11.ebuild, easytag-1.99.12.ebuild:
+  Add missing pkgconfig dependency, thanks to Patrick Lauer in bug #153086.
+
+  19 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> easytag-1.1.ebuild,
+  easytag-1.99.11.ebuild, easytag-1.99.12.ebuild:
+  Depend on 1.1.2 version of flac, as the 1.1.3 version changes API.
+
+  16 Jun 2006; Diego Pettenò <flameeyes@gentoo.org> easytag-1.1.ebuild:
+  Remove gnuconfig update.
+
+  08 May 2006; Chris Gianelloni <wolf31o2@gentoo.org> metadata.xml:
+  Changing myself to be the maintainer.
+
+*easytag-1.99.12 (14 Apr 2006)
+
+  14 Apr 2006; Daniel Drake <dsd@gentoo.org> -easytag-1.99.7.ebuild,
+  -easytag-1.99.10.ebuild, +easytag-1.99.12.ebuild:
+  Version bump thanks to Pietro Franchi in bug #129741
+
+  20 Mar 2006; Fernando J. Pereda <ferdy@gentoo.org> easytag-1.99.11.ebuild:
+  Add ~alpha wrt bug #111427. Tested by Thomas Cort <tcort@cs.ubishops.ca>.
+
+  22 Jan 2006; Daniel Drake <dsd@gentoo.org> easytag-1.99.11.ebuild:
+  RDEPEND should be DEPEND. Thanks to Mark Loeser for pointing this out.
+
+  08 Jan 2006; Jeroen Roovers <jer@gentoo.org> easytag-1.99.11.ebuild:
+  Marked ~hppa (bug #111427).
+
+  08 Jan 2006; Joseph Jezak <josejx@gentoo.org> easytag-1.99.11.ebuild:
+  Marked ~ppc for bug #111427.
+
+*easytag-1.99.11 (02 Jan 2006)
+
+  02 Jan 2006; Daniel Drake <dsd@gentoo.org> -easytag-1.0-r1.ebuild,
+  -easytag-1.99.9.ebuild, +easytag-1.99.11.ebuild:
+  Version bump thanks to Pietro Franchi <knefas@gmail.com> in bug #116291.
+  Apple/MP4 support is available once again through USE=aac, and beware that
+  you now need USE=mp3 to be able to tag MP3 files.
+
+  26 Dec 2005; Luca Barbato <lu_zero@gentoo.org> easytag-1.0-r1.ebuild,
+  easytag-1.1.ebuild, easytag-1.99.7.ebuild:
+  oggvorbis Cleanup
+
+  24 Dec 2005; Rene Nussbaumer <killerfox@gentoo.org> easytag-1.1.ebuild:
+  Stable on hppa.
+
+  19 Dec 2005; Markus Rothe <corsair@gentoo.org> easytag-1.99.10.ebuild:
+  Added ~ppc64; bug #111427
+
+  18 Dec 2005; Jason Wever <weeve@gentoo.org> easytag-1.99.10.ebuild:
+  Added ~sparc keyword wrt bug #111427.
+
+*easytag-1.99.10 (08 Dec 2005)
+
+  08 Dec 2005; Daniel Drake <dsd@gentoo.org> +easytag-1.99.10.ebuild:
+  Version bump. Temporarily dropped AAC/MP4 support until the mess in bugs
+  #111427 #76212 #58288 is fixed.
+
+*easytag-1.99.9 (04 Nov 2005)
+
+  04 Nov 2005; Daniel Drake <dsd@gentoo.org> +easytag-1.99.9.ebuild:
+  Version bump, adds mp4 support, thanks to Scott Alfter
+  <gentoo@salfter.dyndns.org> in bug #105708
+
+*easytag-1.99.7 (10 Aug 2005)
+
+  10 Aug 2005; Daniel Drake <dsd@gentoo.org> -easytag-1.99.6.ebuild,
+  +easytag-1.99.7.ebuild:
+  Version bump
+
+*easytag-1.99.6 (26 Jun 2005)
+
+  26 Jun 2005; Daniel Drake <dsd@gentoo.org> -easytag-1.99.5.ebuild,
+  +easytag-1.99.6.ebuild:
+  Version bump
+
+  21 Jun 2005; Olivier Crête <tester@gentoo.org> easytag-1.1.ebuild:
+  Stable on amd64
+
+  12 Jun 2005; Bryan Østergaard <kloeri@gentoo.org> easytag-1.1.ebuild:
+  Stable on alpha.
+
+*easytag-1.99.5 (09 Jun 2005)
+
+  09 Jun 2005; Daniel Drake <dsd@gentoo.org> -easytag-1.99.4.ebuild,
+  +easytag-1.99.5.ebuild:
+  Version bump to 1.99.5
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> easytag-1.1.ebuild:
+  Stable on ppc64
+
+  03 Jun 2005; Joseph Jezak <josejx@gentoo.org> easytag-1.1.ebuild:
+  Marked ppc stable.
+
+  02 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> easytag-1.1.ebuild:
+  Stable on sparc
+
+  01 Jun 2005; Daniel Drake <dsd@gentoo.org> easytag-1.1.ebuild,
+  -easytag-1.99.3.ebuild:
+  1.1 stable on x86
+
+*easytag-1.1 (02 May 2005)
+
+  02 May 2005; Daniel Drake <dsd@gentoo.org> +easytag-1.1.ebuild:
+  Version bump for the GTK1.x version to easytag 1.1
+
+*easytag-1.99.4 (02 May 2005)
+
+  02 May 2005; Daniel Drake <dsd@gentoo.org> +easytag-1.99.4.ebuild:
+  Version 1.99.4 - fixes UTF8 issues. Make sure you set conversion from UTF-8
+  to UTF-8 under Tag Settings Preferences
+
+  05 Feb 2005; Bryan Østergaard <kloeri@gentoo.org> easytag-1.0-r1.ebuild:
+  Stable on alpha, bug 76329.
+
+*easytag-1.99.3 (21 Jan 2005)
+
+  21 Jan 2005; Daniel Drake <dsd@gentoo.org> -easytag-1.99.2-r1.ebuild,
+  +easytag-1.99.3.ebuild:
+  Version bump
+
+  03 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> easytag-1.0-r1.ebuild:
+  Stable on sparc wrt #76329
+
+  02 Jan 2005; Markus Rothe <corsair@gentoo.org> easytag-1.0-r1.ebuild,
+  easytag-1.99.2-r1.ebuild:
+  Stable on ppc64 and added gnuconfig_update
+
+  02 Jan 2005; Joseph Jezak <josejx@gentoo.org> easytag-1.0-r1.ebuild:
+  Marked ppc stable for bug #76329.
+
+  02 Jan 2005; Tom Martin <slarti@gentoo.org> easytag-1.0-r1.ebuild:
+  Stable on amd64.
+
+  01 Jan 2005; Daniel Drake <dsd@gentoo.org> easytag-1.0-r1.ebuild:
+  Stable on x86
+
+*easytag-1.99.2-r1 (30 Dec 2004)
+
+  30 Dec 2004; Daniel Drake <dsd@gentoo.org> +easytag-1.99.2-r1.ebuild:
+  Add APE crash fix, bug 70754
+
+*easytag-1.0-r1 (30 Dec 2004)
+
+  30 Dec 2004; Daniel Drake <dsd@gentoo.org> +files/easytag-ape-fix.patch,
+  +easytag-1.0-r1.ebuild:
+  Add APE crash fix, bug 70754
+
+  04 Dec 2004; Tom Martin <slarti@gentoo.org> easytag-1.0.ebuild:
+  Stable on amd64.
+
+  30 Nov 2004; Jason Huebel <jhuebel@gentoo.org> :
+  version bump to 1.99.2
+
+  10 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> easytag-1.0.ebuild:
+  Stable on sparc
+
+  09 Nov 2004; Daniel Drake <dsd@gentoo.org> easytag-1.0.ebuild:
+  Stable on x86
+
+*easytag-1.99.1 (29 Oct 2004)
+*easytag-1.0 (29 Oct 2004)
+
+  29 Oct 2004; Daniel Drake <dsd@gentoo.org> -easytag-0.31-r7.ebuild,
+  +easytag-1.0.ebuild, +easytag-1.99.1.ebuild:
+  Version bump to 1.0 (gtk1) and 1.99.1 (gtk2) releases
+
+*easytag-0.31-r7 (16 Oct 2004)
+
+  16 Oct 2004; Daniel Drake <dsd@gentoo.org> -easytag-0.31-r4.ebuild,
+  -easytag-0.31-r6.ebuild, +easytag-0.31-r7.ebuild:
+  Some homegrown crash and bug fixes
+
+  30 Sep 2004; Daniel Drake <dsd@gentoo.org> easytag-0.31-r6.ebuild:
+  Fix compilation on gcc 3.4
+
+*easytag-0.31-r6 (30 Sep 2004)
+
+  30 Sep 2004; Daniel Drake <dsd@gentoo.org> -easytag-0.31-r5.ebuild,
+  +easytag-0.31-r6.ebuild:
+  Version bump to 0.31_gtk2.4_pre3
+
+*easytag-0.31-r5 (26 Sep 2004)
+
+  26 Sep 2004; Daniel Drake <dsd@gentoo.org> +easytag-0.31-r5.ebuild:
+  Add patch to fix filename handling, please report success/failure. There is
+  one more issue left to solve, please don't mark as stable yet.
+
+*easytag-0.31-r4 (12 Sep 2004)
+
+  12 Sep 2004; Daniel Drake <dsd@gentoo.org> easytag-0.31-r1.ebuild,
+  easytag-0.31-r3.ebuild, easytag-0.31-r4.ebuild:
+  Version bump to 0.31_gtk2.4_pre2. Please don't mark any easytag GTK2 ebuilds
+  as stable on any arch until the issues are ironed out (I'll note here when
+  that is).
+
+  17 Aug 2004; Tom Gall <tgall@gentoo.org> easytag-0.31-r2.ebuild:
+  stable on ppc64, bug #58311
+
+  14 Aug 2004; Sven Wegener <swegener@gentoo.org> metadata.xml:
+  Corrected metadata.xml to match DTD.
+
+  10 Aug 2004; Daniel Drake <dsd@gentoo.org> easytag-0.31-r1.ebuild,
+  easytag-0.31-r2.ebuild, easytag-0.31.ebuild:
+  Fix depend (flac requires libvorbis)
+
+*easytag-0.31-r3 (10 Aug 2004)
+
+  10 Aug 2004; Daniel Drake <dsd@gentoo.org> easytag-0.31-r3.ebuild:
+  Bump to 0.31_gtk2.4_pre1, plus a configure fix, and a crashfix of my own
+
+*easytag-0.31-r2 (13 Jul 2004)
+
+  13 Jul 2004; Daniel Drake <dsd@gentoo.org> :
+  Bugfixes for 0.31-r1 (leaks, rename dir, undefined behaviour)
+
+*easytag-0.31-r1 (03 Jul 2004)
+
+  03 Jul 2004; Daniel Drake <dsd@gentoo.org> easytag-0.31-r1.ebuild,
+  metadata.xml:
+  EasyTAG 0.31_gtk2.4_pre0 - GTK2-only version - please report all bugs
+
+  02 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> easytag-0.31.ebuild:
+  Stable x86, amd64, sparc.
+
+  15 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org> easytag-0.31.ebuild:
+  Added ~amd64.
+
+  05 Jun 2004; Aron Griffis <agriffis@gentoo.org> easytag-0.31.ebuild,
+  easytag-0.31_pre2-r5.ebuild:
+  Minor ebuild syntax cleanups
+
+*easytag-0.31 (02 Jun 2004)
+
+  02 Jun 2004; Seemant Kulleen <seemant@gentoo.org> +easytag-0.31.ebuild,
+  -easytag-0.31_pre2-r3.ebuild, -easytag-0.31_pre2-r4.ebuild:
+  Version bump to newest upstream release WITH Daniel Drake <dsd@gentoo.org>
+  coming in with a brand new gtk2 patch for it, Thanks to him and Tristen for
+  testing in bug #52447
+
+*easytag-0.31_pre2-r5 (14 May 2004)
+
+  14 May 2004; Seemant Kulleen <seemant@gentoo.org>
+  +easytag-0.31_pre2-r5.ebuild:
+  The unrivalled dsd_ (Daniel Drake) <dsd@gentoo.org> has another update to the
+  gtk2 patchset. Again, this was tested by Tristan Henderson
+  <T.Henderson@cs.ucl.ac.uk>. All this happened in bug #51062
+
+*easytag-0.31_pre2-r4 (04 May 2004)
+
+  04 May 2004; Seemant Kulleen <seemant@gentoo.org> -easytag-0.30c.ebuild,
+  -easytag-0.31_pre2-r2.ebuild, +easytag-0.31_pre2-r4.ebuild:
+  dsd updated his patch again, verified to compile with gcc2 as well. Thanks to
+  Daniel Drake <dsd@gentoo.org> for the patch and Tristan Henderson
+  <T.Henderson@cs.ucl.ac.uk> for the gcc2 test, in bug #49968
+
+  29 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  easytag-0.31_pre2-r3.ebuild, files/easytag-0.31_pre2-gcc2.patch:
+  Yet another gcc2 fix closing bug #49427.  Thanks again Tristan.
+
+*easytag-0.31_pre2-r3 (27 Apr 2004)
+
+  27 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  easytag-0.31_pre2-r3.ebuild:
+  Bumping the version of the gtk2 patch. Provided by Daniel Drake
+  <dsd@gentoo.org> in bug #49156
+
+  22 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  easytag-0.31_pre2-r2.ebuild, files/easytag-0.30.2-gcc2.patch:
+  gcc2 compilation fix thanks to Tristan Henderson <T.Henderson@cs.ucl.ac.uk> in
+  bug #48672.
+
+*easytag-0.31_pre2-r2 (13 Apr 2004)
+
+  13 Apr 2004; Seemant Kulleen <seemant@gentoo.org>
+  easytag-0.31_pre2-r1.ebuild, easytag-0.31_pre2-r2.ebuild:
+  updated GTK2 patch from Daniel Drake <dsd@gentoo.org> in bug #47728
+
+*easytag-0.31_pre2-r1 (09 Apr 2004)
+
+  09 Apr 2004; Seemant Kulleen <seemant@gentoo.org>
+  easytag-0.31_pre2-r1.ebuild, easytag-0.31_pre2.ebuild:
+  nls fix thanks again to Daniel Drake, fixing bug #47373 by Jordan
+  <lx_xero@comcast.net>
+
+  09 Apr 2004; Seemant Kulleen <seemant@gentoo.org> easytag-0.30c.ebuild,
+  easytag-0.30d.ebuild, easytag-0.31_pre2.ebuild:
+  fix depend string, thanks to daniel in irc
+
+*easytag-0.31_pre2 (09 Apr 2004)
+
+  09 Apr 2004; Seemant Kulleen <seemant@gentoo.org> easytag-0.31_pre2.ebuild,
+  files/easytag-0.30.2-fix-configure.patch:
+  version bump to easytag-0.30.2, which is named 0.31_pre2 here because of
+  portage's version thingy which thinks 0.30d is a higher version than 0.30.2.
+  Included in this version is optional GTK2 support thanks to the venerable
+  Daniel Drake! Look for him to be a Gentoo developer soon, anyway. So, this was
+  all put together by: Daniel Drake <dan@reactivated.net> in bug #45479
+
+*easytag-0.30d (22 Mar 2004)
+
+  22 Mar 2004; Seemant Kulleen <seemant@gentoo.org> easytag-0.30.ebuild,
+  easytag-0.30d.ebuild:
+  version bump thanks to Daniel Drake <dan@reactivated.net> (who's doing a gtk2
+  port for us too) in bug #44841
+
+  17 Jan 2004; Seemant Kulleen <seemant@gentoo.org> easytag-0.30c.ebuild: 
+  set x86 and sparc in keywords
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> easytag-0.30c.ebuild:
+  set ppc in keywords
+
+*easytag-0.30c (01 Dec 2003)
+
+  01 Dec 2003; Seemant Kulleen <seemant@gentoo.org> easytag-0.28.ebuild,
+  easytag-0.29.ebuild, easytag-0.30c.ebuild:
+  this version bump adds three patches: to fix a bug when renaming files with
+  the scanner and using the character conversion; to fix a bug that doesn't save
+  the changed files, which aren't selected, when changing of directory or
+  exiting, even if you select the button Yes in the dialog box; and to fix a bug
+  when using the check button Repeat action for the rest of the files in the
+  dialog box, when deleting files.
+
+  01 Dec 2003; Ciaran McCreesh <ciaranm@gentoo.org> easytag-0.30.ebuild:
+  moved to stable on sparc
+
+*easytag-0.30 (08 Sep 2003)
+
+  08 Sep 2003; Seemant Kulleen <seemant@gentoo.org> easytag-0.30.ebuild:
+  another version bump
+
+  01 Sep 2003; Seemant Kulleen <seemant@gentoo.org> easytag-0.29.ebuild:
+  version bump
+
+*easytag-0.28 (2 Jun 2003)
+
+  02 Jun 2003; robh <robh@gentoo.org> easytag-0.28.ebuild:
+  version bump. closes #22088. reported by: Gregorio Guidi <g.guidi@sns.it>
+
+*easytag-0.27 (19 Feb 2003)
+
+  11 Mar 2003; Seemant Kulleen <seemant@gentoo.org> easytag-0.27.ebuild:
+  sed fix for my fix. thanks to: Tristan Henderson <T.Henderson@cs.ucl.ac.uk> in
+  bug #17326
+
+  05 Mar 2003; Seemant Kulleen <seemant@gentoo.org> easytag-0.27.ebuild:
+  errno fixes
+
+  19 Feb 2003; Seemant Kulleen <seemant@gentoo.org> easytag-0.23.ebuild easytag-0.25.ebuild easytag-0.27.ebuild files/digest-easytag-0.27 :
+  other arches to testing; and version bump thanks to: Jay Pfeifer <jay@jdp.cc> in bug #15782
+
+*easytag-0.25 (11 Nov 2002)
+
+  11 Nov 2002; Seemant Kulleen <seemant@gentoo.org> easytag-0.25.ebuild
+  files/digest-easytag-0.25 :
+
+  Version bump.
+
+*easytag-0.23 (19 Jul 2002)
+
+  19 Jul 2002; Seemant Kulleen <seemant@gentoo.org> easytag-0.23.ebuild
+  files/digest-easytag-0.23 :
+
+  Update version.
+
+*easytag-0.21 (26 Apr 2002)
+
+  26 May 2002; Ryan Phillips <rphillips@gentoo.org> easytag-0.21.ebuild :
+
+  Updated version.
+  support for mirror:// added
+  builds without ogg support if USE variable is not set
+
+*easytag-0.18 (26 Apr 2002)
+
+  26 May 2002; Ryan Phillips <rphillips@gentoo.org> easytag-0.18.ebuild :
+
+  Actually builds easytag without ogg support
+  Changed to mirror:// support
+
+  26 Apr 2002; Ryan Phillips <rphillips@gentoo.org> easytag-0.18.ebuild :
+
+  Error in setting the myconf variable when using use oggvorbin.
+  Fixes (#2125)
+
+*easytag-0.18 (17 Apr 2002)
+
+  17 Apr 2002; Ryan Phillips <rphillips@gentoo.org> easytag-0.18.ebuild :
+  
+  The first version of this package.

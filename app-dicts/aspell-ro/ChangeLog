@@ -1,0 +1,68 @@
+# ChangeLog for app-dicts/aspell-ro
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-ro/ChangeLog,v 1.20 2014/04/22 17:07:36 kensington Exp $
+
+  22 Apr 2014; Michael Palimaka <kensington@gentoo.org>
+  -aspell-ro-0.50.2.ebuild, -aspell-ro-3.3.ebuild:
+  Remove old.
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org> aspell-ro-0.50.2.ebuild,
+  aspell-ro-3.3.2.ebuild, aspell-ro-3.3.ebuild:
+  keyword ~amd64-fbsd
+
+  05 Jun 2010; Raúl Porcel <armin76@gentoo.org> aspell-ro-3.3.2.ebuild:
+  alpha/arm/ia64/s390/sh stable wrt #310015
+
+  14 May 2010; Jeroen Roovers <jer@gentoo.org> aspell-ro-3.3.2.ebuild:
+  Stable for HPPA (bug #310015).
+
+  05 Apr 2010; Markus Meier <maekke@gentoo.org> aspell-ro-3.3.2.ebuild:
+  amd64/arm/x86 stable, bug #310015
+
+  27 Mar 2010; Tiago Cunha <tcunha@gentoo.org> aspell-ro-3.3.2.ebuild:
+  stable sparc, bug 310015
+
+  24 Mar 2010; Brent Baude <ranger@gentoo.org> aspell-ro-3.3.2.ebuild:
+  Marking aspell-ro-3.3.2 ppc stable for bug 310015
+
+  21 Mar 2010; Brent Baude <ranger@gentoo.org> aspell-ro-3.3.2.ebuild:
+  Marking aspell-ro-3.3.2 ppc64 stable for bug 310015
+
+*aspell-ro-3.3.2 (19 Feb 2010)
+
+  19 Feb 2010; Peter Volkov <pva@gentoo.org> aspell-ro-0.50.2.ebuild,
+  +aspell-ro-3.3.2.ebuild:
+  Version bump.
+
+*aspell-ro-3.3 (26 Dec 2009)
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> +aspell-ro-3.3.ebuild:
+  Version bump, bug 226937, thank rs for report and Balint SZENTE for this
+  work.
+
+  18 Oct 2009; Mark Loeser <halcy0n@gentoo.org> aspell-ro-0.50.2.ebuild:
+  QA fixes; IUSE is not defined
+
+  03 Nov 2007; Roy Marples <uberlord@gentoo.org> aspell-ro-0.50.2.ebuild:
+  Keyworded ~sparc-fbsd and ~x86-fbsd
+
+  01 Dec 2006; Kevin F. Quinn <kevquinn@gentoo.org> aspell-ro-0.50.2.ebuild:
+  Ebuild cleanups for bug #132718
+
+  30 Jul 2004; Anders Rune Jensen <arj@gentoo.org> +metadata.xml, 
+  QA - IUSE fix and {add missing,correct} metatata.xml.
+
+*aspell-ro-0.50.2 (22 Oct 2002)
+
+  02 Dec 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
+  Moved from app-i18n to app-dicts
+
+  22 Oct 2002; Seemant Kulleen <seemant@gentoo.org> aspell-ro-0.50.2.ebuild
+  ChangeLog files/digest-aspell-ro-0.50.2 :
+
+  New Romanian language dictionary.

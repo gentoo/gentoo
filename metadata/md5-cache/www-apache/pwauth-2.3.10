@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup unpack
+DEPEND=pam? ( virtual/pam )
+DESCRIPTION=A Unix Web Authenticator
+EAPI=5
+HOMEPAGE=http://code.google.com/p/pwauth/
+IUSE=faillog pam ignore-case domain-aware
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=Apache-1.1
+RDEPEND=pam? ( virtual/pam )
+SLOT=0
+SRC_URI=http://pwauth.googlecode.com/files/pwauth-2.3.10.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a2f2aaabfcd32404aae46dbe57c1b8e1

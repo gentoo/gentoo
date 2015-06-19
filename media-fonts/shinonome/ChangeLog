@@ -1,0 +1,93 @@
+# ChangeLog for media-fonts/shinonome
+# Copyright 2002-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/shinonome/ChangeLog,v 1.24 2007/07/22 07:15:34 dirtyepic Exp $
+
+  22 Jul 2007; Ryan Hill <dirtyepic@gentoo.org> -shinonome-0.9.10.ebuild,
+  shinonome-0.9.11.ebuild:
+  Remove virtual/x11, virtual/libc, and base system DEPENDs.  Drop old version.
+
+  18 Mar 2007; Simon Stelling <blubb@gentoo.org> shinonome-0.9.11.ebuild:
+  stable on amd64; bug 171063
+
+  17 Mar 2007; nixnut <nixnut@gentoo.org> shinonome-0.9.11.ebuild:
+  Stable on ppc wrt bug 171063
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org> shinonome-0.9.11.ebuild:
+  x86 stable
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  shinonome-0.9.10.ebuild:
+  Convert to use elog.
+
+  26 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  shinonome-0.9.11.ebuild:
+  Add ~x86-fbsd keyword, restrict binchecks and strip.
+
+  07 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  shinonome-0.9.11.ebuild:
+  Stable on sparc
+
+  11 Jul 2006; Aron Griffis <agriffis@gentoo.org> shinonome-0.9.11.ebuild:
+  Mark 0.9.11 stable on ia64
+
+  23 Mar 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  -shinonome-0.9.8.ebuild, shinonome-0.9.10.ebuild:
+  Port to modular X.
+
+  11 Jan 2006; Robin H. Johnson <robbat2@gentoo.org>
+  shinonome-0.9.11.ebuild:
+  Fix DEPEND/RDEPEND for modular-X.
+
+  13 Sep 2005; Aron Griffis <agriffis@gentoo.org> shinonome-0.9.11.ebuild:
+  Mark 0.9.11 stable on alpha
+
+  15 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  shinonome-0.9.10.ebuild:
+  Stable on amd64.
+
+  12 Feb 2005; Yuta SATOH <nigoro@gentoo.org> shinonome-0.9.11.ebuild:
+  Stable on ppc64
+
+  20 Dec 2004; Yuta SATOH <nigoro@gentoo.org> shinonome-0.9.11.ebuild:
+  added ~ppc64
+
+*shinonome-0.9.11 (20 Oct 2004)
+
+  20 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> +shinonome-0.9.11.ebuild:
+  Version bumped. Uses font.eclass.
+
+  29 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> shinonome-0.9.10.ebuild:
+  Marked ~amd64.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  shinonome-0.9.10.ebuild, shinonome-0.9.8.ebuild:
+  virtual/glibc -> virtual/libc
+
+*shinonome-0.9.10 (27 Jul 2003)
+
+  25 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> shinonome-0.9.10.ebuild:
+  Marked stable on ppc and sparc
+
+  09 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> shinonome-0.9.10.ebuild:
+  Marked stable on x86 and alpha
+
+  27 Jul 2003; Mamoru KOMACHI <usata@gentoo.org> shinonome-0.9.10.ebuild:
+  Version bump, changed font directory to /usr/share/fonts/shinonome,
+  added ~alpha, ~sparc and ~ppc to KEYWORDS. This closes bug #21439
+
+  23 Jun 2003; Patrick Kursawe <phosphan@gentoo.org> :
+  moving from x11-misc to media-fonts
+
+*shinonome-0.9.8 (22 Aug 2002)
+
+  03 Mar 2003; Graham Forest <vladimir@gentoo.org> shinonome-0.9.8.ebuild:
+  Fixed small LICENSE problem
+
+  22 Aug 2002; Stuart Bouyer <stubear@gentoo.org> shinonome-0.9.8.ebuild,
+  ChangeLog:
+
+  First ebuild added, thanks to Atzm Watanabe <sitosito@p.chan.ne.jp> for
+  submitting the ebuild.

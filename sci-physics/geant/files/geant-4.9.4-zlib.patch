@@ -1,0 +1,35 @@
+force use of system zlib instead of bundled G4zlib
+--- source/visualization/HepRep/sources.cmake.orig	2011-12-02 15:07:49.000000000 +0000
++++ source/visualization/HepRep/sources.cmake	2011-12-18 06:21:22.000000000 +0000
+@@ -91,7 +91,7 @@
+         G4specsolids
+         G4tracking
+         G4vis_management
+-        G4zlib
++        ${ZLIB_LIBRARIES}
+     GLOBAL_DEPENDENCIES
+         G4digits_hits
+         G4geometry
+@@ -102,7 +102,7 @@
+         G4modeling
+         G4tracking
+         G4vis_management
+-        G4zlib
++        ${ZLIB_LIBRARIES}
+     LINK_LIBRARIES
+ )
+ 
+--- source/visualization/externals/gl2ps/sources.cmake.orig	2011-12-02 16:07:56.000000000 +0100
++++ source/visualization/externals/gl2ps/sources.cmake	2012-03-09 14:09:26.965148002 +0100
+@@ -49,9 +49,9 @@
+         G4OpenGL2PSAction.cc
+         gl2ps.cc
+     GRANULAR_DEPENDENCIES
+-        G4zlib
++        ${ZLIB_LIBRARIES}
+     GLOBAL_DEPENDENCIES
+-        G4zlib
++        ${ZLIB_LIBRARIES}
+     LINK_LIBRARIES
+         ${OPENGL_LIBRARIES}
+ )

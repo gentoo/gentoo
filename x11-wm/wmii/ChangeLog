@@ -1,0 +1,204 @@
+# ChangeLog for x11-wm/wmii
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/wmii/ChangeLog,v 1.46 2013/10/19 15:42:25 pacho Exp $
+
+*wmii-3.9.2-r4 (19 Oct 2013)
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> +wmii-3.9.2-r4.ebuild,
+  -wmii-3.9.2-r3.ebuild:
+  Build dynamically (#273332)
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> -wmii-3.9.2-r2.ebuild,
+  metadata.xml:
+  Cleanup due desktop-wm removal
+
+  09 Apr 2013; Naohiro Aota <naota@gentoo.org> wmii-3.9.2-r3.ebuild:
+  Add ~x86-fbsd wrt bug #157553
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> wmii-3.9.2-r2.ebuild,
+  wmii-3.9.2-r3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*wmii-3.9.2-r3 (05 Mar 2012)
+
+  05 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> +wmii-3.9.2-r3.ebuild:
+  Revision bump to force rebuild against -r3 of libixp wrt #393299
+
+  04 Dec 2011; Samuli Suominen <ssuominen@gentoo.org> -wmii-3.9.2-r1.ebuild:
+  old
+
+*wmii-3.9.2-r2 (04 Dec 2011)
+
+  04 Dec 2011; Samuli Suominen <ssuominen@gentoo.org> +wmii-3.9.2-r2.ebuild:
+  Use system copy of sys-libs/libixp wrt #323037
+
+  29 May 2011; Kacper Kowalik <xarthisius@gentoo.org> wmii-3.9.2-r1.ebuild:
+  Fix underlinking wrt #369115
+
+  08 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> wmii-3.9.2-r1.ebuild:
+  Added ~ppc wrt #323039
+
+  29 Aug 2010; Kacper Kowalik <xarthisius@gentoo.org> wmii-3.9.2-r1.ebuild:
+  Fix build with gmake 3.82 wrt bug 335083. Thanks to Diego for the report.
+
+  26 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> wmii-3.9.2-r1.ebuild:
+  Respect AR, and avoid running sed.
+
+*wmii-3.9.2-r1 (26 Jun 2010)
+
+  26 Jun 2010; Jeroen Roovers <jer@gentoo.org> -wmii-3.9.2.ebuild,
+  +wmii-3.9.2-r1.ebuild:
+  Respect CC.
+
+*wmii-3.9.2 (26 Jun 2010)
+
+  26 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> +wmii-3.9.2.ebuild:
+  Version bump.
+
+  22 Jun 2010; Jeroen Roovers <jer@gentoo.org> wmii-3.6-r2.ebuild,
+  wmii-3.9.ebuild:
+  Marked ~hppa (bug #323039).
+
+  12 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> wmii-3.9.ebuild:
+  Remove x11-misc/dmenu RDEPEND wrt #323673 by Kris Maglione.
+
+*wmii-3.9 (07 Jun 2010)
+
+  07 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> +wmii-3.9.ebuild:
+  Version bump wrt #291176 by Jeroen Roovers.
+
+  02 Jun 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove omp from metadata.xml (#147119)
+
+  13 Jul 2009; <omp@gentoo.org> wmii-3.6-r1.ebuild, wmii-3.6-r2.ebuild:
+  Does not work with libixp versions newer than 0.4. (bug #277638)
+
+  11 Jun 2009; Christian Faulhammer <fauli@gentoo.org> wmii-3.6-r1.ebuild,
+  wmii-3.6-r2.ebuild, +files/wmii-3.6-64bit-safe.patch:
+  fix abort on 64bit architectures (bug 231299 by Alex 'wired' Alexander
+  <alex DOT alexander AT gmail DOT com>); correct HOMEPAGE and add
+  media-fonts/font-misc-misc as dependency (forums by superwutze)
+
+*wmii-3.6-r2 (24 Apr 2008)
+
+  24 Apr 2008; David Shakaryan <omp@gentoo.org> +wmii-3.6-r2.ebuild:
+  Fix launching of dmenu; thanks to Casey Carter. (bug #214224)
+
+*wmii-3.6-r1 (19 Nov 2007)
+
+  19 Nov 2007; David Shakaryan <omp@gentoo.org> -wmii-3.6.ebuild,
+  +wmii-3.6-r1.ebuild:
+  Rid paths of temporary install directory. (bug #199551)
+
+  19 Nov 2007; David Shakaryan <omp@gentoo.org> wmii-3.5.1.ebuild:
+  Depend on correct version of libixp for older release. (bug #199556)
+
+  19 Nov 2007; David Shakaryan <omp@gentoo.org> -wmii-3.6_rc2.ebuild:
+  Remove older version.
+
+  19 Nov 2007; David Shakaryan <omp@gentoo.org> wmii-3.6.ebuild:
+  Depend on correct version of libixp. (bug #199522)
+
+*wmii-3.6 (18 Nov 2007)
+
+  18 Nov 2007; David Shakaryan <omp@gentoo.org> +wmii-3.6.ebuild:
+  Version bump.
+
+  09 Oct 2007; David Shakaryan <omp@gentoo.org> wmii-3.5.1.ebuild,
+  wmii-3.6_rc2.ebuild:
+  Add xmessage and xsetroot dependencies. (bug #195126)
+
+  01 Aug 2007; David Shakaryan <omp@gentoo.org> wmii-2.ebuild:
+  Add x11-apps/xmessage and x11-apps/xsetroot to RDEPEND. (bug #144783)
+
+  22 Jul 2007; David Shakaryan <omp@gentoo.org> wmii-2.ebuild:
+  Remove virtual/x11 from dependencies.
+
+*wmii-3.6_rc2 (09 Feb 2007)
+
+  09 Feb 2007; David Shakaryan <omp@gentoo.org>
+  -files/wmii-20070116-WMState.patch, +wmii-3.6_rc2.ebuild,
+  -wmii-20070116.ebuild, -wmii-20070116-r1.ebuild:
+  Version bump. (bug #165800)
+
+*wmii-20070116-r1 (30 Jan 2007)
+
+  30 Jan 2007; David Shakaryan <omp@gentoo.org>
+  +files/wmii-20070116-WMState.patch, +wmii-20070116-r1.ebuild:
+  Apply xprop/gtk d'n'd patch; thanks to Roland Kammerer. (bug #164429)
+
+*wmii-20070116 (30 Jan 2007)
+
+  30 Jan 2007; David Shakaryan <omp@gentoo.org> +wmii-20070116.ebuild:
+  Version bump to 20070116 snapshot; thanks to Armando Di Cianno. (bug #164429)
+
+  20 Jan 2007; Markus Rothe <corsair@gentoo.org> wmii-3.5.1.ebuild:
+  Added ~ppc64
+
+  17 Jan 2007; David Shakaryan <omp@gentoo.org> wmii-3.5.1.ebuild:
+  Fix sed expression. (bug #160328)
+
+  28 Dec 2006; David Shakaryan <omp@gentoo.org> files/wmii.desktop,
+  metadata.xml, +wmii-3.5.1.ebuild:
+  Major version bump and add myself as maintainer. (bug #117143)
+
+  14 Jul 2006; Torsten Veller <tove@gentoo.org> wmii-2.ebuild:
+  Added x11-apps/xdpyinfo to RDEPEND. Reported by Michael P. in bug #138756.
+
+  13 Apr 2006; Stephanie Lockwood-Childs <wormo@gentoo.org> wmii-2.ebuild:
+  marking ~ppc (Bug #129463, reported by Stephan Weller)
+
+  24 Jan 2006; Torsten Veller <tove@gentoo.org> -wmii-1.1.ebuild,
+  wmii-2.ebuild:
+  Removed old version. Added support for modular X.
+
+*wmii-2 (12 Aug 2005)
+
+  12 Aug 2005; Torsten Veller <tove@gentoo.org> +files/wmii-2_050802.patch,
+  +wmii-2.ebuild:
+  New release.
+
+*wmii-1.1 (13 Jun 2005)
+
+  13 Jun 2005; Torsten Veller <tove@gentoo.org> -wmii-1.ebuild,
+  +wmii-1.1.ebuild:
+  Version bump.  Thanks to Yann Lamontagne (bug #95973).
+
+  04 Jun 2005; Olivier Crête <tester@gentoo.org> wmii-1.ebuild:
+  Add ~amd64 keyword per bug #94998
+
+*wmii-1 (01 Jun 2005)
+
+  01 Jun 2005; Torsten Veller <tove@gentoo.org> -wmii-0.20050510.ebuild,
+  +wmii-1.ebuild:
+  First Relese. Removed cairo support because it's really broken.
+
+  14 May 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  wmii-0.20050510.ebuild:
+  added ~hppa
+
+*wmii-0.20050510 (11 May 2005)
+
+  11 May 2005; Torsten Veller <tove@gentoo.org> -wmii-0.20050506.ebuild,
+  +wmii-0.20050510.ebuild:
+  New snapshot.
+
+*wmii-0.20050506 (06 May 2005)
+
+  06 May 2005; Torsten Veller <tove@gentoo.org> metadata.xml,
+  -wmii-0.20050504.ebuild, +wmii-0.20050506.ebuild:
+  New snap.
+
+*wmii-0.20050504 (04 May 2005)
+
+  04 May 2005; Torsten Veller <tove@gentoo.org> -wmii-0.20050420.ebuild,
+  +wmii-0.20050504.ebuild:
+  New snapshot.
+
+*wmii-0.20050420 (21 Apr 2005)
+
+  21 Apr 2005; Torsten Veller <tove@gentoo.org> +files/wmii.desktop,
+  +metadata.xml, +wmii-0.20050420.ebuild:
+  Initial commit.
+  Package.masked because it's a pre-release snapshot.
+  Thanks to Ingo Bormuth, René Nussbaumer in bug #83500.

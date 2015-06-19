@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=sci-libs/gsl:0= sci-libs/plplot:0=[-dynamic] sys-libs/ncurses:5= sys-libs/readline:0= sys-libs/zlib:0= x11-libs/libX11:0= fftw? ( sci-libs/fftw:3.0= ) grib? ( sci-libs/grib_api:0= ) gshhs? ( sci-geosciences/gshhs-data sci-geosciences/gshhs:0= ) hdf? ( sci-libs/hdf:0= ) hdf5? ( sci-libs/hdf5:0= ) imagemagick? ( || ( media-gfx/graphicsmagick[cxx] media-gfx/imagemagick[cxx] ) ) netcdf? ( sci-libs/netcdf ) proj? ( sci-libs/proj ) postscript? ( dev-libs/pslib ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/numpy[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) udunits? ( sci-libs/udunits ) wxwidgets? ( x11-libs/wxGTK:2.8[X,-odbc] ) >=dev-java/antlr-2.7.7-r5:0[cxx,java,script] virtual/pkgconfig eigen? ( dev-cpp/eigen:3 ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=GNU Data Language
+EAPI=5
+HOMEPAGE=http://gnudatalanguage.sourceforge.net/
+IUSE=+eigen fftw grib gshhs hdf hdf5 imagemagick netcdf openmp png proj postscript python static-libs udunits wxwidgets python_targets_python2_7 test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=sci-libs/gsl:0= sci-libs/plplot:0=[-dynamic] sys-libs/ncurses:5= sys-libs/readline:0= sys-libs/zlib:0= x11-libs/libX11:0= fftw? ( sci-libs/fftw:3.0= ) grib? ( sci-libs/grib_api:0= ) gshhs? ( sci-geosciences/gshhs-data sci-geosciences/gshhs:0= ) hdf? ( sci-libs/hdf:0= ) hdf5? ( sci-libs/hdf5:0= ) imagemagick? ( || ( media-gfx/graphicsmagick[cxx] media-gfx/imagemagick[cxx] ) ) netcdf? ( sci-libs/netcdf ) proj? ( sci-libs/proj ) postscript? ( dev-libs/pslib ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/numpy[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) udunits? ( sci-libs/udunits ) wxwidgets? ( x11-libs/wxGTK:2.8[X,-odbc] )
+REQUIRED_USE=python? ( || ( python_targets_python2_7 ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/gnudatalanguage/gdl-0.9.5.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	python-r1	6d3a3cb5705b9fff1aeb7cfa4e3336fe	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	virtualx	73cfc129b4b9ba23aed1abb10c825d86	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
+_md5_=f96b95546b5db2f50f8365b12fc4fc19

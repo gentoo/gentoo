@@ -1,0 +1,11 @@
+--- src/ClpPdco.cpp.orig	2014-01-14 11:44:22.717643715 -0800
++++ src/ClpPdco.cpp	2014-01-14 11:43:12.543202133 -0800
+@@ -316,7 +316,7 @@
+      //bool useChol = (LSmethod == 1);
+      //bool useQR   = (LSmethod == 2);
+      bool direct  = (LSmethod <= 2 && ifexplicit);
+-     char solver[6];
++     char solver[7];
+      strcpy(solver, "  LSQR");
+ 
+ 

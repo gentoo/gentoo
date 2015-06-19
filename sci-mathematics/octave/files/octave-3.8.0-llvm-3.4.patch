@@ -1,0 +1,63 @@
+diff -aur octave-3.8.0/libinterp/corefcn/jit-util.h octave-3.8.0.fix/libinterp/corefcn/jit-util.h
+--- octave-3.8.0/libinterp/corefcn/jit-util.h	2013-12-27 15:57:41.000000000 -0600
++++ octave-3.8.0.fix/libinterp/corefcn/jit-util.h	2014-01-16 17:06:47.512782643 -0600
+@@ -42,8 +42,10 @@
+ {
+   class Value;
+   class Module;
+-  class FunctionPassManager;
+-  class PassManager;
++  namespace legacy {
++    class FunctionPassManager;
++    class PassManager;
++  }
+   class ExecutionEngine;
+   class Function;
+   class BasicBlock;
+diff -aur octave-3.8.0/libinterp/corefcn/pt-jit.cc octave-3.8.0.fix/libinterp/corefcn/pt-jit.cc
+--- octave-3.8.0/libinterp/corefcn/pt-jit.cc	2013-12-27 15:58:17.000000000 -0600
++++ octave-3.8.0.fix/libinterp/corefcn/pt-jit.cc	2014-01-16 17:08:28.030924785 -0600
+@@ -52,7 +52,7 @@
+ #include <llvm/Bitcode/ReaderWriter.h>
+ #include <llvm/ExecutionEngine/ExecutionEngine.h>
+ #include <llvm/ExecutionEngine/JIT.h>
+-#include <llvm/PassManager.h>
++#include <llvm/IR/LegacyPassManager.h>
+ 
+ #ifdef HAVE_LLVM_IR_FUNCTION_H
+ #include <llvm/IR/LLVMContext.h>
+@@ -1888,10 +1888,10 @@
+   if (! engine)
+     return false;
+ 
+-  module_pass_manager = new llvm::PassManager ();
++  module_pass_manager = new llvm::legacy::PassManager ();
+   module_pass_manager->add (llvm::createAlwaysInlinerPass ());
+ 
+-  pass_manager = new llvm::FunctionPassManager (module);
++  pass_manager = new llvm::legacy::FunctionPassManager (module);
+ #ifdef HAVE_LLVM_DATALAYOUT
+   pass_manager->add (new llvm::DataLayout (*engine->getDataLayout ()));
+ #else
+@@ -2007,7 +2007,7 @@
+     {
+       std::string error;
+       llvm::raw_fd_ostream fout ("test.bc", error,
+-                                 llvm::raw_fd_ostream::F_Binary);
++                                 llvm::sys::fs::F_Binary);
+       llvm::WriteBitcodeToFile (module, fout);
+     }
+ }
+diff -aur octave-3.8.0/libinterp/corefcn/pt-jit.h octave-3.8.0.fix/libinterp/corefcn/pt-jit.h
+--- octave-3.8.0/libinterp/corefcn/pt-jit.h	2013-12-27 15:58:17.000000000 -0600
++++ octave-3.8.0.fix/libinterp/corefcn/pt-jit.h	2014-01-16 17:05:08.224619116 -0600
+@@ -384,8 +384,8 @@
+   size_t trip_count (const octave_value& bounds) const;
+ 
+   llvm::Module *module;
+-  llvm::PassManager *module_pass_manager;
+-  llvm::FunctionPassManager *pass_manager;
++  llvm::legacy::PassManager *module_pass_manager;
++  llvm::legacy::FunctionPassManager *pass_manager;
+   llvm::ExecutionEngine *engine;
+ };

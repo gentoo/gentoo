@@ -1,0 +1,10 @@
+DEFINED_PHASES=prepare
+DESCRIPTION=Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
+EAPI=5
+HOMEPAGE=http://www.fpx.de/fp/Software/UUDeview/
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.fpx.de/fp/Software/UUDeview/download/uudeview-0.5.20.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=87c84df59cf0ceb2124750466ceb4a39

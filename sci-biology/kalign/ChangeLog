@@ -1,0 +1,34 @@
+# ChangeLog for sci-biology/kalign
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/kalign/ChangeLog,v 1.8 2013/03/11 15:42:47 jlec Exp $
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+  18 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> kalign-2.03-r1.ebuild:
+  x86 stable wrt bug #393791
+
+  16 Dec 2011; Agostino Sarubbo <ago@gentoo.org> kalign-2.03-r1.ebuild:
+  Stable for AMD64, wrt bug #393791
+
+  16 Dec 2011; Justin Lecher <jlec@gentoo.org> kalign-2.03-r1.ebuild:
+  Move to EAPI=4
+
+*kalign-2.03-r1 (04 Sep 2010)
+
+  04 Sep 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  +kalign-2.03-r1.ebuild:
+  Respect CC,LDFLAGS wrt bug 335952. Thanks to Diego for the report and Ross
+  Smith <gaurdro@gmail.com> for the patch.
+
+  21 Mar 2009; Raúl Porcel <armin76@gentoo.org> kalign-2.03.ebuild:
+  x86 stable, bug #263043
+
+  19 Mar 2009; Thomas Anderson <gentoofan23@gentoo.org> kalign-2.03.ebuild:
+  stable amd64, bug 263043
+
+*kalign-2.03 (20 Jun 2008)
+
+  20 Jun 2008; weaver <weaver@gentoo.org> +kalign-2.03.ebuild:
+  New package from sunrise, bug 175116
+

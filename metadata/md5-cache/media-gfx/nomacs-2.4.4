@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 >=media-gfx/exiv2-0.20:=[zlib] opencv? ( >=media-libs/opencv-2.4:=[qt4] ) raw? ( >=media-libs/libraw-0.14:= ) tiff? ( media-libs/tiff:0 ) webp? ( >=media-libs/libwebp-0.3.1:= ) zip? ( dev-libs/quazip ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Qt4-based image viewer
+EAPI=5
+HOMEPAGE=http://www.nomacs.org/
+IUSE=opencv raw tiff webp zip
+KEYWORDS=~amd64 ~amd64-linux
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 >=media-gfx/exiv2-0.20:=[zlib] opencv? ( >=media-libs/opencv-2.4:=[qt4] ) raw? ( >=media-libs/libraw-0.14:= ) tiff? ( media-libs/tiff:0 ) webp? ( >=media-libs/libwebp-0.3.1:= ) zip? ( dev-libs/quazip )
+REQUIRED_USE=raw? ( opencv ) tiff? ( opencv )
+SLOT=0
+SRC_URI=mirror://sourceforge/nomacs/nomacs-2.4.4-source.tar.bz2
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=cbd37ee990d98192ead49b149f1f7b8b

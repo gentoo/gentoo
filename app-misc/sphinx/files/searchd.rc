@@ -1,0 +1,32 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/sphinx/files/searchd.rc,v 1.1 2009/11/05 15:41:56 graaff Exp $
+
+depend() {
+	need net
+	use logger
+}
+
+checkconfig() {
+	if [ ! -f /etc/sphinx/sphinx.conf ] ; then
+		eerror "Please create /etc/sphinx/sphinx.conf"
+		eerror "Sample conf: /etc/sphinx/sphinx.conf.dist"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	checkconfig || return $?
+
+	ebegin "Starting sphinx searchd"
+	start-stop-daemon --start --exec /usr/bin/searchd
+	eend $? "Failed to start sphinx searchd"
+}
+
+stop() {
+	ebegin "Stopping sphinx searchd"
+	start-stop-daemon --stop --exec /usr/bin/searchd
+	eend $? "Failed to stop sphinx searchd"
+}

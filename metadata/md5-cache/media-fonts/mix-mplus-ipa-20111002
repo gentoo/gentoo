@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prepare setup
+DEPEND=app-arch/unzip X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=Mixing mplus and IPA fonts
+EAPI=4
+HOMEPAGE=http://mix-mplus-ipa.sourceforge.jp/
+IUSE=X
+KEYWORDS=~amd64 ~x86 ~x86-fbsd
+LICENSE=mplus-fonts IPAfont
+SLOT=0
+SRC_URI=mirror://sourceforge.jp/mix-mplus-ipa/53388/migmix-1m-20111002.zip mirror://sourceforge.jp/mix-mplus-ipa/53388/migmix-1p-20111002.zip mirror://sourceforge.jp/mix-mplus-ipa/53388/migmix-2m-20111002.zip mirror://sourceforge.jp/mix-mplus-ipa/53388/migmix-2p-20111002.zip mirror://sourceforge.jp/mix-mplus-ipa/53389/migu-1p-20111002.zip mirror://sourceforge.jp/mix-mplus-ipa/53389/migu-1c-20111002.zip mirror://sourceforge.jp/mix-mplus-ipa/53389/migu-1m-20111002.zip mirror://sourceforge.jp/mix-mplus-ipa/53389/migu-2m-20111002.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	font	b3239d2dc442d1717b9725e2be7cb5d6	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9e16c04e56883d2d5815bd4a936524fc

@@ -1,0 +1,203 @@
+# ChangeLog for mail-client/claws-mail-fancy
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail-fancy/ChangeLog,v 1.48 2013/05/08 03:42:56 fauli Exp $
+
+  08 May 2013; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-fancy-0.9.17.ebuild:
+  prepare plugin for mail-client/claws-mail-3.9.1
+
+  04 Jan 2013; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-fancy-0.9.16.ebuild:
+  clean up
+
+  03 Jan 2013; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-fancy-0.9.17.ebuild:
+  reintroduce deletion of .a and .la files
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org> claws-mail-fancy-0.9.17.ebuild:
+  Stable for x86, wrt bug #448968
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org> claws-mail-fancy-0.9.17.ebuild:
+  Stable for amd64, wrt bug #448968
+
+*claws-mail-fancy-0.9.17 (20 Nov 2012)
+
+  20 Nov 2012; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-fancy-0.9.17.ebuild:
+  version bump
+
+  20 Nov 2012; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-fancy-0.9.15.ebuild:
+  clean up
+
+  31 Oct 2012; Andreas Schuerch <nativemad@gentoo.org>
+  claws-mail-fancy-0.9.16.ebuild:
+  x86 stable, see bug 437814
+
+  24 Oct 2012; Agostino Sarubbo <ago@gentoo.org>
+  claws-mail-fancy-0.9.16.ebuild:
+  Stable for amd64, wrt bug #437814
+
+*claws-mail-fancy-0.9.16 (30 Jun 2012)
+
+  30 Jun 2012; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-fancy-0.9.16.ebuild:
+  version bump
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  claws-mail-fancy-0.9.15.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  11 Apr 2012; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-fancy-0.9.14.ebuild:
+  clean up
+
+  07 Apr 2012; Markus Meier <maekke@gentoo.org> claws-mail-fancy-0.9.15.ebuild:
+  x86 stable, bug #387547
+
+  04 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #206112
+
+  25 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  claws-mail-fancy-0.9.15.ebuild:
+  Stable for amd64, wrt bug #387547
+
+*claws-mail-fancy-0.9.15 (26 Dec 2011)
+
+  26 Dec 2011; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-fancy-0.9.15.ebuild:
+  version bump for bug 395381 by Justin
+
+  26 Dec 2011; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-fancy-0.9.13.ebuild:
+  clean up
+
+  29 Oct 2011; Markos Chandras <hwoarang@gentoo.org>
+  claws-mail-fancy-0.9.14.ebuild:
+  Stable on amd64 wrt bug #387547
+
+  24 Oct 2011; Markus Meier <maekke@gentoo.org> claws-mail-fancy-0.9.14.ebuild:
+  x86 stable, bug #387547
+
+*claws-mail-fancy-0.9.14 (30 Aug 2011)
+
+  30 Aug 2011; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-fancy-0.9.14.ebuild:
+  version bump
+
+  31 Jul 2011; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-fancy-0.9.12.ebuild:
+  clean up
+
+  16 Jul 2011; Markos Chandras <hwoarang@gentoo.org>
+  claws-mail-fancy-0.9.13.ebuild:
+  Stable on amd64 wrt bug #372957
+
+  29 Jun 2011; Markus Meier <maekke@gentoo.org> claws-mail-fancy-0.9.13.ebuild:
+  x86 stable, bug #372957
+
+*claws-mail-fancy-0.9.13 (10 Apr 2011)
+
+  10 Apr 2011; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-fancy-0.9.13.ebuild:
+  version bump
+
+  06 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-fancy-0.9.12.ebuild:
+  Slot net-libs/webkit-gtk to 2
+
+  06 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-fancy-0.9.10.ebuild, -claws-mail-fancy-0.9.11.ebuild:
+  clean up
+
+  10 Feb 2011; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-fancy-0.9.10.ebuild, claws-mail-fancy-0.9.11.ebuild,
+  claws-mail-fancy-0.9.12.ebuild:
+  Add webkit-gtk to RDEPEND, too, as observed by Andreas Fink <finkandreas
+  AT web DOT de> in bug 354251
+
+  15 Jan 2011; Markus Meier <maekke@gentoo.org> claws-mail-fancy-0.9.12.ebuild:
+  x86 stable, bug #350513
+
+  04 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  claws-mail-fancy-0.9.12.ebuild:
+  Stable on amd64 wrt bug #350513
+
+*claws-mail-fancy-0.9.12 (06 Dec 2010)
+
+  06 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-fancy-0.9.12.ebuild:
+  version bump
+
+  23 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-fancy-0.9.10.ebuild, claws-mail-fancy-0.9.11.ebuild:
+  add a die after emake
+
+*claws-mail-fancy-0.9.11 (22 Nov 2010)
+
+  22 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-fancy-0.9.11.ebuild:
+  version bump
+
+  22 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-fancy-0.9.9.ebuild:
+  clean up
+
+  07 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  claws-mail-fancy-0.9.10.ebuild:
+  Stable on amd64 wrt bug #331395
+
+  06 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-fancy-0.9.10.ebuild:
+  stable x86, bug 331395
+
+  20 Jun 2010; Christian Faulhammer <fauli@gentoo.org> -claws-mail-fancy-0.9.8.ebuild:
+  clean up
+
+*claws-mail-fancy-0.9.10 (12 Jun 2010)
+
+  12 Jun 2010; Christian Faulhammer <fauli@gentoo.org> +claws-mail-fancy-0.9.10.ebuild:
+  version bump, bug 319161
+
+  11 Mar 2010; Markus Meier <maekke@gentoo.org>
+  claws-mail-fancy-0.9.9.ebuild:
+  amd64 stable, bug #304353
+
+  11 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-fancy-0.9.9.ebuild:
+  stable x86, bug 304353
+
+*claws-mail-fancy-0.9.9 (08 Jan 2010)
+
+  08 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-fancy-0.9.9.ebuild:
+  version bump
+
+  29 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-fancy-0.9.7.ebuild:
+  clean up
+
+  01 Dec 2009; Markus Meier <maekke@gentoo.org>
+  claws-mail-fancy-0.9.8.ebuild:
+  add ~amd64, bug #276760
+
+*claws-mail-fancy-0.9.8 (18 Oct 2009)
+
+  18 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-fancy-0.9.8.ebuild:
+  version bump, bug 289070
+
+  14 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-fancy-0.9.7.ebuild:
+  remove mail-filter/bsfilter from RDEPEND strings, which slipped in by
+  accident. Spotted by Michal Kurgan <moloh AT moloh DOT net> in bug 276760
+
+  08 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-fancy-0.9.7.ebuild:
+  fix DESCRIPTION
+
+*claws-mail-fancy-0.9.7 (08 Jul 2009)
+
+  08 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-fancy-0.9.7.ebuild, +metadata.xml:
+  intial commit for bug 276760

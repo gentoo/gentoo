@@ -1,0 +1,43 @@
+# ChangeLog for x11-misc/obmenu
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/obmenu/ChangeLog,v 1.12 2014/12/29 16:36:05 jer Exp $
+
+*obmenu-1.0-r1 (29 Dec 2014)
+
+  29 Dec 2014; Jeroen Roovers <jer@gentoo.org> +obmenu-1.0-r1.ebuild:
+  Migrate to distutils-r1.
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due desktop-wm removal
+
+  13 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> obmenu-1.0.ebuild:
+  Force Python 2.x wrt #317019 by Arfrever Frehtes Taifersar Arahesis.
+
+  02 Jun 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove omp from metadata.xml (#147119)
+
+  18 Jan 2009; Markus Meier <maekke@gentoo.org> obmenu-1.0.ebuild:
+  x86 stable, bug #254948
+
+  22 Sep 2008; David Shakaryan <omp@gentoo.org> metadata.xml:
+  Change herd from commonbox to desktop-wm.
+
+  27 Mar 2008; Markus Rothe <corsair@gentoo.org> obmenu-1.0.ebuild:
+  Stable on ppc/ppc64
+
+  22 Jul 2007; Markus Rothe <corsair@gentoo.org> obmenu-1.0.ebuild:
+  Added ~ppc
+
+  17 Jul 2007; Peter Weller <welp@gentoo.org> obmenu-1.0.ebuild:
+  Stable on amd64
+
+  22 Apr 2007; Markus Rothe <corsair@gentoo.org> obmenu-1.0.ebuild:
+  Added ~ppc64
+
+  07 Dec 2006; Diego Pettenò <flameeyes@gentoo.org> obmenu-1.0.ebuild:
+  Add ~x86-fbsd keyword as per bug #156873. Thanks to Mark Kowarsky
+  (mark_alec) for reporting.
+
+  09 Nov 2006; David Shakaryan <omp@gentoo.org> +metadata.xml,
+  +obmenu-1.0.ebuild:
+  Add x11-misc/obmenu to tree. Initial ebuild by me.

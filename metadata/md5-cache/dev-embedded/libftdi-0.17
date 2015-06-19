@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=virtual/libusb:0 cxx? ( dev-libs/boost ) python? ( dev-lang/python ) doc? ( app-doc/doxygen )
+DESCRIPTION=Userspace access to FTDI USB interface chips
+EAPI=2
+HOMEPAGE=http://www.intra2net.com/en/developer/libftdi/
+IUSE=cxx doc examples python
+KEYWORDS=amd64 ppc ppc64 sparc x86
+LICENSE=LGPL-2
+RDEPEND=virtual/libusb:0 cxx? ( dev-libs/boost ) python? ( dev-lang/python )
+SLOT=0
+SRC_URI=http://www.intra2net.com/en/developer/libftdi/download/libftdi-0.17.tar.gz
+_md5_=c3e95db626ac052cbdc22567b1a848e8

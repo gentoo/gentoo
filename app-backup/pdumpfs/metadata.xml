@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>lmiphay@gmail.com</email>
+		<name>Paul Healy</name>
+		<description>Active Maintainer, Assign bugs</description>
+	</maintainer>
+	<maintainer>
+		<email>idella4@gentoo.org</email>
+		<name>Ian Delaney</name>
+	</maintainer>
+<longdescription>
+pdumpfs is a simple daily backup system similar to Plan9's dumpfs which
+preserves every daily snapshot. pdumpfs is written in Ruby. You can access
+the past snapshots at any time for retrieving a certain day's file. Let's
+backup your home directory with pdumpfs!
+</longdescription>
+</pkgmetadata>

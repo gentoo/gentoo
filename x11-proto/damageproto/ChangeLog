@@ -1,0 +1,246 @@
+# ChangeLog for x11-proto/damageproto
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-proto/damageproto/ChangeLog,v 1.67 2015/04/11 21:58:34 mrueg Exp $
+
+  11 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -damageproto-1.2.1.ebuild:
+  Remove old.
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> damageproto-1.2.1-r1.ebuild:
+  add arm64 support, tested on A53 board
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org> damageproto-1.2.1-r1.ebuild:
+  Stable for x86, wrt bug #475480
+
+  07 Oct 2013; Agostino Sarubbo <ago@gentoo.org> damageproto-1.2.1-r1.ebuild:
+  Stable for sparc, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org> damageproto-1.2.1-r1.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  05 Oct 2013; Markus Meier <maekke@gentoo.org> damageproto-1.2.1-r1.ebuild:
+  arm stable, bug #475480
+
+  05 Oct 2013; Agostino Sarubbo <ago@gentoo.org> damageproto-1.2.1-r1.ebuild:
+  Stable for alpha, wrt bug #475480
+
+  04 Oct 2013; Agostino Sarubbo <ago@gentoo.org> damageproto-1.2.1-r1.ebuild:
+  Stable for ppc64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org> damageproto-1.2.1-r1.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  02 Oct 2013; Jeroen Roovers <jer@gentoo.org> damageproto-1.2.1-r1.ebuild:
+  Stable for HPPA (bug #475480).
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org> damageproto-1.2.1-r1.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*damageproto-1.2.1-r1 (25 Feb 2013)
+
+  25 Feb 2013; Michał Górny <mgorny@gentoo.org> +damageproto-1.2.1-r1.ebuild:
+  Enable multilib.
+
+  21 Feb 2013; Zac Medico <zmedico@gentoo.org> damageproto-1.2.1.ebuild:
+  Add ~arm-linux keyword.
+
+  06 May 2012; Alexis Ballier <aballier@gentoo.org> damageproto-1.2.1.ebuild:
+  keyword ~amd64-fbsd
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  damageproto-1.2.1.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> damageproto-1.2.1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #344827
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> damageproto-1.2.1.ebuild:
+  Stable for HPPA (bug #344827).
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org> damageproto-1.2.1.ebuild:
+  arm stable, bug #344827
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  damageproto-1.2.1.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> damageproto-1.2.1.ebuild:
+  amd64 stable wrt #344827
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> damageproto-1.2.1.ebuild:
+  ppc64 stable wrt #344827
+
+*damageproto-1.2.1 (31 Oct 2010)
+
+  31 Oct 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +damageproto-1.2.1.ebuild:
+  Version bump
+
+  10 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -damageproto-1.1.0.ebuild:
+  rm
+
+  14 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  damageproto-1.2.0.ebuild:
+  Transfer Prefix keywords
+
+  15 Dec 2009; Brent Baude <ranger@gentoo.org> damageproto-1.2.0.ebuild:
+  Marking damageproto-1.2.0 ppc64 stable for bug 294958
+
+  15 Dec 2009; Raúl Porcel <armin76@gentoo.org> damageproto-1.2.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #282290
+
+  26 Oct 2009; Jeroen Roovers <jer@gentoo.org> damageproto-1.2.0.ebuild:
+  Stable for HPPA (bug #282290).
+
+  11 Oct 2009; nixnut <nixnut@gentoo.org> damageproto-1.2.0.ebuild:
+  ppc stable #282290
+
+  09 Oct 2009; Markus Meier <maekke@gentoo.org> damageproto-1.2.0.ebuild:
+  arm stable, bug #282290
+
+  05 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  damageproto-1.2.0.ebuild:
+  x86 stable, bug 282290
+
+  30 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  damageproto-1.2.0.ebuild:
+  amd64 stable wrt #282290
+
+*damageproto-1.2.0 (19 Sep 2009)
+
+  19 Sep 2009; Rémi Cardona <remi@gentoo.org> +damageproto-1.2.0.ebuild:
+  bump to 1.2.0
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  damageproto-1.1.0.ebuild:
+  fix repoman warnings
+
+  09 Oct 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  -damageproto-1.0.3.ebuild:
+  Drop old ebuilds.
+
+  27 May 2007; Joshua Kinard <kumba@gentoo.org> damageproto-1.1.0.ebuild:
+  Stable on mips.
+
+  22 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  damageproto-1.1.0.ebuild:
+  ppc stable, bug #174959
+
+  20 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  damageproto-1.1.0.ebuild:
+  stable amd64, bug 174959
+
+  18 Apr 2007; Raúl Porcel <armin76@gentoo.org> damageproto-1.1.0.ebuild:
+  ia64 + x86 stable wrt bug 174959
+
+  18 Apr 2007; Ferris McCormick <fmccor@gentoo.org> ChangeLog:
+  Try to fix digest.
+
+  18 Apr 2007; Jose Luis Rivero <yoswink@gentoo.org>
+  damageproto-1.1.0.ebuild:
+  Stable on alpha wrt bug #174959
+
+  18 Apr 2007; Markus Rothe <corsair@gentoo.org> damageproto-1.1.0.ebuild:
+  Stable on ppc64; bug #174959
+
+  18 Apr 2007; Jeroen Roovers <jer@gentoo.org> damageproto-1.1.0.ebuild:
+  Stable for HPPA (bug #174959).
+
+  17 Apr 2007; Ferris McCormick <fmccor@gentoo.org> ChangeLog:
+  Stable on sparc --- needed for Bug #174959
+
+*damageproto-1.1.0 (14 Jan 2007)
+
+  14 Jan 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  +damageproto-1.1.0.ebuild:
+  Version bump.  Adds support for damage reporting from direct rendering.
+
+  19 Jul 2006; Guy Martin <gmsoft@gentoo.org> damageproto-1.0.3.ebuild:
+  Stable on hppa.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> damageproto-1.0.3.ebuild:
+  Mark 1.0.3 stable on ia64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  damageproto-1.0.3.ebuild:
+  arm/sh stable
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  damageproto-1.0.3.ebuild:
+  ppc/sparc/mips/alpha stable
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  damageproto-1.0.3.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org> damageproto-1.0.3.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  damageproto-1.0.3.ebuild:
+  x86 stable.
+
+  31 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  damageproto-1.0.3.ebuild:
+  Add ~x86-fbsd keyword.
+
+  09 Mar 2006; Aron Griffis <agriffis@gentoo.org> damageproto-1.0.3.ebuild:
+  Mark 1.0.3 ~ia64
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> damageproto-1.0.3.ebuild:
+  Added ~ppc64
+
+  31 Jan 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  damageproto-1.0.3.ebuild:
+  Unstable on hppa.
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -damageproto-1.0.1.ebuild, -damageproto-1.0.2.ebuild:
+  Pull old versions.
+
+  26 Dec 2005; Stefaan De Roeck <stefaan@gentoo.org>
+  damageproto-1.0.3.ebuild:
+  Marked ~alpha
+
+*damageproto-1.0.3 (23 Dec 2005)
+
+  23 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +damageproto-1.0.3.ebuild:
+  Bump for 7.0.
+
+*damageproto-1.0.2 (17 Dec 2005)
+
+  17 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +damageproto-1.0.2.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -damageproto-1.0.ebuild:
+  Pull old versions.
+
+*damageproto-1.0.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +damageproto-1.0.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  28 Aug 2005; MATSUU Takuto <matsuu@gentoo.org> damageproto-1.0.ebuild:
+  Marked ~sh
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> damageproto-1.0.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> damageproto-1.0.ebuild:
+  Marked ~amd64
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> damageproto-1.0.ebuild:
+  Add ~sparc keyword (modular X testing on sparc).
+
+*damageproto-1.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +damageproto-1.0.ebuild:
+  Initial commit for modular X

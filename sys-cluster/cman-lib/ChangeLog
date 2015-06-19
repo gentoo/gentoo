@@ -1,0 +1,55 @@
+# ChangeLog for sys-cluster/cman-lib
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/cman-lib/ChangeLog,v 1.11 2014/08/10 20:20:22 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  cman-lib-2.03.09-r1.ebuild, cman-lib-2.03.09.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> cman-lib-2.03.09-r1.ebuild:
+  Stable for x86, wrt bug #441524
+
+  24 Mar 2011; Christoph Mende <angelos@gentoo.org> cman-lib-2.03.09-r1.ebuild:
+  Stable on amd64
+
+*cman-lib-2.03.09-r1 (20 Jan 2011)
+
+  20 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  -files/cman-lib-2.02.00-include.patch, +cman-lib-2.03.09-r1.ebuild:
+  Respect multilib paths, cleanup. Drop unused patch.
+
+  20 Oct 2010; Dawid Węgliński <cla@gentoo.org> cman-lib-2.03.09.ebuild:
+  Respect LDFLAGS (#337652)
+
+  11 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Drop useles maintainer line
+
+  10 Feb 2009; Christian Zoffoli <xmerlin@gentoo.org> ChangeLog:
+  Stable on x86 and amd64.
+
+  21 Nov 2008; Christian Zoffoli <xmerlin@gentoo.org>
+  cman-lib-2.03.09.ebuild:
+  Fixed homepage.
+
+*cman-lib-2.03.09 (13 Nov 2008)
+
+  13 Nov 2008; Christian Zoffoli <xmerlin@gentoo.org>
+  -cman-lib-2.02.00.ebuild, -cman-lib-2.02.00-r1.ebuild,
+  +cman-lib-2.03.09.ebuild:
+  Ebuild cleanup, version bump.
+
+  23 Mar 2008; Christian Zoffoli <xmerlin@gentoo.org>
+  +cman-lib-2.02.00-r1.ebuild:
+  Updated 2.02.00 to STABLE2 20080323.
+
+*cman-lib-2.02.00-r1 (23 Mar 2008)
+
+  23 Mar 2008; Christian Zoffoli <xmerlin@gentoo.org>
+  +cman-lib-2.02.00-r1.ebuild:
+  Updated 2.02.00 to STABLE2 20080323.
+
+*cman-lib-2.02.00 (17 Mar 2008)
+
+  17 Mar 2008; Christian Zoffoli <xmerlin@gentoo.org>
+  +files/cman-lib-2.02.00-include.patch, +cman-lib-2.02.00.ebuild:
+  Initial Import

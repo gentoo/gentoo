@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare pretend setup test unpack
+DEPEND=>=media-libs/glew-1.6 >=media-libs/libsdl-1.2[joystick] <media-libs/libsfml-2.0 >=net-libs/miniupnpc-1.8 sys-libs/readline:= x11-libs/libXext x11-libs/libXrandr alsa? ( media-libs/alsa-lib ) ao? ( media-libs/libao ) bluetooth? ( net-wireless/bluez ) ffmpeg? ( virtual/ffmpeg ) lzo? ( dev-libs/lzo ) openal? ( media-libs/openal ) opengl? ( virtual/opengl ) portaudio? ( media-libs/portaudio ) pulseaudio? ( media-sound/pulseaudio ) app-arch/zip media-gfx/nvidia-cg-toolkit media-libs/freetype media-libs/libsoundtouch >=sys-devel/gcc-4.6.0 x11-libs/wxGTK:2.9 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Gamecube and Wii game emulator
+EAPI=5
+HOMEPAGE=https://www.dolphin-emu.org/
+IUSE=alsa ao bluetooth doc ffmpeg +lzo openal opengl openmp portaudio pulseaudio
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=>=media-libs/glew-1.6 >=media-libs/libsdl-1.2[joystick] <media-libs/libsfml-2.0 >=net-libs/miniupnpc-1.8 sys-libs/readline:= x11-libs/libXext x11-libs/libXrandr alsa? ( media-libs/alsa-lib ) ao? ( media-libs/libao ) bluetooth? ( net-wireless/bluez ) ffmpeg? ( virtual/ffmpeg ) lzo? ( dev-libs/lzo ) openal? ( media-libs/openal ) opengl? ( virtual/opengl ) portaudio? ( media-libs/portaudio ) pulseaudio? ( media-sound/pulseaudio ) games-misc/games-envd
+RESTRICT=mirror
+SLOT=0
+SRC_URI=https://github.com/dolphin-emu/dolphin/archive/4.0.zip -> dolphin-4.0.zip
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
+_md5_=360b98db48476de5cc3d046ff7b31e54

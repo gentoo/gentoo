@@ -1,0 +1,197 @@
+# ChangeLog for net-analyzer/netselect
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netselect/ChangeLog,v 1.59 2015/02/14 07:46:06 jer Exp $
+
+*netselect-0.3-r4 (14 Feb 2015)
+
+  14 Feb 2015; Jeroen Roovers <jer@gentoo.org> +netselect-0.3-r4.ebuild,
+  files/netselect-0.3-bsd.patch:
+  Readd removed include by James Taylor (bug #540032).
+
+  05 Jan 2015; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Remove short <longdescription>.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> netselect-0.3-r3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  14 Jul 2014; Jeroen Roovers <jer@gentoo.org> netselect-0.3-r3.ebuild,
+  files/netselect-0.3-bsd.patch:
+  Update HOMEPAGE/SRC_URI (bug #517112 by Thomas Fischer). Clean up patch.
+
+  31 Jan 2014; Jeroen Roovers <jer@gentoo.org> -netselect-0.3-r2.ebuild:
+  Old.
+
+  02 Jul 2013; Agostino Sarubbo <ago@gentoo.org> netselect-0.3-r3.ebuild:
+  Stable for sh, wrt bug #470534
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> netselect-0.3-r3.ebuild:
+  Stable for s390, wrt bug #470534
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> netselect-0.3-r3.ebuild:
+  Stable for sparc, wrt bug #470534
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org> netselect-0.3-r3.ebuild:
+  Stable for arm, wrt bug #470534
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org> netselect-0.3-r3.ebuild:
+  Stable for ia64, wrt bug #470534
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org> netselect-0.3-r3.ebuild:
+  Stable for alpha, wrt bug #470534
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> netselect-0.3-r3.ebuild:
+  Stable for amd64, wrt bug #470534
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> netselect-0.3-r3.ebuild:
+  Stable for x86, wrt bug #470534
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> netselect-0.3-r3.ebuild:
+  Stable for ppc64, wrt bug #470534
+
+  24 Jun 2013; Agostino Sarubbo <ago@gentoo.org> netselect-0.3-r3.ebuild:
+  Stable for ppc, wrt bug #470534
+
+  12 Jun 2013; Jeroen Roovers <jer@gentoo.org> netselect-0.3-r3.ebuild:
+  Stable for HPPA (bug #470534).
+
+  12 Jun 2013; Jeroen Roovers <jer@gentoo.org> files/netselect-0.3-bsd.patch:
+  Clean up patch.
+
+  10 Mar 2013; Jeroen Roovers <jer@gentoo.org> netselect-0.3-r3.ebuild,
+  +files/netselect-0.3-glibc.patch:
+  Do not inject -g. size_t -> socklen_t.
+
+*netselect-0.3-r3 (10 Mar 2013)
+
+  10 Mar 2013; Jeroen Roovers <jer@gentoo.org> -netselect-0.3-r1.ebuild,
+  +netselect-0.3-r3.ebuild:
+  Add prefix support by Christoph Junghans (bug #461296).
+
+  14 Oct 2012; Alexis Ballier <aballier@gentoo.org> netselect-0.3-r2.ebuild:
+  keyword ~amd64-fbsd
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> netselect-0.3-r1.ebuild:
+  Drop to ~mips
+
+  16 Aug 2010; Harald van Dĳk <truedfx@gentoo.org> netselect-0.3-r2.ebuild:
+  Fix quoting
+
+  27 Aug 2008; Raúl Porcel <armin76@gentoo.org> netselect-0.3-r1.ebuild,
+  netselect-0.3-r2.ebuild:
+  Remove bindnow-flags
+
+  09 Nov 2007; Fabian Groffen <grobian@gentoo.org> netselect-0.3-r1.ebuild,
+  netselect-0.3-r2.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  06 Nov 2007; Markus Rothe <corsair@gentoo.org> netselect-0.3-r2.ebuild:
+  Stable on ppc64; bug #197745
+
+  02 Nov 2007; Lars Weiler <pylon@gentoo.org> netselect-0.3-r2.ebuild:
+  stable ppc, bug #197745
+
+  02 Nov 2007; Jeroen Roovers <jer@gentoo.org> netselect-0.3-r2.ebuild:
+  Stable for HPPA (bug #197745).
+
+  02 Nov 2007; Steve Dibb <beandog@gentoo.org> netselect-0.3-r2.ebuild:
+  amd64 stable, bug 197745
+
+  01 Nov 2007; Raúl Porcel <armin76@gentoo.org> netselect-0.3-r2.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #197745
+
+*netselect-0.3-r2 (29 Sep 2007)
+
+  29 Sep 2007; <pva@gentoo.org> +netselect-0.3-r2.ebuild:
+  Use tc-getCC compiler, fixes bug #193793, reported by Chris Slycord
+  <cslycord AT gmail.com>
+
+  30 Apr 2007; Cedric Krier <cedk@gentoo.org> netselect-0.3-r1.ebuild:
+  Fix HOMEPAGE and SRC_URI for bug #176200
+
+  15 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/netselect-0.3-bsd.patch, netselect-0.3-r1.ebuild:
+  Add patch to make netselect work on non-Linux systems (BSDish), thanks to
+  Timothy Redaelli in bug #140414. Add ~x86-fbsd keyword.
+
+  09 Apr 2006; Markus Ullmann <jokey@gentoo.org> netselect-0.3-r1.ebuild:
+  Changing fperms wrt bug #129265 and clean up
+
+  25 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  netselect-0.3-r1.ebuild:
+  Use bindnow-flags function instead of -Wl,-z,now. Drop ppc-macos special case.
+
+  09 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> netselect-0.3-r1.ebuild:
+  Stable on mips.
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> netselect-0.3-r1.ebuild:
+  Stable on ppc64
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  netselect-0.3-r1.ebuild:
+  Stable on ppc.
+
+  09 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> netselect-0.3-r1.ebuild:
+  Unstable ppc-macos
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  22 Nov 2004; Eldad Zack <eldad@gentoo.org> netselect-0.3-r1.ebuild:
+  Fix to use bind-now for suid binaries. Using dobin instead of make install.
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> netselect-0.3-r1.ebuild:
+  Stable on amd64.
+
+  13 Sep 2004; Guy Martin <gmsoft@gentoo.org> netselect-0.3-r1.ebuild:
+  Stable on hppa.
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> netselect-0.3-r1.ebuild:
+  Stable on alpha.
+
+  19 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> netselect-0.3-r1.ebuild:
+  Stable on sparc
+
+  16 Aug 2004; Eldad Zack <eldad@gentoo.org> netselect-0.3-r1.ebuild:
+  x86 stable
+
+  01 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  netselect-0.3-r1.ebuild:
+  IUSE; sed in src_unpack (bug #55755); use emake; error check; tidy
+
+*netselect-0.3-r1 (01 Jul 2004)
+
+  01 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
+  +netselect-0.3-r1.ebuild:
+  suid: fixed permissions to 4710, group is set to root:wheel,
+  closes #47209, Thanks to Philipp Kern <phil@lordaeron.in-berlin.de>.
+  sed cleanup, added metadata.
+
+  13 May 2004; Michael McCabe <randy@gentoo.org> netselect-0.3.ebuild:
+  Added s390 keywords
+
+  25 Mar 2004; Joshua Kinard <kumba@gentoo.org> netselect-0.3.ebuild:
+  Marked stable on mips.
+
+  07 Mar 2004; Tom Gall <tgall@gentoo.org> netselect-0.3.ebuild:
+  stable on ppc64
+
+  01 Mar 2004; <agriffis@gentoo.org> netselect-0.3.ebuild:
+  stable on ia64
+
+*netselect-0.3 (11 Jul 2002)
+
+  13 May 2003; Joshua Kinard <kumba@gentoo.org> netselect-0.3.ebuild:
+  Added ~mips to KEYWORDS; Corrected ChangeLog errors a wee little.
+
+  02 Mar 2003; Guy Martin <gmsoft@gentoo.org> netselect-0.3.ebuild :
+  Added hppa to KEYWORDS.
+
+  27 Feb 2003; Will Woods <wwoods@gentoo.org> netselect-0.3.ebuild:
+  Added alpha to KEYWORDS
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+  11 Jul 2002; Gabriele Giorgetti <stroke@gentoo.org> netselect-0.3.ebuild :
+
+  New package.
+  Ebuild written by: Leonardo Boshell <gentoo@kapcoweb.com>

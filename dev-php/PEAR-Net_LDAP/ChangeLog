@@ -1,0 +1,85 @@
+# ChangeLog for dev-php/PEAR-Net_LDAP
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Net_LDAP/ChangeLog,v 1.18 2012/09/14 14:00:31 mabi Exp $
+
+  14 Sep 2012; Matti Bickel <mabi@gentoo.org> -PEAR-Net_LDAP-1.0.0.ebuild:
+  remove old
+
+  09 Sep 2012; Raúl Porcel <armin76@gentoo.org> PEAR-Net_LDAP-1.0.0.ebuild,
+  PEAR-Net_LDAP-1.1.5.ebuild:
+  Drop alpha/sparc keywords
+
+  22 Aug 2012; Michael Weber <xmw@gentoo.org> PEAR-Net_LDAP-1.1.5.ebuild:
+  ppc stable (bug 418891).
+
+  11 Aug 2012; Markus Meier <maekke@gentoo.org> PEAR-Net_LDAP-1.1.5.ebuild:
+  x86 stable, bug #418891
+
+  04 Aug 2012; Jeroen Roovers <jer@gentoo.org> PEAR-Net_LDAP-1.1.5.ebuild:
+  Stable for HPPA (bug #418891).
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> PEAR-Net_LDAP-1.1.5.ebuild:
+  Stable for amd64, wrt bug #418891
+
+  01 Jul 2012; Matti Bickel <mabi@gentoo.org> -PEAR-Net_LDAP-1.1.0.ebuild,
+  -PEAR-Net_LDAP-1.1.1.ebuild, PEAR-Net_LDAP-1.1.5.ebuild:
+  cleanup, move 1.1.5 to EAPI4 to get rid of depend.php
+
+*PEAR-Net_LDAP-1.1.5 (22 Aug 2009)
+
+  22 Aug 2009; Steve Dibb <beandog@gentoo.org> +PEAR-Net_LDAP-1.1.5.ebuild:
+  Version bump
+
+*PEAR-Net_LDAP-1.1.0 (03 Mar 2008)
+
+  03 Mar 2008; Markus Ullmann <jokey@gentoo.org>
+  -PEAR-Net_LDAP-1.1.0_alpha2.ebuild, +PEAR-Net_LDAP-1.1.0.ebuild:
+  Version bump from project overlay
+
+  27 Feb 2008; Jakub Moc <jakub@gentoo.org>
+  +PEAR-Net_LDAP-1.1.0.ebuild:
+  Version bump with minor bugfixes.
+
+  25 Feb 2008; Steve Dibb <beandog@gentoo.org> PEAR-Net_LDAP-1.0.0.ebuild:
+  amd64 stable, bug 209960
+
+  22 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  PEAR-Net_LDAP-1.0.0.ebuild:
+  ppc stable, bug #209960
+
+  21 Feb 2008; Jeroen Roovers <jer@gentoo.org> PEAR-Net_LDAP-1.0.0.ebuild:
+  Stable for HPPA (bug #209960).
+
+  21 Feb 2008; Raúl Porcel <armin76@gentoo.org> PEAR-Net_LDAP-1.0.0.ebuild:
+  alpha/sparc stable wrt security #209960
+
+  21 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  PEAR-Net_LDAP-1.0.0.ebuild:
+  stable x86, security bug 209960
+
+*PEAR-Net_LDAP-1.1.0_alpha2 (11 Feb 2008)
+
+  11 Feb 2008; Raúl Porcel <armin76@gentoo.org>
+  -PEAR-Net_LDAP-1.0.0_rc3.ebuild, -PEAR-Net_LDAP-1.0.0_rc4.ebuild,
+  +PEAR-Net_LDAP-1.1.0_alpha2.ebuild:
+  Version bump, from the php overlay
+
+*PEAR-Net_LDAP-1.0.0 (24 Dec 2007)
+
+  24 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  +PEAR-Net_LDAP-1.0.0.ebuild:
+  Version bump from the php-overlay
+
+  21 Dec 2007; Jakub Moc <jakub@gentoo.org>
+  +PEAR-Net_LDAP-1.0.0.ebuild:
+  Version bump
+
+*PEAR-Net_LDAP-1.0.0_rc4 (14 Oct 2007)
+
+  14 Oct 2007; Anant Narayanan <anant@gentoo.org>
+  +PEAR-Net_LDAP-1.0.0_rc4.ebuild:
+  version bump
+
+  17 Aug 2007; Jakub Moc <jakub@gentoo.org> +metadata.xml,
+  +PEAR-Net_LDAP-1.0.0_rc3.ebuild:
+  New ebuild for Bug 143170

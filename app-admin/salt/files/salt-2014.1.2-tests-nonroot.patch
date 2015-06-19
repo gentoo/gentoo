@@ -1,0 +1,14 @@
+diff --git a/tests/unit/utils/verify_test.py b/tests/unit/utils/verify_test.py
+index 6e62359..c30bbe2 100644
+--- a/tests/unit/utils/verify_test.py
++++ b/tests/unit/utils/verify_test.py
+@@ -56,9 +56,6 @@ class TestVerify(TestCase):
+         zmq.__version__ = '2.1.0'
+         self.assertFalse(zmq_version())
+ 
+-    def test_user(self):
+-        self.assertTrue(check_user(getpass.getuser()))
+-
+     def test_no_user(self):
+         # Catch sys.stderr here since no logging is configured and
+         # check_user WILL write to sys.stderr

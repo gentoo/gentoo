@@ -1,0 +1,96 @@
+diff -Naur xcin-2.5.2.99.pre2+cvs20030224.orig/src/Cinput/bimsphone/Makefile.in xcin-2.5.2.99.pre2+cvs20030224/src/Cinput/bimsphone/Makefile.in
+--- xcin-2.5.2.99.pre2+cvs20030224.orig/src/Cinput/bimsphone/Makefile.in	2001-11-11 21:50:46.000000000 +0900
++++ xcin-2.5.2.99.pre2+cvs20030224/src/Cinput/bimsphone/Makefile.in	2011-11-21 01:08:21.736965412 +0900
+@@ -15,7 +15,7 @@
+ 
+ $(TARGET): $(OBJ)
+ 	$(LIBTOOL) --mode=link $(CC) -module -avoid-version -o $(TARGET) \
+-		$(OBJ) $(LIB) -rpath $(moddir)
++		$(OBJ) $(LDFLAGS) $(LIB) -rpath $(moddir)
+ include .depend
+ 
+ depend:
+diff -Naur xcin-2.5.2.99.pre2+cvs20030224.orig/src/Cinput/chewing/Makefile.in xcin-2.5.2.99.pre2+cvs20030224/src/Cinput/chewing/Makefile.in
+--- xcin-2.5.2.99.pre2+cvs20030224.orig/src/Cinput/chewing/Makefile.in	2011-11-21 01:07:12.878761904 +0900
++++ xcin-2.5.2.99.pre2+cvs20030224/src/Cinput/chewing/Makefile.in	2011-11-21 08:32:24.024474064 +0900
+@@ -21,7 +21,7 @@
+ 
+ $(TARGET): $(OBJ)
+ 	$(LIBTOOL) --mode=link $(CC) -module -avoid-version -o $(TARGET) \
+-		$(OBJ) $(LIB) -rpath $(moddir)
++		$(OBJ) $(LDFLAGS) $(LIB) -rpath $(moddir)
+ include .depend
+ 
+ sort_word: sort_word.c key2pho.c
+diff -Naur xcin-2.5.2.99.pre2+cvs20030224.orig/src/Cinput/gen_inp/Makefile.in xcin-2.5.2.99.pre2+cvs20030224/src/Cinput/gen_inp/Makefile.in
+--- xcin-2.5.2.99.pre2+cvs20030224.orig/src/Cinput/gen_inp/Makefile.in	2001-11-11 21:50:46.000000000 +0900
++++ xcin-2.5.2.99.pre2+cvs20030224/src/Cinput/gen_inp/Makefile.in	2011-11-21 01:08:21.736965412 +0900
+@@ -15,7 +15,7 @@
+ 
+ $(TARGET): $(OBJ)
+ 	$(LIBTOOL) --mode=link $(CC) -module -avoid-version -o $(TARGET) \
+-		$(OBJ) $(LIB) -rpath $(moddir)
++		$(OBJ) $(LDFLAGS) $(LIB) -rpath $(moddir)
+ include .depend
+ 
+ depend:
+diff -Naur xcin-2.5.2.99.pre2+cvs20030224.orig/src/Cinput/zh_hex/Makefile.in xcin-2.5.2.99.pre2+cvs20030224/src/Cinput/zh_hex/Makefile.in
+--- xcin-2.5.2.99.pre2+cvs20030224.orig/src/Cinput/zh_hex/Makefile.in	2001-11-11 21:50:47.000000000 +0900
++++ xcin-2.5.2.99.pre2+cvs20030224/src/Cinput/zh_hex/Makefile.in	2011-11-21 01:08:21.736965412 +0900
+@@ -14,7 +14,7 @@
+ 
+ $(TARGET): $(OBJ)
+ 	$(LIBTOOL) --mode=link $(CC) -module -avoid-version -o $(TARGET) \
+-		$(OBJ) -rpath $(moddir)
++		$(OBJ) $(LDFLAGS) -rpath $(moddir)
+ include .depend
+ 
+ depend:
+diff -Naur xcin-2.5.2.99.pre2+cvs20030224.orig/src/Makefile.in xcin-2.5.2.99.pre2+cvs20030224/src/Makefile.in
+--- xcin-2.5.2.99.pre2+cvs20030224.orig/src/Makefile.in	2001-11-05 01:47:26.000000000 +0900
++++ xcin-2.5.2.99.pre2+cvs20030224/src/Makefile.in	2011-11-21 01:08:53.576059606 +0900
+@@ -26,7 +26,7 @@
+ 
+ $(BIN): subsys $(OBJ)
+ 	@$(LIBTOOL) --mode=link $(CC) $(CFLAGS) -export-dynamic \
+-		$(INC) $(DEFS) -o $(BIN) $(OBJ) $(LIB)
++		$(INC) $(DEFS) -o $(BIN) $(OBJ) $(LDFLAGS) $(LIB)
+ include .depend
+ 
+ subsys:
+diff -Naur xcin-2.5.2.99.pre2+cvs20030224.orig/src/lib/Makefile.in xcin-2.5.2.99.pre2+cvs20030224/src/lib/Makefile.in
+--- xcin-2.5.2.99.pre2+cvs20030224.orig/src/lib/Makefile.in	2001-09-21 02:00:57.000000000 +0900
++++ xcin-2.5.2.99.pre2+cvs20030224/src/lib/Makefile.in	2011-11-21 01:08:21.736965412 +0900
+@@ -23,7 +23,7 @@
+ 
+ $(LXCIN_NAME): make_subdir
+ 	( OBJS=`ls $(LXCIN_OBJ)`; \
+-	  $(LIBTOOL) --mode=link $(CC) -o $@ $$OBJS $(LIB) -rpath $(libdir) \
++	  $(LIBTOOL) --mode=link $(CC) -o $@ $$OBJS $(LDFLAGS) $(LIB) -rpath $(libdir) \
+ 		-version-info $(CURRENT_VER):$(REVISION_VER):$(AGE_VER) )
+ 
+ make_subdir:
+diff -Naur xcin-2.5.2.99.pre2+cvs20030224.orig/src/util/cin2tab/Makefile.in xcin-2.5.2.99.pre2+cvs20030224/src/util/cin2tab/Makefile.in
+--- xcin-2.5.2.99.pre2+cvs20030224.orig/src/util/cin2tab/Makefile.in	2001-11-05 01:47:29.000000000 +0900
++++ xcin-2.5.2.99.pre2+cvs20030224/src/util/cin2tab/Makefile.in	2011-11-21 01:08:21.736965412 +0900
+@@ -14,7 +14,7 @@
+ all: $(BIN)
+ 
+ $(BIN): $(OBJ)
+-	$(LIBTOOL) --mode=link $(CC) $(CFLAGS) $(INC) $(DEFS) -o $(BIN) $(OBJ) $(LIB)
++	$(LIBTOOL) --mode=link $(CC) $(CFLAGS) $(INC) $(DEFS) -o $(BIN) $(OBJ) $(LDFLAGS) $(LIB)
+ include .depend
+ 
+ depend:
+diff -Naur xcin-2.5.2.99.pre2+cvs20030224.orig/src/util/testprog/Makefile.in xcin-2.5.2.99.pre2+cvs20030224/src/util/testprog/Makefile.in
+--- xcin-2.5.2.99.pre2+cvs20030224.orig/src/util/testprog/Makefile.in	2002-01-01 22:49:17.000000000 +0900
++++ xcin-2.5.2.99.pre2+cvs20030224/src/util/testprog/Makefile.in	2011-11-21 08:33:44.547672718 +0900
+@@ -15,7 +15,7 @@
+ all: $(BIN)
+ 
+ $(BIN): $(OBJ)
+-	$(LIBTOOL) --mode=link $(CC) -o $@ $(OBJ) $(LIB)
++	$(LIBTOOL) --mode=link $(CC) -o $@ $(OBJ) $(LDFLAGS) $(LIB)
+ include .depend
+ 
+ depend:

@@ -1,0 +1,37 @@
+# ChangeLog for virtual/man
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/man/ChangeLog,v 1.10 2014/01/18 22:18:32 vapier Exp $
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> man-0-r1.ebuild:
+  Add arm64 love.
+
+  17 Jan 2014; Mike Frysinger <vapier@gentoo.org> man-0-r1.ebuild:
+  Mark m68k/s390/sh stable.
+
+  27 Dec 2013; Sergey Popov <pinkbyte@gentoo.org> man-0-r1.ebuild:
+  Drop m68k to unstable too
+
+  27 Dec 2013; Sergey Popov <pinkbyte@gentoo.org> man-0-r1.ebuild:
+  Drop s390 and sh to unstable
+
+*man-0-r1 (23 Dec 2013)
+
+  23 Dec 2013; Pacho Ramos <pacho@gentoo.org> +man-0-r1.ebuild, -man-0.ebuild:
+  Revbump to get changes also in catalyst autobuilds (#467458#c5 by Rick Farina)
+
+  23 Dec 2013; Pacho Ramos <pacho@gentoo.org> man-0.ebuild:
+  Prefer man-db as man provider (#467458)
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org> man-0.ebuild:
+  Add ~arm-linux keyword.
+
+  27 Apr 2012; Alexis Ballier <aballier@gentoo.org> man-0.ebuild:
+  keyword ~amd64-fbsd
+
+  25 Sep 2011; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Remove myself as maintainer.
+
+*man-0 (13 Apr 2011)
+
+  13 Apr 2011; Ulrich Mueller <ulm@gentoo.org> +man-0.ebuild, +metadata.xml:
+  Initial import, bug 358839.

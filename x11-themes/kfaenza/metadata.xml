@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>kde</herd>
+<maintainer>
+  <email>maksbotan@gentoo.org</email>
+  <name>Maxim Koltsov</name>
+</maintainer>
+<use>
+	<flag name="additional">Install additional KFaenza icons. See third homepage for details</flag>
+</use>
+</pkgmetadata>

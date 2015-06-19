@@ -1,0 +1,109 @@
+# ChangeLog for app-arch/fastjar
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/fastjar/ChangeLog,v 1.29 2015/04/05 20:24:51 monsieurp Exp $
+
+*fastjar-0.98-r3 (05 Apr 2015)
+
+  05 Apr 2015; Patrice Clement <monsieurp@gentoo.org> +fastjar-0.98-r3.ebuild,
+  fastjar-0.98-r2.ebuild:
+  EAPI 5 bump wrt bug 543906.
+
+  01 Aug 2014; Ralph Sennhauser <sera@gentoo.org> -fastjar-0.98-r1.ebuild:
+  Remove old
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> fastjar-0.98-r2.ebuild:
+  Stable for x86, wrt bug #441050
+
+  08 Dec 2012; Agostino Sarubbo <ago@gentoo.org> fastjar-0.98-r2.ebuild:
+  Stable for ppc64, wrt bug #441050
+
+  07 Dec 2012; Agostino Sarubbo <ago@gentoo.org> fastjar-0.98-r2.ebuild:
+  Stable for ppc, wrt bug #441050
+
+  07 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> fastjar-0.98-r2.ebuild:
+  Stable on amd64, wrt bug #441050
+
+*fastjar-0.98-r2 (14 Sep 2012)
+
+  14 Sep 2012; Ralph Sennhauser <sera@gentoo.org> -fastjar-0.98.ebuild,
+  +fastjar-0.98-r2.ebuild:
+  EAPI bump for Prefix support by Christoph Junghans <ottxor@gentoo.org>.
+  #434782
+  Remove vulnerable. #325557
+
+  19 Jul 2010; Joseph Jezak <josejx@gentoo.org> fastjar-0.98-r1.ebuild:
+  Marked ppc stable for bug #325557.
+
+  08 Jul 2010; Brent Baude <ranger@gentoo.org> fastjar-0.98-r1.ebuild:
+  Marking fastjar-0.98-r1 ppc64 for bug 325557
+
+  04 Jul 2010; Markos Chandras <hwoarang@gentoo.org> fastjar-0.98-r1.ebuild:
+  Stable on amd64 wrt bug #325557
+
+  01 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  fastjar-0.98-r1.ebuild:
+  stable x86, security bug 325557
+
+*fastjar-0.98-r1 (30 Jun 2010)
+
+  30 Jun 2010; Vlastimil Babka <caster@gentoo.org>
+  +files/0.98-traversal.patch, -fastjar-0.95.ebuild,
+  +fastjar-0.98-r1.ebuild:
+  Revbump to fix security bug #325557, patch from ubuntu.
+
+  26 May 2010; Pacho Ramos <pacho@gentoo.org> fastjar-0.98.ebuild:
+  stable amd64, bug 316289
+
+  13 May 2010; Joseph Jezak <josejx@gentoo.org> fastjar-0.98.ebuild:
+  Marked ppc stable for bug #316289.
+
+  11 May 2010; Brent Baude <ranger@gentoo.org> fastjar-0.98.ebuild:
+  stable ppc64, bug 316289
+
+  27 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> fastjar-0.98.ebuild:
+  x86 stable wrt bug #316289
+
+*fastjar-0.98 (20 Mar 2010)
+
+  20 Mar 2010; Petteri Räty <betelgeuse@gentoo.org> +fastjar-0.98.ebuild:
+  Version bump. Fixes bug #287018.
+
+  20 Mar 2010; Petteri Räty <betelgeuse@gentoo.org> -fastjar-0.94.ebuild:
+  Remove old version.
+
+  12 Oct 2009; Mark Loeser <halcy0n@gentoo.org> fastjar-0.94.ebuild:
+  QA fixes; unquoted variables
+
+  31 Mar 2008; Markus Meier <maekke@gentoo.org> fastjar-0.95.ebuild:
+  amd64/x86 stable, bug #214938; quotes
+
+  28 Mar 2008; Brent Baude <ranger@gentoo.org> fastjar-0.95.ebuild:
+  stable ppc, bug 214938
+
+  27 Mar 2008; Markus Rothe <corsair@gentoo.org> fastjar-0.95.ebuild:
+  Stable on ppc64; bug #214938
+
+  15 Aug 2007; Vlastimil Babka <caster@gentoo.org> fastjar-0.95.ebuild:
+  Add block to <=dev-java/kaffe-1.1.7-r5 to ensure kaffe is upgraded first and
+  there are no file collisions, bug #188542.
+
+  14 Aug 2007; Markus Rothe <corsair@gentoo.org> fastjar-0.95.ebuild:
+  Added ~ppc64; bug #188082
+
+*fastjar-0.95 (08 Aug 2007)
+
+  08 Aug 2007; Petteri Räty <betelgeuse@gentoo.org> +fastjar-0.95.ebuild:
+  Version bump for bug #188082. fastjar moved from sourceforge to savannah.
+
+  11 Mar 2007; Joshua Nichols <nichoj@gentoo.org> fastjar-0.94.ebuild:
+  Added ~amd64, see bug #168713.
+
+  02 Mar 2007; nixnut <nixnut@gentoo.org> fastjar-0.94.ebuild:
+  Added ~ppc wrt bug 168713
+
+*fastjar-0.94 (28 Feb 2007)
+
+  28 Feb 2007; Petteri Räty <betelgeuse@gentoo.org> +metadata.xml,
+  +fastjar-0.94.ebuild:
+  Initial addition. Ebuild written by me. Fastjar is a jar implementation
+  written in C.

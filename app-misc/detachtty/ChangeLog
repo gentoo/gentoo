@@ -1,0 +1,48 @@
+# ChangeLog for app-misc/detachtty
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/detachtty/ChangeLog,v 1.15 2011/01/04 21:56:48 hwoarang Exp $
+
+  04 Jan 2011; Markos Chandras <hwoarang@gentoo.org> detachtty-9.ebuild:
+  Stable on amd64 wrt bug #350568
+
+  04 Jan 2011; Justin Lecher <jlec@gentoo.org> detachtty-9.ebuild:
+  Some Clean up
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> detachtty-9.ebuild:
+  Remove virtual/libc
+
+  27 Mar 2008; Raúl Porcel <armin76@gentoo.org> detachtty-9.ebuild:
+  Fix debian HOMEPAGE
+
+  04 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  22 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org> detachtty-9.ebuild:
+  Keywording ~amd64, ~sparc; Removed old ebuilds; Added common-lisp herd; 
+  Expanded metadata.xml longdescription.
+
+  27 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> detachtty-9.ebuild:
+  Stable on ppc.
+
+  24 Nov 2004; Aaron Walker <ka0ttic@gentoo.org> detachtty-9.ebuild:
+  Marked stable on x86.
+
+  26 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> detachtty-9.ebuild:
+  Use tc-getCC() - bug #68980
+
+*detachtty-9 (25 Oct 2004)
+
+  25 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml,
+  +detachtty-9.ebuild:
+  Version bump; cleaned up ebuild and added metadata info.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> detachtty-6.ebuild:
+  Masked detachtty-6.ebuild stable for ppc
+
+  14 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> detachtty-6.ebuild:
+  Don't assign default to S; header fix
+
+*detachtty-6 (09 Jul 2003)
+
+  09 Jul 2003; Matthew Kennedy <mkennedy@gentoo.org> :
+  Initial import.

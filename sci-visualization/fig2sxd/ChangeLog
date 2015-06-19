@@ -1,0 +1,61 @@
+# ChangeLog for sci-visualization/fig2sxd
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/fig2sxd/ChangeLog,v 1.11 2012/08/06 20:55:30 bicatali Exp $
+
+  06 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> -fig2sxd-0.20.ebuild,
+  fig2sxd-0.21.ebuild, metadata.xml:
+  Added zlib dependency, keyword amd64-linux, x86-linux
+
+*fig2sxd-0.21 (03 May 2011)
+
+  03 May 2011; Sébastien Fabbro <bicatali@gentoo.org> -fig2sxd-0.18.ebuild,
+  +fig2sxd-0.21.ebuild:
+  Version bump
+
+  02 Jan 2010; Christian Faulhammer <fauli@gentoo.org> fig2sxd-0.20.ebuild:
+  Transfer Prefix keywords
+
+  01 Sep 2009; Markus Dittrich <markusle@gentoo.org> -fig2sxd-0.17.ebuild:
+  Removed old ebuild.
+
+*fig2sxd-0.20 (01 Sep 2009)
+
+  01 Sep 2009; Markus Dittrich <markusle@gentoo.org> +fig2sxd-0.20.ebuild,
+  +files/fig2sxd-0.20-ldflags.patch, +files/fig2sxd-0.20-phony-check.patch,
+  metadata.xml:
+  Version bump. Also added patches for respecting LDFLAGS and making
+  sure check is a phony target since it is not intended as a test file.
+  Added myself as a maintainer.
+
+*fig2sxd-0.18 (21 Aug 2008)
+
+  21 Aug 2008; Markus Dittrich <markusle@gentoo.org> -fig2sxd-0.13.ebuild,
+  +fig2sxd-0.18.ebuild:
+  Version bump and removed old ebuild.
+
+*fig2sxd-0.17 (19 Apr 2008)
+
+  19 Apr 2008; Sébastien Fabbro <bicatali@gentoo.org> +fig2sxd-0.17.ebuild:
+  Bump with fix from Debian, thanks to Peter Alfredsen (bug #218325)
+
+  06 Feb 2008; Fabian Groffen <grobian@gentoo.org> fig2sxd-0.13.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  29 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org> +metadata.xml,
+  +fig2sxd-0.13.ebuild:
+  Moved from media-gfx/fig2sxd to sci-visualization/fig2sxd.
+
+  03 Nov 2005; Fabian Groffen <grobian@gentoo.org> fig2sxd-0.13.ebuild:
+  Marked ~ppc-macos (bug #110936)
+
+  07 Sep 2005; Olivier Fisette <ribosome@gentoo.org> fig2sxd-0.13.ebuild:
+  Use proper quoting for Portage paths variable substitutions and die when
+  documentation installation fails.
+
+*fig2sxd-0.13 (06 Sep 2005)
+
+  06 Sep 2005; Patrick Kursawe <phosphan@gentoo.org> +fig2sxd-0.13.ebuild:
+  Initial import, ebuild mainly by Markus Dittrich (see bug #101727)

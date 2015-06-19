@@ -1,0 +1,68 @@
+# ChangeLog for dev-util/intel-ocl-sdk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/intel-ocl-sdk/ChangeLog,v 1.16 2015/04/20 16:43:29 zerochaos Exp $
+
+  20 Apr 2015; Rick Farina <zerochaos@gentoo.org>
+  intel-ocl-sdk-4.4.0.117-r1.ebuild, metadata.xml:
+  fixing bug 525184, allowing bundled libs to be set individually
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> intel-ocl-sdk-2.0.31360.ebuild,
+  intel-ocl-sdk-4.4.0.117-r1.ebuild:
+  Update dependency after package move of eselect modules to app-eselect.
+
+  11 Sep 2014; Michael Palimaka <kensington@gentoo.org>
+  intel-ocl-sdk-4.4.0.117-r1.ebuild:
+  Pin dev-qt/qtcore and dev-qt/qtgui to SLOT 4.
+
+  01 Sep 2014; Rick Farina <zerochaos@gentoo.org> metadata.xml:
+  update maintainers entry
+
+*intel-ocl-sdk-4.4.0.117-r1 (31 Aug 2014)
+
+  31 Aug 2014; Rick Farina <zerochaos@gentoo.org>
+  +intel-ocl-sdk-4.4.0.117-r1.ebuild, -intel-ocl-sdk-4.4.0.117.ebuild:
+  fix error, thanks to anyc for reporting
+
+*intel-ocl-sdk-4.4.0.117 (30 Aug 2014)
+
+  30 Aug 2014; Rick Farina <zerochaos@gentoo.org>
+  +intel-ocl-sdk-4.4.0.117.ebuild, metadata.xml:
+  new version, new maintainer, taken from aync overlay
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  intel-ocl-sdk-2.0.31360.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  24 Mar 2014; Kacper Kowalik <xarthisius@gentoo.org> metadata.xml:
+  Drop maintainership
+
+  01 Nov 2012; Kacper Kowalik <xarthisius@gentoo.org> -intel-ocl-sdk-1.5.ebuild,
+  intel-ocl-sdk-2.0.31360.ebuild:
+  Use bundled boost due to unslotting. Fixes bug 440658 by
+  Neil Dökkalfar <neil@next-touch.com>. Drop old
+
+  03 Oct 2012; Agostino Sarubbo <ago@gentoo.org>
+  intel-ocl-sdk-2.0.31360.ebuild:
+  Stable for amd64, wrt bug #436940
+
+  02 Oct 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  intel-ocl-sdk-2.0.31360.ebuild, metadata.xml:
+  Add use flag for installing ioc64
+
+*intel-ocl-sdk-2.0.31360 (02 Oct 2012)
+
+  02 Oct 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  +intel-ocl-sdk-2.0.31360.ebuild:
+  Version bump wrt #436624 by Anton Bolshakov <anton.bugs@gmail.com>
+
+  20 Mar 2012; Agostino Sarubbo <ago@gentoo.org> intel-ocl-sdk-1.5.ebuild:
+  Stable for amd64, wrt bug #408975
+
+  07 Feb 2012; Kacper Kowalik <xarthisius@gentoo.org> intel-ocl-sdk-1.5.ebuild:
+  Invoke eselect opencl during postinst to avoid intel flavour of bug 402407
+
+*intel-ocl-sdk-1.5 (04 Feb 2012)
+
+  04 Feb 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  +intel-ocl-sdk-1.5.ebuild, +metadata.xml:
+  Initial import

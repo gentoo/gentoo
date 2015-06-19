@@ -1,0 +1,172 @@
+# ChangeLog for app-editors/elvis
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/elvis/ChangeLog,v 1.52 2015/03/31 17:19:20 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> elvis-2.2.0-r4.ebuild:
+  Update dependency after package move of eselect modules to app-eselect.
+
+  29 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -elvis-2.2.0-r3.ebuild:
+  Remove old.
+
+  01 Mar 2013; Samuli Suominen <ssuominen@gentoo.org> elvis-2.2.0-r4.ebuild:
+  Move ./configure from src_compile() to src_configure(). Fix building with
+  sys-libs/ncurses[tinfo] wrt #459654 by Diego Elio Pettenò
+
+  09 Sep 2012; Raúl Porcel <armin76@gentoo.org> elvis-2.2.0-r3.ebuild,
+  elvis-2.2.0-r4.ebuild:
+  Drop alpha/sparc keywords
+
+  22 Aug 2012; Michael Weber <xmw@gentoo.org> elvis-2.2.0-r4.ebuild:
+  ppc stable (bug 418557).
+
+  06 Aug 2012; Brent Baude <ranger@gentoo.org> elvis-2.2.0-r4.ebuild:
+  Marking elvis-2.2.0-r4 ppc64 for bug 418557
+
+  02 Aug 2012; Markos Chandras <hwoarang@gentoo.org> elvis-2.2.0-r4.ebuild:
+  Stable on amd64 wrt bug #418557
+
+  02 Aug 2012; Jeff Horelick <jdhore@gentoo.org> elvis-2.2.0-r4.ebuild:
+  marked x86 per bug 418557
+
+*elvis-2.2.0-r4 (10 Feb 2012)
+
+  10 Feb 2012; Fabian Groffen <grobian@gentoo.org> +elvis-2.2.0-r4.ebuild,
+  +files/elvis-2.2.0-interix.patch:
+  Revbump with fixes for Prefix, transferred Prefix keywords
+
+  31 Aug 2010; Krzysztof Pawlik <nelchael@gentoo.org> elvis-2.2.0-r3.ebuild:
+  Respect LDFLAGS, bug #335437.
+
+  05 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> elvis-2.2.0-r3.ebuild,
+  +files/elvis-2.2.0-glibc-2.10.patch:
+  Fix building with GLIBC 2.10+ wrt #277559.
+
+  11 Mar 2008; Krzysiek Pawlik <nelchael@gentoo.org> -elvis-2.2.0-r1.ebuild,
+  -elvis-2.2.0-r2.ebuild, elvis-2.2.0-r3.ebuild:
+  Remove old versions, use tc-getCC instead of gcc (see bug #213019).
+
+  11 Mar 2008; Markus Rothe <corsair@gentoo.org> elvis-2.2.0-r3.ebuild:
+  Stable on ppc64; bug #205722
+
+  09 Mar 2008; Ferris McCormick <fmccor@gentoo.org> elvis-2.2.0-r3.ebuild:
+  Sparc stable --- Bug #205722 --- Thanks to Tiago Cunha for testing.
+
+  09 Mar 2008; Raúl Porcel <armin76@gentoo.org> elvis-2.2.0-r3.ebuild:
+  alpha stable wrt #205722
+
+  09 Mar 2008; Markus Meier <maekke@gentoo.org> elvis-2.2.0-r3.ebuild:
+  x86 stable, bug #205722
+
+  08 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> elvis-2.2.0-r3.ebuild:
+  amd64 stable wrt bug #205722
+
+  08 Mar 2008; nixnut <nixnut@gentoo.org> elvis-2.2.0-r3.ebuild:
+  Stable on ppc wrt bug 205722
+
+  10 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  elvis-2.2.0-r1.ebuild, elvis-2.2.0-r2.ebuild, elvis-2.2.0-r3.ebuild:
+  remove PROVIDE=virtual/editor as we have now a new-style virtual
+
+*elvis-2.2.0-r3 (21 Sep 2007)
+
+  21 Sep 2007; Ali Polatel <hawking@gentoo.org>
+  +files/ft2.3-symbol-collision-fix.patch, +elvis-2.2.0-r3.ebuild:
+  revbump. add patch to fix symbol collision between elvis and freetype.
+  bug 189271, thanks to Gordon Malm.
+
+  22 Jul 2007; David Shakaryan <omp@gentoo.org> elvis-2.2.0-r1.ebuild,
+  elvis-2.2.0-r2.ebuild:
+  Remove virtual/x11 from dependencies.
+
+  09 Feb 2007; Fabian Groffen <grobian@gentoo.org> elvis-2.2.0-r1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  24 Oct 2006; Mike Kelly <pioto@gentoo.org> elvis-2.2.0-r2.ebuild:
+  Dropping ~ppc-macos keyword
+
+  20 Sep 2006; Mike Kelly <pioto@gentoo.org> elvis-2.2.0-r2.ebuild:
+  Forgot a DEPEND on eselect-vi
+
+*elvis-2.2.0-r2 (20 Sep 2006)
+
+  20 Sep 2006; Mike Kelly <pioto@gentoo.org>  elvis-2.2.0-r2.ebuild:
+  Adding support for eselect vi. Currently package.masked. See bug #147857
+
+  27 Aug 2006; Michael Sterrett <mr_bones_@gentoo.org> -elvis-2.2.0.ebuild:
+  clean out older, non-modX ebuild
+
+  22 Jul 2006; Thomas Cort <tcort@gentoo.org> elvis-2.2.0-r1.ebuild:
+  Stable on alpha and amd64 wrt Bug #140618.
+
+  20 Jul 2006; Markus Rothe <corsair@gentoo.org> elvis-2.2.0-r1.ebuild:
+  Stable on ppc64; bug #140618
+
+  18 Jul 2006; Joshua Jackson <tsunam@gentoo.org> elvis-2.2.0-r1.ebuild:
+  Stable x86; bug #140618
+
+  16 Jul 2006; Jason Wever <weeve@gentoo.org> elvis-2.2.0-r1.ebuild:
+  Stable on SPARC wrt bug #140618.
+
+  16 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  elvis-2.2.0-r1.ebuild:
+  ppc stable, bug #140618
+
+*elvis-2.2.0-r1 (20 Jan 2006)
+
+  20 Jan 2006; Marcelo Goes <vanquirius@gentoo.org>
+  -files/elvis-2.1.4-keysym.patch, -elvis-2.1.4.ebuild,
+  -elvis-2.1.4-r1.ebuild, +elvis-2.2.0-r1.ebuild:
+  Remove old ebuilds, make modular X friendly.
+
+  20 Sep 2005; Kito <kito@gentoo.org> elvis-2.2.0.ebuild:
+  ~ppc-macos. Closes Bug 106579
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> elvis-2.2.0.ebuild:
+  Masked elvis-2.2.0.ebuild stable for ppc
+
+  15 Jul 2004; Tom Gall <tgall@gentoo.org> elvis-2.2.0.ebuild:
+  stable on ppc64, bug #55527
+
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> elvis-2.2.0.ebuild:
+  Stable on alpha.
+
+  29 Apr 2004; Ciaran McCreesh <ciaranm@gentoo.org> elvis-2.2.0.ebuild:
+  Stable on sparc
+
+  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> elvis-2.2.0.ebuild :
+  Stable on x86 and AMD64.
+
+*elvis-2.2.0 (13 Nov 2003)
+
+  13 Nov 2003; Aron Griffis <agriffis@gentoo.org> elvis-2.2.0.ebuild:
+  Version bump to 2.2_0 for bug 32797. Note that elvis-2.1.4-keysym.patch was
+  integrated into this version, so it no longer applies.  This version bump
+  required extensive changes to the ebuild.
+
+  12 Jun 2003; Aron Griffis <agriffis@gentoo.org> elvis-2.1.4-r1.ebuild,
+  files/elvis-2.1.4-keysym.patch:
+  Add patch from FreeBSD port to fix bug 20864.  Mark stable on alpha
+
+*elvis-2.1.4-r1 (1 Feb 2002)
+
+  06 Jan 2003; Seemant Kulleen <seemant@gentoo.org> *.ebuild :
+
+  PROVIDE virtual/editor
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  06 Aug 2002; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.
+
+*elvis-2.1.4 (15 May 2001)

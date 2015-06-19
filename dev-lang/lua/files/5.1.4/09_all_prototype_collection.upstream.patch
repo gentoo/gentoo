@@ -1,0 +1,13 @@
+--- lua-5.1.4.orig/src/lparser.c	2007/12/28 15:32:23	2.42.1.3
++++ lua-5.1.4/src/lparser.c	2011/10/17 13:10:43
+@@ -374,9 +374,9 @@
+   lua_assert(luaG_checkcode(f));
+   lua_assert(fs->bl == NULL);
+   ls->fs = fs->prev;
+-  L->top -= 2;  /* remove table and prototype from the stack */
+   /* last token read was anchored in defunct function; must reanchor it */
+   if (fs) anchor_token(ls);
++  L->top -= 2;  /* remove table and prototype from the stack */
+ }
+ 
+ 

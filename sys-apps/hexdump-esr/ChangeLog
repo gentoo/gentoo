@@ -1,0 +1,135 @@
+# ChangeLog for sys-apps/hexdump-esr
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/hexdump-esr/ChangeLog,v 1.29 2013/07/09 15:46:26 kensington Exp $
+
+  09 Jul 2013; Michael Palimaka <kensington@gentoo.org> -hexdump-esr-1.7.ebuild:
+  Remove old.
+
+  20 Feb 2013; Jeroen Roovers <jer@gentoo.org> hexdump-esr-1.8.ebuild:
+  Stable for HPPA (bug #457470).
+
+  17 Feb 2013; Agostino Sarubbo <ago@gentoo.org> hexdump-esr-1.8.ebuild:
+  Stable for x86, wrt bug #457470
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> hexdump-esr-1.8.ebuild:
+  Stable for ppc, wrt bug #457470
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> hexdump-esr-1.8.ebuild:
+  Stable for ppc64, wrt bug #457470
+
+  14 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> hexdump-esr-1.8.ebuild:
+  Stable on amd64, wrt bug #457470
+
+  14 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> hexdump-esr-1.8.ebuild:
+  Restricting tests, cause they are broken
+
+  12 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> hexdump-esr-1.7.ebuild:
+  Change license, according to COPYING file in tarball
+
+*hexdump-esr-1.8 (12 Jan 2013)
+
+  12 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> +hexdump-esr-1.8.ebuild:
+  Version bump
+
+  26 Sep 2012; Michael Palimaka <kensington@gentoo.org>
+  -hexdump-esr-1.6-r1.ebuild:
+  Remove old.
+
+  25 Sep 2012; Anthony G. Basile <blueness@gentoo.org> hexdump-esr-1.7.ebuild:
+  Stable ppc ppc64, bug #433351
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> hexdump-esr-1.7.ebuild:
+  x86 stable wrt bug #433351
+
+  13 Sep 2012; Jeroen Roovers <jer@gentoo.org> hexdump-esr-1.7.ebuild:
+  Stable for HPPA (bug #433351).
+
+  08 Sep 2012; Agostino Sarubbo <ago@gentoo.org> hexdump-esr-1.7.ebuild:
+  Stable for amd64, wrt bug #433351
+
+*hexdump-esr-1.7 (11 Jul 2012)
+
+  11 Jul 2012; Justin Lecher <jlec@gentoo.org> hexdump-esr-1.6-r1.ebuild,
+  +hexdump-esr-1.7.ebuild:
+  Version Bump, moved to EAPI=4
+
+  11 May 2012; Michael Palimaka <kensington@gentoo.org> -hexdump-esr-1.6.ebuild:
+  Remove old.
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> hexdump-esr-1.6-r1.ebuild:
+  Marking hexdump-esr-1.6-r1 ppc64 for bug 397205
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  hexdump-esr-1.6-r1.ebuild:
+  x86 stable wrt bug #397205
+
+  07 Feb 2012; Jeroen Roovers <jer@gentoo.org> hexdump-esr-1.6-r1.ebuild:
+  Stable for HPPA (bug #397205).
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org> hexdump-esr-1.6-r1.ebuild:
+  Marking hexdump-esr-1.6-r1 ppc for bug 397205
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org> hexdump-esr-1.6-r1.ebuild:
+  Stable for amd64, wrt bug #397205
+
+*hexdump-esr-1.6-r1 (28 Sep 2010)
+
+  28 Sep 2010; Jeroen Roovers <jer@gentoo.org> +hexdump-esr-1.6-r1.ebuild:
+  Respect LDFLAGS (bug #337229), more CFLAGS.
+
+  07 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  hexdump-esr-1.6.ebuild:
+  Transfer Prefix keywords
+
+  21 Apr 2008; Raúl Porcel <armin76@gentoo.org> hexdump-esr-1.6.ebuild:
+  Add ~ia64/~sparc
+
+  04 Feb 2008; Fabian Groffen <grobian@gentoo.org> hexdump-esr-1.6.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  01 Sep 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing twp from metadata due to his retirement (see #190561 for reference).
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+*hexdump-esr-1.6 (05 Apr 2006)
+
+  05 Apr 2006; Tom Payne <twp@gentoo.org> +metadata.xml,
+  +hexdump-esr-1.6.ebuild:
+  Moved from sys-apps/esr-hexdump to sys-apps/hexdump-esr.
+
+*esr-hexdump-1.6 (08 Mar 2006)
+
+  08 Mar 2006; Tom Payne <twp@gentoo.org> +metadata.xml,
+  +esr-hexdump-1.6.ebuild:
+  Moved from sys-apps/hexdump to sys-apps/esr-hexdump. Bug # 125478.
+
+  09 Feb 2006; <malc@gentoo.org> hexdump-1.6.ebuild:
+  Stable on amd64, bug #122195
+
+  22 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> hexdump-1.6.ebuild:
+  added ~amd64 to KEYWORDS. fixes #79121
+
+  31 Dec 2004; <gongloo@gentoo.org> hexdump-1.6.ebuild:
+  Added ~ppc-macos.
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> hexdump-1.6.ebuild:
+  Stable on ppc64
+
+  03 Nov 2004; Markus Rothe <corsair@gentoo.org> hexdump-1.6.ebuild:
+  Marked ~ppc64; bug #69502
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> hexdump-1.6.ebuild:
+  Masked hexdump-1.6.ebuild stable for ppc
+
+  25 Apr 2004; Guy Martin <gmsoft@gentoo.org> hexdump-1.6.ebuild:
+  Marked stable on hppa.
+
+  12 Apr 2004; <twp@gentoo.org> hexdump-1.6.ebuild:
+  Added IUSE variable. Stable on x86.
+
+*hexdump-1.6 (04 Mar 2004)
+
+  04 Mar 2004; Tom Payne <twp@gentoo.org> hexdump-1.6.ebuild :
+  Initial submit. Ebuild submitted by Stefan Briesenick. Bug # 39914.

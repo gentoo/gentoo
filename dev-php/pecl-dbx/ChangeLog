@@ -1,0 +1,68 @@
+# ChangeLog for dev-php/pecl-dbx
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-dbx/ChangeLog,v 1.6 2014/10/10 02:22:38 grknight Exp $
+
+*pecl-dbx-1.1.2-r1 (30 Sep 2014)
+
+  30 Sep 2014; portageq envvar <grknight@gentoo.org> +pecl-dbx-1.1.2-r1.ebuild,
+  -pecl-dbx-1.1.2.ebuild:
+  Revision bump to add 5.5 and 5.6 support; drop 5.3 support
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pecl-dbx-1.1.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  05 Mar 2013; Ole Markus With <olemarkus@gentoo.org> pecl-dbx-1.1.2.ebuild:
+  EAPI bump
+
+*pecl-dbx-1.1.2 (15 Jan 2012)
+
+  15 Jan 2012; Ole Markus With <olemarkus@gentoo.org>
+  -pecl-dbx-1.1.0-r1.ebuild, +pecl-dbx-1.1.2.ebuild:
+  Version bump
+
+  30 Jan 2011; Raúl Porcel <armin76@gentoo.org> pecl-dbx-1.1.0.ebuild:
+  Drop sparc keywords
+
+  08 Jan 2011; Brent Baude <ranger@gentoo.org> pecl-dbx-1.1.0-r1.ebuild:
+  Marking pecl-dbx-1.1.0-r1 ~ppc for bug 349659
+
+  28 Dec 2010; Brent Baude <ranger@gentoo.org> pecl-dbx-1.1.0-r1.ebuild:
+  Marking pecl-dbx-1.1.0-r1 ~ppc64 for bug 349659
+
+  04 Nov 2010; Matti Bickel <mabi@gentoo.org> pecl-dbx-1.1.0-r1.ebuild:
+  fix USE_PHP placement
+
+*pecl-dbx-1.1.0-r1 (04 Nov 2010)
+
+  04 Nov 2010; Matti Bickel <mabi@gentoo.org> +pecl-dbx-1.1.0-r1.ebuild:
+  add version that supports minor version slotting
+
+  03 Jul 2010; Matti Bickel <mabi@gentoo.org> pecl-dbx-1.1.0.ebuild:
+  does not compile with php-5.3
+
+  06 Dec 2007; Markus Ullmann <jokey@gentoo.org> pecl-dbx-1.1.0.ebuild:
+  LICENSE fix from project overlay
+
+  02 Dec 2007; Jakub Moc <jakub@gentoo.org> pecl-dbx-1.1.0.ebuild:
+  Fix LICENSE
+
+  17 Mar 2007; Luca Longinotti <chtekk@gentoo.org> pecl-dbx-1.1.0.ebuild:
+  Cleanup.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  27 May 2006; Luca Longinotti <chtekk@gentoo.org> pecl-dbx-1.1.0.ebuild:
+  Added to ~amd64.
+
+  26 Nov 2005; Luca Longinotti <chtekk@gentoo.org> pecl-dbx-1.1.0.ebuild:
+  Fix var ordering.
+
+  19 Nov 2005; Markus Rothe <corsair@gentoo.org> pecl-dbx-1.1.0.ebuild:
+  Added ~ppc64 keyword; bug #102649
+
+  10 Sep 2005; Jason Wever <weeve@gentoo.org> pecl-dbx-1.1.0.ebuild:
+  Added ~sparc keyword.
+
+  18 Aug 2005; <stuart@gentoo.org> ChangeLog:
+  Initial version; replaces older dev-php/* packages

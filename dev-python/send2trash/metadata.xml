@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <upstream>
+    <remote-id type="pypi">Send2Trash</remote-id>
+    <remote-id type="github">hsoft/send2trash</remote-id>
+  </upstream>
+</pkgmetadata>

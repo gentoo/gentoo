@@ -1,0 +1,30 @@
+diff -Naur audiorecorder-0.1.0-pre14.orig/audioreceiver.c audiorecorder-0.1.0-pre14/audioreceiver.c
+--- audiorecorder-0.1.0-pre14.orig/audioreceiver.c	2014-04-19 11:16:11.038099054 +0200
++++ audiorecorder-0.1.0-pre14/audioreceiver.c	2014-04-19 11:20:39.847541064 +0200
+@@ -9,9 +9,12 @@
+ 
+ /* --- cAudioReceiver ------------------------------------------------------- */
+ 
+-cAudioReceiver::cAudioReceiver(const cChannel *_channel)
+-:cReceiver(_channel->GetChannelID(), -2, _channel->Apid(0)), cThread()
++cAudioReceiver::cAudioReceiver(const cChannel* _channel)
++:cReceiver(_channel, -2), cThread("audiorecorder-receiver")
+ {
++	SetPids(NULL);
++	AddPid(_channel->Apid(0));
++
+         channel = _channel;
+ 
+         active = false;
+diff -Naur audiorecorder-0.1.0-pre14.orig/audioreceiver.h audiorecorder-0.1.0-pre14/audioreceiver.h
+--- audiorecorder-0.1.0-pre14.orig/audioreceiver.h	2014-04-19 11:16:10.982099587 +0200
++++ audiorecorder-0.1.0-pre14/audioreceiver.h	2014-04-19 11:21:18.453173527 +0200
+@@ -44,7 +44,7 @@
+         virtual void Action(void);
+         virtual void Activate(bool on);
+ public:
+-        cAudioReceiver(const cChannel *_channel);
++        cAudioReceiver(const cChannel* _channel);
+         ~cAudioReceiver();
+         
+         void set_device_number(int _device_number) { device_number =

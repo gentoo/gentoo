@@ -1,0 +1,12 @@
+diff -Naur at-3.1.10.2.orig/Makefile.in at-3.1.10.2/Makefile.in
+--- at-3.1.10.2.orig/Makefile.in	2009-01-31 15:38:54.000000000 +0100
++++ at-3.1.10.2/Makefile.in	2009-01-31 15:39:22.000000000 +0100
+@@ -78,7 +78,7 @@
+ y.tab.c y.tab.h: parsetime.y
+ 	$(YACC) -d parsetime.y
+ 
+-lex.yy.c: parsetime.l
++lex.yy.c: parsetime.l y.tab.h
+ 	$(LEX) -i parsetime.l
+ 
+ atrun: atrun.in

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm unpack
+DEPEND=!dev-texlive/texlive-latexrecommended cjk? ( dev-tex/cjk-latex ) virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DESCRIPTION=Unicode support for LaTeX
+HOMEPAGE=http://www.unruh.de/DniQ/latex/unicode/
+IUSE=cjk
+KEYWORDS=amd64 ppc ppc64 sparc x86
+LICENSE=LPPL-1.2
+RDEPEND=!dev-texlive/texlive-latexrecommended cjk? ( dev-tex/cjk-latex ) virtual/latex-base
+SLOT=0
+SRC_URI=mirror://gentoo/latex-unicode-20041017.tar.gz http://www.unicode.org/Public/UNIDATA/UnicodeData.txt
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	latex-package	d023314500e725be8c78a868e4771dbb	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=da9483253ed87485b7541d31b963b84d

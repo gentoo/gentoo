@@ -1,0 +1,27 @@
+# ChangeLog for media-gfx/pencil
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/pencil/ChangeLog,v 1.6 2014/05/30 21:38:31 pesa Exp $
+
+  30 May 2014; Davide Pesavento <pesa@gentoo.org> metadata.xml:
+  Drop to maintainer-needed.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> pencil-0.4.4_beta.ebuild:
+  Move Qt dependencies to the new category
+
+  15 Jan 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove myself from metadata
+
+  06 Sep 2011; Markos Chandras <hwoarang@gentoo.org> pencil-0.4.4_beta.ebuild,
+  +files/pencil-0.4.4_beta-gcc461.patch:
+  Add patch for gcc-4.6.1. Bug #381063. Thanks to Helmut Jarausch
+  <jarausch@igpm.rwth-aachen.de>
+
+  28 Aug 2011; Markos Chandras <hwoarang@gentoo.org> pencil-0.4.4_beta.ebuild:
+  Add missing qt-opengl dependency
+
+*pencil-0.4.4_beta (28 Aug 2011)
+
+  28 Aug 2011; Markos Chandras <hwoarang@gentoo.org> +pencil-0.4.4_beta.ebuild,
+  +metadata.xml:
+  Initial commit. Bug #232673. Thanks to Samuli Suominen and Matteo 'The Peach'
+  Pescarin for the ebuilds

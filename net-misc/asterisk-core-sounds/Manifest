@@ -1,0 +1,86 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+DIST asterisk-core-sounds-en-alaw-1.4.21.tar.gz 7542917 SHA256 c1b2841a48cc21e0bb1645e065c9a58142f5dd1bfe4069f9712927438089ac61
+DIST asterisk-core-sounds-en-alaw-1.4.22.tar.gz 8533300 SHA256 396fe6bb150fb76bd69a26d9aabe5d56a95de347194d84dd80aaa2bbab8ae8ac
+DIST asterisk-core-sounds-en-g722-1.4.21.tar.gz 8048225 SHA256 d066cdefc66f0bea90723973bc383a19ba5fb371684abc0b6ac6216cf7f3965a
+DIST asterisk-core-sounds-en-g722-1.4.22.tar.gz 9058583 SHA256 5cbc97a98a29ca75d6a6b0e84eaa10e8c3057aff27b33685cace5591e68dc230
+DIST asterisk-core-sounds-en-g729-1.4.21.tar.gz 1116090 SHA256 303a37fffbcfe143c27d8d82babd5506b1b2d3ed7c25b4f5c9d04ea021c1a294
+DIST asterisk-core-sounds-en-g729-1.4.22.tar.gz 1281828 SHA256 ecefc211f44503a707bd93110673ecfa8bee59b0af6056875fdf8fda4c37d536
+DIST asterisk-core-sounds-en-gsm-1.4.21.tar.gz 1785758 SHA256 8a77918aa34a9a88056683908d7eece62fd3ed8f577e56f69bba6860d5280314
+DIST asterisk-core-sounds-en-gsm-1.4.22.tar.gz 2042362 SHA256 79175197a651c25bb62988e721023e9bb711c7eef28aca2ecba291d43ee3e667
+DIST asterisk-core-sounds-en-siren14-1.4.21.tar.gz 6800650 SHA256 56807beed9b776376888e9e17981eddcfa61f89e3f56a198f1fc05cd23decaf2
+DIST asterisk-core-sounds-en-siren14-1.4.22.tar.gz 7777912 SHA256 ebe0654f4d4c54f70a495f3e49dc842320d07cbb21fe2df5e046265bb4e5aa29
+DIST asterisk-core-sounds-en-siren7-1.4.21.tar.gz 4297051 SHA256 85df26eaa6ea4c6d5320e4d60b06a02f94023cda05f9035bb0278924154125c6
+DIST asterisk-core-sounds-en-siren7-1.4.22.tar.gz 4939217 SHA256 7f10b52116953cb25ad9ba53adb921e13996a33084d23e05f82aec9806fcb102
+DIST asterisk-core-sounds-en-sln16-1.4.21.tar.gz 31127736 SHA256 d557515ebe16f2438447f8900ebc4bf5e9270a91f4b3a93a12053c2b3552809b
+DIST asterisk-core-sounds-en-sln16-1.4.22.tar.gz 35390902 SHA256 2c88f0be490fc3a1ad50e791064cc4603cae739b2493e8fac7cbd90de1915dd4
+DIST asterisk-core-sounds-en-ulaw-1.4.21.tar.gz 7663285 SHA256 8f9ee4e9f23eace060581219dded55124baed6dafcbe67c56dba2be979ba2ee8
+DIST asterisk-core-sounds-en-ulaw-1.4.22.tar.gz 8683123 SHA256 21ffd22e98eb35dc56bb69a076dffde534192116525ccd358b46cf8a663b1a72
+DIST asterisk-core-sounds-en-wav-1.4.21.tar.gz 15317471 SHA256 8246c60c359e9f508ada5e06b54d1c502846cdfc5047ebf2e8030f551bfcb105
+DIST asterisk-core-sounds-en-wav-1.4.22.tar.gz 17394370 SHA256 04cd727e8a01e02e9cb1de27eea5f6c060ccc60be9ad77b6a39b7bc15a169f1c
+DIST asterisk-core-sounds-es-alaw-1.4.21.tar.gz 10665934 SHA256 376ce92d63bfcbcc35af338831c21098b509468c8000ddd310cc7365952868ae
+DIST asterisk-core-sounds-es-alaw-1.4.22.tar.gz 12153981 SHA256 dfd3d07dd89ea09fc6ea15e998674e62ad0067d4118f0877c705529b93bc5b75
+DIST asterisk-core-sounds-es-g722-1.4.21.tar.gz 11104818 SHA256 87847917b6a63d00891adff53a1da3fa225b4a6790eeea6941df36dd6ebcd920
+DIST asterisk-core-sounds-es-g722-1.4.22.tar.gz 12519197 SHA256 d3d1e14b14c3c1f026b28256d6f67ecc9f8951a655646d62ae884dc624363645
+DIST asterisk-core-sounds-es-g729-1.4.21.tar.gz 1541057 SHA256 ad224c6f768f7cf6a9584649de6e9975a981e9e8a2eb936ba6d0d6dec8cdcf91
+DIST asterisk-core-sounds-es-g729-1.4.22.tar.gz 1771355 SHA256 afac894ec8a59830b45e0502a0a0bf7e1da50b9413cd3cb3b21918d153f78b70
+DIST asterisk-core-sounds-es-gsm-1.4.21.tar.gz 2479262 SHA256 a4df63cfa37809478d659588fc85564f5fca9311434968f3875c2a3840c87dad
+DIST asterisk-core-sounds-es-gsm-1.4.22.tar.gz 2846711 SHA256 f4cf1b25c081c6941024d7991d3fedac120ae433a0f9960bb3663c58f0331f47
+DIST asterisk-core-sounds-es-siren14-1.4.21.tar.gz 9300088 SHA256 de1f2e45deef4061b0f12c4545f6a9a299e5cdaaf86d231a81a0f7437bd08d4b
+DIST asterisk-core-sounds-es-siren14-1.4.22.tar.gz 10668439 SHA256 78237ce85e4c8962afe0b4b3f7ea35eed3511f571a806614c5e77fbc0124c80f
+DIST asterisk-core-sounds-es-siren7-1.4.21.tar.gz 5953949 SHA256 48c710b24e2ac60251a861db273771b6600480ea489dae43bed4dbf2fd3970ae
+DIST asterisk-core-sounds-es-siren7-1.4.22.tar.gz 6856025 SHA256 da30c63b2a4332fb5d5671f8ecf89744cc57ed914046cf0e540fa59a14ad4401
+DIST asterisk-core-sounds-es-sln16-1.4.21.tar.gz 43767861 SHA256 1c85fd4de3e42a3e22fa6ce07cb2ade75b863baa351fb0d1cc6b8b1b14bca8cf
+DIST asterisk-core-sounds-es-sln16-1.4.22.tar.gz 50127209 SHA256 32662a9815e7b3c735aaa0d570fb904a9473ca10b3e783de5e1c55aa42fd76f5
+DIST asterisk-core-sounds-es-ulaw-1.4.21.tar.gz 10802067 SHA256 ccc286e392f99b6ecd1daf1f97d682475be59383b075dc0e06eacb9026c233e8
+DIST asterisk-core-sounds-es-ulaw-1.4.22.tar.gz 12340977 SHA256 c89961b5b67b4ad4a139200a9fad50000512e5d000a46b277183216c3e94f02a
+DIST asterisk-core-sounds-es-wav-1.4.21.tar.gz 21594568 SHA256 9b4bcd1be5ba010f506750e963b879807696cf709513ab04b4f8d6f74276ed57
+DIST asterisk-core-sounds-es-wav-1.4.22.tar.gz 24712090 SHA256 e167f56fa8ebbbd7754ef191ee155e629442b688a20aa457c36b55e7f6800cc7
+DIST asterisk-core-sounds-fr-alaw-1.4.21.tar.gz 7802733 SHA256 19f5faaecfcd7c839675de221637fb28a9d882597ab06c16563c268e4f9b130d
+DIST asterisk-core-sounds-fr-alaw-1.4.22.tar.gz 8813861 SHA256 baeb52211812f6b77ddc83962ed67240af434e333c2757523a46165289f14d69
+DIST asterisk-core-sounds-fr-g722-1.4.21.tar.gz 8576649 SHA256 b01bdf6c72aaa1c50a8d2fbb8cd491dafe4b60d99e80ddfa2e9bbf6362be6c3a
+DIST asterisk-core-sounds-fr-g722-1.4.22.tar.gz 9467644 SHA256 9d52de05ada8ec7fe1626e9a41c50af6cb0a2d8fb09ed7d11e02b9d9d3a69174
+DIST asterisk-core-sounds-fr-g729-1.4.21.tar.gz 1201891 SHA256 7796dafefd67567ddbf18caa633671b17a67cd36ed21ea919f78eeca7c092283
+DIST asterisk-core-sounds-fr-g729-1.4.22.tar.gz 1344791 SHA256 68983b61a0d535ed739ab59da20e82164e8856ae048ae4c3cf05e895ce83c32f
+DIST asterisk-core-sounds-fr-gsm-1.4.21.tar.gz 1897139 SHA256 e3f55c1024b68a464a8a738f0e34e049d6ea35dd2b39be77d400ec1c7e56e5e6
+DIST asterisk-core-sounds-fr-gsm-1.4.22.tar.gz 2128144 SHA256 c0cb2a84ad2d82fbb04434f8de20fcdfb8e5dc7bb07cf18ec07e99c0d7ef7aac
+DIST asterisk-core-sounds-fr-siren14-1.4.21.tar.gz 7282008 SHA256 92088d0dfa3a8320da98bb4ebc21e2fb147c99f2f555ff117b0b90aea7dc4bf6
+DIST asterisk-core-sounds-fr-siren14-1.4.22.tar.gz 8140068 SHA256 165f890d522f91fc2721f6fc6f63708b6793a7033fc6c0017e0d84b5c119213b
+DIST asterisk-core-sounds-fr-siren7-1.4.21.tar.gz 4598263 SHA256 1524cf8dccdd886c3d5ad16e5eb09642004d5572b35b5ea82eaaf7dcd9da4ac1
+DIST asterisk-core-sounds-fr-siren7-1.4.22.tar.gz 5162570 SHA256 9fd1781f573c12877d011f50282cf2b8a70e7c3dd183a3a1801300f626de252c
+DIST asterisk-core-sounds-fr-sln16-1.4.21.tar.gz 32346434 SHA256 705b00c01e8e573b925ef40f784806cc9ff7b69f89d43eca119af8a61f715cc0
+DIST asterisk-core-sounds-fr-sln16-1.4.22.tar.gz 36567733 SHA256 c9662b5c8c2a59bb0fd036f6f79fe7e399a970017965cfb501a2972fca3a2ec0
+DIST asterisk-core-sounds-fr-ulaw-1.4.21.tar.gz 7995267 SHA256 f5967aa8660eb2162f4bdae2622f334b2e78396b53f5a3f103423a913fb3be38
+DIST asterisk-core-sounds-fr-ulaw-1.4.22.tar.gz 9027425 SHA256 0bbd24f702de48f8ec11e91a24a1559eedcf472afa5c2a169f343e99508df191
+DIST asterisk-core-sounds-fr-wav-1.4.21.tar.gz 15858675 SHA256 957725f14ad09161c841ef7b02a9f5b505ddd0ea5ed28cbdbee9f98472832b94
+DIST asterisk-core-sounds-fr-wav-1.4.22.tar.gz 17944749 SHA256 260a18bdf46df29badf922bb80d3f9db901faaa000f188712d41c0b4d1b8ab11
+DIST asterisk-core-sounds-ru-alaw-1.4.21.tar.gz 8064249 SHA256 f62809f304bf066aa84d34a8010145523e1739d95217e9bca01b5180cd66ac2b
+DIST asterisk-core-sounds-ru-alaw-1.4.22.tar.gz 8152975 SHA256 60ef0b8d1471d45620ae87b35bd97822513a4b379c872a897c80c84a03521f82
+DIST asterisk-core-sounds-ru-g722-1.4.21.tar.gz 8595025 SHA256 79c724f85a09d190e14b3e3f1b6f7fcad2af897af9a613d0024e8c5891a416b1
+DIST asterisk-core-sounds-ru-g722-1.4.22.tar.gz 8674954 SHA256 25368981f01486818cc8851841b72d48f4fe8ef7dea68b73638e988520235520
+DIST asterisk-core-sounds-ru-g729-1.4.21.tar.gz 1213557 SHA256 627bc3f0c283b0f7046cf04394b9a5bc979e8e4a16b2dd696cdff8457feb537c
+DIST asterisk-core-sounds-ru-g729-1.4.22.tar.gz 1284150 SHA256 25d777e101172d1530342f376656b06b64998628b4d39d8b2eb41afc8fb7749e
+DIST asterisk-core-sounds-ru-gsm-1.4.21.tar.gz 1940666 SHA256 781706fc1d4b7aa8f0a4d6f24d51af17b46b7e8743f97bbe1dd3ebaa888093de
+DIST asterisk-core-sounds-ru-gsm-1.4.22.tar.gz 2037430 SHA256 5f2eeb24bedb44245f230dbe2f9bbe78f66297ec6af4111d93a705bb03431136
+DIST asterisk-core-sounds-ru-siren14-1.4.21.tar.gz 6958245 SHA256 f8233bdd3e858b691de58e3f00b7bbadb2b201f0ce29d18c1e6145b759a1e865
+DIST asterisk-core-sounds-ru-siren14-1.4.22.tar.gz 7294734 SHA256 3c65d91d4cdb7865751872d2fbb4ea40ffda62e059107fe691325bc9d105e0b6
+DIST asterisk-core-sounds-ru-siren7-1.4.21.tar.gz 4717552 SHA256 a7fc878f1ffc49f856f35ada7f1d439935471ee01e34875b0d446cc5597b5d02
+DIST asterisk-core-sounds-ru-siren7-1.4.22.tar.gz 4965841 SHA256 81187002139d3494a1f059a1f4228d65c5539dcedc79d128b337ee7697666b85
+DIST asterisk-core-sounds-ru-sln16-1.4.21.tar.gz 33125360 SHA256 fe9595725021eb47a67e0cd610c8be426b150dd88de0b99a8b05361380e2d19d
+DIST asterisk-core-sounds-ru-sln16-1.4.22.tar.gz 33592783 SHA256 3ffa1e5181b8e5775865a4ecd4e34fdb76bd4e8dd825839fb10323751afc9283
+DIST asterisk-core-sounds-ru-ulaw-1.4.21.tar.gz 8299885 SHA256 09319bb1726b5f0b3e1b08e97c966a1440f596736b59977cfb4cfdd93fcc29a6
+DIST asterisk-core-sounds-ru-ulaw-1.4.22.tar.gz 8460881 SHA256 cb2f50ce8a62ddc69b2884af21e5d8c942b294366d0174e9b3ee4ace2d2693fa
+DIST asterisk-core-sounds-ru-wav-1.4.21.tar.gz 16446330 SHA256 e6be4623b0b404618f91ba2d9ae75230dc7c804d960666211a5ce2c059020156
+DIST asterisk-core-sounds-ru-wav-1.4.22.tar.gz 16591836 SHA256 eea2cf8ff81d1c32bb6375b1f4629ad6914871ba433867ff842c13519087985d
+EBUILD asterisk-core-sounds-1.4.21-r1.ebuild 1999 SHA256 5da3f8ce35b19031999d9238df68ebc841ba1435da16b6f7e76328db12e8d27c SHA512 e27badf83feb31b01483a7361460a61e31aecff221ec969e72432b503f2a8fd1fe3f3473908c60f860c99157d1a5b5a807cffb6bc656c01ffc94a7f4d8fd83a3 WHIRLPOOL fdacd8f1d121e2d19c7b43355b1a84a52bc1b7013f826be1a4720ff60f8a4fba3dc600a4b952b2b187e29b7e497a9cd9718123bb9397364b7181b5141e8a184a
+EBUILD asterisk-core-sounds-1.4.22.ebuild 1996 SHA256 53e2e8364b7cce24af69628868a49e9118abe519485a1a9f537ea4d2ecaedf40 SHA512 c0c72505051a491cd4ff5cffe90bac24426ba0fe65b1c58e6b6199c384a5e2eaf49d7584d1683439e3d9cabca5a0255b0b2e766c71371df5dd61aaf953d5f830 WHIRLPOOL 7b2193bfc49a262dea80048508bf60265f6e643abce6688d5eccd4c29650b6eafa0bc9ca5836603429bd9299158ae0bf75d78dcd2aafc2e97885d97a1a2e3b74
+MISC ChangeLog 2612 SHA256 467f2fc4ac67f850716969b0eb98b3ed2adee24e80499c09acd0efa7f9e2c1f9 SHA512 9d72443f1c62dd4041ca389142152abbecc2d89b992a15ea0115f335f3d5e0052a456ffbf61c2589142c4155c01d41e5d3627e22ce851b38cb868991c26fe6ac WHIRLPOOL 5222f34aea37fbf617e29a00256d7d765de98daa30793f148a8859c0332b8d92af79a11145f44a0a5361ca4fea0b51908033234984e5fee812ef098f602a6961
+MISC metadata.xml 832 SHA256 7c5a7bf12649f4f6dc2afd736fa1718e05748df39e007779215f4fb671f2a6fa SHA512 0afb026d3b927bb9b64648006d9002fd665c3e91efae6c95ddfbc8436d7839421180319bad1408f1046e6cbb82cae28e7806d5951e5339e983ce6e98d4fbf014 WHIRLPOOL b58becc5924e1b9126acd17dedc3e956b4b7c9afc29a1327cadbfeee5eeb45c3892b7a1a56631b4b612478588d100bf161d0e4fa9da59716bb059ac99ddb488a
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.22 (GNU/Linux)
+
+iEYEAREIAAYFAlJs4UgACgkQCaWpQKGI+9TpGACfS2sesFZX+mjaHoIEY4WJBmxS
++2sAnRmczQBijrJWLu4QR1hPAytMeTt0
+=54so
+-----END PGP SIGNATURE-----

@@ -1,0 +1,22 @@
+commit 595825dc577616862b271ffac4c58eb27f0610af
+Author: hsbt <hsbt@b2dd03c8-39d4-4d8f-98ff-823fe69b080e>
+Date:   Sun Apr 21 10:04:54 2013 +0000
+
+    Replace use of obsolete variable `last-command-char` by @maser [fix GH-290]
+    
+    
+    git-svn-id: svn+ssh://ci.ruby-lang.org/ruby/trunk@40401 b2dd03c8-39d4-4d8f-98ff-823fe69b080e
+
+diff --git a/misc/ruby-mode.el b/misc/ruby-mode.el
+index dcaa396..ace0f27 100644
+--- a/misc/ruby-mode.el
++++ b/misc/ruby-mode.el
+@@ -874,7 +874,7 @@ Also ignores spaces after parenthesis when 'space."
+ 
+ (defun ruby-electric-brace (arg)
+   (interactive "P")
+-  (insert-char last-command-char 1)
++  (insert-char last-command-event 1)
+   (ruby-indent-line t)
+   (delete-char -1)
+   (self-insert-command (prefix-numeric-value arg)))

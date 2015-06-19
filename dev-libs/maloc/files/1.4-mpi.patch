@@ -1,0 +1,24 @@
+diff --git a/configure.ac b/configure.ac
+index d82b184..b8c5321 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -397,12 +397,14 @@ AC_SUBST(rl_inc)
+ dnl # ----------------------
+ dnl # HANDLE THE MPI LIBRARY
+ dnl # ----------------------
++mpi_use=""
+ AC_MSG_CHECKING([whether you want MPI])
+-AC_ARG_ENABLE(mpi,
+-    [  --enable-mpi            enable MPI layer [[default=no]]],
+-    [ mpi_use="yes" ],
+-    [ mpi_use=""    ]
+-)
++AC_ARG_ENABLE([mpi],
++    AS_HELP_STRING([--enable-mpi            enable MPI layer [[default=no]]]))
++
++AS_IF([test "x$enable_mpi" = "xyes"], [
++    mpi_use="yes"
++])
+ mpi_lib="";
+ mpi_inc="";
+ if test -z "${mpi_use}"; then

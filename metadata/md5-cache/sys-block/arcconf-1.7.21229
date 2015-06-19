@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip
+DESCRIPTION=Adaptec RAID Controller Command Line Utility
+EAPI=5
+HOMEPAGE=http://www.adaptec.com/en-us/downloads/
+KEYWORDS=~amd64 ~x86
+LICENSE=Adaptec-EULA
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=http://download.adaptec.com/raid/storage_manager/arcconf_v1_7_21229.zip
+_md5_=c790628aaa5e9122f75efb5477c3c848

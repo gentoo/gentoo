@@ -1,0 +1,74 @@
+diff -Nadur sdcc-orig/configure.in sdcc/configure.in
+--- sdcc-orig/configure.in	2008-04-20 15:24:14.000000000 +0200
++++ sdcc/configure.in	2008-04-20 15:27:18.000000000 +0200
+@@ -320,17 +320,6 @@
+ M_OR_MM=$sdcc_cv_MM
+ AC_SUBST(M_OR_MM)
+ 
+-# This is the first time when CFLAGS are set/modified!!
+-adl_DD_COPT(CC, ggdb)
+-if test "$sdcc_cv_CCggdb" = "yes"; then
+-  CFLAGS="-ggdb ${CFLAGS}"
+-fi
+-
+-adl_DD_COPT(CC, pipe)
+-if test "$sdcc_cv_CCpipe" = "yes"; then
+-  CFLAGS="-pipe $CFLAGS"
+-fi
+-
+ 
+ # Checks for typedefs, structures, and compiler characteristics.
+ # ===========================================================================
+diff -Nadur sdcc-orig/debugger/mcs51/configure.in sdcc/debugger/mcs51/configure.in
+--- sdcc-orig/debugger/mcs51/configure.in	2008-04-20 15:24:19.000000000 +0200
++++ sdcc/debugger/mcs51/configure.in	2008-04-20 15:26:53.000000000 +0200
+@@ -148,17 +148,6 @@
+ M_OR_MM=$sdcc_cv_MM
+ AC_SUBST(M_OR_MM)
+ 
+-# This is the first time when CFLAGS are set/modified!!
+-adl_DD_COPT(CC, ggdb)
+-if test "$sdcc_cv_CCggdb" = "yes"; then
+-  CFLAGS="-ggdb ${CFLAGS}"
+-fi
+-
+-adl_DD_COPT(CC, pipe)
+-if test "$sdcc_cv_CCpipe" = "yes"; then
+-  CFLAGS="-pipe $CFLAGS"
+-fi
+-
+ 
+ # Set standard installation paths
+ # ===========================================================================
+diff -Nadur sdcc-orig/sim/ucsim/configure.in sdcc/sim/ucsim/configure.in
+--- sdcc-orig/sim/ucsim/configure.in	2008-04-20 15:24:11.000000000 +0200
++++ sdcc/sim/ucsim/configure.in	2008-04-20 15:26:06.000000000 +0200
+@@ -514,28 +514,6 @@
+ M_OR_MM=$ucsim_cv_MM
+ AC_SUBST(M_OR_MM)
+ 
+-# This is the first time when CFLAGS are set/modified!!
+-
+-DD_COPT(CXX, ggdb)
+-DD_COPT(CXX, gstabs)
+-if test "$ucsim_cv_CXXgstabs" = "yes"; then
+-   gopt="-gstabs+ -g3"
+-elif test "$ucsim_cv_CXXggdb" = "yes"; then
+-     gopt="-ggdb -g3"
+-else
+-     gopt="-g"
+-fi
+-if test "$CXXFLAGS"x = x ;then
+-        CXXFLAGS="$gopt"
+-else
+-        CXXFLAGS="$CXXFLAGS $gopt"
+-fi
+-
+-DD_COPT(CXX, pipe)
+-if test "$ucsim_cv_CXXpipe" = "yes"; then
+-  CXXFLAGS="$CXXFLAGS -pipe"
+-fi
+-
+ PICOPT=""
+ SHAREDLIB="no"
+ DD_COPT_NO_IGNORE(CXX, fPIC)

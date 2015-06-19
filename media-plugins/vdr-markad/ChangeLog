@@ -1,0 +1,94 @@
+# ChangeLog for media-plugins/vdr-markad
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-markad/ChangeLog,v 1.18 2015/05/27 11:10:13 ago Exp $
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> vdr-markad-0.1.4-r1.ebuild:
+  Stable for x86, wrt bug #549634
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> vdr-markad-0.1.4-r1.ebuild:
+  Stable for amd64, wrt bug #549634
+
+*vdr-markad-0.1.4-r1 (01 Mar 2015)
+
+  01 Mar 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-markad-0.1.4-r1.ebuild:
+  compile fix libav11, wrt bug 540884, thx to T.Foerster for reporting this
+
+  06 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-markad-0.1.4.ebuild:
+  stable amd64 x86
+
+  29 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-markad-0.1.4.ebuild,
+  files/vdr-markad-0.1.4-libav9.patch, +files/vdr-markad-0.1.4_ffmpeg-2.patch:
+  fixed libav9 patch; fixed some ffmpeg issues
+
+  08 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-markad-0.1.2.ebuild, -files/vdr-markad-0.1.2-ffmpeg.patch,
+  -vdr-markad-0.1.3.ebuild, vdr-markad-0.1.4.ebuild:
+  cleanup; eapi=5
+
+  17 Jun 2013; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/vdr-markad-0.1.4-libav9.patch, vdr-markad-0.1.4.ebuild:
+  Fix build with libav9. Fixes bug#443244.
+
+*vdr-markad-0.1.4 (27 Sep 2012)
+
+  27 Sep 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-markad-0.1.4.ebuild:
+  bump
+
+*vdr-markad-0.1.3 (02 Mar 2012)
+
+  02 Mar 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-markad-0.0.8-r1.ebuild, -vdr-markad-0.0.9.ebuild,
+  -vdr-markad-0.1.0.ebuild, -vdr-markad-0.1.1.ebuild, vdr-markad-0.1.2.ebuild,
+  +vdr-markad-0.1.3.ebuild:
+  cleanup, eaip=4, changed to mirror://, version bump
+
+  17 Dec 2011; Alexis Ballier <aballier@gentoo.org> vdr-markad-0.1.2.ebuild,
+  +files/vdr-markad-0.1.2-ffmpeg.patch:
+  fix build with latest ffmpeg
+
+  06 Apr 2011; Christian Ruppert <idl0r@gentoo.org> vdr-markad-0.0.8-r1.ebuild,
+  vdr-markad-0.0.9.ebuild, vdr-markad-0.1.0.ebuild, vdr-markad-0.1.1.ebuild,
+  vdr-markad-0.1.2.ebuild:
+  Use the new ffmpeg virtual, bug 362099.
+
+*vdr-markad-0.1.2 (03 Apr 2011)
+
+  03 Apr 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-markad-0.1.2.ebuild:
+  version bump
+
+*vdr-markad-0.1.1 (21 Mar 2011)
+
+  21 Mar 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-markad-0.1.1.ebuild:
+  version bump
+
+*vdr-markad-0.1.0 (01 Mar 2011)
+
+  01 Mar 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-markad-0.1.0.ebuild:
+  version bump
+
+*vdr-markad-0.0.9 (13 Feb 2011)
+
+  13 Feb 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-markad-0.0.9.ebuild:
+  version bump
+
+*vdr-markad-0.0.8-r1 (02 Feb 2011)
+
+  02 Feb 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-markad-0.0.8.ebuild, +vdr-markad-0.0.8-r1.ebuild:
+  fixed svrpport used up from vdr-1.7.15
+
+  27 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-markad-0.0.8.ebuild:
+  fix in sed line; added ffmpeg use-flag depend
+
+*vdr-markad-0.0.8 (25 Jan 2011)
+
+  25 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-markad-0.0.8.ebuild, +metadata.xml:
+  initial ebuild

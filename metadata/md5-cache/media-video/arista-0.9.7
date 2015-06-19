@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=An easy to use multimedia transcoder for the GNOME Desktop
+EAPI=5
+HOMEPAGE=http://www.transcoder.org
+IUSE=+faac kde nautilus +x264 +xvid python_targets_python2_7 linguas_ar linguas_ast linguas_bg linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_en_GB linguas_es linguas_et linguas_eu linguas_fi linguas_fr linguas_gl linguas_hu linguas_ia linguas_id linguas_it linguas_ja linguas_jv linguas_kn linguas_lt linguas_nl linguas_pl linguas_pt linguas_pt_BR linguas_ro linguas_ru linguas_sk linguas_sl linguas_sr linguas_sv linguas_th linguas_tr linguas_uk linguas_zh_CN linguas_zh_TW
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=x11-libs/gtk+-2.16:2 >=dev-python/pygtk-2.16:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygobject:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pycairo[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/gconf-python:2 dev-python/dbus-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/python-gudev[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] gnome-base/librsvg >=media-libs/gstreamer-0.10.22:0.10 dev-python/gst-python:0.10[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] media-libs/gst-plugins-base:0.10 media-libs/gst-plugins-good:0.10 media-libs/gst-plugins-bad:0.10 media-plugins/gst-plugins-meta:0.10 media-plugins/gst-plugins-ffmpeg:0.10 x11-themes/gnome-icon-theme nautilus? ( dev-python/nautilus-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) kde? ( dev-python/librsvg-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) faac? ( media-plugins/gst-plugins-faac:0.10 ) x264? ( media-plugins/gst-plugins-x264:0.10 ) xvid? ( media-plugins/gst-plugins-xvid:0.10 ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=http://programmer-art.org/media/releases/arista-transcoder/arista-0.9.7.tar.gz
+_eclasses_=distutils-r1	c01d5c4af34f4a37a51fc9638299c222	eutils	9fb270e417e0e83d64ca52586c4a79de	l10n	33bde4fb0cfd3a21a277b66bfd837e19	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	6d3a3cb5705b9fff1aeb7cfa4e3336fe	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9be015df2c96099212fea76704fc7118

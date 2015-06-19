@@ -1,0 +1,96 @@
+# ChangeLog for dev-perl/Unix-Syslog
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Unix-Syslog/ChangeLog,v 1.30 2014/08/22 20:34:49 axs Exp $
+
+*Unix-Syslog-1.100.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Unix-Syslog-1.100.0-r1.ebuild, -Unix-Syslog-1.100.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -Unix-Syslog-0.100-r1.ebuild:
+  Cleanup
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> Unix-Syslog-1.100.0.ebuild:
+  alpha/ia64/sparc stable wrt #400257
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Unix-Syslog-1.100.0.ebuild:
+  x86 stable wrt bug #400257
+
+  03 Mar 2012; Brent Baude <ranger@gentoo.org> Unix-Syslog-1.100.0.ebuild:
+  Marking Unix-Syslog-1.100.0 ppc64 for bug 400257
+
+  27 Feb 2012; Brent Baude <ranger@gentoo.org> Unix-Syslog-1.100.0.ebuild:
+  Marking Unix-Syslog-1.100.0 ppc for bug 400257
+
+  24 Feb 2012; Jeroen Roovers <jer@gentoo.org> Unix-Syslog-1.100.0.ebuild:
+  Stable for HPPA (bug #400257).
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Unix-Syslog-1.100.0.ebuild:
+  Stable for amd64, wrt bug #400257
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Unix-Syslog-1.1.ebuild:
+  Cleanup
+
+*Unix-Syslog-1.100.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +Unix-Syslog-1.100.0.ebuild:
+  Change version scheme
+
+  20 Oct 2009; Jeroen Roovers <jer@gentoo.org> Unix-Syslog-0.100-r1.ebuild:
+  Stable for HPPA (LuckyLuke).
+
+  20 Nov 2008; Jeroen Roovers <jer@gentoo.org> Unix-Syslog-1.1.ebuild:
+  Marked ~hppa too (thanks to LuckyLuke).
+
+*Unix-Syslog-1.1 (18 Jul 2008)
+
+  18 Jul 2008; Torsten Veller <tove@gentoo.org> +Unix-Syslog-1.1.ebuild:
+  Version bump
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Unix-Syslog-0.100-r1.ebuild:
+  Ebuild maintenance
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Unix-Syslog-0.100-r1.ebuild:
+  Adding perl dep; fixed header; fixed DEPEND
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  Unix-Syslog-0.100-r1.ebuild:
+  Mark 0.100-r1 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  Unix-Syslog-0.100-r1.ebuild:
+  add ~ia64
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Unix-Syslog-0.100.ebuild, Unix-Syslog-0.100-r1.ebuild:
+  Cleaning for mirror syntax
+
+  06 Feb 2005; Markus Rothe <corsair@gentoo.org> Unix-Syslog-0.100-r1.ebuild:
+  Stable on ppc64
+
+  29 Dec 2004; Markus Rothe <corsair@gentoo.org> Unix-Syslog-0.100-r1.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*Unix-Syslog-0.100-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*Unix-Syslog-0.100 (23 Oct 2002)
+
+  23 Oct 2002; Nick Hadaway <raker@gentoo.org> Unix-Syslog-0.100.ebuild,
+  files/digest-Unix-Syslog-0.100 :
+  New ebuild.  Added to support net-mail/amavis.

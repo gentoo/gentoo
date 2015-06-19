@@ -1,0 +1,50 @@
+From baf971a58d310d6d3bfe7ddea81b33c810e3d3cf Mon Sep 17 00:00:00 2001
+From: Tim Kamanin <tim@timonweb.com>
+Date: Sat, 21 Feb 2015 18:42:45 +0100
+Subject: [PATCH] Added Python 3 support
+
+---
+ django_baker/bakery.py                   | 4 ++--
+ django_baker/management/commands/bake.py | 3 ++-
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/django_baker/bakery.py b/django_baker/bakery.py
+index ff04ef3..7c0cbc2 100644
+--- a/django_baker/bakery.py
++++ b/django_baker/bakery.py
+@@ -4,7 +4,7 @@
+ import re
+ from django.template.loader import get_template
+ from django.template import Context
+-
++from django.utils.six import iteritems
+ 
+ class Baker(object):
+     """
+@@ -16,7 +16,7 @@ def bake(self, apps_and_models):
+         """
+             Iterates a dictionary of apps and models and creates all the necessary files to get up and running quickly.
+         """
+-        for app_label, models in apps_and_models.iteritems():
++        for app_label, models in iteritems(apps_and_models):
+             model_names = {model.__name__: self.get_field_names_for_model(model) for model in models}
+             self.create_directories(app_label)
+             self.create_init_files(app_label, model_names.keys(), models)
+diff --git a/django_baker/management/commands/bake.py b/django_baker/management/commands/bake.py
+index e602345..f7dc16a 100644
+--- a/django_baker/management/commands/bake.py
++++ b/django_baker/management/commands/bake.py
+@@ -1,3 +1,4 @@
++from __future__ import print_function
+ from django.core.management.base import BaseCommand, CommandError
+ from django.core.exceptions import ImproperlyConfigured
+ from django.db.models import get_app, get_models
+@@ -51,7 +52,7 @@ def get_selected_models(self, app, app_label, model_names):
+         """
+         if model_names:
+             try:
+-                print app_label, model_names
++                print(app_label, model_names)
+                 return [get_model(app_label, model_name) for model_name in model_names]
+             except:
+                 raise CommandError("One or more of the models you entered for %s are incorrect." % app_label)

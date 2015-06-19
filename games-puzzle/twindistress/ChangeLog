@@ -1,0 +1,48 @@
+# ChangeLog for games-puzzle/twindistress
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/twindistress/ChangeLog,v 1.13 2015/02/25 22:15:46 tupone Exp $
+
+  25 Feb 2015; Tupone Alfredo <tupone@gentoo.org> twindistress-1.1.0.ebuild:
+  EAPI 5
+
+  19 Oct 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  twindistress-1.1.0.ebuild, +files/twindistress-1.1.0-warnings.patch:
+  tidy; fix some compile warnings
+
+  19 Oct 2010; Tupone Alfredo <tupone@gentoo.org> twindistress-1.1.0.ebuild,
+  +files/twindistress-1.1.0-ldflags.patch:
+  Respect LDFLAGS. Bug #331865 by flameeyes@gentoo.org
+
+  25 Jan 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  twindistress-1.1.0.ebuild:
+  EAPI=2; tidy
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> twindistress-1.1.0.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> twindistress-1.03.ebuild:
+  Replacing einfo with elog
+
+*twindistress-1.1.0 (30 Sep 2006)
+
+  30 Sep 2006; Tristan Heaven <nyhm@gentoo.org> +twindistress-1.1.0.ebuild:
+  Version bump, bug #139972
+
+  15 Aug 2006; Thomas Cort <tcort@gentoo.org> twindistress-1.03.ebuild:
+  Stable on amd64 wrt Bug #143961
+
+  17 Feb 2006; <Tupone@gentoo.org> twindistress-1.03.ebuild:
+  Modular X dependency fix
+
+  23 Nov 2004; Joseph Jezak <josejx@gentoo.org> twindistress-1.03.ebuild:
+  Marked ppc stable.
+
+  03 Sep 2004; David Holm <dholm@gentoo.org> twindistress-1.03.ebuild:
+  Added to ~ppc.
+
+*twindistress-1.03 (22 Feb 2004)
+
+  22 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> metadata.xml,
+  twindistress-1.03.ebuild:
+  initial commit; ebuild submitted by scott@teamslack.net via bug #42325
+

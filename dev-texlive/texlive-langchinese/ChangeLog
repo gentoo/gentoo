@@ -1,0 +1,10 @@
+# ChangeLog for dev-texlive/texlive-langchinese
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-langchinese/ChangeLog,v 1.1 2014/11/03 06:50:15 aballier Exp $
+
+*texlive-langchinese-2014 (03 Nov 2014)
+
+  03 Nov 2014; Alexis Ballier <aballier@gentoo.org>
+  +texlive-langchinese-2014.ebuild, +metadata.xml:
+  bump to texlive 2014
+

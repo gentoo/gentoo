@@ -1,0 +1,190 @@
+# ChangeLog for x11-plugins/pidgin-sipe
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/pidgin-sipe/ChangeLog,v 1.36 2015/05/15 16:51:27 thev00d00 Exp $
+
+*pidgin-sipe-1.19.1 (15 May 2015)
+
+  15 May 2015; Ian Whyman <thev00d00@gentoo.org> +pidgin-sipe-1.19.1.ebuild,
+  -pidgin-sipe-1.18.5.ebuild:
+  Version bump, #549256
+
+*pidgin-sipe-1.19.0 (12 Feb 2015)
+
+  12 Feb 2015; Ian Whyman <thev00d00@gentoo.org> +pidgin-sipe-1.19.0.ebuild:
+  Version bump
+
+*pidgin-sipe-1.18.5 (30 Dec 2014)
+
+  30 Dec 2014; Ian Whyman <thev00d00@gentoo.org> +pidgin-sipe-1.18.5.ebuild,
+  -pidgin-sipe-1.18.4.ebuild:
+  Version bump
+
+*pidgin-sipe-1.18.4 (22 Oct 2014)
+
+  22 Oct 2014; Ian Whyman <thev00d00@gentoo.org> +pidgin-sipe-1.18.4.ebuild,
+  -pidgin-sipe-1.18.3.ebuild:
+  Version bump
+
+*pidgin-sipe-1.18.3 (19 Aug 2014)
+
+  19 Aug 2014; Ian Whyman <thev00d00@gentoo.org> +pidgin-sipe-1.18.3.ebuild,
+  -pidgin-sipe-1.18.1.ebuild, -pidgin-sipe-1.18.2.ebuild:
+  Version bump, tidy old
+
+*pidgin-sipe-1.18.2 (14 Jun 2014)
+
+  14 Jun 2014; Manuel Rüger <mrueg@gentoo.org> +pidgin-sipe-1.18.2.ebuild:
+  Version bump.
+
+*pidgin-sipe-1.18.1 (10 May 2014)
+
+  10 May 2014; Ian Whyman <thev00d00@gentoo.org> +pidgin-sipe-1.18.1.ebuild,
+  -pidgin-sipe-1.17.3.ebuild:
+  Version bump, thanks to Mark R. Pariente for the reminder in #509942
+
+  01 Mar 2014; Pacho Ramos <pacho@gentoo.org> pidgin-sipe-1.18.0-r1.ebuild:
+  x86 stable, bug #502212
+
+  01 Mar 2014; Pacho Ramos <pacho@gentoo.org> pidgin-sipe-1.18.0-r1.ebuild:
+  amd64 stable, bug #502212
+
+*pidgin-sipe-1.18.0-r1 (01 Feb 2014)
+
+  01 Feb 2014; Ian Whyman <thev00d00@gentoo.org> +pidgin-sipe-1.18.0-r1.ebuild,
+  -pidgin-sipe-1.18.0.ebuild:
+  Drop required use and default to nss
+
+*pidgin-sipe-1.18.0 (30 Jan 2014)
+
+  30 Jan 2014; Ian Whyman <thev00d00@gentoo.org> +pidgin-sipe-1.18.0.ebuild,
+  metadata.xml:
+  Version bump, add explicit choice of crypto provider
+
+*pidgin-sipe-1.17.3 (17 Dec 2013)
+
+  17 Dec 2013; Ian Whyman <thev00d00@gentoo.org> +pidgin-sipe-1.17.3.ebuild,
+  -pidgin-sipe-1.17.1.ebuild, -pidgin-sipe-1.17.2.ebuild:
+  Version bump, tidy old, fixes #494550
+
+*pidgin-sipe-1.17.2 (16 Dec 2013)
+
+  16 Dec 2013; Ian Whyman <thev00d00@gentoo.org> +pidgin-sipe-1.17.2.ebuild:
+  Version bump to 1.17.2, thanks to AW for #493812
+
+  28 Nov 2013; Ian Whyman <thev00d00@gentoo.org> -pidgin-sipe-1.16.1.ebuild,
+  metadata.xml, pidgin-sipe-1.17.1.ebuild:
+  Add telepathy support, per bug #492344
+
+*pidgin-sipe-1.17.1 (21 Nov 2013)
+
+  21 Nov 2013; Ian Whyman <thev00d00@gentoo.org> +pidgin-sipe-1.17.1.ebuild,
+  -pidgin-sipe-1.15.1.ebuild:
+  Bump to 1.17.1, thanks to Andrew Waters for reporting in #491878
+
+*pidgin-sipe-1.16.1 (18 Jul 2013)
+
+  18 Jul 2013; Ian Whyman <thev00d00@gentoo.org> +pidgin-sipe-1.16.1.ebuild,
+  -pidgin-sipe-1.14.1.ebuild, -pidgin-sipe-1.16.0.ebuild:
+  Version bump, drop old
+
+*pidgin-sipe-1.16.0 (20 Jun 2013)
+
+  20 Jun 2013; Ian Whyman <thev00d00@gentoo.org> +pidgin-sipe-1.16.0.ebuild:
+  Version bump
+
+*pidgin-sipe-1.15.1 (23 Apr 2013)
+
+  23 Apr 2013; Ian Whyman <thev00d00@gentoo.org> +pidgin-sipe-1.15.1.ebuild,
+  -pidgin-sipe-1.15.0.ebuild:
+  Version bump
+
+*pidgin-sipe-1.15.0 (17 Mar 2013)
+
+  17 Mar 2013; Ian Whyman <thev00d00@gentoo.org> +pidgin-sipe-1.15.0.ebuild,
+  -pidgin-sipe-1.13.3.ebuild, pidgin-sipe-1.14.1.ebuild:
+  Version bump and fix GStreamer slot per #459714
+
+*pidgin-sipe-1.14.1 (02 Jan 2013)
+
+  02 Jan 2013; Ian Whyman <thev00d00@gentoo.org> +pidgin-sipe-1.14.1.ebuild,
+  -pidgin-sipe-1.13.2-r1.ebuild, pidgin-sipe-1.13.3.ebuild:
+  Version bump, add dev-libs/nss dep per #438192
+
+*pidgin-sipe-1.13.3 (29 Aug 2012)
+
+  29 Aug 2012; Ian Whyman <thev00d00@gentoo.org> -pidgin-sipe-1.13.1.ebuild,
+  +pidgin-sipe-1.13.3.ebuild:
+  Version bump
+
+*pidgin-sipe-1.13.2-r1 (30 Jun 2012)
+
+  30 Jun 2012; Ian Whyman <thev00d00@gentoo.org> -pidgin-sipe-1.13.2.ebuild,
+  +pidgin-sipe-1.13.2-r1.ebuild, -files/pidgin-sipe-1.13.2-fix-sandbox.patch,
+  +files/pidgin-sipe-1.13.2-fix-sandbox-r1.patch:
+  Fix build with USE="kerberos" and krb5 dependency
+
+*pidgin-sipe-1.13.2 (26 Jun 2012)
+
+  26 Jun 2012; Ian Whyman <thev00d00@gentoo.org> +pidgin-sipe-1.13.2.ebuild,
+  +files/pidgin-sipe-1.13.2-fix-sandbox.patch, metadata.xml:
+  Version bump, patch to remove possible sandbox violation
+
+  26 Jun 2012; Ian Whyman <thev00d00@gentoo.org> -pidgin-sipe-1.12.0.ebuild,
+  -pidgin-sipe-1.13.0.ebuild, pidgin-sipe-1.13.1.ebuild:
+  Fix deps, remove old
+
+*pidgin-sipe-1.13.1 (24 Apr 2012)
+
+  24 Apr 2012; Ian Whyman <thev00d00@gentoo.org> +pidgin-sipe-1.13.1.ebuild:
+  Bump to latest
+
+*pidgin-sipe-1.13.0 (20 Mar 2012)
+
+  20 Mar 2012; Ian Whyman <thev00d00@gentoo.org> +pidgin-sipe-1.13.0.ebuild:
+  Bump to 1.13.0
+
+  10 Jan 2012; Ian Whyman <thev00d00@gentoo.org> -pidgin-sipe-1.3.3.ebuild,
+  -pidgin-sipe-1.7.0.ebuild, -pidgin-sipe-1.7.1.ebuild,
+  -pidgin-sipe-1.10.0.ebuild, pidgin-sipe-1.12.0.ebuild:
+  Remove old, added gnutls USE dep to pidgin, fixes bug #397499
+
+*pidgin-sipe-1.12.0 (15 Dec 2011)
+
+  15 Dec 2011; Ian Whyman <thev00d00@gentoo.org> +pidgin-sipe-1.12.0.ebuild,
+  metadata.xml:
+  Add myself to maintainers, bump to pidgin-sipe-1.12.0
+
+  24 May 2010; Peter Volkov <pva@gentoo.org> pidgin-sipe-1.10.0.ebuild:
+  Fixed -Werror build issue, bug #321275, thank Diego E. 'Flameeyes'
+  Pettenò for report.
+
+  01 May 2010; Peter Volkov <pva@gentoo.org> pidgin-sipe-1.10.0.ebuild:
+  Explicitely disable telepathy to avoid but #317489, thank Paul Varner for
+  report.
+
+*pidgin-sipe-1.10.0 (25 Apr 2010)
+
+  25 Apr 2010; Peter Volkov <pva@gentoo.org> +pidgin-sipe-1.10.0.ebuild:
+  Version bump, bug #275611, thank Dave Bender for report.
+
+*pidgin-sipe-1.7.1 (30 Nov 2009)
+
+  30 Nov 2009; Jim Ramsay <lack@gentoo.org> +pidgin-sipe-1.7.1.ebuild:
+  Version bump: 1.7.1 released
+
+*pidgin-sipe-1.7.0 (02 Nov 2009)
+
+  02 Nov 2009; Dominik Kapusta <ayoy@gentoo.org> +pidgin-sipe-1.7.0.ebuild:
+  Version bump, keywording for x86 (bug #275611)
+
+  25 Oct 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove drizzt from metadata.xml (#149111)
+
+  16 Feb 2009; Timothy Redaelli <drizzt@gentoo.org> metadata.xml:
+  Add myself as maintainer
+
+*pidgin-sipe-1.3.3 (13 Feb 2009)
+
+  13 Feb 2009; Timothy Redaelli <drizzt@gentoo.org> +metadata.xml,
+  +pidgin-sipe-1.3.3.ebuild:
+  New ebuild

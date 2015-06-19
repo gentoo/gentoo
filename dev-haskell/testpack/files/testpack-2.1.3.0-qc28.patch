@@ -1,0 +1,139 @@
+diff --git a/src/Test/HUnit/Tools.hs b/src/Test/HUnit/Tools.hs
+index 2b66548..a24a510 100644
+--- a/src/Test/HUnit/Tools.hs
++++ b/src/Test/HUnit/Tools.hs
+@@ -18,9 +18,9 @@ module Test.HUnit.Tools (assertRaises, mapassertEqual,
+     where
+ import Test.QuickCheck as QC
+ import Test.QuickCheck.Text
+-import Test.QuickCheck.Test
++import Test.QuickCheck.Test as TQT
+ import Test.QuickCheck.Gen
+-import Test.QuickCheck.State
++import Test.QuickCheck.State as TQS
+ import qualified Test.QuickCheck.Property as P
+ import Test.QuickCheck.Property hiding (Result(reason))
+ import qualified Control.Exception
+@@ -33,6 +33,9 @@ import System.Random (newStdGen, StdGen(..), split)
+ #define newStdGen newQCGen
+ #define StdGen QCGen
+ #endif
++#if MIN_VERSION_QuickCheck(2,8,0)
++import qualified Data.Map as Map
++#endif
+ import System.IO
+ import Text.Printf
+ 
+@@ -205,6 +208,9 @@ localquickCheckWithResult args p =
+                                          Just (_,s) -> \_ _ -> s
+                  , numSuccessTests   = 0
+                  , numDiscardedTests = 0
++#if MIN_VERSION_QuickCheck(2,8,0)
++                 , TQS.labels        = Map.empty
++#endif
+                  , collected         = []
+                  , expectedFailure   = False
+                  , randomSeed        = rnd
+@@ -236,14 +242,14 @@ localquickCheckWithResult args p =
+         theOutput <- terminalOutput (terminal st)
+ #endif
+         if expectedFailure st then
+-           return Success{ labels = summary st
++           return Success{ TQT.labels = summary st
+ #if MIN_VERSION_QuickCheck(2,3,0)
+                          , numTests = numSuccessTests st
+                          , output = theOutput 
+ #endif
+                          }
+            else
+-           return NoExpectedFailure{ labels = summary st
++           return NoExpectedFailure{ TQT.labels = summary st
+ #if MIN_VERSION_QuickCheck(2,3,0)
+                                    , numTests = numSuccessTests st
+                                    , output = theOutput 
+@@ -257,7 +263,7 @@ localquickCheckWithResult args p =
+         theOutput <- terminalOutput (terminal st)
+ #endif
+         return GaveUp{ numTests = numSuccessTests st
+-                     , labels   = summary st
++                     , TQT.labels   = summary st
+ #if MIN_VERSION_QuickCheck(2,3,0)
+                      , output   = theOutput
+ #endif
+@@ -306,7 +312,7 @@ localquickCheckWithResult args p =
+                foundFailure st res ts
+ #endif
+                if not (expect res) then
+-                 return Success{ labels = summary st
++                 return Success{ TQT.labels = summary st
+ #if MIN_VERSION_QuickCheck(2,3,0)
+                                , numTests = numSuccessTests st+1
+                                , output = theOutput
+@@ -316,7 +322,7 @@ localquickCheckWithResult args p =
+                  return Failure{ usedSeed   = randomSeed st -- correct! (this will be split first)
+                                , usedSize   = size
+                                , reason     = P.reason res
+-                               , labels     = summary st
++                               , TQT.labels     = summary st
+ #if MIN_VERSION_QuickCheck(2,3,0)
+                                , numTests   = numSuccessTests st + 1
+                                , numShrinks = numShrinks
+diff --git a/src/Test/QuickCheck/Tools.hs b/src/Test/QuickCheck/Tools.hs
+index 712c9bf..506686f 100644
+--- a/src/Test/QuickCheck/Tools.hs
++++ b/src/Test/QuickCheck/Tools.hs
+@@ -20,34 +20,18 @@ Written by John Goerzen, jgoerzen\@complete.org
+ module Test.QuickCheck.Tools (-- * Comparisons
+                               (@=?),
+                               (@?=)
+-                              
+                              )
+ where
+-#if MIN_VERSION_QuickCheck(2,6,0)
+-import Test.QuickCheck.Property (Result(..), callbacks, expect, theException, ok, reason, stamp)
+-#if MIN_VERSION_QuickCheck(2,7,0)
+-#else
+-import Test.QuickCheck.Property (Result(..), callbacks, expect, interrupted, ok, reason, stamp)
+-#endif
+-#else
+-import Test.QuickCheck hiding (Result, reason)
+-import Test.QuickCheck.Property
+-#endif
++
++import qualified Test.QuickCheck.Property as P
+ 
+ {- | Compare two values.  If same, the test passes.  If different, the result indicates
+ what was expected and what was received as part of the error. -}
+-(@=?) :: (Eq a, Show a) => a -> a -> Result
++(@=?) :: (Eq a, Show a) => a -> a -> P.Result
+ expected @=? actual = 
+-        MkResult {ok = Just (expected == actual), 
+-#if MIN_VERSION_QuickCheck(2,7,0)
+-                  expect = True, theException = Nothing,
+-#else
+-                  expect = True, interrupted = False,
+-#endif
+-                  reason = "Result: expected " ++ show expected ++ ", got " ++ show actual,
+-                  stamp = [], callbacks = []}
+-    
++        P.result { P.ok = Just (expected == actual)
++                 , P.reason = "Result: expected " ++ show expected ++ ", got " ++ show actual
++                 }
+ {- | Like '@=?', but with args in a different order. -}
+-(@?=) :: (Eq a, Show a) => a -> a -> Result
++(@?=) :: (Eq a, Show a) => a -> a -> P.Result
+ (@?=) = flip (@=?)
+-
+diff --git a/testpack.cabal b/testpack.cabal
+index 0873b33..dab77d9 100644
+--- a/testpack.cabal
++++ b/testpack.cabal
+@@ -46,7 +46,7 @@ Library
+ 
+  Build-Depends: base >= 3 && < 5,
+                mtl, HUnit,
+-               QuickCheck >= 2.1.0.3 && < 2.8
++               QuickCheck >= 2.1.0.3 && < 2.9
+ 
+  If flag(splitBase)
+    Build-Depends: base >= 3 && < 5, containers, random

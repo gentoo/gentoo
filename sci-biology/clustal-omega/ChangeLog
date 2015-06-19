@@ -1,0 +1,28 @@
+# ChangeLog for sci-biology/clustal-omega
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/clustal-omega/ChangeLog,v 1.6 2015/04/07 14:32:30 jlec Exp $
+
+*clustal-omega-1.2.1 (28 Mar 2015)
+
+  28 Mar 2015; Justin Lecher <jlec@gentoo.org> +clustal-omega-1.2.1.ebuild,
+  -clustal-omega-1.0.3.ebuild, -clustal-omega-1.1.0.ebuild:
+  Version Bump; drop old
+
+*clustal-omega-1.2.0 (06 Jan 2014)
+
+  06 Jan 2014; Justin Lecher <jlec@gentoo.org> +clustal-omega-1.2.0.ebuild:
+  Version Bump
+
+*clustal-omega-1.1.0 (26 Apr 2013)
+
+  26 Apr 2013; Justin Lecher <jlec@gentoo.org> +clustal-omega-1.1.0.ebuild:
+  Version Bump
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+*clustal-omega-1.0.3 (25 Sep 2011)
+
+  25 Sep 2011; Andrey Kislyuk <weaver@gentoo.org>
+  +clustal-omega-1.0.3.ebuild, +metadata.xml:
+  New package, ebuild written by me

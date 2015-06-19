@@ -1,0 +1,1003 @@
+# ChangeLog for gnome-base/libgtop
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/libgtop/ChangeLog,v 1.279 2015/01/07 19:55:41 pacho Exp $
+
+  07 Jan 2015; Pacho Ramos <pacho@gentoo.org> -libgtop-2.28.4.ebuild,
+  -libgtop-2.28.5.ebuild:
+  Drop old
+
+  11 Oct 2014; Markus Meier <maekke@gentoo.org> libgtop-2.30.0.ebuild:
+  arm stable, bug #512012
+
+  15 Sep 2014; Agostino Sarubbo <ago@gentoo.org> libgtop-2.30.0.ebuild:
+  Stable for sparc, wrt bug #512012
+
+  25 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libgtop-2.30.0.ebuild:
+  Stable for alpha, wrt bug #512012
+
+  23 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libgtop-2.30.0.ebuild:
+  Stable for ia64, wrt bug #512012
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libgtop-2.30.0.ebuild:
+  Stable for ppc64, wrt bug #512012
+
+  28 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libgtop-2.30.0.ebuild:
+  Stable for ppc, wrt bug #512012
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libgtop-2.30.0.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libgtop-2.30.0.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  20 Jun 2014; Agostino Sarubbo <ago@gentoo.org> libgtop-2.28.5.ebuild:
+  Stable for arm, wrt bug #508862
+
+*libgtop-2.30.0 (31 May 2014)
+
+  31 May 2014; Pacho Ramos <pacho@gentoo.org> +libgtop-2.30.0.ebuild:
+  Version bump
+
+  17 May 2014; Agostino Sarubbo <ago@gentoo.org> libgtop-2.28.5.ebuild:
+  Stable for alpha, wrt bug #508862
+
+  14 May 2014; Agostino Sarubbo <ago@gentoo.org> libgtop-2.28.5.ebuild:
+  Stable for sparc, wrt bug #508862
+
+  13 May 2014; Agostino Sarubbo <ago@gentoo.org> libgtop-2.28.5.ebuild:
+  Stable for ia64, wrt bug #508862
+
+  11 May 2014; Agostino Sarubbo <ago@gentoo.org> libgtop-2.28.5.ebuild:
+  Stable for ppc64, wrt bug #508862
+
+  10 May 2014; Agostino Sarubbo <ago@gentoo.org> libgtop-2.28.5.ebuild:
+  Stable for ppc, wrt bug #508862
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> libgtop-2.28.5.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> libgtop-2.28.5.ebuild:
+  arch stable, bug 888
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> libgtop-2.28.5.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> libgtop-2.28.5.ebuild:
+  amd64 stable, bug #478252
+
+*libgtop-2.28.5 (25 Aug 2013)
+
+  25 Aug 2013; Gilles Dartiguelongue <eva@gentoo.org> +libgtop-2.28.5.ebuild:
+  Version bump. Port to EAPI=5, stop using G2CONF.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> libgtop-2.28.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  30 Oct 2011; Raúl Porcel <armin76@gentoo.org> libgtop-2.28.4.ebuild:
+  alpha/ia64/sh/sparc stable wrt #385699
+
+  28 Oct 2011; Markus Meier <maekke@gentoo.org> libgtop-2.28.4.ebuild:
+  arm stable, bug #385699
+
+  21 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> libgtop-2.28.4.ebuild:
+  x86 stable wrt bug #385699
+
+  16 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org> libgtop-2.28.4.ebuild:
+  ppc/ppc64 stable wrt #385699
+
+  14 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> libgtop-2.28.4.ebuild:
+  amd64 stable wrt #385699
+
+  05 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org> libgtop-2.28.3.ebuild:
+  ppc/ppc64 stable wrt #369909
+
+*libgtop-2.28.4 (09 Sep 2011)
+
+  09 Sep 2011; Pacho Ramos <pacho@gentoo.org> +libgtop-2.28.4.ebuild:
+  Version bump, drop .la files.
+
+  13 Aug 2011; Raúl Porcel <armin76@gentoo.org> libgtop-2.28.3.ebuild:
+  alpha/ia64/sh/sparc stable wrt #369909
+
+  17 Jul 2011; Markus Meier <maekke@gentoo.org> libgtop-2.28.3.ebuild:
+  arm stable, bug #369909
+
+  14 Jul 2011; Thomas Kahle <tomka@gentoo.org> libgtop-2.28.3.ebuild:
+  x86 stable per bug 369909
+
+  01 Jul 2011; Markos Chandras <hwoarang@gentoo.org> libgtop-2.28.3.ebuild:
+  Stable on amd64 wrt bug #278255
+
+*libgtop-2.28.3 (26 Mar 2011)
+
+  26 Mar 2011; Gilles Dartiguelongue <eva@gentoo.org> -libgtop-2.26.1.ebuild,
+  -libgtop-2.28.1.ebuild, +libgtop-2.28.3.ebuild, metadata.xml:
+  Version bump. Add introspection support. Fix build, cygwin and freebsd
+  issues. Translation updates.
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org> libgtop-2.28.2.ebuild:
+  Marking libgtop-2.28.2 ppc stable for bug 353436
+
+  21 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> libgtop-2.28.2.ebuild:
+  ppc64 stable wrt #353436
+
+  21 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> libgtop-2.28.2.ebuild:
+  ppc64 stable wrt #353436
+
+  30 Jan 2011; Raúl Porcel <armin76@gentoo.org> libgtop-2.28.2.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #348987
+
+  19 Jan 2011; Markos Chandras <hwoarang@gentoo.org> libgtop-2.28.2.ebuild:
+  Stable on amd64 wrt bug #348987
+
+  18 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  libgtop-2.28.2.ebuild:
+  x86 stable, bug 348987
+
+  07 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> libgtop-2.28.1.ebuild:
+  ppc64 stable wrt #324077
+
+*libgtop-2.28.2 (28 Sep 2010)
+
+  28 Sep 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -libgtop-2.24.4.ebuild, -libgtop-2.28.0.ebuild, +libgtop-2.28.2.ebuild:
+  Version bump. Translation updates. Clean up old revisions.
+
+  11 Sep 2010; Joseph Jezak <josejx@gentoo.org> libgtop-2.28.1.ebuild:
+  Marked ppc for bug #324077.
+
+  18 Aug 2010; Markus Meier <maekke@gentoo.org> libgtop-2.28.1.ebuild:
+  arm stable, bug #314899
+
+  14 Aug 2010; Raúl Porcel <armin76@gentoo.org> libgtop-2.28.1.ebuild:
+  alpha/ia64/sh/sparc stable wrt #314899
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org> libgtop-2.24.4.ebuild,
+  libgtop-2.26.1.ebuild, libgtop-2.28.0.ebuild, libgtop-2.28.1.ebuild:
+  Drop HPPA keywording (bug #324511).
+
+  04 Jun 2010; Markus Meier <maekke@gentoo.org> libgtop-2.28.1.ebuild:
+  x86 stable, bug #314899
+
+  03 May 2010; Olivier Crête <tester@gentoo.org> libgtop-2.28.1.ebuild:
+  amd64 stable, bug #314899
+
+*libgtop-2.28.1 (30 Mar 2010)
+
+  30 Mar 2010; Pacho Ramos <pacho@gentoo.org> +libgtop-2.28.1.ebuild:
+  Version bump with translation updates.
+
+  18 Jan 2010; Jeroen Roovers <jer@gentoo.org> libgtop-2.26.1.ebuild:
+  Stable for HPPA (bug #281427).
+
+  16 Jan 2010; Raúl Porcel <armin76@gentoo.org> libgtop-2.26.1.ebuild:
+  sh stable
+
+  03 Dec 2009; Brent Baude <ranger@gentoo.org> libgtop-2.26.1.ebuild:
+  Marking libgtop-2.26.1 ppc64 stable for bug 281427
+
+  28 Nov 2009; Raúl Porcel <armin76@gentoo.org> libgtop-2.26.1.ebuild:
+  alpha/ia64/sparc stable wrt #281427
+
+  05 Nov 2009; Markus Meier <maekke@gentoo.org> libgtop-2.26.1.ebuild:
+  arm stable, bug #281427
+
+*libgtop-2.28.0 (29 Oct 2009)
+
+  29 Oct 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +libgtop-2.28.0.ebuild:
+  New version for GNOME 2.28.
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> libgtop-2.26.1.ebuild:
+  ppc stable #281427
+
+  16 Oct 2009; Markus Meier <maekke@gentoo.org> libgtop-2.26.1.ebuild:
+  x86 stable, bug #281427
+
+  08 Oct 2009; Olivier Crête <tester@gentoo.org> libgtop-2.26.1.ebuild:
+  Stable on amd64, bug #281427
+
+  05 Oct 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -libgtop-2.20.1.ebuild, -libgtop-2.22.3.ebuild:
+  Clean up old revisions.
+
+*libgtop-2.26.1 (05 May 2009)
+
+  05 May 2009; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +libgtop-2.26.1.ebuild:
+  Bump to 2.26.1, minimal changes from 2.24.4
+
+  28 Apr 2009; Raúl Porcel <armin76@gentoo.org> libgtop-2.24.4.ebuild:
+  sh stable
+
+  27 Apr 2009; Jeroen Roovers <jer@gentoo.org> libgtop-2.24.4:
+  Stable for HPPA (bug #260063).
+
+  27 Apr 2009; Raúl Porcel <armin76@gentoo.org> libgtop-2.24.4.ebuild:
+  arm stable
+
+  12 Apr 2009; Friedrich Oslage <bluebird@gentoo.org> libgtop-2.24.4.ebuild:
+  Stable on sparc, bug #260063
+
+  18 Mar 2009; Raúl Porcel <armin76@gentoo.org> libgtop-2.24.4.ebuild:
+  alpha/ia64 stable wrt #260063
+
+  15 Mar 2009; Markus Meier <maekke@gentoo.org> libgtop-2.24.4.ebuild:
+  x86 stable, bug #260063
+
+  11 Mar 2009; Daniel Gryniewicz <dang@gentoo.org> libgtop-2.24.4.ebuild:
+  Marked stable on amd64
+
+  06 Mar 2009; Brent Baude <ranger@gentoo.org> libgtop-2.24.4.ebuild:
+  Marking libgtop-2.24.4 ppc stable for bug 260063
+
+  05 Mar 2009; Brent Baude <ranger@gentoo.org> libgtop-2.24.4.ebuild:
+  Marking libgtop-2.24.4 ppc64 stable for bug 260063
+
+*libgtop-2.24.4 (26 Jan 2009)
+
+  26 Jan 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -libgtop-2.24.3-r1.ebuild, +libgtop-2.24.4.ebuild:
+  Bump to 2.24.4. Dummy release with fixed license.
+
+*libgtop-2.24.3-r1 (19 Jan 2009)
+
+  19 Jan 2009; Mart Raudsepp <leio@gentoo.org> libgtop-2.22.3.ebuild,
+  -libgtop-2.24.0.ebuild, -libgtop-2.24.3.ebuild, +libgtop-2.24.3-r1.ebuild:
+  Disable static libraries for 2.24.3 - nothing should be using them.
+  Correct pkg_config to pkg_setup and remove that whole block from 2.22.3 as
+  gnome2.eclass takes care of --enable-debug for us
+
+*libgtop-2.24.3 (19 Jan 2009)
+
+  19 Jan 2009; Mart Raudsepp <leio@gentoo.org> +libgtop-2.24.3.ebuild:
+  Version bump. Potential memory leak and missing CPUs in system-monitor
+  fixes
+
+  04 Jan 2009; Gilles Dartiguelongue <eva@gentoo.org> libgtop-2.20.1.ebuild,
+  -libgtop-2.20.2.ebuild, -libgtop-2.22.1.ebuild, -libgtop-2.22.2.ebuild:
+  Clean up old revisions.
+
+  13 Nov 2008; Brent Baude <ranger@gentoo.org> libgtop-2.22.3.ebuild:
+  Marking libgtop-2.22.3 ppc64 stable for bug 236971
+
+  18 Oct 2008; Brent Baude <ranger@gentoo.org> libgtop-2.22.3.ebuild:
+  Marking libgtop-2.22.3 ppc stable for bug 236971
+
+*libgtop-2.24.0 (06 Oct 2008)
+
+  06 Oct 2008; Mart Raudsepp <leio@gentoo.org> +libgtop-2.24.0.ebuild:
+  New version; adds API for retrieving process CPU affinity, and more
+
+  25 Sep 2008; Jeroen Roovers <jer@gentoo.org> libgtop-2.22.3.ebuild:
+  Stable for HPPA (bug #236971).
+
+  09 Sep 2008; Raúl Porcel <armin76@gentoo.org> libgtop-2.22.3.ebuild:
+  alpha/ia64/sparc stable wrt #236971
+
+  08 Sep 2008; Markus Meier <maekke@gentoo.org> libgtop-2.22.3.ebuild:
+  x86 stable, bug #236971
+
+  07 Sep 2008; Olivier Crête <tester@gentoo.org> libgtop-2.22.3.ebuild:
+  amd64 stable, bug #236971
+
+  12 Aug 2008; Raúl Porcel <armin76@gentoo.org> libgtop-2.22.2.ebuild:
+  alpha/ia64/sparc stable wrt #229709
+
+  10 Aug 2008; Markus Meier <maekke@gentoo.org> libgtop-2.22.2.ebuild:
+  x86 stable, bug #229709
+
+  30 Jul 2008; Brent Baude <ranger@gentoo.org> libgtop-2.22.2.ebuild:
+  Marking libgtop-2.22.2 ppc stable for bug 229709
+
+  26 Jul 2008; Olivier Crête <tester@gentoo.org> libgtop-2.22.2.ebuild:
+  Stable on amd64, bug #229709
+
+*libgtop-2.22.3 (02 Jul 2008)
+
+  02 Jul 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +libgtop-2.22.3.ebuild:
+  bump to 2.22.3. Fix for fsusage parsing on kernel >= 2.6.25
+
+*libgtop-2.22.2 (25 May 2008)
+
+  25 May 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +libgtop-2.22.2.ebuild:
+  bump to 2.22.2. fixed parsing of huge /proc/stat.
+
+  29 Apr 2008; Raúl Porcel <armin76@gentoo.org> libgtop-2.20.2.ebuild:
+  alpha/ia64/sparc stable wrt #219336
+
+  28 Apr 2008; nixnut <nixnut@gentoo.org> libgtop-2.20.2.ebuild:
+  Stable on ppc wrt bug 219336
+
+  27 Apr 2008; Markus Meier <maekke@gentoo.org> libgtop-2.20.2.ebuild:
+  amd64/x86 stable, bug #219336
+
+  27 Apr 2008; Markus Rothe <corsair@gentoo.org> libgtop-2.20.2.ebuild:
+  Stable on ppc64; bug #219336
+
+  26 Apr 2008; Jeroen Roovers <jer@gentoo.org> libgtop-2.20.2.ebuild:
+  Stable for HPPA (bug #219336).
+
+*libgtop-2.22.1 (07 Apr 2008)
+
+  07 Apr 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +libgtop-2.22.1.ebuild:
+  bump to 2.22.1, fix build on non linux systems.
+
+*libgtop-2.22.0 (17 Mar 2008)
+
+  17 Mar 2008; Mart Raudsepp <leio@gentoo.org> +libgtop-2.22.0.ebuild:
+  New major version for GNOME 2.22 - adds darwin backend and a few
+  improvements in the linux information parsing
+
+*libgtop-2.20.2 (09 Mar 2008)
+
+  09 Mar 2008; Mart Raudsepp <leio@gentoo.org> -libgtop-2.20.0.ebuild,
+  +libgtop-2.20.2.ebuild:
+  Version bump to fix memory maps display on kernel 2.6.24 and newer
+
+  04 Feb 2008; Jeroen Roovers <jer@gentoo.org> libgtop-2.20.1.ebuild:
+  Stable for HPPA (bug #208366).
+
+  03 Feb 2008; Raúl Porcel <armin76@gentoo.org> libgtop-2.20.1.ebuild:
+  alpha/ia64/sparc stable wrt #208366
+
+  02 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org> libgtop-2.20.1.ebuild:
+  Stable on amd64 wrt bug #208366.
+
+  01 Feb 2008; Brent Baude <ranger@gentoo.org> libgtop-2.20.1.ebuild:
+  Marking libgtop-2.20.1 ppc64 and ppc stable for bug 208366
+
+  01 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  libgtop-2.20.1.ebuild:
+  stable x86, bug 208366
+
+*libgtop-2.20.1 (09 Jan 2008)
+
+  09 Jan 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +libgtop-2.20.1.ebuild:
+  bump to 2.20.1
+
+  27 Nov 2007; Jeroen Roovers <jer@gentoo.org> libgtop-2.20.0.ebuild:
+  Stable for HPPA (bug #199740).
+
+  26 Nov 2007; Markus Rothe <corsair@gentoo.org> libgtop-2.20.0.ebuild:
+  Stable on ppc64; bug #199740
+
+  24 Nov 2007; Brent Baude <ranger@gentoo.org> libgtop-2.20.0.ebuild:
+  Marking libgtop-2.20.0 ppc stable for bug 199740
+
+  22 Nov 2007; Raúl Porcel <armin76@gentoo.org> libgtop-2.20.0.ebuild:
+  alpha/ia64/sparc stable wrt #199740
+
+  21 Nov 2007; Dawid Węgliński <cla@gentoo.org> libgtop-2.20.0.ebuild:
+  Stable on x86 (bug #199740)
+
+  20 Nov 2007; Samuli Suominen <drac@gentoo.org> libgtop-2.20.0.ebuild:
+  amd64 stable wrt #199740
+
+*libgtop-2.20.0 (01 Oct 2007)
+
+  01 Oct 2007; Mart Raudsepp <leio@gentoo.org> +libgtop-2.20.0.ebuild:
+  New series for Gnome 2.20
+
+  26 Sep 2007; Joshua Kinard <kumba@gentoo.org> libgtop-2.14.9.ebuild:
+  Bumping straight to stable to catch up on some small gnome keywords on mips,
+  per #191920.
+
+  22 Sep 2007; Tom Gall <tgall@gentoo.org> libgtop-2.14.9.ebuild:
+  stable on ppc64
+
+  28 Aug 2007; Jeroen Roovers <jer@gentoo.org> libgtop-2.14.9.ebuild:
+  Stable for HPPA (bug #185823).
+
+  11 Aug 2007; Andrej Kacian <ticho@gentoo.org> libgtop-2.14.9.ebuild:
+  Stable on x86, bug #185823.
+
+  10 Aug 2007; Christoph Mende <angelos@gentoo.org> libgtop-2.14.9.ebuild:
+  Stable on amd64 wrt bug #185823
+
+  08 Aug 2007; Raúl Porcel <armin76@gentoo.org> libgtop-2.14.9.ebuild:
+  alpha/ia64 stable wrt #185823
+
+  07 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  libgtop-2.14.9.ebuild:
+  Stable on ppc wrt bug #185823.
+
+  07 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> libgtop-2.14.9.ebuild:
+  Stable on sparc wrt #185823
+
+  11 Jun 2007; Daniel Gryniewicz <dang@gentoo.org> libgtop-2.14.8.ebuild:
+  Marked stable on amd64 Oops, missed it for 2.16.3 stabilization
+
+*libgtop-2.14.9 (11 Jun 2007)
+
+  11 Jun 2007; Mart Raudsepp <leio@gentoo.org> +libgtop-2.14.9.ebuild:
+  Version bump
+
+  02 Jun 2007; Brent Baude <ranger@gentoo.org> libgtop-2.14.8.ebuild:
+  Marking libgtop-2.14.8 ppc stable for bug #171107
+
+  31 May 2007; Jeroen Roovers <jer@gentoo.org> libgtop-2.14.8.ebuild:
+  Stable for HPPA (bug #171107).
+
+  31 May 2007; Brent Baude <ranger@gentoo.org> libgtop-2.14.8.ebuild:
+  Marking libgtop-2.14.8 ppc64 stable for bug #171107
+
+  30 May 2007; Raúl Porcel <armin76@gentoo.org> libgtop-2.14.8.ebuild:
+  alpha/ia64 stable wrt #171107
+
+  29 May 2007; Andrej Kacian <ticho@gentoo.org> libgtop-2.14.8.ebuild:
+  Stable on x86, bug #171107.
+
+  29 May 2007; Gustavo Zacarias <gustavoz@gentoo.org> libgtop-2.14.8.ebuild:
+  Stable on sparc wrt #171107
+
+  27 May 2007; Joshua Kinard <kumba@gentoo.org> libgtop-2.14.6.ebuild:
+  Stable on mips.
+
+  16 Apr 2007; Daniel Gryniewicz <dang@gentoo.org> libgtop-2.14.6.ebuild,
+  libgtop-2.14.8.ebuild:
+  Add intltool dep; bug #173291
+
+  04 Mar 2007; Roy Marples <uberlord@gentoo.org> libgtop-2.14.8.ebuild:
+  Added ~x86-fbsd keyword, #169274
+
+*libgtop-2.14.8 (04 Mar 2007)
+
+  04 Mar 2007; Mart Raudsepp <leio@gentoo.org> +libgtop-2.14.8.ebuild:
+  Version bump
+
+  06 Feb 2007; Roy Marples <uberlord@gentoo.org> libgtop-2.14.6.ebuild:
+  Blessed with the ~x86-fbsd keyword :)
+
+  06 Feb 2007; Daniel Gryniewicz <dang@gentoo.org>
+  +files/libgtop-2.14.6-fbsd.patch, libgtop-2.14.6.ebuild:
+  Fix for fbsd: bug #158030; remove static use flag: bug #165528
+
+  02 Feb 2007; Mart Raudsepp <leio@gentoo.org>
+  -files/libgtop-2.14.1-as-needed.patch, -libgtop-2.14.1.ebuild,
+  -libgtop-2.14.4.ebuild:
+  Remove security vulnerable old versions
+
+  21 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> libgtop-2.14.6.ebuild:
+  Stable on IA64, bug 156662.
+
+  18 Jan 2007; Jeroen Roovers <jer@gentoo.org> libgtop-2.14.6.ebuild:
+  Stable for HPPA (bug #162169).
+
+  17 Jan 2007; Markus Rothe <corsair@gentoo.org> libgtop-2.14.6.ebuild:
+  Stable on ppc64; bug #162169
+
+  17 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  libgtop-2.14.6.ebuild:
+  stable x86, security bug #162169
+
+  16 Jan 2007; Olivier Crête <tester@gentoo.org> libgtop-2.14.6.ebuild:
+  Stable on amd64 wrt bug #162169
+
+  16 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> libgtop-2.14.6.ebuild:
+  Stable on Alpha, bug 162169.
+
+  16 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org> libgtop-2.14.6.ebuild:
+  Stable on sparc wrt security #162169
+
+  16 Jan 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  libgtop-2.14.6.ebuild:
+  Stable on ppc wrt bug #162169.
+
+*libgtop-2.14.6 (16 Jan 2007)
+
+  16 Jan 2007; Mart Raudsepp <leio@gentoo.org> +libgtop-2.14.6.ebuild:
+  Version bump for security bug 162169
+
+  14 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> libgtop-2.14.4.ebuild:
+  Stable on Alpha.
+
+  21 Dec 2006; Markus Rothe <corsair@gentoo.org> libgtop-2.14.4.ebuild:
+  Stable on ppc64; bug #156662
+
+  21 Dec 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  -files/libgtop-1.0.13-guile-compile.patch,
+  -files/1.0.13-remote_buffer_overflow.diff, -files/libgtop.info.diff,
+  -libgtop-1.0.13-r2.ebuild:
+  gnome-1.x removal
+
+  18 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> libgtop-2.14.4.ebuild:
+  Stable on sparc
+
+  16 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libgtop-2.14.4.ebuild:
+  Stable on ppc wrt bug #156662.
+
+  12 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> libgtop-2.14.4.ebuild:
+  Stable on amd64 wrt bug #156662.
+
+  10 Dec 2006; Andrej Kacian <ticho@gentoo.org> libgtop-2.14.4.ebuild:
+  Stable on x86, bug #156662.
+
+  19 Nov 2006; Mart Raudsepp <leio@gentoo.org> -libgtop-2.10.2.ebuild,
+  -libgtop-2.12.2.ebuild, -libgtop-2.14.3.ebuild:
+  Remove old versions
+
+  19 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> libgtop-2.14.1.ebuild:
+  Stable on Alpha.
+
+*libgtop-2.14.4 (12 Oct 2006)
+
+  12 Oct 2006; Mart Raudsepp <leio@gentoo.org> +libgtop-2.14.4.ebuild:
+  Bump to 2.14.4 for a 64bit fix
+
+  13 Sep 2006; Aron Griffis <agriffis@gentoo.org> libgtop-2.14.1.ebuild:
+  Mark 2.14.1 stable on ia64. #139612
+
+*libgtop-2.14.3 (11 Sep 2006)
+
+  11 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> +libgtop-2.14.3.ebuild:
+  Bump to 2.14.3
+
+  05 Sep 2006; Joshua Kinard <kumba@gentoo.org> libgtop-2.10.2.ebuild,
+  libgtop-2.12.2.ebuild, libgtop-2.14.1.ebuild:
+  Removing mips keywords as gnome is no longer supported on mips.
+
+  16 Aug 2006; Markus Rothe <corsair@gentoo.org> libgtop-2.14.1.ebuild:
+  Stable on ppc64
+
+  23 Jul 2006; Daniel Gryniewicz <dang@gentoo.org>
+  -files/libgtop-2.10.0-siglist.patch, -libgtop-2.10.0.ebuild,
+  -libgtop-2.10.1.ebuild, -libgtop-2.12.0.ebuild, -libgtop-2.14.0.ebuild:
+  Clean up unnecessary versions
+
+  17 Jul 2006; Daniel Gryniewicz <dang@gentoo.org> libgtop-2.14.1.ebuild:
+  Marked stable on amd64 for bug #139612
+
+  16 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libgtop-2.14.1.ebuild:
+  hppa stable, bug #139612
+
+  14 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libgtop-2.14.1.ebuild:
+  ppc stable, bug #139612
+
+  12 Jul 2006; Chris Gianelloni <wolf31o2@gentoo.org> libgtop-2.14.1.ebuild:
+  Stable on x86 wrt bug #139612.
+
+  10 Jul 2006; Gustavo Zacarias <gustavoz@gentoo.org> libgtop-2.14.1.ebuild:
+  Stable on sparc wrt #139612
+
+  17 Jun 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  libgtop-1.0.13-r2.ebuild:
+  make DESCRIPTION consistent
+
+  08 May 2006; <dang@gentoo.org> +files/libgtop-2.14.1-as-needed.patch,
+  libgtop-2.14.1.ebuild:
+  Fix --as-needed.  Bug #132155
+
+*libgtop-2.14.1 (02 May 2006)
+
+  02 May 2006; Daniel Gryniewicz <dang@gentoo.org> +libgtop-2.14.1.ebuild:
+  Bump for 2.14.1
+
+  24 Mar 2006; Aron Griffis <agriffis@gentoo.org> libgtop-1.0.13-r2.ebuild:
+  Mark 1.0.13-r2 stable on ia64
+
+*libgtop-2.14.0 (16 Mar 2006)
+
+  16 Mar 2006; Joe McCann <joem@gentoo.org> +libgtop-2.14.0.ebuild:
+  new release for gnome-2.14
+
+  03 Feb 2006; Guy Martin <gmsoft@gentoo.org> libgtop-2.12.2.ebuild:
+  Stable on hppa.
+
+  02 Feb 2006; Aron Griffis <agriffis@gentoo.org> libgtop-2.12.2.ebuild:
+  Mark 2.12.2 stable on alpha
+
+  02 Feb 2006; Aron Griffis <agriffis@gentoo.org> libgtop-2.12.2.ebuild:
+  Mark 2.12.2 stable on ia64
+
+  22 Jan 2006; Markus Rothe <corsair@gentoo.org> libgtop-2.12.2.ebuild:
+  Stable on ppc64
+
+  22 Jan 2006; <dang@gentoo.org> libgtop-2.12.2.ebuild:
+  Marked stable on amd64 per bug #119634
+
+  22 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libgtop-2.12.2.ebuild:
+  Marked ppc stable for bug #119634; Stabilize Gnome-2.12.2
+
+  22 Jan 2006; Joshua Jackson <tsunam@gentoo.org> libgtop-2.12.2.ebuild:
+  Stable on x86 for bug #119634; Stabilize Gnome-2.12.2
+
+  20 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org> libgtop-2.12.2.ebuild:
+  Stable on sparc wrt #119634
+
+*libgtop-2.12.2 (05 Dec 2005)
+
+  05 Dec 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  +libgtop-2.12.2.ebuild:
+  Version bump from upstream
+
+  10 Oct 2005; Hardave Riar <hardave@gentoo.org> libgtop-2.10.2.ebuild:
+  Stable on mips.
+
+  04 Oct 2005; Simon Stelling <blubb@gentoo.org> libgtop-1.0.13-r2.ebuild:
+  added ~amd64 keyword
+
+  11 Sep 2005; Aron Griffis <agriffis@gentoo.org> libgtop-2.10.2.ebuild:
+  Mark 2.10.2 stable on alpha
+
+*libgtop-2.12.0 (11 Sep 2005)
+
+  11 Sep 2005; John N. Laliberte <allanonjl@gentoo.org>
+  -libgtop-2.11.92.ebuild, +libgtop-2.12.0.ebuild:
+  2.12 release vbump
+
+  03 Sep 2005; Markus Rothe <corsair@gentoo.org> libgtop-2.10.2.ebuild:
+  Stable on ppc64
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> libgtop-2.10.2.ebuild:
+  Stable on ppc.
+
+  31 Aug 2005; Herbie Hopkins <herbs@gentoo.org> libgtop-2.10.2.ebuild:
+  Stable on amd64.
+
+  29 Aug 2005; Guy Martin <gmsoft@gentoo.org> libgtop-2.10.2.ebuild:
+  Stable on hppa.
+
+  25 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  libgtop-2.10.2.ebuild:
+  Stable on x86.
+
+*libgtop-2.11.92 (23 Aug 2005)
+
+  23 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  +libgtop-2.11.92.ebuild:
+  New version. Added 'gdbm' and 'X' USE flags.
+
+  22 Aug 2005; Aron Griffis <agriffis@gentoo.org> libgtop-2.10.2.ebuild:
+  stable on ia64
+
+  08 Aug 2005; Markus Rothe <corsair@gentoo.org> libgtop-2.10.1.ebuild:
+  Stable on ppc64
+
+  02 Aug 2005; Simon Stelling <blubb@gentoo.org> libgtop-2.10.1.ebuild:
+  stable on amd64
+
+  31 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  libgtop-2.10.1.ebuild:
+  ppc stable
+
+  27 Jul 2005; Guy Martin <gmsoft@gentoo.org> libgtop-2.10.1.ebuild:
+  Stable on hppa.
+
+  26 Jul 2005; Leonardo Boshell <leonardop@gentoo.org> libgtop-2.10.1.ebuild:
+  Stable on x86.
+
+  25 Jul 2005; Guy Martin <gmsoft@gentoo.org> libgtop-1.0.13-r2.ebuild:
+  Stable on hppa.
+
+*libgtop-2.10.2 (22 Jul 2005)
+
+  22 Jul 2005; Leonardo Boshell <leonardop@gentoo.org> libgtop-2.10.2.ebuild:
+  New version. Added 'static' USE flag. Dropped patch that is included
+  upstream now.
+
+  12 Jul 2005; Stephen P. Becker <geoman@gentoo.org> libgtop-2.10.0.ebuild:
+  stable on mips
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> libgtop-2.10.0.ebuild:
+  Stable on alpha.
+
+  25 Jun 2005; Guy Martin <gmsoft@gentoo.org> libgtop-2.10.0.ebuild:
+  Stable on hppa.
+
+  12 Jun 2005; Olivier Crête <tester@gentoo.org> libgtop-2.10.0.ebuild:
+  Stable on amd64
+
+  12 Jun 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  libgtop-2.10.0.ebuild:
+  Stable on ppc.
+
+  09 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> libgtop-2.10.1.ebuild:
+  Stable on sparc
+
+  09 Jun 2005; Markus Rothe <corsair@gentoo.org> libgtop-2.10.0.ebuild:
+  Stable on ppc64
+
+  05 Jun 2005; Marinus Schraal <foser@gentoo.org> libgtop-2.10.1.ebuild :
+  Add mips/alpha/sparc compile fix (#92973)
+
+  18 May 2005; Jason Wever <weeve@gentoo.org> libgtop-2.8.3.ebuild:
+  Stable on SPARC.
+
+  11 May 2005; Guy Martin <gmsoft@gentoo.org> libgtop-2.8.3.ebuild:
+  Stable on hppa.
+
+  08 May 2005; Herbie Hopkins <herbs@gentoo.org> libgtop-2.8.3.ebuild:
+  Stable on amd64.
+
+  28 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> libgtop-2.8.3.ebuild:
+  Stable on alpha.
+
+  27 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> libgtop-2.8.3.ebuild:
+  Stable on ia64.
+
+  25 Apr 2005; Mike Gardiner <obz@gentoo.org> libgtop-2.8.3.ebuild:
+  Keyworded ppc x86
+
+*libgtop-2.10.1 (12 Apr 2005)
+
+  12 Apr 2005; Joe McCann <joem@gentoo.org> +libgtop-2.10.1.ebuild:
+  bugfix release
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> libgtop-2.8.2.ebuild:
+  stable on amd64
+
+  02 Apr 2005; Stephen P. Becker <geoman@gentoo.org> libgtop-2.8.2.ebuild:
+  stable on mips
+
+  21 Mar 2005; Guy Martin <gmsoft@gentoo.org> libgtop-2.8.2.ebuild:
+  Stable on hppa.
+
+  20 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> libgtop-2.8.2.ebuild:
+  Stable on alpha.
+
+  09 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> libgtop-2.8.2.ebuild:
+  Stable on sparc
+
+*libgtop-2.10.0 (09 Mar 2005)
+
+  09 Mar 2005; Joe McCann <joem@gentoo.org> +libgtop-2.10.0.ebuild:
+  gnome-2.10 release
+
+  09 Mar 2005; Mike Gardiner <obz@gentoo.org> libgtop-2.8.2.ebuild:
+  Keyworded x86 ppc
+
+*libgtop-2.8.3 (17 Feb 2005)
+
+  17 Feb 2005; Mike Gardiner <obz@gentoo.org> +libgtop-2.8.3.ebuild:
+  New version
+
+  08 Jan 2005; Tom Martin <slarti@gentoo.org> libgtop-2.8.1.ebuild:
+  Stable on amd64.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  24 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> libgtop-2.8.1.ebuild:
+  Stable on alpha.
+
+  23 Dec 2004; Guy Martin <gmsoft@gentoo.org> libgtop-2.8.1.ebuild:
+  Stable on hppa.
+
+  21 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org> libgtop-2.8.1.ebuild:
+  Stable on sparc
+
+  19 Dec 2004; Mike Gardiner <obz@gentoo.org> libgtop-2.8.1.ebuild:
+  Keyworded x86 and ppc for GNOME 2.8.1
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> libgtop-2.8.0.ebuild:
+  Stable on alpha.
+
+*libgtop-2.8.2 (11 Dec 2004)
+
+  11 Dec 2004; Mike Gardiner <obz@gentoo.org> +libgtop-2.8.2.ebuild:
+  New version
+
+*libgtop-2.8.1 (25 Nov 2004)
+
+  25 Nov 2004; Mike Gardiner <obz@gentoo.org> -libgtop-2.5.2.ebuild,
+  +libgtop-2.8.1.ebuild:
+  New version, removed older 2.5.2 version
+
+  22 Nov 2004; Mike Gardiner <obz@gentoo.org> libgtop-1.0.13-r2.ebuild:
+  Fixed SRC_URI as in bug #71908
+
+  12 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> libgtop-2.8.0.ebuild:
+  Stable on sparc
+
+  11 Nov 2004; Luca Barbato <lu_zero@gentoo.org> libgtop-2.8.0.ebuild:
+  Marked ppc
+
+*libgtop-2.8.0 (16 Sep 2004)
+
+  16 Sep 2004; foser <foser@gentoo.org> libgtop-2.8.0.ebuild :
+  Gnome 2.8 release
+
+  08 Aug 2004; Tom Martin <slarti@gentoo.org> libgtop-2.0.8.ebuild,
+  libgtop-2.5.2.ebuild, libgtop-2.6.0.ebuild:
+  Typo in DESCRIPTION: proivdes -> provides. Bug 59717.
+
+  05 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> libgtop-2.6.0.ebuild:
+  Stable on sparc
+
+  15 Jul 2004; Tom Gall <tgall@gentoo.org> libgtop-2.6.0.ebuild:
+  stable on ppc64, bug #55023
+
+  04 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> libgtop-2.6.0.ebuild:
+  Stable on alpha.
+
+  03 Jun 2004; Stephen P. Becker <geoman@gentoo.org> libgtop-2.6.0.ebuild:
+  Stable on mips.
+
+  03 Jun 2004; Aron Griffis <agriffis@gentoo.org> libgtop-1.0.13-r2.ebuild:
+  Fix use invocation
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  libgtop-2.6.0.ebuild:
+  Masked libgtop-2.6.0.ebuild stable for ppc
+
+  24 May 2004; Guy Martin <gmsoft@gentoo.org> libgtop-2.6.0.ebuild:
+  Marked stable on hppa.
+
+  13 May 2004; Stephen P. Becker <geoman@gentoo.org> libgtop-2.0.8.ebuild:
+  Stable on mips.
+
+*libgtop-2.6.0 (04 May 2004)
+
+  04 May 2004; foser <foser@gentoo.org> libgtop-2.6.0.ebuild :
+  New release
+
+  17 Apr 2004; Travis Tilley <lv@gentoo.org> libgtop-2.0.8.ebuild:
+  stable on amd64
+
+*libgtop-2.5.2 (20 Mar 2004)
+
+  20 Mar 2004; foser <foser@gentoo.org> libgtop-2.5.2.ebuild :
+  Gnome 2.6 commit
+
+  14 Mar 2004; Stephen P. Becker <geoman@gentoo.org> libgtop-2.0.8.ebuild:
+  Added ~mips keyword.
+
+  09 Mar 2004; <agriffis@gentoo.org> libgtop-2.0.8.ebuild:
+  stable on alpha and ia64
+
+  18 Feb 2004; Aron Griffis <agriffis@gentoo.org> libgtop-2.0.8.ebuild:
+  add ~ia64
+
+  10 Feb 2004; <gustavoz@gentoo.org> libgtop-2.0.8.ebuild:
+  stable on hppa and sparc
+
+  10 Feb 2004; Bartosch Pixa <darkspecter@gentoo.org> libgtop-2.0.8.ebuild:
+  set ppc in keywords
+
+  08 Feb 2004; <spider@gentoo.org> libgtop-2.0.8.ebuild:
+  x86 stable
+
+  29 Jan 2004; Aron Griffis <agriffis@gentoo.org> libgtop-2.0.7.ebuild:
+  stable on alpha and ia64
+
+  17 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> :
+  manifest fix
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> libgtop-2.0.7.ebuild:
+  set ppc in keywords
+
+  05 Jan 2004; <gustavoz@gentoo.org> libgtop-2.0.7.ebuild:
+  marked stable on sparc
+
+  05 Jan 2004; <gustavoz@gentoo.org> libgtop-2.0.7.ebuild:
+  marked stable on hppa
+
+*libgtop-2.0.8 (23 Dec 2003)
+
+  23 Dec 2003; foser <foser@gentoo.org> libgtop-2.0.8.ebuild :
+  New release
+
+*libgtop-2.0.7 (14 Dec 2003)
+
+  14 Dec 2003; Mike Gardiner <obz@gentoo.org> libgtop-2.0.7.ebuild:
+  New version
+
+  13 Dec 2003; Guy Martin <gmsoft@gentoo.org> libgtop-2.0.5.ebuild:
+  Marked stable on hppa.
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> libgtop-2.0.5.ebuild:
+  Stable on ia64
+
+  03 Nov 2003; Jason Wever <weeve@gentoo.org> libgtop-2.0.5.ebuild:
+  Marked stable on sparc.
+
+*libgtop-2.0.6 (23 Oct 2003)
+
+  23 Oct 2003; foser <foser@gentoo.org> libgtop-2.0.6.ebuild :
+  New version, fix libtool versioning once again (*sigh*)
+
+  18 Oct 2003; Aron Griffis <agriffis@gentoo.org> libgtop-2.0.5.ebuild:
+  Stable on alpha
+
+  05 Oct 2003; Mike Gardiner <obz@gentoo.org> libgtop-2.0.4.ebuild,
+  libgtop-2.0.5.ebuild:
+  Marked stable on x86
+
+  23 Sep 2003; Bartosch Pixa <darkspecter@gentoo.org> libgtop-2.0.5.ebuild:
+  set ppc in keywords
+
+  09 Sep 2003; Mike Gardiner <obz@gentoo.org> libgtop-2.0.3.ebuild,
+  libgtop-2.0.4.ebuild:
+  Marked 2.0.4 stable on x86, removed 2.0.3
+
+*libgtop-2.0.5 (09 Sep 2003)
+
+  09 Sep 2003; Mike Gardiner <obz@gentoo.org> libgtop-2.0.5.ebuild:
+  New version
+
+*libgtop-2.0.4 (24 Aug 2003)
+
+  24 Aug 2003; foser <foser@gentoo.org> libgtop-2.0.4.ebuild :
+  New version
+
+*libgtop-2.0.3 (13 Aug 2003)
+
+  13 Aug 2003; Mike Gardiner <obz@gentoo.org> libgtop-2.0.2-r1.ebuild,
+  libgtop-2.0.3.ebuild:
+  New version 2.0.3, bumped 2.0.2-r1 to stable on x86
+
+*libgtop-2.0.2-r1 (15 May 2003)
+
+  24 Aug 2003; Guy Martin <gmsoft@gentoo.org> libgtop-2.0.2-r1.ebuild :
+  Marked stable on hppa.
+
+  04 Jul 2003; Guy Martin <gmsoft@gentoo.org> libgtop-2.0.2-r1.ebuild :
+  Added ~hppa to KEYWORDS.
+
+  22 May 2003; foser <foser@gentoo.org> libgtop-2.0.2-r1.ebuild :
+  Fix libtool versioning, which should fix #21297
+
+*libgtop-2.0.2 (15 May 2003)
+
+  15 May 2003; foser <foser@gentoo.org> libgtop-2.0.2.ebuild :
+  New version, fixed deps and license 
+
+*libgtop-2.0.1 (27 Jan 2003)
+
+  04 Jul 2003; Guy Martin <gmsoft@gentoo.org> libgtop-2.0.1.ebuild :
+  Added hppa to KEYWORDS.
+
+  16 mar 2003; <spider@gentoo.org> libgtop-2.0.1.ebuild:
+  fixed the description
+
+  21 Feb 2003; Aron Griffis <agriffis@gentoo.org> libgtop-2.0.1.ebuild :
+  Mark stable on Alpha
+
+  27 Jan 2003; foser <foser@gentoo.org> libgtop-2.0.1.ebuild :
+  New version
+
+  10 Dec 2002; foser <foser@gentoo.org> libgtop-1.0.13-r2.ebuild :
+  Added patch by Stanislev brabec <sbrabec@suse.cz> to fix build break with latest guile (bug #11957)
+
+* Autoupdate keywords (12-6-02)
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*libgtop-2.0.0-r1 ( 26 Jun 2002)
+  02 Aug 2002; Mark Guertin <gerk@gentoo.org>:
+  Added ppc to keywords
+
+  26 Jun 2002; Spider <spider@gentoo.org> libgtop-2.0.0-r1.ebuild :
+  fixed a SLOT="" issue. now passess lintool checks
+  
+*libgtop-2.0.0 ( 10 Jun 2002)
+  02 Aug 2002; Mark Guertin <gerk@gentoo.org>:
+  Added ppc to keywords
+
+  10 Jun 2002; Spider <spider@gentoo.org> libgtop-2.0.0.ebuild :
+  new eclassed stable version 
+
+*libgtop-1.90.2-r2 (22 May 2002)
+  22 May 2002; Spider <spider@gentoo.org> libgtop-1.90.2-r2.ebuild:
+  The gnome2 release branch
+
+*libgtop-1.0.13-r2 (1 Feb 2002)
+
+  02 Aug 2002; Mark Guertin <gerk@gentoo.org>:
+  Added ppc to keywords
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

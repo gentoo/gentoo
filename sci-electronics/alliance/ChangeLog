@@ -1,0 +1,91 @@
+# ChangeLog for sci-electronics/alliance
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/alliance/ChangeLog,v 1.20 2014/08/10 20:27:39 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  alliance-5.0.20110203.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  29 Jun 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -alliance-5.0.20060509.ebuild, -alliance-5.0.20070718.ebuild,
+  alliance-5.0.20110203.ebuild:
+  Update homepage, bug 467878; drop old
+
+  24 Oct 2012; Ulrich Müller <ulm@gentoo.org> alliance-5.0.20060509.ebuild,
+  alliance-5.0.20070718.ebuild, alliance-5.0.20110203.ebuild:
+  Update dependency after package move from x11-libs/openmotif to
+  x11-libs/motif.
+
+  23 Jul 2012; Justin Lecher <jlec@gentoo.org> alliance-5.0.20110203.ebuild,
+  +files/alliance-5.0.20110203-impl-dec.patch, metadata.xml:
+  Fix implicit declarations of built-in functions
+
+*alliance-5.0.20110203 (25 Jul 2011)
+
+  25 Jul 2011; Thomas Beierlein <tomjbe@gentoo.org>
+  +alliance-5.0.20110203.ebuild:
+  Version bump.
+
+  19 Jul 2011; Thomas Beierlein <tomjbe@gentoo.org>
+  alliance-5.0.20070718.ebuild:
+  Fix missing dependency (bug #369101). Thanks for reporting Piotr Szymaniak.
+
+  15 Oct 2010; Thomas Beierlein <tomjbe@gentoo.org>
+  alliance-5.0.20070718.ebuild, +files/alliance-5.0.20070718-overun.patch,
+  +files/alliance-5.0.20070718-test.patch:
+  Switch to shared linking (bug 252496). Fix tests (bug 282490). Fix buffer
+  overrun (bug 340789).
+
+  10 Oct 2010; Ulrich Mueller <ulm@gentoo.org> alliance-5.0.20060509.ebuild,
+  alliance-5.0.20070718.ebuild:
+  Fix openmotif dependency. Change EAPI to 1.
+
+  26 Nov 2008; Mark Loeser <halcy0n@gentoo.org>
+  +files/alliance-5.0-gcc43.patch, alliance-5.0.20070718.ebuild:
+  Add patch to fix compilation with gcc-4.3. Thanks to sigmatador AT gmail
+  DOT com; bug #245847
+
+  06 Dec 2007; Markus Rothe <corsair@gentoo.org>
+  alliance-5.0.20070718.ebuild:
+  Added ~amd64
+
+*alliance-5.0.20070718 (01 Dec 2007)
+
+  01 Dec 2007; Denis Dupeyron <calchan@gentoo.org>
+  +alliance-5.0.20070718.ebuild:
+  Version bump.
+
+  14 Oct 2006; Denis Dupeyron <calchan@gentoo.org>
+  -alliance-5.0.20060329.ebuild:
+  Removed old ebuild.
+
+  07 Jul 2006; Denis Dupeyron <calchan@gentoo.org>
+  alliance-5.0.20060329.ebuild, alliance-5.0.20060509.ebuild:
+  Replaced einfo with elog.
+
+  02 Jul 2006; Denis Dupeyron <calchan@gentoo.org> metadata.xml:
+  Adjusted metadata, see bug #138062.
+
+*alliance-5.0.20060509 (02 Jun 2006)
+
+  02 Jun 2006; Denis Dupeyron <calchan@gentoo.org>
+  +alliance-5.0.20060509.ebuild:
+  Version bump.
+
+  27 May 2006; Denis Dupeyron <calchan@gentoo.org>
+  alliance-5.0.20060329.ebuild:
+  Cosmetic changes.
+
+  26 May 2006; Denis Dupeyron <calchan@gentoo.org>
+  alliance-5.0.20060329.ebuild:
+  Fixed bug #134285.
+
+  24 May 2006; Denis Dupeyron <calchan@gentoo.org>
+  alliance-5.0.20060329.ebuild:
+  Fixed bug #134145.
+
+*alliance-5.0.20060329 (21 Apr 2006)
+
+  21 Apr 2006; Denis Dupeyron <calchan@gentoo.org>
+  +alliance-5.0.20060329.ebuild:
+  Initial commit, bug #91842.

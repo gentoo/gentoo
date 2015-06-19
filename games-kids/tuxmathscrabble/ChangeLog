@@ -1,0 +1,117 @@
+# ChangeLog for games-kids/tuxmathscrabble
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-kids/tuxmathscrabble/ChangeLog,v 1.26 2015/03/31 16:22:42 mr_bones_ Exp $
+
+  31 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/tuxmathscrabble-0.7.4-gentoo.patch, -tuxmathscrabble-0.7.4.ebuild:
+  old
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> tuxmathscrabble-0.8.1.ebuild:
+  Stable for x86, wrt bug #542512
+
+  09 Mar 2015; Agostino Sarubbo <ago@gentoo.org> tuxmathscrabble-0.8.1.ebuild:
+  Stable for amd64, wrt bug #542512
+
+*tuxmathscrabble-0.8.1 (03 Feb 2015)
+
+  03 Feb 2015; Tupone Alfredo <tupone@gentoo.org>
+  +tuxmathscrabble-0.8.1.ebuild, +files/tuxmathscrabble-0.8.1-gentoo.patch:
+  Version bump to 0.8.1. Bug #532012 by Charles Cosse
+
+*tuxmathscrabble-0.7.4 (03 Feb 2015)
+
+  03 Feb 2015; Tupone Alfredo <tupone@gentoo.org>
+  +tuxmathscrabble-0.7.4.ebuild, -tuxmathscrabble-7.4-r1.ebuild,
+  +files/tuxmathscrabble-0.7.4-gentoo.patch,
+  -files/tuxmathscrabble-7.4-gentoo.patch:
+  Change numbering schema following upstream numbering
+
+  02 Feb 2015; Tupone Alfredo <tupone@gentoo.org> -tuxmathscrabble-7.4.ebuild,
+  tuxmathscrabble-7.4-r1.ebuild:
+  Stabilizing like previous ebuild
+
+*tuxmathscrabble-7.4-r1 (02 Feb 2015)
+
+  02 Feb 2015; Tupone Alfredo <tupone@gentoo.org> +tuxmathscrabble-7.4-r1.ebuild:
+  Port to python-single-r1 class
+
+  04 Mar 2011; Brent Baude <ranger@gentoo.org> tuxmathscrabble-7.4.ebuild:
+  stable ppc, bug 353821
+
+  08 Feb 2011; Thomas Kahle <tomka@gentoo.org> tuxmathscrabble-7.4.ebuild:
+  x86 stable per bug 353821
+
+  13 Dec 2010; Tupone Alfredo <tupone@gentoo.org> tuxmathscrabble-7.4.ebuild:
+  Remove fperms. Bug #348553 by Mr. Anderson
+
+*tuxmathscrabble-7.4 (08 Dec 2010)
+
+  08 Dec 2010; Tupone Alfredo <tupone@gentoo.org> +tuxmathscrabble-7.4.ebuild,
+  +files/tuxmathscrabble-7.4-gentoo.patch:
+  Version bump to 0.7.4 Bug #202844 by charlie cosse
+
+  22 Apr 2010; Tupone Alfredo <tupone@gentoo.org>
+  tuxmathscrabble-4.5.ebuild:
+  Force python2 to fix bug #312255 by arfrever@gentoo.org
+
+*tuxmathscrabble-4.5 (24 Oct 2007)
+
+  24 Oct 2007; Tristan Heaven <nyhm@gentoo.org> +tuxmathscrabble-4.5.ebuild:
+  Version bump
+
+*tuxmathscrabble-4.3 (02 Oct 2007)
+
+  02 Oct 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  +tuxmathscrabble-4.3.ebuild:
+  version bump
+
+  02 Oct 2007; Ryan Hill <dirtyepic@gentoo.org> tuxmathscrabble-4.2.ebuild:
+  Lock wxpython to 2.6.
+
+*tuxmathscrabble-4.2 (24 Jul 2007)
+
+  24 Jul 2007; Tristan Heaven <nyhm@gentoo.org> +tuxmathscrabble-4.2.ebuild:
+  Version bump
+
+*tuxmathscrabble-4.0 (22 Jul 2007)
+
+  22 Jul 2007; Tristan Heaven <nyhm@gentoo.org> +tuxmathscrabble-4.0.ebuild:
+  Version bump
+
+*tuxmathscrabble-3.0.4 (01 Nov 2006)
+
+  01 Nov 2006; <tupone@gentoo.org>
+  +files/tuxmathscrabble-3.0.4-wxVersion.patch, -files/2.4a-fix-setup.patch,
+  +tuxmathscrabble-3.0.4.ebuild:
+  Version bump. Bug #48267 by Alexandru Toma
+
+*tuxmathscrabble-2.7 (26 May 2005)
+
+  26 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/2.7-gentoo.patch, +tuxmathscrabble-2.7.ebuild:
+  version bump
+
+  22 Nov 2004; Joseph Jezak <josejx@gentoo.org> tuxmathscrabble-2.4a.ebuild:
+  Marked ppc stable.
+
+  30 Aug 2004; David Holm <dholm@gentoo.org> tuxmathscrabble-2.4a.ebuild:
+  Added to ~ppc.
+
+  09 May 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  tuxmathscrabble-2.4a.ebuild:
+  Added amd64 KEYWORD.  Thank bug #50551.
+
+*tuxmathscrabble-2.4a (08 Nov 2003)
+
+  08 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #32873.
+
+*tuxmathscrabble-2.2 (03 Aug 2003)
+
+  03 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*tuxmathscrabble-0.1.0 (05 Mar 2003)
+
+  05 Mar 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me for #15040.

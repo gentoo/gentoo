@@ -1,0 +1,81 @@
+# ChangeLog for net-p2p/nap
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/nap/ChangeLog,v 1.22 2013/01/27 12:11:35 ulm Exp $
+
+  27 Jan 2013; Ulrich Müller <ulm@gentoo.org> nap-1.5.4-r1.ebuild:
+  Fix LICENSE and add bindist restriction, bug 452014.
+
+*nap-1.5.4-r1 (27 Nov 2008)
+
+  27 Nov 2008; Raúl Porcel <armin76@gentoo.org> -nap-1.5.4.ebuild,
+  +nap-1.5.4-r1.ebuild:
+  Fix man pages and docs installing, use correct CC, bug #246664
+
+  13 Apr 2008; Petteri Räty <betelgeuse@gentoo.org> nap-1.5.4.ebuild:
+  Remove RDEPEND on virtual/libc.
+
+  15 Mar 2007; Raúl Porcel <armin76@gentoo.org> -nap-1.5.3.ebuild:
+  drop old
+
+  15 Mar 2007; Matti Bickel <mabi@gentoo.org> nap-1.5.4.ebuild:
+  ppc stable (bug #170767)
+
+  13 Mar 2007; Raúl Porcel <armin76@gentoo.org> nap-1.5.4.ebuild:
+  x86 stable wrt bug 170767
+
+*nap-1.5.4 (23 Jan 2007)
+
+  23 Jan 2007; Raúl Porcel <armin76@gentoo.org> -nap-1.5.1.ebuild,
+  -nap-1.5.2.ebuild, +nap-1.5.4.ebuild:
+  version bump, drop old
+
+  13 Jan 2006; Marcin Kryczek <mkay@gentoo.org> nap-1.5.1.ebuild,
+  nap-1.5.2.ebuild, nap-1.5.3.ebuild:
+  Changing homepage. Thanks Alejandro Lopez Monzon for bug #118681
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  04 Jul 2004; Jon Hood <squinky86@gentoo.org> nap-1.5.3.ebuild:
+  stable on x86
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> nap-1.5.1.ebuild,
+  nap-1.5.2.ebuild, nap-1.5.3.ebuild:
+  change virtual/glibc to virtual/libc
+
+*nap-1.5.3 (21 May 2004)
+
+  21 May 2004; Jon Hood <squinky86@gentoo.org> nap-1.5.2.ebuild,
+  +nap-1.5.3.ebuild:
+  version bump
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> nap-1.5.1.ebuild,
+  nap-1.5.2.ebuild:
+  Added IUSE.
+
+*nap-1.5.2 (26 Feb 2004)
+
+  26 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org> nap-1.5.2.ebuild:
+  Version bump.  Closes bug #33186.
+
+*nap-1.5.1 (15 Dec 2002)
+
+  16 Mar 2003; Seemant Kulleen <seemant@gentoo.org> nap-1.5.1.ebuild:
+  set to stable  Closes bug #17630 by Håkon A. Hjortland 
+  <hahjortland@tande.com> 
+
+  16 Mar 2003; Mark Guertin <gerk@gentoo.org> nap-1.5.1.ebuild:
+  set ppc in keywords
+
+  15 Dec 2002; Ryan Phillips <rphillips@gentoo.org> :
+  New version
+
+*nap-1.5.0 (21 Jun 2002)
+
+  24 Jul 2002; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
+
+  21 Jun 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog :
+  
+  Initial import, closes bug #3867.
+  ebuild submitted by Maik Schreiber <blizzy@gentoo.org>

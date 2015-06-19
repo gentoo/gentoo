@@ -1,0 +1,26 @@
+Title: vanilla-sources stabilization policy
+Author: Mike Pagano <mpagano@gentoo.org>
+Content-Type: text/plain
+Posted: 2013-08-07
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: sys-kernel/vanilla-sources
+
+The Gentoo Kernel Team will no longer be providing stable
+vanilla-sources kernels. All currently stabilized vanilla-sources
+versions will be dropped to ~arch. The Arch teams, via normal requests
+of the Kernel Team, will continue to stabilize gentoo-sources kernels
+upon request. This decision is based on the facts that upstream is now
+releasing approximately 1-2 vanilla-sources kernels a week. Arch teams,
+understandably, are unable to keep up with this rate of release.  As
+most vanilla releases contain security fixes, the user who only runs
+stable vanilla-sources will consistently be behind and potentially at
+risk.  For the latest "upstream kernel unpatched by Gentoo", we
+recommend users add 'sys-kernel/vanilla-sources' to their
+package.accept_keywords file. gentoo-sources will continue to be a
+tested and supported version for Gentoo users.
+
+
+Note: This news item only applies to gentoo-sources and vanilla-sources.
+Other kernels currently maintained in portage have their own policies
+and procedures in place today.

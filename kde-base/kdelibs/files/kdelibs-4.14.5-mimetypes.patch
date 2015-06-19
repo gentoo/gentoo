@@ -1,0 +1,27 @@
+Remove fake MIME types that cause warnings.
+
+The offending MIME types are commented out rather than
+physically removed because doing so would cause the patch
+to be too large.
+
+--- mimetypes/kde.xml
++++ mimetypes/kde.xml
+@@ -1784,7 +1784,8 @@
+     <glob pattern="*.abc"/>
+   </mime-type>
+ 
+-  <!-- all/ fake mime types -->
++  <!-- 
++  all/ fake mime types
+   <mime-type type="all/all">
+     <comment>all files and folders</comment>
+     <comment xml:lang="ar">كل الملفات و المجلدات</comment>
+@@ -1901,7 +1902,7 @@
+     <comment xml:lang="zh_CN">全部文件</comment>
+     <comment xml:lang="zh_TW">所有檔案</comment>
+   </mime-type>
+-
++  -->
+   <mime-type type="application/vnd.kde.fontspackage">
+     <sub-class-of type="application/zip"/>
+     <comment>fonts package</comment>

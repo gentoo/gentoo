@@ -1,0 +1,301 @@
+# ChangeLog for app-portage/pfl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/pfl/ChangeLog,v 1.82 2015/06/04 15:00:58 billie Exp $
+
+  04 Jun 2015; Daniel Pielmeier <billie@gentoo.org> -pfl-2.4-r3.ebuild:
+  Remove old.
+
+  02 Jun 2015; Jack Morgan <jmorgan@gentoo.org> pfl-2.4-r4.ebuild:
+  sparc stable wrt bug #549562
+
+  27 May 2015; Mikle Kolyada <zlogene@gentoo.org> pfl-2.4-r4.ebuild:
+  arm stable wrt bug #549562
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> pfl-2.4-r4.ebuild:
+  Stable for x86, wrt bug #549562
+
+  21 May 2015; Agostino Sarubbo <ago@gentoo.org> pfl-2.4-r4.ebuild:
+  Stable for amd64, wrt bug #549562
+
+  17 May 2015; Jeroen Roovers <jer@gentoo.org> pfl-2.4-r4.ebuild:
+  Stable for PPC64 too.
+
+  17 May 2015; Jeroen Roovers <jer@gentoo.org> pfl-2.4-r4.ebuild:
+  Stable for HPPA (bug #549562).
+
+  16 May 2015; Pacho Ramos <pacho@gentoo.org> pfl-2.4-r4.ebuild:
+  ppc stable wrt bug #549562
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pfl-2.4-r3.ebuild,
+  pfl-2.4-r4.ebuild:
+  Remove old Python implementations
+
+*pfl-2.4-r4 (04 Apr 2015)
+
+  04 Apr 2015; Daniel Pielmeier <billie@gentoo.org> +pfl-2.4-r4.ebuild,
+  +files/pfl-2.4-reponame.patch:
+  Fix issue with different repository naming between portage/paludis. Thanks to
+  Anthony Parsons in bug #537584.
+
+*pfl-2.4-r3 (08 Aug 2014)
+
+  08 Aug 2014; Daniel Pielmeier <billie@gentoo.org> -pfl-2.4-r2.ebuild,
+  +pfl-2.4-r3.ebuild:
+  Add PYTHON_USEDEP. This fixes bug #519252. Thanks to Paweł Stankowski for the
+  report.
+
+  25 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> pfl-2.4-r2.ebuild:
+  Add ~mips keyword
+
+*pfl-2.4-r2 (29 Jun 2014)
+
+  29 Jun 2014; Jeroen Roovers <jer@gentoo.org> -pfl-2.4-r1.ebuild,
+  +pfl-2.4-r2.ebuild:
+  Revision bump so everyone enjoys the bug fix.
+
+  13 Mar 2014; Daniel Pielmeier <billie@gentoo.org>
+  files/e-file-20110906-portageq.patch:
+  Update portageq patch for e-file. This fixes bug #504164. Thanks to
+  Konstantin for the report and the patch.
+
+  24 Jan 2014; Daniel Pielmeier <billie@gentoo.org> -pfl-2.3.ebuild:
+  Remove old.
+
+  21 Jan 2014; Markus Meier <maekke@gentoo.org> pfl-2.4-r1.ebuild:
+  arm stable, bug #488730
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pfl-2.4-r1.ebuild:
+  Stable for sparc, wrt bug #488730
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pfl-2.4-r1.ebuild:
+  Stable for ppc, wrt bug #488730
+
+  07 Dec 2013; Johannes Huber <johu@gentoo.org> pfl-2.4-r1.ebuild:
+  x86 stable, bug #488730
+
+  05 Nov 2013; Daniel Pielmeier <billie@gentoo.org> pfl-2.3.ebuild,
+  pfl-2.4-r1.ebuild:
+  Add missing die. Thanks to Chema Alonso in bug
+
+  05 Nov 2013; Chema Alonso <nimiux@gentoo.org> pfl-2.4-r1.ebuild:
+  Stable for amd64 wrt bug #488730
+
+  20 Oct 2013; Jeroen Roovers <jer@gentoo.org> pfl-2.4-r1.ebuild:
+  Stable for HPPA (bug #488730).
+
+  14 Oct 2013; Daniel Pielmeier <billie@gentoo.org> -pfl-2.4.ebuild:
+  Remove old.
+
+*pfl-2.4-r1 (14 Oct 2013)
+
+  14 Oct 2013; Daniel Pielmeier <billie@gentoo.org> +pfl-2.4-r1.ebuild,
+  +files/e-file-20110906-http-response.patch:
+  Revision bump. Fixes bug #413191. Thanks to rking for the report and Jeroen
+  Roovers the for the fix.
+
+  08 Oct 2013; Daniel Pielmeier <billie@gentoo.org> -pfl-2.3-r3.ebuild:
+  Remove old.
+
+*pfl-2.4 (06 Oct 2013)
+
+  06 Oct 2013; Daniel Pielmeier <billie@gentoo.org> +pfl-2.4.ebuild,
+  +files/e-file-20110906-portageq.patch:
+  Version bump. Fixes bug #420111, thanks to Jeroen Roovers for the patch.
+  Fixed bug #481296, thanks to Alice Ferrazzi for the report and Daniel for the
+  fix.
+
+  20 Aug 2013; Sébastien Fabbro <bicatali@gentoo.org> pfl-2.3-r3.ebuild:
+  Keyword amd64-linux and x86-linux
+
+  23 Mar 2013; Daniel Pielmeier <billie@gentoo.org> metadata.xml:
+  Remove proxy-maintainers. They are not required if the user in metadata is
+  upstream.
+
+  19 Mar 2013; Daniel Pielmeier <billie@gentoo.org> metadata.xml:
+  Add upstream tag in metadata.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*pfl-2.3-r3 (21 Feb 2013)
+
+  21 Feb 2013; Daniel Pielmeier <billie@gentoo.org> -pfl-2.3-r2.ebuild,
+  +pfl-2.3-r3.ebuild:
+  Fix bug #457798.
+
+  09 Feb 2013; Daniel Pielmeier <billie@gentoo.org> -pfl-2.3-r1.ebuild:
+  Remove old.
+
+  02 Feb 2013; Daniel Pielmeier <billie@gentoo.org> pfl-2.3-r2.ebuild:
+  Remove distutils-r1_src_install from python_install_all() to avoid endless
+  loop.
+
+  02 Feb 2013; Daniel Pielmeier <billie@gentoo.org> pfl-2.3-r2.ebuild:
+  Use python_install_all(). Thanks to Michał Górny in bug 455128.
+
+*pfl-2.3-r2 (02 Feb 2013)
+
+  02 Feb 2013; Daniel Pielmeier <billie@gentoo.org> +pfl-2.3-r2.ebuild:
+  Revison bump. Switch to EAPI 5 and distutils-r1.
+
+  05 Aug 2012; Richard Yao <ryao@gentoo.org> pfl-2.3-r1.ebuild:
+  Keyword ~x64-freebsd
+
+  26 Jul 2012; Richard Yao <ryao@gentoo.org> pfl-2.3-r1.ebuild:
+  Keyword ~amd64-fbsd
+
+  06 May 2012; Daniel Pielmeier <billie@gentoo.org> -pfl-2.2.ebuild:
+  Remove old.
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> pfl-2.3.ebuild:
+  sparc stable wrt #399951
+
+  14 Mar 2012; Jeroen Roovers <jer@gentoo.org> pfl-2.3-r1.ebuild:
+  Marked ~hppa too.
+
+*pfl-2.3-r1 (13 Feb 2012)
+
+  13 Feb 2012; Daniel Pielmeier <billie@gentoo.org> +pfl-2.3-r1.ebuild:
+  Use tarball and distutils setup script instead of messing with single files.
+
+  05 Feb 2012; Markus Meier <maekke@gentoo.org> pfl-2.3.ebuild:
+  arm stable, bug #399951
+
+  01 Feb 2012; Brent Baude <ranger@gentoo.org> pfl-2.3.ebuild:
+  Marking pfl-2.3 ppc for bug 399951
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> pfl-2.3.ebuild:
+  x86 stable wrt bug #399951
+
+  27 Jan 2012; Agostino Sarubbo <ago@gentoo.org> pfl-2.3.ebuild:
+  Stable for amd64, wrt bug #399951
+
+  03 Dec 2011; Fabian Groffen <grobian@gentoo.org> pfl-2.3.ebuild:
+  Add fixes for Prefix
+
+  06 Nov 2011; Brent Baude <ranger@gentoo.org> pfl-2.2.ebuild:
+  Marking pfl-2.2 ppc for bug 370855
+
+*pfl-2.3 (19 Oct 2011)
+
+  19 Oct 2011; Daniel Pielmeier <billie@gentoo.org> +pfl-2.3.ebuild:
+  Version bump. Fixes bug #381399 and #381403. Thanks to Michał Górny for the
+  reports.
+
+  26 Jul 2011; Daniel Pielmeier <billie@gentoo.org> -pfl-2.1.ebuild:
+  Remove old.
+
+  25 Jun 2011; Raúl Porcel <armin76@gentoo.org> pfl-2.2.ebuild:
+  sparc stable wrt #370855
+
+  19 Jun 2011; Markus Meier <maekke@gentoo.org> pfl-2.2.ebuild:
+  x86 stable, bug #370855
+
+  19 Jun 2011; Markus Meier <maekke@gentoo.org> pfl-2.2.ebuild:
+  arm stable, bug #370855
+
+  18 Jun 2011; Markos Chandras <hwoarang@gentoo.org> pfl-2.2.ebuild:
+  Stable on amd64 wrt bug #370855
+
+*pfl-2.2 (18 May 2011)
+
+  18 May 2011; Daniel Pielmeier <billie@gentoo.org> -pfl-2.1-r1.ebuild,
+  +pfl-2.2.ebuild:
+  Version bump. Fixes bug #367741. Thanks to Arfrever Frehtes Taifersar
+  Arahesis for the report and Daniel for the upstream fix. Remove old.
+
+  01 May 2011; Daniel Pielmeier <billie@gentoo.org> pfl-2.1.ebuild,
+  pfl-2.1-r1.ebuild:
+  Make USE="network-cron" default.
+
+  25 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> pfl-2.1-r1.ebuild:
+  Marked ~ppc per Michael Weber <xmw@gentoo.org> request.
+
+  19 Feb 2011; Daniel Pielmeier <billie@gentoo.org> pfl-2.1.ebuild,
+  pfl-2.1-r1.ebuild:
+  Use a more reliable SRC_URI for e-file. This fixes bug #355391. Thanks to
+  Azamat H. Hackimov for reporting. Remove mirror restriction.
+
+*pfl-2.1-r1 (14 Feb 2011)
+
+  14 Feb 2011; Daniel Pielmeier <billie@gentoo.org> +pfl-2.1-r1.ebuild:
+  Revision bump. Small update to the e-file script.
+
+  13 Feb 2011; Daniel Pielmeier <billie@gentoo.org> -pfl-2.0.ebuild:
+  Remove old.
+
+  02 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> pfl-2.1.ebuild:
+  x86 stable wrt bug #349999
+
+  31 Dec 2010; Markos Chandras <hwoarang@gentoo.org> pfl-2.1.ebuild:
+  Stable on amd64 wrt bug #349999
+
+  29 Dec 2010; Michael Weber <xmw@gentoo.org> pfl-2.1.ebuild:
+  arm/sparc stable (bug 349999)
+
+*pfl-2.1 (21 Nov 2010)
+
+  21 Nov 2010; Daniel Pielmeier <billie@gentoo.org> +pfl-2.1.ebuild:
+  Version bump. Only information from the offical Gentoo repository is
+  submitted, overlays are excluded from now on. Works with portage-2.2.*, Fixes
+  bug #346165, thanks Dan Johansson for reporting.
+
+  20 Nov 2010; Michael Weber <xmw@gentoo.org> pfl-2.0.ebuild:
+  Added ~sparc keyword
+
+  10 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pfl-2.0.ebuild:
+  Update EAPI. Don't inherit unused eclass. Call python_pkg_setup().
+
+  27 Sep 2010; Michael Weber <xmw@gentoo.org> pfl-2.0.ebuild:
+  Added ~arm keyword
+
+  18 Jul 2010; Daniel Pielmeier <billie@gentoo.org> -pfl-1.8.1.ebuild,
+  -pfl-1.8.1-r1.ebuild:
+  Remove old.
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org> pfl-2.0.ebuild:
+  stable x86, bug 328159
+
+  14 Jul 2010; Markos Chandras <hwoarang@gentoo.org> pfl-2.0.ebuild:
+  Stable on amd64 wrt bug #328159
+
+  28 May 2010; Daniel Pielmeier <billie@gentoo.org> pfl-1.8.1.ebuild,
+  pfl-1.8.1-r1.ebuild, pfl-2.0.ebuild:
+  Pass path to python_mod_cleanup.
+
+  22 May 2010; Pacho Ramos <pacho@gentoo.org> pfl-1.8.1.ebuild:
+  stable amd64, bug 301660
+
+  10 May 2010; Daniel Pielmeier <billie@gentoo.org> pfl-2.0.ebuild:
+  Add dev-python/pyxml dependency, thanks to damage on IRC.
+
+*pfl-2.0 (09 May 2010)
+
+  09 May 2010; Daniel Pielmeier <billie@gentoo.org> pfl-1.8.1.ebuild,
+  pfl-1.8.1-r1.ebuild, +pfl-2.0.ebuild:
+  Version bump. Use versioned SRC_URI for e-file.
+
+  19 Apr 2010; Daniel Pielmeier <billie@gentoo.org> pfl-1.8.1-r1.ebuild:
+  Fix bug #315593 thanks to Diego E. 'Flameeyes' Pettenò.
+
+  30 Mar 2010; Daniel Pielmeier <billie@gentoo.org> pfl-1.8.1-r1.ebuild:
+  Further python eclass fixes.
+
+*pfl-1.8.1-r1 (16 Mar 2010)
+
+  16 Mar 2010; Daniel Pielmeier <billie@gentoo.org> +pfl-1.8.1-r1.ebuild:
+  Revision bump to make use of the new python eclass functions.
+
+  21 Jan 2010; Christian Faulhammer <fauli@gentoo.org> pfl-1.8.1.ebuild:
+  stable x86, bug 301660
+
+  28 Jun 2009; Pielmeier Daniel <billie@gentoo.org> metadata.xml:
+  Better use flag description
+
+*pfl-1.8.1 (28 Jun 2009)
+
+  28 Jun 2009; Pielmeier Daniel <billie@gentoo.org> +metadata.xml,
+  +pfl-1.8.1.ebuild:
+  Initial import. Original ebuild by desastre, fixes by me, yngwin and damage.
+  This closes bug #253074.

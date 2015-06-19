@@ -1,0 +1,23 @@
+--- examples/Makefile.orig	2008-04-22 10:15:42.500625020 +0000
++++ examples/Makefile	2008-04-22 10:16:40.563933859 +0000
+@@ -1,18 +1,16 @@
+ # This makefile is on purpose not made with configure, to show how to use the library
+ # The make file requires that the fann library is installed (see ../README)
+ 
+-GCC=gcc
+-
+ TARGETS = xor_train xor_test xor_test_fixed simple_train steepness_train simple_test robot mushroom cascade_train scaling_test scaling_train
+ DEBUG_TARGETS = xor_train_debug xor_test_debug xor_test_fixed_debug cascade_train_debug
+ 
+ all: $(TARGETS)
+ 
+ %: %.c Makefile
+-	$(GCC) -O3 $< -o $@ -lm -lfann
++	$(CC) $(CFLAGS) $< -o $@ -lm -lfann
+ 
+ %_fixed: %.c Makefile
+-	$(GCC) -O3 -DFIXEDFANN $< -o $@ -lm -lfixedfann
++	$(CC) $(CFLAGS) -DFIXEDFANN $< -o $@ -lm -lfixedfann
+ 
+ clean:
+ 	rm -f $(TARGETS) $(DEBUG_TARGETS) xor_fixed.data *.net *~ *.obj *.exe *.tds noscale.txt withscale.txt scale_test_results.txt

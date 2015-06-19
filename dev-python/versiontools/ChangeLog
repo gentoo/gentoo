@@ -1,0 +1,51 @@
+# ChangeLog for dev-python/versiontools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/versiontools/ChangeLog,v 1.14 2015/06/09 17:20:46 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  09 Mar 2015; Pacho Ramos <pacho@gentoo.org> versiontools-1.9.1-r1.ebuild:
+  x86 stable, bug 540290
+
+  08 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -versiontools-1.9.1.ebuild:
+  Remove old.
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> versiontools-1.9.1-r1.ebuild:
+  amd64 stable, bug 540290
+
+  06 Jun 2014; Ian Delaney <idella4@gentoo.org> versiontools-1.9.1-r1.ebuild:
+  exclude rogue test, drop py2.6 3.2 pypy2_0 add py3.4
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> versiontools-1.9.1-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> versiontools-1.9.1-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*versiontools-1.9.1-r1 (21 Mar 2013)
+
+  21 Mar 2013; Ian Delaney <idella4@gentoo.org> +versiontools-1.9.1-r1.ebuild:
+  migration revbump, IUSE doc dropped due to build accessing python.org to fetch
+  inventory
+
+  14 Nov 2012; Ian Delaney <idella4@gentoo.org> metadata.xml:
+  Updating maintainer, metadata.xml
+
+  28 Apr 2012; Kacper Kowalik <xarthisius@gentoo.org> versiontools-1.9.1.ebuild:
+  Fix DESCRIPTION wrt #413783 by James Rowe <jnrowe@gmail.com>
+
+  25 Apr 2012; Kacper Kowalik <xarthisius@gentoo.org> versiontools-1.9.1.ebuild:
+  Depend on any version of python
+
+  25 Apr 2012; Kacper Kowalik <xarthisius@gentoo.org> versiontools-1.9.1.ebuild:
+  Use sphinx to build docs, actually run the test suite using unittest
+
+*versiontools-1.9.1 (25 Apr 2012)
+
+  25 Apr 2012; Theo Chatzimichos <tampakrap@gentoo.org> +metadata.xml,
+  +versiontools-1.9.1.ebuild:
+  Initial commit, ebuild by idella4

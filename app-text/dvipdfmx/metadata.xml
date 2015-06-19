@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>cjk</herd>
+	<herd>tex</herd>
+	<herd>printing</herd>
+	<longdescription lang="en">
+		The DVIPDFMx (formerly dvipdfm-cjk) project provides an eXtended
+		version of the dvipdfm, a DVI to PDF translator developed by Mark A.
+		Wicks. The primary goal of this project is to support multi-byte
+		character encodings and large character sets for East Asian languages
+		by CID-keyed font technology.  The secondary goal is to support as
+		many features as pdfTeX developed by Han The Thanh. This project is a
+		combined work of the dvipdfm-jpn project by Shunsaku Hirata and its
+		modified one, dvipdfm-kor, by Jin-Hwan Cho.
+	</longdescription>
+</pkgmetadata>

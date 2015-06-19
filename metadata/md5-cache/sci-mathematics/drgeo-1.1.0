@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=x11-libs/gtk+:2 gnome-base/libglade:2.0 dev-libs/libxml2:2 || ( >=dev-scheme/guile-1.8[deprecated] =dev-scheme/guile-1.6* ) virtual/pkgconfig
+DESCRIPTION=Interactive geometry package
+EAPI=4
+HOMEPAGE=http://www.ofset.org/drgeo
+IUSE=nls
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2 gnome-base/libglade:2.0 dev-libs/libxml2:2 || ( >=dev-scheme/guile-1.8[deprecated] =dev-scheme/guile-1.6* )
+SLOT=0
+SRC_URI=mirror://sourceforge/ofset/drgeo-1.1.0.tar.gz mirror://sourceforge/ofset/drgeo-doc-1.5.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=139f3c85f892e71a02db384cf23f6ed1

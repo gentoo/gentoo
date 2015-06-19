@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0= ) svga? ( media-libs/svgalib ) vorbis? ( media-libs/libvorbis ) X? ( x11-libs/libX11 x11-libs/libXcursor x11-libs/libXext x11-libs/libXpm x11-libs/libXt x11-libs/libXxf86dga x11-libs/libXxf86vm opengl? ( virtual/glu virtual/opengl ) ) virtual/pkgconfig X? ( x11-proto/xextproto x11-proto/xf86dgaproto x11-proto/xf86vidmodeproto x11-proto/xproto ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=cross-platform multimedia library
+EAPI=5
+HOMEPAGE=http://alleg.sourceforge.net/
+IUSE=alsa fbcon jack jpeg opengl oss png svga test vga vorbis X
+KEYWORDS=amd64 ~mips ppc ppc64 x86
+LICENSE=Allegro MIT GPL-2+ ZLIB
+RDEPEND=alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0= ) svga? ( media-libs/svgalib ) vorbis? ( media-libs/libvorbis ) X? ( x11-libs/libX11 x11-libs/libXcursor x11-libs/libXext x11-libs/libXpm x11-libs/libXt x11-libs/libXxf86dga x11-libs/libXxf86vm opengl? ( virtual/glu virtual/opengl ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/alleg/allegro-4.4.2.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=2085d8f1997347e8f5c7b15ba061dd57

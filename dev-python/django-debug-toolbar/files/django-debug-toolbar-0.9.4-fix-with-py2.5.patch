@@ -1,0 +1,8 @@
+diff -ur django-debug-toolbar-0.9.4.orig/tests/tests.py django-debug-toolbar-0.9.4/tests/tests.py
+--- tests/tests.py	2011-10-10 02:47:15.000000000 +0800
++++ tests/tests.py	2012-04-25 22:00:50.956680910 +0800
+@@ -1,3 +1,4 @@
++from __future__ import with_statement
+ from debug_toolbar.middleware import DebugToolbarMiddleware
+ from debug_toolbar.panels.sql import SQLDebugPanel
+ from debug_toolbar.panels.request_vars import RequestVarsDebugPanel

@@ -1,0 +1,25 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/sshguard/files/sshguard.initd,v 1.3 2011/04/25 04:59:43 jer Exp $
+
+depend() {
+	after iptables
+	use logger
+}
+
+SSHGUARD_PIDFILE=${SSHGUARD_PIDFILE:-/var/run/${SVCNAME}.pid}
+
+start() {
+	ebegin "Starting sshguard"
+	[[ -z ${SSHGUARD_WAIT} ]] && SSHGUARD_WAIT=999
+	start-stop-daemon --start --wait ${SSHGUARD_WAIT} --background --quiet --exec \
+		/usr/sbin/sshguard -- -i ${SSHGUARD_PIDFILE} ${SSHGUARD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping sshguard"
+	start-stop-daemon --stop -p ${SSHGUARD_PIDFILE}
+	eend $?
+}

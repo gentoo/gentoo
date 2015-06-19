@@ -1,0 +1,90 @@
+# ChangeLog for games-board/tali
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/tali/ChangeLog,v 1.22 2015/06/09 15:14:18 eva Exp $
+
+*tali-3.16.1 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org> -tali-3.12.2.ebuild,
+  +tali-3.16.1.ebuild:
+  Version bump for Gnome 3.16. Clean up old revision.
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> tali-3.14.0.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> tali-3.14.0.ebuild:
+  amd64 stable, bug 534012
+
+*tali-3.14.0 (22 Dec 2014)
+
+  22 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org> +tali-3.14.0.ebuild:
+  Version bump for Gnome 3.14.
+
+  11 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org> -tali-3.10.2.ebuild,
+  -tali-3.12.1.ebuild:
+  old
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> tali-3.12.2.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> tali-3.12.2.ebuild:
+  Stable for amd64, wrt bug #512912
+
+*tali-3.12.2 (31 May 2014)
+
+  31 May 2014; Pacho Ramos <pacho@gentoo.org> +tali-3.12.2.ebuild:
+  Version bump
+
+*tali-3.12.1 (27 Apr 2014)
+
+  27 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org> +tali-3.12.1.ebuild:
+  Version bump for Gnome 3.12.
+
+  26 Apr 2014; Pacho Ramos <pacho@gentoo.org> -tali-3.8.2.ebuild:
+  drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> tali-3.10.2.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> tali-3.10.2.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> tali-3.10.2.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> tali-3.10.2.ebuild:
+  arch stable, bug 888
+
+*tali-3.10.2 (24 Dec 2013)
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org> +tali-3.10.2.ebuild,
+  -tali-3.8.1.ebuild:
+  Version bump for Gnome 3.10
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> tali-3.8.2.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> tali-3.8.2.ebuild:
+  amd64 stable, bug #478252
+
+*tali-3.8.2 (17 Nov 2013)
+
+  17 Nov 2013; Pacho Ramos <pacho@gentoo.org> +tali-3.8.2.ebuild:
+  Version bump
+
+  06 Nov 2013; Pacho Ramos <pacho@gentoo.org> -tali-3.8.0.ebuild,
+  tali-3.8.1.ebuild:
+  x86 keyword, bug #476710; drop old
+
+*tali-3.8.1 (15 Sep 2013)
+
+  15 Sep 2013; Gilles Dartiguelongue <eva@gentoo.org> +tali-3.8.1.ebuild:
+  Version bump.
+
+  31 Aug 2013; Sergey Popov <pinkbyte@gentoo.org> tali-3.8.0.ebuild:
+  Add ~arm keyword, wrt bug #476710
+
+*tali-3.8.0 (12 Aug 2013)
+
+  12 Aug 2013; Gilles Dartiguelongue <eva@gentoo.org> +tali-3.8.0.ebuild,
+  +metadata.xml:
+  Add game splitted from gnome-games by upstream.

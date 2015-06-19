@@ -1,0 +1,92 @@
+# ChangeLog for x11-libs/libxsettings-client
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libxsettings-client/ChangeLog,v 1.24 2014/07/01 23:38:10 jer Exp $
+
+*libxsettings-client-0.17-r1 (01 Jul 2014)
+
+  01 Jul 2014; Jeroen Roovers <jer@gentoo.org>
+  -libxsettings-client-0.10.ebuild, +libxsettings-client-0.17-r1.ebuild,
+  -files/0.10-as-needed.patch:
+  Override gpe_src_configure (bug #515340). Add USE=static-libs (and
+  prune_libtool_files). Clean up sed scripts.
+
+  05 Jan 2013; Raúl Porcel <armin76@gentoo.org>
+  libxsettings-client-0.17.ebuild:
+  sh stable wrt #397253
+
+  21 May 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  libxsettings-client-0.10.ebuild:
+  Add missing inheritance of eutils.eclass
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  libxsettings-client-0.17.ebuild:
+  Stable for amd64, wrt bug #309407
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  libxsettings-client-0.17.ebuild:
+  x86 stable wrt bug #397253
+
+  10 Feb 2012; Markus Meier <maekke@gentoo.org>
+  libxsettings-client-0.17.ebuild:
+  arm stable, bug #397253
+
+  03 Feb 2012; Brent Baude <ranger@gentoo.org> libxsettings-client-0.17.ebuild:
+  Marking libxsettings-client-0.17 ppc for bug 397253
+
+  07 Feb 2010; Jeroen Roovers <jer@gentoo.org>
+  libxsettings-client-0.17.ebuild:
+  Respect CFLAGS (bug #241536).
+
+  01 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  libxsettings-client-0.17.ebuild:
+  Properly rebuild autotools, avoid maintainer-mode rebuild.
+
+*libxsettings-client-0.17 (01 Mar 2009)
+
+  01 Mar 2009; <miknix@gentoo.org> +libxsettings-client-0.17.ebuild:
+  Version bump. This ebuild now uses the gpe eclass.
+
+  26 Sep 2007; Jeroen Roovers <jer@gentoo.org>
+  libxsettings-client-0.10.ebuild:
+  Marked ~hppa too.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  libxsettings-client-0.10.ebuild:
+  Drop virtual/x11 references.
+
+  25 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/0.10-as-needed.patch, libxsettings-client-0.10.ebuild:
+  Fix for --as-needed: libXsettings-client needs to link against libX11.
+
+  07 Aug 2006; <yvasilev@gentoo.org> libxsettings-client-0.10.ebuild:
+  Added ~arm keyword.
+
+  04 Jun 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  libxsettings-client-0.10.ebuild:
+  Fix building shared libs on uclibc, see bug #135462.
+
+  15 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  libxsettings-client-0.10.ebuild:
+  Fixed DEPEND for modular X.
+
+  31 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org>
+  libxsettings-client-0.10.ebuild:
+  Fixed dodoc not to install COPYING.
+
+  01 Jul 2005; Joseph Jezak <josejx@gentoo.org>
+  libxsettings-client-0.10.ebuild:
+  Marked ppc stable.
+
+  10 May 2005; David Holm <dholm@gentoo.org>
+  libxsettings-client-0.10.ebuild:
+  Added to ~ppc.
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org>
+  libxsettings-client-0.10.ebuild:
+  Marked stable.
+
+*libxsettings-client-0.10 (16 Dec 2003)
+
+  16 Dec 2003; Ian Leitch <port001@gentoo.org> : libxsettings-client-0.10.ebuild
+  Initial commit, thanks to Rene Wagner <reenoo@gmx.de>. #29008
+

@@ -1,0 +1,33 @@
+# ChangeLog for media-plugins/vdr-browse
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-browse/ChangeLog,v 1.6 2012/06/30 18:23:55 hd_brummy Exp $
+
+  30 Jun 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-browse-0.0.2.ebuild, -vdr-browse-0.1.0.ebuild, vdr-browse-0.2.0.ebuild:
+  cleanup; eapi=4; vdr-plugin-2.eclass
+
+  28 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-browse-0.2.0.ebuild:
+  eapi=3, keyword ~amd64
+
+*vdr-browse-0.2.0 (25 Feb 2008)
+
+  25 Feb 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-browse-0.2.0.ebuild:
+  Version bumped.
+
+*vdr-browse-0.1.0 (13 Dec 2007)
+
+  13 Dec 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-browse-0.1.0.ebuild:
+  Version bumped.
+
+  15 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Assigned to Gentoo VDR Project.
+
+*vdr-browse-0.0.2 (28 May 2006)
+
+  28 May 2006; Matthias Schwarzott <zzam@gentoo.org> +metadata.xml,
+  +vdr-browse-0.0.2.ebuild:
+  Initial import of ebuild.
+

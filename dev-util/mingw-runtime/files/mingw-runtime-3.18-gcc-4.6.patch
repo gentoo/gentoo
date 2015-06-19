@@ -1,0 +1,27 @@
+http://sourceforge.net/tracker/?func=detail&aid=3446009&group_id=2435&atid=302435
+https://bugs.gentoo.org/419627
+
+--- a/tlssup.c
++++ b/tlssup.c
+@@ -84,6 +84,7 @@ BOOL WINAPI
+ __dyn_tls_init (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
+ {
+   _PVFV *pfunc;
++  int nfuncs, ifunc;
+ 
+   /* We don't let us trick here.  */
+   if (_CRT_MT != 2)
+@@ -96,8 +97,12 @@ __dyn_tls_init (HANDLE hDllHandle, DWORD dwReason, LPVOID lpreserved)
+       return TRUE;
+     }
+ 
+-  for (pfunc = &__xd_a + 1; pfunc != &__xd_z; ++pfunc)
++  /* Use the nfuncs variable to iterate the TLS functions instead of pfunc to
++     avoid nasty compiler optimizations when comparing two global pointers. */
++  nfuncs = &__xd_z - (&__xd_a + 1);
++  for (ifunc=0; ifunc < nfuncs; ++ifunc)
+     {
++      pfunc = (&__xd_a + 1) + ifunc;
+       if (*pfunc != NULL)
+         (*pfunc)();
+     }

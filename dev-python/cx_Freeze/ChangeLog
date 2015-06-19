@@ -1,0 +1,57 @@
+# ChangeLog for dev-python/cx_Freeze
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cx_Freeze/ChangeLog,v 1.13 2015/06/09 15:09:04 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> cx_Freeze-4.3.1-r2.ebuild,
+  cx_Freeze-4.3.2.ebuild:
+  Drop old Python implementations
+
+  02 Dec 2014; Pacho Ramos <pacho@gentoo.org> cx_Freeze-4.3.3.ebuild:
+  amd64/x86 stable, bug #530428
+
+*cx_Freeze-4.3.3 (30 May 2014)
+
+  30 May 2014; Ian Delaney <idella4@gentoo.org> +cx_Freeze-4.3.3.ebuild:
+  bump; drop py2.6 py3.2 add py3.4 support
+
+  19 Nov 2013; Sergey Popov <pinkbyte@gentoo.org> cx_Freeze-4.3.1-r2.ebuild,
+  cx_Freeze-4.3.2.ebuild, +files/cx_Freeze-4.3.2-buildsystem.patch:
+  Proper fix for respecting LDFLAGS by Julian Ospald, bug #491602
+
+*cx_Freeze-4.3.2 (18 Nov 2013)
+
+  18 Nov 2013; Sergey Popov <pinkbyte@gentoo.org> +cx_Freeze-4.3.2.ebuild:
+  Version bump
+
+  18 Nov 2013; Sergey Popov <pinkbyte@gentoo.org> cx_Freeze-4.3.1-r2.ebuild:
+  Stable on amd64 and x86, wrt bug #491530
+
+*cx_Freeze-4.3.1-r2 (18 Nov 2013)
+
+  18 Nov 2013; Sergey Popov <pinkbyte@gentoo.org> -cx_Freeze-4.3.1.ebuild,
+  -cx_Freeze-4.3.1-r1.ebuild, +cx_Freeze-4.3.1-r2.ebuild:
+  Revision bump: respect LDFLAGS. Drop old revisions
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> cx_Freeze-4.3.1-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  27 May 2013; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Add python herd, acked by yac and djc
+
+*cx_Freeze-4.3.1-r1 (09 May 2013)
+
+  09 May 2013; Ian Delaney <idella4@gentoo.org> +cx_Freeze-4.3.1-r1.ebuild:
+  migrate -> distutils-r1, fixes Bug #46705
+
+  27 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> cx_Freeze-4.3.1.ebuild:
+  Drop obsolete USE-flag 'doc', wrt bug #448722. Thanks to Diego Elio Pettenò
+  for discovering this issue
+
+*cx_Freeze-4.3.1 (18 Dec 2012)
+
+  18 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> +cx_Freeze-4.3.1.ebuild,
+  +metadata.xml:
+  Initial commit, wrt bug #184263

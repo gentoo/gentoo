@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
+DEPEND=>=dev-cpp/gtkglextmm-1.2 dev-cpp/libglademm >=dev-libs/boost-1.48[python] dev-python/numpy dev-python/polygon:2 dev-python/ttfquery virtual/pkgconfig
+DESCRIPTION=Real-time 3D graphics library for Python
+EAPI=4
+HOMEPAGE=http://www.vpython.org/
+IUSE=doc examples
+KEYWORDS=amd64 ppc x86
+LICENSE=HPND Boost-1.0
+RDEPEND=>=dev-cpp/gtkglextmm-1.2 dev-cpp/libglademm >=dev-libs/boost-1.48[python] dev-python/numpy dev-python/polygon:2 dev-python/ttfquery
+SLOT=0
+SRC_URI=http://www.vpython.org/contents/download/visual-5.74_release.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=3a8be0b72b5dff69e313b187c0ed5d5a

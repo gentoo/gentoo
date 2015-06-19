@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-proto/xproto x11-proto/xextproto
+DESCRIPTION=a dockapp for monitoring network interfaces
+HOMEPAGE=http://zevv.nl/play/code/wmifinfo
+KEYWORDS=amd64 ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm
+SLOT=0
+SRC_URI=http://zevv.nl/play/code/wmifinfo/wmifinfo-0.09.tgz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f3c65341989061b518fb272ee8234d56

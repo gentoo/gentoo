@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip
+DESCRIPTION=Croatian Bible
+EAPI=5
+HOMEPAGE=http://crosswire.org/sword/modules/ModInfo.jsp?modName=Cro
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+LICENSE=freedist
+RDEPEND=app-text/sword
+SLOT=0
+SRC_URI=mirror://gentoo/Cro-1.0.zip
+_eclasses_=sword-module	c52595ffeb9df1c705120bffa624d484
+_md5_=0d58f2f9877711b247c31be8b1b0b930

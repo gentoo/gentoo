@@ -1,0 +1,26 @@
+# ChangeLog for games-action/deathchase3d
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/deathchase3d/ChangeLog,v 1.6 2014/12/31 12:49:01 tupone Exp $
+
+  31 Dec 2014; Tupone Alfredo <tupone@gentoo.org> deathchase3d-0.9.ebuild:
+  Migration to EAPI 4
+
+  13 Jun 2011; Tupone Alfredo <tupone@gentoo.org> deathchase3d-0.9.ebuild,
+  +files/deathchase3d-0.9-underlink.patch:
+  Fix underlink. Bug #368875 by Diego Elio Pettenò
+
+  21 Sep 2006; <blubb@gentoo.org> deathchase3d-0.9.ebuild:
+  stable on amd64
+
+  11 Aug 2005; Carlos Silva <r3pek@gentoo.org> deathchase3d-0.9.ebuild:
+  marked ~amd64. closes bug #102028
+
+  21 Dec 2004; Joseph Jezak <josejx@gentoo.org> deathchase3d-0.9.ebuild:
+  Marked ~ppc.
+
+*deathchase3d-0.9 (08 Dec 2004)
+
+  08 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> +metadata.xml,
+  +deathchase3d-0.9.ebuild:
+  initial commit - ebuild submitted by Alexandru Toma via bug #73819
+

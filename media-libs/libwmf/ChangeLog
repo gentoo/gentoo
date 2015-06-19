@@ -1,0 +1,376 @@
+# ChangeLog for media-libs/libwmf
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libwmf/ChangeLog,v 1.100 2014/08/07 09:13:42 jer Exp $
+
+  07 Aug 2014; Jeroen Roovers <jer@gentoo.org> libwmf-0.2.8.4-r5.ebuild:
+  myconfargs -> myeconfargs by Casper Ti. Vector (bug #519296).
+
+  13 Oct 2013; Pacho Ramos <pacho@gentoo.org> libwmf-0.2.8.4-r5.ebuild:
+  Drop unneeded dependencies (#483260 and fedora .spec file)
+
+  03 Sep 2013; Gilles Dartiguelongue <eva@gentoo.org> libwmf-0.2.8.4-r5.ebuild:
+  Add gdk-pixbuf cache handling via gnome2-utils eclass, see bug #483128.
+
+  02 Jul 2013; Michael Palimaka <kensington@gentoo.org>
+  -libwmf-0.2.8.4-r4.ebuild:
+  Remove old.
+
+  02 Jul 2013; Agostino Sarubbo <ago@gentoo.org> libwmf-0.2.8.4-r5.ebuild:
+  Stable for sh, wrt bug #474248
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libwmf-0.2.8.4-r5.ebuild:
+  Stable for s390, wrt bug #474248
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libwmf-0.2.8.4-r5.ebuild:
+  Stable for sparc, wrt bug #474248
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libwmf-0.2.8.4-r5.ebuild:
+  Stable for arm, wrt bug #474248
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libwmf-0.2.8.4-r5.ebuild:
+  Stable for ia64, wrt bug #474248
+
+  26 Jun 2013; Justin Lecher <jlec@gentoo.org> libwmf-0.2.8.4-r5.ebuild:
+  Drop la files from modules, #474830
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libwmf-0.2.8.4-r5.ebuild:
+  Stable for alpha, wrt bug #474248
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libwmf-0.2.8.4-r5.ebuild:
+  Stable for amd64, wrt bug #474248
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libwmf-0.2.8.4-r5.ebuild:
+  Stable for x86, wrt bug #474248
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libwmf-0.2.8.4-r5.ebuild:
+  Stable for ppc64, wrt bug #474248
+
+  24 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libwmf-0.2.8.4-r5.ebuild:
+  Stable for ppc, wrt bug #474248
+
+  23 Jun 2013; Jeroen Roovers <jer@gentoo.org> libwmf-0.2.8.4-r5.ebuild:
+  Stable for HPPA (bug #474248).
+
+*libwmf-0.2.8.4-r5 (04 May 2013)
+
+  04 May 2013; Justin Lecher <jlec@gentoo.org> +libwmf-0.2.8.4-r5.ebuild,
+  metadata.xml:
+  Fix obsolete macros to work with automake-1.13, #467462; move to
+  autotools-utils.eclass
+
+  12 May 2012; Pacho Ramos <pacho@gentoo.org> libwmf-0.2.8.4-r4.ebuild:
+  Fix typo, move from 'disable' to 'without' configure option, bug #415293 by
+  Rafał Mużyło.
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> libwmf-0.2.8.4-r4.ebuild:
+  keyword ~amd64-fbsd
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> libwmf-0.2.8.4-r4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 Apr 2012; Pacho Ramos <pacho@gentoo.org> -libwmf-0.2.8.4-r3.ebuild:
+  Drop old.
+
+  15 Feb 2012; Fabian Groffen <grobian@gentoo.org> libwmf-0.2.8.4-r4.ebuild:
+  Marked ~x64-macos
+
+  20 Aug 2011; Jeroen Roovers <jer@gentoo.org> libwmf-0.2.8.4-r4.ebuild:
+  Stable for HPPA (bug #373889).
+
+  25 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> libwmf-0.2.8.4-r4.ebuild:
+  ppc/ppc64 stable wrt #373889
+
+  23 Jul 2011; Raúl Porcel <armin76@gentoo.org> libwmf-0.2.8.4-r4.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #373889
+
+  17 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libwmf-0.2.8.4-r4.ebuild:
+  Reorder xml and expat useflags in order to fix bug #373919. This cause no
+  factical change, just reorders the use deps bit so it is more reasonable wrt
+  xml useflag.
+
+  17 Jul 2011; Markus Meier <maekke@gentoo.org> libwmf-0.2.8.4-r4.ebuild:
+  x86 stable, bug #373889
+
+  12 Jul 2011; Markus Meier <maekke@gentoo.org> libwmf-0.2.8.4-r4.ebuild:
+  arm stable, bug #373889
+
+  10 Jul 2011; Markos Chandras <hwoarang@gentoo.org> libwmf-0.2.8.4-r4.ebuild:
+  Stable on amd64 wrt bug #373889
+
+*libwmf-0.2.8.4-r4 (01 Jul 2011)
+
+  01 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +libwmf-0.2.8.4-r4.ebuild, +files/libwmf-0.2.8.4-gdk-pixbuf.patch,
+  +files/libwmf-0.2.8.4-use-system-fonts.patch:
+  Revision bump in order to fix gdk-pixbuf split and use system fonts. Fixes
+  bugs #256087 and #368485.
+
+  23 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  libwmf-0.2.8.4-r3.ebuild, +files/libwmf-0.2.8.4-libpng-1.5.patch:
+  Fixup building with png-1.5. Move to EAPI=4. Drop static libs.
+
+  28 Mar 2011; Christoph Mende <angelos@gentoo.org> libwmf-0.2.8.4-r3.ebuild:
+  Fixed gtk+ dep
+
+  11 Nov 2010; Samuli Suominen <ssuominen@gentoo.org>
+  libwmf-0.2.8.4-r3.ebuild:
+  Use virtual/jpeg wrt #327487.
+
+  06 Apr 2010; Jonathan Callen <abcd@gentoo.org> libwmf-0.2.8.4-r3.ebuild:
+  Bump to EAPI=3, add prefix keywords
+
+  28 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  libwmf-0.2.8.4-r3.ebuild:
+  Use emake -j1 for install, as per bug #298596.
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> libwmf-0.2.8.4.ebuild,
+  libwmf-0.2.8.4-r2.ebuild, libwmf-0.2.8.4-r3.ebuild:
+  virtual/ghostscript->app-text/ghostscript-gpl: ghostscript-gpl is the only
+  implementation left in the tree.
+
+  18 May 2009; Brent Baude <ranger@gentoo.org> libwmf-0.2.8.4-r3.ebuild:
+  Marking libwmf-0.2.8.4-r3 ppc64 and ppc for bug 268161
+
+  13 May 2009; Markus Meier <maekke@gentoo.org> libwmf-0.2.8.4-r3.ebuild:
+  amd64 stable, bug #268161
+
+  12 May 2009; Raúl Porcel <armin76@gentoo.org> libwmf-0.2.8.4-r3.ebuild:
+  alpha/arm/ia64/s390/sh stable wrt #268161
+
+  12 May 2009; Ferris McCormick <fmccor@gentoo.org>
+  libwmf-0.2.8.4-r3.ebuild:
+  Sparc stable, security bug #268161.
+
+  12 May 2009; Jeroen Roovers <jer@gentoo.org> libwmf-0.2.8.4-r3.ebuild:
+  Stable for HPPA (bug #268161).
+
+  11 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  libwmf-0.2.8.4-r3.ebuild:
+  stable x86, security bug 268161
+
+*libwmf-0.2.8.4-r3 (10 May 2009)
+
+  10 May 2009; Peter Alfredsen <loki_val@gentoo.org>
+  +libwmf-0.2.8.4-r3.ebuild, +files/libwmf-0.2.8.4-pngfix.patch:
+  Drop use of internal gd w.r.t. bug 268161. Add fix for bug 269324, include
+  order bug, possibly triggered by gcc-4.4.0.
+
+*libwmf-0.2.8.4-r2 (06 Mar 2009)
+
+  06 Mar 2009; Jeremy Olexa <darkside@gentoo.org> -libwmf-0.2.8.4-r1.ebuild,
+  +libwmf-0.2.8.4-r2.ebuild:
+  (non maintainer commit) don't run gdk-pixbuf-query-loaders if USE=-gtk
+  because it is not guarenteed to be on the system
+
+*libwmf-0.2.8.4-r1 (29 Jun 2008)
+
+  29 Jun 2008; Jeremy Olexa <darkside@gentoo.org> +libwmf-0.2.8.4-r1.ebuild:
+  Add code to to update /etc/gtk-2.0/gdk-pixbuf.loaders, copied from librsvg
+  ebuild. Bug #221919, thanks to Maciej Grela <thermal@o2.pl> for reporting
+
+  11 Feb 2008; Raúl Porcel <armin76@gentoo.org> libwmf-0.2.8.4.ebuild:
+  Remove jpeg USE-flag since it's not supposed to build without it, bug #146680
+
+  14 Sep 2007; Roy Marples <uberlord@gentoo.org> libwmf-0.2.8.4.ebuild:
+  elibtoolize now patches install-sh for us.
+
+  04 May 2007; Roy Marples <uberlord@gentoo.org> libwmf-0.2.8.4.ebuild:
+  Keyworded ~x86-fbsd
+
+  30 Apr 2007; Marius Mauch <genone@gentoo.org> libwmf-0.2.8.4.ebuild:
+  Replacing einfo with elog
+
+  17 Feb 2007; Fabian Groffen <grobian@gentoo.org> libwmf-0.2.8.4.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  04 Sep 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  -libwmf-0.2.8.2.ebuild, -libwmf-0.2.8.3.ebuild, -libwmf-0.2.8.3-r1.ebuild:
+  clean out old, non-modX ebuilds (bug #129125)
+
+  04 Sep 2006; Joshua Kinard <kumba@gentoo.org> libwmf-0.2.8.3-r1.ebuild,
+  libwmf-0.2.8.4.ebuild:
+  Marked 0.2.8.3-r1 && 0.2.8.4 stable on mips.
+
+  30 Aug 2006; Aron Griffis <agriffis@gentoo.org> libwmf-0.2.8.4.ebuild:
+  Mark 0.2.8.4 stable on ia64
+
+  08 Aug 2006; Rene Nussbaumer <killerfox@gentoo.org> libwmf-0.2.8.4.ebuild:
+  Stable on hppa. See bug #139325.
+
+  08 Aug 2006; Thomas Cort <tcort@gentoo.org> libwmf-0.2.8.4.ebuild:
+  Stable on alpha wrt security Bug #139325.
+
+  07 Aug 2006; Scott Stoddard <deltacow@gentoo.org> libwmf-0.2.8.4.ebuild:
+  Stable on amd64 (re bug 139325).
+
+  07 Aug 2006; Luca Barbato <lu_zero@gentoo.org> libwmf-0.2.8.4.ebuild:
+  Marked ppc
+
+  07 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org> libwmf-0.2.8.4.ebuild:
+  Stable on sparc wrt security #139325
+
+  07 Aug 2006; Markus Rothe <corsair@gentoo.org> libwmf-0.2.8.4.ebuild:
+  Stable on ppc64; bug #139325
+
+  07 Aug 2006; Alastair Tse <liquidx@gentoo.org> libwmf-0.2.8.4.ebuild:
+  stable bump for x86
+
+*libwmf-0.2.8.4 (07 Aug 2006)
+
+  07 Aug 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/libwmf-0.2.8.4-build.patch,
+  +files/libwmf-0.2.8.4-intoverflow.patch, +libwmf-0.2.8.4.ebuild:
+  Version bump with fix from Fedora for security issue #139325.
+
+  31 Jul 2006; Simon Stelling <blubb@gentoo.org> libwmf-0.2.8.3-r1.ebuild:
+  stable on amd64
+
+  17 Jul 2006; Jason Wever <weeve@gentoo.org> libwmf-0.2.8.3-r1.ebuild:
+  Stable on SPARC wrt bug #129125.
+
+  16 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libwmf-0.2.8.3-r1.ebuild:
+  ppc stable, bug #129125
+
+  13 Jul 2006; Aron Griffis <agriffis@gentoo.org> libwmf-0.2.8.3-r1.ebuild:
+  Mark 0.2.8.3-r1 stable on ia64
+
+  10 Jul 2006; Joshua Jackson <tsunam@gentoo.org> libwmf-0.2.8.3-r1.ebuild:
+  stable x86; bug #129125
+
+  07 Jul 2006; Markus Rothe <corsair@gentoo.org> libwmf-0.2.8.3-r1.ebuild:
+  Stable on ppc64; bug #129125
+
+  03 Jun 2006; Andrej Kacian <ticho@gentoo.org> libwmf-0.2.8.3-r1.ebuild:
+  Use xml USE flag instead of xml2. Bug #116346.
+
+  22 Dec 2005; Mike Frysinger <vapier@gentoo.org> libwmf-0.2.8.3-r1.ebuild:
+  Change USE=xml to USE=expat.
+
+  12 Dec 2005; Mike Frysinger <vapier@gentoo.org> libwmf-0.2.8.3-r1.ebuild:
+  Remove USE=pic cruft.
+
+  11 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  libwmf-0.2.8.3-r1.ebuild:
+  Missed a couple.
+
+  11 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  libwmf-0.2.8.3-r1.ebuild:
+  Add modular X dependencies.
+
+  21 Aug 2005; Fabian Groffen <grobian@gentoo.org> libwmf-0.2.8.3-r1.ebuild:
+  Marking ~ppc-macos
+
+*libwmf-0.2.8.3-r1 (02 Aug 2005)
+
+  02 Aug 2005; <sekretarz@gentoo.org> +libwmf-0.2.8.3-r1.ebuild:
+  Ebuild clean up, added buildtime dependency on pkgconfig, as it's used.
+  Changed the way X and jpeg useflags are passed to configure, using use_with
+  instead of outer conditionals on . Added pic useflag. Added xml and xml2
+  useflags: they are used to request if we are going to use expat or libxml2.
+  If both are used, it defaults to expat, as the automatic ./configure do. It
+  also make optional dependency on them (before both where dependency, also if
+  only expat was used!). Added a debug useflag passed to configure. Added a
+  gtk useflag which makes it possible to avoid building gdk-pixbuf plugins
+  (and fixes the unlinked dependency on gtk2 of the old ebuild). Thanks 
+  Flameeyes in bug #82747
+
+*libwmf-0.2.8.3 (12 Jul 2005)
+
+  12 Jul 2005; Jonathan Smith <smithj@gentoo.org> +metadata.xml,
+  +libwmf-0.2.8.3.ebuild:
+  #97681: version bump. this package needs a maintainer...
+
+  17 Jul 2004; Tom Gall <tgall@gentoo.org> libwmf-0.2.8.2.ebuild:
+  stable on ppc64, bug #55801
+
+  15 Mar 2004; Bret Curtis <psi29a@gentoo.org> libwmf-0.2.8.2.ebuild:
+  Added ~mips to KEYWORDS
+
+  10 Feb 2004; Aron Griffis <agriffis@gentoo.org> libwmf-0.2.8.2.ebuild:
+  stable on ia64
+
+  09 Jan 2004; <gustavoz@gentoo.org> libwmf-0.2.8.2.ebuild:
+  marked stable on sparc
+
+  07 Jan 2004; <gustavoz@gentoo.org> libwmf-0.2.8.2.ebuild:
+  keyworded ~sparc
+
+  09 Dec 2003; Heinrich Wendel <lanius@gentoo.org> libwmf-0.2.8.2.ebuild,
+  libwmf-0.2.8.ebuild:
+  changed app-text/ghostscript to virtual/ghostscript
+
+*libwmf-0.2.8.2 (30 Nov 2003)
+
+  30 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*libwmf-0.2.8 (24 Mar 2003)
+
+  06 Jun 2003; Aron Griffis <agriffis@gentoo.org> libwmf-0.2.8.ebuild:
+  Mark stable on alpha
+
+  04 Aug 2003; Guy Martin <gmsoft@gentoo.org> libwmf-0.2.8.ebuild :
+  Added hppa to KEYWORDS.
+
+  12 May 2003; Graham Forest <vladimir@gentoo.org> libwmf-0.2.8.ebuild:
+  set ppc in keywords
+
+  24 Mar 2003; Alastair Tse <liquidx@gentoo.org> libwmf-0.2.8.ebuild:
+  Version Bump
+
+*libwmf-0.2.7-r2 (19 Mar 2003)
+
+  19 Mar 2003; Alastair Tse <liquidx@gentoo.org> libwmf-0.2.7-r2.ebuild:
+  Libtool fix. Now works fine when upgrading from <libwmf-0.2.7. Resolves
+  #17730.
+
+*libwmf-0.2.7-r1 (05 Mar 2003)
+
+  05 Mar 2003; Alastair Tse <liquidx@gentoo.org> libwmf-0.2.7-r1.ebuild files/digest-libwmf-0.2.7-r1 :
+  Fixed missing libwmf.so. Resolves #13661.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*libwmf-0.2.7 (27 Nov 2002)
+
+  05 Dec 2002; George Shapovalov <george@gentoo.org> libwmf-0.2.7.ebuild :
+
+  Incorporated changes by Lapo Calamandrei <l_calamandrei@neri-group.com> (bug #9080).
+  Basically made jpeg and X headers support optional, depending on jped and X use falgs.
+  *Not* upping the revision number - there is no new functionality/interface changes, no need to force 
+  rebuild on users.
+
+  05 Dec 2002; Jon Nall <nall@gentoo.org> libwmf-0.2.7.ebuild :
+  keyworded ~ppc
+
+  27 Nov 2002; Brad Cowan <bcowan@gentoo.org> libwmf-0.2.7.ebuild, 
+  files/digest-0.2.7:
+  
+  Version bump.
+
+*libwmf-0.2.6 (10 July 2002)
+
+  05 Dec 2002; Jon Nall <nall@gentoo.org> libwmf-0.2.6.ebuild :
+  keyworded ~ppc
+
+  10 July 2002; G shapovalov <georges@gentoo.org> libwmf-0.2.6.ebuild, files/digest-0.2.6 :
+  new version.
+  0.2.5 ebuild submitted by Mark Gilbert <webmaster@dofty.zzn.com>
+  upped to 0.2.6 by Paul de Vrieze <gentoo-bugs@devrieze.net>
+
+*libwmf-0.2.2-pre1 (7 Feb 2002)
+  
+  19 Apr 2002; G.Shapovalov <georges@its.caltech.edu> all_files :
+
+  initial release. This library is necessary for building wv, so that it can
+  correctly parse MSWord files containing wmf images.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

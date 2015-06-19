@@ -1,0 +1,51 @@
+# ChangeLog for dev-haskell/hxt-unicode
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hxt-unicode/ChangeLog,v 1.11 2015/04/04 09:02:59 gienah Exp $
+
+*hxt-unicode-9.0.2.4 (04 Apr 2015)
+
+  04 Apr 2015; Mark Wright <gienah@gentoo.org> +hxt-unicode-9.0.2.4.ebuild:
+  Bump hxt-unicode to 9.0.2.4
+
+*hxt-unicode-9.0.2.2 (13 Dec 2014)
+
+  13 Dec 2014; Mark Wright <gienah@gentoo.org> +hxt-unicode-9.0.2.2.ebuild,
+  -hxt-unicode-9.0.1.ebuild:
+  Bump hxt-unicode to 9.0.2.2
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> hxt-unicode-9.0.2.1.ebuild:
+  Stable for x86, wrt bug #491994
+
+  23 Dec 2013; Pacho Ramos <pacho@gentoo.org> hxt-unicode-9.0.2.1.ebuild:
+  amd64 stable, bug #491994
+
+*hxt-unicode-9.0.2.1 (13 Sep 2013)
+
+  13 Sep 2013; Mark Wright <gienah@gentoo.org> +hxt-unicode-9.0.2.1.ebuild:
+  Bump hxt-unicode to 9.0.2.1
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> hxt-unicode-9.0.2.ebuild:
+  Stable for x86, wrt bug #464338
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> hxt-unicode-9.0.2.ebuild:
+  Stable for amd64, wrt bug #464338
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org> hxt-unicode-9.0.1.ebuild,
+  hxt-unicode-9.0.2.ebuild:
+  move dev-haskell/hxt-unicode/hxt-unicode-9.0.1.ebuild ebuild to
+  mirror://hackage
+
+*hxt-unicode-9.0.2 (02 Jun 2012)
+
+  02 Jun 2012; Mark Wright <gienah@gentoo.org> +hxt-unicode-9.0.2.ebuild:
+  Bump hxt-unicode to 9.0.2
+
+*hxt-unicode-9.0.1 (04 Dec 2011)
+
+  04 Dec 2011; Sergei Trofimovich <slyfox@gentoo.org>
+  +hxt-unicode-9.0.1.ebuild, +metadata.xml:
+  Initial version. Unicode en-/decoding functions for utf8, iso-latin-* and
+  other encodings (dev-haskell/hxt depend)

@@ -1,0 +1,16 @@
+# ChangeLog for sci-chemistry/pdbcat
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pdbcat/ChangeLog,v 1.3 2013/07/18 06:06:03 jlec Exp $
+
+  18 Jul 2013; Justin Lecher <jlec@gentoo.org> pdbcat-1.3.ebuild, metadata.xml:
+  Fix usage of cmake-utils.eclass, #477236
+
+  11 Apr 2013; Ulrich Müller <ulm@gentoo.org> pdbcat-1.3.ebuild:
+  Fix LICENSE, "free for non-comercial use" according to README file.
+
+*pdbcat-1.3 (12 Oct 2012)
+
+  12 Oct 2012; Justin Lecher <jlec@gentoo.org> +pdbcat-1.3.ebuild,
+  +files/pdbcat-1.3-gcc.patch, +files/CMakeLists.txt, +metadata.xml:
+  New addition
+

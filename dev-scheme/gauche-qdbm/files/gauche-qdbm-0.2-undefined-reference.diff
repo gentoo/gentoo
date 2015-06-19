@@ -1,0 +1,11 @@
+--- Gauche-qdbm-0.2.orig/qdbm.scm
++++ Gauche-qdbm-0.2/qdbm.scm
+@@ -72,7 +72,7 @@
+   (unless (slot-bound? self 'path)
+     (error "path must be set to open qdbm database"))
+   (when (qdbm-file-of self)
+-    (errorf "qdbm ~S already opened" qdbm))
++    (errorf "qdbm ~s already opened" (qdbm-file-of self)))
+   (let* ((path   (slot-ref self 'path))
+          (rwmode (slot-ref self 'rw-mode))
+          (omode  (case rwmode

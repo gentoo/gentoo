@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>hwoarang@gentoo.org</email>
+<name>Markos Chandras</name>
+</maintainer>
+<use>
+<flag name='fixed-point'>Enable fixed-point arithmetic operations</flag>
+<flag name='float'>Enable floating point arithmetic operations</flag>
+<flag name='http'>Enable http connections</flag>
+</use>
+</pkgmetadata>

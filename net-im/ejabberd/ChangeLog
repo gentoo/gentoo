@@ -1,0 +1,631 @@
+# ChangeLog for net-im/ejabberd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/ejabberd/ChangeLog,v 1.129 2015/04/14 03:39:56 radhermit Exp $
+
+*ejabberd-15.03-r1 (14 Apr 2015)
+
+  14 Apr 2015; Tim Harder <radhermit@gentoo.org> -ejabberd-15.03.ebuild,
+  +ejabberd-15.03-r1.ebuild:
+  Sync missing systemd setup, run configure steps in the correct order, make
+  config file conversion directions more specific, and add nls use flag.
+
+*ejabberd-15.03 (12 Apr 2015)
+
+  12 Apr 2015; Tim Harder <radhermit@gentoo.org> +ejabberd-15.03.ebuild,
+  +files/ejabberd-15.03-ejabberdctl.patch, metadata.xml:
+  Version bump (bug #487994).
+
+  20 Mar 2015; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Drop myself as maintainer.
+
+  09 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -ejabberd-2.1.12.ebuild,
+  -ejabberd-2.1.13.ebuild:
+  Remove old.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> ejabberd-2.1.12.ebuild,
+  ejabberd-2.1.13-r1.ebuild, ejabberd-2.1.13.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> ejabberd-2.1.13-r1.ebuild:
+  Stable for ppc, wrt bug #486292
+
+  04 Dec 2013; Sergey Popov <pinkbyte@gentoo.org> -ejabberd-2.1.11.ebuild:
+  Security cleanup, bug #488636
+
+  01 Nov 2013; Agostino Sarubbo <ago@gentoo.org> ejabberd-2.1.13-r1.ebuild:
+  Stable for x86, wrt bug #486292
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> ejabberd-2.1.13-r1.ebuild:
+  amd64 stable, bug #486292
+
+*ejabberd-2.1.13-r1 (08 Sep 2013)
+
+  08 Sep 2013; Pacho Ramos <pacho@gentoo.org> +ejabberd-2.1.13-r1.ebuild,
+  +files/ejabberd.service, +files/ejabberd.tmpfiles.conf:
+  Add unit file (#482444 by Andrius Štikonas)
+
+*ejabberd-2.1.13 (10 Jul 2013)
+
+  10 Jul 2013; Tim Harder <radhermit@gentoo.org> +ejabberd-2.1.13.ebuild,
+  +files/ejabberd.logrotate:
+  Version bump, add logrotate file (bug #473122 by cyberbat).
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> ejabberd-2.1.12.ebuild:
+  Stable for x86, wrt bug #468728
+
+  12 May 2013; Agostino Sarubbo <ago@gentoo.org> ejabberd-2.1.12.ebuild:
+  Stable for ppc, wrt bug #468728
+
+  09 May 2013; Chema Alonso <nimiux@gentoo.org> ejabberd-2.1.12.ebuild:
+  Stable for amd64 wrt bug #468728
+
+*ejabberd-2.1.12 (05 Apr 2013)
+
+  05 Apr 2013; Tim Harder <radhermit@gentoo.org> +ejabberd-2.1.12.ebuild,
+  files/ejabberd-3.initd, metadata.xml:
+  Version bump. Fix variable name in init script (bug #443890) and add myself
+  as a maintainer.
+
+  31 Jan 2013; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Another metadata whitespace fix.
+
+  31 Jan 2013; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Fix metadata whitespace.
+
+  31 Jan 2013; Tim Harder <radhermit@gentoo.org> -ejabberd-2.1.10.ebuild:
+  Remove old.
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> ejabberd-2.1.11.ebuild:
+  x86 stable wrt bug #427714
+
+  06 Sep 2012; Agostino Sarubbo <ago@gentoo.org> ejabberd-2.1.11.ebuild:
+  Stable for amd64, wrt bug #427714
+
+  30 Aug 2012; Anthony G. Basile <blueness@gentoo.org> ejabberd-2.1.11.ebuild:
+  Stable ppc, bug #427714
+
+  22 Jun 2012; Tim Harder <radhermit@gentoo.org> -ejabberd-2.1.8.ebuild,
+  -ejabberd-2.1.9.ebuild:
+  Remove old.
+
+  01 Jun 2012; Andreas Schuerch <nativemad@gentoo.org> ejabberd-2.1.10.ebuild:
+  x86 stable, see bug 418313. Thanks cyberbat
+
+  31 May 2012; Agostino Sarubbo <ago@gentoo.org> ejabberd-2.1.10.ebuild:
+  Stable for amd64, wrt bug #418313
+
+*ejabberd-2.1.11 (30 May 2012)
+
+  30 May 2012; Tim Harder <radhermit@gentoo.org> +ejabberd-2.1.11.ebuild:
+  Version bump (bug #415347).
+
+*ejabberd-2.1.10 (06 Mar 2012)
+
+  06 Mar 2012; Tim Harder <radhermit@gentoo.org> +ejabberd-2.1.10.ebuild:
+  Version bump (bug #396037).
+
+  06 Mar 2012; Tim Harder <radhermit@gentoo.org> ejabberd-2.1.8.ebuild,
+  ejabberd-2.1.9.ebuild:
+  Correctly apply the mod_statsdx patch (bug #402565).
+
+  21 Dec 2011; Peter Volkov <pva@gentoo.org> metadata.xml:
+  Drop unused USE flag.
+
+  21 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> ejabberd-2.1.9.ebuild:
+  x86 stable wrt bug #386075
+
+  17 Dec 2011; Agostino Sarubbo <ago@gentoo.org> ejabberd-2.1.9.ebuild:
+  Stable for AMD64, wrt security bug #386075
+
+*ejabberd-2.1.9 (17 Dec 2011)
+
+  17 Dec 2011; Peter Volkov <pva@gentoo.org> +ejabberd-2.1.9.ebuild:
+  Version bump, fixes security issue #386075 wrt Anton Podavalov. Report
+  version correctly, bug #372287 by cyberbat.
+
+  22 Jun 2011; Peter Volkov <pva@gentoo.org>
+  -files/ejabberd-2.0.5-erlang-13.patch,
+  -files/ejabberd-2.1.4-mod_shared_roster_ldap.patch, -ejabberd-2.1.5.ebuild,
+  -files/ejabberd-2.1.5-md2-optional.patch, -ejabberd-2.1.6.ebuild,
+  -files/ejabberd-2.confd, -files/ejabberd-2.initd,
+  -files/ejabberd-wrapper-2.template, -files/ejabberdctl-wrapper-3.template,
+  -files/self-cert-v2.sh, -files/ssl.cnf:
+  Drop old and vulnerable versions.
+
+  19 Jun 2011; Markus Meier <maekke@gentoo.org> ejabberd-2.1.8.ebuild:
+  x86 stable, bug #370201
+
+  18 Jun 2011; Markos Chandras <hwoarang@gentoo.org> ejabberd-2.1.8.ebuild:
+  Stable on amd64 wrt bug #370201
+
+  16 Jun 2011; Peter Volkov <pva@gentoo.org> ejabberd-2.1.8.ebuild:
+  Fix build issue with mod_stasdx, thank andreas schürch for rerport in bug
+  #370201. Use EAPI=4 features.
+
+*ejabberd-2.1.8 (14 Jun 2011)
+
+  14 Jun 2011; Peter Volkov <pva@gentoo.org> +ejabberd-2.1.8.ebuild:
+  Version bump, fixes security bug #370201 thank Federico Cuello for report.
+  Fix permissions of ssl certificate, but #369809 thank Gavin Pryke for the
+  patch.
+
+  25 Mar 2011; Thomas Kahle <tomka@gentoo.org> ejabberd-2.1.6.ebuild:
+  x86 stable per bug 359961
+
+  22 Mar 2011; Christoph Mende <angelos@gentoo.org> ejabberd-2.1.6.ebuild:
+  Stable on amd64 wrt bug #359961
+
+  22 Mar 2011; Peter Volkov <pva@gentoo.org> ejabberd-2.1.5.ebuild,
+  -ejabberd-2.1.5-r3.ebuild, ejabberd-2.1.6.ebuild:
+  Drop PROVIDE=virtual/jabber-server, bug #358833, thank Ulrich Müller for
+  report. Drop unused.
+
+  21 Mar 2011; Kevin McCarthy <signals@gentoo.org> ejabberd-2.1.5.ebuild,
+  ejabberd-2.1.5-r3.ebuild, ejabberd-2.1.6.ebuild:
+  RDEPEND virtual/pam if pam use flag set. WRT #351932
+
+*ejabberd-2.1.6 (20 Dec 2010)
+
+  20 Dec 2010; Peter Volkov <pva@gentoo.org> -ejabberd-2.1.5-r2.ebuild,
+  +ejabberd-2.1.6.ebuild:
+  Version bump, thank krigstask for report. Note, shared roster ldap module
+  (USE=mod_srl) is now included upstream. Drop unused.
+
+*ejabberd-2.1.5-r3 (18 Nov 2010)
+
+  18 Nov 2010; Peter Volkov <pva@gentoo.org> +ejabberd-2.1.5-r3.ebuild:
+  Fix unix_chkpwd authentication failure (jabber owner on epam), bug
+  #345909, thank bathizte for report.
+
+*ejabberd-2.1.5-r2 (15 Oct 2010)
+
+  15 Oct 2010; Peter Volkov <pva@gentoo.org> -ejabberd-2.1.5-r1.ebuild,
+  +ejabberd-2.1.5-r2.ebuild:
+  Another mod_srl update, drop broken, bug #341131 thank Nickolaj Stjujsckij
+  for this job.
+
+  07 Sep 2010; Peter Volkov <pva@gentoo.org> -ejabberd-2.0.5-r3.ebuild,
+  -ejabberd-2.1.4.ebuild:
+  Drop old and openssl-1 incompatible versions as Samuli requested.
+
+*ejabberd-2.1.5-r1 (30 Aug 2010)
+
+  30 Aug 2010; Peter Volkov <pva@gentoo.org> +ejabberd-2.1.5-r1.ebuild:
+  Updated mod_srl, thank krigstask for this job.
+
+  09 Aug 2010; Peter Volkov <pva@gentoo.org> ejabberd-2.1.5.ebuild,
+  +files/ejabberd-2.1.5-md2-optional.patch:
+  Fix openssl breakage due to missed md2 support, bug 331299, thank Rion for
+  report and Samuli Suominen for quick fix.
+
+*ejabberd-2.1.5 (05 Aug 2010)
+
+  05 Aug 2010; Peter Volkov <pva@gentoo.org> +ejabberd-2.1.5.ebuild:
+  Version bump. SSL is now required (per upstream, see release notes). Thank
+  Rion for report.
+
+  22 Jul 2010; Peter Volkov <pva@gentoo.org> ejabberd-2.1.4.ebuild,
+  +files/ejabberd-2.1.4-mod_shared_roster_ldap.patch:
+  Added patch for mod_shared_roster_ldap, thank Andrian Nord for report and
+  fix in bug #328533!
+
+  12 Jul 2010; Markos Chandras <hwoarang@gentoo.org> ejabberd-2.1.4.ebuild:
+  Stable on amd64 wrt bug #308047
+
+  10 Jul 2010; Raúl Porcel <armin76@gentoo.org> ejabberd-2.0.5-r3.ebuild,
+  ejabberd-2.1.4.ebuild:
+  Add ~sparc wrt #259802
+
+  03 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  ejabberd-2.1.4.ebuild:
+  stable x86, security bug 308047
+
+*ejabberd-2.1.4 (07 Jun 2010)
+
+  07 Jun 2010; Peter Volkov <pva@gentoo.org> -ejabberd-2.1.3.ebuild,
+  +ejabberd-2.1.4.ebuild:
+  Version bump, thank Rion for report in bug #281366
+
+  07 Jun 2010; Peter Volkov <pva@gentoo.org> ejabberd-2.1.3.ebuild:
+  Updated required shadow version.
+
+  07 Jun 2010; Peter Volkov <pva@gentoo.org> +files/2.1.1-mod_statsdx.patch:
+  Added missed 2.1.1-mod_statsdx.patch, bug #281366, thank jamatik for
+  report.
+
+  02 Jun 2010; Peter Volkov <pva@gentoo.org> files/ejabberd-3.initd:
+  Make stop at init script working again, thank krigstask for report.
+
+  02 Jun 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove caleb from metadata.xml (#317071)
+
+  01 Jun 2010; Peter Volkov <pva@gentoo.org> ejabberd-2.1.3.ebuild,
+  metadata.xml:
+  Added LDAP shared roster module, fixed some typos, thank krigstask for
+  this job.
+
+  28 May 2010; Peter Volkov <pva@gentoo.org> files/ejabberd-3.initd:
+  Make init script a bit more resistant, e.g. restart should now work, thank
+  Rion for report.
+
+  27 May 2010; Peter Volkov <pva@gentoo.org> ejabberd-2.1.3.ebuild:
+  Fixed future build problem reproducible with -rX, where X!=0, thank Rion
+  fo report.
+
+*ejabberd-2.1.3 (26 May 2010)
+
+  26 May 2010; Peter Volkov <pva@gentoo.org> +files/2.1.1-mod_statsdx.patch,
+  +ejabberd-2.1.3.ebuild, +files/ejabberd-3.confd, +files/ejabberd-3.initd:
+  Version bump, #281366 thank Vadim Efimov for report and jamatik for
+  preliminary testing (that helped greately)! Fixes conflict with GSecurity
+  TPE bug 202616, thank Andrian Nord for report. Init script rewriten, fixes
+  bugs #210234, #279613 and #306593, thank Luca Barbato, Roy Marples,
+  Luke-Jr and Livid. Fixed ssl related build issue, bug 288414 by Michał
+  Masłowski. Fixes DoS, security bug 308047, thank Stefan Behte for report.
+
+  30 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  -files/1.1.4-missing-declaration.patch, -ejabberd-1.1.4-r1.ebuild,
+  -ejabberd-1.1.4-r2.ebuild, -files/ejabberd-1.1.4-erlang-12.patch,
+  -files/2.0.0-erlang12-s2s-in.patch, -files/ejabberd-1.1.4.confd,
+  -ejabberd-2.0.4.ebuild, -files/2.0.1-parallel-make.patch,
+  -files/ejabberd-1.1.4.initd, -files/ejabberd-2.0.4-fix-EJAB-890.patch,
+  -ejabberd-2.0.5.ebuild, -ejabberd-2.0.5-r1.ebuild,
+  -ejabberd-2.0.5-r2.ebuild, -files/ejabberdctl-wrapper-2.template,
+  -files/2.0.0-ejab-542-mod_proxy65.patch,
+  -files/2.0.0-missing-declaration.patch, -files/ejabberd,
+  -files/ejabberdctl, -files/inetrc, -files/self-cert.sh:
+  clean up
+
+  25 Nov 2009; Markus Meier <maekke@gentoo.org> ejabberd-2.0.5-r3.ebuild:
+  amd64 stable, bug #291744
+
+  19 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  ejabberd-2.0.5-r3.ebuild:
+  stable x86, bug 291744
+
+  05 Nov 2009; Raúl Porcel <armin76@gentoo.org> ejabberd-2.0.5-r3.ebuild:
+  Add ~arm/~ia64
+
+  05 Jun 2009; Peter Volkov <pva@gentoo.org> +ejabberd-2.0.5.ebuild,
+  +ejabberd-2.0.5-r1.ebuild:
+  Revert recent stable versions back, bug #271321, thank Marat Radchenko for
+  report. Added <erlang-13 dependency too, bug #267524.
+
+*ejabberd-2.0.5-r3 (03 Jun 2009)
+
+  03 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  +files/ejabberd-2.0.5-erlang-13.patch, +ejabberd-2.0.5-r3.ebuild:
+  revision bump to fix runtime failures with Erlang 13, as reported and fixed
+  by Karl-Johan Karlsson <creideiki+gentoo-bugzilla AT lysator DOT liu DOT se>
+  in bug 267524
+
+  20 May 2009; Caleb Tennis <caleb@gentoo.org> ejabberd-2.0.4.ebuild:
+  Add erlang 13 dep to the stable build as well
+
+  20 May 2009; Caleb Tennis <caleb@gentoo.org> -ejabberd-2.0.1_p2-r1.ebuild,
+  -ejabberd-2.0.2.ebuild, -ejabberd-2.0.2-r1.ebuild,
+  -ejabberd-2.0.4-r1.ebuild, -ejabberd-2.0.5.ebuild,
+  -ejabberd-2.0.5-r1.ebuild:
+  Remove old ebuilds
+
+  20 May 2009; Caleb Tennis <caleb@gentoo.org> ejabberd-2.0.5-r2.ebuild:
+  Not compatible with erlang 13, so make sure we're using 12 for now per
+  #267524
+
+*ejabberd-2.0.5-r2 (27 Apr 2009)
+
+  27 Apr 2009; Caleb Tennis <caleb@gentoo.org>
+  +files/ejabberdctl-wrapper-3.template, +ejabberd-2.0.5-r2.ebuild:
+  Bump adding a new debug shell patch to the wrapper, from bug #250861
+
+  22 Apr 2009; Markus Meier <maekke@gentoo.org> ejabberd-2.0.5-r1:
+  amd64 stable, bug #265341
+
+*ejabberd-2.0.5-r1 (20 Apr 2009)
+
+  20 Apr 2009; Peter Volkov <pva@gentoo.org> +ejabberd-2.0.5-r1.ebuild:
+  Fixed permissions handling on amd64, thank Markus Meier for report in bug
+  #265341.
+
+  19 Apr 2009; Markus Meier <maekke@gentoo.org> ejabberd-2.0.5:
+  x86 stable, bug #265341
+
+*ejabberd-2.0.5 (09 Apr 2009)
+
+  09 Apr 2009; Peter Volkov <pva@gentoo.org> -files/ejabberd-2.0.1.confd,
+  -files/ejabberd-2.0.1.initd, -files/ejabberd-wrapper-2.0.1.template,
+  -files/ejabberdctl-wrapper-2.0.1.template, -files/ejabberd-2.0.2.confd,
+  -files/ejabberd-2.0.2.initd, -files/ejabberd-wrapper-2.0.2.template,
+  -files/ejabberdctl-wrapper-2.0.2.template, -files/ejabberd-2.0.4.confd,
+  -files/ejabberd-2.0.4.initd, -files/ejabberd-wrapper-2.0.4.template,
+  -files/ejabberdctl-wrapper-2.0.4.template, +files/ejabberd-2.confd,
+  +files/ejabberd-2.initd, +files/ejabberd-wrapper-2.template,
+  +files/ejabberdctl-wrapper-2.template, ejabberd-2.0.1_p2-r1.ebuild,
+  ejabberd-2.0.2.ebuild, ejabberd-2.0.2-r1.ebuild, ejabberd-2.0.4.ebuild,
+  ejabberd-2.0.4-r1.ebuild, +ejabberd-2.0.5.ebuild:
+  Version bump, bug #265341 thank candrews for report and Vadim Efimov for
+  this work.
+
+*ejabberd-2.0.4-r1 (28 Mar 2009)
+
+  28 Mar 2009; Peter Volkov <pva@gentoo.org>
+  +files/ejabberd-2.0.4-fix-EJAB-890.patch, +ejabberd-2.0.4-r1.ebuild:
+  Fixed EJAB-890 (subscription request produces many authorization requests
+  with some clients and transports), bug #263950, thank Vadim Efimov for
+  report and fix.
+
+  27 Mar 2009; Hanno Boeck <hanno@gentoo.org> files/ejabberd-2.0.1.initd,
+  files/ejabberd-2.0.2.initd, files/ejabberd-2.0.4.initd:
+  Fix SMPOPT to be auto for smp-enabled systems.
+
+  23 Mar 2009; Markus Meier <maekke@gentoo.org> ejabberd-2.0.4.ebuild:
+  amd64/x86 stable, bug #262696
+
+*ejabberd-2.0.4 (21 Mar 2009)
+
+  21 Mar 2009; Caleb Tennis <caleb@gentoo.org> +files/ejabberd-2.0.4.confd,
+  +files/ejabberd-2.0.4.initd, +files/ejabberd-wrapper-2.0.4.template,
+  +files/ejabberdctl-wrapper-2.0.4.template, +ejabberd-2.0.4.ebuild:
+  Version bump
+
+*ejabberd-1.1.4-r2 (01 Feb 2009)
+
+  01 Feb 2009; Patrick Lauer <patrick@gentoo.org> +ejabberd-1.1.4-r2.ebuild:
+  Fixing doc installation, closes #155101
+
+*ejabberd-2.0.2-r1 (01 Feb 2009)
+
+  01 Feb 2009; Patrick Lauer <patrick@gentoo.org> ejabberd-2.0.2.ebuild,
+  +ejabberd-2.0.2-r1.ebuild:
+  Small doc fix, docs are actually installed now
+
+*ejabberd-2.0.2 (09 Sep 2008)
+
+  09 Sep 2008; Caleb Tennis <caleb@gentoo.org> -ejabberd-2.0.2_beta1.ebuild,
+  +ejabberd-2.0.2.ebuild:
+  version bump
+
+  05 Aug 2008; Thomas Anderson <gentoofan23@gentoo.org> metadata.xml:
+  Add USE flag description to metadata as per GLEP 56.
+
+  03 Aug 2008; Caleb Tennis <caleb@gentoo.org>
+  -files/ejabberd-1.1.1-r1.initd, -files/ejabberd-1.1.1.confd,
+  -files/ejabberd-2.0.0.confd, -files/ejabberd-2.0.0.initd,
+  -files/ejabberd-wrapper-2.0.0.template,
+  -files/ejabberdctl-wrapper-2.0.0.template, -ejabberd-1.1.4.ebuild,
+  -ejabberd-2.0.0-r1.ebuild, -ejabberd-2.0.1_p2.ebuild:
+  remove older versions
+
+*ejabberd-2.0.2_beta1 (03 Aug 2008)
+
+  03 Aug 2008; Caleb Tennis <caleb@gentoo.org> +files/ejabberd-2.0.2.confd,
+  +files/ejabberd-2.0.2.initd, +files/ejabberd-wrapper-2.0.2.template,
+  +files/ejabberdctl-wrapper-2.0.2.template, +ejabberd-2.0.2_beta1.ebuild:
+  version bump
+
+  27 Jul 2008; Caleb Tennis <caleb@gentoo.org> ejabberd-2.0.1_p2-r1.ebuild:
+  amd64 the revbump too
+
+  26 Jul 2008; Dawid Węgliński <cla@gentoo.org>
+  ejabberd-2.0.1_p2-r1.ebuild:
+  Stable on x86 (bug #231676)
+
+*ejabberd-2.0.1_p2-r1 (19 Jul 2008)
+
+  19 Jul 2008; Caleb Tennis <caleb@gentoo.org>
+  +files/2.0.1-parallel-make.patch, +ejabberd-2.0.1_p2-r1.ebuild:
+  Add parallel make patch per 225565
+
+  19 Jul 2008; Caleb Tennis <caleb@gentoo.org> ejabberd-2.0.1_p2.ebuild:
+  amd64 stable per #231676
+
+  25 May 2008; Caleb Tennis <caleb@gentoo.org> ejabberd-2.0.1_p2.ebuild:
+  make /var/lib/ejabberd directory
+
+  23 May 2008; Caleb Tennis <caleb@gentoo.org> ejabberd-2.0.1_p2.ebuild:
+  add pam use flag and set permissions on pam helper
+
+*ejabberd-2.0.1_p2 (23 May 2008)
+
+  23 May 2008; Caleb Tennis <caleb@gentoo.org> -ejabberd-2.0.1.ebuild,
+  +ejabberd-2.0.1_p2.ebuild:
+  bump to a new upstream version
+
+  22 May 2008; Caleb Tennis <caleb@gentoo.org> files/ejabberd-2.0.1.initd,
+  +files/ejabberd-wrapper-2.0.1.template,
+  +files/ejabberdctl-wrapper-2.0.1.template, ejabberd-2.0.1.ebuild:
+  add some fixes from 207586
+
+*ejabberd-2.0.1 (22 May 2008)
+
+  22 May 2008; Caleb Tennis <caleb@gentoo.org> files/ejabberd-2.0.0.initd,
+  +ejabberd-2.0.1.ebuild:
+  version bump
+
+  13 Apr 2008; Caleb Tennis <caleb@gentoo.org> files/self-cert-v2.sh,
+  ejabberd-2.0.0-r1.ebuild:
+  Update self-cert-v2.sh
+
+  13 Apr 2008; Caleb Tennis <caleb@gentoo.org> ejabberd-2.0.0-r1.ebuild:
+  Fix homepage
+
+*ejabberd-2.0.0-r1 (13 Apr 2008)
+
+  13 Apr 2008; Caleb Tennis <caleb@gentoo.org> +files/ejabberd-2.0.0.confd,
+  files/ejabberd-2.0.0.initd, +files/ejabberd-wrapper-2.0.0.template,
+  +files/ejabberdctl-wrapper-2.0.0.template,
+  +files/2.0.0-ejab-542-mod_proxy65.patch,
+  +files/2.0.0-erlang12-s2s-in.patch, -ejabberd-2.0.0.ebuild,
+  +ejabberd-2.0.0-r1.ebuild:
+  Bump revision with a whole new ebuild, thanks to the folks in bug #207586
+
+  17 Mar 2008; Tony Vroon <chainsaw@gentoo.org> metadata.xml:
+  Mark caleb as maintainer of this package.
+
+  22 Feb 2008; Caleb Tennis <caleb@gentoo.org> +files/ejabberd-1.1.4.confd,
+  ejabberd-1.1.4.ebuild, ejabberd-1.1.4-r1.ebuild:
+  1.1.4 was using the 1.1.3 conf file, so create a 1.1.4 conf file and update
+  the ebuilds to use it
+
+*ejabberd-2.0.0 (22 Feb 2008)
+
+  22 Feb 2008; Caleb Tennis <caleb@gentoo.org> -files/ejabberd-1.1.3.confd,
+  -files/1.1.3-missing-declaration.patch, -ejabberd-1.1.3.ebuild,
+  -ejabberd-1.1.3-r1.ebuild, -ejabberd-1.1.3-r2.ebuild,
+  -ejabberd-2.0.0_rc1.ebuild, +ejabberd-2.0.0.ebuild:
+  bump to 2.0.0, remove old versions
+
+  10 Feb 2008; Luca Barbato <lu_zero@gentoo.org> ejabberd-2.0.0_rc1.ebuild:
+  Marked ~ppc
+
+*ejabberd-2.0.0_rc1 (05 Feb 2008)
+
+  05 Feb 2008; Caleb Tennis <caleb@gentoo.org> +files/ejabberd-2.0.0.initd,
+  +files/2.0.0-missing-declaration.patch, +ejabberd-2.0.0_rc1.ebuild:
+  Version bump, from bug #207586
+
+  31 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  ejabberd-1.1.4-r1.ebuild:
+  emergency stable x86
+
+*ejabberd-1.1.4-r1 (11 Jan 2008)
+
+  11 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  +files/ejabberd-1.1.4-erlang-12.patch, +ejabberd-1.1.4-r1.ebuild:
+  make ejabberd compile with Erlang 12B, patch take from Debian, reported in
+  bug 202114 by Conrad Kostecki <ConiKost AT gmx DOT de>, thanks to Anton
+  Romanov <theli AT ukr DOT net>
+
+  08 Dec 2007; Ulrich Mueller <ulm@gentoo.org>
+  +files/ejabberd-1.1.1-r1.initd, +files/ejabberd-1.1.1.confd:
+  Restore initd and confd files that are still needed.
+
+  08 Dec 2007; Tony Vroon <chainsaw@gentoo.org> -files/ejabberd-0.7.5.confd,
+  -files/ejabberd-0.7.5.initd, -files/ejabberd-1.1.1-r1.initd,
+  -files/ejabberd-1.1.1.confd, -files/ejabberd-1.1.1.initd,
+  -ejabberd-0.7.5.ebuild, -ejabberd-1.1.1.ebuild, -ejabberd-1.1.1-r1.ebuild,
+  -ejabberd-1.1.2-r1.ebuild:
+  Remove old ebuilds, including 1.1.1 which used an insecure docert statement
+  (per suggestion of Ulrich Mueller <ulm@gentoo.org> on IRC). Closes bug
+  #201677.
+
+*ejabberd-1.1.4 (14 Sep 2007)
+
+  14 Sep 2007; Tony Vroon <chainsaw@gentoo.org> +files/ejabberd-1.1.4.initd,
+  +files/1.1.4-missing-declaration.patch, +ejabberd-1.1.4.ebuild:
+  Version bump, closes bugs #188679, #192012 and #190266.
+
+  01 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  ejabberd-1.1.3-r2.ebuild:
+  add a space that got lost in my previous change, reported by OlegON
+  <olegon.mail@gmail.com> in bug 190944
+
+  29 Aug 2007; Christian Faulhammer <opfer@gentoo.org>
+  ejabberd-1.1.3-r2.ebuild:
+  remove restriction on lower erlang versions, see bug 184419; added some
+  quotes around variables
+
+*ejabberd-1.1.3-r2 (13 Jul 2007)
+
+  13 Jul 2007; Tony Vroon <chainsaw@gentoo.org> +ejabberd-1.1.3-r2.ebuild:
+  Debugging support by Justin <justin-gentoo@openaether.org>, closes bug
+  #174734. Do not attempt to automatically generate a key, this ends up being
+  interactive on some systems. Closes bug #178615 by Robin Johnson
+  <robbat2@gentoo.org>. Revert defective change from bug #161252, without
+  sname the daemon can not be stopped. Thanks to Conrad Kostecki
+  <ConiKost@gmx.de>, closes bug #181745. Restrict erlang dep to <11.2.5 to
+  avoid EOF during handshake, as reported by Santiago Gala <sgala@apache.org>,
+  closes bug #184419. Restrict openssl dep to >=0.9.8e so a messy die on
+  USE="zlib" in openssl is no longer required. Also a report by Conrad
+  Kostecki <ConiKost@gmx.de>, this closes bug #185009.
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org> ejabberd-0.7.5.ebuild:
+  Fix *initd, *confd and *envd calls (#173884, #174266)
+
+  21 Apr 2007; Tony Vroon <chainsaw@gentoo.org> ejabberd-0.7.5.ebuild:
+  Stop using insinto /etc/conf.d and use the newconfd function instead, bug
+  #174266.
+
+*ejabberd-1.1.3-r1 (11 Apr 2007)
+
+  11 Apr 2007; Tony Vroon <chainsaw@gentoo.org> +files/ejabberd-1.1.3.confd,
+  +files/1.1.3-missing-declaration.patch, +ejabberd-1.1.3-r1.ebuild:
+  Revision bump, closes bugs #161252, #171427 and #171551.
+
+  11 Mar 2007; Markus Rothe <corsair@gentoo.org> ejabberd-1.1.3.ebuild:
+  Adding ~amd64 to 1.1.3, too.
+
+  11 Mar 2007; Peter Weller <welp@gentoo.org> ejabberd-1.1.2-r1.ebuild:
+  Keyworded ~amd64 wrt bug 141302
+
+  28 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/ejabberd-1.1.1-r1.initd, ejabberd-1.1.3.ebuild:
+  corrected init file; removed dodoc entry; stable x86; security bug 159580
+
+*ejabberd-1.1.3 (27 Feb 2007)
+
+  27 Feb 2007; Stefan Cornelius <dercorny@gentoo.org> +ejabberd-1.1.3.ebuild:
+  Bumping to version 1.1.3 wrt security bug #159580
+
+  27 Feb 2007; Gustavo Felisberto <humpback@gentoo.org>; metadata.xml:
+  Corrected maintainer in metadata.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*ejabberd-1.1.2-r1 (16 Oct 2006)
+
+  16 Oct 2006; Tony Vroon <chainsaw@gentoo.org> -ejabberd-1.1.2.ebuild,
+  +ejabberd-1.1.2-r1.ebuild:
+  Pull set of utterly broken and apparently completely untested patches, bug
+  #137724 now closed as WONTFIX.
+
+*ejabberd-1.1.2 (13 Oct 2006)
+
+  13 Oct 2006; Tony Vroon <chainsaw@gentoo.org> +ejabberd-1.1.2.ebuild:
+  New upstream version. Patchball updated with mod_presence, all thanks to
+  Nikolaus Polak <nik@linuxlovers.at> in bug #137724.
+
+*ejabberd-1.1.1-r1 (12 Oct 2006)
+
+  12 Oct 2006; Tony Vroon <chainsaw@gentoo.org>
+  +files/ejabberd-1.1.1-r1.initd, +files/self-cert-v2.sh, +files/ssl.cnf,
+  ejabberd-1.1.1.ebuild, +ejabberd-1.1.1-r1.ebuild:
+  Revision bump, robust start/stop script thanks to Chris Carlin
+  <ccarlin@physics.tamu.edu> and Dustin J. Mitchell <dustin@v.igoro.us> in bug
+  #145373. Statsdx & SOCKS5 proxy support thanks to Nikolaus Polak
+  <nik@linuxlovers.at> in bug #137724. And finally, thanks to Micha Krause
+  <linux@krausam.de> for pointing out that the SSL eclass did not create
+  certificates usable for S2S connections in bug #150088.
+
+  01 Aug 2006; Joshua Jackson <tsunam@gentoo.org> ejabberd-1.1.1.ebuild:
+  Stable x86; bug #141302
+
+*ejabberd-1.1.1 (19 Jun 2006)
+
+  19 Jun 2006; Tony Vroon <chainsaw@gentoo.org> +files/ejabberd-1.1.1.confd,
+  +files/ejabberd-1.1.1.initd, +ejabberd-1.1.1.ebuild:
+  Version bump, thanks to all contributors in bug #101708.
+
+  05 May 2006; Diego Pettenò <flameeyes@gentoo.org> ejabberd-0.7.5.ebuild:
+  Fix enewuser/enewgroup location, bug #130849.
+
+  23 Aug 2005; Gustavo Felisberto <humpback@gentoo.org>;
+  ejabberd-0.7.5.ebuild:
+  QA issue #103421
+
+  16 Apr 2005; Gustavo Felisberto <humpback@gentoo.org>; files/ejabberd,
+  ejabberd-0.7.5.ebuild:
+  Small file permission patches
+
+  10 Apr 2005; Gustavo Felisberto <humpback@gentoo.org>;
+  files/ejabberd-0.7.5.initd, +files/self-cert.sh, ejabberd-0.7.5.ebuild:
+  Added ssl.pem generator script and einfo.
+
+*ejabberd-0.7.5 (08 Apr 2005)
+
+  08 Apr 2005; Gustavo Felisberto <humpback@gentoo.org>; +files/ejabberd,
+  +files/ejabberd-0.7.5.confd, +files/ejabberd-0.7.5.initd,
+  +files/ejabberdctl, +files/inetrc, +ejabberd-0.7.5.ebuild:
+  Initial import. This is masked for a reason :) if you have problems bug #63472
+  is your friend.

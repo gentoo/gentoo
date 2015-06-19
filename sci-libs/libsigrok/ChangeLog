@@ -1,0 +1,19 @@
+# ChangeLog for sci-libs/libsigrok
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/libsigrok/ChangeLog,v 1.4 2014/08/04 02:36:55 vapier Exp $
+
+  04 Aug 2014; Mike Frysinger <vapier@gentoo.org> libsigrok-9999.ebuild:
+  Drop hacks that have been fixed in git now #517872 by Pinky.
+
+  14 Jun 2014; Mike Frysinger <vapier@gentoo.org> libsigrok-0.3.0.ebuild,
+  libsigrok-9999.ebuild:
+  Use a better HOMEPAGE.
+
+*libsigrok-0.3.0 (14 Jun 2014)
+*libsigrok-9999 (14 Jun 2014)
+
+  14 Jun 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/libsigrok-0.3.0-configure-flags.patch,
+  +files/libsigrok-0.3.0-no-check-linkage.patch, +libsigrok-0.3.0.ebuild,
+  +libsigrok-9999.ebuild, +metadata.xml:
+  Initial ebuild based on work by Christopher Friedt & Cody Schafer #426586.

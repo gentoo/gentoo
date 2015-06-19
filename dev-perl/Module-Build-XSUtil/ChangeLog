@@ -1,0 +1,21 @@
+# ChangeLog for dev-perl/Module-Build-XSUtil
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Module-Build-XSUtil/ChangeLog,v 1.4 2015/06/13 22:16:41 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Module-Build-XSUtil-0.140.0.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+  29 Nov 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Module-Build-XSUtil-0.140.0.ebuild:
+  Add ~ppc keyword (bug #527898)
+
+  24 Nov 2014; Jeroen Roovers <jer@gentoo.org>
+  Module-Build-XSUtil-0.140.0.ebuild:
+  Marked ~hppa (bug #527898).
+
+*Module-Build-XSUtil-0.140.0 (19 Oct 2014)
+
+  19 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Module-Build-XSUtil-0.140.0.ebuild, +metadata.xml:
+  New ebuild, dependency of dev-perl/Mouse. Ebuild by Kent Fredric.

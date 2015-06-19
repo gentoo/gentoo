@@ -1,0 +1,25 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/mms-agent/files/mms-monitoring-agent.initd,v 1.2 2015/05/12 09:47:50 ultrabug Exp $
+
+logfile=/var/log/mongodb/mms-monitoring-agent.log
+run_dir=${run_dir:-/run/mongodb}
+
+command="./mongodb-mms-monitoring-agent &>${logfile}"
+command_background="true"
+
+pidfile=${run_dir}/${SVCNAME}.pid
+user=${user:-mongodb}
+group=${group:-mongodb}
+start_stop_daemon_args="--user ${user} --group ${group}"
+
+depend() {
+	need net
+	use syslog
+}
+
+start_pre() {
+    checkpath -d -m 0750 -o "${user}":"${group}" "${run_dir}"
+    cd /opt/mms-monitoring-agent
+}

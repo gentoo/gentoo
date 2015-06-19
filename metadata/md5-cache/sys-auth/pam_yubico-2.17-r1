@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=virtual/pam sys-auth/libyubikey >=sys-auth/ykclient-2.12 >=sys-auth/ykpers-1.6 ldap? ( net-nds/openldap ) app-text/asciidoc
+DESCRIPTION=Library for authenticating against PAM with a Yubikey
+EAPI=5
+HOMEPAGE=https://github.com/Yubico/yubico-pam
+IUSE=ldap
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=virtual/pam sys-auth/libyubikey >=sys-auth/ykclient-2.12 >=sys-auth/ykpers-1.6 ldap? ( net-nds/openldap )
+SLOT=0
+SRC_URI=http://opensource.yubico.com/yubico-pam/releases/pam_yubico-2.17.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=2468a755d5b5a28e0d61fb195a4b26ab

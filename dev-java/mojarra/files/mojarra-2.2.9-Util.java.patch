@@ -1,0 +1,26 @@
+--- src/com/sun/faces/util/Util.java.orig	2015-06-08 21:08:39.770000000 +0000
++++ src/com/sun/faces/util/Util.java	2015-06-08 21:10:12.719000000 +0000
+@@ -315,13 +315,16 @@
+         // as the same adapter in a standalone program works as one might expect.
+         // So, for now, if the classname starts with '[', then use Class.forName()
+         // to avoid CR 643419 and for all other cases, use ClassLoader.loadClass().
+-        if (loader.getClass() == com.sun.faces.scripting.groovy.GroovyHelperImpl.MojarraGroovyClassLoader.class) {
+-            if (name.charAt(0) == '[') {
+-                return Class.forName(name, true, loader);
+-            } else {
+-                return loader.loadClass(name);
+-            }
+-        }        
++        //
++        // Disable Groovy stuff for the time being 
++        // since groovy 2.4 hasn't hit the tree... yet.
++        // if (loader.getClass() == com.sun.faces.scripting.groovy.GroovyHelperImpl.MojarraGroovyClassLoader.class) {
++        //     if (name.charAt(0) == '[') {
++        //         return Class.forName(name, true, loader);
++        //     } else {
++        //         return loader.loadClass(name);
++        //     }
++        // }        
+         return Class.forName(name, true, loader);
+     }
+ 

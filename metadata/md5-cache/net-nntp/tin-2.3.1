@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=dev-libs/libpcre dev-libs/uulib gpg? ( app-crypt/gnupg ) idn? ( net-dns/libidn ) mime? ( net-mail/metamail ) net-misc/urlview nls? ( sys-devel/gettext ) sasl? ( virtual/gsasl ) socks5? ( net-proxy/dante ) sys-libs/ncurses[unicode?] unicode? ( dev-libs/icu:= ) app-arch/xz-utils virtual/pkgconfig
+DESCRIPTION=A threaded NNTP and spool based UseNet newsreader
+EAPI=5
+HOMEPAGE=http://www.tin.org/
+IUSE=cancel-locks debug doc +etiquette evil forgery gpg idn ipv6 mime nls sasl socks5 spell unicode
+KEYWORDS=~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=dev-libs/libpcre dev-libs/uulib gpg? ( app-crypt/gnupg ) idn? ( net-dns/libidn ) mime? ( net-mail/metamail ) net-misc/urlview nls? ( sys-devel/gettext ) sasl? ( virtual/gsasl ) socks5? ( net-proxy/dante ) sys-libs/ncurses[unicode?] unicode? ( dev-libs/icu:= )
+SLOT=0
+SRC_URI=ftp://ftp.tin.org/pub/news/clients/tin/v2.3/tin-2.3.1.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=d19a4c8cde00e58de7f68cc4796b464e

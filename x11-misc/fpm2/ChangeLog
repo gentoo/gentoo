@@ -1,0 +1,26 @@
+# ChangeLog for x11-misc/fpm2
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/fpm2/ChangeLog,v 1.6 2012/05/05 04:53:50 jdhore Exp $
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> fpm2-0.79.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 May 2012; Jeff Horelick <jdhore@gentoo.org> fpm2-0.79.ebuild:
+  marked x86 per bug 414081
+
+  01 May 2012; Agostino Sarubbo <ago@gentoo.org> fpm2-0.79.ebuild:
+  Stable for amd64, wrt bug #414081
+
+  13 Nov 2011; Markos Chandras <hwoarang@gentoo.org> fpm2-0.79.ebuild:
+  Fix dependencies. Thanks to Bruno <bonbons67@internet.lu>. Bug #387971
+
+  07 Jul 2011; Markos Chandras <hwoarang@gentoo.org> fpm2-0.79.ebuild:
+  Remove useless inherit
+
+*fpm2-0.79 (07 Jul 2011)
+
+  07 Jul 2011; Markos Chandras <hwoarang@gentoo.org> +fpm2-0.79.ebuild,
+  +metadata.xml:
+  Initial commit. Bug #247313. Thanks to Incinerator <inciner@gmail.com> for
+  the initial ebuild
+

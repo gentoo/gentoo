@@ -1,0 +1,18 @@
+# ChangeLog for dev-python/texttable
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/texttable/ChangeLog,v 1.3 2015/06/04 07:23:15 jlec Exp $
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+*texttable-0.8.2 (01 Mar 2015)
+
+  01 Mar 2015; Alex Brandt <alunduil@gentoo.org> +texttable-0.8.2.ebuild,
+  metadata.xml:
+  add version 0.8.2
+
+*texttable-0.8.1 (23 Sep 2014)
+
+  23 Sep 2014; Alex Brandt <alunduil@gentoo.org> +texttable-0.8.1.ebuild,
+  +metadata.xml:
+  new ebuild for texttable written by me

@@ -1,0 +1,51 @@
+# ChangeLog for app-emacs/zenirc
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/zenirc/ChangeLog,v 1.15 2014/03/29 12:01:26 ulm Exp $
+
+  29 Mar 2014; Ulrich Müller <ulm@gentoo.org> -zenirc-2.112.ebuild:
+  Remove old.
+
+  29 Mar 2014; Agostino Sarubbo <ago@gentoo.org> zenirc-2.112-r1.ebuild:
+  Stable for x86, wrt bug #504222
+
+  22 Mar 2014; Chema Alonso <nimiux@gentoo.org> zenirc-2.112-r1.ebuild:
+  Stable for amd64 wrt bug #504222
+
+*zenirc-2.112-r1 (10 Feb 2014)
+
+  10 Feb 2014; Ulrich Müller <ulm@gentoo.org> +zenirc-2.112-r1.ebuild:
+  Use install functions from elisp-common.eclass instead of make install, in
+  order to avoid double byte-compilation of elisp files. Update to EAPI 5.
+  Specify LICENSE more precisely. Use readme.gentoo.eclass instead of elog for
+  message display.
+
+  20 Nov 2007; Christian Faulhammer <opfer@gentoo.org> zenirc-2.112.ebuild:
+  amd64 stable, bug 195512
+
+  18 Oct 2007; Christian Faulhammer <opfer@gentoo.org> zenirc-2.112.ebuild:
+  keyworded ~amd64, bug 195512
+
+  03 Jul 2007; Christian Faulhammer <opfer@gentoo.org> zenirc-2.112.ebuild:
+  removed postrm and postinst, as they are exactly like that in elisp.eclass
+  (make use of DOCS variable); killed DEPEND line on virtual/emacs; added a
+  lot of quotes; replace configure and manual make commands through function
+  equivalents; adjusted DESCRIPTION; added trailing slash to HOMEPAGE URI
+
+  08 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/50zenirc-gentoo.el:
+  add load path correctly, fixes bug 169588, reported by Ulrich Mueller
+  <ulm@kph.uni-mainz.de>
+
+  28 Jan 2007; Marius Mauch <genone@gentoo.org> zenirc-2.112.ebuild:
+  Replacing einfo with elog
+
+  09 Jan 2007; Christian Faulhammer <opfer@gentoo.org> ChangeLog:
+  change an einfo to elog due to importance of that message
+
+*zenirc-2.112 (31 Oct 2002)
+
+  31 Oct 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  zenirc-2.112.ebuild, files/50zenirc-gentoo.el,
+  files/digest-zenirc-2.112 :
+
+  Initial import.

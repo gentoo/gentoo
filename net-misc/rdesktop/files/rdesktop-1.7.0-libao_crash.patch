@@ -1,0 +1,18 @@
+--- rdpsnd_libao.c.orig	2010-11-29 14:55:31.124907038 +0100
++++ rdpsnd_libao.c	2010-11-29 14:55:51.708464083 +0100
+@@ -76,6 +76,7 @@
+ 	format.channels = 2;
+ 	format.rate = 44100;
+ 	format.byte_format = AO_FMT_NATIVE;
++	format.matrix = NULL;
+ 
+ 
+ 	o_device = ao_open_live(default_driver, &format, NULL);
+@@ -115,6 +116,7 @@
+ 	format.channels = pwfx->nChannels;
+ 	format.rate = 44100;
+ 	format.byte_format = AO_FMT_NATIVE;
++	format.matrix = NULL;
+ 
+ 	if (o_device != NULL)
+ 		ao_close(o_device);

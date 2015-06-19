@@ -1,0 +1,30 @@
+# ChangeLog for dev-java/jsr223
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jsr223/ChangeLog,v 1.7 2014/06/19 00:24:44 mrueg Exp $
+
+  19 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -jsr223-1.0.ebuild:
+  NM: Cleanup superseded ebuilds.
+
+  24 Jun 2010; Pacho Ramos <pacho@gentoo.org> jsr223-1.0-r1.ebuild:
+  stable amd64, bug 322433
+
+  14 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> jsr223-1.0-r1.ebuild:
+  x86 stable wrt bug #322433
+
+  02 May 2010; Petteri Räty <betelgeuse@gentoo.org> jsr223-1.0-r1.ebuild:
+  Add mkdir build to make javac happy.
+
+*jsr223-1.0-r1 (02 May 2010)
+
+  02 May 2010; Petteri Räty <betelgeuse@gentoo.org> +jsr223-1.0-r1.ebuild:
+  Create a new revision from openjdk classes so that we don't need to fetch
+  restrict this any more. Fixes bug #272562.
+
+  20 Dec 2008; Markus Meier <maekke@gentoo.org> jsr223-1.0.ebuild:
+  amd64/x86 stable, bug #251172
+
+*jsr223-1.0 (16 Nov 2008)
+
+  16 Nov 2008; Miroslav Šulc <fordfrog@gentoo.org> +metadata.xml,
+  +jsr223-1.0.ebuild:
+  New ebuild, moved from java-overlay

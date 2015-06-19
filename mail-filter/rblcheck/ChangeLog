@@ -1,0 +1,64 @@
+# ChangeLog for mail-filter/rblcheck
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/rblcheck/ChangeLog,v 1.15 2015/03/21 16:47:32 jlec Exp $
+
+*rblcheck-1.5-r2 (21 Mar 2015)
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> +rblcheck-1.5-r2.ebuild,
+  rblcheck-1.5-r1.ebuild:
+  use dobin instead of exeinto /usr/bin/ && doexe; bump to EAPI=5
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> rblcheck-1.5-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  25 Jun 2011; Raúl Porcel <armin76@gentoo.org> rblcheck-1.5-r1.ebuild:
+  alpha/sparc stable wrt #370669
+
+  22 Jun 2011; Brent Baude <ranger@gentoo.org> rblcheck-1.5-r1.ebuild:
+  Marking rblcheck-1.5-r1 ppc for bug 370669
+
+  15 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> rblcheck-1.5-r1.ebuild:
+  x86 stable wrt bug #370669
+
+  10 Jun 2011; Jeroen Roovers <jer@gentoo.org> rblcheck-1.5-r1.ebuild:
+  Stable for HPPA (bug #370669).
+
+  19 Oct 2010; Mart Raudsepp <leio@gentoo.org> rblcheck-1.5.ebuild:
+  Drop to ~mips
+
+*rblcheck-1.5-r1 (10 Jul 2010)
+
+  10 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  +rblcheck-1.5-r1.ebuild:
+  Respect CC wrt bug #244146
+
+  15 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org> rblcheck-1.5.ebuild:
+  Fix quoting, stop using ./configure (#120887)
+
+  08 Oct 2006; Simon Stelling <blubb@gentoo.org>
+  +files/rblcheck-1.5-configure.patch, rblcheck-1.5.ebuild:
+  - added patch to make it compile on amd64, thanks to Cliff Cunnington
+  - marked testing on amd64
+  - fixed up (R)DEPEND
+
+  23 May 2005; Fernando J. Pereda <ferdy@gentoo.org> rblcheck-1.5.ebuild:
+  fix CVS Header Error
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> rblcheck-1.5.ebuild:
+  virtual/glibc -> virtual/libc
+
+*rblcheck-1.5 (03 Jun 2004)
+
+  03 Jun 2004; Seemant Kulleen <seemant@gentoo.org> +metadata.xml,
+  +rblcheck-1.5.ebuild:
+  Moved from net-mail/rblcheck to mail-filter/rblcheck.
+
+  12 Jun 2003; <msterret@gentoo.org> rblcheck-1.5.ebuild:
+  add Header
+
+*rblcheck-1.5 (14 Aug 2002)
+
+  14 Aug 2002; Nick Hadaway <raker@gentoo.org>
+  rblcheck-1.5.ebuild, files/digest-rblcheck-1.5 :
+  Initial add of ebuild to portage.  Thanks to Enrico Morelli for submitting
+  the original ebuild.  Only change made was to use mirror://sourceforge

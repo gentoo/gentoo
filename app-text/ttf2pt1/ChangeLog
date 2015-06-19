@@ -1,0 +1,113 @@
+# ChangeLog for app-text/ttf2pt1
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/ttf2pt1/ChangeLog,v 1.31 2015/06/09 12:43:09 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  04 Jun 2015; Pacho Ramos <pacho@gentoo.org>
+  +files/ttf2pt1-3.4.4-freetype-2.5.patch, ttf2pt1-3.4.4-r1.ebuild:
+  Fix build with freetype 2.5.1 and newer (#514794 by Dmitry 'daks' Fomenko and
+  Patrick)
+
+  14 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -ttf2pt1-3.4.4.ebuild:
+  Remove old.
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> ttf2pt1-3.4.4-r1.ebuild:
+  sparc stable wrt #341847
+
+  10 Jan 2011; Brent Baude <ranger@gentoo.org> ttf2pt1-3.4.4-r1.ebuild:
+  stable ppc, bug 341847
+
+  27 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  ttf2pt1-3.4.4-r1.ebuild:
+  stable x86, bug 341847
+
+  20 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  ttf2pt1-3.4.4-r1.ebuild:
+  Stable on amd64 wrt bug #341847
+
+*ttf2pt1-3.4.4-r1 (19 Sep 2010)
+
+  19 Sep 2010; Ryan Hill <dirtyepic@gentoo.org> +ttf2pt1-3.4.4-r1.ebuild,
+  +files/ttf2pt1-3.4.4-LDFLAGS.patch:
+  Respect LDFLAGS (bug #337857 by Diego). Migrate to EAPI 3. Don't install
+  redundant html docs. Quote variables.
+
+  10 Oct 2009; Raúl Porcel <armin76@gentoo.org> ttf2pt1-3.4.4.ebuild:
+  sparc stable wrt #286600
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> ttf2pt1-3.4.4.ebuild:
+  ppc stable #286600
+
+  27 Sep 2009; Markus Meier <maekke@gentoo.org> ttf2pt1-3.4.4.ebuild:
+  amd64/x86 stable, bug #286600
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> ttf2pt1-3.4.0.ebuild:
+  Remove virtual/libc
+
+*ttf2pt1-3.4.4 (16 Jul 2007)
+
+  16 Jul 2007; Ryan Hill <dirtyepic@gentoo.org>
+  -files/ttf2pt1-3.3.3-Makefile-gentoo.diff,
+  +files/ttf2pt1-3.4.4-Makefile.patch, +files/ttf2pt1-3.4.4-freetype.patch,
+  metadata.xml, +ttf2pt1-3.4.4.ebuild:
+  Fix support for converting freetype (otf) fonts.  (bug #112680)
+  Version bump, rewrote ebuild.
+  Added to font herd.
+
+  20 Jun 2007; Christoph Mende <angelos@gentoo.org> ttf2pt1-3.4.0.ebuild:
+  Added ~amd64 wrt bug 182251
+
+  06 Jan 2007; Danny van Dyk <kugelfang@gentoo.org> -ttf2pt1-3.3.3.ebuild:
+  QA: Removed unused versions.
+
+  15 Aug 2006; Stephanie Lockwood-Childs <wormo@gentoo.org> +metadata.xml,
+  +files/ttf2pt1-3.4.0-Makefile-multiline-sed.diff,
+  +files/ttf2pt1-3.4.0-man-pages.diff, ttf2pt1-3.4.0.ebuild:
+  Update Makefiles for sed 4.1.4 -- patch courtesy of TGL (Bug #131883)
+  Make man pages look ok with man 1.6 (bold fonts were messed up)
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> ttf2pt1-3.4.0.ebuild:
+  Stable on ppc.
+
+  05 Sep 2004; David Holm <dholm@gentoo.org> ttf2pt1-3.4.0.ebuild:
+  Added to ~ppc.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> ttf2pt1-3.3.3.ebuild,
+  ttf2pt1-3.4.0.ebuild:
+  virtual/glibc -> virtual/libc
+
+  12 Jun 2003; <msterret@gentoo.org> ttf2pt1-3.4.0.ebuild:
+  fix Header
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*ttf2pt1-3.4.0 (1 Feb 2002)
+
+  19 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> ttf2pt1-3.4.0.ebuild :
+  Updated to mirror://sourceforge in SRC_URI.
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> ttf2pt1-3.4.0.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  16 Jun 2002; Michael Nazaroff <naz@gentoo.org> ttf2pt1-3.4.0:
+
+  Updated to the newest version with the Makefile patch as well.
+  This was sent in by Matt Kennedy. Thankyou much :o).
+  
+*ttf2pt1-3.3.3 (1 Feb 2002)
+
+  19 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> ttf2pt1-3.3.3.ebuild :
+  Updated to mirror://sourceforge in SRC_URI.
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> ttf2pt1-3.3.3.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

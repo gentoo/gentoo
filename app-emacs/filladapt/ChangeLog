@@ -1,0 +1,49 @@
+# ChangeLog for app-emacs/filladapt
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/filladapt/ChangeLog,v 1.12 2014/02/23 12:59:38 ulm Exp $
+
+  23 Feb 2014; Ulrich Müller <ulm@gentoo.org> filladapt-2.12-r1.ebuild,
+  +files/50filladapt-gentoo.el, -files/51filladapt-gentoo.el:
+  Update ebuild to EAPI 5. Specify LICENSE more precisely. Move site-init file
+  to canonical name.
+
+  14 Jun 2008; Ulrich Mueller <ulm@gentoo.org> filladapt-2.12-r1.ebuild:
+  Do not assign SIMPLE_ELISP since elisp.eclass now detects this case
+  automatically.
+
+  05 Dec 2007; Ulrich Mueller <ulm@gentoo.org> -files/50filladapt-gentoo.el,
+  -filladapt-2.12.ebuild:
+  Remove old.
+
+  01 Dec 2007; nixnut <nixnut@gentoo.org> filladapt-2.12-r1.ebuild:
+  Stable on ppc wrt bug 200913
+
+  01 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  filladapt-2.12-r1.ebuild:
+  stable x86/amd64
+
+*filladapt-2.12-r1 (14 Oct 2007)
+
+  14 Oct 2007; Ulrich Mueller <ulm@gentoo.org> +files/51filladapt-gentoo.el,
+  +filladapt-2.12-r1.ebuild:
+  Don't enable filladapt as site default.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  01 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org> filladapt-2.12.ebuild:
+  Keywording ~amd64.
+
+  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> filladapt-2.12.ebuild:
+  Marked as stable.
+
+  03 Sep 2004; David Holm <dholm@gentoo.org> filladapt-2.12.ebuild:
+  Added to ~ppc.
+
+*filladapt-2.12 (31 Aug 2004)
+
+  31 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +files/50filladapt-gentoo.el, +filladapt-2.12.ebuild:
+  Initial import. Thanks to John Steele Scott <toojays@toojays.net>,
+  closing bug #43328.
+

@@ -1,0 +1,78 @@
+# ChangeLog for dev-tex/prosper
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/prosper/ChangeLog,v 1.22 2011/10/05 20:58:08 aballier Exp $
+
+  05 Oct 2011; Alexis Ballier <aballier@gentoo.org> prosper-1.5-r1.ebuild:
+  depend on dev-texlive/texlive-pstricks by Kfir Lavi, bug #348889
+
+  05 Oct 2011; Alexis Ballier <aballier@gentoo.org> -prosper-1.00.4-r1.ebuild:
+  remove old
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  prosper-1.5-r1.ebuild:
+  Transfer Prefix keywords
+
+  05 Feb 2008; Fabian Groffen <grobian@gentoo.org> prosper-1.5-r1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  09 Mar 2006; Martin Ehmsen <ehmsen@gentoo.org> prosper-1.5-r1.ebuild:
+  Do not install INSTALL to doc.
+
+  03 Apr 2005; Lina Pezzella <j4rg0n@gentoo.org> prosper-1.5-r1.ebuild:
+  Testing ppc-macos. Bug #86077. Thanks to Benjamin Braatz for reporting
+
+  28 Dec 2004; Dylan Carlson <absinthe@gentoo.org> prosper-1.5-r1.ebuild:
+  Stable on amd64.
+
+  14 Nov 2004; Jason Wever <weeve@gentoo.org> prosper-1.5-r1.ebuild:
+  Stable on sparc.
+
+  30 Oct 2004; Jason Wever <weeve@gentoo.org> :
+  Stable on sparc.
+
+  23 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> prosper-1.5-r1.ebuild,
+  -prosper-1.5.ebuild:
+  Stable on x86 and ppc.
+
+*prosper-1.5-r1 (21 Sep 2004)
+
+  21 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> +prosper-1.5-r1.ebuild:
+  Install eps files required by some slide styles; bug #64808.
+
+*prosper-1.5 (09 Sep 2004)
+
+  09 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> -prosper-1.00.4.ebuild,
+  +prosper-1.5.ebuild:
+  Version bumped. Thanks to Adam Piatyszek <ediap@et.put.poznan.pl>,
+  closing bug #63149.
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> prosper-1.00.4-r1.ebuild:
+  Added IUSE=
+
+  16 Dec 2003; Jon Portnoy <avenj@gentoo.org> prosper-1.00.4-r1.ebuild :
+  AMD64 keywords.
+
+*prosper-1.00.4-r1 (28 Oct 2003)
+
+  08 Dec 2003; Mamoru KOMACHI <usata@gentoo.org> prosper-1.00.4-r1.ebuild,
+  prosper-1.00.4.ebuild:
+  Considered as stable
+
+  28 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> prosper-1.00.4-r1.ebuild:
+  Included more styles. Ebuild submitted by Dennis Frommknecht
+  <d.frommknecht@t-online.de>, closing #31677.
+
+  06 Oct 2003; Mike Gardiner <obz@gentoo.org> metadata.xml,
+  prosper-1.00.4.ebuild:
+  Marked stable on x86
+
+*prosper-1.00.4 (13 Jul 2003)
+
+  13 Jul 2003; Matthew Turk <satai@gentoo.org> :
+  Initial import.  Ebuild submitted by Marc Reynes <marc.reynes@tuxfamily.org>

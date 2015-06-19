@@ -1,0 +1,135 @@
+# ChangeLog for dev-ruby/oauth
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/oauth/ChangeLog,v 1.30 2015/05/29 05:50:54 graaff Exp $
+
+  29 May 2015; Hans de Graaff <graaff@gentoo.org> oauth-0.4.7-r2.ebuild:
+  Avoid now-incomptaible typhoeus tests. Use a newer mocha version so ruby21
+  can be added. Add missing rack test dependency.
+
+  16 Mar 2015; Hans de Graaff <graaff@gentoo.org> -oauth-0.4.7-r1.ebuild:
+  Cleanup.
+
+  19 Dec 2014; Agostino Sarubbo <ago@gentoo.org> oauth-0.4.7-r2.ebuild:
+  Add ~x86, wrt bug #511176
+
+  11 Nov 2014; Manuel Rüger <mrueg@gentoo.org> oauth-0.4.7-r1.ebuild,
+  oauth-0.4.7-r2.ebuild:
+  Drop jruby target.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> oauth-0.4.7-r1.ebuild,
+  oauth-0.4.7-r2.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+*oauth-0.4.7-r2 (03 Jul 2014)
+
+  03 Jul 2014; Hans de Graaff <graaff@gentoo.org> +oauth-0.4.7-r2.ebuild:
+  Add ruby20. Drop x86, bug 511176.
+
+*oauth-0.4.7-r1 (21 May 2014)
+
+  21 May 2014; Manuel Rüger <mrueg@gentoo.org> +oauth-0.4.7-r1.ebuild,
+  -files/oauth-0.4.1-optional-tests.patch,
+  -files/oauth-0.4.3-optional-tests.patch, -oauth-0.4.7.ebuild:
+  Remove ruby18 target. Cleanup old patches.
+
+  25 Mar 2014; Hans de Graaff <graaff@gentoo.org> oauth-0.4.7.ebuild:
+  Drop deprecated ree18.
+
+  30 Nov 2013; Hans de Graaff <graaff@gentoo.org> oauth-0.4.7.ebuild:
+  Add jruby. Drop test dependency on dev-ruby/rails:3.2 altogether since it
+  will be masked soon.
+
+  11 Aug 2013; Hans de Graaff <graaff@gentoo.org> -oauth-0.4.6.ebuild:
+  Cleanup.
+
+*oauth-0.4.7 (05 Oct 2012)
+
+  05 Oct 2012; Hans de Graaff <graaff@gentoo.org> +oauth-0.4.7.ebuild:
+  Version bump.
+
+  04 Aug 2012; Hans de Graaff <graaff@gentoo.org> oauth-0.4.6.ebuild:
+  Add ruby19. Avoid dependency on old actionpack since we don't have that
+  marked for ruby19 and the remainder of the code works.
+
+  04 Aug 2012; Hans de Graaff <graaff@gentoo.org> -oauth-0.4.4.ebuild,
+  -oauth-0.4.5.ebuild:
+  Cleanup.
+
+*oauth-0.4.6 (18 May 2012)
+
+  18 May 2012; Hans de Graaff <graaff@gentoo.org> +oauth-0.4.6.ebuild:
+  Version bump.
+
+*oauth-0.4.5 (26 Jun 2011)
+
+  26 Jun 2011; Hans de Graaff <graaff@gentoo.org> +oauth-0.4.5.ebuild:
+  Version bump.
+
+  26 Jun 2011; Hans de Graaff <graaff@gentoo.org> -oauth-0.4.3.ebuild:
+  Remove old version.
+
+  10 Jan 2011; Hans de Graaff <graaff@gentoo.org> oauth-0.4.4.ebuild:
+  Keyword ~x86-macos.
+
+*oauth-0.4.4 (28 Dec 2010)
+
+  28 Dec 2010; Hans de Graaff <graaff@gentoo.org> +oauth-0.4.4.ebuild:
+  Version bump with various bug fixes. Drop patches applied upstream.
+
+  01 Nov 2010; Hans de Graaff <graaff@gentoo.org> -oauth-0.4.1.ebuild:
+  Remove old version.
+
+*oauth-0.4.3 (18 Sep 2010)
+
+  18 Sep 2010; Hans de Graaff <graaff@gentoo.org> +oauth-0.4.3.ebuild,
+  +files/oauth-0.4.3-optional-tests.patch:
+  Version bump. Update optional tests patch. Weaken rails requirement to fix
+  bug 332913.
+
+  13 Aug 2010; Hans de Graaff <graaff@gentoo.org> -oauth-0.3.6.ebuild,
+  -oauth-0.3.6-r1.ebuild, -files/oauth-0.3.6-newgem.patch:
+  Remove old versions.
+
+*oauth-0.4.1 (25 Jun 2010)
+
+  25 Jun 2010; Hans de Graaff <graaff@gentoo.org> +oauth-0.4.1.ebuild,
+  +files/oauth-0.4.1-optional-tests.patch:
+  Version bump.
+
+  22 May 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  oauth-0.3.6-r1.ebuild:
+  Various cleanups.
+
+*oauth-0.3.6-r1 (25 Feb 2010)
+
+  25 Feb 2010; Hans de Graaff <graaff@gentoo.org> +oauth-0.3.6-r1.ebuild,
+  +files/oauth-0.3.6-newgem.patch:
+  Convert to ruby-fakegem.
+
+  09 Dec 2009; Hans de Graaff <graaff@gentoo.org> -oauth-0.3.5.ebuild:
+  Remove old version.
+
+  20 Sep 2009; Hans de Graaff <graaff@gentoo.org> -oauth-0.3.2.ebuild,
+  -oauth-0.3.4.ebuild:
+  Remove old versions.
+
+*oauth-0.3.6 (20 Sep 2009)
+
+  20 Sep 2009; Hans de Graaff <graaff@gentoo.org> +oauth-0.3.6.ebuild:
+  Version bump with some new functionality.
+
+*oauth-0.3.5 (29 Jul 2009)
+
+  29 Jul 2009; Hans de Graaff <graaff@gentoo.org> +oauth-0.3.5.ebuild:
+  Version bump with support for OAuth 1.0a and CLI improvements.
+
+*oauth-0.3.4 (25 May 2009)
+
+  25 May 2009; Hans de Graaff <graaff@gentoo.org> +oauth-0.3.4.ebuild:
+  Version bump.
+
+*oauth-0.3.2 (16 May 2009)
+
+  16 May 2009; Hans de Graaff <graaff@gentoo.org> +metadata.xml,
+  +oauth-0.3.2.ebuild:
+  Initial import. Dependency for dev-ruby/twitter.

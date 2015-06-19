@@ -1,0 +1,114 @@
+# ChangeLog for net-misc/mindterm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/mindterm/ChangeLog,v 1.29 2014/08/02 20:02:26 sera Exp $
+
+  02 Aug 2014; Ralph Sennhauser <sera@gentoo.org> -mindterm-3.1.2.ebuild,
+  -mindterm-3.2.ebuild, -mindterm-3.2-r1.ebuild:
+  Remove old
+
+  03 Feb 2012; Brent Baude <ranger@gentoo.org> mindterm-3.4.ebuild:
+  Marking mindterm-3.4 ppc for bug 397173
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> mindterm-3.4.ebuild:
+  x86 stable wrt bug #397173
+
+  23 Jan 2012; Agostino Sarubbo <ago@gentoo.org> mindterm-3.4.ebuild:
+  Stable for amd64, wrt bug #397173
+
+*mindterm-3.4 (12 Mar 2011)
+
+  12 Mar 2011; Serkan Kaba <serkan@gentoo.org> +mindterm-3.4.ebuild:
+  Version bump.
+
+*mindterm-3.2-r1 (01 Feb 2009)
+
+  01 Feb 2009; Serkan Kaba <serkan@gentoo.org>
+  +files/mindterm-3.2-missingclasses.patch, -files/2.4.2-buildxml.patch,
+  +mindterm-3.2-r1.ebuild:
+  Revbump to add missing classes. Add jzlib to javadoc classpath. Migrate to
+  EAPI 2. Remove old patch.
+
+  15 May 2008; Richard Freeman <rich0@gentoo.org> mindterm-3.2.ebuild:
+  amd64 stable - 219672
+
+  03 May 2008; Christian Faulhammer <opfer@gentoo.org> mindterm-3.2.ebuild:
+  stable x86, bug 219672
+
+  03 May 2008; Christian Faulhammer <opfer@gentoo.org> mindterm-3.2.ebuild:
+  filter jikes
+
+  29 Apr 2008; Brent Baude <ranger@gentoo.org> mindterm-3.2.ebuild:
+  stable ppc, bug 219672
+
+*mindterm-3.2 (29 Mar 2008)
+
+  29 Mar 2008; Alistair Bush <ali_bush@gentoo.org> +mindterm-3.2.ebuild:
+  Version Bump. Thanks Meatoo.
+
+  29 Aug 2007; Petteri Räty <betelgeuse@gentoo.org> -mindterm-3.0.1.ebuild:
+  Remove old version.
+
+  14 Aug 2007; Christian Faulhammer <opfer@gentoo.org>
+  mindterm-3.1.2.ebuild:
+  stable x86, bug 187605
+
+  10 Aug 2007; Petteri Räty <betelgeuse@gentoo.org> -mindterm-2.4.2.ebuild:
+  Remove old version.
+
+  09 Aug 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  mindterm-3.1.2.ebuild:
+  amd64 stable, bug #187605
+
+  05 Aug 2007; nixnut <nixnut@gentoo.org> mindterm-3.1.2.ebuild:
+  Stable on ppc wrt bug 187605
+
+  18 May 2007; Peter Weller <welp@gentoo.org> mindterm-3.0.1.ebuild:
+  Stable on amd64 wrt bug 176447
+
+  05 May 2007; nixnut <nixnut@gentoo.org> mindterm-3.0.1.ebuild:
+  Stable on ppc wrt bug 176447
+
+  03 May 2007; Raúl Porcel <armin76@gentoo.org> mindterm-3.0.1.ebuild:
+  x86 stable wrt #176447
+
+*mindterm-3.1.2 (29 Apr 2007)
+
+  29 Apr 2007; Petteri Räty <betelgeuse@gentoo.org> +mindterm-3.1.2.ebuild:
+  Version bump. Uses system installed copy of jzlib now.
+
+  29 Apr 2007; Petteri Räty <betelgeuse@gentoo.org> mindterm-3.0.1.ebuild:
+  Only ant-core is not enough, mindterm needs ant-nodeps. Use
+  java-pkg_doexamples.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> mindterm-2.4.2.ebuild,
+  mindterm-3.0.1.ebuild:
+  Dropping sparc keywords, see #96229
+
+*mindterm-3.0.1 (01 Jul 2006)
+
+  01 Jul 2006; Joshua Nichols <nichoj@gentoo.org> +mindterm-3.0.1.ebuild:
+  Version bump (bug #134528) and updated to support new Java system.
+
+  19 Feb 2006; Petteri Räty <betelgeuse@gentoo.org> mindterm-2.4.2.ebuild:
+  Removed dependency on virtual/x11 to make mindterm work with modular X.
+
+  27 Nov 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  mindterm-2.4.2.ebuild:
+  Fixing javadoc location to follow Java Policy.  Resolves bug #96811
+
+  16 Sep 2005; Thomas Matthijs <axxo@gentoo.org> mindterm-2.4.2.ebuild:
+  Dep fix, dropped alpha keyword
+
+  14 May 2005; Jan Brinkmann <luckyduck@gentoo.org> mindterm-2.4.2.ebuild:
+  stable on amd64, ppc and x86
+
+*mindterm-2.4.2 (27 Jan 2005)
+
+  27 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> +metadata.xml,
+  +files/2.4.2-buildxml.patch, +mindterm-2.4.2.ebuild:
+  moved from app-misc to net-misc, also now build from source. fixes bug #79610
+  and #79611.
+

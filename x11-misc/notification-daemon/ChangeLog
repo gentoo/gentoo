@@ -1,0 +1,482 @@
+# ChangeLog for x11-misc/notification-daemon
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/notification-daemon/ChangeLog,v 1.109 2015/06/09 23:08:38 eva Exp $
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  +notification-daemon-3.16.1.ebuild:
+  Version bump for Gnome 3.16.
+
+*notification-daemon-3.16.1 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  +notification-daemon-3.16.1.ebuild:
+  Version bump for Gnome 3.16.
+
+  27 May 2015; Mikle Kolyada <zlogene@gentoo.org>
+  notification-daemon-3.14.1.ebuild:
+  arm stable wrt bug #545864
+
+  30 Apr 2015; Jeroen Roovers <jer@gentoo.org>
+  notification-daemon-3.14.1.ebuild:
+  Stable for PPC64 (bug #545864).
+
+  28 Apr 2015; Agostino Sarubbo <ago@gentoo.org>
+  notification-daemon-3.14.1.ebuild:
+  Stable for sparc, wrt bug #545864
+
+  21 Apr 2015; Pacho Ramos <pacho@gentoo.org>
+  notification-daemon-3.14.1.ebuild:
+  ppc stable wrt bug #545864
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org>
+  notification-daemon-3.14.1.ebuild:
+  Stable for x86, wrt bug #545864
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org>
+  notification-daemon-3.14.1.ebuild:
+  Stable for ia64, wrt bug #545864
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org>
+  notification-daemon-3.14.1.ebuild:
+  Stable for alpha, wrt bug #545864
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org>
+  notification-daemon-3.14.1.ebuild:
+  Stable for amd64, wrt bug #545864
+
+*notification-daemon-3.14.1 (23 Dec 2014)
+
+  23 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +notification-daemon-3.14.1.ebuild:
+  Version bump for Gnome 3.14.
+
+  02 Jun 2014; Samuli Suominen <ssuominen@gentoo.org>
+  notification-daemon-0.7.6.ebuild:
+  Since 0.5.0 was updated to EAPI5, update 0.7.x from EAPI4 to EAPI5 too.
+
+  02 Jun 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +files/notification-daemon-0.5.0-underlinking.patch,
+  notification-daemon-0.5.0.ebuild:
+  Fix underlinking wrt #468522 by Ted Tanberry. Pull gnome-base/gnome-common for
+  eautoreconf. Fix ebuild coding style, like deprecated G2CONF.
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> notification-daemon-0.7.6.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> notification-daemon-0.7.6.ebuild:
+  arch stable, bug 888
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> notification-daemon-0.7.6.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> notification-daemon-0.7.6.ebuild:
+  amd64 stable, bug #478252
+
+  15 Apr 2013; Samuli Suominen <ssuominen@gentoo.org>
+  -notification-daemon-0.7.3.ebuild, -notification-daemon-0.7.4.ebuild:
+  old
+
+  25 Feb 2013; Zac Medico <zmedico@gentoo.org> notification-daemon-0.7.6.ebuild:
+  Add ~arm-linux keyword.
+
+*notification-daemon-0.7.6 (04 Sep 2012)
+
+  04 Sep 2012; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +notification-daemon-0.7.6.ebuild:
+  Bump to 0.7.6; translation updates and bug fixes
+
+  02 Jun 2012; Anthony G. Basile <blueness@gentoo.org>
+  notification-daemon-0.7.4.ebuild:
+  Keyword ~mips
+
+  29 May 2012; Alexis Ballier <aballier@gentoo.org>
+  notification-daemon-0.7.4.ebuild:
+  keyword ~amd64-fbsd
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  notification-daemon-0.7.3.ebuild, notification-daemon-0.7.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*notification-daemon-0.7.4 (31 Mar 2012)
+
+  31 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +notification-daemon-0.7.4.ebuild:
+  Version bump.
+
+  28 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  notification-daemon-0.5.0.ebuild, notification-daemon-0.7.3.ebuild:
+  Block x11-misc/qtnotifydaemon because it's using same .service file.
+
+  19 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  notification-daemon-0.7.3.ebuild:
+  Install org.freedesktop.Notifications.service like it was in 0.5.0.
+
+  19 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -notification-daemon-0.7.1.ebuild:
+  old
+
+*notification-daemon-0.7.3 (19 Oct 2011)
+
+  19 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +notification-daemon-0.7.3.ebuild:
+  Version bump.
+
+  01 May 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +notification-daemon-0.7.1.ebuild:
+  Add notification-daemon-0.7.1 from the gnome overlay
+
+*notification-daemon-0.7.1 (01 May 2011)
+
+  01 May 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +notification-daemon-0.7.1.ebuild:
+  Add 0.7.1 from the gnome overlay
+
+  01 May 2011; Samuli Suominen <ssuominen@gentoo.org>
+  notification-daemon-0.5.0.ebuild:
+  Only block <xfce-extra/xfce4-notifyd-0.2.1_p20110101 because of the new
+  unique dbus service filename. Change HOMEPAGE to reflect current upstream.
+
+  29 Apr 2011; Samuli Suominen <ssuominen@gentoo.org>
+  notification-daemon-0.5.0.ebuild:
+  ppc/ppc64 stable wrt #361093
+
+  23 Apr 2011; Raúl Porcel <armin76@gentoo.org>
+  notification-daemon-0.5.0.ebuild:
+  alpha/ia64/sh/sparc/x86 stable wrt #361093
+
+  12 Apr 2011; Markus Meier <maekke@gentoo.org>
+  notification-daemon-0.5.0.ebuild:
+  arm stable, bug #361093
+
+  21 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  notification-daemon-0.4.0-r1.ebuild, notification-daemon-0.5.0.ebuild:
+  Fix slot-deps on gnome libs
+
+  16 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  notification-daemon-0.5.0.ebuild:
+  Stable on amd64 wrt bug #359031
+
+  05 Feb 2011; Samuli Suominen <ssuominen@gentoo.org>
+  notification-daemon-0.5.0.ebuild,
+  +files/notification-daemon-0.5.0-libnotify-0.7.patch:
+  Fix compability with x11-libs/libnotify >= 0.7.
+
+*notification-daemon-0.5.0 (24 Jan 2011)
+
+  24 Jan 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  +notification-daemon-0.5.0.ebuild:
+  Version bump. Drop libglade, replace gstreamer by libcanberra, lots of fixes
+  and translation updates. Support notification spec v1.1.
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org>
+  notification-daemon-0.4.0-r1.ebuild:
+  Drop HPPA keywording (bug #324511).
+
+  10 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  notification-daemon-0.4.0-r1.ebuild:
+  Transfer Prefix keywords
+
+  27 Oct 2009; Jeroen Roovers <jer@gentoo.org>
+  notification-daemon-0.4.0-r1.ebuild:
+  Stable for HPPA (bug #278447).
+
+  17 Oct 2009; Raúl Porcel <armin76@gentoo.org>
+  notification-daemon-0.4.0-r1.ebuild:
+  ia64/sh/sparc/x86 stable wrt #278447
+
+  03 Oct 2009; Markus Meier <maekke@gentoo.org>
+  notification-daemon-0.4.0-r1.ebuild:
+  arm stable, bug #278447
+
+  29 Sep 2009; Tobias Klausmann <klausman@gentoo.org>
+  notification-daemon-0.4.0-r1.ebuild:
+  Stable on alpha, bug #278447
+
+  27 Sep 2009; Mounir Lamouri <volkmar@gentoo.org>
+  notification-daemon-0.4.0-r1.ebuild:
+  Stable for ppc. Bug 278447
+
+  26 Sep 2009; Romain Perier <mrpouet@gentoo.org>
+  notification-daemon-0.4.0-r1.ebuild:
+  Stable for amd64 per bug #278447.
+
+  25 Sep 2009; Brent Baude <ranger@gentoo.org>
+  notification-daemon-0.4.0-r1.ebuild:
+  Marking notification-daemon-0.4.0-r1 ppc64 for bug 278447
+
+  05 May 2009; Raúl Porcel <armin76@gentoo.org>
+  notification-daemon-0.4.0.ebuild:
+  arm/ia64/sh/sparc stable wrt #263411
+
+*notification-daemon-0.4.0-r1 (02 May 2009)
+
+  02 May 2009; Serkan Kaba <serkan@gentoo.org>
+  +notification-daemon-0.4.0-r1.ebuild,
+  +files/notification-daemon-0.4.0-report-sound-capability.patch:
+  Add patch for the server to report its sound capability when built with
+  gstreamer USE flag. Fixes bug #268310.
+
+  27 Apr 2009; Jeroen Roovers <jer@gentoo.org> notification-daemon-0.4.0:
+  Stable for HPPA (bug #263411).
+
+  05 Apr 2009; Tobias Klausmann <klausman@gentoo.org>
+  notification-daemon-0.4.0.ebuild:
+  Stable on alpha, bug #263411
+
+  04 Apr 2009; Markus Meier <maekke@gentoo.org>
+  notification-daemon-0.4.0.ebuild:
+  amd64/x86 stable, bug #263411
+
+  04 Apr 2009; Brent Baude <ranger@gentoo.org>
+  notification-daemon-0.4.0.ebuild:
+  stable ppc64, bug 263411
+
+  03 Apr 2009; <chainsaw@gentoo.org> notification-daemon-0.4.0.ebuild:
+  Block x11-misc/xfce4-notifyd as it provides the same D-Bus service. A
+  prerequisite to resolving bug #260686 by Joshua Rich. Also remove
+  unnecessary inherit of autotools eclass.
+
+  26 Mar 2009; Brent Baude <ranger@gentoo.org>
+  notification-daemon-0.4.0.ebuild:
+  stable ppc, bug 263411
+
+  25 Mar 2009; Peter Alfredsen <loki_val@gentoo.org>
+  notification-daemon-0.4.0.ebuild:
+  Dep on newest libnotify for bug 254235. Thanks to Serge Gavrilov for the
+  report.
+
+  01 Mar 2009; Patrick Lauer <patrick@gentoo.org>
+  notification-daemon-0.4.0.ebuild:
+  Adding missing intltool dep
+
+  18 Jan 2009; Peter Volkov <pva@gentoo.org>
+  notification-daemon-0.4.0.ebuild:
+  Added dependency on x11-libs/libnotify, bug #253332.
+
+  15 Jan 2009; Peter Alfredsen <loki_val@gentoo.org> metadata.xml:
+  Freedesktop gets notification-daemon, compnerd retired.
+
+*notification-daemon-0.4.0 (22 Dec 2008)
+
+  22 Dec 2008; Doug Goldstein <cardoe@gentoo.org>
+  +notification-daemon-0.4.0.ebuild:
+  version bump. closes bump request #251865
+
+*notification-daemon-0.3.7-r1 (20 Nov 2008)
+
+  20 Nov 2008; Doug Goldstein <cardoe@gentoo.org>
+  +files/notification-daemon-0.3.7-line-wrapping.patch,
+  +notification-daemon-0.3.7-r1.ebuild:
+  upstream fix for handling line wrapping for lines longer then 50
+  characters but shorter then 65
+
+  14 Dec 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  -files/notification-daemon-0.3.6-binding-tool.patch,
+  -notification-daemon-0.3.6-r1.ebuild:
+  prune unused versions
+
+  01 Aug 2007; Samuli Suominen <drac@gentoo.org>
+  notification-daemon-0.3.6-r1.ebuild, notification-daemon-0.3.7.ebuild:
+  Fix fscked up dbus deps for bug 187369.
+
+  15 Jul 2007; nixnut <nixnut@gentoo.org> notification-daemon-0.3.7.ebuild:
+  Stable on ppc wrt bug 184615
+
+  13 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  notification-daemon-0.3.7.ebuild:
+  alpha/ia64 stable wrt #184615
+
+  13 Jul 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  notification-daemon-0.3.7.ebuild:
+  Stable on amd64/x86 wrt bug #184615.
+
+  12 Jul 2007; Jeroen Roovers <jer@gentoo.org>
+  notification-daemon-0.3.7.ebuild:
+  Stable for HPPA (bug #184615).
+
+  12 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  notification-daemon-0.3.7.ebuild:
+  Stable on sparc wrt #184615
+
+  12 Jul 2007; Markus Rothe <corsair@gentoo.org>
+  notification-daemon-0.3.7.ebuild:
+  Stable on ppc64; bug #184615
+
+  08 Jul 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  notification-daemon-0.3.6-r1.ebuild, notification-daemon-0.3.7.ebuild:
+  remove reference to old, removed dbus (bug #183696)
+
+  26 May 2007; Samuli Suominen <drac@gentoo.org>
+  notification-daemon-0.3.6-r1.ebuild, notification-daemon-0.3.7.ebuild:
+  Add block for notification-daemon-xfce.
+
+*notification-daemon-0.3.7 (28 Feb 2007)
+
+  28 Feb 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  +notification-daemon-0.3.7.ebuild:
+  Version bump from upstream
+
+  24 Jan 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  -files/notification-daemon-0.3.5-icon-data.patch,
+  -files/notification-daemon-0.3.5-unrealize-in-destroy.patch,
+  -notification-daemon-0.3.5.ebuild, -notification-daemon-0.3.5-r2.ebuild,
+  -notification-daemon-0.3.6.ebuild:
+  cleanup old versions now that we have a new stable version
+
+  24 Jan 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  notification-daemon-0.3.6-r1.ebuild:
+  Add automake dep for bug #163440
+
+  21 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  notification-daemon-0.3.6-r1.ebuild:
+  Stable on IA64, bug 156662.
+
+  16 Jan 2007; Roy Marples <uberlord@gentoo.org>
+  notification-daemon-0.3.6-r1.ebuild:
+  Added ~x86-fbsd keyword.
+
+  15 Jan 2007; Luis Medinas <metalgod@gentoo.org>
+  notification-daemon-0.3.6-r1.ebuild:
+  Stable on amd64. Bug #157906.
+
+  11 Jan 2007; <compnerd@gentoo.org> notification-daemon-0.3.6-r1.ebuild:
+  fix inverted depends
+
+  07 Jan 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  notification-daemon-0.3.6-r1.ebuild:
+  ppc stable, bug #157906
+
+  02 Jan 2007; Andrej Kacian <ticho@gentoo.org>
+  notification-daemon-0.3.6-r1.ebuild:
+  Stable on x86, bug #157906.
+
+  31 Dec 2006; Markus Rothe <corsair@gentoo.org>
+  notification-daemon-0.3.6-r1.ebuild:
+  Stable on ppc64; bug #157906
+
+  31 Dec 2006; Bryan Østergaard <kloeri@gentoo.org>
+  notification-daemon-0.3.6-r1.ebuild:
+  Stable on Alpha, bug 157906.
+
+  29 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  notification-daemon-0.3.6-r1.ebuild:
+  Stable on sparc wrt #157906
+
+  05 Dec 2006; Jeroen Roovers <jer@gentoo.org>
+  notification-daemon-0.3.6-r1.ebuild:
+  Stable for HPPA.
+
+  07 Nov 2006; Stefan Schweizer <genstef@gentoo.org>
+  files/notification-daemon-0.3.6-binding-tool.patch:
+  Fix patch thanks to brad walker <bradmwalker@cableone.net> and Jule
+  Slootbeek <jslootbeek@gmail.com> in bug 154370
+
+*notification-daemon-0.3.6-r1 (07 Nov 2006)
+
+  07 Nov 2006; Doug Goldstein <cardoe@gentoo.org>
+  +files/notification-daemon-0.3.6-binding-tool.patch,
+  notification-daemon-0.3.6.ebuild, +notification-daemon-0.3.6-r1.ebuild:
+  Patch from upstream to fix incorrect usage of dbus-binding-tool
+
+  30 Oct 2006; Jeroen Roovers <jer@gentoo.org>
+  notification-daemon-0.3.6.ebuild:
+  Marked ~hppa (bug #153433).
+
+  30 Oct 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  notification-daemon-0.3.5.ebuild, notification-daemon-0.3.5-r2.ebuild,
+  notification-daemon-0.3.6.ebuild:
+  Fix dbus deps round II
+
+  29 Oct 2006; Doug Goldstein <cardoe@gentoo.org>
+  -notification-daemon-0.3.4.ebuild, -notification-daemon-0.3.4-r1.ebuild,
+  notification-daemon-0.3.5.ebuild, notification-daemon-0.3.5-r2.ebuild,
+  notification-daemon-0.3.6.ebuild:
+  Removed old ebuilds. Updated dbus depends to depend on specific bindings.
+
+*notification-daemon-0.3.6 (15 Oct 2006)
+
+  15 Oct 2006; <compnerd@gentoo.org> +notification-daemon-0.3.6.ebuild:
+  version bump from upstream
+
+  03 Oct 2006; Aron Griffis <agriffis@gentoo.org>
+  notification-daemon-0.3.5-r2.ebuild:
+  Mark 0.3.5-r2 ~ia64
+
+  27 Aug 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  -notification-daemon-0.3.5-r1.ebuild:
+  pruning old revision
+
+*notification-daemon-0.3.5-r2 (27 Aug 2006)
+
+  27 Aug 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/notification-daemon-0.3.5-unrealize-in-destroy.patch,
+  +notification-daemon-0.3.5-r2.ebuild:
+  revbump to add patch for bug #140811
+
+  17 Aug 2006; Markus Rothe <corsair@gentoo.org>
+  notification-daemon-0.3.5.ebuild:
+  Stable on ppc64
+
+*notification-daemon-0.3.5-r1 (27 Jul 2006)
+
+  27 Jul 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/notification-daemon-0.3.5-icon-data.patch,
+  +notification-daemon-0.3.5-r1.ebuild:
+  Adding patch to check the DBUS struct type of the data
+
+  21 Jul 2006; Luis Medinas <metalgod@gentoo.org>
+  notification-daemon-0.3.5.ebuild:
+  Stable on amd64.
+
+  16 Jul 2006; Joshua Jackson <tsunam@gentoo.org>
+  notification-daemon-0.3.5.ebuild:
+  Stable x86 for gajim
+
+  12 Jul 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  notification-daemon-0.3.5.ebuild:
+  Stable on sparc
+
+  10 Jul 2006; Thomas Cort <tcort@gentoo.org>
+  notification-daemon-0.3.5.ebuild:
+  Added ~alpha keyword.
+
+  06 Jul 2006; Luca Barbato <lu_zero@gentoo.org>
+  notification-daemon-0.3.5.ebuild:
+  Marked ppc
+
+  27 Jun 2006; Markus Rothe <corsair@gentoo.org>
+  notification-daemon-0.3.5.ebuild:
+  Added ~ppc64
+
+  28 Apr 2006; Alec Warner <antarus@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+*notification-daemon-0.3.5 (26 Apr 2006)
+
+  26 Apr 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +notification-daemon-0.3.5.ebuild:
+  Version bump from upstream
+
+  19 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  notification-daemon-0.3.4-r1.ebuild:
+  Keyworded ~sparc wrt #130313
+
+*notification-daemon-0.3.4-r1 (20 Mar 2006)
+
+  20 Mar 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +notification-daemon-0.3.4-r1.ebuild:
+  Rev-bump to fix build and deps
+
+  26 Feb 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  notification-daemon-0.3.4.ebuild:
+  added to ~ppc, bug #123412
+
+  19 Feb 2006; Luis Medinas <metalgod@gentoo.org>
+  notification-daemon-0.3.4.ebuild:
+  Added ~amd64 keyword.
+
+*notification-daemon-0.3.4 (19 Feb 2006)
+
+  19 Feb 2006; Sven Wegener <swegener@gentoo.org> +metadata.xml,
+  +notification-daemon-0.3.4.ebuild:
+  Initial commit, ebuild written by me.

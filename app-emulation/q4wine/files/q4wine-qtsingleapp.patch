@@ -1,0 +1,15 @@
+https://github.com/brezerk/q4wine/issues/39
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index adb8db6..7c0d0d2 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -275,7 +275,7 @@ SET ( Q4WINE_HEADERS_DIR
+ 
+ IF (${WITH_SYSTEM_SINGLEAPP} MATCHES ON )
+     MESSAGE(STATUS "Searching for QtSingleApplication package (WITH_SYSTEM_SINGLEAPP=ON) --\n")
+-    find_path(QTSINGLEAPPLIB_INCLUDE_DIR QtSingleApplication PATH_SUFFIXES QtSolutions)
++    find_path(QTSINGLEAPPLIB_INCLUDE_DIR QtSingleApplication PATH_SUFFIXES QtSolutions PATHS /usr/include/qt4)
+     find_library(QTSINGLEAPPLIB QtSolutions_SingleApplication-2.6)
+ 
+     IF (QTSINGLEAPPLIB_INCLUDE_DIR AND QTSINGLEAPPLIB )

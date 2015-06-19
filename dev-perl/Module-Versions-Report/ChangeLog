@@ -1,0 +1,123 @@
+# ChangeLog for dev-perl/Module-Versions-Report
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Module-Versions-Report/ChangeLog,v 1.27 2014/08/22 19:40:05 axs Exp $
+
+*Module-Versions-Report-1.60.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Module-Versions-Report-1.60.0-r1.ebuild,
+  -Module-Versions-Report-1.60.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org>
+  -Module-Versions-Report-1.03.ebuild:
+  Cleanup
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org>
+  Module-Versions-Report-1.03.ebuild, Module-Versions-Report-1.60.0.ebuild:
+  Drop ia64/sparc keywords
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Module-Versions-Report-1.60.0.ebuild:
+  x86 stable wrt bug #400175
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  Module-Versions-Report-1.60.0.ebuild:
+  Stable for amd64, wrt bug #400175
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -Module-Versions-Report-1.06.ebuild:
+  Cleanup
+
+*Module-Versions-Report-1.60.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Module-Versions-Report-1.60.0.ebuild:
+  Change version scheme
+
+  30 Dec 2008; Torsten Veller <tove@gentoo.org>
+  -Module-Versions-Report-1.02.ebuild, -Module-Versions-Report-1.05.ebuild:
+  Cleanup
+
+*Module-Versions-Report-1.06 (22 Oct 2008)
+
+  22 Oct 2008; Torsten Veller <tove@gentoo.org>
+  +Module-Versions-Report-1.06.ebuild:
+  Version bump
+
+*Module-Versions-Report-1.05 (24 Aug 2008)
+
+  24 Aug 2008; Torsten Veller <tove@gentoo.org>
+  +Module-Versions-Report-1.05.ebuild:
+  Version bump (#235559)
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  Module-Versions-Report-1.03.ebuild:
+  amd64 stable
+
+  11 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  Module-Versions-Report-1.03.ebuild:
+  ia64/x86 stable
+
+  25 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  Module-Versions-Report-1.03.ebuild:
+  Marking sparc stable
+
+*Module-Versions-Report-1.03 (24 May 2007)
+
+  24 May 2007; Michael Cummings <mcummings@gentoo.org>
+  +Module-Versions-Report-1.03.ebuild:
+  Version bump
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Module-Versions-Report-1.02.ebuild:
+  Ebuild maintenance
+
+  17 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Module-Versions-Report-1.02.ebuild:
+  Marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Module-Versions-Report-1.02.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  Module-Versions-Report-1.02.ebuild:
+  Mark 1.02 stable on ia64
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  Module-Versions-Report-1.02.ebuild:
+  Mark 1.02 ~ia64
+
+  15 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Module-Versions-Report-1.02.ebuild:
+  Stable on sparc
+
+  16 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Module-Versions-Report-1.02.ebuild:
+  Keyworded ~sparc
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  Module-Versions-Report-1.02.ebuild:
+  Cleaning and bumping.
+
+  03 Sep 2004; David Holm <dholm@gentoo.org> :
+  Added to ~ppc.
+
+  02 Sep 2004; David Holm <dholm@gentoo.org>
+  Module-Versions-Report-1.02.ebuild:
+  Added to ~ppc.
+
+  28 Aug 2004; Renat Lumpau <rl03@gentoo.org>
+  Module-Versions-Report-1.02.ebuild:
+  Added missing IUSE.
+
+*Module-Versions-Report-1.02 (25 Aug 2004)
+
+  25 Aug 2004; Renat Lumpau <rl03@gentoo.org> +metadata.xml,
+  +Module-Versions-Report-1.02.ebuild:
+  Initial ebuild. RT dependency. OK'd by mcummings.

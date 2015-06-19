@@ -1,0 +1,497 @@
+# ChangeLog for net-misc/bfgminer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/bfgminer/ChangeLog,v 1.78 2015/06/09 19:45:35 blueness Exp $
+
+*bfgminer-5.2.0 (09 Jun 2015)
+*bfgminer-4.10.3 (09 Jun 2015)
+*bfgminer-3.10.10 (09 Jun 2015)
+
+  09 Jun 2015; Anthony G. Basile <blueness@gentoo.org> +bfgminer-3.10.10.ebuild,
+  +bfgminer-4.10.3.ebuild, +bfgminer-5.2.0.ebuild:
+  Version bump.
+
+*bfgminer-5.1.0 (19 Feb 2015)
+*bfgminer-4.10.2 (19 Feb 2015)
+
+  19 Feb 2015; Anthony G. Basile <blueness@gentoo.org> +bfgminer-4.10.2.ebuild,
+  +bfgminer-5.1.0.ebuild:
+  Version bumps
+
+  01 Feb 2015; Michał Górny <mgorny@gentoo.org> -bfgminer-2.5.0.ebuild,
+  metadata.xml:
+  Drop old. Fixes CPU_FLAGS_X86 incompat, bug #538266.
+
+  01 Feb 2015; Mikle Kolyada <zlogene@gentoo.org> bfgminer-3.10.5.ebuild:
+  x86 stable wrt bug #516646
+
+  30 Jan 2015; Anthony G. Basile <blueness@gentoo.org> bfgminer-2.5.0.ebuild,
+  bfgminer-3.10.5.ebuild, bfgminer-3.10.8.ebuild, bfgminer-4.10.1.ebuild,
+  bfgminer-5.0.0.ebuild:
+  Remove opencl providers that we don't have in the tree.
+
+  30 Jan 2015; Anthony G. Basile <blueness@gentoo.org> -bfgminer-3.10.7.ebuild,
+  -bfgminer-4.7.1.ebuild, -bfgminer-4.7.2.ebuild, -bfgminer-4.8.0.ebuild,
+  -bfgminer-4.9.0.ebuild:
+  Remove older versions, bug #538266.
+
+*bfgminer-3.10.8 (30 Nov 2014)
+*bfgminer-5.0.0 (30 Nov 2014)
+*bfgminer-4.10.1 (30 Nov 2014)
+
+  30 Nov 2014; Anthony G. Basile <blueness@gentoo.org> +bfgminer-3.10.8.ebuild,
+  +bfgminer-4.10.1.ebuild, +bfgminer-5.0.0.ebuild, metadata.xml:
+  Version bump
+
+*bfgminer-4.7.2 (05 Oct 2014)
+*bfgminer-4.9.0 (05 Oct 2014)
+
+  05 Oct 2014; Anthony G. Basile <blueness@gentoo.org> +bfgminer-4.7.2.ebuild,
+  +bfgminer-4.9.0.ebuild:
+  Version bumps
+
+*bfgminer-4.7.1 (16 Sep 2014)
+*bfgminer-4.8.0 (16 Sep 2014)
+*bfgminer-3.10.7 (16 Sep 2014)
+
+  16 Sep 2014; Anthony G. Basile <blueness@gentoo.org> +bfgminer-3.10.7.ebuild,
+  +bfgminer-4.7.1.ebuild, +bfgminer-4.8.0.ebuild, -bfgminer-3.10.6.ebuild,
+  -bfgminer-4.4.0.ebuild, -bfgminer-4.5.0.ebuild, -bfgminer-4.6.0.ebuild,
+  -bfgminer-4.7.0.ebuild, metadata.xml:
+  Version bumps, remove older unstable
+
+*bfgminer-4.7.0 (17 Aug 2014)
+
+  17 Aug 2014; Anthony G. Basile <blueness@gentoo.org> +bfgminer-4.7.0.ebuild:
+  Version bump
+
+*bfgminer-4.6.0 (03 Aug 2014)
+
+  03 Aug 2014; Anthony G. Basile <blueness@gentoo.org> +bfgminer-4.6.0.ebuild,
+  metadata.xml:
+  Version bump
+
+*bfgminer-3.10.6 (27 Jul 2014)
+*bfgminer-4.5.0 (27 Jul 2014)
+
+  27 Jul 2014; Anthony G. Basile <blueness@gentoo.org> +bfgminer-3.10.6.ebuild,
+  +bfgminer-4.5.0.ebuild, metadata.xml:
+  Version bump
+
+  23 Jul 2014; Chema Alonso <nimiux@gentoo.org> bfgminer-3.10.5.ebuild:
+  Stable for amd64 wrt bug #516646
+
+  22 Jul 2014; Anthony G. Basile <blueness@gentoo.org> bfgminer-3.10.5.ebuild,
+  bfgminer-4.4.0.ebuild, metadata.xml:
+  Fix bug #517768
+
+  22 Jul 2014; Anthony G. Basile <blueness@gentoo.org> -bfgminer-3.10.1.ebuild,
+  -bfgminer-3.10.2.ebuild, -bfgminer-3.10.3.ebuild, -bfgminer-3.10.4.ebuild,
+  -bfgminer-3.5.10.ebuild, -bfgminer-3.5.11.ebuild, -bfgminer-3.5.8.ebuild,
+  -bfgminer-3.5.9.ebuild, -bfgminer-4.0.0.ebuild, -bfgminer-4.1.0.ebuild,
+  -bfgminer-4.2.0.ebuild:
+  Remove older unstable versions
+
+  07 Jul 2014; Anthony G. Basile <blueness@gentoo.org> -bfgminer-4.3.0.ebuild:
+  Remove 4.3.0 for bug #516000
+
+*bfgminer-3.10.5 (07 Jul 2014)
+*bfgminer-4.4.0 (07 Jul 2014)
+
+  07 Jul 2014; Anthony G. Basile <blueness@gentoo.org> +bfgminer-3.10.5.ebuild,
+  +bfgminer-4.4.0.ebuild, metadata.xml:
+  Version bumps
+
+*bfgminer-3.5.11 (30 Jun 2014)
+*bfgminer-3.10.4 (30 Jun 2014)
+*bfgminer-4.3.0 (30 Jun 2014)
+
+  30 Jun 2014; Anthony G. Basile <blueness@gentoo.org> +bfgminer-3.10.4.ebuild,
+  +bfgminer-3.5.11.ebuild, +bfgminer-4.3.0.ebuild, metadata.xml:
+  Version bumps
+
+*bfgminer-3.5.10 (12 Jun 2014)
+*bfgminer-3.10.3 (12 Jun 2014)
+*bfgminer-4.2.0 (12 Jun 2014)
+
+  12 Jun 2014; Anthony G. Basile <blueness@gentoo.org> +bfgminer-3.10.3.ebuild,
+  +bfgminer-3.5.10.ebuild, +bfgminer-4.2.0.ebuild, metadata.xml:
+  Version bumps
+
+  06 Jun 2014; Anthony G. Basile <blueness@gentoo.org> bfgminer-3.10.2.ebuild,
+  bfgminer-3.5.9.ebuild, bfgminer-4.1.0.ebuild:
+  Switch all ebuilds to EAPI=5
+
+*bfgminer-3.10.2 (06 Jun 2014)
+*bfgminer-3.5.9 (06 Jun 2014)
+*bfgminer-4.1.0 (06 Jun 2014)
+
+  06 Jun 2014; Anthony G. Basile <blueness@gentoo.org> +bfgminer-3.10.2.ebuild,
+  +bfgminer-3.5.9.ebuild, +bfgminer-4.1.0.ebuild, -bfgminer-3.5.6.ebuild:
+  Version bumps
+
+  27 May 2014; Anthony G. Basile <blueness@gentoo.org> bfgminer-3.10.1.ebuild,
+  bfgminer-3.5.8.ebuild, bfgminer-4.0.0.ebuild:
+  Keyword ~arm
+
+*bfgminer-3.10.1 (26 May 2014)
+*bfgminer-3.5.8 (26 May 2014)
+*bfgminer-4.0.0 (26 May 2014)
+
+  26 May 2014; Anthony G. Basile <blueness@gentoo.org> +bfgminer-3.10.1.ebuild,
+  +bfgminer-3.5.8.ebuild, +bfgminer-4.0.0.ebuild, -bfgminer-3.10.0.ebuild,
+  -bfgminer-3.2.7.ebuild, -bfgminer-3.2.8.ebuild, -bfgminer-3.2.9.ebuild,
+  -bfgminer-3.3.0-r2.ebuild, -bfgminer-3.5.4.ebuild, -bfgminer-3.5.5.ebuild,
+  -bfgminer-3.5.7.ebuild, -bfgminer-3.8.0.ebuild, -bfgminer-3.8.1.ebuild,
+  -bfgminer-3.9.0.ebuild, metadata.xml:
+  Version bumps and remove unstables
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> bfgminer-3.5.6.ebuild:
+  Stable for x86, wrt bug #489300
+
+  19 Jan 2014; Pacho Ramos <pacho@gentoo.org> bfgminer-3.5.6.ebuild:
+  amd64 stable, bug 489300
+
+*bfgminer-3.5.7 (18 Jan 2014)
+*bfgminer-3.10.0 (18 Jan 2014)
+
+  18 Jan 2014; Anthony G. Basile <blueness@gentoo.org> +bfgminer-3.10.0.ebuild,
+  +bfgminer-3.5.7.ebuild, metadata.xml:
+  Version bump
+
+*bfgminer-3.5.4 (01 Jan 2014)
+*bfgminer-3.8.1 (01 Jan 2014)
+*bfgminer-3.2.7 (01 Jan 2014)
+*bfgminer-3.5.5 (01 Jan 2014)
+*bfgminer-3.2.9 (01 Jan 2014)
+*bfgminer-3.9.0 (01 Jan 2014)
+*bfgminer-3.2.8 (01 Jan 2014)
+*bfgminer-3.5.6 (01 Jan 2014)
+*bfgminer-3.8.0 (01 Jan 2014)
+
+  01 Jan 2014; Anthony G. Basile <blueness@gentoo.org> +bfgminer-3.2.7.ebuild,
+  +bfgminer-3.2.8.ebuild, +bfgminer-3.2.9.ebuild, +bfgminer-3.5.4.ebuild,
+  +bfgminer-3.5.5.ebuild, +bfgminer-3.5.6.ebuild, +bfgminer-3.8.0.ebuild,
+  +bfgminer-3.8.1.ebuild, +bfgminer-3.9.0.ebuild, -bfgminer-2.10.14.ebuild,
+  -bfgminer-3.0.10.ebuild, -bfgminer-3.0.8.ebuild, -bfgminer-3.0.9.ebuild,
+  -bfgminer-3.2.1-r1.ebuild, -bfgminer-3.2.2-r1.ebuild,
+  -bfgminer-3.2.3-r1.ebuild, -bfgminer-3.2.4.ebuild, -bfgminer-3.2.5.ebuild,
+  -bfgminer-3.4.0-r1.ebuild, -bfgminer-3.5.0.ebuild, -bfgminer-3.5.1.ebuild,
+  -files/3.1.0-Bugfix-opencl-Add-missing-include-for-fpgautils.h-ne.patch,
+  -files/3.1.0-Bugfix-opencl-Build-fpgautils-even-if-OpenCL-is-the-.patch,
+  -files/Bugfix-Fix-building-without-OpenCL-support.patch,
+  bfgminer-2.5.0.ebuild, metadata.xml:
+  Version bumps, remove older, bring in line with bitcoin overlay
+
+*bfgminer-3.3.0-r2 (07 Nov 2013)
+*bfgminer-3.2.1-r1 (07 Nov 2013)
+*bfgminer-3.2.2-r1 (07 Nov 2013)
+*bfgminer-3.5.1 (07 Nov 2013)
+*bfgminer-3.2.4 (07 Nov 2013)
+*bfgminer-3.2.5 (07 Nov 2013)
+*bfgminer-3.2.3-r1 (07 Nov 2013)
+*bfgminer-3.5.0 (07 Nov 2013)
+*bfgminer-3.4.0-r1 (07 Nov 2013)
+
+  07 Nov 2013; Anthony G. Basile <blueness@gentoo.org>
+  +bfgminer-3.2.1-r1.ebuild, +bfgminer-3.2.2-r1.ebuild,
+  +bfgminer-3.2.3-r1.ebuild, +bfgminer-3.2.4.ebuild, +bfgminer-3.2.5.ebuild,
+  +bfgminer-3.3.0-r2.ebuild, +bfgminer-3.4.0-r1.ebuild, +bfgminer-3.5.0.ebuild,
+  +bfgminer-3.5.1.ebuild, -bfgminer-3.2.1.ebuild, -bfgminer-3.2.2.ebuild,
+  -bfgminer-3.2.3.ebuild, -bfgminer-3.3.0-r1.ebuild, -bfgminer-3.3.0.ebuild,
+  -bfgminer-3.4.0.ebuild, metadata.xml:
+  Version bumps
+
+*bfgminer-3.3.0-r1 (27 Oct 2013)
+*bfgminer-3.4.0 (27 Oct 2013)
+*bfgminer-3.0.10 (27 Oct 2013)
+*bfgminer-3.2.3 (27 Oct 2013)
+
+  27 Oct 2013; Anthony G. Basile <blueness@gentoo.org> +bfgminer-3.0.10.ebuild,
+  +bfgminer-3.2.3.ebuild, +bfgminer-3.3.0-r1.ebuild, +bfgminer-3.4.0.ebuild,
+  metadata.xml:
+  Version bumps
+
+*bfgminer-3.3.0 (22 Oct 2013)
+*bfgminer-3.0.9 (22 Oct 2013)
+*bfgminer-3.2.2 (22 Oct 2013)
+
+  22 Oct 2013; Anthony G. Basile <blueness@gentoo.org> +bfgminer-3.0.9.ebuild,
+  +bfgminer-3.2.2.ebuild, +bfgminer-3.3.0.ebuild, metadata.xml:
+  Version bumps
+
+*bfgminer-2.10.14 (19 Sep 2013)
+*bfgminer-3.2.1 (19 Sep 2013)
+*bfgminer-3.0.8 (19 Sep 2013)
+
+  19 Sep 2013; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.10.14.ebuild,
+  +bfgminer-3.0.8.ebuild, +bfgminer-3.2.1.ebuild, -bfgminer-2.10.10.ebuild,
+  -bfgminer-2.10.11.ebuild, -bfgminer-2.10.12.ebuild, -bfgminer-2.10.13.ebuild,
+  -bfgminer-2.10.6.ebuild, -bfgminer-2.10.9.ebuild, -bfgminer-3.0.0.ebuild,
+  -bfgminer-3.0.3.ebuild, -bfgminer-3.0.4.ebuild, -bfgminer-3.0.5.ebuild,
+  -bfgminer-3.0.6.ebuild, -bfgminer-3.1.0-r1.ebuild, -bfgminer-3.1.1.ebuild,
+  -bfgminer-3.1.2.ebuild, -bfgminer-3.1.3.ebuild, -bfgminer-3.1.4.ebuild,
+  -bfgminer-3.2.0.ebuild:
+  Version bumps, remove older unstables
+
+*bfgminer-3.2.0 (30 Aug 2013)
+*bfgminer-2.10.13 (30 Aug 2013)
+
+  30 Aug 2013; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.10.13.ebuild,
+  +bfgminer-3.2.0.ebuild, bfgminer-3.1.4.ebuild, metadata.xml:
+  Version bump
+
+*bfgminer-3.0.6 (03 Aug 2013)
+*bfgminer-3.1.4 (03 Aug 2013)
+*bfgminer-2.10.12 (03 Aug 2013)
+
+  03 Aug 2013; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.10.12.ebuild,
+  +bfgminer-3.0.6.ebuild, +bfgminer-3.1.4.ebuild:
+  Version bumps
+
+*bfgminer-3.1.3 (16 Jul 2013)
+
+  16 Jul 2013; Anthony G. Basile <blueness@gentoo.org> +bfgminer-3.1.3.ebuild,
+  metadata.xml:
+  Version bump
+
+  09 Jul 2013; Anthony G. Basile <blueness@gentoo.org> bfgminer-2.10.10.ebuild,
+  bfgminer-2.10.11.ebuild, bfgminer-3.0.4.ebuild, bfgminer-3.0.5.ebuild,
+  bfgminer-3.1.1.ebuild, bfgminer-3.1.2.ebuild:
+  Fix dependencies
+
+*bfgminer-2.10.11 (09 Jul 2013)
+*bfgminer-3.0.5 (09 Jul 2013)
+*bfgminer-3.1.2 (09 Jul 2013)
+
+  09 Jul 2013; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.10.11.ebuild,
+  +bfgminer-3.0.5.ebuild, +bfgminer-3.1.2.ebuild:
+  Version bumps
+
+*bfgminer-3.1.1 (26 Jun 2013)
+*bfgminer-3.0.4 (26 Jun 2013)
+*bfgminer-2.10.10 (26 Jun 2013)
+
+  26 Jun 2013; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.10.10.ebuild,
+  +bfgminer-3.0.4.ebuild, +bfgminer-3.1.1.ebuild, bfgminer-3.0.0.ebuild,
+  bfgminer-3.0.3.ebuild, bfgminer-3.1.0-r1.ebuild:
+  Version bump, restore arm ppc ppc64 keywords
+
+*bfgminer-3.1.0-r1 (18 Jun 2013)
+
+  18 Jun 2013; Anthony G. Basile <blueness@gentoo.org>
+  +bfgminer-3.1.0-r1.ebuild,
+  +files/3.1.0-Bugfix-opencl-Add-missing-include-for-fpgautils.h-ne.patch,
+  +files/3.1.0-Bugfix-opencl-Build-fpgautils-even-if-OpenCL-is-the-.patch,
+  -bfgminer-3.1.0.ebuild:
+  Fix bug #473316
+
+*bfgminer-3.0.3 (14 Jun 2013)
+*bfgminer-3.1.0 (14 Jun 2013)
+*bfgminer-2.10.9 (14 Jun 2013)
+
+  14 Jun 2013; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.10.9.ebuild,
+  +bfgminer-3.0.3.ebuild, +bfgminer-3.1.0.ebuild:
+  Version bumps
+
+  14 Apr 2013; Anthony G. Basile <blueness@gentoo.org> ChangeLog:
+  Fix Manifest signing
+
+  14 Apr 2013; Anthony G. Basile <blueness@gentoo.org> bfgminer-2.5.0.ebuild:
+  Fix HOMEPAGE
+
+*bfgminer-3.0.0 (08 Apr 2013)
+*bfgminer-2.10.6 (08 Apr 2013)
+
+  08 Apr 2013; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.10.6.ebuild,
+  +bfgminer-3.0.0.ebuild, -bfgminer-2.10.2.ebuild, -bfgminer-2.10.5.ebuild,
+  -bfgminer-2.3.6.ebuild, -bfgminer-2.4.4.ebuild, -bfgminer-2.5.3.ebuild,
+  -bfgminer-2.6.5.ebuild, -bfgminer-2.7.5.ebuild, -bfgminer-2.8.7.ebuild,
+  -bfgminer-2.9.10.ebuild, -bfgminer-2.9.4.ebuild, -bfgminer-2.9.7.ebuild,
+  metadata.xml:
+  Version bumps and cleanup
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  16 Mar 2013; Anthony G. Basile <blueness@gentoo.org> metadata.xml:
+  Fix Luke's bugzilla email addr
+
+  25 Feb 2013; Agostino Sarubbo <ago@gentoo.org> bfgminer-2.5.0.ebuild:
+  Stable for x86, wrt bug #430210
+
+*bfgminer-2.10.5 (19 Feb 2013)
+*bfgminer-2.9.10 (19 Feb 2013)
+
+  19 Feb 2013; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.10.5.ebuild,
+  +bfgminer-2.9.10.ebuild:
+  Version bumps
+
+*bfgminer-2.10.2 (04 Jan 2013)
+
+  04 Jan 2013; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.10.2.ebuild:
+  Another version bump
+
+*bfgminer-2.9.7 (04 Jan 2013)
+
+  04 Jan 2013; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.9.7.ebuild,
+  -bfgminer-2.6.1.ebuild, -bfgminer-2.6.3.ebuild, -bfgminer-2.6.4.ebuild,
+  -bfgminer-2.7.0.ebuild, -bfgminer-2.8.0.ebuild, -bfgminer-2.8.3.ebuild,
+  -bfgminer-2.8.4.ebuild, -bfgminer-2.8.6.ebuild, -bfgminer-2.9.0.ebuild,
+  -bfgminer-2.9.1.ebuild, -bfgminer-2.9.3.ebuild:
+  Version bump, remove older
+
+  06 Dec 2012; Anthony G. Basile <blueness@gentoo.org> bfgminer-2.8.6.ebuild,
+  bfgminer-2.8.7.ebuild, bfgminer-2.9.3.ebuild, bfgminer-2.9.4.ebuild:
+  Use virtual/udev instead of sys-fs/udev, bug #444398
+
+*bfgminer-2.9.3 (06 Dec 2012)
+*bfgminer-2.8.6 (06 Dec 2012)
+*bfgminer-2.9.4 (06 Dec 2012)
+*bfgminer-2.8.7 (06 Dec 2012)
+
+  06 Dec 2012; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.8.6.ebuild,
+  +bfgminer-2.8.7.ebuild, +bfgminer-2.9.3.ebuild, +bfgminer-2.9.4.ebuild:
+  Version bumps
+
+  03 Dec 2012; Samuli Suominen <ssuominen@gentoo.org> bfgminer-2.3.6.ebuild,
+  bfgminer-2.4.4.ebuild, bfgminer-2.5.0.ebuild, bfgminer-2.5.3.ebuild,
+  bfgminer-2.6.1.ebuild, bfgminer-2.6.3.ebuild, bfgminer-2.6.4.ebuild,
+  bfgminer-2.6.5.ebuild, bfgminer-2.7.0.ebuild, bfgminer-2.7.5.ebuild,
+  bfgminer-2.8.0.ebuild, bfgminer-2.8.3.ebuild, bfgminer-2.8.4.ebuild,
+  bfgminer-2.9.0.ebuild, bfgminer-2.9.1.ebuild:
+  Use virtual/udev instead of sys-fs/udev wrt #444398
+
+  31 Oct 2012; Anthony G. Basile <blueness@gentoo.org> metadata.xml:
+  Correct x6500 description in metadata.xml
+
+*bfgminer-2.9.1 (31 Oct 2012)
+*bfgminer-2.8.4 (31 Oct 2012)
+
+  31 Oct 2012; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.8.4.ebuild,
+  +bfgminer-2.9.1.ebuild:
+  Version bumps
+
+  29 Oct 2012; Anthony G. Basile <blueness@gentoo.org> bfgminer-2.8.0.ebuild:
+  Tighten up dependence >=dev-libs/jansson-2
+
+*bfgminer-2.8.3 (29 Oct 2012)
+*bfgminer-2.9.0 (29 Oct 2012)
+
+  29 Oct 2012; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.8.3.ebuild,
+  +bfgminer-2.9.0.ebuild, metadata.xml:
+  Version bumps
+
+*bfgminer-2.8.0 (16 Sep 2012)
+
+  16 Sep 2012; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.8.0.ebuild:
+  Version bump
+
+*bfgminer-2.7.5 (30 Aug 2012)
+
+  30 Aug 2012; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.7.5.ebuild:
+  Version bump
+
+*bfgminer-2.7.0 (21 Aug 2012)
+*bfgminer-2.6.5 (21 Aug 2012)
+*bfgminer-2.6.4 (21 Aug 2012)
+
+  21 Aug 2012; Anthony G. Basile <blueness@gentoo.org> bfgminer-2.3.6.ebuild,
+  bfgminer-2.4.4.ebuild, bfgminer-2.5.0.ebuild, bfgminer-2.5.3.ebuild,
+  bfgminer-2.6.1.ebuild, bfgminer-2.6.3.ebuild, +bfgminer-2.6.4.ebuild,
+  +bfgminer-2.6.5.ebuild, +bfgminer-2.7.0.ebuild:
+  Version bumps
+
+  11 Aug 2012; Agostino Sarubbo <ago@gentoo.org> bfgminer-2.5.0.ebuild:
+  Stable for amd64, wrt bug #430210
+
+  06 Aug 2012; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.5.0.ebuild:
+  Reintroduce 2.5.0, bug #430210
+
+  06 Aug 2012; Anthony G. Basile <blueness@gentoo.org> bfgminer-2.5.3.ebuild,
+  bfgminer-2.6.1.ebuild:
+  Minor code cleanup, switch to virtual/opencl
+
+*bfgminer-2.6.3 (06 Aug 2012)
+
+  06 Aug 2012; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.6.3.ebuild:
+  Version bump
+
+*bfgminer-2.6.1 (31 Jul 2012)
+*bfgminer-2.5.3 (31 Jul 2012)
+
+  31 Jul 2012; Anthony G. Basile <blueness@gentoo.org> -bfgminer-2.5.0.ebuild,
+  -bfgminer-2.5.1.ebuild, +bfgminer-2.5.3.ebuild, +bfgminer-2.6.1.ebuild:
+  Punt older 2.5.x, version bump 2.5.3 and 2.6.1
+
+  31 Jul 2012; Anthony G. Basile <blueness@gentoo.org> -bfgminer-2.3.4.ebuild,
+  -bfgminer-2.3.5.ebuild, -bfgminer-2.4.0.ebuild, -bfgminer-2.4.1.ebuild,
+  -bfgminer-2.4.2.ebuild, -bfgminer-2.4.3.ebuild:
+  Punt older 2.3.x and 2.4.x
+
+*bfgminer-2.5.1 (15 Jul 2012)
+
+  15 Jul 2012; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.5.1.ebuild:
+  Version bump
+
+*bfgminer-2.5.0 (06 Jul 2012)
+
+  06 Jul 2012; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.5.0.ebuild:
+  Yet another version bump
+
+*bfgminer-2.4.4 (06 Jul 2012)
+
+  06 Jul 2012; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.4.4.ebuild:
+  Version bump
+
+*bfgminer-2.4.3 (16 Jun 2012)
+
+  16 Jun 2012; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.4.3.ebuild:
+  Version bump
+
+  16 Jun 2012; Anthony G. Basile <blueness@gentoo.org> bfgminer-2.3.4.ebuild,
+  bfgminer-2.3.5.ebuild, bfgminer-2.3.6.ebuild, bfgminer-2.4.0.ebuild,
+  bfgminer-2.4.1.ebuild, bfgminer-2.4.2.ebuild:
+  Add needed ncurses dep for opencl
+
+*bfgminer-2.4.2 (03 Jun 2012)
+
+  03 Jun 2012; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.4.2.ebuild:
+  Version bump
+
+  22 May 2012; Samuli Suominen <ssuominen@gentoo.org> bfgminer-2.3.4.ebuild,
+  bfgminer-2.3.5.ebuild, bfgminer-2.3.6.ebuild, bfgminer-2.4.0.ebuild,
+  bfgminer-2.4.1.ebuild:
+  Use virtual/libusb instead of dev-libs/libusb.
+
+*bfgminer-2.4.1 (15 May 2012)
+
+  15 May 2012; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.4.1.ebuild:
+  Version bump
+
+*bfgminer-2.4.0 (05 May 2012)
+
+  05 May 2012; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.4.0.ebuild:
+  Version bump
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> bfgminer-2.3.4.ebuild,
+  bfgminer-2.3.5.ebuild, bfgminer-2.3.6.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*bfgminer-2.3.6 (29 Apr 2012)
+
+  29 Apr 2012; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.3.6.ebuild:
+  Version bump
+
+*bfgminer-2.3.5 (28 Apr 2012)
+
+  28 Apr 2012; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.3.5.ebuild:
+  Version bump
+
+  27 Apr 2012; Anthony G. Basile <blueness@gentoo.org> bfgminer-2.3.4.ebuild:
+  Fix dependency issue on virtual/opencl
+
+*bfgminer-2.3.4 (27 Apr 2012)
+
+  27 Apr 2012; Anthony G. Basile <blueness@gentoo.org> +bfgminer-2.3.4.ebuild,
+  +files/Bugfix-Fix-building-without-OpenCL-support.patch, +metadata.xml:
+  Initial commit from luke-jr's bitcoin overlay. Thanks!

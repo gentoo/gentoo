@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <use>
+    <flag name="libyaml">enable support for C implementation using libyaml</flag>
+  </use>
+</pkgmetadata>

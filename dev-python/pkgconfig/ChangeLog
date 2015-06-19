@@ -1,0 +1,18 @@
+# ChangeLog for dev-python/pkgconfig
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pkgconfig/ChangeLog,v 1.4 2015/06/07 15:16:10 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  29 May 2015; Justin Lecher <jlec@gentoo.org> pkgconfig-1.1.0.ebuild:
+  Drop nose requirement from setup.py, bug #550558
+
+*pkgconfig-1.1.0 (27 May 2015)
+
+  27 May 2015; Justin Lecher <jlec@gentoo.org> +metadata.xml,
+  +pkgconfig-1.1.0.ebuild:
+  New package, ebuild written by me

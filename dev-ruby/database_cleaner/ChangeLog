@@ -1,0 +1,58 @@
+# ChangeLog for dev-ruby/database_cleaner
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/database_cleaner/ChangeLog,v 1.10 2015/06/07 17:37:04 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*database_cleaner-1.4.1 (14 Mar 2015)
+
+  14 Mar 2015; Hans de Graaff <graaff@gentoo.org>
+  +database_cleaner-1.4.1.ebuild:
+  Version bump.
+
+  11 Mar 2015; Hans de Graaff <graaff@gentoo.org>
+  -database_cleaner-1.1.1-r2.ebuild, -database_cleaner-1.2.0.ebuild:
+  Cleanup.
+
+*database_cleaner-1.4.0 (08 Jan 2015)
+
+  08 Jan 2015; Hans de Graaff <graaff@gentoo.org>
+  +database_cleaner-1.4.0.ebuild:
+  Version bump.
+
+*database_cleaner-1.3.0 (24 May 2014)
+
+  24 May 2014; Hans de Graaff <graaff@gentoo.org>
+  +database_cleaner-1.3.0.ebuild:
+  Version bump. Add ruby21.
+
+  24 Apr 2014; Manuel Rüger <mrueg@gentoo.org>
+  -database_cleaner-1.1.1-r1.ebuild, -database_cleaner-1.1.1.ebuild,
+  database_cleaner-1.1.1-r2.ebuild, database_cleaner-1.2.0.ebuild:
+  Remove ruby18 support. Cleanup old.
+
+*database_cleaner-1.2.0 (11 Oct 2013)
+
+  11 Oct 2013; Hans de Graaff <graaff@gentoo.org>
+  +database_cleaner-1.2.0.ebuild:
+  Version bump.
+
+*database_cleaner-1.1.1-r2 (01 Sep 2013)
+
+  01 Sep 2013; Hans de Graaff <graaff@gentoo.org>
+  +database_cleaner-1.1.1-r2.ebuild, metadata.xml:
+  Fold in changes from my overlay: install documentation and document lack of
+  tests. Properly avoid running them. Add ruby to metadata.
+
+*database_cleaner-1.1.1-r1 (23 Aug 2013)
+
+  23 Aug 2013; Rick Farina <zerochaos@gentoo.org>
+  +database_cleaner-1.1.1-r1.ebuild:
+  minor cleanup, still not right
+
+*database_cleaner-1.1.1 (20 Aug 2013)
+
+  20 Aug 2013; Rick Farina <zerochaos@gentoo.org>
+  +database_cleaner-1.1.1.ebuild, +metadata.xml:
+  initial commit of database_cleaner, a dep of metasploit

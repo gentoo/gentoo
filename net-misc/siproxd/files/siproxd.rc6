@@ -1,0 +1,31 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/siproxd/files/siproxd.rc6,v 1.2 2005/09/22 23:24:06 stkn Exp $
+
+depend() {
+	need net
+}
+
+check_config() {
+	if [[ ! -f /etc/siproxd.conf ]]; then
+		eerror "Please create /etc/siproxd.conf first!"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	check_config || return 1
+
+	ebegin "Starting siproxd"
+	start-stop-daemon --start --exec /usr/sbin/siproxd -- \
+		-p /var/run/siproxd/siproxd.pid -c /etc/siproxd.conf
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping siproxd"
+	start-stop-daemon --stop --pidfile /var/run/siproxd/siproxd.pid
+	eend $?
+}

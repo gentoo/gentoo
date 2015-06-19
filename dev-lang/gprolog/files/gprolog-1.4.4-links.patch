@@ -1,0 +1,16 @@
+diff -ur gprolog-1.4.4.orig/src/Makefile.in gprolog-1.4.4/src/Makefile.in
+--- gprolog-1.4.4.orig/src/Makefile.in	2013-04-23 16:56:44.000000000 +0200
++++ gprolog-1.4.4/src/Makefile.in	2013-05-15 17:00:58.000000000 +0200
+@@ -81,10 +81,10 @@
+ 
+ # --- Links --- #
+ 
+-install-links: uninstall-links
++install-links:
+ 	if test $(LINKS_DIR) != none; then \
+ 	   ./mkinstalldirs $(LINKS_DIR); \
+-	   (cd $(LINKS_DIR) ; $(LN_S) $(INSTALL_DIR)/bin/* .); \
++	   (cd $(LINKS_DIR); for i in $(BIN_FILES); do $(LN_S) $(INSTALL_DIR)/bin/$$i .; done); \
+ 	fi
+ 
+ uninstall-links:

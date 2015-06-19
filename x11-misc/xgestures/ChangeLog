@@ -1,0 +1,11 @@
+# ChangeLog for x11-misc/xgestures
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xgestures/ChangeLog,v 1.1 2012/11/02 10:25:10 pinkbyte Exp $
+
+*xgestures-0.4 (02 Nov 2012)
+
+  02 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> +xgestures-0.4.ebuild,
+  +metadata.xml:
+  Initial commit wrt bug #217337. Thanks to Michał Kiedrowicz for first
+  version of ebuild
+

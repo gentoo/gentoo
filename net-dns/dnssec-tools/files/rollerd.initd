@@ -1,0 +1,17 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/dnssec-tools/files/rollerd.initd,v 1.1 2012/07/05 12:21:40 xmw Exp $
+
+start() {
+	ebegin "Starting DNSSEC control daemon"
+	"${ROLLERD_CMD}" --rrfile "${ROLLERD_RRFILE}" \
+		-directory "${ROLLERD_KRFDIR}" ${ROLLERD_OPTS}
+	eend $? "failed to start rollerd"
+}
+
+stop() {
+	ebegin "stoping rollerd"
+	/usr/bin/rollctl -halt
+	eend $? "failed to stop rollerd"
+}

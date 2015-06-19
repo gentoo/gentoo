@@ -1,0 +1,57 @@
+# ChangeLog for dev-java/shared-objects
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/shared-objects/ChangeLog,v 1.12 2007/04/06 19:00:03 betelgeuse Exp $
+
+  06 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -shared-objects-1.4.ebuild, shared-objects-1.4-r3.ebuild:
+  Mark stable on amd64 and remove generation 1 ebuild (bug #173003).
+
+  06 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  shared-objects-1.4-r3.ebuild:
+  stable x86, bug 173003
+
+  01 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -shared-objects-1.4-r1.ebuild, -shared-objects-1.4-r2.ebuild:
+  Cleanup.
+
+*shared-objects-1.4-r3 (26 Feb 2007)
+
+  26 Feb 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +shared-objects-1.4-r3.ebuild:
+  shared-objects-config is used by dev-java/aterm-java ./configure so adding
+  it back
+
+*shared-objects-1.4-r2 (26 Feb 2007)
+
+  26 Feb 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +shared-objects-1.4-r2.ebuild:
+  inherit java-ant-2 to get correct bytecode and don't install
+  shared-object-config because it was just a wrapper for java-config -p
+  shared-objects-1
+
+*shared-objects-1.4-r1 (12 Sep 2006)
+
+  12 Sep 2006; Krzysiek Pawlik <nelchael@gentoo.org> +files/build.xml,
+  +shared-objects-1.4-r1.ebuild:
+  Migrated to new Java build system.
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> shared-objects-1.4.ebuild:
+  stable on amd64
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  shared-objects-1.4.ebuild:
+  Keywords ~amd64.
+
+  28 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Gentoo Technologies, Inc. -> Gentoo Foundation
+
+  23 Aug 2004; Chris Aniszczyk <zx@gentoo.org> shared-objects-1.4.ebuild:
+  Marking x86
+
+  20 Jul 2004; David Holm <dholm@gentoo.org> shared-objects-1.4.ebuild:
+  Added to ~ppc.
+
+*shared-objects-1.4 (20 Jul 2004)
+
+  20 Jul 2004; Karl Trygve Kalleberg <karltk@gentoo.org> shared-objects-1.4.ebuild:
+  Initial import. Ebuild submitted by myself.

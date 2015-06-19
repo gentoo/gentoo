@@ -1,0 +1,45 @@
+# ChangeLog for dev-perl/MooseX-Object-Pluggable
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/MooseX-Object-Pluggable/ChangeLog,v 1.10 2015/06/13 18:53:05 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  MooseX-Object-Pluggable-0.1.100-r1.ebuild:
+  The Module::Pluggable module is no longer part of core Perl and has been
+  moved to dev-perl
+
+*MooseX-Object-Pluggable-0.1.100-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +MooseX-Object-Pluggable-0.1.100-r1.ebuild,
+  -MooseX-Object-Pluggable-0.1.100.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  16 Apr 2013; Vicente Olivert Riera <vincent@gentoo.org>
+  MooseX-Object-Pluggable-0.1.100.ebuild:
+  Adding ~ppc keyword for dev-perl/PDL and his dependences, wrt bug #449762
+
+  13 Jan 2013; Markus Meier <maekke@gentoo.org>
+  MooseX-Object-Pluggable-0.1.100.ebuild:
+  add ~arm, bug #449762
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop duplication of myself as a maintainer where there is a herd.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -MooseX-Object-Pluggable-0.0011.ebuild:
+  Cleanup
+
+*MooseX-Object-Pluggable-0.1.100 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +MooseX-Object-Pluggable-0.1.100.ebuild:
+  Change version scheme
+
+*MooseX-Object-Pluggable-0.0011 (23 Jun 2009)
+
+  23 Jun 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +MooseX-Object-Pluggable-0.0011.ebuild, +metadata.xml:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

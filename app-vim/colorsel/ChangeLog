@@ -1,0 +1,70 @@
+# ChangeLog for app-vim/colorsel
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/colorsel/ChangeLog,v 1.20 2011/01/07 23:22:26 radhermit Exp $
+
+  07 Jan 2011; Tim Harder <radhermit@gentoo.org> -colorsel-20040416.ebuild,
+  -colorsel-20051121.ebuild:
+  Remove old
+
+  07 Jan 2011; Brent Baude <ranger@gentoo.org> colorsel-20100406.ebuild:
+  stable ppc, bug 345047
+
+  14 Nov 2010; Raúl Porcel <armin76@gentoo.org> colorsel-20100406.ebuild:
+  alpha/ia64/sparc stable
+
+  14 Nov 2010; Markus Meier <maekke@gentoo.org> colorsel-20100406.ebuild:
+  x86 stable, bug #345047
+
+  11 Nov 2010; Markos Chandras <hwoarang@gentoo.org>
+  colorsel-20100406.ebuild:
+  Stable on amd64 wrt bug #345047
+
+*colorsel-20100406 (01 Oct 2010)
+
+  01 Oct 2010; Tim Harder <radhermit@gentoo.org> +colorsel-20100406.ebuild:
+  Version bump. Update to EAPI=3 and drop the non-GUI sed hack since the
+  issue was fixed upstream.
+
+*colorsel-20051121 (20 Sep 2008)
+
+  20 Sep 2008; Ali Polatel <hawking@gentoo.org> colorsel-20040416.ebuild,
+  +colorsel-20051121.ebuild:
+  Version bump. Quoting.
+
+  26 Apr 2008; <ricmm@gentoo.org> colorsel-20040416.ebuild:
+  Drop to ~mips due to unstable deps
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  07 Apr 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove ciaranm from metadata.xml.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  colorsel-20040416.ebuild:
+  Stable on ppc.
+
+  18 Feb 2005; Tom Martin <slarti@gentoo.org> colorsel-20040416.ebuild:
+  amd64 stable.
+
+  03 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> colorsel-20040416.ebuild:
+  Help text, bug #62559
+
+  20 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org> colorsel-20040416.ebuild:
+  Stable on x86
+
+  13 Jul 2004; Tom Martin <slarti@gentoo.org> colorsel-20040416.ebuild:
+  Marked ~amd64.
+
+  12 May 2004; Ciaran McCreesh <ciaranm@gentoo.org> colorsel-20040416.ebuild:
+  Stable on sparc, mips
+
+  17 Apr 2004; David Holm <dholm@gentoo.org> colorsel-20040416.ebuild:
+  Added to ~ppc.
+
+*colorsel-20040416 (16 Apr 2004)
+
+  16 Apr 2004; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +colorsel-20040416.ebuild:
+  Initial version
+

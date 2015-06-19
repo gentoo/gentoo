@@ -1,0 +1,185 @@
+# ChangeLog for dev-ruby/net-scp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/net-scp/ChangeLog,v 1.51 2015/06/07 18:48:25 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  27 Apr 2015; Hans de Graaff <graaff@gentoo.org> net-scp-1.2.1.ebuild:
+  Add ruby22. Update HOMEPAGE.
+
+  13 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -net-scp-1.0.4-r1.ebuild:
+  Remove old.
+
+  13 Mar 2015; Agostino Sarubbo <ago@gentoo.org> net-scp-1.1.2-r1.ebuild:
+  Stable for ppc64, wrt bug #542200
+
+  13 Mar 2015; Agostino Sarubbo <ago@gentoo.org> net-scp-1.1.2-r1.ebuild:
+  Stable for ppc, wrt bug #542200
+
+  11 Mar 2015; Agostino Sarubbo <ago@gentoo.org> net-scp-1.1.2-r1.ebuild:
+  Stable for x86, wrt bug #542200
+
+  11 Mar 2015; Agostino Sarubbo <ago@gentoo.org> net-scp-1.1.2-r1.ebuild:
+  Stable for amd64, wrt bug #542200
+
+*net-scp-1.2.1 (03 May 2014)
+
+  03 May 2014; Hans de Graaff <graaff@gentoo.org> +net-scp-1.2.1.ebuild:
+  Version bump.
+
+  05 Apr 2014; Manuel Rüger <mrueg@gentoo.org> net-scp-1.0.4-r1.ebuild:
+  Remove ree18 and ruby18 target. Remove virtual/ruby-test-unit.
+
+  22 Dec 2013; Manuel Rüger <mrueg@gentoo.org> -net-scp-1.1.0.ebuild,
+  -net-scp-1.1.2.ebuild:
+  Cleanup old.
+
+  22 Dec 2013; Anthony G. Basile <blueness@gentoo.org> net-scp-1.1.2-r1.ebuild:
+  Keyword ~ppc64, bug #465948
+
+*net-scp-1.1.2-r1 (17 Nov 2013)
+
+  17 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +net-scp-1.1.2-r1.ebuild:
+  Add ruby20 target. ppc64 keyword dropped. Rekeywording in bug #465948
+
+  22 Jul 2013; Hans de Graaff <graaff@gentoo.org> net-scp-1.1.2.ebuild:
+  net-ssh should already be installed when building documentation, bug 477572.
+
+*net-scp-1.1.2 (19 Jul 2013)
+
+  19 Jul 2013; Hans de Graaff <graaff@gentoo.org> +net-scp-1.1.2.ebuild:
+  Version bump.
+
+*net-scp-1.1.0 (12 Apr 2013)
+
+  12 Apr 2013; Hans de Graaff <graaff@gentoo.org> +net-scp-1.1.0.ebuild:
+  Version bump. Drop ruby18 due to net-ssh dependency.
+
+  12 Apr 2013; Hans de Graaff <graaff@gentoo.org> -net-scp-1.0.4.ebuild:
+  Cleanup.
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> net-scp-1.0.4-r1.ebuild:
+  Stable for ppc64, wrt bug #464366
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> net-scp-1.0.4-r1.ebuild:
+  Stable for ppc, wrt bug #464366
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> net-scp-1.0.4-r1.ebuild:
+  Stable for x86, wrt bug #464366
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> net-scp-1.0.4-r1.ebuild:
+  Stable for amd64, wrt bug #464366
+
+  14 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata.xml so that it's the same as most other packages.
+
+  01 May 2012; Raúl Porcel <armin76@gentoo.org> net-scp-1.0.4.ebuild,
+  net-scp-1.0.4-r1.ebuild:
+  Drop ia64/sparc keywords
+
+  20 Aug 2011; Hans de Graaff <graaff@gentoo.org> -net-scp-1.0.2.ebuild:
+  Remove old version.
+
+  22 Jul 2011; Mark Loeser <halcy0n@gentoo.org> net-scp-1.0.4.ebuild:
+  Stable for ppc/ppc64; bug #321103
+
+  04 Jun 2011; Raúl Porcel <armin76@gentoo.org> net-scp-1.0.4.ebuild:
+  ia64 stable wrt #321103
+
+  26 May 2011; Markus Meier <maekke@gentoo.org> net-scp-1.0.4.ebuild:
+  x86 stable, bug #321103
+
+  05 May 2011; Hans de Graaff <graaff@gentoo.org> net-scp-1.0.4-r1.ebuild:
+  Add ree18 support.
+
+  04 May 2011; Christoph Mende <angelos@gentoo.org> net-scp-1.0.4.ebuild:
+  Stable on amd64 wrt bug #321103
+
+  21 Apr 2011; Hans de Graaff <graaff@gentoo.org> net-scp-1.0.4-r1.ebuild:
+  Remove the blocker on test-unit since tests now work with it installed.
+
+*net-scp-1.0.4-r1 (20 Apr 2011)
+
+  20 Apr 2011; Hans de Graaff <graaff@gentoo.org> net-scp-1.0.4.ebuild,
+  +net-scp-1.0.4-r1.ebuild:
+  Revision bump to create a stable candidate.
+
+  15 Feb 2011; Diego E. Pettenò <flameeyes@gentoo.org> net-scp-1.0.4.ebuild:
+  Fix tests when using Ruby 1.9.2 (closes bug #351025).
+
+  21 Dec 2010; Hans de Graaff <graaff@gentoo.org> net-scp-1.0.4.ebuild:
+  Keyword ~x86-macos.
+
+  21 Dec 2010; Hans de Graaff <graaff@gentoo.org> -net-scp-1.0.2-r1.ebuild,
+  -net-scp-1.0.3.ebuild:
+  Remove old versions.
+
+*net-scp-1.0.4 (18 Sep 2010)
+
+  18 Sep 2010; Hans de Graaff <graaff@gentoo.org> +net-scp-1.0.4.ebuild:
+  Version bump: better compatibility with ruby 1.8.6.
+
+*net-scp-1.0.3 (18 Aug 2010)
+
+  18 Aug 2010; Hans de Graaff <graaff@gentoo.org> +net-scp-1.0.3.ebuild:
+  Version bump.
+
+  15 Aug 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  net-scp-1.0.2-r1.ebuild:
+  Block test-unit:2 for testing.
+
+  22 May 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  net-scp-1.0.2-r1.ebuild:
+  Various cleanups.
+
+  14 Feb 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  net-scp-1.0.2-r1.ebuild:
+  Add Ruby 1.9 support.
+
+  30 Jan 2010; Raúl Porcel <armin76@gentoo.org> net-scp-1.0.2-r1.ebuild:
+  Add ~ia64
+
+*net-scp-1.0.2-r1 (20 Jan 2010)
+
+  20 Jan 2010; Hans de Graaff <graaff@gentoo.org> +net-scp-1.0.2-r1.ebuild:
+  Convert to ruby-fakegem. Drop ia64 keyword due to new echoe dependency:
+  #301657.
+
+  04 Jan 2010; Christian Faulhammer <fauli@gentoo.org> net-scp-1.0.2.ebuild:
+  Transfer Prefix keywords
+
+  09 Dec 2009; Hans de Graaff <graaff@gentoo.org> -net-scp-1.0.1.ebuild:
+  Remove old version.
+
+  29 Nov 2009; Alex Legler <a3li@gentoo.org> Manifest:
+  Update manifest
+
+  10 Apr 2009; Raúl Porcel <armin76@gentoo.org> net-scp-1.0.2.ebuild:
+  ia64 stable wrt #264325
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org> net-scp-1.0.2.ebuild:
+  amd64/x86 stable, bug #264325
+
+  03 Apr 2009; Joseph Jezak <josejx@gentoo.org> net-scp-1.0.2.ebuild:
+  Marked ppc/ppc64 stable for bug #264325.
+
+*net-scp-1.0.2 (25 Feb 2009)
+
+  25 Feb 2009; Robin H. Johnson <robbat2@gentoo.org> +net-scp-1.0.2.ebuild:
+  Version bump.
+
+  22 Sep 2008; Raúl Porcel <armin76@gentoo.org> net-scp-1.0.1.ebuild:
+  Add ~ia64 wrt #238171
+
+  21 Sep 2008; Brent Baude <ranger@gentoo.org> net-scp-1.0.1.ebuild:
+  keyworded ~arch for ppc, bug 238171
+
+  21 Sep 2008; Brent Baude <ranger@gentoo.org> net-scp-1.0.1.ebuild:
+  keyworded ~arch for ppc64, bug 238171
+
+*net-scp-1.0.1 (20 Sep 2008)
+
+  20 Sep 2008; Hans de Graaff <graaff@gentoo.org> +metadata.xml,
+  +net-scp-1.0.1.ebuild:
+  Initial import for capistrano 2.5.0.

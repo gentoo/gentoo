@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>emacs</herd>
+<herd>tex</herd>
+<longdescription>
+  AUCTeX is an extensible package for writing and formatting TeX files
+  in GNU Emacs and XEmacs. It supports many different TeX macro packages,
+  including AMS-TeX, LaTeX, Texinfo, ConTeXt, and docTeX (dtx files).
+
+  AUCTeX includes preview-latex which makes LaTeX a tightly integrated
+  component of your editing workflow by visualizing selected source chunks
+  (such as single formulas or graphics) directly as images in the source
+  buffer.
+</longdescription>
+<use>
+  <flag name='preview-latex'>Use bundled preview-latex</flag>
+</use>
+</pkgmetadata>

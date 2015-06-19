@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci-geosciences</herd>
+<longdescription lang="en">
+World Boundaries data from openstreetmap needed by mapnik
+</longdescription>
+</pkgmetadata>

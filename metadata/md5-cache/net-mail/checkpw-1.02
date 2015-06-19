@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install postinst unpack
+DESCRIPTION=an implementation of the checkpassword interface that checks a password
+HOMEPAGE=http://checkpw.sourceforge.net/checkpw/
+IUSE=static
+KEYWORDS=~x86 ~ppc ~sparc ~alpha ~mips ~hppa ~amd64 ~ia64
+LICENSE=public-domain
+SLOT=0
+SRC_URI=mirror://sourceforge/checkpw/checkpw-1.02.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=72f01421094fcbf47f9f1344bdd4196c

@@ -1,0 +1,168 @@
+# ChangeLog for net-proxy/bfilter
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/bfilter/ChangeLog,v 1.34 2015/01/07 13:53:42 pacho Exp $
+
+  07 Jan 2015; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Reassign and cleanup as discussed at https://www.mail-archive.com/gentoo-
+  dev@lists.gentoo.org/msg66357.html
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> bfilter-1.1.4-r1.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+  30 Nov 2013; Tom Wijsman <TomWij@gentoo.org>
+  +files/bfilter-1.1.4-gtkmm-X11-underlinking.patch, bfilter-1.1.4-r1.ebuild,
+  files/bfilter.init:
+  Fix bashism in init script. Patch gtkmm X11 underlinking; fixes bug #489328,
+  reported by Mark (chaseguard).
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> bfilter-1.1.4-r1.ebuild:
+  Drop sparc keywords
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> bfilter-1.1.4-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  20 Apr 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/bfilter-1.1.4-glib-2.32.patch, -bfilter-1.1.4.ebuild,
+  bfilter-1.1.4-r1.ebuild:
+  Fix glib-2.32 compilation, bug #412671 by Mark. Drop old.
+
+  29 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> bfilter-1.1.4.ebuild,
+  bfilter-1.1.4-r1.ebuild:
+  Fix slot-dep on gnome-mm libs
+
+*bfilter-1.1.4-r1 (19 Oct 2009)
+
+  19 Oct 2009; Alin Năstac <mrness@gentoo.org> +bfilter-1.1.4-r1.ebuild,
+  files/bfilter-1.1.4-external-boost.patch, +files/forwarding.xml,
+  +files/forwarding-proxy.xml:
+  Migrate to EAPI 2. Install default forwarding.xml and forwarding-proxy.xml
+  example (#288100).
+
+  18 Feb 2009; Alin Năstac <mrness@gentoo.org>
+  -files/bfilter-1.1.1-date-test.patch,
+  -files/bfilter-1.1.1-external-boost.patch,
+  -files/bfilter-1.1.2-date-test.patch,
+  -files/bfilter-1.1.2-external-boost.patch,
+  -files/bfilter-1.1.3-date-test.patch,
+  -files/bfilter-1.1.3-external-boost.patch,
+  -files/bfilter-1.1-date-test.patch,
+  -files/bfilter-1.1-external-boost.patch, -bfilter-1.1.ebuild,
+  -bfilter-1.1.1.ebuild, -bfilter-1.1.2.ebuild, -bfilter-1.1.3.ebuild:
+  Remove obsolete versions.
+
+  18 Feb 2009; Raúl Porcel <armin76@gentoo.org> bfilter-1.1.4.ebuild:
+  sparc stable wrt #254396
+
+  15 Jan 2009; Markus Meier <maekke@gentoo.org> bfilter-1.1.4.ebuild:
+  amd64/x86 stable, bug #254396
+
+*bfilter-1.1.4 (13 Jul 2008)
+
+  13 Jul 2008; Alin Năstac <mrness@gentoo.org>
+  +files/bfilter-1.1.4-external-boost.patch, -files/bfilter.8,
+  +bfilter-1.1.4.ebuild:
+  Version bump.
+
+*bfilter-1.1.3 (30 Dec 2007)
+
+  30 Dec 2007; Alin Năstac <mrness@gentoo.org>
+  +files/bfilter-1.1.3-date-test.patch,
+  +files/bfilter-1.1.3-external-boost.patch, +bfilter-1.1.3.ebuild:
+  Version bump.
+
+*bfilter-1.1.2 (02 Nov 2007)
+
+  02 Nov 2007; Alin Năstac <mrness@gentoo.org>
+  +files/bfilter-1.1.2-date-test.patch,
+  +files/bfilter-1.1.2-external-boost.patch, -bfilter-1.0.9.ebuild,
+  +bfilter-1.1.2.ebuild:
+  Version bump.
+
+  09 Oct 2007; Christoph Mende <angelos@gentoo.org> bfilter-1.1.ebuild:
+  Stable on amd64 wrt bug #192768
+
+  28 Sep 2007; Raúl Porcel <armin76@gentoo.org> bfilter-1.1.ebuild:
+  sparc stable wrt #192768
+
+*bfilter-1.1.1 (17 Sep 2007)
+
+  17 Sep 2007; Alin Năstac <mrness@gentoo.org>
+  +files/bfilter-1.1.1-date-test.patch,
+  +files/bfilter-1.1.1-external-boost.patch, +bfilter-1.1.1.ebuild:
+  Version bump.
+
+  17 Sep 2007; Markus Meier <maekke@gentoo.org> bfilter-1.1.ebuild:
+  x86 stable, bug #192768
+
+  26 Aug 2007; Alin Năstac <mrness@gentoo.org> bfilter-1.1.ebuild:
+  Fix boost dependency (#190311).
+
+*bfilter-1.1 (18 Aug 2007)
+
+  18 Aug 2007; Alin Năstac <mrness@gentoo.org>
+  +files/bfilter-1.1-date-test.patch,
+  +files/bfilter-1.1-external-boost.patch, +bfilter-1.1.ebuild:
+  Version bump. Use dev-lib/boost instead the included version of the library.
+
+  02 Aug 2007; Alin Năstac <mrness@gentoo.org> -bfilter-1.0.6.ebuild,
+  -bfilter-1.0.7.ebuild:
+  Remove obsolete versions.
+
+  04 Jul 2007; Christoph Mende <angelos@gentoo.org> bfilter-1.0.9.ebuild:
+  Stable on amd64 wrt bug #182293
+
+  03 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> bfilter-1.0.9.ebuild:
+  Stable on sparc wrt #182293
+
+  02 Jul 2007; Christian Faulhammer <opfer@gentoo.org> bfilter-1.0.9.ebuild:
+  stable x86, bug 182293
+
+*bfilter-1.0.9 (11 Apr 2007)
+
+  11 Apr 2007; Alin Năstac <mrness@gentoo.org> +bfilter-1.0.9.ebuild:
+  Version bump.
+
+  22 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org> bfilter-1.0.7.ebuild:
+  Keyworded ~sparc
+
+*bfilter-1.0.7 (17 Jan 2007)
+
+  17 Jan 2007; Alin Năstac <mrness@gentoo.org> +bfilter-1.0.7.ebuild:
+  Version bump. Add ~amd64 keyword.
+
+  16 Nov 2006; Alin Nastac <mrness@gentoo.org> -bfilter-0.10.3.ebuild,
+  bfilter-1.0.6.ebuild:
+  Remove old version. Rewrite post-install message. Stable on x86.
+
+*bfilter-1.0.6 (20 Sep 2006)
+
+  20 Sep 2006; Alin Nastac <mrness@gentoo.org> +bfilter-1.0.6.ebuild:
+  Version bump.
+
+  14 Apr 2006; Alin Nastac <mrness@gentoo.org>
+  -files/bfilter-0.10.1-droppriv.patch, -bfilter-0.10.1.ebuild:
+  Remove obsolete version.
+
+*bfilter-0.10.3 (05 Mar 2006)
+
+  05 Mar 2006; Alin Nastac <mrness@gentoo.org>
+  -files/bfilter-0.9.4-droppriv.patch, files/bfilter.8, files/bfilter.conf,
+  files/bfilter.init, -bfilter-0.9.4.ebuild, +bfilter-0.10.3.ebuild:
+  Version bump (#124950). Credit goes to Alan Swanson <swanson@ukfsn.org>.
+
+  31 Dec 2005; Alin Nastac <mrness@gentoo.org> bfilter-0.10.1.ebuild:
+  Fix libsigc++ dependency (#117278).
+
+*bfilter-0.10.1 (20 Nov 2005)
+
+  20 Nov 2005; Alin Nastac <mrness@gentoo.org>
+  +files/bfilter-0.10.1-droppriv.patch, +bfilter-0.10.1.ebuild:
+  Version bump (#112260). Credit goes to Alan Swanson <swanson@ukfsn.org>.
+
+*bfilter-0.9.4 (18 Sep 2005)
+
+  18 Sep 2005; Alin Nastac <mrness@gentoo.org>
+  +files/bfilter-0.9.4-droppriv.patch, +files/bfilter.8,
+  +files/bfilter.conf, +files/bfilter.init, +metadata.xml,
+  +bfilter-0.9.4.ebuild:
+  Initial import from bug #103947, thanks to Alan Swanson <swanson@ukfsn.org>.

@@ -1,0 +1,103 @@
+# ChangeLog for sci-mathematics/axiom
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/axiom/ChangeLog,v 1.23 2012/04/25 18:51:42 jlec Exp $
+
+  25 Apr 2012; Justin Lecher <jlec@gentoo.org> axiom-200805.ebuild,
+  metadata.xml:
+  Moved to EAPI=4, dropped unnecessary die
+
+  30 Aug 2008; Markus Dittrich <markusle@gentoo.org> axiom-200803.ebuild,
+  axiom-200805.ebuild:
+  Added missing dependency on sys-apps/debianutils (fixes bug #236080).
+
+  15 Jul 2008; Markus Dittrich <markusle@gentoo.org> axiom-200805.ebuild:
+  Ebuild cleanup. Thanks much to <dberkholz@gentoo.org> for pointing 
+  out improvements.
+
+  13 Jul 2008; Markus Dittrich <markusle@gentoo.org> axiom-200805.ebuild:
+  Switched linux-info based brk randomization check to a run-time 
+  check via sysctl (see bug #186926). Thanks much to Martin Väth
+  <vaeth@mathematik.uni-wuerzburg.de> for suggesting this.
+
+*axiom-200805 (12 Jul 2008)
+
+  12 Jul 2008; Markus Dittrich <markusle@gentoo.org> +axiom-200805.ebuild:
+  Version bump. Added check that CONFIG_COMPAT_BRK is set for kernels
+  >=2.6.25 since gcl compilation will fail otherwise.
+
+*axiom-200803 (30 Mar 2008)
+
+  30 Mar 2008; Markus Dittrich <markusle@gentoo.org>
+  -files/gcl-2.6.7.fix-configure.in-gentoo.Makefile.patch,
+  -files/gcl-2.6.7.fix-configure.in-gentoo.patch.input,
+  -files/gcl-2.6.7.fix-out-of-build-root-compile.Makefile.patch,
+  -files/gcl-2.6.7.fix-out-of-build-root-compile.patch.input,
+  -axiom-3.9-r1.ebuild, +axiom-200803.ebuild:
+  Version bump and removed old version.
+
+  01 Feb 2008; Markus Dittrich <markusle@gentoo.org>
+  +files/axiom-200711-gcl-configure.patch, axiom-200711.ebuild:
+  Fixed broken gcl configure (see bug #208326). Thanks much to
+  Martin Väth <vaeth@mathematik.uni-wuerzburg.de> for this fix.
+
+*axiom-200711 (23 Jan 2008)
+
+  23 Jan 2008; Markus Dittrich <markusle@gentoo.org> axiom-3.9-r1.ebuild,
+  +axiom-200711.ebuild:
+  Version bump (see bug #185481).
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; axiom-3.9-r1.ebuild:
+  Drop virtual/x11 references.
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove plasmaroo from metadata.xml due to retirement.
+
+  01 Oct 2006; Tim Yamin <plasmaroo@gentoo.org> axiom-3.9-r1.ebuild:
+  Fix bug #143738; patch by Johannes Weiner.
+
+  25 Aug 2006; Luis Medinas <metalgod@gentoo.org> axiom-3.9-r1.ebuild:
+  Added ~amd64 keyword.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+  18 Mar 2006; <plasmaroo@gentoo.org> axiom-3.9-r1.ebuild, -axiom-3.9.ebuild,
+  -axiom-9999.ebuild:
+  Fix #121430, remove stale versions.
+
+*axiom-3.9-r1 (25 Feb 2006)
+
+  25 Feb 2006; <plasmaroo@gentoo.org> +axiom-3.9-r1.ebuild,
+  +files/noweb-2.9-insecure-tmp-file.Makefile.patch,
+  +files/noweb-2.9-insecure-tmp-file.patch.input:
+  Security bump; bug #122705.
+
+  14 Feb 2006; <plasmaroo@gentoo.org> axiom-3.9.ebuild, axiom-9999.ebuild:
+  Port over to modular X.
+
+  22 Jan 2006; <plasmaroo@gentoo.org> axiom-3.9.ebuild,
+  +files/gcl-2.6.7.fix-configure.in-gentoo.Makefile.patch,
+  +files/gcl-2.6.7.fix-configure.in-gentoo.patch.input:
+  Fix #118633.
+
+  30 Dec 2005; <plasmaroo@gentoo.org> axiom-3.9.ebuild, axiom-9999.ebuild:
+  Fix #117216.
+
+*axiom-3.9 (29 Dec 2005)
+
+  29 Dec 2005; <plasmaroo@gentoo.org> +axiom-3.9.ebuild:
+  Add snapshot; bug #117097.
+
+  13 Dec 2005; <plasmaroo@gentoo.org> axiom-9999.ebuild:
+  Update Savannah CVS info; #115327.
+
+  04 Dec 2005; <plasmaroo@gentoo.org> axiom-9999.ebuild,
+  +files/gcl-2.6.7.fix-out-of-build-root-compile.Makefile.patch,
+  +files/gcl-2.6.7.fix-out-of-build-root-compile.patch.input:
+  Add compile fixes (#75372, #111923) as well as a gcl fix so compilation works
+  once we're out of the sandbox.
+
+*axiom-9999 (16 Jan 2005)
+
+  16 Jan 2005; <plasmaroo@gentoo.org> +axiom-9999.ebuild, +metadata.xml:
+  Initial commit.

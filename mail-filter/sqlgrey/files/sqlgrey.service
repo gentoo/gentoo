@@ -1,0 +1,9 @@
+[Unit]
+Description=SQLgrey Postfix Grey-listing Policy service
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/sqlgrey
+
+[Install]
+WantedBy=multi-user.target

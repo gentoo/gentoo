@@ -1,0 +1,14 @@
+# ChangeLog for net-libs/NativeThread
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/NativeThread/ChangeLog,v 1.2 2009/03/23 16:14:05 tommy Exp $
+
+  23 Mar 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  ChangeLog, NativeThread-0_pre20080330.ebuild:
+  Force freenet-0.7 dependency
+
+*NativeThread-0_pre20080330 (29 Jan 2009)
+
+  29 Jan 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +files/Makefile.patch, +NativeThread-0_pre20080330.ebuild:
+  Initial commit. Fixes bug 238038
+

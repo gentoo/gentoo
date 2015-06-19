@@ -1,0 +1,16 @@
+# ChangeLog for gnome-extra/gnome-calendar
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-calendar/ChangeLog,v 1.2 2015/06/10 13:31:44 eva Exp $
+
+*gnome-calendar-3.16.2 (10 Jun 2015)
+
+  10 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-calendar-3.16.2.ebuild:
+  Version bump.
+
+*gnome-calendar-3.16.1 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-calendar-3.16.1.ebuild, +metadata.xml:
+  Initial ebuild from gnome-overlay for Gnome 3.16.
+

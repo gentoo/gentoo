@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>hasufell@gentoo.org</email>
+		<name>Julian Ospald</name>
+	</maintainer>
+	<maintainer>
+		<email>styx.mp@gmail.com</email>
+		<name>Mikhail</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>
+			https://github.com/elixir-lang/elixir/issues
+		</bugs-to>
+		<changelog>
+			https://github.com/elixir-lang/elixir/blob/master/CHANGELOG.md
+		</changelog>
+		<doc lang='en'>
+			http://elixir-lang.org/docs.html
+		</doc>
+		<remote-id type='github'>
+			elixir-lang/elixir
+		</remote-id>
+	</upstream>
+</pkgmetadata>

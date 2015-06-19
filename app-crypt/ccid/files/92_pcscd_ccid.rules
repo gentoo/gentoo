@@ -1,0 +1,50 @@
+# udev rules to set the access rights of CCID smart card readers
+# so they can be used by pcscd
+
+# $Id: 92_pcscd_ccid.rules,v 1.1 2013/06/17 15:22:59 flameeyes Exp $
+
+# Gemplus PCMCIA Card
+#SUBSYSTEMS=="pcmcia", DRIVERS=="serial_cs", ACTION=="add", ATTRS{prod_id1}=="Gemplus", ATTRS{prod_id2}=="SerialPort", ATTRS{prod_id3}=="GemPC Card", RUN+="/usr/sbin/pcscd --hotplug" 
+
+# If not adding the device, go away
+ACTION!="add", GOTO="pcscd_ccid_rules_end"
+SUBSYSTEM!="usb", GOTO="pcscd_ccid_rules_end"
+ENV{DEVTYPE}!="usb_device", GOTO="pcscd_ccid_rules_end"
+
+# Kobil mIDentity
+ATTRS{idVendor}=="0d46", ATTRS{idProduct}=="4081", RUN+="/usr/sbin/Kobil_mIDentity_switch"
+
+# generic CCID device (bInterfaceClass = 0x0b)
+# change group from default "root" to "pcscd"
+ENV{ID_USB_INTERFACES}=="*:0b0000:*", ENV{PCSCD}="1"
+
+# set USB power management to auto. "power/level" has been deprecated in
+# Linux 2.6.35 and replaced by "power/control"
+ENV{ID_USB_INTERFACES}==":0b0000:", RUN+="/bin/sh -c 'echo auto > /sys/$devpath/power/level ; echo auto > /sys/$devpath/power/control'"
+
+# non CCID generic (InterfaceClass: 0xFF)
+# CherrySmartTerminalST2XXX.txt
+ATTRS{idVendor}=="046a", ATTRS{idProduct}=="003e", ENV{PCSCD}="1"
+# DellSK-3106.txt
+ATTRS{idVendor}=="413c", ATTRS{idProduct}=="2100", ENV{PCSCD}="1"
+# MySmartPad.txt
+ATTRS{idVendor}=="09be", ATTRS{idProduct}=="0002", ENV{PCSCD}="1"
+# SCR3310-NTTCom USB SmartCard Reader
+ATTRS{idVendor}=="04e6", ATTRS{idProduct}=="511a", ENV{PCSCD}="1"
+# SCR331-DI USB Smart Card Reader
+ATTRS{idVendor}=="04e6", ATTRS{idProduct}=="5120", ENV{PCSCD}="1"
+# SCR331-DI.txt
+ATTRS{idVendor}=="04e6", ATTRS{idProduct}=="5111", ENV{PCSCD}="1"
+# SDI010.txt
+ATTRS{idVendor}=="04e6", ATTRS{idProduct}=="5121", ENV{PCSCD}="1"
+# SPR532.txt
+ATTRS{idVendor}=="04e6", ATTRS{idProduct}=="e003", ENV{PCSCD}="1"
+# Verisign_secure_storage_token.txt
+ATTRS{idVendor}=="08e6", ATTRS{idProduct}=="1359", ENV{PCSCD}="1"
+# Verisign_secure_token.txt
+ATTRS{idVendor}=="08e6", ATTRS{idProduct}=="ace0", ENV{PCSCD}="1"
+# SchlumbergerSema Cyberflex Access e-gate
+ATTRS{idVendor}=="0973", ATTRS{idProduct}=="0003", ENV{PCSCD}="1"
+
+# All done
+LABEL="pcscd_ccid_rules_end"

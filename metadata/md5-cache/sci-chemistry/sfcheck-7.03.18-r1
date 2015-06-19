@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare setup
+DEPEND=sci-libs/ccp4-libs !<sci-chmistry/ccp4-apps-6.1.3 virtual/fortran
+DESCRIPTION=Program for assessing the agreement between the atomic model and X-ray data or EM map
+EAPI=4
+HOMEPAGE=http://www.ysbl.york.ac.uk/~alexei/sfcheck.html
+KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux
+LICENSE=ccp4
+RDEPEND=sci-libs/ccp4-libs virtual/fortran
+SLOT=0
+SRC_URI=mirror://gentoo/sfcheck-7.03.18.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8d9336a5d9f8225257c60f2fe271b7fc

@@ -1,0 +1,61 @@
+# ChangeLog for dev-python/pyds9
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyds9/ChangeLog,v 1.13 2015/04/08 08:05:01 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pyds9-1.7.ebuild:
+  Drop old Python implementations
+
+  13 Mar 2014; Sébastien Fabbro <bicatali@gentoo.org> pyds9-1.7.ebuild:
+  Fixed path substitution, thanks Joseph Booker, bug #504338
+
+  05 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org> -pyds9-1.5.ebuild,
+  -pyds9-1.6.ebuild, pyds9-1.7.ebuild:
+  work the pyfits depedency, removed old
+
+*pyds9-1.7 (17 Jan 2014)
+
+  17 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org> +pyds9-1.7.ebuild:
+  Version bump
+
+  24 Apr 2013; Sébastien Fabbro <bicatali@gentoo.org> pyds9-1.6.ebuild:
+  Propagate use depedencies for python targets
+
+*pyds9-1.6 (22 Apr 2013)
+
+  22 Apr 2013; Sébastien Fabbro <bicatali@gentoo.org> +pyds9-1.6.ebuild:
+  Version bump
+
+*pyds9-1.5 (21 Aug 2012)
+
+  21 Aug 2012; Kacper Kowalik <xarthisius@gentoo.org> +pyds9-1.5.ebuild,
+  -pyds9-1.4.ebuild:
+  Version bump, drop old
+
+  02 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> -pyds9-1.3.ebuild,
+  pyds9-1.4.ebuild:
+  Keyword amd64-linux and x86-linux
+
+*pyds9-1.4 (06 Jun 2012)
+
+  06 Jun 2012; Sébastien Fabbro <bicatali@gentoo.org> -pyds9-1.2.ebuild,
+  +pyds9-1.4.ebuild:
+  Version bump
+
+  23 Feb 2012; Patrick Lauer <patrick@gentoo.org> pyds9-1.2.ebuild,
+  pyds9-1.3.ebuild:
+  Restricting pypy and jython
+
+  01 Feb 2012; Mike Gilbert <floppym@gentoo.org> pyds9-1.2.ebuild,
+  pyds9-1.3.ebuild:
+  Inherit multilib.
+
+*pyds9-1.3 (09 Oct 2011)
+
+  09 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org> +pyds9-1.3.ebuild:
+  Version bump
+
+*pyds9-1.2 (05 Aug 2011)
+
+  05 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> +pyds9-1.2.ebuild,
+  +metadata.xml:
+  Initial import

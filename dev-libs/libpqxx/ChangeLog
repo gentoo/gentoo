@@ -1,0 +1,385 @@
+# ChangeLog for dev-libs/libpqxx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpqxx/ChangeLog,v 1.103 2015/04/08 17:51:55 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> libpqxx-4.0.1.ebuild:
+  Drop old Python implementations
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org> libpqxx-4.0.1.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org> libpqxx-4.0.1.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> libpqxx-4.0.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  02 Jul 2013; Aaron W. Swenson <titanofold@gentoo.org> -libpqxx-4.0-r1.ebuild:
+  Clean out cruft.
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libpqxx-4.0.1.ebuild:
+  Stable for sparc, wrt bug #472450
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libpqxx-4.0.1.ebuild:
+  Stable for ia64, wrt bug #472450
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libpqxx-4.0.1.ebuild:
+  Stable for alpha, wrt bug #472450
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libpqxx-4.0.1.ebuild:
+  Stable for amd64, wrt bug #472450
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libpqxx-4.0.1.ebuild:
+  Stable for x86, wrt bug #472450
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libpqxx-4.0.1.ebuild:
+  Stable for ppc64, wrt bug #472450
+
+  24 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libpqxx-4.0.1.ebuild:
+  Stable for ppc, wrt bug #472450
+
+  06 Jun 2013; Jeroen Roovers <jer@gentoo.org> libpqxx-4.0.1.ebuild:
+  Stable for HPPA (bug #472450).
+
+  03 May 2013; Aaron W. Swenson <titanofold@gentoo.org> libpqxx-4.0.1.ebuild:
+  Inherit python-any-r1 to pull in a Python 2 interpreter. Use sed to fix
+  shebangs to call python2 instead of python which could be set to a
+  Python 3 interpreter. Fixes bug 455282.
+
+*libpqxx-4.0.1 (02 Feb 2013)
+
+  02 Feb 2013; Patrick Lauer <patrick@gentoo.org> +libpqxx-4.0.1.ebuild:
+  Bump
+
+  08 Dec 2012; Jeroen Roovers <jer@gentoo.org> libpqxx-4.0-r1.ebuild:
+  Stable for HPPA (bug #396483).
+
+  03 May 2012; Aaron W. Swenson <titanofold@gentoo.org> -libpqxx-2.6.9.ebuild,
+  -files/libpqxx-2.6.9-gcc43.patch, -files/libpqxx-2.6.9-gcc44.patch,
+  -libpqxx-3.1-r3.ebuild, -files/libpqxx-3.1-gcc46.patch, -libpqxx-4.0.ebuild:
+  Clean out old versions that do not build with newer versions of GCC. Fixes
+  bug 414131.
+
+  31 Mar 2012; Raúl Porcel <armin76@gentoo.org> libpqxx-4.0-r1.ebuild:
+  ia64/sparc/x86 stable wrt #396483
+
+  11 Mar 2012; Agostino Sarubbo <ago@gentoo.org> libpqxx-4.0-r1.ebuild:
+  Stable for amd64, wrt bug #396483
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> libpqxx-4.0-r1.ebuild:
+  Marking libpqxx-4.0-r1 ppc for bug 396483
+
+  03 Mar 2012; Tobias Klausmann <klausman@gentoo.org> libpqxx-4.0-r1.ebuild:
+  Stable on alpha, bug #396483
+
+  03 Mar 2012; Brent Baude <ranger@gentoo.org> libpqxx-4.0-r1.ebuild:
+  Marking libpqxx-4.0-r1 ppc64 for bug 396483
+
+  31 Jan 2012; Aaron W. Swenson <titanofold@gentoo.org> +libpqxx-3.1-r3.ebuild,
+  +files/libpqxx-3.1-gcc46.patch:
+  Adding back to fix bug 401607.
+
+  29 Jan 2012; Aaron W. Swenson <titanofold@gentoo.org> libpqxx-4.0-r1.ebuild:
+  Added static-libs support.
+
+*libpqxx-4.0-r1 (29 Jan 2012)
+
+  29 Jan 2012; Aaron W. Swenson <titanofold@gentoo.org>
+  -files/libpqxx-2.5.1-gentoo.patch, -libpqxx-2.6.8.ebuild,
+  -libpqxx-3.0.2.ebuild, -libpqxx-3.1-r2.ebuild, -libpqxx-3.1-r3.ebuild,
+  -files/libpqxx-3.1-gcc46.patch, +libpqxx-4.0-r1.ebuild:
+  Cleanup outdated ebuilds and patches. Fix bug 397407.
+
+  15 Jan 2012; Raúl Porcel <armin76@gentoo.org> libpqxx-4.0.ebuild:
+  alpha/ia64/sparc stable wrt #396483
+
+  04 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> libpqxx-4.0.ebuild:
+  x86 stable wrt bug #396483
+
+  30 Dec 2011; Jeroen Roovers <jer@gentoo.org> libpqxx-4.0.ebuild:
+  Stable for HPPA (bug #396483).
+
+  30 Dec 2011; Agostino Sarubbo <ago@gentoo.org> libpqxx-4.0.ebuild:
+  Stable for AMD64, wrt bug #396483
+
+*libpqxx-4.0 (28 Nov 2011)
+
+  28 Nov 2011; Aaron W. Swenson <titanofold@gentoo.org> +libpqxx-4.0.ebuild:
+  Version bump.
+
+  27 Nov 2011; Raúl Porcel <armin76@gentoo.org> libpqxx-3.1-r2.ebuild:
+  alpha/ia64/sparc stable wrt #387081
+
+*libpqxx-3.1-r3 (12 Nov 2011)
+
+  12 Nov 2011; Aaron W. Swenson <titanofold@gentoo.org> +libpqxx-3.1-r3.ebuild,
+  +files/libpqxx-3.1-gcc46.patch:
+  Fixes bug 363227
+
+  19 Oct 2011; Jeroen Roovers <jer@gentoo.org> libpqxx-3.1-r2.ebuild:
+  Stable for HPPA (bug #387081).
+
+  09 May 2011; Markos Chandras <hwoarang@gentoo.org> libpqxx-3.1-r2.ebuild:
+  Stable on amd64 wrt bug #354033
+
+  09 May 2011; Thomas Kahle <tomka@gentoo.org> libpqxx-3.1-r2.ebuild:
+  x86 stable per bug 354033
+
+*libpqxx-3.1-r2 (16 Apr 2011)
+
+  16 Apr 2011; Aaron W. Swenson <titanofold@gentoo.org>
+  -libpqxx-3.1-r1.ebuild, +libpqxx-3.1-r2.ebuild:
+  Removed unnecessary version dependency
+
+*libpqxx-3.1-r1 (16 Apr 2011)
+
+  16 Apr 2011; Aaron W. Swenson <titanofold@gentoo.org> -libpqxx-3.1.ebuild,
+  +libpqxx-3.1-r1.ebuild:
+  Reintroduced an automatable test. Now actually fails when psql cannot
+  connect. Removed bad version.
+
+*libpqxx-3.1 (16 Apr 2011)
+
+  16 Apr 2011; Aaron W. Swenson <titanofold@gentoo.org>
+  libpqxx-2.6.8.ebuild, libpqxx-2.6.9.ebuild, libpqxx-3.0.2.ebuild,
+  +libpqxx-3.1.ebuild, metadata.xml:
+  Version bump. Fixes bug 349327. Moved to EAPI4 and interactive. Longer
+  description added to metadata.xml. Fixed DESCRIPTION.toolong.
+
+  21 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  libpqxx-3.0.2.ebuild:
+  QA: don't call econf during src_compile on EAPI=2.
+
+  17 Jun 2010; Patrick Lauer <patrick@gentoo.org> libpqxx-2.6.8.ebuild,
+  libpqxx-2.6.9.ebuild, libpqxx-3.0.2.ebuild:
+  Migrating away from deprecated postgres virtuals
+
+*libpqxx-3.0.2 (10 Sep 2009)
+
+  10 Sep 2009; Patrick Lauer <patrick@gentoo.org> +libpqxx-3.0.2.ebuild:
+  Bump to 3.0.2, fixes #265412.
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> libpqxx-2.6.9.ebuild:
+  ppc stable #249248
+
+  06 Jul 2009; Raúl Porcel <armin76@gentoo.org> libpqxx-2.6.9.ebuild:
+  ia64/sparc stable wrt #249248
+
+  03 Jul 2009; Jeroen Roovers <jer@gentoo.org> libpqxx-2.6.9.ebuild,
+  +files/libpqxx-2.6.9-gcc44.patch:
+  Fix compiling with gcc 4.4, stable for HPPA (bug #249248).
+
+  02 Jul 2009; Markus Meier <maekke@gentoo.org> libpqxx-2.6.9.ebuild:
+  amd64 stable, bug #249248
+
+  01 Jul 2009; Christian Faulhammer <fauli@gentoo.org> libpqxx-2.6.9.ebuild:
+  stable x86, bug 249248
+
+  02 Jun 2009; Tobias Klausmann <klausman@gentoo.org> libpqxx-2.6.9.ebuild:
+  Stable on alpha, bug #249248
+
+  31 May 2009; Brent Baude <ranger@gentoo.org> libpqxx-2.6.9.ebuild:
+  stable ppc64, bug 249248
+
+  23 Jun 2008; Carsten Lohrke <carlo@gentoo.org> libpqxx-2.6.9.ebuild:
+  Back to unstable, bug 226621.
+
+  23 Jun 2008; Raúl Porcel <armin76@gentoo.org> libpqxx-2.6.9.ebuild:
+  alpha/ia64/sparc stable wrt #226621
+
+  23 Jun 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  libpqxx-2.6.9.ebuild:
+  amd64 stable, bug #226621
+
+  23 Jun 2008; Christian Faulhammer <opfer@gentoo.org> libpqxx-2.6.9.ebuild:
+  stable x86, bug 226621
+
+  14 Jun 2008; Tiziano Müller <dev-zero@gentoo.org>
+  +files/libpqxx-2.6.9-gcc43.patch, libpqxx-2.6.9.ebuild:
+  Added patch to fix compilation problems with gcc-4.3 (bug #218547 thanks
+  to Holger Ackermann)
+
+  19 May 2008; Tiziano Müller <dev-zero@gentoo.org> libpqxx-2.6.8.ebuild,
+  libpqxx-2.6.9.ebuild:
+  Changed dependency for postgresql to virtual/postgresql-base
+
+  06 Oct 2007; Tom Gall <tgall@gentoo.org> libpqxx-2.6.9.ebuild:
+  stable on ppc64 
+
+  13 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  libpqxx-2.6.9.ebuild:
+  ppc. stable
+
+  18 Jul 2007; Tiziano Müller <dev-zero@gentoo.org> libpqxx-2.6.9.ebuild:
+  Changed test behavior to spit out a warning instead of failing if database
+  parameters are unavailable
+
+  14 Jul 2007; Jeroen Roovers <jer@gentoo.org> libpqxx-2.6.9.ebuild:
+  Stable for HPPA (bug #185216).
+
+  13 Jul 2007; Tiziano Müller <dev-zero@gentoo.org> libpqxx-2.6.9.ebuild:
+  Updated HOMEPAGE and SRC_URI (bug #185199)
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  16 Feb 2007; Jose Luis Rivero <yoswink@gentoo.org> ChangeLog:
+  Fix last commit
+
+  16 Feb 2007; Jose Luis Rivero <yoswink@gentoo.org> -libpqxx-2.5.1.ebuild,
+  libpqxx-2.6.8.ebuild:
+  Stable on alpha wrt bug #146453. Dropped 2.5.1 version per dev-zero's request.
+
+*libpqxx-2.6.9 (15 Feb 2007)
+
+  15 Feb 2007; Tiziano Müller <dev-zero@gentoo.org> -libpqxx-2.5.5.ebuild,
+  +libpqxx-2.6.9.ebuild:
+  Version bump. Dropped old version.
+
+  12 Feb 2007; Jeroen Roovers <jer@gentoo.org> libpqxx-2.6.8.ebuild:
+  Stable for HPPA (bug #162460).
+
+  03 Jan 2007; Christian Faulhammer <opfer@gentoo.org> libpqxx-2.6.8.ebuild:
+  stable x86, bug #146453
+
+  30 Dec 2006; Peter Weller <welp@gentoo.org> libpqxx-2.6.8.ebuild:
+  Stable on amd64 wrt bug #146453
+
+  29 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libpqxx-2.6.8.ebuild:
+  Stable on ppc wrt bug #146453.
+
+  23 Dec 2006; Tiziano Müller <dev-zero@gentoo.org> -libpqxx-2.4.2.ebuild,
+  libpqxx-2.6.8.ebuild:
+  Added workaround for test051 failure.
+
+  21 Dec 2006; Markus Rothe <corsair@gentoo.org> libpqxx-2.6.8.ebuild:
+  Stable on ppc64; bug #146453
+
+  21 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> libpqxx-2.6.8.ebuild:
+  Stable on sparc wrt #146453
+
+  25 Nov 2006; Timothy Redaelli <drizzt@gentoo.org> libpqxx-2.6.8.ebuild:
+  Added ~x86-fbsd keyword.
+
+*libpqxx-2.6.8 (29 Oct 2006)
+
+  29 Oct 2006; Tiziano Müller <dev-zero@gentoo.org> -libpqxx-1.5.1.ebuild,
+  -libpqxx-2.4.3.ebuild, -libpqxx-2.4.4.ebuild, -libpqxx-2.5.0.ebuild,
+  +libpqxx-2.6.8.ebuild:
+  Version bump. Cleaning out old versions.
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libpqxx-2.5.5.ebuild:
+  ppc stable
+
+  18 Jul 2006; Jeroen Roovers <jer@gentoo.org> libpqxx-2.5.5.ebuild:
+  Marking ~hppa for app-office/koffice
+
+  21 Feb 2006; Aron Griffis <agriffis@gentoo.org> libpqxx-2.5.5.ebuild:
+  Mark 2.5.5 stable on ia64
+
+  17 Oct 2005; Brent Baude <ranger@gentoo.org> libpqxx-2.5.1.ebuild:
+  Marking ppc64 for koffice dep on 2005.0 profile
+
+  11 Oct 2005; Aron Griffis <agriffis@gentoo.org> libpqxx-2.5.5.ebuild:
+  Mark 2.5.5 ~ia64
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> libpqxx-2.5.1.ebuild:
+  Mark 2.5.1 stable on alpha
+
+  03 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> libpqxx-2.5.1.ebuild:
+  Stable on ppc.
+
+  22 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> libpqxx-2.5.1.ebuild:
+  Stable on sparc
+
+  06 Jul 2005; Masatomo Nakano <nakano@gentoo.org> libpqxx-2.5.1.ebuild:
+  Marked stable on x86.
+
+*libpqxx-2.5.5 (06 Jul 2005)
+
+  06 Jul 2005; Masatomo Nakano <nakano@gentoo.org> +libpqxx-2.5.5.ebuild:
+  Version bump.
+
+  30 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> libpqxx-2.5.1.ebuild:
+  ~sparc wrt #95128
+
+  22 Jun 2005; Jose Luis Rivero <yoswink@gentoo.org> libpqxx-2.5.1.ebuild:
+  Keyworded ~alpha since is needed on: #95128
+
+  22 Jun 2005; Markus Rothe <corsair@gentoo.org> libpqxx-2.5.1.ebuild:
+  added ~ppc64
+
+  09 May 2005; Masatomo Nakano <nakano@gentoo.org>
+  +files/libpqxx-2.5.1-gentoo.patch, libpqxx-2.5.1.ebuild:
+  Fixed include header path.
+
+*libpqxx-2.5.1 (09 May 2005)
+
+  09 May 2005; Masatomo Nakano <nakano@gentoo.org> +libpqxx-2.5.1.ebuild:
+  Version bump.
+
+*libpqxx-2.5.0 (21 Apr 2005)
+
+  21 Apr 2005; Masatomo Nakano <nakano@gentoo.org> +libpqxx-2.5.0.ebuild:
+  Version bump.
+
+  01 Apr 2005; Simon Stelling <blubb@gentoo.org> libpqxx-2.4.2.ebuild:
+  stable on amd64
+
+*libpqxx-2.4.4 (20 Mar 2005)
+
+  20 Mar 2005; MATSUU Takuto <matsuu@gentoo.org> +libpqxx-2.4.4.ebuild:
+  Version bumped.
+
+*libpqxx-2.4.3 (09 Feb 2005)
+
+  09 Feb 2005; Masatomo Nakano <nakano@gentoo.org> +libpqxx-2.4.3.ebuild:
+  Version bump.
+
+  09 Feb 2005; Masatomo Nakano <nakano@gentoo.org> -libpqxx-2.2.7.ebuild,
+  -libpqxx-2.3.0.ebuild, libpqxx-2.4.2.ebuild:
+  Makred stable on x86.
+
+*libpqxx-2.4.2 (26 Dec 2004)
+
+  26 Dec 2004; Jared H. Hudson <jhhudso@gentoo.org> : Version bump.
+	
+*libpqxx-2.3.0 (22 Aug 2004)
+
+  22 Aug 2004; Masatomo Nakano <nakano@gentoo.org> -libpqxx-2.2.1.ebuild,
+  libpqxx-2.2.7.ebuild, +libpqxx-2.3.0.ebuild:
+  Fixed DEPEND bug and bumped Version.
+
+*libpqxx-2.2.7 (11 Aug 2004)
+
+  11 Aug 2004; MATSUU Takuto <matsuu@gentoo.org> +libpqxx-2.2.7.ebuild:
+  Version bumped.
+  Added to ~amd64.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> libpqxx-2.2.1.ebuild:
+  virtual/glibc -> virtual/libc
+
+  28 Apr 2004; David Holm <dholm@gentoo.org> libpqxx-2.2.1.ebuild:
+  Added to ~ppc.
+
+*libpqxx-2.2.1 (26 Apr 2004)
+
+  26 Apr 2004; Masatomo Nakano <nakano@gentoo.org> +libpqxx-2.2.1.ebuild:
+  Version bump. Ebuild submitted by Joshua Moore-Oliva <josh@chatgris.com>
+  and Michael Kefeder <h.t.d@gmx.de>. #43312
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> libpqxx-1.5.1.ebuild:
+  Add die following econf for bug 48950
+
+  14 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> libpqxx-1.5.1.ebuild:
+  Don't assign default to S; header fix
+
+*libpqxx-1.5.1 (06 Jun 2003)
+
+  16 Jun 2003; Masatomo Nakano <nakano@gentoo.org> libpqxx-1.5.1.ebuild:
+  Marked as stable.
+
+  06 Jun 2003; Masatomo Nakano <nakano@gentoo.org> libpqxx-1.5.1.ebuild:
+  Initial import. Thanks to Andy Pyles <a_pyles@yahoo.com>.

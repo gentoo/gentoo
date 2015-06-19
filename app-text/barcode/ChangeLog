@@ -1,0 +1,78 @@
+# ChangeLog for app-text/barcode
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/barcode/ChangeLog,v 1.26 2014/11/11 23:53:29 tamiko Exp $
+
+  11 Nov 2014; Matthias Maier <tamiko@gentoo.org> barcode-0.98-r1.ebuild,
+  metadata.xml:
+  take over maintainership; port to eapi 5
+
+  11 Jul 2012; Michael Palimaka <kensington@gentoo.org> -barcode-0.98.ebuild:
+  Remove old.
+
+  02 Jun 2012; Zac Medico <zmedico@gentoo.org> barcode-0.98-r1.ebuild,
+  barcode-0.98.ebuild:
+  inherit multilib for get_libdir
+
+  20 May 2012; Mark Loeser <halcy0n@gentoo.org> barcode-0.98.ebuild:
+  Revert to ~ppc/~ppc64; bug #393713
+
+  18 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> barcode-0.98-r1.ebuild:
+  x86 stable wrt bug #393713
+
+  17 Dec 2011; Agostino Sarubbo <ago@gentoo.org> barcode-0.98-r1.ebuild:
+  Added libpaper also as DEPEND
+
+  16 Dec 2011; Agostino Sarubbo <ago@gentoo.org> barcode-0.98-r1.ebuild:
+  Stable for AMD64, added missing RDEPEND, wrt bug #393713
+
+*barcode-0.98-r1 (06 Sep 2010)
+
+  06 Sep 2010; Michael Weber <xmw@gentoo.org> +barcode-0.98-r1.ebuild:
+  Revbump to fix LDFLAGS from bug #335631.
+
+  05 Apr 2010; Jonathan Callen <abcd@gentoo.org> barcode-0.98.ebuild:
+  Bump to EAPI=3, add prefix keywords
+
+  27 Feb 2009; Torsten Veller <tove@gentoo.org> barcode-0.98.ebuild:
+  Add missing die: || "..." -> || die "..."
+
+  14 Sep 2008; <solar@gentoo.org> barcode-0.98.ebuild:
+  - cross compile love
+
+  25 Jan 2008; Fabian Groffen <grobian@gentoo.org> barcode-0.98.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  08 Oct 2005; Fabian Groffen <grobian@gentoo.org> barcode-0.98.ebuild:
+  Marking ~ppc-macos (bug #108463)
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> barcode-0.98.ebuild:
+  Stable on ppc.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> barcode-0.98.ebuild:
+  stable on amd64
+
+  04 Oct 2004; Tom Gall <tgall@gentoo.org> barcode-0.98.ebuild:
+  stable on ppc64, bug #64268
+
+  03 Sep 2004; Danny van Dyk <kugelfang@gentoo.org> barcode-0.98.ebuild:
+  Marked ~amd64. Made $(get_libdir) aware.
+
+  13 Jun 2004; David Holm <dholm@gentoo.org> barcode-0.98.ebuild:
+  Added to ~ppc.
+
+*barcode-0.98 (23 Nov 2002)
+
+  28 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Sed Makefile.in to be FHS happy and fix info dir entries #32076.
+
+  23 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Miguel Revilla Rodríguez <yo@miguelrevilla.com>.

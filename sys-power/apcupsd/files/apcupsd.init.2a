@@ -1,0 +1,37 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-power/apcupsd/files/apcupsd.init.2a,v 1.1 2011/08/29 13:38:55 flameeyes Exp $
+
+INSTANCE="${SVCNAME#*.}"
+if [ -z "${INSTANCE}" ] || [ "${SVCNAME}" = "apcupsd" ]; then
+	INSTANCE="apcupsd"
+fi
+
+depend() {
+	use net
+}
+
+start() {
+	rm -f /etc/apcupsd/powerfail
+
+	export SERVICE="${SVCNAME}"
+
+	ebegin "Starting APC UPS daemon"
+	start-stop-daemon \
+		--start --pidfile "/var/run/${SVCNAME}.pid" \
+		--exec /sbin/apcupsd -- \
+		-f "/etc/apcupsd/${INSTANCE}.conf" \
+		-P "/var/run/${SVCNAME}.pid"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping APC UPS daemon"
+	start-stop-daemon \
+		--stop --pidfile "/var/run/${SVCNAME}.pid" \
+            	--retry TERM/5/TERM/5 \
+		--exec /sbin/apcupsd
+	eend $?
+}
+

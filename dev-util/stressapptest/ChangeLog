@@ -1,0 +1,49 @@
+# ChangeLog for dev-util/stressapptest
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/stressapptest/ChangeLog,v 1.9 2014/08/05 02:23:08 vapier Exp $
+
+*stressapptest-1.0.7_p1 (05 Aug 2014)
+
+  05 Aug 2014; Mike Frysinger <vapier@gentoo.org>
+  +stressapptest-1.0.7_p1.ebuild:
+  Add the 1.0.7 release per upstream.
+
+*stressapptest-1.0.6-r2 (04 Aug 2014)
+
+  04 Aug 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/stressapptest-1.0.6-channel-hash.patch, +stressapptest-1.0.6-r2.ebuild:
+  Backport channel hash updates from upstream.
+
+*stressapptest-1.0.6-r1 (04 Aug 2014)
+
+  04 Aug 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/stressapptest-1.0.6-autotools.patch,
+  +files/stressapptest-1.0.6-misc-fixes.patch,
+  +files/stressapptest-1.0.6-pthread-test.patch, +stressapptest-1.0.6-r1.ebuild:
+  Pull random clean up fixes from upstream to simplify build and make it cross-
+  compile.
+
+*stressapptest-1.0.6 (13 May 2013)
+
+  13 May 2013; Mike Frysinger <vapier@gentoo.org> +stressapptest-1.0.6.ebuild:
+  Version bump #469164 by Agostino Sarubbo.
+
+  06 Jan 2013; Mike Frysinger <vapier@gentoo.org>
+  files/stressapptest-1.0.4-cpuid-pic.patch:
+  Also tweak cpuid asm in worker.cc.
+
+  05 Jan 2013; Mike Frysinger <vapier@gentoo.org>
+  +files/stressapptest-1.0.4-cpuid-pic.patch, stressapptest-1.0.4.ebuild:
+  Fix building for x86/PIE.
+
+  19 Dec 2012; Mike Frysinger <vapier@gentoo.org> stressapptest-1.0.4.ebuild:
+  Add some ~arm love.
+
+  27 Nov 2012; Mike Frysinger <vapier@gentoo.org> stressapptest-1.0.4.ebuild:
+  Depend on libaio since we use it.
+
+*stressapptest-1.0.4 (27 Nov 2012)
+
+  27 Nov 2012; Mike Frysinger <vapier@gentoo.org> +metadata.xml,
+  +stressapptest-1.0.4.ebuild:
+  Initial ebuild based on the one in sunrise #289320 by Martin Böcher.

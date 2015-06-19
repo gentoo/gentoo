@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <maintainer>
+    <email>ottxor@gentoo.org</email>
+    <name>Christoph Junghans</name>
+  </maintainer>
+  <maintainer>
+    <email>tomka@gentoo.org</email>
+    <name>Thomas Kahle</name>
+  </maintainer>
+</pkgmetadata>

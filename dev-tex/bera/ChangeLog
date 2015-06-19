@@ -1,0 +1,23 @@
+# ChangeLog for dev-tex/bera
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/bera/ChangeLog,v 1.5 2009/12/15 00:23:44 rich0 Exp $
+
+  15 Dec 2009; Richard Freeman <rich0@gentoo.org> bera-20040930.ebuild:
+  keywording ~amd64 - 296190
+
+  15 Jul 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Assigning to tex, as nattfodd is being retired (#108329).
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  05 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*bera-20040930 (01 Dec 2005)
+
+  01 Dec 2005; Alexandre Buisse <nattfodd@gentoo.org> +metadata.xml,
+  +bera-20040930.ebuild:
+  Initial import, ebuild provided by Patric Mueller (bug #110793). Added myself
+  as maintainer.
+

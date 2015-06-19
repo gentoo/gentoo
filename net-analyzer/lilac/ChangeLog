@@ -1,0 +1,23 @@
+# ChangeLog for net-analyzer/lilac
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/lilac/ChangeLog,v 1.4 2014/07/13 13:14:47 jer Exp $
+
+  13 Jul 2014; Jeroen Roovers <jer@gentoo.org> lilac-1.0.3.ebuild,
+  metadata.xml:
+  EAPI bump. Remove illegal RDEPEND on net-analyzer/nmap.
+
+  09 Feb 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #85926
+
+*lilac-1.0.3 (21 Jul 2010)
+
+  21 Jul 2010; Tobias Scherbaum <dertobi123@gentoo.org> -lilac-1.0.2.ebuild,
+  +lilac-1.0.3.ebuild:
+  Version bump, #329275
+
+*lilac-1.0.2 (10 Jul 2009)
+
+  10 Jul 2009; Tobias Scherbaum <dertobi123@gentoo.org> +lilac-1.0.2.ebuild,
+  +metadata.xml:
+  Initial import, based on an ebuild by Sander Siemonsma (#275060)
+

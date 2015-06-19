@@ -1,0 +1,56 @@
+# ChangeLog for kde-misc/zanshin
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/zanshin/ChangeLog,v 1.11 2014/05/05 22:51:52 johu Exp $
+
+  05 May 2014; Johannes Huber <johu@gentoo.org> -zanshin-0.2.1.ebuild,
+  zanshin-0.2.1-r1.ebuild:
+  amd64/x86 stable, remove old.
+
+*zanshin-0.2.1-r1 (21 Mar 2014)
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org> +zanshin-0.2.1-r1.ebuild:
+  Revision bump to EAPI 5.
+
+  19 Apr 2012; Johannes Huber <johu@gentoo.org> -zanshin-0.2.0.ebuild:
+  Remove old.
+
+  19 Apr 2012; Markus Meier <maekke@gentoo.org> zanshin-0.2.1.ebuild:
+  x86 stable, bug #409403
+
+  12 Apr 2012; Johannes Huber <johu@gentoo.org> zanshin-0.2.0.ebuild,
+  zanshin-0.2.1.ebuild:
+  Virtual X is required for test phase, pointed out by Michael (kensington)
+  <gentoo@scribeofthenile.com>. Fixes bug #411491.
+
+  04 Apr 2012; Agostino Sarubbo <ago@gentoo.org> zanshin-0.2.1.ebuild:
+  Stable for amd64, wrt bug #409403
+
+*zanshin-0.2.1 (28 Feb 2012)
+
+  28 Feb 2012; Johannes Huber <johu@gentoo.org> +zanshin-0.2.1.ebuild:
+  Version bump.
+
+*zanshin-0.2.0 (10 Jan 2012)
+
+  10 Jan 2012; Johannes Huber <johu@gentoo.org> +zanshin-0.2.0.ebuild,
+  -zanshin-0.1.82.ebuild, -zanshin-0.1.91.ebuild:
+  Version bump, remove old.
+
+*zanshin-0.1.91 (16 Oct 2011)
+
+  16 Oct 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -zanshin-0.1.81.ebuild, +zanshin-0.1.91.ebuild:
+  Version bump; remove old
+
+*zanshin-0.1.82 (01 Sep 2011)
+
+  01 Sep 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +zanshin-0.1.82.ebuild:
+  Version bump
+
+*zanshin-0.1.81 (12 Aug 2011)
+
+  12 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +zanshin-0.1.81.ebuild, +metadata.xml:
+  New application, bug 373135. Thanks to Matija "hook" Šuklje for the initial
+  ebuild.

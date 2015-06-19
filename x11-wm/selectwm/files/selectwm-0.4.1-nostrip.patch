@@ -1,0 +1,15 @@
+Respect CFLAGS, don't strip binaries
+
+http://bugs.gentoo.org/show_bug.cgi?id=252124
+
+--- src/Makefile.am
++++ src/Makefile.am
+@@ -10,5 +10,6 @@
+ 	modify.c modify.h \
+ 	misc.h define.h
+ 
+-LIBS = @GTK_LIBS@
+-AM_CFLAGS = -s -O2 -Wall @GTK_CFLAGS@ -DLOCALEDIR=\"$(datadir)/locale\"
++selectwm_LDADD = @GTK_LIBS@
++selectwm_CFLAGS = @GTK_CFLAGS@
++selectwm_CPPFLAGS = -DLOCALEDIR=\"$(datadir)/locale\"

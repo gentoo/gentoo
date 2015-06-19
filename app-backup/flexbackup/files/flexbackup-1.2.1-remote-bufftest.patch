@@ -1,0 +1,59 @@
+Common subdirectories: flexbackup-1.2.1-r4/contrib and flexbackup-1.2.1-r5/contrib
+diff -ubB flexbackup-1.2.1-r4/flexbackup flexbackup-1.2.1-r5/flexbackup
+--- flexbackup-1.2.1-r4/flexbackup	2007-04-14 17:09:48.000000000 -0400
++++ flexbackup-1.2.1-r5/flexbackup	2007-04-14 17:23:20.000000000 -0400
+@@ -5276,6 +5276,7 @@
+     my $tmp_script = "$cfg::tmpdir/buftest.$host.$PROCESS_ID.sh";
+     my $retval = 0;
+     my $pipecmd;
++	my $explicit_success;
+ 
+     $buffer_cmd =~ s:^\s*\|\s*::;
+     $buffer_cmd =~ s:\s*\|\s*$::;
+@@ -5290,7 +5291,7 @@
+     print SCR "res=\$?\n";
+     print SCR "out=\`cat \$tmp_err\`\n";
+     print SCR "if [ \$res -eq 0 ]; then\n";
+-    print SCR "   echo successful\n";
++    print SCR "    echo \"successful\"\n";
+     print SCR "else\n";
+     print SCR "   echo \"unsuccessful: exit code \$res: \$out\" \n";
+     print SCR "fi\n";
+@@ -5302,13 +5303,19 @@
+ 	$pipecmd = "sh $tmp_script ";
+     } else {
+ 	print $::msg "| Checking '$cfg::buffer' on host $host... ";
+-	$pipecmd =  "cat $tmp_script | ($::remoteshell $host 'cat > $tmp_script; sh $tmp_script; rm -f $tmp_script')";
++	$pipecmd =  "$::remoteshell $host '$::path{mkdir} -p $cfg::tmpdir'; cat $tmp_script | ($::remoteshell $host 'cat > $tmp_script; sh $tmp_script; rm -rf $cfg::tmpdir')";
+     }
+ 
+     if (!defined($::debug)) {
+ 
+ 	open(PIPE,"$pipecmd |") || die;
++
++	$explicit_success = 0;
+ 	while (<PIPE>) {
++		if (/^successful$/) {
++			$explicit_success = 1;
++			last;
++		}
+ 	    if (/^unsuccessful: exit code (\d+): (.*)/) {
+ 		$retval = $1;
+ 		my $out = $2;
+@@ -5337,11 +5344,15 @@
+ 	print $::msg "\n(debug) $pipecmd\n";
+     }
+ 
+-    if ($retval == 0) {
++	if ($explicit_success) {
+ 	print $::msg "Ok\n";
+     }  else {
++		if ($retval == 0) {
++		    push(@::errors, "Unanticipated problems encountered testing '$cfg::buffer' on host '$host'.");
++		}  else {
+ 	print $::msg "Failed!\n";
+     }
++	}
+     unlink("$tmp_script");
+ 
+     return($retval);

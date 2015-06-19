@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>mrueg@gentoo.org</email>
+    <name>Manuel Rüger</name>
+  </maintainer>
+  <longdescription lang="en">spawn-fcgi is used to spawn FastCGI applications
+
+  Features
+  --------
+  - binds to IPv4 and Unix domain sockets
+  - supports privilege separation: chmod/chown socket, drop to uid/gid
+  - supports chroot
+  - supports daemontools supervise
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,233 @@
+# ChangeLog for dev-util/wxglade
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/wxglade/ChangeLog,v 1.58 2012/09/05 09:49:31 jlec Exp $
+
+  05 Sep 2012; Justin Lecher <jlec@gentoo.org> wxglade-0.6.3-r1.ebuild:
+  Use doicon instead insinto + doins to install icon files
+
+  27 Mar 2011; Brent Baude <ranger@gentoo.org> wxglade-0.6.3-r1.ebuild:
+  Marking wxglade-0.6.3-r1 ppc for bug 333735
+
+  18 Sep 2010; Raúl Porcel <armin76@gentoo.org> wxglade-0.6.3-r1.ebuild:
+  sparc stable wrt #333735
+
+  23 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  wxglade-0.6.3-r1.ebuild:
+  Stable on amd64 wrt bug #333735
+
+  21 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  wxglade-0.6.3-r1.ebuild:
+  x86 stable wrt bug #333735
+
+*wxglade-0.6.3-r1 (04 Jul 2010)
+
+  04 Jul 2010; Ryan Hill <dirtyepic@gentoo.org> +wxglade-0.6.3-r1.ebuild:
+  Support multiple python ABIs. (bug #326125)
+
+  08 Mar 2010; Jonathan Callen <abcd@gentoo.org> wxglade-0.6.3.ebuild:
+  Move PYTHON_DEPEND before inherit(), so that the dep is actually added
+
+  06 Mar 2010; Ryan Hill <dirtyepic@gentoo.org> -wxglade-0.6.ebuild,
+  -wxglade-0.6.1.ebuild, -files/wxglade-0.6.1-wxversion.patch,
+  wxglade-0.6.3.ebuild:
+  Don't use deprecated python functions, switch to EAPI 2, use python version in
+  wrapper script.  No change in functionality.  Remove old.
+
+  18 Oct 2008; Ferris McCormick <fmccor@gentoo.org> wxglade-0.6.3.ebuild:
+  Sparc stable, Bug #242114.
+
+  18 Oct 2008; nixnut <nixnut@gentoo.org> wxglade-0.6.3.ebuild:
+  Stable on ppc wrt bug 242114
+
+  16 Oct 2008; Markus Meier <maekke@gentoo.org> wxglade-0.6.3.ebuild:
+  amd64/x86 stable, bug #242114
+
+  29 May 2008; Ali Polatel <hawking@gentoo.org> wxglade-0.6.ebuild,
+  wxglade-0.6.1.ebuild, wxglade-0.6.3.ebuild:
+  python_mod_{cleanup,optimize} are ROOT aware.
+
+*wxglade-0.6.3 (11 Mar 2008)
+
+  11 Mar 2008; Ryan Hill <dirtyepic@gentoo.org>
+  +files/wxglade-0.6.3-wxversion.patch, +wxglade-0.6.3.ebuild:
+  Version bump.  Now requires wxpython-2.8.
+
+  28 Jan 2008; Raúl Porcel <armin76@gentoo.org> metadata.xml:
+  Replace wxwindows with wxwidgets in metadata
+
+  04 Dec 2007; Ryan Hill <dirtyepic@gentoo.org>
+  +files/wxglade-0.6.1-wxversion.patch, wxglade-0.6.ebuild,
+  wxglade-0.6.1.ebuild:
+  Lock to wxpython-2.6 at runtime.
+
+  04 Dec 2007; Ryan Hill <dirtyepic@gentoo.org> -wxglade-0.4.1.ebuild:
+  Remove old.
+
+  04 Nov 2007; Christoph Mende <angelos@gentoo.org> wxglade-0.6.ebuild:
+  Stable on amd64 wrt bug #197358
+
+  30 Oct 2007; nixnut <nixnut@gentoo.org> wxglade-0.6.ebuild:
+  Stable on ppc wrt bug 197358
+
+  29 Oct 2007; Markus Meier <maekke@gentoo.org> wxglade-0.6.ebuild:
+  x86 stable, bug #197358
+
+  29 Oct 2007; Ferris McCormick <fmccor@gentoo.org> wxglade-0.6.ebuild:
+  Sparc stable --- Bug #197358
+
+*wxglade-0.6.1 (29 Oct 2007)
+
+  29 Oct 2007; Ryan Hill <dirtyepic@gentoo.org> +wxglade-0.6.1.ebuild:
+  Version bump.
+
+  03 Oct 2007; Ryan Hill <dirtyepic@gentoo.org> wxglade-0.4.1.ebuild,
+  -wxglade-0.5.ebuild:
+  Lock wxpython dependency.  Fix quoting.  Remove old.
+
+  24 Sep 2007; Ryan Hill <dirtyepic@gentoo.org> wxglade-0.6.ebuild:
+  Use get_libdir everywhere.
+
+*wxglade-0.6 (24 Sep 2007)
+
+  24 Sep 2007; Ryan Hill <dirtyepic@gentoo.org> +wxglade-0.6.ebuild:
+  Version bump.
+
+  20 May 2007; <leio@gentoo.org> -wxglade-0.4.ebuild:
+  Remove old
+
+  19 May 2007; Peter Weller <welp@gentoo.org> wxglade-0.4.1.ebuild:
+  Stable on amd64 wrt bug 177753
+
+*wxglade-0.5 (13 May 2007)
+
+  13 May 2007; Mart Raudsepp <leio@gentoo.org> +wxglade-0.5.ebuild:
+  Version bump, bug 177171. Also install a desktop entry and handle python
+  optimized files properly
+
+  13 May 2007; nixnut <nixnut@gentoo.org> wxglade-0.4.1.ebuild:
+  Stable on ppc wrt bug 177753
+
+  13 May 2007; Raúl Porcel <armin76@gentoo.org> wxglade-0.4.1.ebuild:
+  x86 stable wrt bug 177753
+
+  09 May 2007; Gustavo Zacarias <gustavoz@gentoo.org> wxglade-0.4.1.ebuild:
+  Stable on sparc wrt #177753
+
+  03 Feb 2007; Ryan Hill <dirtyepic@gentoo.org> Manifest:
+  Remove old version.
+
+*wxglade-0.4.1 (24 Dec 2006)
+
+  24 Dec 2006; Ryan Hill <dirtyepic@gentoo.org> +wxglade-0.4.1.ebuild:
+  Version bump.  Fixes bug #133213.
+
+  24 Dec 2006; Ryan Hill <dirtyepic@gentoo.org> wxglade-0.4.ebuild:
+  Update wxpython dependency.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> wxglade-0.4.ebuild:
+  Stable on sparc wrt #149952
+
+  04 Oct 2006; <nixnut@gentoo.org> wxglade-0.4.ebuild:
+  Stable on ppc wrt bug 149952
+
+  04 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org> wxglade-0.4.ebuild:
+  Stable on x86 wrt bug #149952.
+
+  04 Oct 2006; Simon Stelling <blubb@gentoo.org> wxglade-0.4.ebuild:
+  stable on amd64
+
+  03 Oct 2006; Mart Raudsepp <leio@gentoo.org> -wxglade-0.3.1.ebuild,
+  -wxglade-0.3.1-r1.ebuild, -wxglade-0.3.2.ebuild, -wxglade-0.3.3.ebuild,
+  -wxglade-0.3.4.ebuild, -wxglade-0.3.5.ebuild:
+  Prune old versions.
+
+*wxglade-0.4 (21 Apr 2006)
+
+  21 Apr 2006; Mark Loeser <halcy0n@gentoo.org> +wxglade-0.4.ebuild:
+  Bump to version 0.4, bug #109523; thanks to Jason Lai <ensignyu AT yahoo DOT
+  com>
+
+  29 Nov 2005; Luis Medinas <metalgod@gentoo.org> wxglade-0.3.5.1.ebuild:
+  Stable on amd64.
+
+  20 Jun 2005; Jason Wever <weeve@gentoo.org> wxglade-0.3.5.1.ebuild:
+  Added ~sparc keyword.
+
+*wxglade-0.3.5.1 (13 Jan 2005)
+
+  13 Jan 2005; Rob Cakebread <pythonhead@gentoo.org> wxglade-0.3.5.1.ebuild,
+  wxglade-0.3.5.ebuild:
+  Stable x86, removed dep on app-arch/unzip
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  08 Nov 2004; Rob Cakebread <pythonhead@gentoo.org> :
+  Version bump
+
+*wxglade-0.3.5 (04 Nov 2004)
+
+  04 Nov 2004; Rob Cakebread <pythonhead@gentoo.org> +wxglade-0.3.5.ebuild:
+  Version bump
+
+  03 Nov 2004; Thomas Matthijs <axxo@gentoo.org> wxglade-0.3.4.ebuild:
+  depend on app-arch/unzip
+
+  17 Oct 2004; Rob Cakebread <pythonhead@gentoo.org> wxglade-0.3.4.ebuild:
+  Changed SRC_URI due to corrupt tarball.
+
+  15 Oct 2004; Rob Cakebread <pythonhead@gentoo.org> wxglade-0.3.4.ebuild:
+  Marked stable x86 and fixed bug# 67673 Thanks Vaclav Slavik
+  <vaclav.slavik@matfyz.cz>
+
+*wxglade-0.3.4 (30 Aug 2004)
+
+  30 Aug 2004; Rob Cakebread <pythonhead@gentoo.org> wxglade-0.3.3.ebuild,
+  +wxglade-0.3.4.ebuild:
+  Uses python eclass now
+
+*wxglade-0.3.4 (30 Aug 2004)
+
+  30 Aug 2004; Rob Cakebread <pythonhead@gentoo.org> +wxglade-0.3.4.ebuild:
+  Version bump.
+
+  26 Aug 2004; Michael Hanselmann <hansmi@gentoo.org> wxglade-0.3.3.ebuild:
+  Marked ~amd64.
+
+  20 Aug 2004; Rob Cakebread <pythonhead@gentoo.org> wxglade-0.3.1-r1.ebuild,
+  wxglade-0.3.1.ebuild, wxglade-0.3.2.ebuild, wxglade-0.3.3.ebuild:
+  Marked stable x86
+
+  03 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> wxglade-0.3.1-r1.ebuild,
+  wxglade-0.3.1.ebuild, wxglade-0.3.2.ebuild, wxglade-0.3.3.ebuild:
+  Change wxPython to wxpython.
+
+*wxglade-0.3.3 (24 May 2004)
+
+  24 May 2004; Rob Cakebread <pythonhead@gentoo.org> +wxglade-0.3.3.ebuild:
+  Version bump (bug #51539)
+
+  17 Apr 2004; David Holm <dholm@gentoo.org> wxglade-0.3.2.ebuild:
+  Added to ~ppc.
+
+*wxglade-0.3.3 (24 May 2004)
+
+  24 May 2004; Rob Cakebread <pythonhead@gentoo.org> wxglade-0.3.2.ebuild,
+  +wxglade-0.3.3.ebuild:
+  Version bump (bug #51539)
+
+*wxglade-0.3.2 (16 Apr 2004)
+
+  16 Apr 2004; Rob Cakebread <pythonhead@gentoo.org> +wxglade-0.3.2.ebuild:
+  Version bump (bug #45881). Thanks Piotr Kalinowski <pitkali@poczta.polhost.pl>
+
+*wxglade-0.3.1-r1 (13 Jan 2004)
+
+  13 Jan 2004; Rob Cakebread <pythonhead@gentoo.org> wxglade-0.3.1-r1.ebuild:
+  Added symlink to docs so tutorial would work.
+
+*wxglade-0.3.1 (22 Nov 2003)
+
+  22 Nov 2003; Rob Cakebread <pythonhead@gentoo.org> metadata.xml,
+  wxglade-0.3.1.ebuild:
+  Initial commit

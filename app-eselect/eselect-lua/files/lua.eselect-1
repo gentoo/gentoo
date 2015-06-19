@@ -1,0 +1,150 @@
+# -*-eselect-*-  vim: ft=eselect
+# Copyright 2014-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+inherit config multilib
+
+DESCRIPTION="Manage lua symlinks"
+MAINTAINER="mabi@gentoo.org"
+
+HEADER_FILES="lauxlib.h luaconf.h lua.h lua.hpp lualib.h"
+
+remove_symlinks() {
+	rm -f "${EROOT}"/usr/bin/{lua,luac} &>/dev/null 
+	for dir in $(get_libdirs) ; do
+		rm -f "${EROOT}"${dir}/liblua.so &>/dev/null && \
+		rm -f "${EROOT}"${dir}/pkgconfig/lua.pc &>/dev/null
+	done
+	for f in $HEADER_FILES ; do
+		rm -f "${EROOT}"/usr/include/$f
+	done
+	rm -f "${EROOT}"/usr/share/man/man1/{lua,luac}.1{,.gz,.bz2,.lzma} &>/dev/null
+}
+
+set_symlinks() {
+	local ver=$1
+	ln -s "${EROOT}"/usr/bin/lua{$ver,}
+	ln -s "${EROOT}"/usr/bin/luac{$ver,}
+	for dir in $(get_libdirs) ; do
+		ln -s "${dir}"/liblua{$ver,}.so
+		ln -s "${dir}"/pkgconfig/lua{$ver,}.pc
+	done
+	for orig in "${EROOT}"/usr/share/man/man1/lua*$ver.1* ; do
+		ln -s "${orig}" "${orig//$ver}"
+	done
+	for f in $HEADER_FILES ; do
+		ln -s "${EROOT}"/usr/include/lua$ver/$f "${EROOT}"/usr/include
+	done
+}
+
+get_libdirs() {
+	local dir libdirs
+	for dir in $(list_libdirs); do
+		[[ -L ${EROOT}/usr/${dir} ]] && continue
+		ls "${EROOT}"/usr/${dir}/liblua*.* > /dev/null 2>&1 || continue
+
+		libdirs+=' '/usr/${dir}
+	done
+	echo ${libdirs:-/usr/lib}
+}
+
+find_targets() {
+	local dirs
+	local prefix="${EROOT}/usr/bin/lua"
+	for f in ${prefix}5* ; do
+		dirs="${dirs} ${f##$prefix}"
+	done
+	echo $dirs
+}
+
+resolv_target() {
+	local targets=( $(find_targets) )
+	if is_number $1; then
+		[[ $1 -le ${#targets[@]} && $1 -gt 0 ]] && echo "${targets[ $(( $1 - 1 )) ]}"
+	elif has $1 ${targets[@]}; then
+	  echo $1
+	fi
+}
+
+get_active_version() {
+	readlink -e "${EROOT}"/usr/bin/lua | sed -ne "s:.*/usr/bin/lua\([\d.-]*\):\1:p"
+}
+
+## Actual actions
+
+## set action
+
+describe_set() {
+	echo "Sets the current version of lua"
+}
+
+describe_set_parameters() {
+	echo '<target>'
+}
+
+describe_set_options() {
+	echo 'target:	Target name or number (from "list" action)'
+}
+
+
+do_set() {
+	local target=$(resolv_target $1)
+	if [[ -z "${target}" ]]; then
+	  die -q "You need to specify a version"
+	fi
+	remove_symlinks
+	set_symlinks $target
+}
+
+## List action
+
+describe_list() {
+	echo 'Lists available lua versions'
+}
+
+do_list() {
+	local targets
+	local a
+	targets=( $(find_targets) )
+	a=$(get_active_version)
+	for (( i = 0; i < ${#targets[@]}; i++ )) ; do
+		[[ $a == ${targets[i]} ]] && targets[i]=$(highlight_marker "${targets[i]}")
+	done
+	write_numbered_list -m '(none found)' "${targets[@]}"
+}
+
+## Show action
+
+describe_show() {
+	echo 'Show the active lua version'
+}
+
+do_show() {
+	get_active_version
+}
+
+## update action
+
+describe_update() {
+	echo 'Automatically update the lua version'
+}
+
+describe_update_options() {
+	echo 'ifunset : Do not override existing implementation'
+}
+
+do_update() {
+	[[ -n ${1} && ! ( ${1} == ifunset || ${1} == '--if-unset' ) ]] && \
+		die -q 'Usage error'
+
+	[[ ( ${1} == ifunset || ${1} == '--if-unset' ) && -n $(get_active_version) ]] && \
+		return
+
+	remove_symlinks
+	
+	local targets=( $(find_targets) )
+	if [[ -n ${#targets[@]} ]] ; then
+		local target=${targets[${#targets[@]} - 1]}
+		set_symlinks $target || echo 'Nothing to update'
+	fi
+}

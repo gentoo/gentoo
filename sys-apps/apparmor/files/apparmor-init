@@ -1,0 +1,92 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/apparmor/files/apparmor-init,v 1.1 2013/12/03 17:34:06 kensington Exp $
+
+description="Load all configured profiles for the AppArmor security module."
+description_reload="Reload all profiles"
+
+extra_started_commands="reload"
+
+aa_action() {
+	local arg=$1
+	local return
+
+	shift
+	$*
+	return=$?
+
+	if [ ${return} -eq 0 ]; then
+		aa_log_success_msg $arg
+	else
+		aa_log_failure_msg arg
+	fi
+
+	return $return
+}
+
+aa_log_action_start() {
+	ebegin $1
+}
+
+aa_log_action_end() {
+	eend $1
+}
+
+aa_log_success_msg() {
+	einfo $1
+}
+
+aa_log_warning_msg() {
+	ewarn $1
+}
+
+aa_log_failure_msg() {
+	eerror $1
+}
+
+aa_log_skipped_msg() {
+	einfo $1
+}
+
+aa_log_daemon_msg() {
+	einfo $1
+}
+
+aa_log_end_msg() {
+	eend $1
+}
+
+. /usr/libexec/rc.apparmor.functions
+
+start() {
+	ebegin "Starting AppArmor"
+	eindent
+
+	if ! is_apparmor_loaded ; then
+		load_module
+		if [ $? -ne 0 ]; then
+			eerror "AppArmor kernel support is not present"
+			eend 1
+			return 1
+		fi
+	fi
+
+	parse_profiles load
+
+	eoutdent
+}
+
+stop() {
+	ebegin "Stopping AppArmor"
+	eindent
+	apparmor_stop
+	eoutdent
+}
+
+reload() {
+	# todo: split out clean_profiles into its own function upstream
+	# so we can do parse_profiles reload && clean_profiles
+	# and do a proper reload instead of restart
+	apparmor_restart
+}

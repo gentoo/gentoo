@@ -1,0 +1,11 @@
+--- a/opjitconv/opjitconv.c
++++ b/opjitconv/opjitconv.c
+@@ -216,7 +216,7 @@
+ 	int file_locked = 0;
+ 	unsigned int usecs_waited = 0;
+ 	int rc = OP_JIT_CONV_OK;
+-	int fd = open(dumpfile, S_IRUSR);
++	int fd = open(dumpfile, O_RDONLY);
+ 	if (fd < 0) {
+ 		perror("opjitconv failed to open JIT dumpfile");
+ 		return OP_JIT_CONV_FAIL;

@@ -1,0 +1,23 @@
+# ChangeLog for games-util/fteqcc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-util/fteqcc/ChangeLog,v 1.6 2015/03/16 06:29:10 mr_bones_ Exp $
+
+  16 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> fteqcc-2501.ebuild:
+  EAPI=5
+
+  20 Jan 2010; Markus Meier <maekke@gentoo.org> fteqcc-2501.ebuild:
+  amd64/x86 stable, bug #299852
+
+  29 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org> fteqcc-2501.ebuild:
+  EAPI=2; more toolchain respect
+
+  02 Jul 2007; Tristan Heaven <nyhm@gentoo.org> fteqcc-2501.ebuild:
+  RESTRICT="test"
+
+  20 Mar 2006; Mark Loeser <halcy0n@gentoo.org> fteqcc-2501.ebuild:
+  Add DEPEND on app-arch/unzip
+
+*fteqcc-2501 (04 Nov 2005)
+
+  04 Nov 2005; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by fabien Zouaoui #111281.

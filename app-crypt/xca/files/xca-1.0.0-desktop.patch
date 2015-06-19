@@ -1,0 +1,8 @@
+--- misc/xca.desktop	2012-05-12 05:37:14.000000000 -0400
++++ xca.desktop.new	2013-01-03 19:43:35.877856711 -0500
+@@ -7,5 +7,5 @@
+ Icon=xca-32x32
+ Terminal=false
+-Categories=Application;Utility;Qt;
++Categories=Utility;Qt;
+ MimeType=application/x-xca-database;application/x-xca-template;application/x-x509-ca-cert;application/pkcs10;application/x-pkcs7-certificates;application/x-pkcs12;

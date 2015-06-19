@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-chemistry</herd>
+  <maintainer>
+    <email>jlec@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+XDSgui is a GUI (graphical user interface) for XDS that is supposed to help both
+novice and experienced users. It graphically displays the ASCII and cbf files 
+that XDS writes, and can run useful shell commands with a simple mouse click. 
+The design goal of the program is to enable XDS data processing without the 
+commandline, and to supply additional graphical information.
+</longdescription>
+</pkgmetadata>

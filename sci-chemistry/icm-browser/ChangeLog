@@ -1,0 +1,38 @@
+# ChangeLog for sci-chemistry/icm-browser
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/icm-browser/ChangeLog,v 1.8 2015/06/14 18:54:38 ulm Exp $
+
+  14 Jun 2015; Ulrich Müller <ulm@gentoo.org> icm-browser-3.6.1i.ebuild:
+  [QA] Remove emul-linux-x86-* from dependencies.
+
+  16 Oct 2014; Pacho Ramos <pacho@gentoo.org> icm-browser-3.6.1i.ebuild:
+  Support multilib providers for deps. Bump to EAPI=5.
+
+  07 Sep 2014; Ulrich Müller <ulm@gentoo.org> icm-browser-3.6.1i.ebuild:
+  Replace emul-linux-x86-compat dependency by virtual/libstdc++, bug 522218.
+
+  12 Jul 2011; Alexey Shvetsov <alexxy@gentoo.org> icm-browser-3.6.1i.ebuild,
+  +files/icm-browser.xpm, -files/icm-browser.png:
+  fix bug #370917
+
+*icm-browser-3.6.1i (21 May 2010)
+
+  21 May 2010; Alexey Shvetsov <alexxy@gentoo.org>
+  -icm-browser-3.6.1h.ebuild, +icm-browser-3.6.1i.ebuild:
+  Version bump
+
+  09 Mar 2010; Jonathan Callen <abcd@gentoo.org> icm-browser-3.6.1h.ebuild:
+  QA: When not using an absolute path, you MUST NOT use a file extension
+  (.png, .svg, or .xpm) on the icon name for make_desktop_entry
+
+*icm-browser-3.6.1h (14 Feb 2010)
+
+  14 Feb 2010; Alexey Shvetsov <alexxy@gentoo.org>
+  -icm-browser-3.6.1g.ebuild, +icm-browser-3.6.1h.ebuild:
+  Version bump
+
+*icm-browser-3.6.1g (05 Nov 2009)
+
+  05 Nov 2009; Alexey Shvetsov <alexxy@gentoo.org> +files/90icm-browser,
+  +icm-browser-3.6.1g.ebuild, +files/icm-browser.png, +metadata.xml:
+  Initial import

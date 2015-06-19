@@ -1,0 +1,22 @@
+--- src/client/Makefile.old	2010-09-30 18:08:16.000000000 +0200
++++ src/client/Makefile	2010-09-30 18:08:41.000000000 +0200
+@@ -48,7 +48,7 @@
+ 
+ #Apps
+ client: $(OBJECTS)
+-	$(CC) -o $(BINARY) $(CFLAGS) $(OBJECTS) $(XTUXLIB) $(MATHLIB) $(X11LIB) $(XPMLIB) $(SOCKLIB) $(GGZLIB)
++	$(CC) -o $(BINARY) $(LDFLAGS) $(CFLAGS) $(OBJECTS) $(XTUXLIB) $(MATHLIB) $(X11LIB) $(XPMLIB) $(SOCKLIB) $(GGZLIB)
+ 
+ # OBJECTS
+ .c.o:	client.h $*.c
+--- src/server/Makefile.old	2010-09-30 18:09:55.000000000 +0200
++++ src/server/Makefile	2010-09-30 18:10:16.000000000 +0200
+@@ -41,7 +41,7 @@
+ 
+ #Apps
+ server:	$(OBJECTS)
+-	$(CC) -o $(BINARY) $(OBJECTS) $(XTUXLIB) $(MATHLIB) $(SOCKLIB) $(GGZLIB)
++	$(CC) $(LDFLAGS) -o $(BINARY) $(OBJECTS) $(XTUXLIB) $(MATHLIB) $(SOCKLIB) $(GGZLIB)
+ 
+ # OBJECTS
+ .c.o:	server.h $*.h $*.c

@@ -1,0 +1,13 @@
+# ChangeLog for sys-libs/uid_wrapper
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/uid_wrapper/ChangeLog,v 1.2 2015/03/08 14:25:15 polynomial-c Exp $
+
+  08 Mar 2015; Lars Wendler <polynomial-c@gentoo.org> uid_wrapper-1.1.0.ebuild:
+  Fixed DESCRIPTION.
+
+*uid_wrapper-1.1.0 (08 Mar 2015)
+
+  08 Mar 2015; Lars Wendler <polynomial-c@gentoo.org>
+  +uid_wrapper-1.1.0.ebuild, +metadata.xml:
+  Initial commit. Needed for samba-4.2
+

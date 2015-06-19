@@ -1,0 +1,71 @@
+if you try to generate a bunch of thumbnails at once, it can crash:
+
+Program received signal SIGABRT, Aborted.
+[Switching to Thread 0x7fdb7a6cb700 (LWP 17295)]
+0x00007fdb8031c899 in __GI_raise (sig=sig@entry=0x6) at ../nptl/sysdeps/unix/sysv/linux/raise.c:56
+56      ../nptl/sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+(gdb) bt
+#0  0x00007fdb8031c899 in __GI_raise (sig=sig@entry=0x6) at ../nptl/sysdeps/unix/sysv/linux/raise.c:56
+#1  0x00007fdb8031de27 in __GI_abort () at abort.c:89
+#2  0x00007fdb7f6b9222 in ff_unlock_avcodec () at /var/tmp/portage/media-video/ffmpeg-1.2.6/work/ffmpeg-1.2.6/libavcodec/utils.c:2767
+#3  0x00007fdb7f6b9662 in avcodec_open2 (avctx=0x7fdb64032080, codec=<optimized out>, options=0x0) at /var/tmp/portage/media-video/ffmpeg-1.2.6/work/ffmpeg-1.2.6/libavcodec/utils.c:1132
+#4  0x00007fdb81be57bb in ffmpegthumbnailer::MovieDecoder::initializeVideo (this=this@entry=0x7fdb7a6ca000) at libffmpegthumbnailer/moviedecoder.cpp:176
+#5  0x00007fdb81be599c in ffmpegthumbnailer::MovieDecoder::initialize (this=0x7fdb7a6ca000, filename=...) at libffmpegthumbnailer/moviedecoder.cpp:86
+#6  0x00007fdb81be92cc in ffmpegthumbnailer::VideoThumbnailer::generateThumbnail (this=this@entry=0x7fdb6402af90, videoFile=..., imageWriter=..., pAvContext=pAvContext@entry=0x0) at libffmpegthumbnailer/videothumbnailer.cpp:118
+#7  0x00007fdb81be97b4 in ffmpegthumbnailer::VideoThumbnailer::generateThumbnail (this=this@entry=0x7fdb6402af90, videoFile=..., type=<optimized out>, type@entry=Jpeg, buffer=..., pAvContext=pAvContext@entry=0x0) at libffmpegthumbnailer/videothumbnailer.cpp:191
+#8  0x00007fdb81bea23e in video_thumbnailer_generate_thumbnail_to_buffer (thumbnailer=<optimized out>, movie_filename=0x7fdb7003abc0 "........mp4", generated_image_data=0x7fdb64022680) at libffmpegthumbnailer/videothumbnailerc.cpp:113
+#9  0x00000000004ebfed in FfmpegHandler::serveContent (this=this@entry=0x7fdb64020ff0, item=..., resNum=resNum@entry=0x1, data_size=data_size@entry=0x7fdb7a6caaf0) at ../src/metadata/ffmpeg_handler.cc:475
+#10 0x00000000004e48d7 in FileRequestHandler::open (this=<optimized out>, filename=<optimized out>, info=0x7fdb7a6caaf0, mode=<optimized out>) at ../src/file_request_handler.cc:575
+#11 0x00000000004bba74 in web_open (filename=0x7fdb640175f0 "/content/media/object_id/16634/res_id/1/rh/6/ext/file.jpg", info=0x7fdb7a6caaf0, mode=UPNP_READ) at ../src/web_callbacks.cc:198
+#12 0x000000000052674b in process_request (Fp=<synthetic pointer>, RespInstr=0x7fdb7a6cab70, alias=0x7fdb7a6cab20, filename=0x7fdb7a6caad0, headers=0x7fdb7a6caab0, rtype=<synthetic pointer>, req=0x7fdb7a6cacd0) at ../upnp/src/genlib/net/http/webserver.c:1343
+#13 web_server_callback (parser=0x7fdb7a6cacd0, req=0x7fdb7a6cacd0, info=0x7fdb7a6cacc0) at ../upnp/src/genlib/net/http/webserver.c:1803
+#14 0x000000000051f29a in dispatch_request (hparser=0x7fdb7a6cacd0, info=0x7fdb7a6cacc0) at ../upnp/src/genlib/miniserver/miniserver.c:236
+#15 handle_request (args=0x7fdb6c000c40) at ../upnp/src/genlib/miniserver/miniserver.c:339
+#16 0x000000000052cc66 in WorkerThread (arg=0x7a80e0 <gRecvThreadPool>) at ../threadutil/src/ThreadPool.c:594
+#17 0x00007fdb80697333 in start_thread (arg=0x7fdb7a6cb700) at pthread_create.c:309
+#18 0x00007fdb803d226d in clone () at ../sysdeps/unix/sysv/linux/x86_64/clone.S:111
+(gdb)
+
+--- a/src/metadata/ffmpeg_handler.cc
++++ b/src/metadata/ffmpeg_handler.cc
+@@ -311,6 +311,10 @@ void FfmpegHandler::fillMetadata(Ref<CdsItem> item)
+ 
+ #ifdef HAVE_FFMPEGTHUMBNAILER
+ 
++// The ffmpegthumbnailer code (ffmpeg?) is not threading safe.
++// Add a lock around the usage to avoid crashing randomly.
++static pthread_mutex_t thumb_lock;
++
+ static int _mkdir(const char *path)
+ {
+     int ret = mkdir(path, 0777);
+@@ -446,6 +450,9 @@ Ref<IOHandler> FfmpegHandler::serveContent(Ref<CdsItem> item, int resNum, off_t
+             return h;
+         }
+     }
++
++    pthread_mutex_lock(&thumb_lock);
++
+ #ifdef FFMPEGTHUMBNAILER_OLD_API
+     video_thumbnailer *th = create_thumbnailer();
+     image_data *img = create_image_data();
+@@ -474,8 +481,11 @@ Ref<IOHandler> FfmpegHandler::serveContent(Ref<CdsItem> item, int resNum, off_t
+     if (video_thumbnailer_generate_thumbnail_to_buffer(th, 
+                                          item->getLocation().c_str(), img) != 0)
+ #endif // old api
++    {
++        pthread_mutex_unlock(&thumb_lock);
+         throw _Exception(_("Could not generate thumbnail for ") + 
+                 item->getLocation());
++    }
+     if (cfg->getBoolOption(CFG_SERVER_EXTOPTS_FFMPEGTHUMBNAILER_CACHE_DIR_ENABLED)) {
+         writeThumbnailCacheFile(item->getLocation(),
+                                 img->image_data_ptr, img->image_data_size);
+@@ -491,6 +501,7 @@ Ref<IOHandler> FfmpegHandler::serveContent(Ref<CdsItem> item, int resNum, off_t
+     video_thumbnailer_destroy_image_data(img);
+     video_thumbnailer_destroy(th);
+ #endif// old api
++    pthread_mutex_unlock(&thumb_lock);
+     return h;
+ #else
+     return nil;

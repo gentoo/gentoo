@@ -1,0 +1,28 @@
+# ChangeLog for dev-perl/Module-Build-Tiny
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Module-Build-Tiny/ChangeLog,v 1.6 2015/05/20 04:49:39 mattst88 Exp $
+
+  20 May 2015; Matt Turner <mattst88@gentoo.org>
+  Module-Build-Tiny-0.39.0.ebuild:
+  Added ~alpha, bug 548352.
+
+  03 May 2015; Jeroen Roovers <jer@gentoo.org> Module-Build-Tiny-0.39.0.ebuild:
+  Mark ~hppa (bug #548352).
+
+  03 May 2015; Jeroen Roovers <jer@gentoo.org> Module-Build-Tiny-0.39.0.ebuild:
+  Mark ~ppc64 (bug #548352).
+
+*Module-Build-Tiny-0.39.0 (21 Feb 2015)
+
+  21 Feb 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Module-Build-Tiny-0.39.0.ebuild:
+  Version bump
+
+  09 Nov 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Module-Build-Tiny-0.37.0.ebuild:
+  Add ~ppc keyword wrt bug #518644
+
+*Module-Build-Tiny-0.37.0 (31 Jul 2014)
+
+  31 Jul 2014; Vladimir Smirnov +Module-Build-Tiny-0.37.0.ebuild, +metadata.xml:
+  Initial bump. Based on Kent's ebuild from perl-experimental

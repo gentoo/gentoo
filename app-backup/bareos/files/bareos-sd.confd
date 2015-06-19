@@ -1,0 +1,11 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/bareos/files/bareos-sd.confd,v 1.1 2013/10/21 21:52:50 mschiff Exp $
+
+# Config file for /etc/init.d/bareos-sd
+
+# Options for the storage daemon.
+# The storage daemon can be run as a non-root user, however
+# please ensure that this user has proper permissions to
+# access your backup devices.
+SD_OPTIONS="-u root -g bareos -c /etc/bareos/bareos-sd.conf"

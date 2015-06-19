@@ -1,0 +1,232 @@
+# ChangeLog for kde-base/kde-dev-scripts
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-apps/kde-dev-scripts/ChangeLog,v 1.1 2015/06/04 18:44:50 kensington Exp $
+
+  18 Feb 2015; Michał Górny <mgorny@gentoo.org> -kde-dev-scripts-4.12.5.ebuild:
+  Remove KDE SC 4.12
+
+  17 Feb 2015; Agostino Sarubbo <ago@gentoo.org> kde-dev-scripts-4.14.3.ebuild:
+  Stable for ppc64 wrt bug #517344
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org> kde-dev-scripts-4.14.3.ebuild:
+  Stable for ppc wrt bug #517344
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org> kde-dev-scripts-4.14.3.ebuild:
+  Stable for x86 wrt bug #517344
+
+  11 Dec 2014; Manuel Rüger <mrueg@gentoo.org> -kde-dev-scripts-4.14.2.ebuild:
+  Remove KDE SC 4.14.2
+
+  11 Dec 2014; Mikle Kolyada <zlogene@gentoo.org> kde-dev-scripts-4.14.3.ebuild:
+  amd64 stable wrt bug #517344
+
+*kde-dev-scripts-4.14.3 (16 Nov 2014)
+
+  16 Nov 2014; Alexey Shvetsov <alexxy@gentoo.org>
+  +kde-dev-scripts-4.14.3.ebuild:
+  Version bump KDE SC 4.14.3
+
+  14 Nov 2014; Manuel Rüger <mrueg@gentoo.org> -kde-dev-scripts-4.13.3.ebuild,
+  -kde-dev-scripts-4.14.1.ebuild:
+  Cleanup old.
+
+  25 Oct 2014; Manuel Rüger <mrueg@gentoo.org> -kde-dev-scripts-4.14.0.ebuild:
+  Cleanup KDE SC 4.14.0
+
+*kde-dev-scripts-4.14.2 (25 Oct 2014)
+
+  25 Oct 2014; Michael Palimaka <kensington@gentoo.org>
+  +kde-dev-scripts-4.14.2.ebuild:
+  Version bump KDE SC 4.14.2
+
+*kde-dev-scripts-4.14.1 (16 Sep 2014)
+
+  16 Sep 2014; Johannes Huber <johu@gentoo.org> +kde-dev-scripts-4.14.1.ebuild:
+  Version bump KDE SC 4.14.1
+
+*kde-dev-scripts-4.14.0 (20 Aug 2014)
+
+  20 Aug 2014; Johannes Huber <johu@gentoo.org> +kde-dev-scripts-4.14.0.ebuild:
+  Version bump KDE SC 4.14.0
+
+  23 Jul 2014; Johannes Huber <johu@gentoo.org> -kde-dev-scripts-4.13.2.ebuild:
+  Remove KDE SC 4.13.2
+
+*kde-dev-scripts-4.13.3 (16 Jul 2014)
+
+  16 Jul 2014; Johannes Huber <johu@gentoo.org> +kde-dev-scripts-4.13.3.ebuild:
+  Version bump KDE SC 4.13.3
+
+  19 Jun 2014; Chris Reffett <creffett@gentoo.org>
+  -kde-dev-scripts-4.13.1.ebuild:
+  Remove KDE SC 4.13.1
+
+  19 Jun 2014; Chris Reffett <creffett@gentoo.org>
+  -kde-dev-scripts-4.13.0.ebuild:
+  Remove KDE SC 4.13.0
+
+*kde-dev-scripts-4.13.2 (15 Jun 2014)
+
+  15 Jun 2014; Michael Palimaka <kensington@gentoo.org>
+  +kde-dev-scripts-4.13.2.ebuild:
+  Version bump KDE SC 4.13.2
+
+*kde-dev-scripts-4.13.1 (13 May 2014)
+
+  13 May 2014; Johannes Huber <johu@gentoo.org> +kde-dev-scripts-4.13.1.ebuild:
+  Version bump KDE SC 4.13.1
+
+  08 May 2014; Agostino Sarubbo <ago@gentoo.org> -kde-dev-scripts-4.11.5.ebuild:
+  Remove old
+
+  08 May 2014; Agostino Sarubbo <ago@gentoo.org> kde-dev-scripts-4.12.5.ebuild:
+  Stable for ppc64, wrt bug #504210
+
+  07 May 2014; Agostino Sarubbo <ago@gentoo.org> kde-dev-scripts-4.12.5.ebuild:
+  Stable for ppc, wrt bug #504210
+
+  07 May 2014; Johannes Huber <johu@gentoo.org> -kde-dev-scripts-4.12.3.ebuild:
+  Remove KDE SC 4.12.3
+
+  07 May 2014; Mikle Kolyada <zlogene@gentoo.org> kde-dev-scripts-4.12.5.ebuild:
+  x86 stable wrt bug #504210
+
+  06 May 2014; Mikle Kolyada <zlogene@gentoo.org> kde-dev-scripts-4.12.5.ebuild:
+  amd64 stable wrt bug #504210
+
+  29 Apr 2014; Johannes Huber <johu@gentoo.org> -kde-dev-scripts-4.12.4.ebuild:
+  Remove KDE SC 4.12.4
+
+*kde-dev-scripts-4.12.5 (29 Apr 2014)
+
+  29 Apr 2014; Johannes Huber <johu@gentoo.org> +kde-dev-scripts-4.12.5.ebuild:
+  Version bump KDE SC 4.12.5
+
+  16 Apr 2014; Johannes Huber <johu@gentoo.org> kde-dev-scripts-4.13.0.ebuild:
+  Restore KEYWORDS for KDE SC 4.13.0
+
+*kde-dev-scripts-4.13.0 (16 Apr 2014)
+
+  16 Apr 2014; Johannes Huber <johu@gentoo.org> +kde-dev-scripts-4.13.0.ebuild:
+  Version bump KDE SC 4.13.0
+
+*kde-dev-scripts-4.12.4 (01 Apr 2014)
+
+  01 Apr 2014; Johannes Huber <johu@gentoo.org> +kde-dev-scripts-4.12.4.ebuild:
+  Version bump KDE SC 4.12.4
+
+  11 Mar 2014; Johannes Huber <johu@gentoo.org> -kde-dev-scripts-4.12.2.ebuild:
+  Remove KDE SC 4.12.2
+
+*kde-dev-scripts-4.12.3 (04 Mar 2014)
+
+  04 Mar 2014; Johannes Huber <johu@gentoo.org> +kde-dev-scripts-4.12.3.ebuild:
+  Version bump KDE SC 4.12.3
+
+  23 Feb 2014; Agostino Sarubbo <ago@gentoo.org> -kde-dev-scripts-4.11.2.ebuild:
+  Remove old
+
+  23 Feb 2014; Agostino Sarubbo <ago@gentoo.org> kde-dev-scripts-4.11.5.ebuild:
+  Stable for ppc64, wrt bug #493782
+
+  20 Feb 2014; Agostino Sarubbo <ago@gentoo.org> kde-dev-scripts-4.11.5.ebuild:
+  Stable for ppc, wrt bug #493782
+
+  16 Feb 2014; Agostino Sarubbo <ago@gentoo.org> kde-dev-scripts-4.11.5.ebuild:
+  Stable for x86, wrt bug #493782
+
+  14 Feb 2014; Johannes Huber <johu@gentoo.org> -kde-dev-scripts-4.12.1.ebuild:
+  Remove KDE SC 4.12.1
+
+  09 Feb 2014; Agostino Sarubbo <ago@gentoo.org> kde-dev-scripts-4.11.5.ebuild:
+  Stable for amd64, wrt bug #493782
+
+*kde-dev-scripts-4.12.2 (06 Feb 2014)
+
+  06 Feb 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +kde-dev-scripts-4.12.2.ebuild:
+  Version bump KDE SC 4.12.2
+
+  20 Jan 2014; Michael Palimaka <kensington@gentoo.org>
+  -kde-dev-scripts-4.12.0.ebuild:
+  Remove KDE SC 4.12.0
+
+  20 Jan 2014; Michael Palimaka <kensington@gentoo.org>
+  kde-dev-scripts-4.11.5.ebuild:
+  Restore keywords that were accidentally omitted.
+
+*kde-dev-scripts-4.12.1 (18 Jan 2014)
+
+  18 Jan 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +kde-dev-scripts-4.12.1.ebuild:
+  Version bump KDE SC 4.12.1
+
+  10 Jan 2014; Chris Reffett <creffett@gentoo.org>
+  -kde-dev-scripts-4.11.4.ebuild:
+  Remove KDE SC 4.11.4
+
+*kde-dev-scripts-4.11.5 (10 Jan 2014)
+
+  10 Jan 2014; Chris Reffett <creffett@gentoo.org>
+  +kde-dev-scripts-4.11.5.ebuild:
+  Bump KDE SC 4.11.5
+
+*kde-dev-scripts-4.12.0 (18 Dec 2013)
+
+  18 Dec 2013; Johannes Huber <johu@gentoo.org> +kde-dev-scripts-4.12.0.ebuild:
+  Version bump KDE SC 4.12.0
+
+  11 Dec 2013; Agostino Sarubbo <ago@gentoo.org> kde-dev-scripts-4.11.2.ebuild:
+  Stable for ppc64, wrt bug #484884
+
+  11 Dec 2013; Agostino Sarubbo <ago@gentoo.org> kde-dev-scripts-4.11.2.ebuild:
+  Stable for ppc, wrt bug #484884
+
+  10 Dec 2013; Agostino Sarubbo <ago@gentoo.org> kde-dev-scripts-4.11.2.ebuild:
+  Stable for ppc, wrt bug #484884
+
+  09 Dec 2013; Agostino Sarubbo <ago@gentoo.org> kde-dev-scripts-4.11.2.ebuild:
+  Stable for x86, wrt bug #484884
+
+  08 Dec 2013; Agostino Sarubbo <ago@gentoo.org> kde-dev-scripts-4.11.2.ebuild:
+  Stable for amd64, wrt bug #484884
+
+  04 Dec 2013; Johannes Huber <johu@gentoo.org> -kde-dev-scripts-4.11.3.ebuild:
+  Remove KDE SC 4.11.3
+
+*kde-dev-scripts-4.11.4 (03 Dec 2013)
+
+  03 Dec 2013; Johannes Huber <johu@gentoo.org> +kde-dev-scripts-4.11.4.ebuild:
+  Version bump KDE SC 4.11.4
+
+*kde-dev-scripts-4.11.3 (05 Nov 2013)
+
+  05 Nov 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +kde-dev-scripts-4.11.3.ebuild:
+  Version bump KDE SC 4.11.3
+
+  10 Oct 2013; Chris Reffett <creffett@gentoo.org>
+  -kde-dev-scripts-4.11.1.ebuild:
+  Drop KDE SC 4.11.1
+
+*kde-dev-scripts-4.11.2 (08 Oct 2013)
+
+  08 Oct 2013; Chris Reffett <creffett@gentoo.org>
+  +kde-dev-scripts-4.11.2.ebuild:
+  Version bump KDE SC 4.11.2
+
+  03 Sep 2013; Chris Reffett <creffett@gentoo.org>
+  -kde-dev-scripts-4.11.0.ebuild:
+  Drop KDE 4.11.0
+
+*kde-dev-scripts-4.11.1 (03 Sep 2013)
+
+  03 Sep 2013; Chris Reffett <creffett@gentoo.org>
+  +kde-dev-scripts-4.11.1.ebuild:
+  Bump KDE to 4.1.1
+
+*kde-dev-scripts-4.11.0 (14 Aug 2013)
+
+  14 Aug 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +kde-dev-scripts-4.11.0.ebuild:
+  Package split out in KDE SC 4.11

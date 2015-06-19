@@ -1,0 +1,76 @@
+# ChangeLog for app-cdr/nrg2iso
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/nrg2iso/ChangeLog,v 1.20 2010/01/01 19:54:50 fauli Exp $
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  nrg2iso-0.4-r1.ebuild:
+  Transfer Prefix keywords
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> nrg2iso-0.4-r1.ebuild:
+  Remove virtual/libc
+
+  28 Apr 2007; Markus Rothe <corsair@gentoo.org> nrg2iso-0.4-r1.ebuild:
+  Added ~ppc64
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  04 Jan 2007; Timothy Redaelli <drizzt@gentoo.org> nrg2iso-0.4-r1.ebuild:
+  Add ~x86-fbsd keyword
+
+  03 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> nrg2iso-0.4-r1.ebuild:
+  Stable on ppc.
+
+  30 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> nrg2iso-0.4-r1.ebuild:
+  Stable on sparc
+
+  28 Aug 2005; Luis Medinas <metalgod@gentoo.org> nrg2iso-0.4-r1.ebuild:
+  Marked Stable on AMD64 and x86. Closes bug #98666.
+
+  25 Dec 2004; Andrej Kacian <ticho@gentoo.org> nrg2iso-0.4-r1.ebuild:
+  Install some docs.
+
+*nrg2iso-0.1 (25 Dec 2004)
+
+  25 Dec 2004; Andrej Kacian <ticho@gentoo.org> +nrg2iso-0.1.ebuild,
+  +nrg2iso-0.4-r1.ebuild, -nrg2iso-0.4.ebuild:
+  Make ~0.4 ebuild pull in actual 0.4 version, instead 0.1. Renamed current
+  0.4 ebuild to 0.1. Closes bug #75618, reported by Janne Liimatainen
+  <jeppe@arabuusimiehet.com>.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  nrg2iso-0.2-r1.ebuild, nrg2iso-0.2.ebuild:
+  Masked nrg2iso-0.2.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  nrg2iso-0.2-r1.ebuild:
+  Masked nrg2iso-0.2-r1.ebuild stable for ppc
+
+*nrg2iso-0.4 (30 Jul 2004)
+
+  30 Jul 2004; Chris Bainbridge <chrb@gentoo.org> +nrg2iso-0.4.ebuild:
+  version bump
+
+  27 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> nrg2iso-0.2-r1.ebuild:
+  Marked ~amd64.
+
+  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  nrg2iso-0.2-r1.ebuild:
+  x86 keyword
+
+*nrg2iso-0.2-r1 (05 May 2004)
+
+  05 May 2004; Mike Frysinger <vapier@gentoo.org> :
+  Fix LFS support #49836 by Richard Stellingwerff.
+
+*nrg2iso-0.2 (09 Jan 2004)
+
+  09 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bumpage #37590.
+
+*nrg2iso-0.1 (09 Sep 2003)
+
+  09 Sep 2003; Chuck Short <zul@gentoo.org> :
+  Initial Version by Florian Zwoch <zwoch@backenmedia.com>
+  Closes bug #27469.
+

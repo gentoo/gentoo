@@ -1,0 +1,47 @@
+--- cccc/posixgcc.mak
++++ cccc/posixgcc.mak
+@@ -24,9 +24,11 @@
+ 
+ PATHSEP=/
+ 
++PCCTS_INC = /usr/include/pccts/
++
+ CCC=g++
+ LD=g++
+-CFLAGS=-c -I../pccts/h $(CFLAGS_DEBUG) -x c++ 
++CFLAGS=-c -I$(PCCTS_INC) $(CFLAGS_DEBUG) -x c++ 
+ C_OFLAG=-o
+ LDFLAGS=$(LDFLAGS_DEBUG)
+ LD_OFLAG=-o
+
+--- cccc/rules.mak
++++ cccc/rules.mak
+@@ -39,8 +39,8 @@
+ 
+ # locations and flags for antlr and dlg (don't change the flags unless you 
+ # understand PCCTS)
+-ANTLR =         $(PCCTS_BIN)$(PATHSEP)antlr
+-DLG =           $(PCCTS_BIN)$(PATHSEP)dlg
++ANTLR =         antlr
++DLG =           dlg
+ # Flags for ANTLR:
+ # -CC       = generate C++ output
+ # -k 2      = use at least 2 tokens of lookahead
+@@ -164,14 +164,14 @@
+ # to cover this is to add explicit rules for the three
+ # PCCTS support files which give rise to linkable object
+ # files.
+-AParser.$(OBJEXT): $(PCCTS_H)$(PATHSEP)AParser.cpp
+-	$(CCC) $(CFLAGS) $(PCCTS_H)$(PATHSEP)AParser.cpp $(C_OFLAG)$*.$(OBJEXT)
++AParser.$(OBJEXT): $(PCCTS_INC)$(PATHSEP)AParser.cpp
++	$(CCC) $(CFLAGS) $(PCCTS_INC)$(PATHSEP)AParser.cpp $(C_OFLAG)$*.$(OBJEXT)
+ 
+-DLexerBase.$(OBJEXT): $(PCCTS_H)$(PATHSEP)DLexerBase.cpp
+-	$(CCC) $(CFLAGS) $(PCCTS_H)$(PATHSEP)DLexerBase.cpp $(C_OFLAG)$*.$(OBJEXT)
++DLexerBase.$(OBJEXT): $(PCCTS_INC)$(PATHSEP)DLexerBase.cpp
++	$(CCC) $(CFLAGS) $(PCCTS_INC)$(PATHSEP)DLexerBase.cpp $(C_OFLAG)$*.$(OBJEXT)
+ 
+-ATokenBuffer.$(OBJEXT): $(PCCTS_H)$(PATHSEP)ATokenBuffer.cpp
+-	$(CCC) $(CFLAGS) $(PCCTS_H)$(PATHSEP)ATokenBuffer.cpp $(C_OFLAG)$*.$(OBJEXT)
++ATokenBuffer.$(OBJEXT): $(PCCTS_INC)$(PATHSEP)ATokenBuffer.cpp
++	$(CCC) $(CFLAGS) $(PCCTS_INC)$(PATHSEP)ATokenBuffer.cpp $(C_OFLAG)$*.$(OBJEXT)

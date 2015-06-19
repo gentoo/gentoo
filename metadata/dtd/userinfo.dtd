@@ -1,0 +1,23 @@
+<!ELEMENT userlist (user+)>
+<!ELEMENT user (realname, pgpkey+, alias*, email+, joined*, retired*, status?, roles?, location?) >
+  <!ATTLIST user username ID #REQUIRED>
+  <!ELEMENT realname (firstname,familyname)>
+    <!ATTLIST realname fullname CDATA #IMPLIED>
+    <!ELEMENT firstname (#PCDATA) >
+    <!ELEMENT familyname (#PCDATA) >
+      <!ATTLIST familyname sort CDATA #IMPLIED>
+  <!ELEMENT pgpkey (#PCDATA)>
+  <!ELEMENT alias (#PCDATA)>
+  <!ELEMENT email (#PCDATA)>
+
+  <!-- all dates should be YYYY-MM-DD - eg '2006-11-22' -->
+  <!ELEMENT joined (#PCDATA)>
+  <!ELEMENT retired (#PCDATA)>
+
+  <!ELEMENT status (#PCDATA)>
+  <!ELEMENT roles (#PCDATA)>
+  <!-- Location is the string displayed on the webpage -->
+  <!ELEMENT location (#PCDATA)>
+      <!-- signed decimal numbers. degrees north/east. -->
+      <!ATTLIST location latitude  CDATA #IMPLIED
+                         longitude CDATA #IMPLIED>

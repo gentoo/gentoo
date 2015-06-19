@@ -1,0 +1,29 @@
+# ChangeLog for x11-themes/lovelock-backgrounds
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/lovelock-backgrounds/ChangeLog,v 1.5 2013/02/07 23:01:17 ulm Exp $
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org>
+  lovelock-backgrounds-14.91.1.1.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  26 Jan 2012; Thomas Kahle <tomka@gentoo.org>
+  lovelock-backgrounds-14.91.1.1.ebuild:
+  x86 stable per bug 361335
+
+  23 Jan 2012; Agostino Sarubbo <ago@gentoo.org>
+  lovelock-backgrounds-14.91.1.1.ebuild:
+  Stable for amd64, wrt bug #361335
+
+*lovelock-backgrounds-14.91.1.1 (13 Aug 2011)
+
+  13 Aug 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -lovelock-backgrounds-14.90.1.3.ebuild,
+  +lovelock-backgrounds-14.91.1.1.ebuild:
+  Version bump to the current release version of the package.
+
+*lovelock-backgrounds-14.90.1.3 (09 Mar 2011)
+
+  09 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +lovelock-backgrounds-14.90.1.3.ebuild, +metadata.xml:
+  Initial import of backgrounds ebuilds.
+

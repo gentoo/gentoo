@@ -1,0 +1,95 @@
+# ChangeLog for net-analyzer/cnet
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cnet/ChangeLog,v 1.21 2015/03/13 11:48:11 jer Exp $
+
+  13 Mar 2015; Jeroen Roovers <jer@gentoo.org> cnet-3.3.1.ebuild:
+  Remove erroneously introduced pkg-config use.
+
+  13 Mar 2015; Jeroen Roovers <jer@gentoo.org> cnet-3.3.1.ebuild,
+  +files/cnet-3.3.1-tcl.patch:
+  Fix building against any dev-lang/{tcl,tk} (bug #482318).
+
+  13 Mar 2015; Jeroen Roovers <jer@gentoo.org> cnet-3.3.1.ebuild:
+  Fix LICENSE.
+
+*cnet-3.3.1 (13 Mar 2015)
+
+  13 Mar 2015; Jeroen Roovers <jer@gentoo.org> -cnet-2.0.10.ebuild,
+  -cnet-3.2.4.ebuild, +cnet-3.3.1.ebuild, -files/cnet-2.0.10-gentoo.patch,
+  -files/cnet-3.2.4-gentoo.patch, +files/cnet-3.3.1-gentoo.patch, metadata.xml:
+  Version bump. Remove fetch restriction.
+
+*cnet-3.2.4 (16 Jan 2014)
+
+  16 Jan 2014; Sergey Popov <pinkbyte@gentoo.org> +cnet-3.2.4.ebuild,
+  +files/cnet-3.2.4-gentoo.patch:
+  Version bump, wrt bug #482320. Thanks to Andrew Savchenko <bircoph AT
+  gmail.com> for initial ebuild and patch
+
+  15 Jan 2009; Jeroen Roovers <jer@gentoo.org>
+  files/cnet-2.0.10-gentoo.patch, cnet-2.0.10.ebuild:
+  New toolchain patch. New strip patch (bug #251974). Unify patches. Clean
+  up ebuild.
+
+  02 Jun 2007; Markus Ullmann <jokey@gentoo.org>
+  -files/cnet-2.0.5-gentoo.patch, -files/cnet-2.0.9-gentoo.patch,
+  -files/cnet-2.0.9-parser.patch, -cnet-2.0.9.ebuild:
+  cleanup and drop old
+
+  07 Apr 2007; Mike Frysinger <vapier@gentoo.org> cnet-2.0.9.ebuild,
+  cnet-2.0.10.ebuild:
+  Remove DOCDESTTREE hack and use proper "docinto".
+
+  20 Mar 2007; Raúl Porcel <armin76@gentoo.org> cnet-2.0.10.ebuild:
+  x86 stable
+
+  20 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  24 Nov 2006; Cedric Krier <cedk@gentoo.org>
+  +files/cnet-2.0.9-parser.patch, cnet-2.0.9.ebuild:
+  patch for bug #153245
+
+*cnet-2.0.10 (21 Apr 2006)
+
+  21 Apr 2006; Marcelo Goes <vanquirius@gentoo.org>
+  +files/cnet-2.0.10-gentoo.patch, -cnet-2.0.5.ebuild, +cnet-2.0.10.ebuild:
+  2.0.10 version bump for bug 130634, thanks to Kesara Rathnayake <kesara at
+  bcs dot org>.
+
+  31 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> cnet-2.0.9.ebuild:
+  Marked stable on x86.
+
+*cnet-2.0.9 (21 Nov 2004)
+
+  21 Nov 2004; Eldad Zack <eldad@gentoo.org> +files/cnet-2.0.9-gentoo.patch,
+  +cnet-2.0.9.ebuild:
+  Version bump. Thanks to Surakshan Mendis <bugtracker@surasoft.com>. Closes
+  #66275.
+
+  21 Nov 2004; Eldad Zack <eldad@gentoo.org> cnet-2.0.5.ebuild:
+  This package has a hard dependency on libelf and will break against elfutils.
+  closes #67375.
+
+  11 Jul 2004; Eldad Zack <eldad@gentoo.org> metadata.xml, cnet-2.0.5.ebuild:
+  Updated metadata, marked x86 stable.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> cnet-2.0.5.ebuild:
+  Add inherit eutils
+
+  12 Feb 2004; Don Seiler <rizzo@gentoo.org>; cnet-2.0.5.ebuild:
+  Adding OR DEPEND on elfutils/libelf, fixed Bug #37152
+
+  08 Dec 2003; Don Seiler <rizzo@gentoo.org>; cnet-2.0.5.ebuild:
+  Fix for Bug 35160: hardwired CFLAGS.  Thanks to Eldad Zack
+
+  08 Dec 2003; Don Seiler <rizzo@gentoo.org>; cnet-2.0.5.ebuild:
+  Fix for Bug 35109: Install docs.  Thanks to viktor(at)neotek(dot)hu
+
+*cnet-2.0.5 (01 Aug 2003)
+
+  01 Aug 2003; Don Seiler <rizzo@gentoo.org>; cnet-2.0.5.ebuild,
+  files/cnet-2.0.5-gentoo.patch:
+  Initial import. Thanks to Mike Gardiner <driver(at)iinet.net.au> for the
+  original ebuild.
+

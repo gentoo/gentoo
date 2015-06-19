@@ -1,0 +1,68 @@
+# ChangeLog for x11-plugins/wmdf
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmdf/ChangeLog,v 1.17 2014/09/01 15:40:22 voyageur Exp $
+
+  01 Sep 2014; Bernard Cafarelli <voyageur@gentoo.org> wmdf-0.1.6-r1.ebuild:
+  Replace einstall with emake install, bug #521678
+
+  15 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org> wmdf-0.1.6-r1.ebuild:
+  Update HOMEPAGE and SRC_URI, thanks Lorenz in bug #394607
+
+  07 Jan 2010; Christian Faulhammer <fauli@gentoo.org> wmdf-0.1.6-r1.ebuild:
+  Transfer Prefix keywords
+
+  16 Aug 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  wmdf-0.1.6-r1.ebuild:
+  stable amd64, bug 280360
+
+  25 Nov 2008; Tiago Cunha <tcunha@gentoo.org> wmdf-0.1.6-r1.ebuild:
+  stable sparc, bug 215651
+
+  16 Oct 2008; Jeremy Olexa <darkside@gentoo.org> wmdf-0.1.6-r1.ebuild:
+  add ~amd64 to x11-plugins/wmdf, bug #241774
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; wmdf-0.1.6-r1.ebuild:
+  Drop virtual/x11 references.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  22 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml,
+  wmdf-0.1.6-r1.ebuild:
+  Fixed DEPEND for modular X.
+
+  01 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org> -wmdf-0.1.6.ebuild,
+  wmdf-0.1.6-r1.ebuild:
+  Fixed dodoc not to install COPYING and/or INSTALL.
+
+*wmdf-0.1.6-r1 (06 Jul 2005)
+
+  06 Jul 2005; Michele Noberasco <s4t4n@gentoo.org> wmdf-0.1.6-r1:
+  Revision bump, with patch to remove special filesystem entries from
+  listing, see bug #97856, and another one to remove unimplemented
+  command line args... The changes so atomic that I feel confident
+  enough to mark this directly as stable...
+  metadata.xml:
+  Assigned to desktop-dock herd.  
+
+  23 Nov 2004; Jason Wever <weeve@gentoo.org> wmdf-0.1.6.ebuild:
+  Added ~sparc keyword.
+
+  02 Sep 2004; Tom Gall <tgall@gentoo.org> wmdf-0.1.6.ebuild:
+  stable on ppc64, bug #62255
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> wmdf-0.1.6.ebuild:
+  Marked stable.
+
+*wmdf-0.1.6 (07 Feb 2004)
+
+  07 Feb 2004; Ian Leitch <port001@gentoo.org> metadata.xml,
+  wmdf-0.1.6.ebuild:
+  Moved from x11-misc/wmdf to x11-plugins/wmdf.
+
+*wmdf-0.1.6 (16 Dec 2003)
+
+  16 Dec 2003; Ian Leitch <port001@gentoo.org> wmdf-0.1.6.ebuild:
+  Initial commit, thanks to Jeff Stuart <jstuart@computer-city.net> for the
+  original ebuild - bumped and corrected. #21286
+

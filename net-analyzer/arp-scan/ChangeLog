@@ -1,0 +1,10 @@
+# ChangeLog for net-analyzer/arp-scan
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/arp-scan/ChangeLog,v 1.1 2014/06/06 01:25:03 jer Exp $
+
+*arp-scan-1.9 (06 Jun 2014)
+
+  06 Jun 2014; Jeroen Roovers <jer@gentoo.org> +arp-scan-1.9.ebuild,
+  +metadata.xml:
+  Initial commit (bug #257718 by Pierre Dumuid).
+

@@ -1,0 +1,40 @@
+# ChangeLog for dev-util/osdt
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/osdt/ChangeLog,v 1.9 2014/06/26 13:09:37 kensington Exp $
+
+  26 Jun 2014; Michael Palimaka <kensington@gentoo.org> -osdt-1.1.3.ebuild:
+  Remove old.
+
+*osdt-1.1.5 (16 Dec 2013)
+
+  16 Dec 2013; Patrick Lauer <patrick@gentoo.org> +osdt-1.1.5.ebuild:
+  Bump
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -osdt-1.1.0-r1.ebuild:
+  Remove old
+
+*osdt-1.1.3 (14 Mar 2012)
+
+  14 Mar 2012; Patrick Lauer <patrick@gentoo.org> +osdt-1.1.3.ebuild:
+  Bump
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Josh Glover (jmglov, #206782) from metadata.xml.
+
+  13 Feb 2008; Christian Faulhammer <opfer@gentoo.org> metadata.xml:
+  add no-herd
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> osdt-1.1.0.ebuild,
+  osdt-1.1.0-r1.ebuild:
+  (QA) RESTRICT clean up.
+
+*osdt-1.1.0-r1 (24 Jun 2007)
+
+  24 Jun 2007; Josh Glover <jmglov@gentoo.org> +osdt-1.1.0-r1.ebuild:
+  Fixing permissions on /etc/osdt/project-skeletons/opensource/
+
+*osdt-1.1.0 (23 Jun 2007)
+
+  23 Jun 2007; Josh Glover <jmglov@gentoo.org> +metadata.xml,
+  +osdt-1.1.0.ebuild:
+  This package was submitted by Josh Glover in bug #79136

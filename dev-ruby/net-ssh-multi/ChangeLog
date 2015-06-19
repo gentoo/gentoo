@@ -1,0 +1,87 @@
+# ChangeLog for dev-ruby/net-ssh-multi
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/net-ssh-multi/ChangeLog,v 1.20 2015/06/07 18:50:23 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  30 Apr 2015; Hans de Graaff <graaff@gentoo.org> net-ssh-multi-1.2.1.ebuild:
+  Add ruby22.
+
+*net-ssh-multi-1.2.1 (12 Apr 2015)
+
+  12 Apr 2015; Hans de Graaff <graaff@gentoo.org> +net-ssh-multi-1.2.1.ebuild:
+  Version bump.
+
+  16 Mar 2015; Hans de Graaff <graaff@gentoo.org> -net-ssh-multi-1.1.ebuild:
+  Cleanup.
+
+  12 Oct 2014; Manuel Rüger <mrueg@gentoo.org> net-ssh-multi-1.2.0-r1.ebuild:
+  Add ruby21 target. Fix tests with mocha
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> net-ssh-multi-1.1.ebuild,
+  net-ssh-multi-1.2.0-r1.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  05 Apr 2014; Manuel Rüger <mrueg@gentoo.org> net-ssh-multi-1.1.ebuild,
+  net-ssh-multi-1.2.0-r1.ebuild:
+  Remove ree18 and ruby18 target. Remove virtual/ruby-test-unit.
+
+*net-ssh-multi-1.1 (23 Dec 2013)
+
+  23 Dec 2013; Manuel Rüger <mrueg@gentoo.org> +net-ssh-multi-1.1.ebuild:
+  Restore as needed for app-admin/chef
+
+  22 Dec 2013; Manuel Rüger <mrueg@gentoo.org> -net-ssh-multi-1.1.ebuild,
+  -net-ssh-multi-1.2.0.ebuild:
+  Cleanup old.
+
+  22 Dec 2013; Anthony G. Basile <blueness@gentoo.org>
+  net-ssh-multi-1.2.0-r1.ebuild:
+  Keyword ~ppc64, bug #465948
+
+*net-ssh-multi-1.2.0-r1 (26 Nov 2013)
+
+  26 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +net-ssh-multi-1.2.0-r1.ebuild:
+  Add ruby20 target. Drop ppc64 keyword, rekeywording in bug #465948.
+
+*net-ssh-multi-1.2.0 (13 Apr 2013)
+
+  13 Apr 2013; Hans de Graaff <graaff@gentoo.org> +net-ssh-multi-1.2.0.ebuild:
+  Version bump.
+
+  14 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata.xml so that it's the same as most other packages.
+
+  11 Aug 2012; Benedikt Böhm <hollow@gentoo.org>
+  -net-ssh-multi-1.0.1-r1.ebuild, net-ssh-multi-1.1.ebuild:
+  add ruby19 support
+
+  01 May 2012; Raúl Porcel <armin76@gentoo.org> net-ssh-multi-1.0.1-r1.ebuild,
+  net-ssh-multi-1.1.ebuild:
+  Drop ia64/sparc keywords
+
+*net-ssh-multi-1.1 (25 Apr 2011)
+
+  25 Apr 2011; Hans de Graaff <graaff@gentoo.org> +net-ssh-multi-1.1.ebuild:
+  Version bump.
+
+  16 Jan 2011; Hans de Graaff <graaff@gentoo.org>
+  -net-ssh-multi-1.0.1.ebuild:
+  Remove old version.
+
+  15 Aug 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  net-ssh-multi-1.0.1-r1.ebuild:
+  Block test-unit:2 for testing.
+
+*net-ssh-multi-1.0.1-r1 (26 Jun 2010)
+
+  26 Jun 2010; Hans de Graaff <graaff@gentoo.org>
+  +net-ssh-multi-1.0.1-r1.ebuild:
+  Convert to ruby-fakegem.
+
+*net-ssh-multi-1.0.1 (25 Feb 2009)
+
+  25 Feb 2009; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +net-ssh-multi-1.0.1.ebuild:
+  Initial commit.

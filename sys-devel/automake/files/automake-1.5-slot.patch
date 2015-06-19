@@ -1,0 +1,42 @@
+--- aclocal.in.orig	2004-10-22 11:11:05.361192040 -0400
++++ aclocal.in	2004-10-22 11:11:45.362110976 -0400
+@@ -33,5 +33,5 @@
+ $prefix = "@prefix@";
+ # Note that this isn't pkgdatadir, but a separate directory.
+-$acdir = "@datadir@/aclocal";
++$acdir = "@datadir@/aclocal-1.5";
+ 
+ # Some globals.
+@@ -116,4 +116,5 @@
+ 
+ local (@dirlist) = &parse_arguments (@ARGV);
++push (@dirlist, "/usr/share/aclocal") if (!grep(/^--acdir/, @ARGV));
+ &scan_m4_files (@dirlist);
+ &scan_configure;
+@@ -203,5 +204,5 @@
+     if ($print_and_exit)
+     {
+-	print $acdir, "\n";
++	print "/usr/share/aclocal", "\n";
+ 	exit 0;
+     }
+--- automake.in.orig	2004-10-22 11:14:10.787003032 -0400
++++ automake.in	2004-10-22 11:14:22.072287408 -0400
+@@ -32,7 +32,7 @@
+ BEGIN
+ {
+   my $prefix = "@prefix@";
+-  my $perllibdir = $ENV{'perllibdir'} || "@datadir@/@PACKAGE@";
++  my $perllibdir = $ENV{'perllibdir'} || "@datadir@/@PACKAGE@-1.5";
+   unshift @INC, "$perllibdir";
+ }
+ 
+@@ -127,7 +127,7 @@
+ my $VERSION = "@VERSION@";
+ my $PACKAGE = "@PACKAGE@";
+ my $prefix = "@prefix@";
+-my $libdir = "@datadir@/@PACKAGE@";
++my $libdir = "@datadir@/@PACKAGE@-1.5";
+ 
+ # String constants.
+ my $IGNORE_PATTERN = '^\s*##([^#\n].*)?\n';

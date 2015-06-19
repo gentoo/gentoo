@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
+DEPEND=dev-libs/glib:2 ~dev-qt/qtcore-5.4.2 media-libs/fontconfig media-libs/freetype:2 >=sys-libs/zlib-1.2.5 virtual/opengl egl? ( media-libs/mesa[egl] ) evdev? ( sys-libs/mtdev ) gtkstyle? ( x11-libs/gtk+:2 x11-libs/pango !!x11-libs/cairo[qt4] ) gles2? ( media-libs/mesa[gles2] ) harfbuzz? ( >=media-libs/harfbuzz-0.9.32:= ) ibus? ( ~dev-qt/qtdbus-5.4.2 ) jpeg? ( virtual/jpeg:0 ) kms? ( media-libs/mesa[gbm] virtual/libudev:= x11-libs/libdrm ) png? ( media-libs/libpng:0= ) udev? ( virtual/libudev:= ) xcb? ( x11-libs/libICE x11-libs/libSM >=x11-libs/libX11-1.5 >=x11-libs/libXi-1.6 x11-libs/libXrender >=x11-libs/libxcb-1.10:=[xkb] >=x11-libs/libxkbcommon-0.4.1[X] x11-libs/xcb-util-image x11-libs/xcb-util-keysyms x11-libs/xcb-util-renderutil x11-libs/xcb-util-wm accessibility? ( ~dev-qt/qtdbus-5.4.2 ) ) evdev? ( sys-kernel/linux-headers ) test? ( ~dev-qt/qtnetwork-5.4.2 ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost ) dev-lang/perl virtual/pkgconfig test? ( ~dev-qt/qttest-5.4.2 )
+DESCRIPTION=The GUI module and platform plugins for the Qt5 framework
+EAPI=5
+HOMEPAGE=https://www.qt.io/
+IUSE=accessibility egl eglfs evdev +gif gles2 gtkstyle +harfbuzz ibus jpeg kms +png udev +xcb test debug test
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86
+LICENSE=|| ( LGPL-2.1 LGPL-3 ) FDL-1.3
+PDEPEND=ibus? ( app-i18n/ibus )
+RDEPEND=dev-libs/glib:2 ~dev-qt/qtcore-5.4.2 media-libs/fontconfig media-libs/freetype:2 >=sys-libs/zlib-1.2.5 virtual/opengl egl? ( media-libs/mesa[egl] ) evdev? ( sys-libs/mtdev ) gtkstyle? ( x11-libs/gtk+:2 x11-libs/pango !!x11-libs/cairo[qt4] ) gles2? ( media-libs/mesa[gles2] ) harfbuzz? ( >=media-libs/harfbuzz-0.9.32:= ) ibus? ( ~dev-qt/qtdbus-5.4.2 ) jpeg? ( virtual/jpeg:0 ) kms? ( media-libs/mesa[gbm] virtual/libudev:= x11-libs/libdrm ) png? ( media-libs/libpng:0= ) udev? ( virtual/libudev:= ) xcb? ( x11-libs/libICE x11-libs/libSM >=x11-libs/libX11-1.5 >=x11-libs/libXi-1.6 x11-libs/libXrender >=x11-libs/libxcb-1.10:=[xkb] >=x11-libs/libxkbcommon-0.4.1[X] x11-libs/xcb-util-image x11-libs/xcb-util-keysyms x11-libs/xcb-util-renderutil x11-libs/xcb-util-wm accessibility? ( ~dev-qt/qtdbus-5.4.2 ) ) dev-qt/qtchooser
+REQUIRED_USE=egl? ( evdev ) eglfs? ( egl ) kms? ( egl gles2 )
+RESTRICT=test
+SLOT=5
+SRC_URI=http://download.qt.io/official_releases/qt/5.4/5.4.2/submodules/qtbase-opensource-src-5.4.2.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	qt5-build	1893b8df0d25f7a9940321320c798191	toolchain-funcs	42408102d713fbad60ca21349865edb4	virtualx	73cfc129b4b9ba23aed1abb10c825d86
+_md5_=06516c92029d20bf9e0a6995154f1ac3

@@ -1,0 +1,885 @@
+http://bugs.gentoo.org/291907
+
+This patch was merged from two patches extracted from this thread:
+http://markmail.org/thread/qkd76gpdgefpjlfn
+
+Patch #1.
+This patch adds detailed documentation for HFSC scheduler. It roughly
+follows HFSC paper, but tries to not rely too much on math side of things.
+Post-paper/Linux specific subjects (timer resolution, ul service curve, etc.)
+are also discussed.
+
+
+I've read it many times over, but it's a lengthy chunk of text - so try
+to be understanding in case I made some mistakes.
+
+
+tc-hfsc(7): explains algorithm in detail (very long)
+tc-hfsc(8): explains command line options briefly
+tc(8): adds references to new man pages
+Makefile: adds man7 directory to install target
+q_hfsc.c: minimal help text changes, consistency with tc-hfsc(8)
+
+
+Patch #2.
+This adds generic explanation about size tables.
+
+
+tc-stab(8): Commandline + details
+One thing I'm not sure, is whenever any layer2 data is included in case
+of shaping directly on ppp interface (see the bottom of the man page).
+
+
+tc_stab.c: small fixes to commandline help
+
+
+tc_core.c:
+As kernel part of things relies on cell align which is always set to -1,
+I also added it to userspace computation stage. This way if someone
+specified e.g. 2048 and 512 for mtu and tsize respectively, one wouldn't
+end with tsize supporting mtu 4096 suddenly, New default mtu is also set
+to 2048 (disregarding weirdness of setting mtu to such values).
+
+
+Unless I missed something, this is harmless and feels cleaner, but if it's
+not allowed, documentation will have to be changed back to 2047 + extra
+explanation as well.
+
+--- iproute2/Makefile
++++ iproute2-new/Makefile
+@@ -56,6 +56,8 @@
+ 	install -m 0644 $(shell find etc/iproute2 -maxdepth 1 -type f) $(DESTDIR)$(CONFDIR)
+ 	install -m 0755 -d $(DESTDIR)$(MANDIR)/man8
+ 	install -m 0644 $(shell find man/man8 -maxdepth 1 -type f) $(DESTDIR)$(MANDIR)/man8
++	install -m 0755 -d $(DESTDIR)$(MANDIR)/man7
++	install -m 0644 $(shell find man/man7 -maxdepth 1 -type f) $(DESTDIR)$(MANDIR)/man7
+ 	ln -sf tc-bfifo.8  $(DESTDIR)$(MANDIR)/man8/tc-pfifo.8
+ 	ln -sf lnstat.8  $(DESTDIR)$(MANDIR)/man8/rtstat.8
+ 	ln -sf lnstat.8  $(DESTDIR)$(MANDIR)/man8/ctstat.8
+--- iproute2/man/man7/tc-hfsc.7
++++ iproute2-new/man/man7/tc-hfsc.7
+@@ -0,0 +1,525 @@
++.TH HFSC 7 "25 February 2009" iproute2 Linux
++.ce 1
++\fBHIERARCHICAL FAIR SERVICE CURVE\fR
++.
++.SH "HISTORY & INTRODUCTION"
++.
++HFSC \- \fBHierarchical Fair Service Curve\fR was first presented at
++SIGCOMM'97. Developed as a part of ALTQ (ALTernative Queuing) on NetBSD, found
++its way quickly to other BSD systems, and then a few years ago became part of
++the linux kernel. Still, it's not the most popular scheduling algorithm \-
++especially if compared to HTB \- and it's not well documented from enduser's
++perspective. This introduction aims to explain how HFSC works without
++going to deep into math side of things (although some if it will be
++inevitable).
++
++In short HFSC aims to:
++.
++.RS 4
++.IP \fB1)\fR 4
++guarantee precise bandwidth and delay allocation for all leaf classes (realtime
++criterion)
++.IP \fB2)\fR
++allocate excess bandwidth fairly as specified by class hierarchy (linkshare &
++upperlimit criterion)
++.IP \fB3)\fR
++minimize any discrepancy between the service curve and the actual amount of
++service provided during linksharing
++.RE
++.PP
++.
++The main "selling" point of HFSC is feature \fB(1)\fR, which is achieved by
++using nonlinear service curves (more about what it actually is later). This is
++particularly useful in VoIP or games, where not only guarantee of consistent
++bandwidth is important, but initial delay of a data stream as well. Note that
++it matters only for leaf classes (where the actual queues are) \- thus class
++hierarchy is ignored in realtime case.
++
++Feature \fB(2)\fR is well, obvious \- any algorithm featuring class hierarchy
++(such as HTB or CBQ) strives to achieve that. HFSC does that well, although
++you might end with unusual situations, if you define service curves carelessly
++\- see section CORNER CASES for examples.
++
++Feature \fB(3)\fR is mentioned due to the nature of the problem. There may be
++situations where it's either not possible to guarantee service of all curves at
++the same time, and/or it's impossible to do so fairly. Both will be explained
++later. Note that this is mainly related to interior (aka aggregate) classes, as
++the leafs are already handled by \fB(1)\fR. Still \- it's perfectly possible to
++create a leaf class w/o realtime service, and in such case \- the caveats will
++naturally extend to leaf classes as well.
++
++.SH ABBREVIATIONS
++For the remaining part of the document, we'll use following shortcuts:
++.nf
++.RS 4
++
++RT \- realtime
++LS \- linkshare
++UL \- upperlimit
++SC \- service curve
++.fi
++.
++.SH "BASICS OF HFSC"
++.
++To understand how HFSC works, we must first introduce a service curve.
++Overall, it's a nondecreasing function of some time unit, returning amount of
++service (allowed or allocated amount of bandwidth) by some specific point in
++time. The purpose of it should be subconsciously obvious \- if a class was
++allowed to transfer not less than the amount specified by its service curve \-
++then service curve is not violated.
++
++Still \- we need more elaborate criterion than just the above (although in
++most generic case it can be reduced to it). The criterion has to take two
++things into account:
++.
++.RS 4
++.IP \(bu 4
++idling periods
++.IP \(bu
++ability to "look back", so if during current active period service curve is violated, maybe it
++isn't if we count excess bandwidth received during earlier active period(s)
++.RE
++.PP
++Let's define the criterion as follows:
++.RS 4
++.nf
++.IP "\fB(1)\fR" 4
++For each t1, there must exist t0 in set B, so S(t1\-t0)\~<=\~w(t0,t1)
++.fi
++.RE
++.
++.PP
++Here 'w' denotes the amount of service received during some time period between t0
++and t1. B is a set of all times, where a session becomes active after idling
++period (further denoted as 'becoming backlogged'). For a clearer picture,
++imagine two situations:
++.
++.RS 4
++.IP \fBa)\fR 4
++our session was active during two periods, with a small time gap between them
++.IP \fBb)\fR
++as in (a), but with a larger gap
++.RE
++.
++.PP
++Consider \fB(a)\fR \- if the service received during both periods meets
++\fB(1)\fR, then all is good. But what if it doesn't do so during the 2nd
++period ? If the amount of service received during the 1st period is bigger
++than the service curve, then it might compensate for smaller service during
++the 2nd period \fIand\fR the gap \- if the gap is small enough.
++
++If the gap is larger \fB(b)\fR \- then it's less likely to happen (unless the
++excess bandwidth allocated during the 1st part was really large). Still, the
++larger the gap \- the less interesting is what happened in the past (e.g. 10
++minutes ago) \- what matters is the current traffic that just started.
++
++From HFSC's perspective, more interesting is answering the following question:
++when should we start transferring packets, so a service curve of a class is not
++violated. Or rephrasing it: How much X() amount of service should a session
++receive by time t, so the service curve is not violated. Function X() defined
++as below is the basic building block of HFSC, used in: eligible, deadline,
++virtual\-time and fit\-time curves. Of course, X() is based on equation
++\fB(1)\fR and is defined recursively:
++
++.RS 4
++.IP \(bu 4
++At the 1st backlogged period beginning function X is initialized to generic
++service curve assigned to a class
++.IP \(bu
++At any subsequent backlogged period, X() is:
++.nf
++\fBmin(X() from previous period ; w(t0)+S(t\-t0) for t>=t0),\fR
++.fi
++\&... where t0 denotes the beginning of the current backlogged period.
++.RE
++.
++.PP
++HFSC uses either linear, or two\-piece linear service curves. In case of
++linear or two\-piece linear convex functions (first slope < second slope),
++min() in X's definition reduces to the 2nd argument. But in case of two\-piece
++concave functions, the 1st argument might quickly become lesser for some
++t>=t0. Note, that for some backlogged period, X() is defined only from that
++period's beginning. We also define X^(\-1)(w) as smallest t>=t0, for which
++X(t)\~=\~w. We have to define it this way, as X() is usually not an injection.
++
++The above generic X() can be one of the following:
++.
++.RS 4
++.IP "E()" 4
++In realtime criterion, selects packets eligible for sending. If none are
++eligible, HFSC will use linkshare criterion. Eligible time \&'et' is calculated
++with reference to packets' heads ( et\~=\~E^(\-1)(w) ). It's based on RT
++service curve, \fIbut in case of a convex curve, uses its 2nd slope only.\fR
++.IP "D()"
++In realtime criterion, selects the most suitable packet from the ones chosen
++by E(). Deadline time \&'dt' corresponds to packets' tails
++(dt\~=\~D^(\-1)(w+l), where \&'l' is packet's length). Based on RT service
++curve.
++.IP "V()"
++In linkshare criterion, arbitrates which packet to send next. Note that V() is
++function of a virtual time \- see \fBLINKSHARE CRITERION\fR section for
++details.  Virtual time \&'vt' corresponds to packets' heads
++(vt\~=\~V^(\-1)(w)). Based on LS service curve.
++.IP "F()"
++An extension to linkshare criterion, used to limit at which speed linkshare
++criterion is allowed to dequeue. Fit\-time 'ft' corresponds to packets' heads
++as well (ft\~=\~F^(\-1)(w)). Based on UL service curve.
++.RE
++
++Be sure to make clean distinction between session's RT, LS and UL service
++curves and the above "utility" functions.
++.
++.SH "REALTIME CRITERION"
++.
++RT criterion \fIignores class hierarchy\fR and guarantees precise bandwidth and
++delay allocation. We say that packet is eligible for sending, when current real
++time is bigger than eligible time. From all packets eligible, the one most
++suited for sending, is the one with the smallest deadline time. Sounds simply,
++but consider following example:
++
++Interface 10mbit, two classes, both with two\-piece linear service curves:
++.RS 4
++.IP \(bu 4
++1st class \- 2mbit for 100ms, then 7mbit (convex \- 1st slope < 2nd slope)
++.IP \(bu
++2nd class \- 7mbit for 100ms, then 2mbit (concave \- 1st slope > 2nd slope)
++.RE
++.PP
++Assume for a moment, that we only use D() for both finding eligible packets,
++and choosing the most fitting one, thus eligible time would be computed as
++D^(\-1)(w) and deadline time would be computed as D^(\-1)(w+l).  If the 2nd
++class starts sending packets 1 second after the 1st class, it's of course
++impossible to guarantee 14mbit, as the interface capability is only 10mbit.
++The only workaround in this scenario is to allow the 1st class to send the
++packets earlier that would normally be allowed. That's where separate E() comes
++to help.  Putting all the math aside (see HFSC paper for details), E() for RT
++concave service curve is just like D(), but for the RT convex service curve \-
++it's constructed using \fIonly\fR RT service curve's 2nd slope (in our example
++\- 7mbit).
++
++The effect of such E() \- packets will be sent earlier, and at the same time
++D() \fIwill\fR be updated \- so current deadline time calculated from it will
++be bigger. Thus, when the 2nd class starts sending packets later, both the 1st
++and the 2nd class will be eligible, but the 2nd session's deadline time will be
++smaller and its packets will be sent first. When the 1st class becomes idle at
++some later point, the 2nd class will be able to "buffer" up again for later
++active period of the 1st class.
++
++A short remark \- in a situation, where the total amount of bandwidth
++available on the interface is bigger than the allocated total realtime parts
++(imagine interface 10 mbit, but 1mbit/2mbit and 2mbit/1mbit classes), the sole
++speed of the interface could suffice to guarantee the times.
++
++Important part of RT criterion is that apart from updating its D() and E(),
++also V() used by LS criterion is updated. Generally the RT criterion is
++secondary to LS one, and used \fIonly\fR if there's a risk of violating precise
++realtime requirements. Still, the "participation" in bandwidth distributed by
++LS criterion is there, so V() has to be updated along the way. LS criterion can
++than properly compensate for non\-ideal fair sharing situation, caused by RT
++scheduling. If you use UL service curve its F() will be updated as well (UL
++service curve is an extension to LS one \- see \fBUPPERLIMIT CRITERION\fR
++section).
++
++Anyway \- careless specification of LS and RT service curves can lead to
++potentially undesired situations (see CORNER CASES for examples). This wasn't
++the case in HFSC paper where LS and RT service curves couldn't be specified
++separately.
++
++.SH "LINKSHARING CRITERION"
++.
++LS criterion's task is to distribute bandwidth according to specified class
++hierarchy. Contrary to RT criterion, there're no comparisons between current
++real time and virtual time \- the decision is based solely on direct comparison
++of virtual times of all active subclasses \- the one with the smallest vt wins
++and gets scheduled. One immediate conclusion from this fact is that absolute
++values don't matter \- only ratios between them (so for example, two children
++classes with simple linear 1mbit service curves will get the same treatment
++from LS criterion's perspective, as if they were 5mbit). The other conclusion
++is, that in perfectly fluid system with linear curves, all virtual times across
++whole class hierarchy would be equal.
++
++Why is VC defined in term of virtual time (and what is it) ?
++
++Imagine an example: class A with two children \- A1 and A2, both with let's say
++10mbit SCs. If A2 is idle, A1 receives all the bandwidth of A (and update its
++V() in the process). When A2 becomes active, A1's virtual time is already
++\fIfar\fR bigger than A2's one. Considering the type of decision made by LS
++criterion, A1 would become idle for a lot of time. We can workaround this
++situation by adjusting virtual time of the class becoming active \- we do that
++by getting such time "up to date". HFSC uses a mean of the smallest and the
++biggest virtual time of currently active children fit for sending. As it's not
++real time anymore (excluding trivial case of situation where all classes become
++active at the same time, and never become idle), it's called virtual time.
++
++Such approach has its price though. The problem is analogous to what was
++presented in previous section and is caused by non\-linearity of service
++curves:
++.IP 1) 4
++either it's impossible to guarantee both service curves and satisfy fairness
++during certain time periods:
++
++.RS 4
++Recall the example from RT section, slightly modified (with 3mbit slopes
++instead of 2mbit ones):
++
++.IP \(bu 4
++1st class \- 3mbit for 100ms, then 7mbit (convex \- 1st slope < 2nd slope)
++.IP \(bu
++2nd class \- 7mbit for 100ms, then 3mbit (concave \- 1st slope > 2nd slope)
++
++.PP
++They sum up nicely to 10mbit \- interface's capacity. But if we wanted to only
++use LS for guarantees and fairness \- it simply won't work. In LS context,
++only V() is used for making decision which class to schedule. If the 2nd class
++becomes active when the 1st one is in its second slope, the fairness will be
++preserved \- ratio will be 1:1 (7mbit:7mbit), but LS itself is of course
++unable to guarantee the absolute values themselves \- as it would have to go
++beyond of what the interface is capable of.
++.RE
++
++.IP 2) 4
++and/or it's impossible to guarantee service curves of all classes at all
++
++.RS 4
++Even if we didn't use virtual time and allowed a session to be "punished",
++there's a possibility that service curves of all classes couldn't be
++guaranteed for a brief period. Consider following, a bit more complicated
++example:
++
++Root interface, classes A and B with concave and convex curve (summing up to
++root), A1 & A2 (children of A), \fIboth\fR with concave curves summing up to A,
++B1 & B2 (children of B), \fIboth\fR with convex curves summing up to B.
++
++Assume that A2, B1 and B2 are constantly backlogged, and at some later point
++A1 becomes backlogged. We can easily choose slopes, so that even if we
++"punish" A2 for earlier excess bandwidth received, A1 will have no chance of
++getting bandwidth corresponding to its first slope. Following from the above
++example:
++
++.nf
++A  \- 7mbit, then 3mbit
++A1 \- 5mbit, then 2mbit
++A2 \- 2mbit, then 1mbit
++
++B  \- 3mbit, then 7mbit
++B1 \- 2mbit, then 5mbit
++B2 \- 1mbit, then 2mbit
++.fi
++
++At the point when A1 starts sending, it should get 5mbit to not violate its
++service curve. A2 gets punished and doesn't send at all, B1 and B2 both keep
++sending at their 5mbit and 2mbit. But as you can see, we already are beyond
++interface's capacity \- at 12mbit. A1 could get 3mbit at most. If we used
++virtual times and kept fairness property, A1 and A2 would send at 3mbit
++together with 5:2 ratio (so respectively at ~2.14mbit and ~0.86mbit).
++.RE
++.
++.SH "UPPERLIMIT CRITERION"
++.
++UL criterion is an extensions to LS one, that permits sending packets only
++if current real time is bigger than fit\-time ('ft'). So the modified LS
++criterion becomes: choose the smallest virtual time from all active children,
++such that fit\-time < current real time also holds. Fit\-time is calculated
++from F(), which is based on UL service curve. As you can see, it's role is
++kinda similar to E() used in RT criterion. Also, for obvious reasons \- you
++can't specify UL service curve without LS one.
++
++Main purpose of UL service curve is to limit HFSC to bandwidth available on the
++upstream router (think adsl home modem/router, and linux server as
++nat/firewall/etc. with 100mbit+ connection to mentioned modem/router).
++Typically, it's used to create a single class directly under root, setting
++linear UL service curve to available bandwidth \- and then creating your class
++structure from that class downwards. Of course, you're free to add UL service
++(linear or not) curve to any class with LS criterion.
++
++Important part about UL service curve is, that whenever at some point in time
++a class doesn't qualify for linksharing due to its fit\-time, the next time it
++does qualify, it will update its virtual time to the smallest virtual time of
++all active children fit for linksharing. This way, one of the main things LS
++criterion tries to achieve \- equality of all virtual times across whole
++hierarchy \- is preserved (in perfectly fluid system with only linear curves,
++all virtual times would be equal).
++
++Without that, 'vt' would lag behind other virtual times, and could cause
++problems. Consider interface with capacity 10mbit, and following leaf classes
++(just in case you're skipping this text quickly \- this example shows behavior
++that \f(BIdoesn't happen\fR):
++
++.nf
++A \- ls 5.0mbit
++B \- ls 2.5mbit
++C \- ls 2.5mbit, ul 2.5mbit
++.fi
++
++If B was idle, while A and C were constantly backlogged, they would normally
++(as far as LS criterion is concerned) divide bandwidth in 2:1 ratio. But due
++to UL service curve in place, C would get at most 2.5mbit, and A would get the
++remaining 7.5mbit. The longer the backlogged period, the more virtual times of
++A and C would drift apart. If B became backlogged at some later point in time,
++its virtual time would be set to (A's\~vt\~+\~C's\~vt)/2, thus blocking A from
++sending any traffic, until B's virtual time catches up with A.
++.
++.SH "SEPARATE LS / RT SCs"
++.
++Another difference from original HFSC paper, is that RT and LS SCs can be
++specified separately. Moreover \- leaf classes are allowed to have only either
++RT SC or LS SC. For interior classes, only LS SCs make sense \- Any RT SC will
++be ignored.
++.
++.SH "CORNER CASES"
++.
++Separate service curves for LS and RT criteria can lead to certain traps,
++that come from "fighting" between ideal linksharing and enforced realtime
++guarantees. Those situations didn't exist in original HFSC paper, where
++specifying separate LS / RT service curves was not discussed.
++
++Consider interface with capacity 10mbit, with following leaf classes:
++
++.nf
++A \- ls 5.0mbit, rt 8mbit
++B \- ls 2.5mbit
++C \- ls 2.5mbit
++.fi
++
++Imagine A and C are constantly backlogged. As B is idle, A and C would divide
++bandwidth in 2:1 ratio, considering LS service curve (so in theory \- 6.66 and
++3.33). Alas RT criterion takes priority, so A will get 8mbit and LS will be
++able to compensate class C for only 2 mbit \- this will cause discrepancy
++between virtual times of A and C.
++
++Assume this situation lasts for a lot of time with no idle periods, and
++suddenly B becomes active. B's virtual time will be updated to
++(A's\~vt\~+\~C's\~vt)/2, effectively landing in the middle between A's and C's
++virtual time. The effect \- B, having no RT guarantees, will be punished and
++will not be allowed to transfer until C's virtual time catches up.
++
++If the interface had higher capacity \- for example 100mbit, this example
++would behave perfectly fine though.
++
++Let's look a bit closer at the above example \- it "cleverly" invalidates one
++of the basic things LS criterion tries to achieve \- equality of all virtual
++times across class hierarchy. Leaf classes without RT service curves are
++literally left to their own fate (governed by messed up virtual times).
++
++Also - it doesn't make much sense. Class A will always be guaranteed up to
++8mbit, and this is more than any absolute bandwidth that could happen from its
++LS criterion (excluding trivial case of only A being active). If the bandwidth
++taken by A is smaller than absolute value from LS criterion, the unused part
++will be automatically assigned to other active classes (as A has idling periods
++in such case). The only "advantage" is, that even in case of low bandwidth on
++average, bursts would be handled at the speed defined by RT criterion. Still,
++if extra speed is needed (e.g. due to latency), non linear service curves
++should be used in such case.
++
++In the other words - LS criterion is meaningless in the above example.
++
++You can quickly "workaround" it by making sure each leaf class has RT service
++curve assigned (thus guaranteeing all of them will get some bandwidth), but it
++doesn't make it any more valid.
++.
++.SH "LINUX AND TIMER RESOLUTION"
++.
++In certain situations, the scheduler can throttle itself and setup so
++called watchdog to wakeup dequeue function at some time later. In case of HFSC
++it happens when for example no packet is eligible for scheduling, and UL
++service curve is used to limit the speed at which LS criterion is allowed to
++dequeue packets. It's called throttling, and accuracy of it is dependent on
++how the kernel is compiled.
++
++There're 3 important options in modern kernels, as far as timers' resolution
++goes: \&'tickless system', \&'high resolution timer support' and \&'timer
++frequency'.
++
++If you have \&'tickless system' enabled, then the timer interrupt will trigger
++as slowly as possible, but each time a scheduler throttles itself (or any
++other part of the kernel needs better accuracy), the rate will be increased as
++needed / possible. The ceiling is either \&'timer frequency' if \&'high
++resolution timer support' is not available or not compiled in. Otherwise it's
++hardware dependent and can go \fIfar\fR beyond the highest \&'timer frequency'
++setting available.
++
++If \&'tickless system' is not enabled, the timer will trigger at a fixed rate
++specified by \&'timer frequency' \- regardless if high resolution timers are
++or aren't available.
++
++This is important to keep those settings in mind, as in scenario like: no
++tickless, no HR timers, frequency set to 100hz \- throttling accuracy would be
++at 10ms. It doesn't automatically mean you would be limited to ~0.8mbit/s
++(assuming packets at ~1KB) \- as long as your queues are prepared to cover for
++timer inaccuracy. Of course, in case of e.g. locally generated udp traffic \-
++appropriate socket size is needed as well. Short example to make it more
++understandable (assume hardcore anti\-schedule settings \- HZ=100, no HR
++timers, no tickless):
++
++.nf
++tc qdisc add dev eth0 root handle 1:0 hfsc default 1
++tc class add dev eth0 parent 1:0 classid 1:1 hfsc rt m2 10mbit
++.fi
++
++Assuming packet of ~1KB size and HZ=100, that averages to ~0.8mbit \- anything
++beyond it (e.g. the above example with specified rate over 10x bigger) will
++require appropriate queuing and cause bursts every ~10 ms.  As you can
++imagine, any HFSC's RT guarantees will be seriously invalidated by that.
++Aforementioned example is mainly important if you deal with old hardware \- as
++it's particularly popular for home server chores. Even then, you can easily
++set HZ=1000 and have very accurate scheduling for typical adsl speeds.
++
++Anything modern (apic or even hpet msi based timers + \&'tickless system')
++will provide enough accuracy for superb 1gbit scheduling. For example, on one
++of basically cheap dual core AMD boards I have with following settings:
++
++.nf
++tc qdisc add dev eth0 parent root handle 1:0 hfsc default 1
++tc class add dev eth0 paretn 1:0 classid 1:1 hfsc rt m2 300mbit
++.fi
++
++And simple:
++
++.nf
++nc \-u dst.host.com 54321 </dev/zero
++nc \-l \-p 54321 >/dev/null
++.fi
++
++\&...will yield following effects over period of ~10 seconds (taken from
++/proc/interrupts):
++
++.nf
++319: 42124229   0  HPET_MSI\-edge  hpet2 (before)
++319: 42436214   0  HPET_MSI\-edge  hpet2 (after 10s.)
++.fi
++
++That's roughly 31000/s. Now compare it with HZ=1000 setting. The obvious
++drawback of it is that cpu load can be rather extensive with servicing that
++many timer interrupts. Example with 300mbit RT service curve on 1gbit link is
++particularly ugly, as it requires a lot of throttling with minuscule delays.
++
++Also note that it's just an example showing capability of current hardware.
++The above example (essentially 300mbit TBF emulator) is pointless on internal
++interface to begin with \- you will pretty much always want regular LS service
++curve there, and in such scenario HFSC simply doesn't throttle at all.
++
++300mbit RT service curve (selected columns from mpstat \-P ALL 1):
++
++.nf
++10:56:43 PM  CPU  %sys     %irq   %soft   %idle
++10:56:44 PM  all  20.10    6.53   34.67   37.19
++10:56:44 PM    0  35.00    0.00   63.00    0.00
++10:56:44 PM    1   4.95   12.87    6.93   73.27
++.fi
++
++So, in rare case you need those speeds with only RT service curve, or with UL
++service curve \- remember about drawbacks.
++.
++.SH "LAYER2 ADAPTATION"
++.
++Please refer to \fBtc\-stab\fR(8)
++.
++.SH "SEE ALSO"
++.
++\fBtc\fR(8), \fBtc\-hfsc\fR(8), \fBtc\-stab\fR(8)
++
++Please direct bugreports and patches to: <net...@vger.kernel.org>
++.
++.SH "AUTHOR"
++.
++Manpage created by Michal Soltys (sol...@ziu.info)
+--- iproute2/man/man8/tc.8
++++ iproute2-new/man/man8/tc.8
+@@ -368,12 +368,15 @@
+ .SH SEE ALSO
+ .BR tc-cbq (8),
+ .BR tc-htb (8),
++.BR tc-hfsc (8),
++.BR tc-hfsc (7),
+ .BR tc-sfq (8),
+ .BR tc-red (8),
+ .BR tc-tbf (8),
+ .BR tc-pfifo (8),
+ .BR tc-bfifo (8),
+ .BR tc-pfifo_fast (8),
++.BR tc-stab (8),
+ .br
+ .RB "User documentation at " http://lartc.org/ ", but please direct bugreports and patches to: " <netdev@vger.kernel.org>
+ 
+--- iproute2/man/man8/tc-hfsc.8
++++ iproute2-new/man/man8/tc-hfsc.8
+@@ -0,0 +1,61 @@
++.TH HFSC 8 "25 February 2009" iproute2 Linux
++.
++.SH NAME
++HFSC \- Hierarchical Fair Service Curve's control under linux
++.
++.SH SYNOPSIS
++.nf
++tc qdisc add ... hfsc [ \fBdefault\fR CLASSID ]
++
++tc class add ... hfsc [ [ \fBrt\fR SC ] [ \fBls\fR SC ] | [ \fBsc\fR SC ] ] [ \fBul\fR SC ]
++
++\fBrt\fR : realtime service curve
++\fBls\fR : linkshare service curve
++\fBsc\fR : rt+ls service curve
++\fBul\fR : upperlimit service curve
++
++\(bu at least one of \fBrt\fR, \fBls\fR or \fBsc\fR must be specified
++\(bu \fBul\fR can only be specified with \fBls\fR or \fBsc\fR
++.
++.IP "SC := [ [ \fBm1\fR BPS ] \fBd\fR SEC ] \fBm2\fR BPS"
++\fBm1\fR : slope of the first segment
++\fBd\fR  : x\-coordinate of intersection
++\fBm2\fR : slope of the second segment
++.PP
++.IP "SC := [ [ \fBumax\fR BYTE ] \fBdmax\fR SEC ] \fBrate\fR BPS"
++\fBumax\fR : maximum unit of work
++\fBdmax\fR : maximum delay
++\fBrate\fR : rate
++.PP
++.fi
++For description of BYTE, BPS and SEC \- please see \fBUNITS\fR
++section of \fBtc\fR(8).
++.
++.SH DESCRIPTION (qdisc)
++HFSC qdisc has only one optional parameter \- \fBdefault\fR.  CLASSID specifies
++the minor part of the default classid, where packets not classified by other
++means (e.g. u32 filter, CLASSIFY target of iptables) will be enqueued. If
++\fBdefault\fR is not specified, unclassified packets will be dropped.
++.
++.SH DESCRIPTION (class)
++HFSC class is used to create a class hierarchy for HFSC scheduler. For
++explanation of the algorithm, and the meaning behind \fBrt\fR, \fBls\fR,
++\fBsc\fR and \fBul\fR service curves \- please refer to \fBtc\-hfsc\fR(7).
++
++As you can see in \fBSYNOPSIS\fR, service curve (SC) can be specified in two
++ways. Either as maximum delay for certain amount of work, or as a bandwidth
++assigned for certain amount of time. Obviously, \fBm1\fR is simply
++\fBumax\fR/\fBdmax\fR.
++
++Both \fBm2\fR and \fBrate\fR are mandatory. If you omit other
++parameters, you will specify linear service curve.
++.
++.SH "SEE ALSO"
++.
++\fBtc\fR(8), \fBtc\-hfsc\fR(7), \fBtc\-stab\fR(8)
++
++Please direct bugreports and patches to: <net...@vger.kernel.org>
++.
++.SH "AUTHOR"
++.
++Manpage created by Michal Soltys (sol...@ziu.info)
+--- iproute2/man/man8/tc-stab.8
++++ iproute2-new/man/man8/tc-stab.8
+@@ -0,0 +1,156 @@
++.TH STAB 8 "25 February 2009" iproute2 Linux
++.
++.SH NAME
++tc\-stab \- Generic size table manipulations
++.
++.SH SYNOPSIS
++.nf
++tc qdisc add ... stab \\
++.RS 4
++[ \fBmtu\fR BYTES ] [ \fBtsize\fR SLOTS ] \\
++[ \fBmpu\fR BYTES ] [ \fBoverhead\fR BYTES ] [ \fBlinklayer\fR TYPE ] ...
++.RE
++
++TYPE := adsl | atm | ethernet
++.fi
++
++For the description of BYTES \- please refer to the \fBUNITS\fR
++section of \fBtc\fR(8).
++
++.IP \fBmtu\fR 4
++.br
++maximum packet size we create size table for, assumed 2048 if not specified explicitly
++.IP \fBtsize\fR
++.br
++required table size, assumed 512 if not specified explicitly
++.IP \fBmpu\fR
++.br
++minimum packet size used in computations
++.IP \fBoverhead\fR
++.br
++per\-packet size overhead (can be negative) used in computations
++.IP \fBlinklayer\fR
++.br
++required linklayer adaptation.
++.PP
++.
++.SH DESCRIPTION
++.
++Size tables allow manipulation of packet size, as seen by whole scheduler
++framework (of course, the actual packet size remains the same). Adjusted packet
++size is calculated only once \- when a qdisc enqueues the packet. Initial root
++enqueue initializes it to the real packet's size.
++
++Each qdisc can use different size table, but the adjusted size is stored in
++area shared by whole qdisc hierarchy attached to the interface (technically,
++it's stored in skb). The effect is, that if you have such setup, the last qdisc
++with a stab in a chain "wins". For example, consider HFSC with simple pfifo
++attached to one of its leaf classes. If that pfifo qdisc has stab defined, it
++will override lengths calculated during HFSC's enqueue, and in turn, whenever
++HFSC tries to dequeue a packet, it will use potentially invalid size in its
++calculations. Normal setups will usually include stab defined only on root
++qdisc, but further overriding gives extra flexibility for less usual setups.
++
++Initial size table is calculated by \fBtc\fR tool using \fBmtu\fR and
++\fBtsize\fR parameters. The algorithm sets each slot's size to the smallest
++power of 2 value, so the whole \fBmtu\fR is covered by the size table. Neither
++\fBtsize\fR, nor \fBmtu\fR have to be power of 2 value, so the size
++table will usually support more than is required by \fBmtu\fR.
++
++For example, with \fBmtu\fR\~=\~1500 and \fBtsize\fR\~=\~128, a table with 128
++slots will be created, where slot 0 will correspond to sizes 0\-16, slot 1 to
++17\~\-\~32, \&..., slot 127 to 2033\~\-\~2048. Note, that the sizes
++are shifted 1 byte (normally you would expect 0\~\-\~15, 16\~\-\~31, \&...,
++2032\~\-\~2047). Sizes assigned to each slot depend on \fBlinklayer\fR parameter.
++
++Stab calculation is also safe for an unusual case, when a size assigned to a
++slot would be larger than 2^16\-1 (you will lose the accuracy though).
++
++During kernel part of packet size adjustment, \fBoverhead\fR will be added to
++original size, and after subtracting 1 (to land in the proper slot \- see above
++about shifting by 1 byte) slot will be calculated. If the size would cause
++overflow, more than 1 slot will be used to get the final size. It of course will
++affect accuracy, but it's only a guard against unusual situations.
++
++Currently there're two methods of creating values stored in the size table \-
++ethernet and atm (adsl):
++
++.IP ethernet 4
++.br
++This is basically 1\-1 mapping, so following our example from above
++(disregarding \fBmpu\fR for a moment) slot 0 would have 8, slot 1 would have 16
++and so on, up to slot 127 with 2048. Note, that \fBmpu\fR\~>\~0 must be
++specified, and slots that would get less than specified by \fBmpu\fR, will get
++\fBmpu\fR instead. If you don't specify \fBmpu\fR, the size table will not be
++created at all, although any \fBoverhead\fR value will be respected during
++calculations.
++.IP "atm, adsl"
++.br
++ATM linklayer consists of 53 byte cells, where each of them provides 48 bytes
++for payload. Also all the cells must be fully utilized, thus the last one is
++padded if/as necessary.
++
++When size table is calculated, adjusted size that fits properly into lowest
++amount of cells is assigned to a slot. For example, a 100 byte long packet
++requires three 48\-byte payloads, so the final size would require 3 ATM cells
++\- 159 bytes.
++
++For ATM size tables, 16\~bytes sized slots are perfectly enough. The default
++values of \fBmtu\fR and \fBtsize\fR create 4\~bytes sized slots.
++.PP
++.
++.SH "TYPICAL OVERHEADS"
++The following values are typical for different adsl scenarios (based on
++\fB[1]\fR and \fB[2]\fR):
++
++.nf
++LLC based:
++.RS 4
++PPPoA \- 14 (PPP \- 2, ATM \- 12)
++PPPoE \- 40+ (PPPoE \- 8, ATM \- 18, ethernet 14, possibly FCS \- 4+padding)
++Bridged \- 32 (ATM \- 18, ethernet 14, possibly FCS \- 4+padding)
++IPoA \- 16 (ATM \- 16)
++.RE
++
++VC Mux based:
++.RS 4
++PPPoA \- 10 (PPP \- 2, ATM \- 8)
++PPPoE \- 32+ (PPPoE \- 8, ATM \- 10, ethernet 14, possibly FCS \- 4+padding)
++Bridged \- 24+ (ATM \- 10, ethernet 14, possibly FCS \- 4+padding)
++IPoA \- 8 (ATM \- 8)
++.RE
++.fi
++\p There're few important things regarding the above overheads:
++.
++.IP \(bu 4
++IPoA in LLC case requires SNAP, instead of LLC\-NLPID (see rfc2684) \- this is
++the reason, why it actually takes more space than PPPoA.
++.IP \(bu
++In rare cases, FCS might be preserved on protocols that include ethernet frame
++(Bridged and PPPoE).  In such situation, any ethernet specific padding
++guaranteeing 64 bytes long frame size has to be included as well (see rfc2684).
++In the other words, it also guarantees that any packet you send will take
++minimum 2 atm cells. You should set \fBmpu\fR accordingly for that.
++.IP \(bu
++When size table is consulted, and you're shaping traffic for the sake of
++another modem/router, ethernet header (without padding) will already be added
++to initial packet's length. You should compensate for that by subtracting 14
++from the above overheads in such case. If you're shaping directly on the router
++(for example, with speedtouch usb modem) using ppp daemon, layer2 header will
++not be added yet.
++
++For more thorough explanations, please see \fB[1]\fR and \fB[2]\fR.
++.
++.SH "SEE ALSO"
++.
++\fBtc\fR(8), \fBtc\-hfsc\fR(7), \fBtc\-hfsc\fR(8),
++.br
++\fB[1]\fR http://ace\-host.stuart.id.au/russell/files/tc/tc\-atm/
++.br
++\fB[2]\fR http://www.faqs.org/rfcs/rfc2684.html
++
++Please direct bugreports and patches to: <net...@vger.kernel.org>
++.
++.SH "AUTHOR"
++.
++Manpage created by Michal Soltys (sol...@ziu.info)
+--- iproute2/tc/q_hfsc.c
++++ iproute2-new/tc/q_hfsc.c
+@@ -43,7 +43,7 @@
+ 	fprintf(stderr,
+ 		"Usage: ... hfsc [ [ rt SC ] [ ls SC ] | [ sc SC ] ] [ ul SC ]\n"
+ 		"\n"
+-		"SC := [ [ m1 BPS ] [ d SEC ] m2 BPS\n"
++		"SC := [ [ m1 BPS ] d SEC ] m2 BPS\n"
+ 		"\n"
+ 		" m1 : slope of first segment\n"
+ 		" d  : x-coordinate of intersection\n"
+@@ -57,6 +57,10 @@
+ 		" dmax : maximum delay\n"
+ 		" rate : rate\n"
+ 		"\n"
++		"Remarks:\n"
++		" - at least one of 'rt', 'ls' or 'sc' must be specified\n"
++		" - 'ul' can only be specified with 'ls' or 'sc'\n"
++		"\n"
+ 	);
+ }
+ 
+--- iproute2/tc/tc_core.c
++++ iproute2-new/tc/tc_core.c
+@@ -155,12 +155,12 @@
+ 	}
+ 
+ 	if (s->mtu == 0)
+-		s->mtu = 2047;
++		s->mtu = 2048;
+ 	if (s->tsize == 0)
+ 		s->tsize = 512;
+ 
+ 	s->cell_log = 0;
+-	while ((s->mtu >> s->cell_log) > s->tsize - 1)
++	while ((s->mtu - 1 >> s->cell_log) > s->tsize - 1)
+ 		s->cell_log++;
+ 
+ 	*stab = malloc(s->tsize * sizeof(__u16));
+--- iproute2/tc/tc_stab.c
++++ iproute2-new/tc/tc_stab.c
+@@ -32,11 +32,15 @@
+ 	fprintf(stderr,
+ 		"Usage: ... stab [ mtu BYTES ] [ tsize SLOTS ] [ mpu BYTES ] \n"
+ 		"                [ overhead BYTES ] [ linklayer TYPE ] ...\n"
+-		"   mtu       : max packet size we create rate map for {2047}\n"
++		"TYPE := adsl | atm | ethernet\n"
++		"   mtu       : max packet size we create size table for {2048}\n"
+ 		"   tsize     : how many slots should size table have {512}\n"
+ 		"   mpu       : minimum packet size used in rate computations\n"
+ 		"   overhead  : per-packet size overhead used in rate computations\n"
+ 		"   linklayer : adapting to a linklayer e.g. atm\n"
++		"   mpu       : minimum packet size used in size table computations\n"
++		"   overhead  : per-packet size overhead used in size table computations\n"
++		"   linklayer : required linklayer adaptation, (adsl and atm are synonyms)\n"
+ 		"Example: ... stab overhead 20 linklayer atm\n");
+ 
+ 	return;

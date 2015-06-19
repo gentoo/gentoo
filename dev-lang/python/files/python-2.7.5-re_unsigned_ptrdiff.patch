@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/show_bug.cgi?id=476426
+http://bugs.python.org/issue17998
+diff -r d91da96a55bf Modules/_sre.c
+--- a/Modules/_sre.c	Thu May 16 22:47:47 2013 +0100
++++ b/Modules/_sre.c	Fri May 17 21:02:48 2013 +0300
+@@ -1028,7 +1028,7 @@
+             TRACE(("|%p|%p|REPEAT_ONE %d %d\n", ctx->pattern, ctx->ptr,
+                    ctx->pattern[1], ctx->pattern[2]));
+ 
+-            if (ctx->pattern[1] > end - ctx->ptr)
++            if ((Py_ssize_t) ctx->pattern[1] > end - ctx->ptr)
+                 RETURN_FAILURE; /* cannot match */
+ 
+             state->ptr = ctx->ptr;
+@@ -1111,7 +1111,7 @@
+             TRACE(("|%p|%p|MIN_REPEAT_ONE %d %d\n", ctx->pattern, ctx->ptr,
+                    ctx->pattern[1], ctx->pattern[2]));
+ 
+-            if (ctx->pattern[1] > end - ctx->ptr)
++            if ((Py_ssize_t) ctx->pattern[1] > end - ctx->ptr)
+                 RETURN_FAILURE; /* cannot match */
+ 
+             state->ptr = ctx->ptr;

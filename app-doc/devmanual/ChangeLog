@@ -1,0 +1,66 @@
+# ChangeLog for app-doc/devmanual
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-doc/devmanual/ChangeLog,v 1.15 2015/04/25 16:08:42 floppym Exp $
+
+  25 Apr 2015; Mike Gilbert <floppym@gentoo.org> devmanual-0_pre20141116.ebuild,
+  devmanual-9999.ebuild:
+  Replace links pointing at git.overlays.gentoo.org.
+
+  21 Dec 2014; Markos Chandras <hwoarang@gentoo.org> devmanual-9999.ebuild:
+  Drop keywords from live ebuild now that the mask has been lifted
+
+  16 Nov 2014; Markos Chandras <hwoarang@gentoo.org>
+  -devmanual-0_pre20130309.ebuild, -devmanual-0_pre20131109.ebuild:
+  remove old
+
+*devmanual-0_pre20141116 (16 Nov 2014)
+
+  16 Nov 2014; Markos Chandras <hwoarang@gentoo.org>
+  +devmanual-0_pre20141116.ebuild:
+  Version bump
+
+  12 Nov 2013; Markos Chandras <hwoarang@gentoo.org>
+  devmanual-0_pre20130309.ebuild, devmanual-0_pre20131109.ebuild,
+  devmanual-9999.ebuild:
+  Amend imagemagick dependencies
+
+*devmanual-0_pre20131109 (09 Nov 2013)
+
+  09 Nov 2013; Markos Chandras <hwoarang@gentoo.org>
+  +devmanual-0_pre20131109.ebuild:
+  Version bump
+
+  20 Oct 2013; Fabian Groffen <grobian@gentoo.org>
+  devmanual-0_pre20130309.ebuild:
+  Marked ~x64-macos, bug #486818
+
+  29 Mar 2013; Markos Chandras <hwoarang@gentoo.org>
+  devmanual-0_pre20130309.ebuild, devmanual-9999.ebuild:
+  export XDG_CONFIG_HOME to workaround sandbox problems. Bug #463380
+
+*devmanual-0_pre20130309 (09 Mar 2013)
+
+  09 Mar 2013; Markos Chandras <hwoarang@gentoo.org>
+  +devmanual-0_pre20130309.ebuild, devmanual-9999.ebuild:
+  Add snapshot ebuild per #460084
+
+  26 Feb 2013; Markos Chandras <hwoarang@gentoo.org> devmanual-9999.ebuild:
+  Typo
+
+  14 Feb 2013; Pacho Ramos <pacho@gentoo.org> devmanual-9999.ebuild:
+  Don't show elog messages always (#457596)
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> devmanual-9999.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  22 Jan 2013; Markos Chandras <hwoarang@gentoo.org> devmanual-9999.ebuild:
+  Add note about eclass documentation
+
+  21 Jan 2013; Markos Chandras <hwoarang@gentoo.org> devmanual-9999.ebuild:
+  Fix installation patch for html docs
+
+*devmanual-9999 (19 Jan 2013)
+
+  19 Jan 2013; Markos Chandras <hwoarang@gentoo.org> +devmanual-9999.ebuild,
+  +metadata.xml:
+  Add live ebuild for offline use of the Gentoo Development Guide. Bug #447170

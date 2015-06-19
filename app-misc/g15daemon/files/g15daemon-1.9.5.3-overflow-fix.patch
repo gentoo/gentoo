@@ -1,0 +1,11 @@
+--- ./g15daemon-1.9.5.3/libg15daemon_client/g15daemon_net.c	2008-01-25 05:45:05.000000000 +0100
++++ ./g15daemon-1.9.5.3/libg15daemon_client/g15daemon_net.c	2011-02-14 22:51:55.203009264 +0100
+@@ -217,7 +217,7 @@
+     if(poll(pfd,1,100)>0){
+        if(pfd[0].revents & POLLPRI && !(pfd[0].revents & POLLERR || pfd[0].revents & POLLHUP || pfd[0].revents & POLLNVAL)) { 
+              memset(packet,0,sizeof(packet));
+-             msgret = recv(sock, packet, 10 , MSG_OOB);
++             msgret = recv(sock, packet, sizeof(packet), MSG_OOB);
+              if (msgret < 1) {
+                   return -1;
+               }

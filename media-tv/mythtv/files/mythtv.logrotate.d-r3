@@ -1,0 +1,20 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-tv/mythtv/files/mythtv.logrotate.d-r3,v 1.1 2012/08/26 02:39:35 cardoe Exp $
+
+/var/log/mythtv/*.log {
+    weekly
+    rotate 8
+    nocompress
+    nocreate
+    notifempty
+    sharedscripts
+    missingok
+    olddir /var/log/mythtv/old
+    postrotate
+        killall -HUP mythfrontend
+        killall -HUP mythbackend
+        killall -HUP mythlcdserver
+        find /var/log/mythtv/old -type f -mtime +30 -delete
+    endscript
+}

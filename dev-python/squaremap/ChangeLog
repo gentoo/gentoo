@@ -1,0 +1,32 @@
+# ChangeLog for dev-python/squaremap
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/squaremap/ChangeLog,v 1.7 2015/06/03 21:56:14 jlec Exp $
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> squaremap-1.0.3.ebuild,
+  squaremap-1.0.4.ebuild:
+  Drop old Python implementations
+
+*squaremap-1.0.4 (23 Oct 2014)
+
+  23 Oct 2014; Sven Wegener <swegener@gentoo.org> +squaremap-1.0.4.ebuild:
+  Version bump, bug #522440.
+
+  23 Oct 2014; Sven Wegener <swegener@gentoo.org> squaremap-1.0.3.ebuild:
+  Add dev-python/wxpython dependency, bug #522440.
+
+  23 Oct 2014; Sven Wegener <swegener@gentoo.org> -squaremap-1.0.1.ebuild:
+  Cleanup.
+
+*squaremap-1.0.3 (05 Mar 2014)
+
+  05 Mar 2014; Sven Wegener <swegener@gentoo.org> +squaremap-1.0.3.ebuild:
+  Version bump.
+
+*squaremap-1.0.1 (24 Feb 2013)
+
+  24 Feb 2013; Sven Wegener <swegener@gentoo.org> +squaremap-1.0.1.ebuild,
+  +metadata.xml:
+  Initial commit, thanks to Martin Mokrejš, bug #408221.

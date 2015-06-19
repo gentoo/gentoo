@@ -1,0 +1,33 @@
+Install dir ( buiding with media-libs/ming ):
+    /usr/$(get_libdir)/graphviz/Bitstream_Vera_Serif.fdb
+    /usr/$(get_libdir)/graphviz/Bitstream_Vera_Sans.fdb
+    /usr/include/graphviz/gv.cpp
+    /usr/include/graphviz/gv.i
+
+Due to the following change, {pkglib,pkginclude}_DATA is invalid:
+    http://git.savannah.gnu.org/cgit/automake.git/commit/?id=9ca632642b006ac6b0fc4ce0ae5b34023faa8cbf
+
+---
+--- a/plugin/ming/Makefile.am
++++ b/plugin/ming/Makefile.am
+@@ -17,7 +17,8 @@ lib_LTLIBRARIES = libgvplugin_ming.la
+ else
+ pkglib_LTLIBRARIES = libgvplugin_ming.la
+ endif
+-pkglib_DATA = Bitstream_Vera_Sans.fdb  Bitstream_Vera_Serif.fdb
++fdblibdir = $(libdir)/@PACKAGE@
++fdblib_DATA = Bitstream_Vera_Sans.fdb  Bitstream_Vera_Serif.fdb
+ endif
+ 
+ libgvplugin_ming_C_la_SOURCES = \
+--- a/tclpkg/gv/Makefile.am
++++ b/tclpkg/gv/Makefile.am
+@@ -257,7 +257,7 @@ $(TCL_data): gv_tcl.cpp
+ gv_tcl.cpp: gv.i
+ 	$(SWIG) -c++ -tcl -namespace -o gv_tcl.cpp $(srcdir)/gv.i
+ 
+-pkginclude_DATA = gv.i gv.cpp
++pkginclude_HEADERS = gv.i gv.cpp
+ pkglib_LTLIBRARIES = 
+ man_MANS =
+ DEVTSTS =

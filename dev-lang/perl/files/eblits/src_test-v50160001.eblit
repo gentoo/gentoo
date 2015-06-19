@@ -1,0 +1,12 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/perl/files/eblits/src_test-v50160001.eblit,v 1.1 2012/06/05 17:52:35 tove Exp $
+
+eblit-perl-src_test() {
+	if [[ ${EUID} == 0 ]] ; then
+		ewarn "Test fails with a sandbox error (#328793) if run as root. Skipping tests..."
+		return 0
+	fi
+	use elibc_uclibc && export MAKEOPTS+=" -j1"
+	TEST_JOBS="$(makeopts_jobs)" make test_harness || die "test failed"
+}

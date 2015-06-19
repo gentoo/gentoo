@@ -1,0 +1,144 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/kexec-tools/files/kexec.init-2.0.4,v 1.3 2013/04/01 13:17:49 jlec Exp $
+
+depend() {
+	need localmount
+}
+
+image_path() {
+	local x= kver=$(uname -r) karch=$(uname -m)
+	BOOTPART="${BOOTPART:-/boot}"
+	for x in "${KNAME:-bzImage}" vmlinuz \
+		bzImage-${kver} vmlinuz-${kver} \
+		kernel-genkernel-${karch}-${kver} \
+		kernel-${kver} kernel-${karch}; do
+		if [ -e "${BOOTPART}/${x}" ]; then
+			echo "${BOOTPART}/${x}"
+			return 0
+		fi
+	done
+
+	return 1
+}
+
+initrd_path() {
+	local x= kver=$(uname -r) karch=$(uname -m)
+	BOOTPART="${BOOTPART:-/boot}"
+	for x in "${INITRD:-initrd}" \
+		initrd.img-${kver} initrd-${kver}.img \
+		initrd-${kver} initramfs-${kver}.img \
+		initramfs-genkernel-${karch}-${kver} ; do
+		if [ -e "${BOOTPART}/${x}" ]; then
+			echo "${BOOTPART}/${x}"
+			return 0
+		fi
+	done
+
+	return 1
+}
+
+mount_boot(){
+	local ret
+
+	[ -n ${DONT_MOUNT_BOOT} ] && return 1
+	grep -q " ${BOOTPART:-/boot} " /proc/mounts && return 1
+
+	BOOTPART="${BOOTPART:-/boot}"
+	ebegin "Mounting ${BOOTPART}"
+	mount "${BOOTPART}"; ret=$?
+	eend ${ret}
+	return ${ret}
+}
+
+load_image() {
+	local ret
+	if [ "${KNAME}" = "-" ]; then
+		ebegin "Disabling kexec"
+		kexec -u; ret=$?
+		eend ${ret}
+		return ${ret}
+	fi
+
+	BOOTPART="${BOOTPART:-/boot}"
+	local img= initrd="$(initrd_path)" mounted=false initrdopt=
+
+	if ! img="$(image_path)"; then
+		if mount_boot; then
+			if img="$(image_path)"; then
+				mounted=true
+				initrd="$(initrd_path)"
+			else
+				eerror "No kernel image found in ${BOOTPART}!"
+				umount "${BOOTPART}"
+				return 1
+			fi
+		else
+			eerror "No kernel image found in ${BOOTPART}!"
+			return 1
+		fi
+	fi
+
+	if [ -n "${INITRD}" ] && \
+		! [ "${INITRD}" = "${initrd}" ]; then
+		eerror "Requested initrd: ${INITRD}"
+		eerror "could not be found"
+		return 1
+	fi
+
+	[ -n "${ROOTPART}" ] || \
+		ROOTPART="$(readlink -f "$(sed -n '/^\/[^ ]* \/ / s,^\([^ ]*\).*,\1,p' /proc/mounts)")"
+
+	[ -n "${KPARAM}" ] || KEXEC_OPT_ARGS="${KEXEC_OPT_ARGS} --reuse-cmdline"
+
+	[ -n "${initrd}" ] && [ -e "${initrd}" ] && initrdopt="--initrd=${initrd}"
+
+	local msg=
+	[ -n ${initrd} ] && \
+		msg="with ${initrd}"
+	einfo "Using kernel image ${img} ${msg} for kexec"
+
+	ebegin "Setting kexec with ${KEXEC_OPT_ARGS} -l ${img} root=${ROOTPART} ${KPARAM} ${initrdopt}"
+	kexec ${KEXEC_OPT_ARGS} -l "${img}" --append="root=${ROOTPART} ${KPARAM}" ${initrdopt}
+	local res=$?
+
+	${mounted} && umount "${BOOTPART}"
+	eend ${res}
+	return ${res}
+}
+
+start() {
+	if [ "${LOAD_DURING_SHUTDOWN:-yes}" = "yes" ]; then
+		if ! image_path > /dev/null; then
+			ewarn "Cannot find kernel image!"
+			ewarn "Please make sure a valid kernel image is present before reboot."
+			return 0
+		fi
+	else
+		ebegin "Configuring kexec"
+		load_image
+		eend $?
+	fi
+}
+
+stop() {
+	[ "${LOAD_DURING_SHUTDOWN:-yes}" != "yes" ] && return 0
+
+	if ! yesno $RC_REBOOT; then
+		einfo "Not rebooting, so disabling"
+		kexec -u
+		return 0
+	fi
+
+	if [ -f /nokexec ]; then
+		einfo "Not using kexec during reboot"
+		rm -f /nokexec
+		kexec -u
+		return 0
+	fi
+
+	ebegin "Configuring kexec"
+	load_image
+	eend $?
+}

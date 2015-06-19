@@ -1,0 +1,60 @@
+# ChangeLog for app-emacs/crontab-mode
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/crontab-mode/ChangeLog,v 1.16 2014/02/15 01:10:14 ulm Exp $
+
+  15 Feb 2014; Ulrich Müller <ulm@gentoo.org> crontab-mode-1.20.ebuild:
+  Update ebuild to EAPI 5.
+
+  29 Jan 2009; Christian Faulhammer <fauli@gentoo.org>
+  -crontab-mode-1.18.ebuild:
+  clean up
+
+  14 Jun 2008; Ulrich Mueller <ulm@gentoo.org> crontab-mode-1.18.ebuild:
+  Do not assign SIMPLE_ELISP since elisp.eclass now detects this case
+  automatically.
+
+  13 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  crontab-mode-1.20.ebuild:
+  stable x86
+
+  04 Dec 2007; Ulrich Mueller <ulm@gentoo.org> crontab-mode-1.20.ebuild:
+  Stable on amd64, bug #195512.
+
+  07 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/50crontab-mode-gentoo.el:
+  add load path correctly, fixes bug 169588, reported by Ulrich Mueller
+  <ulm@kph.uni-mainz.de>
+
+*crontab-mode-1.20 (14 Feb 2007)
+
+  14 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  +crontab-mode-1.20.ebuild:
+  version bump
+
+  06 Dec 2006; Christian Faulhammer <opfer@gentoo.org>
+  -crontab-mode-1.11.ebuild:
+  cleanup old version
+
+  29 Sep 2005; Joseph Jezak <josejx@gentoo.org> crontab-mode-1.18.ebuild:
+  Marked ~ppc.
+
+  01 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  crontab-mode-1.18.ebuild:
+  Keywording ~amd64.
+
+  26 Jun 2005; Mamoru KOMACHI <usata@gentoo.org> crontab-mode-1.18.ebuild:
+  Stable on x86.
+
+*crontab-mode-1.18 (12 Apr 2005)
+
+  12 Apr 2005; Mamoru KOMACHI <usata@gentoo.org> crontab-mode-1.11.ebuild,
+  +crontab-mode-1.18.ebuild:
+  Version bumped. Changed URL to new location; bug #83889.
+
+*crontab-mode-1.11 (31 Oct 2002)
+
+  31 Oct 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  crontab-mode-1.11.ebuild, files/50crontab-mode-gentoo.el,
+  files/digest-crontab-mode-1.11 :
+
+  Initial import.

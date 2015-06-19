@@ -1,0 +1,55 @@
+diff -Naur mlterm-3.0.5.orig/configure.in mlterm-3.0.5/configure.in
+--- mlterm-3.0.5.orig/configure.in	2011-06-04 01:26:40.000000000 +0900
++++ mlterm-3.0.5/configure.in	2011-06-09 10:45:00.653322007 +0900
+@@ -671,7 +671,8 @@
+ if test "x$ibus" = "xyes" ; then
+ 	AC_PROG_CXX
+ 	PKG_CHECK_MODULES(IBUS, ibus-1.0 >= 1.3.0, has_ibus=yes, has_ibus=no)
+-	if test "x$has_ibus" = xyes ; then
++	PKG_CHECK_MODULES(DBUS, dbus-1, has_dbus=yes, has_dbus=no)
++	if test "x$has_ibus" = xyes -a "x$has_dbus" = xyes ; then
+ 		IM_CFLAGS="$IM_CFLAGS -DUSE_IBUS"
+ 		MAKE_DIRS="inputmethod/ibus ${MAKE_DIRS}"
+ 		OUTPUT_FILES="inputmethod/ibus/Makefile ${OUTPUT_FILES}"
+@@ -683,6 +684,8 @@
+ fi
+ AC_SUBST(IBUS_CFLAGS)
+ AC_SUBST(IBUS_LIBS)
++AC_SUBST(DBUS_CFLAGS)
++AC_SUBST(DBUS_LIBS)
+ 
+ #
+ # --- SCIM ---
+diff -Naur mlterm-3.0.5.orig/inputmethod/ibus/Makefile.in mlterm-3.0.5/inputmethod/ibus/Makefile.in
+--- mlterm-3.0.5.orig/inputmethod/ibus/Makefile.in	2011-06-04 01:26:34.000000000 +0900
++++ mlterm-3.0.5/inputmethod/ibus/Makefile.in	2011-06-09 10:45:31.063416229 +0900
+@@ -19,11 +19,12 @@
+ 	 @CPPFLAGS@			\
+ 	 @IM_CFLAGS@			\
+ 	 @IBUS_CFLAGS@			\
++	 @DBUS_CFLAGS@			\
+ 	 -I$(top_srcdir)/mlterm		\
+ 	 -I${top_srcdir}/xwindow	\
+ 	 -I/usr/local/include
+ 
+-LIBS = $(LIBS_LOCAL) @KIK_LIBS_FOR_MODULE@ @IBUS_LIBS@
++LIBS = $(LIBS_LOCAL) @KIK_LIBS_FOR_MODULE@ @IBUS_LIBS@ @DBUS_LIBS@
+ 
+ CC      = @CC@
+ INSTALL = @INSTALL@
+diff -Naur mlterm-3.0.5.orig/inputmethod/ibus/im_ibus.c mlterm-3.0.5/inputmethod/ibus/im_ibus.c
+--- mlterm-3.0.5.orig/inputmethod/ibus/im_ibus.c	2011-06-04 01:26:34.000000000 +0900
++++ mlterm-3.0.5/inputmethod/ibus/im_ibus.c	2011-06-09 10:39:58.560385917 +0900
+@@ -4,11 +4,11 @@
+ 
+ #include  <stdio.h>
+ #include  <ibus.h>
++#include  <dbus/dbus.h>
+ #include  <x_im.h>
+ #include  <kiklib/kik_list.h>
+ #include  <kiklib/kik_debug.h>
+ #include  "../im_info.h"
+-
+ #if  0
+ #define  IM_IBUS_DEBUG  1
+ #endif

@@ -1,0 +1,34 @@
+# ChangeLog for x11-misc/wbarconf
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/wbarconf/ChangeLog,v 1.7 2014/11/25 23:28:53 hasufell Exp $
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  29 Jul 2012; Julian Ospald <hasufell@gentoo.org> wbarconf-0.7.2.2-r1.ebuild:
+  stable for amd64 wrt bug #427658
+
+  23 Jul 2012; Jeff Horelick <jdhore@gentoo.org> wbarconf-0.7.2.2-r1.ebuild:
+  marked x86 per bug 427658
+
+*wbarconf-0.7.2.2-r1 (17 Jun 2012)
+
+  17 Jun 2012; Julian Ospald <hasufell@gentoo.org> -wbarconf-0.7.2.2.ebuild,
+  +wbarconf-0.7.2.2-r1.ebuild, files/wbarconf-0.7.2.2-install.patch:
+  rework install-script (fix permissions and doc dest)
+
+  14 May 2012; Julian Ospald <hasufell@gentoo.org> -wbarconf-0.7.2.ebuild,
+  -files/wbarconf-0.7.2-install.patch:
+  remove old
+
+*wbarconf-0.7.2.2 (14 May 2012)
+
+  14 May 2012; Julian Ospald <hasufell@gentoo.org> +wbarconf-0.7.2.2.ebuild,
+  +files/wbarconf-0.7.2.2-install.patch:
+  version bump wrt #415837
+
+*wbarconf-0.7.2 (06 Dec 2008)
+
+  06 Dec 2008; <ssuominen@gentoo.org> +files/wbarconf-0.7.2-install.patch,
+  +wbarconf-0.7.2.ebuild:
+  Initial commit. Thanks to Mika Hynnä.

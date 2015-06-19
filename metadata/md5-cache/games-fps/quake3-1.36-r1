@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=opengl? ( virtual/opengl media-libs/libsdl[sound,video,joystick,X,opengl] openal? ( media-libs/openal ) vorbis? ( media-libs/libogg media-libs/libvorbis ) voice? ( media-libs/speex ) curl? ( net-misc/curl ) ) !dedicated? ( virtual/opengl media-libs/libsdl[sound,video,joystick,X,opengl] openal? ( media-libs/openal ) vorbis? ( media-libs/libogg media-libs/libvorbis ) voice? ( media-libs/speex ) curl? ( net-misc/curl ) )
+DESCRIPTION=Quake III Arena - 3rd installment of the classic id 3D first-person shooter
+EAPI=2
+HOMEPAGE=http://ioquake3.org/
+IUSE=dedicated opengl teamarena +openal curl vorbis voice mumble
+KEYWORDS=amd64 ~ia64 ~ppc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=opengl? ( virtual/opengl media-libs/libsdl[sound,video,joystick,X,opengl] openal? ( media-libs/openal ) vorbis? ( media-libs/libogg media-libs/libvorbis ) voice? ( media-libs/speex ) curl? ( net-misc/curl ) ) !dedicated? ( virtual/opengl media-libs/libsdl[sound,video,joystick,X,opengl] openal? ( media-libs/openal ) vorbis? ( media-libs/libogg media-libs/libvorbis ) voice? ( media-libs/speex ) curl? ( net-misc/curl ) ) opengl? ( voice? ( mumble? ( media-sound/mumble ) ) ) !dedicated? ( voice? ( mumble? ( media-sound/mumble ) ) ) games-fps/quake3-data teamarena? ( games-fps/quake3-teamarena ) games-misc/games-envd
+SLOT=0
+SRC_URI=http://ioquake3.org/files/1.36/ioquake3-1.36.tar.bz2
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=bf454a73cfe2c9115f5193c5302b3ada

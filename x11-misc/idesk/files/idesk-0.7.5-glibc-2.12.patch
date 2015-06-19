@@ -1,0 +1,17 @@
+Fixes build with glibc-2.12
+
+http://bugs.gentoo.org/333515
+https://bugs.launchpad.net/ubuntu/+source/idesk/+bug/592602
+
+Patch written by Bhavani Shankar <bhavi@ubuntu.com>
+--- idesk-0.7.5/src/DesktopConfig.cpp
++++ idesk-0.7.5/src/DesktopConfig.cpp
+@@ -24,6 +24,8 @@
+ 
+ #include "DesktopConfig.h"
+ #include "Util.h"
++#include <sys/types.h>    // For stat()
++#include <sys/stat.h>     // For stat()
+ 
+ //the initilizer list just sets the program defaults for non-necessary options
+ DesktopConfig::DesktopConfig(Database db, string ideskrcFile) :

@@ -1,0 +1,172 @@
+# ChangeLog for www-servers/fnord
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-servers/fnord/ChangeLog,v 1.31 2014/08/10 20:08:44 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> fnord-1.10-r2.ebuild,
+  fnord-1.11.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*fnord-1.11 (30 Apr 2014)
+
+  30 Apr 2014; Patrick Lauer <patrick@gentoo.org> +fnord-1.11.ebuild:
+  Bump, add amd64 keyword
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> fnord-1.10-r2.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+  24 Mar 2012; Pacho Ramos <pacho@gentoo.org> fnord-1.10-r2.ebuild:
+  Create nofiles group, bug #388565 by Michael Orlitzky.
+
+  21 Mar 2012; Pacho Ramos <pacho@gentoo.org> -fnord-1.10-r1.ebuild,
+  metadata.xml:
+  Drop www-server herd as discussed in gentoo-dev ML. Drop old.
+
+  04 Mar 2011; Brent Baude <ranger@gentoo.org> fnord-1.10-r2.ebuild:
+  stable ppc, bug 353607
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org> fnord-1.10-r2.ebuild:
+  sparc/x86 stable wrt #353607
+
+  04 Feb 2011; Jeroen Roovers <jer@gentoo.org> fnord-1.10-r2.ebuild:
+  Respect CC. Stable for HPPA (bug #353607).
+
+  30 Jan 2011; Thilo Bangert <bangert@gentoo.org> -files/fnord-1.8-gentoo.diff:
+  remove unused file
+
+  29 Jan 2011; Thilo Bangert <bangert@gentoo.org> fnord-1.10-r1.ebuild,
+  fnord-1.10-r2.ebuild:
+  dep on virtual/daemontools
+
+*fnord-1.10-r2 (22 Oct 2010)
+
+  22 Oct 2010; Thilo Bangert <bangert@gentoo.org> +fnord-1.10-r2.ebuild,
+  +files/fnord-1.10-gentoo.diff:
+  respect LDFLAGS (#336768)
+
+  22 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  26 Jan 2008; Thilo Bangert <bangert@gentoo.org> -fnord-1.10.ebuild,
+  fnord-1.10-r1.ebuild:
+  fix quoting, remove old version
+
+  24 Sep 2006; Michael Hanselmann <hansmi@gentoo.org> fnord-1.10-r1.ebuild:
+  Stable on hppa, ppc, sparc, x86.
+
+  24 Jul 2006; Thilo Bangert <bangert@gentoo.org> fnord-1.10.ebuild:
+  dont install COPYING
+
+  02 Jul 2006; Michael Hanselmann <hansmi@gentoo.org> fnord-1.10-r1.ebuild:
+  Don't install licence file, install all readme files instead.
+
+*fnord-1.10-r1 (01 Jul 2006)
+
+  01 Jul 2006; Michael Hanselmann <hansmi@gentoo.org> -fnord-1.8.ebuild,
+  -fnord-1.9.ebuild, fnord-1.10.ebuild, +fnord-1.10-r1.ebuild:
+  Marked 1.10 stable on hppa, ppc, sparc, x86. Removed older versions.
+  Add 1.10-r1 with support for HTTP authentication.
+
+  05 Jan 2006; Michael Hanselmann <hansmi@gentoo.org> fnord-1.9.ebuild:
+  Back to ~hppa, ~sparc because of reproducible problems, 1.10 works.
+
+*fnord-1.10 (04 Jan 2006)
+
+  04 Jan 2006; Michael Hanselmann <hansmi@gentoo.org> fnord-1.9.ebuild,
+  +fnord-1.10.ebuild:
+  1.9 stable on hppa, sparc. Bump to 1.10.
+
+  28 Aug 2005; Mike Frysinger <vapier@gentoo.org> fnord-1.8.ebuild,
+  fnord-1.9.ebuild:
+  Punt USE=diet.
+
+  23 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> fnord-1.8.ebuild,
+  fnord-1.9.ebuild:
+  Use -1 instead of /bin/false, bug #103421.
+
+  17 May 2005; Michael Hanselmann <hansmi@gentoo.org> fnord-1.9.ebuild:
+  Stable on ppc.
+
+  09 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> fnord-1.9.ebuild:
+  Added to ~hppa.
+
+*fnord-1.9 (07 Mar 2005)
+
+  07 Mar 2005; Aaron Walker <ka0ttic@gentoo.org>
+  -files/fnord-1.2-gentoo.diff, -files/fnord-1.5-gentoo.diff,
+  -files/fnord-1.6-gentoo.diff, -files/fnord-1.7-gentoo.diff,
+  +files/fnord-1.8-gentoo.diff, +files/fnord-1.9-gentoo.diff,
+  -fnord-1.2.ebuild, -fnord-1.5.ebuild, -fnord-1.6.ebuild,
+  -fnord-1.7.ebuild, fnord-1.8.ebuild, +fnord-1.9.ebuild:
+  Version bump for bug 84344; Marked 1.8 stable on x86. Tidy old crusty
+  ebuilds. Moved replace-sparc64-flags to src_compile where it belongs;
+  replaced naughty useradd stuff with enewuser calls.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> fnord-1.2.ebuild,
+  fnord-1.5.ebuild, fnord-1.6.ebuild, fnord-1.7.ebuild, fnord-1.8.ebuild:
+  Move sys-apps/daemontools -> sys-process/daemontools
+
+  27 Jan 2005; Christian Zoffoli <xmerlin@gentoo.org> fnord-1.8.ebuild:
+  fixed bug #61251, now you can choose if you want to compile it with
+  dietlibc or something else, added some missing IUSE
+
+  18 Dec 2004; Michael Hanselmann <hansmi@gentoo.org> fnord-1.8.ebuild:
+  Stable on sparc and added ucspi-tcp to RDEPEND.
+
+  02 Oct 2004; Markus Nigbur <pyrania@gentoo.org> fnord-1.7.ebuild,
+  fnord-1.8.ebuild:
+  S= unneeded. Added IUSE. Made epatch aware.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> fnord-1.8.ebuild:
+  Masked fnord-1.8.ebuild stable for ppc
+
+*fnord-1.8 (08 Aug 2004)
+
+  08 Aug 2004; Stuart Herbert <stuart@gentoo.org>
+  +files/fnord-1.2-gentoo.diff, +files/fnord-1.5-gentoo.diff,
+  +files/fnord-1.6-gentoo.diff, +files/fnord-1.7-gentoo.diff,
+  +fnord-1.2.ebuild, +fnord-1.5.ebuild, +fnord-1.6.ebuild, +fnord-1.7.ebuild,
+  +fnord-1.8.ebuild:
+  Moved from net-www/fnord to www-servers/fnord.
+
+  02 Jun 2004; Michael hanselmann <hansmi@gentoo.org> fnord-1.8.ebuild:
+  Added ~ppc to KEYWORDS
+
+  25 Mar 2004; Jason Wever <weeve@gentoo.org> fnord-1.8.ebuild:
+  Added fix for bug #45716.
+
+*fnord-1.8 (08 Jul 2003)
+
+  08 Jul 2003; Martin Holzer <mholzer@gentoo.org> fnord-1.8.ebuild:
+  Version bumped. Closes #22169
+
+*fnord-1.7 (17 Jan 2003)
+
+  17 Jan 2003; Daniel Ahlberg <aliz@gentoo.org> fnord-1.7.ebuild :
+  Security update.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*fnord-1.6 (26 Oct 2002)
+
+  30 Oct 2002; Nick Hadaway <raker@gentoo.org> fnord-1.6.ebuild :
+  Marked stable.
+
+  26 Oct 2002; Nick Hadaway <raker@gentoo.org> fnord-1.6.ebuild :
+  Version bump.
+
+*fnord-1.5 (18 Sep 2002)
+  
+  11 Sep 2002; Fridtjof Busse <fridtjof@fbunet.de> fnord-1.5.ebuild,
+  files/digest-fnord-1.5, files/fnord-1.5-gentoo.diff :
+  Added fnord/fnordlog user. Corrected small bug in fnord-conf.
+
+*fnord-1.2 (30 Mar 2002)
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> fnord-1.2.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  30 Mar 2002; Thilo Bangert <thilo.bangert@gmx.net> ChangeLog :
+  initial release ;-)

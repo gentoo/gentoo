@@ -1,0 +1,24 @@
+# ChangeLog for app-dicts/sword-sme
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/sword-sme/ChangeLog,v 1.4 2014/01/06 00:06:20 creffett Exp $
+
+  06 Jan 2014; Chris Reffett <creffett@gentoo.org> -sword-sme-1.0.ebuild,
+  sword-sme-1.7.ebuild:
+  EAPI bump
+
+*sword-sme-1.7 (16 May 2010)
+
+  16 May 2010; Steve Dibb <beandog@gentoo.org> +sword-sme-1.7.ebuild:
+  Version bump
+
+*sword-sme-1.0 (10 Jan 2009)
+
+  10 Jan 2009; Steve Dibb <beandog@gentoo.org> +sword-sme-1.0.ebuild,
+  -sword-sme-1.1.ebuild:
+  Fix version mismatch, bug 251642
+
+*sword-sme-1.1 (17 May 2008)
+
+  17 May 2008; Steve Dibb <beandog@gentoo.org> +metadata.xml,
+  +sword-sme-1.1.ebuild:
+  Initial commit

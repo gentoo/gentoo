@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=app-arch/bzip2 sys-libs/zlib app-arch/libarchive
+DESCRIPTION=extracting Makeself archives without having to run the self-extracting shell script
+HOMEPAGE=http://www.freshports.org/archivers/unmakeself
+KEYWORDS=amd64 x86
+LICENSE=BSD
+RDEPEND=app-arch/bzip2 sys-libs/zlib app-arch/libarchive
+SLOT=0
+SRC_URI=http://gentooexperimental.org/~genstef/dist/unmakeself-1.0.tar.bz2
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f2ac7e0dff1383dfac5fa10af51469de

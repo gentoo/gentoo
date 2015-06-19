@@ -1,0 +1,73 @@
+# ChangeLog for dev-java/swidgets
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/swidgets/ChangeLog,v 1.18 2015/03/21 10:43:57 jlec Exp $
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> swidgets-0.1.1-r1.ebuild:
+  use ecvs_clean
+
+  24 Oct 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -swidgets-0.1.ebuild, -swidgets-0.1.1.ebuild, swidgets-0.1.1-r1.ebuild:
+  Removed java gen 1 ebuilds, quoted vars.
+
+  28 Sep 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  swidgets-0.1.1-r1.ebuild:
+  Marked stable on amd64 as per bug 189339.
+
+  21 Aug 2007; Christian Faulhammer <opfer@gentoo.org>
+  swidgets-0.1.1-r1.ebuild:
+  stable x86, bug 189339
+
+  18 Aug 2007; Petteri Räty <betelgeuse@gentoo.org>
+  swidgets-0.1.1-r1.ebuild:
+  Use latest eclass features.
+
+  18 Aug 2007; Petteri Räty <betelgeuse@gentoo.org> metadata.xml:
+  Remove compnerd from metadata.xml.
+
+  04 Feb 2007; Andrej Kacian <ticho@gentoo.org> swidgets-0.1.1.ebuild:
+  Stable on x86, bug #164285.
+
+  30 Jan 2007; Vlastimil Babka <caster@gentoo.org> swidgets-0.1.1-r1.ebuild:
+  Put java-ant-2 after java-pkg-2 in inherit.
+
+  28 Jan 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  swidgets-0.1.1.ebuild, swidgets-0.1.1-r1.ebuild:
+  Fixed order of rdep and ddep
+
+  28 Jan 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  swidgets-0.1.1-r1.ebuild:
+  Forgot java-ant-2 in inherit, added back dep on ant-core
+
+*swidgets-0.1.1-r1 (28 Jan 2007)
+
+  28 Jan 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  +swidgets-0.1.1-r1.ebuild:
+  Migrated to gen 2, updated copyrights
+
+*swidgets-0.1.1 (10 Dec 2005)
+
+  10 Dec 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  +swidgets-0.1.1.ebuild:
+  Version bump from upstream.  Fixing some style issues, and adding source
+  useflag.
+
+  19 May 2005; Jan Brinkmann <luckyduck@gentoo.org> swidgets-0.1.ebuild:
+  stable on amd64 and x86
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> swidgets-0.1.ebuild:
+  introduced support for the source useflag, keyworded ~amd64
+
+  29 Mar 2005; Saleem Abdulrasool <compnerd@gentoo.org> swidgets-0.1.ebuild:
+  Correcting DEPEND
+
+  29 Mar 2005; Saleem Abdulrasool <compnerd@gentoo.org> swidgets-0.1.ebuild:
+  More QA fixes
+
+  29 Mar 2005; Saleem Abdulrasool <compnerd@gentoo.org> swidgets-0.1.ebuild:
+  Resolving QA issues :-)
+
+*swidgets-0.1 (29 Mar 2005)
+
+  29 Mar 2005; Saleem Abdulrasool <compnerd@gentoo.org> +files/build.xml,
+  +swidgets-0.1.ebuild:
+  Initial import; Dependency for ArgoUML bug #63307

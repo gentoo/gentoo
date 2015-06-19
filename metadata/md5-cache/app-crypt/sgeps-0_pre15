@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=simple GnuPG-encrypted password store written in perl
+EAPI=4
+HOMEPAGE=http://roland.entierement.nu/blog/2010/01/22/simple-gnupg-encrypted-password-store.html
+IUSE=zsh-completion
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=app-crypt/gnupg dev-lang/perl virtual/perl-Storable virtual/perl-File-Temp virtual/perl-Getopt-Long dev-perl/Config-Simple zsh-completion? ( app-shells/zsh )
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~flameeyes/sgeps/sgeps-0_pre15.tar.xz
+_md5_=2ae4ee9ba1736cf7ddb6e41662f59a31

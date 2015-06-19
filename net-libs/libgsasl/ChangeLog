@@ -1,0 +1,329 @@
+# ChangeLog for net-libs/libgsasl
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libgsasl/ChangeLog,v 1.90 2014/05/20 10:02:35 jer Exp $
+
+  20 May 2014; Jeroen Roovers <jer@gentoo.org> libgsasl-1.8.0-r1.ebuild:
+  Stable for HPPA too.
+
+  01 Mar 2014; Michał Górny <mgorny@gentoo.org> libgsasl-1.8.0-r1.ebuild:
+  Update libgcrypt dep to use slot :0.
+
+  21 Dec 2012; Eray Aslan <eras@gentoo.org> -libgsasl-1.6.1.ebuild,
+  -libgsasl-1.8.0.ebuild:
+  Remove old
+
+  16 Dec 2012; Raúl Porcel <armin76@gentoo.org> libgsasl-1.8.0-r1.ebuild:
+  alpha/ia64/sparc stable wrt #441450
+
+  30 Nov 2012; Anthony G. Basile <blueness@gentoo.org> libgsasl-1.8.0-r1.ebuild:
+  stable arm, bug #441450
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> libgsasl-1.8.0-r1.ebuild:
+  Stable for x86, wrt bug #441450
+
+  16 Nov 2012; Anthony G. Basile <blueness@gentoo.org> libgsasl-1.8.0-r1.ebuild:
+  stable ppc, bug #441450
+
+  14 Nov 2012; Agostino Sarubbo <ago@gentoo.org> libgsasl-1.8.0-r1.ebuild:
+  Stable for amd64, wrt bug #441450
+
+  13 Nov 2012; Brent Baude <ranger@gentoo.org> libgsasl-1.8.0-r1.ebuild:
+  Marking libgsasl-1.8.0-r1 ppc64 for bug 441450
+
+  20 Oct 2012; Jeroen Roovers <jer@gentoo.org> libgsasl-1.8.0-r1.ebuild:
+  Marked ~hppa (bug #439040).
+
+  09 Sep 2012; Raúl Porcel <armin76@gentoo.org> libgsasl-1.8.0.ebuild:
+  alpha/ia64/sparc stable wrt #429710
+
+  22 Aug 2012; Johannes Huber <johu@gentoo.org> libgsasl-1.8.0.ebuild:
+  Stable for x86, wrt bug #429170
+
+*libgsasl-1.8.0-r1 (22 Aug 2012)
+
+  22 Aug 2012; Eray Aslan <eras@gentoo.org> +libgsasl-1.8.0-r1.ebuild:
+  Add kerberos implementation info to configure
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> libgsasl-1.8.0.ebuild:
+  Stable for amd64, wrt bug #429170
+
+  03 Aug 2012; Anthony G. Basile <blueness@gentoo.org> libgsasl-1.8.0.ebuild:
+  Stable arm, bug #429170
+
+  02 Aug 2012; Anthony G. Basile <blueness@gentoo.org> libgsasl-1.8.0.ebuild:
+  Stable ppc ppc64, bug #429170
+
+  12 Jun 2012; Eray Aslan <eras@gentoo.org> libgsasl-1.8.0.ebuild:
+  Don't use AM_PROG_AR in configure.ac as automake-1.11 does not recognize it
+
+  12 Jun 2012; Eray Aslan <eras@gentoo.org> libgsasl-1.8.0.ebuild:
+  Fix failing autoreconf - bug #420681
+
+*libgsasl-1.8.0 (29 May 2012)
+
+  29 May 2012; Tim Harder <radhermit@gentoo.org> +libgsasl-1.8.0.ebuild,
+  metadata.xml:
+  Version bump. Add ntlm use flag and update to EAPI 4.
+
+  27 May 2012; Markus Meier <maekke@gentoo.org> libgsasl-1.6.1.ebuild:
+  arm stable, bug #416105
+
+  20 Dec 2011; Naohiro Aota <naota@gentoo.org> libgsasl-1.6.1.ebuild:
+  Add ~x86-fbsd
+
+  27 Nov 2011; Jeroen Roovers <jer@gentoo.org> libgsasl-1.6.1.ebuild:
+  Inherit eutils properly. Do not use autotools-utils.eclass (bug # 392109).
+
+  27 Nov 2011; Tim Harder <radhermit@gentoo.org> libgsasl-1.6.1.ebuild:
+  Build in the source tree.
+
+  05 Nov 2011; Eray Aslan <eras@gentoo.org> libgsasl-1.6.1.ebuild,
+  files/libgsasl-gss-extra.patch:
+  Better fix for heimdal - bug #359005. Thanks to Rafał Mużyło
+
+  02 Nov 2011; Eray Aslan <eras@gentoo.org> libgsasl-1.6.1.ebuild,
+  +files/libgsasl-gss-extra.patch:
+  Fix compiling against heimdal - bug #359005. Thanks to Torsten Kurbad
+
+  12 Sep 2011; Markus Meier <maekke@gentoo.org> libgsasl-1.6.1.ebuild:
+  add ~arm, bug #381929
+
+  06 Aug 2011; Eray Aslan <eras@gentoo.org> -libgsasl-0.2.4.ebuild,
+  -libgsasl-0.2.28.ebuild, -libgsasl-0.2.29.ebuild, -libgsasl-1.1.ebuild,
+  -libgsasl-1.4.1.ebuild, -libgsasl-1.6.0.ebuild:
+  remove old
+
+  17 Jul 2011; Mark Loeser <halcy0n@gentoo.org> libgsasl-1.6.1.ebuild:
+  Stable for ppc64; bug #370633
+
+  24 Jun 2011; Raúl Porcel <armin76@gentoo.org> libgsasl-1.6.1.ebuild:
+  alpha/ia64/sparc stable wrt #370633
+
+  22 Jun 2011; Brent Baude <ranger@gentoo.org> libgsasl-1.6.1.ebuild:
+  Marking libgsasl-1.6.1 ppc for bug 370633
+
+  18 Jun 2011; Markos Chandras <hwoarang@gentoo.org> libgsasl-1.6.1.ebuild:
+  Stable on amd64 wrt bug #370633
+
+  15 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> libgsasl-1.6.1.ebuild:
+  x86 stable wrt bug #370633
+
+  09 Jun 2011; Eray Aslan <eras@gentoo.org> +libgsasl-0.2.4.ebuild,
+  +libgsasl-0.2.28.ebuild, +libgsasl-0.2.29.ebuild, +libgsasl-1.1.ebuild:
+  Bring back dead files
+
+  09 Jun 2011; Mark Loeser <halcy0n@gentoo.org> -libgsasl-0.2.4.ebuild,
+  -libgsasl-0.2.28.ebuild, -libgsasl-0.2.29.ebuild, -libgsasl-1.1.ebuild:
+  Really remove old
+
+  08 Jun 2011; Eray Aslan <eras@gentoo.org> -libgsasl-0.2.4.ebuild,
+  -libgsasl-0.2.28.ebuild, -libgsasl-0.2.29.ebuild, -libgsasl-1.1.ebuild:
+  Remove old
+
+*libgsasl-1.6.1 (02 May 2011)
+
+  02 May 2011; Jeroen Roovers <jer@gentoo.org> +libgsasl-1.6.1.ebuild:
+  Version bump. Add USE=static-libs.
+
+  15 Mar 2011; Jeroen Roovers <jer@gentoo.org> libgsasl-1.6.0.ebuild,
+  metadata.xml:
+  Optionally depend on dev-libs/libgcrypt by Marcin Mirosław (bug #358693).
+
+  20 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> libgsasl-1.4.1.ebuild:
+  ppc64 stable wrt #339505
+
+*libgsasl-1.6.0 (09 Jan 2011)
+
+  09 Jan 2011; Jeroen Roovers <jer@gentoo.org> +libgsasl-1.6.0.ebuild:
+  Version bump (bug #311319).
+
+  31 Oct 2010; Raúl Porcel <armin76@gentoo.org> libgsasl-1.4.1.ebuild:
+  alpha/ia64/sparc stable wrt #339505
+
+  15 Oct 2010; Brent Baude <ranger@gentoo.org> libgsasl-1.4.1.ebuild:
+  stable ppc, bug 339505
+
+  07 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  libgsasl-1.4.1.ebuild:
+  x86 stable wrt bug #339505
+
+  06 Oct 2010; Markos Chandras <hwoarang@gentoo.org> libgsasl-1.4.1.ebuild:
+  Stable on amd64 wrt bug #339505
+
+  17 Feb 2010; Jeroen Roovers <jer@gentoo.org> libgsasl-0.2.4.ebuild,
+  libgsasl-0.2.28.ebuild, libgsasl-0.2.29.ebuild, libgsasl-1.1.ebuild,
+  libgsasl-1.4.1.ebuild:
+  Block net-misc/gsasl.
+
+  17 Feb 2010; Jeroen Roovers <jer@gentoo.org> libgsasl-0.2.4.ebuild,
+  libgsasl-0.2.28.ebuild, libgsasl-0.2.29.ebuild, libgsasl-1.1.ebuild,
+  libgsasl-1.4.1.ebuild:
+  Switch to new style virtuals (bug #237400).
+
+*libgsasl-1.4.1 (17 Feb 2010)
+
+  17 Feb 2010; Jeroen Roovers <jer@gentoo.org> libgsasl-1.1.ebuild,
+  +libgsasl-1.4.1.ebuild:
+  Version bump (bug #300551). Have SRC_URI use mirror://gnu. Do not hardcode
+  package name in SRC_URI.
+
+  10 Jan 2010; Christian Faulhammer <fauli@gentoo.org> libgsasl-1.1.ebuild:
+  Transfer Prefix keywords
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> libgsasl-0.2.4.ebuild:
+  Remove virtual/libc
+
+*libgsasl-1.1 (25 Apr 2009)
+
+  25 Apr 2009; Patrick Lauer <patrick@gentoo.org> +libgsasl-1.1.ebuild:
+  Bump to 1.1, fixes second half of #263867
+
+  13 Dec 2008; Friedrich Oslage <bluebird@gentoo.org>
+  libgsasl-0.2.28.ebuild:
+  Stable on sparc, bug #243096
+
+*libgsasl-0.2.29 (29 Nov 2008)
+
+  29 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  -libgsasl-0.2.3.ebuild, -libgsasl-0.2.10.ebuild, -libgsasl-0.2.21.ebuild,
+  -libgsasl-0.2.26.ebuild, +libgsasl-0.2.29.ebuild:
+  Version bump, bug #246507
+
+  02 Nov 2008; Markus Meier <maekke@gentoo.org> libgsasl-0.2.28.ebuild:
+  amd64/x86 stable, bug #243096
+
+  01 Nov 2008; nixnut <nixnut@gentoo.org> libgsasl-0.2.28.ebuild:
+  Stable on ppc wrt bug 243096
+
+  15 Sep 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  libgsasl-0.2.28.ebuild:
+  Fix SRC_URI, #237690
+
+*libgsasl-0.2.28 (14 Sep 2008)
+
+  14 Sep 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  +libgsasl-0.2.28.ebuild:
+  Version bump
+
+*libgsasl-0.2.26 (15 Jun 2008)
+
+  15 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  +libgsasl-0.2.26.ebuild:
+  Version bump (#217015), remove useless virtual/libc depend, remove static
+  use flag (#165740)
+
+*libgsasl-0.2.21 (30 Sep 2007)
+
+  30 Sep 2007; Andrej Kacian <ticho@gentoo.org> +libgsasl-0.2.21.ebuild:
+  Version bump.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  07 Jun 2006; Tom Martin <slarti@gentoo.org> libgsasl-0.2.4.ebuild:
+  Missing idn from IUSE, resolves bug #135990.
+
+*libgsasl-0.2.10 (02 Jan 2006)
+
+  02 Jan 2006; Tom Martin <slarti@gentoo.org> libgsasl-0.2.4.ebuild,
+  +libgsasl-0.2.10.ebuild:
+  Version bump, resolves bug #117318.
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> libgsasl-0.2.4.ebuild:
+  Mark 0.2.4 stable on alpha
+
+  24 Aug 2005; Aron Griffis <agriffis@gentoo.org> libgsasl-0.2.4.ebuild:
+  stable on ia64
+
+  05 Jul 2005; Tom Martin <slarti@gentoo.org> libgsasl-0.2.4.ebuild:
+  Marked ~ia64.
+
+  02 May 2005; Michael Hanselmann <hansmi@gentoo.org> libgsasl-0.2.4.ebuild:
+  Stable on ppc.
+
+  02 May 2005; Elfyn McBratney <beu@gentoo.org> libgsasl-0.2.4.ebuild:
+  Stable on x86.
+
+  19 Apr 2005; Tom Martin <slarti@gentoo.org> -libgsasl-0.2.0.ebuild:
+  Version purge.
+
+  19 Apr 2005; Markus Rothe <corsair@gentoo.org> libgsasl-0.2.4.ebuild:
+  Stable on ppc64
+
+  19 Apr 2005; Tom Martin <slarti@gentoo.org> libgsasl-0.2.4.ebuild:
+  Stable on amd64 and sparc.
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> libgsasl-0.2.3.ebuild:
+  Stable on ppc64
+
+  07 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> libgsasl-0.2.4.ebuild:
+  ~alpha keyword.
+
+  10 Mar 2005; Tom Martin <slarti@gentoo.org> libgsasl-0.2.4.ebuild:
+  Marked ~sparc
+
+  22 Jan 2005; Tom Martin <slarti@gentoo.org> -libgsasl-0.1.4.ebuild:
+  Purge old versions.
+
+  22 Jan 2005; Andrej Kacian <ticho@gentoo.org> libgsasl-0.2.3.ebuild:
+  Stable on x86.
+
+  22 Jan 2005; Lars Weiler <pylon@gentoo.org> libgsasl-0.2.3.ebuild:
+  Stable on ppc.
+
+  22 Jan 2005; Tom Martin <slarti@gentoo.org> libgsasl-0.2.3.ebuild:
+  Minor QA fix in 0.2.3.ebuild -- changing .tar.bz2 to .tar.gz.
+
+*libgsasl-0.2.4 (22 Jan 2005)
+
+  22 Jan 2005; Tom Martin <slarti@gentoo.org> libgsasl-0.2.3.ebuild,
+  +libgsasl-0.2.4.ebuild:
+  Version bump, stabilise older version on amd64.
+
+  03 Jan 2005; Markus Rothe <corsair@gentoo.org> libgsasl-0.2.0.ebuild,
+  libgsasl-0.2.3.ebuild:
+  Stable on ppc64
+
+  25 Dec 2004; Andrej Kacian <ticho@gentoo.org> libgsasl-0.2.0.ebuild:
+  Stable on x86.
+
+*libgsasl-0.2.3 (25 Dec 2004)
+
+  25 Dec 2004; Tom Martin <slarti@gentoo.org> libgsasl-0.2.0.ebuild,
+  +libgsasl-0.2.3.ebuild:
+  Version bump, stabilise 0.2.0 on amd64.
+
+  23 Dec 2004; Markus Rothe <corsair@gentoo.org> libgsasl-0.2.0.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #74100
+
+  27 Nov 2004; Tom Martin <slarti@gentoo.org> -libgsasl-0.1.1.ebuild:
+  Removing old version.
+
+  27 Nov 2004; Andrej Kacian <ticho@gentoo.org> libgsasl-0.1.4.ebuild:
+  Stable on x86.
+
+*libgsasl-0.2.0 (13 Nov 2004)
+
+  13 Nov 2004; Tom Martin <slarti@gentoo.org> metadata.xml,
+  libgsasl-0.1.4.ebuild, +libgsasl-0.2.0.ebuild:
+  Taking over as maintainer. Version bump -> 0.2.0.
+
+*libgsasl-0.1.4 (11 Oct 2004)
+
+  11 Oct 2004; Tom Martin <slarti@gentoo.org> libgsasl-0.1.1.ebuild,
+  +libgsasl-0.1.4.ebuild:
+  Marked 0.1.1 stable on amd64, version bumped -> 0.1.4.
+
+  09 Jul 2004; Michael Hanselmann <hansmi@gentoo.org> libgsasl-0.1.1.ebuild:
+  Added to ~ppc.
+
+  07 Jul 2004; Tom Martin <slarti@gentoo.org> libgsasl-0.1.1.ebuild:
+  Added to ~amd64.
+
+  06 Jul 2004; <langthang@gentoo.org> libgsasl-0.1.1.ebuild:
+  added PROVIDE virtual/gsasl, changed description, re-keyword.
+
+*libgsasl-0.1.1 (05 Jul 2004)
+
+  05 Jul 2004; <langthang@gentoo.org> +metadata.xml, +libgsasl-0.1.1.ebuild:
+  New ebuild, bug #56015.

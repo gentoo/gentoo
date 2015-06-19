@@ -1,0 +1,49 @@
+# ChangeLog for net-analyzer/goaccess
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/goaccess/ChangeLog,v 1.9 2015/04/29 22:47:56 idella4 Exp $
+
+*goaccess-0.9 (29 Apr 2015)
+
+  29 Apr 2015; Ian Delaney <idella4@gentoo.org> +goaccess-0.9.ebuild,
+  metadata.xml:
+  bump; adjust metadata.xml to accommodate changed flag, ebuild supplied by
+  proxy maintainer in bug #530112
+
+*goaccess-0.8.5 (07 Apr 2015)
+
+  07 Apr 2015; Ian Delaney <idella4@gentoo.org> +goaccess-0.8.5.ebuild,
+  metadata.xml:
+  bump, wrt bug #530112, reset metadata.xml to substitute proxy maintainer
+
+  22 Nov 2014; Jeroen Roovers <jer@gentoo.org> goaccess-0.6.1.ebuild,
+  +files/goaccess-0.6.1-CFLAGS.patch, +files/goaccess-0.6.1-tinfo.patch:
+  Fix building against sys-libs/ncurses[tinfo] (bug #528364).
+
+*goaccess-0.6.1 (24 Nov 2013)
+
+  24 Nov 2013; Markos Chandras <hwoarang@gentoo.org> +goaccess-0.6.1.ebuild:
+  Version bump. Bug #491854 thanks to Nikoli <nikoli@gmx.us>
+
+  13 Oct 2013; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Updated Nikoli's e-mail address for easier automatic assignment.
+
+  17 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> goaccess-0.5-r1.ebuild:
+  Fix improper USE-flag handling in src_configure. Thanks to Nikoli for
+  discovering this issue
+
+*goaccess-0.5-r1 (15 Jan 2013)
+
+  15 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> -goaccess-0.5.ebuild,
+  +goaccess-0.5-r1.ebuild:
+  Revision bump: EAPI 5, use autotools-utils eclass, respect CFLAGS wrt bug
+  #451806
+
+  23 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Fix proxy maintainers herd name in metadata
+
+*goaccess-0.5 (27 Jul 2012)
+
+  27 Jul 2012; Ben de Groot <yngwin@gentoo.org> +goaccess-0.5.ebuild,
+  +metadata.xml:
+  Initial commit. Ebuild by proxy maintainer Nikoli, with a few edits by me,
+  from bug #348855.

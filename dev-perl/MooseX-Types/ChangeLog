@@ -1,0 +1,178 @@
+# ChangeLog for dev-perl/MooseX-Types
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/MooseX-Types/ChangeLog,v 1.37 2015/03/29 11:50:32 zlogene Exp $
+
+  29 Mar 2015; Mikle Kolyada <zlogene@gentoo.org> MooseX-Types-0.360.0.ebuild:
+  Add ~ppc keyword wrt bug #544064
+
+  29 Mar 2015; Jeroen Roovers <jer@gentoo.org> MooseX-Types-0.360.0.ebuild:
+  Marked ~hppa (bug #544064).
+
+  20 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> MooseX-Types-0.350.0.ebuild,
+  MooseX-Types-0.360.0.ebuild:
+  Bump to EAPI=5
+
+  02 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> MooseX-Types-0.360.0.ebuild:
+  Add mising test dependency wrt bug #506536
+
+*MooseX-Types-0.360.0 (25 Aug 2013)
+
+  25 Aug 2013; Patrick Lauer <patrick@gentoo.org> +MooseX-Types-0.360.0.ebuild:
+  Bump
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org> -MooseX-Types-0.310.0.ebuild:
+  Cleanup
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*MooseX-Types-0.350.0 (19 May 2012)
+
+  19 May 2012; Torsten Veller <tove@gentoo.org> +MooseX-Types-0.350.0.ebuild:
+  Version bump
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org> -MooseX-Types-0.290.0.ebuild,
+  -MooseX-Types-0.300.0.ebuild:
+  Cleanup
+
+*MooseX-Types-0.310.0 (25 Dec 2011)
+
+  25 Dec 2011; Torsten Veller <tove@gentoo.org> +MooseX-Types-0.310.0.ebuild:
+  Version bump
+
+*MooseX-Types-0.300.0 (19 Sep 2011)
+
+  19 Sep 2011; Robin H. Johnson <robbat2@gentoo.org>
+  +MooseX-Types-0.300.0.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -MooseX-Types-0.270.0.ebuild,
+  -MooseX-Types-0.280.0.ebuild:
+  Cleanup
+
+*MooseX-Types-0.290.0 (21 Aug 2011)
+
+  21 Aug 2011; Torsten Veller <tove@gentoo.org> +MooseX-Types-0.290.0.ebuild:
+  Version bump
+
+*MooseX-Types-0.280.0 (05 Aug 2011)
+
+  05 Aug 2011; Torsten Veller <tove@gentoo.org> +MooseX-Types-0.280.0.ebuild:
+  Version bump
+
+  29 Jul 2011; Torsten Veller <tove@gentoo.org> -MooseX-Types-0.250.ebuild,
+  -MooseX-Types-0.260.0.ebuild:
+  Cleanup
+
+*MooseX-Types-0.270.0 (07 Jun 2011)
+
+  07 Jun 2011; Torsten Veller <tove@gentoo.org> +MooseX-Types-0.270.0.ebuild:
+  Version bump
+
+*MooseX-Types-0.260.0 (05 Jun 2011)
+
+  05 Jun 2011; Torsten Veller <tove@gentoo.org> +MooseX-Types-0.260.0.ebuild:
+  Version bump
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -MooseX-Types-0.23.ebuild,
+  -MooseX-Types-0.24.ebuild:
+  Cleanup
+
+*MooseX-Types-0.250 (12 Jan 2011)
+
+  12 Jan 2011; Torsten Veller <tove@gentoo.org> +MooseX-Types-0.250.ebuild:
+  Version bump
+
+*MooseX-Types-0.24 (12 Sep 2010)
+
+  12 Sep 2010; Torsten Veller <tove@gentoo.org> +MooseX-Types-0.24.ebuild:
+  Version bump
+
+  15 Aug 2010; Torsten Veller <tove@gentoo.org> -MooseX-Types-0.21.ebuild,
+  -MooseX-Types-0.22.ebuild:
+  Cleanup
+
+*MooseX-Types-0.23 (22 Jul 2010)
+
+  22 Jul 2010; Torsten Veller <tove@gentoo.org> +MooseX-Types-0.23.ebuild:
+  Version bump
+
+*MooseX-Types-0.22 (03 Jun 2010)
+
+  03 Jun 2010; Torsten Veller <tove@gentoo.org> +MooseX-Types-0.22.ebuild:
+  Version bump
+
+  09 Apr 2010; Torsten Veller <tove@gentoo.org> -MooseX-Types-0.20.ebuild:
+  Cleanup
+
+*MooseX-Types-0.21 (24 Dec 2009)
+
+  24 Dec 2009; Torsten Veller <tove@gentoo.org> +MooseX-Types-0.21.ebuild:
+  Version bump
+
+  12 Oct 2009; Torsten Veller <tove@gentoo.org> -MooseX-Types-0.19.ebuild:
+  Cleanup
+
+*MooseX-Types-0.20 (13 Sep 2009)
+
+  13 Sep 2009; Torsten Veller <tove@gentoo.org> +MooseX-Types-0.20.ebuild:
+  Version bump
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org> -MooseX-Types-0.16.ebuild,
+  -MooseX-Types-0.17.ebuild:
+  Cleanup
+
+*MooseX-Types-0.19 (25 Aug 2009)
+
+  25 Aug 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +MooseX-Types-0.19.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*MooseX-Types-0.17 (20 Aug 2009)
+
+  20 Aug 2009; Torsten Veller <tove@gentoo.org> +MooseX-Types-0.17.ebuild:
+  Version bump
+
+  16 Jul 2009; Torsten Veller <tove@gentoo.org> -MooseX-Types-0.11.ebuild,
+  -MooseX-Types-0.12.ebuild, -MooseX-Types-0.13.ebuild,
+  -MooseX-Types-0.14.ebuild:
+  Cleanup
+
+*MooseX-Types-0.16 (30 Jun 2009)
+
+  30 Jun 2009; Torsten Veller <tove@gentoo.org> -MooseX-Types-0.15.ebuild,
+  +MooseX-Types-0.16.ebuild:
+  Version bump. Cleanup
+
+*MooseX-Types-0.15 (29 Jun 2009)
+
+  29 Jun 2009; Torsten Veller <tove@gentoo.org> +MooseX-Types-0.15.ebuild:
+  Version bump
+
+*MooseX-Types-0.14 (27 Jun 2009)
+
+  27 Jun 2009; Torsten Veller <tove@gentoo.org> +MooseX-Types-0.14.ebuild:
+  Version bump
+
+*MooseX-Types-0.13 (23 Jun 2009)
+
+  23 Jun 2009; Torsten Veller <tove@gentoo.org> +MooseX-Types-0.13.ebuild:
+  Version bump
+
+*MooseX-Types-0.12 (15 Jun 2009)
+
+  15 Jun 2009; Torsten Veller <tove@gentoo.org> +MooseX-Types-0.12.ebuild:
+  Version bump
+
+  09 Jun 2009; Torsten Veller <tove@gentoo.org> +MooseX-Types-0.11.ebuild,
+  +metadata.xml:
+  Initial import from perl-experimental. Based on ebuild by Michele
+  Beltrame
+
+*MooseX-Types-0.11 (24 May 2009)
+
+  24 May 2009; Torsten Veller <tove@gentoo.org> +MooseX-Types-0.11.ebuild:
+  Version bump
+
+  19 Apr 2009; Michele Beltrame <mb@cattlegrid.info>:
+  Initial

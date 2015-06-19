@@ -1,0 +1,21 @@
+--- src/download/download_constructor.cc        2011-03-08 17:48:43.000000000 +0300
++++ src/download/download_constructor.cc.new    2011-03-08 17:36:42.000000000 +0300
+@@ -97,7 +97,17 @@
+
+   parse_name(b.get_key("info"));
+   parse_info(b.get_key("info"));
+-
++ 
++  // hack, quick fix for #2505 
++  if (b.has_key_list("announce-list"))
++    if (b.get_key_list("announce-list").empty()) {
++      b.erase_key("announce-list");
++    } else {
++      Object::list_type & l = b.get_key_list("announce-list");
++      if (l.size() == 1 && !l.begin()->is_list()) {
++        b.erase_key("announce-list");  
++      }
++    }
+   parse_tracker(b);
+ }
+

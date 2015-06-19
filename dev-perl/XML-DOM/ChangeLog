@@ -1,0 +1,190 @@
+# ChangeLog for dev-perl/XML-DOM
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-DOM/ChangeLog,v 1.50 2014/08/21 19:34:55 axs Exp $
+
+*XML-DOM-1.440.0-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +XML-DOM-1.440.0-r1.ebuild, -XML-DOM-1.440.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  18 May 2012; Alexis Ballier <aballier@gentoo.org> XML-DOM-1.440.0.ebuild:
+  keyword ~amd64-fbsd
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -XML-DOM-1.44.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> XML-DOM-1.440.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*XML-DOM-1.440.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +XML-DOM-1.440.0.ebuild:
+  Change version scheme
+
+  06 Mar 2010; Raúl Porcel <armin76@gentoo.org> XML-DOM-1.44.ebuild:
+  arm stable
+
+  06 Feb 2010; Torsten Veller <tove@gentoo.org> XML-DOM-1.44.ebuild:
+  Fix LICENSE (#301969). Maintenance
+
+  14 Jan 2010; Fabian Groffen <grobian@gentoo.org> XML-DOM-1.44.ebuild:
+  Transfer Prefix keywords
+
+  11 Jan 2010; Raúl Porcel <armin76@gentoo.org> XML-DOM-1.44.ebuild:
+  Add ~arm
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -XML-DOM-1.39-r1.ebuild, -XML-DOM-1.39-r2.ebuild, -XML-DOM-1.39-r3.ebuild,
+  -XML-DOM-1.39-r4.ebuild, -XML-DOM-1.42.ebuild, -XML-DOM-1.43.ebuild,
+  XML-DOM-1.44.ebuild:
+  Ebuild maintenance
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  XML-DOM-1.39-r1.ebuild, XML-DOM-1.39-r2.ebuild, XML-DOM-1.39-r3.ebuild,
+  XML-DOM-1.39-r4.ebuild, XML-DOM-1.42.ebuild, XML-DOM-1.43.ebuild,
+  XML-DOM-1.44.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  29 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org> XML-DOM-1.44.ebuild:
+  Stable on hppa
+
+  18 Jun 2006; Rene Nussbaumer <killerfox@gentoo.org> XML-DOM-1.44.ebuild:
+  Unstable on hppa.
+
+  06 Jun 2006; <mcummings@gentoo.org> XML-DOM-1.39-r1.ebuild,
+  XML-DOM-1.39-r2.ebuild, XML-DOM-1.39-r3.ebuild, XML-DOM-1.39-r4.ebuild,
+  XML-DOM-1.42.ebuild, XML-DOM-1.43.ebuild, XML-DOM-1.44.ebuild:
+  Bug 134781
+
+  24 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> XML-DOM-1.44.ebuild:
+  Add ~x86-fbsd keyword.
+
+  06 Feb 2006; Simon Stelling <blubb@gentoo.org> XML-DOM-1.44.ebuild:
+  stable on amd64
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> XML-DOM-1.44.ebuild:
+  Mark 1.44 stable on ia64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> XML-DOM-1.44.ebuild:
+  Mark 1.44 stable on alpha
+
+  21 Jan 2006; Markus Rothe <corsair@gentoo.org> XML-DOM-1.44.ebuild:
+  Stable on ppc64
+
+  15 Jan 2006; Michael Hanselmann <hansmi@gentoo.org> XML-DOM-1.44.ebuild:
+  Stable on ppc.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org> XML-DOM-1.44.ebuild:
+  Marking sparc x86 stable
+
+*XML-DOM-1.44 (19 Nov 2005)
+
+  19 Nov 2005; <mcumming@gentoo.org> +XML-DOM-1.44.ebuild:
+  Version bump
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org> XML-DOM-1.43.ebuild:
+  Mark 1.43 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> XML-DOM-1.43.ebuild:
+  add ~ia64
+
+  18 May 2005; Markus Rothe <corsair@gentoo.org> XML-DOM-1.43.ebuild:
+  Stable on ppc64
+
+  09 Mar 2005; Markus Rothe <corsair@gentoo.org> XML-DOM-1.43.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  04 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  XML-DOM-1.39-r1.ebuild, XML-DOM-1.39-r2.ebuild, XML-DOM-1.39-r3.ebuild,
+  XML-DOM-1.39-r4.ebuild, XML-DOM-1.42.ebuild, XML-DOM-1.43.ebuild:
+  bug 76590
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> XML-DOM-1.43.ebuild:
+  Stable on amd64.
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org> XML-DOM-1.43.ebuild:
+  Stable on alpha.
+
+  30 Mar 2004; Lars Weiler <pylon@gentoo.org> XML-DOM-1.43.ebuild:
+  stable on ppc
+
+  19 Mar 2004; Eric Sammer <esammer@gentoo.org> XML-DOM-1.39-r1.ebuild,
+  XML-DOM-1.39-r2.ebuild, XML-DOM-1.39-r3.ebuild, XML-DOM-1.39-r4.ebuild,
+  XML-DOM-1.42.ebuild:
+  Fixed category-less dependencies as per bug #45110. Updated copyright
+  headers.
+
+  21 Jan 2004; <gustavoz@gentoo.org> :
+  stable on sparc
+
+*XML-DOM-1.43 (29 Jul 2003)
+
+  29 Jul 2003; Michael Cummings <mcummings@gentoo.org> XML-DOM-1.43.ebuild:
+  CPAN version bump
+  Fixes XML::Parser bug
+
+*XML-DOM-1.42 (16 Jun 2003)
+
+  16 Jun 2003; Michael Cummings <mcummings@gentoo.org> XML-DOM-1.42.ebuild:
+  CPAN version bump; needs testing; fixed missing dep
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+
+*XML-DOM-1.39-r4 (26 Nov 2002)
+
+  26 Nov 2002; Michael Cummings <mcummings@gentoo.org> ChangeLog,
+  XML-DOM-1.39-r4, files/digest-XML-DOM-1.39-r4:
+
+  Missing major dep on libwww-perl
+
+*XML-DOM-1.39-r3 (24 Nov 2002)
+  
+  24 Nov 2002; Michael Cummings <mcummings@gentoo.org> ChangeLog, 
+  XML-DOM-1.39-r3, files/digest-XML-DOM-1.39-r3:
+
+  Missing major dep on libxml-perl
+
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*XML-DOM-1.39-r2 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*XML-DOM-1.39-r1 (03 Jul 2002)
+
+  1 Aug 2002; Calum Selkirk <cselkirk@gentoo.org> XML-DOM-1.39-r1.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  03 Jul 2002; Seemant Kulleen <seemant@gentoo.org> XML-DOM-1.39-r1.ebuild
+  files/digest-XML-DOM-1.39-r1 :
+
+  Updated DEPEND to contain XML-RegExp.
+
+*XML-DOM-1.39 (6 May 2002)
+
+  6 May 2002; Seemant Kulleen <seemant@gentoo.org> XML-DOM-1.39.ebuild
+  files/digest-XML-DOM-1.39 :
+
+  Version bump, eclassed.
+
+*XML-DOM-1.25 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

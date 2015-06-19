@@ -1,0 +1,124 @@
+# ChangeLog for www-apps/sitebar
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/sitebar/ChangeLog,v 1.29 2012/10/17 03:00:18 phajdan.jr Exp $
+
+  17 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> sitebar-3.3.9-r2.ebuild:
+  x86 stable wrt bug #429228
+
+  04 Oct 2012; Brent Baude <ranger@gentoo.org> sitebar-3.3.9-r2.ebuild:
+  Marking sitebar-3.3.9-r2 ppc for bug 429228
+
+  13 Sep 2012; Agostino Sarubbo <ago@gentoo.org> sitebar-3.3.9-r2.ebuild:
+  Stable for amd64, wrt bug #429228
+
+*sitebar-3.3.9-r2 (30 Jun 2012)
+
+  30 Jun 2012; Stefan Briesenick <sbriesen@gentoo.org>
+  +sitebar-3.3.9-r2.ebuild, +files/inc_writer.inc.php.diff, metadata.xml:
+  EAPI=4, added PHP 5.3 patch, added optional plugins.
+
+  11 Sep 2010; Matti Bickel <mabi@gentoo.org> sitebar-3.3.9-r1.ebuild:
+  change virtual/php to virtual/httpd-php (bug #319623)
+
+  07 Mar 2010; Benedikt Böhm <hollow@gentoo.org> -sitebar-3.3.9.ebuild,
+  sitebar-3.3.9-r1.ebuild:
+  remove old version
+
+  08 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  sitebar-3.3.9-r1.ebuild:
+  ppc stable, bug #209014
+
+  06 Feb 2008; Christoph Mende <angelos@gentoo.org> sitebar-3.3.9-r1.ebuild:
+  Stable on amd64, bug #209014
+
+  05 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  sitebar-3.3.9-r1.ebuild:
+  stable x86, bug 209014
+
+*sitebar-3.3.9-r1 (17 Jan 2008)
+
+  17 Jan 2008; Gunnar Wrobel <wrobel@gentoo.org> +sitebar-3.3.9-r1.ebuild:
+  Fixed dependencies (#205846).
+
+  18 Oct 2007; <wrobel@gentoo.org> -files/debian.patch,
+  -sitebar-3.3.8-r1.ebuild:
+  -m Removed insecure versions (#195810).
+
+  18 Oct 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  sitebar-3.3.9.ebuild:
+  ppc stable, bug #195810
+
+*sitebar-3.3.9 (16 Oct 2007)
+
+  16 Oct 2007; <wrobel@gentoo.org> +sitebar-3.3.9.ebuild:
+  -m Added sitebar-3.3.9 in response to #195810
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org> sitebar-3.3.8-r1.ebuild:
+  Fixing the DEPEND/RDEPEND for the move of net-www/apache to
+  www-servers/apache (#78622).
+
+  02 Jan 2007; Renat Lumpau <rl03@gentoo.org> sitebar-3.3.8-r1.ebuild:
+  Drop mysql dep wrt bug 159781
+
+  23 Nov 2006; Francesco Riosa <vivo@gentoo.org> sitebar-3.3.8-r1.ebuild:
+  dev-db/mysql => virtual/mysql
+
+  22 Aug 2006; Renat Lumpau <rl03@gentoo.org> -sitebar-3.2.6.ebuild:
+  Removed old version
+
+  18 Aug 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  sitebar-3.3.8-r1.ebuild:
+  ppc stable, bug #142597
+
+*sitebar-3.3.8-r1 (17 Aug 2006)
+
+  17 Aug 2006; Renat Lumpau <rl03@gentoo.org> +files/debian.patch,
+  -sitebar-3.3.8.ebuild, +sitebar-3.3.8-r1.ebuild:
+  Apply Debian patch wrt bug #142597.
+
+*sitebar-3.3.8 (02 Apr 2006)
+
+  02 Apr 2006; Renat Lumpau <rl03@gentoo.org> -sitebar-3.3.7.ebuild,
+  +sitebar-3.3.8.ebuild:
+  Version bump wrt bug #128346.
+
+*sitebar-3.3.7 (21 Feb 2006)
+
+  21 Feb 2006; Renat Lumpau <rl03@gentoo.org> -sitebar-3.3.3.ebuild,
+  -sitebar-3.3.5.ebuild, +sitebar-3.3.7.ebuild:
+  Version bump wrt bug #123315, cleaned out old versions.
+
+*sitebar-3.3.5 (28 Sep 2005)
+
+  28 Sep 2005; Renat Lumpau <rl03@gentoo.org> +sitebar-3.3.5.ebuild:
+  Version bump wrt bug #107445.
+
+  24 Aug 2005; Homer Parker <hparker@gentoo.org> sitebar-3.3.3.ebuild:
+  Marked ~amd64.
+
+  22 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt:
+  Housekeeping
+
+  22 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
+  sitebar-3.3.3.ebuild:
+  Housekeeping
+
+*sitebar-3.3.3 (03 Jul 2005)
+
+  03 Jul 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
+  +sitebar-3.3.3.ebuild:
+  Version bump, closes #94332
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  sitebar-3.2.6.ebuild:
+  Masked sitebar-3.2.6.ebuild stable for ppc
+
+  31 Aug 2004; David Holm <dholm@gentoo.org> sitebar-3.2.6.ebuild:
+  Added to ~ppc.
+
+*sitebar-3.2.6 (18 Aug 2004)
+
+  18 Aug 2004; Renat Lumpau <rl03@gentoo.org> +metadata.xml,
+  +files/postinstall-en.txt, +sitebar-3.2.6.ebuild:
+  Initial ebuild (bugs #29841 and #53490)
+

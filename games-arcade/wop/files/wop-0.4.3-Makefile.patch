@@ -1,0 +1,54 @@
+--- Makefile.orig	2007-04-23 18:27:32 +0000
++++ Makefile	2007-04-23 18:27:50 +0000
+@@ -3,22 +3,22 @@
+ sinclude Makefile.local
+ 
+ all:
+-	+cd sdlwidgets; make
+-	+cd src; make
++	+cd sdlwidgets; $(MAKE)
++	+cd src; $(MAKE)
+ runc:
+-	+cd src; make runc
++	+cd src; $(MAKE) runc
+ runs:
+-	+cd src; make runs
++	+cd src; $(MAKE) runs
+ doc:
+-	cd src; make doc
++	cd src; $(MAKE) doc
+ clean:
+-	cd sdlwidgets; make clean
+-	cd src; make clean
++	cd sdlwidgets; $(MAKE) clean
++	cd src; $(MAKE) clean
+ 	cd doc; rm -rf html
+ unison:
+-	cd src; make unison
++	cd src; $(MAKE) unison
+ gunison:
+-	cd src; make gunison
++	cd src; $(MAKE) gunison
+ snapshot-src:
+ 	ln -s . wop;                                           \
+ 	tar cjvf wop-`date +%F`.tar.bz2                        \
+--- src/Makefile.orig	2006-02-13 10:14:01.000000000 +0100
++++ src/Makefile	2007-04-27 18:36:22.000000000 +0200
+@@ -18,7 +18,7 @@
+             -DUSE_SDL -DNEW=new\(std::nothrow\) \
+             -I../sdlwidgets \
+             $(shell sdl-config --cflags) # -g
+-LDFLAGS  = -L../sdlwidgets -lsdlwidgets -lz \
++LIBS      = -L../sdlwidgets -lsdlwidgets -lz \
+            -lm -lSDL_net -lSDL_mixer -lSDL_ttf -lSDL_image \
+            $(shell sdl-config --libs) # -g
+ 
+@@ -56,7 +56,7 @@
+ 
+ $(TARGET): $(OBJECT_FILES) Makefile ../sdlwidgets/libsdlwidgets.a
+ 	-mkdir ../bin
+-	$(CXX) $(OBJECT_FILES) -o $(TARGET) $(LDFLAGS)
++	$(CXX) $(LDFLAGS) $(OBJECT_FILES) -o $(TARGET) $(LIBS)
+ 
+ %.o: %.cpp Makefile
+ 	$(CXX) $(CXXFLAGS) -c $< -o $@

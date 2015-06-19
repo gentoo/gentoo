@@ -1,0 +1,174 @@
+# ChangeLog for media-gfx/skencil
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/skencil/ChangeLog,v 1.45 2013/06/09 18:32:31 floppym Exp $
+
+  09 Jun 2013; Mike Gilbert <floppym@gentoo.org>
+  skencil-0.6.18_pre20080519.ebuild, skencil-1.0_alpha784.ebuild:
+  Depend on virtual/python-imaging.
+
+  26 Feb 2012; Patrick Lauer <patrick@gentoo.org>
+  skencil-0.6.18_pre20080519.ebuild, skencil-1.0_alpha784.ebuild:
+  Restricting pypy
+
+  04 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  skencil-1.0_alpha784.ebuild:
+  Set SUPPORT_PYTHON_ABIS (bug #313515).
+
+  04 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  skencil-0.6.18_pre20080519.ebuild:
+  Use Python 2 (bug #313515).
+
+  04 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -skencil-0.6.18_pre20080519-r1.ebuild:
+  Delete.
+
+*skencil-1.0_alpha784 (30 Nov 2010)
+
+  30 Nov 2010; Hanno Boeck <hanno@gentoo.org> +skencil-1.0_alpha784.ebuild:
+  Version bump, upstream build system changed to plain distutils, simplifies
+  ebuild a lot.
+
+  08 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  skencil-0.6.18_pre20080519.ebuild:
+  Delete call to deprecated python_tkinter_exists() (bug #313515).
+
+*skencil-0.6.18_pre20080519-r1 (21 Nov 2008)
+
+  21 Nov 2008; Hanno Boeck <hanno@gentoo.org>
+  skencil-0.6.18_pre20080519.ebuild, +skencil-0.6.18_pre20080519-r1.ebuild:
+  Restore ebuild without EAPI=2, add new, unstable-keyworded one with EAPI=2
+  features.
+
+  16 Nov 2008; Hanno Boeck <hanno@gentoo.org>
+  skencil-0.6.18_pre20080519.ebuild:
+  Change to use-dependencies.
+
+  18 Jul 2008; Jeroen Roovers <jer@gentoo.org>
+  skencil-0.6.18_pre20080519.ebuild:
+  Stable for HPPA (bug #228161).
+
+  22 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  skencil-0.6.18_pre20080519.ebuild:
+  stable x86, bug 228161
+
+  21 Jun 2008; Markus Rothe <corsair@gentoo.org>
+  skencil-0.6.18_pre20080519.ebuild:
+  Stable on ppc64; bug #228161
+
+  21 Jun 2008; Friedrich Oslage <bluebird@gentoo.org>
+  skencil-0.6.18_pre20080519.ebuild:
+  Stable on sparc, bug #228161
+
+  19 Jun 2008; Kenneth Prugh <ken69267@gentoo.org>
+  skencil-0.6.18_pre20080519.ebuild:
+  amd64 stable, bug #228161
+
+  19 Jun 2008; nixnut <nixnut@gentoo.org> skencil-0.6.18_pre20080519.ebuild:
+  Stable on ppc wrt bug 228161
+
+*skencil-0.6.18_pre20080519 (19 May 2008)
+
+  19 May 2008; Hanno Boeck <hanno@gentoo.org>
+  +files/skencil-0.6.17-setup.py.patch, +skencil-0.6.18_pre20080519.ebuild:
+  Bump, fix building with tcl/tk 8.5, fix another build error.
+
+  09 May 2007; Hanno Boeck <hanno@gentoo.org>
+  +files/skencil-configure-without-nls.diff,
+  skencil-0.6.18_pre20070421.ebuild:
+  Fix for USE -nls.
+
+*skencil-0.6.18_pre20070421 (21 Apr 2007)
+
+  21 Apr 2007; Hanno Boeck <hanno@gentoo.org>
+  +skencil-0.6.18_pre20070421.ebuild:
+  Bump to snapshot for python 2.5.
+
+  05 Feb 2007; Jeroen Roovers <jer@gentoo.org> skencil-0.6.17.ebuild:
+  Stable for HPPA (inkscape).
+
+  27 Jun 2006; Jeroen Roovers <jer@gentoo.org> skencil-0.6.17.ebuild:
+  Marked ~hppa (for media-gfx/inkscape).
+
+  08 Apr 2006; Markus Rothe <corsair@gentoo.org> skencil-0.6.17.ebuild:
+  Stable on ppc64
+
+  15 Jan 2006; Simon Stelling <blubb@gentoo.org> skencil-0.6.17.ebuild:
+  stable on amd64
+
+  24 Dec 2005; Michael Hanselmann <hansmi@gentoo.org> skencil-0.6.17.ebuild:
+  Stable on ppc.
+
+  20 Dec 2005; Mark Loeser <halcy0n@gentoo.org> skencil-0.6.17.ebuild:
+  Stable on x86; bug #113607
+
+  20 Dec 2005; Gustavo Zacarias <gustavoz@gentoo.org> skencil-0.6.17.ebuild:
+  Quickie stable on sparc wrt #113607
+
+  17 Dec 2005; Markus Rothe <corsair@gentoo.org> skencil-0.6.17.ebuild:
+  Added ~ppc64
+
+  12 Dec 2005; Gustavo Zacarias <gustavoz@gentoo.org> skencil-0.6.17.ebuild:
+  Keyworded ~sparc wrt #115227
+
+  17 Nov 2005; Herbie Hopkins <herbs@gentoo.org> skencil-0.6.17.ebuild:
+  Fixed multilib-strict issue, bug 98622. Re-add dropped ~amd64 keyword.
+
+*skencil-0.6.17 (18 Sep 2005)
+
+  18 Sep 2005; Chris White <chriswhite@gentoo.org> +skencil-0.6.17.ebuild:
+  Version bump for bug #103217 by spyderous. This adds a USE flag support
+  check, as well as making the nls DEPEND/RDEPEND Gentoo/BSD friendly for when
+  they want to mark it.
+
+  22 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> skencil-0.6.16.ebuild:
+  Stable on sparc
+
+  10 Jun 2005; Joseph Jezak <josejx@gentoo.org> skencil-0.6.16.ebuild:
+  Marked ppc stable.
+
+  09 Jun 2005; <sekretarz@gentoo.org> skencil-0.6.16.ebuild:
+  Stable on amd64
+
+  05 Jun 2005; Markus Rothe <corsair@gentoo.org> skencil-0.6.16.ebuild:
+  Stable on ppc64; dependency for bug #92995
+
+  21 May 2005; Markus Rothe <corsair@gentoo.org> skencil-0.6.16.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  22 Mar 2005; Karol Wojtaszek <sekretarz@gentoo.org> skencil-0.6.16.ebuild:
+  Added to ~amd64
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  23 Dec 2004; Hanno Boeck <hanno@gentoo.org> skencil-0.6.16.ebuild:
+  Added pyxml to dependencies.
+
+  13 Oct 2004; Seemant Kulleen <seemant@gentoo.org> skencil-0.6.16.ebuild,
+  skencil-0.6.16_pre3.ebuild:
+  HOMEPAGE update thanks to: James Kyte <james.kyte@gmail.com> in bug #67452
+
+  19 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> skencil-0.6.16.ebuild,
+  skencil-0.6.16_pre3.ebuild:
+  dev-python/Imaging renamed to dev-python/imaging.
+
+  14 Mar 2004; Jason Wever <weeve@gentoo.org> skencil-0.6.16.ebuild:
+  Added ~sparc keyword.
+
+  10 Mar 2004; Hanno Boeck <hanno@gentoo.org> skencil-0.6.16.ebuild:
+  Marked stable on x86.
+
+*skencil-0.6.16 (09 Feb 2004)
+
+  09 Feb 2004; Hanno Boeck <hanno@gentoo.org> skencil-0.6.16.ebuild,
+  skencil-0.6.16_pre3.ebuild:
+  Version bump.
+
+  09 Feb 2004; Hanno Boeck <hanno@gentoo.org> skencil-0.6.16_pre3.ebuild:
+  Added reportlab to DEPEND. Fixes #33946.
+
+*skencil-0.6.16_pre3 (11 Dec 2003)
+*skencil-0.6.15 (11 Dec 2003)
+
+  11 Dec 2003; Hanno Boeck <hanno@gentoo.org> skencil-0.6.16_pre3.ebuild:
+  skencil is the new name of sketch.

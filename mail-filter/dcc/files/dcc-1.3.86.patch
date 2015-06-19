@@ -1,0 +1,41 @@
+I know it looks weird that we are patching configure here, but there is NO
+configure.{ac,in} source included with this package.
+- Robin H. Johnson <robbat2@gentoo.org>
+
+This patch is from Gentoo bug 182172, and was submitted by steveb
+<steeeeeveee@gmx.net>.
+
+diff -Naur dcc-1.3.86/configure dcc-1.3.86.new/configure
+--- dcc-1.3.86/configure	2008-03-11 16:38:41.000000000 +0100
++++ dcc-1.3.86.new/configure	2008-03-24 19:50:52.802962250 +0100
+@@ -1058,8 +1058,7 @@
+     FreeBSD|DragonFly)
+ 	PTHREAD_LDFLAGS="$PTHREAD_LDFLAGS -pthread"
+ 	if test -s /usr/lib/libc_r.a; then
+-	    # use libc_r on ancient versions
+-	    appendvar PTHREAD_LIBS -lc_r
++	    appendvar PTHREAD_LIBS
+ 	fi
+ 	;;
+     Darwin)
+@@ -3511,7 +3510,7 @@
+ 	mancat=man
+ 	MAN8='dcc.8 $(SUBDIR_MAN8)'
+ 	MAN8INST=''
+-	USE_DCCMANINSTALL='# do not use dccmaninstall'
++	USE_DCCMANINSTALL='maninstall:dccmaninstall'
+ 	;;
+     DragonFly)
+ 	# default to /usr/local/man/man8 and use nroff files, possibly
+diff -Naur dcc-1.3.86/thrlib/cmn.c dcc-1.3.86.new/thrlib/cmn.c
+--- dcc-1.3.86/thrlib/cmn.c	2008-02-11 06:00:45.000000000 +0100
++++ dcc-1.3.86.new/thrlib/cmn.c	2008-03-24 19:51:36.333682750 +0100
+@@ -667,7 +667,7 @@
+ 	LOG_CMN_CAPTION(cwp, DCC_LOG_TRN_MSG_CR);
+ 	cwp->log_size = MAX_LOG_SIZE+1;
+ #else
+-	log_write(&wp->cw, buf, buflen);
++	log_write(cwp, buf, buflen);
+ #endif
+ }
+ 

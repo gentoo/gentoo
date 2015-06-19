@@ -1,0 +1,14 @@
+--- gcc-config-1.8/gcc-config
++++ gcc-config-1.8/gcc-config
+@@ -15,8 +15,9 @@
+ trap ":" INT QUIT TSTP
+ 
+ argv0=${0##*/}
+-source /etc/init.d/functions.sh || {
+-	echo "${argv0}: Could not source /etc/init.d/functions.sh!" 1>&2
++functions_script="/lib/gentoo/functions.sh"
++source ${functions_script} || {
++	echo "${argv0}: Could not source ${functions_script}!" 1>&2
+ 	exit 1
+ }
+ esyslog() { :; }

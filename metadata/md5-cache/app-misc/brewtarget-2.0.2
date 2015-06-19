@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-qt/qtcore-4.8:4 >=dev-qt/qtgui-4.8:4 >=dev-qt/qtsql-4.8:4[sqlite] >=dev-qt/qtsvg-4.8:4 >=dev-qt/qtwebkit-4.8:4 phonon? ( kde? ( media-libs/phonon[qt4] ) !kde? ( || ( >=dev-qt/qtphonon-4.8:4 media-libs/phonon[qt4] ) ) ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Application to create and manage beer recipes
+EAPI=5
+HOMEPAGE=http://www.brewtarget.org/
+IUSE=kde phonon linguas_ca linguas_cs linguas_de linguas_en linguas_es linguas_fr linguas_hu linguas_it linguas_nb linguas_nl linguas_pl linguas_pt linguas_ru linguas_sv
+KEYWORDS=~amd64
+LICENSE=GPL-3 WTFPL-2
+RDEPEND=>=dev-qt/qtcore-4.8:4 >=dev-qt/qtgui-4.8:4 >=dev-qt/qtsql-4.8:4[sqlite] >=dev-qt/qtsvg-4.8:4 >=dev-qt/qtwebkit-4.8:4 phonon? ( kde? ( media-libs/phonon[qt4] ) !kde? ( || ( >=dev-qt/qtphonon-4.8:4 media-libs/phonon[qt4] ) ) )
+SLOT=0
+SRC_URI=https://launchpad.net/brewtarget/trunk/2.0.2/+download/brewtarget_2.0.2.orig.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	l10n	33bde4fb0cfd3a21a277b66bfd837e19	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=6baaaca007bef43f71c58a4d85c2d76a

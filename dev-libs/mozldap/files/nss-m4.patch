@@ -1,0 +1,45 @@
+diff -uNr config.orig/autoconf/nss.m4 config/autoconf/nss.m4
+--- config.orig/autoconf/nss.m4	2009-10-06 11:21:10.898930843 +0300
++++ config/autoconf/nss.m4	2009-10-06 11:23:37.754923372 +0300
+@@ -86,41 +86,6 @@
+ 
+ ])
+ 
+-dnl AM_PATH_INTREE_NSS([ROOTPATH, [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]]])
+-dnl Test for in-tree NSS, and define NSS_CFLAGS and NSS_LIBS
+-AC_DEFUN(AM_PATH_INTREE_NSS,
+-[
+-    nsslibpath=`echo $1/*.OBJ/lib | cut -f1 -d' '`
+-    savedir=`pwd`
+-    cd $nsslibpath
+-    abs_nsslibpath=`pwd`
+-    cd $savedir
+-    nssincpath=$1/public/nss
+-    savedir=`pwd`
+-    cd $nssincpath
+-    abs_nssincpath=`pwd`
+-    cd $savedir
+-    if test -f "$abs_nssincpath/nss.h" ; then
+-        NSS_CFLAGS="-I$abs_nssincpath"
+-    fi
+-    if test -d "$abs_nsslibpath" ; then
+-        NSS_LIBS="-L$abs_nsslibpath"
+-    fi
+-    if test -n "$NSS_CFLAGS" -a -n "$NSS_LIBS" ; then
+-        AC_MSG_CHECKING(using in-tree NSS from $nssincpath $nsslibpath)
+-	    AC_SUBST(NSS_CFLAGS)
+-	    AC_SUBST(NSS_LIBS)
+-		AC_MSG_RESULT(yes)
+-    else
+-        AC_MSG_CHECKING(could not find in-tree NSS in $1)
+-		AC_MSG_RESULT(no)
+-    fi
+-])
+-
+-dnl AM_PATH_GIVEN_NSS(no args)
+-dnl Test for --with-nss=path, --with-nss-inc=path, and --with-nss-lib=path
+-dnl Makes sure the right files/dirs are in the given paths, and sets
+-dnl NSS_CFLAGS and NSS_LIBS if successful
+ AC_DEFUN(AM_PATH_GIVEN_NSS,
+ [
+     dnl ========================================================

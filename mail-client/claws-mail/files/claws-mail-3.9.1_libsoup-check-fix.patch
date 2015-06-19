@@ -1,0 +1,30 @@
+
+libsoup is not obligatory, but nonetheless a mandatory check existed.
+Fixed in releases >3.9.1
+
+Gentoo bug: https://bugs.gentoo.org/show_bug.cgi?id=469014
+Upstream commit: http://git.claws-mail.org/?p=claws.git;a=commitdiff;h=d04c724c9e74f7c5d1f247e41a21e472790d9992
+
+
+--- configure.ac.orig
++++ configure.ac
+@@ -1107,14 +1107,17 @@
+ AC_SUBST(WEBKIT_CFLAGS)
+ 
+ dnl libsoup ********************************************************************
+-PKG_CHECK_MODULES(LIBSOUP, libsoup-2.4)
++PKG_CHECK_MODULES(LIBSOUP, libsoup-2.4, HAVE_LIBSOUP=yes, HAVE_LIBSOUP=no)
++if test x"$HAVE_LIBSOUP" = xyes; then
++	AC_DEFINE(HAVE_LIBSOUP, 1, [Define if libsoup is available])
++fi
+ AC_SUBST(LIBSOUP_CFLAGS)
+ AC_SUBST(LIBSOUP_LIBS)
+ 
+ dnl libsoup-gnome **************************************************************
+ PKG_CHECK_MODULES(LIBSOUP_GNOME, libsoup-gnome-2.4 >= 2.26, HAVE_LIBSOUP_GNOME=yes, HAVE_LIBSOUP_GNOME=no)
+ if test x"$HAVE_LIBSOUP_GNOME" = xyes; then
+-	AC_DEFINE(HAVE_LIBSOUP_GNOME, 1, [Define if libsoup is available])
++	AC_DEFINE(HAVE_LIBSOUP_GNOME, 1, [Define if libsoup_gnome is available])
+ fi
+ AC_SUBST(LIBSOUP_GNOME_CFLAGS)
+ AC_SUBST(LIBSOUP_GNOME_LIBS)

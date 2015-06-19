@@ -1,0 +1,53 @@
+--- grc-1.4.orig/conf.gcc
++++ grc-1.4/conf.gcc
+@@ -1,7 +1,7 @@
+ # 
+-regexp=\bgcc\b
+-colours=yellow
+-count=more
++regexp=\b(g?cc|[gc]\+\+|g?as|ld)\b
++colours=white bold
++count=once
+ .........
+ # 
+ regexp=^[^:\s]*?:\d+:
+@@ -15,6 +15,10 @@
+ regexp=\`[A-Za-z0-9_():&*]+( const)?\'
+ colours=magenta
+ .........
++# compilation method modifiers
++regexp=\s\-(O\d?|f\S+|pthread|g\S*|c|W\S,\S+)\b
++colours=yellow
++.........
+ # -O
+ regexp=\-O\d 
+ colours=green
+@@ -27,7 +31,7 @@
+ # stderr to grcat 
+ #
+ # warning
+-regexp=warning:.*
++regexp=[Ww]arning[:\b]
+ colours=white
+ .........
+ regexp=warning:
+@@ -35,7 +39,7 @@
+ count=once
+ .........
+ # error
+-regexp=error:.*
++regexp=[Ee]rror[:\b]
+ colours=bold white
+ .........
+ regexp=error:
+--- grc-1.4.orig/grc.conf
++++ grc-1.4/grc.conf
+@@ -19,7 +19,7 @@
+ conf.traceroute
+ 
+ # gcc command
+-(^|[/\w\.]+/)g?cc\s
++(^|[/\w\.]+/)(g?cc|[gc]\+\+)\s
+ conf.gcc
+ 
+ # make command

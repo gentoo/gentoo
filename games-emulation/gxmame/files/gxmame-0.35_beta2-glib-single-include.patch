@@ -1,0 +1,13 @@
+Index: gxmame-0.35beta2/src/gxmame.c
+===================================================================
+--- gxmame-0.35beta2.orig/src/gxmame.c
++++ gxmame-0.35beta2/src/gxmame.c
+@@ -31,7 +31,7 @@
+ #include <unistd.h>
+ #include <signal.h>
+ #include <glib/gprintf.h>
+-#include <glib/gutils.h>
++#include <glib.h>
+ #include <gtk/gtkmain.h>
+ #include <gtk/gtkfilesel.h>
+ 

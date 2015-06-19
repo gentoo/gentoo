@@ -1,0 +1,25 @@
+Respect LDFLAGS
+
+http://bugs.gentoo.org/show_bug.cgi?id=335225
+
+--- src/Makefile
++++ src/Makefile
+@@ -103,10 +103,10 @@
+ 	$(CC) $(LDFLAGS) -o $@ ntdpal_main.o dpal.o
+ 
+ oligotm: oligotm_main.c oligotm.h $(OLIGOTM_LIB)
+-	$(CC) $(CFLAGS) -o $@ oligotm_main.c $(OLIGOTM_LIB) $(LIBOPTS) $(LDLIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ oligotm_main.c $(OLIGOTM_LIB) $(LIBOPTS) $(LDLIBS)
+ 
+ long_seq_tm_test: long_seq_tm_test_main.c oligotm.o
+-	$(CC) $(CFLAGS) -o $@ long_seq_tm_test_main.c oligotm.o $(LIBOPTS) $(LDLIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ long_seq_tm_test_main.c oligotm.o $(LIBOPTS) $(LDLIBS)
+ 
+ boulder_input.o: boulder_input.c boulder_input.h primer3.h primer3_release.h dpal.h
+ 	$(CC) -c $(CFLAGS) $(P_DEFINES) -o $@ boulder_input.c
+@@ -136,4 +136,4 @@
+ primer_test: test
+ 
+ test: $(PRIMER_EXE) ntdpal
+-	cd ../test; make test
++	$(MAKE) -C ../test test

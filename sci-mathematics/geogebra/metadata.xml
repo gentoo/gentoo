@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>amynka@gentoo.org</email>
+</maintainer>
+<longdescription lang="en">
+ GeoGebra is interactive mathematics software for learning and teaching mathematics 
+ and science from primary school up to university level. 
+ Constructions can be made with points, vectors, segments, lines, polygons, 
+ conic sections, inequalities, implicit polynomials and functions.
+</longdescription>
+</pkgmetadata>

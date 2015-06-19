@@ -1,0 +1,27 @@
+# ChangeLog for dev-python/dicttoxml
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/dicttoxml/ChangeLog,v 1.6 2015/06/11 04:39:19 idella4 Exp $
+
+*dicttoxml-1.6.6 (11 Jun 2015)
+
+  11 Jun 2015; Ian Delaney <idella4@gentoo.org> +dicttoxml-1.6.6.ebuild:
+  bump
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> dicttoxml-1.5.6.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> dicttoxml-1.5.6.ebuild:
+  amd64 stable, bug 540290
+
+*dicttoxml-1.5.6 (13 Nov 2014)
+
+  13 Nov 2014; Patrick McLean <chutzpah@gentoo.org> +dicttoxml-1.5.6.ebuild,
+  +metadata.xml:
+  New package, Converts a Python dictionary or other native data type into a
+  valid XML string

@@ -1,0 +1,28 @@
+# ChangeLog for dev-perl/Class-Std-Fast
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-Std-Fast/ChangeLog,v 1.6 2015/06/13 21:39:48 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Class-Std-Fast-0.0.8-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*Class-Std-Fast-0.0.8-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Class-Std-Fast-0.0.8-r1.ebuild, -Class-Std-Fast-0.0.8.ebuild:
+  bump EAPI to 5 to help support dev-lang/perl upgrades
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  22 Apr 2012; Torsten Veller <tove@gentoo.org> Class-Std-Fast-0.0.8.ebuild:
+  Add ~x86. Fix Header
+
+  12 Apr 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Fix cpan distribution in metadata.xml
+
+*Class-Std-Fast-0.0.8 (11 Apr 2012)
+
+  11 Apr 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +Class-Std-Fast-0.0.8.ebuild, +metadata.xml:
+  Initial import of dependencies of google-api-adwords-perl.

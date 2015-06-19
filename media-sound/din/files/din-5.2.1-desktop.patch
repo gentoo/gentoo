@@ -1,0 +1,8 @@
+--- din-5.2.1/data/din.desktop
++++ din-5.2.1/data/din.desktop
+@@ -8,4 +8,4 @@
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+-Categories=Application;AudioVideo;Audio;Midi;Music;
++Categories=AudioVideo;Audio;Midi;Music;

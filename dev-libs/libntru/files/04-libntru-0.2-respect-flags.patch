@@ -1,0 +1,92 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Wed Apr 16 14:48:00 UTC 2014
+Subject: respect system flags
+
+--- libntru-0.2/Makefile
++++ libntru-0.2/Makefile
+@@ -1,12 +1,16 @@
+ CC?=gcc
+-CFLAGS=-g -Wall -Wextra -Wno-unused-parameter -O2
+-LDFLAGS=-lrt
++CFLAGS?=-g -O2
++CFLAGS+=-Wall -Wextra -Wno-unused-parameter
++LIBS+=-lrt
+ SRCDIR=src
+ TESTDIR=tests
+ LIB_OBJS=bitstring.o encparams.o hash.o idxgen.o key.o mgf.o ntru.o poly.o rand.o sha1.o sha2.o
+ TEST_OBJS=test_bitstring.o test_hash.o test_idxgen.o test_key.o test_ntru.o test.o test_poly.o test_util.o
+ VERSION=0.2
+ INST_PFX=/usr
++INST_LIBDIR=$(INST_PFX)/lib
++INST_INCLUDE=$(INST_PFX)/include/libntru
++INST_DOCDIR=$(INST_PFX)/share/doc/libntru
+ INST_HEADERS=ntru.h types.h key.h encparams.h hash.h rand.h err.h
+ 
+ LIB_OBJS_PATHS=$(patsubst %,$(SRCDIR)/%,$(LIB_OBJS))
+@@ -18,29 +22,29 @@
+ 
+ .PHONY: lib
+ lib: $(LIB_OBJS_PATHS)
+-	$(CC) $(CFLAGS) -shared -Wl,-soname,libntru.so -o libntru.so $(LIB_OBJS_PATHS) $(LDFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) -shared -Wl,-soname,libntru.so -o libntru.so $(LIB_OBJS_PATHS) $(LDFLAGS) $(LIBS)
+ 
+ .PHONY: install
+ install: lib
+-	test -d $(INST_PFX) || mkdir -p $(INST_PFX)
+-	test -d $(INST_PFX)/lib || mkdir $(INST_PFX)/lib
+-	test -d $(INST_PFX)/include/libntru || mkdir -p $(INST_PFX)/include/libntru
+-	test -d $(INST_PFX)/share/doc/libntru || mkdir -p $(INST_PFX)/share/doc/libntru
+-	install -m 0755 libntru.so $(INST_PFX)/lib/libntru.so
+-	install -m 0644 README.md $(INST_PFX)/share/doc/libntru/README.md
+-	for header in $(INST_HEADERS); do \
+-	    install -m 0644 $(SRCDIR)/$$header $(INST_PFX)/include/libntru/; \
++	test -d "$(DESTDIR)$(INST_PFX)" || mkdir -p "$(DESTDIR)$(INST_PFX)"
++	test -d "$(DESTDIR)$(INST_LIBDIR)" || mkdir "$(DESTDIR)$(INST_LIBDIR)"
++	test -d "$(DESTDIR)$(INST_INCLUDE)" || mkdir -p "$(DESTDIR)$(INST_INCLUDE)"
++	test -d "$(DESTDIR)$(INST_DOCDIR)" || mkdir -p "$(DESTDIR)$(INST_DOCDIR)"
++	install -m 0755 libntru.so "$(DESTDIR)$(INST_LIBDIR)/libntru.so"
++	install -m 0644 README.md "$(DESTDIR)$(INST_DOCDIR)/README.md"
++	for header in $(INST_HEADERS) ; do \
++	    install -m 0644 "$(SRCDIR)/$$header" "$(DESTDIR)$(INST_INCLUDE)/" ; \
+ 	done
+ 
+ .PHONY: uninstall
+ uninstall:
+-	rm -f $(INST_PFX)/lib/libntru.so
+-	rm -f $(INST_PFX)/share/doc/libntru/README.md
+-	rmdir $(INST_PFX)/share/doc/libntru/
+-	for header in $(INST_HEADERS); do \
+-	    rm $(INST_PFX)/include/libntru/$$header; \
++	rm -f "$(DESTDIR)$(INST_LIBDIR)/libntru.so"
++	rm -f "$(DESTDIR)$(INST_DOCDIR)/README.md"
++	rmdir "$(DESTDIR)$(INST_DOCDIR)/"
++	for header in $(INST_HEADERS) ; do \
++	    rm "$(DESTDIR)$(INST_INCLUDE)/$$header" ; \
+ 	done
+-	rmdir $(INST_PFX)/include/libntru/
++	rmdir "$(DESTDIR)$(INST_INCLUDE)/"
+ 
+ .PHONY: dist
+ dist:
+@@ -57,17 +61,17 @@
+ 	rm -rf $(DIST_NAME)
+ 
+ test: lib $(TEST_OBJS_PATHS)
+-	$(CC) $(CFLAGS) -o test $(TEST_OBJS_PATHS) -L. -lntru -lm
++	$(CC) $(CFLAGS) $(CPPFLAGS) -o test $(TEST_OBJS_PATHS) $(LDFLAGS) -L. -lntru -lm
+ 	LD_LIBRARY_PATH=. ./test
+ 
+ bench: lib $(SRCDIR)/bench.o
+-	$(CC) $(CFLAGS) -o bench $(SRCDIR)/bench.o -L. -lntru
++	$(CC) $(CFLAGS) $(CPPFLAGS) -o bench $(SRCDIR)/bench.o $(LDFLAGS) -L. -lntru
+ 
+ $(SRCDIR)/%.o: $(SRCDIR)/%.c
+-	$(CC) $(CFLAGS) -c -fPIC $< -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) -c -fPIC $< -o $@
+ 
+ tests/%.o: tests/%.c
+-	$(CC) $(CFLAGS) -fPIC -I$(SRCDIR) -c $< -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) -fPIC -I$(SRCDIR) -c $< -o $@
+ 
+ .PHONY: clean
+ clean:

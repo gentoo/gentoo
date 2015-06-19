@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=Colorized icons shared between all gnome-colors iconsets
+EAPI=2
+HOMEPAGE=http://code.google.com/p/gnome-colors/
+IUSE=+branding
+KEYWORDS=amd64 x86
+LICENSE=GPL-2 branding? ( CC-Sampling-Plus-1.0 )
+RDEPEND=x11-themes/gnome-icon-theme
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=http://gnome-colors.googlecode.com/files/gnome-colors-5.5.1.tar.gz branding? ( http://www.mail-archive.com/tango-artists@lists.freedesktop.org/msg00043/tango-gentoo-v1.1.tar.gz )
+_eclasses_=gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b102f44e1c7a207ac0a57a0b5080bb96

@@ -1,0 +1,110 @@
+# ChangeLog for media-plugins/gmpc-libnotify
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gmpc-libnotify/ChangeLog,v 1.25 2012/08/21 16:41:14 angelos Exp $
+
+  21 Aug 2012; Christoph Mende <angelos@gentoo.org>
+  -gmpc-libnotify-0.20.0.ebuild:
+  Remove old
+
+  21 Aug 2012; Michael Weber <xmw@gentoo.org> gmpc-libnotify-11.8.16.ebuild:
+  ppc stable (381219)
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> gmpc-libnotify-0.20.0.ebuild,
+  gmpc-libnotify-11.8.16.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  09 Oct 2011; Markus Meier <maekke@gentoo.org> gmpc-libnotify-11.8.16.ebuild:
+  x86 stable, bug #381219
+
+  25 Sep 2011; Tony Vroon <chainsaw@gentoo.org> gmpc-libnotify-11.8.16.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Elijah "Armageddon" El Lazkani in bug #381219.
+
+*gmpc-libnotify-11.8.16 (20 Aug 2011)
+
+  20 Aug 2011; Christoph Mende <angelos@gentoo.org>
+  +gmpc-libnotify-11.8.16.ebuild:
+  Version bump
+
+  19 Mar 2011; Christoph Mende <angelos@gentoo.org>
+  gmpc-libnotify-0.20.0.ebuild:
+  Remove .la file
+
+  13 Mar 2011; <angelos@gentoo.org> -gmpc-libnotify-0.18.0.ebuild,
+  -gmpc-libnotify-0.19.0.ebuild:
+  Removed old
+
+  20 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gmpc-libnotify-0.20.0.ebuild:
+  x86 stable wrt bug #325621
+
+  20 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  gmpc-libnotify-0.20.0.ebuild:
+  ppc stable wrt #325621
+
+  17 Feb 2011; Markos Chandras <hwoarang@gentoo.org>
+  gmpc-libnotify-0.20.0.ebuild:
+  Stable on amd64 wrt bug #325621
+
+  05 Feb 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gmpc-libnotify-0.20.0.ebuild,
+  +files/gmpc-libnotify-0.20.0-libnotify-0.7.patch:
+  Fix building with x11-libs/libnotify >= 0.7.
+
+*gmpc-libnotify-0.20.0 (25 May 2010)
+
+  25 May 2010; Christoph Mende <angelos@gentoo.org>
+  +gmpc-libnotify-0.20.0.ebuild:
+  Version bump
+
+*gmpc-libnotify-0.19.0 (27 Sep 2009)
+
+  27 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +gmpc-libnotify-0.19.0.ebuild:
+  Version bump.
+
+  09 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  gmpc-libnotify-0.18.0.ebuild:
+  stable x86, bug 272346
+
+  06 Jun 2009; nixnut <nixnut@gentoo.org> gmpc-libnotify-0.18.0.ebuild:
+  ppc stable #272346
+
+  20 Mar 2009; Brent Baude <ranger@gentoo.org> gmpc-libnotify-0.17.0.ebuild:
+  Marking gmpc-libnotify-0.17.0 ~ppc for bug 259793
+
+  20 Mar 2009; Raúl Porcel <armin76@gentoo.org>
+  gmpc-libnotify-0.17.0.ebuild:
+  x86 stable wrt #259793
+
+*gmpc-libnotify-0.18.0 (12 Mar 2009)
+
+  12 Mar 2009; Christoph Mende <angelos@gentoo.org>
+  +gmpc-libnotify-0.18.0.ebuild:
+  Version bump
+
+  27 Feb 2009; Tiago Cunha <tcunha@gentoo.org> gmpc-libnotify-0.17.0.ebuild:
+  stable amd64, bug 259793
+
+  24 Jan 2009; nixnut <nixnut@gentoo.org> gmpc-libnotify-0.16.0.ebuild:
+  ppc stable #251332
+
+*gmpc-libnotify-0.17.0 (26 Dec 2008)
+
+  26 Dec 2008; Christoph Mende <angelos@gentoo.org>
+  +gmpc-libnotify-0.17.0.ebuild:
+  Version bump
+
+  23 Dec 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  gmpc-libnotify-0.16.0.ebuild:
+  Fix typo, thanks to Jens-Uwe Peter in bug #252188.
+
+  17 Dec 2008; Markus Meier <maekke@gentoo.org>
+  gmpc-libnotify-0.16.0.ebuild:
+  amd64/x86 stable, bug #251332
+
+*gmpc-libnotify-0.16.0 (24 Sep 2008)
+
+  24 Sep 2008; Christoph Mende <angelos@gentoo.org>
+  +gmpc-libnotify-0.16.0.ebuild:
+  Initial import

@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst prepare unpack
+DEPEND=pam? ( virtual/pam ) skey? ( >=sys-auth/skey-1.1.5-r1 ) ldap? ( >=net-nds/openldap-2.1.30-r1 dev-libs/cyrus-sasl ) sys-libs/zlib sys-devel/bison dev-vcs/mercurial
+DESCRIPTION=Allows users or groups to run commands as other users
+EAPI=5
+HOMEPAGE=http://www.sudo.ws/
+IUSE=ldap nls pam offensive selinux skey +sendmail
+LICENSE=ISC BSD
+RDEPEND=pam? ( virtual/pam ) skey? ( >=sys-auth/skey-1.1.5-r1 ) ldap? ( >=net-nds/openldap-2.1.30-r1 dev-libs/cyrus-sasl ) sys-libs/zlib selinux? ( sec-policy/selinux-sudo ) ldap? ( dev-lang/perl ) pam? ( sys-auth/pambase ) >=app-misc/editor-wrapper-3 virtual/editor sendmail? ( virtual/mta )
+REQUIRED_USE=pam? ( !skey ) skey? ( !pam )
+SLOT=0
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	mercurial	2fbda5894dda6392b71334ee9a92de0b	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b6dde69804661f5f409c51029de4815d

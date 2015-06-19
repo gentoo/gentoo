@@ -1,0 +1,250 @@
+# ChangeLog for sci-geosciences/josm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/josm/ChangeLog,v 1.48 2014/09/06 19:37:21 nixphoeni Exp $
+
+*josm-7347 (06 Sep 2014)
+
+  06 Sep 2014; Joe Sapp <nixphoeni@gentoo.org> +josm-7347.ebuild,
+  +files/josm-7347-dist-optimized-fix.patch:
+  Version bump; thanks to Marcel Pennewiß, Elias Probst, Thomas Beutin, and
+  Jean-Claude Repetto on bug #483114
+
+*josm-6060 (17 Jul 2013)
+
+  17 Jul 2013; Hanno Boeck <hanno@gentoo.org> +josm-6060.ebuild,
+  josm-9999.ebuild:
+  Bump and raise jre/jdk dep for both release and svn ebuild.
+
+*josm-5608 (13 Jan 2013)
+
+  13 Jan 2013; Hanno Boeck <hanno@gentoo.org> +josm-5608.ebuild,
+  -josm-4203.ebuild, -josm-4550.ebuild, -josm-5315.ebuild, -josm-5356.ebuild,
+  josm-9999.ebuild:
+  Version bump, switch to different source archives that allow building without
+  svn
+
+  16 Nov 2012; Agostino Sarubbo <ago@gentoo.org> josm-4203.ebuild,
+  josm-4550.ebuild, josm-5315.ebuild, josm-5356.ebuild, josm-5485.ebuild:
+  workaround for bug 399061
+
+*josm-5485 (19 Sep 2012)
+
+  19 Sep 2012; Hanno Boeck <hanno@gentoo.org> +josm-5485.ebuild:
+  Version bump and svn snapshots need subversion dependency to create version
+  string.
+
+*josm-5356 (27 Jul 2012)
+
+  27 Jul 2012; Hanno Boeck <hanno@gentoo.org> +josm-5356.ebuild:
+  Version bump.
+
+*josm-5315 (19 Jul 2012)
+
+  19 Jul 2012; Hanno Boeck <hanno@gentoo.org> +josm-5315.ebuild:
+  Version bump.
+
+*josm-4550 (24 Nov 2011)
+
+  24 Nov 2011; Hanno Boeck <hanno@gentoo.org> +josm-4550.ebuild:
+  Bump and use optimized jar.
+
+*josm-4203 (31 Jul 2011)
+
+  31 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org> -josm-4201.ebuild,
+  +josm-4203.ebuild:
+  Version bump to latest. Drop older.
+
+*josm-4201 (06 Jul 2011)
+
+  06 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org> -josm-4064.ebuild,
+  +josm-4201.ebuild:
+  Version bump to the latest. Drop older.
+
+*josm-9999 (17 Jun 2011)
+
+  17 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org> +josm-9999.ebuild:
+  Add live ebuild. Per bug #371913.
+
+*josm-4064 (08 Jun 2011)
+
+  08 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org> -josm-3695.ebuild,
+  -josm-3701.ebuild, -josm-3966.ebuild, +josm-4064.ebuild, -files/josm-r1,
+  -files/josm.png:
+  Version bump to latest. Drop older.
+
+*josm-3966 (31 Mar 2011)
+
+  31 Mar 2011; Hanno Boeck <hanno@gentoo.org> +josm-3966.ebuild:
+  Version bump, with slight modifications from Florian Schmaus in #348795, also
+  fixes #347902.
+
+*josm-3701 (25 Dec 2010)
+
+  25 Dec 2010; Hanno Boeck <hanno@gentoo.org> +josm-3701.ebuild:
+  Version bump.
+
+*josm-3695 (06 Dec 2010)
+
+  06 Dec 2010; Hanno Boeck <hanno@gentoo.org> +josm-3695.ebuild:
+  Version bump.
+
+*josm-3592 (21 Oct 2010)
+
+  21 Oct 2010; Hanno Boeck <hanno@gentoo.org> +josm-3592.ebuild:
+  Don't use obsolete version scheme, bump.
+
+*josm-3.208 (31 May 2010)
+
+  31 May 2010; Hanno Boeck <hanno@gentoo.org> +josm-3.208.ebuild:
+  Version bump.
+
+*josm-2.561 (21 Dec 2009)
+
+  21 Dec 2009; Hanno Boeck <hanno@gentoo.org> +josm-2.561.ebuild:
+  Version bump.
+
+*josm-2.255 (12 Oct 2009)
+
+  12 Oct 2009; Hanno Boeck <hanno@gentoo.org> +josm-2.255.ebuild:
+  Version bump.
+
+*josm-2.221 (06 Oct 2009)
+
+  06 Oct 2009; Hanno Boeck <hanno@gentoo.org> +josm-2.221.ebuild:
+  Version bump.
+
+*josm-1.788 (19 Jul 2009)
+
+  19 Jul 2009; Hanno Boeck <hanno@gentoo.org> +josm-1.788.ebuild:
+  Version bump.
+
+*josm-1.669 (16 Jun 2009)
+
+  16 Jun 2009; Hanno Boeck <hanno@gentoo.org> +josm-1.669.ebuild:
+  Version bump.
+
+*josm-1.607 (23 May 2009)
+
+  23 May 2009; Hanno Boeck <hanno@gentoo.org> +josm-1.607.ebuild:
+  Version bump.
+
+*josm-1.566 (04 May 2009)
+
+  04 May 2009; Hanno Boeck <hanno@gentoo.org> +josm-1.566.ebuild:
+  Version bump, new source based ebuild thanks to Fabian Fingerle. Defaults
+  to API 0.6.
+
+*josm-1.526 (16 Apr 2009)
+
+  16 Apr 2009; Hanno Boeck <hanno@gentoo.org> +josm-1.526.ebuild:
+  Version bump.
+
+*josm-1.515 (01 Apr 2009)
+
+  01 Apr 2009; Hanno Boeck <hanno@gentoo.org> +josm-1.515.ebuild:
+  Version bump.
+
+*josm-1.479 (18 Mar 2009)
+
+  18 Mar 2009; Hanno Boeck <hanno@gentoo.org> +josm-1.479.ebuild:
+  Version bump.
+
+*josm-1.437 (01 Mar 2009)
+
+  01 Mar 2009; Hanno Boeck <hanno@gentoo.org> +josm-1.437.ebuild:
+  Version bump, take new upstream version scheme.
+
+*josm-1.5_p1212 (12 Jan 2009)
+
+  12 Jan 2009; Hanno Boeck <hanno@gentoo.org> +josm-1.5_p1212.ebuild:
+  Version bump.
+
+*josm-1.5_p1065 (05 Nov 2008)
+
+  05 Nov 2008; Hanno Boeck <hanno@gentoo.org> +josm-1.5_p1065.ebuild:
+  Version bump, language plugins are deprecated.
+
+*josm-1.5_p1041 (15 Oct 2008)
+
+  15 Oct 2008; Hanno Boeck <hanno@gentoo.org> +josm-1.5_p1041.ebuild:
+  Version bump.
+
+  07 Oct 2008; Hanno Boeck <hanno@gentoo.org> files/josm-r1:
+  Fix for setting http_proxy without protocol.
+
+*josm-1.5_p736 (27 Jul 2008)
+
+  27 Jul 2008; Hanno Boeck <hanno@gentoo.org> +josm-1.5_p736.ebuild:
+  Version bump.
+
+*josm-1.5_p732 (21 Jul 2008)
+
+  21 Jul 2008; Hanno Boeck <hanno@gentoo.org> +files/josm-r1,
+  +josm-1.5_p732.ebuild:
+  Version bump, use java eclass.
+
+*josm-1.5_p704 (12 Jul 2008)
+
+  12 Jul 2008; Hanno Boeck <hanno@gentoo.org> +josm-1.5_p704.ebuild:
+  Version bump.
+
+  04 Jul 2008; Hanno Boeck <hanno@gentoo.org> ChangeLog:
+  Version bump.
+
+*josm-1.5_p621 (01 May 2008)
+
+  01 May 2008; Hanno Boeck <hanno@gentoo.org> +josm-1.5_p621.ebuild:
+  Version bump.
+
+*josm-1.5_p613 (19 Apr 2008)
+
+  19 Apr 2008; Hanno Boeck <hanno@gentoo.org> +josm-1.5_p613.ebuild:
+  Version bump.
+
+*josm-1.5_p587 (21 Mar 2008)
+
+  21 Mar 2008; Hanno Boeck <hanno@gentoo.org> +josm-1.5_p587.ebuild:
+  Version bump.
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> josm-1.5_p493.ebuild,
+  josm-1.5_p549.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+*josm-1.5_p549 (20 Feb 2008)
+
+  20 Feb 2008; Hanno Boeck <hanno@gentoo.org> +josm-1.5_p549.ebuild:
+  Version bump.
+
+*josm-1.5_p493 (17 Dec 2007)
+
+  17 Dec 2007; Hanno Boeck <hanno@gentoo.org> +josm-1.5_p493.ebuild:
+  Version bump.
+
+*josm-1.5_p490 (16 Dec 2007)
+
+  16 Dec 2007; Hanno Boeck <hanno@gentoo.org> +josm-1.5_p490.ebuild:
+  Version bump, new de locale.
+
+*josm-1.5_p457 (07 Nov 2007)
+
+  07 Nov 2007; Hanno Boeck <hanno@gentoo.org> +josm-1.5_p457.ebuild:
+  Version bump.
+
+*josm-1.5_p352 (09 Oct 2007)
+
+  09 Oct 2007; Hanno Boeck <hanno@gentoo.org> files/josm,
+  +josm-1.5_p352.ebuild:
+  Version bump for API 0.5.
+
+  08 Sep 2007; Hanno Boeck <hanno@gentoo.org> ChangeLog:
+  Add desktop file and icon.
+
+*josm-1.5_p320 (06 Sep 2007)
+
+  06 Sep 2007; Hanno Boeck <hanno@gentoo.org> +josm-1.5_p320.ebuild:
+  Bump to snapshot version.
+
+*josm-1.5 (06 Sep 2007)
+
+  06 Sep 2007; Hanno Boeck <hanno@gentoo.org> +files/josm, +josm-1.5.ebuild:
+  Initial commit of the Java OpenStreetMap Editor.

@@ -1,0 +1,565 @@
+# ChangeLog for dev-libs/xapian
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/xapian/ChangeLog,v 1.145 2015/06/03 11:25:53 blueness Exp $
+
+*xapian-1.3.3 (03 Jun 2015)
+
+  03 Jun 2015; Anthony G. Basile <blueness@gentoo.org> +xapian-1.3.3.ebuild:
+  Version bump
+
+*xapian-1.2.21 (23 May 2015)
+
+  23 May 2015; Anthony G. Basile <blueness@gentoo.org> +xapian-1.2.21.ebuild:
+  Version bump.
+
+  21 Apr 2015; Anthony G. Basile <blueness@gentoo.org> -xapian-1.2.14.ebuild,
+  -xapian-1.2.17.ebuild, -xapian-1.2.18.ebuild, -xapian-1.3.1-r1.ebuild:
+  Clean up.
+
+*xapian-1.3.2 (20 Apr 2015)
+*xapian-1.2.20 (20 Apr 2015)
+
+  20 Apr 2015; Anthony G. Basile <blueness@gentoo.org> +xapian-1.2.20.ebuild,
+  +xapian-1.3.2.ebuild:
+  Version bump.
+
+  19 Apr 2015; Pacho Ramos <pacho@gentoo.org> xapian-1.2.19.ebuild:
+  x86 stable wrt bug #531758
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.19.ebuild:
+  Stable for ia64, wrt bug #531758
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.19.ebuild:
+  Stable for alpha, wrt bug #531758
+
+  01 Apr 2015; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.19.ebuild:
+  Stable for sparc, wrt bug #531758
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.19.ebuild:
+  Stable for amd64, wrt bug #531758
+
+  24 Mar 2015; Markus Meier <maekke@gentoo.org> xapian-1.2.19.ebuild:
+  arm stable, bug #531758
+
+  21 Mar 2015; Anthony G. Basile <blueness@gentoo.org> xapian-1.2.19.ebuild:
+  Stable on ppc and ppc64.  Bug #531758.
+
+  10 Mar 2015; Jeroen Roovers <jer@gentoo.org> xapian-1.2.19.ebuild:
+  Stable for HPPA (bug #531758).
+
+  28 Jan 2015; Michał Górny <mgorny@gentoo.org> xapian-1.2.14.ebuild,
+  xapian-1.2.17.ebuild, xapian-1.2.18.ebuild, xapian-1.2.19.ebuild,
+  xapian-1.3.1-r1.ebuild:
+  Switch to CPU_FLAGS_X86.
+
+  26 Dec 2014; Jeroen Roovers <jer@gentoo.org> xapian-1.2.19.ebuild,
+  xapian-1.3.1-r1.ebuild:
+  Marked ~hppa (bug #533458).
+
+  05 Dec 2014; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.18.ebuild:
+  Stable for x86, wrt bug #520794
+
+  04 Dec 2014; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.18.ebuild:
+  Stable for ppc64, wrt bug #520794
+
+  03 Dec 2014; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.18.ebuild:
+  Stable for ppc, wrt bug #520794
+
+  02 Dec 2014; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.18.ebuild:
+  Stable for alpha, wrt bug #520794
+
+  01 Dec 2014; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.18.ebuild:
+  Stable for sparc, wrt bug #520794
+
+  11 Nov 2014; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.18.ebuild:
+  Stable for ia64, wrt bug #520794
+
+  03 Nov 2014; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.18.ebuild:
+  Stable for amd64, wrt bug #520794
+
+  21 Oct 2014; Anthony G. Basile <blueness@gentoo.org> -xapian-1.2.13.ebuild,
+  -xapian-1.2.15.ebuild, -xapian-1.2.16.ebuild:
+  Remove older versions
+
+*xapian-1.2.19 (21 Oct 2014)
+
+  21 Oct 2014; Anthony G. Basile <blueness@gentoo.org> +xapian-1.2.19.ebuild:
+  Version bump
+
+  14 Sep 2014; Markus Meier <maekke@gentoo.org> xapian-1.2.18.ebuild:
+  arm stable, bug #520794
+
+  19 Aug 2014; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.17.ebuild:
+  Stable for ia64, wrt bug #506974
+
+  08 Aug 2014; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.17.ebuild:
+  Stable for sparc, wrt bug #506974
+
+  20 Jul 2014; Tobias Klausmann <klausman@gentoo.org> xapian-1.2.17.ebuild:
+  Stable on alpha, bug #506974
+
+*xapian-1.2.18 (23 Jun 2014)
+
+  23 Jun 2014; Anthony G. Basile <blueness@gentoo.org> +xapian-1.2.18.ebuild:
+  Version bump
+
+  18 Jun 2014; Chema Alonso <nimiux@gentoo.org> xapian-1.2.17.ebuild:
+  Stable for amd64 wrt bug #506974
+
+  14 Jun 2014; Anthony G. Basile <blueness@gentoo.org> xapian-1.2.17.ebuild:
+  Stable ppc ppc64, bug #506974
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> xapian-1.2.17.ebuild:
+  x86 stable wrt bug #506974
+
+  18 Apr 2014; Markus Meier <maekke@gentoo.org> xapian-1.2.17.ebuild:
+  arm stable, bug #506974
+
+*xapian-1.2.17 (31 Jan 2014)
+
+  31 Jan 2014; Anthony G. Basile <blueness@gentoo.org> +xapian-1.2.17.ebuild:
+  Version bump
+
+*xapian-1.2.16 (05 Dec 2013)
+
+  05 Dec 2013; Anthony G. Basile <blueness@gentoo.org> +xapian-1.2.16.ebuild:
+  Version bump
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.14.ebuild:
+  Stable for sparc, wrt bug #470402
+
+  03 Sep 2013; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.14.ebuild:
+  Stable for ia64, wrt bug #470402
+
+  01 Sep 2013; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.14.ebuild:
+  Stable for alpha, wrt bug #470402
+
+*xapian-1.2.15 (12 Aug 2013)
+
+  12 Aug 2013; Anthony G. Basile <blueness@gentoo.org> +xapian-1.2.15.ebuild:
+  Version bump
+
+*xapian-1.3.1-r1 (06 Aug 2013)
+
+  06 Aug 2013; Anthony G. Basile <blueness@gentoo.org> +xapian-1.3.1-r1.ebuild,
+  -xapian-1.3.1.ebuild:
+  Fix program suffix, bug #479910
+
+*xapian-1.3.1 (06 Aug 2013)
+
+  06 Aug 2013; Anthony G. Basile <blueness@gentoo.org> +xapian-1.3.1.ebuild:
+  Version bump to 1.3 branch
+
+  24 May 2013; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.14.ebuild:
+  Stable for ppc64, wrt bug #470402
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.14.ebuild:
+  Stable for arm, wrt bug #470402
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.14.ebuild:
+  Stable for ppc, wrt bug #470402
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.14.ebuild:
+  Stable for x86, wrt bug #470402
+
+  19 May 2013; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.14.ebuild:
+  Stable for amd64, wrt bug #470402
+
+  11 Apr 2013; Anthony G. Basile <blueness@gentoo.org> -xapian-1.2.12.ebuild:
+  Remove older stable
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*xapian-1.2.14 (16 Mar 2013)
+
+  16 Mar 2013; Anthony G. Basile <blueness@gentoo.org> +xapian-1.2.14.ebuild:
+  Version bump
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.13.ebuild:
+  Stable for arm, wrt bug #457296
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.13.ebuild:
+  Stable for ppc, wrt bug #457296
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.13.ebuild:
+  Stable for ppc64, wrt bug #457296
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.13.ebuild:
+  Stable for x86, wrt bug #457296
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.13.ebuild:
+  Stable for amd64, wrt bug #457296
+
+*xapian-1.2.13 (11 Jan 2013)
+
+  11 Jan 2013; Anthony G. Basile <blueness@gentoo.org> +xapian-1.2.13.ebuild,
+  metadata.xml:
+  Version bump
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.12.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.12.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.12.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  02 Oct 2012; Anthony G. Basile <blueness@gentoo.org> -xapian-1.2.10.ebuild,
+  -xapian-1.2.5.ebuild, -xapian-1.2.8.ebuild, -xapian-1.2.9.ebuild:
+  Remove older versions
+
+  19 Sep 2012; Johannes Huber <johu@gentoo.org> xapian-1.2.12.ebuild:
+  Stable for x86, wrt bug #434564
+
+  16 Sep 2012; Anthony G. Basile <blueness@gentoo.org> xapian-1.2.12.ebuild:
+  Stable ppc64, bug #434564
+
+  16 Sep 2012; Anthony G. Basile <blueness@gentoo.org> xapian-1.2.12.ebuild:
+  Stable arm, bug #434564
+
+  16 Sep 2012; Anthony G. Basile <blueness@gentoo.org> xapian-1.2.12.ebuild:
+  Stable ppc, bug #434564
+
+  15 Sep 2012; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.12.ebuild:
+  Stable for amd64, wrt bug #434564
+
+  10 Sep 2012; Anthony G. Basile <blueness@gentoo.org> xapian-1.2.12.ebuild:
+  Drop USE='flint remote', bug #433611
+
+  18 Jul 2012; Anthony G. Basile <blueness@gentoo.org> xapian-1.2.12.ebuild:
+  Keyword ~arm
+
+  18 Jul 2012; Anthony G. Basile <blueness@gentoo.org> xapian-1.2.12.ebuild:
+  Keyword ~mips
+
+*xapian-1.2.12 (28 Jun 2012)
+
+  28 Jun 2012; Anthony G. Basile <blueness@gentoo.org> -xapian-1.2.11.ebuild,
+  +xapian-1.2.12.ebuild:
+  Version bump fixes broken SONAME in 1.2.11
+
+*xapian-1.2.11 (28 Jun 2012)
+
+  28 Jun 2012; Anthony G. Basile <blueness@gentoo.org> +xapian-1.2.11.ebuild:
+  Version bump
+
+*xapian-1.2.10 (10 May 2012)
+
+  10 May 2012; Anthony G. Basile <blueness@gentoo.org> +xapian-1.2.10.ebuild:
+  Version bump
+
+  15 Mar 2012; Anthony G. Basile <blueness@gentoo.org> xapian-1.2.5.ebuild:
+  Drop keywords in favor of newer stable ebuild
+
+  15 Mar 2012; Anthony G. Basile <blueness@gentoo.org> -xapian-1.2.7-r1.ebuild,
+  -xapian-1.2.7-r3.ebuild:
+  Remove buggy unstable version
+
+  14 Mar 2012; Anthony G. Basile <blueness@gentoo.org> xapian-1.2.9.ebuild:
+  Tested on ppc/ppc64
+
+*xapian-1.2.9 (13 Mar 2012)
+
+  13 Mar 2012; Anthony G. Basile <blueness@gentoo.org> +xapian-1.2.9.ebuild:
+  Version bump
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> xapian-1.2.8.ebuild:
+  x86 stable wrt bug #402185
+
+  05 Feb 2012; Anthony G. Basile <blueness@gentoo.org> xapian-1.2.8.ebuild:
+  Added DEPEND on zlib, bug #402185
+
+  05 Feb 2012; Agostino Sarubbo <ago@gentoo.org> xapian-1.2.8.ebuild:
+  Stable for amd64, wrt bug #402185
+
+  14 Dec 2011; Anthony G. Basile <blueness@gentoo.org> xapian-1.2.8.ebuild:
+  Restored libxapian.la, needed for xapian-bindings' xapian-config, thanks
+  Arfrever
+
+*xapian-1.2.8 (14 Dec 2011)
+
+  14 Dec 2011; Anthony G. Basile <blueness@gentoo.org> +xapian-1.2.8.ebuild:
+  Version bump, bug #394413
+
+  07 Nov 2011; Anthony G. Basile <blueness@gentoo.org> -xapian-1.2.7-r2.ebuild,
+  metadata.xml:
+  Removed version with bloated use flags
+
+*xapian-1.2.7-r3 (06 Nov 2011)
+
+  06 Nov 2011; Anthony G. Basile <blueness@gentoo.org> +xapian-1.2.7-r3.ebuild:
+  Economize on sse/sse2 USE flags, eliminate nosse flag
+
+*xapian-1.2.7-r2 (27 Oct 2011)
+
+  27 Oct 2011; Anthony G. Basile <blueness@gentoo.org> +xapian-1.2.7-r2.ebuild:
+  Add USE flags for configure options, bug #388677
+
+  18 Sep 2011; Anthony G. Basile <blueness@gentoo.org> metadata.xml:
+  Added no-herd to metadata.xml
+
+*xapian-1.2.7-r1 (16 Sep 2011)
+
+  16 Sep 2011; Anthony G. Basile <blueness@gentoo.org> -xapian-1.2.7.ebuild,
+  +xapian-1.2.7-r1.ebuild:
+  Fix USE="doc", bug #383001
+
+  15 Sep 2011; Anthony G. Basile <blueness@gentoo.org> metadata.xml:
+  Added myself and Johan Bergström as maintainers
+
+*xapian-1.2.7 (15 Sep 2011)
+
+  15 Sep 2011; Anthony G. Basile <blueness@gentoo.org> +xapian-1.2.7.ebuild:
+  Version bump, bug #383001
+
+  01 Jul 2011; Markos Chandras <hwoarang@gentoo.org> -xapian-1.2.4.ebuild:
+  Remove old ebuilds. Requested by Arfrever
+
+  24 Jun 2011; Brent Baude <ranger@gentoo.org> xapian-1.2.5.ebuild:
+  Marking xapian-1.2.5 ppc for bug 371655
+
+  19 Jun 2011; Markus Meier <maekke@gentoo.org> xapian-1.2.5.ebuild:
+  x86 stable, bug #371655
+
+  18 Jun 2011; Markos Chandras <hwoarang@gentoo.org> xapian-1.2.5.ebuild:
+  Stable on amd64 wrt bug #371655
+
+*xapian-1.2.5 (09 May 2011)
+
+  09 May 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +xapian-1.2.5.ebuild:
+  Version bump.
+
+  05 Mar 2011; Brent Baude <ranger@gentoo.org> xapian-1.2.4.ebuild:
+  stable ppc, bug 352734
+
+  28 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> xapian-1.2.4.ebuild:
+  x86 stable wrt bug #352734
+
+  26 Jan 2011; Markos Chandras <hwoarang@gentoo.org> xapian-1.2.4.ebuild:
+  Stable on amd64 wrt bug #352734
+
+*xapian-1.2.4 (23 Dec 2010)
+
+  23 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -xapian-1.0.20.ebuild, -xapian-1.2.2.ebuild, +xapian-1.2.4.ebuild:
+  Version bump.
+
+  25 Oct 2010; Christian Faulhammer <fauli@gentoo.org> xapian-1.2.3.ebuild:
+  stable x86, bug 341617
+
+  24 Oct 2010; Brent Baude <ranger@gentoo.org> xapian-1.2.3.ebuild:
+  stable ppc, bug 341617
+
+  18 Oct 2010; Markos Chandras <hwoarang@gentoo.org> xapian-1.2.3.ebuild:
+  Stable on amd64 wrt bug #341617
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org> xapian-1.2.2.ebuild:
+  stable ppc, bug 333199
+
+*xapian-1.2.3 (20 Sep 2010)
+
+  20 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +xapian-1.2.3.ebuild:
+  Version bump (bug #338197).
+
+  19 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> xapian-1.2.2.ebuild:
+  x86 stable wrt bug #333199
+
+  18 Aug 2010; Markos Chandras <hwoarang@gentoo.org> xapian-1.2.2.ebuild:
+  Stable on amd64 wrt bug #333199
+
+  11 Jul 2010; Markus Meier <maekke@gentoo.org> xapian-1.0.20.ebuild:
+  x86 stable, bug #322285
+
+*xapian-1.2.2 (10 Jul 2010)
+
+  10 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +xapian-1.2.2.ebuild:
+  Version bump (bug #322405).
+
+  26 Jun 2010; <nixnut@gentoo.org> xapian-1.0.20.ebuild:
+  ppc stable #322285
+
+*xapian-1.0.20 (29 Apr 2010)
+
+  29 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +xapian-1.0.20.ebuild:
+  Version bump.
+
+*xapian-1.0.19 (23 Apr 2010)
+
+  23 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -xapian-1.0.16.ebuild, +xapian-1.0.19.ebuild:
+  Version bump.
+
+  06 Jan 2010; Markus Meier <maekke@gentoo.org> xapian-1.0.17.ebuild:
+  x86 stable, bug #297935
+
+  28 Dec 2009; nixnut <nixnut@gentoo.org> xapian-1.0.17.ebuild:
+  ppc stable #297935
+
+*xapian-1.0.17 (22 Nov 2009)
+
+  22 Nov 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -xapian-1.0.6.ebuild, -xapian-1.0.12.ebuild, +xapian-1.0.17.ebuild:
+  Version bump.
+
+  21 Nov 2009; Markus Meier <maekke@gentoo.org> xapian-1.0.16.ebuild:
+  x86 stable, bug #289432
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> xapian-1.0.16.ebuild:
+  ppc stable #289432
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> xapian-1.0.6.ebuild:
+  Remove virtual/libc
+
+*xapian-1.0.16 (14 Sep 2009)
+
+  14 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -xapian-0.9.6.ebuild, -xapian-0.9.9.ebuild, -xapian-1.0.10.ebuild,
+  +xapian-1.0.16.ebuild:
+  Version bump.
+
+  01 May 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -files/xapian-0.9.2-config.patch, -files/xapian-0.9.3-config.patch,
+  xapian-1.0.10.ebuild, xapian-1.0.12.ebuild:
+  Remove not needed mirror statement, drop not anymore used patches
+
+*xapian-1.0.12 (01 May 2009)
+
+  01 May 2009; Gordon Malm <gengor@gentoo.org> xapian-1.0.10.ebuild,
+  +xapian-1.0.12.ebuild:
+  Version bump, use MY_P, add gentoo mirror to SRC_URI.
+
+*xapian-1.0.10 (16 Jan 2009)
+
+  16 Jan 2009; Jeroen Roovers <jer@gentoo.org> +xapian-1.0.10.ebuild:
+  Version bump thanks to Hans Rakers (bug #255153).
+
+  06 Jul 2008; Markus Meier <maekke@gentoo.org> xapian-1.0.6.ebuild:
+  x86 stable, bug #228537
+
+  21 Jun 2008; nixnut <nixnut@gentoo.org> xapian-1.0.6.ebuild:
+  Stable on ppc wrt bug 228537
+
+*xapian-1.0.6 (05 Apr 2008)
+
+  05 Apr 2008; Hanno Boeck <hanno@gentoo.org> +xapian-1.0.6.ebuild:
+  Version bump and cleanup.
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Marien Zwart (marienz, #107204) from metadata.xml.
+
+  20 Jun 2007; Christoph Mende <angelos@gentoo.org> xapian-0.9.9.ebuild:
+  Added ~amd64 wrt bug 177807
+
+*xapian-0.9.9 (28 Nov 2006)
+
+  28 Nov 2006; Marien Zwart <marienz@gentoo.org> -xapian-0.9.2.ebuild,
+  -xapian-0.9.2-r1.ebuild, -xapian-0.9.3-r1.ebuild, -xapian-0.9.4.ebuild,
+  -xapian-0.9.5.ebuild, +xapian-0.9.9.ebuild:
+  Version bump, remove old ebuilds.
+
+  28 Oct 2006; Christian Faulhammer <opfer@gentoo.org> xapian-0.9.6.ebuild:
+  x86 stable wrt bug #152041
+
+  21 Oct 2006; <nixnut@gentoo.org> xapian-0.9.6.ebuild:
+  Stable on ppc wrt bug 152041
+
+  04 Aug 2006; Daniel Black <dragonheart@gentoo.org> metadata.xml:
+  remove me from maintainership. Added metadata.xml description
+
+*xapian-0.9.6 (25 May 2006)
+
+  25 May 2006; Marien Zwart <marienz@gentoo.org> +xapian-0.9.6.ebuild:
+  Version bump.
+
+*xapian-0.9.5 (05 May 2006)
+
+  05 May 2006; Marien Zwart <marienz@gentoo.org> metadata.xml,
+  +xapian-0.9.5.ebuild:
+  Version bump, add myself as maintainer.
+
+*xapian-0.9.4 (23 Feb 2006)
+
+  23 Feb 2006; Daniel Black <dragonheart@gentoo.org> +xapian-0.9.4.ebuild:
+  version bump
+
+*xapian-0.9.3-r1 (18 Feb 2006)
+
+  18 Feb 2006; Daniel Black <dragonheart@gentoo.org>
+  files/xapian-0.9.3-config.patch, -xapian-0.9.3.ebuild,
+  +xapian-0.9.3-r1.ebuild:
+  missed quote in patch - bug #123239 thanks Gary Young
+
+*xapian-0.9.3 (18 Feb 2006)
+
+  18 Feb 2006; Daniel Black <dragonheart@gentoo.org>
+  +files/xapian-0.9.3-config.patch, +xapian-0.9.3.ebuild:
+  version bump
+
+*xapian-0.9.2-r1 (14 Jan 2006)
+
+  14 Jan 2006; Daniel Black <dragonheart@gentoo.org>
+  +files/xapian-0.9.2-config.patch, -xapian-0.8.3.ebuild,
+  +xapian-0.9.2-r1.ebuild:
+  added patch by author Olly Betts to xapian-config problem -thanks to
+  Jean-Francois Dockes. Removed old xapian version
+
+  07 Oct 2005; Daniel Black <dragonheart@gentoo.org> -xapian-0.7.5.ebuild,
+  xapian-0.8.3.ebuild, -xapian-0.8.5.ebuild, -xapian-0.9.1.ebuild,
+  xapian-0.9.2.ebuild:
+  x86 and ppc stable. removed old versions. QA fixes (install and copyright
+  docs installed) also applied
+
+*xapian-0.9.2 (16 Jul 2005)
+
+  16 Jul 2005; Daniel Black <dragonheart@gentoo.org> +xapian-0.9.2.ebuild:
+  version bump
+
+  26 Jun 2005; Daniel Black <dragonheart@gentoo.org> xapian-0.9.1.ebuild:
+  Fixed src_test thanks to Olly Betts
+
+*xapian-0.9.1 (25 Jun 2005)
+
+  25 Jun 2005; Daniel Black <dragonheart@gentoo.org> +xapian-0.9.1.ebuild:
+  version bump
+
+*xapian-0.8.5 (24 Jan 2005)
+
+  24 Jan 2005; Daniel Black <dragonheart@gentoo.org> -xapian-0.5.5.ebuild,
+  xapian-0.8.3.ebuild, +xapian-0.8.5.ebuild:
+  version bump as per bug #78691. Old version removed. PPC and x86 Keywords
+  added to 0.8.3. Thanks to Sig Lange <exonic@signuts.net> for the bug report
+
+*xapian-0.8.3 (15 Nov 2004)
+
+  15 Nov 2004; Daniel Black <dragonheart@gentoo.org> +xapian-0.8.3.ebuild:
+  version bump as per bug #70662. Thanks to  
+  Greg Bowyer <gbowyer@fastmail.co.uk> for the updated ebuild
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> xapian-0.5.5.ebuild,
+  xapian-0.7.5.ebuild:
+  virtual/glibc -> virtual/libc
+
+  06 Jun 2004; Daniel Black <dragonheart@gentoo.org> xapian-0.7.5.ebuild:
+  x86 keyword.
+
+  20 Apr 2004; David Holm <dholm@gentoo.org> xapian-0.7.5.ebuild:
+  Added to ~ppc.
+
+*xapian-0.7.5 (20 Apr 2004)
+
+  20 Apr 2004; Daniel Black <dragonheart@gentoo.org> metadata.xml,
+  xapian-0.7.5.ebuild:
+  version bump. Thanks to Ludwig Ruderstaller <lr@bestheads.com> in bug #48035
+
+*xapian-0.5.5 (13 Mar 2003)
+
+  13 Mar 2003; George Shapovalov <george@gentoo.org> ChangeLog, xapian-0.5.5.ebuild, files/{digest-xapian-0.5.5} :
+  initial release (#14849)
+  Xapian Probabilistic Information Retrieval library
+  ebuild submitted by Leon Brocard <acme@astray.com>

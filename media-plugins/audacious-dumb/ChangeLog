@@ -1,0 +1,233 @@
+# ChangeLog for media-plugins/audacious-dumb
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/audacious-dumb/ChangeLog,v 1.48 2014/09/09 13:40:15 joker Exp $
+
+  09 Sep 2014; Christian Birchinger <joker@gentoo.org>
+  audacious-dumb-0.65.ebuild:
+  Bump EAPI
+
+*audacious-dumb-0.83 (09 Sep 2014)
+
+  09 Sep 2014; Christian Birchinger <joker@gentoo.org>
+  +audacious-dumb-0.83.ebuild:
+  Version bump
+
+*audacious-dumb-0.82 (01 Jul 2013)
+
+  01 Jul 2013; Christian Birchinger <joker@gentoo.org>
+  +audacious-dumb-0.82.ebuild:
+  Version bump
+
+*audacious-dumb-0.81 (27 Jul 2012)
+
+  27 Jul 2012; Christian Birchinger <joker@gentoo.org>
+  +audacious-dumb-0.81.ebuild:
+  New version for Audacious 3.3
+
+  27 Jul 2012; Christian Birchinger <joker@gentoo.org>
+  -audacious-dumb-0.70.ebuild, audacious-dumb-0.73.ebuild,
+  audacious-dumb-0.74.ebuild, audacious-dumb-0.80.ebuild:
+  Narrowd dependencies down and removed versions that have no supported core
+  anymore
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> audacious-dumb-0.65.ebuild,
+  audacious-dumb-0.70.ebuild, audacious-dumb-0.73.ebuild,
+  audacious-dumb-0.74.ebuild, audacious-dumb-0.80.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*audacious-dumb-0.80 (27 Feb 2012)
+
+  27 Feb 2012; Christian Birchinger <joker@gentoo.org>
+  +audacious-dumb-0.80.ebuild:
+  New version with support for Audacious 3.2.1
+
+*audacious-dumb-0.74 (11 Dec 2011)
+
+  11 Dec 2011; Christian Birchinger <joker@gentoo.org>
+  +audacious-dumb-0.74.ebuild:
+  New version that requires Audacious 3.1 final, not alpha.
+
+*audacious-dumb-0.73 (26 Nov 2011)
+
+  26 Nov 2011; Christian Birchinger <joker@gentoo.org>
+  +audacious-dumb-0.73.ebuild:
+  Added new version that supports Audacious 3.1
+
+  05 Oct 2011; Christian Birchinger <joker@gentoo.org>
+  -audacious-dumb-0.72.ebuild:
+  0.72 is wont be usable until Audacious 3.1 is released
+
+*audacious-dumb-0.72 (05 Oct 2011)
+
+  05 Oct 2011; Christian Birchinger <joker@gentoo.org>
+  +audacious-dumb-0.72.ebuild:
+  Version bump
+
+*audacious-dumb-0.70 (20 Aug 2011)
+
+  20 Aug 2011; Christian Birchinger <joker@gentoo.org>
+  audacious-dumb-0.65.ebuild, +audacious-dumb-0.70.ebuild:
+  Added new version with support for Audacious 3.0 and Gtk+ 3.0
+
+  18 Aug 2011; Christian Birchinger <joker@gentoo.org>
+  -audacious-dumb-0.64.ebuild:
+  Remove old version
+
+*audacious-dumb-0.65 (20 Jan 2011)
+
+  20 Jan 2011; Christian Birchinger <joker@gentoo.org>
+  +audacious-dumb-0.65.ebuild:
+  New version for Audacious 2.4.3
+
+  16 Dec 2010; Christian Birchinger <joker@gentoo.org>
+  -audacious-dumb-0.62.ebuild:
+  Remove old version that wont work with recent Audacious
+
+*audacious-dumb-0.64 (11 Sep 2010)
+
+  11 Sep 2010; Christian Birchinger <joker@gentoo.org>
+  +audacious-dumb-0.64.ebuild:
+  New version for Audacious 2.4
+
+  11 Sep 2010; Christian Birchinger <joker@gentoo.org>
+  -audacious-dumb-0.57.ebuild, -audacious-dumb-0.60.ebuild,
+  audacious-dumb-0.62.ebuild:
+  Removed no longer working versions. Adjusting the dependency version.
+
+*audacious-dumb-0.62 (13 Jan 2010)
+
+  13 Jan 2010; Christian Birchinger <joker@gentoo.org>
+  +audacious-dumb-0.62.ebuild:
+  Version bump. Fixes an issue that can be triggered by the recent ALSA
+  output plugin.
+
+*audacious-dumb-0.60 (10 Jan 2010)
+
+  10 Jan 2010; Christian Birchinger <joker@gentoo.org>
+  +audacious-dumb-0.60.ebuild:
+  New version with Audacious 2.2 support
+
+  04 Oct 2009; Sebastian Pipping <sping@gentoo.org> ChangeLog:
+  Add blocker on Audacious 2.2 series (permission by joker)
+
+  06 May 2008; Christian Birchinger <joker@gentoo.org>
+  audacious-dumb-0.57.ebuild:
+  Removed pkgconfig from RDEPEND
+
+  27 Apr 2008; Christian Birchinger <joker@gentoo.org>
+  -audacious-dumb-0.56.ebuild:
+  Removed old version
+
+  09 Apr 2008; Markus Meier <maekke@gentoo.org> audacious-dumb-0.57.ebuild:
+  x86 stable, bug #216660
+
+  07 Apr 2008; Christian Birchinger <joker@gentoo.org>
+  audacious-dumb-0.57.ebuild:
+  Stable on amd64, bug #216660
+
+  03 Mar 2008; Christoph Mende <angelos@gentoo.org>
+  audacious-dumb-0.56.ebuild:
+  Stable on amd64, bug #206061
+
+  31 Jan 2008; Christian Birchinger <joker@gentoo.org>
+  -audacious-dumb-0.42.ebuild:
+  Removed old version which only works with Audacious 1.3
+
+*audacious-dumb-0.57 (27 Jan 2008)
+
+  27 Jan 2008; Christian Birchinger <joker@gentoo.org>
+  +audacious-dumb-0.57.ebuild:
+  Version bump.
+
+  16 Jan 2008; Markus Meier <maekke@gentoo.org> audacious-dumb-0.56.ebuild:
+  x86 stable, bug #206061
+
+  14 Jan 2008; Christian Birchinger <joker@gentoo.org>
+  audacious-dumb-0.42.ebuild, audacious-dumb-0.56.ebuild:
+  Added dev-util/pkgconfig do DEPEND. Bug #205748
+
+  12 Nov 2007; Christian Birchinger <joker@gentoo.org>
+  -audacious-dumb-0.24.ebuild:
+  Remove old version which depends on removed Audacious versions
+
+*audacious-dumb-0.56 (10 Nov 2007)
+
+  10 Nov 2007; Christian Birchinger <joker@gentoo.org>
+  audacious-dumb-0.24.ebuild, audacious-dumb-0.42.ebuild,
+  +audacious-dumb-0.56.ebuild:
+  Added new version for Audacious 1.4 and limited the dependencies on previous
+  releases.
+
+  10 Nov 2007; Christian Birchinger <joker@gentoo.org>
+  -audacious-dumb-0.40.ebuild:
+  Remove old version
+
+  16 Apr 2007; Raúl Porcel <armin76@gentoo.org> audacious-dumb-0.42.ebuild:
+  x86 stable wrt bug 174805
+
+  16 Apr 2007; <welp@gentoo.org> audacious-dumb-0.42.ebuild:
+  Stable on amd64 wrt bug 174805
+
+*audacious-dumb-0.42 (28 Feb 2007)
+
+  28 Feb 2007; Christian Birchinger <joker@gentoo.org>
+  +audacious-dumb-0.42.ebuild:
+  Version bump.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*audacious-dumb-0.40 (07 Feb 2007)
+
+  07 Feb 2007; Christian Birchinger <joker@gentoo.org>
+  +audacious-dumb-0.40.ebuild:
+  Added new version with API changes for the currently masked Audacious 1.3
+
+  02 Feb 2007; Christian Birchinger <joker@gentoo.org>
+  -audacious-dumb-0.10.ebuild, audacious-dumb-0.24.ebuild:
+  Removed old version. Adjusted DEPEND because this plugin version wont work
+  with Audacious 1.3 final.
+
+  07 Nov 2006; <blubb@gentoo.org> audacious-dumb-0.24.ebuild:
+  stable on amd64
+
+  31 Oct 2006; Christian Faulhammer <opfer@gentoo.org>
+  audacious-dumb-0.24.ebuild:
+  stabled x86, bug #151368
+
+  05 Oct 2006; Christian Birchinger <joker@gentoo.org>
+  -audacious-dumb-0.23.ebuild:
+  Removed old version
+
+*audacious-dumb-0.24 (08 Sep 2006)
+
+  08 Sep 2006; Christian Birchinger <joker@gentoo.org>
+  +audacious-dumb-0.24.ebuild:
+  Version Bump
+
+  23 Jul 2006; Christian Birchinger <joker@gentoo.org>
+  -audacious-dumb-0.6.ebuild, audacious-dumb-0.10.ebuild,
+  audacious-dumb-0.23.ebuild:
+  Remove older version. Remove redundant RDEPEND and unused eutils
+
+*audacious-dumb-0.23 (23 Jul 2006)
+
+  23 Jul 2006; Christian Birchinger <joker@gentoo.org>
+  +audacious-dumb-0.23.ebuild:
+  Version bump for newer Audacious 1.1
+
+*audacious-dumb-0.10 (30 May 2006)
+
+  30 May 2006; Christian Birchinger <joker@gentoo.org>
+  +audacious-dumb-0.10.ebuild:
+  Version bump.
+
+  15 May 2006; Christian Birchinger <joker@gentoo.org>
+  audacious-dumb-0.6.ebuild:
+  Added ~x86
+
+*audacious-dumb-0.6 (08 May 2006)
+
+  08 May 2006; Christian Birchinger <joker@gentoo.org> +metadata.xml,
+  +audacious-dumb-0.6.ebuild:
+  Initial import

@@ -1,0 +1,56 @@
+# ChangeLog for net-misc/pytvshows
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/pytvshows/ChangeLog,v 1.13 2015/03/08 05:35:48 idella4 Exp $
+
+*pytvshows-0.2-r2 (08 Mar 2015)
+
+  08 Mar 2015; Ian Delaney <idella4@gentoo.org> +pytvshows-0.2-r2.ebuild,
+  metadata.xml:
+  revbump; conversion -> distutils-r1
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pytvshows-0.2-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  06 Mar 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/pytvshows-0.2-feedurl.patch, +files/pytvshows-0.2-improved-re.patch,
+  pytvshows-0.2-r1.ebuild:
+  Apply fixes and improvements to get it working again, bug #379621 by Sumant
+  Oemrawsingh.
+
+  05 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pytvshows-0.2-r1.ebuild:
+  Use Python 2 (bug #315839).
+
+  28 Mar 2010; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  Drop myself from metadata, add maintainer-needed
+
+  11 Oct 2009; Markus Meier <maekke@gentoo.org> pytvshows-0.2-r1.ebuild:
+  x86 stable, bug #285724
+
+  21 Sep 2009; Jeremy Olexa <darkside@gentoo.org> pytvshows-0.2-r1.ebuild:
+  amd64 stable, bug 285724
+
+*pytvshows-0.2-r1 (17 Sep 2009)
+
+  17 Sep 2009; Jeremy Olexa <darkside@gentoo.org> +pytvshows-0.2-r1.ebuild,
+  +files/pytvshows-0.2-ezrss.it.patch:
+  Add a patch to use ezrss.it instead of tvrss.net by default. Hopefully,
+  more user friendly.
+
+  20 Mar 2009; Joseph Jezak <josejx@gentoo.org> pytvshows-0.2.ebuild:
+  Marked ~ppc for bug #262583.
+
+  27 Jan 2009; Raúl Porcel <armin76@gentoo.org> pytvshows-0.2.ebuild:
+  x86 stable wrt #255439
+
+  19 Jan 2009; Jeremy Olexa <darkside@gentoo.org> pytvshows-0.2.ebuild:
+  amd64 stable, bug 255439
+
+  11 Dec 2008; Jeremy Olexa <darkside@gentoo.org> pytvshows-0.2.ebuild:
+  forgot a rdep on feedparser, also added ~x86 because it works in my x86 chroot
+
+*pytvshows-0.2 (11 Dec 2008)
+
+  11 Dec 2008; Jeremy Olexa <darkside@gentoo.org> +metadata.xml,
+  +pytvshows-0.2.ebuild:
+  Initial commit of pytvshows, ebuild by myself

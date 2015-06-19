@@ -1,0 +1,13 @@
+diff --git a/common/lib/modules/fglrx/build_mod/firegl_public.c b/common/lib/modules/fglrx/build_mod/firegl_public.c
+index 22561c5..fdfe65e 100755
+--- a/common/lib/modules/fglrx/build_mod/firegl_public.c
++++ b/common/lib/modules/fglrx/build_mod/firegl_public.c
+@@ -520,6 +520,8 @@ static int func##_wrap(char *buf, char **start, kcl_off_t offset,       \
+ }
+ 
+ #else
++#include <linux/seq_file.h>
++
+ #define READ_PROC_WRAP(func)                                            \
+ static int func##_wrap(struct seq_file *m, void* data)                  \
+ {                                                                       \

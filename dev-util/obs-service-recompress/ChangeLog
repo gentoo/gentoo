@@ -1,0 +1,30 @@
+# ChangeLog for dev-util/obs-service-recompress
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/obs-service-recompress/ChangeLog,v 1.5 2013/11/02 09:27:16 scarabeus Exp $
+
+*obs-service-recompress-0.2 (02 Nov 2013)
+
+  02 Nov 2013; Tomáš Chvátal <scarabeus@gentoo.org>
+  +obs-service-recompress-0.2.ebuild, -obs-service-recompress-20130318.ebuild:
+  Update to tarball-released version.
+
+  18 Mar 2013; Michal Hrusecky <miska@gentoo.org>
+  -obs-service-recompress-20120301.ebuild,
+  obs-service-recompress-20130318.ebuild:
+  Fast stabilization to minimize broken stable
+
+*obs-service-recompress-20130318 (18 Mar 2013)
+
+  18 Mar 2013; Michal Hrusecky <miska@gentoo.org>
+  +obs-service-recompress-20130318.ebuild:
+  Version bump to force reinstall with new paths (bug#446074)
+
+  15 Nov 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  obs-service-recompress-20120301.ebuild:
+  Stable on amd64 and x86 as we just copy two files around.
+
+*obs-service-recompress-20120301 (15 Nov 2012)
+
+  15 Nov 2012; Tomáš Chvátal <scarabeus@gentoo.org> +metadata.xml,
+  +obs-service-recompress-20120301.ebuild:
+  Initial commit of simple recompressing service.

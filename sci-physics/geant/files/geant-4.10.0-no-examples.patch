@@ -1,0 +1,22 @@
+do not install examples automatically, we do this explictly with dodoc.
+
+Index: geant4.10.00/CMakeLists.txt
+===================================================================
+--- geant4.10.00.orig/CMakeLists.txt
++++ geant4.10.00/CMakeLists.txt
+@@ -136,15 +136,6 @@ if(GEANT4_BUILD_EXAMPLES)
+   add_subdirectory(examples)
+ endif()
+ 
+-# - Install example code to datarootdir
+-install(DIRECTORY examples
+-  DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/Geant4-${Geant4_VERSION}
+-  COMPONENT Examples
+-  PATTERN "CVS" EXCLUDE
+-  PATTERN ".svn" EXCLUDE
+-  )
+-
+-
+ #-----------------------------------------------------------------------------
+ # Provide packaging with CPack.
+ include(Geant4CPackBase)

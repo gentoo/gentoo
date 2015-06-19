@@ -1,0 +1,9 @@
+Correct package version.
+
+Patch by Aaron Burnett <awol.lordofthepants@gmail.com>
+
+--- ninja_ide/__init__.py
++++ ninja_ide/__init__.py
+@@ -29,1 +29,1 @@
+-__version__ = "2.2-dev"
++__version__ = "2.2"

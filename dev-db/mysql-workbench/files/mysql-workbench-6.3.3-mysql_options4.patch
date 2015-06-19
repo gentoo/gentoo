@@ -1,0 +1,40 @@
+--- plugins/migration/copytable/copytable.cpp.~1~	2015-04-15 15:54:19.000000000 +0200
++++ plugins/migration/copytable/copytable.cpp	2015-04-26 08:53:08.871167725 +0200
+@@ -1920,12 +1920,17 @@
+     _incoming_data_charset = "latin1";
+ 
+   mysql_init(&_mysql);
++/* This is optional has compiled in for MySQL >= 5.6.6
++ * Looks like MariaDB does not support this as supposed,
++ * so disable completly. */
++#ifndef MARIADB_BASE_VERSION
+ #if defined(MYSQL_VERSION_MAJOR) && defined(MYSQL_VERSION_MINOR) && defined(MYSQL_VERSION_PATCH)
+ #if MYSQL_CHECK_VERSION(5,6,6)
+   if (is_mysql_version_at_least(5,6,6))
+     mysql_options4(&_mysql, MYSQL_OPT_CONNECT_ATTR_ADD, "program_name", app_name.c_str());
+ #endif
+ #endif
++#endif
+ 
+   // _bulk_insert_record is used to prepare a single record string, the connection
+   // is needed to escape binary data properly
+--- plugins/migration/copytable/copytable.cpp.~1~	2015-04-26 08:57:30.444285953 +0200
++++ plugins/migration/copytable/copytable.cpp	2015-04-26 10:16:39.234711324 +0200
+@@ -2875,6 +2875,9 @@
+ 
+   // This function is used to create a legal SQL string that you can use in an SQL statement
+   // This is needed because the escaping depends on the character set in use by the server
++  #ifdef MARIADB_BASE_VERSION
++    length += mysql_real_escape_string(_mysql, buffer + length, data, (unsigned long)dlength);
++  #else  
+   #if defined(MYSQL_VERSION_MAJOR) && defined(MYSQL_VERSION_MINOR) && defined(MYSQL_VERSION_PATCH)
+   #if MYSQL_CHECK_VERSION(5,7,6)
+     if (is_mysql_version_at_least(5,7,6))
+@@ -2885,6 +2888,7 @@
+     length += mysql_real_escape_string(_mysql, buffer + length, data, (unsigned long)dlength);
+   #endif
+   #endif
++  #endif
+ 
+   return true;
+ }

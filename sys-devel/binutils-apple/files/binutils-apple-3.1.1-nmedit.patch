@@ -1,0 +1,15 @@
+don't create a symlink to nmedit from the dir nmedit is in
+
+--- cctools-698/misc/Makefile
++++ cctools-698/misc/Makefile
+@@ -427,8 +427,10 @@
+ 	install -c -s -m 555 $(SYMROOT)/redo_prebinding.NEW \
+ 			  $(DSTROOT)$(USRBINDIR)/redo_prebinding
+ 	install -c -s -m 555 $(SYMROOT)/nmedit.NEW $(DSTROOT)$(USRBINDIR)/nmedit
++ifneq "$(USRBINDIR)" "$(LOCBINDIR)"
+ 	(cd $(DSTROOT)$(LOCBINDIR); rm -f nmedit; \
+ 	 ln -s $(USRBINDIR)/nmedit nmedit)
++endif
+ 	install -c -s -m 555 $(SYMROOT)/install_name_tool.NEW \
+ 			  $(DSTROOT)$(USRBINDIR)/install_name_tool
+ 	install -c -s -m 555 $(SYMROOT)/codesign_allocate.NEW \

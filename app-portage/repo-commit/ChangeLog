@@ -1,0 +1,46 @@
+# ChangeLog for app-portage/repo-commit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/repo-commit/ChangeLog,v 1.9 2015/06/07 19:08:21 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add bitbucket to remote-id in metadata.xml
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> repo-commit-0.4.1.ebuild,
+  repo-commit-0.4.ebuild, repo-commit-9999.ebuild:
+  Replace obsolete mirror://bitbucket with the real URI.
+
+  14 Oct 2013; Michał Górny <mgorny@gentoo.org> repo-commit-9999.ebuild:
+  Switch to git-r3.
+
+*repo-commit-0.4.1 (12 Jan 2013)
+
+  12 Jan 2013; Michał Górny <mgorny@gentoo.org> +repo-commit-0.4.1.ebuild:
+  Version bump. The new version fixes spell-check and bug printing.
+
+*repo-commit-9999 (15 Dec 2012)
+
+  15 Dec 2012; Michał Górny <mgorny@gentoo.org> +repo-commit-9999.ebuild:
+  Import the live ebuild.
+
+  31 Aug 2012; Michał Górny <mgorny@gentoo.org> -repo-commit-0.3.2.ebuild,
+  metadata.xml, repo-commit-0.4.ebuild:
+  Sync to the live ebuild (URIs), drop old.
+
+*repo-commit-0.4 (10 Jun 2012)
+
+  10 Jun 2012; Michał Górny <mgorny@gentoo.org> +repo-commit-0.4.ebuild:
+  Version bump. The new version adds a spellcheck feature for commit messages,
+  adds a --noask option and creates ChangeLog entries via repoman if new enough.
+
+*repo-commit-0.3.2 (27 Jan 2012)
+
+  27 Jan 2012; Michał Górny <mgorny@gentoo.org> -repo-commit-0.3.1-r1.ebuild,
+  +repo-commit-0.3.2.ebuild, metadata.xml:
+  Version bump. The new version adds --diff argument, and fixes support for
+  ChangeLog messages starting with dashes.
+
+*repo-commit-0.3.1-r1 (01 Sep 2011)
+
+  01 Sep 2011; Michał Górny <mgorny@gentoo.org> +repo-commit-0.3.1-r1.ebuild,
+  +metadata.xml:
+  Introduce repo-commit-0.3.1, a repository commit helper.

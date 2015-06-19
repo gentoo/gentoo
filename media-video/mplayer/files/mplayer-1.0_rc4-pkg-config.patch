@@ -1,0 +1,74 @@
+respect $PKG_CONFIG, and use pkg-config for libdvdnav/libdvdread by
+default rather than the ugly xxx-config scripts
+
+https://bugs.gentoo.org/410189
+
+hassle vapier@gentoo.org if this causes issues
+
+--- configure
++++ configure
+@@ -4042,7 +4042,7 @@ echores "$_apple_ir"
+ fi #if linux
+ 
+ echocheck "pkg-config"
+-_pkg_config=pkg-config
++_pkg_config=${PKG_CONFIG:-pkg-config}
+ if $($_pkg_config --version > /dev/null 2>&1); then
+   if test "$ld_static"; then
+     _pkg_config="$_pkg_config --static"
+@@ -5740,8 +5740,13 @@ if test "$_dvdread_internal" = auto ; th
+ elif test "$_dvdread" = auto ; then
+   _dvdread=no
+   if test "$_dl" = yes; then
+-    _dvdreadcflags=$($_dvdreadconfig --cflags 2> /dev/null)
+-    _dvdreadlibs=$($_dvdreadconfig --libs 2> /dev/null)
++    if ! $_pkg_config --exists dvdread ; then
++      _dvdreadcflags=$($_pkgconfig dvdread --cflags)
++      _dvdreadlibs=$($_pkgconfig dvdread --libs)
++    else
++      _dvdreadcflags=$($_dvdreadconfig --cflags 2> /dev/null)
++      _dvdreadlibs=$($_dvdreadconfig --libs 2> /dev/null)
++    fi
+     if header_check dvdread/dvd_reader.h $_dvdreadcflags $_dvdreadlibs $ld_dl ; then
+       _dvdread=yes
+       extra_cflags="$extra_cflags $_dvdreadcflags"
+@@ -7721,13 +7726,20 @@ if test "$_dvdnav" = auto ; then
+     dvdnav_internal=yes
+     res_comment="internal"
+   else
+-    $_dvdnavconfig --version --minilibs >> $TMPLOG 2>&1 || _dvdnav=no
++    if ! $_pkg_config --exists dvdnavmini ; then
++      $_dvdnavconfig --version --minilibs >> $TMPLOG 2>&1 || _dvdnav=no
++    fi
+   fi
+ fi
+ if test "$_dvdnav" = auto ; then
+   _dvdnav=no
+-  _dvdnavdir=$($_dvdnavconfig --cflags)
+-  _dvdnavlibs=$($_dvdnavconfig --libs)
++  if $_pkg_config --exists dvdnavmini ; then
++    _dvdnavdir=$($_pkg_config --cflags dvdnavmini)
++    _dvdnavlibs=$($_pkg_config --libs dvdnavmini)
++  else
++    _dvdnavdir=$($_dvdnavconfig --cflags)
++    _dvdnavlibs=$($_dvdnavconfig --libs)
++  fi
+   statement_check_broken stdint.h dvdnav/dvdnav.h 'dvdnav_t *dvd = 0' $_dvdnavdir $_dvdnavlibs $ld_dl $ld_pthread && _dvdnav=yes
+ fi
+ if test "$_dvdnav" = yes ; then
+@@ -7736,8 +7748,13 @@ if test "$_dvdnav" = yes ; then
+     cflags_libdvdnav="-Ilibdvdnav"
+     inputmodules="dvdnav(internal) $inputmodules"
+   else
+-    extra_cflags="$extra_cflags $($_dvdnavconfig --cflags)"
+-    extra_ldflags="$extra_ldflags $($_dvdnavconfig --minilibs)"
++    if $_pkg_config --exists dvdnavmini ; then
++      extra_cflags="$extra_cflags $($_pkg_config --cflags dvdnavmini)"
++      extra_ldflags="$extra_ldflags $($_pkg_config --libs dvdnavmini)"
++    else
++      extra_cflags="$extra_cflags $($_dvdnavconfig --cflags)"
++      extra_ldflags="$extra_ldflags $($_dvdnavconfig --minilibs)"
++    fi
+     inputmodules="dvdnav $inputmodules"
+   fi
+ else

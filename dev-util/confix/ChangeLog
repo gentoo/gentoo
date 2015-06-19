@@ -1,0 +1,115 @@
+# ChangeLog for dev-util/confix
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/confix/ChangeLog,v 1.21 2015/02/28 13:36:42 idella4 Exp $
+
+*confix-2.3.5-r2 (28 Feb 2015)
+
+  28 Feb 2015; Ian Delaney <idella4@gentoo.org> +confix-2.3.5-r2.ebuild,
+  -confix-2.3.5-r1.ebuild, confix-9999.ebuild:
+  revbump conversion -> distutils-r1, ditto live ebuild, rm old, endorsed by
+  maintainer in bug #540894, closes the bug
+
+  05 Nov 2013; Michael Haubenwallner <haubi@gentoo.org> confix-9999.ebuild:
+  Follow upstream repository move.
+
+  08 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  confix-2.3.5-r1.ebuild, confix-9999.ebuild:
+  Fix dependencies. Set SUPPORT_PYTHON_ABIS (bug #324385).
+
+  08 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -files/2.1.0/CALL_RESCAN_HACK.patch, -files/2.1.0/exeext.patch,
+  -files/2.1.0/ext-ac-archive.patch, -files/2.1.0/fast-install.patch,
+  -confix-2.1.0.ebuild, -files/2.1.0/local-libs-first.patch,
+  -confix-2.1.0-r4.ebuild, -files/2.1.0/private-headers.patch,
+  -confix-2.3.0-r3.ebuild:
+  Delete.
+
+*confix-2.3.5-r1 (26 Dec 2010)
+
+  26 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org> -confix-2.3.5.ebuild,
+  +confix-2.3.5-r1.ebuild:
+  QA: revbump confix that was obviously meant to be patched but was missing an
+  eutils inherit.
+
+*confix-2.3.5 (29 Oct 2010)
+
+  29 Oct 2010; Markus Duft <mduft@gentoo.org> +confix-2.3.5.ebuild,
+  confix-9999.ebuild:
+  add new version, update/fix live ebuild
+
+  11 Oct 2010; Michael Haubenwallner <haubi@gentoo.org>
+  confix-2.1.0-r4.ebuild:
+  pass non-prefix cpv to has_version (#340515).
+  add missing eutils inherit to have epatch do anything useful.
+
+  28 Jul 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  confix-2.3.0-r3.ebuild:
+  Add missing eutils inherit, this casued the package to patch nothing.
+
+*confix-2.3.0-r3 (13 Jul 2010)
+*confix-2.1.0-r4 (13 Jul 2010)
+
+  13 Jul 2010; Markus Duft <mduft@gentoo.org>
+  +files/2.1.0/local-libs-first.patch, -files/2.2.0/exeext.patch,
+  -files/2.2.0/ext-ac-archive.patch, +files/2.3.0/exeext.patch,
+  +files/2.3.0/ext-ac-archive.patch, +files/2.3.0/local-libs-first.patch,
+  +files/2.3.0/new-automake.patch, -confix-2.1.0-r3.ebuild,
+  +confix-2.1.0-r4.ebuild, +confix-2.3.0-r3.ebuild, confix-9999.ebuild:
+  applied changes from private overlay. added new confix-2.3.0
+
+  08 Feb 2010; Peter Volkov <pva@gentoo.org> confix-2.1.0.ebuild,
+  confix-2.1.0-r3.ebuild, confix-9999.ebuild:
+  Add inherit eutils for epatch.
+
+*confix-9999 (03 Nov 2009)
+
+  03 Nov 2009; Markus Duft <mduft@gentoo.org> +files/2.2.0/exeext.patch,
+  +confix-9999.ebuild, +files/2.2.0/ext-ac-archive.patch:
+  added live ebuild for new confix-2.2
+
+  16 Oct 2009; Michael Haubenwallner <haubi@gentoo.org>
+  confix-2.1.0-r3.ebuild:
+  Added keyword ~amd64.
+  Added prefix keywords ~ppc-aix ~x86-interix ~x86-linux ~x86-solaris.
+
+  26 Jan 2009; Markus Duft <mduft@gentoo.org>
+  files/2.1.0/fast-install.patch:
+  corrected minor issue with fast-install patch.
+
+*confix-2.1.0-r3 (17 Dec 2008)
+
+  17 Dec 2008; Markus Duft <mduft@gentoo.org>
+  files/2.1.0/fast-install.patch, -confix-2.1.0-r2.ebuild,
+  +confix-2.1.0-r3.ebuild:
+  updated patch for confix to work with DESTDIR installs; oops...
+
+  17 Dec 2008; Markus Duft <mduft@gentoo.org>
+  files/2.1.0/fast-install.patch:
+  updated fast install patch to correctly add files to dist rules
+
+*confix-2.1.0-r2 (09 Dec 2008)
+
+  09 Dec 2008; Markus Duft <mduft@gentoo.org>
+  +files/2.1.0/fast-install.patch, -confix-2.1.0-r1.ebuild,
+  +confix-2.1.0-r2.ebuild:
+  added patch to enable faster installation rules in generated makefiles
+
+*confix-2.1.0-r1 (17 Oct 2008)
+
+  17 Oct 2008; Markus Duft <mduft@gentoo.org>
+  +files/2.1.0/private-headers.patch, +confix-2.1.0-r1.ebuild:
+  add patch to enable private header files in confix-built packages
+
+  16 Jun 2008; Michael Haubenwallner <haubi@gentoo.org> confix-2.1.0.ebuild:
+  set IUSE to empty (#224359)
+
+  28 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fixing bogus herd tag in metadata.xml.
+
+*confix-2.1.0 (13 May 2008)
+
+  13 May 2008; Michael Haubenwallner <haubi@gentoo.org>
+  +files/2.1.0/CALL_RESCAN_HACK.patch, +files/2.1.0/exeext.patch,
+  +files/2.1.0/ext-ac-archive.patch, +files/2.1.0/jni-hpux.patch,
+  +metadata.xml, +confix-2.1.0.ebuild:
+  initial import of dev-util/confix (ebuild from me).

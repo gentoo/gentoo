@@ -1,0 +1,52 @@
+# ChangeLog for games-emulation/gnuboy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/gnuboy/ChangeLog,v 1.17 2015/03/12 18:55:59 mr_bones_ Exp $
+
+  12 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> -gnuboy-1.0.3.ebuild:
+  old
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gnuboy-1.0.3-r1.ebuild:
+  Stable for ppc, wrt bug #539394
+
+  10 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gnuboy-1.0.3-r1.ebuild:
+  Stable for x86, wrt bug #539394
+
+  09 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gnuboy-1.0.3-r1.ebuild:
+  Stable for amd64, wrt bug #539394
+
+*gnuboy-1.0.3-r1 (04 Jul 2014)
+
+  04 Jul 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gnuboy-1.0.3-include.patch, +gnuboy-1.0.3-r1.ebuild:
+  EAPI=5; simplify; add include patch to clean up build a bit
+
+  10 Jul 2011; Michael Sterrett <mr_bones_@gentoo.org> gnuboy-1.0.3.ebuild:
+  EAPI=2; update HOMEPAGE (bug #374633)
+
+  06 Jul 2007; Tristan Heaven <nyhm@gentoo.org>
+  +files/gnuboy-1.0.3-exec-stack.patch,
+  +files/gnuboy-1.0.3-linux-headers.patch, gnuboy-1.0.3.ebuild:
+  Fix for recent linux-headers and exec stack
+
+  28 Sep 2006; Tristan Heaven <nyhm@gentoo.org> gnuboy-1.0.3.ebuild:
+  Add missing RDEPEND on sys-apps/fbset, bug #99983
+
+  10 Feb 2006; Chris Gianelloni <wolf31o2@gentoo.org> gnuboy-1.0.3.ebuild:
+  Added modular X dependencies and closing bug #121527.
+
+  29 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> gnuboy-1.0.3.ebuild:
+  more choices for gui - patch from James Rowe via bug #99983
+
+  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> gnuboy-1.0.3.ebuild:
+  Added IUSE and marking stable on amd64 (no bugs in 415 days).
+
+  31 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> gnuboy-1.0.3.ebuild:
+  Adding amd64 keyword. Closing #46276.
+
+  02 Mar 2004; David Holm <dholm@gentoo.org> gnuboy-1.0.3.ebuild:
+  Added to ~ppc.
+
+*gnuboy-1.0.3 (01 Mar 2003)
+
+  19 Dec 2002; Phil Bordelon <sunflare@gentoo.org> gnuboy-1.0.3.ebuild ChangeLog :
+  Initial commit.

@@ -1,0 +1,8 @@
+DEFINED_PHASES=install
+DESCRIPTION=Library for creating diff files
+HOMEPAGE=http://www.xmailserver.org/xdiff-lib.html
+KEYWORDS=amd64 x86
+LICENSE=LGPL-2.1
+SLOT=0
+SRC_URI=http://www.xmailserver.org/libxdiff-0.23.tar.gz
+_md5_=1b551179f934398d7777a67d971b75f0

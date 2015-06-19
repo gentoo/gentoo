@@ -1,0 +1,16 @@
+# Copyright 1999-2013 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/desc/monkeyd_plugins.desc,v 1.1 2013/05/28 12:15:48 blueness Exp $
+
+# This file contains descriptions of MONKEYD_PLUGINS USE_EXPAND flags for www-servers/monkeyd.
+# All plugins are included here except cgi and fastcgi which are global use flags.
+
+auth - Provide HTTP Basic Authentication
+cheetah - Provide a shell-like command line interface
+#cgi - Provide the traditional CGI interface
+dirlisting - Show an HTML listing of the content of a directory
+#fastcgi - Provide FastCGI proxy support
+liana - Build your own network layer through monkeyd
+logger - Log requests and common errors
+mandril - Restrict incoming connections based on the IP address or URI request
+polarssl - Provide HTTPS using PolarSSL v1.*.

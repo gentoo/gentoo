@@ -1,0 +1,20 @@
+# ChangeLog for dev-ml/ocaml-autoconf
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocaml-autoconf/ChangeLog,v 1.4 2012/03/08 21:44:03 hwoarang Exp $
+
+  08 Mar 2012; Markos Chandras <hwoarang@gentoo.org> ocaml-autoconf-1.1.ebuild:
+  Stable on amd64 wrt bug #407233
+
+  15 Apr 2010; Brent Baude <ranger@gentoo.org> ocaml-autoconf-1.1.ebuild:
+  Marking ocaml-autoconf-1.1 for bug 290222
+
+  27 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  ocaml-autoconf-1.1.ebuild:
+  stable x86, security bug 290222
+
+*ocaml-autoconf-1.1 (25 Nov 2009)
+
+  25 Nov 2009; Alexis Ballier <aballier@gentoo.org>
+  +ocaml-autoconf-1.1.ebuild, +metadata.xml:
+  Initial import, ebuild by me
+

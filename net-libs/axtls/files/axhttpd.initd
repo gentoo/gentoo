@@ -1,0 +1,26 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/net-libs/axtls/files/axhttpd.initd,v 1.1 2012/05/26 05:58:11 blueness Exp $
+
+AXHTTPD_USER="axtls"
+AXHTTPD_GROUP="axtls"
+AXHTTPD_DAEMON="/usr/bin/axhttpd"
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting axhttpd"
+	start-stop-daemon --quiet --start "${AXHTTPD_DAEMON}" \
+		--user "${AXHTTPD_USER}":"${AXHTTPD_GROUP}" \
+		-- ${AXHTTPD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping axhttpd"
+	start-stop-daemon --quiet --stop "${AXHTTPD_DAEMON}"
+	eend $?
+}

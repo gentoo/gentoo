@@ -1,0 +1,63 @@
+# ChangeLog for dev-embedded/scratchbox-toolchain-cs2009q1-eglibc2_8
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/scratchbox-toolchain-cs2009q1-eglibc2_8/ChangeLog,v 1.11 2014/08/10 20:05:54 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  scratchbox-toolchain-cs2009q1-eglibc2_8-1.0.17.ebuild,
+  scratchbox-toolchain-cs2009q1-eglibc2_8-1.0.19.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  13 Sep 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #278944
+
+*scratchbox-toolchain-cs2009q1-eglibc2_8-1.0.19 (19 Sep 2010)
+
+  19 Sep 2010; Dominik Kapusta <ayoy@gentoo.org>
+  -scratchbox-toolchain-cs2009q1-eglibc2_8-1.0.14.ebuild,
+  -scratchbox-toolchain-cs2009q1-eglibc2_8-1.0.15.ebuild,
+  -scratchbox-toolchain-cs2009q1-eglibc2_8-1.0.15-r1.ebuild,
+  +scratchbox-toolchain-cs2009q1-eglibc2_8-1.0.19.ebuild:
+  Version bump, remove old versions. Thanks to David King
+  <amigadave@amigadave.com> for reporting (bug #338019).
+
+*scratchbox-toolchain-cs2009q1-eglibc2_8-1.0.17 (29 Jun 2010)
+
+  29 Jun 2010; Dominik Kapusta <ayoy@gentoo.org>
+  +scratchbox-toolchain-cs2009q1-eglibc2_8-1.0.17.ebuild:
+  Version bump (bug #325659). Thanks to David King <amigadave@amigadave.com>
+  for the new ebuild.
+
+*scratchbox-toolchain-cs2009q1-eglibc2_8-1.0.15-r1 (05 May 2010)
+
+  05 May 2010; Dominik Kapusta <ayoy@gentoo.org>
+  +scratchbox-toolchain-cs2009q1-eglibc2_8-1.0.15-r1.ebuild:
+  Revbump (bug #316435). Thanks to Ricardo Salveti
+  (ricardo.salveti@openbossa.org) for the ebuild.
+
+*scratchbox-toolchain-cs2009q1-eglibc2_8-1.0.15 (04 Apr 2010)
+
+  04 Apr 2010; Dominik Kapusta <ayoy@gentoo.org>
+  scratchbox-toolchain-cs2009q1-eglibc2_8-1.0.14.ebuild,
+  +scratchbox-toolchain-cs2009q1-eglibc2_8-1.0.15.ebuild:
+  Version bump, removing binchecks restriction (bug #296294). Thanks to
+  David King (amigadave@amigadave.com) for the ebuild (bug #311163).
+
+  25 Feb 2010; Olivier Crête <tester@gentoo.org>
+  scratchbox-toolchain-cs2009q1-eglibc2_8-1.0.14.ebuild:
+  Remove useless binchecks, this runs in a chroot
+
+  18 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  scratchbox-toolchain-cs2009q1-eglibc2_8-1.0.14.ebuild:
+  Repeat after me: the next person using binchecks to sidestep QA tests will
+  be asked to refrain from ever committing to the tree.
+
+  18 Jan 2010; Olivier Crête <tester@gentoo.org>
+  scratchbox-toolchain-cs2009q1-eglibc2_8-1.0.14.ebuild:
+  Restore strip/binchecks RESTRICT, it does NOT work without them, bug
+  #296294
+
+*scratchbox-toolchain-cs2009q1-eglibc2_8-1.0.14 (17 Jan 2010)
+
+  17 Jan 2010; Dominik Kapusta <ayoy@gentoo.org>
+  +scratchbox-toolchain-cs2009q1-eglibc2_8-1.0.14.ebuild, +metadata.xml:
+  Initial commit for cs2009q1 eglibc-2.8 scratchbox toolchain

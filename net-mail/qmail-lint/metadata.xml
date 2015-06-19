@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>qmail</herd>
+<maintainer>
+  <email>robbat2@gentoo.org</email>
+  <name>Robin H. Johnson</name>
+  <description>Primary Maintainer</description>
+</maintainer>
+<longdescription>qmail-lint checks your qmail configuration for common
+    problems. Prints warning or error messages to stdout.  </longdescription>
+</pkgmetadata>

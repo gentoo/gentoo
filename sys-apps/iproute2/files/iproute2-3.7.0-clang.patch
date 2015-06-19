@@ -1,0 +1,72 @@
+From 048bff6e0206bca33ee70516521f3048e7714752 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 17 Jan 2013 18:00:50 +0000
+Subject: [PATCH] ipxfrm: use alloca to allocate stack space
+
+Clang doesn't support the gcc extension for embeddeding flexible arrays
+inside of structures.  Use the slightly more portable alloca().
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ ip/ipxfrm.c | 27 +++++++++++----------------
+ 1 file changed, 11 insertions(+), 16 deletions(-)
+
+diff --git a/ip/ipxfrm.c b/ip/ipxfrm.c
+index c7b3420..dda4a7a 100644
+--- a/ip/ipxfrm.c
++++ b/ip/ipxfrm.c
+@@ -25,6 +25,7 @@
+  *	Masahide NAKAMURA @USAGI
+  */
+ 
++#include <alloca.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -555,16 +556,13 @@ static inline void xfrm_algo_print(struct xfrm_algo *algo, int type, int len,
+ static void xfrm_aead_print(struct xfrm_algo_aead *algo, int len,
+ 			    FILE *fp, const char *prefix)
+ {
+-	struct {
+-		struct xfrm_algo algo;
+-		char key[algo->alg_key_len / 8];
+-	} base;
++	struct xfrm_algo *base_algo = alloca(sizeof(*base_algo) + algo->alg_key_len / 8);
+ 
+-	memcpy(base.algo.alg_name, algo->alg_name, sizeof(base.algo.alg_name));
+-	base.algo.alg_key_len = algo->alg_key_len;
+-	memcpy(base.algo.alg_key, algo->alg_key, algo->alg_key_len / 8);
++	memcpy(base_algo->alg_name, algo->alg_name, sizeof(base_algo->alg_name));
++	base_algo->alg_key_len = algo->alg_key_len;
++	memcpy(base_algo->alg_key, algo->alg_key, algo->alg_key_len / 8);
+ 
+-	__xfrm_algo_print(&base.algo, XFRMA_ALG_AEAD, len, fp, prefix, 0);
++	__xfrm_algo_print(base_algo, XFRMA_ALG_AEAD, len, fp, prefix, 0);
+ 
+ 	fprintf(fp, " %d", algo->alg_icv_len);
+ 
+@@ -574,16 +572,13 @@ static void xfrm_aead_print(struct xfrm_algo_aead *algo, int len,
+ static void xfrm_auth_trunc_print(struct xfrm_algo_auth *algo, int len,
+ 				  FILE *fp, const char *prefix)
+ {
+-	struct {
+-		struct xfrm_algo algo;
+-		char key[algo->alg_key_len / 8];
+-	} base;
++	struct xfrm_algo *base_algo = alloca(sizeof(*base_algo) + algo->alg_key_len / 8);
+ 
+-	memcpy(base.algo.alg_name, algo->alg_name, sizeof(base.algo.alg_name));
+-	base.algo.alg_key_len = algo->alg_key_len;
+-	memcpy(base.algo.alg_key, algo->alg_key, algo->alg_key_len / 8);
++	memcpy(base_algo->alg_name, algo->alg_name, sizeof(base_algo->alg_name));
++	base_algo->alg_key_len = algo->alg_key_len;
++	memcpy(base_algo->alg_key, algo->alg_key, algo->alg_key_len / 8);
+ 
+-	__xfrm_algo_print(&base.algo, XFRMA_ALG_AUTH_TRUNC, len, fp, prefix, 0);
++	__xfrm_algo_print(base_algo, XFRMA_ALG_AUTH_TRUNC, len, fp, prefix, 0);
+ 
+ 	fprintf(fp, " %d", algo->alg_trunc_len);
+ 
+-- 
+1.8.0.2
+

@@ -1,0 +1,25 @@
+diff --git a/usr.bin/dtc/string.hh b/usr.bin/dtc/string.hh
+index 45bc4fd..6eaf8e4 100644
+--- a/usr.bin/dtc/string.hh
++++ b/usr.bin/dtc/string.hh
+@@ -32,6 +32,8 @@
+ 
+ #ifndef _STRING_HH_
+ #define _STRING_HH_
++#include <cstdio>
++#include <cstring>
+ #include "input_buffer.hh"
+ 
+ namespace dtc
+diff --git a/usr.bin/dtc/util.hh b/usr.bin/dtc/util.hh
+index 7f2ec67..8e13b1c 100644
+--- a/usr.bin/dtc/util.hh
++++ b/usr.bin/dtc/util.hh
+@@ -33,6 +33,7 @@
+ #ifndef _UTIL_HH_
+ #define _UTIL_HH_
+ 
++#include <stdint.h>
+ #include <vector>
+ 
+ // If we aren't using C++11, then just ignore static asserts.

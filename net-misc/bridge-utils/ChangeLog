@@ -1,0 +1,288 @@
+# ChangeLog for net-misc/bridge-utils
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/bridge-utils/ChangeLog,v 1.71 2015/05/16 06:30:55 robbat2 Exp $
+
+  16 May 2015; Robin H. Johnson <robbat2@gentoo.org> bridge-utils-1.5.ebuild:
+  Bug #538022: selinux policy rdepend.
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> bridge-utils-1.5.ebuild:
+  add arm64 support, tested on A53 board
+
+  14 Sep 2013; Samuli Suominen <ssuominen@gentoo.org> -bridge-utils-1.2.ebuild,
+  -bridge-utils-1.4.ebuild, -files/bridge-utils-1.0.6-allow-without-sysfs.patch,
+  -files/bridge-utils-1.0.6-dont-error-on-no-ports.patch, -files/bridge.conf,
+  -files/bridge.rc:
+  old
+
+  14 Sep 2013; Agostino Sarubbo <ago@gentoo.org> bridge-utils-1.5.ebuild:
+  Stable for ia64, wrt bug #483892
+
+  08 Sep 2013; Markus Meier <maekke@gentoo.org> bridge-utils-1.5.ebuild:
+  arm stable, bug #483892
+
+  06 Sep 2013; Jeroen Roovers <jer@gentoo.org> bridge-utils-1.5.ebuild:
+  Stable for HPPA (bug #483892).
+
+  06 Sep 2013; Agostino Sarubbo <ago@gentoo.org> bridge-utils-1.5.ebuild:
+  Stable for sparc, wrt bug #483892
+
+  06 Sep 2013; Agostino Sarubbo <ago@gentoo.org> bridge-utils-1.5.ebuild:
+  Stable for ppc64, wrt bug #483892
+
+  06 Sep 2013; Agostino Sarubbo <ago@gentoo.org> bridge-utils-1.5.ebuild:
+  Stable for ppc, wrt bug #483892
+
+  06 Sep 2013; Agostino Sarubbo <ago@gentoo.org> bridge-utils-1.5.ebuild:
+  Stable for x86, wrt bug #483892
+
+  06 Sep 2013; Agostino Sarubbo <ago@gentoo.org> bridge-utils-1.5.ebuild:
+  Stable for amd64, wrt bug #483892
+
+  06 Sep 2013; Robin H. Johnson <robbat2@gentoo.org> bridge-utils-1.4.ebuild,
+  bridge-utils-1.5.ebuild:
+  Safety workaround for bug #483692 while 1.5 is stabilized.
+
+  06 Mar 2013; Samuli Suominen <ssuominen@gentoo.org> bridge-utils-1.5.ebuild,
+  +files/bridge-utils-1.5-linux-3.8.patch:
+  Unfortunately linux/if_bridge.h is not self-contained and struct for ip6 is
+  in netinet/ip6.h (since Linux 3.8+) wrt #460262 by Guillaume Castagnino
+
+  19 May 2012; Anthony G. Basile <blueness@gentoo.org> bridge-utils-1.5.ebuild:
+  keyword mips, bug #405835
+
+*bridge-utils-1.5 (15 Jun 2011)
+
+  15 Jun 2011; Jeroen Roovers <jer@gentoo.org> +bridge-utils-1.5.ebuild:
+  Version bump. Remove old init script warning.
+
+  19 Sep 2010; Michael Weber <xmw@gentoo.org> bridge-utils-1.4.ebuild:
+  Added ~arm keyword
+
+  12 Feb 2010; Robin H. Johnson <robbat2@gentoo.org>
+  bridge-utils-1.4.ebuild:
+  Add warning message for lack of CONFIG_BRIDGE, and add ~ppc64 keyword per
+  request by JoseJX.
+
+  09 May 2009; Raúl Porcel <armin76@gentoo.org> bridge-utils-1.4.ebuild:
+  sparc stable wrt #268323
+
+  04 Oct 2008; Raúl Porcel <armin76@gentoo.org> bridge-utils-1.4.ebuild:
+  ia64/x86 stable wrt #239119
+
+  02 Oct 2008; Brent Baude <ranger@gentoo.org> bridge-utils-1.4.ebuild:
+  stable ppc, bug 239119
+
+  30 Sep 2008; Jeroen Roovers <jer@gentoo.org> bridge-utils-1.4.ebuild:
+  Stable for HPPA (bug #239119).
+
+  30 Sep 2008; Jeremy Olexa <darkside@gentoo.org> bridge-utils-1.4.ebuild:
+  amd64 stable, bug #239119
+
+  30 Sep 2008; Robin H. Johnson <robbat2@gentoo.org>
+  bridge-utils-1.2.ebuild, bridge-utils-1.4.ebuild:
+  Bug #238782, spelling fix.
+
+  28 Sep 2008; Raúl Porcel <armin76@gentoo.org> bridge-utils-1.4.ebuild:
+  Add ~sparc wrt #238183
+
+  05 Jun 2008; Robin H. Johnson <robbat2@gentoo.org>
+  bridge-utils-1.2.ebuild:
+  Fix syntax.
+
+*bridge-utils-1.4 (05 Jun 2008)
+
+  05 Jun 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +bridge-utils-1.4.ebuild:
+  Version bump per bug #204744. Cross compile should work now.
+
+  28 Apr 2008; Doug Goldstein <cardoe@gentoo.org>
+  -bridge-utils-1.0.6-r3.ebuild, bridge-utils-1.2.ebuild:
+  remove USE=sysfs from bridge-utils-1.2 since it's unused (bug #219600) and
+  remove old version
+
+  14 Jan 2008; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Update metadata.
+
+  11 May 2007; Jeroen Roovers <jer@gentoo.org> bridge-utils-1.2.ebuild:
+  Stable for HPPA (bug #173864).
+
+  22 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  bridge-utils-1.2.ebuild:
+  ppc stable, bug #173864
+
+  21 Apr 2007; Robin H. Johnson <robbat2@gentoo.org>
+  -bridge-utils-0.9.6-r2.ebuild, -bridge-utils-1.0.4.ebuild,
+  -bridge-utils-1.0.6.ebuild, -bridge-utils-1.0.6-r2.ebuild:
+  Remove old ebuilds per bug #174266.
+
+  09 Apr 2007; Raúl Porcel <armin76@gentoo.org> bridge-utils-1.2.ebuild:
+  ia64 stable wrt bug 173864
+
+  09 Apr 2007; Peter Weller <welp@gentoo.org> bridge-utils-1.2.ebuild:
+  Stable on amd64 wrt bug 173864
+
+  09 Apr 2007; Raúl Porcel <armin76@gentoo.org> bridge-utils-1.2.ebuild:
+  x86 stable wrt bug 173864
+
+  07 Nov 2006; Joel Martin <kanaka@gentoo.org> bridge-utils-1.0.6-r3.ebuild,
+  bridge-utils-1.2.ebuild:
+  Use get_libdir instead of just 'lib'
+
+  04 Nov 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  bridge-utils-1.0.6-r3.ebuild, bridge-utils-1.2.ebuild:
+  Added ~hppa
+
+*bridge-utils-1.2 (25 Sep 2006)
+
+  25 Sep 2006; Robin H. Johnson <robbat2@gentoo.org>
+  +bridge-utils-1.2.ebuild:
+  Version bump, bug #148084 - upstream no longer uses sysfsutils.
+
+  04 Jul 2006; Robin H. Johnson <robbat2@gentoo.org>
+  bridge-utils-1.0.6-r3.ebuild:
+  Bug #138199 - fix for using autoconf-2.60.
+
+  25 Apr 2006; Luca Barbato <lu_zero@gentoo.org>
+  bridge-utils-1.0.6-r3.ebuild:
+  Marked ppc
+
+  29 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  bridge-utils-1.0.6-r3.ebuild:
+  Mark 1.0.6-r3 stable on ia64
+
+  16 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  bridge-utils-1.0.6-r3.ebuild:
+  Mark 1.0.6-r3 ~ia64
+
+  19 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org>
+  bridge-utils-1.0.6-r3.ebuild:
+  Stable on amd64.
+
+  15 Aug 2005; Robin H. Johnson <robbat2@gentoo.org>
+  bridge-utils-1.0.6-r3.ebuild:
+  1.0.6-r3 to stable x86, so that it works for 2.4 users, and also throw in a
+  bit more error checking (bug #102588).
+
+*bridge-utils-1.0.6-r3 (05 Aug 2005)
+
+  05 Aug 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +files/bridge-utils-1.0.6-allow-without-sysfs.patch,
+  +bridge-utils-1.0.6-r3.ebuild:
+  Bug #69292: Make it possible to compile without sysfs, so the new versions
+  work well for 2.4 users.
+
+  12 Jul 2005; Simon Stelling <blubb@gentoo.org>
+  bridge-utils-1.0.6-r2.ebuild:
+  stable on amd64
+
+*bridge-utils-1.0.6-r2 (12 Jul 2005)
+
+  12 Jul 2005; Roy Marples <uberlord@gentoo.org>
+  -bridge-utils-1.0.6-r1.ebuild, +bridge-utils-1.0.6-r2.ebuild:
+  epatch requires eutils
+  rev bumped as r1 still compiled - but without the patch!
+
+*bridge-utils-1.0.6-r1 (12 Jul 2005)
+
+  12 Jul 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +files/bridge-utils-1.0.6-dont-error-on-no-ports.patch,
+  +bridge-utils-1.0.6-r1.ebuild:
+  Bug #98005: Ensure correct behavior when there are no ports on the bridge.
+
+  04 Jul 2005; Robin H. Johnson <robbat2@gentoo.org>
+  bridge-utils-1.0.6.ebuild:
+  Stable 1.0.6 on x86.
+
+  03 Jul 2005; Robin H. Johnson <robbat2@gentoo.org>
+  -bridge-utils-0.9.6.ebuild, -bridge-utils-0.9.6-r1.ebuild:
+  Remove some old ebuilds.
+
+*bridge-utils-0.9.6-r2 (03 Jul 2005)
+
+  03 Jul 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +bridge-utils-0.9.6-r2.ebuild:
+  Add bridge-utils-0.9.6-r2 that uses the bridge support in the new
+  baselayout, instead of the old init scripts.
+
+  02 Jul 2005; Robin H. Johnson <robbat2@gentoo.org>
+  bridge-utils-1.0.6.ebuild:
+  Add ~amd64 to newest ebuild since it seems to exist on an old one only.
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> bridge-utils-1.0.6.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+*bridge-utils-1.0.6 (29 Apr 2005)
+
+  29 Apr 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +bridge-utils-1.0.6.ebuild:
+  Version bump - now uses baselayout's bridge stuff.
+
+  28 Apr 2005; Robin H. Johnson <robbat2@gentoo.org>
+  bridge-utils-1.0.4.ebuild:
+  Fix bug #69292, missing dep.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> bridge-utils-0.9.6-r1.ebuild,
+  bridge-utils-0.9.6.ebuild, bridge-utils-1.0.4.ebuild:
+  change virtual/glibc to virtual/libc, add IUSE
+
+  18 Jun 2004; David Holm <dholm@gentoo.org> bridge-utils-1.0.4.ebuild:
+  Added to ~ppc.
+
+  17 Jun 2004; Jared Hudson <jhhudso@gentoo.org> bridge-utils-0.9.6-r1.ebuild,
+  bridge-utils-0.9.6.ebuild, bridge-utils-1.0.4.ebuild:
+  Fixed SRC_URI to point to sourceforge's new bridge util location, set 0.9.6
+  to x86 and bumped bridge-utils to 1.0.4 (~x86)
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org>
+  bridge-utils-0.9.6-r1.ebuild, bridge-utils-0.9.6.ebuild:
+  Add die following econf for bug 48950
+
+  02 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> bridge-utils-0.9.6-r1.ebuild:
+  Adding amd64 keyword, closing #46552.
+
+*bridge-utils-0.9.6-r1 (18 Mar 2004)
+
+  18 Mar 2004; Jared Hudson <jhhudso@gentoo.org> bridge-utils-0.9.6-r1.ebuild,
+  bridge-utils-0.9.6.ebuild, metadata.xml, files/bridge.conf, files/bridge.rc:
+  Added an init script to the bridge port thanks to Gustavo Felisberto
+  <humpback@gentoo.org> and Denis Knauf <deac@linux-ist-pleite.de>
+
+  25 Feb 2004; Patrick Kursawe <phosphan@gentoo.org>
+  bridge-utils-0.9.3-r1.ebuild, bridge-utils-0.9.6.ebuild:
+  Cleanup
+
+  25 Feb 2004; Patrick Kursawe <phosphan@gentoo.org>
+  bridge-utils-0.9.6.ebuild:
+  Added additional check for build success because of bug #42548
+
+  24 Apr 2003; Patrick Kursawe <phosphan@gentoo.org> bridge-utils-0.9.6.ebuild :
+  Considered stable for x86
+
+*bridge-utils-0.9.6 (02 Apr 2003)
+
+  02 Apr 2003; Patrick Kursawe <phosphan@gentoo.org> bridge-utils-0.9.6.ebuild,
+  files/digest-bridge-utils-0.9.6 :
+  New version, moved binaries to /sbin since they can be necessary for
+  bringing the network up.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*bridge-utils-0.9.3-r1 (3 May 2002)
+
+  6 Jul 2002; phoen][x <phoenix@gentoo.org> :
+ 
+  Added KEYWORDS.
+    
+  3 May 2002; Donny Davies <woodchip@gentoo.org> :
+  
+  Added LICENSE, SLOT.
+
+*bridge-utils-0.9.3 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

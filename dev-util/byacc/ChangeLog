@@ -1,0 +1,332 @@
+# ChangeLog for dev-util/byacc
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/byacc/ChangeLog,v 1.98 2014/12/08 00:59:53 radhermit Exp $
+
+*byacc-20141128 (08 Dec 2014)
+
+  08 Dec 2014; Tim Harder <radhermit@gentoo.org> +byacc-20141128.ebuild:
+  Version bump.
+
+  08 Oct 2014; Tim Harder <radhermit@gentoo.org> -byacc-20120526.ebuild,
+  -byacc-20121003.ebuild, -byacc-20130925.ebuild, -byacc-20140409.ebuild,
+  -byacc-20140422.ebuild:
+  Remove old.
+
+*byacc-20141006 (08 Oct 2014)
+
+  08 Oct 2014; Tim Harder <radhermit@gentoo.org> +byacc-20141006.ebuild:
+  Version bump.
+
+*byacc-20140527 (25 Jun 2014)
+
+  25 Jun 2014; Tim Harder <radhermit@gentoo.org> +byacc-20140527.ebuild:
+  Version bump.
+
+*byacc-20140422 (12 May 2014)
+
+  12 May 2014; Tim Harder <radhermit@gentoo.org> +byacc-20140422.ebuild:
+  Version bump.
+
+*byacc-20140409 (11 Apr 2014)
+
+  11 Apr 2014; Tim Harder <radhermit@gentoo.org> +byacc-20140409.ebuild:
+  Version bump.
+
+  19 Mar 2014; Agostino Sarubbo <ago@gentoo.org> byacc-20140101.ebuild:
+  Stable for alpha, wrt bug #502802
+
+  12 Mar 2014; Agostino Sarubbo <ago@gentoo.org> byacc-20140101.ebuild:
+  Stable for sparc, wrt bug #502802
+
+  08 Mar 2014; Markus Meier <maekke@gentoo.org> byacc-20140101.ebuild:
+  arm stable, bug #502802
+
+  06 Mar 2014; Agostino Sarubbo <ago@gentoo.org> byacc-20140101.ebuild:
+  Stable for ppc64, wrt bug #502802
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> byacc-20140101.ebuild:
+  Stable for ppc, wrt bug #502802
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> byacc-20140101.ebuild:
+  Stable for x86, wrt bug #502802
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> byacc-20140101.ebuild:
+  amd64 stable, bug #502802
+
+  02 Mar 2014; Akinori Hattori <hattya@gentoo.org> byacc-20140101.ebuild:
+  ia64 stable wrt bug #502802
+
+  01 Mar 2014; Jeroen Roovers <jer@gentoo.org> byacc-20140101.ebuild:
+  Stable for HPPA (bug #502802).
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> byacc-20130925.ebuild:
+  Stable for sparc, wrt bug #495656
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> byacc-20130925.ebuild:
+  Stable for alpha, wrt bug #495656
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> byacc-20130925.ebuild:
+  Stable for ia64, wrt bug #495656
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> byacc-20130925.ebuild:
+  Stable for ppc64, wrt bug #495656
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> byacc-20130925.ebuild:
+  Stable for ppc, wrt bug #495656
+
+  05 Jan 2014; Agostino Sarubbo <ago@gentoo.org> byacc-20130925.ebuild:
+  Stable for x86, wrt bug #495656
+
+  03 Jan 2014; Chema Alonso <nimiux@gentoo.org> byacc-20130925.ebuild:
+  Stable for amd64 wrt bug #495656
+
+*byacc-20140101 (02 Jan 2014)
+
+  02 Jan 2014; Tim Harder <radhermit@gentoo.org> +byacc-20140101.ebuild:
+  Version bump.
+
+  29 Dec 2013; Markus Meier <maekke@gentoo.org> byacc-20130925.ebuild:
+  arm stable, bug #495656
+
+  25 Dec 2013; Jeroen Roovers <jer@gentoo.org> byacc-20130925.ebuild:
+  Stable for HPPA (bug #495656).
+
+*byacc-20130925 (26 Sep 2013)
+
+  26 Sep 2013; Tim Harder <radhermit@gentoo.org> +byacc-20130925.ebuild:
+  Version bump.
+
+  02 Jun 2013; Agostino Sarubbo <ago@gentoo.org> byacc-20130304.ebuild:
+  Stable for sh, wrt bug #470482
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> byacc-20130304.ebuild:
+  Stable for alpha, wrt bug #470482
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> byacc-20130304.ebuild:
+  Stable for sparc, wrt bug #470482
+
+  24 May 2013; Agostino Sarubbo <ago@gentoo.org> byacc-20130304.ebuild:
+  Stable for ppc64, wrt bug #470482
+
+  22 May 2013; Agostino Sarubbo <ago@gentoo.org> byacc-20130304.ebuild:
+  Stable for ia64, wrt bug #470482
+
+  21 May 2013; Jeroen Roovers <jer@gentoo.org> byacc-20130304.ebuild:
+  Stable for HPPA (bug #470482).
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> byacc-20130304.ebuild:
+  Stable for s390, wrt bug #470482
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> byacc-20130304.ebuild:
+  Stable for arm, wrt bug #470482
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> byacc-20130304.ebuild:
+  Stable for ppc, wrt bug #470482
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> byacc-20130304.ebuild:
+  Stable for x86, wrt bug #470482
+
+  19 May 2013; Agostino Sarubbo <ago@gentoo.org> byacc-20130304.ebuild:
+  Stable for amd64, wrt bug #470482
+
+*byacc-20130304 (05 Mar 2013)
+
+  05 Mar 2013; Tim Harder <radhermit@gentoo.org> +byacc-20130304.ebuild:
+  Version bump.
+
+  24 Feb 2013; Agostino Sarubbo <ago@gentoo.org> byacc-20121003.ebuild:
+  Stable for sh, wrt bug #451636
+
+  20 Feb 2013; Agostino Sarubbo <ago@gentoo.org> byacc-20121003.ebuild:
+  Stable for s390, wrt bug #451636
+
+  22 Jan 2013; Jeroen Roovers <jer@gentoo.org> byacc-20121003.ebuild:
+  Stable for HPPA (bug #451636).
+
+  22 Jan 2013; Agostino Sarubbo <ago@gentoo.org> byacc-20121003.ebuild:
+  Stable for x86, wrt bug #451636
+
+  21 Jan 2013; Agostino Sarubbo <ago@gentoo.org> byacc-20121003.ebuild:
+  Stable for sparc, wrt bug #451636
+
+  21 Jan 2013; Agostino Sarubbo <ago@gentoo.org> byacc-20121003.ebuild:
+  Stable for ia64, wrt bug #451636
+
+  20 Jan 2013; Agostino Sarubbo <ago@gentoo.org> byacc-20121003.ebuild:
+  Stable for arm, wrt bug #451636
+
+  20 Jan 2013; Agostino Sarubbo <ago@gentoo.org> byacc-20121003.ebuild:
+  Stable for alpha, wrt bug #451636
+
+  16 Jan 2013; Agostino Sarubbo <ago@gentoo.org> byacc-20121003.ebuild:
+  Stable for ppc64, wrt bug #451636
+
+  16 Jan 2013; Agostino Sarubbo <ago@gentoo.org> byacc-20121003.ebuild:
+  Stable for ppc, wrt bug #451636
+
+  15 Jan 2013; Agostino Sarubbo <ago@gentoo.org> byacc-20121003.ebuild:
+  Stable for amd64, wrt bug #451636
+
+  02 Dec 2012; Tim Harder <radhermit@gentoo.org> -byacc-1.9-r3.ebuild,
+  -files/byacc-1.9-CVE-2008-3196.patch, -files/byacc-1.9-ia64.patch,
+  -byacc-20120115.ebuild, -files/mkstemp.patch:
+  Remove old.
+
+*byacc-20121003 (02 Dec 2012)
+
+  02 Dec 2012; Tim Harder <radhermit@gentoo.org> +byacc-20121003.ebuild:
+  Version bump.
+
+  29 Sep 2012; Raúl Porcel <armin76@gentoo.org> byacc-20120526.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #429052
+
+  16 Aug 2012; Johannes Huber <johu@gentoo.org> byacc-20120526.ebuild:
+  Stable for x86, wrt bug #429052
+
+  07 Aug 2012; Jeroen Roovers <jer@gentoo.org> byacc-20120526.ebuild:
+  Stable for HPPA (bug #429052).
+
+  06 Aug 2012; Anthony G. Basile <blueness@gentoo.org> byacc-20120526.ebuild:
+  Stable ppc ppc64, bug #429052
+
+  06 Aug 2012; Anthony G. Basile <blueness@gentoo.org> byacc-20120526.ebuild:
+  Stable arm, bug #429052
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> byacc-20120526.ebuild:
+  Stable for amd64, wrt bug #429052
+
+*byacc-20120526 (30 May 2012)
+
+  30 May 2012; Tim Harder <radhermit@gentoo.org> +byacc-20120526.ebuild:
+  Version bump.
+
+  26 Mar 2012; Michael Haubenwallner <haubi@gentoo.org> byacc-20120115.ebuild:
+  keyword ~ppc-aix ~ia64-hpux ~x86-interix, bug#397819
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> byacc-1.9-r3.ebuild,
+  byacc-20120115.ebuild:
+  sh stable
+
+  03 Mar 2012; Markus Meier <maekke@gentoo.org> byacc-20120115.ebuild:
+  arm stable, bug #402039
+
+  14 Feb 2012; Tim Harder <radhermit@gentoo.org> byacc-20120115.ebuild:
+  Add ~arm to new version as well.
+
+  14 Feb 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Add myself as maintainer.
+
+  09 Feb 2012; Fabian Groffen <grobian@gentoo.org> byacc-20120115.ebuild:
+  Marked ~{x86,x64}-solaris, bug #397819
+
+  08 Feb 2012; Markus Meier <maekke@gentoo.org> byacc-1.9-r3.ebuild:
+  add ~arm, bug #397819
+
+  08 Feb 2012; Jeroen Roovers <jer@gentoo.org> byacc-1.9-r3.ebuild:
+  Stable for HPPA (bug #402039).
+
+*byacc-20120115 (07 Feb 2012)
+
+  07 Feb 2012; Tim Harder <radhermit@gentoo.org> +byacc-20120115.ebuild:
+  Version bump.
+
+  01 Feb 2012; Ulrich Müller <ulm@gentoo.org> -byacc-1.9-r2.ebuild,
+  byacc-1.9-r3.ebuild:
+  Remove old. Cosmetic changes.
+
+  01 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> byacc-1.9-r3.ebuild:
+  ppc/ppc64 stable wrt #392813
+
+  15 Jan 2012; Raúl Porcel <armin76@gentoo.org> byacc-1.9-r3.ebuild:
+  alpha/ia64/s390/sparc stable wrt #392813
+
+  03 Jan 2012; Ulrich Müller <ulm@gentoo.org> byacc-1.9-r3.ebuild:
+  QA: Don't install MANIFEST with dodoc.
+
+  13 Dec 2011; Agostino Sarubbo <ago@gentoo.org> byacc-1.9-r3.ebuild:
+  Stable for AMD64, wrt bug #392813
+
+  11 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> byacc-1.9-r3.ebuild:
+  x86 stable wrt bug #392813
+
+  06 Sep 2010; Michael Weber <xmw@gentoo.org> byacc-1.9-r3.ebuild:
+  Fix CC/LINKER to toolchain-funcs.
+
+*byacc-1.9-r3 (06 Sep 2010)
+
+  06 Sep 2010; Michael Weber <xmw@gentoo.org> +byacc-1.9-r3.ebuild:
+  Rev bump to fix LDFLAGS (bug #336197).
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org> byacc-1.9-r2.ebuild:
+  Transfer Prefix keywords
+
+  27 Oct 2008; Brent Baude <ranger@gentoo.org> byacc-1.9-r2.ebuild:
+  Marking byacc-1.9-r2 ppc64 for bug 232005
+
+  24 Oct 2008; Raúl Porcel <armin76@gentoo.org> byacc-1.9-r2.ebuild:
+  alpha/ia64 stable wrt #232005
+
+  23 Oct 2008; Tobias Scherbaum <dertobi123@gentoo.org> byacc-1.9-r2.ebuild:
+  ppc stable, bug #232005
+
+  23 Oct 2008; Markus Meier <maekke@gentoo.org> byacc-1.9-r2.ebuild:
+  amd64/x86 stable, bug #232005
+
+  22 Oct 2008; Ferris McCormick <fmccor@gentoo.org> byacc-1.9-r2.ebuild:
+  Fix quoting problems to make repoman be quiet.
+
+  22 Oct 2008; Ferris McCormick <fmccor@gentoo.org> byacc-1.9-r2.ebuild:
+  Sparc stable, part of Security Bug #232005.
+
+*byacc-1.9-r2 (04 Oct 2008)
+
+  04 Oct 2008; Robert Buchholz <rbu@gentoo.org>
+  +files/byacc-1.9-CVE-2008-3196.patch, +byacc-1.9-r2.ebuild:
+  Fix stack access error (security bug #232005).
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  11 May 2007; Thilo Bangert <bangert@gentoo.org> +metadata.xml:
+  add metadata.xml
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  21 Jan 2006; Jason Wever <weeve@gentoo.org> byacc-1.9-r1.ebuild:
+  Stable on SPARC wrt bug #119439.
+
+  06 Apr 2005; Markus Rothe <corsair@gentoo.org> byacc-1.9-r1.ebuild:
+  Stable on ppc64
+
+  26 Feb 2005; Markus Rothe <corsair@gentoo.org> byacc-1.9-r1.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #83341
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  03 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> byacc-1.9-r1.ebuild:
+  Stable on alpha.
+
+  10 May 2004; Travis Tilley <lv@gentoo.org> byacc-1.9-r1.ebuild:
+  marked stable on amd64
+
+  14 Apr 2004; Michael McCabe <randy@gentoo.org> byacc-1.9-r1.ebuild:
+  adding s390 to keywords
+
+*byacc-1.9-r1 (05 Apr 2004)
+
+  05 Apr 2004; Aron Griffis <agriffis@gentoo.org> byacc-1.9-r1.ebuild:
+  I should have bumped the rev for the previous change... doing it now.
+
+  04 Apr 2004; Aron Griffis <agriffis@gentoo.org> byacc-1.9.ebuild,
+  files/byacc-1.9-ia64.patch, files/mkstemp.patch:
+  Add patch from Jaime Alvaro Moreno in bug 46233 to make byacc work correctly
+  on ia64 and other 64-bit arches. Also modify the mkstemp patch to coexist with
+  the new patch.
+
+*byacc-1.9 (17 Dec 2002)
+
+  17 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me for pm3.

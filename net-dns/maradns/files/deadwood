@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/maradns/files/deadwood,v 1.1 2012/03/12 12:24:50 kumba Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting deadwood"
+	start-stop-daemon --start --quiet --name deadwood --wait 1000 \
+		--exec /usr/bin/duende /usr/sbin/Deadwood -- -f /etc/maradns/dwood3rc
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping deadwood"
+	start-stop-daemon --stop --quiet --name deadwood --wait 1000 \
+		--exec /usr/bin/duende
+	eend $?
+}

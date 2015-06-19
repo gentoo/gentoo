@@ -1,0 +1,50 @@
+# ChangeLog for media-plugins/alsaequal
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/alsaequal/ChangeLog,v 1.11 2014/09/03 11:33:10 ssuominen Exp $
+
+  03 Sep 2014; Samuli Suominen <ssuominen@gentoo.org> -alsaequal-0.6-r1.ebuild,
+  -alsaequal-0.6.ebuild:
+  old
+
+  10 Aug 2014; Andreas Schuerch <nativemad@gentoo.org> alsaequal-0.6-r2.ebuild:
+  x86 stable, see bug 498184
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> alsaequal-0.6-r1.ebuild,
+  alsaequal-0.6-r2.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  15 Feb 2014; Pacho Ramos <pacho@gentoo.org> alsaequal-0.6-r2.ebuild:
+  amd64 stable, bug #498184
+
+*alsaequal-0.6-r2 (15 Jan 2014)
+
+  15 Jan 2014; Pacho Ramos <pacho@gentoo.org> +alsaequal-0.6-r2.ebuild,
+  +files/alsaequal-0.6-eq-name.patch:
+  Fix compat with latest caps-plugins (#498018 by Markus)
+
+*alsaequal-0.6-r1 (27 Jun 2013)
+
+  27 Jun 2013; Alexis Ballier <aballier@gentoo.org> +alsaequal-0.6-r1.ebuild:
+  go multilib and make build verbose
+
+  25 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> alsaequal-0.6.ebuild:
+  amd64/x86 stable
+
+  15 May 2010; Samuli Suominen <ssuominen@gentoo.org> alsaequal-0.6.ebuild,
+  +files/alsaequal-0.6-asneeded.patch:
+  Link to -lasound and put objs before libs for -Wl,--as-needed wrt #295005
+  by Sebastian M.
+
+*alsaequal-0.6 (15 May 2010)
+
+  15 May 2010; Samuli Suominen <ssuominen@gentoo.org> +alsaequal-0.6.ebuild:
+  Version bump wrt #309881 by Alexander Brüning.
+
+  30 Sep 2009; Christian Faulhammer <fauli@gentoo.org> alsaequal-0.4.ebuild:
+  add ~x86, bug 285200
+
+*alsaequal-0.4 (15 Aug 2009)
+
+  15 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> +alsaequal-0.4.ebuild:
+  Initial commit wrt #279790, thanks to Jude Pereira for reporting.

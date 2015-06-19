@@ -1,0 +1,53 @@
+# ChangeLog for sci-geosciences/seawater
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/seawater/ChangeLog,v 1.14 2015/06/04 10:53:30 jlec Exp $
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> seawater-2.0.1.ebuild:
+  Drop old Python implementations
+
+  26 Dec 2014; Michael Palimaka <kensington@gentoo.org> -seawater-3.3.1.ebuild,
+  -seawater-3.3.ebuild:
+  Remove old.
+
+  28 Nov 2014; Pacho Ramos <pacho@gentoo.org> seawater-3.3.2.ebuild:
+  Support python 3.4
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+*seawater-3.3.2 (22 Apr 2014)
+
+  22 Apr 2014; Julian Ospald <hasufell@gentoo.org> +seawater-3.3.2.ebuild:
+  version bump
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> seawater-2.0.1.ebuild,
+  seawater-3.3.1.ebuild, seawater-3.3.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*seawater-3.3.1 (07 Aug 2013)
+
+  07 Aug 2013; Julian Ospald <hasufell@gentoo.org> +seawater-3.3.1.ebuild:
+  version bump
+
+*seawater-3.3 (06 Aug 2013)
+
+  06 Aug 2013; Julian Ospald <hasufell@gentoo.org> +seawater-3.3.ebuild:
+  version bump
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> seawater-2.0.1.ebuild:
+  Stable for amd64, wrt bug #474416
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> seawater-2.0.1.ebuild:
+  Stable for x86, wrt bug #474416
+
+  17 Feb 2013; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  set correct maintainer
+
+*seawater-2.0.1 (10 Feb 2013)
+
+  10 Feb 2013; Julian Ospald <hasufell@gentoo.org> +seawater-2.0.1.ebuild,
+  +metadata.xml:
+  initial import wrt #302558 based on Tim Ceras work

@@ -1,0 +1,201 @@
+# ChangeLog for media-libs/dumb
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/dumb/ChangeLog,v 1.54 2015/05/30 00:31:12 mrueg Exp $
+
+  30 May 2015; Manuel Rüger <mrueg@gentoo.org> -dumb-0.9.3-r1.ebuild,
+  -dumb-0.9.3-r2.ebuild:
+  Remove old.
+
+  30 Mar 2014; Chema Alonso <nimiux@gentoo.org> dumb-0.9.3-r3.ebuild:
+  Stable for amd64 wrt bug #495710
+
+  24 Mar 2014; Agostino Sarubbo <ago@gentoo.org> dumb-0.9.3-r3.ebuild:
+  Stable for ppc, wrt bug #495710
+
+  23 Mar 2014; Agostino Sarubbo <ago@gentoo.org> dumb-0.9.3-r3.ebuild:
+  Stable for x86, wrt bug #495710
+
+  19 Mar 2014; Agostino Sarubbo <ago@gentoo.org> dumb-0.9.3-r3.ebuild:
+  Stable for alpha, wrt bug #495710
+
+  18 Mar 2014; Agostino Sarubbo <ago@gentoo.org> dumb-0.9.3-r3.ebuild:
+  Stable for ia64, wrt bug #495710
+
+  14 Mar 2014; Agostino Sarubbo <ago@gentoo.org> dumb-0.9.3-r3.ebuild:
+  Stable for ppc64, wrt bug #495710
+
+  12 Mar 2014; Agostino Sarubbo <ago@gentoo.org> dumb-0.9.3-r3.ebuild:
+  Stable for sparc, wrt bug #495710
+
+*dumb-0.9.3-r3 (11 Mar 2014)
+
+  11 Mar 2014; Julian Ospald <hasufell@gentoo.org> +dumb-0.9.3-r3.ebuild:
+  don't install 64bit libs into /usr/lib32
+
+  06 Mar 2014; Agostino Sarubbo <ago@gentoo.org> dumb-0.9.3-r2.ebuild:
+  Stable for ppc64, wrt bug #495710
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> dumb-0.9.3-r2.ebuild:
+  Stable for ppc, wrt bug #495710
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> dumb-0.9.3-r2.ebuild:
+  amd64 stable, bug #495710
+
+  23 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> dumb-0.9.3-r2.ebuild:
+  x86 stable wrt bug #495710
+
+  22 Feb 2014; Akinori Hattori <hattya@gentoo.org> dumb-0.9.3-r2.ebuild:
+  ia64 stable wrt bug #495710
+
+*dumb-0.9.3-r2 (06 Sep 2013)
+
+  06 Sep 2013; Ian Stakenvicius <axs@gentoo.org> +dumb-0.9.3-r2.ebuild:
+  converted to support multilib-build; commit OKd by Joker
+
+  09 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> dumb-0.9.3-r1.ebuild:
+  ppc64 stable wrt #375491
+
+  02 Apr 2011; Kacper Kowalik <xarthisius@gentoo.org> dumb-0.9.3-r1.ebuild:
+  Marked ~ppc64 wrt #360587
+
+  14 Jan 2010; Christian Birchinger <joker@gentoo.org>
+  -files/dumb-0.9.2-PIC.patch, dumb-0.9.3-r1.ebuild,
+  +files/dumb-0.9.3-PIC-as-needed.patch, -files/dumb-0.9.3-as-needed.patch:
+  Unified PIC and as-needed patches to make maintenance easier.
+
+  14 Jan 2010; Christian Birchinger <joker@gentoo.org> dumb-0.9.3-r1.ebuild,
+  +files/dumb-0.9.3-as-needed.patch:
+  Added an as-needed patch from bug #300515
+
+  06 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> dumb-0.9.3-r1.ebuild:
+  Don't hardcode ecompress --suffix in postinst msg wrt #272915, thanks to
+  Victor Ostorga.
+
+  08 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  files/dumb-0.9.2-PIC.patch:
+  Insert -lm to linking for -Wl,--as-needed wrt #245526
+
+  30 Apr 2007; Marius Mauch <genone@gentoo.org> dumb-0.9.3-r1.ebuild:
+  Replacing einfo with elog
+
+  29 Jan 2007; Christian Birchinger <joker@gentoo.org>
+  -dumb-0.9.2-r2.ebuild, -dumb-0.9.2-r3.ebuild, -dumb-0.9.3.ebuild:
+  Removed old vulunerable version.
+
+  03 Sep 2006; Bryan Østergaard <kloeri@gentoo.org> dumb-0.9.3-r1.ebuild:
+  Stable on ia64.
+
+  06 Aug 2006; Andrej Kacian <ticho@gentoo.org> dumb-0.9.3-r1.ebuild:
+  Stable on x86. Security bug 142387, tested by Christian 'Opfer' Faulhammer
+  <gentoo at faulhammer.org>.
+
+  06 Aug 2006; Simon Stelling <blubb@gentoo.org> dumb-0.9.3-r1.ebuild:
+  stable on amd64
+
+  06 Aug 2006; Jason Wever <weeve@gentoo.org> dumb-0.9.3-r1.ebuild:
+  Stable on SPARC wrt security bug #142387.
+
+  06 Aug 2006; Thomas Cort <tcort@gentoo.org> dumb-0.9.3-r1.ebuild:
+  Stable on alpha wrt security Bug #142387.
+
+  03 Aug 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  dumb-0.9.3-r1.ebuild:
+  ppc stable, bug #142387
+
+*dumb-0.9.3-r1 (03 Aug 2006)
+
+  03 Aug 2006; Christian Birchinger <joker@gentoo.org>
+  +files/dumb-0.9.3_CVE-2006-3668.patch, dumb-0.9.3.ebuild,
+  +dumb-0.9.3-r1.ebuild:
+  Added a security fix for #142387
+
+  22 Jul 2006; Thomas Cort <tcort@gentoo.org> dumb-0.9.3.ebuild:
+  Stable on alpha wrt Bug #134990.
+
+  13 Jul 2006; Aron Griffis <agriffis@gentoo.org> dumb-0.9.3.ebuild:
+  Mark 0.9.3 stable on ia64. #134990
+
+  22 Jun 2006; Christian Birchinger <joker@gentoo.org> dumb-0.9.3.ebuild:
+  Remove the -s LDFLAGS to prevent striping at link time (#137591)
+  with a patch provided by Tristan Heaven <tristanheaven@gmail.com>.
+  It hardly affects current users so no revision bump done.
+
+  06 Jun 2006; Tobias Scherbaum <dertobi123@gentoo.org> dumb-0.9.3.ebuild:
+  ppc stable, bug #134990
+
+  06 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> dumb-0.9.3.ebuild:
+  Stable on x86 wrt bug #134990.
+
+  05 Jun 2006; Simon Stelling <blubb@gentoo.org> dumb-0.9.3.ebuild:
+  stable on amd64
+
+  02 Jun 2006; Christian Birchinger <joker@gentoo.org> dumb-0.9.3.ebuild:
+  Really minor cosmetic ebuild change without implications on the
+  installed files (copy makefile instead of sed).
+
+  31 May 2006; Christian Birchinger <joker@gentoo.org> dumb-0.9.3.ebuild:
+  Added sparc stable keyword
+
+*dumb-0.9.3 (21 Apr 2006)
+
+  21 Apr 2006; Christian Birchinger <joker@gentoo.org> metadata.xml,
+  +dumb-0.9.3.ebuild:
+  Version bump
+
+*dumb-0.9.2-r3 (18 Oct 2005)
+
+  18 Oct 2005; Tony Vroon <chainsaw@gentoo.org> -dumb-0.9.1.ebuild,
+  -dumb-0.9.2-r1.ebuild, +dumb-0.9.2-r3.ebuild:
+  Properly install debug version of the library, as demonstrated by Ciaran
+  Hamilton <gentoo-bugs@theblob.org> in bug #106309. Clean out old ebuilds.
+
+  13 Sep 2005; Aron Griffis <agriffis@gentoo.org> dumb-0.9.2-r2.ebuild:
+  Mark 0.9.2-r2 stable on alpha
+
+  08 May 2005; Aron Griffis <agriffis@gentoo.org> dumb-0.9.2-r2.ebuild:
+  stable on ia64
+
+  09 Nov 2004; Joseph Jezak <josejx@gentoo.org> dumb-0.9.2-r2.ebuild:
+  Marked ppc stable.
+
+  05 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> :
+  updated for multilib support.
+
+  01 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> dumb-0.9.2-r2.ebuild:
+  Stable amd64.
+
+*dumb-0.9.2-r2 (06 Jul 2004)
+
+  06 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> +metadata.xml,
+  +files/dumb-0.9.2-PIC.patch, +dumb-0.9.2-r2.ebuild:
+  Patch to use shared libs instead of static.  ~amd64.
+
+  19 Mar 2004; Aron Griffis <agriffis@gentoo.org> dumb-0.9.1.ebuild:
+  add ~alpha and ~ia64
+
+  19 Mar 2004; Aron Griffis <agriffis@gentoo.org> dumb-0.9.2-r1.ebuild:
+  add ~alpha and ~ia64
+
+  01 Mar 2004; David Holm <dholm@gentoo.org> dumb-0.9.2-r1.ebuild:
+  Added to ~ppc.
+
+  20 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> dumb-0.9.1.ebuild,
+  dumb-0.9.2-r1.ebuild:
+  header fix; more error checking
+
+*dumb-0.9.2-r1 (20 Jul 2003)
+
+  20 Jul 2003; jje <jje@gentoo.org> dumb-0.9.2-r1.ebuild:
+  Updated to split out aldumb. See #23464.
+  
+  Submitted by: Ben Davis <entheh@users.sf.net>
+
+*dumb-0.9.2 (06 Jun 2003)
+
+  06 Jun 2003; robh <robh@gentoo.org> dumb-0.9.2.ebuild:
+  Version bump. Thanks to Ben Davis, closes #20925
+
+*dumb-0.9.1 (09 Mar 2003)
+
+  09 Mar 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Colonel Paneek <colp@solder.ath.cx> #16982.

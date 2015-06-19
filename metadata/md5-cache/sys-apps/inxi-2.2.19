@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=A newer, better system information script for irc, administration, and system troubleshooters.
+EAPI=5
+HOMEPAGE=http://code.google.com/p/inxi/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=app-shells/bash-3.0 sys-apps/coreutils sys-apps/gawk sys-apps/grep sys-apps/pciutils sys-process/procps sys-apps/sed
+SLOT=0
+SRC_URI=https://inxi.googlecode.com/svn/tarballs/inxi_2.2.19.tar.gz -> inxi-2.2.19.tar.gz
+_md5_=96b0b081304c8bfc09aa780439a255b1

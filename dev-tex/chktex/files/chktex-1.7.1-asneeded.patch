@@ -1,0 +1,13 @@
+Index: chktex-1.7.1/configure.in
+===================================================================
+--- chktex-1.7.1.orig/configure.in
++++ chktex-1.7.1/configure.in
+@@ -173,7 +173,7 @@ if test "$enable_pcre" = "yes"; then
+   if test "$WITH_PCRE" = "yes"; then
+     AC_DEFINE(HAVE_PCRE, 1, "Whether PCRE can be used for user warnings.")
+     CFLAGS="${CFLAGS} $(pcre-config --cflags-posix)"
+-    LDFLAGS="${LDFLAGS} $(pcre-config --libs-posix)"
++    LIBS="${LIBS} $(pcre-config --libs-posix)"
+   else
+     AC_DEFINE(HAVE_PCRE, 0, "Whether PCRE can be used for user warnings.")
+     AC_MSG_WARN(PCRE library not found.)

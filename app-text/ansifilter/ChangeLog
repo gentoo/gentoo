@@ -1,0 +1,36 @@
+# ChangeLog for app-text/ansifilter
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/ansifilter/ChangeLog,v 1.8 2014/10/23 03:11:23 radhermit Exp $
+
+*ansifilter-1.11 (23 Oct 2014)
+
+  23 Oct 2014; Tim Harder <radhermit@gentoo.org> +ansifilter-1.11.ebuild:
+  Version bump.
+
+*ansifilter-1.10 (08 Oct 2014)
+
+  08 Oct 2014; Tim Harder <radhermit@gentoo.org> +ansifilter-1.10.ebuild:
+  Version bump.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> ansifilter-1.7.ebuild:
+  Move Qt dependencies to the new category
+
+  08 Oct 2012; Tim Harder <radhermit@gentoo.org> ansifilter-1.7.ebuild:
+  Fix build with >=qt-4.8 (bug #431452).
+
+  04 Oct 2012; Tim Harder <radhermit@gentoo.org> -ansifilter-1.6.ebuild:
+  Remove old.
+
+*ansifilter-1.7 (06 Jan 2012)
+
+  06 Jan 2012; Tim Harder <radhermit@gentoo.org> +ansifilter-1.7.ebuild:
+  Version bump.
+
+  05 Jul 2011; Tim Harder <radhermit@gentoo.org> ansifilter-1.6.ebuild:
+  Fix whitespace.
+
+*ansifilter-1.6 (05 Jul 2011)
+
+  05 Jul 2011; Tim Harder <radhermit@gentoo.org> +ansifilter-1.6.ebuild,
+  +metadata.xml:
+  Initial import.

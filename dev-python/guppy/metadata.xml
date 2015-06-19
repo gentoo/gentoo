@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>python</herd>
+	<longdescription lang="en">Guppy-PE is a programming environment providing object and heap memory
+		sizing, profiling and analysis. It includes a prototypical
+		specification language that can be used to formally specify aspects of
+		Python programs and generate tests and documentation from a common
+		source.</longdescription>
+	<upstream>
+		<remote-id type="pypi">guppy</remote-id>
+	</upstream>
+</pkgmetadata>

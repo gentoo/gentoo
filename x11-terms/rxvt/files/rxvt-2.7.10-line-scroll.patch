@@ -1,0 +1,13 @@
+--- src/feature.h.orig	2005-06-29 11:58:06.000000000 -0400
++++ src/feature.h	2005-06-29 11:58:41.000000000 -0400
+@@ -211,8 +211,8 @@
+  * SCROLL_ON_* defines above.). 
+  * Also for modifier+Home/End keys to move to top/bottom
+  */
+-/* #define SCROLL_ON_UPDOWN_KEYS */
+-/* #define SCROLL_ON_HOMEEND_KEYS */
++#define SCROLL_ON_UPDOWN_KEYS
++#define SCROLL_ON_HOMEEND_KEYS
+
+ /*
+  * Allow unshifted Next/Prior keys to scroll forward/back

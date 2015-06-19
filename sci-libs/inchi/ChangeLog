@@ -1,0 +1,48 @@
+# ChangeLog for sci-libs/inchi
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/inchi/ChangeLog,v 1.12 2015/05/30 15:38:38 zlogene Exp $
+
+  30 May 2015; Mikle Kolyada <zlogene@gentoo.org> inchi-1.04.ebuild:
+  arm stable wrt bug #534610
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> inchi-1.04.ebuild:
+  Stable for x86, wrt bug #534610
+
+  18 Jan 2015; Agostino Sarubbo <ago@gentoo.org> inchi-1.04.ebuild:
+  Stable for ppc64, wrt bug #534610
+
+  17 Jan 2015; Agostino Sarubbo <ago@gentoo.org> inchi-1.04.ebuild:
+  Stable for ppc, wrt bug #534610
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> inchi-1.04.ebuild:
+  Stable for amd64, wrt bug #534610
+
+  04 Jan 2015; Justin Lecher <jlec@gentoo.org> -inchi-1.03.ebuild,
+  inchi-1.04.ebuild, metadata.xml:
+  Drop old; add missing die; bump EAPI
+
+  20 Feb 2013; Agostino Sarubbo <ago@gentoo.org> inchi-1.04.ebuild:
+  Add ~arm, wrt bug #455960
+
+  11 Dec 2012; Agostino Sarubbo <ago@gentoo.org> inchi-1.04.ebuild:
+  Add ~ppc, wrt bug #360573
+
+  11 Dec 2012; Agostino Sarubbo <ago@gentoo.org> inchi-1.04.ebuild:
+  Add ~ppc64, wrt bug #360573
+
+  24 Oct 2012; Justin Lecher <jlec@gentoo.org> inchi-1.04.ebuild,
+  +files/inchi-1.04-static.patch:
+  Imported bug fix for #439440 (Add USE=static-libs), kindly prepared by Reinis
+  Danne
+
+*inchi-1.04 (04 Mar 2012)
+
+  04 Mar 2012; Justin Lecher <jlec@gentoo.org> +inchi-1.04.ebuild,
+  metadata.xml:
+  Import Version Bump from sci overlay prepared by Reinis Danne
+
+*inchi-1.03 (26 Mar 2011)
+
+  26 Mar 2011; Justin Lecher <jlec@gentoo.org> +inchi-1.03.ebuild,
+  +files/inchi-1.03-shared.patch, +metadata.xml:
+  New addition, mainly written by rei4dan

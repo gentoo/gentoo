@@ -1,0 +1,185 @@
+Index: xlockmore-5.31/modes/Makefile.in
+===================================================================
+--- xlockmore-5.31.orig/modes/Makefile.in
++++ xlockmore-5.31/modes/Makefile.in
+@@ -329,6 +329,7 @@ DEFS = @DEFS@ $(DEFINES)
+ XLOCKINC = -I. -I.. -I$(top_srcdir) -I$(UTILDIR) -I../.. @XLOCKINC@
+ CFLAGS = @CFLAGS@
+ CXXFLAGS = @CXXFLAGS@
++LDFLAGS = @LDFLAGS@
+ #CFLAGS = -O
+ #CFLAGS = -g
+ XLOCKLDFLAGS = @XLOCKLDFLAGS@ $(CHECKLDFLAG)
+@@ -367,7 +368,7 @@ PURIFY = @PURIFY@
+ 
+ @MODULES@$(NORMMODULES) : %.xlk:%.o
+ @MODULES@	$(RM) $@
+-@MODULES@	$(CXX) $(CXXFLAGS) -shared -o $@ $<
++@MODULES@	$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared -o $@ $<
+ 
+ $(DOG)fire.xlk : $(DOG)xpm-ximage.o
+ $(DOG)lament.xlk : $(DOG)xpm-ximage.o
+@@ -375,60 +376,60 @@ $(DOG)sballs.xlk : $(DOG)xpm-ximage.o
+ 
+ @MODULES@@GL@$(DOG)fire.xlk $(DOG)lament.xlk $(DOG)sballs.xlk : %.xlk:%.o
+ @MODULES@@GL@	$(RM) $@
+-@MODULES@@GL@	$(CXX) $(CXXFLAGS) -shared -o $@ $(DOG)xpm-ximage.o $<
++@MODULES@@GL@	$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared -o $@ $(DOG)xpm-ximage.o $<
+ 
+ $(DOG)pipes.xlk : $(DOG)buildlwo.o $(DOG)pipeobjs.o
+ 
+ @MODULES@@GL@$(DOG)pipes.xlk : %.xlk:%.o
+ @MODULES@@GL@	$(RM) $@
+-@MODULES@@GL@	$(CXX) $(CXXFLAGS) -shared -o $@ $(DOG)buildlwo.o $(DOG)pipeobjs.o $<
++@MODULES@@GL@	$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared -o $@ $(DOG)buildlwo.o $(DOG)pipeobjs.o $<
+ 
+ $(DOG)sproingies.xlk : $(SPROINGIESOBJS)
+ 
+ @MODULES@@GL@$(DOG)sproingies.xlk : %.xlk:%.o
+ @MODULES@@GL@	$(RM) $@
+-@MODULES@@GL@	$(CXX) $(CXXFLAGS) -shared -o $@ $(SPROINGIESOBJS) $<
++@MODULES@@GL@	$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared -o $@ $(SPROINGIESOBJS) $<
+ 
+ $(DOG)atlantis.xlk : $(ATLANTISOBJS)
+ 
+ @MODULES@@GL@$(DOG)atlantis.xlk : %.xlk:%.o
+ @MODULES@@GL@	$(RM) $@
+-@MODULES@@GL@	$(CXX) $(CXXFLAGS) -shared -o $@ $(ATLANTISOBJS) $<
++@MODULES@@GL@	$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared -o $@ $(ATLANTISOBJS) $<
+ 
+ $(DOG)bubble3d.xlk : $(BUBBLE3DOBJS)
+ 
+ @MODULES@@GL@$(DOG)bubble3d.xlk : %.xlk:%.o
+ @MODULES@@GL@	$(RM) $@
+-@MODULES@@GL@	$(CXX) $(CXXFLAGS) -shared -o $@ $(BUBBLE3DOBJS) $<
++@MODULES@@GL@	$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared -o $@ $(BUBBLE3DOBJS) $<
+ 
+ $(DOG)glplanet.xlk : $(GLPLANETOBJS)
+ 
+ @MODULES@@GL@$(DOG)glplanet.xlk : %.xlk:%.o
+ @MODULES@@GL@	$(RM) $@
+-@MODULES@@GL@	$(CXX) $(CXXFLAGS) -shared -o $@ $(GLPLANETOBJS) $<
++@MODULES@@GL@	$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared -o $@ $(GLPLANETOBJS) $<
+ 
+ $(DOG)molecul.xlk : $(MOLECULEOBJS)
+ 
+ @MODULES@@GL@$(DOG)molecule.xlk : %.xlk:%.o
+ @MODULES@@GL@	$(RM) $@
+-@MODULES@@GL@	$(CXX) $(CXXFLAGS) -shared -o $@ $(MOLECULEOBJS) $<
++@MODULES@@GL@	$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared -o $@ $(MOLECULEOBJS) $<
+ 
+ $(DOG)juggler3d.xlk : $(JUGGLER3DOBJS)
+ 
+ @MODULES@@GL@$(DOG)juggler3d.xlk : %.xlk:%.o
+ @MODULES@@GL@	$(RM) $@
+-@MODULES@@GL@	$(CXX) $(CXXFLAGS) -shared -o $@ $(JUGGLER3DOBJS) $<
++@MODULES@@GL@	$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared -o $@ $(JUGGLER3DOBJS) $<
+ 
+ $(DOG)invert.xlk : $(INVERTOBJS)
+ 
+ @MODULES@@CCC@@GL@$(DOG)invert.xlk : %.xlk:%.o
+ @MODULES@@CCC@@GL@	$(RM) $@
+-@MODULES@@CCC@@GL@	$(CXX) $(CXXFLAGS) -shared -o $@ $(INVERTOBJS) $<
++@MODULES@@CCC@@GL@	$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared -o $@ $(INVERTOBJS) $<
+ 
+ xlock : $(UTILOBJDIR)xlock
+ 
+ $(UTILOBJDIR)xlock : $(XLOCKOBJS)
+-	$(PURIFY) $(CXX) $(CXXFLAGS) -o $@ $(XLOCKOBJS) $(XLOCKLDFLAGS) $(XLOCKLIBS) $(MODULEFLAGS)
++	$(PURIFY) $(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $(XLOCKOBJS) $(XLOCKLDFLAGS) $(XLOCKLIBS) $(MODULEFLAGS)
+ 	@ $(ECHO) "$@ BUILD COMPLETE"
+ 	@ $(ECHO) ""
+ 
+@@ -587,10 +588,10 @@ $(GLOBJDIR)tunnel_draw.o : $(GLDIR)tunne
+ .SUFFIXES : $(C) $(CX) $(O) $(M)
+ 
+ $(C)$(O) :
+-	$(CC) -c $(CPPFLAGS) $(DEFS) $(XLOCKINC) $(CFLAGS) $<
++	$(CC) -c $(CPPFLAGS) $(LDFLAGS) $(DEFS) $(XLOCKINC) $(CFLAGS) $<
+ 
+ $(CX)$(O) :
+-	$(CXX) -c $(CPPFLAGS) $(DEFS) $(XLOCKINC) $(CXXFLAGS) $<
++	$(CXX) -c $(CPPFLAGS) $(LDFLAGS) $(DEFS) $(XLOCKINC) $(CXXFLAGS) $<
+ 
+ install : install-program install-man install-ad
+ 	@ $(ECHO) "$@ COMPLETE"
+Index: xlockmore-5.31/xglock/Makefile.in
+===================================================================
+--- xlockmore-5.31.orig/xglock/Makefile.in
++++ xlockmore-5.31/xglock/Makefile.in
+@@ -90,6 +90,7 @@ ECHO = echo
+ DEFS = @DEFS@ $(DEFINES) -DXGLOCKRC_FILE=\"$(datadir)/xlock/xglockrc\"
+ XGLOCKINC = @XGLOCKINC@ -I.. -I$(top_srcdir)
+ CFLAGS = @GTK_CFLAGS@ @CFLAGS@
++LDFLAGS= @LDFLAGS@
+ #CFLAGS = -O
+ #CFLAGS = -g
+ XGLOCKLDFLAGS = @XGLOCKLDFLAGS@
+@@ -101,14 +102,14 @@ XGLOCKLIBS = @XGLOCKLIBS@
+ PURIFY = @PURIFY@
+ 
+ xglock : $(XGLOCKOBJS)
+-	$(PURIFY) $(CC) -o $@ $(XGLOCKOBJS) $(XGLOCKLDFLAGS) $(XGLOCKLIBS)
++	$(PURIFY) $(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(XGLOCKOBJS) $(XGLOCKLDFLAGS) $(XGLOCKLIBS)
+ 	@ $(ECHO) "$@ BUILD COMPLETE"
+ 	@ $(ECHO) ""
+ 
+ .SUFFIXES : $(C) $(O)
+ 
+ $(C)$(O) :
+-	$(CC) -c $(CPPFLAGS) $(DEFS) $(XGLOCKINC) $(CFLAGS) $<
++	$(CC) -c $(CPPFLAGS) $(LDFLAGS) $(DEFS) $(XGLOCKINC) $(CFLAGS) $<
+ 
+ install : @INSTALL_XGLOCK@
+ 
+Index: xlockmore-5.31/xlock/Makefile.in
+===================================================================
+--- xlockmore-5.31.orig/xlock/Makefile.in
++++ xlockmore-5.31/xlock/Makefile.in
+@@ -118,6 +118,7 @@ XLOCKINC = -I. -I.. -I$(top_srcdir) @XLO
+ CFLAGS = @CFLAGS@
+ #CFLAGS = -O
+ #CFLAGS = -g
++LDFLAGS = @LDFLAGS@
+ 
+ #If you have purify, and want to use it, uncomment this definition or
+ # run the make as `make PURIFY=purify'
+@@ -127,7 +128,7 @@ PURIFY = @PURIFY@
+ .SUFFIXES : $(C) $(O)
+ 
+ $(C)$(O) :
+-	$(CC) -c $(CPPFLAGS) $(DEFS) $(XLOCKINC) $(CFLAGS) $<
++	$(CC) -c $(CPPFLAGS) $(LDFLAGS) $(DEFS) $(XLOCKINC) $(CFLAGS) $<
+ 
+ install :
+ 
+Index: xlockmore-5.31/xmlock/Makefile.in
+===================================================================
+--- xlockmore-5.31.orig/xmlock/Makefile.in
++++ xlockmore-5.31/xmlock/Makefile.in
+@@ -92,6 +92,8 @@ ECHO = echo
+ DEFS = @DEFS@ $(DEFINES)
+ XMLOCKINC = @XMLOCKINC@ -I.. -I$(top_srcdir)
+ CFLAGS = @CFLAGS@
++LDFLAGS= @LDFLAGS@
++
+ #CFLAGS = -O
+ #CFLAGS = -g
+ XMLOCKLDFLAGS = @XMLOCKLDFLAGS@
+@@ -103,14 +105,14 @@ XMLOCKLIBS = @XMLOCKLIBS@
+ PURIFY = @PURIFY@
+ 
+ xmlock : $(XMLOCKOBJS)
+-	$(PURIFY) $(CC) -o $@ $(XMLOCKOBJS) $(XMLOCKLDFLAGS) $(XMLOCKLIBS)
++	$(PURIFY) $(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(XMLOCKOBJS) $(XMLOCKLDFLAGS) $(XMLOCKLIBS)
+ 	@ $(ECHO) "$@ BUILD COMPLETE"
+ 	@ $(ECHO) ""
+ 
+ .SUFFIXES : $(C) $(O)
+ 
+ $(C)$(O) :
+-	$(CC) -c $(CPPFLAGS) $(DEFS) $(XMLOCKINC) $(CFLAGS) $<
++	$(CC) -c $(CPPFLAGS) $(LDFLAGS) $(DEFS) $(XMLOCKINC) $(CFLAGS) $<
+ 
+ install : @INSTALL_XMLOCK@
+ 

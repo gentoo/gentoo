@@ -1,0 +1,99 @@
+# ChangeLog for sci-chemistry/xds-bin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/xds-bin/ChangeLog,v 1.18 2015/04/07 14:40:02 jlec Exp $
+
+*xds-bin-20150301 (03 Mar 2015)
+
+  03 Mar 2015; Justin Lecher <jlec@gentoo.org> +xds-bin-20150301.ebuild,
+  -xds-bin-20141119.ebuild:
+  Version Bump
+
+*xds-bin-20141119 (02 Mar 2015)
+
+  02 Mar 2015; Justin Lecher <jlec@gentoo.org> +xds-bin-20141119.ebuild,
+  -xds-bin-20141018.ebuild:
+  Version Bump, #516390
+
+*xds-bin-20141018 (14 Jan 2015)
+
+  14 Jan 2015; Justin Lecher <jlec@gentoo.org> -xds-bin-20140110.ebuild,
+  +xds-bin-20141018.ebuild:
+  Version Bump
+
+*xds-bin-20140110 (06 Jul 2014)
+
+  06 Jul 2014; Justin Lecher <jlec@gentoo.org> -xds-bin-20131111.ebuild,
+  +xds-bin-20140110.ebuild:
+  Version Bump, #516390
+
+*xds-bin-20131111 (28 Nov 2013)
+
+  28 Nov 2013; Justin Lecher <jlec@gentoo.org> -xds-bin-20130530.ebuild,
+  +xds-bin-20131111.ebuild:
+  Version Bump
+
+*xds-bin-20130530 (30 May 2013)
+
+  30 May 2013; Justin Lecher <jlec@gentoo.org> -xds-bin-20120926.ebuild,
+  +xds-bin-20130530.ebuild:
+  Version Bump
+
+*xds-bin-20120926 (24 Mar 2013)
+
+  24 Mar 2013; Justin Lecher <jlec@gentoo.org> -xds-bin-20111230.ebuild,
+  +xds-bin-20120926.ebuild, metadata.xml:
+  Version Bump, #462730
+
+  25 Jul 2012; Justin Lecher <jlec@gentoo.org> xds-bin-20111230.ebuild,
+  metadata.xml:
+  Use QA_PREBUILT for binary packages
+
+*xds-bin-20111230 (31 Dec 2011)
+
+  31 Dec 2011; Justin Lecher <jlec@gentoo.org> -xds-bin-20111220.ebuild,
+  +xds-bin-20111230.ebuild:
+  Version Bump
+
+*xds-bin-20111220 (20 Dec 2011)
+
+  20 Dec 2011; Justin Lecher <jlec@gentoo.org> -xds-bin-20110610.ebuild,
+  +xds-bin-20111220.ebuild:
+  Version Bump
+
+*xds-bin-20110610 (10 Jun 2011)
+
+  10 Jun 2011; Justin Lecher <jlec@gentoo.org> -xds-bin-20110111.ebuild,
+  +xds-bin-20110610.ebuild:
+  Version Bump
+
+  11 Jan 2011; Justin Lecher <jlec@gentoo.org> xds-bin-20110111.ebuild:
+  Included docs again
+
+*xds-bin-20110111 (11 Jan 2011)
+
+  11 Jan 2011; Justin Lecher <jlec@gentoo.org> -xds-bin-20100510.ebuild,
+  +xds-bin-20110111.ebuild:
+  Version Bump
+
+*xds-bin-20100510 (21 May 2010)
+
+  21 May 2010; Justin Lecher <jlec@gentoo.org> -xds-bin-20091228.ebuild,
+  +xds-bin-20100510.ebuild:
+  Version Bump, no docs this time, QA_EXECSTACK set
+
+*xds-bin-20091228 (31 Jan 2010)
+
+  31 Jan 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  -xds-bin-20080602.ebuild, +xds-bin-20091228.ebuild:
+  Version bump, fixing bug 247788
+  Adding new Viewer as RDEPEND
+
+  17 Oct 2008; Markus Meier <maekke@gentoo.org> metadata.xml:
+  smp USE-flag is global now
+
+*xds-bin-20080602 (03 Aug 2008)
+
+  03 Aug 2008; Donnie Berkholz <dberkholz@gentoo.org>; +metadata.xml,
+  +xds-bin-20080602.ebuild:
+  (#209120) New package: X-ray Detector Software for processing
+  single-crystal monochromatic diffraction data.

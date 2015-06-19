@@ -1,0 +1,37 @@
+# ChangeLog for dev-libs/libdynd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libdynd/ChangeLog,v 1.7 2015/06/06 19:05:19 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  21 Feb 2015; Pacho Ramos <pacho@gentoo.org> libdynd-0.6.5.ebuild:
+  amd64/x86 stable, bug #540514
+
+*libdynd-0.6.6 (20 Feb 2015)
+
+  20 Feb 2015; Justin Lecher <jlec@gentoo.org> +libdynd-0.6.6.ebuild,
+  -libdynd-0.6.0.ebuild, -libdynd-0.6.2.ebuild:
+  Version Bump
+
+*libdynd-0.6.5 (29 Oct 2014)
+
+  29 Oct 2014; Justin Lecher <jlec@gentoo.org> +libdynd-0.6.5.ebuild,
+  metadata.xml:
+  Version Bump
+
+*libdynd-0.6.2 (10 Jun 2014)
+
+  10 Jun 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/libdynd-0.6.2-out-of-git-versioning.patch, +libdynd-0.6.2.ebuild:
+  Version bump
+
+*libdynd-0.6.0 (10 Feb 2014)
+
+  10 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/libdynd-0.6.0-dont-install-test.patch,
+  +files/libdynd-0.6.0-optional-cblosc.patch,
+  +files/libdynd-0.6.0-out-of-git-versioning.patch,
+  +files/libdynd-0.6.0-respect-libdir.patch, +libdynd-0.6.0.ebuild,
+  +metadata.xml:
+  Initial import

@@ -1,0 +1,15 @@
+# Copyright 1999-2012 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/desc/libreoffice_extensions.desc,v 1.3 2012/05/05 15:09:48 scarabeus Exp $
+
+# This file contains descriptions of LIBREOFFICE_EXTENSIONS USE_EXPAND flags.
+
+# Keep it sorted.
+nlpsolver - LIBREOFFICE_EXTENSIONS option to build non-linear solver for calc
+pdfimport - LIBREOFFICE_EXTENSIONS option to build pdf files importer
+presenter-console - LIBREOFFICE_EXTENSIONS option to build presentation console
+presenter-minimizer - LIBREOFFICE_EXTENSIONS option to build presentation minimizer
+report-builder - LIBREOFFICE_EXTENSIONS option to build tool for nice reports creation
+scripting-beanshell - LIBREOFFICE_EXTENSIONS option to build beanshell scripts parser
+scripting-javascript - LIBREOFFICE_EXTENSIONS option to build javascript scripts parser 
+wiki-publisher - LIBREOFFICE_EXTENSIONS option to build mediawiki integration

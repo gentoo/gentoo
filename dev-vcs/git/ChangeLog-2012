@@ -1,0 +1,2705 @@
+# ChangeLog for dev-vcs/git
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git/ChangeLog-2012,v 1.1 2013/01/01 13:19:51 dilfridge Exp $
+
+*git-1.8.0.2 (11 Dec 2012)
+
+  11 Dec 2012; Robin H. Johnson <robbat2@gentoo.org> +git-1.8.0.2.ebuild:
+  Bump.
+
+  06 Dec 2012; Robin H. Johnson <robbat2@gentoo.org> git-1.8.0-r1.ebuild,
+  git-9999.ebuild:
+  Bug #441740: Update doc build deps.
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> git-9999.ebuild:
+  Bug #439154: Copy latest ebuild back to 9999 revision.
+
+  09 Nov 2012; Fabian Groffen <grobian@gentoo.org> git-1.8.0-r1.ebuild,
+  git-9999.ebuild:
+  Fix linking on Solaris, it needs libiconv
+
+*git-1.8.0-r1 (02 Nov 2012)
+
+  02 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> +git-1.8.0-r1.ebuild:
+  Update contrib extras, per bug #434098.
+
+*git-1.8.0 (02 Nov 2012)
+
+  02 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> +git-1.8.0.ebuild:
+  Bump.
+
+  31 Oct 2012; Mike Frysinger <vapier@gentoo.org> metadata.xml:
+  Add information on USE=curl.
+
+*git-1.7.12.4 (18 Oct 2012)
+
+  18 Oct 2012; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.12.4.ebuild:
+  Bump.
+
+*git-1.7.12.3-r1 (11 Oct 2012)
+
+  11 Oct 2012; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.12.3-r1.ebuild:
+  1.7.12.3 was based off 1.7.12-r1 instead of 1.7.12-r2, revbump to get the
+  other fixes again.
+
+*git-1.7.12.3 (10 Oct 2012)
+
+  10 Oct 2012; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.12.3.ebuild:
+  Version bump per bug 437870.
+
+  24 Aug 2012; Robin H. Johnson <robbat2@gentoo.org>
+  -files/git-1.7.10.2-optional-cvs.patch,
+  -files/git-1.7.11.1-optional-cvs.patch, -files/git-1.7.5-interix.patch,
+  -files/git-1.7.6-interix.patch,
+  -files/git-1.7.8-git-svn-1.7-canonical-path.patch, -git-1.7.10.2.ebuild,
+  -git-1.7.10.ebuild, -git-1.7.11.1.ebuild, -git-1.7.9.1.ebuild,
+  -git-1.7.9.2.ebuild, -git-1.7.9.3.ebuild, -git-1.7.9.4.ebuild,
+  -git-1.7.9.7.ebuild, -git-1.7.9.ebuild, -git-1.7.9_rc2.ebuild:
+  Trim versions that were always masked.
+
+  24 Aug 2012; Robin H. Johnson <robbat2@gentoo.org> git-1.7.12-r2.ebuild,
+  git-1.7.8.6.ebuild:
+  Warn about the bash completion split: prompt is now in a seperate bashcomp
+  file.
+
+  24 Aug 2012; Zac Medico <zmedico@gentoo.org> git-1.7.10.2.ebuild,
+  git-1.7.10.ebuild, git-1.7.11.1.ebuild, git-1.7.12-r1.ebuild,
+  git-1.7.12-r2.ebuild, git-1.7.12.ebuild, git-1.7.9.1.ebuild,
+  git-1.7.9.2.ebuild, git-1.7.9.3.ebuild, git-1.7.9.4.ebuild,
+  git-1.7.9.7.ebuild, git-1.7.9.ebuild, git-1.7.9_rc2.ebuild, git-9999.ebuild:
+  Fix IUSE.missing for new highlight flag.
+
+  23 Aug 2012; Robin H. Johnson <robbat2@gentoo.org> git-1.6.4.5.ebuild,
+  git-1.7.10.2.ebuild, git-1.7.10.ebuild, git-1.7.11.1.ebuild,
+  git-1.7.12-r1.ebuild, git-1.7.12-r2.ebuild, git-1.7.12.ebuild,
+  git-1.7.2.5.ebuild, git-1.7.3.4-r1.ebuild, git-1.7.8.6.ebuild,
+  git-1.7.9.1.ebuild, git-1.7.9.2.ebuild, git-1.7.9.3.ebuild,
+  git-1.7.9.4.ebuild, git-1.7.9.7.ebuild, git-1.7.9.ebuild,
+  git-1.7.9_rc2.ebuild, git-9999.ebuild, metadata.xml:
+  Bug #432388: Make app-text/highlight optional as has heavy dependencies and is
+  disabled by default in gitweb.
+
+*git-1.7.12-r2 (23 Aug 2012)
+
+  23 Aug 2012; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.12-r2.ebuild,
+  files/git-daemon.confd:
+  Bug #373335: missing --base-path in conf.d/git. Bug #414437: OpenSSL is
+  required for more parts of Git now. Bug #423605: OSX keychain helper. Bug
+  #432328: Upstream has split the bash completion in two parts: git & git-
+  prompt; the latter defines __git_ps1 for your nice prompt.
+
+  22 Aug 2012; Zac Medico <zmedico@gentoo.org> git-1.7.12-r1.ebuild:
+  Quick fix for USE=-perl.
+
+  22 Aug 2012; Robin H. Johnson <robbat2@gentoo.org> git-1.7.12-r1.ebuild,
+  git-1.7.12.ebuild, git-9999.ebuild:
+  ~amd64-fbsd was not placed in all ebuilds. Also sync live ebuild.
+
+*git-1.7.12-r1 (22 Aug 2012)
+*git-1.7.12 (22 Aug 2012)
+
+  22 Aug 2012; Robin H. Johnson <robbat2@gentoo.org>
+  +files/git-1.7.12-git-svn-backport.patch,
+  +files/git-1.7.12-optional-cvs.patch, +git-1.7.12-r1.ebuild,
+  +git-1.7.12.ebuild:
+  Finally, a Git that works with SVN 1.7, per bug #418431! 1.7.12-r1 contains
+  backported ms/git-svn-1.7 branch that will be merged into Git 1.7.13.
+  1.7.12-r0 excludes that backport but is otherwise identical. Thanks to Michael
+  Schwern for the development work!
+
+  19 Aug 2012; Raúl Porcel <armin76@gentoo.org> git-1.7.8.6.ebuild:
+  alpha/s390/sh/sparc stable wrt #418381
+
+  27 Jul 2012; Fabian Groffen <grobian@gentoo.org> git-1.7.8.6.ebuild,
+  git-1.7.9.7.ebuild:
+  Fix compilation on Solaris (libiconv), set perl path correctly for Prefix,
+  drop applied/commented out interix patches
+
+  14 Jul 2012; Markus Meier <maekke@gentoo.org> git-1.7.8.6.ebuild:
+  arm stable, bug #418381
+
+  10 Jul 2012; Brent Baude <ranger@gentoo.org> git-1.7.8.6.ebuild:
+  Marking git-1.7.8.6 ppc64 for bug 418381
+
+  10 Jul 2012; Akinori Hattori <hattya@gentoo.org> git-1.7.8.6.ebuild:
+  ia64 stable wrt bug #418381
+
+  08 Jul 2012; Michael Weber <xmw@gentoo.org> git-1.7.8.6.ebuild:
+  ppc stable (bug 418381)
+
+*git-1.7.11.1 (07 Jul 2012)
+
+  07 Jul 2012; Robin H. Johnson <robbat2@gentoo.org>
+  +files/git-1.7.11.1-optional-cvs.patch, +git-1.7.11.1.ebuild:
+  Version bump. Still suffers from bug #391707: git-svn failures.
+
+  03 Jul 2012; Jeroen Roovers <jer@gentoo.org> git-1.7.8.6.ebuild:
+  Stable for HPPA (bug #418381).
+
+  02 Jul 2012; Jeff Horelick <jdhore@gentoo.org> git-1.7.8.6.ebuild:
+  marked x86 per bug 418381
+
+  27 Jun 2012; Agostino Sarubbo <ago@gentoo.org> git-1.7.8.6.ebuild:
+  Stable for amd64, wrt bug #418381
+
+  26 Jun 2012; Jeremy Olexa <darkside@gentoo.org> -git-1.7.3.5-r2.ebuild,
+  -git-1.7.4.5.ebuild, -git-1.7.5.3.ebuild, -git-1.7.6.4.ebuild,
+  -git-1.7.7.6.ebuild, -git-1.7.7.7.ebuild, -git-1.7.8.ebuild,
+  -git-1.7.8.1.ebuild, -git-1.7.8.2.ebuild, -git-1.7.8.3.ebuild,
+  -git-1.7.8.4.ebuild, -git-1.7.8.5.ebuild:
+  Cleanup some unstable ebuilds
+
+  14 Jun 2012; Mike Frysinger <vapier@gentoo.org> git-1.7.10.2.ebuild,
+  git-1.7.10.ebuild, git-1.7.9.1.ebuild, git-1.7.9.2.ebuild, git-1.7.9.3.ebuild,
+  git-1.7.9.4.ebuild, git-1.7.9.7.ebuild, git-1.7.9.ebuild, git-9999.ebuild,
+  metadata.xml:
+  Put gpg dep behind a USE flag as this signing requirement only really matters
+  to the client side when signing is in use.
+
+  14 Jun 2012; Mike Frysinger <vapier@gentoo.org> git-1.7.9.1.ebuild,
+  git-1.7.9.2.ebuild, git-1.7.9.3.ebuild, git-1.7.9.4.ebuild,
+  git-1.7.9.7.ebuild, git-1.7.9.ebuild, git-1.7.10.ebuild,
+  git-1.7.10.2.ebuild, git-9999.ebuild:
+  Add USE=nls support to control gettext requirement.
+
+  14 Jun 2012; Mike Frysinger <vapier@gentoo.org> git-1.7.8.1.ebuild,
+  git-1.7.8.2.ebuild, git-1.7.8.3.ebuild, git-1.7.8.4.ebuild,
+  git-1.7.8.5.ebuild, git-1.7.8.6.ebuild, git-1.7.8.ebuild, git-1.7.9.1.ebuild,
+  git-1.7.9.2.ebuild, git-1.7.9.3.ebuild, git-1.7.9.4.ebuild,
+  git-1.7.9.7.ebuild, git-1.7.9.ebuild, git-1.7.9_rc2.ebuild,
+  git-1.7.10.ebuild, git-1.7.10.2.ebuild, git-9999.ebuild:
+  Re-enable USE=-iconv support now that the bug originally disabling it was
+  fixed in upstream, and make sure we default to USE=iconv so that
+  unicode/etc... messages "just work" out of the box #355467 by Tom Lloyd.
+
+*git-1.7.10.2 (20 May 2012)
+
+  20 May 2012; Robin H. Johnson <robbat2@gentoo.org>
+  +files/git-1.7.10.2-optional-cvs.patch, +files/git-1.7.11-optional-cvs.patch,
+  +git-1.7.10.2.ebuild, git-9999.ebuild:
+  Version bump, update optional CVS patch to apply on latest git HEAD and
+  1.7.10.2 release. Port libpcre changes to live ebuild.
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> git-1.7.8.6.ebuild:
+  keyword ~amd64-fbsd
+
+*git-1.7.9.7 (26 Apr 2012)
+*git-1.7.7.7 (26 Apr 2012)
+*git-1.7.8.6 (26 Apr 2012)
+
+  26 Apr 2012; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.7.7.ebuild,
+  +git-1.7.8.6.ebuild, +git-1.7.9.7.ebuild:
+  Version bump.
+
+  23 Apr 2012; Mike Frysinger <vapier@gentoo.org> git-1.7.10.ebuild,
+  git-1.7.9.1.ebuild, git-1.7.9.2.ebuild, git-1.7.9.3.ebuild,
+  git-1.7.9.4.ebuild, git-1.7.9.ebuild:
+  Kill spurious backslash.
+
+*git-1.7.10 (08 Apr 2012)
+
+  08 Apr 2012; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.10.ebuild:
+  Version bump. Still no keywords due to major git-svn breakage.
+
+*git-1.7.9.4 (12 Mar 2012)
+
+  12 Mar 2012; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.9.4.ebuild:
+  Version bump.
+
+*git-1.7.9.3 (06 Mar 2012)
+
+  06 Mar 2012; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.9.3.ebuild:
+  Version bump. SVN problem still not fixed by upstream.
+
+*git-1.7.8.5 (28 Feb 2012)
+
+  28 Feb 2012; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.8.5.ebuild:
+  Version bump.
+
+*git-1.7.9.2 (23 Feb 2012)
+
+  23 Feb 2012; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.9.2.ebuild:
+  Version bump.
+
+*git-1.7.9.1 (15 Feb 2012)
+
+  15 Feb 2012; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.9.1.ebuild:
+  Version bump.
+
+*git-1.7.9 (05 Feb 2012)
+
+  05 Feb 2012; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.9.ebuild:
+  Version bump. Please be careful of git-svn functionality with SVN 1.7 if your
+  SVN repo URL, branch name or tag names contains characters that need URL
+  escaping.
+
+  28 Jan 2012; Robin H. Johnson <robbat2@gentoo.org> git-1.7.9_rc2.ebuild,
+  git-9999.ebuild:
+  Bug #384233: Fix the gitweb syntax highlighting implicit dependency on
+  highlight.
+
+  20 Jan 2012; Robin H. Johnson <robbat2@gentoo.org> -git-1.7.3.5-r1.ebuild,
+  -git-1.7.3.5.ebuild, -git-1.7.4.1.ebuild, -git-1.7.4.4.ebuild,
+  -git-1.7.4.ebuild, -git-1.7.5_rc1.ebuild, -git-1.7.5_rc3.ebuild,
+  -git-1.7.6.1.ebuild, -git-1.7.6.ebuild, -git-1.7.7.1-r1.ebuild,
+  -git-1.7.7.1.ebuild, -git-1.7.7.2.ebuild, -git-1.7.7.3.ebuild,
+  -git-1.7.7.4.ebuild, -git-1.7.7.ebuild:
+  Clean up some unstable ebuilds.
+
+*git-1.7.7.6 (20 Jan 2012)
+*git-1.7.8.4 (20 Jan 2012)
+
+  20 Jan 2012; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.7.6.ebuild,
+  +git-1.7.8.4.ebuild:
+  Version bump.
+
+*git-1.7.9_rc2 (20 Jan 2012)
+
+  20 Jan 2012; Robin H. Johnson <robbat2@gentoo.org>
+  +files/git-1.7.8-git-svn-1.7-canonical-path.patch, +git-1.7.9_rc2.ebuild,
+  git-9999.ebuild:
+  Version bump, keywords temporarily removed as git-svn has issues still.
+
+  13 Jan 2012; Robin H. Johnson <robbat2@gentoo.org> git-9999.ebuild:
+  Propogate libpcre change to live ebuild.
+
+*git-1.7.8.3 (07 Jan 2012)
+
+  07 Jan 2012; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.8.3.ebuild:
+  Version bump.
+
+*git-1.7.8.2 (02 Jan 2012)
+
+  02 Jan 2012; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.8.2.ebuild:
+  Version bump.
+
+*git-1.7.8.1 (21 Dec 2011)
+
+  21 Dec 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.8.1.ebuild:
+  Version bump.
+
+*git-1.7.8 (03 Dec 2011)
+
+  03 Dec 2011; Robin H. Johnson <robbat2@gentoo.org> -git-1.7.8_rc1.ebuild,
+  -git-1.7.8_rc1-r1.ebuild, -git-1.7.8_rc3.ebuild, -git-1.7.8_rc4.ebuild,
+  +git-1.7.8.ebuild:
+  Version bump.
+
+*git-1.7.8_rc4 (29 Nov 2011)
+
+  29 Nov 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.8_rc4.ebuild:
+  Version bump.
+
+  22 Nov 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #195316
+
+*git-1.7.7.4 (18 Nov 2011)
+
+  18 Nov 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.7.4.ebuild:
+  Version bump.
+
+*git-1.7.8_rc3 (17 Nov 2011)
+
+  17 Nov 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.8_rc3.ebuild:
+  Version bump.
+
+*git-1.7.8_rc1-r1 (16 Nov 2011)
+
+  16 Nov 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.8_rc1-r1.ebuild:
+  Bug #377883: build correctly with libpcre for git-grep -P.
+
+*git-1.7.7.3 (09 Nov 2011)
+
+  09 Nov 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.7.3.ebuild:
+  Version bump.
+
+*git-1.7.8_rc1 (08 Nov 2011)
+
+  08 Nov 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.8_rc1.ebuild:
+  Version bump.
+
+*git-1.7.7.2 (02 Nov 2011)
+
+  02 Nov 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.7.2.ebuild:
+  Version bump.
+
+*git-1.7.7.1-r1 (24 Oct 2011)
+
+  24 Oct 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.7.1-r1.ebuild,
+  git-9999.ebuild:
+  EAPI=4 and bash-completion-r1 support now that python.eclass has EAPI4, now
+  uses REQUIRED_USE instead of warning blocks. Patch by Tomas Chvatal
+  <scarabeus@gentoo.org>.
+
+*git-1.7.7.1 (24 Oct 2011)
+
+  24 Oct 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.7.1.ebuild:
+  Version bump.
+
+  03 Oct 2011; Robin H. Johnson <robbat2@gentoo.org> git-9999.ebuild:
+  Update live ebuild to sync.
+
+*git-1.7.7 (01 Oct 2011)
+*git-1.7.6.4 (01 Oct 2011)
+
+  01 Oct 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.6.4.ebuild,
+  +git-1.7.7.ebuild:
+  Version bump. Was delayed by getting html/manpage tarballs on the alternative
+  mirroring location.
+
+*git-1.7.6.1 (25 Aug 2011)
+
+  25 Aug 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.6.1.ebuild:
+  Version bump.
+
+  19 Aug 2011; Jeremy Olexa <darkside@gentoo.org> git-1.7.2.5.ebuild,
+  git-1.7.3.4-r1.ebuild, git-1.7.3.5.ebuild, git-1.7.3.5-r1.ebuild,
+  git-1.7.3.5-r2.ebuild, git-1.7.4.ebuild, git-1.7.4.1.ebuild,
+  git-1.7.4.4.ebuild, git-1.7.4.5.ebuild, git-1.7.5_rc1.ebuild,
+  git-1.7.5_rc3.ebuild, git-1.7.5.3.ebuild, git-1.7.6.ebuild, git-9999.ebuild:
+  Remove useless/redundant built_with_use check for subversion[perl] since the
+  addition of USE-deps. Signed off by maintainer. Tangentially related to bug
+  250179
+
+  13 Jul 2011; Markus Duft <mduft@gentoo.org> git-1.7.6.ebuild,
+  +files/git-1.7.6-interix.patch:
+  re-added interix prefix specific patch, as some things didnt make it into the
+  current release.
+
+*git-1.7.6 (27 Jun 2011)
+
+  27 Jun 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.6.ebuild,
+  git-9999.ebuild:
+  Version bump. Bug #354439: instructions for bash completion. Bug #352693:
+  revert env perl change from bug #326625. Bug #370579: One more test that
+  requires FEATURES=userpriv.
+
+  30 May 2011; Markus Duft <mduft@gentoo.org> git-1.7.5.3.ebuild,
+  git-9999.ebuild, +files/git-1.7.5-interix.patch:
+  add build fix for interix.
+
+*git-1.7.5.2 (30 May 2011)
+
+  30 May 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.5.3.ebuild,
+  git-9999.ebuild:
+  Version bump. Sync keywords to -9999 ebuild.
+
+  03 May 2011; Fabian Groffen <grobian@gentoo.org> git-1.7.5_rc3.ebuild:
+  Marked ~x64-freebsd
+
+*git-1.7.5_rc3 (27 Apr 2011)
+*git-1.7.4.5 (27 Apr 2011)
+
+  27 Apr 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.4.5.ebuild,
+  +git-1.7.5_rc3.ebuild:
+  Version bump.
+
+  20 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> git-9999.ebuild:
+  Migrate to git-2 eclass. Update live/stable logic conditionals.
+
+*git-1.7.5_rc1 (06 Apr 2011)
+*git-1.7.4.4 (06 Apr 2011)
+
+  06 Apr 2011; Robin H. Johnson <robbat2@gentoo.org> -git-1.7.4_rc1.ebuild,
+  -git-1.7.4_rc1-r1.ebuild, -git-1.7.4_rc1-r2.ebuild, -git-1.7.4_rc2.ebuild,
+  -git-1.7.4_rc3.ebuild, +git-1.7.4.4.ebuild, +git-1.7.5_rc1.ebuild:
+  Clean up old 1.7.4_rc versions. Version bump to other new versions.
+
+  04 Apr 2011; Pacho Ramos <pacho@gentoo.org> git-1.6.4.5.ebuild,
+  git-1.7.2.5.ebuild, git-1.7.3.4-r1.ebuild, git-1.7.3.5.ebuild,
+  git-1.7.3.5-r1.ebuild, git-1.7.3.5-r2.ebuild, git-1.7.4_rc1.ebuild,
+  git-1.7.4_rc1-r1.ebuild, git-1.7.4_rc1-r2.ebuild, git-1.7.4_rc2.ebuild,
+  git-1.7.4_rc3.ebuild, git-1.7.4.ebuild, git-1.7.4.1.ebuild, git-9999.ebuild:
+  RDEPEND only in dev-python/pygtksourceview:2 as
+  dev-python/gtksourceview-python will be dropped soon (bug #355049 with Robin
+  Johnson authorization).
+
+  12 Feb 2011; Robin H. Johnson <robbat2@gentoo.org> -git-1.6.4.4.ebuild,
+  -git-1.6.4.4-r1.ebuild, -files/git-1.6.4.5-gitweb-cve-2010-3906.patch,
+  -files/git-1.7.0-always-install-js.patch,
+  -files/git-1.7.1-always-install-js.patch,
+  -files/git-1.7.1-noiconv-segfault-fix.patch, -git-1.7.2.2.ebuild,
+  -git-1.7.2.3.ebuild, -git-1.7.2.4.ebuild, -git-1.7.2.4-r1.ebuild,
+  -git-1.7.3.2.ebuild, -git-1.7.3.2-r1.ebuild, -git-1.7.3.3.ebuild,
+  -git-1.7.3.4.ebuild:
+  Cleanup old files.
+
+*git-1.7.4.1 (12 Feb 2011)
+
+  12 Feb 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.4.1.ebuild:
+  Version bump.
+
+*git-1.7.4 (01 Feb 2011)
+
+  01 Feb 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.4.ebuild:
+  Version bump.
+
+*git-1.7.4_rc3 (24 Jan 2011)
+
+  24 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.4_rc3.ebuild:
+  version bump
+
+*git-1.7.4_rc2 (15 Jan 2011)
+
+  15 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.4_rc2.ebuild,
+  git-9999.ebuild:
+  Version bump.
+
+  12 Jan 2011; Michael Haubenwallner <haubi@gentoo.org>
+  git-1.7.4_rc1-r2.ebuild:
+  aix lacks FNMATCH_CASEFOLD
+
+  10 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  git-1.7.3.5-r2.ebuild, git-1.7.4_rc1-r2.ebuild, git-9999.ebuild:
+  Call python_mod_optimize() and python_mod_cleanup() (bug #329479).
+
+  08 Jan 2011; Fabian Groffen <grobian@gentoo.org> git-1.7.3.5-r2.ebuild,
+  git-1.7.4_rc1-r2.ebuild, git-9999.ebuild:
+  Fix for Prefix
+
+  08 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> git-1.7.3.4-r1.ebuild:
+  Backport bug #350330 automagic CVS to stable ebuild.
+
+  08 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> git-1.7.3.5-r2.ebuild,
+  -git-1.7.3.5-r2.ebuild.orig, git-1.7.4_rc1-r2.ebuild, git-9999.ebuild:
+  Fix missing argument in call to python_convert_shebangs, and drop accidently
+  added .orig file.
+
+  07 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> git-9999.ebuild:
+  Also import python improvements to 9999 ebuild.
+
+*git-1.7.4_rc1-r2 (07 Jan 2011)
+*git-1.7.3.5-r2 (07 Jan 2011)
+
+  07 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.3.5-r2.ebuild,
+  +git-1.7.3.5-r2.ebuild.orig, +git-1.7.4_rc1-r2.ebuild:
+  Bug #329479: improve python usage to new python eclass. Does not support
+  multiple active versions of python easily.
+
+  07 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> git-1.7.4_rc1-r1.ebuild,
+  git-9999.ebuild:
+  Port bug #350330 fixes to newer ebuilds.
+
+  07 Jan 2011; Markos Chandras <hwoarang@gentoo.org> git-1.6.4.5.ebuild,
+  git-1.7.2.5.ebuild, git-1.7.3.4-r1.ebuild:
+  Stable on amd64 wrt bug #349045
+
+  07 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> git-1.7.3.5-r1.ebuild,
+  +files/git-1.7.3.5-optional-cvs.patch:
+  Bug #350330: Avoid automagic CVS.
+
+  07 Jan 2011; Fabian Groffen <grobian@gentoo.org> git-1.7.3.5-r1.ebuild,
+  git-1.7.4_rc1-r1.ebuild, git-9999.ebuild:
+  Fix gitweb removal for Prefix
+
+*git-1.7.4_rc1-r1 (07 Jan 2011)
+
+  07 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.4_rc1-r1.ebuild,
+  git-9999.ebuild:
+  Port the 1.7.3.5-r1 Prefix USE=python code to newer ebuilds since Prefix team
+  has tested.
+
+*git-1.7.3.5-r1 (06 Jan 2011)
+
+  06 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.3.5-r1.ebuild:
+  Bug #320647 redux: Full ability to disable Python usage for Prefix (needed to
+  work around circular dependency loop).
+
+*git-1.7.4_rc1 (06 Jan 2011)
+
+  06 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.4_rc1.ebuild:
+  Version bump for new major release.
+
+*git-1.7.3.5 (06 Jan 2011)
+
+  06 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> git-1.7.3.4-r1.ebuild,
+  +git-1.7.3.5.ebuild:
+  Version bump. Also backport minor improvement to testsuite running to get
+  cleaner repeat results.
+
+  01 Jan 2011; Raúl Porcel <armin76@gentoo.org> git-1.6.4.5.ebuild,
+  git-1.7.2.5.ebuild, git-1.7.3.4-r1.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #349045
+
+  31 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  git-1.7.3.4-r1.ebuild:
+  stable x86, security bug 349045
+
+  29 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> git-1.7.3.4-r1.ebuild,
+  +files/git-1.7.3.4-fix-perl-test-prereq.patch:
+  Bug #350075: t/t9001: fix missing prereq on some tests.
+
+  27 Dec 2010; Brent Baude <ranger@gentoo.org> git-1.6.4.5.ebuild,
+  git-1.7.2.5.ebuild, git-1.7.3.4-r1.ebuild:
+  marking -1.6.4.5 -1.7.2.5 -1.7.3.4-r1 ppc64 stable for bug 349045
+
+  26 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> git-1.7.3.2.ebuild,
+  git-1.7.3.2-r1.ebuild, git-1.7.3.3.ebuild, git-1.7.3.4.ebuild,
+  git-1.7.3.4-r1.ebuild, +files/git-1.7.3.4-avoid-shell-issues.patch:
+  Bug #349083: Fix a false positive in the Git testsuite, triggered when the
+  portage user had a shell of /bin/false.
+
+  25 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> git-1.7.2.5.ebuild,
+  git-1.7.3.4-r1.ebuild:
+  Minor fail with displaying aggregate-results to fix.
+
+  25 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> git-1.7.2.5.ebuild,
+  git-1.7.3.4-r1.ebuild:
+  Improve output phase of src_test block for new stables.
+
+  23 Dec 2010; Jeroen Roovers <jer@gentoo.org> git-1.7.3.4-r1.ebuild:
+  Stable for HPPA PPC (bug #349045).
+
+  23 Dec 2010; Jeroen Roovers <jer@gentoo.org> git-1.6.4.5.ebuild,
+  git-1.7.2.5.ebuild:
+  Stable for PPC (bug #349045).
+
+  22 Dec 2010; Jeroen Roovers <jer@gentoo.org> git-1.7.2.5.ebuild:
+  Stable for HPPA (bug #349045).
+
+  22 Dec 2010; Jeroen Roovers <jer@gentoo.org> git-1.6.4.5.ebuild:
+  Stable for HPPA (bug #349045).
+
+  20 Dec 2010; Tobias Klausmann <klausman@gentoo.org> git-1.7.3.4-r1.ebuild:
+  Stable on alpha, bug #349045
+
+  20 Dec 2010; Tobias Klausmann <klausman@gentoo.org> git-1.7.2.5.ebuild:
+  Stable on alpha, bug #349045
+
+  20 Dec 2010; Tobias Klausmann <klausman@gentoo.org> git-1.6.4.5.ebuild:
+  Stable on alpha, bug #349045
+
+  20 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> git-1.6.4.4.ebuild,
+  git-1.6.4.4-r1.ebuild, git-1.6.4.5.ebuild, git-1.7.2.2.ebuild,
+  git-1.7.2.3.ebuild, git-1.7.2.4.ebuild, git-1.7.2.4-r1.ebuild,
+  git-1.7.2.5.ebuild, git-1.7.3.2.ebuild:
+  Backport the doman cosmetic fix to ALL ebuilds since I got yet another bug
+  about it.
+
+  19 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> git-1.6.4.5.ebuild,
+  git-1.7.2.5.ebuild:
+  x86 stable wrt security bug #349045
+
+*git-1.7.3.4-r1 (19 Dec 2010)
+
+  19 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.3.4-r1.ebuild:
+  Bug #339278: Do not install gitweb with USE=-cgi. Bug #320647: Python path
+  for G/FreeBSD. Bug #326625: Perl path with local::lib. Bug #333405: no color
+  for test output to make log parsing easier.
+
+*git-1.7.2.5 (19 Dec 2010)
+*git-1.6.4.5 (19 Dec 2010)
+
+  19 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.4.5.ebuild,
+  +git-1.7.2.5.ebuild:
+  Version bump to official releases with gitweb XSS fixes, rather than our
+  revbumps with the patch.
+
+*git-1.7.3.4 (16 Dec 2010)
+*git-1.7.2.4-r1 (16 Dec 2010)
+*git-1.6.4.4-r1 (16 Dec 2010)
+
+  16 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.4.4-r1.ebuild,
+  +files/git-1.6.4.5-gitweb-cve-2010-3906.patch, +git-1.7.2.4-r1.ebuild,
+  +git-1.7.3.4.ebuild:
+  Version bump. Contains fix for CVE-2010-3906: gitweb XSS.
+
+*git-1.7.3.3 (07 Dec 2010)
+*git-1.7.2.4 (07 Dec 2010)
+
+  07 Dec 2010; Robin H. Johnson <robbat2@gentoo.org> -git-1.7.0.ebuild,
+  -git-1.7.1-r1.ebuild, -git-1.7.1.1.ebuild, -git-1.7.2.ebuild,
+  -git-1.7.2-r2.ebuild, +git-1.7.2.4.ebuild, -git-1.7.3.ebuild,
+  -git-1.7.3.1.ebuild, +git-1.7.3.3.ebuild:
+  Version bump and cleanup.
+
+  11 Nov 2010; Sebastian Pipping <sping@gentoo.org> git-1.7.3.2-r1.ebuild:
+  Merge changes to 9999 back into latest release ebuild.
+
+  11 Nov 2010; Sebastian Pipping <sping@gentoo.org> git-9999.ebuild:
+  Make live ebuild depend on asciidoc and xmlto independent of flag "doc"
+  (bug #343063)
+
+  09 Nov 2010; Robin H. Johnson <robbat2@gentoo.org> git-1.7.2.3.ebuild,
+  git-1.7.3.ebuild, git-1.7.3.1.ebuild, git-1.7.3.2.ebuild,
+  git-1.7.3.2-r1.ebuild:
+  Fix useless extra KEYWORDS.
+
+  29 Oct 2010; Mark Loeser <halcy0n@gentoo.org> git-9999.ebuild:
+  Remove ~ppc and ~ppc64
+
+  27 Oct 2010; Robin H. Johnson <robbat2@gentoo.org> git-9999.ebuild:
+  Bump live build.
+
+  27 Oct 2010; Robin H. Johnson <robbat2@gentoo.org> git-1.7.3.2-r1.ebuild:
+  Bug #342845: fix contrib install and doman warning.
+
+*git-1.7.3.2-r1 (26 Oct 2010)
+
+  26 Oct 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.3.2-r1.ebuild:
+  revbump with installing more of new contrib.
+  
+  22 Oct 2010; Daniel Pielmeier <billie@gentoo.org>
+  +files/git-1.6.6.1-interix6.patch, +files/git-1.7.1-interix.patch:
+  Interix patches are still needed for some older versions.
+
+*git-1.7.3.2 (22 Oct 2010)
+
+  22 Oct 2010; Markus Duft <mduft@gentoo.org> git-1.7.3.2.ebuild,
+  +files/git-1.7.3.2-interix.patch,
+  -files/git-1.6.6.1-interix6.patch,
+  -files/git-1.7.1-interix.patch:
+  removed obsolete patches, added a new one instead. the new patch matches
+  more the spirit of upstream, and has been submitted there.
+
+  22 Oct 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.3.2.ebuild:
+  Version bump.
+
+*git-1.7.3.1 (30 Sep 2010)
+
+  30 Sep 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.3.1.ebuild:
+  Version bump.
+
+*git-1.7.3 (19 Sep 2010)
+
+  19 Sep 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.3.ebuild:
+  Version bump.
+
+*git-1.7.2.3 (13 Sep 2010)
+
+  13 Sep 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.2.3.ebuild:
+  Bug #337104: verbump.
+
+  11 Sep 2010; Raúl Porcel <armin76@gentoo.org> git-1.7.2.2.ebuild:
+  arm/ia64/s390/sh/sparc stable wrt #335891
+
+  10 Sep 2010; Jeroen Roovers <jer@gentoo.org> git-1.7.2.2.ebuild:
+  Stable for HPPA (bug #335891).
+
+  10 Sep 2010; Tobias Klausmann <klausman@gentoo.org> git-1.7.2.2.ebuild:
+  Stable on alpha, bug #335891
+
+  07 Sep 2010; Jeroen Roovers <jer@gentoo.org> git-1.7.2.2.ebuild:
+  Stable for PPC (bug #335891).
+
+  06 Sep 2010; Brent Baude <ranger@gentoo.org> git-1.7.2.2.ebuild:
+  Marking git-1.7.2.2 ppc64 for bug 335891
+
+  06 Sep 2010; Markos Chandras <hwoarang@gentoo.org> git-1.7.2.2.ebuild:
+  Stable on amd64 wrt bug #335891
+
+  06 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> git-1.7.2.2.ebuild:
+  x86 stable wrt security bug #335891
+
+  03 Sep 2010; Christian Faulhammer <fauli@gentoo.org> git-1.7.2.2.ebuild:
+  add ~x86-freebsd
+
+  29 Aug 2010; Sven Wegener <swegener@gentoo.org> git-1.7.2.ebuild,
+  git-1.7.2-r2.ebuild, git-1.7.2.2.ebuild:
+  Install static gitweb files into correct location.
+
+*git-1.7.2.2 (23 Aug 2010)
+
+  23 Aug 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.2.2.ebuild:
+  Version bump.
+
+  16 Aug 2010; Robin H. Johnson <robbat2@gentoo.org> git-1.6.4.4.ebuild,
+  git-1.7.0.ebuild, git-1.7.1-r1.ebuild, git-1.7.1.1.ebuild,
+  git-1.7.2.ebuild, git-1.7.2-r2.ebuild, git-9999.ebuild:
+  Bug #332935: In newer EAPIs, perl-module brings in dev-lang/perl as well,
+  which we do not always want.
+
+*git-1.7.2-r2 (09 Aug 2010)
+
+  09 Aug 2010; Fabian Groffen <grobian@gentoo.org> -git-1.7.2-r1.ebuild,
+  +git-1.7.2-r2.ebuild:
+  Change SHELL_PATH from bash to sh to resolve problems with git's shell
+  scripts for some people, bug #331031
+
+  31 Jul 2010; Fabian Groffen <grobian@gentoo.org> git-1.7.2-r1.ebuild:
+  Fix compilation with USE=-iconv on non-glibc platforms since disabling of
+  iconv is still ignored due to bugs mentioned in the ebuild
+
+  30 Jul 2010; Robin H. Johnson <robbat2@gentoo.org> -git-1.6.3.1.ebuild,
+  -git-1.6.3.3.ebuild, -git-1.6.3.4.ebuild, -git-1.6.4.ebuild,
+  -git-1.6.4.1.ebuild, -git-1.6.4.2.ebuild, -git-1.6.4.3.ebuild,
+  -git-1.6.5_rc1.ebuild, -git-1.6.5_rc2.ebuild, -git-1.6.5.ebuild,
+  -git-1.6.5.1.ebuild, -git-1.6.5.1-r1.ebuild, -git-1.6.5.2.ebuild,
+  -git-1.6.5.3.ebuild, -git-1.6.5.4.ebuild, -git-1.6.5.5.ebuild,
+  -git-1.6.5.6.ebuild, -git-1.6.5.7.ebuild, -git-1.6.5.8.ebuild,
+  -git-1.6.6_rc3.ebuild, -git-1.6.6_rc4.ebuild, -git-1.6.6.ebuild,
+  -git-1.6.6-r1.ebuild, -git-1.6.6-r2.ebuild, -git-1.6.6.1.ebuild,
+  -git-1.6.6.2.ebuild, -files/git-1.6.6-always-install-js.patch,
+  -git-1.7.0.3.ebuild, -git-1.7.0.4.ebuild:
+  Cleanup old versions.
+
+*git-1.7.2-r1 (22 Jul 2010)
+
+  22 Jul 2010; Jeremy Olexa <darkside@gentoo.org>
+  +files/git-1.6.6.1-interix6.patch, +files/git-1.7.1-interix.patch,
+  +git-1.7.2-r1.ebuild:
+  Migrate changes from Gentoo Prefix overlay. Convert to EAPI3, add patches,
+  modify paths, etc. Approved by maintainer, reference bug 329273. Revbump
+  per request but no substantial changes for the end user
+
+*git-1.7.2 (22 Jul 2010)
+
+  22 Jul 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.2.ebuild,
+  +files/git-1.7.2-always-install-js.patch:
+  Version bump.
+
+  18 Jul 2010; Raúl Porcel <armin76@gentoo.org> git-1.7.1-r1.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #321899
+
+  18 Jul 2010; <nixnut@gentoo.org> git-1.7.0.ebuild:
+  ppc stable #321899
+
+*git-1.7.1.1 (30 Jun 2010)
+
+  30 Jun 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.1.1.ebuild:
+  Version bump.
+
+  22 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  git-1.6.3.1.ebuild, git-1.6.3.3.ebuild, git-1.6.3.4.ebuild,
+  git-1.6.4.ebuild, git-1.6.4.1.ebuild, git-1.6.4.2.ebuild,
+  git-1.6.4.3.ebuild, git-1.6.4.4.ebuild, git-1.6.5_rc1.ebuild,
+  git-1.6.5_rc2.ebuild, git-1.6.5.ebuild, git-1.6.5.1.ebuild,
+  git-1.6.5.1-r1.ebuild, git-1.6.5.2.ebuild, git-1.6.5.3.ebuild,
+  git-1.6.5.4.ebuild, git-1.6.5.5.ebuild, git-1.6.5.6.ebuild,
+  git-1.6.5.7.ebuild, git-1.6.5.8.ebuild, git-1.6.6_rc3.ebuild,
+  git-1.6.6_rc4.ebuild, git-1.6.6.ebuild, git-1.6.6-r1.ebuild,
+  git-1.6.6-r2.ebuild, git-1.6.6.1.ebuild, git-1.6.6.2.ebuild,
+  git-1.7.0.ebuild, git-1.7.0.3.ebuild, git-1.7.0.4.ebuild,
+  git-1.7.1-r1.ebuild, git-9999.ebuild, metadata.xml:
+  dev-util/subversion renamed to dev-vcs/subversion.
+
+  22 Jun 2010; Jeroen Roovers <jer@gentoo.org> git-1.7.1-r1.ebuild:
+  Stable for HPPA (bug #321899).
+
+  19 Jun 2010; Jonathan Callen <abcd@gentoo.org> git-1.6.3.1.ebuild,
+  git-1.6.3.3.ebuild, git-1.6.3.4.ebuild, git-1.6.4.ebuild,
+  git-1.6.4.1.ebuild, git-1.6.4.2.ebuild, git-1.6.4.3.ebuild,
+  git-1.6.4.4.ebuild, git-1.6.5_rc1.ebuild, git-1.6.5_rc2.ebuild,
+  git-1.6.5.ebuild, git-1.6.5.1.ebuild, git-1.6.5.1-r1.ebuild,
+  git-1.6.5.2.ebuild, git-1.6.5.3.ebuild, git-1.6.5.4.ebuild,
+  git-1.6.5.5.ebuild, git-1.6.5.6.ebuild, git-1.6.5.7.ebuild,
+  git-1.6.5.8.ebuild, git-1.6.6_rc3.ebuild, git-1.6.6_rc4.ebuild,
+  git-1.6.6.ebuild, git-1.6.6-r1.ebuild, git-1.6.6-r2.ebuild,
+  git-1.6.6.1.ebuild, git-1.6.6.2.ebuild, git-1.7.0.ebuild,
+  git-1.7.0.3.ebuild, git-1.7.0.4.ebuild, git-1.7.1-r1.ebuild,
+  git-9999.ebuild:
+  Moving dev-util/cvs* to dev-vcs/cvs*
+
+  14 Jun 2010; Christoph Mende <angelos@gentoo.org> git-1.7.1-r1.ebuild:
+  Stable on amd64 wrt bug #321899
+
+  05 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> git-1.7.1-r1.ebuild:
+  x86 stable wrt bug #321899
+
+  31 May 2010; Robin H. Johnson <robbat2@gentoo.org> git-1.7.1-r1.ebuild:
+  Bug #322205: The iconv patch added for -r1 just stopped the segfaults, the
+  testsuite still fails, so forcing USE=iconv for now.
+
+  28 May 2010; Robin H. Johnson <robbat2@gentoo.org> -git-1.7.1.ebuild:
+  Remove broken 1.7.1.
+
+*git-1.7.1-r1 (28 May 2010)
+
+  28 May 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.1-r1.ebuild,
+  +files/git-1.7.1-noiconv-segfault-fix.patch:
+  Bug #321895: patch from upstream to avoid segfault with USE=-iconv.
+
+*git-1.7.1 (01 May 2010)
+
+  01 May 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.1.ebuild,
+  +files/git-1.7.1-always-install-js.patch:
+  Bug #317953: Version bump.
+
+*git-1.7.0.4 (01 Apr 2010)
+
+  01 Apr 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.0.4.ebuild:
+  Version bump.
+
+  31 Mar 2010; Robin H. Johnson <robbat2@gentoo.org> git-1.6.5.1-r1.ebuild,
+  git-1.6.5.2.ebuild, git-1.6.5.3.ebuild, git-1.6.5.4.ebuild,
+  git-1.6.5.5.ebuild, git-1.6.5.6.ebuild, git-1.6.5.7.ebuild,
+  git-1.6.5.8.ebuild, git-1.6.6_rc3.ebuild, git-1.6.6_rc4.ebuild,
+  git-1.6.6.ebuild, git-1.6.6-r1.ebuild, git-1.6.6-r2.ebuild,
+  git-1.6.6.1.ebuild, git-1.6.6.2.ebuild, git-1.7.0.ebuild,
+  git-1.7.0.3.ebuild:
+  Forward-port ~ppc64 keyword to other ebuilds since it came back in bug
+  #290163.
+
+  24 Mar 2010; Robin H. Johnson <robbat2@gentoo.org> git-1.6.3.1.ebuild,
+  git-1.6.3.3.ebuild, git-1.6.3.4.ebuild, git-1.6.4.ebuild,
+  git-1.6.4.1.ebuild, git-1.6.4.2.ebuild, git-1.6.4.3.ebuild,
+  git-1.6.4.4.ebuild, git-1.6.5_rc1.ebuild, git-1.6.5_rc2.ebuild,
+  git-1.6.5.ebuild, git-1.6.5.1.ebuild, git-1.6.5.1-r1.ebuild,
+  git-1.6.5.2.ebuild, git-1.6.5.3.ebuild, git-1.6.5.4.ebuild,
+  git-1.6.5.5.ebuild, git-1.6.5.6.ebuild, git-1.6.5.7.ebuild,
+  git-1.6.5.8.ebuild, git-1.6.6_rc3.ebuild, git-1.6.6_rc4.ebuild,
+  git-1.6.6.ebuild, git-1.6.6-r1.ebuild, git-1.6.6-r2.ebuild,
+  git-1.6.6.1.ebuild, git-1.6.6.2.ebuild, git-1.7.0.ebuild,
+  git-1.7.0.3.ebuild, git-9999.ebuild:
+  Bug #296628: Expand list of tests disabled when CVS is not available.
+
+*git-1.7.0.3 (24 Mar 2010)
+
+  24 Mar 2010; Robin H. Johnson <robbat2@gentoo.org> -git-1.7.0.2.ebuild,
+  +git-1.7.0.3.ebuild:
+  Bug #310967: 1.7.0.2 has a segfault bug in git-daemon, remove and replace
+  with 1.7.0.3
+
+  17 Mar 2010; Sebastian Pipping <sping@gentoo.org> +files/50git-gentoo.el,
+  +git-1.6.3.1.ebuild, +git-1.6.3.3.ebuild, +git-1.6.3.4.ebuild,
+  +git-1.6.4.ebuild, +git-1.6.4.1.ebuild, +git-1.6.4.2.ebuild,
+  +git-1.6.4.3.ebuild, +git-1.6.4.4.ebuild, +git-1.6.5_rc1.ebuild,
+  +git-1.6.5_rc2.ebuild, +git-1.6.5.ebuild, +git-1.6.5.1.ebuild,
+  +git-1.6.5.1-r1.ebuild, +git-1.6.5.2.ebuild, +git-1.6.5.3.ebuild,
+  +git-1.6.5.4.ebuild, +git-1.6.5.5.ebuild, +git-1.6.5.6.ebuild,
+  +git-1.6.5.7.ebuild, +git-1.6.5.8.ebuild, +git-1.6.6_rc3.ebuild,
+  +git-1.6.6_rc4.ebuild, +git-1.6.6.ebuild, +git-1.6.6-r1.ebuild,
+  +git-1.6.6-r2.ebuild, +git-1.6.6.1.ebuild, +git-1.6.6.2.ebuild,
+  +files/git-1.6.6-always-install-js.patch, +git-1.7.0.ebuild,
+  +git-1.7.0.2.ebuild, +files/git-1.7.0-always-install-js.patch,
+  +git-9999.ebuild, +files/git-daemon.confd, +files/git-daemon.initd,
+  +files/git-daemon.xinetd, +metadata.xml:
+  New package (copied from dev-util/git)
+
+*git-1.7.0.2 (07 Mar 2010)
+
+  07 Mar 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.0.2.ebuild:
+  version bump.
+
+  28 Feb 2010; Sebastian Pipping <sping@gentoo.org> git-9999.ebuild:
+  Sync live ebuild with latest (bug #305157)
+
+*git-1.7.0 (13 Feb 2010)
+
+  13 Feb 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.7.0.ebuild,
+  +files/git-1.7.0-always-install-js.patch:
+  Version bump.
+
+*git-1.6.6.2 (13 Feb 2010)
+
+  13 Feb 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.6.2.ebuild:
+  Version bump.
+
+*git-1.6.6.1 (21 Jan 2010)
+*git-1.6.5.8 (21 Jan 2010)
+
+  21 Jan 2010; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.5.8.ebuild,
+  +git-1.6.6.1.ebuild:
+  Version bump.
+
+  02 Jan 2010; Brent Baude <ranger@gentoo.org> git-1.6.5.1-r1.ebuild:
+  Marking git-1.6.5.1-r1 ~ppc64 for bug 290163
+
+*git-1.6.6-r2 (26 Dec 2009)
+
+  26 Dec 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.6-r2.ebuild,
+  git-9999.ebuild:
+  Bug #298390: All the Subversion ebuilds now offer perl, so we can USE-dep
+  on it.
+
+*git-1.6.6-r1 (26 Dec 2009)
+
+  26 Dec 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.6-r1.ebuild,
+  +files/git-1.6.6-always-install-js.patch, git-9999.ebuild:
+  Bug #298277: Fixup JS install for Gitweb. Also port all recent fixes to
+  the live ebuild.
+
+*git-1.6.6 (24 Dec 2009)
+
+  24 Dec 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.6.ebuild:
+  Version bump.
+
+*git-1.6.6_rc4 (21 Dec 2009)
+
+  21 Dec 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.6_rc4.ebuild:
+  Version bump.
+
+*git-1.6.6_rc3 (17 Dec 2009)
+
+  17 Dec 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.6_rc3.ebuild:
+  Version bump for the upstream rc.
+
+*git-1.6.5.7 (17 Dec 2009)
+
+  17 Dec 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.5.7.ebuild:
+  Version bump and fix bug #296310 for Perl 5.10 users.
+
+*git-1.6.5.6 (11 Dec 2009)
+
+  11 Dec 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.5.6.ebuild:
+  version bump
+
+*git-1.6.5.5 (06 Dec 2009)
+
+  06 Dec 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.5.5.ebuild:
+  Version bump.
+
+*git-1.6.5.4 (03 Dec 2009)
+
+  03 Dec 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.5.4.ebuild:
+  Version bump.
+
+  18 Nov 2009; Raúl Porcel <armin76@gentoo.org> git-1.6.5.1-r1.ebuild,
+  git-1.6.5.2.ebuild, git-1.6.5.3.ebuild:
+  Add ~alpha/~ia64 wrt #290163
+
+  17 Nov 2009; Robin H. Johnson <robbat2@gentoo.org> git-1.6.5.3.ebuild:
+  Bug #290163: rekeyword for arm. Tested on mv78100.
+
+  17 Nov 2009; Robin H. Johnson <robbat2@gentoo.org> git-1.6.5.3.ebuild:
+  Bug #290465: uclibc needs an additional define to select a codepath that
+  it will compile against.
+
+  17 Nov 2009; Robin H. Johnson <robbat2@gentoo.org> git-1.6.5.3.ebuild:
+  Bug #290131: cpio is only needed for building git-gui now, and nothing
+  else at runtime.
+
+*git-1.6.5.3 (17 Nov 2009)
+
+  17 Nov 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.5.3.ebuild:
+  Version bump. Testcases updated to run a working subset with
+  FEATURES=-userpriv per bug #292865.
+
+  16 Nov 2009; Jeremy Olexa <darkside@gentoo.org> git-1.6.3.1.ebuild,
+  git-1.6.3.3.ebuild, git-1.6.3.4.ebuild, git-1.6.4.ebuild,
+  git-1.6.4.1.ebuild, git-1.6.4.2.ebuild, git-1.6.4.3.ebuild,
+  git-1.6.4.4.ebuild, git-1.6.5_rc1.ebuild, git-1.6.5_rc2.ebuild,
+  git-1.6.5.ebuild, git-1.6.5.1.ebuild, git-1.6.5.1-r1.ebuild,
+  git-1.6.5.2.ebuild, git-9999.ebuild:
+  Since app-misc/git was removed from the tree, remove that invalid atom
+  from the CDEPEND variable in dev-util/git ebuilds
+
+*git-1.6.5.2 (30 Oct 2009)
+
+  30 Oct 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.5.2.ebuild:
+  Bug #291107: version bump.
+
+  23 Oct 2009; Robin H. Johnson <robbat2@gentoo.org> git-1.6.5_rc2.ebuild,
+  git-1.6.5.ebuild, git-1.6.5.1.ebuild, git-1.6.5.1-r1.ebuild,
+  git-9999.ebuild:
+  USE-default on doc was unpopular, and got even more so with USE=doc now
+  bringing in dependencies. Turn off the default.
+
+*git-1.6.5.1-r1 (22 Oct 2009)
+
+  22 Oct 2009; Sebastian Pipping <sping@gentoo.org> +git-1.6.5.1-r1.ebuild,
+  git-9999.ebuild:
+  Build and install info pages (bug 287112), add dependency on texinfo, drop
+  keywords: alpha arm ia64 ppc64
+
+  22 Oct 2009; Tobias Klausmann <klausman@gentoo.org> git-1.6.4.4.ebuild:
+  Added two more test sets to the black list for UID-0 testing
+
+*git-1.6.5.1 (18 Oct 2009)
+
+  18 Oct 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.5.1.ebuild:
+  Version bump
+
+  12 Oct 2009; Raúl Porcel <armin76@gentoo.org> git-1.6.4.4.ebuild:
+  ia64/s390/sh/sparc stable wrt #287031
+
+*git-1.6.5 (11 Oct 2009)
+
+  11 Oct 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.5.ebuild,
+  git-9999.ebuild:
+  Version bump. Bug #287101: fix manpage formatting. Bug #287104: build
+  manpages as needed.
+
+  11 Oct 2009; Tobias Klausmann <klausman@gentoo.org> git-1.6.4.4.ebuild:
+  Stable on alpha, bug #287031
+
+  09 Oct 2009; Markus Meier <maekke@gentoo.org> git-1.6.4.4.ebuild:
+  arm/x86 stable, bug #287031
+
+  09 Oct 2009; Markus Meier <maekke@gentoo.org> git-1.6.3.1.ebuild,
+  git-1.6.3.3.ebuild, git-1.6.3.4.ebuild, git-1.6.4.ebuild,
+  git-1.6.4.1.ebuild, git-1.6.4.2.ebuild, git-1.6.4.3.ebuild,
+  git-1.6.4.4.ebuild, git-1.6.5_rc1.ebuild, git-1.6.5_rc2.ebuild,
+  git-9999.ebuild:
+  fix dev-util/cvs detection in src_test due to built_with_use change for
+  non-existant package
+
+  02 Oct 2009; Joseph Jezak <josejx@gentoo.org> git-1.6.4.4.ebuild:
+  Marked ppc/ppc64 stable for bug #287031.
+
+  01 Oct 2009; Jeroen Roovers <jer@gentoo.org> git-1.6.4.4.ebuild:
+  Stable for HPPA (bug #287031).
+
+  30 Sep 2009; Dawid Węgliński <cla@gentoo.org> git-1.6.4.4.ebuild:
+  Stable on amd64 (bu #287031)
+
+  30 Sep 2009; Robin H. Johnson <robbat2@gentoo.org> git-1.6.5_rc2.ebuild:
+  No git-svn by default.
+
+*git-1.6.5_rc2 (29 Sep 2009)
+
+  29 Sep 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.5_rc2.ebuild,
+  git-9999.ebuild, metadata.xml:
+  Version bump again. Also handle bug #285238 to use the new SHA1
+  implementation by default (and add other IUSE defaults too).
+
+*git-1.6.4.4 (18 Sep 2009)
+
+  18 Sep 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.4.4.ebuild:
+  Bug #285418: Version bump
+
+  16 Sep 2009; Robin H. Johnson <robbat2@gentoo.org> git-1.6.3.1.ebuild,
+  git-1.6.3.3.ebuild, git-1.6.3.4.ebuild, git-1.6.4.ebuild,
+  git-1.6.4.1.ebuild, git-1.6.4.2.ebuild, git-1.6.4.3.ebuild,
+  git-1.6.5_rc1.ebuild, git-9999.ebuild:
+  Bug #283732: Perl module should be installed to vendor_perl instead of
+  site_perl.
+
+  16 Sep 2009; Robin H. Johnson <robbat2@gentoo.org> git-1.6.3.1.ebuild,
+  git-1.6.3.3.ebuild, git-1.6.3.4.ebuild, git-1.6.4.ebuild,
+  git-1.6.4.1.ebuild, git-1.6.4.2.ebuild, git-1.6.4.3.ebuild,
+  git-1.6.5_rc1.ebuild:
+  Bug #278738: Do not use FEATURES.
+
+  16 Sep 2009; Robin H. Johnson <robbat2@gentoo.org> git-1.6.3.1.ebuild,
+  git-1.6.3.3.ebuild, git-1.6.3.4.ebuild, git-1.6.4.ebuild,
+  git-1.6.4.1.ebuild, git-1.6.4.2.ebuild, git-1.6.4.3.ebuild,
+  git-1.6.5_rc1.ebuild, git-9999.ebuild:
+  Bug #267853: Update deps for gtksourceviewer with newer GNOME.
+
+*git-1.6.5_rc1 (13 Sep 2009)
+
+  13 Sep 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.5_rc1.ebuild:
+  Version bump
+
+*git-1.6.4.3 (13 Sep 2009)
+
+  13 Sep 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.4.3.ebuild:
+  Version bump
+
+*git-1.6.4.2 (30 Aug 2009)
+
+  30 Aug 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.4.2.ebuild:
+  Version bump.
+
+*git-1.6.4.1 (27 Aug 2009)
+
+  27 Aug 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.4.1.ebuild:
+  Bug #282667: version bump.
+
+  30 Jul 2009; Robin H. Johnson <robbat2@gentoo.org>
+  -files/20080626-git-1.5.6.1-noperl.patch,
+  -files/20081123-git-1.6.0.4-noperl-cvsserver.patch, -git-1.6.0.6.ebuild,
+  -git-1.6.1.ebuild, -git-1.6.1.1.ebuild,
+  -files/20090126-git-1.6.1.1-noperl.patch, -git-1.6.1.2.ebuild,
+  -git-1.6.1.3.ebuild, -git-1.6.2.ebuild, -git-1.6.2.2.ebuild,
+  -git-1.6.2.2-r1.ebuild, -git-1.6.2.3.ebuild, -git-1.6.2.5.ebuild,
+  -git-1.6.2.5-r1.ebuild, -files/20090505-git-1.6.2.5-getopt-fixes.patch,
+  -files/20090305-git-1.6.2-noperl.patch, -git-1.6.3.ebuild,
+  -files/vim-ftdetect-gitcommit.vim:
+  Trim old version.
+
+*git-1.6.4 (29 Jul 2009)
+*git-1.6.3.4 (29 Jul 2009)
+
+  29 Jul 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.3.4.ebuild,
+  +git-1.6.4.ebuild:
+  New upstream releases.
+
+  30 Jun 2009; Raúl Porcel <armin76@gentoo.org> git-1.6.3.3.ebuild:
+  arm/ia64/s390/sh/sparc stable wrt #273905
+
+  27 Jun 2009; Brent Baude <ranger@gentoo.org> git-1.6.3.3.ebuild:
+  Marking git-1.6.3.3 ppc64 and ppc for bug 273905
+
+  27 Jun 2009; Christian Faulhammer <fauli@gentoo.org> git-1.6.3.3.ebuild:
+  stable x86, security bug 273905
+
+  26 Jun 2009; Tobias Heinlein <keytoaster@gentoo.org> git-1.6.3.3.ebuild:
+  amd64 stable, security bug ##273905
+
+  26 Jun 2009; Tobias Klausmann <klausman@gentoo.org> git-1.6.3.3.ebuild:
+  Stable on alpha, bug #273905
+
+  24 Jun 2009; Jeroen Roovers <jer@gentoo.org> git-1.6.3.3.ebuild:
+  Stable for HPPA (bug #273905).
+
+*git-1.6.3.3 (22 Jun 2009)
+
+  22 Jun 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.3.3.ebuild:
+  Version bump per bugs 274608 and 273905, has DoS fixes for gid-daemon.
+
+*git-1.6.3.1 (18 May 2009)
+
+  18 May 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.3.1.ebuild:
+  Version bump.
+
+  10 May 2009; Robin H. Johnson <robbat2@gentoo.org> git-9999.ebuild:
+  getopt fixes in HEAD.
+
+  08 May 2009; Robin H. Johnson <robbat2@gentoo.org> +files/50git-gentoo.el:
+  Accidently removed a used file.
+
+  08 May 2009; Robin H. Johnson <robbat2@gentoo.org> -git-1.5.1.6.ebuild,
+  -git-1.5.3.7-r1.ebuild, -git-1.5.3.8.ebuild,
+  -files/git-1.5.3.8-t9101.patch, -files/git-1.5.3.8-t9106.patch,
+  -files/20080322-git-1.5.4.4-noperl.patch, -git-1.5.5.4.ebuild,
+  -files/70git-gentoo.el, -files/git-1.5.0-symlinks.patch,
+  -git-1.5.4.5.ebuild, -files/20080423-git-1.5.5.1-noperl.patch,
+  -git-1.5.5.3.ebuild, -git-1.5.5.3-r1.ebuild,
+  -files/20080528-git-1.5.5.3-noperl.patch, -git-1.5.6.1.ebuild,
+  -files/50git-gentoo.el, -git-1.5.6.2.ebuild, -files/72git-gentoo.el,
+  -files/git-1.5.3-symlinks.patch, -git-1.5.6.3.ebuild, -git-1.5.6.4.ebuild,
+  -git-1.5.6.5.ebuild, -git-1.6.0.ebuild, -git-1.6.0.1.ebuild,
+  -git-1.6.0.2.ebuild, -git-1.6.0.3.ebuild, -git-1.6.0.4.ebuild,
+  -git-1.6.0.4-r1.ebuild, -git-1.6.0.4-r2.ebuild, -git-1.6.3_rc4.ebuild:
+  Cleanup old ebuilds and files.
+
+*git-1.6.3 (08 May 2009)
+
+  08 May 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.3.ebuild:
+  Version bump.
+
+*git-1.6.2.5-r1 (08 May 2009)
+
+  08 May 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.2.5-r1.ebuild:
+  Bug 268817: Accidently dropped the noperl patch, it's only merged in
+  upstreams 1.6.3.x series.
+
+  05 May 2009; Robin H. Johnson <robbat2@gentoo.org> git-1.6.2.5.ebuild,
+  git-1.6.3_rc4.ebuild, git-9999.ebuild:
+  Fix bug #267853: dev-python/gtksourceview-python needed for gitview.
+  Update git-9999 for getopt fixes.
+
+  05 May 2009; Robin H. Johnson <robbat2@gentoo.org> git-1.6.2.5.ebuild,
+  git-1.6.3_rc4.ebuild:
+  Backport a fix from the live ebuild.
+
+  05 May 2009; Robin H. Johnson <robbat2@gentoo.org> git-1.6.2.5.ebuild,
+  +files/20090505-git-1.6.2.5-getopt-fixes.patch, git-1.6.3_rc4.ebuild:
+  Fix Getopt::Long usage bug, patch submitted to upstream as well.
+
+*git-1.6.2.5 (05 May 2009)
+
+  05 May 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.2.5.ebuild:
+  Version bump.
+
+*git-1.6.3_rc4 (05 May 2009)
+
+  05 May 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.3_rc4.ebuild:
+  Version bump to release candidate for 1.6.3. In package.mask for the
+  moment.
+
+*git-1.6.2.3 (13 Apr 2009)
+
+  13 Apr 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.2.3.ebuild:
+  Version bump.
+
+  13 Apr 2009; Robin H. Johnson <robbat2@gentoo.org> git-1.6.2.2-r1.ebuild,
+  git-9999.ebuild:
+  Bug #221179, do not install perl .packlist.
+
+  12 Apr 2009; Robin H. Johnson <robbat2@gentoo.org> git-1.6.2.2-r1.ebuild,
+  git-9999.ebuild:
+  Manpages were missed in live ebuild.
+
+  05 Apr 2009; Robin H. Johnson <robbat2@gentoo.org> git-9999.ebuild:
+  Upstream is mergign the noperl patch now.
+
+  05 Apr 2009; Robin H. Johnson <robbat2@gentoo.org> git-9999.ebuild:
+  Forgot a bit.
+
+  05 Apr 2009; Robin H. Johnson <robbat2@gentoo.org> git-1.6.2.2-r1.ebuild:
+  Refix bug #237210, missed a part.
+
+*git-9999 (03 Apr 2009)
+*git-1.6.2.2-r1 (03 Apr 2009)
+
+  03 Apr 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.2.2-r1.ebuild,
+  +git-9999.ebuild:
+  Bug #238023 - add an scm-capable ebuild for Git, use it to tidy up the
+  ebuild a bit too. Based on the work by Sebastian Pipping
+  <webmaster@hartwork.org>.
+
+*git-1.6.2.2 (03 Apr 2009)
+
+  03 Apr 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.2.2.ebuild:
+  Version bump, also fixes bug #237210 for Emacs users.
+
+  03 Apr 2009; Robin H. Johnson <robbat2@gentoo.org>
+  files/20090305-git-1.6.2-noperl.patch:
+  Fix testsuite functionality with USE=-perl, the add-interactive test uses
+  perl and was not excluded.
+
+  23 Mar 2009; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Update metadata, ricmm is joining as a maintainer.
+
+  21 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing ferdy as a maintainer since he was retired.
+
+  06 Mar 2009; Christian Faulhammer <fauli@gentoo.org> git-1.6.2.ebuild:
+  fix HOMEPAGE
+
+*git-1.6.2 (06 Mar 2009)
+
+  06 Mar 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +files/20090305-git-1.6.2-noperl.patch, +git-1.6.2.ebuild:
+  Version bump per bug #261241. Also fix bugs #256964, #238586. EAPI2 now in
+  use.
+
+*git-1.6.1.3 (11 Feb 2009)
+
+  11 Feb 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.1.3.ebuild:
+  Version bump.
+
+*git-1.6.1.2 (02 Feb 2009)
+
+  02 Feb 2009; Greg Kroah-Hartman <gregkh@gentoo.org> +git-1.6.1.2.ebuild:
+  version bump to 1.6.1.2 to fix pack-objects problem in 1.6.1.1
+
+*git-1.6.1.1 (26 Jan 2009)
+
+  26 Jan 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +files/20090126-git-1.6.1.1-noperl.patch, +git-1.6.1.1.ebuild:
+  Version bump. Also bug #254029 - fix noperl patch.
+
+  08 Jan 2009; Brent Baude <ranger@gentoo.org> git-1.6.0.6.ebuild:
+  Marking git-1.6.0.6 ppc64 for bug 251343
+
+*git-1.6.1 (06 Jan 2009)
+
+  06 Jan 2009; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.1.ebuild:
+  Version bump, bug 250321.
+
+  01 Jan 2009; Raúl Porcel <armin76@gentoo.org> git-1.6.0.6.ebuild:
+  s390/sh stable wrt #251343
+
+  29 Dec 2008; Tobias Scherbaum <dertobi123@gentoo.org> git-1.6.0.6.ebuild:
+  ppc stable, bug #251343
+
+  25 Dec 2008; Jeroen Roovers <jer@gentoo.org> git-1.6.0.6.ebuild:
+  Stable for HPPA (bug #251343).
+
+  23 Dec 2008; Raúl Porcel <armin76@gentoo.org> git-1.6.0.6.ebuild:
+  alpha/arm/ia64 stable wrt #251343
+
+  23 Dec 2008; Robin H. Johnson <robbat2@gentoo.org> git-1.6.0.6.ebuild:
+  Factor out the long emake invocation so that we can consistently call it
+  and avoid triggering a rebuild during install or test.
+
+  23 Dec 2008; Markus Meier <maekke@gentoo.org> git-1.6.0.6.ebuild:
+  amd64/x86 stable, bug #251343
+
+  23 Dec 2008; Ferris McCormick <fmccor@gentoo.org> git-1.6.0.6.ebuild:
+  Sparc stable --- Security Bug #251343 --- all tests expected to pass do pass.
+
+*git-1.6.0.6 (23 Dec 2008)
+
+  23 Dec 2008; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.0.6.ebuild:
+  Version bump.
+
+  27 Nov 2008; Robin H. Johnson <robbat2@gentoo.org> files/git-daemon.initd:
+  Refix bug #238351 so that it works under baselayout1 and baselayout2.
+
+*git-1.6.0.4-r2 (24 Nov 2008)
+
+  24 Nov 2008; Robin H. Johnson <robbat2@gentoo.org> files/git-daemon.initd,
+  +git-1.6.0.4-r2.ebuild:
+  Fix dumb typo, revbump to ensure any users that got the typo also get the
+  fix.
+
+  24 Nov 2008; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Document what USE=gtk does for Git.
+
+  24 Nov 2008; Robin H. Johnson <robbat2@gentoo.org> git-1.6.0.4-r1.ebuild:
+  Bug #240280, fix to use CFLAGS/LDFLAGS better.
+
+  24 Nov 2008; Robin H. Johnson <robbat2@gentoo.org> git-1.5.4.5.ebuild,
+  git-1.5.5.3.ebuild, git-1.5.5.3-r1.ebuild, git-1.5.5.4.ebuild,
+  git-1.5.6.1.ebuild, git-1.5.6.2.ebuild, git-1.5.6.3.ebuild,
+  git-1.5.6.4.ebuild, git-1.5.6.5.ebuild, git-1.6.0.ebuild,
+  git-1.6.0.1.ebuild, git-1.6.0.2.ebuild, git-1.6.0.3.ebuild,
+  git-1.6.0.4.ebuild, git-1.6.0.4-r1.ebuild:
+  Even better fixup for bug #238129.
+
+  24 Nov 2008; Robin H. Johnson <robbat2@gentoo.org> git-1.6.0.4-r1.ebuild:
+  Bug #238586, issue a warning for dev-util/subversion[dso].
+
+  24 Nov 2008; Robin H. Johnson <robbat2@gentoo.org> git-1.5.4.5.ebuild,
+  git-1.5.5.3.ebuild, git-1.5.5.3-r1.ebuild, git-1.5.5.4.ebuild,
+  git-1.5.6.1.ebuild, git-1.5.6.2.ebuild, git-1.5.6.3.ebuild,
+  git-1.5.6.4.ebuild, git-1.5.6.5.ebuild, git-1.6.0.ebuild,
+  git-1.6.0.1.ebuild, git-1.6.0.2.ebuild, git-1.6.0.3.ebuild,
+  git-1.6.0.4.ebuild, git-1.6.0.4-r1.ebuild:
+  Bug #238129, the default behavior of built_with_use changed at some point.
+  We do not want to die, but just to print a warning.
+
+*git-1.6.0.4-r1 (24 Nov 2008)
+
+  24 Nov 2008; Robin H. Johnson <robbat2@gentoo.org> +files/50git-gentoo.el,
+  +files/20081123-git-1.6.0.4-noperl-cvsserver.patch,
+  files/git-daemon.confd, files/git-daemon.initd, +git-1.6.0.4-r1.ebuild:
+  Fix bug #235393 for Emacs users. Fix bug #238351 for running the
+  standalone init.d more safely as non-root and include the pidfile. Bug
+  #247487, cvsserver now needs the Perl stuff. Bug #248446, fix htmldir
+  support.
+
+*git-1.6.0.4 (18 Nov 2008)
+
+  18 Nov 2008; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.0.4.ebuild:
+  Bug #246244, version bump.
+
+*git-1.6.0.3 (29 Oct 2008)
+
+  29 Oct 2008; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.0.3.ebuild:
+  Version bump.
+
+*git-1.6.0.2 (21 Sep 2008)
+
+  21 Sep 2008; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.0.2.ebuild:
+  Version bump.
+
+  16 Sep 2008; Jeroen Roovers <jer@gentoo.org> git-1.5.6.4.ebuild:
+  Stable for HPPA (bug #234075).
+
+  16 Sep 2008; Robin H. Johnson <robbat2@gentoo.org> files/git-daemon.initd,
+  files/git-daemon.xinetd:
+  Git 1.6 requires that daemon been an argument not part of the name.
+
+*git-1.6.0.1 (30 Aug 2008)
+
+  30 Aug 2008; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.0.1.ebuild:
+  Version bump, only bugfixes.
+
+  25 Aug 2008; Ulrich Mueller <ulm@gentoo.org> -files/71git-gentoo.el,
+  files/72git-gentoo.el:
+  Add comment in Emacs site-init file wrt bug 235393. Remove unused file.
+
+  27 Aug 2008; Robin H. Johnson <robbat2@gentoo.org> git-1.5.6.4.ebuild,
+  git-1.5.6.5.ebuild, git-1.6.0.ebuild:
+  Remove references to dev-util/tla is latest stable and ~arch versions, per
+  bug #235681
+
+*git-1.6.0 (24 Aug 2008)
+
+  24 Aug 2008; Robin H. Johnson <robbat2@gentoo.org> +git-1.6.0.ebuild:
+  Major version bump. Fixes bugs 219839, 225601 for userpriv during testing,
+  working subversion-1.5 support per bug 224185 and skips installing git-svn
+  when USE=-subversion per bug 233550.
+
+*git-1.5.6.5 (16 Aug 2008)
+
+  16 Aug 2008; Robin H. Johnson <robbat2@gentoo.org> +git-1.5.6.5.ebuild:
+  Version bump.
+
+  16 Aug 2008; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Make repoman happy.
+
+  08 Aug 2008; Tobias Scherbaum <dertobi123@gentoo.org> git-1.5.6.4.ebuild:
+  ppc stable, bug #234075
+
+  08 Aug 2008; Raúl Porcel <armin76@gentoo.org> git-1.5.6.4.ebuild:
+  alpha/ia64 stable wrt #234075
+
+  07 Aug 2008; Markus Meier <maekke@gentoo.org> git-1.5.6.4.ebuild:
+  x86 stable, bug #234075
+
+  07 Aug 2008; Markus Rothe <corsair@gentoo.org> git-1.5.6.4.ebuild:
+  Stable on ppc64; bug #234075
+
+  07 Aug 2008; Thomas Anderson <gentoofan23@gentoo.org> git-1.5.6.4.ebuild:
+  stable amd64, bug #234075
+
+  06 Aug 2008; Ferris McCormick <fmccor@gentoo.org> git-1.5.6.4.ebuild:
+  Sparc stable, security bug #234075 (good for about a week anyway).
+
+*git-1.5.6.4 (28 Jul 2008)
+
+  28 Jul 2008; Robin H. Johnson <robbat2@gentoo.org> +git-1.5.6.4.ebuild:
+  Version bump.
+
+*git-1.5.6.3 (17 Jul 2008)
+
+  17 Jul 2008; Robin H. Johnson <robbat2@gentoo.org> +git-1.5.6.3.ebuild:
+  Bug #232068, version bump.
+
+*git-1.5.6.2 (10 Jul 2008)
+
+  10 Jul 2008; Robin H. Johnson <robbat2@gentoo.org> +git-1.5.6.2.ebuild:
+  Version bump per bug #231380.
+
+*git-1.5.6.1 (26 Jun 2008)
+
+  26 Jun 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +files/20080626-git-1.5.6.1-noperl.patch, +git-1.5.6.1.ebuild:
+  Version bump.
+
+  24 Jun 2008; Robin H. Johnson <robbat2@gentoo.org> git-1.5.5.4.ebuild:
+  Fix bug thanks to compnerd.
+
+  11 Jun 2008; nixnut <nixnut@gentoo.org> git-1.5.4.5.ebuild:
+  Stable on ppc wrt bug 225231
+
+  11 Jun 2008; Kenneth Prugh <ken69267@gentoo.org> git-1.5.4.5.ebuild:
+  amd64 stable, bug #225231
+
+*git-1.5.5.4 (11 Jun 2008)
+
+  11 Jun 2008; Robin H. Johnson <robbat2@gentoo.org> +git-1.5.5.4.ebuild:
+  Version bump.
+
+  10 Jun 2008; Raúl Porcel <armin76@gentoo.org> git-1.5.4.5.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #225231
+
+  09 Jun 2008; Brent Baude <ranger@gentoo.org> git-1.5.4.5.ebuild:
+  stable ppc64, bug 225231
+
+*git-1.5.5.3-r1 (07 Jun 2008)
+
+  07 Jun 2008; Fernando J. Pereda <ferdy@gentoo.org> -git-1.5.2.5.ebuild,
+  -git-1.5.4.ebuild, -git-1.5.4.2.ebuild, -git-1.5.4.3.ebuild,
+  -git-1.5.4.4.ebuild, -git-1.5.4.4-r1.ebuild, -git-1.5.5.1.ebuild,
+  -git-1.5.5.1-r1.ebuild, +git-1.5.5.3-r1.ebuild:
+  Remove unneeded patches to Makefile. Stop die'ing upon a bad USE
+  configuration by taking a sane decision. Remove unused versions.
+
+  28 May 2008; Robin H. Johnson <robbat2@gentoo.org>
+  files/20080528-git-1.5.5.3-noperl.patch:
+  Forgot to add doc at the top of the new patch.
+
+*git-1.5.5.3 (28 May 2008)
+
+  28 May 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +files/20080528-git-1.5.5.3-noperl.patch,
+  +files/vim-ftdetect-gitcommit.vim, +git-1.5.5.3.ebuild:
+  Version bump, 1.5.5 series is pretty ready for primetime.
+
+*git-1.5.5.1-r1 (29 Apr 2008)
+
+  29 Apr 2008; Robin H. Johnson <robbat2@gentoo.org> +git-1.5.5.1-r1.ebuild:
+  The gitweb.cgi did not contain the build-time replacements. Ensure that it
+  does, and also make it executable by default so that portage does not
+  strip the executability on upgrade.
+
+  24 Apr 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +files/20080322-git-1.5.4.4-noperl.patch,
+  -files/20080322-git-1.5.5.4-noperl.patch, git-1.5.4.4-r1.ebuild,
+  git-1.5.4.5.ebuild:
+  Fix bad numbering of file.
+
+  24 Apr 2008; Robin H. Johnson <robbat2@gentoo.org>
+  files/20080423-git-1.5.5.1-noperl.patch:
+  No absolute paths in patches! Bug #219099.
+
+*git-1.5.5.1 (24 Apr 2008)
+
+  24 Apr 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +files/20080423-git-1.5.5.1-noperl.patch, +git-1.5.5.1.ebuild:
+  Bump to 1.5.5.1 per bug 217593, noperl patch ported by dberkholz.
+
+*git-1.5.4.5 (29 Mar 2008)
+
+  29 Mar 2008; Robin H. Johnson <robbat2@gentoo.org> +git-1.5.4.5.ebuild:
+  Version bump.
+
+  24 Mar 2008; Raúl Porcel <armin76@gentoo.org> git-1.5.4.4-r1.ebuild:
+  Re-add ~ia64 wrt #214464
+
+*git-1.5.4.4-r1 (24 Mar 2008)
+
+  24 Mar 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +files/20080322-git-1.5.5.4-noperl.patch, +git-1.5.4.4-r1.ebuild:
+  Per bug 214168, some users are really picky about wanting a Perl-free Git.
+  This new revision makes that a possibility, and now also introduces most
+  of the dependancies that were only previously stated in the pkg_postinst
+  phase. The following arch keywords have been dropped per bug 214464 until
+  the arches can keyword the dependancies: arm, ia64, s390, sh.
+
+  20 Mar 2008; Mike Frysinger <vapier@gentoo.org> git-1.5.4.4.ebuild:
+  Add support for USE=xinetd #213014.
+
+  20 Mar 2008; Robin H. Johnson <robbat2@gentoo.org> git-1.5.4.4.ebuild:
+  The base Git.pm module now requires dev-perl/Error, so it is no longer
+  optional under USE=perl. dev-perl/Net-SMTP-SSL remains optional as it is
+  only used for git-send-email.
+
+  17 Mar 2008; Robin H. Johnson <robbat2@gentoo.org> git-1.5.4.4.ebuild:
+  dev-perl/Authen-SASL is an indirect dependancy of Net-SMTP-SSL already w/
+  USE=sasl, so we can skip it here.
+
+*git-1.5.4.4 (17 Mar 2008)
+
+  17 Mar 2008; Robin H. Johnson <robbat2@gentoo.org> +git-1.5.4.4.ebuild:
+  Version bump, fixing bugs #213549, #213543, #212131.
+
+*git-1.5.4.3 (27 Feb 2008)
+
+  27 Feb 2008; Robin H. Johnson <robbat2@gentoo.org> +git-1.5.4.3.ebuild:
+  Version bump.
+
+*git-1.5.4.2 (17 Feb 2008)
+
+  17 Feb 2008; Fernando J. Pereda <ferdy@gentoo.org> +git-1.5.4.2.ebuild:
+  New upstream version
+
+  11 Feb 2008; Diego Pettenò <flameeyes@gentoo.org> git-1.5.4.ebuild:
+  Fix sed for LDFLAGS, and make CFLAGS sed as robust as that.
+
+  03 Feb 2008; Fernando J. Pereda <ferdy@gentoo.org> git-1.5.4.ebuild:
+  Add USE=threads as per bug #208422
+
+*git-1.5.4 (03 Feb 2008)
+
+  03 Feb 2008; Fernando J. Pereda <ferdy@gentoo.org> -git-1.5.4_rc2.ebuild,
+  -git-1.5.4_rc3.ebuild, -git-1.5.4_rc4.ebuild, +git-1.5.4.ebuild:
+  New upstream version. Remove RCs for 1.5.4
+
+  01 Feb 2008; Robin H. Johnson <robbat2@gentoo.org> git-1.5.2.5.ebuild,
+  git-1.5.3.7-r1.ebuild, git-1.5.3.8.ebuild, git-1.5.4_rc2.ebuild,
+  git-1.5.4_rc3.ebuild, git-1.5.4_rc4.ebuild:
+  Clarify the extra deps for git-svnimport.
+
+*git-1.5.4_rc4 (01 Feb 2008)
+
+  01 Feb 2008; Robin H. Johnson <robbat2@gentoo.org> +git-1.5.4_rc4.ebuild:
+  Version bump.
+
+  14 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  git-1.5.3.7-r1.ebuild:
+  ppc. stable
+
+*git-1.5.4_rc3 (14 Jan 2008)
+
+  14 Jan 2008; Robin H. Johnson <robbat2@gentoo.org> +git-1.5.4_rc3.ebuild:
+  Bump the release candidate for more testing.
+
+  13 Jan 2008; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/git-1.5.3.8-t9101.patch, git-1.5.3.8.ebuild:
+  Add a fix for some test cases under subversion 1.4.6
+
+*git-1.5.3.8 (10 Jan 2008)
+
+  10 Jan 2008; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/git-1.5.3.8-t9106.patch, -git-1.5.3.2.ebuild, -git-1.5.3.3.ebuild,
+  -git-1.5.3.4.ebuild, -git-1.5.3.4-r1.ebuild, -git-1.5.3.5.ebuild,
+  -git-1.5.3.6.ebuild, -git-1.5.3.6-r1.ebuild, -git-1.5.3.7.ebuild,
+  +git-1.5.3.8.ebuild, -git-1.5.4_rc0.ebuild, -git-1.5.4_rc1.ebuild,
+  git-1.5.4_rc2.ebuild:
+  Version bump. Fix some bugs and style nits. Remove unneeded verbosity.
+  Remove unused versions.
+
+*git-1.5.4_rc2 (01 Jan 2008)
+
+  01 Jan 2008; Markus Ullmann <jokey@gentoo.org> +git-1.5.4_rc2.ebuild:
+  Version bump, granted by robbat2 as test-suite passes
+
+  29 Dec 2007; <welp@gentoo.org> git-1.5.4_rc1.ebuild:
+  Keyworded ~sparc-fbsd; bug 203655
+
+  27 Dec 2007; Robin H. Johnson <robbat2@gentoo.org> git-1.5.3.7-r1.ebuild:
+  Stable on amd64. Tested by myself and gentoofan23.
+
+  25 Dec 2007; Raúl Porcel <armin76@gentoo.org> git-1.5.3.7-r1.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #202383
+
+  25 Dec 2007; Brent Baude <ranger@gentoo.org> git-1.5.3.7-r1.ebuild:
+  Marking git-1.5.3.7-r1 ppc64 for bug 203283
+
+  25 Dec 2007; nixnut <nixnut@gentoo.org> ChangeLog:
+  Stable on ppc wrt bug 203283
+
+  25 Dec 2007; Robin H. Johnson <robbat2@gentoo.org> git-1.5.3.7-r1.ebuild,
+  git-1.5.4_rc0.ebuild, git-1.5.4_rc1.ebuild:
+  Bug 201544: Use the proper build mechanism to disable the Tk-using sections
+  of git.
+
+*git-1.5.4_rc1 (25 Dec 2007)
+
+  25 Dec 2007; Robin H. Johnson <robbat2@gentoo.org> +git-1.5.4_rc1.ebuild:
+  Add latest rc from upstream.
+
+  25 Dec 2007; Robin H. Johnson <robbat2@gentoo.org> git-1.5.3.7-r1.ebuild,
+  git-1.5.4_rc0.ebuild:
+  Install the git-p4 tool and the import-tars tool.
+
+  17 Dec 2007; Robin H. Johnson <robbat2@gentoo.org> git-1.5.1.6.ebuild,
+  git-1.5.2.5.ebuild, git-1.5.3.2.ebuild, git-1.5.3.3.ebuild,
+  git-1.5.3.4.ebuild, git-1.5.3.4-r1.ebuild, git-1.5.3.5.ebuild,
+  git-1.5.3.6.ebuild, git-1.5.3.6-r1.ebuild, git-1.5.3.7.ebuild,
+  git-1.5.3.7-r1.ebuild, git-1.5.4_rc0.ebuild:
+  Clean up all minorsyn problems with ebuilds.
+
+*git-1.5.4_rc0 (17 Dec 2007)
+
+  17 Dec 2007; Robin H. Johnson <robbat2@gentoo.org> +git-1.5.4_rc0.ebuild:
+  Version bump. rc0 is for testing only, not production uage. Masked via
+  package.mask.
+
+  06 Dec 2007; Robin H. Johnson <robbat2@gentoo.org> git-1.5.3.7-r1.ebuild:
+  Fix typo.
+
+*git-1.5.3.7-r1 (06 Dec 2007)
+
+  06 Dec 2007; Robin H. Johnson <robbat2@gentoo.org> +git-1.5.3.7-r1.ebuild:
+  Install the gitweb stuff, as it's used by instaweb, and is also
+  independantly useful, but does not lend itself to webapp-config very well.
+
+*git-1.5.3.7 (05 Dec 2007)
+
+  05 Dec 2007; Robin H. Johnson <robbat2@gentoo.org> +git-1.5.3.7.ebuild:
+  Version bump. Please note that the CVS testcases are disabled unless you
+  have FEATURES=userpriv, as CVS rejects commits as root.
+
+*git-1.5.3.6-r1 (22 Nov 2007)
+
+  22 Nov 2007; Robin H. Johnson <robbat2@gentoo.org> +git-1.5.3.6-r1.ebuild:
+  Add missing cpio dependancy, redo the documentation install so that the text
+  versions and (optionally) HTML versions are installed including the release
+  notes. Also install some new bits from contrib: blameview,
+  continuous-integration, remotes2config.
+
+*git-1.5.3.6 (20 Nov 2007)
+
+  20 Nov 2007; Fernando J. Pereda <ferdy@gentoo.org> +git-1.5.3.6.ebuild:
+  New upstream version
+
+*git-1.5.3.5 (14 Nov 2007)
+
+  14 Nov 2007; Fernando J. Pereda <ferdy@gentoo.org> +git-1.5.3.5.ebuild:
+  Version bump (bug #198903)
+
+  19 Oct 2007; Fernando J. Pereda <ferdy@gentoo.org> git-1.5.3.4-r1.ebuild:
+  vim-plugin.eclass pulls in vim, that is not desired. Revert that change for now
+
+*git-1.5.3.4-r1 (19 Oct 2007)
+
+  19 Oct 2007; Fernando J. Pereda <ferdy@gentoo.org> +git-1.5.3.4-r1.ebuild:
+  Install vim and some stuff from contrib (related: bug #194940)
+
+  05 Oct 2007; Mike Frysinger <vapier@gentoo.org> git-1.5.3.4.ebuild:
+  Fix incorrect binding of iconv<->uclibc.
+
+*git-1.5.3.4 (04 Oct 2007)
+
+  04 Oct 2007; Fernando J. Pereda <ferdy@gentoo.org> +files/72git-gentoo.el,
+  +git-1.5.3.4.ebuild:
+  New upstream version. Include fixes from bug #194690 thanks to Christian
+  Faulhammer <opfer@gentoo.org>
+
+*git-1.5.3.3 (30 Sep 2007)
+
+  30 Sep 2007; Fernando J. Pereda <ferdy@gentoo.org> +git-1.5.3.3.ebuild:
+  New upstream version
+
+  28 Sep 2007; Fernando J. Pereda <ferdy@gentoo.org> -git-1.5.3.ebuild:
+  Remove 1.5.3
+
+  28 Sep 2007; Joshua Kinard <kumba@gentoo.org> git-1.5.2.5.ebuild:
+  Stable on mips, per #193113.
+
+  20 Sep 2007; Christoph Mende <angelos@gentoo.org> git-1.5.2.5.ebuild:
+  Stable on amd64 wrt bug #193113
+
+  20 Sep 2007; Raúl Porcel <armin76@gentoo.org> git-1.5.2.5.ebuild:
+  alpha/ia64 stable wrt #193113
+
+  20 Sep 2007; Jeroen Roovers <jer@gentoo.org> git-1.5.2.5.ebuild:
+  Stable for SPARC (bug #193113).
+
+  20 Sep 2007; Brent Baude <ranger@gentoo.org> git-1.5.2.5.ebuild:
+  Marking git-1.5.2.5 ppc64 for bug 193113
+
+  19 Sep 2007; Lars Weiler <pylon@gentoo.org> git-1.5.2.5.ebuild:
+  Stable on ppc; bug #193113.
+
+  19 Sep 2007; Markus Meier <maekke@gentoo.org> git-1.5.2.5.ebuild:
+  x86 stable, bug #193113
+
+*git-1.5.3.2 (19 Sep 2007)
+
+  19 Sep 2007; Fernando J. Pereda <ferdy@gentoo.org> +git-1.5.3.2.ebuild:
+  New upstream version
+
+*git-1.5.3 (02 Sep 2007)
+
+  02 Sep 2007; Fernando J. Pereda <ferdy@gentoo.org> -git-1.5.3_rc7.ebuild,
+  +git-1.5.3.ebuild:
+  New upstream version. Remove rc7
+
+*git-1.5.3_rc7 (29 Aug 2007)
+
+  29 Aug 2007; Fernando J. Pereda <ferdy@gentoo.org>
+  -files/git-1.5.3_rc5-read-tree.patch, -git-1.5.3_rc5-r1.ebuild,
+  +git-1.5.3_rc7.ebuild:
+  New upstream version. Remove rc5
+
+  24 Aug 2007; Fernando J. Pereda <ferdy@gentoo.org> -git-1.5.2.4.ebuild,
+  -git-1.5.3_rc4.ebuild:
+  Remove unused obsoleted versions
+
+*git-1.5.2.5 (15 Aug 2007)
+
+  15 Aug 2007; Fernando J. Pereda <ferdy@gentoo.org> +git-1.5.2.5.ebuild:
+  New maintenance version for 1.5.2 series
+
+*git-1.5.3_rc5-r1 (15 Aug 2007)
+
+  15 Aug 2007; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/git-1.5.3_rc5-read-tree.patch, -git-1.5.3_rc5.ebuild,
+  +git-1.5.3_rc5-r1.ebuild:
+  Add a patch to fix a segfault in rc5. Remove the buggy version. rc4 is safe.
+
+*git-1.5.3_rc5 (15 Aug 2007)
+
+  15 Aug 2007; Fernando J. Pereda <ferdy@gentoo.org> +git-1.5.3_rc5.ebuild:
+  New upstream version.
+
+  13 Aug 2007; Fernando J. Pereda <ferdy@gentoo.org>
+  -files/git-1.5.2-tempfile.patch, -git-1.5.0.7.ebuild, -git-1.5.2.ebuild,
+  -git-1.5.2.1.ebuild, -git-1.5.2.2.ebuild:
+  Remove old and unused stuff
+
+*git-1.5.3_rc4 (08 Aug 2007)
+
+  08 Aug 2007; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/git-1.5.3-symlinks.patch, +git-1.5.3_rc4.ebuild:
+  Version bump
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org> git-1.5.0.7.ebuild,
+  git-1.5.1.6.ebuild, git-1.5.2.ebuild, git-1.5.2.1.ebuild,
+  git-1.5.2.2.ebuild, git-1.5.2.4.ebuild:
+  Fixing the DEPEND/RDEPEND for the move of net-www/apache to
+  www-servers/apache (#78622).
+
+*git-1.5.2.4 (27 Jul 2007)
+
+  27 Jul 2007; Robin H. Johnson <robbat2@gentoo.org> metadata.xml,
+  git-1.5.0.7.ebuild, git-1.5.1.6.ebuild, git-1.5.2.ebuild,
+  git-1.5.2.1.ebuild, git-1.5.2.2.ebuild, +git-1.5.2.4.ebuild:
+  Add new upstream version, and also improve the DESCRIPTION per bug #185057,
+  and the longdescription in metadata at the same time.
+
+  25 Jun 2007; Joshua Kinard <kumba@gentoo.org> git-1.5.1.6.ebuild:
+  Stable on mips, per #179245.
+
+  23 Jun 2007; Matti Bickel <mabi@gentoo.org> git-1.5.1.6.ebuild:
+  ppc stable (bug #179245)
+
+*git-1.5.2.2 (16 Jun 2007)
+
+  16 Jun 2007; Fernando J. Pereda <ferdy@gentoo.org> +files/71git-gentoo.el,
+  +git-1.5.2.2.ebuild:
+  New upstream version. Fix for bug #181718
+
+  14 Jun 2007; Jeroen Roovers <jer@gentoo.org> git-1.5.1.6.ebuild:
+  Stable for HPPA (bug #179245).
+
+*git-1.5.2.1 (04 Jun 2007)
+
+  04 Jun 2007; Fernando J. Pereda <ferdy@gentoo.org> +git-1.5.2.1.ebuild:
+  New upstream version
+
+  31 May 2007; Daniel Gryniewicz <dang@gentoo.org> git-1.5.1.6.ebuild:
+  Marked stable on amd64 for bug #179245
+
+  28 May 2007; Brent Baude <ranger@gentoo.org> git-1.5.1.6.ebuild:
+  Marking git-1.5.1.6 ppc64 stable for bug 179245
+
+  24 May 2007; Raúl Porcel <armin76@gentoo.org> git-1.5.1.6.ebuild:
+  ia64 + x86 stable wrt #179245
+
+  23 May 2007; Fernando J. Pereda <ferdy@gentoo.org> git-1.5.2.ebuild:
+  Add dev-perl/TermReadKey for git-svn. Fixes bug #179560
+
+  23 May 2007; Fernando J. Pereda <ferdy@gentoo.org> git-1.5.1.6.ebuild:
+  Stable on alpha as per bug #179245
+
+  23 May 2007; Gustavo Zacarias <gustavoz@gentoo.org> git-1.5.1.6.ebuild:
+  Stable on sparc wrt #179245
+
+  21 May 2007; Jeroen Roovers <jer@gentoo.org> git-1.5.1.6.ebuild:
+  Reverting to ~hppa.
+
+  21 May 2007; Jeroen Roovers <jer@gentoo.org> git-1.5.1.6.ebuild:
+  Stable for HPPA (bug #179245).
+
+*git-1.5.2 (20 May 2007)
+*git-1.5.1.6 (20 May 2007)
+
+  20 May 2007; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/git-1.5.2-tempfile.patch, -git-1.5.1.2.ebuild, -git-1.5.1.3.ebuild,
+  -git-1.5.1.4.ebuild, -git-1.5.1.5.ebuild, +git-1.5.1.6.ebuild,
+  +git-1.5.2.ebuild:
+  New upstream versions. Remove old ones.
+
+*git-1.5.1.5 (19 May 2007)
+
+  19 May 2007; Fernando J. Pereda <ferdy@gentoo.org> +git-1.5.1.5.ebuild:
+  New upstream version. Fixes bug #177280.
+
+*git-1.5.1.4 (09 May 2007)
+
+  09 May 2007; Robin H. Johnson <robbat2@gentoo.org> +git-1.5.1.4.ebuild:
+  Version bump.
+
+*git-1.5.1.3 (01 May 2007)
+
+  01 May 2007; Robin H. Johnson <robbat2@gentoo.org> +git-1.5.1.3.ebuild:
+  Version bump.
+
+  24 Apr 2007; Fernando J. Pereda <ferdy@gentoo.org> -git-1.4.1.1.ebuild,
+  -git-1.4.4.4.ebuild, -git-1.5.1.1.ebuild:
+  Remove unused stuff
+
+  23 Apr 2007; Bryan Østergaard <kloeri@gentoo.org> git-1.5.0.7.ebuild:
+  Stable on Mips, bug 173327.
+
+*git-1.5.1.2 (23 Apr 2007)
+
+  23 Apr 2007; Fernando J. Pereda <ferdy@gentoo.org> +git-1.5.1.2.ebuild:
+  New upstream version.
+
+*git-1.5.1.1 (12 Apr 2007)
+
+  12 Apr 2007; Fernando J. Pereda <ferdy@gentoo.org> -git-1.5.1.ebuild,
+  +git-1.5.1.1.ebuild:
+  New upstream version, superceeds 1.5.1
+
+  11 Apr 2007; Christian Faulhammer <opfer@gentoo.org> git-1.5.0.7.ebuild:
+  stable amd64, bug 173327
+
+  08 Apr 2007; Markus Rothe <corsair@gentoo.org> git-1.5.0.7.ebuild:
+  Stable on ppc64; bug #173327
+
+  06 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org> git-1.5.0.7.ebuild:
+  ppc stable
+
+  04 Apr 2007; Fernando J. Pereda <ferdy@gentoo.org> git-1.5.0.7.ebuild:
+  Stable on alpha wrt bug #173327
+
+  04 Apr 2007; Jeroen Roovers <jer@gentoo.org> git-1.5.0.7.ebuild:
+  Stable for HPPA (bug #173327).
+
+  04 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> git-1.5.0.7.ebuild:
+  Stable on sparc wrt #173327
+
+  04 Apr 2007; Raúl Porcel <armin76@gentoo.org> git-1.5.0.7.ebuild:
+  ia64 + x86 stable wrt bug 173327
+
+  04 Apr 2007; Fernando J. Pereda <ferdy@gentoo.org> -git-1.4.2.4.ebuild,
+  -git-1.4.4.3.ebuild:
+  Remove unused versions.
+
+*git-1.5.1 (04 Apr 2007)
+*git-1.5.0.7 (04 Apr 2007)
+
+  04 Apr 2007; Fernando J. Pereda <ferdy@gentoo.org> -git-1.5.0.6.ebuild,
+  +git-1.5.0.7.ebuild, +git-1.5.1.ebuild:
+  Revision and version bump. Remove 1.5.0.6
+
+*git-1.5.0.6 (29 Mar 2007)
+
+  29 Mar 2007; Fernando J. Pereda <ferdy@gentoo.org> -git-1.5.0.5.ebuild,
+  +git-1.5.0.6.ebuild:
+  New upstream version. Remove 1.5.0.5
+
+*git-1.5.0.5 (19 Mar 2007)
+
+  19 Mar 2007; Fernando J. Pereda <ferdy@gentoo.org> -git-1.5.0.4.ebuild,
+  +git-1.5.0.5.ebuild:
+  New upstream version. Remove old one.
+
+*git-1.5.0.4 (16 Mar 2007)
+
+  16 Mar 2007; Fernando J. Pereda <ferdy@gentoo.org> -git-1.5.0.3.ebuild,
+  -git-1.5.0.3-r1.ebuild, +git-1.5.0.4.ebuild:
+  New upstream version. Remove old ones.
+
+*git-1.5.0.3-r1 (11 Mar 2007)
+
+  11 Mar 2007; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/git-1.5.0-symlinks.patch, +git-1.5.0.3-r1.ebuild:
+  Create relative symlinks instead of absolute ones.
+
+*git-1.5.0.3 (09 Mar 2007)
+
+  09 Mar 2007; Fernando J. Pereda <ferdy@gentoo.org> -git-1.5.0.2.ebuild,
+  +git-1.5.0.3.ebuild:
+  New upstream version. Fix for bug #170066. Remove old version.
+
+*git-1.5.0.2 (27 Feb 2007)
+
+  27 Feb 2007; Fernando J. Pereda <ferdy@gentoo.org> -git-1.5.0.1.ebuild,
+  +git-1.5.0.2.ebuild:
+  New upstream version. Remove .1 since it is buggy
+
+  20 Feb 2007; Fernando J. Pereda <ferdy@gentoo.org> -git-1.5.0.ebuild:
+  Remove unused version, superceed by 1.5.0.1
+
+*git-1.5.0.1 (19 Feb 2007)
+
+  19 Feb 2007; Fernando J. Pereda <ferdy@gentoo.org> +git-1.5.0.1.ebuild:
+  New upstream version.
+
+  15 Feb 2007; Fernando J. Pereda <ferdy@gentoo.org> git-1.5.0.ebuild:
+  Add a showpkgdeps message for git send-email. Fixes bug #167058. Reported by
+  Christian Schlotter <again@gmx.de>
+
+*git-1.5.0 (14 Feb 2007)
+
+  14 Feb 2007; Fernando J. Pereda <ferdy@gentoo.org> +git-1.5.0.ebuild:
+  New upstream version.
+
+  15 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org> git-1.4.4.4.ebuild:
+  Stable on sparc wrt #159822
+
+  15 Jan 2007; Jeroen Roovers <jer@gentoo.org> git-1.4.4.4.ebuild:
+  Stable for HPPA (bug #159822).
+
+  15 Jan 2007; Steve Dibb <beandog@gentoo.org> git-1.4.4.4.ebuild:
+  amd64 stable, bug 159822
+
+  14 Jan 2007; Markus Rothe <corsair@gentoo.org> git-1.4.4.4.ebuild:
+  Stable on ppc64; bug #159822
+
+  13 Jan 2007; Andrej Kacian <ticho@gentoo.org> git-1.4.4.4.ebuild:
+  Stable on x86, bug #159822.
+
+  13 Jan 2007; nixnut <nixnut@gentoo.org> git-1.4.4.4.ebuild:
+  Stable on ppc wrt bug 159822
+
+*git-1.4.4.4 (12 Jan 2007)
+
+  12 Jan 2007; Fernando J. Pereda <ferdy@gentoo.org> +git-1.4.4.4.ebuild:
+  Version bump + stable on Alpha. See bug #159822
+
+  09 Jan 2007; Markus Rothe <corsair@gentoo.org> git-1.4.4.3.ebuild:
+  Stable on ppc64; bug #159822
+
+  07 Jan 2007; Tobias Scherbaum <dertobi123@gentoo.org> git-1.4.4.3.ebuild:
+  ppc stable, bug #159822
+
+  06 Jan 2007; Fernando J. Pereda <ferdy@gentoo.org> -git-1.4.3.5.ebuild,
+  -git-1.4.4.2.ebuild:
+  QA: Clean unused versions.
+
+  06 Jan 2007; Fernando J. Pereda <ferdy@gentoo.org> git-1.4.1.1.ebuild,
+  git-1.4.2.4.ebuild, git-1.4.3.5.ebuild, git-1.4.4.2.ebuild,
+  git-1.4.4.3.ebuild:
+  einfo -> elog
+
+  04 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> git-1.4.4.3.ebuild:
+  Stable on IA64.
+
+  04 Jan 2007; Torsten Veller <tove@gentoo.org> git-1.4.4.3.ebuild:
+  Stable on x86 (#159822)
+
+  04 Jan 2007; Fernando J. Pereda <ferdy@gentoo.org> git-1.4.4.3.ebuild:
+  Stable on alpha as per bug #159822
+
+  04 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org> git-1.4.4.3.ebuild:
+  Stable on sparc wrt #159822
+
+  03 Jan 2007; Fernando J. Pereda <ferdy@gentoo.org> git-1.4.4.3.ebuild:
+  git-instaweb has some additional dependencies, fixes bug #159698
+
+  31 Dec 2006; Robin H. Johnson <robbat2@gentoo.org> git-1.4.3.5.ebuild,
+  git-1.4.4.2.ebuild, git-1.4.4.3.ebuild:
+  Fix type in einfo.
+
+*git-1.4.4.3 (20 Dec 2006)
+
+  20 Dec 2006; Fernando J. Pereda <ferdy@gentoo.org> +git-1.4.4.3.ebuild:
+  New upstream version.
+
+*git-1.4.4.2 (07 Dec 2006)
+
+  07 Dec 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-1.4.4.ebuild,
+  -git-1.4.4.1.ebuild, +git-1.4.4.2.ebuild:
+  New upstream version. Clean old ebuilds for the 1.4.4 branch.
+
+*git-1.4.4.1 (26 Nov 2006)
+
+  26 Nov 2006; Fernando J. Pereda <ferdy@gentoo.org> +git-1.4.4.1.ebuild:
+  New upstream version.
+
+  16 Nov 2006; Fernando J. Pereda <ferdy@gentoo.org> git-1.4.4.ebuild:
+  Remove tar-tree tests if we don't have unzip installed.
+
+*git-1.4.4 (15 Nov 2006)
+
+  15 Nov 2006; Fernando J. Pereda <ferdy@gentoo.org> +git-1.4.4.ebuild:
+  New upstream version.
+
+*git-1.4.3.5 (12 Nov 2006)
+
+  12 Nov 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-1.4.3.4.ebuild,
+  +git-1.4.3.5.ebuild:
+  New upstream version, superceeds 1.4.3.4
+
+  09 Nov 2006; Ilya A. Volynets-Evenbakh <iluxa@gentoo.org>
+  git-1.4.3.4.ebuild:
+  Add ~mips to keywords
+
+  08 Nov 2006; Ilya A. Volynets-Evenbakh <iluxa@gentoo.org>
+  git-1.4.1.1.ebuild:
+  Stable on mips
+
+*git-1.4.3.4 (05 Nov 2006)
+
+  05 Nov 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-1.4.3.3.ebuild,
+  +git-1.4.3.4.ebuild:
+  New upstream version.
+
+*git-1.4.3.3 (30 Oct 2006)
+
+  30 Oct 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-1.4.3.2.ebuild,
+  +git-1.4.3.3.ebuild:
+  New upstream version, remove old one.
+
+  28 Oct 2006; Christian Faulhammer <opfer@gentoo.org> git-1.4.2.4.ebuild:
+  x86 stable wrt bug #151669
+
+*git-1.4.3.2 (24 Oct 2006)
+
+  24 Oct 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-1.4.3.1.ebuild,
+  +git-1.4.3.2.ebuild:
+  New upstream version, remove buggy one. Also add a pkg_postinst message as
+  per bug #152320.
+
+*git-1.4.3.1 (21 Oct 2006)
+
+  21 Oct 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-1.4.3.ebuild,
+  +git-1.4.3.1.ebuild:
+  New upstream version, remove a buggy one.
+
+  21 Oct 2006; <nixnut@gentoo.org> git-1.4.2.4.ebuild:
+  Stable on ppc wrt bug 151669
+
+  20 Oct 2006; Fernando J. Pereda <ferdy@gentoo.org> git-1.4.3.ebuild:
+  Add a needed fixlocalpod call to src_install spotted by Jakub Moc
+  <jakub@gentoo.org>
+
+*git-1.4.3 (19 Oct 2006)
+
+  19 Oct 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-1.1.6.ebuild,
+  +git-1.4.3.ebuild:
+  New upstream version. Remove ancient one (1.1.6) since It is no longer useful
+
+  18 Oct 2006; Patrick McLean <chutzpah@gentoo.org> git-1.4.2.4.ebuild:
+  Stable on amd64 (bug #151669).
+
+  17 Oct 2006; Jeroen Roovers <jer@gentoo.org> git-1.4.2.4.ebuild:
+  Stable for HPPA (bug #151669).
+
+  17 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> git-1.4.2.4.ebuild:
+  Stable on sparc wrt #151669
+
+  17 Oct 2006; Markus Rothe <corsair@gentoo.org> git-1.4.2.4.ebuild:
+  Stable on ppc64; bug #151669
+
+  17 Oct 2006; Fernando J. Pereda <ferdy@gentoo.org> git-1.4.2.4.ebuild:
+  Stable on alpha as per bug #151669
+
+*git-1.4.2.4 (17 Oct 2006)
+
+  17 Oct 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-1.4.0-r1.ebuild,
+  -git-1.4.2.3.ebuild, +git-1.4.2.4.ebuild:
+  New upstream version. Remove old (1.4.0-r1) and buggy (1.4.2.3) ones.
+
+  04 Oct 2006; Fabian Groffen <grobian@gentoo.org> git-1.4.0-r1.ebuild,
+  git-1.4.1.1.ebuild, git-1.4.2.3.ebuild:
+  Dropped ~ppc-macos, see you in prefix.
+
+*git-1.4.2.3 (02 Oct 2006)
+
+  02 Oct 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-1.4.2.1.ebuild,
+  -git-1.4.2.2.ebuild, +git-1.4.2.3.ebuild:
+  New upstream version. Remove buggy ones.
+
+*git-1.4.2.2 (30 Sep 2006)
+
+  30 Sep 2006; Fernando J. Pereda <ferdy@gentoo.org> +git-1.4.2.2.ebuild:
+  New upstream version.
+
+  27 Sep 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-1.4.2.ebuild:
+  Remove git-1.4.2 since it has a buggy builtin-mv command.
+
+  22 Sep 2006; Fernando J. Pereda <ferdy@gentoo.org> git-1.4.2.1.ebuild:
+  Typo fixed. Bug #148413 thanks to Jimmy.Jazz@gmx.net
+
+  13 Sep 2006; Aron Griffis <agriffis@gentoo.org> git-1.4.1.1.ebuild:
+  Mark 1.4.1.1 stable on ia64
+
+*git-1.4.2.1 (13 Sep 2006)
+
+  13 Sep 2006; Fernando J. Pereda <ferdy@gentoo.org> +git-1.4.2.1.ebuild:
+  New upstream version.
+
+  11 Sep 2006; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/git-daemon.xinetd, git-1.4.2.ebuild:
+  Add a xinetd configuration file.As per bug #145177. Thanks to Patrick
+  Guimond <patg@patg.homeunix.org>
+
+  07 Sep 2006; Christel Dahlskjaer <christel@gentoo.org> git-1.4.1.1.ebuild:
+  Added ~mips, as per bug #126850
+
+  15 Aug 2006; Fernando J. Pereda <ferdy@gentoo.org> git-1.4.2.ebuild:
+  Typo fixed: donsider -> consider
+
+  14 Aug 2006; Fernando J. Pereda <ferdy@gentoo.org> git-1.4.2.ebuild:
+  Only run git-svn tests if we have dev-util/subversion
+
+  14 Aug 2006; <dougg@gentoo.org> git-1.1.6.ebuild, git-1.4.0-r1.ebuild,
+  git-1.4.1.1.ebuild, git-1.4.2.ebuild:
+  fixing tcltk USE flag as per bug #17808
+
+  13 Aug 2006; Fernando J. Pereda <ferdy@gentoo.org> git-1.4.2.ebuild:
+  app-editors/emacs -> virtual/emacs
+
+*git-1.4.2 (13 Aug 2006)
+
+  13 Aug 2006; Fernando J. Pereda <ferdy@gentoo.org> +git-1.4.2.ebuild:
+  New upstream version.
+
+  12 Aug 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-1.2.4.ebuild,
+  -git-1.3.3.ebuild, -git-1.4.0.ebuild, -git-1.4.1.ebuild:
+  Clean old versions.
+
+  12 Aug 2006; Krzysiek Pawlik <nelchael@gentoo.org> git-1.4.1.1.ebuild:
+  Stable on x86, see bug #143586.
+
+  12 Aug 2006; Markus Rothe <corsair@gentoo.org> git-1.4.1.1.ebuild:
+  Stable on ppc64; bug #143586
+
+  12 Aug 2006; Fernando J. Pereda <ferdy@gentoo.org> git-1.4.1.1.ebuild:
+  Add ( emacs? app-editors/emacs ) dependency since elisp-common.eclass
+  doesn't provide it. Thanks to nixnut@gentoo.org for noticing.
+
+  12 Aug 2006; Luca Barbato <lu_zero@gentoo.org> git-1.4.1.1.ebuild:
+  Marked ppc
+
+  11 Aug 2006; Jeroen Roovers <jer@gentoo.org> git-1.4.1.1.ebuild:
+  Stable for HPPA (bug #143586).
+
+  11 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org> git-1.4.1.1.ebuild:
+  Stable on sparc wrt #143586
+
+  11 Aug 2006; Daniel Gryniewicz <dang@gentoo.org> git-1.4.1.1.ebuild:
+  Marked stable on amd64 for
+
+  11 Aug 2006; Fernando J. Pereda <ferdy@gentoo.org> git-1.4.1.1.ebuild:
+  Stable on alpha wrt bug #143586
+
+  08 Aug 2006; Fernando J. Pereda <ferdy@gentoo.org> git-1.4.1.1.ebuild:
+  Recommend dev-perl/libwww-perl to use git-svn. Fixes bug #142116.
+
+*git-1.4.1.1 (25 Jul 2006)
+
+  25 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> +git-1.4.1.1.ebuild:
+  Version bump.
+
+  11 Jul 2006; Aron Griffis <agriffis@gentoo.org> git-1.4.0-r1.ebuild,
+  git-1.4.1.ebuild:
+  Mark 1.4.0-r1 stable on ia64, mark 1.4.1 ~ia64
+
+*git-1.4.1 (02 Jul 2006)
+
+  02 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> +git-1.4.1.ebuild:
+  Version bump to version 1.4.1. No gitweb installed as of yet.
+
+  28 Jun 2006; Fabian Groffen <grobian@gentoo.org> git-1.4.0-r1.ebuild:
+  Marked ~ppc-macos
+
+*git-1.4.0-r1 (27 Jun 2006)
+
+  27 Jun 2006; Fernando J. Pereda <ferdy@gentoo.org> +git-1.4.0-r1.ebuild:
+  Install gitview and git-svn. Fixes bug #137942, thanks to Nguyen Thai Ngoc
+  Duy <pclouds@gentoo.org>.
+
+*git-1.4.0 (10 Jun 2006)
+
+  10 Jun 2006; Fernando J. Pereda <ferdy@gentoo.org> metadata.xml,
+  -git-1.2.6.ebuild, -git-1.3.1.ebuild, -git-1.3.2.ebuild,
+  +git-1.4.0.ebuild:
+  New upstream version. Removed Carlos from metadata.xml as he requested.
+  Removed some old versions, too.
+
+  21 May 2006; Fernando J. Pereda <ferdy@gentoo.org> +files/70git-gentoo.el,
+  git-1.3.3.ebuild:
+  Add USE=emacs support. Patch by Christian Schlotter <again@gmx.de> in bug
+  #133883.
+
+*git-1.3.3 (17 May 2006)
+
+  17 May 2006; Fernando J. Pereda <ferdy@gentoo.org> +git-1.3.3.ebuild:
+  New upstream version.
+
+  14 May 2006; Diego Pettenò <flameeyes@gentoo.org> git-1.3.2.ebuild:
+  Add ~x86-fbsd keyword.
+
+*git-1.3.2 (04 May 2006)
+
+  04 May 2006; Fernando J. Pereda <ferdy@gentoo.org> +git-1.3.2.ebuild:
+  New upstream version.
+
+*git-1.3.1 (25 Apr 2006)
+
+  25 Apr 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-1.3.0-r1.ebuild,
+  +git-1.3.1.ebuild:
+  Version bump. Remove 1.3.0-r1.
+
+  21 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org> git-1.2.4.ebuild:
+  Stable on hppa
+
+*git-1.3.0-r1 (19 Apr 2006)
+
+  19 Apr 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-1.3.0.ebuild,
+  +git-1.3.0-r1.ebuild:
+  Remove unneeded dependencies and add a new tarball with some late
+  documentation changes. Install git-send-email unconditionally since now it
+  doesn't require extra deps (the related USE-flag goes away). Inform about
+  git-cvsserver. Remove the buggy old one.
+
+*git-1.3.0 (18 Apr 2006)
+
+  18 Apr 2006; Fernando J. Pereda <ferdy@gentoo.org> +git-1.3.0.ebuild:
+  New upstream version.
+
+*git-1.2.6 (08 Apr 2006)
+
+  08 Apr 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-1.2.5.ebuild,
+  +git-1.2.6.ebuild:
+  New upstream version. Removed 1.2.5
+
+*git-1.2.5 (05 Apr 2006)
+
+  05 Apr 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-1.2.3.ebuild,
+  +git-1.2.5.ebuild:
+  New upstream version. Use the X use flag instead of tcltk. Remove 1.2.3.
+
+  22 Mar 2006; Luis Medinas <metalgod@gentoo.org> git-1.2.4.ebuild:
+  Stable on amd64. Bug #126850.
+
+  22 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> git-1.2.4.ebuild:
+  ~hppa blessing
+
+  20 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> git-1.2.4.ebuild:
+  Stable on sparc wrt #126850
+
+  20 Mar 2006; Luca Barbato <lu_zero@gentoo.org> git-1.2.4.ebuild:
+  Marked ppc
+
+  19 Mar 2006; Krzysiek Pawlik <nelchael@gentoo.org> git-1.2.4.ebuild:
+  Stable on x86, see bug #126850.
+
+  19 Mar 2006; Markus Rothe <corsair@gentoo.org> git-1.2.4.ebuild:
+  Stable on ppc64; bug #126850
+
+  19 Mar 2006; Fernando J. Pereda <ferdy@gentoo.org> git-1.2.4.ebuild:
+  Stable on alpha wrt bug #126850
+
+*git-1.2.4 (02 Mar 2006)
+
+  02 Mar 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-1.2.1.ebuild,
+  -git-1.2.2.ebuild, +git-1.2.4.ebuild:
+  New upstream version. Trim old ones
+
+*git-1.2.3 (23 Feb 2006)
+
+  23 Feb 2006; Fernando J. Pereda <ferdy@gentoo.org> +git-1.2.3.ebuild:
+  New upstream version
+
+*git-1.2.2 (19 Feb 2006)
+
+  19 Feb 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-1.2.0.ebuild,
+  +git-1.2.2.ebuild:
+  New upstream version. Remove old one.
+
+  18 Feb 2006; Simon Stelling <blubb@gentoo.org> git-1.1.6.ebuild:
+  stable on amd64
+
+  17 Feb 2006; Joseph Jezak <josejx@gentoo.org> git-1.1.6.ebuild:
+  Marked ppc stable for bug #122887.
+
+*git-1.2.1 (16 Feb 2006)
+
+  16 Feb 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-0.7.ebuild,
+  +git-1.2.1.ebuild:
+  New upstream version, remove ancient one
+
+  15 Feb 2006; Markus Rothe <corsair@gentoo.org> git-1.1.6.ebuild:
+  Stable on ppc64; bug #122887
+
+  15 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org> git-1.1.6.ebuild:
+  Stable on sparc wrt #122887
+
+  15 Feb 2006; Krzysiek Pawlik <nelchael@gentoo.org> git-1.1.6.ebuild:
+  Stable on x86, bug #122887.
+
+  15 Feb 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-0.99.8a.ebuild,
+  -git-0.99.9n.ebuild, -git-1.0.6.ebuild, git-1.1.6.ebuild:
+  git-1.1.6 stable on alpha. Remove ancienct ~arch versions
+
+  13 Feb 2006; Stuart Longland <redhatter@gentoo.org> git-1.1.6.ebuild:
+  Added ~mips to git-1.1.6 as per bug #108215.
+
+*git-1.2.0 (13 Feb 2006)
+
+  13 Feb 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-1.1.5.ebuild,
+  +git-1.2.0.ebuild:
+  Version bump, remove 1.1.5
+
+*git-1.1.6 (30 Jan 2006)
+
+  30 Jan 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-1.1.3.ebuild,
+  -git-1.1.4.ebuild, +git-1.1.6.ebuild:
+  New upstream version, remove old ones
+
+*git-1.1.5 (28 Jan 2006)
+
+  28 Jan 2006; Fernando J. Pereda <ferdy@gentoo.org> +git-1.1.5.ebuild:
+  new upstream version
+
+*git-1.1.4 (20 Jan 2006)
+
+  20 Jan 2006; Fernando J. Pereda <ferdy@gentoo.org> -git-1.1.2.ebuild,
+  +git-1.1.4.ebuild:
+  New upstream version.
+
+*git-1.1.3 (17 Jan 2006)
+
+  17 Jan 2006; Fernando J. Pereda <ferdy@gentoo.org>
+  -files/git-1.1.1-glossary-from-1.1.0.diff, -git-1.1.1.ebuild,
+  +git-1.1.3.ebuild:
+  new upstream version, remove 1.1.1
+
+*git-1.1.2 (14 Jan 2006)
+
+  14 Jan 2006; Fernando J. Pereda <ferdy@gentoo.org> +git-1.1.2.ebuild:
+  new upstream version
+
+  12 Jan 2006; Fernando J. Pereda <ferdy@gentoo.org> git-1.1.1.ebuild:
+  We should only try to apply git-1.1.1-glossary-from-1.1.0.diff if USE=doc.
+  Fixes bug #118755, thanks to Christian Heim <phreak@gentoo.org>
+
+*git-1.1.1 (11 Jan 2006)
+
+  11 Jan 2006; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/git-1.1.1-glossary-from-1.1.0.diff, -git-1.1.0.ebuild,
+  +git-1.1.1.ebuild:
+  Version bump. Remove 1.1.0 as it reported a wrong version and might make
+  confuse bugreports.
+
+  09 Jan 2006; Fernando J. Pereda <ferdy@gentoo.org> git-1.1.0.ebuild:
+  http://kernel.org/pub -> mirror://kernel/ in SRC_URI
+
+*git-1.1.0 (09 Jan 2006)
+
+  09 Jan 2006; Fernando J. Pereda <ferdy@gentoo.org> +git-1.1.0.ebuild:
+  New upstream version
+
+*git-1.0.6 (28 Dec 2005)
+
+  28 Dec 2005; Fernando J. Pereda <ferdy@gentoo.org> -git-1.0.5.ebuild,
+  +git-1.0.6.ebuild:
+  A new day, means a new upstream version
+
+*git-1.0.5 (27 Dec 2005)
+
+  27 Dec 2005; Fernando J. Pereda <ferdy@gentoo.org> -git-1.0.4.ebuild,
+  +git-1.0.5.ebuild:
+  New upstream version.
+
+*git-1.0.4 (24 Dec 2005)
+
+  24 Dec 2005; Fernando J. Pereda <ferdy@gentoo.org> -git-1.0.3.ebuild,
+  +git-1.0.4.ebuild:
+  New upstream version. Remove 1.0.3
+
+*git-1.0.3 (23 Dec 2005)
+
+  23 Dec 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  -files/git-1.0.0-http-fix.patch, -git-1.0.0-r1.ebuild, +git-1.0.3.ebuild:
+  Version bump, remove old version
+
+*git-1.0.0-r1 (21 Dec 2005)
+
+  21 Dec 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/git-1.0.0-http-fix.patch, -git-1.0.0.ebuild, +git-1.0.0-r1.ebuild:
+  This is what upstream calls 1.0.0a. Remove 1.0.0 since it is a bit broken
+
+*git-1.0.0 (21 Dec 2005)
+
+  21 Dec 2005; Fernando J. Pereda <ferdy@gentoo.org> +git-1.0.0.ebuild:
+  New upstream version
+
+*git-0.99.9n (15 Dec 2005)
+
+  15 Dec 2005; Fernando J. Pereda <ferdy@gentoo.org> -git-0.99.9m.ebuild,
+  +git-0.99.9n.ebuild:
+  New upstream version, remove old one
+
+*git-0.99.9m (12 Dec 2005)
+
+  12 Dec 2005; Fernando J. Pereda <ferdy@gentoo.org> -git-0.99.9l.ebuild,
+  +git-0.99.9m.ebuild:
+  version bump, remove old version
+
+*git-0.99.9l (04 Dec 2005)
+
+  04 Dec 2005; Fernando J. Pereda <ferdy@gentoo.org> -git-0.99.9k.ebuild,
+  +git-0.99.9l.ebuild:
+  version bump. remove old version
+
+  02 Dec 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  -files/git-0.99.9j-binary-diff-fix.patch:
+  remove unneeded patch
+
+*git-0.99.9k (01 Dec 2005)
+
+  01 Dec 2005; Fernando J. Pereda <ferdy@gentoo.org> -git-0.99.9j.ebuild,
+  +git-0.99.9k.ebuild:
+  version bump, remove old version
+
+  30 Nov 2005; Tom Gall <tgall@gentoo.org> git-0.99.9j.ebuild:
+  stable on ppc64 (and works well!)
+
+  19 Nov 2005; Carlos Silva <r3pek@gentoo.org>
+  +files/git-0.99.9j-binary-diff-fix.patch, -files/git-0.99.9j-diff.patch,
+  git-0.99.9j.ebuild:
+  Rename the patch to a more understandable name
+
+*git-0.99.9j (19 Nov 2005)
+
+  19 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/git-0.99.9j-diff.patch, -git-0.99.9i.ebuild, +git-0.99.9j.ebuild:
+  version bump; this is 1.0rc2. Remove old version (aka 1.0rc1)
+
+*git-0.99.9i (15 Nov 2005)
+
+  15 Nov 2005; Carlos Silva <r3pek@gentoo.org> -git-0.99.9h.ebuild,
+  +git-0.99.9i.ebuild:
+  Version bump
+
+*git-0.99.9h (14 Nov 2005)
+
+  14 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org> -git-0.99.9g.ebuild,
+  +git-0.99.9h.ebuild:
+  version bump, remove old version
+
+*git-0.99.9g (10 Nov 2005)
+
+  10 Nov 2005; Carlos Silva <r3pek@gentoo.org> -git-0.99.9f.ebuild,
+  +git-0.99.9g.ebuild:
+  Version bump
+
+*git-0.99.9f (08 Nov 2005)
+
+  08 Nov 2005; Carlos Silva <r3pek@gentoo.org> -git-0.99.9e.ebuild,
+  +git-0.99.9f.ebuild:
+  Version bump
+
+*git-0.99.9e (07 Nov 2005)
+
+  07 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org> -git-0.99.9d.ebuild,
+  +git-0.99.9e.ebuild:
+  version bump, remove old one
+
+*git-0.99.9d (06 Nov 2005)
+
+  06 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org> -git-0.99.9c.ebuild,
+  +git-0.99.9d.ebuild:
+  version bump, remove old version
+
+*git-0.99.9c (04 Nov 2005)
+
+  04 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org> -git-0.99.9b.ebuild,
+  +git-0.99.9c.ebuild:
+  version bump, remove old version
+
+*git-0.99.9b (02 Nov 2005)
+
+  02 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org> -git-0.99.9.ebuild,
+  +git-0.99.9b.ebuild:
+  version bump, removed old version
+
+*git-0.99.9 (30 Oct 2005)
+
+  30 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org> -git-0.99.8f.ebuild,
+  +git-0.99.9.ebuild:
+  version bump. remove old version
+
+*git-0.99.8f (19 Oct 2005)
+
+  19 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org> -git-0.99.8d.ebuild,
+  -git-0.99.8e.ebuild, +git-0.99.8f.ebuild:
+  version bump, remove old versions
+
+*git-0.99.8e (18 Oct 2005)
+
+  18 Oct 2005; Carlos Silva <r3pek@gentoo.org> +git-0.99.8e.ebuild:
+  Version bump
+
+*git-0.99.8d (16 Oct 2005)
+
+  16 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org> -git-0.99.8c-r1.ebuild,
+  +git-0.99.8d.ebuild:
+  version bump, remove old version
+
+*git-0.99.8c-r1 (14 Oct 2005)
+
+  14 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org> -git-0.99.8b.ebuild,
+  -git-0.99.8c.ebuild, +git-0.99.8c-r1.ebuild:
+  provide a custom src_test since the default one fails. fix one pkg_postinst
+  einfo. remove 0.99.8{b,c}
+
+*git-0.99.8c (11 Oct 2005)
+
+  11 Oct 2005; Carlos Silva <r3pek@gentoo.org> +git-0.99.8c.ebuild:
+  New version from upstream. This version have an important fix to
+  git-ls-tree. When two identical blobs or trees were contained in a tree, the
+  earlier code mislabeled them in the output.
+
+*git-0.99.8b (06 Oct 2005)
+
+  06 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org> +git-0.99.8b.ebuild:
+  version bump. Fix git-send-email installation. Added missing dependency on
+  dev-perl/Email-Valid. Dropped ~mips keyword, see bug #108215 for more
+  information.
+
+*git-0.99.8a (05 Oct 2005)
+
+  05 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/git-daemon.confd, +files/git-daemon.initd, metadata.xml,
+  -git-0.99.8.ebuild, +git-0.99.8a.ebuild:
+  Added myself to metadata. Version bump, added init script and its conf.d
+  file. Fixed USE=doc. Removed not needed deps and rephrased pkg_postinst.
+  Removed old version
+
+*git-0.99.8 (03 Oct 2005)
+
+  03 Oct 2005; Carlos Silva <r3pek@gentoo.org> -git-0.99.6.ebuild,
+  -git-0.99.7d.ebuild, +git-0.99.8.ebuild:
+  Version bump
+
+  28 Sep 2005; Ilya A. Volynets-Evenbakh <ilya@total-knowledge.com>
+  git-0.99.7d.ebuild:
+  mark ~mips
+
+*git-0.99.7d (25 Sep 2005)
+
+  25 Sep 2005; Carlos Silva <r3pek@gentoo.org> -git-0.99.7a-r1.ebuild,
+  +git-0.99.7d.ebuild:
+  Version bump. Applied the patches found in bug #106998
+
+*git-0.99.7a-r1 (22 Sep 2005)
+
+  22 Sep 2005; Carlos Silva <r3pek@gentoo.org> -git-0.99.7a.ebuild,
+  +git-0.99.7a-r1.ebuild:
+  Rev bump to fix some dependencies and added the tcltk use flag
+
+*git-0.99.7a (21 Sep 2005)
+
+  21 Sep 2005; Carlos Silva <r3pek@gentoo.org> -git-0.99.7.ebuild,
+  +git-0.99.7a.ebuild:
+  Version bump. Also did some cleanup on the DEPEND/RDEPEND var's and added
+  the gitsendemail use flag. Fixes bug #106791, thx to Max Loparyev.
+
+*git-0.99.7 (19 Sep 2005)
+
+  19 Sep 2005; Carlos Silva <r3pek@gentoo.org> +git-0.99.7.ebuild:
+  Version bump
+
+  18 Sep 2005; Markus Rothe <corsair@gentoo.org> git-0.99.6.ebuild:
+  Added ~ppc64 (bug #106318)
+
+  12 Sep 2005; Carlos Silva <r3pek@gentoo.org> git-0.7.ebuild,
+  git-0.99.6.ebuild:
+  Fixed homepage. Closes bug #105648
+
+*git-0.99.6 (08 Sep 2005)
+
+  08 Sep 2005; Carlos Silva <r3pek@gentoo.org> -git-0.99.5-r2.ebuild,
+  +git-0.99.6.ebuild:
+  Version bump. Removed version 0.99.5
+
+*git-0.99.5-r2 (04 Sep 2005)
+
+  04 Sep 2005; Carlos Silva <r3pek@gentoo.org> -git-0.99.5-r1.ebuild,
+  +git-0.99.5-r2.ebuild:
+  Forgot to revbump
+
+  04 Sep 2005; Carlos Silva <r3pek@gentoo.org> git-0.99.5-r1.ebuild:
+  Added app-text/rcs as dep. Closes bug #104536
+
+*git-0.99.5-r1 (27 Aug 2005)
+
+  27 Aug 2005; Carlos Silva <r3pek@gentoo.org> -git-0.99.4.ebuild,
+  -git-0.99.5.ebuild, +git-0.99.5-r1.ebuild:
+  Removed version 0.99.4. Revbumped version 0.99.5 to add a missing dep
+  (dev-util/cvsps). Closes bug #103962
+
+  26 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> git-0.99.5.ebuild:
+  marked ~alpha wrt bug #101907
+
+*git-0.99.5 (25 Aug 2005)
+
+  25 Aug 2005; Carlos Silva <r3pek@gentoo.org> -git-0.99.3.ebuild,
+  git-0.99.4.ebuild, +git-0.99.5.ebuild:
+  Version bump
+
+  24 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> git-0.7.ebuild:
+  Stable on sparc
+
+*git-0.99.4 (13 Aug 2005)
+
+  13 Aug 2005; Carlos Silva <r3pek@gentoo.org> git-0.7.ebuild,
+  +git-0.99.4.ebuild:
+  Marked version 0.7 stable on x86 and added version 0.99.4
+
+*git-0.99.3 (09 Aug 2005)
+
+  09 Aug 2005; Michał Januszewski <spock@gentoo.org> +git-0.99.3.ebuild:
+  Version bump.
+
+  15 Jul 2005; Carlos Silva <r3pek@gentoo.org> git-0.7.ebuild:
+  Closing bug #98032. thx Carsten Lohrke
+
+  24 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> git-0.7.ebuild:
+  To ~sparc
+
+  19 May 2005; Carlos Silva <r3pek@gentoo.org> git-0.7.ebuild:
+  Adding net-misc/curl as a dep. Thanks to Priit Laes in bug #93247
+
+  17 May 2005; Carlos Silva <r3pek@gentoo.org> git-0.7.ebuild:
+  Removing git-pasky references
+
+  07 May 2005; David Holm <dholm@gentoo.org> git-0.7.ebuild:
+  Added to ~ppc.
+
+*git-0.7 (05 May 2005)
+
+  05 May 2005; Carlos Silva <r3pek@gentoo.org> -git-0.6.ebuild,
+  +git-0.7.ebuild:
+  Removing old git version (0.6) and adding the new one (0.7)
+
+*git-0.6 (26 Apr 2005)
+
+  26 Apr 2005; Carlos Silva <r3pek@gentoo.org> -git-0.04.ebuild,
+  +git-0.6.ebuild:
+  Bumping to 0.6
+
+*git-0.5 (21 Apr 2005)
+
+  21 Apr 2005; Carlos Silva <r3pek@gentoo.org> +git-0.5.ebuild:
+  Version bump
+
+  15 Apr 2005; Carlos Silva <r3pek@gentoo.org> :
+  Cleaning up the ebuild
+
+*git-0.04 (15 Apr 2005)
+
+  15 Apr 2005; Carlos Silva <r3pek@gentoo.org> +metadata.xml:
+  Initial import

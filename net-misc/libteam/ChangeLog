@@ -1,0 +1,42 @@
+# ChangeLog for net-misc/libteam
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/libteam/ChangeLog,v 1.9 2015/03/15 11:55:31 pacho Exp $
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> libteam-1.11.ebuild:
+  ppc64 stable, bug 534012
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> libteam-1.11.ebuild:
+  ppc stable, bug 534012
+
+  27 Jan 2015; Anthony G. Basile <blueness@gentoo.org> libteam-1.0.ebuild,
+  libteam-1.11.ebuild, libteam-1.14.ebuild:
+  Keyword ~ppc ~ppc64, bug #523468
+
+  05 Dec 2014; Agostino Sarubbo <ago@gentoo.org> libteam-1.11.ebuild:
+  Stable for x86, wrt bug #529970
+
+  26 Nov 2014; Agostino Sarubbo <ago@gentoo.org> libteam-1.11.ebuild:
+  Stable for amd64, wrt bug #529970
+
+*libteam-1.14 (23 Nov 2014)
+
+  23 Nov 2014; Yixun Lan <dlan@gentoo.org> +libteam-1.14.ebuild, metadata.xml:
+  version bump, proxy for Andreis Vinogradovs ( slepnoga ), bug 530058
+
+*libteam-1.11 (30 Jun 2014)
+
+  30 Jun 2014; Maxim Koltsov <maksbotan@gentoo.org> +libteam-1.11.ebuild:
+  Bump to 1.11, thanks to slepnoga
+
+*libteam-1.0 (08 Mar 2013)
+
+  08 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> -libteam-0_rc8448186.ebuild,
+  +libteam-1.0.ebuild:
+  Version bump, drop old
+
+*libteam-0_rc8448186 (22 Oct 2012)
+
+  22 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> +libteam-0_rc8448186.ebuild,
+  +metadata.xml:
+  Initial commit. Ebuild by Andreis Vinogradovs, he will maintain this package
+  through proxy maintainers

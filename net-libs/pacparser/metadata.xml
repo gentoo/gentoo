@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+  <email>bicatali@gentoo.org</email>
+</maintainer>
+<longdescription>
+  A library to parse proxy auto-config (PAC) files. Proxy auto-config
+  files are a vastly used proxy configuration method these days. Web
+  browsers can use a PAC file to determine which proxy server to use
+  or whether to go direct for a given URL. PAC files are written in
+  JavaScript and can be programmed to return different proxy methods
+  (e.g. "PROXY proxy1:port; DIRECT") depending upon URL, source IP
+  address, protocol, time of the day etc. PAC files introduce a lot
+  of possibilities. 
+  Needless to say, PAC files are now a widely accepted method for
+  proxy configuration management and companies all over are using
+  them in corporate environments. Almost all popular web browsers
+  support PAC files. The idea behind pacparser is to make it easy to
+  add this PAC file parsing capability to  any program (C and Python
+  supported right now).
+</longdescription>
+<upstream>
+  <remote-id type="google-code">pacproxy</remote-id>
+</upstream>
+</pkgmetadata>

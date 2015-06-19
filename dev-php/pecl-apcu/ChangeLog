@@ -1,0 +1,62 @@
+# ChangeLog for dev-php/pecl-apcu
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-apcu/ChangeLog,v 1.14 2015/01/11 03:14:54 grknight Exp $
+
+  11 Jan 2015; Brian Evans <grknight@gentoo.org> -pecl-apcu-4.0.1-r1.ebuild,
+  -pecl-apcu-4.0.6.ebuild:
+  Drop old
+
+  04 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pecl-apcu-4.0.7.ebuild:
+  Stable for x86, wrt bug #534554
+
+  04 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pecl-apcu-4.0.7.ebuild:
+  Stable for amd64, wrt bug #534554
+
+*pecl-apcu-4.0.7 (15 Oct 2014)
+
+  15 Oct 2014; Brian Evans <grknight@gentoo.org> +pecl-apcu-4.0.7.ebuild:
+  Version bump
+
+*pecl-apcu-4.0.6 (30 Sep 2014)
+
+  30 Sep 2014; Brian Evans <grknight@gentoo.org> +pecl-apcu-4.0.6.ebuild,
+  -pecl-apcu-4.0.0.ebuild, -pecl-apcu-4.0.1.ebuild, -pecl-apcu-4.0.2.ebuild,
+  -pecl-apcu-4.0.4.ebuild:
+  Version bump; Add PHP 5.6 support; Drop old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pecl-apcu-4.0.0.ebuild,
+  pecl-apcu-4.0.1-r1.ebuild, pecl-apcu-4.0.1.ebuild, pecl-apcu-4.0.2.ebuild,
+  pecl-apcu-4.0.4.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*pecl-apcu-4.0.4 (03 May 2014)
+
+  03 May 2014; Ole Markus With <olemarkus@gentoo.org> +pecl-apcu-4.0.4.ebuild:
+  Version bump
+
+  16 Sep 2013; Patrick Lauer <patrick@gentoo.org> pecl-apcu-4.0.2.ebuild:
+  Whitespace
+
+*pecl-apcu-4.0.2 (15 Sep 2013)
+
+  15 Sep 2013; Ole Markus With <olemarkus@gentoo.org> +pecl-apcu-4.0.2.ebuild:
+  Version bump
+
+  13 Aug 2013; Agostino Sarubbo <ago@gentoo.org> pecl-apcu-4.0.1-r1.ebuild:
+  Stable for x86, wrt bug #480460
+
+  13 Aug 2013; Agostino Sarubbo <ago@gentoo.org> pecl-apcu-4.0.1-r1.ebuild:
+  Stable for amd64, wrt bug #480460
+
+*pecl-apcu-4.0.1-r1 (26 Jun 2013)
+
+  26 Jun 2013; Ole Markus With <olemarkus@gentoo.org>
+  +pecl-apcu-4.0.1-r1.ebuild:
+  Revbump. Fix issue with --enable-apcu-mmap disables mmap (!)
+
+*pecl-apcu-4.0.0 (30 Apr 2013)
+*pecl-apcu-4.0.1 (30 Apr 2013)
+
+  30 Apr 2013; Ole Markus With <olemarkus@gentoo.org> +metadata.xml,
+  +pecl-apcu-4.0.0.ebuild, +pecl-apcu-4.0.1.ebuild:
+  Version bump

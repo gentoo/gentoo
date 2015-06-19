@@ -1,0 +1,22 @@
+From dccb65acba7684c97675473fec5120e3aa55d2d0 Mon Sep 17 00:00:00 2001
+From: David Leverton <levertond@googlemail.com>
+Date: Sun, 29 Mar 2015 18:36:02 +0100
+Subject: Fix EBUILD_PHASE_FUNC leakage
+
+
+diff --git a/paludis/repositories/e/ebuild/ebuild.bash b/paludis/repositories/e/ebuild/ebuild.bash
+index 24a93d4..b856bad 100755
+--- a/paludis/repositories/e/ebuild/ebuild.bash
++++ b/paludis/repositories/e/ebuild/ebuild.bash
+@@ -76,7 +76,7 @@ ebuild_sanitise_envvars
+ # fancy fake variables
+ EBUILD_METADATA_VARIABLES="DEPEND RDEPEND PDEPEND IUSE IUSE_EFFECTIVE SRC_URI DOWNLOADS RESTRICT \
+     LICENSE LICENCES KEYWORDS INHERITED PROVIDE HOMEPAGE DESCRIPTION DEPENDENCIES \
+-    E_IUSE E_DEPEND E_RDEPEND E_PDEPEND PLATFORMS DEFINED_PHASES \
++    E_IUSE E_DEPEND E_RDEPEND E_PDEPEND PLATFORMS DEFINED_PHASES EBUILD_PHASE_FUNC \
+     MYOPTIONS E_MYOPTIONS E_DEPENDENCIES BINARY_KEYWORDS BINARY_URI \
+     GENERATED_USING GENERATED_TIME GENERATED_FROM_REPOSITORY BINARY_PLATFORMS REMOTE_IDS \
+     SUMMARY BUGS_TO UPSTREAM_DOCUMENTATION UPSTREAM_CHANGELOG \
+-- 
+cgit v0.10.2
+

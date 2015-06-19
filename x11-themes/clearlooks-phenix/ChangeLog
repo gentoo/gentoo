@@ -1,0 +1,75 @@
+# ChangeLog for x11-themes/clearlooks-phenix
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/clearlooks-phenix/ChangeLog,v 1.14 2015/04/16 08:50:32 idella4 Exp $
+
+  16 Apr 2015; Ian Delaney <idella4@gentoo.org> clearlooks-phenix-5.0.7.ebuild,
+  clearlooks-phenix-6.0.3.ebuild:
+  clearlooks-phenix-5.0.7.ebuild brought in line with vrsn 6.0.3
+
+*clearlooks-phenix-6.0.3 (16 Apr 2015)
+
+  16 Apr 2015; Ian Delaney <idella4@gentoo.org> +clearlooks-phenix-6.0.3.ebuild,
+  -clearlooks-phenix-3.0.16.ebuild, clearlooks-phenix-5.0.7.ebuild,
+  metadata.xml:
+  bump; patch by new proxy maintainer, metadata updated accordingly, all wrt bug
+  #533228, rm old version 3.0.16
+
+  28 Jan 2015; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  05 Jan 2015; Pacho Ramos <pacho@gentoo.org> -clearlooks-phenix-2.0.17.ebuild,
+  -clearlooks-phenix-2.0.18.ebuild:
+  Drop old depending on gtk+-3.4 (#508884)
+
+*clearlooks-phenix-5.0.7 (29 Oct 2014)
+
+  29 Oct 2014; Julian Ospald <hasufell@gentoo.org>
+  +clearlooks-phenix-5.0.7.ebuild, clearlooks-phenix-9999.ebuild:
+  version bump, update live ebuild
+
+  19 Mar 2014; Julian Ospald <hasufell@gentoo.org> -clearlooks-phenix-2.ebuild,
+  -clearlooks-phenix-3.ebuild:
+  remove old
+
+  19 Mar 2014; Julian Ospald <hasufell@gentoo.org>
+  clearlooks-phenix-2.0.18.ebuild, clearlooks-phenix-3.0.15.ebuild:
+  stable on amd64 and x86 wrt #501404
+
+*clearlooks-phenix-3.0.16 (28 Oct 2013)
+*clearlooks-phenix-2.0.18 (28 Oct 2013)
+
+  28 Oct 2013; Julian Ospald <hasufell@gentoo.org>
+  +clearlooks-phenix-2.0.18.ebuild, +clearlooks-phenix-3.0.16.ebuild,
+  clearlooks-phenix-9999.ebuild:
+  version bump wrt #461280, also allow parallel installation
+
+*clearlooks-phenix-3.0.15 (08 Jun 2013)
+*clearlooks-phenix-2.0.17 (08 Jun 2013)
+
+  08 Jun 2013; Sebastian Pipping <sping@gentoo.org>
+  +clearlooks-phenix-2.0.17.ebuild, +clearlooks-phenix-3.0.15.ebuild:
+  Add copies with proper version numbers (bug #472666, comment 2)
+
+*clearlooks-phenix-3 (08 Jun 2013)
+
+  08 Jun 2013; Julian Ospald <hasufell@gentoo.org> clearlooks-phenix-2.ebuild,
+  +clearlooks-phenix-3.ebuild, clearlooks-phenix-9999.ebuild:
+  version bump wrt #472666, update slot blockers
+
+  07 Jun 2013; Julian Ospald <hasufell@gentoo.org> -clearlooks-phenix-1.ebuild,
+  clearlooks-phenix-2.ebuild, clearlooks-phenix-9999.ebuild:
+  add slot for gtk+ deps, remove old
+
+  16 Feb 2013; Agostino Sarubbo <ago@gentoo.org> clearlooks-phenix-2.ebuild:
+  Stable for x86, wrt bug #457884
+
+  16 Feb 2013; Agostino Sarubbo <ago@gentoo.org> clearlooks-phenix-2.ebuild:
+  Stable for amd64, wrt bug #457884
+
+*clearlooks-phenix-9999 (01 Jan 2013)
+*clearlooks-phenix-2 (01 Jan 2013)
+*clearlooks-phenix-1 (01 Jan 2013)
+
+  01 Jan 2013; Julian Ospald <hasufell@gentoo.org> +clearlooks-phenix-1.ebuild,
+  +clearlooks-phenix-2.ebuild, +clearlooks-phenix-9999.ebuild, +metadata.xml:
+  initial import wrt #439976

@@ -1,0 +1,15 @@
+--- lxdm-0.4.1.orig/pam/lxdm
++++ lxdm-0.4.1/pam/lxdm
+@@ -1,9 +1,9 @@
+ #%PAM-1.0
+-auth       substack	system-auth
++auth       substack	system-local-login
+ auth       optional	pam_gnome_keyring.so
+-account    include	system-auth
++account    include	system-local-login
+ session    optional	pam_keyinit.so force revoke
+-session    include	system-auth
++session    include	system-local-login
+ session    required	pam_loginuid.so
+ #session    optional	pam_console.so
+ session    optional	pam_gnome_keyring.so auto_start

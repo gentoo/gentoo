@@ -1,0 +1,37 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/apachetop/apachetop-0.12.6-r2.ebuild,v 1.6 2015/05/28 15:13:32 jmorgan Exp $
+
+EAPI=5
+inherit eutils autotools
+
+DESCRIPTION="A realtime Apache log analyzer"
+HOMEPAGE="http://www.webta.org/projects/apachetop"
+SRC_URI="http://www.webta.org/${PN}/${P}.tar.gz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="amd64 hppa ~mips ppc sparc x86"
+IUSE="fam pcre"
+
+RDEPEND="
+	fam? ( virtual/fam )
+	pcre? ( dev-libs/libpcre )
+"
+DEPEND="${RDEPEND}"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-gcc41.patch
+	epatch "${FILESDIR}"/${P}-configure.patch
+	epatch "${FILESDIR}"/${P}-maxpathlen.patch
+	epatch "${FILESDIR}"/${P}-ac_config_header.patch
+	eautoreconf
+}
+
+src_configure() {
+	econf \
+		--with-logfile=/var/log/apache2/access_log \
+		--without-adns \
+		$(use_with fam) \
+		$(use_with pcre)
+}

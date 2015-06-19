@@ -1,0 +1,20 @@
+# ChangeLog for x11-themes/haematite-xcursors
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/haematite-xcursors/ChangeLog,v 1.4 2010/06/11 18:07:06 yngwin Exp $
+
+  11 Jun 2010; Ben de Groot <yngwin@gentoo.org> metadata.xml:
+  Removing myself as maintainer
+
+  18 Mar 2010; Ben de Groot <yngwin@gentoo.org> metadata.xml:
+  Adding myself as maintainer since I am no longer in desktop-misc herd
+
+  27 Apr 2009; Markus Meier <maekke@gentoo.org>
+  haematite-xcursors-1.0.ebuild:
+  amd64/x86 stable, bug #267344
+
+*haematite-xcursors-1.0 (24 Mar 2009)
+
+  24 Mar 2009; Ben de Groot <yngwin@gentoo.org> +metadata.xml,
+  +haematite-xcursors-1.0.ebuild:
+  Initial commit. Ebuild by me, based on existing xcursors ebuilds.
+

@@ -1,0 +1,191 @@
+# ChangeLog for www-apps/horizon
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/horizon/ChangeLog,v 1.34 2014/10/11 23:34:40 prometheanfire Exp $
+
+*horizon-2014.1.3 (11 Oct 2014)
+
+  11 Oct 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +horizon-2014.1.3.ebuild, -files/2014.1.2-CVE-2014-3594.patch,
+  -horizon-2014.1.2.ebuild, horizon-2014.1.9999.ebuild:
+  bup
+
+*horizon-2014.1.2 (21 Aug 2014)
+
+  21 Aug 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +files/2014.1.2-CVE-2014-3594.patch, +horizon-2014.1.2.ebuild,
+  -files/2014.1.1-CVE-2014-3473.patch, -horizon-2014.1.1-r1.ebuild:
+  bup, fix for bug 520420 CVE-2014-3594
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  horizon-2014.1.1-r1.ebuild, horizon-2014.1.9999.ebuild, horizon-9999.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  08 Jul 2014; Matthew Thode <prometheanfire@gentoo.org>
+  horizon-2014.1.1-r1.ebuild, horizon-2014.1.9999.ebuild, horizon-9999.ebuild:
+  updating deps in git ebuilds
+
+*horizon-2014.1.1-r1 (08 Jul 2014)
+
+  08 Jul 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +files/2014.1.1-CVE-2014-3473.patch, +horizon-2014.1.1-r1.ebuild,
+  -horizon-2014.1.1.ebuild:
+  fixing xss CVE-2014-3473 not vulnerable now, kthnx
+
+*horizon-2014.1.1 (16 Jun 2014)
+
+  16 Jun 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +horizon-2014.1.1.ebuild, -horizon-2014.1.ebuild:
+  2014.1.1 bup
+
+  15 Jun 2014; Matthew Thode <prometheanfire@gentoo.org>
+  -files/CVE-2014-0157-2013.2.3.patch, -horizon-2013.2.3-r1.ebuild,
+  -horizon-2013.2.9999.ebuild:
+  removing the old badness
+
+*horizon-2014.1 (28 Apr 2014)
+*horizon-2014.1.9999 (28 Apr 2014)
+
+  28 Apr 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +horizon-2014.1.9999.ebuild, +horizon-2014.1.ebuild:
+  2
+
+*horizon-2013.2.3-r1 (11 Apr 2014)
+
+  11 Apr 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +files/CVE-2014-0157-2013.2.3.patch, +horizon-2013.2.3-r1.ebuild,
+  -horizon-2013.2.3.ebuild:
+  fix for CVE-2014-0157
+
+*horizon-2013.2.3 (06 Apr 2014)
+
+  06 Apr 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +horizon-2013.2.3.ebuild, -horizon-2013.2.2.ebuild:
+  2013.2.3
+
+  06 Apr 2014; Matthew Thode <prometheanfire@gentoo.org>
+  -horizon-2013.1.5.ebuild, -horizon-2013.1.9999.ebuild:
+  removing grizzly
+
+  27 Mar 2014; Matthew Thode <prometheanfire@gentoo.org> horizon-9999.ebuild:
+  fixing versions on git master 9999
+
+*horizon-2013.1.5 (23 Mar 2014)
+
+  23 Mar 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +horizon-2013.1.5.ebuild, -files/cve-2013-6858_2013.1.4.patch,
+  -horizon-2013.1.4-r1.ebuild:
+  horizon bup
+
+  24 Feb 2014; Ian Delaney <idella4@gentoo.org> -horizon-2013.2.1.ebuild:
+  rm old 2013.2.1 by request of maintainer
+
+*horizon-2013.2.2 (20 Feb 2014)
+
+  20 Feb 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +horizon-2013.2.2.ebuild:
+  BUMP!
+
+*horizon-2013.2.1 (19 Dec 2013)
+
+  19 Dec 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +horizon-2013.2.1.ebuild, -files/cve-2013-6858_2013.2.patch,
+  -horizon-2013.2-r2.ebuild, horizon-2013.2.9999.ebuild:
+  now using 2013.2.1
+
+  13 Dec 2013; Matthew Thode <prometheanfire@gentoo.org>
+  -horizon-2013.2-r1.ebuild:
+  more badness from CVE-2013-6858 removed
+
+*horizon-2013.2-r2 (13 Dec 2013)
+*horizon-2013.1.4-r1 (13 Dec 2013)
+
+  13 Dec 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +files/cve-2013-6858_2013.1.4.patch, +files/cve-2013-6858_2013.2.patch,
+  +horizon-2013.1.4-r1.ebuild, +horizon-2013.2-r2.ebuild,
+  -horizon-2013.1.4.ebuild, -horizon-2013.2.ebuild:
+  fixes for CVE-2013-6858 badness removed
+
+*horizon-2013.2-r1 (27 Nov 2013)
+
+  27 Nov 2013; Ian Delaney <idella4@gentoo.org> +horizon-2013.2-r1.ebuild,
+  horizon-2013.2.9999.ebuild, metadata.xml:
+  Switch herd to openstack, revbump, 2013.2 live; add IUSE test, test deps, test
+  phase
+
+*horizon-2013.2 (29 Oct 2013)
+*horizon-2013.1.4 (29 Oct 2013)
+
+  29 Oct 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +horizon-2013.1.4.ebuild, +horizon-2013.2.ebuild, -horizon-2013.1.3-r2.ebuild:
+  new horizon packages
+
+*horizon-2013.2.9999 (23 Oct 2013)
+
+  23 Oct 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +horizon-2013.2.9999.ebuild:
+  update of horizon to havana
+
+  14 Sep 2013; Patrick Lauer <patrick@gentoo.org> -horizon-2013.1.3-r1.ebuild:
+  Drop revision with unsatisfied dependencies
+
+*horizon-2013.1.3-r2 (13 Sep 2013)
+
+  13 Sep 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +horizon-2013.1.3-r2.ebuild, horizon-2013.1.9999.ebuild:
+  move to neutronclient
+
+*horizon-2013.1.3-r1 (12 Sep 2013)
+
+  12 Sep 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +horizon-2013.1.3-r1.ebuild, -horizon-2013.1.3.ebuild,
+  horizon-2013.1.9999.ebuild, horizon-9999.ebuild:
+  horizon updated to be fully on distutils-r1
+
+  22 Aug 2013; Matthew Thode <prometheanfire@gentoo.org>
+  horizon-2013.1.3.ebuild, horizon-2013.1.9999.ebuild:
+  readded quantumclient, because upstream...
+
+  20 Aug 2013; Matthew Thode <prometheanfire@gentoo.org>
+  horizon-2013.1.3.ebuild, horizon-2013.1.9999.ebuild, horizon-9999.ebuild:
+  move of quantum to neutron
+
+  19 Aug 2013; Matthew Thode <prometheanfire@gentoo.org>
+  horizon-2013.1.9999.ebuild:
+  removed keywords from live ebuild
+
+*horizon-2013.1.3 (11 Aug 2013)
+
+  11 Aug 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +horizon-2013.1.3.ebuild, -horizon-2013.1.2.ebuild:
+  update of horizon to 2013.1.3
+
+*horizon-2013.1.9999 (02 Aug 2013)
+
+  02 Aug 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +horizon-2013.1.9999.ebuild, horizon-9999.ebuild:
+  stable/grizzly for everyone's favorite bastard child, grizzly :D
+
+  09 Jun 2013; Zac Medico <zmedico@gentoo.org> horizon-9999.ebuild:
+  Remove stray line.
+
+  09 Jun 2013; Matthew Thode <prometheanfire@gentoo.org> horizon-9999.ebuild:
+  updating horizon-9999 deps
+
+*horizon-2013.1.2 (06 Jun 2013)
+
+  06 Jun 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +horizon-2013.1.2.ebuild, -horizon-2013.1.1.ebuild:
+  version bump of horizon to 2013.1.2
+
+*horizon-2013.1.1 (10 May 2013)
+
+  10 May 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +horizon-2013.1.1.ebuild, -horizon-2013.1.ebuild:
+  update to latest openstack horizon release 2013.1.1
+
+*horizon-9999 (12 Apr 2013)
+*horizon-2013.1 (12 Apr 2013)
+
+  12 Apr 2013; Matthew Thode <prometheanfire@gentoo.org> +horizon-2013.1.ebuild,
+  +horizon-9999.ebuild, +metadata.xml:
+  initial openstack horizon commit

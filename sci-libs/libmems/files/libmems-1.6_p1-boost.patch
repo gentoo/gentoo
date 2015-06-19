@@ -1,0 +1,120 @@
+ libMems/Backbone.cpp           |  2 +-
+ libMems/Files.h                | 64 +++++++++++++++++++++---------------------
+ libMems/ProgressiveAligner.cpp |  2 +-
+ 3 files changed, 34 insertions(+), 34 deletions(-)
+
+diff --git a/libMems/Backbone.cpp b/libMems/Backbone.cpp
+index 86698a9..0025cd8 100644
+--- a/libMems/Backbone.cpp
++++ b/libMems/Backbone.cpp
+@@ -15,7 +15,7 @@
+ #include "libMems/Islands.h"
+ #include "libMems/CompactGappedAlignment.h"
+ 
+-#include <boost/property_map.hpp>
++#include <boost/property_map/property_map.hpp>
+ #include <boost/graph/graph_traits.hpp>
+ #include <boost/graph/adjacency_list.hpp>
+ #include <boost/graph/topological_sort.hpp>
+diff --git a/libMems/Files.h b/libMems/Files.h
+index 8d6e9be..8191065 100644
+--- a/libMems/Files.h
++++ b/libMems/Files.h
+@@ -22,44 +22,44 @@
+ 
+ #include "boost/filesystem/operations.hpp"
+ #include "boost/filesystem/exception.hpp"
+-#include "boost/algorithm/string.hpp"
++#include "boost/algorithm/string.hpp"
+ #include <string>
+ #include <sstream>
+ #include <iostream>
+ #include <iomanip>
+ 
+ 
+-/**
+- * Register a file name to be deleted before the process exits
+- * When passed an empty string, it does not add to the list of files to delete
+- * @param fname	The name of a file to delete, empty strings are ignored
+- * @return A vector of file names registered for deletion
+- */
+-std::vector< std::string >& registerFileToDelete( std::string fname = "" );
+-
+-inline
+-std::vector< std::string >& registerFileToDelete( std::string fname ) {
+-	// since this vector is needed when atexit() is called we allocate it
+-	// on the heap so its destructor won't get called
+-	static std::vector< std::string >* files = new std::vector< std::string >();
+-#pragma omp critical
+-{
+-	if( fname != "" )
+-		files->push_back( fname );
+-}
+-	return *files;
+-}
++/**
++ * Register a file name to be deleted before the process exits
++ * When passed an empty string, it does not add to the list of files to delete
++ * @param fname	The name of a file to delete, empty strings are ignored
++ * @return A vector of file names registered for deletion
++ */
++std::vector< std::string >& registerFileToDelete( std::string fname = "" );
+ 
+-void deleteRegisteredFiles();
+-inline
+-void deleteRegisteredFiles() {
+-	// don't be a slob, clean up after yourself:
+-	// delete any files that are laying around
+-	std::vector< std::string >& del_files = registerFileToDelete();
+-	for( int fileI = 0; fileI < del_files.size(); fileI++ )
+-		boost::filesystem::remove( del_files[ fileI ] );
+-	del_files.clear();	// clear the deleted files from the list
+-}
++inline
++std::vector< std::string >& registerFileToDelete( std::string fname ) {
++	// since this vector is needed when atexit() is called we allocate it
++	// on the heap so its destructor won't get called
++	static std::vector< std::string >* files = new std::vector< std::string >();
++#pragma omp critical
++{
++	if( fname != "" )
++		files->push_back( fname );
++}
++	return *files;
++}
++
++void deleteRegisteredFiles();
++inline
++void deleteRegisteredFiles() {
++	// don't be a slob, clean up after yourself:
++	// delete any files that are laying around
++	std::vector< std::string >& del_files = registerFileToDelete();
++	for( int fileI = 0; fileI < del_files.size(); fileI++ )
++		boost::filesystem::remove( del_files[ fileI ] );
++	del_files.clear();	// clear the deleted files from the list
++}
+ 
+ 
+ /**
+@@ -80,7 +80,7 @@ std::string CreateTempFileName(const std::string& prefix)
+ #endif
+         boost::filesystem::path path( prefix );
+         dir = path.branch_path().string();
+-        name = path.leaf();
++        name = path.filename().string();
+         if( name == "/" )
+         {
+                 dir += name;
+diff --git a/libMems/ProgressiveAligner.cpp b/libMems/ProgressiveAligner.cpp
+index 3be5fe0..5667a9e 100644
+--- a/libMems/ProgressiveAligner.cpp
++++ b/libMems/ProgressiveAligner.cpp
+@@ -27,7 +27,7 @@
+ 
+ #include <boost/dynamic_bitset.hpp>
+ #include <boost/tuple/tuple.hpp>
+-#include <boost/property_map.hpp>
++#include <boost/property_map/property_map.hpp>
+ #include <boost/graph/graph_traits.hpp>
+ #include <boost/graph/adjacency_list.hpp>
+ #include <boost/graph/johnson_all_pairs_shortest.hpp>

@@ -1,0 +1,302 @@
+# ChangeLog for www-misc/htdig
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-misc/htdig/ChangeLog,v 1.48 2015/03/03 10:25:56 dlan Exp $
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> htdig-3.2.0_beta6-r3.ebuild:
+  add arm64 support, tested on A53 board
+
+  02 May 2013; Patrick Lauer <patrick@gentoo.org> htdig-3.2.0_beta6-r3.ebuild:
+  Automake 1.13 fix
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org>
+  htdig-3.2.0_beta6-r3.ebuild:
+  keyword ~amd64-fbsd
+
+  20 Jan 2010; Raúl Porcel <armin76@gentoo.org>
+  htdig-3.2.0_beta6-r3.ebuild:
+  Add ~arm
+
+  01 Jan 2010; Jonathan Callen <abcd@gentoo.org>
+  htdig-3.2.0_beta6-r3.ebuild:
+  Add prefix keywords
+
+  13 Dec 2009; Jonathan Callen <abcd@gentoo.org> -files/3.1.6-ssl.patch,
+  -htdig-3.1.6-r7.ebuild, -htdig-3.1.6-r8.ebuild,
+  -files/htdig-3.1.6-unescaped-output.diff, htdig-3.2.0_beta6-r3.ebuild:
+  Drop some old versions; fix QA warnings; general cleanups
+
+  05 Dec 2007; <wrobel@gentoo.org> -htdig-3.2.0_beta6-r2.ebuild:
+  Removed insecure htdig-3.2.0_beta6-r2 (sec bug #200285).
+
+  04 Dec 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  htdig-3.2.0_beta6-r3.ebuild:
+  ppc stable, bug #200285
+
+  04 Dec 2007; Markus Rothe <corsair@gentoo.org>
+  htdig-3.2.0_beta6-r3.ebuild:
+  Stable on ppc64; bug #200285
+
+  04 Dec 2007; Jeroen Roovers <jer@gentoo.org> htdig-3.2.0_beta6-r3.ebuild:
+  Stable for HPPA (bug #200285).
+
+  04 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  htdig-3.2.0_beta6-r3.ebuild:
+  alpha/ia64/sparc stable wrt security #200285
+
+  04 Dec 2007; Steve Dibb <beandog@gentoo.org> htdig-3.2.0_beta6-r3.ebuild:
+  amd64 stable, bug 200285
+
+  03 Dec 2007; Markus Meier <maekke@gentoo.org> htdig-3.2.0_beta6-r3.ebuild:
+  x86 stable, security bug #200285
+
+*htdig-3.2.0_beta6-r3 (03 Dec 2007)
+
+  03 Dec 2007; <wrobel@gentoo.org> +files/htdig-3.2.0_beta6-quoting.patch,
+  +htdig-3.2.0_beta6-r3.ebuild:
+  -m htdig-3.2.0_beta6-r3 fixes sec bug #200285.
+
+  25 Jun 2007; Raúl Porcel <armin76@gentoo.org>
+  htdig-3.2.0_beta6-r2.ebuild:
+  alpha stable wrt #178693
+
+  01 Jun 2007; Raúl Porcel <armin76@gentoo.org>
+  htdig-3.2.0_beta6-r2.ebuild:
+  ia64 stable wrt #178693
+
+  01 Jun 2007; nixnut <nixnut@gentoo.org> htdig-3.2.0_beta6-r2.ebuild:
+  Stable on ppc wrt bug 178693
+
+  28 May 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  htdig-3.2.0_beta6-r2.ebuild:
+  Stable on sparc wrt #178693
+
+  28 May 2007; Brent Baude <ranger@gentoo.org> htdig-3.2.0_beta6-r2.ebuild:
+  Marking htdig-3.2.0_beta6-r2 ppc64 stable for bug 178693.
+
+  28 May 2007; Jeroen Roovers <jer@gentoo.org> htdig-3.2.0_beta6-r2.ebuild:
+  Stable for HPPA (bug #178693).
+
+  27 May 2007; Markus Ullmann <jokey@gentoo.org>
+  htdig-3.2.0_beta6-r2.ebuild:
+  Stable on x86 wrt bug #178693
+
+  26 May 2007; Renat Lumpau <rl03@gentoo.org> htdig-3.2.0_beta6-r2.ebuild:
+  Fix bug 177278
+
+  25 May 2007; Jose Luis Rivero <yoswink@gentoo.org>
+  htdig-3.2.0_beta6-r2.ebuild:
+  Add ~alpha wrt bug 176620
+
+  24 May 2007; Diego Pettenò <flameeyes@gentoo.org>
+  htdig-3.2.0_beta6-r2.ebuild:
+  Add ~x86-fbsd keyword, as per bug #176620.
+
+  02 May 2007; Jeroen Roovers <jer@gentoo.org> htdig-3.2.0_beta6-r2.ebuild:
+  Marked ~hppa (bug #176620).
+
+  01 May 2007; Raúl Porcel <armin76@gentoo.org>
+  htdig-3.2.0_beta6-r2.ebuild:
+  Add ~ia64 wrt bug 176620
+
+  01 May 2007; Markus Rothe <corsair@gentoo.org>
+  htdig-3.2.0_beta6-r2.ebuild:
+  Added ~ppc64; bug #176620
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+*htdig-3.2.0_beta6-r2 (03 Jan 2007)
+
+  03 Jan 2007; Renat Lumpau <rl03@gentoo.org> -htdig-3.2.0_beta6-r1.ebuild,
+  +htdig-3.2.0_beta6-r2.ebuild:
+  Add ssl support, bug #156003.
+
+  03 Jan 2007; Renat Lumpau <rl03@gentoo.org> -htdig-3.2.0_beta6.ebuild:
+  Housekeeping
+
+  03 Jan 2007; Renat Lumpau <rl03@gentoo.org>
+  +files/htdig-3.2.0_beta6-as-needed.patch, htdig-3.2.0_beta6-r1.ebuild:
+  fix for --as-needed, bug #155727.
+
+  05 May 2006; Jon Hood <squinky86@gentoo.org> htdig-3.2.0_beta6-r1.ebuild:
+  Stable on amd64, bug #107062.
+
+*htdig-3.2.0_beta6-r1 (01 May 2006)
+*htdig-3.1.6-r8 (01 May 2006)
+
+  01 May 2006; Renat Lumpau <rl03@gentoo.org> -files/htdig-3.2.0-fpic.patch,
+  +files/3.1.6-ssl.patch, -files/CONFIG.in, +htdig-3.1.6-r8.ebuild,
+  +htdig-3.2.0_beta6-r1.ebuild:
+  Bye bye webapp.eclass: should fix #28049 , #107062 , #110528 , #125136 ; also
+  see #120830. Added https patch ( bug #52613 ). Misc housekeeping.
+
+  22 Mar 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/htdig-3.2.0_beta6-gcc4.patch, htdig-3.2.0_beta6.ebuild:
+  Fixed compilation with gcc4.  Closes bug #126509.
+
+  06 Dec 2005; Renat Lumpau <rl03@gentoo.org> -files/reconfig,
+  htdig-3.2.0_beta6.ebuild:
+  Fixes for webapp-config-1.50
+
+  08 Sep 2005; Renat Lumpau <rl03@gentoo.org> htdig-3.1.6-r7.ebuild,
+  htdig-3.2.0_beta6.ebuild:
+  Added manual slotting wrt bug #104855
+
+  08 Sep 2005; Renat Lumpau <rl03@gentoo.org> -htdig-3.1.6-r4.ebuild:
+  Removing old obsolete version
+
+  01 Aug 2005; Danny van Dyk <kugelfang@gentoo.org>
+  htdig-3.2.0_beta6.ebuild:
+  Removed -fPIC patch and the real cause for BUG #98357. -Wno-deprecated made
+  configure misbehave.
+
+  10 Jul 2005; Danny van Dyk <kugelfang@gentoo.org>
+  +files/htdig-3.2.0-fpic.patch, htdig-3.2.0_beta6.ebuild:
+  Fixed BUG #98357 (-fPIC).
+
+*htdig-3.2.0_beta6 (06 Jul 2005)
+
+  06 Jul 2005; Renat Lumpau <rl03@gentoo.org> +files/reconfig,
+  +htdig-3.2.0_beta6.ebuild:
+  Added version.
+
+  12 Feb 2005; Jason Wever <weeve@gentoo.org> htdig-3.1.6-r7.ebuild:
+  Stable on sparc wrt security bug #80602.
+
+  10 Feb 2005; Michael Hanselmann <hansmi@gentoo.org> htdig-3.1.6-r7.ebuild:
+  Stable on ppc.
+
+  10 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> htdig-3.1.6-r7.ebuild:
+  stable on amd64. see #80602
+
+*htdig-3.1.6-r7 (10 Feb 2005)
+
+  10 Feb 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/htdig-3.1.6-unescaped-output.diff, -htdig-3.1.6-r5.ebuild,
+  -htdig-3.1.6-r6.ebuild, +htdig-3.1.6-r7.ebuild:
+  Revision bump for sec bug 80602; stable on x86.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  29 Aug 2004; Renat Lumpau <rl03@gentoo.org> :
+  Symlink htsearch to /usr/bin, see bug #62087. Fix a typo in a dirname.
+
+*htdig-3.1.6-r5 (26 Aug 2004)
+
+  26 Aug 2004; Renat Lumpau <rl03@gentoo.org> +metadata.xml,
+  +htdig-3.1.6-r5.ebuild:
+  Added metadata.xml
+
+*htdig-3.1.6-r5 (26 Aug 2004)
+
+  26 Aug 2004; Renat Lumpau <rl03@gentoo.org> +htdig-3.1.6-r5.ebuild:
+  Convert to webapp.eclass. Closes #34594, 52592, and helps with #7728, 35275.
+
+*htdig-3.1.6-r4 (15 Aug 2004)
+
+  15 Aug 2004; Stuart Herbert <stuart@gentoo.org> +files/CONFIG.in,
+  +htdig-3.1.6-r4.ebuild:
+  Moved from net-www/htdig to www-misc/htdig.
+
+  23 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> htdig-3.1.6-r4.ebuild:
+  header fix; mips needs deps before stable; move webapp-detect into unpack
+
+  15 Dec 2003; Stuart Herbert <stuart@gentoo.org> htdig-3.1.6-r4.ebuild:
+  Fix for bug #32636
+
+  16 Nov 2003; Martin Holzer <mholzer@gentoo.org> htdig-3.1.6-r4.ebuild:
+  added webapps-apache.eclass. Closes #33622
+
+  16 Nov 2003; Brad House <brad_mssw@gentoo.org> htdig-3.1.6-r4.ebuild:
+  mark stable on amd64
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  30 Jul 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  Don't run rundig from pkg_postinst(). What this did was index the whole
+  www.htdig.org site! We certainly don't want that. Closes bug #5293.
+
+*htdig-3.1.6-r4 (27 May 2002)
+
+  29 Mar 2003; Jan Seidel <tuxus@gentoo.org>
+  htdig-3.1.6-r4.ebuild :
+  Added mips to keywords
+
+  15 Feb 2003; Mark Guertin <gerk@gentoo.org> htdig-3.1.6-r4.ebuild :
+  set ppc in keywords
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> htdig-3.1.6-r4.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  27 May 2002; Matthew Kennedy <mkennedy@gentoo.org>
+  htdig-3.1.6-r4.ebuild, files/digest-htdig-3.1.6-r4, ChangeLog :
+
+  Adds -Wno-deprecated to CPPFLAGS to allow compilation under
+  gcc3.1. Resolves bug #3091, thanks to lars.pechan@paradise.net.nz
+  (Lars Pechan).
+
+*htdig-3.1.6-r3 (22 May 2002)
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> htdig-3.1.6-r3.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  22 May 2002; Seemant Kulleen <seemant@gentoo.org> htdig-3.1.6-r3.ebuild
+  files/digest-htdig-3.1.6-r3 :
+
+  Fixes the /var/htdig/db directory, and pkg_postinst() now runs the first
+  run of rundig.  Thanks to steve_flack@ntlworld.com (Steve Flack) in bug
+  #986.
+
+*htdig-3.1.6-r2 (25 Apr 2002)
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> htdig-3.1.6-r2.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  25 Apr 2002; Seemant Kulleen <seemant@gentoo.org> htdig-3.1.6-r2.ebuild
+  files/digest-htdig-3.1.6-r2 :
+
+  More fixes from StuBear to place things in correct locations.
+
+*htdig-3.1.6-r1 (22 Apr 2002)
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> htdig-3.1.6-r1.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  22 Apr 2002; Seemant Kulleen <seemant@gentoo.org> htdig-3.1.6-r1.ebuild
+  files/digest-htdig-3.1.6-r1:
+
+  stuart@palette.plala.or.jp (Stuart Bouyer) in bug report #1970 pointed
+  out that things were being installed into /usr/bin/bin instead of /usr/bin.
+
+*htdig-3.1.6 (15 Apr 2002)
+
+  15 Apr 2002; Seemant Kulleen <seemant@gentoo.org> htdig-3.1.6.ebuild
+  files/digest-htdig-3.1.6
+
+  Version bump. This puts the config files properly, etc etc. Needs heavy 
+  testing, though.
+
+  9 Mar 2002; Dan Armak <danarmak@gentoo.org> changelog:
+  
+  It seems the patchfiles downloaded from the geocities site don't have a constant MD5.
+  I've put a copy on ibiblio/gentoo and the ebuild now fetches from there.
+
+*htdig-3.1.5-r2 (7 Mar 2002)
+
+  7 Mar 2002; Dan Armak <danarmak@gentoo.org> Changelog:
+  
+  Added patches to make htdig work with kdevelop. This si only a temporary remedy and 
+  a big overhaul of the ebuild will come as soon as there's a new maintainer (not me!).
+  This closes bug #946.
+
+*htdig-3.1.5-r1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

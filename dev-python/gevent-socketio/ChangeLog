@@ -1,0 +1,39 @@
+# ChangeLog for dev-python/gevent-socketio
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/gevent-socketio/ChangeLog,v 1.8 2015/06/03 19:33:30 jlec Exp $
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+*gevent-socketio-0.3.6 (08 Apr 2015)
+
+  08 Apr 2015; Kacper Kowalik <xarthisius@gentoo.org>
+  +gevent-socketio-0.3.6.ebuild:
+  Version bump, fix deps, add tests
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org>
+  gevent-socketio-0.3.5_rc2-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org>
+  gevent-socketio-0.3.5_rc2-r1.ebuild:
+  amd64 stable, bug 540290
+
+*gevent-socketio-0.3.5_rc2-r1 (30 Dec 2014)
+
+  30 Dec 2014; Ian Delaney <idella4@gentoo.org>
+  +gevent-socketio-0.3.5_rc2-r1.ebuild, -gevent-socketio-0.3.5_rc2.ebuild:
+  revbump; conversion -> distutils-r1, rm old
+
+  27 Jun 2014; Justin Lecher <jlec@gentoo.org>
+  gevent-socketio-0.3.5_rc2.ebuild, metadata.xml:
+  Add missing dep on dev-python/versiontools
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*gevent-socketio-0.3.5_rc2 (27 Aug 2012)
+
+  27 Aug 2012; Ultrabug <ultrabug@gentoo.org>
+  +gevent-socketio-0.3.5_rc2.ebuild, +metadata.xml:
+  Initial import from ultrabug overlay.

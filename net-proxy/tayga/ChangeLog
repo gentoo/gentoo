@@ -1,0 +1,13 @@
+# ChangeLog for net-proxy/tayga
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/tayga/ChangeLog,v 1.2 2012/01/14 09:35:24 ago Exp $
+
+  14 Jan 2012; Agostino Sarubbo <ago@gentoo.org> tayga-0.9.2.ebuild:
+  Stable for AMD64, wrt bug #398851
+
+*tayga-0.9.2 (16 Jun 2011)
+
+  16 Jun 2011; Michael Weber <xmw@gentoo.org> +tayga-0.9.2.ebuild,
+  +metadata.xml:
+  Initial import
+

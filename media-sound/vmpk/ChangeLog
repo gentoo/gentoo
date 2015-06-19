@@ -1,0 +1,92 @@
+# ChangeLog for media-sound/vmpk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/vmpk/ChangeLog,v 1.20 2015/03/16 15:48:12 aballier Exp $
+
+  16 Mar 2015; Alexis Ballier <aballier@gentoo.org> vmpk-0.6.0.ebuild:
+  bump drumstick dep, bug #543342
+
+*vmpk-0.6.0 (11 Mar 2015)
+
+  11 Mar 2015; Alexis Ballier <aballier@gentoo.org> +vmpk-0.6.0.ebuild:
+  version bump
+
+  18 Apr 2013; Alexis Ballier <aballier@gentoo.org> -vmpk-0.4.0.ebuild,
+  -vmpk-0.5.0.ebuild:
+  remove old
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> vmpk-0.4.0.ebuild,
+  vmpk-0.5.0.ebuild, vmpk-0.5.1.ebuild:
+  Move Qt dependencies to the new category
+
+*vmpk-0.5.1 (15 Feb 2013)
+
+  15 Feb 2013; Alexis Ballier <aballier@gentoo.org> +vmpk-0.5.1.ebuild:
+  version bump
+
+  02 Aug 2012; Alexis Ballier <aballier@gentoo.org> -vmpk-0.3.1.ebuild,
+  -vmpk-0.3.2.ebuild, -vmpk-0.3.3.ebuild:
+  remove old
+
+*vmpk-0.5.0 (02 Aug 2012)
+
+  02 Aug 2012; Alexis Ballier <aballier@gentoo.org> +vmpk-0.5.0.ebuild:
+  version bump
+
+  31 Jul 2012; Michael Palimaka <kensington@gentoo.org> vmpk-0.3.1.ebuild,
+  vmpk-0.3.2.ebuild, vmpk-0.3.3.ebuild, vmpk-0.4.0.ebuild:
+  Bump EAPI to 4. Add missing slot dependencies on Qt.
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> vmpk-0.3.1.ebuild,
+  vmpk-0.3.2.ebuild, vmpk-0.3.3.ebuild, vmpk-0.4.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*vmpk-0.4.0 (09 Jun 2011)
+
+  09 Jun 2011; Alexis Ballier <aballier@gentoo.org> +vmpk-0.4.0.ebuild:
+  version bump
+
+*vmpk-0.3.3 (06 Oct 2010)
+
+  06 Oct 2010; Alexis Ballier <aballier@gentoo.org> +vmpk-0.3.3.ebuild:
+  version bump, thanks Pedro for the notification
+
+*vmpk-0.3.2 (19 Jun 2010)
+
+  19 Jun 2010; Alexis Ballier <aballier@gentoo.org> +vmpk-0.3.2.ebuild:
+  version bump, thanks Pedro for the notification
+
+  12 Apr 2010; Alexis Ballier <aballier@gentoo.org> vmpk-0.3.1.ebuild:
+  add missing build dep on app-text/docbook-xsl-stylesheets, by Panard
+  <panard@inzenet.org>, bug #299815
+
+  12 Apr 2010; Alexis Ballier <aballier@gentoo.org> vmpk-0.3.1.ebuild:
+  add missing qt-svg dep, by samuel.strand@gmail.com, bug #314441
+
+  12 Apr 2010; Alexis Ballier <aballier@gentoo.org> -vmpk-0.2.6.ebuild,
+  -vmpk-0.3.0.ebuild:
+  remove old
+
+  09 Jan 2010; Markus Meier <maekke@gentoo.org> vmpk-0.3.1.ebuild:
+  add ~x86, bug #299056
+
+*vmpk-0.3.1 (15 Dec 2009)
+
+  15 Dec 2009; Alexis Ballier <aballier@gentoo.org> +vmpk-0.3.1.ebuild:
+  version bump, thanks Pedro for the notification
+
+*vmpk-0.3.0 (27 Sep 2009)
+
+  27 Sep 2009; Alexis Ballier <aballier@gentoo.org> +vmpk-0.3.0.ebuild:
+  version bump
+
+*vmpk-0.2.6 (04 Aug 2009)
+
+  04 Aug 2009; Alexis Ballier <aballier@gentoo.org> -vmpk-0.2.5.ebuild,
+  +vmpk-0.2.6.ebuild:
+  version bump, thanks Perdro for the notification
+
+*vmpk-0.2.5 (26 Jun 2009)
+
+  26 Jun 2009; Alexis Ballier <aballier@gentoo.org> +vmpk-0.2.5.ebuild,
+  +metadata.xml:
+  Initial import, ebuild by me

@@ -1,0 +1,10 @@
+# ChangeLog for dev-java/plexus-classworlds
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/plexus-classworlds/ChangeLog,v 1.1 2013/11/24 15:04:11 ercpe Exp $
+
+*plexus-classworlds-2.2.3 (24 Nov 2013)
+
+  24 Nov 2013; Johann Schmitz <ercpe@gentoo.org> +files/2.2.3-build.xml,
+  +metadata.xml, +plexus-classworlds-2.2.3.ebuild:
+  Added ebuild for plexus-classworlds, the class loader framework of the Plexus
+  project

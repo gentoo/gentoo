@@ -1,0 +1,22 @@
+# ChangeLog for sci-biology/biosql
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/biosql/ChangeLog,v 1.5 2013/03/11 14:52:40 jlec Exp $
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+  02 Jun 2009; Christian Faulhammer <fauli@gentoo.org> biosql-1.0.1.ebuild:
+  stable x86, bug 270587
+
+  29 May 2009; Steve Dibb <beandog@gentoo.org> biosql-1.0.1.ebuild:
+  amd64 stable, bug 270587
+
+  16 Mar 2009; Andrey Kislyuk <weaver@gentoo.org> biosql-1.0.1.ebuild:
+  Fix typo
+
+*biosql-1.0.1 (16 Mar 2009)
+
+  16 Mar 2009; Andrey Kislyuk <weaver@gentoo.org> +metadata.xml,
+  +biosql-1.0.1.ebuild:
+  New package, dependency for sci-biology/bioperl. Ebuild written by me.
+

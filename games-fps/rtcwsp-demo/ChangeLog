@@ -1,0 +1,64 @@
+# ChangeLog for games-fps/rtcwsp-demo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/rtcwsp-demo/ChangeLog,v 1.15 2015/06/14 19:54:20 ulm Exp $
+
+  14 Jun 2015; Ulrich Müller <ulm@gentoo.org> rtcwsp-demo-1.1b-r1.ebuild:
+  [QA] Remove emul-linux-x86-* from dependencies.
+
+  30 Oct 2014; Michael Sterrett <mr_bones_@gentoo.org> -rtcwsp-demo-1.1b.ebuild:
+  old
+
+  30 Oct 2014; Agostino Sarubbo <ago@gentoo.org> rtcwsp-demo-1.1b-r1.ebuild:
+  Stable for x86, wrt bug #525496
+
+  17 Oct 2014; Pacho Ramos <pacho@gentoo.org> rtcwsp-demo-1.1b-r1.ebuild:
+  amd64 stable, bug #525496
+
+*rtcwsp-demo-1.1b-r1 (16 Jul 2014)
+
+  16 Jul 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +rtcwsp-demo-1.1b-r1.ebuild:
+  Bumped EAPI to 5, adjusted deps for gx86-multilib, added buffer overflow
+  workaround.  AFAICT, game will not run ever anywhere, but this commit at least
+  makes the ebuild up to date
+
+  08 Feb 2012; Mike Frysinger <vapier@gentoo.org> rtcwsp-demo-1.1b.ebuild:
+  Move to new unpacker eclass for unpack_makeself.
+
+  14 Dec 2011; Mike Frysinger <vapier@gentoo.org> rtcwsp-demo-1.1b.ebuild:
+  The games.eclass has dropped GAMES_CHECK_LICENSE support (since portage now
+  has ACCEPT_LICENSE), so drop it here too.
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> rtcwsp-demo-1.1b.ebuild:
+  Replacing einfo with elog
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  rtcwsp-demo-1.1b.ebuild:
+  Removing old virtual/x11 dependency.
+
+  07 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  rtcwsp-demo-1.1b.ebuild:
+  Stable on amd64/x86.
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  rtcwsp-demo-1.1b.ebuild:
+  Changed nomirror to mirror and nostrip to strip.
+
+  15 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  rtcwsp-demo-1.1b.ebuild:
+  Changed to use idsoftware thirdpartymirror.
+
+  25 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  rtcwsp-demo-1.1b.ebuild:
+  Fixed places where we had mp and it was supposed to be sp. Closing bug
+  #120269.
+
+*rtcwsp-demo-1.1b (24 Jan 2006)
+
+  24 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +rtcwsp-demo-1.1b.ebuild:
+  Initial import. Ebuild by Alexander Nicolaysen Sornes
+  <alex@thehandofagony.com>. Closing bug #115778.

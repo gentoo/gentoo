@@ -1,0 +1,37 @@
+# ChangeLog for dev-python/pyrtf
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyrtf/ChangeLog,v 1.9 2015/06/09 16:36:08 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*pyrtf-0.45-r1 (18 Feb 2015)
+
+  18 Feb 2015; Ian Delaney <idella4@gentoo.org> +pyrtf-0.45-r1.ebuild,
+  -pyrtf-0.45.ebuild:
+  revbump; convert -> distutils-r1, rm old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pyrtf-0.45.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  23 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pyrtf-0.45.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  28 Dec 2009; Markus Meier <maekke@gentoo.org> pyrtf-0.45.ebuild:
+  amd64/x86 stable, bug #294499
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  02 May 2006; Scott Stoddard <deltacow@gentoo.org> pyrtf-0.45.ebuild:
+  Added ~amd64 (bug #132033)
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> pyrtf-0.45.ebuild:
+  Mark 0.45 ~ia64
+
+*pyrtf-0.45 (19 Jun 2005)
+
+  19 Jun 2005; Fernando Serboncini <fserb@gentoo.org> +metadata.xml,
+  +pyrtf-0.45.ebuild:
+  Initial import, ebuild by Ali Sabil <hybrid@tuxfamily.org> in bug #86755

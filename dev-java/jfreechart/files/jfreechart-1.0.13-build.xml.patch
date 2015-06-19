@@ -1,0 +1,58 @@
+diff -Nur jfreechart-1.0.13/ant/build.xml jfreechart-1.0.13_patched/ant/build.xml
+--- jfreechart-1.0.13/ant/build.xml	2009-04-20 11:23:40.000000000 +0300
++++ jfreechart-1.0.13_patched/ant/build.xml	2009-05-11 23:36:27.000000000 +0300
+@@ -40,11 +40,9 @@
+         <available classname="java.lang.Annotation" property="src.version" value="1.5"/>
+         <available classname="java.lang.Annotation" property="target.version" value="1.5"/>
+         <path id="build.classpath">
+-            <fileset dir="${basedir}/lib/">
+-                <include name="${jcommon.name}-${jcommon.version}.jar"/>
+-                <include name="servlet.jar"/>
+-                <include name="gnujaxp.jar" unless="JDK1.4+"/>
+-            </fileset>
++            <pathelement location="${jcommon.jar}"/>
++            <pathelement location="${servlet.jar}"/>
++            <pathelement location="${gnujaxp.jar}"/>
+         </path>
+ 
+     </target>
+@@ -324,7 +322,7 @@
+ 
+     <!-- COMPILE THE JUNIT TESTS. -->  
+     <target name="compile-tests" 
+-            depends="compile,compile-experimental"
++            depends="initialise"
+             description="Compile the test code">
+         
+         <mkdir dir="${basedir}/build-tests"/>
+@@ -338,8 +336,8 @@
+             <classpath>
+                 <path refid="build.classpath"/>
+                 <pathelement location="${junit.jar}"/>
+-                <pathelement location="${basedir}/${jfreechart.name}-${jfreechart.version}.jar"/>
+-                <pathelement location="${basedir}/${jfreechart.name}-${jfreechart.version}-experimental.jar"/>
++                <pathelement location="${basedir}/lib/${jfreechart.name}-${jfreechart.version}.jar"/>
++                <pathelement location="${basedir}/lib/${jfreechart.name}-${jfreechart.version}-experimental.jar"/>
+                 <pathelement location="${basedir}/build-tests"/>
+             </classpath>
+         </javac>
+@@ -357,7 +355,7 @@
+         <junit printSummary="yes" 
+                haltonerror="true" 
+                haltonfailure="true"
+-               fork="true" 
++               fork="false" 
+                dir=".">
+             
+             <sysproperty key="basedir" value="."/>
+@@ -365,8 +363,8 @@
+             <classpath>
+                 <path refid="build.classpath"/>
+                 <pathelement location="${junit.jar}"/>
+-                <pathelement location="${basedir}/${jfreechart.name}-${jfreechart.version}.jar"/>
+-                <pathelement location="${basedir}/${jfreechart.name}-${jfreechart.version}-experimental.jar"/>
++                <pathelement location="${basedir}/lib/${jfreechart.name}-${jfreechart.version}.jar"/>
++                <pathelement location="${basedir}/lib/${jfreechart.name}-${jfreechart.version}-experimental.jar"/>
+                 <pathelement location="${basedir}/build-tests"/>
+             </classpath>
+             <batchtest todir="${basedir}/build-tests-reports">

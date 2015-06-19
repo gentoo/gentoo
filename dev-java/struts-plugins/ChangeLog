@@ -1,0 +1,15 @@
+# ChangeLog for dev-java/struts-plugins
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/struts-plugins/ChangeLog,v 1.2 2013/10/04 09:14:00 tomwij Exp $
+
+  04 Oct 2013; Tom Wijsman <TomWij@gentoo.org> struts-plugins-2.3.15.2.ebuild:
+  Updated DESCRIPTION.
+
+*struts-plugins-2.3.15.2 (02 Oct 2013)
+
+  02 Oct 2013; Tom Wijsman <TomWij@gentoo.org>
+  +files/struts-2.3.15.2-build.xml-manifest.patch,
+  +files/struts-2.3.15.2-build.xml-remove-codebehind.patch,
+  +files/struts-2.3.15.2-build.xml-remove-portlet.patch, +metadata.xml,
+  +struts-plugins-2.3.15.2.ebuild:
+  New package for dev-java/struts-plugins, the Plugins of Struts 2.

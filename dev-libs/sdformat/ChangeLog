@@ -1,0 +1,10 @@
+# ChangeLog for dev-libs/sdformat
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/sdformat/ChangeLog,v 1.1 2015/04/14 12:41:19 aballier Exp $
+
+*sdformat-2.3.2 (14 Apr 2015)
+
+  14 Apr 2015; Alexis Ballier <aballier@gentoo.org> +sdformat-2.3.2.ebuild,
+  +metadata.xml:
+  initial import, ebuild by me
+

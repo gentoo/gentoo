@@ -1,0 +1,11 @@
+--- spacerider.cpp.old	2010-10-29 10:12:19.000000000 +0200
++++ spacerider.cpp	2010-10-29 10:13:47.000000000 +0200
+@@ -112,7 +112,7 @@
+ 				break;
+ 			case 'n':
+ 				/* specify a name for the online-highscore */
+-				strncpy(name, optarg, 128);
++				strncpy(name, optarg, sizeof (name));
+ 				online_highscore = true;
+ 				break;
+ 			case 't':

@@ -1,0 +1,13 @@
+# ChangeLog for net-analyzer/dietsniff
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/dietsniff/ChangeLog,v 1.2 2012/06/13 12:01:31 xmw Exp $
+
+  13 Jun 2012; Michael Weber <xmw@gentoo.org> dietsniff-0.4.ebuild:
+  vcs-snapshot eclass
+
+*dietsniff-0.4 (24 May 2012)
+
+  24 May 2012; Michael Weber <xmw@gentoo.org> +dietsniff-0.4.ebuild,
+  +metadata.xml:
+  Initial import (bug 108224)
+

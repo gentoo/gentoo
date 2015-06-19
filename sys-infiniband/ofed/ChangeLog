@@ -1,0 +1,48 @@
+# ChangeLog for sys-infiniband/ofed
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-infiniband/ofed/ChangeLog,v 1.11 2014/04/16 10:11:04 alexxy Exp $
+
+  16 Apr 2014; Alexey Shvetsov <alexxy@gentoo.org> ofed-3.12_rc1.ebuild:
+  [sys-cluster/ofed] Crazy fix
+
+*ofed-3.12_rc1 (16 Apr 2014)
+
+  16 Apr 2014; Alexey Shvetsov <alexxy@gentoo.org> +ofed-3.12_rc1.ebuild,
+  -ofed-1.5.4.1-r1.ebuild, metadata.xml:
+  Update ofed stack to 3.12-rc1
+
+  11 Dec 2012; Samuli Suominen <ssuominen@gentoo.org> -ofed-1.5.4.1.ebuild:
+  old
+
+  11 Dec 2012; Ian Stakenvicius <axs@gentoo.org> ofed-1.5.4.1-r1.ebuild,
+  ofed-3.5.ebuild:
+  install udev rules using udev.eclass to support virtual/udev
+
+  13 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> ofed-3.5.ebuild:
+  [sys-infiniband] Update OFED
+
+*ofed-3.5 (12 Oct 2012)
+
+  12 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> +ofed-3.5.ebuild:
+  [sys-infiniband] OFED 3.5 rc2 update
+
+  11 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> +ofed-1.5.4.1-r1.ebuild:
+  Stop using /etc/udev which is reserved for user modified rules and read
+  udevdir value from udev.pc pkg-config file instead.
+
+  29 Apr 2012; Alexey Shvetsov <alexxy@gentoo.org> ofed-1.5.4.1.ebuild:
+  [sys-infiniband/ofed] Add rdmacm to minimal set
+
+  18 Apr 2012; Alexey Shvetsov <alexxy@gentoo.org> metadata.xml,
+  ofed-1.5.4.1.ebuild:
+  [sys-infiniband/ofed] add new tools
+
+  18 Apr 2012; Alexey Shvetsov <alexxy@gentoo.org> ofed-1.5.4.1.ebuild:
+  [sys-infiniband/ofed] fix use usage
+
+*ofed-1.5.4.1 (18 Apr 2012)
+
+  18 Apr 2012; Alexey Shvetsov <alexxy@gentoo.org> +files/90-ib.rules,
+  +files/openib, +files/openib.conf, +files/openib.env, +files/openib.modprobe,
+  +metadata.xml, +ofed-1.5.4.1.ebuild:
+  [sys-infiniband/ofed] Version bump to OFED 1.5.4.1

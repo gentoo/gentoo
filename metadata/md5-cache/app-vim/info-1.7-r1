@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm unpack
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: GNU info documentation browser
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=21
+KEYWORDS=x86 alpha sparc ia64 ppc s390 amd64
+LICENSE=BSD
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/info-1.7.tar.bz2 http://dev.gentoo.org/~radhermit/vim/info-1.7.tar.bz2
+_eclasses_=vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=5f1d29e538868ee8e41ab93150ea0447

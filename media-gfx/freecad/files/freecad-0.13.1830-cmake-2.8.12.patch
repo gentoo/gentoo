@@ -1,0 +1,294 @@
+commit f061b6f7ea667e1d6944590d67b9b5b6659e4ba0
+Author: wmayer <wmayer@users.sourceforge.net>
+Date:   Tue Oct 22 10:33:18 2013 +0200
+
+    0001278: No build possible with current CMake version 2.8.12
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 862cd7b..11c9b43 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -270,14 +270,14 @@ MARK_AS_ADVANCED(FORCE FREECAD_LIBPACK_CHECKFILE6X FREECAD_LIBPACK_CHECKFILE7X)
+     macro(fc_wrap_cpp outfiles )
+         # get include dirs
+         QT4_GET_MOC_FLAGS(moc_flags)
+-        QT4_EXTRACT_OPTIONS(moc_files moc_options ${ARGN})
++        QT4_EXTRACT_OPTIONS(moc_files moc_options moc_target ${ARGN})
+         # fixes bug 0000585: bug with boost 1.48
+         SET(moc_options ${moc_options} -DBOOST_TT_HAS_OPERATOR_HPP_INCLUDED)
+ 
+         foreach(it ${moc_files})
+             get_filename_component(it ${it} ABSOLUTE)
+             QT4_MAKE_OUTPUT_FILE(${it} moc_ cpp outfile)
+-            QT4_CREATE_MOC_COMMAND(${it} ${outfile} "${moc_flags}" "${moc_options}")
++            QT4_CREATE_MOC_COMMAND(${it} ${outfile} "${moc_flags}" "${moc_options}" "${moc_target}")
+             set(${outfiles} ${${outfiles}} ${outfile})
+             add_file_dependencies(${it} ${outfile})
+         endforeach(it)
+diff --git a/cMake/FreeCadMacros.cmake b/cMake/FreeCadMacros.cmake
+index 5fa7680..78bc0b8 100644
+--- a/cMake/FreeCadMacros.cmake
++++ b/cMake/FreeCadMacros.cmake
+@@ -168,69 +168,6 @@ endmacro(generate_from_py)
+ #endmacro(qt4_wrap_ui)
+ 
+ 
+-# This is a special version of the built in macro qt4_add_resources that generates .cpp files
+-#
+-#macro(fc_add_resources outfiles )
+-#    #QT4_EXTRACT_OPTIONS(rcc_files rcc_options ${ARGN})
+-#	set(ARGN )
+-#    foreach (it ${rcc_files})
+-#      get_filename_component(outfilename ${it} NAME_WE)
+-#      get_filename_component(infile ${it} ABSOLUTE)
+-#      get_filename_component(rc_path ${infile} PATH)
+-#      set(outfile ${CMAKE_CURRENT_BINARY_DIR}/qrc_${outfilename}.cpp)
+-#      #  parse file for dependencies 
+-#      #  all files are absolute paths or relative to the location of the qrc file
+-#      file(READ "${infile}" _RC_FILE_CONTENTS)
+-#      string(REGEX MATCHALL "<file[^<]+" _RC_FILES "${_RC_FILE_CONTENTS}")
+-#      set(_RC_DEPENDS)
+-#      foreach(_RC_FILE ${_RC_FILES})
+-#        string(REGEX REPLACE "^<file[^>]*>" "" _RC_FILE "${_RC_FILE}")
+-#        string(REGEX MATCH "^/|([A-Za-z]:/)" _ABS_PATH_INDICATOR "${_RC_FILE}")
+-#        if(NOT _ABS_PATH_INDICATOR)
+-#          set(_RC_FILE "${rc_path}/${_RC_FILE}")
+-#        endif(NOT _ABS_PATH_INDICATOR)
+-#        set(_RC_DEPENDS ${_RC_DEPENDS} "${_RC_FILE}")
+-#      endforeach(_RC_FILE)
+-#      add_custom_command(OUTPUT ${outfile}
+-#        COMMAND ${QT_RCC_EXECUTABLE}
+-#        ARGS ${rcc_options} -name ${outfilename} -o ${outfile} ${infile}
+-#        MAIN_DEPENDENCY ${infile}
+-#        DEPENDS ${_RC_DEPENDS})
+-#      set(${outfiles} ${${outfiles}} ${outfile})
+-#    endforeach (it)
+-#endmacro(fc_add_resources)
+-
+-MACRO (fc_add_resources outfiles )
+-  QT4_EXTRACT_OPTIONS(rcc_files rcc_options ${ARGN})
+-
+-  FOREACH (it ${rcc_files})
+-    GET_FILENAME_COMPONENT(outfilename ${it} NAME_WE)
+-    GET_FILENAME_COMPONENT(infile ${it} ABSOLUTE)
+-    GET_FILENAME_COMPONENT(rc_path ${infile} PATH)
+-    SET(outfile ${CMAKE_CURRENT_BINARY_DIR}/qrc_${outfilename}.cpp)
+-    #  parse file for dependencies 
+-    #  all files are absolute paths or relative to the location of the qrc file
+-    FILE(READ "${infile}" _RC_FILE_CONTENTS)
+-    STRING(REGEX MATCHALL "<file[^<]+" _RC_FILES "${_RC_FILE_CONTENTS}")
+-    SET(_RC_DEPENDS)
+-    FOREACH(_RC_FILE ${_RC_FILES})
+-      STRING(REGEX REPLACE "^<file[^>]*>" "" _RC_FILE "${_RC_FILE}")
+-      STRING(REGEX MATCH "^/|([A-Za-z]:/)" _ABS_PATH_INDICATOR "${_RC_FILE}")
+-      IF(NOT _ABS_PATH_INDICATOR)
+-        SET(_RC_FILE "${rc_path}/${_RC_FILE}")
+-      ENDIF(NOT _ABS_PATH_INDICATOR)
+-      SET(_RC_DEPENDS ${_RC_DEPENDS} "${_RC_FILE}")
+-    ENDFOREACH(_RC_FILE)
+-    ADD_CUSTOM_COMMAND(OUTPUT ${outfile}
+-      COMMAND ${QT_RCC_EXECUTABLE}
+-      ARGS ${rcc_options} -name ${outfilename} -o ${outfile} ${infile}
+-      MAIN_DEPENDENCY ${infile}
+-      DEPENDS ${_RC_DEPENDS})
+-    SET(${outfiles} ${${outfiles}} ${outfile})
+-  ENDFOREACH (it)
+-
+-ENDMACRO (fc_add_resources)
+-
+ MACRO(ADD_MSVC_PRECOMPILED_HEADER PrecompiledHeader PrecompiledSource SourcesVar)
+   IF(MSVC)
+     GET_FILENAME_COMPONENT(PrecompiledBasename ${PrecompiledHeader} NAME_WE)
+diff --git a/src/Gui/CMakeLists.txt b/src/Gui/CMakeLists.txt
+index b9f1939..124c4f8 100644
+--- a/src/Gui/CMakeLists.txt
++++ b/src/Gui/CMakeLists.txt
+@@ -608,7 +608,7 @@ SOURCE_GROUP("Widget\\iisTaskPanel\\Mocs" FILES ${iis_MOC_SRCS})
+ #SET(Resource_RCS
+ #   Icons/resource.qrc
+ #   Language/translation.qrc)
+-#fc_add_resources(Resource_SRCS ${Resource_RCS})
++#qt4_add_resources(Resource_SRCS ${Resource_RCS})
+ #SET(Resource_SRCS
+ #   ${Resource_SRCS}
+ #   Icons/resource.qrc
+diff --git a/src/Mod/Image/Gui/AppImageGui.cpp b/src/Mod/Image/Gui/AppImageGui.cpp
+index c26129e..c817860 100644
+--- a/src/Mod/Image/Gui/AppImageGui.cpp
++++ b/src/Mod/Image/Gui/AppImageGui.cpp
+@@ -20,7 +20,6 @@
+ #include <Gui/Language/Translator.h>
+ #include "Workbench.h"
+ #include "ViewProviderImagePlane.h"
+-#include "qrc_Image.cpp"
+ 
+ // use a different name to CreateCommand()
+ void CreateImageCommands(void);
+diff --git a/src/Mod/Image/Gui/CMakeLists.txt b/src/Mod/Image/Gui/CMakeLists.txt
+index cc967ee..4edb462 100644
+--- a/src/Mod/Image/Gui/CMakeLists.txt
++++ b/src/Mod/Image/Gui/CMakeLists.txt
+@@ -30,8 +30,7 @@ SET(ImageGui_RES_SRCS
+     Resources/Image.qrc
+ )
+ 
+-fc_add_resources(ImageGui_QRC_SRCS ${ImageGui_RES_SRCS})
+-#QT4_ADD_RESOURCES(ImageGui_QRC_SRCS ${ImageGui_RES_SRCS})
++qt4_add_resources(ImageGui_QRC_SRCS ${ImageGui_RES_SRCS})
+ 
+ set(ImageGui_UIC_SRCS
+     ImageOrientationDialog.ui
+@@ -40,7 +39,7 @@ qt4_wrap_ui(ImageGui_UIC_HDRS ${ImageGui_UIC_SRCS})
+ 
+ SET(ImageGui_SRCS
+ #   ${ImageGui_MOC_SRCS}
+-#   ${ImageGui_QRC_SRCS}
++    ${ImageGui_QRC_SRCS}
+     AppImageGui.cpp
+     AppImageGuiPy.cpp
+     Command.cpp
+diff --git a/src/Mod/Mesh/Gui/AppMeshGui.cpp b/src/Mod/Mesh/Gui/AppMeshGui.cpp
+index 624d569..8fb68cf 100644
+--- a/src/Mod/Mesh/Gui/AppMeshGui.cpp
++++ b/src/Mod/Mesh/Gui/AppMeshGui.cpp
+@@ -50,7 +50,6 @@
+ #include "ViewProviderDefects.h"
+ #include "ViewProviderPython.h"
+ #include "Workbench.h"
+-#include "qrc_Mesh.cpp"
+ 
+ 
+ // use a different name to CreateCommand()
+diff --git a/src/Mod/Mesh/Gui/CMakeLists.txt b/src/Mod/Mesh/Gui/CMakeLists.txt
+index cafca6c..9ef1dae 100644
+--- a/src/Mod/Mesh/Gui/CMakeLists.txt
++++ b/src/Mod/Mesh/Gui/CMakeLists.txt
+@@ -75,9 +75,9 @@ SET(Inventor_SRCS
+ )
+ SOURCE_GROUP("Inventor" FILES ${Inventor_SRCS})
+ 
+-fc_add_resources(resource_SRCS Resources/Mesh.qrc)
++qt4_add_resources(resource_SRCS Resources/Mesh.qrc)
+ SET(resource_SRCS
+-#   ${resource_SRCS}
++    ${resource_SRCS}
+     Resources/Mesh.qrc
+ )
+ SOURCE_GROUP("resource" FILES ${resource_SRCS})
+diff --git a/src/Mod/Part/Gui/AppPartGui.cpp b/src/Mod/Part/Gui/AppPartGui.cpp
+index 9c3ebb3..ae84470 100644
+--- a/src/Mod/Part/Gui/AppPartGui.cpp
++++ b/src/Mod/Part/Gui/AppPartGui.cpp
+@@ -57,7 +57,6 @@
+ #include "Workbench.h"
+ 
+ #include <Gui/Language/Translator.h>
+-#include "qrc_Part.cpp"
+ 
+ #include "Resources/icons/PartFeature.xpm"
+ #include "Resources/icons/PartFeatureImport.xpm"
+diff --git a/src/Mod/Part/Gui/CMakeLists.txt b/src/Mod/Part/Gui/CMakeLists.txt
+index 375f6e4..87c4c28 100644
+--- a/src/Mod/Part/Gui/CMakeLists.txt
++++ b/src/Mod/Part/Gui/CMakeLists.txt
+@@ -50,7 +50,7 @@ set(PartGui_MOC_HDRS
+ fc_wrap_cpp(PartGui_MOC_SRCS ${PartGui_MOC_HDRS})
+ SOURCE_GROUP("Moc" FILES ${PartGui_MOC_SRCS})
+ 
+-fc_add_resources(PartGui_QRC_SRCS Resources/Part.qrc)
++qt4_add_resources(PartGui_QRC_SRCS Resources/Part.qrc)
+ 
+ set(PartGui_UIC_SRCS
+     CrossSections.ui
+@@ -77,7 +77,7 @@ set(PartGui_UIC_SRCS
+ qt4_wrap_ui(PartGui_UIC_HDRS ${PartGui_UIC_SRCS})
+ 
+ SET(PartGui_SRCS
+-#   ${PartGui_QRC_SRCS}
++    ${PartGui_QRC_SRCS}
+     ${PartGui_UIC_HDRS}
+     AppPartGui.cpp
+     Command.cpp
+diff --git a/src/Mod/Points/Gui/AppPointsGui.cpp b/src/Mod/Points/Gui/AppPointsGui.cpp
+index 9acd98e..953d3e2 100644
+--- a/src/Mod/Points/Gui/AppPointsGui.cpp
++++ b/src/Mod/Points/Gui/AppPointsGui.cpp
+@@ -33,7 +33,6 @@
+ 
+ #include "ViewProvider.h"
+ #include "Workbench.h"
+-#include "qrc_Points.cpp"
+ 
+ // use a different name to CreateCommand()
+ void CreatePointsCommands(void);
+diff --git a/src/Mod/Points/Gui/CMakeLists.txt b/src/Mod/Points/Gui/CMakeLists.txt
+index fab12ff..7e30f0d 100644
+--- a/src/Mod/Points/Gui/CMakeLists.txt
++++ b/src/Mod/Points/Gui/CMakeLists.txt
+@@ -32,9 +32,9 @@ SET(Dialogs_SRCS
+ )
+ SOURCE_GROUP("Dialogs" FILES ${Dialogs_SRCS})
+ 
+-fc_add_resources(Resource_SRCS Resources/Points.qrc)
++qt4_add_resources(Resource_SRCS Resources/Points.qrc)
+ SET(Resource_SRCS
+-#   ${Resource_SRCS}
++    ${Resource_SRCS}
+     Resources/Points.qrc
+ )
+ SOURCE_GROUP("Resource" FILES ${Resource_SRCS})
+diff --git a/src/Mod/Raytracing/Gui/AppRaytracingGui.cpp b/src/Mod/Raytracing/Gui/AppRaytracingGui.cpp
+index 156bd90..c59369a 100644
+--- a/src/Mod/Raytracing/Gui/AppRaytracingGui.cpp
++++ b/src/Mod/Raytracing/Gui/AppRaytracingGui.cpp
+@@ -32,7 +32,6 @@
+ #include "DlgSettingsRayImp.h"
+ #include "ViewProvider.h"
+ #include "Workbench.h"
+-#include "qrc_Raytracing.cpp"
+ 
+ 
+ using namespace RaytracingGui;
+diff --git a/src/Mod/Raytracing/Gui/CMakeLists.txt b/src/Mod/Raytracing/Gui/CMakeLists.txt
+index 38aa739..1da30c9 100644
+--- a/src/Mod/Raytracing/Gui/CMakeLists.txt
++++ b/src/Mod/Raytracing/Gui/CMakeLists.txt
+@@ -43,8 +43,9 @@ set(RaytracingGui_MOC_HDRS
+ fc_wrap_cpp(RaytracingGui_MOC_SRCS ${RaytracingGui_MOC_HDRS})
+ SOURCE_GROUP("Moc" FILES ${RaytracingGui_MOC_SRCS})
+ 
+-fc_add_resources(Resource_SRCS Resources/Raytracing.qrc)
++qt4_add_resources(Resource_SRCS Resources/Raytracing.qrc)
+ SET(Resource_SRCS
++    ${Resource_SRCS}
+     Resources/Raytracing.qrc
+ )
+ SOURCE_GROUP("Resource" FILES ${Resource_SRCS})
+diff --git a/src/Mod/Test/Gui/AppTestGui.cpp b/src/Mod/Test/Gui/AppTestGui.cpp
+index a027d9d..7c2ef21 100644
+--- a/src/Mod/Test/Gui/AppTestGui.cpp
++++ b/src/Mod/Test/Gui/AppTestGui.cpp
+@@ -28,7 +28,6 @@
+ 
+ #include "UnitTestPy.h"
+ #include "UnitTestImp.h"
+-#include "qrc_Test.cpp"
+ 
+ #include <Gui/Language/Translator.h>
+ #include <Base/Console.h>
+diff --git a/src/Mod/Test/Gui/CMakeLists.txt b/src/Mod/Test/Gui/CMakeLists.txt
+index 9b8b672..eaa0dcd 100644
+--- a/src/Mod/Test/Gui/CMakeLists.txt
++++ b/src/Mod/Test/Gui/CMakeLists.txt
+@@ -30,9 +30,9 @@ SET(Dialogs_SRCS
+ )
+ SOURCE_GROUP("Dialogs" FILES ${Dialogs_SRCS})
+ 
+-fc_add_resources(Resource_SRCS Resources/Test.qrc)
++qt4_add_resources(Resource_SRCS Resources/Test.qrc)
+ SET(Resource_SRCS
+-#   ${Resource_SRCS}
++    ${Resource_SRCS}
+     Resources/Test.qrc
+ )
+ SOURCE_GROUP("Resource" FILES ${Resource_SRCS})

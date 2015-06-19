@@ -1,0 +1,159 @@
+# ChangeLog for x11-libs/libcompizconfig
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libcompizconfig/ChangeLog,v 1.32 2012/09/25 14:40:53 pinkbyte Exp $
+
+  25 Sep 2012; Sergey Popov <pinkbyte@gentoo.org>
+  -libcompizconfig-0.8.4-r2.ebuild, -files/libcompizconfig-undefinedref.patch:
+  Drop old
+
+  30 Aug 2012; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Remove myself and proxy maintainer from maintainers
+
+  18 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  libcompizconfig-0.8.8.ebuild:
+  Update to EAPI4 and prune_libtool_files but use --all argument wrt #421197
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  libcompizconfig-0.8.4-r2.ebuild, libcompizconfig-0.8.8.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*libcompizconfig-0.8.8 (20 Apr 2012)
+
+  20 Apr 2012; Naohiro Aota <naota@gentoo.org> +libcompizconfig-0.8.8.ebuild,
+  metadata.xml:
+  Version bump. Assign Pinkbyte as maintainer.
+
+  21 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  -libcompizconfig-0.8.4.ebuild, -libcompizconfig-0.8.4-r1.ebuild,
+  libcompizconfig-0.8.4-r2.ebuild:
+  Fix slot-deps on libs, remove old
+
+*libcompizconfig-0.8.4-r2 (04 Sep 2010)
+
+  04 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +libcompizconfig-0.8.4-r2.ebuild:
+  Disable static libraries (they are linked against modules anyway), remove
+  .la files.
+
+  14 May 2010; Joseph Jezak <josejx@gentoo.org>
+  libcompizconfig-0.8.4-r1.ebuild:
+  Marked ~ppc/~ppc64 for bug #289287.
+
+  15 Apr 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  libcompizconfig-0.8.4-r1.ebuild:
+  Added protobuf to RDEPEND as it was added by mistake solely to DEPEND.
+  Restricted tests as they fail because of intltool - fixes bug 295819
+
+*libcompizconfig-0.8.4-r1 (03 Apr 2010)
+
+  03 Apr 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +libcompizconfig-0.8.4-r1.ebuild:
+  Replaced compiz ~ deps with >= deps to support the new compiz-0.8.6
+  release and to avoid future dep issues.
+  Did a revbump to avoid issues with installed packages.
+  Fixes bug 289287.
+
+  18 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  libcompizconfig-0.8.4.ebuild:
+  Raise intltool depend to 0.41.0 wrt #295819, thanks to Diego E. Pettenò
+  for reporting.
+
+  20 Dec 2009; Romain Perier <mrpouet@gentoo.org>
+  -libcompizconfig-0.6.0.ebuild, -libcompizconfig-0.8.2.ebuild:
+  Clean up old versions
+
+  14 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -libcompizconfig-0.8.2-r2.ebuild:
+  Drop masked version since newer unmasked are around.
+
+*libcompizconfig-0.8.4 (15 Oct 2009)
+
+  15 Oct 2009; Romain Perier <mrpouet@gentoo.org>
+  +libcompizconfig-0.8.4.ebuild:
+  Version bump.
+
+*libcompizconfig-0.8.2-r2 (16 Jul 2009)
+
+  16 Jul 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  -libcompizconfig-0.8.2-r1.ebuild, +libcompizconfig-0.8.2-r2.ebuild,
+  files/libcompizconfig-0.8.2-allow-system-libiniparser.patch:
+  Added libcompizconfig-0.8.2-r2 from the overlay - thanks to John Keeping
+  for the patch.
+  Fixes bug 259715.
+
+  27 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +files/libcompizconfig-0.8.2-allow-system-libiniparser.patch,
+  +libcompizconfig-0.8.2-r1.ebuild:
+  Added patch to allow the use of system iniparser. Many thanks to Diego E.
+  Pettenò <flameeyes@gentoo.org> for the help with auto-tools. Dropped
+  ppc/ppc64 keywords until iniparser is keyworded. Fixes bug 259715.
+
+*libcompizconfig-0.8.2-r1 (27 Apr 2009)
+
+  25 Apr 2009; Brent Baude <ranger@gentoo.org> libcompizconfig-0.8.2.ebuild:
+  Marking libcompizconfig-0.8.2 ~ppc for bug 246804
+
+  25 Apr 2009; Brent Baude <ranger@gentoo.org> libcompizconfig-0.8.2.ebuild:
+  Marking libcompizconfig-0.8.2 ~ppc64 for bug 246804
+
+  11 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  -libcompizconfig-0.7.8.ebuild:
+  Removing old compiz 0.7.8 ebuilds - affected by bug 263678.
+
+*libcompizconfig-0.8.2 (03 Apr 2009)
+
+  03 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +libcompizconfig-0.8.2.ebuild:
+  Bumped compiz to the 0.8.2 release.
+
+  15 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml, libcompizconfig-0.7.8.ebuild:
+  Removed the mirror restriction that was used for the overlay.
+
+  13 Nov 2008; Diego Pettenò <flameeyes@gentoo.org>
+  libcompizconfig-0.7.8.ebuild:
+  Run intltoolize (and depend on intltool), reported by Mahmoud Hashemi.
+
+  09 Nov 2008; Diego Pettenò <flameeyes@gentoo.org>
+  libcompizconfig-0.7.8.ebuild:
+  Call eautoreconf or the patch won't have any effect.
+
+  01 Nov 2008; Hanno Boeck <hanno@gentoo.org>
+  +files/libcompizconfig-undefinedref.patch:
+  Add missing patch.
+
+  27 Oct 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  libcompizconfig-0.7.8.ebuild:
+  Removed the bug reporting warning that was copied from the desktop-effects
+  overlay by mistake.
+
+*libcompizconfig-0.7.8 (27 Oct 2008)
+
+  27 Oct 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml, +libcompizconfig-0.7.8.ebuild:
+  Added compiz-0.7.8 to the tree
+
+  29 Jun 2008; Torsten Veller <tove@gentoo.org>
+  libcompizconfig-0.6.0.ebuild:
+  Add missing die: || "..." -> || die "..."
+
+  24 Jun 2008; Hanno Boeck <hanno@gentoo.org> libcompizconfig-0.6.0.ebuild:
+  Add pkgconfig dep.
+
+  25 Oct 2007; Olivier Crête <tester@gentoo.org>
+  libcompizconfig-0.6.0.ebuild:
+  Marked ~amd64
+
+  24 Oct 2007; Luca Barbato <lu_zero@gentoo.org>
+  libcompizconfig-0.6.0.ebuild:
+  Marked ~ppc
+
+  24 Oct 2007; Hanno Boeck <hanno@gentoo.org> libcompizconfig-0.6.0.ebuild:
+  QA fixes.
+
+*libcompizconfig-0.6.0 (23 Oct 2007)
+
+  23 Oct 2007; Hanno Boeck <hanno@gentoo.org> +metadata.xml,
+  +libcompizconfig-0.6.0.ebuild:
+  Initial compiz-fusion commit, ebuild based on xeffects overlay.
+

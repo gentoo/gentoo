@@ -1,0 +1,11 @@
+--- a/urlview.c
++++ b/urlview.no-trailing-newline.c
+@@ -46,7 +46,7 @@
+ #include <rx/rxposix.h>
+ #endif
+ 
+-#define DEFAULT_REGEXP "(((https?|ftp|gopher)://|(mailto|file|news):)[^' \t<>\"]+|(www|web|w3)\\.[-a-z0-9.]+)[^' \t.,;<>\"\\):]"
++#define DEFAULT_REGEXP "(((https?|ftp|gopher)://|(mailto|file|news):)[^' \t<>\"]+|(www|web|w3)\\.[-a-z0-9.]+)[^' \n\t.,;<>\"\\):]"
+ #define DEFAULT_COMMAND "url_handler.sh %s"
+ #define SYSTEM_INITFILE "/etc/urlview.conf"
+ 

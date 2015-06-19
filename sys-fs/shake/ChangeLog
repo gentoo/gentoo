@@ -1,0 +1,54 @@
+# ChangeLog for sys-fs/shake
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/shake/ChangeLog,v 1.14 2014/05/13 06:53:13 voyageur Exp $
+
+  13 May 2014; Bernard Cafarelli <voyageur@gentoo.org> shake-0.999.ebuild,
+  +files/shake-0.999-uclibc.patch:
+  Fix compilation with uclibc, patch by René Rhéaume <rene.rheaume@gmail.com>
+  in bug #509888
+
+  13 Jun 2013; Chris Reffett <creffett@gentoo.org> -shake-0.31.ebuild:
+  Maintainer timeout, remove old wrt bug 460572.
+
+  22 Mar 2013; Agostino Sarubbo <ago@gentoo.org> shake-0.999.ebuild:
+  Stable for ppc, wrt bug #462256
+
+  19 Mar 2013; Agostino Sarubbo <ago@gentoo.org> shake-0.999.ebuild:
+  Stable for x86, wrt bug #462256
+
+  19 Mar 2013; Agostino Sarubbo <ago@gentoo.org> shake-0.999.ebuild:
+  Stable for amd64, wrt bug #462256
+
+  18 Mar 2013; Bernard Cafarelli <voyageur@gentoo.org> shake-0.999.ebuild:
+  Use EAPI 5 to really fix bug #451768 (and #460572 at the same time)
+
+  21 Jan 2013; Bernard Cafarelli <voyageur@gentoo.org> -shake-0.99.ebuild,
+  shake-0.999.ebuild, +files/shake-0.999-fix_stat_include.patch:
+  Fix compilation with glibc-2.17, bug #451768
+
+*shake-0.999 (05 Aug 2011)
+
+  05 Aug 2011; Bernard Cafarelli <voyageur@gentoo.org> +shake-0.999.ebuild:
+  Version bump, thanks basti in bug #372289
+
+  19 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  qa: Fix whitespace typo <tab> to <space> in metadata.xml
+
+*shake-0.99 (11 Sep 2009)
+
+  11 Sep 2009; Bernard Cafarelli <voyageur@gentoo.org> +shake-0.99.ebuild:
+  Version bump, reported in bug #284394
+
+  18 Jan 2009; Markus Meier <maekke@gentoo.org> shake-0.31.ebuild:
+  amd64/x86 stable, bug #254791
+
+  17 Jan 2009; nixnut <nixnut@gentoo.org> shake-0.31.ebuild:
+  ppc stable #254791
+
+  19 Jun 2008; Bernard Cafarelli <voyageur@gentoo.org> shake-0.31.ebuild:
+  Add help2man depend, bug #228191
+
+*shake-0.31 (10 Feb 2008)
+
+  10 Feb 2008; Bernard Cafarelli <voyageur@gentoo.org> +shake-0.31.ebuild:
+  Initial commit, bug #144042

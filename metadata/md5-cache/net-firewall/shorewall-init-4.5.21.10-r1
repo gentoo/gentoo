@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=>=sys-apps/coreutils-8.20
+DESCRIPTION=Component to secure a Shorewall-protected system at boot time prior to bringing up the network
+EAPI=5
+HOMEPAGE=http://www.shorewall.net/
+KEYWORDS=~alpha ~amd64 hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/coreutils-8.20 || ( =net-firewall/shorewall-4.5.21.10-r1 =net-firewall/shorewall6-4.5.21.10-r1 =net-firewall/shorewall-lite-4.5.21.10-r1 =net-firewall/shorewall6-lite-4.5.21.10-r1 )
+SLOT=0
+SRC_URI=http://www1.shorewall.net/pub/shorewall/4.5/shorewall-4.5.21/shorewall-init-4.5.21.10.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=c9dd8de5fcd35fc099a55c63ad9f466c

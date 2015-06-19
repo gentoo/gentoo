@@ -1,0 +1,42 @@
+diff --git a/configure.ac b/configure.ac
+index cc8ff46..15ca668 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -41,17 +41,32 @@ AC_SUBST(MEGA_REQUIRES)
+ AC_SUBST(MEGA_CFLAGS)
+ AC_SUBST(MEGA_LIBS)
+ 
+-PKG_CHECK_MODULES(FUSE, [$FUSE_REQUIRES], [ENABLE_FUSE=yes], [ENABLE_FUSE=no])
+-AC_SUBST(FUSE_CFLAGS)
+-AC_SUBST(FUSE_LIBS)
+-AM_CONDITIONAL([ENABLE_FUSE], [test x$ENABLE_FUSE = xyes])
+-
+ GLIB_MAKEFILE='$(top_srcdir)/Makefile.glib'
+ AC_SUBST(GLIB_MAKEFILE)
+ 
+ PKG_CHECK_MODULES(GLIBTESTS, [glib-2.0 >= 2.34.0], [ENABLE_TESTS=yes], [ENABLE_TESTS=no])
+ AM_CONDITIONAL([ENABLE_TESTS], [test x$ENABLE_TESTS = xyes])
+ 
++# check fuse
++AC_ARG_WITH([fuse],
++  AS_HELP_STRING([--without-fuse], [Ignore presence of fuse and disable it]))
++
++AS_IF([test "x$with_fuse" != "xno"],
++  [PKG_CHECK_MODULES(FUSE, [$FUSE_REQUIRES], [ENABLE_FUSE=yes], [ENABLE_FUSE=no])],
++  [ENABLE_FUSE=no])
++
++AS_IF([test "x$ENABLE_FUSE" = "xyes"],
++  [
++    AC_SUBST(FUSE_CFLAGS)
++    AC_SUBST(FUSE_LIBS)
++  ],
++    [AS_IF([test "x$with_fuse" = "xyes"],
++      [AC_MSG_ERROR([fuse support requested but not found])
++    ])
++])
++
++AM_CONDITIONAL([ENABLE_FUSE], [test "x$ENABLE_FUSE" = "xyes"])
++
+ # enable dev compiler warnings
+ AC_ARG_ENABLE([warnings], AC_HELP_STRING([--enable-warnings], [Build with compiler warnings enabled.]))
+ AS_IF([test "x$enable_warnings" = "xyes"], [

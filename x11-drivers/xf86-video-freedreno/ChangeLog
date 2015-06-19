@@ -1,0 +1,33 @@
+# ChangeLog for x11-drivers/xf86-video-freedreno
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-freedreno/ChangeLog,v 1.6 2015/03/14 14:05:28 maekke Exp $
+
+  14 Mar 2015; Markus Meier <maekke@gentoo.org>
+  xf86-video-freedreno-1.3.0.ebuild:
+  arm stable, bug #530652
+
+*xf86-video-freedreno-1.3.0 (22 Oct 2014)
+
+  22 Oct 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-freedreno-1.3.0.ebuild:
+  Version bump.
+
+  08 Jun 2014; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-freedreno-1.0.0.ebuild:
+  Stable for arm, wrt bug #500368
+
+  05 Jun 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  xf86-video-freedreno-1.1.0.ebuild:
+  Raise libdrm dependency.
+
+*xf86-video-freedreno-1.1.0 (05 Jun 2014)
+
+  05 Jun 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-freedreno-1.1.0.ebuild:
+  Version bump, bug #510916.
+
+*xf86-video-freedreno-1.0.0 (17 Nov 2013)
+
+  17 Nov 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> +metadata.xml,
+  +xf86-video-freedreno-1.0.0.ebuild:
+  Initial commit.

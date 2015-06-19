@@ -1,0 +1,24 @@
+# ChangeLog for dev-haskell/stringbuilder
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/stringbuilder/ChangeLog,v 1.5 2014/12/14 11:28:38 gienah Exp $
+
+*stringbuilder-0.5.0 (14 Dec 2014)
+
+  14 Dec 2014; Mark Wright <gienah@gentoo.org> +stringbuilder-0.5.0.ebuild:
+  Bump stringbuilder to 0.5.0
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> stringbuilder-0.4.0.ebuild:
+  Stable for x86, wrt bug #488750
+
+  05 Nov 2013; Tony Vroon <chainsaw@gentoo.org> stringbuilder-0.4.0.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #488750.
+
+*stringbuilder-0.4.0 (20 Jun 2013)
+
+  20 Jun 2013; Alexander Vershilov <qnikst@gentoo.org> +metadata.xml,
+  +stringbuilder-0.4.0.ebuild:
+  add stringbuilder-0.4.0 due to #473858

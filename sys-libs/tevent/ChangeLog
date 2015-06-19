@@ -1,0 +1,296 @@
+# ChangeLog for sys-libs/tevent
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/tevent/ChangeLog,v 1.78 2015/06/16 12:09:58 polynomial-c Exp $
+
+*tevent-0.9.25 (16 Jun 2015)
+
+  16 Jun 2015; Lars Wendler <polynomial-c@gentoo.org> -tevent-0.9.19.ebuild,
+  -tevent-0.9.23.ebuild, +tevent-0.9.25.ebuild:
+  Version bump. Removed old.
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> tevent-0.9.19.ebuild,
+  tevent-0.9.21-r1.ebuild, tevent-0.9.23.ebuild, tevent-0.9.24.ebuild:
+  Drop old Python implementations
+
+*tevent-0.9.24 (06 Mar 2015)
+
+  06 Mar 2015; Lars Wendler <polynomial-c@gentoo.org> -tevent-0.9.22.ebuild,
+  +tevent-0.9.24.ebuild:
+  Version bump. Removed old.
+
+*tevent-0.9.23 (02 Mar 2015)
+
+  02 Mar 2015; Lars Wendler <polynomial-c@gentoo.org> +tevent-0.9.23.ebuild:
+  Version bump.
+
+  03 Jan 2015; Michał Górny <mgorny@gentoo.org> tevent-0.9.22.ebuild:
+  tevent[python] does not require talloc[python].
+
+  03 Jan 2015; Michał Górny <mgorny@gentoo.org> tevent-0.9.19.ebuild,
+  tevent-0.9.21-r1.ebuild, tevent-0.9.22.ebuild:
+  Add PYTHON_REQ_USE as necessary for waf.
+
+  11 Oct 2014; Markus Meier <maekke@gentoo.org> tevent-0.9.21-r1.ebuild:
+  arm stable, bug #512012
+
+*tevent-0.9.22 (03 Oct 2014)
+
+  03 Oct 2014; Lars Wendler <polynomial-c@gentoo.org> -tevent-0.9.20.ebuild,
+  -tevent-0.9.21.ebuild, +tevent-0.9.22.ebuild,
+  -files/add-py-file-0.9.14.patch, -files/add-py-file.patch,
+  -files/tevent-version.patch:
+  Version bump. Removed old.
+
+  15 Sep 2014; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.21-r1.ebuild:
+  Stable for sparc, wrt bug #512012
+
+  25 Aug 2014; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.21-r1.ebuild:
+  Stable for alpha, wrt bug #512012
+
+  23 Aug 2014; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.21-r1.ebuild:
+  Stable for ia64, wrt bug #512012
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.21-r1.ebuild:
+  Stable for ppc64, wrt bug #512012
+
+  11 Aug 2014; Patrick Lauer <patrick@gentoo.org> tevent-0.9.21-r1.ebuild:
+  Restrict parallel building #519164
+
+  07 Aug 2014; Jeroen Roovers <jer@gentoo.org> tevent-0.9.21-r1.ebuild:
+  Stable for HPPA (bug #512012).
+
+  28 Jul 2014; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.21-r1.ebuild:
+  Stable for ppc, wrt bug #512012
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.21-r1.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.21-r1.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> tevent-0.9.21-r1.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  10 Jun 2014; Mike Frysinger <vapier@gentoo.org> tevent-0.9.19.ebuild,
+  tevent-0.9.20.ebuild, tevent-0.9.21-r1.ebuild, tevent-0.9.21.ebuild:
+  Add arm64/m68k love.
+
+  10 Jun 2014; Mike Frysinger <vapier@gentoo.org> tevent-0.9.19.ebuild:
+  Mark s390/sh stable.
+
+*tevent-0.9.21-r1 (14 May 2014)
+
+  14 May 2014; Michał Górny <mgorny@gentoo.org> +tevent-0.9.21-r1.ebuild:
+  Enable multilib support, bug #505012. Make Python optional & clean up its
+  handling, bug #489114.
+
+*tevent-0.9.21 (18 Jan 2014)
+
+  18 Jan 2014; Lars Wendler <polynomial-c@gentoo.org> +tevent-0.9.21.ebuild:
+  Version bump.
+
+  16 Dec 2013; Lars Wendler <polynomial-c@gentoo.org> tevent-0.9.20.ebuild:
+  Raised dependency on sys-libs/talloc to version 2.1.0 for bug #481174.
+
+*tevent-0.9.20 (13 Dec 2013)
+
+  13 Dec 2013; Lars Wendler <polynomial-c@gentoo.org> -tevent-0.9.17.ebuild,
+  -tevent-0.9.18.ebuild, +tevent-0.9.20.ebuild:
+  Version bump. Removed old.
+
+  06 Sep 2013; Markus Meier <maekke@gentoo.org> tevent-0.9.19.ebuild:
+  arm stable, bug #478260
+
+  06 Sep 2013; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.19.ebuild:
+  Stable for sparc, wrt bug #478260
+
+  05 Sep 2013; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.19.ebuild:
+  Stable for ppc64, wrt bug #478260
+
+  04 Sep 2013; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.19.ebuild:
+  Stable for ppc, wrt bug #478260
+
+  03 Sep 2013; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.19.ebuild:
+  Stable for ia64, wrt bug #478260
+
+  01 Sep 2013; Jeroen Roovers <jer@gentoo.org> tevent-0.9.19.ebuild:
+  Stable for HPPA (bug #478260).
+
+  01 Sep 2013; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.19.ebuild:
+  Stable for alpha, wrt bug #478260
+
+  31 Aug 2013; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.19.ebuild:
+  Stable for x86, wrt bug #478260
+
+  31 Aug 2013; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.19.ebuild:
+  Stable for amd64, wrt bug #478260
+
+  25 Aug 2013; Markus Meier <maekke@gentoo.org> tevent-0.9.18.ebuild,
+  tevent-0.9.19.ebuild:
+  stabilize correct version for bug #478260
+
+  25 Aug 2013; Markus Meier <maekke@gentoo.org> tevent-0.9.19.ebuild:
+  arm stable, bug #478260
+
+  24 Aug 2013; Jeroen Roovers <jer@gentoo.org> tevent-0.9.18.ebuild:
+  Stable for HPPA (bug #478260).
+
+  16 Aug 2013; Sergey Popov <pinkbyte@gentoo.org> tevent-0.9.19.ebuild:
+  Add ~mips keyword, wrt bug #412489
+
+  13 Aug 2013; Zac Medico <zmedico@gentoo.org> tevent-0.9.19.ebuild:
+  Fix for prefix and add ~arm-linux + ~x86-linux keywords.
+
+  06 Aug 2013; Lars Wendler <polynomial-c@gentoo.org> tevent-0.9.19.ebuild:
+  Added python_optimize call.
+
+*tevent-0.9.19 (06 Aug 2013)
+
+  06 Aug 2013; Lars Wendler <polynomial-c@gentoo.org> -tevent-0.9.14-r1.ebuild,
+  -tevent-0.9.16.ebuild, +tevent-0.9.19.ebuild:
+  Version bump. Removed old.
+
+  20 Jun 2013; Patrick Lauer <patrick@gentoo.org> tevent-0.9.17.ebuild:
+  Restore stable keyword
+
+  19 Jun 2013; Tobias Klausmann <klausman@gentoo.org> tevent-0.9.17.ebuild:
+  Keyworded on alpha, bug #424649
+
+*tevent-0.9.18 (11 Mar 2013)
+
+  11 Mar 2013; Patrick Lauer <patrick@gentoo.org> +tevent-0.9.18.ebuild:
+  Bump
+
+  06 Mar 2013; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.17.ebuild:
+  Stable for sh, wrt bug #458712
+
+  03 Mar 2013; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.17.ebuild:
+  Stable for sparc, wrt bug #458712
+
+  03 Mar 2013; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.17.ebuild:
+  Stable for s390, wrt bug #458712
+
+  03 Mar 2013; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.17.ebuild:
+  Stable for ia64, wrt bug #458712
+
+  03 Mar 2013; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.17.ebuild:
+  Stable for alpha, wrt bug #458712
+
+  03 Mar 2013; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.17.ebuild:
+  Stable for arm, wrt bug #458712
+
+  19 Dec 2012; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.17.ebuild:
+  Add ~ia64, wrt bug #377809
+
+  29 Nov 2012; Jeroen Roovers <jer@gentoo.org> tevent-0.9.17.ebuild:
+  Stable for HPPA (bug #444686).
+
+  25 Nov 2012; Anthony G. Basile <blueness@gentoo.org> tevent-0.9.17.ebuild:
+  stable ppc ppc64, bug #444686
+
+  25 Nov 2012; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.17.ebuild:
+  Stable for x86, wrt bug #444686
+
+  25 Nov 2012; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.17.ebuild:
+  Stable for amd64, wrt bug #444686
+
+  30 Sep 2012; Mike Gilbert <floppym@gentoo.org> tevent-0.9.16.ebuild,
+  tevent-0.9.17.ebuild:
+  Remove minimum python version.
+
+*tevent-0.9.17 (23 Sep 2012)
+
+  23 Sep 2012; Víctor Ostorga <vostorga@gentoo.org> +tevent-0.9.17.ebuild:
+  Version bump to 0.9.17
+
+  20 Sep 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/add-py-file-0.9.14.patch, +files/tevent-version.patch:
+  Also add missing patches wrt bug#435568.
+
+*tevent-0.9.14-r1 (13 Sep 2012)
+
+  13 Sep 2012; Tomáš Chvátal <scarabeus@gentoo.org> +tevent-0.9.14-r1.ebuild:
+  Restore 0.9.14 it is still needed.
+
+  13 Sep 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/add-py-file-0.9.14.patch, -files/tevent-version.patch,
+  -tevent-0.9.12.ebuild, -tevent-0.9.14-r1.ebuild, -tevent-0.9.15.ebuild,
+  tevent-0.9.16.ebuild:
+  Stabilise latest on amd64 and x86. Drop older.
+
+  06 Jul 2012; Jeff Horelick <jdhore@gentoo.org> tevent-0.9.14-r1.ebuild:
+  marked x86 per bug 417115
+
+*tevent-0.9.16 (04 Jul 2012)
+
+  04 Jul 2012; Patrick Lauer <patrick@gentoo.org> +tevent-0.9.16.ebuild:
+  Bump for #424705
+
+  12 May 2012; Alexis Ballier <aballier@gentoo.org> tevent-0.9.15.ebuild:
+  keyword ~amd64-fbsd
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> tevent-0.9.14-r1.ebuild,
+  tevent-0.9.15.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  21 Apr 2012; Markus Meier <maekke@gentoo.org> tevent-0.9.15.ebuild:
+  add ~arm, bug #412489
+
+  25 Feb 2012; Agostino Sarubbo <ago@gentoo.org> tevent-0.9.14-r1.ebuild:
+  Stable for amd64, wrt bug #405617
+
+  18 Feb 2012; Tobias Klausmann <klausman@gentoo.org> tevent-0.9.14-r1.ebuild:
+  Keyworded on alpha, bug #377809
+
+*tevent-0.9.14-r1 (12 Feb 2012)
+
+  12 Feb 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +files/add-py-file-0.9.14.patch, +files/tevent-version.patch,
+  +tevent-0.9.14-r1.ebuild, -tevent-0.9.14.ebuild:
+  Add patches to 0.9.14, fix bug 403239. Thanks to slepnoga
+
+*tevent-0.9.15 (12 Feb 2012)
+
+  12 Feb 2012; Maxim Koltsov <maksbotan@gentoo.org> +files/add-py-file.patch,
+  +tevent-0.9.15.ebuild:
+  Bump to 0.9.15, bug 403237. Fix bug 403239 for 0.9.15
+
+  31 Oct 2011; Víctor Ostorga <vostorga@gentoo.org> tevent-0.9.14.ebuild:
+  Fixing file collision with sys-libs/talloc, bug #384873
+
+*tevent-0.9.14 (27 Sep 2011)
+
+  27 Sep 2011; Víctor Ostorga <vostorga@gentoo.org> -tevent-0.9.8.ebuild,
+  -tevent-0.9.11.ebuild, +tevent-0.9.14.ebuild:
+  Version bump to 0.9.14
+
+  14 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> tevent-0.9.12.ebuild:
+  Marked ~ppc/~ppc64 wrt #377809
+
+  07 Jul 2011; Alexis Ballier <aballier@gentoo.org> tevent-0.9.12.ebuild:
+  keyword ~x86-fbsd
+
+*tevent-0.9.12 (28 Jun 2011)
+
+  28 Jun 2011; Víctor Ostorga <vostorga@gentoo.org> +tevent-0.9.12.ebuild:
+  Version bump to 0.9.12, moving to waf, ebuild thanks to Ewoud Kohl van
+  Wijngaarden <gentoo@kohlvanwijngaarden.nl> bug 373311
+
+*tevent-0.9.11 (02 Apr 2011)
+
+  02 Apr 2011; Patrick Lauer <patrick@gentoo.org> +tevent-0.9.11.ebuild:
+  Bump
+
+  04 Nov 2009; Patrick Lauer <patrick@gentoo.org> tevent-0.9.8.ebuild:
+  Cleanup
+
+  09 Oct 2009; Patrick Lauer <patrick@gentoo.org> tevent-0.9.8.ebuild:
+  Improve description
+
+*tevent-0.9.8 (09 Oct 2009)
+
+  09 Oct 2009; Patrick Lauer <patrick@gentoo.org> +tevent-0.9.8.ebuild,
+  +metadata.xml:
+  Initial commit. Ebuilds based on those provided by Marcel Greter in
+  #231273

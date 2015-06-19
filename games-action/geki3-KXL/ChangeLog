@@ -1,0 +1,44 @@
+# ChangeLog for games-action/geki3-KXL
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/geki3-KXL/ChangeLog,v 1.12 2015/01/01 12:11:53 tupone Exp $
+
+  01 Jan 2015; Tupone Alfredo <tupone@gentoo.org> geki3-KXL-1.0.3-r2.ebuild:
+  Migrating to EAPI 4. Fix build with new automake
+
+  16 Jul 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  geki3-KXL-1.0.3-r2.ebuild:
+  EAPI=2; respect CFLAGS (bug #426890)
+
+  03 Jun 2009; Tristan Heaven <nyhm@gentoo.org> geki3-KXL-1.0.3-r2.ebuild:
+  RDEPEND on media-fonts/font-adobe-100dpi
+
+*geki3-KXL-1.0.3-r2 (05 Jan 2008)
+
+  05 Jan 2008; Tristan Heaven <nyhm@gentoo.org>
+  +files/geki3-KXL-1.0.3-paths.patch, +geki3-KXL-1.0.3-r2.ebuild:
+  Use autotools eclass, bug #204392; install menu entry, bug #159753; move
+  score file to $GAMES_STATEDIR
+
+  27 Nov 2006; <blubb@gentoo.org> geki3-KXL-1.0.3-r1.ebuild:
+  stable on amd64
+
+  10 Aug 2005; Carlos Silva <r3pek@gentoo.org> geki3-KXL-1.0.3-r1.ebuild:
+  Marked ~amd64. Closes bug #102036
+
+  23 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  geki3-KXL-1.0.3-r1.ebuild:
+  fix bug #93701 with WANT_AUTOCONF=2.5; tidy
+
+  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  geki3-KXL-1.0.3-r1.ebuild:
+  Added IUSE.
+
+*geki3-KXL-1.0.3-r1 (31 Dec 2003)
+
+  31 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
+  Make install paths cleaner.
+
+*geki3-KXL-1.0.3 (04 Mar 2003)
+
+  04 Mar 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Thomas Preissler <tomjohn@gmx.de> #14452.

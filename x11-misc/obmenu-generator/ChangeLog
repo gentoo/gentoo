@@ -1,0 +1,72 @@
+# ChangeLog for x11-misc/obmenu-generator
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/obmenu-generator/ChangeLog,v 1.15 2015/04/04 06:06:46 mr_bones_ Exp $
+
+  04 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -obmenu-generator-0.55.ebuild, -obmenu-generator-0.58.ebuild,
+  -obmenu-generator-0.59.ebuild:
+  old
+
+*obmenu-generator-0.61 (22 Feb 2015)
+
+  22 Feb 2015; Jeroen Roovers <jer@gentoo.org> +obmenu-generator-0.61.ebuild:
+  Version bump (bug #523940 by José Romildo Malaquias, Ramon Dantas).
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+*obmenu-generator-0.59 (02 Apr 2014)
+
+  02 Apr 2014; Julian Ospald <hasufell@gentoo.org>
+  +obmenu-generator-0.59.ebuild:
+  version bump
+
+  09 Nov 2013; Julian Ospald <hasufell@gentoo.org> obmenu-generator-0.58.ebuild:
+  fix deps wrt #490204
+
+*obmenu-generator-0.58 (09 Oct 2013)
+
+  09 Oct 2013; Julian Ospald <hasufell@gentoo.org>
+  -obmenu-generator-0.5.1.ebuild, -obmenu-generator-0.53.ebuild,
+  -obmenu-generator-0.54.ebuild, +obmenu-generator-0.58.ebuild:
+  version bump, remove old
+
+*obmenu-generator-0.55 (29 Aug 2013)
+
+  29 Aug 2013; Julian Ospald <hasufell@gentoo.org>
+  +obmenu-generator-0.55.ebuild:
+  version bump
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> obmenu-generator-0.54.ebuild:
+  Stable for amd64, wrt bug #474398
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> obmenu-generator-0.54.ebuild:
+  Stable for x86, wrt bug #474398
+
+*obmenu-generator-0.54 (01 Jan 2013)
+
+  01 Jan 2013; Julian Ospald <hasufell@gentoo.org>
+  +obmenu-generator-0.54.ebuild:
+  version bump
+
+  26 Oct 2012; Julian Ospald <hasufell@gentoo.org>
+  obmenu-generator-0.53.ebuild:
+  fix dependencies thanks to o11c
+
+  27 Aug 2012; Johannes Huber <johu@gentoo.org> obmenu-generator-0.53.ebuild:
+  Stable for x86, wrt bug #432744
+
+  26 Aug 2012; Agostino Sarubbo <ago@gentoo.org> obmenu-generator-0.53.ebuild:
+  Stable for amd64, wrt bug #432744
+
+*obmenu-generator-0.53 (26 Jul 2012)
+
+  26 Jul 2012; Julian Ospald <hasufell@gentoo.org>
+  +obmenu-generator-0.53.ebuild:
+  version bump
+
+*obmenu-generator-0.5.1 (01 May 2012)
+
+  01 May 2012; Julian Ospald <hasufell@gentoo.org>
+  +obmenu-generator-0.5.1.ebuild, +metadata.xml:
+  initial commit

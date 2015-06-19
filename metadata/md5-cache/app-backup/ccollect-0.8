@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=doc? ( >=app-text/asciidoc-8.1.0 app-text/docbook-xsl-stylesheets app-text/docbook-xml-dtd:4.2 dev-libs/libxslt )
+DESCRIPTION=(pseudo) incremental backup with different exclude lists using hardlinks and rsync
+EAPI=2
+HOMEPAGE=http://www.nico.schottelius.org/software/ccollect/
+IUSE=doc examples
+KEYWORDS=amd64 hppa ppc ~sparc x86
+LICENSE=GPL-3
+RDEPEND=net-misc/rsync
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.nico.schottelius.org/software/ccollect/download/ccollect-0.8.tar.bz2
+_md5_=3ef4f41039389d256e7df53b0dd93b74

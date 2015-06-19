@@ -1,0 +1,13 @@
+diff -Naur pin-0.1.9.orig/Makefile pin-0.1.9/Makefile
+--- pin-0.1.9.orig/Makefile	2010-12-02 17:01:55.000000000 +0100
++++ pin-0.1.9/Makefile	2010-12-02 17:02:50.000000000 +0100
+@@ -104,8 +104,7 @@
+ plugin: libvdr-$(PLUGIN).so
+ 
+ fskcheck: $(CMDOBJS)
+-	$(CXX) $(CXXFLAGS) $(CMDOBJS) -o $@
+-	@cp $@ $(FSKCHKDIR)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(CMDOBJS) -o $@
+ 
+ libvdr-$(PLUGIN).so: $(OBJS)
+ 	$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared $(OBJS) -o $@

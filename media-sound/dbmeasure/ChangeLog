@@ -1,0 +1,30 @@
+# ChangeLog for media-sound/dbmeasure
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/dbmeasure/ChangeLog,v 1.7 2013/12/23 16:11:26 pacho Exp $
+
+  23 Dec 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #221237
+
+  06 May 2013; Samuli Suominen <ssuominen@gentoo.org>
+  dbmeasure-0.0.20100217.ebuild:
+  Respect LDFLAGS and remove unnecessary media-sound/alsa-headers dependency
+  wrt #468712
+
+  05 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Revert as just talked with him via IRC
+
+  05 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup after talking with Ford_Prefect
+
+  19 Nov 2012; Arun Raghavan <ford_prefect@gentoo.org> metadata.xml:
+  Take over from robbat2.
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org>
+  dbmeasure-0.0.20100217.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*dbmeasure-0.0.20100217 (27 Feb 2010)
+
+  27 Feb 2010; Robin H. Johnson <robbat2@gentoo.org>
+  +dbmeasure-0.0.20100217.ebuild, +metadata.xml:
+  Initial commit. Ebuild by myself.

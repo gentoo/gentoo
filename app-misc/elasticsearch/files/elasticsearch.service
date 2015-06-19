@@ -1,0 +1,11 @@
+[Unit]
+Description=ElasticSearch
+After=network.target
+
+[Service]
+User=elasticsearch
+Environment=ES_INCLUDE=/etc/elasticsearch/elasticsearch.in.sh
+ExecStart=/usr/share/elasticsearch/bin/elasticsearch -f -Des.path.conf=/etc/elasticsearch
+
+[Install]
+WantedBy=multi-user.target

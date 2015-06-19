@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Manage config files in $HOME via fake bare git repositories
+EAPI=5
+HOMEPAGE=https://github.com/RichiH/vcsh/
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( GPL-3 GPL-2 )
+RDEPEND=dev-vcs/git
+SLOT=0
+SRC_URI=http://github.com/RichiH/vcsh/archive/v1.20141026-manpage-static.tar.gz -> vcsh-1.20141026-manpage-static.tar.gz
+_md5_=7d6d05c0bf8eb5adeda5808f4e617b65

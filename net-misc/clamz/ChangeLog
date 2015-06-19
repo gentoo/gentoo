@@ -1,0 +1,32 @@
+# ChangeLog for net-misc/clamz
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/clamz/ChangeLog,v 1.7 2014/03/01 22:39:08 mgorny Exp $
+
+  01 Mar 2014; Michał Górny <mgorny@gentoo.org> clamz-0.4.ebuild,
+  clamz-0.5.ebuild:
+  Update libgcrypt dep to use slot :0.
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #144305
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> clamz-0.4.ebuild,
+  clamz-0.5.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*clamz-0.5 (09 Dec 2011)
+
+  09 Dec 2011; Jim Ramsay <jim_ramsay@gentoo.org> +clamz-0.5.ebuild:
+  Bug #393575: Version 0.5 is released
+
+  16 Feb 2011; Thomas Kahle <tomka@gentoo.org> clamz-0.4.ebuild:
+  x86 stable per bug 353125
+
+  10 Feb 2011; Markos Chandras <hwoarang@gentoo.org> clamz-0.4.ebuild:
+  Stable on amd64 wrt bug #353125
+
+*clamz-0.4 (27 May 2010)
+
+  27 May 2010; Jim Ramsay <lack@gentoo.org> +clamz-0.4.ebuild,
+  +metadata.xml:
+  New package: clamz is a command-line downloader for the Amazon.com MP3
+  music store (Bug #267873)

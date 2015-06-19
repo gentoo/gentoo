@@ -1,0 +1,10 @@
+# ChangeLog for sci-libs/profnet
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/profnet/ChangeLog,v 1.1 2013/04/24 14:25:57 jlec Exp $
+
+*profnet-1.0.22 (24 Apr 2013)
+
+  24 Apr 2013; Justin Lecher <jlec@gentoo.org> +profnet-1.0.22.ebuild,
+  +metadata.xml:
+  New addition
+

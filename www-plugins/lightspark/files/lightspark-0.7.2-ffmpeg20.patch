@@ -1,0 +1,155 @@
+From fff7e63650c1569908bf80f11a123e051e993f31 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ludger=20Kr=C3=A4mer?= <dbluelle@blau-weissoedingen.de>
+Date: Fri, 16 Aug 2013 20:30:28 +0200
+Subject: [PATCH] fix compilation with ffmpeg 2.0 avcodec_decode_audio4 seems
+ not to deliver data in AV_SAMPLE_FMT_S16 format, so we have to use
+ libavresample for resampling
+
+---
+ CMakeLists.txt           |  2 +-
+ conf/FindFFMpeg.cmake    |  6 ++++-
+ src/backends/decoder.cpp | 64 ++++++++++++++++++++++++++++++++++++++++++------
+ src/backends/decoder.h   |  8 ++++++
+ 4 files changed, 70 insertions(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 33dbb85..d3a964b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -286,7 +286,7 @@ IF(AUDIO_BACKEND)
+ ENDIF(AUDIO_BACKEND)
+ 
+ IF(ENABLE_LIBAVCODEC)
+-	pkg_check_modules(FFMPEG libavcodec libavutil libavformat)
++	pkg_check_modules(FFMPEG libavcodec libavutil libavformat libavresample)
+ 	IF(NOT(FFMPEG_FOUND))
+ 		INCLUDE(FindFFMpeg REQUIRED)
+ 	ENDIF(NOT(FFMPEG_FOUND))
+diff --git a/conf/FindFFMpeg.cmake b/conf/FindFFMpeg.cmake
+index 2b4dd98..8246c15 100644
+--- a/conf/FindFFMpeg.cmake
++++ b/conf/FindFFMpeg.cmake
+@@ -23,7 +23,11 @@ FIND_LIBRARY(FFMPEG_AVFORMAT_LIBRARY NAMES
+     avformat
+ )
+ 
+-SET(FFMPEG_LIBRARY ${FFMPEG_AVCODEC_LIBRARY} ${FFMPEG_AVUTIL_LIBRARY} ${FFMPEG_AVFORMAT_LIBRARY})
++FIND_LIBRARY(FFMPEG_AVRESAMPLE_LIBRARY NAMES
++    avresample
++)
++
++SET(FFMPEG_LIBRARY ${FFMPEG_AVCODEC_LIBRARY} ${FFMPEG_AVUTIL_LIBRARY} ${FFMPEG_AVFORMAT_LIBRARY} ${FFMPEG_AVRESAMPLE_LIBRARY})
+ MARK_AS_ADVANCED(FFMPEG_LIBRARY)
+ 
+ # handle the QUIETLY and REQUIRED arguments and set FFMPEG_FOUND to TRUE if 
+diff --git a/src/backends/decoder.cpp b/src/backends/decoder.cpp
+index 22eac2e..4b3148c 100755
+--- a/src/backends/decoder.cpp
++++ b/src/backends/decoder.cpp
+@@ -295,6 +295,8 @@ bool FFMpegVideoDecoder::decodePacket(AVPacket* pkt, uint32_t time)
+ #else
+ 	int ret=avcodec_decode_video(codecContext, frameIn, &frameOk, pkt->data, pkt->size);
+ #endif
++	if (ret < 0)
++		return false;
+ 
+ 	assert_and_throw(ret==(int)pkt->size);
+ 	if(frameOk)
+@@ -612,10 +614,33 @@ uint32_t FFMpegAudioDecoder::decodeData(uint8_t* data, int32_t datalen, uint32_t
+ 		ret=-1;
+ 	else
+ 	{
+-		//This is suboptimal but equivalent to what libavcodec
+-		//does for the compatibility version of avcodec_decode_audio3
+-		memcpy(curTail.samples, frameIn->extended_data[0], frameIn->linesize[0]);
+-		maxLen=frameIn->linesize[0];
++		if (frameIn->format != AV_SAMPLE_FMT_S16)
++		{
++			AVAudioResampleContext * avr = avresample_alloc_context();
++			av_opt_set_int(avr, "in_channel_layout",  frameIn->channel_layout, 0);
++			av_opt_set_int(avr, "out_channel_layout", frameIn->channel_layout,  0);
++			av_opt_set_int(avr, "in_sample_rate",     frameIn->sample_rate,     0);
++			av_opt_set_int(avr, "out_sample_rate",    frameIn->sample_rate,     0);
++			av_opt_set_int(avr, "in_sample_fmt",      frameIn->format,   0);
++			av_opt_set_int(avr, "out_sample_fmt",     AV_SAMPLE_FMT_S16,    0);
++			avresample_open(avr);
++			
++			uint8_t *output;
++			int out_linesize;
++			int out_samples = avresample_available(avr) + av_rescale_rnd(avresample_get_delay(avr) + frameIn->linesize[0], frameIn->sample_rate, frameIn->sample_rate, AV_ROUND_UP);
++			av_samples_alloc(&output, &out_linesize, frameIn->nb_samples, out_samples, AV_SAMPLE_FMT_S16, 0);
++			maxLen = avresample_convert(avr, &output, out_linesize, out_samples, frameIn->extended_data, frameIn->linesize[0], frameIn->nb_samples)*4;
++			memcpy(curTail.samples, output, maxLen);
++			av_freep(&output);
++			avresample_free(&avr);
++		}
++		else 
++		{
++			//This is suboptimal but equivalent to what libavcodec
++			//does for the compatibility version of avcodec_decode_audio3
++			memcpy(curTail.samples, frameIn->extended_data[0], frameIn->linesize[0]);
++			maxLen=frameIn->linesize[0];
++		}
+ 	}
+ #else
+ 	int32_t ret=avcodec_decode_audio3(codecContext, curTail.samples, &maxLen, &pkt);
+@@ -660,10 +685,33 @@ uint32_t FFMpegAudioDecoder::decodePacket(AVPacket* pkt, uint32_t time)
+ 		ret=-1;
+ 	else
+ 	{
+-		//This is suboptimal but equivalent to what libavcodec
+-		//does for the compatibility version of avcodec_decode_audio3
+-		memcpy(curTail.samples, frameIn->extended_data[0], frameIn->linesize[0]);
+-		maxLen=frameIn->linesize[0];
++		if (frameIn->format != AV_SAMPLE_FMT_S16)
++		{
++			AVAudioResampleContext * avr = avresample_alloc_context();
++			av_opt_set_int(avr, "in_channel_layout",  frameIn->channel_layout, 0);
++			av_opt_set_int(avr, "out_channel_layout", frameIn->channel_layout,  0);
++			av_opt_set_int(avr, "in_sample_rate",     frameIn->sample_rate,     0);
++			av_opt_set_int(avr, "out_sample_rate",    frameIn->sample_rate,     0);
++			av_opt_set_int(avr, "in_sample_fmt",      frameIn->format,   0);
++			av_opt_set_int(avr, "out_sample_fmt",     AV_SAMPLE_FMT_S16,    0);
++			avresample_open(avr);
++			
++			uint8_t *output;
++			int out_linesize;
++			int out_samples = avresample_available(avr) + av_rescale_rnd(avresample_get_delay(avr) + frameIn->linesize[0], frameIn->sample_rate, frameIn->sample_rate, AV_ROUND_UP);
++			av_samples_alloc(&output, &out_linesize, frameIn->nb_samples, out_samples, AV_SAMPLE_FMT_S16, 0);
++			maxLen = avresample_convert(avr, &output, out_linesize, out_samples, frameIn->extended_data, frameIn->linesize[0], frameIn->nb_samples)*4;
++			memcpy(curTail.samples, output, maxLen);
++			av_freep(&output);
++			avresample_free(&avr);
++		}
++		else 
++		{
++			//This is suboptimal but equivalent to what libavcodec
++			//does for the compatibility version of avcodec_decode_audio3
++			memcpy(curTail.samples, frameIn->extended_data[0], frameIn->linesize[0]);
++			maxLen=frameIn->linesize[0];
++		}
+ 	}
+ #elif HAVE_AVCODEC_DECODE_AUDIO3
+ 	int ret=avcodec_decode_audio3(codecContext, curTail.samples, &maxLen, pkt);
+diff --git a/src/backends/decoder.h b/src/backends/decoder.h
+index 93950ad..28bd232 100644
+--- a/src/backends/decoder.h
++++ b/src/backends/decoder.h
+@@ -28,6 +28,14 @@
+ {
+ #include <libavcodec/avcodec.h>
+ #include <libavformat/avformat.h>
++#include <libavresample/avresample.h>
++#include <libavutil/opt.h>
++#ifndef AVCODEC_MAX_AUDIO_FRAME_SIZE
++#define AVCODEC_MAX_AUDIO_FRAME_SIZE 192000 // 1 second of 48khz 32bit audio
++#endif
++#ifndef CodecID
++#define CodecID AVCodecID
++#endif
+ #define MAX_AUDIO_FRAME_SIZE AVCODEC_MAX_AUDIO_FRAME_SIZE
+ }
+ #else
+-- 
+1.8.4
+

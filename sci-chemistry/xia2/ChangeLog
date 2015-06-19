@@ -1,0 +1,68 @@
+# ChangeLog for sci-chemistry/xia2
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/xia2/ChangeLog,v 1.16 2015/04/07 14:40:13 jlec Exp $
+
+  19 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  sci-chemistry only
+
+  19 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  Changed herd to sci-chemistry
+
+  14 Apr 2012; Andreas Schuerch <nativemad@gentoo.org> xia2-0.3.3.1.ebuild:
+  x86 stable, see bug 375917, thanks all.
+
+*xia2-0.3.4.0 (28 Feb 2012)
+
+  28 Feb 2012; Justin Lecher <jlec@gentoo.org> +files/0.3.4.0-fix-syntax.patch,
+  +xia2-0.3.4.0.ebuild:
+  Version Bump
+
+  16 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> xia2-0.3.3.1.ebuild:
+  amd64 restable
+
+  08 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> xia2-0.3.3.1.ebuild:
+  Revert back to ~arch for security and libpng porting.
+
+  06 Oct 2011; Tony Vroon <chainsaw@gentoo.org> xia2-0.3.3.1.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo in bug
+  #351753.
+
+*xia2-0.3.3.3 (04 Oct 2011)
+
+  04 Oct 2011; Justin Lecher <jlec@gentoo.org> +files/0.3.3.3-fix-syntax.patch,
+  +xia2-0.3.3.3.ebuild:
+  Version Bump
+
+  23 Jul 2011; Justin Lecher <jlec@gentoo.org> xia2-0.3.3.1.ebuild:
+  Added pstins msg
+
+*xia2-0.3.3.1 (25 Jun 2011)
+
+  25 Jun 2011; Justin Lecher <jlec@gentoo.org> +files/0.3.3.1-fix-syntax.patch,
+  xia2-0.3.1.0.ebuild, xia2-0.3.1.6.ebuild, xia2-0.3.1.7.ebuild,
+  +xia2-0.3.3.1.ebuild, metadata.xml:
+  Version Bump
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> xia2-0.3.1.7.ebuild:
+  marked ~ppc wrt #303931
+
+*xia2-0.3.1.7 (27 Jul 2010)
+
+  27 Jul 2010; Justin Lecher <jlec@gentoo.org>
+  +files/0.3.1.7-fix-syntax.patch, +xia2-0.3.1.7.ebuild:
+  Version bump
+
+  22 Apr 2010; Justin Lecher <jlec@gentoo.org> xia2-0.3.1.6.ebuild:
+  Keyworded for ~*-linux
+
+*xia2-0.3.1.6 (22 Apr 2010)
+
+  22 Apr 2010; Justin Lecher <jlec@gentoo.org>
+  +files/0.3.1.6-fix-syntax.patch, +xia2-0.3.1.6.ebuild:
+  Version Bump #316579, fixes for PYTHON ABIs things
+
+*xia2-0.3.1.0 (06 Feb 2010)
+
+  06 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +files/0.3.1.0-fix-syntax.patch, +xia2-0.3.1.0.ebuild, +metadata.xml:
+  Splitted xia2 from ccp4

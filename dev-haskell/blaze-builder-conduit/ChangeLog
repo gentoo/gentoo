@@ -1,0 +1,34 @@
+# ChangeLog for dev-haskell/blaze-builder-conduit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/blaze-builder-conduit/ChangeLog,v 1.7 2015/06/06 10:26:40 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  blaze-builder-conduit-1.0.0.ebuild:
+  Drop trailing '.' from description.
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*blaze-builder-conduit-1.1.0 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org>
+  +blaze-builder-conduit-1.1.0.ebuild:
+  Bump blaze-builder-conduit to 1.1.0
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org>
+  blaze-builder-conduit-1.0.0.ebuild:
+  Stable for x86, wrt bug #488750
+
+  05 Nov 2013; Tony Vroon <chainsaw@gentoo.org>
+  blaze-builder-conduit-1.0.0.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #488750.
+
+*blaze-builder-conduit-1.0.0 (26 Aug 2013)
+
+  26 Aug 2013; Alexander Vershilov <qnikst@gentoo.org>
+  +blaze-builder-conduit-1.0.0.ebuild, +metadata.xml:
+  dev-haskell/blaze-builder-conduit: 1.0.0

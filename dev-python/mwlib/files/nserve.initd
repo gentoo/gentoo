@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/mwlib/files/nserve.initd,v 1.1 2013/07/01 13:56:29 dev-zero Exp $
+
+description="nserve is a HTTP server which distributes received jobs to a mw-qserve instance"
+
+command="/usr/bin/nserve"
+command_args="--port=${NSERVE_PORT} \
+	--interface=${NSERVE_INTERFACE} \
+	--qserve=${MW_QSERVE_INTERFACE}:${MW_QSERVE_PORT}"
+
+pidfile="/var/run/${SVCNAME}.pid"
+command_background="yes"
+
+start_stop_daemon_args="--user ${NSERVE_USER:-mwlib} \
+	--group ${NSERVE_GROUP:-mwlib} \
+	${NSERVE_LOGFILE:+--stderr ${NSERVE_LOGFILE}} \
+	${NSERVE_LOGFILE:+--stdout ${NSERVE_LOGFILE}}"
+
+depend() {
+	need net localmount
+	use mw-qserve
+}

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DEPEND=sys-devel/binutils-config
+DESCRIPTION=Host OS native assembler as and static linker ld
+EAPI=3
+HOMEPAGE=http://prefix.gentoo.org/
+KEYWORDS=~ppc-aix ~x86-interix ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=sys-devel/binutils-config
+SLOT=0
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=0b30fe0af915c96ec64163b3d62a99d8

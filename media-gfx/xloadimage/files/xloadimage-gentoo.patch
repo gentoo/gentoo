@@ -1,0 +1,258 @@
+diff -ru xloadimage.4.1.orig/config.c xloadimage.4.1/config.c
+--- xloadimage.4.1.orig/config.c	2005-10-22 15:47:17.000000000 +0200
++++ xloadimage.4.1/config.c	2005-10-22 15:58:16.000000000 +0200
+@@ -313,12 +313,13 @@
+  * -1 if access denied or not found, 0 if ok.
+  */
+ 
+-int findImage(name, fullname)
++int findImage(name, fullname, size)
+      char *name, *fullname;
++     size_t size;
+ { unsigned int   p, e;
+   struct stat    sbuf;
+ 
+-  strcpy(fullname, name);
++  strncpy(fullname, name, size);
+   if (!strcmp(name, "stdin")) /* stdin is special name */
+     return(0);
+ 
+@@ -327,7 +328,7 @@
+   if (! stat(fullname, &sbuf))
+       return(fileIsOk(fullname, &sbuf));
+ #ifndef NO_COMPRESS
+-  strcat(fullname, ".Z");
++  strncat(fullname, ".Z", size);
+   if (! stat(fullname, &sbuf))
+       return(fileIsOk(fullname, &sbuf));
+ #endif
+@@ -336,12 +337,12 @@
+ #ifdef VMS
+     sprintf(fullname, "%s%s", Paths[p], name);
+ #else
+-    sprintf(fullname, "%s/%s", Paths[p], name);
++    snprintf(fullname, size, "%s/%s", Paths[p], name);
+ #endif
+     if (! stat(fullname, &sbuf))
+       return(fileIsOk(fullname, &sbuf));
+ #ifndef NO_COMPRESS
+-    strcat(fullname, ".Z");
++    strncat(fullname, ".Z", size);
+     if (! stat(fullname, &sbuf))
+ #endif
+       return(fileIsOk(fullname, &sbuf));
+@@ -349,12 +350,12 @@
+ #ifdef VMS
+       sprintf(fullname, "%s%s%s", Paths[p], name, Exts[e]);
+ #else
+-      sprintf(fullname, "%s/%s%s", Paths[p], name, Exts[e]);
++      snprintf(fullname, size, "%s/%s%s", Paths[p], name, Exts[e]);
+ #endif
+       if (! stat(fullname, &sbuf))
+ 	return(fileIsOk(fullname, &sbuf));
+ #ifndef NO_COMPRESS
+-      strcat(fullname, ".Z");
++      strncat(fullname, ".Z", size);
+       if (! stat(fullname, &sbuf))
+ 	return(fileIsOk(fullname, &sbuf));
+ #endif
+@@ -362,11 +363,11 @@
+   }
+ 
+   for (e= 0; e < NumExts; e++) {
+-    sprintf(fullname, "%s%s", name, Exts[e]);
++    snprintf(fullname, size, "%s%s", name, Exts[e]);
+     if (! stat(fullname, &sbuf))
+       return(fileIsOk(fullname, &sbuf));
+ #ifndef NO_COMPRESS
+-    strcat(fullname, ".Z");
++    strncat(fullname, ".Z", size);
+     if (! stat(fullname, &sbuf))
+       return(fileIsOk(fullname, &sbuf));
+ #endif
+@@ -392,7 +393,7 @@
+ #ifdef VMS
+     sprintf(buf, "directory %s", Paths[a]);
+ #else
+-    sprintf(buf, "ls %s", Paths[a]);
++    snprintf(buf, sizeof(buf)-1, "ls %s", Paths[a]);
+ #endif
+     if (system(buf) < 0) {
+ #ifdef VMS
+diff -ru xloadimage.4.1.orig/imagetypes.c xloadimage.4.1/imagetypes.c
+--- xloadimage.4.1.orig/imagetypes.c	2005-10-22 15:47:17.000000000 +0200
++++ xloadimage.4.1/imagetypes.c	2005-10-22 15:51:31.000000000 +0200
+@@ -17,7 +17,7 @@
+ /* SUPPRESS 560 */
+ 
+ extern int errno;
+-extern int findImage(char *name, char *fullname);
++extern int findImage(char *name, char *fullname, size_t size);
+ 
+ /* load a named image
+  */
+@@ -32,7 +32,7 @@
+   Image  *image;
+   int     a;
+ 
+-  if (findImage(name, fullname) < 0) {
++  if (findImage(name, fullname, BUFSIZ) < 0) {
+     if (errno == ENOENT)
+       fprintf(stderr, "%s: image not found\n", name);
+     else
+@@ -109,7 +109,7 @@
+ { char fullname[BUFSIZ];
+   int  a;
+ 
+-  if (findImage(name, fullname) < 0) {
++  if (findImage(name, fullname, BUFSIZ) < 0) {
+     if (errno == ENOENT)
+       fprintf(stderr, "%s: image not found\n", name);
+     else
+diff -ru xloadimage.4.1.orig/jpeg.c xloadimage.4.1/jpeg.c
+--- xloadimage.4.1.orig/jpeg.c	2005-10-22 15:47:17.000000000 +0200
++++ xloadimage.4.1/jpeg.c	2005-10-22 16:02:03.000000000 +0200
+@@ -19,7 +19,7 @@
+ #undef  debug
+ 
+ #ifdef DEBUG
+-# define debug(xx)	fprintf(stderr,xx)
++# define debug(xx)	fprintf(stderr, "%s", xx)
+ #else
+ # define debug(xx)
+ #endif
+diff -ru xloadimage.4.1.orig/mcidas.c xloadimage.4.1/mcidas.c
+--- xloadimage.4.1.orig/mcidas.c	2005-10-22 15:47:17.000000000 +0200
++++ xloadimage.4.1/mcidas.c	2005-10-22 15:48:49.000000000 +0200
+@@ -63,7 +63,7 @@
+   minute = (time % 10000) / 100;
+   second = (time % 100);
+ 
+-  sprintf(buf, "%d:%2.2d:%2.2d %s %d, %d (day %d)",
++  snprintf(buf, 29, "%d:%2.2d:%2.2d %s %d, %d (day %d)",
+ 	  hour, minute, second, month_info[month].name, day, year,
+ 	  (date % 1000));
+   return(buf);
+diff -ru xloadimage.4.1.orig/png.c xloadimage.4.1/png.c
+--- xloadimage.4.1.orig/png.c	2005-10-22 15:47:17.000000000 +0200
++++ xloadimage.4.1/png.c	2005-10-22 16:02:20.000000000 +0200
+@@ -30,7 +30,7 @@
+ #undef  debug
+ 
+ #ifdef DEBUG
+-# define debug(xx)	fprintf(stderr,xx)
++# define debug(xx)	fprintf(stderr, "%s", xx)
+ #else
+ # define debug(xx)
+ #endif
+diff -ru xloadimage.4.1.orig/reduce.c xloadimage.4.1/reduce.c
+--- xloadimage.4.1.orig/reduce.c	2005-10-22 15:47:17.000000000 +0200
++++ xloadimage.4.1/reduce.c	2005-10-22 15:48:49.000000000 +0200
+@@ -502,7 +502,7 @@
+ 
+   depth= colorsToDepth(n);
+   new_image= newRGBImage(image->width, image->height, depth);
+-  sprintf(buf, "%s (%d colors)", image->title, n);
++  snprintf(buf, BUFSIZ - 1, "%s (%d colors)", image->title, n);
+   new_image->title= dupString(buf);
+ 
+   /* calculate RGB table from each color area.  this should really calculate
+diff -ru xloadimage.4.1.orig/rle.c xloadimage.4.1/rle.c
+--- xloadimage.4.1.orig/rle.c	2005-10-22 15:47:17.000000000 +0200
++++ xloadimage.4.1/rle.c	2005-10-22 16:00:06.000000000 +0200
+@@ -21,7 +21,7 @@
+ #undef  debug
+ 
+ #ifdef DEBUG
+-# define debug(xx)	fprintf(stderr,xx)
++# define debug(xx)	fprintf(stderr, "%s", xx)
+ #else
+ # define debug(xx)
+ #endif
+diff -ru xloadimage.4.1.orig/rotate.c xloadimage.4.1/rotate.c
+--- xloadimage.4.1.orig/rotate.c	2005-10-22 15:47:17.000000000 +0200
++++ xloadimage.4.1/rotate.c	2005-10-22 15:48:49.000000000 +0200
+@@ -70,7 +70,7 @@
+     { printf("  Rotating image by %d degrees...", degrees);
+       fflush(stdout);
+     }
+-  sprintf(buf, "%s (rotated by %d degrees)", simage->title, degrees);
++  snprintf(buf, BUFSIZ - 1, "%s (rotated by %d degrees)", simage->title, degrees);
+ 
+   image1 = simage;
+   image2 = NULL;
+diff -ru xloadimage.4.1.orig/tiff.c xloadimage.4.1/tiff.c
+--- xloadimage.4.1.orig/tiff.c	2005-10-22 15:47:17.000000000 +0200
++++ xloadimage.4.1/tiff.c	2005-10-22 15:48:49.000000000 +0200
+@@ -133,14 +133,14 @@
+   switch (info->photometric) {
+   case PHOTOMETRIC_MINISBLACK:
+     if (info->bitspersample > 1) {
+-      sprintf(buf, "%d-bit greyscale ", info->bitspersample);
++      snprintf(buf, 31, "%d-bit greyscale ", info->bitspersample);
+       return(buf);
+     }
+     else
+       return "white-on-black ";
+   case PHOTOMETRIC_MINISWHITE:
+     if (info->bitspersample > 1) {
+-      sprintf(buf, "%d-bit greyscale ", info->bitspersample);
++      snprintf(buf, 31, "%d-bit greyscale ", info->bitspersample);
+       return(buf);
+     }
+     else
+diff -ru xloadimage.4.1.orig/window.c xloadimage.4.1/window.c
+--- xloadimage.4.1.orig/window.c	2005-10-22 15:47:17.000000000 +0200
++++ xloadimage.4.1/window.c	2005-10-22 15:48:50.000000000 +0200
+@@ -606,7 +606,7 @@
+   else {
+     char def_geom[30];
+ 
+-    sprintf(def_geom, "%ux%u+0+0", image->width, image->height);
++    snprintf(def_geom, 29, "%ux%u+0+0", image->width, image->height);
+     XGeometry(disp, scrn, opt->info.geometry.string, def_geom, 0, 1, 1, 0, 0,
+ 	      (int *)&winx, (int *)&winy, (int *)&winwidth, (int *)&winheight);
+   }
+diff -ru xloadimage.4.1.orig/zio.c xloadimage.4.1/zio.c
+--- xloadimage.4.1.orig/zio.c	2005-10-22 15:47:17.000000000 +0200
++++ xloadimage.4.1/zio.c	2005-10-22 15:48:50.000000000 +0200
+@@ -233,7 +233,7 @@
+             strcpy (s, "'");
+             debug(("Filtering image through '%s'\n", filter->filter));
+             zf->type= ZPIPE;
+-            sprintf(buf, "%s %s", filter->filter, fname);
++            snprintf(buf, BUFSIZ - 1, "%s %s", filter->filter, fname);
+             lfree (fname);
+       if (! (zf->stream= popen(buf, "r"))) {
+ 	lfree((byte *)zf->filename);
+diff -ru xloadimage.4.1.orig/zoom.c xloadimage.4.1/zoom.c
+--- xloadimage.4.1.orig/zoom.c	2005-10-22 15:47:17.000000000 +0200
++++ xloadimage.4.1/zoom.c	2005-10-22 15:48:50.000000000 +0200
+@@ -63,23 +63,23 @@
+   if (!xzoom) {
+     if (verbose)
+       printf("  Zooming image Y axis by %d%%...", yzoom);
+-      sprintf(buf, "%s (Y zoom %d%%)", oimage->title, yzoom);
++      snprintf(buf, BUFSIZ - 1, "%s (Y zoom %d%%)", oimage->title, yzoom);
+   }
+   else if (!yzoom) {
+     if (verbose)
+       printf("  Zooming image X axis by %d%%...", xzoom);
+-    sprintf(buf, "%s (X zoom %d%%)", oimage->title, xzoom);
++    snprintf(buf, BUFSIZ - 1, "%s (X zoom %d%%)", oimage->title, xzoom);
+   }
+   else if (xzoom == yzoom) {
+     if (verbose)
+       printf("  Zooming image by %d%%...", xzoom);
+-    sprintf(buf, "%s (%d%% zoom)", oimage->title, xzoom);
++    snprintf(buf, BUFSIZ - 1, "%s (%d%% zoom)", oimage->title, xzoom);
+   }
+   else {
+     if (verbose)
+       printf("  Zooming image X axis by %d%% and Y axis by %d%%...",
+ 	     xzoom, yzoom);
+-    sprintf(buf, "%s (X zoom %d%% Y zoom %d%%)", oimage->title,
++    snprintf(buf, BUFSIZ - 1, "%s (X zoom %d%% Y zoom %d%%)", oimage->title,
+ 	    xzoom, yzoom);
+   }
+   if (verbose)

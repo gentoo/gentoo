@@ -1,0 +1,6 @@
+#!/bin/sh
+APPBASE="/usr/share/bluej"
+JAVAPATH="$(java-config -O)"
+CP="$APPBASE/lib/bluej.jar:$JAVAPATH/lib/tools.jar"
+"$JAVAPATH/bin/java" -cp "$CP" bluej.Boot  "$@"
+

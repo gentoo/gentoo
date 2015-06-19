@@ -1,0 +1,52 @@
+# ChangeLog for games-rpg/freedink
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/freedink/ChangeLog,v 1.13 2015/03/12 19:34:09 mr_bones_ Exp $
+
+  12 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -freedink-1.08.20121209.ebuild:
+  old
+
+  25 Feb 2015; Agostino Sarubbo <ago@gentoo.org> freedink-108.4.ebuild:
+  Stable for x86, wrt bug #540604
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> freedink-108.4.ebuild:
+  Stable for amd64, wrt bug #540604
+
+  08 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> freedink-108.4.ebuild:
+  nls is not optional (bug #518752)
+
+  26 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org> -freedink-108.2.ebuild:
+  old
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+*freedink-108.4 (12 Nov 2014)
+
+  12 Nov 2014; Julian Ospald <hasufell@gentoo.org> +freedink-108.4.ebuild:
+  version bump
+
+*freedink-108.2 (29 May 2014)
+
+  29 May 2014; Julian Ospald <hasufell@gentoo.org> +freedink-108.2.ebuild:
+  version bump
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> freedink-1.08.20121209.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  28 Aug 2013; Agostino Sarubbo <ago@gentoo.org> freedink-1.08.20121209.ebuild:
+  Stable for x86, wrt bug #480800
+
+  13 Aug 2013; Agostino Sarubbo <ago@gentoo.org> freedink-1.08.20121209.ebuild:
+  Stable for amd64, wrt bug #480800
+
+  13 Jul 2013; Julian Ospald <hasufell@gentoo.org>
+  freedink-1.08.20121209.ebuild:
+  update dep on freedink-data
+
+*freedink-1.08.20121209 (11 Jul 2013)
+
+  11 Jul 2013; Julian Ospald <hasufell@gentoo.org>
+  +freedink-1.08.20121209.ebuild, +metadata.xml:
+  initial import wrt #238220

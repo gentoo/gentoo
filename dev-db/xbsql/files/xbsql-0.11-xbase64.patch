@@ -1,0 +1,66 @@
+diff -up xbsql-0.11/xbsql/Makefile.am.BAD xbsql-0.11/xbsql/Makefile.am
+--- xbsql-0.11/xbsql/Makefile.am.BAD	2009-08-19 23:32:27.481185284 -0400
++++ xbsql-0.11/xbsql/Makefile.am	2009-08-19 23:32:47.157206308 -0400
+@@ -17,10 +17,10 @@ libxbsql_la_SOURCES	= xb_value.cpp xb_el
+ 			  xb_assignlist.cpp xb_create.cpp \
+ 			  xbsql.tab.c xb_datetime.cpp
+ 
+-libxbsql_la_LDFLAGS	= -lxbase $(DEBUG)
++libxbsql_la_LIBADD	= -lxbase64
+ 
+ xql_SOURCES		= xql.cpp
+-xql_LDADD		= -lxbase -lreadline -l$(CURSES) ./libxbsql.la
++xql_LDADD		= -lxbase64 -lreadline -l$(CURSES) ./libxbsql.la
+ 
+ #
+ #
+diff -up xbsql-0.11/xbsql/Makefile.in.BAD xbsql-0.11/xbsql/Makefile.in
+--- xbsql-0.11/xbsql/Makefile.in.BAD	2009-08-19 23:32:54.384058775 -0400
++++ xbsql-0.11/xbsql/Makefile.in	2009-08-19 23:33:03.928059382 -0400
+@@ -108,10 +108,10 @@ libxbsql_la_SOURCES = xb_value.cpp xb_el
+ 			  xbsql.tab.c xb_datetime.cpp
+ 
+ 
+-libxbsql_la_LDFLAGS = -lxbase $(DEBUG)
++libxbsql_la_LIBADD = -lxbase64
+ 
+ xql_SOURCES = xql.cpp
+-xql_LDADD = -lxbase -lreadline -l$(CURSES) ./libxbsql.la
++xql_LDADD = -lxbase64 -lreadline -l$(CURSES) ./libxbsql.la
+ 
+ 
+ #install-data-hook:
+diff -up xbsql-0.11/xbsql/xbsql.cpp.BAD xbsql-0.11/xbsql/xbsql.cpp
+--- xbsql-0.11/xbsql/xbsql.cpp.BAD	2009-08-19 23:34:23.880063863 -0400
++++ xbsql-0.11/xbsql/xbsql.cpp	2009-08-19 23:34:47.393184432 -0400
+@@ -207,7 +207,7 @@ void	XBaseSQL::setError
+ 			break	;
+ 
+ 		default	:
+-			e	= xbStrError (rc) ;
++			e	= GetErrorMessage (rc) ;
+ 			break	;
+ 	}
+ 
+@@ -230,7 +230,7 @@ void	XBaseSQL::setError
+ 	char	t[1024]	;
+ 	va_list	aptr	;
+ 
+-	strcpy	  (t, xbStrError (rc)) ;
++	strcpy	  (t, GetErrorMessage (rc)) ;
+ 	strcat	  (t, ": ") ;
+ 	int	  l = strlen(t) ;
+ 
+diff -up xbsql-0.11/xbsql/xbsql.h.BAD xbsql-0.11/xbsql/xbsql.h
+--- xbsql-0.11/xbsql/xbsql.h.BAD	2009-08-19 23:35:45.087088919 -0400
++++ xbsql-0.11/xbsql/xbsql.h	2009-08-19 23:34:06.949184421 -0400
+@@ -43,8 +43,7 @@ XBSQL_API int	strncasecmp (const char *s
+ 
+ #endif
+ 
+-#include	<xbase/xbase.h>
+-#include	<xbase/xbexcept.h>
++#include	<xbase64/xbase64.h>
+ 
+ class	XBaseSQL	;
+ class	XBSQLTable	;

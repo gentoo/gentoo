@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>yngwin@gentoo.org</email>
+  </maintainer>
+  <herd>fonts</herd>
+  <longdescription lang="en">
+    Arimo, Cousine and Tinos were designed by Steve Matteson as innovative,
+    refreshing default on-screen font designs that are metrically compatible
+    with Arial, Courier New and Times New Roman. These fonts offer improved
+    on-screen readability characteristics and the pan-European WGL character
+    set and solve the needs of developers looking for width-compatible fonts
+    to address document portability across platforms.
+    Symbol Neu is a metrically compatible font to Symbol.
+  </longdescription>
+</pkgmetadata>

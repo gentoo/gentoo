@@ -1,0 +1,18 @@
+# ChangeLog for x11-misc/oroborus-keylaunch
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/oroborus-keylaunch/ChangeLog,v 1.4 2013/10/19 15:13:57 pacho Exp $
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due desktop-wm removal
+
+  04 Jun 2012; Michael Weber <xmw@gentoo.org> oroborus-keylaunch-1.3.9.ebuild:
+  Fix SRC_URI, EAPI-4 (reported by df, bug 416129)
+
+  04 Jun 2012; Michael Weber <xmw@gentoo.org> oroborus-keylaunch-1.3.9.ebuild:
+  Fix SRC_URI, EAPI-4 (reported by df, bug 416129)
+
+*oroborus-keylaunch-1.3.9 (31 May 2010)
+
+  31 May 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  +oroborus-keylaunch-1.3.9.ebuild, +metadata.xml:
+  New ebuild for oroborus-keylaunch, formerly part of x11-wm/oroborus-extras

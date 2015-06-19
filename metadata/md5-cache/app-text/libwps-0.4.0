@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=app-text/libwpd:0.10 dev-libs/boost:= dev-libs/librevenge virtual/pkgconfig doc? ( app-doc/doxygen )
+DESCRIPTION=Microsoft Works file word processor format import filter library
+EAPI=5
+HOMEPAGE=http://libwps.sourceforge.net/
+IUSE=doc debug static-libs
+LICENSE=|| ( LGPL-2.1 MPL-2.0 )
+RDEPEND=app-text/libwpd:0.10 dev-libs/boost:= dev-libs/librevenge
+SLOT=0
+SRC_URI=mirror://sourceforge/libwps/libwps-0.4.0.tar.xz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b31eee55c016c78762f6e7c0ddcf3205

@@ -1,0 +1,9 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=WWW interface to a CVS tree
+HOMEPAGE=http://www.freebsd.org/projects/cvsweb.html
+KEYWORDS=x86 sparc ~ppc
+LICENSE=BSD
+RDEPEND=>=dev-lang/perl-5 >=dev-vcs/rcs-5.7
+SLOT=0
+SRC_URI=mirror://gentoo/cvsweb-1.112.tar.gz
+_md5_=e834627eb4f59560c3f0ad6d2b72ca6b

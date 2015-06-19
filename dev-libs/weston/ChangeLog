@@ -1,0 +1,87 @@
+# ChangeLog for dev-libs/weston
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/weston/ChangeLog,v 1.19 2015/03/24 14:16:27 chithanh Exp $
+
+*weston-1.7.0 (24 Mar 2015)
+
+  24 Mar 2015; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +weston-1.7.0.ebuild, metadata.xml:
+  Version bump, bug #540990.
+
+  14 Mar 2015; Markus Meier <maekke@gentoo.org> weston-1.6.1.ebuild:
+  arm stable, bug #530652
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> weston-1.6.1.ebuild:
+  Stable for x86, wrt bug #530652
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org> weston-1.6.1.ebuild:
+  Stable for amd64, wrt bug #530652
+
+  09 Feb 2015; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -weston-1.2.0.ebuild, metadata.xml:
+  Drop version that repoman complains about.
+
+*weston-1.6.1 (09 Feb 2015)
+
+  09 Feb 2015; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +weston-1.6.1.ebuild:
+  Version bump. Shut up repoman warning.
+
+  27 Sep 2014; Matt Turner <mattst88@gentoo.org> weston-1.6.0.ebuild:
+  Depend on wayland-1.6.0, bug 523872.
+
+*weston-1.6.0 (26 Sep 2014)
+
+  26 Sep 2014; Matt Turner <mattst88@gentoo.org> +weston-1.6.0.ebuild:
+  Version bump to 1.6.0.
+
+  08 Jun 2014; Agostino Sarubbo <ago@gentoo.org> weston-1.4.0.ebuild:
+  Stable for arm, wrt bug #500368
+
+*weston-1.5.0 (21 May 2014)
+
+  21 May 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +weston-1.5.0.ebuild, metadata.xml:
+  Version bump.
+
+  06 Apr 2014; Agostino Sarubbo <ago@gentoo.org> weston-1.4.0.ebuild:
+  Stable for x86, wrt bug #500368
+
+  27 Mar 2014; Agostino Sarubbo <ago@gentoo.org> weston-1.4.0.ebuild:
+  Stable for amd64, wrt bug #500368
+
+  24 Feb 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  weston-1.4.0.ebuild:
+  Fix automagic dependency on libwebp and specify slot for libpng.
+
+*weston-1.4.0 (30 Jan 2014)
+
+  30 Jan 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +weston-1.4.0.ebuild, metadata.xml:
+  Version bump.
+
+*weston-1.2.1 (25 Aug 2013)
+
+  25 Aug 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +weston-1.2.1.ebuild:
+  Version bump, bug #480868.
+
+  30 Jul 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/README.gentoo:
+  Add missing README.gentoo, bug #478796.
+
+*weston-1.2.0-r1 (29 Jul 2013)
+
+  29 Jul 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +weston-1.2.0-r1.ebuild, metadata.xml:
+  Fix dependencies, suid binary, group, and some test failures, bug #477054.
+
+  14 Jul 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  weston-1.2.0.ebuild:
+  Raise freerdp dependency, bug #476828.
+
+*weston-1.2.0 (13 Jul 2013)
+
+  13 Jul 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> +metadata.xml,
+  +weston-1.2.0.ebuild:
+  Initial import, bug #445736.

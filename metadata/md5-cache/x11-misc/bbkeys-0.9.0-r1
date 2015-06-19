@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=x11-wm/blackbox-0.70.0 virtual/pkgconfig
+DESCRIPTION=Use keyboard shortcuts in the blackbox wm
+HOMEPAGE=http://bbkeys.sourceforge.net
+KEYWORDS=~amd64 ppc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=>=x11-wm/blackbox-0.70.0
+SLOT=0
+SRC_URI=mirror://sourceforge/bbkeys/bbkeys-0.9.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=80ea47b1e7ffa1a3c07552420e19019e

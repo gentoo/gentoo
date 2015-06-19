@@ -1,0 +1,30 @@
+# ChangeLog for games-arcade/blobwars
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/blobwars/ChangeLog,v 1.46 2015/01/03 15:36:54 tupone Exp $
+
+  03 Jan 2015; Tupone Alfredo <tupone@gentoo.org> blobwars-1.19.ebuild:
+  EAPI 4
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> blobwars-1.19.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  17 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> blobwars-1.19.ebuild,
+  +files/blobwars-1.19-zlib-1.2.5.2.patch:
+  Fix building with sys-libs/zlib >= 1.2.5.2 wrt #408459 by Piotr Szymaniak
+
+  04 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> blobwars-1.19.ebuild:
+  x86 stable wrt bug #394435
+
+  15 Dec 2011; Agostino Sarubbo <ago@gentoo.org> blobwars-1.19.ebuild:
+  Add zlib as RDEPEND, acked by pacho on irc
+
+  15 Dec 2011; Agostino Sarubbo <ago@gentoo.org> blobwars-1.19.ebuild:
+  Stable for AMD64, wrt bug #394435
+
+*blobwars-1.19 (29 Aug 2011)
+
+  29 Aug 2011; Pacho Ramos <pacho@gentoo.org> +blobwars-1.19.ebuild,
+  +files/blobwars-1.19-ldflags.patch, +files/blobwars-1.19-linking-order.patch,
+  +metadata.xml:
+  Initial commit, bug #260843
+

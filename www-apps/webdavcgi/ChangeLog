@@ -1,0 +1,44 @@
+# ChangeLog for www-apps/webdavcgi
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/webdavcgi/ChangeLog,v 1.8 2015/06/13 17:22:20 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  webdavcgi-0.8.3.ebuild, webdavcgi-0.8.4.ebuild:
+  The CGI module is no longer part of core Perl and has been moved to dev-perl
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> webdavcgi-0.8.3.ebuild,
+  webdavcgi-0.8.4.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  29 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> webdavcgi-0.8.3.ebuild,
+  webdavcgi-0.8.4.ebuild:
+  perl-core/Module-Load virtual/perl-Module-Load
+
+*webdavcgi-0.8.4 (30 Mar 2013)
+
+  30 Mar 2013; Christian Affolter <c.affolter@stepping-stone.ch>
+  +webdavcgi-0.8.4.ebuild, +files/apache-webdavcgi-0.8-example.conf,
+  +files/webdav-0.8.conf:
+  Version bump to 0.8.4. Complete rewrite with droped webapp eclass, as there's
+  no need to install WebDAV CGI via webapp-config. All the files can be
+  centrally installed and shared by multiple instances, without a single file
+  residing within the web server's document root.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  14 Jan 2013; Tiziano Müller <dev-zero@gentoo.org> webdavcgi-0.8.3.ebuild:
+  Reintroduce the WEBDAVWRAPPER variable as initially present to make it
+  configureable in the next version. Thanks to Christian Affolter (ebuild
+  maintainer) for all the work and testing.
+
+  11 Jan 2013; Tiziano Müller <dev-zero@gentoo.org> metadata.xml:
+  Add missing upstream remote-ids.
+
+*webdavcgi-0.8.3 (11 Jan 2013)
+
+  11 Jan 2013; Tiziano Müller <dev-zero@gentoo.org>
+  +files/0.8.3-logout-var-expansion.patch, +files/postinstall-en.txt,
+  +files/postinstall-webdavwrapper-en.txt, +files/reconfig,
+  +files/reconfig-suid, +metadata.xml, +webdavcgi-0.8.3.ebuild:
+  Initial commit, required for www-apps/webdavcgi.

@@ -1,0 +1,143 @@
+# ChangeLog for x11-misc/lineak-xosdplugin
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/lineak-xosdplugin/ChangeLog,v 1.32 2012/02/17 04:15:27 jer Exp $
+
+  17 Feb 2012; Jeroen Roovers <jer@gentoo.org> -lineak-xosdplugin-0.9.0.ebuild:
+  Old.
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  lineak-xosdplugin-0.9.0-r1.ebuild:
+  x86 stable wrt bug #397271
+
+  03 Feb 2012; Brent Baude <ranger@gentoo.org>
+  lineak-xosdplugin-0.9.0-r1.ebuild:
+  Marking lineak-xosdplugin-0.9.0-r1 ppc for bug 397271
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  lineak-xosdplugin-0.9.0-r1.ebuild:
+  Stable for amd64, wrt bug #397271
+
+*lineak-xosdplugin-0.9.0-r1 (03 Sep 2010)
+
+  03 Sep 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  +lineak-xosdplugin-0.9.0-r1.ebuild:
+  Respect LDFLAGS wrt bug 334655. Thanks to Diego for the report.
+
+  21 Mar 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  -lineak-xosdplugin-0.9.0_pre1.ebuild:
+  Remove old versions.
+
+  22 Apr 2008; Samuli Suominen <drac@gentoo.org>
+  +files/lineak-xosdplugin-0.9.0-gcc43.patch,
+  lineak-xosdplugin-0.9.0.ebuild:
+  Fix building with GCC 4.3, thanks to Peter Alfredsen wrt #218792.
+
+  28 Jul 2007; Christoph Mende <angelos@gentoo.org>
+  lineak-xosdplugin-0.9.0.ebuild:
+  Stable on amd64 wrt bug #185400
+
+  23 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  lineak-xosdplugin-0.9.0.ebuild:
+  stable x86, bug 185400
+
+  15 Jul 2007; nixnut <nixnut@gentoo.org> lineak-xosdplugin-0.9.0.ebuild:
+  Stable on ppc wrt bug 185400
+
+*lineak-xosdplugin-0.9.0 (03 Jun 2007)
+
+  03 Jun 2007; Samuli Suominen <drac@gentoo.org>
+  +lineak-xosdplugin-0.9.0.ebuild:
+  Version bump.
+
+  18 Mar 2007; nixnut <nixnut@gentoo.org>
+  lineak-xosdplugin-0.9.0_pre1.ebuild:
+  Stable on ppc wrt bug 170191
+
+  14 Mar 2007; Raúl Porcel <armin76@gentoo.org>
+  lineak-xosdplugin-0.9.0_pre1.ebuild:
+  x86 stable wrt bug 170191
+
+  14 Mar 2007; Simon Stelling <blubb@gentoo.org>
+  lineak-xosdplugin-0.9.0_pre1.ebuild:
+  stable on amd64; bug 170191
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  11 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  -files/do-not-depend-on-kde.patch, -lineak-xosdplugin-0.8.2.ebuild,
+  -lineak-xosdplugin-0.8.3.ebuild:
+  Remove old versions.
+
+  24 Sep 2006; Michael Hanselmann <hansmi@gentoo.org>
+  lineak-xosdplugin-0.8.4.ebuild:
+  Stable on ppc.
+
+  09 Sep 2006; Thomas Cort <tcort@gentoo.org>
+  lineak-xosdplugin-0.8.4.ebuild:
+  Stable on amd64 wrt Bug #146176. Fix ebuild.badheader in 0.8.3 and 0.8.2.
+
+  03 Sep 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  lineak-xosdplugin-0.8.4.ebuild:
+  Stable on x86. See bug #146176.
+
+*lineak-xosdplugin-0.9.0_pre1 (26 Mar 2006)
+
+  26 Mar 2006; Stefan Schweizer <genstef@gentoo.org>
+  +lineak-xosdplugin-0.9.0_pre1.ebuild:
+  version bump
+
+  25 Dec 2005; Simon Stelling <blubb@gentoo.org>
+  lineak-xosdplugin-0.8.3.ebuild:
+  fix bug 114549 for latest stable too
+
+*lineak-xosdplugin-0.8.4 (25 Dec 2005)
+
+  25 Dec 2005; Stefan Schweizer <genstef@gentoo.org>
+  +lineak-xosdplugin-0.8.4.ebuild:
+  version bump, fix installpath thanks to Vincziczki Gabor
+  <vincziczki.gabor@netquick.hu> in bug 116023
+
+  24 Nov 2005; Simon Stelling <blubb@gentoo.org>
+  lineak-xosdplugin-0.8.3.ebuild:
+  stable on amd64
+
+  21 Nov 2005; Joseph Jezak <josejx@gentoo.org>
+  lineak-xosdplugin-0.8.3.ebuild:
+  Marked ppc stable for bug #111284.
+
+  20 Nov 2005; Simon Stelling <blubb@gentoo.org>
+  lineak-xosdplugin-0.8.3.ebuild:
+  fix multilib-strict issues
+
+  02 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org>
+  lineak-xosdplugin-0.8.2.ebuild, lineak-xosdplugin-0.8.3.ebuild:
+  Fixed dodoc not to install COPYING and/or INSTALL.
+
+  17 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  17 Jul 2005; Stefan Schweizer <genstef@gentoo.org>
+  lineak-xosdplugin-0.8.3.ebuild:
+  Fix depend
+
+  19 Jun 2005; Jonathan Smith <smithj@gentoo.org>
+  lineak-xosdplugin-0.8.3.ebuild:
+  stable x86
+
+  10 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  lineak-xosdplugin-0.8.3.ebuild:
+  added ~amd64
+
+*lineak-xosdplugin-0.8.3 (12 Mar 2005)
+
+  12 Mar 2005; Stefan Schweizer <genstef@gentoo.org>
+  +lineak-xosdplugin-0.8.3.ebuild:
+  Version bump thanks to Alexander Brüning <ab277@gmx.de> in bug 84964
+
+*lineak-xosdplugin-0.8.2 (22 Nov 2004)
+
+  22 Nov 2004; Stefan Schweizer <genstef@gentoo.org> +metadata.xml,
+  +files/do-not-depend-on-kde.patch, +lineak-xosdplugin-0.8.2.ebuild:
+  Initial import
+

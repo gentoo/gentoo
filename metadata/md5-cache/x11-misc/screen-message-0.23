@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=x11-libs/gtk+:3 >=x11-libs/pango-1.16
+DESCRIPTION=Display a multi-line message large, fullscreen, black on white
+EAPI=5
+HOMEPAGE=http://www.joachim-breitner.de/projects#screen-message
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=x11-libs/gtk+:3 >=x11-libs/pango-1.16 !<net-im/jabberd2-2.2.17-r1
+SLOT=0
+SRC_URI=mirror://debian/pool/main/s/screen-message/screen-message_0.23.orig.tar.gz
+_md5_=9901c9315df4fbd0d786f42b128b5fd9

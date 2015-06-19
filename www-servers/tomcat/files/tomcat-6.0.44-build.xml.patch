@@ -1,0 +1,31 @@
+--- build.xml.orig	2012-07-06 20:26:21.361299240 +0200
++++ build.xml	2012-07-06 20:26:56.085899911 +0200
+@@ -487,12 +487,14 @@
+ 
+   <target name="deploy" depends="build-only,build-docs,warn.dbcp">
+ 
++<!--
+     <copy tofile="${tomcat.build}/bin/tomcat-native.tar.gz"
+             file="${tomcat-native.tar.gz}" />
+     <copy tofile="${tomcat.build}/bin/commons-daemon-native.tar.gz"
+             file="${commons-daemon.native.src.tgz}" />
+ 
+     <copy tofile="${tomcat.build}/bin/commons-daemon.jar" file="${commons-daemon.jar}" />
++-->
+ 
+     <!-- Copy scripts -->
+     <copy todir="${tomcat.build}/bin">
+--- build.xml.orig	2012-07-06 20:31:31.387806167 +0200
++++ build.xml	2012-07-06 20:32:33.185315885 +0200
+@@ -646,9 +646,11 @@
+       </fileset>
+     </txt2html>
+ 
++<!--
+     <copy file="${tomcat-dbcp.jar}" todir="${tomcat.build}/lib"
+       failonerror="false"/>
+     <copy file="${jdt.jar}" todir="${tomcat.build}/lib" />
++-->
+ 
+   </target>
+ 

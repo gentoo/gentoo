@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=app-arch/bzip2 media-libs/libsdl[video] media-libs/libpng media-libs/sdl-image[gif,jpeg,png] media-libs/sdl-mixer[vorbis] media-libs/sdl-sound dev-libs/boost dev-games/physfs media-libs/xvid dev-libs/expat media-libs/freetype dev-lang/lua:0 x11-libs/wxGTK:2.8[X] dev-libs/libsigc++:1.2 dev-lang/perl virtual/pkgconfig app-arch/zip
+DESCRIPTION=turn based strategy game designed in the tradition of the Battle Isle series
+EAPI=5
+HOMEPAGE=http://www.asc-hq.org/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2+
+RDEPEND=app-arch/bzip2 media-libs/libsdl[video] media-libs/libpng media-libs/sdl-image[gif,jpeg,png] media-libs/sdl-mixer[vorbis] media-libs/sdl-sound dev-libs/boost dev-games/physfs media-libs/xvid dev-libs/expat media-libs/freetype dev-lang/lua:0 x11-libs/wxGTK:2.8[X] dev-libs/libsigc++:1.2 games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://sourceforge/asc-hq/asc-2.6.0.0.tar.bz2 http://www.asc-hq.org/music/frontiers.ogg http://www.asc-hq.org/music/time_to_strike.ogg http://www.asc-hq.org/music/machine_wars.ogg
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
+_md5_=62386c946d2e02c4b15ae2e5f133c5a4

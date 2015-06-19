@@ -1,0 +1,94 @@
+# ChangeLog for x11-misc/xsel
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xsel/ChangeLog,v 1.27 2014/08/10 20:05:22 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> xsel-1.2.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  04 Mar 2014; Vicente Olivert Riera <vincent@gentoo.org> xsel-1.2.0.ebuild:
+  Add ~mips keyword.
+
+  10 Sep 2013; Michael Weber <xmw@gentoo.org> xsel-1.2.0.ebuild:
+  Adding ~arm keyword.
+
+  23 Dec 2012; Ulrich Müller <ulm@gentoo.org> xsel-1.2.0.ebuild:
+  Fix LICENSE, see README and COPYING, bug 446768.
+
+  07 May 2012; Jeroen Roovers <jer@gentoo.org> -xsel-1.1.0.ebuild:
+  Old.
+
+  06 May 2012; Raúl Porcel <armin76@gentoo.org> xsel-1.1.0.ebuild,
+  xsel-1.2.0.ebuild:
+  Drop ia64/sparc keywords
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> xsel-1.2.0.ebuild:
+  x86 stable wrt bug #402789
+
+  14 Feb 2012; Brent Baude <ranger@gentoo.org> xsel-1.2.0.ebuild:
+  Marking xsel-1.2.0 ppc for bug 402789
+
+  09 Feb 2012; Agostino Sarubbo <ago@gentoo.org> xsel-1.2.0.ebuild:
+  Stable for amd64, wrt bug #402789
+
+  09 Feb 2012; Tim Harder <radhermit@gentoo.org> xsel-1.2.0.ebuild:
+  Update to EAPI 4.
+
+  10 Jan 2010; Christian Faulhammer <fauli@gentoo.org> xsel-1.2.0.ebuild:
+  Transfer Prefix keywords
+
+*xsel-1.2.0 (04 May 2009)
+
+  04 May 2009; Krzysiek Pawlik <nelchael@gentoo.org> +xsel-1.2.0.ebuild:
+  Version bump.
+
+  17 Sep 2008; Santiago M. Mola <coldwind@gentoo.org> -xsel-0.9.6.ebuild:
+  Remove old version.
+
+  17 Sep 2008; Brent Baude <ranger@gentoo.org> xsel-1.1.0.ebuild:
+  keyworded ~arch for ppc64, bug 224413
+
+  13 Sep 2008; nixnut <nixnut@gentoo.org> xsel-1.1.0.ebuild:
+  Stable on ppc wrt bug 224413
+
+  10 Sep 2008; Raúl Porcel <armin76@gentoo.org> xsel-1.1.0.ebuild:
+  ia64/x86 stable wrt #224413
+
+  08 Sep 2008; Ferris McCormick <fmccor@gentoo.org> xsel-1.1.0.ebuild:
+  Add ~sparc, Bug #224413. Sparc has never been keyworded so we are not going
+  stable.
+
+  31 May 2008; Santiago M. Mola <coldwind@gentoo.org> xsel-1.1.0.ebuild:
+  amd64 stable
+
+*xsel-1.1.0 (28 Feb 2008)
+
+  28 Feb 2008; Samuli Suominen <drac@gentoo.org> +xsel-1.1.0.ebuild:
+  Version bump.
+
+  04 Feb 2007; Steve Dibb <beandog@gentoo.org> xsel-0.9.6.ebuild:
+  amd64 stable, bug 151899
+
+  27 Oct 2006; Sven Wegener <swegener@gentoo.org> xsel-0.9.6.ebuild:
+  Pass CFLAGS to emake.
+
+  21 Oct 2006; David Shakaryan <omp@gentoo.org> xsel-0.9.6.ebuild:
+  Remove monolithic X from dependencies and add IUSE.
+
+  14 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> xsel-0.9.6.ebuild:
+  Stable on ia64.
+
+  13 Sep 2006; Aron Griffis <agriffis@gentoo.org> xsel-0.9.6.ebuild:
+  Mark 0.9.6 ~ia64
+
+  20 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>; xsel-0.9.6.ebuild:
+  Stable on x86/ppc.
+
+  21 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>; xsel-0.9.6.ebuild:
+  Add missing keywords, this was previously built within app-shells/fish which
+  is keyworded for ppc and amd64.
+
+*xsel-0.9.6 (16 Mar 2006)
+
+  16 Mar 2006; Krzysiek Pawlik <nelchael@gentoo.org> +xsel-0.9.6.ebuild,
+  +metadata.xml:
+  New package, requested in bug #55422.

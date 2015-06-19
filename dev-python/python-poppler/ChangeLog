@@ -1,0 +1,142 @@
+# ChangeLog for dev-python/python-poppler
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-poppler/ChangeLog,v 1.31 2015/06/09 16:51:17 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> python-poppler-0.12.1-r4.ebuild:
+  Drop old Python implementations
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -python-poppler-0.12.1-r3.ebuild:
+  Remove old.
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org>
+  python-poppler-0.12.1-r4.ebuild:
+  Stable for x86, wrt bug #470458
+
+  19 May 2013; Agostino Sarubbo <ago@gentoo.org>
+  python-poppler-0.12.1-r4.ebuild:
+  Stable for amd64, wrt bug #470458
+
+  17 Mar 2013; Mike Gilbert <floppym@gentoo.org>
+  python-poppler-0.12.1-r4.ebuild:
+  Remove unnecessary die.
+
+  17 Mar 2013; Mike Gilbert <floppym@gentoo.org>
+  python-poppler-0.12.1-r4.ebuild:
+  Don't compress examples.
+
+*python-poppler-0.12.1-r4 (17 Mar 2013)
+
+  17 Mar 2013; Mike Gilbert <floppym@gentoo.org>
+  +python-poppler-0.12.1-r4.ebuild:
+  Convert to python-r1. Add slot-operator dep for poppler, bug 462020.
+
+  16 Jul 2012; Maciej Mrozowski <reavertm@gentoo.org>
+  -python-poppler-0.12.1-r1.ebuild, -python-poppler-0.12.1-r2.ebuild:
+  Remove old. Ack by Patrick.
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  python-poppler-0.12.1-r3.ebuild:
+  x86 stable wrt bug #418915
+
+  01 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  python-poppler-0.12.1-r3.ebuild:
+  Stable for amd64, wrt bug #418915
+
+*python-poppler-0.12.1-r3 (28 Feb 2012)
+
+  28 Feb 2012; Marien Zwart <marienz@gentoo.org>
+  +files/python-poppler-0.12.1-poppler-0.18.0-minimal-fix.patch,
+  +python-poppler-0.12.1-r3.ebuild, python-poppler-0.12.1-r1.ebuild,
+  python-poppler-0.12.1-r2.ebuild:
+  Add patch from Fedora so we do not wrap nonexistant API, gentoo bug #377063.
+  Restrict poppler dependency to <0.18 in older ebuilds.
+
+  24 Feb 2012; Patrick Lauer <patrick@gentoo.org>
+  python-poppler-0.12.1-r1.ebuild, python-poppler-0.12.1-r2.ebuild:
+  Restricting pypy
+
+*python-poppler-0.12.1-r2 (14 Dec 2011)
+
+  14 Dec 2011; Jesus Rivero <neurogeek@gentoo.org>
+  +python-poppler-0.12.1-r2.ebuild:
+  Removed patch python-poppler-0.12.1-76_75.diff to fix bug #390607. Thanks
+  to quantumsummers.
+
+  08 Nov 2011; Naohiro Aota <naota@gentoo.org> python-poppler-0.12.1-r1.ebuild:
+  Add ~x86-fbsd
+
+  19 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -python-poppler-0.12.1.ebuild:
+  old
+
+  14 Aug 2011; Markos Chandras <hwoarang@gentoo.org>
+  python-poppler-0.12.1-r1.ebuild:
+  Stable on amd64 wrt bug #378317
+
+  11 Aug 2011; Thomas Kahle <tomka@gentoo.org> python-poppler-0.12.1-r1.ebuild:
+  x86 stable per bug 378317
+
+*python-poppler-0.12.1-r1 (19 Mar 2011)
+
+  19 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +python-poppler-0.12.1-r1.ebuild, +files/python-poppler-0.12.1-75_74.diff,
+  +files/python-poppler-0.12.1-76_75.diff,
+  +files/python-poppler-0.12.1-79_78.diff,
+  +files/python-poppler-0.12.1-poppler0.15.0-changes.patch:
+  Fix compability with poppler >= 0.15.0 and merge upstream fixes.
+
+  08 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  python-poppler-0.12.1.ebuild:
+  Restrict Jython ABIs.
+
+  30 Dec 2010; Rafael G. Martins <rafaelmartins@gentoo.org>
+  python-poppler-0.12.1.ebuild:
+  Restricting the version of the app-text/poppler dependency due to API changes
+  on version 0.16.0 (bug #349955).
+
+  11 Jun 2010; Ben de Groot <yngwin@gentoo.org> metadata.xml:
+  Removing myself as maintainer, reassigning to python herd
+
+  18 May 2010; Markos Chandras <hwoarang@gentoo.org>
+  python-poppler-0.12.1.ebuild:
+  Stable on amd64 wrt bug #309796
+
+  26 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  python-poppler-0.12.1.ebuild:
+  stable x86, bug 309769
+
+  26 Mar 2010; Ben de Groot <yngwin@gentoo.org>
+  python-poppler-0.12.1.ebuild, metadata.xml:
+  Arfrever removed 0.10.{0,1} on March 1st without ChangeLog entry.
+  Minor ebuild improvements in 0.12.1. Re-assign to me.
+
+  10 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  python-poppler-0.10.0.ebuild, python-poppler-0.10.1.ebuild,
+  python-poppler-0.12.1.ebuild:
+  Fix poppler depend.
+
+*python-poppler-0.12.1 (14 Jan 2010)
+
+  14 Jan 2010; Ben de Groot <yngwin@gentoo.org>
+  +python-poppler-0.12.1.ebuild:
+  Version bump
+
+  03 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  python-poppler-0.10.1.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*python-poppler-0.10.1 (03 Sep 2009)
+
+  03 Sep 2009; Patrick Lauer <patrick@gentoo.org>
+  +python-poppler-0.10.1.ebuild:
+  Bump to 0.10.1. Fixes #282940. Small ebuild fixes by Chris Mayo.
+
+*python-poppler-0.10.0 (01 Jun 2009)
+
+  01 Jun 2009; Peter Alfredsen <loki_val@gentoo.org>
+  +python-poppler-0.10.0.ebuild, +metadata.xml:
+  Initial commit. Ebuild by calvin <cs-gentoo@protempore.net>, with fixups
+  by me.

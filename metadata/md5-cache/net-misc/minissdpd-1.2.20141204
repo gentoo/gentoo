@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=MiniSSDP Daemon
+EAPI=5
+HOMEPAGE=http://miniupnp.free.fr/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=sys-apps/net-tools-1.60_p20120127084908[-old-output] || ( net-misc/miniupnpd net-libs/miniupnpc )
+SLOT=0
+SRC_URI=http://miniupnp.free.fr/files/minissdpd-1.2.20141204.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=7251c17693bb0f005c453aa59646c729

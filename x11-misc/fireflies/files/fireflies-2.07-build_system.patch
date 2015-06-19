@@ -1,0 +1,85 @@
+Multiple QA issues:
+* Respect CXXFLAGS,LDFLAGS
+* fix parallel build
+* configure recursively
+* don't strip binaries
+* don't unpack libgfx during make
+
+http://bugs.gentoo.org/show_bug.cgi?id=336814
+
+--- configure.ac
++++ configure.ac
+@@ -2,6 +2,7 @@
+ AC_INIT(fireflies, 2.07, guy@somewhere.fscked.org)
+ AC_CONFIG_SRCDIR([src/arrow.cc])
+ AC_CONFIG_HEADER([config.h])
++AC_CONFIG_SUBDIRS([libgfx])
+ 
+ sys=`uname`
+ 
+--- Makefile
++++ Makefile
+@@ -21,18 +21,17 @@
+ win32/
+ 
+ all:	libgfx/src/libgfx.a
+-	cd src && make
++	$(MAKE) -C src
+ 
+ libgfx/src/libgfx.a:
+-	gunzip -c libgfx-1.0.1.tar.gz | tar x
+-	cd libgfx && ./configure && cd src && make
++	$(MAKE) -C libgfx/src
+ 
+ install: all
+ 	sh ./installit $(DESTDIR)
+ 
+ clean:
+-	make -C src clean
+-	make -C win32 clean
++	$(MAKE) -C src clean
++	$(MAKE) -C win32 clean
+ 
+ dist:
+ 	rm -rf fireflies-$(VERSION)
+@@ -42,7 +41,7 @@
+ 
+ 	# need Make.include temporarily to run make
+ 	cp Make.include fireflies-$(VERSION)
+-	make -C fireflies-$(VERSION) clean
++	$(MAKE) -C fireflies-$(VERSION) clean
+ 	rm -f fireflies-$(VERSION)/Make.include
+ 
+ 	# don't want to include debian's buildroot
+--- src/Makefile
++++ src/Makefile
+@@ -8,8 +8,7 @@
+ all:	$(PROGRAM)
+ 
+ $(PROGRAM):	$(OBJECTS)
+-	$(CXX) -o $(PROGRAM) $(OBJECTS) $(LIBS)
+-	strip $(PROGRAM)
++	$(CXX) $(LDFLAGS) -o $(PROGRAM) $(OBJECTS) $(LIBS)
+ 
+ $(OBJECTS): $(HEADERS)
+ 
+@@ -17,7 +16,7 @@
+ .SUFFIXES: .cc .rc .o
+ 
+ .cc.o:
+-	$(CXX) -c $(CFLAGS) -o $@ $<
++	$(CXX) -c $(CXXFLAGS) -o $@ $<
+ 
+ #$(HEADERS_GCH): %.h.gch: %.h
+ #	$(CXX) -c -x c++-header $(CFLAGS) -o $@ $<
+--- Make.include.in
++++ Make.include.in
+@@ -5,7 +5,7 @@
+ GL_LIBS = @GL_LIBS@
+ OPT_LIBS = @OPT_LIBS@
+ 
+-CFLAGS = -Wall -I../libgfx/include/ $(SDL_CFLAGS) @CFLAGS@
++CXXFLAGS = -Wall -I../libgfx/include/ $(SDL_CFLAGS) @CXXFLAGS@
+ LIBS = ../libgfx/src/libgfx.a $(GL_LIBS) $(SDL_LIBS) $(OPT_LIBS) @LIBS@
+ 
+ OBJECTS = arrow.o bait.o firefly.o scene.o tail.o utils.o modes.o @OPT_OBJS@

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-lang/ocaml-4.00.0:= >=dev-ml/type-conv-109.15.02:= || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?]
+DESCRIPTION=Syntax extension for deriving 'typehash' functions automatically
+EAPI=5
+HOMEPAGE=http://www.janestreet.com/ocaml
+IUSE=+ocamlopt debug
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=>=dev-lang/ocaml-4.00.0:= >=dev-ml/type-conv-109.15.02:= || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) >=dev-lang/ocaml-3.12:=[ocamlopt?]
+SLOT=0/109.15.02
+SRC_URI=http://ocaml.janestreet.com/ocaml-core/109.15.02/individual/typehashlib-109.15.02.tar.gz http://dev.gentoo.org/~aballier/distfiles/typehashlib-109.15.02.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	findlib	9cf6020ee5481f39f1aa566a323f9868	multilib	62927b3db3a589b0806255f3a002d5d3	oasis	45027e91f880d9142eec842f0cca0088	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8b39c6c2d95f9f1644f29fba82df1776

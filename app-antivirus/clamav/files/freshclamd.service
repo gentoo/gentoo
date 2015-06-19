@@ -1,0 +1,10 @@
+[Unit]
+Description=clamav updater
+
+[Service]
+Type=forking
+PIDFile=/run/clamav/freshclam.pid
+ExecStart=/usr/bin/freshclam -d -p /run/clamav/freshclam.pid
+
+[Install]
+WantedBy=multi-user.target

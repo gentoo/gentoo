@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=x11-libs/libXaw x11-misc/imake app-text/rman
+DESCRIPTION=A simple hex calculator for X
+EAPI=4
+HOMEPAGE=ftp://ftp.x.org/R5contrib/
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=x11-libs/libXaw
+SLOT=0
+SRC_URI=ftp://ftp.x.org/R5contrib/hexcalc.tar.Z
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=afe737195477b99c251f22e8661d06da

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup
+DEPEND=>=net-libs/rb_libtorrent-0.14.9[python] dev-python/setuptools dev-util/intltool || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) virtual/pkgconfig
+DESCRIPTION=BitTorrent client with a client/server model
+EAPI=3
+HOMEPAGE=http://deluge-torrent.org/
+IUSE=geoip gtk libnotify setproctitle sound webinterface
+KEYWORDS=amd64 ~arm ~ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=>=net-libs/rb_libtorrent-0.14.9[python] dev-python/setuptools dev-util/intltool dev-python/chardet dev-python/pyopenssl dev-python/pyxdg || ( dev-lang/python:2.7 dev-lang/python:2.6 dev-python/simplejson ) >=dev-python/twisted-core-8.1 >=dev-python/twisted-web-8.1 geoip? ( dev-libs/geoip ) gtk? ( sound? ( dev-python/pygame ) dev-python/pygobject:2 >=dev-python/pygtk-2.12 gnome-base/librsvg libnotify? ( dev-python/notify-python ) ) setproctitle? ( dev-python/setproctitle ) webinterface? ( dev-python/mako ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
+SLOT=0
+SRC_URI=http://download.deluge-torrent.org/source/deluge-1.3.6.tar.bz2
+_eclasses_=distutils	92e738ea29389cb3f34778d7a349ac71	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a89863e4087bcf630e84ad7f7281e379

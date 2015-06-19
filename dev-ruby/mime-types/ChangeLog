@@ -1,0 +1,283 @@
+# ChangeLog for dev-ruby/mime-types
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/mime-types/ChangeLog,v 1.69 2015/06/08 05:33:47 graaff Exp $
+
+*mime-types-2.6.1 (08 Jun 2015)
+
+  08 Jun 2015; Hans de Graaff <graaff@gentoo.org> +mime-types-2.6.1.ebuild:
+  Version bump.
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  04 May 2015; Hans de Graaff <graaff@gentoo.org> mime-types-1.25.1.ebuild,
+  mime-types-2.4.3.ebuild, mime-types-2.4.3-r1.ebuild, mime-types-2.5.ebuild:
+  Add missing ~alpha keywords, bug 521318.
+
+*mime-types-2.5 (04 May 2015)
+
+  04 May 2015; Hans de Graaff <graaff@gentoo.org> +mime-types-2.5.ebuild:
+  Version bump.
+
+  11 Apr 2015; Hans de Graaff <graaff@gentoo.org> mime-types-1.25.1.ebuild:
+  Add ruby22.
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> mime-types-2.4.3.ebuild:
+  Stable for x86, wrt bug #545458
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> mime-types-2.4.3.ebuild:
+  Stable for amd64, wrt bug #545458
+
+*mime-types-2.4.3-r1 (04 Apr 2015)
+
+  04 Apr 2015; Hans de Graaff <graaff@gentoo.org> mime-types-2.4.3.ebuild,
+  +mime-types-2.4.3-r1.ebuild:
+  Create stable candidate.
+
+  13 Mar 2015; Jeroen Roovers <jer@gentoo.org> mime-types-1.23.ebuild,
+  mime-types-2.4.3.ebuild:
+  Stable for HPPA (bug #542574).
+
+  30 Dec 2014; Hans de Graaff <graaff@gentoo.org> mime-types-2.4.3.ebuild:
+  Add ruby22.
+
+  30 Oct 2014; Manuel Rüger <mrueg@gentoo.org> -mime-types-2.2.ebuild,
+  -mime-types-2.3.ebuild, -mime-types-2.4.1.ebuild, -mime-types-2.4.ebuild,
+  mime-types-1.23.ebuild, mime-types-1.25.1.ebuild:
+  Drop jruby target. Cleanup old.
+
+*mime-types-2.4.3 (24 Oct 2014)
+
+  24 Oct 2014; Manuel Rüger <mrueg@gentoo.org> +mime-types-2.4.3.ebuild:
+  Version bump.
+
+*mime-types-2.4.1 (09 Oct 2014)
+
+  09 Oct 2014; Hans de Graaff <graaff@gentoo.org> +mime-types-2.4.1.ebuild:
+  Version bump.
+
+*mime-types-2.4 (07 Oct 2014)
+
+  07 Oct 2014; Hans de Graaff <graaff@gentoo.org> +mime-types-2.4.ebuild:
+  Version bump.
+
+  28 Aug 2014; Manuel Rüger <mrueg@gentoo.org> mime-types-1.23.ebuild,
+  mime-types-1.25.1.ebuild, mime-types-2.2.ebuild, mime-types-2.3.ebuild:
+  Update HOMEPAGE.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> mime-types-1.23.ebuild,
+  mime-types-1.25.1.ebuild, mime-types-2.2.ebuild, mime-types-2.3.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  22 Jul 2014; Tobias Klausmann <klausman@gentoo.org> mime-types-1.23.ebuild:
+  Keyworded on alpha, bug #465948
+
+  15 Jun 2014; Akinori Hattori <hattya@gentoo.org> mime-types-1.23.ebuild,
+  mime-types-1.25.1.ebuild, mime-types-2.2.ebuild, mime-types-2.3.ebuild:
+  keyword ~ia64 wrt bug #510876
+
+*mime-types-2.3 (29 May 2014)
+
+  29 May 2014; Hans de Graaff <graaff@gentoo.org> +mime-types-2.3.ebuild:
+  Version bump.
+
+*mime-types-2.2 (17 May 2014)
+
+  17 May 2014; Hans de Graaff <graaff@gentoo.org> +mime-types-2.2.ebuild:
+  Version bump. Drop jruby since the code is no longer compatible with ruby 1.8
+  syntax.
+
+  20 Apr 2014; Manuel Rüger <mrueg@gentoo.org>
+  -files/mime-types-1.18-linux-tests.patch, -mime-types-1.19.ebuild:
+  Cleanup old.
+
+  20 Apr 2014; Hans de Graaff <graaff@gentoo.org> mime-types-1.25.1.ebuild:
+  Add ruby21.
+
+  20 Apr 2014; Agostino Sarubbo <ago@gentoo.org> mime-types-1.23.ebuild:
+  Stable for ppc64, wrt bug #502272
+
+  05 Apr 2014; Manuel Rüger <mrueg@gentoo.org> mime-types-1.19.ebuild:
+  Remove virtual/ruby-test-unit.
+
+  05 Apr 2014; Manuel Rüger <mrueg@gentoo.org> mime-types-1.19.ebuild,
+  mime-types-1.23.ebuild, mime-types-1.25.1.ebuild:
+  Remove ree18 and ruby18 target.
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> mime-types-1.23.ebuild:
+  Stable for ppc, wrt bug #502272
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> mime-types-1.23.ebuild:
+  Stable for x86, wrt bug #502272
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> mime-types-1.23.ebuild:
+  amd64 stable, bug #502272
+
+*mime-types-1.25.1 (26 Nov 2013)
+
+  26 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +mime-types-1.25.1.ebuild,
+  -mime-types-1.22.ebuild, -mime-types-1.25.ebuild:
+  Version bump. Cleanup old.
+
+  20 Nov 2013; Hans de Graaff <graaff@gentoo.org> -mime-types-1.20.1.ebuild,
+  -mime-types-1.21.ebuild:
+  Cleanup.
+
+*mime-types-1.25 (20 Nov 2013)
+
+  20 Nov 2013; Hans de Graaff <graaff@gentoo.org> +mime-types-1.25.ebuild:
+  Version bump.
+
+*mime-types-1.23 (18 Jul 2013)
+
+  18 Jul 2013; Hans de Graaff <graaff@gentoo.org> +mime-types-1.23.ebuild:
+  Version bump.
+
+*mime-types-1.22 (03 Apr 2013)
+
+  03 Apr 2013; Hans de Graaff <graaff@gentoo.org> +mime-types-1.22.ebuild:
+  Version bump.
+
+*mime-types-1.21 (12 Feb 2013)
+
+  12 Feb 2013; Hans de Graaff <graaff@gentoo.org> +mime-types-1.21.ebuild:
+  Version bump.
+
+*mime-types-1.20.1 (04 Feb 2013)
+
+  04 Feb 2013; Hans de Graaff <graaff@gentoo.org> +mime-types-1.20.1.ebuild:
+  Version bump.
+
+  16 Jan 2013; Rick Farina <zerochaos@gentoo.org> mime-types-1.19.ebuild:
+  adding ~arm keywords to net-analyzer/metasploit rdeps
+
+  17 Dec 2012; Hans de Graaff <graaff@gentoo.org> -mime-types-1.16-r2.ebuild:
+  Cleanup.
+
+  05 Oct 2012; Brent Baude <ranger@gentoo.org> mime-types-1.19.ebuild:
+  Marking mime-types-1.19 ppc64 for bug 432844
+
+  17 Sep 2012; Johannes Huber <johu@gentoo.org> mime-types-1.19.ebuild:
+  Stable for x86, wrt bug #432844
+
+  06 Sep 2012; Agostino Sarubbo <ago@gentoo.org> mime-types-1.19.ebuild:
+  Stable for amd64, wrt bug #432844
+
+  28 Aug 2012; Anthony G. Basile <blueness@gentoo.org> mime-types-1.19.ebuild:
+  Stable ppc, bug #432844
+
+  26 Aug 2012; Hans de Graaff <graaff@gentoo.org> -mime-types-1.16-r3.ebuild,
+  -mime-types-1.18.ebuild:
+  Cleanup.
+
+*mime-types-1.19 (05 Jul 2012)
+
+  05 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> +mime-types-1.19.ebuild:
+  Version bump.
+
+  01 May 2012; Raúl Porcel <armin76@gentoo.org> mime-types-1.16-r2.ebuild,
+  mime-types-1.16-r3.ebuild, mime-types-1.18.ebuild:
+  Drop ia64/sparc keywords
+
+  26 Mar 2012; Alex Legler <a3li@gentoo.org> mime-types-1.18.ebuild:
+  Depend on dev-ruby/rubyforge when generating docs or running tests. Closes
+  bug 409617 by onip.
+
+*mime-types-1.18 (22 Mar 2012)
+
+  22 Mar 2012; Hans de Graaff <graaff@gentoo.org> +mime-types-1.18.ebuild,
+  +files/mime-types-1.18-linux-tests.patch:
+  Version bump with upstream patch to fix tests on Linux.
+
+  31 Dec 2011; Fabian Groffen <grobian@gentoo.org> mime-types-1.16-r3.ebuild:
+  Add Prefix keywords, bug #396547
+
+  05 Dec 2011; Naohiro Aota <naota@gentoo.org> mime-types-1.16-r3.ebuild:
+  Add ~x86-fbsd.
+
+  09 Sep 2011; Fabian Groffen <grobian@gentoo.org> mime-types-1.16-r3.ebuild:
+  Marked ~sparc-solaris
+
+  20 Aug 2011; Hans de Graaff <graaff@gentoo.org> -mime-types-1.15.ebuild,
+  -mime-types-1.16-r1.ebuild:
+  Remove old versions.
+
+  24 Jul 2011; Raúl Porcel <armin76@gentoo.org> mime-types-1.16-r1.ebuild,
+  mime-types-1.16-r2.ebuild, mime-types-1.16-r3.ebuild:
+  Add ~ia64/~sparc wrt #351835
+
+  23 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  mime-types-1.16-r2.ebuild:
+  ppc64 stable wrt #375741
+
+*mime-types-1.16-r3 (20 Jul 2011)
+
+  20 Jul 2011; Hans de Graaff <graaff@gentoo.org> mime-types-1.16-r2.ebuild,
+  +mime-types-1.16-r3.ebuild:
+  Revision bump to create stable candidate.
+
+  29 Jun 2011; Fabian Groffen <grobian@gentoo.org> mime-types-1.16-r2.ebuild:
+  Marked ~x86-solaris
+
+  07 Jan 2011; Hans de Graaff <graaff@gentoo.org> mime-types-1.16-r2.ebuild:
+  Keyword ~x86-macos.
+
+  04 Dec 2010; Hans de Graaff <graaff@gentoo.org> mime-types-1.16-r2.ebuild:
+  Add ree18 target.
+
+  22 May 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  mime-types-1.15.ebuild, mime-types-1.16-r1.ebuild,
+  mime-types-1.16-r2.ebuild:
+  Various cleanups.
+
+  14 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  mime-types-1.16-r2.ebuild:
+  Add jruby to the supported targets.
+
+  13 Jan 2010; Brent Baude <ranger@gentoo.org> mime-types-1.16-r2.ebuild:
+  Marking mime-types-1.16-r2 ~ppc64 for bug 298896
+
+  04 Jan 2010; Markus Meier <maekke@gentoo.org> mime-types-1.16-r2.ebuild:
+  add ~x86, bug #298896
+
+  30 Dec 2009; Hans de Graaff <graaff@gentoo.org> mime-types-1.16-r2.ebuild:
+  Fix USE=doc case by using proper rake task name.
+
+*mime-types-1.16-r2 (29 Dec 2009)
+
+  29 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mime-types-1.16-r2.ebuild:
+  Bump to fakegem.
+
+*mime-types-1.16-r1 (25 Sep 2009)
+
+  25 Sep 2009; Alex Legler <a3li@gentoo.org> -mime-types-1.16.ebuild,
+  +mime-types-1.16-r1.ebuild:
+  s/vendorlibdir/sitelibdir/ for 1.8.6 compatibility. Thanks to Sebastian
+  Pipping for reporting this.
+
+  04 May 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  mime-types-1.16.ebuild:
+  Fix src_test when Ruby 1.9 is not present.
+
+  20 Apr 2009; Diego E. Pettenò <flameeyes@gentoo.org> mime-types-1.16:
+  Make mime-types install on Ruby 1.9 (included the fake gems
+  specification); also make src_test work with both Ruby versions.
+
+*mime-types-1.16 (17 Apr 2009)
+
+  17 Apr 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mime-types-1.16.ebuild:
+  Version bump, and move to tarball and fake gemspec in the mean time.
+
+  19 Mar 2009; Brent Baude <ranger@gentoo.org> mime-types-1.15.ebuild:
+  Marking mime-types-1.15 ~ppc for bug 259255
+
+  13 Mar 2007; Tom Gall <tgall@gentoo.org> mime-types-1.15.ebuild:
+  added ~ppc64
+
+*mime-types-1.15 (24 Feb 2007)
+
+  24 Feb 2007; Hans de Graaff <graaff@gentoo.org> +metadata.xml,
+  +mime-types-1.15.ebuild:
+  Add dev-ruby/mime-types as a dependency for dev-ruby/rflickr.

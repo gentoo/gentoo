@@ -1,0 +1,29 @@
+# ChangeLog for sci-astronomy/casa-data
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/casa-data/ChangeLog,v 1.5 2014/07/02 23:45:28 bicatali Exp $
+
+*casa-data-10013 (02 Jul 2014)
+
+  02 Jul 2014; Sébastien Fabbro <bicatali@gentoo.org> +casa-data-10013.ebuild,
+  -casa-data-9349.ebuild:
+  Version bump
+
+  25 Jun 2014; Patrick Lauer <patrick@gentoo.org> casa-data-9349.ebuild:
+  Remove keywords as this is a live package
+
+*casa-data-9349 (04 Feb 2014)
+*casa-data-99999 (04 Feb 2014)
+
+  04 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org> +casa-data-9349.ebuild,
+  +casa-data-99999.ebuild, -casa-data-9999.ebuild:
+  Added tagged versioned from svn revision, reversioned live ebuild and
+  unkeyword it
+
+  05 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> casa-data-9999.ebuild:
+  keyword amd64-linux, x86-linux
+
+*casa-data-9999 (05 Jun 2012)
+
+  05 Jun 2012; Sébastien Fabbro <bicatali@gentoo.org> +casa-data-9999.ebuild,
+  +metadata.xml:
+  Initial import

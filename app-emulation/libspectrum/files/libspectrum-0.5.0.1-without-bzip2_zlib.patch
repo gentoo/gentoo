@@ -1,0 +1,52 @@
+--- libspectrum-0.5.0.1/configure.in	2009-01-14 20:50:55.000000000 +0100
++++ configure.in	2009-01-24 16:10:53.000000000 +0100
+@@ -65,11 +65,19 @@
+   CPPFLAGS="$CPPFLAGS -I$prefix/include"; LDFLAGS="$LDFLAGS -L$prefix/lib"
+ fi)
+ 
+-dnl Check for zlib (the UNIX version is called z, Win32 zdll)
+-AC_CHECK_HEADERS(
+-  zlib.h,
+-  AC_SEARCH_LIBS(compress2, z zdll)
+-)
++dnl Check whether to use zlib (the UNIX version is called z, Win32 zdll)
++AC_MSG_CHECKING(whether to use zlib)
++AC_ARG_WITH(zlib,
++[  --without-zlib          don't use zlib],
++if test "$withval" = no; then zlib=no; else zlib=yes; fi,
++zlib=yes)
++AC_MSG_RESULT($zlib)
++if test "$zlib" = yes; then
++  AC_CHECK_HEADERS(
++    zlib.h,
++    AC_SEARCH_LIBS(compress2, z zdll)
++  )
++fi
+ 
+ dnl Check whether to use libgcrypt
+ AC_MSG_CHECKING(whether to use libgcrypt)
+@@ -82,11 +90,19 @@
+   AC_CHECK_HEADERS(gcrypt.h,LIBS="$LIBS -lgcrypt")
+ fi
+ 
+-dnl Check for libbz2 1.0 or greater
+-AC_CHECK_HEADER(
+-  bzlib.h,
+-  AC_CHECK_LIB(bz2,BZ2_bzDecompressInit)
+-)
++dnl Check whether to use libbz2 (1.0 or greater)
++AC_MSG_CHECKING(whether to use libbz2)
++AC_ARG_WITH(bzip2,
++[  --without-bzip2         don't use libbz2],
++if test "$withval" = no; then bzip2=no; else bzip2=yes; fi,
++bzip2=yes)
++AC_MSG_RESULT($bzip2)
++if test "$bzip2" = yes; then
++  AC_CHECK_HEADER(
++    bzlib.h,
++    AC_CHECK_LIB(bz2,BZ2_bzDecompressInit)
++  )
++fi
+ 
+ dnl Either find glib or use the replacement
+ AC_MSG_CHECKING(whether to use glib)

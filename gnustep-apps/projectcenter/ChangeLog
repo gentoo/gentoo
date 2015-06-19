@@ -1,0 +1,175 @@
+# ChangeLog for gnustep-apps/projectcenter
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/projectcenter/ChangeLog,v 1.32 2015/02/21 12:15:03 ago Exp $
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> projectcenter-0.6.2.ebuild:
+  Stable for ppc, wrt bug #535420
+
+  10 Feb 2015; Agostino Sarubbo <ago@gentoo.org> projectcenter-0.6.2.ebuild:
+  Stable for x86, wrt bug #535420
+
+  01 Feb 2015; Agostino Sarubbo <ago@gentoo.org> projectcenter-0.6.2.ebuild:
+  Stable for amd64, wrt bug #535420
+
+*projectcenter-0.6.2 (27 Oct 2014)
+
+  27 Oct 2014; Bernard Cafarelli <voyageur@gentoo.org>
+  -projectcenter-0.6.0.ebuild, +projectcenter-0.6.2.ebuild,
+  -files/projectcenter-0.6.0-32788+33818.patch:
+  Version bump, better compiler output parser and fixes for current GNUstep.
+  Remove old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  projectcenter-0.6.0.ebuild, projectcenter-0.6.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  projectcenter-0.6.1.ebuild:
+  x86 stable wrt bug #429078
+
+  15 Aug 2012; Anthony G. Basile <blueness@gentoo.org>
+  projectcenter-0.6.1.ebuild:
+  Stable ppc, bug #431378
+
+  14 Aug 2012; Agostino Sarubbo <ago@gentoo.org> projectcenter-0.6.1.ebuild:
+  Stable for amd64, wrt bug #429078
+
+*projectcenter-0.6.1 (18 Jun 2012)
+
+  18 Jun 2012; Bernard Cafarelli <voyageur@gentoo.org>
+  -projectcenter-0.4.3_p25340.ebuild, -projectcenter-0.5.0.ebuild,
+  +projectcenter-0.6.1.ebuild:
+  Version bump, mostly compatibility/portability changes
+
+  07 Jun 2012; Michael Weber <xmw@gentoo.org> projectcenter-0.6.0.ebuild:
+  ppc stable (bug 397047)
+
+  07 Apr 2012; Markus Meier <maekke@gentoo.org> projectcenter-0.6.0.ebuild:
+  x86 stable, bug #397047
+
+  14 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org>
+  projectcenter-0.6.0.ebuild, +files/projectcenter-0.6.0-32788+33818.patch:
+  Fix compilation with llvm and latest gnustep base
+
+  04 Feb 2012; Agostino Sarubbo <ago@gentoo.org> projectcenter-0.6.0.ebuild:
+  Stable for amd64, wrt bug #397047
+
+*projectcenter-0.6.0 (14 Dec 2010)
+
+  14 Dec 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +projectcenter-0.6.0.ebuild:
+  Version bump
+
+*projectcenter-0.5.0 (28 Oct 2008)
+
+  28 Oct 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  +projectcenter-0.5.0.ebuild:
+  Bump to new release
+
+  08 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  projectcenter-0.4.3_p25340.ebuild:
+  amd64 stable wrt bug #207381
+
+  30 Jan 2008; Brent Baude <ranger@gentoo.org>
+  projectcenter-0.4.3_p25340.ebuild:
+  Marking projectcenter-0.4.3_p25340 ppc for bug 207381
+
+  25 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  projectcenter-0.4.3_p25340.ebuild:
+  stable x86, bug 207381
+
+*projectcenter-0.4.3_p25340 (11 Sep 2007)
+
+  11 Sep 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  -files/pc-non-flattened.patch, -projectcenter-0.4.2.ebuild,
+  -projectcenter-0.4.3.ebuild, +projectcenter-0.4.3_p25340.ebuild:
+  Version bump, correct ~amd64 support and gnustep-make-2 compatible
+  Remove old versions
+
+  22 Aug 2007; Roy Marples <uberlord@gentoo.org> projectcenter-0.4.3.ebuild:
+  Keyworded ~x86-fbsd, #183467 thanks to Nathan Smith.
+
+  18 Aug 2007; Christoph Mende <angelos@gentoo.org>
+  projectcenter-0.4.3.ebuild:
+  Added ~amd64 wrt bug #170433
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*projectcenter-0.4.3 (25 Mar 2006)
+
+  25 Mar 2006; Fabian Groffen <grobian@gentoo.org>
+  -projectcenter-0.4.3_pre20050312.ebuild, +projectcenter-0.4.3.ebuild:
+  Replaced (non-working) CVS prerelease with final release
+
+*projectcenter-0.4.2 (17 Mar 2005)
+
+  17 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -projectcenter-0.4.1_pre20041203.ebuild,
+  -projectcenter-0.4.1_pre20050106.ebuild, +projectcenter-0.4.2.ebuild,
+  +projectcenter-0.4.3_pre20050312.ebuild:
+  ebuild updates for GNUstep base, libs, and apps across the board; proper
+  versions (to be stabilized, in due time) added where apropos, cvs-pull
+  versions updated where needed
+
+*projectcenter-0.4.1_pre20050106 (10 Jan 2005)
+
+  10 Jan 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -projectcenter-0.4.1_pre20040927.ebuild,
+  +projectcenter-0.4.1_pre20050106.ebuild:
+  cvs snapshot version bumps; cleaned out old cvs versioned ebuilds; fixed
+  date spec on ebuild headers as repoman was complaining
+
+  04 Dec 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  projectcenter-0.4.1_pre20041203.ebuild:
+  Fixed GNUstep non-flattened building (patch no longer needed)
+
+*projectcenter-0.4.1_pre20041203 (03 Dec 2004)
+
+  03 Dec 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +projectcenter-0.4.1_pre20041203.ebuild:
+  General version bump
+
+  11 Nov 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +files/pc-non-flattened.patch, -projectcenter-0.3.5.ebuild,
+  projectcenter-0.4.1_pre20040927.ebuild:
+  Mass Update: gnustep.eclass revamped to allow configurable root install;
+  gnustep-base/libs/apps updated to utilize new gnustep.eclass (only versions
+  bumped where files would change); some KEYWORDS were accidentally dropped
+  between version bumps of packages -- this has been resolved; windowmaker
+  correctly supports gnustep now
+
+*projectcenter-0.4.1_pre20040927 (28 Sep 2004)
+
+  28 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org> metadata.xml,
+  +projectcenter-0.4.1_pre20040927.ebuild:
+  Version bump; pre release date specd live cvs pull.
+
+  23 Jul 2004; Armando Di Cianno,,, <armando@gentoo.org>
+  projectcenter-0.3.5.ebuild:
+  Changed referenced categories in ebuilds to reflect recent epkgmove changes.
+
+*projectcenter-0.3.5 (23 Jul 2004)
+
+  23 Jul 2004; Armando Di Cianno,,, <armando@gentoo.org> +metadata.xml,
+  +projectcenter-0.3.5.ebuild:
+  Moved from app-gnustep/projectcenter to gnustep-apps/projectcenter.
+
+  22 Jul 2004; Armando Di Cianno,,, <armando@gentoo.org>
+  projectcenter-0.3.5.ebuild:
+  Changing the eclass to gnustep-old
+
+  22 Jul 2004; Armando Di Cianno,,, <armando@gentoo.org>
+  projectcenter-0.3.5.ebuild:
+  Changing the eclass to gnustep-old
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> projectcenter-0.3.5.ebuild:
+  Added IUSE=
+
+  18 Oct 2003; Nick Hadaway <raker@gentoo.org> projectcenter-0.3.5.ebuild:
+  Fixed the policy violation of setting ${A}
+
+*projectcenter-0.3.5 (15 Jul 2003)
+
+  15 Jul 2003; Nick Hadaway <raker@gentoo.org> projectcenter-0.3.5.ebuild:
+  New ebuild.

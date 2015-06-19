@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>tristan@gentoo.org</email>
+		<name>Tristan Heaven</name>
+	</maintainer>
+	<use>
+		<flag name="freerdp">Add support for the net-misc/freerdp application</flag>
+		<flag name="ssh">Enable support for SSH/SFTP protocol; see also 'vte'</flag>
+		<flag name="telepathy">Enable telepathy support</flag>
+		<flag name="vte">Enable virtual terminal support (for SSH sessions)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">FreeRDP/Remmina</remote-id>
+	</upstream>
+</pkgmetadata>

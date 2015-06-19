@@ -1,0 +1,28 @@
+diff -r -U1 maxima-5.23.1.orig//configure.in maxima-5.23.1//configure.in
+--- maxima-5.23.1.orig//configure.in	2011-01-15 21:54:46.000000000 +0600
++++ maxima-5.23.1//configure.in	2011-01-16 21:00:16.000000000 +0600
+@@ -777,6 +777,11 @@
+ 	[  --with-wish=<prog>           Use <prog> for Tk wish shell (default wish)],
+-	[WISH="${withval}"],
+-	[WISH="wish"])
++	[],
++	[with_wish="wish"])
++case "${with_wish}" in
++        no) WISH="none" ;;
++        yes) WISH="wish" ;;
++        *) WISH="${with_wish}" ;;
++esac
+ AC_SUBST(WISH)
+-
++AM_CONDITIONAL(WANT_TK, test x"${with_wish}" != xno)
+ 
+diff -r -U1 maxima-5.23.1.orig//interfaces/Makefile.am maxima-5.23.1//interfaces/Makefile.am
+--- maxima-5.23.1.orig//interfaces/Makefile.am	2004-04-28 23:34:59.000000000 +0700
++++ maxima-5.23.1//interfaces/Makefile.am	2011-01-16 20:41:38.000000000 +0600
+@@ -1,2 +1,6 @@
++if WANT_TK
+ SUBDIRS = emacs xmaxima
++else
++SUBDIRS = emacs
++endif
+ EXTRA_DIST = bin/xmaxima.iss

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Bram Moolenaar's super-make program
+HOMEPAGE=http://www.a-a-p.org/
+IUSE=doc
+KEYWORDS=~alpha ~amd64 ~ia64 ~mips ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/python-1.5
+SLOT=0
+SRC_URI=mirror://sourceforge/a-a-p/aap-1.090.zip
+_md5_=2aed95c63d4b5224f95a95782b28cde2

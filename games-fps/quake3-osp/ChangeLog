@@ -1,0 +1,47 @@
+# ChangeLog for games-fps/quake3-osp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-osp/ChangeLog,v 1.11 2015/02/14 11:54:13 mgorny Exp $
+
+  14 Feb 2015; Michał Górny <mgorny@gentoo.org> quake3-osp-1.03a-r1.ebuild:
+  Fix SRC_URI, add missing ||die. Bug #460312 with PR by Michael Mair-
+  Keimberger.
+
+  10 Oct 2009; Tristan Heaven <nyhm@gentoo.org> quake3-osp-1.03a-r1.ebuild:
+  Stable on amd64/x86
+
+  07 Oct 2009; Tristan Heaven <nyhm@gentoo.org> quake3-osp-1.03a-r1.ebuild:
+  EAPI=2; update SRC_URI; remove useless files
+
+  23 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  quake3-osp-1.03a-r1.ebuild:
+  fix DESCRIPTION (bug #242374)
+
+*quake3-osp-1.03a-r1 (27 Oct 2006)
+
+  27 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +quake3-osp-1.03a-r1.ebuild:
+  Added new revision for testing which uses the brand-spankin-new
+  games-mods.eclass to reduce ebuild code.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*quake3-osp-1.03a (02 Jun 2003)
+
+  02 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump (#16103) and added games-q3mod.eclass support.
+
+*quake3-osp-1.01-r1 (25 Jun 2002)
+
+  06 Aug 2002; Mark Guertin <gerk@gentoo.org> :
+  Added -ppc to keywords
+
+  20 Jul 2002; J.Alberto S.L. <bass@gentoo.org> quake3-osp-1.01.ebuild-r1:
+  fixed perms.
+
+*quake3-osp-1.01 (13 Feb 2003)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> quake3-osp-1.01.ebuild :
+  Added KEYWORDS.
+  25 Jun 2002; J.Alberto S.L. <bass@gentoo.org> quake3-osp-1.01.ebuild:
+  First relase.

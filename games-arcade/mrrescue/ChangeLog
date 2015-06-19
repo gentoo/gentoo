@@ -1,0 +1,18 @@
+# ChangeLog for games-arcade/mrrescue
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/mrrescue/ChangeLog,v 1.4 2014/11/25 23:07:11 hasufell Exp $
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> mrrescue-1.02b.ebuild:
+  Stable for x86, wrt bug #502352
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> mrrescue-1.02b.ebuild:
+  amd64 stable, bug #502352
+
+*mrrescue-1.02b (15 Dec 2013)
+
+  15 Dec 2013; Julian Ospald <hasufell@gentoo.org> +mrrescue-1.02b.ebuild,
+  +metadata.xml:
+  initial import

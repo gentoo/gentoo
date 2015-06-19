@@ -1,0 +1,63 @@
+# ChangeLog for sys-apps/turbotail
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/turbotail/ChangeLog,v 1.15 2011/10/08 13:03:36 jlec Exp $
+
+*turbotail-0.3-r1 (08 Oct 2011)
+
+  08 Oct 2011; Justin Lecher <jlec@gentoo.org> +turbotail-0.3-r1.ebuild,
+  metadata.xml:
+  Respect FLAGS*, #334753
+
+  07 Jan 2011; Jeroen Roovers <jer@gentoo.org> turbotail-0.3.ebuild:
+  Use the virtual. Set RDEPEND.
+
+  15 Dec 2008; Jeroen Roovers <jer@gentoo.org>
+  -files/turbotail-0.2-munmap.patch, -turbotail-0.2.ebuild,
+  -turbotail-0.2-r1.ebuild:
+  Remove old.
+
+  15 Dec 2008; Jeroen Roovers <jer@gentoo.org> turbotail-0.3.ebuild:
+  Works fine with app-admin/fam too. Add some verbosity to src_compile().
+
+  26 Aug 2008; Jeroen Roovers <jer@gentoo.org> turbotail-0.3.ebuild:
+  Stable for HPPA because I like it.
+
+  28 May 2008; Raúl Porcel <armin76@gentoo.org> turbotail-0.3.ebuild:
+  Add ~sparc
+
+  25 May 2008; Jeroen Roovers <jer@gentoo.org> turbotail-0.3.ebuild:
+  Make DEPEND conditional.
+
+  25 May 2008; Jeroen Roovers <jer@gentoo.org> turbotail-0.3.ebuild:
+  Add DNOTIFY support.
+
+*turbotail-0.3 (25 May 2008)
+
+  25 May 2008; Jeroen Roovers <jer@gentoo.org> +turbotail-0.3.ebuild:
+  Version bump (bug #138401, credit to Tim Harder for reporting).
+
+  25 May 2008; Jeroen Roovers <jer@gentoo.org> turbotail-0.2-r1.ebuild:
+  Marked ~hppa too.
+
+  25 May 2008; Jeroen Roovers <jer@gentoo.org> turbotail-0.2.ebuild,
+  turbotail-0.2-r1.ebuild:
+  Correct HOMEPAGE.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*turbotail-0.2-r1 (08 Aug 2005)
+
+  08 Aug 2005; Stefan Briesenick <sbriesen@gentoo.org>
+  +files/turbotail-0.2-munmap.patch, +turbotail-0.2-r1.ebuild:
+  adding munmap patch (see bug #101694)
+
+  06 Aug 2005; David Holm <dholm@gentoo.org> turbotail-0.2.ebuild:
+  Added to ~ppc.
+
+*turbotail-0.2 (05 Aug 2005)
+
+  05 Aug 2005; Stefan Briesenick <sbriesen@gentoo.org> +metadata.xml,
+  +turbotail-0.2.ebuild:
+  initial commit. see bug #71933.
+

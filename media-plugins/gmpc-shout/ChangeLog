@@ -1,0 +1,38 @@
+# ChangeLog for media-plugins/gmpc-shout
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gmpc-shout/ChangeLog,v 1.8 2012/05/05 08:27:15 jdhore Exp $
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> gmpc-shout-0.20.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  19 Mar 2011; Christoph Mende <angelos@gentoo.org> gmpc-shout-0.20.0.ebuild:
+  Remove .la file
+
+  13 Mar 2011; <angelos@gentoo.org> -gmpc-shout-0.19.0.ebuild:
+  Removed old
+
+  20 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gmpc-shout-0.20.0.ebuild:
+  x86 stable wrt bug #325621
+
+  17 Feb 2011; Markos Chandras <hwoarang@gentoo.org> gmpc-shout-0.20.0.ebuild:
+  Stable on amd64 wrt bug #325621
+
+*gmpc-shout-0.20.0 (25 May 2010)
+
+  25 May 2010; Christoph Mende <angelos@gentoo.org>
+  +gmpc-shout-0.20.0.ebuild:
+  Version bump
+
+*gmpc-shout-0.19.0 (27 Sep 2009)
+
+  27 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +gmpc-shout-0.19.0.ebuild:
+  Version bump.
+
+*gmpc-shout-0.18.0 (13 Mar 2009)
+
+  13 Mar 2009; Christoph Mende <angelos@gentoo.org>
+  +gmpc-shout-0.18.0.ebuild:
+  Initial import
+

@@ -1,0 +1,7 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/arch/x86/package.mask,v 1.1 2011/12/30 15:49:36 grobian Exp $
+
+# The 32-bits profile is inherited by the 64-bits one!
+# All the Mac OS X profiles inherit from their matching arch profile here.
+

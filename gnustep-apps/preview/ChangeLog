@@ -1,0 +1,99 @@
+# ChangeLog for gnustep-apps/preview
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/preview/ChangeLog,v 1.22 2014/08/10 21:20:07 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> preview-0.8.5-r1.ebuild,
+  preview-0.9.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  12 Jul 2012; Bernard Cafarelli <voyageur@gentoo.org> preview-0.9.ebuild:
+  Fix compilation with GCC 4.7, bug #426296
+
+  02 Dec 2011; Markos Chandras <hwoarang@gentoo.org> preview-0.9.ebuild:
+  Stable on amd64 wrt bug #391569
+
+  01 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> preview-0.9.ebuild:
+  x86 stable wrt bug #391569
+
+*preview-0.9 (20 Aug 2010)
+
+  20 Aug 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  preview-0.8.5-r1.ebuild, +preview-0.9.ebuild:
+  Version bump, new homepage, ebuild cleanup, fix quoting
+
+  20 Aug 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  preview-0.8.5-r1.ebuild, +files/preview-0.8.5-compilation-errors.patch:
+  Fix compilation, bug #331435
+
+  08 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  preview-0.8.5-r1.ebuild:
+  amd64 stable wrt bug #207381
+
+  30 Jan 2008; Brent Baude <ranger@gentoo.org> preview-0.8.5-r1.ebuild:
+  Marking preview-0.8.5-r1 ppc for bug 207381
+
+  25 Jan 2008; Christian Faulhammer <opfer@gentoo.org> Manifest:
+  quote variable
+
+  25 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  preview-0.8.5-r1.ebuild:
+  stable x86, bug 207381
+
+  13 Sep 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  preview-0.8.5-r1.ebuild:
+  Fix French.lproj resource folder
+
+*preview-0.8.5-r1 (11 Sep 2007)
+
+  11 Sep 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  -preview-0.7.5.ebuild, -preview-0.8.5.ebuild, +preview-0.8.5-r1.ebuild:
+  Port to new GNUstep eclasses
+
+  18 Aug 2007; Christoph Mende <angelos@gentoo.org> preview-0.8.5.ebuild:
+  Added ~amd64 wrt bug #170433
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-preview-0.7.5,
+  Manifest:
+  Fixing SHA256 digest, pass four
+
+*preview-0.8.5 (25 Mar 2006)
+
+  25 Mar 2006; Fabian Groffen <grobian@gentoo.org>
+  -preview-0.7.5_pre20041021.ebuild, +preview-0.8.5.ebuild:
+  Removed incorrect CVS ebuild, and bumped
+
+  08 Jan 2006; Michael Hanselmann <hansmi@gentoo.org> metadata.xml:
+  Remove retiring dev from metadata.
+
+*preview-0.7.5 (12 Jan 2005)
+
+  12 Jan 2005; Armando Di Cianno <fafhrd@gentoo.org> +preview-0.7.5.ebuild,
+  -preview-0.7.ebuild:
+  Version bump; pruned old ebuilds
+
+  11 Nov 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  preview-0.7.5_pre20041021.ebuild, preview-0.7.ebuild:
+  Mass Update: gnustep.eclass revamped to allow configurable root install;
+  gnustep-base/libs/apps updated to utilize new gnustep.eclass (only versions
+  bumped where files would change); some KEYWORDS were accidentally dropped
+  between version bumps of packages -- this has been resolved; windowmaker
+  correctly supports gnustep now
+
+  22 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  preview-0.7.5_pre20041021.ebuild:
+  Tested and keywording for ~x86
+
+*preview-0.7.5_pre20041021 (22 Oct 2004)
+
+  22 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +preview-0.7.5_pre20041021.ebuild:
+  Version bump to new release; cvs pull style ebuild
+
+*preview-0.7 (12 Oct 2004)
+
+  12 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org> +metadata.xml,
+  +preview-0.7.ebuild:
+  Orginal package import; keyworded for ~x86

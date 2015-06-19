@@ -1,0 +1,349 @@
+# ChangeLog for sys-freebsd/freebsd-share
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-share/ChangeLog,v 1.61 2015/06/05 16:43:55 mgorny Exp $
+
+  05 Jun 2015; Michał Górny <mgorny@gentoo.org> freebsd-share-10.1.ebuild:
+  Bump to EAPI=5. Use upstream tarballs.
+
+  24 May 2015; Michał Górny <mgorny@gentoo.org> -freebsd-share-9.2.ebuild,
+  -freebsd-share-9.2_rc1.ebuild, -freebsd-share-9.2_rc2.ebuild,
+  -freebsd-share-9.2_rc3.ebuild:
+  Remove 9.2. Part of https://github.com/gentoo/gentoo-portage-rsync-
+  mirror/pull/126 by nigoro.
+
+*freebsd-share-10.1 (08 Mar 2015)
+
+  08 Mar 2015; Michał Górny <mgorny@gentoo.org>
+  +files/freebsd-share-10.0-gentoo-eapi3.patch, +freebsd-share-10.1.ebuild:
+  Add FreeBSD 10.1 ebuilds, https://github.com/gentoo/gentoo-portage-rsync-
+  mirror/pull/46 by nigoro.
+
+*freebsd-share-9.2 (09 Nov 2013)
+
+  09 Nov 2013; Alexis Ballier <aballier@gentoo.org> +freebsd-share-9.2.ebuild:
+  bump to 9.2
+
+*freebsd-share-9.2_rc3 (26 Aug 2013)
+
+  26 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-share-9.2_rc3.ebuild:
+  bump to rc3
+
+*freebsd-share-9.2_rc2 (22 Aug 2013)
+
+  22 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-share-9.2_rc2.ebuild:
+  bump to rc2
+
+  11 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  freebsd-share-9.2_rc1.ebuild:
+  update /usr/src/sys symlink after recent changes to -sources
+
+*freebsd-share-9.2_rc1 (10 Aug 2013)
+
+  10 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-share-9.2_rc1.ebuild, +files/freebsd-share-9.2-gnu-miscfiles.patch:
+  Version bump, based on work of Yuta SATOH in bug #476646
+
+  09 Aug 2013; Alexis Ballier <aballier@gentoo.org> -freebsd-share-9.0.ebuild,
+  -files/freebsd-share-9.0-gentoowaydir.patch:
+  remove old
+
+  18 Jun 2013; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-share-7.2-r1.ebuild, -freebsd-share-8.0.ebuild,
+  -files/freebsd-share-gnu-miscfiles.patch:
+  remove old
+
+  27 Jan 2013; Alexis Ballier <aballier@gentoo.org> freebsd-share-9.1.ebuild:
+  remove isdn useflag, by Yuta SATOH, bug #448502
+
+  27 Jan 2013; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-share-9.1_rc1.ebuild, -freebsd-share-9.1_rc2.ebuild,
+  -freebsd-share-9.1_rc3.ebuild:
+  remove rc versions
+
+*freebsd-share-9.1 (27 Jan 2013)
+
+  27 Jan 2013; Alexis Ballier <aballier@gentoo.org> +freebsd-share-9.1.ebuild:
+  Bump to 9.1
+
+*freebsd-share-9.1_rc3 (06 Nov 2012)
+
+  06 Nov 2012; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-share-9.1_rc3.ebuild:
+  bump to rc3
+
+*freebsd-share-9.1_rc2 (14 Oct 2012)
+
+  14 Oct 2012; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-share-9.1_rc2.ebuild:
+  bump to 9.1_rc2
+
+*freebsd-share-9.1_rc1 (11 Sep 2012)
+
+  11 Sep 2012; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-share-9.1_rc1.ebuild:
+  bump to 9.1_rc1 from bsd overlay by Yuta SATOH, bug #426838
+
+  16 Jun 2012; Naohiro Aota <naota@gentoo.org> freebsd-share-9.0.ebuild:
+  Drop rc.conf{,.local} man pages. #420797
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> freebsd-share-9.0.ebuild:
+  keyword ~amd64-fbsd
+
+  30 Mar 2012; Alexis Ballier <aballier@gentoo.org> freebsd-share-9.0.ebuild,
+  +files/freebsd-share-9.0-gentoowaydir.patch:
+  do not create a lib32 dir, by Yuta SATOH in bug #408595
+
+  30 Mar 2012; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-share-9.0_rc1.ebuild, -freebsd-share-9.0_rc2.ebuild,
+  -freebsd-share-9.0_rc3.ebuild:
+  remove old
+
+*freebsd-share-9.0 (16 Jan 2012)
+
+  16 Jan 2012; Alexis Ballier <aballier@gentoo.org> +freebsd-share-9.0.ebuild:
+  bump to 9.0
+
+*freebsd-share-9.0_rc3 (09 Dec 2011)
+
+  09 Dec 2011; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-share-9.0_rc3.ebuild:
+  bump to 9.0_rc3
+
+*freebsd-share-9.0_rc2 (07 Dec 2011)
+
+  07 Dec 2011; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-share-9.0_rc2.ebuild:
+  bump to rc2
+
+*freebsd-share-9.0_rc1 (07 Nov 2011)
+
+  07 Nov 2011; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-share-9.0_rc1.ebuild:
+  bump to 9.0_rc1
+
+*freebsd-share-8.2 (06 Jul 2011)
+
+  06 Jul 2011; Alexis Ballier <aballier@gentoo.org> +freebsd-share-8.2.ebuild:
+  bump to 8.2
+
+*freebsd-share-8.0 (19 Mar 2010)
+
+  19 Mar 2010; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-share-8.0.ebuild, +files/freebsd-share-8.0-gnu-miscfiles.patch:
+  bump to 8.0 from the bsd overlay
+
+  11 Mar 2010; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-share-6.2.ebuild, -freebsd-share-7.1.ebuild,
+  -freebsd-share-7.2.ebuild:
+  remove old
+
+*freebsd-share-7.2-r1 (07 Jan 2010)
+
+  07 Jan 2010; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-share-7.2-r1.ebuild, +files/freebsd-share-gnu-miscfiles.patch:
+  Remove miscfiles colliding with app-misc/miscfiles and RDEPEND on it
+
+  22 May 2009; Alexis Ballier <aballier@gentoo.org>
+  freebsd-share-7.2.ebuild:
+  make PATCHES a bash array
+
+*freebsd-share-7.2 (22 May 2009)
+
+  22 May 2009; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-share-7.2.ebuild:
+  bump to 7.2
+
+*freebsd-share-7.1 (22 Jan 2009)
+
+  22 Jan 2009; Javier Villavicencio <the_paya@gentoo.org>
+  +freebsd-share-7.1.ebuild:
+  Import 7.1 ebuilds from gentoo-bsd overlay.
+
+  08 Jan 2009; Alexis Ballier <aballier@gentoo.org>
+  freebsd-share-6.2.ebuild:
+  Port some changes from fbsd 7 overlay: dont install moduli (ssh) and rc
+  (openrc) manpages
+
+  22 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  02 May 2007; Timothy Redaelli <drizzt@gentoo.org>
+  freebsd-share-6.2.ebuild:
+  Remove builtins.1 manpage (collision with bash).
+  Thanks to Michael to reporting wrt bug #176838.
+
+  18 Jan 2007; Timothy Redaelli <drizzt@gentoo.org>
+  freebsd-share-6.2.ebuild:
+  Fix .gz.bz2 problem in manpages, thanks to geekounet` for reporting and
+  Flameeyes for fixing
+
+*freebsd-share-6.2 (15 Jan 2007)
+
+  15 Jan 2007; Timothy Redaelli <drizzt@gentoo.org>
+  -freebsd-share-6.2_rc2.ebuild, +freebsd-share-6.2.ebuild:
+  Bump to 6.2 and remove old version.
+
+  11 Jan 2007; Timothy Redaelli <drizzt@gentoo.org>
+  freebsd-share-6.2_rc2.ebuild:
+  Remove pbm manpage, it collides with netpbm
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -files/freebsd-share-6.0-links.patch, -files/freebsd-share-6.1-utf8.patch,
+  -freebsd-share-6.1-r1.ebuild:
+  Remove 6.1 ebuild.
+
+*freebsd-share-6.2_rc2 (29 Dec 2006)
+
+  29 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-share-6.2_beta3.ebuild, -freebsd-share-6.2_rc1.ebuild,
+  +freebsd-share-6.2_rc2.ebuild:
+  Bump to rc2 and remove older versions.
+
+  08 Dec 2006; Timothy Redaelli <drizzt@gentoo.org>
+  freebsd-share-6.2_rc1.ebuild:
+  Remove mailer.conf manpage and add -j1 to make install
+
+*freebsd-share-6.2_rc1 (19 Nov 2006)
+
+  19 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-share-6.2_rc1.ebuild:
+  Version bump to 6.2-RC1.
+
+  18 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-share-6.2_beta2.ebuild:
+  Remove 6.2_beta2.
+
+*freebsd-share-6.2_beta3 (01 Nov 2006)
+
+  01 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-share-6.2_beta3.ebuild:
+  Bump to 6.2_beta3.
+
+  19 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Remove 6.2_beta1 ebuild.
+
+  19 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-share-6.2_beta1.ebuild:
+  Remove 6.2_beta1 ebuild.
+
+  17 Oct 2006; Roy Marples <uberlord@gentoo.org>
+  freebsd-share-6.2_beta2.ebuild:
+  Added ~sparc-fbsd keyword.
+
+*freebsd-share-6.2_beta2 (05 Oct 2006)
+
+  05 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-share-6.2_beta2.ebuild:
+  Version 6.2_beta2.
+
+  22 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-share-6.2_beta1.ebuild:
+  Remove patch already applied upstream.
+
+*freebsd-share-6.2_beta1 (21 Sep 2006)
+
+  21 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-share-6.2_beta1.ebuild:
+  Add 6.2_beta1 ebuilds.
+
+  27 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-share-6.0-r1.ebuild:
+  Remove 6.0 version.
+
+*freebsd-share-6.1-r1 (18 Jul 2006)
+
+  18 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/freebsd-share-6.1-utf8.patch, -freebsd-share-6.1.ebuild,
+  +freebsd-share-6.1-r1.ebuild:
+  Drop the symlink patch that breaks UTF-8 support, and add patch for proper
+  UTF-8 CTYPE, thanks to Timothy Redaelli for the help.
+
+  09 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-share-6.1.ebuild:
+  Don't install tabset, that's installed by ncurses already.
+
+*freebsd-share-6.1 (09 May 2006)
+
+  09 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-share-6.1_rc2.ebuild, +freebsd-share-6.1.ebuild:
+  Update to 6.1-RELEASE.
+
+*freebsd-share-6.1_rc2 (02 May 2006)
+
+  02 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-share-6.1_rc1.ebuild, +freebsd-share-6.1_rc2.ebuild:
+  Update to 6.1_rc2.
+
+  01 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-share-6.1_rc1.ebuild:
+  Export ESED to BSD sed as per bug #131299.
+
+*freebsd-share-6.1_rc1 (01 May 2006)
+
+  01 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-share-6.1_rc1.ebuild:
+  Update to 6.1_rc1.
+
+*freebsd-share-6.0-r1 (22 Apr 2006)
+
+  22 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-share-6.0.ebuild, +freebsd-share-6.0-r1.ebuild:
+  Drop timezone data, now provided by timezone-data package itself.
+
+  14 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-share-6.0.ebuild:
+  Install arch-specific manpages in man4 catalog. Thanks to Javier
+  Villavicencio in bug #129889.
+
+  02 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/freebsd-share-5.3-colldef-makefile_links.patch:
+  Drop obsolete files.
+
+*freebsd-share-6.0 (01 Apr 2006)
+
+  01 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/freebsd-share-5.3-colldef-makefile_links.patch,
+  +files/freebsd-share-5.3-doc-locations.patch,
+  +files/freebsd-share-5.4-gentoo-skel.patch,
+  +files/freebsd-share-6.0-links.patch, +metadata.xml,
+  +freebsd-share-6.0.ebuild:
+  Import into portage.
+
+  12 Feb 2006; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Add patch to drop broken linkage, might require more work as it's just a
+  workaround.
+
+  20 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Installs default skel content in /etc/skel as usual on Gentoo, also disable
+  some content that's not Gentoo-style and might create problems to users.
+
+  02 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-share-5.4-r1.ebuild:
+  Removed stray epatch lines that broke the ebuild.
+
+  25 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/freebsd-share-5.3-colldef-makefile_links.patch,
+  +files/freebsd-share-5.3-doc-locations.patch,
+  +freebsd-share-5.4-r1.ebuild:
+  Moved to sys-freebsd.
+
+  15 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-share-5.4-r1.ebuild:
+  Add nostrip restriction.
+
+*freebsd-share-5.4-r1 (15 Jul 2005)
+
+  15 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-share-5.4.ebuild, +freebsd-share-5.4-r1.ebuild:
+  Don't install make.conf.5 manpage (it's for ports), close #99129. Fix
+  missing SLOT.
+
+*freebsd-share-5.3.20050301 (23 Mar 2005)
+
+  23 Mar 2005; Otavio R. Piske <angusyoung@gentoo.org>
+  +files/freebsd-share-5.3-doc-locations.patch,
+  +freebsd-share-5.3.20050301.ebuild:
+  New ebuild for freebsd-share, with support for USE Flags. Thanks for Diego
+  Petterno (dgp85@users.sourceforge.net) for submitting the patch.

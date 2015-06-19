@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=nls? ( sys-devel/gettext ) virtual/pkgconfig test? ( dev-libs/check )
+DESCRIPTION=libhangul is a generalized and portable library for processing hangul
+EAPI=3
+HOMEPAGE=http://kldp.net/projects/hangul/
+IUSE=nls static-libs test
+KEYWORDS=amd64 ppc ~ppc64 x86
+LICENSE=LGPL-2.1
+RDEPEND=nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=http://kldp.net/frs/download.php/5855/libhangul-0.0.12.tar.gz
+_md5_=84ca08e2d8a776a20d3de59e48752a78

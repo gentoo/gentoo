@@ -1,0 +1,161 @@
+# ChangeLog for net-analyzer/iptstate
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/iptstate/ChangeLog,v 1.45 2014/07/12 18:20:58 jer Exp $
+
+  12 Jul 2014; Jeroen Roovers <jer@gentoo.org> iptstate-2.2.5.ebuild:
+  Add virtual/pkgconfig dependency.
+
+  12 Jul 2014; Jeroen Roovers <jer@gentoo.org> -iptstate-2.2.3.ebuild,
+  iptstate-2.2.5.ebuild, +files/iptstate-2.2.5-gentoo.patch:
+  Fix building against sys-libs/ncurses[tinfo]. Convert sed scripts to patch.
+
+  13 Jan 2013; Ulrich Müller <ulm@gentoo.org> iptstate-2.2.3.ebuild:
+  Fix LICENSE, see LICENSE file.
+
+  20 Sep 2012; Johannes Huber <johu@gentoo.org> iptstate-2.2.5.ebuild:
+  Stable for x86, wrt bug #429152
+
+  24 Aug 2012; Agostino Sarubbo <ago@gentoo.org> iptstate-2.2.5.ebuild:
+  Stable for amd64, wrt bug #429152
+
+  03 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> -iptstate-2.2.1.ebuild,
+  -files/iptstate-2.2.1-gcc43.patch, -iptstate-2.2.2.ebuild:
+  old
+
+*iptstate-2.2.5 (03 Jun 2012)
+
+  03 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> +iptstate-2.2.5.ebuild:
+  Version bump. Use correct license (ZLIB instead of as-is). Stop forcing -g
+  and -O2 in CXXFLAGS. Remove empty CPPFLAGS= to respect environment flags.
+
+  05 Feb 2012; Raúl Porcel <armin76@gentoo.org> iptstate-2.2.1.ebuild,
+  iptstate-2.2.2.ebuild, iptstate-2.2.3.ebuild:
+  Drop sparc keywords
+
+  15 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> iptstate-2.2.3.ebuild:
+  x86 stable wrt bug #397133
+
+  06 Jan 2012; Agostino Sarubbo <ago@gentoo.org> iptstate-2.2.3.ebuild:
+  Stable for AMD64, wrt bug #397133
+
+*iptstate-2.2.3 (19 Apr 2011)
+
+  19 Apr 2011; Jeroen Roovers <jer@gentoo.org> iptstate-2.2.1.ebuild,
+  iptstate-2.2.2.ebuild, +iptstate-2.2.3.ebuild:
+  Version bump thanks to euscan. Set RDEPEND.
+
+*iptstate-2.2.2 (26 Jul 2010)
+
+  26 Jul 2010; Jeroen Roovers <jer@gentoo.org> +iptstate-2.2.2.ebuild:
+  Version bump by Marcin Mirosław (bug #329277). Respect LDFLAGS and CXX.
+
+  11 Jan 2009; Caleb Tennis <caleb@gentoo.org> iptstate-2.2.1.ebuild:
+  amd64 stable
+
+  28 Jun 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/iptstate-2.2.1-gcc43.patch, iptstate-2.2.1.ebuild:
+  Fix for gcc-4.3, bug #228759. Thanks Graham Murray
+  <graham@gmurray.org.uk>.
+
+  18 Jan 2008; Raúl Porcel <armin76@gentoo.org> -iptstate-2.1.ebuild,
+  iptstate-2.2.1.ebuild:
+  x86 stable and remove old
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org> -iptstate-1.4.ebuild:
+  Cleanup
+
+  08 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> iptstate-2.2.1.ebuild:
+  Stable on sparc
+
+  16 Jun 2007; Christoph Mende <angelos@gentoo.org> iptstate-2.2.1.ebuild:
+  Added ~amd64 wrt bug 175564
+
+  16 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  iptstate-2.2.1.ebuild:
+  Added ~ppc, bug #175564
+
+  16 Jun 2007; Cédric Krier <cedk@gentoo.org> iptstate-2.2.1.ebuild:
+  Use emake
+
+  04 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org> iptstate-2.2.1.ebuild:
+  Keyworded ~sparc wrt #175564
+
+  02 Jun 2007; Jeroen Roovers <jer@gentoo.org> iptstate-2.2.1.ebuild:
+  Marked ~hppa (bug #175564).
+
+*iptstate-2.2.1 (02 Jun 2007)
+
+  02 Jun 2007; Marcelo Goes <vanquirius@gentoo.org> +iptstate-2.2.1.ebuild:
+  2.2.1 version bump for bug 175564. Works in recent kernels. Thanks to Peter
+  Gantner (a.k.a. nephros) <gentoo at nephros dot org>. Dropping all keywords
+  but x86 because of net-libs/libnetfilter_conntrack dependency.
+
+  22 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org> iptstate-2.1.ebuild:
+  Stable on sparc
+
+  20 Mar 2007; Raúl Porcel <armin76@gentoo.org> iptstate-2.1.ebuild:
+  x86 stable
+
+  20 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+*iptstate-2.1 (08 Oct 2006)
+
+  08 Oct 2006; Eldad Zack <eldad@gentoo.org> -iptstate-1.3.ebuild,
+  +iptstate-2.1.ebuild:
+  Version bump. removed old version.
+
+  20 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> iptstate-1.4.ebuild:
+  Stable on sparc
+
+  01 Mar 2006; Marcelo Goes <vanquirius@gentoo.org> iptstate-1.4.ebuild:
+  Mark 1.4 x86 stable.
+
+  19 Jul 2005; David Holm <dholm@gentoo.org> iptstate-1.4.ebuild:
+  Added to ~ppc.
+
+  14 May 2005; Marcelo Goes <vanquirius@gentoo.org> iptstate-1.3.ebuild,
+  iptstate-1.4.ebuild:
+  Adding die to make and make install.
+
+*iptstate-1.4 (17 Apr 2005)
+
+  17 Apr 2005; Eldad Zack <eldad@gentoo.org> -iptstate-1.2.1.ebuild,
+  iptstate-1.3.ebuild, +iptstate-1.4.ebuild:
+  Updated homepage location. Version bump.
+
+  09 Aug 2004; Danny van Dyk <kugelfang@gentoo.org> iptstate-1.3.ebuild:
+  Marked ~amd64.
+
+  12 Jul 2004; Jason Wever <weeve@gentoo.org> iptstate-1.3.ebuild:
+  Stable on sparc.
+
+  10 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
+  iptstate-1.2.1.ebuild, iptstate-1.3.ebuild:
+  tidy, x86 stable
+
+*iptstate-1.3 (13 Oct 2003)
+
+  13 Oct 2003; Heinrich Wendel <lanius@gentoo.org> iptstate-1.3.0.ebuild:
+  version bump
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*iptstate-1.2.1 (01 Jul 2002)
+
+  01 Jul 2002; Bruce A. Locke <blocke@shivan.org> iptstate-1.2.1.ebuild :
+
+  Update to 1.2.1
+
+*iptstate-1.2.0 (22 Apr 2002)
+
+  22 Apr 2002; Bruce A. Locke <blocke@shivan.org> iptstate-1.2.0.ebuild :
+
+  Update to 1.2.0
+
+*iptstate-1.0.1 (2 Mar 2002)
+
+  2 Feb 2002; Bruce A. Locke <blocke@shivan.org> iptstate-1.0.1.ebuild :
+
+  New Ebuild
+

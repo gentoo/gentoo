@@ -1,0 +1,496 @@
+# ChangeLog for dev-libs/xapian-bindings
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/xapian-bindings/ChangeLog,v 1.106 2015/06/12 19:47:26 mgorny Exp $
+
+*xapian-bindings-1.3.3-r1 (12 Jun 2015)
+
+  12 Jun 2015; Michał Górny <mgorny@gentoo.org>
+  +xapian-bindings-1.3.3-r1.ebuild:
+  python-single-r1 to the rescue.
+
+  03 Jun 2015; Anthony G. Basile <blueness@gentoo.org> ChangeLog:
+  Fix gpg signature
+
+*xapian-bindings-1.3.3 (03 Jun 2015)
+
+  03 Jun 2015; Anthony G. Basile <blueness@gentoo.org>
+  +xapian-bindings-1.3.3.ebuild:
+  Version bump
+
+*xapian-bindings-1.2.21 (23 May 2015)
+
+  23 May 2015; Anthony G. Basile <blueness@gentoo.org>
+  +xapian-bindings-1.2.21.ebuild:
+  Version bump.
+
+  08 May 2015; Anthony G. Basile <blueness@gentoo.org>
+  xapian-bindings-1.3.2.ebuild:
+  Fix bug #548122.
+
+  20 Apr 2015; Anthony G. Basile <blueness@gentoo.org>
+  -xapian-bindings-1.2.14.ebuild, -xapian-bindings-1.2.17.ebuild,
+  -xapian-bindings-1.2.18.ebuild, -xapian-bindings-1.3.1.ebuild:
+  Clean up.
+
+*xapian-bindings-1.2.20 (20 Apr 2015)
+*xapian-bindings-1.3.2 (20 Apr 2015)
+
+  20 Apr 2015; Anthony G. Basile <blueness@gentoo.org>
+  +xapian-bindings-1.2.20.ebuild, +xapian-bindings-1.3.2.ebuild:
+  Version bump.
+
+  19 Apr 2015; Pacho Ramos <pacho@gentoo.org> xapian-bindings-1.2.19.ebuild:
+  x86 stable wrt bug #531758
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.19.ebuild:
+  Stable for ia64, wrt bug #531758
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.19.ebuild:
+  Stable for alpha, wrt bug #531758
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> xapian-bindings-1.2.17.ebuild,
+  xapian-bindings-1.2.18.ebuild:
+  Drop old Python implementations
+
+  01 Apr 2015; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.19.ebuild:
+  Stable for sparc, wrt bug #531758
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.19.ebuild:
+  Stable for amd64, wrt bug #531758
+
+  24 Mar 2015; Markus Meier <maekke@gentoo.org> xapian-bindings-1.2.19.ebuild:
+  arm stable, bug #531758
+
+  21 Mar 2015; Anthony G. Basile <blueness@gentoo.org>
+  xapian-bindings-1.2.19.ebuild:
+  Stable on ppc and ppc64.  Bug #531758.
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> xapian-bindings-1.2.14.ebuild,
+  xapian-bindings-1.2.17.ebuild, xapian-bindings-1.2.18.ebuild,
+  xapian-bindings-1.2.19.ebuild, xapian-bindings-1.3.1.ebuild:
+  Fix tcl/tk slotting
+
+  05 Dec 2014; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.18.ebuild:
+  Stable for x86, wrt bug #520794
+
+  04 Dec 2014; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.18.ebuild:
+  Stable for ppc64, wrt bug #520794
+
+  03 Dec 2014; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.18.ebuild:
+  Stable for ppc, wrt bug #520794
+
+  02 Dec 2014; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.18.ebuild:
+  Stable for alpha, wrt bug #520794
+
+  01 Dec 2014; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.18.ebuild:
+  Stable for sparc, wrt bug #520794
+
+  11 Nov 2014; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.18.ebuild:
+  Stable for ia64, wrt bug #520794
+
+  03 Nov 2014; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.18.ebuild:
+  Stable for amd64, wrt bug #520794
+
+  22 Oct 2014; Anthony G. Basile <blueness@gentoo.org>
+  xapian-bindings-1.2.19.ebuild:
+  Fix multiple PHP_TARGETS, thanks Arfrever
+
+  21 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  xapian-bindings-1.2.19.ebuild:
+  Add slot operator to Perl dependency, since modules are installed in
+  vendor_perl
+
+  21 Oct 2014; Anthony G. Basile <blueness@gentoo.org>
+  -xapian-bindings-1.2.13.ebuild, -xapian-bindings-1.2.15.ebuild,
+  -xapian-bindings-1.2.16.ebuild:
+  Remove older versions
+
+*xapian-bindings-1.2.19 (21 Oct 2014)
+
+  21 Oct 2014; Anthony G. Basile <blueness@gentoo.org>
+  +xapian-bindings-1.2.19.ebuild:
+  Version bump
+
+  21 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  xapian-bindings-1.2.14.ebuild, xapian-bindings-1.2.15.ebuild,
+  xapian-bindings-1.2.16.ebuild, xapian-bindings-1.2.17.ebuild,
+  xapian-bindings-1.2.18.ebuild, xapian-bindings-1.3.1.ebuild:
+  Add slot operator to Perl dependency, since modules are installed in
+  vendor_perl
+
+  01 Oct 2014; Anthony G. Basile <blueness@gentoo.org>
+  xapian-bindings-1.2.13.ebuild, xapian-bindings-1.2.14.ebuild,
+  xapian-bindings-1.2.15.ebuild, xapian-bindings-1.2.16.ebuild,
+  xapian-bindings-1.2.17.ebuild, xapian-bindings-1.2.18.ebuild,
+  xapian-bindings-1.3.1.ebuild:
+  Deprecate support of php5-3, bug #524230
+
+  14 Sep 2014; Markus Meier <maekke@gentoo.org> xapian-bindings-1.2.18.ebuild:
+  arm stable, bug #520794
+
+*xapian-bindings-1.2.18 (23 Jun 2014)
+
+  23 Jun 2014; Anthony G. Basile <blueness@gentoo.org>
+  +xapian-bindings-1.2.18.ebuild:
+  Version bump
+
+*xapian-bindings-1.2.17 (31 Jan 2014)
+
+  31 Jan 2014; Anthony G. Basile <blueness@gentoo.org>
+  +xapian-bindings-1.2.17.ebuild, xapian-bindings-1.2.16.ebuild,
+  xapian-bindings-1.3.1.ebuild:
+  Version bump
+
+*xapian-bindings-1.2.15 (05 Dec 2013)
+*xapian-bindings-1.2.16 (05 Dec 2013)
+
+  05 Dec 2013; Anthony G. Basile <blueness@gentoo.org>
+  +xapian-bindings-1.2.15.ebuild, +xapian-bindings-1.2.16.ebuild:
+  Version bump 1.2.{15,16}.  Disable mono bindings since it violates sandbox.
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.14.ebuild:
+  Stable for sparc, wrt bug #470402
+
+  03 Sep 2013; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.14.ebuild:
+  Stable for ia64, wrt bug #470402
+
+  01 Sep 2013; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.14.ebuild:
+  Stable for alpha, wrt bug #470402
+
+  11 Aug 2013; Anthony G. Basile <blueness@gentoo.org>
+  xapian-bindings-1.3.1.ebuild:
+  Remove useless sed, thanks Arfrever
+
+*xapian-bindings-1.3.1 (10 Aug 2013)
+
+  10 Aug 2013; Anthony G. Basile <blueness@gentoo.org>
+  +xapian-bindings-1.3.1.ebuild:
+  Version bump with php and mono masked
+
+  24 May 2013; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.14.ebuild:
+  Stable for ppc64, wrt bug #470402
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.14.ebuild:
+  Stable for arm, wrt bug #470402
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.14.ebuild:
+  Stable for ppc, wrt bug #470402
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.14.ebuild:
+  Stable for x86, wrt bug #470402
+
+  19 May 2013; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.14.ebuild:
+  Stable for amd64, wrt bug #470402
+
+  11 Apr 2013; Anthony G. Basile <blueness@gentoo.org>
+  -files/fix-LUA_LIB-envvar.patch:
+  Remove LUA lib path fix that went upstream
+
+  11 Apr 2013; Anthony G. Basile <blueness@gentoo.org>
+  -xapian-bindings-1.2.12-r1.ebuild, -xapian-bindings-1.2.12.ebuild:
+  Drop older stable
+
+  23 Mar 2013; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.13.ebuild:
+  Stable for arm, wrt bug #461108
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*xapian-bindings-1.2.14 (16 Mar 2013)
+
+  16 Mar 2013; Anthony G. Basile <blueness@gentoo.org>
+  +xapian-bindings-1.2.14.ebuild:
+  Version bump
+
+  13 Mar 2013; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.13.ebuild:
+  Stable for ppc64, wrt bug #461108
+
+  13 Mar 2013; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.13.ebuild:
+  Stable for ppc, wrt bug #461108
+
+  10 Mar 2013; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.13.ebuild:
+  Stable for x86, wrt bug #461108
+
+  10 Mar 2013; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.13.ebuild:
+  Stable for amd64, wrt bug #461108
+
+  17 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  xapian-bindings-1.2.12-r1.ebuild:
+  Stable for x86, wrt bug #456550
+
+  12 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  xapian-bindings-1.2.12-r1.ebuild:
+  Stable for ppc, wrt bug #456550
+
+  12 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  xapian-bindings-1.2.12-r1.ebuild:
+  Stable for ppc64, wrt bug #456550
+
+  10 Feb 2013; Sergey Popov <pinkbyte@gentoo.org>
+  xapian-bindings-1.2.12-r1.ebuild:
+  Stable on arm, wrt bug #456550
+
+  10 Feb 2013; Sergey Popov <pinkbyte@gentoo.org>
+  xapian-bindings-1.2.12-r1.ebuild:
+  Stable on amd64, wrt bug #456550
+
+*xapian-bindings-1.2.13 (11 Jan 2013)
+
+  11 Jan 2013; Anthony G. Basile <blueness@gentoo.org>
+  +xapian-bindings-1.2.13.ebuild:
+  Version bump
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  xapian-bindings-1.2.12-r1.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  xapian-bindings-1.2.12-r1.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  xapian-bindings-1.2.12-r1.ebuild:
+  Add ~ia64, wrt bug #449220
+
+*xapian-bindings-1.2.12-r1 (03 Nov 2012)
+
+  03 Nov 2012; Anthony G. Basile <blueness@gentoo.org>
+  +xapian-bindings-1.2.12-r1.ebuild:
+  Add REQUIRED_USE for at least one binding, bug #440360
+
+  02 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  -xapian-bindings-1.2.10.ebuild, -xapian-bindings-1.2.8.ebuild,
+  -xapian-bindings-1.2.9.ebuild:
+  Remove older versions
+
+  19 Sep 2012; Johannes Huber <johu@gentoo.org> xapian-bindings-1.2.12.ebuild:
+  Stable for x86, wrt bug #434564
+
+  16 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  xapian-bindings-1.2.12.ebuild:
+  Stable ppc64, bug #434564
+
+  16 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  xapian-bindings-1.2.12.ebuild:
+  Stable arm, bug #434564
+
+  16 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  xapian-bindings-1.2.12.ebuild:
+  Stable ppc, bug #434564
+
+  15 Sep 2012; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.12.ebuild:
+  Stable for amd64, wrt bug #434564
+
+  18 Jul 2012; Anthony G. Basile <blueness@gentoo.org>
+  xapian-bindings-1.2.12.ebuild:
+  Keyword ~arm
+
+  18 Jul 2012; Anthony G. Basile <blueness@gentoo.org>
+  xapian-bindings-1.2.12.ebuild:
+  Keyword ~mips
+
+*xapian-bindings-1.2.12 (28 Jun 2012)
+
+  28 Jun 2012; Anthony G. Basile <blueness@gentoo.org>
+  -xapian-bindings-1.2.11.ebuild, +xapian-bindings-1.2.12.ebuild:
+  Version bump fixes broken SONAME in 1.2.11
+
+*xapian-bindings-1.2.11 (28 Jun 2012)
+
+  28 Jun 2012; Anthony G. Basile <blueness@gentoo.org>
+  +xapian-bindings-1.2.11.ebuild:
+  Version bump
+
+*xapian-bindings-1.2.10 (10 May 2012)
+
+  10 May 2012; Anthony G. Basile <blueness@gentoo.org>
+  +xapian-bindings-1.2.10.ebuild:
+  Version bump
+
+  15 Mar 2012; Anthony G. Basile <blueness@gentoo.org>
+  -xapian-bindings-1.2.5.ebuild, -xapian-bindings-1.2.7-r2.ebuild:
+  Remove older unstable ebuilds
+
+  14 Mar 2012; Anthony G. Basile <blueness@gentoo.org>
+  xapian-bindings-1.2.9.ebuild:
+  Tested on ppc/ppc64
+
+*xapian-bindings-1.2.9 (13 Mar 2012)
+
+  13 Mar 2012; Anthony G. Basile <blueness@gentoo.org>
+  +xapian-bindings-1.2.9.ebuild:
+  Version bump
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  xapian-bindings-1.2.8.ebuild:
+  x86 stable wrt bug #402187
+
+  25 Feb 2012; Patrick Lauer <patrick@gentoo.org> xapian-bindings-1.2.5.ebuild,
+  xapian-bindings-1.2.7-r2.ebuild, xapian-bindings-1.2.8.ebuild:
+  Restricting pypy
+
+  05 Feb 2012; Agostino Sarubbo <ago@gentoo.org> xapian-bindings-1.2.8.ebuild:
+  Stable for amd64, wrt bug #402187
+
+  17 Dec 2011; Anthony G. Basile <blueness@gentoo.org>
+  xapian-bindings-1.2.8.ebuild, +files/fix-LUA_LIB-envvar.patch:
+  Fix install location of lua binding
+
+*xapian-bindings-1.2.8 (14 Dec 2011)
+
+  14 Dec 2011; Anthony G. Basile <blueness@gentoo.org>
+  +xapian-bindings-1.2.8.ebuild:
+  Version bump, bug #394413
+
+*xapian-bindings-1.2.7-r2 (18 Sep 2011)
+
+  18 Sep 2011; Anthony G. Basile <blueness@gentoo.org>
+  -xapian-bindings-1.2.7-r1.ebuild, +xapian-bindings-1.2.7-r2.ebuild,
+  metadata.xml:
+  Fix java bindings, bug #176419
+
+*xapian-bindings-1.2.7-r1 (16 Sep 2011)
+
+  16 Sep 2011; Anthony G. Basile <blueness@gentoo.org>
+  -xapian-bindings-1.2.7.ebuild, +xapian-bindings-1.2.7-r1.ebuild:
+  Remove swig dep and conditional dep on php, add PHP_EXT_OPTIONAL_USE="php",
+  bug #383047
+
+  16 Sep 2011; Dirkjan Ochtman <djc@gentoo.org> metadata.xml:
+  Removing python herd from maintainers.
+
+  15 Sep 2011; Anthony G. Basile <blueness@gentoo.org> metadata.xml:
+  Added myself and Johan Bergström as maintainers
+
+*xapian-bindings-1.2.7 (15 Sep 2011)
+
+  15 Sep 2011; Anthony G. Basile <blueness@gentoo.org>
+  +xapian-bindings-1.2.7.ebuild:
+  Version bump, bug #383047
+
+  01 Jul 2011; Markos Chandras <hwoarang@gentoo.org>
+  -xapian-bindings-1.2.4.ebuild:
+  Remove old ebuilds. Requested by Arfrever
+
+*xapian-bindings-1.2.5 (09 May 2011)
+
+  09 May 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +xapian-bindings-1.2.5.ebuild:
+  Version bump.
+
+*xapian-bindings-1.2.4 (23 Dec 2010)
+
+  23 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -xapian-bindings-1.0.20.ebuild, -xapian-bindings-1.2.2.ebuild,
+  +xapian-bindings-1.2.4.ebuild:
+  Version bump.
+
+*xapian-bindings-1.2.3 (20 Sep 2010)
+
+  20 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +xapian-bindings-1.2.3.ebuild:
+  Version bump (bug #338197).
+
+*xapian-bindings-1.2.2 (10 Jul 2010)
+
+  10 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +xapian-bindings-1.2.2.ebuild:
+  Version bump (bug #322405).
+
+*xapian-bindings-1.0.20 (29 Apr 2010)
+
+  29 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +xapian-bindings-1.0.20.ebuild:
+  Version bump.
+
+*xapian-bindings-1.0.19 (23 Apr 2010)
+
+  23 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -xapian-bindings-1.0.16.ebuild, +xapian-bindings-1.0.19.ebuild:
+  Version bump.
+
+  10 Mar 2010; Joseph Jezak <josejx@gentoo.org>
+  xapian-bindings-1.0.17.ebuild:
+  Marked ~ppc for bug #292972.
+
+*xapian-bindings-1.0.17 (22 Nov 2009)
+
+  22 Nov 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -xapian-bindings-1.0.6.ebuild, -xapian-bindings-1.0.12.ebuild,
+  +xapian-bindings-1.0.17.ebuild:
+  Version bump. Set SUPPORT_PYTHON_ABIS.
+
+*xapian-bindings-1.0.16 (15 Sep 2009)
+
+  15 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -xapian-bindings-0.9.6-r1.ebuild,
+  -files/xapian-bindings-0.9.6-java-array-delete.patch,
+  -files/xapian-bindings-0.9.6-parallel-make.patch,
+  -files/xapian-bindings-0.9.6-php-tests.patch,
+  -files/xapian-bindings-0.9.6-php-tests-2.patch,
+  -xapian-bindings-0.9.9.ebuild, -xapian-bindings-1.0.10.ebuild,
+  +xapian-bindings-1.0.16.ebuild:
+  Version bump.
+
+  01 May 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -files/xapian-bindings-0.9.5-skip-csharp-test.patch,
+  xapian-bindings-1.0.6.ebuild, xapian-bindings-1.0.10.ebuild,
+  xapian-bindings-1.0.12.ebuild:
+  Drop old patch, remove not needed mirror statement
+
+*xapian-bindings-1.0.12 (01 May 2009)
+
+  01 May 2009; Gordon Malm <gengor@gentoo.org> xapian-bindings-1.0.6.ebuild,
+  xapian-bindings-1.0.10.ebuild, +xapian-bindings-1.0.12.ebuild:
+  Version bump, add EAPI2 USE dep, add gentoo mirror to SRC_URI. Bugs #255518
+  and #256559.
+
+*xapian-bindings-1.0.10 (21 Jan 2009)
+
+  21 Jan 2009; Jeroen Roovers <jer@gentoo.org>
+  +xapian-bindings-1.0.10.ebuild:
+  Version bump.
+
+*xapian-bindings-1.0.6 (05 Apr 2008)
+
+  05 Apr 2008; Hanno Boeck <hanno@gentoo.org> +xapian-bindings-1.0.6.ebuild:
+  Version bump.
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Marien Zwart (marienz, #107204) from metadata.xml.
+
+  20 Jun 2007; Christoph Mende <angelos@gentoo.org>
+  xapian-bindings-0.9.9.ebuild:
+  Added ~amd64 wrt bug 177807
+
+*xapian-bindings-0.9.9 (28 Nov 2006)
+
+  28 Nov 2006; Marien Zwart <marienz@gentoo.org>
+  -xapian-bindings-0.9.5.ebuild, -xapian-bindings-0.9.6.ebuild,
+  xapian-bindings-0.9.6-r1.ebuild, +xapian-bindings-0.9.9.ebuild:
+  Version bump, remove old ebuilds, rename tcltk USE flag to tcl (bug #17808).
+
+*xapian-bindings-0.9.6-r1 (26 Sep 2006)
+
+  26 Sep 2006; Marien Zwart <marienz@gentoo.org>
+  +xapian-bindings-0.9.6-r1.ebuild:
+  Fix compilation with python 2.5 and migrate to the generation 2 java eclass.
+
+*xapian-bindings-0.9.6 (25 May 2006)
+
+  25 May 2006; Marien Zwart <marienz@gentoo.org>
+  +files/xapian-bindings-0.9.6-java-array-delete.patch,
+  +files/xapian-bindings-0.9.6-parallel-make.patch,
+  +files/xapian-bindings-0.9.6-php-tests.patch,
+  +files/xapian-bindings-0.9.6-php-tests-2.patch,
+  +xapian-bindings-0.9.6.ebuild:
+  Version bump with new ruby bindings. Now also builds the java bindings if
+  requested. Ebuild cleanup based on suggestions from Olly Betts
+  (<olly@survex.com>).
+
+*xapian-bindings-0.9.5 (05 May 2006)
+
+  05 May 2006; Marien Zwart <marienz@gentoo.org>
+  +files/xapian-bindings-0.9.5-skip-csharp-test.patch, +metadata.xml,
+  +xapian-bindings-0.9.5.ebuild:
+  New package.

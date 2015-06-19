@@ -1,0 +1,34 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dhcp/files/dhcrelay.init3,v 1.3 2012/11/11 21:42:02 vapier Exp $
+
+depend() {
+	need net
+	use logger #@slapd@
+}
+
+start() {
+	if [ -z "${DHCRELAY_SERVERS}" ] ; then
+		eerror "No DHCRELAY_SERVERS specified in /etc/conf.d/${SVCNAME}"
+		return 1
+	fi
+
+	checkpath -d /var/run/dhcp
+
+	local iface_opts
+	if [ -n "${IFACE}" ] ; then
+		iface_opts=$(printf -- '-i %s ' ${IFACE})
+	fi
+
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --exec /usr/sbin/dhcrelay \
+		-- -q ${iface_opts} ${DHCRELAY_OPTS} ${DHCRELAY_SERVERS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --pidfile /var/run/dhcp/${SVCNAME}.pid
+	eend $?
+}

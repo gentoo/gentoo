@@ -1,0 +1,34 @@
+#!/sbin/runscript
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-voip/yate/files/yate.initd,v 1.1 2009/07/30 14:38:04 volkmar Exp $
+
+opts="${opts} reload"
+
+YATE_PIDFILE=${YATE_PIDFILE:-/var/run/${SVCNAME}.pid}
+YATE_BINARY=${YATE_BINARY:-/usr/bin/yate}
+
+depend() {
+    need net
+    use mysql postgresql zaptel
+}
+
+start() {
+    ebegin "Starting ${SVCNAME}"
+    start-stop-daemon --start --exec "${YATE_BINARY}" \
+			-- -d -p "${YATE_PIDFILE}" ${YATE_OPTS}
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping ${SVCNAME}"
+    start-stop-daemon --stop --pidfile="${YATE_PIDFILE}"
+    eend $?
+}
+
+reload() {
+    ebegin "Reloading ${SVCNAME}"
+    start-stop-daemon --stop --exec "${YATE_BINARY}" \
+			--pidfile "${YATE_PIDFILE}" --signal HUP --oknodo
+    eend $?
+}

@@ -1,0 +1,34 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/pdnsd/files/pdnsd.online.2,v 1.1 2012/12/19 01:14:36 polynomial-c Exp $
+
+command="/usr/sbin/pdnsd-ctl"
+
+depend() {
+	need pdnsd
+}
+
+wait_for_socket() {
+	local i=0 pdnsd_socket="/var/cache/pdnsd/pdnsd.status"
+	while [ $i -lt 10 ]; do
+		[ -S "${pdnsd_socket}" ] && return 0
+		i=$(($i+1))
+		sleep 1s
+	done
+
+    	return 1
+}
+
+start() {
+	wait_for_socket || return 1
+	ebegin "Starting pdnsd-online"
+	${command} -q server all up
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping pdnsd-online"
+	${command} -q server all down
+	eend $?
+}

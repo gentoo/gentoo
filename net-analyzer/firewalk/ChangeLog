@@ -1,0 +1,74 @@
+# ChangeLog for net-analyzer/firewalk
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/firewalk/ChangeLog,v 1.20 2014/07/11 12:16:37 jer Exp $
+
+  11 Jul 2014; Jeroen Roovers <jer@gentoo.org> firewalk-5.0-r1.ebuild:
+  EAPI bump. Simplify dependencies.
+
+  17 Jan 2012; Jeroen Roovers <jer@gentoo.org> -firewalk-5.0.ebuild:
+  Old.
+
+  15 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> firewalk-5.0-r1.ebuild:
+  x86 stable wrt bug #397125
+
+  06 Jan 2012; Agostino Sarubbo <ago@gentoo.org> firewalk-5.0-r1.ebuild:
+  Stable for AMD64, wrt bug #397125
+
+  03 Jan 2012; Jeroen Roovers <jer@gentoo.org> firewalk-5.0-r1.ebuild:
+  Set RDEPEND.
+
+  02 Apr 2011; Samuli Suominen <ssuominen@gentoo.org> firewalk-5.0.ebuild,
+  firewalk-5.0-r1.ebuild:
+  Use net-libs/libpcap instead of virtual/libpcap wrt #358835.
+
+*firewalk-5.0-r1 (15 Sep 2010)
+
+  15 Sep 2010; Jeroen Roovers <jer@gentoo.org> +firewalk-5.0-r1.ebuild,
+  files/firewalk-5.0-gcc3.4.diff:
+  Fix quoting issues (through EAPI=2 bump). Use emake instead of make. Clean
+  up patch paths.
+
+  15 Sep 2010; Jeroen Roovers <jer@gentoo.org> firewalk-5.0.ebuild:
+  Fix HOMEPAGE and SRC_URI.
+
+  29 Jun 2008; Torsten Veller <tove@gentoo.org> firewalk-5.0.ebuild:
+  Add missing die: || "..." -> || die "..."
+
+  02 Nov 2007; Steve Dibb <beandog@gentoo.org> firewalk-5.0.ebuild:
+  amd64 stable, bug 194180
+
+  22 Oct 2006; Piotr Jaroszyński <peper@gentoo.org> firewalk-5.0.ebuild:
+  Add ~amd64 keyword. Bug #148045.
+
+  14 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove angusyoung from metadata.xml due to retiring.
+
+  19 Jul 2005; David Holm <dholm@gentoo.org> firewalk-5.0.ebuild:
+  Added to ~ppc.
+
+  27 May 2005; Otavio Piske <angusyoung@gentoo.org> firewalk-5.0.ebuild:
+  Marked as stable on x86.
+
+  02 Mar 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/firewalk-5.0-gcc3.4.diff, firewalk-5.0.ebuild:
+  Fix gcc-3.4 compilation issue for bug 83728.
+
+  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> firewalk-5.0.ebuild:
+  changed net-libs/libpcap depend to virtual/libcap
+
+  27 Jan 2005; Otavio R. Piske <angusyoung@gentoo.org> firewalk-5.0.ebuild:
+  Fixed emake install error message
+
+  25 Jan 2005; Otavio R. Piske <angusyoung@gentoo.org> firewalk-5.0.ebuild:
+  Replaced eisnstall with emake install
+
+  25 Jan 2005; Otavio R. Piske <angusyoung@gentoo.org> firewalk-5.0.ebuild:
+  Removed inheritance of eutils class
+
+*firewalk-5.0 (25 Jan 2005)
+
+  25 Jan 2005; Otavio R. Piske <angusyoung@gentoo.org> +metadata.xml,
+  +firewalk-5.0.ebuild:
+  Initial release. Thanks to Lionel <lionel@ferette.net> for submitting the
+  ebuild
+

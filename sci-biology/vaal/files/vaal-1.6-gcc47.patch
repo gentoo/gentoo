@@ -1,0 +1,153 @@
+Fix building with gcc-4.7
+
+https://bugs.gentoo.org/show_bug.cgi?id=423497
+
+Patch written by Kacper Kowalik <xarthisius@gentoo.org>
+--- a/src/feudal/MasterVec.h
++++ b/src/feudal/MasterVec.h
+@@ -62,20 +62,20 @@
+     /// This function is deprecated: Use reserve() instead.
+     /// The pool size argument is ignored, anyway.
+     MasterVec& Reserve( unsigned long raw_mem_size_ignored, size_type capacity )
+-    { reserve(capacity); return *this; }
++    { this->reserve(capacity); return *this; }
+ 
+     /// This function is deprecated:  Use clear().shrink_to_fit().
+     MasterVec& destroy() { BaseT::clear(); BaseT::shrink_to_fit(); return *this; }
+ 
+     /// This function is deprecated:  Use push_back().
+     MasterVec& push_back_external( T const& val )
+-    { push_back(val); return *this; }
++    { this->push_back(val); return *this; }
+ 
+     /// This function is deprecated:  Use push_back().
+     MasterVec& push_back_reserve( T const& val,
+                                   size_type growthIncr = 0,
+                                   float growthFact = 1.3f )
+-    { push_back(val,growthFact,growthIncr); return *this; }
++    { this->push_back(val,growthFact,growthIncr); return *this; }
+ 
+     /// This function is deprecated:  Use append().
+     MasterVec& Append( MasterVec const& that )
+@@ -83,7 +83,7 @@
+ 
+     /// This function is deprecated:  Use append().
+     MasterVec& Append( MasterVec const& that, size_type from, size_type to )
+-    { append(that.begin(from),that.begin(to)); return *this; }
++    { this->append(that.begin(from),that.begin(to)); return *this; }
+ 
+     MasterVec const& WriteAll( String const& fileName ) const
+     { return WriteRange(fileName,0UL,BaseT::size()); return *this; }
+@@ -108,7 +108,7 @@
+     { if ( !append ) BaseT::clear();
+       FeudalFileReader rdr(fileName.c_str());
+       size_type siz = rdr.getNElements();
+-      reserve(BaseT::size()+siz);
++      this->reserve(BaseT::size()+siz);
+       preAlloc(rdr,0,siz);
+       for ( size_type iii = 0; iii < siz; ++iii )
+         appendFromReader(rdr,iii);
+--- a/src/feudal/FeudalControlBlock.cc
++++ b/src/feudal/FeudalControlBlock.cc
+@@ -24,6 +24,7 @@
+ #include <string.h>
+ #include <errno.h>
+ #include <iostream>
++#include <unistd.h>
+ 
+ using std::cout;
+ using std::endl;
+--- a/src/feudal/SerfVec.h
++++ b/src/feudal/SerfVec.h
+@@ -83,9 +83,9 @@
+     { AssertLe(pos,that.size());
+       AssertLe(len,that.size()-pos);
+       if ( this != &that )
+-      { assign(that.begin(pos),that.begin(pos+len)); }
++      { this->assign(that.begin(pos),that.begin(pos+len)); }
+       else
+-      { erase(BaseT::begin(),BaseT::begin(pos));
++      { this->erase(BaseT::begin(),BaseT::begin(pos));
+         BaseT::resize(len); }
+       return *this; }
+ 
+--- a/src/system/ProcBuf.cc
++++ b/src/system/ProcBuf.cc
+@@ -195,12 +195,12 @@
+ 	    Assert(M_internal_put_buffer == NULL);
+ 	    M_internal_put_buffer = new char_type [DEFAULT_PUT_BUFFER_SIZE];
+ 	    M_internal_put_buffer_end = M_internal_put_buffer+DEFAULT_PUT_BUFFER_SIZE;
+-	    setp(M_internal_put_buffer,
++	    this->setp(M_internal_put_buffer,
+ 		 M_internal_put_buffer_end);
+ 	} else if (!flush())
+ 	    return traits_type::eof();
+ 	if (!traits_type::eq_int_type(c, traits_type::eof()))
+-	    return sputc(c);
++	    return this->sputc(c);
+ 	else
+ 	    return traits_type::not_eof(c);
+     }
+@@ -240,7 +240,7 @@
+ 	// (which is start of buffer)
+ 	std::copy_backward(this->eback(), this->egptr(), this->egptr()+1);
+ 	*(this->gptr()) = traits_type::to_char_type(c);
+-	setg(this->eback(), this->gptr(), this->egptr()+1);
++	this->setg(this->eback(), this->gptr(), this->egptr()+1);
+         return traits_type::not_eof(c);
+     } else
+ 	return traits_type::eof();
+@@ -269,7 +269,7 @@
+ 	// doing wchars and we write an odd # of bytes?
+ 	return false;
+     } else {
+-	setp(this->pbase(), this->epptr());
++	this->setp(this->pbase(), this->epptr());
+ 	return true;
+     }
+ }
+@@ -283,7 +283,7 @@
+ 	Assert(M_internal_get_buffer == NULL);
+ 	M_internal_get_buffer = new char_type[DEFAULT_GET_BUFFER_SIZE];
+ 	M_internal_get_buffer_end = M_internal_get_buffer + DEFAULT_GET_BUFFER_SIZE;
+-	setg(M_internal_get_buffer, M_internal_get_buffer_end, M_internal_get_buffer_end);
++	this->setg(M_internal_get_buffer, M_internal_get_buffer_end, M_internal_get_buffer_end);
+     }
+     // The "get" pointer should be at the end of the buffer - that's
+     // why we need to fill it.
+@@ -318,7 +318,7 @@
+     //
+     // reset the get pointers
+     //
+-    setg(M_internal_get_buffer, 
++    this->setg(M_internal_get_buffer, 
+ 	 M_internal_get_buffer, 
+ 	 M_internal_get_buffer+numusable/sizeof(char_type));
+     return true;
+--- a/src/system/SysConf.cc
++++ b/src/system/SysConf.cc
+@@ -19,6 +19,7 @@
+ #include "system/SysConf.h"
+ #include "system/Exit.h"
+ #include <iostream>
++#include <unistd.h>
+ 
+ namespace
+ {
+--- a/src/Vec.h
++++ b/src/Vec.h
+@@ -261,11 +261,11 @@
+ 
+   template <class U>
+   void append( const vec<U>& y ) 
+-  {    insert( this->end( ), y.begin( ), y.end( ) );    }
++  {    this->insert( this->end( ), y.begin( ), y.end( ) );    }
+   
+   void append( const vec<T>& y, size_type i, size_type j ) {
+-    if ( j == y.size( ) ) insert( this->end( ), y.begin( ) + i, y.end( ) );
+-    else insert( this->end( ), y.begin( ) + i, y.begin( ) + j );   
++    if ( j == y.size( ) ) this->insert( this->end( ), y.begin( ) + i, y.end( ) );
++    else this->insert( this->end( ), y.begin( ) + i, y.begin( ) + j );   
+   }
+ 
+   // appends values in y, but only those whose indices are in entries

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=app-arch/unzip
+DESCRIPTION=A makefile generation tool
+EAPI=5
+HOMEPAGE=http://industriousone.com/premake
+KEYWORDS=amd64 ppc x86
+LICENSE=BSD
+SLOT=4
+SRC_URI=mirror://sourceforge/premake/premake-4.3-src.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=a4e2d2fb688e67b81eac7c656336b5d2

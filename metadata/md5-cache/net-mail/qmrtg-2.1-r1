@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare
+DESCRIPTION=A tool to analyze qmail activity with the goal to graph everything through MRTG
+EAPI=5
+HOMEPAGE=http://dev.publicshout.org/qmrtg
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=net-analyzer/mrtg
+SLOT=0
+SRC_URI=http://dev.publicshout.org/qmrtg/download/qmrtg-2.1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ebba13cff6b2aac26dd30f8105de64a8

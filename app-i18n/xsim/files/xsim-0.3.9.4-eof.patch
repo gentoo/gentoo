@@ -1,0 +1,92 @@
+diff --git a/plugins/IMs/jianpin/dict/char2db.cpp b/plugins/IMs/jianpin/dict/char2db.cpp
+index f36dda9..fb17c6e 100644
+--- a/plugins/IMs/jianpin/dict/char2db.cpp
++++ b/plugins/IMs/jianpin/dict/char2db.cpp
+@@ -166,6 +166,8 @@ int main(int argc, char * argv[])
+ 	int i = 0;
+ 	for (;;){
+ 		in >> mark;
++		if (in.eof())
++			break;
+ 		in.unget();
+ 		if (mark == '%'){			//for comments
+ 			in.getline(dummy, 255);
+@@ -175,9 +177,6 @@ int main(int argc, char * argv[])
+ 			}
+ 		in >> ckey.py >> c;
+ 
+-		if (in.eof())
+-			break;
+-
+ 		if (strlen(c) != 2){
+ 			cout << "error on line: " << i << endl;
+ 			exit(1);
+diff --git a/plugins/IMs/jianpin/dict/word2db.cpp b/plugins/IMs/jianpin/dict/word2db.cpp
+index 6b6b8e0..f9a6d0b 100644
+--- a/plugins/IMs/jianpin/dict/word2db.cpp
++++ b/plugins/IMs/jianpin/dict/word2db.cpp
+@@ -103,6 +103,8 @@ int main(int argc, char * argv[])
+ 	rec.access_count = MAX_ACCESS_COUNT;
+ 	for (;;){
+ 		in >> mark;
++		if (in.eof())
++			break;
+ 		in.unget();
+ 		if (mark == '%'){			//for comments
+ 			in.getline(wk.py, sizeof(wk.py));
+@@ -113,9 +115,6 @@ int main(int argc, char * argv[])
+ 
+ 		in >> w >> wk.py;
+ 
+-		if (in.eof())
+-			break;
+-
+ 		if ((wk.py[0] < 'a') || (wk.py[0] > 'z')){
+ 			cerr << " error on line:" << i << endl;
+ 			db.close(0);
+diff --git a/plugins/IMs/table/dict/word2db.cpp b/plugins/IMs/table/dict/word2db.cpp
+index aa19a60..f0368ce 100644
+--- a/plugins/IMs/table/dict/word2db.cpp
++++ b/plugins/IMs/table/dict/word2db.cpp
+@@ -112,6 +112,8 @@ int main(int argc, char * argv[])
+ 	for (;;){
+ 		j++;
+ 		in >> mark;
++		if (in.eof())
++			break;
+ 		in.unget();
+ 		if ((mark == '%') || (mark == '#')){			//for comments
+ 			in.getline((char *)wbuf, 1000);
+@@ -123,9 +125,6 @@ int main(int argc, char * argv[])
+ 
+ 		in >> wk.key >> w;
+ 
+-		if (in.eof())
+-			break;
+-
+ 		if ((wk.key[0] < 'a') || (wk.key[0] > 'z')){
+ 			//cerr << " error on line:" << j << endl;
+ 			errcnt ++;
+diff --git a/plugins/IMs/wubi/dict/word2db.cpp b/plugins/IMs/wubi/dict/word2db.cpp
+index a1df52b..3fe1e3e 100644
+--- a/plugins/IMs/wubi/dict/word2db.cpp
++++ b/plugins/IMs/wubi/dict/word2db.cpp
+@@ -103,6 +103,8 @@ int main(int argc, char * argv[])
+ 	for (;;){
+ 		j++;
+ 		in >> mark;
++		if (in.eof())
++			break;
+ 		in.unget();
+ 		if (mark == '%'){			//for comments
+ 			in.getline(wk.key, sizeof(wk.key));
+@@ -114,9 +116,6 @@ int main(int argc, char * argv[])
+ 
+ 		in >> wk.key >> w;
+ 
+-		if (in.eof())
+-			break;
+-
+ 		if ((wk.key[0] < 'a') || (wk.key[0] > 'z')){
+ 			//cerr << " error on line:" << j << endl;
+ 			errcnt ++;

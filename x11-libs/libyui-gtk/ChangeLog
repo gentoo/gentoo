@@ -1,0 +1,16 @@
+# ChangeLog for x11-libs/libyui-gtk
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libyui-gtk/ChangeLog,v 1.2 2014/09/23 17:16:12 pinkbyte Exp $
+
+*libyui-gtk-2.44.5 (23 Sep 2014)
+
+  23 Sep 2014; Sergey Popov <pinkbyte@gentoo.org> -libyui-gtk-2.21.96.ebuild,
+  +libyui-gtk-2.44.5.ebuild:
+  QA: Version bump, drop old, wrt bug #470860
+
+*libyui-gtk-2.21.96 (15 Aug 2011)
+
+  15 Aug 2011; Michal Hrusecky <miska@gentoo.org> +libyui-gtk-2.21.96.ebuild,
+  +metadata.xml:
+  New ebuild for libyui-gtk. Ebuild written by me.
+

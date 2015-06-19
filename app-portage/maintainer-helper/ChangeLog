@@ -1,0 +1,80 @@
+# ChangeLog for app-portage/maintainer-helper
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/maintainer-helper/ChangeLog,v 1.18 2013/03/02 19:39:29 hwoarang Exp $
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org>
+  maintainer-helper-0.1.2.ebuild:
+  Move Qt dependencies to the new category
+
+  26 Dec 2012; Paul Varner <fuzzyray@gentoo.org> metadata.xml:
+  Move to maintainer-needed, due to not being maintained by anyone in the
+  tools-portage herd.
+
+  16 Apr 2012; Paul Varner <fuzzyray@gentoo.org>
+  maintainer-helper-0.1.2.ebuild:
+  Remove qt4 eclass from ebuild. (Bug 409761)
+
+  20 Mar 2012; Paul Varner <fuzzyray@gentoo.org> metadata.xml:
+  Remove maintainer-needed as the maintainer and leave assigned only to the
+  tools-portage herd.
+
+  19 Mar 2012; Paul Varner <fuzzyray@gentoo.org> metadata.xml:
+  Added to the tools-portage herd, left maintainer-needed as the maintainer.
+
+  18 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug 118003.
+
+  08 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  maintainer-helper-0.1.2.ebuild:
+  Fix dependencies. Set SUPPORT_PYTHON_ABIS (bug #311783).
+
+  11 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  maintainer-helper-0.1.2.ebuild:
+  Delete call to deprecated distutils_python_version() (bug #311783).
+
+  30 Sep 2009; Dominik Kapusta <ayoy@gentoo.org>
+  maintainer-helper-0.1.2.ebuild:
+  Removed dependency on Qt metapackage
+
+  17 Jul 2009; Markos Chandras <hwoarang@gentoo.org>
+  maintainer-helper-0.1.2.ebuild:
+  Adjust PyQt4 dependencies ( bug 272144 )
+
+  26 Jul 2008; Carsten Lohrke <carlo@gentoo.org>
+  maintainer-helper-0.1.2.ebuild:
+  Fix broken split Qt 4.4 dependencies, cf. bug 217161 comment 11.
+
+  21 Apr 2008; Markus Ullmann <jokey@gentoo.org>
+  -maintainer-helper-0.1.1.ebuild:
+  Drop old
+
+  21 Apr 2008; Markus Ullmann <jokey@gentoo.org>
+  maintainer-helper-0.1.2.ebuild:
+  Fix qt4 deps for bug #217202
+
+*maintainer-helper-0.1.2 (08 Jan 2008)
+
+  08 Jan 2008; Markus Ullmann <jokey@gentoo.org>
+  -maintainer-helper-0.1.ebuild, +maintainer-helper-0.1.2.ebuild:
+  Version bump
+
+  21 Aug 2007; Robert Buchholz <rbu@gentoo.org>
+  maintainer-helper-0.1.1.ebuild:
+  Keyworded ~amd64
+
+  15 Aug 2007; Markus Ullmann <jokey@gentoo.org>
+  maintainer-helper-0.1.1.ebuild:
+  Depending on gvim is a good idea if we use it
+
+*maintainer-helper-0.1.1 (15 Aug 2007)
+
+  15 Aug 2007; Markus Ullmann <jokey@gentoo.org>
+  +maintainer-helper-0.1.1.ebuild:
+  Version bump. Git Tag Info: Clean up missing import and fix a bug in refresh
+  after bump / drop
+
+*maintainer-helper-0.1 (07 Aug 2007)
+
+  07 Aug 2007; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +maintainer-helper-0.1.ebuild:
+  Initial import

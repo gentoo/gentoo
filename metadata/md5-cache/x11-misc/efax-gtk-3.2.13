@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=>=dev-libs/glib-2.10 media-libs/tiff:0= x11-libs/libX11 x11-libs/c++-gtk-utils:0 x11-libs/gtk+:3 virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=A graphical frontend for the 'efax' application
+EAPI=5
+HOMEPAGE=http://efax-gtk.sourceforge.net/
+IUSE=nls
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=>=dev-libs/glib-2.10 media-libs/tiff:0= x11-libs/libX11 x11-libs/c++-gtk-utils:0 x11-libs/gtk+:3
+SLOT=0
+SRC_URI=mirror://sourceforge/efax-gtk/efax-gtk-3.2.13.src.tgz
+_md5_=c8368fa6dbdcfdaf50e703126e257c2c

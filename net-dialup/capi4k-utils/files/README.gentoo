@@ -1,0 +1,86 @@
+####################################################################
+# CAPI4Linux / Gentoo usage instructions                           #
+####################################################################
+
+First edit /etc/capi.conf to match your configuration.
+
+here an example for the AVM B1 PCI card:
+
+    # card   file    proto   io    irq    mem   cardnr  options
+    b1pci    b1.t4   DSS1    -     -      -     -
+
+First option is the name of the kernel driver, second is the firmware
+file which will be uploaded to the card. All firmware files for active
+ISDN controllers have to be placed in /lib/firmware.
+
+The 'cardnr' option can be left '-' if you only have one card.
+Otherwise fill in the card number you want to assign to this card.
+
+'options' is a list of options which are passed via 'modprobe' to
+the card driver. You can also set them somewhere in /etc/modules.d
+but this is only recommended for USB based cards, where capi.conf
+is normally not used/needed.
+
+Then you should check /etc/conf.d/capi and change it to your needs.
+
+Now you can start the CAPI with
+
+    /etc/init.d/capi start
+
+It should show the loaded drivers/cards after the initialization.
+You can check the CAPI with the 'capiinfo' command.
+
+So, if all runs smoothly, then fixate it
+
+    rc-update add capi boot
+
+You can now install the package net-dialup/isdn4k-utils if you
+want to use all the legacy ISDN apps, such as 'isdnlog'.
+
+
+modules oder static?
+~~~~~~~~~~~~~~~~~~~~
+In general it's ok to compile all ISDN/CAPI stuff into the kernel.
+But I suggest to compile at least all card drivers as a module.
+That includes the 'capidrv' driver! That way it's much easier to
+change a card and/or unload the driver if needed. 
+
+
+hotplug or hardwired?
+~~~~~~~~~~~~~~~~~~~~~
+Gentoo supports hotplug for CAPI-Cards. Just plug in your card,
+wait for the beep (if enabled in /etc/conf.d/capi) and check with
+'capiinfo' if your card is available to the CAPI subsystem.
+
+If you have more than one card and/or depend on services like
+'capi4hylafax' or 'isdnlog', it's better to disable hotplug in
+/etc/conf.d/capi and configure your card(s) in /etc/capi.conf.
+
+You can always check what card(s) are loaded with
+
+    /etc/init.d/capi info
+
+If you stopped CAPI with
+
+    /etc/init.d/capi stop
+
+you have to unplug all USB-cards to re-initialize them again.
+Ok, reboot is another option. ;-) Using only hotplug, you can
+plug in and out your card as often as you want.
+
+
+pppdcapiplugin
+~~~~~~~~~~~~~~
+please read the README and have a look at the examples.
+You obviously need net-dialup/ppp to make this work.
+
+
+rcapid
+~~~~~~
+if you want to use 'rcapid' (remote capi daemon), then install
+sys-apps/xinetd and configure it in /etc/xinetd.d/rcapid
+and read the rcapid documentation.
+
+
+--
+Stefan Briesenick <sbriesen@gmx.de> 2005-04-09

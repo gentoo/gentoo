@@ -1,0 +1,84 @@
+# ChangeLog for media-libs/libclxclient
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libclxclient/ChangeLog,v 1.17 2015/03/18 10:29:45 aballier Exp $
+
+*libclxclient-3.9.0 (18 Mar 2015)
+
+  18 Mar 2015; Alexis Ballier <aballier@gentoo.org> +libclxclient-3.9.0.ebuild,
+  +files/libclxclient-3.9.0-Makefile.patch:
+  Version bump, fix libraries symlink by Rodrigo Severo (bug #418063)
+
+  18 Mar 2015; Alexis Ballier <aballier@gentoo.org> libclxclient-3.3.2.ebuild,
+  libclxclient-3.6.1.ebuild:
+  fix homepage & src_uri, bug #385411 by Emery Hemingway
+
+  07 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  25 Jan 2009; Markus Meier <maekke@gentoo.org> libclxclient-3.3.2.ebuild:
+  amd64/x86 stable, bug #256042
+
+  07 Oct 2008; Diego Pettenò <flameeyes@gentoo.org>
+  libclxclient-3.6.1.ebuild:
+  Fix build-time dependencies.
+
+*libclxclient-3.6.1 (19 Apr 2008)
+
+  19 Apr 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/libclxclient-3.6.1-Makefile.patch, +libclxclient-3.6.1.ebuild:
+  version bump, bug #218248
+
+*libclxclient-3.3.2 (19 Apr 2007)
+
+  19 Apr 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/libclxclient-3.3.2-Makefile.patch, +libclxclient-3.3.2.ebuild:
+  Version bump, thanks to Mike Mattie and ron widler, bug #156917
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  28 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  libclxclient-1.0.1.ebuild:
+  Depend on modular x straight, this should fix bug #153054.
+
+  06 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/libclxclient-1.0.0-makefile.patch,
+  +files/libclxclient-1.0.1-gcc41.patch,
+  files/libclxclient-1.0.1-makefile.patch, metadata.xml,
+  -libclxclient-1.0.0.ebuild, libclxclient-1.0.1.ebuild:
+  Respect multilib libdir, don't run ldconfig, use CXX to build, drop
+  virtual/libc dependency, fix dependencies for modular X, add patch to build
+  with GCC 4.1.
+
+  24 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  libclxclient-1.0.0.ebuild, libclxclient-1.0.1.ebuild:
+  epatch does not need die.
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> libclxclient-1.0.1.ebuild:
+  Added to ~ppc.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libclxclient-1.0.1.ebuild:
+  Stable amd64, sparc, x86.
+
+*libclxclient-1.0.1 (27 Nov 2004)
+
+  27 Nov 2004; Frank van de Pol <fvdpol@gentoo.org>
+  +files/libclxclient-1.0.1-makefile.patch, +libclxclient-1.0.1.ebuild:
+  Version bump to 1.0.1
+
+  17 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libclxclient-1.0.0.ebuild:
+  Added ~amd64, ~sparc.  Stable x86.
+
+  14 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  libclxclient-1.0.0.ebuild:
+  fix dep; tidy
+
+*libclxclient-1.0.0 (10 Oct 2004)
+
+  10 Oct 2004; Christian Parpart <trapni@gentoo.org> +metadata.xml,
+  +files/libclxclient-1.0.0-makefile.patch, +libclxclient-1.0.0.ebuild:
+  Ebuild and patch submitted by ron widler <ron@einfach.org> (bug #66616)
+  just very minor changes be me
+

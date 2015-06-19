@@ -1,0 +1,85 @@
+# ChangeLog for app-shells/rrs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-shells/rrs/ChangeLog,v 1.24 2015/06/09 12:07:06 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  12 Feb 2013; Agostino Sarubbo <ago@gentoo.org> rrs-1.70-r1.ebuild:
+  Stable for ppc, wrt bug #456464
+
+  10 Feb 2013; Agostino Sarubbo <ago@gentoo.org> rrs-1.70-r1.ebuild:
+  Stable for x86, wrt bug #456464
+
+  10 Feb 2013; Chema Alonso <nimiux@gentoo.org> rrs-1.70-r1.ebuild:
+  Marked stable for amd64 wrt bug #456464
+
+  11 Oct 2012; Agostino Sarubbo <ago@gentoo.org> rrs-1.70.ebuild:
+  Stable for amd64, wrt bug #437944
+
+  11 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> rrs-1.70.ebuild,
+  rrs-1.70-r1.ebuild:
+  Replace HOMEPAGE, old one is broken
+
+*rrs-1.70-r1 (11 Oct 2012)
+
+  11 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> +rrs-1.70-r1.ebuild:
+  Bump to EAPI 4
+
+  11 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Assign myself as maintainer
+
+  11 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> rrs-1.70.ebuild:
+  Define RDEPEND explicitly, add die statement to sed
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #34534
+
+  03 Jan 2009; Christoph Mende <angelos@gentoo.org>
+  +files/rrs-1.70-asneeded.patch, rrs-1.70.ebuild:
+  QA: Fixed compilation with --as-needed (bug 246951), respect CC (bug
+  243706), respect LDFLAGS
+
+  23 Aug 2008; Markus Meier <maekke@gentoo.org> rrs-1.70.ebuild:
+  add ~amd64, bug #235414
+
+  17 Feb 2007; Daniel Black <dragonheart@gentoo.org> rrs-1.70.ebuild:
+  stripping problem thanks to dev-zero
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  20 Nov 2004; Daniel Black <dragonheart@gentoo.org> rrs-1.70.ebuild:
+  ppc stable
+
+  04 Sep 2004; Sven Wegener <swegener@gentoo.org>
+  -files/1.50-include-string.h.patch, -rrs-1.50.ebuild, -rrs-1.55.ebuild:
+  Removed old ebuilds.
+
+  18 Jul 2004; Daniel Black <dragonheart@gentoo.org> rrs-1.70.ebuild:
+  x86 stable
+
+  15 Jun 2004; Daniel Black <dragonheart@gentoo.org> rrs-1.50.ebuild,
+  rrs-1.55.ebuild:
+  x86 stable
+
+*rrs-1.70 (04 Jun 2004)
+
+  04 Jun 2004; Daniel Black <dragonheart@gentoo.org> +rrs-1.70.ebuild:
+  version bump as per bug #52492 thanks to Sven Wegener
+  <sven.wegener+gentoo-bugzilla@stealer.net>
+
+*rrs-1.55 (18 May 2004)
+
+  18 May 2004; Daniel Black <dragonheart@gentoo.org> +rrs-1.55.ebuild:
+  version bump thanks to sven.wegener@stealer.net in bug #51318
+
+  13 May 2004; David Holm <dholm@gentoo.org> rrs-1.50.ebuild:
+  Added to ~ppc.
+
+*rrs-1.50 (13 May 2004)
+
+  13 May 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  +files/1.50-include-string.h.patch, +rrs-1.50.ebuild:
+  Initial import thanks Sven Wegener <sven.wegener@stealer.net> for the ebuild
+  in bug #50897

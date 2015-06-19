@@ -1,0 +1,37 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/vmware-workstation/files/vmware-9.0.rc,v 1.2 2014/04/26 20:36:17 dilfridge Exp $
+
+depend() {
+	need localmount
+	use net
+}
+
+start() {
+	ebegin Starting VMware USB Arbitrator
+	#start-stop-daemon --start --exec @@BINDIR@@/vmware-usbarbitrator
+	@@BINDIR@@/vmware-usbarbitrator 
+	eend $?
+	ebegin Starting VMware services
+	modprobe -v vmci || modprobe -v vmw_vmci
+	eend $?
+	modprobe -av vmmon vmci vsock vmblock vmnet 
+	eend $?
+	@@BINDIR@@/vmware-networks --start
+	eend $?
+}
+
+stop() {
+	ebegin Stopping VMware USB Arbitrator
+	#start-stop-daemon --stop --exec @@BINDIR@@/vmware-usbarbitrator
+	killall --wait @@BINDIR@@/vmware-usbarbitrator 
+	eend $?
+	@@BINDIR@@/vmware-networks --stop 
+	eend $?
+	ebegin Stopping VMware services
+	modprobe -rv vsock vmmon vmblock vmnet
+	eend $?
+	modprobe -rv vmci || modprobe -rv vmw_vmci
+	eend $?
+}

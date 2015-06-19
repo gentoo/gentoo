@@ -1,0 +1,32 @@
+From 2c839bf2703e99c3851b58695545fed90b6226fc Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Wed, 29 Aug 2012 22:28:47 -0400
+Subject: [PATCH] Explicitly link to libgmodule-2.0
+
+With >=gdk-pixbuf-2.24 and >=pango-1.30, libgmodule-2.0 is no longer
+provided by "pkg-config --libs gtk+-2.0 gthread-2.0", so link to it
+explicitly (as is already done in server/).
+
+Fixes build failure with gnu ld.gold in gkrellm-2.3.5.
+
+https://bugs.gentoo.org/show_bug.cgi?id=428532
+---
+ src/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index 6d482a7..19b0c29 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -69,7 +69,7 @@ STRIP ?= -s
+ GKRELLM_INCLUDES = gkrellm.h gkrellm-public-proto.h $(SHARED_PATH)/log.h
+ 
+ PKG_INCLUDE = `$(PKG_CONFIG) --cflags gtk+-2.0 gthread-2.0`
+-PKG_LIB = `$(PKG_CONFIG) --libs gtk+-2.0 gthread-2.0`
++PKG_LIB = `$(PKG_CONFIG) --libs gtk+-2.0 gmodule-2.0 gthread-2.0`
+ 
+ FLAGS = -O2 -I.. -I$(SHARED_PATH) $(PKG_INCLUDE) $(GTOP_INCLUDE) $(PTHREAD_INC)\
+  ${SSL_INCLUDE} ${NTLM_INCLUDE} -DGKRELLM_CLIENT
+-- 
+1.7.12
+

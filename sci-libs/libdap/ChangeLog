@@ -1,0 +1,76 @@
+# ChangeLog for sci-libs/libdap
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/libdap/ChangeLog,v 1.16 2012/10/07 09:08:35 pacho Exp $
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, #24135.
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> libdap-3.11.3.ebuild,
+  metadata.xml:
+  Keyword amd64-linux x86-linux
+
+  08 Jul 2012; Justin Lecher <jlec@gentoo.org> libdap-3.11.3.ebuild,
+  +files/libdap-3.11.3-gcc-4.7.patch, metadata.xml:
+  Add fix for gcc-4.7, #425244; move to autotools-utils.eclass
+
+  24 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> libdap-3.11.3.ebuild:
+  Stable on amd64 and x86 as it works without a glitch here.
+
+*libdap-3.11.3 (24 May 2012)
+
+  24 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> +libdap-3.11.3.ebuild,
+  -files/3.10.0-fix_tests.patch, -libdap-3.11.1.ebuild:
+  Version bump. Cleanup.
+
+  10 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org> libdap-3.11.1.ebuild:
+  Sort test dep. Remove useless dies.
+
+*libdap-3.11.1 (02 Jun 2011)
+
+  02 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org> -libdap-3.10.0.ebuild,
+  +libdap-3.11.1.ebuild:
+  Version bump to latest. Drop older.
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> libdap-3.10.0.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  27 Apr 2010; Tomáš Chvátal <scarabeus@gentoo.org> libdap-3.10.0.ebuild:
+  Build static libs only when requested.
+
+*libdap-3.10.0 (27 Apr 2010)
+
+  27 Apr 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/3.10.0-fix_tests.patch, -libdap-3.8.2.ebuild, -libdap-3.9.2.ebuild,
+  -files/libdap-3.9.2-gcc-4.4.patch, -libdap-3.9.3.ebuild,
+  +libdap-3.10.0.ebuild:
+  Version bump. Drop old.
+
+*libdap-3.9.3 (07 Dec 2009)
+
+  07 Dec 2009; Sébastien Fabbro <bicatali@gentoo.org> +libdap-3.9.3.ebuild:
+  Version bump
+
+  18 Jul 2009; Steve Arnold <nerdboy@gentoo.org>
+  +files/libdap-3.9.2-gcc-4.4.patch, libdap-3.9.2.ebuild:
+  Updated with patch for gcc 4.4 include and string changes (bug #276740).
+
+  03 May 2009; Steve Arnold <nerdboy@gentoo.org> libdap-3.8.2.ebuild,
+  libdap-3.9.2.ebuild:
+  Updating minimum required versions of deps per newer upstream docs.
+
+  21 Apr 2009; Steve Arnold <nerdboy@gentoo.org> libdap-3.8.2.ebuild,
+  libdap-3.9.2.ebuild:
+  Updating license atoms to include URI license.
+
+*libdap-3.8.2 (19 Apr 2009)
+
+  19 Apr 2009; Steve Arnold <nerdboy@gentoo.org> +libdap-3.8.2.ebuild,
+  libdap-3.9.2.ebuild:
+  Added stable version (required by libnc-dap) and removed die from test.
+  Still 3 test errors on amd64.
+
+*libdap-3.9.2 (19 Apr 2009)
+
+  19 Apr 2009; Steve Arnold <nerdboy@gentoo.org> +metadata.xml,
+  +libdap-3.9.2.ebuild:
+  New ebuild for OPeNDAP C++ library, a required dependency for ferret.

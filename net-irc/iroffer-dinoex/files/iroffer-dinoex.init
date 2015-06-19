@@ -1,0 +1,48 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/iroffer-dinoex/files/iroffer-dinoex.init,v 1.2 2013/02/08 12:00:11 pinkbyte Exp $
+
+extra_commands="reload reconnect"
+
+description_reload="Reload the config file"
+description_reconnect="Force reconnection to an IRC server"
+
+depend() {
+	need net
+}
+
+start_pre() {
+	if [ ! -f "${MYBOT}" ]; then
+		eerror "${MYBOT} not found"
+		return 1
+	fi
+
+	checkpath -d -o "${USER}":"${GROUP}" /var/run/iroffer-dinoex
+	checkpath -d -o "${USER}":"${GROUP}" /var/log/iroffer-dinoex
+	checkpath -d -o "${USER}":"${GROUP}" /var/lib/iroffer-dinoex
+}
+
+start() {
+	ebegin "Starting iroffer-dinoex"
+	start-stop-daemon --start --quiet  --pidfile "${PIDFILE}" --user "${USER}:${GROUP}" --exec "${BIN}" -- -b "${MYBOT}" -w "${STATE}" -s
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping iroffer-dinoex"
+	start-stop-daemon --stop --pidfile "${PIDFILE}" --exec "${BIN}"
+	eend $?
+}
+
+reload(){
+	ebegin "Reload iroffer-dinoex"
+	start-stop-daemon --signal SIGUSR2 --pidfile "${PIDFILE}"
+	eend $?
+}
+
+reconnect(){
+	ebegin "Try to reconnect iroffer-dinoex to servers"
+	start-stop-daemon --signal SIGUSR1 --pidfile "${PIDFILE}"
+	eend $?
+}

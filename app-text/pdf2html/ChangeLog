@@ -1,0 +1,64 @@
+# ChangeLog for app-text/pdf2html
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/pdf2html/ChangeLog,v 1.20 2012/09/16 20:04:30 ottxor Exp $
+
+  16 Sep 2012; Christoph Junghans <ottxor@gentoo.org> pdf2html-1.4.ebuild:
+  added prefix keywords
+
+  14 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> pdf2html-1.4.ebuild,
+  +files/pdf2html-1.4-libpng15.patch:
+  Fix building with libpng15 (missing zlib.h include) wrt #378509 by Diego Elio
+  Pettenò 
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> pdf2html-1.4.ebuild:
+  virtual/ghostscript->app-text/ghostscript-gpl: ghostscript-gpl is the only
+  implementation left in the tree.
+
+  12 May 2008; Alexis Ballier <aballier@gentoo.org> pdf2html-1.4.ebuild:
+  improve deps, dont prestrip files (bug #152263), honour ldflags and
+  friends, appears to work fine here so its saved from last riting
+
+  17 Jan 2008; Fabian Groffen <grobian@gentoo.org> pdf2html-1.4.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  20 Aug 2006; <malc@gentoo.org> pdf2html-1.4.ebuild:
+  Stable on amd64
+
+  22 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org> pdf2html-1.4.ebuild:
+  Stable on sparc
+
+  16 Mar 2006; Martin Ehmsen <ehmsen@gentoo.org> pdf2html-1.4.ebuild:
+  Don't install INSTALL, found by QA script.
+
+  29 Oct 2005; Fabian Groffen <grobian@gentoo.org> pdf2html-1.4.ebuild:
+  Marked ~ppc-macos (bug #109428)
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> pdf2html-1.4.ebuild:
+  Mark 1.4 stable on alpha
+
+  03 Sep 2005; Luis Medinas <metalgod@gentoo.org> pdf2html-1.4.ebuild:
+  Added ~amd64 keywords.
+
+  02 Jun 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  pdf2html-1.4.ebuild:
+  mark ~ppc
+
+  16 May 2005; Jason Wever <weeve@gentoo.org> pdf2html-1.4.ebuild:
+  Added ~sparc keyword.
+
+*pdf2html-1.4 (21 Feb 2004)
+
+  23 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> pdf2html-1.4.ebuild:
+  Changed app-text/ghostscript to virtual/ghostscript. Closing bug
+  #45351. Marked stable on x86
+
+  23 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> pdf2html-1.4.ebuild:
+  Added ~alpha. After I cleaned ccache directory it emerged fine..
+
+  21 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> metadata.xml,
+  pdf2html-1.4.ebuild:
+  Initial import. Ebuild submitted by Victor Iggy <lamer0@lamer0.com>,
+  closing bug #15980

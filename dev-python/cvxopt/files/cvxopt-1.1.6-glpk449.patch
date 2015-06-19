@@ -1,0 +1,1082 @@
+--- src/C/glpk.c.orig	2014-03-24 09:39:39.510214726 -0700
++++ src/C/glpk.c	2014-03-24 09:38:41.251897138 -0700
+@@ -23,75 +23,271 @@
+ #include "misc.h"
+ #include "glpk.h"
+ 
++
+ PyDoc_STRVAR(glpk__doc__,
+     "Interface to the simplex and mixed integer LP algorithms in GLPK.\n\n"
+     "The GLPK control parameters have the default values listed in \n"
+-    "the GLPK documentation, except for 'LPX_K_PRESOL', which is set\n"
++    "the GLPK documentation, except for 'presolve', which is set\n"
+     "to 1 and cannot be modified.  The other parameters can be\n"
+-    "modified by making an entry in the dictionary glpk.options.\n"
+-    "For example, the command glpk.options['LPX_K_MSGLEV'] = 0 turns\n"
+-    "off the printed output during execution of glpk.simplex().\n"
++    "modified by passing a smcp or iocp object to the appropriate function\n"
++    "For example,  the commands param = glpk.smcp(msg_lev = 0), or \n"
++    "param=glpk.smcp(); param.msg_lev=1 turn off the printed output during"
++    " execution of glpk.simplex().\n"
+     "See the documentation at www.gnu.org/software/glpk/glpk.html for\n"
+     "the list of GLPK control parameters and their default values.");
+ 
+ static PyObject *glpk_module;
+ 
+-typedef struct {
+-    char  name[20];
+-    int   idx;
+-    char  type;
+-}   param_tuple;
+-
+-static const param_tuple GLPK_PARAM_LIST[] = {
+-    {"LPX_K_MSGLEV",    LPX_K_MSGLEV,   'i'}, 
+-    {"LPX_K_SCALE",     LPX_K_SCALE,    'i'},
+-    {"LPX_K_DUAL",      LPX_K_DUAL,     'i'},
+-    {"LPX_K_PRICE",     LPX_K_PRICE,    'i'},
+-    {"LPX_K_RELAX",     LPX_K_RELAX,    'f'},
+-    {"LPX_K_TOLBND",    LPX_K_TOLBND,   'f'},
+-    {"LPX_K_TOLDJ",     LPX_K_TOLDJ,    'f'},
+-    {"LPX_K_TOLPIV",    LPX_K_TOLPIV,   'f'},
+-    {"LPX_K_ROUND",     LPX_K_ROUND,    'i'},
+-    {"LPX_K_OBJLL",     LPX_K_OBJLL,    'f'},
+-    {"LPX_K_OBJUL",     LPX_K_OBJUL,    'f'},
+-    {"LPX_K_ITLIM",     LPX_K_ITLIM,    'i'},
+-    {"LPX_K_ITCNT",     LPX_K_ITCNT,    'i'}, 
+-    {"LPX_K_TMLIM",     LPX_K_TMLIM,    'f'},
+-    {"LPX_K_OUTFRQ",    LPX_K_OUTFRQ,   'i'},
+-    {"LPX_K_OUTDLY",    LPX_K_OUTDLY,   'f'},
+-    {"LPX_K_BRANCH",    LPX_K_BRANCH,   'i'},
+-    {"LPX_K_BTRACK",    LPX_K_BTRACK,   'i'},
+-    {"LPX_K_TOLINT",    LPX_K_TOLINT,   'f'},
+-    {"LPX_K_TOLOBJ",    LPX_K_TOLOBJ,   'f'},
+-    {"LPX_K_MPSINFO",   LPX_K_MPSINFO,  'i'},
+-    {"LPX_K_MPSOBJ",    LPX_K_MPSOBJ,   'i'},
+-    {"LPX_K_MPSORIG",   LPX_K_MPSORIG,  'i'},
+-    {"LPX_K_MPSWIDE",   LPX_K_MPSWIDE,  'i'},
+-    {"LPX_K_MPSFREE",   LPX_K_MPSFREE,  'i'},
+-    {"LPX_K_MPSSKIP",   LPX_K_MPSSKIP,  'i'},
+-    {"LPX_K_LPTORIG",   LPX_K_LPTORIG,  'i'},
+-    {"LPX_K_PRESOL",    LPX_K_PRESOL,   'i'},
+-}; /* 28 paramaters */
++/* Wrappers around the option glpk structs */
++typedef struct{
++  PyObject_HEAD
++  glp_smcp obj;
++} pysmcp;
+ 
++/* Deallocation of smcp object */
++static void smcp_dealloc(pysmcp* self)
++{
++    Py_TYPE(self)->tp_free((PyObject*)self);
++}
+ 
+-#if PY_MAJOR_VERSION >= 3
+-static int get_param_idx(const char *str, int *idx, char *type)
+-#else
+-static int get_param_idx(char *str, int *idx, char *type)
+-#endif
++/* New smcp method */
++static PyObject *
++smcp_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+ {
+-    int i;
++    pysmcp *self;
++    self = (pysmcp *)type->tp_alloc(type, 0);
++    return (PyObject *)self;
++}
++
++/* Initialisation of smcp object */
++static int
++smcp_init(pysmcp *self, PyObject *args, PyObject *kwds)
++{
++    /*static char *kwlist[] = {"number", NULL};*/
++    static char *kwlist[] = { "msg_lev", "meth", "pricing", "r_test", "tol_bnd", "tol_dj", "tol_piv", "obj_ll", "obj_ul", "it_lim", "tm_lim", "out_frq", "out_dly", "presolve" };
++    glp_init_smcp(&self->obj);
++    if (! PyArg_ParseTupleAndKeywords(args, kwds, "|iiiidddddiiiii", kwlist,
++                &self->obj.msg_lev,
++                &self->obj.meth,
++                &self->obj.pricing,
++                &self->obj.r_test,
++                &self->obj.tol_bnd,
++                &self->obj.tol_dj,
++                &self->obj.tol_piv,
++                &self->obj.obj_ll,
++                &self->obj.obj_ul,
++                &self->obj.it_lim,
++                &self->obj.tm_lim,
++                &self->obj.out_frq,
++                &self->obj.out_dly,
++                &self->obj.presolve))
++        return -1;
+ 
+-    for (i=0; i<28; i++) {
+-        if (!strcmp(GLPK_PARAM_LIST[i].name, str)) {
+-            *idx =  GLPK_PARAM_LIST[i].idx;
+-            *type = GLPK_PARAM_LIST[i].type;
+-            return 1;
+-        }
+-    }
+     return 0;
+ }
+ 
++/* smcp members declaration */
++static PyMemberDef smcpMembers[] = {
++  {"msg_lev", T_INT, offsetof(pysmcp,obj)+offsetof(glp_smcp,msg_lev), 0, "message level: "},
++  {"meth", T_INT, offsetof(pysmcp,obj)+offsetof(glp_smcp,meth), 0, "simplex method option: "},
++  {"pricing", T_INT, offsetof(pysmcp,obj)+offsetof(glp_smcp,pricing), 0, "pricing technique: "},
++  {"r_test", T_INT, offsetof(pysmcp,obj)+offsetof(glp_smcp,r_test), 0, "ratio test technique: "},
++  {"tol_bnd", T_DOUBLE, offsetof(pysmcp,obj)+offsetof(glp_smcp,tol_bnd), 0, "spx.tol_bnd "},
++  {"tol_dj", T_DOUBLE, offsetof(pysmcp,obj)+offsetof(glp_smcp,tol_dj), 0, "spx.tol_dj "},
++  {"tol_piv", T_DOUBLE, offsetof(pysmcp,obj)+offsetof(glp_smcp,tol_piv), 0, "spx.tol_piv "},
++  {"obj_ll", T_DOUBLE, offsetof(pysmcp,obj)+offsetof(glp_smcp,obj_ll), 0, "spx.obj_ll "},
++  {"obj_ul", T_DOUBLE, offsetof(pysmcp,obj)+offsetof(glp_smcp,obj_ul), 0, "spx.obj_ul "},
++  {"it_lim", T_INT, offsetof(pysmcp,obj)+offsetof(glp_smcp,it_lim), 0, "spx.it_lim "},
++  {"tm_lim", T_INT, offsetof(pysmcp,obj)+offsetof(glp_smcp,tm_lim), 0, "spx.tm_lim (milliseconds) "},
++  {"out_frq", T_INT, offsetof(pysmcp,obj)+offsetof(glp_smcp,out_frq), 0, "spx.out_frq "},
++  {"out_dly", T_INT, offsetof(pysmcp,obj)+offsetof(glp_smcp,out_dly), 0, "spx.out_dly (milliseconds) "},
++  {"presolve", T_INT, offsetof(pysmcp,obj)+offsetof(glp_smcp,presolve), 0, "enable/disable using LP presolver "},
++};
++
++static PyTypeObject smcp_t = {
++    PyVarObject_HEAD_INIT(NULL, 0)
++    "glpk.smcp",               /* tp_name */
++    sizeof(pysmcp),            /* tp_basicsize */
++    0,                         /* tp_itemsize */
++    (destructor)smcp_dealloc,  /* tp_dealloc */
++    0,                         /* tp_print */
++    0,                         /* tp_getattr */
++    0,                         /* tp_setattr */
++    0,                         /* tp_reserved */
++    0,                         /* tp_repr */
++    0,                         /* tp_as_number */
++    0,                         /* tp_as_sequence */
++    0,                         /* tp_as_mapping */
++    0,                         /* tp_hash  */
++    0,                         /* tp_call */
++    0,                         /* tp_str */
++    0,                         /* tp_getattro */
++    0,                         /* tp_setattro */
++    0,                         /* tp_as_buffer */
++    Py_TPFLAGS_DEFAULT |
++        Py_TPFLAGS_BASETYPE,   /* tp_flags */
++    "simplex method control parameters",           /* tp_doc */
++    0,                         /* tp_traverse */
++    0,                         /* tp_clear */
++    0,                         /* tp_richcompare */
++    0,                         /* tp_weaklistoffset */
++    0,                         /* tp_iter */
++    0,                         /* tp_iternext */
++    0,                         /* tp_methods */
++    smcpMembers,               /* tp_members */
++    0,                         /* tp_getset */
++    0,                         /* tp_base */
++    0,                         /* tp_dict */
++    0,                         /* tp_descr_get */
++    0,                         /* tp_descr_set */
++    0,                         /* tp_dictoffset */
++    (initproc)smcp_init,       /* tp_init */
++    0,                         /* tp_alloc */
++    smcp_new,                 /* tp_new */
++};
++
++
++/* Wrappers around the option glpk structs */
++typedef struct{
++  PyObject_HEAD
++  glp_iocp obj;
++} pyiocp;
++
++/* Deallocation of iocp object */
++static void iocp_dealloc(pysmcp* self)
++{
++    Py_TYPE(self)->tp_free((PyObject*)self);
++}
++
++/* New iocp method */
++static PyObject *
++iocp_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
++{
++    pyiocp *self;
++    self = (pyiocp *)type->tp_alloc(type, 0);
++    return (PyObject *)self;
++}
++
++/* Initialisation of iocp object */
++static int
++iocp_init(pyiocp *self, PyObject *args, PyObject *kwds)
++{
++    /*static char *kwlist[] = {"number", NULL};*/
++    static char *kwlist[] = { "msg_lev", "br_tech", "bt_tech", "tol_int", "tol_obj", "tm_lim", "out_frq", "out_dly", "cb_size", "pp_tech", "mip_gap", "mir_cuts", "gmi_cuts", "cov_cuts", "clq_cuts", "presolve", "binarize", "fp_heur", "ps_heur", "ps_tm_lim", "use_sol", "save_sol", "alien",NULL};
++    glp_init_iocp(&self->obj);
++
++    if (! PyArg_ParseTupleAndKeywords(args, kwds, "|iiiddiiiiidiiiiiiiiiisi", kwlist,
++                &self->obj.msg_lev,
++                &self->obj.br_tech,
++                &self->obj.bt_tech,
++                &self->obj.tol_int,
++                &self->obj.tol_obj,
++                &self->obj.tm_lim,
++                &self->obj.out_frq,
++                &self->obj.out_dly,
++                &self->obj.cb_size,
++                &self->obj.pp_tech,
++                &self->obj.mip_gap,
++                &self->obj.mir_cuts,
++                &self->obj.gmi_cuts,
++                &self->obj.cov_cuts,
++                &self->obj.clq_cuts,
++                &self->obj.presolve,
++                &self->obj.binarize,
++                &self->obj.fp_heur,
++                &self->obj.ps_heur,
++                &self->obj.ps_tm_lim,
++                &self->obj.use_sol,
++                &self->obj.save_sol,
++                &self->obj.alien))
++                    return -1;
++
++    return 0;
++}
++
++/* iocp members declaration */
++static PyMemberDef iocpMembers[] = {
++  {"msg_lev", T_INT, offsetof(pysmcp,obj)+offsetof(glp_iocp,msg_lev), 0, "message level (see glp_smcp) "},
++  {"br_tech", T_INT, offsetof(pysmcp,obj)+offsetof(glp_iocp,br_tech), 0, "branching technique: "},
++  {"bt_tech", T_INT, offsetof(pysmcp,obj)+offsetof(glp_iocp,bt_tech), 0, "backtracking technique: "},
++  {"tol_int", T_DOUBLE, offsetof(pysmcp,obj)+offsetof(glp_iocp,tol_int), 0, "mip.tol_int "},
++  {"tol_obj", T_DOUBLE, offsetof(pysmcp,obj)+offsetof(glp_iocp,tol_obj), 0, "mip.tol_obj "},
++  {"tm_lim", T_INT, offsetof(pysmcp,obj)+offsetof(glp_iocp,tm_lim), 0, "mip.tm_lim (milliseconds) "},
++  {"out_frq", T_INT, offsetof(pysmcp,obj)+offsetof(glp_iocp,out_frq), 0, "mip.out_frq (milliseconds) "},
++  {"out_dly", T_INT, offsetof(pysmcp,obj)+offsetof(glp_iocp,out_dly), 0, "mip.out_dly (milliseconds) "},
++  /*void (*cb_func)(glp_tree *T, void *info); [> mip.cb_func <]*/
++  /*void *cb_info;          [> mip.cb_info <]*/
++  {"cb_size", T_INT, offsetof(pysmcp,obj)+offsetof(glp_iocp,cb_size), 0, "mip.cb_size "},
++  {"pp_tech", T_INT, offsetof(pysmcp,obj)+offsetof(glp_iocp,pp_tech), 0, "preprocessing technique: "},
++  {"mip_gap", T_DOUBLE, offsetof(pysmcp,obj)+offsetof(glp_iocp,mip_gap), 0, "relative MIP gap tolerance "},
++  {"mir_cuts", T_INT, offsetof(pysmcp,obj)+offsetof(glp_iocp,mir_cuts), 0, "MIR cuts       (GLP_ON/GLP_OFF) "},
++  {"gmi_cuts", T_INT, offsetof(pysmcp,obj)+offsetof(glp_iocp,gmi_cuts), 0, "Gomory's cuts  (GLP_ON/GLP_OFF) "},
++  {"cov_cuts", T_INT, offsetof(pysmcp,obj)+offsetof(glp_iocp,cov_cuts), 0, "cover cuts     (GLP_ON/GLP_OFF) "},
++  {"clq_cuts", T_INT, offsetof(pysmcp,obj)+offsetof(glp_iocp,clq_cuts), 0, "clique cuts    (GLP_ON/GLP_OFF) "},
++  {"presolve", T_INT, offsetof(pysmcp,obj)+offsetof(glp_iocp,presolve), 0, "enable/disable using MIP presolver "},
++  {"binarize", T_INT, offsetof(pysmcp,obj)+offsetof(glp_iocp,binarize), 0, "try to binarize integer variables "},
++  {"fp_heur", T_INT, offsetof(pysmcp,obj)+offsetof(glp_iocp,fp_heur), 0, "feasibility pump heuristic "},
++  {"ps_heur", T_INT, offsetof(pysmcp,obj)+offsetof(glp_iocp,ps_heur), 0, "proximity search heuristic "},
++  {"ps_tm_lim", T_INT, offsetof(pysmcp,obj)+offsetof(glp_iocp,ps_tm_lim), 0, "proxy time limit, milliseconds "},
++  {"use_sol", T_INT, offsetof(pysmcp,obj)+offsetof(glp_iocp,use_sol), 0, "use existing solution "},
++  {"save_sol",T_STRING,offsetof(pysmcp,obj)+offsetof(glp_iocp,save_sol),0, "filename to save every new solution"},
++  {"alien", T_INT, offsetof(pysmcp,obj)+offsetof(glp_iocp,alien), 0, "use alien solver "},
++};
++
++static PyTypeObject iocp_t = {
++    PyVarObject_HEAD_INIT(NULL, 0)
++    "glpk.iocp",             /* tp_name */
++    sizeof(pyiocp),            /* tp_basicsize */
++    0,                         /* tp_itemsize */
++    (destructor)iocp_dealloc, /* tp_dealloc */
++    0,                         /* tp_print */
++    0,                         /* tp_getattr */
++    0,                         /* tp_setattr */
++    0,                         /* tp_reserved */
++    0,                         /* tp_repr */
++    0,                         /* tp_as_number */
++    0,                         /* tp_as_sequence */
++    0,                         /* tp_as_mapping */
++    0,                         /* tp_hash  */
++    0,                         /* tp_call */
++    0,                         /* tp_str */
++    0,                         /* tp_getattro */
++    0,                         /* tp_setattro */
++    0,                         /* tp_as_buffer */
++    Py_TPFLAGS_DEFAULT |
++        Py_TPFLAGS_BASETYPE,   /* tp_flags */
++    "integer optimizer control parameters",           /* tp_doc */
++    0,                         /* tp_traverse */
++    0,                         /* tp_clear */
++    0,                         /* tp_richcompare */
++    0,                         /* tp_weaklistoffset */
++    0,                         /* tp_iter */
++    0,                         /* tp_iternext */
++    0,                         /* tp_methods */
++    iocpMembers,             /* tp_members */
++    0,                         /* tp_getset */
++    0,                         /* tp_base */
++    0,                         /* tp_dict */
++    0,                         /* tp_descr_get */
++    0,                         /* tp_descr_set */
++    0,                         /* tp_dictoffset */
++    (initproc)iocp_init,       /* tp_init */
++    0,                         /* tp_alloc */
++    iocp_new,                 /* tp_new */
++};
++
++
++
++/* Small helper function to generate the output string of the simplex function */
++inline static void set_output_string(PyObject* t,const char s[]) {
++            PyTuple_SET_ITEM(t, 0, (PyObject *)
++#if PY_MAJOR_VERSION >= 3
++                PyUnicode_FromString(s));
++#else
++                PyString_FromString(s));
++#endif
++    }
++
+ 
+ static char doc_simplex[] =
+     "Solves a linear program using GLPK.\n\n"
+@@ -126,21 +322,16 @@
+     PyObject *kwrds)
+ {
+     matrix *c, *h, *b=NULL, *x=NULL, *z=NULL, *y=NULL;
+-    PyObject *G, *A=NULL, *t=NULL, *param, *key, *value;
+-    LPX *lp;
+-    int m, n, p, i, j, k, nnz, nnzmax, *rn=NULL, *cn=NULL, param_id;
+-    int_t pos=0;
++    PyObject *G, *A=NULL, *t=NULL;
++    glp_prob *lp;
++    glp_smcp *options = NULL;
++    pysmcp *smcpParm = NULL;
++    int m, n, p, i, j, k, nnz, nnzmax, *rn=NULL, *cn=NULL;
+     double *a=NULL, val;
+-    char param_type, err_str[100]; 
+-#if PY_MAJOR_VERSION >= 3
+-    const char *keystr;
+-#else
+-    char *keystr;
+-#endif
+-    char *kwlist[] = {"c", "G", "h", "A", "b", NULL};
++    char *kwlist[] = {"c", "G", "h", "A", "b","options", NULL};
+ 
+-    if (!PyArg_ParseTupleAndKeywords(args, kwrds, "OOO|OO", kwlist, &c,
+-        &G, &h, &A, &b)) return NULL;
++    if (!PyArg_ParseTupleAndKeywords(args, kwrds, "OOO|OOO!", kwlist, &c,
++        &G, &h, &A, &b,&smcp_t,&smcpParm)) return NULL;
+ 
+     if ((Matrix_Check(G) && MAT_ID(G) != DOUBLE) ||
+         (SpMatrix_Check(G) && SP_ID(G) != DOUBLE) ||
+@@ -182,19 +373,30 @@
+         PyErr_SetString(PyExc_ValueError, "incompatible dimensions");
+         return NULL;
+     }
++    if(!smcpParm) 
++    {
++      smcpParm = (pysmcp*)malloc(sizeof(*smcpParm));
++      glp_init_smcp(&(smcpParm->obj));
++    }
++    if(smcpParm) 
++    {
++      Py_INCREF(smcpParm);
++      options = &smcpParm->obj;
++      options->presolve = 1;
++    }
+ 
+-    lp = lpx_create_prob();
+-    lpx_add_rows(lp, m+p);
+-    lpx_add_cols(lp, n);
++    lp = glp_create_prob();
++    glp_add_rows(lp, m+p);
++    glp_add_cols(lp, n);
+ 
+     for (i=0; i<n; i++){
+-        lpx_set_obj_coef(lp, i+1, MAT_BUFD(c)[i]);
+-        lpx_set_col_bnds(lp, i+1, LPX_FR, 0.0, 0.0);
++        glp_set_obj_coef(lp, i+1, MAT_BUFD(c)[i]);
++        glp_set_col_bnds(lp, i+1, GLP_FR, 0.0, 0.0);
+     }
+     for (i=0; i<m; i++)
+-        lpx_set_row_bnds(lp, i+1, LPX_UP, 0.0, MAT_BUFD(h)[i]);
++        glp_set_row_bnds(lp, i+1, GLP_UP, 0.0, MAT_BUFD(h)[i]);
+     for (i=0; i<p; i++)
+-        lpx_set_row_bnds(lp, i+m+1, LPX_FX, MAT_BUFD(b)[i],
++        glp_set_row_bnds(lp, i+m+1, GLP_FX, MAT_BUFD(b)[i],
+             MAT_BUFD(b)[i]);
+ 
+     nnzmax = (SpMatrix_Check(G) ? SP_NNZ(G) : m*n ) +
+@@ -203,7 +405,7 @@
+     rn = (int *) calloc(nnzmax+1, sizeof(int));
+     cn = (int *) calloc(nnzmax+1, sizeof(int));
+     if (!a || !rn || !cn){
+-        free(a);  free(rn);  free(cn);  lpx_delete_prob(lp);
++        free(a);  free(rn);  free(cn);  glp_delete_prob(lp);
+         return PyErr_NoMemory();
+     }
+ 
+@@ -242,84 +444,18 @@
+             nnz++;
+         }
+ 
+-    lpx_load_matrix(lp, nnz, rn, cn, a);
++    glp_load_matrix(lp, nnz, rn, cn, a);
+     free(rn);  free(cn);  free(a);
+ 
+     if (!(t = PyTuple_New(A ? 4 : 3))){
+-        lpx_delete_prob(lp);
++        glp_delete_prob(lp);
+         return PyErr_NoMemory();
+     }
+ 
+-    if (!(param = PyObject_GetAttrString(glpk_module, "options"))
+-        || !PyDict_Check(param)){
+-            lpx_delete_prob(lp);
+-            PyErr_SetString(PyExc_AttributeError,
+-                "missing glpk.options dictionary");
+-            return NULL;
+-    }
+-
+-    while (PyDict_Next(param, &pos, &key, &value))
+-#if PY_MAJOR_VERSION >= 3
+-        if ((PyUnicode_Check(key)) && 
+-            get_param_idx(_PyUnicode_AsString(key), &param_id, 
+-            &param_type)){
+-            keystr = _PyUnicode_AsString(key);
+-#else
+-        if ((keystr = PyString_AsString(key)) && get_param_idx(keystr,
+-            &param_id, &param_type)){
+-#endif
+-	    if (param_type == 'i'){
+-#if PY_MAJOR_VERSION >= 3
+-	        if (!PyLong_Check(value)){
+-#else
+-	        if (!PyInt_Check(value)){
+-#endif
+-                    sprintf(err_str, "invalid value for integer "
+-                        "GLPK parameter: %-.20s", keystr);
+-                    PyErr_SetString(PyExc_ValueError, err_str);
+-	            lpx_delete_prob(lp);
+-	            Py_DECREF(param);
+-                    return NULL;
+-	        }
+-                if (!strcmp("LPX_K_PRESOL", keystr) &&
+-#if PY_MAJOR_VERSION >= 3
+-                    PyLong_AS_LONG(value) != 1){
+-#else
+-                    PyInt_AS_LONG(value) != 1){
+-#endif
+-                    PyErr_Warn(PyExc_UserWarning, "ignoring value of "
+-                        "GLPK parameter 'LPX_K_PRESOL'");
+-                }
+-                else lpx_set_int_parm(lp, param_id,
+-#if PY_MAJOR_VERSION >= 3
+-                    PyLong_AS_LONG(value));
+-#else
+-                    PyInt_AS_LONG(value));
+-#endif
+-	    }
+-	    else {
+-#if PY_MAJOR_VERSION >= 3
+-	        if (!PyLong_Check(value) && !PyFloat_Check(value)){
+-#else
+-	        if (!PyInt_Check(value) && !PyFloat_Check(value)){
+-#endif
+-                    sprintf(err_str, "invalid value for floating point "
+-                        "GLPK parameter: %-.20s", keystr);
+-                    PyErr_SetString(PyExc_ValueError, err_str);
+-	            lpx_delete_prob(lp);
+-	            Py_DECREF(param);
+-                    return NULL;
+-	        }
+-	        lpx_set_real_parm(lp, param_id,
+-                    PyFloat_AsDouble(value));
+-	    }
+-    }
+-    lpx_set_int_parm(lp, LPX_K_PRESOL, 1);
+-    Py_DECREF(param);
+ 
+-    switch (lpx_simplex(lp)){
++    switch (glp_simplex(lp,options)){
+ 
+-        case LPX_E_OK:
++        case 0:
+ 
+             x = (matrix *) Matrix_New(n,1,DOUBLE);
+             z = (matrix *) Matrix_New(m,1,DOUBLE);
+@@ -329,65 +465,70 @@
+                 Py_XDECREF(z);
+                 Py_XDECREF(y);
+                 Py_XDECREF(t);
+-                lpx_delete_prob(lp);
++                Py_XDECREF(smcpParm);
++                glp_delete_prob(lp);
+                 return PyErr_NoMemory();
+             }
+ 
+-            PyTuple_SET_ITEM(t, 0, (PyObject *)
+-#if PY_MAJOR_VERSION >= 3
+-                PyUnicode_FromString("optimal"));
+-#else
+-                PyString_FromString("optimal"));
+-#endif
++            set_output_string(t,"optimal");
+ 
+             for (i=0; i<n; i++)
+-                MAT_BUFD(x)[i] = lpx_get_col_prim(lp, i+1);
++                MAT_BUFD(x)[i] = glp_get_col_prim(lp, i+1);
+             PyTuple_SET_ITEM(t, 1, (PyObject *) x);
+ 
+             for (i=0; i<m; i++)
+-                MAT_BUFD(z)[i] = -lpx_get_row_dual(lp, i+1);
++                MAT_BUFD(z)[i] = -glp_get_row_dual(lp, i+1);
+             PyTuple_SET_ITEM(t, 2, (PyObject *) z);
+ 
+             if (A){
+                 for (i=0; i<p; i++)
+-                    MAT_BUFD(y)[i] = -lpx_get_row_dual(lp, m+i+1);
++                    MAT_BUFD(y)[i] = -glp_get_row_dual(lp, m+i+1);
+                 PyTuple_SET_ITEM(t, 3, (PyObject *) y);
+             }
+ 
+-            lpx_delete_prob(lp);
++            Py_XDECREF(smcpParm);
++            glp_delete_prob(lp);
+             return (PyObject *) t;
+-
+-        case LPX_E_NOPFS:
+-
+-            PyTuple_SET_ITEM(t, 0, (PyObject *)
+-#if PY_MAJOR_VERSION >= 3
+-                PyUnicode_FromString("primal infeasible"));
+-#else
+-                PyString_FromString("primal infeasible"));
+-#endif
++        case GLP_EBADB:
++            set_output_string(t,"incorrect initial basis");
+             break;
+-
+-        case LPX_E_NODFS:
+-
+-            PyTuple_SET_ITEM(t, 0, (PyObject *)
+-#if PY_MAJOR_VERSION >= 3
+-                PyUnicode_FromString("dual infeasible"));
+-#else
+-                PyString_FromString("dual infeasible"));
+-#endif
++        case GLP_ESING:
++            set_output_string(t,"singular initial basis matrix");
++            break;
++        case GLP_ECOND:
++            set_output_string(t,"ill-conditioned initial basis matrix");
++            break;
++        case GLP_EBOUND:
++            set_output_string(t,"incorrect bounds");
++            break;
++        case GLP_EFAIL:
++            set_output_string(t,"solver failure");
++            break;
++        case GLP_EOBJLL:
++            set_output_string(t,"objective function reached lower limit");
++            break;
++        case GLP_EOBJUL:
++            set_output_string(t,"objective function reached upper limit");
++            break;
++        case GLP_EITLIM:
++            set_output_string(t,"iteration limit exceeded");
++            break;
++        case GLP_ETMLIM:
++            set_output_string(t,"time limit exceeded");
++            break;
++        case GLP_ENOPFS:
++            set_output_string(t,"primal infeasible");
++            break;
++        case GLP_ENODFS:
++            set_output_string(t,"dual infeasible");
+             break;
+-
+         default:
+-
+-            PyTuple_SET_ITEM(t, 0, (PyObject *)
+-#if PY_MAJOR_VERSION >= 3
+-                PyUnicode_FromString("unknown"));
+-#else
+-                PyString_FromString("unknown"));
+-#endif
++            set_output_string(t,"unknown");
++            break;
+     }
+ 
+-    lpx_delete_prob(lp);
++    Py_XDECREF(smcpParm);
++    glp_delete_prob(lp);
+ 
+     PyTuple_SET_ITEM(t, 1, Py_BuildValue(""));
+     PyTuple_SET_ITEM(t, 2, Py_BuildValue(""));
+@@ -427,21 +568,28 @@
+ {
+     matrix *c, *h, *b=NULL, *x=NULL;
+     PyObject *G, *A=NULL, *IntSet=NULL, *BinSet = NULL;
+-    PyObject *t=NULL, *param, *key, *value;
+-    LPX *lp;
+-    int m, n, p, i, j, k, nnz, nnzmax, *rn=NULL, *cn=NULL, param_id;
+-    int_t pos=0;
++    PyObject *t=NULL;
++    pyiocp *iocpParm = NULL;;
++    glp_iocp *options = NULL;
++    glp_prob *lp;
++    int m, n, p, i, j, k, nnz, nnzmax, *rn=NULL, *cn=NULL;
+     double *a=NULL, val;
+-    char param_type, err_str[100]; 
+-#if PY_MAJOR_VERSION >= 3
+-    const char *keystr;
+-#else
+-    char *keystr;
+-#endif
+-    char *kwlist[] = {"c", "G", "h", "A", "b", "I", "B", NULL};
++    char *kwlist[] = {"c", "G", "h", "A", "b", "I", "B","iocp", NULL};
++
++    if (!PyArg_ParseTupleAndKeywords(args, kwrds, "OOO|OOOOO!", kwlist, &c,
++	    &G, &h, &A, &b, &IntSet, &BinSet,iocp_t,&iocpParm)) return NULL;
+ 
+-    if (!PyArg_ParseTupleAndKeywords(args, kwrds, "OOO|OOOO", kwlist, &c,
+-	    &G, &h, &A, &b, &IntSet, &BinSet)) return NULL;
++    if(!iocpParm) 
++    {
++      iocpParm = (pyiocp*)malloc(sizeof(*iocpParm));
++      glp_init_iocp(&(iocpParm->obj));
++    }
++    if(iocpParm) 
++    {
++      Py_INCREF(iocpParm);
++      options = &iocpParm->obj;
++      options->presolve = 1;
++    }
+ 
+     if ((Matrix_Check(G) && MAT_ID(G) != DOUBLE) ||
+         (SpMatrix_Check(G) && SP_ID(G) != DOUBLE) ||
+@@ -490,18 +638,18 @@
+     if ((BinSet) && (!PyAnySet_Check(BinSet)))
+       PY_ERR_TYPE("invalid binary index set");
+ 
+-    lp = lpx_create_prob();
+-    lpx_add_rows(lp, m+p);
+-    lpx_add_cols(lp, n);
++    lp = glp_create_prob();
++    glp_add_rows(lp, m+p);
++    glp_add_cols(lp, n);
+ 
+     for (i=0; i<n; i++){
+-        lpx_set_obj_coef(lp, i+1, MAT_BUFD(c)[i]);
+-        lpx_set_col_bnds(lp, i+1, LPX_FR, 0.0, 0.0);
++        glp_set_obj_coef(lp, i+1, MAT_BUFD(c)[i]);
++        glp_set_col_bnds(lp, i+1, GLP_FR, 0.0, 0.0);
+     }
+     for (i=0; i<m; i++)
+-        lpx_set_row_bnds(lp, i+1, LPX_UP, 0.0, MAT_BUFD(h)[i]);
++        glp_set_row_bnds(lp, i+1, GLP_UP, 0.0, MAT_BUFD(h)[i]);
+     for (i=0; i<p; i++)
+-        lpx_set_row_bnds(lp, i+m+1, LPX_FX, MAT_BUFD(b)[i],
++        glp_set_row_bnds(lp, i+m+1, GLP_FX, MAT_BUFD(b)[i],
+             MAT_BUFD(b)[i]);
+ 
+     nnzmax = (SpMatrix_Check(G) ? SP_NNZ(G) : m*n ) +
+@@ -510,7 +658,7 @@
+     rn = (int *) calloc(nnzmax+1, sizeof(int));
+     cn = (int *) calloc(nnzmax+1, sizeof(int));
+     if (!a || !rn || !cn){
+-        free(a);  free(rn);  free(cn);  lpx_delete_prob(lp);
++        free(a);  free(rn);  free(cn);  glp_delete_prob(lp);
+         return PyErr_NoMemory();
+     }
+ 
+@@ -549,79 +697,14 @@
+             nnz++;
+         }
+ 
+-    lpx_load_matrix(lp, nnz, rn, cn, a);
++    glp_load_matrix(lp, nnz, rn, cn, a);
+     free(rn);  free(cn);  free(a);
+ 
+     if (!(t = PyTuple_New(2))) {
+-        lpx_delete_prob(lp);
++        glp_delete_prob(lp);
+         return PyErr_NoMemory();
+     }
+ 
+-    if (!(param = PyObject_GetAttrString(glpk_module, "options"))
+-        || !PyDict_Check(param)){
+-            lpx_delete_prob(lp);
+-            PyErr_SetString(PyExc_AttributeError,
+-                "missing glpk.options dictionary");
+-            return NULL;
+-    }
+-
+-    while (PyDict_Next(param, &pos, &key, &value))
+-#if PY_MAJOR_VERSION >= 3
+-        if ((PyUnicode_Check(key)) && (keystr = PyUnicode_AS_DATA(key)) 
+-            && get_param_idx(keystr, &param_id, &param_type)){
+-#else
+-        if ((keystr = PyString_AsString(key)) && get_param_idx(keystr,
+-            &param_id, &param_type)){
+-#endif
+-	    if (param_type == 'i'){
+-#if PY_MAJOR_VERSION >= 3
+-	        if (!PyLong_Check(value)){
+-#else
+-	        if (!PyInt_Check(value)){
+-#endif
+-                    sprintf(err_str, "invalid value for integer "
+-                        "GLPK parameter: %-.20s", keystr);
+-                    PyErr_SetString(PyExc_ValueError, err_str);
+-	            lpx_delete_prob(lp);
+-	            Py_DECREF(param);
+-                    return NULL;
+-	        }
+-                if (!strcmp("LPX_K_PRESOL", keystr) &&
+-#if PY_MAJOR_VERSION >= 3
+-                    PyLong_AS_LONG(value) != 1){
+-#else
+-                    PyInt_AS_LONG(value) != 1){
+-#endif
+-                    PyErr_Warn(PyExc_UserWarning, "ignoring value of "
+-                        "GLPK parameter 'LPX_K_PRESOL'");
+-                }
+-                else 
+-#if PY_MAJOR_VERSION >= 3
+-                    lpx_set_int_parm(lp, param_id, PyLong_AS_LONG(value));
+-#else
+-                    lpx_set_int_parm(lp, param_id, PyInt_AS_LONG(value));
+-#endif
+-	    }
+-	    else {
+-#if PY_MAJOR_VERSION >= 3
+-	        if (!PyLong_Check(value) && !PyFloat_Check(value)){
+-#else
+-	        if (!PyInt_Check(value) && !PyFloat_Check(value)){
+-#endif
+-                    sprintf(err_str, "invalid value for floating point "
+-                        "GLPK parameter: %-.20s", keystr);
+-                    PyErr_SetString(PyExc_ValueError, err_str);
+-	            lpx_delete_prob(lp);
+-	            Py_DECREF(param);
+-                    return NULL;
+-	        }
+-	        lpx_set_real_parm(lp, param_id,
+-                    PyFloat_AsDouble(value));
+-	    }
+-    }
+-    lpx_set_int_parm(lp, LPX_K_PRESOL, 1);
+-    Py_DECREF(param);
+-
+     if (IntSet) {
+       PyObject *iter = PySequence_Fast(IntSet, "Critical error: not sequence");
+ 
+@@ -633,7 +716,7 @@
+ #else
+ 	if (!PyInt_Check(tmp)) {
+ #endif
+-	  lpx_delete_prob(lp);
++	  glp_delete_prob(lp);
+ 	  Py_DECREF(iter);
+ 	  PY_ERR_TYPE("non-integer element in I");
+ 	}
+@@ -643,7 +726,7 @@
+ 	int k = PyInt_AS_LONG(tmp);
+ #endif
+ 	if ((k < 0) || (k >= n)) {
+-	  lpx_delete_prob(lp);
++	  glp_delete_prob(lp);
+ 	  Py_DECREF(iter);
+ 	  PY_ERR(PyExc_IndexError, "index element out of range in I");
+ 	}
+@@ -664,7 +747,7 @@
+ #else
+ 	if (!PyInt_Check(tmp)) {
+ #endif
+-	  lpx_delete_prob(lp);
++	  glp_delete_prob(lp);
+ 	  Py_DECREF(iter);
+ 	  PY_ERR_TYPE("non-binary element in I");
+ 	}
+@@ -674,7 +757,7 @@
+ 	int k = PyInt_AS_LONG(tmp);
+ #endif
+ 	if ((k < 0) || (k >= n)) {
+-	  lpx_delete_prob(lp);
++	  glp_delete_prob(lp);
+ 	  Py_DECREF(iter);
+ 	  PY_ERR(PyExc_IndexError, "index element out of range in B");
+ 	}
+@@ -686,114 +769,85 @@
+     }
+ 
+ 
++      switch (glp_intopt(lp,options)){
+ 
+-    switch (lpx_intopt(lp)){
++          case 0:
+ 
+-        case LPX_E_OK:
++              x = (matrix *) Matrix_New(n,1,DOUBLE);
++              if (!x) {
++                  Py_XDECREF(iocpParm);
++                  Py_XDECREF(t);
++                  glp_delete_prob(lp);
++                  return PyErr_NoMemory();
++              }
++              set_output_string(t,"optimal");
++              set_output_string(t,"optimal");
+ 
+-            x = (matrix *) Matrix_New(n,1,DOUBLE);
+-            if (!x) {
+-                Py_XDECREF(t);
+-                lpx_delete_prob(lp);
+-                return PyErr_NoMemory();
+-            }
+-            PyTuple_SET_ITEM(t, 0, (PyObject *)
+-#if PY_MAJOR_VERSION >= 3
+-                PyUnicode_FromString("optimal"));
+-#else
+-                PyString_FromString("optimal"));
+-#endif
++              for (i=0; i<n; i++)
++                  MAT_BUFD(x)[i] = glp_mip_col_val(lp, i+1);
++              PyTuple_SET_ITEM(t, 1, (PyObject *) x);
+ 
+-            for (i=0; i<n; i++)
+-                MAT_BUFD(x)[i] = lpx_mip_col_val(lp, i+1);
+-            PyTuple_SET_ITEM(t, 1, (PyObject *) x);
++              Py_XDECREF(iocpParm);
++              glp_delete_prob(lp);
++              return (PyObject *) t;
+ 
+-            lpx_delete_prob(lp);
+-            return (PyObject *) t;
++          case GLP_ETMLIM:
+ 
+-        case LPX_E_TMLIM:
++              x = (matrix *) Matrix_New(n,1,DOUBLE);
++              if (!x) {
++                  Py_XDECREF(t);
++                  Py_XDECREF(iocpParm);
++                  glp_delete_prob(lp);
++                  return PyErr_NoMemory();
++              }
++              set_output_string(t,"time limit exceeded");
+ 
+-            x = (matrix *) Matrix_New(n,1,DOUBLE);
+-            if (!x) {
+-                Py_XDECREF(t);
+-                lpx_delete_prob(lp);
+-                return PyErr_NoMemory();
+-            }
+-            PyTuple_SET_ITEM(t, 0, (PyObject *)
+-#if PY_MAJOR_VERSION >= 3
+-                PyUnicode_FromString("time limit exceeded"));
+-#else
+-                PyString_FromString("time limit exceeded"));
+-#endif
++              for (i=0; i<n; i++)
++                  MAT_BUFD(x)[i] = glp_mip_col_val(lp, i+1);
++              PyTuple_SET_ITEM(t, 1, (PyObject *) x);
+ 
+-            for (i=0; i<n; i++)
+-                MAT_BUFD(x)[i] = lpx_mip_col_val(lp, i+1);
+-            PyTuple_SET_ITEM(t, 1, (PyObject *) x);
+-
+-            lpx_delete_prob(lp);
+-            return (PyObject *) t;
++              Py_XDECREF(iocpParm);
++              glp_delete_prob(lp);
++              return (PyObject *) t;
+ 
+ 
+-        case LPX_E_FAULT:
+-            PyTuple_SET_ITEM(t, 0, (PyObject *)
+-#if PY_MAJOR_VERSION >= 3
+-                PyUnicode_FromString("invalid MIP formulation"));
+-#else
+-                PyString_FromString("invalid MIP formulation"));
+-#endif
+-            break;
++          case GLP_EBOUND:
++              set_output_string(t,"incorrect bounds");
++              break;
++          case GLP_EFAIL:
++              set_output_string(t,"invalid MIP formulation");
++              break;
+ 
+-	case LPX_E_NOPFS:
+-            PyTuple_SET_ITEM(t, 0, (PyObject *)
+-#if PY_MAJOR_VERSION >= 3
+-                PyUnicode_FromString("primal infeasible"));
+-#else
+-                PyString_FromString("primal infeasible"));
+-#endif
+-            break;
++          case GLP_ENOPFS:
++              set_output_string(t,"primal infeasible");
++              break;
+ 
+-	case LPX_E_NODFS:
++          case GLP_ENODFS:
++              set_output_string(t,"dual infeasible");
++              break;
+ 
+-            PyTuple_SET_ITEM(t, 0, (PyObject *)
+-#if PY_MAJOR_VERSION >= 3
+-                PyUnicode_FromString("dual infeasible"));
+-#else
+-                PyString_FromString("dual infeasible"));
+-#endif
+-            break;
++          case GLP_EMIPGAP:
++              set_output_string(t,"Relative mip gap tolerance reached");
++              break;
+ 
+-        case LPX_E_ITLIM:
++              /*case LPX_E_ITLIM:
+ 
+-            PyTuple_SET_ITEM(t, 0, (PyObject *)
+-#if PY_MAJOR_VERSION >= 3
+-                PyUnicode_FromString("maxiters exceeded"));
+-#else
+-                PyString_FromString("maxiters exceeded"));
+-#endif
+-            break;
++                set_output_string(t,"maxiters exceeded");
++                break;*/
+ 
+-	case LPX_E_SING:
++              /*case LPX_E_SING:
+ 
+-            PyTuple_SET_ITEM(t, 0, (PyObject *)
+-#if PY_MAJOR_VERSION >= 3
+-                PyUnicode_FromString("singular or ill-conditioned basis"));
+-#else
+-                PyString_FromString("singular or ill-conditioned basis"));
+-#endif
+-            break;
++                set_output_string(t,"singular or ill-conditioned basis");
++                break;*/
+ 
+ 
+-        default:
++          default:
+ 
+-            PyTuple_SET_ITEM(t, 0, (PyObject *)
+-#if PY_MAJOR_VERSION >= 3
+-                PyUnicode_FromString("unknown"));
+-#else
+-                PyString_FromString("unknown"));
+-#endif
+-    }
++              set_output_string(t,"unknown");
++      }
+ 
+-    lpx_delete_prob(lp);
++      Py_XDECREF(iocpParm);
++    glp_delete_prob(lp);
+ 
+     PyTuple_SET_ITEM(t, 1, Py_BuildValue(""));
+     return (PyObject *) t;
+@@ -819,10 +873,94 @@
+     NULL, NULL, NULL, NULL
+ };
+ 
++void addglpkConstants (void)
++{
++  PyModule_AddIntMacro(glpk_module, GLP_ON);
++  PyModule_AddIntMacro(glpk_module,GLP_OFF);
++
++  /* reason codes: */
++  PyModule_AddIntMacro(glpk_module,GLP_IROWGEN);
++  PyModule_AddIntMacro(glpk_module,GLP_IBINGO);
++  PyModule_AddIntMacro(glpk_module,GLP_IHEUR);
++  PyModule_AddIntMacro(glpk_module,GLP_ICUTGEN);
++  PyModule_AddIntMacro(glpk_module,GLP_IBRANCH);
++  PyModule_AddIntMacro(glpk_module,GLP_ISELECT);
++  PyModule_AddIntMacro(glpk_module,GLP_IPREPRO);
++
++  /* branch selection indicator: */
++  PyModule_AddIntMacro(glpk_module,GLP_NO_BRNCH);
++  PyModule_AddIntMacro(glpk_module,GLP_DN_BRNCH);
++  PyModule_AddIntMacro(glpk_module,GLP_UP_BRNCH);
++
++  /* return codes: */
++  PyModule_AddIntMacro(glpk_module,GLP_EBADB);
++  PyModule_AddIntMacro(glpk_module,GLP_ESING);
++  PyModule_AddIntMacro(glpk_module,GLP_ECOND);
++  PyModule_AddIntMacro(glpk_module,GLP_EBOUND);
++  PyModule_AddIntMacro(glpk_module,GLP_EFAIL);
++  PyModule_AddIntMacro(glpk_module,GLP_EOBJLL);
++  PyModule_AddIntMacro(glpk_module,GLP_EOBJUL);
++  PyModule_AddIntMacro(glpk_module,GLP_EITLIM);
++  PyModule_AddIntMacro(glpk_module,GLP_ETMLIM);
++  PyModule_AddIntMacro(glpk_module,GLP_ENOPFS);
++  PyModule_AddIntMacro(glpk_module,GLP_ENODFS);
++  PyModule_AddIntMacro(glpk_module,GLP_EROOT);
++  PyModule_AddIntMacro(glpk_module,GLP_ESTOP);
++  PyModule_AddIntMacro(glpk_module,GLP_EMIPGAP);
++  PyModule_AddIntMacro(glpk_module,GLP_ENOFEAS);
++  PyModule_AddIntMacro(glpk_module,GLP_ENOCVG);
++  PyModule_AddIntMacro(glpk_module,GLP_EINSTAB);
++  PyModule_AddIntMacro(glpk_module,GLP_EDATA);
++  PyModule_AddIntMacro(glpk_module,GLP_ERANGE);
++
++  /* condition indicator: */
++  PyModule_AddIntMacro(glpk_module,GLP_KKT_PE);
++  PyModule_AddIntMacro(glpk_module,GLP_KKT_PB);
++  PyModule_AddIntMacro(glpk_module,GLP_KKT_DE);
++  PyModule_AddIntMacro(glpk_module,GLP_KKT_DB);
++  PyModule_AddIntMacro(glpk_module,GLP_KKT_CS);
++
++  /* MPS file format: */
++  PyModule_AddIntMacro(glpk_module,GLP_MPS_DECK);
++  PyModule_AddIntMacro(glpk_module,GLP_MPS_FILE);
++
++  /* simplex method control parameters */
++  /* message level: */
++  PyModule_AddIntMacro(glpk_module,GLP_MSG_OFF);
++  PyModule_AddIntMacro(glpk_module,GLP_MSG_ERR);
++  PyModule_AddIntMacro(glpk_module,GLP_MSG_ON);
++  PyModule_AddIntMacro(glpk_module,GLP_MSG_ALL);
++  PyModule_AddIntMacro(glpk_module,GLP_MSG_DBG);
++  /* simplex method option: */
++  PyModule_AddIntMacro(glpk_module,GLP_PRIMAL);
++  PyModule_AddIntMacro(glpk_module,GLP_DUALP);
++  PyModule_AddIntMacro(glpk_module,GLP_DUAL);
++  /* pricing technique: */
++  PyModule_AddIntMacro(glpk_module,GLP_PT_STD);
++  PyModule_AddIntMacro(glpk_module,GLP_PT_PSE);
++  /* ratio test technique: */
++  PyModule_AddIntMacro(glpk_module,GLP_RT_STD);
++  PyModule_AddIntMacro(glpk_module,GLP_RT_HAR);
++
++  /* interior-point solver control parameters */
++  /* ordering algorithm: */
++  PyModule_AddIntMacro(glpk_module,GLP_ORD_NONE);
++  PyModule_AddIntMacro(glpk_module,GLP_ORD_QMD);
++  PyModule_AddIntMacro(glpk_module,GLP_ORD_AMD);
++  PyModule_AddIntMacro(glpk_module,GLP_ORD_SYMAMD);
++}
++
+ PyMODINIT_FUNC PyInit_glpk(void)
+ {
+   if (!(glpk_module = PyModule_Create(&glpk_module_def))) return NULL;
+-  PyModule_AddObject(glpk_module, "options", PyDict_New());
++  if (PyType_Ready(&iocp_t) < 0 || (PyType_Ready(&smcp_t) < 0)) return NULL;
++  /*  Adding macros */
++  addglpkConstants();
++  /* Adding  option lists as objects */
++  Py_INCREF(&smcp_t);
++  PyModule_AddObject(glpk_module,"smcp",(PyObject*)&smcp_t);
++  Py_INCREF(&iocp_t);
++  PyModule_AddObject(glpk_module,"iocp",(PyObject*)&iocp_t);
+   if (import_cvxopt() < 0) return NULL;
+   return glpk_module;
+ }
+@@ -832,8 +970,13 @@
+ PyMODINIT_FUNC initglpk(void)
+ {
+     glpk_module = Py_InitModule3("cvxopt.glpk", glpk_functions, 
+-        glpk__doc__);
+-    PyModule_AddObject(glpk_module, "options", PyDict_New());
++            glpk__doc__);
++    if (PyType_Ready(&iocp_t) < 0 || (PyType_Ready(&smcp_t) < 0)) return NULL;
++    addglpkConstants();
++    Py_INCREF(&smcp_t);
++    PyModule_AddObject(glpk_module,"smcp",(PyObject*)&smcp_t);
++    Py_INCREF(&iocp_t);
++    PyModule_AddObject(glpk_module,"iocp",(PyObject*)&iocp_t);
+     if (import_cvxopt() < 0) return;
+ }
+ 

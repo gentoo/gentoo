@@ -1,0 +1,26 @@
+--- tools/build.xml.orig	2006-10-02 10:18:43.000000000 +0200
++++ tools/build.xml	2006-10-02 10:21:34.000000000 +0200
+@@ -66,6 +66,7 @@
+   <javac srcdir="${tools.dir}" 
+       debug="${debug}"
+       source="${source}"
++	  target="${target}"
+       nowarn="${nowarn}"
+       destdir="${tools.build.dir}">
+     <classpath refid="classpath"/>
+@@ -77,6 +78,7 @@
+   <javac srcdir="${tools.dir}" 
+       debug="${debug}"
+       source="${source}"
++	  target="${target}"
+       nowarn="${nowarn}"
+       destdir="${tools.build.dir}">
+     <classpath refid="classpath"/>
+@@ -88,6 +90,7 @@
+   <javac srcdir="${tools.dir}"
+     debug="${debug}"
+     source="${source}"
++	target="${target}"
+     nowarn="${nowarn}"
+     destdir="${tools.build.dir}">
+     <classpath>

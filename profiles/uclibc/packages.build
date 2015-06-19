@@ -1,0 +1,4 @@
+# this should be added by nls only
+-sys-devel/gettext
+
+virtual/shadow

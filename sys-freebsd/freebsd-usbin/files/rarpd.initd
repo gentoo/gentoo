@@ -1,0 +1,35 @@
+#!/sbin/runscript
+# Copyright 2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-usbin/files/rarpd.initd,v 1.3 2007/02/23 14:03:08 uberlord Exp $
+
+depend() {
+	if [ -z "${RARPD_ONLY_INTERFACE}" ]; then
+		need net
+	else
+		need net."${RARPD_ONLY_INTERFACE}"
+	fi
+}
+
+start() {
+	local rarpd_opts
+
+	if [ -z "${RARPD_ONLY_INTERFACE}" ]; then
+		rarpd_opts="${rarpd_opts} -a"
+	else
+		rarpd_opts="${rarpd_opts} ${RARPD_ONLY_INTERFACE}"
+	fi
+
+	ebegin "Starting reverse ARP daemon"
+	start-stop-daemon --start --background \
+		--pidfile /var/run/rarpd.pid --make-pidfile \
+		--exec /usr/sbin/rarpd -- -f ${rarpd_opts}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping reverse ARP daemon"
+	start-stop-daemon --stop --pidfile /var/run/rarpd.pid \
+		--exec /usr/sbin/rarpd -- ${rarpd_opts}
+	eend $?
+}

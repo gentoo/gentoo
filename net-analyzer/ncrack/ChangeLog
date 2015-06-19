@@ -1,0 +1,16 @@
+# ChangeLog for net-analyzer/ncrack
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ncrack/ChangeLog,v 1.2 2011/05/17 21:22:32 hwoarang Exp $
+
+*ncrack-0.4_alpha (17 May 2011)
+
+  17 May 2011; Markos Chandras <hwoarang@gentoo.org> +ncrack-0.4_alpha.ebuild:
+  version bump
+
+*ncrack-0.3_alpha (01 Nov 2010)
+
+  01 Nov 2010; Markos Chandras <hwoarang@gentoo.org>
+  +ncrack-0.3_alpha.ebuild, +metadata.xml:
+  Moved from sunrise overlay. Bug #330783. Thanks to Michael Weber
+  <xmw@gentoo.org> for the ebuild
+

@@ -1,0 +1,23 @@
+diff --git a/Graphics/UI/Gtk/General/Structs.hsc b/Graphics/UI/Gtk/General/Structs.hsc
+index 2df0385..c1b8452 100644
+--- a/Graphics/UI/Gtk/General/Structs.hsc
++++ b/Graphics/UI/Gtk/General/Structs.hsc
+@@ -1,4 +1,5 @@
+ {-# LANGUAGE ScopedTypeVariables, TypeSynonymInstances #-}
++{-# LANGUAGE FlexibleInstances #-}
+ {-# OPTIONS_HADDOCK hide #-}
+ -- -*-haskell-*-
+ 
+diff --git a/gtk.cabal b/gtk.cabal
+index bd97975..aa7165f 100644
+--- a/gtk.cabal
++++ b/gtk.cabal
+@@ -126,7 +126,7 @@ Flag have-gio
+ 
+ Library
+         build-depends:  base >= 4 && < 5,
+-                        array, containers, haskell98, mtl, bytestring,
++                        array, containers, mtl, bytestring,
+                         glib  >= 0.12.0 && < 0.13,
+                         pango >= 0.12.0 && < 0.13,
+                         cairo >= 0.12.0 && < 0.13

@@ -1,0 +1,254 @@
+# ChangeLog for sys-apps/the_silver_searcher
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/the_silver_searcher/ChangeLog,v 1.50 2015/03/21 06:47:55 radhermit Exp $
+
+  21 Mar 2015; Tim Harder <radhermit@gentoo.org>
+  -the_silver_searcher-0.27.0.ebuild, -the_silver_searcher-0.28.0.ebuild:
+  Remove old.
+
+  21 Mar 2015; Tim Harder <radhermit@gentoo.org>
+  the_silver_searcher-0.29.1.ebuild:
+  Stabilize for amd64 and x86.
+
+*the_silver_searcher-0.29.1 (15 Feb 2015)
+
+  15 Feb 2015; Tim Harder <radhermit@gentoo.org>
+  +the_silver_searcher-0.29.1.ebuild:
+  Version bump.
+
+*the_silver_searcher-0.28.0 (04 Jan 2015)
+
+  04 Jan 2015; Tim Harder <radhermit@gentoo.org>
+  +the_silver_searcher-0.28.0.ebuild:
+  Version bump.
+
+  21 Dec 2014; Tim Harder <radhermit@gentoo.org>
+  -the_silver_searcher-0.18.ebuild, -the_silver_searcher-0.24.1.ebuild,
+  -the_silver_searcher-0.25.0.ebuild, -the_silver_searcher-0.26.0.ebuild:
+  Remove old.
+
+  21 Dec 2014; Tim Harder <radhermit@gentoo.org>
+  the_silver_searcher-0.27.0.ebuild:
+  Stabilize for amd64 and x86.
+
+*the_silver_searcher-0.27.0 (21 Nov 2014)
+
+  21 Nov 2014; Tim Harder <radhermit@gentoo.org>
+  +the_silver_searcher-0.27.0.ebuild:
+  Version bump.
+
+*the_silver_searcher-0.26.0 (28 Oct 2014)
+
+  28 Oct 2014; Tim Harder <radhermit@gentoo.org>
+  +the_silver_searcher-0.26.0.ebuild:
+  Version bump.
+
+*the_silver_searcher-0.25.0 (19 Oct 2014)
+
+  19 Oct 2014; Tim Harder <radhermit@gentoo.org>
+  -the_silver_searcher-0.14.ebuild, -the_silver_searcher-0.19.2.ebuild,
+  -the_silver_searcher-0.20.0.ebuild, -the_silver_searcher-0.21.0.ebuild,
+  -the_silver_searcher-0.22.0.ebuild, -the_silver_searcher-0.23.0.ebuild,
+  +the_silver_searcher-0.25.0.ebuild,
+  -files/the_silver_searcher-0.19.2-automagic-lzma.patch:
+  Version bump and remove old.
+
+*the_silver_searcher-0.24.1 (15 Aug 2014)
+
+  15 Aug 2014; Tim Harder <radhermit@gentoo.org>
+  +the_silver_searcher-0.24.1.ebuild:
+  Version bump.
+
+  16 Jul 2014; Mikle Kolyada <zlogene@gentoo.org>
+  the_silver_searcher-0.23.0.ebuild:
+  Add ~mips keyword wrt bug #517150
+
+*the_silver_searcher-0.23.0 (01 Jul 2014)
+
+  01 Jul 2014; Tim Harder <radhermit@gentoo.org>
+  +the_silver_searcher-0.23.0.ebuild:
+  Version bump.
+
+*the_silver_searcher-0.22.0 (13 May 2014)
+
+  13 May 2014; Tim Harder <radhermit@gentoo.org>
+  +the_silver_searcher-0.22.0.ebuild:
+  Version bump.
+
+*the_silver_searcher-0.21.0 (21 Mar 2014)
+
+  21 Mar 2014; Tim Harder <radhermit@gentoo.org>
+  +the_silver_searcher-0.21.0.ebuild:
+  Version bump.
+
+  13 Mar 2014; Tim Harder <radhermit@gentoo.org>
+  the_silver_searcher-0.20.0.ebuild:
+  Drop unused eutils eclass.
+
+*the_silver_searcher-0.20.0 (13 Mar 2014)
+
+  13 Mar 2014; Tim Harder <radhermit@gentoo.org>
+  +the_silver_searcher-0.20.0.ebuild:
+  Version bump, add zlib use flag.
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org> the_silver_searcher-0.18.ebuild:
+  amd64 stable, bug #495934
+
+*the_silver_searcher-0.19.2 (01 Mar 2014)
+
+  01 Mar 2014; Tim Harder <radhermit@gentoo.org>
+  +the_silver_searcher-0.19.2.ebuild,
+  +files/the_silver_searcher-0.19.2-automagic-lzma.patch, metadata.xml:
+  Version bump (bug #499588) and add myself as a maintainer.
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  the_silver_searcher-0.18.ebuild:
+  x86 stable wrt bug #495934
+
+*the_silver_searcher-0.18 (31 Oct 2013)
+
+  31 Oct 2013; Jeff Horelick <jdhore@gentoo.org>
+  +the_silver_searcher-0.18.ebuild, -the_silver_searcher-0.15.ebuild:
+  Version bump, remove old.
+
+*the_silver_searcher-0.15 (02 Sep 2013)
+
+  02 Sep 2013; Jeff Horelick <jdhore@gentoo.org>
+  +the_silver_searcher-0.15.ebuild:
+  Version bump
+
+  27 May 2013; Jeroen Roovers <jer@gentoo.org> the_silver_searcher-0.14.ebuild:
+  Marked ~hppa too.
+
+  27 May 2013; Jeff Horelick <jdhore@gentoo.org>
+  -the_silver_searcher-0.13.1.ebuild:
+  Remove old
+
+  26 May 2013; Agostino Sarubbo <ago@gentoo.org>
+  the_silver_searcher-0.14.ebuild:
+  Stable for x86, wrt bug #470572
+
+  23 May 2013; Agostino Sarubbo <ago@gentoo.org>
+  the_silver_searcher-0.14.ebuild:
+  Stable for amd64, wrt bug #470572
+
+  04 May 2013; Jeff Horelick <jdhore@gentoo.org>
+  the_silver_searcher-0.14.ebuild:
+  Keyword ~arm, ~ppc and ~ppc64, tested on all
+
+*the_silver_searcher-0.14 (06 Mar 2013)
+
+  06 Mar 2013; Jeff Horelick <jdhore@gentoo.org>
+  +the_silver_searcher-0.14.ebuild, -the_silver_searcher-0.12.ebuild,
+  -the_silver_searcher-0.8.ebuild:
+  Version bump and remove old
+
+  09 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  the_silver_searcher-0.13.1.ebuild:
+  Stable for amd64, wrt bug #456334
+
+  09 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  the_silver_searcher-0.13.1.ebuild:
+  Stable for x86, wrt bug #456334
+
+*the_silver_searcher-0.13.1 (25 Nov 2012)
+
+  25 Nov 2012; Jeff Horelick <jdhore@gentoo.org>
+  +the_silver_searcher-0.13.1.ebuild:
+  Version bump
+
+*the_silver_searcher-0.12 (20 Oct 2012)
+
+  20 Oct 2012; Jeff Horelick <jdhore@gentoo.org>
+  +the_silver_searcher-0.12.ebuild, -the_silver_searcher-0.7.1.ebuild:
+  Version bump
+
+  17 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  the_silver_searcher-0.8.ebuild:
+  x86 stable wrt bug #433355
+
+  10 Oct 2012; Agostino Sarubbo <ago@gentoo.org>
+  the_silver_searcher-0.8.ebuild:
+  Stable for amd64, wrt bug #433355
+
+*the_silver_searcher-0.8 (10 Jul 2012)
+
+  10 Jul 2012; Jeff Horelick <jdhore@gentoo.org>
+  +the_silver_searcher-0.8.ebuild:
+  Version bump.
+
+  20 Jun 2012; Jeff Horelick <jdhore@gentoo.org>
+  -the_silver_searcher-0.4.ebuild:
+  Remove old
+
+  20 Jun 2012; Jeff Horelick <jdhore@gentoo.org>
+  the_silver_searcher-0.7.1.ebuild:
+  marked x86 per bug 422191
+
+  19 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  the_silver_searcher-0.7.1.ebuild:
+  Stable for amd64, wrt bug #422191
+
+  19 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  the_silver_searcher-0.7.1.ebuild:
+  Add ~amd64-fbsd and ~x86-fbsd keywords.
+
+*the_silver_searcher-0.7.1 (12 May 2012)
+
+  12 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  +the_silver_searcher-0.7.1.ebuild, -the_silver_searcher-0.5.ebuild:
+  Version bump
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  the_silver_searcher-0.4.ebuild, the_silver_searcher-0.5.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  28 Apr 2012; Jeff Horelick <jdhore@gentoo.org>
+  the_silver_searcher-0.4.ebuild:
+  marked x86 per bug 413759
+
+  28 Apr 2012; Agostino Sarubbo <ago@gentoo.org>
+  the_silver_searcher-0.4.ebuild:
+  Stable for amd64, wrt bug #413759
+
+  27 Apr 2012; Jeff Horelick <jdhore@gentoo.org> the_silver_searcher-0.4.ebuild,
+  the_silver_searcher-0.5.ebuild:
+  Add dev-util/pkgconfig to DEPEND
+
+*the_silver_searcher-0.5 (15 Apr 2012)
+
+  15 Apr 2012; Jeff Horelick <jdhore@gentoo.org>
+  +the_silver_searcher-0.5.ebuild, -the_silver_searcher-0.2.ebuild,
+  -the_silver_searcher-0.3.ebuild:
+  Version bump and remove old.
+
+*the_silver_searcher-0.4 (23 Mar 2012)
+
+  23 Mar 2012; Jeff Horelick <jdhore@gentoo.org>
+  +the_silver_searcher-0.4.ebuild:
+  Version bump. Release early, release often i suppose. :)
+
+*the_silver_searcher-0.3 (19 Mar 2012)
+
+  19 Mar 2012; Jeff Horelick <jdhore@gentoo.org>
+  +the_silver_searcher-0.3.ebuild, -the_silver_searcher-0.1.ebuild:
+  Version bump and remove old.
+
+*the_silver_searcher-0.2 (14 Mar 2012)
+
+  14 Mar 2012; Jeff Horelick <jdhore@gentoo.org>
+  +the_silver_searcher-0.2.ebuild:
+  Version bump. Adds a manpage, stdin searching, performance improvements and
+  more.
+
+  04 Mar 2012; Jeff Horelick <jdhore@gentoo.org> metadata.xml:
+  Drop the proxy-maintainers herd as i maintain this package now.
+
+  24 Jan 2012; Jeff Horelick <jdhore@gentoo.org> metadata.xml:
+  Take full maintenance of this package now that I am a developer.
+
+*the_silver_searcher-0.1 (13 Jan 2012)
+
+  13 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +the_silver_searcher-0.1.ebuild:
+  Initial commit by Jeff Horelick

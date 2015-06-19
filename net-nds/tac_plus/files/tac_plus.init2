@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-nds/tac_plus/files/tac_plus.init2,v 1.1 2012/02/07 14:24:52 chainsaw Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting tac_plus"
+	start-stop-daemon --start --quiet --exec /usr/bin/tac_plus \
+		-- -C /etc/tac_plus/tac_plus.conf ${TAC_PLUS_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping tac_plus"
+	start-stop-daemon --stop --quiet --pidfile /var/run/tac_plus.pid
+	eend $?
+}

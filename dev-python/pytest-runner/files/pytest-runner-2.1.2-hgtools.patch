@@ -1,0 +1,17 @@
+ setup.py | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 2679782..271b3cf 100644
+--- a/setup.py
++++ b/setup.py
+@@ -26,9 +26,6 @@ setup_params = dict(
+ 		"Programming Language :: Python :: 2.7",
+ 		"Programming Language :: Python :: 3",
+ 	],
+-	setup_requires=[
+-		'hgtools',
+-	],
+ )
+ if __name__ == '__main__':
+ 	setuptools.setup(**setup_params)

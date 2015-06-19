@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install postinst
+DESCRIPTION=SimpServer for Unix: IM instant security transparent proxy
+HOMEPAGE=http://www.secway.com/
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=simpserver-test
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://download.secway.com/public/products/simpserver/simpserver-2.1.0-linux-x86.tgz
+_md5_=9e3d3386cbf86094470d42783111bbe4

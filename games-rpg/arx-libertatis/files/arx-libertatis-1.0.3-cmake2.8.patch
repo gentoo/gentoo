@@ -1,0 +1,36 @@
+From 1cd224fe2933edf33fa1fe7003fc6580e38217fa Mon Sep 17 00:00:00 2001
+From: Daniel Scharrer <daniel@constexpr.org>
+Date: Sat, 3 Nov 2012 04:43:42 +0100
+Subject: [PATCH] Fix build with CMake 2.8.10
+
+Previously we checked for SDL by using
+  find_package(SDL 1.2 EXACT)
+
+This worked with earlier CMake versions as the find script for SDL
+didn't provide any version, so CMake just ignored the '1.2 EXACT' part.
+
+In CMake 2.8.10, FindSDL.cmake reports the SDL version number as
+major.minor.patch, which is never exactly equal to 1.2.
+
+This commit relaxes the check by removing the 'EXACT' requirement.
+---
+ CMakeLists.txt |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 14ec2fe..5690176 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -145,7 +145,7 @@ if(USE_SDL)
+ 		# due to the need to have NSApplication correctly setup by SDLmain.
+ 		set(SDL_BUILDING_LIBRARY 1)
+ 	endif()
+-	find_package(SDL 1.2 EXACT)
++	find_package(SDL 1.2)
+ endif()
+ 
+ if(MSVC)
+-- 
+1.7.10
+
+

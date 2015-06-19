@@ -1,0 +1,159 @@
+# ChangeLog for app-portage/conf-update
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/conf-update/ChangeLog,v 1.39 2014/05/16 19:57:52 nimiux Exp $
+
+  16 May 2014; Chema Alonso <nimiux@gentoo.org> conf-update-1.0.2.ebuild,
+  metadata.xml:
+  Project moved to my dev space due to berlios shutdown
+
+  27 Feb 2014; Chema Alonso <nimiux@gentoo.org> -conf-update-1.0.ebuild,
+  -conf-update-1.0-r1.ebuild, -conf-update-1.0.1.ebuild,
+  -files/conf-update-1.0-asneeded.patch,
+  -files/conf-update-1.0-regex-classes.patch, metadata.xml:
+  Drop old versions
+
+  30 Sep 2012; Raúl Porcel <armin76@gentoo.org> conf-update-1.0.ebuild,
+  conf-update-1.0-r1.ebuild, conf-update-1.0.1.ebuild,
+  conf-update-1.0.2.ebuild:
+  Drop alpha keywords
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> conf-update-1.0.ebuild,
+  conf-update-1.0-r1.ebuild, conf-update-1.0.1.ebuild,
+  conf-update-1.0.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  25 Mar 2012; Brent Baude <ranger@gentoo.org> conf-update-1.0.2.ebuild:
+  Marking conf-update-1.0.2 ppc for bug 408903
+
+  22 Mar 2012; Jeff Horelick <jdhore@gentoo.org> conf-update-1.0.2.ebuild:
+  marked x86 per bug 408903
+
+  20 Mar 2012; Agostino Sarubbo <ago@gentoo.org> conf-update-1.0.2.ebuild:
+  Stable for amd64, wrt bug #408903
+
+  19 Feb 2012; Tobias Klausmann <klausman@gentoo.org> conf-update-1.0.1.ebuild:
+  Stable on alpha, bug #393703
+
+*conf-update-1.0.2 (17 Feb 2012)
+
+  17 Feb 2012; Sebastian Pipping <sping@gentoo.org> +conf-update-1.0.2.ebuild:
+  Fixes segfault (bug #402139, patch by Vincent Huisman), misc ebuild
+  improvements by Chema Alonso (nimiux)
+
+  04 Jan 2012; Brent Baude <ranger@gentoo.org> conf-update-1.0.1.ebuild:
+  Marking conf-update-1.0.1 ppc for bug 393703
+
+  14 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  conf-update-1.0.1.ebuild:
+  x86 stable wrt bug #393703
+
+  12 Dec 2011; Agostino Sarubbo <ago@gentoo.org> conf-update-1.0.1.ebuild:
+  Stable for AMD64, wrt bug #393703
+
+  09 Jan 2011; Brent Baude <ranger@gentoo.org> conf-update-1.0-r1.ebuild:
+  Marking conf-update-1.0-r1 ppc for bug 338414
+
+  05 Dec 2010; Raúl Porcel <armin76@gentoo.org> conf-update-1.0-r1.ebuild:
+  alpha stable wrt #338414
+
+*conf-update-1.0.1 (22 Oct 2010)
+
+  22 Oct 2010; Sebastian Pipping <sping@gentoo.org>
+  +conf-update-1.0.1.ebuild, metadata.xml:
+  Bump to 1.0.1 for nimiux
+
+  09 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  conf-update-1.0-r1.ebuild:
+  stable x86, bug 338414
+
+  09 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  conf-update-1.0-r1.ebuild:
+  Stable on amd64 wrt bug #338414
+
+*conf-update-1.0-r1 (04 Oct 2010)
+
+  04 Oct 2010; Sebastian Pipping <sping@gentoo.org>
+  +conf-update-1.0-r1.ebuild, +files/conf-update-1.0-regex-classes.patch:
+  Integrate Jan Psota's regex patch ("[:space:]" to "[[:space:]]") from bug
+  #338414
+
+  04 Jan 2009; Christoph Mende <angelos@gentoo.org>
+  +files/conf-update-1.0-asneeded.patch, conf-update-1.0.ebuild:
+  QA: Fix compilation with --as-needed (bug 246914)
+
+  03 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  15 Jun 2008; Zac Medico <zmedico@gentoo.org> conf-update-1.0.ebuild:
+  Bug #226505 - For compatibility with phase execution order in
+  >=portage-2.1.5, call has_version inside pkg_preinst instead of
+  pkg_postinst.
+
+  08 Apr 2007; Simon Stelling <blubb@gentoo.org> metadata.xml:
+  reassign to maintainer-needed
+
+  13 Nov 2006; Andrej Kacian <ticho@gentoo.org> conf-update-1.0.ebuild:
+  Stable on x86, bug #154802.
+
+  13 Nov 2006; Alexander H. Færøy <eroyf@gentoo.org>
+  conf-update-1.0.ebuild:
+  Stable on Alpha. Bug 154802.
+
+  12 Nov 2006; Luis Medinas <metalgod@gentoo.org> conf-update-1.0.ebuild:
+  Stable on amd64. Bug #154802.
+
+  11 Nov 2006; nixnut <nixnut@gentoo.org> conf-update-1.0.ebuild:
+  Stable on ppc wrt bug 154802
+
+  25 Oct 2006; Simon Stelling <blubb@gentoo.org> conf-update-1.0.ebuild:
+  update HOMEPAGE
+
+*conf-update-1.0 (09 Oct 2006)
+
+  09 Oct 2006; Simon Stelling <blubb@gentoo.org> -conf-update-0.12.0.ebuild,
+  +conf-update-1.0.ebuild:
+  version bump & cleanups
+
+  01 Oct 2006; Danny van Dyk <kugelfang@gentoo.org>
+  conf-update-0.12.0.ebuild:
+  Marked ~ppc.
+
+  17 Sep 2006; <blubb@gentoo.org> conf-update-0.12.0.ebuild:
+  fix bug 147912
+
+  16 Sep 2006; <blubb@gentoo.org> -conf-update-0.9.ebuild,
+  -conf-update-0.10.0.ebuild, -conf-update-0.11.0.ebuild:
+  version cleanups
+
+*conf-update-0.12.0 (16 Sep 2006)
+
+  16 Sep 2006; <blubb@gentoo.org> +conf-update-0.12.0.ebuild:
+  version bump
+
+*conf-update-0.11.0 (07 Sep 2006)
+
+  07 Sep 2006; <blubb@gentoo.org> +conf-update-0.11.0.ebuild:
+  version bump
+
+  31 Aug 2006; <blubb@gentoo.org> conf-update-0.10.0.ebuild:
+  drop the -Wno-pointer-sign as it's gcc-4 only
+
+*conf-update-0.10.0 (30 Aug 2006)
+
+  30 Aug 2006; <blubb@gentoo.org> +conf-update-0.10.0.ebuild:
+  version bump
+
+  21 Aug 2006; <blubb@gentoo.org> +metadata.xml, conf-update-0.9.ebuild:
+  fix bug 144633 and add the lost metadata.xml
+
+  21 Aug 2006; Thomas Cort <tcort@gentoo.org> conf-update-0.9.ebuild:
+  Added ~alpha keyword.
+
+  21 Aug 2006; Simon Stelling <blubb@gentoo.org> conf-update-0.9.ebuild:
+  remove unnecessary src_compile
+
+*conf-update-0.9 (20 Aug 2006)
+
+  20 Aug 2006; Simon Stelling <blubb@gentoo.org> +conf-update-0.9.ebuild:
+  initial import by me
+

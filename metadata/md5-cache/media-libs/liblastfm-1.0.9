@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtnetwork:5 dev-qt/qtxml:5 ) fingerprint? ( media-libs/libsamplerate sci-libs/fftw:3.0 qt4? ( dev-qt/qtsql:4 ) qt5? ( dev-qt/qtsql:5 ) ) test? ( qt4? ( dev-qt/qttest:4 ) qt5? ( dev-qt/qttest:5 ) ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Collection of libraries to integrate Last.fm services
+EAPI=5
+HOMEPAGE=https://github.com/lastfm/liblastfm
+IUSE=fingerprint test +qt4 qt5
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3
+RDEPEND=qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtnetwork:5 dev-qt/qtxml:5 ) fingerprint? ( media-libs/libsamplerate sci-libs/fftw:3.0 qt4? ( dev-qt/qtsql:4 ) qt5? ( dev-qt/qtsql:5 ) ) !<media-libs/lastfmlib-0.4.0
+REQUIRED_USE=|| ( qt4 qt5 )
+RESTRICT=test
+SLOT=0/0
+SRC_URI=https://github.com/lastfm/liblastfm/archive/1.0.9.tar.gz -> liblastfm-1.0.9.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ef79d60c9cc79f4c8c333dd2645306b7

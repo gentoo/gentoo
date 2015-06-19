@@ -1,0 +1,120 @@
+# ChangeLog for sys-apps/lomoco
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/lomoco/ChangeLog,v 1.26 2014/08/10 20:24:33 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> lomoco-1.0-r9.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  30 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> lomoco-1.0-r9.ebuild:
+  Use shorter get_udevdir() instead of the longer deprecated udev_get_udevdir()
+  version.
+
+  11 Dec 2012; Samuli Suominen <ssuominen@gentoo.org> lomoco-1.0-r9.ebuild:
+  Port to udev.eclass.
+
+  11 Dec 2012; Samuli Suominen <ssuominen@gentoo.org> -lomoco-1.0-r7.ebuild,
+  -lomoco-1.0-r8.ebuild:
+  old
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org> lomoco-1.0-r9.ebuild:
+  Stable for x86, wrt bug #441514
+
+  06 Nov 2012; <ago@gentoo.org> lomoco-1.0-r9.ebuild:
+  Stable for amd64, wrt bug #441514
+
+*lomoco-1.0-r9 (22 Sep 2012)
+
+  22 Sep 2012; Markos Chandras <hwoarang@gentoo.org> +lomoco-1.0-r9.ebuild,
+  files/lomoco-1.0-gentoo-hardware-support.patch:
+  Add patch for logitech MX-518. Thanks to Roman Porizka and Anton Bolshakov.
+  Bug #392583
+
+*lomoco-1.0-r8 (19 Aug 2012)
+
+  19 Aug 2012; Markos Chandras <hwoarang@gentoo.org> +lomoco-1.0-r8.ebuild,
+  files/lomoco-1.0-updated-udev.patch, files/lomoco.conf, metadata.xml:
+  New revbump to fix problems with suspend/hibernate. Bug #345351. Thanks to
+  Anton Bolshakov <anton.bugs@gmail.com> for the patches. He will proxy-
+  maintainer it
+
+  14 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> -lomoco-1.0-r4.ebuild,
+  -lomoco-1.0-r6.ebuild, -files/lomoco-pm-utils:
+  old
+
+  14 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> lomoco-1.0-r7.ebuild:
+  amd64/x86 stable wrt #431264
+
+*lomoco-1.0-r7 (13 Aug 2012)
+
+  13 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> +lomoco-1.0-r7.ebuild,
+  +files/lomoco-pm-utils-r1:
+  Use udevdir value from udev.pc pkg-config file to determine correct install
+  path(s) for the helpers and rules wrt #362821 by Anton Bolshakov
+
+  08 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Drop myself out of metadata.
+
+*lomoco-1.0-r6 (05 Apr 2011)
+
+  05 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org> -lomoco-1.0-r5.ebuild,
+  +lomoco-1.0-r6.ebuild:
+  Fix lomoco-helper call in udev rules; thanks to Hans Nieser in bug #362027.
+
+*lomoco-1.0-r5 (27 Mar 2011)
+
+  27 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org> -lomoco-1.0-r2.ebuild,
+  +lomoco-1.0-r5.ebuild, +files/lomoco-pm-utils, metadata.xml:
+  Remove old version; revision bump to fix bug #345351 by Anton Bolsharov.
+
+  28 Jan 2011; Markos Chandras <hwoarang@gentoo.org> lomoco-1.0-r4.ebuild:
+  Stable on amd64 wrt bug #352993
+
+*lomoco-1.0-r4 (27 Jan 2011)
+
+  27 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org> -lomoco-1.0-r3.ebuild,
+  +lomoco-1.0-r4.ebuild:
+  Install udev rules in /lib rather than /etc (they are not user-editable);
+  update homepage and fetch uri.
+
+*lomoco-1.0-r3 (07 Mar 2010)
+
+  07 Mar 2010; Benedikt Böhm <hollow@gentoo.org> -lomoco-1.0-r1.ebuild,
+  lomoco-1.0-r2.ebuild, +lomoco-1.0-r3.ebuild,
+  files/lomoco-1.0-updated-udev.patch, metadata.xml:
+  fix udev issues: bug #156665 and #299739
+
+  16 May 2009; Robin H. Johnson <robbat2@gentoo.org> lomoco-1.0-r1.ebuild,
+  lomoco-1.0-r2.ebuild:
+  Migration to virtual/libusb. Verified by code inspection.
+
+*lomoco-1.0-r2 (30 Jul 2007)
+
+  30 Jul 2007; Benedikt Böhm <hollow@gentoo.org>
+  +files/lomoco-1.0-updated-udev.patch, +files/lomoco.conf,
+  -lomoco-1.0.ebuild, +lomoco-1.0-r2.ebuild:
+  include udev support, fixes #156665
+
+  15 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  29 Nov 2006; Olivier Crête <tester@gentoo.org> lomoco-1.0-r1.ebuild:
+  Stable on amd64
+
+*lomoco-1.0-r1 (30 Apr 2006)
+
+  30 Apr 2006; Robin H. Johnson <robbat2@gentoo.org>
+  +files/lomoco-1.0-gentoo-hardware-support.patch, +lomoco-1.0-r1.ebuild:
+  Re-add support for hardware that Gentoo supported in lmctl, and other
+  changes that were previously sent upstream but seem to have been dropped.
+
+  22 Apr 2006; Thomas Cort <tcort@gentoo.org> lomoco-1.0.ebuild:
+  Added ~alpha keyword. Tested by Mike Hlavac <mike@flyingpenguins.org>.
+
+  22 Apr 2006; Benedikt Boehm <hollow@gentoo.org> lomoco-1.0.ebuild:
+  fix #130777
+
+*lomoco-1.0 (20 Apr 2006)
+
+  20 Apr 2006; Benedikt Boehm <hollow@gentoo.org> +metadata.xml,
+  +lomoco-1.0.ebuild:
+  initial version, thanks to Ruud Althuizen <ruud@il.fontys.nl>, fixes #117622

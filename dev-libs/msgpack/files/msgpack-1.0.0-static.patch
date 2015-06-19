@@ -1,0 +1,40 @@
+--- msgpack-1.0.0/CMakeLists.txt
++++ msgpack-1.0.0/CMakeLists.txt
+@@ -17,6 +17,7 @@
+ 
+ OPTION (MSGPACK_CXX11 "Using c++11 compiler" OFF)
+ OPTION (MSGPACK_32BIT "32bit compile" OFF)
++OPTION (MSGPACK_STATIC "Build static library" ON)
+ 
+ IF (MSGPACK_CXX11)
+    IF ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+@@ -196,12 +197,15 @@
+     ${msgpack_HEADERS}
+ )
+ 
+-ADD_LIBRARY (msgpack-static STATIC
+-    ${msgpack_SOURCES}
+-    ${msgpack_HEADERS}
+-)
++IF (MSGPACK_STATIC)
++    ADD_LIBRARY (msgpack-static STATIC
++        ${msgpack_SOURCES}
++        ${msgpack_HEADERS}
++    )
++    SET_TARGET_PROPERTIES (msgpack-static PROPERTIES OUTPUT_NAME "msgpack")
++    INSTALL (TARGETS msgpack-static DESTINATION ${CMAKE_INSTALL_LIBDIR})
++ENDIF ()
+ 
+-SET_TARGET_PROPERTIES (msgpack-static PROPERTIES OUTPUT_NAME "msgpack")
+ SET_TARGET_PROPERTIES (msgpack PROPERTIES IMPORT_SUFFIX "_import.lib")
+ SET_TARGET_PROPERTIES (msgpack PROPERTIES SOVERSION 3 VERSION 4.0.0)
+ 
+@@ -233,7 +237,7 @@
+     SET(CMAKE_INSTALL_LIBDIR lib)
+ ENDIF ()
+ 
+-INSTALL (TARGETS msgpack msgpack-static DESTINATION ${CMAKE_INSTALL_LIBDIR})
++INSTALL (TARGETS msgpack DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ INSTALL (DIRECTORY include DESTINATION ${CMAKE_INSTALL_PREFIX})
+ INSTALL (FILES ${CMAKE_CURRENT_BINARY_DIR}/msgpack.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ 

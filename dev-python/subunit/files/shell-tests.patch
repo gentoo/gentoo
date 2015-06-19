@@ -1,0 +1,24 @@
+diff -ur subunit-0.0.10.orig/shell/tests/test_function_output.sh subunit-0.0.10/shell/tests/test_function_output.sh
+--- shell/tests/test_function_output.sh	2013-06-17 19:02:34.378260908 +0800
++++ tests/test_function_output.sh	2013-06-17 19:03:49.082260928 +0800
+@@ -22,7 +22,7 @@
+ # it is assumed that we are running from the 'shell' tree root in the source
+ # of subunit, and that the library sourcing tests have all passed - if they 
+ # have not, this test script may well fail strangely.
+-
++SHELL_SHARE="shell/share/"
+ # import the library.
+ . ${SHELL_SHARE}subunit.sh
+ 
+diff -ur subunit-0.0.10.orig/shell/tests/test_source_library.sh subunit-0.0.10/shell/tests/test_source_library.sh
+--- shell/tests/test_source_library.sh	2013-06-17 19:03:01.322260915 +0800
++++ shell/tests/test_source_library.sh	2013-06-17 18:53:46.634260762 +0800
+@@ -20,7 +20,7 @@
+ # bindings being complete yet.
+ 
+ # we expect to be run from the tree root.
+-
++SHELL_SHARE="shell/share/"
+ echo 'test: shell bindings can be sourced'
+ # if any output occurs, this has failed to source cleanly
+ source_output=$(. ${SHELL_SHARE}subunit.sh 2>&1)

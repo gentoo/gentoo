@@ -1,0 +1,446 @@
+# ChangeLog for www-apps/moinmoin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/moinmoin/ChangeLog,v 1.99 2015/04/08 18:29:22 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> moinmoin-1.9.7-r1.ebuild:
+  Drop old Python implementations
+
+  26 Jan 2014; Tim Harder <radhermit@gentoo.org> -moinmoin-1.9.6.ebuild,
+  -moinmoin-1.9.7.ebuild:
+  Remove old.
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> moinmoin-1.9.7-r1.ebuild:
+  Stable for x86, wrt bug #494464
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> moinmoin-1.9.7-r1.ebuild:
+  amd64 stable, bug #494464
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> moinmoin-1.9.7-r1.ebuild:
+  Stable for ppc, wrt bug #494464
+
+  17 Jun 2013; Patrick Lauer <patrick@gentoo.org> moinmoin-1.9.7-r1.ebuild,
+  moinmoin-1.9.7.ebuild:
+  Fix python targets as flask was downrated
+
+*moinmoin-1.9.7-r1 (21 Apr 2013)
+
+  21 Apr 2013; Tim Harder <radhermit@gentoo.org> +moinmoin-1.9.7-r1.ebuild:
+  Revbump to fix shebangs (bug #466390).
+
+  18 Apr 2013; Tim Harder <radhermit@gentoo.org> moinmoin-1.9.7.ebuild:
+  Update werkzeug dep since a version uses distutils-r1 now.
+
+*moinmoin-1.9.7 (17 Mar 2013)
+
+  17 Mar 2013; Tim Harder <radhermit@gentoo.org> +moinmoin-1.9.7.ebuild:
+  Version bump, migrate to distutils-r1.
+
+  05 Jan 2013; Tim Harder <radhermit@gentoo.org> -moinmoin-1.9.5.ebuild:
+  Remove old, insecure version.
+
+  04 Jan 2013; Agostino Sarubbo <ago@gentoo.org> moinmoin-1.9.6.ebuild:
+  Stable for ppc, wrt bug #449314
+
+  02 Jan 2013; Agostino Sarubbo <ago@gentoo.org> moinmoin-1.9.6.ebuild:
+  Stable for x86, wrt bug #449314
+
+  02 Jan 2013; Agostino Sarubbo <ago@gentoo.org> moinmoin-1.9.6.ebuild:
+  Stable for amd64, wrt bug #449314
+
+*moinmoin-1.9.6 (01 Jan 2013)
+
+  01 Jan 2013; Tim Harder <radhermit@gentoo.org> +moinmoin-1.9.6.ebuild:
+  Version bump.
+
+  30 Nov 2012; Tim Harder <radhermit@gentoo.org> -moinmoin-1.8.8.ebuild,
+  -moinmoin-1.9.4.ebuild, -files/reconfig-3, -files/postinstall-en.txt:
+  Remove old.
+
+  27 Sep 2012; Andreas Schuerch <nativemad@gentoo.org> moinmoin-1.9.5.ebuild:
+  x86 stable, see bug 433898
+
+  25 Sep 2012; Anthony G. Basile <blueness@gentoo.org> moinmoin-1.9.5.ebuild:
+  stable ppc, bug #433898
+
+  25 Sep 2012; Agostino Sarubbo <ago@gentoo.org> moinmoin-1.9.5.ebuild:
+  Stable for amd64, wrt bug #433898
+
+*moinmoin-1.9.5 (24 Sep 2012)
+
+  24 Sep 2012; Tim Harder <radhermit@gentoo.org> +moinmoin-1.9.5.ebuild:
+  Version bump.
+
+  22 Sep 2012; Anthony G. Basile <blueness@gentoo.org> moinmoin-1.9.4.ebuild:
+  keyword ~arm, bug #433978
+
+  22 Sep 2012; Anthony G. Basile <blueness@gentoo.org> moinmoin-1.9.4.ebuild:
+  keyword ~ppc, bug #433978
+
+  18 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  13 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> moinmoin-1.9.4.ebuild:
+  x86 stable wrt bug #339295
+
+  09 Sep 2012; Raúl Porcel <armin76@gentoo.org> moinmoin-1.8.8.ebuild:
+  Drop sparc keywords
+
+  06 Sep 2012; Agostino Sarubbo <ago@gentoo.org> moinmoin-1.9.4.ebuild:
+  Stable for amd64, wrt bug #339295
+
+  05 Sep 2012; Mike Gilbert <floppym@gentoo.org> moinmoin-1.9.4.ebuild:
+  Require Python[xml]. Patch by Arfrever.
+
+*moinmoin-1.9.4 (05 Sep 2012)
+
+  05 Sep 2012; Tim Harder <radhermit@gentoo.org> +files/reconfig-1.9.4,
+  +moinmoin-1.9.4.ebuild, +files/postinstall-en-1.9.4.txt:
+  Version bump (bug #374389 by Robert Trace).
+
+  20 Apr 2011; Tim Harder <radhermit@gentoo.org> moinmoin-1.8.8.ebuild:
+  Restrict to at most dev-lang/python-2.6* since 2.7 won't work.
+
+  10 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  moinmoin-1.8.8.ebuild:
+  Use Python 2 (bug #316969).
+
+  03 Dec 2010; Michael Weber <xmw@gentoo.org> moinmoin-1.8.4.ebuild,
+  moinmoin-1.8.8.ebuild:
+  added ~arm (bug 302981)
+
+  30 Oct 2010; Raúl Porcel <armin76@gentoo.org> moinmoin-1.8.8.ebuild:
+  sparc stable wrt #305663
+
+  15 Oct 2010; Brent Baude <ranger@gentoo.org> moinmoin-1.8.8.ebuild:
+  Marking moinmoin-1.8.8 ppc for bug 305663
+
+  13 Oct 2010; Markus Meier <maekke@gentoo.org> moinmoin-1.8.8.ebuild:
+  x86 stable, bug #305663
+
+  13 Oct 2010; Markos Chandras <hwoarang@gentoo.org> moinmoin-1.8.8.ebuild:
+  Stable on amd64 wrt bug #305663
+
+*moinmoin-1.8.8 (13 Oct 2010)
+
+  13 Oct 2010; Tim Harder <radhermit@gentoo.org> +moinmoin-1.8.8.ebuild,
+  files/postinstall-en.txt:
+  Version bump to latest security release for bug #339295 and security bugs
+  #305663 and #334697. Bump to EAPI=3, use PYTHON_DEPEND, and update dead
+  links.
+
+  26 Jun 2009; Alex Legler <a3li@gentoo.org> -moinmoin-1.8.1.ebuild:
+  Removing vulnerable version, security bug 268565.
+
+  21 Jun 2009; Brent Baude <ranger@gentoo.org> moinmoin-1.8.4.ebuild:
+  Marking moinmoin-1.8.4 ppc for bug 268565
+
+  14 Jun 2009; Raúl Porcel <armin76@gentoo.org> moinmoin-1.8.4.ebuild:
+  sparc stable wrt #268565
+
+  12 Jun 2009; <chainsaw@gentoo.org> moinmoin-1.8.4.ebuild:
+  Marked stable on AMD64. Tested on a dual dual-core Opteron 2218 system
+  using Apache 2.2.11 and mod_fcgid 2.2. For security bugs #268565 and
+  #273858.
+
+  12 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  moinmoin-1.8.4.ebuild:
+  stable x86, security bug 268565
+
+  11 Jun 2009; Alex Legler <a3li@gentoo.org> -moinmoin-1.7.1.ebuild,
+  -moinmoin-1.7.3.ebuild:
+  Non-maintainer commit: Removing vulnerable versions
+
+*moinmoin-1.8.4 (11 Jun 2009)
+*moinmoin-1.7.3 (11 Jun 2009)
+
+  11 Jun 2009; Alex Legler <a3li@gentoo.org> +moinmoin-1.7.3.ebuild,
+  +moinmoin-1.8.4.ebuild:
+  Non-maintainer commit: Version bumps for security bugs 256621 and 268565.
+
+  01 Feb 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  moinmoin-1.8.1.ebuild:
+  ppc stable, bug #256128
+
+  27 Jan 2009; Raúl Porcel <armin76@gentoo.org> moinmoin-1.8.1.ebuild:
+  x86 stable wrt #256128
+
+  26 Jan 2009; Ferris McCormick <fmccor@gentoo.org> moinmoin-1.8.1.ebuild:
+  Sparc stable, Security Bug #256128.
+
+  26 Jan 2009; Dawid Węgliński <cla@gentoo.org> moinmoin-1.8.1.ebuild:
+  Stable on amd64 (bug #256128)
+
+*moinmoin-1.8.1 (26 Jan 2009)
+
+  26 Jan 2009; <chainsaw@gentoo.org> +moinmoin-1.8.1.ebuild:
+  Version bump for security bug #256128.
+
+  05 Aug 2008; wrobel@gentoo.org -moinmoin-1.6.3.ebuild:
+  Removed vulnerable moinmoin-1.6.3.
+
+  04 Aug 2008; Tobias Heinlein <keytoaster@gentoo.org>
+  moinmoin-1.7.1.ebuild:
+  amd64 stable wrt security bug #233560
+
+  03 Aug 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  moinmoin-1.7.1.ebuild:
+  ppc stable, bug #233560
+
+  01 Aug 2008; Raúl Porcel <armin76@gentoo.org> moinmoin-1.7.1.ebuild:
+  sparc/x86 stable wrt #233560
+
+*moinmoin-1.7.1 (01 Aug 2008)
+
+  01 Aug 2008; wrobel@gentoo.org +files/reconfig-3, -moinmoin-1.6.1.ebuild,
+  +moinmoin-1.7.1.ebuild:
+  Added moinmoin-1.7.1 wrt sec issue #233560.
+
+  28 Apr 2008; Raúl Porcel <armin76@gentoo.org> moinmoin-1.6.3.ebuild:
+  sparc stable wrt security #218752
+
+  28 Apr 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  moinmoin-1.6.3.ebuild:
+  ppc stable, bug #218752
+
+  26 Apr 2008; Markus Meier <maekke@gentoo.org> moinmoin-1.6.3.ebuild:
+  amd64/x86 stable, security bug #218752
+
+*moinmoin-1.6.3 (25 Apr 2008)
+
+  25 Apr 2008; Benedikt Böhm <hollow@gentoo.org> +moinmoin-1.6.3.ebuild:
+  version bump wrt security #218752
+
+  26 Feb 2008; Gunnar Wrobel <wrobel@gentoo.org> -moinmoin-1.5.8.ebuild:
+  Removed vulnerable version (sec issue #209133)
+
+  25 Feb 2008; Steve Dibb <beandog@gentoo.org> moinmoin-1.6.1.ebuild:
+  amd64 stable, security bug 209133
+
+  24 Feb 2008; Raúl Porcel <armin76@gentoo.org> moinmoin-1.6.1.ebuild:
+  sparc stable wrt #209133
+
+  19 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  moinmoin-1.6.1.ebuild:
+  ppc stable, bug #209133
+
+  16 Feb 2008; Markus Meier <maekke@gentoo.org> moinmoin-1.6.1.ebuild:
+  x86 stable, security bug #209133
+
+*moinmoin-1.6.1 (15 Feb 2008)
+
+  15 Feb 2008; Gunnar Wrobel <wrobel@gentoo.org> -moinmoin-1.5.7.ebuild,
+  -moinmoin-1.6.0.ebuild, +moinmoin-1.6.1.ebuild:
+  Added moinmoin-1.6.1 in response to sec issue #209133.
+
+  25 Jan 2008; Gunnar Wrobel <wrobel@gentoo.org> moinmoin-1.6.0.ebuild:
+  Fixed homepage in 1.6.0. (#207218).
+
+*moinmoin-1.6.0 (23 Jan 2008)
+
+  23 Jan 2008; Gunnar Wrobel <wrobel@gentoo.org> +moinmoin-1.6.0.ebuild:
+  Added moinmoin-1.6.0 (#206512).
+
+  02 Jun 2007; nixnut <nixnut@gentoo.org> moinmoin-1.5.8.ebuild:
+  Stable on ppc wrt bug 177604
+
+  31 May 2007; Christoph Mende <angelos@gentoo.org> moinmoin-1.5.8.ebuild:
+  Stable on amd64 wrt security bug 177604
+
+  31 May 2007; Gustavo Zacarias <gustavoz@gentoo.org> moinmoin-1.5.8.ebuild:
+  Stable on sparc wrt security #177604
+
+  31 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  moinmoin-1.5.8.ebuild:
+  stable x86, security bug 177604
+
+*moinmoin-1.5.8 (28 May 2007)
+
+  28 May 2007; Renat Lumpau <rl03@gentoo.org> +moinmoin-1.5.8.ebuild:
+  Version bump
+
+  20 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  moinmoin-1.5.7.ebuild:
+  stable amd64, bug 176342
+
+  13 Feb 2007; Renat Lumpau <rl03@gentoo.org> -moinmoin-1.5.6.ebuild:
+  Clean out old version
+
+  12 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org> moinmoin-1.5.7.ebuild:
+  Stable on sparc wrt security #166022
+
+  11 Feb 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  moinmoin-1.5.7.ebuild:
+  Stable on ppc wrt bug #166022.
+
+  11 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  moinmoin-1.5.7.ebuild:
+  stable x86; security bug #166022
+
+*moinmoin-1.5.7 (07 Feb 2007)
+
+  07 Feb 2007; Renat Lumpau <rl03@gentoo.org> -moinmoin-1.3.5-r1.ebuild,
+  +moinmoin-1.5.7.ebuild:
+  Version bump
+
+  22 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org> moinmoin-1.5.6.ebuild:
+  Stable on sparc wrt #159855
+
+  12 Jan 2007; nixnut <nixnut@gentoo.org> moinmoin-1.5.6.ebuild:
+  Stable on ppc wrt bug 159855
+
+  09 Jan 2007; Andrej Kacian <ticho@gentoo.org> moinmoin-1.5.6.ebuild:
+  Stable on x86, bug #159855.
+
+*moinmoin-1.5.6 (29 Oct 2006)
+
+  29 Oct 2006; Renat Lumpau <rl03@gentoo.org> -moinmoin-1.5.4.ebuild,
+  -moinmoin-1.5.5a.ebuild, +moinmoin-1.5.6.ebuild:
+  Version bump; Fix homepage (bug #153106).
+
+*moinmoin-1.5.5a (22 Sep 2006)
+
+  22 Sep 2006; Renat Lumpau <rl03@gentoo.org> +moinmoin-1.5.5a.ebuild:
+  Version bump
+
+  24 Jul 2006; Renat Lumpau <rl03@gentoo.org> -moinmoin-1.2.3.ebuild:
+  Housecleaning
+
+  11 Jul 2006; Joshua Jackson <tsunam@gentoo.org> moinmoin-1.3.5-r1.ebuild:
+  Stable x86; bug #134760
+
+  08 Jul 2006; Lars Weiler <pylon@gentoo.org> moinmoin-1.3.5-r1.ebuild:
+  Stable on ppc; bug #134760.
+
+  06 Jul 2006; Jason Wever <weeve@gentoo.org> moinmoin-1.3.5-r1.ebuild:
+  Stable on SPARC wrt bug #134760.
+
+*moinmoin-1.5.4 (02 Jul 2006)
+
+  02 Jul 2006; Renat Lumpau <rl03@gentoo.org> -moinmoin-1.5.3.ebuild,
+  +moinmoin-1.5.4.ebuild:
+  Version bump
+
+*moinmoin-1.5.3 (23 Apr 2006)
+
+  23 Apr 2006; Renat Lumpau <rl03@gentoo.org> -moinmoin-1.5.2.ebuild,
+  +moinmoin-1.5.3.ebuild:
+  Version bump
+
+*moinmoin-1.5.2 (14 Feb 2006)
+
+  14 Feb 2006; Renat Lumpau <rl03@gentoo.org> -moinmoin-1.5.1.ebuild,
+  +moinmoin-1.5.2.ebuild:
+  Vbump, depend on new docutils wrt bug #121765.
+
+*moinmoin-1.5.1 (23 Jan 2006)
+
+  23 Jan 2006; Renat Lumpau <rl03@gentoo.org> -files/reconfig,
+  -moinmoin-1.2.2.ebuild, -moinmoin-1.2.3-r1.ebuild, -moinmoin-1.3.3.ebuild,
+  -moinmoin-1.5.0.ebuild, +moinmoin-1.5.1.ebuild:
+  Version bump, cleaned out old versions
+
+*moinmoin-1.5.0 (07 Jan 2006)
+
+  07 Jan 2006; Renat Lumpau <rl03@gentoo.org> +moinmoin-1.5.0.ebuild:
+  Version bump.
+
+*moinmoin-1.3.5-r1 (03 Dec 2005)
+
+  03 Dec 2005; Renat Lumpau <rl03@gentoo.org> +files/reconfig-2,
+  -moinmoin-1.3.5.ebuild, +moinmoin-1.3.5-r1.ebuild:
+  Fixes bug #113827.
+
+*moinmoin-1.3.5 (28 Aug 2005)
+
+  28 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
+  +files/reconfig, +moinmoin-1.3.5.ebuild:
+  Version bump, close bugs #74939, #68848
+
+  24 Jun 2005; Christian Parpart <trapni@gentoo.org>
+  files/postinstall-en.txt:
+  little typofix in postinst-en.txt
+
+  10 Mar 2005; Grant Goodyear <g2boojum@gentoo.org>
+  files/postinstall-en.txt:
+  Modified post-install directions to handle our new apache config.
+
+*moinmoin-1.3.3 (08 Feb 2005)
+
+  08 Feb 2005; Grant Goodyear <g2boojum@gentoo.org> +moinmoin-1.3.3.ebuild:
+  Version bump, needs serious testing.  Hopefully bugs will be 
+  added to bug 74939.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  moinmoin-1.2.2.ebuild, moinmoin-1.2.3.ebuild:
+  Masked moinmoin-1.2.3.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  moinmoin-1.2.2.ebuild:
+  Masked moinmoin-1.2.2.ebuild stable for ppc
+
+*moinmoin-1.2.3-r1 (27 Aug 2004)
+
+  27 Aug 2004; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
+  +moinmoin-1.2.3-r1.ebuild:
+  Uses webapp.eclass. Closes #58381, see also 57913.
+
+*moinmoin-1.2.3 (16 Aug 2004)
+
+  16 Aug 2004; Grant Goodyear <g2boojum@gentoo.org> +files/postinstall-en.txt,
+  +moinmoin-1.2.3.ebuild:
+  Version / security bump (bug 57913).
+  I think that 58381 still needs work before it can be added.
+
+*moinmoin-1.2.2 (15 Aug 2004)
+
+  15 Aug 2004; Stuart Herbert <stuart@gentoo.org> +metadata.xml,
+  +moinmoin-1.2.2.ebuild:
+  Moved from net-www/moinmoin to www-apps/moinmoin.
+
+  17 Jul 2004; David Holm <dholm@gentoo.org> moinmoin-1.2.2.ebuild:
+  Added to ~ppc.
+
+  09 Jul 2004; Jason Wever <weeve@gentoo.org> moinmoin-1.2.2.ebuild:
+  Stable on sparc wrt bug #53126.
+
+*moinmoin-1.2.2 (08 Jul 2004)
+
+  08 Jul 2004; Grant Goodyear <g2boojum@gentoo.org> -moinmoin-1.0.ebuild,
+  -moinmoin-1.2.1.ebuild, +moinmoin-1.2.2.ebuild:
+  Version and security bump
+
+  21 Apr 2004; Martin Holzer <mholzer@gentoo.org> moinmoin-1.0.ebuild,
+  moinmoin-1.2.1.ebuild:
+  moving webapp-detect into pkg_setup. closes 48356
+
+  30 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> moinmoin-1.2.1.ebuild:
+  Adding amd64 keyword. Closing #45757.
+
+*moinmoin-1.2.1 (17 Mar 2004)
+
+  15 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> moinmoin-1.0.ebuild:
+  move webapp-detect into pkg_setup() so it doesn't get run at dep creation time
+
+  15 Dec 2003; Stuart Herbert <stuart@gentoo.org> moinmoin-1.0.ebuild:
+  Fix for bug #32636
+
+  08 Dec 2003; <spider@gentoo.org> moinmoin-1.0.ebuild:
+  fixing a chown. to chown:
+
+  16 Nov 2003; Martin Holzer <mholzer@gentoo.org> moinmoin-1.0.ebuild:
+  added webapps-apache.eclass. Closes #33319
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*moinmoin-1.0 (4 June 2002)
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> moinmoin-1.0.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  4 June 2002; Grant Goodyear <g2boojum@gentoo.org> moinmoin-1.0.ebuild :
+  
+  New package.
+  

@@ -1,0 +1,295 @@
+# ChangeLog for app-text/docbook-xml-simple-dtd
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/docbook-xml-simple-dtd/ChangeLog,v 1.69 2014/04/06 15:21:34 vapier Exp $
+
+  06 Apr 2014; Mike Frysinger <vapier@gentoo.org>
+  docbook-xml-simple-dtd-1.0-r1.ebuild, docbook-xml-simple-dtd-1.0-r2.ebuild,
+  docbook-xml-simple-dtd-4.1.2.4-r2.ebuild,
+  docbook-xml-simple-dtd-4.1.2.4-r3.ebuild,
+  docbook-xml-simple-dtd-4.1.2.5-r2.ebuild:
+  Mark m68k/s390/sh stable.
+
+  06 Apr 2014; Mike Frysinger <vapier@gentoo.org>
+  docbook-xml-simple-dtd-1.0-r1.ebuild, docbook-xml-simple-dtd-1.0-r2.ebuild,
+  docbook-xml-simple-dtd-4.1.2.4-r2.ebuild,
+  docbook-xml-simple-dtd-4.1.2.4-r3.ebuild,
+  docbook-xml-simple-dtd-4.1.2.5-r2.ebuild:
+  Add arm64 love.
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.5-r2.ebuild:
+  Stable for alpha, wrt bug #491938
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.5-r2.ebuild:
+  Stable for ia64, wrt bug #491938
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.5-r2.ebuild:
+  Stable for x86, wrt bug #491938
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.5-r2.ebuild:
+  Stable for sparc, wrt bug #491938
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.5-r2.ebuild:
+  Stable for ppc64, wrt bug #491938
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.5-r2.ebuild:
+  Stable for ppc, wrt bug #491938
+
+  20 Dec 2013; Chema Alonso <nimiux@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.5-r2.ebuild:
+  Stable for amd64 wrt bug #491938
+
+  01 Dec 2013; Markus Meier <maekke@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.5-r2.ebuild:
+  arm stable, bug #491938
+
+  26 Nov 2013; Jeroen Roovers <jer@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.5-r2.ebuild:
+  Stable for HPPA (bug #491938).
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/sgml-herd-has-no-maintainers-
+  again-td259655.html
+
+  13 Dec 2012; Mike Gilbert <floppym@gentoo.org>
+  docbook-xml-simple-dtd-1.0-r2.ebuild,
+  docbook-xml-simple-dtd-4.1.2.4-r3.ebuild,
+  docbook-xml-simple-dtd-4.1.2.5-r2.ebuild:
+  Move build-docbook-catalog to RDEPEND. Bug 447054 by Kobboi.
+
+  08 Dec 2012; Ulrich Müller <ulm@gentoo.org>
+  docbook-xml-simple-dtd-1.0-r1.ebuild, docbook-xml-simple-dtd-1.0-r2.ebuild,
+  docbook-xml-simple-dtd-4.1.2.4-r2.ebuild,
+  docbook-xml-simple-dtd-4.1.2.4-r3.ebuild,
+  docbook-xml-simple-dtd-4.1.2.5-r2.ebuild:
+  Fix LICENSE, bug 446352.
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org>
+  docbook-xml-simple-dtd-1.0-r2.ebuild,
+  docbook-xml-simple-dtd-4.1.2.4-r3.ebuild:
+  keyword ~amd64-fbsd
+
+*docbook-xml-simple-dtd-4.1.2.5-r2 (29 Mar 2011)
+*docbook-xml-simple-dtd-4.1.2.4-r3 (29 Mar 2011)
+*docbook-xml-simple-dtd-1.0-r2 (29 Mar 2011)
+
+  29 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +docbook-xml-simple-dtd-1.0-r2.ebuild,
+  +docbook-xml-simple-dtd-4.1.2.4-r3.ebuild,
+  -docbook-xml-simple-dtd-4.1.2.5-r1.ebuild,
+  +docbook-xml-simple-dtd-4.1.2.5-r2.ebuild:
+  Use build-docbook-catalog-1.6 to add these DTDs to the catalog.
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org>
+  docbook-xml-simple-dtd-1.0-r1.ebuild,
+  docbook-xml-simple-dtd-4.1.2.4-r2.ebuild:
+  Drop to ~mips
+
+  05 Apr 2010; Jonathan Callen <abcd@gentoo.org>
+  docbook-xml-simple-dtd-1.0-r1.ebuild,
+  docbook-xml-simple-dtd-4.1.2.4-r2.ebuild,
+  docbook-xml-simple-dtd-4.1.2.5-r1.ebuild:
+  Bump to EAPI=3 (when needed), add prefix keywords
+
+  11 Feb 2010; Ulrich Mueller <ulm@gentoo.org>
+  docbook-xml-simple-dtd-1.0-r1.ebuild,
+  docbook-xml-simple-dtd-4.1.2.4-r2.ebuild,
+  docbook-xml-simple-dtd-4.1.2.5-r1.ebuild:
+  Fix LICENSE, bug 298556.
+
+*docbook-xml-simple-dtd-4.1.2.5-r1 (16 Dec 2009)
+
+  16 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -docbook-xml-simple-dtd-4.1.2.5.ebuild,
+  +docbook-xml-simple-dtd-4.1.2.5-r1.ebuild,
+  +files/docbook-xml-simple-dtd-4.1.2.5.catalog:
+  Add catalog file for 4.1.2.5 version, closes bug #197288.
+
+  23 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.4-r2.ebuild:
+  Fix SRC_URI to point to Gentoo mirrors, where the source has been seeded.
+  Closes bug #263106.
+
+  25 Jan 2008; Fabian Groffen <grobian@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.4-r2.ebuild,
+  docbook-xml-simple-dtd-4.1.2.5.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+*docbook-xml-simple-dtd-4.1.2.5 (21 Aug 2007)
+
+  21 Aug 2007; Leonardo Boshell <leonardop@gentoo.org>
+  +docbook-xml-simple-dtd-4.1.2.5.ebuild:
+  Added DTD for Simplified DocBook 4.1.2.5 (bug #188499). Added code to handle
+  installation/removal of the DTD in the XML catalog.
+
+  12 Jul 2007; Roy Marples <uberlord@gentoo.org>
+  docbook-xml-simple-dtd-1.0.ebuild, docbook-xml-simple-dtd-1.0-r1.ebuild,
+  docbook-xml-simple-dtd-4.1.2.4-r2.ebuild:
+  Keyworded ~sparc-fbsd
+
+  22 Apr 2007; Markus Rothe <corsair@gentoo.org>
+  docbook-xml-simple-dtd-1.0-r1.ebuild:
+  Stable on ppc64
+
+  15 Apr 2007; Markus Rothe <corsair@gentoo.org> ChangeLog:
+  Stable on ppc64
+
+  12 Mar 2007; Leonardo Boshell <leonardop@gentoo.org> metadata.xml,
+  -docbook-xml-simple-dtd-4.1.2.4.ebuild:
+  Replacing text-markup herd with the new sgml herd.
+
+  22 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  docbook-xml-simple-dtd-1.0-r1.ebuild:
+  Stable on Alpha + IA64.
+
+  15 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  docbook-xml-simple-dtd-1.0-r1.ebuild:
+  hppa stable
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  docbook-xml-simple-dtd-1.0-r1.ebuild:
+  ppc stable
+
+  08 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  docbook-xml-simple-dtd-1.0-r1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  08 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.4-r2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  05 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org>
+  docbook-xml-simple-dtd-1.0-r1.ebuild:
+  Stable on amd64.
+
+  05 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.4-r2.ebuild:
+  Stable on amd64.
+
+  10 Oct 2005; Hardave Riar <hardave@gentoo.org>
+  docbook-xml-simple-dtd-1.0-r1.ebuild,
+  docbook-xml-simple-dtd-4.1.2.4-r2.ebuild:
+  Stable on mips.
+
+  21 Sep 2005; Fabian Groffen <grobian@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.4-r2.ebuild:
+  Marking ~ppc-macos (bug #106254)
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.4-r2.ebuild:
+  stable on ia64
+
+  12 Jul 2005; Guy Martin <gmsoft@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.4-r2.ebuild:
+  Stable on hppa.
+
+  29 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  docbook-xml-simple-dtd-1.0-r1.ebuild:
+  Stable on sparc
+
+  18 Jun 2005; Markus Rothe <corsair@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.4-r2.ebuild:
+  Stable on ppc64
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.4-r2.ebuild:
+  Stable on ppc.
+
+  14 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.4-r2.ebuild:
+  alpha stable
+
+  08 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.4-r2.ebuild:
+  Stable on sparc
+
+  07 Jun 2005; Leonardo Boshell <leonardop@gentoo.org>
+  docbook-xml-simple-dtd-1.0-r1.ebuild,
+  docbook-xml-simple-dtd-4.1.2.4-r2.ebuild:
+  Stable on x86.
+
+  07 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  docbook-xml-simple-dtd-1.0.ebuild:
+  Stable on sparc
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*docbook-xml-simple-dtd-4.1.2.4-r2 (16 Nov 2004)
+
+  16 Nov 2004; Mamoru KOMACHI <usata@gentoo.org>
+  files/docbook-xml-simple-dtd-4.1.2.4.catalog,
+  +docbook-xml-simple-dtd-4.1.2.4-r2.ebuild:
+  Revision bumped to push out correct catalog; bug #71366.
+
+*docbook-xml-simple-dtd-4.1.2.4-r1 (06 Nov 2004)
+
+  06 Nov 2004; Mamoru KOMACHI <usata@gentoo.org>
+  +docbook-xml-simple-dtd-4.1.2.4-r1.ebuild:
+  Use sgml-catalog.eclass. Thanks to Peter Simons <simons@cryp.to>; bug #33517.
+
+*docbook-xml-simple-dtd-1.0-r1 (06 Nov 2004)
+
+  06 Nov 2004; Mamoru KOMACHI <usata@gentoo.org>
+  +files/docbook-xml-simple-dtd-1.0.cat,
+  +docbook-xml-simple-dtd-1.0-r1.ebuild, docbook-xml-simple-dtd-1.0.ebuild:
+  Use sgml-catalog.eclass.
+
+  01 Jul 2004; Tom Gall <tgall@gentoo.org> docbook-xml-simple-dtd-1.0.ebuild:
+  stable on ppc64, bug #54799
+
+  29 Jun 2004; Tom Gall <tgall@gentoo.org> docbook-xml-simple-dtd-4.1.2.4.ebuild:
+  stable on ppc64, bug #54799
+
+  12 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  docbook-xml-simple-dtd-1.0.ebuild:
+  Stable on alpha.
+
+  14 Apr 2004; Stephen P. Becker <geoman@gentoo.org>
+  docbook-xml-simple-dtd-1.0.ebuild, docbook-xml-simple-dtd-4.1.2.4.ebuild:
+  Marked stable on mips.
+
+  09 Mar 2004; Stephen P. Becker <geoman@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.4.ebuild:
+  Added ~mips keyword.
+
+  09 Mar 2004; Stephen P. Becker <geoman@gentoo.org>
+  docbook-xml-simple-dtd-1.0.ebuild:
+  Added ~mips keyword.
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org>
+  docbook-xml-simple-dtd-4.1.2.4.ebuild:
+  Stable on ia64
+
+*docbook-xml-simple-dtd-1.0 (13 Sep 2003)
+
+  13 Sep 2003; Mike Gardiner <obz@gentoo.org> docbook-xml-simple-dtd-1.0.ebuild,
+  metadata.xml:
+  New version, 1.0 is the official OASIS release, slotted with 4.1 at the
+  moment. Thanks to <st_lim@stlim.net> for help with bug #15351
+
+  11 Feb 2003; Guy Martin <gmsoft@gentoo.org> docbook-xml-simple-dtd-4.1.2.4.ebuild :
+  Added hppa to keywords.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*docbook-xml-simple-dtd-4.1.2.4 (1 Feb 2002)
+
+  06 Aug 2002; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> docbook-xml-simple-dtd-4.1.2.4.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

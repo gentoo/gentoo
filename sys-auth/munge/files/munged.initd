@@ -1,0 +1,44 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/munge/files/munged.initd,v 1.2 2012/04/18 12:14:00 alexxy Exp $
+
+depend() {
+	after localmount
+}
+
+check_key() {
+	[ -s "${KEYFILE}" ] && return 0
+	dd if=/dev/urandom bs=1 count=1024 >/etc/munge/munge.key 2>/dev/null || return 1
+	chown munge:munge "${KEYFILE}" || return 1
+	chmod 700 "${KEYFILE}" || return 1
+}
+
+start() {
+	ebegin "Starting munged"
+	if ! check_key; then
+		eerror "Failed to verify/create munge key"
+		eend 1 && exit 1
+	fi
+	checkpath -d -m 755 -o munge:munge /var/run/munge
+	checkpath -d -m 711 -o munge:munge /var/lib/munge
+	checkpath -d -m 700 -o munge:munge /var/log/munge
+	start-stop-daemon -S /usr/sbin/munged \
+		--user munge \
+		--group munge \
+		--pidfile /var/run/munge/munged.pid \
+		-- \
+		--key-file="${KEYFILE}" \
+		--group-check-mtime="${GROUP_CHECK_MTIME}" \
+		--group-update-time="${GROUP_UPDATE_TIME}" \
+		--num-threads="${NUM_THREADS}"
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping munged"
+	start-stop-daemon -K /usr/sbin/munged \
+		--pidfile /var/run/munge/munged.pid
+	eend ${?}
+}
+

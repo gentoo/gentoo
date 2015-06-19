@@ -1,0 +1,31 @@
+# ChangeLog for www-apps/collectd-web
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/collectd-web/ChangeLog,v 1.7 2015/06/13 17:19:27 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  collectd-web-0.4.0.ebuild:
+  The CGI module is no longer part of core Perl and has been moved to dev-perl
+
+  02 Mar 2014; Agostino Sarubbo <ago@gentoo.org> collectd-web-0.4.0.ebuild:
+  Stable for x86, wrt bug #424053
+
+  01 Mar 2014; Pacho Ramos <pacho@gentoo.org> collectd-web-0.4.0.ebuild:
+  amd64 stable, bug #424053
+
+  28 Dec 2012;  <qnikst@gentoo.org> collectd-web-0.4.0.ebuild:
+  non maintainer fix: HOMEPAGE fix
+
+*collectd-web-0.4.0 (02 Jun 2011)
+
+  02 Jun 2011; Alexey Shvetsov <alexxy@gentoo.org> -collectd-web-0.3.0.ebuild,
+  +collectd-web-0.4.0.ebuild:
+  Bump. bug #369561
+
+  28 Feb 2011; Alexey Shvetsov <alexxy@gentoo.org> collectd-web-0.3.0.ebuild:
+  Fix src name
+
+*collectd-web-0.3.0 (28 Feb 2011)
+
+  28 Feb 2011; Alexey Shvetsov <alexxy@gentoo.org> +collectd-web-0.3.0.ebuild,
+  +metadata.xml:
+  Initial import per bug #356855

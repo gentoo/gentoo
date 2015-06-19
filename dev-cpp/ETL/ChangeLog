@@ -1,0 +1,17 @@
+# ChangeLog for dev-cpp/ETL
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/ETL/ChangeLog,v 1.4 2015/06/09 13:00:07 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  07 Sep 2012; Kacper Kowalik <xarthisius@gentoo.org> metadata.xml:
+  Remove no-herd from metadata
+
+  03 Jun 2012; Luca Barbato <lu_zero@gentoo.org> ETL-0.04.15.ebuild:
+  Add ~x86
+
+*ETL-0.04.15 (17 May 2012)
+
+  17 May 2012; Luca Barbato <lu_zero@gentoo.org> +ETL-0.04.15.ebuild:
+  Initial commit

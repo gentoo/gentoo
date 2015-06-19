@@ -1,0 +1,132 @@
+# ChangeLog for app-leechcraft/lc-gacts
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-leechcraft/lc-gacts/ChangeLog,v 1.13 2014/08/03 18:50:43 maksbotan Exp $
+
+*lc-gacts-0.6.70 (03 Aug 2014)
+
+  03 Aug 2014; Maxim Koltsov <maksbotan@gentoo.org> +lc-gacts-0.6.70.ebuild:
+  Bump LeechCraft to 0.6.70, thanks to 0xd34df00d.
+
+*lc-gacts-0.6.65 (10 Apr 2014)
+
+  10 Apr 2014; Maxim Koltsov <maksbotan@gentoo.org> +lc-gacts-0.6.65.ebuild:
+  Bump LeechCraft to 0.5.65, thanks to 0xd34df00d.
+
+  03 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> lc-gacts-0.6.60.ebuild:
+  x86 stable wrt bug #500914
+
+  02 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> lc-gacts-0.6.60.ebuild:
+  amd64 stable wrt bug #500914
+
+*lc-gacts-0.6.60 (08 Jan 2014)
+
+  08 Jan 2014; Maxim Koltsov <maksbotan@gentoo.org> +lc-gacts-0.6.60.ebuild:
+  Bump to LeecChraft-0.6.60 release, thanks to 0xd34df00d.
+
+  17 Dec 2013; Sergey Popov <pinkbyte@gentoo.org> lc-gacts-9999.ebuild:
+  Use system x11-libs/libqxt instead of bundled
+
+*lc-gacts-0.6.0 (24 Sep 2013)
+
+  24 Sep 2013; Maxim Koltsov <maksbotan@gentoo.org> +lc-gacts-0.6.0.ebuild:
+  Bump LeechCraft to 0.6.0
+
+*lc-gacts-0.5.99 (18 Jul 2013)
+
+  18 Jul 2013; <maks@gentoo.org> +lc-gacts-0.5.99.ebuild:
+  Bump app-leechcraft/lc-gacts to 0.5.99, thanks to 0xd34df00d
+
+*lc-gacts-0.5.98 (03 Jul 2013)
+
+  03 Jul 2013; Maxim Koltsov <maksbotan@gentoo.org> +lc-gacts-0.5.98.ebuild:
+  Bump LeechCraft to 0.5.98, thanks to 0xd34df00d.
+
+*lc-gacts-0.5.97 (11 Jun 2013)
+
+  11 Jun 2013; Maxim Koltsov <maksbotan@gentoo.org> +lc-gacts-0.5.97.ebuild:
+  Bump LeechCraft suite to 0.5.97, thanks to 0xd34df00d.
+
+*lc-gacts-0.5.96 (26 May 2013)
+
+  26 May 2013; Maxim Koltsov <maksbotan@gentoo.org> +lc-gacts-0.5.96.ebuild:
+  Bump LeechCraft suite to 0.5.96, thanks to 0xd34df00d
+
+*lc-gacts-0.5.95 (02 May 2013)
+
+  02 May 2013; Sergey Popov <pinkbyte@gentoo.org> +lc-gacts-0.5.95.ebuild:
+  Bump app-leechcraft/lc-gacts to 0.5.95, thanks to 0xd34df00d
+
+*lc-gacts-9999 (08 Mar 2013)
+*lc-gacts-0.5.90 (08 Mar 2013)
+*lc-gacts-0.5.85 (08 Mar 2013)
+
+  08 Mar 2013; Maxim Koltsov <maksbotan@gentoo.org> +lc-gacts-0.5.85.ebuild,
+  +lc-gacts-0.5.90.ebuild, +lc-gacts-9999.ebuild, +metadata.xml:
+  Move to app-leechcraft/category
+
+  16 Feb 2013; Agostino Sarubbo <ago@gentoo.org> leechcraft-gacts-0.5.90.ebuild:
+  Stable for x86, wrt bug #457824
+
+  16 Feb 2013; Agostino Sarubbo <ago@gentoo.org> leechcraft-gacts-0.5.90.ebuild:
+  Stable for amd64, wrt bug #457824
+
+*leechcraft-gacts-0.5.90 (25 Dec 2012)
+
+  25 Dec 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-gacts-0.5.90.ebuild:
+  Bump LeechCraft to 0.5.90, thanks to 0xd34df00d
+
+  19 Dec 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  -leechcraft-gacts-0.5.70.ebuild, -leechcraft-gacts-0.5.75.ebuild,
+  -leechcraft-gacts-0.5.80.ebuild:
+  Remove old LeechCraft versions
+
+*leechcraft-gacts-0.5.85 (08 Oct 2012)
+
+  08 Oct 2012; Sergey Popov <pinkbyte@gentoo.org>
+  +leechcraft-gacts-0.5.85.ebuild:
+  Bump LeechCraft to 0.5.85, thanks to 0xd34df00d
+
+*leechcraft-gacts-0.5.80 (13 Aug 2012)
+
+  13 Aug 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-gacts-0.5.80.ebuild:
+  Bump LeechCraft to 0.5.80, thanks to 0xd34df00d
+
+*leechcraft-gacts-0.5.75 (19 Jul 2012)
+
+  19 Jul 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-gacts-0.5.75.ebuild, -leechcraft-gacts-0.5.60.ebuild,
+  -leechcraft-gacts-0.5.65.ebuild:
+  Removed old versions, bumped to 0.5.75
+
+  07 Jul 2012; Johannes Huber <johu@gentoo.org> leechcraft-gacts-0.5.70.ebuild:
+  Stable for x86, wrt bug #424613
+
+  04 Jul 2012; Agostino Sarubbo <ago@gentoo.org>
+  leechcraft-gacts-0.5.70.ebuild:
+  Stable for amd64, wrt bug #424613
+
+*leechcraft-gacts-0.5.70 (31 May 2012)
+
+  31 May 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-gacts-0.5.70.ebuild:
+  Bump LeechCraft to 0.5.70 "Hessian Blade"
+
+*leechcraft-gacts-0.5.65 (22 Apr 2012)
+
+  22 Apr 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-gacts-0.5.65.ebuild:
+  Bump net-misc/leechcraft-gacts to 0.5.65, thanks to 0xd34df00d
+
+*leechcraft-gacts-0.5.60 (20 Mar 2012)
+
+  20 Mar 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-gacts-0.5.60.ebuild:
+  Bump LeechCraft to 0.5.60, thank to 0xd34df00d
+
+*leechcraft-gacts-9999 (10 Feb 2012)
+
+  10 Feb 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +leechcraft-gacts-9999.ebuild, +metadata.xml:
+  Add leechcraft-gacts plugin, by 0xd34df00d

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst postrm test unpack
+DEPEND=!>=app-text/tetex-2 !app-text/ptex virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DESCRIPTION=A LaTeX package for typesetting a curriculum vitae
+HOMEPAGE=http://www.ctan.org/tex-archive/macros/latex/contrib/currvita/
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=GPL-2
+RDEPEND=!>=app-text/tetex-2 !app-text/ptex virtual/latex-base
+SLOT=0
+SRC_URI=mirror://gentoo/currvita-0.9i.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	latex-package	d023314500e725be8c78a868e4771dbb	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=27d5494903985b5bee2bfdc3e03f9233

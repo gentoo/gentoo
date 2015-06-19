@@ -1,0 +1,48 @@
+--- OS/Makefile-FreeBSD
++++ OS/Makefile-FreeBSD
+@@ -1,12 +1,10 @@
+-# Exim: OS-specific make file for FreeBSD
+-# There's no setting of CFLAGS here, to allow the system default
+-# for "make" to be the default.
+-
+-PORTOBJFORMAT!= test -x /usr/bin/objformat && /usr/bin/objformat || echo aout
+-
+-CHOWN_COMMAND=/usr/sbin/chown
+-STRIP_COMMAND=/usr/bin/strip
+-CHMOD_COMMAND=/bin/chmod
++# Exim: OS-specific FreeBSD make file, modified for Gentoo Prefix
++
++
++BASENAME_COMMAND=look_for_it
++CHOWN_COMMAND=look_for_it
++CHGRP_COMMAND=look_for_it
++CHMOD_COMMAND=look_for_it
+ 
+ HAVE_SA_LEN=YES
+ 
+@@ -18,23 +16,12 @@
+ # Dynamicly loaded modules need to be built with -fPIC
+ CFLAGS_DYNAMIC=-shared -rdynamic -fPIC
+ 
+-# FreeBSD always ships with Berkeley DB
++DBMLIB = -ldb
+ USE_DB=yes
+ 
+-# This code for building outside ports suggested by Richard Clayton
+-.ifdef   X11BASE
+-X11=${X11BASE}
+-.elifdef LOCALBASE
+-X11=$(LOCALBASE)
+-.else
+-X11=/usr/local
+-.endif
+-
++X11=/usr/X11R6
+ XINCLUDE=-I$(X11)/include
+ XLFLAGS=-L$(X11)/lib
+-.if ${PORTOBJFORMAT} == "elf"
+-XLFLAGS+=-Wl,-rpath,${X11}/lib
+-.endif
+ X11_LD_LIB=$(X11)/lib
+ 
+ EXIWHAT_PS_ARG=-ax

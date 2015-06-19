@@ -1,0 +1,26 @@
+diff --git a/makerule.mk.in b/makerule.mk.in
+index fa9a7e1..dc7210a 100644
+--- a/makerule.mk.in
++++ b/makerule.mk.in
+@@ -94,7 +94,7 @@ ALLDEFINES = $(INCLUDES) $(DEFINES)
+ CFLAGS = @CFLAGS@ @CDEBUGFLAGS@ $(CCOPTIONS) @ipv6@ @DEFS@ $(ALLDEFINES)
+ LIBS = @LIBS@
+ LINTFLAGS = $(LINTOPTS) -DLINT $(ALLDEFINES) $(DEPEND_DEFINES)
+-LDOPTIONS = @CDEBUGFLAGS@ $(CCOPTIONS)
++LDOPTIONS = @CDEBUGFLAGS@ $(CCOPTIONS) $(LDFLAGS)
+ 
+ 
+ #
+diff --git a/Wnn/jlib.V3/Makefile.in b/Wnn/jlib.V3/Makefile.in
+index 9d5b873..5b1bf23 100644
+--- a/Wnn/jlib.V3/Makefile.in
++++ b/Wnn/jlib.V3/Makefile.in
+@@ -76,7 +76,7 @@ includes::
+ all:: libjd.la
+ 
+ libjd.la: $(OBJS) $(EXTRALIBRARYDEPS)
+-	$(LIBTOOL) $(CC) -o $@ $(OBJS:.o=.lo) -rpath $(WNNLIBDIR) -version-info $(WNNJLIBVERSION)
++	$(LIBTOOL) $(CC) -o $@ $(LDOPTIONS) $(OBJS:.o=.lo) -rpath $(WNNLIBDIR) -version-info $(WNNJLIBVERSION)
+ 
+ lintlib:: llib-ljd.ln
+ 

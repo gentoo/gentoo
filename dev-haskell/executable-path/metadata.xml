@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		The documentation of &quot;System.Environment.getProgName&quot; says that
+		\&quot;However, this is hard-to-impossible to implement on some non-Unix OSes,
+		so instead, for maximum portability, we just return the leafname
+		of the program as invoked.\&quot;
+		This library tries to provide the missing path.
+	</longdescription>
+</pkgmetadata>

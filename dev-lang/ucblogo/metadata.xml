@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+  <email>tomk@gentoo.org</email>
+  <name>Tom Knight</name>
+</maintainer>
+<longdescription>
+  Logo is the educational programming language best known for its "turtle
+  graphics" but also featuring easy and powerful facilities for computing
+  with words and sentences.  Sample projects included with the Berkeley
+  Logo distribution range from a tic-tac-toe game to a Pascal compiler and
+  a Logo implementation of Student, Daniel Bobrow's program that solves
+  algebra word problems.
+</longdescription>
+</pkgmetadata>

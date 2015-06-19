@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>java</herd>
+<herd>proxy-maintainers</herd>
+<maintainer>
+  <email>gnu_andrew@member.fsf.org</email>
+  <name>Andrew John Hughes</name>
+  <description>Proxy Maintainer</description>
+</maintainer>
+<maintainer>
+  <email>caster@gentoo.org</email>
+  <name>Vlastimil Babka</name>
+  <description>Committer (CC me)</description>
+</maintainer>
+<longdescription>The IcedTea project provides a harness to build the source code from OpenJDK (http://openjdk.java.net) using Free Software build tools along with additional tools such as a browser plugin and Web Start support via NetX. </longdescription>
+<use>
+  <flag name="X">Make X buildtime-only depenency.</flag>
+  <flag name="alsa">Make alsa buildtime-only dependency.</flag>
+  <flag name="cacao">Build CACAO virtual machine on platforms supporting HotSpot. (experimental)</flag>
+  <flag name="cups">Make CUPS build-only dependency.</flag>
+  <flag name="infinality">Enable better font rendering using fontconfig.</flag>
+  <flag name="jamvm">Use the JamVM virtual machine rather than HotSpot.</flag>
+  <flag name="jbootstrap">If possible, recompile the final IcedTea executables with itself.</flag>
+  <flag name="nss">Enable NSS security provider support.</flag>
+  <flag name="nsplugin">Enable browser plugin (NPPlugin), requires also the webstart flag to be enabled.</flag>
+  <flag name="pax_kernel">For building when running a PaX enabled kernel.</flag>
+  <flag name="smartcard">Build the PCSC driver against pcsc-lite</flag>
+  <flag name="sunec">Build the SunEC provider against system NSS</flag>
+  <flag name="systemtap">Enable SystemTap probes in HotSpot.</flag>
+  <flag name="zero">Enable Zero assembler port (usually for non-HotSpot architectures)</flag>
+  <flag name="webstart">Enable Web Start support (via NetX).</flag>
+</use>
+</pkgmetadata>

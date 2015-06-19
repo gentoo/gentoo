@@ -1,0 +1,303 @@
+# ChangeLog for dev-lisp/gcl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/gcl/ChangeLog,v 1.69 2015/05/23 15:15:23 pacho Exp $
+
+  23 May 2015; Pacho Ramos <pacho@gentoo.org> gcl-2.6.10.ebuild:
+  x86 stable wrt bug #511170
+
+*gcl-2.6.12 (04 Nov 2014)
+
+  04 Nov 2014; Andrey Grozin <grozin@gentoo.org> gcl-2.6.10.ebuild,
+  gcl-2.6.11.ebuild, +gcl-2.6.12.ebuild:
+  Version bump; mirror://gnu is used in SRC_URI
+
+*gcl-2.6.11 (24 Sep 2014)
+
+  24 Sep 2014; Andrey Grozin <grozin@gentoo.org> +gcl-2.6.11.ebuild:
+  Version bump
+
+  11 Jul 2014; Patrick Lauer <patrick@gentoo.org> gcl-2.6.10.ebuild:
+  Stable on amd64 #511170
+
+  16 May 2014; Andrey Grozin <grozin@gentoo.org> -gcl-2.6.7-r3.ebuild,
+  -files/flex-configure-LANG.patch:
+  Removing an old version
+
+  15 May 2014; Markus Meier <maekke@gentoo.org> gcl-2.6.10.ebuild:
+  add ~arm, bug #509842
+
+  30 Mar 2014; Andrey Grozin <grozin@gentoo.org> -gcl-2.6.8_pre20130314.ebuild,
+  gcl-2.6.10.ebuild, +files/gcl-readline-6.3.patch, +files/gcl-gmp-6.patch,
+  +files/gcl-tcl-8.6.patch, -files/tcl.patch:
+  New patches to gcl-2.6.10 for compatibility with readline-6.3 and gmp-6
+
+*gcl-2.6.10 (04 Feb 2014)
+
+  04 Feb 2014; Andrey Grozin <grozin@gentoo.org> -gcl-2.6.7.ebuild,
+  -gcl-2.6.7-r1.ebuild, -gcl-2.6.7-r2.ebuild, -gcl-2.6.8_pre20120805.ebuild,
+  +gcl-2.6.10.ebuild, -files/2.6.7-fix-configure.in-gentoo.patch,
+  -files/gcl-2.6.8_pre20090419-configure.patch, +files/64gcl-gentoo.el,
+  -files/gcl-2.6.7-fix-configure.in-bfd.patch, -files/gcl-default-el.patch,
+  +files/tcl.patch, metadata.xml:
+  Version bump, cleaning old
+
+*gcl-2.6.8_pre20130314 (14 Mar 2013)
+
+  14 Mar 2013; Andrey Grozin <grozin@gentoo.org> -gcl-2.6.8_pre20090419.ebuild,
+  -gcl-2.6.8_pre20111221.ebuild, +gcl-2.6.8_pre20130314.ebuild:
+  Version bump (hardmasked)
+
+  09 Nov 2012; Andrey Grozin <grozin@gentoo.org> gcl-2.6.8_pre20120805.ebuild:
+  Added ~amd64 keyword
+
+*gcl-2.6.8_pre20120805 (05 Aug 2012)
+
+  05 Aug 2012; Andrey Grozin <grozin@gentoo.org> +gcl-2.6.8_pre20120805.ebuild:
+  Current cvs snapshot (masked), useful for maxima
+
+  07 Jun 2012; Zac Medico <zmedico@gentoo.org> gcl-2.6.7-r1.ebuild,
+  gcl-2.6.7-r2.ebuild, gcl-2.6.7-r3.ebuild, gcl-2.6.7.ebuild,
+  gcl-2.6.8_pre20090419.ebuild, gcl-2.6.8_pre20111221.ebuild:
+  inherit eutils for epatch
+
+  24 Apr 2012; Michał Górny <mgorny@gentoo.org> gcl-2.6.7-r2.ebuild,
+  gcl-2.6.7-r3.ebuild:
+  Update to use mirror://.
+
+*gcl-2.6.8_pre20111221 (21 Dec 2011)
+
+  21 Dec 2011; Andrey Grozin <grozin@gentoo.org> +gcl-2.6.8_pre20111221.ebuild,
+  +files/gcl-default-el.patch:
+  Current cvs snapshot (masked), useful for maxima
+
+  21 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  gcl-2.6.8_pre20090419.ebuild:
+  stable x86, bug 264649
+
+*gcl-2.6.8_pre20090419 (20 Apr 2009)
+
+  20 Apr 2009; Andrey Grozin <grozin@gentoo.org>
+  +files/gcl-2.6.8_pre20090419-configure.patch, +files/bootstrap-gcl,
+  +gcl-2.6.8_pre20090419.ebuild:
+  Snapshot of 2.6.8_pre, fixes bug #205803, based on the ebuild from
+  the lisp overlay
+
+  03 Sep 2008; Christian Faulhammer <opfer@gentoo.org> gcl-2.6.7.ebuild,
+  gcl-2.6.7-r1.ebuild, gcl-2.6.7-r2.ebuild, gcl-2.6.7-r3.ebuild:
+  replace virtual/tetex with virtual/latex-base and virtual/texi2dvi; quote a
+  lot of variables
+
+  28 Jul 2008; Panagiotis Christopoulos <pchrist@gentoo.org> metadata.xml:
+  Update metadata.xml to include USE flag descriptions. Entries taken from
+  profiles/use.local.desc
+
+  20 Apr 2008; Diego Pettenò <flameeyes@gentoo.org> gcl-2.6.7.ebuild,
+  gcl-2.6.7-r1.ebuild:
+  Run eautoreconf in src_unpack phase, bug #207448.
+
+  22 Dec 2007; nixnut <nixnut@gentoo.org> gcl-2.6.7-r3.ebuild:
+  Stable on ppc wrt bug 201216
+
+  04 Sep 2007; Marijn Schouten <hkBst@gentoo.org> gcl-2.6.7-r3.ebuild:
+  put back sandbox workaround (commented this time), bug 190950
+
+*gcl-2.6.7-r3 (31 Aug 2007)
+
+  31 Aug 2007; Marijn Schouten <hkBst@gentoo.org> +gcl-2.6.7-r3.ebuild:
+  debian patches 32->34 fixes bug 190631, re-enable sandbox, remove filtering
+  fPIC
+
+  31 Aug 2007; Marijn Schouten <hkBst@gentoo.org> gcl-2.6.7-r2.ebuild:
+  add messages to die-calls
+
+  22 Jul 2007; Hans de Graaff <graaff@gentoo.org> gcl-2.6.7.ebuild,
+  gcl-2.6.7-r1.ebuild, gcl-2.6.7-r2.ebuild:
+  Drop virtual/x11 references.
+
+  14 Jul 2007; Steve Arnold <nerdboy@gentoo.org>
+  +files/gcl-2.6.7-fix-configure.in-bfd.patch, gcl-2.6.7.ebuild:
+  Fixed old and annoying bug with user-contributed patch; thanks to
+  Clemens Rabe <crabe _at_ gmx.de> for the patch.
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> gcl-2.6.7-r2.ebuild:
+  (QA) RESTRICT clean up.
+
+  03 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> gcl-2.6.7-r2.ebuild:
+  Use mirror://debian/ where applicable, or use mirror://gentoo/ if the file
+  has been removed from debian's mirrors.
+
+  30 Dec 2006; Mike Frysinger <vapier@gentoo.org> gcl-2.6.7-r2.ebuild:
+  Cleanup sandbox/locale handling.
+
+  13 Dec 2006; Matthew Kennedy <mkennedy@gentoo.org> gcl-2.6.7-r2.ebuild:
+  Add dependency for virtual/tetex.
+
+*gcl-2.6.7-r2 (09 Dec 2006)
+
+  09 Dec 2006; Matthew Kennedy <mkennedy@gentoo.org> +gcl-2.6.7-r2.ebuild:
+  Sync up with Debian versioning; Remove extraneous USE flags.
+
+  29 Nov 2006; Christian Faulhammer <opfer@gentoo.org> gcl-2.6.7.ebuild,
+  gcl-2.6.7-r1.ebuild:
+  moved tcltk USE flag over to separate tk and tcl flags, see bug #17808
+
+  11 May 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/flex-configure-LANG.patch, gcl-2.6.7-r1.ebuild:
+  Apply flex-configure-LANG.patch; Resolves Bug #122583.
+
+  08 Apr 2006; Matthew Kennedy <mkennedy@gentoo.org> -gcl-2.6.6.ebuild,
+  gcl-2.6.7.ebuild, gcl-2.6.7-r1.ebuild:
+  Install the Debian man-page; Resolves Bug #126859; Removed old ebuilds; Port
+  to modular X.
+
+*gcl-2.6.7-r1 (27 Jan 2006)
+
+  27 Jan 2006; Matthew Kennedy <mkennedy@gentoo.org> +gcl-2.6.7-r1.ebuild:
+  Modular X dependencies; Resolves Bug #120514.
+
+  12 Jan 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/2.6.7-fix-configure.in-gentoo.patch, gcl-2.6.7.ebuild:
+  Correct installation of documentation paths; Resolves Bug #116117; Correct
+  syntax-error in configure/configure.in; Resolves Bug #118633.
+
+  15 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org> gcl-2.6.7.ebuild:
+  Stable on sparc
+
+  21 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> gcl-2.6.7.ebuild:
+  Keyworded ~sparc
+
+  22 Aug 2005; Matthew Kennedy <mkennedy@gentoo.org> gcl-2.6.6.ebuild,
+  gcl-2.6.7.ebuild:
+  Localize sandbox disable.
+
+  22 Aug 2005; Matthew Kennedy <mkennedy@gentoo.org> gcl-2.6.6.ebuild,
+  gcl-2.6.7.ebuild:
+  Correct install permissions.
+
+*gcl-2.6.7 (14 Aug 2005)
+
+  14 Aug 2005; Matthew Kennedy <mkennedy@gentoo.org> +gcl-2.6.7.ebuild:
+  New upstream version.
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> gcl-2.6.6.ebuild:
+  stable on amd64
+
+  12 Feb 2005; Matthew Kennedy <mkennedy@gentoo.org> :
+  Add missing ANSI support.
+
+*gcl-2.6.6 (02 Feb 2005)
+
+  02 Feb 2005; Matthew Kennedy <mkennedy@gentoo.org> -gcl-2.4.0.ebuild,
+  -gcl-2.4.3.ebuild, -gcl-2.5.2.ebuild, -gcl-2.5.3.ebuild,
+  -gcl-2.6.2.ebuild, -gcl-2.6.3.ebuild, -gcl-2.6.4.ebuild,
+  -gcl-2.6.5.ebuild, +gcl-2.6.6.ebuild:
+  New upstream version; Removed older ebuilds; Tag stable keywords for x86
+
+  18 Dec 2004; Simon Stelling <blubb@gentoo.org> gcl-2.6.5.ebuild:
+  added ~amd64
+
+*gcl-2.6.5 (06 Dec 2004)
+
+  06 Dec 2004; Matthew Kennedy <mkennedy@gentoo.org> +gcl-2.6.5.ebuild:
+  New upstream version; Corrected Tk dependency; Corrected file permissions.
+
+  14 Nov 2004; Matthew Kenendy <mkennedy@gentoo.org> gcl-2.6.4.ebuild:
+  Conditionally depend on tetex via doc USE flag; Resolves Bug #70300
+
+  29 Aug 2004; David Holm <dholm@gentoo.org> gcl-2.6.4.ebuild:
+  Added to ~ppc.
+
+*gcl-2.6.4 (07 Aug 2004)
+
+  07 Aug 2004; <mkennedy@gentoo.org> +gcl-2.6.4.ebuild:
+  Fixed --enable-ansi typo; Added support for profiling; Added support for
+  choosing between dlopen, custreloc or bfd linking mechanisms; Fixed tcltk
+  logic error;  New upstream version
+
+*gcl-2.6.3 (06 Aug 2004)
+
+  06 Aug 2004; <mkennedy@gentoo.org> gcl-2.6.2.ebuild, +gcl-2.6.3.ebuild:
+  New upstream version; New USE flag: ansi; Support for custreloc on x86 and
+  sparc
+
+  11 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> gcl-2.6.2.ebuild:
+  fix readline dep
+
+*gcl-2.6.2 (09 Jul 2004)
+
+  09 Jul 2004; <mkennedy@gentoo.org> +gcl-2.6.2.ebuild:
+  New upstream version; masked for all architectures until dependencies are
+  found to work with it.
+
+  03 Jun 2004; Aron Griffis <agriffis@gentoo.org> gcl-2.5.2.ebuild,
+  gcl-2.5.3.ebuild:
+  Fix use invocation
+
+  12 May 2004; Alexander Gabert <pappy@gentoo.org> gcl-2.5.3.ebuild:
+  replaced hardened-gcc check with filter-flags logic call
+
+  14 Dec 2003; Alexander Gabert <pappy@gentoo.org> gcl-2.5.3.ebuild:
+  changed compile behaviour in respect to hardened-gcc compiling raw_gcl with
+  automatic PIC
+
+  14 Oct 2003; Matthew Kennedy <mkennedy@gentoo.org> gcl-2.5.3.ebuild:
+  no longer provide virtual/commonlisp
+
+*gcl-2.5.3 (13 Jul 2003)
+
+  11 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> gcl-2.5.2.ebuild,
+  gcl-2.5.3.ebuild:
+  Changed app-text/tetex to virtual/tetex. Added emacs IUSE flag.
+
+  13 Jul 2003; George Shapovalov <george@gentoo.org> gcl-2.5.3.ebuild :
+  new version (# 23471)
+  
+  12 Jun 2003; <msterret@gentoo.org> gcl-2.4.0.ebuild:
+  fix Header
+
+  14 May 2003; George Shapovalov <george@gentoo.org> gcl-2.5.2.ebuild :
+  added >=app-text/tetex-2.0* to DEPEND as apparently ebuild creates some dvi's
+  todo: make that conditional on doc? (requies some patching) (#21077)
+
+*gcl-2.5.2 (01 May 2003)
+
+  01 May 2003; George Shapovalov <george@gentoo.org> gcl-2.5.2.ebuild :
+  new version (#19830)
+  older version has reportedly some problms with bfd libraries
+  Thanks to Cliff Yapp <smustudent1@yahoo.com> for submission
+
+*gcl-2.4.3 (03 Sep 2002)
+
+  18 Oct 2002; George Shapovalov <george@gentoo.org> gcl-2.4.3.ebuild :
+
+  Fix for problematic linking on some systems, see #7793 (Thanks  Michal Maruska, Felix Breuer!).
+  Few cosmetic fixes to make install docs in proper places.
+
+  04 Sep 2002; George Shapovalov <george@gentoo.org> gcl-2.4.3.ebuild :
+
+  few more run-time fixes submitted by Lars S. Jensen <larssj@nospam.dk>,
+  added gmp dependency
+
+  03 Sep 2002; George Shapovalov <george@gentoo.org> gcl-2.4.3.ebuild :
+
+  new version, fixes some run-time problems (#7403)
+
+*gcl-2.4.0 (29 Apr 2002)
+
+  01 Aug 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gcl-2.4.0.ebuild :
+
+  Added LICENSE, SLOT and KEYWORDS.
+
+  29 Apr 2002; Seemant Kulleen <seemant@gentoo.org> gcl-2.4.0.ebuild :
+
+  More bugfixes from naz in #gentoo
+
+*gcl-2.4.0 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

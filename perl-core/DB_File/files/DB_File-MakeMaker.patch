@@ -1,0 +1,11 @@
+--- Makefile.PL.old	2005-06-30 12:31:52.000000000 -0400
++++ Makefile.PL	2005-06-30 12:35:11.000000000 -0400
+@@ -54,7 +54,7 @@ WriteMakefile(
+ 	'depend'	=> { 'Makefile'          => 'config.in',
+                              'version$(OBJ_EXT)' => 'version.c'},
+ 	'clean'		=> { FILES => 'constants.h constants.xs' },
+-	'macro'		=> { INSTALLDIRS => 'perl', my_files => "@files" },
++	'macro'		=> { INSTALLDIRS => 'vendor', my_files => "@files" },
+         'dist'          => { COMPRESS => 'gzip', SUFFIX => 'gz',
+ 			     DIST_DEFAULT => 'MyDoubleCheck tardist'},    
+ 	);

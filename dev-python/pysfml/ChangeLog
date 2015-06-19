@@ -1,0 +1,30 @@
+# ChangeLog for dev-python/pysfml
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pysfml/ChangeLog,v 1.7 2015/06/09 16:38:34 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  21 Mar 2015; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove myself as maintainer.
+
+  03 Aug 2014; Tim Harder <radhermit@gentoo.org> -pysfml-1.6.ebuild:
+  Remove old.
+
+*pysfml-1.6-r1 (03 Aug 2014)
+
+  03 Aug 2014; Tim Harder <radhermit@gentoo.org> +pysfml-1.6-r1.ebuild:
+  Migrate to distutils-r1 and use specific libsfml version dep.
+
+  01 Dec 2012; Tim Harder <radhermit@gentoo.org> pysfml-1.6.ebuild:
+  Fix LICENSE (bug #445426 by ulm).
+
+  10 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pysfml-1.6.ebuild:
+  Set SUPPORT_PYTHON_ABIS. Avoid breaking strict-aliasing rules.
+
+*pysfml-1.6 (07 Feb 2011)
+
+  07 Feb 2011; Tim Harder <radhermit@gentoo.org> +pysfml-1.6.ebuild,
+  +metadata.xml:
+  Initial import. Split from media-libs/libsfml.

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=dii? ( media-gfx/imagemagick[png] ) gnome-extra/libgsf virtual/libiconv virtual/pkgconfig dii? ( media-libs/gd[png] ) python? ( >=dev-libs/boost-1.48[python] ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 python? ( =dev-lang/python-2* )
+DESCRIPTION=Tools and library for reading Outlook files (.pst format)
+EAPI=4
+HOMEPAGE=http://www.five-ten-sg.com/libpst/
+IUSE=debug dii doc python static-libs
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=dii? ( media-gfx/imagemagick[png] ) gnome-extra/libgsf python? ( =dev-lang/python-2* )
+SLOT=0
+SRC_URI=http://www.five-ten-sg.com/libpst/packages/libpst-0.6.64.tar.gz
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c2d9532072ca3bdfacacf423aa75062a

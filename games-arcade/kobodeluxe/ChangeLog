@@ -1,0 +1,160 @@
+# ChangeLog for games-arcade/kobodeluxe
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/kobodeluxe/ChangeLog,v 1.32 2015/03/31 16:08:53 mr_bones_ Exp $
+
+  31 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> kobodeluxe-0.5.1.ebuild:
+  alpha is unstable
+
+  05 Jan 2015; Tupone Alfredo <tupone@gentoo.org> kobodeluxe-0.5.1.ebuild:
+  EAPI 5
+
+  14 Jun 2009; Tristan Heaven <nyhm@gentoo.org> kobodeluxe-0.5.1.ebuild,
+  +files/kobodeluxe-0.5.1-glibc2.10.patch:
+  Fix building with glibc-2.10, bug #273508
+
+  20 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  kobodeluxe-0.5.1.ebuild:
+  EAPI=2; add use-based dep
+
+  13 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/kobodeluxe-0.4_pre10-gcc41.patch,
+  +files/kobodeluxe-0.5.1-glibc29.patch, -kobodeluxe-0.4_pre10.ebuild,
+  kobodeluxe-0.5.1.ebuild:
+  add patch to build with glibc29 from Martin Väth via bug #251121
+
+  28 Jun 2008; Tobias Klausmann <klausman@gentoo.org>
+  kobodeluxe-0.5.1.ebuild:
+  Stable on alpha, bug #229117
+
+  24 Jun 2008; Joseph Jezak <josejx@gentoo.org> kobodeluxe-0.5.1.ebuild:
+  Marked ppc/ppc64 stable for bug #229117.
+
+  24 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  kobodeluxe-0.5.1.ebuild:
+  stable x86, bug 229117
+
+  23 Jun 2008; Kenneth Prugh <ken69267@gentoo.org> kobodeluxe-0.5.1.ebuild:
+  amd64 stable, bug #229117
+
+*kobodeluxe-0.5.1 (08 Jan 2008)
+
+  08 Jan 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +kobodeluxe-0.5.1.ebuild:
+  version bump (bug #204551)
+
+*kobodeluxe-0.4.1 (30 Nov 2007)
+
+  30 Nov 2007; Tupone Alfredo <tupone@gentoo.org> +kobodeluxe-0.4.1.ebuild:
+  Version bump to 0.4.1 Bug #200513 by Pacho Ramos
+
+  23 Sep 2007; Joseph Jezak <josejx@gentoo.org> kobodeluxe-0.4_pre10.ebuild:
+  Marked ppc64 stable.
+
+  15 Mar 2007; Tristan Heaven <nyhm@gentoo.org> kobodeluxe-0.4_pre10.ebuild:
+  Install menu entry, bug #160228
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> kobodeluxe-0.4_pre10.ebuild:
+  Replacing einfo with elog
+
+  17 Feb 2007; Markus Rothe <corsair@gentoo.org>
+  kobodeluxe-0.4_pre10.ebuild:
+  Added ~ppc64; bug #167150
+
+  14 Apr 2006; Mark Loeser <halcy0n@gentoo.org>
+  +files/kobodeluxe-0.4_pre10-gcc41.patch, kobodeluxe-0.4_pre10.ebuild:
+  Add patch to fix compilation with gcc-4.1 by TGL <degrenier AT easyconnect
+  DOT fr>; bug #126015
+
+  28 Feb 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  kobodeluxe-0.4_pre10.ebuild:
+  tidy; quote
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  kobodeluxe-0.4_pre10.ebuild:
+  Mark 0.4_pre10 stable on alpha
+
+  24 Aug 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  kobodeluxe-0.4_pre10.ebuild:
+  Stable on amd64.
+
+  24 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  kobodeluxe-0.4_pre10.ebuild:
+  stable for x86
+
+  24 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  kobodeluxe-0.4_pre10.ebuild:
+  Add ~alpha keyword, bug 86212.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  08 Nov 2004; Joseph Jezak <josejx@gentoo.org> kobodeluxe-0.4_pre10.ebuild:
+  Marked ppc stable.
+
+  22 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  kobodeluxe-0.4_pre10.ebuild:
+  standardize; tidy
+
+  18 Jun 2004; Michael Hanselmann <hansmi@gentoo.org>
+  kobodeluxe-0.4_pre10.ebuild:
+  Added to ~ppc.
+
+  15 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  kobodeluxe-0.4_pre10.ebuild:
+  Filtered -fforce-addr and closing bug #53980.
+
+*kobodeluxe-0.4_pre10 (14 May 2004)
+
+  14 May 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  +kobodeluxe-0.4_pre10.ebuild:
+  Version bump and adding ~amd64 KEYWORD.  Blame bug #51075.
+
+  24 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  kobodeluxe-0.3-r1.ebuild, kobodeluxe-0.4_pre6.ebuild:
+  tidy old versions
+
+  04 Jul 2003; Michael Sterrett <msterret@gentoo.org>
+  kobodeluxe-0.4_pre8.ebuild:
+  use games eclass store highscores in /var/games/kobodeluxe (This is important
+  if kobodeluxe was installed before.) addd a pkg_postinst() so people with
+  existing highscore files know what to do.
+
+*kobodeluxe-0.4_pre8 (01 Jul 2003)
+
+  01 Jul 2003; Michael Sterrett <msterret@gentoo.org>
+  kobodeluxe-0.4_pre8.ebuild:
+  version bump
+
+  01 Jul 2003; Michael Sterrett <msterret@gentoo.org>
+  kobodeluxe-0.4_pre6.ebuild:
+  use sed -i
+  use use_enable for opengl
+  more error checking
+
+*kobodeluxe-0.4_pre6 (03 Jun 2002)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> kobodeluxe-0.4_pre6.ebuild :
+  Added KEYWORDS.
+
+  03 Jun 2002; Wout Mertens <wmertens@gentoo.org> :
+
+  Phil Bordelon <phil@lsu.edu> discovered some extra tarballs not mentioned on the site
+  I upped the ebuild to the last available version, but not the release snapshot, because
+  that gave streaking on my screen. (although it has nice features :) )
+  I removed oss and alsa use detection, since those wouldn't build on my system, although
+  sound works; I presume this is because of SDL.
+
+*kobodeluxe-0.3-r1 (02 Jun 2002)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> kobodeluxe-0.3-r1.ebuild :
+  Added KEYWORDS.
+
+  02 Jun 2002; Wout Mertens <wmertens@gentoo.org> :
+
+  Made it compile with the newer autoconf and fixed score dir location
+
+*kobodeluxe-0.3 (12 May 2002)
+
+  12 May 2002; Wout Mertens <wmertens@gentoo.org> :
+
+  Initial release

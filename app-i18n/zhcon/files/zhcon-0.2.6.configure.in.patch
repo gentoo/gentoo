@@ -1,0 +1,11 @@
+--- a/configure.in	2006-06-22 13:02:59.197841560 +0800
++++ b/configure.in	2006-06-22 12:48:59.000000000 +0800
+@@ -55,7 +55,7 @@
+ 
+ CFLAGS="$CFLAGS -funsigned-char -O2" 
+ CXXFLAGS="$CXXFLAGS -funsigned-char -O2"
+-if test $enable_debug = 'yes';then
++if test "x$enable_debug" = "xyes";then
+         CFLAGS="$CFLAGS -O0 -g3 -Wall" 
+         CXXFLAGS="$CXXFLAGS -O0 -g3 -Wall" 
+ else

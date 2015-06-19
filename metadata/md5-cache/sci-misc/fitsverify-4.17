@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=>=sci-libs/cfitsio-3:0= virtual/pkgconfig
+DESCRIPTION=FITS file format checker
+EAPI=5
+HOMEPAGE=http://heasarc.gsfc.nasa.gov/docs/software/ftools/fitsverify/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=public-domain
+RDEPEND=>=sci-libs/cfitsio-3:0=
+SLOT=0
+SRC_URI=http://heasarc.gsfc.nasa.gov/docs/software/ftools/fitsverify//fitsverify-4.17.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=64a1f34126bcbe1229d29e11cd57e32f

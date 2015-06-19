@@ -1,0 +1,66 @@
+Apply upstream patch for jimtcl-0.75 compatibility
+
+X-Gentoo-Bug: 509902
+X-Gentoo-Bug-URL: https://bugs.gentoo.org/show_bug.cgi?id=509902
+Link: http://repo.or.cz/w/openocd.git/commitdiff/92ea548aafee840e1507306a3ffb38625f427ec5
+
+Signed-off-by: Markos Chandras <hwoarang@gentoo.org>
+
+From 92ea548aafee840e1507306a3ffb38625f427ec5 Mon Sep 17 00:00:00 2001
+From: Paul Fertser <fercerpav@gmail.com>
+Date: Mon, 28 Apr 2014 14:34:47 +0400
+Subject: [PATCH] Update to the current Jim Tcl
+
+This is a post-release version but hopefully some fixes that went in
+are worth it; also the changes here make OpenOCD compatible with stock
+0.75 version if a distro maintainer decides to use it.
+
+Change-Id: I7ad1814c7c4868198475cdca4750c3d0ee4f5f8b
+Signed-off-by: Paul Fertser <fercerpav@gmail.com>
+Reviewed-on: http://openocd.zylin.com/2121
+Tested-by: jenkins
+Reviewed-by: Freddie Chopin <freddie.chopin@gmail.com>
+---
+ jimtcl               |    2 +-
+ src/helper/command.c |    2 +-
+ src/helper/command.h |    4 ++--
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/helper/command.c b/src/helper/command.c
+index 21362a6..137ac7e 100644
+--- a/src/helper/command.c
++++ b/src/helper/command.c
+@@ -365,7 +365,7 @@ static int register_command_handler(struct command_context *cmd_ctx,
+ 
+ 	LOG_DEBUG("registering '%s'...", ocd_name);
+ 
+-	Jim_CmdProc func = c->handler ? &script_command : &command_unknown;
++	Jim_CmdProc *func = c->handler ? &script_command : &command_unknown;
+ 	int retval = Jim_CreateCommand(interp, ocd_name, func, c, NULL);
+ 	free(ocd_name);
+ 	if (JIM_OK != retval)
+diff --git a/src/helper/command.h b/src/helper/command.h
+index 0f0edbb..0eda5b5 100644
+--- a/src/helper/command.h
++++ b/src/helper/command.h
+@@ -168,7 +168,7 @@ struct command {
+ 	struct command *parent;
+ 	struct command *children;
+ 	command_handler_t handler;
+-	Jim_CmdProc jim_handler;
++	Jim_CmdProc *jim_handler;
+ 	void *jim_handler_data;
+ 	enum command_mode mode;
+ 	struct command *next;
+@@ -204,7 +204,7 @@ char *command_name(struct command *c, char delim);
+ struct command_registration {
+ 	const char *name;
+ 	command_handler_t handler;
+-	Jim_CmdProc jim_handler;
++	Jim_CmdProc *jim_handler;
+ 	void *jim_handler_data;
+ 	enum command_mode mode;
+ 	const char *help;
+-- 
+1.7.6.6.GIT
+

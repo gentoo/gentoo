@@ -1,0 +1,13 @@
+diff --git a/configure b/configure
+index 32afb35..3be66fd 100755
+--- a/configure
++++ b/configure
+@@ -1503,7 +1503,7 @@ if [ -n "$gclib" -a -n "$gcinclude" ]; then
+ #include <gc.h>
+ main()
+ {
+-  extern unsigned GC_version;
++  unsigned GC_version = GC_get_version();
+   printf("%d%02d%03d\n",(GC_version>>16)&0xff,(GC_version>>8)&0xff,GC_version&0xff);
+ }
+ EOF

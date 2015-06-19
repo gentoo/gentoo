@@ -1,0 +1,18 @@
+diff --git a/src/display/lrmi.c b/src/display/lrmi.c
+index 85c6fe6..5c74260 100644
+--- a/src/display/lrmi.c
++++ b/src/display/lrmi.c
+@@ -33,6 +33,13 @@ This software has NO WARRANTY.  Use it at your own risk.
+ 
+ #include "lrmi.h"
+ 
++#if defined(__linux__) && !defined(TF_MASK)
++	#define TF_MASK X86_EFLAGS_TF
++	#define IF_MASK X86_EFLAGS_IF
++	#define VIF_MASK X86_EFLAGS_VIF
++	#define IOPL_MASK X86_EFLAGS_IOPL
++#endif
++
+ #define REAL_MEM_BASE 	((void *)0x10000)
+ #define REAL_MEM_SIZE 	0x10000
+ #define REAL_MEM_BLOCKS 	0x100

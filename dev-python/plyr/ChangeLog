@@ -1,0 +1,34 @@
+# ChangeLog for dev-python/plyr
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/plyr/ChangeLog,v 1.8 2015/06/07 15:16:50 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> plyr-1.0.6.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> plyr-1.0.6.ebuild:
+  amd64 stable, bug 540290
+
+  28 Jun 2014; Ian Delaney <idella4@gentoo.org> plyr-1.0.6.ebuild:
+  add ~x86 keyword, add missing call in prepare_all()
+
+  27 Jun 2014; Ian Delaney <idella4@gentoo.org> -plyr-1.0.2.ebuild:
+  remove superseded version
+
+  26 Jun 2014; Ian Delaney <idella4@gentoo.org> metadata.xml:
+  typo, metadata
+
+*plyr-1.0.6 (24 Jun 2014)
+
+  24 Jun 2014; Ian Delaney <idella4@gentoo.org> +plyr-1.0.6.ebuild:
+  bump; update HOMEPAGE, change SRC_URI to src repo and tarball, add IUSE doc,
+  doc build, test phase, ebuild prepared & updated by proxy maintainer
+
+*plyr-1.0.2 (22 Jun 2014)
+
+  22 Jun 2014; Ian Delaney <idella4@gentoo.org> +metadata.xml,
+  +plyr-1.0.2.ebuild:
+  new package, a dep to media-sound/lyvi, a python wrapper. Initial ebuild
+  written by Witold Pilat who is assigned proxy maintainer, close Bug #513748

@@ -1,0 +1,14 @@
+# ChangeLog for sci-astronomy/erfa
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/erfa/ChangeLog,v 1.2 2014/05/28 15:47:22 bicatali Exp $
+
+*erfa-1.1.0 (28 May 2014)
+
+  28 May 2014; Sébastien Fabbro <bicatali@gentoo.org> +erfa-1.1.0.ebuild:
+  Version bump
+
+*erfa-1.0.1 (26 Nov 2013)
+
+  26 Nov 2013; Sébastien Fabbro <bicatali@gentoo.org> +erfa-1.0.1.ebuild,
+  +metadata.xml:
+  Initial import

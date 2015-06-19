@@ -1,0 +1,32 @@
+# ChangeLog for net-fs/smbtatools
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-fs/smbtatools/ChangeLog,v 1.5 2013/03/02 22:50:44 hwoarang Exp $
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> smbtatools-1.2.6.ebuild:
+  Move Qt dependencies to the new category
+
+*smbtatools-1.2.6 (13 Sep 2012)
+
+  13 Sep 2012; Tomáš Chvátal <scarabeus@gentoo.org> +smbtatools-1.2.6.ebuild,
+  -files/dont_use_unsigned_long_long.patch, -files/fix_calculating.patch,
+  -files/reorder_divisions.patch, -smbtatools-1.2.3.ebuild,
+  -smbtatools-1.2.4.ebuild, -smbtatools-1.2.5.ebuild:
+  Version bump to latest. Prune older.
+
+*smbtatools-1.2.5 (30 Jun 2011)
+
+  30 Jun 2011; Robert Piasek <dagger@gentoo.org> +smbtatools-1.2.5.ebuild,
+  +files/dont_use_unsigned_long_long.patch, +files/fix_calculating.patch,
+  +files/reorder_divisions.patch:
+  Add version 1.2.5
+
+*smbtatools-1.2.4 (09 May 2011)
+
+  09 May 2011; Robert Piasek <dagger@gentoo.org> +smbtatools-1.2.4.ebuild:
+  Add version 1.2.4
+
+*smbtatools-1.2.3 (24 Mar 2011)
+
+  24 Mar 2011; Robert Piasek <dagger@gentoo.org> +smbtatools-1.2.3.ebuild,
+  +metadata.xml:
+  Initial ebuild for smbtatools 1.2.3

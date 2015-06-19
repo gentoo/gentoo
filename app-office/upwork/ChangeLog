@@ -1,0 +1,17 @@
+# ChangeLog for app-office/upwork
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/upwork/ChangeLog,v 1.2 2015/06/02 18:43:49 titanofold Exp $
+
+*upwork-4.0.70.0 (02 Jun 2015)
+
+  02 Jun 2015; Aaron W. Swenson <titanofold@gentoo.org>
+  +upwork-4.0.70.0.ebuild:
+  Version bump fixes bug 550478.
+
+*upwork-4.0.53.0 (15 May 2015)
+
+  15 May 2015; Aaron W. Swenson <titanofold@gentoo.org>
+  +upwork-4.0.53.0.ebuild, +files/upwork-desktop.patch, +metadata.xml:
+  Initial commit fixes bug 549118. Ebuild written by Stefan Talpalaru with
+  adjustments and patch by me.
+

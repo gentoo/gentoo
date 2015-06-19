@@ -1,0 +1,16 @@
+https://github.com/celery/kombu/commit/828ba134105eeb4c6df52cb4441cf90c297b77e3
+Fixes NA bug with amqplib.
+diff --git a/kombu/transport/amqplib.py b/kombu/transport/amqplib.py
+index feedee7..f57e28c 100644
+--- a/kombu/transport/amqplib.py
++++ b/kombu/transport/amqplib.py
+@@ -17,6 +17,9 @@ class SSLError(Exception):  # noqa
+         pass
+ from struct import unpack
+ 
++class NA(object):
++    pass
++
+ try:
+     from amqplib import client_0_8 as amqp
+     from amqplib.client_0_8 import transport

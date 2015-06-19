@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=doc? ( virtual/texi2dvi dev-tex/latex2html app-text/texi2html ) >=gnustep-base/gnustep-make-2.6.0 icu? ( >=dev-libs/icu-4.0:= ) !libffi? ( dev-libs/ffcall gnustep-base/gnustep-make[-native-exceptions] ) libffi? ( virtual/libffi ) ssl? ( net-libs/gnutls ) >=dev-libs/libxml2-2.6 >=dev-libs/libxslt-1.1 >=dev-libs/gmp-4.1 >=dev-libs/openssl-0.9.7 >=sys-libs/zlib-1.2 zeroconf? ( net-dns/avahi ) virtual/pkgconfig
+DESCRIPTION=A library of general-purpose, non-graphical Objective C objects
+EAPI=5
+HOMEPAGE=http://www.gnustep.org
+IUSE=+icu +libffi ssl zeroconf debug doc
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=doc? ( virtual/texi2dvi dev-tex/latex2html app-text/texi2html ) >=gnustep-base/gnustep-make-2.6.0 icu? ( >=dev-libs/icu-4.0:= ) !libffi? ( dev-libs/ffcall gnustep-base/gnustep-make[-native-exceptions] ) libffi? ( virtual/libffi ) ssl? ( net-libs/gnutls ) >=dev-libs/libxml2-2.6 >=dev-libs/libxslt-1.1 >=dev-libs/gmp-4.1 >=dev-libs/openssl-0.9.7 >=sys-libs/zlib-1.2 zeroconf? ( net-dns/avahi )
+SLOT=0
+SRC_URI=ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-base-1.24.7.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	gnustep-base	87d599af9a09a523d6d233e462f3758e	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f5afaf17bb337b29b260806f324503d3

@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/scmpc/files/scmpc-2.init,v 1.1 2009/03/16 19:07:19 angelos Exp $
+
+depend() {
+	use net mpd
+}
+
+start() {
+	ebegin "Starting scmpc"
+	/usr/bin/scmpc -f /etc/scmpc.conf
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping scmpc"
+	/usr/bin/scmpc -kf /etc/scmpc.conf
+	eend $?
+}

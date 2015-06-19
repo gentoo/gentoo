@@ -1,0 +1,236 @@
+# ChangeLog for mail-client/cone
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-client/cone/ChangeLog,v 1.53 2014/08/13 09:35:15 ago Exp $
+
+  13 Aug 2014; Agostino Sarubbo <ago@gentoo.org> cone-0.90-r1.ebuild:
+  Stable for ppc, wrt bug #506912
+
+  20 Jul 2014; Pacho Ramos <pacho@gentoo.org> cone-0.90-r1.ebuild:
+  amd64 stable, bug #506912
+
+  20 Jul 2014; Eray Aslan <eras@gentoo.org> cone-0.90-r1.ebuild:
+  Work around the build failure - bug #514048
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> cone-0.90-r1.ebuild:
+  x86 stable wrt bug #506912
+
+  06 May 2013; Patrick Lauer <patrick@gentoo.org> cone-0.90-r1.ebuild:
+  Automake 1.13 fix
+
+*cone-0.90-r1 (16 Oct 2012)
+
+  16 Oct 2012; Eray Aslan <eras@gentoo.org> +cone-0.90-r1.ebuild,
+  +files/cone-0.90-gnutls3.patch:
+  Fix building with gnutls-3 - bug #421445
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> cone-0.90.ebuild:
+  x86 stable wrt bug #434296
+
+  08 Sep 2012; Anthony G. Basile <blueness@gentoo.org> cone-0.90.ebuild:
+  Stable ppc, bug #434296
+
+  08 Sep 2012; Agostino Sarubbo <ago@gentoo.org> cone-0.90.ebuild:
+  Stable for amd64, wrt bug #434296
+
+*cone-0.90 (04 May 2012)
+
+  04 May 2012; Eray Aslan <eras@gentoo.org> +cone-0.90.ebuild:
+  version bump
+
+  07 Feb 2012; Tim Harder <radhermit@gentoo.org> -cone-0.84.20100819-r1.ebuild,
+  -files/cone-0.84.20100819-skip-rfc2045-test.patch, -cone-0.86.ebuild:
+  Remove old.
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org> cone-0.89.ebuild:
+  Marking cone-0.89 ppc for bug 373155
+
+  13 Jul 2011; Markus Meier <maekke@gentoo.org> cone-0.89.ebuild:
+  x86 stable, bug #373155
+
+  30 Jun 2011; Markos Chandras <hwoarang@gentoo.org> cone-0.89.ebuild:
+  Stable on amd64 wrt bug #373155
+
+*cone-0.89 (24 May 2011)
+
+  24 May 2011; Tim Harder <radhermit@gentoo.org> -cone-0.85.20110124.ebuild,
+  -files/cone-0.85.20110124-skip-rfc2045-test.patch, +cone-0.89.ebuild:
+  Version bump and remove old.
+
+*cone-0.86 (19 Apr 2011)
+
+  19 Apr 2011; Tim Harder <radhermit@gentoo.org> +cone-0.86.ebuild,
+  +files/cone-0.86-skip-rfc2045-test.patch:
+  Version bump.
+
+  16 Apr 2011; Ulrich Mueller <ulm@gentoo.org> cone-0.84.20100819-r1.ebuild,
+  cone-0.85.20110124.ebuild:
+  Fix dependency on aspell, bug 363381.
+
+*cone-0.85.20110124 (28 Feb 2011)
+
+  28 Feb 2011; Tim Harder <radhermit@gentoo.org> +cone-0.85.20110124.ebuild,
+  +files/cone-0.85.20110124-skip-rfc2045-test.patch:
+  Version bump to the latest development release. Update to EAPI 4.
+
+  28 Feb 2011; Tim Harder <radhermit@gentoo.org> -cone-0.79.ebuild,
+  -files/cone-0.79-gcc45.patch:
+  Remove old
+
+  28 Feb 2011; Brent Baude <ranger@gentoo.org> cone-0.84.20100819-r1.ebuild:
+  stable ppc, bug 345187
+
+  30 Nov 2010; Markus Meier <maekke@gentoo.org> cone-0.84.20100819-r1.ebuild:
+  amd64/x86 stable, bug #345187
+
+  24 Nov 2010; Tim Harder <radhermit@gentoo.org> cone-0.84.20100819-r1.ebuild,
+  -files/cone-0.84.20100819-rfc2045-tests-lang.patch,
+  +files/cone-0.84.20100819-skip-rfc2045-test.patch:
+  Skip the rfc2045 test since it requires the en_US.utf-8 locale. Remove old
+  patch.
+
+  15 Nov 2010; Tim Harder <radhermit@gentoo.org>
+  cone-0.84.20100819-r1.ebuild,
+  +files/cone-0.84.20100819-rfc2045-tests-lang.patch:
+  Fix the MIME testsuite for systems without the en_US.utf-8 locale.
+
+*cone-0.84.20100819-r1 (12 Nov 2010)
+
+  12 Nov 2010; Tim Harder <radhermit@gentoo.org> -cone-0.84.20100819.ebuild,
+  +cone-0.84.20100819-r1.ebuild,
+  +files/cone-0.84.20100819-aspell-automagic.patch:
+  Revision bump and remove old. Fix aspell automagic dependency (bug #344329
+  by Cyprien Nicolas).
+
+  16 Oct 2010; Tim Harder <radhermit@gentoo.org> -cone-0.74.ebuild,
+  -files/cone-0.74-gcc43.patch:
+  Remove old.
+
+  15 Oct 2010; Brent Baude <ranger@gentoo.org> cone-0.79.ebuild:
+  stable ppc, bug 331251
+
+  13 Oct 2010; Markos Chandras <hwoarang@gentoo.org> cone-0.79.ebuild:
+  Stable on amd64 wrt bug #331251
+
+  12 Oct 2010; Christian Faulhammer <fauli@gentoo.org> cone-0.79.ebuild:
+  stable x86, bug 331251
+
+*cone-0.84.20100819 (03 Oct 2010)
+
+  03 Oct 2010; Tim Harder <radhermit@gentoo.org> -cone-0.84.ebuild,
+  +cone-0.84.20100819.ebuild:
+  Version bump to the latest development release and remove old (fixes bug
+  #339583).
+
+*cone-0.84 (26 Sep 2010)
+
+  26 Sep 2010; Tim Harder <radhermit@gentoo.org> +cone-0.84.ebuild:
+  Version bump (fixes bug #321845, thanks to Azamat H. Hackimov for
+  reporting) and update LICENSE to GPL-3. Also, add USE flags, dependencies,
+  and configure flags for gnutls, idn, ipv6, and ldap (bug #202466).
+
+  01 Aug 2010; Ryan Hill <dirtyepic@gentoo.org> cone-0.79.ebuild,
+  +files/cone-0.79-gcc45.patch:
+  Bump to EAPI 2 and fix build w/ GCC 4.5 (bug #321659).
+
+  11 Jul 2009; Torsten Veller <tove@gentoo.org> -cone-0.64.ebuild,
+  -files/cone-dotsignature.patch:
+  Cleanup
+
+*cone-0.79 (11 Jul 2009)
+
+  11 Jul 2009; Torsten Veller <tove@gentoo.org> +cone-0.79.ebuild:
+  Version bump. Fixes #194332, #239816, #276947
+
+  26 Feb 2009; Joseph Jezak <josejx@gentoo.org> cone-0.74.ebuild:
+  Marked ppc stable for bug #245675.
+
+  08 Feb 2009; Markus Meier <maekke@gentoo.org> cone-0.74.ebuild:
+  amd64/x86 stable, bug #245675
+
+  01 Feb 2009; Markus Meier <maekke@gentoo.org> cone-0.74.ebuild:
+  add ~amd64, bug #256755
+
+*cone-0.74 (09 Jun 2008)
+
+  09 Jun 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/cone-0.74-gcc43.patch, -cone-0.57-r1.ebuild, -cone-0.63.ebuild,
+  -cone-0.66.ebuild, -cone-0.69.ebuild, +cone-0.74.ebuild:
+  bump and patch for bug #217637
+
+*cone-0.69 (03 Mar 2007)
+
+  03 Mar 2007; Ryan Hill <dirtyepic@gentoo.org> +cone-0.69.ebuild:
+  Version bump for bug #153376 and #161974.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*cone-0.66 (26 Apr 2006)
+
+  26 Apr 2006; Andrej Kacian <ticho@gentoo.org> +cone-0.66.ebuild:
+  Version bump. Closes bug #104658, reported by Daniel Webert <rockoo at
+  gmail.com>.
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> cone-0.64.ebuild:
+  Stable on ppc.
+
+  24 Aug 2005; Andrej Kacian <ticho@gentoo.org> cone-0.64.ebuild:
+  Stable on x86.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> cone-0.63.ebuild:
+  Stable on ppc.
+
+*cone-0.64 (09 Apr 2005)
+
+  09 Apr 2005; Andrej Kacian <ticho@gentoo.org> +cone-0.64.ebuild:
+  Version bump.
+
+  02 Apr 2005; Fernando J. Pereda <ferdy@gentoo.org> cone-0.63.ebuild:
+  0.63 stable on x86
+
+*cone-0.63 (26 Dec 2004)
+
+  26 Dec 2004; Brian Jackson <iggy@gentoo.org> -cone-0.56.ebuild,
+  cone-0.57-r1.ebuild, -cone-0.57.ebuild, +cone-0.63.ebuild:
+  version bump, clean a few older versions, and fix a build error
+
+  29 Nov 2004; Andrej Kacian <ticho@gentoo.org> cone-0.56.ebuild,
+  cone-0.57-r1.ebuild, cone-0.57.ebuild:
+  app-admin/fam -> virtual/fam, for bug #67170.
+
+*cone-0.57-r1 (07 Jul 2004)
+
+  07 Jul 2004; Cory Visi <merlin@gentoo.org> cone-0.57-r1.ebuild,
+  files/cone-dotsignature.patch:
+  Add .signature support re: Bug 51842, thanks to Andrey Ulanov
+  <drey@rt.mipt.ru> for the patch
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> cone-0.56.ebuild,
+  cone-0.57.ebuild:
+  virtual/glibc -> virtual/libc
+
+  03 Jun 2004; David Holm <dholm@gentoo.org> cone-0.57.ebuild:
+  Added to ~ppc.
+
+*cone-0.56 (29 May 2004)
+
+  29 May 2004; Seemant Kulleen <seemant@gentoo.org> +cone-0.56.ebuild,
+  +cone-0.57.ebuild:
+  Moved from net-mail/cone to mail-client/cone.
+
+  25 Jan 2004; Jason Wever <weeve@gentoo.org> cone-0.57.ebuild:
+  A ~sparc for you Mr. Cone
+
+*cone-0.57 (24 Jan 2004)
+
+  24 Jan 2004; Brian Jackson <iggy@gentoo.org> cone-0.56.ebuild,
+  cone-0.57.ebuild:
+  add libxml2 to deps, fixes 39281, also version bumped while I was here
+
+*cone-0.56 (14 Dec 2003)
+
+  14 Dec 2003; Brian Jackson <iggy@gentoo.org> cone-0.56.ebuild:
+  new package, cone is a console based news/mail reader written by the author of
+  courier. This has been living in my overlay for awhile, and I've had a few
+  other people test it. Let me know if you give this a try and it works or
+  doesn't.

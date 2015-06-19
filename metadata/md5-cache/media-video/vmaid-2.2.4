@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=x11-libs/gtk+:2 ao? ( media-libs/libao ) !ao? ( alsa? ( >=media-libs/alsa-lib-0.9 ) ) mime? ( x11-misc/shared-mime-info ) sys-devel/gettext virtual/pkgconfig app-text/scrollkeeper
+DESCRIPTION=Video maid is the AVI file editor
+EAPI=5
+HOMEPAGE=http://vmaid.sourceforge.jp/
+IUSE=alsa ao mime
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-3
+RDEPEND=x11-libs/gtk+:2 ao? ( media-libs/libao ) !ao? ( alsa? ( >=media-libs/alsa-lib-0.9 ) ) mime? ( x11-misc/shared-mime-info )
+SLOT=0
+SRC_URI=mirror://sourceforge.jp/vmaid/48081/vmaid-2.2.4.tar.gz
+_md5_=7f49d58201fb7ae65fa213bbd8ec5987

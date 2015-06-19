@@ -1,0 +1,128 @@
+# ChangeLog for dev-util/monodevelop-debugger-gdb
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/monodevelop-debugger-gdb/ChangeLog,v 1.23 2013/10/12 12:10:36 pacho Exp $
+
+  12 Oct 2013; Pacho Ramos <pacho@gentoo.org>
+  -monodevelop-debugger-gdb-2.8.5.1.ebuild:
+  Drop old
+
+  07 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  monodevelop-debugger-gdb-3.0.2.ebuild:
+  x86 stable wrt bug #435202
+
+  16 Sep 2012; Agostino Sarubbo <ago@gentoo.org>
+  monodevelop-debugger-gdb-3.0.2.ebuild:
+  Stable for amd64, wrt bug #435202
+
+*monodevelop-debugger-gdb-3.0.2 (16 Jun 2012)
+
+  16 Jun 2012; Pacho Ramos <pacho@gentoo.org>
+  +monodevelop-debugger-gdb-3.0.2.ebuild, -monodevelop-debugger-gdb-2.6.ebuild,
+  -monodevelop-debugger-gdb-2.8.2.ebuild:
+  Version bump, drop old.
+
+  22 May 2012; Agostino Sarubbo <ago@gentoo.org>
+  monodevelop-debugger-gdb-2.8.5.1.ebuild:
+  Stable for amd64, wrt bug #407701
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  monodevelop-debugger-gdb-2.6.ebuild, monodevelop-debugger-gdb-2.8.2.ebuild,
+  monodevelop-debugger-gdb-2.8.5.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  09 Apr 2012; Markus Meier <maekke@gentoo.org>
+  monodevelop-debugger-gdb-2.8.5.1.ebuild:
+  x86 stable, bug #407701
+
+*monodevelop-debugger-gdb-2.8.5.1 (22 Jan 2012)
+
+  22 Jan 2012; Pacho Ramos <pacho@gentoo.org>
+  +monodevelop-debugger-gdb-2.8.5.1.ebuild:
+  Version bump.
+
+*monodevelop-debugger-gdb-2.8.2 (23 Nov 2011)
+
+  23 Nov 2011; Pacho Ramos <pacho@gentoo.org>
+  +monodevelop-debugger-gdb-2.8.2.ebuild, -monodevelop-debugger-gdb-2.4.ebuild:
+  Version bump, remove old.
+
+  05 Nov 2011; Markos Chandras <hwoarang@gentoo.org>
+  monodevelop-debugger-gdb-2.6.ebuild:
+  Stable on amd64 wrt bug #389181
+
+  04 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  monodevelop-debugger-gdb-2.6.ebuild:
+  x86 stable wrt bug #389181
+
+*monodevelop-debugger-gdb-2.6 (10 Sep 2011)
+
+  10 Sep 2011; Pacho Ramos <pacho@gentoo.org>
+  -monodevelop-debugger-gdb-2.5.93.ebuild,
+  +monodevelop-debugger-gdb-2.6.ebuild:
+  Version bump, remove old.
+
+*monodevelop-debugger-gdb-2.5.93 (20 Aug 2011)
+
+  20 Aug 2011; Alistair Bush <ali_bush@gentoo.org>
+  +monodevelop-debugger-gdb-2.5.93.ebuild:
+  Version Bump.
+
+  27 Nov 2010; Peter Alfredsen <loki_val@gentoo.org>
+  monodevelop-debugger-gdb-2.4.ebuild:
+  Fixup for compat with monodevelop-2.4.1
+
+  07 Oct 2010; Pacho Ramos <pacho@gentoo.org>
+  -monodevelop-debugger-gdb-2.0.ebuild,
+  -monodevelop-debugger-gdb-2.1.1.ebuild,
+  -monodevelop-debugger-gdb-2.2.ebuild,
+  -monodevelop-debugger-gdb-2.2.1.ebuild:
+  Remove old.
+
+  23 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  monodevelop-debugger-gdb-2.4.ebuild:
+  Stable on amd64 wrt bug #336851
+
+  12 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  monodevelop-debugger-gdb-2.4.ebuild:
+  x86 stable wrt bug #336851
+
+*monodevelop-debugger-gdb-2.4 (04 Jul 2010)
+
+  04 Jul 2010; Pacho Ramos <pacho@gentoo.org>
+  +monodevelop-debugger-gdb-2.4.ebuild:
+  Version bump.
+
+*monodevelop-debugger-gdb-2.2.1 (25 Feb 2010)
+*monodevelop-debugger-gdb-2.2 (25 Feb 2010)
+
+  25 Feb 2010; Patrick Lauer <patrick@gentoo.org>
+  +monodevelop-debugger-gdb-2.2.ebuild,
+  +monodevelop-debugger-gdb-2.2.1.ebuild:
+  Bump
+
+*monodevelop-debugger-gdb-2.1.1 (18 Oct 2009)
+
+  18 Oct 2009; Peter Alfredsen <loki_val@gentoo.org>
+  +monodevelop-debugger-gdb-2.1.1.ebuild:
+  Bump to 2.2 Beta 2
+
+*monodevelop-debugger-gdb-2.0 (30 Mar 2009)
+
+  30 Mar 2009; Peter Alfredsen <loki_val@gentoo.org>
+  -monodevelop-debugger-gdb-1.9.2.ebuild,
+  -monodevelop-debugger-gdb-1.9.3.ebuild,
+  +monodevelop-debugger-gdb-2.0.ebuild:
+  Bump to monodevelop-2.0 version. Punt old.
+
+*monodevelop-debugger-gdb-1.9.3 (17 Mar 2009)
+
+  17 Mar 2009; Peter Alfredsen <loki_val@gentoo.org>
+  +monodevelop-debugger-gdb-1.9.3.ebuild:
+  Bump to MD 2 Beta 2
+
+*monodevelop-debugger-gdb-1.9.2 (08 Mar 2009)
+
+  08 Mar 2009; Peter Alfredsen <loki_val@gentoo.org> +metadata.xml,
+  +monodevelop-debugger-gdb-1.9.2.ebuild:
+  Beta1 of monodevelop-debugger-gdb-2. Bug 259798. Initial commit. Thanks to
+  uzytkownik <uzytkownik2@gmail.com>.

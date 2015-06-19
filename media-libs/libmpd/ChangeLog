@@ -1,0 +1,271 @@
+# ChangeLog for media-libs/libmpd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libmpd/ChangeLog,v 1.72 2015/05/21 12:20:33 ago Exp $
+
+  21 May 2015; Agostino Sarubbo <ago@gentoo.org> libmpd-11.8.17-r1.ebuild:
+  Stable for amd64, wrt bug #547130
+
+  26 Apr 2015; Pacho Ramos <pacho@gentoo.org> libmpd-11.8.17-r1.ebuild:
+  ppc stable wrt bug #547130
+
+  26 Apr 2015; Pacho Ramos <pacho@gentoo.org> libmpd-11.8.17-r1.ebuild:
+  x86 stable wrt bug #547130
+
+*libmpd-11.8.17-r1 (28 Nov 2014)
+
+  28 Nov 2014; Christoph Mende <angelos@gentoo.org>
+  +files/libmpd-11.8.17-remove-strndup.patch, +libmpd-11.8.17-r1.ebuild:
+  Remove strndup definition from libmpd-internal.h to fix compilation on
+  glibc-2.20 (bug #528692)
+
+  12 Jul 2012; Christoph Mende <angelos@gentoo.org>
+  -files/libmpd-0.20.0-overflow.patch, -libmpd-9999.ebuild:
+  Move live ebuild to mpd overlay
+
+  27 May 2012; Christoph Mende <angelos@gentoo.org> -libmpd-0.20.0-r1.ebuild:
+  Remove old
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> libmpd-0.20.0-r1.ebuild,
+  libmpd-11.8.17.ebuild, libmpd-9999.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  07 Mar 2012; Brent Baude <ranger@gentoo.org> libmpd-11.8.17.ebuild:
+  Marking libmpd-11.8.17 ppc for bug 381219
+
+  09 Oct 2011; Markus Meier <maekke@gentoo.org> libmpd-11.8.17.ebuild:
+  x86 stable, bug #381219
+
+  25 Sep 2011; Tony Vroon <chainsaw@gentoo.org> libmpd-11.8.17.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Elijah "Armageddon" El Lazkani in bug #381219.
+
+  20 Aug 2011; Christoph Mende <angelos@gentoo.org> libmpd-11.8.17.ebuild:
+  Re-add keywords
+
+*libmpd-11.8.17 (20 Aug 2011)
+
+  20 Aug 2011; Christoph Mende <angelos@gentoo.org> +libmpd-11.8.17.ebuild:
+  Version bump
+
+*libmpd-9999 (17 Jul 2011)
+
+  17 Jul 2011; Christoph Mende <angelos@gentoo.org> +libmpd-9999.ebuild:
+  Add live ebuild
+
+  20 Mar 2011; Christoph Mende <angelos@gentoo.org> libmpd-0.20.0-r1.ebuild:
+  Made building of static libraries optional and removed .la files
+
+  19 Mar 2011; Christoph Mende <angelos@gentoo.org> -libmpd-0.18.0.ebuild,
+  -libmpd-0.19.0.ebuild, -libmpd-0.20.0.ebuild:
+  Removed old
+
+  13 Mar 2011; Raúl Porcel <armin76@gentoo.org> libmpd-0.18.0.ebuild,
+  libmpd-0.19.0.ebuild:
+  Drop sparc keywords
+
+  26 Feb 2011; Michael Weber <xmw@gentoo.org> libmpd-0.20.0.ebuild,
+  libmpd-0.20.0-r1.ebuild:
+  sparc dropping keywords (bug 325621)
+
+  20 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  libmpd-0.20.0-r1.ebuild:
+  x86 stable wrt bug #325621
+
+  20 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  libmpd-0.20.0-r1.ebuild:
+  ppc stable wrt #325621
+
+*libmpd-0.20.0-r1 (20 Feb 2011)
+
+  20 Feb 2011; <angelos@gentoo.org> +libmpd-0.20.0-r1.ebuild,
+  +files/libmpd-0.20.0-overflow.patch:
+  Fixed overflow in mpd_newConnection (bug #340141)
+
+  17 Feb 2011; Markos Chandras <hwoarang@gentoo.org> libmpd-0.20.0.ebuild:
+  Stable on amd64 wrt bug #325621
+
+*libmpd-0.20.0 (18 May 2010)
+
+  18 May 2010; Christoph Mende <angelos@gentoo.org> +libmpd-0.20.0.ebuild:
+  Version bump
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org> libmpd-0.19.0.ebuild:
+  Transfer Prefix keywords
+
+*libmpd-0.19.0 (27 Sep 2009)
+
+  27 Sep 2009; Samuli Suominen <ssuominen@gentoo.org> +libmpd-0.19.0.ebuild:
+  Version bump.
+
+  09 Jun 2009; Christian Faulhammer <fauli@gentoo.org> libmpd-0.18.0.ebuild:
+  stable x86, bug 272347
+
+  06 Jun 2009; nixnut <nixnut@gentoo.org> libmpd-0.18.0.ebuild:
+  ppc stable #272331
+
+  03 Jun 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  libmpd-0.18.0.ebuild:
+  stable amd64, bug 272347
+
+  03 Jun 2009; Ferris McCormick <fmccor@gentoo.org> libmpd-0.18.0.ebuild:
+  Sparc stable, Bug #272347 (required for Bug #272331).
+
+  20 Mar 2009; Raúl Porcel <armin76@gentoo.org> libmpd-0.17.0.ebuild:
+  x86 stable wrt #259793
+
+  18 Mar 2009; Brent Baude <ranger@gentoo.org> libmpd-0.17.0.ebuild:
+  stable ppc, bug 259793
+
+*libmpd-0.18.0 (12 Mar 2009)
+
+  12 Mar 2009; Christoph Mende <angelos@gentoo.org> +libmpd-0.18.0.ebuild:
+  Version bump
+
+  27 Feb 2009; Tiago Cunha <tcunha@gentoo.org> libmpd-0.17.0.ebuild:
+  stable amd64/sparc, bug 259793
+
+  04 Jan 2009; Christoph Mende <angelos@gentoo.org> -libmpd-0.15.0.ebuild,
+  -libmpd-0.15.0-r1.ebuild:
+  Removed old
+
+  29 Dec 2008; Tiago Cunha <tcunha@gentoo.org> libmpd-0.16.1.ebuild:
+  stable sparc, bug 251332
+
+*libmpd-0.17.0 (26 Dec 2008)
+
+  26 Dec 2008; Christoph Mende <angelos@gentoo.org> +libmpd-0.17.0.ebuild:
+  Version bump
+
+  20 Dec 2008; nixnut <nixnut@gentoo.org> libmpd-0.16.1.ebuild:
+  Stable on ppc wrt bug 251332
+
+  17 Dec 2008; Markus Meier <maekke@gentoo.org> libmpd-0.16.1.ebuild:
+  amd64/x86 stable, bug #251332
+
+  26 Sep 2008; Alexis Ballier <aballier@gentoo.org> libmpd-0.16.1.ebuild:
+  keyword ~ppc64, working fine on a PowerMac 970
+
+*libmpd-0.16.1 (25 Sep 2008)
+
+  25 Sep 2008; Christoph Mende <angelos@gentoo.org> -libmpd-0.16.0.ebuild,
+  +libmpd-0.16.1.ebuild:
+  Bug fix bump
+
+*libmpd-0.16.0 (24 Sep 2008)
+
+  24 Sep 2008; Christoph Mende <angelos@gentoo.org> libmpd-0.15.0-r1.ebuild,
+  +libmpd-0.16.0.ebuild:
+  Version bump and added missing inherit eutils
+
+*libmpd-0.15.0-r1 (21 Aug 2008)
+
+  21 Aug 2008; Christoph Mende <angelos@gentoo.org>
+  +files/libmpd-0.15.0-remove-new-parameter.patch, +libmpd-0.15.0-r1.ebuild:
+  Fix for bug 233582
+
+  10 Apr 2008; Samuli Suominen <drac@gentoo.org> libmpd-0.15.0.ebuild:
+  pkgconfig and glib is needed wrt #216895
+
+  17 Mar 2008; Ferris McCormick <fmccor@gentoo.org> libmpd-0.15.0.ebuild:
+  Sparc stable, part of Bug #212077.
+
+  03 Mar 2008; <cla@gentoo.org> libmpd-0.15.0.ebuild:
+  Stable on x86 (bug #212077)
+
+  02 Mar 2008; nixnut <nixnut@gentoo.org> libmpd-0.15.0.ebuild:
+  Stable on ppc wrt bug 212077
+
+  02 Mar 2008; Christoph Mende <angelos@gentoo.org> libmpd-0.15.0.ebuild:
+  Stable on amd64, bug #212077
+
+  20 Jan 2008; Christoph Mende <angelos@gentoo.org> -libmpd-0.13.0.ebuild:
+  Prune old version
+
+  19 Jan 2008; Christian Faulhammer <opfer@gentoo.org> libmpd-0.14.0.ebuild:
+  stable x86, bug 206637
+
+*libmpd-0.15.0 (19 Jan 2008)
+
+  19 Jan 2008; Christoph Mende <angelos@gentoo.org> metadata.xml,
+  -libmpd-0.01.ebuild, -libmpd-0.12.0.ebuild, +libmpd-0.15.0.ebuild:
+  Bump to 0.15.0, remove old and take over maintainership
+
+  01 Sep 2007; Christoph Mende <angelos@gentoo.org> libmpd-0.14.0.ebuild:
+  Stable on amd64
+
+  13 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  libmpd-0.14.0.ebuild:
+  ppc. stable
+
+  17 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> libmpd-0.14.0.ebuild:
+  Stable on sparc
+
+*libmpd-0.14.0 (21 May 2007)
+
+  21 May 2007; Andrej Kacian <ticho@gentoo.org> +libmpd-0.14.0.ebuild:
+  Version bump for new gmpc.
+
+  17 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> libmpd-0.13.0.ebuild:
+  Stable on sparc wrt #174098
+
+  15 Apr 2007; nixnut <nixnut@gentoo.org> libmpd-0.13.0.ebuild:
+  Stable on ppc wrt bug 174098
+
+  11 Apr 2007; Peter Weller <welp@gentoo.org> libmpd-0.13.0.ebuild:
+  Stable on amd64 wrt bug 174098
+
+  11 Apr 2007; Christian Faulhammer <opfer@gentoo.org> libmpd-0.13.0.ebuild:
+  stable x86, bug 174098
+
+*libmpd-0.13.0 (03 Mar 2007)
+
+  03 Mar 2007; Andrej Kacian <ticho@gentoo.org> +libmpd-0.13.0.ebuild:
+  Version bump for bug #169098.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-libmpd-0.01,
+  files/digest-libmpd-0.12.0, Manifest:
+  Fixing SHA256 digest, pass four
+
+  27 Mar 2006; <ticho@gentoo.org> libmpd-0.01.ebuild, libmpd-0.12.0.ebuild:
+  HOMEPAGE update.
+
+*libmpd-0.12.0 (27 Mar 2006)
+
+  27 Mar 2006; <ticho@gentoo.org> -libmpd-0.12.0_rc1.ebuild,
+  +libmpd-0.12.0.ebuild:
+  Version bump.
+
+*libmpd-0.12.0_rc1 (25 Feb 2006)
+
+  25 Feb 2006; Andrej Kacian <ticho@gentoo.org> +libmpd-0.12.0_rc1.ebuild:
+  Version bump.
+
+  12 Feb 2006; Luis Medinas <metalgod@gentoo.org> libmpd-0.01.ebuild:
+  Stable on amd64.
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> libmpd-0.01.ebuild:
+  Stable on ppc.
+
+  25 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org> libmpd-0.01.ebuild:
+  Stable on sparc
+
+  25 Oct 2005; Andrej Kacian <ticho@gentoo.org> libmpd-0.01.ebuild:
+  Stable on x86 - a dependency of >=media-sound/gmpc-0.12.0.
+
+  24 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> libmpd-0.01.ebuild:
+  ~sparc wrt #103486
+
+  23 Aug 2005; Herbie Hopkins <herbs@gentoo.org> libmpd-0.01.ebuild:
+  Marked ~amd64 wrt bug #103486.
+
+  23 Aug 2005; Lars Weiler <pylon@gentoo.org> libmpd-0.01.ebuild:
+  Added ~ppc-keyword as requested in Bug #103486.
+
+*libmpd-0.01 (23 Aug 2005)
+
+  23 Aug 2005; Andrej Kacian <ticho@gentoo.org> +metadata.xml,
+  +libmpd-0.01.ebuild:
+  Initial import.

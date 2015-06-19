@@ -1,0 +1,47 @@
+--- Makefile.LINUX.orig	2008-02-25 10:20:26.000000000 +0000
++++ Makefile.LINUX	2009-04-16 18:36:21.634506850 +0100
+@@ -5,15 +5,14 @@
+ TARGET3	= $(TARGET0).0.0.4
+ OPJ     = OPJFile
+ OPJ2DAT = opj2dat
+-CC	= g++
+-CFLAGS	= -pipe -Wall -W -O2 -fPIC
+-LDFLAGS	= -shared -Wl,-soname,$(TARGET1)
++MYCXXFLAGS = -pipe -Wall -W -fPIC
++MYLDFLAGS = -shared -Wl,-soname,$(TARGET1)
+ LIBEXT  = `./lib-arch.sh`
+ all : $(TARGET0) $(OPJ2DAT)
+ 
+ $(TARGET0) : $(OPJ).cpp $(OPJ).h
+-	$(CC) -c $(CFLAGS) $(OPJ).cpp -o $(OPJ).o
+-	$(CC) $(LDFLAGS) -o $(TARGET3) $(OPJ).o
++	$(CXX) -c $(CXXFLAGS) $(MYCXXFLAGS) $(OPJ).cpp -o $(OPJ).o
++	$(CXX) $(LDFLAGS) $(MYLDFLAGS) $(OPJ).o -o $(TARGET3) 
+ 	mkdir -p lib
+ 	chmod 644 $(TARGET3)
+ 	mv -f $(TARGET3) lib/
+@@ -22,8 +21,9 @@
+ 	ln -sf $(TARGET3) $(TARGET1);\
+ 	ln -sf $(TARGET3) $(TARGET2))
+ 
+-$(OPJ2DAT): $(OPJ2DAT).cpp 
+-	$(CC) $(CFLAGS) -L lib/ -o $(OPJ2DAT) -lorigin $(OPJ2DAT).cpp
++$(OPJ2DAT): $(OPJ2DAT).cpp
++	$(CXX) -c $(CXXFLAGS) $(MYCXXFLAGS) $(OPJ2DAT).cpp -o $(OPJ2DAT).o
++	$(CXX) $(LDFLAGS) $(MYLDFLAGS) $(OPJ2DAT).o -Llib -lorigin -o $(OPJ2DAT)
+ 
+ clean :
+ 	rm -f *~ *.o $(OPJ2DAT) $(TARGET0)*
+@@ -36,9 +36,9 @@
+ 	chmod 755 $(OPJ2DAT)
+ 	cp $(OPJ2DAT) $(DESTDIR)/usr/bin
+ 	mkdir -p $(DESTDIR)/usr/include/$(TARGET)
+-	chmod 644 $(OPJ).h tree.hh
+-	cp $(OPJ).h tree.hh $(DESTDIR)/usr/include/$(TARGET)
+-	ldconfig
++	chmod 644 $(OPJ).h
++	cp $(OPJ).h $(DESTDIR)/usr/include/$(TARGET)
++
+ uninstall:
+ 	rm -f $(DESTDIR)/usr/$(LIBEXT)/$(TARGET0)* $(DESTDIR)/usr/bin/$(OPJ2DAT) $(DESTDIR)/usr/include/$(TARGET)/$(OPJ).h
+ 	ldconfig

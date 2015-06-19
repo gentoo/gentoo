@@ -1,0 +1,83 @@
+# ChangeLog for games-board/gnushogi
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/gnushogi/ChangeLog,v 1.23 2014/08/25 20:50:38 mr_bones_ Exp $
+
+  25 Aug 2014; Michael Sterrett <mr_bones_@gentoo.org> -files/1.3-errno.patch,
+  -files/gnushogi-1.3-gcc4.patch, -files/gnushogi-1.3-ovflfix.patch,
+  -files/gnushogi-1.3-parallel.patch, -gnushogi-1.3.ebuild:
+  old
+
+  13 Aug 2014; Agostino Sarubbo <ago@gentoo.org> gnushogi-1.4.1.ebuild:
+  Stable for ppc, wrt bug #505214
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> gnushogi-1.4.1.ebuild:
+  x86 stable wrt bug #505214
+
+  02 Apr 2014; Chema Alonso <nimiux@gentoo.org> gnushogi-1.4.1.ebuild:
+  Stable for amd64 wrt bug #505214
+
+  28 Mar 2014; Michael Sterrett <mr_bones_@gentoo.org> gnushogi-1.4.1.ebuild:
+  Update HOMEPAGE
+
+*gnushogi-1.4.1 (22 Jan 2014)
+
+  22 Jan 2014; Michael Sterrett <mr_bones_@gentoo.org> +gnushogi-1.4.1.ebuild:
+  version bump
+
+  27 Oct 2010; Tupone Alfredo <tupone@gentoo.org> gnushogi-1.3.ebuild,
+  +files/gnushogi-1.3-ovflfix.patch:
+  Fix overflow. Bug #340901 by flameeyes@gentoo.org
+
+  31 Aug 2010; Michael Sterrett <mr_bones_@gentoo.org> gnushogi-1.3.ebuild:
+  respect LDFLAGS bug #335444
+
+  27 May 2010; Tupone Alfredo <tupone@gentoo.org> gnushogi-1.3.ebuild,
+  +files/gnushogi-1.3-parallel.patch:
+  Fix parallel make issue. Bug #298017
+
+  22 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> gnushogi-1.3.ebuild:
+  Use -j1 for build (bug #298017).
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> gnushogi-1.3.ebuild:
+  Removing old virtual/x11 dependency.
+
+  03 Apr 2006; <Tupone@gentoo.org> +files/gnushogi-1.3-gcc4.patch,
+  gnushogi-1.3.ebuild:
+  gcc-4 patch, bug #120839 by Joshua Baergen
+
+  29 Jan 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  gnushogi-1.3.ebuild:
+  Add modular X dependencies.
+
+  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org> gnushogi-1.3.ebuild:
+  Removed INSTALL file.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> gnushogi-1.3.ebuild:
+  Stable on ppc.
+
+  21 Dec 2004; Dylan Carlson <absinthe@gentoo.org> gnushogi-1.3.ebuild:
+  keywords ~amd64.
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> gnushogi-1.3.ebuild:
+  Added ~ppc.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> gnushogi-1.3.ebuild:
+  virtual/glibc -> virtual/libc
+
+  13 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> gnushogi-1.3.ebuild:
+  games.eclass already inherits eutils; less RDEPEND; use flags tidy
+
+  02 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> gnushogi-1.3.ebuild:
+  Add errno patch from edi via bug 37013; also, support X use better and sed in
+  unpack; more error checking/messages
+
+  03 Sep 2003; Michael Sterrett <msterret@gentoo.org> gnushogi-1.3.ebuild:
+  use sed >= 4; error messages
+
+*gnushogi-1.3 (22 Dec 2002)
+
+  29 Dec 2003; J.Alberto Suarez Lopez <bass@gentoo.org> :
+  Fix bug #12903 , a problem with X version.
+
+  22 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Rigo Ketelings <rigo@home.nl>.

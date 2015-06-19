@@ -1,0 +1,72 @@
+# ChangeLog for dev-perl/Term-ReadPassword
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Term-ReadPassword/ChangeLog,v 1.16 2014/08/22 20:22:01 axs Exp $
+
+*Term-ReadPassword-0.110.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Term-ReadPassword-0.110.0-r1.ebuild, -Term-ReadPassword-0.110.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Term-ReadPassword-0.11.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org>
+  Term-ReadPassword-0.110.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Term-ReadPassword-0.110.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Term-ReadPassword-0.110.0.ebuild:
+  Change version scheme
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -Term-ReadPassword-0.07.ebuild:
+  Cleanup
+
+  01 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  Term-ReadPassword-0.11.ebuild:
+  stable x86, bug 343559
+
+  31 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  Term-ReadPassword-0.11.ebuild:
+  Stable on amd64 wrt bug #343559
+
+  19 Jun 2009; Brent Baude <ranger@gentoo.org>
+  Term-ReadPassword-0.11.ebuild:
+  keyworded ~arch for ppc64, bug 272598
+
+*Term-ReadPassword-0.11 (08 Sep 2008)
+
+  08 Sep 2008; Torsten Veller <tove@gentoo.org>
+  +Term-ReadPassword-0.11.ebuild:
+  Version bump
+
+  16 Aug 2008; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove pclouds from metadata.xml (#49680)
+
+  17 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  Term-ReadPassword-0.07.ebuild:
+  stable x86, bug 192748
+
+  15 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Term-ReadPassword-0.07.ebuild:
+  Marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Term-ReadPassword-0.07.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  30 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  Term-ReadPassword-0.07.ebuild:
+  Bug 138437, ~amd64 keywording
+
+*Term-ReadPassword-0.07 (29 Jun 2006)
+
+  29 Jun 2006; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org> +metadata.xml,
+  +Term-ReadPassword-0.07.ebuild:
+  Initial version

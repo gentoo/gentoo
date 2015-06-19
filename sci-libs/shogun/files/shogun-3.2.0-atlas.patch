@@ -1,0 +1,22 @@
+ cmake/FindAtlas.cmake | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/cmake/FindAtlas.cmake b/cmake/FindAtlas.cmake
+index 13f092d..8c2dd2f 100644
+--- a/cmake/FindAtlas.cmake
++++ b/cmake/FindAtlas.cmake
+@@ -20,10 +20,10 @@ if(ATLAS_LAPACK)
+   endif()
+   unset(CMAKE_REQUIRED_LIBRARIES CACHE)
+ else()
+-  find_file(ATLAS_LAPACK liblapack.so.3 PATHS /usr/lib/atlas /usr/lib64/atlas)
+-  find_library(ATLAS_LAPACK NAMES lapack)
+-  set(CMAKE_REQUIRED_LIBRARIES ${LAPACK_LIBRARIES} ${ATLAS_CBLAS})
+-  check_library_exists("${ATLAS_LAPACK}" clapack_dpotrf "" FOUND_CLAPACK)
++  # find_file(ATLAS_LAPACK liblapack.so.3 PATHS /usr/lib/atlas /usr/lib64/atlas)
++  # find_library(ATLAS_LAPACK NAMES lapack)
++  # set(CMAKE_REQUIRED_LIBRARIES ${LAPACK_LIBRARIES} ${ATLAS_CBLAS})
++  check_library_exists("${ATLAS_LIBRARIES}" clapack_dpotrf "" FOUND_CLAPACK)
+   if(NOT FOUND_CLAPACK)
+     unset(ATLAS_LAPACK CACHE)
+   endif()

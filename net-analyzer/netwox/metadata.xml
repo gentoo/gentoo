@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>netmon</herd>
+	<longdescription>Toolbox of over 400 utilities for testing Ethernet/IP networks</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">ntwox</remote-id>
+	</upstream>
+</pkgmetadata>

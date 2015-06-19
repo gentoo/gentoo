@@ -1,0 +1,82 @@
+# ChangeLog for x11-plugins/wmail
+# Copyright 2002-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmail/ChangeLog,v 1.22 2012/02/15 09:43:35 voyageur Exp $
+
+  15 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org> wmail-2.0-r3.ebuild:
+  Update HOMEPAGE and SRC_URI, thanks Lorenz in bug #394607
+
+  15 Sep 2010; Michele Noberasco <s4t4n@gentoo.org> wmail-2.0-r3.ebuild:
+  Honour Gentoo LDFLAGS, see bug #337407.
+
+  24 Nov 2008; Michele Noberasco <s4t4n@gentoo.org> wmail-2.0-r3.ebuild:
+  Fixed LDFLAGS ordering, see bug #248620.
+
+  01 Dec 2007; nixnut <nixnut@gentoo.org> wmail-2.0-r3.ebuild:
+  Stable on ppc wrt bug 200650
+
+  28 Nov 2007; Raúl Porcel <armin76@gentoo.org> wmail-2.0-r3.ebuild:
+  sparc stable wrt #200650
+
+  28 Nov 2007; Samuli Suominen <drac@gentoo.org> wmail-2.0-r3.ebuild:
+  amd64 stable wrt #200650
+
+  22 Aug 2007; Michele Noberasco <a4t4n@gentoo.org> wmail-2.0-r3.ebuild:
+  Stable for x86.
+
+*wmail-2.0-r3 (26 Jan 2007)
+
+  26 Jan 2007; Michele Noberasco <s4t4n@gentoo.org> wmail-2.0-r3.ebuild:
+  Revision bump, with patch to make from header parsing faster in maildir format,
+  thanks to Stanislav Kuchar.
+
+  18 May 2006; Jason Wever <weeve@gentoo.org> wmail-2.0-r2.ebuild:
+  Stable on SPARC.
+
+  15 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> wmail-2.0-r2.ebuild:
+  Fix bug #119100.
+
+*wmail-2.0-r2 (26 Aug 2005)
+
+  26 Aug 2005; Michele Noberasco <s4t4n@gentoo.org> wmail-2.0-r2.ebuild:
+  Revision bump, directly as stable, updating libdockapp dependancy. Closes bug #105530.
+
+  28 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> -wmail-2.0.ebuild:
+  clean old broken ebuild
+
+  23 Oct 2004; Jason Wever <weeve@gentoo.org> wmail-2.0-r1.ebuild:
+  Added ~sparc keyword.
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> wmail-2.0-r1.ebuild:
+  Stable on amd64.
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  wmail-2.0-r1.ebuild, wmail-2.0.ebuild:
+  Masked wmail-2.0.ebuild stable for ppc
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  wmail-2.0-r1.ebuild:
+  Masked wmail-2.0-r1.ebuild stable for ppc
+
+  31 Aug 2004; Michele Noberasco <s4t4n@gentoo.org> wmail-2.0-r1.ebuild:
+  Stable for x86 as x11-plugins/libdockapp-0.5.0 is now stable as well.
+  wmail-2.0.ebuild:
+  Change libdockapp dependency to =x11-libs/libdockapp-0.4.0-r1 as
+  newer versions don't work with this package.
+
+*wmail-2.0-r1 (31 Aug 2004)
+
+  31 Aug 2004; Michele Noberasco <s4t4n@gentoo.org> wmail-2.0-r1.ebuild:
+  Revision bump, adding support for libdockapp 0.5, see #54580.
+  Change HOMEPAGE to the www.dockapps.org entry, as the 'official' one
+  gives a 404...
+  metadata.xml:
+  Fix herd and longdescription...
+
+  13 Mar 2004; David Holm <dholm@gentoo.org> wmail-2.0.ebuild:
+  Added to ~ppc.
+
+*wmail-2.0 (08 Oct 2002)
+
+  08 Oct 2002; Nick Hadaway <raker@gentoo.org> wmail-2.0.ebuild,
+  files/digest-wmail-2.0 :
+  New ebuild.

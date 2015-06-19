@@ -1,0 +1,10 @@
+# ChangeLog for gnustep-apps/mpdcon
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/mpdcon/ChangeLog,v 1.1 2014/01/30 00:11:56 voyageur Exp $
+
+*mpdcon-1.5.1 (30 Jan 2014)
+
+  30 Jan 2014; Bernard Cafarelli <voyageur@gentoo.org> +mpdcon-1.5.1.ebuild,
+  +metadata.xml:
+  Initial commit, ebuild by adr in bug #480618
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>arfrever.fta@gmail.com</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="google-code">serf</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,4 @@
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/mogilefs-server/files/mogilefsd-conf.d-2.16,v 1.1 2007/05/16 11:11:17 robbat2 Exp $
+PIDFILE="/var/run/mogile/mogilefsd.pid"
+MOGILEFSD_OPTS="--daemonize --pidfile=${PIDFILE}"
+# vim: ft=gentoo-conf-d:

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>net-mail</herd>
+	<herd>antivirus</herd>
+	<use>
+		<flag name='courier'>Add courier support</flag>
+		<flag name='dkim'>Add DomainKeys Identified Mail support</flag>
+		<flag name='qmail'>Add qmail support</flag>
+		<flag name='razor'>Add support for mail-filter/razor</flag>
+		<flag name='spamassassin'>Add support for mail-filter/spamassassin</flag>
+		<flag name='zmq'>Add support for zeromq sockets</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,106 @@
+# ChangeLog for sci-astronomy/esorex
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/esorex/ChangeLog,v 1.12 2014/04/04 15:50:20 bicatali Exp $
+
+*esorex-3.10.2 (04 Apr 2014)
+
+  04 Apr 2014; Sebastien Fabbro <fabbros@gentoo.org> +esorex-3.10.2.ebuild,
+  -esorex-3.10-r1.ebuild, -esorex-3.10.ebuild:
+  Version bump
+
+*esorex-3.10-r2 (04 Mar 2014)
+
+  04 Mar 2014; Sébastien Fabbro <bicatali@gentoo.org> +esorex-3.10-r2.ebuild,
+  +files/esorex-3.10-cpl60_compat.patch, files/esorex-3.10-fix-autotools.patch:
+  Fixed autoreconf bug #503222, add cpl6 compatibility patch
+
+*esorex-3.10-r1 (25 Jul 2013)
+
+  25 Jul 2013; Sébastien Fabbro <bicatali@gentoo.org> +esorex-3.10-r1.ebuild,
+  +files/esorex-3.10-fix-autotools.patch,
+  +files/esorex-3.10-fix_format_strings.patch,
+  +files/esorex-3.10-generate-manpage.patch,
+  +files/esorex-3.10-remove-empty-configdir.patch,
+  +files/esorex-3.10-remove-private-ltdl.patch,
+  +files/esorex-3.10-set-default-plugin-path.patch:
+  Add patches from Debian to use system libtool, respect proper directory, and a
+  man page
+
+  11 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> -esorex-3.9.6-r1.ebuild,
+  -files/esorex-3.9.6-autoconf-26.patch,
+  -files/esorex-3.9.6-move-rcfile-to-etc.patch,
+  -files/esorex-3.9.6-set-default-plugin-path.patch,
+  -files/esorex-3.9.6-use-system-ltdl.patch:
+  Removed old
+
+*esorex-3.10 (07 Jun 2013)
+
+  07 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> +esorex-3.10.ebuild:
+  Version bump
+
+  05 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> esorex-3.9.6-r1.ebuild:
+  keyword amd64-linux, x86-linux
+
+*esorex-3.9.6-r1 (05 Aug 2012)
+
+  05 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> +esorex-3.9.6-r1.ebuild,
+  +files/esorex-3.9.6-autoconf-26.patch,
+  +files/esorex-3.9.6-move-rcfile-to-etc.patch,
+  +files/esorex-3.9.6-set-default-plugin-path.patch,
+  +files/esorex-3.9.6-use-system-ltdl.patch, -esorex-3.9.0.ebuild,
+  -esorex-3.9.6.ebuild:
+  Added several patches for newer autoconf, to use system libtdl, and respect
+  file system standard
+
+*esorex-3.9.6 (04 Jun 2012)
+
+  04 Jun 2012; Sébastien Fabbro <bicatali@gentoo.org> -esorex-3.8.3-r1.ebuild,
+  -files/esorex-3.8.3-cfitsio.patch, +esorex-3.9.6.ebuild,
+  +files/esorex-3.9.6-use-shared-libs.patch:
+  Version bump
+
+  04 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  Switched herd to sci-astronomy
+
+*esorex-3.9.0 (08 Apr 2011)
+
+  08 Apr 2011; Sébastien Fabbro <bicatali@gentoo.org> +esorex-3.9.0.ebuild:
+  Version bump
+
+*esorex-3.8.3-r1 (03 Oct 2010)
+
+  03 Oct 2010; Kacper Kowalik <xarthisius@gentoo.org> -esorex-3.8.3.ebuild,
+  +esorex-3.8.3-r1.ebuild, +files/esorex-3.8.3-cfitsio.patch:
+  Use pkg-config for cfitsio wrt bug 339460. Thanks to Diego for the report.
+  Drop old.
+
+*esorex-3.8.3 (26 May 2010)
+
+  26 May 2010; Sébastien Fabbro <bicatali@gentoo.org> +esorex-3.8.3.ebuild,
+  +metadata.xml:
+  Import to the main tree and bump
+
+*esorex-3.7.2 (23 Jul 2009)
+
+  23 Jul 2009; Sébastien Fabbro <bicatali@gentoo.org> -esorex-3.6.1.ebuild,
+  -esorex-3.6.8.ebuild, -esorex-3.6.12.ebuild, +esorex-3.7.2.ebuild:
+  Version bump
+
+  08 Dec 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +esorex-3.6.12.ebuild:
+  Version bump
+
+  02 Jun 2008; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml,
+  +esorex-3.6.8.ebuild:
+  Version bump
+
+  26 Mar 2007; Sébastien Fabbro <bicatali@gentoo.org> -esorex-3.6.ebuild,
+  +esorex-3.6.1.ebuild:
+  Version bump.
+
+*esorex-3.6 (15 Oct 2006)
+
+  15 Oct 2006; Sebastien Fabbro <seb@ist.utl.pt>;
+  +esorex-3.6.ebuild,  +metadata.xml.
+  Initial import.
+  

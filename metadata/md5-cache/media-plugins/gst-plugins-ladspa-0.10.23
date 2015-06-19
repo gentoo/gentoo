@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=media-libs/ladspa-sdk-1.12-r2 >=sys-apps/sed-4 virtual/pkgconfig >=dev-libs/glib-2.6:2 media-libs/gstreamer:0.10 >=media-libs/gst-plugins-bad-0.10.23:0.10
+DESCRIPTION=plugin for gstreamer
+EAPI=5
+HOMEPAGE=http://gstreamer.freedesktop.org/
+KEYWORDS=alpha amd64 ~ppc ~ppc64 x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/ladspa-sdk-1.12-r2 >=dev-libs/glib-2.6:2 media-libs/gstreamer:0.10 >=media-libs/gst-plugins-bad-0.10.23:0.10
+RESTRICT=test
+SLOT=0.10
+SRC_URI=http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-0.10.23.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	gst-plugins-bad	c250fc5cfd38c387759418ebf5aee12b	gst-plugins10	120ff9188b4303d014826ecd020530ec	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=9f8142db12a7cca07975a8ec5af13ae4

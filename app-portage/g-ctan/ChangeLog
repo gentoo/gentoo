@@ -1,0 +1,109 @@
+# ChangeLog for app-portage/g-ctan
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/g-ctan/ChangeLog,v 1.23 2015/06/09 12:03:24 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  07 May 2012; Alexis Ballier <aballier@gentoo.org> -g-ctan-2010.1.ebuild,
+  -g-ctan-2010.2.ebuild:
+  remove texlive-2010 depending version, 2011 is stable and 2010 is oing away
+
+  05 Oct 2011; Alexis Ballier <aballier@gentoo.org> -g-ctan-2008.2.ebuild,
+  -g-ctan-2009.2-r1.ebuild:
+  remove versions working for and require TeX Live 2008 or 2009, they are
+  useless now as these versions are gone
+
+*g-ctan-2011.1 (24 Sep 2011)
+
+  24 Sep 2011; Christian Faulhammer <fauli@gentoo.org> +g-ctan-2011.1.ebuild:
+  version bump for TeXLive 2011
+
+*g-ctan-2010.2 (24 Sep 2011)
+
+  24 Sep 2011; Christian Faulhammer <fauli@gentoo.org> +g-ctan-2010.2.ebuild:
+  Version bump that allows downloads for TeXLive 2010 again
+
+  14 Jun 2011; Matt Turner <mattst88@gentoo.org> g-ctan-2010.1.ebuild:
+  Added ~mips, bug 342513
+
+  15 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  -g-ctan-2009.2.ebuild:
+  clean up not working version
+
+*g-ctan-2010.1 (15 Nov 2010)
+
+  15 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  +g-ctan-2010.1.ebuild:
+  version bump to work with TeXLive 2010
+
+*g-ctan-2009.2-r1 (25 Oct 2010)
+
+  25 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  +g-ctan-2009.2-r1.ebuild:
+  TeXLive upstream changed repository URL because of Release of TeXLive
+  2010, fix it by providing the archive location
+
+  25 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  -g-ctan-2009.1.ebuild:
+  clean up
+
+*g-ctan-2009.2 (23 Jun 2010)
+
+  23 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  +g-ctan-2009.2.ebuild:
+  version bump, fixes bug 315171
+
+*g-ctan-2009.1 (21 Jan 2010)
+
+  21 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  +g-ctan-2009.1.ebuild:
+  version bump for TeXLive 2009
+
+  14 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  -files/g-ctan-2008.1-fix-overlay-detection.patch:
+  clean up stray patch
+
+*g-ctan-2008.2 (11 Jan 2010)
+
+  11 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  -g-ctan-2008.1-r1.ebuild, +g-ctan-2008.2.ebuild:
+  version bump because of upstream changes
+
+  19 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  g-ctan-2008.1-r1.ebuild:
+  added ~amd64 for bug 286060
+
+*g-ctan-2008.1-r1 (23 Sep 2009)
+
+  23 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  -g-ctan-2008.1.ebuild, +g-ctan-2008.1-r1.ebuild,
+  +files/g-ctan-2008.1-fix-overlay-detection.patch:
+  revision bump to fix Launchpad bug 434385
+
+  21 Sep 2009; Christian Faulhammer <fauli@gentoo.org> -g-ctan-9999.ebuild:
+  clean up
+
+*g-ctan-2008.1 (21 Sep 2009)
+
+  21 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  +g-ctan-2008.1.ebuild:
+  first released version
+
+  08 Sep 2009; Christian Faulhammer <fauli@gentoo.org> g-ctan-9999.ebuild:
+  depend on TeXLive 2008
+
+  08 Sep 2009; Christian Faulhammer <fauli@gentoo.org> g-ctan-9999.ebuild:
+  allow xz-utils along lzma-utils
+
+  08 Sep 2009; Christian Faulhammer <fauli@gentoo.org> g-ctan-9999.ebuild:
+  make the emake call die
+
+  07 Sep 2009; Christian Faulhammer <fauli@gentoo.org> g-ctan-9999.ebuild:
+  use Makefile from upstream now
+
+*g-ctan-9999 (02 Sep 2009)
+
+  02 Sep 2009; Christian Faulhammer <fauli@gentoo.org> +g-ctan-9999.ebuild,
+  +metadata.xml:
+  inital ebuild, live from repository, no releases yet

@@ -1,0 +1,28 @@
+# ChangeLog for media-sound/lxmusic
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/lxmusic/ChangeLog,v 1.6 2015/03/29 22:20:51 mrueg Exp $
+
+  29 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -lxmusic-0.4.4.ebuild:
+  Remove old.
+
+*lxmusic-0.4.5 (23 May 2012)
+
+  23 May 2012; Markos Chandras <hwoarang@gentoo.org>
+  +files/lxmusic-0.4.5-libnotify-0.7.patch, +lxmusic-0.4.5.ebuild:
+  Version bump
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> lxmusic-0.4.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  29 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> lxmusic-0.4.4.ebuild,
+  +files/lxmusic-0.4.4-libnotify-0.7.patch:
+  Fix building with x11-libs/libnotify >= 0.7.
+
+  07 Aug 2010; Víctor Ostorga <vostorga@gentoo.org> lxmusic-0.4.4.ebuild:
+  Adding x11-libs/libnotify as RDEPEND and fixing typo
+
+*lxmusic-0.4.4 (07 Aug 2010)
+
+  07 Aug 2010; Víctor Ostorga <vostorga@gentoo.org> +lxmusic-0.4.4.ebuild,
+  +metadata.xml:
+  Initial commit of lxmusic

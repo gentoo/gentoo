@@ -1,0 +1,9 @@
+diff -r -U1 mpmath-all-0.17.orig/setup.py mpmath-all-0.17/setup.py
+--- mpmath-all-0.17.orig/setup.py	2011-02-02 03:17:50.000000000 +0600
++++ mpmath-all-0.17/setup.py	2011-02-13 01:18:00.000000000 +0600
+@@ -15,4 +15,3 @@
+                 'mpmath/functions',
+-                'mpmath/matrices',
+-                'mpmath/tests'],
++                'mpmath/matrices'],
+       classifiers=['Topic :: Scientific/Engineering :: Mathematics']

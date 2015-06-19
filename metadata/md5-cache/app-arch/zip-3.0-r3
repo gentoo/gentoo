@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=bzip2? ( app-arch/bzip2 ) natspec? ( dev-libs/libnatspec ) app-arch/unzip
+DESCRIPTION=Info ZIP (encryption support)
+EAPI=4
+HOMEPAGE=http://www.info-zip.org/
+IUSE=bzip2 crypt natspec unicode
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~arm-linux
+LICENSE=Info-ZIP
+RDEPEND=bzip2? ( app-arch/bzip2 ) natspec? ( dev-libs/libnatspec )
+SLOT=0
+SRC_URI=mirror://sourceforge/infozip/zip30.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=66b961655a303091a155a655691f706c

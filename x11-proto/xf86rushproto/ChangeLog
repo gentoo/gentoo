@@ -1,0 +1,161 @@
+# ChangeLog for x11-proto/xf86rushproto
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-proto/xf86rushproto/ChangeLog,v 1.42 2015/04/08 17:42:35 mrueg Exp $
+
+  08 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -xf86rushproto-1.1.2.ebuild:
+  Remove old.
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> xf86rushproto-1.1.2-r1.ebuild:
+  add arm64 support, tested on A53 board
+
+  27 Feb 2013; Zac Medico <zmedico@gentoo.org> xf86rushproto-1.1.2-r1.ebuild:
+  Add ~arm-linux keyword.
+
+  06 Sep 2012; Mike Frysinger <vapier@gentoo.org> xf86rushproto-1.1.2-r1.ebuild,
+  xf86rushproto-1.1.2.ebuild:
+  Punt unused depend settings.
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> xf86rushproto-1.1.2-r1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #419473
+
+  12 Jul 2012; Brent Baude <ranger@gentoo.org> xf86rushproto-1.1.2-r1.ebuild:
+  Marking xf86rushproto-1.1.2-r1 ppc stable for bug 419473
+
+  11 Jul 2012; Brent Baude <ranger@gentoo.org> xf86rushproto-1.1.2-r1.ebuild:
+  Marking xf86rushproto-1.1.2-r1 ppc64 stable for bug 419473
+
+  29 Jun 2012; Markus Meier <maekke@gentoo.org> xf86rushproto-1.1.2-r1.ebuild:
+  arm stable, bug #419473
+
+  28 Jun 2012; Jeroen Roovers <jer@gentoo.org> xf86rushproto-1.1.2-r1.ebuild:
+  Stable for HPPA (bug #419473).
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> xf86rushproto-1.1.2-r1.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> xf86rushproto-1.1.2-r1.ebuild:
+  Stable for amd64, wrt bug #419473
+
+  10 May 2012; Alexis Ballier <aballier@gentoo.org>
+  xf86rushproto-1.1.2-r1.ebuild:
+  keyword ~amd64-fbsd
+
+*xf86rushproto-1.1.2-r1 (14 Apr 2012)
+
+  14 Apr 2012; Michał Górny <mgorny@gentoo.org>
+  +xf86rushproto-1.1.2-r1.ebuild:
+  Update to use xorg-2 eclass.
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> xf86rushproto-1.1.2.ebuild:
+  Drop to ~mips
+
+  14 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  xf86rushproto-1.1.2.ebuild:
+  Transfer Prefix keywords
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  xf86rushproto-1.1.2.ebuild:
+  fix repoman warnings
+
+  04 Feb 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  xf86rushproto-1.1.2.ebuild:
+  Drop mirroring restriction.  Thanks to Zhang Le of bug #163088.
+
+  19 Jul 2006; Guy Martin <gmsoft@gentoo.org> xf86rushproto-1.1.2.ebuild:
+  Stable on hppa.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  xf86rushproto-1.1.2.ebuild:
+  Mark 1.1.2 stable on ia64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  xf86rushproto-1.1.2.ebuild:
+  arm/sh stable
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  xf86rushproto-1.1.2.ebuild:
+  ppc/sparc/mips/alpha stable
+
+  30 Jun 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-xf86rushproto-1.1.2, Manifest:
+  Fix digest.
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  xf86rushproto-1.1.2.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org> xf86rushproto-1.1.2.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  xf86rushproto-1.1.2.ebuild:
+  x86 stable.
+
+  28 Apr 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+  31 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xf86rushproto-1.1.2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  24 Mar 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  xf86rushproto-1.1.2.ebuild:
+  (#127306) Digests changed between release candidates and final release for
+  the same tarballs.
+
+  09 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  xf86rushproto-1.1.2.ebuild:
+  Mark 1.1.2 ~ia64
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> xf86rushproto-1.1.2.ebuild:
+  Added ~ppc64
+
+  31 Jan 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  xf86rushproto-1.1.2.ebuild:
+  Unstable on hppa.
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xf86rushproto-1.1.1.ebuild:
+  Pull old versions.
+
+  26 Dec 2005; Stefaan De Roeck <stefaan@gentoo.org>
+  xf86rushproto-1.1.2.ebuild:
+  Marked ~alpha
+
+*xf86rushproto-1.1.2 (17 Dec 2005)
+
+  17 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86rushproto-1.1.2.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -xf86rushproto-1.1.ebuild:
+  Pull old versions.
+
+*xf86rushproto-1.1.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +xf86rushproto-1.1.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  28 Aug 2005; MATSUU Takuto <matsuu@gentoo.org> xf86rushproto-1.1.ebuild:
+  Marked ~sh
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> xf86rushproto-1.1.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> xf86rushproto-1.1.ebuild:
+  Marked ~amd64
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org>
+  xf86rushproto-1.1.ebuild:
+  Add ~sparc keyword (modular X testing on sparc).
+
+*xf86rushproto-1.1 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +xf86rushproto-1.1.ebuild:
+  Initial commit for modular X

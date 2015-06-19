@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+
+<project name="jmi" default="jar">
+	<!-- some properties -->
+	<property name="src.dir"     value="src"   />
+	<property name="build.dir"   value="build" />
+	<property name="dist.dir"    value="dist"  />
+    <property name="doc.dir"     value="doc"   />
+	<property name="jarfile"     value="${ant.project.name}.jar"/>
+	<property name="source.jdk.version" value="1.4" />
+
+	<!-- init -->
+   <target name="init">
+      <tstamp/>
+	   <mkdir dir="${dist.dir}"/>
+	   <mkdir dir="${build.dir}"/>
+   </target>	
+
+	<!-- compile everything -->
+   <target name="compile" depends="init">
+      <javac srcdir="${src.dir}" destdir="${build.dir}" 
+       source="${source.jdk.version}" target="${source.jdk.version}"/>
+   </target>
+
+	<!-- build the jar file -->
+   <target name="jar" depends="compile">
+
+      <jar jarfile="${dist.dir}/jmi.jar" basedir="${build.dir}"
+      	   excludes="javax/jmi/primitivetypes/** javax/jmi/model/** javax/jmi/corbaidltypes/**" />
+
+      <jar jarfile="${dist.dir}/mof.jar" basedir="${build.dir}"
+      	   excludes="javax/jmi/reflect/** javax/jmi/xmi/**" />
+
+   </target>
+
+   <!-- generate javadocs -->
+    <target name="javadoc">
+        <mkdir dir="${doc.dir}" />
+        <javadoc sourcepath="${src.dir}"
+                 packagenames="*"
+                 destdir="${doc.dir}"
+                 author="true"
+                 version="true"
+                 use="true"
+                 windowtitle="${ant.project.name} API"
+                 source="${source.jdk.version}"
+        />
+    </target>
+
+   
+	<!-- clean up -->
+   <target name="clean">
+	   <delete dir="${build.dir}"/>
+	   <delete dir="${dist.dir}"/>
+   </target>
+</project>

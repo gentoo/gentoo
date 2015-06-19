@@ -1,0 +1,13 @@
+# ChangeLog for app-arch/defluff
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/defluff/ChangeLog,v 1.2 2015/04/06 04:21:07 idella4 Exp $
+
+  06 Apr 2015; Ian Delaney <idella4@gentoo.org> defluff-0.3.2.ebuild:
+  add RESTRICT conditions wrt Bug #539774
+
+*defluff-0.3.2 (14 May 2014)
+
+  14 May 2014; Tom Wijsman <TomWij@gentoo.org> +defluff-0.3.2.ebuild,
+  +metadata.xml:
+  New ebuild for app-arch/defluff, a deflate huffman optimizer; fixes bug
+  #498210, filed by Hello71 who will proxy maintain this package.

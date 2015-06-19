@@ -1,0 +1,48 @@
+# ChangeLog for media-libs/lv2core
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/lv2core/ChangeLog,v 1.11 2015/01/03 15:01:37 mgorny Exp $
+
+  03 Jan 2015; Michał Górny <mgorny@gentoo.org> lv2core-6.0.ebuild:
+  Add missing ${PYTHON_DEPS}.
+
+  03 Jan 2015; Michał Górny <mgorny@gentoo.org> lv2core-6.0.ebuild:
+  Use python-any-r1 for waf.
+
+  07 Dec 2011; Alexis Ballier <aballier@gentoo.org> lv2core-6.0.ebuild:
+  convert to waf-utils.eclass and bump to eapi4
+
+*lv2core-6.0 (07 Dec 2011)
+
+  07 Dec 2011; Alexis Ballier <aballier@gentoo.org> +lv2core-6.0.ebuild:
+  version bump
+
+*lv2core-4.0 (10 Oct 2010)
+
+  10 Oct 2010; Alexis Ballier <aballier@gentoo.org> +lv2core-4.0.ebuild:
+  version bump
+
+  07 Nov 2009; Mounir Lamouri <volkmar@gentoo.org> lv2core-3.0.ebuild:
+  Keywording for ppc, bug 282006
+
+  18 Sep 2009; Markus Meier <maekke@gentoo.org> lv2core-3.0.ebuild:
+  amd64/x86 stable, bug #284456
+
+  20 Jun 2009; Alexis Ballier <aballier@gentoo.org> -lv2core-2.0.ebuild:
+  remove old
+
+*lv2core-3.0 (20 Nov 2008)
+
+  20 Nov 2008; Alexis Ballier <aballier@gentoo.org> +lv2core-3.0.ebuild:
+  version bump
+
+*lv2core-2.0 (09 Jul 2008)
+
+  09 Jul 2008; Alexis Ballier <aballier@gentoo.org> -lv2core-1.ebuild,
+  +lv2core-2.0.ebuild:
+  version bump
+
+*lv2core-1 (10 Jan 2008)
+
+  10 Jan 2008; Alexis Ballier <aballier@gentoo.org> +metadata.xml,
+  +lv2core-1.ebuild:
+  initial import

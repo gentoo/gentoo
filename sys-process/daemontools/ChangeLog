@@ -1,0 +1,172 @@
+# ChangeLog for sys-process/daemontools
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/daemontools/ChangeLog,v 1.19 2011/08/26 20:10:33 flameeyes Exp $
+
+  26 Aug 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -daemontools-0.76-r5.ebuild, -daemontools-0.76-r6.ebuild,
+  -files/0.76-head-1.patch:
+  Remove old versions that rely on daemontools-man.
+
+  11 Jul 2011; Alexis Ballier <aballier@gentoo.org> daemontools-0.76-r7.ebuild:
+  keyword ~x86-fbsd
+
+  17 Oct 2010; Mart Raudsepp <leio@gentoo.org> daemontools-0.76-r5.ebuild:
+  Drop to ~mips
+
+  11 Feb 2010; Jeroen Roovers <jer@gentoo.org> daemontools-0.76-r7.ebuild:
+  Stable for HPPA (bug #299625).
+
+  30 Jan 2010; Raúl Porcel <armin76@gentoo.org> daemontools-0.76-r7.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #299625
+
+  18 Jan 2010; Markus Meier <maekke@gentoo.org> daemontools-0.76-r7.ebuild:
+  arm/x86 stable, bug #299625
+
+  12 Jan 2010; nixnut <nixnut@gentoo.org> daemontools-0.76-r7.ebuild:
+  ppc stable #299625
+
+  07 Jan 2010; Brent Baude <ranger@gentoo.org> daemontools-0.76-r7.ebuild:
+  Marking daemontools-0.76-r7 ppc64 for bug 299625
+
+  07 Jan 2010; Steve Dibb <beandog@gentoo.org> daemontools-0.76-r7.ebuild:
+  amd64 stable, bug 299625
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org>
+  daemontools-0.76-r5.ebuild:
+  Remove virtual/libc
+
+*daemontools-0.76-r7 (07 Dec 2008)
+
+  07 Dec 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +files/svscan.init-0.76-r7, +daemontools-0.76-r7.ebuild:
+  Fix ancient bug #86562.
+
+  16 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*daemontools-0.76-r6 (06 Apr 2008)
+
+  06 Apr 2008; Benedikt Böhm <hollow@gentoo.org> files/svscan.init,
+  metadata.xml, +daemontools-0.76-r6.ebuild:
+  fix #201749; use new qmail.eclass; ebuild cleanup
+
+  04 Jan 2008; Hanno Boeck <hanno@gentoo.org> daemontools-0.76-r5.ebuild:
+  Change license to public domain (http://cr.yp.to/distributors.html),
+  fix unquoted vars.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  02 Mar 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/0.76-warnings.patch, daemontools-0.76-r5.ebuild:
+  Include more headers to get proper prototypes by RiverRat #124487.
+
+*daemontools-0.76-r5 (11 Dec 2005)
+
+  11 Dec 2005; Roy Marples <uberlord@gentoo.org> -files/svscan-0.76-r4,
+  -files/svscan, +files/svscan.init, -daemontools-0.76-r4.ebuild,
+  +daemontools-0.76-r5.ebuild:
+  Init script actually works now, #112950.
+
+*daemontools-0.76-r4 (03 Mar 2005)
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +files/0.76-errno.patch, +files/0.76-head-1.patch, +files/svscan,
+  +files/svscan-0.76-r4, +daemontools-0.76-r4.ebuild:
+  Moved from sys-apps/daemontools to sys-process/daemontools.
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  07 Sep 2004; Mike Frysinger <vapier@gentoo.org> daemontools-0.76-r4.ebuild:
+  Stabilize and add doc USE flag to pull in manpages #63179 by Kalin KOZHUHAROV.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  daemontools-0.76-r4.ebuild:
+  Masked daemontools-0.76-r4.ebuild stable for ppc
+
+  29 Aug 2004; Tom Gall <tgall@gentoo.org> daemontools-0.76-r4.ebuild:
+  stable on ppc64, bug #61744
+
+  30 Jun 2004; Aron Griffis <agriffis@gentoo.org> daemontools-0.76-r3.ebuild,
+  daemontools-0.76-r4.ebuild:
+  sync IUSE (+static)
+
+  11 Jun 2004; Bryan Østergaard <kloeri@gentoo.org>
+  daemontools-0.76-r4.ebuild:
+  Stable on alpha.
+
+  09 Apr 2004; Joshua Kinard <kumba@gentoo.org> daemontools-0.76-r4.ebuild:
+  Marked stable on mips.
+
+  06 Apr 2004; Joshua Brindle <method@gentoo.org> daemontools-0.76-r3.ebuild,
+  daemontools-0.76-r4.ebuild:
+  added selinux policy to rdepend
+
+  25 Mar 2004; Joshua Kinard <kumba@gentoo.org> daemontools-0.76-r4.ebuild:
+  Added ~mips to KEYWORDS.
+
+  18 Feb 2004; Aron Griffis <agriffis@gentoo.org> daemontools-0.76-r3.ebuild,
+  daemontools-0.76-r4.ebuild:
+  add ia64/~ia64 keywords
+
+*daemontools-0.76-r4 (30 Jan 2004)
+
+  30 Jan 2004; Robin H. Johnson <robbat2@gentoo.org>
+  daemontools-0.76-r4.ebuild, files/svscan-0.76-r4:
+  fix bug #33979.
+
+  25 Dec 2003; Robin H. Johnson <robbat2@gentoo.org>
+  daemontools-0.76-r3.ebuild:
+  change to keepdir as per bug #35308
+
+*daemontools-0.76-r3 (26 Feb 2003)
+
+  02 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add patch to change `head -1` to `head -n 1`.
+
+  16 Mar 2003; Will Woods <wwoods@gentoo.org> daemontools-0.76-r3.ebuild:
+  Added alpha to KEYWORDS
+
+  26 Feb 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added patch to fix new glibc errno issues #16396 (#16267).
+
+*daemontools-0.76-r2 (15 Jan 2003)
+
+  26 Feb 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added patch to fix new glibc errno issues #16396 (#16267).
+
+  15 Jan 2003; Nick Hadaway <raker@gentoo.org> daemontools-0.76-r2.ebuild,
+  files/digest-daemontools-0.76-r2, files/svscan-r2 :
+  New svscan which is a work-in-progress so it starts right after net
+  so dns-dependant services won't stall during startup.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*daemontools-0.76-r1 (14 July 2002)
+
+  26 Feb 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added patch to fix new glibc errno issues #16396 (#16267).
+
+  23 Sep 2002; Nick Hadaway <raker@gentoo.org>
+  daemontools-0.76-r1.ebuild :
+  Added support for the static use flag as suggested on bug #8235
+
+  26 Jul 2002; Nick Hadaway <raker@gentoo.org> files/svscan :
+  Updated /etc/init.d/svscan to properly start the supervise daemon
+  and also added "--pidfile=/var/run/svscan.pid" to start and stop.
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> daemontools-0.76-r1.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+*daemontools-0.70-r1 (1 Feb 2002)
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> daemontools-0.70-r1.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

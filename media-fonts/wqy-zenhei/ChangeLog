@@ -1,0 +1,74 @@
+# ChangeLog for media-fonts/wqy-zenhei
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/wqy-zenhei/ChangeLog,v 1.15 2015/05/18 20:25:13 mrueg Exp $
+
+  18 May 2015; Manuel Rüger <mrueg@gentoo.org> -wqy-zenhei-0.8.38-r1.ebuild,
+  -wqy-zenhei-0.9.45.ebuild:
+  Remove old.
+
+  28 Apr 2015; Ben de Groot <yngwin@gentoo.org> wqy-zenhei-0.9.46.ebuild:
+  stable
+
+*wqy-zenhei-0.9.46 (21 Feb 2015)
+
+  21 Feb 2015; Ben de Groot <yngwin@gentoo.org> +files/44-wqy-zenhei.conf.patch,
+  +wqy-zenhei-0.9.46.ebuild:
+  Version bump. Fix fontconfig warning with patch contributed by Kévin Bernard-
+  Allies in bug #490412.
+
+  05 Feb 2013; Benda Xu <heroxbd@gentoo.org> wqy-zenhei-0.9.45.ebuild:
+  keyword ~arm
+
+*wqy-zenhei-0.9.45 (19 Sep 2010)
+
+  19 Sep 2010; Ryan Hill <dirtyepic@gentoo.org> -wqy-zenhei-0.6.26.ebuild,
+  -wqy-zenhei-0.8.34_p20081027.ebuild, +wqy-zenhei-0.9.45.ebuild:
+  Version bump (bug #311557).
+
+  27 Sep 2009; Mounir Lamouri <volkmar@gentoo.org> wqy-zenhei-0.8.38-r1.ebuild:
+  Stable for ppc. Bug 284010
+
+  25 Sep 2009; Brent Baude <ranger@gentoo.org> wqy-zenhei-0.8.38-r1.ebuild:
+  Marking wqy-zenhei-0.8.38-r1 ppc64 for bug 284010
+
+  11 Sep 2009; Markus Meier <maekke@gentoo.org> wqy-zenhei-0.8.38-r1.ebuild:
+  amd64/x86 stable, bug #284010
+
+*wqy-zenhei-0.8.38-r1 (14 Mar 2009)
+
+  14 Mar 2009; Peter Alfredsen <loki_val@gentoo.org>
+  -wqy-zenhei-0.8.38.ebuild, +wqy-zenhei-0.8.38-r1.ebuild:
+  Add 66-wqy-zenhei-sharp-no13px.conf. Thanks to Hong Hao <oahong@gmail.com>
+  for report.
+
+*wqy-zenhei-0.8.38 (10 Mar 2009)
+
+  10 Mar 2009; Peter Alfredsen <loki_val@gentoo.org>
+  +wqy-zenhei-0.8.38.ebuild:
+  Bump. Bug 261952.
+
+  14 Jan 2009; Joseph Jezak <josejx@gentoo.org> wqy-zenhei-0.6.26.ebuild,
+  wqy-zenhei-0.8.34_p20081027.ebuild:
+  Marked ~ppc/~ppc64 for bug #254379.
+
+*wqy-zenhei-0.8.34_p20081027 (01 Jan 2009)
+
+  01 Jan 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +wqy-zenhei-0.8.34_p20081027.ebuild:
+  Version bumped. Fixed HOMEPAGE.
+
+  25 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  wqy-zenhei-0.6.26.ebuild:
+  keyword ~x86-fbsd thanks to Hong Hao <oahong@gmail.com>, bug #236042
+
+*wqy-zenhei-0.6.26 (26 Jun 2008)
+
+  26 Jun 2008; Peter Alfredsen <loki_val@gentoo.org>
+  -wqy-zenhei-0.5.23.ebuild, +wqy-zenhei-0.6.26.ebuild:
+  Bump. Thanks dirtyepic.
+
+*wqy-zenhei-0.5.23 (25 May 2008)
+
+  25 May 2008; Ryan Hill <dirtyepic@gentoo.org> +metadata.xml,
+  +wqy-zenhei-0.5.23.ebuild:
+  Initial import for bug #192781. Based on ebuild by Hong Hao.

@@ -1,0 +1,15 @@
+# ChangeLog for java-virtuals/script-api
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/java-virtuals/script-api/ChangeLog,v 1.3 2013/01/30 18:09:12 ago Exp $
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> script-api-1.0.ebuild:
+  Stable for x86, wrt bug #451630
+
+  14 Jan 2013; Agostino Sarubbo <ago@gentoo.org> script-api-1.0.ebuild:
+  Stable for amd64, wrt bug #451630
+
+*script-api-1.0 (18 Jul 2012)
+
+  18 Jul 2012; Ralph Sennhauser <sera@gentoo.org> +script-api-1.0.ebuild,
+  +metadata.xml:
+  New java virtual for scripting api (jsr223)

@@ -1,0 +1,31 @@
+From: Teemu Ikonen <tpikonen@gmail.com>
+Subject: Use Debian OpenCTM
+Git-Branch: p/openctm
+Git-Diff: 532bdd9a6bde03cf47da8fb63fee60..e067d2c66c2408593f62f9c7776eed
+
+ meshlab/src/meshlabplugins/io_ctm/io_ctm.pro |    6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/meshlab/src/meshlabplugins/io_ctm/io_ctm.pro b/meshlab/src/meshlabplugins/io_ctm/io_ctm.pro
+index 1084902..31f0237 100644
+--- a/meshlab/src/meshlabplugins/io_ctm/io_ctm.pro
++++ b/meshlab/src/meshlabplugins/io_ctm/io_ctm.pro
+@@ -3,7 +3,7 @@ HEADERS += io_ctm.h \
+     $$VCGDIR/wrap/io_trimesh/import_ctm.h \
+     $$VCGDIR/wrap/io_trimesh/export_ctm.h
+ SOURCES += io_ctm.cpp
+-INCLUDEPATH += ../../external/OpenCTM-1.0.3/lib
++INCLUDEPATH += /usr/include
+ TARGET = io_ctm
+ 
+ win32-msvc.net:QMAKE_CXXFLAGS += /DOPENCTM_STATIC
+@@ -15,8 +15,6 @@ win32-msvc.net:LIBS	+= ../../external/lib/win32-msvc.net/openctm.lib
+ win32-msvc2005:LIBS	+= ../../external/lib/win32-msvc2005/openctm.lib
+ win32-msvc2008:LIBS	+= ../../external/lib/win32-msvc2008/openctm.lib
+ win32-g++:LIBS		+= ../../external/lib/win32-gcc/libopenctm.a
+-linux-g++:LIBS		+= ../../external/lib/linux-g++/libopenctm.a
+-linux-g++-32:LIBS	+= ../../external/lib/linux-g++-32/libopenctm.a
+-linux-g++-64:LIBS	+= ../../external/lib/linux-g++-64/libopenctm.a
++linux-g++:LIBS		+= -lopenctm
+ #macx:LIBS += ../../external/lib/macx/libopenctm.a
+ macx:LIBS += $$MACLIBDIR/libopenctm.a

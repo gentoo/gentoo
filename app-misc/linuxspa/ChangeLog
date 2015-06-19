@@ -1,0 +1,33 @@
+# ChangeLog for app-misc/linuxspa
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/linuxspa/ChangeLog,v 1.8 2015/06/09 11:47:04 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  29 Oct 2012; Agostino Sarubbo <ago@gentoo.org> linuxspa-0.7.1-r1.ebuild:
+  eapi4, add ~amd64
+
+*linuxspa-0.7.1-r1 (17 Sep 2010)
+
+  17 Sep 2010; Jeroen Roovers <jer@gentoo.org> +linuxspa-0.7.1-r1.ebuild:
+  Respect LDFLAGS (bug #335334). Use dodoc instead of doins.
+
+  30 Dec 2008; Christoph Mende <angelos@gentoo.org> linuxspa-0.7.1.ebuild:
+  QA: Respect CC (bug 243656)
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  11 Aug 2006; Chris Bainbridge <chrb@gentoo.org> linuxspa-0.7.1.ebuild:
+  stable x86
+
+  19 May 2006; <chrb@gentoo.org> +files/linuxspa-0.7.1-compile-fix.patch,
+  linuxspa-0.7.1.ebuild:
+  compile fix thanks to Matheus Izvekov #133070
+
+*linuxspa-0.7.1 (26 Oct 2005)
+
+  26 Oct 2005; Chris Bainbridge <chrb@gentoo.org> +metadata.xml,
+  +linuxspa-0.7.1.ebuild:
+  This package was submitted by Chris Bainbridge

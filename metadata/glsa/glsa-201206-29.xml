@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201206-29">
+  <title>mount-cifs: Multiple vulnerabilites</title>
+  <synopsis>Multiple vulnerabilities were found in mount-cifs, the worst of
+    which leading to privilege escalation.
+  </synopsis>
+  <product type="ebuild">mount-cifs</product>
+  <announced>June 25, 2012</announced>
+  <revised>February 02, 2014: 2</revised>
+  <bug>308067</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-fs/mount-cifs" auto="yes" arch="*">
+      <vulnerable range="le">3.0.30</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>mount-cifs is the cifs filesystem mount helper split from Samba.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in mount-cifs. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>The vulnerabilities allow local users to cause a denial of service (mtab
+      corruption) via a crafted string. Also, local users could mount a CIFS
+      share on an arbitrary mountpoint, and gain privileges via a symlink
+      attack on the mountpoint directory file.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for mount-cifs. We recommend that users
+      unmerge mount-cifs:
+    </p>
+    
+    <code>
+      # emerge --unmerge "net-fs/mount-cifs"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0547">CVE-2010-0547</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0787">CVE-2010-0787</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 08 Oct 2011 22:36:28 +0000">
+    keytoaster
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 02 Feb 2014 18:36:37 +0000">craig</metadata>
+</glsa>

@@ -1,0 +1,10 @@
+# ChangeLog for dev-haskell/regex-compat-tdfa
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/regex-compat-tdfa/ChangeLog,v 1.1 2015/06/01 21:18:59 slyfox Exp $
+
+*regex-compat-tdfa-0.95.1.4 (01 Jun 2015)
+
+  01 Jun 2015; Sergei Trofimovich <slyfox@gentoo.org> +metadata.xml,
+  +regex-compat-tdfa-0.95.1.4.ebuild:
+  Initial commit: Unicode Support version of Text.Regex, using regex-tdfa. A
+  depend for dev-vcs/darcs-2.10.

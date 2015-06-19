@@ -1,0 +1,131 @@
+diff -urpN devfsd/GNUmakefile devfsd.kernel25/GNUmakefile
+--- devfsd/GNUmakefile	2003-09-21 02:09:45.082973960 +0200
++++ devfsd.kernel25/GNUmakefile	2003-09-21 02:10:23.317161480 +0200
+@@ -12,13 +12,16 @@ endif
+ all:	devfsd rpm.spec
+ 
+ 
+-OBJECTS = devfsd.o expression.o compat_name.o
++OBJECTS = devfsd.o expression.o compat_name.o check_kernel.o
+ 
+ CFLAGS = -O2 -I. -I$(KERNEL_DIR)/include -Wall $(CEXTRAS) $(DEFINES)
+ 
+ devfsd:	$(OBJECTS)
+ 	$(CC) -O2 -o devfsd $(OBJECTS) $(LDFLAGS) -export-dynamic -ldl
+ 
++check_kernel.o: check_kernel.c
++	$(CC) -fomit-frame-pointer -O2 -c $<
++
+ install: devfsd
+ 	if [ ! -e $(SBINDIR) ]; then mkdir -p $(SBINDIR); fi
+ 	rm -f $(SBINDIR)/devfsd
+diff -urpN devfsd/check_kernel.c devfsd.kernel25/check_kernel.c
+--- devfsd/check_kernel.c	1970-01-01 02:00:00.000000000 +0200
++++ devfsd.kernel25/check_kernel.c	2003-09-21 01:59:56.645430064 +0200
+@@ -0,0 +1,44 @@
++#include <sys/types.h>
++#include <stdio.h>
++#include <unistd.h>
++#include <errno.h>
++#include <asm/unistd.h>
++
++extern char *modules_devfs;
++
++/* copied over from module-init-tools backward_compat.c */
++#ifndef __ia64 /* breaks ia64. */
++static _syscall2(long, create_module, const char *, name, size_t, size);
++#else
++#define create_module(name, size) \
++        syscall(__NR_create_module, (name), (size))
++#endif
++
++/* returns true if we have a 2.5.48+ kernel */
++int check_kernel_version (int verbose)
++{
++	int k25 = 1;
++
++	errno = 0;
++	if (create_module(NULL, 0) >= 0 /* Uh oh, what have I just done? */
++	    || errno != ENOSYS)
++		k25 = 0;
++
++	if (verbose)
++		fprintf (stderr, "devfsd: kernel %s detected\n",
++				k25 ? "2.5.48+" : "2.4");
++
++	return k25;
++}
++
++void update_config_file (int verbose)
++{
++	int k25 = check_kernel_version (verbose);
++	
++	if (k25)
++		modules_devfs = "/etc/modules.devfs";
++
++	if (verbose)
++		fprintf (stderr, "devfsd: using %s for MODLOAD\n", modules_devfs);
++}
++
+diff -urpN devfsd/devfsd.c devfsd.kernel25/devfsd.c
+--- devfsd/devfsd.c	2003-09-21 02:06:10.763555464 +0200
++++ devfsd.kernel25/devfsd.c	2003-09-21 02:12:17.482805664 +0200
+@@ -396,10 +396,16 @@ EXTERN_FUNCTION (flag st_expr_expand,
+ EXTERN_FUNCTION (const char *get_old_name,
+ 		 (const char *devname, unsigned int namelen,
+ 		  char *buffer, unsigned int major, unsigned int minor) );
+-
++EXTERN_FUNCTION (int check_kernel_version,
++		 (int) );
++EXTERN_FUNCTION (void update_config_file,
++		 (int) );
+ 
+ /*  Public data  */
+ flag syslog_is_open = FALSE;
++/* set to new style, runtime test will override it later */
++char *modules_devfs = "/etc/modules.devfs";
++
+ 
+ 
+ /*  Public functions  */
+@@ -507,7 +513,6 @@ static struct event_type
+     {0xffffffff,                 NULL,         NULL}
+ };
+ 
+-
+ /*  Public functions follow  */
+ 
+ int main (int argc, char **argv)
+@@ -651,6 +656,7 @@ int main (int argc, char **argv)
+     /*  Set umask so that mknod(2), open(2) and mkdir(2) have complete control
+ 	over permissions  */
+     umask (0);
++    update_config_file (trace_level);
+     read_config (CONFIG_FILE, FALSE, &event_mask);
+     /*  Do the scan before forking, so that boot scripts see the finished
+ 	product  */
+@@ -1217,7 +1223,7 @@ static void action_modload (const struct
+     [RETURNS] Nothing.
+ */
+ {
+-    char *argv[6];
++    char *argv[7];
+     char device[STRING_LENGTH];
+     char *env[4] = {"HOME=/", "TERM=linux",  /*  Safe mode environment  */
+ 		    "PATH=/sbin:/usr/sbin:/bin:/usr/bin", NULL};
+@@ -1240,9 +1246,13 @@ static void action_modload (const struct
+     argv[0] = "/sbin/modprobe";
+     argv[1] = "-k";
+     argv[2] = "-C";
+-    argv[3] = "/etc/modules.devfs";
++    argv[3] = modules_devfs;
+     argv[4] = device;
+-    argv[5] = NULL;
++    if (check_kernel_version (trace_level))
++      argv[5] = "-q";
++    else
++      argv[5] = NULL;
++    argv[6] = NULL;
+     snprintf (device, sizeof (device), "/dev/%s", info->devname);
+     if (trace_level > 1)
+ 	fprintf (stderr, "%s modprobe with name: \"%s\"\n",

@@ -1,0 +1,63 @@
+--- src/interface.c.orig	2007-03-23 13:29:40.000000000 +0000
++++ src/interface.c	2007-03-23 13:30:05.000000000 +0000
+@@ -89,6 +89,10 @@
+ 
+ interface_status_t interface_detect_beat_mii(int fd, char *iface) {
+     struct ifreq ifr;
++    union {
++      caddr_t *data;
++      unsigned short *usz;
++    } ifd;
+     
+     if (interface_auto_up)
+         interface_up(fd, iface);
+@@ -103,7 +107,8 @@
+         return IFSTATUS_ERR;
+     }
+ 
+-    ((unsigned short*) &ifr.ifr_data)[1] = 1;
++    ifd.data = &ifr.ifr_data;
++    *++ifd.usz = 1;
+ 
+     if (ioctl(fd, SIOCGMIIREG, &ifr) == -1) {
+         if (interface_do_message)
+@@ -112,12 +117,17 @@
+         return IFSTATUS_ERR;
+     }
+ 
+-    return (((unsigned short*) &ifr.ifr_data)[3] & 0x0004) ? IFSTATUS_UP : IFSTATUS_DOWN;
++    ifd.usz += 2;
++    return (*ifd.usz & 0x0004) ? IFSTATUS_UP : IFSTATUS_DOWN;
+ }
+ 
+ interface_status_t interface_detect_beat_priv(int fd, char *iface) {
+     struct ifreq ifr;
+-    
++    union {
++      caddr_t *data;
++      unsigned short *usz;
++    } ifd;
++   
+     if (interface_auto_up)
+         interface_up(fd, iface);
+     
+@@ -131,7 +141,8 @@
+         return IFSTATUS_ERR;
+     }
+ 
+-    ((unsigned short*) &ifr.ifr_data)[1] = 1;
++    ifd.data = &ifr.ifr_data;
++    *++ifd.usz = 1;
+ 
+     if (ioctl(fd, SIOCDEVPRIVATE+1, &ifr) == -1) {
+         if (interface_do_message)
+@@ -140,7 +151,8 @@
+         return IFSTATUS_ERR;
+     }
+ 
+-    return (((unsigned short*) &ifr.ifr_data)[3] & 0x0004) ? IFSTATUS_UP : IFSTATUS_DOWN;
++    ifd.usz += 2;
++    return (*ifd.usz & 0x0004) ? IFSTATUS_UP : IFSTATUS_DOWN;
+ }
+ 
+ interface_status_t interface_detect_beat_ethtool(int fd, char *iface) {

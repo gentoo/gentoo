@@ -1,0 +1,38 @@
+From 6153c09c41034250408f3596555fcaae715da46c Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Mon, 28 Jul 2014 16:47:48 +0100
+Subject: [PATCH] [build] Set GITVERSION only if there is a git repository
+
+The $(BIN)/version.%.o target will fail if iPXE is built within a
+non-git repository, e.g. when the user downloaded and extracted an
+archive containing iPXE sources, *and* if any parent directory of the
+iPXE sources is a git repository (or even contains a directory named
+".git").  This is because git will by default ascend the directory
+tree and look for ".git".
+
+The problem typically manifests on source based distributions, see for
+example https://bugs.gentoo.org/show_bug.cgi?id=482804
+
+Modified-by: Michael Brown <mcb30@ipxe.org>
+Signed-off-by: Michael Brown <mcb30@ipxe.org>
+---
+ src/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index 22a7335..c6760ee 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -190,8 +190,8 @@ VERSION_PATCH	= 0
+ EXTRAVERSION	= +
+ MM_VERSION	= $(VERSION_MAJOR).$(VERSION_MINOR)
+ VERSION		= $(MM_VERSION).$(VERSION_PATCH)$(EXTRAVERSION)
++ifneq ($(wildcard ../.git),)
+ GITVERSION := $(shell git describe --always --abbrev=1 --match "" 2>/dev/null)
+-ifneq ($(GITVERSION),)
+ VERSION		+= ($(GITVERSION))
+ endif
+ version :
+-- 
+2.3.2
+

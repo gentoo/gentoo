@@ -1,0 +1,19 @@
+commit 5e3d4a0504158f70d227e7cfc03985fe9a646797
+Author: hasufell <hasufell@hasufell.de>
+Date:   Wed Jul 2 12:58:50 2014 +0200
+
+    Fix NTL test build
+
+diff --git a/Makefile.in b/Makefile.in
+index 6dda689..e9de7da 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -214,7 +214,7 @@ build/interfaces/NTL-interface.o: interfaces/NTL-interface.cpp NTL-interface.h
+ 	$(QUIET_CXX) $(CXX) $(CFLAGS) $(INCS) -c $< -o $@;
+ 
+ build/interfaces/test/t-NTL-interface$(EXEEXT): interfaces/test/t-NTL-interface.cpp
+-	$(QUIET_CXX) $(CXX) $(CFLAGS) $(INCS) $< build/interfaces/NTL-interface.o -o $@ $(LIBS);
++	$(QUIET_CXX) $(CXX) $(CFLAGS) $(INCS) $< build/interfaces/NTL-interface.lo -o $@ $(LIBS);
+ 
+ print-%:
+ 	@echo '$*=$($*)'

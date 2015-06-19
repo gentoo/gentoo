@@ -1,0 +1,41 @@
+https://bugs.gentoo.org/show_bug.cgi?id=471524
+
+diff --git a/fontypythonmodules/fontcontrol.py b/fontypythonmodules/fontcontrol.py
+index e156758..cff34f5 100644
+--- a/fontypythonmodules/fontcontrol.py
++++ b/fontypythonmodules/fontcontrol.py
+@@ -16,7 +16,7 @@
+ ##	along with Fonty Python.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ import os, sys, locale, glob, errno
+-import Image, ImageFont, ImageDraw 
++from PIL import Image, ImageFont, ImageDraw 
+ import fontybugs, fpsys
+ from pathcontrol import *
+ 
+diff --git a/fontypythonmodules/fpsys.py b/fontypythonmodules/fpsys.py
+index f9572ae..fa1a98f 100644
+--- a/fontypythonmodules/fpsys.py
++++ b/fontypythonmodules/fpsys.py
+@@ -159,7 +159,7 @@ def checkFonts( dirtocheck, printer ):
+ 	global segfonts
+ 	
+ 	code = """
+-import ImageFont
++from PIL import ImageFont
+ try:
+ 	font=ImageFont.truetype("%s", 24, 0)
+ 	dud=font.getname()
+diff --git a/fontypythonmodules/sanitycheck.py b/fontypythonmodules/sanitycheck.py
+index cf4fcc1..7e46e9a 100644
+--- a/fontypythonmodules/sanitycheck.py
++++ b/fontypythonmodules/sanitycheck.py
+@@ -24,7 +24,7 @@ import imp
+ 
+ ## PIL : Is it there?
+ try: 
+-	import Image, ImageFont, ImageDraw 
++	from PIL import Image, ImageFont, ImageDraw 
+ except: 
+ 	print strings.PILError
+ 	raise SystemExit

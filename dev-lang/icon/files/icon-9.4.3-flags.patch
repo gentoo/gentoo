@@ -1,0 +1,62 @@
+--- icon.v943src/ipl/cfuncs/Makefile
++++ icon.v943src/ipl/cfuncs/Makefile
+@@ -25,7 +25,7 @@
+ # library
+ 
+ $(FUNCLIB):	$(FUNCS) mklib.sh
+-		CC="$(CC)" CFLAGS="$(CFLAGS)" sh mklib.sh $(FUNCLIB) $(FUNCS)
++		CC="$(CC)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" sh mklib.sh $(FUNCLIB) $(FUNCS)
+ $(FUNCS):	icall.h
+ 
+ 
+--- icon.v943src/ipl/cfuncs/mklib.sh
++++ icon.v943src/ipl/cfuncs/mklib.sh
+@@ -11,7 +11,7 @@
+ set -x
+ case "$SYS" in
+    Linux*|*BSD*|GNU*)
+-      gcc -shared -o $LIBNAME -fPIC "$@";;
++      $CC -shared -o $LIBNAME $CFLAGS $LDFLAGS -fPIC "$@";;
+    Darwin*)
+       cc -bundle -undefined suppress -flat_namespace -o $LIBNAME "$@";;
+    SunOS*)
+--- icon.v943src/src/common/Makefile
++++ icon.v943src/src/common/Makefile
+@@ -8,7 +8,7 @@
+ common:		doincl $(OBJS) gpxmaybe
+ 
+ doincl:		doincl.c ../h/arch.h
+-		$(CC) $(CFLAGS) -o doincl doincl.c
++		$(CC) $(CFLAGS) $(LDFLAGS) -o doincl doincl.c
+ 		-./doincl -o ../../bin/rt.h ../h/rt.h
+ 
+ patchstr:	patchstr.c
+@@ -29,7 +29,7 @@
+ 	  ../h/typedefs.h ../h/mproto.h ../h/cpuconf.h
+ 
+ ../h/arch.h:	infer.c
+-		$(CC) $(CFLAGS) -o infer infer.c
++		$(CC) $(CFLAGS) $(LDFLAGS) -o infer infer.c
+ 		./infer >../h/arch.h
+ 
+ identify.o: ../h/version.h
+@@ -46,7 +46,7 @@
+ 
+ #  for rswitch, $(CFLAGS) is deliberately omitted  (-O may cause problems)
+ rswitch.o: ../h/define.h ../h/arch.h $(RSW)
+-	$(CC) -c $(RSW)
++	$(CC) $(CFLAGS) -O0 -c $(RSW)
+ 
+ 
+ #  The following section is needed if changes are made to the Icon grammar,
+--- icon.v943src/src/runtime/Makefile
++++ icon.v943src/src/runtime/Makefile
+@@ -39,7 +39,7 @@
+ 
+ iconx: $(OBJS)
+ 	cd ../common; $(MAKE)
+-	$(CC) $(RLINK) -o iconx  $(OBJS) $(XL) $(RLIBS) $(TL)
++	$(CC) $(LDFLAGS) $(RLINK) -o iconx  $(OBJS) $(XL) $(RLIBS) $(TL)
+ 	cp iconx ../../bin
+ 	strip $(SFLAGS) ../../bin/iconx$(EXE)
+ 

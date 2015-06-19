@@ -1,0 +1,22 @@
+# ChangeLog for x11-misc/obconf-qt
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/obconf-qt/ChangeLog,v 1.4 2015/04/03 10:35:58 dlan Exp $
+
+  03 Apr 2015; Yixun Lan <dlan@gentoo.org> obconf-qt-0.1.0_p20141029.ebuild:
+  keyword arm/arm64, tested on cortex-a9/cortex-a53 hardware
+
+*obconf-qt-0.1.0_p20141029 (08 Nov 2014)
+
+  08 Nov 2014; Jauhien Piatlicki <jauhien@gentoo.org>
+  +obconf-qt-0.1.0_p20141029.ebuild:
+  version bump
+
+  29 May 2014; Manuel Rüger <mrueg@gentoo.org> obconf-qt-0.1.0.ebuild:
+  Add ~arm keyword.
+
+*obconf-qt-0.1.0 (26 May 2014)
+
+  26 May 2014; Jauhien Piatlicki <jauhien@gentoo.org> +metadata.xml,
+  +obconf-qt-0.1.0.ebuild:
+  Initial import from the qt overlay, thanks to Harvey Mittens and Davide
+  Pesavento, see bug #509946

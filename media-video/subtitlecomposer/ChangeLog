@@ -1,0 +1,123 @@
+# ChangeLog for media-video/subtitlecomposer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/subtitlecomposer/ChangeLog,v 1.26 2015/01/26 11:09:47 mrueg Exp $
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/subtitlecomposer-0.5.3-gcc45.patch,
+  -files/subtitlecomposer-0.5.3-gold-gstreamer.patch,
+  -files/subtitlecomposer-0.5.3-gold-xine.patch,
+  -files/subtitlecomposer-linkage-patch.patch,
+  -subtitlecomposer-0.5.3-r2.ebuild:
+  Remove old.
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> subtitlecomposer-0.5.6.ebuild:
+  Stable for x86, wrt bug #535518
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> subtitlecomposer-0.5.6.ebuild:
+  Stable for amd64, wrt bug #535518
+
+  31 Dec 2014; Michael Palimaka <kensington@gentoo.org>
+  subtitlecomposer-0.5.6.ebuild:
+  Enforce USE dependency for media-libs/phonon.
+
+*subtitlecomposer-0.5.6 (16 Mar 2014)
+
+  16 Mar 2014; Johannes Huber <johu@gentoo.org> +subtitlecomposer-0.5.6.ebuild,
+  metadata.xml, subtitlecomposer-0.5.3-r2.ebuild:
+  Version bump. Update HOMEPAGE.
+
+  06 Feb 2014; Johannes Huber <johu@gentoo.org>
+  -subtitlecomposer-0.5.3-r1.ebuild:
+  Remove old.
+
+  06 Feb 2014; Johannes Huber <johu@gentoo.org>
+  subtitlecomposer-0.5.3-r2.ebuild:
+  x86 stable, bug #495824
+
+  05 Feb 2014; Chema Alonso <nimiux@gentoo.org>
+  subtitlecomposer-0.5.3-r2.ebuild:
+  Stable for amd64 wrt bug #495824
+
+  20 Jan 2014; Michael Palimaka <kensington@gentoo.org>
+  +files/subtitlecomposer-0.5.3-gold-gstreamer.patch,
+  subtitlecomposer-0.5.3-r2.ebuild:
+  Add patch from Debian fixing linking with gold and USE="gstreamer", wrt bug
+  #498482.
+
+*subtitlecomposer-0.5.3-r2 (25 Jun 2013)
+
+  25 Jun 2013; Johannes Huber <johu@gentoo.org>
+  +files/subtitlecomposer-0.5.3-gold-xine.patch,
+  +subtitlecomposer-0.5.3-r2.ebuild:
+  Revision bump adds patch by SN (Enlik) <slawomir.nizio@sabayon.org> which
+  fixes build with gold linker and use xine wrt bug #418037.
+
+  06 Apr 2013; Michael Palimaka <kensington@gentoo.org>
+  -subtitlecomposer-0.5.3.ebuild:
+  Remove old.
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  subtitlecomposer-0.5.3-r1.ebuild:
+  Stable for x86, wrt bug #464294
+
+  03 Apr 2013; Sergey Popov <pinkbyte@gentoo.org>
+  subtitlecomposer-0.5.3-r1.ebuild:
+  Stable on amd64, wrt bug #464294
+
+  04 Mar 2013; Michael Palimaka <kensington@gentoo.org> metadata.xml:
+  Add KDE herd.
+
+  11 Sep 2012; Johannes Huber <johu@gentoo.org>
+  subtitlecomposer-0.5.3-r1.ebuild, subtitlecomposer-0.5.3.ebuild:
+  Add slot dependency on media-libs/gstreamer.
+
+*subtitlecomposer-0.5.3-r1 (25 Aug 2012)
+
+  25 Aug 2012; Chris Reffett <creffett@gentoo.org>
+  +subtitlecomposer-0.5.3-r1.ebuild:
+  Bump to EAPI 4.
+
+  01 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  files/subtitlecomposer-linkage-patch.patch:
+  Use absolute paths in patch so we won't get QA warning.
+
+  02 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  subtitlecomposer-0.5.3.ebuild:
+  EAPI3
+
+  12 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  subtitlecomposer-0.5.3.ebuild:
+  x86 stable wrt bug #340213
+
+  10 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  subtitlecomposer-0.5.3.ebuild:
+  Stable on amd64 wrt bug #340213
+
+  24 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  subtitlecomposer-0.5.3.ebuild, +files/subtitlecomposer-0.5.3-gcc45.patch:
+  Fix build with GCC-4.5 wrt bug 323055. Thanks to Diego for reporting.
+
+  08 Jun 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  subtitlecomposer-0.5.3.ebuild:
+  List phonon dependency explicitly, convert mycmakeargs to array
+
+*subtitlecomposer-0.5.3 (05 Jun 2009)
+
+  05 Jun 2009; Ben de Groot <yngwin@gentoo.org>
+  +subtitlecomposer-0.5.3.ebuild,
+  +files/subtitlecomposer-linkage-patch.patch, metadata.xml:
+  Version bump. Thanks to Maciej Mrozowski (reavertm) for developing this
+  0.5.x version in the kde overlay. Fixes bug 249055.
+
+*subtitlecomposer-0.4.3 (15 Feb 2009)
+
+  15 Feb 2009; Carsten Lohrke <carlo@gentoo.org>
+  +subtitlecomposer-0.4.3.ebuild:
+  Version bump. Correct KDE dependency.
+
+*subtitlecomposer-0.4.1 (14 Jun 2008)
+
+  14 Jun 2008; Ben de Groot <yngwin@gentoo.org> +metadata.xml,
+  +subtitlecomposer-0.4.1.ebuild:
+  Initial import. Thanks to the various people in bug 202503 for reporting,
+  submitting and improving the ebuild.

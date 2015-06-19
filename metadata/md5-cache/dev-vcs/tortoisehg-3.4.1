@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=>=dev-vcs/mercurial-3.3 <dev-vcs/mercurial-3.5 dev-python/iniparse[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygments[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/PyQt4[svg,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/qscintilla-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] doc? ( >=dev-python/sphinx-1.0.3 ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=Set of graphical tools for Mercurial
+EAPI=5
+HOMEPAGE=http://tortoisehg.bitbucket.org
+IUSE=doc python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-vcs/mercurial-3.3 <dev-vcs/mercurial-3.5 dev-python/iniparse[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygments[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/PyQt4[svg,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/qscintilla-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=https://www.bitbucket.org/tortoisehg/targz/downloads/tortoisehg-3.4.1.tar.gz
+_eclasses_=distutils-r1	c01d5c4af34f4a37a51fc9638299c222	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	6d3a3cb5705b9fff1aeb7cfa4e3336fe	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=1980f6cad8c3fa7b4a7a340797c06aa0

@@ -1,0 +1,654 @@
+# ChangeLog for app-misc/tomboy
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tomboy/ChangeLog,v 1.146 2014/04/25 19:16:09 pacho Exp $
+
+  25 Apr 2014; Pacho Ramos <pacho@gentoo.org>
+  -files/tomboy-1.10.1-gmime26.patch, -files/tomboy-1.12.1-force-gmime26.patch,
+  -tomboy-1.10.1.ebuild, -tomboy-1.12.2.ebuild, tomboy-1.14.1.ebuild:
+  Drop old and move to ~ppc due they don't stabilizing newer stuff from
+  gnome3.8/3.10 bugs
+
+  26 Aug 2013; Agostino Sarubbo <ago@gentoo.org> tomboy-1.14.1.ebuild:
+  Stable for ppc, wrt bug #480596
+
+  12 Aug 2013; Agostino Sarubbo <ago@gentoo.org> tomboy-1.14.1.ebuild:
+  Stable for x86, wrt bug #480596
+
+  12 Aug 2013; Agostino Sarubbo <ago@gentoo.org> tomboy-1.14.1.ebuild:
+  Stable for amd64, wrt bug #480596
+
+*tomboy-1.14.1 (13 May 2013)
+
+  13 May 2013; Pacho Ramos <pacho@gentoo.org> +tomboy-1.14.1.ebuild:
+  Version bump
+
+  30 Apr 2013; Justin Lecher <jlec@gentoo.org> tomboy-1.12.2.ebuild,
+  metadata.xml:
+  Fix deprecated use of AM_CONFIG_HEADER
+
+*tomboy-1.12.2 (24 Dec 2012)
+
+  24 Dec 2012; Pacho Ramos <pacho@gentoo.org> +tomboy-1.12.2.ebuild,
+  -tomboy-1.12.1.ebuild, -tomboy-1.8.3.ebuild:
+  Version bump, drop old
+
+  07 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> tomboy-1.10.1.ebuild:
+  x86 stable wrt bug #435202
+
+*tomboy-1.12.1 (20 Oct 2012)
+
+  20 Oct 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/tomboy-1.12.1-force-gmime26.patch, +tomboy-1.12.1.ebuild,
+  -tomboy-1.12.0.ebuild:
+  Version bump (forcing gmime-2.6 usage also), drop old.
+
+*tomboy-1.12.0 (29 Sep 2012)
+
+  29 Sep 2012; Pacho Ramos <pacho@gentoo.org> +tomboy-1.12.0.ebuild:
+  Version bump.
+
+  24 Sep 2012; Anthony G. Basile <blueness@gentoo.org> tomboy-1.10.1.ebuild:
+  stable ppc, bug #435202
+
+  22 Sep 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/tomboy-1.10.1-gmime26.patch, -files/tomboy-1.4.2-insecure-path.patch,
+  -tomboy-1.4.2-r1.ebuild, metadata.xml, tomboy-1.10.1.ebuild:
+  Fix build with gmime-2.6[mono], bug #435854 by Anthony Basile. Drop old.
+
+  16 Sep 2012; Agostino Sarubbo <ago@gentoo.org> tomboy-1.10.1.ebuild:
+  Stable for amd64, wrt bug #435202
+
+  18 Aug 2012; Michael Weber <xmw@gentoo.org> tomboy-1.8.3.ebuild:
+  ppc stable (bug 407701)
+
+  16 Jun 2012; Agostino Sarubbo <ago@gentoo.org> -tomboy-1.6.1.ebuild:
+  Remove old as requested by Pacho Ramos, <pacho@gentoo.org>
+
+  22 May 2012; Agostino Sarubbo <ago@gentoo.org> tomboy-1.8.3.ebuild:
+  Stable for amd64, wrt bug #407701
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> tomboy-1.4.2-r1.ebuild,
+  tomboy-1.6.1.ebuild, tomboy-1.8.3.ebuild, tomboy-1.10.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*tomboy-1.10.1 (19 Apr 2012)
+
+  19 Apr 2012; Pacho Ramos <pacho@gentoo.org> +tomboy-1.10.1.ebuild,
+  -tomboy-1.10.0.ebuild:
+  Version bump, remove old.
+
+  09 Apr 2012; Markus Meier <maekke@gentoo.org> tomboy-1.8.3.ebuild:
+  x86 stable, bug #407701
+
+*tomboy-1.10.0 (27 Mar 2012)
+
+  27 Mar 2012; Pacho Ramos <pacho@gentoo.org> +tomboy-1.10.0.ebuild:
+  Version bump.
+
+  16 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> tomboy-1.4.2-r1.ebuild,
+  tomboy-1.6.1.ebuild, tomboy-1.8.3.ebuild, metadata.xml:
+  Remove USE="applet" in order to lastrite deprecated
+  dev-dotnet/gnome-panel-sharp package wrt #398639
+
+*tomboy-1.8.3 (20 Nov 2011)
+
+  20 Nov 2011; Pacho Ramos <pacho@gentoo.org> +tomboy-1.8.3.ebuild,
+  -tomboy-1.8.0.ebuild:
+  Version bump, remove old.
+
+  27 Oct 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  tomboy-1.4.2-r1.ebuild, tomboy-1.6.1.ebuild, tomboy-1.8.0.ebuild:
+  Slot gtkspell dependency to 2 in preparation for gtkspell-3.
+
+*tomboy-1.8.0 (26 Sep 2011)
+
+  26 Sep 2011; Pacho Ramos <pacho@gentoo.org> -tomboy-1.6.0.ebuild,
+  +tomboy-1.8.0.ebuild:
+  Version bump, remove old.
+
+  30 Jun 2011; Christoph Mende <angelos@gentoo.org> tomboy-1.6.1.ebuild:
+  Stable on amd64 wrt bug #371163
+
+  21 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> tomboy-1.6.1.ebuild:
+  x86 stable wrt bug #371163
+
+  15 Jun 2011; Pacho Ramos <pacho@gentoo.org> tomboy-1.6.1.ebuild:
+  Prepare to set 'xz' as default compressor for eapi4.
+
+*tomboy-1.6.1 (04 May 2011)
+
+  04 May 2011; Pacho Ramos <pacho@gentoo.org> -tomboy-1.4.2.ebuild,
+  +tomboy-1.6.1.ebuild:
+  Version bump, remove old.
+
+*tomboy-1.6.0 (06 Apr 2011)
+
+  06 Apr 2011; Christoph Mende <angelos@gentoo.org> +tomboy-1.6.0.ebuild:
+  Version bump
+
+  15 Mar 2011; Pacho Ramos <pacho@gentoo.org> -tomboy-1.2.1.ebuild,
+  -files/tomboy-1.2.1-xmllint-validation.patch, tomboy-1.4.2-r1.ebuild:
+  dev-dotnet/gnome-panel-sharp is only needed with USE 'applet' and
+  dev-dotnet/gnome-desktop-sharp is not needed at all (bug #358673 by Christoph
+  Mende). Remove old.
+
+  12 Mar 2011; <angelos@gentoo.org> tomboy-1.2.1.ebuild, tomboy-1.4.2.ebuild,
+  tomboy-1.4.2-r1.ebuild:
+  Updated ndesk-dbus dependencies (bug 356391)
+
+  06 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> tomboy-1.2.1.ebuild,
+  tomboy-1.4.2.ebuild, tomboy-1.4.2-r1.ebuild:
+  Fix slot-deps on gtk+ and other libs
+
+  02 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  tomboy-1.4.2-r1.ebuild:
+  ppc stable wrt #356583
+
+  27 Feb 2011; Christian Faulhammer <fauli@gentoo.org>
+  tomboy-1.4.2-r1.ebuild:
+  stable x86, security bug 356583
+
+  27 Feb 2011; Markos Chandras <hwoarang@gentoo.org> tomboy-1.4.2-r1.ebuild:
+  Stable on amd64 wrt bug #356583
+
+*tomboy-1.4.2-r1 (26 Feb 2011)
+
+  26 Feb 2011; Pacho Ramos <pacho@gentoo.org> +tomboy-1.4.2-r1.ebuild,
+  +files/tomboy-1.4.2-insecure-path.patch:
+  Fix tomboy insecure LD_LIBRARY_PATH (CVE-2010-4005).
+
+  29 Jan 2011; Markos Chandras <hwoarang@gentoo.org> tomboy-1.4.2.ebuild:
+  Stable on amd64 wrt bug #352808
+
+  29 Jan 2011; Christian Faulhammer <fauli@gentoo.org> tomboy-1.4.2.ebuild:
+  stable x86, bug 352808
+
+  08 Dec 2010; Pacho Ramos <pacho@gentoo.org> tomboy-1.2.1.ebuild,
+  tomboy-1.4.2.ebuild:
+  Needs gnome-panel with bonobo support.
+
+*tomboy-1.4.2 (25 Oct 2010)
+
+  25 Oct 2010; Pacho Ramos <pacho@gentoo.org> -tomboy-1.4.0.ebuild,
+  +tomboy-1.4.2.ebuild:
+  Version bump: Fix potential sync dataloss bug for former Gnote users,
+  documentation fixes, translation updates. Bump to eapi3 and drop la files.
+  Remove old testing.
+
+  20 Oct 2010; Pacho Ramos <pacho@gentoo.org> tomboy-1.4.0.ebuild:
+  tomboy requires mono-addins with gtk support (bug #341917 by Michiel
+  Helvensteijn).
+
+*tomboy-1.4.0 (06 Oct 2010)
+
+  06 Oct 2010; Pacho Ramos <pacho@gentoo.org>
+  -files/tomboy-0.8.1-insecure-ldpath.patch, -tomboy-0.12.2.ebuild,
+  -tomboy-1.0.1.ebuild, +tomboy-1.4.0.ebuild, metadata.xml:
+  Version bump for Gnome 2.32 (but also works with 2.30). Applet is now
+  optional but enabled by default until gnome-shell becomes the preferred on
+  Gnome. Remove old.
+
+  11 Sep 2010; Joseph Jezak <josejx@gentoo.org> tomboy-1.2.1.ebuild:
+  Marked ppc for bug #324077.
+
+  07 Sep 2010; Pacho Ramos <pacho@gentoo.org> tomboy-1.2.1.ebuild,
+  +files/tomboy-1.2.1-xmllint-validation.patch:
+  Fix xmllint validation (bug #330693 by Neil Leathers) and add missing
+  gnome2_src_prepare.
+
+  01 Aug 2010; Christian Faulhammer <fauli@gentoo.org> tomboy-1.2.1.ebuild:
+  x86 stable, bug 324077
+
+  31 Jul 2010; Pacho Ramos <pacho@gentoo.org> tomboy-1.2.1.ebuild:
+  amd64 stable, bug 324077
+
+  03 Jul 2010; Pacho Ramos <pacho@gentoo.org> tomboy-0.12.2.ebuild,
+  tomboy-1.0.1.ebuild, tomboy-1.2.1.ebuild:
+  app-text/rarian is required at build time, thanks to Alex Brandt for
+  reporting bug #305421
+
+*tomboy-1.2.1 (13 Jun 2010)
+
+  13 Jun 2010; Pacho Ramos <pacho@gentoo.org> -tomboy-0.14.3.ebuild,
+  -tomboy-1.0.0.ebuild, -tomboy-1.1.1.ebuild, +tomboy-1.2.1.ebuild:
+  Add new version for Gnome 2.30 and drop old testing.
+
+  04 Jun 2010; Markus Meier <maekke@gentoo.org> tomboy-1.0.1.ebuild:
+  x86 stable, bug #314899
+
+  03 May 2010; Olivier Crête <tester@gentoo.org> tomboy-1.0.1.ebuild:
+  amd64 stable, bug #314899
+
+*tomboy-1.0.1 (16 Apr 2010)
+
+  16 Apr 2010; Pacho Ramos <pacho@gentoo.org> tomboy-1.0.0.ebuild,
+  +tomboy-1.0.1.ebuild, tomboy-1.1.1.ebuild:
+  Version bump for gnome-2.28 branch, including multiple bugfixes. Also
+  adjusting gmime dependencies as requested in bug 311501 and tested by me.
+
+*tomboy-1.1.1 (10 Feb 2010)
+
+  10 Feb 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +tomboy-1.1.1.ebuild:
+  Version bump to 1.1.1.
+
+  17 Oct 2009; Peter Alfredsen <loki_val@gentoo.org> -tomboy-0.15.7.ebuild:
+  Old
+
+*tomboy-1.0.0 (17 Oct 2009)
+
+  17 Oct 2009; Peter Alfredsen <loki_val@gentoo.org> +tomboy-1.0.0.ebuild:
+  Bump 1.0.0
+
+*tomboy-0.15.7 (08 Sep 2009)
+
+  08 Sep 2009; Peter Alfredsen <loki_val@gentoo.org> -tomboy-0.15.6.ebuild,
+  +tomboy-0.15.7.ebuild:
+  Bump
+
+*tomboy-0.15.6 (27 Aug 2009)
+
+  27 Aug 2009; Peter Alfredsen <loki_val@gentoo.org> -tomboy-0.14.2.ebuild,
+  -tomboy-0.15.1.ebuild, -tomboy-0.15.5.ebuild, +tomboy-0.15.6.ebuild:
+  Bump testing version, remove old.
+
+*tomboy-0.15.5 (23 Aug 2009)
+
+  23 Aug 2009; Peter Alfredsen <loki_val@gentoo.org> +tomboy-0.15.5.ebuild:
+  Bump for development version
+
+*tomboy-0.14.3 (04 Aug 2009)
+
+  04 Aug 2009; Arun Raghavan <ford_prefect@gentoo.org>
+  +tomboy-0.14.3.ebuild:
+  Bump to 0.14.3.
+
+*tomboy-0.15.1 (25 May 2009)
+
+  25 May 2009; Peter Alfredsen <loki_val@gentoo.org> +tomboy-0.15.1.ebuild:
+  Bump to new WIP version.
+
+*tomboy-0.14.2 (13 May 2009)
+
+  13 May 2009; Peter Alfredsen <loki_val@gentoo.org> -tomboy-0.10.2.ebuild,
+  -tomboy-0.14.0.ebuild, -tomboy-0.14.1.ebuild, +tomboy-0.14.2.ebuild:
+  Bump, drop old.
+
+  30 Apr 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking tomboy-0.12.2 ppc stable for bug 263984
+
+*tomboy-0.14.1 (17 Apr 2009)
+
+  17 Apr 2009; Peter Alfredsen <loki_val@gentoo.org> +tomboy-0.14.1.ebuild:
+  Bump
+
+  05 Apr 2009; Peter Alfredsen <loki_val@gentoo.org> tomboy-0.14.0.ebuild:
+  Re-add ~ppc keyword w.r.t. bug 249036. The required packages were
+  keyworded as part of bug 234305.
+
+  04 Apr 2009; Markus Meier <maekke@gentoo.org> tomboy-0.12.2.ebuild:
+  amd64/x86 stable, bug #234305
+
+  27 Mar 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking tomboy-0.12.2 ~ppc for bug 234305
+
+  23 Mar 2009; Peter Alfredsen <loki_val@gentoo.org> tomboy-0.14.0.ebuild:
+  Drop libgnomeprint and libgnomeprintui deps from tomboy. Bug 263470,
+  thanks to Andreas Proschofsky <suka@gentoo.org> for the report.
+
+*tomboy-0.14.0 (18 Mar 2009)
+
+  18 Mar 2009; Peter Alfredsen <loki_val@gentoo.org> +tomboy-0.14.0.ebuild:
+  Bump
+
+  15 Jan 2009; Peter Alfredsen <loki_val@gentoo.org> metadata.xml:
+  Compnerd retired.
+
+*tomboy-0.12.2 (01 Jan 2009)
+
+  01 Jan 2009; Peter Alfredsen <loki_val@gentoo.org> -tomboy-0.12.1.ebuild,
+  +tomboy-0.12.2.ebuild:
+  Bump, remove old.
+
+  10 Dec 2008; Peter Alfredsen <loki_val@gentoo.org> tomboy-0.10.2.ebuild,
+  tomboy-0.12.1.ebuild:
+  Fix bug 227607, gnome-doc-utils >= 0.3.2 not found.
+
+  03 Dec 2008; Peter Alfredsen <loki_val@gentoo.org> tomboy-0.12.1.ebuild:
+  Fix bug 249035.
+
+  26 Nov 2008; Peter Alfredsen <loki_val@gentoo.org> tomboy-0.12.1.ebuild:
+  Go eapi-2, try to make the depends tighter, bug 249038.
+
+  26 Nov 2008; Peter Alfredsen <loki_val@gentoo.org> tomboy-0.12.1.ebuild:
+  We need to dep on gnome-desktop-sharp too. Thanks to thansen for reporting
+
+*tomboy-0.12.1 (26 Nov 2008)
+
+  26 Nov 2008; Peter Alfredsen <loki_val@gentoo.org> +tomboy-0.12.1.ebuild:
+  Bump to 0.12.1 for mono-2 bump mask
+
+  25 Oct 2008; Pieter Van den Abeele <pvdabeel@gentoo.org> tomboy-0.10.2.ebuild:
+  Keyworded ~ppc. Closes bug #233938
+
+  11 Oct 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  -tomboy-0.8.1-r1.ebuild, -tomboy-0.8.2.ebuild, -tomboy-0.10.0.ebuild,
+  tomboy-0.10.2.ebuild:
+  Use gmime-2.2*, bug #239412. Clean up old revisions.
+
+  10 Aug 2008; Markus Meier <maekke@gentoo.org> tomboy-0.10.2.ebuild:
+  x86 stable, bug #229709
+
+  31 Jul 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  26 Jul 2008; Olivier Crête <tester@gentoo.org> tomboy-0.10.2.ebuild:
+  Stable on amd64, bug #229709
+
+*tomboy-0.10.2 (04 Jun 2008)
+
+  04 Jun 2008; Saleem Abdulrasool <compnerd@gentoo.org>
+  +tomboy-0.10.2.ebuild:
+  Version bump from upstream (verified by Ford_Perfect)
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Peter Johanson (latexer, #206688) from metadata.xml.
+
+*tomboy-0.10.0 (10 Mar 2008)
+
+  10 Mar 2008; Saleem Abdulrasool <compnerd@gentoo.org>
+  +tomboy-0.10.0.ebuild:
+  Version bump from upstream
+
+  02 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org> tomboy-0.8.2.ebuild:
+  Stable on amd64 wrt bug #208366.
+
+  01 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  tomboy-0.8.1-r1.ebuild, tomboy-0.8.2.ebuild:
+  mark -ppc as tomboy is segfaulting with current gnome/mono versions.
+
+  01 Feb 2008; Brent Baude <ranger@gentoo.org> tomboy-0.8.2.ebuild:
+  Marking tomboy-0.8.2 ppc for bug 208366
+
+  01 Feb 2008; Christian Faulhammer <opfer@gentoo.org> tomboy-0.8.2.ebuild:
+  stable x86, bug 208366
+
+  30 Dec 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  -files/tomboy-0.6.3-assembly-attribute.patch, -tomboy-0.2.2-r1.ebuild,
+  -tomboy-0.6.3.ebuild, -tomboy-0.8.0.ebuild, -tomboy-0.8.1.ebuild:
+  prune unused versions
+
+*tomboy-0.8.2 (05 Dec 2007)
+
+  05 Dec 2007; Gilles Dartiguelongue <eva@gentoo.org> +tomboy-0.8.2.ebuild:
+  bump to 0.8.2
+
+  16 Nov 2007; Jurek Bartuszek <jurek@gentoo.org> tomboy-0.8.0.ebuild,
+  tomboy-0.8.1.ebuild, tomboy-0.8.1-r1.ebuild:
+  Updated dev-lang/mono dependency (bug #199093)
+
+  06 Nov 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  tomboy-0.8.1-r1.ebuild:
+  Stable on amd64 wrt bug #189249.
+
+  05 Nov 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  tomboy-0.8.1-r1.ebuild:
+  ppc stable, bug #189249
+
+  04 Nov 2007; Dawid Węgliński <cla@gentoo.org> tomboy-0.8.1-r1.ebuild:
+  Stable on x86 (bug #189249)
+
+*tomboy-0.8.1-r1 (04 Nov 2007)
+
+  04 Nov 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/tomboy-0.8.1-insecure-ldpath.patch, +tomboy-0.8.1-r1.ebuild:
+  Add patch for security bug #189249
+
+  17 Oct 2007; Gilles Dartiguelongue <eva@gentoo.org> tomboy-0.6.3.ebuild:
+  fix quoting
+
+*tomboy-0.8.1 (17 Oct 2007)
+
+  17 Oct 2007; Gilles Dartiguelongue <eva@gentoo.org> +tomboy-0.8.1.ebuild:
+  bump to 0.8.1
+
+*tomboy-0.8.0 (06 Oct 2007)
+
+  06 Oct 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  +tomboy-0.8.0.ebuild:
+  Version bump from upstream
+
+  06 Oct 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  -files/tomboy-0.4.1-init-some-stuff.patch,
+  -files/tomboy-0.4.1-verbs.patch, -tomboy-0.4.1-r1.ebuild,
+  -tomboy-0.6.1.ebuild:
+  prune unused versions
+
+  16 Sep 2007; Jurek Bartuszek <jurek@gentoo.org>
+  +files/tomboy-0.6.3-assembly-attribute.patch, tomboy-0.6.3.ebuild:
+  Fix assembly attribute related problem (bug #192684)
+
+  01 Aug 2007; <metalgod@gentoo.org> tomboy-0.6.3.ebuild:
+  Stable on amd64. See bug #185147.
+
+  22 Jul 2007; Lars Weiler <pylon@gentoo.org> tomboy-0.6.3.ebuild:
+  stable ppc, bug #185147
+
+  14 Jul 2007; Christian Faulhammer <opfer@gentoo.org> tomboy-0.6.3.ebuild:
+  stable x86, bug 185147
+
+*tomboy-0.6.3 (23 Apr 2007)
+
+  23 Apr 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  +tomboy-0.6.3.ebuild:
+  Version bump from upstream
+
+*tomboy-0.6.1 (22 Mar 2007)
+
+  22 Mar 2007; <compnerd@gentoo.org> -tomboy-0.5.8.ebuild,
+  +tomboy-0.6.1.ebuild:
+  Version bump for 2.18 cycle
+
+*tomboy-0.5.8 (19 Feb 2007)
+
+  19 Feb 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  -files/tomboy-0.5.6-gtksharp.patch, -tomboy-0.5.6.ebuild,
+  +tomboy-0.5.8.ebuild:
+  Version bump from upstream
+
+  12 Feb 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/tomboy-0.5.6-gtksharp.patch, tomboy-0.5.6.ebuild:
+  Add patch to tomboy for compiling with newer dotnet stack (bug #166433)
+
+  10 Feb 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  -tomboy-0.5.5.ebuild:
+  clean out older release
+
+*tomboy-0.5.6 (10 Feb 2007)
+
+  10 Feb 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  +tomboy-0.5.6.ebuild:
+  Version bump from upstream, to fix a few bugs
+
+  30 Jan 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  -tomboy-0.5.3.ebuild:
+  remove unneeded version
+
+*tomboy-0.5.5 (30 Jan 2007)
+
+  30 Jan 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  +tomboy-0.5.5.ebuild:
+  Version bump from upstream
+
+  19 Jan 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  -files/tomboy-0.5.2-unicode-characters.patch, -tomboy-0.5.1.ebuild,
+  -tomboy-0.5.2.ebuild:
+  prune older versions
+
+*tomboy-0.5.3 (19 Jan 2007)
+
+  19 Jan 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  +tomboy-0.5.3.ebuild:
+  Version bump from upstream
+
+  28 Dec 2006; Saleem Abdulrasool <compnerd@gentoo.org> tomboy-0.5.2.ebuild:
+  Update build deps and add warning if libxml2 is not built with python bindings
+
+  20 Dec 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/tomboy-0.5.2-unicode-characters.patch, tomboy-0.5.2.ebuild:
+  Add patch for compiling on some machines due to unescaped unicode characters
+
+*tomboy-0.5.2 (19 Dec 2006)
+
+  19 Dec 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +tomboy-0.5.2.ebuild:
+  Version bump from upstream
+
+  03 Dec 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  -files/tomboy-0.3.1-mono-1.1.4-compat.diff,
+  -files/tomboy-0.3.2-1.1.x-compat.diff,
+  -files/tomboy-0.3.2-mono-1.1.7-compat.diff,
+  -files/tomboy-0.3.2-mono-1.1.8-compat.diff,
+  -files/tomboy-0.3.3-mono-1.1.9-compat.diff, -tomboy-0.3.2-r1.ebuild,
+  -tomboy-0.3.3.ebuild, -tomboy-0.3.4.ebuild, -tomboy-0.3.5.ebuild,
+  -tomboy-0.4.1.ebuild:
+  Prune old versions
+
+  22 Nov 2006; Saleem Abdulrasool <compnerd@gentoo.org> -tomboy-0.5.0.ebuild:
+  Do a bit of cleanup work
+
+*tomboy-0.5.1 (22 Nov 2006)
+
+  22 Nov 2006; Saleem Abdulrasool <compnerd@gentoo.org> +tomboy-0.5.1.ebuild:
+  Version bump from upstream
+
+*tomboy-0.5.0 (17 Nov 2006)
+
+  17 Nov 2006; Saleem Abdulrasool <compnerd@gentoo.org> +tomboy-0.5.0.ebuild:
+  Version bump from upstream
+
+*tomboy-0.4.1-r1 (16 Oct 2006)
+
+  16 Oct 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/tomboy-0.4.1-init-some-stuff.patch,
+  +files/tomboy-0.4.1-verbs.patch, +tomboy-0.4.1-r1.ebuild:
+  add some patches from ubuntu
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org> tomboy-0.4.1.ebuild:
+  re-added ~ppc, bug #147751
+
+  15 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> tomboy-0.4.1.ebuild:
+  Remove ppc until galago-sharp is keyworded
+
+*tomboy-0.4.1 (07 Sep 2006)
+
+  07 Sep 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +tomboy-0.4.1.ebuild:
+  version bump from usptream
+
+  07 Sep 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  -tomboy-0.3.9.ebuild:
+  drop the 0.3.9 version to ensure that it is not stabled
+
+*tomboy-0.3.9 (27 Aug 2006)
+
+  27 Aug 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +tomboy-0.3.9.ebuild:
+  version bump from upstream
+
+  18 Aug 2006; Saleem Abdulrasool <compnerd@gentoo.org> metadata.xml:
+  Adding myself as a maintainer
+
+  02 May 2006; Saleem Abdulrasool <compnerd@gentoo.org> tomboy-0.3.5.ebuild:
+  Fixing building for ppc, dropped USE_DESTDIR, and fixing galago dependency
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-tomboy-0.2.2-r1, files/digest-tomboy-0.3.2-r1,
+  files/digest-tomboy-0.3.3, Manifest:
+  Fixing SHA256 digest, pass four
+
+  25 Apr 2006; Saleem Abdulrasool <compnerd@gentoo.org> tomboy-0.3.5.ebuild:
+  dropping the ppc mask on galago as it is now keyworded
+
+  20 Feb 2006; Saleem Abdulrasool <compnerd@gentoo.org> tomboy-0.3.5.ebuild:
+  Fixing block on galago and G2CONF (bug #123339)
+
+*tomboy-0.3.5 (03 Feb 2006)
+
+  03 Feb 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +tomboy-0.3.5.ebuild:
+  Version bump from upstream.  Fixes bug #121235
+
+  02 Feb 2006; Saleem Abdulrasool <compnerd@gentoo.org> tomboy-0.3.4.ebuild:
+  Add USE_DESTDIR to fix bug #121153
+
+*tomboy-0.3.4 (01 Feb 2006)
+
+  01 Feb 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +tomboy-0.3.4.ebuild:
+  Version bump to 0.3.4
+
+  21 Sep 2005; Peter Johanson <latexer@gentoo.org>
+  +files/tomboy-0.3.3-mono-1.1.9-compat.diff, tomboy-0.3.3.ebuild:
+  Add mono-1.1.9 compat.
+
+*tomboy-0.3.3 (10 Aug 2005)
+
+  10 Aug 2005; Peter Johanson <latexer@gentoo.org> -tomboy-0.3.1.ebuild,
+  -tomboy-0.3.2.ebuild, tomboy-0.3.2-r1.ebuild, +tomboy-0.3.3.ebuild:
+  Bump, and remove a few older versions.
+
+*tomboy-0.3.2-r1 (17 Jun 2005)
+
+  17 Jun 2005; Peter Johanson <latexer@gentoo.org>
+  +files/tomboy-0.3.2-mono-1.1.8-compat.diff, +tomboy-0.3.2-r1.ebuild:
+  Revision bump with fixes for stricter mono-1.1.8's mcs.
+
+  19 May 2005; Tom Martin <slarti@gentoo.org> tomboy-0.3.2.ebuild:
+  Marked ~amd64, resolves bug 93228.
+
+  06 May 2005; Peter Johanson <latexer@gentoo.org>
+  files/tomboy-0.3.2-1.1.x-compat.diff:
+  Fix to patch to work on mono-1.0.x
+
+*tomboy-0.3.2 (05 May 2005)
+
+  05 May 2005; Peter Johanson <latexer@gentoo.org>
+  +files/tomboy-0.3.2-1.1.x-compat.diff,
+  +files/tomboy-0.3.2-mono-1.1.7-compat.diff, tomboy-0.3.1.ebuild,
+  +tomboy-0.3.2.ebuild:
+  Bump, and include some fixes for compilation with stricter mono-1.1.7
+
+  14 Mar 2005; Peter Johanson <latexer@gentoo.org> tomboy-0.2.2-r1.ebuild,
+  -tomboy-0.2.2.ebuild, tomboy-0.3.1.ebuild:
+  Mark 0.2.2-r1 stable on x86, fix deps to make sure we get 1.0.x SLOT of
+  gtk-sharp, and remove on older version.
+
+  10 Mar 2005; Peter Johanson <latexer@gentoo.org> tomboy-0.2.2-r1.ebuild,
+  tomboy-0.2.2.ebuild, tomboy-0.3.1.ebuild:
+  mono moved from dev-dotnet -> dev-lang
+
+  20 Feb 2005; David Holm <dholm@gentoo.org> tomboy-0.3.1.ebuild:
+  Added to ~ppc.
+
+  18 Feb 2005; Peter Johanson <latexer@gentoo.org>
+  files/tomboy-0.3.1-mono-1.1.4-compat.diff:
+  Fix the 1.1.4-compat patch to work on mono-1.0.x.
+
+*tomboy-0.3.1 (17 Feb 2005)
+
+  17 Feb 2005; Peter Johanson <latexer@gentoo.org>
+  +files/tomboy-0.3.1-mono-1.1.4-compat.diff, +tomboy-0.3.1.ebuild:
+  Bump. Includes a few new deps, to handle gnome-panel support, as well as a
+  hacky patch for mono-1.1.4 compat. See bug #79890
+
+*tomboy-0.2.2-r1 (01 Dec 2004)
+
+  01 Dec 2004; Peter Johanson <latexer@gentoo.org> +tomboy-0.2.2-r1.ebuild:
+  Revision bump with new split up gtk-sharp deps.
+
+*tomboy-0.2.2 (28 Oct 2004)
+
+  28 Oct 2004; Peter Johanson <latexer@gentoo.org> +metadata.xml,
+  +tomboy-0.2.2.ebuild:
+  Initial commit. Ebuild simultaneously by yours truly. See bug #64554

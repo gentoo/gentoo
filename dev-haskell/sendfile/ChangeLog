@@ -1,0 +1,12 @@
+# ChangeLog for dev-haskell/sendfile
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/sendfile/ChangeLog,v 1.2 2014/07/25 08:58:59 slyfox Exp $
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*sendfile-0.7.9 (20 Jun 2013)
+
+  20 Jun 2013; Alexander Vershilov <qnikst@gentoo.org> +metadata.xml,
+  +sendfile-0.7.9.ebuild:
+  add sendfile-0.7.9 due to #473858

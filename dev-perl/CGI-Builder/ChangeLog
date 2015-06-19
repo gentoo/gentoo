@@ -1,0 +1,27 @@
+# ChangeLog for dev-perl/CGI-Builder
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/CGI-Builder/ChangeLog,v 1.5 2014/08/26 18:37:40 axs Exp $
+
+*CGI-Builder-1.360.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +CGI-Builder-1.360.0-r1.ebuild, -CGI-Builder-1.360.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -CGI-Builder-1.36.ebuild:
+  Cleanup
+
+*CGI-Builder-1.360.0 (01 Sep 2011)
+
+  01 Sep 2011; Torsten Veller <tove@gentoo.org> +CGI-Builder-1.360.0.ebuild:
+  Change version scheme
+
+*CGI-Builder-1.36 (15 Feb 2010)
+
+  15 Feb 2010; Robin H. Johnson <robbat2@gentoo.org>
+  +CGI-Builder-1.36.ebuild, +metadata.xml:
+  Initial commit, package or dep for one that cannot be generated correctly
+  by g-cpan and was asked for by a user in a bug.

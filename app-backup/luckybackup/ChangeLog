@@ -1,0 +1,126 @@
+# ChangeLog for app-backup/luckybackup
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/luckybackup/ChangeLog,v 1.27 2015/06/09 09:04:09 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*luckybackup-0.4.8 (29 Apr 2014)
+
+  29 Apr 2014; Sergey Popov <pinkbyte@gentoo.org> -luckybackup-0.4.7.ebuild,
+  +luckybackup-0.4.8.ebuild:
+  Version bump, wrt bug #506148, thanks to Frank Krömmelbein <kroemmelbein AT
+  gmx.de> for reporting this issue. Drop old version
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org>
+  luckybackup-0.4.7-r1.ebuild, luckybackup-0.4.7.ebuild:
+  Move Qt dependencies to the new category
+
+  17 Feb 2013; Agostino Sarubbo <ago@gentoo.org> luckybackup-0.4.7-r1.ebuild:
+  Stable for x86, wrt bug #456014
+
+  07 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> luckybackup-0.4.7-r1.ebuild:
+  Stable on amd64, wrt bug #456014
+
+*luckybackup-0.4.7-r1 (23 Dec 2012)
+
+  23 Dec 2012; Markos Chandras <hwoarang@gentoo.org>
+  +luckybackup-0.4.7-r1.ebuild:
+  Revbump to remove su-to-root ubuntu command from the gnome desktop file
+
+  24 Jul 2012; Davide Pesavento <pesa@gentoo.org> luckybackup-0.4.7.ebuild:
+  Remove usage of DOCSDIR.
+
+  18 Apr 2012; Johannes Huber <johu@gentoo.org> -luckybackup-0.4.6.ebuild:
+  Remove old.
+
+  18 Apr 2012; Jeff Horelick <jdhore@gentoo.org> luckybackup-0.4.7.ebuild:
+  marked x86 per bug 412517
+
+  18 Apr 2012; Agostino Sarubbo <ago@gentoo.org> luckybackup-0.4.7.ebuild:
+  Stable for amd64, wrt bug #412517
+
+*luckybackup-0.4.7 (16 Mar 2012)
+
+  16 Mar 2012; Johannes Huber <johu@gentoo.org> +luckybackup-0.4.7.ebuild:
+  Version bump by kensingtion <gentoo@scribeofthenile.com> wrt bug #408361.
+
+  28 Jan 2012; Johannes Huber <johu@gentoo.org> -luckybackup-0.4.0.ebuild:
+  Remove old.
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  luckybackup-0.4.6.ebuild:
+  x86 stable wrt bug #399915
+
+  27 Jan 2012; Agostino Sarubbo <ago@gentoo.org> luckybackup-0.4.6.ebuild:
+  Stable for amd64, wrt bug #399915
+
+*luckybackup-0.4.6 (21 Jul 2011)
+
+  21 Jul 2011; Tomas Touceda <chiiph@gentoo.org> -luckybackup-0.4.3.ebuild,
+  -luckybackup-0.4.4.ebuild, +luckybackup-0.4.6.ebuild:
+  Version bump, remove old
+
+*luckybackup-0.4.4 (02 Nov 2010)
+
+  02 Nov 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  +luckybackup-0.4.4.ebuild:
+  Version bump
+
+*luckybackup-0.4.3 (06 Sep 2010)
+
+  06 Sep 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  -luckybackup-0.3.5.ebuild, +luckybackup-0.4.3.ebuild:
+  Version bump, remove old
+
+  16 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  luckybackup-0.4.0.ebuild:
+  stable x86, bug 326265
+
+  01 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  luckybackup-0.4.0.ebuild:
+  Stable on amd64 wrt bug #326265
+
+*luckybackup-0.4.0 (30 May 2010)
+
+  30 May 2010; Markos Chandras <hwoarang@gentoo.org>
+  +luckybackup-0.4.0.ebuild:
+  Version bump. Fixes bug #321065
+
+  06 Jan 2010; <hwoarang@gentoo.org> luckybackup-0.3.5.ebuild:
+  Migrate to qt4-r2 eclass
+
+  18 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  luckybackup-0.3.5.ebuild:
+  More documentation path issues wrt #297443, thanks to Helmut Jarausch for
+  reporting.
+
+*luckybackup-0.3.5 (17 Dec 2009)
+
+  17 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +luckybackup-0.3.5.ebuild:
+  Version bump.
+
+*luckybackup-0.3.4 (16 Dec 2009)
+
+  16 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +luckybackup-0.3.4.ebuild:
+  Version bump and change documentation directory to PF wrt #297135, thanks
+  to Diego E. 'Flameeyes' Pettenò.
+
+*luckybackup-0.3.3 (03 Aug 2009)
+
+  03 Aug 2009; Markos Chandras <hwoarang@gentoo.org>
+  +luckybackup-0.3.3.ebuild:
+  Version bump. Fixes bug 280200
+
+  30 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  luckybackup-0.3.2.ebuild:
+  keyworded ~arch for x86, bug 275075
+
+*luckybackup-0.3.2 (20 Jun 2009)
+
+  20 Jun 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  +luckybackup-0.3.2.ebuild, +metadata.xml:
+  Initial commit of luckybackup, taken from sunrise, thanks to topper_harley
+  for ebuild and maintainance in sunrise

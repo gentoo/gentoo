@@ -1,0 +1,104 @@
+# ChangeLog for sci-biology/mrbayes
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/mrbayes/ChangeLog,v 1.27 2015/04/17 06:49:59 jlec Exp $
+
+*mrbayes-3.1.2-r2 (17 Apr 2015)
+
+  17 Apr 2015; Justin Lecher <jlec@gentoo.org> +mrbayes-3.1.2-r2.ebuild,
+  metadata.xml, mrbayes-3.1.2-r1.ebuild:
+  Import changes from science overlay
+
+  21 Dec 2011; Justin Lecher <jlec@gentoo.org> -mrbayes-3.1.2.ebuild:
+  Cleaned old
+
+  21 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> mrbayes-3.1.2-r1.ebuild:
+  x86 stable wrt bug #393969
+
+  17 Dec 2011; Agostino Sarubbo <ago@gentoo.org> mrbayes-3.1.2-r1.ebuild:
+  Stable for AMD64, wrt bug #393969
+
+  17 Dec 2011; Justin Lecher <jlec@gentoo.org> mrbayes-3.1.2-r1.ebuild:
+  Use mpicc with USE=mpi, #394961
+
+  16 Dec 2011; Justin Lecher <jlec@gentoo.org> mrbayes-3.1.2-r1.ebuild:
+  Add missing dep on sys-libs/ncurses, keyworded for ~amd64-linux
+
+*mrbayes-3.1.2-r1 (06 Mar 2011)
+
+  06 Mar 2011; Justin Lecher <jlec@gentoo.org> mrbayes-3.1.2.ebuild,
+  +mrbayes-3.1.2-r1.ebuild:
+  Fix for missing LDFLAGS, #338160
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org> mrbayes-3.1.2.ebuild:
+  Transfer Prefix keywords
+
+  11 Jun 2008; Kenneth Prugh <ken69267@gentoo.org> mrbayes-3.1.2.ebuild:
+  amd64 stable, bug #213362
+
+  17 Mar 2008; Donnie Berkholz <dberkholz@gentoo.org>; mrbayes-3.1.2.ebuild:
+  (#213362) Keyword ~amd64.
+
+  25 Mar 2007; Danny van Dyk <kugelfang@gentoo.org> mrbayes-3.1.2.ebuild:
+  QA: Cleaned up whitespaces. Removed redundant src_compile().
+
+  06 Jan 2007; Danny van Dyk <kugelfang@gentoo.org> -mrbayes-3.1.1.ebuild:
+  QA: Removed unused versions.
+
+  03 Nov 2006; Fabian Groffen <grobian@gentoo.org> mrbayes-3.1.1.ebuild,
+  mrbayes-3.1.2.ebuild:
+  Dropped ppc-macos, see you in prefix.
+
+  14 Sep 2006; Olivier Fisette <ribosome@gentoo.org> metadata.xml:
+  Stepping down from maintaining this package.
+
+  12 Sep 2006; Olivier Fisette <ribosome@gentoo.org> mrbayes-3.1.1.ebuild,
+  mrbayes-3.1.2.ebuild:
+  Removed amd64 keywords because of bad pointer arithmetics causing segfaults
+  in the sumt function on all 64 bit architectures (see bug #143094).
+
+  09 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>; mrbayes-3.1.2.ebuild:
+  x86 stable.
+
+*mrbayes-3.1.2 (03 Feb 2006)
+
+  03 Feb 2006; Olivier Fisette <ribosome@gentoo.org>
+  +files/mb_readline_312.patch, +mrbayes-3.1.2.ebuild:
+  New version. Added readline support. Thanks to Paul van der Mark for his
+  work on this ebuild.
+
+  09 Jan 2006; Homer Parker <hparker@gentoo.org> mrbayes-3.1.1.ebuild:
+  Marked ~amd64.
+
+  09 Oct 2005; Olivier Fisette <ribosome@gentoo.org> -mrbayes-3.0.ebuild:
+  Pruning old version.
+
+  08 Oct 2005; Lina Pezzella <j4rg0n@gentoo.org> mrbayes-3.1.1.ebuild:
+  Stable ppc-macos, Bug 108333
+
+  08 Oct 2005; Paul Varner <fuzzyray@gentoo.org> mrbayes-3.1.1.ebuild:
+  Stable on x86. Bug# 108333
+
+*mrbayes-3.1.1 (14 Aug 2005)
+
+  14 Aug 2005; Olivier Fisette <ribosome@gentoo.org> metadata.xml,
+  +mrbayes-3.1.1.ebuild:
+  New version. Added MPI support.
+
+  20 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> mrbayes-3.0.ebuild:
+  Stable x86 and ppc-macos
+
+  09 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> mrbayes-3.0.ebuild:
+  Restricted fetching because of the license. Verified with GNU lawyers
+
+*mrbayes-3.0 (02 Feb 2005)
+
+  02 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> +metadata.xml, +mrbayes-3.0.ebuild:
+  Moved from sci-biology/MrBayes to sci-biology/mrbayes.
+
+*MrBayes-3.0 (30 Jan 2005)
+
+  30 Jan 2005; Olivier Fisette <ribosome@gentoo.org> MrBayes-3.0.ebuild:
+  Check for "sed" exit code.
+
+  19 Jan 2005; Lina Pezzella <j4rg0n@gentoo.org> :
+  Initial commit

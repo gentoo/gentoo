@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/show_bug.cgi?id=522412
+https://bugzilla.redhat.com/show_bug.cgi?id=913519
+--- a/defs.h	2014-09-13 12:04:15.953079704 +0200
++++ b/defs.h	2014-09-13 12:04:48.677080716 +0200
+@@ -19,7 +19,7 @@
+ /* Must be at least the size of VSFTP_MAX_COMMAND_LINE, VSFTP_DIR_BUFSIZE and
+    VSFTP_DATA_BUFSIZE*2 */
+ #define VSFTP_PRIVSOCK_MAXSTR   VSFTP_DATA_BUFSIZE * 2
+-#define VSFTP_AS_LIMIT          100UL * 1024 * 1024
++#define VSFTP_AS_LIMIT          400UL * 1024 * 1024
+ 
+ #endif /* VSF_DEFS_H */
+ 

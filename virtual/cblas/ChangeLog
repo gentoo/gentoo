@@ -1,0 +1,44 @@
+# ChangeLog for virtual/cblas
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/cblas/ChangeLog,v 1.12 2014/07/22 16:46:36 zerochaos Exp $
+
+  22 Jul 2014; Rick Farina <zerochaos@gentoo.org> cblas-1.0.ebuild:
+  stabilize on arm
+
+  22 Jul 2014; Rick Farina <zerochaos@gentoo.org> cblas-1.0.ebuild:
+  adding ~arm keyword
+
+  21 Oct 2013; Fabian Groffen <grobian@gentoo.org> cblas-1.0.ebuild:
+  Marked ~x64-macos, bug #486818
+
+  02 Feb 2013; Justin Lecher <jlec@gentoo.org> cblas-1.0.ebuild, metadata.xml:
+  Drop atlas from deps
+
+  12 May 2012; Alexis Ballier <aballier@gentoo.org> cblas-1.0.ebuild:
+  keyword ~amd64-fbsd
+
+  10 Jun 2011; Kacper Kowalik <xarthisius@gentoo.org> cblas-1.0.ebuild:
+  Fix circular dependency on gsl, bump to EAPI2 for USE dependency. Thanks to
+  Ke for spotting.
+
+  11 Jan 2010; Ulrich Mueller <ulm@gentoo.org> cblas-1.0.ebuild:
+  Set empty HOMEPAGE and LICENSE.
+
+  15 Dec 2009; Jonathan Callen <abcd@gentoo.org> cblas-1.0.ebuild:
+  Add prefix keywords (~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux
+  ~ppc-macos ~x86-macos)
+
+  09 Nov 2008; Raúl Porcel <armin76@gentoo.org> cblas-1.0.ebuild:
+  ia64 stable
+
+  02 Jan 2008; Raúl Porcel <armin76@gentoo.org> cblas-1.0.ebuild:
+  Add ~ia64
+
+  22 Oct 2007; Jeroen Roovers <jer@gentoo.org> cblas-1.0.ebuild:
+  Stable for HPPA (USE=lapack).
+
+*cblas-1.0 (10 Oct 2007)
+
+  10 Oct 2007; Sébastien Fabbro <bicatali@gentoo.org> +metadata.xml,
+  +cblas-1.0.ebuild:
+  New style virtual for cblas. Version number is abitrary.

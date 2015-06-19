@@ -1,0 +1,17 @@
+http://bugs.gentoo.org/show_bug.cgi?id=479822#c3
+http://github.com/ioquake/ioq3/commit/ab4c602374caa0f520b3a0801d384a73e29e0bc7
+
+--- engine/code/renderer/tr_font.c
++++ engine/code/renderer/tr_font.c
+@@ -47,10 +47,10 @@
+ #include "../qcommon/qcommon.h"
+ 
+ #include <ft2build.h>
++#include FT_FREETYPE_H
+ #include FT_ERRORS_H
+ #include FT_SYSTEM_H
+ #include FT_IMAGE_H
+-#include FT_FREETYPE_H
+ #include FT_OUTLINE_H
+ 
+ #define _FLOOR(x)  ((x) & -64)

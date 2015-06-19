@@ -1,0 +1,68 @@
+# ChangeLog for net-misc/getdate
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/getdate/ChangeLog,v 1.20 2013/02/26 04:01:58 kensington Exp $
+
+  26 Feb 2013; Michael Palimaka <kensington@gentoo.org> -getdate-1.2.ebuild:
+  Remove old.
+
+  25 Feb 2013; Agostino Sarubbo <ago@gentoo.org> getdate-1.2-r1.ebuild:
+  Stable for ppc, wrt bug #457444
+
+  25 Feb 2013; Agostino Sarubbo <ago@gentoo.org> getdate-1.2-r1.ebuild:
+  Stable for x86, wrt bug #457444
+
+  25 Feb 2013; Agostino Sarubbo <ago@gentoo.org> getdate-1.2-r1.ebuild:
+  Stable for amd64, wrt bug #457444
+
+  08 Dec 2012; Ulrich Müller <ulm@gentoo.org> getdate-1.2.ebuild,
+  getdate-1.2-r1.ebuild:
+  Fix LICENSE, GPL-1+ according to notice in getdate.c.
+
+*getdate-1.2-r1 (12 Oct 2012)
+
+  12 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> +getdate-1.2-r1.ebuild:
+  Revision bump: EAPI 4 and some cosmetic changes
+
+  10 Aug 2010; Kacper Kowalik <xarthisius@gentoo.org> getdate-1.2.ebuild:
+  Respect LDFLAGS wrt bug 331801. Thanks to Diego for report. Clean ebuild,
+  add ~amd64
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> getdate-1.2.ebuild:
+  Remove virtual/libc
+
+  03 Jan 2009; Mike Pagano <mpagano@gentoo.org> getdate-1.2.ebuild:
+  Removing the prestripping of a binary as per bug #240934
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  05 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  09 Jan 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove retired dev from metadata.xml
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org> getdate-1.2.ebuild:
+  Stable on ppc.
+
+  17 Feb 2005; Michael Hanselmann <hansmi@gentoo.org> getdate-1.2.ebuild:
+  Added to ~ppc, bug 82045.
+
+  12 Feb 2005; Robin H. Johnson <robbat2@gentoo.org> getdate-1.2.ebuild:
+  Add ~mips for my XXS1500 hardware.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> getdate-1.2.ebuild:
+  change virtual/glibc to virtual/libc, add IUSE
+
+  03 Jan 2004; Martin Holzer <mholzer@gentoo.org> getdate-1.2.ebuild:
+  fixing homepage closes 37093
+
+  11 Dec 2003; Chuck Short <zul@gentoo.org> getdate-1.2.ebuild:
+  Added -DHAVE_ADJTIME closes #35597.
+
+*getdate-1.2 (06 Dec 2003)
+
+  06 Dec 2003; Chuck Short <zul@gentoo.org> getdate-1.2.ebuild, metadata.xml:
+  Initial version, ebuild originally written by Alessandro Pisani
+  <alextxm@tin.it>. Ebuild modified by me.

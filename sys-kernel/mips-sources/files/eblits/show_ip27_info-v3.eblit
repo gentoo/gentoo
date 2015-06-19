@@ -1,0 +1,18 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/mips-sources/files/eblits/show_ip27_info-v3.eblit,v 1.1 2015/02/16 09:48:49 kumba Exp $
+
+# Eblit with information/warnings for IP27 (Origin 200/2000/Onyx2) users.
+#
+# If you need to add whitespace for formatting in 'einfo', 'ewarn', or 'eerror', use
+# \040 for a space instead of the standard space.  These functions will strip
+# redundant white space.
+
+show_ip27_info() {
+	echo -e ""
+	ewarn "Heavy disk I/O on recent kernels may randomly trigger a BUG() in"
+	ewarn "isolate_lru_pages() in mm/vmscan.c.  The exact trigger cause is"
+	ewarn "unknown at this time.  Please report any oops messages from this"
+	ewarn "bug to bugs.gentoo.org (assign to mips@gentoo.org)"
+	echo -e ""
+}

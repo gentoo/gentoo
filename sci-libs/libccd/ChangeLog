@@ -1,0 +1,15 @@
+# ChangeLog for sci-libs/libccd
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/libccd/ChangeLog,v 1.2 2014/10/24 08:01:04 aballier Exp $
+
+  24 Oct 2014; Alexis Ballier <aballier@gentoo.org> libccd-2.0.ebuild,
+  libccd-9999.ebuild:
+  keyword ~arm
+
+*libccd-9999 (23 Oct 2014)
+*libccd-2.0 (23 Oct 2014)
+
+  23 Oct 2014; Alexis Ballier <aballier@gentoo.org> +libccd-2.0.ebuild,
+  +libccd-9999.ebuild, +metadata.xml:
+  initial import, ebuild by me
+

@@ -1,0 +1,130 @@
+# ChangeLog for app-doc/linuxfromscratch
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-doc/linuxfromscratch/ChangeLog,v 1.29 2015/04/04 21:42:45 rhill Exp $
+
+*linuxfromscratch-7.7 (04 Apr 2015)
+
+  04 Apr 2015; Ryan Hill <rhill@gentoo.org> -linuxfromscratch-7.2.ebuild,
+  +linuxfromscratch-7.7.ebuild:
+  Version bump (bug #523696).
+
+  10 Aug 2014; Patrick Lauer <patrick@gentoo.org> linuxfromscratch-7.2.ebuild,
+  linuxfromscratch-7.4.ebuild:
+  Fix description for more repoman happy
+
+  01 Feb 2014; Mike Frysinger <vapier@gentoo.org> linuxfromscratch-7.2.ebuild,
+  linuxfromscratch-7.4.ebuild:
+  Mark m68k/s390/sh stable.
+
+  25 Dec 2013; Ryan Hill <dirtyepic@gentoo.org> linuxfromscratch-7.4.ebuild:
+  Stabilize (bug #495330).
+
+*linuxfromscratch-7.4 (13 Oct 2013)
+
+  13 Oct 2013; Ryan Hill <dirtyepic@gentoo.org> -linuxfromscratch-7.1.ebuild,
+  +linuxfromscratch-7.4.ebuild:
+  Version bump.
+
+  05 Sep 2013; Mike Frysinger <vapier@gentoo.org> linuxfromscratch-7.1.ebuild,
+  linuxfromscratch-7.2.ebuild:
+  Mark m68k/s390/sh stable.
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> linuxfromscratch-7.1.ebuild,
+  linuxfromscratch-7.2.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  27 Jan 2013; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  03 Nov 2012; Ryan Hill <dirtyepic@gentoo.org> linuxfromscratch-7.2.ebuild:
+  Mark stable for all.
+
+*linuxfromscratch-7.2 (16 Sep 2012)
+
+  16 Sep 2012; Ryan Hill <dirtyepic@gentoo.org> -linuxfromscratch-6.8.ebuild,
+  -linuxfromscratch-7.0.ebuild, +linuxfromscratch-7.2.ebuild:
+  Version bump. Remove old.
+
+  01 Aug 2012; Ryan Hill <dirtyepic@gentoo.org> linuxfromscratch-7.1.ebuild:
+  Stable everywhere, bug #428848.
+
+*linuxfromscratch-7.1 (01 Jul 2012)
+
+  01 Jul 2012; Ryan Hill <dirtyepic@gentoo.org> +linuxfromscratch-7.1.ebuild,
+  metadata.xml:
+  Version bump. Change maintainer to app-doc.
+
+  02 Jun 2012; Ryan Hill <dirtyepic@gentoo.org> linuxfromscratch-7.0.ebuild:
+  Stable everywhere.
+
+*linuxfromscratch-7.0 (20 Feb 2012)
+
+  20 Feb 2012; Ryan Hill <dirtyepic@gentoo.org> -linuxfromscratch-6.7.ebuild,
+  +linuxfromscratch-7.0.ebuild:
+  Version bump.
+
+  02 Jan 2012; Ryan Hill <dirtyepic@gentoo.org> linuxfromscratch-6.8.ebuild:
+  Stabilize on all.
+
+*linuxfromscratch-6.8 (13 Apr 2011)
+
+  13 Apr 2011; Ryan Hill <dirtyepic@gentoo.org> -linuxfromscratch-6.6.ebuild,
+  linuxfromscratch-6.7.ebuild, +linuxfromscratch-6.8.ebuild, metadata.xml:
+  Version bump. Fix pdf installation and remove old.
+
+  23 Jan 2011; Ryan Hill <dirtyepic@gentoo.org> linuxfromscratch-6.7.ebuild:
+  Stable for all.
+
+*linuxfromscratch-6.7 (26 Oct 2010)
+
+  26 Oct 2010; Ryan Hill <dirtyepic@gentoo.org>
+  -linuxfromscratch-6.4.ebuild, -linuxfromscratch-6.5.ebuild,
+  linuxfromscratch-6.6.ebuild, +linuxfromscratch-6.7.ebuild:
+  Version bump and mark 6.6 stable for all. Remove old.
+
+  06 Mar 2010; Ryan Hill <dirtyepic@gentoo.org> linuxfromscratch-6.5.ebuild:
+  Stabilize everywhere (only docs, no DEPENDs).
+
+*linuxfromscratch-6.6 (06 Mar 2010)
+
+  06 Mar 2010; Ryan Hill <dirtyepic@gentoo.org>
+  +linuxfromscratch-6.6.ebuild:
+  Version bump.
+
+  08 Nov 2009; Ryan Hill <dirtyepic@gentoo.org>
+  -linuxfromscratch-6.3.ebuild, linuxfromscratch-6.4.ebuild:
+  Stable on hppa as per bug #286612. Remove old.
+
+  01 Oct 2009; Raúl Porcel <armin76@gentoo.org>
+  linuxfromscratch-6.4.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #286612
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> linuxfromscratch-6.4.ebuild:
+  ppc stable #286612
+
+  27 Sep 2009; Brent Baude <ranger@gentoo.org> linuxfromscratch-6.4.ebuild:
+  Marking linuxfromscratch-6.4 ppc64 for bug 286612
+
+  27 Sep 2009; Markus Meier <maekke@gentoo.org> linuxfromscratch-6.4.ebuild:
+  amd64/x86 stable, bug #286612
+
+*linuxfromscratch-6.5 (27 Sep 2009)
+
+  27 Sep 2009; Ryan Hill <dirtyepic@gentoo.org>
+  +linuxfromscratch-6.5.ebuild:
+  Version bump.
+
+*linuxfromscratch-6.4 (12 Mar 2009)
+
+  12 Mar 2009; Ryan Hill <dirtyepic@gentoo.org>
+  +linuxfromscratch-6.4.ebuild:
+  Version bump.
+
+  24 Jul 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*linuxfromscratch-6.3 (19 Jun 2008)
+
+  19 Jun 2008; Ryan Hill <dirtyepic@gentoo.org> +metadata.xml,
+  +linuxfromscratch-6.3.ebuild:
+  Consolidate linuxfromscratch ebuilds into one.

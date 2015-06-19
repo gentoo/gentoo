@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=sys-libs/db-2.0 virtual/perl-ExtUtils-MakeMaker test? ( dev-perl/Test-Pod ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=This module provides Berkeley DB interface for Perl
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/BerkeleyDB/
+IUSE=test
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=sys-libs/db-2.0 dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/P/PM/PMQS/BerkeleyDB-0.55.tar.gz
+_eclasses_=db-use	82d0e62839f20e1e0d5a2259abd5316f	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=44ef4af2cb36a8165a3bb38a4e48f10a

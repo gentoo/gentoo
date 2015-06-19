@@ -1,0 +1,21 @@
+# ChangeLog for virtual/pyfits
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/pyfits/ChangeLog,v 1.5 2015/04/08 18:31:14 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pyfits-0.ebuild:
+  Drop old Python implementations
+
+  25 Nov 2014; Pacho Ramos <pacho@gentoo.org> pyfits-0.ebuild:
+  Support python 3.4
+
+  05 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org> pyfits-0.ebuild:
+  Reworked providers for pyfits for newer astropy
+
+  24 Apr 2013; Sébastien Fabbro <bicatali@gentoo.org> pyfits-0.ebuild:
+  Propagate use dependencies
+
+*pyfits-0 (24 Apr 2013)
+
+  24 Apr 2013; Sébastien Fabbro <bicatali@gentoo.org> +metadata.xml,
+  +pyfits-0.ebuild:
+  Initial import

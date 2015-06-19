@@ -1,0 +1,13 @@
+http://bugs.gentoo.org/509512
+
+--- src/uevt-notify.vala
++++ src/uevt-notify.vala
+@@ -51,7 +51,7 @@
+         if(notify != true)
+             return;
+ 
+-        Notification notif = new Notification(head, Markup.escape_text(body), icon);
++        Notify.Notification notif = new Notify.Notification(head, Markup.escape_text(body), icon);
+ 
+         try {
+             notif.show();

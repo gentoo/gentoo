@@ -1,0 +1,11 @@
+--- configure.in.old	2014-10-14 12:23:00.422971952 +0200
++++ configure.in	2014-10-14 12:23:24.806746868 +0200
+@@ -276,7 +276,7 @@
+ 
+         LDFLAGS="$LDFLAGS $X_LIBS"
+ 
+-        LIBS="$LIBS $X_PRE_LIBS -lXi -lXmu -lXext -lX11 $X_EXTRA_LIBS -lm"
++        LIBS="$LIBS $X_PRE_LIBS -lX11 $X_EXTRA_LIBS -lm"
+ 
+ dnl =========================================================
+ dnl    if test "x$x_includes" != "x"; then

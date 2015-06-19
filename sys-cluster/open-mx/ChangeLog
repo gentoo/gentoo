@@ -1,0 +1,39 @@
+# ChangeLog for sys-cluster/open-mx
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/open-mx/ChangeLog,v 1.8 2012/12/11 15:49:56 ssuominen Exp $
+
+  11 Dec 2012; Samuli Suominen <ssuominen@gentoo.org> -open-mx-1.5.2.ebuild:
+  old
+
+  11 Dec 2012; Samuli Suominen <ssuominen@gentoo.org> open-mx-1.5.2.ebuild,
+  open-mx-1.5.2-r1.ebuild:
+  Use udev.eclass for installing udev rules into correct path.
+
+*open-mx-1.5.2-r1 (12 Aug 2012)
+
+  12 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> +open-mx-1.5.2-r1.ebuild:
+  Query value of udevdir from udev.pc pkg-config file.
+
+  21 May 2012; Kacper Kowalik <xarthisius@gentoo.org> open-mx-1.5.2.ebuild:
+  Add missing inheritance of eutils.eclass
+
+*open-mx-1.5.2 (29 Apr 2012)
+
+  29 Apr 2012; Alexey Shvetsov <alexxy@gentoo.org> +open-mx-1.5.2.ebuild,
+  -open-mx-1.5.0.ebuild:
+  [sys-cluster/open-mx] Version bump, also fix bug #387809
+
+  25 Feb 2012; Robin H. Johnson <robbat2@gentoo.org> open-mx-1.5.0.ebuild:
+  Bug #405687: Depend on virtual/modutils instead of sys-apps/module-init-tools.
+
+  17 Feb 2012; Kacper Kowalik <xarthisius@gentoo.org> -open-mx-1.4.0.ebuild:
+  Drop old as sources were removed upstream
+
+*open-mx-1.5.0 (31 Aug 2011)
+*open-mx-1.4.0 (31 Aug 2011)
+
+  31 Aug 2011; Alexey Shvetsov <alexxy@gentoo.org> +open-mx-1.4.0.ebuild,
+  +files/open-mx-1.4.0-driver.patch, +open-mx-1.5.0.ebuild,
+  +files/omxoed.initd, +metadata.xml:
+  Initial import
+

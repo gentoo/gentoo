@@ -1,0 +1,88 @@
+# ChangeLog for x11-wm/aewm++
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/aewm++/ChangeLog,v 1.25 2015/04/04 06:07:42 mr_bones_ Exp $
+
+  04 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> -aewm++-1.1.5.ebuild:
+  old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> aewm++-1.1.5-r1.ebuild,
+  aewm++-1.1.5.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  09 Aug 2014; Agostino Sarubbo <ago@gentoo.org> aewm++-1.1.5-r1.ebuild:
+  Stable for ppc, wrt bug #393947
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due desktop-wm removal
+
+  21 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> aewm++-1.1.5-r1.ebuild:
+  x86 stable wrt bug #393947
+
+  16 Dec 2011; Agostino Sarubbo <ago@gentoo.org> aewm++-1.1.5-r1.ebuild:
+  Stable for AMD64, wrt bug #393947
+
+*aewm++-1.1.5-r1 (05 Sep 2010)
+
+  05 Sep 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  +aewm++-1.1.5-r1.ebuild, +files/aewm++-1.1.5-makefile.patch,
+  -files/gcc-3.4.patch:
+  Respect LDFLAGS wrt bug 336099. Thanks to Diego for the report.
+
+  06 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> aewm++-1.1.5.ebuild:
+  Fix HOMEPAGE wrt #239223 by Paweł Szubert.
+
+  20 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org> aewm++-1.1.5.ebuild:
+  ppc stable, bug #245248
+
+  19 Nov 2008; Markus Meier <maekke@gentoo.org> aewm++-1.1.5.ebuild:
+  amd64/x86 stable, bug #245248
+
+*aewm++-1.1.5 (03 May 2008)
+
+  03 May 2008; Samuli Suominen <drac@gentoo.org>
+  +files/aewm++-1.1.5-gcc43.patch, +aewm++-1.1.5.ebuild:
+  Version bump with GCC 4.3 patch wrt #220156, thanks to Peter Alfredsen.
+
+  14 Jul 2007; David Shakaryan <omp@gentoo.org> aewm++-1.0.24.ebuild:
+  Update HOMEPAGE. (bug #185223)
+
+  13 Jul 2007; David Shakaryan <omp@gentoo.org> aewm++-1.0.24.ebuild:
+  Add quotes where needed and update dependencies, plus general cleanup.
+
+  13 Jul 2007; David Shakaryan <omp@gentoo.org> -aewm++-1.0.22.ebuild:
+  Remove older version.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  03 Feb 2006; Krzysiek Pawlik <nelchael@gentoo.org> aewm++-1.0.22.ebuild,
+  aewm++-1.0.24.ebuild:
+  Fixed DEPEND for modular X.
+
+  30 Jun 2005; Joseph Jezak <josejx@gentoo.org> aewm++-1.0.24.ebuild:
+  Marked ppc stable for bug #97511.  Thanks nixnut.
+
+  08 May 2005; Herbie Hopkins <herbs@gentoo.org> aewm++-1.0.24.ebuild:
+  Stable on amd64.
+
+  07 Jan 2005; Joseph Jezak <josejx@gentoo.org> +files/gcc-3.4.patch,
+  aewm++-1.0.24.ebuild:
+  Marked ~ppc for bug #76860 and added patch to fix compilation on gcc 3.4.
+
+  07 May 2004; Brandon Hale <tseng@gentoo.org> aewm++-1.0.24.ebuild:
+  Add IUSE=
+
+  07 Jan 2004; Jon Portnoy <avenj@gentoo.org> aewm++-1.0.24.ebuild :
+  AMD64 keywords.
+
+*aewm++-1.0.24 (20 Nov 2003)
+
+  20 Nov 2003; <mkennedy@gentoo.org> aewm++-1.0.24.ebuild:
+  minor version update
+
+*aewm++-1.0.22 (19 Nov 2002)
+
+  19 Nov 2002; Matthew Kennedy <mkennedy@gentoo.org> aewm++-1.0.22.ebuild,
+  files/digest-aewm++-1.0.22, ChangeLog :
+
+  Initial import.

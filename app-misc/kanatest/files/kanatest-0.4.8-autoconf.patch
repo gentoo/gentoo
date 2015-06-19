@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index eca7a05..b5ac45c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,7 +3,7 @@
+ 
+ AC_PREREQ(2.59)
+ AC_INIT([Kanatest], [0.4.8], [pasp@users.sf.net])
+-AM_INIT_AUTOMAKE([-Wall -Werror foreign])
++AM_INIT_AUTOMAKE([-Wall -Wno-portability -Werror foreign])
+ AC_CONFIG_SRCDIR([src/about.c])
+ AC_CONFIG_HEADER([config.h])
+ 

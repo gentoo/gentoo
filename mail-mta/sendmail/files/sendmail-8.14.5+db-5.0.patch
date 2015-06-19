@@ -1,0 +1,13 @@
+Index: sendmail-8.14.4/include/sm/bdb.h
+===================================================================
+--- sendmail-8.14.4.orig/include/sm/bdb.h
++++ sendmail-8.14.4/include/sm/bdb.h
+@@ -19,7 +19,7 @@
+ #  define DB_VERSION_MAJOR 1
+ # endif /* ! DB_VERSION_MAJOR */
+ 
+-# if DB_VERSION_MAJOR >= 4 && DB_VERSION_MINOR >= 1
++# if (DB_VERSION_MAJOR == 4 && DB_VERSION_MINOR >= 1) || DB_VERSION_MAJOR >= 5
+ 
+ #  define DBTXN	NULL ,
+ 

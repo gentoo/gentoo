@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=dev-lang/nasm app-arch/unzip
+DESCRIPTION=Cisco OpenH264 library and Gecko Media Plugin for Mozilla packages
+EAPI=5
+HOMEPAGE=http://www.openh264.org/
+IUSE=+plugin utils abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=!<www-client/firefox-38
+RESTRICT=bindist
+SLOT=0
+SRC_URI=https://github.com/cisco/openh264/archive/v1.4.0.tar.gz -> openh264-1.4.0.tar.gz https://github.com/mozilla/gmp-api/archive/Firefox38.tar.gz -> gmp-api-Firefox38.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	mozextension	ba6829881080a663d68531424a3dfbc6	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	0983c7893df461213a05f791cc7dea6d	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	nsplugins	7ea51b2f6cbd5b36b9c0163cc3ee03a2	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=faf33ee812eb4ba37eaf106d2d69af7d

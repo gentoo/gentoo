@@ -1,0 +1,15 @@
+# ChangeLog for games-strategy/0ad-data
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/0ad-data/ChangeLog,v 1.2 2014/10/12 22:38:15 hasufell Exp $
+
+*0ad-data-0.0.17_alpha (12 Oct 2014)
+
+  12 Oct 2014; Julian Ospald <hasufell@gentoo.org>
+  +0ad-data-0.0.17_alpha.ebuild:
+  version bump wrt #525130
+
+*0ad-data-0.0.16_alpha (21 May 2014)
+
+  21 May 2014; Julian Ospald <hasufell@gentoo.org>
+  +0ad-data-0.0.16_alpha.ebuild, +metadata.xml:
+  initial import wrt #278541

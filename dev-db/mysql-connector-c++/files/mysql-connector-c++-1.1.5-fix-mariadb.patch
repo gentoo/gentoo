@@ -1,0 +1,45 @@
+diff -aruN a/driver/nativeapi/libmysql_static_proxy.cpp b/driver/nativeapi/libmysql_static_proxy.cpp
+--- a/driver/nativeapi/libmysql_static_proxy.cpp	2014-11-19 08:37:11.000000000 -0500
++++ b/driver/nativeapi/libmysql_static_proxy.cpp	2015-02-21 22:19:50.119234140 -0500
+@@ -319,7 +319,7 @@
+ int
+ LibmysqlStaticProxy::get_option(MYSQL * mysql, enum mysql_option option, const void *arg)
+ {
+-#if MYSQL_VERSION_ID >= 50703
++#if MYSQL_VERSION_ID >= 50703 && !defined( MARIADB_BASE_VERSION )
+ 	if (::mysql_get_option(mysql, option, arg)) {
+ 		throw sql::InvalidArgumentException("Unsupported option provided to mysql_get_option()");
+ 	} else {
+diff -aruN a/driver/mysql_connection.cpp b/driver/mysql_connection.cpp
+--- a/driver/mysql_connection.cpp	2014-11-19 08:37:11.000000000 -0500
++++ b/driver/mysql_connection.cpp	2015-02-21 22:28:48.920210376 -0500
+@@ -1015,6 +1015,7 @@
+ 		MY_CHARSET_INFO cs;
+ 		proxy->get_character_set_info(&cs);
+ 		*(static_cast<int *>(optionValue)) = cs.mbmaxlen;
++#ifndef MARIADB_BASE_VERSION
+ 	/* mysql_get_option() was added in mysql 5.7.3 version */
+ 	} else if ( proxy->get_server_version() >= 50703 ) {
+ 		try {
+@@ -1029,6 +1030,7 @@
+ 			CPP_ERR_FMT("Unsupported option : %d:(%s) %s", proxy->errNo(), proxy->sqlstate().c_str(), proxy->error().c_str());
+ 			throw e;
+ 		}
++#endif /* MARIADB_BASE_VERSION */
+ 	}
+ }
+ /* }}} */
+@@ -1046,11 +1048,13 @@
+ 		MY_CHARSET_INFO cs;
+ 		proxy->get_character_set_info(&cs);
+ 		return cs.dir ? sql::SQLString(cs.dir) : "";
++#ifndef MARIADB_BASE_VERSION
+ 	} else if ( proxy->get_server_version() >= 50703 ) {
+ 		const char* optionValue= NULL;
+ 		if (GET_CONN_OPTION(optionName, &optionValue, stringOptions)) {
+ 			return optionValue ? sql::SQLString(optionValue) : "";
+ 		}
++#endif /* MARIADB_BASE_VERSION */
+ 	}
+ 	return "";
+ }

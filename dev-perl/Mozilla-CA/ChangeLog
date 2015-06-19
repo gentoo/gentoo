@@ -1,0 +1,14 @@
+# ChangeLog for dev-perl/Mozilla-CA
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Mozilla-CA/ChangeLog,v 1.2 2014/08/20 17:22:41 ssuominen Exp $
+
+  20 Aug 2014; Samuli Suominen <ssuominen@gentoo.org>
+  Mozilla-CA-20130114.ebuild:
+  Keyword for alpha/ppc/ppc64/x86 (because Mozilla::CA is a dependency of
+  Finance::Quote)
+
+*Mozilla-CA-20130114 (28 May 2014)
+
+  28 May 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  +Mozilla-CA-20130114.ebuild, +metadata.xml:
+  Initial commit. Ebuild written by me. Satisfies dependency for www-apps/rt.

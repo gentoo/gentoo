@@ -1,0 +1,26 @@
+From 19b9e5392a0b1530861d306ee962ac85c108ba1a Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sun, 11 Jan 2015 20:33:37 +0100
+Subject: [PATCH 1/5] Use gnome backgrounds since Cinnamon isn't providing any
+
+https://github.com/linuxmint/Cinnamon/issues/3575
+---
+ files/usr/lib/cinnamon-settings/modules/cs_backgrounds.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/files/usr/lib/cinnamon-settings/modules/cs_backgrounds.py b/files/usr/lib/cinnamon-settings/modules/cs_backgrounds.py
+index bf6dc39..83a8b04 100644
+--- a/files/usr/lib/cinnamon-settings/modules/cs_backgrounds.py
++++ b/files/usr/lib/cinnamon-settings/modules/cs_backgrounds.py
+@@ -198,7 +198,7 @@ class Module:
+     def get_system_backgrounds(self):
+         picture_list = []
+         folder_list = []
+-        properties_dir = "/usr/share/cinnamon-background-properties"
++        properties_dir = "/usr/share/gnome-background-properties"
+         backgrounds = []
+         if os.path.exists(properties_dir):
+             for i in os.listdir(properties_dir):
+-- 
+2.2.1
+

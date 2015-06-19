@@ -1,0 +1,40 @@
+# bash-completion script for scrot
+# place this in /etc/bash_completion.d
+
+_scrot() {
+	local cur prev opts
+	COMPREPLY=()
+	cur=${COMP_WORDS[COMP_CWORD]}
+	prev=${COMP_WORDS[COMP_CWORD-1]}
+	opts="-h --help -v --version -b --border -c --count -d --delay -e --exec \
+	-q --quality -m --multidisp -s --select -t --thumb" 
+
+	if [[ "${cur}" == -* ]] || [[ ${COMP_CWORD} -eq 1 ]]; then
+    	COMPREPLY=($(compgen -W "${opts}" -- "${cur}"))
+	fi
+
+	case "${prev}" in
+		-e|--exec)
+			COMPREPLY=($(compgen -A command -- "${cur}"))
+			;;
+		-h|--help)
+			COMPREPLY=($(compgen -W "${opts/-h --help}" -- "${cur}"))
+			;;
+		-v|--version)
+			COMPREPLY=($(compgen -W "${opts/-v --version}" -- "${cur}"))
+			;;
+		-b|--border)
+			COMPREPLY=($(compgen -W "${opts/-b --border}" -- "${cur}"))
+			;;
+		-c|--count)
+			COMPREPLY=($(compgen -W "${opts/-c --count}" -- "${cur}"))
+			;;
+		-m|--multidisp)
+			COMPREPLY=($(compgen -W "${opts/-m --multidisp}" -- "${cur}"))
+			;;
+		-s|--select)
+			COMPREPLY=($(compgen -W "${opts/-s --select}" -- "${cur}"))
+			;;
+	esac		
+}
+complete -F _scrot scrot

@@ -1,0 +1,28 @@
+# ChangeLog for media-fonts/webby-fonts
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/webby-fonts/ChangeLog,v 1.7 2010/06/11 21:26:18 yngwin Exp $
+
+  11 Jun 2010; Ben de Groot <yngwin@gentoo.org> metadata.xml:
+  Removing myself as maintainer
+
+  25 Aug 2008; Raúl Porcel <armin76@gentoo.org> webby-fonts-1.ebuild:
+  ia64 stable wrt #234970
+
+  24 Aug 2008; Tobias Klausmann <klausman@gentoo.org> webby-fonts-1.ebuild:
+  Stable on alpha, bug #234970
+
+  21 Aug 2008; Friedrich Oslage <bluebird@gentoo.org> webby-fonts-1.ebuild:
+  Stable on sparc, bug #234970
+
+  20 Aug 2008; Markus Meier <maekke@gentoo.org> webby-fonts-1.ebuild:
+  amd64/x86 stable, bug #234970
+
+  21 Apr 2008; Raúl Porcel <armin76@gentoo.org> webby-fonts-1.ebuild:
+  Add ~alpha/~ia64/~sparc
+
+*webby-fonts-1 (24 Mar 2008)
+
+  24 Mar 2008; Ben de Groot <yngwin@gentoo.org> +metadata.xml,
+  +webby-fonts-1.ebuild:
+  Initial import. Ebuild by me.
+

@@ -1,0 +1,51 @@
+--- control-image.c~	2007-05-18 12:00:59.000000000 +0200
++++ control-image.c	2007-06-11 15:38:54.000000000 +0200
+@@ -194,7 +194,11 @@
+ 
+ void cImageControl::FadeIn(void)
+ {
+-needsFastResponse = true;
++#if VDRVERSNUM >= 10500
++  SetNeedsFastResponse(true);
++#else
++  needsFastResponse = true;
++#endif
+   int i;
+   int alpha = 0;
+   
+@@ -237,13 +241,21 @@
+   fd--;
+   }
+ 
+-needsFastResponse = false;
++#if VDRVERSNUM >= 10500
++  SetNeedsFastResponse(false);
++#else
++  needsFastResponse = false;
++#endif
+ }
+ 
+ 
+ void cImageControl::FadeOut(void)
+ {
+-needsFastResponse = true;
++#if VDRVERSNUM >= 10500
++  SetNeedsFastResponse(true);
++#else
++  needsFastResponse = true;
++#endif
+   int i;
+   int alpha = 255;
+   int fd = 16;
+@@ -283,7 +295,11 @@
+   fd--;
+   }
+ 
++#if VDRVERSNUM >= 10500
++  SetNeedsFastResponse(false);
++#else
+   needsFastResponse = false;
++#endif
+ }
+ 
+ 

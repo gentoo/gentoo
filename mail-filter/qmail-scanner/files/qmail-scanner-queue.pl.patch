@@ -1,0 +1,8 @@
+--- qmail-scanner-queue.pl.orig	2004-01-28 14:59:13.683490735 +0100
++++ qmail-scanner-queue.pl	2004-01-28 14:59:58.125634019 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/suidperl -T
++#!/usr/bin/perl
+ #
+ # File: qmail-scanner-queue.pl
+ # Version: 1.20

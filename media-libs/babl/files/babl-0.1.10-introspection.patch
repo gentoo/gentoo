@@ -1,0 +1,25 @@
+From c024c89f95de4a8fa95ba96790dac61768d11a17 Mon Sep 17 00:00:00 2001
+From: Dominique Leuenberger <dimstar@opensuse.org>
+Date: Tue, 10 Jan 2012 16:32:50 +0000
+Subject: gobject-introspection: fix build of the .gir and .typelib files.
+
+---
+diff --git a/babl/Makefile.am b/babl/Makefile.am
+index cefab57..03115a3 100644
+--- a/babl/Makefile.am
++++ b/babl/Makefile.am
+@@ -93,10 +93,10 @@ INTROSPECTION_SCANNER_ARGS = --add-include-path=$(srcdir)
+ INTROSPECTION_COMPILER_ARGS = --includedir=$(srcdir)
+ 
+ if HAVE_INTROSPECTION
+-Babl-$(BABL_API_VERSION).gir: $(G_IR_SCANNER) $(library_include_HEADERS) $(c_sources) $(srcdir)/Makefile.am
++Babl-$(BABL_API_VERSION).gir: $(G_IR_SCANNER) $(library_include_HEADERS) $(c_sources) $(srcdir)/Makefile.am libbabl-@BABL_API_VERSION@.la
+ 	$(INTROSPECTION_SCANNER) -v --namespace Babl --nsversion=$(BABL_API_VERSION) \
+             --add-include-path=$(srcdir) --add-include-path=. \
+-            --library=babl-$(BABL_API_VERSION) \
++            --library=$(builddir)/libbabl-$(BABL_API_VERSION).la \
+             --libtool="$(LIBTOOL)" \
+             --output $@ \
+             -DBABL_IS_BEING_COMPILED \
+--
+cgit v0.9.1

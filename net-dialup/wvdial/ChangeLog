@@ -1,0 +1,214 @@
+# ChangeLog for net-dialup/wvdial
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/wvdial/ChangeLog,v 1.58 2012/05/03 03:54:07 jdhore Exp $
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> wvdial-1.61.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  28 May 2010; Peter Volkov <pva@gentoo.org> wvdial-1.61.ebuild,
+  +files/wvdial-1.61-parallel-make.patch:
+  Fixed build issue, bug #321729, thank Willard Dawson for report and Samuli
+  Suominen, Lars Wendler (Polynomial-C) for this fix.
+
+*wvdial-1.61 (27 May 2010)
+
+  27 May 2010; Peter Volkov <pva@gentoo.org> +wvdial-1.61.ebuild,
+  +files/wvdial-1.61-as-needed.patch, +files/wvdial-1.61-destdir.patch:
+  Version bump.
+
+  20 Jun 2009; Alin Năstac <mrness@gentoo.org>
+  files/wvdial-1.60-dirent.patch:
+  Fix dirent patch for glibc versions prior to 2.10.1 (#271477).
+
+*wvdial-1.60-r1 (20 Jun 2009)
+
+  20 Jun 2009; Alin Năstac <mrness@gentoo.org>
+  +files/wvdial-1.60-dirent.patch, +wvdial-1.60-r1.ebuild:
+  Fix compilation error related to glibc-2.10 (#271477). Migrate to EAPI 2.
+
+  14 Dec 2008; Peter Alfredsen <loki_val@gentoo.org> metadata.xml:
+  Removing myself as maintainer, per email convo with mrness.
+
+  14 Dec 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/wvdial-1.60-as-needed.patch, metadata.xml, wvdial-1.60.ebuild:
+  Fix wvdial as-needed compilation, take up maintainership, bug 250626.
+
+  12 Jan 2008; Alin Năstac <mrness@gentoo.org> wvdial-1.60.ebuild:
+  Add pkg-config to RDEPEND (#205513).
+
+  22 Oct 2007; Alin Năstac <mrness@gentoo.org>
+  -files/wvdial-1.56-destdir.patch, -wvdial-1.56.ebuild:
+  Remove obsolete version.
+
+  03 Oct 2007; Raúl Porcel <armin76@gentoo.org> wvdial-1.60.ebuild:
+  alpha/sparc stable wrt #193803
+
+  30 Sep 2007; Lars Weiler <pylon@gentoo.org> wvdial-1.60.ebuild:
+  stable ppc, bug #193803
+
+  27 Sep 2007; Christian Faulhammer <opfer@gentoo.org> wvdial-1.60.ebuild:
+  stable x86, bug #193803
+
+  26 Sep 2007; Jeroen Roovers <jer@gentoo.org> wvdial-1.60.ebuild:
+  Stable for HPPA (bug #193803).
+
+  26 Sep 2007; Christoph Mende <angelos@gentoo.org> wvdial-1.60.ebuild:
+  Stable on amd64 wrt bug #193803
+
+*wvdial-1.60 (18 Aug 2007)
+
+  18 Aug 2007; Alin Năstac <mrness@gentoo.org>
+  +files/wvdial-1.60-destdir.patch, wvdial-1.56.ebuild, +wvdial-1.60.ebuild:
+  Version bump. Change HOMEPAGE and SRC_URI.
+
+  06 May 2007; Marius Mauch <genone@gentoo.org> wvdial-1.56.ebuild:
+  Replacing einfo with elog
+
+  11 Nov 2006; Alin Nastac <mrness@gentoo.org>
+  -files/wvdial-1.54.0-destdir.patch, -wvdial-1.54.0-r1.ebuild:
+  Remove old version.
+
+  04 Nov 2006; Alexander H. Færøy <eroyf@gentoo.org> wvdial-1.56.ebuild:
+  Stable on alpha.
+
+  04 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org> wvdial-1.56.ebuild:
+  Stable on hppa
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org>
+  files/digest-wvdial-1.54.0-r1, files/digest-wvdial-1.56, Manifest:
+  Fixing SHA256 digest, pass four
+
+  24 Apr 2006; Luis Medinas <metalgod@gentoo.org> wvdial-1.56.ebuild:
+  Stable on amd64.
+
+  20 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> wvdial-1.56.ebuild:
+  Stable on sparc
+
+  18 Mar 2006; Alin Nastac <mrness@gentoo.org> wvdial-1.56.ebuild:
+  Stable on x86.
+
+*wvdial-1.56 (25 Feb 2006)
+
+  25 Feb 2006; Alin Nastac <mrness@gentoo.org>
+  -files/wvdial-1.55-destdir.patch, +files/wvdial-1.56-destdir.patch,
+  -wvdial-1.55.ebuild, +wvdial-1.56.ebuild:
+  Version bump that fixes inability of wvdialconf to create or modify the
+  configuration file (#122441).
+
+  17 Feb 2006; Alin Nastac <mrness@gentoo.org>
+  -files/wvdial-1.54.0-makefile.patch, -wvdial-1.54.0.ebuild:
+  Remove old version wrt bug #109889 (package demoted to ~hppa).
+
+  06 Feb 2006; Aron Griffis <agriffis@gentoo.org> wvdial-1.54.0-r1.ebuild:
+  Mark 1.54.0-r1 stable on alpha
+
+*wvdial-1.55 (03 Feb 2006)
+
+  03 Feb 2006; Alin Nastac <mrness@gentoo.org>
+  +files/wvdial-1.55-destdir.patch, +wvdial-1.55.ebuild:
+  Version bump (#121388).
+
+  30 Oct 2005; Luis Medinas <metalgod@gentoo.org> wvdial-1.54.0-r1.ebuild:
+  Marked Stable on amd64. See bug #109889.
+
+  26 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  wvdial-1.54.0-r1.ebuild:
+  Stable on sparc wrt #109889
+
+  25 Oct 2005; Alin Nastac <mrness@gentoo.org> wvdial-1.54.0-r1.ebuild:
+  Stable on x86.
+
+  04 Oct 2005; Alin Nastac <mrness@gentoo.org> wvdial-1.54.0.ebuild,
+  wvdial-1.54.0-r1.ebuild:
+  Remove COPYING.LIB from docs.
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+*wvdial-1.54.0-r1 (15 Sep 2005)
+
+  15 Sep 2005; Alin Nastac <mrness@gentoo.org>
+  +files/wvdial-1.54.0-destdir.patch, +wvdial-1.54.0-r1.ebuild:
+  Append wvstreams CFLAGS and LIBS (#106018).
+
+  26 Feb 2005; David Holm <dholm@gentoo.org> wvdial-1.54.0.ebuild:
+  Added to ~ppc.
+
+  08 Jan 2005; Alin Nastac <mrness@gentoo.org>
+  -files/wvdial-1.53-crypt.patch, -wvdial-1.53-r1.ebuild:
+  Remove obsolete ebuild.
+
+  04 Jan 2005; Karol Wojtaszek <sekretarz@gentoo.org> wvdial-1.54.0.ebuild:
+  Stable on amd64, bug #72440
+
+  27 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> wvdial-1.54.0.ebuild:
+  Stable on alpha, bug 72440.
+
+  22 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org> wvdial-1.54.0.ebuild:
+  Stable on sparc wrt #72440
+
+  18 Dec 2004; Alin Nastac <mrness@gentoo.org> wvdial-1.54.0.ebuild:
+  Stable on x86.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> wvdial-1.54.0.ebuild:
+  virtual/glibc -> virtual/libc
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> wvdial-1.54.0.ebuild:
+  Add inherit eutils
+
+  19 Mar 2004; Heinrich Wendel <lanius@gentoo.org> wvdial-1.54.0.ebuild:
+  fix ppp depend
+
+*wvdial-1.54.0 (29 Feb 2004)
+
+  29 Feb 2004; Heinrich Wendel <lanius@gentoo.org> wvdial-1.54.0.ebuild,
+  files/wvdial-1.54.0-makefile.patch:
+  version bump, bug #41186, thx to Peter Colijn <sirjoltalot@yahoo.com>
+
+  19 Nov 2003; Heinrich Wendel <lanius@gentoo.org> metadata.xml:
+  metadata.xml
+
+  12 Sep 2003; Michael Sterrett <msterret@gentoo.org> wvdial-1.53-r1.ebuild:
+  whitespace cleanup; error messages; check results of sed; tidy
+
+  12 Sep 2003; Seemant Kulleen <seemant@gentoo.org> wvdial-1.53-r1.ebuild:
+  added postinst blurb that users MUST be in BOTH the dialout and uucp groups to
+  use wvdial. Thanks to: Björn Michaelsen <bmichaelsen@t-email.de> in bug #27506
+
+  21 Aug 2003; Will Woods <wwoods@gentoo.org> wvdial-1.53-r1.ebuild:
+  Marked stable for alpha
+
+*wvdial-1.53-r1 (10 Dec 2002)
+
+  28 Jul 2003; Guy Martin <gmsoft@gentoo.org> wvdial-1.53-r1.ebuild :
+  Added hppa to KEYWORDS.
+
+  23 May 2003; Chuck Brewer <killian@gentoo.org>:
+  Added manifest.
+
+  10 Dec 2002; Daniel Robbins <drobbins@gentoo.org>: Adding missing wvstreams
+  runtime dependency, closing bug #10133. Removing buggy 1.53 ebuild.
+  
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*wvdial-1.53 (27 Apr 2002)
+
+  08 Oct 2002; Nick Hadaway <raker@gentoo.org> wvdial-1.53.ebuild,
+  files/wvdial-1.53-crypt.patch :
+  Added -lcrypt to LIBS.  Thanks to moonwalker@astro.nu on bug #8763
+
+  16 Sep 2002; Maarten Thibaut <murphy@gentoo.org> wvdial-1.53.ebuild :
+  Added sparc and sparc64 keywords.
+
+  27 Apr 2002; Seemant Kulleen <seemant@gentoo.org> wvdial-1.53.ebuild
+  files/digest-wvdial-1.53 :
+  Version bump
+
+*wvdial-1.41-r3 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

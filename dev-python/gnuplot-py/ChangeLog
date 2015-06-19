@@ -1,0 +1,193 @@
+# ChangeLog for dev-python/gnuplot-py
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/gnuplot-py/ChangeLog,v 1.54 2015/06/09 15:23:59 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnuplot-py-1.8-r1.ebuild:
+  ppc stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnuplot-py-1.8-r1.ebuild:
+  ppc64 stable, bug 540290
+
+  05 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -gnuplot-py-1.8.ebuild:
+  Remove old.
+
+  27 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gnuplot-py-1.8-r1.ebuild:
+  Stable for sparc, wrt bug #535328
+
+  23 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gnuplot-py-1.8-r1.ebuild:
+  Stable for ppc64, wrt bug #535328
+
+  28 Jan 2015; Agostino Sarubbo <ago@gentoo.org> gnuplot-py-1.8-r1.ebuild:
+  Stable for ppc, wrt bug #535328
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> gnuplot-py-1.8-r1.ebuild:
+  Stable for x86, wrt bug #535328
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org> gnuplot-py-1.8-r1.ebuild:
+  Stable for amd64, wrt bug #535328
+
+  13 Jan 2015; Ian Delaney <idella4@gentoo.org> gnuplot-py-1.8-r1.ebuild:
+  tidy
+
+*gnuplot-py-1.8-r1 (27 Jun 2014)
+
+  27 Jun 2014; Jeroen Roovers <jer@gentoo.org> +gnuplot-py-1.8-r1.ebuild:
+  Migrate to distutils-r1.
+
+  23 Feb 2012; Patrick Lauer <patrick@gentoo.org> gnuplot-py-1.8.ebuild:
+  Restricting python
+
+  08 Nov 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gnuplot-py-1.8.ebuild:
+  Fix dependencies. Set SUPPORT_PYTHON_ABIS.
+
+  29 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -gnuplot-py-1.7-r2.ebuild, -files/gnuplot-py-1.7-numpy.patch:
+  Delete.
+
+  30 Apr 2010; Fabian Groffen <grobian@gentoo.org>
+  gnuplot-py-1.8.ebuild:
+  Bump to EAPI=3, added Prefix keywords
+
+  20 Mar 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  stable ppc, bug 259444
+
+  20 Mar 2009; Joseph Jezak <josejx@gentoo.org> gnuplot-py-1.8.ebuild:
+  Marked ppc stable for bug #259444.
+
+  09 Mar 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  gnuplot-py-1.8.ebuild:
+  stable amd64, bug 259444
+
+  02 Mar 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  stable ppc64, bug 259444
+
+  02 Mar 2009; Brent Baude <ranger@gentoo.org> gnuplot-py-1.8.ebuild:
+  stable ppc64, bug 259444
+
+  26 Feb 2009; Raúl Porcel <armin76@gentoo.org> gnuplot-py-1.8.ebuild:
+  s390/x86 stable wrt #259444
+
+  26 Feb 2009; Ferris McCormick <fmccor@gentoo.org> gnuplot-py-1.8.ebuild:
+  Sparc stable, Bug #259444.
+
+  26 Feb 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  gnuplot-py-1.7-r2.ebuild, gnuplot-py-1.8.ebuild:
+  Cleanup, getting ready for stabilization, ppc64 went for ~ppc64 because of
+  gnuplot
+
+  06 Oct 2008; Ali Polatel <hawking@gentoo.org> gnuplot-py-1.7-r2.ebuild,
+  gnuplot-py-1.8.ebuild:
+  Fix numpy dependency, bug 240214
+
+*gnuplot-py-1.8 (05 Jul 2008)
+
+  05 Jul 2008; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml,
+  -gnuplot-py-1.6.ebuild, -gnuplot-py-1.7.ebuild, -gnuplot-py-1.7-r1.ebuild,
+  +gnuplot-py-1.8.ebuild:
+  Version bump. Removed old and numeric dependent versions. Added
+  longdescription in metadata
+
+  08 Feb 2008; Santiago M. Mola <coldwind@gentoo.org>
+  gnuplot-py-1.7-r2.ebuild:
+  amd64 stable wrt bug #207221
+
+  25 Jan 2008; Markus Rothe <corsair@gentoo.org> gnuplot-py-1.7-r2.ebuild:
+  Stable on ppc64; bug #207221
+
+  25 Jan 2008; Ferris McCormick <fmccor@gentoo.org>
+  gnuplot-py-1.7-r2.ebuild:
+  Sparc stable, Bug #207221.
+
+  24 Jan 2008; nixnut <nixnut@gentoo.org> gnuplot-py-1.7-r2.ebuild:
+  Stable on ppc wrt bug 207221
+
+  23 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  gnuplot-py-1.7-r2.ebuild:
+  stable x86, bug 207221
+
+  23 Jan 2008; Ali Polatel <hawking@gentoo.org> gnuplot-py-1.7-r2.ebuild:
+  Added PYTHON_MODNAME
+
+  21 Nov 2007; Joe Peterson <lavajoe@gentoo.org> gnuplot-py-1.7-r2.ebuild:
+  Add ~x86-fbsd keyword (bug #199825)
+
+*gnuplot-py-1.7-r2 (20 Nov 2007)
+
+  20 Nov 2007; Ali Polatel <hawking@gentoo.org>
+  +files/gnuplot-py-1.7-numpy.patch, +gnuplot-py-1.7-r2.ebuild:
+  revbump. backported upstream's changes for numpy. numeric dependency changed
+  to numpy.
+
+  21 Aug 2007; Ferris McCormick <fmccor@gentoo.org>
+  gnuplot-py-1.7-r1.ebuild:
+  Add ~sparc keyword as complement to gnuplot; appears to work fine.
+
+  26 Jul 2007; Markus Rothe <corsair@gentoo.org> gnuplot-py-1.7-r1.ebuild:
+  Added ~ppc64; bug #186188
+
+  24 Jul 2007; Joe Peterson <lavajoe@gentoo.org> gnuplot-py-1.7-r1.ebuild:
+  Add ~x86-fbsd keyword
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  26 May 2006; Danny van Dyk <kugelfang@gentoo.org> gnuplot-py-1.7.ebuild:
+  Marked stable on amd64.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-gnuplot-py-1.6, files/digest-gnuplot-py-1.7,
+  files/digest-gnuplot-py-1.7-r1, Manifest:
+  Fixing SHA256 digest, pass four
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> gnuplot-py-1.7-r1.ebuild:
+  Mark 1.7-r1 ~ia64
+
+  30 Jan 2006; Robin H. Johnson <robbat2@gentoo.org> Manifest:
+  Manifest fix.
+
+  29 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org>
+  gnuplot-py-1.7-r1.ebuild:
+  Dependency update: media-gfx/gnuplot -> sci-visualization/gnuplot.
+
+  29 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org> gnuplot-py-1.7.ebuild:
+  Dependency update: media-gfx/gnuplot -> sci-visualization/gnuplot.
+
+  29 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org> gnuplot-py-1.6.ebuild:
+  Dependency update: media-gfx/gnuplot -> sci-visualization/gnuplot.
+
+  28 Nov 2005; Marien Zwart <marienz@gentoo.org> gnuplot-py-1.7-r1.ebuild:
+  Add missing eutils inherit.
+
+*gnuplot-py-1.7-r1 (04 Jun 2005)
+
+  04 Jun 2005; Fernando Serboncini <fserb@gentoo.org>
+  +files/gnuplot-py-1.7-mousesupport.patch, gnuplot-py-1.7.ebuild,
+  +gnuplot-py-1.7-r1.ebuild:
+  Added mouse support patch. Closes #69250.
+  Marked 1.7 stable on x86.
+
+  02 Jun 2005; Luca Barbato <lu_zero@gentoo.org> gnuplot-py-1.7.ebuild:
+  Marked ppc
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*gnuplot-py-1.7 (03 Oct 2004)
+
+  03 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> +gnuplot-py-1.7.ebuild:
+  Version bump, bug 66094.
+
+  05 Jun 2004; David Holm <dholm@gentoo.org> gnuplot-py-1.6.ebuild:
+  Added to ~ppc.
+
+  02 Sep 2003; Alastair Tse <liquidx@gentoo.org> gnuplot-py-1.6.ebuild:
+  moved dev-python/Numeric to dev-python/numeric
+
+*gnuplot-py-1.6 (19 Jun 2003)
+
+  19 Jun 2003; Alastair Tse <liquidx@gentoo.org> gnuplot-py-1.6.ebuild:
+  new ebuild submitted by Chris Bainbridge <chrb@dcs.ed.ac.uk> (#21113)

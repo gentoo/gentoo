@@ -1,0 +1,166 @@
+# ChangeLog for dev-python/sancho
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sancho/ChangeLog,v 1.48 2015/01/09 05:16:51 idella4 Exp $
+
+*sancho-2.4-r1 (09 Jan 2015)
+
+  09 Jan 2015; Ian Delaney <idella4@gentoo.org> +sancho-2.4-r1.ebuild:
+  revbump; conversion -> distutils-r1
+
+  29 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  sancho-2.4.ebuild:
+  Don't use NEED_PYTHON.
+
+  27 Dec 2009; Raúl Porcel <armin76@gentoo.org> sancho-2.4.ebuild:
+  ia64/m68k/s390/sh/sparc stable wrt #288563
+
+  20 Dec 2009; Fabian Groffen <grobian@gentoo.org> sancho-2.4.ebuild:
+  Merged keywords from Prefix overlay
+
+  17 Dec 2009; Raúl Porcel <armin76@gentoo.org> sancho-2.4.ebuild:
+  Add ~m68k/~s390/~sh wrt #284072
+
+  26 Nov 2009; Markus Meier <maekke@gentoo.org> sancho-2.4.ebuild:
+  arm stable, bug #288563
+
+  31 Oct 2009; Brent Baude <ranger@gentoo.org> sancho-2.4.ebuild:
+  Marking sancho-2.4 ppc64 for bug 288563
+
+  30 Oct 2009; Markus Meier <maekke@gentoo.org> sancho-2.4.ebuild:
+  add ~arm, bug #284072
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> sancho-2.4.ebuild:
+  ppc stable #288563
+
+  22 Oct 2009; Tobias Klausmann <klausman@gentoo.org> sancho-2.4.ebuild:
+  Stable on alpha, bug #288563
+
+  16 Oct 2009; Jeroen Roovers <jer@gentoo.org> sancho-2.4.ebuild:
+  Stable for HPPA (bug #288563).
+
+  15 Oct 2009; Markus Meier <maekke@gentoo.org> sancho-2.4.ebuild:
+  amd64/x86 stable, bug #288563
+
+  02 Oct 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -sancho-0.11.ebuild, sancho-0.11-r1.ebuild, -sancho-2.1.ebuild,
+  -sancho-2.1-r1.ebuild:
+  Backport some changes to older slot. Delete older ebuilds.
+
+*sancho-2.4 (08 Sep 2009)
+
+  08 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +sancho-2.4.ebuild:
+  Version bump. Set SUPPORT_PYTHON_ABIS.
+
+  22 Aug 2008; Alexis Ballier <aballier@gentoo.org> sancho-0.11-r1.ebuild:
+  keyword ~sparc-fbsd
+
+  17 Jan 2008; Fabian Groffen <grobian@gentoo.org> sancho-0.11-r1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  13 Nov 2007; Jeroen Roovers <jer@gentoo.org> sancho-2.1-r1.ebuild:
+  Marked ~hppa again (thanks armin76).
+
+  13 Nov 2007; Raúl Porcel <armin76@gentoo.org> sancho-2.1-r1.ebuild:
+  Add ~alpha
+
+  15 Oct 2007; Markus Rothe <corsair@gentoo.org> sancho-0.11.ebuild:
+  Stable on ppc64
+
+  13 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org> sancho-0.11.ebuild:
+  ppc. stable
+
+  05 Jul 2007; Ali Polatel <hawking@gentoo.org> sancho-0.11.ebuild,
+  sancho-0.11-r1.ebuild, sancho-2.1.ebuild, sancho-2.1-r1.ebuild:
+  use DOCS, mydoc is deprecated.
+
+  05 Mar 2007; Marius Mauch <genone@gentoo.org> sancho-0.11-r1.ebuild:
+  Replacing einfo with elog
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  08 Sep 2006; Fabian Groffen <grobian@gentoo.org> sancho-0.11-r1.ebuild:
+  Marked ppc-macos stable (dep of bug #146881)
+
+  21 May 2006; Danny van Dyk <kugelfang@gentoo.org> sancho-0.11-r1.ebuild:
+  Marked stable on s390.
+
+  21 May 2006; Guy Martin <gmsoft@gentoo.org> sancho-0.11-r1.ebuild:
+  Stable on hppa.
+
+  21 May 2006; Joshua Kinard <kumba@gentoo.org> sancho-0.11-r1.ebuild:
+  Marked stable on mips.
+
+  21 May 2006; <solar@gentoo.org> sancho-0.11-r1.ebuild:
+  - Stable on arm. Bug #133299
+
+  16 May 2006; Markus Rothe <corsair@gentoo.org> sancho-0.11-r1.ebuild:
+  Stable on ppc64; bug #133299
+
+  15 May 2006; Jason Wever <weeve@gentoo.org> sancho-0.11-r1.ebuild:
+  Stable on SPARC wrt bug #133299.
+
+  14 May 2006; Thomas Cort <tcort@gentoo.org> sancho-0.11-r1.ebuild:
+  Stable on alpha wrt Bug #133299.
+
+  14 May 2006; Mark Loeser <halcy0n@gentoo.org> sancho-0.11-r1.ebuild:
+  Stable on x86; bug #133299
+
+  04 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> sancho-0.11-r1.ebuild:
+  Add ~x86-fbsd keyword for sancho 0.11.
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> sancho-2.1-r1.ebuild:
+  Mark 2.1-r1 ~ia64
+
+  28 Mar 2006; Aron Griffis <agriffis@gentoo.org> sancho-0.11-r1.ebuild:
+  Mark 0.11-r1 stable on ia64
+
+  20 Mar 2006; Luca Barbato <lu_zero@gentoo.org> sancho-0.11-r1.ebuild:
+  Marked ppc
+
+  19 Mar 2006; Mike Doty <kingtaco@gentoo.org> sancho-0.11-r1.ebuild:
+  amd64 stable
+
+  20 Feb 2006; Joshua Kinard <kumba@gentoo.org> sancho-0.11-r1.ebuild,
+  sancho-2.1-r1.ebuild:
+  Added ~mips to keywords.
+
+  14 Feb 2006; Fabian Groffen <grobian@gentoo.org> sancho-0.11-r1.ebuild:
+  Marked ~ppc-macos (bug #122760), dependency of pycrypto...
+
+*sancho-2.1-r1 (14 Feb 2006)
+
+  14 Feb 2006; Robin H. Johnson <robbat2@gentoo.org> +sancho-2.1-r1.ebuild:
+  Add sancho-2.1-r1 with src_test block.
+
+*sancho-0.11-r1 (13 Feb 2006)
+
+  13 Feb 2006; Marien Zwart <marienz@gentoo.org>
+  +files/sancho-0.11-rename-package.patch, +sancho-0.11-r1.ebuild:
+  Allow installing 0.x and 2.x slotted (thanks to robbat2@gentoo.org for
+  suggesting this). Add src_test.
+
+  03 Feb 2006; Markus Rothe <corsair@gentoo.org> sancho-0.11.ebuild,
+  sancho-2.1.ebuild:
+  Added ~ppc64
+
+  01 Feb 2006; Jason Wever <weeve@gentoo.org> sancho-0.11.ebuild,
+  sancho-2.1.ebuild:
+  Added ~sparc keywords (fixes broken deps of pycrypto).
+
+  01 Feb 2006; Marien Zwart <marienz@gentoo.org> sancho-0.11.ebuild,
+  sancho-2.1.ebuild:
+  Fix DESCRIPTION to match reality.
+
+*sancho-0.11 (01 Feb 2006)
+
+  01 Feb 2006; Mike Frysinger <vapier@gentoo.org> +sancho-0.11.ebuild:
+  Add older version for pycrypto.
+
+*sancho-2.1 (01 Feb 2006)
+
+  01 Feb 2006; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +sancho-2.1.ebuild:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>. Needed for
+  pycrypto testcases.

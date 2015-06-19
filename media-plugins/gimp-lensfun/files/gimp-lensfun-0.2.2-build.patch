@@ -1,0 +1,34 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sun Sep 30 13:22:40 UTC 2012
+Subject: build system
+
+	respect CC, CFLAGS and LDFLAGS
+	https://bugs.gentoo.org/show_bug.cgi?id=436660
+
+--- Makefile
++++ Makefile
+@@ -1,8 +1,9 @@
+-CFLAGS = -O3 -Wall $(shell gimptool-2.0 --cflags && pkg-config --cflags lensfun exiv2) -fopenmp 
++CXXFLAGS ?= -O3
++CXXFLAGS += -Wall $(shell gimptool-2.0 --cflags && pkg-config --cflags lensfun exiv2) -fopenmp 
+ LIBS = $(shell gimptool-2.0 --libs && pkg-config --libs lensfun exiv2)
+ PLUGIN = gimplensfun
+ SOURCES = src/gimplensfun.c
+-CC = g++
++CXX ?= g++
+ # END CONFIG ##################################################################
+ 
+ .PHONY: all install userinstall clean uninstall useruninstall
+@@ -12,10 +13,10 @@
+ OBJECTS = $(subst .c,.o,$(SOURCES))
+ 
+ $(PLUGIN): $(OBJECTS)
+-	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
++	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS) $(LIBS)
+ 
+ %.o: %.c $(HEADERS)
+-	$(CC) $(CFLAGS) -c -o $@ $*.c
++	$(CXX) $(CXXFLAGS) -c -o $@ $*.c
+ 	
+ install: $(PLUGIN)
+ 	@gimptool-2.0 --install-admin-bin $^

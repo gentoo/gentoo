@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=x11-libs/libXmu x11-libs/libX11 x11-libs/libXpm x11-libs/libXft x11-libs/libXrandr media-libs/libpng:0= virtual/jpeg:= x11-apps/sessreg consolekit? ( sys-auth/consolekit sys-apps/dbus ) pam? ( virtual/pam !x11-misc/slimlock ) virtual/pkgconfig x11-proto/xproto sys-devel/make >=dev-util/cmake-2.8.8 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) virtual/pkgconfig
+DESCRIPTION=Simple Login Manager
+EAPI=5
+HOMEPAGE=http://sourceforge.net/projects/slim.berlios/
+IUSE=branding pam consolekit
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+PDEPEND=branding? ( >=x11-themes/slim-themes-1.2.3a-r3 )
+RDEPEND=x11-libs/libXmu x11-libs/libX11 x11-libs/libXpm x11-libs/libXft x11-libs/libXrandr media-libs/libpng:0= virtual/jpeg:= x11-apps/sessreg consolekit? ( sys-auth/consolekit sys-apps/dbus ) pam? ( virtual/pam !x11-misc/slimlock )
+REQUIRED_USE=consolekit? ( pam )
+SLOT=0
+SRC_URI=mirror://sourceforge/project/slim.berlios/slim-1.3.6.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=22fb0ddc6283c735344c6e8d1876efab

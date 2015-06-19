@@ -1,0 +1,48 @@
+# ChangeLog for dev-perl/Parse-ExuberantCTags
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Parse-ExuberantCTags/ChangeLog,v 1.7 2014/08/26 15:31:45 axs Exp $
+
+*Parse-ExuberantCTags-1.20.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Parse-ExuberantCTags-1.20.0-r1.ebuild, -Parse-ExuberantCTags-1.20.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -Parse-ExuberantCTags-1.02.ebuild:
+  Cleanup
+
+*Parse-ExuberantCTags-1.20.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Parse-ExuberantCTags-1.20.0.ebuild:
+  Change version scheme
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org>
+  -Parse-ExuberantCTags-1.01.ebuild:
+  Cleanup
+
+*Parse-ExuberantCTags-1.02 (24 Sep 2010)
+
+  24 Sep 2010; Torsten Veller <tove@gentoo.org>
+  +Parse-ExuberantCTags-1.02.ebuild:
+  Version bump
+
+  15 Feb 2010; Torsten Veller <tove@gentoo.org>
+  +Parse-ExuberantCTags-1.01.ebuild, +metadata.xml:
+  Import to gentoo from perl-experimental
+
+*Parse-ExuberantCTags-1.01 (12 Jul 2009)
+
+  12 Jul 2009; Michele Beltrame <m@cattlegrid.info>
+  +Parse-ExuberantCTags-1.01.ebuild:
+  Bump
+
+*Parse-ExuberantCTags-1.00 (26 Jun 2009)
+
+  26 Jun 2009; Torsten Veller <tove@gentoo.org>
+  +Parse-ExuberantCTags-1.00.ebuild, +metadata.xml:
+  Initial commit

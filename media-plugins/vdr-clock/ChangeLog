@@ -1,0 +1,70 @@
+# ChangeLog for media-plugins/vdr-clock
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-clock/ChangeLog,v 1.14 2014/02/23 19:25:53 hd_brummy Exp $
+
+  23 Feb 2014; Joerg Bornkessel <hd_brummy@gentoo.org> -vdr-clock-1.0.0.ebuild:
+  cleanup old, depended on vdr-plugin.eclass
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> vdr-clock-1.0.0-r1.ebuild:
+  Stable for x86, wrt bug #457386
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> vdr-clock-1.0.0-r1.ebuild:
+  Stable for amd64, wrt bug #457386
+
+*vdr-clock-1.0.0-r1 (02 Nov 2012)
+
+  02 Nov 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-clock-1.0.0-r1.ebuild, +files/vdr-clock-1.0.0_gettext.diff:
+  eapi=4; vdr-plugin-2.eclass; description fixed; fixed xgettext handling,
+  thanks to E.Seifert on bug 424269
+
+  28 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-clock-0.0.5b-r1.ebuild, -files/vdr-clock-0.0.5b-gcc4.diff,
+  -files/0.0.6/pingpong-fixes.diff, -files/vdr-clock-0.0.5b-makefile.diff,
+  -vdr-clock-0.0.6.ebuild, -vdr-clock-0.0.10.ebuild, vdr-clock-1.0.0.ebuild:
+  eapi=3, cleanup, stable amd64
+
+  28 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-clock-0.0.5b-r1.ebuild, vdr-clock-0.0.6.ebuild,
+  vdr-clock-1.0.0.ebuild:
+  Fixed quoting. Marked 1.0.0 stable on x86.
+
+*vdr-clock-1.0.0 (09 Mar 2008)
+
+  09 Mar 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-clock-1.0.0.ebuild:
+  Version bumped.
+
+*vdr-clock-0.0.10 (28 Jan 2008)
+
+  28 Jan 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-clock-0.0.10.ebuild:
+  Version bumped.
+
+  29 Jul 2007; Matthias Schwarzott <zzam@gentoo.org> vdr-clock-0.0.6.ebuild:
+  Marked stable on x86.
+
+*vdr-clock-0.0.6 (20 May 2007)
+
+  20 May 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/0.0.6/pingpong-fixes.diff, +vdr-clock-0.0.6.ebuild:
+  Version bumped. Applied patch by pingpong from
+  http://www.vdr-portal.de/board/thread.php?threadid=64465.
+
+  15 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Assigned to Gentoo VDR Project.
+
+  06 Jul 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-clock-0.0.5b-gcc4.diff, vdr-clock-0.0.5b-r1.ebuild:
+  Added gcc4-compatibility-patch.
+
+  17 Apr 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-clock-0.0.5b-r1.ebuild:
+  Marked stable on x86
+
+*vdr-clock-0.0.5b-r1 (27 Feb 2006)
+
+  27 Feb 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-clock-0.0.5b-makefile.diff, +metadata.xml,
+  +vdr-clock-0.0.5b-r1.ebuild:
+  import ebuild from gentoo.de overlay cvs

@@ -1,0 +1,144 @@
+# ChangeLog for dev-perl/Class-XSAccessor
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-XSAccessor/ChangeLog,v 1.26 2015/01/07 00:07:16 zlogene Exp $
+
+  07 Jan 2015; Mikle Kolyada <zlogene@gentoo.org>
+  Class-XSAccessor-1.190.0.ebuild:
+  Mark stable
+
+  26 Jul 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -Class-XSAccessor-1.160.0.ebuild, Class-XSAccessor-1.180.0.ebuild:
+  Mark stable for all
+
+*Class-XSAccessor-1.190.0 (26 Jul 2014)
+
+  26 Jul 2014; Mikle Kolyada <zlogene@gentoo.org>
+  +Class-XSAccessor-1.190.0.ebuild:
+  Version bump
+
+*Class-XSAccessor-1.180.0 (25 Aug 2013)
+
+  25 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +Class-XSAccessor-1.180.0.ebuild:
+  Bump
+
+  08 Jan 2013; Torsten Veller <tove@gentoo.org>
+  -Class-XSAccessor-1.130.0.ebuild, -Class-XSAccessor-1.140.0.ebuild:
+  Cleanup
+
+*Class-XSAccessor-1.160.0 (12 Nov 2012)
+
+  12 Nov 2012; Torsten Veller <tove@gentoo.org>
+  +Class-XSAccessor-1.160.0.ebuild:
+  Version bump
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org>
+  Class-XSAccessor-1.140.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+*Class-XSAccessor-1.140.0 (30 Aug 2012)
+
+  30 Aug 2012; Torsten Veller <tove@gentoo.org>
+  +Class-XSAccessor-1.140.0.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org>
+  -Class-XSAccessor-1.110.0.ebuild, -Class-XSAccessor-1.120.0.ebuild:
+  Cleanup
+
+*Class-XSAccessor-1.130.0 (19 Dec 2011)
+
+  19 Dec 2011; Torsten Veller <tove@gentoo.org>
+  +Class-XSAccessor-1.130.0.ebuild:
+  Version bump
+
+*Class-XSAccessor-1.120.0 (05 Sep 2011)
+
+  05 Sep 2011; Torsten Veller <tove@gentoo.org>
+  +Class-XSAccessor-1.120.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Class-XSAccessor-1.110.ebuild:
+  Cleanup
+
+*Class-XSAccessor-1.110.0 (01 Sep 2011)
+
+  01 Sep 2011; Torsten Veller <tove@gentoo.org>
+  +Class-XSAccessor-1.110.0.ebuild:
+  Change version scheme
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -Class-XSAccessor-1.05.ebuild,
+  -Class-XSAccessor-1.07.ebuild, -Class-XSAccessor-1.08.ebuild,
+  -Class-XSAccessor-1.09.ebuild:
+  Cleanup
+
+*Class-XSAccessor-1.110 (12 Jan 2011)
+
+  12 Jan 2011; Torsten Veller <tove@gentoo.org> +Class-XSAccessor-1.110.ebuild:
+  Version bump
+
+*Class-XSAccessor-1.09 (03 Nov 2010)
+
+  03 Nov 2010; Torsten Veller <tove@gentoo.org>
+  +Class-XSAccessor-1.09.ebuild:
+  Version bump
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org> Class-XSAccessor-1.08.ebuild:
+  Marking Class-XSAccessor-1.08 ~ppc for bug 337974
+
+  22 Sep 2010; Fabian Groffen <grobian@gentoo.org>
+  Class-XSAccessor-1.08.ebuild:
+  Marked ~ppc-macos
+
+*Class-XSAccessor-1.08 (18 Sep 2010)
+
+  18 Sep 2010; Torsten Veller <tove@gentoo.org>
+  +Class-XSAccessor-1.08.ebuild:
+  Version bump
+
+*Class-XSAccessor-1.07 (17 Aug 2010)
+
+  17 Aug 2010; Torsten Veller <tove@gentoo.org>
+  +Class-XSAccessor-1.07.ebuild:
+  Version bump
+
+  24 Dec 2009; Torsten Veller <tove@gentoo.org>
+  -Class-XSAccessor-1.03.ebuild:
+  Cleanup
+
+  23 Dec 2009; Fabian Groffen <grobian@gentoo.org>
+  Class-XSAccessor-1.05.ebuild:
+  Marked ~x86-solaris, bug #296509
+
+  23 Nov 2009; Torsten Veller <tove@gentoo.org>
+  Class-XSAccessor-1.05.ebuild:
+  Add a blocker for Class-XSAccessor-Array because it was merged
+
+*Class-XSAccessor-1.05 (22 Nov 2009)
+
+  22 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Class-XSAccessor-1.05.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  06 Oct 2009; Torsten Veller <tove@gentoo.org>
+  +Class-XSAccessor-1.03.ebuild, +metadata.xml:
+  Import from perl-experimental
+
+*Class-XSAccessor-1.03 (04 Jun 2009)
+
+  04 Jun 2009; Torsten Veller <tove@gentoo.org>
+  +Class-XSAccessor-1.03.ebuild:
+  Version bump
+
+  28 May 2009; Torsten Veller <tove@gentoo.org>
+  -Class-XSAccessor-0.14.ebuild, Class-XSAccessor-1.02.ebuild:
+  Add ~amd64. Cleanup
+
+*Class-XSAccessor-1.02 (17 May 2009)
+
+  17 May 2009; Torsten Veller <tove@gentoo.org>
+  +Class-XSAccessor-1.02.ebuild:
+  Version bump

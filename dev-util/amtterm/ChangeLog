@@ -1,0 +1,27 @@
+# ChangeLog for dev-util/amtterm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/amtterm/ChangeLog,v 1.5 2015/05/04 23:45:52 perfinion Exp $
+
+*amtterm-1.3-r1 (04 May 2015)
+
+  04 May 2015; Jason Zaman <perfinion@gentoo.org> +amtterm-1.3-r1.ebuild:
+  fix automagic deps, update HOMEPAGE, eapi5
+
+  16 Oct 2012; Richard Yao <ryao@gentoo.org> amtterm-1.3.ebuild:
+  Switch to EAPI=3 and keyword ~amd64-linux
+
+*amtterm-1.3 (19 Dec 2011)
+
+  19 Dec 2011; Patrick Lauer <patrick@gentoo.org> +amtterm-1.3.ebuild,
+  amtterm-1.2.ebuild:
+  Fix for #337236 and bump #394319
+
+  08 Nov 2009; Patrick Lauer <patrick@gentoo.org> amtterm-1.2.ebuild:
+  Fixing depends for #286673
+
+*amtterm-1.2 (01 Sep 2009)
+
+  01 Sep 2009; Patrick Lauer <patrick@gentoo.org> +amtterm-1.2.ebuild,
+  +metadata.xml:
+  Initial ebuild for amtterm. Some automagic deps, and the X / GUI bits
+  aren't built yet. Ebuild by Patrick Lauer.

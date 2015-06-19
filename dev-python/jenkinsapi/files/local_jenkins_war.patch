@@ -1,0 +1,12 @@
+--- a/jenkinsapi_tests/systests/__init__.py        2015-01-27 14:14:43.632779039 +0100
++++ b/jenkinsapi_tests/systests/__init__.py      2015-01-27 15:08:52.521438293 +0100
+@@ -11,7 +11,7 @@
+ 
+ def setUpPackage():
+     systests_dir, _ = os.path.split(__file__)
+-    war_path = os.path.join(systests_dir, 'jenkins.war')
++    war_path = os.path.join('/opt/jenkins', 'jenkins.war')
+     state['launcher'] = JenkinsLancher(war_path, PLUGIN_DEPENDENCIES,
+                                        jenkins_url=os.getenv('JENKINS_URL', None))
+     state['launcher'].start()
+

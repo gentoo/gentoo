@@ -1,0 +1,40 @@
+# ChangeLog for dev-perl/Perl-Critic-Policy-Dynamic-NoIndirect
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Perl-Critic-Policy-Dynamic-NoIndirect/ChangeLog,v 1.7 2014/08/26 18:42:28 axs Exp $
+
+*Perl-Critic-Policy-Dynamic-NoIndirect-0.60.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Perl-Critic-Policy-Dynamic-NoIndirect-0.60.0-r1.ebuild,
+  -Perl-Critic-Policy-Dynamic-NoIndirect-0.60.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  22 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  Perl-Critic-Policy-Dynamic-NoIndirect-0.60.0.ebuild:
+  Add ~ppc, wrt bug #429088
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -Perl-Critic-Policy-Dynamic-NoIndirect-0.05.ebuild,
+  -Perl-Critic-Policy-Dynamic-NoIndirect-0.50.0.ebuild:
+  Cleanup
+
+*Perl-Critic-Policy-Dynamic-NoIndirect-0.60.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Perl-Critic-Policy-Dynamic-NoIndirect-0.60.0.ebuild:
+  Version bump
+
+*Perl-Critic-Policy-Dynamic-NoIndirect-0.50.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Perl-Critic-Policy-Dynamic-NoIndirect-0.50.0.ebuild:
+  Change version scheme
+
+*Perl-Critic-Policy-Dynamic-NoIndirect-0.05 (30 Jan 2011)
+
+  30 Jan 2011; Christian Ruppert <idl0r@gentoo.org>
+  +Perl-Critic-Policy-Dynamic-NoIndirect-0.05.ebuild, +metadata.xml:
+  Initial commit for dev-perl/Perl-Critic-Dynamic-NoIndirect

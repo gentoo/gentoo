@@ -1,0 +1,76 @@
+# ChangeLog for sci-libs/libticalcs2
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/libticalcs2/ChangeLog,v 1.9 2013/07/09 16:50:55 bicatali Exp $
+
+*libticalcs2-1.1.8 (09 Jul 2013)
+
+  09 Jul 2013; Sébastien Fabbro <bicatali@gentoo.org> +libticalcs2-1.1.8.ebuild:
+  Version bump. Switch to autototools-utils eclass
+
+  04 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> -libticalcs2-1.1.5.ebuild,
+  libticalcs2-1.1.7.ebuild:
+  keyword amd64-linux, x86-linux, removed old
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> libticalcs2-1.1.5.ebuild,
+  libticalcs2-1.1.7.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*libticalcs2-1.1.7 (19 Feb 2012)
+
+  19 Feb 2012; Kacper Kowalik <xarthisius@gentoo.org> +libticalcs2-1.1.7.ebuild,
+  -libticalcs2-1.1.0.ebuild, -libticalcs2-1.1.3.ebuild:
+  Version bump, remove .la file, drop old
+
+*libticalcs2-1.1.5 (15 Mar 2011)
+
+  15 Mar 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  +libticalcs2-1.1.5.ebuild:
+  Version bump
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> libticalcs2-1.1.0.ebuild,
+  libticalcs2-1.1.3.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  24 Mar 2009; Joseph Jezak <josejx@gentoo.org> libticalcs2-1.1.3.ebuild:
+  Marked ~ppc for bug #263593.
+
+*libticalcs2-1.1.3 (24 Mar 2009)
+
+  24 Mar 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  +libticalcs2-1.1.3.ebuild:
+  Version bump
+
+*libticalcs2-1.1.0 (03 Feb 2009)
+
+  03 Feb 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/libticalcs2-1.1.0-locale.patch, +metadata.xml,
+  +libticalcs2-1.1.0.ebuild:
+  Initial import from sunrise, thanks to Christian Helbling and all
+  contributors in bug #146028
+
+  15 Jan 2008; Christian Helbling <helch@gmx.ch> -libticalcs2-1.0.7.ebuild,
+  +libticalcs2-1.1.0.ebuild:
+  Version bump
+
+  22 Sep 2007; Christian Helbling <helch@gmx.ch> -libticalcs2-1.0.6.ebuild,
+  +libticalcs2-1.0.7.ebuild:
+  version bump
+
+  30 Jun 2007; Jakub Moc <jakub@gentoo.org> libticalcs2-1.0.6.ebuild:
+  Fix up gettext dependencies
+
+  15 Jun 2007; Christian Helbling <helch@gmx.ch> +libticalcs2-1.0.6.ebuild,
+  -libticalcs2-20061030.ebuild:
+  Version bump. Better version numbers.
+
+  04 Dec 2006; Markus Ullmann <jokey@gentoo.org>
+  -libticalcs2-20060723.ebuild:
+  Remove old
+
+  02 Dec 2006; Christian Helbling <helch@gmx.ch>
+  +libticalcs2-20061030.ebuild:
+  Version bump
+
+  04 Sep 2006; Christian Helbling <helch@gmx.ch>
+  +libticalcs2-20060723.ebuild, +metadata.xml:
+  New ebuild for bug 146028

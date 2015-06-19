@@ -1,0 +1,448 @@
+# ChangeLog for media-gfx/xsane
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/xsane/ChangeLog,v 1.120 2014/12/04 09:50:42 mrueg Exp $
+
+  04 Dec 2014; Manuel Rüger <mrueg@gentoo.org> -xsane-0.999.ebuild:
+  Cleanup old. Fixes bug #526858.
+
+  04 Dec 2014; Agostino Sarubbo <ago@gentoo.org> xsane-0.999-r1.ebuild:
+  Stable for ppc64, wrt bug #526922
+
+  02 Dec 2014; Agostino Sarubbo <ago@gentoo.org> xsane-0.999-r1.ebuild:
+  Stable for alpha, wrt bug #526922
+
+  25 Nov 2014; Agostino Sarubbo <ago@gentoo.org> xsane-0.999-r1.ebuild:
+  Stable for x86, wrt bug #526922
+
+  10 Nov 2014; Agostino Sarubbo <ago@gentoo.org> xsane-0.999-r1.ebuild:
+  Stable for ppc, wrt bug #526922
+
+  04 Nov 2014; Agostino Sarubbo <ago@gentoo.org> xsane-0.999-r1.ebuild:
+  Stable for sparc, wrt bug #526922
+
+  03 Nov 2014; Agostino Sarubbo <ago@gentoo.org> xsane-0.999-r1.ebuild:
+  Stable for amd64, wrt bug #526922
+
+*xsane-0.999-r1 (02 Aug 2014)
+
+  02 Aug 2014; Pacho Ramos <pacho@gentoo.org> +files/xsane-0.999-lcms2.patch,
+  +xsane-0.999-r1.ebuild, -xsane-0.998-r1.ebuild:
+  Support lcms2 (#517642 by Nikoli)
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> xsane-0.999.ebuild:
+  Stable for alpha, wrt bug #491476
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> xsane-0.999.ebuild:
+  Stable for sparc, wrt bug #491476
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> xsane-0.999.ebuild:
+  Stable for ppc64, wrt bug #491476
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> xsane-0.999.ebuild:
+  Stable for ppc, wrt bug #491476
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> xsane-0.999.ebuild:
+  x86 stable, bug #491476
+
+  19 Nov 2013; Chema Alonso <nimiux@gentoo.org> xsane-0.999.ebuild:
+  Stable for amd64 wrt bug #491476
+
+*xsane-0.999 (12 Sep 2013)
+
+  12 Sep 2013; Manuel Rüger <mrueg@gentoo.org> +xsane-0.999.ebuild,
+  -files/MissingCapsFlag.patch:
+  Version bump. Drop unused patch.
+
+  06 Aug 2013; Markus Meier <maekke@gentoo.org> xsane-0.998-r1.ebuild:
+  add ~arm, bug #473828
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> -xsane-0.998.ebuild, metadata.xml:
+  Cleanup due #473480
+
+  16 Dec 2012; Raúl Porcel <armin76@gentoo.org> xsane-0.998-r1.ebuild:
+  alpha/sparc stable wrt #442440
+
+  22 Nov 2012; Agostino Sarubbo <ago@gentoo.org> xsane-0.998-r1.ebuild:
+  Stable for x86, tested by Vincent Olivert Riera <peratu@carrosses.com>, wrt
+  bug #442440
+
+  14 Nov 2012; Agostino Sarubbo <ago@gentoo.org> xsane-0.998-r1.ebuild:
+  Stable for amd64, wrt bug #442440
+
+  14 Nov 2012; Anthony G. Basile <blueness@gentoo.org> xsane-0.998-r1.ebuild:
+  stable ppc, bug #442440
+
+  13 Nov 2012; Brent Baude <ranger@gentoo.org> xsane-0.998-r1.ebuild:
+  Marking xsane-0.998-r1 ppc64 for bug 442440
+
+  11 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> xsane-0.998-r1.ebuild:
+  Fix QA issue with dosym, omitting basename for symlink wrt bug #442440
+
+  11 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> xsane-0.998-r1.ebuild:
+  Fix direct AR call wrt bug #442606. Thanks to Vicente Olivert Riera for
+  reporting this issue
+
+  22 Aug 2012; Christoph Junghans <ottxor@gentoo.org> xsane-0.998-r1.ebuild:
+  added prefix keywords
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> xsane-0.998.ebuild,
+  xsane-0.998-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*xsane-0.998-r1 (15 Jan 2012)
+
+  15 Jan 2012; Andreas K. Huettel <dilfridge@gentoo.org> -xsane-0.996.ebuild,
+  +xsane-0.998-r1.ebuild:
+  Fix working directory handling, bug 396127; drop old
+
+  29 Dec 2011; Mark Loeser <halcy0n@gentoo.org> xsane-0.998.ebuild:
+  Stable for ppc64; bug #380917
+
+  12 Dec 2011; Pacho Ramos <pacho@gentoo.org> -xsane-0.997.ebuild:
+  Drop old.
+
+  27 Nov 2011; nixnut <nixnut@gentoo.org> xsane-0.998.ebuild:
+  ppc stable #380917
+
+  24 Sep 2011; Raúl Porcel <armin76@gentoo.org> xsane-0.998.ebuild:
+  alpha/sparc stable wrt #380917
+
+  04 Sep 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> xsane-0.998.ebuild:
+  x86 stable wrt bug #380917
+
+  30 Aug 2011; Tony Vroon <chainsaw@gentoo.org> xsane-0.998.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Pacho Ramos in bug #380917.
+
+  07 Aug 2011; Samuli Suominen <ssuominen@gentoo.org> xsane-0.998.ebuild:
+  Fix building with libpng15 wrt #377363 by Stuart Longland
+
+*xsane-0.998 (08 Jul 2011)
+
+  08 Jul 2011; Pacho Ramos <pacho@gentoo.org> +xsane-0.998.ebuild,
+  metadata.xml:
+  Version bump and apply a lot of fixes from different distributions, taking
+  this (with printing and graphics herds as backup) as this looks a bit orphan
+  for a long time.
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> xsane-0.996.ebuild,
+  xsane-0.997.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> xsane-0.996.ebuild,
+  xsane-0.997.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  16 Nov 2010; Patrick Kursawe <phosphan@gentoo.org> xsane-0.996.ebuild,
+  xsane-0.997.ebuild:
+  Moving to virtual/jpeg.
+
+  21 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> xsane-0.997.ebuild:
+  Restrict media-libs/lcms depend to old version.
+
+*xsane-0.997 (03 Oct 2009)
+
+  03 Oct 2009; Patrick Kursawe <phosphan@gentoo.org> +xsane-0.997.ebuild:
+  Version bump, see bug #287360
+
+  01 Oct 2009; Patrick Kursawe <phosphan@gentoo.org> xsane-0.996.ebuild:
+  Removing duplicate desktop file (bug #286503).
+
+  23 Jun 2009; Patrick Kursawe <phosphan@gentoo.org>
+  +files/MissingCapsFlag.patch, xsane-0.996.ebuild:
+  Adding a patch to make it work with sane-backends-1.0.20
+
+  23 Jun 2009; Patrick Kursawe <phosphan@gentoo.org> metadata.xml,
+  -xsane-0.995.ebuild, xsane-0.996.ebuild:
+  Adding build-time blocker for sane-backends-1.0.20 and above, removing
+  obsolete version, correcting metadata.
+
+  01 May 2009; Raúl Porcel <armin76@gentoo.org> xsane-0.996.ebuild:
+  sparc stable wrt #256597
+
+  27 Feb 2009; Brent Baude <ranger@gentoo.org> xsane-0.996.ebuild:
+  stable ppc64, bug 256597
+
+  01 Feb 2009; nixnut <nixnut@gentoo.org> xsane-0.996.ebuild:
+  ppc stable #256597
+
+  01 Feb 2009; Markus Meier <maekke@gentoo.org> xsane-0.996.ebuild:
+  amd64/x86 stable, bug #256597
+
+  31 Jan 2009; Tobias Klausmann <klausman@gentoo.org> xsane-0.996.ebuild:
+  Stable on alpha, bug #256597
+
+  30 Jan 2009; Patrick Kursawe <phosphan@gentoo.org> -xsane-0.994.ebuild:
+  Removed obsolete version.
+
+*xsane-0.996 (29 Sep 2008)
+
+  29 Sep 2008; Patrick Kursawe <phosphan@gentoo.org> +xsane-0.996.ebuild:
+  Version bump. Does not install the HTML documentation twice any more and
+  uses the .desktop file from upstream.
+
+  10 Aug 2008; Tobias Klausmann <klausman@gentoo.org> xsane-0.995.ebuild:
+  Stable on alpha, bug #231189
+
+  07 Aug 2008; Markus Meier <maekke@gentoo.org> xsane-0.995.ebuild:
+  amd64/x86 stable, bug #231189
+
+  02 Aug 2008; Markus Rothe <corsair@gentoo.org> xsane-0.995.ebuild:
+  Stable on ppc64; bug #231189
+
+  01 Aug 2008; nixnut <nixnut@gentoo.org> xsane-0.995.ebuild:
+  Stable on ppc wrt bug 231189
+
+  29 Jul 2008; Friedrich Oslage <bluebird@gentoo.org> xsane-0.995.ebuild:
+  Stable on sparc, bug #231189
+
+  11 Jun 2008; Raúl Porcel <armin76@gentoo.org> xsane-0.994.ebuild,
+  xsane-0.995.ebuild:
+  Drop ia64 keyword, no hardware to test
+
+  19 Jan 2008; Patrick Kursawe <phosphan@gentoo.org> -xsane-0.991.ebuild:
+  Cleanup
+
+*xsane-0.995 (19 Jan 2008)
+
+  19 Jan 2008; Patrick Kursawe <phosphan@gentoo.org> +xsane-0.995.ebuild:
+  Version bump, bug #201432
+
+  16 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org> xsane-0.994.ebuild:
+  ppc stable, bug #178933
+
+  11 Jun 2007; Daniel Gryniewicz <dang@gentoo.org> xsane-0.994.ebuild:
+  Marked stable on amd64 for bug #178933
+
+  07 Jun 2007; Raúl Porcel <armin76@gentoo.org> xsane-0.994.ebuild:
+  alpha stable wrt #178933, thanks to Tobias Klausmann for testing
+
+  07 Jun 2007; Raúl Porcel <armin76@gentoo.org> xsane-0.991.ebuild:
+  Drop ia64 stable keyword as nobody can't test this
+
+  07 Jun 2007; Markus Rothe <corsair@gentoo.org> xsane-0.994.ebuild:
+  Stable on ppc64; bug #178933
+
+  06 Jun 2007; Christian Faulhammer <opfer@gentoo.org> xsane-0.994.ebuild:
+  stable x86, bug 178933
+
+  04 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org> xsane-0.994.ebuild:
+  Stable on sparc wrt #178933
+
+  30 Apr 2007; Marius Mauch <genone@gentoo.org> xsane-0.991.ebuild,
+  xsane-0.994.ebuild:
+  Removing pointless einfos.
+
+*xsane-0.994 (07 Mar 2007)
+
+  07 Mar 2007; Patrick Kursawe <phosphan@gentoo.org> xsane-0.991.ebuild,
+  +xsane-0.994.ebuild:
+  Adding desktop entry (bug #160264) + a little version bump.
+
+  01 Nov 2006; Patrick Kursawe <phosphan@gentoo.org> xsane-0.991.ebuild:
+  Adding missing pkgconfig dependency, bug #153070
+
+  18 May 2006; Patrick Kursawe <phosphan@gentoo.org> -files/0.98b.patch,
+  -xsane-0.97.ebuild:
+  Removed obsolete version
+
+  07 Mar 2006; Joseph Jezak <josejx@gentoo.org> xsane-0.991.ebuild:
+  Marked ppc stable for bug #122648, thanks to mfproroc for testing.
+
+  22 Feb 2006; Joshua Jackson <tsunam@gentoo.org> xsane-0.991.ebuild:
+  Stable on x86; bug #122648
+
+  19 Feb 2006; Bryan Østergaard <kloeri@gentoo.org xsane-0.991.ebuild:
+  Stable on ia64, bug 122648.
+
+  19 Feb 2006; Bryan Østergaard <kloeri@gentoo.org xsane-0.991.ebuild:
+  Stable on alpha, bug 122648.
+
+  18 Feb 2006; Simon Stelling <blubb@gentoo.org> xsane-0.991.ebuild:
+  stable on amd64
+
+  15 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org> xsane-0.991.ebuild:
+  Stable on sparc wrt #122648
+
+  15 Feb 2006; Markus Rothe <corsair@gentoo.org> xsane-0.991.ebuild:
+  Stable on ppc64; bug #122648
+
+*xsane-0.991 (24 Jan 2006)
+
+  24 Jan 2006; Patrick Kursawe <phosphan@gentoo.org> -xsane-0.97-r1.ebuild,
+  -xsane-0.98a.ebuild, -xsane-0.98a-r1.ebuild, -xsane-0.99.ebuild,
+  +xsane-0.991.ebuild:
+  Version bump, removing older ~arch versions.
+
+*xsane-0.99 (19 Jan 2006)
+
+  19 Jan 2006; Patrick Kursawe <phosphan@gentoo.org> +xsane-0.99.ebuild:
+  Version bump.
+
+*xsane-0.98a-r1 (05 Dec 2005)
+
+  05 Dec 2005; Patrick Kursawe <phosphan@gentoo.org> +files/0.98b.patch,
+  +xsane-0.98a-r1.ebuild:
+  Little patch, equivalent of 0.98b. Supposed to fix some preview problems.
+
+*xsane-0.98a (30 Nov 2005)
+
+  30 Nov 2005; Patrick Kursawe <phosphan@gentoo.org> xsane-0.97.ebuild,
+  xsane-0.97-r1.ebuild, +xsane-0.98a.ebuild:
+  Version bump + possible fix for bug #113925 (couldn't reproduce it)
+
+*xsane-0.97-r1 (20 Sep 2005)
+
+  20 Sep 2005; Patrick Kursawe <phosphan@gentoo.org> +xsane-0.97-r1.ebuild:
+  Getting rid of gtk1 support (bug #106560)
+
+  13 Sep 2005; Aron Griffis <agriffis@gentoo.org> xsane-0.97.ebuild:
+  Mark 0.97 stable on alpha
+
+  05 Sep 2005; Patrick Kursawe <phosphan@gentoo.org> -files/doublefree.patch,
+  -xsane-0.96-r1.ebuild, xsane-0.97.ebuild:
+  Using local USE flag 'gimp' (see bug #104592), printing xsane.rc-warning only
+  when the previous version actually was <=0.93
+
+  28 Aug 2005; Marcus D. Hanwell <cryos@gentoo.org> xsane-0.97.ebuild:
+  Stable on amd64.
+
+  24 Aug 2005; Aron Griffis <agriffis@gentoo.org> xsane-0.97.ebuild:
+  stable on ia64
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> xsane-0.97.ebuild:
+  Stable on ppc.
+
+  08 Aug 2005; Markus Rothe <corsair@gentoo.org> xsane-0.97.ebuild:
+  Stable on ppc64
+
+  27 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> xsane-0.97.ebuild:
+  Stable on sparc
+
+  27 Jul 2005; Patrick Kursawe <phosphan@gentoo.org> -xsane-0.93.ebuild,
+  -xsane-0.95.ebuild, xsane-0.97.ebuild:
+  Cleanup and declaring latest version stable for x86
+
+  29 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> xsane-0.96-r1.ebuild:
+  Stable on sparc
+
+  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> xsane-0.97.ebuild:
+  ~alpha keyword, bug 89326.
+
+  08 Apr 2005; Markus Rothe <corsair@gentoo.org> xsane-0.96-r1.ebuild:
+  Stable on ppc64
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> xsane-0.96-r1.ebuild:
+  stable on amd64
+
+  01 Apr 2005; Lars Weiler <pylon@gentoo.org> xsane-0.96-r1.ebuild:
+  Stable on ppc.
+
+*xsane-0.97 (22 Jan 2005)
+
+  22 Jan 2005; Patrick Kursawe <phosphan@gentoo.org> +xsane-0.97.ebuild:
+  Version bump
+
+  16 Dec 2004; Dylan Carlson <absinthe@gentoo.org> xsane-0.95.ebuild:
+  Stable on amd64.
+
+  13 Dec 2004; Patrick Kursawe <phosphan@gentoo.org> -xsane-0.91.ebuild,
+  -xsane-0.96.ebuild:
+  Cleanup
+
+*xsane-0.96-r1 (10 Dec 2004)
+
+  10 Dec 2004; Patrick Kursawe <phosphan@gentoo.org> +files/doublefree.patch,
+  +xsane-0.96-r1.ebuild:
+  Adding a fix for bug #73618
+
+  07 Dec 2004; Patrick Kursawe <phosphan@gentoo.org> metadata.xml:
+  edited metadata
+
+*xsane-0.96 (25 Nov 2004)
+
+  25 Nov 2004; Luca Barbato <lu_zero@gentoo.org> +xsane-0.96.ebuild:
+  New version
+
+*xsane-0.95 (09 Sep 2004)
+
+  09 Sep 2004; Patrick Kursawe <phosphan@gentoo.org> -xsane-0.86-r1.ebuild,
+  -xsane-0.90.ebuild, -xsane-0.92.ebuild, +xsane-0.95.ebuild:
+  Cleanup
+
+*xsane-0.95 (09 Sep 2004)
+
+  09 Sep 2004; Patrick Kursawe <phosphan@gentoo.org> +xsane-0.95.ebuild:
+  Version bump.
+
+  31 Jul 2004; Tom Gall <tgall@gentoo.org> xsane-0.93.ebuild:
+  stable on ppc64, bug #57132
+
+  30 Jun 2004; Lars Weiler <pylon@gentoo.org> xsane-0.93.ebuild:
+  Stable on ppc.
+
+*xsane-0.93 (30 Apr 2004)
+
+  30 Apr 2004; Luca Barbato <lu_zero@gentoo.org> +xsane-0.93.ebuild:
+  New version
+
+  29 Dec 2003; Jason Wever <weeve@gentoo.org> xsane-0.92.ebuild:
+  ~sparc, taking the world by storm since 1492.
+
+  13 Dec 2003; Brad House <brad_mssw@gentoo.org> xsane-0.92.ebuild:
+  mark stable on amd64
+
+  09 Oct 2003; Brandy Westcott brandy@gentoo.org xsane-0.92.ebuild:
+  Fixed dependencies so jpeg, libpng & tiff will be installed if need be
+
+  08 Oct 2003; Brandy Westcott brandy@gentoo.org metadata.xml,
+  xsane-0.91.ebuild:
+  Fixed dependencies so jpeg, libpng & tiff will be installed if need be
+
+  22 Sep 2003; Brad Laue <brad@gentoo.org> xsane-0.91.ebuild:
+  Small change - dont check for GIMP if gtk2 is used, since this prevents the
+  GTK+ 2.0 frontend from building.
+
+*xsane-0.92 (08 Oct 2003)
+
+  08 Oct 2003; Heinrich Wendel <lanius@gentoo.org> xsane-0.91.ebuild,
+  xsane-0.92.ebuild:
+  version bump, marked 0.91 stable on ppc
+
+*xsane-0.91 (22 Jul 2003)
+
+  22 Jul 2003; Brad Laue <brad@gentoo.org> xsane-0.90.ebuild,
+  xsane-0.91.ebuild:
+  Version bump.
+
+  15 May 2003; Luca Barbato <lu_zero@gentoo.org> xsane-0.90.ebuild : 
+  Make sure that gimp-1.3 won't think that xsane is a gimp plugin
+  Fixes  bug #20870
+
+*xsane-0.90 (12 Feb 2003)
+
+  12 Feb 2003; Luca Barbato <lu_zero@gentoo.org> : Version bump.
+  Just needs gtk+, it can use both gtk+-1.2 or gtk+-2.x
+  gimp-1.3 support seems still missing.
+
+*xsane-0.89 (14 Dec 2002)
+
+  14 Dec 2002; Donny Davies <woodchip@gentoo.org> : Version bump.
+
+*xsane-0.86-r1 (16 Jul 2002)
+
+  13 Sep 2002; Donny Davies <woodchip@gentoo.org> xsane-0.86-r1.ebuild :
+  Needs gtk+-1, fix #6476.
+
+  16 Jul 2002; Seemant Kulleen <seemant@gentoo.org> xsane-0.86-r1.ebuild
+  files/digest-xsane-0.86-r1 : Added ppc to KEYWORDS, because it works,
+  and USE dependent nls, jpeg, tiff, png supports.
+
+*xsane-0.86 (11 June 2002)
+
+  07 July 2002; Owen Stampflee <owen@gentoo.org> xsane-0.86.ebuild :
+  Removed the depend on The GIMP. It doesn't actually need it.
+
+  11 June 2002; Ryan Phillips <rphillips@gentoo.org> xsane-0.86.ebuild :
+  Thanks to Bret the ebuild will install the plugin link into the correct
+  location.  Updated Revision.

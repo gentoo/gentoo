@@ -1,0 +1,16 @@
+# ChangeLog for dev-ml/enumerate
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/enumerate/ChangeLog,v 1.3 2014/11/10 07:44:51 aballier Exp $
+
+  10 Nov 2014; Alexis Ballier <aballier@gentoo.org> enumerate-111.08.00.ebuild:
+  install readme
+
+  10 Nov 2014; Alexis Ballier <aballier@gentoo.org> enumerate-111.08.00.ebuild:
+  license is apache2 for this one
+
+*enumerate-111.08.00 (10 Nov 2014)
+
+  10 Nov 2014; Alexis Ballier <aballier@gentoo.org>
+  +enumerate-111.08.00.ebuild, +metadata.xml:
+  initial import, ebuild by me
+

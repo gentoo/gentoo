@@ -1,0 +1,116 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sat Jul 21 17:03:11 UTC 2012
+
+--- picpuz-2.5/Makefile
++++ picpuz-2.5/Makefile
+@@ -11,24 +11,26 @@
+ 
+ # target install directories
+ BINDIR = $(PREFIX)/bin
+-SHAREDIR = $(PREFIX)/share/$(PROGRAM)
+-ICONDIR = $(SHAREDIR)/icons
+-LOCALESDIR = $(SHAREDIR)/locales
++DATADIR = $(PREFIX)/share/$(PROGRAM)
++ICONDIR = $(DATADIR)/icons
++LOCALESDIR = $(DATADIR)/locales
+ DOCDIR = $(PREFIX)/share/doc/$(PROGRAM)
+ MANDIR = $(PREFIX)/share/man/man1
+ MENUFILE = $(PREFIX)/share/applications/kornelix-$(PROGRAM).desktop
+ 
+-CFLAGS = $(CXXFLAGS) -c `pkg-config --cflags gtk+-3.0`
++CXXFLAGS += -c `pkg-config --cflags gtk+-3.0`
+ LIBS = `pkg-config --libs gtk+-3.0`
+ 
+ $(PROGRAM): $(PROGRAM).o zfuncs.o
+-	$(CXX) $(LDFLAGS) $(PROGRAM).o zfuncs.o $(LIBS) -o $(PROGRAM)
++	$(CXX) $(LDFLAGS) $(PROGRAM).o zfuncs.o $(LIBS) -o $(PROGRAM)
+ 
+ $(PROGRAM).o: $(SOURCE)
+-	$(CXX) $(CFLAGS) -o $(PROGRAM).o $(SOURCE)
++	$(CXX) $(CXXFLAGS) -o $(PROGRAM).o $(SOURCE) \
++		-D "DATADIR=\"$(DATADIR)\"" -D "DOCDIR=\"$(DOCDIR)\""
+ 
+ zfuncs.o: zfuncs.cc
+-	$(CXX) $(CFLAGS) zfuncs.cc -D PREFIX=\"$(PREFIX)\"
++	$(CXX) $(CXXFLAGS) zfuncs.cc \
++		-D "DATADIR=\"$(DATADIR)\"" -D "DOCDIR=\"$(DOCDIR)\"" -D "BINDIR=\"$(BINDIR)\""
+ 
+ install: $(PROGRAM)
+ 	mkdir -p  $(DESTDIR)$(BINDIR)
+@@ -52,7 +54,7 @@
+ 
+ uninstall:
+ 	rm -f  $(DESTDIR)$(BINDIR)/$(PROGRAM)
+-	rm -R -f  $(DESTDIR)$(SHAREDIR)
++	rm -R -f  $(DESTDIR)$(DATADIR)
+ 	rm -R -f  $(DESTDIR)$(DOCDIR)
+ 	rm -f  $(DESTDIR)$(MANDIR)/$(PROGRAM).1.gz
+ 	xdg-desktop-menu uninstall $(DESTDIR)$(MENUFILE)
+--- picpuz-2.5/zfuncs.cc
++++ picpuz-2.5/zfuncs.cc
+@@ -3111,7 +3111,6 @@
+          /prefix/share/appname/locales/         translations: appname-de.po  etc.
+          /home/user/.appname/                   parameters etc. are copied here
+ 
+-   zprefix        install location              has /bin and /share subtrees
+    zdatadir       installed data files          .desktop, parameters, etc.
+    zdocdir        user documentation            README, changelog, user guide
+    zicondir       icons                         icon files .png
+@@ -3123,7 +3122,7 @@
+ namespace zfuncs
+ {
+    char        zappname[20];
+-   char        zprefix[200], zdatadir[200], zdocdir[200];                  //  app directories
++   char        zdatadir[200], zdocdir[200];                                //  app directories
+    char        zicondir[200], zlocalesdir[200], zuserdir[200];
+    char        zlang[8] = "en";                                            //  "lc" or "lc_RC"
+    char        JPGquality[4] = "85";                                       //  JPG file save quality
+@@ -3132,7 +3131,6 @@
+    pthread_t   tid_main = 0;                                               //  main thread ID               v.4.8
+ }
+ 
+-cchar * get_zprefix() { return zfuncs::zprefix; }                          //  /usr or /home/<userid>
+ cchar * get_zuserdir() { return zfuncs::zuserdir; }                        //  /home/user/.appname
+ cchar * get_zdatadir() { return zfuncs::zdatadir; }                        //  parameters, icons
+ cchar * get_zdocdir()  { return zfuncs::zdocdir;  }                        //  documentation files
+@@ -3156,19 +3154,15 @@
+    
+    catch_signals();                                                        //  catch segfault, do backtrace
+    
+-   strcpy(zappname,appname);                                               //  save app name
+-   
+-   #ifndef PREFIX                                                          //  install location                v.4.7
+-      #define PREFIX "/usr"
+-   #endif
+-   
+-   strncpy0(work,PREFIX,199);                                              //  /usr or /home/<userid>          v.4.6
+-   strcpy(zprefix,work);                                                   //  /prefix
+-   strncatv(zdatadir,199,work,"/share/",zappname,"/data",null);            //  /prefix/share/appname/data
+-   strncatv(zicondir,199,work,"/share/",zappname,"/icons",null);           //  /prefix/share/appname/icons
+-   strncatv(zlocalesdir,199,work,"/share/",zappname,"/locales",null);      //  /prefix/share/appname/locales
+-   strncatv(zdocdir,199,work,"/share/doc/",zappname,null);                 //  /prefix/share/doc/appname
+-   
++   strcpy(zappname,appname);
++
++   strcpy(zdatadir,DATADIR);                                               //  macros from build script
++   strcpy(zdocdir,DOCDIR);
++   strcpy(zicondir,zdatadir);
++   strcat(zicondir,"/icons");
++   strcpy(zlocalesdir,zdatadir);
++   strcat(zlocalesdir,"/locales");
++
+    snprintf(zuserdir,199,"%s/.%s",getenv("HOME"),zappname);                //  /home/user/.appname/            v.4.3
+    err = stat(zuserdir,&statdat);                                          //  does it exist already?
+    if (err) {
+@@ -3366,9 +3360,9 @@
+    fputs(work,fid);
+    fputs("Type=Application\n",fid);                                        //  Type=Application
+    fputs("Terminal=false\n",fid);                                          //  Terminal=false
+-   snprintf(work,199,"Exec=%s/bin/%s\n",zprefix,command);                  //  Exec=/usr/bin/appname -options
++   snprintf(work,199,"Exec=%s/%s\n",BINDIR,zappname);                  //  Exec=/usr/bin/appname -options
+    fputs(work,fid);
+-   snprintf(work,199,"Icon=%s/%s.png\n",zicondir,appname);                 //  Icon=/usr/share/appname/icons/appname.png
++   snprintf(work,199,"Icon=%s/icons/%s.png\n",DATADIR,zappname);                 //  Icon=/usr/share/appname/icons/appname.png
+    fputs(work,fid);
+    fclose(fid);
+ 

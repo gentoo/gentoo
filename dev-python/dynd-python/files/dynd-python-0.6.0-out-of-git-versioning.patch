@@ -1,0 +1,13 @@
+--- CMakeLists.txt.orig	2014-02-10 18:35:07.332899916 -0800
++++ CMakeLists.txt	2014-02-10 18:38:03.220956236 -0800
+@@ -86,8 +86,8 @@
+ endif()
+ 
+ # Get the git revision
+-get_git_head_revision("${CMAKE_CURRENT_SOURCE_DIR}" GIT_REFSPEC DYND_PYTHON_GIT_SHA1)
+-git_describe("${CMAKE_CURRENT_SOURCE_DIR}" DYND_PYTHON_VERSION_STRING --dirty --match "v[0-9]*")
++set(DYND_PYTHON_GIT_SHA1 "2eaece194769aa55b505274692bfaafa4ef68ac6") 
++set(DYND_PYTHON_VERSION_STRING "v0.6.0") 
+ message(STATUS "DyND-Python version: ${DYND_PYTHON_VERSION_STRING}")
+ configure_file(
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/git_version.cpp.in"

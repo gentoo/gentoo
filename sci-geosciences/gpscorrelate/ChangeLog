@@ -1,0 +1,65 @@
+# ChangeLog for sci-geosciences/gpscorrelate
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gpscorrelate/ChangeLog,v 1.13 2012/05/26 07:36:34 scarabeus Exp $
+
+  26 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> gpscorrelate-1.6.1.ebuild:
+  Depend also on xml-dtd. Fixes bug#384133.
+
+  24 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> gpscorrelate-1.6.1.ebuild:
+  Add missing dependency over pkgconfig.
+
+  09 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  files/gpscorrelate-1.6.1-makefile.patch:
+  Do not allow pollution of CLIBS variable. Fixes bug #370463.
+
+  08 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  gpscorrelate-1.6.1.ebuild, files/gpscorrelate-1.6.1-makefile.patch:
+  Update the makefile patch so the gtk is really optional.
+
+*gpscorrelate-1.6.1 (07 Jun 2011)
+
+  07 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -gpscorrelate-1.5.6.ebuild, -files/gpscorrelate-1.5.6-cflags.patch,
+  -gpscorrelate-1.5.8.ebuild, -files/gpscorrelate-1.5.8-makefile.diff,
+  -gpscorrelate-1.6.0.ebuild, +gpscorrelate-1.6.1.ebuild,
+  +files/gpscorrelate-1.6.1-makefile.patch, -files/gpscorrelate.1:
+  Version bump to latest. Punt older. This thing was by some magic accident
+  stable on amd64 so un-stable it.
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> gpscorrelate-1.5.6.ebuild,
+  gpscorrelate-1.5.8.ebuild, gpscorrelate-1.6.0.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  17 Dec 2009; Jeroen Roovers <jer@gentoo.org> gpscorrelate-1.5.6.ebuild,
+  gpscorrelate-1.5.8.ebuild, gpscorrelate-1.6.0.ebuild:
+  Export CC so that the makefile patch becomes useful (bug #268636).
+
+*gpscorrelate-1.6.0 (04 May 2009)
+
+  04 May 2009; Hanno Boeck <hanno@gentoo.org> +gpscorrelate-1.6.0.ebuild:
+  Version bump.
+
+  19 Feb 2009; Olivier Crête <tester@gentoo.org> gpscorrelate-1.5.8.ebuild:
+  Stable on amd64
+
+*gpscorrelate-1.5.8 (01 Dec 2008)
+
+  01 Dec 2008; Hanno Boeck <hanno@gentoo.org>
+  +files/gpscorrelate-1.5.8-makefile.diff, +gpscorrelate-1.5.8.ebuild:
+  Version bump, much improved Makefile (respect LDFLAGS, build without gtk+,
+  fix --as-needed).
+
+  23 Aug 2008; Markus Meier <maekke@gentoo.org> gpscorrelate-1.5.6.ebuild:
+  add ~amd64, bug #224325
+
+  16 Jun 2008; Jeroen Roovers <jer@gentoo.org> gpscorrelate-1.5.6.ebuild:
+  Marked ~hppa (bug #225357).
+
+*gpscorrelate-1.5.6 (18 May 2008)
+
+  18 May 2008; Hanno Boeck <hanno@gentoo.org>
+  +files/gpscorrelate-1.5.6-cflags.patch, +files/gpscorrelate.1,
+  +gpscorrelate-1.5.6.ebuild:
+  Initial commit, tool for correlating gps data with jpeg images,
+  ebuild submitted by jkt in bugzilla.
+

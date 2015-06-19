@@ -1,0 +1,54 @@
+# ChangeLog for dev-perl/ZMQ-Constants
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/ZMQ-Constants/ChangeLog,v 1.14 2014/03/29 13:06:57 zlogene Exp $
+
+  29 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> ZMQ-Constants-1.30.0.ebuild:
+  ppc64 stable wrt bug #502748
+
+  29 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> ZMQ-Constants-1.30.0.ebuild:
+  ppc stable wrt bug #502748
+
+  28 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> ZMQ-Constants-1.30.0.ebuild:
+  x86 stable wrt bug #502748
+
+  28 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> ZMQ-Constants-1.30.0.ebuild:
+  amd64 stable wrt bug #502748
+
+  28 Mar 2014; Jeroen Roovers <jer@gentoo.org> ZMQ-Constants-1.30.0.ebuild:
+  Stable for HPPA (bug #502748).
+
+  16 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> ZMQ-Constants-1.20.0.ebuild:
+  ppc/ppc64 stable wrt bug #492664
+
+  27 Dec 2013; Jeroen Roovers <jer@gentoo.org> ZMQ-Constants-1.20.0.ebuild:
+  Stable for HPPA (bug #492664).
+
+*ZMQ-Constants-1.30.0 (27 Nov 2013)
+
+  27 Nov 2013; Sergey Popov <pinkbyte@gentoo.org> -ZMQ-Constants-1.10.0.ebuild,
+  +ZMQ-Constants-1.30.0.ebuild:
+  Version bump, drop old
+
+  27 Nov 2013; Sergey Popov <pinkbyte@gentoo.org> ZMQ-Constants-1.20.0.ebuild:
+  Stable on amd64 and x86, bug #492664
+
+*ZMQ-Constants-1.20.0 (28 Dec 2012)
+
+  28 Dec 2012; Torsten Veller <tove@gentoo.org> +ZMQ-Constants-1.20.0.ebuild:
+  Version bump
+
+  17 Dec 2012; Agostino Sarubbo <ago@gentoo.org> ZMQ-Constants-1.10.0.ebuild:
+  Add ~ppc64, wrt bug #442188
+
+  13 Nov 2012; Jeroen Roovers <jer@gentoo.org> ZMQ-Constants-1.10.0.ebuild:
+  Marked ~hppa (bug #442188).
+
+  12 Nov 2012; Anthony G. Basile <blueness@gentoo.org>
+  ZMQ-Constants-1.10.0.ebuild:
+  keyword ~ppc, bug #442188
+
+*ZMQ-Constants-1.10.0 (07 Nov 2012)
+
+  07 Nov 2012; Torsten Veller <tove@gentoo.org> +ZMQ-Constants-1.10.0.ebuild,
+  +metadata.xml:
+  Initial commit for zeromq support in amavisd-new (#426348)

@@ -1,0 +1,76 @@
+From b5c4b8b97a1ccb9a4c63ab726ea9c84d81ef51ca Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Fri, 5 Nov 2010 23:39:08 +0100
+Subject: [PATCH 2/3] Do not build tests unless needed
+
+---
+ tests/Makefile.am |   12 +++++-------
+ tests/runtests.py |    2 ++
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index bad15f0..5b0859a 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -1,7 +1,7 @@
+ CLEANFILES =
+-noinst_LTLIBRARIES = 
++check_LTLIBRARIES = 
+ if ENABLE_INTROSPECTION
+-noinst_LTLIBRARIES += libregress.la libgimarshallingtests.la
++check_LTLIBRARIES += libregress.la libgimarshallingtests.la
+ 
+ nodist_libregress_la_SOURCES = $(GI_DATADIR)/tests/regress.c $(GI_DATADIR)/tests/regress.h
+ libregress_la_CFLAGS = $(GIO_CFLAGS) $(PYCAIRO_CFLAGS)
+@@ -46,7 +46,7 @@ gschemas.compiled: org.gnome.test.gschema.xml
+ CLEANFILES += Regress-1.0.gir Regress-1.0.typelib GIMarshallingTests-1.0.gir GIMarshallingTests-1.0.typelib gschemas.compiled
+ endif
+ 
+-noinst_LTLIBRARIES += testhelper.la
++check_LTLIBRARIES += testhelper.la
+ 
+ testhelper_la_CFLAGS = -I$(top_srcdir)/gobject -I$(top_srcdir)/glib $(PYTHON_INCLUDES) $(GLIB_CFLAGS)
+ testhelper_la_LDFLAGS = -module -avoid-version
+@@ -66,8 +66,6 @@ testhelper.la: $(testhelper_la_OBJECTS) $(testhelper_la_DEPENDENCIES)
+ 	test -L $@ || $(LN_S) .libs/$@ $@
+ 
+ 
+-all: $(LTLIBRARIES:.la=.so)
+-
+ TEST_FILES_STATIC = \
+ 	test_gobject.py \
+ 	test_interface.py \
+@@ -109,7 +107,7 @@ EXTRA_DIST = \
+ EXTRA_DIST += $(TEST_FILES_STATIC) $(TEST_FILES_GI) $(TEST_FILES_GIO)
+ 
+ clean-local:
+-	rm -f $(LTLIBRARIES:.la=.so) file.txt~
++	rm -f $(check_LTLIBRARIES:.la=.so) file.txt~
+ 
+ DBUS_LAUNCH=$(shell which dbus-launch)
+ RUN_TESTS_ENV_VARS= \
+@@ -121,7 +119,7 @@ RUN_TESTS_ENV_VARS= \
+ RUN_TESTS_LAUNCH=$(RUN_TESTS_ENV_VARS) $(DBUS_LAUNCH) $(EXEC_NAME) $(PYTHON) $(srcdir)/runtests.py
+ 
+ # run tests in separately to avoid loading static and introspection bindings in the same process
+-check-local: $(LTLIBRARIES:.la=.so) Regress-1.0.typelib GIMarshallingTests-1.0.typelib gschemas.compiled
++check-local: $(check_LTLIBRARIES:.la=.so) Regress-1.0.typelib GIMarshallingTests-1.0.typelib gschemas.compiled
+ 	TEST_FILES="$(TEST_FILES_STATIC)" $(RUN_TESTS_LAUNCH)
+ 	TEST_FILES="$(TEST_FILES_GI)" $(RUN_TESTS_LAUNCH)
+ if BUILD_GIO
+diff --git a/tests/runtests.py b/tests/runtests.py
+index 2bb8637..4107bcf 100644
+--- a/tests/runtests.py
++++ b/tests/runtests.py
+@@ -6,6 +6,8 @@ import sys
+ 
+ import unittest
+ 
++# Some tests fail with translated messages.
++os.environ["LC_ALL"] = "C"
+ 
+ # force untranslated messages, as we check for them in some tests
+ os.environ['LC_MESSAGES'] = 'C'
+-- 
+1.7.4.1
+

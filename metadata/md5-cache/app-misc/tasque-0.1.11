@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install setup
+DEPEND=>=dev-dotnet/gtk-sharp-2.12.7-r5 >=dev-dotnet/gnome-sharp-2.24.0 >=dev-dotnet/notify-sharp-0.4.0_pre20080912 >=dev-dotnet/ndesk-dbus-0.6 >=dev-dotnet/ndesk-dbus-glib-0.4 sqlite? ( dev-db/sqlite:3 ) app-arch/xz-utils
+DESCRIPTION=Tasky is a simple task management app (TODO list) for the Linux Desktop
+EAPI=4
+HOMEPAGE=http://live.gnome.org/Tasque
+IUSE=+rememberthemilk +sqlite hiveminder debug
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=>=dev-dotnet/gtk-sharp-2.12.7-r5 >=dev-dotnet/gnome-sharp-2.24.0 >=dev-dotnet/notify-sharp-0.4.0_pre20080912 >=dev-dotnet/ndesk-dbus-0.6 >=dev-dotnet/ndesk-dbus-glib-0.4 sqlite? ( dev-db/sqlite:3 )
+SLOT=0
+SRC_URI=mirror://gnome/sources/tasque/0.1/tasque-0.1.11.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	gnome.org	8fef8f967214f56e08fa92d61163d891	mono	203a4295c06155d318bdff9c6b2d5e1c	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=3105f40d86f14729694f2469c502775d

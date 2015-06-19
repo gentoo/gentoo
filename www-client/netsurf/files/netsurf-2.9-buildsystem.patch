@@ -1,0 +1,13 @@
+--- netsurf-2.9/framebuffer/Makefile.target
++++ netsurf-2.9/framebuffer/Makefile.target
+@@ -39,6 +39,10 @@
+ $(eval $(call pkg_config_find_and_add,ROSPRITE,librosprite,Sprite))
+ $(eval $(call pkg_config_find_and_add,BMP,libnsbmp,BMP))
+ $(eval $(call pkg_config_find_and_add,GIF,libnsgif,GIF))
++$(eval $(call pkg_config_find_and_add,NSSVG,libsvgtiny,NSSVG))
++$(eval $(call pkg_config_find_and_add,RSVG,librsvg-2.0,RSVG))
++$(eval $(call pkg_config_find_and_add,WEBP,libwebp,WEBP))
++$(eval $(call pkg_config_find_and_add,VIDEO,gstreamer-0.10,VIDEO))
+ 
+ CFLAGS += -std=c99 -g -I. -Dsmall $(WARNFLAGS) 	\
+ 	  -D_BSD_SOURCE \

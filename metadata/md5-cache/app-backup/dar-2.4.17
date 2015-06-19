@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install setup
+DEPEND=>=sys-libs/zlib-1.2.3:= !static? ( app-arch/bzip2:= ) acl? ( !static? ( sys-apps/attr:= ) ) gcrypt? ( dev-libs/libgcrypt:0= ) lzo? ( !static? ( dev-libs/lzo:= ) ) nls? ( virtual/libintl ) static? ( app-arch/bzip2[static-libs] ) static? ( sys-libs/zlib[static-libs] ) acl? ( static? ( sys-apps/attr[static-libs] ) ) lzo? ( static? ( dev-libs/lzo[static-libs] ) ) nls? ( sys-devel/gettext ) doc? ( app-doc/doxygen )
+DESCRIPTION=A full featured backup tool, aimed for disks (floppy,CDR(W),DVDR(W),zip,jazz etc.)
+EAPI=5
+HOMEPAGE=http://dar.linux.free.fr/
+IUSE=acl dar32 dar64 doc gcrypt lzo nls static static-libs
+KEYWORDS=~amd64 ~ppc ~sparc ~x86 ~amd64-linux
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/zlib-1.2.3:= !static? ( app-arch/bzip2:= ) acl? ( !static? ( sys-apps/attr:= ) ) gcrypt? ( dev-libs/libgcrypt:0= ) lzo? ( !static? ( dev-libs/lzo:= ) ) nls? ( virtual/libintl )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/dar/dar-2.4.17.tar.gz
+_eclasses_=confutils	2ab69b52fa6ea0c0669a47fb94b354b4	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=81b3ca22a766027e0c4edb0ffa165edb

@@ -1,0 +1,114 @@
+diff -ru subversion-1.5.4.orig/subversion/bindings/swig/perl/libsvn_swig_perl/swigutil_pl.h subversion-1.5.4/subversion/bindings/swig/perl/libsvn_swig_perl/swigutil_pl.h
+--- subversion-1.5.4.orig/subversion/bindings/swig/perl/libsvn_swig_perl/swigutil_pl.h	2008-10-29 08:22:36 +0100
++++ subversion-1.5.4/subversion/bindings/swig/perl/libsvn_swig_perl/swigutil_pl.h	2008-10-29 08:52:31 +0100
+@@ -49,6 +49,11 @@
+ #  endif
+ #endif
+ 
++// This is bad, but better than nothing ;)
++#if defined(__INTERIX)
++#  define strtoll strtol
++#endif
++
+ 
+ 
+ #if defined(SVN_AVOID_CIRCULAR_LINKAGE_AT_ALL_COSTS_HACK)
+diff -ru subversion-1.5.4.orig/subversion/bindings/swig/perl/native/core.c subversion-1.5.4/subversion/bindings/swig/perl/native/core.c
+--- subversion-1.5.4.orig/subversion/bindings/swig/perl/native/core.c	2008-10-29 08:22:37 +0100
++++ subversion-1.5.4/subversion/bindings/swig/perl/native/core.c	2008-10-29 08:53:40 +0100
+@@ -1733,7 +1733,10 @@
+ # endif
+ #endif
+ 
+-
++#ifdef __INTERIX
++# define strtoull strtoul
++# define strtoll strtol
++#endif
+ 
+ SWIGINTERN int
+ SWIG_AsVal_long_SS_long SWIG_PERL_DECL_ARGS_2(SV *obj, long long *val)
+diff -ru subversion-1.5.4.orig/subversion/bindings/swig/perl/native/svn_client.c subversion-1.5.4/subversion/bindings/swig/perl/native/svn_client.c
+--- subversion-1.5.4.orig/subversion/bindings/swig/perl/native/svn_client.c	2008-10-29 08:22:37 +0100
++++ subversion-1.5.4/subversion/bindings/swig/perl/native/svn_client.c	2008-10-29 08:54:17 +0100
+@@ -1872,6 +1872,10 @@
+ #endif
+ 
+ 
++#ifdef __INTERIX
++# define strtoull strtoul
++# define strtoll strtol
++#endif
+ 
+ SWIGINTERN int
+ SWIG_AsVal_long_SS_long SWIG_PERL_DECL_ARGS_2(SV *obj, long long *val)
+diff -ru subversion-1.5.4.orig/subversion/bindings/swig/perl/native/svn_delta.c subversion-1.5.4/subversion/bindings/swig/perl/native/svn_delta.c
+--- subversion-1.5.4.orig/subversion/bindings/swig/perl/native/svn_delta.c	2008-10-29 08:22:37 +0100
++++ subversion-1.5.4/subversion/bindings/swig/perl/native/svn_delta.c	2008-10-29 08:54:28 +0100
+@@ -1745,6 +1745,10 @@
+ #endif
+ 
+ 
++#ifdef __INTERIX
++# define strtoull strtoul
++# define strtoll strtol
++#endif
+ 
+ SWIGINTERN int
+ SWIG_AsVal_long_SS_long SWIG_PERL_DECL_ARGS_2(SV *obj, long long *val)
+diff -ru subversion-1.5.4.orig/subversion/bindings/swig/perl/native/svn_fs.c subversion-1.5.4/subversion/bindings/swig/perl/native/svn_fs.c
+--- subversion-1.5.4.orig/subversion/bindings/swig/perl/native/svn_fs.c	2008-10-29 08:22:37 +0100
++++ subversion-1.5.4/subversion/bindings/swig/perl/native/svn_fs.c	2008-10-29 08:54:41 +0100
+@@ -1818,6 +1818,10 @@
+ #endif
+ 
+ 
++#ifdef __INTERIX
++# define strtoull strtoul
++# define strtoll strtol
++#endif
+ 
+ SWIGINTERN int
+ SWIG_AsVal_long_SS_long SWIG_PERL_DECL_ARGS_2(SV *obj, long long *val)
+diff -ru subversion-1.5.4.orig/subversion/bindings/swig/perl/native/svn_ra.c subversion-1.5.4/subversion/bindings/swig/perl/native/svn_ra.c
+--- subversion-1.5.4.orig/subversion/bindings/swig/perl/native/svn_ra.c	2008-10-29 08:22:37 +0100
++++ subversion-1.5.4/subversion/bindings/swig/perl/native/svn_ra.c	2008-10-29 08:54:52 +0100
+@@ -1661,6 +1661,10 @@
+ # endif
+ #endif
+ 
++#ifdef __INTERIX
++# define strtoull strtoul
++# define strtoll strtol
++#endif
+ 
+ SWIGINTERN int
+ SWIG_AsVal_double SWIG_PERL_DECL_ARGS_2(SV *obj, double *val)
+diff -ru subversion-1.5.4.orig/subversion/bindings/swig/perl/native/svn_repos.c subversion-1.5.4/subversion/bindings/swig/perl/native/svn_repos.c
+--- subversion-1.5.4.orig/subversion/bindings/swig/perl/native/svn_repos.c	2008-10-29 08:22:37 +0100
++++ subversion-1.5.4/subversion/bindings/swig/perl/native/svn_repos.c	2008-10-29 08:55:05 +0100
+@@ -1792,6 +1792,10 @@
+ #endif
+ 
+ 
++#ifdef __INTERIX
++# define strtoull strtoul
++# define strtoll strtol
++#endif
+ 
+ SWIGINTERN int
+ SWIG_AsVal_long_SS_long SWIG_PERL_DECL_ARGS_2(SV *obj, long long *val)
+diff -ru subversion-1.5.4.orig/subversion/bindings/swig/perl/native/svn_wc.c subversion-1.5.4/subversion/bindings/swig/perl/native/svn_wc.c
+--- subversion-1.5.4.orig/subversion/bindings/swig/perl/native/svn_wc.c	2008-10-29 08:22:37 +0100
++++ subversion-1.5.4/subversion/bindings/swig/perl/native/svn_wc.c	2008-10-29 08:55:17 +0100
+@@ -1816,6 +1816,10 @@
+ #endif
+ 
+ 
++#ifdef __INTERIX
++# define strtoull strtoul
++# define strtoll strtol
++#endif
+ 
+ SWIGINTERN int
+ SWIG_AsVal_long_SS_long SWIG_PERL_DECL_ARGS_2(SV *obj, long long *val)

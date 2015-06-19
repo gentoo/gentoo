@@ -1,0 +1,11 @@
+[Unit]
+Description=Polipo Proxy Server
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/polipo -c /etc/polipo/%i
+User=polipo
+PrivateDevices=yes
+
+[Install]
+WantedBy=multi-user.target

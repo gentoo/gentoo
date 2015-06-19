@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=clutter? ( media-libs/clutter ) dbi? ( dev-db/libdbi ) editline? ( dev-libs/libedit ) image? ( virtual/jpeg media-libs/tiff media-libs/libpng ) xmpp? ( net-libs/loudmouth ) libffi? ( virtual/libffi ) libxml2? ( dev-libs/libxml2 ) lzo? ( dev-libs/lzo ) ncurses? ( sys-libs/ncurses ) ogg? ( media-libs/libogg ) opengl? ( virtual/opengl ) pcre? ( dev-libs/libpcre ) postgres? ( dev-db/postgresql[server] ) readline? ( sys-libs/readline ) sndfile? ( media-libs/libsndfile ) sqlite? ( >=dev-db/sqlite-3.0.0 ) theora? ( media-libs/libtheora ) truetype? ( media-libs/freetype ) vorbis? ( media-libs/libvorbis ) zlib? ( sys-libs/zlib ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Io is a small, prototype-based programming language
+EAPI=4
+HOMEPAGE=http://www.iolanguage.com
+IUSE=cgi clutter dbi doc editline google gui http image libffi libxml2 lzo md5sum ncurses ogg opengl postgres pcre python readline sha1 sndfile sockets sqlite syslog theora threads truetype twitter vorbis xmpp zlib
+KEYWORDS=~x86 ~amd64
+LICENSE=BSD
+REQUIRED_USE=vorbis? ( ogg )
+SLOT=0
+SRC_URI=mirror://gentoo/io-2011.09.12.tar.gz http://dev.gentoo.org/~araujo/snapshots/io-2011.09.12.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9bac11665c4fbce638ed3fa4b47112ea

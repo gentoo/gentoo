@@ -1,0 +1,79 @@
+# ChangeLog for app-cdr/bchunk
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/bchunk/ChangeLog,v 1.26 2012/07/29 17:51:22 jer Exp $
+
+  29 Jul 2012; Jeroen Roovers <jer@gentoo.org> -bchunk-1.2.0.ebuild:
+  Old.
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> bchunk-1.2.0-r1.ebuild:
+  sparc stable wrt #394053
+
+  16 Apr 2012; Brent Baude <ranger@gentoo.org> bchunk-1.2.0-r1.ebuild:
+  Marking bchunk-1.2.0-r1 ppc for bug 394053
+
+  26 Dec 2011; Markus Meier <maekke@gentoo.org> bchunk-1.2.0-r1.ebuild:
+  x86 stable, bug #394053
+
+  18 Dec 2011; Agostino Sarubbo <ago@gentoo.org> bchunk-1.2.0-r1.ebuild:
+  Stable for AMD64, wrt bug #394053
+
+*bchunk-1.2.0-r1 (02 Sep 2010)
+
+  02 Sep 2010; Jeroen Roovers <jer@gentoo.org> +bchunk-1.2.0-r1.ebuild:
+  Respect LDFLAGS by Alec Moskvin (bug #335721).
+
+  26 Jan 2010; Jeremy Olexa <darkside@gentoo.org> bchunk-1.2.0.ebuild:
+  Add ~x86-macos as tested in bug 302078
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org> bchunk-1.2.0.ebuild:
+  Transfer Prefix keywords
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> bchunk-1.2.0.ebuild:
+  Remove virtual/libc
+
+  13 Mar 2007; Raúl Porcel <armin76@gentoo.org> bchunk-1.2.0.ebuild:
+  x86 stable
+
+  11 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org> bchunk-1.2.0.ebuild:
+  Stable on sparc
+
+  04 Jan 2007; Fabian Groffen <grobian@gentoo.org> bchunk-1.2.0.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org> bchunk-1.2.0.ebuild:
+  ppc stable
+
+  30 May 2005; Lars Weiler <pylon@gentoo.org> bchunk-1.1.1.ebuild,
+  bchunk-1.2.0.ebuild:
+  Changed to toolchain-funcs; bug #92745.
+
+  12 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> bchunk-1.2.0.ebuild:
+  Unstable ppc-macos
+
+*bchunk-1.2.0 (22 Oct 2004)
+
+  22 Oct 2004; Lars Weiler <pylon@gentoo.org> +metadata.xml,
+  +bchunk-1.2.0.ebuild:
+  New version.  See bug #56614.
+
+  05 Oct 2004; Malcolm Lashley <malc@gentoo.org> bchunk-1.1.1.ebuild:
+  ~amd64 - bug #66406
+
+  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> bchunk-1.1.1.ebuild:
+  Don't assign default to S; header fix
+
+*bchunk-1.1.1 (12 May 2002)
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+
+  14 Aug 2002; Pieter Van den Abeele <pvdabeel@gentoo.org> :
+
+  Added ppc keyword
+
+  12 May 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

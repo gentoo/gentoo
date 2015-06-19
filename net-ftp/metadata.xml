@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The net-ftp contains FTP (File Transfer Protocol) software.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie net-ftp enthält Software für das File Transfer Protocol (FTP).
+	</longdescription>
+	<longdescription lang="es">
+		La categoría net-ftp contiene programas relacionados con FTP, el
+		protocolo de transferencia de ficheros.
+	</longdescription>
+	<longdescription lang="ja">
+		net-ftpカテゴリーにはファイル・トランスファー・プロトコルの
+		ソフトウェアが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De net-ftp categorie bevat software voor gebruik van FTP (File Transfer Protocol).
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria net-ftp contem programas relacionados com FTP (File Transfer
+		Protocol).
+	</longdescription>
+	<longdescription lang="sk">
+		Kategória net-ftp obsahuje aplikácie vzťahujúce sa k FTP (File Transfer Protocol).
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm net-ftp chứa các phần mềm FTP (File Transfer Protocol).
+	</longdescription>
+	<longdescription lang="it">
+		La categoria net-ftp contiene programmi per l'FTP (File Transfer Protocol).
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria net-ftp zawiera pakiety związane z FTP (File Transfer Protocol).
+	</longdescription>
+</catmetadata>
+

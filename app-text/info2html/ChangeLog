@@ -1,0 +1,99 @@
+# ChangeLog for app-text/info2html
+# Copyright 2000-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/info2html/ChangeLog,v 1.25 2015/06/09 12:25:26 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Kevin Quinn (kevquinn, #93689) from metadata.xml.
+
+  14 Jun 2007; Renat Lumpau <rl03@gentoo.org> -files/info2html-xss.patch,
+  -files/info2html-gentoo.patch, -info2html-1.4.ebuild,
+  -info2html-1.4-r1.ebuild, -info2html-1.4-r2.ebuild:
+  Cleaned out old cruft
+
+  14 Jun 2007; Christoph Mende <angelos@gentoo.org> info2html-2.0.ebuild:
+  Stable on amd64 wrt bug 181657
+
+  14 Jun 2007; Jose Luis Rivero <yoswink@gentoo.org> info2html-2.0.ebuild:
+  Stable on alpha wrt bug #181657
+
+  12 Jun 2007; Markus Ullmann <jokey@gentoo.org> info2html-2.0.ebuild:
+  Stable on x86 wrt bug #181657
+
+  12 Jun 2007; Jeroen Roovers <jer@gentoo.org> info2html-2.0.ebuild:
+  Stable for HPPA (bug #181657).
+
+  11 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org> info2html-2.0.ebuild:
+  Stable on sparc wrt #181657
+
+  28 Jan 2007; Marius Mauch <genone@gentoo.org> info2html-1.4.ebuild,
+  info2html-1.4-r1.ebuild:
+  Replacing einfo with elog
+
+*info2html-2.0 (01 Sep 2006)
+
+  01 Sep 2006; Kevin F. Quinn <kevquinn@gentoo.org>
+  +files/info2html-2.0-xss.patch, +info2html-2.0.ebuild:
+  Bump to new version; although it has gone up a major revision the changes are
+  actually quite small.  Ebuild now cunningly sets up the INFODIR configuration
+  item from the data in profile.env :)
+
+  01 Sep 2006; Kevin F. Quinn <kevquinn@gentoo.org> info2html-1.4-r2.ebuild:
+  Make perl RDEPEND not DEPEND; ditch dodoc README since it says nothing useful
+  (thanks to jakub)
+
+*info2html-1.4-r2 (01 Sep 2006)
+
+  01 Sep 2006; Kevin F. Quinn <kevquinn@gentoo.org> metadata.xml,
+  +info2html-1.4-r2.ebuild:
+  Take ownership, and rework to use webapp.eclass; bug #53004.  Add to web-app
+  herd.
+
+  20 May 2005; Bryan Østergaard <kloeri@gentoo.org>
+  info2html-1.4-r1.ebuild:
+  Stable on alpha.
+
+  20 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  info2html-1.4-r1.ebuild:
+  Stable on hppa.
+
+  20 May 2005; Simon Stelling <blubb@gentoo.org> info2html-1.4-r1.ebuild:
+  stable on amd64 wrt bug 91354
+
+  16 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  info2html-1.4-r1.ebuild:
+  Stable on sparc
+
+*info2html-1.4-r1 (13 May 2005)
+
+  13 May 2005; Tom Payne <twp@gentoo.org> +files/info2html-xss.patch,
+  +info2html-1.4-r1.ebuild:
+  Security fix. Bug # 91354.
+
+*info2html-1.4-r1 (13 May 2005)
+
+  13 May 2005; Tom Payne <twp@gentoo.org> +files/info2html-xss.patch,
+  +info2html-1.4-r1.ebuild:
+  Security fix. Bug # 91354.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> info2html-1.4.ebuild:
+  stable on amd64
+
+  21 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org> info2html-1.4.ebuild:
+  Added to ~amd64, bug #71902
+
+  12 Apr 2004; <twp@gentoo.org> info2html-1.4.ebuild:
+  Added IUSE variable.
+
+  20 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> info2html-1.4.ebuild:
+  header fix; move webapp-detect into setup; mips needs deps first
+
+  15 Dec 2003; Stuart Herbert <stuart@gentoo.org> info2html-1.4.ebuild:
+  Fix for bug #32636
+
+*info2html-1.4 (28 Sep 2003)
+
+  28 Sep 2003; Tom Payne <twp@gentoo.org> info2html-1.4.ebuild :
+  Initial version. Bug # 16283.

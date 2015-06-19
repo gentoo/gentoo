@@ -1,0 +1,32 @@
+#!/bin/bash
+# $Header: /var/cvsroot/gentoo-x86/net-mail/courier-imap/files/courier-imap-4.0.6-r1-gentoo-imapd-ssl.rc,v 1.4 2014/11/20 10:25:15 mrueg Exp $
+#
+# Copyright 1998-2014 - 2000 Double Precision, Inc.
+# See COPYING for distribution information.
+
+prefix=/usr
+exec_prefix=/usr
+bindir=/usr/sbin
+libexecdir=/usr/GENTOO_LIBDIR/courier-imap
+
+source /etc/courier-imap/imapd
+source /etc/courier-imap/imapd-ssl
+
+ulimit -d ${IMAP_ULIMITD}
+
+export IMAP_TLS=1
+
+eval `sed -n '/^#/d;/=/p' </etc/courier-imap/imapd | \
+	sed 's/=.*//;s/^/export /;s/$/;/'`
+eval `sed -n '/^#/d;/=/p' </etc/courier-imap/imapd-ssl | \
+	sed 's/=.*//;s/^/export /;s/$/;/'`
+
+eval ${PRERUN} ${libexecdir}/couriertcpd \
+	-address=${SSLADDRESS} \
+	-stderrlogger=${libexecdir}/courierlogger \
+	-stderrloggername=imapd-ssl \
+	-maxprocs=${MAXDAEMONS} -maxperip=${MAXPERIP} \
+	-pid=${SSLPIDFILE} ${TCPDOPTS} ${SSLPORT} \
+	${COURIERTLS} -server -tcpd \
+	${bindir}/imaplogin \
+	${libexecdir}/courier-imapd.indirect "${MAILDIR}"

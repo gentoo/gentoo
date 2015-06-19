@@ -1,0 +1,28 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/p3scan/files/p3scan.init,v 1.1 2005/06/13 15:49:12 ticho Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting p3scan"
+	start-stop-daemon --start --quiet --pidfile /var/run/p3scan/p3scan.pid --exec /usr/sbin/p3scan
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping p3scan"
+	start-stop-daemon --stop --quiet --oknodo --pidfile /var/run/p3scan/p3scan.pid
+	eend $?
+}
+
+restart() {
+	ebegin "Restarting p3scan"
+	svc_stop
+	sleep 1
+	svc_start
+	eend $?
+}

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare setup unpack
+DEPEND=>=virtual/mysql-5.1
+DESCRIPTION=MySQL UDFs that provide base64 encode/decode
+EAPI=4
+HOMEPAGE=http://mirrors.sohu.com/mysql/Contrib/Old-Versions/
+KEYWORDS=~amd64 ~x86
+LICENSE=PHP-2.02
+RDEPEND=>=virtual/mysql-5.1
+SLOT=0
+SRC_URI=http://mirrors.sohu.com/mysql/Contrib/Old-Versions/mysql-udf-base64.c -> mysql-udf-base64-20010618.c http://mirrors.sohu.com/mysql/Contrib/Old-Versions/mysql-udf-base64.readme -> mysql-udf-base64-20010618.readme
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=272f7861b041202563b130ff20d5b365

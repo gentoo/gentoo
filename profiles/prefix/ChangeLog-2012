@@ -1,0 +1,2288 @@
+# ChangeLog for profiles/prefix
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/ChangeLog-2012,v 1.1 2013/01/01 13:26:42 dilfridge Exp $
+
+  26 Dec 2012; Benda Xu <heroxbd@gentoo.org> use.mask:
+  mask USE suid which requires root. bug 447340
+
+  02 Dec 2012; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Mask cmake-2.8.10.2 on Darwin for compilation failures
+
+  01 Dec 2012; Fabian Groffen <grobian@gentoo.org> make.defaults:
+  Override PYTHON_TARGETS with versions we have in Prefix
+
+  10 Nov 2012; Fabian Groffen <grobian@gentoo.org>
+  +sunos/solaris/profile.bashrc, profile.bashrc:
+  Define PREFIX_DISABLE_GEN_USR_LDSCRIPT for hosts that accidentially got
+  bootstrapped in this mode
+
+  10 Nov 2012; Fabian Groffen <grobian@gentoo.org> profile.bashrc:
+  Drop commented out AT_SYS_M4DIR code
+
+  10 Nov 2012; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Update mask message to point out the cause + bug ref
+
+  09 Nov 2012; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask libgpg-error-1.10-r1 due to broken build-system
+
+  01 Nov 2012; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.5/x64/package.unmask, darwin/macos/10.5/x86/package.unmask:
+  Don't unmask soylatte on 10.5/Intel, Apple just provides a genuine Java 1.6
+  there
+
+  30 Oct 2012; Fabian Groffen <grobian@gentoo.org>
+  +darwin/macos/10.5/ppc/package.unmask:
+  Unmask soylatte-jdk-bin on ppc-macos/10.5 now we added 7
+
+  30 Oct 2012; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.5/make.defaults, darwin/macos/10.6/make.defaults,
+  darwin/macos/10.7/make.defaults, darwin/macos/10.8/make.defaults:
+  Enable sandbox (seatbelt) on Mac OS X >=10.5
+
+  27 Oct 2012; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask sys-apps/coreutils-8.20 due to parallel make and libiconv issues
+
+  04 Oct 2012; Fabian Groffen <grobian@gentoo.org> mint/make.defaults:
+  Drop ${USE} from first assignment, bug #437086
+
+  30 Sep 2012; Fabian Groffen <grobian@gentoo.org>
+  +darwin/macos/10.8/package.mask:
+  Mask opengl-apple on Mountain Lion (10.8), bug #431182
+
+  29 Sep 2012; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.5/x64/package.mask:
+  Mask >=dev-java/apple-jdk-bin-1.6.0 on Leopard x64, since it will never find
+  the necessary files
+
+  29 Sep 2012; Fabian Groffen <grobian@gentoo.org>
+  +darwin/macos/10.4/x86/package.unmask, +darwin/macos/10.5/x64/package.unmask,
+  +darwin/macos/10.5/x86/package.unmask, darwin/macos/package.mask:
+  Unmask soylatte-jdk-bin on 10.4/x86, 10.5/x86 and 10.5/x64, because it is the
+  only Java6 provider there
+
+  09 Sep 2012; Fabian Groffen <grobian@gentoo.org>
+  +sunos/solaris/make.defaults, darwin/macos/make.defaults:
+  Make USE-ipv6 default on Mac OS X and Solaris (and derivatives) since support
+  is always available there.
+
+  26 Aug 2012; Christoph Junghans <ottxor@gentoo.org> darwin/package.use.mask:
+  mask utempter for x11-terms/eterm on Darwin, bug #388791
+
+  07 Aug 2012; Benda Xu <heroxbd@gentoo.org> package.mask:
+  mask baselayout-prefix-1.12.14-r1 for testing openrc. bug 415895.
+
+  05 Aug 2012; Fabian Groffen <grobian@gentoo.org>
+  +bsd/freebsd/9.1/package.mask:
+  Mask GCC >=4.3 on FreeBSD 9.1, bug #429992
+
+  01 Aug 2012; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/package.use.mask:
+  Update mplayer X-related USE masks for OSX
+
+  01 Aug 2012; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask grep-2.13 for misbehaviour, having lots of collateral damage, bug
+  #425668
+
+  31 Jul 2012; Fabian Groffen <grobian@gentoo.org> +darwin/macos/10.8/eapi,
+  +darwin/macos/10.8/make.defaults, +darwin/macos/10.8/package.provided,
+  +darwin/macos/10.8/package.use.mask, +darwin/macos/10.8/parent,
+  +darwin/macos/10.8/profile.bashrc, +darwin/macos/10.8/x64/make.defaults,
+  +darwin/macos/10.8/x64/package.mask,
+  +darwin/macos/10.8/x64/package.use.force,
+  +darwin/macos/10.8/x64/package.use.mask, +darwin/macos/10.8/x64/parent,
+  +darwin/macos/10.8/x64/use.mask, +darwin/macos/10.8/x86/make.defaults,
+  +darwin/macos/10.8/x86/package.mask,
+  +darwin/macos/10.8/x86/package.use.force,
+  +darwin/macos/10.8/x86/package.use.mask, +darwin/macos/10.8/x86/parent,
+  +darwin/macos/10.8/x86/use.mask:
+  Add Mac OS X Mountain Lion (10.8) profiles
+
+  14 Jun 2012; Davide Pesavento <pesa@gentoo.org>
+  darwin/macos/arch/ppc/package.use.mask:
+  Remove redundant mask of USE=jit for qt-script and qt-webkit on ppc, since
+  the flag is already masked in base profile.
+
+  06 Jun 2012; Benda Xu <heroxbd@gentoo.org> darwin/package.mask, package.mask,
+  sunos/solaris/package.mask:
+  move =dev-vcs/cvs-1.12.12* mask to darwin and solaris arch dir
+
+  26 May 2012; Fabian Groffen <grobian@gentoo.org> -package.provided:
+  Don't package.provide a member of a virtual (shadow)
+
+  23 May 2012; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  remove gcc-4.6.0 unmasking atom since it doesn't do anything besides cause
+  'unmatched atom' output
+
+  13 May 2012; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/arch/ppc/package.mask, sunos/solaris/arch/sparc/package.mask:
+  Mask dev-lang/v8 on Sparc and PowerPC platforms
+
+  11 May 2012; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Unmask python-2.7.3, shutil problem with chflags() has been fixed
+
+  09 May 2012; Fabian Groffen <grobian@gentoo.org> sunos/solaris/package.mask:
+  Mask dev-libs/libelf on Solaris, as it breaks the system
+
+  05 May 2012; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  gimp-2.7 was unmasked
+
+  05 May 2012; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Unmask gcc-4.6 in Prefix
+
+  03 May 2012; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.4/package.mask, darwin/macos/10.5/package.mask:
+  Mask >ghc-7 on Tiger and Leopard
+
+  30 Apr 2012; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.7/x86/package.mask, darwin/macos/arch/x64/package.mask:
+  Mask <tk-8.6 on 64-bits Mac OS X and all of Mac OS X Lion due to usage of the
+  removed Carbon interface, bug #408435
+
+  29 Apr 2012; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask newer pax-utils due to at* portability horror
+
+  26 Apr 2012; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Also mask python-2.7.3-r1
+
+  22 Apr 2012; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask python-2.7.3 for misbehaviour with repoman
+
+  03 Apr 2012: Benda XU <heroxbd@gentoo.org> linux/arm/make.defaults,
+  let arm prefix use arm instead of arm-linux as its keyword
+
+  28 Mar 2012; Benda XU<heroxbd@gentoo.org> package.provided:
+  use sys-apps/shadow-4.1 to meet virtual/shadow introduced on Mar 11
+
+  24 Mar 2012; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Revert back to masked Perl 5.14
+
+  24 Mar 2012; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Undo Perl 5.14 mask in Prefix
+
+  18 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  darwin/macos/package.use.mask, darwin/package.use.mask:
+  Remove mask for USE="esd" because there is no such flag in tree anymore.
+
+  12 Mar 2012; Michael Haubenwallner <haubi@gentoo.org>
+  +aix/7.1.0.0/package.provided, +aix/7.1.0.0/parent,
+  +aix/7.1.0.0/ppc/make.defaults, +aix/7.1.0.0/ppc/parent:
+  add profile for powerpc-ibm-aix7.1.0.0
+
+  09 Mar 2012; Jeremy Olexa <darkside@gentoo.org> linux/arm/make.defaults,
+  linux/ppc64/make.defaults:
+  Don't set ACCEPT_KEYWORDS to **, use ~*. bug 407499
+
+  06 Mar 2012; Jeremy Olexa <darkside@gentoo.org> +linux/ppc64/make.defaults,
+  +linux/ppc64/packages, +linux/ppc64/parent:
+  Add ppc64-linux profile for bug 407021 by Richard Yao
+
+  05 Mar 2012; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/arch/ppc/package.mask:
+  Mask binutils-apple-4.3 on PowerPC profiles, since Apple dropped entire
+  PowerPC support and hence the linker is not able to link any code
+
+  20 Feb 2012; Fabian Groffen <grobian@gentoo.org> packages:
+  Update packages to reflect same baselayout atom as in base profile, thanks
+  Askar Bektassov in bug #404247
+
+  19 Feb 2012; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Mask FSF GCC on Mac OS X profiles, because Gentoo Prefix does not support its
+  usage, bug #402119
+
+  16 Feb 2012; Michael Haubenwallner <haubi@gentoo.org> aix/package.use.mask:
+  p.use.mask 'jit' for libpcre, is not ported to AIX
+
+  14 Feb 2012; Fabian Groffen <grobian@gentoo.org> sunos/solaris/package.mask:
+  Drop binutils mask, latest version is 2.22 which seems to compile again
+
+  13 Feb 2012; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Unmask gimp-2.7 on Darwin, as it's the only gimp that compiles there
+
+  09 Feb 2012; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/package.use.mask:
+  Drop USE=slang mask on mc, bug #398415
+
+  06 Feb 2012; Jeremy Olexa <darkside@gentoo.org> packages:
+  Don't require virtual/modutils for Gentoo Prefix. Main tree did
+  's:sys-apps/module-init-tools:virtual/modutils:' - now we match
+
+  20 Jan 2012; Jeremy Olexa <darkside@gentoo.org> profile.bashrc:
+  comment out the AT_SYS_M4DIR stuff because it breaks packages (bug 397563)
+
+  14 Jan 2012; Kacper Kowalik <xarthisius@gentoo.org> package.use.mask:
+  Mask dev-python/numexpr[mkl]
+
+  09 Jan 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +linux/amd64/package.use.mask, +linux/x86/package.use.mask,
+  bsd/freebsd/arch/x86/package.use.mask,
+  darwin/macos/arch/x86/package.use.mask:
+  Unmask USE="jit" for webkit-gtk on amd64/arm/x86 prefix arches where
+  webkit-gtk is keyworded (bug #396313).
+
+  01 Jan 2012; Fabian Groffen <grobian@gentoo.org> darwin/package.use.mask:
+  Mask USE=server for sys-devel/gdb, since it's not supported on Darwin
+
+  31 Dec 2011; Fabian Groffen <grobian@gentoo.org> mint/make.defaults:
+  Add static-libs to USE, bug #394853
+
+  30 Dec 2011; Fabian Groffen <grobian@gentoo.org> mint/package.use.mask:
+  Update USE-masks for MiNT, bug #394791
+
+  30 Dec 2011; Fabian Groffen <grobian@gentoo.org>
+  +bsd/freebsd/arch/sparc64/package.mask,
+  +bsd/freebsd/arch/sparc64/package.use.mask,
+  +bsd/freebsd/arch/x64/package.mask, +bsd/freebsd/arch/x64/package.use.mask,
+  +bsd/freebsd/arch/x64/parent, +bsd/freebsd/arch/x86/package.mask,
+  +bsd/freebsd/arch/x86/package.use.mask, bsd/freebsd/7.1/x64/parent,
+  bsd/freebsd/7.1/x86/parent, bsd/freebsd/7.2/x64/parent,
+  bsd/freebsd/7.2/x86/parent, bsd/freebsd/8.0/x64/parent,
+  bsd/freebsd/8.0/x86/parent, bsd/freebsd/8.1/sparc64/parent,
+  bsd/freebsd/8.1/x64/parent, bsd/freebsd/8.1/x86/parent,
+  bsd/freebsd/8.2/x64/parent, bsd/freebsd/8.2/x86/parent,
+  bsd/freebsd/9.0/x64/parent, bsd/freebsd/9.0/x86/parent:
+  Inherit FreeBSD arch-specific masks through arch sub-tree
+
+  30 Dec 2011; Fabian Groffen <grobian@gentoo.org>
+  +sunos/solaris/5.9/package.mask, +sunos/solaris/arch/sparc/package.mask,
+  +sunos/solaris/arch/sparc/package.use.mask,
+  +sunos/solaris/arch/sparc64/package.mask,
+  +sunos/solaris/arch/sparc64/package.use.mask,
+  +sunos/solaris/arch/sparc64/parent, +sunos/solaris/arch/x64/package.mask,
+  +sunos/solaris/arch/x64/package.use.mask, +sunos/solaris/arch/x64/parent,
+  +sunos/solaris/arch/x86/package.mask,
+  +sunos/solaris/arch/x86/package.use.mask,
+  sunos/solaris/5.9/sparc/package.mask, sunos/solaris/5.9/sparc/parent,
+  sunos/solaris/5.9/sparc64/package.mask, sunos/solaris/5.9/sparc64/parent,
+  sunos/solaris/5.10/sparc/package.mask,
+  sunos/solaris/5.10/sparc/package.use.mask, sunos/solaris/5.10/sparc/parent,
+  sunos/solaris/5.10/sparc64/package.mask,
+  sunos/solaris/5.10/sparc64/package.use.mask,
+  sunos/solaris/5.10/sparc64/parent, sunos/solaris/5.10/x64/parent,
+  sunos/solaris/5.10/x86/package.use.mask, sunos/solaris/5.10/x86/parent,
+  sunos/solaris/5.11/sparc/package.mask,
+  sunos/solaris/5.11/sparc/package.use.mask, sunos/solaris/5.11/sparc/parent,
+  sunos/solaris/5.11/sparc64/package.mask,
+  sunos/solaris/5.11/sparc64/package.use.mask,
+  sunos/solaris/5.11/sparc64/parent, sunos/solaris/5.11/x64/parent,
+  sunos/solaris/5.11/x86/package.use.mask, sunos/solaris/5.11/x86/parent,
+  sunos/solaris/package.use.mask:
+  Inherit Solaris arch-specific masks through arch sub-tree
+
+  30 Dec 2011; Fabian Groffen <grobian@gentoo.org>
+  +darwin/macos/10.4/package.use.mask, +darwin/macos/arch/ppc/package.mask,
+  +darwin/macos/arch/ppc/package.use.mask,
+  +darwin/macos/arch/ppc64/package.mask,
+  +darwin/macos/arch/ppc64/package.use.mask, +darwin/macos/arch/ppc64/parent,
+  +darwin/macos/arch/x64/package.mask, +darwin/macos/arch/x64/package.use.mask,
+  +darwin/macos/arch/x64/parent, +darwin/macos/arch/x86/package.mask,
+  +darwin/macos/arch/x86/package.use.mask,
+  darwin/macos/10.4/ppc/package.use.mask, darwin/macos/10.4/ppc/parent,
+  darwin/macos/10.4/ppc64/package.use.mask, darwin/macos/10.4/ppc64/parent,
+  darwin/macos/10.4/x86/package.use.mask, darwin/macos/10.4/x86/parent,
+  darwin/macos/10.5/package.use.mask, darwin/macos/10.5/ppc/package.use.mask,
+  darwin/macos/10.5/ppc/parent, darwin/macos/10.5/ppc64/package.use.mask,
+  darwin/macos/10.5/ppc64/parent, darwin/macos/10.5/x64/package.use.mask,
+  darwin/macos/10.5/x64/parent, darwin/macos/10.5/x86/package.use.mask,
+  darwin/macos/10.5/x86/parent, darwin/macos/10.6/package.use.mask,
+  darwin/macos/10.6/x64/package.use.mask, darwin/macos/10.6/x64/parent,
+  darwin/macos/10.6/x86/package.use.mask, darwin/macos/10.6/x86/parent,
+  darwin/macos/10.7/x64/package.use.mask, darwin/macos/10.7/x64/parent,
+  darwin/macos/10.7/x86/package.use.mask, darwin/macos/10.7/x86/parent,
+  darwin/macos/package.use.mask:
+  Inherit Mac OS X arch-specific masks through arch sub-tree
+
+  30 Dec 2011; Fabian Groffen <grobian@gentoo.org>
+  +sunos/solaris/5.11/sparc/package.mask, darwin/package.mask,
+  sunos/solaris/5.9/sparc/package.mask, sunos/solaris/5.9/sparc64/package.mask,
+  sunos/solaris/5.10/sparc/package.mask,
+  sunos/solaris/5.10/sparc64/package.mask,
+  sunos/solaris/5.11/sparc64/package.mask:
+  Mask pciutils on unsupported platforms, bug #395769
+
+  26 Dec 2011; Fabian Groffen <grobian@gentoo.org>
+  +bsd/freebsd/9.0/package.provided, +bsd/freebsd/9.0/parent,
+  +bsd/freebsd/9.0/x64/make.defaults, +bsd/freebsd/9.0/x64/parent,
+  +bsd/freebsd/9.0/x86/make.defaults, +bsd/freebsd/9.0/x86/parent:
+  Add profiles for FreeBSD 9.0, bug #395913
+
+  21 Dec 2011: XU, Benda <heroxbd@gentoo.org> linux/profile.bashrc:
+  Fix bug 289757 (again). fix grep pattern, add category to rule out cross gcc.
+
+  17 Dec 2011; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Drop mask for distcc, the --install option to distcc-config no longer exists
+
+  16 Dec 2011; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  lift net-proxy/dante mask, bug 389423
+
+  15 Dec 2011; Fabian Groffen <grobian@gentoo.org> profile.bashrc:
+  Define AT_SYS_M4DIR for autotools.eclass to always have
+  EPREFIX/usr/share/aclocal for cross-EPREFIX builds (migration from Prefix
+  local eclass modification)
+
+  15 Dec 2011; Jeremy Olexa <darkside@gentoo.org> linux/profile.bashrc:
+  Fix bug 289757 (again). Use ldd, use EPATCH_EXCLUDE, match new patch name as
+  well
+
+  08 Dec 2011; Fabian Groffen <grobian@gentoo.org> package.use.mask:
+  Mask USE=vanilla for gcc, since that results in a broken compiler on Prefix
+
+  08 Dec 2011; Fabian Groffen <grobian@gentoo.org>
+  +sunos/solaris/package.use.force, sunos/solaris/package.use.mask:
+  Unmask and force sys-devel/gcc libssp on Solaris, to get a non-broken
+  -fstack-protector(-all).
+
+  05 Dec 2011; Jeremy Olexa <darkside@gentoo.org> +linux/profile.bashrc:
+  Disable the automatic fortify patch for some older linux hosts, bug 289757
+
+  01 Dec 2011; Jeremy Olexa <darkside@gentoo.org> darwin/package.mask,
+  linux/package.use.mask, sunos/solaris/package.mask:
+  rm obsolete stuff
+
+  16 Nov 2011; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  lift games-misc/fortune-mod mask, bug 389943
+
+  16 Nov 2011; Fabian Groffen <grobian@gentoo.org>
+  +sunos/solaris/5.9/package.use.mask,
+  +sunos/solaris/5.10/sparc/package.use.mask,
+  +sunos/solaris/5.11/sparc/package.use.mask,
+  sunos/solaris/5.10/sparc64/package.use.mask,
+  sunos/solaris/5.11/sparc64/package.use.mask:
+  Mask USE=jit for dev-libs/libpcre on all sparc-based Solaris profiles, there
+  is no ASM for sparc/sparcv9
+
+  14 Nov 2011; Mike Frysinger <vapier@gentoo.org> packages:
+  sys-apps/net-tools is no longer in base profile.
+
+  06 Nov 2011; Fabian Groffen <grobian@gentoo.org>
+  +darwin/macos/10.5/package.mask, darwin/macos/10.4/package.mask:
+  Mask >=media-libs/mediastreamer-2.7.3 on Leopard (10.5) next to Tiger (10.4)
+  since it requires a newer CoreAudio.
+
+  01 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> aix/use.mask,
+  bsd/use.mask, darwin/use.mask, hpux/use.mask, irix/use.mask, mint/use.mask,
+  sunos/use.mask, windows/interix/use.mask, windows/winnt/use.mask:
+  Remove obsolete entries for USE="v4l2"
+
+  31 Oct 2011; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Drop mask for no longer existing python-updater-0.8
+
+  28 Oct 2011; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  mask misc packages
+
+  26 Sep 2011; Fabian Groffen <grobian@gentoo.org> bsd/freebsd/package.mask:
+  >=sys-devel/binutils-2.21.1 exhibits -ldl problem on FreeBSD
+
+  18 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> windows/interix/use.mask,
+  windows/winnt/use.mask:
+  Remove obsolete USE="hal" mask.
+
+  04 Sep 2011; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.use.mask:
+  Mask introspection for poppler, because gir is doing linking wrong
+
+  03 Sep 2011; Fabian Groffen <grobian@gentoo.org> darwin/packages:
+  Add sys-libs/csu (crt1.o) to system set on Darwin, such that compilations can
+  do fully without Xcode
+
+  28 Aug 2011; Fabian Groffen <grobian@gentoo.org> darwin/use.mask:
+  Mask USE=introspection on Darwin, g-ir-tool it has a long way to go before
+  working there
+
+  25 Aug 2011; Fabian Groffen <grobian@gentoo.org> sunos/solaris/package.mask:
+  Mask gcc-4.3.[3456], since it doesn't compile, and isn't worth fixing --
+  4.5.2 is fully functional, bug #379723
+
+  11 Aug 2011; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/5.10/sparc/package.mask,
+  sunos/solaris/5.10/sparc64/package.mask:
+  Drop masks for >=gcc-4.4 on Solaris/Sparc, compilation has been fixed
+
+  09 Aug 2011; Markus Duft <mduft@gentoo.org> windows/interix/package.use.mask:
+  add required USE masks for interix (apr and gettext)
+
+  04 Aug 2011; Jonathan Callen <abcd@gentoo.org>
+  +bsd/freebsd/8.2/x86/make.defaults, +bsd/freebsd/8.2/x86/parent:
+  Add a x86 freebsd 8.2 profile
+
+  11 Jul 2011; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.4/package.mask:
+  Mask lsof on OSX 10.4 (Tiger), bug #357649
+
+  07 Jul 2011; Fabian Groffen <grobian@gentoo.org> sunos/solaris/package.mask:
+  Mask boost(-build) 1.45.0 and 1.46.1 since we cannot unpack the tars
+
+  04 Jul 2011; Fabian Groffen <grobian@gentoo.org> +darwin/macos/10.7/eapi,
+  +darwin/macos/10.7/make.defaults, +darwin/macos/10.7/package.provided,
+  +darwin/macos/10.7/package.use.mask, +darwin/macos/10.7/parent,
+  +darwin/macos/10.7/profile.bashrc, +darwin/macos/10.7/x64/make.defaults,
+  +darwin/macos/10.7/x64/package.mask,
+  +darwin/macos/10.7/x64/package.use.force,
+  +darwin/macos/10.7/x64/package.use.mask, +darwin/macos/10.7/x64/parent,
+  +darwin/macos/10.7/x64/use.mask, +darwin/macos/10.7/x86/make.defaults,
+  +darwin/macos/10.7/x86/package.mask,
+  +darwin/macos/10.7/x86/package.use.force,
+  +darwin/macos/10.7/x86/package.use.mask, +darwin/macos/10.7/x86/parent,
+  +darwin/macos/10.7/x86/use.mask:
+  Add profile for upcoming OSX Lion (10.7)
+
+  14 Jun 2011; Jonathan Callen <abcd@gentoo.org> packages:
+  Add version to shadow to match base/packages
+
+  29 May 2011; Fabian Groffen <grobian@gentoo.org> mint/package.use.force:
+  force static-libs on libarchive for MiNT too, bug #364789
+
+  29 May 2011; Fabian Groffen <grobian@gentoo.org> mint/make.defaults:
+  Update default USE-flags for FreeMiNT, bug #368407
+
+  24 May 2011; Markus Duft <mduft@gentoo.org>
+  windows/interix/6.0/x86/make.defaults,
+  windows/interix/6.1/x86/make.defaults:
+  use versioned CHOST again for interix, as libc version is not sufficient
+
+  18 May 2011; Fabian Groffen <grobian@gentoo.org> darwin/packages:
+  Add pkill-darwin to the system set for darwin hosts
+
+  11 May 2011; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Mask pycairo-1.10, it uses waf, a broken by design build-system
+
+  02 May 2011; Fabian Groffen <grobian@gentoo.org> bsd/package.mask,
+  sunos/solaris/package.mask:
+  Drop qt-7 masks (darwin bit was accidentially removed before)
+
+  01 May 2011; Fabian Groffen <grobian@gentoo.org> bsd/freebsd/package.mask:
+  Mask binutils-2.21.51 on FreeBSD, as long as #347931 isn't fully fixed
+
+  01 May 2011; Fabian Groffen <grobian@gentoo.org>
+  +bsd/freebsd/8.2/package.provided, +bsd/freebsd/8.2/parent,
+  +bsd/freebsd/8.2/x64/make.defaults, +bsd/freebsd/8.2/x64/parent:
+  Add profile for x64 FreeBSD 8.2
+
+  01 May 2011; Fabian Groffen <grobian@gentoo.org>
+  +darwin/macos/10.4/ppc/package.use.mask,
+  +darwin/macos/10.4/ppc64/package.use.mask,
+  +darwin/macos/10.5/ppc64/package.use.mask,
+  darwin/macos/10.5/ppc/package.use.mask:
+  Mask USE=jit for qt-script and qt-webkit on OSX PowerPC profiles, since it
+  isn't implemented
+
+  30 Apr 2011; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.4/package.mask:
+  Mask media-libs/mediastreamer-2.7.3 and beyond due to incompatibility with OS
+  X 10.4 (Tiger)
+
+  27 Apr 2011; Fabian Groffen <grobian@gentoo.org> +mint/package.use.force,
+  darwin/package.mask:
+  Force USE=static on libarchive for FreeMiNT, bug #364789
+
+  27 Apr 2011; Markus Duft <mduft@gentoo.org> windows/interix/package.mask:
+  removed mask for perl on interix
+
+  25 Apr 2011; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Also mask sys-devel/llvm-gcc-2.9, such that it doesn't try to pull in masked
+  deps
+
+  24 Apr 2011; Ulrich Mueller <ulm@gentoo.org> packages:
+  Replace dependency on virtual/modutils, bug 358891.
+
+  24 Apr 2011; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.use.mask:
+  USE-mask libkms on Solaris as it breaks, bug #319285
+
+  21 Apr 2011; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask LLVM/clang 2.9, it's broken for Prefix by design at the moment
+
+  20 Apr 2011; Ulrich Mueller <ulm@gentoo.org> -aix/virtuals,
+  -bsd/freebsd/virtuals, -bsd/netbsd/virtuals, -bsd/openbsd/virtuals,
+  -darwin/virtuals, -hpux/virtuals, -irix/virtuals, -linux/virtuals,
+  -mint/virtuals, -sunos/virtuals, -windows/cygwin/virtuals,
+  -windows/interix/virtuals, -windows/winnt/virtuals:
+  Remove old-style virtual/libc, bug 359001.
+
+  14 Apr 2011; Ulrich Mueller <ulm@gentoo.org> aix/virtuals,
+  bsd/freebsd/virtuals, bsd/netbsd/virtuals, bsd/openbsd/virtuals,
+  darwin/virtuals, hpux/virtuals, irix/virtuals, linux/virtuals, mint/virtuals,
+  sunos/virtuals, windows/cygwin/virtuals, windows/interix/virtuals,
+  windows/winnt/virtuals:
+  Remove old-style virtual/os-headers, bug 358999.
+
+  10 Apr 2011; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.6/package.use.mask:
+  Mask uuid for libSM on Snow Leopard
+
+  10 Apr 2011; Fabian Groffen <grobian@gentoo.org>
+  -darwin/macos/10.3/make.defaults, -darwin/macos/10.3/package.provided,
+  -darwin/macos/10.3/parent, -darwin/macos/10.3/profile.bashrc,
+  -darwin/macos/10.3/use.mask:
+  Drop Mac OS X Panther (10.3) support
+
+  09 Apr 2011; Ulrich Mueller <ulm@gentoo.org> windows/winnt/packages:
+  Old-style virtual/portage is replaced by new-style virtual/package-manager,
+  bug 358847.
+
+  07 Apr 2011; Jeremy Olexa <darkside@gentoo.org>
+  -darwin/macos/10.3/package.mask, darwin/macos/10.5/ppc/package.use.mask,
+  darwin/macos/10.5/x64/package.use.mask,
+  darwin/macos/10.5/x86/package.use.mask,
+  darwin/macos/10.6/x64/package.use.mask,
+  darwin/macos/10.6/x86/package.use.mask, darwin/package.mask,
+  darwin/package.use.mask, package.mask, package.use.mask,
+  -sunos/solaris/5.11/x64/package.mask, sunos/solaris/package.mask:
+  Cleanup invalid/obsolete package.mask entries
+
+  06 Apr 2011; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/5.10/sparc/package.mask:
+  Update mask for GCC on Solaris/Sparc
+
+  03 Apr 2011; Ulrich Mueller <ulm@gentoo.org> windows/winnt/packages:
+  Remove old-style virtual/gzip, bug 358829.
+
+  30 Mar 2011; Fabian Groffen <grobian@gentoo.org>
+  +sunos/solaris/5.11/package.use.mask:
+  Mask USE=git for gettext, due to some weird git brokeness
+
+  29 Mar 2011; Michael Haubenwallner <haubi@gentoo.org>
+  +linux/x86/profile.bashrc:
+  set SYMLINK_LIB=yes for sys-devel/binutils when needed (#360197)
+
+  26 Mar 2011; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  remove baselayout-prefix mask because there is only one version in the
+  tree
+
+  23 Mar 2011; Fabian Groffen <grobian@gentoo.org> -virtuals:
+  Drop old-style virtuals file to provide packages, bug #358823
+
+  21 Mar 2011; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  SpanKY applied zziplib fix for us, so drop mask
+
+  20 Mar 2011; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Mask dev-libs/zziplib-0.13.60-r1 on Darwin, broken due to GCC 4.6 patch, bug
+  #357899
+
+  04 Mar 2011; Jonathan Callen <abcd@gentoo.org> bsd/package.mask,
+  darwin/package.mask, package.mask, sunos/solaris/package.mask:
+  Move Qt mask into bsd/ darwin/ and sunos/ to unmask on linux
+
+  04 Mar 2011; Jonathan Callen <abcd@gentoo.org> aix/package.mask,
+  bsd/freebsd/7.1/package.mask, bsd/freebsd/7.2/package.mask,
+  bsd/freebsd/8.0/package.mask, bsd/freebsd/8.1/package.mask,
+  bsd/freebsd/package.mask, package.mask, sunos/solaris/package.mask:
+  Remove obsolete masks
+
+  16 Feb 2011; Fabian Groffen <grobian@gentoo.org> darwin/package.use.mask:
+  Unmask OSX-specific USE-flags for VLC on OSX
+
+  14 Feb 2011; Fabian Groffen <grobian@gentoo.org> sunos/solaris/package.mask:
+  Mask gdb-7.2.50.20101117.4.15 on Solaris, it doesn't compile, bug #354263
+
+  09 Feb 2011; Ulrich Mueller <ulm@gentoo.org> -darwin/macos/10.5/package.mask,
+  -darwin/macos/10.6/package.mask, darwin/macos/package.use.mask:
+  Remove obsolete mask entries for Emacs.
+
+  07 Feb 2011; Jeremy Olexa <darkside@gentoo.org> linux/package.provided:
+  remove util-linux provided entry
+
+  07 Feb 2011; Jeremy Olexa <darkside@gentoo.org> linux/package.mask:
+  mask procps-3.2.8-r2, bug 353630
+
+  03 Feb 2011; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask sys-devel/flex-2.5.35_p10 for bug #353609
+
+  25 Jan 2011; Fabian Groffen <grobian@gentoo.org> linux/package.mask:
+  Fix mistake, really unmask e2fsprogs-1.4.14 on Linux
+
+  24 Jan 2011; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Widen mask for media-gfx/povray, to also include the beta versions
+
+  24 Jan 2011; Fabian Groffen <grobian@gentoo.org> linux/package.mask,
+  package.mask:
+  Mask sys-fs/e2fsprogs-1.41.14, it's broken in multiple ways
+
+  22 Jan 2011; Fabian Groffen <grobian@gentoo.org> linux/package.mask,
+  package.mask:
+  Drop ghostscript mask, the old version becomes a maintenance problem
+
+  08 Jan 2011; Fabian Groffen <grobian@gentoo.org> darwin/package.use.mask:
+  Unmask uuid on Darwin
+
+  05 Jan 2011; Fabian Groffen <grobian@gentoo.org>
+  +darwin/macos/10.5/ppc64/make.defaults,
+  +darwin/macos/10.5/ppc64/package.mask, +darwin/macos/10.5/ppc64/parent,
+  +darwin/macos/10.5/ppc64/use.mask:
+  Add 10.5/ppc64 profile
+
+  23 Dec 2010; Michael Haubenwallner <haubi@gentoo.org> hpux/profile.bashrc:
+  must not use korn shell /bin/sh as CONFIG_SHELL on hpux too, but bash
+  instead
+
+  23 Dec 2010; Michael Haubenwallner <haubi@gentoo.org> aix/package.mask:
+  >=gcc-4.3 still does not work on aix
+
+  14 Dec 2010; Fabian Groffen <grobian@gentoo.org>
+  +bsd/freebsd/8.1/package.mask, +bsd/freebsd/8.1/package.provided,
+  +bsd/freebsd/8.1/parent, +bsd/freebsd/8.1/sparc64/make.defaults,
+  +bsd/freebsd/8.1/sparc64/parent, +bsd/freebsd/8.1/x64/make.defaults,
+  +bsd/freebsd/8.1/x64/parent, +bsd/freebsd/8.1/x86/make.defaults,
+  +bsd/freebsd/8.1/x86/parent:
+  Add FreeBSD 8.1 profiles, including experimental sparc64 profile, bug
+  #348673
+
+  05 Dec 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Drop unmasks of old e2fsprogs/util-linux versions, because only the latest
+  version of e2fsprogs was migrated to gx86, we have to go through the mess
+  now to get it compiling everywhere
+
+  30 Nov 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Drop mask for no longer existant portage version
+
+  30 Nov 2010; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  mask latest portage, reported issues
+
+  23 Nov 2010; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Grabbed patch for grep-2.7 issue, drop mask
+
+  23 Nov 2010; Jeremy Olexa <darkside@gentoo.org> darwin/package.mask:
+  Pre-emptive mask for =grep-2.7, breaks bootstrapping on macos. bug 346335
+
+  16 Nov 2010; Markus Duft <mduft@gentoo.org> windows/interix/package.mask,
+  windows/interix/package.use.force, windows/interix/package.use.mask:
+  updated masks on interix, make coreutils static (for suacomp
+  rebuildability)
+
+  06 Nov 2010; Alex Alexander <wired@gentoo.org> package.mask:
+  Masked Qt-4.7 as requested by prefix team, bug #338289
+
+  03 Nov 2010; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  Remove portage-2.2 mask now that it isn't masked in gx86
+
+  23 Oct 2010; Fabian Groffen <grobian@gentoo.org> package.use.mask:
+  Mask USE=ipc for portage, since it causes more trouble than anything
+
+  23 Oct 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Unmask >=portage-2.2.01.16711, since it has been behaving locally for a
+  while now
+
+  22 Oct 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Drop Date-Manip unmask, since the mask was removed from
+  profiles/package.mask
+
+  22 Oct 2010; Markus Duft <mduft@gentoo.org>
+  windows/interix/profile.bashrc:
+  always set CONFIG_SHELL to ${BASH}, as the system /bin/sh is not suitable to
+  used with new libtool (>=2.2.10) on interix.
+
+  21 Oct 2010; Markus Duft <mduft@gentoo.org>
+  +windows/interix/packages:
+  added suacomp to interix' system packages.
+
+  19 Oct 2010; Markus Duft <mduft@gentoo.org>
+  windows/interix/package.mask:
+  unmask sed, as there is a patch for new versions now.
+
+  19 Oct 2010; Markus Duft <mduft@gentoo.org>
+  windows/interix/6.0/x86/make.defaults,
+  windows/interix/6.1/x86/make.defaults:
+  changed CHOST of interix profiles to be based on LIBC version, not kernel version
+
+  02 Oct 2010; Fabian Groffen <grobian@gentoo.org> package.use.mask:
+  unmask xz, we do have xz-utils in our overlay
+
+  02 Oct 2010; Fabian Groffen <grobian@gentoo.org>
+  +sunos/solaris/5.10/x86/eapi:
+  Add eapi file to silence portage/repoman
+
+  29 Sep 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask all portage versions after 2.2.01.15553 (when master EROOT changes
+  were merged in Prefix), since they all broke in multiple ways
+
+  29 Sep 2010; Rafael G. Martins <rafaelmartins@gentoo.org> package.use.mask:
+  Add xz on sci-electronics/gtkwave to p.use.mask
+
+  29 Sep 2010; Rafael G. Martins <rafaelmartins@gentoo.org> package.use.mask:
+  Add judy on sci-electronics/gtkwave to p.use.mask
+
+  28 Sep 2010; Fabian Groffen <grobian@gentoo.org> mint/use.mask:
+  Mask USE=git on MiNT profiles, bug #339031
+
+  27 Sep 2010; Jeremy Olexa <darkside@gentoo.org> linux/package.mask:
+  drop non-existant masks
+
+  23 Sep 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Drop mask for removed version of Portage (bug #338441)
+
+  23 Sep 2010; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  Mask sys-apps/portage-2.2.01.16610, bug 338441
+
+  22 Sep 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Drop mask for portage no longer in the tree
+
+  21 Sep 2010; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.5/ppc/package.use.mask,
+  darwin/macos/10.5/x64/package.use.mask,
+  darwin/macos/10.5/x86/package.use.mask,
+  darwin/macos/10.6/x64/package.use.mask,
+  darwin/macos/10.6/x86/package.use.mask:
+  Drop ruby[threads] mask, it compiles fine these days, solves bug #337808
+
+  20 Sep 2010; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  Mask =sys-apps/portage-2.2.01.16365 for bug 337945
+
+  19 Sep 2010; Jonathan Callen <abcd@gentoo.org> package.mask:
+  Drop mask for KDE 4.5
+
+  17 Sep 2010; Michael Haubenwallner <haubi@gentoo.org> package.use.mask:
+  p.use.mask keyutils for app-crypt/mit-krb5, is a linux only package.
+
+  14 Sep 2010; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Mask povray-3.7.0, it needs ELF-ish thread-local support
+
+  14 Sep 2010; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Extend gcc mask to 4.4.4
+
+  12 Sep 2010; Jonathan Callen <abcd@gentoo.org> package.mask:
+  Copy KDE 4.5.1 mask from base/package.mask to override unmasking in arch/*
+
+  08 Sep 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Drop mask for >=icu-4.2, bug #336403
+
+  03 Sep 2010; Christian Faulhammer <fauli@gentoo.org>
+  bsd/freebsd/8.0/package.mask:
+  Unmask sys-libs/readline-6 and above for FreeBSD
+
+  03 Sep 2010; Christian Faulhammer <fauli@gentoo.org> bsd/use.mask:
+  Unmask oss USE flag for BSDs, bug 334117
+
+  31 Aug 2010; Fabian Groffen <grobian@gentoo.org>
+  windows/cygwin/1.7/x86:
+  Add preliminary Cygwin profile.
+
+  18 Aug 2010; Jeremy Olexa <darkside@gentoo.org> linux/package.provided:
+  Add back some old, historical virtuals removed without investigation
+
+  18 Aug 2010; Jeremy Olexa <darkside@gentoo.org> linux/package.provided:
+  provide sys-apps/util-linux on linux profiles
+
+  12 Aug 2010; Fabian Groffen <grobian@gentoo.org> linux/make.defaults:
+  Drop --as-needed from LDFLAGS, since it obviously is not ready to be
+  enabled globally judging by our bug-flow.
+
+  31 Jul 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Unmask >=dev-perl/DateManip-6.0 in Prefix, since we have Perl 5.10 (and
+  5.12) just unmasked and hence in use.
+
+  29 Jul 2010; Jeremy Olexa <darkside@gentoo.org>
+  darwin/macos/10.4/x86/package.use.mask,
+  darwin/macos/10.5/x86/package.use.mask,
+  darwin/macos/10.6/x86/package.use.mask:
+  Mask media-sound/mpg123[mmx,sse] on 32bit osx, bug 329859
+
+  26 Jul 2010; Fabian Groffen <grobian@gentoo.org> darwin/make.defaults:
+  Add -dead_strip_dylibs to LDFLAGS on Darwin (equivalent of --as-needed on
+  ELF)
+
+  26 Jul 2010; Jeremy Olexa <darkside@gentoo.org> mint/use.mask:
+  Mask USE=ipv6 on mint, bug 329883
+
+  14 Jul 2010; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  Preemptive mask for python-updater-0.8
+
+  13 Jul 2010; Markus Duft <mduft@gentoo.org>
+  windows/interix/6.1/x86/make.defaults:
+  corrected CHOST for interix-6.1 profile
+
+  13 Jul 2010; Markus Duft <mduft@gentoo.org>
+  -windows/interix/6.0/use.force, -windows/interix/6.1/use.force:
+  remove masks for obsolete USE flag (interix prefix only)
+
+  23 Jun 2010; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  emacs-23.2 is segfaulting too, extend mask
+
+  19 Jun 2010; Jonathan Callen <abcd@gentoo.org> package.mask:
+  Finish move of dev-util/cvs* to dev-vcs/cvs*
+
+  19 Jun 2010; Jonathan Callen <abcd@gentoo.org> package.mask:
+  Duplicate dev-util/cvs* as dev-vcs/cvs* to keep current masks
+
+  16 Jun 2010; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.5/ppc/package.use.mask:
+  Undo masking of git USE-flag by sping, we DO have git, but it's still in
+  our svn tree.
+
+  16 Jun 2010; Sebastian Pipping <sping@gentoo.org>
+  darwin/macos/10.5/ppc/package.use.mask:
+  Package use mask git for dev-vcs/cvs2svn on ppc-macos
+
+  13 Jun 2010; Fabian Groffen <grobian@gentoo.org> mint/package.use.mask:
+  Add mask for dev-db/sqlite threadsafe, bug #323771
+
+  09 Jun 2010; Jeremy Olexa <darkside@gentoo.org> linux/package.mask:
+  Revert global ghostscript-gpl mask because it appears to work fine on
+  linux.
+
+  09 Jun 2010; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  Drop mask for packages that require root privs to run, as discussed on the
+  gentoo-alt mailing list
+
+  29 May 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Drop git mask for version no longer in the tree
+
+  23 May 2010; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  Mask >=sys-devel/binutils-2.20.51.0.7 on solaris, because it seems to
+  produce targets that GCC doesn't know about, bug #320561
+
+  23 May 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask dev-vcs/git-1.7.1 since it Bus Errors on cherry-pick
+
+  20 May 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Drop mask for Dev Tools 3.2.2 goodies, seems to behave pretty much ok.
+
+  18 May 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask upcoming gcc, binutils and gdb from Developer Tools 3.2.2
+
+  14 May 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask upcoming baselayout-prefix-1.12.5-r7 due to its experimental nature
+
+  06 May 2010; Jeremy Olexa <darkside@gentoo.org> hpux/package.mask:
+  Fix atom syntax
+
+  23 Apr 2010; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Masked media-libs/mesa on Darwin as we should be using opengl-apple
+
+  21 Apr 2010; Jeremy Olexa <darkside@gentoo.org> linux/packages:
+  Add back sys-process/{procps,psmisc} to system set on Gentoo Prefix linux
+  profiles to diverge less from Gentoo Linux
+
+  18 Apr 2010; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.4/ppc64/package.mask, darwin/macos/10.5/x64/package.mask,
+  darwin/macos/10.6/x64/package.mask, linux/package.mask, package.mask,
+  sunos/solaris/5.9/sparc64/package.mask,
+  sunos/solaris/5.10/sparc64/package.mask,
+  sunos/solaris/5.10/x64/package.mask,
+  sunos/solaris/5.11/sparc64/package.mask,
+  sunos/solaris/5.11/x64/package.mask:
+  Move zlib mask up, since it breaks everywhere but on Linux
+
+  16 Apr 2010; Fabian Groffen <grobian@gentoo.org>
+  +darwin/macos/10.4/ppc64/package.mask, darwin/macos/10.5/x64/package.mask,
+  darwin/macos/10.6/x64/package.mask,
+  sunos/solaris/5.9/sparc64/package.mask,
+  sunos/solaris/5.10/sparc64/package.mask,
+  sunos/solaris/5.10/x64/package.mask,
+  +sunos/solaris/5.11/sparc64/package.mask,
+  sunos/solaris/5.11/x64/package.mask:
+  Mask zlib-1.2.4 on 64-bits platforms for bug #310209
+
+  06 Apr 2010; Jeremy Olexa <darkside@gentoo.org>
+  darwin/macos/10.4/ppc/package.mask, darwin/macos/package.mask,
+  darwin/package.mask, package.mask, sunos/solaris/package.mask,
+  windows/interix/3.5/package.mask, windows/interix/package.mask:
+  cleanup obsolete version
+
+  03 Apr 2010; Fabian Groffen <grobian@gentoo.org> windows/interix/use.mask:
+  Mask USE=multitarget on Interix, since it breaks
+
+  26 Mar 2010; Jeremy Olexa <darkside@gentoo.org> hpux/package.mask:
+  Extend gcc mask on hpux, bug 311239
+
+  26 Mar 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Drop mask for gcc-config-1.5. It seems to work after some fixes, but it's
+  still masked by dropped keywords in gx86, so we will shadow that
+
+  26 Mar 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Drop mask for >=autoconf-2.64, should be safe now, drop mask for patch-2.6
+  which is no longer in the tree
+
+  26 Mar 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask python-2.4, current plans are not to merge it to gx86
+
+  23 Mar 2010; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Unmask binutils-apple-3.2-r1 sooner than expected, since it is the key to
+  solving problems on Snow Leopard
+
+  22 Mar 2010; Markus Duft <mduft@gentoo.org> windows/interix/use.mask,
+  windows/winnt/use.mask:
+  removed reference to unused qt3 USE flag for windows
+
+  21 Mar 2010; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Mask upcoming sys-devel/binutils-apple-3.2-r1, it needs some testing first
+
+  20 Mar 2010; Fabian Groffen <grobian@gentoo.org>
+  +bsd/freebsd/package.mask:
+  Add mask for sys-devel/m4-1.4.14 on FreeBSD, bug #310335
+
+  19 Mar 2010; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Revert e2fsprogs mask for the time being, since it's the only compiling
+  version for us.
+
+  14 Mar 2010; Fabian Groffen <grobian@gentoo.org> package.use.mask:
+  drop use-masks for darcs:doc and subversion:nowebdav, we do have texlive
+  for a while now, and we no longer use subversion for our main tree (so no
+  emerge --sync affected)
+
+  13 Mar 2010; Jonathan Callen <abcd@gentoo.org> package.mask:
+  Add mask for >=autoconf-2.64
+
+  10 Mar 2010; Michael Haubenwallner <haubi@gentoo.org> aix/package.mask:
+  drop >=net-misc/openssh-5.0_p1-r2 mask on aix, works just fine with proper
+  interix-rootuid-fix
+
+  10 Mar 2010; Michael Haubenwallner <haubi@gentoo.org> +aix/profile.bashrc:
+  re-adding aix/profile.bashrc to keep setting CONFIG_SHELL
+
+  08 Mar 2010; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Update cssc mask to point to the right category (dev-util -> dev-vcs)
+
+  08 Mar 2010; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Unmask Snow Leopard compilers, their ebuilds should be fine now.
+
+  04 Mar 2010; Markus Duft <mduft@gentoo.org>
+  +windows/interix/6.1/package.provided, +windows/interix/6.1/parent,
+  +windows/interix/6.1/use.force, +windows/interix/6.1/use.mask,
+  +windows/interix/6.1/x86/make.defaults, +windows/interix/6.1/x86/parent,
+  +windows/winnt/6.1/package.provided, +windows/winnt/6.1/parent,
+  +windows/winnt/6.1/x86/make.defaults, +windows/winnt/6.1/x86/parent:
+  added windows 7/2008R2 profiles for interix and winnt, based on the
+  vista/2008 profiles.
+
+  25 Feb 2010; Jonathan Callen <abcd@gentoo.org>
+  windows/interix/profile.bashrc:
+  Fix grep to work even on files with odd names (like /usr/bin/[)
+
+  22 Feb 2010; Jonathan Callen <abcd@gentoo.org> package.use.mask:
+  Add ppp on kdenetwork-meta to p.use.mask
+
+  17 Feb 2010; Markus Duft <mduft@gentoo.org> windows/interix/package.mask:
+  masked perl >=5.10 for ~x86-interix - does not build atm.
+
+  14 Feb 2010; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  Mask binutils-2.20.51.0.5, doesn't compile
+
+  11 Feb 2010; Jonathan Callen <abcd@gentoo.org> package.mask:
+  Remove KDE 4.4 mask
+
+  10 Feb 2010; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/package.use.mask:
+  Heiko Przybyl felt like fixing cmake building a .app with USE=qt4
+
+  10 Feb 2010; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/package.use.mask:
+  Mask qt4 USE-flag for cmake on Darwin, since we don't want the .app
+  version of cmake
+
+  09 Feb 2010; Alexey Shvetsov <alexxy@gentoo.org> package.mask:
+  mask kde sc 4.4.0 since neede deps not keyworded
+
+  09 Feb 2010; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  Mask binutils-2.20.51.0.6, doesn't compile
+
+  03 Feb 2010; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Mask dev-util/cssc-1.2.0, the Darwin linker doesn't like duplicate symbols
+  caused by implementation code in a header file. Since noone actually uses
+  this version (where is its homepage?) I'm not going to make a big patch to
+  fix this.
+
+  01 Feb 2010; Jeremy Olexa <darkside@gentoo.org> use.mask:
+  Mask ruby_targets_jruby, bug 302563
+
+  10 Jan 2010; Fabian Groffen <grobian@gentoo.org> +mint/package.use.mask:
+  package.use.mask extensions for MiNT, bug #299294
+
+  09 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  -bsd/freebsd/8.0/x86/use.mask:
+  X support is now possible so unmask USE flag
+
+  09 Jan 2010; Christian Faulhammer <fauli@gentoo.org> package.use.mask:
+  mask m17n-lib and hesiod USE flags for GNU Emacs
+
+  08 Jan 2010; Jeremy Olexa <darkside@gentoo.org> package.use.mask:
+  Fix typo and add more comment description
+
+  08 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  +bsd/freebsd/8.0/x86/use.mask:
+  Mask X USE flag on FreeBSD due to missing keywords
+
+  08 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  bsd/freebsd/8.0/package.mask:
+  mask GCC 4.4 and onwards, does not compile currently on FreeBSD
+
+  07 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  bsd/freebsd/8.0/package.mask:
+  mask sys-libs/readline-6 for FreeBSD
+
+  30 Dec 2009; Jonathan Callen <abcd@gentoo.org> linux/make.defaults:
+  Disable acl by default in linux profiles
+
+  29 Dec 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  Mask emacs-23.1 at last on Solaris, it's been broken way too long (bug
+  #294479)
+
+  29 Dec 2009; Jonathan Callen <abcd@gentoo.org> linux/use.mask:
+  Unmask acl on linux
+
+  28 Dec 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask =dev-python/beautifulsoup-3.1.0.1-r1 because it depends on python-3
+
+  28 Dec 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/5.10/sparc/package.mask,
+  +sunos/solaris/5.10/sparc64/package.mask:
+  Mask gcc-4.4.2 on sparcbased Solaris 10, fails to compile
+
+  27 Dec 2009; Ulrich Mueller <ulm@gentoo.org>
+  darwin/macos/package.use.mask:
+  Reflect package move from app-editors/emacs-cvs to app-editors/emacs-vcs
+  in package.use.mask.
+
+  27 Dec 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask gcc-config-1.5 so we can test it a bit first
+
+  24 Dec 2009; Jeremy Olexa <darkside@gentoo.org> linux/arm/make.defaults:
+  Add ** to ACCEPT_KEYWORDS of arm-linux
+
+  23 Dec 2009; Jeremy Olexa <darkside@gentoo.org> linux/arm/make.defaults:
+  Set a PORTAGE_BINHOST for arm-linux
+
+  23 Dec 2009; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Drop mask for xmlrpc-c (the only one in the tree), it seems other patches
+  have also fixed compilation on Darwin
+
+  21 Dec 2009; Fabian Groffen <grobian@gentoo.org>
+  +bsd/freebsd/8.0/package.mask, +bsd/freebsd/8.0/package.provided,
+  +bsd/freebsd/8.0/parent, +bsd/freebsd/8.0/x64/make.defaults,
+  +bsd/freebsd/8.0/x64/parent, +bsd/freebsd/8.0/x86/make.defaults,
+  +bsd/freebsd/8.0/x86/parent:
+  Add FreeBSD 8.0 profiles for i686 and x86_64
+
+  17 Dec 2009; Jeremy Olexa <darkside@gentoo.org> +linux/arm/make.defaults,
+  +linux/arm/parent:
+  Add experimental arm profiles for armv7
+
+  13 Dec 2009; Jonathan Callen <abcd@gentoo.org> package.mask:
+  Unmasking KDE 4.3, as the mask was never really needed anyway (not yet in
+  prefix tree)
+
+  04 Dec 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/package.mask:
+  Unmask sip on Darwin, the latest version with a new patch seems to behave
+
+  24 Nov 2009; Jeremy Olexa <darkside@gentoo.org> use.mask:
+  Make USE=udev globally for Gentoo Prefix profiles, bug 293480
+
+  22 Nov 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask sys-devel/patch-2.6, it's too much GNU is not Linux (they stopped
+  with UNIX years ago)
+
+  15 Nov 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  A new pre-release of mc, a new breakage on Solaris
+
+  15 Nov 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  Mask eix-0.18.3 due to compilation issues
+
+  15 Nov 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  unmask File-Spec again, perl-5.10.1 is in the Prefix tree now
+
+  04 Nov 2009; Michael Haubenwallner <haubi@gentoo.org>
+  linux/x86/make.defaults:
+  add -m32 to CFLAGS, for bootstrapping i686 on x86_64-linux using host gcc
+
+  02 Nov 2009; Michael Haubenwallner <haubi@gentoo.org> aix/package.mask:
+  dropped openssl mask on aix, fixed again to build good shared libs
+
+  01 Nov 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Unmask ssmtp-2.62 since -r7, as that one finally got the fix we'd been
+  looking for
+
+  30 Oct 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.4/x86/package.use.mask,
+  darwin/macos/10.5/x64/package.use.mask,
+  darwin/macos/10.5/x86/package.use.mask,
+  darwin/macos/10.6/x64/package.use.mask,
+  darwin/macos/10.6/x86/package.use.mask, darwin/macos/package.use.mask,
+  darwin/package.use.mask:
+  Move mplayer USE-masks up to global darwin/macos level (for bug #291203),
+  and cleanup mmx masking
+
+  28 Oct 2009; Michael Haubenwallner <haubi@gentoo.org> -aix/profile.bashrc:
+  portage handles merging of shared library archives on aix itself now,
+  no need to do this in profile.bashrc any more.
+
+  27 Oct 2009; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Mask gcc-4.{3,4} on Darwin, as it doesn't compile for a while now
+
+  25 Oct 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Unmask pax-utils-0.1.19, I added the strndup patches to the Prefix ebuild
+
+  22 Oct 2009; Jeremy Olexa <darkside@gentoo.org> linux/amd64/parent,
+  linux/ia64/parent, linux/x86/parent:
+  Move prefix/linux profiles to inherit 10.0 instead of 2008.0 now that
+  those are deprecated, bug 280540
+
+  18 Oct 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  Mask app-misc/mc-4.7.0_pre3 too, still insists on doing Linux stuff
+
+  18 Oct 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  Mask ocaml-3.11.1 because it fails to build due to some missing symbol
+
+  15 Oct 2009; Jeremy Olexa <darkside@gentoo.org> linux/package.mask:
+  Mask ~dev-libs/nss-3.12.4 on linux only because it exposes some other
+  issues
+
+  09 Oct 2009; Fabian Groffen <grobian@gentoo.org> +irix/package.use.force:
+  Force nocxx for sys-libs/db, bug #286097
+
+  05 Oct 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  drop mask for Portage no longer in the tree
+
+  03 Oct 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/5.10/x86/package.use.mask:
+  unmask netpbm:jpeg2k on Solaris, the issue has been fixed
+
+  02 Oct 2009; Michael Haubenwallner <haubi@gentoo.org>
+  +sunos/solaris/5.9/package.use.force:
+  app-admin/eselect-python still needs gnulib on solaris 9 for scandir, and
+  has IUSE=gnulib
+
+  02 Oct 2009; Michael Haubenwallner <haubi@gentoo.org>
+  sunos/solaris/package.use.mask:
+  ohw, solaris-provided libuuid is insufficient for x11-libs/libSM (#230981)
+
+  30 Sep 2009; Michael Haubenwallner <haubi@gentoo.org>
+  +sunos/solaris/package.use.mask:
+  x11-libs/libSM can use solaris-provided libuuid (#230981)
+
+  30 Sep 2009; Michael Haubenwallner <haubi@gentoo.org>
+  +bsd/package.use.mask, linux/package.use.mask, package.use.mask:
+  p.use.mask x11-libs/libSM[uuid] for prefix, but keep it unmasked for linux
+  and bsd (#230981)
+
+  30 Sep 2009; Markus Duft <mduft@gentoo.org> windows/winnt/package.mask:
+  mask current xproto on winnt, since the patches need some more massage.
+
+  30 Sep 2009; Markus Duft <mduft@gentoo.org> windows/interix/package.mask:
+  mask new coreutils on interix until patches are forward-ported
+
+  30 Sep 2009; Jeremy Olexa <darkside@gentoo.org> package.use.mask:
+  mask python[berkdb] due to build failure and the fact that it is going
+  away soon according to gx86 devs
+
+  28 Sep 2009; Michael Haubenwallner <haubi@gentoo.org> irix/package.mask,
+  sunos/solaris/package.mask:
+  unmask perl-5.8.8-r6 as bug#269430 is fixed now
+
+  24 Sep 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Masked =sys-apps/portage-2.2.00.14277 because it eats
+  /etc/init.d/functions.sh
+
+  23 Sep 2009; Markus Duft <mduft@gentoo.org> package.mask:
+  masked some stuff that requires perl 5.10 which is not there yet
+
+  17 Sep 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.6/x86/make.defaults:
+  set -march again on 32-bits 10.6, the compiler barf was because
+  i386-apple-darwin10 by default produces/targets 64-bits code
+
+  12 Sep 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.5/x64/package.mask, darwin/macos/10.6/x64/package.mask,
+  package.mask:
+  Drop mask for binutils-apple-3.1.2-r1, it's no longer in the tree
+
+  12 Sep 2009; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Unmask binutils-apple-3.2, it is 64-bits clean/safe and compiles since we
+  just use an older ld64 :(
+
+  12 Sep 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.6/x86/make.defaults:
+  Don't set -march, as it makes the host compiler vomit
+
+  08 Sep 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  I fixed the compilation issue in rlfe on Solaris, remove mask
+
+  07 Sep 2009; Fabian Groffen <grobian@gentoo.org>
+  +darwin/macos/10.6/x86/make.defaults, +darwin/macos/10.6/x86/package.mask,
+  +darwin/macos/10.6/x86/package.use.force,
+  +darwin/macos/10.6/x86/package.use.mask, +darwin/macos/10.6/x86/parent,
+  +darwin/macos/10.6/x86/use.mask:
+  Add 32-bits Intel profile for Snow Leopard
+
+  07 Sep 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  Mask sys-libs/readline-6.0 on (Open)Solaris, doesn't compile, bug #283793
+
+  05 Sep 2009; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Mask upcoming Snow Leopard compiler and linker, as there are still some
+  problems that need to be sorted out
+
+  05 Sep 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  extend mc mask to revisions
+
+  05 Sep 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.4/ppc/package.mask:
+  mask sci-biology/hmmer-3.0_beta2 for the same reason as its predecessors
+  are masked
+
+  03 Sep 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  Mask sys-apps/dbus-1.3.0 as it doesn't compile
+
+  03 Sep 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  Mask mc-4.7.0_pre2, as it insists on doing linux vfs (ext2 undel) stuff
+
+  02 Sep 2009; Fabian Groffen <grobian@gentoo.org> package.mask,
+  package.use.mask:
+  unmask some xfce packages and only mask offending USE-flags, since
+  darkside made it all work again
+
+  02 Sep 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  package.mask:
+  Masking >= KDE-4.3 for this arch to prevent tree breakage following
+  the global unmask of KDE-4.3 (bug #280312).
+
+  02 Sep 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  mask findutils-4.5.5 on Solaris, as it dies with asserts all the time
+
+  02 Sep 2009; Markus Duft <mduft@gentoo.org>
+  windows/interix/3.5/package.mask:
+  masked the latest portage on interix 3 where it seems to cause problems
+  with encoding stuff
+
+  02 Sep 2009; Markus Duft <mduft@gentoo.org> windows/interix/use.mask:
+  re-enabled xcb use flag on interix, since i fixed libxcb
+
+  02 Sep 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/package.mask:
+  Mask media-libs/freeglut-2.6.0_rc1 on Darwin, since it doesn't compile
+
+  02 Sep 2009; Markus Duft <mduft@gentoo.org> windows/interix/use.mask:
+  masked xcb use flag for ~x86-interix, since libxcb works only partially
+
+  31 Aug 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/package.use.mask:
+  unmask aqua USE-flag for python, now it seems I sorted all outstanding
+  issues
+
+  31 Aug 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.6/package.mask, package.mask:
+  unmask readline-6 in prefix, as gx86 is stabling it
+
+  27 Aug 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  unmask Portage again, it should have bug #282854 fixed now
+
+  26 Aug 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  p.mask latest portage, bug 282854
+
+  21 Aug 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  preempt mask for python:3.1, remove mask for eselect-1.1.3 (non existent)
+
+  20 Aug 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Let's go wild, unmask latest eselect-python, now we've patched it in our
+  tree
+
+  19 Aug 2009; Jeremy Olexa <darkside@gentoo.org> windows/interix/use.mask,
+  windows/winnt/use.mask:
+  Remove spurious entires for USE=aqua. Not needed in subdirs when it is
+  inherited from base
+
+  19 Aug 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.6/package.mask:
+  unmask readline 6 on 10.6 profiles, since that's the only thing that
+  builds there
+
+  18 Aug 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  p.mask =app-admin/eselect-1.1.3 in favor of 1.2 coming soon
+
+  18 Aug 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/package.use.mask:
+  Mask aqua USE-flag for python, since it's absolutely not yet ready for use
+
+  18 Aug 2009; Markus Duft <mduft@gentoo.org> windows/interix/package.mask:
+  p.mask'ed findutils-4.5.5 on interix - xargs broken
+
+  18 Aug 2009; Jeremy Olexa <darkside@gentoo.org> aix/use.mask,
+  bsd/use.mask, hpux/use.mask, irix/use.mask, linux/amd64/make.defaults,
+  linux/x86/make.defaults, mint/use.mask, sunos/use.mask,
+  windows/winnt/use.mask:
+  be more strict in profile syntax, bug 281838
+
+  17 Aug 2009; Fabian Groffen <grobian@gentoo.org> +darwin/macos/10.6/eapi,
+  +darwin/macos/10.6/make.defaults, +darwin/macos/10.6/package.mask,
+  +darwin/macos/10.6/package.provided, +darwin/macos/10.6/package.use.mask,
+  +darwin/macos/10.6/parent, +darwin/macos/10.6/profile.bashrc,
+  +darwin/macos/10.6/x64/make.defaults, +darwin/macos/10.6/x64/package.mask,
+  +darwin/macos/10.6/x64/package.use.force,
+  +darwin/macos/10.6/x64/package.use.mask, +darwin/macos/10.6/x64/parent,
+  +darwin/macos/10.6/x64/use.mask:
+  Add initial 10.6 (Snow Leopard) profile
+
+  17 Aug 2009; Fabian Groffen <grobian@gentoo.org> +irix/package.mask,
+  sunos/solaris/package.mask:
+  Mask perl-5.8.8-r6 on Solaris and IRIX because it breaks autotools there,
+  bug #269430
+
+  14 Aug 2009; Markus Duft <mduft@gentoo.org> windows/interix/6.0/use.mask:
+  unmask i6fork on interix 6 again - i6fork has been fixed
+
+  13 Aug 2009; Markus Duft <mduft@gentoo.org> windows/interix/package.mask:
+  masked >=startup-notification-0.10 on interix, requires xcb-util.
+
+  13 Aug 2009; Markus Duft <mduft@gentoo.org> windows/interix/6.0/use.mask,
+  windows/interix/package.mask, windows/interix/profile.bashrc:
+  extended subversion mask to 1.6.4. re-formatted an expression which failed
+  on windows 7. masked the i6fork flag on interix 6 for now - not working.
+
+  11 Aug 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  fix typos
+
+  10 Aug 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  p.mask ebuilds that need >=app-admin/eselect-python-20090801
+
+  10 Aug 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  p.mask =virtual/emacs-23 to salvage the depgraph
+
+  05 Aug 2009; Fabian Groffen <grobian@gentoo.org> aix/package.mask,
+  hpux/package.mask, package.mask:
+  Drop masks on sys-apps/file that apply to versions no longer in our tree
+
+  05 Aug 2009; Fabian Groffen <grobian@gentoo.org> aix/package.mask,
+  -aix/package.unmask:
+  Unmask native-cctools without package.unmask, bug #280433, it looks like
+  it did work that way, though
+
+  03 Aug 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask eselect-python-20090801, messing around with Python is better done in
+  gentoo-x86 ONLY
+
+  31 Jul 2009; Markus Duft <mduft@gentoo.org>
+  windows/interix/3.5/package.mask:
+  masked numpy on interix 3.5, since it conflicts with system headers
+
+  31 Jul 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  unmask perl's -r6 and -r7, r7 is now gone in Prefix again too, -r6 made
+  its reentrance with some fixes
+
+  30 Jul 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  p.mask perl-5.8.8-r7 because its auto-sync is messed up.
+
+  28 Jul 2009; Michael Haubenwallner <haubi@gentoo.org>
+  +hpux/B.11.11/package.use.mask:
+  hpux11.11 does not have /dev/*random: use.masked 'urandom' for
+  dev-libs/apr
+
+  28 Jul 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask >=sys-apps/util-linux-2.16 too, comment #5 in bug #278341
+
+  27 Jul 2009; Michael Haubenwallner <haubi@gentoo.org>
+  +hpux/B.11.11/hppa2.0/make.defaults, +hpux/B.11.11/hppa2.0/parent,
+  +hpux/B.11.11/package.provided, +hpux/B.11.11/parent:
+  added 32bit profile for hppa2.0*-hp-hpux11.11
+
+  27 Jul 2009; Markus Duft <mduft@gentoo.org> windows/winnt/package.mask:
+  unmaske icu-4, seems to work
+
+  27 Jul 2009; Markus Duft <mduft@gentoo.org> windows/interix/package.mask,
+  windows/winnt/package.mask:
+  remove boost mask - works now again
+
+  26 Jul 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask >=e2fsprogs*-2.41.8. util-linux doesn't work on non-Linux and doesn't
+  work in Prefix.
+
+  23 Jul 2009; Michael Haubenwallner <haubi@gentoo.org> aix/package.mask:
+  gdb-*.50 are linux-only releases and don't (need to) work on aix.
+
+  22 Jul 2009; Michael Haubenwallner <haubi@gentoo.org> aix/profile.bashrc,
+  hpux/profile.bashrc, profile.bashrc:
+  work around missing mechanism to stack profile.bashrc hooks
+
+  22 Jul 2009; Michael Haubenwallner <haubi@gentoo.org>
+  hpux/B.11.31/hppa2.0/make.defaults:
+  use CHOST=hppa2.0n-hp-hpux11.* in 32bit hppa2.0 hpux11 profile.
+
+  21 Jul 2009; Markus Duft <mduft@gentoo.org> windows/interix/use.mask:
+  masked a few more user flags that wont work on interix
+
+  21 Jul 2009; Michael Haubenwallner <haubi@gentoo.org> hpux/profile.bashrc:
+  typo calling 'prefix_hpux-pre_pkg_postinst' while it should have been
+  'prefix_hpux-post_pkg_preinst'
+
+  16 Jul 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  remove masks for versions of Portage no longer in the tree
+
+  16 Jul 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  p.mask =sys-apps/portage-2.2.00.13827 due to regression, bug 278014
+
+  16 Jul 2009; Michael Haubenwallner <haubi@gentoo.org> hpux/package.mask:
+  masking gcc-4.3 on hpux for various reasons
+
+  14 Jul 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  p.mask portage-2.2.00.13825 due to regression with virtuals
+
+  14 Jul 2009; Michael Haubenwallner <haubi@gentoo.org> hpux/profile.bashrc:
+  preserve busy text files based on installed file types, not
+  to-be-installed ones
+
+  14 Jul 2009; Michael Haubenwallner <haubi@gentoo.org> aix/package.mask:
+  fixed cvs header
+
+  14 Jul 2009; Michael Haubenwallner <haubi@gentoo.org>
+  +aix/5.3.0.0/package.mask:
+  masked sys-process/lsof-4.82 on aix5.3
+
+  12 Jul 2009; Fabian Groffen <grobian@gentoo.org> make.defaults:
+  Get collision-protect back on, thanks sping's smolt tool which made me
+  notice. Disabling this in Prefix is lethal.
+
+  09 Jul 2009; Markus Duft <mduft@gentoo.org>
+  +windows/interix/6.0/use.force, +windows/interix/6.0/use.mask:
+  added i6fork use.{mask,force} entry to enable/force i6fork on interix6 to
+  fix fork() problems
+
+  07 Jul 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask portage-2.2.00.13797, bug #276957
+
+  07 Jul 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Remove mask on no longer existing portage version
+
+  02 Jul 2009; Michael Haubenwallner <haubi@gentoo.org> package.mask:
+  Mask =sys-apps/portage-2.2.00.13734, does merge in reverse order with
+  --nodeps.
+
+  30 Jun 2009; Jeremy Olexa <darkside@gentoo.org> linux/make.defaults:
+  Remove sandbox being enabled by default on linux prefix platforms, users can
+  still enable themselves if wanted
+
+  30 Jun 2009; Jeremy Olexa <darkside@gentoo.org> aix/make.defaults,
+  bsd/freebsd/make.defaults, bsd/netbsd/make.defaults,
+  bsd/openbsd/make.defaults, darwin/make.defaults, hpux/make.defaults,
+  irix/make.defaults, make.defaults, mint/make.defaults,
+  sunos/make.defaults, windows/interix/make.defaults,
+  windows/winnt/make.defaults:
+  Mark FEATURES=-sandbox globally because it fails to work reliably on any
+  Gentoo Prefix platform.
+
+  30 Jun 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  Remove subversion mask
+
+  30 Jun 2009; Jeremy Olexa <darkside@gentoo.org> package.mask, use.mask:
+  Mask USE=pam and sys-libs/pam, sys-auth/pambase because the host's auth
+  system should be used anyway
+
+  30 Jun 2009; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Mask app-crypt/ccrypt-1.8 for it doesn't compile (does stupid things)
+
+  28 Jun 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/package.mask:
+  Removed gconf masks, I fixed the issue
+
+  28 Jun 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.4/ppc/package.mask:
+  mask hmmer-3.0_beta1, as Altivec or dummy backends are still not yet
+  implemented
+
+  28 Jun 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  Mask media-gfx/sam2p-0.46 due to compilation failure, remove mask for ruby
+  version no longer in the tree
+
+  26 Jun 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +darwin/macos/10.4/eapi, +darwin/macos/10.5/eapi:
+  The PM needs to know the eapi right in the child node of the profile.
+
+  26 Jun 2009; <solar@gentoo.org> +eapi:
+  - commit 1.130 of ../profile.desc enabled prefix in QA tools. Mr_Bones
+  points out that slots are used in sub profiles package.mask files. This
+  eapi=1 commit is in accordance with
+  http://archives.gentoo.org/gentoo-dev/msg_930f58fcebcbbcbe523c001f2c825179.x
+  ml (Change to a higher eapi if needed)
+
+  25 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  windows/interix/use.mask:
+  mask USE flag xemacs on Interix because it won't compile anyway
+
+  24 Jun 2009; Markus Duft <mduft@gentoo.org> windows/winnt/use.mask:
+  use.mask readline for winnt - readline doesnt work here...
+
+  24 Jun 2009; Michael Haubenwallner <haubi@gentoo.org> package.mask:
+  Mask icu-4.2, let it fix in ~main tree first (#269659).
+
+  23 Jun 2009; Michael Haubenwallner <haubi@gentoo.org>
+  +hpux/B.11.31/hppa2.0/make.defaults, +hpux/B.11.31/hppa2.0/parent:
+  added profile for hppa2.0-hp-hpux11.31, the first hppa-hpux one.
+
+  21 Jun 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask ncurses-5.7-r1 as it breaks Solaris and Darwin, and probably much
+  more
+
+  21 Jun 2009; Fabian Groffen <grobian@gentoo.org> bsd/package.mask,
+  bsd/packages, darwin/package.mask, darwin/packages, package.mask:
+  Prepare to remove bsd-man-pages as it doesn't really provide anything
+  useful (and it already exists on the host system)
+
+  20 Jun 2009; Fabian Groffen <grobian@gentoo.org>
+  bsd/freebsd/7.1/package.mask, bsd/freebsd/7.2/package.mask:
+  clean up bsd/* masks
+
+  20 Jun 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/5.10/x64/package.mask, sunos/solaris/5.11/x64/package.mask,
+  sunos/solaris/package.mask:
+  clean up sunos/* masks
+
+  20 Jun 2009; Fabian Groffen <grobian@gentoo.org>
+  windows/interix/3.5/package.mask, windows/interix/package.mask:
+  clean up windows/* masks
+
+  20 Jun 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Removed mask entries for no longer existing packages/ebuilds, thanks idl0r
+
+  19 Jun 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Unmask sandbox-2, since we should have a patched up for Prefix version
+  now.
+
+  19 Jun 2009; Markus Duft <mduft@gentoo.org> windows/interix/package.mask:
+  masked libiconv 1.13 on interix - doesnt build
+
+  17 Jun 2009; Markus Duft <mduft@gentoo.org> windows/interix/package.mask:
+  updated subversion mask for interix - still not working
+
+  07 Jun 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/package.mask:
+  gnome-base/gconf-2.26.2 has the same linkage problem as 2.26.0
+
+  06 Jun 2009; <solar@gentoo.org> +aix/5.2.0.0/package.provided,
+  +aix/5.2.0.0/parent, +aix/5.2.0.0/ppc/make.defaults,
+  +aix/5.2.0.0/ppc/parent, +aix/5.3.0.0/package.provided,
+  +aix/5.3.0.0/parent, +aix/5.3.0.0/ppc/make.defaults,
+  +aix/5.3.0.0/ppc/parent, +aix/6.1.0.0/package.provided,
+  +aix/6.1.0.0/parent, +aix/6.1.0.0/ppc/make.defaults,
+  +aix/6.1.0.0/ppc/parent, +aix/make.defaults, +aix/package.mask,
+  +aix/package.unmask, +aix/package.use.force, +aix/package.use.mask,
+  +aix/packages, +aix/parent, +aix/profile.bashrc, +aix/use.force,
+  +aix/use.mask, +aix/virtuals, +bsd/freebsd/7.1/package.mask,
+  +bsd/freebsd/7.1/package.provided, +bsd/freebsd/7.1/parent,
+  +bsd/freebsd/7.1/x64/make.defaults, +bsd/freebsd/7.1/x64/parent,
+  +bsd/freebsd/7.1/x86/make.defaults, +bsd/freebsd/7.1/x86/parent,
+  +bsd/freebsd/7.2/package.mask, +bsd/freebsd/7.2/package.provided,
+  +bsd/freebsd/7.2/parent, +bsd/freebsd/7.2/x64/make.defaults,
+  +bsd/freebsd/7.2/x64/parent, +bsd/freebsd/7.2/x86/make.defaults,
+  +bsd/freebsd/7.2/x86/parent, +bsd/freebsd/make.defaults,
+  +bsd/freebsd/parent, +bsd/freebsd/use.force, +bsd/freebsd/use.mask,
+  +bsd/freebsd/virtuals, +bsd/netbsd/4.0/package.provided,
+  +bsd/netbsd/4.0/parent, +bsd/netbsd/4.0/x86/make.defaults,
+  +bsd/netbsd/4.0/x86/parent, +bsd/netbsd/make.defaults, +bsd/netbsd/parent,
+  +bsd/netbsd/use.force, +bsd/netbsd/use.mask, +bsd/netbsd/virtuals,
+  +bsd/openbsd/4.2/package.mask, +bsd/openbsd/4.2/package.provided,
+  +bsd/openbsd/4.2/parent, +bsd/openbsd/4.2/ppc/make.defaults,
+  +bsd/openbsd/4.2/ppc/parent, +bsd/openbsd/4.2/x64/make.defaults,
+  +bsd/openbsd/4.2/x64/parent, +bsd/openbsd/4.2/x86/make.defaults,
+  +bsd/openbsd/4.2/x86/parent, +bsd/openbsd/make.defaults,
+  +bsd/openbsd/parent, +bsd/openbsd/use.force, +bsd/openbsd/use.mask,
+  +bsd/openbsd/virtuals, +bsd/package.mask, +bsd/packages, +bsd/parent,
+  +bsd/use.mask, +darwin/macos/10.3/make.defaults,
+  +darwin/macos/10.3/package.mask, +darwin/macos/10.3/package.provided,
+  +darwin/macos/10.3/parent, +darwin/macos/10.3/profile.bashrc,
+  +darwin/macos/10.3/use.mask, +darwin/macos/10.4/make.defaults,
+  +darwin/macos/10.4/package.mask, +darwin/macos/10.4/package.provided,
+  +darwin/macos/10.4/parent, +darwin/macos/10.4/ppc/make.defaults,
+  +darwin/macos/10.4/ppc/package.mask, +darwin/macos/10.4/ppc/parent,
+  +darwin/macos/10.4/ppc/use.mask, +darwin/macos/10.4/ppc64/make.defaults,
+  +darwin/macos/10.4/ppc64/parent, +darwin/macos/10.4/ppc64/use.mask,
+  +darwin/macos/10.4/profile.bashrc, +darwin/macos/10.4/x86/make.defaults,
+  +darwin/macos/10.4/x86/package.use.force,
+  +darwin/macos/10.4/x86/package.use.mask, +darwin/macos/10.4/x86/parent,
+  +darwin/macos/10.4/x86/use.mask, +darwin/macos/10.5/make.defaults,
+  +darwin/macos/10.5/package.mask, +darwin/macos/10.5/package.provided,
+  +darwin/macos/10.5/package.use.mask, +darwin/macos/10.5/parent,
+  +darwin/macos/10.5/ppc/make.defaults, +darwin/macos/10.5/ppc/package.mask,
+  +darwin/macos/10.5/ppc/package.use.force,
+  +darwin/macos/10.5/ppc/package.use.mask, +darwin/macos/10.5/ppc/parent,
+  +darwin/macos/10.5/ppc/use.mask, +darwin/macos/10.5/profile.bashrc,
+  +darwin/macos/10.5/x64/make.defaults, +darwin/macos/10.5/x64/package.mask,
+  +darwin/macos/10.5/x64/package.use.force,
+  +darwin/macos/10.5/x64/package.use.mask, +darwin/macos/10.5/x64/parent,
+  +darwin/macos/10.5/x64/use.mask, +darwin/macos/10.5/x86/make.defaults,
+  +darwin/macos/10.5/x86/package.mask,
+  +darwin/macos/10.5/x86/package.use.force,
+  +darwin/macos/10.5/x86/package.use.mask, +darwin/macos/10.5/x86/parent,
+  +darwin/macos/10.5/x86/use.mask, +darwin/macos/make.defaults,
+  +darwin/macos/package.mask, +darwin/macos/package.use.force,
+  +darwin/macos/package.use.mask, +darwin/macos/packages,
+  +darwin/macos/parent, +darwin/macos/use.mask, +darwin/macos/virtuals,
+  +darwin/make.defaults, +darwin/package.mask, +darwin/package.use.mask,
+  +darwin/packages, +darwin/parent, +darwin/use.force, +darwin/use.mask,
+  +darwin/virtuals, +hpux/B.11.23/ia64/make.defaults,
+  +hpux/B.11.23/ia64/parent, +hpux/B.11.23/package.provided,
+  +hpux/B.11.23/parent, +hpux/B.11.31/ia64/make.defaults,
+  +hpux/B.11.31/ia64/parent, +hpux/B.11.31/package.provided,
+  +hpux/B.11.31/parent, +hpux/make.defaults, +hpux/package.mask,
+  +hpux/packages, +hpux/parent, +hpux/profile.bashrc, +hpux/use.force,
+  +hpux/use.mask, +hpux/virtuals, +irix/6.5/mips/make.defaults,
+  +irix/6.5/mips/parent, +irix/6.5/package.provided, +irix/6.5/parent,
+  +irix/make.defaults, +irix/package.use.mask, +irix/packages, +irix/parent,
+  +irix/profile.bashrc, +irix/use.force, +irix/use.mask, +irix/virtuals,
+  +linux/amd64/make.defaults, +linux/amd64/parent,
+  +linux/ia64/make.defaults, +linux/ia64/parent, +linux/make.defaults,
+  +linux/package.mask, +linux/package.provided, +linux/package.use.mask,
+  +linux/packages, +linux/parent, +linux/use.force, +linux/use.mask,
+  +linux/virtuals, +linux/x86/make.defaults, +linux/x86/parent,
+  +make.defaults, +mint/m68k/make.defaults, +mint/m68k/parent,
+  +mint/m68k/use.mask, +mint/make.defaults, +mint/package.provided,
+  +mint/packages, +mint/parent, +mint/use.mask, +mint/virtuals,
+  +package.mask, +package.provided, +package.use.mask, +packages,
+  +profile.bashrc, +sunos/make.defaults, +sunos/packages, +sunos/parent,
+  +sunos/solaris/5.9/package.provided, +sunos/solaris/5.9/parent,
+  +sunos/solaris/5.9/sparc/make.defaults,
+  +sunos/solaris/5.9/sparc/package.mask, +sunos/solaris/5.9/sparc/parent,
+  +sunos/solaris/5.9/sparc64/make.defaults,
+  +sunos/solaris/5.9/sparc64/package.mask,
+  +sunos/solaris/5.9/sparc64/parent, +sunos/solaris/5.10/package.provided,
+  +sunos/solaris/5.10/parent, +sunos/solaris/5.10/sparc/make.defaults,
+  +sunos/solaris/5.10/sparc/package.mask, +sunos/solaris/5.10/sparc/parent,
+  +sunos/solaris/5.10/sparc64/make.defaults,
+  +sunos/solaris/5.10/sparc64/package.use.mask,
+  +sunos/solaris/5.10/sparc64/parent, +sunos/solaris/5.10/x64/make.defaults,
+  +sunos/solaris/5.10/x64/package.mask,
+  +sunos/solaris/5.10/x64/package.use.mask, +sunos/solaris/5.10/x64/parent,
+  +sunos/solaris/5.10/x86/make.defaults,
+  +sunos/solaris/5.10/x86/package.use.mask, +sunos/solaris/5.10/x86/parent,
+  +sunos/solaris/5.11/package.mask, +sunos/solaris/5.11/package.provided,
+  +sunos/solaris/5.11/parent, +sunos/solaris/5.11/sparc/make.defaults,
+  +sunos/solaris/5.11/sparc/parent,
+  +sunos/solaris/5.11/sparc64/make.defaults,
+  +sunos/solaris/5.11/sparc64/package.use.mask,
+  +sunos/solaris/5.11/sparc64/parent, +sunos/solaris/5.11/x64/make.defaults,
+  +sunos/solaris/5.11/x64/package.mask,
+  +sunos/solaris/5.11/x64/package.use.mask, +sunos/solaris/5.11/x64/parent,
+  +sunos/solaris/5.11/x86/make.defaults,
+  +sunos/solaris/5.11/x86/package.use.mask, +sunos/solaris/5.11/x86/parent,
+  +sunos/solaris/package.mask, +sunos/solaris/parent, +sunos/use.force,
+  +sunos/use.mask, +sunos/virtuals, +use.force, +use.mask, +virtuals,
+  +windows/interix/3.5/package.mask, +windows/interix/3.5/package.provided,
+  +windows/interix/3.5/parent, +windows/interix/3.5/x86/make.defaults,
+  +windows/interix/3.5/x86/parent, +windows/interix/5.2/package.provided,
+  +windows/interix/5.2/parent, +windows/interix/5.2/x86/make.defaults,
+  +windows/interix/5.2/x86/parent, +windows/interix/6.0/package.provided,
+  +windows/interix/6.0/parent, +windows/interix/6.0/x86/make.defaults,
+  +windows/interix/6.0/x86/parent, +windows/interix/make.defaults,
+  +windows/interix/package.mask, +windows/interix/package.use.force,
+  +windows/interix/package.use.mask, +windows/interix/parent,
+  +windows/interix/profile.bashrc, +windows/interix/use.force,
+  +windows/interix/use.mask, +windows/interix/virtuals, +windows/parent,
+  +windows/winnt/3.5/package.provided, +windows/winnt/3.5/parent,
+  +windows/winnt/3.5/x86/make.defaults, +windows/winnt/3.5/x86/parent,
+  +windows/winnt/5.2/package.provided, +windows/winnt/5.2/parent,
+  +windows/winnt/5.2/x86/make.defaults, +windows/winnt/5.2/x86/parent,
+  +windows/winnt/6.0/package.provided, +windows/winnt/6.0/parent,
+  +windows/winnt/6.0/x86/make.defaults, +windows/winnt/6.0/x86/parent,
+  +windows/winnt/make.defaults, +windows/winnt/package.mask,
+  +windows/winnt/packages, +windows/winnt/parent,
+  +windows/winnt/profile.bashrc, +windows/winnt/use.mask,
+  +windows/winnt/virtuals:
+  Initial commit of prefix profiles on behalf of the prefix community
+
+  05 Jun 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  p.mask subversion-1.6.2, bug 271424
+
+  05 Jun 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask mplayer-1.0_rc2_p20090530, piece of crap.
+
+  03 Jun 2009; Jeremy Olexa <darkside@gentoo.org>
+  darwin/macos/10.5/package.use.mask, linux/use.mask, use.mask:
+  Move acl USE flag masking to a global level
+
+  02 Jun 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  add net-fs/curlftpfs to p.mask, bug 272210
+
+  01 Jun 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.5/x64/package.mask:
+  Unmask sys-devel/binutils-apple-3.1.2-r1 on x64-macos, as it's the
+  /enabler/ for this arch
+
+  01 Jun 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Drop perl-5.8.8-r6 mask (no longer in the tree), and mask upcoming
+  sys-devel/binutils-apple-3.2.1-r1 due to its experimentalness
+
+  30 May 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/5.10/sparc/package.mask:
+  unmask gtk+, seems to be a local problem on my build host, as I can build
+  it on other machines, and have been told by others the same
+
+  30 May 2009; Fabian Groffen <grobian@gentoo.org>
+  +darwin/macos/10.4/ppc/package.mask:
+  Mask hmmer-3.0_alpha2 on ppc-macos, it can't work on anything but a SSE
+  capable CPU in this alpha
+
+  30 May 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/5.10/sparc/package.mask:
+  Mask gtk+-2.16.1 on sparc-solaris too
+
+  28 May 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask dev-lang/perl-5.8.8-r6 since it still breaks autotools like hell
+
+  28 May 2009; Markus Duft <mduft@gentoo.org> windows/interix/package.mask,
+  +windows/winnt/package.mask:
+  masked new boost and boost-build versions, which dont currently work on
+  windows
+
+  27 May 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  mask media-libs/libmp4v2-1.5.0.1-r2 to avoid extra bugs like bug #271022
+
+  25 May 2009; Fabian Groffen <grobian@gentoo.org>
+  +sunos/solaris/5.11/package.mask:
+  Mask sys-process/lsof-4.82, totally non-OpenSolaris ready
+
+  14 May 2009; Markus Duft <mduft@gentoo.org> windows/interix/package.mask:
+  mask sed 4.2, since it causes problems on interix
+
+  24 May 2009; Fabian Groffen <grobian@gentoo.org>
+  -bsd/freebsd/6.2/package.mask, -bsd/freebsd/6.2/package.provided,
+  -bsd/freebsd/6.2/parent, -bsd/freebsd/6.2/x86/make.defaults,
+  -bsd/freebsd/6.2/x86/parent:
+  Drop FreeBSD 6.2 profile
+
+  24 May 2009; Fabian Groffen <grobian@gentoo.org>
+  +sunos/solaris/5.10/x64/package.mask, sunos/solaris/5.11/x64/package.mask:
+  Mask zziplib also on 5.10/x64, update to the current version in portage,
+  which is still broken
+
+  24 May 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  I fixed dev-libs/xmlrpc-c-1.18.02 compilation for Solaris, so we can
+  unmask
+
+  24 May 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  Remove masks for packages no longer in the tree
+
+  24 May 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/5.11/x64/package.mask:
+  Mask sys-devel/m4-1.4.13, as it causes aborts on OpenSolaris/x64
+
+  23 May 2009; Fabian Groffen <grobian@gentoo.org> profile.bashrc:
+  Fix charset.alias removal hack, it didn't work, and the FreeBSD version
+  isn't resistant against multiple charset.alias files, so go the safe
+  route.
+
+  22 May 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  Remove broken xscreensaver-5.08 from prefix tree
+
+  22 May 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  Update mask for xfce4-4.6.*
+
+  19 May 2009; Fabian Groffen <grobian@gentoo.org>
+  -bsd/freebsd/6.3/package.mask, -bsd/freebsd/6.3/package.provided,
+  -bsd/freebsd/6.3/parent, -bsd/freebsd/6.3/x86/make.defaults,
+  -bsd/freebsd/6.3/x86/parent, bsd/freebsd/7.1/package.mask,
+  bsd/freebsd/7.1/package.provided, bsd/freebsd/7.1/x64/make.defaults,
+  bsd/freebsd/7.1/x86/make.defaults, bsd/freebsd/7.2/package.mask,
+  bsd/freebsd/7.2/package.provided, bsd/freebsd/7.2/x64/make.defaults,
+  bsd/freebsd/7.2/x86/make.defaults, bsd/freebsd/make.defaults,
+  bsd/freebsd/use.force, bsd/freebsd/use.mask, bsd/freebsd/virtuals,
+  bsd/netbsd/4.0/package.provided, bsd/netbsd/4.0/x86/make.defaults,
+  bsd/netbsd/make.defaults, bsd/netbsd/use.force, bsd/netbsd/use.mask,
+  bsd/netbsd/virtuals, bsd/openbsd/4.2/package.mask,
+  bsd/openbsd/4.2/package.provided, bsd/openbsd/4.2/ppc/make.defaults,
+  bsd/openbsd/4.2/x64/make.defaults, bsd/openbsd/4.2/x86/make.defaults,
+  bsd/openbsd/make.defaults, bsd/openbsd/use.force, bsd/openbsd/use.mask,
+  bsd/openbsd/virtuals, bsd/package.mask, bsd/packages, bsd/use.mask:
+  Added copyright statements to bsd/* files, drop FreeBSD 6.x profiles
+
+  19 May 2009; Fabian Groffen <grobian@gentoo.org> sunos/make.defaults,
+  sunos/packages, sunos/solaris/5.9/package.provided,
+  sunos/solaris/5.9/sparc/make.defaults,
+  sunos/solaris/5.9/sparc/package.mask,
+  sunos/solaris/5.9/sparc64/make.defaults,
+  sunos/solaris/5.9/sparc64/package.mask,
+  sunos/solaris/5.10/package.provided,
+  sunos/solaris/5.10/sparc/make.defaults,
+  sunos/solaris/5.10/sparc/package.mask,
+  sunos/solaris/5.10/sparc64/make.defaults,
+  sunos/solaris/5.10/sparc64/package.use.mask,
+  sunos/solaris/5.10/x64/make.defaults,
+  sunos/solaris/5.10/x64/package.use.mask,
+  sunos/solaris/5.10/x86/make.defaults,
+  sunos/solaris/5.10/x86/package.use.mask,
+  sunos/solaris/5.11/package.provided,
+  sunos/solaris/5.11/sparc/make.defaults,
+  sunos/solaris/5.11/sparc64/make.defaults,
+  sunos/solaris/5.11/sparc64/package.use.mask,
+  sunos/solaris/5.11/x64/make.defaults, sunos/solaris/5.11/x64/package.mask,
+  sunos/solaris/5.11/x64/package.use.mask,
+  sunos/solaris/5.11/x86/make.defaults,
+  sunos/solaris/5.11/x86/package.use.mask, sunos/solaris/package.mask,
+  sunos/use.force, sunos/use.mask, sunos/virtuals:
+  Added copyright statements to sunos/* files
+
+  19 May 2009; Michael Haubenwallner <haubi@gentoo.org>
+  prefix/darwin/package.mask, prefix/package.mask,
+  prefix/sunos/solaris/package.mask:
+  moved '=dev-libs/xmlrpc-c-1.18.02' mask from prefix/ to
+  prefix/sunos/solaris/ and prefix/darwin/, as it works on aix
+
+  17 May 2009; Fabian Groffen <grobian@gentoo.org>
+  +sunos/solaris/5.10/sparc/package.mask:
+  Mask x11-libs/gtk+-2.14.7-r2 on Solaris 10/Sparc as I can't get it to
+  compile
+
+  17 May 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  Mask dev-lang/ruby-1.8.7_p160 and dev-lang/ruby-1.8.6_p368 due to
+  segfaulting behaviour
+
+  16 May 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/package.mask:
+  Mask gnome-base/gconf-2.26.0 as it tries to link a MH_BUNDLE which won't
+  work
+
+  14 May 2009; Markus Duft <mduft@gentoo.org> windows/interix/package.mask:
+  unmask python 2.6 on interix, since it seems to work fine now. time will
+  show :)
+
+  14 May 2009; Fabian Groffen <grobian@gentoo.org> package.use.mask:
+  dev-python/sancho is in the tree now
+
+  14 May 2009; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  sys-process/proctools was removed from the tree
+
+  14 May 2009; Fabian Groffen <grobian@gentoo.org> darwin/package.mask:
+  Remove math-pari mask, I just fixed the problem instead
+
+  13 May 2009; Jeremy Olexa <darkside@gentoo.org>
+  irix/6.5/mips/make.defaults, irix/6.5/package.provided,
+  irix/make.defaults, irix/package.use.mask, irix/packages,
+  irix/profile.bashrc, irix/use.force, irix/use.mask, irix/virtuals,
+  mint/m68k/make.defaults, mint/m68k/use.mask, mint/make.defaults,
+  mint/package.provided, mint/packages, mint/use.mask, mint/virtuals:
+  Update/add copyright for irix and mint profiles
+
+  13 May 2009; Michael Haubenwallner <haubi@gentoo.org> -hpux/B.11.11,
+  -hpux/B.11.11/hppa, -hpux/B.11.11/hppa/hppa1.1,
+  -hpux/B.11.11/hppa/hppa1.1/make.defaults,
+  -hpux/B.11.11/hppa/hppa1.1/parent, -hpux/B.11.11/hppa/hppa2.0,
+  -hpux/B.11.11/hppa/hppa2.0/32,
+  -hpux/B.11.11/hppa/hppa2.0/32/make.defaults,
+  -hpux/B.11.11/hppa/hppa2.0/32/parent, -hpux/B.11.11/hppa/hppa2.0/64,
+  -hpux/B.11.11/hppa/hppa2.0/64/make.defaults,
+  -hpux/B.11.11/hppa/hppa2.0/64/parent, -hpux/B.11.11/hppa/hppa2.0/parent,
+  -hpux/B.11.11/hppa/make.defaults, -hpux/B.11.11/hppa/parent,
+  -hpux/B.11.11/package.provided, -hpux/B.11.11/parent,
+  hpux/B.11.23/ia64/make.defaults, hpux/B.11.23/package.provided,
+  hpux/B.11.31/ia64/make.defaults, hpux/B.11.31/package.provided,
+  hpux/make.defaults, hpux/package.mask, -hpux/package.use, hpux/packages,
+  hpux/profile.bashrc, hpux/use.force, hpux/use.mask, hpux/virtuals:
+  cleanup hpux profiles: update/add copyrights.
+  drop HP-UX B.11.11 profile, is hppa only, libtool still broken there.
+  binutils-config does not iuse 'extwrapper' any more.
+
+  13 May 2009; Michael Haubenwallner <haubi@gentoo.org>
+  aix/5.2.0.0/package.provided, aix/5.2.0.0/ppc/make.defaults,
+  aix/5.3.0.0/package.provided, aix/5.3.0.0/ppc/make.defaults,
+  aix/6.1.0.0/package.provided, aix/6.1.0.0/ppc/make.defaults,
+  aix/make.defaults, aix/package.unmask, -aix/package.use,
+  aix/package.use.force, aix/package.use.mask, aix/packages,
+  aix/profile.bashrc, aix/use.force, aix/use.mask, aix/virtuals:
+  cleanup aix profiles: update/add copyrights.
+  net-nds/openldap needs minimal useflag for all versions.
+  aix6.1 provides libc-6.1, not libc-5.3.
+  binutils-config does not iuse 'extwrapper' any more.
+
+  13 May 2009; Markus Duft <mduft@gentoo.org>
+  windows/interix/3.5/package.mask, windows/interix/3.5/package.provided,
+  windows/interix/3.5/x86/make.defaults,
+  windows/interix/5.2/package.provided,
+  windows/interix/5.2/x86/make.defaults,
+  windows/interix/6.0/package.provided,
+  windows/interix/6.0/x86/make.defaults, windows/interix/make.defaults,
+  windows/interix/package.mask, windows/interix/package.use.force,
+  windows/interix/package.use.mask, windows/interix/profile.bashrc,
+  windows/interix/use.force, windows/interix/use.mask,
+  windows/interix/virtuals, windows/winnt/3.5/package.provided,
+  windows/winnt/3.5/x86/make.defaults, windows/winnt/5.2/package.provided,
+  windows/winnt/5.2/x86/make.defaults, windows/winnt/6.0/package.provided,
+  windows/winnt/6.0/x86/make.defaults, windows/winnt/make.defaults,
+  windows/winnt/packages, windows/winnt/profile.bashrc,
+  windows/winnt/use.mask, windows/winnt/virtuals:
+  cleaned up windows profiles (interix, winnt).
+
+  12 May 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.3/make.defaults, darwin/macos/10.3/package.mask,
+  darwin/macos/10.3/package.provided, darwin/macos/10.3/profile.bashrc,
+  darwin/macos/10.3/use.mask, darwin/macos/10.4/make.defaults,
+  darwin/macos/10.4/package.mask, darwin/macos/10.4/package.provided,
+  darwin/macos/10.4/ppc/make.defaults, darwin/macos/10.4/ppc/use.mask,
+  darwin/macos/10.4/ppc64/make.defaults, darwin/macos/10.4/ppc64/use.mask,
+  darwin/macos/10.4/profile.bashrc, darwin/macos/10.4/x86/make.defaults,
+  darwin/macos/10.4/x86/package.use.force,
+  darwin/macos/10.4/x86/package.use.mask, darwin/macos/10.4/x86/use.mask,
+  darwin/macos/10.5/make.defaults, darwin/macos/10.5/package.mask,
+  darwin/macos/10.5/package.provided, darwin/macos/10.5/package.use.mask,
+  darwin/macos/10.5/ppc/make.defaults, darwin/macos/10.5/ppc/package.mask,
+  darwin/macos/10.5/ppc/package.use.force,
+  darwin/macos/10.5/ppc/package.use.mask, darwin/macos/10.5/ppc/use.mask,
+  darwin/macos/10.5/profile.bashrc, darwin/macos/10.5/x64/make.defaults,
+  darwin/macos/10.5/x64/package.mask,
+  darwin/macos/10.5/x64/package.use.force,
+  darwin/macos/10.5/x64/package.use.mask, darwin/macos/10.5/x64/use.mask,
+  darwin/macos/10.5/x86/make.defaults, darwin/macos/10.5/x86/package.mask,
+  darwin/macos/10.5/x86/package.use.force,
+  darwin/macos/10.5/x86/package.use.mask, darwin/macos/10.5/x86/use.mask,
+  darwin/macos/make.defaults, darwin/macos/package.mask,
+  darwin/macos/package.use.force, darwin/macos/package.use.mask,
+  darwin/macos/packages, darwin/macos/virtuals, darwin/make.defaults,
+  darwin/package.mask, darwin/package.use.mask, darwin/packages,
+  darwin/use.force, darwin/use.mask, darwin/virtuals:
+  Update/add copyrights
+
+  12 May 2009; Jeremy Olexa <darkside@gentoo.org> linux/amd64/make.defaults,
+  linux/ia64/make.defaults, linux/make.defaults, linux/package.mask,
+  linux/package.provided, linux/package.use.mask, linux/packages,
+  linux/use.force, linux/use.mask, linux/virtuals, linux/x86/make.defaults:
+  Update Copyright headers for linux/
+
+  11 May 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  un-unmasking perl-5.8.8-r6, as I resurrected perl-5.8.8-r5 for bug #269430
+
+  08 May 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask media-video/ffmpeg-9999 (vcs ebuild)
+
+  08 May 2009; Michael Haubenwallner <haubi@gentoo.org>
+  +aix/package.use.mask:
+  use.masked javacomm for dev-java/ibm-jdk-bin:
+  IBM does not provide Java Communications API support for AIX
+
+  06 May 2009; Markus Duft <mduft@gentoo.org> windows/interix/package.mask:
+  unmasked bash 4.0 - working now on interix.
+
+  05 May 2009; Fabian Groffen <grobian@gentoo.org>
+  bsd/freebsd/7.2/x64/make.defaults, bsd/freebsd/7.2/x86/make.defaults:
+  Add profiles for FreeBSD 7.2 (for heiko)
+
+  05 May 2009; Fabian Groffen <grobian@gentoo.org> package.mask,
+  +profile.bashrc:
+  Add charset.alias removal hack from freebsd profiles
+
+  03 May 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Unmask dev-lang/perl-5.8.8-r6 since it's the only version we have in the
+  tree
+
+  01 May 2009; Jeremy Olexa <darkside@gentoo.org> use.mask:
+  Unmask USE=prefix in prefix profiles, soon to be masked in base/
+
+  01 May 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Unmask gentoolkit-dev, at last after 2 years :)
+
+  30 Apr 2009; Fabian Groffen <grobian@gentoo.org> linux/package.mask,
+  package.mask:
+  Don't just let the Linux peepz have all the fun, globally unmask bash-4
+
+  30 Apr 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask xmlrpc-c-1.18.02 as it doesn't compile on at least two platforms
+
+  29 Apr 2009; Jeremy Olexa <darkside@gentoo.org> linux/package.mask:
+  Unmask bash-4 on linux platforms, works fine for me
+
+  24 Apr 2009; <mduft@gentoo.org> windows/interix/package.mask:
+  masked python >= 2.6.0 on interix, since it seems to be b0rked
+
+  21 Apr 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  p.mask aircrack-ng, libnl, iw
+
+  21 Apr 2009; <mduft@gentoo.org> windows/interix/package.mask:
+  removing ncurses mask again, since bootstrapping from zero now works with it.
+
+  17 Apr 2009; <mduft@gentoo.org> windows/interix/package.mask:
+  revert unmasking, since bad enough, ncurses exposes the hang even with a
+  fresh bootstrap :(
+
+  17 Apr 2009; <mduft@gentoo.org> windows/interix/package.mask:
+  removed ncurses mask, since for new bootstraps it works...
+
+  06 Apr 2009; Fabian Groffen <grobian@gentoo.org>
+  bsd/freebsd/7.1/x64/make.defaults:
+  retain backwards compatability for freebsd keywords/conditionals for new
+  64-bits profile
+
+  05 Apr 2009; Fabian Groffen <grobian@gentoo.org>
+  bsd/freebsd/7.1/x64/make.defaults:
+  Fix up x64-freebsd profile, there is no backwards compat issue, and the
+  keyword must be x64-freebsd, not x86-freebsd
+
+  03 Apr 2009; Fabian Groffen <grobian@gentoo.org> darwin/package.use.mask:
+  mask gcj on gcc-4.3.3, ld: unknown option: -R/Library/Gentoo/usr/lib
+
+  02 Apr 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask autoconf-2.63b for as long autoconf-wrapper doesn't deal with it
+
+  26 Mar 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  p.mask xfce4-4.6.0 based on its dependance for xorg-server-1.5.3
+
+  26 Mar 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Unmask gcc-4.3, we can compile @system with it, bootstrapping is still
+  initially done with 4.2 since 4.3 can't be bootstrapped (fails to compile)
+
+  25 Mar 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  revert libgphoto2 mask, probably a libtool problem involved but not specific
+  to this package
+
+  25 Mar 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask =app-text/ghostscript-gpl-8.64* due to b0rkage in real life
+
+  24 Mar 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  p.mask media-libs/libgphoto2
+
+  18 Mar 2009; Michael Haubenwallner <haubi@gentoo.org>
+  aix/package.use.force:
+  openldap builds with USE=minimal only on AIX, bug #261186
+
+  15 Mar 2009; Fabian Groffen <grobian@gentoo.org> darwin/use.mask:
+  unmask sdl again, bug #257960
+
+  15 Mar 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/package.mask, darwin/macos/package.use.force,
+  darwin/macos/use.mask:
+  unmask opengl use flag, it works since we have opengl in the tree, remove
+  mask for libsdl for the same reason
+
+  14 Mar 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  Mask gdb-6.8.50.20090302.8.11 and up, as it seems to be Fedora Linux only
+
+  12 Mar 2009; Markus Duft <mduft@gentoo.org> windows/interix/package.mask:
+  mask new graphviz 2.22.0 on interix. doesnt build
+
+  10 Mar 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Enlarge findutils-4.5.3 mask, it still asserts like hell
+
+  10 Mar 2009; Markus Duft <mduft@gentoo.org> windows/interix/package.mask:
+  unmasked new coreutils 7.1 on windows, works now.
+
+  10 Mar 2009; Markus Duft <mduft@gentoo.org> windows/interix/package.mask:
+  removed unmask for gcc version on interix, which does not exist any longer
+
+  10 Mar 2009; Markus Duft <mduft@gentoo.org> windows/interix/package.mask:
+  removed obsolete unmask for cmake on interix, since it is no longer masked
+  by main.
+
+  10 Mar 2009; Markus Duft <mduft@gentoo.org> windows/interix/package.mask:
+  removed mask for file >=4.24 on interix, since 5.00 now works
+
+  06 Mar 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  remove mask on apache, bug 261105
+
+  06 Mar 2009; Markus Duft <mduft@gentoo.org> windows/interix/package.mask:
+  masked new coreutils 7.1 on interix for now. needs some more touching.
+
+  06 Mar 2009; Markus Duft <mduft@gentoo.org> windows/interix/package.mask:
+  masked ncurses 5.7 on interix.
+
+  05 Mar 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Unmask libtool-2.2, bootstrapping seems to work on it at least
+
+  25 Feb 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask bash-4.0 as I don't dare kicking it straight into everyone's system
+
+  24 Feb 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask x11-misc/xscreensaver-5.08, waiting for bug #256072
+
+  22 Feb 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Unleash ncurses-5.7, leash readline-6 because some packages need readline-5,
+  depending on it, causing our depgraph to break, waiting for gentoo-x86 to
+  resolve it in some way
+
+  18 Feb 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/10.5/x86/package.use.mask, darwin/macos/package.use.mask:
+  Move mmx masks into the x86 profile, since there an unmask is being done,
+  overriding the masks
+
+  16 Feb 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  Mask sys-devel/binutils-2.19.51.0.2 on Solaris as well
+
+  13 Feb 2009; Jeremy Olexa <darkside@gentoo.org> package.use.mask:
+  mask USE=ssl on dev-lang/pike globally, bug 256699
+
+  13 Feb 2009; Jeremy Olexa <darkside@gentoo.org>
+  darwin/macos/package.use.mask:
+  mask USE=python on libgsf for macos, bug 257572
+
+  13 Feb 2009; Jeremy Olexa <darkside@gentoo.org> darwin/use.mask:
+  mask USE=sdl on darwin, bug 257960
+
+  13 Feb 2009; Jeremy Olexa <darkside@gentoo.org> ChangeLog:
+  unmask USE={sse2,ssse3} on macos 10.5 x86
+
+  04 Feb 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  net-analyzer/pchar requires root access
+
+  02 Feb 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  Fails to compile, complaining about a missing target for gmon.o, maybe
+  related to http://gcc.gnu.org/ml/gcc-patches/2008-11/msg00990.html
+
+  02 Feb 2009; User generated by SUA Setup Script <mduft@gentoo.org>
+  windows/interix/package.mask:
+  added gconf-2.24.0 mask for interix, since from 2.22.0 onwards it requires a
+  (working) dbus.
+
+  01 Feb 2009; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/package.use.mask:
+  mask mmx USE-flag for media-video/ffmpeg, bug #257225
+
+  31 Jan 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask media-video/ffmpeg-0.4.9_p20090121 because it doesn't compile at all on
+  Darwin and Solaris
+
+  31 Jan 2009; Fabian Groffen <grobian@gentoo.org> +bsd/freebsd/7.1,
+  bsd/freebsd/7.1/package.mask, bsd/freebsd/7.1/package.provided,
+  +bsd/freebsd/7.1/x64, bsd/freebsd/7.1/x64/make.defaults,
+  bsd/freebsd/7.1/x86/make.defaults:
+  Add FreeBSD 7.1 x86 and x64 profiles
+
+  25 Jan 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask dev-python/pygobject-2.16.0 for some strange libtool weirdness
+
+  22 Jan 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask sys-apps/groff-1.20.1-r1 cause it generates too many bugs
+
+  18 Jan 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask net-misc/ntp as it obviously needs root privileges
+
+  16 Jan 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  mask media-video/mplayer-1.0_rc2_p28288 on Solaris because it doesn't
+  compile, sigh
+
+  16 Jan 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/package.mask:
+  Mask sys-devel/binutils-2.19.51.0.1 on Solaris as it makes other
+  packages fail to compile.
+
+  15 Jan 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  Also mask sandbox-1.2.20_alpha2-r1, bug 255019
+
+  13 Jan 2009; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  p.mask >=sandbox-1.3.0, bug 254358
+
+  12 Jan 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Unmask mutt-1.5.19, I^W we are hardcore
+
+  12 Jan 2009; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask git-1.6.1 till bug #254029 is solved
+
+  12 Jan 2009; Fabian Groffen <grobian@gentoo.org>
+  sunos/solaris/5.11/x64/package.mask:
+  mask dev-libs/zziplib-0.13.50 on Solaris 11/x64
+
+  08 Jan 2009; Jeremy Olexa <darkside@gentoo.org> aix/package.mask:
+  p.mask >=net-misc/openssh-5.0_p1-r2 on aix
+
+  07 Jan 2009; Jeremy Olexa <darkside@gentoo.org> aix/package.mask:
+  p.mask >=dev-libs/openssl-0.9.8i on aix
+
+  06 Jan 2009; Jeremy Olexa <darkside@gentoo.org> package.mask,
+  sunos/package.mask:
+  elevate p.mask on findutils-4.5.3
+
+  30 Dec 2008; Jeremy Olexa <darkside@gentoo.org> +aix/6.1.0.0,
+  +aix/6.1.0.0/package.provided, +aix/6.1.0.0/parent, +aix/6.1.0.0/ppc,
+  +aix/6.1.0.0/ppc/make.defaults, +aix/6.1.0.0/ppc/parent:
+  Adding AIX-6.1 profiles
+
+  30 Dec 2008; Fabian Groffen <grobian@gentoo.org> ChangeLog:
+  Mask aqua USE-flag for app-editors/emacs-cvs on request of pipping
+
+  29 Dec 2008; Jeremy Olexa <darkside@gentoo.org> +linux/package.mask:
+  unmask app-misc/pax-utils-0.1.19 on linux
+
+  27 Dec 2008; Fabian Groffen <grobian@gentoo.org> irix/package.use.mask:
+  Mask ipv6 USE-flag for python, as the latter seems not to be able to use the
+  former on IRIX
+
+  27 Dec 2008; Fabian Groffen <grobian@gentoo.org> sunos/package.mask:
+  Mask sys-apps/findutils-4.5.3 on Solaris, as it asserts there (maybe on
+  other platforms too, but haven't encountered it yet)
+
+  23 Dec 2008; Jeremy Olexa <darkside@gentoo.org> +linux/ia64,
+  +linux/ia64/make.defaults, +linux/ia64/parent:
+  Initial commit of ia64-linux profiles (it returns!)
+
+  23 Dec 2008; Jeremy Olexa <darkside@gentoo.org> package.mask,
+  sunos/solaris/5.11/x64/package.mask:
+  Move mask up because it fails on linux too
+
+  22 Dec 2008; Fabian Groffen <grobian@gentoo.org>
+  +sunos/solaris/5.11/x64/package.mask:
+  Mask binutils-2.19.50.0.1 on x64/OpenSolaris since it seems it can't
+  recompile itself
+
+  21 Dec 2008; Fabian Groffen <grobian@gentoo.org>
+  darwin/macos/package.use.mask:
+  Use.mask some non-working flags for packages, by Elias Pipping
+
+  03 Dec 2008; Fabian Groffen <grobian@gentoo.org> package.mask:
+  Mask pax-utils/0.1.19 due to GNU-isms
+
+  02 Dec 2008; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  sync package.mask from default-prefix
+
+  18 Nov 2008; Jeremy Olexa <darkside@gentoo.org> -linux/package.mask:
+  sync profiles from default-prefix/
+
+  13 Nov 2008; Jeremy Olexa <darkside@gentoo.org> linux/amd64/make.defaults:
+  LIBDIR_amd64 is def needed, otherwise stuff gets installed to usr//blah,
+  instead of usr/$LIBDIR_amd64/blah
+
+  13 Nov 2008; Jeremy Olexa <darkside@gentoo.org> linux/amd64/make.defaults:
+  setting LIBDIR_amd64 to null 'fixes' things, not sure why
+
+  12 Nov 2008; Jeremy Olexa <darkside@gentoo.org> linux/amd64/make.defaults:
+  add SYMLINK_LIB=no to amd64 make.defaults
+
+  10 Nov 2008; Jeremy Olexa <darkside@gentoo.org> package.mask:
+  sync p.mask from default-prefix
+
+  07 Nov 2008; Jeremy Olexa <darkside@gentoo.org> +linux/package.use.mask:
+  can't built_with_use check on something that we package.provide, mask
+  USE=pam on app-office/openoffice
+
+  06 Nov 2008; Jeremy Olexa <darkside@gentoo.org> linux/use.mask:
+  re-add linux stuff to linux/use.mask that was missing from that file
+
+  06 Nov 2008; Jeremy Olexa <darkside@gentoo.org> linux/packages:
+  remove sys-apps/man-pages from linux/packages because we now inherit it from
+  default/linux/
+
+  06 Nov 2008; Jeremy Olexa <darkside@gentoo.org> +linux/use.mask:
+  add USE=acl to linux/use.mask
+
+  06 Nov 2008; Jeremy Olexa <darkside@gentoo.org> use.mask:
+  add gpm to use.mask
+
+  05 Nov 2008; Jeremy Olexa <darkside@gentoo.org> linux/amd64/parent,
+  linux/packages, linux/x86/parent, +package.provided, use.mask:
+  change order of parents for proper inheritance, remove items from the system
+  set that get pulled in by default/linux/, use.mask cups, forgot to cp
+  package.provided when I made the initial cp
+
+  05 Nov 2008; Jeremy Olexa <darkside@gentoo.org> linux/amd64/make.defaults,
+  linux/x86/make.defaults:
+  remove $ARCH from default linux ACCEPT_KEYWORDS
+
+  31 Oct 2008; Jeremy Olexa <darkside@gentoo.org> +., +linux, +linux/amd64,
+  +linux/amd64/make.defaults, +linux/amd64/parent, +linux/make.defaults,
+  +linux/package.mask, +linux/package.provided, +linux/packages,
+  +linux/parent, +linux/use.force, +linux/virtuals, +linux/x86,
+  +linux/x86/make.defaults, +linux/x86/parent, +make.defaults,
+  +package.mask, +package.use.mask, +packages, +use.force, +use.mask,
+  +virtuals:
+  initial commit of a *new* profile system for prefix, details forthcoming
+  after testing

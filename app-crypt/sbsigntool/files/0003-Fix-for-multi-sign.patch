@@ -1,0 +1,39 @@
+From e58a528ef57e53008222f238cce7c326a14572e2 Mon Sep 17 00:00:00 2001
+From: James Bottomley <JBottomley@Parallels.com>
+Date: Mon, 30 Sep 2013 19:25:37 -0700
+Subject: [PATCH 4/4] Fix for multi-sign
+
+The new Tianocore multi-sign code fails now for images signed with
+sbsigntools.  The reason is that we don't actually align the signature table,
+we just slap it straight after the binary data.  Unfortunately, the new
+multi-signature code checks that our alignment offsets are correct and fails
+the signature for this reason.  Fix by adding junk to the end of the image to
+align the signature section.
+
+Signed-off-by: James Bottomley <JBottomley@Parallels.com>
+---
+ src/image.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/image.c b/src/image.c
+index 10eba0e..519e288 100644
+--- a/src/image.c
++++ b/src/image.c
+@@ -385,7 +385,13 @@ static int image_find_regions(struct image *image)
+ 
+ 	/* record the size of non-signature data */
+ 	r = &image->checksum_regions[image->n_checksum_regions - 1];
+-	image->data_size = (r->data - (void *)image->buf) + r->size;
++	/*
++	 * The new Tianocore multisign does a stricter check of the signatures
++	 * in particular, the signature table must start at an aligned offset
++	 * fix this by adding bytes to the end of the text section (which must
++	 * be included in the hash)
++	 */
++	image->data_size = align_up((r->data - (void *)image->buf) + r->size, 8);
+ 
+ 	return 0;
+ }
+-- 
+1.8.4
+

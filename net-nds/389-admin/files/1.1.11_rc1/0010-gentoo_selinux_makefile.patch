@@ -1,0 +1,11 @@
+--- m4.orig/selinux.m4	2010-03-11 23:18:19.697503404 +0200
++++ m4/selinux.m4	2010-03-11 23:19:04.653503112 +0200
+@@ -27,7 +27,7 @@
+   with_selinux=yes
+   AC_MSG_RESULT(yes)
+   AC_SUBST(with_selinux)
+-  if test ! -f "/usr/share/selinux/devel/Makefile"; then
++  if test ! -f "/usr/share/selinux/targeted/include/Makefile"; then
+     AC_MSG_ERROR([SELinux development tools (selinux-policy) not found])
+   fi
+ ],

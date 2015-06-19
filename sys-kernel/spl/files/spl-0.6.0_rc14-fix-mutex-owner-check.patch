@@ -1,0 +1,33 @@
+From a0625691b39468d04eb716919e237f96a3987b48 Mon Sep 17 00:00:00 2001
+From: Richard Yao <ryao@cs.stonybrook.edu>
+Date: Tue, 5 Feb 2013 16:42:29 -0500
+Subject: [PATCH] Fix HAVE_MUTEX_OWNER_TASK_STRUCT autotools check on PPC64
+
+The HAVE_MUTEX_OWNER_TASK_STRUCT fails on PPC64 with the following
+error:
+
+error: 'current' undeclared (first use in this function)
+
+We include linux/sched.h to ensure that current is available.
+
+Signed-off-by: Richard Yao <ryao@cs.stonybrook.edu>
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+---
+ config/spl-build.m4 |    1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/config/spl-build.m4 b/config/spl-build.m4
+index 8518404..4cb7e1d 100644
+--- a/config/spl-build.m4
++++ b/config/spl-build.m4
+@@ -1269,6 +1269,7 @@ AC_DEFUN([SPL_AC_MUTEX_OWNER_TASK_STRUCT], [
+ 	EXTRA_KCFLAGS="-Werror"
+ 	SPL_LINUX_TRY_COMPILE([
+ 		#include <linux/mutex.h>
++		#include <linux/sched.h>
+ 	],[
+ 		struct mutex mtx __attribute__ ((unused));
+ 		mtx.owner = current;
+-- 
+1.7.10
+

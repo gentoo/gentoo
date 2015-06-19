@@ -1,0 +1,44 @@
+--- src/net/sourceforge/dvb/projectx/common/Settings.java	2008-02-18 19:34:48.000000000 +0100
++++ src/net/sourceforge/dvb/projectx/common/Settings.java	2010-07-31 19:44:59.151224244 +0200
+@@ -46,6 +46,8 @@
+ import java.util.Set;
+ import java.util.TreeMap;
+ 
++import xdg.*;
++
+ import net.sourceforge.dvb.projectx.xinput.XInputDirectory;
+ 
+ /**
+@@ -56,7 +58,7 @@
+ public class Settings extends Object {
+ 
+ 	/** the default ini filename */
+-	private static final String DEFAULT_INI = "X.ini";
++	private static final String DEFAULT_INI = "Project-X.ini";
+ 
+ 	/** the current ini filename */
+ 	private String inifile = "";
+@@ -75,7 +77,7 @@
+ 	 */
+ 	public Settings()
+ 	{
+-		this(Resource.workdir + Resource.filesep + DEFAULT_INI);
++		this(xdg.config_home() + Resource.filesep + DEFAULT_INI);
+ 	}
+ 
+ 	/**
+@@ -161,6 +163,7 @@
+ 			str = inifile;
+ 
+ 		try {
++			xdg.mkdirs_file(str);
+ 			PrintWriter w = new PrintWriter(new FileWriter(str));
+ 
+ 			String base_key = "# Project-X INI";
+@@ -714,4 +717,4 @@
+ 		return inifile;
+ 	}
+ 
+-}
+\ Kein Zeilenumbruch am Dateiende.
++}

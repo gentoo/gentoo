@@ -1,0 +1,52 @@
+# ChangeLog for sci-libs/coinor-osi
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/coinor-osi/ChangeLog,v 1.4 2014/02/04 10:40:50 jlec Exp $
+
+  04 Feb 2014; Justin Lecher <jlec@gentoo.org> coinor-osi-0.106.6.ebuild:
+  Move preparations to src_prepare; use usex()
+
+*coinor-osi-0.106.6 (03 Feb 2014)
+
+  03 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-osi-0.106.6.ebuild, -coinor-osi-0.106.5.ebuild:
+  Version bump and fixed bug #499694
+
+  14 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  coinor-osi-0.106.5.ebuild:
+  Cleanup, as-needed applied upstream
+
+*coinor-osi-0.106.5 (14 Jan 2014)
+
+  14 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-osi-0.106.5.ebuild, +metadata.xml:
+  Initial import in main tree
+
+*coinor-osi-0.106.4 (07 Dec 2013)
+
+  07 Dec 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-osi-0.106.4.ebuild, -coinor-osi-0.106.1.ebuild:
+  sci-libs/coinor-osi: Version bump
+
+*coinor-osi-0.106.1 (03 Jul 2013)
+
+  03 Jul 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-osi-0.106.1.ebuild, -coinor-osi-0.106.0.ebuild:
+  sci-libs/coinor-osi: Version bump
+
+*coinor-osi-0.106.0 (26 May 2013)
+
+  26 May 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-osi-0.106.0.ebuild, -coinor-osi-0.105.4.ebuild:
+  sci-libs/coinor-osi: Version bump
+
+*coinor-osi-0.105.4 (29 Jan 2013)
+
+  29 Jan 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-osi-0.105.4.ebuild, -coinor-osi-0.105.3.ebuild:
+  sci-libs/coinor-osi: Version bump
+
+*coinor-osi-0.105.3 (16 Jul 2012)
+
+  16 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-osi-0.105.3.ebuild, +metadata.xml:
+  sci-libs/coinor-osi: Initial import

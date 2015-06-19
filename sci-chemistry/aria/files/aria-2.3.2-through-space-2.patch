@@ -1,0 +1,139 @@
+ src/py/aria/exportToCcpn.py   |   24 +++++++++++-------------
+ src/py/aria/importFromCcpn.py |   32 ++++++++++++--------------------
+ 2 files changed, 23 insertions(+), 33 deletions(-)
+
+diff --git a/src/py/aria/exportToCcpn.py b/src/py/aria/exportToCcpn.py
+index c742a88..aae7b7d 100644
+--- a/src/py/aria/exportToCcpn.py
++++ b/src/py/aria/exportToCcpn.py
+@@ -1,5 +1,5 @@
+ from ccpnmr.analysis.core.ConstraintBasic import makeNmrConstraintStore, makeStructureGeneration, getFixedResonance
+-from ccpnmr.analysis.core.ExperimentBasic import getOnebondDataDims
++from ccpnmr.analysis.core.ExperimentBasic import getOnebondDataDims, getThroughSpaceDataDims
+ from ccpnmr.analysis.core.AssignmentBasic import assignAtomsToRes, assignResToDim
+ from ccpnmr.analysis.core.PeakBasic       import pickPeak, setManualPeakIntensity
+ from ccpnmr.analysis.core.MoleculeBasic   import DEFAULT_ISOTOPES
+@@ -791,12 +791,13 @@ def getPeakAssignmentsFromAria2(project, ariaRestraints, namesDict=None,
+     ariaDims = ariaDimDict.get(spectrum)
+     if not ariaDims:
+       ariaDims = [] #[0,1,2]
++      throughSpaceDataDims = getThroughSpaceDataDims(spectrum)
+ 
+       dataDims = spectrum.sortedDataDims()
+       if len(dataDims) == 3:
+         for dataDim in dataDims:
+           expDimRef = dataDim.findFirstDataDimRef().expDimRef
+-          if '1H' in expDimRef.isotopeCodes: # 0 or 2
++          if dataDim in throughSpaceDataDims: # 0 or 2
+             if onebondDims.get(dataDim.dim):
+               if ppmX1 is None:
+                 ariaDims.append(2)
+@@ -816,21 +817,18 @@ def getPeakAssignmentsFromAria2(project, ariaRestraints, namesDict=None,
+               ariaDims.append(1)
+ 
+       else:
+-        transfer = spectrum.experiment.findFirstExpTransfer(transferType='through-space') or \
+-                   spectrum.experiment.findFirstExpTransfer(transferType='NOESY')
+ 
++        i = 0
+         for dataDim in dataDims:
+-          expDimRefs = [dataDimRef.expDimRef for dataDimRef in dataDim.dataDimRefs]
+-          i = 0
+-          for expDimRef in transfer.sortedExpDimRefs():
+-            if expDimRef in expDimRefs:
+-              ariaDims.append(i)
+-              boundDim = onebondDims.get(dataDim.dim)
+-              if boundDim:
+-                ariaDims.append(i+1)
+-
++          if dataDim in throughSpaceDataDims:
++            ariaDims.append(i)
++            boundDim = onebondDims.get(dataDim.dim)
++            if boundDim:
++              ariaDims.append(i+1)
++            
+             i += 2
+ 
++
+       ariaDimDict[spectrum] = ariaDims
+ 
+     if namesDict:
+diff --git a/src/py/aria/importFromCcpn.py b/src/py/aria/importFromCcpn.py
+index a65ae3e..f63ba16 100644
+--- a/src/py/aria/importFromCcpn.py
++++ b/src/py/aria/importFromCcpn.py
+@@ -165,7 +165,7 @@ def getStructureEnsembles(project, ccpChains):
+             
+     return ensembles
+ 
+-def getNoesyPeakLists(project, molSystem=None):
++def getNoesyPeakLists(project, molSystem=None, excludeSimulated=True):
+     """Descrn: Get the NOE peak lists from a CCPN project. Can filter if appropriate to a given
+                molecular system if passed in.
+        Inputs: Implementation.Project, ccp.molecule.MolSystem.MolSystem
+@@ -196,19 +196,10 @@ def getNoesyPeakLists(project, molSystem=None):
+  
+         for spectrum in experiment.dataSources:
+             if (spectrum.dataType == 'processed') and (spectrum.numDim > 1):
+-
+-                isotopes = []
+-                for dataDim in spectrum.dataDims:
+-                    for expDimRef in dataDim.expDim.expDimRefs:
+-                        if expDimRef.measurementType in ('shift','Shift'):
+-                            isotope = ','.join(expDimRef.isotopeCodes)
+-                            isotopes.append(isotope)
+-                            break
+-
+-                if isotopes.count('1H') > 1:
+-                    for peakList in spectrum.peakLists:
+-                        if peakList.findFirstPeak():
+-                            peakLists.append(peakList)
++                for peakList in spectrum.sortedPeakLists():
++                    if excludeSimulated and peakList.isSimulated:
++                        continue
++                    peakLists.append(peakList)
+ 
+ 
+     return peakLists
+@@ -490,7 +481,10 @@ def makeAriaChain(ccpChain):
+     # Does below work for DNA/RNA?
+ 
+     aria_settings = ChainSettings()
+-    aria_settings['type'] = chainTypeMapping[ccpChain.molecule.molType]
++    # wb104: below changed 31 Oct 2011 to try and get around case when molType is None
++    #aria_settings['type'] = chainTypeMapping[ccpChain.molecule.molType]
++    molType = ccpChain.molecule.molType or 'protein'
++    aria_settings['type'] = chainTypeMapping[molType]
+ 
+     aria_chain = Chain(settings=aria_settings, segid=string_to_segid(ccpChain.code))
+ 
+@@ -952,8 +946,6 @@ def makeAriaSpectrum(peakList, ariaMolecule, filterRejected=True):
+     expDimRefDict = {}
+ 
+     for expDimRef in transfer.sortedExpDimRefs():
+-        if expDimRef.isotopeCodes != ('1H',):
+-            raise Exception('Not an H-H experiment')
+ 
+         onebondTransfer = expDimRef.findFirstExpTransfer(transferType='onebond')
+ 
+@@ -1095,7 +1087,7 @@ def getAriaAtomsFromResonance(resonance, ariaMolecule, cache={}):
+ 
+     # TJS modify to return just a list of atoms, rather than a list of list
+     ariaAtoms = []
+-    for atom in atomSet.sortedAtoms():
++    for atom in atomSet.atoms:
+         ariaAtom = ariaResidue.atoms.get(atom.name)
+         if not ariaAtom:
+             messager.warning('Could not find ARIA Atom for CCPN atom %d%s %s' % (residue.seqCode,residue.ccpCode, atom.name))
+@@ -1256,9 +1248,9 @@ def getAriaDistanceRestraintsList(constraint_list, constraint_type, aria_mol):
+         restraint.setWeight(weight)
+ 
+ 
+-        for constrItem in distConstr.sortedItems():
++        for constrItem in distConstr.items:
+ 
+-            reso1, reso2 = constrItem.sortedResonances()
++            reso1, reso2 = constrItem.resonances
+ 
+             # TJS fix for mapping prochirals
+             # always use real resonnances where possible

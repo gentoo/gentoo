@@ -1,0 +1,180 @@
+# ChangeLog for net-dns/knot
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/knot/ChangeLog,v 1.31 2015/05/15 09:52:40 dlan Exp $
+
+*knot-2.0.0_beta (15 May 2015)
+*knot-1.6.3 (15 May 2015)
+
+  15 May 2015; Yixun Lan <dlan@gentoo.org> +knot-1.6.3.ebuild,
+  +knot-2.0.0_beta.ebuild, -knot-9999.ebuild,
+  +files/1.6.3-dont-create-extra-directories.patch,
+  +files/2.0.0_beta-dont-create-extra-directories.patch,
+  +files/2.0.0_beta-spell-enable-vars-correctly.patch, metadata.xml:
+  version bump, bug 531448, 549104, thanks Karl-Johan Karlsson and Ondřej
+  Surý
+
+*knot-1.5.3 (15 Sep 2014)
+
+  15 Sep 2014; Tomáš Chvátal <scarabeus@gentoo.org> +knot-1.5.3.ebuild,
+  -knot-1.5.2.ebuild:
+  Version bump to 1.5.3.
+
+*knot-1.5.2 (09 Sep 2014)
+
+  09 Sep 2014; Tomáš Chvátal <scarabeus@gentoo.org> +knot-1.5.2.ebuild,
+  -knot-1.5.1.ebuild:
+  Version bump to 1.5.2. As requested by ocaleta over mail.
+
+*knot-1.5.1 (29 Aug 2014)
+
+  29 Aug 2014; Tomáš Chvátal <scarabeus@gentoo.org> +knot-1.5.1.ebuild,
+  -knot-1.4.6.ebuild:
+  Version bump to latest. Drop older.
+
+*knot-1.4.6 (27 May 2014)
+
+  27 May 2014; Tomáš Chvátal <scarabeus@gentoo.org> +knot-1.4.6.ebuild,
+  -knot-1.4.5.ebuild, knot-9999.ebuild:
+  Version bump to 1.4.6. Drop older. Add idn useflag. Thanks to Ondrej Sury for
+  the update.
+
+  15 Apr 2014; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Update Ondrej's mail and fix typo.
+
+*knot-1.4.5 (15 Apr 2014)
+
+  15 Apr 2014; Tomáš Chvátal <scarabeus@gentoo.org> +knot-1.4.5.ebuild,
+  -knot-1.4.4.ebuild, metadata.xml:
+  Version bump to 1.4.5 set Ondrej Sury as maitnainer too.
+
+*knot-1.4.4 (31 Mar 2014)
+
+  31 Mar 2014; Tomáš Chvátal <scarabeus@gentoo.org> +knot-1.4.4.ebuild,
+  -knot-1.4.2.ebuild, knot-9999.ebuild:
+  Version bump to 1.4.4 remove older. Thanks to Ondrej Caletka.
+
+*knot-1.4.2 (28 Jan 2014)
+
+  28 Jan 2014; Tomáš Chvátal <scarabeus@gentoo.org> +knot-1.4.2.ebuild,
+  -knot-1.4.1.ebuild:
+  Version bump to 1.4.2. Drop older.
+
+*knot-1.4.1 (14 Jan 2014)
+
+  14 Jan 2014; Tomáš Chvátal <scarabeus@gentoo.org> +knot-1.4.1.ebuild,
+  -knot-1.4.0.ebuild:
+  Version bump to 1.4.1 and drop older.
+
+*knot-9999 (09 Jan 2014)
+*knot-1.4.0 (09 Jan 2014)
+
+  09 Jan 2014; Tomáš Chvátal <scarabeus@gentoo.org> +knot-1.4.0.ebuild,
+  +knot-9999.ebuild, -knot-1.3.0-r1.ebuild:
+  Version bump to 1.4.0. Add live version. Thanks to Ondrej Caletka for the
+  ebuilds.
+
+*knot-1.3.0-r1 (21 Aug 2013)
+
+  21 Aug 2013; Tomáš Chvátal <scarabeus@gentoo.org> +knot-1.3.0-r1.ebuild,
+  -knot-1.3.0.ebuild, files/knot.init:
+  Update initscript so it actually works. Again thanks to Ondrej.
+
+*knot-1.3.0 (21 Aug 2013)
+
+  21 Aug 2013; Tomáš Chvátal <scarabeus@gentoo.org> +knot-1.3.0.ebuild,
+  -files/knot-move-pidfile-to-var.patch, -knot-1.1.3.ebuild, -knot-1.2.0.ebuild,
+  metadata.xml:
+  Version bump to 1.3.0. Thanks to Ondra Caletka.
+
+*knot-1.2.0 (03 Apr 2013)
+
+  03 Apr 2013; Tomáš Chvátal <scarabeus@gentoo.org> +knot-1.2.0.ebuild:
+  Version bump to latest.
+
+  04 Jan 2013; Tomáš Chvátal <scarabeus@gentoo.org> knot-1.1.3.ebuild:
+  We can actually be eapi5.
+
+*knot-1.1.3 (04 Jan 2013)
+
+  04 Jan 2013; Tomáš Chvátal <scarabeus@gentoo.org> +knot-1.1.3.ebuild,
+  -knot-1.1.2.ebuild:
+  Version bump to latest. Drop older.
+
+*knot-1.1.2 (22 Nov 2012)
+
+  22 Nov 2012; Tomáš Chvátal <scarabeus@gentoo.org> +knot-1.1.2.ebuild,
+  -knot-1.1.0.ebuild, -knot-1.1.1.ebuild:
+  Version bump to latest
+
+*knot-1.1.1 (19 Nov 2012)
+
+  19 Nov 2012; Tomáš Chvátal <scarabeus@gentoo.org> +knot-1.1.1.ebuild:
+  Version bump to latest release, drop older.
+
+  21 Oct 2012; Tomáš Chvátal <scarabeus@gentoo.org> knot-1.1.0.ebuild:
+  Use elog instead of einfo.
+
+*knot-1.1.0 (04 Sep 2012)
+
+  04 Sep 2012; Tomáš Chvátal <scarabeus@gentoo.org> +knot-1.1.0.ebuild,
+  -files/knot-1.0.6-userpriv.patch, -files/knot-braindead-lto.patch,
+  -knot-1.0.6-r1.ebuild, -knot-1.1.0_rc1.ebuild:
+  Version bump to release.
+
+*knot-1.1.0_rc1 (20 Aug 2012)
+
+  20 Aug 2012; Tomáš Chvátal <scarabeus@gentoo.org> +knot-1.1.0_rc1.ebuild:
+  Version bump to 1.1_rc1. Ebuild by Ondrej Caletka.
+
+*knot-1.0.6-r1 (26 Jul 2012)
+
+  26 Jul 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/knot-1.0.6-userpriv.patch, +knot-1.0.6-r1.ebuild, -knot-1.0.6.ebuild:
+  Revision bump to fix non-root runs. Thanks to Ondrej Caletka for the patch and
+  info about the issue.
+
+*knot-1.0.6 (21 Jun 2012)
+
+  21 Jun 2012; Tomáš Chvátal <scarabeus@gentoo.org> +knot-1.0.6.ebuild,
+  -knot-1.0.5.ebuild:
+  Bumpity. Note that until some user opens stabilisation request this package
+  stays testing-only.
+
+  12 Jun 2012; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Add highly-nonrelevant me as maintainer, but don't expect magic.
+
+*knot-1.0.5 (12 Jun 2012)
+
+  12 Jun 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/knot-braindead-lto.patch, +files/knot-move-pidfile-to-var.patch,
+  +knot-1.0.5.ebuild, -knot-1.0.0.ebuild:
+  Version bump to latest version. Fixes bug#420741.
+
+  22 May 2012; Christian Ruppert <idl0r@gentoo.org> metadata.xml:
+  Remove bind herd.. It's "empty" for years anyway, bug 417001.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> knot-1.0.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*knot-1.0.0 (29 Feb 2012)
+
+  29 Feb 2012; Tomáš Chvátal <scarabeus@gentoo.org> +knot-1.0.0.ebuild,
+  -knot-0.9.ebuild:
+  Version bump to 1.0.0 final.
+
+*knot-0.9 (16 Jan 2012)
+
+  16 Jan 2012; Tomáš Chvátal <scarabeus@gentoo.org> -knot-0.8.1.ebuild,
+  +knot-0.9.ebuild:
+  Version bump to latest.
+
+  29 Dec 2011; Tomáš Chvátal <scarabeus@gentoo.org> knot-0.8.1.ebuild:
+  Also want pkgconfig.
+
+*knot-0.8.1 (29 Dec 2011)
+
+  29 Dec 2011; Tomáš Chvátal <scarabeus@gentoo.org> +knot-0.8.1.ebuild,
+  +files/knot.init, +metadata.xml:
+  Initial commit of knot dns authoritative server used by NIC.cz. Added to herd
+  bind as it is closest herd. Can't do much runtime testing on gentoo but
+  possibly can fix packaging errors.

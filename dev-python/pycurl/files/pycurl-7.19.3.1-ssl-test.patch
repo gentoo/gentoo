@@ -1,0 +1,64 @@
+https://github.com/p-push/pycurl/commit/8644393bec56cd05c19d5dbe420ff741ba899d10
+diff --git a/tests/runwsgi.py b/tests/runwsgi.py
+index f419d7c..242ef1d 100644
+--- a/tests/runwsgi.py
++++ b/tests/runwsgi.py
+@@ -11,6 +11,10 @@
+ 
+ class Server(bottle.WSGIRefServer):
+     def run(self, handler): # pragma: no cover
++        self.srv = self.make_server(handler)
++        self.serve()
++    
++    def make_server(self, handler):
+         from wsgiref.simple_server import make_server, WSGIRequestHandler
+         if self.quiet:
+             base = self.options.get('handler_class', WSGIRequestHandler)
+@@ -18,7 +22,10 @@ class QuietHandler(base):
+                 def log_request(*args, **kw):
+                     pass
+             self.options['handler_class'] = QuietHandler
+-        self.srv = make_server(self.host, self.port, handler, **self.options)
++        srv = make_server(self.host, self.port, handler, **self.options)
++        return srv
++    
++    def serve(self):
+         if sys.version_info[0] == 2 and sys.version_info[1] < 6:
+             # python 2.5 has no poll_interval
+             # and thus no way to stop the server
+@@ -27,20 +34,21 @@ def log_request(*args, **kw):
+         else:
+             self.srv.serve_forever(poll_interval=0.1)
+ 
+-class SslServer(bottle.CherryPyServer):
+-    def run(self, handler):
+-        import cherrypy.wsgiserver, cherrypy.wsgiserver.ssl_builtin
+-        server = cherrypy.wsgiserver.CherryPyWSGIServer((self.host, self.port), handler)
++# http://www.socouldanyone.com/2014/01/bottle-with-ssl.html
++# https://github.com/mfm24/miscpython/blob/master/bottle_ssl.py
++class SslServer(Server):
++    def run(self, handler): # pragma: no cover
++        self.srv = self.make_server(handler)
++        
++        import ssl
+         cert_dir = os.path.join(os.path.dirname(__file__), 'certs')
+-        ssl_adapter = cherrypy.wsgiserver.ssl_builtin.BuiltinSSLAdapter(
+-            os.path.join(cert_dir, 'server.crt'),
+-            os.path.join(cert_dir, 'server.key'),
+-        )
+-        server.ssl_adapter = ssl_adapter
+-        try:
+-            server.start()
+-        finally:
+-            server.stop()
++        self.srv.socket = ssl.wrap_socket(
++            self.srv.socket,
++            keyfile=os.path.join(cert_dir, 'server.key'),
++            certfile=os.path.join(cert_dir, 'server.crt'),
++            server_side=True)
++        
++        self.serve()
+ 
+ def start_bottle_server(app, port, server, **kwargs):
+     server_thread = ServerThread(app, port, server, kwargs)
+

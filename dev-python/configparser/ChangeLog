@@ -1,0 +1,32 @@
+# ChangeLog for dev-python/configparser
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/configparser/ChangeLog,v 1.7 2015/06/13 01:20:34 idella4 Exp $
+
+  13 Jun 2015; Ian Delaney <idella4@gentoo.org> configparser-3.3.0.2.ebuild:
+  add
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> configparser-3.3.0.2.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> configparser-3.3.0.2.ebuild:
+  amd64 stable, bug 540290
+
+  29 Sep 2014; Tobias Klausmann <klausman@gentoo.org>
+  -configparser-3.2.0.3.ebuild:
+  <=configparser-3.2 is broken/incompatible with both newer versions of itself
+  and the internal/shipped version of Python 3.x. There are no in-tree deps, so
+  nuke it.
+
+*configparser-3.3.0.2 (14 Dec 2013)
+
+  14 Dec 2013; Tim Harder <radhermit@gentoo.org> +configparser-3.3.0.2.ebuild:
+  Version bump.
+
+*configparser-3.2.0.3 (02 Feb 2013)
+
+  02 Feb 2013; Ben de Groot <yngwin@gentoo.org> +configparser-3.2.0.3.ebuild,
+  +metadata.xml:
+  Initial commit, needed for nikola-5

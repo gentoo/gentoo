@@ -1,0 +1,134 @@
+# ChangeLog for sci-libs/cdf
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/cdf/ChangeLog,v 1.29 2015/04/22 06:49:18 jlec Exp $
+
+  22 Apr 2015; Justin Lecher <jlec@gentoo.org> -cdf-3.3.0.ebuild:
+  Drop old
+
+  21 Apr 2015; Pacho Ramos <pacho@gentoo.org> cdf-3.4.1.ebuild:
+  ppc stable wrt bug #545408
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> cdf-3.4.1.ebuild:
+  Stable for x86, wrt bug #545408
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> cdf-3.4.1.ebuild:
+  Stable for amd64, wrt bug #545408
+
+*cdf-3.5.0.2 (03 Apr 2015)
+
+  03 Apr 2015; Justin Lecher <jlec@gentoo.org> +cdf-3.5.0.2.ebuild,
+  +files/cdf-3.5.0.2-Makefile.patch, -cdf-3.3.1.ebuild, cdf-3.4.1.ebuild,
+  metadata.xml:
+  Version Bump, drop old
+
+  12 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> cdf-3.4.1.ebuild:
+  Proper static libs removal
+
+*cdf-3.4.1 (03 Aug 2012)
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> +cdf-3.4.1.ebuild,
+  +files/cdf-3.4-Makefile.patch:
+  Version bump, respect CC, keyword amd64-linux, x86-linux
+
+*cdf-3.3.1 (07 Aug 2011)
+
+  07 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> +cdf-3.3.1.ebuild:
+  Version bump
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> cdf-3.3.0.ebuild:
+  ppc stable #278679
+
+  24 Jul 2009; Tobias Heinlein <keytoaster@gentoo.org> cdf-3.3.0.ebuild:
+  amd64 stable, bug #278679
+
+  23 Jul 2009; Christian Faulhammer <fauli@gentoo.org> cdf-3.3.0.ebuild:
+  stable x86, security bug 278679
+
+*cdf-3.3.0 (22 Jul 2009)
+
+  22 Jul 2009; Sébastien Fabbro <bicatali@gentoo.org> +cdf-3.3.0.ebuild:
+  Version bump
+
+*cdf-3.2.4 (02 Feb 2009)
+
+  02 Feb 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  files/cdf-3.2-Makefile.patch, -files/cdf-Makefile.patch,
+  -files/cdf-soname.patch, -cdf-3.1.ebuild, -cdf-3.2.1.ebuild,
+  cdf-3.2.1-r1.ebuild, +cdf-3.2.4.ebuild:
+  Version bump. Added LDFLAGS propagation, and link tools dynamically,
+  closing bug #253251
+
+  11 May 2008; Tobias Scherbaum <dertobi123@gentoo.org> cdf-3.2.1-r1.ebuild:
+  ppc stable, bug #220391
+
+  09 May 2008; Markus Meier <maekke@gentoo.org> cdf-3.2.1-r1.ebuild:
+  amd64/x86 stable, security bug #220391
+
+*cdf-3.2.1-r1 (09 May 2008)
+
+  09 May 2008; Sébastien Fabbro <bicatali@gentoo.org> +cdf-3.2.1-r1.ebuild:
+  Bump for new upstream tar balls, now with proper versions. Also fix bad
+  patching.
+
+  08 May 2008; Sébastien Fabbro <bicatali@gentoo.org> cdf-3.2.1.ebuild:
+  Upstream changed tar balls again, removing mirror restriction
+
+  06 May 2008; Christian Faulhammer <opfer@gentoo.org> cdf-3.2.1.ebuild:
+  stable x86, security bug 220391
+
+*cdf-3.2.1 (06 May 2008)
+
+  06 May 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  files/cdf-3.2-soname.patch, -cdf-3.2.ebuild, +cdf-3.2.1.ebuild:
+  Version bump with important security fix (bug #220391). Also fixed patch
+  for testing. Since upstream did not change names, restricting mirroring
+  for now.
+
+*cdf-3.2 (03 Dec 2007)
+
+  03 Dec 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/cdf-3.2-Makefile.patch, +files/cdf-3.2-soname.patch,
+  -cdf-2.7.ebuild, +cdf-3.2.ebuild:
+  Version bump
+
+  01 Dec 2007; Christoph Mende <angelos@gentoo.org> cdf-3.1.ebuild:
+  Stable on amd64 wrt bug #200951
+
+  01 Dec 2007; Markus Meier <maekke@gentoo.org> cdf-3.1.ebuild:
+  x86 stable, bug #200951 and quotes
+
+  01 Dec 2007; nixnut <nixnut@gentoo.org> cdf-3.1.ebuild:
+  Stable on ppc wrt bug 200951
+
+  24 Apr 2007; Sébastien Fabbro <bicatali@gentoo.org> cdf-3.1.ebuild:
+  fix syntax error and bug #175870
+
+*cdf-3.1 (19 Apr 2007)
+
+  19 Apr 2007; Sébastien Fabbro <bicatali@gentoo.org> +files/50cdf,
+  +files/cdf-Makefile.patch, +files/cdf-soname.patch, metadata.xml,
+  +cdf-3.1.ebuild:
+  Version bump and major ebuild cleaning. Added doc and examples flags, a
+  couple of patches to handle flags and shared libraries properly. Added longdescription in 
+  metadata.xml. Closing bug #125409, thanks carlo@gentoo.org for his initial ebuild.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  20 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> cdf-2.7.ebuild:
+  Stable on ppc.
+
+*cdf-2.7 (28 Dec 2004)
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +cdf-2.7.ebuild:
+  Moved from app-sci/cdf to sci-libs/cdf.
+
+  15 Mar 2004; David Holm <dholm@gentoo.org> cdf-2.7.ebuild:
+  Added to ~ppc.
+
+*cdf-2.7 (22 Dec 2003)
+
+  22 Dec 2003; Patrick Kursawe <phosphan@gentoo.org> cdf-2.7.ebuild,
+  metadata.xml:
+  Initial import

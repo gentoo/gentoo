@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst setup
+DEPEND=sys-libs/zlib clamav? ( app-antivirus/clamav ) logrotate? ( app-admin/logrotate ) ntlm? ( virtual/libiconv ) pcre? ( >=dev-libs/libpcre-8.32 ) virtual/pkgconfig
+DESCRIPTION=Web content filtering via proxy
+EAPI=5
+HOMEPAGE=http://www.dansguardian.org
+IUSE=avast backtrace clamav commandline debug email +fancydm icap kaspersky +lfs logrotate ntlm orig-ip +pcre static-libs trickledm
+KEYWORDS=amd64 ppc ppc64 ~sparc x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib clamav? ( app-antivirus/clamav ) logrotate? ( app-admin/logrotate ) ntlm? ( virtual/libiconv ) pcre? ( >=dev-libs/libpcre-8.32 )
+SLOT=0
+SRC_URI=mirror://sourceforge/dansguardian/dansguardian-2.12.0.3.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=492528aa67b2b9c85bd9595bba27a49b

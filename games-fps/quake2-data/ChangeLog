@@ -1,0 +1,67 @@
+# ChangeLog for games-fps/quake2-data
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake2-data/ChangeLog,v 1.18 2014/08/12 11:32:42 vapier Exp $
+
+  12 Aug 2014; Mike Frysinger <vapier@gentoo.org> quake2-data-3.20.ebuild:
+  Add ia64 love #509214 by Émeric Maschino.
+
+  29 Mar 2013; Julian Ospald <hasufell@gentoo.org> quake2-data-3.20.ebuild:
+  use unpack_zip from unpacker.eclass instead of unzip
+
+  16 Jan 2012; Ulrich Müller <ulm@gentoo.org> quake2-data-3.20.ebuild:
+  Migrate to cdrom.eclass, bug 398809.
+
+  25 Jan 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  quake2-data-3.20.ebuild:
+  EAPI=2; tidy
+
+  26 Sep 2008; Zac Medico <zmedico@gentoo.org> quake2-data-3.20.ebuild:
+  Set PROPERTIES=interactive since src_unpack() calls cdrom_get_cds().
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  24 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake2-data-3.20.ebuild:
+  Moved cdrom_get_cds to src_unpack since binary packages don't require the
+  original media to install.
+
+  27 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake2-data-3.20.ebuild:
+  Added ~alpha and ~x86-fbsd since this is just data. This removes the repoman
+  failures for quake2-icculus.
+
+  27 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake2-data-3.20.ebuild:
+  Added check for quake2-demodata to make sure we don't have a file collision.
+  Closing bug #137521.
+
+  13 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake2-data-3.20.ebuild:
+  Moved games_pkg_setup to the beginning of pkg_setup.
+
+  15 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake2-data-3.20.ebuild:
+  Changed to use idsoftware thirdpartymirror.
+
+  31 Oct 2005; Mike Frysinger <vapier@gentoo.org> quake2-data-3.20.ebuild:
+  Add support for the quake4 bonus dvd #111046 by Sonny.
+
+  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake2-data-3.20.ebuild:
+  Making games last on inherit line.
+
+  17 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  quake2-data-3.20.ebuild:
+  it's data.  no need to DEPEND on x11 (bug #63062)
+
+  03 Jun 2004; Aron Griffis <agriffis@gentoo.org> quake2-data-3.20.ebuild:
+  Fix use invocation
+
+*quake2-data-3.20 (29 Jun 2003)
+
+  30 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Updated for the quake2 rename.
+
+  29 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Daniel Mannarino <thesnark@operamail.com> #11506.

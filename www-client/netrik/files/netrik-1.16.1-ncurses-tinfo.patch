@@ -1,0 +1,13 @@
+--- configure.ac.orig	2013-04-10 13:39:02.514339066 +0400
++++ configure.ac	2013-04-10 13:39:28.607341140 +0400
+@@ -18,8 +18,9 @@
+ AC_HEADER_STDC
+ 
+ dnl check for ncurses
++AC_CHECK_LIB(tinfo, tparm)
+ AC_CHECK_LIB(ncursesw,
+-	     tparm,
++	     printw,
+ 	     [NCURSES="yes"],
+ 	     AC_MSG_ERROR([ncursesw is absolutely required!]))
+ 

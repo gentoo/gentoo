@@ -1,0 +1,18 @@
+# ChangeLog for dev-embedded/usbprog
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/usbprog/ChangeLog,v 1.3 2012/05/03 02:35:37 jdhore Exp $
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> usbprog-0.2.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  28 Feb 2012; Mike Frysinger <vapier@gentoo.org> usbprog-0.2.0.ebuild:
+  Clean up ebuild a lot, add USE=static-libs, update to EAPI=4, and fix the
+  DEPEND (including specifying libusb:0) #405671 by Piotr Szymaniak.
+
+*usbprog-0.2.0 (10 Sep 2010)
+
+  10 Sep 2010; Robin H. Johnson <robbat2@gentoo.org> +usbprog-0.2.0.ebuild,
+  +metadata.xml:
+  Initial commit, based on ebuild submitted by Günther Hutzl
+  <ghutzl@web.de>.
+

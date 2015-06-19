@@ -1,0 +1,308 @@
+# ChangeLog for media-sound/rezound
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/rezound/ChangeLog,v 1.63 2012/07/25 10:58:41 aballier Exp $
+
+  25 Jul 2012; Alexis Ballier <aballier@gentoo.org>
+  rezound-0.12.3_beta-r2.ebuild, -files/rezound-0.12.3_beta-gcc44.patch,
+  -files/rezound-0.12.3_beta-gentoo_bug_334797.patch,
+  -files/rezound-0.12.3_beta-m4.patch:
+  Move patches in FILESDIR to the patch tarball, fix audiofile detection (bug
+  #415981), fix build with gcc 4.7 (bug #425280), fix some autoreconf warnings.
+
+  21 May 2012; Lars Wendler <polynomial-c@gentoo.org>
+  rezound-0.12.3_beta-r2.ebuild,
+  +files/rezound-0.12.3_beta-gentoo_bug_334797.patch:
+  non-maintainer commit: Fixed long standing -O2 optimization bug. Thanks to
+  Petr Novak for reporting this in bug #334797 and to Martin von Gagern for
+  providing a working patch.
+
+  17 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  rezound-0.12.3_beta-r2.ebuild:
+  Restrict x11-libs/fox to SLOT="1.6"
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org>
+  rezound-0.12.3_beta-r2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  20 Aug 2010; Samuli Suominen <ssuominen@gentoo.org>
+  rezound-0.12.3_beta-r2.ebuild, +files/rezound-0.12.3_beta-m4.patch:
+  Fix sys-devel/m4 loop wrt #305305, thanks to Mike Frysinger for his
+  extensive analysis.
+
+  12 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  rezound-0.12.3_beta-r2.ebuild, +files/rezound-0.12.3_beta-gcc44.patch:
+  Replace -O[3-9] with -O2 wrt #275437. Include cstdio for printf function,
+  thanks to Tommy[D].
+
+  07 Jun 2009; Markus Meier <maekke@gentoo.org>
+  rezound-0.12.3_beta-r2.ebuild:
+  amd64/x86 stable, bug #272686
+
+  03 Dec 2008; Markus Meier <maekke@gentoo.org>
+  rezound-0.12.3_beta-r1.ebuild:
+  amd64/x86 stable, bug #245696
+
+*rezound-0.12.3_beta-r2 (10 Oct 2008)
+
+  10 Oct 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +rezound-0.12.3_beta-r2.ebuild:
+  Update to EAPI=2 and USE deps.
+
+  01 Jun 2008; Alexis Ballier <aballier@gentoo.org>
+  rezound-0.12.3_beta-r1.ebuild:
+  Add various patches: gcc 4.3 and endianness typo ported from debian by
+  Peter Alfredsen <loki_val@gentoo.org>, bug #219438, another one to shut up
+  autofoo warnings and a last one to fix build with new libtools
+
+  24 Apr 2008; Raúl Porcel <armin76@gentoo.org>
+  rezound-0.12.3_beta-r1.ebuild:
+  Doesn't work on sparc
+
+  20 Apr 2008; Alexis Ballier <aballier@gentoo.org>
+  rezound-0.12.3_beta-r1.ebuild:
+  Fix build with autoconf 2.62, bug #218164
+
+  08 Apr 2008; Alexis Ballier <aballier@gentoo.org>
+  rezound-0.12.3_beta.ebuild, rezound-0.12.3_beta-r1.ebuild:
+  add missing reswrap dep, bug #216935
+
+  13 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  rezound-0.12.3_beta.ebuild, rezound-0.12.3_beta-r1.ebuild:
+  add missing pkgconfig dep, bug #205604
+
+*rezound-0.12.3_beta-r1 (30 Dec 2007)
+
+  30 Dec 2007; Alexis Ballier <aballier@gentoo.org>
+  +rezound-0.12.3_beta-r1.ebuild:
+  add a patch from Christian Schoenebeck <cuse@users.sourceforge.net>, bug
+  #203471, to save raw files correctly
+
+  18 Nov 2007; Alexis Ballier <aballier@gentoo.org>
+  rezound-0.12.3_beta.ebuild:
+  add a check for flac cxx use flag, FLAC++ is needed here
+
+  18 Nov 2007; Alexis Ballier <aballier@gentoo.org>
+  -files/rezound-0.12.2_beta-foxinclude.patch,
+  -rezound-0.12.2_beta-r2.ebuild:
+  remove old
+
+  28 Sep 2007; Christoph Mende <angelos@gentoo.org>
+  rezound-0.12.3_beta.ebuild:
+  Stable on amd64 wrt bug #191281
+
+  09 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  rezound-0.12.3_beta.ebuild:
+  stable x86, bug 191281
+
+  07 Jul 2007; Alexis Ballier <aballier@gentoo.org>
+  rezound-0.12.3_beta.ebuild:
+  Add a patch to be compatible with portaudio v19
+
+  02 Jul 2007; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Hand to newly-born proaudio herd.
+
+  30 Mar 2007; Alexis Ballier <aballier@gentoo.org>
+  rezound-0.12.2_beta-r2.ebuild, rezound-0.12.3_beta.ebuild:
+  Stick deps to portaudio v18 as it's not compatible with v19
+
+  30 Mar 2007; Alexis Ballier <aballier@gentoo.org>
+  -rezound-0.12.2_beta-r3.ebuild:
+  remove unused version
+
+  24 Feb 2007; Alexis Ballier <aballier@gentoo.org>
+  rezound-0.12.2_beta-r2.ebuild, rezound-0.12.2_beta-r3.ebuild,
+  rezound-0.12.3_beta.ebuild:
+  force depending on fox 1.6 to avoid bug #113635
+
+*rezound-0.12.3_beta (24 Feb 2007)
+
+  24 Feb 2007; Alexis Ballier <aballier@gentoo.org>
+  +rezound-0.12.3_beta.ebuild:
+  Version bump
+
+  24 Feb 2007; Alexis Ballier <aballier@gentoo.org>
+  -files/rezound-0.12.2_beta-automagic.patch,
+  -files/rezound-0.12.2_beta-flac-1.1.3.patch,
+  rezound-0.12.2_beta-r3.ebuild:
+  Make a patchset tarball
+
+*rezound-0.12.2_beta-r3 (04 Dec 2006)
+
+  04 Dec 2006; Alexis Ballier <aballier@gentoo.org>
+  +files/rezound-0.12.2_beta-automagic.patch,
+  +files/rezound-0.12.2_beta-flac-1.1.3.patch,
+  +rezound-0.12.2_beta-r3.ebuild:
+  Rev bump removing automagic deps and flac 1.1.3 ready
+
+  12 Nov 2006; Alexis Ballier <aballier@gentoo.org>
+  -rezound-0.12.0_beta.ebuild:
+  Removing old bugged version
+
+  10 Nov 2006; <blubb@gentoo.org> rezound-0.12.2_beta-r2.ebuild:
+  stable on amd64
+
+  01 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  rezound-0.12.2_beta-r2.ebuild:
+  stabled x86, bug #152822
+
+  01 Nov 2006; Alexis Ballier <aballier@gentoo.org>
+  +files/rezound-0.12.2_beta-foxinclude.patch,
+  rezound-0.12.2_beta-r2.ebuild:
+  Small patch so that fox 1.6 include path is not appended to cflags
+  automatically; better autotools dep handling
+
+  25 Oct 2006; Alexis Ballier <aballier@gentoo.org>
+  rezound-0.12.2_beta-r2.ebuild:
+  Adding desktop entry as pointed in bug #138349
+
+  23 Oct 2006; Alexis Ballier <aballier@gentoo.org>
+  -files/rezound-0.12.2_beta-amd64.patch, -rezound-0.12.2_beta.ebuild,
+  -rezound-0.12.2_beta-r1.ebuild:
+  Removing bugged versions
+
+*rezound-0.12.2_beta-r2 (22 Oct 2006)
+
+  22 Oct 2006; Alexis Ballier <aballier@gentoo.org>
+  +rezound-0.12.2_beta-r2.ebuild:
+  Adding a set of patches from t2-project.org to fix compile issues, bug
+  #141426, plus a fix to not ignore cxxflags, bug #141741
+
+  09 Apr 2006; Thomas Cort <tcort@gentoo.org> rezound-0.12.2_beta-r1.ebuild:
+  Uncommented ppc fixes wrt Bug #116655
+
+*rezound-0.12.2_beta-r1 (30 Mar 2006)
+
+  30 Mar 2006; Patrick McLean <chutzpah@gentoo.org>
+  +files/rezound-0.12.2_beta-amd64.patch, +rezound-0.12.2_beta-r1.ebuild:
+  Add patch to stop a segfault on amd64 (bug #113283). Thanks to Christian
+  Hoenig for the patch.
+
+  11 Feb 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  rezound-0.12.0_beta.ebuild, rezound-0.12.2_beta.ebuild:
+  Fix dependencies for modular X (bug #121632, Vinícius Dias dos Santos).
+
+*rezound-0.12.2_beta (01 Jan 2006)
+
+  01 Jan 2006; Stefan Briesenick <sbriesen@gentoo.org>
+  +rezound-0.12.2_beta.ebuild:
+  version bump.
+
+  09 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  rezound-0.12.0_beta.ebuild:
+  Don't install INSTALL and ABOUT-NLS files.
+
+  28 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  -rezound-0.11.1_beta.ebuild:
+  Dont make use of the deprecated oggvorbis useflag any longer, see #94254.
+
+  27 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  rezound-0.12.0_beta.ebuild:
+  0.12.0 stable on amd64 and x86 wrt #87584. 0.11.1 had problems with newer
+  fox versions
+
+*rezound-0.12.0_beta (21 May 2005)
+
+  21 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  -rezound-0.10.0_beta.ebuild, rezound-0.11.1_beta.ebuild,
+  +rezound-0.12.0_beta.ebuild:
+  new upstream version. 0.11.1_beta stable on amd64 and x86. some generall
+  cleanup. sampletype now controlled by a useflag, fixes #93405
+
+  23 Dec 2004; Michael Hanselmann <hansmi@gentoo.org>
+  +files/undefined-functions.patch, rezound-0.11.1_beta.ebuild:
+  Fixed bug #68268, a compilation error on ppc.
+
+*rezound-0.11.1_beta (16 Nov 2004)
+
+  16 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -files/rezound-0.9.0_beta-libfox1.2-code.patch.gz,
+  -files/rezound-0.9.0_beta-libfox1.2-makefiles.patch.gz,
+  rezound-0.10.0_beta.ebuild, +rezound-0.11.1_beta.ebuild,
+  -rezound-0.9.0_beta-r1.ebuild, -rezound-0.9.0_beta.ebuild:
+  0.10 stable x86.  Version bump now with alsa support.
+
+  19 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> :
+  Removing old versions.
+
+  22 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  rezound-0.10.0_beta.ebuild:
+  Added to ~amd64.
+
+*rezound-0.10.0_beta (15 Aug 2004)
+
+  15 Aug 2004; <frank@gentoo.org> +rezound-0.10.0_beta.ebuild:
+  Version bump to 0.10.0_beta thanks to Stefan Briesenick <sbriesen@gmx.de>.
+  Closes bug #59041.
+
+  23 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  rezound-0.9.0_beta-r1.ebuild:
+  Moving auto* out of RDEPEND.
+
+  29 Jun 2004; David Holm <dholm@gentoo.org> rezound-0.9.0_beta-r1.ebuild:
+  Added to ~ppc.
+
+*rezound-0.9.0_beta-r1 (28 Jun 2004)
+
+  28 Jun 2004; Frank van de Pol <fvdpol@gentoo.org>
+  +files/rezound-0.9.0_beta-libfox1.2-code.patch.gz,
+  +files/rezound-0.9.0_beta-libfox1.2-makefiles.patch.gz,
+  +rezound-0.9.0_beta-r1.ebuild:
+  Patched rezound 0.9beta to make it compatible with gcc3.3 and the new
+  libfox1.2 library. Closes bug #51857 and #54660.
+
+  13 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  rezound-0.8.3_beta-r2.ebuild, rezound-0.9.0_beta.ebuild:
+  Getting rid of virtual/jack.
+
+  25 Mar 2004; Martin Holzer <mholzer@gentoo.org> rezound-0.9.0_beta.ebuild:
+  fixing depend. see 45343
+
+  24 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  rezound-0.9.0_beta.ebuild:
+  ebuild cleanup for bug #45343.
+
+  16 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  rezound-0.7.0_beta.ebuild, rezound-0.8.3_beta-r2.ebuild,
+  rezound-0.9.0_beta.ebuild:
+  Removing old version which doesn't compile with gcc-3.3. Bumping newer
+  versions to stable x86.
+
+  27 Jan 2004; Nick Hadaway <raker@gentoo.org> rezound-*.ebuild:
+  Updated DEPEND to specify =dev-libs/fftw-2* as fftw3 breaks compiles.
+  See bug #39256
+
+*rezound-0.9.0_beta (19 Dec 2003)
+
+  19 Dec 2003; Martin Holzer <mholzer@gentoo.org> rezound-0.7.0_beta.ebuild,
+  rezound-0.8.3_beta-r2.ebuild, rezound-0.9.0_beta.ebuild:
+  Version bumped and added RESTRICT=nomirror
+
+*rezound-0.8.3_beta-r2 (29 Sep 2003)
+
+  29 Sep 2003; jje <jje@gentoo.org> rezound-0.8.3_beta-r1.ebuild,
+  rezound-0.8.3_beta-r2.ebuild, rezound-0.8.3_beta.ebuild:
+  Add flac-1.1.0 to DEPEND. Clean up of old ebuilds.
+
+*rezound-0.8.3_beta-r1 (16 Aug 2003)
+
+  16 Aug 2003; jje <jje@gentoo.org> rezound-0.8.3_beta-r1.ebuild:
+  Checking jack USE appropriately.
+
+  07 Aug 2003; Martin Holzer <mholzer@gentoo.org> rezound-0.7.0_beta.ebuild,
+  rezound-0.8.3_beta.ebuild:
+  Changed SRC_URI to use mirror://sf. Closes #26134.
+
+*rezound-0.8.3_beta (05 Aug 2003)
+
+  05 Aug 2003; jje <jje@gentoo.org> rezound-0.8.3_beta.ebuild:
+  Version bump.
+  
+  Submitted by: Janne Johansson <hanta@aktivist.fi>
+
+*rezound-0.7.0_beta (15 Mar 2003)
+
+  15 Mar 2003; jje <jje@gentoo.org> rezound-0.7.0_beta.ebuild:
+  Initial revision. Enabled jack by default. Need to consider USE variables.
+  
+  Submitted by: Marc Hildebrand
+

@@ -1,0 +1,32 @@
+Patch submitted upstream at,
+
+  http://tracker.nagios.org/view.php?id=534
+
+by user ovidiu_stanila. Confirmed to work by at least one other user,
+travissidelinger. Applied to fix Gentoo bug #530640.
+
+diff --git a/base/workers.c b/base/workers.c
+index 881e434..d1e1f8d 100644
+--- a/base/workers.c
++++ b/base/workers.c
+@@ -285,6 +285,8 @@ static void destroy_job(struct wproc_job *job)
+ 	case WPJOB_SVC_EVTHANDLER:
+ 	case WPJOB_GLOBAL_HOST_EVTHANDLER:
+ 	case WPJOB_HOST_EVTHANDLER:
++	case WPJOB_HOST_PERFDATA:
++	case WPJOB_SVC_PERFDATA:
+ 		/* these require nothing special */
+ 		break;
+ 	case WPJOB_CALLBACK:
+@@ -763,6 +765,11 @@ static int handle_worker_result(int sd, int events, void *arg)
+ 			run_job_callback(job, &wpres, 0);
+ 			break;
+ 
++		case WPJOB_HOST_PERFDATA:
++		case WPJOB_SVC_PERFDATA:
++			/* these require nothing special */
++			break;
++
+ 		default:
+ 			logit(NSLOG_RUNTIME_WARNING, TRUE, "Worker %d: Unknown jobtype: %d\n", wp->pid, job->type);
+ 			break;

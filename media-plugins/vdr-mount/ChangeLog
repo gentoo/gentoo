@@ -1,0 +1,29 @@
+# ChangeLog for media-plugins/vdr-mount
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-mount/ChangeLog,v 1.6 2015/02/24 22:42:08 hd_brummy Exp $
+
+  24 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-mount-0.0.2.ebuild:
+  compile fix vdr-2.1.2, wrt bug 541018, thx to T.Foerster for reporting this
+
+  23 Feb 2014; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-mount-0.0.2.ebuild:
+  eapi=5; converted to vdr-plugin-2.eclass
+
+  17 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-mount-0.0.2-makefile-fix.diff, vdr-mount-0.0.2.ebuild:
+  Fix parallel-make issues, Bug #247800.
+
+  14 Dec 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-mount-0.0.2.ebuild:
+  add build-params -j1, fails to build with parallel make; thx to
+  Flameeyes@g.o on #247800
+
+  13 Apr 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-mount-0.0.2.ebuild:
+  bug 217518 , removed (german) from HOMEPAGE
+
+*vdr-mount-0.0.2 (06 Jan 2008)
+
+  06 Jan 2008; Joerg Bornkessel <hd_brummy@gentoo.org> +metadata.xml,
+  +vdr-mount-0.0.2.ebuild:
+  initial ebuild
+

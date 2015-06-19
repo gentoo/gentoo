@@ -1,0 +1,12 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/autoconf/files/eblits/src_configure.eblit,v 1.1 2015/03/19 23:49:17 vapier Exp $
+
+eblit-autoconf-src_configure() {
+	# Disable Emacs in the build system since it is in a separate package.
+	export EMACS=no
+	econf --program-suffix="-${PV}" || die
+	# econf updates config.{sub,guess} which forces the manpages
+	# to be regenerated which we dont want to do #146621
+	touch man/*.1
+}

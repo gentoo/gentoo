@@ -1,0 +1,102 @@
+# ChangeLog for net-dialup/mwavem
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/mwavem/ChangeLog,v 1.21 2015/03/21 21:23:01 jlec Exp $
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> mwavem-2.0-r1.ebuild,
+  mwavem-2.0-r2.ebuild:
+  use dosbin instead of exeinto /usr/sbin/ && doexe
+
+*mwavem-2.0-r2 (27 Jun 2014)
+
+  27 Jun 2014; Sergey Popov <pinkbyte@gentoo.org> +mwavem-2.0-r2.ebuild:
+  Revision bump: EAPI 5, migrate to autotools-utils eclass, drop obsolete
+  checks that does not work with recent udev
+
+  27 Jun 2014; Sergey Popov <pinkbyte@gentoo.org> mwavem-2.0-r1.ebuild:
+  Set additional M4 dir explicitly, this fixes bug #514576, thanks to Patrick
+  Lauer for discovering this issue
+
+  06 Apr 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #63588
+
+  08 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> mwavem-2.0-r1.ebuild,
+  +files/mwavem-2.0-glibc-2.10.patch:
+  Fix building with GLIBC 2.10+ wrt #277593. Rename modprobe.d/mwave to
+  modprobe.d/mwave.conf.
+
+  09 May 2009; Alin Năstac <mrness@gentoo.org> mwavem-2.0-r1.ebuild:
+  Migrate to EAPI 2.
+
+  13 Mar 2009; Alin Năstac <mrness@gentoo.org> -mwavem-2.0.ebuild,
+  mwavem-2.0-r1.ebuild:
+  Replace udevcontrol with udevadm control.
+
+*mwavem-2.0-r1 (18 Oct 2008)
+
+  18 Oct 2008; Alin Năstac <mrness@gentoo.org>
+  +files/mwavem-2.0-gentoo.patch, +mwavem-2.0-r1.ebuild:
+  Build with user specified CFLAGS (#240878).
+
+  19 May 2008; Alin Năstac <mrness@gentoo.org> mwavem-2.0.ebuild:
+  Use udevcontrol to reload udev rules (#220665).
+
+  14 Apr 2008; Alin Năstac <mrness@gentoo.org> mwavem-2.0.ebuild:
+  Install modprobe.d file (#214020).
+
+  16 Apr 2007; Alin Năstac <mrness@gentoo.org> mwavem-2.0.ebuild:
+  Use update-modules instead deprecated modules-update (#174746).
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  13 Jun 2006; Roy Marples <uberlord@gentoo.org> mwavem-2.0.ebuild:
+  Change update-modules to modules-update
+
+  12 Mar 2006; Alin Nastac <mrness@gentoo.org> mwavem-2.0.ebuild:
+  Remove unnecessary dependency to virtual/libc, as well as X USE flag. Add
+  die messages. Quote $FILESDIR, $D and $ROOT.
+
+  04 Oct 2005; Alin Nastac <mrness@gentoo.org> mwavem-2.0.ebuild:
+  Remove INSTALL from docs.
+
+  06 Sep 2005; Alin Nastac <mrness@gentoo.org> mwavem-2.0.ebuild:
+  Remove virtual/x11 from DEPEND (#104781).
+
+  16 Apr 2005; Alin Nastac <mrness@gentoo.org>
+  -files/mwavem-1.0.4-gentoo.diff, -mwavem-1.0.4.ebuild:
+  Remove obsolete version
+
+  07 Feb 2005; Alin Nastac <mrness@gentoo.org>
+  -files/mwavem-1.0.2-gentoo.diff, -mwavem-1.0.2.ebuild, mwavem-2.0.ebuild:
+  Mark stable on x86 and remove obsolete ebuild.
+
+*mwavem-2.0 (05 Dec 2004)
+
+  05 Dec 2004; Alin Nastac <mrness@gentoo.org> metadata.xml,
+  mwavem-1.0.4.ebuild, +mwavem-2.0.ebuild:
+  Mark 1.0.4 as stable on x86. Bump version (see #58627).
+
+*mwavem-1.0.4 (05 Dec 2004)
+
+  05 Dec 2004; Alin Nastac <mrness@gentoo.org> +metadata.xml,
+  +files/mwave-dev-handler, +files/mwave.devfs, +files/mwave.modules,
+  +files/mwavem-1.0.2-gentoo.diff, +files/mwavem-1.0.4-gentoo.diff,
+  +mwavem-1.0.2.ebuild, +mwavem-1.0.4.ebuild:
+  Moved from app-misc/mwavem to net-dialup/mwavem.
+
+  28 Sep 2004; Daniel Black <dragonheart@gentoo.org> metadata.xml:
+  herd fix
+
+*mwavem-1.0.4 (12 Jan 2004)
+
+  12 Jan 2004; <nerdboy@gentoo.org> mwavem-1.0.4.ebuild, files/mwave.devfs,
+  files/mwave.modules, files/mwavem-1.0.4-gentoo.diff:
+  updated to the 1.0.4 and unmasked 1.0.2 in package.mask
+
+*mwavem-1.0.2 (17 July 2002)
+
+  17 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> mwavem-1.0.2.ebuild :
+  Added IUSE.
+
+  17 JuL 2002; Matthew Jachimstal <matthew@jachimstal.com> mwavem-1.0.2.ebuild, 
+  files/mwavem-1.0.2-gentoo.diff, files/mwave-dev-handler: Initial ebuild.

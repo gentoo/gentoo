@@ -1,0 +1,26 @@
+From b5c3d3aa55621c44db439e4a73884e0d0bf9612c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ulrich=20Sp=C3=B6rlein?= <uqs@spoerlein.net>
+Date: Wed, 28 Nov 2012 21:58:44 +0100
+Subject: [PATCH] Fix compilation, the last rebase/merge went wrong.
+
+Noticed by:	Andy Pilate
+---
+ src/svn.cpp |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/svn.cpp b/src/svn.cpp
+index 1aadce9..b2fe2a2 100644
+--- a/src/svn.cpp
++++ b/src/svn.cpp
+@@ -896,7 +896,7 @@ int SvnRevision::recurse(const char *path, const svn_fs_path_change_t *change,
+                                rev_from, changes, current, *match, matchRules, dirpool) == EXIT_FAILURE)
+                 return EXIT_FAILURE;
+         } else {
+-            if (dirent->kind == svn_node_dir) {
++            if (i.value() == svn_node_dir) {
+                 qDebug() << current << "rev" << revnum
+                          << "did not match any rules; auto-recursing";
+                 if (recurse(entry, change, entryFrom.isNull() ? 0 : entryFrom.constData(),
+-- 
+1.7.1
+

@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prepare setup
+DEPEND=dev-lang/perl dev-libs/libgcrypt:0= >=sys-apps/iproute2-2.6.19.20061214[-minimal] gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl:0= ) virtual/pkgconfig
+DESCRIPTION=Free client for Cisco VPN routing software
+EAPI=5
+HOMEPAGE=http://www.unix-ag.uni-kl.de/~massar/vpnc/
+IUSE=resolvconf +gnutls selinux
+KEYWORDS=amd64 arm ppc ppc64 sparc x86
+LICENSE=GPL-2 BSD
+RDEPEND=dev-lang/perl dev-libs/libgcrypt:0= >=sys-apps/iproute2-2.6.19.20061214[-minimal] gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl:0= ) resolvconf? ( net-dns/openresolv ) selinux? ( sec-policy/selinux-vpn )
+RESTRICT=!gnutls? ( bindist )
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~jlec/distfiles/vpnc-0.5.3_p527.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=dedbbd0bd32c1f5df6f9cadbf7cf4b11

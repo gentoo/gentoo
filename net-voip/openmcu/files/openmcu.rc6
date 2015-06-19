@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-voip/openmcu/files/openmcu.rc6,v 1.1 2006/09/14 01:03:20 genstef Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting H.323 Conferencing service"
+	start-stop-daemon --start --quiet --pidfile /var/run/openmcu/openmcu.pid \
+		--exec /usr/sbin/openmcu -- ${OPTIONS} -d -p /var/run/openmcu/openmcu.pid -i /etc/openmcu/openmcu.ini
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping H.323 Conferencing service"
+	start-stop-daemon --stop --quiet --pidfile /var/run/openmcu/openmcu.pid
+	eend $?
+}

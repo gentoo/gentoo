@@ -1,0 +1,381 @@
+https://bugzilla.mozilla.org/show_bug.cgi?id=589735
+
+--- a/js/src/jsatom.cpp	2011-03-31 21:08:36.000000000 +0200
++++ b/js/src/jsatom.cpp	2012-11-02 10:43:16.970562590 +0100
+@@ -603,11 +603,13 @@
+     JSString str, *str2;
+     JSAtomState *state;
+ 
++#ifdef JS_HAS_STATIC_STRINGS
+     if (length == 1) {
+         jschar c = *chars;
+         if (c < UNIT_STRING_LIMIT)
+             return STRING_TO_ATOM(JSString::unitString(c));
+     }
++#endif
+ 
+     str.initFlatNotTerminated((jschar *)chars, length);
+     state = &cx->runtime->atomState;
+--- a/js/src/jsiter.cpp	2011-03-31 21:08:36.000000000 +0200
++++ b/js/src/jsiter.cpp	2012-11-02 10:43:16.974562590 +0100
+@@ -1002,9 +1002,12 @@
+ 
+             JSString *str;
+             jsint i;
++#ifdef JS_HAS_STATIC_STRINGS
+             if (rval->isInt32() && (jsuint(i = rval->toInt32()) < INT_STRING_LIMIT)) {
+                 str = JSString::intString(i);
+-            } else {
++            } else
++#endif
++            {
+                 str = js_ValueToString(cx, *rval);
+                 if (!str)
+                     return false;
+--- a/js/src/jsnum.cpp	2011-03-31 21:08:36.000000000 +0200
++++ b/js/src/jsnum.cpp	2012-11-02 10:43:16.982562589 +0100
+@@ -605,8 +605,10 @@
+ {
+     uint32 ui;
+     if (si >= 0) {
++#ifdef JS_HAS_STATIC_STRINGS
+         if (si < INT_STRING_LIMIT)
+             return JSString::intString(si);
++#endif
+         ui = si;
+     } else {
+         ui = uint32(-si);
+@@ -1169,6 +1171,7 @@
+ 
+     int32_t i;
+     if (JSDOUBLE_IS_INT32(d, &i)) {
++#ifdef JS_HAS_STATIC_STRINGS
+         if (base == 10 && jsuint(i) < INT_STRING_LIMIT)
+             return JSString::intString(i);
+         if (jsuint(i) < jsuint(base)) {
+@@ -1176,6 +1179,7 @@
+                 return JSString::intString(i);
+             return JSString::unitString(jschar('a' + i - 10));
+         }
++#endif
+ 
+         if (JSString *str = c->dtoaCache.lookup(base, d))
+             return str;
+--- a/js/src/jsstr.cpp	2011-03-31 21:08:36.000000000 +0200
++++ b/js/src/jsstr.cpp	2012-11-02 10:43:16.990562588 +0100
+@@ -3121,6 +3121,8 @@
+     JS_FS_END
+ };
+ 
++#ifdef JS_HAS_STATIC_STRINGS
++
+ /*
+  * Set up some tools to make it easier to generate large tables. After constant
+  * folding, for each n, Rn(0) is the comma-separated list R(0), R(1), ..., R(2^n-1).
+@@ -3291,6 +3293,8 @@
+ #undef R3
+ #undef R7
+ 
++#endif  /* defined(JS_HAS_STATIC_STRINGS) */
++
+ JSBool
+ js_String(JSContext *cx, uintN argc, Value *vp)
+ {
+@@ -3331,6 +3335,7 @@
+         uint16_t code;
+         if (!ValueToUint16(cx, argv[0], &code))
+             return JS_FALSE;
++#ifdef JS_HAS_STATIC_STRINGS
+         if (code < UNIT_STRING_LIMIT) {
+             str = JSString::unitString(code);
+             if (!str)
+@@ -3338,6 +3343,7 @@
+             vp->setString(str);
+             return JS_TRUE;
+         }
++#endif
+         argv[0].setInt32(code);
+     }
+     chars = (jschar *) cx->malloc((argc + 1) * sizeof(jschar));
+@@ -3367,8 +3373,10 @@
+ {
+     JS_ASSERT(JS_ON_TRACE(cx));
+     jschar c = (jschar)i;
++#ifdef JS_HAS_STATIC_STRINGS
+     if (c < UNIT_STRING_LIMIT)
+         return JSString::unitString(c);
++#endif
+     return js_NewStringCopyN(cx, &c, 1);
+ }
+ #endif
+--- a/js/src/jsstr.h	2011-03-31 21:08:36.000000000 +0200
++++ b/js/src/jsstr.h	2012-11-02 10:43:16.998562587 +0100
+@@ -57,6 +57,15 @@
+ #include "jsvalue.h"
+ #include "jscell.h"
+ 
++#if !defined(__ia64__)
++/*
++ * Don't use static strings on ia64 since the compiler may put the static
++ * memory out of the acceptable 47-bit jsval pointer range.
++ */
++# define JS_HAS_STATIC_STRINGS
++#endif
++
++#ifdef JS_HAS_STATIC_STRINGS
+ enum {
+     UNIT_STRING_LIMIT        = 256U,
+     SMALL_CHAR_LIMIT         = 128U, /* Bigger chars cannot be in a length-2 string. */
+@@ -64,6 +73,7 @@
+     INT_STRING_LIMIT         = 256U,
+     NUM_HUNDRED_STRINGS      = 156U
+ };
++#endif
+ 
+ extern jschar *
+ js_GetDependentStringChars(JSString *str);
+@@ -380,10 +390,15 @@
+     typedef uint8 SmallChar;
+ 
+     static inline bool fitsInSmallChar(jschar c) {
++#ifdef JS_HAS_STATIC_STRINGS
+         return c < SMALL_CHAR_LIMIT && toSmallChar[c] != INVALID_SMALL_CHAR;
++#else
++		return false;
++#endif
+     }
+ 
+     static inline bool isUnitString(void *ptr) {
++#ifdef JS_HAS_STATIC_STRINGS
+         jsuword delta = reinterpret_cast<jsuword>(ptr) -
+                         reinterpret_cast<jsuword>(unitStringTable);
+         if (delta >= UNIT_STRING_LIMIT * sizeof(JSString))
+@@ -392,9 +407,13 @@
+         /* If ptr points inside the static array, it must be well-aligned. */
+         JS_ASSERT(delta % sizeof(JSString) == 0);
+         return true;
++#else
++		return false;
++#endif
+     }
+ 
+     static inline bool isLength2String(void *ptr) {
++#ifdef JS_HAS_STATIC_STRINGS
+         jsuword delta = reinterpret_cast<jsuword>(ptr) -
+                         reinterpret_cast<jsuword>(length2StringTable);
+         if (delta >= NUM_SMALL_CHARS * NUM_SMALL_CHARS * sizeof(JSString))
+@@ -403,9 +422,13 @@
+         /* If ptr points inside the static array, it must be well-aligned. */
+         JS_ASSERT(delta % sizeof(JSString) == 0);
+         return true;
++#else
++		return false;
++#endif
+     }
+ 
+     static inline bool isHundredString(void *ptr) {
++#ifdef JS_HAS_STATIC_STRINGS
+         jsuword delta = reinterpret_cast<jsuword>(ptr) -
+                         reinterpret_cast<jsuword>(hundredStringTable);
+         if (delta >= NUM_HUNDRED_STRINGS * sizeof(JSString))
+@@ -414,6 +437,9 @@
+         /* If ptr points inside the static array, it must be well-aligned. */
+         JS_ASSERT(delta % sizeof(JSString) == 0);
+         return true;
++#else
++		return false;
++#endif
+     }
+ 
+     static inline bool isStatic(void *ptr) {
+@@ -424,6 +450,7 @@
+ #pragma align 8 (__1cIJSStringPunitStringTable_, __1cIJSStringSlength2StringTable_, __1cIJSStringShundredStringTable_)
+ #endif
+ 
++#ifdef JS_HAS_STATIC_STRINGS
+     static const SmallChar INVALID_SMALL_CHAR = -1;
+ 
+     static const jschar fromSmallChar[];
+@@ -436,6 +463,7 @@
+      * strings, we keep a table to map from integer to the correct string.
+      */
+     static const JSString *const intStringTable[];
++#endif
+ 
+     static JSFlatString *unitString(jschar c);
+     static JSLinearString *getUnitString(JSContext *cx, JSString *str, size_t index);
+--- a/js/src/jsstrinlines.h	2011-03-31 21:08:36.000000000 +0200
++++ b/js/src/jsstrinlines.h	2012-11-02 10:43:17.010562586 +0100
+@@ -215,52 +215,75 @@
+ inline JSFlatString *
+ JSString::unitString(jschar c)
+ {
++#ifdef JS_HAS_STATIC_STRINGS
+     JS_ASSERT(c < UNIT_STRING_LIMIT);
+     return const_cast<JSString *>(&unitStringTable[c])->assertIsFlat();
++#else
++    JS_NOT_REACHED("no static strings");
++	return NULL;
++#endif
+ }
+ 
+ inline JSLinearString *
+ JSString::getUnitString(JSContext *cx, JSString *str, size_t index)
+ {
+     JS_ASSERT(index < str->length());
++#ifdef JS_HAS_STATIC_STRINGS
+     const jschar *chars = str->getChars(cx);
+     if (!chars)
+         return NULL;
+     jschar c = chars[index];
+     if (c < UNIT_STRING_LIMIT)
+         return unitString(c);
++#endif
+     return js_NewDependentString(cx, str, index, 1);
+ }
+ 
+ inline JSFlatString *
+ JSString::length2String(jschar c1, jschar c2)
+ {
++#ifdef JS_HAS_STATIC_STRINGS
+     JS_ASSERT(fitsInSmallChar(c1));
+     JS_ASSERT(fitsInSmallChar(c2));
+     return const_cast<JSString *> (
+              &length2StringTable[(((size_t)toSmallChar[c1]) << 6) + toSmallChar[c2]]
+            )->assertIsFlat();
++#else
++    JS_NOT_REACHED("no static strings");
++	return NULL;
++#endif
+ }
+ 
+ inline JSFlatString *
+ JSString::length2String(uint32 i)
+ {
++#ifdef JS_HAS_STATIC_STRINGS
+     JS_ASSERT(i < 100);
+     return length2String('0' + i / 10, '0' + i % 10);
++#else
++    JS_NOT_REACHED("no static strings");
++	return NULL;
++#endif
+ }
+ 
+ inline JSFlatString *
+ JSString::intString(jsint i)
+ {
++#ifdef JS_HAS_STATIC_STRINGS
+     jsuint u = jsuint(i);
+     JS_ASSERT(u < INT_STRING_LIMIT);
+     return const_cast<JSString *>(JSString::intStringTable[u])->assertIsFlat();
++#else
++    JS_NOT_REACHED("no static strings");
++	return NULL;
++#endif
+ }
+ 
+ /* Get a static atomized string for chars if possible. */
+ inline JSFlatString *
+ JSString::lookupStaticString(const jschar *chars, size_t length)
+ {
++#ifdef JS_HAS_STATIC_STRINGS
+     if (length == 1) {
+         if (chars[0] < UNIT_STRING_LIMIT)
+             return unitString(chars[0]);
+@@ -290,6 +313,7 @@
+                 return intString(i);
+         }
+     }
++#endif
+ 
+     return NULL;
+ }
+--- a/js/src/jstracer.cpp	2011-03-31 21:08:36.000000000 +0200
++++ b/js/src/jstracer.cpp	2012-11-02 10:43:17.022562584 +0100
+@@ -11505,6 +11505,7 @@
+             }
+             if (vp[1].isString()) {
+                 JSString *str = vp[1].toString();
++#ifdef JS_HAS_STATIC_STRINGS
+                 if (native == js_str_charAt) {
+                     jsdouble i = vp[2].toNumber();
+                     if (JSDOUBLE_IS_NaN(i))
+@@ -11518,7 +11519,9 @@
+                     set(&vp[0], char_ins);
+                     pendingSpecializedNative = IGNORE_NATIVE_CALL_COMPLETE_CALLBACK;
+                     return RECORD_CONTINUE;
+-                } else if (native == js_str_charCodeAt) {
++                } else
++#endif
++				if (native == js_str_charCodeAt) {
+                     jsdouble i = vp[2].toNumber();
+                     if (JSDOUBLE_IS_NaN(i))
+                       i = 0;
+@@ -12967,6 +12970,7 @@
+ JS_STATIC_ASSERT(sizeof(JSString) == 16 || sizeof(JSString) == 32);
+ 
+ 
++#ifdef JS_HAS_STATIC_STRINGS
+ JS_REQUIRES_STACK LIns*
+ TraceRecorder::getUnitString(LIns* str_ins, LIns* idx_ins)
+ {
+@@ -13010,6 +13014,7 @@
+     }
+     return RECORD_CONTINUE;
+ }
++#endif
+ 
+ // Typed array tracing depends on EXPANDED_LOADSTORE and F2I
+ #if NJ_EXPANDED_LOADSTORE_SUPPORTED && NJ_F2I_SUPPORTED
+@@ -13044,6 +13049,7 @@
+     LIns* obj_ins = get(&lval);
+     LIns* idx_ins = get(&idx);
+ 
++#ifdef JS_HAS_STATIC_STRINGS
+     // Special case for array-like access of strings.
+     if (lval.isString() && hasInt32Repr(idx)) {
+         if (call)
+@@ -13056,6 +13062,7 @@
+         set(&lval, char_ins);
+         return ARECORD_CONTINUE;
+     }
++#endif
+ 
+     if (lval.isPrimitive())
+         RETURN_STOP_A("JSOP_GETLEM on a primitive");
+--- a/js/src/jstracer.h	2011-03-31 21:08:36.000000000 +0200
++++ b/js/src/jstracer.h	2012-11-02 10:43:17.034562582 +0100
+@@ -1394,10 +1394,12 @@
+     JS_REQUIRES_STACK RecordingStatus getCharCodeAt(JSString *str,
+                                                     nanojit::LIns* str_ins, nanojit::LIns* idx_ins,
+                                                     nanojit::LIns** out_ins);
++#ifdef JS_HAS_STATIC_STRINGS
+     JS_REQUIRES_STACK nanojit::LIns* getUnitString(nanojit::LIns* str_ins, nanojit::LIns* idx_ins);
+     JS_REQUIRES_STACK RecordingStatus getCharAt(JSString *str,
+                                                 nanojit::LIns* str_ins, nanojit::LIns* idx_ins,
+                                                 JSOp mode, nanojit::LIns** out_ins);
++#endif
+ 
+     JS_REQUIRES_STACK RecordingStatus initOrSetPropertyByName(nanojit::LIns* obj_ins,
+                                                               Value* idvalp, Value* rvalp,
+--- a/js/src/tracejit/Writer.cpp	2011-03-31 21:08:36.000000000 +0200
++++ b/js/src/tracejit/Writer.cpp	2012-11-02 10:43:17.038562582 +0100
+@@ -246,7 +246,9 @@
+         // ins = andq ins_oprnd1, ins_oprnd2
+         ret = true;
+ #endif
+-    } else if (ins->isop(LIR_addp) &&
++    }
++#ifdef JS_HAS_STATIC_STRINGS
++	else if (ins->isop(LIR_addp) &&
+                ((ins->oprnd1()->isImmP() &&
+                  (void *)ins->oprnd1()->immP() == JSString::unitStringTable) ||
+                 (ins->oprnd2()->isImmP() &&
+@@ -258,6 +260,7 @@
+         // ins = addp JSString::unitStringTable, ...
+         ret = true;
+     }
++#endif
+ 
+     return ret;
+ }

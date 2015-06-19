@@ -1,0 +1,61 @@
+#Patch by Jesus Rivero <neurogeek@gentoo.org>
+#Added: Mar 26, 2012
+#Gentoo Specific, not sent upstream
+
+diff -uNr a/install.sh b/install.sh
+--- a/install.sh        2012-03-26 07:17:28.000000000 -0400
++++ b/install.sh        2012-03-26 07:17:56.000000000 -0400
+@@ -101,52 +101,3 @@
+ # share/man/   manpages, should be the same as man/
+ # share/info/  info files
+ # share/doc/   misc documentation
+-
+-echo
+-echo "Documentation:"
+-
+-# man
+-cp doc/sbcl.1 "$BUILD_ROOT$MAN_DIR"/man1/ && echo " man $BUILD_ROOT$MAN_DIR/man1/sbcl.1"
+-cp doc/sbcl-asdf-install.1 "$BUILD_ROOT$MAN_DIR"/man1/ && echo " man $BUILD_ROOT$MAN_DIR/man1/sbcl-asdf-install.1"
+-
+-# info
+-for info in doc/manual/*.info
+-do
+-  cp $info "$BUILD_ROOT$INFO_DIR"/ \
+-      && BN=`basename $info` \
+-      && DIRFAIL=`install-info --info-dir="$BUILD_ROOT$INFO_DIR" \
+-        "$BUILD_ROOT$INFO_DIR"/$BN > /dev/null 2>&1 \
+-           || echo "(could not add to system catalog)"` \
+-      && echo " info $BUILD_ROOT$INFO_DIR/`basename $info` [$BUILD_ROOT$INFO_DIR/dir] $DIRFAIL"
+-done
+-
+-for info in doc/manual/*.info-*
+-do
+-  cp $info "$BUILD_ROOT$INFO_DIR"/ \
+-      && echo " info $BUILD_ROOT$INFO_DIR/`basename $info`"
+-done
+-
+-# pdf
+-for pdf in doc/manual/*.pdf
+-do
+-  cp $pdf "$BUILD_ROOT$DOC_DIR"/ \
+-      && echo " pdf $BUILD_ROOT$DOC_DIR/`basename $pdf`"
+-done
+-
+-# html
+-for html in doc/manual/sbcl doc/manual/asdf
+-do
+-  test -d $html && cp -R -L $html "$BUILD_ROOT$DOC_DIR"/html \
+-      && echo " html $BUILD_ROOT$DOC_DIR/html/`basename $html`/index.html"
+-done
+-
+-for html in doc/manual/sbcl.html doc/manual/asdf.html
+-do
+-  cp $html "$BUILD_ROOT$DOC_DIR"/ \
+-      && echo " html $BUILD_ROOT$DOC_DIR/`basename $html`"
+-done
+-
+-for f in BUGS CREDITS COPYING NEWS
+-do
+-  cp $f "$BUILD_ROOT$DOC_DIR"/
+-done
+

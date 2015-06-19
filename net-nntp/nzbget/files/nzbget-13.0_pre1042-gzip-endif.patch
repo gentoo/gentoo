@@ -1,0 +1,18 @@
+Index: daemon/util/Util.cpp
+===================================================================
+--- daemon/util/Util.cpp	(revision 1046)
++++ daemon/util/Util.cpp	(working copy)
+@@ -2368,6 +2368,7 @@
+ 
+ 	return zlError;
+ }
++#endif
+ 
+ Tokenizer::Tokenizer(const char* szDataString, const char* szSeparators)
+ {
+@@ -2423,5 +2424,3 @@
+ 	}
+ 	return szToken;
+ }
+-
+-#endif

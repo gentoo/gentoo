@@ -1,0 +1,95 @@
+# ChangeLog for dev-python/serpent
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/serpent/ChangeLog,v 1.22 2015/06/01 07:28:36 patrick Exp $
+
+*serpent-1.11 (01 Jun 2015)
+
+  01 Jun 2015; Patrick Lauer <patrick@gentoo.org> +serpent-1.11.ebuild:
+  Bump
+
+*serpent-1.10 (12 May 2015)
+
+  12 May 2015; Ian Delaney <idella4@gentoo.org> +serpent-1.10.ebuild,
+  -serpent-1.8.ebuild:
+  bump one remove one
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> serpent-1.7.ebuild:
+  Drop old Python implementations
+
+*serpent-1.9 (19 Mar 2015)
+
+  19 Mar 2015; Patrick Lauer <patrick@gentoo.org> +serpent-1.9.ebuild:
+  Bump
+
+*serpent-1.8 (16 Jan 2015)
+
+  16 Jan 2015; Ian Delaney <idella4@gentoo.org> +serpent-1.8.ebuild,
+  -serpent-1.4.ebuild, -serpent-1.6.ebuild:
+  bump, rm old
+
+  04 Dec 2014; Agostino Sarubbo <ago@gentoo.org> serpent-1.7.ebuild:
+  Stable for ppc64, wrt bug #525508
+
+  03 Dec 2014; Agostino Sarubbo <ago@gentoo.org> serpent-1.7.ebuild:
+  Stable for ppc, wrt bug #525508
+
+  03 Nov 2014; Agostino Sarubbo <ago@gentoo.org> serpent-1.7.ebuild:
+  Stable for x86, wrt bug #525508
+
+  03 Nov 2014; Agostino Sarubbo <ago@gentoo.org> serpent-1.7.ebuild:
+  Stable for amd64, wrt bug #525508
+
+*serpent-1.7 (23 Jul 2014)
+
+  23 Jul 2014; Ian Delaney <idella4@gentoo.org> +serpent-1.7.ebuild,
+  -serpent-1.2.ebuild, -serpent-1.3.ebuild, -serpent-1.5.ebuild:
+  bump, rm old
+
+  16 Jul 2014; Ian Delaney <idella4@gentoo.org> serpent-1.6.ebuild:
+  drop py2.6 pypy2_0 add py3.4
+
+*serpent-1.6 (14 Jul 2014)
+
+  14 Jul 2014; Patrick Lauer <patrick@gentoo.org> +serpent-1.6.ebuild:
+  Bump
+
+*serpent-1.5 (03 May 2014)
+
+  03 May 2014; Patrick Lauer <patrick@gentoo.org> +serpent-1.5.ebuild:
+  Bump
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> serpent-1.2.ebuild,
+  serpent-1.3.ebuild, serpent-1.4.ebuild:
+  Add support for the new PyPy slotting.
+
+  20 Jan 2014; Agostino Sarubbo <ago@gentoo.org> serpent-1.4.ebuild:
+  Stable for ppc, wrt bug #494262
+
+  19 Jan 2014; Pacho Ramos <pacho@gentoo.org> serpent-1.4.ebuild:
+  amd64 stable, bug 494262
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> serpent-1.4.ebuild:
+  Stable for x86, wrt bug #494262
+
+*serpent-1.4 (18 Sep 2013)
+
+  18 Sep 2013; Patrick Lauer <patrick@gentoo.org> +serpent-1.4.ebuild:
+  Bump
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> serpent-1.2.ebuild,
+  serpent-1.3.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*serpent-1.3 (02 Sep 2013)
+
+  02 Sep 2013; Patrick Lauer <patrick@gentoo.org> +serpent-1.3.ebuild:
+  Bump
+
+  10 Jul 2013; Vicente Olivert Riera <vincent@gentoo.org> serpent-1.2.ebuild:
+  ppc keyword, bug 476346
+
+*serpent-1.2 (09 Jul 2013)
+
+  09 Jul 2013; Ian Delaney <idella4@gentoo.org> +metadata.xml,
+  +serpent-1.2.ebuild:
+  New ebuild, new dep to pyro-4.20, ebuild written by me, closes Bug #474622

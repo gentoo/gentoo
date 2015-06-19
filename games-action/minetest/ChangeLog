@@ -1,0 +1,104 @@
+# ChangeLog for games-action/minetest
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/minetest/ChangeLog,v 1.20 2015/04/20 20:15:58 mr_bones_ Exp $
+
+  20 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/minetest-0.4.9-as-needed.patch, -files/minetest-0.4.9-freetype.patch,
+  -files/minetest-0.4.9-lua-luajit-option.patch,
+  -files/minetest-0.4.9-opengles.patch,
+  -files/minetest-0.4.9-shared-irrlicht.patch, -minetest-0.4.9.ebuild:
+  old
+
+  19 Apr 2015; Pacho Ramos <pacho@gentoo.org> minetest-0.4.10-r1.ebuild:
+  x86 stable wrt bug #522906
+
+  27 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org> -minetest-0.4.10.ebuild:
+  old
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  15 Oct 2014; Chema Alonso <nimiux@gentoo.org> minetest-0.4.10-r1.ebuild:
+  Stable for amd64 wrt bug #522906
+
+*minetest-0.4.10-r2 (25 Sep 2014)
+
+  25 Sep 2014; Julian Ospald <hasufell@gentoo.org> +minetest-0.4.10-r2.ebuild:
+  use bundled lua
+
+*minetest-0.4.10-r1 (15 Sep 2014)
+
+  15 Sep 2014; Julian Ospald <hasufell@gentoo.org> +minetest-0.4.10-r1.ebuild:
+  fix irrlicht dependency for dedicated USE flag
+
+  15 Sep 2014; Julian Ospald <hasufell@gentoo.org> minetest-0.4.9.ebuild:
+  update elog
+
+  09 Sep 2014; Julian Ospald <hasufell@gentoo.org> -minetest-0.4.7.ebuild,
+  -minetest-0.4.8.ebuild, -files/minetest-0.4.7-as-needed.patch,
+  -files/minetest-0.4.7-jthread-option-and-pkgconfig.patch,
+  -files/minetest-0.4.7-lua-luajit-option.patch,
+  -files/minetest-0.4.7-shared-irrlicht.patch,
+  -files/minetest-0.4.8-as-needed.patch,
+  -files/minetest-0.4.8-lua-luajit-option.patch,
+  -files/minetest-0.4.8-opengles.patch,
+  -files/minetest-0.4.8-shared-irrlicht.patch:
+  rm old
+
+*minetest-0.4.10 (07 Jul 2014)
+
+  07 Jul 2014; Julian Ospald <hasufell@gentoo.org> +minetest-0.4.10.ebuild,
+  +files/minetest-0.4.10-as-needed.patch,
+  +files/minetest-0.4.10-shared-irrlicht.patch,
+  +files/minetest-0.4.10-system-lua.patch, metadata.xml:
+  version bump
+
+  05 Apr 2014; Agostino Sarubbo <ago@gentoo.org> minetest-0.4.9.ebuild:
+  Stable for x86, wrt bug #504358
+
+  30 Mar 2014; Chema Alonso <nimiux@gentoo.org> minetest-0.4.9.ebuild:
+  Stable for amd64 wrt bug #504358
+
+*minetest-0.4.9 (03 Jan 2014)
+
+  03 Jan 2014; Julian Ospald <hasufell@gentoo.org> +minetest-0.4.9.ebuild,
+  +files/minetest-0.4.9-as-needed.patch, +files/minetest-0.4.9-freetype.patch,
+  +files/minetest-0.4.9-lua-luajit-option.patch,
+  +files/minetest-0.4.9-opengles.patch,
+  +files/minetest-0.4.9-shared-irrlicht.patch:
+  version bump wrt #496820
+
+  30 Nov 2013; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  add proxy-maintainer
+
+  29 Nov 2013; Julian Ospald <hasufell@gentoo.org> minetest-0.4.8.ebuild,
+  +files/minetest-0.4.8-opengles.patch:
+  fix bug #492804 and bug #492878
+
+*minetest-0.4.8 (24 Nov 2013)
+
+  24 Nov 2013; Julian Ospald <hasufell@gentoo.org>
+  +files/minetest-0.4.8-as-needed.patch,
+  +files/minetest-0.4.8-lua-luajit-option.patch,
+  +files/minetest-0.4.8-shared-irrlicht.patch, +minetest-0.4.8.ebuild,
+  metadata.xml:
+  version bump wrt #492466
+
+  27 Oct 2013; Julian Ospald <hasufell@gentoo.org> minetest-0.4.7.ebuild:
+  stable for x86 wrt #486228
+
+  27 Oct 2013; Julian Ospald <hasufell@gentoo.org> minetest-0.4.7.ebuild:
+  stable for amd64 wrt #486228
+
+  05 Aug 2013; Julian Ospald <hasufell@gentoo.org> minetest-0.4.7.ebuild:
+  update homepage
+
+*minetest-0.4.7 (05 Aug 2013)
+
+  05 Aug 2013; Julian Ospald <hasufell@gentoo.org> +minetest-0.4.7.ebuild,
+  +files/minetest-0.4.7-as-needed.patch,
+  +files/minetest-0.4.7-jthread-option-and-pkgconfig.patch,
+  +files/minetest-0.4.7-lua-luajit-option.patch,
+  +files/minetest-0.4.7-shared-irrlicht.patch, +files/minetestserver.confd,
+  +files/minetestserver.initd, +metadata.xml:
+  initial import wrt #399867

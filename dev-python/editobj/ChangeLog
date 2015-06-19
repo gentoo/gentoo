@@ -1,0 +1,107 @@
+# ChangeLog for dev-python/editobj
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/editobj/ChangeLog,v 1.28 2015/04/08 08:05:08 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> editobj-0.5.7-r2.ebuild:
+  Drop old Python implementations
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> editobj-0.5.7-r1.ebuild,
+  editobj-0.5.7-r2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> editobj-0.5.7-r2.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*editobj-0.5.7-r2 (03 Jun 2013)
+
+  03 Jun 2013; Ian Delaney <idella4@gentoo.org> +editobj-0.5.7-r2.ebuild:
+  revbump, migrate -> distutils-r1
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org> editobj-0.5.7-r1.ebuild:
+  Stable for ia64, wrt bug #457188
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> editobj-0.5.7-r1.ebuild:
+  Stable for ppc, wrt bug #457188
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> editobj-0.5.7-r1.ebuild:
+  Stable for amd64, wrt bug #457188
+
+  20 Feb 2012; Patrick Lauer <patrick@gentoo.org> editobj-0.5.7-r1.ebuild:
+  Restricting pypy #403815
+
+  26 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  editobj-0.5.7-r1.ebuild:
+  Restrict Jython ABIs.
+
+  26 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  editobj-0.5.7-r1.ebuild:
+  stable x86, bug 313905
+
+  08 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  editobj-0.5.7-r1.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*editobj-0.5.7-r1 (01 Mar 2009)
+
+  01 Mar 2009; Jesus Rivero <neurogeek@gentoo.org> -editobj-0.5.7.ebuild,
+  +editobj-0.5.7-r1.ebuild:
+  Revision bump. EAPI 2 support for python tk USE flag. Removed older
+  version
+
+  21 Feb 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  files/digest-editobj-0.5.6, Manifest:
+  Convert to Manifest2.
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> editobj-0.5.7.ebuild:
+  Mark 0.5.7 ~ia64
+
+*editobj-0.5.7 (29 Mar 2006)
+
+  29 Mar 2006; Lukasz Strzygowski <lucass@gentoo.org> metadata.xml,
+  +editobj-0.5.7.ebuild:
+  Version bump, metadata cleanup.
+
+  16 Feb 2006; Marien Zwart <marienz@gentoo.org> metadata.xml,
+  editobj-0.5.3.ebuild, editobj-0.5.6.ebuild:
+  Move the long description into metadata.xml, copy modular X deps from 0.5.6
+  to 0.5.3, whitespace cleanup.
+
+  25 Jan 2006; Marien Zwart <marienz@gentoo.org> editobj-0.5.6.ebuild:
+  Fix depend for modular.
+
+  05 Jan 2006; Luis Medinas <metalgod@gentoo.org> editobj-0.5.6.ebuild:
+  Added ~amd64 keyword.
+
+  10 Feb 2005; Bryan Østergaard <kloeri@gentoo.org> editobj-0.5.6.ebuild:
+  x86 stable bump.
+
+*editobj-0.5.6 (04 Jan 2005)
+
+  04 Jan 2005; Bryan Østergaard <kloeri@gentoo.org> +editobj-0.5.6.ebuild:
+  Version bump, bug 76129.
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  03 Aug 2004; David Holm <dholm@gentoo.org> editobj-0.5.3.ebuild:
+  Added to ~ppc.
+
+  01 Apr 2004; Bryan Østergaard <kloeri@gentoo.org> editobj-0.4.2.ebuild,
+  editobj-0.5.2.ebuild, editobj-0.5.3.ebuild:
+  Mark 0.5.3 stable on x86. Remove old versions.
+
+*editobj-0.5.3 (21 Dec 2003)
+
+  21 Dec 2003; Bryan Østergaard <kloeri@gentoo.org> editobj-0.5.3.ebuild:
+  Version bump.
+
+*editobj-0.5.2 (05 Dec 2003)
+
+  05 Dec 2003; Bryan Østergaard <kloeri@gentoo.org> editobj-0.5.2.ebuild:
+  Version bump
+
+*editobj-0.4.2 (10 May 2003)
+
+  10 May 2003; Alastair Tse <liquidx@gentoo.org> editobj-0.4.2.ebuild:
+  Initial ebuild. Thanks to François Weykmans <nectroom@swing.be>. Part of
+  Slune and OOmadness suite.

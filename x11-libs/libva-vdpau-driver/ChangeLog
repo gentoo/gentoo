@@ -1,0 +1,165 @@
+# ChangeLog for x11-libs/libva-vdpau-driver
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libva-vdpau-driver/ChangeLog,v 1.14 2015/03/22 08:51:12 rhill Exp $
+
+*libva-vdpau-driver-0.7.4-r3 (22 Mar 2015)
+
+  22 Mar 2015; Ryan Hill <rhill@gentoo.org>
+  +libva-vdpau-driver-0.7.4-r3.ebuild,
+  +files/libva-vdpau-driver-0.7.4-nouveau.patch:
+  Get vaapi working on nouveau (bug #543982).
+
+  17 Mar 2015; Alexis Ballier <aballier@gentoo.org>
+  -libva-vdpau-driver-0.7.3.ebuild, -libva-vdpau-driver-0.7.4.ebuild,
+  -libva-vdpau-driver-0.7.4-r1.ebuild:
+  remove old
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  libva-vdpau-driver-0.7.4-r2.ebuild:
+  Stable for x86, wrt bug #530652
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  libva-vdpau-driver-0.7.4-r2.ebuild:
+  Stable for amd64, wrt bug #530652
+
+  24 Jul 2014; Samuli Suominen <ssuominen@gentoo.org>
+  libva-vdpau-driver-0.7.3.ebuild, libva-vdpau-driver-0.7.4-r1.ebuild,
+  libva-vdpau-driver-0.7.4.ebuild:
+  Restrict to working libvdpau version(s)
+
+*libva-vdpau-driver-0.7.4-r2 (24 Jul 2014)
+
+  24 Jul 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +files/libva-vdpau-driver-0.7.4-libvdpau-0.8.patch,
+  +libva-vdpau-driver-0.7.4-r2.ebuild:
+  Fix compability with x11-libs/libvdpau >= 0.8 wrt #517778 by Justin Lecher
+
+  15 Jul 2014; Pacho Ramos <pacho@gentoo.org>
+  libva-vdpau-driver-0.7.4-r1.ebuild:
+  amd64/x86 stable, bug #516318
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org>
+  libva-vdpau-driver-0.7.4-r1.ebuild, libva-vdpau-driver-9999.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  16 Feb 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/libva-vdpau-driver-0.7.4-VAEncH264VUIBufferType.patch,
+  libva-vdpau-driver-0.7.4-r1.ebuild:
+  fix building against recent libva, bug #501444.
+
+*libva-vdpau-driver-0.7.4-r1 (01 Feb 2014)
+
+  01 Feb 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +libva-vdpau-driver-0.7.4-r1.ebuild, libva-vdpau-driver-9999.ebuild:
+  revbump ebuilds to support multilib-build, changes reviewed by aballier
+
+  03 May 2013; Justin Lecher <jlec@gentoo.org> libva-vdpau-driver-0.7.4.ebuild,
+  metadata.xml:
+  Fix obsolete macros to work with automake-1.13, #467030
+
+  24 Nov 2012; Alexis Ballier <aballier@gentoo.org>
+  libva-vdpau-driver-0.7.3.ebuild:
+  Backport the patch to build against mesa opengl to the stable version now
+  that mesa 9 is going stable.
+
+*libva-vdpau-driver-9999 (21 Nov 2012)
+
+  21 Nov 2012; Alexis Ballier <aballier@gentoo.org>
+  +libva-vdpau-driver-9999.ebuild:
+  Add a live ebuild
+
+*libva-vdpau-driver-0.7.4 (21 Nov 2012)
+*libva-vdpau-driver-0.7.3 (21 Nov 2012)
+
+  21 Nov 2012; Alexis Ballier <aballier@gentoo.org>
+  +libva-vdpau-driver-0.7.3.ebuild, +libva-vdpau-driver-0.7.4.ebuild,
+  +files/libva-vdpau-driver-0.7.4-glext-missing-definition.patch,
+  +metadata.xml:
+  Move from x11-libs/vdpau-video to the new upstream name.
+
+  21 Nov 2012; Alexis Ballier <aballier@gentoo.org> vdpau-video-0.7.4.ebuild:
+  disable silent rules, bug #443330
+
+  20 Oct 2012; Alexis Ballier <aballier@gentoo.org> vdpau-video-0.7.4.ebuild,
+  +files/vdpau-video-0.7.4-glext-missing-definition.patch:
+  Fix build with mesa opengl, bug #438180, patch ported from gstreamer-vaapi by
+  Steven Newbury
+
+*vdpau-video-0.7.4 (11 Oct 2012)
+
+  11 Oct 2012; Alexis Ballier <aballier@gentoo.org> +vdpau-video-0.7.4.ebuild:
+  version bump
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> vdpau-video-0.7.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  06 Jul 2011; Alexis Ballier <aballier@gentoo.org> -vdpau-video-0.6.10.ebuild:
+  remove old
+
+  26 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  vdpau-video-0.7.3.ebuild:
+  x86 stable, bug 359059
+
+  21 Mar 2011; Markos Chandras <hwoarang@gentoo.org> vdpau-video-0.7.3.ebuild:
+  Stable on amd64 wrt bug #359059
+
+  27 Feb 2011; Alexis Ballier <aballier@gentoo.org>
+  -vdpau-video-0.7.3_pre6.ebuild:
+  remove old
+
+*vdpau-video-0.7.3 (27 Feb 2011)
+
+  27 Feb 2011; Alexis Ballier <aballier@gentoo.org> +vdpau-video-0.7.3.ebuild:
+  version bump
+
+  03 Feb 2011; Alexis Ballier <aballier@gentoo.org> -vdpau-video-0.7.2.ebuild,
+  -vdpau-video-0.7.3_pre2.ebuild, -files/vdpau-video-nogl.patch:
+  remove old
+
+*vdpau-video-0.7.3_pre6 (03 Feb 2011)
+
+  03 Feb 2011; Alexis Ballier <aballier@gentoo.org>
+  +vdpau-video-0.7.3_pre6.ebuild:
+  version bump
+
+*vdpau-video-0.7.3_pre2 (24 Dec 2010)
+
+  24 Dec 2010; Alexis Ballier <aballier@gentoo.org>
+  +vdpau-video-0.7.3_pre2.ebuild, +files/vdpau-video-nogl.patch:
+  version bump and fix build with USE=-opengl, bug #341717
+
+*vdpau-video-0.7.2 (10 Oct 2010)
+
+  10 Oct 2010; Alexis Ballier <aballier@gentoo.org>
+  +vdpau-video-0.7.2.ebuild:
+  version bump
+
+  10 Oct 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -vdpau-video-0.6.9.ebuild:
+  old
+
+  24 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  vdpau-video-0.6.10.ebuild:
+  Stable on amd64 wrt bug #332361
+
+  17 Sep 2010; Christian Faulhammer <fauli@gentoo.org>
+  vdpau-video-0.6.10.ebuild:
+  stable x86, security bug 332361
+
+*vdpau-video-0.6.10 (20 Jul 2010)
+
+  20 Jul 2010; Alexis Ballier <aballier@gentoo.org>
+  +vdpau-video-0.6.10.ebuild:
+  version bump
+
+  22 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  vdpau-video-0.6.9.ebuild:
+  add ~x86 for bug 319261
+
+*vdpau-video-0.6.9 (11 May 2010)
+
+  11 May 2010; Alexis Ballier <aballier@gentoo.org>
+  +vdpau-video-0.6.9.ebuild, +metadata.xml:
+  initial import, bug #317317, ebuild by Frank Richter
+  <res@crystalspace3d.org> with small modifications by me

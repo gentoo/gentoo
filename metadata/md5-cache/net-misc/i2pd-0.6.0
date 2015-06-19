@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=!static? ( >=dev-libs/boost-1.46[threads] ) !static? ( dev-libs/crypto++ ) static? ( >=dev-libs/boost-1.46[static-libs,threads] ) static? ( dev-libs/crypto++[static-libs] ) >=dev-util/cmake-2.8.5 i2p-hardening? ( >=sys-devel/gcc-4.6 ) || ( >=sys-devel/gcc-4.6 >=sys-devel/clang-3.3 ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=A C++ daemon for accessing the I2P anonymous network
+EAPI=5
+HOMEPAGE=https://github.com/PrivacySolutions/i2pd
+IUSE=cpu_flags_x86_aes i2p-hardening static
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!static? ( >=dev-libs/boost-1.46[threads] ) !static? ( dev-libs/crypto++ )
+SLOT=0
+SRC_URI=https://github.com/PrivacySolutions/i2pd/archive/0.6.0.tar.gz -> i2pd-0.6.0.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=9d1bb4d20a4b1e41eb4292e8bf556f85

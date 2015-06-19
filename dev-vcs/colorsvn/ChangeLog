@@ -1,0 +1,58 @@
+# ChangeLog for dev-vcs/colorsvn
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/colorsvn/ChangeLog,v 1.10 2012/10/30 20:16:31 idl0r Exp $
+
+  30 Oct 2012; Christian Ruppert <idl0r@gentoo.org> -colorsvn-0.3.2.ebuild,
+  -colorsvn-0.3.2-r1.ebuild, metadata.xml:
+  Cleanup
+
+  29 Sep 2012; Fabian Groffen <grobian@gentoo.org> colorsvn-0.3.2-r2.ebuild:
+  Marked ~x{86,64}-macos
+
+  29 Sep 2012; Fabian Groffen <grobian@gentoo.org> colorsvn-0.3.2-r2.ebuild:
+  Fix (sys)confdir location for Prefix, bug #435434
+
+  29 Dec 2010; Markos Chandras <hwoarang@gentoo.org> colorsvn-0.3.2-r2.ebuild:
+  Stable on amd64 wrt bug #335134
+
+  09 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  colorsvn-0.3.2-r2.ebuild:
+  x86 stable wrt bug #335134
+
+*colorsvn-0.3.2-r2 (16 Sep 2010)
+
+  16 Sep 2010; Christian Ruppert <idl0r@gentoo.org> +colorsvn-0.3.2-r2.ebuild,
+  +files/0001-Don-t-colorize-svn-mkdir-bug-321451.-Use-IPC-open2-i.patch:
+  Don't use stderr anymore, bug 326279. Move sed to add 'svn mkdir' to the
+  preventcolor array into the patch as well. Use make -j1 for now, bug 335134.
+
+  08 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  colorsvn-0.3.2-r1.ebuild:
+  Stable on amd64 wrt bug #335134
+
+  22 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  colorsvn-0.3.2.ebuild, colorsvn-0.3.2-r1.ebuild:
+  dev-util/subversion renamed to dev-vcs/subversion.
+
+*colorsvn-0.3.2-r1 (09 Jun 2010)
+
+  09 Jun 2010; Christian Ruppert <idl0r@gentoo.org>
+  +colorsvn-0.3.2-r1.ebuild:
+  Revision bump. Do not colorize "svn mkdir", bug 321451, thanks to Marcin
+  Mirosław <bug@mejor.pl>.
+
+  20 Mar 2010; Christian Ruppert <idl0r@gentoo.org> +colorsvn-0.3.2.ebuild,
+  +metadata.xml:
+  Move dev-util/colorsvn to dev-vcs/colorsvn.
+
+  30 Oct 2009; Markus Meier <maekke@gentoo.org> colorsvn-0.3.2.ebuild:
+  amd64/x86 stable, bug #290166
+
+  09 Sep 2009; Christian Ruppert <idl0r@gentoo.org> colorsvn-0.3.2.ebuild:
+  Add ~x86 keyword.
+
+*colorsvn-0.3.2 (10 Mar 2009)
+
+  10 Mar 2009; Christian Ruppert (idl0r) <idl0r@gentoo.org> +metadata.xml,
+  +colorsvn-0.3.2.ebuild:
+  New ebuild for bug 250750 thanks to Henning Schild

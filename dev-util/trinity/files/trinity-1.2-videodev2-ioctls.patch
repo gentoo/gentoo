@@ -1,0 +1,40 @@
+From 54c5f3cce91ed914b1abbd3bafe4877e413947fa Mon Sep 17 00:00:00 2001
+From: Andi Shyti <andi@etezian.org>
+Date: Wed, 24 Jul 2013 00:42:07 +0200
+Subject: [PATCH] ioctls: videodev2: check if defines are obsolete
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In kernel headers 3.11 the VIDIOC_DBG_G_CHIP_IDENT define is
+considered obsolete, therefore removed, generating the following
+compiling error:
+
+ioctls/videodev2.c:72:15: error: ‘VIDIOC_DBG_G_CHIP_IDENT’ undeclared here (not in a function)
+  IOCTL(VIDIOC_DBG_G_CHIP_IDENT),
+               ^
+
+Check the definition of it before using it
+
+Signed-off-by: Andi Shyti <andi@etezian.org>
+---
+ ioctls/videodev2.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/ioctls/videodev2.c b/ioctls/videodev2.c
+index 0d1473e..03a5ae5 100644
+--- a/ioctls/videodev2.c
++++ b/ioctls/videodev2.c
+@@ -69,7 +69,9 @@ static const struct ioctl videodev2_ioctls[] = {
+ 	IOCTL(VIDIOC_TRY_ENCODER_CMD),
+ 	IOCTL(VIDIOC_DBG_S_REGISTER),
+ 	IOCTL(VIDIOC_DBG_G_REGISTER),
++#ifdef VIDIOC_DBG_G_CHIP_IDENT
+ 	IOCTL(VIDIOC_DBG_G_CHIP_IDENT),
++#endif
+ 	IOCTL(VIDIOC_S_HW_FREQ_SEEK),
+ #ifdef VIDIOC_ENUM_DV_PRESETS
+ 	IOCTL(VIDIOC_ENUM_DV_PRESETS),
+-- 
+1.8.3.2
+

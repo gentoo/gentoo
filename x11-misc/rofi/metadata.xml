@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>desktop-misc</herd>
+	<maintainer>
+		<email>jer@gentoo.org</email>
+		<name>Jeroen Roovers</name>
+	</maintainer>
+	<use>
+		<flag name="i3">Compile in support for the <pkg>x11-wm/i3</pkg> window manager</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">DaveDavenport/rofi</remote-id>
+	</upstream>
+</pkgmetadata>

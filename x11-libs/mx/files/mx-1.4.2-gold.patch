@@ -1,0 +1,30 @@
+ mx/Makefile.am |    2 +-
+ mx/Makefile.in |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/mx/Makefile.am b/mx/Makefile.am
+index 0e5a61e..4f2b4a4 100644
+--- a/mx/Makefile.am
++++ b/mx/Makefile.am
+@@ -268,7 +268,7 @@ libmx_@MX_API_VERSION@_la_SOURCES =	\
+ 	$(top_srcdir)/mx/mx.h 		\
+ 	$(NULL)
+ 
+-libmx_@MX_API_VERSION@_la_LIBADD = $(MX_LIBS)
++libmx_@MX_API_VERSION@_la_LIBADD = $(MX_LIBS) -lm
+ 
+ if HAVE_INTROSPECTION
+ -include $(INTROSPECTION_MAKEFILE)
+diff --git a/mx/Makefile.in b/mx/Makefile.in
+index 2fbf938..adfc59d 100644
+--- a/mx/Makefile.in
++++ b/mx/Makefile.in
+@@ -717,7 +717,7 @@ libmx_@MX_API_VERSION@_la_SOURCES = \
+ 	$(top_srcdir)/mx/mx.h 		\
+ 	$(NULL)
+ 
+-libmx_@MX_API_VERSION@_la_LIBADD = $(MX_LIBS)
++libmx_@MX_API_VERSION@_la_LIBADD = $(MX_LIBS) -lm
+ @HAVE_INTROSPECTION_TRUE@INTROSPECTION_GIRS = Mx-@MX_API_VERSION@.gir
+ @HAVE_INTROSPECTION_TRUE@Mx_@MX_API_VERSION_AM@_gir_NAMESPACE = Mx
+ @HAVE_INTROSPECTION_TRUE@Mx_@MX_API_VERSION_AM@_gir_VERSION = @MX_API_VERSION@

@@ -1,0 +1,118 @@
+# ChangeLog for dev-perl/Math-GMP
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Math-GMP/ChangeLog,v 1.33 2014/08/22 16:29:08 axs Exp $
+
+*Math-GMP-2.60.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Math-GMP-2.60.0-r1.ebuild, -Math-GMP-2.60.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -Math-GMP-2.04.ebuild:
+  Cleanup
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> Math-GMP-2.04.ebuild,
+  Math-GMP-2.60.0.ebuild:
+  Drop ia64/sparc
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> Math-GMP-2.60.0.ebuild:
+  x86 stable wrt bug #400173
+
+  27 Feb 2012; Brent Baude <ranger@gentoo.org> Math-GMP-2.60.0.ebuild:
+  Marking Math-GMP-2.60.0 ppc for bug 400173
+
+  27 Feb 2012; Jeroen Roovers <jer@gentoo.org> Math-GMP-2.60.0.ebuild:
+  Stable for HPPA (bug #400173).
+
+  25 Feb 2012; Tobias Klausmann <klausman@gentoo.org> Math-GMP-2.60.0.ebuild:
+  Stable on alpha, bug #400173
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Math-GMP-2.60.0.ebuild:
+  Stable for amd64, wrt bug #400173
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Math-GMP-2.06.ebuild:
+  Cleanup
+
+*Math-GMP-2.60.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org> +Math-GMP-2.60.0.ebuild:
+  Change version scheme
+
+  12 Oct 2009; Torsten Veller <tove@gentoo.org> -Math-GMP-2.05.ebuild:
+  Cleanup
+
+*Math-GMP-2.06 (18 Sep 2009)
+
+  18 Sep 2009; Torsten Veller <tove@gentoo.org> +Math-GMP-2.06.ebuild:
+  Version bump
+
+*Math-GMP-2.05 (20 Oct 2008)
+
+  20 Oct 2008; Torsten Veller <tove@gentoo.org> +Math-GMP-2.05.ebuild:
+  Version bump
+
+  28 Mar 2008; Jeroen Roovers <jer@gentoo.org> Math-GMP-2.04.ebuild:
+  Stable for HPPA too.
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -Math-GMP-2.03.ebuild, Math-GMP-2.04.ebuild:
+  Version bump, thanks seemant
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org> Math-GMP-2.03.ebuild,
+  Math-GMP-2.04.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org> Math-GMP-2.03.ebuild,
+  Math-GMP-2.04.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed header
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> Math-GMP-2.04.ebuild:
+  Mark 2.04 stable on ia64
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> Math-GMP-2.04.ebuild:
+  add ~ia64
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> Math-GMP-2.04.ebuild:
+  Stable on ppc.
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> Math-GMP-2.04.ebuild:
+  Stable on amd64.
+
+  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> Math-GMP-2.04.ebuild:
+  Stable on alpha.
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org> Math-GMP-2.03.ebuild,
+  Math-GMP-2.04.ebuild:
+  Cleaning and bumping.
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> Math-GMP-2.03.ebuild:
+  stable on amd64
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*Math-GMP-2.04 (17 Oct 2004)
+
+  17 Oct 2004; Michael Cummings <mcummings@gentoo.org> +Math-GMP-2.04.ebuild:
+  New version on cpan; tested on sparc
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org> Math-GMP-2.03.ebuild:
+  Stable on alpha.
+
+  07 May 2004; Gustavo Zacarias <gustavoz@gentoo.org> Math-GMP-2.03.ebuild:
+  Stable on sparc
+
+  20 Mar 2004; Joshua Kinard <kumba@gentoo.org> Math-GMP-2.03.ebuild:
+  Added ~mips to KEYWORDS.
+
+  27 Oct 2003; Brad House <brad_mssw@gentoo.org> Math-GMP-2.03.ebuild:
+  add ~amd64 flag
+
+*Math-GMP-2.03 (23 Jun 2003)
+
+  23 Jun 2003; Michael Cummings <mcummings@gentoo.org> Math-GMP-2.03.ebuild:
+  Required module for Net-SSH-Perl, a dep for Net-SFTP

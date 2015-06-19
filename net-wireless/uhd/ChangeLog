@@ -1,0 +1,86 @@
+# ChangeLog for net-wireless/uhd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/uhd/ChangeLog,v 1.18 2015/02/17 03:32:12 zerochaos Exp $
+
+*uhd-3.8.2 (17 Feb 2015)
+
+  17 Feb 2015; Rick Farina <zerochaos@gentoo.org> +uhd-3.8.2.ebuild,
+  -uhd-3.7.2.ebuild, -uhd-3.8.0.ebuild:
+  version bump, cleanup old
+
+  21 Jan 2015; Pacho Ramos <pacho@gentoo.org> uhd-3.8.0.ebuild:
+  Fix sandbox violations, #534582
+
+  03 Nov 2014; Rick Farina <zerochaos@gentoo.org> uhd-3.8.0.ebuild:
+  switching to upstream zip file
+
+  03 Nov 2014; Rick Farina <zerochaos@gentoo.org> uhd-3.8.0.ebuild:
+  pull keywords from uhd-3.8.0 while trying to resolve bug 527650
+
+*uhd-3.8.0 (29 Oct 2014)
+
+  29 Oct 2014; Rick Farina <zerochaos@gentoo.org> +uhd-3.8.0.ebuild,
+  -uhd-3.7.1.ebuild:
+  version bump and new deps per depcheck
+
+*uhd-3.7.2 (22 Aug 2014)
+
+  22 Aug 2014; Rick Farina <zerochaos@gentoo.org> +uhd-3.7.2.ebuild,
+  -uhd-3.4.3-r1.ebuild, -uhd-3.4.3-r2.ebuild, -uhd-3.4.3.ebuild,
+  -uhd-3.5.0.ebuild, -uhd-3.5.3.ebuild, -uhd-3.6.2.ebuild, -uhd-3.7.0.ebuild:
+  bump, remove a bunch of old/unneeded versions
+
+  25 Apr 2014; Jason A. Donenfeld <zx2c4@gentoo.org> metadata.xml:
+  Add self to maintainers.
+
+*uhd-3.7.1 (25 Apr 2014)
+
+  25 Apr 2014; Jason A. Donenfeld <zx2c4@gentoo.org> +uhd-3.7.1.ebuild:
+  Version bump.
+
+*uhd-3.7.0 (22 Feb 2014)
+*uhd-3.6.2 (22 Feb 2014)
+
+  22 Feb 2014; Rick Farina <zerochaos@gentoo.org> +uhd-3.6.2.ebuild,
+  +uhd-3.7.0.ebuild:
+  bump
+
+  16 Sep 2013; Rick Farina <zerochaos@gentoo.org> uhd-3.5.3.ebuild:
+  subslot dep on boost
+
+  05 Jun 2013; Rick Farina <zerochaos@gentoo.org> uhd-3.5.3.ebuild:
+  adding ~arm keyword
+
+*uhd-3.5.3 (30 May 2013)
+
+  30 May 2013; Rick Farina <zerochaos@gentoo.org> +uhd-3.5.3.ebuild:
+  now with more version bump
+
+*uhd-3.5.0 (27 Dec 2012)
+
+  27 Dec 2012; Rick Farina <zerochaos@gentoo.org> +uhd-3.5.0.ebuild:
+  version bump to 3.5.0
+
+*uhd-3.4.3-r2 (18 Oct 2012)
+
+  18 Oct 2012; Rick Farina <zerochaos@gentoo.org> +uhd-3.4.3-r2.ebuild:
+  fix QA violation wrt bug #437996
+
+*uhd-3.4.3-r1 (09 Oct 2012)
+
+  09 Oct 2012; Rick Farina <zerochaos@gentoo.org> +uhd-3.4.3-r1.ebuild:
+  so it seems uhd wasn't being properly installed at all, thanks to mossman for
+  telling me and making me fix this silly little bug
+
+  10 Sep 2012; Rick Farina <zerochaos@gentoo.org> uhd-3.4.3.ebuild:
+  radhermit points out that commits are free and I'm being lame by not saving
+  bytes in DEPEND
+
+  10 Sep 2012; Rick Farina <zerochaos@gentoo.org> uhd-3.4.3.ebuild:
+  remove redundant dep on cmake as pointed out by radhermit
+
+*uhd-3.4.3 (10 Sep 2012)
+
+  10 Sep 2012; Rick Farina <zerochaos@gentoo.org> +metadata.xml,
+  +uhd-3.4.3.ebuild:
+  initial commit of uhd

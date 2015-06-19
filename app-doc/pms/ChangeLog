@@ -1,0 +1,195 @@
+# ChangeLog for app-doc/pms
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-doc/pms/ChangeLog,v 1.52 2015/04/25 09:02:52 ulm Exp $
+
+  25 Apr 2015; Ulrich Müller <ulm@gentoo.org> pms-9999.ebuild:
+  Update repository URIs, bug 547648.
+
+  01 Jun 2014; Ulrich Müller <ulm@gentoo.org> pms-5-r2.ebuild:
+  Drop ~sparc-fbsd keyword because of unsatified dependencies.
+
+  03 Apr 2014; Ulrich Müller <ulm@gentoo.org> pms-9999.ebuild:
+  Update to git-r3.eclass.
+
+  15 Jan 2014; Ulrich Müller <ulm@gentoo.org> pms-5-r2.ebuild:
+  Drop netbsd and openbsd prefix keywords, as they are not used in the tree.
+
+  30 Dec 2013; Ulrich Müller <ulm@gentoo.org> pms-5-r2.ebuild,
+  pms-9999.ebuild:
+  Update HOMEPAGE and SRC_URI.
+
+  30 Dec 2013; Ulrich Müller <ulm@gentoo.org> -pms-5.ebuild:
+  Remove old.
+
+  29 Dec 2013; Christian Faulhammer <fauli@gentoo.org> pms-5-r2.ebuild:
+  stabilise remaining arches for bug 491910
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pms-5-r2.ebuild:
+  Stable for sparc, wrt bug #491910
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pms-5-r2.ebuild:
+  Stable for ppc64, wrt bug #491910
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pms-5-r2.ebuild:
+  Stable for ppc, wrt bug #491910
+
+  15 Dec 2013; Johannes Huber <johu@gentoo.org> pms-5-r2.ebuild:
+  x86 stable, bug #491910
+
+  12 Dec 2013; Chema Alonso <nimiux@gentoo.org> pms-5-r2.ebuild:
+  Stable for amd64 wrt bug #491910
+
+  01 Dec 2013; Markus Meier <maekke@gentoo.org> pms-5-r2.ebuild:
+  arm stable, bug #491910
+
+  24 Nov 2013; Jeroen Roovers <jer@gentoo.org> pms-5-r2.ebuild:
+  Stable for HPPA (bug #491910).
+
+*pms-5-r2 (10 Aug 2013)
+
+  10 Aug 2013; Ulrich Müller <ulm@gentoo.org> -pms-5-r1.ebuild,
+  +pms-5-r2.ebuild:
+  Install the same set of files with and without USE=binary. Remove old.
+
+*pms-5-r1 (09 Aug 2013)
+
+  09 Aug 2013; Ulrich Müller <ulm@gentoo.org> -pms-4_p20110118.ebuild,
+  +pms-5-r1.ebuild, pms-9999.ebuild, metadata.xml:
+  Build from source, unless USE=binary is specified. Install EAPI cheat sheet.
+  Add missing dependency on recode. Remove old.
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> pms-4_p20110118.ebuild,
+  pms-5.ebuild, pms-9999.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  16 Nov 2012; Ulrich Müller <ulm@gentoo.org> pms-5.ebuild:
+  Mark as stable on all arches, following stabilisation of EAPI 5 Portage.
+
+  23 Sep 2012; Ulrich Müller <ulm@gentoo.org> -pms-2.ebuild, -pms-3.ebuild,
+  pms-4_p20110118.ebuild, pms-5.ebuild:
+  Remove slotting; newer versions include all previous EAPIs. Remove old.
+
+*pms-5 (20 Sep 2012)
+
+  20 Sep 2012; Ulrich Müller <ulm@gentoo.org> +pms-5.ebuild:
+  Version bump. EAPI 5 has been approved by the council.
+
+  03 Jan 2012; Mark Loeser <halcy0n@gentoo.org> pms-2.ebuild, pms-3.ebuild,
+  pms-4_p20110118.ebuild:
+  Drop mips-irix as its no longer supported
+
+  13 Sep 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #225633
+
+  16 Jul 2011; Michał Górny <mgorny@gentoo.org> pms-9999.ebuild:
+  Migrate the live ebuild to git-2.eclass, add a fallback EGIT_REPO_URI, bump
+  EAPI.
+
+  18 Mar 2011; Ulrich Mueller <ulm@gentoo.org> pms-4_p20110118.ebuild:
+  Mark as stable, bug 359359.
+
+  20 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> pms-2.ebuild:
+  No stable keywords for prefix
+
+*pms-4_p20110118 (18 Jan 2011)
+
+  18 Jan 2011; Ulrich Mueller <ulm@gentoo.org> -pms-4.ebuild,
+  pms-4_p20110118.ebuild:
+  Version bump, following re-approval of EAPI 4. Remove old.
+
+*pms-4 (30 Dec 2010)
+
+  30 Dec 2010; Ulrich Mueller <ulm@gentoo.org> +pms-4.ebuild:
+  Version bump. EAPI 4 has been approved by the council.
+
+*pms-9999 (11 Jun 2010)
+
+  11 Jun 2010; Ulrich Mueller <ulm@gentoo.org> +pms-9999.ebuild,
+  -pms-99999999.ebuild:
+  Rename live ebuild, fixes bug 323419.
+
+  09 Feb 2010; Christian Faulhammer <fauli@gentoo.org> pms-3.ebuild:
+  stabilise PMS for EAPI 3 as a Portage version is available in the stable
+  tree
+
+  09 Feb 2010; Christian Faulhammer <fauli@gentoo.org> pms-2.ebuild,
+  pms-3.ebuild, pms-99999999.ebuild:
+  Do proper slotting
+
+*pms-3 (19 Jan 2010)
+
+  19 Jan 2010; Christian Faulhammer <fauli@gentoo.org> +pms-3.ebuild:
+  EAPI 3 has been approved by Council, so add an ebuild for that
+
+  10 Jan 2010; Christian Faulhammer <fauli@gentoo.org> pms-2.ebuild:
+  add all stable KEYWORDS
+
+  10 Jan 2010; Christian Faulhammer <fauli@gentoo.org> pms-99999999.ebuild,
+  metadata.xml:
+  remove kdebuild and all-options USE flags as trunk has no support for them
+  anymore; remove KEYWORDS for live ebuild and clean up a bit
+
+  31 May 2009; Thomas Anderson <gentoofan23@gentoo.org> metadata.xml,
+  pms-99999999.ebuild:
+  EAPI 3 was merged into master, remove USE=eapi3-draft
+
+  23 Apr 2009; Mounir Lamouri <volkmar@gentoo.org> pms-2.ebuild,
+  pms-99999999.ebuild:
+  Add ~ppc keyword
+
+  18 Apr 2009; Thomas Anderson <gentoofan23@gentoo.org> pms-99999999.ebuild:
+  Fix filenames to sed for set-options, dependent on USE=eapi3-draft
+
+  17 Apr 2009; Thomas Anderson <gentoofan23@gentoo.org> pms-99999999.ebuild:
+  Fix Build Dependencies, USE=html needs >=dev-tex/tex4ht-20090115_p0029
+
+  16 Apr 2009; Christian Faulhammer <fauli@gentoo.org> pms-99999999.ebuild:
+  add dev-tex/leaflet as the EAPI 3 branch now needs that
+
+  15 Apr 2009; Christian Faulhammer <fauli@gentoo.org> pms-99999999.ebuild:
+  add dependency on dev-texlive/texlive-bibtexextra for EAPI 3 branch
+
+  13 Apr 2009; Christian Faulhammer <fauli@gentoo.org> pms-2.ebuild,
+  pms-99999999.ebuild:
+  add ~x86 KEYWORD
+
+*pms-2 (13 Apr 2009)
+
+  13 Apr 2009; Christian Faulhammer <fauli@gentoo.org> +pms-2.ebuild:
+  add an ebuild which installs the approved EAPI 2 version of the PMS
+
+  12 Apr 2009; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
+  add ulm and myself as maintainers
+
+  26 Mar 2009; Thomas Anderson <gentoofan23@gentoo.org> metadata.xml,
+  pms-99999999.ebuild:
+  Add EAPI 3 draft support, thanks to David Leverton for the patch
+
+  29 Sep 2008; Ferris McCormick <fmccor@gentoo.org> pms-99999999.ebuild:
+  Add ~sparc keyword.  This builds fine, as it is nothing but a git pull and a
+  latex build.  This is needed to facilitate recommendation from Council that
+  one should 'emerge app-doc/pms' for some EAPI=2 documentation.
+
+  29 Sep 2008; Thomas Anderson <gentoofan23@gentoo.org> pms-99999999.ebuild:
+  Add ~amd64 keyword
+
+  24 Aug 2008; Thomas Anderson <gentoofan23@gentoo.org> metadata.xml:
+  Picking up maintainership
+
+  16 Aug 2008; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove ingmar from metadata.xml (#202413)
+  Remove zlin from metadata.xml (#202412)
+
+  24 Jul 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  15 Jun 2008; Ingmar Vanhassel <ingmar@gentoo.org> pms-99999999.ebuild:
+  Add a html USE flag, to generate pms as HTML as well. Patch by David
+  Leverton.
+
+*pms-99999999 (13 Jun 2008)
+
+  13 Jun 2008; Ingmar Vanhassel <ingmar@gentoo.org> +metadata.xml,
+  +pms-99999999.ebuild:
+  Import app-doc/pms, an ebuild for the latest pms.pdf draft. ebuild by
+  David Leverton.

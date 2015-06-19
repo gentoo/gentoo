@@ -1,0 +1,122 @@
+# ChangeLog for net-wireless/airsnort
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/airsnort/ChangeLog,v 1.30 2012/11/18 11:00:49 pacho Exp $
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> airsnort-0.2.7e.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 Apr 2011; Samuli Suominen <ssuominen@gentoo.org> airsnort-0.2.7e.ebuild:
+  Use net-libs/libpcap instead of virtual/libpcap wrt #358835.
+
+  16 Oct 2009; Thilo Bangert <bangert@gentoo.org> airsnort-0.2.7e.ebuild:
+  einfo -> elog
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Peter Johanson (latexer, #206688) from metadata.xml.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  23 Oct 2006; Stefan Schweizer <genstef@gentoo.org>
+  -airsnort-0.2.1a.ebuild, -airsnort-0.2.1b.ebuild, -airsnort-0.2.2.ebuild,
+  -airsnort-0.2.3c.ebuild, -airsnort-0.2.4a.ebuild, -airsnort-0.2.7c.ebuild,
+  airsnort-0.2.7e.ebuild:
+  pkgconfig dep added, thanks patrick
+
+  24 Sep 2006; Michael Hanselmann <hansmi@gentoo.org>
+  airsnort-0.2.7e.ebuild:
+  Stable on ppc.
+
+  17 Sep 2006; <nixnut@gentoo.org> airsnort-0.2.7e.ebuild:
+  Added ~ppc wrt bug 134383
+
+  13 Sep 2006; <ticho@gentoo.org> airsnort-0.2.7e.ebuild:
+  Stable on x86, bug 134383.
+
+  17 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> airsnort-0.2.3c.ebuild,
+  airsnort-0.2.4a.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+*airsnort-0.2.7e (22 Apr 2005)
+
+  22 Apr 2005; Stefan Schweizer <genstef@gentoo.org>
+  +airsnort-0.2.7e.ebuild:
+  Version bump thanks to Michael Zanetta <grimmlin@pentoo.ch> in bug 87327
+
+  30 Jan 2005; Daniel Black <dragonheart@gentoo.org> airsnort-0.2.1a.ebuild,
+  airsnort-0.2.1b.ebuild, airsnort-0.2.2.ebuild, airsnort-0.2.3c.ebuild,
+  airsnort-0.2.4a.ebuild, airsnort-0.2.7c.ebuild:
+  Transition dependancy from net-libs/libpcap to virtual/libpcap
+
+*airsnort-0.2.7c (19 Jan 2005)
+
+  19 Jan 2005; Stefan Schweizer <genstef@gentoo.org>
+  +airsnort-0.2.7c.ebuild:
+  Version Bump thanks to Torne Wuff <torne-gentoozilla@wolfpuppy.org.uk>,
+  Fridtjof Busse <gentoo@fbunet.de>, Romain GAILLEGUE <romain@biscotte.net>,
+  Michael Farnbach <michael@myricanet.com>, Jürgen Hötzel
+  <gentoo@hoetzel.info> and Martin Gramatke <xmit@gmx.de> in bug 50877
+
+  05 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> airsnort-0.2.4a.ebuild:
+  Added amd64 keyword, closing #57898.
+
+*airsnort-0.2.4a (31 Aug 2004)
+
+  31 Aug 2004; Brandon Hale <tseng@gentoo.org> +airsnort-0.2.4a.ebuild:
+  Version bump. This version uses new monitor mode code available in orinico-cvs.
+
+*airsnort-0.2.3c (06 Feb 2004)
+
+  06 Feb 2004; Peter Johanson <latexer@gentoo.org> airsnort-0.2.3c.ebuild:
+  Version bump to new gtk2 version. Thanks to Florian Schilhabel
+  <fernsehleo@gmx.net> (bug #38914)
+
+  26 Jan 2004; Jason Wever <weeve@gentoo.org> airsnort-0.2.1a.ebuild,
+  airsnort-0.2.1b.ebuild, airsnort-0.2.2.ebuild:
+  Masked on sparc as pcmcia-cs doesn't work for the nell pcmcia controller, and
+  is masked. This may work on sparc, but we have no way to test it currently as
+  there is no working pcmcia support for any devices, and sparc devs don't have
+  the hardware for the in-kernel drivers.
+
+  18 Dec 2003; Peter Johanson <latexer@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+*airsnort-0.2.2 (02 Aug 2003)
+
+  02 Aug 2003; Peter Johanson <latexer@gentoo.org> airsnort-0.2.2.ebuild:
+  New version. added ~x86.
+
+  03 Apr 2003; Peter Johanson <latexer@gentoo.org> airsnort-0.2.1a.ebuild,
+  airsnort-0.2.1b.ebuild:
+  Added a comment about linux-wlan-ng support
+
+  25 Mar 2003; Peter Johanson <latexer@gentoo.org> airsnort-0.2.1b.ebuild :
+  Marked stable for x86
+
+*airsnort-0.2.1b (24 Jan 2003)
+
+  24 Jan 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #14473.
+
+*airsnort-0.2.1a (29 Jun 2002)
+
+  24 Jan 2003; Mike Frysinger <vapier@gentoo.org> :
+  Made pcmcia dependency optional #14263.
+
+  31 Oct 2002; Hannes Mehnert <hannes@gentoo.org>:
+  moved to net-wireless
+
+  25 Oct 2002; Calum Selkirk <cselkirk@gentoo.org> airsnort-0.2.1a.ebuild :
+  Changes DEPEND from x11-libs/gtk+-1.2.10-r8 to x11-libs/gtk+-1.2.10-r9
+  
+  8 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
+
+  29 Jun 2002; Thilo Bangert <bangert@gentoo.org> :
+  initial release - submitted by Brian Rozmierski <brianr at warped-minds.com>

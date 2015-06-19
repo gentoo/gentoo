@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst
+DEPEND=!static? ( net-libs/polarssl >=dev-libs/boost-1.34:= botan? ( =dev-libs/botan-1.10* ) cryptopp? ( dev-libs/crypto++ ) lua? ( dev-lang/lua:= ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) ldap? ( >=net-nds/openldap-2.0.27-r4 ) sqlite? ( dev-db/sqlite:3 ) odbc? ( dev-db/unixODBC ) opendbx? ( dev-db/opendbx ) geoip? ( >=dev-cpp/yaml-cpp-0.5.1 dev-libs/geoip ) tinydns? ( >=dev-db/tinycdb-0.77 ) ) virtual/pkgconfig static? ( >=net-libs/polarssl-1.3.0[static-libs(+)] >=dev-libs/boost-1.34[static-libs(+)] botan? ( =dev-libs/botan-1.10*[static-libs(+)] ) cryptopp? ( dev-libs/crypto++[static-libs(+)] ) lua? ( dev-lang/lua:=[static-libs(+)] ) mysql? ( virtual/mysql[static-libs(+)] ) postgres? ( dev-db/postgresql[static-libs(+)] ) ldap? ( >=net-nds/openldap-2.0.27-r4[static-libs(+)] ) sqlite? ( dev-db/sqlite:3[static-libs(+)] ) odbc? ( dev-db/unixODBC[static-libs(+)] ) opendbx? ( dev-db/opendbx[static-libs(+)] ) geoip? ( >=dev-cpp/yaml-cpp-0.5.1 dev-libs/geoip[static-libs(+)] ) tinydns? ( >=dev-db/tinycdb-0.77 ) ) doc? ( app-doc/doxygen ) virtual/pkgconfig
+DESCRIPTION=The PowerDNS Daemon
+EAPI=5
+HOMEPAGE=http://www.powerdns.com/
+IUSE=botan cryptopp debug doc geoip ldap lua mydns mysql odbc opendbx postgres remote sqlite static tools tinydns test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!static? ( net-libs/polarssl >=dev-libs/boost-1.34:= botan? ( =dev-libs/botan-1.10* ) cryptopp? ( dev-libs/crypto++ ) lua? ( dev-lang/lua:= ) mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql:= ) ldap? ( >=net-nds/openldap-2.0.27-r4 ) sqlite? ( dev-db/sqlite:3 ) odbc? ( dev-db/unixODBC ) opendbx? ( dev-db/opendbx ) geoip? ( >=dev-cpp/yaml-cpp-0.5.1 dev-libs/geoip ) tinydns? ( >=dev-db/tinycdb-0.77 ) )
+REQUIRED_USE=mydns? ( mysql )
+SLOT=0
+SRC_URI=http://downloads.powerdns.com/releases/pdns-3.4.5.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=f7d0ea5cc7ae1b666d81c2285bf09438

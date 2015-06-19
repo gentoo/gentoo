@@ -1,0 +1,15 @@
+# Copyright 2010-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/mipsel/o32/make.defaults,v 1.1 2014/10/11 08:22:41 blueness Exp $
+
+PROFILE_ARCH="mipsel"
+
+CHOST="mipsel-unknown-linux-gnu"
+CHOST_o32="mipsel-unknown-linux-gnu"
+
+ABI="o32"
+DEFAULT_ABI="o32"
+MULTILIB_ABIS="o32"
+
+ABI_MIPS="o32"
+IUSE_IMPLICIT="abi_mips_o32"

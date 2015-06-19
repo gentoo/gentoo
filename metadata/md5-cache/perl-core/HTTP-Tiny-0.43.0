@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+DEPEND=>=virtual/perl-ExtUtils-MakeMaker-6.30 virtual/perl-IO virtual/perl-Time-Local test? ( virtual/perl-Data-Dumper virtual/perl-Exporter virtual/perl-ExtUtils-MakeMaker virtual/perl-File-Spec virtual/perl-File-Spec virtual/perl-File-Temp virtual/perl-IO virtual/perl-IPC-Cmd virtual/perl-Scalar-List-Utils >=virtual/perl-Test-Simple-0.96 ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=A small, simple, correct HTTP/1.1 client
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/HTTP-Tiny/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-2 )
+RDEPEND=virtual/perl-IO virtual/perl-Time-Local dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DA/DAGOLDEN/HTTP-Tiny-0.043.tar.gz
+_eclasses_=alternatives	326031758c86cd08f5844f475f03ac01	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=911c578f05e2f548a6f28487b6c2903c

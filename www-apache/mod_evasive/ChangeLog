@@ -1,0 +1,35 @@
+# ChangeLog for www-apache/mod_evasive
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_evasive/ChangeLog,v 1.8 2015/05/14 06:42:19 mr_bones_ Exp $
+
+  14 May 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -mod_evasive-1.10.1.ebuild:
+  old
+
+*mod_evasive-1.10.1-r1 (09 May 2015)
+
+  09 May 2015; Pacho Ramos <pacho@gentoo.org> +mod_evasive-1.10.1-r1.ebuild:
+  support apache 2.4 (#532822)
+
+  22 Jan 2013; Víctor Ostorga <vostorga@gentoo.org> mod_evasive-1.10.1.ebuild:
+  Updating Homepage
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  12 Oct 2012; Patrick Lauer <patrick@gentoo.org> mod_evasive-1.10.1.ebuild:
+  Restricting to apache 2.2
+
+  31 Jan 2008; Benedikt Böhm <hollow@gentoo.org> files/10_mod_evasive.conf,
+  metadata.xml, mod_evasive-1.10.1.ebuild:
+  update metadata; cleanup
+
+  10 Sep 2007; Benedikt Böhm <hollow@gentoo.org> metadata.xml:
+  fix metadata
+
+*mod_evasive-1.10.1 (09 Sep 2007)
+
+  09 Sep 2007; Benedikt Böhm <hollow@gentoo.org>
+  +files/10_mod_evasive.conf, +metadata.xml, +mod_evasive-1.10.1.ebuild:
+  initial version; #107049

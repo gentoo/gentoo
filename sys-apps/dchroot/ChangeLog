@@ -1,0 +1,30 @@
+# ChangeLog for sys-apps/dchroot
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/dchroot/ChangeLog,v 1.7 2014/08/30 11:55:13 mgorny Exp $
+
+  30 Aug 2014; Michał Górny <mgorny@gentoo.org> dchroot-0.12.1.ebuild:
+  Replace einstall with emake install, bug #521652.
+
+  02 Jan 2010; Víctor Ostorga <vostorga@gentoo.org> -dchroot-0.10.ebuild,
+  dchroot-0.12.1.ebuild:
+  Removing Old version; adding blocker for collision with dev-util/schroot,
+  patch thanks to Zorzo Luca <lucazorzo@gmail.com> bug #298874
+
+  18 Nov 2009; Víctor Ostorga <vostorga@gentoo.org> dchroot-0.12.1.ebuild:
+  Respecting CC variable, respecting LDFLAGS, bug #293575
+
+*dchroot-0.12.1 (08 Jul 2007)
+
+  08 Jul 2007; Christian Heim <phreak@gentoo.org> +dchroot-0.12.1.ebuild:
+  Version bump.
+
+  15 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+*dchroot-0.10 (11 Feb 2004)
+
+  11 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Gabriel Ebner #44700.

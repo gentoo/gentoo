@@ -1,0 +1,82 @@
+diff -Naur zhcon-0.2.5.orig/doc/Makefile.am zhcon-0.2.5/doc/Makefile.am
+--- zhcon-0.2.5.orig/doc/Makefile.am	2006-05-03 02:57:18.000000000 +0900
++++ zhcon-0.2.5/doc/Makefile.am	2011-01-25 18:08:26.483746175 +0900
+@@ -3,8 +3,8 @@
+ EXTRA_DIST = zhcon.1.in poem.big5 poem.gb poem.gb.utf8 bpsf.txt manual.tex manual.dvi manual.ps README.html default.css html.tar.gz
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(mandir)/man1/
+-	$(INSTALL_DATA) $(top_builddir)/doc/zhcon.1 $(mandir)/man1/zhcon.1
++	$(mkinstalldirs) $(DESTDIR)$(mandir)/man1/
++	$(INSTALL_DATA) $(top_builddir)/doc/zhcon.1 $(DESTDIR)$(mandir)/man1/zhcon.1
+ 
+ uninstall-local:
+-	-rm -f $(mandir)/man1/zhcon.1
++	-rm -f $(DESTDIR)$(mandir)/man1/zhcon.1
+diff -Naur zhcon-0.2.5.orig/font/Makefile.am zhcon-0.2.5/font/Makefile.am
+--- zhcon-0.2.5.orig/font/Makefile.am	2006-04-25 01:39:04.000000000 +0900
++++ zhcon-0.2.5/font/Makefile.am	2011-01-25 18:08:26.483746175 +0900
+@@ -1,8 +1,8 @@
+ EXTRA_DIST = *.bpsf
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(libdir)/zhcon/font/
+-	$(INSTALL_DATA) $(srcdir)/*.bpsf $(libdir)/zhcon/font/
++	$(mkinstalldirs) $(DESTDIR)$(libdir)/zhcon/font/
++	$(INSTALL_DATA) $(srcdir)/*.bpsf $(DESTDIR)$(libdir)/zhcon/font/
+ 
+ uninstall-local:
+-	-rm -f $(libdir)/zhcon/font/*.bpsf
++	-rm -f $(DESTDIR)$(libdir)/zhcon/font/*.bpsf
+diff -Naur zhcon-0.2.5.orig/input/Makefile.am zhcon-0.2.5/input/Makefile.am
+--- zhcon-0.2.5.orig/input/Makefile.am	2006-04-25 01:38:44.000000000 +0900
++++ zhcon-0.2.5/input/Makefile.am	2011-01-25 18:08:26.483746175 +0900
+@@ -1,8 +1,8 @@
+ EXTRA_DIST = *.mb
+ 
+ install-data-local:
+-	$(mkinstalldirs) $(libdir)/zhcon/input/
+-	$(INSTALL_DATA) $(srcdir)/*.mb $(libdir)/zhcon/input/
++	$(mkinstalldirs) $(DESTDIR)$(libdir)/zhcon/input/
++	$(INSTALL_DATA) $(srcdir)/*.mb $(DESTDIR)$(libdir)/zhcon/input/
+ 
+ uninstall-local:
+-	-rm -f $(libdir)/zhcon/input/*.mb
++	-rm -f $(DESTDIR)$(libdir)/zhcon/input/*.mb
+diff -Naur zhcon-0.2.5.orig/src/Makefile.am zhcon-0.2.5/src/Makefile.am
+--- zhcon-0.2.5.orig/src/Makefile.am	2006-05-03 02:12:41.000000000 +0900
++++ zhcon-0.2.5/src/Makefile.am	2011-01-25 18:11:42.446555911 +0900
+@@ -7,15 +7,12 @@
+ 
+ SUBDIRS = display
+ 
+-install-exec-local:
+-	chmod 4755 $(bindir)/zhcon
+-
+ install-data-local:
+-	$(mkinstalldirs) $(prefix)/etc
+-	$(INSTALL_DATA) $(srcdir)/zhcon.conf $(prefix)/etc/zhcon.conf
++	$(mkinstalldirs) $(DESTDIR)$(sysconfdir)
++	$(INSTALL_DATA) $(srcdir)/zhcon.conf $(DESTDIR)$(sysconfdir)/zhcon.conf
+ 
+ uninstall-local:
+-	-rm -f $(prefix)/etc/zhcon.conf
++	-rm -f $(DESTDIR)$(sysconfdir)/zhcon.conf
+ 
+ # set the include path found by configure
+ INCLUDES= $(all_includes)
+diff -Naur zhcon-0.2.5.orig/tools/Makefile.am zhcon-0.2.5/tools/Makefile.am
+--- zhcon-0.2.5.orig/tools/Makefile.am	2006-04-25 01:38:46.000000000 +0900
++++ zhcon-0.2.5/tools/Makefile.am	2011-01-25 18:04:22.701226453 +0900
+@@ -9,11 +9,6 @@
+ #getbpsf_LDADD = -L/usr/X11R6/lib -lX11
+ #getbpsf_CPPFLAGS = -I/usr/X11R6/include
+ 
+-LDFLAGS=
+-CXXFLAGS=
+-CCFLAGS=
+-LIBS=
+-
+ EXTRA_DIST = README getbpsf.txt gpm-1.19.6-pty.diff\
+              gpm-1.19.6-patched.tar.gz
+ 

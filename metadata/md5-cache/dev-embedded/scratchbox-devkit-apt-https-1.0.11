@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=A cross-compilation toolkit designed to make embedded Linux application development easier
+HOMEPAGE=http://www.scratchbox.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND==dev-embedded/scratchbox-1.0*
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://scratchbox.org/download/files/sbox-releases/hathor/tarball/scratchbox-devkit-apt-https-1.0.11-i386.tar.gz
+_md5_=7b2c4bcc2c39a5471c56d2ee9d90800c

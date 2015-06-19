@@ -1,0 +1,433 @@
+# ChangeLog for sys-libs/gpm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/gpm/ChangeLog,v 1.111 2014/12/10 23:51:13 zmedico Exp $
+
+  10 Dec 2014; Zac Medico <zmedico@gentoo.org> gpm-1.20.7-r2.ebuild:
+  Add sys-apps/texinfo to DEPEND for bug #531956.
+
+  13 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> gpm-1.20.7-r2.ebuild:
+  alpha/arm/ia64/ppc64/ppc/sparc/s390 stable wrt bug #513728
+
+  13 Jul 2014;  <tgall@gentoo.org> gpm-1.20.7-r2.ebuild:
+  stable on arm64 bug #513728
+
+  12 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> gpm-1.20.7-r2.ebuild:
+  x86 stable wrt bug #513728
+
+  12 Jul 2014; Jeroen Roovers <jer@gentoo.org> gpm-1.20.7-r2.ebuild:
+  Stable for HPPA (bug #513728).
+
+  09 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> gpm-1.20.7-r2.ebuild:
+  amd64 stable wrt bug #513728
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> gpm-1.20.7-r2.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  01 Feb 2014; Mike Frysinger <vapier@gentoo.org> gpm-1.20.7-r1.ebuild,
+  gpm-1.20.7-r2.ebuild:
+  Add arm64 love.
+
+  01 Feb 2014; Mike Frysinger <vapier@gentoo.org> gpm-1.20.7-r1.ebuild:
+  Mark m68k/s390/sh stable.
+
+  14 Sep 2013; Agostino Sarubbo <ago@gentoo.org> gpm-1.20.7-r1.ebuild:
+  Stable for alpha, wrt bug #476032
+
+  14 Sep 2013; Agostino Sarubbo <ago@gentoo.org> gpm-1.20.7-r1.ebuild:
+  Stable for ia64, wrt bug #476032
+
+  12 Sep 2013; Agostino Sarubbo <ago@gentoo.org> gpm-1.20.7-r1.ebuild:
+  Stable for ppc, wrt bug #476032
+
+  07 Sep 2013; Jeff Horelick <jdhore@gentoo.org> gpm-1.20.7-r1.ebuild:
+  marked x86 per bug 476032
+
+  06 Sep 2013; Markus Meier <maekke@gentoo.org> gpm-1.20.7-r1.ebuild:
+  arm stable, bug #476032
+
+  06 Sep 2013; Agostino Sarubbo <ago@gentoo.org> gpm-1.20.7-r1.ebuild:
+  Stable for sparc, wrt bug #476032
+
+  05 Sep 2013; Jeroen Roovers <jer@gentoo.org> gpm-1.20.7-r1.ebuild:
+  Stable for HPPA (bug #476032).
+
+  05 Sep 2013; Agostino Sarubbo <ago@gentoo.org> gpm-1.20.7-r1.ebuild:
+  Stable for amd64, wrt bug #476032
+
+  05 Sep 2013; Agostino Sarubbo <ago@gentoo.org> gpm-1.20.7-r1.ebuild:
+  Stable for ppc64, wrt bug #476032
+
+*gpm-1.20.7-r2 (21 Aug 2013)
+
+  21 Aug 2013; Alexis Ballier <aballier@gentoo.org> +gpm-1.20.7-r2.ebuild:
+  Convert to multilib and stack it for baselibs -r13. Bug #480144.
+
+*gpm-1.20.7-r1 (30 Dec 2012)
+
+  30 Dec 2012; Mike Gilbert <floppym@gentoo.org> +files/gpm.service,
+  +gpm-1.20.7-r1.ebuild:
+  Install systemd unit taken from Fedora, bug 449350.
+
+*gpm-1.20.7 (28 Oct 2012)
+
+  28 Oct 2012; Mike Frysinger <vapier@gentoo.org> +gpm-1.20.7.ebuild,
+  files/gpm.rc6-2:
+  Version bump.
+
+*gpm-1.20.6-r1 (26 Oct 2012)
+
+  26 Oct 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/gpm-1.20.6-disablestatic.patch, +files/gpm.rc6-2,
+  +gpm-1.20.6-r1.ebuild:
+  Revision bump to introduce static-libs USE flag (patch by Sean McGovern from
+  bug #378283). Fix dependency on ncurses that was missing as RDEPEND. Update
+  init script to use OpenRC's declarative syntax.
+
+  11 Aug 2011; Mike Frysinger <vapier@gentoo.org> gpm-1.20.6.ebuild:
+  Use virtual/yacc instead of hardcoding list ourselves.
+
+  29 Jul 2011; Robin H. Johnson <robbat2@gentoo.org> gpm-1.20.6.ebuild:
+  Bug #376861: fix missing bison/yacc DEPEND.
+
+  24 Dec 2010; Mike Frysinger <vapier@gentoo.org>
+  +files/0001-fixup-make-warnings.patch, gpm-1.20.6.ebuild:
+  Convert to EAPI=2, use the auto option with gen_usr_ldscript, update
+  HOMEPAGE/SRC_URI #349358 by Mr. Anderson, and add upstream fix for
+  parallel make warnings #206291 by Michael A. Smith.
+
+  10 Oct 2010; Raúl Porcel <armin76@gentoo.org> gpm-1.20.6.ebuild:
+  sparc stable wrt #334967
+
+  14 Sep 2010; Jeroen Roovers <jer@gentoo.org> gpm-1.20.6.ebuild:
+  Stable for HPPA (bug #334967).
+
+  12 Sep 2010; Joseph Jezak <josejx@gentoo.org> gpm-1.20.6.ebuild:
+  Marked ppc stable for bug #334967.
+
+  12 Sep 2010; Mike Frysinger <vapier@gentoo.org> gpm-1.20.6.ebuild:
+  Disable lispdir checking by Ulrich Müller #335900 by Fernando V.
+
+  12 Sep 2010; Mike Frysinger <vapier@gentoo.org> gpm-1.20.6.ebuild:
+  Mark alpha/arm/ia64/s390/sh stable #334967.
+
+  08 Sep 2010; Markos Chandras <hwoarang@gentoo.org> gpm-1.20.6.ebuild:
+  Stable on amd64 wrt bug #334967
+
+  06 Sep 2010; Brent Baude <ranger@gentoo.org> gpm-1.20.6.ebuild:
+  Marking gpm-1.20.6 ppc64 for bug 334967
+
+  29 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> gpm-1.20.6.ebuild:
+  x86 stable wrt bug #334967
+
+  15 Feb 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/0001-daemon-use-sys-ioctl.h-for-ioctl.patch, gpm-1.20.5.ebuild,
+  gpm-1.20.6.ebuild:
+  Fix building on uClibc systems #222099 by Sergey Dryabzhinsky.
+
+*gpm-1.20.6 (15 Feb 2009)
+
+  15 Feb 2009; Mike Frysinger <vapier@gentoo.org> +gpm-1.20.6.ebuild:
+  Version bump.
+
+  15 Feb 2009; Mike Frysinger <vapier@gentoo.org>
+  -files/gpm-configure-LANG.patch, gpm-1.20.1-r6.ebuild:
+  Move LANG patch to patch tarball.
+
+  21 Jan 2009; Jeroen Roovers <jer@gentoo.org> gpm-1.20.5.ebuild:
+  Stable for HPPA (bug #253354).
+
+  17 Jan 2009; Raúl Porcel <armin76@gentoo.org> gpm-1.20.5.ebuild:
+  alpha/ia64/sparc stable wrt #253354
+
+  17 Jan 2009; nixnut <nixnut@gentoo.org> gpm-1.20.5.ebuild:
+  ppc stable #253354
+
+  15 Jan 2009; Markus Meier <maekke@gentoo.org> gpm-1.20.5.ebuild:
+  amd64/x86 stable, bug #253354
+
+  14 Jan 2009; Brent Baude <ranger@gentoo.org> gpm-1.20.5.ebuild:
+  stable ppc64, bug 253354
+
+*gpm-1.20.5 (19 Jun 2008)
+
+  19 Jun 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/gpm-1.20.5-abi.patch, +gpm-1.20.5.ebuild:
+  Version bump #228065 by Conrad Kostecki.
+
+  08 Jun 2008; Mike Frysinger <vapier@gentoo.org> gpm-1.20.4.ebuild:
+  Append _GNU_SOURCE to CPPFLAGS to fix building with glibc-2.8 #225375 by
+  Jose daLuz.
+
+  02 Jun 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/gpm-1.20.4-abi.patch, gpm-1.20.4.ebuild:
+  Make sure we keep same SONAME as 1.20.1.
+
+*gpm-1.20.4 (31 May 2008)
+
+  31 May 2008; Mike Frysinger <vapier@gentoo.org> +gpm-1.20.4.ebuild:
+  Version bump.
+
+  21 Apr 2008; Ulrich Mueller <ulm@gentoo.org>
+  +files/gpm-1.20.3-no-emacs-dir.patch, gpm-1.20.3.ebuild:
+  Suppress creation of spurious /usr/share/emacs directory, fixes bug 202946.
+  Finally remove commented lines for Emacs support wrt bug 99533 comment 18.
+  Add missing app-arch/lzma-utils to DEPEND.
+
+*gpm-1.20.3 (19 Apr 2008)
+
+  19 Apr 2008; Mike Frysinger <vapier@gentoo.org> +gpm-1.20.3.ebuild:
+  Version bump #215455 by Hanno Meyer-Thurow.
+
+  25 Dec 2007; Brent Baude <ranger@gentoo.org> gpm-1.20.1-r6.ebuild:
+  Marking gpm-1.20.1-r6 ppc64 for bug 202853
+
+  22 Dec 2007; Samuli Suominen <drac@gentoo.org> gpm-1.20.1-r6.ebuild:
+  amd64 stable wrt #202853
+
+  21 Dec 2007; nixnut <nixnut@gentoo.org> gpm-1.20.1-r6.ebuild:
+  Stable on ppc wrt bug 202853
+
+  21 Dec 2007; Raúl Porcel <armin76@gentoo.org> gpm-1.20.1-r6.ebuild:
+  alpha/ia64/sparc stable wrt #202853
+
+  20 Dec 2007; Jeroen Roovers <jer@gentoo.org> gpm-1.20.1-r6.ebuild:
+  Stable for HPPA (bug #202853).
+
+  20 Dec 2007; Markus Meier <maekke@gentoo.org> gpm-1.20.1-r6.ebuild:
+  x86 stable, bug #202853
+
+  12 Nov 2007; Mike Frysinger <vapier@gentoo.org> -files/gpm-OPEN_MAX.patch,
+  -files/gpm-daemon.patch, gpm-1.20.1-r6.ebuild:
+  Relocate patches to patchset like they should have been in the first place.
+
+  01 Nov 2007; Christian Heim <phreak@gentoo.org> +files/gpm-OPEN_MAX.patch,
+  gpm-1.20.1-r6.ebuild:
+  Add patch by Tomas Janousek to fix compilation against linux-headers-2.6.23
+  (see #195977).
+
+*gpm-1.20.1-r6 (07 Jul 2007)
+
+  07 Jul 2007; Roy Marples <uberlord@gentoo.org> +files/gpm-daemon.patch,
+  +gpm-1.20.1-r6.ebuild:
+  Close stdin, stdout and stderr after forking, #182721.
+
+  05 Sep 2006; Joshua Kinard <kumba@gentoo.org> gpm-1.20.1-r5.ebuild:
+  Marked stable on mips.
+
+  04 Sep 2006; Joshua Kinard <kumba@gentoo.org> ChangeLog:
+  Marked stable on mips.
+
+  22 Jul 2006; Bryan Østergaard <kloeri@gentoo.org> gpm-1.20.1-r5.ebuild:
+  Stable on alpha.
+
+  21 Jul 2006; Joshua Jackson <tsunam@gentoo.org> gpm-1.20.1-r5.ebuild:
+  Stable x86; bug #140847
+
+  21 Jul 2006; Luis Medinas <metalgod@gentoo.org> gpm-1.20.1-r5.ebuild:
+  Stable on amd64. See bug #140847.
+
+  20 Jul 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  gpm-1.20.1-r5.ebuild:
+  stable on ppc (Bug #140847)
+
+  20 Jul 2006; Gustavo Zacarias <gustavoz@gentoo.org> gpm-1.20.1-r5.ebuild:
+  Stable on sparc wrt #140847
+
+  20 Jul 2006; Markus Rothe <corsair@gentoo.org> gpm-1.20.1-r5.ebuild:
+  Stable on ppc64; bug #140847
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> files/digest-gpm-1.20.1-r4,
+  files/digest-gpm-1.20.1-r5, Manifest:
+  Fixing SHA256 digest, pass four
+
+  04 Feb 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/gpm-configure-LANG.patch, gpm-1.20.1-r4.ebuild,
+  gpm-1.20.1-r5.ebuild:
+  Fix building in funky locales #121513 by J.
+
+  21 Aug 2005; Mike Frysinger <vapier@gentoo.org> gpm-1.20.1-r5.ebuild:
+  Disable emacs support #99533.
+
+  07 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> gpm-1.20.1-r4.ebuild:
+  Stable on mips.
+
+*gpm-1.20.1-r5 (07 Aug 2005)
+
+  07 Aug 2005; Mike Frysinger <vapier@gentoo.org> +gpm-1.20.1-r5.ebuild:
+  Add mousewheel support by Andrzej Zaborowski #101605.
+
+  05 May 2005; Mamoru KOMACHI <usata@gentoo.org> gpm-1.20.1-r4.ebuild:
+  Forgot to add emacs to DEPEND when emacs is in USE
+
+  03 May 2005; Mamoru KOMACHI <usata@gentoo.org> gpm-1.20.1-r4.ebuild:
+  Added emacs IUSE; bug #80217.
+
+  01 Apr 2005; Lars Weiler <pylon@gentoo.org> gpm-1.20.1-r4.ebuild:
+  Stable on ppc.
+
+  19 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> gpm-1.20.1-r4.ebuild:
+  Stable on alpha.
+
+  12 Mar 2005; Markus Rothe <corsair@gentoo.org> gpm-1.20.1-r4.ebuild:
+  Stable on ppc64
+
+  11 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> gpm-1.20.1-r4.ebuild:
+  Stable on sparc
+
+*gpm-1.20.1-r4 (12 Feb 2005)
+
+  12 Feb 2005; Mike Frysinger <vapier@gentoo.org> +gpm-1.20.1-r4.ebuild:
+  Add patch by Pavel Semerad to fix synps 4way handling #36790 and break the
+  ncurses/gpm circular loop with a patch from Fedora #80942 by babykart.
+
+  07 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gpm-1.20.1-r3.ebuild:
+  Multilib fix
+
+*gpm-1.20.1-r3 (06 Feb 2005)
+
+  06 Feb 2005; Mike Frysinger <vapier@gentoo.org> -gpm-1.20.1-r2.ebuild,
+  +gpm-1.20.1-r3.ebuild:
+  Move shared libraries into /lib since ncurses can link against them now #80403.
+
+*gpm-1.20.1-r2 (30 Jan 2005)
+
+  30 Jan 2005; Mike Frysinger <vapier@gentoo.org> -gpm-1.20.1-r1.ebuild,
+  +gpm-1.20.1-r2.ebuild:
+  I am retarded and dropped the libgpm.so.1 symlink with -r1.
+
+*gpm-1.20.1-r1 (30 Jan 2005)
+
+  30 Jan 2005; Mike Frysinger <vapier@gentoo.org> +gpm-1.20.1-r1.ebuild:
+  Clean up ebuild and the source code so that we can do fun things like not
+  require autoconf and build in parallel ! Whoo !
+
+  31 Oct 2004; Tom Gall <tgall@gentoo.org> gpm-1.20.1.ebuild, 
+  +files/gpm-linux26-headers.patch:
+  fix bug #66222 for ppc64
+
+  01 Oct 2004; Simon Stelling <blubb@gentoo.org> gpm-1.20.1.ebuild:
+  get_libdir-ized
+
+  02 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> gpm-1.19.6.ebuild:
+  virtual/glibc -> virtual/libc
+
+  06 Apr 2004; Joshua Brindle <method@gentoo.org> gpm-1.20.1.ebuild:
+  added selinux policy to rdepend
+
+  09 Jan 2004; Jason Wever <weeve@gentoo.org> gpm-1.20.1.ebuild:
+  Marked stable on sparc.
+
+  28 Dec 2003; Joshua Kinard <kumba@gentoo.org> gpm-1.20.1.ebuild:
+  Move to mips stable (~mips -> mips)
+
+  24 Jun 2003; Aron Griffis <agriffis@gentoo.org> gpm-1.20.1.ebuild:
+  Mark stable on alpha
+
+  16 Jun 2003; Michael Nazaroff <naz@gentoo.org> gpm-1.20.1.ebuild:
+  Marked ebuild stable for x86.
+  
+  12 Jun 2003; <msterret@gentoo.org> gpm-1.20.1.ebuild:
+  add Header
+
+*gpm-1.20.1 (03 Jun 2003)
+
+  28 Jul 2003; Martin Schlemmer <azarah@gentoo.org> files/gpm.rc6:
+  Service should 'use' logger.
+
+  06 Jul 2003; Guy Martin <gmsoft@gentoo.org> gpm-1.20.1.ebuild :
+  Marked stable on hppa.
+
+  03 Jun 2003; Michael Nazaroff <naz@gentoo.org> gpm-1.20.1.ebuild :
+  Did a major overhall of gpm ebuild and bumped up to a newer version 
+  application.  The patches include fixes for mc and various other issues.
+
+*gpm-1.20.0-r6 (13 Jan 2002)
+
+  24 Feb 2003; Zach Welch <zwelch@gentoo.org> gpm-1.20.0-r6.ebuild :
+  Add arm keyword
+
+  08 Feb 2003; Guy Martin <gmsoft@gentoo.org> :
+  Added hppa to keywords.
+
+  13 Jan 2002; Michael Nazaroff <naz@gentoo.org> gpm-1.20.0-r6.ebuild :
+
+  Fix for bug #5232 which helps keep useless logs to minimum.
+
+  02 May 2003; Michael Nazaroff <naz@gentoo.org> gpm.conf.d :
+  Added option to /etc/conf.d/gpm to allow it to use a fuller character 
+  set if desired by the user. A added feature via a request in bug 19381. 
+
+*gpm-1.20.0-r5 (18 Nov 2002)
+
+  14 Mar 2003; Jan Seidel <tuxus@gentoo.org> :
+  Added mips to KEYWORDS
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  18 Nov 2002; Martin Schlemmer <azarah@gentoo.org> gpm-1.20.0-r5.ebuild :
+
+  Fix missing /usr/lib/libgpm.so.1, bug #10355.  Convert to use epatch from
+  eutils.eclass.  Add missing IUSE.
+
+*gpm-1.20.0-r4 (23 Oct 2002)
+
+  23 Oct 2002; Seemant Kulleen <seemant@gentoo.org> gpm-1.20.0-r4.ebuild :
+
+  The ebuild kinda smelled bad, so I gave it a refresher.
+  - Change make to MAKEOPTS="-j1" emake
+  - Change make blah install to einstall
+  - (the kicker) make all libraries, not just some mode 755 to prevent
+    a segfault I was getting when trying to start mc.
+
+*gpm-1.20.0-r3 (3 Jun 2002)
+
+  11 Sep 2002; Seemant Kulleen <seemant@gentoo.org> gpm-1.20.0-r3.ebuild :
+
+  emake->make, as suggested by j2ee to: filippo@esaurito.net (Filippo
+  Giunchedi) in bug #7762.
+
+  15 Jul 2002; Mark Guertin <gerk@gentoo.org>
+  Added ppc to keywords
+
+  3 Jun 2002; Micahel Nazaroff <naz@gentoo.org> gpm-1.20.0-r3.ebuild :
+
+  Well I added more fix's to my patch to fix a intellimouse ps2 timeout problem
+  the seems to only pop up occasionally.  This code patch add's retries to ps2
+  imps/2 protocol section in the mice.c file.
+
+
+*gpm-1.20.0-r2 (29 May 2002)
+
+  29 May 2002; Micahel Nazaroff <naz@gentoo.org> gpm-1.20.0-r2.ebuild :
+
+  Ok with this added patch should take care of the svgalib and ncurses problem
+  hopefully. Moved the ebuild to r2 to update force update from the r1 when it's
+  unmasked.
+
+*gpm-1.19.6 (26 May 2002)
+
+  26 May 2002; Martin Schlemmer <azarah@gentoo.org>
+
+  Added 1.19.6 back again, as I and many other have problems with 1.20.0.
+  It gives problems with svgalib and ncurses (give debug info and do not
+  work), and dies randomly.
+
+*gpm-1.20.0-r1 (4 March 2002)
+
+  4 march 2002; Donny Davies <woodchip@gentoo.org> gpm-1.20.0-r1.ebuild :
+
+  Fix to install the library 755.
+
+*gpm-1.20.0 (26 Feb 2002)
+
+*gpm-1.19.6-r2 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+   
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

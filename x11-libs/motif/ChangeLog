@@ -1,0 +1,1347 @@
+# ChangeLog for x11-libs/motif
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/motif/ChangeLog,v 1.67 2015/04/01 01:46:59 ulm Exp $
+
+  01 Apr 2015; Ulrich Müller <ulm@gentoo.org> -motif-2.3.4-r1.ebuild,
+  -motif-2.3.4-r2.ebuild:
+  Remove old.
+
+  28 Feb 2015; Agostino Sarubbo <ago@gentoo.org> motif-2.3.4-r3.ebuild:
+  Stable for ia64, wrt bug #537004
+
+  27 Feb 2015; Agostino Sarubbo <ago@gentoo.org> motif-2.3.4-r3.ebuild:
+  Stable for sparc, wrt bug #537004
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> motif-2.3.4-r3.ebuild:
+  Stable for alpha, wrt bug #537004
+
+  23 Feb 2015; Agostino Sarubbo <ago@gentoo.org> motif-2.3.4-r3.ebuild:
+  Stable for ppc64, wrt bug #537004
+
+  28 Jan 2015; Agostino Sarubbo <ago@gentoo.org> motif-2.3.4-r3.ebuild:
+  Stable for ppc, wrt bug #537004
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> motif-2.3.4-r3.ebuild:
+  Stable for x86, wrt bug #537004
+
+  25 Jan 2015; Markus Meier <maekke@gentoo.org> motif-2.3.4-r3.ebuild:
+  arm stable, bug #537004
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org> motif-2.3.4-r3.ebuild:
+  Stable for amd64, wrt bug #537004
+
+  20 Jan 2015; Jeroen Roovers <jer@gentoo.org> motif-2.3.4-r3.ebuild:
+  Stable for HPPA (bug #537004).
+
+  11 Jan 2015; Ulrich Müller <ulm@gentoo.org> motif-2.3.4-r3.ebuild:
+  Fix failure in cleanup, /usr/share/Xm is only created with USE=examples.
+
+*motif-2.3.4-r3 (10 Jan 2015)
+
+  10 Jan 2015; Ulrich Müller <ulm@gentoo.org> +motif-2.3.4-r3.ebuild:
+  Call tc-getCC in src_prepare to get the name of the compiler for the native
+  ABI. Previously used tc-getBUILD_CC did not work with crossdev, bug 533678.
+
+  08 Jan 2015; Justin Lecher <jlec@gentoo.org> motif-2.2.3-r12.ebuild,
+  metadata.xml:
+  Prefix love
+
+  13 Aug 2014; Agostino Sarubbo <ago@gentoo.org> motif-2.3.4-r2.ebuild:
+  Stable for ppc, wrt bug #510454
+
+  01 Aug 2014; Raúl Porcel <armin76@gentoo.org> motif-2.3.4-r2.ebuild:
+  ia64/sparc stable wrt #510454
+
+  20 Jul 2014; Tobias Klausmann <klausman@gentoo.org> motif-2.3.4-r2.ebuild:
+  Stable on alpha, bug #510454
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> motif-2.2.3-r12.ebuild,
+  motif-2.3.4-r1.ebuild, motif-2.3.4-r2.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  16 Jun 2014; Ulrich Müller <ulm@gentoo.org> motif-2.3.4-r2.ebuild:
+  Enable workaround for wmluiltok on non-native ABIs only, bug 513370.
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> motif-2.3.4-r2.ebuild:
+  x86 stable wrt bug #510454
+
+  13 Jun 2014; Chema Alonso <nimiux@gentoo.org> motif-2.3.4-r2.ebuild:
+  Stable for amd64 wrt bug #510454
+
+  25 May 2014; Markus Meier <maekke@gentoo.org> motif-2.3.4-r2.ebuild:
+  arm stable, bug #510454
+
+  17 May 2014; Jeroen Roovers <jer@gentoo.org> motif-2.3.4-r2.ebuild:
+  Stable for HPPA (bug #510454).
+
+*motif-2.3.4-r2 (30 Apr 2014)
+
+  30 Apr 2014; Ulrich Müller <ulm@gentoo.org> +motif-2.3.4-r2.ebuild:
+  Make the ebuild conform better with multilib-minimal.eclass. Thanks to mgorny
+  for his help.
+
+  07 Feb 2014; Ulrich Müller <ulm@gentoo.org> motif-2.3.4-r1.ebuild:
+  Remove alternative dependencies on emul-linux-x86-* packages.
+
+  21 Oct 2013; Fabian Groffen <grobian@gentoo.org> motif-2.3.4-r1.ebuild:
+  Marked ~x64-macos, bug #486818
+
+  08 Oct 2013; Ulrich Müller <ulm@gentoo.org> motif-2.2.3-r12.ebuild,
+  motif-2.3.4-r1.ebuild:
+  Update dependency on X libraries. Remove pkgconfig workaround.
+
+  23 Aug 2013; Ulrich Müller <ulm@gentoo.org> -motif-2.2.3-r11.ebuild,
+  -motif-2.3.4.ebuild, -files/motif-2.3.2-sanitise-paths.patch,
+  -files/motif-2.3.2-solaris-2.11.patch, -files/motif-2.3.4-solaris.patch:
+  Remove old.
+
+  06 Aug 2013; Ulrich Müller <ulm@gentoo.org> motif-2.2.3-r12.ebuild,
+  motif-2.3.4-r1.ebuild:
+  Restore stable x86 keyword, it had been dropped due to bug 468590.
+
+  06 Aug 2013; Ulrich Müller <ulm@gentoo.org> motif-2.3.4-r1.ebuild:
+  Require USE=development for emul-linux-x86-xlibs, needed for pkg-config.
+
+  05 Aug 2013; Ulrich Müller <ulm@gentoo.org> motif-2.3.4-r1.ebuild:
+  Workaround for missing pkgconfig files, bug 479876.
+
+  04 Aug 2013; Agostino Sarubbo <ago@gentoo.org> motif-2.2.3-r12.ebuild,
+  motif-2.3.4-r1.ebuild:
+  Stable for amd64, wrt bug #465788
+
+  02 Aug 2013; Ulrich Müller <ulm@gentoo.org> motif-2.3.4.ebuild,
+  motif-2.3.4-r1.ebuild:
+  Update dependency on virtual/jpeg.
+
+  01 Aug 2013; Ulrich Müller <ulm@gentoo.org> motif-2.2.3-r12.ebuild,
+  motif-2.3.4-r1.ebuild:
+  Update multilib dependencies for libiconv, jpeg, and libpng. Drop dependency
+  on emul-linux-x86-baselibs unless it is needed.
+
+  31 Jul 2013; Ulrich Müller <ulm@gentoo.org> motif-2.2.3-r12.ebuild,
+  motif-2.3.4-r1.ebuild:
+  Update blocker against emul-linux-x86-motif, bug 461916.
+
+  01 Jun 2013; Ulrich Müller <ulm@gentoo.org> motif-2.3.4-r1.ebuild,
+  -files/motif-2.3.4-automake-1.13.patch, -files/motif-2.3.4-fc-config.patch,
+  -files/motif-2.3.4-install-dirs.patch,
+  -files/motif-2.3.4-parallel-make.patch, -files/motif-2.3.4-solaris-11.patch:
+  Patchset moved to Gentoo mirrors.
+
+  13 May 2013; Ulrich Müller <ulm@gentoo.org> motif-2.3.4-r1.ebuild,
+  +files/motif-2.3.4-solaris-11.patch:
+  Apply Solaris patch unconditionally, bug 465426.
+
+  07 May 2013; Agostino Sarubbo <ago@gentoo.org> motif-2.3.4-r1.ebuild:
+  Stable for sparc, wrt bug #465788
+
+  04 May 2013; Ulrich Müller <ulm@gentoo.org> motif-2.2.3-r12.ebuild,
+  motif-2.3.4-r1.ebuild:
+  Drop to ~x86 because of broken dependencies, bug 468590.
+
+  01 May 2013; Ulrich Müller <ulm@gentoo.org> motif-2.2.3-r12.ebuild,
+  motif-2.3.4-r1.ebuild, +files/motif-2.3.4-automake-1.13.patch:
+  Fix build failure with automake 1.13, bug 467230.
+
+  01 May 2013; Agostino Sarubbo <ago@gentoo.org> motif-2.3.4-r1.ebuild:
+  Stable for sh, wrt bug #465788
+
+  01 May 2013; Agostino Sarubbo <ago@gentoo.org> motif-2.2.3-r12.ebuild,
+  motif-2.3.4-r1.ebuild:
+  Stable for x86, wrt bug #465788
+
+  25 Apr 2013; Ulrich Müller <ulm@gentoo.org> motif-2.2.3-r12.ebuild,
+  motif-2.3.4-r1.ebuild:
+  Require automake 1.12, bug 467230.
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org> motif-2.3.4-r1.ebuild:
+  Stable for ia64, wrt bug #465788
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org> motif-2.3.4-r1.ebuild:
+  Stable for alpha, wrt bug #465788
+
+  16 Apr 2013; Agostino Sarubbo <ago@gentoo.org> motif-2.3.4-r1.ebuild:
+  Stable for arm, wrt bug #465788
+
+  16 Apr 2013; Agostino Sarubbo <ago@gentoo.org> motif-2.3.4-r1.ebuild:
+  Stable for ppc64, wrt bug #465788
+
+  15 Apr 2013; Agostino Sarubbo <ago@gentoo.org> motif-2.3.4-r1.ebuild:
+  Stable for ppc, wrt bug #465788
+
+  15 Apr 2013; Jeroen Roovers <jer@gentoo.org> motif-2.3.4-r1.ebuild:
+  Stable for HPPA (bug #465788).
+
+  05 Apr 2013; Ulrich Müller <ulm@gentoo.org> motif-2.3.4-r1.ebuild:
+  Add slot operator to libpng dependency.
+
+  23 Mar 2013; Ulrich Müller <ulm@gentoo.org> motif-2.2.3-r12.ebuild,
+  motif-2.3.4-r1.ebuild:
+  More complete dependencies on X libraries.
+
+  18 Mar 2013; Ulrich Müller <ulm@gentoo.org> motif-2.3.4-r1.ebuild,
+  +files/motif-2.3.4-fc-config.patch:
+  Fix underlinking problem with ld GNU gold, caused by outdated fontconfig
+  test in configure, bug 462232.
+
+  16 Mar 2013; Ulrich Müller <ulm@gentoo.org> motif-2.3.4-r1.ebuild:
+  Install examples only once. Use default src_install function.
+
+*motif-2.3.4-r1 (15 Mar 2013)
+*motif-2.2.3-r12 (15 Mar 2013)
+
+  15 Mar 2013; Ulrich Müller <ulm@gentoo.org> +motif-2.2.3-r12.ebuild,
+  +motif-2.3.4-r1.ebuild, +files/motif-2.3.4-install-dirs.patch,
+  +files/motif-2.3.4-parallel-make.patch, metadata.xml:
+  Enable multilib. Fix parallel build failure. Bindings files moved from
+  /usr/lib to /usr/share. New motif22-compatibility USE flag.
+
+  02 Jan 2013; Ulrich Müller <ulm@gentoo.org> -files/motif-2.3.2-darwin.patch,
+  -files/motif-2.3.2-libpng14.patch, -motif-2.3.3-r1.ebuild,
+  motif-2.3.4.ebuild:
+  LICENSE of version 2.3.4 is LGPL-2.1+. Remove old.
+
+  16 Dec 2012; Raúl Porcel <armin76@gentoo.org> motif-2.3.4.ebuild:
+  alpha/ia64/sh/sparc stable wrt #443610
+
+  27 Nov 2012; Jeroen Roovers <jer@gentoo.org> motif-2.3.4.ebuild:
+  Stable for HPPA (bug #443610).
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> motif-2.3.4.ebuild:
+  Stable for x86, wrt bug #443610
+
+  18 Nov 2012; Anthony G. Basile <blueness@gentoo.org> motif-2.3.4.ebuild:
+  stable arm, bug #443610
+
+  17 Nov 2012; Anthony G. Basile <blueness@gentoo.org> motif-2.3.4.ebuild:
+  stable ppc ppc64, bug #443610
+
+  17 Nov 2012; Agostino Sarubbo <ago@gentoo.org> motif-2.3.4.ebuild:
+  Stable for amd64, wrt bug #443610
+
+  26 Oct 2012; Ulrich Müller <ulm@gentoo.org> motif-2.3.3-r1.ebuild,
+  motif-2.3.4.ebuild:
+  Fix typo in HOMEPAGE. Remove app-doc/openmotif-manual from RDEPEND because it
+  is no real dependency. Don't display postinst message in stable version.
+
+  25 Oct 2012; Ulrich Müller <ulm@gentoo.org> motif-2.3.4.ebuild:
+  More useful DESCRIPTION.
+
+*motif-2.3.4 (24 Oct 2012)
+*motif-2.3.3-r1 (24 Oct 2012)
+*motif-2.2.3-r11 (24 Oct 2012)
+
+  24 Oct 2012; Ulrich Müller <ulm@gentoo.org> +motif-2.2.3-r11.ebuild,
+  +files/motif-2.3.2-darwin.patch, +files/motif-2.3.2-libpng14.patch,
+  +files/motif-2.3.2-sanitise-paths.patch,
+  +files/motif-2.3.2-solaris-2.11.patch, +motif-2.3.3-r1.ebuild,
+  +motif-2.3.4.ebuild, +files/motif-2.3.4-solaris.patch, +files/Mwm.defaults,
+  +metadata.xml:
+  Version bump. Change LICENSE from "MOTIF" to "LGPL-2+"; Motif 2.3.4 is
+  released as Free Software at last. Remove -j1 from emake options; according
+  to release notes, parallel make should be possible now. Package move from
+  openmotif to motif, following upstream rename. Remove old.
+
+  06 May 2012; Alexis Ballier <aballier@gentoo.org> openmotif-2.3.3-r1.ebuild:
+  keyword ~amd64-fbsd
+
+  26 Mar 2012; Ulrich Müller <ulm@gentoo.org> -openmotif-2.3.3.ebuild,
+  openmotif-2.3.3-r1.ebuild:
+  Re-add previously dropped keywords for prefix, bug 397819. Remove old.
+
+  25 Mar 2012; Naohiro Aota <naota@gentoo.org> openmotif-2.3.3-r1.ebuild:
+  Add alternative dependecy for byacc on FreeBSD. Add ~x86-fbsd. #397819
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> openmotif-2.3.3-r1.ebuild:
+  alpha/ia64/sh/sparc stable wrt #402039
+
+  08 Mar 2012; Brent Baude <ranger@gentoo.org> openmotif-2.3.3-r1.ebuild:
+  Marking openmotif-2.3.3-r1 ppc64 for bug 402039
+
+  03 Mar 2012; Markus Meier <maekke@gentoo.org> openmotif-2.3.3-r1.ebuild:
+  arm stable, bug #402039
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  openmotif-2.3.3-r1.ebuild:
+  x86 stable wrt bug #402039
+
+  11 Feb 2012; nixnut <nixnut@gentoo.org> openmotif-2.3.3-r1.ebuild:
+  ppc stable #402039
+
+  09 Feb 2012; Fabian Groffen <grobian@gentoo.org> openmotif-2.3.3-r1.ebuild:
+  Marked ~{x86,x64}-solaris, bug #397819
+
+  08 Feb 2012; Markus Meier <maekke@gentoo.org> openmotif-2.3.3-r1.ebuild:
+  add ~arm, bug #397819
+
+  08 Feb 2012; Jeroen Roovers <jer@gentoo.org> openmotif-2.3.3-r1.ebuild:
+  Stable for HPPA (bug #402039).
+
+  04 Feb 2012; Agostino Sarubbo <ago@gentoo.org> openmotif-2.3.3-r1.ebuild:
+  Stable for amd64, wrt bug #402039
+
+  15 Jan 2012; Ulrich Müller <ulm@gentoo.org> openmotif-2.3.2-r2.ebuild,
+  openmotif-2.3.3.ebuild, openmotif-2.3.3-r1.ebuild:
+  Add RESTRICT="fetch bindist" on Solaris, since it is no longer open source.
+  Update message in pkg_nofetch().
+
+*openmotif-2.3.3-r1 (06 Jan 2012)
+
+  06 Jan 2012; Ulrich Mueller <ulm@gentoo.org> +openmotif-2.3.3-r1.ebuild:
+  Generate UIL and WML parsers with byacc instead of bison, bug 355795.
+  Ebuild updated to EAPI 4. Dropped some keywords.
+
+  19 Dec 2011; Ulrich Mueller <ulm@gentoo.org> openmotif-2.2.3-r11.ebuild,
+  openmotif-2.3.2-r2.ebuild, openmotif-2.3.3.ebuild:
+  Remove old blockers and cleanup code, motif-config is gone since > 3 years.
+
+  20 Aug 2011; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.2-r2.ebuild:
+  Call dosym with proper second argument. Add static-libs USE flag.
+
+  07 Mar 2011; Ulrich Mueller <ulm@gentoo.org> openmotif-2.2.3-r11.ebuild,
+  openmotif-2.3.2-r2.ebuild, openmotif-2.3.3.ebuild:
+  Remove calls to get_ml_incdir, bug 357739.
+
+  05 Mar 2011; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.3.ebuild:
+  Don't install libtool archives.
+
+  29 Jan 2011; Ulrich Mueller <ulm@gentoo.org> openmotif-2.2.3-r11.ebuild,
+  openmotif-2.3.3.ebuild:
+  By default, disable building of static libs. Fix automake call in 2.2.3.
+
+  15 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  openmotif-2.3.3.ebuild:
+  ppc64 stable wrt #338208
+
+  01 Jan 2011; Ulrich Mueller <ulm@gentoo.org> -openmotif-2.2.3-r10.ebuild:
+  Remove old.
+
+  01 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  openmotif-2.2.3-r11.ebuild:
+  Stable on amd64 wrt bug #347595
+
+  25 Dec 2010; Thomas Kahle <tomka@gentoo.org> openmotif-2.2.3-r11.ebuild:
+  x86 stable per bug 347595
+
+*openmotif-2.2.3-r11 (02 Dec 2010)
+
+  02 Dec 2010; Ulrich Mueller <ulm@gentoo.org> +openmotif-2.2.3-r11.ebuild:
+  Update automake dependency. Change EAPI to 3.
+
+  08 Nov 2010; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.2-r2.ebuild:
+  Depend on virtual/jpeg wrt bug 327487.
+
+  12 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  openmotif-2.2.3-r10.ebuild:
+  x86 stable wrt bug #340311
+
+  11 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  openmotif-2.2.3-r10.ebuild:
+  Stable on amd64 wrt bug #340311
+
+*openmotif-2.2.3-r10 (10 Oct 2010)
+
+  10 Oct 2010; Ulrich Mueller <ulm@gentoo.org> +openmotif-2.2.3-r10.ebuild:
+  Move x11-libs/openmotif-compat-2.2.3-r1 to openmotif-2.2.3-r10 in SLOT 2.2.
+  Summary of changes since -r9, from ChangeLog of openmotif-compat:
+  - Remove unnecessary/redundant dependencies on libXaw and printproto.
+  - Fix "present but cannot be compiled" warning in configure, in order to
+    prepare for autoconf-2.64. Bug 82081 (see also tracker bug 257596).
+  - Don't override LDFLAGS, fixes bug 293573.
+  - Change libXpm to MIT in LICENSE.
+  - Fix buffer overflow in libmrm, bug 340249.
+
+  06 Oct 2010; Jeroen Roovers <jer@gentoo.org> openmotif-2.3.3.ebuild:
+  Stable for HPPA (bug #338208).
+
+  03 Oct 2010; Raúl Porcel <armin76@gentoo.org> openmotif-2.3.3.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #338208
+
+  28 Sep 2010; Brent Baude <ranger@gentoo.org> openmotif-2.3.3.ebuild:
+  stable ppc, bug 338208
+
+  26 Sep 2010; Markus Meier <maekke@gentoo.org> openmotif-2.3.3.ebuild:
+  amd64/x86 stable, bug #338208
+
+  23 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  openmotif-2.3.3.ebuild:
+  Use virtual/jpeg.
+
+  23 Jun 2010; Fabian Groffen <grobian@gentoo.org>
+  files/openmotif-2.3.2-darwin.patch:
+  Fix compilation on Solaris by applying the same fix as for Darwin
+
+  07 Jun 2010; Ulrich Mueller <ulm@gentoo.org> -openmotif-2.3.2.ebuild:
+  Remove old.
+
+  07 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  openmotif-2.3.2-r2.ebuild:
+  amd64 stable (bug #309999)
+
+  08 May 2010; Raúl Porcel <armin76@gentoo.org> openmotif-2.3.2-r2.ebuild:
+  alpha/arm/ia64/sh/sparc wrt #309999
+
+  15 Apr 2010; Jeroen Roovers <jer@gentoo.org> openmotif-2.3.2-r2.ebuild:
+  Stable for HPPA (bug #309999).
+
+  11 Apr 2010; <nixnut@gentoo.org> openmotif-2.3.2-r2.ebuild:
+  ppc stable #309999
+
+  29 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  openmotif-2.3.2-r2.ebuild:
+  x86 stable wrt bug 309999
+
+  23 Mar 2010; Brent Baude <ranger@gentoo.org> openmotif-2.3.2-r2.ebuild:
+  Marking openmotif-2.3.2-r2 ppc64 for bug 309999
+
+  20 Mar 2010; Fabian Groffen <grobian@gentoo.org>
+  +files/openmotif-2.3.2-darwin.patch, openmotif-2.3.3.ebuild:
+  Add patch to fix compilation on Mac OS X using patch grabbed from upstream
+  bugtracker
+
+*openmotif-2.3.3 (18 Mar 2010)
+
+  18 Mar 2010; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.2-r2.ebuild,
+  +openmotif-2.3.3.ebuild:
+  Version bump. Fix DEPEND and RDEPEND.
+
+  14 Mar 2010; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.2-r2.ebuild:
+  Fix workaround for LANG, bug 15119.
+
+  08 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  openmotif-2.3.2-r2.ebuild, +files/openmotif-2.3.2-libpng14.patch:
+  Fix building with libpng14.
+
+*openmotif-2.3.2-r2 (11 Feb 2010)
+
+  11 Feb 2010; Ulrich Mueller <ulm@gentoo.org> -openmotif-2.3.2-r1.ebuild,
+  +openmotif-2.3.2-r2.ebuild, +files/openmotif-2.3.2-ddd-layout.patch,
+  +files/openmotif-2.3.2-solaris-2.11.patch:
+  Fix layout problem with ddd, bug 303887. Some fixes for Solaris 2.11, from
+  prefix overlay. Add keywords for prefix architectures.
+
+*openmotif-2.3.2-r1 (06 Feb 2010)
+
+  06 Feb 2010; Ulrich Mueller <ulm@gentoo.org> -openmotif-2.3.1.1.ebuild,
+  +openmotif-2.3.2-r1.ebuild, +files/openmotif-2.3.2-sanitise-paths.patch:
+  Prepare for prefix support. Change EAPI to 3. Move PDF documentation into
+  separate package. Remove old.
+
+  15 Dec 2009; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.1.1.ebuild,
+  openmotif-2.3.2.ebuild:
+  Change libXpm to MIT in LICENSE.
+
+  18 Nov 2009; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.2.ebuild,
+  +files/openmotif-2.3.2-ldflags.patch:
+  Don't override LDFLAGS, fixes bug 293573.
+
+  25 Sep 2009; Ulrich Mueller <ulm@gentoo.org> -openmotif-2.3.0-r3.ebuild,
+  -files/openmotif-2.3.0-fix-nedit-segfaults.patch,
+  -files/openmotif-2.3.0-freebsd-libiconv.patch,
+  -files/openmotif-2.3.0-sensitivity-invisible.patch:
+  Remove old.
+
+  13 Jul 2009; Joseph Jezak <josejx@gentoo.org> openmotif-2.3.2.ebuild:
+  Marked ppc stable for bug #273064.
+
+  04 Jul 2009; Brent Baude <ranger@gentoo.org> openmotif-2.3.2.ebuild:
+  Marking openmotif-2.3.2 ppc64 for bug 273064
+
+  22 Jun 2009; Raúl Porcel <armin76@gentoo.org> openmotif-2.3.2.ebuild:
+  arm/ia64/sh/sparc stable wrt #273064
+
+  16 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  openmotif-2.3.2.ebuild:
+  Stable on alpha, bug #273064
+
+  15 Jun 2009; Jeroen Roovers <jer@gentoo.org> openmotif-2.3.2.ebuild:
+  Stable for HPPA (bug #273064).
+
+  11 Jun 2009; Markus Meier <maekke@gentoo.org> openmotif-2.3.2.ebuild:
+  amd64 stable, bug #273064
+
+  08 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  openmotif-2.3.2.ebuild:
+  stable x86, bug 273064
+
+  16 Apr 2009; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.2.ebuild:
+  Add -j1 back to src_compile and src_install, fixes bug 266202.
+
+*openmotif-2.3.2 (14 Apr 2009)
+
+  14 Apr 2009; Ulrich Mueller <ulm@gentoo.org> +openmotif-2.3.2.ebuild:
+  Version bump. Remove -j1 option from emake.
+
+  04 Feb 2009; Ulrich Mueller <ulm@gentoo.org>
+  +files/openmotif-2.3.1-ac-editres.patch, openmotif-2.3.0-r3.ebuild,
+  openmotif-2.3.1.1.ebuild:
+  Fix "present but cannot be compiled" warning in configure, in order to
+  prepare for autoconf-2.64. Bug 82081 (see also tracker bug 257596).
+
+  05 Jan 2009; Markus Meier <maekke@gentoo.org> metadata.xml:
+  drop local xft USE-flag description, as it's global now
+
+  12 Nov 2008; Ulrich Mueller <ulm@gentoo.org>
+  -files/openmotif-2.3.1-XmRenderT-no-xft.patch,
+  -files/openmotif-2.3.1-fix-grace-crash.patch, -openmotif-2.3.1-r1.ebuild:
+  Remove intermediate version.
+
+  12 Nov 2008; Brent Baude <ranger@gentoo.org> openmotif-2.3.1.1.ebuild:
+  stable ppc64, bug 245635
+
+  10 Nov 2008; Jeroen Roovers <jer@gentoo.org> openmotif-2.3.1.1.ebuild:
+  Stable for HPPA (bug #245635).
+
+  08 Nov 2008; Ulrich Mueller <ulm@gentoo.org> -files/motif-config-2.3,
+  -openmotif-2.3.0-r1.ebuild:
+  Remove old.
+
+  08 Nov 2008; Raúl Porcel <armin76@gentoo.org> openmotif-2.3.1.1.ebuild:
+  alpha/arm/ia64/sparc/sh stable wrt #245635
+
+  08 Nov 2008; Markus Meier <maekke@gentoo.org> openmotif-2.3.1.1.ebuild:
+  amd64/x86 stable, bug #245635
+
+  08 Nov 2008; nixnut <nixnut@gentoo.org> openmotif-2.3.1.1.ebuild:
+  Stable on ppc wrt bug 245635
+
+  05 Nov 2008; Ferris McCormick <fmccor@gentoo.org>
+  openmotif-2.3.1.1.ebuild:
+  Sparc stable, Bug #245635, seems fine.
+
+*openmotif-2.3.1.1 (05 Oct 2008)
+
+  05 Oct 2008; Ulrich Mueller <ulm@gentoo.org> +openmotif-2.3.1.1.ebuild:
+  Version bump, bug 239480.
+
+  26 Aug 2008; Jeroen Roovers <jer@gentoo.org> openmotif-2.3.1-r1.ebuild:
+  Stable for HPPA (bug #235459).
+
+  25 Aug 2008; Raúl Porcel <armin76@gentoo.org> openmotif-2.3.1-r1.ebuild:
+  alpha/ia64 stable wrt #235459
+
+  24 Aug 2008; Markus Rothe <corsair@gentoo.org> openmotif-2.3.1-r1.ebuild:
+  Stable on ppc64; bug #235459
+
+  22 Aug 2008; Friedrich Oslage <bluebird@gentoo.org>
+  openmotif-2.3.1-r1.ebuild:
+  Stable on sparc, bug #235459
+
+  22 Aug 2008; Markus Meier <maekke@gentoo.org> openmotif-2.3.1-r1.ebuild:
+  amd64/x86 stable, bug #235459
+
+  22 Aug 2008; nixnut <nixnut@gentoo.org> openmotif-2.3.1-r1.ebuild:
+  Stable on ppc wrt bug 235459
+
+  06 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  04 Aug 2008; Ulrich Mueller <ulm@gentoo.org> -openmotif-2.3.1.ebuild:
+  Remove intermediate version.
+
+*openmotif-2.3.1-r1 (25 Jul 2008)
+
+  25 Jul 2008; Ulrich Mueller <ulm@gentoo.org>
+  +files/openmotif-2.3.1-fix-grace-crash.patch,
+  +files/openmotif-2.3.1-multilist-stipple.patch,
+  +openmotif-2.3.1-r1.ebuild:
+  Display stippled multilist items correctly, fixes bug 215984 again.
+  Fix crash with sci-visualization/grace, bug 232742; patch by Sammy Umar at
+  upstream bug 1381.
+
+  01 Jul 2008; Ulrich Mueller <ulm@gentoo.org>
+  files/openmotif-2.3.0-freebsd-libiconv.patch, openmotif-2.3.1.ebuild:
+  Support utf8 and depend on libiconv if (and only if) USE=unicode.
+
+  29 Jun 2008; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.0-r1.ebuild,
+  openmotif-2.3.0-r3.ebuild:
+  Remove virtual/motif, bug 224749.
+
+  28 Jun 2008; Ulrich Mueller <ulm@gentoo.org>
+  +files/openmotif-2.3.1-XmRenderT-no-xft.patch, openmotif-2.3.1.ebuild:
+  Add missing conditional for USE=-xft in XmRenderT.c, fixes bug 229779.
+
+*openmotif-2.3.1 (27 Jun 2008)
+
+  27 Jun 2008; Ulrich Mueller <ulm@gentoo.org> +openmotif-2.3.1.ebuild:
+  Version bump.
+
+  02 Jun 2008; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.0-r1.ebuild,
+  openmotif-2.3.0-r3.ebuild:
+  Add build-time dependency on flex, bug 224477.
+
+  28 May 2008; Markus Meier <maekke@gentoo.org> openmotif-2.3.0-r3.ebuild:
+  amd64 stable, bug #223683
+
+  27 May 2008; Markus Rothe <corsair@gentoo.org> openmotif-2.3.0-r3.ebuild:
+  Stable on ppc64; bug #223683
+
+  27 May 2008; Raúl Porcel <armin76@gentoo.org> openmotif-2.3.0-r3.ebuild:
+  alpha/ia64/sparc stable wrt #223683
+
+  26 May 2008; Jeroen Roovers <jer@gentoo.org> openmotif-2.3.0-r3.ebuild:
+  Stable for HPPA (bug #223683).
+
+  26 May 2008; nixnut <nixnut@gentoo.org> openmotif-2.3.0-r3.ebuild:
+  Stable on ppc wrt bug 223683
+
+  26 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  openmotif-2.3.0-r3.ebuild:
+  stable x86, bug 223683
+
+*openmotif-2.3.0-r3 (10 May 2008)
+
+  10 May 2008; Ulrich Mueller <ulm@gentoo.org> -openmotif-2.3.0-r2.ebuild,
+  +openmotif-2.3.0-r3.ebuild:
+  Don't install the motif-config script, since no package needs it anymore.
+
+  08 May 2008; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.0-r1.ebuild,
+  openmotif-2.3.0-r2.ebuild:
+  Remove unnecessary/redundant dependencies on libXaw and printproto.
+
+  06 May 2008; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.0-r2.ebuild:
+  Fix breakage with libtool-2.2, bug 220599.
+
+  04 May 2008; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.0-r2.ebuild:
+  Add X.Org vendor string to aliases for virtual bindings.
+
+  02 May 2008; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.0-r2.ebuild:
+  Defaults go under /usr/share/X11/ with modular X.
+
+  25 Apr 2008; Ulrich Mueller <ulm@gentoo.org>
+  +files/openmotif-2.3.0-freebsd-libiconv.patch, openmotif-2.3.0-r2.ebuild:
+  Depend on virtual/libiconv and fix FreeBSD linking problem, bug 219040.
+  Remove defunct sed tweaks of man pages. Install app-defaults as "Mwm".
+
+  13 Apr 2008; Ulrich Mueller <ulm@gentoo.org> -openmotif-2.2.3-r9.ebuild:
+  Remove old version; no package needs SLOT 2.2 anymore.
+
+*openmotif-2.3.0-r2 (07 Apr 2008)
+
+  07 Apr 2008; Ulrich Mueller <ulm@gentoo.org>
+  +files/openmotif-2.3.0-fix-nedit-segfaults.patch,
+  +openmotif-2.3.0-r2.ebuild:
+  Fix segmentation faults affecting nedit, bug 216710. Patch extracted from
+  upstream CVS. Thanks to Evan Teran <eteran@alum.rit.edu> for reporting.
+
+  04 Apr 2008; Ulrich Mueller <ulm@gentoo.org>
+  files/openmotif-2.3.0-sensitivity-invisible.patch:
+  Fix multilist display problem, bug 215984.
+
+  25 Mar 2008; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.0-r1.ebuild:
+  Add a note about the openmotif-compat package.
+
+  07 Mar 2008; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.0-r1.ebuild:
+  Fix syntax in pkg_setup, so that it works also with older bash versions.
+
+  07 Mar 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml,
+  -openmotif-2.3.0.ebuild:
+  Remove intermediate version. Add myself as maintainer.
+
+  07 Mar 2008; Brent Baude <ranger@gentoo.org> openmotif-2.3.0-r1.ebuild:
+  stable ppc64, bug 211696
+
+  03 Mar 2008; Ferris McCormick <fmccor@gentoo.org>
+  openmotif-2.3.0-r1.ebuild:
+  Sparc stable, Bug #211696.
+
+  01 Mar 2008; Raúl Porcel <armin76@gentoo.org> openmotif-2.3.0-r1.ebuild:
+  alpha/ia64 stable wrt #211696
+
+  01 Mar 2008; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.0-r1.ebuild:
+  Stable on amd64, bug 211696.
+
+  29 Feb 2008; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.0-r1.ebuild:
+  Fix installation of demos. Thanks to fmccor for pointing this out.
+
+  28 Feb 2008; Markus Meier <maekke@gentoo.org> openmotif-2.3.0-r1.ebuild:
+  x86 stable, bug #211696
+
+  28 Feb 2008; Jeroen Roovers <jer@gentoo.org> openmotif-2.3.0-r1.ebuild:
+  Stable for HPPA (bug #211696).
+
+  28 Feb 2008; nixnut <nixnut@gentoo.org> openmotif-2.3.0-r1.ebuild:
+  Stable on ppc wrt bug 211696
+
+  23 Feb 2008; Ulrich Mueller <ulm@gentoo.org>
+  -files/openmotif-2.2.3-CAN-2004-0687-0688.patch,
+  -files/openmotif-2.2.3-CAN-2004-0914_sec8.patch,
+  -files/openmotif-2.2.3-XmResizeHashTable.patch,
+  -files/openmotif-2.2.3-automake.patch,
+  -files/openmotif-2.2.3-char_not_supported.patch,
+  -files/openmotif-2.2.3-mwm-configdir.patch,
+  -files/openmotif-2.2.3-no_demos.patch,
+  -files/openmotif-2.2.3-pixel_length.patch,
+  -files/openmotif-2.2.3-popup_timeout.patch,
+  -files/openmotif-2.2.3-uil.patch, -files/openmotif-2.2.3-utf8.patch,
+  -files/CAN-2005-0605.patch, openmotif-2.2.3-r9.ebuild:
+  Move old patches off to mirrors.
+
+  21 Feb 2008; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.0-r1.ebuild:
+  Add message about unslotting and backwards compatibility to pkg_postinst.
+
+  17 Feb 2008; Ulrich Mueller <ulm@gentoo.org>
+  +files/openmotif-2.3.0-sensitivity-invisible.patch,
+  openmotif-2.3.0-r1.ebuild:
+  Fix problem with invisible menu items in ddd, bug 210220.
+
+  16 Feb 2008; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.0.ebuild:
+  Stable on amd64, bug 204265.
+
+  14 Feb 2008; nixnut <nixnut@gentoo.org> openmotif-2.3.0.ebuild:
+  Stable on ppc wrt bug 204265
+
+  14 Feb 2008; Ulrich Mueller <ulm@gentoo.org> openmotif-2.3.0.ebuild,
+  openmotif-2.3.0-r1.ebuild:
+  Also remove stale symlinks for libraries and man pages.
+
+*openmotif-2.3.0-r1 (14 Feb 2008)
+
+  14 Feb 2008; Ulrich Mueller <ulm@gentoo.org> +files/motif-config-2.3,
+  +files/Mwm.defaults, openmotif-2.3.0.ebuild, +openmotif-2.3.0-r1.ebuild:
+  Install libraries and include files without slotting. Install application
+  defaults for Mwm and a stripped-down motif-config. Ebuild by Jakub Moc
+  <jakub@gentoo.org>, bug 210021. Don't compile demo binaries. Fix symlink for
+  system.mwmrc. Drop mips to unstable. Add missing OPL licence.
+
+  13 Feb 2008; Raúl Porcel <armin76@gentoo.org> openmotif-2.3.0.ebuild:
+  alpha/ia64/sparc stable wrt #204265
+
+  13 Feb 2008; Raúl Porcel <armin76@gentoo.org> openmotif-2.3.0.ebuild:
+  Bump DEPEND on motif-config
+
+  13 Feb 2008; Jeroen Roovers <jer@gentoo.org> openmotif-2.3.0.ebuild:
+  Stable for HPPA (bug #204265).
+
+  13 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  openmotif-2.3.0.ebuild:
+  use emake instead of plain make; quote a lot of variables
+
+  13 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  openmotif-2.3.0.ebuild:
+  stable x86, bug 204265
+
+  05 Jan 2008; Mark Loeser <halcy0n@gentoo.org> openmotif-2.3.0.ebuild:
+  Make openmotif actually respect USE flags when building (thanks to Jozef
+  Siska); bug #201915
+
+  30 Dec 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -files/openmotif-2.1.30-CAN-2004-0687-0688.patch,
+  -files/openmotif-2.1.30-CAN-2004-0914_sec8.patch,
+  -files/openmotif-2.1.30-imake-ansi.patch,
+  -files/openmotif-2.1.30-imake-tmpdir.patch,
+  -files/openmotif-2.1.30-uil-bad_grammar_fix.diff,
+  -files/openmotif-2.1.30-xpm.diff, -files/openmotif-2.1.30-xpm2.diff,
+  -files/openmotif-2.2.3-CVE-2005-3964.patch,
+  -files/openmotif-2.2.3-Mwm.defaults, -files/site.def, -files/site.def.1:
+  Clean files.
+
+  30 Dec 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -openmotif-2.1.30-r14.ebuild:
+  Remove old version. Nothing needs SLOT 2.1 specifically. Fixes bug #140494.
+
+  30 Dec 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -openmotif-2.2.3-r3.ebuild, -openmotif-2.2.3-r8.ebuild:
+  Remove ebuilds with borken autotools handling. Fixes bug #160056.
+
+  15 Oct 2007; Markus Rothe <corsair@gentoo.org> openmotif-2.3.0.ebuild:
+  Stable on ppc64
+
+  28 Sep 2007; Joshua Kinard <kumba@gentoo.org> openmotif-2.3.0.ebuild:
+  Stable on mips, per #183736.
+
+  17 Sep 2007; Mike Auty <ikelos@gentoo.org> openmotif-2.3.0.ebuild:
+  Fixing man page file collision caused by hardcoded slot number.
+
+  16 Sep 2007; Jeroen Roovers <jer@gentoo.org> openmotif-2.3.0.ebuild:
+  Restoring ~arch keywords (bug #183736).
+
+*openmotif-2.3.0 (16 Sep 2007)
+
+  16 Sep 2007; Jason Smathers (jsin) <jsin@gentoo.org>
+  +openmotif-2.3.0.ebuild:
+  adding ebuild submitted by Dmitry S. Kulyabov in bug #183736
+
+  11 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  fix herd
+
+  17 Feb 2007; Simon Stelling <blubb@gentoo.org> openmotif-2.2.3-r9.ebuild:
+  libdir fix for LDPATH
+
+  04 Jan 2007; Fabian Groffen <grobian@gentoo.org>
+  -files/openmotif-2.1.30-darwin-netbsd.diff, openmotif-2.1.30-r14.ebuild,
+  openmotif-2.2.3-r3.ebuild, openmotif-2.2.3-r8.ebuild,
+  openmotif-2.2.3-r9.ebuild:
+  Drop ppc-macos keyword, remove darwin patch and conditionals.
+
+  02 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  openmotif-2.2.3-r9.ebuild:
+  Add missing autotools versions specification, thanks to Patrick Laurer for
+  reporting in bug #149744.
+
+  01 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  openmotif-2.1.30-r14.ebuild, openmotif-2.2.3-r3.ebuild,
+  openmotif-2.2.3-r8.ebuild, openmotif-2.2.3-r9.ebuild:
+  libXext has a runtime dep on xextproto now, so we don't need to depend on it
+  here.
+
+  24 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  openmotif-2.1.30-r14.ebuild, openmotif-2.2.3-r3.ebuild,
+  openmotif-2.2.3-r8.ebuild, openmotif-2.2.3-r9.ebuild:
+  Remove virtual/x11 option from modular X deps.
+
+  26 Aug 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  openmotif-2.2.3-r3.ebuild:
+  modX deps from openmotif-2.2.3-r8
+
+  05 Aug 2006; Chris White <chriswhite@gentoo.org>
+  -openmotif-2.1.30-r9.ebuild:
+  Security punt for bug #140494.
+
+  13 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  openmotif-2.1.30-r14.ebuild, openmotif-2.2.3-r8.ebuild,
+  openmotif-2.2.3-r9.ebuild:
+  printproto needs to be in RDEPEND, it's needed for other apps to compile
+  against openmotif.
+
+  09 Jul 2006; Javier Villavicencio <the_paya@gentoo.org>
+  openmotif-2.2.3-r9.ebuild:
+  Added ~x86-fbsd keyword.
+
+  29 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  openmotif-2.2.3-r9.ebuild:
+  Remove autoconf/automake dependencies, too.
+
+  29 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  openmotif-2.2.3-r9.ebuild:
+  Replace custom autotools handling with the use of autotools eclass, remove
+  ppc-macos conditionals. Append -fno-strict-aliasing as this package has
+  rules breakage.
+
+  27 Jun 2006; Stefan Schweizer <genstef@gentoo.org> metadata.xml,
+  -openmotif-2.1.30-r13.ebuild, openmotif-2.2.3-r3.ebuild,
+  -openmotif-2.2.3-r7.ebuild, openmotif-2.2.3-r8.ebuild,
+  openmotif-2.2.3-r9.ebuild:
+  Change autoconf dep to work even with 2.60, change maintainer to
+  maintainer-needed, remove some old ebuilds.
+
+*openmotif-2.1.30-r14 (11 Jun 2006)
+
+  11 Jun 2006; Bryan Østergaard <kloeri@gentoo.org>
+  +openmotif-2.1.30-r14.ebuild:
+  Bump openmotif-2.1 fixing bug 114234.
+
+  28 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-openmotif-2.1.30-r9, files/digest-openmotif-2.1.30-r13,
+  Manifest:
+  Fix SHA256 digest.
+
+  06 Mar 2006; Simon Stelling <blubb@gentoo.org> openmotif-2.1.30-r9.ebuild,
+  openmotif-2.1.30-r13.ebuild, openmotif-2.2.3-r3.ebuild,
+  openmotif-2.2.3-r7.ebuild, openmotif-2.2.3-r8.ebuild,
+  openmotif-2.2.3-r9.ebuild:
+  fix bug 125149
+
+  16 Feb 2006; Fabian Groffen <grobian@gentoo.org>
+  openmotif-2.1.30-r13.ebuild, openmotif-2.2.3-r8.ebuild:
+  Marked ppc-macos stable (bug #114234)
+
+*openmotif-2.2.3-r9 (16 Feb 2006)
+
+  16 Feb 2006; Heinrich Wendel <lanius@gentoo.org>
+  +files/openmotif-2.2.3-uil.patch, +openmotif-2.2.3-r9.ebuild:
+  new fix for CVE-2005-3964
+
+  25 Dec 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  openmotif-2.1.30-r13.ebuild, openmotif-2.2.3-r8.ebuild:
+  stable on alpha as per bug #114234
+
+  24 Dec 2005; Mark Loeser <halcy0n@gentoo.org> openmotif-2.1.30-r13.ebuild,
+  openmotif-2.2.3-r8.ebuild:
+  Stable on x86; bug #114234
+
+  22 Dec 2005; Michael Hanselmann <hansmi@gentoo.org>
+  openmotif-2.1.30-r13.ebuild, openmotif-2.2.3-r8.ebuild:
+  Stable on hppa, ppc.
+
+  21 Dec 2005; Luis Medinas <metalgod@gentoo.org>
+  openmotif-2.1.30-r13.ebuild, openmotif-2.2.3-r8.ebuild:
+  Stable on amd64 for bug #114234.
+
+  21 Dec 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  openmotif-2.1.30-r13.ebuild, openmotif-2.2.3-r8.ebuild:
+  Stable on sparc wrt #114234
+
+  21 Dec 2005; Markus Rothe <corsair@gentoo.org>
+  openmotif-2.1.30-r13.ebuild, openmotif-2.2.3-r8.ebuild:
+  Stable on ppc64; bug #114234
+
+*openmotif-2.2.3-r8 (21 Dec 2005)
+
+  21 Dec 2005; Tavis Ormandy <taviso@gentoo.org>
+  +files/openmotif-2.2.3-CVE-2005-3964.patch, +openmotif-2.2.3-r8.ebuild:
+  patch for #114234
+
+  12 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  openmotif-2.2.3-r7.ebuild:
+  (#114648) Add xbitmaps to modular X deps.
+
+  12 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  openmotif-2.2.3-r7.ebuild:
+  Add modular X dependencies.
+
+  27 Apr 2005; Heinrich Wendel <lanius@gentoo.org>
+  -openmotif-2.1.30-r6.ebuild, -openmotif-2.1.30-r7.ebuild,
+  -openmotif-2.2.3.ebuild:
+  cleanout old versions
+
+  26 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  openmotif-2.1.30-r9.ebuild:
+  Stable on ia64.
+
+*openmotif-2.2.3-r7 (26 Apr 2005)
+*openmotif-2.1.30-r13 (26 Apr 2005)
+
+  26 Apr 2005; Heinrich Wendel <lanius@gentoo.org>
+  -openmotif-2.1.30-r12.ebuild, +openmotif-2.1.30-r13.ebuild,
+  -openmotif-2.2.3-r6.ebuild, +openmotif-2.2.3-r7.ebuild:
+  update to motif-config-0.9
+
+  27 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
+  openmotif-2.1.30-r9.ebuild:
+  Stable on hppa.
+
+*openmotif-2.2.3-r6 (23 Mar 2005)
+*openmotif-2.1.30-r12 (23 Mar 2005)
+
+  23 Mar 2005; Heinrich Wendel <lanius@gentoo.org>
+  -openmotif-2.1.30-r11.ebuild, +openmotif-2.1.30-r12.ebuild,
+  -openmotif-2.2.3-r5.ebuild, +openmotif-2.2.3-r6.ebuild:
+  fix bugs #85151, #84915
+
+  21 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  openmotif-2.1.30-r11.ebuild:
+  amd64 cleanups.
+
+  14 Mar 2005; Heinrich Wendel <lanius@gentoo.org>
+  openmotif-2.1.30-r11.ebuild, openmotif-2.2.3-r5.ebuild:
+  don't build against already installed motif versions
+
+  13 Mar 2005; Hardave Riar <hardave@gentoo.org> openmotif-2.1.30-r9.ebuild,
+  openmotif-2.2.3-r3.ebuild:
+  Stable on mips, bug #83655.
+
+  10 Mar 2005; Heinrich Wendel <lanius@gentoo.org>
+  openmotif-2.1.30-r11.ebuild, openmotif-2.2.3-r5.ebuild:
+  don't remove motif-config profile on upgrade
+
+  08 Mar 2005; Heinrich Wendel <lanius@gentoo.org>
+  -openmotif-2.1.30-r4.ebuild, -openmotif-2.1.30-r5.ebuild,
+  -openmotif-2.1.30-r8.ebuild, -openmotif-2.2.3-r1.ebuild,
+  -openmotif-2.2.3-r2.ebuild:
+  cleanups
+
+*openmotif-2.2.3-r5 (07 Mar 2005)
+*openmotif-2.1.30-r11 (07 Mar 2005)
+
+  07 Mar 2005; Heinrich Wendel <lanius@gentoo.org>
+  -openmotif-2.1.30-r10.ebuild, +openmotif-2.1.30-r11.ebuild,
+  -openmotif-2.2.3-r4.ebuild, +openmotif-2.2.3-r5.ebuild:
+  version bump for new motif-config
+
+  03 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  openmotif-2.1.30-r9.ebuild, openmotif-2.2.3-r3.ebuild:
+  Stable on alpha, bug 83655.
+
+  02 Mar 2005; Jason Wever <weeve@gentoo.org> openmotif-2.1.30-r9.ebuild,
+  openmotif-2.2.3-r3.ebuild:
+  Stable on sparc wrt security bug #83655.
+
+  02 Mar 2005; Lina Pezzella <j4rg0n@gentoo.org> openmotif-2.1.30-r9.ebuild,
+  openmotif-2.2.3-r3.ebuild:
+  Stable ppc-macos
+
+  02 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
+  openmotif-2.1.30-r9.ebuild, openmotif-2.2.3-r3.ebuild:
+  Stable on ppc.
+
+  02 Mar 2005; Markus Rothe <corsair@gentoo.org> openmotif-2.1.30-r9.ebuild,
+  openmotif-2.2.3-r3.ebuild:
+  Stable on ppc64; bug #83655
+
+*openmotif-2.2.3-r4 (02 Mar 2005)
+*openmotif-2.2.3-r3 (02 Mar 2005)
+*openmotif-2.1.30-r10 (02 Mar 2005)
+*openmotif-2.1.30-r9 (02 Mar 2005)
+
+  02 Mar 2005; Heinrich Wendel <lanius@gentoo.org> +files/CAN-2005-0605.patch,
+  +openmotif-2.1.30-r10.ebuild, openmotif-2.1.30-r8.ebuild,
+  +openmotif-2.1.30-r9.ebuild, +openmotif-2.2.3-r3.ebuild,
+  +openmotif-2.2.3-r4.ebuild:
+  fix CAN-2005-0605, bug #83655
+
+  26 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> openmotif-2.1.30-r8.ebuild,
+  openmotif-2.2.3-r2.ebuild:
+  motif-config does not work on ppc-macos
+
+  24 Feb 2005; Bryan Østergaard <kloeri@gentoo.org>
+  openmotif-2.1.30-r7.ebuild:
+  Stable on alpha, bug 78111.
+
+  22 Feb 2005; Markus Rothe <corsair@gentoo.org> openmotif-2.1.30-r7.ebuild:
+  Stable on ppc64
+
+  21 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  openmotif-2.1.30-r7.ebuild:
+  Stable on sparc wrt #78111 #81996
+
+  21 Feb 2005; Aron Griffis <agriffis@gentoo.org>
+  openmotif-2.1.30-r7.ebuild, openmotif-2.2.3-r1.ebuild:
+  stable on ia64 #78111
+
+  19 Feb 2005; Hardave Riar <hardave@gentoo.org> openmotif-2.1.30-r7.ebuild,
+  openmotif-2.2.3-r1.ebuild:
+  Stable on mips, bug #78111
+
+  17 Feb 2005; Bryan Østergaard <kloeri@gentoo.org>
+  openmotif-2.2.3-r1.ebuild:
+  Stable on alpha, bug 78111.
+
+  17 Feb 2005; Michael Hanselmann <hansmi@gentoo.org>
+  openmotif-2.1.30-r7.ebuild:
+  Stable on ppc.
+
+  17 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> openmotif-2.2.3-r1.ebuild:
+  Stable ppc-macos
+
+  17 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> openmotif-2.1.30-r7.ebuild:
+  Stable ppc-macos
+
+*openmotif-2.1.30-r7 (17 Feb 2005)
+
+  17 Feb 2005; Heinrich Wendel <lanius@gentoo.org>
+  +files/openmotif-2.1.30-CAN-2004-0914-newer.patch.bz2,
+  +openmotif-2.1.30-r7.ebuild, openmotif-2.1.30-r8.ebuild:
+  fix CAN 2004-0914 in openmotif-2.1.30
+
+  16 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  openmotif-2.2.3-r1.ebuild:
+  Stable on sparc wrt #78111
+
+  16 Feb 2005; Michael Hanselmann <hansmi@gentoo.org>
+  openmotif-2.2.3-r1.ebuild:
+  Stable on ppc.
+
+  16 Feb 2005; Markus Rothe <corsair@gentoo.org> openmotif-2.2.3-r1.ebuild:
+  Stable on ppc64; bug #78111
+
+*openmotif-2.1.30-r8 (16 Feb 2005)
+
+  16 Feb 2005; Heinrich Wendel <lanius@gentoo.org>
+  -openmotif-2.1.30-r7.ebuild, +openmotif-2.1.30-r8.ebuild:
+  move the sloted version to -r8 to have space for a security update
+
+  15 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> openmotif-2.1.30-r6.ebuild:
+  Stable ppc-macos
+
+*openmotif-2.2.3-r2 (16 Feb 2005)
+
+  16 Feb 2005; Heinrich Wendel <lanius@gentoo.org>
+  +files/openmotif-2.2.3-CAN-2004-0914-newer.patch.bz2,
+  openmotif-2.2.3-r1.ebuild, +openmotif-2.2.3-r2.ebuild:
+  new patch for CAN-20004-0914, bug #78111
+
+  15 Feb 2005; Markus Rothe <corsair@gentoo.org> openmotif-2.1.30-r6.ebuild:
+  Stable on ppc64; bug #81996
+
+*openmotif-2.2.3-r1 (14 Feb 2005)
+
+  14 Feb 2005; Heinrich Wendel <lanius@gentoo.org> metadata.xml,
+  -files/CAN-2004-0914.patch,
+  +files/openmotif-2.1.30-CAN-2004-0687-0688.patch.bz2,
+  +files/openmotif-2.1.30-CAN-2004-0914.patch.bz2,
+  +files/openmotif-2.1.30-CAN-2004-0914_sec8.patch,
+  +files/openmotif-2.1.30-xpm2.diff, openmotif-2.1.30-r7.ebuild,
+  +openmotif-2.2.3-r1.ebuild, openmotif-2.2.3.ebuild:
+  work on virtual/motif ebuilds
+
+  08 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org>
+  +files/openmotif-2.2.3-automake.patch, openmotif-2.2.3.ebuild:
+  Modified to work with Automake-1.6 on ppc-macos
+
+  06 Feb 2005; Heinrich Wendel <lanius@gentoo.org> openmotif-2.2.3.ebuild:
+  fix autotools dependencies
+
+  05 Feb 2005; Michael Hanselmann <hansmi@gentoo.org>
+  openmotif-2.2.3.ebuild:
+  Stable on ppc.
+
+  02 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> openmotif-2.2.3.ebuild:
+  Stable on sparc wrt #78111
+
+  02 Feb 2005; Heinrich Wendel <lanius@gentoo.org> openmotif-2.2.3.ebuild:
+  filter -ftracer
+
+  02 Feb 2005; Bryan Østergaard <kloeri@gentoo.org> openmotif-2.2.3.ebuild:
+  Stable on alpha, bug 78111.
+
+  02 Feb 2005; Markus Rothe <corsair@gentoo.org> openmotif-2.2.3.ebuild:
+  Stable on ppc64; bug #78111
+
+  02 Feb 2005; Heinrich Wendel <lanius@gentoo.org> openmotif-2.2.3.ebuild:
+  stable on amd64 and x86
+
+  01 Feb 2005; Heinrich Wendel <lanius@gentoo.org> openmotif-2.1.30-r4.ebuild,
+  openmotif-2.1.30-r5.ebuild, openmotif-2.1.30-r6.ebuild,
+  openmotif-2.1.30-r7.ebuild:
+  add virtual/motif
+
+*openmotif-2.2.3 (01 Feb 2005)
+
+  01 Feb 2005; Heinrich Wendel <lanius@gentoo.org>
+  +files/openmotif-2.2.3-CAN-2004-0687-0688.patch.bz2,
+  +files/openmotif-2.2.3-CAN-2004-0914.patch.bz2,
+  +files/openmotif-2.2.3-CAN-2004-0914_sec8.patch,
+  +files/openmotif-2.2.3-Mwm.defaults,
+  +files/openmotif-2.2.3-XmResizeHashTable.patch,
+  +files/openmotif-2.2.3-char_not_supported.patch,
+  +files/openmotif-2.2.3-mwm-configdir.patch,
+  +files/openmotif-2.2.3-no_demos.patch,
+  +files/openmotif-2.2.3-pixel_length.patch,
+  +files/openmotif-2.2.3-popup_timeout.patch,
+  +files/openmotif-2.2.3-utf8.patch, +openmotif-2.2.3.ebuild:
+  add openmotif-2.2.3 with security fixes, bug #78111
+
+  26 Jan 2005; Guy Martin <gmsoft@gentoo.org> openmotif-2.1.30-r6.ebuild:
+  Stable on hppa.
+
+*openmotif-2.1.30-r7 (20 Jan 2005)
+
+  20 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/CAN-2004-0914.patch, +openmotif-2.1.30-r7.ebuild:
+  CAN-2004-0914 fix thanks to Stefan Cornelius <stefan.cornelius@gmail.com>.
+
+*openmotif-2.1.30-r6 (18 Jan 2005)
+
+  18 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/openmotif-2.1.30-xpm.diff, +openmotif-2.1.30-r6.ebuild:
+  Revision bump for security bug #78111. Thanks to bartron@gmx.net for the
+  patch.
+
+  15 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  openmotif-2.1.30-r4.ebuild, openmotif-2.1.30-r5.ebuild:
+  Make openmotif friendly with multilib includes...
+
+*openmotif-2.1.30-r4 (18 Nov 2004)
+
+  18 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +openmotif-2.1.30-r4.ebuild:
+  resurrect openmotif-2.1.30-r4.ebuild for mips
+
+  17 Nov 2004; <heino@gentoo.org> -openmotif-2.1.30-r4.ebuild,
+  openmotif-2.1.30-r5.ebuild:
+  force MAKEOPTS=-j1; remove old version
+
+  06 Nov 2004; <heino@gentoo.org> openmotif-2.1.30-r4.ebuild,
+  openmotif-2.1.30-r5.ebuild:
+  fix homepage
+
+  24 Oct 2004; Mamoru KOMACHI <usata@gentoo.org>
+  +files/openmotif-2.1.30-darwin-netbsd.diff, openmotif-2.1.30-r5.ebuild:
+  Added to ppc-macos.
+
+  05 Oct 2004; Heinrich Wendel <lanius@gentoo.org> openmotif-2.1.30-r5.ebuild:
+  parallel compile sometimes fails, bug #51682
+
+  16 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  openmotif-2.1.30-r5.ebuild:
+  Stable on sparc
+
+  15 Sep 2004; Daniel Goller <morfic@gentoo.org> openmotif-2.1.30-r5.ebuild:
+  stable on x86
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  openmotif-2.1.30-r5.ebuild:
+  Masked openmotif-2.1.30-r5.ebuild stable for ppc
+
+  18 Aug 2004; Aron Griffis <agriffis@gentoo.org> openmotif-2.1.30-r5.ebuild:
+  stable on alpha and ia64
+
+  21 Jul 2004; Tom Gall <tgall@gentoo.org> openmotif-2.1.30-r5.ebuild:
+  stable on ppc64, bug #57581
+
+  15 Jul 2004; Tom Gall <tgall@gentoo.org> openmotif-2.1.30-r5.ebuild:
+  added ~ppc64, bug #55431
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> openmotif-2.1.30-r4.ebuild,
+  openmotif-2.1.30-r5.ebuild:
+  glibc -> libc, add sed-4 dep
+
+  31 May 2004; Travis Tilley <lv@gentoo.org>
+  -files/openmotif-2.1.30-gcc34.patch, openmotif-2.1.30-r5.ebuild:
+  added a much much simpler and much less invasive fix for gcc 3.4
+
+  29 May 2004; Travis Tilley <lv@gentoo.org>
+  +files/openmotif-2.1.30-gcc34.patch, openmotif-2.1.30-r5.ebuild:
+  added an #undef X_LOCALE before including XLocale.h, otherwise locale.h isnt
+  included and compilation fails with gcc 3.4
+
+  12 May 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  openmotif-2.1.30-r4.ebuild:
+  Stable on mips
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> openmotif-2.1.30-r4.ebuild,
+  openmotif-2.1.30-r5.ebuild:
+  Inherit eutils, added IUSE.
+
+  05 Apr 2004; Chris Aniszczyk <zx@gentoo.org> openmotif-2.1.30-r5.ebuild:
+  Marking stable on hppa
+
+  06 Mar 2004; Stephen P. Becker <geoman@gentoo.org>
+  openmotif-2.1.30-r4.ebuild:
+  Added ~mips keyword.
+
+*openmotif-2.1.30-r5 (25 Feb 2004)
+
+  25 Feb 2004; Heinrich Wendel <lanius@gentoo.org> openmotif-2.1.30-r5.ebuild,
+  files/openmotif-2.1.30-uil-bad_grammar_fix.diff, files/site.def.1:
+  remove i386Architecture from site.def; add uil-bad-grammar-fix
+
+  27 Jan 2004; Heinrich Wendel <lanius@gentoo.org> openmotif-2.1.30-r3.ebuild,
+  openmotif-2.1.30-r4.ebuild, files/Mwm.defaults, files/animate-demo.diff,
+  files/include-order.diff, files/mwm-configdir.patch:
+  mark -r4 stable, remove all other versions
+
+*openmotif-2.1.30-r4 (19 Jan 2004)
+
+  19 Jan 2004; Heinrich Wendel <lanius@gentoo.org> openmotif-2.1.30-r1.ebuild,
+  openmotif-2.1.30-r2.ebuild, openmotif-2.1.30-r3.ebuild,
+  openmotif-2.1.30-r4.ebuild, files/openmotif-2.1.30-imake-ansi.patch:
+  added patch to compile with gcc 2.9x
+
+  18 Jan 2004; Heinrich Wendel <lanius@gentoo.org> openmotif-2.1.30-r3.ebuild:
+  make it work with userpriv
+
+  17 Jan 2004; Heinrich Wendel <lanius@gentoo.org> openmotif-2.1.30-r3.ebuild:
+  fixed compile of uil; added -ansi to cflags #38013
+
+  13 Jan 2004; Heinrich Wendel <lanius@gentoo.org> openmotif-2.1.30-r3.ebuild:
+  added warning about libXm.so.3
+
+  11 Jan 2004; Heinrich Wendel <lanius@gentoo.org> openmotif-2.1.30-r3.ebuild,
+  openmotif-2.2.2-r1.ebuild, openmotif-2.2.2-r2.ebuild,
+  openmotif-2.2.2-r3.ebuild:
+  removed openmotif-2.2; marked 2.1.30-r3 stable, bug #29388
+
+  16 Dec 2003; <agriffis@gentoo.org> openmotif-2.2.2-r3.ebuild:
+  stable on ia64
+
+  16 Dec 2003; Guy Martin <gmsoft@gentoo.org> openmotif-2.1.30-r1.ebuild:
+  Marked stable on hppa.
+
+  23 Dec 2003; Heinrich Wendel <lanius@gentoo.org> openmotif-2.1.30-r3.ebuild:
+  hopefully final ebuild for motif conflicts
+
+  02 Dec 2003; Heinrich Wendel <lanius@gentoo.org> openmotif-2.1.30-r3.ebuild,
+  openmotif-2.2.2-r3.ebuild:
+  reverted include changes, it makes more sense to change the include path
+
+  01 Dec 2003; Heinrich Wendel <lanius@gentoo.org> openmotif-2.1.30-r3.ebuild,
+  openmotif-2.2.2-r3.ebuild:
+  fixed includes
+
+  30 Nov 2003; Heinrich Wendel <lanius@gentoo.org> openmotif-2.1.30-r3.ebuild,
+  openmotif-2.2.2-r3.ebuild:
+  clean ebuild for openmotif 2.2
+
+  24 Nov 2003; Aron Griffis <agriffis@gentoo.org> openmotif-2.2.2-r2.ebuild:
+  Add ~alpha
+
+*openmotif-2.1.30-r3 (24 Nov 2003)
+
+  24 Nov 2003; Heinrich Wendel <lanius@gentoo.org> openmotif-2.1.30-r3.ebuild:
+  motif cleanups
+
+  13 Nov 2003; Heinrich Wendel <lanius@gentoo.org> openmotif-2.2.2-r2.ebuild:
+  bug #32834
+
+  31 Oct 2003; Heinrich Wendel <lanius@gentoo.org> openmotif-2.1.30-r2.ebuild,
+  openmotif-2.2.2-r3.ebuild:
+  next cleanup version
+
+*openmotif-2.2.2-r3 (11 Oct 2003)
+
+  11 Oct 2003; Heinrich Wendel <lanius@gentoo.org> openmotif-2.1.30-r2.ebuild,
+  openmotif-2.2.2-r1.ebuild, openmotif-2.2.2-r3.ebuild,
+  files/openmotif-2.1.30-imake-tmpdir.patch:
+  motif cleanups #29388
+
+  14 Jun 2003; Seemant Kulleen <seemant@gentoo.org> openmotif-2.2.2-r2.ebuild,
+  files/mwm-configdir.patch:
+  ok, this is the fixed version, more true to what bartron originally submitted.
+  sorry for that.
+
+*openmotif-2.2.2-r2 (06 Jun 2003)
+
+  06 Jun 2003; Seemant Kulleen <seemant@gentoo.org> openmotif-2.2.2-r2.ebuild,
+  openmotif-2.2.2.ebuild, files/Mwm.defaults:
+  many many fixes. libMrm.so.3 finally exists, documentation is installed, an
+  app-defaults file is installed, man pages reflect the actual app-defaults
+  path. All this, thanks to: bartron <bartron@gmx.net> in bug #21681
+
+  09 May 2003; Tavis Ormandy <taviso@gentoo.org> openmotif-2.2.2-r1.ebuild:
+  Looks good on ALPHA, marking stable.
+
+*openmotif-2.1.30-r1 (15 May 2003)
+
+  15 May 2003; Patrick Kursawe <phosphan@gentoo.org>
+  openmotif-2.1.30-r1.ebuild:
+  Bringing back old version on user request (bug 20298)
+  Had to remove sparc64 keyword because repoman complains.
+
+  30 Apr 2003; Jason Wever <weeve@gentoo.org> openmotif-2.2.2-r1.ebuild,
+  openmotif-2.2.2.ebuild:
+  Changed -sparc keyword to ~sparc.
+
+  30 Apr 2003; Alastair Tse <liquidx@gentoo.org> openmotif-2.2.2-r1.ebuild:
+  workaround LANG problem in makefile. #15119
+
+  05 Jan 2003; Daniel Ahlberg <aliz@gentoo.org> openmotif-2.1.30-r1.ebuild,
+  openmotif-2.2.2.ebuild, openmotif-2.2.2-r1.ebuild :
+  Added PROVIDE.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+*openmotif-2.2.2-r1 (28 Aug 2002)
+
+  28 Aug 2002; Nick Hadaway <raker@gentoo.org>
+  openmotif-2.2.2-r1.ebuild, files/digest-openmotif-2.2.2-r1,
+  files/site.def.2.2.2-r1 :
+  Now installs in /usr/X11R6 instead of /usr.  If you are missing
+  imake or xmkmf you must re-emerge xfree.  openmotif-2.1.30 overwrote
+  these files from the xfree ebuild.  This version of openmotif does
+  not install these files.
+
+*openmotif-2.2.2 (14 Aug 2002)
+
+  16 Aug 2002; Nick Hadaway <raker@gentoo.org>
+  openmotif-2.2.2.ebuild, files/include-order.diff :
+  Added a fix for tools/wml/Makefile.in to place the X include directory
+  as the end of includes instead of the beginning.  See bug #6536.
+
+  14 Aug 2002; Nick Hadaway <raker@gentoo.org>
+  openmotif-2.2.2.ebuild, files/digest-openmotif-2.2.2 :
+  BIG version bump.
+
+*openmotif-2.1.30-r1 (1 Feb 2002)
+
+  15 Jul 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

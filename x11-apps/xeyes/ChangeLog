@@ -1,0 +1,128 @@
+# ChangeLog for x11-apps/xeyes
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xeyes/ChangeLog,v 1.35 2012/03/07 03:46:12 darkside Exp $
+
+  07 Mar 2012; Jeremy Olexa <darkside@gentoo.org> xeyes-1.1.1.ebuild:
+  add ~sparc-solaris, bug 406809
+
+  10 Aug 2011; Markus Duft <mduft@gentoo.org> xeyes-1.1.1.ebuild:
+  added ~x86-interix prefix keyword
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> xeyes-1.1.1.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> xeyes-1.1.1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #344827
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> xeyes-1.1.1.ebuild:
+  Stable for HPPA (bug #344827).
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org> xeyes-1.1.1.ebuild:
+  arm stable, bug #344827
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org> xeyes-1.1.1.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> xeyes-1.1.1.ebuild:
+  amd64 stable wrt #344827
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> xeyes-1.1.1.ebuild:
+  ppc64 stable wrt #344827
+
+*xeyes-1.1.1 (27 Nov 2010)
+
+  27 Nov 2010; Tomáš Chvátal <scarabeus@gentoo.org> +xeyes-1.1.1.ebuild:
+  Version bump
+
+  17 Oct 2010; Mart Raudsepp <leio@gentoo.org> -xeyes-1.0.1.ebuild:
+  Remove old
+
+  19 Sep 2010; Raúl Porcel <armin76@gentoo.org> xeyes-1.1.0.ebuild:
+  ia64/s390/sh/sparc stable wrt #327777
+
+  12 Sep 2010; Tobias Klausmann <klausman@gentoo.org> xeyes-1.1.0.ebuild:
+  Stable on alpha, bug #327777
+
+  22 Jul 2010; Markus Meier <maekke@gentoo.org> xeyes-1.1.0.ebuild:
+  arm stable, bug #327777
+
+  25 Feb 2010; Jonathan Callen <abcd@gentoo.org> xeyes-1.1.0.ebuild:
+  Transfer prefix keywords (no other changes)
+
+  15 Feb 2010; Joseph Jezak <josejx@gentoo.org> xeyes-1.1.0.ebuild:
+  Marked ppc/ppc64 stable for bug #302046.
+
+  11 Feb 2010; Jeroen Roovers <jer@gentoo.org> xeyes-1.1.0.ebuild:
+  Stable for HPPA (bug #302046).
+
+  08 Feb 2010; Christian Faulhammer <fauli@gentoo.org> xeyes-1.1.0.ebuild:
+  stable x86, bug 302046
+
+  30 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> xeyes-1.1.0.ebuild:
+  amd64 stable wrt #302046
+
+*xeyes-1.1.0 (19 Dec 2009)
+
+  19 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org> +xeyes-1.1.0.ebuild:
+  Version bump.
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org> xeyes-1.0.1.ebuild:
+  fix repoman warnings
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  18 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>; xeyes-1.0.1.ebuild:
+  (#146619) Stable on: alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc
+  x86.
+
+  20 May 2006; Robin H. Johnson <robbat2@gentoo.org> xeyes-1.0.1.ebuild:
+  Add ~ppc.
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> xeyes-1.0.1.ebuild:
+  Added ~ppc64
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xeyes-0.99.2.ebuild, -xeyes-1.0.0.ebuild:
+  Pull old versions.
+
+*xeyes-1.0.1 (23 Dec 2005)
+
+  23 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>; +xeyes-1.0.1.ebuild:
+  Bump for 7.0.
+
+*xeyes-1.0.0 (18 Dec 2005)
+
+  18 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xeyes-1.0.0.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>; -xeyes-0.99.0.ebuild,
+  -xeyes-0.99.1.ebuild:
+  Pull old versions.
+
+*xeyes-0.99.2 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xeyes-0.99.2.ebuild:
+  Bump for 7.0RC3.
+
+  17 Nov 2005; Herbie Hopkins <herbs@gentoo.org> xeyes-0.99.1.ebuild:
+  Marked ~amd64.
+
+*xeyes-0.99.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>; +xeyes-0.99.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> xeyes-0.99.0.ebuild:
+  Add ~sparc keyword (Modular X testing).
+
+*xeyes-0.99.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>; +xeyes-0.99.0.ebuild:
+  Initial commit for modular X.
+

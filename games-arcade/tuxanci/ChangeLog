@@ -1,0 +1,76 @@
+# ChangeLog for games-arcade/tuxanci
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/tuxanci/ChangeLog,v 1.18 2015/01/05 20:12:38 tupone Exp $
+
+  05 Jan 2015; Tupone Alfredo <tupone@gentoo.org> tuxanci-20110429.ebuild,
+  tuxanci-99999999.ebuild:
+  EAPI 5
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> tuxanci-20110429.ebuild,
+  tuxanci-99999999.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  31 Jul 2012; Michael Sterrett <mr_bones_@gentoo.org> metadata.xml:
+  fix metadata
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> tuxanci-20110429.ebuild,
+  tuxanci-99999999.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  11 Nov 2011; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Drop me from maint.
+
+  03 May 2011; Tomáš Chvátal <scarabeus@gentoo.org> tuxanci-20110429.ebuild,
+  tuxanci-99999999.ebuild:
+  Works on playstation3 (ppc64) and emac g4 (ppc)
+
+  29 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> tuxanci-20110429.ebuild,
+  tuxanci-99999999.ebuild:
+  Enable developer mode rather than plain debug.
+
+  28 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Remove wrong .
+
+*tuxanci-99999999 (28 Apr 2011)
+*tuxanci-20110429 (28 Apr 2011)
+
+  28 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> -tuxanci-0.21.0.ebuild,
+  -tuxanci-9999.ebuild, +tuxanci-20110429.ebuild, +tuxanci-99999999.ebuild,
+  metadata.xml:
+  Add new snapshot, bump live version so it is again the latest.
+
+  28 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> tuxanci-0.21.0.ebuild,
+  tuxanci-9999.ebuild:
+  Update to git-2 eclass.
+
+  21 Feb 2010; Jonathan Callen <abcd@gentoo.org> tuxanci-0.21.0.ebuild:
+  Transfer prefix keywords (no other changes)
+
+  13 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org> tuxanci-9999.ebuild:
+  Update live ebuild syntax to new cmake-utils one.
+
+*tuxanci-9999 (16 Nov 2009)
+
+  16 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org> +tuxanci-9999.ebuild,
+  metadata.xml:
+  Add live version.
+
+  07 Feb 2009; Tomas Chvatal <scarabeus@gentoo.org> tuxanci-0.21.0.ebuild:
+  Fix wrong var name.
+
+  13 Jan 2009; Tomas Chvatal <scarabeus@gentoo.org> tuxanci-0.21.0.ebuild:
+  Move towards eapi2.
+
+  03 Nov 2008; Tomas Chvatal <scarabeus@gentoo.org> tuxanci-0.21.0.ebuild:
+  Fix previous commit where i forget to move src_configure to src_compile.
+  Fixes bug 245375.
+
+  27 Oct 2008; Tomas Chvatal (scarabeus) <scarabeus@gentoo.org>
+  tuxanci-0.21.0.ebuild:
+  Whitespace cleanup in order to look like other game ebuilds. Thx Mr_Bones
+
+*tuxanci-0.21.0 (27 Oct 2008)
+
+  27 Oct 2008; Tomas Chvatal (scarabeus) <scarabeus@gentoo.org>
+  +metadata.xml, +tuxanci-0.21.0.ebuild:
+  Add tuxanci-0.21.0. Fixes bug #172153.

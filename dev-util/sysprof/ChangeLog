@@ -1,0 +1,158 @@
+# ChangeLog for dev-util/sysprof
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/sysprof/ChangeLog,v 1.31 2014/07/30 19:25:11 ssuominen Exp $
+
+  30 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> sysprof-1.2.0.ebuild:
+  Use shorter get_udevdir() instead of the longer deprecated udev_get_udevdir()
+  version.
+
+  03 Feb 2013; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -sysprof-1.0.12-r1.ebuild, -sysprof-1.1.8-r1.ebuild,
+  -sysprof-1.1.8-r2.ebuild:
+  Remove old.
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup after talking with leio
+
+  11 Dec 2012; Ian Stakenvicius <axs@gentoo.org> sysprof-1.1.8-r2.ebuild,
+  sysprof-1.2.0.ebuild:
+  use udev.eclass for rules installation (cleaner virtualization of udev)
+
+  11 Dec 2012; Ian Stakenvicius <axs@gentoo.org> sysprof-1.1.8-r2.ebuild,
+  sysprof-1.2.0.ebuild:
+  virtualized references to sys-fs/udev
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org> sysprof-1.2.0.ebuild:
+  Stable for x86, wrt bug #439114
+
+  24 Oct 2012; <ago@gentoo.org> sysprof-1.2.0.ebuild:
+  Stable for amd64, wrt bug #439114
+
+  22 Oct 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  sysprof-1.2.0.ebuild:
+  Add missing atk, gdk-pixbuf dependencies, thanks to Chema Alonso (bug #439114
+  comment 1).
+
+*sysprof-1.2.0 (18 Sep 2012)
+
+  18 Sep 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -sysprof-1.0.12.ebuild, sysprof-1.0.12-r1.ebuild, sysprof-1.1.8-r1.ebuild,
+  sysprof-1.1.8-r2.ebuild, +sysprof-1.2.0.ebuild:
+  Bump to new stable release. Make LICENSE more precise. Drop old.
+
+  13 Sep 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  sysprof-1.1.8-r2.ebuild:
+  Fix installation on systems without udev.pc, thanks to Samuli Suominen for
+  noticing.
+
+*sysprof-1.1.8-r2 (13 Sep 2012)
+
+  13 Sep 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -sysprof-1.1.8.ebuild, +sysprof-1.1.8-r2.ebuild:
+  Use pkgconfig to read udevdir from udev.pc. Drop old.
+
+  16 Jun 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Leio is second maintainer as talked with him.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> sysprof-1.0.12.ebuild,
+  sysprof-1.0.12-r1.ebuild, sysprof-1.1.8.ebuild, sysprof-1.1.8-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*sysprof-1.1.8-r1 (17 Mar 2012)
+
+  17 Mar 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +sysprof-1.1.8-r1.ebuild:
+  Fix icon installation (bug #408659, thanks to Matt Turner).
+
+*sysprof-1.1.8 (30 Oct 2011)
+
+  30 Oct 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  sysprof-1.0.12.ebuild, sysprof-1.0.12-r1.ebuild, +sysprof-1.1.8.ebuild,
+  metadata.xml:
+  Bump to 1.1.8 from the gnome overlay. Adding myself as co-maintainer (acked
+  by leio). Update project homepage and SRC_URI.
+  Notable changes: uses the perf counter interface introduced in kernel 2.6.31
+  instead of building its own kernel module; adds a command-line interface.
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> sysprof-1.0.12.ebuild,
+  sysprof-1.0.12-r1.ebuild:
+  Fix slot-dep on gtk+
+
+*sysprof-1.0.12-r1 (27 May 2009)
+
+  27 May 2009; Rémi Cardona <remi@gentoo.org> +sysprof-1.0.12-r1.ebuild:
+  fix missing depmod in pkg_postinst which is done by the linux-mod eclass:
+  modprobe is now able to see sysprof_module
+
+  26 Jan 2009; Mart Raudsepp <leio@gentoo.org> sysprof-1.0.12.ebuild:
+  Add einfo about frame pointers and the lack of them affecting sysprof
+  usefulness.
+
+  26 Dec 2008; Mart Raudsepp <leio@gentoo.org> -sysprof-1.0.8.ebuild,
+  -sysprof-1.0.9.ebuild, -sysprof-1.0.10.ebuild:
+  Remove old versions. They don't work with latest stable kernel anyway
+
+*sysprof-1.0.12 (10 Dec 2008)
+
+  10 Dec 2008; Mart Raudsepp <leio@gentoo.org> +sysprof-1.0.12.ebuild:
+  Version bump for more fixes for newer kernel compatibility, especially on
+  amd64. Fixes bug 220128
+
+*sysprof-1.0.10 (01 May 2008)
+
+  01 May 2008; Mart Raudsepp <leio@gentoo.org> +sysprof-1.0.10.ebuild:
+  Version bump. Adds linux-2.6.25 compatibility. Fix for missing pkgconfig
+  dep, bug 206251
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> sysprof-1.0.8.ebuild,
+  sysprof-1.0.9.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+*sysprof-1.0.9 (23 Nov 2007)
+
+  23 Nov 2007; Mart Raudsepp <leio@gentoo.org> +sysprof-1.0.9.ebuild:
+  Version bump for better Linux 2.6.23 compatibility
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+*sysprof-1.0.8 (22 Dec 2006)
+
+  22 Dec 2006; Mart Raudsepp <leio@gentoo.org> metadata.xml,
+  -sysprof-1.0.6.ebuild, +sysprof-1.0.8.ebuild:
+  Version bump to compile against older than 2.6.18 kernels and not panic with
+  preemptible kernels; remove the kernel panic causing older version; fixes
+  bug 157177. Take over maintenance and add long description
+
+*sysprof-1.0.6 (09 Nov 2006)
+
+  09 Nov 2006; Mike Frysinger <vapier@gentoo.org> +sysprof-1.0.6.ebuild:
+  Version bump #154539 by the PaX Team.
+
+*sysprof-1.0.3 (11 Jun 2006)
+
+  11 Jun 2006; Mike Frysinger <vapier@gentoo.org> +sysprof-1.0.3.ebuild:
+  Version bump #134517 by PaX Team.
+
+*sysprof-1.0.2 (08 Apr 2006)
+
+  08 Apr 2006; Mike Frysinger <vapier@gentoo.org> +sysprof-1.0.2.ebuild:
+  Version bump #128980 by Marco Matthies.
+
+*sysprof-1.0.1 (14 Jan 2006)
+
+  14 Jan 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/sysprof-1.0.1-INTERVAL_should_not_be_zero.patch,
+  +sysprof-1.0.1.ebuild:
+  Version bump #118890 by TGL.
+
+*sysprof-1.0 (05 Oct 2005)
+
+  05 Oct 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +sysprof-1.0.ebuild:
+  Version bump and ~amd64.
+
+*sysprof-0.91 (30 Jul 2005)
+
+  30 Jul 2005; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

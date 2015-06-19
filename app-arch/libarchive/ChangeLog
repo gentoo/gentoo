@@ -1,0 +1,1053 @@
+# ChangeLog for app-arch/libarchive
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/libarchive/ChangeLog,v 1.158 2014/06/10 00:24:29 vapier Exp $
+
+  10 Jun 2014; Mike Frysinger <vapier@gentoo.org> libarchive-3.1.2-r1.ebuild:
+  Add arm64/m68k love.
+
+  12 Jul 2013; Fabian Groffen <grobian@gentoo.org> libarchive-3.1.2-r1.ebuild:
+  Don't request shared libraries on static-only systems such as FreeMiNT, bug
+  #458500
+
+  16 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #122207
+
+  07 May 2013; Samuli Suominen <ssuominen@gentoo.org>
+  -libarchive-3.0.4-r1.ebuild,
+  -files/libarchive-3.0.4-handle-unsupported-acl-types.patch:
+  old
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libarchive-3.1.2-r1.ebuild:
+  Stable for ppc64, wrt bug #463632
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libarchive-3.1.2-r1.ebuild:
+  Stable for ppc, wrt bug #463632
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libarchive-3.1.2-r1.ebuild:
+  Stable for s390, wrt bug #463632
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libarchive-3.1.2-r1.ebuild:
+  Stable for arm, wrt bug #463632
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libarchive-3.1.2-r1.ebuild:
+  Stable for sparc, wrt bug #463632
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libarchive-3.1.2-r1.ebuild:
+  Stable for sh, wrt bug #463632
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libarchive-3.1.2-r1.ebuild:
+  Stable for alpha, wrt bug #463632
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libarchive-3.1.2-r1.ebuild:
+  Stable for ia64, wrt bug #463632
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> libarchive-3.1.2-r1.ebuild:
+  Stable for x86, wrt bug #463632
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> libarchive-3.1.2-r1.ebuild:
+  Stable for amd64, wrt bug #463632
+
+  30 Mar 2013; Jeroen Roovers <jer@gentoo.org> libarchive-3.1.2-r1.ebuild:
+  Stable for HPPA (bug #463632).
+
+  30 Mar 2013; Samuli Suominen <ssuominen@gentoo.org> -libarchive-3.1.1.ebuild,
+  -libarchive-3.1.2.ebuild:
+  old
+
+*libarchive-3.1.2-r1 (30 Mar 2013)
+
+  30 Mar 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +libarchive-3.1.2-r1.ebuild, +files/libarchive-3.1.2-CVE-2013-0211.patch:
+  Backport upstream patch for CVE-2013-0211 wrt security #463632 by Agostino
+  Sarubbo
+
+*libarchive-3.1.2 (30 Mar 2013)
+
+  30 Mar 2013; Samuli Suominen <ssuominen@gentoo.org> +libarchive-3.1.2.ebuild:
+  Version bump.
+
+  22 Feb 2013; Zac Medico <zmedico@gentoo.org> libarchive-3.1.1.ebuild:
+  Add ~arm-linux keyword.
+
+  16 Jan 2013; Samuli Suominen <ssuominen@gentoo.org> libarchive-3.1.1.ebuild:
+  Include subslot support and call it 13 from SONAME wrt #452444 by Michael
+  Palimaka
+
+  15 Jan 2013; Samuli Suominen <ssuominen@gentoo.org> -libarchive-3.0.3.ebuild,
+  -files/libarchive-3.0.3-nozlib.patch:
+  old
+
+*libarchive-3.1.1 (15 Jan 2013)
+
+  15 Jan 2013; Samuli Suominen <ssuominen@gentoo.org> +libarchive-3.1.1.ebuild:
+  Version bump.
+
+  06 Jan 2013; Raúl Porcel <armin76@gentoo.org> libarchive-3.0.4-r1.ebuild:
+  s390/sh stable wrt #447654
+
+  30 Dec 2012; Agostino Sarubbo <ago@gentoo.org> libarchive-3.0.4-r1.ebuild:
+  Stable for alpha, wrt bug #447654
+
+  30 Dec 2012; Agostino Sarubbo <ago@gentoo.org> libarchive-3.0.4-r1.ebuild:
+  Stable for sparc, wrt bug #447654
+
+  25 Dec 2012; Agostino Sarubbo <ago@gentoo.org> libarchive-3.0.4-r1.ebuild:
+  Stable for ia64, wrt bug #447654
+
+  25 Dec 2012; Markus Meier <maekke@gentoo.org> libarchive-3.0.4-r1.ebuild:
+  arm stable, bug #447654
+
+  20 Dec 2012; Samuli Suominen <ssuominen@gentoo.org>
+  libarchive-3.0.4-r1.ebuild:
+  ppc/ppc64 stable wrt #447654
+
+  20 Dec 2012; Jeroen Roovers <jer@gentoo.org> libarchive-3.0.4-r1.ebuild:
+  Stable for HPPA (bug #447654).
+
+  18 Dec 2012; Agostino Sarubbo <ago@gentoo.org> libarchive-3.0.4-r1.ebuild:
+  Stable for x86, wrt bug #447654
+
+  18 Dec 2012; Agostino Sarubbo <ago@gentoo.org> libarchive-3.0.4-r1.ebuild:
+  Stable for amd64, wrt bug #447654
+
+  10 Nov 2012; Fabian Groffen <grobian@gentoo.org> libarchive-3.0.4-r1.ebuild:
+  Marked ~x64-solaris
+
+  09 Nov 2012; Fabian Groffen <grobian@gentoo.org> libarchive-3.0.4-r1.ebuild:
+  Run elibtoolize to allow Solaris/x64 to build shared libs
+
+  29 Aug 2012; Christoph Junghans <ottxor@gentoo.org>
+  libarchive-3.0.4-r1.ebuild:
+  added prefix keywords
+
+*libarchive-3.0.4-r1 (14 Jun 2012)
+
+  14 Jun 2012; Richard Yao <ryao@gentoo.org>
+  +files/libarchive-3.0.4-handle-unsupported-acl-types.patch,
+  +libarchive-3.0.4-r1.ebuild, -libarchive-3.0.4.ebuild:
+  Apply upstream patch by Naohiro Aota to handle unknown acl types, bug #413865
+
+  18 May 2012;  <richard@gentoo.org> libarchive-3.0.3.ebuild:
+  keyword ~amd64-fbsd
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> libarchive-3.0.4.ebuild:
+  keyword ~amd64-fbsd
+
+*libarchive-3.0.4 (07 Apr 2012)
+
+  07 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> +libarchive-3.0.4.ebuild:
+  Version bump.
+
+  22 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Maintained now by ferringb@, me, and bsd@ (in this order)
+
+  22 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> -libarchive-2.8.5.ebuild:
+  old
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> libarchive-3.0.3.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #403173
+
+  05 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> libarchive-3.0.3.ebuild,
+  +files/libarchive-3.0.3-nozlib.patch:
+  Fix building with USE="-zlib" wrt #403733 by Ben Kohler
+
+  25 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> libarchive-3.0.3.ebuild:
+  ppc64 stable wrt #403173
+
+  16 Feb 2012; Markus Meier <maekke@gentoo.org> libarchive-3.0.3.ebuild:
+  arm stable, bug #403173
+
+  15 Feb 2012; Jeroen Roovers <jer@gentoo.org> libarchive-3.0.3.ebuild:
+  Stable for HPPA (bug #403173).
+
+  14 Feb 2012; Brent Baude <ranger@gentoo.org> libarchive-3.0.3.ebuild:
+  Marking libarchive-3.0.3 ppc for bug 403173
+
+  13 Feb 2012; Jeff Horelick <jdhore@gentoo.org> libarchive-3.0.3.ebuild:
+  x86 stable per bug 403173
+
+  13 Feb 2012; Agostino Sarubbo <ago@gentoo.org> libarchive-3.0.3.ebuild:
+  Stable for amd64, wrt bug #403173
+
+  22 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -libarchive-2.8.4-r1.ebuild, -libarchive-3.0.2.ebuild,
+  -files/libarchive-disable-lzma-size-test.patch:
+  old
+
+  22 Jan 2012; Raúl Porcel <armin76@gentoo.org> libarchive-2.8.5.ebuild,
+  libarchive-3.0.2.ebuild, libarchive-3.0.3.ebuild:
+  Add ~s390
+
+  22 Jan 2012; Raúl Porcel <armin76@gentoo.org> libarchive-2.8.5.ebuild:
+  ia64/s390/sh/sparc stable wrt #366687
+
+  20 Jan 2012; Thomas Kahle <tomka@gentoo.org> libarchive-2.8.5.ebuild:
+  x86 stable per bug 366687
+
+  18 Jan 2012; Markus Meier <maekke@gentoo.org> libarchive-2.8.5.ebuild:
+  arm stable, bug #366687
+
+  17 Jan 2012; Jeroen Roovers <jer@gentoo.org> libarchive-2.8.5.ebuild:
+  Stable for HPPA (bug #366687).
+
+  16 Jan 2012; Mark Loeser <halcy0n@gentoo.org> libarchive-2.8.5.ebuild:
+  Stable for ppc/ppc64; bug #366687
+
+  15 Jan 2012; Tobias Klausmann <klausman@gentoo.org> libarchive-2.8.5.ebuild:
+  Stable on alpha, bug #366687
+
+  13 Jan 2012; Agostino Sarubbo <ago@gentoo.org> libarchive-2.8.5.ebuild:
+  Stable for AMD64, wrt security bug #366687
+
+*libarchive-3.0.3 (13 Jan 2012)
+
+  13 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> +libarchive-3.0.3.ebuild:
+  Version bump.
+
+  10 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -libarchive-2.7.1-r1.ebuild, -libarchive-2.8.3.ebuild,
+  -libarchive-2.8.3-r1.ebuild, -libarchive-2.8.4.ebuild:
+  old
+
+  10 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> libarchive-3.0.2.ebuild,
+  metadata.xml:
+  Optionalize sys-fs/e2fsprogs wrt #354923 by Robin Johnson
+
+*libarchive-3.0.2 (10 Jan 2012)
+
+  10 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> +libarchive-3.0.2.ebuild,
+  metadata.xml:
+  Version bump. Remove USE="static" and move everything back to /usr wrt #398047
+  by Michał Górny.
+
+  29 Oct 2011; Raúl Porcel <armin76@gentoo.org> libarchive-2.8.4-r1.ebuild:
+  s390 stable
+
+*libarchive-2.8.5 (06 Sep 2011)
+
+  06 Sep 2011; Brian Harring <ferringb@gentoo.org> +libarchive-2.8.5.ebuild:
+  bugfix release primarily
+
+  07 May 2011; Raúl Porcel <armin76@gentoo.org> libarchive-2.8.4-r1.ebuild:
+  ia64/sh/sparc stable wrt #357771
+
+  02 May 2011; Thomas Kahle <tomka@gentoo.org> libarchive-2.8.4-r1.ebuild:
+  x86 stable per bug 357771
+
+  27 Mar 2011; Tobias Klausmann <klausman@gentoo.org>
+  libarchive-2.8.4-r1.ebuild:
+  Stable on alpha, bug #357771
+
+  25 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  libarchive-2.8.4-r1.ebuild:
+  ppc/ppc64 stable wrt #357771
+
+  21 Mar 2011; Brent Baude <ranger@gentoo.org> libarchive-2.8.4.ebuild:
+  Marking libarchive-2.8.4 ppc for bug 357771
+
+  18 Mar 2011; Markus Meier <maekke@gentoo.org> libarchive-2.8.4-r1.ebuild:
+  arm stable, bug #357771
+
+  09 Mar 2011; Jeroen Roovers <jer@gentoo.org> libarchive-2.8.4-r1.ebuild:
+  Stable for HPPA (bug #357771).
+
+  08 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  libarchive-2.8.4-r1.ebuild:
+  Stable on amd64 wrt bug #357773
+
+*libarchive-2.8.4-r1 (14 Feb 2011)
+*libarchive-2.8.3-r1 (14 Feb 2011)
+
+  14 Feb 2011; Brian Harring <ferringb@gentoo.org> +libarchive-2.8.3-r1.ebuild,
+  +libarchive-2.8.4-r1.ebuild:
+  revisit 352464; revbump (missed in the last round), add IUSE=expat to
+  enforce linkage via expat, else libxml2 is used.
+
+  14 Feb 2011; Brian Harring <ferringb@gentoo.org> libarchive-2.8.3.ebuild,
+  libarchive-2.8.4.ebuild:
+  add missing libxml2/expat dep for xar support. bug #352464
+
+  31 Dec 2010; Brian Harring <ferringb@gentoo.org> libarchive-2.7.1-r1.ebuild,
+  -libarchive-2.8.0.ebuild, libarchive-2.8.3.ebuild, libarchive-2.8.4.ebuild,
+  +files/libarchive-disable-lzma-size-test.patch:
+  Disable false-positive test failure against xz-5 (bug #343829), remove 2.8.0
+  since there are a few bugs the fuzz tester spots in that version.
+
+  18 Dec 2010; Mart Raudsepp <leio@gentoo.org> libarchive-2.8.4.ebuild:
+  Add ~mips keyword - required by new cmake-2.8.3
+
+  14 Nov 2010; Justin Lecher <jlec@gentoo.org> libarchive-2.7.1-r1.ebuild,
+  libarchive-2.8.0.ebuild, libarchive-2.8.3.ebuild, libarchive-2.8.4.ebuild,
+  metadata.xml:
+  Move local USE lzma to global USE
+
+*libarchive-2.8.4 (11 Aug 2010)
+
+  11 Aug 2010; Brian Harring <ferringb@gentoo.org> +libarchive-2.8.4.ebuild:
+
+
+  version bump; #327385
+
+
+  24 Mar 2010; Pacho Ramos <pacho@gentoo.org> libarchive-2.7.1-r1.ebuild,
+  libarchive-2.8.0.ebuild, libarchive-2.8.3.ebuild:
+  Update homepage, see bug 310919
+
+*libarchive-2.8.3 (15 Mar 2010)
+
+  15 Mar 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -libarchive-2.8.1.ebuild, -files/libarchive-2.8.1+openssl.patch,
+  +libarchive-2.8.3.ebuild:
+  Version bump.
+
+*libarchive-2.8.1 (07 Mar 2010)
+
+  07 Mar 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/libarchive-2.6.0-nolibs.patch,
+  -files/libarchive-2.6.1-headers.patch,
+  -files/libarchive-2.7.0-fortified-sources.patch,
+  -files/libarchive-2.7.0-pipe.patch, +libarchive-2.8.1.ebuild,
+  +files/libarchive-2.8.1+openssl.patch:
+  Version bump, add a patch to fix handling of OpenSSL checks.
+
+*libarchive-2.8.0 (09 Feb 2010)
+
+  09 Feb 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -libarchive-2.7.0-r1.ebuild, -libarchive-2.7.902a.ebuild,
+  +libarchive-2.8.0.ebuild:
+  Version bump, remove old versions.
+
+  31 Jan 2010; Raúl Porcel <armin76@gentoo.org> libarchive-2.7.1-r1.ebuild:
+  alpha/ia64/sh/sparc stable wrt #298563
+
+  23 Jan 2010; Brent Baude <ranger@gentoo.org> libarchive-2.7.1-r1.ebuild:
+  stable ppc, bug 298563
+
+  14 Jan 2010; Markus Meier <maekke@gentoo.org> libarchive-2.7.1-r1.ebuild:
+  arm stable, bug #298563
+
+  11 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  libarchive-2.7.1-r1.ebuild:
+  stable x86, bug 298563
+
+  11 Jan 2010; Jeroen Roovers <jer@gentoo.org> libarchive-2.7.1-r1.ebuild:
+  Stable for HPPA (bug #298563).
+
+  10 Jan 2010; Brent Baude <ranger@gentoo.org> libarchive-2.7.1-r1.ebuild:
+  stable ppc64, bug 298563
+
+  09 Jan 2010; Pacho Ramos <pacho@gentoo.org> libarchive-2.7.1-r1.ebuild:
+  amd64 stable, bug 298563
+
+*libarchive-2.7.902a (05 Jan 2010)
+
+  05 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -libarchive-2.6.2.ebuild, -libarchive-2.7.1.ebuild,
+  +libarchive-2.7.902a.ebuild:
+  Bump latest alpha; also drop older versions. New version builds tests in
+  parallel during test phase.
+
+*libarchive-2.7.1-r1 (25 Oct 2009)
+
+  25 Oct 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +libarchive-2.7.1-r1.ebuild, metadata.xml:
+  Bump revision adding a static-libs USE flag to disable libarchive.a build;
+  also remove .la file when disabling static libraries (thanks to Mauro
+  Toffanin for this). Extend the metadata USE documentation to explain that
+  the various USE flags don't stop bsdtar from calling the decompressor
+  command as a filter.
+
+*libarchive-2.7.1 (09 Sep 2009)
+
+  09 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +libarchive-2.7.1.ebuild:
+  Version bump, thanks zzam in bug #284233.
+
+  31 Aug 2009; Brent Baude <ranger@gentoo.org> libarchive-2.7.0-r1.ebuild:
+  Marking libarchive-2.7.0-r1 ppc64 for bug 279679
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> libarchive-2.7.0-r1.ebuild:
+  ppc stable #279679
+
+  25 Aug 2009; Raúl Porcel <armin76@gentoo.org> libarchive-2.7.0-r1.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #279679
+
+  18 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  libarchive-2.7.0-r1.ebuild:
+  stable x86, bug 279679
+
+  31 Jul 2009; <chainsaw@gentoo.org> libarchive-2.7.0-r1.ebuild:
+  Marked stable on AMD64 as requested by Diego E. 'Flameeyes' Pettenò
+  <flameeyes@gentoo.org> in bug #270679. Compiled-tested on a Core2 Duo with
+  USE="bzip2 lzma zlib -acl -static -xattr".
+
+  30 Jul 2009; Jeroen Roovers <jer@gentoo.org> libarchive-2.7.0-r1.ebuild:
+  Stable for HPPA (bug #279679).
+
+  20 Jul 2009; Alexis Ballier <aballier@gentoo.org>
+  libarchive-2.7.0-r1.ebuild:
+  Add missing openssl dep
+
+  29 May 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -libarchive-2.6.0.ebuild, -libarchive-2.6.1.ebuild,
+  -libarchive-2.7.0.ebuild, libarchive-2.7.0-r1.ebuild:
+  Migrate to use virtual/acl (xattr is no virtual, they have different
+  implementations). Remove old ebuilds.
+
+*libarchive-2.7.0-r1 (14 May 2009)
+
+  14 May 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +libarchive-2.7.0-r1.ebuild, +files/libarchive-2.7.0-pipe.patch:
+  Add a patch to fix behaviour with pipe, allows for bsdtar to work with
+  current Portage behaviour.
+
+  27 Apr 2009; Jeroen Roovers <jer@gentoo.org> libarchive-2.6.2:
+  Stable for HPPA (bug #260063).
+
+  26 Apr 2009; Brent Baude <ranger@gentoo.org> libarchive-2.6.2.ebuild:
+  stable ppc, bug 260484
+
+  25 Apr 2009; Brent Baude <ranger@gentoo.org> libarchive-2.6.2.ebuild:
+  stable ppc64, bug 260484
+
+  24 Apr 2009; Raúl Porcel <armin76@gentoo.org> libarchive-2.6.2.ebuild:
+  arm/ia64/sh stable wrt #260484
+
+  19 Apr 2009; Tiago Cunha <tcunha@gentoo.org> libarchive-2.6.2.ebuild:
+  stable sparc, bug 260484
+
+  18 Apr 2009; Tobias Klausmann <klausman@gentoo.org>
+  libarchive-2.6.2.ebuild:
+  Stable on alpha, bug #260484
+
+  18 Apr 2009; Markus Meier <maekke@gentoo.org> libarchive-2.6.2:
+  amd64/x86 stable, bug #260484
+
+  17 Apr 2009; Diego E. Pettenò <flameeyes@gentoo.org> libarchive-2.7.0:
+  Append -Wno-error to avoid -Werror hitting. Closes bug #266463.
+
+*libarchive-2.7.0 (16 Apr 2009)
+
+  16 Apr 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/libarchive-2.7.0-fortified-sources.patch, +libarchive-2.7.0.ebuild:
+  Version bump.
+
+  12 Apr 2009; Friedrich Oslage <bluebird@gentoo.org>
+  libarchive-2.6.1.ebuild:
+  Stable on sparc, bug #260063
+
+  18 Mar 2009; Raúl Porcel <armin76@gentoo.org> libarchive-2.6.1.ebuild:
+  alpha/ia64 stable wrt #260063
+
+  07 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  libarchive-2.6.1.ebuild:
+  stable x86, 260484
+
+  06 Mar 2009; Brent Baude <ranger@gentoo.org> libarchive-2.6.0.ebuild:
+  Marking libarchive-2.6.0 ppc for bug 257165
+
+  05 Mar 2009; Brent Baude <ranger@gentoo.org> libarchive-2.6.0.ebuild:
+  Marking libarchive-2.6.0 ppc64 for bug 257165
+
+*libarchive-2.6.2 (27 Feb 2009)
+
+  27 Feb 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -libarchive-2.5.5.ebuild, +libarchive-2.6.2.ebuild:
+  Version bump, remove old version.
+
+  01 Feb 2009; Markus Meier <maekke@gentoo.org> libarchive-2.6.0.ebuild:
+  amd64/x86 stable, bug #257165
+
+  26 Jan 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/libarchive-2.6.1-headers.patch, libarchive-2.6.1.ebuild:
+  Fix missing prototypes for *times functions.
+
+  20 Jan 2009; Raúl Porcel <armin76@gentoo.org> libarchive-2.6.1.ebuild:
+  Add ~arm/~sh
+
+*libarchive-2.6.1 (19 Jan 2009)
+
+  19 Jan 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +libarchive-2.6.1.ebuild:
+  Version bump.
+
+  02 Jan 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/libarchive-2.6.0-nolibs.patch, libarchive-2.6.0.ebuild:
+  Fix building with bzip2 and zlib disabled, closes bug #253284. Thanks to
+  Lifong Sun for the patch.
+
+*libarchive-2.6.0 (29 Dec 2008)
+
+  29 Dec 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  -libarchive-2.5.904a.ebuild, -libarchive-2.5.905a.ebuild,
+  +libarchive-2.6.0.ebuild:
+  Version bump, 2.6.0 final released. Move the primary download URI to
+  google's servers.
+
+*libarchive-2.5.905a (26 Dec 2008)
+
+  26 Dec 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  +libarchive-2.5.905a.ebuild:
+  Version bump.
+
+*libarchive-2.5.904a (11 Dec 2008)
+
+  11 Dec 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/libarchive-2.5.902a-automagic.patch, -libarchive-2.5.902a.ebuild,
+  +libarchive-2.5.904a.ebuild:
+  Version bump, the automagic patch has been merged upstream entirely. 903a
+  has been skipped for test failure.
+
+  07 Dec 2008; Mike Frysinger <vapier@gentoo.org> libarchive-2.5.5.ebuild,
+  libarchive-2.5.902a.ebuild:
+  Remove pointless USE=build support.
+
+*libarchive-2.5.902a (13 Nov 2008)
+
+  13 Nov 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libarchive-2.5.902a-automagic.patch, metadata.xml,
+  +libarchive-2.5.902a.ebuild:
+  Add the newest pre-release for libarchive, now supporting lzma. It comes
+  with a patch that allows to disable lzma and bz2 libraries.
+
+  28 Oct 2008; Brent Baude <ranger@gentoo.org> libarchive-2.5.5.ebuild:
+  Marking libarchive-2.5.5.ebuild ~ppc64 to support gnome stablizations
+
+  28 Oct 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -libarchive-2.4.12.ebuild, -libarchive-2.4.17.ebuild:
+  Remove old versions.
+
+  27 Oct 2008; Markus Meier <maekke@gentoo.org> libarchive-2.5.5.ebuild:
+  amd64/x86 stable, bug #238663
+
+  17 Oct 2008; Jose Luis Rivero <yoswink@gentoo.org>
+  libarchive-2.5.5.ebuild:
+  Keyworded ~alpha due to bug #241664
+
+  24 Jul 2008; Raúl Porcel <armin76@gentoo.org> libarchive-2.4.17.ebuild:
+  x86 stable
+
+*libarchive-2.5.5 (04 Jul 2008)
+
+  04 Jul 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -files/libarchive-2.5.4b-glibc.patch, -libarchive-2.5.4_beta.ebuild,
+  +libarchive-2.5.5.ebuild:
+  Version bump, remove old beta.
+
+*libarchive-2.5.4_beta (26 May 2008)
+
+  26 May 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libarchive-2.5.4b-glibc.patch, -libarchive-2.4.5.ebuild,
+  -libarchive-2.4.14.ebuild, -libarchive-2.5.0_beta.ebuild,
+  -libarchive-2.5.1_beta.ebuild, -libarchive-2.5.3_beta.ebuild,
+  +libarchive-2.5.4_beta.ebuild:
+  Version bump (with patch), and cleanup old versions.
+
+*libarchive-2.5.3_beta (05 May 2008)
+
+  05 May 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +libarchive-2.5.3_beta.ebuild:
+  Version bump.
+
+*libarchive-2.5.1_beta (05 Apr 2008)
+*libarchive-2.4.17 (05 Apr 2008)
+
+  05 Apr 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +libarchive-2.4.17.ebuild, +libarchive-2.5.1_beta.ebuild:
+  Version bump for both stable and beta branches.
+
+  16 Mar 2008; Raúl Porcel <armin76@gentoo.org>
+  libarchive-2.5.0_beta.ebuild:
+  Add ~ia64/~sparc
+
+*libarchive-2.5.0_beta (15 Mar 2008)
+
+  15 Mar 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +libarchive-2.5.0_beta.ebuild:
+  Add new beta of libarchive 2.5. Not package.masked as there seems not to
+  be any huge changes for now.
+
+  15 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  libarchive-2.4.12.ebuild:
+  amd64 stable wrt bug #213503
+
+  15 Mar 2008; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Signing failed, re-sign.
+
+*libarchive-2.4.14 (15 Mar 2008)
+
+  15 Mar 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -libarchive-2.4.13.ebuild, +libarchive-2.4.14.ebuild:
+  Version bump.
+
+*libarchive-2.4.13 (26 Feb 2008)
+
+  26 Feb 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -libarchive-2.4.11.ebuild, +libarchive-2.4.13.ebuild:
+  Version bump.
+
+  23 Jan 2008; Samuli Suominen <drac@gentoo.org> libarchive-2.4.12.ebuild:
+  Needs uudecode from sharutils or freebsd-ubin.
+
+*libarchive-2.4.12 (23 Jan 2008)
+
+  23 Jan 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +libarchive-2.4.12.ebuild:
+  Version bump.
+
+*libarchive-2.4.11 (31 Dec 2007)
+
+  31 Dec 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -libarchive-2.4.8.ebuild, -libarchive-2.4.10.ebuild,
+  +libarchive-2.4.11.ebuild:
+  Version bump and remove old versions.
+
+*libarchive-2.4.10 (29 Dec 2007)
+
+  29 Dec 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +libarchive-2.4.10.ebuild:
+  Version bump.
+
+*libarchive-2.4.8 (14 Dec 2007)
+
+  14 Dec 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -libarchive-2.4.7.ebuild, +libarchive-2.4.8.ebuild:
+  Version bump.
+
+*libarchive-2.4.7 (13 Dec 2007)
+
+  13 Dec 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -files/libarchive-2.1.5-acl.patch, -files/libarchive-2.1.9-static.patch,
+  -libarchive-2.2.4.ebuild, -libarchive-2.4.0-r1.ebuild,
+  +libarchive-2.4.7.ebuild:
+  Version bump, and remove old versions and patches.
+
+  05 Dec 2007; Samuli Suominen <drac@gentoo.org> libarchive-2.4.5.ebuild:
+  amd64 stable wrt #200173
+
+*libarchive-2.4.5 (05 Dec 2007)
+
+  05 Dec 2007; Samuli Suominen <drac@gentoo.org> +libarchive-2.4.5.ebuild:
+  Version bump, test suite works now.
+
+*libarchive-2.4.4 (04 Dec 2007)
+
+  04 Dec 2007; Samuli Suominen <drac@gentoo.org> +libarchive-2.4.4.ebuild:
+  Version bump, thanks to Tim Kientzle <kientzle at freebsd.org> for applying
+  our patch fixing automagic acl and xattr. This version also fixes most of
+  the test suite.
+
+*libarchive-2.4.2 (03 Dec 2007)
+
+  03 Dec 2007; Samuli Suominen <drac@gentoo.org> +libarchive-2.4.2.ebuild:
+  Version bump.
+
+*libarchive-2.4.0-r1 (06 Nov 2007)
+
+  06 Nov 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -libarchive-2.3.5.ebuild, -libarchive-2.4.0.ebuild,
+  +libarchive-2.4.0-r1.ebuild:
+  Fix linking of shared libarchive, thanks to Jan Psota for reporting.
+
+*libarchive-2.4.0 (04 Nov 2007)
+
+  04 Nov 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -libarchive-2.2.5.ebuild, -libarchive-2.3.3.ebuild,
+  -libarchive-2.3.4.ebuild, +libarchive-2.4.0.ebuild:
+  Version bump, and cleanup of old ebuilds.
+
+*libarchive-2.3.5 (29 Oct 2007)
+
+  29 Oct 2007; Roy Marples <uberlord@gentoo.org> +libarchive-2.3.5.ebuild:
+  Bump and enable bsdcpio.
+
+*libarchive-2.3.4 (10 Oct 2007)
+
+  10 Oct 2007; Roy Marples <uberlord@gentoo.org> +libarchive-2.3.4.ebuild:
+  Bump
+
+*libarchive-2.3.3 (04 Oct 2007)
+
+  04 Oct 2007; <drizzt@gentoo.org> +libarchive-2.3.3.ebuild:
+  Version bump
+
+*libarchive-2.2.5 (14 Jul 2007)
+
+  14 Jul 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +libarchive-2.2.5.ebuild:
+  Version bump.
+
+  13 Jul 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libarchive-2.1.5-acl.patch, +files/libarchive-2.1.9-static.patch,
+  +metadata.xml, +libarchive-2.2.4.ebuild:
+  Add libarchive.
+
+*libarchive-2.2.4 (13 Jul 2007)
+
+  13 Jul 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libarchive-2.1.5-acl.patch, +files/libarchive-2.1.9-static.patch,
+  +metadata.xml, +libarchive-2.2.4.ebuild:
+  Move app-arch/bsdtar to app-arch/libarchive
+
+  13 Jul 2007; Steve Dibb <beandog@gentoo.org> bsdtar-2.2.4.ebuild:
+  amd64 stable, security bug 184984
+
+*bsdtar-2.2.4 (12 Jul 2007)
+
+  12 Jul 2007; Roy Marples <uberlord@gentoo.org> +bsdtar-2.2.4.ebuild:
+  Bumpage.
+
+  23 Jun 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -files/libarchive-1.2.53-strict-aliasing.patch,
+  -files/libarchive-1.2.57-acl.patch,
+  -files/libarchive-1.3.1-infiniteloop.patch, -bsdtar-1.3.1-r2.ebuild,
+  -bsdtar-2.2.2.ebuild:
+  Remove some old files.
+
+  31 May 2007; Daniel Gryniewicz <dang@gentoo.org> bsdtar-2.0.31.ebuild:
+  Marked stable on amd64 for bug #180017
+
+*bsdtar-2.2.3 (27 May 2007)
+
+  27 May 2007; Diego Pettenò <flameeyes@gentoo.org> -bsdtar-2.0.20.ebuild,
+  -bsdtar-2.0.24.ebuild, -bsdtar-2.0.25.ebuild, -bsdtar-2.0.28.ebuild,
+  -bsdtar-2.1.5.ebuild, +bsdtar-2.2.3.ebuild:
+  Version bump to 2.2.3 and remove redundant versions.
+
+  23 May 2007; Timothy Redaelli <drizzt@gentoo.org> -bsdtar-2.1.9.ebuild,
+  -bsdtar-2.1.10.ebuild:
+  Remove bugged bsdtar versions.
+
+*bsdtar-2.2.2 (17 May 2007)
+
+  17 May 2007; Roy Marples <uberlord@gentoo.org> +bsdtar-2.2.2.ebuild:
+  New version.
+
+*bsdtar-2.1.10 (03 May 2007)
+
+  03 May 2007; Timothy Redaelli <drizzt@gentoo.org> +bsdtar-2.1.10.ebuild:
+  Version bump
+
+*bsdtar-2.1.9 (26 Apr 2007)
+
+  26 Apr 2007; Timothy Redaelli <drizzt@gentoo.org>
+  +files/libarchive-2.1.9-static.patch, +bsdtar-2.1.9.ebuild:
+  Version bump, fixed static patch
+
+*bsdtar-2.1.5 (17 Apr 2007)
+
+  17 Apr 2007; Timothy Redaelli <drizzt@gentoo.org>
+  +files/libarchive-2.1.5-acl.patch, +bsdtar-2.1.5.ebuild:
+  Version bump, updated acl patch
+
+*bsdtar-2.0.31 (15 Apr 2007)
+
+  15 Apr 2007; Timothy Redaelli <drizzt@gentoo.org> +bsdtar-2.0.31.ebuild:
+  Version bump (thx to Flameeyes for reporting on irc)
+
+*bsdtar-2.0.28 (07 Apr 2007)
+
+  07 Apr 2007; Timothy Redaelli <drizzt@gentoo.org> +bsdtar-2.0.28.ebuild:
+  Version bump (thx to Flameeyes for reporting on irc)
+
+*bsdtar-2.0.25 (13 Mar 2007)
+
+  13 Mar 2007; Timothy Redaelli <drizzt@gentoo.org> +bsdtar-2.0.25.ebuild:
+  Just another bsdtar bump.
+
+*bsdtar-2.0.24 (11 Mar 2007)
+
+  11 Mar 2007; Timothy Redaelli <drizzt@gentoo.org>
+  -files/libarchive-2.0.21-tests.patch, -bsdtar-2.0.21.ebuild,
+  +bsdtar-2.0.24.ebuild:
+  Just another bsdtar bump
+
+*bsdtar-2.0.21 (10 Mar 2007)
+
+  10 Mar 2007; Timothy Redaelli <drizzt@gentoo.org>
+  +files/libarchive-2.0.21-tests.patch, +bsdtar-2.0.21.ebuild:
+  Version bump, patch taken from Flameeyes overlay
+
+*bsdtar-2.0.20 (04 Mar 2007)
+
+  04 Mar 2007; Timothy Redaelli <drizzt@gentoo.org>
+  -bsdtar-2.0_beta17.ebuild, +bsdtar-2.0.20.ebuild:
+  Finally a 2.0 final release.
+
+*bsdtar-2.0_beta17 (01 Mar 2007)
+
+  01 Mar 2007; Timothy Redaelli <drizzt@gentoo.org>
+  -bsdtar-2.0_beta15.ebuild, +bsdtar-2.0_beta17.ebuild:
+  Just another bsdtar version bump
+
+*bsdtar-2.0_beta15 (27 Feb 2007)
+
+  27 Feb 2007; Timothy Redaelli <drizzt@gentoo.org>
+  -files/libarchive-2.0b12-tests.patch, -bsdtar-2.0_beta13.ebuild,
+  +bsdtar-2.0_beta15.ebuild:
+  Version bump (taken from Flameeyes overlay)
+
+*bsdtar-2.0_beta13 (26 Feb 2007)
+
+  26 Feb 2007; Timothy Redaelli <drizzt@gentoo.org>
+  -files/libarchive-2.0b11-tests.patch,
+  +files/libarchive-2.0b12-tests.patch, -bsdtar-2.0_beta12.ebuild,
+  +bsdtar-2.0_beta13.ebuild:
+  Version bump (taken from Flameeyes overlay)
+
+*bsdtar-2.0_beta12 (25 Feb 2007)
+
+  25 Feb 2007; Timothy Redaelli <drizzt@gentoo.org>
+  -files/libarchive-2.0b7-noacl.patch, -bsdtar-2.0_beta11.ebuild,
+  +bsdtar-2.0_beta12.ebuild:
+  Version Bump
+
+  11 Feb 2007; Diego Pettenò <flameeyes@gentoo.org>
+  files/libarchive-2.0b11-tests.patch:
+  Improve tests patch, one less failure although it still doesn't pass.
+
+  11 Feb 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -files/libarchive-2.0b6-linux.patch:
+  Remove extra patch.
+
+*bsdtar-2.0_beta11 (11 Feb 2007)
+
+  11 Feb 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libarchive-2.0b11-tests.patch, -bsdtar-2.0_beta9.ebuild,
+  -bsdtar-2.0_beta10.ebuild, +bsdtar-2.0_beta11.ebuild:
+  Version bump, and add a src_test function with the libarchive/bsdtar tests,
+  it is currently failing.
+
+*bsdtar-2.0_beta10 (07 Feb 2007)
+
+  07 Feb 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +bsdtar-2.0_beta10.ebuild:
+  Version bump.
+
+  01 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> bsdtar-1.3.1-r2.ebuild,
+  bsdtar-2.0_beta9.ebuild:
+  Fix manpage symlinks.
+
+*bsdtar-2.0_beta9 (01 Feb 2007)
+
+  01 Feb 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -bsdtar-2.0_beta7.ebuild, +bsdtar-2.0_beta9.ebuild:
+  Update to latest version.
+
+  28 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  bsdtar-2.0_beta7.ebuild:
+  Fix keywording.
+
+*bsdtar-2.0_beta7 (28 Jan 2007)
+
+  28 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libarchive-2.0b6-acl.patch, +files/libarchive-2.0b6-linux.patch,
+  +files/libarchive-2.0b7-noacl.patch, +bsdtar-2.0_beta7.ebuild:
+  Version bump, with a few patches to make it compile.
+
+  21 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Give this back to bsd herd.
+
+  14 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/libarchive-1.2.51-acl.patch,
+  -files/libarchive-1.2.51-linking.patch, -bsdtar-1.2.53.ebuild,
+  -bsdtar-1.2.57.ebuild, -bsdtar-1.3.1.ebuild, -bsdtar-1.3.1-r1.ebuild:
+  Remove old versions, and old patches.
+
+  11 Nov 2006; <blubb@gentoo.org> bsdtar-1.3.1-r2.ebuild:
+  stable on amd64
+
+  09 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Manifest sign.
+
+*bsdtar-1.3.1-r2 (09 Nov 2006)
+
+  09 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libarchive-1.3.1-infiniteloop.patch, +bsdtar-1.3.1-r2.ebuild:
+  Add patch to fix the infinite loop as per bug #154334.
+
+  17 Oct 2006; Roy Marples <uberlord@gentoo.org> bsdtar-1.3.1-r1.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  08 Oct 2006; Fabian Groffen <grobian@gentoo.org> bsdtar-1.2.53.ebuild,
+  bsdtar-1.2.57.ebuild, bsdtar-1.3.1.ebuild, bsdtar-1.3.1-r1.ebuild:
+  Dropped ~ppc-macos, see you in prefix.
+
+*bsdtar-1.3.1-r1 (06 Oct 2006)
+
+  06 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libarchive-1.3.1-static.patch, +bsdtar-1.3.1-r1.ebuild:
+  Make sure that build/static useflags are correctly respected (as this
+  package is used in Gentoo/FreeBSD stage1).
+
+  06 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> bsdtar-1.3.1.ebuild:
+  Fix dependencies.
+
+  24 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> bsdtar-1.2.53.ebuild,
+  bsdtar-1.2.57.ebuild, bsdtar-1.3.1.ebuild:
+  Fix the autotools version dependencies.
+
+*bsdtar-1.3.1 (08 Sep 2006)
+
+  08 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -bsdtar-1.2.53-r1.ebuild, +bsdtar-1.3.1.ebuild:
+  Version bump and remove old version.
+
+*bsdtar-1.2.57 (02 Sep 2006)
+
+  02 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libarchive-1.2.57-acl.patch, +bsdtar-1.2.57.ebuild:
+  Version bump with a new patch.
+
+  31 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  bsdtar-1.2.53-r1.ebuild:
+  Use -j1 to actually install.
+
+  30 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> bsdtar-1.2.53.ebuild,
+  bsdtar-1.2.53-r1.ebuild:
+  Die when the install failed.
+
+*bsdtar-1.2.53-r1 (18 Jun 2006)
+
+  18 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libarchive-1.2.53-strict-aliasing.patch, +bsdtar-1.2.53-r1.ebuild:
+  Add patch to fix strict-aliasing.
+
+  09 Jun 2006; Emanuele Giaquinta <exg@gentoo.org> bsdtar-1.2.53.ebuild:
+  Simplify test for static, no need to special case darwin.
+
+  14 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/bsdtar-1.02.027-osx.patch, -bsdtar-1.02.027-r1.ebuild,
+  -bsdtar-1.2.52.ebuild:
+  Drop old versions.
+
+  14 May 2006; Luis Medinas <metalgod@gentoo.org> bsdtar-1.2.53.ebuild:
+  Stable on amd64. Bug #132604.
+
+  30 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> bsdtar-1.2.53.ebuild:
+  Add ~x86-fbsd keyword.
+
+*bsdtar-1.2.53 (24 Mar 2006)
+
+  24 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> +bsdtar-1.2.53.ebuild:
+  Version bump.
+
+*bsdtar-1.2.52 (22 Mar 2006)
+
+  22 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -bsdtar-1.2.51-r1.ebuild, +bsdtar-1.2.52.ebuild:
+  Version bump to fix problems on FreeBSD.
+
+  21 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> -bsdtar-1.2.37.ebuild,
+  -bsdtar-1.2.38.ebuild:
+  Drop old versions.
+
+*bsdtar-1.2.51-r1 (21 Mar 2006)
+
+  21 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libarchive-1.2.51-acl.patch,
+  +files/libarchive-1.2.51-linking.patch, -bsdtar-1.2.51.ebuild,
+  +bsdtar-1.2.51-r1.ebuild:
+  Add patches to make acl and attr optional, plus link bsdtar non statically.
+
+*bsdtar-1.2.51 (19 Mar 2006)
+
+  19 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> +bsdtar-1.2.51.ebuild:
+  Version bump, this version merges libarchive and bsdtar in the same package,
+  so it requires to get libarchive removed before merging.
+
+*bsdtar-1.2.38 (18 Feb 2006)
+
+  18 Feb 2006; Diego Pettenò <flameeyes@gentoo.org> +bsdtar-1.2.38.ebuild:
+  Bump following upstream.
+
+  05 Jan 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -bsdtar-1.02.036.ebuild:
+  Drop old version.
+
+*bsdtar-1.2.37 (08 Nov 2005)
+
+  08 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> +bsdtar-1.2.37.ebuild:
+  Updated to latest upstream version. Changed versioning scheme by upstream.
+
+  05 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -bsdtar-1.02.030.ebuild, -bsdtar-1.02.034.ebuild:
+  Remove old versions.
+
+*bsdtar-1.02.036 (13 Oct 2005)
+
+  13 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +bsdtar-1.02.036.ebuild:
+  Updated to latest version.
+
+  09 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  bsdtar-1.02.027-r1.ebuild, bsdtar-1.02.030.ebuild, bsdtar-1.02.034.ebuild:
+  Don't symlink bsdtar on every BSD userland, but just on freebsd. NetBSD uses
+  OpenBSD pax instead, for example.
+
+  25 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> bsdtar-1.02.034.ebuild:
+  Don't try to use -static on Darwin userland, as it doesn't work.
+
+*bsdtar-1.02.034 (25 Sep 2005)
+
+  25 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -bsdtar-1.02.032.ebuild, -bsdtar-1.02.033.ebuild, +bsdtar-1.02.034.ebuild:
+  Updated to latest upstream version, cleaned up old versions.
+
+*bsdtar-1.02.033 (24 Sep 2005)
+
+  24 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +bsdtar-1.02.033.ebuild:
+  Update to latest upstream version.
+
+*bsdtar-1.02.032 (07 Sep 2005)
+
+  07 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -files/bsdtar-1.02.031-wchar.patch, -bsdtar-1.02.031.ebuild,
+  +bsdtar-1.02.032.ebuild:
+  Updated to latest upstream version, dropped wchar patch as new libarchive
+  fixes it definitively (changed dependency to avoid problems; also now just
+  RDEPEND on it if not built static, and not on zlib/bzip2 as they are
+  dependencies of libarchive itself).
+
+*bsdtar-1.02.031 (06 Sep 2005)
+
+  06 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/bsdtar-1.02.031-wchar.patch, +bsdtar-1.02.031.ebuild:
+  Updated bsdtar, unrestricted the libarchive dependency. Added patch to
+  compile clean with latest libarchive.
+
+  30 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> bsdtar-1.02.030.ebuild:
+  Don't use ${P} for osx patch.
+
+  30 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> bsdtar-1.02.030.ebuild:
+  Re-added osx patch as it's still needed, I trusted upstream on that but
+  direct test shown it's not as it was told.
+
+*bsdtar-1.02.030 (28 Aug 2005)
+
+  28 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +bsdtar-1.02.030.ebuild:
+  Updated to latest upstream version. Dropped osx patch as it's fixed upstream
+  now.
+
+  28 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  bsdtar-1.02.027-r1.ebuild:
+  Stable on amd64.
+
+  22 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/bsdtar-1.02.027-osx.patch, bsdtar-1.02.027-r1.ebuild:
+  Added patch for OSX compatibility.
+
+  21 Jun 2005; Diego Pettenò <flameeyes@gentoo.org>
+  bsdtar-1.02.027-r1.ebuild:
+  Added build and static useflag, needed to build Gentoo/FreeBSD stage.
+
+*bsdtar-1.02.027-r1 (17 Jun 2005)
+
+  17 Jun 2005; <flame@gentoo.org> -bsdtar-1.02.027.ebuild,
+  +bsdtar-1.02.027-r1.ebuild:
+  Install in /bin as does gnutar. Symlink man page on BSD systems.
+
+  16 Jun 2005; David Holm <dholm@gentoo.org> bsdtar-1.02.027.ebuild:
+  Added to ~ppc.

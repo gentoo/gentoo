@@ -1,0 +1,53 @@
+# ChangeLog for app-admin/pwcrypt
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/pwcrypt/ChangeLog,v 1.17 2012/10/07 09:39:20 nixnut Exp $
+
+  07 Oct 2012; nixnut <nixnut@gentoo.org> pwcrypt-1.2.2-r1.ebuild:
+  ppc stable #436774
+
+  06 Oct 2012; Agostino Sarubbo <ago@gentoo.org> pwcrypt-1.2.2-r1.ebuild:
+  Stable for amd64, wrt bug #436774
+
+  06 Oct 2012; Agostino Sarubbo <ago@gentoo.org> pwcrypt-1.2.2-r1.ebuild,
+  pwcrypt-1.2.2.ebuild:
+  Add die where is needed, improve code
+
+  23 Aug 2011; Akinori Hattori <hattya@gentoo.org> pwcrypt-1.2.2.ebuild,
+  pwcrypt-1.2.2-r1.ebuild:
+  update to EAPI 4.
+
+  14 Jun 2011; Akinori Hattori <hattya@gentoo.org> pwcrypt-1.2.2-r1.ebuild:
+  stable on x86.
+
+*pwcrypt-1.2.2-r1 (11 Oct 2010)
+
+  11 Oct 2010; Akinori Hattori <hattya@gentoo.org> +pwcrypt-1.2.2-r1.ebuild:
+  fixes bug #334751.
+
+  26 Oct 2008; Akinori Hattori <hattya@gentoo.org> pwcrypt-1.2.2.ebuild:
+  fixes bug #243322.
+
+  07 Sep 2005; Joseph Jezak <josejx@gentoo.org> pwcrypt-1.2.2.ebuild:
+  Marked ppc stable for bug #105005.
+
+  22 Jul 2005; David Holm <dholm@gentoo.org> pwcrypt-1.2.2.ebuild:
+  Added to ~ppc.
+
+  18 Dec 2004; Simon Stelling <blubb@gentoo.org> pwcrypt-1.2.2.ebuild:
+  was testing for more than half a year, marking stable on amd64
+
+  09 Aug 2004; Danny van Dyk <kugelfang@gentoo.org> pwcrypt-1.2.2.ebuild:
+  Marked ~amd64.
+
+  13 Apr 2004; Akinori Hattori <hattya@gentoo.org> pwcrypt-1.2.2.ebuild:
+  added IUSE.
+
+  22 Mar 2004; Akinori Hattori <hattya@gentoo.org> pwcrypt-1.2.2.ebuild:
+  stable on x86.
+
+*pwcrypt-1.2.2 (08 Mar 2004)
+
+  08 Mar 2004; Akinori Hattori <hattya@gentoo.org> metadata.xml,
+  pwcrypt-1.2.2.ebuild:
+  Initial revision. Ebuild submitted by Greg Bowyer <bg115@gre.ac.uk> in bug
+  #37701.

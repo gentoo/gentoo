@@ -1,0 +1,21 @@
+# ChangeLog for dev-libs/libgudev
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgudev/ChangeLog,v 1.5 2015/06/10 13:48:18 floppym Exp $
+
+  10 Jun 2015; Mike Gilbert <floppym@gentoo.org> libgudev-230.ebuild:
+  Only enable introspection for the native abi.
+
+  10 Jun 2015; Alexandre Rostovtsev <tetromino@gentoo.org> metadata.xml:
+  Add gnome herd, as discussed with floppym
+
+  10 Jun 2015; Mike Gilbert <floppym@gentoo.org> libgudev-230.ebuild:
+  Add static-libs support.
+
+  10 Jun 2015; Mike Gilbert <floppym@gentoo.org> libgudev-230.ebuild:
+  Add blockers on eudev udev and systemd.
+
+*libgudev-230 (10 Jun 2015)
+
+  10 Jun 2015; Mike Gilbert <floppym@gentoo.org> +libgudev-230.ebuild,
+  +metadata.xml:
+  New package, forked from systemd.

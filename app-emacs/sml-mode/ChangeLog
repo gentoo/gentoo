@@ -1,0 +1,133 @@
+# ChangeLog for app-emacs/sml-mode
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/sml-mode/ChangeLog,v 1.36 2013/12/21 16:12:46 ago Exp $
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> sml-mode-6.4.ebuild:
+  Stable for ppc, wrt bug #490106
+
+  17 Dec 2013; Raúl Porcel <armin76@gentoo.org> sml-mode-6.4.ebuild:
+  alpha stable wrt #490106
+
+  28 Nov 2013; Agostino Sarubbo <ago@gentoo.org> sml-mode-6.4.ebuild:
+  Stable for x86, wrt bug #490106
+
+  27 Nov 2013; Chema Alonso <nimiux@gentoo.org> sml-mode-6.4.ebuild:
+  Stable for amd64 wrt bug #490106
+
+*sml-mode-6.4 (23 May 2013)
+
+  23 May 2013; Ulrich Müller <ulm@gentoo.org> -sml-mode-4.1.ebuild,
+  +sml-mode-6.4.ebuild:
+  Version bump, bug 458350.
+
+  20 Jan 2013; Agostino Sarubbo <ago@gentoo.org> sml-mode-6.1-r1.ebuild:
+  Stable for alpha, wrt bug #451050
+
+  11 Jan 2013; Agostino Sarubbo <ago@gentoo.org> sml-mode-6.1-r1.ebuild:
+  Stable for x86, wrt bug #451050
+
+  11 Jan 2013; Agostino Sarubbo <ago@gentoo.org> sml-mode-6.1-r1.ebuild:
+  Stable for amd64, wrt bug #451050
+
+  10 Jan 2013; Anthony G. Basile <blueness@gentoo.org> sml-mode-6.1-r1.ebuild:
+  stable ppc, bug #451050, thanks vincent
+
+*sml-mode-6.1-r1 (02 Nov 2012)
+
+  02 Nov 2012; Ulrich Müller <ulm@gentoo.org> -sml-mode-6.1.ebuild,
+  +sml-mode-6.1-r1.ebuild, +files/50sml-mode-gentoo-6.1.el:
+  Fix site initialisation, bug 440882.
+
+*sml-mode-6.1 (01 Nov 2012)
+
+  01 Nov 2012; Ulrich Müller <ulm@gentoo.org> sml-mode-4.1.ebuild,
+  sml-mode-5.0.ebuild, +sml-mode-6.1.ebuild:
+  Version bump, bug 440348. According to upstream, the package now consists
+  only of a single elisp file. Specify LICENSE more precisely.
+
+  10 Aug 2012; Christian Faulhammer <fauli@gentoo.org>
+  -sml-mode-5.0_beta1.ebuild:
+  clean up
+
+*sml-mode-5.0 (10 Aug 2012)
+
+  10 Aug 2012; Christian Faulhammer <fauli@gentoo.org> +sml-mode-5.0.ebuild:
+  version bump
+
+*sml-mode-5.0_beta1 (02 Jun 2012)
+
+  02 Jun 2012; Ulrich Müller <ulm@gentoo.org> +sml-mode-5.0_beta1.ebuild:
+  Version bump. Thanks to José Romildo Malaquias <j.romildo@gmail.com> in
+  bug 418025.
+
+  23 May 2010; Ulrich Mueller <ulm@gentoo.org> -files/51sml-mode-gentoo.el,
+  -sml-mode-4.0.ebuild:
+  Remove old.
+
+  23 May 2010; Pacho Ramos <pacho@gentoo.org> sml-mode-4.1.ebuild:
+  stable amd64, bug 313835
+
+  09 May 2010; Raúl Porcel <armin76@gentoo.org> sml-mode-4.1.ebuild:
+  alpha stable wrt #313835
+
+  16 Apr 2010; Brent Baude <ranger@gentoo.org> sml-mode-4.1.ebuild:
+  stable ppc, bug 313835
+
+  09 Apr 2010; Christian Faulhammer <fauli@gentoo.org> sml-mode-4.1.ebuild:
+  stable x86, bug 313835
+
+*sml-mode-4.1 (08 Mar 2010)
+
+  08 Mar 2010; Ulrich Mueller <ulm@gentoo.org> +files/50sml-mode-gentoo.el,
+  +sml-mode-4.1.ebuild:
+  Version bump.
+
+  16 Nov 2007; Ulrich Mueller <ulm@gentoo.org> -files/50sml-mode-gentoo.el,
+  -sml-mode-3.9.5.ebuild:
+  Remove old.
+
+  16 Nov 2007; Steve Dibb <beandog@gentoo.org> sml-mode-4.0.ebuild:
+  amd64 stable, bug 195116
+
+  09 Oct 2007; Raúl Porcel <armin76@gentoo.org> sml-mode-4.0.ebuild:
+  alpha stable wrt #195116
+
+  08 Oct 2007; Christian Faulhammer <opfer@gentoo.org> sml-mode-4.0.ebuild:
+  stable x86, bug 195116
+
+  08 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  sml-mode-3.9.5.ebuild, sml-mode-4.0.ebuild:
+  drop ppc-macos
+
+  16 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org> sml-mode-4.0.ebuild:
+  Added ~ppc, bug #175593
+
+  16 Jun 2007; Ulrich Mueller <ulm@gentoo.org> sml-mode-4.0.ebuild:
+  Add RESTRICT=test due to some problematic testcases (according to BUGS).
+
+  22 Apr 2007; Ulrich Mueller <ulm@gentoo.org> +files/51sml-mode-gentoo.el,
+  sml-mode-4.0.ebuild:
+  Load sml-mode-startup from sitefile. Use emake, not make. Don't dodoc INSTALL.
+
+  08 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  sml-mode-3.9.5.ebuild:
+  SRC_URI and HOMEPAGE updated for proper Manifest generation; added some quotes
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> sml-mode-3.9.5.ebuild:
+  Mark 3.9.5 stable on alpha
+
+*sml-mode-4.0 (03 May 2005)
+
+  03 May 2005; Mamoru KOMACHI <usata@gentoo.org> +sml-mode-4.0.ebuild:
+  Version bumped. This closes bug #91110.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> sml-mode-3.9.5.ebuild:
+  stable on amd64
+
+  01 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> sml-mode-3.9.5.ebuild:
+  Stable on x86. Added to ~alpha and ~ppc-macos.
+
+*sml-mode-3.9.5 (27 Aug 2003)
+
+  27 Aug 2003; Matthew Kennedy <mkennedy@gentoo.org> :
+  Initial import.  Based on ebuild submitted by Ivan Raikov <raikov@cc.gatech.edu>.

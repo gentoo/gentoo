@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=tk? ( dev-lang/tk ) virtual/pkgconfig
+DESCRIPTION=Dell Inspiron and Latitude utilities
+EAPI=4
+HOMEPAGE=http://packages.debian.org/sid/i8kutils
+IUSE=examples tk
+KEYWORDS=-* amd64 x86
+LICENSE=GPL-3
+RDEPEND=tk? ( dev-lang/tk )
+SLOT=0
+SRC_URI=mirror://debian/pool/main/i/i8kutils/i8kutils_1.33.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=90f67f9eabae2492b55b18da4cc14127

@@ -1,0 +1,25 @@
+# ChangeLog for app-emacs/auto-complete
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/auto-complete/ChangeLog,v 1.5 2015/06/05 12:15:15 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  27 Feb 2014; Ulrich Müller <ulm@gentoo.org> auto-complete-1.3.1.ebuild:
+  Update ebuild to EAPI 5. Specify LICENSE more precisely.
+
+  08 Sep 2012; Ulrich Müller <ulm@gentoo.org> -auto-complete-1.3.ebuild:
+  Remove old.
+
+*auto-complete-1.3.1 (06 Jan 2011)
+
+  06 Jan 2011; Ulrich Mueller <ulm@gentoo.org> +auto-complete-1.3.1.ebuild:
+  Version bump.
+
+*auto-complete-1.3 (16 Nov 2010)
+
+  16 Nov 2010; Ulrich Mueller <ulm@gentoo.org>
+  +files/50auto-complete-gentoo.el, +auto-complete-1.3.ebuild,
+  +metadata.xml:
+  Initial import, from Emacs overlay. Ebuild contributed by Andrey Astafiev
+  <elnull@gmail.com>, with changes by me; bug 297155.

@@ -1,0 +1,72 @@
+# ChangeLog for dev-lang/julia
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/julia/ChangeLog,v 1.16 2015/06/07 08:45:20 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*julia-0.3.0 (21 Aug 2014)
+
+  21 Aug 2014; Patrick Lauer <patrick@gentoo.org> +julia-0.3.0.ebuild,
+  julia-0.2.1-r2.ebuild:
+  Bump, some new dependencies, some more makefile breakage ...
+
+*julia-0.2.1-r2 (04 Jul 2014)
+
+  04 Jul 2014; Patrick Lauer <patrick@gentoo.org> +julia-0.2.1-r2.ebuild,
+  -julia-0.2.1-r1.ebuild, -julia-0.2.1.ebuild:
+  Remove things that break compilation #515068
+
+  03 Jul 2014; Sébastien Fabbro <bicatali@gentoo.org> julia-0.2.1-r1.ebuild:
+  Install properly for prefix
+
+  25 Jun 2014; Patrick Lauer <patrick@gentoo.org> julia-0.2.1-r1.ebuild:
+  Fix llvm dependency #515062
+
+  25 Jun 2014; Patrick Lauer <patrick@gentoo.org> julia-0.2.1-r1.ebuild:
+  Add missing camd dependency
+
+*julia-0.2.1-r1 (25 Jun 2014)
+
+  25 Jun 2014; Patrick Lauer <patrick@gentoo.org>
+  +files/julia-0.2.1-patchelf.patch, +julia-0.2.1-r1.ebuild:
+  Fix patchelf detection #515058
+
+  25 Jun 2014; Patrick Lauer <patrick@gentoo.org> julia-0.2.1.ebuild:
+  Restrict parallel building #514882
+
+*julia-0.2.1 (02 Apr 2014)
+
+  02 Apr 2014; Sébastien Fabbro <bicatali@gentoo.org> +files/63julia-gentoo.el,
+  +files/julia-0.2.1-readline63.patch, +julia-0.2.1.ebuild, metadata.xml:
+  Version bump. Refactored ebuild to use more system dependencies, cleanup, add
+  emacs support, readline-6.3 patch, better prefix support. Add sci as herd and
+  longdescription.
+
+  14 Mar 2014; Denis Dupeyron <calchan@gentoo.org> julia-0.2.0-r1.ebuild:
+  Fixed confusing comment, bug #502482.
+
+  26 Feb 2014; Mark Wright <gienah@gentoo.org> julia-0.2.0-r1.ebuild:
+  Fix for bug #501868 requires pkg-config --libs-only-l blas
+
+*julia-0.2.0-r1 (26 Feb 2014)
+
+  26 Feb 2014; Mark Wright <gienah@gentoo.org> +julia-0.2.0-r1.ebuild:
+  Add 0.2.0-r1 with calchan's fix for bug #501868 and USE_BLAS64=0. paxmark m
+  executables during build for Gentoo hardened. Tweak for multilib-strict.
+
+  26 Feb 2014; Patrick Lauer <patrick@gentoo.org> julia-0.2.0.ebuild:
+  Revert changes that break build #501868
+
+  25 Feb 2014; Denis Dupeyron <calchan@gentoo.org> julia-0.2.0.ebuild:
+  Fixed bug #501868 as well as general brokenness.
+
+  09 Jan 2014; Patrick Lauer <patrick@gentoo.org> julia-0.2.0.ebuild:
+  Fix homepage
+
+*julia-0.2.0 (25 Nov 2013)
+
+  25 Nov 2013; Patrick Lauer <patrick@gentoo.org> +julia-0.2.0.ebuild,
+  +metadata.xml:
+  Initial import, ebuild by me. Needs some more cleanups, but is kinda mostly
+  working

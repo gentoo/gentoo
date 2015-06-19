@@ -1,0 +1,42 @@
+# ChangeLog for net-misc/megatools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/megatools/ChangeLog,v 1.7 2015/05/08 08:01:41 dlan Exp $
+
+*megatools-1.9.95 (08 May 2015)
+
+  08 May 2015; Yixun Lan <dlan@gentoo.org> +megatools-1.9.95.ebuild:
+  version bump
+
+*megatools-1.9.94 (17 Mar 2015)
+
+  17 Mar 2015; Yixun Lan <dlan@gentoo.org> -megatools-1.9.92-r2.ebuild,
+  +megatools-1.9.94.ebuild:
+  version bump & drop old, bug 543490
+
+*megatools-1.9.93 (21 Nov 2014)
+
+  21 Nov 2014; Yixun Lan <dlan@gentoo.org> +megatools-1.9.93.ebuild:
+  version bump
+
+  12 Sep 2014; Yixun Lan <dlan@gentoo.org> megatools-1.9.92-r2.ebuild:
+  add arm keyword, bug 522574, thanks Andrius Štikonas
+
+*megatools-1.9.92-r2 (11 Sep 2014)
+
+  11 Sep 2014; Yixun Lan <dlan@gentoo.org> -megatools-1.9.92-r1.ebuild,
+  +megatools-1.9.92-r2.ebuild:
+  fix missing glib-networking dep, bug 522512, thanks Jan Fikar
+
+*megatools-1.9.92-r1 (09 Sep 2014)
+
+  09 Sep 2014; Yixun Lan <dlan@gentoo.org> -megatools-1.9.92.ebuild,
+  +megatools-1.9.92-r1.ebuild, +files/megatools-1.9.92-fuse.patch,
+  metadata.xml:
+  fix bug 522258, 522260, thanks @hasufell
+
+*megatools-1.9.92 (05 Sep 2014)
+
+  05 Sep 2014; Yixun Lan <dlan@gentoo.org> +megatools-1.9.92.ebuild,
+  +metadata.xml:
+  initial imported, bug 522074, thanks Matthew Schultz <mattsch at gmail.com>
+

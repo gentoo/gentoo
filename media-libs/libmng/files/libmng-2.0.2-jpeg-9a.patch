@@ -1,0 +1,39 @@
+http://bugs.gentoo.org/520906
+
+This kludge is unnecessary with jpeg-9a and is in fact breaking the build...
+
+libmng_jpeg.c:108:10: error: 'FALSE' undeclared (first use in this function)
+libmng_jpeg.c:536:48: error: 'TRUE' undeclared (first use in this function)
+libmng_jpeg_c:890:49: error: 'TRUE' undeclared (first use in this function)
+
+...because jmorecfg.h of jpeg-9a has this:
+
+#ifndef HAVE_BOOLEAN
+#if defined FALSE || defined TRUE || defined QGLOBAL_H
+/* Qt3 defines FALSE and TRUE as "const" variables in qglobal.h */
+typedef int boolean;
+#ifndef FALSE                   /* in case these macros already exist */
+#define FALSE   0               /* values of boolean */
+#endif
+#ifndef TRUE
+#define TRUE    1
+#endif
+#else
+typedef enum { FALSE = 0, TRUE = 1 } boolean;
+#endif
+#endif
+
+--- libmng_types.h
++++ libmng_types.h
+@@ -199,11 +199,6 @@
+ #undef FAR                             /* possibly defined by zlib or lcms */
+ #endif
+ #define JPEG_INTERNAL_OPTIONS          /* for RGB_PIXELSIZE */
+-/* There has been a change in jpeg-9 : */
+-#ifndef _WIN32
+-#define HAVE_BOOLEAN
+-typedef int boolean;
+-#endif
+ #include <stdio.h>
+ #include <jpeglib.h>
+ #endif /* MNG_INCLUDE_IJG6B */

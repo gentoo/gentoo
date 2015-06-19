@@ -1,0 +1,10 @@
+DEFINED_PHASES=install nofetch
+DESCRIPTION=A special version of RepBase used by RepeatMasker
+EAPI=5
+HOMEPAGE=http://repeatmasker.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=all-rights-reserved
+RESTRICT=fetch
+SLOT=0
+SRC_URI=repeatmaskerlibraries-20120418.tar.gz
+_md5_=1f84d4f15ec179fdb790bc37232875c9

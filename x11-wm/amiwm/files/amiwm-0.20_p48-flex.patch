@@ -1,0 +1,12 @@
+http://bugs.gentoo.org/110169
+
+--- amiwm/lex.l
++++ amiwm/lex.l
+@@ -6,6 +6,7 @@
+ extern FILE *rcfile;
+ #undef yyin
+ #define yyin rcfile
++#define YY_SKIP_YYWRAP
+ #define yywrap() 1
+ extern int parse_keyword(char *);
+ void fixup_string(char *, char *);

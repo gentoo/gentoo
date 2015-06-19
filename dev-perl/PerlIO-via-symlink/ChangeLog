@@ -1,0 +1,108 @@
+# ChangeLog for dev-perl/PerlIO-via-symlink
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/PerlIO-via-symlink/ChangeLog,v 1.25 2014/08/31 16:18:50 zlogene Exp $
+
+  31 Aug 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -PerlIO-via-symlink-0.50.0.ebuild, PerlIO-via-symlink-0.50.0-r1.ebuild:
+  ia64 stable wrt bug #520850; Drop old.
+
+  31 Aug 2014; Mikle Kolyada <zlogene@gentoo.org>
+  PerlIO-via-symlink-0.50.0-r1.ebuild:
+  sparc stable wrt bug #520850
+
+  31 Aug 2014; Mikle Kolyada <zlogene@gentoo.org>
+  PerlIO-via-symlink-0.50.0-r1.ebuild:
+  x86 stable wrt bug #520850
+
+  28 Aug 2014; Mikle Kolyada <zlogene@gentoo.org>
+  PerlIO-via-symlink-0.50.0-r1.ebuild:
+  amd64 stable wrt bug #520850
+
+  29 Mar 2014; Mikle Kolyada <zlogene@gentoo.org>
+  PerlIO-via-symlink-0.50.0-r1.ebuild:
+  Whitespace
+
+*PerlIO-via-symlink-0.50.0-r1 (29 Mar 2014)
+
+  29 Mar 2014; Mikle Kolyada <zlogene@gentoo.org>
+  +PerlIO-via-symlink-0.50.0-r1.ebuild:
+  Revision bump, fix bug #483812
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -PerlIO-via-symlink-0.05.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org>
+  PerlIO-via-symlink-0.50.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*PerlIO-via-symlink-0.50.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +PerlIO-via-symlink-0.50.0.ebuild:
+  Change version scheme
+
+  05 Feb 2010; Torsten Veller <tove@gentoo.org>
+  PerlIO-via-symlink-0.05.ebuild:
+  Fix LICENSE (#301969). Maintenance
+
+  10 Jan 2010; Fabian Groffen <grobian@gentoo.org>
+  PerlIO-via-symlink-0.05.ebuild:
+  Transfer Prefix keywords
+
+  16 Aug 2008; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove pclouds from metadata.xml (#49680)
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  PerlIO-via-symlink-0.05.ebuild:
+  Ebuild maintenance
+
+  18 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  PerlIO-via-symlink-0.05.ebuild:
+  Marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  PerlIO-via-symlink-0.05.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  28 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  PerlIO-via-symlink-0.05.ebuild:
+  Mark 0.05 stable on ia64
+
+  22 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  PerlIO-via-symlink-0.05.ebuild:
+  Mark 0.05 ~ia64
+
+  15 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  PerlIO-via-symlink-0.05.ebuild:
+  Stable on sparc
+
+  16 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  PerlIO-via-symlink-0.05.ebuild:
+  Keyworded ~sparc
+
+  07 May 2005; David Holm <dholm@gentoo.org> PerlIO-via-symlink-0.05.ebuild:
+  Added to ~ppc.
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -PerlIO-via-symlink-0.02.ebuild, PerlIO-via-symlink-0.05.ebuild:
+  Cleaning for mirror
+
+*PerlIO-via-symlink-0.05 (14 Mar 2005)
+
+  14 Mar 2005; Michael Cummings <mcummings@gentoo.org>
+  +PerlIO-via-symlink-0.05.ebuild:
+  New version, bug 83873
+
+  05 Feb 2005; Dylan Carlson <absinthe@gentoo.org>
+  PerlIO-via-symlink-0.02.ebuild:
+  Keywords ~amd64.
+
+*PerlIO-via-symlink-0.02 (27 Nov 2004)
+
+  27 Nov 2004; <pclouds@gentoo.org> +metadata.xml,
+  +PerlIO-via-symlink-0.02.ebuild:
+  New ebuild

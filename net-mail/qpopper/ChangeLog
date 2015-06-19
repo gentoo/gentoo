@@ -1,0 +1,162 @@
+# ChangeLog for net-mail/qpopper
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/qpopper/ChangeLog,v 1.40 2014/01/08 06:42:36 vapier Exp $
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> qpopper-4.1.0.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #96436
+
+  19 Dec 2011; Eray Aslan <eras@gentoo.org>
+  -files/qpopper-4.0.14-parallel-build.patch, -qpopper-4.0.16.ebuild,
+  -files/qpopper-4.0.16-glibc-2.10.patch, -files/qpopper-CAN-2005-1151.patch,
+  -files/qpopper-CAN-2005-1152.patch:
+  remove old
+
+  18 Dec 2011; Raúl Porcel <armin76@gentoo.org> qpopper-4.0.16.ebuild,
+  qpopper-4.1.0.ebuild:
+  Drop sparc keywords
+
+  14 Oct 2011; Markos Chandras <hwoarang@gentoo.org> qpopper-4.1.0.ebuild:
+  Stable on amd64 wrt bug #36885
+
+  13 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> qpopper-4.1.0.ebuild:
+  x86 stable wrt bug #386885
+
+  13 Oct 2011; Peter Volkov <pva@gentoo.org> qpopper-4.1.0.ebuild:
+  Fixed build issue: specify spool-dir and always depend on mailbase, bug
+  #386991 wrt Agostino Sarubbo.
+
+*qpopper-4.1.0 (11 Sep 2011)
+
+  11 Sep 2011; Peter Volkov <pva@gentoo.org> +qpopper-4.1.0.ebuild,
+  +files/qpopper-4.1-parallel-build.patch:
+  Version bump.
+
+  09 Aug 2010; Peter Volkov <pva@gentoo.org> -qpopper-4.0.5-r3.ebuild,
+  -qpopper-4.0.14.ebuild, qpopper-4.0.16.ebuild, metadata.xml:
+  Put back mail-client/drac, bug #280933. Took maintenance. Drop old.
+
+  03 Aug 2010; Markos Chandras <hwoarang@gentoo.org> qpopper-4.0.14.ebuild,
+  qpopper-4.0.16.ebuild, metadata.xml:
+  Get rid of drac dependencies. Bug #280933
+
+  07 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> qpopper-4.0.16.ebuild,
+  +files/qpopper-4.0.16-glibc-2.10.patch:
+  Fix building with GLIBC 2.10+ wrt #277672.
+
+  02 Jul 2009; Raúl Porcel <armin76@gentoo.org> qpopper-4.0.16.ebuild:
+  sparc stable wrt #271136
+
+  27 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  qpopper-4.0.16.ebuild:
+  stable x86, bug 271136
+
+*qpopper-4.0.16 (30 Mar 2009)
+
+  30 Mar 2009; Peter Volkov <pva@gentoo.org> +qpopper-4.0.16.ebuild:
+  Version bump, bug #147182.
+
+*qpopper-4.0.14 (30 Mar 2009)
+
+  30 Mar 2009; Peter Volkov <pva@gentoo.org>
+  +files/qpopper-4.0.14-parallel-build.patch, +files/qpopper.conf,
+  +files/qpopper.init.d, +files/qpopper.xinetd, metadata.xml,
+  +qpopper-4.0.14.ebuild:
+  Version bump, bug #147182, thank Mike Lundy for lot's of improvments: apop
+  USE flag, init script, xinetd config file, config file and misc cleanups.
+  Also build with --enable-shy, bug #145069, thank Icebird for report. Now
+  fail on dobin functions, bug #248087, thank Diego E. 'Flameeyes' Pettenò
+  for report. New drac USE flag.
+
+  04 Jun 2008; Jeremy Olexa <darkside@gentoo.org> qpopper-4.0.5-r3.ebuild:
+  break out --enable-apop into a USE flag. Closes bug #106367, thanks to
+  Christian Heutger for reporting
+
+  14 May 2008; Diego Pettenò <flameeyes@gentoo.org>
+  qpopper-4.0.5-r3.ebuild:
+  Depend on virtual/pam as the code builds fine with OpenPAM.
+
+  12 Jun 2007; Marius Mauch <genone@gentoo.org> qpopper-4.0.5-r3.ebuild:
+  Replacing einfo with elog
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  05 Jun 2005; Tuấn Văn <langthang@gentoo.org> qpopper-4.0.5-r3.ebuild:
+  Comment HAVE_GDBM_H in config.h if USE=-gdbm. Resolve bug #95054.
+
+*qpopper-4.0.5-r3 (23 May 2005)
+
+  23 May 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/qpopper-CAN-2005-1151.patch, +files/qpopper-CAN-2005-1152.patch,
+  -qpopper-4.0.5.ebuild, -qpopper-4.0.5-r1.ebuild, -qpopper-4.0.5-r2.ebuild,
+  +qpopper-4.0.5-r3.ebuild:
+  security bump, wrt #90622
+
+  14 Feb 2005; <plasmaroo@gentoo.org> qpopper-4.0.5-r1.ebuild,
+  qpopper-4.0.5-r2.ebuild:
+  Add sys-libs/db DEPEND if we're not using gdbm.
+
+*qpopper-4.0.5-r2 (13 Feb 2005)
+
+  13 Feb 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +qpopper-4.0.5-r2.ebuild:
+  Remove pam.d stuff and make it depend on at least mailbase-0.00-r8 (#79240)
+
+  07 Feb 2005; Simon Stelling <blubb@gentoo.org> qpopper-4.0.5-r1.ebuild:
+  added ~amd64
+
+  01 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> qpopper-4.0.5-r1.ebuild,
+  qpopper-4.0.5.ebuild:
+  Stable on sparc and LICENSE QA fix
+
+  29 Sep 2004; Tuan Van <langthang@gentoo.org> qpopper-4.0.5-r1.ebuild:
+  stable on x86.
+
+*qpopper-4.0.5-r1 (23 Jul 2004)
+
+  23 Jul 2004; Tuan Van <langthang@gentoo.org> +qpopper-4.0.5-r1.ebuild:
+  Add local use flags:
+  	xinetd, resolve bug #17800
+  	mailbox, resolve bug #42289
+  	gdbm, optional gdbm support.
+  	debug, optional debugging support
+  Fixed bug #34017.
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> qpopper-4.0.5.ebuild:
+  Add die following econf for bug 48950
+
+  20 Jan 2004; Martin Holzer <mholzer@gentoo.org> qpopper-4.0.5.ebuild:
+  fowner syntax. Closes 38037
+
+  20 Jan 2004; Martin Holzer <mholzer@gentoo.org> qpopper-4.0.5.ebuild:
+  fowner syntax. Closes 38037
+
+  20 Jan 2004; Martin Holzer <mholzer@gentoo.org> qpopper-4.0.5.ebuild:
+  fowner syntax. Closes 38037
+
+  14 Jun 2003; <aliz@gentoo.org> qpopper-4.0.5.ebuild :
+  Removed installation of poppassd man page becuse binary isn't installed. Made configuration cleaner.
+
+  12 Jun 2003; <msterret@gentoo.org> qpopper-4.0.5.ebuild:
+  add Header
+
+*qpopper-4.0.5 (14 Mar 2003)
+
+  29 Mar 2003; Martin Holzer <mholzer@gentoo.org> qpopper-4.0.5.ebuild:
+  added einfo for using qpopper with netkit-inetd.
+
+  14 Mar 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Security update.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+*qpopper-4.0.4 (20 Jun 2002)
+
+  24 Aug 2002; J.Alberto S.L. <bass@gentoo.org> qpopper-4.0.4:
+  fix some bugs #6864 (thanks Pau Oliva)
+
+  20 Jun 2002; J.Alberto S.L. <bass@gentoo.org> qpopper-4.0.4:
+  First relase.

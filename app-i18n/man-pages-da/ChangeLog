@@ -1,0 +1,28 @@
+# ChangeLog for app-i18n/man-pages-da
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-da/ChangeLog,v 1.7 2014/01/30 20:27:54 vapier Exp $
+
+  30 Jan 2014; Mike Frysinger <vapier@gentoo.org> man-pages-da-0.1.2.ebuild:
+  Add arm64 love.
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -man-pages-da-0.1.1.ebuild:
+  Remove old
+
+*man-pages-da-0.1.2 (20 Aug 2011)
+
+  20 Aug 2011; Matt Turner <mattst88@gentoo.org> +man-pages-da-0.1.2.ebuild:
+  Version bump, noticed with euscan.
+
+  19 Oct 2010; Mart Raudsepp <leio@gentoo.org> man-pages-da-0.1.1.ebuild:
+  Drop to ~mips
+
+  13 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*man-pages-da-0.1.1 (01 Sep 2005)
+
+  01 Sep 2005; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

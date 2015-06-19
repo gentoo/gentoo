@@ -1,0 +1,29 @@
+# Copyright 1999-2015 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/uclibc/package.mask,v 1.5 2015/02/07 13:13:44 blueness Exp $
+
+sys-libs/musl
+sys-libs/glibc
+sys-libs/pam
+
+# We use eudev which is tested on both uclibc and musl
+sys-apps/systemd
+sys-fs/udev
+
+# Working on it, bug #470884
+dev-libs/elfutils
+
+# These binary pkgs have a hard dep on glibc; make repoman shut up
+www-plugins/adobe-flash
+games-action/shadowgrounds-bin
+games-action/shadowgrounds-survivor-bin
+games-arcade/marbleblastgold-demo
+games-fps/enemy-territory
+games-fps/etqw-bin
+games-fps/glxquake-bin
+games-fps/postal2
+games-fps/postal2mp-demo
+games-fps/quake3-bin
+games-fps/quake3-demo
+games-fps/rtcwmp-demo
+games-fps/soldieroffortune

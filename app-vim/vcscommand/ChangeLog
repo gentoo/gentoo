@@ -1,0 +1,147 @@
+# ChangeLog for app-vim/vcscommand
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/vcscommand/ChangeLog,v 1.32 2014/12/14 04:38:57 radhermit Exp $
+
+  14 Dec 2014; Tim Harder <radhermit@gentoo.org> -vcscommand-1.99.45.ebuild,
+  -vcscommand-1.99.46.ebuild:
+  Remove old.
+
+  14 Dec 2014; Tim Harder <radhermit@gentoo.org> vcscommand-1.99.47.ebuild:
+  Stabilize for amd64, ppc, and x86.
+
+*vcscommand-1.99.47 (01 Jun 2013)
+
+  01 Jun 2013; Tim Harder <radhermit@gentoo.org> +vcscommand-1.99.47.ebuild:
+  Version bump.
+
+  06 Aug 2012; Tim Harder <radhermit@gentoo.org> -vcscommand-1.99.42.ebuild,
+  -vcscommand-1.99.43.ebuild, -vcscommand-1.99.44.ebuild:
+  Remove old.
+
+*vcscommand-1.99.46 (06 Aug 2012)
+
+  06 Aug 2012; Tim Harder <radhermit@gentoo.org> +vcscommand-1.99.46.ebuild:
+  Version bump (bug #405145).
+
+  01 Feb 2012; Brent Baude <ranger@gentoo.org> vcscommand-1.99.45.ebuild:
+  Marking vcscommand-1.99.45 ppc for bug 393569
+
+  14 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  vcscommand-1.99.45.ebuild:
+  x86 stable wrt bug #393569
+
+  12 Dec 2011; Agostino Sarubbo <ago@gentoo.org> vcscommand-1.99.45.ebuild:
+  Stable for AMD64, wrt bug #393569
+
+  11 Dec 2011; Raúl Porcel <armin76@gentoo.org> vcscommand-1.99.42.ebuild,
+  vcscommand-1.99.43.ebuild, vcscommand-1.99.44.ebuild,
+  vcscommand-1.99.45.ebuild:
+  Drop alpha/ia64/sparc keywords
+
+  24 Oct 2011; Tim Harder <radhermit@gentoo.org> -vcscommand-1.99.37.ebuild:
+  Remove old.
+
+*vcscommand-1.99.45 (24 Oct 2011)
+
+  24 Oct 2011; Tim Harder <radhermit@gentoo.org> +vcscommand-1.99.45.ebuild:
+  Version bump.
+
+*vcscommand-1.99.44 (10 Oct 2011)
+
+  10 Oct 2011; Tim Harder <radhermit@gentoo.org> +vcscommand-1.99.44.ebuild:
+  Version bump. Use github mirror.
+
+*vcscommand-1.99.43 (25 Jun 2011)
+
+  25 Jun 2011; Tim Harder <radhermit@gentoo.org> +vcscommand-1.99.43.ebuild:
+  Version bump.
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org> vcscommand-1.99.42.ebuild:
+  stable ppc, bug 356665
+
+  17 Mar 2011; Thomas Kahle <tomka@gentoo.org> vcscommand-1.99.42.ebuild:
+  x86 stable per bug 356665
+
+  06 Mar 2011; Raúl Porcel <armin76@gentoo.org> vcscommand-1.99.42.ebuild:
+  ia64/sparc stable wrt #356665
+
+  27 Feb 2011; Markos Chandras <hwoarang@gentoo.org> vcscommand-1.99.42.ebuild:
+  Stable on amd64 wrt bug #356665
+
+  27 Feb 2011; Tobias Klausmann <klausman@gentoo.org>
+  vcscommand-1.99.42.ebuild:
+  Stable on alpha, bug #356665
+
+  26 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  vcscommand-1.99.42.ebuild:
+  Marked ~ppc wrt #339672
+
+  10 Oct 2010; Raúl Porcel <armin76@gentoo.org> vcscommand-1.99.42.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #339672
+
+  06 Oct 2010; Jeroen Roovers <jer@gentoo.org> vcscommand-1.99.42.ebuild:
+  Marked ~hppa (bug #339672).
+
+*vcscommand-1.99.42 (04 Oct 2010)
+
+  04 Oct 2010; Tim Harder <radhermit@gentoo.org> -vcscommand-1.99.31.ebuild,
+  +vcscommand-1.99.42.ebuild:
+  Version bump and remove old. Update to EAPI=3 and drop blocker on
+  app-vim/calendar.
+
+*vcscommand-1.99.37 (16 Feb 2010)
+
+  16 Feb 2010; Jim Ramsay <lack@gentoo.org> +vcscommand-1.99.37.ebuild:
+  Version bump: 1.99.37 (Bug #300784)
+
+  17 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  vcscommand-1.99.31.ebuild:
+  QA: add prefix keywords
+
+*vcscommand-1.99.31 (17 Oct 2009)
+
+  17 Oct 2009; Jim Ramsay <lack@gentoo.org> -vcscommand-0.1_beta28.ebuild,
+  -vcscommand-0.1_beta29.ebuild, +vcscommand-1.99.31.ebuild, metadata.xml:
+  Version bump (and old version cleanup) Bug #282579
+
+*vcscommand-0.1_beta29 (09 Jul 2009)
+
+  09 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  -vcscommand-0.1_beta27.ebuild, +vcscommand-0.1_beta29.ebuild:
+  version bump and clean up, bug 258971
+
+*vcscommand-0.1_beta28 (16 Oct 2008)
+
+  16 Oct 2008; Ali Polatel <hawking@gentoo.org>
+  +vcscommand-0.1_beta28.ebuild:
+  Version bump.
+
+*vcscommand-0.1_beta27 (20 Sep 2008)
+
+  20 Sep 2008; Ali Polatel <hawking@gentoo.org>
+  -vcscommand-0.1_beta26.ebuild, +vcscommand-0.1_beta27.ebuild:
+  Version bump. Drop old.
+
+  03 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+*vcscommand-0.1_beta26 (20 Jun 2008)
+
+  20 Jun 2008; Ali Polatel <hawking@gentoo.org>
+  -vcscommand-0.1_beta16.ebuild, -vcscommand-0.1_beta19.ebuild,
+  +vcscommand-0.1_beta26.ebuild:
+  Version bump. Keyworded ~amd64. Dropped old.
+
+*vcscommand-0.1_beta19 (06 Sep 2007)
+
+  06 Sep 2007; Ali Polatel <hawking@gentoo.org>
+  +vcscommand-0.1_beta19.ebuild:
+  Version bump.
+
+*vcscommand-0.1_beta16 (08 May 2007)
+
+  08 May 2007; Mike Kelly <pioto@gentoo.org> +metadata.xml,
+  +vcscommand-0.1_beta16.ebuild:
+  Initial ebuild. This package is the successor to cvscommand, and has support
+  for SVN and SVK as well as CVS. Fixes Bug #170957.
+

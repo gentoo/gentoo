@@ -1,0 +1,59 @@
+# ChangeLog for virtual/gnat
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/gnat/ChangeLog,v 1.14 2014/08/06 06:11:37 patrick Exp $
+
+  06 Aug 2014; Patrick Lauer <patrick@gentoo.org> gnat-4.4.ebuild:
+  Drop sparc keywords as dev-lang/gnat-gcc lost keywords
+
+  23 Sep 2011; George Shapovalov <george@gentoo.org> gnat-4.3.ebuild,
+  gnat-4.4.ebuild:
+  propagated stable to matching virtual, as per #372179
+  added ~arches to match available in testing in gnat-4.4
+
+*gnat-4.4 (19 Sep 2011)
+
+  19 Sep 2011; George Shapovalov <george@gentoo.org> +gnat-4.4.ebuild:
+  new virtual for gnat-4.4
+
+  11 Jan 2010; Ulrich Mueller <ulm@gentoo.org> gnat-3.4.ebuild,
+  gnat-4.1.ebuild, gnat-4.2.ebuild, gnat-4.3.ebuild:
+  Set empty HOMEPAGE and LICENSE.
+
+*gnat-4.3 (25 Apr 2009)
+
+  25 Apr 2009; George Shapovalov <george@gentoo.org> gnat-4.2,
+  +gnat-4.3.ebuild:
+  added ebuild for 4.3, fixed SLOT for 4.2
+
+*gnat-4.2 (27 May 2007)
+
+  27 May 2007; George Shapovalov <george@gentoo.org>
+  gnat-3.4.ebuild, gnat-4.1.ebuild, +gnat-4.2.ebuild:
+  updated virtuals for 4.1 to reflect new gnat-gpl and added virtual for 4.2
+  to follow with gnat-gcc-4.2.0
+
+  22 Oct 2006; Matti Bickel <mabi@gentoo.org> gnat-4.1.ebuild:
+  ~ppc wrt bug #130509
+
+  31 Aug 2006; George Shapovalov <george@gentoo.org> gnat-4.1.ebuild:
+  fixed SLOT (#145733), thanks to Timothy Stotts for spotting
+
+  23 Aug 2006; Sven Wegener <swegener@gentoo.org> gnat-3.4.ebuild,
+  gnat-4.1.ebuild:
+  Virtual packages have no build-time dependencies.
+
+*gnat-4.1 (13 Apr 2006)
+
+  13 Apr 2006; George Shapovalov <george@gentoo.org> gnat-3.4.ebuild,
+  +gnat-4.1.ebuild:
+  changed HOMEPAGE to point to GLEP-37 (well, just what can I point it at?).
+  Added the virtual for 4.1, only gnat-gcc so far
+
+  13 Apr 2006; George Shapovalov <george@gentoo.org> gnat-3.4.ebuild:
+  keyworded gnat-3.4 ~x86 and ~amd64
+
+*gnat-3.4 (13 Apr 2006)
+
+  13 Apr 2006; George Shapovalov <george@gentoo.org> +metadata.xml,
+  +gnat-3.4.ebuild:
+  added a new virtual for new gnat compilers

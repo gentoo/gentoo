@@ -1,0 +1,59 @@
+# ChangeLog for media-video/xvid4conf
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/xvid4conf/ChangeLog,v 1.18 2012/05/05 08:58:50 jdhore Exp $
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> xvid4conf-1.12.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Mar 2011; Tim Harder <radhermit@gentoo.org> xvid4conf-1.12.ebuild:
+  Use slot dependency for gtk+.
+
+  26 Nov 2006; Steve Dibb <beandog@gentoo.org> xvid4conf-1.12.ebuild:
+  Update homepage
+
+  28 Oct 2006; Matthias Schwarzott <zzam@gentoo.org> xvid4conf-1.12.ebuild:
+  Added pkgconfig-DEPEND due to Bug #153077.
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> xvid4conf-1.12.ebuild:
+  Stable on Alpha.
+
+  07 May 2006; Markus Rothe <corsair@gentoo.org> xvid4conf-1.12.ebuild:
+  Stable on ppc64
+
+  20 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org> xvid4conf-1.12.ebuild:
+  Stable on x86 wrt bug #127495.
+
+  17 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> xvid4conf-1.12.ebuild:
+  Drop homepage and set the SRC_URI to use Gentoo mirrors, bug #128742 thanks
+  to Alexandru Toma.
+
+  03 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org> xvid4conf-1.12.ebuild:
+  Stable on sparc
+
+  29 Mar 2006; Aron Griffis <agriffis@gentoo.org> xvid4conf-1.12.ebuild:
+  Mark 1.12 stable on ia64
+
+  25 Mar 2006; Daniel Goller <morfic@gentoo.org> xvid4conf-1.12.ebuild:
+  Stable on ppc and amd64
+
+  15 Mar 2006; Markus Rothe <corsair@gentoo.org> xvid4conf-1.12.ebuild:
+  Added ~ppc64
+
+  07 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> xvid4conf-1.12.ebuild:
+  Drop virtual/libc dependency.
+
+  10 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> xvid4conf-1.12.ebuild:
+  Don't install INSTALL file.
+
+  14 Aug 2004; Sven Wegener <swegener@gentoo.org> xvid4conf-1.12.ebuild:
+  Trimmed trailing whitespace.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  xvid4conf-1.12.ebuild:
+  virtual/glibc -> virtual/libc
+
+*xvid4conf-1.12 (31 Mar 2004)
+
+  31 Mar 2004; Martin Holzer <mholzer@gentoo.org> xvid4conf-1.12.ebuild:
+  Initial ebuild. Submitted by Simon Raffeiner <wiredcoder@web.de> in 37139
+

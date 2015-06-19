@@ -1,0 +1,112 @@
+# ChangeLog for net-firewall/ufw
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/ufw/ChangeLog,v 1.20 2015/05/16 15:54:48 jmorgan Exp $
+
+  16 May 2015; Jack Morgan <jmorgan@gentoo.org> ufw-0.34_pre805-r2.ebuild:
+  amd64 stable
+
+  16 May 2015; Jack Morgan <jmorgan@gentoo.org> ufw-0.34_pre805-r2.ebuild:
+  ppc/ppc64 stable, adding ia64 keyword
+
+  07 May 2015; Jack Morgan <jmorgan@gentoo.org> ufw-0.34_pre805-r2.ebuild:
+  sparc stable
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> ufw-0.34_pre805-r1.ebuild,
+  ufw-0.34_pre805-r2.ebuild:
+  Drop old Python implementations
+
+*ufw-0.34_pre805-r2 (15 Dec 2014)
+
+  15 Dec 2014; Sergey Popov <pinkbyte@gentoo.org> -ufw-0.34_pre805.ebuild,
+  +ufw-0.34_pre805-r2.ebuild, +files/ufw-0.34_pre805-bash-completion.patch:
+  Revision bump: fix bash completion, wrt bug #526300, drop old revision
+
+  07 Sep 2014; Jack Morgan <jmorgan@gentoo.org> ufw-0.34_pre805-r1.ebuild:
+  adding sparc, ppc, ppc64 keywords
+
+*ufw-0.34_pre805-r1 (17 Jul 2014)
+
+  17 Jul 2014; Yixun Lan <dlan@gentoo.org> -ufw-0.31.1-r2.ebuild,
+  -ufw-0.33-r2.ebuild, +ufw-0.34_pre805-r1.ebuild,
+  -files/ufw-0.31.1-conntrack.patch, -files/ufw-0.33-conntrack.patch,
+  +files/ufw-0.34_pre805-shebang.patch, -files/ufw-dont-check-iptables.patch:
+  bug 506390, clean old, update to distutils-r1. proxy for SN (Enlik)
+
+  20 May 2013; Fabio Erculiani <lxnay@gentoo.org> ufw-0.31.1-r2.ebuild,
+  ufw-0.33-r2.ebuild, ufw-0.34_pre805.ebuild, +files/ufw.service:
+  add systemd unit on behalf of the systemd team, fix bug #466562
+
+*ufw-0.34_pre805 (17 Dec 2012)
+
+  17 Dec 2012; Markos Chandras <hwoarang@gentoo.org> +ufw-0.34_pre805.ebuild,
+  metadata.xml:
+  Version bump. Fixes bug #437266. Thanks to slawomir.nizio@sabayon.org
+
+*ufw-0.33-r2 (06 Dec 2012)
+*ufw-0.31.1-r2 (06 Dec 2012)
+
+  06 Dec 2012; Ian Whyman <thev00d00@gentoo.org> -ufw-0.31.1-r1.ebuild,
+  +ufw-0.31.1-r2.ebuild, -ufw-0.33-r1.ebuild, +ufw-0.33-r2.ebuild:
+  Install check-requirements script. 0.33 now requires iptables w/ ipv6 support
+  (bug #437266). Thanks to Sławomir Nizio
+
+*ufw-0.33-r1 (14 Oct 2012)
+*ufw-0.31.1-r1 (14 Oct 2012)
+
+  14 Oct 2012; Ian Whyman <thev00d00@gentoo.org> -ufw-0.31.1.ebuild,
+  +ufw-0.31.1-r1.ebuild, +files/ufw-0.31.1-conntrack.patch, -ufw-0.33.ebuild,
+  +ufw-0.33-r1.ebuild, +files/ufw-0.33-conntrack.patch:
+  Add conntrack support, by Sławomir Nizio
+
+*ufw-0.33 (24 Sep 2012)
+
+  24 Sep 2012; Ian Whyman <thev00d00@gentoo.org> -ufw-0.30.1-r4.ebuild,
+  -files/ufw-0.30.1-encoding.patch, -files/ufw-0.30.1-python-abis.patch,
+  +ufw-0.33.ebuild, +files/ufw-0.33-dont-check-iptables.patch,
+  -files/ufw-move-path.patch:
+  Bump to 0.33 (with python 3 support), drop old, thanks to Sławomir Nizio
+
+  23 Sep 2012; Ian Whyman <thev00d00@gentoo.org> ufw-0.31.1.ebuild:
+  Fix for bug #428768 by Sławomir Nizio
+
+  18 Jun 2012; Ian Whyman <thev00d00@gentoo.org> ufw-0.30.1-r4.ebuild,
+  ufw-0.31.1.ebuild:
+  Fix kernel option check, bug #421283 by José Romildo Malaquias
+
+*ufw-0.31.1 (13 Jun 2012)
+
+  13 Jun 2012; Ian Whyman <thev00d00@gentoo.org> +ufw-0.31.1.ebuild,
+  +files/ufw-0.31.1-move-path.patch, +files/ufw-0.31.1-python-abis.patch,
+  files/ufw-2.initd:
+  Version bump, portability fix in init script, thanks Sławomir Nizio.
+
+*ufw-0.30.1-r4 (28 Feb 2012)
+
+  28 Feb 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/ufw-0.30.1-encoding.patch, +files/ufw-0.30.1-python-abis.patch,
+  +ufw-0.30.1-r4.ebuild, -ufw-0.30.1-r2.ebuild, -ufw-0.30.1-r3.ebuild:
+  Update per proxy-maintainer request. Remove overshadowed versions.
+
+  13 Sep 2011; Peter Volkov <pva@gentoo.org> ufw-0.30.1-r2.ebuild,
+  ufw-0.30.1-r3.ebuild:
+  Update to bash-completion-r1 eclass, thank Sławomir Nizio for this job.
+
+*ufw-0.30.1-r3 (03 Sep 2011)
+
+  03 Sep 2011; Peter Volkov <pva@gentoo.org> +ufw-0.30.1-r3.ebuild,
+  +files/rsyslog/ufw.logrotate, +files/syslog-ng/syslog-ng.example,
+  +files/syslog-ng/ufw.logrotate:
+  Add example syslog configurations for rsyslog and syslog-ng, bug #380461,
+  thank Emmanuel Andry for report and Sławomir Nizio for this job.
+
+  28 Jul 2011; Peter Volkov <pva@gentoo.org> ufw-0.30.1-r2.ebuild,
+  metadata.xml:
+  Added longdescription, qoutation fixes in ewarn and set python version
+  correctly. Thank Sławomir Nizio for this job.
+
+*ufw-0.30.1-r2 (24 Jul 2011)
+
+  24 Jul 2011; Peter Volkov <pva@gentoo.org> +ufw-0.30.1-r2.ebuild,
+  +files/ufw-2.initd, +files/ufw.confd, +files/ufw-dont-check-iptables.patch,
+  +files/ufw-move-path.patch, +metadata.xml:
+  Initial import, bug #264912, thank Sławomir Nizio for this job.

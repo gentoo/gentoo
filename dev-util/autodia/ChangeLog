@@ -1,0 +1,56 @@
+# ChangeLog for dev-util/autodia
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/autodia/ChangeLog,v 1.14 2014/12/19 19:14:50 dilfridge Exp $
+
+  19 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Drop to maintainer-needed
+
+*autodia-2.140.0-r1 (26 Oct 2014)
+
+  26 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -autodia-2.140.0.ebuild, +autodia-2.140.0-r1.ebuild:
+  EAPI bump
+
+  30 Jul 2013; Mikle Kolyada <zlogene@gentoo.org> -autodia-2.08.ebuild,
+  -autodia-2.100.0-r1.ebuild:
+  drop old wrt bug #478768
+
+  12 Apr 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Fix cpan distribution in metadata.xml
+
+*autodia-2.140.0 (28 Jan 2012)
+
+  28 Jan 2012; Torsten Veller <tove@gentoo.org> +autodia-2.140.0.ebuild:
+  Version bump
+
+*autodia-2.100.0-r1 (27 Mar 2011)
+
+  27 Mar 2011; Torsten Veller <tove@gentoo.org> -autodia-2.100.0.ebuild,
+  +autodia-2.100.0-r1.ebuild:
+  Fix extra line feed in Diagram.pm (#360757). Thanks to Chris Mayo.
+  Cleanup
+
+*autodia-2.100.0 (16 Mar 2011)
+
+  16 Mar 2011; Torsten Veller <tove@gentoo.org> +autodia-2.100.0.ebuild:
+  Version bump
+
+  21 Mar 2009; Torsten Veller <tove@gentoo.org> -autodia-2.03.ebuild:
+  Remove old version
+
+*autodia-2.08 (21 Mar 2009)
+
+  21 Mar 2009; Torsten Veller <tove@gentoo.org> +autodia-2.08.ebuild:
+  Version bump
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org> autodia-2.03.ebuild:
+  New virtuals: module-build
+
+  23 Apr 2007; Sven Wegener <swegener@gentoo.org> autodia-2.03.ebuild:
+  Sync IUSE (+graphviz +java)
+
+*autodia-2.03 (15 Apr 2007)
+
+  15 Apr 2007; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +autodia-2.03.ebuild:
+  Bug 122738, initial import

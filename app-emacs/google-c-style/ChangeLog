@@ -1,0 +1,29 @@
+# ChangeLog for app-emacs/google-c-style
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/google-c-style/ChangeLog,v 1.5 2011/11/11 22:04:44 ulm Exp $
+
+  11 Nov 2011; Ulrich Mueller <ulm@gentoo.org>
+  google-c-style-20091009-r1.ebuild:
+  Upgrade postinst message from einfo to elog. Bump EAPI to 4.
+
+  17 Nov 2010; Markus Meier <maekke@gentoo.org>
+  google-c-style-20091009-r1.ebuild:
+  x86 stable, bug #345033
+
+  11 Nov 2010; Markos Chandras <hwoarang@gentoo.org>
+  google-c-style-20091009-r1.ebuild:
+  Stable on amd64 wrt bug #345033
+
+*google-c-style-20091009-r1 (11 Aug 2010)
+
+  11 Aug 2010; Ulrich Mueller <ulm@gentoo.org>
+  +files/50google-c-style-gentoo.el, -google-c-style-20091009.ebuild,
+  +google-c-style-20091009-r1.ebuild:
+  Install site-init file with autoloads. Add ~amd64 keyword. Remove old.
+
+*google-c-style-20091009 (11 Aug 2010)
+
+  11 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +google-c-style-20091009.ebuild, +metadata.xml:
+  Initial import.
+

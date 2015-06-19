@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>vostorga@gentoo.org</email>
+		<name>Victor Ostorga</name>
+	</maintainer>
+	<maintainer>
+		<email>iskren.s@gmail.com</email>
+		<name>Iskren Slavov</name>
+	</maintainer>
+	<longdescription>
+	Liferea is a news aggregator for RDF/RSS/CDF/Atom/Echo/etc feeds.  It's
+	based on gnome and xulrunner/webkit.
+	</longdescription>
+	<use>
+		<flag name="libnotify">
+			Enable popup notifications
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">liferea</remote-id>
+	</upstream>
+</pkgmetadata>

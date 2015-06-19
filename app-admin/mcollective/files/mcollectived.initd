@@ -1,0 +1,29 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the Apache License, Version 2.0
+# $Header: /var/cvsroot/gentoo-x86/app-admin/mcollective/files/mcollectived.initd,v 1.2 2012/12/24 08:29:38 ramereth Exp $
+
+mcollectived="/usr/sbin/mcollectived"
+pidfile="/var/run/mcollectived"
+
+depend() {
+    need net
+}
+
+start() {
+    ebegin "Starting mcollectived"
+    ${mcollectived} --pid=${pidfile} --config="/etc/mcollective/server.cfg"
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping mcollectived"
+    kill `cat ${pidfile}`
+    eend $?
+}
+
+restart() {
+    svc_stop
+    sleep 2
+    svc_start
+}

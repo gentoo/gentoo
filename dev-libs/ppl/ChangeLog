@@ -1,0 +1,276 @@
+# ChangeLog for dev-libs/ppl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/ppl/ChangeLog,v 1.72 2015/03/17 05:27:11 vapier Exp $
+
+  17 Mar 2015; Mike Frysinger <vapier@gentoo.org> ppl-1.1.ebuild:
+  Block cloog-ppl as we are punting it #448024.
+
+  17 Mar 2015; Mike Frysinger <vapier@gentoo.org> ppl-1.1.ebuild:
+  Force a newer gmp version to avoid build issues with newer gcc versions
+  #543184 by Thomas Kahle.
+
+  04 Nov 2014; Mike Frysinger <vapier@gentoo.org> ppl-1.1.ebuild:
+  Drop old glpk requirement #473334 by Jeremy Murphy.
+
+*ppl-1.1 (04 Nov 2014)
+
+  04 Nov 2014; Mike Frysinger <vapier@gentoo.org> +ppl-1.1.ebuild:
+  Version bump #446698 by Jeremy Murphy.
+
+  04 Nov 2014; Mike Frysinger <vapier@gentoo.org> ppl-0.12.1-r1.ebuild:
+  Add arm64 love.
+
+  27 May 2014; Ryan Hill <rhill@gentoo.org> -ppl-0.10.2-r1.ebuild,
+  -ppl-0.11.2-r1.ebuild, -ppl-0.12.ebuild, -ppl-0.12.1.ebuild, metadata.xml:
+  Remove old.
+
+  23 Jul 2013; Jeroen Roovers <jer@gentoo.org> ppl-0.10.2-r1.ebuild,
+  ppl-0.11.2-r1.ebuild:
+  Back to ~hppa.
+
+  26 Jun 2013; Ryan Hill <dirtyepic@gentoo.org> ppl-0.10.2-r1.ebuild,
+  ppl-0.11.2-r1.ebuild, ppl-0.12.ebuild, ppl-0.12.1.ebuild,
+  ppl-0.12.1-r1.ebuild:
+  Depend on <=sci-mathematics/glpk-4.48 for bug #473334.
+
+  02 Jun 2013; Agostino Sarubbo <ago@gentoo.org> ppl-0.12.1-r1.ebuild:
+  Stable for sh, wrt bug #468988
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> ppl-0.12.1-r1.ebuild:
+  Stable for sparc, wrt bug #468988
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> ppl-0.12.1-r1.ebuild:
+  Stable for s390, wrt bug #468988
+
+  18 May 2013; Agostino Sarubbo <ago@gentoo.org> ppl-0.12.1-r1.ebuild:
+  Stable for alpha, wrt bug #468988
+
+  18 May 2013; Agostino Sarubbo <ago@gentoo.org> ppl-0.12.1-r1.ebuild:
+  Stable for ia64, wrt bug #468988
+
+  12 May 2013; Agostino Sarubbo <ago@gentoo.org> ppl-0.12.1-r1.ebuild:
+  Stable for ppc64, wrt bug #468988
+
+  12 May 2013; Agostino Sarubbo <ago@gentoo.org> ppl-0.12.1-r1.ebuild:
+  Stable for ppc, wrt bug #468988
+
+  12 May 2013; Agostino Sarubbo <ago@gentoo.org> ppl-0.12.1-r1.ebuild:
+  Stable for arm, wrt bug #468988
+
+  10 May 2013; Agostino Sarubbo <ago@gentoo.org> ppl-0.12.1-r1.ebuild:
+  Stable for x86, wrt bug #468988
+
+  10 May 2013; Agostino Sarubbo <ago@gentoo.org> ppl-0.12.1-r1.ebuild:
+  Stable for amd64, wrt bug #468988
+
+  08 Jan 2013; Mike Frysinger <vapier@gentoo.org> ppl-0.10.2-r1.ebuild,
+  ppl-0.11.2-r1.ebuild, ppl-0.12.1-r1.ebuild, ppl-0.12.1.ebuild,
+  ppl-0.12.ebuild:
+  Drop epause usage #450922 by Jean-Francis Roy.
+
+  08 Jan 2013; Jeroen Roovers <jer@gentoo.org> ppl-0.12.1-r1.ebuild:
+  Fix typo by Alphat-PC (bug #447928 comment #27).
+
+*ppl-0.12.1-r1 (08 Jan 2013)
+
+  08 Jan 2013; Patrick Lauer <patrick@gentoo.org>
+  +files/ppl-fix-gmp-5.1.0.patch, +ppl-0.12.1-r1.ebuild:
+  Adding patch to make things work with gmp-5.1, #447928
+
+*ppl-0.12.1 (29 Apr 2012)
+
+  29 Apr 2012; Ryan Hill <dirtyepic@gentoo.org> +ppl-0.12.1.ebuild:
+  Version bump.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> ppl-0.12.ebuild:
+  keyword ~amd64-fbsd
+
+  13 Apr 2012; Ryan Hill <dirtyepic@gentoo.org> ppl-0.12.ebuild:
+  Remove unused test var.
+
+*ppl-0.12 (13 Apr 2012)
+
+  13 Apr 2012; Ryan Hill <dirtyepic@gentoo.org> +ppl-0.12.ebuild:
+  Version bump.
+
+  20 Feb 2012; Ryan Hill <dirtyepic@gentoo.org> -ppl-0.11.2.ebuild:
+  Remove old.
+
+  18 Feb 2012; Raúl Porcel <armin76@gentoo.org> ppl-0.11.2-r1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #396631
+
+  13 Feb 2012; Kacper Kowalik <xarthisius@gentoo.org> ppl-0.11.2-r1.ebuild:
+  ppc64 stable wrt #396631
+
+  01 Feb 2012; Brent Baude <ranger@gentoo.org> ppl-0.11.2-r1.ebuild:
+  Marking ppl-0.11.2-r1 ppc for bug 396631
+
+  16 Jan 2012; Jeroen Roovers <jer@gentoo.org> ppl-0.11.2-r1.ebuild:
+  Stable for HPPA (bug #396631).
+
+  15 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> ppl-0.11.2-r1.ebuild:
+  x86 stable wrt bug #396631
+
+  14 Jan 2012; Markus Meier <maekke@gentoo.org> ppl-0.11.2-r1.ebuild:
+  arm stable, bug #396631
+
+  31 Dec 2011; Agostino Sarubbo <ago@gentoo.org> ppl-0.11.2-r1.ebuild:
+  Stable for AMD64, wrt bug #396631
+
+*ppl-0.11.2-r1 (15 Nov 2011)
+
+  15 Nov 2011; Mike Frysinger <vapier@gentoo.org> +ppl-0.11.2-r1.ebuild:
+  Add USE=static-libs support.
+
+  14 Nov 2011; Diego E. Pettenò <flameeyes@gentoo.org> ppl-0.10.2-r1.ebuild,
+  ppl-0.11.2.ebuild:
+  QA: cxx conditional was broken, fix it.
+
+  13 Nov 2011; Mike Frysinger <vapier@gentoo.org> ppl-0.10.2-r1.ebuild,
+  ppl-0.11.2.ebuild:
+  Convert gmp[-nocxx] to gmp[cxx].
+
+  20 Aug 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  ppl-0.11.2.ebuild:
+  keyword ~sparc-solaris
+
+  16 Mar 2011; Ryan Hill <dirtyepic@gentoo.org> -ppl-0.11.1.ebuild:
+  Remove broken version.
+
+*ppl-0.11.2 (05 Mar 2011)
+
+  05 Mar 2011; Ryan Hill <dirtyepic@gentoo.org> -ppl-0.11.ebuild,
+  +ppl-0.11.2.ebuild:
+  Version bump, remove old.
+
+*ppl-0.11.1 (21 Feb 2011)
+
+  21 Feb 2011; Ryan Hill <dirtyepic@gentoo.org> +ppl-0.11.1.ebuild:
+  Version bump.
+
+  23 Jan 2011; Mike Frysinger <vapier@gentoo.org> ppl-0.11.ebuild:
+  Inherit eutils for epause #352519 by Diego Elio Pettenò.
+
+  08 Jan 2011; Jeremy Olexa <darkside@gentoo.org> ppl-0.11.ebuild:
+  add ~amd64-linux, bug 346861
+
+*ppl-0.11 (07 Jan 2011)
+
+  07 Jan 2011; Ryan Hill <dirtyepic@gentoo.org> +ppl-0.11.ebuild:
+  Version bump. (bug #345679)
+
+  21 Nov 2010; Ryan Hill <dirtyepic@gentoo.org> -ppl-0.10.2.ebuild,
+  ppl-0.10.2-r1.ebuild, -files/ppl-0.10.2-gmp-5-fix.patch, metadata.xml:
+  Add lpsol USE for automagic dependency on sci-mathematics/glpk discovered in
+  bug #346173 by mehrunes. Push GMP patch to mirrors, bug #331051 by jer.
+  Remove old.
+
+  10 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> ppl-0.10.2-r1.ebuild:
+  ppc64 stable wrt #319885
+
+  06 Jun 2010; Raúl Porcel <armin76@gentoo.org> ppl-0.10.2-r1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #319885
+
+  03 Jun 2010; Markus Meier <maekke@gentoo.org> ppl-0.10.2-r1.ebuild:
+  arm stable, bug #319885
+
+  29 May 2010; Ryan Hill <dirtyepic@gentoo.org> ppl-0.10.2-r1.ebuild,
+  +files/ppl-0.10.2-gmp-5-fix.patch:
+  Fix configure failure with GMP 5.0. (bug #318845 by Mat)
+
+  27 May 2010; Jeroen Roovers <jer@gentoo.org> ppl-0.10.2-r1.ebuild:
+  Stable for HPPA (bug #319885).
+
+  25 May 2010; Markos Chandras <hwoarang@gentoo.org> ppl-0.10.2-r1.ebuild:
+  Stable on amd64 wrt bug #319885
+
+  24 May 2010; <nixnut@gentoo.org> ppl-0.10.2-r1.ebuild:
+  ppc stable #319885
+
+  22 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> ppl-0.10.2-r1.ebuild:
+  x86 stable wrt bug #319885
+
+  30 Apr 2010; Alexis Ballier <aballier@gentoo.org> ppl-0.10.2-r1.ebuild:
+  keyword ~sparc-fbsd
+
+*ppl-0.10.2-r1 (27 Feb 2010)
+
+  27 Feb 2010; Ryan Hill <dirtyepic@gentoo.org> +ppl-0.10.2-r1.ebuild:
+  Revision bump, drop prolog support (bug #307015 by Robert Cabrera).
+  Clean up ebuild.
+
+  19 Sep 2009; Alexis Ballier <aballier@gentoo.org> ppl-0.10.2.ebuild:
+  keyword ~x86-fbsd
+
+  01 Aug 2009; Ryan Hill <dirtyepic@gentoo.org> metadata.xml:
+  Add toolchain to metadata.xml
+
+  22 Jul 2009; Joseph Jezak <josejx@gentoo.org> ppl-0.10.2.ebuild:
+  Marked ~ppc for bug #269087.
+
+  27 Jun 2009; Tobias Klausmann <klausman@gentoo.org> ppl-0.10.2.ebuild:
+  Keyworded on alpha, bug #269088
+
+  07 Jun 2009; Raúl Porcel <armin76@gentoo.org> ppl-0.10.2.ebuild:
+  Add ~arm/~ia64/~s390/~sh wrt #269087
+
+  30 May 2009; Brent Baude <ranger@gentoo.org> ppl-0.10.2.ebuild:
+  Marking ppl-0.10.2 ~ppc64 for bug 269087
+
+  14 May 2009; Ferris McCormick <fmccor@gentoo.org> ppl-0.10.2.ebuild:
+  Add ~sparc keyword, Bug #269087.
+
+  12 May 2009; Jeroen Roovers <jer@gentoo.org> ppl-0.10.2.ebuild:
+  Marked ~hppa (bug #269087).
+
+  09 May 2009; Ryan Hill <dirtyepic@gentoo.org> -ppl-0.10-r1.ebuild:
+  Remove old.
+
+*ppl-0.10.2 (18 Apr 2009)
+
+  18 Apr 2009; Ryan Hill <dirtyepic@gentoo.org> metadata.xml,
+  -ppl-0.10.1.ebuild, +ppl-0.10.2.ebuild:
+  Version bump.  Fixes GMP version detection and tests not being run.
+  - make watchdog library optional
+  - build tests in parallel since they take forever
+  - pch USE flag
+
+*ppl-0.10.1 (14 Apr 2009)
+
+  14 Apr 2009; Ryan Hill <dirtyepic@gentoo.org> metadata.xml,
+  +ppl-0.10.1.ebuild:
+  Version bump.
+
+  22 Mar 2009; Ryan Hill <dirtyepic@gentoo.org> -ppl-0.10_pre27.ebuild,
+  -ppl-0.10.ebuild, ppl-0.10-r1.ebuild:
+  Require swi-prolog built with USE=gmp for bug #263368. Drop old. Shorten
+  desc for repoman happiness.
+
+  23 Feb 2009; Ryan Hill <dirtyepic@gentoo.org> ppl-0.10-r1.ebuild:
+  Stop using prepalldocs.
+
+*ppl-0.10-r1 (31 Jan 2009)
+
+  31 Jan 2009; Ryan Hill <dirtyepic@gentoo.org> +ppl-0.10-r1.ebuild:
+  Revision bump. Add missing dependency on GMP with C++ extensions. Fix
+  unwanted dependencies being autodectected by configure. Add doc USE flag
+  and fix docs installing into the wrong place.
+
+  01 Dec 2008; Mike Frysinger <vapier@gentoo.org> ppl-0.10.ebuild:
+  Fix typo pointed out by Sigmatador.
+
+*ppl-0.10 (30 Nov 2008)
+
+  30 Nov 2008; Mike Frysinger <vapier@gentoo.org> metadata.xml,
+  +ppl-0.10.ebuild:
+  Version bump #245799 by Sigmatador. Fix doc install #241276 by Diego E.
+  Pettenò. Control prolog support via USE=prolog #249320 by Diego E.
+  Flameeyes Pettenò.
+
+  21 Sep 2008; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml:
+  Mike is a slacker and did not include metadata.xml for his new package.
+
+*ppl-0.10_pre27 (21 Sep 2008)
+
+  21 Sep 2008; Mike Frysinger <vapier@gentoo.org> +ppl-0.10_pre27.ebuild:
+  Initial ebuild based on work from Zhang Le for gcc-4.4+.

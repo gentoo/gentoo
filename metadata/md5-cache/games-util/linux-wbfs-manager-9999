@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install preinst prepare unpack
+DEPEND=dev-libs/glib:2 gnome-base/libglade:2.0 virtual/pkgconfig || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DESCRIPTION=WBFS manager for Linux using GTK+
+EAPI=5
+HOMEPAGE=http://code.google.com/p/linux-wbfs-manager/
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 gnome-base/libglade:2.0
+SLOT=0
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=4a2d7df005f1b935494b0fa37315b5c8

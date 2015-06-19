@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare setup unpack
+DEPEND==sys-freebsd/freebsd-lib-8.2* pam? ( virtual/pam ) =sys-freebsd/freebsd-mk-defs-8.2* =sys-freebsd/freebsd-sources-8.2* virtual/pmake virtual/pmake
+DESCRIPTION=FreeBSD libexec things
+EAPI=2
+HOMEPAGE=http://www.freebsd.org/
+IUSE=pam ssl kerberos ipv6 nis xinetd profile
+KEYWORDS=~sparc-fbsd ~x86-fbsd
+LICENSE=BSD
+RDEPEND==sys-freebsd/freebsd-lib-8.2* pam? ( virtual/pam ) xinetd? ( sys-apps/xinetd )
+SLOT=0
+SRC_URI=mirror://gentoo/freebsd-libexec-8.2.tar.bz2 mirror://gentoo/freebsd-ubin-8.2.tar.bz2 mirror://gentoo/freebsd-bin-8.2.tar.bz2 mirror://gentoo/freebsd-contrib-8.2.tar.bz2 mirror://gentoo/freebsd-lib-8.2.tar.bz2 mirror://gentoo/freebsd-etc-8.2.tar.bz2 mirror://gentoo/freebsd-usbin-8.2.tar.bz2
+_eclasses_=bsdmk	a5323161d86b178920afb5e31a9e5d3f	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	freebsd	35f498d509155233569460a87c40fdda	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	portability	a45c088f246ef5091e029f6285d7ce42	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=04eda21ecc3985ceee5a7bf78caaaf51

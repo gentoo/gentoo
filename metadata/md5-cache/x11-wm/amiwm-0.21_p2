@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=x11-libs/libX11 x11-libs/libXmu x11-libs/libXext x11-proto/xproto x11-proto/xextproto
+DESCRIPTION=Windowmanager ala Amiga(R) Workbench(R)
+EAPI=4
+HOMEPAGE=http://www.lysator.liu.se/~marcus/amiwm.html
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=amiwm
+RDEPEND=x11-libs/libX11 x11-libs/libXmu x11-libs/libXext media-gfx/xloadimage x11-apps/xrdb x11-apps/xsetroot x11-terms/xterm
+SLOT=0
+SRC_URI=ftp://ftp.lysator.liu.se/pub/X11/wm/amiwm/amiwm0.21pl2.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=3239506ca62eecda02331a8b92c34671

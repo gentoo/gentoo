@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=dev-lang/ocaml-3.10[ocamlopt?] >=dev-ml/camlp5-5.09[ocamlopt?] gtk? ( >=dev-ml/lablgtk-2.10.1[ocamlopt?] ) doc? ( media-libs/netpbm[png,zlib] virtual/latex-base dev-tex/hevea dev-tex/xcolor dev-texlive/texlive-pictures dev-texlive/texlive-mathextra dev-texlive/texlive-latexextra )
+DESCRIPTION=Proof assistant written in O'Caml
+EAPI=2
+HOMEPAGE=http://coq.inria.fr/
+IUSE=gtk debug +ocamlopt doc
+KEYWORDS=amd64 ppc x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-lang/ocaml-3.10[ocamlopt?] >=dev-ml/camlp5-5.09[ocamlopt?] gtk? ( >=dev-ml/lablgtk-2.10.1[ocamlopt?] )
+SLOT=0
+SRC_URI=http://coq.inria.fr/V8.3pl1/files/coq-8.3pl1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=fbe6320a5039c5694879477b0ec5322b

@@ -1,0 +1,19 @@
+diff -u -r a//doc/Makefile.am b//doc/Makefile.am
+--- a//doc/Makefile.am	2005-03-22 00:05:19.000000000 +0200
++++ b//doc/Makefile.am	2010-04-18 20:08:13.000000000 +0300
+@@ -1,3 +1,3 @@
+ # installed documentation
+ #
+-dist_pkgdata_DATA=COPYING LICENSING.txt README.txt COPYING README_stack.txt README_malloc.txt README_win32.txt
++dist_pkgdata_DATA=COPYING LICENSING.txt README.txt README_stack.txt README_malloc.txt README_win32.txt
+diff -u -r a//src/atomic_ops/sysdeps/Makefile.am b//src/atomic_ops/sysdeps/Makefile.am
+--- a//src/atomic_ops/sysdeps/Makefile.am	2005-09-28 02:53:16.000000000 +0300
++++ b//src/atomic_ops/sysdeps/Makefile.am	2010-04-18 20:04:03.000000000 +0300
+@@ -25,7 +25,6 @@
+ 	  README \
+ 	\
+ 	  gcc/alpha.h gcc/arm.h gcc/x86.h \
+-	  gcc/hppa.h gcc/ia64.h \
+ 	  gcc/powerpc.h gcc/sparc.h \
+ 	  gcc/hppa.h gcc/m68k.h gcc/s390.h \
+ 	  gcc/ia64.h gcc/x86_64.h gcc/cris.h \

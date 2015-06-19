@@ -1,0 +1,22 @@
+diff --git a/src/configure.in b/src/configure.in
+index 7d118de..29833a7 100644
+--- a/src/configure.in
++++ b/src/configure.in
+@@ -24,7 +24,16 @@ AC_ARG_ENABLE(purify,
+ dnl Checks for libraries.
+ AC_DEFINE(UNIX)
+ AC_DEFINE(TERMCAP)
+-AC_CHECK_LIB(terminfo, tgetstr,, [AC_CHECK_LIB(termcap, tgetstr,, [AC_CHECK_LIB(ncurses, tgetstr,, [AC_CHECK_LIB(curses, tgetstr)])])])
++PKG_CHECK_MODULES(
++   CURSES,
++   ncurses,
++   [
++       CPPFLAGS="$CURSES_CFLAGS $CPPFLAGS"
++       LIBS="$CURSES_LIBS $LIBS"
++   ],
++   [
++       AC_CHECK_LIB(terminfo, tgetstr,, [AC_CHECK_LIB(termcap, tgetstr,, [AC_CHECK_LIB(ncurses, tgetstr,, [AC_CHECK_LIB(curses, tgetstr)])])])
++   ])
+ 
+ dnl Checks for header files.
+ AC_HEADER_STDC

@@ -1,0 +1,84 @@
+# ChangeLog for sci-chemistry/dssp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/dssp/ChangeLog,v 1.17 2015/04/07 14:37:03 jlec Exp $
+
+  26 Dec 2014; Justin Lecher <jlec@gentoo.org> -dssp-0.70831.ebuild,
+  -dssp-2.0.4.ebuild, -dssp-2.1.0.ebuild:
+  Drop old, fixes #525622
+
+  26 Dec 2014; Agostino Sarubbo <ago@gentoo.org> dssp-2.2.1-r1.ebuild:
+  Stable for x86, wrt bug #525624
+
+  24 Dec 2014; Chema Alonso <nimiux@gentoo.org> dssp-2.2.1-r1.ebuild:
+  Stable for amd64 wrt bug #525624
+
+*dssp-2.2.1-r1 (25 Jun 2014)
+
+  25 Jun 2014; Justin Lecher <jlec@gentoo.org> -dssp-2.2.1.ebuild,
+  +dssp-2.2.1-r1.ebuild:
+  Fix evil typo
+
+*dssp-2.2.1 (14 May 2014)
+
+  14 May 2014; Justin Lecher <jlec@gentoo.org> +dssp-2.2.1.ebuild:
+  Version Bump
+
+  09 Jul 2013; Justin Lecher <jlec@gentoo.org> dssp-2.1.0.ebuild:
+  Add subslot for boost
+
+  19 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  Changed herd to sci-chemistry
+
+*dssp-2.1.0 (06 Mar 2013)
+
+  06 Mar 2013; Justin Lecher <jlec@gentoo.org> dssp-2.0.4.ebuild,
+  +dssp-2.1.0.ebuild, +files/dssp-2.1.0-gentoo.patch:
+  Version Bump; add missing dep on dev-libs/boost
+
+  28 Feb 2013; Justin Lecher <jlec@gentoo.org> -dssp-070831.ebuild,
+  metadata.xml:
+  Drop old
+
+*dssp-0.70831 (13 Jun 2012)
+
+  13 Jun 2012; Justin Lecher <jlec@gentoo.org> +dssp-0.70831.ebuild,
+  -dssp-101007.ebuild:
+  Change Version numbers to be lower 1 in order to be able to follow upstream
+  new versioning scheme; Drop old unstable
+
+*dssp-2.0.4 (03 Jun 2012)
+
+  03 Jun 2012; Justin Lecher <jlec@gentoo.org> +dssp-2.0.4.ebuild,
+  +files/dssp-2.0.4-gcc47.patch, +files/dssp-2.0.4-gentoo.patch, metadata.xml:
+  Version Bump
+
+  13 Apr 2011; Justin Lecher <jlec@gentoo.org> dssp-101007.ebuild:
+  Fixed URL for download, #363175
+
+*dssp-101007 (14 Oct 2010)
+
+  14 Oct 2010; Justin Lecher <jlec@gentoo.org> +dssp-101007.ebuild:
+  Version Bump
+
+  15 Jul 2010; Markus Meier <maekke@gentoo.org> dssp-070831.ebuild:
+  x86 stable, bug #326043
+
+  28 Jun 2010; Christoph Mende <angelos@gentoo.org> dssp-070831.ebuild:
+  Stable on amd64 wrt bug #326043
+
+*dssp-070831 (07 Mar 2010)
+
+  07 Mar 2010; Justin Lecher (jlec) <jlec@gentoo.org> +dssp-070831.ebuild,
+  +files/Makefile, +metadata.xml:
+  The DSSP program was designed by Wolfgang Kabsch and Chris Sander to
+  standardize secondary structure assignment. DSSP is a database of
+  secondary structure assignments (and much more) for all protein entries in
+  the Protein Data Bank (PDB). DSSP is also the program that calculates DSSP
+  entries from PDB entries.
+
+  If you use DSSP, please quote:
+
+  Dictionary of protein secondary structure: pattern recognition of
+  hydrogen-bonded and geometrical features.
+  Biopolymers. 1983 Dec;22(12):2577-637.
+  PMID: 6667333; UI: 84128824.

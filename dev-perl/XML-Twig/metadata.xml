@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">XML-Twig</remote-id>
+    <remote-id type="cpan-module">XML::Twig</remote-id>
+    <remote-id type="cpan-module">XML::Twig::Elt</remote-id>
+    <remote-id type="cpan-module">XML::Twig::Entity</remote-id>
+    <remote-id type="cpan-module">XML::Twig::Entity_list</remote-id>
+    <remote-id type="cpan-module">XML::Twig::XPath</remote-id>
+    <remote-id type="cpan-module">XML::Twig::XPath::Attribute</remote-id>
+    <remote-id type="cpan-module">XML::Twig::XPath::Elt</remote-id>
+    <remote-id type="cpan-module">XML::Twig::XPath::Namespace</remote-id>
+    <remote-id type="cpan-module">XML::XPath::NodeSet</remote-id>
+    <remote-id type="cpan-module">XML::XPathEngine::NodeSet</remote-id>
+  </upstream>
+</pkgmetadata>

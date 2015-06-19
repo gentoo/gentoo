@@ -1,0 +1,55 @@
+# ChangeLog for games-board/ccgo
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/ccgo/ChangeLog,v 1.15 2014/10/10 15:20:30 ago Exp $
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> ccgo-0.3.6.4.ebuild:
+  Stable for amd64, wrt bug #522624
+
+  12 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org> ccgo-0.3.6.4.ebuild:
+  EAPI=5; respect AR; pass desktop-file-validate; tidy
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> ccgo-0.3.6.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  05 Jun 2011; Michael Sterrett <mr_bones_@gentoo.org> metadata.xml:
+  fix metadata for bug #370065
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org> ccgo-0.3.6.4.ebuild:
+  Fixed slot deps
+
+  27 Feb 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> ccgo-0.3.6.4.ebuild:
+  x86 stable wrt bug #305671
+
+  15 Jan 2010; Michael Sterrett <mr_bones_@gentoo.org> ccgo-0.3.6.4.ebuild:
+  fix desktop file; fix nls install
+
+*ccgo-0.3.6.4 (15 Jan 2010)
+
+  15 Jan 2010; Tupone Alfredo <tupone@gentoo.org> +ccgo-0.3.6.4.ebuild:
+  Version bump to 0.3.6.4 Bug #301021 by Petr Pisar
+
+  13 Mar 2009; Michael Sterrett <mr_bones_@gentoo.org> ccgo-0.3.6.3.ebuild:
+  stable for x86
+
+*ccgo-0.3.6.3 (10 May 2008)
+
+  10 May 2008; Michael Sterrett <mr_bones_@gentoo.org> +ccgo-0.3.6.3.ebuild:
+  version bump
+
+  19 Jan 2008; Tristan Heaven <nyhm@gentoo.org> ccgo-0.3.6.2.ebuild:
+  Add pkgconfig dep, bug #206300
+
+  05 Oct 2006; Tristan Heaven <nyhm@gentoo.org> ccgo-0.3.6.2.ebuild:
+  Fix gettext dependency
+
+  30 Mar 2006; <Tupone@gentoo.org> ccgo-0.3.6.2.ebuild:
+  Added ~amd64 keyword, bug #127931 requested by ron widler
+
+  29 Jul 2005; David Holm <dholm@gentoo.org> ccgo-0.3.6.2.ebuild:
+  Added to ~ppc.
+
+*ccgo-0.3.6.2 (29 Jul 2005)
+
+  29 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org> +metadata.xml,
+  +ccgo-0.3.6.2.ebuild:
+  initial commit - ebuild supplied by Dustin Koupal via bug #100642

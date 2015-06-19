@@ -1,0 +1,25 @@
+Author: Roland Rosenfeld <roland@debian.org>
+Description: Fix some spelling errors in the binaries
+
+--- a/fig2dev/dev/readgif.c
++++ b/fig2dev/dev/readgif.c
+@@ -151,7 +151,7 @@
+ 
+ 		if (c == '!') { 		/* Extension */
+ 		    if (! ReadOK(file,&c,1))
+-			fprintf(stderr,"GIF read error on extention function code\n");
++			fprintf(stderr,"GIF read error on extension function code\n");
+ 		    (void) DoGIFextension(file, c);
+ 		    continue;
+ 		}
+--- a/fig2dev/read.c
++++ b/fig2dev/read.c
+@@ -109,7 +109,7 @@
+ 	    /* Format error; relevant error message is already delivered */
+ 	    }
+ 	else
+-	    put_msg("File \"%s\" is not accessable; %s", file, strerror(err));
++	    put_msg("File \"%s\" is not accessible; %s", file, strerror(err));
+ }
+ 
+ /**********************************************************

@@ -1,0 +1,42 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/p0f/files/p0f.initd3,v 1.1 2007/03/28 20:41:44 cedk Exp $
+
+start() {
+	ebegin "Starting p0f"
+	# The 'tcp and tcp[13] & 2 = 2' requires at least syn set.
+	# An alternative would be 'tcp and tcp[13] & 0x3f = 2', which
+	# is syn and no other major flags (but ECN enabled packets are OK)
+	if [ -z "$BpfFilter" ]; then
+		BpfFilter='tcp and tcp[13] & 2 = 2'
+	else
+		BpfFilter="$BpfFilter and tcp and tcp[13] & 2 = 2"
+	fi
+
+	# The command in backticks returns all the local IP addresses on this machine.
+	for OneIP in `/sbin/ifconfig 2>/dev/null | grep 'inet addr' | sed -e 's/.*addr://' -e 's/ .*//'` ; do
+		BpfFilter="$BpfFilter and not src host $OneIP"
+	done
+
+
+	# Create a lock file.
+	mkdir -p /var/lock/subsys
+	touch /var/lock/subsys/p0f
+	
+	# Start up p0f and filter out all packets originating from any of this machines IP's.
+	if [ -z "${P0FLOGFILE}" ]; then
+		P0FLOGFILE="/var/log/p0f"
+	fi
+	einfo "Logfile: ${P0FLOGFILE}"
+	start-stop-daemon --start --quiet --pidfile /var/run/p0f.pid --exec /usr/sbin/p0f -- -i "${P0FDEVICE}" \
+		${P0FOPTIONS} -o "${P0FLOGFILE}" -d "${BpfFilter}" 2>/dev/null
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping p0f"
+	start-stop-daemon --stop --quiet --pidfile /var/run/p0f.pid
+	rm -f /var/lock/subsys/p0f
+	eend ${?}
+}

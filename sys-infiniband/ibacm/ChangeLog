@@ -1,0 +1,26 @@
+# ChangeLog for sys-infiniband/ibacm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-infiniband/ibacm/ChangeLog,v 1.5 2015/06/04 14:51:54 pacho Exp $
+
+  04 Jun 2015; Pacho Ramos <pacho@gentoo.org> ibacm-1.0.8.ebuild:
+  Needs sys-infiniband/libibumad (#514624)
+
+*ibacm-1.0.8 (16 Apr 2014)
+
+  16 Apr 2014; Alexey Shvetsov <alexxy@gentoo.org> +ibacm-1.0.8.ebuild,
+  -ibacm-1.0.5.ebuild:
+  Update ofed stack to 3.12-rc1
+
+  13 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> ibacm-1.0.7.ebuild:
+  [sys-infiniband] Update OFED
+
+*ibacm-1.0.7 (12 Oct 2012)
+
+  12 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> +ibacm-1.0.7.ebuild:
+  [sys-infiniband] OFED 3.5 rc2 update
+
+*ibacm-1.0.5 (18 Apr 2012)
+
+  18 Apr 2012; Alexey Shvetsov <alexxy@gentoo.org> +ibacm-1.0.5.ebuild,
+  +metadata.xml:
+  [sys-infiniband/ibacm] initial import

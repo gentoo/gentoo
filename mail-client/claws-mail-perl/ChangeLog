@@ -1,0 +1,266 @@
+# ChangeLog for mail-client/claws-mail-perl
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail-perl/ChangeLog,v 1.63 2013/05/08 04:02:05 fauli Exp $
+
+  08 May 2013; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-perl-0.9.20.ebuild:
+  prepare plugin for mail-client/claws-mail-3.9.1
+
+  04 Jan 2013; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-perl-0.9.19.ebuild:
+  clean up
+
+  03 Jan 2013; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-perl-0.9.20.ebuild:
+  reintroduce deletion of .a and .la files
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org> claws-mail-perl-0.9.20.ebuild:
+  Stable for x86, wrt bug #448968
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org> claws-mail-perl-0.9.20.ebuild:
+  Stable for amd64, wrt bug #448968
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org> claws-mail-perl-0.9.20.ebuild:
+  Stable for ppc64, wrt bug #448968
+
+*claws-mail-perl-0.9.20 (20 Nov 2012)
+
+  20 Nov 2012; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-perl-0.9.20.ebuild:
+  version bump
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> claws-mail-perl-0.9.19.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  11 Apr 2012; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-perl-0.9.18.ebuild:
+  clean up
+
+  07 Apr 2012; Markus Meier <maekke@gentoo.org> claws-mail-perl-0.9.19.ebuild:
+  x86 stable, bug #387547
+
+  08 Mar 2012; Brent Baude <ranger@gentoo.org> claws-mail-perl-0.9.19.ebuild:
+  Marking claws-mail-perl-0.9.19 ppc64 stable for bug 387547
+
+  04 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #206112
+
+  25 Feb 2012; Agostino Sarubbo <ago@gentoo.org> claws-mail-perl-0.9.19.ebuild:
+  Stable for amd64, wrt bug #387547
+
+*claws-mail-perl-0.9.19 (26 Dec 2011)
+
+  26 Dec 2011; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-perl-0.9.19.ebuild:
+  version bump for bug 395381 by Justin
+
+  22 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-perl-0.9.17.ebuild:
+  clean up
+
+  28 Dec 2010; Brent Baude <ranger@gentoo.org>
+  claws-mail-perl-0.9.18.ebuild:
+  Marking claws-mail-perl-0.9.18 ppc64 stable for bug 331395
+
+  23 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-perl-0.9.17.ebuild, claws-mail-perl-0.9.18.ebuild:
+  add a die after emake and use -C option of make to change directory
+
+  07 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  claws-mail-perl-0.9.18.ebuild:
+  Stable on amd64 wrt bug #331395
+
+  06 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-perl-0.9.18.ebuild:
+  stable x86, bug 331395
+
+  20 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-perl-0.9.15.ebuild, -claws-mail-perl-0.9.16.ebuild:
+  clean up
+
+*claws-mail-perl-0.9.18 (12 Jun 2010)
+
+  12 Jun 2010; Christian Faulhammer <fauli@gentoo.org> +claws-mail-perl-0.9.18.ebuild:
+  version bump, bug 319161
+
+  11 May 2010; Brent Baude <ranger@gentoo.org>
+  claws-mail-perl-0.9.17.ebuild:
+  Marking claws-mail-perl-0.9.17 ppc64 for bug 304353
+
+  11 Mar 2010; Markus Meier <maekke@gentoo.org>
+  claws-mail-perl-0.9.17.ebuild:
+  amd64 stable, bug #304353
+
+  11 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-perl-0.9.17.ebuild:
+  stable x86, bug 304353
+
+*claws-mail-perl-0.9.17 (08 Jan 2010)
+
+  08 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-perl-0.9.17.ebuild:
+  version bump
+
+*claws-mail-perl-0.9.16 (18 Oct 2009)
+
+  18 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-perl-0.9.16.ebuild:
+  version bump, bug 289070
+
+  14 Mar 2009; nixnut <nixnut@gentoo.org> claws-mail-perl-0.9.15.ebuild:
+  ~ppc'd
+
+  29 Jan 2009; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-perl-0.9.14.ebuild:
+  clean up
+
+  25 Jan 2009; Markus Meier <maekke@gentoo.org>
+  claws-mail-perl-0.9.15.ebuild:
+  amd64/x86 stable, bug #256165
+
+  25 Jan 2009; Brent Baude <ranger@gentoo.org>
+  claws-mail-perl-0.9.15.ebuild:
+  Marking claws-mail-perl-0.9.15 ppc64 for bug 256165
+
+  22 Dec 2008; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-perl-0.9.15.ebuild:
+  raise version on mail-client/claws-mail dependency
+
+*claws-mail-perl-0.9.15 (22 Dec 2008)
+
+  22 Dec 2008; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-perl-0.9.15.ebuild:
+  version bump
+
+  08 Dec 2008; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-perl-0.9.13.ebuild:
+  clean up
+
+  02 Dec 2008; Brent Baude <ranger@gentoo.org>
+  claws-mail-perl-0.9.14.ebuild:
+  Marking claws-mail-perl-0.9.14 ppc64 for bug 248760
+
+  28 Nov 2008; Markus Meier <maekke@gentoo.org>
+  claws-mail-perl-0.9.14.ebuild:
+  amd64/x86 stable, bug #248760
+
+  28 Nov 2008; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
+  Change my email address
+
+*claws-mail-perl-0.9.14 (16 Oct 2008)
+
+  16 Oct 2008; Christian Faulhammer <opfer@gentoo.org>
+  +claws-mail-perl-0.9.14.ebuild:
+  version bump for bug 239927
+
+  23 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  -claws-mail-perl-0.9.10.ebuild, -claws-mail-perl-0.9.11.ebuild,
+  -claws-mail-perl-0.9.12.ebuild:
+  clean up
+
+  21 Jun 2008; Markus Rothe <corsair@gentoo.org>
+  claws-mail-perl-0.9.13.ebuild:
+  Stable on ppc64; bug #222167
+
+  21 Jun 2008; Christian Faulhammer <opfer@gentoo.org> metadata.xml:
+  correct email address of Ken
+
+  14 Jun 2008; Kenneth Prugh <ken69267@gentoo.org>
+  claws-mail-perl-0.9.13.ebuild:
+  amd64 stable, bug #222167
+
+  11 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  claws-mail-perl-0.9.13.ebuild:
+  stable x86, bug 222167
+
+  11 Jun 2008; Christian Faulhammer <opfer@gentoo.org> metadata.xml:
+  Changing maintainers
+
+  30 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Andrej Kacian (Ticho) from metadata.xml (as per #59986).
+
+  29 May 2008; Mark Loeser <halcy0n@gentoo.org>
+  claws-mail-perl-0.9.10.ebuild, claws-mail-perl-0.9.11.ebuild,
+  claws-mail-perl-0.9.12.ebuild:
+  Fix RDEPEND on pkgconfig; bug #217278
+
+*claws-mail-perl-0.9.13 (12 May 2008)
+
+  12 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  +claws-mail-perl-0.9.13.ebuild:
+  version bump for bug 218708
+
+  13 Feb 2008; Andrej Kacian <ticho@gentoo.org>
+  claws-mail-perl-0.9.10.ebuild, claws-mail-perl-0.9.11.ebuild,
+  claws-mail-perl-0.9.12.ebuild:
+  Depend on pkgconfig (bug #205864).
+
+*claws-mail-perl-0.9.12 (28 Dec 2007)
+
+  28 Dec 2007; Andrej Kacian <ticho@gentoo.org>
+  +claws-mail-perl-0.9.12.ebuild:
+  Version bump. Bug #202634 by Joe <joacher at gmx.de>.
+
+*claws-mail-perl-0.9.11 (29 Nov 2007)
+
+  29 Nov 2007; Andrej Kacian <ticho@gentoo.org>
+  -claws-mail-perl-0.9.6.ebuild, -claws-mail-perl-0.9.7.ebuild,
+  -claws-mail-perl-0.9.8.ebuild, claws-mail-perl-0.9.10.ebuild,
+  +claws-mail-perl-0.9.11.ebuild:
+  Version bump, ebuild cleanup.
+
+  16 Sep 2007; Christoph Mende <angelos@gentoo.org>
+  claws-mail-perl-0.9.10.ebuild:
+  Stable on amd64 wrt security bug #190104
+
+  13 Sep 2007; Markus Rothe <corsair@gentoo.org>
+  claws-mail-perl-0.9.10.ebuild:
+  Stable on ppc64; bug #190104
+
+  13 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  claws-mail-perl-0.9.10.ebuild:
+  x86 stable, security bug 190104
+
+*claws-mail-perl-0.9.10 (03 Sep 2007)
+
+  03 Sep 2007; Andrej Kacian <ticho@gentoo.org>
+  +claws-mail-perl-0.9.10.ebuild:
+  Version bump.
+
+  16 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  claws-mail-perl-0.9.8.ebuild:
+  stable amd64, bug 177905
+
+  12 May 2007; Markus Rothe <corsair@gentoo.org>
+  claws-mail-perl-0.9.8.ebuild:
+  Stable on ppc64; bug #177905
+
+  10 May 2007; Andrej Kacian <ticho@gentoo.org>
+  claws-mail-perl-0.9.8.ebuild:
+  Stable on x86.
+
+*claws-mail-perl-0.9.8 (16 Apr 2007)
+
+  16 Apr 2007; Andrej Kacian <ticho@gentoo.org>
+  +claws-mail-perl-0.9.8.ebuild:
+  Version bump.
+
+  31 Jan 2007; Markus Rothe <corsair@gentoo.org>
+  claws-mail-perl-0.9.6.ebuild:
+  Stable on ppc64; bug #163611
+
+  25 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  claws-mail-perl-0.9.6.ebuild:
+  stable x86; bug #163611
+
+*claws-mail-perl-0.9.7 (09 Jan 2007)
+
+  09 Jan 2007; Andrej Kacian <ticho@gentoo.org>
+  +claws-mail-perl-0.9.7.ebuild:
+  Version bump.
+
+*claws-mail-perl-0.9.6 (19 Dec 2006)
+
+  19 Dec 2006; Andrej Kacian <ticho@gentoo.org> +metadata.xml,
+  +claws-mail-perl-0.9.6.ebuild:
+  This is the new name of mail-client/sylpheed-claws-perl.

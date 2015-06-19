@@ -1,0 +1,75 @@
+# ChangeLog for app-admin/gnome-system-log
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/gnome-system-log/ChangeLog,v 1.18 2014/04/23 20:36:38 pacho Exp $
+
+  23 Apr 2014; Pacho Ramos <pacho@gentoo.org> -gnome-system-log-3.8.1.ebuild:
+  Drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gnome-system-log-3.9.90.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gnome-system-log-3.9.90.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-system-log-3.9.90.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-system-log-3.9.90.ebuild:
+  arch stable, bug 888
+
+*gnome-system-log-3.9.90 (24 Dec 2013)
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org> +gnome-system-log-3.9.90.ebuild,
+  -gnome-system-log-3.6.1.ebuild, -gnome-system-log-3.8.0.ebuild:
+  Version bump for Gnome 3.10, drop old
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> gnome-system-log-3.8.1.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> gnome-system-log-3.8.1.ebuild:
+  amd64 stable, bug #478252
+
+*gnome-system-log-3.8.1 (18 Apr 2013)
+
+  18 Apr 2013; Pacho Ramos <pacho@gentoo.org> +gnome-system-log-3.8.1.ebuild:
+  Version bump
+
+*gnome-system-log-3.8.0 (28 Mar 2013)
+
+  28 Mar 2013; Pacho Ramos <pacho@gentoo.org> +gnome-system-log-3.8.0.ebuild:
+  Version bump for Gnome 3.8
+
+  05 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-system-log-3.4.1.ebuild:
+  Clean up old revision.
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> gnome-system-log-3.6.1.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> gnome-system-log-3.6.1.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  27 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gnome-system-log-3.6.1.ebuild:
+  Drop sparc keyword, needs gtk+-3.6
+
+  17 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gnome-system-log-3.6.1.ebuild:
+  Require gtk+-3.6 (bug #447476, thanks to Kobboi et al.)
+
+  16 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gnome-system-log-3.4.1.ebuild, gnome-system-log-3.6.1.ebuild:
+  Update license, EAPI5-ize and de-9999-ize ebuild.
+
+*gnome-system-log-3.6.1 (16 Dec 2012)
+
+  16 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-system-log-3.6.1.ebuild:
+  Version bump for Gnome 3.6.
+
+*gnome-system-log-3.4.1 (05 May 2012)
+
+  05 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +gnome-system-log-3.4.1.ebuild, +metadata.xml:
+  New separate gnome log viewer package, formerly part of
+  gnome-extra/gnome-utils.

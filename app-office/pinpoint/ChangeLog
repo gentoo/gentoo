@@ -1,0 +1,60 @@
+# ChangeLog for app-office/pinpoint
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/pinpoint/ChangeLog,v 1.14 2015/02/07 12:22:18 pacho Exp $
+
+  07 Feb 2015; Pacho Ramos <pacho@gentoo.org> -pinpoint-0.1.4-r1.ebuild:
+  Drop old
+
+  19 Dec 2014; Pacho Ramos <pacho@gentoo.org> pinpoint-0.1.5_pre20141026.ebuild:
+  amd64 stable, bug 529964
+
+  18 Dec 2014; Pacho Ramos <pacho@gentoo.org> pinpoint-0.1.5_pre20141026.ebuild:
+  x86 stable, bug 529964
+
+  26 Oct 2014; Pacho Ramos <pacho@gentoo.org> pinpoint-0.1.5_pre20141026.ebuild:
+  Drop obsolete line
+
+*pinpoint-0.1.5_pre20141026 (26 Oct 2014)
+
+  26 Oct 2014; Pacho Ramos <pacho@gentoo.org>
+  +pinpoint-0.1.5_pre20141026.ebuild:
+  Bump to newer snapshot including many fixes and also being ported to newer
+  clutter-gst slot
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> pinpoint-0.1.4-r1.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> pinpoint-0.1.4-r1.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> pinpoint-0.1.4-r1.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> pinpoint-0.1.4-r1.ebuild:
+  arch stable, bug 888
+
+*pinpoint-0.1.4-r1 (15 Feb 2014)
+
+  15 Feb 2014; Pacho Ramos <pacho@gentoo.org> +pinpoint-0.1.4-r1.ebuild,
+  -pinpoint-0.1.2.ebuild, -pinpoint-0.1.4.ebuild, metadata.xml:
+  Fix examples installation (#501094 by Alexander E. Patrakov), take the package
+  as nirbheek looks to not have time for it for now.
+
+  05 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup after talking with Ford_Prefect
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> pinpoint-0.1.2.ebuild,
+  pinpoint-0.1.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*pinpoint-0.1.4 (01 Dec 2011)
+
+  01 Dec 2011; Mart Raudsepp <leio@gentoo.org> +pinpoint-0.1.4.ebuild:
+  Version bump. Start of speaker screen support, camera based background
+  support, screensaver inhibiting when fullscreen, etc
+
+*pinpoint-0.1.2 (24 Aug 2011)
+
+  24 Aug 2011; Arun Raghavan <ford_prefect@gentoo.org> +pinpoint-0.1.2.ebuild,
+  +metadata.xml:
+  Initial version of the handly little presentation tool.

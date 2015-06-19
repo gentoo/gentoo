@@ -1,0 +1,141 @@
+# ChangeLog for app-forensics/foremost
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/foremost/ChangeLog,v 1.30 2015/01/26 09:57:28 ago Exp $
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> foremost-1.5.7-r2.ebuild:
+  Stable for x86, wrt bug #534852
+
+  17 Jan 2015; Agostino Sarubbo <ago@gentoo.org> foremost-1.5.7-r2.ebuild:
+  Stable for ppc, wrt bug #534852
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> foremost-1.5.7-r2.ebuild:
+  Stable for amd64, wrt bug #534852
+
+*foremost-1.5.7-r2 (31 Aug 2014)
+
+  31 Aug 2014; Mike Auty <ikelos@gentoo.org> +foremost-1.5.7-r2.ebuild,
+  +files/foremost-1.5.7-format-security.patch:
+  Add in patch for -Werror=format-security warning (fixes bug 521038).
+
+  09 Jan 2012; Brent Baude <ranger@gentoo.org> foremost-1.5.7-r1.ebuild:
+  Marking foremost-1.5.7-r1 ppc for bug 391467
+
+  28 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  foremost-1.5.7-r1.ebuild:
+  x86 stable wrt bug #391467
+
+  26 Nov 2011; Markos Chandras <hwoarang@gentoo.org> foremost-1.5.7-r1.ebuild:
+  Stable on amd64 wrt bug #391467
+
+  23 Nov 2011; Tim Harder <radhermit@gentoo.org> -foremost-1.5.5-r1.ebuild,
+  -foremost-1.5.6-r1.ebuild:
+  Remove old.
+
+  23 Nov 2011; Tim Harder <radhermit@gentoo.org> foremost-1.5.7-r1.ebuild:
+  Update to EAPI 4.
+
+*foremost-1.5.7-r1 (12 Apr 2010)
+*foremost-1.5.6-r1 (12 Apr 2010)
+*foremost-1.5.5-r1 (12 Apr 2010)
+
+  12 Apr 2010; Christian Ruppert <idl0r@gentoo.org> -foremost-1.5.5.ebuild,
+  +foremost-1.5.5-r1.ebuild, -foremost-1.5.6.ebuild,
+  +foremost-1.5.6-r1.ebuild, -foremost-1.5.7.ebuild,
+  +foremost-1.5.7-r1.ebuild:
+  Fix manpage installation, add "die" statements.
+
+*foremost-1.5.7 (02 Mar 2010)
+
+  02 Mar 2010; Patrick Lauer <patrick@gentoo.org> +foremost-1.5.7.ebuild:
+  Bump for #307473
+
+  26 Nov 2009; Markus Meier <maekke@gentoo.org> foremost-0.69.ebuild:
+  add ~amd64, bug #286881
+
+  08 Nov 2009; Patrick Lauer <patrick@gentoo.org> foremost-1.5.6.ebuild:
+  Fixing SRC_URI
+
+*foremost-1.5.6 (08 Nov 2009)
+
+  08 Nov 2009; Patrick Lauer <patrick@gentoo.org> +foremost-1.5.6.ebuild:
+  Bump
+
+  13 Sep 2009; Patrick Lauer <patrick@gentoo.org> foremost-0.69.ebuild,
+  foremost-1.5.5.ebuild:
+  Remove virtual/libc deps
+
+  08 Jan 2009; Patrick Lauer <patrick@gentoo.org> -foremost-1.0.ebuild,
+  -foremost-1.4.ebuild, -foremost-1.5.ebuild, -foremost-1.5.3.ebuild:
+  Removing old
+
+*foremost-1.5.5 (05 Jan 2009)
+
+  05 Jan 2009; Patrick Lauer <patrick@gentoo.org> +foremost-1.5.5.ebuild:
+  Bump to 1.5.5. SRC_URI changed to Sourceforge. Where did the manpage go
+  to?
+
+*foremost-1.5.3 (24 Mar 2008)
+
+  24 Mar 2008; Mike Auty <ikelos@gentoo.org> foremost-1.4.ebuild,
+  foremost-1.5.ebuild, +foremost-1.5.3.ebuild:
+  Version bump, and re-apply patch. Fixes bug 214471.
+
+  31 Jan 2008; Mike Auty <ikelos@gentoo.org> ChangeLog:
+  Re-sign digestless manifest.
+
+*foremost-1.5 (17 May 2007)
+
+  17 May 2007; Robert Clark <hyakuhei@gentoo.org> +foremost-1.5.ebuild:
+  Added foremost-1.5 this no longer requires the location patch
+
+  21 Feb 2007; Mike Auty <ikelos@gentoo.org> foremost-1.4.ebuild:
+  Added in ~amd64 after reported success.
+
+*foremost-1.4 (21 Feb 2007)
+
+  21 Feb 2007; Mike Auty <ikelos@gentoo.org>
+  +files/foremost-1.4-config-location.patch, metadata.xml,
+  +foremost-1.4.ebuild:
+  Version bump, and taking over maintainership of the package. Fixes bug
+  #144065.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*foremost-1.0 (12 Oct 2005)
+
+  12 Oct 2005; Daniel Black <dragonheart@gentoo.org> +foremost-1.0.ebuild:
+  version bump - bug #108827 thanks to Leo
+
+  14 Dec 2004; Daniel Black <dragonheart@gentoo.org> foremost-0.69.ebuild:
+  ppc stable
+
+  18 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  13 Sep 2004; Daniel Black <dragonheart@gentoo.org> foremost-0.69.ebuild:
+  x86 stable
+
+  12 Sep 2004; Daniel Black <dragonheart@gentoo.org> metadata.xml:
+  metadata.xml update. forensics herd taking over maintaince
+
+*foremost-0.69 (12 Sep 2004)
+
+  12 Sep 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  +foremost-0.69.ebuild:
+  Moved from app-admin/foremost to app-forensics/foremost.
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> foremost-0.69.ebuild:
+  add sed-4 dep
+
+  28 Apr 2004; David Holm <dholm@gentoo.org> foremost-0.69.ebuild:
+  Added to ~ppc.
+
+*foremost-0.69 (27 Apr 2004)
+
+  27 Apr 2004; Martin Holzer <mholzer@gentoo.org> foremost-0.69.ebuild,
+  metadata.xml:
+  Initial ebuild. Submitted by Daniel Fullmer <lsmod@hotmail.com> in 47094

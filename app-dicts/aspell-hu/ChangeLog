@@ -1,0 +1,38 @@
+# ChangeLog for app-dicts/aspell-hu
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-hu/ChangeLog,v 1.10 2014/01/05 11:03:44 pacho Exp $
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org> aspell-hu-0.99.4.2.ebuild:
+  keyword ~amd64-fbsd
+
+  18 Apr 2012; Tomáš Chvátal <scarabeus@gentoo.org> aspell-hu-0.99.4.2.ebuild:
+  Fix typo in var name and thus depending on correct aspell version.
+
+  23 Mar 2010; Brent Baude <ranger@gentoo.org> aspell-hu-0.99.4.2.ebuild:
+  Marking aspell-hu-0.99.4.2 ~ppc for bug 305845
+
+  21 Mar 2010; Brent Baude <ranger@gentoo.org> aspell-hu-0.99.4.2.ebuild:
+  Marking aspell-hu-0.99.4.2 ~ppc64 for bug 305845
+
+  07 Mar 2010; Raúl Porcel <armin76@gentoo.org> aspell-hu-0.99.4.2.ebuild:
+  Add ~alpha/~arm/~ia64/~m68k/~sparc wrt #305845
+
+  04 Mar 2010; Jeroen Roovers <jer@gentoo.org> aspell-hu-0.99.4.2.ebuild:
+  Marked ~hppa (bug #305845).
+
+  18 Oct 2009; Mark Loeser <halcy0n@gentoo.org> aspell-hu-0.99.4.2.ebuild:
+  QA fixes; IUSE is not defined
+
+  03 Nov 2007; Roy Marples <uberlord@gentoo.org> aspell-hu-0.99.4.2.ebuild:
+  Keyworded ~sparc-fbsd and ~x86-fbsd
+
+*aspell-hu-0.99.4.2 (02 Sep 2007)
+
+  02 Sep 2007; Wulf C. Krueger <philantrop@gentoo.org> +metadata.xml,
+  +aspell-hu-0.99.4.2.ebuild:
+  Added an Hungarian dictionary as per bug 187229. Thanks to Gálusz Zsuzsanna
+  for providing the ebuild!

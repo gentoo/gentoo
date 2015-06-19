@@ -1,0 +1,14 @@
+DEFINED_PHASES=install preinst prepare test
+DEPEND=sys-libs/zlib video_cards_nvidia? ( >=x11-drivers/nvidia-drivers-319.37 ) video_cards_fglrx? ( >=x11-drivers/ati-drivers-13.4 ) app-arch/p7zip
+DESCRIPTION=An opencl multihash cracker
+EAPI=5
+HOMEPAGE=http://hashcat.net/oclhashcat-plus/
+IUSE=virtualcl video_cards_fglrx video_cards_nvidia
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=hashcat
+RDEPEND=sys-libs/zlib video_cards_nvidia? ( >=x11-drivers/nvidia-drivers-319.37 ) video_cards_fglrx? ( >=x11-drivers/ati-drivers-13.4 )
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://hashcat.net/files/oclHashcat-plus-0.15.7z
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=5788b3a9195fb010886c64f1ed90e6ce

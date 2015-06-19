@@ -1,0 +1,57 @@
+# ChangeLog for app-admin/qpage
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/qpage/ChangeLog,v 1.11 2014/08/10 01:37:39 patrick Exp $
+
+  10 Aug 2014; Patrick Lauer <patrick@gentoo.org> qpage-3.3.ebuild:
+  Fix description for more repoman happy
+
+  18 Dec 2010; Patrick McLean <chutzpah@gentoo.org> qpage-3.3.ebuild:
+  Make sure that CC environment variable is being properly respected (bug
+  #243324).
+
+  11 Oct 2009; Mark Loeser <halcy0n@gentoo.org> qpage-3.3.ebuild:
+  QA fixes; unquoted variables
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  10 Jul 2006; Patrick McLean <chutzpah@gentoo.org> qpage-3.3.ebuild:
+  Update ebuild to use elog instead of einfo.
+
+  25 Feb 2006; Patrick McLean <chutzpah@gentoo.org> qpage-3.3.ebuild:
+  Stable on amd64.
+
+  10 Feb 2006; Patrick McLean <chutzpah@gentoo.org> files/qpage:
+  Minor grammar fix.
+
+  06 Feb 2006; Aron Griffis <agriffis@gentoo.org> qpage-3.3.ebuild:
+  Mark 3.3 stable on alpha
+
+  27 Jan 2006; Patrick McLean <chutzpah@gentoo.org> ChangeLog:
+  Move package from sys-apps to app-admin.
+
+  27 Jan 2006; Patrick McLean <chutzpah@gentoo.org> metadata.xml,
+  qpage-3.3.ebuild:
+  Take over maintainership of package, update metadata.xml and minor
+  description fix.
+
+  27 Jan 2006; Patrick McLean <chutzpah@gentoo.org>
+  +files/qpage-3.3-fix-warning.patch, qpage-3.3.ebuild:
+  Trivial compile warning fix. Thanks to Thomas Cort for the patch
+  (see bug #120195).
+
+  27 Jan 2006; Joshua Jackson <tsunam@gentoo.org> qpage-3.3.ebuild:
+  Stable on x86; thanks to Thomas Cort for testing
+
+  24 Jan 2006; Patrick McLean <chutzpah@gentoo.org> qpage-3.3.ebuild:
+  added ~amd64 keyword, updated copyright header.
+
+  23 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> qpage-3.3.ebuild:
+  don't use deprecated ?: use syntax
+
+*qpage-3.3 (08 Aug 2003)
+
+  08 Aug 2003; Aron Griffis <agriffis@gentoo.org> qpage-3.3.ebuild,
+  files/qpage, files/qpage-3.3-gentoo.patch:
+  Initial import.  Ebuild submitted by Mark Wagner <mark@lanfear.net>
+  in bug 19961.

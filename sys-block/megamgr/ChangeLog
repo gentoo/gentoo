@@ -1,0 +1,39 @@
+# ChangeLog for sys-block/megamgr
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/megamgr/ChangeLog,v 1.8 2013/03/03 16:44:59 wschlich Exp $
+
+  03 Mar 2013; Wolfram Schlich <wschlich@gentoo.org> metadata.xml:
+  removed myself from metadata.xml
+
+  28 Feb 2012; Christian Ruppert <idl0r@gentoo.org> megamgr-5.20-r2.ebuild:
+  Add fetch restriction, bug 405987
+
+*megamgr-5.20-r2 (07 Jul 2011)
+
+  07 Jul 2011; Christian Ruppert <idl0r@gentoo.org> -megamgr-5.20.ebuild,
+  -megamgr-5.20-r1.ebuild, +megamgr-5.20-r2.ebuild, -files/megamgr,
+  -files/megamgr-r1, metadata.xml:
+  Fix SRC_URI. Fix bug 261749 and bug 273322. Remove the old wrapper, udev
+  should be able to handle the device nodes part.
+
+  07 Jan 2009; <tsunam@gentoo.org> megamgr-5.20-r1.ebuild:
+  Changing download url per bug 250385, thanks to Christophe Lefebvre for
+  correct url
+
+*megamgr-5.20-r1 (01 Dec 2008)
+
+  01 Dec 2008; Wolfram Schlich <wschlich@gentoo.org> +files/megamgr-r1,
+  +megamgr-5.20-r1.ebuild:
+  add support for newer kernels (see bug #233295)
+
+  11 Jul 2008; Wolfram Schlich <wschlich@gentoo.org> megamgr-5.20.ebuild:
+  add multilib check
+
+  24 Apr 2008; Wolfram Schlich <wschlich@gentoo.org> files/megamgr:
+  fix wrapper script
+
+*megamgr-5.20 (24 Apr 2008)
+
+  24 Apr 2008; Wolfram Schlich <wschlich@gentoo.org> +files/megamgr,
+  +metadata.xml, +megamgr-5.20.ebuild:
+  initial import

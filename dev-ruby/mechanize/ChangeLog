@@ -1,0 +1,224 @@
+# ChangeLog for dev-ruby/mechanize
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/mechanize/ChangeLog,v 1.53 2015/06/11 05:20:09 graaff Exp $
+
+  11 Jun 2015; Hans de Graaff <graaff@gentoo.org> -mechanize-2.6.0.ebuild:
+  Cleanup.
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  11 May 2015; Jeroen Roovers <jer@gentoo.org> mechanize-2.7.3.ebuild,
+  mechanize-2.7.3-r1.ebuild:
+  Mark ~ppc64 (bug #522056).
+
+  03 May 2015; Hans de Graaff <graaff@gentoo.org> mechanize-2.7.3-r1.ebuild:
+  Add ruby22.
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> mechanize-2.7.3.ebuild:
+  Stable for x86, wrt bug #545458
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> mechanize-2.7.3.ebuild:
+  Stable for amd64, wrt bug #545458
+
+*mechanize-2.7.3-r1 (04 Apr 2015)
+
+  04 Apr 2015; Hans de Graaff <graaff@gentoo.org> mechanize-2.7.3.ebuild,
+  +mechanize-2.7.3-r1.ebuild:
+  Create stable candidate.
+
+  10 Feb 2015; Agostino Sarubbo <ago@gentoo.org> mechanize-2.7.3.ebuild:
+  Add ~ppc, wrt bug #522056
+
+  05 Feb 2015; Agostino Sarubbo <ago@gentoo.org> mechanize-2.7.3.ebuild:
+  Add ~x86, wrt bug #522056
+
+*mechanize-2.7.3 (03 Sep 2014)
+
+  03 Sep 2014; Manuel Rüger <mrueg@gentoo.org> +mechanize-2.7.3.ebuild:
+  Version bump. Thanks to Ole Reifschneider. Rekeywording in bug #522056
+
+  17 Jun 2014; Manuel Rüger <mrueg@gentoo.org> mechanize-2.6.0.ebuild:
+  Update HOMEPAGE as rubyforge is down.
+
+  26 May 2014; Manuel Rüger <mrueg@gentoo.org> mechanize-2.6.0.ebuild:
+  Remove ruby18 target.
+
+  15 Mar 2014; Manuel Rüger <mrueg@gentoo.org> -mechanize-1.0.0.ebuild:
+  Cleanup ruby18-only.
+
+  18 Jan 2014; Hans de Graaff <graaff@gentoo.org> -mechanize-1.0.0-r1.ebuild,
+  -mechanize-2.5.1.ebuild:
+  Cleanup.
+
+  15 Sep 2013; Agostino Sarubbo <ago@gentoo.org> mechanize-2.6.0.ebuild:
+  Stable for x86, wrt bug #483694
+
+  15 Sep 2013; Agostino Sarubbo <ago@gentoo.org> mechanize-2.6.0.ebuild:
+  Stable for amd64, wrt bug #483694
+
+*mechanize-2.6.0 (07 May 2013)
+
+  07 May 2013; Hans de Graaff <graaff@gentoo.org> +mechanize-2.6.0.ebuild,
+  +files/mechanize-2.6.0-libxml290.patch:
+  Version bump.
+
+  25 Nov 2012; Thomas Kahle <tomka@gentoo.org> mechanize-2.5.1.ebuild:
+  marked ~x86 per bug 432830
+
+  29 Sep 2012; Fabian Groffen <grobian@gentoo.org> mechanize-2.5.1.ebuild:
+  Added Prefix keywords, bug #432830
+
+  27 Sep 2012; Samuli Suominen <ssuominen@gentoo.org> mechanize-2.5.1.ebuild:
+  Keyword ~ppc/~ppc64 wrt #432830
+
+*mechanize-2.5.1 (26 Aug 2012)
+
+  26 Aug 2012; Hans de Graaff <graaff@gentoo.org> +mechanize-2.5.1.ebuild:
+  Version bump. Drop jruby due to missing dependencies. Drop arches for same
+  reason, bug 432830.
+
+  01 May 2012; Raúl Porcel <armin76@gentoo.org> mechanize-1.0.0.ebuild,
+  mechanize-1.0.0-r1.ebuild:
+  Drop ia64/sparc keywords
+
+*mechanize-1.0.0-r1 (28 Dec 2011)
+
+  28 Dec 2011; Hans de Graaff <graaff@gentoo.org> mechanize-1.0.0.ebuild,
+  +mechanize-1.0.0-r1.ebuild:
+  Revision bump to drop ruby19 from stable version.
+
+  26 Dec 2011; Hans de Graaff <graaff@gentoo.org> mechanize-1.0.0.ebuild:
+  Update nokogiri dependency to fix bug 365931.
+
+  02 Aug 2011; Markos Chandras <hwoarang@gentoo.org> mechanize-1.0.0.ebuild:
+  Stable on amd64 wrt bug #348510
+
+  23 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> mechanize-1.0.0.ebuild:
+  ppc stable wrt #348510
+
+  20 Jul 2011; Thomas Kahle <tomka@gentoo.org> mechanize-1.0.0.ebuild:
+  x86 stable per bug 348510
+
+  30 Apr 2010; Hans de Graaff <graaff@gentoo.org> -mechanize-0.9.3.ebuild,
+  -mechanize-0.9.3-r1.ebuild:
+  Remove old versions.
+
+*mechanize-1.0.0 (04 Apr 2010)
+
+  04 Apr 2010; Hans de Graaff <graaff@gentoo.org> +mechanize-1.0.0.ebuild:
+  Version bump. Broken tests got fixed upstream. Add missing built-time
+  dependency on hoe.
+
+  30 Jan 2010; Raúl Porcel <armin76@gentoo.org> mechanize-0.9.3-r1.ebuild:
+  Add ~sparc
+
+*mechanize-0.9.3-r1 (18 Jan 2010)
+
+  18 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +mechanize-0.9.3-r1.ebuild:
+  Bump to ruby-fakegem, disable three tests (and reported upstream) because
+  they lack the files to use.
+
+  04 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  mechanize-0.9.3.ebuild:
+  Transfer Prefix keywords
+
+  24 Aug 2009; Hans de Graaff <graaff@gentoo.org> -mechanize-0.9.2.ebuild:
+  Remove old version.
+
+*mechanize-0.9.3 (29 Jun 2009)
+
+  29 Jun 2009; Hans de Graaff <graaff@gentoo.org> +mechanize-0.9.3.ebuild:
+  Version bump with bug fixes.
+
+  29 Jun 2009; Hans de Graaff <graaff@gentoo.org> -mechanize-0.8.5.ebuild,
+  -mechanize-0.9.0.ebuild:
+  Remove old versions.
+
+*mechanize-0.9.2 (10 May 2009)
+
+  10 May 2009; Alex Legler <a3li@gentoo.org> -mechanize-0.6.11.ebuild,
+  -mechanize-0.7.6.ebuild, +mechanize-0.9.2.ebuild:
+  Version bump, removing old.
+
+  18 Mar 2009; Brent Baude <ranger@gentoo.org> mechanize-0.9.0.ebuild:
+  keyworded ~arch for ppc, bug 252676
+
+  27 Dec 2008; Friedrich Oslage <bluebird@gentoo.org>
+  mechanize-0.9.0.ebuild:
+  Re-add ~sparc keyword, bug #252676
+
+*mechanize-0.9.0 (27 Dec 2008)
+
+  27 Dec 2008; Hans de Graaff <graaff@gentoo.org> +mechanize-0.9.0.ebuild:
+  Version bump. Now uses nokogiri instead of hpricot, dropped ppc and sparc
+  keywords due to this, #252676.
+
+*mechanize-0.8.5 (20 Dec 2008)
+
+  20 Dec 2008; Hans de Graaff <graaff@gentoo.org> +mechanize-0.8.5.ebuild:
+  Version bump
+
+  20 Dec 2008; Hans de Graaff <graaff@gentoo.org> -mechanize-0.6.7.ebuild,
+  -mechanize-0.6.10.ebuild, -mechanize-0.7.0.ebuild,
+  -mechanize-0.7.2.ebuild, -mechanize-0.7.3.ebuild, -mechanize-0.7.5.ebuild:
+  Remove old versions
+
+  08 Jul 2008; Javier Villavicencio <the_paya@gentoo.org>
+  mechanize-0.7.6.ebuild:
+  Added ~x86-fbsd keyword.
+
+  07 Jul 2008; Friedrich Oslage <bluebird@gentoo.org>
+  mechanize-0.7.6.ebuild:
+  Add ~sparc keyword, bug #230517
+
+*mechanize-0.7.6 (23 May 2008)
+
+  23 May 2008; <agorf@gentoo.org> +mechanize-0.7.6.ebuild:
+  Version bump to 0.7.6.
+
+*mechanize-0.7.5 (26 Mar 2008)
+
+  26 Mar 2008; Aggelos Orfanakos <agorf@gentoo.org> +mechanize-0.7.5.ebuild:
+  Version bump to 0.7.5.
+
+*mechanize-0.7.3 (13 Mar 2008)
+
+  13 Mar 2008; Aggelos Orfanakos <agorf@gentoo.org> +mechanize-0.7.3.ebuild:
+  Version bump to 0.7.3.
+
+*mechanize-0.7.2 (12 Mar 2008)
+
+  12 Mar 2008; Aggelos Orfanakos <agorf@gentoo.org> +mechanize-0.7.2.ebuild:
+  Version bump to 0.7.2.
+
+  15 Jan 2008; Aggelos Orfanakos <agorf@gentoo.org> mechanize-0.7.0.ebuild:
+  Setting correct Ruby dependency (1.8.4).
+
+*mechanize-0.7.0 (15 Jan 2008)
+
+  15 Jan 2008; Aggelos Orfanakos <agorf@gentoo.org> +mechanize-0.7.0.ebuild:
+  Version bump.
+
+*mechanize-0.6.11 (05 Dec 2007)
+
+  05 Dec 2007; Aggelos Orfanakos <agorf@gentoo.org>
+  +mechanize-0.6.11.ebuild:
+  Version bump.
+
+*mechanize-0.6.10 (13 Sep 2007)
+
+  13 Sep 2007; Aggelos Orfanakos <agorf@gentoo.org>
+  +mechanize-0.6.10.ebuild:
+  Version bump to 0.6.10.
+
+  14 Apr 2007; Robin H. Johnson <robbat2@gentoo.org> mechanize-0.6.7.ebuild:
+  Add a dep that wasn't described in the upstream documentation, but is needed
+  by the .gem
+
+*mechanize-0.6.7 (14 Apr 2007)
+
+  14 Apr 2007; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +mechanize-0.6.7.ebuild:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

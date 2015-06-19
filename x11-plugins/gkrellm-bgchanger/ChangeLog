@@ -1,0 +1,117 @@
+# ChangeLog for x11-plugins/gkrellm-bgchanger
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-bgchanger/ChangeLog,v 1.26 2013/06/01 11:31:10 pacho Exp $
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #144305
+
+*gkrellm-bgchanger-0.1.11-r1 (08 Sep 2012)
+
+  08 Sep 2012; Agostino Sarubbo <ago@gentoo.org>
+  +gkrellm-bgchanger-0.1.11-r1.ebuild:
+  Respect CC and correct include dir
+
+*gkrellm-bgchanger-0.1.11 (30 Aug 2012)
+
+  30 Aug 2012; Jim Ramsay <jim_ramsay@gentoo.org>
+  +gkrellm-bgchanger-0.1.11.ebuild, gkrellm-bgchanger-0.1.10.ebuild:
+  Version bump: 0.1.11
+
+  20 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -gkrellm-bgchanger-0.1.7.ebuild:
+  Remove obsolete version (masked).
+
+*gkrellm-bgchanger-0.1.10 (31 Oct 2010)
+
+  31 Oct 2010; Jim Ramsay <lack@gentoo.org>
+  +gkrellm-bgchanger-0.1.10.ebuild:
+  Version bump: 0.1.10 is released. Bug #338971
+
+  12 Jun 2007; Jim Ramsay <lack@gentoo.org> -gkrellm-bgchanger-0.1.0.ebuild,
+  -gkrellm-bgchanger-0.1.2.ebuild:
+  Old version cleanup
+
+  02 Jun 2007; Raúl Porcel <armin76@gentoo.org>
+  gkrellm-bgchanger-0.1.7.ebuild:
+  alpha stable wrt #176144
+
+  26 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  gkrellm-bgchanger-0.1.7.ebuild:
+  amd64 stable, bug 176144
+
+  07 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  gkrellm-bgchanger-0.1.7.ebuild:
+  ppc stable, bug #176144
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org>
+  gkrellm-bgchanger-0.1.7.ebuild:
+  x86 stable
+
+  09 Mar 2007; Jim Ramsay <lack@gentoo.org> gkrellm-bgchanger-0.1.0.ebuild,
+  gkrellm-bgchanger-0.1.2.ebuild, gkrellm-bgchanger-0.1.7.ebuild:
+  Updated to use new gkrellm-plugin eclass
+
+  22 Feb 2007; Jim Ramsay <lack@gentoo.org> metadata.xml:
+  Accepting maintainership
+
+  05 Feb 2007; Raúl Porcel <armin76@gentoo.org>
+  gkrellm-bgchanger-0.1.2.ebuild:
+  x86 stable wrt bug 151446
+
+  05 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gkrellm-bgchanger-0.1.7.ebuild:
+  Stable on sparc wrt #151446
+
+*gkrellm-bgchanger-0.1.7 (04 Feb 2007)
+
+  04 Feb 2007; Charlie Shepherd <masterdriverz@gentoo.org>
+  -gkrellm-bgchanger-0.0.4-r1.ebuild, -gkrellm-bgchanger-0.0.8.ebuild,
+  -gkrellm-bgchanger-0.0.9.ebuild, +gkrellm-bgchanger-0.1.7.ebuild:
+  Bump gkrellm-bgchanger to 0.1.6; bug 93212; thanks to Pietro Franchi
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  gkrellm-bgchanger-0.1.2.ebuild:
+  Mark 0.1.2 stable on alpha
+
+  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org>
+  gkrellm-bgchanger-0.1.0.ebuild:
+  Stable on amd64.
+
+  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org>
+  gkrellm-bgchanger-0.1.2.ebuild:
+  multilib fixes
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gkrellm-bgchanger-0.1.0.ebuild:
+  Masked gkrellm-bgchanger-0.1.0.ebuild stable for ppc
+
+*gkrellm-bgchanger-0.1.0 (09 Jul 2004)
+
+  09 Jul 2004; Tom Martin <slarti@gentoo.org> gkrellm-bgchanger-0.1.0.ebuild:
+  Marked ~amd64.
+
+*gkrellm-bgchanger-0.0.9 (18 Jan 2004)
+
+  18 Jan 2004; Martin Holzer <mholzer@gentoo.org>
+  gkrellm-bgchanger-0.0.9.ebuild:
+  Version bumped. Closes 38338
+
+*gkrellm-bgchanger-0.0.8 (01 Dec 2003)
+*gkrellm-bgchanger-0.0.4-r1 (01 Dec 2003)
+
+  01 Dec 2003; Seemant Kulleen <seemant@gentoo.org>
+  gkrellm-bgchanger-0.0.4-r1.ebuild, gkrellm-bgchanger-0.0.4.ebuild,
+  gkrellm-bgchanger-0.0.8.ebuild:
+  split this up to install a gkrellm and a gkrellm2 version separately. Also
+  note that the gkrellm2 version had a bump. Closes bug #34572 by Spider
+  <spider@gentoo.org>
+
+*gkrellm-bgchanger-0.0.4 (14 Dec 2002)
+
+  14 Dec 2002; Seemant Kulleen <seemant@gentoo.org>
+  gkrellm-bgchanger-0.0.4.ebuild ChangeLog
+  files/digest-gkrellm-bgchanger-0.0.4 :
+
+  This is actually gkrellmbgchg and gkrellbgchg2 depending on whether you
+  have gtk2 in USE and whether you have /usr/bin/gkrellm and/or
+  /usr/bin/gkrellm2

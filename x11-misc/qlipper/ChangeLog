@@ -1,0 +1,41 @@
+# ChangeLog for x11-misc/qlipper
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/qlipper/ChangeLog,v 1.8 2015/05/10 13:16:48 pesa Exp $
+
+  10 May 2015; Davide Pesavento <pesa@gentoo.org> qlipper-2.0.2.ebuild:
+  Add missing usedeps for qtsingleapplication.
+
+  20 Oct 2013; Davide Pesavento <pesa@gentoo.org> -qlipper-2.0.1.ebuild,
+  qlipper-2.0.2.ebuild:
+  Restore ~x86 keyword wrt bug 483618. Remove old.
+
+  01 Oct 2013; Davide Pesavento <pesa@gentoo.org>
+  +files/qlipper-2.0.2-system-includes.patch, qlipper-2.0.2.ebuild:
+  EAPI=5; add missing deps and fix build.
+
+*qlipper-2.0.2 (01 Oct 2013)
+
+  01 Oct 2013; Davide Pesavento <pesa@gentoo.org> +qlipper-2.0.2.ebuild,
+  -qlipper-2.0.0-r1.ebuild:
+  Version bump.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> qlipper-2.0.0-r1.ebuild,
+  qlipper-2.0.1.ebuild:
+  Move Qt dependencies to the new category
+
+*qlipper-2.0.1 (02 Sep 2012)
+
+  02 Sep 2012; Ben de Groot <yngwin@gentoo.org> +qlipper-2.0.1.ebuild:
+  Version bump. Build system changed to cmake.
+
+*qlipper-2.0.0-r1 (31 Jul 2012)
+
+  31 Jul 2012; Ben de Groot <yngwin@gentoo.org> +qlipper-2.0.0-r1.ebuild,
+  -qlipper-2.0.0.ebuild:
+  Install in right place. Handle localizations.
+
+*qlipper-2.0.0 (29 Jun 2012)
+
+  29 Jun 2012; Ben de Groot <yngwin@gentoo.org> +metadata.xml,
+  +qlipper-2.0.0.ebuild:
+  Initial commit

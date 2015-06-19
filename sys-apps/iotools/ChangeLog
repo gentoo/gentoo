@@ -1,0 +1,28 @@
+# ChangeLog for sys-apps/iotools
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/iotools/ChangeLog,v 1.6 2014/01/13 22:18:48 vapier Exp $
+
+  13 Jan 2014; Mike Frysinger <vapier@gentoo.org> iotools-1.5.ebuild:
+  Add arm/ppc keywords and mark amd64/x86 stable #497846 by David Hendricks.
+
+*iotools-1.5 (23 Apr 2013)
+
+  23 Apr 2013; Mike Frysinger <vapier@gentoo.org> +iotools-1.5.ebuild:
+  Version bump.
+
+  18 Feb 2013; Mike Frysinger <vapier@gentoo.org> iotools-1.4.ebuild:
+  Use LC_ALL=C sorting for cmds #457850 by Jason Mours.
+
+  18 Feb 2013; Mike Frysinger <vapier@gentoo.org> iotools-1.4.ebuild:
+  Add more debugging info to `die` path #457850 by Jason Mours.
+
+  10 Feb 2013; Mike Frysinger <vapier@gentoo.org>
+  files/iotools-1.4-cpuid-pic.patch, files/iotools-1.4-ldflags.patch:
+  add upstream urls
+
+*iotools-1.4 (10 Feb 2013)
+
+  10 Feb 2013; Mike Frysinger <vapier@gentoo.org>
+  +files/iotools-1.4-cpuid-pic.patch, +files/iotools-1.4-ldflags.patch,
+  +iotools-1.4.ebuild, +metadata.xml:
+  Initial ebuild based on the one from ChromiumOS.

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <longdescription lang="en">
+  The GNU Scientific Library (GSL) is a collection of routines for
+  numerical analysis. The routines are written from scratch by the GSL
+  team in C, and present a modern API for C programmers, while allowing
+  wrappers to be written for very high level languages.
+  
+  GSL includes data types and routines for complex numbers, vectors,
+  matrices, basic linear algebra subroutines (BLAS), eigensystems,
+  simulated annealing, minimization, root finding, pseudo-random
+  numbers, least-squares fitting, fast Fourier transforms (FFT),
+  differential equations, quadrature, Monte Carlo integration, special
+  functions, physical constants, and much more. 
+</longdescription>
+  <use>
+    <flag name="cblas-external">Link gsl with external cblas provided by
+    (<pkg>virtual/cblas</pkg>) instead of shipped internal version</flag>
+  </use>
+</pkgmetadata>

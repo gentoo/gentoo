@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst setup
+DEPEND=sys-libs/libcap >=www-servers/apache-2.4.7[-threads] =www-servers/apache-2.4*
+DESCRIPTION=Run virtual hosts under separate users/groups
+EAPI=5
+HOMEPAGE=http://mpm-itk.sesse.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=sys-libs/libcap >=www-servers/apache-2.4.7[-threads] =www-servers/apache-2.4*
+SLOT=0
+SRC_URI=http://mpm-itk.sesse.net/mpm-itk-2.4.7-02.tar.gz
+_eclasses_=apache-module	5c4c90da2d68c2dc8391666824f1293c	depend.apache	1a38534d3f755d1ab1d92ce120bd7dbd	eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=e33ed8612070b218875194b0e0e3f8bf

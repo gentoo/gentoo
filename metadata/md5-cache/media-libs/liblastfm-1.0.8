@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-qt/qtcore-4.8.0:4 >=dev-qt/qtdbus-4.8.0:4 fingerprint? ( media-libs/libsamplerate sci-libs/fftw:3.0 >=dev-qt/qtsql-4.8.0:4 ) test? ( >=dev-qt/qttest-4.8.0:4 ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=A Qt C++ library for the Last.fm webservices
+EAPI=5
+HOMEPAGE=https://github.com/lastfm/liblastfm
+IUSE=fingerprint test
+KEYWORDS=amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3
+RDEPEND=>=dev-qt/qtcore-4.8.0:4 >=dev-qt/qtdbus-4.8.0:4 fingerprint? ( media-libs/libsamplerate sci-libs/fftw:3.0 >=dev-qt/qtsql-4.8.0:4 ) !<media-libs/lastfmlib-0.4.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/lastfm/liblastfm/archive/1.0.8.tar.gz -> liblastfm-1.0.8.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=251e062e3820806bccb377c82b69b3ed

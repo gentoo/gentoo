@@ -1,0 +1,257 @@
+# ChangeLog for app-text/wv
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/wv/ChangeLog,v 1.70 2013/09/13 21:45:53 eva Exp $
+
+  13 Sep 2013; Gilles Dartiguelongue <eva@gentoo.org> wv-1.2.9-r1.ebuild:
+  Automake-1.13 fix, bug #467620
+
+  05 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org> -wv-1.2.3-r1.ebuild,
+  -wv-1.2.7.ebuild, -wv-1.2.9.ebuild:
+  Clean up old revisions.
+
+  04 Jun 2012; Zac Medico <zmedico@gentoo.org> wv-1.2.9-r1.ebuild,
+  wv-1.2.9.ebuild:
+  inherit multilib for get_libdir
+
+  29 May 2012; Anthony G. Basile <blueness@gentoo.org> wv-1.2.9-r1.ebuild:
+  Keyword ~mips
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> wv-1.2.3-r1.ebuild,
+  wv-1.2.7.ebuild, wv-1.2.9.ebuild, wv-1.2.9-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  03 May 2011; Hanno Boeck <hanno@gentoo.org> wv-1.2.9-r1.ebuild:
+  Add ~arm keyword.
+
+  12 Apr 2011; Jonathan Callen <abcd@gentoo.org> wv-1.2.9-r1.ebuild:
+  Add prefix keywords
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org> wv-1.2.9-r1.ebuild:
+  Marking wv-1.2.9-r1 ppc stable for bug 353436
+
+  21 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> wv-1.2.9-r1.ebuild:
+  ppc64 stable wrt #353436
+
+  12 Mar 2011; Raúl Porcel <armin76@gentoo.org> wv-1.2.9-r1.ebuild:
+  alpha/ia64/sparc stable wrt #353436
+
+  07 Mar 2011; Jeroen Roovers <jer@gentoo.org> wv-1.2.9-r1.ebuild:
+  Stable for HPPA (bug #353436).
+
+  24 Feb 2011; Thomas Kahle <tomka@gentoo.org> wv-1.2.9-r1.ebuild:
+  x86 stable per bug 353436
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org> wv-1.2.9-r1.ebuild:
+  Stable on amd64 wrt bug #353436
+
+  09 Feb 2011; Pacho Ramos <pacho@gentoo.org> wv-1.2.9-r1.ebuild:
+  Fix sed command behavior depending on LC_ALL setting (bug #353832 by
+  Dominique Michel and Sander Sweers).
+
+*wv-1.2.9-r1 (02 Feb 2011)
+
+  02 Feb 2011; Pacho Ramos <pacho@gentoo.org> +wv-1.2.9-r1.ebuild,
+  metadata.xml:
+  Build and install tools only when requested since they are considered
+  deprecated in favor of using AbiWord, this also allows us to not depend on
+  latex always.
+
+  31 Jan 2011; Pacho Ramos <pacho@gentoo.org> wv-1.2.9.ebuild:
+  ebuild cleanups by Gilles.
+
+*wv-1.2.9 (31 Jan 2011)
+
+  31 Jan 2011; Pacho Ramos <pacho@gentoo.org> -wv-1.2.4.ebuild,
+  +wv-1.2.9.ebuild:
+  Version bump, remove old, dvips and latex are required (bug #345121).
+
+*wv-1.2.7 (12 Mar 2010)
+
+  12 Mar 2010; Pacho Ramos <pacho@gentoo.org> +wv-1.2.7.ebuild:
+  Version bump, lots of fixes
+
+*wv-1.2.4 (19 Feb 2008)
+
+  19 Feb 2008; Caleb Tennis <caleb@gentoo.org> wv-1.2.3-r1.ebuild,
+  +wv-1.2.4.ebuild:
+  version bump
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing foser from metadata.xml as per #120234.
+
+  13 Feb 2007; Roy Marples <uberlord@gentoo.org> wv-1.2.3-r1.ebuild:
+  Added ~x86-fbsd keyword.
+
+  30 Jan 2007; Daniel Gryniewicz <dang@gentoo.org>
+  -files/wv-1.0.0-fix_overflow.patch, -files/wv-1.0.3-gcc4.patch,
+  -files/wv-1.0.3-libole2-readonly.patch, -wv-1.0.0-r1.ebuild,
+  -wv-1.2.0.ebuild, -wv-1.2.1.ebuild:
+  Remove vulnerable versions; bug #164202
+
+  24 Nov 2006; Bryan Østergaard <kloeri@gentoo.org> wv-1.2.3-r1.ebuild:
+  Stable on Alpha + ia64, bug 153800.
+
+  22 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org> wv-1.2.3-r1.ebuild:
+  Stable on sparc wrt security #153800
+
+  22 Nov 2006; Tobias Scherbaum <dertobi123@gentoo.org> wv-1.2.3-r1.ebuild:
+  ppc stable, bug #153800
+
+  22 Nov 2006; Christian Faulhammer <opfer@gentoo.org> wv-1.2.3-r1.ebuild:
+  stable x86, security bug #153800
+
+  21 Nov 2006; <malc@gentoo.org> wv-1.2.3-r1.ebuild:
+  Stable amd64 - bug #153800
+
+  21 Nov 2006; Jeroen Roovers <jer@gentoo.org> wv-1.2.3-r1.ebuild:
+  Stable for HPPA (bug #153800).
+
+  21 Nov 2006; Brent Baude <ranger@gentoo.org> wv-1.2.3-r1.ebuild:
+  Marking wv-1.2.3-r1 ppc64 for bug 153800
+
+*wv-1.2.3-r1 (21 Nov 2006)
+
+  21 Nov 2006; Marinus Schraal <foser@gentoo.org> wv-1.2.3-r1.ebuild :
+  Remove library compatability linking, add revdep rebuild warning (#153800)
+
+*wv-1.2.3 (21 Nov 2006)
+
+  21 Nov 2006; Marinus Schraal <foser@gentoo.org> wv-1.2.3.ebuild :
+  New release
+
+  06 Sep 2006; Thomas Cort <tcort@gentoo.org> wv-1.2.1.ebuild:
+  Stable on alpha.
+
+  21 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org> wv-1.2.1.ebuild:
+  Stable on ppc/sparc/x86 wrt release snapshot.
+
+  16 Aug 2006; Markus Rothe <corsair@gentoo.org> wv-1.2.0.ebuild:
+  Stable on ppc64
+
+  03 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org> wv-1.2.0.ebuild:
+  Stable on sparc
+
+  17 Jul 2006; Daniel Gryniewicz <dang@gentoo.org> wv-1.2.0.ebuild:
+  Marked stable on amd64 for bug #139612
+
+  17 Jul 2006; Daniel Gryniewicz <dang@gentoo.org> wv-1.2.1.ebuild:
+  Marked stable on amd64 for bug #139612
+
+  16 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org> wv-1.2.0.ebuild:
+  hppa stable, bug #139612
+
+  12 Jul 2006; Aron Griffis <agriffis@gentoo.org> wv-1.2.0.ebuild:
+  Mark 1.2.0 stable on ia64
+
+  12 Jul 2006; Chris Gianelloni <wolf31o2@gentoo.org> wv-1.2.0.ebuild:
+  Stable on x86 wrt bug #139612.
+
+  07 Jul 2006; Luca Barbato <lu_zero@gentoo.org> wv-1.2.0.ebuild:
+  Marked ppc works with gcc-4.1 better
+
+  05 Jul 2006; Michael Sterrett <mr_bones_@gentoo.org> wv-1.0.0-r1.ebuild:
+  change xml2 use flag to xml
+
+*wv-1.2.1 (15 Apr 2006)
+
+  15 Apr 2006; Marinus Schraal <foser@gentoo.org> wv-1.2.1.ebuild :
+  New release (#129830)
+  Remove internal header install
+  API breakage, add preserve_old_lib*
+
+*wv-1.2.0 (31 Oct 2005)
+
+  31 Oct 2005; Leonardo Boshell <leonardop@gentoo.org> +wv-1.2.0.ebuild:
+  New version (bug #110986).
+
+*wv-1.0.3-r1 (06 Oct 2005)
+
+  06 Oct 2005; Daniel Drake <dsd@gentoo.org>
+  +files/wv-1.0.3-libole2-readonly.patch, +wv-1.0.3-r1.ebuild:
+  Add patch from Fredrik Hedberg to stop files being opened for read/write.
+
+  26 Apr 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/wv-1.0.3-gcc4.patch, wv-1.0.3.ebuild:
+  Fix building with gcc4 (namespace collide with libxml2).
+
+*wv-1.0.3 (01 Dec 2004)
+
+  01 Dec 2004; foser <foser@gentoo.org> wv-1.0.3.ebuild :
+  Welcome to december, full of lights and emptyness
+  New wv, fixed deps a bit
+
+  09 Aug 2004; Tom Gall <tgall@gentoo.org> wv-1.0.0-r1.ebuild:
+  stable on ppc64, bug #57192
+
+  08 Aug 2004; foser <foser@gentoo.org> wv-1.0.0-r1.ebuild :
+  Fix HOMEPAGE as suggested in #58117 by Aniruddha Shankar <karim@sarai.net>
+
+*wv-1.0.0-r1 (12 Jul 2004)
+
+  12 Jul 2004; foser <foser@gentoo.org> wv-1.0.0-r1.ebuild , wv-1.0.0-fix_overflow.patch, metadata.xml:
+  Add security fix (#56595)
+  Make wmf support USE switchable
+  Added to gnome herd for now with me as maintainer
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> wv-1.0.0.ebuild:
+  stable on alpha and ia64
+
+  17 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> :
+  manifest fix
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> wv-1.0.0.ebuild:
+  set ppc in keywords
+
+  07 Jan 2004; <gustavoz@gentoo.org> wv-1.0.0.ebuild:
+  marked stable on hppa
+
+  09 Nov 2003; Jason Wever <weeve@gentoo.org> wv-1.0.0.ebuild:
+  Marked stable for sparc.
+
+*wv-1.0.0 (13 Sep 2003)
+
+  13 Sep 2003; foser <foser@gentoo.org> wv-1.0.0.ebuild :
+  New version, added xml2 USE flag and minor cleanups
+
+  30 Aug 2003; Jason Wever <weeve@gentoo.org> wv-0.7.6.ebuild:
+  Added ~sparc to keywords.
+
+  04 Jul 2003; Luca Barbato <lu_zero@gentoo.org> wv-0.7.6.ebuild :
+  Added ~ppc keyword
+
+*wv-0.7.6 (18 Jun 2003)
+
+  18 Jun 2003; foser <foser@gentoo.org> wv-0.7.6.ebuild :
+  New version
+
+*wv-0.7.5 (31 Mar 2003)
+
+  31 Mar 2003; foser <foser@gentoo.org> wv-0.7.5.ebuild :
+  New version, fixed deps
+
+*wv-0.7.4-r1 (25 Jan 2003)
+
+  26 Jan 2003; Brad Cowan <bcowan@gentoo.org> wv-0.7.4-r1.ebuild,
+  files/digest-wv-0.7.4-r1:
+  
+  Added header file and fixed symlink.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*wv-0.7.4 (27 Nov 2002)
+
+  27 Nov 2002; Brad Cowan <bcowan@gentoo.org> wv-0.7.4.ebuild,
+  files/digest-wv-0.7.4:
+  
+  Version bump.
+
+*wv-0.7.1 (8 Feb 2002)
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> wv-0.7.1.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+  
+  19 Apr 2002; G.Shapovalov <georges@its.caltech.edu> all_files :
+
+  initial release. This is wv, formerly known as mswordview. This is a utility (or set of) which
+  can convert MSWord files to different formats from clear text, html, tex, etc. to ps, pdf.
+

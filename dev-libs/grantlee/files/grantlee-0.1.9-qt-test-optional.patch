@@ -1,0 +1,46 @@
+From ab40a1ce4bff38fe6c19931bcdb46cdf754e29ed Mon Sep 17 00:00:00 2001
+From: Johannes Huber <johu@gentoo.org>
+Date: Thu, 22 Mar 2012 11:37:57 +0100
+Subject: [PATCH] Search only for qt-test if test build option is enabled.
+
+Build fails on systems were no qt-test is installed and the build option
+for tests is disabled. See downstream bug report
+https://bugs.gentoo.org/show_bug.cgi?id=409131.
+---
+ templates/CMakeLists.txt    |    6 +++++-
+ textdocument/CMakeLists.txt |    6 +++++-
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/templates/CMakeLists.txt b/templates/CMakeLists.txt
+index 0594cc3..eec0f12 100644
+--- a/templates/CMakeLists.txt
++++ b/templates/CMakeLists.txt
+@@ -1,5 +1,9 @@
+ 
+-find_package(Qt4 4.5.0 REQUIRED QtCore QtScript QtTest)
++if (BUILD_TESTS)
++	find_package(Qt4 4.5.0 REQUIRED QtCore QtScript QtTest)
++else (BUILD_TESTS)
++	find_package(Qt4 4.5.0 REQUIRED QtCore QtScript)
++endif (BUILD_TESTS)
+ 
+ include(${Grantlee_USE_FILE})
+ 
+diff --git a/textdocument/CMakeLists.txt b/textdocument/CMakeLists.txt
+index d456663..8fa2892 100644
+--- a/textdocument/CMakeLists.txt
++++ b/textdocument/CMakeLists.txt
+@@ -1,5 +1,9 @@
+ 
+-find_package(Qt4 4.5.0 REQUIRED QtCore QtGui QtTest)
++if (BUILD_TESTS)
++	find_package(Qt4 4.5.0 REQUIRED QtCore QtScript QtTest)
++else (BUILD_TESTS)
++        find_package(Qt4 4.5.0 REQUIRED QtCore QtScript)
++endif (BUILD_TESTS)
+ 
+ include(${QT_USE_FILE})
+ 
+-- 
+1.7.9.4
+

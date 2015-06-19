@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>bsd</herd>
+  <use>
+    <flag name='zfs'>Enable ZFS support.</flag>
+    <flag name='netware'> Build tools to work with NetWare protocols (IPX and NCP).</flag>
+  </use>
+</pkgmetadata>

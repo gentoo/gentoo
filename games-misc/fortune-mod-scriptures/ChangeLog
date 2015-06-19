@@ -1,0 +1,35 @@
+# ChangeLog for games-misc/fortune-mod-scriptures
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-scriptures/ChangeLog,v 1.8 2014/02/07 02:57:33 creffett Exp $
+
+  07 Feb 2014; Chris Reffett <creffett@gentoo.org>
+  fortune-mod-scriptures-1.1.0.ebuild:
+  EAPI bump
+
+  18 Nov 2012; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove beandog wrt #131511
+
+  12 Dec 2010; Fabian Groffen <grobian@gentoo.org>
+  fortune-mod-scriptures-1.1.0.ebuild:
+  Added Prefix keywords
+
+  08 Oct 2010; Mart Raudsepp <leio@gentoo.org>
+  fortune-mod-scriptures-1.1.0.ebuild:
+  Drop to ~mips
+
+  27 Apr 2007; Steve Dibb <beandog@gentoo.org>
+  fortune-mod-scriptures-1.1.0.ebuild:
+  amd64 stable
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org>
+  fortune-mod-scriptures-1.1.0.ebuild:
+  Replacing einfo with elog
+
+  20 Oct 2006; Steve Dibb <beandog@gentoo.org> +metadata.xml:
+  Add metadata
+
+*fortune-mod-scriptures-1.1.0 (20 Oct 2006)
+
+  20 Oct 2006; Steve Dibb <beandog@gentoo.org>
+  +fortune-mod-scriptures-1.1.0.ebuild:
+  Initial import

@@ -1,0 +1,631 @@
+# ChangeLog for x11-misc/util-macros
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/util-macros/ChangeLog,v 1.151 2015/03/14 14:28:26 maekke Exp $
+
+  14 Mar 2015; Markus Meier <maekke@gentoo.org> util-macros-1.19.0.ebuild:
+  arm stable, bug #530652
+
+  06 Mar 2015; Jeroen Roovers <jer@gentoo.org> util-macros-1.19.0.ebuild:
+  Stable for HPPA (bug #530652).
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> util-macros-1.19.0.ebuild:
+  Stable for alpha, wrt bug #530652
+
+  23 Feb 2015; Agostino Sarubbo <ago@gentoo.org> util-macros-1.19.0.ebuild:
+  Stable for sparc, wrt bug #530652
+
+  22 Feb 2015; Agostino Sarubbo <ago@gentoo.org> util-macros-1.19.0.ebuild:
+  Stable for ia64, wrt bug #530652
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> util-macros-1.19.0.ebuild:
+  Stable for ppc64, wrt bug #530652
+
+  20 Feb 2015; Agostino Sarubbo <ago@gentoo.org> util-macros-1.19.0.ebuild:
+  Stable for ppc, wrt bug #530652
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> util-macros-1.19.0.ebuild:
+  Stable for x86, wrt bug #530652
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org> util-macros-1.19.0.ebuild:
+  Stable for amd64, wrt bug #530652
+
+  15 Jun 2014; Mike Frysinger <vapier@gentoo.org> util-macros-1.18.0.ebuild,
+  util-macros-1.19.0.ebuild:
+  Add arm64 love.
+
+  08 Jun 2014; Agostino Sarubbo <ago@gentoo.org> util-macros-1.18.0.ebuild:
+  Stable for arm, wrt bug #500368
+
+*util-macros-1.19.0 (23 May 2014)
+
+  23 May 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +util-macros-1.19.0.ebuild:
+  Version bump.
+
+  19 Apr 2014; Agostino Sarubbo <ago@gentoo.org> util-macros-1.18.0.ebuild:
+  Stable for sparc, wrt bug #500368
+
+  17 Apr 2014; Agostino Sarubbo <ago@gentoo.org> util-macros-1.18.0.ebuild:
+  Stable for ia64, wrt bug #500368
+
+  16 Apr 2014; Agostino Sarubbo <ago@gentoo.org> util-macros-1.18.0.ebuild:
+  Stable for ppc64, wrt bug #500368
+
+  08 Apr 2014; Agostino Sarubbo <ago@gentoo.org> util-macros-1.18.0.ebuild:
+  Stable for ppc, wrt bug #500368
+
+  06 Apr 2014; Agostino Sarubbo <ago@gentoo.org> util-macros-1.18.0.ebuild:
+  Stable for x86, wrt bug #500368
+
+  29 Mar 2014; Matt Turner <mattst88@gentoo.org> util-macros-1.18.0.ebuild:
+  alpha stable, bug #500368.
+
+  28 Mar 2014; Jeroen Roovers <jer@gentoo.org> util-macros-1.18.0.ebuild:
+  Stable for HPPA (bug #500368).
+
+  27 Mar 2014; Agostino Sarubbo <ago@gentoo.org> util-macros-1.18.0.ebuild:
+  Stable for amd64, wrt bug #500368
+
+*util-macros-1.18.0 (04 Dec 2013)
+
+  04 Dec 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +util-macros-1.18.0.ebuild, -util-macros-1.17.ebuild:
+  Version bump. Remove old.
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org> util-macros-1.17.1.ebuild:
+  Stable for x86, wrt bug #475480
+
+  07 Oct 2013; Agostino Sarubbo <ago@gentoo.org> util-macros-1.17.1.ebuild:
+  Stable for sparc, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org> util-macros-1.17.1.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  05 Oct 2013; Markus Meier <maekke@gentoo.org> util-macros-1.17.1.ebuild:
+  arm stable, bug #475480
+
+  05 Oct 2013; Agostino Sarubbo <ago@gentoo.org> util-macros-1.17.1.ebuild:
+  Stable for alpha, wrt bug #475480
+
+  04 Oct 2013; Agostino Sarubbo <ago@gentoo.org> util-macros-1.17.1.ebuild:
+  Stable for ppc64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org> util-macros-1.17.1.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  02 Oct 2013; Jeroen Roovers <jer@gentoo.org> util-macros-1.17.1.ebuild:
+  Stable for HPPA (bug #475480).
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org> util-macros-1.17.1.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*util-macros-1.17.1 (08 Sep 2013)
+
+  08 Sep 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +util-macros-1.17.1.ebuild:
+  Version bump.
+
+  28 Nov 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -util-macros-1.14.0.ebuild, -util-macros-1.15.0.ebuild,
+  -util-macros-1.16.0.ebuild, -util-macros-1.16.1.ebuild,
+  -util-macros-1.16.2.ebuild:
+  Drop old.
+
+  13 Jun 2012; Mike Frysinger <vapier@gentoo.org> util-macros-1.14.0.ebuild,
+  util-macros-1.15.0.ebuild, util-macros-1.16.0.ebuild,
+  util-macros-1.16.1.ebuild, util-macros-1.16.2.ebuild, util-macros-1.17.ebuild:
+  Drop useless DEPEND variables.
+
+  03 Jun 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  util-macros-1.17.ebuild:
+  Add stable keyword for s390, which was missed by `ekeyword all'.
+
+  04 May 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  util-macros-1.17.ebuild:
+  Stabilize latest version.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> util-macros-1.17.ebuild:
+  keyword ~amd64-fbsd
+
+*util-macros-1.17 (14 Mar 2012)
+
+  14 Mar 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +util-macros-1.17.ebuild:
+  Version bump.
+
+*util-macros-1.16.2 (07 Mar 2012)
+
+  07 Mar 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +util-macros-1.16.2.ebuild:
+  Version bump.
+
+*util-macros-1.16.1 (25 Jan 2012)
+
+  25 Jan 2012; Matt Turner <mattst88@gentoo.org> +util-macros-1.16.1.ebuild:
+  Version bump.
+
+*util-macros-1.16.0 (11 Dec 2011)
+
+  11 Dec 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +util-macros-1.16.0.ebuild:
+  Version bump.
+
+  20 Aug 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  util-macros-1.15.0.ebuild:
+  Stabilize latest version.
+
+*util-macros-1.15.0 (29 Jun 2011)
+
+  29 Jun 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -util-macros-1.13.0.ebuild, +util-macros-1.15.0.ebuild:
+  Version bump. Remove old.
+
+  19 Jun 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  util-macros-1.14.0.ebuild:
+  Stabilize latest version.
+
+*util-macros-1.14.0 (06 Jun 2011)
+
+  06 Jun 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +util-macros-1.14.0.ebuild:
+  Version bump.
+
+  17 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -util-macros-1.12.0.ebuild, util-macros-1.13.0.ebuild:
+  Stabilise latest. Drop older.
+
+*util-macros-1.13.0 (15 Mar 2011)
+
+  15 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -util-macros-1.11.0.ebuild, util-macros-1.12.0.ebuild,
+  +util-macros-1.13.0.ebuild:
+  Version bump. Stabilise older. Drop oldest.
+
+*util-macros-1.12.0 (26 Feb 2011)
+
+  26 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +util-macros-1.12.0.ebuild:
+  Version bump
+
+*util-macros-1.11.0 (31 Oct 2010)
+
+  31 Oct 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -util-macros-1.10.1.ebuild, +util-macros-1.11.0.ebuild:
+  Bump to latest macros.
+
+*util-macros-1.10.1 (27 Sep 2010)
+
+  27 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -util-macros-1.10.0.ebuild, +util-macros-1.10.1.ebuild:
+  Version bump to latest. Drop older.
+
+*util-macros-1.10.0 (27 Jun 2010)
+
+  27 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -util-macros-1.5.0.ebuild, -util-macros-1.6.1.ebuild,
+  -util-macros-1.7.0.ebuild, -util-macros-1.8.0.ebuild,
+  +util-macros-1.10.0.ebuild:
+  Version bump. Drop old. Directly to stable, recompiled whole x11 set we
+  have in overlay with it :]
+
+  08 Jun 2010; Rémi Cardona <remi@gentoo.org> util-macros-1.8.0.ebuild:
+  stabilize 1.8.0 on all arches, as agreed with arch teams (see bugs #320625
+  and #322559)
+
+*util-macros-1.8.0 (02 Jun 2010)
+
+  02 Jun 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +util-macros-1.8.0.ebuild:
+  Version bump.
+
+  04 Jun 2010; Guy Martin <gmsoft@gentoo.org> util-macros-1.6.1.ebuild:
+  hppa stable, #308521
+
+  12 May 2010; Brent Baude <ranger@gentoo.org> util-macros-1.6.1.ebuild:
+  Marking util-macros-1.6.1 ppc64 stable for bug 308521
+
+  18 Apr 2010; Markus Meier <maekke@gentoo.org> util-macros-1.6.1.ebuild:
+  arm stable, bug #308521
+
+  18 Apr 2010; <nixnut@gentoo.org> util-macros-1.6.1.ebuild:
+  ppc stable #308521
+
+  16 Apr 2010; Pacho Ramos <pacho@gentoo.org> util-macros-1.6.1.ebuild:
+  amd64 stable, bug 308521
+
+  09 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  util-macros-1.6.1.ebuild:
+  stable x86, bug 308521
+
+*util-macros-1.7.0 (08 Apr 2010)
+
+  08 Apr 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +util-macros-1.7.0.ebuild:
+  Version bump.
+
+*util-macros-1.6.1 (14 Mar 2010)
+
+  14 Mar 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -util-macros-1.3.0.ebuild, -util-macros-1.6.0.ebuild,
+  +util-macros-1.6.1.ebuild:
+  Version bump. Remove older.
+
+  26 Feb 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  util-macros-1.5.0.ebuild:
+  Stable on everywhere. Bug with stablereq was closed and none expect Jer
+  objected against self-stabilisation.
+
+  15 Feb 2010; Joseph Jezak <josejx@gentoo.org> util-macros-1.5.0.ebuild:
+  Marked ppc/ppc64 stable for bug #302046.
+
+  11 Feb 2010; Jeroen Roovers <jer@gentoo.org> util-macros-1.5.0.ebuild:
+  Stable for HPPA (bug #302046).
+
+*util-macros-1.6.0 (09 Feb 2010)
+
+  09 Feb 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +util-macros-1.6.0.ebuild:
+  Version bump.
+
+  08 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  util-macros-1.5.0.ebuild:
+  stable x86, bug 302046
+
+  30 Jan 2010; Samuli Suominen <ssuominen@gentoo.org>
+  util-macros-1.5.0.ebuild:
+  amd64 stable wrt #302046
+
+*util-macros-1.5.0 (22 Jan 2010)
+
+  22 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -util-macros-1.4.1.ebuild, +util-macros-1.5.0.ebuild:
+  Version bump. Drop older.
+
+  10 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  util-macros-1.4.1.ebuild:
+  Transfer Prefix keywords
+
+*util-macros-1.4.1 (15 Dec 2009)
+
+  15 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  +util-macros-1.4.1.ebuild:
+  Version bump.
+
+  02 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/1.1.1-driver-man-suffix.patch:
+  Drop unused patches.
+
+  28 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -util-macros-1.1.5.ebuild, -util-macros-1.2.1.ebuild,
+  -util-macros-1.2.2.ebuild, util-macros-1.3.0.ebuild:
+  QA: stable on ppc64 since it is just installing one m4 file, no code
+  compiled. Drop old.
+
+  18 Nov 2009; Raúl Porcel <armin76@gentoo.org> util-macros-1.3.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #292928
+
+  26 Oct 2009; Jeroen Roovers <jer@gentoo.org> util-macros-1.3.0.ebuild:
+  Stable for HPPA (bug #282290).
+
+  11 Oct 2009; nixnut <nixnut@gentoo.org> util-macros-1.3.0.ebuild:
+  ppc stable #282290
+
+  09 Oct 2009; Markus Meier <maekke@gentoo.org> util-macros-1.3.0.ebuild:
+  arm stable, bug #282290
+
+  05 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  util-macros-1.3.0.ebuild:
+  x86 stable, bug 282290
+
+  30 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  util-macros-1.3.0.ebuild:
+  amd64 stable wrt #282290
+
+*util-macros-1.3.0 (19 Sep 2009)
+
+  19 Sep 2009; Rémi Cardona <remi@gentoo.org> +util-macros-1.3.0.ebuild:
+  bump to 1.3.0
+
+  23 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  util-macros-1.2.1.ebuild:
+  Stable on alpha for xorg-server-1.5/xorg-x11-7.4
+
+*util-macros-1.2.2 (20 Jun 2009)
+
+  20 Jun 2009; Rémi Cardona <remi@gentoo.org> +util-macros-1.2.2.ebuild:
+  bump to 1.2.2
+
+  20 Jun 2009; Rémi Cardona <remi@gentoo.org> -util-macros-1.1.6.ebuild,
+  -util-macros-1.1.6-r1.ebuild, -util-macros-1.2.0.ebuild:
+  drop old ebuilds
+
+  15 May 2009; Raúl Porcel <armin76@gentoo.org> util-macros-1.2.1.ebuild:
+  arm/m68k/s390 stable
+
+  16 Apr 2009; Jeroen Roovers <jer@gentoo.org> util-macros-1.2.1.ebuild:
+  Stable for HPPA (bug #251832).
+
+  15 Apr 2009; Raúl Porcel <armin76@gentoo.org> util-macros-1.2.1.ebuild:
+  ia64/sh stable wrt #251832
+
+  06 Apr 2009; Friedrich Oslage <bluebird@gentoo.org>
+  util-macros-1.2.1.ebuild:
+  Stable on sparc, bug #251832
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org> util-macros-1.2.1.ebuild:
+  x86 stable, bug #251832
+
+  05 Apr 2009; Olivier Crête <tester@gentoo.org> util-macros-1.2.1.ebuild:
+  Stable on amd64, bug #251832
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> util-macros-1.2.1.ebuild:
+  Marking util-macros-1.2.1 ppc64 stable for bug 251832
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> util-macros-1.2.1.ebuild:
+  Marking util-macros-1.2.1 ppc stable for bug 251832
+
+*util-macros-1.2.1 (13 Jan 2009)
+
+  13 Jan 2009; Donnie Berkholz <dberkholz@gentoo.org>;
+  +util-macros-1.2.1.ebuild:
+  Bump. Minor changes.
+
+*util-macros-1.2.0 (03 Dec 2008)
+
+  03 Dec 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +util-macros-1.2.0.ebuild:
+  Bump, by arrangement with dberkholz.
+
+*util-macros-1.1.6-r1 (09 May 2008)
+
+  09 May 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +util-macros-1.1.6-r1.ebuild:
+  (#219581) Stop applying driver patch to install manpages to 4x.
+
+*util-macros-1.1.6 (10 Mar 2008)
+
+  10 Mar 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +util-macros-1.1.6.ebuild:
+  Bump.
+
+  31 Jan 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  -files/1.0.2-driver-man-suffix.patch,
+  -files/1.1.0-driver-man-suffix.patch, -files/driver-man-suffix.patch,
+  -util-macros-1.0.2.ebuild, -util-macros-1.1.0.ebuild:
+  Clean up.
+
+  07 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  util-macros-1.1.5.ebuild:
+  Stable on sparc wrt #175465
+
+  03 Jul 2007; Lars Weiler <pylon@gentoo.org> util-macros-1.1.5.ebuild:
+  Stable on ppc; bug #175465.
+
+  02 Jul 2007; Raúl Porcel <armin76@gentoo.org> util-macros-1.1.5.ebuild:
+  alpha stable wrt #175465
+
+  27 May 2007; Joshua Kinard <kumba@gentoo.org> util-macros-1.1.5.ebuild:
+  Stable on mips.
+
+  20 May 2007; Jeroen Roovers <jer@gentoo.org> util-macros-1.1.5.ebuild:
+  Stable for HPPA (bug #175465).
+
+  04 May 2007; Daniel Gryniewicz <dang@gentoo.org> util-macros-1.1.5.ebuild:
+  Marked stable on amd64 for bug #175465
+
+  29 Apr 2007; Andrej Kacian <ticho@gentoo.org> util-macros-1.1.5.ebuild:
+  Stable on x86, bug #175465.
+
+  25 Apr 2007; Raúl Porcel <armin76@gentoo.org> util-macros-1.1.5.ebuild:
+  Stable on ia64 wrt bug #175465.
+
+  25 Apr 2007; Markus Rothe <corsair@gentoo.org> util-macros-1.1.5.ebuild:
+  Stable on ppc64; bug #175465
+
+  06 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  util-macros-1.1.0.ebuild:
+  Stable on Alpha.
+
+*util-macros-1.1.5 (30 Dec 2006)
+
+  30 Dec 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  -util-macros-1.1.4.ebuild, +util-macros-1.1.5.ebuild:
+  Version bump for 7.2.  Fixes non-portable sed usage.
+
+*util-macros-1.1.4 (16 Dec 2006)
+
+  16 Dec 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  -util-macros-1.1.3.ebuild, +util-macros-1.1.4.ebuild:
+  Version bump for 7.2.  Build/dist fix only.
+
+*util-macros-1.1.3 (02 Dec 2006)
+
+  02 Dec 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  -util-macros-1.1.2.ebuild, +util-macros-1.1.3.ebuild:
+  Version bump for 7.2RC3.  Includes better versioning support.
+
+*util-macros-1.1.2 (10 Nov 2006)
+
+  10 Nov 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  -util-macros-1.1.1.ebuild, +util-macros-1.1.2.ebuild:
+  Version bump for 7.2RC2 with various documentation updates.
+
+  14 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  util-macros-1.1.0.ebuild:
+  Stable on ia64.
+
+*util-macros-1.1.1 (14 Oct 2006)
+
+  14 Oct 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +files/1.1.1-driver-man-suffix.patch, +util-macros-1.1.1.ebuild:
+  Version bump.  Removes checks for GNU userland.
+
+  08 Oct 2006; Simon Stelling <blubb@gentoo.org> util-macros-1.1.0.ebuild:
+  stable on amd64
+
+  12 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  util-macros-1.1.0.ebuild:
+  Stable on hppa
+
+  04 Sep 2006; Joshua Kinard <kumba@gentoo.org> util-macros-1.1.0.ebuild:
+  Marked stable on mips.
+
+  24 Aug 2006; Markus Rothe <corsair@gentoo.org> util-macros-1.1.0.ebuild:
+  Stable on ppc64
+
+  22 Aug 2006; Ferris McCormick <fmccor@gentoo.org>
+  util-macros-1.1.0.ebuild:
+  Stable on sparc.
+
+  20 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  util-macros-1.1.0.ebuild:
+  Stable on x86/ppc.
+
+  20 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  util-macros-1.1.0.ebuild:
+  KEYWORDS should all be on one line to avoid confusion.
+
+*util-macros-1.1.0 (26 Jul 2006)
+
+  26 Jul 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +files/1.1.0-driver-man-suffix.patch, +util-macros-1.1.0.ebuild:
+  Version bump.  Contains macros that may be used by future X packages.
+
+  19 Jul 2006; Guy Martin <gmsoft@gentoo.org> util-macros-1.0.2.ebuild:
+  Stable on hppa.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> util-macros-1.0.2.ebuild:
+  Mark 1.0.2 stable on ia64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  util-macros-1.0.2.ebuild:
+  arm/sh stable
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  -util-macros-1.0.1.ebuild:
+  Pull old versions.
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  util-macros-1.0.2.ebuild:
+  ppc/sparc/mips/alpha stable
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  util-macros-1.0.2.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org> util-macros-1.0.2.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  util-macros-1.0.2.ebuild:
+  x86 stable.
+
+*util-macros-1.0.2 (28 May 2006)
+
+  28 May 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +files/1.0.2-driver-man-suffix.patch, +util-macros-1.0.2.ebuild:
+  Version bump.  Fixes manpage macros to support GNU/kFreeBSD.
+
+  31 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  util-macros-1.0.1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  22 Mar 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  util-macros-1.0.1.ebuild:
+  (#122726) Add missing keywords; apps that depend on this were keyworded, so
+  it was tested and just got missed.
+
+  09 Mar 2006; Aron Griffis <agriffis@gentoo.org> util-macros-1.0.1.ebuild:
+  Mark 1.0.1 ~ia64
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> util-macros-1.0.1.ebuild:
+  Added ~ppc64
+
+  31 Jan 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  util-macros-1.0.1.ebuild:
+  Unstable on hppa.
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -util-macros-0.99.2-r1.ebuild, -util-macros-1.0.0.ebuild:
+  Pull old versions.
+
+  26 Dec 2005; Stefaan De Roeck <stefaan@gentoo.org>
+  util-macros-1.0.1.ebuild:
+  Marked ~alpha
+
+*util-macros-1.0.1 (23 Dec 2005)
+
+  23 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +util-macros-1.0.1.ebuild:
+  Bump for 7.0.
+
+*util-macros-1.0.0 (17 Dec 2005)
+
+  17 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +util-macros-1.0.0.ebuild:
+  Bump for 7.0RC4.
+
+*util-macros-0.99.2-r1 (09 Dec 2005)
+
+  09 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +files/driver-man-suffix.patch, -util-macros-0.99.2.ebuild,
+  +util-macros-0.99.2-r1.ebuild:
+  Along with the upcoming patch in x-modular.eclass, re-enable the installation
+  of driver manpages to 4x instead of 4. Fixes bug #29541.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -util-macros-0.99.0.ebuild, -util-macros-0.99.0_p20051007.ebuild,
+  -util-macros-0.99.1.ebuild:
+  Pull old versions.
+
+  08 Dec 2005; Stephen P. Becker <geoman@gentoo.org>
+  util-macros-0.99.2.ebuild:
+  added ~mips keyword
+
+*util-macros-0.99.2 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +util-macros-0.99.2.ebuild:
+  Bump for 7.0RC3.
+
+*util-macros-0.99.1 (20 Oct 2005)
+
+  20 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +util-macros-0.99.1.ebuild:
+  Bump for 7.0 RC1.
+
+  19 Oct 2005; Stephen P. Becker <geoman@gentoo.org>
+  util-macros-0.99.0_p20051007.ebuild:
+  added ~mips keyword
+
+*util-macros-0.99.0_p20051007 (08 Oct 2005)
+
+  08 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +util-macros-0.99.0_p20051007.ebuild:
+  Add new snapshot to support libX11 snapshot.  Thanks to James Cloos in bug
+  #108300.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  28 Aug 2005; MATSUU Takuto <matsuu@gentoo.org> util-macros-0.99.0.ebuild:
+  Marked ~sh
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> util-macros-0.99.0.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> util-macros-0.99.0.ebuild:
+  Marked ~amd64
+
+  09 Aug 2005; Ferris McCormick <fmccor@gentoo.org>
+  util-macros-0.99.0.ebuild:
+  Add ~sparc keyword (X modular testing).
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  util-macros-0.99.0.ebuild:
+  Fix description and remove xproto from build deps.
+
+*util-macros-0.99.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +util-macros-0.99.0.ebuild:
+  Initial commit for modular X

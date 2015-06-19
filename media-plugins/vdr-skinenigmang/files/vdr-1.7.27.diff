@@ -1,0 +1,43 @@
+diff -Naur skinenigmang-0.1.1.orig/enigma.c skinenigmang-0.1.1/enigma.c
+--- skinenigmang-0.1.1.orig/enigma.c	2012-04-07 00:35:34.000000000 +0200
++++ skinenigmang-0.1.1/enigma.c	2012-04-07 00:42:42.000000000 +0200
+@@ -2617,8 +2617,8 @@
+ 
+   // draw recording date string
+   std::stringstream sstrDate;
+-  sstrDate << *DateString(Recording->start)
+-           << "  " << *TimeString(Recording->start);
++  sstrDate << *DateString(Recording->Start())
++           << "  " << *TimeString(Recording->Start());
+ 
+   unsigned long long nRecSize = -1;
+   unsigned long long nFileSize[1000];
+@@ -2674,14 +2674,14 @@
+     bool fCutIn = true;
+     cMark *mark = marks.First();
+     while (mark) {
+-      index->Get(mark->position, &FileNumber, &FileOffset); //TODO: will disc spin up?
++      index->Get(mark->Position(), &FileNumber, &FileOffset); //TODO: will disc spin up?
+       if (fCutIn) {
+-        nCutInFrame = mark->position;
++        nCutInFrame = mark->Position();
+         fCutIn = false;
+         if (nRecSize >= 0)
+           nCutInOffset = nFileSize[FileNumber-1] + FileOffset;
+       } else {
+-        nCutLength += mark->position - nCutInFrame;
++        nCutLength += mark->Position() - nCutInFrame;
+         fCutIn = true;
+         if (nRecSize >= 0)
+           nRecSizeCut += nFileSize[FileNumber-1] + FileOffset - nCutInOffset;
+@@ -2778,8 +2778,8 @@
+   }
+   delete index;
+ 
+-  sstrInfo << trVDR("Priority") << ": " << Recording->priority << std::endl
+-           << trVDR("Lifetime") << ": " << Recording->lifetime << std::endl;
++  sstrInfo << trVDR("Priority") << ": " << Recording->Priority() << std::endl
++           << trVDR("Lifetime") << ": " << Recording->Lifetime() << std::endl;
+   if (Info->Aux()) {
+     sstrInfo << std::endl << tr("Auxiliary information") << ":\n"
+              << parseaux(Info->Aux());

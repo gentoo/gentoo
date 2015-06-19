@@ -1,0 +1,101 @@
+# ChangeLog for dev-python/atpy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/atpy/ChangeLog,v 1.17 2015/06/09 18:46:51 floppym Exp $
+
+  09 Jun 2015; Mike Gilbert <floppym@gentoo.org> atpy-0.9.7.ebuild:
+  dev-db/pygresql -> dev-python/pygresql.
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> atpy-0.9.7.ebuild:
+  Drop old Python implementations
+
+  05 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org> -atpy-0.9.6-r1.ebuild,
+  -atpy-0.9.6.ebuild, atpy-0.9.7.ebuild, metadata.xml:
+  Removed old
+
+  10 Sep 2013; Patrick Lauer <patrick@gentoo.org> atpy-0.9.7.ebuild:
+  Whitespace
+
+*atpy-0.9.7 (07 Aug 2013)
+
+  07 Aug 2013; Sébastien Fabbro <bicatali@gentoo.org> +atpy-0.9.7.ebuild:
+  Version bump
+
+*atpy-0.9.6-r1 (24 Apr 2013)
+
+  24 Apr 2013; Sébastien Fabbro <bicatali@gentoo.org> +atpy-0.9.6-r1.ebuild,
+  metadata.xml:
+  Switched to distutils-r1 and virtual/pyfits
+
+  27 Feb 2013; Kacper Kowalik <xarthisius@gentoo.org> -atpy-0.9.5.3.ebuild:
+  Drop old
+
+  27 Feb 2013; Mike Gilbert <floppym@gentoo.org> atpy-0.9.5.3.ebuild:
+  Drop sqlite from IUSE.
+
+  27 Feb 2013; Mike Gilbert <floppym@gentoo.org> atpy-0.9.5.3.ebuild:
+  Remove optional runtime dependency on pysqlite to fix the depgraph.
+
+  15 Jan 2013; Michał Górny <mgorny@gentoo.org> atpy-0.9.6.ebuild:
+  Fix sqlite3 module dependency -- the package supports only built-in Python
+  sqlite3, not external pysqlite2.
+
+*atpy-0.9.6 (02 Aug 2012)
+
+  02 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> +atpy-0.9.6.ebuild,
+  -atpy-0.9.5.1.ebuild:
+  Version bump
+
+  23 Apr 2012; Michał Górny <mgorny@gentoo.org> atpy-0.9.5.1.ebuild,
+  atpy-0.9.5.3.ebuild:
+  Use mirror://github.
+
+  04 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  Switched herd to sci-astronomy
+
+*atpy-0.9.5.3 (29 Jul 2011)
+
+  29 Jul 2011; Sébastien Fabbro <bicatali@gentoo.org> -atpy-0.9.4.ebuild,
+  +atpy-0.9.5.3.ebuild:
+  Version bump
+
+*atpy-0.9.5.1 (04 May 2011)
+
+  04 May 2011; Sébastien Fabbro <bicatali@gentoo.org> +atpy-0.9.5.1.ebuild:
+  Version bump
+
+  10 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  atpy-0.9.4.ebuild:
+  Enable tests.
+
+*atpy-0.9.4 (02 Sep 2010)
+
+  02 Sep 2010; Sébastien Fabbro <bicatali@gentoo.org> +atpy-0.9.4.ebuild,
+  +metadata.xml:
+  Version bump and moved to the main tree
+
+*atpy-0.9.3 (02 Aug 2010)
+
+  02 Aug 2010; Kacper Kowalik <xarthisius@gentoo.org> -atpy-0.9.2.ebuild,
+  +atpy-0.9.3.ebuild:
+  Version bump
+
+  25 Jun 2010; Justin Lecher <jlec@gentoo.org> atpy-0.9.2.ebuild:
+  Fix PYTHON ABI Stuff
+
+*atpy-0.9.2 (12 Feb 2010)
+
+  12 Feb 2010; Sébastien Fabbro <bicatali@gentoo.org> -atpy-0.9.1.ebuild,
+  +atpy-0.9.2.ebuild:
+  Bump
+
+*atpy-0.9.1 (08 Oct 2009)
+
+  08 Oct 2009; Sébastien Fabbro <bicatali@gentoo.org> -atpy-0.9.0.ebuild,
+  +atpy-0.9.1.ebuild, metadata.xml:
+  Version bump
+
+*atpy-0.9.0 (21 Jul 2009)
+
+  21 Jul 2009; Sébastien Fabbro <bicatali@gentoo.org> +atpy-0.9.0.ebuild,
+  +metadata.xml:
+  Initial import

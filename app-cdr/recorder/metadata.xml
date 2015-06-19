@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>media-optical</herd>
+  <longdescription lang="en">
+    Recorder is a graphical frontend of cdrecord/cdrtools, cdrdao, mkisofs
+    and growisofs. It aims to be simple and easy to use, free of large
+    configurations and useless options, following the KISS principle and
+    offering a disc burning of quality, nothing more. You can burn data
+    (CD/DVD), audio (CD), video (DVD, VCD and SVCD), iso images (CD/DVD),
+    create iso images to burn later and check integrity of burned files
+    with md5sum.
+  </longdescription>
+</pkgmetadata>

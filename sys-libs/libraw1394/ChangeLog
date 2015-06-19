@@ -1,0 +1,300 @@
+# ChangeLog for sys-libs/libraw1394
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libraw1394/ChangeLog,v 1.81 2015/05/29 07:28:12 polynomial-c Exp $
+
+*libraw1394-2.1.1 (29 May 2015)
+
+  29 May 2015; Lars Wendler <polynomial-c@gentoo.org> -libraw1394-2.1.0.ebuild,
+  +libraw1394-2.1.1.ebuild:
+  Version bump. Removed old.
+
+  19 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libraw1394-2.1.0-r1.ebuild:
+  Stable for alpha, wrt bug #495964
+
+  14 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libraw1394-2.1.0-r1.ebuild:
+  Stable for ppc64, wrt bug #495964
+
+  12 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libraw1394-2.1.0-r1.ebuild:
+  Stable for sparc, wrt bug #495964
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libraw1394-2.1.0-r1.ebuild:
+  Stable for ppc, wrt bug #495964
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> libraw1394-2.1.0-r1.ebuild:
+  amd64 stable, bug #495964
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  libraw1394-2.1.0-r1.ebuild:
+  x86 stable wrt bug #495964
+
+  22 Feb 2014; Akinori Hattori <hattya@gentoo.org> libraw1394-2.1.0-r1.ebuild:
+  ia64 stable wrt bug #495964
+
+  20 Feb 2014; Markus Meier <maekke@gentoo.org> libraw1394-2.1.0-r1.ebuild:
+  arm stable, bug #495964
+
+  11 Feb 2014; Jeroen Roovers <jer@gentoo.org> libraw1394-2.1.0-r1.ebuild:
+  Stable for HPPA (bug #495964).
+
+*libraw1394-2.1.0-r1 (01 Aug 2013)
+
+  01 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  +libraw1394-2.1.0-r1.ebuild:
+  Go multilib and stack it for baselibs -r5. Ebuild based on Karl Lindéns one
+  in bug
+
+  11 Apr 2013; Samuli Suominen <ssuominen@gentoo.org> -libraw1394-2.0.4.ebuild,
+  -libraw1394-2.0.5.ebuild, -libraw1394-2.0.7.ebuild:
+  old
+
+*libraw1394-2.1.0 (17 Jan 2013)
+
+  17 Jan 2013; Mike Frysinger <vapier@gentoo.org> +libraw1394-2.1.0.ebuild:
+  Version bump #452392 by Agostino Sarubbo.
+
+  02 Sep 2012; Raúl Porcel <armin76@gentoo.org> libraw1394-2.0.8.ebuild:
+  alpha/ia64/sh/sparc stable wrt #422231
+
+  11 Aug 2012; Markus Meier <maekke@gentoo.org> libraw1394-2.0.8.ebuild:
+  arm stable, bug #422231
+
+  08 Aug 2012; Brent Baude <ranger@gentoo.org> libraw1394-2.0.8.ebuild:
+  Marking libraw1394-2.0.8 ppc for bug 422231
+
+  06 Aug 2012; Brent Baude <ranger@gentoo.org> libraw1394-2.0.8.ebuild:
+  Marking libraw1394-2.0.8 ppc64 for bug 422231
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> libraw1394-2.0.8.ebuild:
+  Stable for amd64, wrt bug #422231
+
+  02 Aug 2012; Jeff Horelick <jdhore@gentoo.org> libraw1394-2.0.8.ebuild:
+  marked x86 per bug 422231
+
+  01 Aug 2012; Jeroen Roovers <jer@gentoo.org> libraw1394-2.0.8.ebuild:
+  Stable for HPPA (bug #422231).
+
+*libraw1394-2.0.8 (07 Mar 2012)
+
+  07 Mar 2012; Tim Harder <radhermit@gentoo.org> +libraw1394-2.0.8.ebuild:
+  Version bump. Add static-libs use flag.
+
+  03 Sep 2011; Tomáš Chvátal <scarabeus@gentoo.org> libraw1394-2.0.7.ebuild,
+  metadata.xml:
+  Drop unused local dep. Latest version to eapi4
+
+*libraw1394-2.0.7 (25 Mar 2011)
+
+  25 Mar 2011; Mike Frysinger <vapier@gentoo.org> +libraw1394-2.0.7.ebuild:
+  Version bump #360331 by Stefan Richter.
+
+  16 Apr 2010; Pacho Ramos <pacho@gentoo.org> libraw1394-2.0.4.ebuild:
+  amd64 stable, bug 305071
+
+  11 Apr 2010; Raúl Porcel <armin76@gentoo.org> libraw1394-2.0.4.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #305071
+
+  29 Mar 2010; Jeroen Roovers <jer@gentoo.org> libraw1394-2.0.4.ebuild:
+  Stable for HPPA (bug #305071).
+
+  23 Mar 2010; Brent Baude <ranger@gentoo.org> libraw1394-2.0.4.ebuild:
+  stable ppc, bug 305071
+
+  02 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  libraw1394-2.0.4.ebuild:
+  stable x86, bug 305071
+
+  26 Feb 2010; Brent Baude <ranger@gentoo.org> libraw1394-2.0.4.ebuild:
+  Marking libraw1394-2.0.4 ppc64 for bug 305071
+
+  25 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  libraw1394-2.0.5.ebuild:
+  Pass --without-fw-dir to econf for _FORTIFY_SOURCE=2 wrt #305241 by Gary
+  Stein.
+
+*libraw1394-2.0.5 (14 Feb 2010)
+
+  14 Feb 2010; Mike Frysinger <vapier@gentoo.org> +libraw1394-2.0.5.ebuild:
+  Version bump and URL updates #304965 by Stefan Richter.
+
+*libraw1394-2.0.4 (30 Jun 2009)
+
+  30 Jun 2009; Patrick Lauer <patrick@gentoo.org> +libraw1394-2.0.4.ebuild:
+  Bump to 2.0.4, fixes #272540
+
+*libraw1394-2.0.2 (28 Jun 2009)
+
+  28 Jun 2009; Patrick Lauer <patrick@gentoo.org> +libraw1394-2.0.2.ebuild:
+  Bump to 2.0.2
+
+*libraw1394-2.0.0 (31 Jan 2009)
+
+  31 Jan 2009; Stefaan De Roeck <stefaan@gentoo.org>
+  +libraw1394-2.0.0.ebuild:
+  Version bump to 2.0.0
+
+  23 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  24 Jan 2008; Stefaan De Roeck <stefaan@gentoo.org>
+  libraw1394-1.3.0_p20080114.ebuild:
+  Sanitizing the SRC_URI (thanks, Mr_Bones)
+
+*libraw1394-1.3.0_p20080114 (24 Jan 2008)
+
+  24 Jan 2008; Stefaan De Roeck <stefaan@gentoo.org>
+  +libraw1394-1.3.0_p20080114.ebuild:
+  Add cvs-pulled version with possibility to support new firewire stack in
+  linux (called juju) (fixes bug #205829)
+
+  23 Jun 2007; Daniel Drake <dsd@gentoo.org> libraw1394-1.2.0.ebuild,
+  libraw1394-1.2.1.ebuild:
+  Fix LICENSE to LGPL-2.1, bug #174431
+
+  01 Nov 2006; Bryan Østergaard <kloeri@gentoo.org>
+  libraw1394-1.2.1.ebuild:
+  Stable on Alpha, bug 149421.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  libraw1394-1.2.1.ebuild:
+  Stable on sparc wrt #149421
+
+  03 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  libraw1394-1.2.1.ebuild:
+  Stable on x86 wrt bug #149421.
+
+  02 Oct 2006; Daniel Gryniewicz <dang@gentoo.org> libraw1394-1.2.1.ebuild:
+  Marked stable on amd64 for bug #149421
+
+  01 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libraw1394-1.2.1.ebuild:
+  hppa stable, bug #149421
+
+  30 Sep 2006; <nixnut@gentoo.org> libraw1394-1.2.1.ebuild:
+  Stable on ppc wrt bug 149421
+
+  29 Sep 2006; Markus Rothe <corsair@gentoo.org> libraw1394-1.2.1.ebuild:
+  Stable on ppc64; bug #149421
+
+*libraw1394-1.2.1 (15 Jul 2006)
+
+  15 Jul 2006; Mike Frysinger <vapier@gentoo.org> +libraw1394-1.2.1.ebuild:
+  Version bump #139653 by Christian Gmeiner.
+
+  23 May 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  libraw1394-1.2.0.ebuild:
+  Stable on sparc
+
+  23 May 2006; Doug Goldstein <cardoe@gentoo.org> libraw1394-1.2.0.ebuild:
+  Marking stable per bug #123066
+
+  08 Apr 2006; Simon Stelling <blubb@gentoo.org> libraw1394-1.2.0.ebuild:
+  stable on amd64
+
+  02 Apr 2006; Joseph Jezak <josejx@gentoo.org> libraw1394-1.2.0.ebuild:
+  Marked ppc stable for bug #127812, thanks to tha_gamemaster for testing.
+
+  16 Sep 2005; Aron Griffis <agriffis@gentoo.org> libraw1394-1.2.0.ebuild:
+  Mark 1.2.0 stable on alpha
+
+  05 Sep 2005; Markus Rothe <corsair@gentoo.org> libraw1394-1.2.0.ebuild:
+  Stable on ppc64
+
+  24 Aug 2005; Aron Griffis <agriffis@gentoo.org> libraw1394-1.2.0.ebuild:
+  stable on ia64
+
+  09 May 2005; Aron Griffis <agriffis@gentoo.org> libraw1394-1.2.0.ebuild:
+  add ~ia64
+
+  25 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  libraw1394-1.1.0.ebuild:
+  Stable on alpha.
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> libraw1394-1.1.0.ebuild:
+  Stable on ppc64
+
+  01 Apr 2005; Lars Weiler <pylon@gentoo.org> libraw1394-1.1.0.ebuild:
+  Stable on ppc.
+
+  23 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> libraw1394-1.1.0.ebuild:
+  Stable on sparc
+
+*libraw1394-1.2.0 (20 Mar 2005)
+
+  20 Mar 2005; Mike Frysinger <vapier@gentoo.org> +libraw1394-1.2.0.ebuild:
+  Version bump.
+
+*libraw1394-1.1.0 (12 Feb 2005)
+
+  12 Feb 2005; Mike Frysinger <vapier@gentoo.org> +libraw1394-1.1.0.ebuild:
+  Version bump #81696 by Simon Koch.
+
+  25 Jan 2005; Markus Rothe <corsair@gentoo.org> libraw1394-0.10.1.ebuild:
+  Stable on ppc64
+
+  03 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  04 Dec 2004; Markus Rothe <corsair@gentoo.org> libraw1394-0.10.1.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #72992
+
+  19 Oct 2004; Bryan Østergaard <kloeri@gentoo.org>
+  libraw1394-0.10.1.ebuild, libraw1394-0.9.0.ebuild:
+  Stable on alpha, fix license.
+
+*libraw1394-0.10.1 (03 Oct 2004)
+
+  03 Oct 2004; Mike Frysinger <vapier@gentoo.org> +libraw1394-0.10.1.ebuild:
+  Version bump #37979 by hendrik / Scott Taylor / James Kyle.
+
+  09 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> libraw1394-0.9.0.ebuild:
+  Keyword ~alpha.
+
+  02 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libraw1394-0.9.0.ebuild:
+  virtual/glibc -> virtual/libc
+
+  01 Jun 2004; Travis Tilley <lv@gentoo.org> libraw1394-0.9.0.ebuild:
+  stable on amd64
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> libraw1394-0.9.0.ebuild:
+  Add inherit eutils
+
+  09 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> libraw1394-0.9.0.ebuild:
+  AMD64 keyword.
+
+  29 Jan 2004; <gustavoz@gentoo.org> libraw1394-0.9.0.ebuild:
+  marked stable on sparc
+
+  13 Jan 2004; <gustavoz@gentoo.org> libraw1394-0.9.0.ebuild:
+  keyworded ~sparc
+
+  12 Jan 2004; Martin Holzer <mholzer@gentoo.org> libraw1394-0.9.0.ebuild:
+  adding RESTRICT=nomirror
+
+  06 Sep 2003; Hanno Boeck <hanno@gentoo.org> libraw1394-0.9.0.ebuild,
+  files/libraw_gcc33_fix:
+  Fix for gcc 3.3.
+
+  02 Sep 2003; Seemant Kulleen <seemant@gentoo.org> libraw1394-0.9.0.ebuild:
+  devfs will create the /dev/raw1394 device when the module is loaded -- thanks
+  to Luca Barbato <lu_zero@gentoo.org> in #gentoo-ppc
+
+  12 Jun 2003; <msterret@gentoo.org> libraw1394-0.9.0.ebuild:
+  fix Header
+
+*libraw1394-0.9.0 (12 Jul 2002)
+
+  27 Mar 2003; Seemant Kulleen <seemant@gentoo.org> libraw1394-0.9.0.ebuild:
+  create device.  Closes bug #18287 by Frantz Dhin <tragedy_rm@hotmail.com>
+
+  20 Jul 2002; Mark Guertin <gerk@gentoo.org> libraw1394-0.9.0.ebuild :
+  Added ppc keyword
+
+  12 Jul 2002; Doug Goldstein <cardoe@gentoo.org> libraw1394-0.9.0.ebuild
+  ChangeLog files/digest-libraw1394-0.9.0 :
+
+  New package
+  libraw1394 provides direct access to the IEEE 1394 bus through the Linux 1394 subsystem's 
+  raw1394 user space interface. (quote from author's site).
+  Thanks to Hanno Beock hanno@gmx.de in bug #4166 for the ebuild.
+  Cleaned up the ebuild prior to adding to the tree.

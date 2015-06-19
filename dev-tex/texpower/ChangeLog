@@ -1,0 +1,93 @@
+# ChangeLog for dev-tex/texpower
+# Copyright 2002-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/texpower/ChangeLog,v 1.27 2015/04/13 22:35:20 mrueg Exp $
+
+  13 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -texpower-0.1b.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> texpower-0.1b.ebuild,
+  texpower-0.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  29 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Lars Weiler (Pylon) from metadata.xml (as per #215644).
+
+  25 Aug 2007; Steve Dibb <beandog@gentoo.org> texpower-0.2.ebuild:
+  amd64 stable
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  11 Aug 2006; Ferris McCormick <fmccor@gentoo.org> texpower-0.2.ebuild:
+  Stable on sparc.  Works fine, so this is mostly bookkeeping.
+
+  28 May 2006; Lars Weiler <pylon@gentoo.org> texpower-0.2.ebuild:
+  Stable on ppc and x86.
+
+*texpower-0.2 (18 Dec 2005)
+
+  18 Dec 2005; Lars Weiler <pylon@gentoo.org> -texpower-0.0.9d.ebuild,
+  +texpower-0.2.ebuild:
+  Version bump; bug #111705.
+
+  28 Aug 2005; Marcus D. Hanwell <cryos@gentoo.org> texpower-0.1b.ebuild:
+  Stable on amd64.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> texpower-0.1b.ebuild:
+  Stable on ppc.
+
+  06 Jun 2005; Ferris McCormick <fmccor@gentoo.org> texpower-0.1b.ebuild:
+  Stable for sparc.
+
+  21 May 2005; Mamoru KOMACHI <usata@gentoo.org> texpower-0.1b.ebuild:
+  Stable on x86.
+
+*texpower-0.1b (03 Apr 2005)
+
+  03 Apr 2005; Mamoru KOMACHI <usata@gentoo.org> +texpower-0.1b.ebuild:
+  Version bumped. Thanks to T.Okayama <okayama@sodan.ecc.u-tokyo.ac.jp>.
+
+  28 Dec 2004; Dylan Carlson <absinthe@gentoo.org> texpower-0.0.9d.ebuild:
+  Stable on amd64.
+
+  25 Jun 2004; Ferris McCormick <fmccor@gentoo.org> texpower-0.0.9d.ebuild:
+  Marked stable for sparc.
+
+  07 May 2004; Ferris McCormick <fmccor@gentoo.org> texpower-0.0.9d.ebuild:
+  Add ~sparc keyword at user request (bug 50339) -- installs & looks good.
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> texpower-0.0.9d.ebuild:
+  Removed S=
+
+  13 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> texpower-0.0.9d.ebuild:
+  marked ~amd64
+
+  16 Nov 2003; Mike Gardiner <obz@gentoo.org> texpower-0.0.9d.ebuild:
+  Changed USE='doc' behaviour to not rebuild the documentation we allready have
+  pdfs for
+
+  04 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> texpower-0.0.9d.ebuild:
+  Fixed access violation during latex_src_install if USE="doc".
+  This closes Bug #30016
+
+  23 Sep 2003; Lars Weiler <pylon@gentoo.org> texpower-0.0.9d.ebuild:
+  Masked stable.
+
+*texpower-0.0.9d (16 Sep 2003)
+
+  16 Sep 2003; Lars Weiler <pylon@gentoo.org> texpower-0.0.9d.ebuild:
+  Version bump. Thanks to Clemens Brunner for the reminder.
+  
+  If you want the full documentation and examples installed, please make use
+  of the doc-USE-flag.
+
+*texpower-0.0.8h (02 Feb 03)
+
+  02 Apr 2003; Lars Weiler <pylon@gentoo.org> latex-texpower-0.0.8h.ebuild:
+  Set ppc in KEYWORDS
+
+  02 FEB 2003; Matthew Turk <satai@gentoo.org> :
+  Initial import.  Ebuild submitted by Lars Weiler <lars.weiler@chaosdorf.de>

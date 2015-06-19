@@ -1,0 +1,51 @@
+# ChangeLog for games-fps/ut2004-bonuspack-cbp2
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-bonuspack-cbp2/ChangeLog,v 1.11 2009/10/10 17:32:51 nyhm Exp $
+
+  10 Oct 2009; Tristan Heaven <nyhm@gentoo.org>
+  ut2004-bonuspack-cbp2-1-r2.ebuild:
+  Stable on amd64/x86
+
+*ut2004-bonuspack-cbp2-1-r2 (05 Oct 2009)
+
+  05 Oct 2009; Tristan Heaven <nyhm@gentoo.org>
+  +ut2004-bonuspack-cbp2-1-r2.ebuild:
+  Use original zip files instead of third party installers; fix file
+  collision with ut2004-bonuspack-mega, bug #130036 by Paul Bredbury
+
+  04 Oct 2009; Tristan Heaven <nyhm@gentoo.org>
+  ut2004-bonuspack-cbp2-1-r1.ebuild:
+  EAPI=2; remove dedicated and opengl USE flags
+
+  28 Jul 2008; Chris Gianelloni <wolf31o2@gentoo.org> metadata.xml:
+  Removing myself from metadata.xml since I am retiring from the project.
+
+  10 Jan 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  -ut2004-bonuspack-cbp2-1.ebuild, ut2004-bonuspack-cbp2-1-r1.ebuild:
+  Stable on amd64/x86 and removing older versions.
+
+  08 Nov 2006; Tristan Heaven <nyhm@gentoo.org>
+  ut2004-bonuspack-cbp2-1-r1.ebuild:
+  Fix file collision
+
+  07 Nov 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-bonuspack-cbp2-1-r1.ebuild:
+  Changed the name to be equal to the description since it is simply a map pack.
+
+*ut2004-bonuspack-cbp2-1-r1 (07 Nov 2006)
+
+  07 Nov 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +ut2004-bonuspack-cbp2-1-r1.ebuild:
+  Added new revision for testing which uses the brand-spankin-new
+  games-mods.eclass to reduce ebuild code.
+
+  28 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-bonuspack-cbp2-1.ebuild:
+  Change to use the new liflg thirdpartymirror.
+
+*ut2004-bonuspack-cbp2-1 (15 Mar 2005)
+
+  15 Mar 2005; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +ut2004-bonuspack-cbp2-1.ebuild:
+  Initial import.  Ebuild by me.  Closing bug #52553.
+

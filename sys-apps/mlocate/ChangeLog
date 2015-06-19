@@ -1,0 +1,439 @@
+# ChangeLog for sys-apps/mlocate
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/mlocate/ChangeLog,v 1.120 2014/11/02 09:50:19 swift Exp $
+
+  02 Nov 2014; Sven Vermeulen <swift@gentoo.org> mlocate-0.26-r1.ebuild:
+  Remove sec-policy/selinux-* dependency from DEPEND but keep in RDEPEND (bug
+  #527698)
+
+*mlocate-0.26-r1 (05 May 2014)
+
+  05 May 2014; Lars Wendler <polynomial-c@gentoo.org> -mlocate-0.26.ebuild,
+  +mlocate-0.26-r1.ebuild, files/updatedb.conf:
+  Fixed some filesystem entries in updatedb.conf file. Thanks to Toralf
+  Förster who reported this in bug #509084. Committed straight to stable.
+
+  08 Jan 2014; Christian Faulhammer <fauli@gentoo.org> -mlocate-0.25.ebuild:
+  clean up
+
+  05 Sep 2013; Mike Frysinger <vapier@gentoo.org> mlocate-0.26.ebuild:
+  Add m68k/s390/sh keywords #338426 by SpanKY.
+
+  07 May 2013; Agostino Sarubbo <ago@gentoo.org> mlocate-0.26.ebuild:
+  Stable for ppc64, wrt bug #467514
+
+  07 May 2013; Agostino Sarubbo <ago@gentoo.org> mlocate-0.26.ebuild:
+  Stable for sparc, wrt bug #467514
+
+  07 May 2013; Agostino Sarubbo <ago@gentoo.org> mlocate-0.26.ebuild:
+  Stable for ia64, wrt bug #467514
+
+  05 May 2013; Agostino Sarubbo <ago@gentoo.org> mlocate-0.26.ebuild:
+  Stable for alpha, wrt bug #467514
+
+  03 May 2013; Agostino Sarubbo <ago@gentoo.org> mlocate-0.26.ebuild:
+  Stable for ppc, wrt bug #467514
+
+  01 May 2013; Sergey Popov <pinkbyte@gentoo.org> mlocate-0.26.ebuild:
+  Stable on arm, wrt bug #467514
+
+  28 Apr 2013; Christian Faulhammer <fauli@gentoo.org> mlocate-0.26.ebuild:
+  use system AR not unconditional call to /usr/bin/ar, bug 467640 by ago
+
+  28 Apr 2013; Jeroen Roovers <jer@gentoo.org> mlocate-0.26.ebuild:
+  Stable for HPPA (bug #467514).
+
+  27 Apr 2013; Agostino Sarubbo <ago@gentoo.org> mlocate-0.26.ebuild:
+  Stable for x86, wrt bug #467514
+
+  27 Apr 2013; Agostino Sarubbo <ago@gentoo.org> mlocate-0.26.ebuild:
+  Stable for amd64, wrt bug #467514
+
+*mlocate-0.26 (12 Nov 2012)
+
+  12 Nov 2012; Tomáš Chvátal <scarabeus@gentoo.org> +mlocate-0.26.ebuild,
+  -mlocate-0.24.ebuild:
+  Version bump to latest. Remove older. Fixes bug#437144.
+
+  19 Aug 2012; Raúl Porcel <armin76@gentoo.org> mlocate-0.25.ebuild:
+  alpha/ia64/sparc stable wrt #422183
+
+  14 Jul 2012; Markus Meier <maekke@gentoo.org> mlocate-0.25.ebuild:
+  arm stable, bug #422183
+
+  03 Jul 2012; Brent Baude <ranger@gentoo.org> mlocate-0.25.ebuild:
+  Marking mlocate-0.25 ppc for bug 422183
+
+  27 Jun 2012; Jeroen Roovers <jer@gentoo.org> mlocate-0.25.ebuild:
+  Stable for HPPA (bug #422183).
+
+  22 Jun 2012; Brent Baude <ranger@gentoo.org> mlocate-0.25.ebuild:
+  Marking mlocate-0.25 ppc64 for bug 422183
+
+  20 Jun 2012; Jeff Horelick <jdhore@gentoo.org> mlocate-0.25.ebuild:
+  marked x86 per bug 422183
+
+  19 Jun 2012; Agostino Sarubbo <ago@gentoo.org> mlocate-0.25.ebuild:
+  Stable for amd64, wrt bug #422183
+
+  24 May 2012; Mike Frysinger <vapier@gentoo.org> mlocate-0.24.ebuild,
+  mlocate-0.25.ebuild:
+  Inherit user for enewuser/etc...
+
+*mlocate-0.25 (03 Mar 2012)
+
+  03 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> +mlocate-0.25.ebuild:
+  Version bump.
+
+  05 Feb 2012; Christian Faulhammer <fauli@gentoo.org>
+  -mlocate-0.23.1-r1.ebuild:
+  clean up
+
+  02 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> mlocate-0.24.ebuild:
+  ppc64 stable wrt #396325
+
+  15 Jan 2012; Raúl Porcel <armin76@gentoo.org> mlocate-0.24.ebuild:
+  alpha/ia64/sparc stable wrt #396325
+
+  08 Jan 2012; Markus Meier <maekke@gentoo.org> mlocate-0.24.ebuild:
+  arm stable, bug #396325
+
+  04 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> mlocate-0.24.ebuild:
+  x86 stable wrt bug #396325
+
+  28 Dec 2011; Michael Weber <xmw@gentoo.org> mlocate-0.24.ebuild:
+  ppc stable (bug 396325)
+
+  28 Dec 2011; Agostino Sarubbo <ago@gentoo.org> mlocate-0.24.ebuild:
+  Stable for AMD64, wrt bug #396325
+
+  28 Dec 2011; Jeroen Roovers <jer@gentoo.org> mlocate-0.24.ebuild:
+  Stable for HPPA (bug #396325).
+
+  23 Dec 2011; <swift@gentoo.org> mlocate-0.24.ebuild:
+  Add use_selinux dependency on selinux-slocate SELinux policy
+
+*mlocate-0.24 (06 May 2011)
+
+  06 May 2011; Christian Faulhammer <fauli@gentoo.org> +mlocate-0.24.ebuild:
+  version bump for bug 366237
+
+  09 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  mlocate-0.23.1-r1.ebuild:
+  Add nls USE flag as reported in bug 358011 by Sebastian Thorarensen
+  <indigo176 AT blinkenshell DOT org>
+
+  31 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org> files/mlocate.cron-r2:
+  Fix premature removing of the lock file and parse the args more sanely when
+  there is no config around. This fixes bug #353270.
+
+*mlocate-0.23.1-r1 (30 Jan 2011)
+
+  30 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org> -mlocate-0.22.4.ebuild,
+  -mlocate-0.23.1.ebuild, +mlocate-0.23.1-r1.ebuild, files/mlocate.cron-r2:
+  Revision bump with perserved stable keywords. Fix typo in cronfile that
+  prevented cronjob to operate per bug #353122. Drop older affected version to
+  ensure everyone upgrade.
+
+  24 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org> files/mlocate.cron-r2,
+  files/mlocate-cron.conf, files/updatedb.conf:
+  Update cronscript and config to be more strict and flexible.
+
+  21 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  mlocate-0.23.1.ebuild, files/updatedb.conf:
+  Add hostfs to the list of pruned file systems (bug 345629) and make a
+  warning that the updatedb command can be run manually when mlocate is
+  installed for the first time (bug 345881)
+
+  15 Nov 2010; Jeroen Roovers <jer@gentoo.org> mlocate-0.23.1.ebuild:
+  Stable for PPC (bug #343987).
+
+  14 Nov 2010; Raúl Porcel <armin76@gentoo.org> mlocate-0.23.1.ebuild:
+  ia64/sparc stable wrt #343987
+
+  14 Nov 2010; <mattst88@gentoo.org> mlocate-0.23.1.ebuild:
+  alpha stable, bug #343987.
+
+  09 Nov 2010; Markus Meier <maekke@gentoo.org> mlocate-0.23.1.ebuild:
+  arm stable, bug #343987
+
+  05 Nov 2010; Markos Chandras <hwoarang@gentoo.org> mlocate-0.23.1.ebuild:
+  Stable on amd64 wrt bug #343987
+
+  04 Nov 2010; Samuli Suominen <ssuominen@gentoo.org> mlocate-0.23.1.ebuild:
+  ppc64 stable wrt #343987
+
+  04 Nov 2010; Jeroen Roovers <jer@gentoo.org> mlocate-0.23.1.ebuild:
+  Stable for HPPA (bug #343987).
+
+  04 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  mlocate-0.23.1.ebuild:
+  stable x86, bug 343987
+
+  04 Nov 2010; Samuli Suominen <ssuominen@gentoo.org> mlocate-0.23.1.ebuild:
+  Keyword ~mips wrt #338426 (again, thanks to mattst88 for testing).
+
+  04 Nov 2010; Samuli Suominen <ssuominen@gentoo.org> mlocate-0.23.1.ebuild:
+  Keyword ~alpha wrt #338426 (thanks to mattst88 for testing).
+
+  05 Oct 2010; Jeroen Roovers <jer@gentoo.org> mlocate-0.22.4.ebuild,
+  mlocate-0.23.1.ebuild:
+  Marked ~hppa (bug #338426).
+
+  03 Oct 2010; Raúl Porcel <armin76@gentoo.org> mlocate-0.22.4.ebuild:
+  ia64 stable wrt #338430
+
+  26 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> mlocate-0.22.4.ebuild:
+  ppc64 stable wrt #338430
+
+*mlocate-0.23.1 (24 Sep 2010)
+
+  24 Sep 2010; Mike Frysinger <vapier@gentoo.org> +mlocate-0.23.1.ebuild:
+  Version bump #338432 by Samuli Suominen.
+
+  23 Sep 2010; Markus Meier <maekke@gentoo.org> mlocate-0.22.4.ebuild:
+  add ~arm, bug #338426
+
+  11 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  -mlocate-0.22.2-r1.ebuild, -files/mlocate.cron-r1:
+  clean up
+
+  11 Jul 2010; Raúl Porcel <armin76@gentoo.org> mlocate-0.22.4.ebuild:
+  sparc stable wrt #325059
+
+  27 Jun 2010; <nixnut@gentoo.org> mlocate-0.22.4.ebuild:
+  ppc stable #325059
+
+  26 Jun 2010; Christoph Mende <angelos@gentoo.org> mlocate-0.22.4.ebuild:
+  Stable on amd64 wrt bug #325059
+
+  22 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  mlocate-0.22.4.ebuild:
+  stable x86, bug 325059
+
+  12 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> mlocate-0.22.4.ebuild:
+  Missing app-arch/xz-utils DEPEND wrt #323699 by Allan Gottlieb.
+
+  07 Apr 2010; Christian Faulhammer <fauli@gentoo.org> -mlocate-0.22.ebuild:
+  clean up
+
+  05 Apr 2010; Markos Chandras <hwoarang@gentoo.org>
+  mlocate-0.22.2-r1.ebuild:
+  Stable on amd64 wrt bug #301400
+
+*mlocate-0.22.4 (30 Mar 2010)
+
+  30 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  -mlocate-0.22.3.ebuild, +mlocate-0.22.4.ebuild:
+  version bump
+
+*mlocate-0.22.3 (08 Mar 2010)
+
+  08 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  +mlocate-0.22.3.ebuild:
+  version bump, bug 308403 by ssuominen
+
+  26 Jan 2010; Tiago Cunha <tcunha@gentoo.org> mlocate-0.22.2-r1.ebuild:
+  stable sparc, bug 301400
+
+  22 Jan 2010; Brent Baude <ranger@gentoo.org> mlocate-0.22.2-r1.ebuild:
+  stable ppc, bug 301400
+
+  18 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  mlocate-0.22.2-r1.ebuild:
+  stable x86, bug 301400
+
+*mlocate-0.22.2-r1 (18 Nov 2009)
+
+  18 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  -mlocate-0.22.2.ebuild, +mlocate-0.22.2-r1.ebuild, +files/mlocate.cron-r2:
+  remove Bashisms from cron file, thanks to Richard Li <admin AT chys DOT
+  info> in bug 293459
+
+  18 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  -mlocate-0.22.1.ebuild:
+  clean up
+
+*mlocate-0.22.2 (24 Oct 2009)
+
+  24 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  +mlocate-0.22.2.ebuild:
+  version bump
+
+  24 Sep 2009; Raúl Porcel <armin76@gentoo.org> mlocate-0.22.1.ebuild:
+  Add ~ia64 wrt #282969
+
+*mlocate-0.22.1 (16 Sep 2009)
+
+  16 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  +mlocate-0.22.1.ebuild:
+  version bump
+
+  22 Jul 2009; Christian Faulhammer <fauli@gentoo.org> mlocate-0.22.ebuild:
+  test for usersandbox and userpriv in FEATURES is not needed anymore as
+  upstream fixed the test suite, this cloes bug 278743 by bangert
+
+  11 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  -mlocate-0.21.1.ebuild:
+  clean up
+
+  11 Jun 2009; Markus Meier <maekke@gentoo.org> mlocate-0.22.ebuild:
+  amd64 stable, bug #272733
+
+  07 Jun 2009; Raúl Porcel <armin76@gentoo.org> mlocate-0.22.ebuild:
+  sparc stable wrt #272733
+
+  06 Jun 2009; nixnut <nixnut@gentoo.org> mlocate-0.22.ebuild:
+  ppc stable #272733
+
+  05 Jun 2009; Christian Faulhammer <fauli@gentoo.org> mlocate-0.22.ebuild:
+  stable x86, bug 272733
+
+*mlocate-0.22 (05 May 2009)
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org> +mlocate-0.22.ebuild:
+  version bump
+
+  15 Mar 2009; Brent Baude <ranger@gentoo.org> mlocate-0.21.1.ebuild:
+  keyworded ~arch for ppc64, bug 262026
+
+  29 Jan 2009; Christian Faulhammer <fauli@gentoo.org> files/updatedb.conf:
+  add ocfs and ocfs2 to the ignored file systems, taken from slocate
+
+  04 Jan 2009; Christian Faulhammer <fauli@gentoo.org>
+  -mlocate-0.21-r1.ebuild:
+  clean up
+
+  03 Jan 2009; Dawid Węgliński <cla@gentoo.org> mlocate-0.21.1.ebuild:
+  Stable on amd64 (bug #253232)
+
+  02 Jan 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  mlocate-0.21.1.ebuild:
+  ppc stable, bug #253232
+
+  02 Jan 2009; Torsten Veller <tove@gentoo.org> mlocate-0.21.1.ebuild:
+  Stable on x86 (#253232)
+
+  31 Dec 2008; Friedrich Oslage <bluebird@gentoo.org> mlocate-0.21.1.ebuild:
+  Stable on sparc, bug #253232
+
+  28 Nov 2008; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
+  Change my email address
+
+*mlocate-0.21.1 (25 Nov 2008)
+
+  25 Nov 2008; Christian Faulhammer <opfer@gentoo.org>
+  +mlocate-0.21.1.ebuild:
+  version bump
+
+  05 Nov 2008; Christian Faulhammer <opfer@gentoo.org> -files/mlocate.cron,
+  -mlocate-0.21.ebuild:
+  clean up
+
+  04 Nov 2008; Raúl Porcel <armin76@gentoo.org> mlocate-0.21-r1.ebuild:
+  sparc stable wrt #244683, thanks to Aaron Mavrinac for testing
+
+  01 Nov 2008; nixnut <nixnut@gentoo.org> mlocate-0.21-r1.ebuild:
+  Stable on ppc wrt bug 244683
+
+  29 Oct 2008; Markus Meier <maekke@gentoo.org> mlocate-0.21-r1.ebuild:
+  amd64/x86 stable, bug #244683
+
+*mlocate-0.21-r1 (07 Sep 2008)
+
+  07 Sep 2008; Christian Faulhammer <opfer@gentoo.org>
+  +files/mlocate.cron-r1, +files/mlocate-cron.conf, files/updatedb.conf,
+  +mlocate-0.21-r1.ebuild:
+  enable usage of ionice to keep annoyance during database update down,
+  thanks to Daniel Pielmeier <daniel DOT pielmeier AT googlemail DOT com> in
+  bug 231203; also get updatedb.conf in sync with slocate's version
+
+  12 Aug 2008; Christian Faulhammer <opfer@gentoo.org> -mlocate-0.20.ebuild:
+  clean up
+
+  08 Aug 2008; nixnut <nixnut@gentoo.org> mlocate-0.21.ebuild:
+  Stable on ppc wrt bug 233819
+
+  05 Aug 2008; Thomas Anderson <gentoofan23@gentoo.org> mlocate-0.21.ebuild:
+  stable amd64, bug 233819
+
+  04 Aug 2008; Raúl Porcel <armin76@gentoo.org> mlocate-0.21.ebuild:
+  x86 stable wrt #233819, add ~sparc
+
+*mlocate-0.21 (06 Jul 2008)
+
+  06 Jul 2008; Christian Faulhammer <opfer@gentoo.org> +mlocate-0.21.ebuild:
+  version bump
+
+  29 May 2008; Christian Faulhammer <opfer@gentoo.org> -mlocate-0.18.ebuild,
+  -mlocate-0.19.ebuild:
+  clean up
+
+  28 May 2008; Markus Meier <maekke@gentoo.org> mlocate-0.20.ebuild:
+  amd64 stable, bug #223709
+
+  26 May 2008; nixnut <nixnut@gentoo.org> mlocate-0.20.ebuild:
+  Stable on ppc wrt bug 223709
+
+  26 May 2008; Christian Faulhammer <opfer@gentoo.org> mlocate-0.20.ebuild:
+  stable x86, bug 223709
+
+  27 Apr 2008; Ulrich Mueller <ulm@gentoo.org> mlocate-0.20.ebuild:
+  Copy distfile to mirrors and use its canonical name, bugs 219271 and 219302.
+
+  27 Apr 2008; <welp@gentoo.org> mlocate-0.19.ebuild:
+  Stable on amd64; bug 215795
+
+*mlocate-0.20 (25 Apr 2008)
+
+  25 Apr 2008; Christian Faulhammer <opfer@gentoo.org> +mlocate-0.20.ebuild:
+  version bump
+
+  05 Apr 2008; Joseph Jezak <josejx@gentoo.org> mlocate-0.19.ebuild:
+  Marked ppc stable for bug #215795.
+
+  01 Apr 2008; Christian Faulhammer <opfer@gentoo.org> mlocate-0.19.ebuild:
+  stable x86, bug 215795
+
+*mlocate-0.19 (03 Mar 2008)
+
+  03 Mar 2008; Christian Faulhammer <opfer@gentoo.org> +mlocate-0.19.ebuild:
+  version bump, fixes bug 212216 by Florian Steinel
+  <Florian.Steinel@googlemail.com>
+
+  22 Dec 2007; nixnut <nixnut@gentoo.org> mlocate-0.18.ebuild:
+  Stable on ppc wrt bug 203021
+
+  14 Oct 2007; Christian Faulhammer <opfer@gentoo.org> -mlocate-0.17.ebuild:
+  clean up
+
+  09 Oct 2007; Christoph Mende <angelos@gentoo.org> mlocate-0.18.ebuild:
+  Stable on amd64 wrt bug #194413
+
+  01 Oct 2007; Christian Faulhammer <opfer@gentoo.org> mlocate-0.18.ebuild:
+  stable x86, bug 194413
+
+  02 Sep 2007; nixnut <nixnut@gentoo.org> ChangeLog:
+  Added ~ppc wrt bug 190245
+
+  01 Sep 2007; Wulf C. Krueger <philantrop@gentoo.org> mlocate-0.17.ebuild:
+  Marked stable on amd64.
+
+*mlocate-0.18 (29 Aug 2007)
+
+  29 Aug 2007; Christian Faulhammer <opfer@gentoo.org> +mlocate-0.18.ebuild:
+  version bump, adds some information to man pages and fixes a memory leak.
+  See bug 190562
+
+  24 Aug 2007; Christian Faulhammer <opfer@gentoo.org> mlocate-0.17.ebuild:
+  stable x86
+
+  19 Jul 2007; Christoph Mende <angelos@gentoo.org> mlocate-0.17.ebuild:
+  Added ~amd64 wrt bug #185813
+
+*mlocate-0.17 (08 Jul 2007)
+
+  08 Jul 2007; Christian Faulhammer <opfer@gentoo.org> +files/mlocate.cron,
+  +files/updatedb.conf, +metadata.xml, +mlocate-0.17.ebuild:
+  new ebuild for bug 127010, thanks to José Romildo Malaquias
+  <j.romildo@gmail.com>

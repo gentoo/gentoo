@@ -1,0 +1,62 @@
+diff -ur amyedit-1.0/src/main.cc amyedit-1.0.new/src/main.cc
+--- amyedit-1.0/src/main.cc	2006-03-14 06:08:32.000000000 +0700
++++ amyedit-1.0.new/src/main.cc	2008-01-07 20:45:39.000000000 +0700
+@@ -54,7 +54,6 @@
+ 
+ #include "AmyEdit.hh"
+ #include "gtksourceviewmm/init.hh"
+-#include "gtkmm_extra/keyfile.h"
+ #include "Utils.hh"
+ 
+ int main(int argc, char **argv)
+@@ -65,7 +64,6 @@
+ 	
+ 	Gtk::Main m(&argc, &argv);
+ 	Gtk::SourceViewmm_init();
+-	Glib::keyfile_init();
+ 
+ 	/* TODO This should probably be removed and created on demand */
+ 	
+Only in amyedit-1.0.new/src: main.o
+Only in amyedit-1.0.new/src: Makefile
+diff -ur amyedit-1.0/src/Makefile.am amyedit-1.0.new/src/Makefile.am
+--- amyedit-1.0/src/Makefile.am	2006-03-08 05:44:53.000000000 +0700
++++ amyedit-1.0.new/src/Makefile.am	2008-01-07 20:41:46.000000000 +0700
+@@ -30,8 +30,7 @@
+ 		gtksourceviewmm/sourcelanguage.cpp           \
+ 		gtksourceviewmm/sourcelanguagesmanager.cpp   \
+ 		gtksourceviewmm/sourceview.cpp               \
+-		gtksourceviewmm/init.cc                      \
+-		gtkmm_extra/keyfile.cc
++		gtksourceviewmm/init.cc
+ 
+ headers =  \
+ 		AboutDialog.hh               \
+@@ -54,15 +53,13 @@
+ 		gtksourceviewmm/sourcelanguage.h            \
+ 		gtksourceviewmm/sourcelanguagesmanager.h    \
+ 		gtksourceviewmm/sourceview.h                \
+-		gtksourceviewmm/init.hh                     \
+-		gtkmm_extra/keyfile.h
++		gtksourceviewmm/init.hh
+ 
+ privateheaders=  \
+ 		gtksourceviewmm/private/sourcebuffer_p.h            \
+ 		gtksourceviewmm/private/sourcelanguage_p.h          \
+ 		gtksourceviewmm/private/sourcelanguagesmanager_p.h  \
+ 		gtksourceviewmm/private/sourceview_p.h              \
+-		gtkmm_extra/private/keyfile_p.h                     \
+ 		Utils_p.hh
+ 
+ if PRECOMPILE_HEADERS
+diff -ur amyedit-1.0/src/PrefStruct.hh amyedit-1.0.new/src/PrefStruct.hh
+--- amyedit-1.0/src/PrefStruct.hh	2006-03-09 06:54:41.000000000 +0700
++++ amyedit-1.0.new/src/PrefStruct.hh	2008-01-07 20:46:32.000000000 +0700
+@@ -24,7 +24,6 @@
+ 
+ #include "Preferences.hh"
+ #include <glibmm/ustring.h>
+-#include <gtkmm_extra/keyfile.h>
+ #include <iostream>
+ 
+ class PrefStruct 

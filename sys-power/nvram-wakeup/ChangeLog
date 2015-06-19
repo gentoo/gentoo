@@ -1,0 +1,76 @@
+# ChangeLog for sys-power/nvram-wakeup
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-power/nvram-wakeup/ChangeLog,v 1.14 2015/04/29 19:38:46 mrueg Exp $
+
+  29 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -nvram-wakeup-0.97_p863.ebuild,
+  -nvram-wakeup-0.99b.ebuild:
+  Remove old.
+
+*nvram-wakeup-1.1 (06 Jan 2013)
+
+  06 Jan 2013; Mike Frysinger <vapier@gentoo.org> +nvram-wakeup-1.1.ebuild:
+  Version bump #450622 by Agostino Sarubbo.
+
+  24 May 2012; Mike Frysinger <vapier@gentoo.org> nvram-wakeup-0.97_p863.ebuild,
+  nvram-wakeup-0.99b.ebuild, nvram-wakeup-1.0.ebuild:
+  Inherit eutils for epatch.
+
+  22 Dec 2010; Markos Chandras <hwoarang@gentoo.org> nvram-wakeup-1.0.ebuild:
+  Stable on amd64 wrt bug #347933
+
+  20 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  nvram-wakeup-1.0.ebuild:
+  x86 stable wrt bug #347933
+
+*nvram-wakeup-1.0 (13 Jul 2009)
+
+  13 Jul 2009; Patrick Lauer <patrick@gentoo.org> +nvram-wakeup-1.0.ebuild:
+  Bump to 1.0. Fixes #277699
+
+*nvram-wakeup-0.99b (18 Jan 2009)
+
+  18 Jan 2009; Mike Frysinger <vapier@gentoo.org>
+  +nvram-wakeup-0.99b.ebuild:
+  Version bump #255311 by Daniel Pielmeier.
+
+  14 Oct 2008; Diego Pettenò <flameeyes@gentoo.org>
+  nvram-wakeup-0.97_p863.ebuild:
+  Let CFLAGS be respected during src_compile rather than being set in stone.
+
+  03 Mar 2007; Mike Frysinger <vapier@gentoo.org>
+  nvram-wakeup-0.97_p863.ebuild:
+  Restrict mirroring when pulling from cvs (due to the ?) #168114 by Ville Aakko.
+
+  13 Feb 2007; Piotr Jaroszyński <peper@gentoo.org>
+  nvram-wakeup-0.97_p863.ebuild:
+  Add ~amd64 wrt bug #165594.
+
+*nvram-wakeup-0.97_p863 (07 Feb 2007)
+
+  07 Feb 2007; Mike Frysinger <vapier@gentoo.org>
+  +nvram-wakeup-0.97_p863.ebuild:
+  Add new ebuild to fetch updated motherboard definitions from upstream svn
+  #165567 by Sebastian.
+
+  13 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
+  nvram-wakeup-0.97-r1.ebuild:
+  Marked stable on x86.
+
+*nvram-wakeup-0.97-r1 (14 Mar 2005)
+
+  14 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  +files/nvram-wakeup-0.97-nonls.patch, +metadata.xml,
+  +nvram-wakeup-0.97-r1.ebuild:
+  Moved from sys-apps/nvram-wakeup to sys-power/nvram-wakeup.
+
+*nvram-wakeup-0.97-r1 (12 Mar 2005)
+
+  12 Mar 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/nvram-wakeup-0.97-nonls.patch, +nvram-wakeup-0.97-r1.ebuild,
+  -nvram-wakeup-0.97.ebuild:
+  Clean up ebuild #47162 Stefan Briesenick.
+
+*nvram-wakeup-0.97 (08 Oct 2004)
+
+  08 Oct 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Stefan Briesenick/Carsten Lohrke #47162.

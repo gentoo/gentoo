@@ -1,0 +1,59 @@
+# ChangeLog for app-text/mbtpdfasm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/mbtpdfasm/ChangeLog,v 1.11 2014/08/10 18:26:52 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  mbtpdfasm-1.0.28-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  07 Nov 2013; Patrick Lauer <patrick@gentoo.org> mbtpdfasm-1.0.28-r1.ebuild:
+  Shorten description, make repoman happier
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> -mbtpdfasm-1.0.28.ebuild,
+  metadata.xml:
+  Cleanup due #92799
+
+*mbtpdfasm-1.0.28-r1 (20 Jul 2010)
+
+  20 Jul 2010; Stefan Briesenick <sbriesen@gentoo.org>
+  +mbtpdfasm-1.0.28-r1.ebuild, +files/mbtpdfasm-1.0.28-zlib.diff:
+  use system zlib. solving bug #246968.
+
+  20 Jul 2010; Stefan Briesenick <sbriesen@gentoo.org>
+  -files/mbtpdfasm-1.0.26-64bit.patch:
+  removed old version, take 2.
+
+  20 Jul 2010; Stefan Briesenick <sbriesen@gentoo.org>
+  -mbtpdfasm-1.0.26-r1.ebuild, -mbtpdfasm-1.0.26-r2.ebuild,
+  -files/mbtpdfasm-1.0.26-gcc4.patch:
+  removed old version
+
+  02 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  mbtpdfasm-1.0.28.ebuild:
+  Transfer Prefix keywords
+
+*mbtpdfasm-1.0.28 (06 Jan 2008)
+
+  06 Jan 2008; Stefan Briesenick <sbriesen@gentoo.org>
+  +files/mbtpdfasm-1.0.28-64bit.diff, +files/mbtpdfasm-1.0.28-main.diff,
+  +files/mbtpdfasm-1.0.28-makefile.diff, +mbtpdfasm-1.0.28.ebuild:
+  version bump.
+
+*mbtpdfasm-1.0.26-r2 (26 Jul 2006)
+
+  26 Jul 2006; Stefan Briesenick <sbriesen@gentoo.org>
+  +files/mbtpdfasm-1.0.26-64bit.patch, +mbtpdfasm-1.0.26-r2.ebuild:
+  adding 64-Bit patch, solving bug #136319.
+
+*mbtpdfasm-1.0.26-r1 (08 Apr 2006)
+
+  08 Apr 2006; Stefan Briesenick <sbriesen@gentoo.org>
+  +files/mbtpdfasm-1.0.26-gcc4.patch, -mbtpdfasm-1.0.26.ebuild,
+  +mbtpdfasm-1.0.26-r1.ebuild:
+  added GCC4 patch.
+
+*mbtpdfasm-1.0.26 (23 Mar 2006)
+
+  23 Mar 2006; Stefan Briesenick <sbriesen@gentoo.org> +metadata.xml,
+  +mbtpdfasm-1.0.26.ebuild:
+  initial commit, solving bug #75337.

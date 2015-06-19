@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip
+DESCRIPTION=Support library that allows third party applications access and use C.A.P.S. images
+EAPI=5
+HOMEPAGE=http://www.softpres.org/
+IUSE=doc
+KEYWORDS=amd64 ppc x86
+LICENSE=CAPS
+RESTRICT=strip
+SLOT=0
+SRC_URI=mirror://gentoo/ipfdevlib_linux-20060612.tgz amd64? ( mirror://gentoo/ipflib_linux-amd64-20071115.tgz ) doc? ( mirror://gentoo/ipfdoc102a.zip ) mirror://gentoo/config_uae_ocs13_512c-512s.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=89ce87b0481414e344e552784036de33

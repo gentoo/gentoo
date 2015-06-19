@@ -1,0 +1,438 @@
+# ChangeLog for app-forensics/chkrootkit
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/chkrootkit/ChangeLog,v 1.68 2012/01/06 17:34:08 halcy0n Exp $
+
+  06 Jan 2012; Mark Loeser <halcy0n@gentoo.org> chkrootkit-0.49.ebuild:
+  Stable for ppc/ppc64; bug #382455
+
+  11 Oct 2011; Jeroen Roovers <jer@gentoo.org> chkrootkit-0.49.ebuild:
+  Stable for HPPA (bug #382455).
+
+  09 Oct 2011; Raúl Porcel <armin76@gentoo.org> chkrootkit-0.49.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #382455
+
+  28 Sep 2011; Tim Harder <radhermit@gentoo.org> chkrootkit-0.49.ebuild,
+  metadata.xml:
+  Add cron use flag to control cron dependency and script installation (bug
+  #384409).
+
+  22 Sep 2011; Tim Harder <radhermit@gentoo.org> chkrootkit-0.49.ebuild:
+  Minor quoting and spacing fixes.
+
+  22 Sep 2011; Tim Harder <radhermit@gentoo.org> chkrootkit-0.49.ebuild:
+  Add cron dependency (bug #383385 by Toralf Förster) and bump to EAPI 4.
+
+  18 Sep 2011; Markus Meier <maekke@gentoo.org> chkrootkit-0.49.ebuild:
+  arm stable, bug #382455
+
+  16 Sep 2011; Tony Vroon <chainsaw@gentoo.org> chkrootkit-0.49.ebuild:
+  Marked stable on AMD64 based on arch testing by Ian "idella4" Delaney,
+  Agostino "ago" Sarubbo & Tomáš "Mepho" Pružina in bug #382455.
+
+  15 Sep 2011; Andreas Schuerch <nativemad@gentoo.org> chkrootkit-0.49.ebuild:
+  x86 stable, thanks JD, bug 382455
+
+  22 Jul 2011; Patrick Lauer <patrick@gentoo.org>
+  -files/chkrootkit-0.47-add-missing-includes.diff,
+  -files/chkrootkit-0.47-makefile.diff:
+  Removing stale files for #341049
+
+*chkrootkit-0.49 (24 Jul 2010)
+
+  24 Jul 2010; Justin Lecher <jlec@gentoo.org> +chkrootkit-0.49.ebuild:
+  Version Bump, 280332
+
+  21 Jan 2010; Peter Volkov <pva@gentoo.org> chkrootkit-0.48-r1.ebuild:
+  Fix LICENSE: should be BSD-2, bug #301121, thank Ulrich Müller for this
+  work.
+
+  30 Apr 2009; Patrick Lauer <patrick@gentoo.org> -chkrootkit-0.47.ebuild:
+  Remove old
+
+  10 Jan 2009; Raúl Porcel <armin76@gentoo.org> chkrootkit-0.48-r1.ebuild:
+  alpha/arm/ia64/s390/sh/x86 stable wrt #252657
+
+  08 Jan 2009; Brent Baude <ranger@gentoo.org> chkrootkit-0.48-r1.ebuild:
+  Marking chkrootkit-0.48-r1 ppc64 for bug 252657
+
+  31 Dec 2008; Friedrich Oslage <bluebird@gentoo.org>
+  chkrootkit-0.48-r1.ebuild:
+  Stable on sparc, bug #252657
+
+  28 Dec 2008; Guy Martin <gmsoft@gentoo.org> chkrootkit-0.48-r1.ebuild:
+  hppa stable, #252657
+
+  28 Dec 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  chkrootkit-0.48-r1.ebuild:
+  ppc stable, bug #252657
+
+  28 Dec 2008; Jeremy Olexa <darkside@gentoo.org> chkrootkit-0.48-r1.ebuild:
+  amd64 stable, bug 252657
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/chkrootkit-0.48-shell-history-anomalies.diff:
+  Fix patch to apply.
+
+*chkrootkit-0.48-r1 (06 Oct 2008)
+
+  06 Oct 2008; Peter Volkov <pva@gentoo.org>
+  +files/chkrootkit-0.48-chkutmp.c-some-overruns-fixes.patch,
+  -chkrootkit-0.48.ebuild, +chkrootkit-0.48-r1.ebuild:
+  Fixed chkutmp crash, bug #184962, thank barbaz for report and Stewart
+  Gebbie for the fix.
+
+*chkrootkit-0.48 (06 Oct 2008)
+
+  06 Oct 2008; Peter Volkov <pva@gentoo.org>
+  -files/chkrootkit-0.44-coreutils-static-falsepositive.patch,
+  -files/chkrootkit-0.45-makefile.diff,
+  -files/chkrootkit-0.46-add-missing-includes.diff,
+  +files/chkrootkit-0.48-shell-history-anomalies.diff,
+  -chkrootkit-0.44-r1.ebuild, -chkrootkit-0.45.ebuild,
+  -chkrootkit-0.46a.ebuild, +chkrootkit-0.48.ebuild:
+  Version bump, thank Alon Bar-Lev and Alex Efros for work, bug #205419.
+  Fixed shell history anomalies, bug #226067, thank Horst Prote for report
+  and fix. Remove old.
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Robert Clark (hyakuhei, #154737) from metadata.xml.
+
+  21 May 2007; Jeroen Roovers <jer@gentoo.org> chkrootkit-0.47.ebuild:
+  Stable for HPPA (bug #170634).
+
+  20 May 2007; Raúl Porcel <armin76@gentoo.org> chkrootkit-0.47.ebuild:
+  alpha/ia64 stable wrt #170634
+
+  19 May 2007; Peter Weller <welp@gentoo.org> chkrootkit-0.47.ebuild:
+  Stable on amd64 wrt bug 170634
+
+  19 May 2007; nixnut <nixnut@gentoo.org> chkrootkit-0.47.ebuild:
+  Stable on ppc wrt bug 170634
+
+  19 May 2007; Andrej Kacian <ticho@gentoo.org> chkrootkit-0.47.ebuild:
+  Stable on x86, bug #170634.
+
+  19 May 2007; Markus Rothe <corsair@gentoo.org> chkrootkit-0.47.ebuild:
+  Stable on ppc64; bug #170634
+
+  18 May 2007; Robert Clark <hyakuhei@gentoo.org> metadata.xml:
+  Added myself to metadata.xml as maintainer
+
+  18 May 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  chkrootkit-0.47.ebuild:
+  Stable on sparc wrt #170634
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove ka0ttic from metadata.xml due to retirement.
+
+  26 Jan 2007; Alexander H. Færøy <eroyf@gentoo.org>
+  chkrootkit-0.45.ebuild:
+  Stable on MIPS.
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> chkrootkit-0.44-r1.ebuild,
+  chkrootkit-0.45.ebuild, chkrootkit-0.46a.ebuild:
+  Replacing einfo with elog
+
+*chkrootkit-0.47 (19 Nov 2006)
+
+  19 Nov 2006; Tristan Heaven <nyhm@gentoo.org>
+  +files/chkrootkit-0.47-add-missing-includes.diff,
+  +files/chkrootkit-0.47-makefile.diff, +chkrootkit-0.47.ebuild:
+  Version bump, bug #154823
+
+*chkrootkit-0.46a (28 Oct 2005)
+
+  28 Oct 2005; Aaron Walker <ka0ttic@gentoo.org> -chkrootkit-0.46.ebuild,
+  +chkrootkit-0.46a.ebuild:
+  Version bump; tidy previous ebuild.
+
+  27 Oct 2005; Aaron Walker <ka0ttic@gentoo.org> chkrootkit-0.46.ebuild:
+  Bah fix the keywords...
+
+*chkrootkit-0.46 (27 Oct 2005)
+
+  27 Oct 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/chkrootkit-0.46-add-missing-includes.diff, +chkrootkit-0.46.ebuild:
+  Version bump.
+
+  06 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> -chkrootkit-0.43-r3.ebuild,
+  -chkrootkit-0.43-r4.ebuild, -chkrootkit-0.44.ebuild,
+  chkrootkit-0.44-r1.ebuild, chkrootkit-0.45.ebuild:
+  Added ~mips for bug 88425.  Tidy old ebuilds.
+
+  03 Aug 2005; Bryan Østergaard <kloeri@gentoo.org> chkrootkit-0.45.ebuild:
+  Stable on alpha.
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> chkrootkit-0.45.ebuild:
+  Stable on ppc64
+
+  29 May 2005; Marcus D. Hanwell <marcus@gentoo.org> chkrootkit-0.45.ebuild:
+  Stable on amd64.
+
+  27 May 2005; Joseph Jezak <josejx@gentoo.org> chkrootkit-0.45.ebuild:
+  Marked ppc stable.
+
+  26 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  chkrootkit-0.45.ebuild:
+  Stable on sparc
+
+  25 May 2005; Aaron Walker <ka0ttic@gentoo.org> chkrootkit-0.45.ebuild:
+  Stable on x86.
+
+  08 Apr 2005; Markus Rothe <corsair@gentoo.org> chkrootkit-0.44-r1.ebuild:
+  Stable on ppc64
+
+*chkrootkit-0.45 (25 Feb 2005)
+
+  25 Feb 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/chkrootkit-0.45-makefile.diff, +chkrootkit-0.45.ebuild:
+  Version bump.
+
+*chkrootkit-0.44-r1 (23 Jan 2005)
+
+  23 Jan 2005; Daniel Black <dragonheart@gentoo.org>
+  +files/chkrootkit-0.44-coreutils-static-falsepositive.patch,
+  +chkrootkit-0.44-r1.ebuild:
+  Revision bump to solve false detections with static coreutils (du and ls). Bug
+  #73372 refers. Thanks to the author Nelson Murilo <nelson@pangeia.com.br> for
+  a very rapid response.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  16 Dec 2004; Dylan Carlson <absinthe@gentoo.org> chkrootkit-0.44.ebuild:
+  Stable on amd64.
+
+  11 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> chkrootkit-0.44.ebuild:
+  Stable on alpha.
+
+  01 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> chkrootkit-0.44.ebuild:
+  Stable on sparc
+
+  30 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> chkrootkit-0.44.ebuild:
+  Marked stable on x86.
+
+  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  chkrootkit-0.43-r4.ebuild:
+  stable on amd64.
+
+  08 Oct 2004; Jason Wever <weeve@gentoo.org> chkrootkit-0.43-r4.ebuild:
+  Stable on sparc.
+
+  05 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> chkrootkit-0.43-r4.ebuild:
+  Stable on alpha.
+
+  04 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> -chkrootkit-0.43-r2.ebuild,
+  chkrootkit-0.43-r4.ebuild, -chkrootkit-0.43.ebuild:
+  Marked 0.43-r4 stable on x86; clean up old versions.
+
+  28 Sep 2004; Aaron Walker <ka0ttic@gentoo.org> chkrootkit-0.44.ebuild:
+  Updated ebuild & diff to respect user CFLAGS/LDFLAGS as well as
+  FEATURES=nostrip. Added warning message for false positives (bug #65635).
+  Also, marked ~ppc64 (should've been carried over from 0.43-r3).
+
+  19 Sep 2004; Bryan Østergaard,,, <kloeri@gentoo.org>
+  chkrootkit-0.43-r3.ebuild:
+  Stable on alpha.
+
+*chkrootkit-0.44 (18 Sep 2004)
+
+  18 Sep 2004; Aaron Walker <ka0ttic@gentoo.org>
+  -files/chkrootkit-0.37-gentoo.diff, -chkrootkit-0.37.ebuild,
+  +chkrootkit-0.44.ebuild:
+  Version bump and clean up.
+
+  18 Sep 2004; Travis Tilley <lv@gentoo.org> chkrootkit-0.43-r3.ebuild:
+  stable on amd64
+
+  18 Sep 2004; Jason Wever <weeve@gentoo.org> chkrootkit-0.43-r3.ebuild:
+  Stable on sparc.
+
+  18 Sep 2004; Tom Gall <tgall@gentoo.org> chkrootkit-0.43-r3.ebuild:
+  stable on ppc
+
+  18 Sep 2004; Tom Gall <tgall@gentoo.org> chkrootkit-0.43-r3.ebuild:
+  stable on ppc64
+
+  18 Sep 2004; Aaron Walker <ka0ttic@gentoo.org> chkrootkit-0.43-r3.ebuild:
+  Marked 0.43-r3 stable on x86.
+
+  12 Sep 2004; Aaron Walker <ka0ttic@gentoo.org> metadata.xml:
+  Updated metadata (no-herd => forensics)
+
+*chkrootkit-0.43-r2 (12 Sep 2004)
+
+  12 Sep 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  +files/chkrootkit-0.37-gentoo.diff, +files/chkrootkit.cron,
+  +chkrootkit-0.37.ebuild, +chkrootkit-0.43-r2.ebuild,
+  +chkrootkit-0.43-r3.ebuild, +chkrootkit-0.43-r4.ebuild,
+  +chkrootkit-0.43.ebuild:
+  Moved from app-admin/chkrootkit to app-forensics/chkrootkit.
+
+  11 Sep 2004; Aaron Walker <ka0ttic@gentoo.org> metadata.xml:
+  Updated metadata info.
+
+  28 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> chkrootkit-0.43-r4.ebuild:
+  Fix bug 62049.
+
+*chkrootkit-0.43-r4 (27 Aug 2004)
+
+  27 Aug 2004; <pyrania@gentoo.org> +files/chkrootkit.cron,
+  +chkrootkit-0.43-r4.ebuild:
+  Added cron.weekly entry - disabled per default. See bug # 56267.
+
+  26 Aug 2004; Jason Wever <weeve@gentoo.org> chkrootkit-0.43-r2.ebuild:
+  Stable on sparc.
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> :
+  Fix digest again..
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> :
+  Fix broken digest.
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> chkrootkit-0.43-r2.ebuild:
+  Stable on alpha + x86.
+
+*chkrootkit-0.43-r3 (22 Aug 2004)
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org>
+  -files/chkrootkit-0.39a-gentoo.diff, -files/chkrootkit-0.41-gentoo.diff,
+  -files/chkrootkit-0.42b-gentoo.diff, chkrootkit-0.43-r2.ebuild,
+  +chkrootkit-0.43-r3.ebuild, chkrootkit-0.43.ebuild:
+  Fix bug 57700, new revision by Aaron Walker. Move big patches to gentoo
+  mirrors and clean out stray patches from files/.
+
+  29 Jul 2004; <solar@gentoo.org> chkrootkit-0.43-r2.ebuild:
+  app-admin/chkrootkit: strings-static is not static. bug 57701
+
+  27 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  -chkrootkit-0.42b.ebuild, -chkrootkit-0.43-r1.ebuild:
+  prune ebuilds
+
+  24 Jul 2004; <solar@gentoo.org> chkrootkit-0.43-r1.ebuild,
+  chkrootkit-0.43-r2.ebuild, chkrootkit-0.43.ebuild:
+  force broken chklastlog to use /var/log vs /var/adm. bug 57698
+
+*chkrootkit-0.43-r2 (08 Jul 2004)
+
+  08 Jul 2004; Martin Holzer <mholzer@gentoo.org>
+  +files/chkrootkit-0.43-r2-gentoo.diff, chkrootkit-0.43-r1.ebuild,
+  +chkrootkit-0.43-r2.ebuild:
+  fixing a forgotten string.
+
+*chkrootkit-0.43-r1 (03 Jul 2004)
+
+  03 Jul 2004; <pyrania@gentoo.org> +files/chkrootkit-0.43-r1-gentoo.diff,
+  +chkrootkit-0.43-r1.ebuild:
+  Fixed the buggy patch.. Closing bug #55796.
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> chkrootkit-0.42b.ebuild,
+  chkrootkit-0.43.ebuild:
+  add sed-4 dep
+
+  23 Jun 2004; <malc@gentoo.org> chkrootkit-0.43.ebuild:
+  Mark stable on amd64
+
+  16 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> chkrootkit-0.43.ebuild:
+  Stable on alpha.
+
+  07 Jun 2004; Jason Wever <weeve@gentoo.org> chkrootkit-0.43.ebuild:
+  Stable on sparc.
+
+  06 Jun 2004; Daniel Black <dragonheart@gentoo.org> chkrootkit-0.37.ebuild,
+  chkrootkit-0.43.ebuild, +metadata.xml:
+  x86 stable. QA fix on 0.37 - IUSE
+
+  01 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  chkrootkit-0.42b.ebuild, chkrootkit-0.43.ebuild:
+  fix depend; tidy
+
+  30 Apr 2004; Martin Holzer <mholzer@gentoo.org> chkrootkit-0.43.ebuild,
+  files/chkrootkit-0.43-gentoo.diff:
+  finaly closes 41040.
+
+  09 Apr 2004; <solar@gentoo.org> chkrootkit-0.42b.ebuild:
+  Added filter-ldflags -pie to avoid static linking problems when LDFLAGS=-pie
+  is used. bug 47057
+
+  02 Mar 2004; Jason Wever <weeve@gentoo.org> chkrootkit-0.42b.ebuild:
+  Stable on sparc I am, yes.
+
+*chkrootkit-0.43 (29 Feb 2004)
+
+  29 Feb 2004; Markus Nigbur <pyrania@gentoo.org> chkrootkit-0.43.ebuild:
+  Version bump. Closing #41040.
+
+  29 Feb 2004; Markus Nigbur <pyrania@gentoo.org> chkrootkit-0.42b.ebuild:
+  Stable on x86
+
+  08 Feb 2004; Dylan Carlson <absinthe@gentoo.org> chkrootkit-0.42b.ebuild:
+  added amd64 keyword.
+
+  04 Jan 2004; Jason Wever <weeve@gentoo.org> chkrootkit-0.37.ebuild,
+  chkrootkit-0.39a.ebuild, chkrootkit-0.41-r1.ebuild, chkrootkit-0.42b.ebuild:
+  Marked 0.41-r1 stable on sparc and updated copyright info in all ebuilds.
+
+  24 Nov 2003; Seemant Kulleen <seemant@gentoo.org> chkrootkit-0.42b.ebuild:
+  coreutils fix -- head -1 to head -n 1 syntax
+
+  16 Oct 2003; Aron Griffis <agriffis@gentoo.org> chkrootkit-0.42b.ebuild:
+  Stable on alpha
+
+  14 Oct 2003; Chuck Short <zul@gentoo.org> chkrootkit-0.42b.ebuild:
+  Added ~ia64 to keywords.
+
+*chkrootkit-0.42b (06 Oct 2003)
+
+  06 Oct 2003; Martin Holzer <mholzer@gentoo.org> chkrootkit-0.42b.ebuild,
+  files/chkrootkit-0.42b-gentoo.diff:
+  Version bumped. Closes #30368
+
+  03 Oct 2003; Aron Griffis <agriffis@gentoo.org> chkrootkit-0.41-r1.ebuild:
+  Stable on alpha
+
+*chkrootkit-0.41-r1 (18 Jul 2003)
+
+  18 Jul 2003; Martin Holzer <mholzer@gentoo.org> chkrootkit-0.41-r1.ebuild,
+  chkrootkit-0.41.ebuild, files/chkrootkit-0.41-gentoo.diff:
+  little bugfix.
+
+*chkrootkit-0.41 (16 Jul 2003)
+
+  16 Jul 2003; Martin Holzer <mholzer@gentoo.org> chkrootkit-0.41.ebuild:
+  Version bumped. Ebuild ssubmitted by Daniel Seyffer <gentoo-bugs@seyffer.de>
+  in #24313.
+
+*chkrootkit-0.39a (27 Feb 2003)
+
+  27 Feb 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump. Found by Daniel Seyffer <gentoo-bugs@seyffer.de> in #15743.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*chkrootkit-0.37 (18 Sept 2002)
+
+  15 Dec 2002; Bjoern Brauel <bjb@gentoo.org> chkrootkit-0.37.ebuild :
+  Add alpha to KEYWORDS
+
+  29 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> chkrootkit-0.37.ebuild :
+  Added patch from Kurt V. Hindenburg <khindenburg@cherrynebula.net> in #11164.
+
+  18 Sept 2002; Daniel Seyffer <gentoo@getroot.de> 
+  chkrootkit-0.37.ebuild :
+  New features according to www.chkrootkit.org:
+  chklastlog.c fix; chkproc.c improvements; 
+  new rootkits detected: 
+	OpenBSD rk v1 
+	Illogic rootkit  
+	SK rootkit  
+  new worms detected: 
+	Scalper (FreeBSD/Apache chunked encoding worm) 
+	Slapper (Apache/mod_ssl Worm) 
+
+*chkrootkit-0.36 (18 Jul 2002)
+  
+  29 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> chkrootkit-0.36.ebuild :
+  Added ppc KEYWORDS. Added RDEPEND.
+
+  18 Jul 2002; Daniel Robbins <drobbins@gentoo.org>: Added missing ChangeLog

@@ -1,0 +1,89 @@
+--- a/fs/aufs/dynop.c	2012-10-09 15:41:32.652989534 -0400
++++ b/fs/aufs/dynop.c	2012-10-09 15:41:58.562989820 -0400
+@@ -149,9 +149,11 @@
+ #define DySet(func, dst, src, h_op, h_sb) do {				\
+ 	DyDbgInc(cnt);							\
+ 	if (h_op->func) {						\
+-		if (src.func)						\
+-			dst.func = src.func;				\
+-		else							\
++		if (src.func) {						\
++			pax_open_kernel();				\
++			*(void **)&dst.func = src.func;			\
++			pax_close_kernel();				\
++		} else							\
+ 			AuDbg("%s %s\n", au_sbtype(h_sb), #func);	\
+ 	}								\
+ } while (0)
+@@ -159,7 +161,9 @@
+ #define DySetForce(func, dst, src) do {		\
+ 	AuDebugOn(!src.func);			\
+ 	DyDbgInc(cnt);				\
+-	dst.func = src.func;			\
++	pax_open_kernel();			\
++	*(void **)&dst.func = src.func;		\
++	pax_close_kernel();			\
+ } while (0)
+ 
+ #define DySetAop(func) \
+@@ -266,15 +270,17 @@
+  */
+ static void dy_adx(struct au_dyaop *dyaop, int do_dx)
+ {
++	pax_open_kernel();
+ 	if (!do_dx) {
+-		dyaop->da_op.direct_IO = NULL;
+-		dyaop->da_op.get_xip_mem = NULL;
++		*(void **)&dyaop->da_op.direct_IO = NULL;
++		*(void **)&dyaop->da_op.get_xip_mem = NULL;
+ 	} else {
+-		dyaop->da_op.direct_IO = aufs_aop.direct_IO;
+-		dyaop->da_op.get_xip_mem = aufs_aop.get_xip_mem;
++		*(void **)&dyaop->da_op.direct_IO = aufs_aop.direct_IO;
++		*(void **)&dyaop->da_op.get_xip_mem = aufs_aop.get_xip_mem;
+ 		if (!dyaop->da_get_xip_mem)
+-			dyaop->da_op.get_xip_mem = NULL;
++			*(void **)&dyaop->da_op.get_xip_mem = NULL;
+ 	}
++	pax_close_kernel();
+ }
+ 
+ static struct au_dyaop *dy_aget(struct au_branch *br,
+--- a/fs/aufs/f_op_sp.c	2012-10-09 15:41:32.652989534 -0400
++++ b/fs/aufs/f_op_sp.c	2012-10-09 15:41:58.562989820 -0400
+@@ -104,7 +104,7 @@
+ static int aufs_open_sp(struct inode *inode, struct file *file);
+ static struct au_sp_fop {
+ 	int			done;
+-	struct file_operations	fop;	/* not 'const' */
++	file_operations_no_const	fop;	/* not 'const' */
+ 	spinlock_t		spin;
+ } au_sp_fop[AuSp_Last] = {
+ 	[AuSp_FIFO] = {
+@@ -157,8 +157,10 @@
+ 		h_file = au_hf_top(file);
+ 		spin_lock(&p->spin);
+ 		if (!p->done) {
+-			p->fop = *h_file->f_op;
++			pax_open_kernel();
++			memcpy((void *)&p->fop, h_file->f_op, sizeof(p->fop));
+ 			p->fop.owner = THIS_MODULE;
++			pax_close_kernel();
+ 			if (p->fop.aio_read)
+ 				p->fop.aio_read = aufs_aio_read_sp;
+ 			if (p->fop.aio_write)
+--- a/fs/aufs/sysfs.c	2013-10-20 17:08:37.000000000 -0400
++++ b/fs/aufs/sysfs.c	2013-10-19 17:08:29.000000000 -0400
+@@ -233,8 +233,10 @@
+ 	for (i = 0; i < ARRAY_SIZE(br->br_sysfs); i++) {
+ 		attr = &br_sysfs->attr;
+ 		sysfs_attr_init(attr);
+-		attr->name = br_sysfs->name;
+-		attr->mode = S_IRUGO;
++		pax_open_kernel();
++		*(void **)&attr->name = br_sysfs->name;
++		*(void **)&attr->mode = S_IRUGO;
++		pax_close_kernel();
+ 		br_sysfs++;
+ 	}
+ }

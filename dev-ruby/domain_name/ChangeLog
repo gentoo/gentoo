@@ -1,0 +1,155 @@
+# ChangeLog for dev-ruby/domain_name
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/domain_name/ChangeLog,v 1.36 2015/06/09 18:30:54 maekke Exp $
+
+  09 Jun 2015; Markus Meier <maekke@gentoo.org> domain_name-0.5.24.ebuild:
+  add ~arm, bug #545592
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*domain_name-0.5.24 (18 Apr 2015)
+
+  18 Apr 2015; Manuel Rüger <mrueg@gentoo.org> +domain_name-0.5.24.ebuild:
+  Version bump.
+
+  05 Apr 2015; Hans de Graaff <graaff@gentoo.org> domain_name-0.5.23.ebuild:
+  Add ruby22.
+
+  11 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -domain_name-0.5.13.ebuild:
+  Remove old.
+
+  11 Mar 2015; Agostino Sarubbo <ago@gentoo.org> domain_name-0.5.22.ebuild:
+  Stable for x86, wrt bug #542868
+
+  11 Mar 2015; Agostino Sarubbo <ago@gentoo.org> domain_name-0.5.22.ebuild:
+  Stable for amd64, wrt bug #542868
+
+  11 Mar 2015; Hans de Graaff <graaff@gentoo.org> domain_name-0.5.22.ebuild:
+  Create stable candidate.
+
+*domain_name-0.5.23 (24 Dec 2014)
+
+  24 Dec 2014; Manuel Rüger <mrueg@gentoo.org> +domain_name-0.5.23.ebuild,
+  -domain_name-0.5.20.ebuild:
+  Version bump. Remove old.
+
+*domain_name-0.5.22 (08 Dec 2014)
+
+  08 Dec 2014; Hans de Graaff <graaff@gentoo.org> +domain_name-0.5.22.ebuild:
+  Version bump.
+
+  08 Dec 2014; Hans de Graaff <graaff@gentoo.org> -domain_name-0.5.19.ebuild:
+  Cleanup.
+
+  11 Nov 2014; Manuel Rüger <mrueg@gentoo.org> domain_name-0.5.13.ebuild,
+  domain_name-0.5.19.ebuild, domain_name-0.5.20.ebuild:
+  Drop jruby target.
+
+*domain_name-0.5.20 (20 Aug 2014)
+
+  20 Aug 2014; Manuel Rüger <mrueg@gentoo.org> +domain_name-0.5.20.ebuild:
+  Version bump.
+
+  01 Aug 2014; Manuel Rüger <mrueg@gentoo.org> -domain_name-0.5.18.ebuild:
+  Cleanup old.
+
+  14 Jun 2014; Manuel Rüger <mrueg@gentoo.org> domain_name-0.5.19.ebuild:
+  Add ruby21.
+
+*domain_name-0.5.19 (14 Jun 2014)
+
+  14 Jun 2014; Manuel Rüger <mrueg@gentoo.org> +domain_name-0.5.19.ebuild:
+  Version bump.
+
+  24 Apr 2014; Manuel Rüger <mrueg@gentoo.org> -domain_name-0.5.16.ebuild,
+  -domain_name-0.5.17.ebuild, domain_name-0.5.13.ebuild,
+  domain_name-0.5.18.ebuild:
+  Remove ruby18 support. Cleanup old.
+
+*domain_name-0.5.18 (28 Mar 2014)
+
+  28 Mar 2014; Hans de Graaff <graaff@gentoo.org> +domain_name-0.5.18.ebuild:
+  Version bump.
+
+*domain_name-0.5.17 (25 Mar 2014)
+
+  25 Mar 2014; Manuel Rüger <mrueg@gentoo.org> +domain_name-0.5.17.ebuild,
+  -domain_name-0.5.14.ebuild, -domain_name-0.5.15.ebuild:
+  Version bump. Cleanup old.
+
+*domain_name-0.5.16 (13 Feb 2014)
+
+  13 Feb 2014; Manuel Rüger <mrueg@gentoo.org> +domain_name-0.5.16.ebuild:
+  Version bump.
+
+*domain_name-0.5.15 (18 Nov 2013)
+
+  18 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +domain_name-0.5.15.ebuild:
+  Version bump. Add ruby20.
+
+*domain_name-0.5.14 (19 Oct 2013)
+
+  19 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +domain_name-0.5.14.ebuild,
+  -domain_name-0.5.12.ebuild:
+  Version bump. Cleanup old.
+
+  15 Sep 2013; Agostino Sarubbo <ago@gentoo.org> domain_name-0.5.13.ebuild:
+  Stable for x86, wrt bug #483694
+
+  15 Sep 2013; Agostino Sarubbo <ago@gentoo.org> domain_name-0.5.13.ebuild:
+  Stable for amd64, wrt bug #483694
+
+*domain_name-0.5.13 (18 Aug 2013)
+
+  18 Aug 2013; Manuel Rüger <mrueg@gentoo.org> +domain_name-0.5.13.ebuild,
+  -domain_name-0.5.11.ebuild:
+  Version bump. Cleanup old.
+
+*domain_name-0.5.12 (14 Jul 2013)
+
+  14 Jul 2013; Hans de Graaff <graaff@gentoo.org> +domain_name-0.5.12.ebuild:
+  Version bump.
+
+  14 Jul 2013; Hans de Graaff <graaff@gentoo.org> -domain_name-0.5.6.ebuild,
+  -domain_name-0.5.7.ebuild:
+  Cleanup.
+
+*domain_name-0.5.11 (01 May 2013)
+
+  01 May 2013; Hans de Graaff <graaff@gentoo.org> +domain_name-0.5.11.ebuild:
+  Version bump.
+
+*domain_name-0.5.7 (02 Feb 2013)
+
+  02 Feb 2013; Hans de Graaff <graaff@gentoo.org> +domain_name-0.5.7.ebuild:
+  Version bump.
+
+  02 Feb 2013; Hans de Graaff <graaff@gentoo.org> -domain_name-0.5.3.ebuild,
+  -domain_name-0.5.4.ebuild:
+  Cleanup.
+
+*domain_name-0.5.6 (16 Dec 2012)
+
+  16 Dec 2012; Hans de Graaff <graaff@gentoo.org> +domain_name-0.5.6.ebuild:
+  Version bump.
+
+  25 Nov 2012; Thomas Kahle <tomka@gentoo.org> domain_name-0.5.4.ebuild:
+  marked ~x86 per bug 432830
+
+*domain_name-0.5.4 (09 Oct 2012)
+
+  09 Oct 2012; Hans de Graaff <graaff@gentoo.org> +domain_name-0.5.4.ebuild:
+  Version bump.
+
+  29 Sep 2012; Fabian Groffen <grobian@gentoo.org> domain_name-0.5.3.ebuild:
+  Added Prefix keywords, bug #432830
+
+  27 Sep 2012; Samuli Suominen <ssuominen@gentoo.org> domain_name-0.5.3.ebuild:
+  Keyword ~ppc/~ppc64 wrt #432830
+
+*domain_name-0.5.3 (14 Aug 2012)
+
+  14 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +domain_name-0.5.3.ebuild, +metadata.xml:
+  Initial import of domain_name, dependency of mechanize.

@@ -1,0 +1,13 @@
+--- a/core-java/maven-build.xml
++++ b/core-java/maven-build.xml
+@@ -180,9 +180,8 @@
+   <!-- ====================================================================== -->
+ 
+   <target name="javadoc" description="Generates the Javadoc of the application">
+-    <javadoc sourcepath="/var/tmp/portage/dev-java/javolution-6.0.0/work/javolution-6.0.0/core-java/target/colorized" 
++    <javadoc sourcepath="/var/tmp/portage/dev-java/javolution-6.0.0/work/javolution-6.0.0/core-java/" 
+              destdir="${maven.reporting.outputDirectory}/apidocs" 
+-             overview="/var/tmp/portage/dev-java/javolution-6.0.0/work/javolution-6.0.0/core-java/target/colorized/javolution/doc-files/overview.html" 
+              access="protected" 
+              old="false" 
+              verbose="false" 

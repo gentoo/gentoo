@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+  <email>craig@gentoo.org</email>
+  <name>Stefan Behte</name>
+</maintainer>
+<maintainer>
+  <email>polynomial-c@gentoo.org</email>
+  <name>Lars Wendler</name>
+  <description>Proxy maintainer for Stefan</description>
+</maintainer>
+</pkgmetadata>

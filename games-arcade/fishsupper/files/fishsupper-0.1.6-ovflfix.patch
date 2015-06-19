@@ -1,0 +1,11 @@
+--- src/main.cpp.old	2012-06-24 18:35:27.661894094 +0200
++++ src/main.cpp	2012-06-24 18:35:41.041954632 +0200
+@@ -293,7 +293,7 @@
+     
+     if (!ok)
+     {
+-        fs_dir = new char[ strlen(".") ];
++        fs_dir = new char[ strlen(".") + 1];
+         strcpy(fs_dir, ".");
+     } // if ... else
+     

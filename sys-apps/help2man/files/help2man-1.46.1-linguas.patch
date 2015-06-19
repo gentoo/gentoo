@@ -1,0 +1,67 @@
+respect user LINGUAS
+
+--- help2man-1.46.1/Makefile.in
++++ help2man-1.46.1/Makefile.in
+@@ -27,8 +27,15 @@
+ export VPATH = .:$(srcdir)
+ 
+ DESTDIR =
+-LINGUAS = $(basename $(notdir $(wildcard $(srcdir)/po/*.po)))
+-LINGUAS_TEXI = $(basename $(notdir $(wildcard $(srcdir)/po-texi/*.po)))
++ALL_LINGUAS = $(basename $(notdir $(wildcard $(srcdir)/po/*.po)))
++ALL_LINGUAS_TEXI = $(basename $(notdir $(wildcard $(srcdir)/po-texi/*.po)))
++ifeq ($(LINGUAS),)
++INSTALL_LINGUAS = $(ALL_LINGUAS)
++INSTALL_LINGUAS_TEXI = $(ALL_LINGUAS_TEXI)
++else
++INSTALL_LINGUAS = $(filter $(LINGUAS),$(ALL_LINGUAS))
++INSTALL_LINGUAS_TEXI = $(filter $(LINGUAS),$(ALL_LINGUAS_TEXI))
++endif
+ 
+ CC = @CC@
+ PERL = @PERL@
+@@ -80,7 +87,7 @@
+ 
+ install_l10n: install_dirs msg_l10n man_l10n info_l10n
+ 	set -e; \
+-	for lang in $(LINGUAS); \
++	for lang in $(INSTALL_LINGUAS); \
+ 	do \
+ 	    $(MKINSTALLDIRS) $(DESTDIR)$(localedir)/$$lang/LC_MESSAGES; \
+ 	    $(INSTALL_DATA) $$($(FIND_VPATH) po/$$lang.gmo) \
+@@ -89,7 +96,7 @@
+ 	    $(INSTALL_DATA) $$($(FIND_VPATH) $(target).$$lang.1) \
+ 		$(DESTDIR)$(mandir)/$$lang/man1/$(target).1; \
+ 	done; \
+-	for lang in $(LINGUAS_TEXI); \
++	for lang in $(INSTALL_LINGUAS_TEXI); \
+ 	do \
+ 	    $(INSTALL_DATA) $$($(FIND_VPATH) $(target)-$$lang.info) \
+ 		$(DESTDIR)$(infodir)/$(target)-$$lang.info; \
+@@ -151,7 +158,7 @@
+ 	$(MAKE) $(target) $(target).h2m
+ 	./$(target) --include=$(target).h2m --output=$@ ./$(target)
+ 
+-msg_l10n: $(addprefix po/,$(addsuffix .gmo,$(LINGUAS)))
++msg_l10n: $(addprefix po/,$(addsuffix .gmo,$(ALL_LINGUAS)))
+ po/%.gmo: $(srcdir)/po/%.po
+ 	test -d po || mkdir po
+ 	$(MSGFMT) -o $@ $?
+@@ -161,7 +168,7 @@
+ 	$(MKINSTALLDIRS) localetmp/$$lang/LC_MESSAGES && \
+ 	$(INSTALL_DATA) po/$$lang.gmo localetmp/$$lang/LC_MESSAGES/$(target).mo
+ 
+-man_l10n: $(addprefix $(target).,$(addsuffix .1,$(LINGUAS)))
++man_l10n: $(addprefix $(target).,$(addsuffix .1,$(ALL_LINGUAS)))
+ $(target).%.1: $(srcdir)/$(target).PL $(srcdir)/$(target).h2m.PL \
+     $(srcdir)/po/%.po
+ 	lang=$(patsubst $(target).%.1,%,$@); \
+@@ -184,7 +191,7 @@
+ $(target).info: $(srcdir)/$(target).texi
+ 	$(MAKEINFO) $? -o $@
+ 
+-info_l10n: $(addprefix $(target)-,$(addsuffix .info,$(LINGUAS_TEXI)))
++info_l10n: $(addprefix $(target)-,$(addsuffix .info,$(ALL_LINGUAS_TEXI)))
+ $(target)-%.info: $(target)-%.texi
+ 	$(MAKEINFO) $? -o $@.tmp
+ 	$(FIXUP_TEXI_TRANS) -o $@ $@.tmp

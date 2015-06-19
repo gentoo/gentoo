@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Andrew McMillan's web libraries: A collection of generic classes used by the davical calendar server
+EAPI=5
+HOMEPAGE=http://andrew.mcmillan.net.nz/projects/awl
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/php:*[pdo,postgres,xml]
+SLOT=0
+SRC_URI=http://debian.mcmillan.net.nz/packages/awl/awl-0.53.tar.gz
+_md5_=e6ad8ef46758e555e3383e76ee144765

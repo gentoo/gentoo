@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>desktop-misc</herd>
+	<longdescription>autocutsel synchronizes the two copy/paste buffers mainly used by X applications. It unifies "clipboards" between VNC servers and Windows.</longdescription>
+</pkgmetadata>

@@ -1,0 +1,60 @@
+# ChangeLog for app-crypt/yubikey-neo-manager
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/yubikey-neo-manager/ChangeLog,v 1.10 2015/06/03 13:26:33 jlec Exp $
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+*yubikey-neo-manager-1.3.0 (28 May 2015)
+
+  28 May 2015; Justin Lecher <jlec@gentoo.org>
+  +yubikey-neo-manager-1.3.0.ebuild:
+  Version Bump
+
+*yubikey-neo-manager-1.2.1 (14 Apr 2015)
+
+  14 Apr 2015; Justin Lecher <jlec@gentoo.org>
+  +yubikey-neo-manager-1.2.1.ebuild, -yubikey-neo-manager-0.2.5-r1.ebuild,
+  -yubikey-neo-manager-1.0.0.ebuild, yubikey-neo-manager-1.1.0.ebuild:
+  Version Bump
+
+*yubikey-neo-manager-1.1.0 (26 Dec 2014)
+
+  26 Dec 2014; Justin Lecher <jlec@gentoo.org>
+  +yubikey-neo-manager-1.1.0.ebuild:
+  Version Bump
+
+*yubikey-neo-manager-1.0.0 (20 Nov 2014)
+
+  20 Nov 2014; Justin Lecher <jlec@gentoo.org>
+  +yubikey-neo-manager-1.0.0.ebuild:
+  Version Bump
+
+*yubikey-neo-manager-0.2.5-r1 (10 Nov 2014)
+
+  10 Nov 2014; Diego E. Pettenò <flameeyes@gentoo.org>
+  +yubikey-neo-manager-0.2.5-r1.ebuild, -yubikey-neo-manager-0.2.3.ebuild,
+  -yubikey-neo-manager-0.2.4.ebuild, -yubikey-neo-manager-0.2.5.ebuild:
+  Install the .desktop file and icons. Thanks to BT in bug #528552.
+
+*yubikey-neo-manager-0.2.5 (05 Nov 2014)
+
+  05 Nov 2014; Rick Farina <zerochaos@gentoo.org>
+  +yubikey-neo-manager-0.2.5.ebuild:
+  bump, bug #528286
+
+*yubikey-neo-manager-0.2.4 (29 Oct 2014)
+
+  29 Oct 2014; Rick Farina <zerochaos@gentoo.org>
+  +yubikey-neo-manager-0.2.4.ebuild:
+  bump
+
+  25 Oct 2014; Diego E. Pettenò <flameeyes@gentoo.org>
+  yubikey-neo-manager-0.2.3.ebuild:
+  Add a dependency on pyside[webkit] as otherwise it'll fail to start.
+
+*yubikey-neo-manager-0.2.3 (25 Oct 2014)
+
+  25 Oct 2014; Diego E. Pettenò <flameeyes@gentoo.org> +metadata.xml,
+  +yubikey-neo-manager-0.2.3.ebuild:
+  Initial import of the YubiKey NEO Manager.

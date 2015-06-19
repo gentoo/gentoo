@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>emacs</herd>
+<longdescription>
+  Very smart tab-completion and autodoc for Scheme code in Emacs, complete
+  with type inferencing and lexical environment awareness.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,62 @@
+# ChangeLog for sci-biology/bioperl-db
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/bioperl-db/ChangeLog,v 1.15 2015/06/13 19:16:38 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  bioperl-db-1.6.9.ebuild, bioperl-db-9999-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+  27 May 2015; Justin Lecher <jlec@gentoo.org> -bioperl-db-1.6.0.ebuild:
+  Drop old
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> bioperl-db-1.6.9.ebuild:
+  Stable for amd64, wrt bug #539426
+
+  26 Apr 2015; Pacho Ramos <pacho@gentoo.org> bioperl-db-1.6.9.ebuild:
+  x86 stable wrt bug #539426
+
+  09 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> bioperl-db-1.6.0.ebuild,
+  bioperl-db-1.6.9.ebuild, bioperl-db-9999-r1.ebuild:
+  Bump to EAPI=5 (bug #478714)
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+  23 Jun 2012; Justin Lecher <jlec@gentoo.org> bioperl-db-1.6.9.ebuild:
+  Add missing DEP on dev-perl/DBD-mysql, #422999
+
+  12 Apr 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Fix cpan distribution in metadata.xml
+
+  20 Sep 2011; Michał Górny <mgorny@gentoo.org> bioperl-db-9999-r1.ebuild:
+  Migrate to git-2.
+
+*bioperl-db-1.6.9 (18 Jul 2011)
+
+  18 Jul 2011; Andrey Kislyuk <weaver@gentoo.org> +bioperl-db-1.6.9.ebuild:
+  Version bump, drop old
+
+*bioperl-db-9999-r1 (17 Oct 2010)
+
+  17 Oct 2010; Andrey Kislyuk <weaver@gentoo.org> -bioperl-db-9999.ebuild,
+  +bioperl-db-9999-r1.ebuild:
+  Update live ebuild for upstream svm->github migration, bug 338362. Thanks
+  to Joel Berendzen
+
+  11 Jun 2009; Markus Meier <maekke@gentoo.org> bioperl-db-1.6.0.ebuild:
+  amd64 stable, bug #270580
+
+  02 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  bioperl-db-1.6.0.ebuild:
+  stable x86, bug 270580
+
+  13 May 2009; Andrey Kislyuk <weaver@gentoo.org> bioperl-db-1.6.0.ebuild,
+  bioperl-db-9999.ebuild:
+  Remove module-build from RDEPEND (bug 246942)
+
+*bioperl-db-9999 (16 Mar 2009)
+*bioperl-db-1.6.0 (16 Mar 2009)
+
+  16 Mar 2009; Andrey Kislyuk <weaver@gentoo.org> +metadata.xml,
+  +bioperl-db-1.6.0.ebuild, +bioperl-db-9999.ebuild:
+  New package, dependency for sci-biology/bioperl. Ebuild written by me.

@@ -1,0 +1,17 @@
+Upstream didn't ship Makefile.am so we have to patch bits by hands.
+$(SHELL) is needed to run libtool properly (contains bashisms).
+LIBTOOL variable uses $(SHELL) in it's definition.
+
+Gentoo-bug: http://bugs.gentoo.org/401329
+Reported by: Anthony Parsons
+
+--- libmikmod/Makefile.in
++++ libmikmod/Makefile.in
+@@ -27,6 +27,7 @@ CC=@CC@
+ INSTALL=@INSTALL@
+ LIBTOOL=@LIBTOOL@
+ MKINSTALLDIRS=${top_srcdir}/mkinstalldirs
++SHELL=@SHELL@
+ 
+ DEFS=@DEFS@
+ CFLAGS=@CFLAGS@ -Dunix

@@ -1,0 +1,25 @@
+--- src/tse3/file/XML.h.orig	2002-07-28 18:17:11.000000000 +0300
++++ src/tse3/file/XML.h	2004-04-25 14:51:56.000000000 +0300
+@@ -154,6 +154,7 @@
+                 void element(const std::string &name, const char        *value);
+                 void element(const std::string &name, int                value);
+                 void element(const std::string &name, unsigned int       value);
++                void element(const std::string &name, unsigned long      value);
+                 void element(const std::string &name, bool               value);
+ 
+                 void comment(const std::string &comment);
+--- src/tse3/file/XML.cpp.orig	2002-07-28 18:17:11.000000000 +0300
++++ src/tse3/file/XML.cpp	2004-04-25 14:54:01.000000000 +0300
+@@ -116,6 +116,12 @@
+     out << "<" << name << " value=\"" << value << "\"/>\n";
+ }
+ 
++void TSE3::File::XmlFileWriter::element(const std::string &name, unsigned long value)
++{
++    indent(out);
++    out << "<" << name << " value=\"" << value << "\"/>\n";
++}
++
+ 
+ void TSE3::File::XmlFileWriter::element(const std::string &name, bool value)
+ {

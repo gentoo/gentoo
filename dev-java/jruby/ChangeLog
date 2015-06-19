@@ -1,0 +1,489 @@
+# ChangeLog for dev-java/jruby
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jruby/ChangeLog,v 1.99 2014/10/10 09:06:54 graaff Exp $
+
+  10 Oct 2014; Hans de Graaff <graaff@gentoo.org> -jruby-1.6.8-r1.ebuild,
+  -files/jruby-1.6.8-bash-launcher.patch, -files/1.5.1/build.xml.patch,
+  -files/1.5.1/testfixes.patch:
+  Remove masked jruby 1.6 version.
+
+  13 May 2014; Hans de Graaff <graaff@gentoo.org> jruby-1.6.8-r1.ebuild:
+  jruby 1.6 is not compatible with jre 1.8, bug 510128.
+
+  13 May 2014; Hans de Graaff <graaff@gentoo.org> -jruby-1.6.5.1.ebuild,
+  -files/jruby-1.4.0-bindir.patch, -files/jruby-1.4.0-system-jars-r2.patch,
+  -files/jruby-1.5.0-system-jars.patch,
+  -files/jruby-1.5.6-rubygems-1.8.x.patch:
+  Cleanup.
+
+*jruby-1.7.12 (03 May 2014)
+
+  03 May 2014; Tom Wijsman <TomWij@gentoo.org>
+  +files/jruby-1.7.12-bash-launcher.patch, +jruby-1.7.12.ebuild,
+  jruby-1.6.5.1.ebuild:
+  Version bump to 1.7.12, masked as it is pending review by the Java and Ruby
+  herds; for bug #442230, reported by Gian and in cooperation with mrueg and
+  others.
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org> jruby-1.6.8-r1.ebuild:
+  amd64 stable, bug #495016
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> jruby-1.6.8-r1.ebuild:
+  x86 stable wrt bug #495016
+
+  22 Dec 2013; Hans de Graaff <graaff@gentoo.org> -jruby-1.4.1.ebuild,
+  -jruby-1.5.6.ebuild, -jruby-1.6.5.1-r1.ebuild, -jruby-1.6.7.2-r1.ebuild:
+  Cleanup.
+
+*jruby-1.6.7.2-r1 (24 Oct 2013)
+*jruby-1.6.8-r1 (24 Oct 2013)
+*jruby-1.6.5.1-r1 (24 Oct 2013)
+
+  24 Oct 2013; Tom Wijsman <TomWij@gentoo.org> +jruby-1.6.5.1-r1.ebuild,
+  +jruby-1.6.7.2-r1.ebuild, +jruby-1.6.8-r1.ebuild, -jruby-1.6.7.2.ebuild,
+  -jruby-1.6.8.ebuild:
+  Revision bumps; fixed up snakeyaml dependency to use SLOT 1.9, fixed up
+  documentation because install phase was failing due to missing index.html.
+  Fixes bug #488496, reported by Michel Boaventura.
+
+  16 Jul 2013; Hans de Graaff <graaff@gentoo.org> jruby-1.6.8.ebuild:
+  Add back accidentally dropped jvyamlb dependency, fixing bug 474488.
+
+  14 Jun 2013; Patrick Lauer <patrick@gentoo.org> jruby-1.4.1.ebuild:
+  Removing ppc keyword because of missing keyword on dev-ruby/jruby-openssl
+  #469268
+
+*jruby-1.6.8 (03 Jun 2013)
+
+  03 Jun 2013; Hans de Graaff <graaff@gentoo.org> +jruby-1.6.8.ebuild,
+  +files/jruby-1.6.8-bash-launcher.patch:
+  Version bump.
+
+  20 Aug 2012; Christoph Junghans <ottxor@gentoo.org> jruby-1.6.7.2.ebuild:
+  added prefix keywords
+
+  25 Jun 2012; Andreas Schuerch <nativemad@gentoo.org> jruby-1.6.5.1.ebuild:
+  Pawel obviously forgot that package for x86 on bug 396305... I need it now
+  for rubygems in bug 411507.
+
+*jruby-1.6.7.2 (09 May 2012)
+
+  09 May 2012; Diego E. Pettenò <flameeyes@gentoo.org> +jruby-1.6.7.2.ebuild,
+  -jruby-1.3.1-r1.ebuild, -jruby-1.5.6-r1.ebuild, -jruby-1.6.7.ebuild:
+  Version bump; remove old ebuilds.
+
+  30 Apr 2012; Agostino Sarubbo <ago@gentoo.org> jruby-1.6.5.1.ebuild:
+  Stable for amd64, wrt bug #396305
+
+  29 Apr 2012; Hans de Graaff <graaff@gentoo.org> jruby-1.6.5.1.ebuild:
+  Apply fix for USE=bsf build by sera reported in bug 412379.
+
+*jruby-1.6.7 (29 Apr 2012)
+
+  29 Apr 2012; Diego E. Pettenò <flameeyes@gentoo.org> +jruby-1.6.7.ebuild:
+  Version bump, now that jzlib is in tree.
+
+  14 Apr 2012; Hans de Graaff <graaff@gentoo.org> -jruby-1.5.2.ebuild,
+  -jruby-1.5.2-r1.ebuild, -jruby-1.5.3.ebuild:
+  Remove old versions.
+
+  14 Apr 2012; Hans de Graaff <graaff@gentoo.org>
+  +files/jruby-bash-launcher.patch:
+  Add missing file.
+
+*jruby-1.6.5.1 (14 Apr 2012)
+
+  14 Apr 2012; Hans de Graaff <graaff@gentoo.org> +jruby-1.6.5.1.ebuild:
+  Version bump. Moved here from ruby overlay. Fixes bug 359135.
+
+*jruby-1.5.6-r1 (22 Oct 2011)
+
+  22 Oct 2011; Hans de Graaff <graaff@gentoo.org> +jruby-1.5.6-r1.ebuild,
+  +files/jruby-1.5.6-rubygems-1.8.x.patch:
+  Fix compatibility with rubygems 1.8.x.
+
+  19 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org> jruby-1.5.6.ebuild:
+  JDK 7 changes the way it handles method overloading so restricting
+  compilation to JDK 6 (bug #386653)
+
+  14 Jun 2011; Markus Meier <maekke@gentoo.org> jruby-1.5.6.ebuild:
+  amd64/x86 stable, bug #370709
+
+*jruby-1.5.6 (23 Apr 2011)
+
+  23 Apr 2011; Hans de Graaff <graaff@gentoo.org> +jruby-1.5.6.ebuild:
+  Version bump.
+
+  23 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> jruby-1.4.1.ebuild:
+  Mark ~ppc wrt #301239
+
+*jruby-1.5.3 (28 Oct 2010)
+
+  28 Oct 2010; Alistair Bush <ali_bush@gentoo.org> +jruby-1.5.3.ebuild:
+  Version Bump.
+
+*jruby-1.5.2-r1 (05 Sep 2010)
+
+  05 Sep 2010; Alistair Bush <ali_bush@gentoo.org>
+  files/jruby-1.5.0-system-jars.patch, +jruby-1.5.2-r1.ebuild:
+  Rev bump to force rebuild after fixing an existing patch.
+
+  23 Aug 2010; Markos Chandras <hwoarang@gentoo.org> jruby-1.5.2.ebuild:
+  Stable on amd64 wrt bug #332957
+
+  23 Aug 2010; Christian Faulhammer <fauli@gentoo.org> jruby-1.5.2.ebuild:
+  stable x86, security bug 332957
+
+*jruby-1.5.2 (22 Aug 2010)
+
+  22 Aug 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -jruby-1.4.1-r1.ebuild, -jruby-1.5.1-r2.ebuild, +jruby-1.5.2.ebuild:
+  Version bump to fix the Webrick security issue; remove
+  non-stable-candidate vulnerable ebuilds.
+
+  30 Jun 2010; Vlastimil Babka <caster@gentoo.org> jruby-1.3.1-r1.ebuild,
+  -jruby-1.4.0-r6.ebuild:
+  Cleanup.
+
+  30 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> jruby-1.4.1.ebuild:
+  x86 stable wrt bug #312547
+
+  30 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  jruby-1.5.1-r2.ebuild:
+  keyworded ~x86, bug 325107
+
+  29 Jun 2010; Christoph Mende <angelos@gentoo.org> jruby-1.4.1.ebuild:
+  Stable on amd64 wrt bug #312547
+
+  28 Jun 2010; Mark Loeser <halcy0n@gentoo.org> +jruby-1.3.1-r1.ebuild:
+  Add back only ~ppc version
+
+*jruby-1.4.1-r1 (26 Jun 2010)
+
+  26 Jun 2010; Alistair Bush <ali_bush@gentoo.org> -jruby-1.3.1-r1.ebuild,
+  +jruby-1.4.1-r1.ebuild:
+  Bump 1.4.1 to 1.4.1-r1 as last commit will change installed files. Clean
+  1.3.1.
+
+*jruby-1.5.1-r2 (26 Jun 2010)
+
+  26 Jun 2010; Alistair Bush <ali_bush@gentoo.org>
+  +files/1.5.1/build.xml.patch, jruby-1.4.1.ebuild, +jruby-1.5.1-r2.ebuild,
+  +files/1.5.1/testfixes.patch, -jruby-1.5.1-r1.ebuild:
+  Fix #305459 in both 1.4.1 and 1.5.1. Fix bug 325191 for 1.5.1 and progress
+  towards getting tests working for 1.5.1.
+
+  22 Jun 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/jruby-1.5.0-bindir.patch, files/jruby-1.5.0-system-jars.patch,
+  -jruby-1.5.1.ebuild, +jruby-1.5.1-r1.ebuild:
+  Fix bindir definition, or rather workaround since the properties don't
+  seem to get respected from the file.
+
+*jruby-1.5.1-r1 (22 Jun 2010)
+
+  22 Jun 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/jruby-1.5.0-bindir.patch, files/jruby-1.5.0-system-jars.patch,
+  -jruby-1.5.1.ebuild, +jruby-1.5.1-r1.ebuild:
+  Make sure that the reported bindir is correct, otherwise rake will always
+  fail.
+
+*jruby-1.5.1 (17 Jun 2010)
+
+  17 Jun 2010; Alistair Bush <ali_bush@gentoo.org>
+  +files/jruby-1.5.0-bindir.patch, +files/jruby-1.5.0-system-jars.patch,
+  +jruby-1.5.1.ebuild:
+  Version Bump.
+
+*jruby-1.4.1 (27 Apr 2010)
+
+  27 Apr 2010; Vlastimil Babka <caster@gentoo.org> -jruby-1.4.0-r4.ebuild,
+  -jruby-1.4.0-r5.ebuild, -files/jruby-1.4.0-system-jars.patch,
+  +jruby-1.4.1.ebuild, -files/auto_gem.rb:
+  Version bump, depend on new jcondings for security bug #312547.
+
+  06 Apr 2010; Vlastimil Babka <caster@gentoo.org> jruby-1.4.0-r6.ebuild:
+  Fix symlink upgrade instructions. Thanks to Martin von Gagern
+  <Martin.vGagern@gmx.net> in bug #302187.
+
+*jruby-1.4.0-r6 (05 Apr 2010)
+
+  05 Apr 2010; Vlastimil Babka <caster@gentoo.org> +jruby-1.4.0-r6.ebuild:
+  Revbump to remove java6 flag and make it mandatory.
+
+  09 Feb 2010; Vlastimil Babka <caster@gentoo.org> jruby-1.3.1-r1.ebuild,
+  jruby-1.4.0-r4.ebuild, jruby-1.4.0-r5.ebuild:
+  Remove backport-util-concurrent dependency as there seem to be no usage of
+  it in jruby source anymore.
+
+*jruby-1.4.0-r5 (31 Jan 2010)
+
+  31 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +jruby-1.4.0-r5.ebuild, +files/jruby-1.4.0-system-jars-r2.patch:
+  Require a new version of jffi so that the jruby wrapper has one less
+  java-config call. Also drop RubyGems and leave it to dev-ruby/rubygems to
+  install it.
+
+  24 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  jruby-1.4.0-r4.ebuild, +files/jruby-1.4.0-bindir.patch:
+  Add patch to fix one further issue (don't revbump just yet).
+
+*jruby-1.4.0-r4 (23 Jan 2010)
+
+  23 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -jruby-1.4.0-r3.ebuild, +jruby-1.4.0-r4.ebuild,
+  files/jruby-1.4.0-system-jars.patch:
+  Revision bump with improvements to the launch script, this reduces its
+  complexity, and make sure that we run with the correct parameters. We also
+  don't symlink in /usr/share/bin any longer. Simplify ebuild logic for the
+  symlink checks, and add a hard blocker on the older versions so that most
+  users upgrading won't hit the error anyway.
+
+  23 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/jruby-0.9.8-sandbox.patch, -jruby-1.0.0.ebuild,
+  -jruby-1.0.3.ebuild, -jruby-1.2.0-r1.ebuild, -jruby-1.3.1.ebuild:
+  Remove older versions, only leave around those supporting
+  ruby-ng-installed packages.
+
+*jruby-1.4.0-r3 (16 Jan 2010)
+
+  16 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -jruby-1.4.0-r2.ebuild, +jruby-1.4.0-r3.ebuild,
+  +files/jruby-1.4.0-system-jars.patch,
+  -files/jruby-1.4.0-system-nailgun.patch, metadata.xml:
+  Improve unbundled jar workings, make jffi and jna working as intended.
+  Drop ppc keyword so that proper keywording request can be filed. Take
+  co-maintainership with ruby team.
+
+*jruby-1.4.0-r2 (16 Jan 2010)
+
+  16 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -jruby-1.4.0-r1.ebuild, +jruby-1.4.0-r2.ebuild,
+  +files/jruby-1.4.0-system-nailgun.patch:
+  Fix usage of system nailgun.
+
+  16 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  jruby-1.4.0-r1.ebuild:
+  Add pkg_postinst to note the JRUBY_OPTS variable behaviour.
+
+  16 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org> -jruby-1.4.0.ebuild,
+  jruby-1.4.0-r1.ebuild:
+  Fix SRC_URI, remove older broken 1.4.0 release.
+
+*jruby-1.4.0-r1 (14 Jan 2010)
+
+  14 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +jruby-1.4.0-r1.ebuild, +files/auto_gem.rb:
+  Fix (again) cache and doc directories creation for gems. Avoid installing
+  gentoo.rb at all, instead install auto_gem.rb like it's done for the other
+  Ruby packages (this finally completes the break-up of MRI 1.8 and JRuby
+  libraries). Install 1.9 mode libraries as well as 1.8, remove rake and
+  rspec symlinks (the bundled gems are not installed for either). Avoid
+  removing the yecht jar as it's currently not packaged in Gentoo.
+
+*jruby-1.4.0 (14 Jan 2010)
+
+  14 Jan 2010; Alistair Bush <ali_bush@gentoo.org> +jruby-1.4.0.ebuild:
+  Version Bump.
+
+  02 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  jruby-1.3.1-r1.ebuild:
+  Fix creation of cache and doc directories.
+
+*jruby-1.3.1-r1 (29 Dec 2009)
+
+  29 Dec 2009; Alistair Bush <ali_bush@gentoo.org> +jruby-1.3.1-r1.ebuild:
+  Changes made to ensure gems that 1.8 and jruby don't collide. See flameeyes
+  for the why.
+
+  25 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> jruby-1.2.0-r1.ebuild,
+  jruby-1.3.1.ebuild:
+  Re-Keyworded for ppc, bug 270910
+
+  19 Sep 2009; Alistair Bush <ali_bush@gentoo.org> jruby-1.3.1.ebuild:
+  Restrict tests as they are unstable see #282439.
+
+  22 Aug 2009; Alistair Bush <ali_bush@gentoo.org> jruby-1.3.1.ebuild:
+  Fix test issues. see #282252.
+
+*jruby-1.3.1 (07 Aug 2009)
+
+  07 Aug 2009; Alistair Bush <ali_bush@gentoo.org> -jruby-1.3.0_rc1.ebuild,
+  +jruby-1.3.1.ebuild:
+  Version Bump jruby. Cleanup rc.
+
+  28 May 2009; Petteri Räty <betelgeuse@gentoo.org> jruby-1.3.0_rc1.ebuild:
+  Raise jna-posix dependency to >=1.0.1 in order to fix bug #271534.
+
+*jruby-1.3.0_rc1 (27 May 2009)
+
+  27 May 2009; Alistair Bush <ali_bush@gentoo.org> +jruby-1.3.0_rc1.ebuild:
+  Version Bump to release candidate for Flameeyes and so we can test
+  compatibility with previous versions.
+
+  23 May 2009; Vlastimil Babka <caster@gentoo.org> jruby-1.2.0-r1.ebuild:
+  Add pkg_setup checks to workaround bug #270953.
+
+*jruby-1.2.0-r1 (23 May 2009)
+
+  23 May 2009; Vlastimil Babka <caster@gentoo.org> +files/10jruby,
+  +jruby-1.2.0-r1.ebuild, +files/ftype-test-fixes.patch, +files/gentoo.rb,
+  +files/jruby, +files/user-test-fixes.patch:
+  Version bump, bug #217388. Fixes also #184375 and #213391. Many thanks to
+  James Le Cuirot <chewi@aura-online.co.uk> and ali_bush. The ppc keyword
+  dropped due to new deps.
+
+  20 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing nichoj as a maintainer since he was retired.
+
+  17 Oct 2008; Markus Meier <maekke@gentoo.org> metadata.xml:
+  bsf USE-flag is global now
+
+*jruby-1.0.3 (17 Dec 2007)
+
+  17 Dec 2007; Caleb Tennis <caleb@gentoo.org> jruby-1.0.0.ebuild,
+  +jruby-1.0.3.ebuild:
+  version bump, with some dep changes.  See bug #190124
+
+  24 Oct 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -jruby-0.7.0-r1.ebuild, jruby-1.0.0.ebuild:
+  Removed java gen 1 ebuild, quoted vars.
+
+  21 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  jruby-0.7.0-r1.ebuild:
+  revert stable keywords, see bug 187619
+
+  03 Aug 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -files/jruby-0.9.1-build.xml.patch,
+  -files/jruby-0.9.2-haltonfailure.patch,
+  -files/jruby-0.9.2-old_jline.patch, -files/jruby-0.9.8-old_jline.patch:
+  Remove old patches.
+
+  03 Aug 2007; Petteri Räty <betelgeuse@gentoo.org> -jruby-0.9.2.ebuild,
+  -jruby-0.9.8.ebuild, -jruby-0.9.8-r1.ebuild, -jruby-0.9.9.ebuild,
+  -jruby-1.0.0_rc2.ebuild, -jruby-1.0.0_rc2-r1.ebuild,
+  -jruby-1.0.0_rc3.ebuild:
+  Removed old versions.
+
+*jruby-1.0.0 (13 Jun 2007)
+
+  13 Jun 2007; Joshua Nichols <nichoj@gentoo.org> +jruby-1.0.0.ebuild:
+  Version bump.
+
+*jruby-1.0.0_rc3 (05 Jun 2007)
+
+  05 Jun 2007; Joshua Nichols <nichoj@gentoo.org> +jruby-1.0.0_rc3.ebuild:
+  Version bump.
+
+  27 May 2007; Vlastimil Babka <caster@gentoo.org>
+  jruby-1.0.0_rc2-r1.ebuild:
+  Make BSF support optional via new local USE flag and minor style tweaks.
+
+*jruby-1.0.0_rc2-r1 (24 May 2007)
+
+  24 May 2007; Joshua Nichols <nichoj@gentoo.org>
+  +jruby-1.0.0_rc2-r1.ebuild:
+  Now uses dev-lang/ruby's site_ruby and gems directory. This is accomplished
+  by using symlinks. Because the package manager doesn't handle directories
+  changing into symlinks well, we now block older versions of jruby, and there
+  are appropriate warnings and errors if you have these older directories on
+  your system. Also now has a post-dependency on rubygems, so there is no
+  longer a need for jgem and company.
+
+*jruby-1.0.0_rc2 (18 May 2007)
+
+  18 May 2007; Joshua Nichols <nichoj@gentoo.org> +jruby-1.0.0_rc2.ebuild:
+  Version bump.
+
+  08 May 2007; Vlastimil Babka <caster@gentoo.org> jruby-0.7.0-r1.ebuild,
+  jruby-0.9.2.ebuild, jruby-0.9.8.ebuild, jruby-0.9.8-r1.ebuild,
+  jruby-0.9.9.ebuild:
+  Update dev-java/bsf dependency for upcoming new version.
+
+  07 May 2007; Vlastimil Babka <caster@gentoo.org> jruby-0.9.9.ebuild:
+  Migrate to split-ant.
+
+  03 May 2007; Vlastimil Babka <caster@gentoo.org> jruby-0.9.9.ebuild:
+  Don't restrict backport-util-concurrent to 1.1 - 3.0 seems to work too.
+
+*jruby-0.9.9 (03 May 2007)
+
+  03 May 2007; Joshua Nichols <nichoj@gentoo.org> +jruby-0.9.9.ebuild:
+  Version bump.
+
+*jruby-0.9.8-r1 (11 Mar 2007)
+
+  11 Mar 2007; Joshua Nichols <nichoj@gentoo.org>
+  +files/jruby-0.9.8-sandbox.patch, +jruby-0.9.8-r1.ebuild:
+  Revision bump to address #170058 and to use recently released jline-0.9.91
+  so we have one less patch to apply.
+
+  09 Mar 2007; Joshua Nichols <nichoj@gentoo.org> jruby-0.9.8.ebuild:
+  Removed bundled jars while building.
+
+  08 Mar 2007; Joshua Nichols <nichoj@gentoo.org> jruby-0.9.8.ebuild:
+  Now will only use javac for compilation. See
+  http://jira.codehaus.org/browse/JRUBY-675 for details.
+
+  08 Mar 2007; Joshua Nichols <nichoj@gentoo.org>
+  files/jruby-0.9.8-old_jline.patch:
+  Fixed bad patch.
+
+*jruby-0.9.8 (08 Mar 2007)
+
+  08 Mar 2007; Joshua Nichols <nichoj@gentoo.org>
+  +files/jruby-0.9.8-old_jline.patch, +jruby-0.9.8.ebuild:
+  Version bump.
+
+  18 Feb 2007; Petteri Räty <betelgeuse@gentoo.org> -jruby-0.9.0.ebuild,
+  -jruby-0.9.1.ebuild:
+  Removed old versions.
+
+*jruby-0.9.2 (05 Jan 2007)
+
+  05 Jan 2007; Joshua Nichols <nichoj@gentoo.org>
+  +files/jruby-0.9.2-haltonfailure.patch,
+  +files/jruby-0.9.2-old_jline.patch, metadata.xml, +jruby-0.9.2.ebuild:
+  Version bump.
+
+  10 Nov 2006; Petteri Räty <betelgeuse@gentoo.org> jruby-0.9.1.ebuild:
+  Stylistic fixes.
+
+*jruby-0.9.1 (22 Oct 2006)
+
+  22 Oct 2006; Vlastimil Babka <caster@gentoo.org>
+  +files/jruby-0.9.1-build.xml.patch, jruby-0.9.0.ebuild,
+  +jruby-0.9.1.ebuild:
+  Version bump, reported by M. Edward Borasky <znmeb@cesmail.net> in bug #152309.
+
+  22 Oct 2006; Petteri Räty <betelgeuse@gentoo.org> metadata.xml:
+  Fixed metadata.xml by changing the herd from jruby to java.
+
+*jruby-0.9.0 (30 Sep 2006)
+
+  30 Sep 2006; Joshua Nichols <nichoj@gentoo.org> metadata.xml,
+  +jruby-0.9.0.ebuild:
+  Version bump. Contributed by Sean McEligot <sean.mceligot@gmail.com>, bug
+  #145748.
+
+  12 Sep 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  jruby-0.7.0-r1.ebuild:
+  mark ~ppc (needed for Bug #146146)
+
+  02 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> jruby-0.7.0-r1.ebuild,
+  -jruby-0.7.0.ebuild:
+  cleanup, removed old revision with a dependency to oro. marked stable on amd64.
+
+*jruby-0.7.0-r1 (29 Mar 2005)
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> +jruby-0.7.0-r1.ebuild:
+  moved from dev-java/oro to dev-java/jakarta-oro dependency. see #71337.
+  introduced support for the examples and the source useflag.
+
+  05 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> jruby-0.7.0.ebuild:
+  stable on x86, added ~amd64 to KEYWORDS.
+
+*jruby-0.7.0 (16 Nov 2004)
+
+  16 Nov 2004; Karl Trygve Kalleberg <karltk@gentoo.org> jruby-0.7.0.ebuild:
+  Initial import. Ebuild submitted by Saleem A. <compnerd@compnerd.org>.

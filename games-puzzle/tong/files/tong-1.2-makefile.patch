@@ -1,0 +1,28 @@
+--- Makefile.orig
++++ Makefile
+@@ -1,11 +1,10 @@
+ # TONG! makefile, tweak as you see fit
+ 
+-SDL_CFLAGS := $(shell sdl-config --cflags)
++CXXFLAGS += $(shell sdl-config --cflags)
+ SDL_LDFLAGS := $(shell sdl-config --libs)
+ MIXER_FLAGS := -lSDL_mixer -lpthread
+ IMG_FLAGS := -lSDL_image
+ GAME_DATA_DIR := .
+-CC = g++ -O3 -Wall #-ggdb3 
+ SOURCES = tetris.cpp pong.cpp text.cpp option.cpp media.cpp
+ # these sources need to be linked to SDL libs, so may have special flag settings
+ SDL_SOURCES = tong.cpp
+@@ -29,11 +28,7 @@
+ 
+ # builds all, builds the target
+ all:	$(OBJS)
+-	$(CC) $(SDL_LDFLAGS) $(MIXER_FLAGS) $(IMG_FLAGS) $(OBJS) -o $(TARGET)
+-%.o: %.cpp
+-	$(CC) $(SDL_CFLAGS) -c -o $@ $<
+-tong.o: $(SDL_SOURCES)
+-	$(CC) -DGAME_DATA_DIR=\"$(GAME_DATA_DIR)\" $(SDL_CFLAGS) -c -o $@ $<
++	$(CXX) $(LDFLAGS) $(OBJS) $(SDL_LDFLAGS) $(MIXER_FLAGS) $(IMG_FLAGS) -o $(TARGET)
+ 
+ # clean out the mess
+ clean:

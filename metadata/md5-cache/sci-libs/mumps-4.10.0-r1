@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=virtual/blas metis? ( || ( sci-libs/metis <sci-libs/parmetis-4 ) mpi? ( <sci-libs/parmetis-4 ) ) scotch? ( <sci-libs/scotch-6[mpi=] ) mpi? ( sci-libs/scalapack ) virtual/pkgconfig virtual/fortran
+DESCRIPTION=MUltifrontal Massively Parallel sparse direct matrix Solver
+EAPI=5
+HOMEPAGE=http://mumps.enseeiht.fr/
+IUSE=doc examples metis mpi +scotch static-libs
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=public-domain
+RDEPEND=virtual/blas metis? ( || ( sci-libs/metis <sci-libs/parmetis-4 ) mpi? ( <sci-libs/parmetis-4 ) ) scotch? ( <sci-libs/scotch-6[mpi=] ) mpi? ( sci-libs/scalapack ) virtual/fortran
+SLOT=0
+SRC_URI=http://mumps.enseeiht.fr/MUMPS_4.10.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=f89b6b1148eed667bae1d13e8f561ea0

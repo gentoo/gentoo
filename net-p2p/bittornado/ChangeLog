@@ -1,0 +1,314 @@
+# ChangeLog for net-p2p/bittornado
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/bittornado/ChangeLog,v 1.75 2014/12/25 10:58:59 mgorny Exp $
+
+*bittornado-0.3.18-r3 (25 Dec 2014)
+
+  25 Dec 2014; Michał Górny <mgorny@gentoo.org> +bittornado-0.3.18-r3.ebuild:
+  Convert to distutils-r1.
+
+  12 Aug 2012; Christoph Junghans <ottxor@gentoo.org>
+  bittornado-0.3.18-r2.ebuild:
+  added prefix keywords
+
+  19 Mar 2012; Pacho Ramos <pacho@gentoo.org> -files/bittornado.desktop,
+  -files/favicon.ico:
+  Drop files no longer needed, also fix #373265.
+
+  09 Dec 2011; Samuli Suominen <ssuominen@gentoo.org>
+  bittornado-0.3.18-r2.ebuild:
+  Remove deprecated wxGTK 2.6 support wrt #391685. This ebuild is now only for
+  cmdline tools.
+
+  28 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  bittornado-0.3.18-r2.ebuild:
+  Use Python 2 (bug #315857).
+
+  17 Jan 2008; Raúl Porcel <armin76@gentoo.org>
+  bittornado-0.3.18-r2.ebuild:
+  Remove blocker on net-p2p/bittorrent, they don't collide
+
+*bittornado-0.3.18-r2 (16 Jan 2008)
+
+  16 Jan 2008; Raúl Porcel <armin76@gentoo.org>
+  -bittornado-0.3.18-r1.ebuild, +bittornado-0.3.18-r2.ebuild:
+  Remove virtual/bittorrent
+
+  07 Dec 2007; Santiago M. Mola <coldwind@gentoo.org>
+  files/bittornado.desktop:
+  .desktop file fixed.
+
+*bittornado-0.3.18-r1 (04 Dec 2007)
+
+  04 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  +files/bittornado-0.3.18-wxversion.patch,
+  -files/bittornado-wxpython-pre2.5-fix.patch, -bittornado-0.3.18.ebuild,
+  +bittornado-0.3.18-r1.ebuild:
+  Add patch to use wxPython-2.6, by Ryan Hill <dirtyepic at gentoo dot org>,
+  bug #201247 and remove ancient patch
+
+  21 Nov 2007; Raúl Porcel <armin76@gentoo.org> bittornado-0.3.18.ebuild:
+  Add missing DEPEND, bug #197089
+
+  02 Oct 2007; Ryan Hill <dirtyepic@gentoo.org> bittornado-0.3.18.ebuild:
+  Lock wxpython to 2.6.  Fix quoting.
+
+  02 Jul 2007; Raúl Porcel <armin76@gentoo.org> -bittornado-0.3.15.ebuild,
+  bittornado-0.3.18.ebuild:
+  alpha stable wrt #166431
+
+  21 Apr 2007; Raúl Porcel <armin76@gentoo.org> +files/bittornado.desktop,
+  bittornado-0.3.15.ebuild, bittornado-0.3.18.ebuild:
+  Use desktop files instead of a hack, bug 175472
+
+  23 Mar 2007; Timothy Redaelli <drizzt@gentoo.org>
+  bittornado-0.3.18.ebuild:
+  Add ~x86-fbsd keyword.
+  Thanks to our AT Nathan Smith for reporting wrt bug #171606
+
+  24 Feb 2007; Raúl Porcel <armin76@gentoo.org> bittornado-0.3.15.ebuild,
+  bittornado-0.3.18.ebuild:
+  Remove ROOT, bug 168039
+
+  23 Feb 2007; Raúl Porcel <armin76@gentoo.org> bittornado-0.3.18.ebuild:
+  minorsyn fixes
+
+  15 Feb 2007; Matti Bickel <mabi@gentoo.org> bittornado-0.3.18.ebuild:
+  ppc stable (bug #166431)
+
+  13 Feb 2007; Markus Rothe <corsair@gentoo.org> bittornado-0.3.18.ebuild:
+  Stable on ppc64; bug #166431
+
+  12 Feb 2007; Simon Stelling <blubb@gentoo.org> bittornado-0.3.18.ebuild:
+  stable on amd64; bug 166431
+
+  11 Feb 2007; Raúl Porcel <armin76@gentoo.org> -bittornado-0.3.17.ebuild,
+  bittornado-0.3.18.ebuild:
+  x86 stable wrt bug 166431 and drop old
+
+*bittornado-0.3.18 (08 Jan 2007)
+
+  08 Jan 2007; Raúl Porcel (armin76) <armin76@gentoo.org>
+  +bittornado-0.3.18.ebuild:
+  Version bump
+
+*bittornado-0.3.17 (22 Nov 2006)
+
+  22 Nov 2006; Jon Hood <squinky86@gentoo.org> -bittornado-0.3.12.ebuild,
+  +bittornado-0.3.17.ebuild:
+  Version bump. Remove old version. Bug #151105.
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  bittornado-0.3.15.ebuild:
+  Stable on Alpha.
+
+  27 Jun 2006; Joshua Jackson <tsunam@gentoo.org> bittornado-0.3.15.ebuild:
+  Stable x86; bug #137382
+
+  25 Jun 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  bittornado-0.3.15.ebuild:
+  ppc stable, bug #137382
+
+  20 Jun 2006; Markus Rothe <corsair@gentoo.org> bittornado-0.3.15.ebuild:
+  Stable on ppc64; bug #137382
+
+  20 Jun 2006; Jon Hood <squinky86@gentoo.org> -bittornado-0.3.13.ebuild,
+  -bittornado-0.3.14.ebuild, bittornado-0.3.15.ebuild:
+  Mark amd64, fix mailcap copying, remove old versions. Fix ${ROOT}
+  thanks to blubb on IRC.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org>
+  files/digest-bittornado-0.3.12, files/digest-bittornado-0.3.13,
+  files/digest-bittornado-0.3.14, Manifest:
+  Fixing SHA256 digest, pass four
+
+*bittornado-0.3.15 (21 Apr 2006)
+
+  21 Apr 2006; Jon Hood <squinky86@gentoo.org> -bittornado-0.3.8.ebuild,
+  -bittornado-0.3.10.ebuild, +bittornado-0.3.15.ebuild:
+  Version bump and clean out old versions. #130076.
+
+*bittornado-0.3.14 (01 Nov 2005)
+
+  01 Nov 2005; Martin Holzer <mholzer@gentoo.org> +bittornado-0.3.14.ebuild:
+  Version bumped
+
+*bittornado-0.3.13 (03 Oct 2005)
+
+  03 Oct 2005; <mkay@gentoo.org> +bittornado-0.3.13.ebuild:
+  Version bump
+
+  25 Sep 2005; <mkay@gentoo.org> bittornado-0.3.8.ebuild,
+  bittornado-0.3.10.ebuild, bittornado-0.3.12.ebuild:
+  Changing X into gtk in IUSE
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> bittornado-0.3.12.ebuild:
+  Mark 0.3.12 stable on alpha
+
+  24 Aug 2005; <sekretarz@gentoo.org> bittornado-0.3.8.ebuild,
+  bittornado-0.3.10.ebuild, bittornado-0.3.12.ebuild:
+  Using -pPR instead -a option in cp, bug #103487
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  bittornado-0.3.12.ebuild:
+  Stable on ppc.
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> bittornado-0.3.12.ebuild:
+  Stable on ppc64
+
+  29 May 2005; Martin Holzer <mholzer@gentoo.org> bittornado-0.3.12.ebuild:
+  stable on amd64 and x86
+
+  05 May 2005; Sven Wegener <swegener@gentoo.org> bittornado-0.3.1.ebuild,
+  bittornado-0.3.6.ebuild, bittornado-0.3.7.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+*bittornado-0.3.12 (26 Apr 2005)
+
+  26 Apr 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  +bittornado-0.3.12.ebuild:
+  Version bump, bug #88772
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> bittornado-0.3.10.ebuild:
+  Stable on ppc64
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> bittornado-0.3.8.ebuild:
+  stable on amd64
+
+  20 Mar 2005; Tavis Ormandy <taviso@gentoo.org> bittornado-0.3.10.ebuild:
+  ~alpha
+
+  05 Mar 2005; Joseph Jezak <josejx@gentoo.org> bittornado-0.3.8.ebuild:
+  Marked ppc stable.
+
+*bittornado-0.3.10 (26 Feb 2005)
+
+  26 Feb 2005; Martin Holzer <mholzer@gentoo.org> +bittornado-0.3.10.ebuild:
+  Version bumped.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  23 Nov 2004; Jon Hood <squinky86@gentoo.org> bittornado-0.3.1.ebuild,
+  bittornado-0.3.6.ebuild, bittornado-0.3.7.ebuild, bittornado-0.3.8.ebuild:
+  Fix wxpython dependency thanks to pythonhead, mark 0.3.8 stable on x86, #71075.
+
+*bittornado-0.3.8 (22 Oct 2004)
+
+  22 Oct 2004; Jon Hood <squinky86@gentoo.org> +bittornado-0.3.8.ebuild:
+  Version bump, thanks Alexandru Toma <flash3001@yahoo.com>, #68538.
+
+  18 Aug 2004; Tom Gall <tgall@gentoo.org> bittornado-0.3.7.ebuild:
+  stable on ppc64, bug #58420
+
+  15 Aug 2004; Jon Hood <squinky86@gentoo.org> -bittornado-0.3.4.ebuild,
+  bittornado-0.3.7.ebuild:
+  Stable on x86, cleanup old versions.
+
+  14 Aug 2004; Jason Wever <weeve@gentoo.org> bittornado-0.3.7.ebuild:
+  Added ~sparc keyword.
+
+  13 Aug 2004; Jon Hood <squinky86@gentoo.org> -bittornado-0.3.2.ebuild,
+  -bittornado-0.3.3.ebuild, bittornado-0.3.6.ebuild:
+  Stable on x86; clean up old ebuilds.
+
+  17 Jul 2004; Jon Hood <squinky86@gentoo.org> +files/bttrack.conf,
+  +files/bttrack.rc, +files/favicon.ico, bittornado-0.3.7.ebuild:
+  add bttrack init script irt #55954
+
+*bittornado-0.3.7 (16 Jul 2004)
+
+  16 Jul 2004; Jon Hood <squinky86@gentoo.org> +bittornado-0.3.7.ebuild:
+  version bump, closes #57111
+
+*bittornado-0.3.6 (13 Jul 2004)
+
+  13 Jul 2004; Martin Holzer <mholzer@gentoo.org> +bittornado-0.3.6.ebuild:
+  Version bumped. Closes 56706
+
+  07 Jul 2004; Travis Tilley <lv@gentoo.org> bittornado-0.3.1.ebuild:
+  stable on amd64
+
+*bittornado-0.3.4 (04 Jul 2004)
+
+  06 Jul 2004; Guillaume Destuynder <kang@gentoo.org>
+  +files/bittornado-wxpython-pre2.5-fix.patch
+  Fixed #56120. Fixed repoman issues in all ebuilds (not listed.)
+
+  04 Jul 2004; Martin Holzer <mholzer@gentoo.org> +bittornado-0.3.4.ebuild:
+  Version bumped.
+
+  03 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> bittornado-0.3.1.ebuild,
+  bittornado-0.3.2.ebuild, bittornado-0.3.3.ebuild:
+  Change wxPython to wxpython.
+
+*bittornado-0.3.3 (27 Jun 2004)
+
+  27 Jun 2004; Jon Hood <squinky86@gentoo.org> -bittornado-0.3.0.ebuild,
+  bittornado-0.3.1.ebuild, +bittornado-0.3.3.ebuild:
+  version bumps, closes #55225
+
+*bittornado-0.3.2 (10 Jun 2004)
+
+  10 Jun 2004; Martin Holzer <mholzer@gentoo.org> bittornado-0.3.2.ebuild:
+  Version bumped. Closes 53383
+
+  02 Jun 2004; Martin Holzer <mholzer@gentoo.org> bittornado-0.3.0.ebuild:
+  x86 stable.
+
+*bittornado-0.3.1 (21 May 2004)
+
+  21 May 2004; Jon Hood <squinky86@gentoo.org> +bittornado-0.3.1.ebuild:
+  version bump, closes #51618
+
+*bittornado-0.3.0 (16 May 2004)
+
+  16 May 2004; Martin Holzer <mholzer@gentoo.org> bittornado-0.3.0.ebuild:
+  Version bumped. Closes 51194
+
+  23 Apr 2004; David Holm <dholm@gentoo.org> bittornado-0.2.0.ebuild:
+  Added to ~ppc.
+
+*bittornado-0.2.0 (22 Apr 2004)
+
+  22 Apr 2004; Martin Holzer <mholzer@gentoo.org> bittornado-0.2.0.ebuild:
+  Version bumped.
+
+  10 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  bittornado-0.1.4.ebuild:
+  Fix bug #46804's b0rked icons.
+
+*bittornado-0.1.4 (10 Apr 2004)
+
+  10 Apr 2004; Martin Holzer <mholzer@gentoo.org> bittornado-0.1.4.ebuild:
+  Version bumped. Closes 47055
+
+*bittornado-0.1.3 (05 Apr 2004)
+
+  05 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  bittornado-0.1.3.ebuild:
+  Version bump.  Closes bug #46804.
+
+  20 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  bittornado-0.0.1-r1.ebuild:
+  Updated HOMEPAGE.
+
+  19 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  bittornado-0.0.1-r1.ebuild:
+  Added missing comma...
+
+*bittornado-0.0.1-r1 (18 Mar 2004)
+
+  18 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  bittornado-0.0.1-r1.ebuild, bittornado-0.0.1.ebuild:
+  Fixed sed line in src_unpack. Thanks to Ryan Skadberg <skadz@stigmata.org> in
+  bug #45036.
+
+*bittornado-0.0.1 (17 Mar 2004)
+
+  17 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  bittornado-0.0.1.ebuild:
+  BitTornado was formerly bittorrent-theshadow, but the codebase is going in a
+  different location than mainline bittorrent, so the name has changed, and it's
+  becoming a separate package. Ebuild submitted by J.J.H.Hillen
+  <neeneelaatmaar@gmx.net> in bug #44887.

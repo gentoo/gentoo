@@ -1,0 +1,12 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 700557c..ac6ec0d 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -27,6 +27,5 @@ nabi_SOURCES = \
+ 	keycapturedialog.c \
+ 	main.c
+ 
+-nabi_LDFLAGS = @X_LIBS@ @X_PRE_LIBS@ -lX11 @GTK_LIBS@ 
+-nabi_LDADD = ../IMdkit/libXimd.a
++nabi_LDADD = @X_LIBS@ @X_PRE_LIBS@ -lX11 @GTK_LIBS@ ../IMdkit/libXimd.a
+ 

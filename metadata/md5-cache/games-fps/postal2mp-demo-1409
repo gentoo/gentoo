@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DESCRIPTION=You play the Postal Dude: Postal 2 is only as violent as you are
+EAPI=5
+HOMEPAGE=http://icculus.org/news/news.php?id=4419
+KEYWORDS=amd64 x86
+LICENSE=postal2
+RDEPEND=sys-libs/glibc sys-libs/libstdc++-v3:5 amd64? ( sys-libs/glibc[multilib] sys-libs/libstdc++-v3:5[multilib] ) >=media-libs/libsdl-1.2.15-r4[X,opengl,abi_x86_32(-)] >=media-libs/openal-1.15.1[abi_x86_32(-)] games-misc/games-envd
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=http://treefort.icculus.org/postal2/Postal2STP-FreeMP-linux.tar.bz2 http://0day.icculus.org/postal2/Postal2STP-FreeMP-linux.tar.bz2 http://cyberstalker.dk/sponsored-by-dkchan.org/Postal2STP-FreeMP-linux.tar.bz2
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=916f442d6028176cbe84452a2f309f43

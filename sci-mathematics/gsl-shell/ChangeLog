@@ -1,0 +1,44 @@
+# ChangeLog for sci-mathematics/gsl-shell
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/gsl-shell/ChangeLog,v 1.10 2013/03/01 12:18:24 jlec Exp $
+
+  01 Mar 2013; Justin Lecher <jlec@gentoo.org> gsl-shell-2.2.0.ebuild,
+  +files/gsl-shell-2.2.0-pkg-config.patch:
+  Use pkg-config to detect gsl, libagg, freetype (#459474) and fox
+
+  27 Feb 2013; Justin Lecher <jlec@gentoo.org> gsl-shell-2.2.0.ebuild:
+  Add missing dep on virtual/pkgconfig
+
+  21 Feb 2013; Justin Lecher <jlec@gentoo.org> gsl-shell-2.2.0.ebuild,
+  metadata.xml:
+  Use tc-getPKG_CONFIG from toolchain-funcs.eclass instead of plain pkg-config
+
+  01 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gsl-shell-2.2.0.ebuild:
+  move media-fonts/freefont-ttf into media-fonts/freefont
+
+*gsl-shell-2.2.0 (30 Nov 2012)
+
+  30 Nov 2012; Andrey Grozin <grozin@gentoo.org> -gsl-shell-2.2.0_beta1.ebuild,
+  +gsl-shell-2.2.0.ebuild, files/gsl-shell-font.patch:
+  Version bump
+
+  26 Sep 2012; Andrey Grozin <grozin@gentoo.org> gsl-shell-2.2.0_beta1.ebuild:
+  Fixing a stupid typo
+
+  26 Sep 2012; Agostino Sarubbo <ago@gentoo.org> gsl-shell-2.2.0_beta1.ebuild:
+  add ~amd64, wrt to bug #435746
+
+  26 Sep 2012; Andrey Grozin <grozin@gentoo.org> gsl-shell-2.2.0_beta1.ebuild,
+  +files/gsl-shell-font.patch, +files/gsl-shell-strip.patch,
+  +files/gsl-shell-usr.patch, -files/gsl-shell.patch:
+  Fixing blas dependency, restructuring patches
+
+  21 Sep 2012; Andrey Grozin <grozin@gentoo.org> gsl-shell-2.2.0_beta1.ebuild,
+  +files/gsl-shell-nogui.patch:
+  New USE flag doc; build with USE=-fox fixed
+
+*gsl-shell-2.2.0_beta1 (20 Sep 2012)
+
+  20 Sep 2012; Andrey Grozin <grozin@gentoo.org> +gsl-shell-2.2.0_beta1.ebuild,
+  +files/gsl-shell.patch, +metadata.xml:
+  Initial import

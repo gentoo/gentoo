@@ -1,0 +1,32 @@
+# ChangeLog for dev-python/ropemode
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ropemode/ChangeLog,v 1.7 2015/04/08 08:05:25 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> ropemode-0.2-r1.ebuild:
+  Drop old Python implementations
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -ropemode-0.1_rc2.ebuild,
+  -ropemode-0.2.ebuild:
+  Remove old.
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> ropemode-0.2-r1.ebuild:
+  Stable for x86, wrt bug #481850
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> ropemode-0.2-r1.ebuild:
+  Stable for amd64, wrt bug #481850
+
+*ropemode-0.2-r1 (15 Sep 2013)
+
+  15 Sep 2013; Michał Górny <mgorny@gentoo.org> +ropemode-0.2-r1.ebuild:
+  Convert to distutils-r1.
+
+*ropemode-0.2 (28 Jun 2012)
+
+  28 Jun 2012; Patrick Lauer <patrick@gentoo.org> +ropemode-0.2.ebuild:
+  Bump
+
+*ropemode-0.1_rc2 (03 Oct 2010)
+
+  03 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +ropemode-0.1_rc2.ebuild, +metadata.xml:
+  Initial addition (bug #338556). Ebuild written by Yang Zhang.

@@ -1,0 +1,226 @@
+diff -c -r nss_ldap-250/ChangeLog nss_ldap-250.1/ChangeLog
+*** nss_ldap-250/ChangeLog	Wed Apr 26 18:19:00 2006
+--- nss_ldap-250.1/ChangeLog	Wed Aug 16 16:58:57 2006
+***************
+*** 1,6 ****
+--- 1,13 ----
+  $Id: nss_ldap-254-nss_getgrent_skipmembers.patch,v 1.1 2007/02/06 04:50:25 robbat2 Exp $
+  ===============================================================
+  
++ 250.1   Paul B. Henson <henson@acm.org>
++ 
++ 	* add nss_getgrent_skipmembers parameter to ldap.conf,
++ 	  if enabled will not request member attributes for
++ 	  group lookups, greatly increasing performance in the
++ 	  face of large groups
++ 
+  250	Luke Howard <lukeh@padl.com>
+  
+  	* don't use static _nss_ldap_no_members buffer,
+diff -c -r nss_ldap-250/ldap-nss.c nss_ldap-250.1/ldap-nss.c
+*** nss_ldap-250/ldap-nss.c	Wed Apr 26 18:19:00 2006
+--- nss_ldap-250.1/ldap-nss.c	Wed Aug 16 16:51:49 2006
+***************
+*** 1258,1264 ****
+  
+    cfg = __config;
+  
+!   _nss_ldap_init_attributes (cfg->ldc_attrtab);
+    _nss_ldap_init_filters ();
+  
+  #ifdef HAVE_LDAP_SET_OPTION
+--- 1258,1264 ----
+  
+    cfg = __config;
+  
+!   _nss_ldap_init_attributes (cfg->ldc_attrtab, cfg->ldc_getgrent_skipmembers);
+    _nss_ldap_init_filters ();
+  
+  #ifdef HAVE_LDAP_SET_OPTION
+diff -c -r nss_ldap-250/ldap-nss.h nss_ldap-250.1/ldap-nss.h
+*** nss_ldap-250/ldap-nss.h	Wed Apr 26 18:19:00 2006
+--- nss_ldap-250.1/ldap-nss.h	Wed Aug 16 16:51:59 2006
+***************
+*** 390,395 ****
+--- 390,396 ----
+    time_t ldc_mtime;
+  
+    char **ldc_initgroups_ignoreusers;
++   int ldc_getgrent_skipmembers;
+  };
+  
+  typedef struct ldap_config ldap_config_t;
+diff -c -r nss_ldap-250/ldap-schema.c nss_ldap-250.1/ldap-schema.c
+*** nss_ldap-250/ldap-schema.c	Wed Apr 26 18:19:00 2006
+--- nss_ldap-250.1/ldap-schema.c	Wed Aug 16 16:54:52 2006
+***************
+*** 273,279 ****
+  
+  static void init_pwd_attributes (const char ***pwd_attrs);
+  static void init_sp_attributes (const char ***sp_attrs);
+! static void init_grp_attributes (const char ***grp_attrs);
+  static void init_hosts_attributes (const char ***hosts_attrs);
+  static void init_services_attributes (const char ***services_attrs);
+  static void init_network_attributes (const char ***network_attrs);
+--- 273,279 ----
+  
+  static void init_pwd_attributes (const char ***pwd_attrs);
+  static void init_sp_attributes (const char ***sp_attrs);
+! static void init_grp_attributes (const char ***grp_attrs, int ldc_getgrent_skipmembers);
+  static void init_hosts_attributes (const char ***hosts_attrs);
+  static void init_services_attributes (const char ***services_attrs);
+  static void init_network_attributes (const char ***network_attrs);
+***************
+*** 289,299 ****
+   * attribute table initialization routines
+   */
+  void
+! _nss_ldap_init_attributes (const char ***attrtab)
+  {
+    init_pwd_attributes (&attrtab[LM_PASSWD]);
+    init_sp_attributes (&attrtab[LM_SHADOW]);
+!   init_grp_attributes (&attrtab[LM_GROUP]);
+    init_hosts_attributes (&attrtab[LM_HOSTS]);
+    init_services_attributes (&attrtab[LM_SERVICES]);
+    init_network_attributes (&attrtab[LM_NETWORKS]);
+--- 289,299 ----
+   * attribute table initialization routines
+   */
+  void
+! _nss_ldap_init_attributes (const char ***attrtab, int ldc_getgrent_skipmembers)
+  {
+    init_pwd_attributes (&attrtab[LM_PASSWD]);
+    init_sp_attributes (&attrtab[LM_SHADOW]);
+!   init_grp_attributes (&attrtab[LM_GROUP], ldc_getgrent_skipmembers);
+    init_hosts_attributes (&attrtab[LM_HOSTS]);
+    init_services_attributes (&attrtab[LM_SERVICES]);
+    init_network_attributes (&attrtab[LM_NETWORKS]);
+***************
+*** 357,363 ****
+  }
+  
+  static void
+! init_grp_attributes (const char ***grp_attrs)
+  {
+    int i = 0;
+    static const char *__grp_attrs[ATTRTAB_SIZE + 1];
+--- 357,363 ----
+  }
+  
+  static void
+! init_grp_attributes (const char ***grp_attrs, int ldc_getgrent_skipmembers)
+  {
+    int i = 0;
+    static const char *__grp_attrs[ATTRTAB_SIZE + 1];
+***************
+*** 366,374 ****
+  
+    (*grp_attrs)[i++] = (char *) ATM (LM_GROUP, cn);
+    (*grp_attrs)[i++] = (char *) ATM (LM_GROUP, userPassword);
+!   (*grp_attrs)[i++] = (char *) AT (memberUid);
+!   if (_nss_ldap_test_config_flag (NSS_LDAP_FLAGS_RFC2307BIS))
+!     (*grp_attrs)[i++] = (char *) AT (uniqueMember);
+    (*grp_attrs)[i++] = (char *) ATM (LM_GROUP, gidNumber);
+    (*grp_attrs)[i] = NULL;
+  }
+--- 366,377 ----
+  
+    (*grp_attrs)[i++] = (char *) ATM (LM_GROUP, cn);
+    (*grp_attrs)[i++] = (char *) ATM (LM_GROUP, userPassword);
+!   if (!ldc_getgrent_skipmembers)
+!     {
+!       (*grp_attrs)[i++] = (char *) AT (memberUid);
+!       if (_nss_ldap_test_config_flag (NSS_LDAP_FLAGS_RFC2307BIS))
+!         (*grp_attrs)[i++] = (char *) AT (uniqueMember);
+!     }
+    (*grp_attrs)[i++] = (char *) ATM (LM_GROUP, gidNumber);
+    (*grp_attrs)[i] = NULL;
+  }
+diff -c -r nss_ldap-250/ldap-schema.h nss_ldap-250.1/ldap-schema.h
+*** nss_ldap-250/ldap-schema.h	Wed Apr 26 18:19:00 2006
+--- nss_ldap-250.1/ldap-schema.h	Wed Aug 16 16:54:07 2006
+***************
+*** 30,36 ****
+   * function to initialize global lookup filters.
+   */
+  void _nss_ldap_init_filters ();
+! void _nss_ldap_init_attributes (const char ***attrtab);
+  
+  /**
+   * make filters formerly declared in ldap-*.h globally available.
+--- 30,36 ----
+   * function to initialize global lookup filters.
+   */
+  void _nss_ldap_init_filters ();
+! void _nss_ldap_init_attributes (const char ***attrtab, int ldc_getgrent_skipmembers);
+  
+  /**
+   * make filters formerly declared in ldap-*.h globally available.
+diff -c -r nss_ldap-250/nss_ldap.5 nss_ldap-250.1/nss_ldap.5
+*** nss_ldap-250/nss_ldap.5	Wed Apr 26 18:19:00 2006
+--- nss_ldap-250.1/nss_ldap.5	Wed Aug 16 17:07:19 2006
+***************
+*** 445,450 ****
+--- 445,458 ----
+  to return NSS_STATUS_NOTFOUND if called with a listed users as
+  its argument.
+  .TP
++ .B nss_getgrent_skipmembers <yes|no>
++ Specifies whether or not to populate the members list in
++ the group structure for group lookups. If very large groups
++ are present, enabling this option will greatly increase
++ perforance, at the cost of some lost functionality. You should
++ verify no local applications rely on this information before
++ enabling this on a production system.
++ .TP
+  .B nss_srv_domain <domain>
+  This option determines the DNS domain used for performing SRV
+  lookups.
+diff -c -r nss_ldap-250/util.c nss_ldap-250.1/util.c
+*** nss_ldap-250/util.c	Wed Apr 26 18:19:00 2006
+--- nss_ldap-250.1/util.c	Wed Aug 16 16:52:55 2006
+***************
+*** 660,665 ****
+--- 660,666 ----
+    result->ldc_reconnect_maxsleeptime = LDAP_NSS_MAXSLEEPTIME;
+    result->ldc_reconnect_maxconntries = LDAP_NSS_MAXCONNTRIES;
+    result->ldc_initgroups_ignoreusers = NULL;
++   result->ldc_getgrent_skipmembers = 0;
+  
+    for (i = 0; i <= LM_NONE; i++)
+      {
+***************
+*** 1137,1142 ****
+--- 1138,1156 ----
+  	      break;
+  	    }
+  	}
++       else if (!strcasecmp (k, NSS_LDAP_KEY_GETGRENT_SKIPMEMBERS))
++ 	{
++ 	  if (!strcasecmp (v, "on") || !strcasecmp (v, "yes")
++ 	      || !strcasecmp (v, "true"))
++ 	    {
++ 	      result->ldc_getgrent_skipmembers = 1;
++ 	    }
++ 	  else if (!strcasecmp (v, "off") || !strcasecmp (v, "no")
++ 		   || !strcasecmp (v, "false"))
++ 	    {
++ 	      result->ldc_getgrent_skipmembers = 0;
++ 	    }
++ 	}
+        else if (!strcasecmp (k, NSS_LDAP_KEY_CONNECT_POLICY))
+          {
+  	  if (!strcasecmp (v, "oneshot"))
+diff -c -r nss_ldap-250/util.h nss_ldap-250.1/util.h
+*** nss_ldap-250/util.h	Wed Apr 26 18:19:00 2006
+--- nss_ldap-250.1/util.h	Wed Aug 16 16:49:52 2006
+***************
+*** 83,88 ****
+--- 83,89 ----
+  #define NSS_LDAP_KEY_PAGESIZE		"pagesize"
+  #define NSS_LDAP_KEY_INITGROUPS		"nss_initgroups"
+  #define NSS_LDAP_KEY_INITGROUPS_IGNOREUSERS	"nss_initgroups_ignoreusers"
++ #define NSS_LDAP_KEY_GETGRENT_SKIPMEMBERS	"nss_getgrent_skipmembers"
+  
+  /* more reconnect policy fine-tuning */
+  #define NSS_LDAP_KEY_RECONNECT_TRIES		"nss_reconnect_tries"

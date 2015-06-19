@@ -1,0 +1,94 @@
+# ChangeLog for net-mail/pop-before-smtp
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/pop-before-smtp/ChangeLog,v 1.24 2011/12/04 10:29:23 swegener Exp $
+
+  04 Dec 2011; Sven Wegener <swegener@gentoo.org> files/pop-before-smtp.init:
+  reload is extra_started_commands
+
+  01 Dec 2011; Eray Aslan <eras@gentoo.org> -pop-before-smtp-1.41.ebuild:
+  remove old
+
+  28 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  pop-before-smtp-1.42.ebuild:
+  x86 stable wrt bug #391293
+
+  26 Nov 2011; Markos Chandras <hwoarang@gentoo.org>
+  pop-before-smtp-1.42.ebuild:
+  Stable on amd64 wrt bug #391293
+
+  22 Nov 2011; Eray Aslan <eras@gentoo.org> files/pop-before-smtp.init:
+  Use non-deprecated variables in init script
+
+  06 Jun 2011; Eray Aslan <eras@gentoo.org> -pop-before-smtp-1.34.ebuild,
+  -pop-before-smtp-1.36.ebuild, pop-before-smtp-1.42.ebuild:
+  Fix perl dependency - bug #341981. EAPI bump. Remove old.
+
+*pop-before-smtp-1.42 (04 Jan 2009)
+
+  04 Jan 2009; Torsten Veller <tove@gentoo.org>
+  +pop-before-smtp-1.42.ebuild:
+  Version bump (#243416). Remove dependencies: dev-perl/File-Tail,
+  virtual/perl-Time-HiRes, dev-perl/Unix-Syslog.
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org>
+  pop-before-smtp-1.34.ebuild, pop-before-smtp-1.36.ebuild,
+  pop-before-smtp-1.41.ebuild:
+  Fix *initd, *confd and *envd calls (#173884, #174266)
+
+  24 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  pop-before-smtp-1.41.ebuild:
+  stable x86, bug 175577
+
+  22 Apr 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  pop-before-smtp-1.41.ebuild:
+  Stable on amd64
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*pop-before-smtp-1.41 (01 May 2006)
+
+  01 May 2006; Andrej Kacian <ticho@gentoo.org>
+  +pop-before-smtp-1.41.ebuild:
+  Version bump. Closes bug #118977, reported by Alexander Schneider
+  <A.Schneider at magicspace.de>.
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  pop-before-smtp-1.34.ebuild, pop-before-smtp-1.36.ebuild:
+  Virtuals for perl-core
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  pop-before-smtp-1.36.ebuild:
+  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  pop-before-smtp-1.34.ebuild:
+  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
+
+  14 Dec 2004; Andrej Kacian <ticho@gentoo.org> pop-before-smtp-1.36.ebuild:
+  Stable on x86.
+
+*pop-before-smtp-1.36 (05 Nov 2004)
+
+  05 Nov 2004; Andrej Kacian <ticho@gentoo.org>
+  +pop-before-smtp-1.36.ebuild:
+  Version bump. Closes #70143, reported by Frido Ferdinand <frido@zolder.net>.
+
+  05 Nov 2004; Andrej Kacian <ticho@gentoo.org> files/pop-before-smtp.init:
+  Fixed init script, as per bug #70143.
+
+  22 Sep 2004; Andrej Kacian <ticho@gentoo.org> pop-before-smtp-1.34.ebuild:
+  Stable on x86.
+
+  02 Aug 2004; <tomk@gentoo.org> +metadata.xml:
+  Added metadata.xml, closes bug #47793
+
+  19 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  pop-before-smtp-1.34.ebuild:
+  make DESCRIPTION better (bug #47793)
+
+*pop-before-smtp-1.34 (05 Feb 2004)
+
+  05 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> pop-before-smtp-1.34.ebuild:
+  Initial import.
+

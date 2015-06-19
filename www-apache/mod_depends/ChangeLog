@@ -1,0 +1,30 @@
+# ChangeLog for www-apache/mod_depends
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_depends/ChangeLog,v 1.7 2014/08/10 20:15:17 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  mod_depends-0.7.0_p200702041.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  31 Jan 2008; Benedikt Böhm <hollow@gentoo.org>
+  files/0.7/09_mod_depends.conf, metadata.xml,
+  mod_depends-0.7.0_p200702041.ebuild:
+  fix depend.apache usage wrt #208033; update metadata; cleanup
+
+  23 Sep 2007; nixnut <nixnut@gentoo.org>
+  mod_depends-0.7.0_p200702041.ebuild:
+  Added ~ppc wrt bug 189650
+
+*mod_depends-0.7.0_p200702041 (20 Aug 2007)
+
+  20 Aug 2007; Benedikt Böhm <hollow@gentoo.org>
+  +files/0.7/09_mod_depends.conf, +metadata.xml,
+  +mod_depends-0.7.0_p200702041.ebuild:
+  initial version
+
+  04 Feb 2007; Christian Parpart <trapni@gentoo.org> ChangeLog:
+  install missing header files

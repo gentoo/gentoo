@@ -1,0 +1,219 @@
+# ChangeLog for media-libs/vips
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/vips/ChangeLog,v 1.51 2013/02/16 12:44:32 pacho Exp $
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #96436
+
+  20 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org> metadata.xml:
+  Switch to global orc USE flag.
+
+*vips-7.26.7 (12 Dec 2011)
+
+  12 Dec 2011; Peter Volkov <pva@gentoo.org> -vips-7.22.4.ebuild,
+  -vips-7.22.5.ebuild, -vips-7.24.7.ebuild, -vips-7.26.2.ebuild,
+  +vips-7.26.7.ebuild:
+  Version bump. Drop old.
+
+  23 Oct 2011; Markus Meier <maekke@gentoo.org> vips-7.26.3.ebuild:
+  x86 stable, bug #386023
+
+  15 Oct 2011; Markos Chandras <hwoarang@gentoo.org> vips-7.26.3.ebuild:
+  Stable on amd64 wrt bug #386023
+
+  14 Sep 2011; Andreas Schuerch <nativemad@gentoo.org> vips-7.24.7.ebuild:
+  x86 stable, see Bug #381607
+
+  04 Sep 2011; Tony Vroon <chainsaw@gentoo.org> vips-7.24.7.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo & Ian
+  "idella4" Delaney in bug #381607 filed by Peter "pva" Volkov.
+
+*vips-7.26.3 (25 Aug 2011)
+
+  25 Aug 2011; Peter Volkov <pva@gentoo.org> +vips-7.26.3.ebuild:
+  Version bump.
+
+*vips-7.26.2 (13 Aug 2011)
+
+  13 Aug 2011; Peter Volkov <pva@gentoo.org> -vips-7.24.3.ebuild,
+  -vips-7.24.4.ebuild, +vips-7.26.2.ebuild:
+  Version bump.
+
+  13 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> vips-7.22.4.ebuild,
+  vips-7.22.5.ebuild:
+  Dropped ppc keywords wrt #358075
+
+*vips-7.24.7 (17 Jul 2011)
+
+  17 Jul 2011; Peter Volkov <pva@gentoo.org> +vips-7.24.7.ebuild:
+  Version bump.
+
+*vips-7.24.4 (28 Mar 2011)
+
+  28 Mar 2011; Peter Volkov <pva@gentoo.org> +vips-7.24.4.ebuild:
+  Version bump. Should work with libpng 1.5+ api.
+
+  25 Mar 2011; Thomas Kahle <tomka@gentoo.org> vips-7.22.5.ebuild:
+  x86 stable per bug 358075
+
+  11 Mar 2011; Markos Chandras <hwoarang@gentoo.org> vips-7.22.5.ebuild:
+  Stable on amd64 wrt bug #358075
+
+*vips-7.24.3 (11 Mar 2011)
+
+  11 Mar 2011; Peter Volkov <pva@gentoo.org> +vips-7.24.3.ebuild:
+  Version bump.
+
+*vips-7.22.5 (24 Nov 2010)
+
+  24 Nov 2010; Peter Volkov <pva@gentoo.org> -vips-7.20.7.ebuild,
+  -vips-7.22.2.ebuild, +vips-7.22.5.ebuild:
+  Version bump. Drop old.
+
+  23 Nov 2010; Jeroen Roovers <jer@gentoo.org> vips-7.22.4.ebuild:
+  Stable for PPC (bug #344561).
+
+  10 Nov 2010; Markos Chandras <hwoarang@gentoo.org> vips-7.22.4.ebuild:
+  Stable on amd64 wrt bug #344561
+
+  10 Nov 2010; Christian Faulhammer <fauli@gentoo.org> vips-7.22.4.ebuild:
+  stable x86, security bug 344561
+
+*vips-7.22.4 (10 Nov 2010)
+
+  10 Nov 2010; Peter Volkov <pva@gentoo.org> -vips-7.22.1.ebuild,
+  +vips-7.22.4.ebuild:
+  Version bump to fix privelege escalation, #344561, thank Tim Sammut for
+  report. Don't install .la files and add static-libs USE flag, #344805,
+  thank Samuli Suominen for report. Install documentation to
+  /usr/share/doc/, bug #314101, thank Diego Elio Pettenò for report. Add
+  graphicsmagick as an alternative for imagemagick, bug #314297, thank
+  Wojciech Porczyk for report. Drop old.
+
+  09 Nov 2010; Samuli Suominen <ssuominen@gentoo.org> vips-7.20.7.ebuild,
+  vips-7.22.1.ebuild, vips-7.22.2.ebuild:
+  Use virtual/jpeg wrt #327487.
+
+*vips-7.22.2 (03 Sep 2010)
+
+  03 Sep 2010; Peter Volkov <pva@gentoo.org> +vips-7.22.2.ebuild:
+  Version bump.
+
+  25 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  vips-7.22.1.ebuild:
+  Fix usage of python_set_active_version() and python_pkg_setup() (bug #313549).
+
+*vips-7.22.1 (25 Jun 2010)
+
+  25 Jun 2010; Peter Volkov <pva@gentoo.org> +vips-7.22.1.ebuild, metadata.xml:
+  Version bump. Improved python related code, #313549, thank Arfrever Frehtes
+  Taifersar Arahesis for report. Took maintaining.
+
+  21 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> vips-7.20.7.ebuild:
+  Restrict media-libs/lcms depend to old version.
+
+  18 Apr 2010; Markus Meier <maekke@gentoo.org> vips-7.20.7.ebuild:
+  x86 stable, bug #304787
+
+  11 Apr 2010; <nixnut@gentoo.org> vips-7.20.7.ebuild:
+  ppc stable #304787
+
+  19 Mar 2010; Pacho Ramos <pacho@gentoo.org> vips-7.20.7.ebuild:
+  amd64 stable, bug 304787
+
+  06 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> vips-7.20.7.ebuild,
+  +files/vips-7.20.7-build.patch:
+  Import upstream patch to fix building wrt #298671, thanks to Kacper
+  Kowalik and Diego E. 'Flameeyes' Pettenò.
+
+  06 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> vips-7.18.2.ebuild:
+  Revert back to ~amd64 wrt #304787.
+
+*vips-7.20.7 (21 Jan 2010)
+
+  21 Jan 2010; Peter Volkov <pva@gentoo.org> +vips-7.20.7.ebuild:
+  Version bump.
+
+*vips-7.20.6 (22 Dec 2009)
+
+  22 Dec 2009; Peter Volkov <pva@gentoo.org> +vips-7.20.6.ebuild:
+  Version bump. Thank upstream (John) for helping us to fix test failures.
+
+  29 Sep 2009; Markus Meier <maekke@gentoo.org> vips-7.18.2.ebuild:
+  amd64/x86 stable, bug #284516
+
+  29 Sep 2009; Markus Meier <maekke@gentoo.org> vips-7.18.2.ebuild:
+  tweak deps and configure options
+
+*vips-7.18.2 (07 Aug 2009)
+
+  07 Aug 2009; Peter Volkov <pva@gentoo.org> -vips-7.16.3.ebuild,
+  -vips-7.16.4.ebuild, -vips-7.18.1.ebuild, +vips-7.18.2.ebuild:
+  Version bump. Remove old.
+
+*vips-7.18.1 (22 Apr 2009)
+
+  22 Apr 2009; Peter Volkov <pva@gentoo.org> +vips-7.18.1.ebuild:
+  Version bump.
+
+*vips-7.16.4 (13 Jan 2009)
+
+  13 Jan 2009; Peter Volkov <pva@gentoo.org> +vips-7.16.4.ebuild:
+  Version bump.
+
+*vips-7.16.3 (22 Nov 2008)
+
+  22 Nov 2008; Markus Meier <maekke@gentoo.org> -vips-7.14.4.ebuild,
+  +vips-7.16.3.ebuild:
+  bump to 7.16.3, bug #246969 and remove old
+
+  23 Aug 2008; Markus Meier <maekke@gentoo.org> -vips-7.14.3.ebuild:
+  old
+
+*vips-7.14.4 (28 Jun 2008)
+
+  28 Jun 2008; Markus Meier <maekke@gentoo.org> -vips-7.12.5.ebuild,
+  +vips-7.14.4.ebuild:
+  bump to 7.14.4, bug #229073; old
+
+*vips-7.14.3 (27 Apr 2008)
+
+  27 Apr 2008; Markus Meier <maekke@gentoo.org> +vips-7.14.3.ebuild:
+  bump, bug #218517
+
+  16 Jan 2008; Markus Meier <maekke@gentoo.org> -vips-7.10.9.ebuild,
+  -vips-7.10.17.ebuild:
+  old
+
+*vips-7.12.5 (10 Dec 2007)
+
+  10 Dec 2007; Markus Meier <maekke@gentoo.org> +vips-7.12.5.ebuild:
+  version bump, bug #190661
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-vips-7.10.9,
+  files/digest-vips-7.10.17, Manifest:
+  Fixing SHA256 digest, pass four
+
+  06 Mar 2006; Luca Barbato <lu_zero@gentoo.org> metadata.xml:
+  metadata fix
+
+*vips-7.10.17 (10 Dec 2005)
+
+  10 Dec 2005; Marcelo Goes <vanquirius@gentoo.org> +vips-7.10.17.ebuild:
+  7.10.17 version bump for bug 107506. Thanks to Ruven <ruven at free dot fr>.
+  Also, fixed minor QA issues with the ebuild.
+
+  07 Apr 2005; Luca Barbato <lu_zero@gentoo.org> vips-7.10.9.ebuild:
+  Full ebuild update
+
+  07 Apr 2005; Sven Wegener <swegener@gentoo.org> vips-7.10.9.ebuild:
+  Fixed invalid atoms in *DEPEND.
+
+*vips-7.10.9 (06 Apr 2005)
+
+  06 Apr 2005; Luca Barbato <lu_zero@gentoo.org> +metadata.xml,
+  +vips-7.10.9.ebuild:
+  New package, thanks to Ruven <ruven@free.fr> for the ebuild

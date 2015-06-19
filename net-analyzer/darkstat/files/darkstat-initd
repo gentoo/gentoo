@@ -1,0 +1,59 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2 
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/darkstat/files/darkstat-initd,v 1.1 2014/06/24 12:59:53 jer Exp $
+
+IF=${SVCNAME##*.}
+
+if [ -n "${IF}" -a "${SVCNAME}" != "darkstat" ] ; then
+	PIDFILE=/run/darkstat.${IF}.pid
+else
+	PIDFILE=/run/darkstat.pid
+fi
+
+depend() {
+        need net
+}
+
+chkconfig() {
+	if [ -n "${IF}" -a "${SVCNAME}" != "darkstat" ] ; then
+		if [ ! -f "/etc/conf.d/darkstat.${IF}" ] ; then
+			einfo "It's possible to have distinct config in /etc/conf.d/darkstat.${IF}."
+		fi
+		INTERFACE=${IF}
+	else
+		if [ ! -f "/etc/conf.d/darkstat" ] ; then
+			ewarn "/etc/conf.d/darkstat does not exist. Falling on defaults."
+		fi
+	fi
+
+	if [ -z "${INTERFACE}" ]; then
+		ewarn "No interface specified. Trying to use eth0."
+		INTERFACE="eth0"
+	fi
+
+	DARK_OPTS="-i ${INTERFACE}"
+	[ -n "${PORT}" ] && DARK_OPTS="${DARK_OPTS} -p ${PORT}"
+	[ -n "${ADDRESS}" ] && DARK_OPTS="${DARK_OPTS} -b ${ADDRESS}"
+	[ -n "${DAYLOGFILE}" ] && DARK_OPTS="${DARK_OPTS} --daylog ${DAYLOGFILE}"
+
+	return 0
+}
+
+start() {
+	chkconfig || return 1
+
+	# If ${PIDFILE} exist darkstat fails to start
+	[ -f ${PIDFILE} ] && rm ${PIDFILE}
+	ebegin "Starting darkstat on ${INTERFACE}"
+	/sbin/start-stop-daemon --start --exec /usr/sbin/darkstat -- \
+		--chroot "${CHROOT:-__CHROOT__}" --pidfile ${PIDFILE} \
+		${DARKSTAT_OPTS} ${DARK_OPTS} -f "${FILTER}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping darkstat on ${INTERFACE}"
+	/sbin/start-stop-daemon --stop --pidfile ${PIDFILE}
+	eend $?
+}

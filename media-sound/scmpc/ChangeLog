@@ -1,0 +1,97 @@
+# ChangeLog for media-sound/scmpc
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/scmpc/ChangeLog,v 1.25 2013/04/09 08:36:31 angelos Exp $
+
+  09 Apr 2013; Christoph Mende <angelos@gentoo.org> -scmpc-0.4.0.ebuild:
+  Remove old
+
+  04 Apr 2013; Agostino Sarubbo <ago@gentoo.org> scmpc-0.4.1.ebuild:
+  Stable for x86, wrt bug #464460
+
+  04 Apr 2013; Agostino Sarubbo <ago@gentoo.org> scmpc-0.4.1.ebuild:
+  Stable for amd64, wrt bug #464460
+
+*scmpc-0.4.1 (04 Mar 2013)
+
+  04 Mar 2013;  <christoph@gentoo.org> +scmpc-0.4.1.ebuild, -scmpc-0.3.1.ebuild:
+  Version bump
+
+  17 Sep 2012; Thomas Kahle <tomka@gentoo.org> scmpc-0.4.0.ebuild:
+  marked x86 per bug 433315
+
+  02 Sep 2012; Markos Chandras <hwoarang@gentoo.org> scmpc-0.4.0.ebuild:
+  Stable on amd64 wrt bug #433315
+
+  23 Jul 2012; Christoph Mende <angelos@gentoo.org> scmpc-0.4.0.ebuild:
+  Fix README filename
+
+*scmpc-0.4.0 (23 Jul 2012)
+
+  23 Jul 2012; Christoph Mende <angelos@gentoo.org> +scmpc-0.4.0.ebuild:
+  Version bump
+
+  27 May 2012; Christoph Mende <angelos@gentoo.org> -scmpc-0.2.2.ebuild:
+  Remove old
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> scmpc-0.2.2.ebuild,
+  scmpc-0.3.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Apr 2012; Michał Górny <mgorny@gentoo.org> scmpc-0.2.2.ebuild,
+  scmpc-0.3.1.ebuild:
+  Use mirror:// in SRC_URI.
+
+  19 Jul 2011; Markus Meier <maekke@gentoo.org> scmpc-0.3.1.ebuild:
+  x86 stable, bug #374607
+
+  10 Jul 2011; Markos Chandras <hwoarang@gentoo.org> scmpc-0.3.1.ebuild:
+  Stable on amd64 wrt bug #374607
+
+*scmpc-0.3.1 (13 May 2011)
+
+  13 May 2011; Christoph Mende <angelos@gentoo.org> -scmpc-0.3.0.ebuild,
+  +scmpc-0.3.1.ebuild:
+  Version bump
+
+  12 May 2011; Christoph Mende <angelos@gentoo.org> scmpc-0.2.2.ebuild,
+  scmpc-0.3.0.ebuild:
+  Update HOMEPAGE/SRC_URI
+
+  17 Apr 2011; Christoph Mende <angelos@gentoo.org> scmpc-0.3.0.ebuild:
+  Added missing pkgconfig dep
+
+*scmpc-0.3.0 (20 Feb 2011)
+
+  20 Feb 2011; <angelos@gentoo.org> +scmpc-0.3.0.ebuild,
+  -scmpc-0.14.0_pre20080316.ebuild:
+  Version bump, removed 0.14 because it is older than 0.3
+
+*scmpc-0.14.0_pre20080316 (16 Mar 2009)
+
+  16 Mar 2009; Christoph Mende <angelos@gentoo.org> +files/scmpc-2.init,
+  +scmpc-0.14.0_pre20080316.ebuild:
+  Added a pre-release snapshot
+
+  22 Dec 2008; Christoph Mende <angelos@gentoo.org> files/scmpc.init:
+  We don't need mpd for the init script, so just replace it with use mpd
+
+  05 Nov 2008; Christoph Mende <angelos@gentoo.org> scmpc-0.2.2.ebuild:
+  Changed SRC_URI to use mirror://
+
+  06 Dec 2007; Christian Faulhammer <opfer@gentoo.org> scmpc-0.2.2.ebuild:
+  stable x86, bug 201429
+
+  01 Aug 2007; Christoph Mende <angelos@gentoo.org> scmpc-0.2.2.ebuild:
+  Stable on amd64
+
+  28 Jun 2007; Raúl Porcel <armin76@gentoo.org> scmpc-0.2.2.ebuild:
+  Add ~x86 wrt #183351
+
+  27 Jun 2007; Christoph Mende <angelos@gentoo.org> +files/scmpc.init:
+  Added an init script, thanks to Avuton Olrich
+
+*scmpc-0.2.2 (26 Jun 2007)
+
+  26 Jun 2007; Christoph Mende <angelos@gentoo.org> +metadata.xml,
+  +scmpc-0.2.2.ebuild:
+  Initial import

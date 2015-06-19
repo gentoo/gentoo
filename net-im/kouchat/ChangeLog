@@ -1,0 +1,38 @@
+# ChangeLog for net-im/kouchat
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/kouchat/ChangeLog,v 1.10 2015/01/02 22:49:53 mrueg Exp $
+
+  02 Jan 2015; Manuel Rüger <mrueg@gentoo.org> kouchat-1.1.0.ebuild:
+  Bump to EAPI 5
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> kouchat-1.1.0.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  18 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -kouchat-0.9.8.ebuild:
+  NM: Cleanup superseded ebuilds.
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> kouchat-1.1.0.ebuild:
+  Stable for x86, wrt bug #441444
+
+  08 Dec 2012; <ago@gentoo.org> kouchat-1.1.0.ebuild:
+  Stable for amd64, wrt bug #441444
+
+*kouchat-1.1.0 (06 Aug 2012)
+
+  06 Aug 2012; Serkan Kaba <serkan@gentoo.org> +kouchat-1.1.0.ebuild:
+  Version bump.
+
+  21 May 2012; Samuli Suominen <ssuominen@gentoo.org> kouchat-0.9.8.ebuild:
+  inherit eutils for make_desktop_entry
+
+  04 Jan 2009; Markus Meier <maekke@gentoo.org> kouchat-0.9.8.ebuild:
+  amd64/x86 stable, bug #252743
+
+  17 Jun 2008; Christian Faulhammer <opfer@gentoo.org> kouchat-0.9.8.ebuild:
+  keyworded ~arch for x86, bug 226501
+
+*kouchat-0.9.8 (14 Jun 2008)
+
+  14 Jun 2008; Serkan Kaba <serkan@gentoo.org> +files/build.xml,
+  +metadata.xml, +kouchat-0.9.8.ebuild:
+  Initial ebuild. Fixes bug #226135.

@@ -1,0 +1,132 @@
+# ChangeLog for app-arch/makeself
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/makeself/ChangeLog,v 1.35 2015/06/07 07:21:59 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  21 Dec 2014; Michał Górny <mgorny@gentoo.org> -makeself-2.1.5-r1.ebuild,
+  makeself-2.1.5-r2.ebuild:
+  Move stable keywords.
+
+*makeself-2.2.0-r1 (21 Dec 2014)
+*makeself-2.1.5-r2 (21 Dec 2014)
+
+  21 Dec 2014; Michał Górny <mgorny@gentoo.org> +makeself-2.1.5-r2.ebuild,
+  +makeself-2.2.0-r1.ebuild, -makeself-2.2.0.ebuild, files/makeself-unpack:
+  Use sys-apps/gentoo-functions, bug #504388.
+
+*makeself-2.2.0 (18 Feb 2014)
+
+  18 Feb 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/makeself-2.2.0-help-header.patch, +makeself-2.2.0.ebuild,
+  files/makeself-unpack:
+  Version bump.
+
+  29 Aug 2012; Michael Palimaka <kensington@gentoo.org> -makeself-2.1.5.ebuild:
+  Remove old.
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> makeself-2.1.5.ebuild,
+  makeself-2.1.5-r1.ebuild:
+  Drop s390 keywords
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  makeself-2.1.5-r1.ebuild:
+  x86 stable wrt bug #399911
+
+  15 Feb 2012; Brent Baude <ranger@gentoo.org> makeself-2.1.5-r1.ebuild:
+  Marking makeself-2.1.5-r1 ppc for bug 399911
+
+  14 Feb 2012; Jeroen Roovers <jer@gentoo.org> makeself-2.1.5-r1.ebuild:
+  Stable for HPPA (bug #399911).
+
+  12 Feb 2012; Agostino Sarubbo <ago@gentoo.org> makeself-2.1.5-r1.ebuild:
+  Stable for amd64, wrt bug #399911
+
+  05 Feb 2012; Mike Frysinger <vapier@gentoo.org> makeself-2.1.5.ebuild,
+  makeself-2.1.5-r1.ebuild:
+  Move to new unpacker eclass for unpack_makeself.
+
+*makeself-2.1.5-r1 (23 Oct 2011)
+
+  23 Oct 2011; Patrick Lauer <patrick@gentoo.org> +makeself-2.1.5-r1.ebuild:
+  Adding makeself symlink to makeself.sh to make stupid build systems happy
+
+  28 Mar 2010; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  Drop myself from metadata, add maintainer-needed
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  makeself-2.1.5.ebuild:
+  Transfer Prefix keywords
+
+  26 Feb 2009; Mike Frysinger <vapier@gentoo.org> +files/makeself-unpack,
+  makeself-2.1.5.ebuild:
+  Add a script to unpack makeself archives.
+
+  24 Jul 2008; Raúl Porcel <armin76@gentoo.org> makeself-2.1.5.ebuild:
+  x86 stable wrt #231074
+
+  21 Jul 2008; nixnut <nixnut@gentoo.org> makeself-2.1.5.ebuild:
+  Stable on ppc wrt bug 231074
+
+  19 Jul 2008; Jeroen Roovers <jer@gentoo.org> makeself-2.1.5.ebuild:
+  Stable for HPPA (bug #231074).
+
+  18 Jul 2008; Santiago M. Mola <coldwind@gentoo.org> makeself-2.1.5.ebuild:
+  amd64 stable wrt bug #231074
+
+  22 May 2008; Jeremy Olexa <darkside@gentoo.org> makeself-2.1.5.ebuild:
+  my mistake, forgot to carry forward keywords. Marked ~amd64 ~hppa ~ppc ~s390
+  in addition to ~x86
+
+*makeself-2.1.5 (19 May 2008)
+
+  19 May 2008; Jeremy Olexa <darkside@gentoo.org> +makeself-2.1.5.ebuild:
+  Version bump. bug 217218
+
+  30 Mar 2007; Steve Dibb <beandog@gentoo.org> makeself-2.1.4.ebuild:
+  amd64 stable
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 Jan 2007; Danny van Dyk <kugelfang@gentoo.org> -makeself-2.1.2.ebuild,
+  -makeself-2.1.3.ebuild:
+  QA: Removed unused versions.
+
+*makeself-2.1.4 (22 Oct 2005)
+
+  22 Oct 2005; Mike Frysinger <vapier@gentoo.org> +makeself-2.1.4.ebuild:
+  Version bump.
+
+  10 Aug 2005; Luis Medinas <metalgod@gentoo.org> makeself-2.1.3.ebuild:
+  Marked Testing on AMD64. Closes bug #98310 .
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  makeself-2.1.2.ebuild:
+  Masked makeself-2.1.2.ebuild stable for ppc
+
+*makeself-2.1.3 (09 Aug 2004)
+
+  09 Aug 2004; Mike Frysinger <vapier@gentoo.org> +makeself-2.1.3.ebuild:
+  Version bump #59898 by Gerry.
+
+  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  makeself-2.1.2.ebuild:
+  QA - IUSE fix
+
+  04 Jun 2004; David Holm <dholm@gentoo.org> makeself-2.1.2.ebuild:
+  Added to ~ppc.
+
+  16 Apr 2004; Michael McCabe <randy@gentoo.org> makeself-2.1.2.ebuild:
+  added s390 keywords
+
+*makeself-2.1.2 (05 Sep 2003)
+
+  05 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump to fix head -1.
+
+*makeself-2.1.1 (27 Jun 2003)
+
+  27 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

@@ -1,0 +1,260 @@
+# ChangeLog for app-emacs/ocaml-mode
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/ocaml-mode/ChangeLog,v 1.71 2014/01/16 00:00:54 bicatali Exp $
+
+  16 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org> ocaml-mode-4.00.1.ebuild:
+  Keyworded amd64-linux, x86-linux
+
+  20 Feb 2013; Jeroen Roovers <jer@gentoo.org> ocaml-mode-3.12.1-r1.ebuild:
+  Stable for HPPA (bug #456440).
+
+  12 Feb 2013; Agostino Sarubbo <ago@gentoo.org> ocaml-mode-3.12.1-r1.ebuild:
+  Stable for sparc, wrt bug #456440
+
+  12 Feb 2013; Agostino Sarubbo <ago@gentoo.org> ocaml-mode-3.12.1-r1.ebuild:
+  Stable for alpha, wrt bug #456440
+
+  12 Feb 2013; Agostino Sarubbo <ago@gentoo.org> ocaml-mode-3.12.1-r1.ebuild:
+  Stable for ia64, wrt bug #456440
+
+  12 Feb 2013; Agostino Sarubbo <ago@gentoo.org> ocaml-mode-3.12.1-r1.ebuild:
+  Stable for ppc, wrt bug #456440
+
+  12 Feb 2013; Agostino Sarubbo <ago@gentoo.org> ocaml-mode-3.12.1-r1.ebuild:
+  Stable for ppc64, wrt bug #456440
+
+  11 Feb 2013; Agostino Sarubbo <ago@gentoo.org> ocaml-mode-3.12.1-r1.ebuild:
+  Stable for arm, wrt bug #456440
+
+  10 Feb 2013; Agostino Sarubbo <ago@gentoo.org> ocaml-mode-3.12.1-r1.ebuild:
+  Stable for amd64, wrt bug #456440
+
+  10 Feb 2013; Agostino Sarubbo <ago@gentoo.org> ocaml-mode-3.12.1-r1.ebuild:
+  Stable for x86, wrt bug #456440
+
+*ocaml-mode-4.00.1 (10 Feb 2013)
+
+  10 Feb 2013; Ulrich Müller <ulm@gentoo.org> -ocaml-mode-3.11.2.ebuild,
+  ocaml-mode-3.12.1.ebuild, ocaml-mode-3.12.1-r1.ebuild,
+  +ocaml-mode-4.00.1.ebuild:
+  Version bump. Specify LICENSE more precisely. Remove old.
+
+*ocaml-mode-3.12.1-r1 (11 Dec 2012)
+
+  11 Dec 2012; Ulrich Müller <ulm@gentoo.org> +ocaml-mode-3.12.1-r1.ebuild,
+  +files/50ocaml-mode-gentoo-3.12.1.el:
+  Fix autoloading of inferior-caml-set-font-lock. Thanks to sgbmyr@gmail.com
+  in bug 446868.
+
+  24 May 2012; Alexis Ballier <aballier@gentoo.org> ocaml-mode-3.12.1.ebuild:
+  keyword ~amd64-fbsd
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> ocaml-mode-3.12.1.ebuild:
+  Marking ocaml-mode-3.12.1 ppc64 for bug 396019
+
+  15 Jan 2012; Raúl Porcel <armin76@gentoo.org> ocaml-mode-3.12.1.ebuild:
+  alpha/ia64/sparc stable wrt #396019
+
+  08 Jan 2012; Markus Meier <maekke@gentoo.org> ocaml-mode-3.12.1.ebuild:
+  arm stable, bug #396019
+
+  06 Jan 2012; Brent Baude <ranger@gentoo.org> ocaml-mode-3.12.1.ebuild:
+  Marking ocaml-mode-3.12.1 ppc for bug 396019
+
+  04 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ocaml-mode-3.12.1.ebuild:
+  x86 stable wrt bug #396019
+
+  30 Dec 2011; Jeroen Roovers <jer@gentoo.org> ocaml-mode-3.12.1.ebuild:
+  Stable for HPPA (bug #396019).
+
+  26 Dec 2011; Agostino Sarubbo <ago@gentoo.org> ocaml-mode-3.12.1.ebuild:
+  Stable for AMD64, wrt bug #396019
+
+  25 Dec 2011; Ulrich Mueller <ulm@gentoo.org> -ocaml-mode-3.12.0.ebuild:
+  Remove intermediate version.
+
+*ocaml-mode-3.12.1 (21 Nov 2011)
+
+  21 Nov 2011; Ulrich Mueller <ulm@gentoo.org> +ocaml-mode-3.12.1.ebuild:
+  Version bump.
+
+  05 Mar 2011; Ulrich Mueller <ulm@gentoo.org> -ocaml-mode-3.10.2.ebuild:
+  Remove old.
+
+  05 Mar 2011; Joseph Jezak <josejx@gentoo.org> ocaml-mode-3.11.2.ebuild:
+  Marked ppc stable for bug #272454.
+
+  29 Jan 2011; Mark Loeser <halcy0n@gentoo.org> ocaml-mode-3.11.2.ebuild:
+  Stable for ppc64; bug #272454
+
+  29 Jan 2011; Raúl Porcel <armin76@gentoo.org> ocaml-mode-3.11.2.ebuild:
+  alpha/arm/ia64/sparc stable wrt #272454
+
+  25 Jan 2011; Jeroen Roovers <jer@gentoo.org> ocaml-mode-3.11.2.ebuild:
+  Stable for HPPA (bug #272454).
+
+  20 Jan 2011; Markos Chandras <hwoarang@gentoo.org> ocaml-mode-3.11.2.ebuild:
+  Stable on amd64 wrt bug #272454
+
+  20 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  ocaml-mode-3.11.2.ebuild:
+  stable x86, bug 272454
+
+*ocaml-mode-3.12.0 (19 Jan 2011)
+*ocaml-mode-3.11.2 (19 Jan 2011)
+
+  19 Jan 2011; Ulrich Mueller <ulm@gentoo.org> -ocaml-mode-3.11.0.ebuild,
+  +ocaml-mode-3.11.2.ebuild, +ocaml-mode-3.12.0.ebuild:
+  Version bump. Remove intermediate version.
+
+*ocaml-mode-3.11.0 (04 May 2009)
+
+  04 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  +ocaml-mode-3.11.0.ebuild:
+  version bump, fixes bug 268566 by Martin von Gagern <Martin DOT vGagern AT
+  gmx DOT net>
+
+  12 Apr 2009; Raúl Porcel <armin76@gentoo.org> ocaml-mode-3.10.2.ebuild:
+  arm stable
+
+  07 Feb 2009; Raúl Porcel <armin76@gentoo.org> ocaml-mode-3.10.2.ebuild:
+  Add ~arm wrt #255598
+
+  27 Aug 2008; Ulrich Mueller <ulm@gentoo.org> ocaml-mode-3.10.2.ebuild:
+  Use eclass default instead of elisp-comp, bug 235442.
+
+  04 Jul 2008; Ulrich Mueller <ulm@gentoo.org> -ocaml-mode-3.09.3-r1.ebuild:
+  Remove old.
+
+  04 Jul 2008; Jeroen Roovers <jer@gentoo.org> ocaml-mode-3.10.2.ebuild:
+  Stable for HPPA (bug #228689).
+
+  22 Jun 2008; Raúl Porcel <armin76@gentoo.org> ocaml-mode-3.10.2.ebuild:
+  alpha/ia64/sparc stable wrt #228689
+
+  21 Jun 2008; Markus Rothe <corsair@gentoo.org> ocaml-mode-3.10.2.ebuild:
+  Stable on ppc64; bug #228689
+
+  21 Jun 2008; nixnut <nixnut@gentoo.org> ocaml-mode-3.10.2.ebuild:
+  Stable on ppc wrt bug 228689
+
+  21 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  ocaml-mode-3.10.2.ebuild:
+  stable x86/amd64, bug 228689
+
+  04 Jun 2008; Ulrich Mueller <ulm@gentoo.org> -ocaml-mode-3.10.0.ebuild:
+  Remove intermediate version.
+
+*ocaml-mode-3.10.2 (29 Feb 2008)
+
+  29 Feb 2008; Ulrich Mueller <ulm@gentoo.org> +ocaml-mode-3.10.2.ebuild:
+  Version bump.
+
+  27 Nov 2007; Raúl Porcel <armin76@gentoo.org>
+  ocaml-mode-3.09.3-r1.ebuild:
+  alpha/ia64/sparc stable wrt #195095
+
+  26 Nov 2007; Markus Rothe <corsair@gentoo.org>
+  ocaml-mode-3.09.3-r1.ebuild:
+  Stable on ppc64; bug #195095
+
+  26 Nov 2007; Jeroen Roovers <jer@gentoo.org> ocaml-mode-3.09.3-r1.ebuild:
+  Stable for HPPA (bug #195095).
+
+  14 Nov 2007; Ulrich Mueller <ulm@gentoo.org> -ocaml-mode-3.07.ebuild,
+  -ocaml-mode-3.08.1.ebuild, ocaml-mode-3.09.3-r1.ebuild:
+  Stable on amd64, bug #195095. Remove old.
+
+  29 Oct 2007; Diego Pettenò <flameeyes@gentoo.org>
+  ocaml-mode-3.09.3-r1.ebuild, ocaml-mode-3.10.0.ebuild:
+  Add ~x86-fbsd keyword.
+
+  29 Oct 2007; Ulrich Mueller <ulm@gentoo.org> files/50ocaml-mode-gentoo.el:
+  Autoload camldebug in site-init file, fixes bug #197405.
+
+  28 Oct 2007; Markus Rothe <corsair@gentoo.org>
+  ocaml-mode-3.09.3-r1.ebuild, ocaml-mode-3.10.0.ebuild:
+  Added ~ppc64; bug #43128
+
+  23 Oct 2007; Jeroen Roovers <jer@gentoo.org> ocaml-mode-3.10.0.ebuild:
+  Marked ~hppa (bug #43128).
+
+  23 Oct 2007; Jeroen Roovers <jer@gentoo.org> ocaml-mode-3.09.3-r1.ebuild:
+  Marked ~hppa (bug #43128).
+
+  23 Oct 2007; Ulrich Mueller <ulm@gentoo.org> files/50ocaml-mode-gentoo.el:
+  Make syntax highlighting work again.
+
+  23 Oct 2007; Raúl Porcel <armin76@gentoo.org>
+  ocaml-mode-3.09.3-r1.ebuild, ocaml-mode-3.10.0.ebuild:
+  Add ~alpha/~ia64 wrt #43128
+
+  22 Oct 2007; Ferris McCormick <fmccor@gentoo.org>
+  ocaml-mode-3.09.3-r1.ebuild, ocaml-mode-3.10.0.ebuild:
+  Add ~sparc keyword --- Bug #43128
+
+  11 Oct 2007; Lars Weiler <pylon@gentoo.org> ocaml-mode-3.09.3-r1.ebuild:
+  stable ppc, bug #195095
+
+  08 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  ocaml-mode-3.09.3-r1.ebuild:
+  stable x86, bug 195095
+
+*ocaml-mode-3.10.0 (08 Oct 2007)
+
+  08 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  +ocaml-mode-3.10.0.ebuild:
+  version bump
+
+  03 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  ocaml-mode-3.09.3-r1.ebuild:
+  removed src_install, as it is exactly like that in elisp.eclass (make use of
+  DOCS variable)
+
+*ocaml-mode-3.09.3-r1 (12 May 2007)
+
+  12 May 2007; Ulrich Mueller <ulm@gentoo.org> files/50ocaml-mode-gentoo.el,
+  ocaml-mode-3.08.1.ebuild, -ocaml-mode-3.09.3.ebuild,
+  +ocaml-mode-3.09.3-r1.ebuild:
+  Correct LICENSE. Use standard method of elisp-common.eclass for compiling.
+  Install README* files. Remove redundant pkg_postinst and pkg_postrm
+  functions. Don't require caml-font in site file. Revision bump.
+
+*ocaml-mode-3.09.3 (30 Mar 2007)
+
+  30 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  +ocaml-mode-3.09.3.ebuild:
+  version bump
+
+  08 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/50ocaml-mode-gentoo.el:
+  add load path correctly, fixes bug 169588, reported by Ulrich Mueller
+  <ulm@kph.uni-mainz.de>
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> ocaml-mode-3.07.ebuild:
+  stable on amd64
+
+*ocaml-mode-3.08.1 (10 Sep 2004)
+
+  10 Sep 2004; Matthieu Sozeau <mattam@gentoo.org> ocaml-mode-3.07.ebuild,
+  +ocaml-mode-3.08.1.ebuild:
+  Add latest version, move former one to stable.
+
+  03 Sep 2004; Tom Martin <slarti@gentoo.org> ocaml-mode-3.07.ebuild:
+  Marked ~amd64, resolves #58421. Thanks to Gabriel Ebner <ge@gabrielebner.at>
+  for reporting.
+
+
+*ocaml-mode-3.07 (11 Apr 2004)
+
+  11 Apr 2004; Matthieu Sozeau <mattam@gentoo.org> ocaml-mode-3.07.ebuild,
+  files/50ocaml-mode-gentoo.el:
+  Initial import for the ocaml mode accompanying the standard distribution of
+  ocaml. Closes bug #43128. Thanks to liquidx@gentoo.org for initial ebuilds.

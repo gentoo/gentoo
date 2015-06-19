@@ -1,0 +1,31 @@
+# ChangeLog for app-admin/lnav
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/lnav/ChangeLog,v 1.6 2015/06/07 07:18:21 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> lnav-0.6.1.ebuild,
+  lnav-0.6.2.ebuild, lnav-0.7.0.ebuild, lnav-0.7.1.ebuild:
+  Add SLOT operators
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*lnav-0.7.1 (04 Dec 2014)
+
+  04 Dec 2014; Tim Harder <radhermit@gentoo.org> +lnav-0.7.1.ebuild:
+  Version bump.
+
+*lnav-0.7.0 (30 Mar 2014)
+
+  30 Mar 2014; Tim Harder <radhermit@gentoo.org> +lnav-0.7.0.ebuild:
+  Version bump.
+
+*lnav-0.6.2 (12 Nov 2013)
+
+  12 Nov 2013; Tim Harder <radhermit@gentoo.org> +lnav-0.6.2.ebuild:
+  Version bump.
+
+*lnav-0.6.1 (11 Sep 2013)
+
+  11 Sep 2013; Tim Harder <radhermit@gentoo.org> +lnav-0.6.1.ebuild,
+  +metadata.xml:
+  Initial import.

@@ -1,0 +1,42 @@
+# ChangeLog for app-xemacs/xwem
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/xwem/ChangeLog,v 1.11 2014/08/10 19:50:59 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> xwem-1.22.ebuild,
+  xwem-1.23.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  22 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> xwem-1.23.ebuild:
+  ppc64 stable wrt #369897
+
+  03 Jul 2011; Markos Chandras <hwoarang@gentoo.org> xwem-1.23.ebuild:
+  Stable on amd64 wrt bug #369897
+
+  28 Jun 2011; Brent Baude <ranger@gentoo.org> xwem-1.23.ebuild:
+  Marking xwem-1.23 ppc stable for bug 369897
+
+  25 Jun 2011; Raúl Porcel <armin76@gentoo.org> xwem-1.23.ebuild:
+  alpha/sparc stable wrt #369897
+
+  12 Jun 2011; Thomas Kahle <tomka@gentoo.org> xwem-1.23.ebuild:
+  x86 stable per bug 369897
+
+*xwem-1.23 (13 Aug 2010)
+
+  13 Aug 2010; Hans de Graaff <graaff@gentoo.org> +xwem-1.23.ebuild:
+  Version bump: 21.4 compatibility bug fixes.
+
+  28 Apr 2008; Raúl Porcel <armin76@gentoo.org> xwem-1.22.ebuild:
+  alpha stable wrt #219332
+
+  19 Mar 2008; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  A herd should not be listed as maintainer
+
+  03 Jun 2007; Hans de Graaff <graaff@gentoo.org> xwem-1.22.ebuild:
+  Stable on amd64, ppc, ppc64, sparc, x86 as per #175560
+
+*xwem-1.22 (23 Nov 2006)
+
+  23 Nov 2006; Hans de Graaff <graaff@gentoo.org> +metadata.xml,
+  +xwem-1.22.ebuild:
+  Initial version.

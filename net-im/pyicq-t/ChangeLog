@@ -1,0 +1,159 @@
+# ChangeLog for net-im/pyicq-t
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/pyicq-t/ChangeLog,v 1.34 2015/04/08 18:03:12 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pyicq-t-0.8.1.5-r4.ebuild:
+  Drop old Python implementations
+
+  23 Nov 2014; Manuel Rüger <mrueg@gentoo.org> -files/pyicq-t-0.8-initd,
+  -pyicq-t-0.8.1.5-r1.ebuild, -pyicq-t-0.8.1.5-r2.ebuild,
+  -pyicq-t-0.8.1.5-r3.ebuild, pyicq-t-0.8.1.5-r4.ebuild:
+  Cleanup old. Add missing die. Fixes bug #471542.
+
+  23 Nov 2014; Manuel Rüger <mrueg@gentoo.org> pyicq-t-0.8.1.5-r4.ebuild:
+  Mark stable on x86. Based on build testing by Myckel Habets.
+
+  23 Nov 2014; Chema Alonso <nimiux@gentoo.org> pyicq-t-0.8.1.5-r4.ebuild:
+  Stable for amd64 wrt bug #471542
+
+  26 Oct 2014; Manuel Rüger <mrueg@gentoo.org> -pyicq-t-0.8.1.5.ebuild:
+  Cleanup old.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> pyicq-t-0.8.1.5-r1.ebuild,
+  pyicq-t-0.8.1.5-r2.ebuild, pyicq-t-0.8.1.5-r3.ebuild,
+  pyicq-t-0.8.1.5-r4.ebuild, pyicq-t-0.8.1.5.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+*pyicq-t-0.8.1.5-r4 (30 Mar 2014)
+
+  30 Mar 2014; Pacho Ramos <pacho@gentoo.org> +files/pyicq-t.service,
+  +pyicq-t-0.8.1.5-r4.ebuild:
+  Add unit file (#504150 by Michael Hampicke)
+
+*pyicq-t-0.8.1.5-r3 (14 Sep 2013)
+
+  14 Sep 2013; <hanno@gentoo.org> +pyicq-t-0.8.1.5-r3.ebuild:
+  Init script and patch applying was broken in -r2, fix.
+
+*pyicq-t-0.8.1.5-r2 (13 Sep 2013)
+
+  13 Sep 2013; <hanno@gentoo.org> +pyicq-t-0.8.1.5-r2.ebuild,
+  +files/pyicq-t-0.8.1.5-pillow-imaging.patch:
+  Fix deprecated PIL imports, switch to new eclass.
+
+  03 Aug 2013; Michał Górny <mgorny@gentoo.org> pyicq-t-0.8.1.5.ebuild,
+  pyicq-t-0.8.1.5-r1.ebuild:
+  Move dev-python/twisted to dev-python/twisted-core.
+
+  27 Apr 2013; Agostino Sarubbo <ago@gentoo.org> pyicq-t-0.8.1.5-r1.ebuild:
+  Stable for x86, wrt bug #467506
+
+  27 Apr 2013; Agostino Sarubbo <ago@gentoo.org> pyicq-t-0.8.1.5-r1.ebuild:
+  Stable for amd64, wrt bug #467506
+
+*pyicq-t-0.8.1.5-r1 (18 Mar 2013)
+
+  18 Mar 2013; Hanno Boeck <hanno@gentoo.org> +pyicq-t-0.8.1.5-r1.ebuild,
+  +files/pyicq-t-0.8-initd-r1:
+  Add checkpath for /var/run, fix python code (#315115), EAPI 5-port, replace
+  dosed with sed.
+
+  21 Aug 2011; Hanno Boeck <hanno@gentoo.org> files/pyicq-t-0.8-initd:
+  Avoid warnings with baselayout 2 / openrc / start-stop-daemon, --chuid is
+  deprecated.
+
+  02 Jul 2010; Hanno Boeck <hanno@gentoo.org> pyicq-t-0.8.1.5.ebuild,
+  +files/pyicq-t-0.8.1.5-python26-warnings.diff:
+  Fix deprecation warnings with python 2.6.
+
+  23 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pyicq-t-0.8.1.5.ebuild:
+  Delete calls to deprecated python_version().
+
+  10 Jan 2010; Maurice van der Pot <griffon26@gentoo.org>
+  -files/pyicq-t-0.8-twisted-2.5.patch, -pyicq-t-0.8.1.ebuild,
+  -pyicq-t-0.8.1.1.ebuild, -pyicq-t-0.8a.ebuild, -pyicq-t-0.8b.ebuild:
+  Removed old ebuilds.
+
+  03 Oct 2009; Markus Meier <maekke@gentoo.org> pyicq-t-0.8.1.5.ebuild:
+  amd64/x86 stable, bug #287378
+
+*pyicq-t-0.8.1.5 (26 Aug 2009)
+
+  26 Aug 2009; Maurice van der Pot <griffon26@gentoo.org>
+  +pyicq-t-0.8.1.5.ebuild:
+  Version bump because of memory leak in 0.8.1.4.
+
+*pyicq-t-0.8.1.4 (18 Aug 2009)
+
+  18 Aug 2009; Maurice van der Pot <griffon26@gentoo.org>
+  +pyicq-t-0.8.1.4.ebuild:
+  Version bump.
+
+  13 May 2009; Markus Meier <maekke@gentoo.org> pyicq-t-0.8.1.3.ebuild:
+  amd64/x86 stable, bug #268573
+
+*pyicq-t-0.8.1.3 (23 Mar 2009)
+
+  23 Mar 2009; Maurice van der Pot <griffon26@gentoo.org>
+  +pyicq-t-0.8.1.3.ebuild:
+  Version bump.
+
+  09 Mar 2009; Raúl Porcel <armin76@gentoo.org> pyicq-t-0.8.1.1.ebuild:
+  x86 stable wrt #259885
+
+  07 Mar 2009; Jeremy Olexa <darkside@gentoo.org> pyicq-t-0.8.1.1.ebuild:
+  amd64 stable, bug 259885
+
+*pyicq-t-0.8.1.1 (19 Jan 2009)
+
+  19 Jan 2009; Maurice van der Pot <griffon26@gentoo.org>
+  +pyicq-t-0.8.1.1.ebuild:
+  Version bump as requested by lindevel@gmx.net in bug #255483. 
+  Also fixes bug #251916 reported by jamatik <jamatik@wheep.de>.
+
+*pyicq-t-0.8.1 (19 Dec 2008)
+
+  19 Dec 2008; Maurice van der Pot <griffon26@gentoo.org>
+  +pyicq-t-0.8.1.ebuild:
+  Version bump (bug #251302 reported by Anton Romanov <theli@ukr.net>).
+
+  17 Aug 2008; Markus Meier <maekke@gentoo.org> pyicq-t-0.8b.ebuild:
+  amd64/x86 stable, bug #206043
+
+  05 Aug 2008; Thomas Anderson <gentoofan23@gentoo.org> metadata.xml:
+  Add USE flag description to metadata as per GLEP 56.
+
+  29 May 2008; Ali Polatel <hawking@gentoo.org> pyicq-t-0.8a.ebuild,
+  pyicq-t-0.8b.ebuild:
+  python_mod_{cleanup,optimize} are ROOT aware.
+
+*pyicq-t-0.8b (21 Jan 2008)
+
+  21 Jan 2008; Maurice van der Pot <griffon26@gentoo.org>
+  -pyicq-t-0.8.ebuild, +pyicq-t-0.8b.ebuild:
+  Version bumped to 0.8b and updated homepage & SRC_URI to new home of pyicq-t
+  on google code. Thanks to Michael Perigard <michael@rustyhalo.org> in bug
+  #206823 for the heads-up.
+
+  16 Jan 2008; Christian Faulhammer <opfer@gentoo.org> pyicq-t-0.8a.ebuild:
+  stable x86, bug 206043
+
+  03 Dec 2007; Steve Dibb <beandog@gentoo.org> pyicq-t-0.8.ebuild,
+  pyicq-t-0.8a.ebuild:
+  add ~amd64, bug 200697
+
+*pyicq-t-0.8a (04 Jun 2007)
+
+  04 Jun 2007; Maurice van der Pot <griffon26@gentoo.org>
+  files/pyicq-t-0.8-initd, +pyicq-t-0.8a.ebuild:
+  Fixed init script to not use a hard-coded path to pyicq-t.py.
+  Added pyicq-t version 0.8a.
+
+*pyicq-t-0.8 (28 Apr 2007)
+
+  28 Apr 2007; Maurice van der Pot <griffon26@gentoo.org>
+  +files/pyicq-t-0.8-initd, +files/pyicq-t-0.8-twisted-2.5.patch,
+  +metadata.xml, +pyicq-t-0.8.ebuild:
+  Added pyicq-t 0.8 ebuild from sunrise overlay (closes bug #88283). 
+  Thanks to all involved for creating and maintaining the ebuild.

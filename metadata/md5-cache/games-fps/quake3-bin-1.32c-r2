@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=3rd installment of the classic id 3D first-person shooter
+EAPI=5
+HOMEPAGE=http://www.idsoftware.com/
+IUSE=cdinstall dedicated teamarena
+KEYWORDS=-* amd64 x86
+LICENSE=Q3AEULA GPL-2
+RDEPEND=sys-libs/glibc amd64? ( sys-libs/glibc[multilib] ) cdinstall? ( games-fps/quake3-data[cdinstall] teamarena? ( games-fps/quake3-teamarena ) ) dedicated? ( app-misc/screen ) !dedicated? ( >=virtual/opengl-7.0-r1[abi_x86_32(-)] >=x11-libs/libXext-1.3.2[abi_x86_32(-)] >=x11-libs/libX11-1.6.2[abi_x86_32(-)] ) games-misc/games-envd
+RESTRICT=strip
+SLOT=0
+SRC_URI=mirror://idsoftware/quake3/linux/linuxq3apoint-1.32b-3.x86.run mirror://idsoftware/quake3/quake3-1.32c.zip
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=a1afc00b1e3fe8487e00099beca0ddcf

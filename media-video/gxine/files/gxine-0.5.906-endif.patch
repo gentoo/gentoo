@@ -1,0 +1,14 @@
+lirc.c:227:3: error: ‘gxine_lirc_thread’ undeclared (first use in this function)
+
+--- src/lirc.c
++++ src/lirc.c
+@@ -223,8 +223,8 @@
+   if (gxine_lirc_thread_created)
+     pthread_join (gxine_lirc_thread, NULL);
+   gxine_lirc_start ();
+-#endif
+   JS_SET_RVAL (cx, vp, gxine_lirc_thread ? JSVAL_TRUE : JSVAL_FALSE);
++#endif
+   return JS_TRUE;
+ }
+

@@ -1,0 +1,65 @@
+# ChangeLog for games-board/xgammon
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/xgammon/ChangeLog,v 1.17 2015/03/27 07:20:13 mr_bones_ Exp $
+
+  27 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> xgammon-0.98.ebuild:
+  tidy
+
+  08 Jan 2015; Tupone Alfredo <tupone@gentoo.org> xgammon-0.98.ebuild:
+  EAPI 5
+
+  10 Sep 2012; Tupone Alfredo <tupone@gentoo.org> xgammon-0.98.ebuild:
+  Respect CFLAGS. Bug #430776 by Diego
+  Inform users about the fonts needed.
+
+  06 Sep 2010; Alfredo Tupone <tupone@gentoo.org> xgammon-0.98.ebuild:
+  Respect LDFLAGS. Bug #336112 by flameeyes@gentoo.org
+
+  24 Sep 2009; Michael Sterrett <mr_bones_@gentoo.org> xgammon-0.98.ebuild,
+  files/xgammon-0.98-config.patch:
+  EAPI=2; get rid of X11R6 in the config for the database location (bug
+  #286206)
+
+  30 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org> xgammon-0.98.ebuild:
+  look in . first to find db
+
+  08 Sep 2007; Christoph Mende <angelos@gentoo.org> xgammon-0.98.ebuild:
+  Stable on amd64 wrt bug #190570
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> xgammon-0.98.ebuild:
+  Removing old virtual/x11 dependency.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-xgammon-0.98,
+  Manifest:
+  Fixing SHA256 digest, pass four
+
+  29 Jan 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  xgammon-0.98.ebuild:
+  Add modular X dependencies.
+
+  21 Dec 2004; Dylan Carlson <absinthe@gentoo.org> xgammon-0.98.ebuild:
+  keywords ~amd64.
+
+  07 May 2004; Michael Sterrett <mr_bones_@gentoo.org> xgammon-0.98.ebuild,
+  files/gcc33.patch:
+  fix compile for >=gcc3.3 (bug #50364)
+
+  04 Nov 2003; Jason Wever <weeve@gentoo.org> xgammon-0.98.ebuild:
+  Added ~sparc keyword.
+
+  12 Jun 2003; <msterret@gentoo.org> xgammon-0.98.ebuild:
+  fix Header
+
+*xgammon-0.98 (03 Jul 2002)
+
+  05 Mar 2003; Bartosch Pixa <darkspecter@gentoo.org> xgammon-0.98.ebuild:
+  set ~ppc in keywords
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> xgammon-0.98.ebuild :
+  Added KEYWORDS.
+
+  03 Jul 2002; T.Kvernes <terjekv@math.uio.no> xgammon-0.98:
+  
+  Initial ebuild, kludged about with the process due to broken
+  behaviour from xgammon (amoungst other thing it expects "."
+  in $PATH for root).

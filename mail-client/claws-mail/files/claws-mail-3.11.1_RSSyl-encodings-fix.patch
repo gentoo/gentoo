@@ -1,0 +1,23 @@
+From: Andrej Kacian <ticho@claws-mail.org>
+Date: Thu, 1 Jan 2015 22:36:36 +0000 (+0100)
+Subject: RSSyl: Fix handling of feeds with encodings unknown to expat. Turns out the only... 
+X-Git-Url: http://git.claws-mail.org/?p=claws.git;a=commitdiff_plain;h=d05156031070efe6104695acad93aa879bc0f084
+
+RSSyl: Fix handling of feeds with encodings unknown to expat. Turns out the only thing missing was that HAVE_ICONV macro (from config.h) was not defined in parser.c, so our "unknown encoding" expat handler function did nothing. Fixes bug #3339.
+---
+
+diff --git a/src/plugins/rssyl/libfeed/parser.c b/src/plugins/rssyl/libfeed/parser.c
+index bb0bb0d..14f4a36 100644
+--- a/src/plugins/rssyl/libfeed/parser.c
++++ b/src/plugins/rssyl/libfeed/parser.c
+@@ -17,6 +17,10 @@
+  * Boston, MA 02111-1307, USA.
+  */
+ 
++#ifdef HAVE_CONFIG_H
++# include <config.h>
++#endif
++
+ #include <glib.h>
+ #include <curl/curl.h>
+ #include <expat.h>

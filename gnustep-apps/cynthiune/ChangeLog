@@ -1,0 +1,142 @@
+# ChangeLog for gnustep-apps/cynthiune
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/cynthiune/ChangeLog,v 1.32 2013/04/04 18:34:43 voyageur Exp $
+
+*cynthiune-1.0.0 (04 Apr 2013)
+
+  04 Apr 2013; Bernard Cafarelli <voyageur@gentoo.org> +cynthiune-1.0.0.ebuild,
+  +metadata.xml:
+  Restore Cynthiune now that it has been taken over by GAP project, thanks adr
+  for initial ebuild in bug #464344
+
+  14 Jul 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  cynthiune-0.9.5-r5.ebuild, +files/cynthiune-0.9.5-NSWindow.patch:
+  Fix compilation with new gnustep-base, bug #328191
+
+  10 Feb 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  -cynthiune-0.9.5-r4.ebuild, -files/cynthiune-0.9.5-libmpcdecsv7.patch:
+  Drop old version
+
+  08 Feb 2010; nixnut <nixnut@gentoo.org> cynthiune-0.9.5-r5.ebuild:
+  ppc stable #301304
+
+  03 Feb 2010; Markus Meier <maekke@gentoo.org> cynthiune-0.9.5-r5.ebuild:
+  amd64/x86 stable, bug #301304
+
+*cynthiune-0.9.5-r5 (23 Dec 2009)
+
+  23 Dec 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  +cynthiune-0.9.5-r5.ebuild, +files/cynthiune-0.9.5-libmpcdec.patch:
+  Convert musepack support to SV8 api, thanks to ssuominen in bug #297910
+
+  10 Nov 2009; Mounir Lamouri <volkmar@gentoo.org>
+  cynthiune-0.9.5-r4.ebuild:
+  Stable for ppc, bug 281600
+
+  17 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  cynthiune-0.9.5-r1.ebuild:
+  Remove libmpcdec (SV7) support.
+
+  25 Sep 2009; Markus Meier <maekke@gentoo.org> cynthiune-0.9.5-r4.ebuild:
+  amd64 stable, bug #281600
+
+  16 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  cynthiune-0.9.5-r4.ebuild:
+  stable x86, bug 281600
+
+*cynthiune-0.9.5-r4 (26 Jul 2009)
+
+  26 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +cynthiune-0.9.5-r4.ebuild, +files/cynthiune-0.9.5-libmpcdecsv7.patch:
+  Use transition package media-libs/libmpcdecsv7 instead of
+  media-libs/libmpcdec for Musepack support.
+
+*cynthiune-0.9.5-r3 (19 Jun 2009)
+
+  19 Jun 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  -cynthiune-0.9.5-r2.ebuild, +cynthiune-0.9.5-r3.ebuild:
+  Drop arts and esd USE flags, bug #274650
+
+*cynthiune-0.9.5-r2 (09 Dec 2008)
+
+  09 Dec 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  +files/cynthiune-0.9.5-as-needed.patch, +cynthiune-0.9.5-r2.ebuild:
+  Fix compilation with --as-needed, bug #250170
+
+  21 Jul 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  cynthiune-0.9.5-r1.ebuild:
+  Fix compilation with USE=-flac, bug #232442. Also fix with USE=-vorbis
+
+  17 May 2008; Fabian Groffen <grobian@gentoo.org>
+  cynthiune-0.9.5-r1.ebuild:
+  put dev-util/pkgconfig only in DEPEND, bug #217278
+
+  07 Apr 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  cynthiune-0.9.5-r1.ebuild:
+  Only compile id3tag bundle with USE=mad, bug #216564
+
+  23 Mar 2008; nixnut <nixnut@gentoo.org> cynthiune-0.9.5-r1.ebuild:
+  Stable on ppc wrt bug 207381
+
+  22 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  cynthiune-0.9.5-r1.ebuild:
+  amd64 stable wrt bug #207381, second round.
+
+  21 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  cynthiune-0.9.5-r1.ebuild:
+  stable x86, bug 207381
+
+  17 Jan 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  cynthiune-0.9.5-r1.ebuild:
+  Add pkgconfig DEPEND for libmad, bug #206476
+
+  04 Jan 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  +files/cynthiune-0.9.5-NSMutableDictionary.patch,
+  cynthiune-0.9.5-r1.ebuild:
+  Add compilation fix for stricter gnustep
+
+  01 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  cynthiune-0.9.5-r1.ebuild:
+  stick musicbrainz deps to -2*, bug #203784
+
+*cynthiune-0.9.5-r1 (10 Sep 2007)
+
+  10 Sep 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  +files/cynthiune-0.9.5-NSCellExtensions.patch,
+  +files/cynthiune-0.9.5-gnustep-make-2.patch,
+  +files/cynthiune-0.9.5-set-macro.patch, -cynthiune-0.9.4.ebuild,
+  -cynthiune-0.9.5.ebuild, +cynthiune-0.9.5-r1.ebuild:
+  Version bump from the GNUstep overlay
+
+*cynthiune-0.9.5 (11 Dec 2006)
+
+  11 Dec 2006; Fabian Groffen <grobian@gentoo.org>
+  +files/cynthiune-0.9.5-flac-1.1.3.patch, cynthiune-0.9.4.ebuild,
+  +cynthiune-0.9.5.ebuild:
+  Version bump, with flac 1.1.3 support patch. Thanks to Alex Ballier to tell
+  me how to "configure" the package.
+
+  20 Oct 2006; Fabian Groffen <grobian@gentoo.org> cynthiune-0.9.4.ebuild:
+  Fixing flac dependency on 1.1.2 for bug #152007
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+  26 Mar 2006; Fabian Groffen <grobian@gentoo.org> cynthiune-0.9.4.ebuild:
+  Incorporate changes by Jouni Rinne (bug #120054)
+
+  08 Jan 2006; Michael Hanselmann <hansmi@gentoo.org> metadata.xml:
+  Remove retiring dev from metadata.
+
+  26 Dec 2005; Luca Barbato <lu_zero@gentoo.org> cynthiune-0.9.4.ebuild:
+  oggvorbis Cleanup
+
+  05 Nov 2005; Mark Loeser <halcy0n@gentoo.org> cynthiune-0.9.4.ebuild:
+  Added ~x86 to KEYWORDS; bug #111374
+
+*cynthiune-0.9.4 (18 Mar 2005)
+
+  18 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  +cynthiune-0.9.4.ebuild:
+  Orignal package import -- a gnustep built media player, yay
+

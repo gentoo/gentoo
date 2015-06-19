@@ -1,0 +1,19 @@
+# ChangeLog for net-analyzer/nagtrap
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagtrap/ChangeLog,v 1.4 2015/06/17 20:00:26 grknight Exp $
+
+  17 Jun 2015; Brian Evans <grknight@gentoo.org> nagtrap-0.1.3.ebuild:
+  Remove deprecated need_php_httpd function ; No longer needs depend.php eclass
+
+  09 Feb 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #85926
+
+  23 Feb 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  nagtrap-0.1.3.ebuild:
+  Fix sample-config permissions
+
+*nagtrap-0.1.3 (23 Feb 2009)
+
+  23 Feb 2009; Tobias Scherbaum <dertobi123@gentoo.org> +metadata.xml,
+  +nagtrap-0.1.3.ebuild:
+  Initial import

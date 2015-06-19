@@ -1,0 +1,79 @@
+# ChangeLog for app-xemacs/games
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/games/ChangeLog,v 1.25 2014/08/10 19:03:04 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> games-1.20.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  03 Jun 2011; Hans de Graaff <graaff@gentoo.org> -games-1.17.ebuild,
+  -games-1.18.ebuild:
+  Remove old versions.
+
+  25 Oct 2010; Mark Loeser <halcy0n@gentoo.org> games-1.20.ebuild:
+  Stable for ppc64; bug #313687
+
+  15 Oct 2010; Brent Baude <ranger@gentoo.org> games-1.20.ebuild:
+  Marking games-1.20 ppc for bug 313687
+
+  10 Oct 2010; Raúl Porcel <armin76@gentoo.org> games-1.20.ebuild:
+  sparc stable wrt #313687
+
+  26 Sep 2010; Tobias Klausmann <klausman@gentoo.org> games-1.20.ebuild:
+  Stable on alpha, bug #313687
+
+  26 Sep 2010; Markus Meier <maekke@gentoo.org> games-1.20.ebuild:
+  x86 stable, bug #313687
+
+  23 Sep 2010; Markos Chandras <hwoarang@gentoo.org> games-1.20.ebuild:
+  Stable on amd64 wrt bug #313687
+
+*games-1.20 (13 Aug 2010)
+
+  13 Aug 2010; Hans de Graaff <graaff@gentoo.org> +games-1.20.ebuild:
+  Version bump: minor bug fixes.
+
+*games-1.18 (22 Feb 2009)
+
+  22 Feb 2009; Hans de Graaff <graaff@gentoo.org> +games-1.18.ebuild:
+  Version bump with compatibility fixes.
+
+  19 Mar 2008; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  A herd should not be listed as maintainer
+
+  25 Oct 2007; Hans de Graaff <graaff@gentoo.org> -games-1.13.ebuild:
+  Remove old version
+
+  03 Jun 2007; Hans de Graaff <graaff@gentoo.org> games-1.17.ebuild:
+  Stable on amd64, ppc, ppc64, sparc, x86 as per #175560
+
+  29 May 2007; Raúl Porcel <armin76@gentoo.org> games-1.17.ebuild:
+  alpha stable wrt #175560
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*games-1.17 (12 Nov 2006)
+
+  12 Nov 2006; Hans de Graaff <graaff@gentoo.org> +metadata.xml,
+  +games-1.17.ebuild:
+  Version bump; add metadata.
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org> games-1.13.ebuild:
+  Stable on ppc.
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> games-1.13.ebuild:
+  Stable on ppc64
+
+  01 Nov 2004; Markus Rothe <corsair@gentoo.org> games-1.13.ebuild:
+  Marked ~ppc64; bug #67087
+
+  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> games-1.13.ebuild:
+  Stable on alpha
+
+*games-1.13 (16 Dec 2002)
+
+  22 Feb 2003;  <rendhalver@gentoo.org> games-1.13.ebuild :
+  Add ~alpha to KEYWORDS
+
+  16 Dec 2002; Rendhalver [Peter Brown] <rendhalver@gentoo.org> :
+  Initial import.

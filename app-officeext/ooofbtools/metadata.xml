@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>openoffice</herd>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>ikonta@yandex.ru</email>
+		<name>Sergey Starikoff</name>
+		<description>Proxied maintainer. Assign bugs on him</description>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">fbtools</remote-id>
+	</upstream>
+</pkgmetadata>

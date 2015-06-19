@@ -1,0 +1,85 @@
+# ChangeLog for dev-util/duma
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/duma/ChangeLog,v 1.17 2014/08/10 21:26:48 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> duma-2.5.13.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, #24135.
+
+  31 May 2012; Kacper Kowalik <xarthisius@gentoo.org> -duma-2.4.27.ebuild,
+  -duma-2.5.14-r1.ebuild, -duma-2.5.8.ebuild, -files/duma-2.4.27-make.patch,
+  -files/duma-2.4.27-types.patch, -files/duma-2.5.8-soname.patch:
+  Drop old
+
+*duma-2.5.15-r1 (04 Apr 2010)
+
+  04 Apr 2010; Steve Arnold <nerdboy@gentoo.org> -duma-2.5.15.ebuild,
+  +duma-2.5.15-r1.ebuild:
+  Updated with fix for duma shell script (closes bug #310701).
+
+  26 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org> duma-2.5.15.ebuild,
+  -files/duma-2.5.15-GNUmakefile.patch:
+  Move huge patch to mirrors.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> duma-2.4.27.ebuild,
+  duma-2.5.8.ebuild, duma-2.5.13.ebuild, duma-2.5.14-r1.ebuild:
+  Remove virtual/libc
+
+  30 Aug 2009; Steve Arnold <nerdboy@gentoo.org> duma-2.5.13.ebuild:
+  Back-ported several build and QA fixes from 2.5.15 (closes bug 279118).
+
+*duma-2.5.15 (01 Aug 2009)
+
+  01 Aug 2009; Steve Arnold <nerdboy@gentoo.org> +duma-2.5.15.ebuild,
+  +files/duma-2.5.15-GNUmakefile.patch:
+  Updated to latest version using ebuild and patch contributed by 
+  ssuominen with one or two minor enhancements.  Closes bug #275011.
+
+*duma-2.5.14-r1 (01 Apr 2009)
+
+  01 Apr 2009; Steve Arnold <nerdboy@gentoo.org> -duma-2.5.14.ebuild,
+  +duma-2.5.14-r1.ebuild:
+  Updated latest ~arch to build with current toolchain (bug #262514).
+  Based on what this package does, as well as the failures reported in
+  the above bug, it doesn't seem appropriate to pass every random set
+  of user-supplied CFLAGS.  Feel free to comment with justification
+  for specific flags and/or pointers to relevant info.
+
+*duma-2.5.14 (03 Jan 2009)
+
+  03 Jan 2009; Patrick Lauer <patrick@gentoo.org> +duma-2.5.14.ebuild:
+  Bump to 2.5.14
+
+  22 Nov 2008; Markus Meier <maekke@gentoo.org> duma-2.5.13.ebuild:
+  amd64 stable, bug #243332
+
+  15 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org> duma-2.5.13.ebuild:
+  ppc stable, bug #243332
+
+  14 Nov 2008; Raúl Porcel <armin76@gentoo.org> duma-2.5.13.ebuild:
+  x86 stable wrt #243332
+
+*duma-2.5.13 (05 Jun 2008)
+
+  05 Jun 2008; Steve Arnold <nerdboy@gentoo.org> +duma-2.5.13.ebuild,
+  duma-2.5.8.ebuild, duma-2.4.27.ebuild:
+  Added latest version; removed patch, and simplified install function.
+  Closes bug #219011.  Also fixed minor QA issues in all three versions.
+
+*duma-2.5.8 (10 Oct 2007)
+
+  10 Oct 2007; Steve Arnold <nerdboy@gentoo.org>
+  +files/duma-2.5.8-soname.patch, duma-2.4.27.ebuild, +duma-2.5.8.ebuild:
+  Version bump and stable bump (special case, since there was only one
+  unstable version to begin with).  Closes bug 195203.
+
+*duma-2.4.27 (03 Apr 2007)
+
+  03 Apr 2007; Steve Arnold <nerdboy@gentoo.org>
+  +files/duma-2.4.27-make.patch, +files/duma-2.4.27-types.patch,
+  +metadata.xml, +duma-2.4.27.ebuild:
+  Updated fork of electric fence (fixes bug 160695) as the latter is no longer
+  maintained.  I jelled again and forgot the most important part; original
+  ebuild courtesy of Josef Reidinger <queen.killer _at_ seznam.cz>.

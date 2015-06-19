@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare setup
+DEPEND=x11-libs/libXmu virtual/glu opengl? ( media-libs/freeglut virtual/opengl ) x11-misc/gccmakedep app-editors/vim virtual/fortran
+DESCRIPTION=Display molecular density from GAMESS-UK, GAMESS-US, GAUSSIAN and Mopac/Ampac
+EAPI=4
+HOMEPAGE=http://www.cmbi.kun.nl/~schaft/molden/molden.html
+IUSE=opengl
+KEYWORDS=amd64 x86
+LICENSE=MOLDEN
+RDEPEND=x11-libs/libXmu virtual/glu opengl? ( media-libs/freeglut virtual/opengl ) virtual/fortran
+SLOT=0
+SRC_URI=ftp://ftp.cmbi.kun.nl/pub/molgraph/molden/molden4.8.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=28bd70850ec8b1c96d4a67a91e3dc8b1

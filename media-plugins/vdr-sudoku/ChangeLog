@@ -1,0 +1,121 @@
+# ChangeLog for media-plugins/vdr-sudoku
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-sudoku/ChangeLog,v 1.24 2014/08/10 21:06:54 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> vdr-sudoku-0.3.5.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  01 May 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-sudoku-0.3.5.ebuild:
+  eapi=4; vdr-plugin-2.eclass
+
+  07 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-sudoku-0.3.4.ebuild, vdr-sudoku-0.3.5.ebuild:
+  cleanup, minor fixes
+
+  21 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> vdr-sudoku-0.3.5.ebuild:
+  x86 stable wrt bug #393925
+
+  17 Dec 2011; Agostino Sarubbo <ago@gentoo.org> vdr-sudoku-0.3.5.ebuild:
+  Stable for AMD64, wrt bug #393925
+
+*vdr-sudoku-0.3.5 (07 Apr 2010)
+
+  07 Apr 2010; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-sudoku-0.1.3.ebuild, -vdr-sudoku-0.3.2.ebuild,
+  +vdr-sudoku-0.3.5.ebuild:
+  cleanup, version bump; new project HP, changes for >vdr-1.7.13
+
+  12 Mar 2009; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-sudoku-0.3.4.ebuild:
+  Marked stable on x86.
+
+  30 Nov 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-sudoku-0.1.2.ebuild, -vdr-sudoku-0.2.0.ebuild,
+  -vdr-sudoku-0.2.1.ebuild, -vdr-sudoku-0.3.0.ebuild,
+  -vdr-sudoku-0.3.1.ebuild, vdr-sudoku-0.3.2.ebuild,
+  -vdr-sudoku-0.3.3.ebuild:
+  cleanup old versions; vdr-sudoku-0.3.2 stabel x86
+
+*vdr-sudoku-0.3.4 (29 Nov 2008)
+
+  29 Nov 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-sudoku-0.3.4.ebuild:
+  Version bumped.
+
+*vdr-sudoku-0.3.3 (23 Nov 2008)
+
+  23 Nov 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-sudoku-0.3.3.ebuild:
+  Version bumped.
+
+*vdr-sudoku-0.3.2 (28 Sep 2008)
+
+  28 Sep 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-sudoku-0.3.2.ebuild:
+  Version bumped. This mainly adds frech translations.
+
+*vdr-sudoku-0.3.1 (01 Sep 2008)
+
+  01 Sep 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-sudoku-0.3.1.ebuild:
+  Version bumped. Text and translation updates.
+
+*vdr-sudoku-0.3.0 (27 Jul 2008)
+
+  27 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-sudoku-0.3.0.ebuild:
+  Version bumped.
+
+*vdr-sudoku-0.2.1 (06 Apr 2008)
+
+  06 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-sudoku-0.2.1.ebuild:
+  Version bumped.
+
+*vdr-sudoku-0.2.0 (22 Mar 2008)
+
+  22 Mar 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-sudoku-0.2.0.ebuild:
+  version bump
+
+  15 May 2007; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-sudoku-0.1.3.ebuild:
+  Marked stable on x86.
+
+*vdr-sudoku-0.1.3 (25 Feb 2007)
+
+  25 Feb 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-sudoku-0.1.3.ebuild:
+  Version bumped.
+
+  19 Nov 2006; Matthias Schwarzott <zzam@gentoo.org>
+  -vdr-sudoku-0.1.1.ebuild:
+  Cleanup of older ebuilds.
+
+  30 Oct 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-sudoku-0.1.2.ebuild:
+  Marked stable on x86.
+
+  18 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Changed herd to media-tv.
+
+  15 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Assigned to Gentoo VDR Project.
+
+*vdr-sudoku-0.1.2 (26 Apr 2006)
+
+  26 Apr 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-sudoku-0.1.2.ebuild:
+  Version bumped.
+
+  04 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-sudoku-0.1.1.ebuild:
+  Marked stable on x86
+
+*vdr-sudoku-0.1.1 (20 Dec 2005)
+
+  20 Dec 2005; Joerg Bornkessel <hd_brummy@gentoo.org> +metadata.xml,
+  +vdr-sudoku-0.1.1.ebuild:
+  import ebuild, taken from gentoo.de overlay CVS
+  Thx to A.Katzur for this ebuild, http://bugs.gentoo.de/view.php?id=328
+  Thx to M.Guenther for test on ~amd64

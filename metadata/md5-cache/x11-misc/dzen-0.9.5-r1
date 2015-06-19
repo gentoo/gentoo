@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=x11-libs/libX11 xft? ( x11-libs/libXft ) xinerama? ( x11-libs/libXinerama ) xpm? ( x11-libs/libXpm ) virtual/pkgconfig x11-proto/xproto xinerama? ( x11-proto/xineramaproto )
+DESCRIPTION=a general purpose messaging, notification and menuing program for X11
+EAPI=5
+HOMEPAGE=https://github.com/robm/dzen
+IUSE=minimal xft xinerama xpm
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=x11-libs/libX11 xft? ( x11-libs/libXft ) xinerama? ( x11-libs/libXinerama ) xpm? ( x11-libs/libXpm )
+SLOT=2
+SRC_URI=https://github.com/robm/dzen/tarball/f7907da3a42a6d59e27ede88f5f01e4e41c4c9e0 -> dzen-0.9.5.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vcs-snapshot	58b766562c9fbfb3268b04e33cdf2f66
+_md5_=8ce5d449afc44b1a134194ea5d68bc3d

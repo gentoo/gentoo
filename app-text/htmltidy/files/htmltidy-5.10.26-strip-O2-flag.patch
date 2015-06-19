@@ -1,0 +1,12 @@
+diff -urN tidy.old/configure.in tidy-26/configure.in
+--- tidy.old/configure.in	2006-02-13 17:17:49.000000000 +0100
++++ tidy-26/configure.in	2006-02-13 17:17:20.000000000 +0100
+@@ -72,7 +72,7 @@
+ if test $debug_build = yes; then
+ 	CFLAGS="$save_cflags -g"
+ else
+-	CFLAGS="-O2 $save_cflags"
++	CFLAGS="$save_cflags"
+ fi
+ # 
+ # =============================================

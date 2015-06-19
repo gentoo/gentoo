@@ -1,0 +1,92 @@
+# ChangeLog for app-eselect/eselect-cblas
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-cblas/ChangeLog,v 1.1 2015/03/31 16:47:06 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> +eselect-cblas-0.1.ebuild,
+  +files/cblas.eselect-0.1, +files/cblas.eselect.5, +metadata.xml:
+  Move package from app-admin to app-eselect category.
+
+  12 May 2012; Alexis Ballier <aballier@gentoo.org> eselect-cblas-0.1.ebuild:
+  keyword ~amd64-fbsd
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  eselect-cblas-0.1.ebuild:
+  Transfer Prefix keywords
+
+  09 Nov 2008; Raúl Porcel <armin76@gentoo.org> eselect-cblas-0.1.ebuild:
+  ia64 stable
+
+  22 Oct 2007; Jeroen Roovers <jer@gentoo.org> eselect-cblas-0.1.ebuild:
+  Stable for HPPA (USE=lapack). Quoting fixes.
+
+  28 Sep 2007; nixnut <nixnut@gentoo.org> ChangeLog:
+  Stable on ppc wrt bug 189732
+
+  26 Sep 2007; Raúl Porcel <armin76@gentoo.org> eselect-cblas-0.1.ebuild:
+  alpha stable wrt #189732
+
+  22 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  eselect-cblas-0.1.ebuild:
+  stable x86, bug 180713
+
+  20 Jul 2007; nixnut <nixnut@gentoo.org> eselect-cblas-0.1.ebuild:
+  Stable on ppc wrt bug 180713
+
+  17 Jul 2007; Christoph Mende <angelos@gentoo.org>
+  eselect-cblas-0.1.ebuild:
+  Stable on amd64 wrt bug #180713
+
+  17 Jul 2007; Markus Rothe <corsair@gentoo.org> eselect-cblas-0.1.ebuild:
+  Stable on ppc64; bug #180713
+
+  17 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  eselect-cblas-0.1.ebuild:
+  Stable on sparc
+
+  07 Jun 2007; Joe Peterson <lavajoe@gentoo.org> eselect-cblas-0.1.ebuild:
+  Add ~x86-fbsd keyword
+
+  27 Jan 2007; Alexander H. Færøy <eroyf@gentoo.org>
+  eselect-cblas-0.1.ebuild:
+  Added ~mips.
+
+  01 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Remove myself as maintainer so it goes to all of the sci team.
+
+  19 Sep 2006; Danny van Dyk <kugelfang@gentoo.org>
+  eselect-cblas-0.1.ebuild:
+  Marked ~ia64.
+
+  11 Sep 2006; Ferris McCormick <fmccor@gentoo.org>
+  eselect-cblas-0.1.ebuild:
+  Add ~sparc keyword, Bug #147159 --- tests fine.
+
+  11 Sep 2006; Fernando J. Pereda <ferdy@gentoo.org>
+  eselect-cblas-0.1.ebuild:
+  Add ~alpha keyword as per bug #147159
+
+  08 Sep 2006; Markus Rothe <corsair@gentoo.org> eselect-cblas-0.1.ebuild:
+  Added ~ppc64; bug #146851
+
+  26 Aug 2006; Danny van Dyk <kugelfang@gentoo.org>
+  eselect-cblas-0.1.ebuild:
+  Changed eselect dependency to version >=1.0.5. Keyworded ~amd64.
+
+  05 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  eselect-cblas-0.1.ebuild:
+  Update minimum dep to eselect-1.0.4, 1.0.3 was broken.
+
+  07 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Update to my new email address.
+
+  03 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  eselect-cblas-0.1.ebuild:
+  We can depend on eselect 1.0.3 now that it's in the tree.
+
+*eselect-cblas-0.1 (18 Jun 2006)
+
+  18 Jun 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/cblas.eselect-0.1, +files/cblas.eselect.5, +metadata.xml,
+  +eselect-cblas-0.1.ebuild:
+  New eselect module for switching C-language BLAS implementations.
+

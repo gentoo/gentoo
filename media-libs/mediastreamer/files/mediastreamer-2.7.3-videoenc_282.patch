@@ -1,0 +1,130 @@
+Update videoenc.c to the 2.8.2 version. Fixes some but not all problems with
+ffmpeg.
+
+
+--- mediastreamer-2.7.3/src/videoenc.c	2010-12-17 05:59:50.000000000 -0300
++++ mediastreamer-2.8.2/src/videoenc.c	2012-02-17 06:16:20.000000000 -0300
+@@ -164,6 +164,7 @@
+ 		}else{
+ 			ms_warning("unsupported video size %s",tmp);
+ 			ret=FALSE;
++			goto end;
+ 		}
+ 		divider=atoi(equal+1);
+ 		if (divider!=0){
+@@ -174,6 +175,8 @@
+ 			ret=FALSE;
+ 		}
+ 	}else ret=FALSE;
++
++end:
+ 	ms_free(tmp);
+ 	return ret;
+ }
+@@ -231,11 +234,7 @@
+ 
+ static void prepare(EncState *s){
+ 	AVCodecContext *c=&s->av_context;
+-#ifdef ANDROID
+ 	const int max_br_vbv=128000;
+-#else
+-	const int max_br_vbv=256000;
+-#endif
+ 
+ 	avcodec_get_context_defaults(c);
+ 	if (s->codec==CODEC_ID_MJPEG)
+@@ -315,13 +314,6 @@
+ static void prepare_mpeg4(EncState *s){
+ 	AVCodecContext *c=&s->av_context;
+ 	c->max_b_frames=0; /*don't use b frames*/
+-	c->flags|=CODEC_FLAG_AC_PRED;
+-	c->flags|=CODEC_FLAG_H263P_UMV;
+-	/*c->flags|=CODEC_FLAG_QPEL;*/ /*don't enable this one: this forces profile_level to advanced simple profile */
+-	c->flags|=CODEC_FLAG_4MV;
+-	c->flags|=CODEC_FLAG_GMC;
+-	c->flags|=CODEC_FLAG_LOOP_FILTER;
+-	c->flags|=CODEC_FLAG_H263P_SLICE_STRUCT;
+ }
+ 
+ static void enc_uninit(MSFilter  *f){
+@@ -681,7 +673,7 @@
+ 	uint8_t *pbuf_ptr=full_frame->b_rptr;
+ 	uint8_t *buf_end=full_frame->b_wptr;	
+ 
+-	ms_message("image size: %i)", buf_end-pbuf_ptr);
++	ms_message("image size: %li)", (long)(buf_end-pbuf_ptr));
+ 
+ 	*lqt=NULL;
+ 	*cqt=NULL;
+@@ -689,7 +681,7 @@
+ 	err = find_marker(&pbuf_ptr, buf_end);
+ 	while (err!=-1)
+ 	{
+-		ms_message("marker found: %x (offset from beginning%i)", err, pbuf_ptr-full_frame->b_rptr);
++		ms_message("marker found: %x (offset from beginning %li)", err, (long)(pbuf_ptr-full_frame->b_rptr));
+ 		if (err==0xdb)
+ 		{
+ 			/* copy DQT table */
+@@ -772,10 +764,12 @@
+ 	int error;
+ 	mblk_t *comp_buf=s->comp_buf;
+ 	int comp_buf_sz=comp_buf->b_datap->db_lim-comp_buf->b_datap->db_base;
++	YuvBuf yuv;
+ 
++	ms_yuv_buf_init_from_mblk(&yuv, inm);
+ 	/* convert image if necessary */
+ 	avcodec_get_frame_defaults(&pict);
+-	avpicture_fill((AVPicture*)&pict,(uint8_t*)inm->b_rptr,c->pix_fmt,c->width,c->height);
++	avpicture_fill((AVPicture*)&pict,yuv.planes[0],c->pix_fmt,c->width,c->height);
+ 	
+ 	/* timestamp used by ffmpeg, unset here */
+ 	pict.pts=AV_NOPTS_VALUE;
+@@ -796,7 +790,9 @@
+ 		comp_buf->b_wptr+=4;
+ 		comp_buf_sz-=4;
+ 	}
++
+ 	error=avcodec_encode_video(c, (uint8_t*)comp_buf->b_wptr,comp_buf_sz, &pict);
++
+ 	if (error<=0) ms_warning("ms_AVencoder_process: error %i.",error);
+ 	else{
+ 		s->framenum++;
+@@ -837,6 +833,14 @@
+ 	EncState *s=(EncState*)f->data;
+ 	bool_t snow=s->codec==CODEC_ID_SNOW;
+ 	s->maxbr=*(int*)arg;
++	if (s->av_context.codec!=NULL){
++		/*when we are processing, apply new settings immediately*/
++		ms_filter_lock(f);
++		enc_postprocess(f);
++		enc_preprocess(f);
++		ms_filter_unlock(f);
++		return 0;
++	}
+ 	if (s->maxbr>=1024000 && s->codec!=CODEC_ID_H263P){
+ 		s->vsize.width = MS_VIDEO_SIZE_SVGA_W;
+ 		s->vsize.height = MS_VIDEO_SIZE_SVGA_H;
+@@ -854,7 +858,7 @@
+ 		s->vsize.height=MS_VIDEO_SIZE_CIF_H;
+ 		s->fps=17;
+ 		s->qmin=3;
+-	}else if (s->maxbr>=170000){
++	}else if (s->maxbr>=170000 && s->codec!=CODEC_ID_H263P && s->codec!=CODEC_ID_H263){
+ 		s->vsize.width=MS_VIDEO_SIZE_QVGA_W;
+ 		s->vsize.height=MS_VIDEO_SIZE_QVGA_H;
+ 		s->fps=15;
+@@ -875,14 +879,6 @@
+ 		s->fps=5;
+ 		s->qmin=5;
+ 	}
+-
+-	if (s->av_context.codec!=NULL){
+-		/*apply new settings dynamically*/
+-		ms_filter_lock(f);
+-		enc_postprocess(f);
+-		enc_preprocess(f);
+-		ms_filter_unlock(f);
+-	}
+ 	return 0;
+ }
+ 

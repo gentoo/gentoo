@@ -1,0 +1,111 @@
+# ChangeLog for dev-libs/darts
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/darts/ChangeLog,v 1.32 2015/05/05 19:19:11 mrueg Exp $
+
+  05 May 2015; Manuel Rüger <mrueg@gentoo.org> -darts-0.31.ebuild:
+  Remove old.
+
+  09 Apr 2010; Markos Chandras <hwoarang@gentoo.org> darts-0.32.ebuild:
+  Stable on amd64 wrt bug #302323
+
+  23 Mar 2010; Brent Baude <ranger@gentoo.org> darts-0.32.ebuild:
+  stable ppc, bug 302323
+
+  04 Mar 2010; Raúl Porcel <armin76@gentoo.org> darts-0.32.ebuild:
+  sparc stable wrt #302323
+
+  26 Feb 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> darts-0.32.ebuild:
+  x86 stable wrt bug #302323
+
+  27 Jan 2010; Brent Baude <ranger@gentoo.org> darts-0.32.ebuild:
+  stable ppc64, bug 302323
+
+  14 Jan 2010; Christian Faulhammer <fauli@gentoo.org> darts-0.32.ebuild:
+  Transfer Prefix keywords
+
+*darts-0.32 (31 Jul 2008)
+
+  31 Jul 2008; MATSUU Takuto <matsuu@gentoo.org> metadata.xml,
+  +darts-0.32.ebuild:
+  Version bumped. Added cjk herd to metadata.xml.
+
+  05 Jan 2008; Markus Ullmann <jokey@gentoo.org> darts-0.31.ebuild:
+  Sparc stable
+
+  05 Jan 2008; Samuli Suominen <drac@gentoo.org> darts-0.31.ebuild:
+  amd64 stable wrt #203857
+
+  01 Jan 2008; Markus Meier <maekke@gentoo.org> darts-0.31.ebuild:
+  x86 stable, bug #203857
+
+  31 Dec 2007; Brent Baude <ranger@gentoo.org> darts-0.31.ebuild:
+  Marking darts-0.31 ppc for bug 203857
+
+  31 Dec 2007; Brent Baude <ranger@gentoo.org> darts-0.31.ebuild:
+  Marking darts-0.31 ppc64 for bug 203857
+
+*darts-0.31 (29 Apr 2007)
+
+  29 Apr 2007; Mamoru KOMACHI <usata@gentoo.org> -darts-0.1.ebuild,
+  +darts-0.31.ebuild:
+  Version bumped. Now darts is available under a dual license.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org> darts-0.3.ebuild:
+  Mark 0.3 ~ia64
+
+  29 Dec 2005; Mark Loeser <halcy0n@gentoo.org> darts-0.1.ebuild,
+  darts-0.2.ebuild, darts-0.3.ebuild:
+  Some minor cleanup in the ebuilds
+
+*darts-0.3 (29 Dec 2005)
+
+  29 Dec 2005; Mark Loeser <halcy0n@gentoo.org> darts-0.1.ebuild,
+  darts-0.2.ebuild, +darts-0.3.ebuild:
+  Bump to 0.3, also make ebuilds respect user's CFLAGS
+
+  19 Sep 2005; Mark Loeser <halcy0n@gentoo.org> +metadata.xml:
+  Adding to cpp herd
+
+  12 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> darts-0.2.ebuild:
+  Stable on sparc
+
+  05 Mar 2005; Markus Rothe <corsair@gentoo.org> darts-0.2.ebuild:
+  Stable on ppc64
+
+  02 Jan 2005; Markus Rothe <corsair@gentoo.org> darts-0.2.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  27 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> darts-0.2.ebuild:
+  Stable on ppc.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> darts-0.1.ebuild,
+  darts-0.2.ebuild:
+  virtual/glibc -> virtual/libc
+
+  25 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> darts-0.2.ebuild:
+  Marked stable on x86
+
+  18 Apr 2004; <matsuu@gentoo.org> darts-0.2.ebuild:
+  Added ~sparc and ~ppc to KEYWORDS.
+
+  14 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> darts-0.1.ebuild,
+  darts-0.2.ebuild:
+  Don't assign default to S; header fix
+
+  07 Mar 2004; Jon Portnoy <avenj@gentoo.org> darts-0.2.ebuild :
+  Stable on AMD64 to make repoman happy.
+
+*darts-0.2 (03 Aug 2003)
+
+  03 Aug 2003; MATSUU Takuto <matsuu@gentoo.org> darts-0.2.ebuild:
+  version bump.
+
+*darts-0.1 (21 Jun 2003)
+
+  21 Jun 2003; YAMAKURA Makoto <yakina@gentoo.org> darts-0.1.ebuild,
+  ChangeLog,Manifest,files/digest-darts-0.1:
+
+  Initial import. Ebuild submitted by MATSUU Takuto <matsuu@7501.net>

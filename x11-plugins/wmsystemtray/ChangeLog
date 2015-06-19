@@ -1,0 +1,23 @@
+# ChangeLog for x11-plugins/wmsystemtray
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmsystemtray/ChangeLog,v 1.3 2014/06/25 06:36:58 voyageur Exp $
+
+*wmsystemtray-1.4 (25 Jun 2014)
+
+  25 Jun 2014; Bernard Cafarelli <voyageur@gentoo.org>
+  -wmsystemtray-1.2.ebuild, wmsystemtray-1.3.ebuild, +wmsystemtray-1.4.ebuild:
+  Version bump, also add missing libXpm dependency, spotted by patrick in bug
+  #514344
+
+*wmsystemtray-1.3 (11 Feb 2014)
+
+  11 Feb 2014; Bernard Cafarelli <voyageur@gentoo.org>
+  +wmsystemtray-1.3.ebuild:
+  Version bump
+
+*wmsystemtray-1.2 (20 Feb 2012)
+
+  20 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org>
+  +wmsystemtray-1.2.ebuild, +metadata.xml:
+  Initial commit
+

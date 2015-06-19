@@ -1,0 +1,30 @@
+# ChangeLog for dev-perl/Speech-Recognizer-SPX
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Speech-Recognizer-SPX/ChangeLog,v 1.5 2014/08/26 17:55:02 axs Exp $
+
+*Speech-Recognizer-SPX-0.80.100-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Speech-Recognizer-SPX-0.80.100-r1.ebuild,
+  -Speech-Recognizer-SPX-0.80.100.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -Speech-Recognizer-SPX-0.0801.ebuild:
+  Cleanup
+
+*Speech-Recognizer-SPX-0.80.100 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Speech-Recognizer-SPX-0.80.100.ebuild:
+  Change version scheme
+
+*Speech-Recognizer-SPX-0.0801 (15 Feb 2010)
+
+  15 Feb 2010; Robin H. Johnson <robbat2@gentoo.org>
+  +Speech-Recognizer-SPX-0.0801.ebuild, +metadata.xml:
+  Initial commit, package or dep for one that cannot be generated correctly
+  by g-cpan and was asked for by a user in a bug.

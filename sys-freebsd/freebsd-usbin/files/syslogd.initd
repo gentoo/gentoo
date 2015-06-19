@@ -1,0 +1,25 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-usbin/files/syslogd.initd,v 1.3 2007/02/23 14:03:08 uberlord Exp $
+
+depend() {
+	provide logger
+	need localmount
+}
+
+start() {
+	ebegin "Starting System Logger"
+	start-stop-daemon --start --quiet --exec /usr/sbin/syslogd \
+		-- ${SYSLOGD_OPTS}
+	eend $?
+}
+
+stop() {
+       ebegin "Stopping System Logger"
+       start-stop-daemon --stop --quiet --pidfile /var/run/syslog.pid
+       eend $?
+}
+
+
+

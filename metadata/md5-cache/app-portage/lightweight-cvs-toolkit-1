@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Tools to create partial CVS checkout, merge PRs and revert commits
+EAPI=5
+HOMEPAGE=https://bitbucket.org/mgorny/lightweight-cvs-toolkit
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=dev-vcs/cvs dev-vcs/git
+SLOT=0
+SRC_URI=https://bitbucket.org/mgorny/lightweight-cvs-toolkit/downloads/lightweight-cvs-toolkit-1.tar.gz
+_md5_=47978b03dfc914f58f365583038c4e6a

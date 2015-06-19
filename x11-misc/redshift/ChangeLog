@@ -1,0 +1,156 @@
+# ChangeLog for x11-misc/redshift
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/redshift/ChangeLog,v 1.35 2015/04/19 09:52:12 pacho Exp $
+
+  19 Apr 2015; Pacho Ramos <pacho@gentoo.org> redshift-1.10.ebuild:
+  x86 stable wrt bug #539056
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> redshift-1.10.ebuild,
+  redshift-1.7-r1.ebuild, redshift-1.9.1-r1.ebuild, redshift-1.9.1-r2.ebuild,
+  redshift-1.9.1.ebuild:
+  Drop old Python implementations
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> redshift-1.10.ebuild:
+  Stable for amd64, wrt bug #539056
+
+*redshift-1.10 (26 Jan 2015)
+
+  26 Jan 2015; Sebastian Pipping <sping@gentoo.org> +redshift-1.10.ebuild:
+  Bump to 1.10 (bug #537678)
+
+*redshift-1.9.1-r2 (15 Dec 2014)
+
+  15 Dec 2014; Sebastian Pipping <sping@gentoo.org> +redshift-1.9.1-r2.ebuild:
+  Install systemd units provided by upstream (bug #532578)
+
+  17 Nov 2014; Sebastian Pipping <sping@gentoo.org> redshift-1.9.1-r1.ebuild,
+  metadata.xml:
+  Add appindicator use flag (patch by Marek Pikuła)
+
+*redshift-1.9.1-r1 (01 Nov 2014)
+
+  01 Nov 2014; Sebastian Pipping <sping@gentoo.org> +redshift-1.9.1-r1.ebuild:
+  Require GTK+ 3.x with introspection (bug #527540)
+
+  01 Nov 2014; Sebastian Pipping <sping@gentoo.org> -redshift-1.4.1.ebuild,
+  -redshift-1.6-r1.ebuild, -redshift-1.8.ebuild, -redshift-1.9-r1.ebuild:
+  Remove old versions
+
+  05 Oct 2014; Manuel Rüger <mrueg@gentoo.org> redshift-1.9.1.ebuild:
+  Mark stable on amd64. Bug #521320
+
+  09 Sep 2014; Patrick Lauer <patrick@gentoo.org> redshift-1.9.1.ebuild:
+  Add py3.4 support
+
+  06 Sep 2014; Sebastian Pipping <sping@gentoo.org> redshift-1.9-r1.ebuild:
+  Unlock support for Python 3.4 (bug #521904)
+
+*redshift-1.9.1 (26 Jul 2014)
+
+  26 Jul 2014; Sebastian Pipping <sping@gentoo.org> +redshift-1.9.1.ebuild:
+  Bump to 1.9.1 (bug #518058)
+
+*redshift-1.9-r1 (13 Apr 2014)
+
+  13 Apr 2014; Sebastian Pipping <sping@gentoo.org> -redshift-1.9.ebuild,
+  +redshift-1.9-r1.ebuild, +files/redshift-1.9-toggle.patch:
+  Apply upstream patch for upstream bug #68
+
+*redshift-1.9 (13 Apr 2014)
+
+  13 Apr 2014; Sebastian Pipping <sping@gentoo.org> +redshift-1.9.ebuild:
+  Bump to 1.9 (bug #507062)
+
+  21 Jan 2014; Gilles Dartiguelongue <eva@gentoo.org> redshift-1.7.ebuild,
+  redshift-1.7-r1.ebuild, redshift-1.8.ebuild:
+  Pin geoclue dependency to slot 0.
+
+*redshift-1.8 (23 Oct 2013)
+
+  23 Oct 2013; Sebastian Pipping <sping@gentoo.org> +redshift-1.8.ebuild:
+  Bump to 1.8 (bug #489182)
+
+  17 Feb 2013; Sebastian Pipping <sping@gentoo.org> redshift-1.7-r1.ebuild:
+  Migrate to python-r1 (bug #440180). Thanks for the initial patch to Michał
+  Górny
+
+  16 Aug 2012; Julian Ospald <hasufell@gentoo.org> redshift-1.7-r1.ebuild:
+  fix build for -gtk wrt #431646
+
+  23 Jul 2012; Julian Ospald <hasufell@gentoo.org> redshift-1.7-r1.ebuild:
+  remove obsolete die
+
+  23 Jul 2012; Julian Ospald <hasufell@gentoo.org> redshift-1.7-r1.ebuild,
+  -files/redshift-1.7-python-abi.patch:
+  handle python-abi stuff without patch
+
+  21 Jul 2012; Julian Ospald <hasufell@gentoo.org> redshift-1.7-r1.ebuild,
+  +files/redshift-1.7-python-abi.patch:
+  support multiple python abis, force build output verbose, bump to eapi=4,
+  minor changes
+
+*redshift-1.7-r1 (20 Jul 2012)
+
+  20 Jul 2012; Sebastian Pipping <sping@gentoo.org> +redshift-1.7-r1.ebuild,
+  +files/redshift-1.7-make-conditionals.patch:
+  No longer install .svg files for USE=-gtk (bug #427156)
+  The patch has been written with upstream in mind.
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> redshift-1.7.ebuild:
+  x86 stable wrt bug #398905
+
+  17 Jan 2012; Agostino Sarubbo <ago@gentoo.org> redshift-1.7.ebuild:
+  Stable for amd64, wrt bug #398905
+
+  14 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> redshift-1.7.ebuild:
+  Empty the py-compile script instead of symlinking it for compability with
+  automake-1.11.2.
+
+  28 Jul 2011; Sebastian Pipping <sping@gentoo.org> redshift-1.7.ebuild:
+  Add missing dependency app-misc/geoclue
+
+*redshift-1.7 (28 Jul 2011)
+
+  28 Jul 2011; Sebastian Pipping <sping@gentoo.org> +redshift-1.7.ebuild,
+  metadata.xml:
+  Bump to 1.7. Patch got applied upstream, geoclue support added
+
+*redshift-1.6-r1 (04 May 2011)
+
+  04 May 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  +files/1.6-bonoboiidfix.patch, -redshift-1.5.ebuild, -redshift-1.6.ebuild,
+  +redshift-1.6-r1.ebuild:
+  Apply patch for >gnome-2.30 wrt bug 365481 by Anton Bolshakov
+  <anton.bugs@gmail.com>. Drop old.
+
+*redshift-1.6 (21 Feb 2011)
+
+  21 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> +redshift-1.6.ebuild:
+  Version bump wrt #345687 by Anton Bolshakov.
+
+  21 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  redshift-1.4.1.ebuild, redshift-1.5.ebuild:
+  Update the dep on libX11 this time using proper version.
+
+  09 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  redshift-1.4.1.ebuild, redshift-1.5.ebuild:
+  Update deps on libX11[xcb].
+
+*redshift-1.5 (30 Aug 2010)
+
+  30 Aug 2010; Dror Levin <spatz@gentoo.org> +redshift-1.5.ebuild:
+  Version bump.
+
+  31 Jul 2010; Markos Chandras <hwoarang@gentoo.org> redshift-1.4.1.ebuild:
+  Stable on amd64 wrt bug #330347
+
+  30 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  redshift-1.4.1.ebuild:
+  stable x86, bug 330347
+
+*redshift-1.4.1 (19 Jun 2010)
+
+  19 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +redshift-1.4.1.ebuild:
+  Initial commit wrt #303173 by Peter Gantner, Kacper Kowalik and Joshua
+  Rich.

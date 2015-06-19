@@ -1,0 +1,58 @@
+# ChangeLog for media-sound/spek
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/spek/ChangeLog,v 1.13 2014/10/09 05:58:49 xmw Exp $
+
+  09 Oct 2014; Michael Weber <xmw@gentoo.org> +files/spek-0.8.3-stdlib.patch,
+  spek-0.8.3.ebuild:
+  Include stdlib.h for malloc and free (bug 519450)
+
+  20 Aug 2013; Jeroen Roovers <jer@gentoo.org> spek-0.8.3.ebuild:
+  Escape newline.
+
+  03 Aug 2013; Michael Weber <xmw@gentoo.org> spek-0.8.3.ebuild:
+  Require gcc:4.7 or newer (bug 479500).
+
+  03 Aug 2013; Michael Weber <xmw@gentoo.org>
+  +files/spek-0.8.3-replace-gnu+11-with-c++11.patch, spek-0.8.3.ebuild:
+  Replace -std=gnu+11 with -srd=c++11 for bug 479500.
+
+*spek-0.8.3 (28 Jul 2013)
+
+  28 Jul 2013; Michael Weber <xmw@gentoo.org> +spek-0.8.3.ebuild,
+  -spek-0.7.ebuild, -spek-0.8.0.ebuild, -spek-0.8.1.ebuild:
+  Version bump (requested by eternalfuzzy1@gmail.com, bug 478306), inherit
+  wxwidgets eclass (reported by boxcars@gmx.net, bug 475372), drop old versions.
+
+*spek-0.8.1 (06 Oct 2012)
+
+  06 Oct 2012; Michael Weber <xmw@gentoo.org> +spek-0.8.1.ebuild,
+  +files/spek-0.8.1-disable-updates.patch:
+  Version bump, disable update check by default.
+
+*spek-0.8.0 (25 Sep 2012)
+
+  25 Sep 2012; Michael Weber <xmw@gentoo.org> +spek-0.8.0.ebuild:
+  Version bump, resolve fmpeg issue (bug 428068)
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> spek-0.7.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  15 Jun 2011; Michael Weber <xmw@gentoo.org> -spek-0.6.ebuild:
+  Remove old version
+
+*spek-0.7 (25 Apr 2011)
+
+  25 Apr 2011; Michael Weber <xmw@gentoo.org> +spek-0.7.ebuild:
+  Version bump
+
+  05 Apr 2011; Michael Weber <xmw@gentoo.org> spek-0.6.ebuild:
+  Updated dependency to virtual/ffmpeg (bug 362115)
+
+  08 Mar 2011; Michael Weber <xmw@gentoo.org> spek-0.6.ebuild:
+  Change vala dependency to vala:0.10 (bug 338067)
+
+*spek-0.6 (04 Oct 2010)
+
+  04 Oct 2010; Michael Weber <xmw@gentoo.org> +spek-0.6.ebuild,
+  +metadata.xml:
+  Initial import

@@ -1,0 +1,40 @@
+# ChangeLog for media-plugins/vdr-vodcatcher
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-vodcatcher/ChangeLog,v 1.8 2014/06/22 11:09:24 hd_brummy Exp $
+
+  22 Jun 2014; Joerg Bornkessel <hd_brummy@gentoo.org> ChangeLog, Manifest:
+  compilefix gcc-4.7, wrt bug 514128; eapi=5; fixed QA Notice on install
+
+  01 May 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-vodcatcher-0.1.1.ebuild, -vdr-vodcatcher-0.2.1.ebuild,
+  -files/vdr-vodcatcher-0.2.1-gcc44.patch, vdr-vodcatcher-0.2.2.ebuild:
+  cleanup; eapi=4; vdr-plugin-2.eclass
+
+  24 Apr 2012; Michał Górny <mgorny@gentoo.org> vdr-vodcatcher-0.2.2.ebuild:
+  Update to use mirror://.
+
+*vdr-vodcatcher-0.2.2 (22 Sep 2010)
+
+  22 Sep 2010; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-vodcatcher-0.2.2.ebuild,
+  +files/vdr-vodcatcher-0.2.2_unbundle-tinyxml2.diff:
+  version bump; eapi=2, new project page, patched to unbundle tinyxml code
+  from sources
+
+  11 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  vdr-vodcatcher-0.2.1.ebuild, +files/vdr-vodcatcher-0.2.1-gcc44.patch:
+  Fix building with GCC 4.4+ wrt #281077.
+
+*vdr-vodcatcher-0.2.1 (11 Nov 2008)
+
+  11 Nov 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-vodcatcher-0.2.1.ebuild:
+  version bump; this version supports now also vdr-xineliboutput as output
+  device
+
+*vdr-vodcatcher-0.1.1 (03 Feb 2008)
+
+  03 Feb 2008; Joerg Bornkessel <hd_brummy@gentoo.org> +metadata.xml,
+  +vdr-vodcatcher-0.1.1.ebuild:
+  initial ebuild; thanks to 'Hampelratte' on vdr-portal.de for ebuild basis
+

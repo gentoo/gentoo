@@ -1,0 +1,73 @@
+# ChangeLog for media-plugins/rev-plugins
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/rev-plugins/ChangeLog,v 1.20 2011/12/19 19:46:52 radhermit Exp $
+
+  19 Dec 2011; Tim Harder <radhermit@gentoo.org> -rev-plugins-0.3.1.ebuild:
+  Remove old.
+
+  13 Dec 2011; Agostino Sarubbo <ago@gentoo.org> rev-plugins-0.3.1-r1.ebuild:
+  Stable for AMD64, wrt bug #391483
+
+  28 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  rev-plugins-0.3.1-r1.ebuild:
+  x86 stable wrt bug #391483
+
+  27 Aug 2010; Jeroen Roovers <jer@gentoo.org> rev-plugins-0.3.1.ebuild,
+  rev-plugins-0.3.1-r1.ebuild:
+  Set RDEPEND.
+
+*rev-plugins-0.3.1-r1 (27 Aug 2010)
+
+  27 Aug 2010; Jeroen Roovers <jer@gentoo.org> +rev-plugins-0.3.1-r1.ebuild:
+  Respect LDFLAGS (bug #334567). Do not patch in src_compile. Call sed just
+  once.
+
+  19 Nov 2007; Samuli Suominen <drac@gentoo.org> rev-plugins-0.3.1.ebuild:
+  amd64 stable wrt #199575
+
+  19 Nov 2007; Dawid Węgliński <cla@gentoo.org> rev-plugins-0.3.1.ebuild:
+  Stable on x86 (bug #199575)
+
+  18 Nov 2007; Alexis Ballier <aballier@gentoo.org> metadata.xml,
+  rev-plugins-0.3.1.ebuild:
+  handle to proaudio herd like others ladspa plugins, make multilib aware, use
+  full g++ name, dont force -O2, fix homepage and src_uri, use emake
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*rev-plugins-0.3.1 (10 Oct 2005)
+
+  10 Oct 2005; Frank van de Pol <fvdpol@gentoo.org>
+  +rev-plugins-0.3.1.ebuild:
+  Version bump to 0.3.1
+
+  04 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  rev-plugins-0.2.1.ebuild:
+  Don't install COPYING file.
+
+  19 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove retired developer from metadata.xml.
+
+  01 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  rev-plugins-0.2.1.ebuild:
+  Stable amd64.
+
+  04 Jul 2004; Frank van de Pol <fvdpol@gentoo.org> rev-plugins-0.2.1.ebuild:
+  Updated package description and URL.
+
+  10 May 2004; Travis Tilley <lv@gentoo.org> rev-plugins-0.2.1.ebuild:
+  added ~amd64 keyword
+
+  26 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  rev-plugins-0.2.1.ebuild:
+  Cleaned up to make aliz's script happy.  Stable on x86.
+
+  27 Jan 2004; <torbenh@gentoo.org> metadata.xml:
+  Added metadata.xml and removed wrong digest.
+
+*rev-plugins-0.2.1 (19 Jan 2004)
+
+  19 Jan 2004; <torbenh@gentoo.org> rev-plugins-0.2.1.ebuild:
+  Initial Import
+

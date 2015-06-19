@@ -1,0 +1,62 @@
+# ChangeLog for media-sound/kmetronome
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/kmetronome/ChangeLog,v 1.13 2014/12/03 07:57:01 kensington Exp $
+
+*kmetronome-1.0.0 (03 Dec 2014)
+
+  03 Dec 2014; Michael Palimaka <kensington@gentoo.org>
+  +kmetronome-1.0.0.ebuild:
+  Version bump.
+
+  17 Oct 2014; Michael Palimaka <kensington@gentoo.org> metadata.xml:
+  Add upstream metadata.
+
+  27 Apr 2014; Johannes Huber <johu@gentoo.org> -kmetronome-0.10.1.ebuild,
+  kmetronome-0.10.1-r1.ebuild:
+  amd64/x86 stable, remove old.
+
+*kmetronome-0.10.1-r1 (21 Mar 2014)
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org> +kmetronome-0.10.1-r1.ebuild:
+  Revision bump to EAPI 5.
+
+  11 Jun 2013; Agostino Sarubbo <ago@gentoo.org> kmetronome-0.10.1.ebuild:
+  Stable for x86, wrt bug #472986
+
+  11 Jun 2013; Agostino Sarubbo <ago@gentoo.org> kmetronome-0.10.1.ebuild:
+  Stable for amd64, wrt bug #472986
+
+  20 Dec 2012; Michael Palimaka <kensington@gentoo.org>
+  -kmetronome-0.10.0.ebuild:
+  Remove old.
+
+*kmetronome-0.10.1 (14 Jun 2012)
+
+  14 Jun 2012; Michael Palimaka <kensington@gentoo.org>
+  +kmetronome-0.10.1.ebuild:
+  Version bump.
+
+  28 Oct 2011; Jonathan Callen <abcd@gentoo.org> kmetronome-0.10.0.ebuild:
+  Bump to EAPI=4
+
+  02 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  kmetronome-0.10.0.ebuild:
+  EAPI3, use array for DOCS
+
+*kmetronome-0.10.0 (06 Jun 2010)
+
+  06 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +kmetronome-0.10.0.ebuild:
+  Version bump.
+
+*kmetronome-0.9.3 (27 Apr 2010)
+
+  27 Apr 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +kmetronome-0.9.3.ebuild:
+  Version bump.
+
+*kmetronome-0.9.2 (23 Dec 2009)
+
+  23 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +kmetronome-0.9.2.ebuild:
+  Initial commit.

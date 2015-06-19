@@ -1,0 +1,37 @@
+# ChangeLog for sci-geosciences/bt747
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/bt747/ChangeLog,v 1.8 2015/05/24 09:52:42 pacho Exp $
+
+  24 May 2015; Pacho Ramos <pacho@gentoo.org> bt747-2.0.3.ebuild:
+  Needs glib and gsettings (#520214 by Robert G. Siebeck)
+
+  24 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> bt747-2.0.3.ebuild:
+  Actually lets use eapi4.
+
+*bt747-2.0.3 (24 May 2012)
+
+  24 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> +bt747-2.0.3.ebuild,
+  -bt747-1.68.22.ebuild, -bt747-1.68.25.ebuild, -bt747-1.68.32.ebuild:
+  Version bump to latest wrt bug#366273. Remove older to fix bug#311807.
+
+  27 Feb 2012; Tupone Alfredo <tupone@gentoo.org> metadata.xml:
+  Removing me as maintainer
+
+*bt747-1.68.32 (10 Jan 2010)
+
+  10 Jan 2010; Thilo Bangert <bangert@gentoo.org> +bt747-1.68.32.ebuild:
+  version bump
+
+  19 Sep 2009; Sven Wegener <swegener@gentoo.org> bt747-1.68.25.ebuild:
+  Add ~amd64 keyword.
+
+*bt747-1.68.25 (21 Aug 2009)
+
+  21 Aug 2009; Thilo Bangert <bangert@gentoo.org> +bt747-1.68.25.ebuild:
+  version bump
+
+*bt747-1.68.22 (16 Jul 2009)
+
+  16 Jul 2009; Tupone Alfredo <tupone@gentoo.org> +metadata.xml,
+  +bt747-1.68.22.ebuild:
+  New package. Bug #235598 by me

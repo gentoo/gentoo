@@ -1,0 +1,116 @@
+# ChangeLog for net-analyzer/nethogs
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nethogs/ChangeLog,v 1.28 2014/08/14 20:46:23 jer Exp $
+
+  14 Aug 2014; Jeroen Roovers <jer@gentoo.org> -nethogs-0.8.0-r2.ebuild:
+  Old.
+
+  10 Aug 2014; Agostino Sarubbo <ago@gentoo.org> nethogs-0.8.0-r4.ebuild:
+  Stable for x86, wrt bug #512308
+
+  22 Jul 2014; Chema Alonso <nimiux@gentoo.org> nethogs-0.8.0-r4.ebuild:
+  Stable for amd64 wrt bug #512308
+
+*nethogs-0.8.0-r4 (21 Jul 2014)
+
+  21 Jul 2014; Jeroen Roovers <jer@gentoo.org> -nethogs-0.8.0-r3.ebuild,
+  +nethogs-0.8.0-r4.ebuild, files/nethogs-0.8.0-gentoo.patch:
+  Use CXXFLAGS not CFLAGS (bug #517706).
+
+  03 May 2014; Markus Meier <maekke@gentoo.org> nethogs-0.8.0-r3.ebuild:
+  add ~arm, bug #505974
+
+*nethogs-0.8.0-r3 (17 Feb 2014)
+
+  17 Feb 2014; Jeroen Roovers <jer@gentoo.org> +nethogs-0.8.0-r3.ebuild,
+  +files/nethogs-0.8.0-gentoo.patch:
+  Fix building against sys-libs/ncurses[tinfo]. Combine sed changes into one
+  patch.
+
+  28 Jan 2012; Jeroen Roovers <jer@gentoo.org> -nethogs-0.6.1_pre2.ebuild,
+  -files/nethogs-0.6.1_pre2-gcc43.patch, -nethogs-0.7.0.ebuild,
+  -files/nethogs-0.7.0-Makefile.patch, -files/nethogs-0.7.0-gcc44.patch:
+  Old.
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> nethogs-0.8.0-r2.ebuild:
+  x86 stable wrt bug #400611
+
+  27 Jan 2012; Agostino Sarubbo <ago@gentoo.org> nethogs-0.8.0-r2.ebuild:
+  Stable for amd64, wrt bug #400611
+
+  22 Nov 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #82110
+
+*nethogs-0.8.0-r2 (14 Nov 2011)
+
+  14 Nov 2011; Jeroen Roovers <jer@gentoo.org> -nethogs-0.8.0-r1.ebuild,
+  +nethogs-0.8.0-r2.ebuild:
+  Install binary in /usr/sbin by Samuli Suominen (bug #390385).
+
+*nethogs-0.8.0-r1 (14 Nov 2011)
+
+  14 Nov 2011; Jeroen Roovers <jer@gentoo.org> -nethogs-0.8.0.ebuild,
+  +nethogs-0.8.0-r1.ebuild:
+  Install man page in the proper location by Samuli Suominen (bug #390385).
+
+*nethogs-0.8.0 (10 Oct 2011)
+
+  10 Oct 2011; Jeroen Roovers <jer@gentoo.org> +nethogs-0.8.0.ebuild:
+  Version bump.
+
+  03 Nov 2009; Raúl Porcel <armin76@gentoo.org> nethogs-0.7.0.ebuild:
+  Add ~ia64 wrt #282956
+
+  07 May 2009; Samuli Suominen <ssuominen@gentoo.org> nethogs-0.7.0.ebuild,
+  +files/nethogs-0.7.0-gcc44.patch:
+  Fix compile with GCC 4.4
+
+*nethogs-0.7.0 (29 Apr 2009)
+
+  29 Apr 2009; Samuli Suominen <ssuominen@gentoo.org> -nethogs-0.6.0.ebuild,
+  -files/nethogs-0.6.0-gcc34.diff, +nethogs-0.7.0.ebuild,
+  +files/nethogs-0.7.0-Makefile.patch:
+  Version bump.
+
+  10 Dec 2008; Markus Meier <maekke@gentoo.org> nethogs-0.6.1_pre2.ebuild:
+  amd64/x86 stable, bug #249898
+
+*nethogs-0.6.1_pre2 (05 Dec 2008)
+
+  05 Dec 2008; Samuli Suominen <ssuominen@gentoo.org>
+  +files/nethogs-0.6.1_pre2-gcc43.patch, +nethogs-0.6.1_pre2.ebuild:
+  Version bump with GCC 4.3 and GLIBC 2.8 patch wrt #249898, thanks to
+  Pro <hyrurg at gmail.com>
+
+  12 Apr 2007; <welp@gentoo.org> nethogs-0.6.0.ebuild:
+  Stable on amd64
+
+  12 Apr 2007; Markus Ullmann <jokey@gentoo.org> nethogs-0.6.0.ebuild:
+  Ebuild QA and drop ppc per bug #154778 - thanks dertobi123 for verifying
+
+  19 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  15 Feb 2006; Markus Ullmann <jokey@gentoo.org> nethogs-0.6.0.ebuild:
+  Removing virtual/libpcap wrt bug #117898
+
+  17 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> nethogs-0.6.0.ebuild:
+  Fix hardcoded CFLAGS and gcc.
+
+  16 Aug 2005; Simon Stelling <blubb@gentoo.org> nethogs-0.6.0.ebuild:
+  added ~amd64 keyword
+
+  19 Jul 2005; David Holm <dholm@gentoo.org> nethogs-0.6.0.ebuild:
+  Added to ~ppc.
+
+  07 May 2005; Marcelo Goes <vanquirius@gentoo.org> nethogs-0.6.0.ebuild:
+  Marking x86 stable.
+
+*nethogs-0.6.0 (04 Apr 2005)
+
+  04 Apr 2005; Marcelo Goes <vanquirius@gentoo.org> +metadata.xml,
+  +files/nethogs-0.6.0-gcc34.diff, +nethogs-0.6.0.ebuild:
+  Initial commit. Fixes bug 63992. I am using a small patch to allow the stable
+  version to compile with gcc-3.4. Thanks to Tom Hendrikx <tom@whyscream.net>,
+  Athul Acharya <aacharya@gmail.com>, Daniel Willmann <willmann.daniel@web.de>
+  and Dan McDonald <slashdevslashtty@gmail.com> for participating.

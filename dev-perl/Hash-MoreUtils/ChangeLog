@@ -1,0 +1,33 @@
+# ChangeLog for dev-perl/Hash-MoreUtils
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Hash-MoreUtils/ChangeLog,v 1.6 2015/06/13 22:51:47 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Hash-MoreUtils-0.20.0-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*Hash-MoreUtils-0.20.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Hash-MoreUtils-0.20.0-r1.ebuild, -Hash-MoreUtils-0.20.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Hash-MoreUtils-0.20.0 (16 Jun 2012)
+
+  16 Jun 2012; Torsten Veller <tove@gentoo.org> -Hash-MoreUtils-0.02.ebuild,
+  +Hash-MoreUtils-0.20.0.ebuild:
+  Change version scheme. Add ~x86. Add test dependencies
+
+  16 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  Hash-MoreUtils-0.02.ebuild:
+  Fix header. Remove extra dep.
+
+*Hash-MoreUtils-0.02 (16 Jun 2012)
+
+  16 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +Hash-MoreUtils-0.02.ebuild, +metadata.xml:
+  Initial import of Hash-MoreUtils required (indirectly) by the new google-api-
+  adwords-perl.

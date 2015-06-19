@@ -1,0 +1,46 @@
+# ChangeLog for app-crypt/gkeys
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gkeys/ChangeLog,v 1.11 2015/04/21 10:58:38 mrueg Exp $
+
+  21 Apr 2015; Manuel Rüger <mrueg@gentoo.org> gkeys-9999.ebuild:
+  Fix EGIT_REPO_URI.
+
+  05 Feb 2015; Michał Górny <mgorny@gentoo.org> metadata.xml:
+  Remove invalid herd reference.
+
+  12 Jan 2015; <steev@gentoo.org> gkeys-0.1-r1.ebuild:
+  Add ~arm keyword
+
+  09 Jan 2015; Brian Dolbec <dolsen@gentoo.org> gkeys-0.1-r1.ebuild,
+  gkeys-9999.ebuild:
+  Fix copyright header, gnupg dep.
+
+*gkeys-0.1-r1 (09 Jan 2015)
+
+  09 Jan 2015; Brian Dolbec <dolsen@gentoo.org> -gkeys-0.1.ebuild,
+  +gkeys-0.1-r1.ebuild, gkeys-9999.ebuild:
+  Revision bump 0.1 for a corrected tarball, remove older version.
+  Update 9999 ebuild.
+
+  08 Jan 2015; Pavlos Ratis <dastergon@gentoo.org> gkeys-0.1.ebuild:
+  add py-3.4 target
+
+*gkeys-0.1 (08 Jan 2015)
+
+  08 Jan 2015; Pavlos Ratis <dastergon@gentoo.org> +gkeys-0.1.ebuild:
+  initial release
+
+  01 Jan 2015; Brian Dolbec <dolsen@gentoo.org> gkeys-9999.ebuild:
+  Change default log location, set group, permissions.
+
+  01 Jan 2015; Brian Dolbec <dolsen@gentoo.org> gkeys-9999.ebuild:
+  Edit description.
+
+  25 Dec 2014; Brian Dolbec <dolsen@gentoo.org> gkeys-9999.ebuild:
+  Add missing snakeoil dependency.
+
+*gkeys-9999 (24 Dec 2014)
+
+  24 Dec 2014; Brian Dolbec <dolsen@gentoo.org> +gkeys-9999.ebuild,
+  +metadata.xml:
+  Initial live ebuild for gkeys.

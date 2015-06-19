@@ -1,0 +1,229 @@
+# ChangeLog for dev-perl/Net-SNMP
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-SNMP/ChangeLog,v 1.61 2015/06/13 22:29:16 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Net-SNMP-6.0.1-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+  27 Jun 2014; Mikle Kolyada <zlogene@gentoo.org> -Net-SNMP-6.0.1.ebuild,
+  Net-SNMP-6.0.1-r1.ebuild:
+  Merge stable keywords from -r0; Drop old.
+
+  14 Sep 2013; Patrick Lauer <patrick@gentoo.org> Net-SNMP-6.0.1-r1.ebuild:
+  Whitespace
+
+*Net-SNMP-6.0.1-r1 (13 Sep 2013)
+
+  13 Sep 2013; Ian Delaney <idella4@gentoo.org> +Net-SNMP-6.0.1-r1.ebuild:
+  revbump -> EAPI 5, upgraded src_install
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org> Net-SNMP-6.0.1.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  02 Apr 2011; Torsten Veller <tove@gentoo.org> -Net-SNMP-5.2.0.ebuild,
+  -Net-SNMP-6.0.0.ebuild:
+  Cleanup
+
+  22 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> Net-SNMP-6.0.1.ebuild:
+  ppc64 stable wrt #331021
+
+  21 Oct 2010; Jeroen Roovers <jer@gentoo.org> Net-SNMP-6.0.1.ebuild:
+  Stable for HPPA (bug #331021).
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org> Net-SNMP-6.0.1.ebuild:
+  stable ppc, bug 331021
+
+  12 Oct 2010; Raúl Porcel <armin76@gentoo.org> Net-SNMP-6.0.1.ebuild:
+  ia64/sparc stable wrt #331021
+
+  12 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  Net-SNMP-6.0.1.ebuild:
+  stable x86, bug 331021
+
+  09 Oct 2010; Markos Chandras <hwoarang@gentoo.org> Net-SNMP-6.0.1.ebuild:
+  Stable on amd64 wrt bug #331021
+
+  09 Oct 2010; Tobias Klausmann <klausman@gentoo.org> Net-SNMP-6.0.1.ebuild:
+  Stable on alpha, bug #331022
+
+*Net-SNMP-6.0.1 (10 Sep 2010)
+
+  10 Sep 2010; Torsten Veller <tove@gentoo.org> +Net-SNMP-6.0.1.ebuild:
+  Version bump. Fixes "locked" being deprecated warnings (#331021)
+
+  18 Mar 2010; Jeremy Olexa <darkside@gentoo.org> Net-SNMP-6.0.0.ebuild:
+  add ~x86-solaris ~sparc-solaris kw, as tested on bug 308683
+
+  18 Feb 2010; Jeremy Olexa <darkside@gentoo.org> Net-SNMP-6.0.0.ebuild:
+  Add ~arm kw for bug 305631
+
+*Net-SNMP-6.0.0 (14 Sep 2009)
+
+  14 Sep 2009; Torsten Veller <tove@gentoo.org> +Net-SNMP-6.0.0.ebuild:
+  Version bump
+
+  13 May 2008; Jeroen Roovers <jer@gentoo.org> Net-SNMP-5.2.0.ebuild:
+  Stable for HPPA (LuckyLuke).
+
+  07 Jan 2008; Jeroen Roovers <jer@gentoo.org> Net-SNMP-5.2.0.ebuild:
+  Marked ~hppa (LuckyLuke in #gentoo-hppa).
+
+  30 Jun 2007; Joshua Kinard <kumba@gentoo.org> Net-SNMP-5.2.0.ebuild:
+  Marked unstable on mips, per #183589.
+
+  11 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  -Net-SNMP-4.1.2.ebuild, -Net-SNMP-5.0.0.ebuild, -Net-SNMP-5.0.1.ebuild,
+  Net-SNMP-5.2.0.ebuild:
+  Cleaning up stale ebuilds
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Net-SNMP-4.1.2.ebuild, Net-SNMP-5.0.0.ebuild, Net-SNMP-5.0.1.ebuild,
+  Net-SNMP-5.2.0.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org> Net-SNMP-4.1.2.ebuild,
+  Net-SNMP-5.0.0.ebuild, Net-SNMP-5.0.1.ebuild, Net-SNMP-5.2.0.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed DEPEND
+
+  07 May 2006; Markus Rothe <corsair@gentoo.org> Net-SNMP-5.2.0.ebuild:
+  Stable on ppc64
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  Net-SNMP-4.1.2.ebuild, Net-SNMP-5.0.0.ebuild, Net-SNMP-5.0.1.ebuild,
+  Net-SNMP-5.2.0.ebuild:
+  Virtuals for some perl-core deps
+
+  06 Feb 2006; Simon Stelling <blubb@gentoo.org> Net-SNMP-5.2.0.ebuild:
+  stable on amd64
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> Net-SNMP-5.2.0.ebuild:
+  Mark 5.2.0 stable on ia64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> Net-SNMP-5.2.0.ebuild:
+  Mark 5.2.0 stable on alpha
+
+  15 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Net-SNMP-5.0.0.ebuild:
+  mirror syntax in 5.0.0
+
+  15 Jan 2006; Michael Hanselmann <hansmi@gentoo.org> Net-SNMP-5.2.0.ebuild:
+  Stable on ppc.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Net-SNMP-5.2.0.ebuild:
+  Marking sparc x86 stable
+
+  30 Dec 2005; <mcumming@gentoo.org> Net-SNMP-4.1.2.ebuild,
+  Net-SNMP-5.0.0.ebuild, Net-SNMP-5.0.1.ebuild, Net-SNMP-5.2.0.ebuild:
+  Migrating libnet to perl-core
+
+  17 Dec 2005; Markus Rothe <corsair@gentoo.org> Net-SNMP-5.2.0.ebuild:
+  Added ~ppc64
+
+*Net-SNMP-5.2.0 (19 Nov 2005)
+
+  19 Nov 2005; <mcumming@gentoo.org> +Net-SNMP-5.2.0.ebuild:
+  Version bump
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> Net-SNMP-5.0.1.ebuild:
+  add ~ia64
+
+*Net-SNMP-5.0.1 (24 May 2005)
+
+  24 May 2005; Michael Cummings <mcummings@gentoo.org> Net-SNMP-4.1.2.ebuild,
+  Net-SNMP-5.0.0.ebuild, Net-SNMP-5.0.1.ebuild:
+  dev-perl/Digest-MD5 => perl-core/Digest-MD5
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> Net-SNMP-5.0.0.ebuild:
+  Stable on amd64.
+
+  30 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> Net-SNMP-5.0.0.ebuild:
+  Stable on ppc.
+
+  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> Net-SNMP-5.0.0.ebuild:
+  Stable on alpha.
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> Net-SNMP-4.1.2.ebuild:
+  Stable on ppc.
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*Net-SNMP-5.0.0 (30 Jul 2004)
+
+  30 Jul 2004; Michael Cummings <mcummings@gentoo.org> +Net-SNMP-5.0.0.ebuild:
+  New version on CPAN
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org> Net-SNMP-4.1.2.ebuild:
+  Stable on alpha.
+
+  20 Jan 2004; <gustavoz@gentoo.org> Net-SNMP-4.1.2.ebuild:
+  stable on sparc
+
+*Net-SNMP-4.1.2 (06 Nov 2003)
+
+  06 Nov 2003; <rac@gentoo.org> Net-SNMP-4.1.0-r1.ebuild,
+  Net-SNMP-4.1.0.ebuild, Net-SNMP-4.1.1.ebuild, Net-SNMP-4.1.2.ebuild:
+  version bump, clean house
+
+*Net-SNMP-4.1.1 (09 Sep 2003)
+
+  09 Sep 2003; Michael Cummings <mcummings@gentoo.org> Net-SNMP-4.1.1.ebuild:
+  http://search.cpan.org/src/DTOWN/Net-SNMP-4.1.1/Changes - code fixes
+
+*Net-SNMP-4.1.0-r1 (28 Aug 2003)
+
+  28 Aug 2003; Michael Cummings <mcummings@gentoo.org>
+  Net-SNMP-4.1.0-r1.ebuild:
+  Missing most of its depends; bug 27317 brought this up
+
+*Net-SNMP-4.0.1-r2 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*Net-SNMP-4.0.1-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*Net-SNMP-4.1.0 (16 Jun 2003)
+
+  16 Jun 2003; Michael Cummings <mcummings@gentoo.org> Net-SNMP-4.1.0.ebuild:
+  CPAN version bump; needs testing
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*Net-SNMP-4.01-r1 (14 Aug 2002)
+
+  14 Aug 2002; Michael Cummings <mcummings@gentoo.org> Net-SNMP-4.01-r1.ebuild :
+
+  Added DEPEND for dev-perl/Crypt-DES
+
+*Net-SNMP-3.60-r1 (5 May 2002)
+  
+  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> Net-SNMP-3.60-r1.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  5 May 2002; Seemant Kulleen <seemant@gentoo.org> Net-SNMP-3.60-r1.ebuild
+  files/digest-Net-SNMP-3.60-r1 :
+
+  eclasses.
+
+*Net-SNMP-3.60 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

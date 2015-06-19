@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-perl/URI-1.0.9 >=dev-perl/libwww-perl-5.64-r1 >=virtual/perl-MIME-Base64-2.12 dev-lang/perl[-build(-)]
+DESCRIPTION=w3mir is a all purpose HTTP copying and mirroring tool
+EAPI=5
+HOMEPAGE=http://langfeldt.net/w3mir/
+KEYWORDS=alpha ~amd64 ppc ~sparc x86 ~arm-linux ~x86-linux
+LICENSE=Artistic
+RDEPEND=dev-lang/perl[-build(-)]
+SLOT=0
+SRC_URI=http://langfeldt.net/w3mir/w3mir-1.0.10.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-app	8886390eb1ac390b27350184fd3eb32f	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=74651d75af645bc7f74acffade270f07

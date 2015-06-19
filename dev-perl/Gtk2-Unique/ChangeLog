@@ -1,0 +1,60 @@
+# ChangeLog for dev-perl/Gtk2-Unique
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Gtk2-Unique/ChangeLog,v 1.14 2015/05/01 12:04:39 dilfridge Exp $
+
+  01 May 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Gtk2-Unique-0.50.0-r1.ebuild:
+  dev-perl/extutils-depends just became dev-perl/ExtUtils-Depends
+
+*Gtk2-Unique-0.50.0-r1 (25 Aug 2014)
+
+  25 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Gtk2-Unique-0.50.0-r1.ebuild, -Gtk2-Unique-0.50.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  01 Mar 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Add missing cpan remote-id tags in metadata.xml (#406287)
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Gtk2-Unique-0.05.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Gtk2-Unique-0.50.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org> Gtk2-Unique-0.50.0.ebuild:
+  Drop unused eutils eclass
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org> +Gtk2-Unique-0.50.0.ebuild:
+  Change version scheme
+
+  31 May 2011; Markus Meier <maekke@gentoo.org> Gtk2-Unique-0.05.ebuild:
+  x86 stable, bug #367831
+
+  19 May 2011; Markos Chandras <hwoarang@gentoo.org> Gtk2-Unique-0.05.ebuild:
+  Stable on amd64 wrt bug #367831
+
+  24 Mar 2011; Markos Chandras <hwoarang@gentoo.org> +Gtk2-Unique-0.05.ebuild,
+  +files/Gtk2-Unique-0.05-implicit-pointer.patch, -Gtk2-Unique-0.50.0.ebuild:
+  Use correct version on ebuild. Add patch for implicit pointer conversion. Bug
+  #358797
+
+  21 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  Gtk2-Unique-0.50.0.ebuild:
+  Fix slot-deps on gnome libs
+
+*Gtk2-Unique-0.50.0 (14 Mar 2011)
+
+  14 Mar 2011; Torsten Veller <tove@gentoo.org> -Gtk2-Unique-0.05.ebuild,
+  +Gtk2-Unique-0.50.0.ebuild:
+  Add missing dependencies. Change version scheme. Not installable on 64bit
+  architectures due to poor programming practices (#358797)
+
+*Gtk2-Unique-0.05 (14 Mar 2011)
+
+  14 Mar 2011; Markos Chandras <hwoarang@gentoo.org> +Gtk2-Unique-0.05.ebuild,
+  +metadata.xml:
+  Initial commit

@@ -1,0 +1,274 @@
+# ChangeLog for x11-apps/bitmap
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/bitmap/ChangeLog,v 1.77 2015/03/14 13:53:07 maekke Exp $
+
+  14 Mar 2015; Markus Meier <maekke@gentoo.org> bitmap-1.0.8.ebuild:
+  arm stable, bug #530652
+
+  06 Mar 2015; Jeroen Roovers <jer@gentoo.org> bitmap-1.0.8.ebuild:
+  Stable for HPPA (bug #530652).
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> bitmap-1.0.8.ebuild:
+  Stable for alpha, wrt bug #530652
+
+  23 Feb 2015; Agostino Sarubbo <ago@gentoo.org> bitmap-1.0.8.ebuild:
+  Stable for sparc, wrt bug #530652
+
+  22 Feb 2015; Agostino Sarubbo <ago@gentoo.org> bitmap-1.0.8.ebuild:
+  Stable for ia64, wrt bug #530652
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> bitmap-1.0.8.ebuild:
+  Stable for ppc64, wrt bug #530652
+
+  20 Feb 2015; Agostino Sarubbo <ago@gentoo.org> bitmap-1.0.8.ebuild:
+  Stable for ppc, wrt bug #530652
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> bitmap-1.0.8.ebuild:
+  Stable for x86, wrt bug #530652
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org> bitmap-1.0.8.ebuild:
+  Stable for amd64, wrt bug #530652
+
+*bitmap-1.0.8 (04 Feb 2015)
+
+  04 Feb 2015; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +bitmap-1.0.8.ebuild, -bitmap-1.0.6.ebuild:
+  Version bump. Remove old.
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org> bitmap-1.0.7.ebuild:
+  Stable for x86, wrt bug #475480
+
+  07 Oct 2013; Agostino Sarubbo <ago@gentoo.org> bitmap-1.0.7.ebuild:
+  Stable for sparc, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org> bitmap-1.0.7.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  05 Oct 2013; Markus Meier <maekke@gentoo.org> bitmap-1.0.7.ebuild:
+  arm stable, bug #475480
+
+  05 Oct 2013; Agostino Sarubbo <ago@gentoo.org> bitmap-1.0.7.ebuild:
+  Stable for alpha, wrt bug #475480
+
+  04 Oct 2013; Agostino Sarubbo <ago@gentoo.org> bitmap-1.0.7.ebuild:
+  Stable for ppc64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org> bitmap-1.0.7.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  02 Oct 2013; Jeroen Roovers <jer@gentoo.org> bitmap-1.0.7.ebuild:
+  Stable for HPPA (bug #475480).
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org> bitmap-1.0.7.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*bitmap-1.0.7 (20 May 2013)
+
+  20 May 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +bitmap-1.0.7.ebuild, -bitmap-1.0.5.ebuild:
+  Version bump.
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> bitmap-1.0.6.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #419473
+
+  12 Jul 2012; Brent Baude <ranger@gentoo.org> bitmap-1.0.6.ebuild:
+  Marking bitmap-1.0.6 ppc stable for bug 419473
+
+  11 Jul 2012; Brent Baude <ranger@gentoo.org> bitmap-1.0.6.ebuild:
+  Marking bitmap-1.0.6 ppc64 stable for bug 419473
+
+  28 Jun 2012; Jeroen Roovers <jer@gentoo.org> bitmap-1.0.6.ebuild:
+  Stable for HPPA (bug #419473).
+
+  27 Jun 2012; Markus Meier <maekke@gentoo.org> bitmap-1.0.6.ebuild:
+  arm stable, bug #419473
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> bitmap-1.0.6.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> bitmap-1.0.6.ebuild:
+  Stable for amd64, wrt bug #419473
+
+  15 May 2012; Alexis Ballier <aballier@gentoo.org> bitmap-1.0.6.ebuild:
+  keyword ~amd64-fbsd
+
+*bitmap-1.0.6 (10 Mar 2012)
+
+  10 Mar 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +bitmap-1.0.6.ebuild:
+  Version bump.
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> bitmap-1.0.5.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> bitmap-1.0.5.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #344827
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> bitmap-1.0.5.ebuild:
+  Stable for HPPA (bug #344827).
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org> bitmap-1.0.5.ebuild:
+  arm stable, bug #344827
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org> bitmap-1.0.5.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> bitmap-1.0.5.ebuild:
+  amd64 stable wrt #344827
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> bitmap-1.0.5.ebuild:
+  ppc64 stable wrt #344827
+
+*bitmap-1.0.5 (08 Oct 2010)
+
+  08 Oct 2010; Tomáš Chvátal <scarabeus@gentoo.org> +bitmap-1.0.5.ebuild:
+  Version bump.
+
+  23 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -bitmap-1.0.3-r1.ebuild:
+  rm
+
+  19 Jan 2010; Raúl Porcel <armin76@gentoo.org> bitmap-1.0.4.ebuild:
+  s390 stable wrt #294958
+
+  18 Jan 2010; Raúl Porcel <armin76@gentoo.org> bitmap-1.0.4.ebuild:
+  alpha/ia64/sh/sparc stable wrt #294958
+
+  14 Jan 2010; Markus Meier <maekke@gentoo.org> bitmap-1.0.4.ebuild:
+  arm stable, bug #294958
+
+  14 Jan 2010; Jeroen Roovers <jer@gentoo.org> bitmap-1.0.4.ebuild:
+  Stable for HPPA (bug #294958).
+
+  27 Dec 2009; Joseph Jezak <josejx@gentoo.org> bitmap-1.0.4.ebuild:
+  Marked ppc stable for bug #294958.
+
+  15 Dec 2009; Brent Baude <ranger@gentoo.org> bitmap-1.0.4.ebuild:
+  Marking bitmap-1.0.4 ppc64 stable for bug 294958
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org> bitmap-1.0.4.ebuild:
+  x86 stable, bug 294958
+
+  10 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> bitmap-1.0.4.ebuild:
+  amd64 stable wrt #294958
+
+*bitmap-1.0.4 (03 Oct 2009)
+
+  03 Oct 2009; Tomáš Chvátal <scarabeus@gentoo.org> +bitmap-1.0.4.ebuild:
+  Version bump.
+
+  23 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  bitmap-1.0.3-r1.ebuild:
+  Stable on alpha for xorg-server-1.5/xorg-x11-7.4
+
+  28 May 2009; Raúl Porcel <armin76@gentoo.org> bitmap-1.0.3-r1.ebuild:
+  Add ~alpha
+
+  22 Apr 2009; Brent Baude <ranger@gentoo.org> bitmap-1.0.3-r1.ebuild:
+  Marking bitmap-1.0.3-r1 ppc64 stable for bug 264982
+
+  17 Apr 2009; Jeroen Roovers <jer@gentoo.org> bitmap-1.0.3-r1.ebuild:
+  Stable for HPPA (bug #264982).
+
+  11 Apr 2009; nixnut <nixnut@gentoo.org> bitmap-1.0.3-r1.ebuild:
+  ppc stable #264982
+
+  09 Apr 2009; Raúl Porcel <armin76@gentoo.org> bitmap-1.0.3-r1.ebuild:
+  arm/ia64/s390/sh stable wrt #264982
+
+  06 Apr 2009; Friedrich Oslage <bluebird@gentoo.org>
+  bitmap-1.0.3-r1.ebuild:
+  Stable on sparc, bug #264982
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org> bitmap-1.0.3-r1.ebuild:
+  x86 stable, bug #264982
+
+  05 Apr 2009; Olivier Crête <tester@gentoo.org> bitmap-1.0.3-r1.ebuild:
+  Stable on amd64, bug #264982
+
+*bitmap-1.0.3-r1 (16 Jan 2009)
+
+  16 Jan 2009; Rémi Cardona <remi@gentoo.org> +bitmap-1.0.3-r1.ebuild:
+  remove xprint support (see bug #254874)
+
+  03 Oct 2008; Raúl Porcel <armin76@gentoo.org> bitmap-1.0.3.ebuild:
+  Add ~ia64 wrt #237411
+
+  26 Sep 2008; Jeroen Roovers <jer@gentoo.org> bitmap-1.0.3.ebuild:
+  Marked ~hppa (bug #237411).
+
+  24 Sep 2008; Alexis Ballier <aballier@gentoo.org> bitmap-1.0.3.ebuild:
+  keyword ~x86-fbsd
+
+  24 Mar 2008; Markus Meier <maekke@gentoo.org> bitmap-1.0.3.ebuild:
+  amd64 stable, bug #202087
+
+  19 Dec 2007; Dawid Węgliński <cla@gentoo.org> bitmap-1.0.3.ebuild:
+  Stable on x86 (bug #202087)
+
+  09 Oct 2007; Donnie Berkholz <dberkholz@gentoo.org>; -bitmap-1.0.1.ebuild,
+  -bitmap-1.0.2.ebuild:
+  Drop old ebuilds.
+
+*bitmap-1.0.3 (25 Jan 2007)
+
+  25 Jan 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  +bitmap-1.0.3.ebuild:
+  Bump for X7.2.
+
+  20 May 2006; Robin H. Johnson <robbat2@gentoo.org> bitmap-1.0.2.ebuild:
+  Added ~ppc after testing.
+
+*bitmap-1.0.2 (13 May 2006)
+
+  13 May 2006; Donnie Berkholz <spyderous@gentoo.org>; +bitmap-1.0.2.ebuild:
+  Bump.
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> bitmap-1.0.1.ebuild:
+  Added ~ppc64
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -bitmap-0.99.2.ebuild, -bitmap-1.0.0.ebuild:
+  Pull old versions.
+
+*bitmap-1.0.1 (23 Dec 2005)
+
+  23 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>; +bitmap-1.0.1.ebuild:
+  Bump for 7.0.
+
+*bitmap-1.0.0 (18 Dec 2005)
+
+  18 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +bitmap-1.0.0.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -bitmap-0.99.0.ebuild, -bitmap-0.99.1.ebuild:
+  Pull old versions.
+
+*bitmap-0.99.2 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +bitmap-0.99.2.ebuild:
+  Bump for 7.0RC3.
+
+*bitmap-0.99.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +bitmap-0.99.1.ebuild:
+  Bump for 7.0 RC1.
+
+  14 Oct 2005; <dang@gentoo.org> bitmap-0.99.0.ebuild:
+  Marked ~amd64
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> bitmap-0.99.0.ebuild:
+  Add ~sparc keyword (Modular X testing).
+
+*bitmap-0.99.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +bitmap-0.99.0.ebuild:
+  Initial commit for modular X.

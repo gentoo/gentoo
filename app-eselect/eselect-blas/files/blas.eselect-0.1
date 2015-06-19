@@ -1,0 +1,15 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id: blas.eselect-0.1,v 1.1 2015/03/31 16:46:52 ulm Exp $
+
+inherit skel
+
+MODULE="BLAS"
+IFACE="blas"
+
+DESCRIPTION="Manage installed $MODULE implementations"
+MAINTAINER="spyderous@gentoo.org"
+SVN_DATE='$Date: 2015/03/31 16:46:52 $'
+VERSION=$(svn_date_to_version "${SVN_DATE}" )
+
+# vim: set ft=eselect :

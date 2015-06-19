@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=dev-libs/bglibs-1.019-r1
+DESCRIPTION=A ucspi implementation for unix sockets
+HOMEPAGE=http://untroubled.org/ucspi-unix/
+KEYWORDS=amd64 ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/bglibs-1.019-r1
+SLOT=0
+SRC_URI=http://untroubled.org/ucspi-unix/archive/ucspi-unix-0.36.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=173a725708c6c5be4c08bcbf06bf4f02

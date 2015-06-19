@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>python</herd>
+	<longdescription lang="en">
+		Eunuchs is a library of Python extensions that complement the
+		standard libraries in parts where full support for the UNIX API (or
+		the Linux API) is missing.
+
+		Most of the functions wrapped by Eunuchs are low-level, dirty, but
+		absolutely necessary functions for real systems programming. The aim
+		is to have the functions added to mainstream Python libraries.
+	</longdescription>
+</pkgmetadata>

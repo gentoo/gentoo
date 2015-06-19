@@ -1,0 +1,179 @@
+# ChangeLog for media-sound/puddletag
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/puddletag/ChangeLog,v 1.39 2015/06/19 12:51:25 billie Exp $
+
+  19 Jun 2015; Daniel Pielmeier <billie@gentoo.org> puddletag-1.0.5.ebuild,
+  +files/puddletag-1.0.5-pyqt4.11.4.patch:
+  Add patch to make puddletag work with dev-python/PyQt4-4.11.4. This fixes bug
+  #552248. Thanks to Fabio Coatti for the report.
+
+  30 Jan 2015; Daniel Pielmeier <billie@gentoo.org> -puddletag-1.0.3.ebuild:
+  Remove old.
+
+*puddletag-1.0.5 (20 Nov 2014)
+
+  20 Nov 2014; Daniel Pielmeier <billie@gentoo.org> +puddletag-1.0.5.ebuild:
+  Version bump.
+
+  24 Mar 2014; Daniel Pielmeier <billie@gentoo.org> -puddletag-1.0.2.ebuild:
+  Remove old.
+
+*puddletag-1.0.3 (23 Mar 2014)
+
+  23 Mar 2014; Daniel Pielmeier <billie@gentoo.org> +puddletag-1.0.3.ebuild:
+  Version bump.
+
+  30 Nov 2013; Daniel Pielmeier <billie@gentoo.org> -puddletag-1.0.1-r1.ebuild:
+  Remove old.
+
+*puddletag-1.0.2 (08 Nov 2013)
+
+  08 Nov 2013; Daniel Pielmeier <billie@gentoo.org> +puddletag-1.0.2.ebuild:
+  Version bump.
+
+  12 Sep 2013; Michał Górny <mgorny@gentoo.org> puddletag-1.0.1-r1.ebuild:
+  Replace virtual/pyparsing dep with dev-python/pyparsing. The split versions
+  were removed and all in-tree versions support all impls now.
+
+  09 Jun 2013; Mike Gilbert <floppym@gentoo.org> puddletag-1.0.1-r1.ebuild:
+  Depend on virtual/python-imaging.
+
+  15 Apr 2013; Daniel Pielmeier <billie@gentoo.org> +puddletag-1.0.1-r1.ebuild,
+  -puddletag-1.0.1-r2.ebuild:
+  Revert previous commit and add slot operator for sip.
+
+*puddletag-1.0.1-r2 (15 Apr 2013)
+
+  15 Apr 2013; Daniel Pielmeier <billie@gentoo.org> -puddletag-1.0.1-r1.ebuild,
+  +puddletag-1.0.1-r2.ebuild:
+  Revision bump. Remove old. Sip is already pulled in via PyQt.
+
+  22 Mar 2013; Daniel Pielmeier <billie@gentoo.org> puddletag-1.0.1-r1.ebuild:
+  PyQt4 needs to be built with the svg USE flag. This fixes bug #462428. Thanks
+  to Jess Haas for the report.
+
+  24 Feb 2013; Daniel Pielmeier <billie@gentoo.org> puddletag-1.0.1-r1.ebuild:
+  Use PYTHON_USEDEP for mutagen as it now uses distutils-r1.
+
+  19 Feb 2013; Daniel Pielmeier <billie@gentoo.org> -puddletag-1.0.1.ebuild:
+  Remove old.
+
+*puddletag-1.0.1-r1 (02 Feb 2013)
+
+  02 Feb 2013; Daniel Pielmeier <billie@gentoo.org> +puddletag-1.0.1-r1.ebuild:
+  Revison bump. Switch to EAPI 5. Use distutils-r1. Thanks to Mike Gilbert for
+  migrating some dependencies. Remove redundant calls to
+  fdo-mime_desktop_database_update. Thanks to Michał Górny in bug 455130.
+
+  31 Dec 2012; Michał Górny <mgorny@gentoo.org> puddletag-1.0.1.ebuild:
+  Use virtual/pyparsing.
+
+  01 Oct 2012; Daniel Pielmeier <billie@gentoo.org> -puddletag-1.0.0.ebuild:
+  Remove old.
+
+*puddletag-1.0.1 (16 Sep 2012)
+
+  16 Sep 2012; Daniel Pielmeier <billie@gentoo.org> +puddletag-1.0.1.ebuild:
+  Version bump.
+
+  13 Sep 2012; Daniel Pielmeier <billie@gentoo.org>
+  -puddletag-1.0.0_beta6.ebuild, puddletag-1.0.0.ebuild, metadata.xml:
+  Add acoustid USE flag to fix bug #434176. Thanks to ci3nte for the report.
+  Remove old.
+
+*puddletag-1.0.0 (26 Aug 2012)
+
+  26 Aug 2012; Daniel Pielmeier <billie@gentoo.org> +puddletag-1.0.0.ebuild:
+  Version bump. This fixes bug #432666. Thanks to Morris for the report.
+
+  06 May 2012; Daniel Pielmeier <billie@gentoo.org> -puddletag-0.10.6.3.ebuild:
+  Remove old.
+
+*puddletag-1.0.0_beta6 (06 May 2012)
+
+  06 May 2012; Daniel Pielmeier <billie@gentoo.org>
+  +puddletag-1.0.0_beta6.ebuild:
+  Version bump.
+
+*puddletag-0.10.6.3 (07 Apr 2012)
+
+  07 Apr 2012; Daniel Pielmeier <billie@gentoo.org> -puddletag-0.10.6.ebuild,
+  +puddletag-0.10.6.3.ebuild:
+  Version bump. Remove old.
+
+  09 Jun 2011; Daniel Pielmeier <billie@gentoo.org> -puddletag-0.10.3.ebuild:
+  Remove old.
+
+*puddletag-0.10.6 (07 Jun 2011)
+
+  07 Jun 2011; Daniel Pielmeier <billie@gentoo.org> -puddletag-0.10.5.ebuild,
+  +puddletag-0.10.6.ebuild:
+  Version bump. Remove old.
+
+*puddletag-0.10.5 (07 Jun 2011)
+
+  07 Jun 2011; Daniel Pielmeier <billie@gentoo.org> -puddletag-0.10.2.ebuild,
+  +puddletag-0.10.5.ebuild, metadata.xml:
+  Version bump. Remove old.
+
+  31 Mar 2011; Daniel Pielmeier <billie@gentoo.org> puddletag-0.10.2.ebuild,
+  puddletag-0.10.3.ebuild:
+  Fix python/distutils.eclass related depreciation warnings.
+
+*puddletag-0.10.3 (27 Mar 2011)
+
+  27 Mar 2011; Daniel Pielmeier <billie@gentoo.org> -puddletag-0.10.0.ebuild,
+  +puddletag-0.10.3.ebuild:
+  Version bump. Remove old.
+
+*puddletag-0.10.2 (22 Mar 2011)
+
+  22 Mar 2011; Daniel Pielmeier <billie@gentoo.org> -puddletag-0.9.12.ebuild,
+  +puddletag-0.10.2.ebuild:
+  Version bump. Remove old.
+
+  11 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  puddletag-0.9.12.ebuild, puddletag-0.10.0.ebuild:
+  Fix deprecation warnings.
+
+*puddletag-0.10.0 (08 Mar 2011)
+
+  08 Mar 2011; Daniel Pielmeier <billie@gentoo.org> +puddletag-0.10.0.ebuild:
+  Version bump.
+
+  13 Feb 2011; Daniel Pielmeier <billie@gentoo.org> -puddletag-0.9.11.ebuild:
+  Remove old.
+
+*puddletag-0.9.12 (09 Feb 2011)
+
+  09 Feb 2011; Daniel Pielmeier <billie@gentoo.org> -puddletag-0.9.7.ebuild,
+  +puddletag-0.9.12.ebuild:
+  Version bump. Remove old.
+
+*puddletag-0.9.11 (10 Jan 2011)
+
+  10 Jan 2011; Daniel Pielmeier <billie@gentoo.org> +puddletag-0.9.11.ebuild:
+  Version bump. Fixes bug #350855 reported by Nickolaj Stjujsckij.
+
+  10 Nov 2010; Daniel Pielmeier <billie@gentoo.org> -puddletag-0.9.6.ebuild:
+  Remove old.
+
+*puddletag-0.9.7 (01 Nov 2010)
+
+  01 Nov 2010; Daniel Pielmeier <billie@gentoo.org> -puddletag-0.9.5.ebuild,
+  +puddletag-0.9.7.ebuild:
+  Version bump. Remove old.
+
+*puddletag-0.9.6 (16 Oct 2010)
+
+  16 Oct 2010; Daniel Pielmeier <billie@gentoo.org> +puddletag-0.9.6.ebuild:
+  Version bump.
+
+  13 Oct 2010; Markos Chandras <hwoarang@gentoo.org> puddletag-0.9.5.ebuild:
+  Keyworded for amd64. Bug #340497
+
+*puddletag-0.9.5 (09 Oct 2010)
+
+  09 Oct 2010; Daniel Pielmeier <billie@gentoo.org> +puddletag-0.9.5.ebuild,
+  +metadata.xml:
+  Initial commit. Fixes Bug #328305.

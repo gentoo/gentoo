@@ -1,0 +1,40 @@
+# ChangeLog for lxqt-base/lxqt-openssh-askpass
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/lxqt-base/lxqt-openssh-askpass/ChangeLog,v 1.5 2015/04/15 06:49:32 dlan Exp $
+
+  15 Apr 2015; Yixun Lan <dlan@gentoo.org> lxqt-openssh-askpass-0.9.0.ebuild:
+  restore arm keyword, bug 528676
+
+  03 Apr 2015; Michael Palimaka <kensington@gentoo.org>
+  lxqt-openssh-askpass-0.9.0.ebuild:
+  Drop ~arm keyword due to unsatisfied dependencies wrt bug #545432.
+
+  03 Apr 2015; Yixun Lan <dlan@gentoo.org> lxqt-openssh-askpass-0.9.0.ebuild:
+  keyword arm/arm64, tested on cortex-a9/cortex-a53 hardware
+
+*lxqt-openssh-askpass-0.9.0 (10 Feb 2015)
+
+  10 Feb 2015; Ben de Groot <yngwin@gentoo.org>
+  +lxqt-openssh-askpass-0.9.0.ebuild:
+  LXQt 0.9.0 version bump
+
+*lxqt-openssh-askpass-0.8.0 (08 Nov 2014)
+
+  08 Nov 2014; Jauhien Piatlicki <jauhien@gentoo.org>
+  +lxqt-openssh-askpass-0.8.0.ebuild, lxqt-openssh-askpass-0.7.0.ebuild:
+  version bump
+
+  29 May 2014; Manuel Rüger <mrueg@gentoo.org>
+  lxqt-openssh-askpass-0.7.0.ebuild:
+  Add ~arm keyword. This was tested on Radxa Rock (armv7).
+
+  25 May 2014; Jauhien Piatlicki <jauhien@gentoo.org>
+  lxqt-openssh-askpass-0.7.0.ebuild:
+  Fix DESCRIPTION
+
+*lxqt-openssh-askpass-0.7.0 (25 May 2014)
+
+  25 May 2014; Jauhien Piatlicki <jauhien@gentoo.org>
+  +lxqt-openssh-askpass-0.7.0.ebuild, +metadata.xml:
+  Initial import from the qt overlay, thanks to Harvey Mittens and Davide
+  Pesavento, see bug #509946

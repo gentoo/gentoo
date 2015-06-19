@@ -1,0 +1,24 @@
+# ChangeLog for dev-libs/log4c
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/log4c/ChangeLog,v 1.36 2014/10/15 17:50:13 kensington Exp $
+
+  15 Oct 2014; Michael Palimaka <kensington@gentoo.org> metadata.xml:
+  Add upstream metadata.
+
+*log4c-1.2.4 (15 Oct 2014)
+
+  15 Oct 2014; Michael Palimaka <kensington@gentoo.org>
+  +files/log4c-1.2.4-docdir.patch, +log4c-1.2.4.ebuild:
+  Version bump.
+
+  16 Feb 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #200380
+
+  04 Nov 2010; Christian Faulhammer <fauli@gentoo.org> log4c-1.2.1.ebuild:
+  stable x86, bug 342757
+
+*log4c-1.2.1 (08 Aug 2010)
+
+  08 Aug 2010; <elvanor@gentoo.org> +log4c-1.2.1.ebuild, +metadata.xml:
+  Initial import from bug #297708. Credits goes to n1ghtcr4wler@gmail.com,
+  gef.kornflakes@gmail.com, graham@grahamcox.co.uk.

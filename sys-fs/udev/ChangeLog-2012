@@ -1,0 +1,585 @@
+# ChangeLog for sys-fs/udev
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/ChangeLog-2012,v 1.1 2013/03/15 09:38:45 ssuominen Exp $
+
+*udev-171-r10 (18 Dec 2012)
+
+  18 Dec 2012; Richard Yao <ryao@gentoo.org> +udev-171-r10.ebuild:
+  Backport accept4 fallback path from eudev-1_beta1, approved by WilliamH and
+  ssuominen
+
+  02 Dec 2012; Samuli Suominen <ssuominen@gentoo.org> -udev-196.ebuild:
+  old
+
+*udev-196-r1 (02 Dec 2012)
+
+  02 Dec 2012; Samuli Suominen <ssuominen@gentoo.org> +udev-196-r1.ebuild,
+  udev-9999.ebuild:
+  USE="hwdb" will now pull in sys-apps/hwids with USE="udev" enabled to gain
+  pci.ids, usb.ids and oui.txt to generate /etc/udev/udev.bin from.
+  Run udevadm hwdb --update too. Thanks to Flameeyes for co-operating with
+  this one.
+
+*udev-196 (02 Dec 2012)
+
+  02 Dec 2012; Samuli Suominen <ssuominen@gentoo.org> +udev-196.ebuild,
+  udev-9999.ebuild:
+  Version bump.
+
+  01 Dec 2012; William Hubbs <williamh@gentoo.org> -udev-189.ebuild,
+  -udev-190.ebuild, -udev-191.ebuild, -udev-192.ebuild, -udev-193.ebuild,
+  -udev-194.ebuild:
+  after speaking with the systemd maintainer, older versions of udev are being
+  removed.
+
+  01 Dec 2012; William Hubbs <williamh@gentoo.org> +udev-189.ebuild,
+  +udev-190.ebuild, +udev-191.ebuild, +udev-192.ebuild, +udev-193.ebuild,
+  +udev-194.ebuild:
+  restore old versions so we do not break systemd
+
+  01 Dec 2012; William Hubbs <williamh@gentoo.org> -udev-189.ebuild,
+  -udev-190.ebuild, -udev-191.ebuild, -udev-192.ebuild, -udev-193.ebuild,
+  -udev-194.ebuild:
+  remove old versions
+
+  24 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> -udev-171-r8.ebuild:
+  old
+
+  24 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> udev-146-r1.ebuild,
+  udev-149.ebuild, udev-151-r4.ebuild, udev-164-r2.ebuild:
+  Reset keywording back to ~arch since these can't be considered stable
+  anymore. Use at your own risk.
+
+  24 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> udev-171-r9.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #443592
+
+  20 Nov 2012; Anthony G. Basile <blueness@gentoo.org> udev-171-r9.ebuild:
+  stable arm ppc ppc64, bug #443592
+
+  20 Nov 2012; Jeroen Roovers <jer@gentoo.org> udev-171-r9.ebuild:
+  Stable for HPPA (bug #443592).
+
+  19 Nov 2012; Agostino Sarubbo <ago@gentoo.org> udev-171-r9.ebuild:
+  stable for x86, wrt to bug #443592
+
+  18 Nov 2012; <ago@gentoo.org> udev-171-r9.ebuild:
+  Stable for amd64, wrt bug #443592
+
+*udev-171-r9 (16 Nov 2012)
+
+  16 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> +udev-171-r9.ebuild:
+  Backport upstream patch to skip ATA transport class devices for compability
+  with recent kernels wrt #437418 by "sf"
+
+  01 Nov 2012; William Hubbs <williamh@gentoo.org> udev-9999.ebuild:
+  sync live ebuild md5 for default rules with 195.
+
+  01 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> udev-195.ebuild,
+  udev-9999.ebuild:
+  Use REPLACING_VERSIONS to print out upgrade related messaging only when
+  required wrt #440462 by "poletti.marco"
+
+  01 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> udev-171-r8.ebuild:
+  Update HOMEPAGE and SRC_URI from latest stable wrt #440408
+
+*udev-195 (26 Oct 2012)
+
+  26 Oct 2012; William Hubbs <williamh@gentoo.org> +udev-195.ebuild:
+  version bump
+
+*udev-171-r8 (20 Oct 2012)
+
+  20 Oct 2012; William Hubbs <williamh@gentoo.org> +udev-171-r8.ebuild:
+  Another part of the fix for #438932.
+  Now we require both udev-mount and udev to be added to the sysinit
+  runlevel.
+
+*udev-171-r7 (20 Oct 2012)
+
+  20 Oct 2012; William Hubbs <williamh@gentoo.org> +udev-171-r7.ebuild:
+  This is a hot fix for stable udev for bug #438932.
+  The only change is that udev-mount has "provide dev-mount" added to
+  the depend function. This is going directly to stable with the approval
+  of robbat2 and chainsaw.
+
+  15 Oct 2012; Zac Medico <zmedico@gentoo.org> udev-194.ebuild,
+  udev-9999.ebuild:
+  Set QA_MULTILIB_PATHS for bug #424423.
+
+*udev-194 (04 Oct 2012)
+
+  04 Oct 2012; William Hubbs <williamh@gentoo.org> +udev-194.ebuild,
+  udev-9999.ebuild:
+  version bump and sync live ebuild.
+
+  01 Oct 2012; Diego E. Pettenò <flameeyes@gentoo.org> udev-193.ebuild:
+  Fix typo.
+
+*udev-193 (30 Sep 2012)
+
+  30 Sep 2012; William Hubbs <williamh@gentoo.org> +udev-193.ebuild:
+  version bump
+
+*udev-192 (26 Sep 2012)
+
+  26 Sep 2012; William Hubbs <williamh@gentoo.org> +udev-192.ebuild:
+  version bump
+
+*udev-191 (22 Sep 2012)
+
+  22 Sep 2012; William Hubbs <williamh@gentoo.org> +udev-191.ebuild:
+  version bump
+
+*udev-190 (21 Sep 2012)
+
+  21 Sep 2012; William Hubbs <williamh@gentoo.org> +udev-190.ebuild:
+  version bump
+
+  11 Sep 2012; William Hubbs <williamh@gentoo.org> udev-164-r2.ebuild,
+  udev-171-r6.ebuild, udev-189.ebuild, udev-9999.ebuild:
+  According to armin76, udev works fine on sh with glibc-2.11. To keep things
+  simple, I am adjusting the block to allow glibc-2.11 on all archs.
+
+  10 Sep 2012; William Hubbs <williamh@gentoo.org> udev-189.ebuild,
+  udev-9999.ebuild:
+  Add more information on persistent net rules and clean up ewarns. this closes
+  #433746 and #434626. Thanks to James Le Cuirot and Pacho Ramos.
+
+  10 Sep 2012; William Hubbs <williamh@gentoo.org> udev-189.ebuild,
+  udev-9999.ebuild:
+  Fix location for preserved library for #434632, thanks to Pacho Ramos.
+
+  10 Sep 2012; William Hubbs <williamh@gentoo.org> -udev-188.ebuild:
+  remove old version
+
+*udev-189 (24 Aug 2012)
+
+  24 Aug 2012; William Hubbs <williamh@gentoo.org> +udev-189.ebuild:
+  version bump
+
+  24 Aug 2012; William Hubbs <williamh@gentoo.org> -udev-187-r1.ebuild,
+  -udev-187-r3.ebuild:
+  remove old versions
+
+  15 Aug 2012; William Hubbs <williamh@gentoo.org> udev-9999.ebuild:
+  sync live ebuild
+
+*udev-188 (15 Aug 2012)
+
+  15 Aug 2012; William Hubbs <williamh@gentoo.org> +udev-188.ebuild:
+  version bump
+
+  13 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> udev-187-r3.ebuild,
+  udev-9999.ebuild:
+  Rename reserved check_KV function to udev_check_KV wrt #430562 by "zym"
+
+  11 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> udev-164-r2.ebuild,
+  udev-171-r6.ebuild, udev-187-r1.ebuild, udev-187-r3.ebuild, udev-9999.ebuild:
+  Update sys-libs/glibc block from <2.9 to <2.12 wrt #388075 by Tiago Marques
+
+  11 Aug 2012; Michał Górny <mgorny@gentoo.org> udev-187-r3.ebuild:
+  Block older versions of systemd hoping for a sane migration.
+
+*udev-187-r3 (08 Aug 2012)
+
+  08 Aug 2012; William Hubbs <williamh@gentoo.org> +udev-187-r3.ebuild,
+  udev-9999.ebuild:
+  rev bump to put /lib/udev back in /usr/lib/udev as well as add a second
+  compatibility patch so we can run helpers in /lib/udev.
+  Thanks to Egor Egorov for the patch.
+  I also spoke with the other udev maintainer (Samuli), and he agrees that
+  we should be using /usr/lib and allowing packages to put things in /lib
+  for now.
+  This is for bug #430412.
+
+  08 Aug 2012; Justin Lecher <jlec@gentoo.org> udev-187-r1.ebuild,
+  udev-187-r2.ebuild, udev-9999.ebuild:
+  Fix typo
+
+  08 Aug 2012; Alexandre Rostovtsev <tetromino@gentoo.org> udev-187-r1.ebuild,
+  udev-187-r2.ebuild, udev-9999.ebuild:
+  Update gobject-introspection dependency
+
+*udev-187-r2 (07 Aug 2012)
+
+  07 Aug 2012; William Hubbs <williamh@gentoo.org> +udev-187-r2.ebuild,
+  udev-9999.ebuild:
+  rev bump to move everything back to /lib/udev from /usr/lib/udev.
+  Also sync live ebuild.
+
+  04 Aug 2012; William Hubbs <williamh@gentoo.org> udev-187-r1.ebuild,
+  udev-9999.ebuild:
+  fix if statements
+
+  03 Aug 2012; William Hubbs <williamh@gentoo.org> udev-187-r1.ebuild,
+  udev-9999.ebuild:
+  Add a warning for bug #429466 wrt the /lib/udev->/usr/lib/udev migration.
+
+*udev-187-r1 (03 Aug 2012)
+
+  03 Aug 2012; William Hubbs <williamh@gentoo.org> +udev-187-r1.ebuild,
+  udev-9999.ebuild:
+  Fix the firmware path to search in /usr/lib then /lib. Also sync the
+  live ebuild.
+
+  01 Aug 2012; William Hubbs <williamh@gentoo.org> udev-187.ebuild,
+  udev-9999.ebuild:
+  fix calls to preserve_old_lib and preserve_old_lib_notify
+
+*udev-187 (01 Aug 2012)
+
+  01 Aug 2012; William Hubbs <williamh@gentoo.org> +udev-187.ebuild,
+  udev-9999.ebuild:
+  version bump and sync live ebuild
+
+  31 Jul 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -files/move_tmp_persistent_rules-112-r1.sh, -files/136/udev.confd,
+  -files/147/udev.confd, -files/write_root_link_rule-125,
+  -files/136/udev.initd, -files/147/udev.initd, -files/net-130-r1.sh,
+  -files/136/shell-compat-KV.sh, -files/136/udev-dev-tarball.initd,
+  -files/147/udev-mount.initd, -files/udev-141-remove-devfs-names.diff,
+  -files/136/udev-mount.initd, -files/147/udev-postmount.initd,
+  -files/blacklist-146, -files/136/udev-postmount.initd,
+  -files/147/udev-start.sh, -files/udev-150-fix-missing-firmware-timeout.diff,
+  -files/136/shell-compat-addon.sh, -files/136/udev-start.sh,
+  -files/147/udev-stop.sh, -files/udev-151-readd-hd-rules.diff,
+  -files/136/udev-stop.sh, -files/151-r4/shell-compat-KV.sh,
+  -files/udev-164-remove-v4l1.patch, -files/147/shell-compat-KV.sh,
+  -files/147/shell-compat-addon.sh, -files/147/udev-dev-tarball.initd,
+  -files/151-r4/shell-compat-addon.sh, -files/151-r4/udev.confd,
+  -files/151-r4/udev-dev-tarball.initd, udev-146-r1.ebuild,
+  -files/151-r4/udev-mount.initd, udev-151-r4.ebuild, -files/151-r4/udev.initd,
+  -files/151-r4/udev-postmount.initd, -files/151-r4/udev-start.sh,
+  udev-149.ebuild, udev-164-r2.ebuild, -files/151-r4/udev-stop.sh,
+  udev-141-r1.ebuild, udev-171-r6.ebuild, -files/pnp-aliases,
+  -files/shell-compat-KV.sh:
+  Tarball rest of the legacy files to mirrors.
+
+  30 Jul 2012; Samuli Suominen <ssuominen@gentoo.org> -files/blacklist-110,
+  udev-141-r1.ebuild:
+  udev-141-r1 can use blacklist-146 instead of blacklist-110 (because the only
+  difference is in commented out example for usblp)
+
+  30 Jul 2012; Samuli Suominen <ssuominen@gentoo.org> udev-171-r6.ebuild,
+  metadata.xml:
+  Move inherit around in -171-r6.ebuild and remove unused USE="acl" from
+  metadata.xml to silence repoman.
+
+  30 Jul 2012; Samuli Suominen <ssuominen@gentoo.org> -files/net-104-r10.sh,
+  -files/156/udev.confd, -files/udev-110-root-link-1.diff,
+  -files/156/udev.initd, -files/udev-postmount-initd-111-r2,
+  -files/156/udev-postmount.initd, -files/udev-stop-111-r2.sh,
+  -files/156/udev-start.sh, -files/udev-start-113-r2.sh,
+  -files/156/40-gentoo.rules, -files/156/udev-stop.sh,
+  -files/udev-start-114-r1.sh, -files/161/40-gentoo.rules,
+  -files/udev-114-root-link-2.diff, -files/161/90-network.rules,
+  -files/modprobe-114.sh, -files/161/shell-compat-KV.sh,
+  -files/modprobe-115.sh, -files/161/shell-compat-addon.sh,
+  -files/net-118-r1.sh, -files/161/udev.confd, -files/shell-compat-118-r2.sh,
+  -files/161/udev.initd, -files/udev-start-118-r2.sh,
+  -files/161/udev-dev-tarball.initd, -files/udev-stop-118-r2.sh,
+  -files/161/udev-mount.initd, -files/shell-compat-118-r3.sh,
+  -files/156/90-network.rules, -files/161/udev-postmount.initd,
+  -files/udev-start-122-r1.sh, -files/161/udev-start.sh,
+  -files/udev-122-rules-update.diff, -files/161/udev-stop.sh,
+  -files/udev-124-cdrom-autoclose-bug.diff, -files/156/shell-compat-KV.sh,
+  -files/164/40-gentoo.rules, -files/udev-124-encoding-overflow.patch,
+  -files/156/shell-compat-addon.sh, -files/164/90-network.rules,
+  -files/udev-124-netlink-owner-check.patch, -files/156/udev-dev-tarball.initd,
+  -files/164/shell-compat-KV.sh,
+  -files/udev-167-revert-disable-all-extras.patch, -files/156/udev-mount.initd,
+  -files/164/shell-compat-addon.sh, -files/udev-175-zlib.patch,
+  -files/164/udev.confd, -files/164/udev-dev-tarball.initd,
+  -udev-124-r1.ebuild, -files/164/udev.initd, -files/164/udev-mount.initd,
+  -udev-124-r2.ebuild, -files/164/udev-postmount.initd, -udev-114.ebuild,
+  -udev-141.ebuild, -files/164/udev-start.sh, -udev-115-r1.ebuild,
+  -udev-182-r2.ebuild, -files/164/udev-stop.sh, -udev-119.ebuild,
+  -udev-182-r3.ebuild, -files/udev.conf.post_113, -files/udev.conf.post_114,
+  -files/udev.confd, -files/udev.initd, -files/write_root_link_rule,
+  -udev-171-r5.ebuild:
+  old
+
+  30 Jul 2012; Mike Frysinger <vapier@gentoo.org> udev-186.ebuild:
+  Add m68k/s390 keywords #397769 by William Hubbs.
+
+  29 Jul 2012; William Hubbs <williamh@gentoo.org> udev-186.ebuild:
+  Fix the build when a cross emerge is used, thanks to Nick Bowler for the
+  patch. This closes bug #427142.
+
+  22 Jul 2012; Raúl Porcel <armin76@gentoo.org> udev-182-r2.ebuild,
+  udev-182-r3.ebuild, udev-186.ebuild:
+  Add ~alpha/~sh/~sparc wrt #397769
+
+  15 Jul 2012; Raúl Porcel <armin76@gentoo.org> udev-171-r6.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #416653
+
+  05 Jul 2012; William Hubbs <williamh@gentoo.org> udev-186.ebuild:
+  add back dependencies that were unintentionally removed for bug #424874,
+  thanks to Nikoli.
+
+*udev-186 (04 Jul 2012)
+
+  04 Jul 2012; William Hubbs <williamh@gentoo.org> +udev-186.ebuild:
+  version bump. I would like to thank Jonathan Callen for his assistance
+  with this ebuild.
+
+  03 Jul 2012; Jeroen Roovers <jer@gentoo.org> udev-171-r6.ebuild:
+  Stable for HPPA (bug #416653).
+
+  28 May 2012; Markus Meier <maekke@gentoo.org> udev-171-r6.ebuild:
+  arm stable, bug #416653
+
+  22 May 2012; Jeff Horelick <jdhore@gentoo.org> udev-171-r6.ebuild:
+  marked x86 per bug 416653
+
+  20 May 2012; Samuli Suominen <ssuominen@gentoo.org> udev-171-r6.ebuild:
+  ppc/ppc64 stable wrt #416653
+
+  20 May 2012; Agostino Sarubbo <ago@gentoo.org> udev-171-r6.ebuild:
+  Stable for amd64, wrt bug #416653
+
+*udev-171-r6 (17 May 2012)
+
+  17 May 2012; Samuli Suominen <ssuominen@gentoo.org> +udev-171-r6.ebuild:
+  Remove USE="acl" and from USE="extras" since the functionality is moved to
+  >=sys-auth/consolekit-0.4.5_p20120320[acl].
+
+  16 May 2012; Samuli Suominen <ssuominen@gentoo.org> udev-146-r1.ebuild,
+  udev-149.ebuild, udev-151-r4.ebuild:
+  Apply udev-164-remove-v4l1.patch to every old sys-fs/udev ebuild with
+  USE="extras" wrt #413055 by Andreis_Vinogradovs
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> udev-149.ebuild,
+  udev-151-r4.ebuild, udev-164-r2.ebuild, udev-171-r5.ebuild,
+  udev-182-r2.ebuild, udev-182-r3.ebuild, udev-9999.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Apr 2012; Mike Frysinger <vapier@gentoo.org> udev-146-r1.ebuild,
+  udev-149.ebuild, udev-151-r4.ebuild, udev-164-r2.ebuild, udev-171-r5.ebuild,
+  udev-182-r2.ebuild, udev-182-r3.ebuild, udev-9999.ebuild:
+  Do not depend on glibc -- block older versions only.
+
+  21 Apr 2012; Mike Frysinger <vapier@gentoo.org> udev-182-r3.ebuild:
+  Restore ~arch keywords #410401.
+
+  12 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> udev-171-r5.ebuild:
+  Try to support sys-apps/hwids also in 171-r5 for people who have temporarily
+  masked >= 180 wrt #411737 by Martin von Gagern
+
+  08 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> udev-9999.ebuild:
+  Use sys-apps/hwids for -9999 too. See commit 01 Apr 2012 to udev-182-r3.
+
+  02 Apr 2012; Jeroen Roovers <jer@gentoo.org> udev-182-r3.ebuild:
+  Marked ~hppa (bug #410401).
+
+*udev-182-r3 (01 Apr 2012)
+
+  01 Apr 2012; Diego E. Pettenò <flameeyes@gentoo.org> +udev-182-r3.ebuild:
+  Make use of the new hwids ebuild.
+
+  28 Mar 2012; Zac Medico <zmedico@gentoo.org> udev-182-r2.ebuild,
+  udev-9999.ebuild:
+  Block <udev-init-scripts-10 due to file collision with
+  /lib/udev/rules.d/40-gentoo.rules. Please ignore repoman dependency.unknown
+  warnings about the blocker which are produced by stable portage. The warnings
+  are disabled in latest protage (see bug #382407).
+
+  24 Mar 2012; William Hubbs <williamh@gentoo.org> -udev-182-r1.ebuild,
+  -udev-182.ebuild, udev-182-r2.ebuild, udev-9999.ebuild:
+  remove broken versions and sync live ebuild with latest udev 182 release
+
+*udev-182-r2 (24 Mar 2012)
+
+  24 Mar 2012; William Hubbs <williamh@gentoo.org> +udev-182-r2.ebuild:
+  revision bump for bug #409487
+
+*udev-182-r1 (23 Mar 2012)
+
+  23 Mar 2012; William Hubbs <williamh@gentoo.org> +udev-182-r1.ebuild:
+  revision bump for bug #409359
+
+  23 Mar 2012; William Hubbs <williamh@gentoo.org> udev-9999.ebuild:
+  Remove warnings about devfs-compatible rules from the live ebuild
+
+  23 Mar 2012; William Hubbs <williamh@gentoo.org> udev-9999.ebuild:
+  Remove some cruft from the live ebuild: The fix_old_persistent_net_rules
+  function has been there since 2008 and is not documented. This code fixed an
+  issue with very old persistent net rules which should be taken care of by now
+  since we have had several stable udev versions with this fix. The ebuild
+  should not touch things in ${ROOT}/lib/udev/devices; remove the code that does
+  this. Remove the code that removes ${ROOT}/etc/dev.d.
+
+  22 Mar 2012; William Hubbs <williamh@gentoo.org> udev-9999.ebuild:
+  re-order the econf options to match udev help.
+
+  22 Mar 2012; William Hubbs <williamh@gentoo.org> udev-9999.ebuild:
+  quoting fixes, make all tests use [[ and use $D for $ED since we are not on
+  prefix
+
+  22 Mar 2012; William Hubbs <williamh@gentoo.org> udev-182.ebuild,
+  udev-9999.ebuild:
+  repoman fix -- drop the blocker for <sys-fs/udev-init-scripts-10 since that is
+  no longer in the tree
+
+  22 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> udev-182.ebuild,
+  udev-9999.ebuild:
+  Move gtk-doc documentation to /usr/share/doc/${PF}/html with symlink(s) back
+  to /usr/share/gtk-doc/html wrt #312373
+
+  21 Mar 2012; Zac Medico <zmedico@gentoo.org> udev-182.ebuild,
+  udev-9999.ebuild:
+  Block <udev-init-scripts-10 due to file collision with
+  /lib/udev/rules.d/40-gentoo.rules.
+
+  20 Mar 2012; William Hubbs <williamh@gentoo.org> -udev-181.ebuild:
+  remove old version
+
+  20 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> udev-182.ebuild,
+  udev-9999.ebuild:
+  Support for USE="edd" functionality was removed by upstream, see NEWS:
+  /dev/disk/by-path/ links are no longer created for ATA devices behind
+  an 'ATA transport class', the logic to extract predictable numbers does
+  not exist in the kernel at this moment.
+  /dev/disk/by-id/scsi-* compatibility links are no longer created for
+  ATA devices, they have their own ata-* prefix.
+
+  20 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> udev-182.ebuild,
+  udev-9999.ebuild:
+  Fix path to README.keymap.txt wrt #408939 by "candrews"
+
+  20 Mar 2012; William Hubbs <williamh@gentoo.org> udev-182.ebuild,
+  udev-9999.ebuild:
+  Fix location of default rules file for bug #408937
+
+*udev-182 (19 Mar 2012)
+
+  19 Mar 2012; William Hubbs <williamh@gentoo.org> +udev-182.ebuild,
+  udev-181.ebuild, udev-9999.ebuild:
+  version bump, also closes bug #398049 and bug #408379
+
+  19 Mar 2012; William Hubbs <williamh@gentoo.org> +files/40-gentoo.rules,
+  metadata.xml, udev-9999.ebuild:
+  Add 40-gentoo.rules and the openrc use flag for bug #408379.
+
+  19 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> udev-181.ebuild,
+  udev-9999.ebuild:
+  Remove sys-apps/baselayout depend from here in favour of letting
+  sys-fs/udev-init-scripts handle it.
+
+  19 Mar 2012; William Hubbs <williamh@gentoo.org> udev-181.ebuild,
+  udev-9999.ebuild:
+  Revert making the CONFIG_DEVTMPFS check fatal. Checking for kernel config
+  options cannot be fatal because it breaks build hosts. See
+  https://bugs.gentoo.org/show_bug.cgi?id=103878#c29.
+
+  19 Mar 2012; William Hubbs <williamh@gentoo.org> udev-181.ebuild,
+  udev-9999.ebuild:
+  make check for CONFIG_DEVTMPFS critical. If this is not set, udev will not
+  run.
+
+  17 Mar 2012; Matt Turner <mattst88@gentoo.org> udev-181.ebuild:
+  Added ~mips, bug 397769.
+
+  15 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> udev-171-r5.ebuild,
+  udev-181.ebuild, udev-9999.ebuild:
+  Use correct HOMEPAGE wrt #402671 by Franz Siegfried Metz and Bruce Hill
+
+  15 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> udev-171-r5.ebuild,
+  udev-181.ebuild, udev-9999.ebuild:
+  Raise baselayout depend to >= 2 wrt #407849 by Michael Hill
+
+  15 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> udev-181.ebuild,
+  udev-9999.ebuild:
+  Remove use_enable for hwdb which isn't available and use correct bash syntax
+  for += wrt #408287. Quote the result of $(systemd_with_unitdir). Remove
+  useless libtool files in favour of pkg-config files.
+
+  15 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> udev-171-r5.ebuild,
+  udev-181.ebuild, udev-9999.ebuild:
+  Stop forcing USE="-zlib" for sys-apps/pciutils as part of bug #360849
+
+  11 Mar 2012; William Hubbs <williamh@gentoo.org> udev-181.ebuild,
+  udev-9999.ebuild:
+  move CONFIG_CHECK variable into pkg_setup, thanks to anarchy@gentoo.org.
+
+  11 Mar 2012; William Hubbs <williamh@gentoo.org> udev-181.ebuild,
+  udev-9999.ebuild:
+  Add rdepends for dracut, genkernel and openrc so that separate /usr works
+  correctly.
+
+  08 Mar 2012; William Hubbs <williamh@gentoo.org> udev-9999.ebuild:
+  live ebuild updates: remove acl support and remove support for arch-specific
+  rules since they have been removed upstream.
+
+  25 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> udev-171-r5.ebuild:
+  ppc64 stable wrt #399717
+
+  19 Feb 2012; William Hubbs <williamh@gentoo.org> udev-181.ebuild,
+  udev-9999.ebuild:
+  update kmod dependencies to >=kmod-5
+
+  19 Feb 2012; William Hubbs <williamh@gentoo.org> -udev-175-r1.ebuild,
+  -udev-180.ebuild:
+  remove old masked versions
+
+  12 Feb 2012; Jeff Horelick <jdhore@gentoo.org> udev-171-r5.ebuild:
+  x86 stable per bug 399717
+
+  08 Feb 2012; William Hubbs <williamh@gentoo.org> udev-9999.ebuild:
+  sync live ebuild
+
+*udev-181 (08 Feb 2012)
+
+  08 Feb 2012; William Hubbs <williamh@gentoo.org> +udev-181.ebuild:
+  version bump
+
+  07 Feb 2012; Jeroen Roovers <jer@gentoo.org> udev-171-r5.ebuild:
+  Stable for HPPA (bug #399717).
+
+  05 Feb 2012; William Hubbs <williamh@gentoo.org> udev-180.ebuild:
+  udev-180 only builds with kmod-4
+
+  05 Feb 2012; Markus Meier <maekke@gentoo.org> udev-171-r5.ebuild:
+  arm stable, bug #399717
+
+  04 Feb 2012; William Hubbs <williamh@gentoo.org> udev-180.ebuild,
+  udev-9999.ebuild:
+  add sys-apps/kmod to the dependencies for bug #402175
+
+*udev-180 (03 Feb 2012)
+
+  03 Feb 2012; William Hubbs <williamh@gentoo.org> +udev-180.ebuild,
+  udev-9999.ebuild:
+  udev 180 version bump. This version uses the split udev-init-scripts package
+  for bug #396181.
+
+  01 Feb 2012; Brent Baude <ranger@gentoo.org> udev-171-r5.ebuild:
+  Marking udev-171-r5 ppc for bug 399717
+
+  25 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> udev-146-r1.ebuild,
+  udev-149.ebuild, udev-151-r4.ebuild, udev-164-r2.ebuild:
+  Remove deprecated warning for HAL wrt #396015
+
+  23 Jan 2012; Agostino Sarubbo <ago@gentoo.org> udev-171-r5.ebuild:
+  Stable for amd64, wrt bug #399717
+
+  12 Jan 2012; William Hubbs <williamh@gentoo.org> files/udev-175-zlib.patch:
+  add back original patch for #397953.
+
+  04 Jan 2012; William Hubbs <williamh@gentoo.org> -files/udev-175-zlib.patch,
+  udev-175-r1.ebuild:
+  remove fix for bug #360849. This was rejected upstream; see the bug for more
+  information.
+
+  03 Jan 2012; William Hubbs <williamh@gentoo.org> udev-141-r1.ebuild,
+  udev-141.ebuild, udev-146-r1.ebuild, udev-149.ebuild, udev-151-r4.ebuild,
+  udev-164-r2.ebuild:
+  complete migration from git to git-2 e eclass.
+
+  02 Jan 2012; Mike Frysinger <vapier@gentoo.org> udev-175-r1.ebuild,
+  +files/udev-175-zlib.patch:
+  Support reading of compressed pci/usb databases #360849 by Samuli Suominen.
+
+  01 Jan 2012; Andreas K. Huettel <dilfridge@gentoo.org> +ChangeLog-2009:
+  Split ChangeLog.
+

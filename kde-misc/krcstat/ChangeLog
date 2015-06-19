@@ -1,0 +1,34 @@
+# ChangeLog for kde-misc/krcstat
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/krcstat/ChangeLog,v 1.7 2015/06/04 18:57:33 kensington Exp $
+
+  04 Jun 2015; Michael Palimaka <kensington@gentoo.org> krcstat-0.7.6.ebuild:
+  Move various kde-base packages to kde-apps.
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org> krcstat-0.7.6.ebuild:
+  Bump to EAPI 5.
+
+  20 Dec 2012; Michael Palimaka <kensington@gentoo.org>
+  -files/krcstat-0.7.3-gcc-4.7.patch, -krcstat-0.7.3.ebuild:
+  Remove old.
+
+*krcstat-0.7.6 (26 Oct 2012)
+
+  26 Oct 2012; Chris Reffett <creffett@gentoo.org> +krcstat-0.7.6.ebuild:
+  Version bump
+
+  03 Jul 2012; Michael Palimaka <kensington@gentoo.org>
+  +files/krcstat-0.7.3-gcc-4.7.patch, krcstat-0.7.3.ebuild:
+  Fix build with GCC 4.7, wrt bug #424567.
+
+*krcstat-0.7.3 (20 Apr 2011)
+
+  20 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> -krcstat-0.7.2.ebuild,
+  +krcstat-0.7.3.ebuild:
+  Version bump to latest. Drop older.
+
+*krcstat-0.7.2 (02 Jan 2011)
+
+  02 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> +krcstat-0.7.2.ebuild,
+  +metadata.xml:
+  Initial commit, bug 282310

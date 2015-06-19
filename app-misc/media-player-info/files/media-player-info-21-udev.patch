@@ -1,0 +1,20 @@
+From 952a7e728356681f019f3a5076169daa24b946b9 Mon Sep 17 00:00:00 2001
+From: Martin Pitt <martinpitt@gnome.org>
+Date: Mon, 30 Sep 2013 12:07:49 +0000
+Subject: Terminate udev rules with an empty line
+
+Apparently newer udev versions now complain about the lack of it. Reported by
+Frederic Crozat.
+---
+diff --git a/tools/mpi2udev.py b/tools/mpi2udev.py
+index d33055b..33fdfa2 100755
+--- a/tools/mpi2udev.py
++++ b/tools/mpi2udev.py
+@@ -126,4 +126,4 @@ for f in sys.argv[2:]:
+     parse_mpi(f, hwdb)
+ 
+ # udev rules footer
+-os.write(sys.stdout.fileno(), b'\nLABEL="media_player_end"')
++os.write(sys.stdout.fileno(), b'\nLABEL="media_player_end"\n')
+--
+cgit v0.9.0.2-2-gbebe

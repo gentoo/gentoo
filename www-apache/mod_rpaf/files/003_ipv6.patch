@@ -1,0 +1,31 @@
+Description: ipv6 fixes
+Author: Piotr Roszatycki <dexter@debian.org>
+Reviewed-by: Sergey B Kirpichev <skirpichev@gmail.com>
+Bug-Debian: http://bugs.debian.org/726529
+
+---
+ mod_rpaf-2.0.c |    6 ++++++
+ 1 file changed, 6 insertions(+)
+
+--- a/mod_rpaf-2.0.c
++++ b/mod_rpaf-2.0.c
+@@ -72,6 +72,8 @@
+ #include "http_vhost.h"
+ #include "apr_strings.h"
+ 
++#include <arpa/inet.h>
++
+ module AP_MODULE_DECLARE_DATA rpaf_module;
+ 
+ typedef struct {
+@@ -185,6 +187,10 @@
+             apr_pool_cleanup_register(r->pool, (void *)rcr, rpaf_cleanup, apr_pool_cleanup_null);
+             r->connection->remote_ip = apr_pstrdup(r->connection->pool, ((char **)arr->elts)[((arr->nelts)-1)]);
+             r->connection->remote_addr->sa.sin.sin_addr.s_addr = apr_inet_addr(r->connection->remote_ip);
++            apr_sockaddr_t *tmpsa;
++            int ret = apr_sockaddr_info_get(&tmpsa, r->connection->remote_ip, APR_UNSPEC, r->connection->remote_addr->port, 0, r->connection->remote_addr->pool);
++            if (ret == APR_SUCCESS)
++                memcpy(r->connection->remote_addr, tmpsa, sizeof(apr_sockaddr_t));
+             if (cfg->sethostname) {
+                 const char *hostvalue;
+                 if (hostvalue = apr_table_get(r->headers_in, "X-Forwarded-Host")) {

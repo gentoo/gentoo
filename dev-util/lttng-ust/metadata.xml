@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+	</maintainer>
+
+	<longdescription>
+		The userspace tracer is designed to provide detailed information about userspace activity. UST is a port of the LTTng kernel tracer to userspace. Like the LTTng kernel tracer, performance is the main goal. Tracing does not require system calls or traps. UST instrumentation points may be added in any userspace code including signal handlers and libraries­.
+	</longdescription>
+</pkgmetadata>

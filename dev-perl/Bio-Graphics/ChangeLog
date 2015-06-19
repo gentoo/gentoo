@@ -1,0 +1,228 @@
+# ChangeLog for dev-perl/Bio-Graphics
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Bio-Graphics/ChangeLog,v 1.45 2015/06/13 19:34:39 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Bio-Graphics-2.370.0-r1.ebuild, Bio-Graphics-2.390.0.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*Bio-Graphics-2.390.0 (18 Apr 2015)
+
+  18 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Bio-Graphics-2.390.0.ebuild:
+  Version bump
+
+  14 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> -Bio-Graphics-2.290.0.ebuild,
+  -Bio-Graphics-2.310.0.ebuild, -Bio-Graphics-2.320.0.ebuild:
+  Drop old.
+
+*Bio-Graphics-2.370.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Bio-Graphics-2.370.0-r1.ebuild, -Bio-Graphics-2.370.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 May 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #199047
+
+*Bio-Graphics-2.370.0 (15 Aug 2013)
+
+  15 Aug 2013; Patrick Lauer <patrick@gentoo.org> +Bio-Graphics-2.370.0.ebuild:
+  Bump
+
+*Bio-Graphics-2.320.0 (10 Dec 2012)
+
+  10 Dec 2012; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.320.0.ebuild:
+  Version bump
+
+*Bio-Graphics-2.310.0 (09 Oct 2012)
+
+  09 Oct 2012; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.310.0.ebuild,
+  metadata.xml:
+  Version bump
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org> -Bio-Graphics-2.240.0.ebuild,
+  -Bio-Graphics-2.250.0.ebuild, -Bio-Graphics-2.260.0.ebuild,
+  -Bio-Graphics-2.280.0.ebuild:
+  Cleanup
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Bio-Graphics-2.290.0 (16 Jun 2012)
+
+  16 Jun 2012; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.290.0.ebuild:
+  Version bump
+
+*Bio-Graphics-2.280.0 (19 Apr 2012)
+
+  19 Apr 2012; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.280.0.ebuild:
+  Version bump
+
+*Bio-Graphics-2.260.0 (29 Feb 2012)
+
+  29 Feb 2012; Robin H. Johnson <robbat2@gentoo.org>
+  +Bio-Graphics-2.260.0.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*Bio-Graphics-2.250.0 (21 Oct 2011)
+
+  21 Oct 2011; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.250.0.ebuild:
+  Version bump
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org> -Bio-Graphics-2.190.ebuild,
+  -Bio-Graphics-2.200.0.ebuild, -Bio-Graphics-2.210.0.ebuild:
+  Cleanup
+
+*Bio-Graphics-2.240.0 (28 May 2011)
+
+  28 May 2011; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.240.0.ebuild:
+  Version bump
+
+*Bio-Graphics-2.210.0 (14 Apr 2011)
+
+  14 Apr 2011; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.210.0.ebuild:
+  Version bump
+
+*Bio-Graphics-2.200.0 (08 Apr 2011)
+
+  08 Apr 2011; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.200.0.ebuild:
+  Version bump
+
+  03 Apr 2011; Torsten Veller <tove@gentoo.org> -Bio-Graphics-2.13.ebuild,
+  -Bio-Graphics-2.14.ebuild, -Bio-Graphics-2.15.ebuild,
+  -Bio-Graphics-2.180.ebuild:
+  Cleanup
+
+  07 Feb 2011; Robin H. Johnson <robbat2@gentoo.org> Bio-Graphics-2.190.ebuild:
+  Convert MODULE_VERSION back to explicit number for detection by update-ng
+  script.
+
+*Bio-Graphics-2.190 (07 Feb 2011)
+
+  07 Feb 2011; Robin H. Johnson <robbat2@gentoo.org>
+  +Bio-Graphics-2.190.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*Bio-Graphics-2.180 (13 Jan 2011)
+
+  13 Jan 2011; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.180.ebuild:
+  Version bump
+
+*Bio-Graphics-2.15 (03 Nov 2010)
+
+  03 Nov 2010; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.15.ebuild:
+  Version bump
+
+*Bio-Graphics-2.14 (20 Oct 2010)
+
+  20 Oct 2010; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.14.ebuild:
+  Version bump
+
+  20 Oct 2010; Torsten Veller <tove@gentoo.org> -Bio-Graphics-1.994.ebuild,
+  -Bio-Graphics-2.09.ebuild, -Bio-Graphics-2.10.ebuild,
+  -Bio-Graphics-2.11.ebuild, -Bio-Graphics-2.12.ebuild:
+  Cleanup
+
+*Bio-Graphics-2.13 (21 Sep 2010)
+
+  21 Sep 2010; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.13.ebuild:
+  Version bump
+
+*Bio-Graphics-2.12 (01 Sep 2010)
+
+  01 Sep 2010; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.12.ebuild:
+  Version bump
+
+*Bio-Graphics-2.11 (16 Jul 2010)
+
+  16 Jul 2010; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.11.ebuild:
+  Version bump
+
+*Bio-Graphics-2.10 (16 Jun 2010)
+
+  16 Jun 2010; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.10.ebuild:
+  Version bump
+
+  11 Jun 2010; Torsten Veller <tove@gentoo.org> -Bio-Graphics-2.00.ebuild,
+  -Bio-Graphics-2.01.ebuild, -Bio-Graphics-2.02.ebuild,
+  -Bio-Graphics-2.04.ebuild, -Bio-Graphics-2.05.ebuild,
+  -Bio-Graphics-2.06.ebuild, -Bio-Graphics-2.07.ebuild,
+  -Bio-Graphics-2.08.ebuild:
+  Cleanup
+
+*Bio-Graphics-2.09 (18 May 2010)
+
+  18 May 2010; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.09.ebuild:
+  Version bump
+
+*Bio-Graphics-2.08 (15 May 2010)
+
+  15 May 2010; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.08.ebuild:
+  Version bump
+
+*Bio-Graphics-2.07 (09 May 2010)
+
+  09 May 2010; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.07.ebuild:
+  Version bump
+
+*Bio-Graphics-2.06 (06 May 2010)
+
+  06 May 2010; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.06.ebuild:
+  Version bump
+
+*Bio-Graphics-2.05 (04 May 2010)
+
+  04 May 2010; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.05.ebuild:
+  Version bump
+
+*Bio-Graphics-2.04 (23 Apr 2010)
+
+  23 Apr 2010; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.04.ebuild:
+  Version bump
+
+*Bio-Graphics-2.02 (27 Mar 2010)
+
+  27 Mar 2010; Robin H. Johnson <robbat2@gentoo.org>
+  +Bio-Graphics-2.02.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*Bio-Graphics-2.01 (05 Mar 2010)
+
+  05 Mar 2010; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.01.ebuild:
+  Version bump
+
+*Bio-Graphics-2.00 (14 Feb 2010)
+
+  14 Feb 2010; Torsten Veller <tove@gentoo.org> +Bio-Graphics-2.00.ebuild:
+  Version bump
+
+  24 Dec 2009; Torsten Veller <tove@gentoo.org> -Bio-Graphics-1.982.ebuild,
+  -Bio-Graphics-1.992.ebuild, -Bio-Graphics-1.993.ebuild:
+  Cleanup
+
+*Bio-Graphics-1.994 (11 Dec 2009)
+
+  11 Dec 2009; Torsten Veller <tove@gentoo.org> +Bio-Graphics-1.994.ebuild:
+  Version bump
+
+*Bio-Graphics-1.993 (10 Dec 2009)
+
+  10 Dec 2009; Torsten Veller <tove@gentoo.org> +Bio-Graphics-1.993.ebuild:
+  Version bump
+
+  23 Nov 2009; Torsten Veller <tove@gentoo.org> Bio-Graphics-1.982.ebuild,
+  Bio-Graphics-1.992.ebuild:
+  Depend on Module-Build (#294202)
+
+*Bio-Graphics-1.992 (22 Nov 2009)
+
+  22 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Bio-Graphics-1.992.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*Bio-Graphics-1.982 (11 Oct 2009)
+
+  11 Oct 2009; Andrey Kislyuk <weaver@gentoo.org> +metadata.xml,
+  +Bio-Graphics-1.982.ebuild:
+  New package, dependency for sci-biology/gbrowse, ebuild written by me

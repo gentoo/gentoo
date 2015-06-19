@@ -1,0 +1,52 @@
+# ChangeLog for dev-perl/Devel-StackTrace-AsHTML
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Devel-StackTrace-AsHTML/ChangeLog,v 1.6 2014/09/05 15:29:50 zlogene Exp $
+
+  05 Sep 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -Devel-StackTrace-AsHTML-0.110.0.ebuild:
+  Drop old.
+
+*Devel-StackTrace-AsHTML-0.140.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Devel-StackTrace-AsHTML-0.140.0-r1.ebuild,
+  -Devel-StackTrace-AsHTML-0.140.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  07 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  Devel-StackTrace-AsHTML-0.110.0.ebuild,
+  Devel-StackTrace-AsHTML-0.140.0.ebuild:
+  Depend on dev-perl/Filter instead of virtual/perl-Filter
+
+*Devel-StackTrace-AsHTML-0.140.0 (16 Aug 2013)
+
+  16 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +Devel-StackTrace-AsHTML-0.140.0.ebuild:
+  Bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Devel-StackTrace-AsHTML-0.110.0 (02 Feb 2012)
+
+  02 Feb 2012; Torsten Veller <tove@gentoo.org>
+  +Devel-StackTrace-AsHTML-0.110.0.ebuild, +metadata.xml:
+  Import from perl-experimental for Plack
+
+*Devel-StackTrace-AsHTML-0.110 (29 Jan 2011)
+
+  29 Jan 2011; Torsten Veller <tove@gentoo.org>
+  +Devel-StackTrace-AsHTML-0.110.ebuild:
+  Version bump
+
+*Devel-StackTrace-AsHTML-0.09 (29 Apr 2010)
+
+  29 Apr 2010; Torsten Veller <tove@gentoo.org>
+  +Devel-StackTrace-AsHTML-0.09.ebuild:
+  Version bump
+
+*Devel-StackTrace-AsHTML-0.05 (24 Jan 2010)
+
+  24 Jan 2010; Torsten Veller <tove@gentoo.org>
+  +Devel-StackTrace-AsHTML-0.05.ebuild, +metadata.xml:
+  Initial commit

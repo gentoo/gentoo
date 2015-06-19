@@ -1,0 +1,299 @@
+# ChangeLog for sys-libs/gdbm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/gdbm/ChangeLog,v 1.81 2014/10/20 17:43:50 vapier Exp $
+
+  20 Oct 2014; Mike Frysinger <vapier@gentoo.org> gdbm-1.11.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  26 Aug 2014; Michał Górny <mgorny@gentoo.org> gdbm-1.10-r1.ebuild,
+  gdbm-1.11.ebuild:
+  Install documentation files, bug #520944.
+
+  25 Aug 2014; Agostino Sarubbo <ago@gentoo.org> gdbm-1.11.ebuild:
+  Stable for sparc, wrt bug #518120
+
+  25 Aug 2014; Agostino Sarubbo <ago@gentoo.org> gdbm-1.11.ebuild:
+  Stable for arm, wrt bug #518120
+
+  25 Aug 2014; Agostino Sarubbo <ago@gentoo.org> gdbm-1.11.ebuild:
+  Stable for alpha, wrt bug #518120
+
+  23 Aug 2014; Agostino Sarubbo <ago@gentoo.org> gdbm-1.11.ebuild:
+  Stable for ia64, wrt bug #518120
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org> gdbm-1.11.ebuild:
+  Stable for ppc64, wrt bug #518120
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org> gdbm-1.11.ebuild:
+  Stable for ppc, wrt bug #518120
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org> gdbm-1.11.ebuild:
+  Stable for x86, wrt bug #518120
+
+  19 Aug 2014; Chema Alonso <nimiux@gentoo.org> gdbm-1.11.ebuild:
+  Stable for amd64 wrt bug #518120
+
+  17 Aug 2014; Jeroen Roovers <jer@gentoo.org> gdbm-1.11.ebuild:
+  Stable for HPPA (bug #518120).
+
+  28 Apr 2014; Michał Górny <mgorny@gentoo.org> gdbm-1.10-r1.ebuild,
+  gdbm-1.11.ebuild:
+  Replace multilib_build_binaries with multilib_is_native_abi, in order to put
+  an end to the confusion introduced by having two functions, the proper one
+  suggesting it is just for binaries.
+
+  21 Apr 2014; Michał Górny <mgorny@gentoo.org> gdbm-1.11.ebuild:
+  Use the new multilib_native_use* functions.
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> gdbm-1.10-r1.ebuild,
+  gdbm-1.10.ebuild, gdbm-1.11.ebuild, gdbm-1.8.3-r4.ebuild,
+  gdbm-1.9.1-r2.ebuild:
+  Add arm64 love.
+
+*gdbm-1.11 (13 Jan 2014)
+
+  13 Jan 2014; Lars Wendler <polynomial-c@gentoo.org> +gdbm-1.11.ebuild:
+  Version bump.
+
+  28 Nov 2013; Mike Frysinger <vapier@gentoo.org> gdbm-1.10-r1.ebuild:
+  Add USE=nls support #491202 by Seemant Kulleen.
+
+*gdbm-1.10-r1 (25 Nov 2013)
+
+  25 Nov 2013; Michał Górny <mgorny@gentoo.org> +gdbm-1.10-r1.ebuild:
+  Enable multilib support, bug #488376. Acked by Chainsaw.
+
+  17 Feb 2013; Zac Medico <zmedico@gentoo.org> gdbm-1.10.ebuild:
+  Add ~arm-linux keyword.
+
+  26 Jan 2013; Fabian Groffen <grobian@gentoo.org> gdbm-1.10.ebuild:
+  Marked ~m68k-mint, bug #449976
+
+*gdbm-1.10 (17 Jan 2013)
+
+  17 Jan 2013; Mike Frysinger <vapier@gentoo.org> +gdbm-1.10.ebuild:
+  Version bump #452396 by Agostino Sarubbo.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> gdbm-1.9.1-r2.ebuild:
+  keyword ~amd64-fbsd
+
+  25 Mar 2012; Fabian Groffen <grobian@gentoo.org> gdbm-1.9.1-r2.ebuild:
+  Added Prefix keywords
+
+  07 Dec 2011; Zac Medico <zmedico@gentoo.org> gdbm-1.9.1-r2.ebuild:
+  Bump to EAPI 3, fix for prefix, and add ~x86-linux keyword.
+
+  01 Nov 2011; Mike Frysinger <vapier@gentoo.org> gdbm-1.9.1-r2.ebuild:
+  Update LICENSE #388865 by Hans.
+
+*gdbm-1.9.1-r2 (20 Sep 2011)
+
+  20 Sep 2011; Mike Frysinger <vapier@gentoo.org> -gdbm-1.9.1.ebuild,
+  -gdbm-1.9.1-r1.ebuild, +gdbm-1.9.1-r2.ebuild, metadata.xml:
+  Convert USE=compat to USE=berkdb since that is what the compat library
+  actually is for, and drop berkdb linkage since gdbm does not seem to use it
+  anywhere.
+
+  20 Sep 2011; Mike Frysinger <vapier@gentoo.org> gdbm-1.9.1-r1.ebuild:
+  Enable compat by default since perl/python need it #383745 by Alexandre
+  Rostovtsev.
+
+*gdbm-1.9.1-r1 (20 Sep 2011)
+
+  20 Sep 2011; Mike Frysinger <vapier@gentoo.org> +gdbm-1.9.1-r1.ebuild,
+  +files/gdbm-1.9.1-compat-link.patch:
+  Add patch from upstream so gdbm_compat links against gdbm #383743 by
+  Alexandre Rostovtsev.
+
+*gdbm-1.9.1 (19 Sep 2011)
+
+  19 Sep 2011; Mike Frysinger <vapier@gentoo.org> +gdbm-1.9.1.ebuild,
+  metadata.xml:
+  Version bump.
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> gdbm-1.8.3-r3.ebuild:
+  Drop to ~mips
+
+  06 Feb 2010; Mike Frysinger <vapier@gentoo.org> gdbm-1.8.3-r4.ebuild:
+  Improve gdbm migration info with tip from Robert Cernansky #299390.
+
+  30 Jan 2010; Raúl Porcel <armin76@gentoo.org> gdbm-1.8.3-r4.ebuild:
+  sparc stable wrt #296825
+
+  15 Jan 2010; Mike Frysinger <vapier@gentoo.org> gdbm-1.8.3-r4.ebuild:
+  Add a warning for 32bit/LFS changes #299390.
+
+  05 Jan 2010; Mike Frysinger <vapier@gentoo.org> gdbm-1.8.3-r4.ebuild:
+  Mark alpha/amd64 stable #296825.
+
+  29 Dec 2009; Christian Faulhammer <fauli@gentoo.org> gdbm-1.8.3-r4.ebuild:
+  stable x86, bug 296825
+
+  28 Dec 2009; nixnut <nixnut@gentoo.org> gdbm-1.8.3-r4.ebuild:
+  ppc stable #296825
+
+  16 Dec 2009; Jeroen Roovers <jer@gentoo.org> gdbm-1.8.3-r4.ebuild:
+  Stable for HPPA (bug #296825).
+
+  14 Dec 2009; Brent Baude <ranger@gentoo.org> gdbm-1.8.3-r4.ebuild:
+  stable ppc64, bug 296825
+
+  14 Dec 2009; Mike Frysinger <vapier@gentoo.org> gdbm-1.8.3-r4.ebuild:
+  Mark arm/ia64/s390/sh stable.
+
+  16 Feb 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/gdbm-1.8.3-build.patch, gdbm-1.8.3-r4.ebuild:
+  Respect user LDFLAGS #209730 by Diego.
+
+*gdbm-1.8.3-r4 (26 Jan 2008)
+
+  26 Jan 2008; Mike Frysinger <vapier@gentoo.org> +gdbm-1.8.3-r4.ebuild:
+  Add LFS flags to the build so we can work with large dbs.
+
+  17 Feb 2007; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r3.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+*gdbm-1.8.3-r3 (04 Feb 2007)
+
+  04 Feb 2007; Mike Frysinger <vapier@gentoo.org>
+  +files/gdbm-1.8.3-compat-linking.patch, -gdbm-1.8.3-r2.ebuild,
+  +gdbm-1.8.3-r3.ebuild:
+  Cleanup ebuild and link the compat module against gdbm #165263 by Gergan
+  Penkov.
+
+  17 Oct 2006; Roy Marples <uberlord@gentoo.org> gdbm-1.8.3-r2.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  30 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> gdbm-1.8.3-r2.ebuild:
+  Add ~x86-fbsd keywords.
+
+  09 Mar 2006; Mike Frysinger <vapier@gentoo.org> gdbm-1.8.3-r2.ebuild:
+  Use revdep-rebuild --library instead of revdep-rebuild --soname #125506 by
+  Carsten Lohrke.
+
+*gdbm-1.8.3-r2 (24 Sep 2005)
+
+  24 Sep 2005; Bryan Østergaard <kloeri@gentoo.org> +gdbm-1.8.3-r2.ebuild:
+  Revert changes to src_compile and src_install fixing installation of
+  /usr/include/gdbm.h, bug 106970. Patch by Arndt Wills <arndt@wills-online.de>.
+
+  21 Sep 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/gdbm-1.8.3-fix-install-ownership.patch, gdbm-1.8.3-r1.ebuild:
+  Clean up ebuild and fix install permissions #24178.
+
+  10 Sep 2005; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r1.ebuild:
+  Replace "uclibctoolize" with "elibtoolize" and add the bin user/group if on
+  ppc-macos: this user is by default not on OSX.  This fixes this package on
+  ppc-macos.  Reviewed by Azarah.
+
+  16 Apr 2005; <gongloo@gentoo.org> gdbm-1.8.3-r1.ebuild:
+  Stable on ppc-macos.
+
+*gdbm-1.8.0-r5 (03 Apr 2005)
+
+  03 Apr 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +gdbm-1.8.0-r5.ebuild:
+  resurrect version needed by ppc-macos
+
+  07 Dec 2004; Hardave Riar <hardave@gentoo.org> gdbm-1.8.3-r1.ebuild:
+  Stable on mips, dep for bug #66360
+
+  04 Dec 2004; Robert Coie <rac@gentoo.org> gdbm-1.8.3-r1.ebuild:
+  keywording ppc
+
+  12 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> gdbm-1.8.3-r1.ebuild:
+  Stable on sparc
+
+  11 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> gdbm-1.8.0-r5.ebuild:
+  Added darwintoolize.
+
+  09 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> gdbm-1.8.3-r1.ebuild:
+  get_libdir fixes.
+
+  24 Aug 2004; Sven Wegener <swegener@gentoo.org> gdbm-1.8.3-r1.ebuild,
+  gdbm-1.8.3.ebuild:
+  Removed static from IUSE.
+
+  18 Aug 2004; Aron Griffis <agriffis@gentoo.org> gdbm-1.8.3-r1.ebuild:
+  stable on alpha and ia64
+
+*gdbm-1.8.3-r1 (01 Aug 2004)
+
+  01 Aug 2004; Mike Frysinger <vapier@gentoo.org> +gdbm-1.8.3-r1.ebuild:
+  Dont copy over the old library if it is of size 0 bytes; force those unlucky
+  users to revdep-rebuild.
+
+  25 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> gdbm-1.8.0-r5.ebuild:
+  Added to macos.
+
+  24 Jul 2004; Mike Frysinger <vapier@gentoo.org> gdbm-1.8.3.ebuild:
+  Clean up the ebuild a bit and add temp backwards compat #32510.
+
+  02 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> gdbm-1.8.0-r5.ebuild,
+  gdbm-1.8.3.ebuild:
+  virtual/glibc -> virtual/libc
+
+  02 Jun 2004; Travis Tilley <lv@gentoo.org> gdbm-1.8.3.ebuild:
+  stable on amd64
+
+  23 Mar 2004; Jon Portnoy <avenj@gentoo.org> gdbm-1.8.3.ebuild,
+  gdbm-1.8.0-r5.ebuild :
+  Updated ebuilds to remove invalid : in DEPEND for amd64 conditionals.
+  Also trashed all the use arch && gnuconfig_update junk in favor of 
+  simply running gnuconfig_update for everybody.
+
+  29 Feb 2004; Tom Gall <tgall@gentoo.org> gdbm-1.8.3.ebuild,gdbm-1.8.0-r5.ebuild:
+  add gnuconfig_update for ppc64
+
+*gdbm-1.8.3 (01 Nov 2003)
+
+  01 Nov 2003; Seemant Kulleen <seemant@gentoo.org> gdbm-1.8.3.ebuild:
+  Version bump -- noticed this while fixing the bug mentioned below
+
+  30 Oct 2003; Seemant Kulleen <seemant@gentoo.org> gdbm-1.8.0-r5.ebuild:
+  Many many little fixes -- header fix to remove Chad Huneycutt's name (repoman
+  violation), use epatch from the eutils eclassh, use append-flags from
+  flag-o-matic eclass, switch to econf and einstall syntaxes. Finally, fix
+  SRC_URI to mirror://gnu thanks to: Stony Yakovac <stonyy@tek.com> in bug
+  #32352
+
+  17 Sep 2003; Jon Portnoy <avenj@gentoo.org> gdbm-1.8.0-r5.ebuild :
+  ia64 keywords.
+
+  05 May 2003; Guy Martin <gmsoft@gentoo.org> gdbm-1.8.0-r5.ebuild :
+  Added gnuconfig_update fix in unpack. Fix #20485.
+
+  20 Feb 2003; Zach Welch <zwelch@gentoo.org> gdbm-1.8.0-r5.ebuild :
+  Added arm to keywords. Add gnuconfig_update fix in unpack.
+
+  09 Feb 2003; Guy Martin <gmsoft@gentoo.org> gdbm-1.8.0-r5.ebuild :
+  Added hppa to keywords.
+
+*gdbm-1.8.0-r5 (20 Dec 2002)
+
+  26 Feb 2003; Zach Welch <zwelch@gentoo.org> gdbm-1.8.0-r5.ebuild:
+  add arm keyword
+
+  20 Dec 2002; Jan Seidel <tuxus@gentoo.org> : gdbm-1.8.0-r5
+  Added mips to keywords
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*gdbm-1.8.0-r5 (6 Apr 2002)
+
+  15 Jul 2002; Mark Guertin <gerk@gentoo.org>
+  Added ppc to keywords
+
+  6 Apr 2002; Donny Davies <woodchip@gentoo.org> :
+
+  Fix libgdbm.la to have the correct libdir;  s:/usr/local/lib:/usr/lib:
+
+*gdbm-1.8.0-r4 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

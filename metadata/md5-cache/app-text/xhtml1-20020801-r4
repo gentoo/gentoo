@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare prerm unpack
+DEPEND=app-text/sgml-common dev-libs/libxml2 >=app-text/sgml-common-0.6.3-r2
+DESCRIPTION=DTDs for the eXtensible HyperText Markup Language 1.0
+EAPI=3
+HOMEPAGE=http://www.w3.org/TR/xhtml1/
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=W3C
+SLOT=0
+SRC_URI=http://www.w3.org/TR/xhtml1/xhtml1.tgz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	sgml-catalog	115ce04390f5bb32de8fef875ea71b4b	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=dabbcc2934e6bc53e684d976370eb6d6

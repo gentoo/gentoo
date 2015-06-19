@@ -1,0 +1,31 @@
+# ChangeLog for sys-apps/minised
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/minised/ChangeLog,v 1.6 2013/05/19 06:53:59 radhermit Exp $
+
+*minised-1.14 (19 May 2013)
+
+  19 May 2013; Tim Harder <radhermit@gentoo.org> +minised-1.14.ebuild:
+  Version bump (bug #466882).
+
+*minised-1.13 (30 Nov 2009)
+
+  30 Nov 2009; Samuli Suominen <ssuominen@gentoo.org> +minised-1.13.ebuild:
+  Version bump.
+
+*minised-1.11 (11 Oct 2007)
+
+  11 Oct 2007; Mike Frysinger <vapier@gentoo.org>
+  +files/minised-1.11-build.patch, +files/minised-1.11-headers.patch,
+  +minised-1.11.ebuild:
+  Version bump #195229.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  14 Jul 2005; David Holm <dholm@gentoo.org> minised-1.5.ebuild:
+  Added to ~ppc.
+
+*minised-1.5 (12 Jul 2005)
+
+  12 Jul 2005; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

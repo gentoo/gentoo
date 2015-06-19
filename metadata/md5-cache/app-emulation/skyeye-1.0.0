@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=sys-libs/ncurses media-libs/freetype x11-libs/gtk+:2 dev-libs/glib:2 x11-libs/pango virtual/pkgconfig
+DESCRIPTION=an ARM embedded hardware simulator
+EAPI=2
+HOMEPAGE=http://www.skyeye.org/
+KEYWORDS=~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses media-libs/freetype x11-libs/gtk+:2 dev-libs/glib:2 x11-libs/pango
+SLOT=0
+SRC_URI=http://download.gro.clinux.org/skyeye/skyeye-1.0.0.tar.bz2
+_md5_=e6b3b2a0f8b30bce802391c2e8baba7c

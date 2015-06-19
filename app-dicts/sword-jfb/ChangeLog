@@ -1,0 +1,12 @@
+# ChangeLog for app-dicts/sword-jfb
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/sword-jfb/ChangeLog,v 1.2 2014/01/05 23:18:25 creffett Exp $
+
+  05 Jan 2014; Chris Reffett <creffett@gentoo.org> sword-jfb-2.2.ebuild:
+  EAPI bump
+
+*sword-jfb-2.2 (17 May 2008)
+
+  17 May 2008; Steve Dibb <beandog@gentoo.org> +metadata.xml,
+  +sword-jfb-2.2.ebuild:
+  Initial commit

@@ -1,0 +1,11 @@
+--- dvisvgm-1.0.8/configure.ac
++++ dvisvgm-1.0.8/configure.ac
+@@ -106,7 +106,7 @@
+ # Check for libraries.
+ PKG_CHECK_MODULES([FREETYPE], [freetype2])
+ CXXFLAGS="$CXXFLAGS ${FREETYPE_CFLAGS}"
+-LDFLAGS="$LDFLAGS ${FREETYPE_LIBS}"
++LIBS="$LIBS ${FREETYPE_LIBS}"
+ 
+ AC_CHECK_LIB(z, gzopen)
+ 

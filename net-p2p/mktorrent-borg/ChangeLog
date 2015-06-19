@@ -1,0 +1,30 @@
+# ChangeLog for net-p2p/mktorrent-borg
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/mktorrent-borg/ChangeLog,v 1.4 2008/05/05 15:09:43 armin76 Exp $
+
+*mktorrent-borg-0.9.9 (05 May 2008)
+
+  05 May 2008; Raúl Porcel <armin76@gentoo.org> -files/0.9.8-CFLAGS.patch,
+  -mktorrent-borg-0.9.8.ebuild, +mktorrent-borg-0.9.9.ebuild:
+  Version bump wrt #220159
+
+*mktorrent-borg-0.9.8 (30 Dec 2007)
+
+  30 Dec 2007; Raúl Porcel <armin76@gentoo.org> +files/0.9.8-CFLAGS.patch,
+  -files/0.9.6-CFLAGS.patch, -mktorrent-borg-0.9.6.ebuild,
+  -mktorrent-borg-0.9.7.ebuild, +mktorrent-borg-0.9.8.ebuild:
+  Version bump, cleanup old
+
+*mktorrent-borg-0.9.7 (10 Nov 2007)
+
+  10 Nov 2007; Raúl Porcel <armin76@gentoo.org>
+  +mktorrent-borg-0.9.7.ebuild:
+  Version bump wrt bug #198016
+
+*mktorrent-borg-0.9.6 (16 Oct 2007)
+
+  16 Oct 2007; Raúl Porcel <armin76@gentoo.org> +files/0.9.6-CFLAGS.patch,
+  +metadata.xml, +mktorrent-borg-0.9.6.ebuild:
+  New package, initial ebuild by Kalidarn <dcecchin at gmail dot com>, bug
+  #195936
+

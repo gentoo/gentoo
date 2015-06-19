@@ -1,0 +1,113 @@
+# ChangeLog for media-gfx/brlcad
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/brlcad/ChangeLog,v 1.10 2014/12/05 17:18:54 jer Exp $
+
+  05 Dec 2014; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Remove redundant m-n.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  11 Sep 2012; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Drop maintainership
+
+  08 Jun 2012; Zac Medico <zmedico@gentoo.org> brlcad-7.18.4.ebuild:
+  inherit multilib for get_libdir
+
+  08 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> -brlcad-7.16.8.ebuild,
+  -brlcad-7.18.2.ebuild:
+  old
+
+  23 Sep 2011; Lars Wendler <polynomial-c@gentoo.org>
+  files/brlcad-7.18.4-libpng15.patch:
+  non-maintainer commit: Added fixed patch to build with libpng15 (bug
+  #378273). ACKed by ssuominen. Thanks to Ian Stakenvicius for providing a
+  working patch.
+
+  14 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> brlcad-7.18.4.ebuild,
+  +files/brlcad-7.18.4-libpng15.patch:
+  Fix building with libpng15 (missing zlib.h include) wrt #378273 by Diego Elio
+  Pettenò
+
+*brlcad-7.18.4 (18 Apr 2011)
+
+  18 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +brlcad-7.18.4.ebuild:
+  Dongxu Li <dongxuli2011@gmail.com> Added dev-tcltk/tkpng to RDEPENDS, bug
+  363251; version bump
+
+*brlcad-7.18.2 (27 Mar 2011)
+
+  27 Mar 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +brlcad-7.18.2.ebuild:
+  Version bump
+
+  27 Mar 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +brlcad-7.16.8.ebuild, +metadata.xml:
+  Moved from sci-misc to media-gfx
+
+  18 Jun 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  -brlcad-7.16.6-r1.ebuild, -files/brlcad-7.16.6-as-needed.patch,
+  -files/brlcad-7.16.6-stl-headers.patch, brlcad-7.16.8.ebuild:
+  Now X is forced (does not build without), itcl/itk paths removed from
+  ebuild. Switched to EAPI3.
+
+*brlcad-7.16.8 (26 May 2010)
+
+  26 May 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +brlcad-7.16.8.ebuild:
+  Version bump
+
+  09 Mar 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  brlcad-7.16.6-r1.ebuild:
+  Get the LDPATH right, bug #307867
+
+*brlcad-7.16.6-r1 (03 Mar 2010)
+
+  03 Mar 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  -brlcad-7.16.6.ebuild, +brlcad-7.16.6-r1.ebuild, metadata.xml:
+  Added benchmarks which can be run if the tests are enabled. Added a
+  desktop entry, and itk/itcl library path to the LDPATH environment
+
+  28 Feb 2010; Sébastien Fabbro <bicatali@gentoo.org> brlcad-7.16.6.ebuild:
+  Filtered -Werror, still creating problems (bug #307061)
+
+  26 Feb 2010; Sébastien Fabbro <bicatali@gentoo.org> brlcad-7.16.6.ebuild:
+  Enabling debug by default, following bug #306841
+
+*brlcad-7.16.6 (25 Feb 2010)
+
+  25 Feb 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +brlcad-7.16.6.ebuild, +files/brlcad-7.16.6-as-needed.patch,
+  +files/brlcad-7.16.6-stl-headers.patch, +metadata.xml:
+  Version bump and moved to the main tree
+
+  04 Feb 2010; Sébastien Fabbro <bicatali@gentoo.org> brlcad-7.16.4.ebuild:
+  Changed man directory to avoid conflicts
+
+*brlcad-7.16.4 (02 Feb 2010)
+
+  02 Feb 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  -brlcad-7.10.4.ebuild, +brlcad-7.16.4.ebuild,
+  +files/brlcad-7.16.4-as-needed.patch,
+  -files/brlcad-tcltk-man_install.patch:
+  Version bump. Rewrote from scratch
+
+  24 Aug 2008; Tim Cera <timcera@earthlink.net> brlcad-7.10.4.ebuild:
+  * The BDL (BSD Documentation License) was for content on their wiki. Removed
+  from software licenses. * Changed the copyright year to 2008.
+
+  19 Dec 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/brlcad-7.6.6-gentoo.diff, +files/brlcad-tcltk-man_install.patch,
+  -files/tcl.m4, -brlcad-7.6.6.ebuild, +brlcad-7.10.4.ebuild:
+  Version bump
+
+  26 January 2006; Lucas Chiesa <lucas.chiesa@gmail.com> brlcad-7.6.6.ebuild:
+  Added brlcad-7.6.6-gentoo.diff which replaces the entire test for 
+  tcl/tk/itcl/iwidgets in configure.ac. It needs some more work.
+
+*brlcad-7.6.6 (19 January 2006)
+
+  19 January 2006; Marcus D. Hanwell <cryos@gentoo.org>
+  +brlcad-7.6.6.ebuild:
+  Initial import into the science overlay, bug 77197.

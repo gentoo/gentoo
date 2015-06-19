@@ -1,0 +1,25 @@
+# ChangeLog for www-apache/mod_log_rotate
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_log_rotate/ChangeLog,v 1.5 2015/04/18 12:23:58 swegener Exp $
+
+  18 Apr 2015; Sven Wegener <swegener@gentoo.org> mod_log_rotate-1.01.ebuild:
+  Rename distfile to include package name.
+
+*mod_log_rotate-1.01 (10 Feb 2015)
+
+  10 Feb 2015; Michael Orlitzky <mjo@gentoo.org> +mod_log_rotate-1.01.ebuild:
+  Version bump for apache-2.4 support (bug #532838).
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  08 Apr 2009; Benedikt Böhm <hollow@gentoo.org>
+  mod_log_rotate-1.00.ebuild:
+  stable on amd64/x86
+
+*mod_log_rotate-1.00 (08 Feb 2008)
+
+  08 Feb 2008; Benedikt Böhm <hollow@gentoo.org>
+  +files/10_mod_log_rotate.conf, +metadata.xml, +mod_log_rotate-1.00.ebuild:
+  initial ebuild

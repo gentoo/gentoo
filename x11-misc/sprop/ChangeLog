@@ -1,0 +1,16 @@
+# ChangeLog for x11-misc/sprop
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/sprop/ChangeLog,v 1.3 2012/12/10 19:01:15 jer Exp $
+
+  10 Dec 2012; Jeroen Roovers <jer@gentoo.org> sprop-0.1.ebuild:
+  Fix LICENSE by Ulrich Müller (bug #446766).
+
+  07 Nov 2012; Jeroen Roovers <jer@gentoo.org> sprop-0.1.ebuild:
+  Marked ~x86 too.
+
+*sprop-0.1 (07 Nov 2012)
+
+  07 Nov 2012; Jeroen Roovers <jer@gentoo.org> +sprop-0.1.ebuild,
+  +metadata.xml:
+  Initial commit.
+

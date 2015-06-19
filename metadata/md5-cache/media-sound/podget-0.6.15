@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=A simple podcast aggregator written in bash
+EAPI=5
+HOMEPAGE=http://podget.sourceforge.net/
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-3
+RDEPEND=sys-apps/grep sys-apps/sed app-text/tofrodos net-misc/wget
+SLOT=0
+SRC_URI=mirror://sourceforge/podget/podget-0.6.15.tar.gz
+_md5_=5b3a5db4d815047796ea38980ce55e93

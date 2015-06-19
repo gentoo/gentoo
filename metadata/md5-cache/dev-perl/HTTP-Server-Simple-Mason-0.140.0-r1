@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-perl/Hook-LexWrap dev-perl/URI dev-perl/libwww-perl >=dev-perl/HTML-Mason-1.25 >=dev-perl/HTTP-Server-Simple-0.04 dev-lang/perl:=[-build(-)]
+DESCRIPTION=An abstract baseclass for a standalone mason server
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/HTTP-Server-Simple-Mason/
+KEYWORDS=amd64 ~ppc x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Hook-LexWrap dev-perl/URI dev-perl/libwww-perl >=dev-perl/HTML-Mason-1.25 >=dev-perl/HTTP-Server-Simple-0.04 dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/J/JE/JESSE/HTTP-Server-Simple-Mason-0.14.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=2489299601f0c7a3a18e849e12c3d07b

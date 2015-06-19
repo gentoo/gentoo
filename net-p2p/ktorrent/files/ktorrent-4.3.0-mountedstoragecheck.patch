@@ -1,0 +1,25 @@
+--- a/ktorrent/core.cpp
++++ b/ktorrent/core.cpp
+@@ -1206,6 +1206,10 @@
+ 
+ 	bool Core::checkMissingFiles(TorrentInterface* tc)
+ 	{
++        QStringList missing;
++        if(!tc->hasMissingFiles(missing))
++            return true;
++        
+ 		QStringList not_mounted;
+ 		while(!tc->isStorageMounted(not_mounted))
+ 		{
+@@ -1226,10 +1230,6 @@
+ 			}
+ 		}
+ 
+-		QStringList missing;
+-		if(!tc->hasMissingFiles(missing))
+-			return true;
+-
+ 		if(tc->getStats().multi_file_torrent)
+ 		{
+ 			QString msg = i18n(
+

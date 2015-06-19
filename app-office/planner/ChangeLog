@@ -1,0 +1,404 @@
+# ChangeLog for app-office/planner
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/planner/ChangeLog,v 1.80 2015/06/13 10:05:40 pacho Exp $
+
+  13 Jun 2015; Pacho Ramos <pacho@gentoo.org> planner-0.14.6_p20130520.ebuild:
+  Needs rebuilding with eds subslot bumps
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> planner-0.14.6_p20130520.ebuild:
+  Remove old Python implementations
+
+  18 Apr 2014; Pacho Ramos <pacho@gentoo.org>
+  -files/planner-0.14.6-find-python.patch, -planner-0.14.6.ebuild:
+  Drop old
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> planner-0.14.6_p20130520.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> planner-0.14.6_p20130520.ebuild:
+  arch stable, bug 888
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> planner-0.14.6_p20130520.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> planner-0.14.6_p20130520.ebuild:
+  amd64 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> planner-0.14.6_p20130520.ebuild:
+  Doesn't like parallel install currently
+
+  25 Jun 2013; Pacho Ramos <pacho@gentoo.org> planner-0.14.6_p20130520.ebuild:
+  We need to set compile-warnings to a different value as it doesn't use
+  standard macro (#474610 by Juergen Rose).
+
+  20 May 2013; Gilles Dartiguelongue <eva@gentoo.org> planner-0.14.6.ebuild,
+  planner-0.14.6_p20130520.ebuild:
+  Fix typos from previous commit.
+
+*planner-0.14.6_p20130520 (20 May 2013)
+
+  20 May 2013; Gilles Dartiguelongue <eva@gentoo.org> planner-0.14.6.ebuild,
+  +planner-0.14.6_p20130520.ebuild:
+  Add a snapshot compatible with evolution-3.6, bug #448902. Fix compatibility
+  with automake-1.13, bug #467596.
+
+  05 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -files/planner-0.14.3-eds-plugin.patch, -planner-0.14.5.ebuild,
+  -files/planner-0.14.5-find-python.patch:
+  Clean up old revision.
+
+  15 Jul 2012; Raúl Porcel <armin76@gentoo.org> planner-0.14.6.ebuild:
+  alpha/sparc stable wrt #410611
+
+  24 May 2012; Samuli Suominen <ssuominen@gentoo.org> planner-0.14.6.ebuild:
+  ppc stable wrt #410611
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> planner-0.14.5.ebuild,
+  planner-0.14.6.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  29 Apr 2012; Markus Meier <maekke@gentoo.org> planner-0.14.6.ebuild:
+  x86 stable, bug #410611
+
+  18 Apr 2012; Agostino Sarubbo <ago@gentoo.org> planner-0.14.6.ebuild:
+  Stable for amd64, wrt bug #410611
+
+*planner-0.14.6 (04 Jan 2012)
+
+  04 Jan 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/planner-0.14.6-find-python.patch, +planner-0.14.6.ebuild:
+  Version bump.
+
+  14 Jul 2011; Pacho Ramos <pacho@gentoo.org> -planner-0.14.4.ebuild:
+  Remove old.
+
+  05 Jul 2011; Pacho Ramos <pacho@gentoo.org> planner-0.14.5.ebuild,
+  +files/planner-0.14.5-find-python.patch:
+  Find python in a faster way, bug #344231, upstream bug #654044. Thanks a lot
+  to Arfrever Frehtes Taifersar Arahesis and Ed Catmur for their help.
+
+*planner-0.14.5 (05 Jul 2011)
+
+  05 Jul 2011; Pacho Ramos <pacho@gentoo.org> +planner-0.14.5.ebuild:
+  Version bump, also disabled libgda support as it needs deprecated and
+  unmaintained gda3.
+
+  04 Jun 2011; Pacho Ramos <pacho@gentoo.org> planner-0.14.4.ebuild:
+  Add a note on upstream report for the patch we are applying.
+
+  16 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> planner-0.14.4.ebuild:
+  Fix slot-deps on gtk+ and other libs
+
+  06 Oct 2010; Gilles Dartiguelongue <eva@gentoo.org> planner-0.14.4.ebuild:
+  Do not install *.la files, they are not needed by planner itself and
+  planner has no reverse dependencies.
+
+  07 Mar 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -planner-0.14.3-r1.ebuild, -planner-0.14.3-r2.ebuild,
+  -files/planner-0.14.3-build-failure.patch,
+  -files/planner-0.14.3-configure.patch,
+  -files/planner-0.14.3-parallel-build.patch:
+  Clean up old revisions.
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> planner-0.14.4.ebuild:
+  ppc stable #274376
+
+  06 Jul 2009; Raúl Porcel <armin76@gentoo.org> planner-0.14.4.ebuild:
+  sparc stable wrt #274376
+
+  05 Jul 2009; Markus Meier <maekke@gentoo.org> planner-0.14.4.ebuild:
+  amd64 stable, bug #274376
+
+  27 Jun 2009; Tobias Klausmann <klausman@gentoo.org> planner-0.14.4.ebuild:
+  Stable on alpha, bug #274376
+
+  17 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  planner-0.14.4.ebuild:
+  stable x86, bug 274376
+
+*planner-0.14.4 (19 Apr 2009)
+
+  19 Apr 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +planner-0.14.4.ebuild:
+  Bump to 0.14.4. Use GtkPrint, drop old libgda support and more.
+
+  21 Jan 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -planner-0.14.2.ebuild, -planner-0.14.3.ebuild:
+  Clean up old revisions.
+
+  17 Jan 2009; nixnut <nixnut@gentoo.org> planner-0.14.3-r1.ebuild:
+  ppc stable #253940
+
+  10 Jan 2009; Markus Meier <maekke@gentoo.org> planner-0.14.3-r1.ebuild:
+  amd64/x86 stable, bug #253940
+
+  08 Jan 2009; Raúl Porcel <armin76@gentoo.org> planner-0.14.3-r1.ebuild:
+  alpha/sparc stable wrt #253940
+
+*planner-0.14.3-r2 (04 Dec 2008)
+*planner-0.14.3-r1 (04 Dec 2008)
+
+  04 Dec 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/planner-0.14.3-build-failure.patch,
+  +files/planner-0.14.3-configure.patch, +planner-0.14.3-r1.ebuild,
+  +planner-0.14.3-r2.ebuild:
+  Allow planner to select specific libgda and fix build with newer glib/gcc,
+  bug #231823
+
+  25 May 2008; Markus Meier <maekke@gentoo.org> planner-0.14.3.ebuild:
+  amd64/x86 stable, bug #223297
+
+  24 May 2008; nixnut <nixnut@gentoo.org> planner-0.14.3.ebuild:
+  Stable on ppc wrt bug 223297
+
+  23 May 2008; Tobias Klausmann <klausman@gentoo.org> planner-0.14.3.ebuild:
+  Stable on alpha, bug #223297
+
+  23 May 2008; Ferris McCormick <fmccor@gentoo.org> planner-0.14.3.ebuild:
+  Sparc stable, Bug #223297.  Nice application.
+
+  26 Apr 2008; Gilles Dartiguelongue <eva@gentoo.org> planner-0.14.3.ebuild:
+  add gtk-doc-am because of eautomake, bug #219337
+
+*planner-0.14.3 (20 Apr 2008)
+
+  20 Apr 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/planner-0.14.3-eds-plugin.patch,
+  +files/planner-0.14.3-parallel-build.patch, +planner-0.14.3.ebuild:
+  bump to 0.14.3. Bug fixes, support for libgda-3, a few new features and
+  updated translations. Patch to fix parallel build issue and compilation
+  fix for eds plugin.
+
+  10 Jan 2008; Mart Raudsepp <leio@gentoo.org> -planner-0.12.1.ebuild,
+  -planner-0.13.ebuild, -planner-0.14.ebuild:
+  Remove old versions as some do not compile anymore, bug 204367
+
+  10 Jan 2008; Daniel Gryniewicz <dang@gentoo.org> planner-0.14.2.ebuild:
+  Marked stable on amd64 for bug #204466
+
+  08 Jan 2008; Raúl Porcel <armin76@gentoo.org> planner-0.14.2.ebuild:
+  alpha stable wrt #204466
+
+  05 Nov 2007; Gilles Dartiguelongue <eva@gentoo.org> planner-0.14.2.ebuild:
+  fix example (bug #190698) again
+
+  13 Aug 2007; Gilles Dartiguelongue <eva@gentoo.org> planner-0.14.ebuild,
+  planner-0.14.2.ebuild:
+  updating dependencies wrt to configure.in
+
+  13 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  planner-0.14.2.ebuild:
+  ppc. stable
+
+  13 Aug 2007; Christian Faulhammer <opfer@gentoo.org>
+  planner-0.14.2.ebuild:
+  stable x86
+
+  07 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> planner-0.14.2.ebuild:
+  Stable on sparc
+
+  16 Jul 2007; Raúl Porcel <armin76@gentoo.org> planner-0.14.ebuild:
+  alpha stable
+
+*planner-0.14.2 (07 Jul 2007)
+
+  07 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  +planner-0.14.2.ebuild:
+  version bump, fixes bug 157957
+
+  07 Jul 2007; Christian Faulhammer <opfer@gentoo.org> planner-0.14.ebuild:
+  stable x86, to fix bug 157975
+
+  24 Jun 2007; Gilles Dartiguelongue <eva@gentoo.org> planner-0.12.1.ebuild,
+  planner-0.13.ebuild, planner-0.14.ebuild:
+  Preparing for lib{gda,gnomedb} 3.0, fixing dependencies (bug #172106)
+
+  25 Jan 2007; Marius Mauch <genone@gentoo.org> planner-0.12.1.ebuild:
+  Replacing einfo with elog
+
+  24 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org> planner-0.14.ebuild:
+  Stable on ppc.
+
+  27 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org> planner-0.14.ebuild:
+  Stable on sparc
+
+*planner-0.14 (27 Oct 2006)
+
+  27 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> planner-0.12.1.ebuild,
+  planner-0.13.ebuild, +planner-0.14.ebuild:
+  HOMEPAGE changed, revbump wrt #138872, fix doc installation #117009, should
+  fix #119454 too
+
+*planner-0.13 (04 Jun 2005)
+
+  04 Jun 2005; Marinus Schraal <foser@gentoo.org> planner-0.13.ebuild :
+  New release (#85328)
+
+  01 Apr 2005; Lars Weiler <pylon@gentoo.org> planner-0.12.1.ebuild:
+  Stable on ppc.
+
+  31 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> planner-0.12.1.ebuild:
+  Stable on alpha.
+
+  31 Mar 2005; <blubb@gentoo.org> planner-0.12.1.ebuild:
+  stable on amd64
+
+  08 Mar 2005; foser <foser@gentoo.org> planner-0.12.1.ebuild :
+  Ugly fix for #83947
+
+  03 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> planner-0.12.1.ebuild:
+  Stable on sparc
+
+  04 Feb 2005; Joe McCann <joem@gentoo.org> planner-0.11.ebuild:
+  remove old intltool workaround, closes bug 80708
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*planner-0.12.1 (09 Nov 2004)
+
+  09 Nov 2004; Mike Gardiner <obz@gentoo.org> +planner-0.12.1.ebuild:
+  New version, a bugfix release, as requested in bug #62265
+
+  23 Oct 2004; Alastair Tse <liquidx@gentoo.org> planner-0.11.ebuild,
+  planner-0.12-r1.ebuild:
+  add aclocal/automake/autoconf if calling intltoolize (#68514)
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  planner-0.11.ebuild:
+  Masked planner-0.11.ebuild stable for ppc
+
+*planner-0.12-r1 (14 Jul 2004)
+
+  14 Jul 2004; foser <foser@gentoo.org> planner-0.12-r1.ebuild :
+  Fix pygtk dep to a sandbox safe version (#56995)
+
+  14 Jul 2004; <spider@gentoo.org> +planner-0.12-r1.ebuild:
+  ugh. I goofed up and didnt notice the new python bindings, revamped the ebuild
+  to manage those with USE flags, and changed to the libgda interface instead of
+  direct postgres dep.
+
+*planner-0.12-r1 14 Jul 2004
+
+  14 Jul 2004; Spider <spider@gentoo.org> 
+  # INSERT ENTRY HERE
+
+*planner-0.12 (11 Jul 2004)
+
+  11 Jul 2004; <spider@gentoo.org> +planner-0.12.ebuild:
+  Version bump
+
+  19 Jun 2004; Jason Wever <weeve@gentoo.org> planner-0.11.ebuild:
+  Stable on sparc.
+
+  05 May 2004; Bryan Østergaard <kloeri@gentoo.org> planner-0.11.ebuild:
+  Stable on alpha.
+
+  03 Apr 2004; <spider@gentoo.org> planner-0.11.ebuild:
+  Move to stable, removing mrproject from the tree now.
+
+  17 Dec 2003; <spider@gentoo.org> planner-0.11.ebuild:
+  Added warning about removing mrproject & libmrproject
+
+*planner-0.11 (14 Dec 2003)
+
+  14 Dec 2003; <spider@gentoo.org> metadata.xml, planner-0.11.ebuild:
+  New build of planner, which was MrProject. This is both libmrproject and
+  mrproject, some deps have changed (postgres added, python completely gone, nls
+  completely gone).
+
+  18 Nov 2003; <spider@gentoo.org> mrproject-0.10.ebuild,
+  mrproject-0.5.1-r1.ebuild, mrproject-0.6.ebuild:
+  move to stable, remove old stuffs
+
+*mrproject-0.10 (21 Sep 2003)
+
+  21 Sep 2003; <spider@gentoo.org> mrproject-0.10.ebuild:
+  Versionbump and new SRC_URI as well as modified DEPEND
+
+  20 Aug 2003; Aron Griffis <agriffis@gentoo.org> mrproject-0.9.1.ebuild:
+  Add ~alpha to KEYWORDS
+
+  09 Aug 2003; <spider@gentoo.org> mrproject-0.9.1.ebuild:
+  Tweaked the dep for libmrproject
+
+  09 Aug 2003; <spider@gentoo.org> mrproject-0.9.1.ebuild:
+  Move to stable
+
+  09 Jul 2003; Alastair Tse <liquidx@gentoo.org> mrproject-0.5.1-r1.ebuild,
+  mrproject-0.6.ebuild, mrproject-0.7.ebuild, mrproject-0.8.ebuild,
+  mrproject-0.9.1.ebuild, mrproject-0.9.ebuild:
+  added scrollkeeper to deps
+
+  02 Jul 2003; Jason Wever <weeve@gentoo.org> mrproject-0.9.1.ebuild:
+  Added ~sparc to keywords.
+
+  10 Jun 2003; Alastair Tse <liquidx@gentoo.org> mrproject-0.5.1-r1.ebuild:
+  fixed gal deps
+
+*mrproject-0.9.1 (24 feb 2003)
+
+  24 feb 2003;  <spider@gentoo.org> mrproject-0.9.1.ebuild files/digest-mrproject-0.9.1 :
+  versionbump
+
+
+
+*mrproject-0.9 (20 Feb 2003)
+
+  20 Feb 2003; Spider <spider@gentoo.org> mrproject-0.9.ebuild :
+  added print dep, libbonobo
+  removed doc  USE (not supported in this package anymore)
+  moved to use gnome2.eclass
+  removed nls USE (not supported in gnome2 packages)
+
+
+    
+*mrproject-0.8 (02 Feb 2003)
+  
+  04 Feb 2003; Jon Nall <nall@gentoo.org> mrproject-0.8.ebuild :
+  added ~ppc
+
+  02 Feb 2003; Spider <spider@gentoo.org> mrproject-0.8.ebuild :
+  versionbump
+
+*mrproject-0.7 (02 Dec 2002)
+  
+  02 Dec 2002; Spider <spider@gentoo.org> mrproject-0.7.ebuild :
+  automated version dependency, marked as testing. 
+
+   
+*mrproject-0.6 (19 Aug 2002)
+  19 Aug 2002; Spider <spider@gentoo.org> mrproject-0.6.ebuild :
+  new stable version!
+  removed debugging
+
+*mrproject-0.5.94 (07 Aug 2002)
+  07 Aug 2002; Gabriele Giorgetti <stroke@gentoo.org> mrproject-0.5.94.ebuild:
+  New version, also updated the libmrproject dep to the latest version. 
+
+*mrproject-0.5.1-r1 (15 Jul 2002)
+  15 Jul 2002; Gabriele Giorgetti <stroke@gentoo.org> mrproject-0.5.1-r1.ebuild:
+  Fixed deps to emerge the correct gnome1 version of them. (libglade, gconf and 
+  gnome-vfs). Fixes bug #4961
+ 
+*mrproject-0.5.93 (06 Jul 2002)
+  06 Jul 2002; Spider <spider@gentoo.org> mrproject-0.5.93.ebuild ;
+  slightly old version, now uses debug.eclass
+  
+*mrproject-0.5.92 (23 May 2002)
+  23 May 2002; Spider <spider@gentoo.org> mrproject-0.5.92 :
+  New version again  
+
+*mrproject-0.5.91 (22 May 2002)
+  22 May 2002; Spider <spider@gentoo.org> mrproject-0.5.91 :
+  adding a gnome2 version, depends on dev-libs/libmrproject 
+
+*mrproject-0.5.1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

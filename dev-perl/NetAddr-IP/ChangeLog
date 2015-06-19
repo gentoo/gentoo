@@ -1,0 +1,308 @@
+# ChangeLog for dev-perl/NetAddr-IP
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/NetAddr-IP/ChangeLog,v 1.75 2015/01/18 17:29:15 zlogene Exp $
+
+  18 Jan 2015; Mikle Kolyada <zlogene@gentoo.org> NetAddr-IP-4.72.0.ebuild:
+  Mark alpha/ia64/sparc/x86 stable wrt bug #535214
+
+  18 Jan 2015; Agostino Sarubbo <ago@gentoo.org> NetAddr-IP-4.72.0.ebuild:
+  Stable for ppc64, wrt bug #535214
+
+  17 Jan 2015; Agostino Sarubbo <ago@gentoo.org> NetAddr-IP-4.72.0.ebuild:
+  Stable for ppc, wrt bug #535214
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> NetAddr-IP-4.72.0.ebuild:
+  Stable for amd64, wrt bug #535214
+
+  08 Jan 2015; Jeroen Roovers <jer@gentoo.org> NetAddr-IP-4.72.0.ebuild:
+  Stable for HPPA (bug #535214).
+
+  08 Jan 2015; Markus Meier <maekke@gentoo.org> NetAddr-IP-4.72.0.ebuild:
+  arm stable, bug #535214
+
+*NetAddr-IP-4.66.0-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +NetAddr-IP-4.66.0-r1.ebuild, -NetAddr-IP-4.66.0.ebuild:
+  bumped 4.66.0 EAPI to 5; committed directly to stable as no other changes
+  present and revbump helps stable systems to keep from dieing on perl-5.18
+  upgrade
+
+  16 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> -NetAddr-IP-4.59.0.ebuild,
+  NetAddr-IP-4.66.0.ebuild:
+  ppc stable wrt bug #449602; Drop old.
+
+  16 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> NetAddr-IP-4.66.0.ebuild:
+  ppc64 stable wrt bug #449602
+
+  16 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> NetAddr-IP-4.66.0.ebuild:
+  sparc stable wrt bug #449602
+
+  14 Feb 2014; Akinori Hattori <hattya@gentoo.org> NetAddr-IP-4.66.0.ebuild:
+  ia64 stable wrt bug #449602
+
+  10 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> NetAddr-IP-4.66.0.ebuild:
+  x86 stable wrt bug #449602
+
+  10 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> NetAddr-IP-4.66.0.ebuild:
+  amd64 stable wrt bug #449602
+
+  10 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> NetAddr-IP-4.66.0.ebuild:
+  alpha stable wrt bug #449602
+
+  10 Feb 2014; Jeroen Roovers <jer@gentoo.org> NetAddr-IP-4.66.0.ebuild:
+  Stable for HPPA (bug #449602).
+
+*NetAddr-IP-4.72.0 (08 Feb 2014)
+
+  08 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> +NetAddr-IP-4.72.0.ebuild:
+  Version bump
+
+  11 Jun 2013; Markus Meier <maekke@gentoo.org> NetAddr-IP-4.66.0.ebuild:
+  arm stable, bug #269129
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org> -NetAddr-IP-4.62.0.ebuild,
+  -NetAddr-IP-4.64.0.ebuild, -NetAddr-IP-4.65.0.ebuild:
+  Cleanup
+
+  19 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> NetAddr-IP-4.59.0.ebuild,
+  NetAddr-IP-4.62.0.ebuild, NetAddr-IP-4.64.0.ebuild, NetAddr-IP-4.65.0.ebuild,
+  NetAddr-IP-4.66.0.ebuild:
+  Bug #349901: Dual Artistic license, per Fedora upstream request to the author:
+  http://www.mail-archive.com/fedora-perl-devel-list@redhat.com/msg12589.html.
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop duplication of myself as a maintainer where there is a herd.
+
+*NetAddr-IP-4.66.0 (04 Nov 2012)
+
+  04 Nov 2012; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.66.0.ebuild:
+  Version bump
+
+*NetAddr-IP-4.65.0 (07 Oct 2012)
+
+  07 Oct 2012; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.65.0.ebuild:
+  Version bump
+
+*NetAddr-IP-4.64.0 (30 Sep 2012)
+
+  30 Sep 2012; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.64.0.ebuild:
+  Version bump
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org> -NetAddr-IP-4.028.ebuild,
+  -NetAddr-IP-4.58.0.ebuild, -NetAddr-IP-4.61.0.ebuild:
+  Cleanup
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  16 Jun 2012; Raúl Porcel <armin76@gentoo.org> NetAddr-IP-4.59.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #412969
+
+*NetAddr-IP-4.62.0 (09 Jun 2012)
+
+  09 Jun 2012; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.62.0.ebuild:
+  Version bump
+
+*NetAddr-IP-4.61.0 (09 May 2012)
+
+  09 May 2012; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.61.0.ebuild:
+  Version bump
+
+  06 May 2012; Brent Baude <ranger@gentoo.org> NetAddr-IP-4.59.0.ebuild:
+  Marking NetAddr-IP-4.59.0 ppc for bug 412969
+
+  26 Apr 2012; Jeroen Roovers <jer@gentoo.org> NetAddr-IP-4.59.0.ebuild:
+  Stable for HPPA (bug #412969).
+
+  24 Apr 2012; Jeff Horelick <jdhore@gentoo.org> NetAddr-IP-4.59.0.ebuild:
+  marked x86 per bug 412969
+
+  23 Apr 2012; Brent Baude <ranger@gentoo.org> NetAddr-IP-4.59.0.ebuild:
+  Marking NetAddr-IP-4.59.0 ppc64 for bug 412969
+
+  22 Apr 2012; Agostino Sarubbo <ago@gentoo.org> NetAddr-IP-4.59.0.ebuild:
+  Stable for amd64, wrt bug #412969
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> NetAddr-IP-4.028.ebuild,
+  NetAddr-IP-4.58.0.ebuild, NetAddr-IP-4.59.0.ebuild:
+  s390/sh stable
+
+*NetAddr-IP-4.59.0 (10 Mar 2012)
+
+  10 Mar 2012; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.59.0.ebuild:
+  Version bump
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org> -NetAddr-IP-4.44.0.ebuild,
+  -NetAddr-IP-4.48.0.ebuild, -NetAddr-IP-4.55.0.ebuild,
+  -NetAddr-IP-4.56.0.ebuild:
+  Cleanup
+
+  20 Dec 2011; Naohiro Aota <naota@gentoo.org> NetAddr-IP-4.58.0.ebuild:
+  Add ~x86-fbsd
+
+*NetAddr-IP-4.58.0 (12 Nov 2011)
+
+  12 Nov 2011; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.58.0.ebuild:
+  Version bump
+
+*NetAddr-IP-4.56.0 (05 Nov 2011)
+
+  05 Nov 2011; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.56.0.ebuild:
+  Version bump
+
+*NetAddr-IP-4.55.0 (30 Oct 2011)
+
+  30 Oct 2011; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.55.0.ebuild:
+  Version bump
+
+*NetAddr-IP-4.48.0 (19 Oct 2011)
+
+  19 Oct 2011; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.48.0.ebuild:
+  Version bump
+
+  29 Jul 2011; Torsten Veller <tove@gentoo.org> -NetAddr-IP-4.42.0.ebuild,
+  -NetAddr-IP-4.43.0.ebuild:
+  Cleanup
+
+*NetAddr-IP-4.44.0 (19 May 2011)
+
+  19 May 2011; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.44.0.ebuild:
+  Version bump
+
+*NetAddr-IP-4.43.0 (07 Apr 2011)
+
+  07 Apr 2011; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.43.0.ebuild:
+  Version bump
+
+  02 Apr 2011; Torsten Veller <tove@gentoo.org> -NetAddr-IP-4.037.ebuild,
+  -NetAddr-IP-4.38.ebuild, -NetAddr-IP-4.39.ebuild, -NetAddr-IP-4.40.ebuild,
+  -NetAddr-IP-4.41.0.ebuild:
+  Cleanup
+
+  30 Mar 2011; Michael Weber <xmw@gentoo.org> NetAddr-IP-4.42.0.ebuild:
+  added ~arm (bug 302981)
+
+*NetAddr-IP-4.42.0 (23 Mar 2011)
+
+  23 Mar 2011; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.42.0.ebuild:
+  Version bump
+
+*NetAddr-IP-4.41.0 (09 Mar 2011)
+
+  09 Mar 2011; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.41.0.ebuild:
+  Version bump
+
+*NetAddr-IP-4.40 (20 Feb 2011)
+
+  20 Feb 2011; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.40.ebuild:
+  Version bump
+
+*NetAddr-IP-4.39 (17 Feb 2011)
+
+  17 Feb 2011; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.39.ebuild:
+  Version bump
+
+*NetAddr-IP-4.38 (12 Jan 2011)
+
+  12 Jan 2011; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.38.ebuild:
+  Version bump
+
+  29 Dec 2010; Torsten Veller <tove@gentoo.org> -NetAddr-IP-4.030.ebuild,
+  -NetAddr-IP-4.032.ebuild, -NetAddr-IP-4.033.ebuild, -NetAddr-IP-4.035.ebuild:
+  Cleanup
+
+*NetAddr-IP-4.037 (22 Nov 2010)
+
+  22 Nov 2010; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.037.ebuild:
+  Version bump
+
+*NetAddr-IP-4.035 (31 Oct 2010)
+
+  31 Oct 2010; Torsten Veller <tove@gentoo.org> -NetAddr-IP-4.034.ebuild,
+  +NetAddr-IP-4.035.ebuild:
+  Version bump. Cleanup
+
+*NetAddr-IP-4.034 (27 Oct 2010)
+
+  27 Oct 2010; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.034.ebuild:
+  Version bump
+
+*NetAddr-IP-4.033 (30 Sep 2010)
+
+  30 Sep 2010; Robin H. Johnson <robbat2@gentoo.org>
+  +NetAddr-IP-4.033.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*NetAddr-IP-4.032 (28 Sep 2010)
+
+  28 Sep 2010; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.032.ebuild:
+  Version bump
+
+  03 Aug 2010; Jeroen Roovers <jer@gentoo.org> NetAddr-IP-4.028.ebuild:
+  Stable for PPC (bug #328019).
+
+  03 Aug 2010; Jeroen Roovers <jer@gentoo.org> NetAddr-IP-4.028.ebuild:
+  Stable for HPPA (bug #328019).
+
+  24 Jul 2010; Raúl Porcel <armin76@gentoo.org> NetAddr-IP-4.028.ebuild:
+  alpha/ia64/sparc stable wrt #328019
+
+*NetAddr-IP-4.030 (22 Jul 2010)
+
+  22 Jul 2010; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.030.ebuild:
+  Version bump
+
+  19 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  NetAddr-IP-4.028.ebuild:
+  ppc64 stable wrt #328019
+
+  18 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  NetAddr-IP-4.028.ebuild:
+  Stable on amd64 wrt bug #328019
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  NetAddr-IP-4.028.ebuild:
+  stable x86, bug 328019
+
+  06 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  NetAddr-IP-4.028.ebuild:
+  Keyword ~ppc64 wrt #313321
+
+  11 Jun 2010; Torsten Veller <tove@gentoo.org> -NetAddr-IP-4.027.ebuild:
+  Cleanup
+
+*NetAddr-IP-4.028 (14 May 2010)
+
+  14 May 2010; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.028.ebuild:
+  Version bump
+
+  28 Jan 2010; Jeroen Roovers <jer@gentoo.org> NetAddr-IP-4.027.ebuild:
+  Marked ~ppc (bug #302604).
+
+  28 Jan 2010; Jeroen Roovers <jer@gentoo.org> NetAddr-IP-4.027.ebuild:
+  Marked ~hppa (bug #302604).
+
+  28 Jan 2010; Raúl Porcel <armin76@gentoo.org> NetAddr-IP-4.027.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #302604
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org> -NetAddr-IP-4.026.ebuild:
+  Cleanup
+
+*NetAddr-IP-4.027 (10 Jun 2009)
+
+  10 Jun 2009; Torsten Veller <tove@gentoo.org> +NetAddr-IP-4.027.ebuild:
+  Version bump
+
+  10 Jun 2009; Torsten Veller <tove@gentoo.org> NetAddr-IP-4.026.ebuild:
+  Only Artistic, EAPI=2
+
+  10 Jun 2009; Robin H. Johnson <robbat2@gentoo.org>
+  NetAddr-IP-4.026.ebuild:
+  Cleanup ebuild style.
+
+*NetAddr-IP-4.026 (10 Jun 2009)
+
+  10 Jun 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +NetAddr-IP-4.026.ebuild, +metadata.xml:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

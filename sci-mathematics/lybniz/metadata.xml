@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-mathematics</herd>
+  <longdescription lang="en">
+  Lybniz is an easy to use mathematical function graph plotter using
+  PyGTK.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">lybniz2</remote-id>
+  </upstream>
+</pkgmetadata>

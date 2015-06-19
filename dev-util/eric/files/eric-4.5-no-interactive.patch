@@ -1,0 +1,15 @@
+--- eric4-4.5.10/install.py
++++ eric4-4.5.10/install.py
+@@ -1053,12 +1053,6 @@
+                     (v[0], v[1], v[2])
+                 print "    with foreign characters. Please see 'README-PyXML.txt' for"
+                 print "    details."
+-                try:
+-                    res = raw_input("    Shall pyXML be patched now (y/n)? ")
+-                    if res in ["Y", "y"]:
+-                        patchPyXML()
+-                except EOFError:
+-                    pass
+     except ImportError:
+         pass
+     

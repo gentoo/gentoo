@@ -1,0 +1,41 @@
+diff --git a/Makefile b/Makefile
+index fd20f12..0821bed 100644
+--- a/Makefile
++++ b/Makefile
+@@ -339,7 +339,7 @@ all:	$(BINARIES) $(LIBCUDARTSO)
+ 
+ namd2:	$(INCDIR) $(DSTDIR) $(OBJS) $(LIBS)
+ 	$(MAKEBUILDINFO)
+-	$(CHARMC) -verbose -ld++-option \
++	$(CHARMC) $(LDFLAGS) -verbose -ld++-option \
+ 	"$(COPTI)$(CHARMINC) $(COPTI)$(INCDIR) $(COPTI)$(SRCDIR) $(CXXOPTS)" \
+ 	-module NeighborLB -module commlib -language charm++ \
+ 	$(BUILDINFO).o \
+@@ -394,23 +394,23 @@ charmrun.exe:
+ 	$(COPY) $(CHARM)/bin/charmrun.exe charmrun.exe
+ 
+ psfgen:	$(DSTDIR) $(SBOBJS) $(PLUGINOBJS)
+-	$(CC) $(SBCFLAGS) -o psfgen $(SBOBJS) $(PLUGINOBJS) $(TCLLIB) $(TCLAPPLIB) -lm
++	$(CC) $(SBCFLAGS) $(LDFLAGS) -o psfgen $(SBOBJS) $(PLUGINOBJS) $(TCLLIB) $(TCLAPPLIB) -lm
+ 
+ psfgen.exe:	$(DSTDIR) $(SBOBJS) $(PLUGINOBJS) $(TCLDLL)
+ 	$(CC) $(SBCFLAGS) -o psfgen $(SBOBJS) $(PLUGINOBJS) $(TCLLIB) $(TCLAPPLIB) -lm
+ 
+ flipdcd:	$(SRCDIR)/flipdcd.c
+-	$(CC) $(CFLAGS) -o $@ $(SRCDIR)/flipdcd.c || \
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(SRCDIR)/flipdcd.c || \
+ 	echo "#!/bin/sh\necho unavailable on this platform" > $@; \
+ 	chmod +x $@
+ 
+ flipbinpdb:	$(SRCDIR)/flipbinpdb.c
+-	$(CC) $(CFLAGS) -o $@ $(SRCDIR)/flipbinpdb.c || \
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(SRCDIR)/flipbinpdb.c || \
+ 	echo "#!/bin/sh\necho unavailable on this platform" > $@; \
+ 	chmod +x $@
+ 
+ fixdcd:	$(SRCDIR)/fixdcd.c
+-	$(CC) $(CFLAGS) -o fixdcd $(SRCDIR)/fixdcd.c
++	$(CC) $(CFLAGS) $(LDFLAGS) -o fixdcd $(SRCDIR)/fixdcd.c
+ 
+ dumpdcd:	$(SRCDIR)/dumpdcd.c
+ 	$(CC) $(CFLAGS) -o dumpdcd $(SRCDIR)/dumpdcd.c

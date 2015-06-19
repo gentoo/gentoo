@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-dock</herd>
+<longdescription>
+WMCPULoad is a program to monitor CPU usage. It is a dockapp that is supported 
+by X window managers such as Window Maker, AfterStep, BlackBox, and 
+Enlightenment. It dispalys the current usage, expressed as a percentile and a 
+chart, and has an LCD look-alike user interface. The back light may be turned 
+on/off by clicking the mouse button over the application. If the CPU usage hits 
+a certain threshold, an alarm-mode will alert you by turning the back light on. 
+</longdescription>
+</pkgmetadata>

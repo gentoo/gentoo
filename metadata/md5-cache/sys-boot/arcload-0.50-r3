@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=sys-boot/dvhtool abi_mips_o32? ( sys-devel/kgcc64 )
+DESCRIPTION=ARCLoad - SGI Multi-bootloader. Able to bootload many different SGI Systems
+EAPI=4
+HOMEPAGE=http://www.linux-mips.org/wiki/index.php/ARCLoad
+KEYWORDS=-* ~mips
+LICENSE=GPL-2+
+RESTRICT=strip
+SLOT=0
+SRC_URI=ftp://ftp.linux-mips.org/pub/linux/mips/people/skylark/arcload-0.5.tar.bz2 mirror://gentoo/arcload-0.50-patches-v1.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=7e339fac62d242c9e46a2c24c006e2a3

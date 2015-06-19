@@ -1,0 +1,24 @@
+diff --git a/Makefile.template b/Makefile.template
+index 59de553..0ed283d 100644
+--- a/Makefile.template
++++ b/Makefile.template
+@@ -8,15 +8,15 @@ include VERSION
+ #
+ # Where to install the program, data files, and manuals
+ #
+-prefix  = /usr/local
++prefix  = @GENTOO_PORTAGE_EPREFIX@/usr/
+ bindir  = $(prefix)/bin
+ datadir = $(prefix)/share/Raster3D/materials
+ mandir  = $(prefix)/man/manl
+-htmldir = $(prefix)/share/Raster3D/html
++htmldir = $(prefix)/share/doc/MYPF/html
+ examdir = $(prefix)/share/Raster3D/examples
+ 
+-INCDIRS  =	-I/usr/include -I/usr/local/include
+-LIBDIRS  =	-L/usr/local/lib
++INCDIRS  =	-I@GENTOO_PORTAGE_EPREFIX@/usr/include
++LIBDIRS  =	-L@GENTOO_PORTAGE_EPREFIX@/usr/MYLIB
+ 
+ #
+ # TIFF support (enabled by default)

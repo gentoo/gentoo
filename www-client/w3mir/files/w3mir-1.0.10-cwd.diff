@@ -1,0 +1,32 @@
+--- w3mir.PL	2005-12-10 20:39:58.000000000 +0100
++++ w3mir.PL	2005-12-11 12:49:26.000000000 +0100
+@@ -209,6 +209,8 @@
+ use URI::URL;
+ # For flush method
+ use FileHandle;
++# for determining current working directory
++use Cwd;
+ 
+ eval '
+ use URI;
+@@ -581,7 +583,8 @@
+     unless ref $rum_url_o;
+   
+   # Derive a filename from the url, the filename contains no URL-quoting
+-  my($lf_name) = (url "file:$lf_url")->unix_path;
++  # filename is relative to current working directory
++  my($lf_name) = (url "file:".getcwd()."/$lf_url")->unix_path;
+ 
+   # Make all intermediate directories
+   &mkdir($lf_name) if $s==0;
+@@ -680,9 +683,7 @@
+     push(@EXTRASTUFF,$w3http::NOUSER)
+       unless ($do_user);
+ 
+-    # YES, $lf_url is right, w3http::query handles this like an url so
+-    # the quoting must all be in place.
+-    my $binfile=$lf_url;
++    my $binfile=$lf_name;
+     $binfile='-' if $s==1;
+     $binfile=$nulldevice if $s==2;
+ 

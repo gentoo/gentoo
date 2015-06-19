@@ -1,0 +1,166 @@
+From c730504aa3893978cdb667d7fcf1357d2951841e Mon Sep 17 00:00:00 2001
+From: Christian Persch <chpe@gnome.org>
+Date: Sat, 15 Nov 2014 21:11:08 +0100
+Subject: client: Hide obsolete --title option
+
+Accept it for compatibility, but ignore it.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=740188
+(cherry picked from commit 0033eca2909ddccf3358c1f089bce05d3473b123)
+
+diff --git a/src/gterminal.vala b/src/gterminal.vala
+index cf1ffae..7e55678 100644
+--- a/src/gterminal.vala
++++ b/src/gterminal.vala
+@@ -233,7 +233,6 @@ namespace GTerminal
+ 
+     public static string? working_directory = null;
+     public static string? profile = null;
+-    public static string? title = null;
+     public static double zoom = 1.0;
+ 
+     private static bool option_profile (string option_name,
+@@ -269,8 +268,6 @@ namespace GTerminal
+       { "profile", 0, 0, OptionArg.CALLBACK, (void*) option_profile,
+         N_("Use the given profile instead of the default profile"),
+         N_("UUID") },
+-      { "title", 0, 0, OptionArg.STRING, ref title,
+-        N_("Set the terminal title"), N_("TITLE") },
+       { "cwd", 0, 0, OptionArg.FILENAME, ref working_directory,
+         N_("Set the working directory"), N_("DIRNAME") },
+       { "zoom", 0, 0, OptionArg.CALLBACK, (void*) option_zoom,
+@@ -418,7 +415,7 @@ namespace GTerminal
+                                                     OpenOptions.geometry,
+                                                     OpenOptions.role,
+                                                     OpenOptions.profile,
+-                                                    OpenOptions.title,
++                                                    null /* title */,
+                                                     OpenOptions.maximise,
+                                                     OpenOptions.fullscreen);
+     if (OpenOptions.show_menubar_set)
+diff --git a/src/terminal-options.c b/src/terminal-options.c
+index 75fc64d..0280f11 100644
+--- a/src/terminal-options.c
++++ b/src/terminal-options.c
+@@ -96,7 +96,6 @@ initial_tab_new (char *profile /* adopts */)
+ 
+   it->profile = profile;
+   it->exec_argv = NULL;
+-  it->title = NULL;
+   it->working_dir = NULL;
+   it->zoom = 1.0;
+   it->zoom_set = FALSE;
+@@ -110,7 +109,6 @@ initial_tab_free (InitialTab *it)
+ {
+   g_free (it->profile);
+   g_strfreev (it->exec_argv);
+-  g_free (it->title);
+   g_free (it->working_dir);
+   g_slice_free (InitialTab, it);
+ }
+@@ -596,30 +594,6 @@ option_load_config_cb (const gchar *option_name,
+ }
+ 
+ static gboolean
+-option_title_callback (const gchar *option_name,
+-                       const gchar *value,
+-                       gpointer     data,
+-                       GError     **error)
+-{
+-  TerminalOptions *options = data;
+-
+-  if (options->initial_windows)
+-    {
+-      InitialTab *it = ensure_top_tab (options);
+-
+-      g_free (it->title);
+-      it->title = g_strdup (value);
+-    }
+-  else
+-    {
+-      g_free (options->default_title);
+-      options->default_title = g_strdup (value);
+-    }
+-
+-  return TRUE;
+-}
+-
+-static gboolean
+ option_working_directory_callback (const gchar *option_name,
+                                    const gchar *value,
+                                    gpointer     data,
+@@ -789,7 +763,6 @@ terminal_options_parse (const char *working_directory,
+   options->initial_windows = NULL;
+   options->default_role = NULL;
+   options->default_geometry = NULL;
+-  options->default_title = NULL;
+   options->zoom = 1.0;
+   options->zoom_set = FALSE;
+ 
+@@ -928,7 +901,6 @@ terminal_options_merge_config (TerminalOptions *options,
+ /*          it->width = g_key_file_get_integer (key_file, tab_group, TERMINAL_CONFIG_TERMINAL_PROP_WIDTH, NULL);
+           it->height = g_key_file_get_integer (key_file, tab_group, TERMINAL_CONFIG_TERMINAL_PROP_HEIGHT, NULL);*/
+           it->working_dir = terminal_util_key_file_get_string_unescape (key_file, tab_group, TERMINAL_CONFIG_TERMINAL_PROP_WORKING_DIRECTORY, NULL);
+-          it->title = g_key_file_get_string (key_file, tab_group, TERMINAL_CONFIG_TERMINAL_PROP_TITLE, NULL);
+ 
+           if (g_key_file_has_key (key_file, tab_group, TERMINAL_CONFIG_TERMINAL_PROP_COMMAND, NULL) &&
+               !(it->exec_argv = terminal_util_key_file_get_argv (key_file, tab_group, TERMINAL_CONFIG_TERMINAL_PROP_COMMAND, NULL, error)))
+@@ -985,7 +957,6 @@ terminal_options_free (TerminalOptions *options)
+   g_free (options->default_role);
+   g_free (options->default_geometry);
+   g_free (options->default_working_dir);
+-  g_free (options->default_title);
+   g_free (options->default_profile);
+ 
+   g_strfreev (options->exec_argv);
+@@ -1156,11 +1127,10 @@ get_goption_context (TerminalOptions *options)
+     {
+       "title",
+       't',
+-      0,
++      G_OPTION_FLAG_HIDDEN,
+       G_OPTION_ARG_CALLBACK,
+-      option_title_callback,
+-      N_("Set the terminal title"),
+-      N_("TITLE")
++      unsupported_option_callback,
++      NULL, NULL
+     },
+     {
+       "working-directory",
+diff --git a/src/terminal-options.h b/src/terminal-options.h
+index a1e645b..17f42b4 100644
+--- a/src/terminal-options.h
++++ b/src/terminal-options.h
+@@ -75,7 +75,6 @@ typedef struct
+   char    *default_role;
+   char    *default_geometry;
+   char    *default_working_dir;
+-  char    *default_title;
+   char   **exec_argv;
+   char    *default_profile;
+   gboolean default_profile_is_id;
+@@ -95,7 +94,6 @@ typedef struct
+   char *profile;
+   gboolean profile_is_id;
+   char **exec_argv;
+-  char *title;
+   char *working_dir;
+   double zoom;
+   guint zoom_set : 1;
+diff --git a/src/terminal.c b/src/terminal.c
+index 2dd5a6d..b6a6f5e 100644
+--- a/src/terminal.c
++++ b/src/terminal.c
+@@ -102,7 +102,7 @@ handle_options (TerminalFactory *factory,
+                                                           iw->geometry,
+                                                           iw->role,
+                                                           it->profile ? it->profile : options->default_profile,
+-                                                          it->title ? it->title : options->default_title,
++                                                          NULL /* title */,
+                                                           iw->start_maximized,
+                                                           iw->start_fullscreen);
+ 
+-- 
+cgit v0.10.1
+

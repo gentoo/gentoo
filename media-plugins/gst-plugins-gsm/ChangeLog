@@ -1,0 +1,55 @@
+# ChangeLog for media-plugins/gst-plugins-gsm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-gsm/ChangeLog,v 1.12 2014/07/23 15:21:13 ago Exp $
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-gsm-0.10.23-r1.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-gsm-0.10.23-r1.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org>
+  gst-plugins-gsm-0.10.23-r1.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+*gst-plugins-gsm-0.10.23-r1 (10 Jun 2014)
+
+  10 Jun 2014; Michał Górny <mgorny@gentoo.org>
+  +gst-plugins-gsm-0.10.23-r1.ebuild:
+  Enable multilib support, bug #493176.
+
+  26 Feb 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -gst-plugins-gsm-0.10.22.ebuild, +gst-plugins-gsm-0.10.23.ebuild:
+  Fix mistakenly removed ebuild, bug #459288.
+
+  25 Feb 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -gst-plugins-gsm-0.10.23.ebuild:
+  Clean up old revisions.
+
+  01 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gst-plugins-gsm-0.10.23.ebuild:
+  Stable for x86, wrt bug #454906
+
+  01 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gst-plugins-gsm-0.10.23.ebuild:
+  Stable for amd64, wrt bug #454906
+
+*gst-plugins-gsm-0.10.23 (02 Dec 2012)
+
+  02 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  +gst-plugins-gsm-0.10.23.ebuild:
+  Version bump.
+
+  02 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  gst-plugins-gsm-0.10.22.ebuild:
+  EAPI bump due to pending eclass changes and slot pinning.
+
+  13 Nov 2011; Markus Meier <maekke@gentoo.org> gst-plugins-gsm-0.10.22.ebuild:
+  add ~x86, bug #384787
+
+*gst-plugins-gsm-0.10.22 (27 Sep 2011)
+
+  27 Sep 2011; Mart Raudsepp <leio@gentoo.org> +gst-plugins-gsm-0.10.22.ebuild:
+  Add the gsm plugin from gst-plugins-bad for GSM audio decoding/encoding for
+  bug 384093

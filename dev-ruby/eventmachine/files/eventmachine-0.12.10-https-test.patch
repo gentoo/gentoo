@@ -1,0 +1,22 @@
+commit 63f2debff906a0f51bb807ac8f67c749d72b492d
+Author: Michael S. Klishin <michael@novemberain.com>
+Date:   Sun May 23 21:09:03 2010 +0400
+
+    Makes HTTPS client tests pass
+    
+    https://www.amazon.com now redirects to http version. Switching site
+    is enough to make the test pass.
+
+diff --git a/tests/test_httpclient2.rb b/tests/test_httpclient2.rb
+index ef72e7c..4705e42 100644
+--- a/tests/test_httpclient2.rb
++++ b/tests/test_httpclient2.rb
+@@ -142,7 +142,7 @@ class TestHttpClient2 < Test::Unit::TestCase
+   def test_https_get
+     d = nil
+     EM.run {
+-      http = EM::P::HttpClient2.connect :host => 'www.amazon.com', :port => 443, :ssl => true
++      http = EM::P::HttpClient2.connect :host => 'www.apple.com', :port => 443, :ssl => true
+       d = http.get "/"
+       d.callback {
+         EM.stop

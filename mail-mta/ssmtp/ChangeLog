@@ -1,0 +1,626 @@
+# ChangeLog for mail-mta/ssmtp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/ssmtp/ChangeLog,v 1.128 2014/01/18 04:15:35 vapier Exp $
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> ssmtp-2.64-r2.ebuild:
+  Add arm64 love.
+
+  26 May 2013; Jason A. Donenfeld <zx2c4@gentoo.org> ssmtp-2.64-r2.ebuild:
+  Allow ssmtp modifications by user.
+
+  12 May 2013; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove obsolete useflag from metadata.xml
+
+  28 Feb 2013; Jason A. Donenfeld <zx2c4@gentoo.org> ssmtp-2.64-r2.ebuild:
+  Block opensmtpd.
+
+  15 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/CVE-2008-3962-r2.patch, -files/ssmtp-2.61-darwin7.patch,
+  -files/ssmtp-2.62-authpass.patch, -files/ssmtp-2.62-darwin-crypto.patch,
+  -files/ssmtp-2.62-from_format_fix.patch,
+  -files/ssmtp-2.62-maxsysuid-conf.patch, -files/ssmtp-2.62-maxsysuid.patch,
+  -files/ssmtp-2.62-solaris-basename-conflict.patch,
+  -files/ssmtp-2.62-strndup.patch, -files/ssmtp-2.64-uint32_t.patch,
+  -ssmtp-2.62-r8.ebuild, ssmtp-2.64-r2.ebuild:
+  Update 2.64 patchset to include the Solaris patch instead of having it in
+  $FILESDIR; simplify prefix handling by not doing any permission handling there
+  (it would otherwise create a security issue); rename configure.in for
+  compatibility with future autoconf.  Remove old version and its patches.
+
+  04 Jun 2012; Zac Medico <zmedico@gentoo.org> ssmtp-2.62-r8.ebuild,
+  ssmtp-2.64-r2.ebuild:
+  inherit user for enewgroup
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> ssmtp-2.64-r2.ebuild:
+  keyword ~amd64-fbsd
+
+  08 Dec 2011; Fabian Groffen <grobian@gentoo.org> ssmtp-2.64-r2.ebuild:
+  Marked ~sparc64-solaris
+
+  25 Jul 2011; Eray Aslan <eras@gentoo.org> -ssmtp-2.64-r1.ebuild:
+  remove old
+
+  17 Jul 2011; Mark Loeser <halcy0n@gentoo.org> ssmtp-2.64-r2.ebuild:
+  Stable for ppc64; bug #370649
+
+  24 Jun 2011; Raúl Porcel <armin76@gentoo.org> ssmtp-2.64-r2.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #370649
+
+  22 Jun 2011; Brent Baude <ranger@gentoo.org> ssmtp-2.64-r2.ebuild:
+  Marking ssmtp-2.64-r2 ppc for bug 370649
+
+  19 Jun 2011; Markus Meier <maekke@gentoo.org> ssmtp-2.64-r2.ebuild:
+  arm stable, bug #370649
+
+  19 Jun 2011; Markos Chandras <hwoarang@gentoo.org> ssmtp-2.64-r2.ebuild:
+  Stable on amd64 wrt bug #370649
+
+  15 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> ssmtp-2.64-r2.ebuild:
+  x86 stable wrt bug #370649
+
+  10 Jun 2011; Jeroen Roovers <jer@gentoo.org> ssmtp-2.64-r2.ebuild:
+  Stable for HPPA (bug #370649).
+
+  23 Apr 2011; Fabian Groffen <grobian@gentoo.org> ssmtp-2.64-r2.ebuild,
+  +files/ssmtp-2.64-uint32_t.patch:
+  Fix compilation on Solaris, fix installation on Prefix
+
+*ssmtp-2.64-r2 (22 Apr 2011)
+
+  22 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org> +ssmtp-2.64-r2.ebuild,
+  metadata.xml:
+  Make mta provision optional, so that you can install ssmtp side-by-side with
+  (some) other mta ebuilds. Closes bug #289973. Also only block msmtp if it has
+  the equivalent mta support enabled.
+
+  28 Mar 2011; Eray Aslan <eras@gentoo.org> ssmtp-2.62-r8.ebuild,
+  ssmtp-2.64-r1.ebuild:
+  change to new style virtual/mta - bug 360305
+
+*ssmtp-2.64-r1 (27 Jan 2011)
+
+  27 Jan 2011; Jeroen Roovers <jer@gentoo.org> -ssmtp-2.64.ebuild,
+  +ssmtp-2.64-r1.ebuild:
+  Install the ChangeLog now there is one.
+
+  20 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org> ssmtp-2.64.ebuild:
+  Silence a harmless warning from repoman by renaming a variable.
+
+  20 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org> ssmtp-2.64.ebuild:
+  Update patchset for a little mistake of mine.
+
+*ssmtp-2.64 (19 Jan 2011)
+
+  19 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/ssmtp-2.61-bug127592.patch, +ssmtp-2.64.ebuild:
+  Version bump; move patches to tarball; simplify ebuild. The md5sum (misnamed)
+  and maxsysuid USE flags are gone (enabled by default); package builds with
+  parallel make; automake is not used (faster src_prepare); add optional
+  support for GnuTLS for those not wanting to use OpenSSL.
+
+  18 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org> -ssmtp-2.62-r6.ebuild,
+  -ssmtp-2.62-r7.ebuild, -files/CVE-2008-3962.patch, -files/mailer.conf:
+  Remove old versions and cleanup files.
+
+  07 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> ssmtp-2.62-r8.ebuild:
+  ppc stable wrt #346453
+
+  28 Dec 2010; Brent Baude <ranger@gentoo.org> ssmtp-2.62-r8.ebuild:
+  Marking ssmtp-2.62-r8 ppc64 for bug 346453
+
+  27 Nov 2010; Raúl Porcel <armin76@gentoo.org> ssmtp-2.62-r8.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #346453
+
+  27 Nov 2010; Michael Weber <xmw@gentoo.org> ssmtp-2.62-r8.ebuild:
+  Stable for arm/sparc (bug #346453).
+
+  26 Nov 2010; Jeroen Roovers <jer@gentoo.org> ssmtp-2.62-r8.ebuild:
+  Stable for HPPA (bug #346453).
+
+  26 Nov 2010; Markos Chandras <hwoarang@gentoo.org> ssmtp-2.62-r8.ebuild:
+  Stable on amd64 wrt bug #346453
+
+  23 Nov 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/ssmtp-2.62-darwin-crypto.patch:
+  Fix patch to work with all patch(1) versions; thanks to kirin yuri and Jyrki
+  Launonen in bug #346497.
+
+  23 Nov 2010; Thomas Kahle <tomka@gentoo.org> ssmtp-2.62-r8.ebuild:
+  x86 stable per bug 346453
+
+  22 Nov 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/ssmtp-2.62-darwin-crypto.patch:
+  Use a saner approacy to link in libcrypto.
+
+  27 Jun 2010; Christian Faulhammer <fauli@gentoo.org> ssmtp-2.62-r8.ebuild:
+  add ~x86-freebsd
+
+*ssmtp-2.62-r8 (25 Apr 2010)
+
+  25 Apr 2010; Jonathan Callen <abcd@gentoo.org>
+  +files/ssmtp-2.61-darwin7.patch, +ssmtp-2.62-r8.ebuild,
+  +files/ssmtp-2.62-darwin-crypto.patch,
+  +files/ssmtp-2.62-solaris-basename-conflict.patch:
+  Revbump, add patches for Darwin/Solaris, bump to EAPI-3, add prefix
+  support & keywords, die on failure, cleanup
+
+  09 Dec 2009; nixnut <nixnut@gentoo.org> ssmtp-2.62-r7.ebuild:
+  ppc stable #282907
+
+  08 Dec 2009; Brent Baude <ranger@gentoo.org> ssmtp-2.62-r7.ebuild:
+  Marking ssmtp-2.62-r7 ppc64 for bug 282907
+
+  04 Dec 2009; Jeroen Roovers <jer@gentoo.org> ssmtp-2.62-r7.ebuild:
+  Stable for HPPA (bug #282907).
+
+  02 Dec 2009; Raúl Porcel <armin76@gentoo.org> ssmtp-2.62-r7.ebuild:
+  ia64/m68k/s390/sh stable wrt #282907
+
+  02 Dec 2009; Tiago Cunha <tcunha@gentoo.org> ssmtp-2.62-r7.ebuild:
+  stable sparc, bug 282907
+
+  01 Dec 2009; Markus Meier <maekke@gentoo.org> ssmtp-2.62-r7.ebuild:
+  amd64/arm/x86 stable, bug #282907
+
+  29 Nov 2009; Tobias Klausmann <klausman@gentoo.org> ssmtp-2.62-r7.ebuild:
+  Stable on alpha, bug #282907
+
+*ssmtp-2.62-r7 (17 Oct 2009)
+
+  17 Oct 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  -ssmtp-2.62-r4.ebuild, +ssmtp-2.62-r7.ebuild,
+  +files/ssmtp-2.62-from_format_fix.patch:
+  Cleanup, fix from Header when no gecos is available (#282907)
+
+  27 Jul 2009; Markus Meier <maekke@gentoo.org> ssmtp-2.62-r6.ebuild:
+  amd64 stable, bug #259472
+
+  26 Jul 2009; Brent Baude <ranger@gentoo.org> ssmtp-2.62-r6.ebuild:
+  Marking ssmtp-2.62-r6 ppc64 for bug 259472
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> ssmtp-2.62-r6.ebuild:
+  ppc stable #279472
+
+  15 Jul 2009; Raúl Porcel <armin76@gentoo.org> ssmtp-2.62-r6.ebuild:
+  arm/ia64/m68k/s390/sh/sparc stable wrt #259472
+
+  14 Jul 2009; Christian Faulhammer <fauli@gentoo.org> ssmtp-2.62-r6.ebuild:
+  stable x86, security bug 259472
+
+  12 Jul 2009; Tobias Klausmann <klausman@gentoo.org> ssmtp-2.62-r6.ebuild:
+  Stable on alpha, bug #259472
+
+  10 Jul 2009; Jeroen Roovers <jer@gentoo.org> ssmtp-2.62-r6.ebuild:
+  Stable for HPPA (bug #259472).
+
+  20 Mar 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  -ssmtp-2.61-r2.ebuild, -ssmtp-2.62-r3.ebuild:
+  Cleanup
+
+  17 Mar 2009; Raúl Porcel <armin76@gentoo.org> ssmtp-2.62-r4.ebuild:
+  m68k stable wrt #255244, thanks to kolla for testing
+
+*ssmtp-2.62-r6 (18 Feb 2009)
+
+  18 Feb 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  +files/CVE-2008-3962-r2.patch, -ssmtp-2.62-r5.ebuild,
+  +ssmtp-2.62-r6.ebuild:
+  Revbump, update patch for #259472 (CVE-2008-3962)
+
+  04 Feb 2009; Raúl Porcel <armin76@gentoo.org> ssmtp-2.62-r4.ebuild:
+  arm/ia64/s390/sh stable wrt #255244
+
+  25 Jan 2009; Brent Baude <ranger@gentoo.org> ssmtp-2.62-r4.ebuild:
+  stable ppc64, bug 255244
+
+  24 Jan 2009; Tiago Cunha <tcunha@gentoo.org> ssmtp-2.62-r4.ebuild:
+  stable sparc, bug 255244
+
+  18 Jan 2009; Markus Meier <maekke@gentoo.org> ssmtp-2.62-r4.ebuild:
+  amd64/x86 stable, bug #255244
+
+  18 Jan 2009; Tobias Klausmann <klausman@gentoo.org> ssmtp-2.62-r4.ebuild:
+  Stable on alpha, bug #255244
+
+  18 Jan 2009; Jeroen Roovers <jer@gentoo.org> ssmtp-2.62-r4.ebuild:
+  Stable for HPPA (bug #255244).
+
+  17 Jan 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  ssmtp-2.62-r4.ebuild:
+  ppc stable, bug #255244
+
+*ssmtp-2.62-r5 (17 Jan 2009)
+
+  17 Jan 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  +ssmtp-2.62-r5.ebuild:
+  Revbump: Do install ssmtp.conf.5, #255220
+
+*ssmtp-2.62-r4 (29 Nov 2008)
+
+  29 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  +files/ssmtp-2.62-authpass.patch, +ssmtp-2.62-r4.ebuild:
+  Revision bump, comment rewriteDomain (#243364), re-add mailbase dep
+  (#249269), fix AuthPass with '=' or ':' in it (#238724), setgid on ssmtp
+  binary (#239197)
+
+  21 Sep 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  ssmtp-2.62-r3.ebuild:
+  Add note about adding users to the ssmtp group, #237932
+
+  17 Sep 2008; Brent Baude <ranger@gentoo.org> ssmtp-2.62-r3.ebuild:
+  Marking ssmtp-2.62-r3 ppc64 for bug 234391
+
+  17 Sep 2008; Brent Baude <ranger@gentoo.org> ssmtp-2.62-r3.ebuild:
+  Marking ssmtp-2.62-r3 ppc for bug 234391
+
+  13 Sep 2008; Raúl Porcel <armin76@gentoo.org> ssmtp-2.62-r3.ebuild:
+  alpha/ia64/sparc stable wrt #234391
+
+  12 Sep 2008; Markus Meier <maekke@gentoo.org> ssmtp-2.62-r3.ebuild:
+  amd64/x86 stable, bug #234391
+
+  12 Sep 2008; Jeroen Roovers <jer@gentoo.org> ssmtp-2.61-r2.ebuild,
+  ssmtp-2.62-r3.ebuild:
+  Fix quoting issues in 2.61-r2. 2.62-r3 stable for HPPA (bug #234391).
+
+*ssmtp-2.62-r3 (09 Sep 2008)
+
+  09 Sep 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  +files/CVE-2008-3962.patch, -ssmtp-2.62-r1.ebuild, -ssmtp-2.62-r2.ebuild,
+  +ssmtp-2.62-r3.ebuild:
+  Version bump, security bug #234391
+
+  09 Sep 2008; Robert Buchholz <rbu@gentoo.org> ssmtp-2.62-r1.ebuild:
+  reverting stables
+
+  07 Sep 2008; Markus Meier <maekke@gentoo.org> ssmtp-2.62-r1.ebuild:
+  amd64/x86 stable, bug #236812
+
+  06 Sep 2008; Jeroen Roovers <jer@gentoo.org> ssmtp-2.62-r1.ebuild:
+  Stable for HPPA (bug #236812).
+
+*ssmtp-2.62-r2 (05 Sep 2008)
+
+  05 Sep 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  +files/ssmtp-2.62-maxsysuid.patch, +files/ssmtp-2.62-maxsysuid-conf.patch,
+  metadata.xml, +ssmtp-2.62-r2.ebuild:
+  Allow to specify the last used system user id via +maxsysuid, #231866, patch
+  by Trevor Bowen
+
+  23 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*ssmtp-2.62-r1 (27 Jul 2008)
+
+  27 Jul 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  -files/ssmtp-2.60.4-md5.patch, -files/ssmtp-2.60.7-logfile.patch,
+  -ssmtp-2.61-r30.ebuild, -ssmtp-2.61-r31.ebuild, -ssmtp-2.62.ebuild,
+  +ssmtp-2.62-r1.ebuild:
+  Clean up, rev-bump to fix perms on ssmtp binary (#233027)
+
+  13 Jul 2008; Tobias Scherbaum <dertobi123@gentoo.org> ssmtp-2.62.ebuild:
+  Add eautoreconf
+
+  13 Jul 2008; Tobias Scherbaum <dertobi123@gentoo.org> ssmtp-2.62.ebuild:
+  Remove conditional patching
+
+  11 Jul 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  +files/ssmtp-2.62-strndup.patch, ssmtp-2.62.ebuild:
+  strndup workaround for gfbsd, #227799
+
+  11 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org> ssmtp-2.62.ebuild:
+  Fix virtual/mta blocker
+
+  11 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org> ssmtp-2.62.ebuild:
+  re-add PROVIDE=virtual/mta
+
+  11 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org> ssmtp-2.62.ebuild:
+  Add block on net-mail/mailwrapper as per #222157
+
+*ssmtp-2.62 (10 Jun 2008)
+
+  10 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org> +ssmtp-2.62.ebuild:
+  Version bump, restrict access to ssmtp.conf (#187841), drop mailwrapper
+  support (#222157), drop needless virtual/libc dependency (#211886),
+  upstream fixed date header creation on uclibc (#145456)
+
+  06 Jan 2007; Fernando J. Pereda <ferdy@gentoo.org> -ssmtp-2.61.ebuild:
+  QA: Clean unused versions.
+
+  04 Dec 2006; Alexander H. Færøy <eroyf@gentoo.org> ssmtp-2.61-r2.ebuild:
+  Stable on MIPS; bug #127592
+
+  22 Oct 2006; Andrej Kacian <ticho@gentoo.org> -files/starttls.diff,
+  -ssmtp-2.60.7-r1.ebuild, -ssmtp-2.60.9.ebuild, ssmtp-2.61.ebuild,
+  ssmtp-2.61-r2.ebuild, ssmtp-2.61-r30.ebuild, ssmtp-2.61-r31.ebuild:
+  Modified Makefile to respect LDFLAGS, bug #152197 by Fabian Groffen <grobian
+  at gentoo.org>. Removed old ebuilds.
+
+  17 Oct 2006; Roy Marples <uberlord@gentoo.org> ssmtp-2.61-r2.ebuild,
+  ssmtp-2.61-r30.ebuild, ssmtp-2.61-r31.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  12 Oct 2006; Fernando J. Pereda <ferdy@gentoo.org> ssmtp-2.61-r2.ebuild:
+  Stable on alpha as per bug #127592
+
+  01 Oct 2006; Jeroen Roovers <jer@gentoo.org> ssmtp-2.61-r2.ebuild:
+  Stable for HPPA (bug #127592).
+
+  26 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org> ssmtp-2.61-r2.ebuild:
+  Stable on sparc wrt #127592
+
+  24 Sep 2006; Michael Hanselmann <hansmi@gentoo.org> ssmtp-2.61-r2.ebuild:
+  Stable on ppc.
+
+  22 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org> ssmtp-2.61-r2.ebuild:
+  Stable on x86/amd64 wrt bug #127592.
+
+  22 Sep 2006; Markus Rothe <corsair@gentoo.org> ssmtp-2.61-r2.ebuild:
+  Stable on ppc64; bug #127592
+
+  10 May 2006; Fernando J. Pereda <ferdy@gentoo.org> ssmtp-2.61-r31.ebuild:
+  Also install /usr/sbin/sendmail when USE=-mailwrapper. See bug #132941
+
+*ssmtp-2.61-r31 (06 May 2006)
+*ssmtp-2.61-r2 (06 May 2006)
+
+  06 May 2006; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/ssmtp-2.61-bug127592.patch, +ssmtp-2.61-r2.ebuild,
+  +ssmtp-2.61-r31.ebuild:
+  Add patches and fixes from bugs #127592 and #112795. Thanks to jer and
+  flameeyes.
+
+*ssmtp-2.61-r30 (06 May 2006)
+
+  06 May 2006; Fernando J. Pereda <ferdy@gentoo.org> -ssmtp-2.61-r1.ebuild,
+  +ssmtp-2.61-r30.ebuild:
+  Move -r1 to -r30. From now, <-30 means mailer-config unawareness and >=-r30
+  are mailer-config aware releases.
+
+  02 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> ssmtp-2.61.ebuild:
+  Add ~x86-fbsd keyword.
+
+  31 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> ssmtp-2.61-r1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  23 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> ssmtp-2.61.ebuild,
+  ssmtp-2.61-r1.ebuild:
+  Use mirror://debian/ in SRC_URI
+
+  29 Jul 2005; MATSUU Takuto <matsuu@gentoo.org> ssmtp-2.61.ebuild:
+  Stable on sh.
+
+  04 Jul 2005; Andrej Kacian <ticho@gentoo.org> ssmtp-2.61-r1.ebuild:
+  Better mailer-config compatibility.
+
+*ssmtp-2.61-r1 (25 Apr 2005)
+
+  25 Apr 2005; Fernando J. Pereda <ferdy@gentoo.org> files/mailer.conf,
+  +ssmtp-2.61-r1.ebuild:
+  2.61-r1 uses the new mailer eclass
+
+  14 Mar 2005; Hardave Riar <hardave@gentoo.org> ssmtp-2.61.ebuild:
+  Stable on mips, bug #82380.
+
+  20 Feb 2005; Aron Griffis <agriffis@gentoo.org> ssmtp-2.61.ebuild:
+  stable on alpha and ia64
+
+  17 Feb 2005; Markus Rothe <corsair@gentoo.org> ssmtp-2.61.ebuild:
+  Stable on ppc64
+
+  17 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> ssmtp-2.61.ebuild:
+  stable on amd64. see #82380
+
+  17 Feb 2005; Michael Hanselmann <hansmi@gentoo.org> ssmtp-2.61.ebuild:
+  Stable on ppc and hppa.
+
+  17 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> ssmtp-2.61.ebuild:
+  Stable on sparc wrt #82380
+
+  10 Feb 2005; Fernando J. Pereda <ferdy@gentoo.org> ssmtp-2.61.ebuild:
+  Fix the md5auth thing. Closes #81510. Thanks to Dan Check
+  <check@radicalmedia.com>
+
+*ssmtp-2.61-r1 (10 feb 2005)
+
+  10 feb 2005;  <>  ssmtp-2.61-r1.ebuild files/digest-ssmtp-2.61-r1
+  # INSERT ENTRY HERE
+
+  09 Feb 2005; Fernando J. Pereda <ferdy@gentoo.org> ssmtp-2.61.ebuild:
+  Stable on x86
+
+*ssmtp-2.61 (24 Jan 2005)
+
+  24 Jan 2005; Fernando J. Pereda <ferdy@gentoo.org> +ssmtp-2.61.ebuild:
+  Version bump, closes #69999. Reported by: Yani Ioannou <yani.ioannou@gmail.com>
+
+  25 Dec 2004; Tom Martin <slarti@gentoo.org> ssmtp-2.60.9.ebuild:
+  Resolve bug 47562, by commenting out hostname=_HOSTNAME_ by default,
+  forcing ssmtp to determine the hostname for itself. Thanks to Sascha
+  Silbe <sascha@silbe.org> for reporting.
+
+  28 Jul 2004; Joshua Kinard <kumba@gentoo.org> ssmtp-2.60.9.ebuild:
+  Marked stable on mips.
+
+  27 Jul 2004; <agriffis@gentoo.org> ssmtp-2.60.9.ebuild:
+  stable on alpha and ia64 #57553
+
+  24 Jul 2004; Luca Barbato <lu_zero@gentoo.org> ssmtp-2.60.9.ebuild:
+  Marked ppc
+
+  21 Jul 2004; Jason Wever <weeve@gentoo.org> ssmtp-2.60.9.ebuild:
+  Stable on sparc wrt bug #57553.
+
+  21 Jul 2004; <malc@gentoo.org> ssmtp-2.60.9.ebuild:
+  Mark stable on amd64
+
+  20 Jul 2004; Grant Goodyear <g2boojum@gentoo.org> ssmtp-2.60.9.ebuild:
+  Marked stable on x86.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  ssmtp-2.38.14-r1.ebuild, ssmtp-2.48.ebuild, ssmtp-2.60.4-r2.ebuild,
+  ssmtp-2.60.4.ebuild, ssmtp-2.60.7-r1.ebuild, ssmtp-2.60.7.ebuild,
+  ssmtp-2.60.9.ebuild:
+  virtual/glibc -> virtual/libc
+
+  11 Jun 2004; Grant Goodyear <g2boojum@gentoo.org> ssmtp-2.60.7-r1.ebuild:
+  Marking stable on all arch's to fix the 
+  inconsistent-mailwrapper issues.
+
+*ssmtp-2.60.9 (07 Jun 2004)
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org> ssmtp-2.60.4-r2.ebuild,
+  ssmtp-2.60.4.ebuild, ssmtp-2.60.7-r1.ebuild, ssmtp-2.60.7.ebuild,
+  ssmtp-2.60.9.ebuild:
+  Fix use invocation
+
+  06 Jun 2004; Grant Goodyear <g2boojum@gentoo.org> :
+  Version bump.  Patches no longer required.  Fixes STARTTLS before ehlo bug.
+
+*ssmtp-2.60.7-r1 (30 May 2004)
+
+  30 May 2004; Grant Goodyear <g2boojum@gentoo.org> ssmtp-2.60.4-r2.ebuild,
+  +ssmtp-2.60.7-r1.ebuild, ssmtp-2.60.7.ebuild:
+  Made mailwrapper an optional dep w/ USE=mailwrapper.
+  Also fixed up which docs get installed.
+
+*ssmtp-2.48 (30 May 2004)
+
+  30 May 2004; Robin H. Johnson <robbat2@gentoo.org> metadata.xml,
+  ssmtp-2.38.14-r1.ebuild, ssmtp-2.48.ebuild, ssmtp-2.60.4-r2.ebuild,
+  ssmtp-2.60.4.ebuild, ssmtp-2.60.7.ebuild, files/mailer.conf,
+  files/ssmtp-2.60.4-md5.patch, files/ssmtp-2.60.7-logfile.patch,
+  files/starttls.diff:
+  Moved from net-mail/ssmtp to mail-mta/ssmtp.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> ssmtp-2.60.4.ebuild:
+  Add inherit eutils
+
+  25 Apr 2004; Tom Gall <tgall@gentoo.org> ssmtp-2.60.7.ebuild:
+  Stable on ppc64
+
+  25 Apr 2004; Michael McCabe <randy@gentoo.org> ssmtp-2.60.7.ebuild:
+  Marked stable on s390
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> ssmtp-2.60.7.ebuild:
+  Stable on alpha and ia64
+
+  25 Apr 2004; Brandon Hale <tseng@gentoo.org> ssmtp-2.60.7.ebuild:
+  Stable on x86
+
+  25 Apr 2004; Joshua Kinard <kumba@gentoo.org> ssmtp-2.60.7.ebuild:
+  Marked stable on mips.
+
+  24 Apr 2004; Jason Wever <weeve@gentoo.org> ssmtp-2.60.7.ebuild:
+  Stable on sparc wrt bug #47918.
+
+  24 Apr 2004; Luca Barbato <lu_zero@gentoo.org> ssmtp-2.60.7.ebuild:
+  Marked ppc
+
+  23 Apr 2004; Bryan Østergaard <kloeri@gentoo.org> ssmtp-2.60.7.ebuild:
+  Stable on alpha.
+
+  23 Apr 2004; Travis Tilley <lv@gentoo.org> ssmtp-2.60.7.ebuild:
+  marked stable on amd64. see bug #47918 for more information
+
+*ssmtp-2.60.7 (23 Apr 2004)
+
+  23 Apr 2004; <solar@gentoo.org> ssmtp-2.60.7.ebuild:
+  Format String Vulnerabilities. security bug #47918 + Fix broken/insecure
+  logfile handling bug #48435
+
+*ssmtp-2.60.4-r2 (13 Apr 2004)
+
+  13 Apr 2004; Grant Goodyear <g2boojum@hotmail.com> ssmtp-2.60.4-r1.ebuild,
+  ssmtp-2.60.4-r2.ebuild, files/mailer.conf:
+  New revision that installs a mailer.conf file w/ send-mail defined.
+  Closes bug 47714.
+
+  01 Apr 2004; <randy@gentoo.org> ssmtp-2.60.4-r1.ebuild:
+  adding s390 to keywords
+
+  17 Mar 2004; Grant Goodyear <g2boojum@hotmail.com> ssmtp-2.60.4-r1.ebuild:
+  Put /usr/lib/sendmail symlink back in.
+
+  17 Mar 2004; Grant Goodyear <g2boojum@hotmail.com> ssmtp-2.60.4-r1.ebuild:
+  Fixed missing 'inherit eutils'; thanks iggy!
+
+*ssmtp-2.60.4-r1 (17 Mar 2004)
+
+  17 Mar 2004; Grant Goodyear <g2boojum@hotmail.com> ssmtp-2.60.4-r1.ebuild,
+  files/mailer.conf:
+  New revision that uses mailwrapper.
+
+  14 Mar 2004; Tom Gall <tgall@gentoo.org> ssmtp-2.60.4.ebuild:
+  mark ppc64 stable
+
+  29 Sep 2003; Marius Mauch <genone@gentoo.org> ssmtp-2.60.4.ebuild,
+  files/ssmtp-2.60.4-md5.patch:
+  Added a patch so 2.60.4 compiles with USE=md5sum. thaThanks to Brandy for
+  fixing bug 25732.
+
+*ssmtp-2.60.4 (19 Sep 2003)
+
+  19 Sep 2003; Daniel Ahlberg <aliz@gentoo.org> ssmtp-2.60.4.ebuild:
+  Version bump
+
+  09 Jul 2003; Nick Hadaway <raker@gentoo.org> ssmtp-2.60.3.ebuild:
+  Removed the auto ssl enable config generation.  See bug #22658
+
+*ssmtp-2.60.3 (09 Jun 2003)
+
+  15 Jun 2003; Joshua Kinard <kumba@gentoo.org> :
+  Fixed Security Volation -- starttls.diff missing from Manifest
+  Added local USE Flag "md5sum" since the previous "md5" was not a valid USE flag
+
+  14 Jun 2003; Nick Hadaway <raker@gentoo.org> ssmtp-2.60.3.ebuild:
+  Added some code so the config file has TLS enabled is ssl is in USE.
+  Thanks to ferdy again for this ebuild improvement.  Moved pkg_config()
+  code to pkg_postinst()
+
+  09 Jun 2003; Nick Hadaway <raker@gentoo.org> ssmtp-2.60.3.ebuild,
+  files/digest-ssmtp-2.60.3, files/starttls.diff:
+  Version bump.  Major features added upstream and included in the
+  ebuild.  Many thanks to ferdy@ferdyx.org for the updates.
+
+  20 Feb 2003; Zach Welch <zwelch@gentoo.org> :
+  Added arm to keywords.
+
+  12 Feb 2003; Guy Martin <gmsoft@gentoo.org> :
+  Added hppa to keywords.
+
+*ssmtp-2.48 (02 Feb 2003)
+
+  25 Jul 2003; Guy Lartin <gmsoft@gentoo.org> ssmtp-2.48.ebuild :
+  Marked stable on hppa.
+
+  18 Apr 2003; Jan Seidel <tuxus@gentoo.org> ssmtp-2.48.ebuild :
+  Added mips to keywords.
+
+  04 Apr 2003; Jason Wever <weeve@gentoo.org> ssmtp-2.48.ebuild:
+  Changed ~sparc keyword to sparc.
+
+  25 Mar 2003; Graham Forest <vladimir@gentoo.org> ssmtp-2.48.ebuild:
+  Marked stable on ppc
+
+  09 Mar 2003; Aron Griffis <agriffis@gentoo.org> ssmtp-2.48.ebuild:
+  Mark stable on alpha
+
+  02 Feb 2003; Nick Hadaway <raker@gentoo.org> ssmtp-2.48.ebuild,
+  files/digest-ssmtp-2.48 :
+  Version bump.  Thanks to Matsuu Takuto on bug #14726 for the heads up.
+  Added a doc which explains a little bit about the new TLS support
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*ssmtp-2.38.14-r1 (1 Feb 2002)
+
+  05 Sep 2002; Nick Hadaway <raker@gentoo.org> ssmtp-2.38.14-r1.ebuild :
+  Removed symlink.  See bug #7448.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

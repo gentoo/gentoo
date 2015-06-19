@@ -1,0 +1,68 @@
+Add make-backup-files command for backup toggling, from upstream mailing list:
+http://lists.gnu.org/archive/html/qemacs-devel/2004-11/msg00007.html
+http://bugs.gentoo.org/75052
+
+--- buffer.c.orig	2009-03-07 21:14:02.000000000 +0100
++++ buffer.c	2009-03-07 21:15:40.000000000 +0100
+@@ -1657,12 +1657,14 @@
+     if (stat(filename, &st) == 0)
+         mode = st.st_mode & 0777;
+ 
+-    /* backup old file if present */
+-    if (strlen(filename) < MAX_FILENAME_SIZE - 1) {
++    /* backup old file if present and make-backup-files is on */
++    if(mbf == 1) {
++      if (strlen(filename) < MAX_FILENAME_SIZE - 1) {
+         if (snprintf(buf1, sizeof(buf1), "%s~", filename) < ssizeof(buf1)) {
+             // should check error code
+             rename(filename, buf1);
+         }
++      }
+     }
+ 
+     /* CG: should pass mode to buffer_save */
+--- qe.c.orig	2009-03-07 21:14:09.000000000 +0100
++++ qe.c	2009-03-07 21:17:01.000000000 +0100
+@@ -71,6 +71,7 @@
+ static int screen_height = 0;
+ static int no_init_file;
+ static const char *user_option;
++mbf = 1;
+ 
+ /* mode handling */
+ 
+@@ -5316,6 +5317,14 @@
+     do_refresh(qs->first_window);
+ }
+ 
++static void make_backup_files(EditState *s) {
++	if(mbf == 1) {
++		mbf = 0;
++	} else {
++		mbf = 1;
++	}
++}
++
+ /* compute default path for find/save buffer */
+ static void get_default_path(EditState *s, char *buf, int buf_size)
+ {
+--- qeconfig.h.orig	2009-03-07 21:14:19.000000000 +0100
++++ qeconfig.h	2009-03-07 21:17:37.000000000 +0100
+@@ -192,6 +192,7 @@
+           "downcase-region", do_changecase_region, ESi, -1, "*v")
+     CMD3( KEY_CTRLX(KEY_CTRL('u')), KEY_NONE,
+           "upcase-region", do_changecase_region, ESi, 1, "*v")
++    CMD0( KEY_NONE, KEY_NONE, "make-backup-files", make_backup_files)
+ 
+     /*---------------- Command handling ----------------*/
+ 
+--- qe.h.orig	2009-03-07 21:14:26.000000000 +0100
++++ qe.h	2009-03-07 21:17:53.000000000 +0100
+@@ -1765,6 +1765,7 @@
+ /* image.c */
+ void fill_border(EditState *s, int x, int y, int w, int h, int color);
+ int qe_bitmap_format_to_pix_fmt(int format);
++int mbf;
+ 
+ /* shell.c */
+ EditBuffer *new_shell_buffer(EditBuffer *b0, const char *name,

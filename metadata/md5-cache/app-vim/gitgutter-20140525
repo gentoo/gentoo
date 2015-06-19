@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prepare
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: shows a git diff summary in the sign column and stages/reverts individual hunks
+EAPI=5
+HOMEPAGE=https://github.com/airblade/vim-gitgutter/
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/gitgutter-20140525.tar.bz2 http://dev.gentoo.org/~radhermit/vim/gitgutter-20140525.tar.bz2
+_eclasses_=vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=59561476d14b109d0464dfdfc7681875

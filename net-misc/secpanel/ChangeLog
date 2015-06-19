@@ -1,0 +1,85 @@
+# ChangeLog for net-misc/secpanel
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/secpanel/ChangeLog,v 1.23 2010/12/07 22:43:23 xmw Exp $
+
+  07 Dec 2010; Michael Weber <xmw@gentoo.org> -secpanel-0.53.ebuild:
+  Removing old version to finish version renumbering and forcing downgrade.
+
+  06 Dec 2010; Raúl Porcel <armin76@gentoo.org> secpanel-0.6.1.ebuild:
+  alpha stable wrt #342829
+
+  26 Nov 2010; Michael Weber <xmw@gentoo.org> secpanel-0.6.1.ebuild:
+  sparc stable (bug 342829)
+
+  01 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  secpanel-0.6.1.ebuild:
+  x86 stable wrt bug #342829
+
+  27 Oct 2010; Markos Chandras <hwoarang@gentoo.org> secpanel-0.6.1.ebuild:
+  Stable on amd64 wrt bug #342829
+
+  26 Oct 2010; Michael Weber <xmw@gentoo.org> metadata.xml:
+  Taking care of this package
+
+*secpanel-0.6.1 (05 Sep 2010)
+
+  05 Sep 2010; Michael Weber <xmw@gentoo.org> +secpanel-0.6.1.ebuild:
+  Version bump to fix bug #326487, thanks to Mirosław Lach
+  <milek-subs@czuwaj.net>. Naming scheme changed to upstreams.
+  Some Ebuild cleanups, like EAPI-2, variable odering etc.
+
+  25 Mar 2008; Raúl Porcel <armin76@gentoo.org> -secpanel-0.51.ebuild,
+  secpanel-0.53.ebuild:
+  alpha/x86 stable, remove old
+
+*secpanel-0.53 (26 Jan 2008)
+
+  26 Jan 2008; Raúl Porcel <armin76@gentoo.org> -secpanel-0.41.ebuild,
+  -secpanel-0.43.ebuild, secpanel-0.51.ebuild, +secpanel-0.53.ebuild:
+  Version bump, alpha/x86 stable, remove old
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing taviso from metadata.xml as per #202471. Assigning to
+  maintainer-needed.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  19 Apr 2005; Tavis Ormandy <taviso@gentoo.org> :
+  *bump*
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> secpanel-0.43.ebuild:
+  Stable on alpha.
+
+  11 May 2004; Jason Wever <weeve@gentoo.org> secpanel-0.43.ebuild:
+  Added ~sparc keyword.
+
+  29 Mar 2004; Tavis Ormandy <taviso@gentoo.org> secpanel-0.43.ebuild:
+  stable on x86
+
+  15 Mar 2004; Tavis Ormandy <taviso@gentoo.org> secpanel-0.43.ebuild:
+  fixing #44600
+
+*secpanel-0.43 (13 Mar 2004)
+
+  13 Mar 2004; Tavis Ormandy <taviso@gentoo.org> secpanel-0.43.ebuild:
+  new release, author changed directory name.
+
+  06 Nov 2003; Tavis Ormandy <taviso@gentoo.org> secpanel-0.41.ebuild:
+  stable
+
+  30 Oct 2003; Tavis Ormandy <taviso@gentoo.org> secpanel-0.41.ebuild:
+  updated description
+
+  30 Oct 2003; Tavis Ormandy <taviso@gentoo.org> secpanel-0.41.ebuild:
+  make gifs optional.
+
+*secpanel-0.41 (30 Oct 2003)
+
+  30 Oct 2003; Tavis Ormandy <taviso@gentoo.org> metadata.xml,
+  secpanel-0.41.ebuild:
+  initial import, closing bug #32270
+

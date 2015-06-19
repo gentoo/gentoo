@@ -1,0 +1,9 @@
+DEFINED_PHASES=install postrm preinst
+DESCRIPTION=Make /etc/resolv.conf a symlink to a runtime-writable location
+EAPI=4
+HOMEPAGE=http://www.gentoo.org
+IUSE=+symlink
+KEYWORDS=~amd64 ~x86
+LICENSE=public-domain
+SLOT=0
+_md5_=819183c0b2f6a5254af0dd0f7e2cef61

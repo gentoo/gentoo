@@ -1,0 +1,10 @@
+# ChangeLog for dev-perl/HTML-Packer
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Packer/ChangeLog,v 1.1 2014/12/07 13:45:15 dilfridge Exp $
+
+*HTML-Packer-1.4.1 (07 Dec 2014)
+
+  07 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +HTML-Packer-1.4.1.ebuild, +metadata.xml:
+  New package, imported from perl overlay, bug 311041
+

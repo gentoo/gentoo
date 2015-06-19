@@ -1,0 +1,101 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/postgrey/files/postgrey-1.34-r3.rc.new,v 1.1 2014/08/13 14:10:06 hasufell Exp $
+
+conf="/etc/conf.d/postgrey"
+
+extra_started_commands="reload"
+
+depend() {
+	need net
+	before postfix
+	provide postfix_greylist
+}
+
+conf_error() {
+	eerror "You need to setup ${conf} first"
+	return 1
+}
+
+checkconfig() {
+if [ -z "${POSTGREY_TYPE}" ]
+	then
+		einfo "You need to choose the server type you want"
+		einfo "by setting the POSTGREY_TYPE variable in ${conf}."
+	else
+	if [ "x${POSTGREY_TYPE}" = "xinet" ]
+		then
+			if [ -z "${POSTGREY_PORT}" ] || [ -z "${POSTGREY_HOST}" ]
+				then
+					einfo "The following entries are missing in ${conf}:"
+					[ -z "${POSTGREY_HOST}" ] && einfo "  - POSTGREY_HOST"
+					[ -z "${POSTGREY_PORT}" ] && einfo "  - POSTGREY_PORT"
+					conf_error
+			fi
+			POSTGREY_ADDR="${POSTGREY_TYPE}=${POSTGREY_HOST}:${POSTGREY_PORT}"
+		else
+			if [ -z "${POSTGREY_SOCKET}" ]
+			then
+				einfo "The following entries are missing in ${conf}:"
+				[ -z "${POSTGREY_SOCKET}" ] && einfo "  - POSTGREY_SOCKET"
+				conf_error
+			fi
+			POSTGREY_ADDR="${POSTGREY_TYPE}=${POSTGREY_SOCKET}"
+	fi
+fi
+
+	if [ -z "${POSTGREY_PID}" ]
+		then
+		einfo "The following entries are missing in ${conf}:"
+		[ -z "${POSTGREY_PID}" ] && einfo "  - POSTGREY_PID"
+		conf_error
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting Postgrey"
+
+	# HACK -- start a subshell and corrects perms on the socket...
+	if [ "x${POSTGREY_TYPE}" = "xunix" ]; then
+		rm -f ${POSTGREY_SOCKET}
+		( while ! test -S ${POSTGREY_SOCKET}; do sleep 1; done; chmod a+rw,a-x ${POSTGREY_SOCKET} ) &
+	fi
+
+	if [ -z ${POSTGREY_DELAY} ] ; then
+		POSTGREY_DELAY_ARG=""
+	else
+		POSTGREY_DELAY_ARG="--delay=${POSTGREY_DELAY}"
+	fi
+
+	if [ -z "${POSTGREY_TEXT}" ] ; then
+		POSTGREY_TEXT_ARG=""
+	else
+		POSTGREY_TEXT_ARG="--greylist-text=${POSTGREY_TEXT}"
+	fi
+
+	start-stop-daemon --start --quiet --background \
+		--pidfile=${POSTGREY_PID} \
+		--name postgrey \
+		--exec /usr/sbin/postgrey -- \
+		--${POSTGREY_ADDR} \
+		--daemonize \
+		--pidfile=${POSTGREY_PID} \
+		${POSTGREY_DELAY_ARG} \
+		${POSTGREY_OPTS} \
+		"${POSTGREY_TEXT_ARG}"
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping Postgrey"
+	start-stop-daemon --stop --quiet --pidfile ${POSTGREY_PID}
+	eend ${?}
+}
+
+reload() {
+	ebegin "Reloading Postgrey"
+	start-stop-daemon --stop --signal HUP --oknodo --pidfile ${POSTGREY_PID}
+	eend $?
+}

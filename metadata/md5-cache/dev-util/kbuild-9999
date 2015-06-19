@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install preinst prepare unpack
+DEPEND=sys-devel/gettext virtual/yacc !<sys-devel/gettext-0.18.1.1-r3 =sys-devel/automake-1.9* >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DESCRIPTION=A makefile framework for writing simple makefiles for complex tasks
+EAPI=2
+HOMEPAGE=http://svn.netlabs.org/kbuild/wiki
+LICENSE=GPL-3
+SLOT=0
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=64c49d1f284de85e4bdb0b46b4d98020

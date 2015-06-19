@@ -1,0 +1,159 @@
+# ChangeLog for net-misc/ssh-askpass-fullscreen
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ssh-askpass-fullscreen/ChangeLog,v 1.33 2013/09/13 22:44:44 eva Exp $
+
+  14 Sep 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -ssh-askpass-fullscreen-0.4-r4.ebuild, ssh-askpass-fullscreen-1.0-r1.ebuild:
+  Automake-1.13 fix, bug #468764.
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  ssh-askpass-fullscreen-1.0-r1.ebuild:
+  Stable for sparc, wrt bug #458984
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  ssh-askpass-fullscreen-1.0-r1.ebuild:
+  Stable for alpha, wrt bug #458984
+
+  29 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  ssh-askpass-fullscreen-1.0-r1.ebuild:
+  Stable for ia64, wrt bug #458984
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  ssh-askpass-fullscreen-1.0-r1.ebuild:
+  Stable for ppc, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  ssh-askpass-fullscreen-1.0-r1.ebuild:
+  Stable for x86, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  ssh-askpass-fullscreen-1.0-r1.ebuild:
+  Stable for amd64, wrt bug #458984
+
+  24 Feb 2013; Pacho Ramos <pacho@gentoo.org>
+  -ssh-askpass-fullscreen-1.0.ebuild, ssh-askpass-fullscreen-1.0-r1.ebuild:
+  Use thirdpartymirrors
+
+  12 Oct 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  ssh-askpass-fullscreen-1.0-r1.ebuild:
+  Add comment explaining the env.d file's purpose.
+
+*ssh-askpass-fullscreen-1.0-r1 (12 Oct 2012)
+
+  12 Oct 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  ssh-askpass-fullscreen-0.4-r4.ebuild, ssh-askpass-fullscreen-1.0.ebuild,
+  +ssh-askpass-fullscreen-1.0-r1.ebuild,
+  +files/ssh-askpass-fullscreen-1.0-libX11.patch:
+  Fix linking failure with gold (bug #370019, thanks to Diego Elio Pettenò).
+  Install /etc/env.d/99ssh_askpass like in version 0.4 to set SSH_ASKPASS env
+  variable (bug #437764, thanks to Derk W te Bokkel). Update license.
+
+*ssh-askpass-fullscreen-1.0 (06 Oct 2012)
+
+  06 Oct 2012; Pacho Ramos <pacho@gentoo.org>
+  +ssh-askpass-fullscreen-1.0.ebuild, metadata.xml:
+  Version bump.
+
+  19 Sep 2012; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  dropping maintainership, backup herd exists
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  ssh-askpass-fullscreen-0.4-r4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  ssh-askpass-fullscreen-0.4-r4.ebuild:
+  Fix slot-dep on gtk+
+
+*ssh-askpass-fullscreen-0.4-r4 (26 Dec 2009)
+
+  26 Dec 2009; Jeremy Olexa <darkside@gentoo.org> files/99ssh_askpass,
+  -ssh-askpass-fullscreen-0.4-r3.ebuild,
+  +ssh-askpass-fullscreen-0.4-r4.ebuild:
+  Attempt to let Gentoo's sudo package work with the -A flag. app-admin/sudo
+  still needs to depend on this package, otherwise it automagically works
+  for some Gentoo users. See bug 240620 for discussion.
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  -ssh-askpass-fullscreen-0.4-r1.ebuild:
+  clean up
+
+  11 Apr 2009; nixnut <nixnut@gentoo.org>
+  ssh-askpass-fullscreen-0.4-r3.ebuild:
+  ppc stable #265359
+
+  10 Apr 2009; Raúl Porcel <armin76@gentoo.org>
+  ssh-askpass-fullscreen-0.4-r3.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #265359
+
+  10 Apr 2009; Jeremy Olexa <darkside@gentoo.org>
+  ssh-askpass-fullscreen-0.4-r3.ebuild:
+  amd64 stable, bug 265359
+
+*ssh-askpass-fullscreen-0.4-r3 (26 Feb 2009)
+
+  26 Feb 2009; Jeremy Olexa <darkside@gentoo.org>
+  files/ssh-askpass-fullscreen-0.4-fix-grab.patch,
+  +files/ssh-askpass-fullscreen.1, -ssh-askpass-fullscreen-0.4.ebuild,
+  -ssh-askpass-fullscreen-0.4-r2.ebuild,
+  +ssh-askpass-fullscreen-0.4-r3.ebuild:
+  Fix compiler warning (thanks to ulm) and QA cleanup of the ebuild: added die
+  message, EAPI-2, style changes. Added a man page from debian's patch tracking
+  site.
+
+*ssh-askpass-fullscreen-0.4-r2 (25 Feb 2009)
+
+  25 Feb 2009; Ulrich Mueller <ulm@gentoo.org>
+  +files/ssh-askpass-fullscreen-0.4-fix-grab.patch,
+  +ssh-askpass-fullscreen-0.4-r2.ebuild:
+  Fix "grab keyboard" problem, bug 260308.
+
+  23 Jan 2009; Raúl Porcel <armin76@gentoo.org>
+  ssh-askpass-fullscreen-0.4-r1.ebuild:
+  ia64 stable wrt #253234
+
+  18 Jan 2009; Tobias Klausmann <klausman@gentoo.org>
+  ssh-askpass-fullscreen-0.4-r1.ebuild:
+  Stable on alpha, bug #253234
+
+  11 Jan 2009; Tiago Cunha <tcunha@gentoo.org>
+  ssh-askpass-fullscreen-0.4-r1.ebuild:
+  stable sparc, bug 253234
+
+  10 Jan 2009; Markus Meier <maekke@gentoo.org>
+  ssh-askpass-fullscreen-0.4-r1.ebuild:
+  amd64/x86 stable, bug #253234
+
+  09 Jan 2009; Joseph Jezak <josejx@gentoo.org>
+  ssh-askpass-fullscreen-0.4-r1.ebuild:
+  Marked ppc stable for bug #253234.
+
+  25 Nov 2008; Jeremy Olexa <darkside@gentoo.org>
+  ssh-askpass-fullscreen-0.4-r1.ebuild:
+  add missing inherit, add || die to the critical functions. bug #248762
+
+*ssh-askpass-fullscreen-0.4-r1 (20 Nov 2008)
+
+  20 Nov 2008; Jeremy Olexa <darkside@gentoo.org>
+  +ssh-askpass-fullscreen-0.4-r1.ebuild:
+  minor additions to respect compiler and CFLAGS. bug #247700, thanks to
+  justin for the patch.
+
+  20 Nov 2008; Raúl Porcel <armin76@gentoo.org>
+  ssh-askpass-fullscreen-0.4.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #247309
+
+  18 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  ssh-askpass-fullscreen-0.4.ebuild:
+  ppc stable, bug #247309
+
+  18 Nov 2008; Jeremy Olexa <darkside@gentoo.org>
+  ssh-askpass-fullscreen-0.4.ebuild:
+  amd64 stable, bug #247309
+
+*ssh-askpass-fullscreen-0.4 (05 Sep 2008)
+
+  05 Sep 2008; Jeremy Olexa <darkside@gentoo.org> +files/99ssh_askpass,
+  +metadata.xml, +ssh-askpass-fullscreen-0.4.ebuild:
+  initial commit, bug #194788. gtk2-ssh-askpass replacement, upstream changed
+  names. Cannot do a pkgmove until this package is stable I am afraid.

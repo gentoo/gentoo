@@ -1,0 +1,179 @@
+# ChangeLog for dev-ruby/mail
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/mail/ChangeLog,v 1.43 2015/06/07 18:14:38 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  22 Mar 2015; Hans de Graaff <graaff@gentoo.org> mail-2.6.3.ebuild:
+  Add ruby22.
+
+  22 Mar 2015; Hans de Graaff <graaff@gentoo.org> -mail-2.6.1.ebuild,
+  -mail-2.6.1-r1.ebuild:
+  Cleanup.
+
+*mail-2.6.3 (15 Dec 2014)
+
+  15 Dec 2014; Hans de Graaff <graaff@gentoo.org> +mail-2.6.3.ebuild:
+  Version bump.
+
+*mail-2.6.2 (06 Nov 2014)
+
+  06 Nov 2014; Hans de Graaff <graaff@gentoo.org> +mail-2.6.2.ebuild:
+  Version bump.
+
+  26 Aug 2014; Hans de Graaff <graaff@gentoo.org> -mail-2.4.4.ebuild:
+  Cleanup.
+
+  12 Aug 2014; Anthony G. Basile <blueness@gentoo.org> mail-2.4.4.ebuild,
+  mail-2.5.4.ebuild, mail-2.6.1-r1.ebuild, mail-2.6.1.ebuild:
+  Keyword ~ppc and ~ppc64, bug #519170
+
+*mail-2.6.1-r1 (15 Jun 2014)
+
+  15 Jun 2014; Hans de Graaff <graaff@gentoo.org> +mail-2.6.1-r1.ebuild:
+  Install VERSION file to make Mail::VERSION work, fixing bug 513326.
+
+  15 Jun 2014; Hans de Graaff <graaff@gentoo.org> -mail-2.6.0.ebuild:
+  Cleanup.
+
+*mail-2.6.1 (14 Jun 2014)
+
+  14 Jun 2014; Manuel Rüger <mrueg@gentoo.org> +mail-2.6.1.ebuild:
+  Version bump.
+
+*mail-2.6.0 (03 Jun 2014)
+
+  03 Jun 2014; Hans de Graaff <graaff@gentoo.org> +mail-2.6.0.ebuild:
+  Version bump.
+
+  20 Apr 2014; Hans de Graaff <graaff@gentoo.org> mail-2.5.4.ebuild:
+  Add ruby20, ruby21.
+
+  05 Apr 2014; Manuel Rüger <mrueg@gentoo.org>
+  -files/mail-2.5.3-utf8-ruby18.patch, -mail-2.5.3.ebuild, mail-2.4.4.ebuild,
+  mail-2.5.4.ebuild:
+  Remove ree18 and ruby18 target. Cleanup old.
+
+  29 Nov 2013; Hans de Graaff <graaff@gentoo.org> -mail-2.3.3.ebuild:
+  Remove masked Rails 3.1.
+
+*mail-2.5.4 (14 May 2013)
+
+  14 May 2013; Hans de Graaff <graaff@gentoo.org> +mail-2.5.4.ebuild:
+  Version bump.
+
+*mail-2.5.3 (15 Mar 2013)
+
+  15 Mar 2013; Hans de Graaff <graaff@gentoo.org> +mail-2.5.3.ebuild,
+  +files/mail-2.5.3-utf8-ruby18.patch:
+  Version bump.
+
+  16 Jan 2013; Rick Farina <zerochaos@gentoo.org> mail-2.3.3.ebuild,
+  mail-2.4.4.ebuild:
+  adding ~arm keywords to net-analyzer/metasploit rdeps
+
+  16 Sep 2012; Pacho Ramos <pacho@gentoo.org> -mail-2.2.19.ebuild:
+  Drop masked versions.
+
+  14 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> mail-2.3.3.ebuild,
+  mail-2.4.4.ebuild:
+  Use the new rspec recipe for testing; on 2.3.3 this also changes the test dep
+  from rspec:0 to rspec:2, but keeps a rspec:2 dependency for documentation.
+
+  10 Aug 2012; Hans de Graaff <graaff@gentoo.org> mail-2.3.3.ebuild:
+  Add untested ppc keyword to fix rails dependency tree.
+
+  20 Jul 2012; Hans de Graaff <graaff@gentoo.org> -mail-2.3.0.ebuild:
+  Remove old version.
+
+*mail-2.3.3 (14 Jun 2012)
+
+  14 Jun 2012; Hans de Graaff <graaff@gentoo.org> +mail-2.3.3.ebuild:
+  Version bump.
+
+  01 May 2012; Raúl Porcel <armin76@gentoo.org> mail-2.2.19.ebuild:
+  Drop ia64/sparc keywords
+
+*mail-2.4.4 (04 Apr 2012)
+
+  04 Apr 2012; Hans de Graaff <graaff@gentoo.org> +mail-2.4.4.ebuild:
+  Version bump.
+
+  11 Mar 2012; Brent Baude <ranger@gentoo.org> mail-2.3.0.ebuild:
+  Marking mail-2.3.0 ~ppc64 for bug 396547
+
+  31 Dec 2011; Fabian Groffen <grobian@gentoo.org> mail-2.3.0.ebuild:
+  Add Prefix keywords, bug #396547
+
+*mail-2.3.0 (30 Dec 2011)
+
+  30 Dec 2011; Hans de Graaff <graaff@gentoo.org> +mail-2.3.0.ebuild:
+  Version bump. Add ruby19. Drop arches due to bug 396547.
+
+  16 Oct 2011; Hans de Graaff <graaff@gentoo.org> -mail-2.2.18.ebuild:
+  Remove old version.
+
+  09 Sep 2011; Fabian Groffen <grobian@gentoo.org> mail-2.2.19.ebuild:
+  Marked ~sparc-solaris
+
+  24 Jul 2011; Raúl Porcel <armin76@gentoo.org> mail-2.2.18.ebuild,
+  mail-2.2.19.ebuild:
+  Add ~ia64/~sparc wrt #351835
+
+  24 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> mail-2.2.19.ebuild:
+  Marked ~ppc/~ppc64 wrt #351835
+
+*mail-2.2.19 (04 Jul 2011)
+
+  04 Jul 2011; Hans de Graaff <graaff@gentoo.org> +mail-2.2.19.ebuild:
+  Version bump.
+
+  29 Jun 2011; Fabian Groffen <grobian@gentoo.org> mail-2.2.18.ebuild:
+  Marked ~x86-solaris
+
+  04 Jun 2011; Hans de Graaff <graaff@gentoo.org> -mail-2.2.15.ebuild,
+  -mail-2.2.17.ebuild:
+  Remove old versions.
+
+*mail-2.2.18 (30 Apr 2011)
+
+  30 Apr 2011; Hans de Graaff <graaff@gentoo.org> +mail-2.2.18.ebuild:
+  Version bump.
+
+*mail-2.2.17 (20 Apr 2011)
+
+  20 Apr 2011; Hans de Graaff <graaff@gentoo.org> +mail-2.2.17.ebuild:
+  Version bump.
+
+  13 Feb 2011; Thomas Kahle <tomka@gentoo.org> mail-2.2.15.ebuild:
+  keyworded ~x86 per bug 351835
+
+  26 Jan 2011; Hans de Graaff <graaff@gentoo.org> -mail-2.2.11.ebuild,
+  -mail-2.2.13.ebuild, -mail-2.2.13-r1.ebuild:
+  Remove vulnerable versions.
+
+*mail-2.2.15 (26 Jan 2011)
+
+  26 Jan 2011; Hans de Graaff <graaff@gentoo.org> +mail-2.2.15.ebuild:
+  Version bump.
+
+*mail-2.2.13-r1 (07 Jan 2011)
+
+  07 Jan 2011; Hans de Graaff <graaff@gentoo.org> +mail-2.2.13-r1.ebuild:
+  Install package gemspec.
+
+  05 Jan 2011; Hans de Graaff <graaff@gentoo.org> mail-2.2.13.ebuild:
+  Add rspec dependency also for USE=doc because it is loaded unconditionally
+  in the Rakefile, fixes bug 350467.
+
+*mail-2.2.13 (02 Jan 2011)
+
+  02 Jan 2011; Hans de Graaff <graaff@gentoo.org> +mail-2.2.13.ebuild:
+  Version bump.
+
+*mail-2.2.11 (04 Dec 2010)
+
+  04 Dec 2010; Hans de Graaff <graaff@gentoo.org> +mail-2.2.11.ebuild,
+  +metadata.xml:
+  Initial import. New dependency for Rails 3. Supersedes dev-ruby/tmail.

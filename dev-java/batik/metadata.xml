@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>java</herd>
+<longdescription>
+	Java toolkit for applications or applets that want to use
+	images in the Scalable Vector Graphics (SVG) format for various
+	purposes, such as viewing, generation or manipulation.
+</longdescription>
+</pkgmetadata>

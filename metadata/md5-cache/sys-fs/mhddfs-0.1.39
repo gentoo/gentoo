@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare unpack
+DEPEND=>=sys-fs/fuse-2.7.0 dev-libs/uthash
+DESCRIPTION=Fuse multi harddrive filesystem
+EAPI=4
+HOMEPAGE=http://mhddfs.uvw.ru/ http://svn.uvw.ru/mhddfs/trunk/README
+IUSE=linguas_ru suid
+KEYWORDS=amd64
+LICENSE=GPL-3
+RDEPEND=>=sys-fs/fuse-2.7.0
+SLOT=0
+SRC_URI=http://mhddfs.uvw.ru/downloads/mhddfs_0.1.39.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8627c793e9cd681989fb4698e436e8e7

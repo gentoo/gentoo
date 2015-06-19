@@ -1,0 +1,38 @@
+# ChangeLog for x11-misc/dockmanager
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/dockmanager/ChangeLog,v 1.10 2014/12/30 12:34:15 pacho Exp $
+
+  30 Dec 2014; Pacho Ramos <pacho@gentoo.org> -dockmanager-0.1.0.ebuild:
+  Drop old
+
+  28 Dec 2014; Agostino Sarubbo <ago@gentoo.org> dockmanager-0.1.0-r1.ebuild:
+  Stable for x86, wrt bug #531494
+
+  27 Dec 2014; Agostino Sarubbo <ago@gentoo.org> dockmanager-0.1.0-r1.ebuild:
+  Stable for amd64, wrt bug #531494
+
+*dockmanager-0.1.0-r1 (02 Dec 2014)
+
+  02 Dec 2014; Pacho Ramos <pacho@gentoo.org> +dockmanager-0.1.0-r1.ebuild:
+  Use new python eclasses
+
+  09 Apr 2013; Agostino Sarubbo <ago@gentoo.org> dockmanager-0.1.0.ebuild:
+  Stable for x86, wrt bug #465222
+
+  09 Apr 2013; Agostino Sarubbo <ago@gentoo.org> dockmanager-0.1.0.ebuild:
+  Stable for amd64, wrt bug #465222
+
+  29 Mar 2013; Christoph Mende <angelos@gentoo.org> dockmanager-0.1.0.ebuild:
+  Convert to vala.eclass
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> dockmanager-0.1.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  08 May 2011; Christoph Mende <angelos@gentoo.org> dockmanager-0.1.0.ebuild:
+  Remove the pidgin_control script, it does not work with current pidgin
+  versions
+
+*dockmanager-0.1.0 (13 Mar 2011)
+
+  13 Mar 2011; <angelos@gentoo.org> +dockmanager-0.1.0.ebuild, +metadata.xml:
+  Initial import

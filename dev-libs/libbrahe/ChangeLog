@@ -1,0 +1,35 @@
+# ChangeLog for dev-libs/libbrahe
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libbrahe/ChangeLog,v 1.9 2013/07/29 18:00:49 pinkbyte Exp $
+
+  29 Jul 2013; Sergey Popov <pinkbyte@gentoo.org> -libbrahe-1.1.0.ebuild:
+  Drop old revision
+
+  27 Jul 2013; Agostino Sarubbo <ago@gentoo.org> libbrahe-1.1.0-r1.ebuild:
+  Stable for x86, wrt bug #477206
+
+  22 Jul 2013; Agostino Sarubbo <ago@gentoo.org> libbrahe-1.1.0-r1.ebuild:
+  Stable for ppc, wrt bug #477206
+
+  21 Jul 2013; Agostino Sarubbo <ago@gentoo.org> libbrahe-1.1.0-r1.ebuild:
+  Stable for amd64, wrt bug #477206
+
+  17 Jul 2013; Sergey Popov <pinkbyte@gentoo.org> libbrahe-1.1.0-r1.ebuild:
+  Add some Prefix keywords
+
+*libbrahe-1.1.0-r1 (17 Jul 2013)
+
+  17 Jul 2013; Sergey Popov <pinkbyte@gentoo.org> +libbrahe-1.1.0-r1.ebuild:
+  Revision bump: EAPI 5, port to autotools-utils eclass, add USE="static-libs"
+
+  26 Feb 2009; Joseph Jezak <josejx@gentoo.org> libbrahe-1.1.0.ebuild:
+  Marked ppc stable.
+
+  08 Feb 2009; Markus Meier <maekke@gentoo.org> libbrahe-1.1.0.ebuild:
+  amd64/x86 stable, bug #245193
+
+*libbrahe-1.1.0 (01 May 2008)
+
+  01 May 2008; Tiziano Müller <dev-zero@gentoo.org>
+  +files/1.1.0-missing_libs.patch, +metadata.xml, +libbrahe-1.1.0.ebuild:
+  Initial commit as revdep for a new version of dev-libs/libevocosm.

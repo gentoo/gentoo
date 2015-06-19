@@ -1,0 +1,17 @@
+--- a/drbd/Makefile	2011-07-07 12:55:39.000000000 +0200
++++ b/drbd/Makefile	2011-11-03 12:56:42.280603057 +0100
+@@ -77,9 +77,12 @@
+     endif
+   endif
+ 
++  KDIR_Makefile_VERSION = $(shell test -e $(KDIR)/Makefile && grep "^VERSION = " $(KDIR)/Makefile | cut -d " " -f 3)
+   KDIR_Makefile_PATCHLEVEL = $(shell test -e $(KDIR)/Makefile && grep "^PATCHLEVEL = " $(KDIR)/Makefile | cut -d " " -f 3)
+-  ifneq ($(findstring $(KDIR_Makefile_PATCHLEVEL),12345),)
+-    $(error "won't compile with this kernel version")
++  ifneq ($(KDIR_Makefile_VERSION),3)
++    ifneq ($(findstring $(KDIR_Makefile_PATCHLEVEL),12345),)
++      $(error "ici won't compile with this kernel version")
++    endif
+   endif
+ 
+   .PHONY: drbd.o default all greeting clean kbuild install dep tags

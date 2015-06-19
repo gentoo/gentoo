@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sound</herd>
+  <upstream>
+    <maintainer>
+      <email>thomas-forum@orgis.org</email>
+      <name>Thomas Orgis</name>
+    </maintainer>
+  </upstream>
+  <use>
+    <flag name="int-quality">Use rounding instead of fast truncation for integer output, where possible</flag>
+  </use>
+</pkgmetadata>

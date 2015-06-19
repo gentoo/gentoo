@@ -1,0 +1,80 @@
+# ChangeLog for dev-perl/Data-FormValidator
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Data-FormValidator/ChangeLog,v 1.15 2015/06/13 21:46:07 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Data-FormValidator-4.810.0.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+  25 Jul 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Data-FormValidator-4.810.0.ebuild:
+  Mark stable for all
+
+  25 Jul 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -Data-FormValidator-4.800.0.ebuild, Data-FormValidator-4.810.0.ebuild:
+  Bump to EAPI=5; Drop old.
+
+*Data-FormValidator-4.810.0 (15 Aug 2013)
+
+  15 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +Data-FormValidator-4.810.0.ebuild:
+  Bump
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org>
+  -Data-FormValidator-4.700.0.ebuild, -Data-FormValidator-4.710.0.ebuild:
+  Cleanup
+
+*Data-FormValidator-4.800.0 (04 Nov 2012)
+
+  04 Nov 2012; Torsten Veller <tove@gentoo.org>
+  +Data-FormValidator-4.800.0.ebuild:
+  Version bump
+
+*Data-FormValidator-4.710.0 (09 Oct 2012)
+
+  09 Oct 2012; Torsten Veller <tove@gentoo.org>
+  +Data-FormValidator-4.710.0.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org>
+  Data-FormValidator-4.700.0.ebuild:
+  Drop alpha/ia64/sparc keywords
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org>
+  -Data-FormValidator-4.660.0.ebuild:
+  Cleanup
+
+*Data-FormValidator-4.700.0 (01 Dec 2011)
+
+  01 Dec 2011; Torsten Veller <tove@gentoo.org>
+  +Data-FormValidator-4.700.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -Data-FormValidator-4.66.ebuild:
+  Cleanup
+
+*Data-FormValidator-4.660.0 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Data-FormValidator-4.660.0.ebuild:
+  Change version scheme
+
+  08 May 2010; Raúl Porcel <armin76@gentoo.org>
+  Data-FormValidator-4.66.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #315789
+
+*Data-FormValidator-4.66 (17 Apr 2010)
+
+  17 Apr 2010; Torsten Veller <tove@gentoo.org>
+  +Data-FormValidator-4.66.ebuild, +metadata.xml:
+  Initial import from perl-experimental
+
+*Data-FormValidator-4.65 (09 Jan 2010)
+
+  09 Jan 2010; Michele Beltrame <m@cattlegrid.info>
+  -Data-FormValidator-4.57.ebuild, +Data-FormValidator-4.65.ebuild:
+  Bump

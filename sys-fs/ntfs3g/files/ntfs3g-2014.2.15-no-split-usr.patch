@@ -1,0 +1,25 @@
+we handle split /usr logic ourselves.  this ends up breaking when building
+for an abi that doesn't exist in / (like cross-compiling) as the tests fail.
+
+--- a/libntfs-3g/Makefile.in
++++ b/libntfs-3g/Makefile.in
+@@ -912,19 +912,6 @@ uninstall-am: uninstall-libLTLIBRARIES uninstall-local \
+ 	uninstall-rootlibLTLIBRARIES
+ 
+ 
+-# We may need to move .so files to root
+-# And create ldscript or symbolic link from /usr
+-install-exec-hook: install-rootlibLTLIBRARIES
+-@INSTALL_LIBRARY_TRUE@	if [ ! "$(rootlibdir)" -ef "$(libdir)" ]; then \
+-@INSTALL_LIBRARY_TRUE@		$(MV) -f "$(DESTDIR)/$(libdir)"/libntfs-3g.so* "$(DESTDIR)/$(rootlibdir)";  \
+-@INSTALL_LIBRARY_TRUE@	fi
+-@GENERATE_LDSCRIPT_TRUE@@INSTALL_LIBRARY_TRUE@	if [ ! "$(rootlibdir)" -ef "$(libdir)" ]; then \
+-@GENERATE_LDSCRIPT_TRUE@@INSTALL_LIBRARY_TRUE@		$(install_sh_PROGRAM) "libntfs-3g.script.so" "$(DESTDIR)/$(libdir)/libntfs-3g.so"; \
+-@GENERATE_LDSCRIPT_TRUE@@INSTALL_LIBRARY_TRUE@	fi
+-@GENERATE_LDSCRIPT_FALSE@@INSTALL_LIBRARY_TRUE@	if [ ! "$(rootlibdir)" -ef "$(libdir)" ]; then \
+-@GENERATE_LDSCRIPT_FALSE@@INSTALL_LIBRARY_TRUE@		$(LN_S) "$(rootlibdir)/libntfs-3g.so" "$(DESTDIR)/$(libdir)/libntfs-3g.so"; \
+-@GENERATE_LDSCRIPT_FALSE@@INSTALL_LIBRARY_TRUE@	fi
+-
+ uninstall-local:
+ @INSTALL_LIBRARY_TRUE@	$(RM) -f "$(DESTDIR)/$(rootlibdir)"/libntfs-3g.so*
+ 

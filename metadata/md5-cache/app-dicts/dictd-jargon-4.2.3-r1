@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=>=app-text/dictd-1.5.5
+DESCRIPTION=Jargon lexicon
+HOMEPAGE=http://www.dict.org/
+KEYWORDS=x86 sparc ppc amd64 ppc64
+LICENSE=GPL-2
+RDEPEND=>=app-text/dictd-1.5.5
+SLOT=0
+SRC_URI=ftp://ftp.dict.org/pub/dict/pre/jargon_4.2.3.tar.gz
+_md5_=a56653a5d7e042a3f61320162bc3e876

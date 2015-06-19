@@ -1,0 +1,192 @@
+# ChangeLog for x11-misc/parcellite
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/parcellite/ChangeLog,v 1.41 2014/12/05 15:04:46 jer Exp $
+
+  05 Dec 2014; Jeroen Roovers <jer@gentoo.org> -parcellite-1.1.7.ebuild,
+  -parcellite-1.1.8.ebuild:
+  Old.
+
+  05 Dec 2014; Agostino Sarubbo <ago@gentoo.org> parcellite-1.1.9.ebuild:
+  Stable for x86, wrt bug #529848
+
+  26 Nov 2014; Agostino Sarubbo <ago@gentoo.org> parcellite-1.1.9.ebuild:
+  Stable for amd64, wrt bug #529848
+
+*parcellite-1.1.9 (04 Oct 2014)
+
+  04 Oct 2014; Jeroen Roovers <jer@gentoo.org> +parcellite-1.1.9.ebuild:
+  Version bump.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> parcellite-1.1.7.ebuild,
+  parcellite-1.1.8.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*parcellite-1.1.8 (12 Jul 2014)
+
+  12 Jul 2014; Jeroen Roovers <jer@gentoo.org> +parcellite-1.1.8.ebuild:
+  Version bump (bug #516930 by Sasha Medvedev).
+
+  12 Apr 2014; Jeroen Roovers <jer@gentoo.org> -parcellite-1.1.4.ebuild,
+  -parcellite-1.1.5.ebuild, -parcellite-1.1.6.ebuild:
+  Old.
+
+  12 Apr 2014; Agostino Sarubbo <ago@gentoo.org> parcellite-1.1.7.ebuild:
+  Stable for x86, wrt bug #506288
+
+  07 Apr 2014; Chema Alonso <nimiux@gentoo.org> parcellite-1.1.7.ebuild:
+  Stable for amd64 wrt bug #506288
+
+  02 Mar 2014; Agostino Sarubbo <ago@gentoo.org> parcellite-1.1.6.ebuild:
+  Stable for x86, wrt bug #481144
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> parcellite-1.1.6.ebuild:
+  amd64 stable, bug #481144
+
+*parcellite-1.1.7 (19 Oct 2013)
+
+  19 Oct 2013; Markos Chandras <hwoarang@gentoo.org> +parcellite-1.1.7.ebuild:
+  Version bump
+
+*parcellite-1.1.6 (14 Aug 2013)
+
+  14 Aug 2013; Jeroen Roovers <jer@gentoo.org> +parcellite-1.1.6.ebuild:
+  Version bump.
+
+*parcellite-1.1.5 (19 Jul 2013)
+
+  19 Jul 2013; Jeroen Roovers <jer@gentoo.org> -parcellite-1.0.2_rc5.ebuild,
+  -parcellite-1.0.2_rc5-r1.ebuild, -parcellite-1.0.2_rc6.ebuild,
+  +parcellite-1.1.5.ebuild, -files/parcellite-1.0.2_rc5-glib-2.31.patch:
+  Version bump (bug #477366 by teidakankan).
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> parcellite-1.1.4.ebuild:
+  Stable for x86, wrt bug #457948
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> parcellite-1.1.4.ebuild:
+  Stable for amd64, wrt bug #457948
+
+*parcellite-1.1.4 (26 Jan 2013)
+
+  26 Jan 2013; Markos Chandras <hwoarang@gentoo.org> +parcellite-1.1.4.ebuild:
+  Version bump
+
+*parcellite-1.0.2_rc6 (14 Jan 2013)
+
+  14 Jan 2013; Markos Chandras <hwoarang@gentoo.org>
+  +parcellite-1.0.2_rc6.ebuild:
+  Version bump
+
+*parcellite-1.0.2_rc5-r1 (28 Sep 2012)
+
+  28 Sep 2012; Jeroen Roovers <jer@gentoo.org> -parcellite-0.9.1.ebuild,
+  -parcellite-1.0.1.ebuild, +parcellite-1.0.2_rc5-r1.ebuild:
+  Add LINGUAS support so that USE=nls actually makes sense.
+
+  28 Sep 2012; Jeroen Roovers <jer@gentoo.org> parcellite-1.0.2_rc5.ebuild:
+  Fix Manifest to allow newer tarball with same name but without the compiled
+  sources, remove related command in src_prepare().
+
+  15 Aug 2012; Johannes Huber <johu@gentoo.org> parcellite-1.0.2_rc5.ebuild:
+  Stable for x86, wrt bug #428048
+
+  04 Aug 2012; Agostino Sarubbo <ago@gentoo.org> parcellite-1.0.2_rc5.ebuild:
+  Stable for amd64, wrt bug #428048
+
+  31 Jul 2012; Julian Ospald <hasufell@gentoo.org> parcellite-0.9.1.ebuild,
+  parcellite-1.0.1.ebuild:
+  fix underlinking wrt #379661
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> parcellite-0.9.1.ebuild,
+  parcellite-1.0.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  04 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  parcellite-1.0.2_rc5.ebuild, +files/parcellite-1.0.2_rc5-glib-2.31.patch:
+  Fix building with dev-libs/glib >= 2.31 wrt #412365 by Daniel Kuehn and Elis
+  Axelsson.
+
+*parcellite-1.0.2_rc5 (10 Sep 2011)
+
+  10 Sep 2011; Markos Chandras <hwoarang@gentoo.org>
+  -parcellite-1.0.2_rc4.ebuild, +parcellite-1.0.2_rc5.ebuild:
+  Version bump
+
+*parcellite-1.0.2_rc4 (06 Sep 2011)
+
+  06 Sep 2011; Markos Chandras <hwoarang@gentoo.org>
+  -parcellite-1.0.2_rc2.ebuild, -parcellite-1.0.2_rc3.ebuild,
+  +parcellite-1.0.2_rc4.ebuild:
+  Version bump
+
+*parcellite-1.0.2_rc3 (08 Aug 2011)
+
+  08 Aug 2011; Markos Chandras <hwoarang@gentoo.org>
+  +parcellite-1.0.2_rc3.ebuild:
+  Version bump
+
+*parcellite-1.0.2_rc2 (09 Apr 2011)
+
+  09 Apr 2011; Markos Chandras <hwoarang@gentoo.org>
+  -parcellite-1.0.2_rc1.ebuild, +parcellite-1.0.2_rc2.ebuild:
+  Version bump. Remove old
+
+*parcellite-1.0.2_rc1 (26 Mar 2011)
+
+  26 Mar 2011; Markos Chandras <hwoarang@gentoo.org> -parcellite-0.9.2.ebuild,
+  -parcellite-0.9.3.ebuild, +parcellite-1.0.2_rc1.ebuild:
+  Version bump. Remove old ebuilds
+
+  13 Mar 2011; Markos Chandras <hwoarang@gentoo.org> +parcellite-1.0.1.ebuild:
+  PVersion bump
+
+*parcellite-1.0.1 (13 Mar 2011)
+
+  13 Mar 2011; Markos Chandras <hwoarang@gentoo.org> +parcellite-1.0.1.ebuild:
+  PVersion bump
+
+  02 Mar 2011; Kevin McCarthy <signals@gentoo.org> parcellite-0.9.1.ebuild:
+  Slotted gtk+ and glib depends and EAPI=2 bump to support it.
+
+*parcellite-0.9.3 (21 Jan 2011)
+
+  21 Jan 2011; Markos Chandras <hwoarang@gentoo.org> +parcellite-0.9.3.ebuild:
+  Version bump. Bug #351324
+
+*parcellite-0.9.2 (24 Feb 2010)
+
+  24 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +parcellite-0.9.2.ebuild:
+  Version bump wrt #306039.
+
+  03 Oct 2009; Markus Meier <maekke@gentoo.org> parcellite-0.9.1.ebuild:
+  amd64/x86 stable, bug #287314
+
+  21 Mar 2009; Krzysiek Pawlik <nelchael@gentoo.org> -parcellite-0.9.ebuild:
+  Remove old versions.
+
+*parcellite-0.9.1 (21 Mar 2009)
+
+  21 Mar 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  +parcellite-0.9.1.ebuild:
+  Version bump, see bug #263020.
+
+*parcellite-0.9 (01 Dec 2008)
+
+  01 Dec 2008; <ssuominen@gentoo.org> +parcellite-0.9.ebuild:
+  Version bump for bug 249284, thanks to Roman V. Prikhodchenko for
+  reporting.
+
+*parcellite-0.8 (15 Sep 2008)
+
+  15 Sep 2008; Ben de Groot <yngwin@gentoo.org> +parcellite-0.8.ebuild:
+  Version bump. Updated homepage and src_uri. Added
+  fdo-mime_desktop_database_update as suggested in bug 234523. Fixes said
+  bug.
+
+  12 Aug 2008; Raúl Porcel <armin76@gentoo.org> parcellite-0.7.ebuild:
+  Add ~x86 wrt #223403
+
+*parcellite-0.7 (17 May 2008)
+
+  17 May 2008; Samuli Suominen <drac@gentoo.org> +parcellite-0.7.ebuild:
+  Initial commit wrt #211141, using ebuild by Peter Sterk.

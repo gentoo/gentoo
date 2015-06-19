@@ -1,0 +1,71 @@
+# ChangeLog for dev-perl/File-NFSLock
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-NFSLock/ChangeLog,v 1.16 2015/03/22 21:35:01 dilfridge Exp $
+
+  22 Mar 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  File-NFSLock-1.270.0.ebuild:
+  Fix whitespace
+
+*File-NFSLock-1.270.0 (22 Mar 2015)
+
+  22 Mar 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +File-NFSLock-1.270.0.ebuild:
+  Version bump
+
+*File-NFSLock-1.210.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +File-NFSLock-1.210.0-r1.ebuild, -File-NFSLock-1.210.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -File-NFSLock-1.20.ebuild:
+  Cleanup
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  File-NFSLock-1.210.0.ebuild:
+  x86 stable wrt bug #400115
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> File-NFSLock-1.210.0.ebuild:
+  Stable for amd64, wrt bug #400115
+
+*File-NFSLock-1.210.0 (14 Jul 2011)
+
+  14 Jul 2011; Torsten Veller <tove@gentoo.org> +File-NFSLock-1.210.0.ebuild:
+  Version bump
+
+  27 Dec 2007; Andrej Kacian <ticho@gentoo.org> File-NFSLock-1.20.ebuild:
+  Stable on x86.
+
+  14 Jul 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Assigning dev-perl/File-NFSLock to perl-herd, as chriswhite has been retired
+  (#56211).
+
+  15 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  File-NFSLock-1.20.ebuild:
+  Ebuild maintenance
+
+  20 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  File-NFSLock-1.20.ebuild:
+  Marking amd64 stable
+
+  10 Sep 2006; Michael Cummings <mcummings@gentoo.org>
+  File-NFSLock-1.20.ebuild:
+  Keywording ~amd64
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  File-NFSLock-1.20.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+*File-NFSLock-1.20 (17 Apr 2006)
+
+  17 Apr 2006; Chris White <chriswhite@gentoo.org> +metadata.xml,
+  +File-NFSLock-1.20.ebuild:
+  Initial import into the tree. Depend of bug #118928. Thanks to distances and
+  Adam Penser for the ebuilds.

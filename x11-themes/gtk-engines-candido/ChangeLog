@@ -1,0 +1,38 @@
+# ChangeLog for x11-themes/gtk-engines-candido
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-candido/ChangeLog,v 1.8 2015/02/23 20:12:06 mgorny Exp $
+
+  23 Feb 2015; Michał Górny <mgorny@gentoo.org>
+  gtk-engines-candido-0.9.1.ebuild:
+  Update SRC_URI & HOMEPAGE. Bug #537812. https://github.com/gentoo/gentoo-
+  portage-rsync-mirror/pull/50 by mm1ke.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  gtk-engines-candido-0.9.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  20 Apr 2012; Samuli Suominen <ssuominen@gentoo.org>
+  gtk-engines-candido-0.9.1.ebuild,
+  +files/gtk-engines-candido-0.9.1-glib-2.31.patch:
+  Fix building with dev-libs/glib >= 2.31 wrt #412731 by Anton Kochkov.
+  Stabilize for amd64 (following lead set by x86). Remove useless libcandido.la
+  libtool archive from the GTK+ 2.x engine directory.
+
+  16 Aug 2010; Jonathan Callen <abcd@gentoo.org>
+  gtk-engines-candido-0.9.1.ebuild:
+  Transfer prefix keywords, bump to EAPI=3, use slot dep for x11-libs/gtk+
+
+  18 Dec 2008; Samuli Suominen <ssuominen@gentoo.org>
+  gtk-engines-candido-0.9.1.ebuild:
+  x86 stable by request of Josh Saddler (nightmorph)
+
+  24 Nov 2008; Samuli Suominen <ssuominen@gentoo.org> metadata.xml,
+  gtk-engines-candido-0.9.1.ebuild:
+  Rename my old e-mail drac at gentoo.org to ssuominen at gentoo.org.
+  Keyword for ~x86.
+
+*gtk-engines-candido-0.9.1 (14 May 2008)
+
+  14 May 2008; Samuli Suominen <ssuominen@gentoo.org>
+  +gtk-engines-candido-0.9.1.ebuild:
+  Initial commit wrt #146737, thanks to Marco Polichetti.

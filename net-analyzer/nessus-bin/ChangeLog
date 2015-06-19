@@ -1,0 +1,96 @@
+# ChangeLog for net-analyzer/nessus-bin
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nessus-bin/ChangeLog,v 1.19 2015/04/07 14:27:39 jlec Exp $
+
+  12 Oct 2014; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Remove short <longdescription>.
+
+*nessus-bin-5.0.1 (06 Oct 2012)
+
+  06 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> +nessus-bin-5.0.1.ebuild:
+  Version bump wrt bug #437376
+
+  13 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> nessus-bin-4.4.1.ebuild:
+  Add GPL-2 to LICENSE variable, cause init.d script are under it, wrt bug
+  #425998
+
+  12 Jun 2012; Zac Medico <zmedico@gentoo.org> nessus-bin-4.4.1.ebuild:
+  inherit multilib for get_libdir
+
+*nessus-bin-4.4.1 (20 Apr 2011)
+
+  20 Apr 2011; Justin Lecher <jlec@gentoo.org> -nessus-bin-3.0.5.ebuild,
+  -nessus-bin-3.2.0.ebuild, +nessus-bin-4.4.1.ebuild, files/nessusd-initd:
+  Version Bump, #265555, #228007, #196035, #210006, #276982; CLeaned old,
+  #276982
+
+  24 Nov 2010; <mattst88@gentoo.org> nessus-bin-3.2.0.ebuild:
+  Remove redundant dependency on rpm2targz.
+
+  07 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  nessus-bin-3.2.0.ebuild:
+  Use elog for fetch error.
+
+  15 May 2008; Ingmar Vanhassel <ingmar@gentoo.org> nessus-bin-3.2.0.ebuild:
+  Fix SRC_URI syntax, whitespace.
+
+*nessus-bin-3.2.0 (14 May 2008)
+
+  14 May 2008; Marcelo Goes <vanquirius@gentoo.org>
+  +nessus-bin-3.2.0.ebuild:
+  3.2.0 version bump for bug 187219. We are now using the Red Hat binary and
+  depending on >=dev-libs/openssl-0.9.8. Thanks to Erwin Paternotte
+  <paternotte at fox-it dot com>, Nick Loeve <trickie at gmail dot com>,
+  Thomas Guyot <thomas at zango dot com>, Cyberjun <cyberjun at gmail dot
+  com>, Vladimir Rusinov <vladimir at greenmice dot info>, Anton Bolshakov
+  <anton.bugs at gmail dot com>, Peter Volkov <pva at gentoo dot org> and
+  anyone I missed.
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  nessus-bin-3.0.5.ebuild:
+  (QA) RESTRICT clean up.
+
+  01 May 2007; Marius Mauch <genone@gentoo.org> nessus-bin-3.0.5.ebuild:
+  Replacing einfo with elog
+
+  08 Apr 2007; Marcelo Goes <vanquirius@gentoo.org>
+  -nessus-bin-3.0.4.ebuild, nessus-bin-3.0.5.ebuild:
+  Remove old ebuild, mark 3.0.5 x86 stable.
+
+*nessus-bin-3.0.5 (30 Jan 2007)
+
+  30 Jan 2007; Marcelo Goes <vanquirius@gentoo.org>
+  +nessus-bin-3.0.5.ebuild:
+  3.0.5 version bump. Thanks to ChazeFroy <chazefroy at gmail dot com>. Fixes
+  bug 162614.
+
+*nessus-bin-3.0.4 (29 Nov 2006)
+
+  29 Nov 2006; Markus Ullmann <jokey@gentoo.org> -files/nessusd-r8,
+  +files/nessusd-initd, -nessus-bin-3.0.2.ebuild, -nessus-bin-3.0.3.ebuild,
+  +nessus-bin-3.0.4.ebuild:
+  Version bump wrt bug #153722
+
+*nessus-bin-3.0.3 (09 Oct 2006)
+
+  09 Oct 2006; Markus Ullmann <jokey@gentoo.org> nessus-bin-3.0.2.ebuild,
+  +nessus-bin-3.0.3.ebuild:
+  Version bump wrt bug #149378
+
+  09 Oct 2006; Markus Ullmann <jokey@gentoo.org> -nessus-bin-3.0.1.ebuild,
+  nessus-bin-3.0.2.ebuild:
+  Cleanup
+
+*nessus-bin-3.0.2 (09 Mar 2006)
+
+  09 Mar 2006; Marcelo Goes <vanquirius@gentoo.org>
+  +nessus-bin-3.0.2.ebuild:
+  3.0.2 version bump for bug 125520, thanks to ChazeFroy <chazefroy at gmail
+  dot com>.
+
+*nessus-bin-3.0.1 (04 Feb 2006)
+
+  04 Feb 2006; Marcelo Goes <vanquirius@gentoo.org> +files/90nessus-bin,
+  +files/nessusd-r8, +metadata.xml, +nessus-bin-3.0.1.ebuild:
+  Initial commit for bug 115347.
+

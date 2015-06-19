@@ -1,0 +1,11 @@
+# ChangeLog for net-libs/libtelnet
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libtelnet/ChangeLog,v 1.1 2014/05/28 15:47:22 nativemad Exp $
+
+*libtelnet-9999 (28 May 2014)
+*libtelnet-0.21 (28 May 2014)
+
+  28 May 2014; Andreas Schuerch <nativemad@gentoo.org> +libtelnet-0.21.ebuild,
+  +libtelnet-9999.ebuild, +metadata.xml:
+  new ebuild, written by me
+

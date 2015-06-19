@@ -1,0 +1,102 @@
+# ChangeLog for dev-ruby/simple-rss
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/simple-rss/ChangeLog,v 1.24 2015/04/26 17:09:12 mrueg Exp $
+
+  26 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -simple-rss-1.2.3-r1.ebuild:
+  Remove old.
+
+  26 Apr 2015; Manuel Rüger <mrueg@gentoo.org> simple-rss-1.3.1.ebuild:
+  amd64 stable wrt bug #547676
+
+  26 Apr 2015; Pacho Ramos <pacho@gentoo.org> simple-rss-1.3.1.ebuild:
+  x86 stable wrt bug #547676
+
+*simple-rss-1.3.1-r1 (25 Apr 2015)
+
+  25 Apr 2015; Hans de Graaff <graaff@gentoo.org> simple-rss-1.3.1.ebuild,
+  +simple-rss-1.3.1-r1.ebuild:
+  Create stable candidate.
+
+  25 Mar 2015; Hans de Graaff <graaff@gentoo.org> simple-rss-1.3.1.ebuild:
+  Add ruby22.
+
+  18 Nov 2014; Manuel Rüger <mrueg@gentoo.org>
+  -files/simple-rss-1.2.3-utf8.patch:
+  Cleanup unused patches.
+
+  30 Oct 2014; Manuel Rüger <mrueg@gentoo.org> -simple-rss-1.2.3-r2.ebuild,
+  simple-rss-1.2.3-r1.ebuild, simple-rss-1.3.1.ebuild:
+  Drop jruby target. Cleanup old.
+
+  06 Aug 2014; Manuel Rüger <mrueg@gentoo.org> simple-rss-1.3.1.ebuild:
+  Add ruby21 target.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> simple-rss-1.2.3-r1.ebuild,
+  simple-rss-1.2.3-r2.ebuild, simple-rss-1.3.1.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  05 Apr 2014; Manuel Rüger <mrueg@gentoo.org> simple-rss-1.2.3-r1.ebuild,
+  simple-rss-1.2.3-r2.ebuild, simple-rss-1.3.1.ebuild:
+  Remove ree18 and ruby18 target.
+
+*simple-rss-1.3.1 (29 Dec 2013)
+
+  29 Dec 2013; Hans de Graaff <graaff@gentoo.org> +simple-rss-1.3.1.ebuild:
+  Version bump. Ebuild by Peter Wilmott in the ruby overlay.
+
+*simple-rss-1.2.3-r2 (25 Jul 2013)
+
+  25 Jul 2013; Hans de Graaff <graaff@gentoo.org> +simple-rss-1.2.3-r2.ebuild,
+  +files/simple-rss-1.2.3-utf8.patch:
+  Add a patch to fix regexp encoding issues. Add ruby20.
+
+  03 Jul 2013; Hans de Graaff <graaff@gentoo.org> -simple-rss-1.2.3.ebuild:
+  Cleanup.
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org> simple-rss-1.2.3-r1.ebuild:
+  Stable for x86, wrt bug #435964
+
+  17 Oct 2012; Agostino Sarubbo <ago@gentoo.org> simple-rss-1.2.3-r1.ebuild:
+  Stable for amd64, wrt bug #435964
+
+*simple-rss-1.2.3-r1 (06 Jun 2012)
+
+  06 Jun 2012; Hans de Graaff <graaff@gentoo.org> +simple-rss-1.2.3-r1.ebuild:
+  Revision bump: EAPI=4, add ruby19,ree18,jruby.
+
+  10 Jan 2011; Hans de Graaff <graaff@gentoo.org> simple-rss-1.2.3.ebuild:
+  Keyword ~x86-macos.
+
+  12 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  simple-rss-1.2.3.ebuild:
+  x86 stable wrt bug #336263
+
+  12 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  simple-rss-1.2.3.ebuild:
+  Stable on amd64 wrt bug #336263
+
+  06 Sep 2010; Hans de Graaff <graaff@gentoo.org> -simple-rss-1.2.2.ebuild,
+  -simple-rss-1.2.2-r1.ebuild:
+  Remove old versions.
+
+*simple-rss-1.2.3 (08 Jul 2010)
+
+  08 Jul 2010; Hans de Graaff <graaff@gentoo.org> +simple-rss-1.2.3.ebuild,
+  +files/simple-rss-1.2.3-no-media-rss.patch:
+  Version bump.
+
+  22 May 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  simple-rss-1.2.2-r1.ebuild:
+  Various cleanups.
+
+*simple-rss-1.2.2-r1 (24 Apr 2010)
+
+  24 Apr 2010; Hans de Graaff <graaff@gentoo.org>
+  +simple-rss-1.2.2-r1.ebuild:
+  Fix USE=doc.
+
+*simple-rss-1.2.2 (18 Dec 2009)
+
+  18 Dec 2009; Hans de Graaff <graaff@gentoo.org> +simple-rss-1.2.2.ebuild,
+  +metadata.xml:
+  Initial import from graaff overlay, requested in bug 143591.

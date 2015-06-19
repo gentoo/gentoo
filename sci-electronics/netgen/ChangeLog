@@ -1,0 +1,68 @@
+# ChangeLog for sci-electronics/netgen
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/netgen/ChangeLog,v 1.11 2015/03/20 15:25:54 jlec Exp $
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> metadata.xml,
+  netgen-1.3.11.ebuild, netgen-1.4.52.ebuild:
+  Fix tcl/tk slotting
+
+*netgen-1.4.52 (08 Jul 2013)
+
+  08 Jul 2013; Michael Weber <xmw@gentoo.org> +netgen-1.4.52.ebuild,
+  -netgen-1.4.51.ebuild:
+  Version bump.
+
+  10 Jun 2013; Michael Weber <xmw@gentoo.org> metadata.xml:
+  add upstream description
+
+*netgen-1.4.51 (31 May 2013)
+
+  31 May 2013; Michael Weber <xmw@gentoo.org> +netgen-1.4.51.ebuild,
+  -netgen-1.4.48.ebuild:
+  Version bump
+
+*netgen-1.4.48 (29 May 2013)
+
+  29 May 2013; Michael Weber <xmw@gentoo.org> +netgen-1.4.48.ebuild,
+  -netgen-1.4.42.ebuild, -netgen-1.4.44.ebuild:
+  Version bump, drop old.
+
+*netgen-1.4.44 (24 May 2013)
+
+  24 May 2013; Michael Weber <xmw@gentoo.org> +netgen-1.4.44.ebuild:
+  Version bump
+
+*netgen-1.4.42 (15 May 2013)
+
+  15 May 2013; Michael Weber <xmw@gentoo.org> +netgen-1.4.42.ebuild,
+  -files/netgen-1.3.10-LDFLAGS.patch, -files/netgen-1.3.10-includes.patch,
+  -files/netgen-1.3.10-tk-version.patch, -files/netgen-1.4.40-LDFLAGS.patch,
+  -files/netgen-1.4.40-includes.patch, -files/netgen-1.4.40-netcmp.patch,
+  -netgen-1.3.10.ebuild, -netgen-1.4.40.ebuild, -netgen-1.4.41.ebuild:
+  Version bump, drop old.
+
+*netgen-1.3.11 (15 May 2013)
+
+  15 May 2013; Michael Weber <xmw@gentoo.org> +netgen-1.3.11.ebuild:
+  Version bump, our patches were accepted for stable upstream
+
+*netgen-1.4.41 (06 May 2013)
+
+  06 May 2013; Michael Weber <xmw@gentoo.org> +netgen-1.4.41.ebuild:
+  Version bump, upstream included LDFLAGS, includes and netcmp patches
+
+  26 Apr 2013; Michael Weber <xmw@gentoo.org> netgen-1.3.10.ebuild,
+  netgen-1.4.40.ebuild:
+  additional repoman run, correct eclasses
+
+*netgen-1.4.40 (26 Apr 2013)
+*netgen-1.3.10 (26 Apr 2013)
+
+  26 Apr 2013; Michael Weber <xmw@gentoo.org> +netgen-1.3.10.ebuild,
+  +files/netgen-1.3.10-LDFLAGS.patch, +files/netgen-1.3.10-includes.patch,
+  +files/netgen-1.3.10-tcl-bin-name.patch,
+  +files/netgen-1.3.10-tk-version.patch, +netgen-1.4.40.ebuild,
+  +files/netgen-1.4.40-LDFLAGS.patch, +files/netgen-1.4.40-includes.patch,
+  +files/netgen-1.4.40-netcmp.patch, +files/netgen-1.4.40-tcl-bin-name.patch,
+  +metadata.xml:
+  Initial import (bug 124182)

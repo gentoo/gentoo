@@ -1,0 +1,60 @@
+# ChangeLog for games-sports/speed-dreams
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-sports/speed-dreams/ChangeLog,v 1.13 2015/03/13 17:04:04 mr_bones_ Exp $
+
+  13 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  speed-dreams-1.4.0.ebuild:
+  EAPI=5
+
+  16 Mar 2012; Tupone Alfredo <tupone@gentoo.org> speed-dreams-1.4.0.ebuild,
+  files/speed-dreams-1.4.0-automake.patch:
+  Fix configure dependency. Bug #408469 by Piotr Szymaniak
+
+  13 Mar 2012; Tupone Alfredo <tupone@gentoo.org> speed-dreams-1.4.0.ebuild,
+  +files/speed-dreams-1.4.0-automake.patch, metadata.xml:
+  Add xrandr use flag. Bug #334491 by Ben
+
+  12 Mar 2012; Alfredo Tupone <tupone@gentoo.org> speed-dreams-1.4.0.ebuild:
+  Make it build with new automake
+
+  14 Jun 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  speed-dreams-1.4.0.ebuild, +files/speed-dreams-1.4.0-libpng15.patch:
+  add patch for building against libpng15 (bug #371651)
+
+  09 Nov 2010; Thomas Kahle <tomka@gentoo.org> speed-dreams-1.4.0.ebuild:
+  x86 stable per bug 333261
+
+  14 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  speed-dreams-1.4.0.ebuild:
+  Stable on amd64 wrt bug #333261
+
+  16 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  speed-dreams-1.4.0.ebuild:
+  virtual/glut -> media-libs/glut
+
+*speed-dreams-1.4.0 (08 Jul 2010)
+
+  08 Jul 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +speed-dreams-1.4.0.ebuild, +files/speed-dreams-1.4.0-asneeded.patch:
+  version bump
+
+  02 May 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  speed-dreams-1.4.0_rc1.ebuild:
+  work around addpredict's odd path thing
+
+  26 Apr 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  speed-dreams-1.4.0_rc1.ebuild:
+  increase predict for bug #317375
+
+  30 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  speed-dreams-1.4.0_rc1.ebuild:
+  Copy addpredict workaround from games-sports/torcs wrt #312083 by Pacho
+  Ramos.
+
+*speed-dreams-1.4.0_rc1 (23 Mar 2010)
+
+  23 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +speed-dreams-1.4.0_rc1.ebuild,
+  +files/speed-dreams-1.4.0_rc1-asneeded.patch:
+  Initial commit wrt #298182 by Kirin Yuri and Piotr Szymaniak with
+  -Wl,--as-needed patch by Kacper Kowalik.

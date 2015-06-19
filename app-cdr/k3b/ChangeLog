@@ -1,0 +1,1287 @@
+# ChangeLog for app-cdr/k3b
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/k3b/ChangeLog,v 1.298 2015/06/09 10:37:06 mrueg Exp $
+
+  09 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -files/k3b-2.0.3-libav-10.patch,
+  -k3b-2.0.3-r1.ebuild:
+  Remove old.
+
+  09 Jun 2015; Agostino Sarubbo <ago@gentoo.org> k3b-2.0.3-r2.ebuild:
+  Stable for x86, wrt bug #509332
+
+  05 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> k3b-2.0.3-r2.ebuild:
+  amd64 stable wrt bug #509332
+
+  04 Jun 2015; Michael Palimaka <kensington@gentoo.org> k3b-2.0.3-r1.ebuild,
+  k3b-2.0.3-r2.ebuild:
+  Move various kde-base packages to kde-apps.
+
+*k3b-2.0.3-r2 (30 May 2015)
+
+  30 May 2015; Johannes Huber <johu@gentoo.org> +files/k3b-2.0.3-libav-11.patch,
+  +k3b-2.0.3-r2.ebuild:
+  Revision bump adds patch to fix build with libav-11, bug #509332. Thanks to
+  Oldrich Jedlicka <oldium.pro@seznam.cz>.
+
+  13 May 2015; Michael Palimaka <kensington@gentoo.org>
+  -files/k3b-2.0.2-ffmpeg.patch, -files/k3b-2.0.2-ffmpeg2.patch,
+  -files/k3b-2.0.2-libav9.patch, -files/k3b-2.0.2-libavformat54.patch,
+  -k3b-2.0.2-r4.ebuild, -k3b-2.0.2_p20140225.ebuild:
+  Remove old.
+
+  13 May 2015; Agostino Sarubbo <ago@gentoo.org> k3b-2.0.3-r1.ebuild:
+  Stable for x86, wrt bug #547666
+
+  13 May 2015; Agostino Sarubbo <ago@gentoo.org> k3b-2.0.3-r1.ebuild:
+  Stable for amd64, wrt bug #547666
+
+  28 Apr 2015; Michael Palimaka <kensington@gentoo.org> k3b-2.0.3-r1.ebuild:
+  Migrate to new-style ffmpeg/libav USE flags.
+
+  17 Feb 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/k3b-2.0.3-libav-10.patch, k3b-2.0.3-r1.ebuild:
+  Update CODEC_ID defines and drop old patch no longer needed #509332 by Nikoli.
+
+  12 Dec 2014; Manuel Rüger <mrueg@gentoo.org> k3b-2.0.3-r1.ebuild:
+  Add support for kde applications dependency.
+
+  06 Nov 2014; Manuel Rüger <mrueg@gentoo.org> k3b-2.0.3-r1.ebuild:
+  Add missing dependency on gettext. Thanks to Nikoli. Fixes bug #528412.
+
+*k3b-2.0.3-r1 (04 Nov 2014)
+
+  04 Nov 2014; Manuel Rüger <mrueg@gentoo.org> +k3b-2.0.3-r1.ebuild,
+  -k3b-2.0.3.ebuild:
+  Use fixed tarball.
+
+  04 Nov 2014; Manuel Rüger <mrueg@gentoo.org> k3b-2.0.3.ebuild:
+  Fix linguas.
+
+*k3b-2.0.3 (04 Nov 2014)
+
+  04 Nov 2014; Manuel Rüger <mrueg@gentoo.org> +k3b-2.0.3.ebuild:
+  Version bump.
+
+  26 Apr 2014; Johannes Huber <johu@gentoo.org> k3b-2.0.2-r4.ebuild:
+  EAPI 5.
+
+*k3b-2.0.2_p20140225 (25 Feb 2014)
+
+  25 Feb 2014; Chris Reffett <creffett@gentoo.org> +k3b-2.0.2_p20140225.ebuild:
+  Add snapshot wrt bug 502284
+
+  06 Aug 2013; Alexis Ballier <aballier@gentoo.org> k3b-2.0.2-r4.ebuild,
+  +files/k3b-2.0.2-ffmpeg2.patch:
+  Fix build with ffmpeg 2, bug #476494
+
+  23 Apr 2013; Luca Barbato <lu_zero@gentoo.org> k3b-2.0.2-r4.ebuild,
+  +files/k3b-2.0.2-libav9.patch:
+  Add libav9 support, patch derived from upstream, thanks to Jiří Moravec
+  <qjim@volny.cz> for preparing it.
+
+  10 Dec 2012; Michael Palimaka <kensington@gentoo.org> k3b-2.0.2-r4.ebuild,
+  metadata.xml:
+  Drop ppc64 keyword due to unkeyworded required dependencies. Remove unused
+  local USE flag.
+
+  03 Oct 2012; Agostino Sarubbo <ago@gentoo.org> -k3b-2.0.2-r1.ebuild,
+  -k3b-2.0.2-r3.ebuild:
+  Remove old
+
+  03 Oct 2012; Agostino Sarubbo <ago@gentoo.org> k3b-2.0.2-r4.ebuild:
+  Stable for amd64, wrt bug #436326
+
+  03 Oct 2012; Agostino Sarubbo <ago@gentoo.org> k3b-2.0.2-r4.ebuild:
+  Stable for X86, wrt bug #436326
+
+  11 Sep 2012; Michael Palimaka <kensington@gentoo.org> k3b-2.0.2-r4.ebuild:
+  Only depend on transcode with encode USE flag, by Guillaume Castagnino
+  <casta@xwing.info>.
+
+*k3b-2.0.2-r4 (25 Aug 2012)
+
+  25 Aug 2012; Michael Palimaka <kensington@gentoo.org> +k3b-2.0.2-r4.ebuild:
+  Restore encode USE flag and REQUIRED_USE, and rename lame -> mp3 as per KDE
+  team meeting.
+
+  23 May 2012; Maciej Mrozowski <reavertm@gentoo.org> k3b-2.0.2-r3.ebuild:
+  Remove encode and wav USE flags.
+
+  23 May 2012; Michael Palimaka <kensington@gentoo.org> k3b-2.0.2-r3.ebuild:
+  Remove REQUIRED_USE in favour of letting affected use flags work on their own.
+  Fixes bug #417235 by Samuli Suominen <ssuominen@gentoo.org>.
+
+*k3b-2.0.2-r3 (22 May 2012)
+
+  22 May 2012; Michael Palimaka <kensington@gentoo.org> +k3b-2.0.2-r3.ebuild,
+  -k3b-2.0.2-r2.ebuild:
+  Properly avoid automagic dependencies, fixing bug #416675 by Petteri Räty
+  <betelgeuse@gentoo.org>. Add REQUIRED_USE to prevent use flag combinations
+  that do nothing. Remove old.
+
+*k3b-2.0.2-r2 (19 May 2012)
+
+  19 May 2012; Michael Palimaka <kensington@gentoo.org> +k3b-2.0.2-r2.ebuild:
+  Drop use flag and dependency on musicbrainz since it doesn't actually do
+  anything useful, fixing bug #410347. Tidy ebuild.
+
+  28 Feb 2012; Alexis Ballier <aballier@gentoo.org> k3b-2.0.2-r1.ebuild,
+  +files/k3b-2.0.2-libavformat54.patch:
+  fix build with libavformat 54 (ffmpeg/libav git atm)
+
+  24 Nov 2011; Maciej Mrozowski <reavertm@gentoo.org> k3b-2.0.2-r1.ebuild:
+  Require kdelibs with udev (udisks) support, bug 391177
+
+  18 Sep 2011; Andreas K. Huettel <dilfridge@gentoo.org> k3b-2.0.2-r1.ebuild,
+  +files/k3b-2.0.2-ffmpeg.patch:
+  Fix compilation with newer ffmpeg, bug 369523
+
+  11 Aug 2011; Tomáš Chvátal <scarabeus@gentoo.org> k3b-2.0.2-r1.ebuild:
+  Optional is JUST FINE! It won't build the docs folder without it being
+  enabled.
+
+  10 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org> k3b-2.0.2-r1.ebuild:
+  Needs handbook dependencies, bug 378127
+
+  28 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> k3b-2.0.2-r1.ebuild:
+  What was stable stays stable. Per bug #360899. ssuominen be carefull :)
+
+  27 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> k3b-2.0.2-r1.ebuild:
+  Remove sys-apps/hal support wrt #313389.
+
+  26 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> k3b-2.0.2-r1.ebuild:
+  Depend on virtual/ffmpeg instead of media-video/ffmpeg.
+
+  11 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> k3b-2.0.2-r1.ebuild:
+  amd64 stable wrt #354367
+
+  11 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> k3b-2.0.2-r1.ebuild:
+  x86 stable wrt bug #354367
+
+*k3b-2.0.2-r1 (26 Jan 2011)
+
+  26 Jan 2011; Dror Levin <spatz@gentoo.org> -k3b-2.0.2.ebuild,
+  +k3b-2.0.2-r1.ebuild:
+  Add hal USE flag, bug 351883.
+
+  19 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org> -k3b-2.0.0.ebuild,
+  k3b-2.0.1-r1.ebuild, k3b-2.0.2.ebuild:
+  Stabilise 2.0.1. Drop older. Drop useless CMAKE_MIN_VERSION definition.
+
+*k3b-2.0.2 (16 Jan 2011)
+
+  16 Jan 2011; Dror Levin <spatz@gentoo.org> +k3b-2.0.2.ebuild:
+  Version bump.
+
+*k3b-2.0.1-r1 (13 Dec 2010)
+
+  13 Dec 2010; Tomáš Chvátal <scarabeus@gentoo.org> +k3b-2.0.1-r1.ebuild,
+  +files/2.0.1-fix-crash-with-qt-4.7.0.patch:
+  Revision bump to fix crashing when using qt-4.7
+
+  06 Oct 2010; Theo Chatzimichos <tampakrap@gentoo.org> k3b-2.0.1.ebuild:
+  A bit more cleanup, whitespaces
+
+  06 Oct 2010; Theo Chatzimichos <tampakrap@gentoo.org> k3b-2.0.1.ebuild:
+  Cleanup: EAPI3, merge with live ebuild, use add_kdebase_dep
+
+*k3b-2.0.1 (18 Aug 2010)
+
+  18 Aug 2010; Tomáš Chvátal <scarabeus@gentoo.org> +k3b-2.0.1.ebuild:
+  Version bump.
+
+  29 Jul 2010; Markos Chandras <hwoarang@gentoo.org> k3b-2.0.0.ebuild:
+  Stable on amd64 wrt bug #329293
+
+  22 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> k3b-2.0.0.ebuild:
+  x86 stable wrt bug #329293
+
+*k3b-2.0.0 (29 Jun 2010)
+
+  29 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -k3b-1.93.0_rc4.ebuild, +k3b-2.0.0.ebuild:
+  Version bump. Drop older.
+
+*k3b-1.93.0_rc4 (18 Jun 2010)
+
+  18 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +k3b-1.93.0_rc4.ebuild:
+  Version bump.
+
+  18 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -k3b-1.91.0_rc2.ebuild, k3b-1.92.0_rc3.ebuild:
+  Stable on x86 and amd64 (compile tested on chroots, tested runtime on ~).
+  Remove older.
+
+*k3b-1.92.0_rc3 (24 May 2010)
+
+  24 May 2010; Dror Levin <spatz@gentoo.org> -k3b-1.70.0_beta1.ebuild,
+  +k3b-1.92.0_rc3.ebuild:
+  Version bump, remove old.
+
+  22 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  k3b-1.91.0_rc2.ebuild:
+  x86 stable wrt bug #317371
+
+  03 May 2010; Samuli Suominen <ssuominen@gentoo.org> k3b-1.91.0_rc2.ebuild:
+  amd64 stable wrt #317371
+
+*k3b-1.91.0_rc2 (27 Mar 2010)
+
+  27 Mar 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +k3b-1.91.0_rc2.ebuild:
+  Version bump. Per bug #310583.
+
+  11 Mar 2010; Markus Meier <maekke@gentoo.org> k3b-1.70.0_beta1.ebuild:
+  x86 stable, bug #307301
+
+*k3b-1.90.0_rc1 (05 Mar 2010)
+
+  05 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +k3b-1.90.0_rc1.ebuild:
+  Version bump.
+
+  01 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  k3b-1.70.0_beta1.ebuild:
+  amd64 stable wrt #307301
+
+*k3b-1.70.0_beta1 (01 Feb 2010)
+
+  01 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +k3b-1.70.0_beta1.ebuild:
+  Version bump and restore USE musepack since it's been ported to SV8 API.
+
+  29 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  k3b-1.69.0_alpha4.ebuild:
+  stable x86, bug 297766
+
+  23 Dec 2009; Markos Chandras <hwoarang@gentoo.org>
+  k3b-1.69.0_alpha4.ebuild:
+  Stable for amd64 wrt bug #297766
+
+*k3b-1.69.0_alpha4 (28 Nov 2009)
+
+  28 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  +k3b-1.69.0_alpha4.ebuild:
+  Version bump to new alpha.
+
+  13 Nov 2009; Joseph Jezak <josejx@gentoo.org> k3b-1.68.0_alpha3.ebuild:
+  Marked ~ppc/~ppc64, our keywords were dropped.
+
+  07 Nov 2009; Samuli Suominen <ssuominen@gentoo.org>
+  k3b-1.68.0_alpha3.ebuild:
+  Missing sys-apps/hal runtime depend wrt #292281, thanks to Alex Efros for
+  reporting.
+
+  04 Nov 2009; Markus Meier <maekke@gentoo.org> k3b-1.68.0_alpha3.ebuild:
+  amd64/x86 stable, bug #291606
+
+  26 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  k3b-1.68.0_alpha3.ebuild, +files/k3b-1.68.0_alpha3-missing_ifdef.patch:
+  Fix building with -DK3B_ENABLE_DVD_RIPPING=OFF wrt #289906, thanks to Lars
+  Wendler for reporting.
+
+*k3b-1.68.0_alpha3 (16 Oct 2009)
+
+  16 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +k3b-1.68.0_alpha3.ebuild:
+  Version bump wrt #289279, thanks to Matteo Modesti for reporting.
+
+  13 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> -k3b-1.0.5-r5.ebuild,
+  k3b-1.0.5-r6.ebuild:
+  ppc64 stable wrt #281598
+
+  25 Sep 2009; Markus Meier <maekke@gentoo.org> k3b-1.0.5-r6.ebuild:
+  amd64 stable, bug #281598
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> k3b-1.0.5-r6.ebuild:
+  ppc stable #281598
+
+  26 Aug 2009; Alex Alexander <wired@gentoo.org>
+  k3b-1.66.0_alpha2-r1.ebuild:
+  added vcd to IUSE
+
+*k3b-1.66.0_alpha2-r1 (20 Aug 2009)
+
+  20 Aug 2009; Alex Alexander <wired@gentoo.org>
+  +k3b-1.66.0_alpha2-r1.ebuild,
+  +files/k3b-1.66.0_alpha2-fix-musepack-lib-detection.patch, metadata.xml:
+  added kde4 version
+
+  16 Aug 2009; Christian Faulhammer <fauli@gentoo.org> k3b-1.0.5-r6.ebuild:
+  stable x86, bug 281598
+
+*k3b-1.0.5-r6 (26 Jul 2009)
+
+  26 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> +k3b-1.0.5-r6.ebuild,
+  +files/k3b-1.0.5-libmpcdecsv7.patch:
+  Use transition package media-libs/libmpcdecsv7 instead of
+  media-libs/libmpcdec for Musepack support.
+
+  04 Jul 2009; Brent Baude <ranger@gentoo.org> k3b-1.0.5-r5.ebuild:
+  Marking k3b-1.0.5-r5 ppc64 for bug 272551
+
+  06 Jun 2009; nixnut <nixnut@gentoo.org> k3b-1.0.5-r5.ebuild:
+  ppc stable #272551
+
+  05 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> k3b-1.0.5-r5.ebuild:
+  amd64 stable wrt #272551
+
+  04 Jun 2009; Christian Faulhammer <fauli@gentoo.org> k3b-1.0.5-r5.ebuild:
+  stable x86, bug 272551
+
+  24 May 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  +k3b-1.0.5-r3.ebuild:
+  bring back k3b as i broke the tree
+
+*k3b-1.0.5-r5 (24 May 2009)
+
+  24 May 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  -k3b-1.0.5-r3.ebuild, +k3b-1.0.5-r5.ebuild:
+  Revision bump, change slot to 3.5, remove old
+
+  19 May 2009; Tomas Chvatal <scarabeus@gentoo.org> k3b-1.0.5-r4.ebuild:
+  Fix error in dodoc. Per bug #270493.
+
+*k3b-1.0.5-r4 (19 May 2009)
+
+  19 May 2009; Tomas Chvatal <scarabeus@gentoo.org> +k3b-1.0.5-r4.ebuild,
+  +files/k3b-1.0.5-transcode-1.1.patch:
+  Apply all various updates from kde-crazy and from lxnay. This closes bug
+  #231338.
+
+  10 Mar 2009; Steve Dibb <beandog@gentoo.org> k3b-1.0.5-r3.ebuild:
+  Update transcode use flag check, move dvdread use flag to dvd use flag
+
+  21 Dec 2008; nixnut <nixnut@gentoo.org> k3b-1.0.5-r3.ebuild:
+  Stable on ppc wrt bug 245513
+
+  20 Dec 2008; Thomas Anderson <gentoofan23@gentoo.org> k3b-1.0.5-r3.ebuild:
+  stable amd64, bug 245513
+
+  16 Dec 2008; Brent Baude <ranger@gentoo.org> k3b-1.0.5-r3.ebuild:
+  stable ppc64, bug 245513
+
+  15 Dec 2008; <ssuominen@gentoo.org> k3b-1.0.5-r3.ebuild:
+  x86 stable wrt #245513
+
+  15 Oct 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/k3b-1.0.5-ffmpeg-0.4.9_p20081014-API.patch, k3b-1.0.5-r3.ebuild:
+  Fix for new ffmpeg API, bug 242000, thanks to Alexis Ballier.
+
+*k3b-1.0.5-r3 (08 Aug 2008)
+
+  08 Aug 2008; Steve Dibb <beandog@gentoo.org> +k3b-1.0.5-r3.ebuild:
+  Fix libdvdread linking, bug 234268
+
+  24 Jul 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*k3b-1.0.5-r2 (07 Jul 2008)
+
+  07 Jul 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/k3b-1.0.5-ffmpeg-0.4.9_p20080326-API.patch, k3b-0.12.17.ebuild,
+  k3b-1.0.3.ebuild, k3b-1.0.4.ebuild, k3b-1.0.4-r1.ebuild, k3b-1.0.5.ebuild,
+  k3b-1.0.5-r1.ebuild, +k3b-1.0.5-r2.ebuild:
+  Fix for building with media-video/ffmpeg-0.4.9_p20080326, wrt bug #231063.
+
+*k3b-1.0.5-r1 (13 Jun 2008)
+
+  13 Jun 2008; Carsten Lohrke <carlo@gentoo.org>
+  +files/k3b-1.0.5-desktop-entry.diff, +k3b-1.0.5-r1.ebuild:
+  Fix .desktop entry stuff properly, get rid of the seemingly improper patch
+  for bug #186173, see also bug #221177.
+
+*k3b-1.0.5 (31 May 2008)
+
+  31 May 2008; Ioannis Aslanidis <deathwing00@gentoo.org>
+  +files/k3b-1.0.5-eject_186173.patch, +k3b-1.0.5.ebuild:
+  Version bump. Fixes bug #224179.
+
+*k3b-1.0.4-r1 (26 Apr 2008)
+
+  26 Apr 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  +files/k3b-1.0.4-eject_186173.patch, +k3b-1.0.4-r1.ebuild:
+  Added an upstream patch to make k3b eject and re-load media correctly.
+  Fixes bug 186173. Fixed the desktop file as per bug 208777.
+
+  05 Jan 2008; Brent Baude <ranger@gentoo.org> k3b-1.0.4.ebuild:
+  Marking k3b-1.0.4 ppc64 for bug 180917
+
+  04 Jan 2008; nixnut <nixnut@gentoo.org> k3b-1.0.4.ebuild:
+  Stable on ppc wrt bug 180917
+
+  03 Jan 2008; Richard Freeman <rich0@gentoo.org> k3b-1.0.4.ebuild:
+  amd64 stable - bug 180917
+
+  03 Jan 2008; Christian Faulhammer <opfer@gentoo.org> k3b-1.0.4.ebuild:
+  stable x86, bug 180917
+
+  01 Jan 2008; Alexis Ballier <aballier@gentoo.org> k3b-0.12.17.ebuild,
+  k3b-1.0.ebuild, k3b-1.0.1.ebuild, k3b-1.0.1-r1.ebuild, k3b-1.0.2.ebuild,
+  k3b-1.0.3.ebuild, k3b-1.0.4.ebuild:
+  stick musicbrainz deps to -2*, bug #203784
+
+  18 Nov 2007; Alexis Ballier <aballier@gentoo.org> k3b-0.12.17.ebuild,
+  k3b-1.0.ebuild, k3b-1.0.1.ebuild, k3b-1.0.1-r1.ebuild, k3b-1.0.2.ebuild,
+  k3b-1.0.3.ebuild, k3b-1.0.4.ebuild:
+  add a check for flac cxx use flag, FLAC++ is needed here
+
+  06 Nov 2007; Markus Rothe <corsair@gentoo.org> k3b-1.0.4.ebuild:
+  Added ~ppc64; bug #197779
+
+*k3b-1.0.4 (03 Nov 2007)
+
+  03 Nov 2007; Tobias Heinlein <keytoaster@gentoo.org> +k3b-1.0.4.ebuild:
+  Version bump. Removing k3bsetup, see bug #188489.
+
+  22 Aug 2007; Roy Marples <uberlord@gentoo.org> k3b-1.0.3.ebuild:
+  Keyworded ~x86-fbsd.
+
+  02 Aug 2007; Michael Sterrett <mr_bones_@gentoo.org> k3b-0.12.17.ebuild,
+  k3b-1.0.ebuild, k3b-1.0.1.ebuild, k3b-1.0.1-r1.ebuild, k3b-1.0.2.ebuild,
+  k3b-1.0.3.ebuild:
+  correct dbus deps (bug #187369)
+
+*k3b-1.0.3 (23 Jul 2007)
+
+  23 Jul 2007; Tobias Heinlein <keytoaster@gentoo.org> +k3b-1.0.3.ebuild:
+  Version bump, see bug 186320
+
+  06 Jul 2007; Michael Sterrett <mr_bones_@gentoo.org> k3b-0.12.17.ebuild,
+  k3b-1.0.ebuild, k3b-1.0.1.ebuild, k3b-1.0.1-r1.ebuild, k3b-1.0.2.ebuild:
+  remove reference to old, removed dbus (bug #183696)
+
+*k3b-1.0.2 (24 Jun 2007)
+
+  24 Jun 2007; Wulf C. Krueger <philantrop@gentoo.org> +k3b-1.0.2.ebuild:
+  Version bump to 1.0.2.
+
+*k3b-1.0.1-r1 (26 May 2007)
+
+  26 May 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  +files/k3b-1.0.1-hidden.patch, +k3b-1.0.1-r1.ebuild:
+  Install k3b-iso.desktop, k3b-cue.desktop with NoDisplay=true. Fixes bug 175263.
+
+*k3b-1.0.1 (19 Apr 2007)
+
+  19 Apr 2007; Carsten Lohrke <carlo@gentoo.org> +k3b-1.0.1.ebuild:
+  Version bump.
+
+  14 Apr 2007; Carsten Lohrke <carlo@gentoo.org> k3b-1.0.ebuild:
+  Fix bug #174554.
+
+  13 Apr 2007; <dragonheart@gentoo.org> k3b-1.0.ebuild:
+  worked on my ppc G3
+
+  12 Apr 2007; Carsten Lohrke <carlo@gentoo.org> k3b-1.0.ebuild:
+  Add a message regarding installation of k3bsetup, see bug #174248.
+
+  26 Mar 2007; Marcus D. Hanwell <cryos@gentoo.org> -k3b-0.12.14.ebuild,
+  -k3b-1.0_rc6.ebuild:
+  Removed old versions.
+
+  25 Mar 2007; Marcus D. Hanwell <cryos@gentoo.org>
+  +files/k3b-1.0-alsa-fix.patch, k3b-1.0.ebuild:
+  Fix alsa configure issue, closes bug 152321, patch from upstream SVN commit.
+
+*k3b-1.0 (17 Mar 2007)
+
+  17 Mar 2007; Marcus D. Hanwell <cryos@gentoo.org> -k3b-1.0_rc4.ebuild,
+  -k3b-1.0_rc5.ebuild, +k3b-1.0.ebuild:
+  Version bump, closes bug 171196.
+
+  11 Feb 2007; Ioannis Aslanidis <deathwing00@gentoo.org>
+  -k3b-1.0_beta1.ebuild:
+  Cleaning up old beta version.
+
+*k3b-1.0_rc6 (11 Feb 2007)
+
+  11 Feb 2007; Ioannis Aslanidis <deathwing00@gentoo.org>
+  +k3b-1.0_rc6.ebuild:
+  Version bump.
+
+*k3b-1.0_rc5 (09 Feb 2007)
+
+  09 Feb 2007; Marcus D. Hanwell <cryos@gentoo.org> -k3b-1.0_rc2.ebuild,
+  -k3b-1.0_rc3.ebuild, +k3b-1.0_rc5.ebuild:
+  Version bump, bug 164766. Removed some old rc versions.
+
+  22 Jan 2007; Steve Dibb <beandog@gentoo.org> k3b-0.12.17.ebuild:
+  amd64 stable, bug 157451
+
+*k3b-1.0_rc4 (21 Jan 2007)
+
+  21 Jan 2007; Ioannis Aslanidis <deathwing00@gentoo.org>
+  +k3b-1.0_rc4.ebuild:
+  Version bump as requested in bug #162781.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> k3b-0.12.14.ebuild,
+  k3b-0.12.17.ebuild, k3b-1.0_beta1.ebuild, k3b-1.0_rc2.ebuild,
+  k3b-1.0_rc3.ebuild:
+  Convert to use elog.
+
+*k3b-1.0_rc3 (04 Jan 2007)
+
+  04 Jan 2007; Marcus D. Hanwell <cryos@gentoo.org> +k3b-1.0_rc3.ebuild:
+  Version bump.
+
+  31 Dec 2006; Steve Dibb <beandog@gentoo.org> -k3b-0.12.15.ebuild,
+  -k3b-0.12.16.ebuild, -k3b-1.0_rc1.ebuild:
+  Remove old versions
+
+  23 Dec 2006; Andrej Kacian <ticho@gentoo.org> k3b-0.12.17.ebuild:
+  Stable on x86, bug #157451.
+
+  23 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org> k3b-0.12.17.ebuild:
+  Stable on ppc wrt bug #157451.
+
+  22 Dec 2006; Markus Rothe <corsair@gentoo.org> k3b-0.12.17.ebuild:
+  Stable on ppc64; bug #157451
+
+*k3b-1.0_rc2 (17 Dec 2006)
+*k3b-1.0_rc1 (17 Dec 2006)
+
+  17 Dec 2006; Ioannis Aslanidis <deathwing00@gentoo.org>
+  +k3b-1.0_rc1.ebuild, +k3b-1.0_rc2.ebuild:
+  Version bump.
+
+  27 Nov 2006; Ioannis Aslanidis <deathwing00@gentoo.org>
+  -files/k3b-1.0_pre2+flac-1.1.3.patch, -files/k3b-1.0_pre2-flac-beta.patch,
+  -k3b-1.0_pre1.ebuild, -k3b-1.0_pre2.ebuild:
+  Removed pre versions to prevent incorrect upstream versioning conflict.
+  Resolves bug #156185. Thanks to Jakub Moc for noticing.
+
+  25 Nov 2006; Charlie Shepherd <masterdriverz@gentoo.org>
+  k3b-1.0_beta1.ebuild:
+  Add emovix to IUSE, bug 156185
+
+  25 Nov 2006; Ioannis Aslanidis <deathwing00@gentoo.org>
+  k3b-1.0_beta1.ebuild:
+  Improved dependency of app-cdr/dvd+rw-tools to version 7.0 or above as
+  detailed in bug 156044. Thanks to Jurek Bartuszek for noticing.
+
+  24 Nov 2006; Markus Rothe <corsair@gentoo.org> k3b-1.0_beta1.ebuild:
+  Added ~ppc64; bug #156033
+
+*k3b-1.0_beta1 (23 Nov 2006)
+
+  23 Nov 2006; Ioannis Aslanidis <deathwing00@gentoo.org>
+  +k3b-1.0_beta1.ebuild:
+  Version bump. Added media-video/emovix optional runtime dependency. Dropped
+  unneded patches.
+
+  19 Nov 2006; Doug Goldstein <cardoe@gentoo.org> k3b-0.12.17.ebuild,
+  k3b-1.0_pre1.ebuild, k3b-1.0_pre2.ebuild:
+  Fixing dbus depends
+
+  21 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/k3b-0.12.17+flac-1.1.3.patch, +files/k3b-0.12.17-flac-beta.patch,
+  +files/k3b-1.0_pre2+flac-1.1.3.patch, +files/k3b-1.0_pre2-flac-beta.patch,
+  k3b-0.12.17.ebuild, k3b-1.0_pre2.ebuild:
+  Add patch from Josh Coalson to be able to build with flac 1.1.3 (and an
+  extra one to build with flac 1.1.3-beta2).
+
+  19 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> k3b-0.12.14.ebuild,
+  k3b-0.12.15.ebuild, k3b-0.12.16.ebuild, k3b-0.12.17.ebuild,
+  k3b-1.0_pre1.ebuild, k3b-1.0_pre2.ebuild:
+  Depend on 1.1.2 version of flac, as the 1.1.3 version changes API.
+
+  06 Oct 2006; Ioannis Aslanidis <deathwing00@gentoo.org>
+  k3b-0.12.17.ebuild:
+  Added 'fi' and 'zh_TW' languages as requested in bug #149717. Thanks to
+  Niklas Laxström for reporting it.
+
+  08 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> k3b-0.12.17.ebuild,
+  k3b-1.0_pre2.ebuild:
+  Accept dbus-qt3-old aside from dbus proper, and don't do the useflag check
+  for that case.
+
+*k3b-1.0_pre2 (07 Sep 2006)
+
+  07 Sep 2006; Ioannis Aslanidis <deathwing00@gentoo.org>
+  +k3b-1.0_pre2.ebuild:
+  Version bump. Added 'dvdread' USE flag for optional dependency on
+  libdvdread. $(use_with dvdread) that enables --with-dvdread is not
+  required, the configure script does the check automatically.
+
+  25 Aug 2006; Ioannis Aslanidis <deathwing00@gentoo.org>
+  k3b-1.0_pre1.ebuild:
+  Added dependency check: If the 'encode' USE flag is enabled,
+  media-video/transcode is checked to be compiled with dvdread. Fixes bug
+  #143657.
+
+*k3b-0.12.17 (23 Aug 2006)
+
+  23 Aug 2006; Carsten Lohrke <carlo@gentoo.org> +k3b-0.12.17.ebuild:
+  Version bump.
+
+*k3b-1.0_pre1 (11 Aug 2006)
+
+  11 Aug 2006; Ioannis Aslanidis <deathwing00@gentoo.org> +k3b-1.0_pre1.ebuild:
+  Version bump. Resolves bug #143274. Thanks to Thomas Bettler for reporting it.
+
+  27 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> k3b-0.12.16.ebuild:
+  Make the ebuild actually respect LINGUAS given by user. Thanks to Ginta Suou
+  for reporting in bug #141819.
+
+  02 Jul 2006; Daniel Black <dragonheart@gentoo.org> Manifest:
+  regen Manifest to not contain missing k3b-0.12.14.ebuild.orig
+
+*k3b-0.12.16 (30 Jun 2006)
+
+  30 Jun 2006; Diego Pettenò <flameeyes@gentoo.org> +k3b-0.12.16.ebuild:
+  Bump to latest version, thanks to Attila Jecs and Jorma Rus in bug #137716.
+
+  24 Jun 2006; Stefan Schweizer <genstef@gentoo.org> k3b-0.12.14.ebuild,
+  k3b-0.12.15.ebuild:
+  Check for dbus to have the qt3 useflag thanks to Robert Sebastian Gerus
+  <arachnist@gmail.com> in bug 137803
+
+  21 Jun 2006; Diego Pettenò <flameeyes@gentoo.org> k3b-0.12.14.ebuild,
+  k3b-0.12.15.ebuild:
+  Fix i18n packages to use the new $KDE_S variable, thanks to miste78 for
+  reporting in bug #135692.
+
+  31 May 2006; Diego Pettenò <flameeyes@gentoo.org> k3b-0.12.15.ebuild:
+  Add linguas in IUSE to avoid the screen full of QA warnings.
+
+  29 Apr 2006; Carsten Lohrke <carlo@gentoo.org> -k3b-0.12.8.ebuild,
+  -k3b-0.12.11.ebuild, -k3b-0.12.12.ebuild, -k3b-0.12.13.ebuild:
+  Clean up.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-k3b-0.12.8,
+  files/digest-k3b-0.12.11, files/digest-k3b-0.12.12,
+  files/digest-k3b-0.12.13, files/digest-k3b-0.12.14,
+  files/digest-k3b-0.12.15, Manifest:
+  Fixing SHA256 digest, pass four
+
+  22 Apr 2006; Luis Medinas <metalgod@gentoo.org> k3b-0.12.14.ebuild:
+  Stable on amd64. Bug #129475.
+
+  22 Apr 2006; Markus Rothe <corsair@gentoo.org> k3b-0.12.14.ebuild:
+  Stable on ppc64
+
+  22 Apr 2006; Joshua Jackson <tsunam@gentoo.org> k3b-0.12.14.ebuild:
+  stable on x86; bug #129475
+
+  17 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org> k3b-0.12.14.ebuild:
+  ppc stable, bug #129475
+
+*k3b-0.12.15 (12 Apr 2006)
+
+  12 Apr 2006; Carsten Lohrke <carlo@gentoo.org> +k3b-0.12.15.ebuild:
+  Version bump.
+
+*k3b-0.12.14 (07 Mar 2006)
+
+  07 Mar 2006; Carsten Lohrke <carlo@gentoo.org> +k3b-0.12.14.ebuild:
+  Version bump.
+
+*k3b-0.12.13 (03 Mar 2006)
+
+  03 Mar 2006; Carsten Lohrke <carlo@gentoo.org> +k3b-0.12.13.ebuild:
+  Version bump.
+
+*k3b-0.12.12 (15 Feb 2006)
+
+  15 Feb 2006; Carsten Lohrke <carlo@gentoo.org> +k3b-0.12.12.ebuild:
+  Version bump.
+
+*k3b-0.12.11 (11 Feb 2006)
+
+  11 Feb 2006; Carsten Lohrke <carlo@gentoo.org>
+  -files/k3b-0.11.17-noarts.patch, -files/k3b-0.12.4a-qt-3.3.5.patch,
+  -files/k3b-0.12.9-conditional.patch, -files/k3b-dvdrip-transcode.patch,
+  -k3b-0.11.24.ebuild, -k3b-0.12.4a.ebuild, -k3b-0.12.5.ebuild,
+  -k3b-0.12.6.ebuild, -k3b-0.12.7.ebuild, -k3b-0.12.9.ebuild,
+  -k3b-0.12.10.ebuild, +k3b-0.12.11.ebuild:
+  Version bump.
+
+  02 Feb 2006; Markus Rothe <corsair@gentoo.org> k3b-0.12.10.ebuild:
+  Added ~ppc64
+
+  24 Dec 2005; Tobias Scherbaum <dertobi123@gentoo.org> k3b-0.12.8.ebuild:
+  Marked ppc stable, #114669
+
+  18 Dec 2005; Mark Loeser <halcy0n@gentoo.org> k3b-0.12.8.ebuild:
+  Stable on x86; bug #114669
+
+  17 Dec 2005; Luis Medinas <metalgod@gentoo.org> metadata.xml:
+  Add media-optical to co-maintain k3b with kde herd.
+
+*k3b-0.12.10 (17 Dec 2005)
+
+  17 Dec 2005; Carsten Lohrke <carlo@gentoo.org> +k3b-0.12.10.ebuild:
+  version bump
+
+  13 Dec 2005; Marcus D. Hanwell <cryos@gentoo.org> k3b-0.12.8.ebuild:
+  Stable on amd64, bug 114669.
+
+  13 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/k3b-0.12.9-conditional.patch, k3b-0.12.9.ebuild:
+  Add patch to fix ALSA conditional, see bug #115379. Issue fixed in upstream
+  SVN.
+
+*k3b-0.12.9 (13 Dec 2005)
+
+  13 Dec 2005; Carsten Lohrke <carlo@gentoo.org> +k3b-0.12.9.ebuild:
+  version bump
+
+  29 Nov 2005; Gregorio Guidi <greg_g@gentoo.org> k3b-0.11.24.ebuild:
+  Change oggvorbis flag into vorbis (#94254).
+
+*k3b-0.12.8 (25 Nov 2005)
+
+  25 Nov 2005; Gregorio Guidi <greg_g@gentoo.org> +k3b-0.12.8.ebuild:
+  New version (#113492).
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> k3b-0.12.4a.ebuild:
+  Stable on ppc.
+
+*k3b-0.12.7 (02 Nov 2005)
+
+  02 Nov 2005; Carsten Lohrke <carlo@gentoo.org> +k3b-0.12.7.ebuild:
+  version bump
+
+  30 Oct 2005; Carsten Lohrke <carlo@gentoo.org> k3b-0.12.4a.ebuild:
+  stable on x86
+
+  30 Oct 2005; Carsten Lohrke <carlo@gentoo.org> k3b-0.12.4a.ebuild:
+  revert hal/dbus dependency for stabilzation, #108408
+
+*k3b-0.12.6 (30 Oct 2005)
+
+  30 Oct 2005; Carsten Lohrke <carlo@gentoo.org> +k3b-0.12.6.ebuild:
+  version bump
+
+*k3b-0.12.5 (19 Oct 2005)
+
+  19 Oct 2005; Gregorio Guidi <greg_g@gentoo.org> +k3b-0.12.5.ebuild:
+  New version. Make support for libsndfile and musicbrainz optional (#106956).
+  Respect the vcd USE flag (#100089). Cleanup.
+
+  20 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/k3b-0.12.4a-qt-3.3.5.patch, k3b-0.12.4a.ebuild:
+  Added patch to compile with qt-3.3.5.
+
+  20 Sep 2005; Caleb Tennis <caleb@gentoo.org> k3b-0.12.4a.ebuild:
+  Change k3b deps to not have specific HAL and dbus version deps, per bug #105403
+
+  19 Sep 2005; Carsten Lohrke <carlo@gentoo.org> -k3b-0.11.23-r2.ebuild,
+  k3b-0.11.24.ebuild, -k3b-0.12.1.ebuild, -k3b-0.12.2.ebuild,
+  -k3b-0.12.3.ebuild, k3b-0.12.4a.ebuild:
+  Clean up and minor ebuild fixes, #104680
+
+*k3b-0.12.4a (19 Sep 2005)
+
+  19 Sep 2005; Caleb Tennis <caleb@gentoo.org> +k3b-0.12.4a.ebuild:
+  Version bump
+
+*k3b-0.12.3 (31 Jul 2005)
+
+  31 Jul 2005; Carsten Lohrke <carlo@gentoo.org> +k3b-0.12.3.ebuild:
+  version bump
+
+  30 Jul 2005; Simon Stelling <blubb@gentoo.org> k3b-0.11.24.ebuild:
+  stable on amd64
+
+  12 Jul 2005; Joseph Jezak <josejx@gentoo.org> k3b-0.11.24.ebuild:
+  Marked ppc stable.
+
+  10 Jul 2005; Carsten Lohrke <carlo@gentoo.org> k3b-0.11.24.ebuild:
+  stable on x86, renamed tarball to be sure #93547 is not a problem anymore
+
+  02 Jul 2005; Dan Armak <danarmak@gentoo.org> k3b-0.12.2.ebuild:
+  Fixing apparently accidentally broken ebuild (main compile and install
+  process was commented out), bug 97744
+
+*k3b-0.12.2 (02 Jul 2005)
+
+  02 Jul 2005; Carsten Lohrke <carlo@gentoo.org> +k3b-0.12.2.ebuild:
+  version bump
+
+  19 Jun 2005; Carsten Lohrke <carlo@gentoo.org> k3b-0.12.1.ebuild:
+  removed polish localization, #96512
+
+*k3b-0.12.1 (18 Jun 2005)
+
+  18 Jun 2005; Carsten Lohrke <carlo@gentoo.org> -k3b-0.12_beta2.ebuild,
+  -k3b-0.12.ebuild, +k3b-0.12.1.ebuild:
+  version bump
+
+*k3b-0.12 (15 Jun 2005)
+
+  15 Jun 2005; Carsten Lohrke <carlo@gentoo.org> +k3b-0.12.ebuild:
+  version bump
+
+  11 Jun 2005; Joseph Jezak <josejx@gentoo.org> k3b-0.12_beta2.ebuild:
+  Marked ~ppc for bug #94395.
+
+  05 Jun 2005; Jason Wever <weeve@gentoo.org> k3b-0.12_beta2.ebuild:
+  Added ~sparc keyword wrt bug #94395.
+
+  02 Jun 2005; Herbie Hopkins <herbs@gentoo.org> k3b-0.12_beta2.ebuild:
+  Marked ~amd64 wrt bug #94395.
+
+*k3b-0.12_beta2 (29 May 2005)
+
+  29 May 2005; Carsten Lohrke <carlo@gentoo.org> +k3b-0.12_beta2.ebuild:
+  version bump
+
+  13 May 2005; Carsten Lohrke <carlo@gentoo.org> :
+  new 0.11.24 tarball, doc building fixes
+
+  13 May 2005; Sven Wegener <swegener@gentoo.org> k3b-0.12_beta1.ebuild:
+  Added missing ? to *DEPEND.
+
+*k3b-0.12_beta1 (12 May 2005)
+
+  12 May 2005; Carsten Lohrke <carlo@gentoo.org> +k3b-0.12_beta1.ebuild:
+  version bump, early birds want to get toasted ;)
+
+*k3b-0.11.24 (11 May 2005)
+
+  11 May 2005; Carsten Lohrke <carlo@gentoo.org> +k3b-0.11.24.ebuild:
+  version bump
+
+  10 May 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  k3b-0.11.23-r2.ebuild:
+  Stable on PPC, #92134
+
+  10 May 2005; Diego Pettenò <flameeyes@gentoo.org> k3b-0.11.23-r2.ebuild:
+  Marked stable on amd64.
+
+  10 May 2005; Carsten Lohrke <carlo@gentoo.org> k3b-0.11.23-r2.ebuild:
+  removed invalid warning, stable on x86
+
+  18 Apr 2005; Carsten Lohrke <carlo@gentoo.org>
+  files/k3b-dvdrip-transcode.patch:
+  ..
+
+  15 Apr 2005; Carsten Lohrke <carlo@gentoo.org>
+  files/k3b-dvdrip-transcode.patch, k3b-0.11.23-r2.ebuild:
+  But this time...
+
+*k3b-0.11.23-r2 (15 Apr 2005)
+
+  15 Apr 2005; Carsten Lohrke <carlo@gentoo.org>
+  files/k3b-dvdrip-transcode.patch, -k3b-0.11.17.ebuild,
+  -k3b-0.11.19.ebuild, -k3b-0.11.20.ebuild, -k3b-0.11.22.ebuild,
+  -k3b-0.11.23-r1.ebuild, +k3b-0.11.23-r2.ebuild:
+  corrected transcode patch, clean up
+
+*k3b-0.11.23-r1 (14 Apr 2005)
+
+  14 Apr 2005; Carsten Lohrke <carlo@gentoo.org>
+  +files/k3b-dvdrip-transcode.patch, +k3b-0.11.23-r1.ebuild:
+  support for transcode >= 0.6.12, thanks to James Roberts-Thomson, #83516
+
+*k3b-0.11.23 (28 Mar 2005)
+
+  28 Mar 2005; Carsten Lohrke <carlo@gentoo.org> +k3b-0.11.23.ebuild:
+  version bump
+
+  28 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> k3b-0.11.18.ebuild:
+  Stable on ppc.
+
+*k3b-0.11.22 (16 Mar 2005)
+
+  16 Mar 2005; Gregorio Guidi <greg_g@gentoo.org> +k3b-0.11.22.ebuild:
+  New version (#85455). Remove restriction on flac version. Include changes
+  suggested in bug #82980.
+
+  22 Feb 2005; Gregorio Guidi <greg_g@gentoo.org> k3b-0.11.17.ebuild,
+  k3b-0.11.18.ebuild, k3b-0.11.19.ebuild, k3b-0.11.20.ebuild:
+  Correct dependency on flac (#82558).
+
+  08 Feb 2005; Heinrich Wendel <lanius@gentoo.org> k3b-0.11.18.ebuild:
+  stable on amd64
+
+*k3b-0.11.20 (04 Feb 2005)
+
+  04 Feb 2005; Carsten Lohrke <carlo@gentoo.org> +k3b-0.11.20.ebuild:
+  version bump
+
+*k3b-0.11.19 (29 Jan 2005)
+
+  29 Jan 2005; Gregorio Guidi <greg_g@gentoo.org> -k3b-0.11.18-r1.ebuild,
+  +k3b-0.11.19.ebuild:
+  Version bump. Readded dependency on libsamplerate (#77607). Slimmed down
+  dependencies on kde split packages (#78235).
+
+  15 Jan 2005; Dan Armak <danarmak@gentoo.org> k3b-0.11.17.ebuild,
+  k3b-0.11.18-r1.ebuild, k3b-0.11.18.ebuild:
+  Changed dep on kdebase to accept kdebase-meta, the split 'meta' package.
+  This dep will be narrowed down in the future to the precise split packages
+  required.
+
+*k3b-0.11.18-r1 (13 Jan 2005)
+
+  13 Jan 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +files/k3b-0.11.18-configure-libsamplerate.patch, +k3b-0.11.18-r1.ebuild:
+  Added patch to force compilation against internal libsamplerate (#77607).
+
+  11 Jan 2005; Carsten Lohrke <carlo@gentoo.org> k3b-0.11.18.ebuild:
+  corrected dependencies: #77563 and #77555, revoked #75252, stable on x86
+
+  08 Jan 2005; Lars Weiler <pylon@gentoo.org> k3b-0.11.17.ebuild,
+  k3b-0.11.18.ebuild:
+  Removed the hard dependency on a special transcode version. See also bug
+  75252.
+
+*k3b-0.11.18 (12 Dec 2004)
+
+  12 Dec 2004; Carsten Lohrke <carlo@gentoo.org> +k3b-0.11.18.ebuild:
+  version bump
+
+  23 Nov 2004; Carsten Lohrke <carlo@gentoo.org> k3b-0.11.17.ebuild:
+  QA: missing "inherit eutils"
+
+  19 Nov 2004; Carsten Lohrke <carlo@gentoo.org> k3b-0.11.17.ebuild:
+  a small LINGUAS fix...
+
+  31 Oct 2004; Lars Weiler <pylon@gentoo.org> -k3b-0.11.10.ebuild,
+  -k3b-0.11.12-r1.ebuild, -k3b-0.11.14.ebuild, -k3b-0.11.16.ebuild,
+  k3b-0.11.17.ebuild:
+  k3b-0.11.17 stable on ppc and cleanup.
+
+  26 Oct 2004; Simone Gotti <motaboy@gentoo.org> k3b-0.11.17.ebuild:
+  Added support for multiple languages in LINGUAS, removed "it" from docs as
+  the source is broken. Thanks to Federico Zenith, fixes bug #68522.
+
+  24 Oct 2004; Dylan Carlson <absinthe@gentoo.org> k3b-0.11.17.ebuild:
+  Stable on amd64.
+
+  19 Oct 2004; Heinrich Wendel <lanius@gentoo.org> k3b-0.11.17.ebuild:
+  stable on x86
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  k3b-0.11.12-r1.ebuild:
+  Masked k3b-0.11.12-r1.ebuild stable for ppc
+
+  25 Sep 2004; Heinrich Wendel <lanius@gentoo.org>
+  +files/k3b-0.11.17-noarts.patch, k3b-0.11.17.ebuild:
+  add patch to compile without arts, bug #61366
+
+*k3b-0.11.17 (23 Sep 2004)
+
+  23 Sep 2004; Carsten Lohrke <carlo@gentoo.org> +k3b-0.11.17.ebuild:
+  version bump
+
+*k3b-0.11.16 (20 Sep 2004)
+
+  20 Sep 2004; Carsten Lohrke <carlo@gentoo.org> +k3b-0.11.16.ebuild:
+  version bump
+
+  14 Sep 2004; Carsten Lohrke <carlo@gentoo.org>
+  -files/k3b-0.10.3-hacked-cdrdao.patch, k3b-0.11.12-r1.ebuild,
+  -k3b-0.11.13.ebuild:
+  ebuild clean up, removed monkey plugin from 0.11.12-r1, too
+
+  21 Aug 2004; Lars Weiler <pylon@gentoo.org> k3b-0.11.10.ebuild,
+  k3b-0.11.12-r1.ebuild, k3b-0.11.13.ebuild, k3b-0.11.14.ebuild:
+  Depend on virtual/cdrtools, as mentioned in bug 61094.
+
+  14 Aug 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed CVS Header.
+
+*k3b-0.11.14 (10 Aug 2004)
+
+  10 Aug 2004; Carsten Lohrke <carlo@gentoo.org> +k3b-0.11.14.ebuild:
+  version bump
+
+  06 Aug 2004; Carsten Lohrke <carlo@gentoo.org> k3b-0.11.13.ebuild:
+  readded $(use_with arts), since kde.eclass supports it only for kde 3.3 and
+  above
+
+*k3b-0.11.13 (05 Aug 2004)
+
+  05 Aug 2004; Carsten Lohrke <carlo@gentoo.org> +k3b-0.11.13.ebuild:
+  version bump, replaced a few for loops,
+  removed monkeyaudio plugin until license issues are sorted out
+
+  22 Jul 2004; Travis Tilley <lv@gentoo.org> k3b-0.11.12-r1.ebuild:
+  stable on amd64
+
+  17 Jul 2004; Heinrich Wendel <lanius@gentoo.org> k3b-0.11.12-r1.ebuild:
+  stable on x86
+
+  04 Jul 2004; Carsten Lohrke <carlo@gentoo.org> k3b-0.11.10.ebuild,
+  k3b-0.11.12-r1.ebuild:
+  QA: need-kde after R/DEPEND
+
+*k3b-0.11.12-r1 (03 Jul 2004)
+
+  03 Jul 2004; Heinrich Wendel <lanius@gentoo.org> k3b-0.11.11.ebuild,
+  k3b-0.11.12-r1.ebuild, k3b-0.11.12.ebuild, k3b-0.11.6.ebuild,
+  k3b-0.11.9.ebuild:
+  add icon for gnome, bug #55272, remove old versions, add arts useflag
+
+*k3b-0.11.12 (25 Jun 2004)
+
+  25 Jun 2004; Carsten Lohrke <carlo@gentoo.org> +k3b-0.11.12.ebuild:
+  version bump
+
+  24 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> k3b-0.11.10.ebuild:
+  Marked stable on amd64.
+
+  16 Jun 2004; Martin Holzer <mholzer@gentoo.org> k3b-0.11.10.ebuild:
+  need a newer version of kde
+
+*k3b-0.11.11 (15 Jun 2004)
+
+  15 Jun 2004; Carsten Lohrke <carlo@gentoo.org> k3b-0.11.11.ebuild:
+  version bump, <media-video/transcode-0.6.12
+
+  11 Jun 2004; Lars Weiler <pylon@gentoo.org> k3b-0.11.10.ebuild:
+  Stable on ppc.
+
+  05 Jun 2004; Heinrich Wendel <lanius@gentoo.org> k3b-0.11.10.ebuild:
+  stable on x86
+
+  01 Jun 2004; Aron Griffis <agriffis@gentoo.org> k3b-0.11.10.ebuild,
+  k3b-0.11.9.ebuild:
+  Fix use invocation
+
+*k3b-0.11.10 (24 May 2004)
+
+  24 May 2004; Heinrich Wendel <lanius@gentoo.org> k3b-0.11.10.ebuild:
+  version bump, bug #51910
+
+  14 May 2004; Lars Weiler <pylon@gentoo.org> k3b-0.11.9.ebuild:
+  Stable on ppc
+
+  03 May 2004; Jeremy Huddleston <eradicator@gentoo.org> k3b-0.11.6.ebuild,
+  k3b-0.11.9.ebuild:
+  Changing mad dep to madplay.
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> k3b-0.11.9.ebuild:
+  Add die following econf for bug 48950
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> k3b-0.11.9.ebuild:
+  Add die following econf for bug 48950
+
+  24 Apr 2004; Heinrich Wendel <lanius@gentoo.org> k3b-0.11.6.ebuild,
+  k3b-0.11.9.ebuild:
+  mark 0.11.9 stable, fix depend again
+
+  14 Apr 2004; Heinrich Wendel <lanius@gentoo.org> k3b-0.11.1-r1.ebuild,
+  k3b-0.11.5.ebuild:
+  remove old versions
+
+  14 Apr 2004; Heinrich Wendel <lanius@gentoo.org> k3b-0.11.1-r1.ebuild,
+  k3b-0.11.5.ebuild, k3b-0.11.6.ebuild, k3b-0.11.9.ebuild:
+  remove unnecessary $DEPEND=$DEPEND
+
+*k3b-0.11.9 (06 Apr 2004)
+
+  06 Apr 2004; Heinrich Wendel <lanius@gentoo.org> k3b-0.11.9.ebuild:
+  version bump, add monkey use flag, bug #45459
+  add gnome deskto entry, bug #46546
+  add a better postinst message, bug #46245
+
+  14 Mar 2004; Jason Wever <weeve@gentoo.org> k3b-0.11.6.ebuild:
+  Added ~sparc keyword.
+
+  27 Mar 2004; Heinrich Wendel <lanius@gentoo.org> k3b-0.11.6.ebuild:
+  fix i18n stuff
+
+  13 Mar 2004; Heinrich Wendel <lanius@gentoo.org> k3b-0.11.6.ebuild:
+  stable on x86
+
+  11 Mar 2004; Lars Weiler <pylon@gentoo.org> k3b-0.11.6.ebuild:
+  stable on ppc
+
+*k3b-0.11.6 (06 Mar 2004)
+
+  06 Mar 2004; Heinrich Wendel <lanius@gentoo.org> k3b-0.10.3-r2.ebuild,
+  k3b-0.11.2.ebuild, k3b-0.11.4.ebuild, k3b-0.11.6.ebuild, k3b-0.9.ebuild:
+  version bump (with linguas support, bug #43540), remove old versions
+
+*k3b-0.11.5 (24 Feb 2004)
+
+  24 Feb 2004; Heinrich Wendel <lanius@gentoo.org> k3b-0.11.5.ebuild:
+  version bump, bug #42509
+
+*k3b-0.11.4 (17 Feb 2004)
+
+  17 Feb 2004; Heinrich Wendel <lanius@gentoo.org> k3b-0.11.4.ebuild:
+  version bump, bug #41463
+
+*k3b-0.11.2 (09 Feb 2004)
+
+  09 Feb 2004; Heinrich Wendel <lanius@gentoo.org> k3b-0.11.2.ebuild:
+  version bump
+
+  07 Feb 2004; Lars Weiler <pylon@gentoo.org> k3b-0.11.1-r1.ebuild:
+  stable on x86 and ppc.
+
+  27 Jan 2004; Heinrich Wendel <lanius@gentoo.org> k3b-0.11.1-r1.ebuild:
+  added docs; only info about k3bsetup if it is installed
+
+*k3b-0.11.1-r1 (27 Jan 2004)
+
+  27 Jan 2004; Heinrich Wendel <lanius@gentoo.org> k3b-0.10.1.ebuild,
+  k3b-0.10.3-r1.ebuild, k3b-0.10.3.ebuild, k3b-0.10.ebuild,
+  k3b-0.11.1-r1.ebuild, k3b-0.11.1.ebuild, k3b-0.8.1-r1.ebuild,
+  k3b-0.9-r1.ebuild, files/k3b-0.10.1-include-limits.patch,
+  files/mp3decoder_fix.diff:
+  remove some old versions; fix up 0.11.1 ebuild
+
+*k3b-0.11.1 (26 Jan 2004)
+
+  26 Jan 2004; Luca Barbato <lu_zero@gentoo.org> k3b-0.11.1.ebuild:
+  New version, ui fixes
+
+*k3b-0.10.3-r2 (16 Dec 2003)
+
+  16 Dec 2003; Martin Schlemmer <azarah@gentoo.org> k3b-0.10.3-r2.ebuild,
+  files/k3b-0.10.3-hacked-cdrdao.patch:
+  Make k3b work with cdrdao and 2.6 kernel (we need >=cdrdao-1.1.7-r3 that
+  have the '-gentoo' appended to its version).  Note that this is ATAPI
+  support with cdrdao ...
+
+  15 Dec 2003; Martin Schlemmer <azarah@gentoo.org> k3b-0.10.3-r1.ebuild:
+  Add a '[ -d "${WORKDIR}/${I18N}" ]' check in case the LINGUAS is not supported.
+
+*k3b-0.10.3-r1 (14 Dec 2003)
+  14 Dec 2003; Martin Schlemmer <azarah@gentoo.org> k3b-0.10.3-r1.ebuild:
+  For some reason things gets borked if the linguas stuff is done without
+  LINGUAS set (I am assuming that it runs the automake in the k3b main source
+  dir ...), bug #33434. Also add some other cleanups and form fixes.
+
+*k3b-0.10.3 (04 Dec 2003)
+
+  04 Dec 2003; Caleb Tennis <caleb@gentoo.org> k3b-0.10.2.ebuild, k3b-0.10.3.ebuild:
+  New bug fix version, remove 0.10.2 as it has a nasty bug.
+
+  30 Nov 2003; Caleb Tennis <caleb@gentoo.org> k3b-0.10.2.ebuild:
+  Add a note about where new k3bsetup program is located.
+  Closes bug #33566, thanks to Derek Williams for the fix.
+
+  17 Nov 2003; David Holm <dholm@gentoo.org> k3b-0.10.2.ebuild:
+  Apparently it's difficult to move the ~ppc keyword to new versions of this app.
+
+*k3b-0.10.2 (11 Nov 2003)
+
+  11 Nov 2003; Caleb Tennis <caleb@gentoo.org> k3b-0.10.2.ebuild:
+  New version, modified LINGUA support
+
+  08 Nov 2003; David Holm <dholm@gentoo.org> k3b-0.10.1.ebuild:
+  Added to ~ppc.
+
+  01 Nov 2003; Caleb Tennis <caleb@gentoo.org> k3b-0.10.1.ebuild:
+  Add in Azarah's patch for gcc 2.95 compatibility
+
+*k3b-0.10.1 (31 Oct 2003)
+
+  31 Oct 2003; Caleb Tennis <caleb@gentoo.org> k3b-0.10.1.ebuild:
+  Version bump, add i18n support (thanks to Carlo) bug #32113
+
+*k3b-0.10 (14 Oct 2003)
+
+  14 Oct 2003; Caleb Tennis <caleb@gentoo.org> k3b-0.10.ebuild:
+  New version, try some new dependencies out.
+  Will need some feedback to make sure this works globally.
+
+*k3b-0.9-r1 (02 Oct 2003)
+
+  02 Oct 2003; Caleb Tennis <caleb@gentoo.org> k3b-0.9-r1.ebuild,
+  files/mp3decoder_fix.diff:
+  add a fix for compilation problems
+
+  07 Sep 2003; Caleb Tennis <caleb@gentoo.org> k3b-0.9.ebuild:
+  Mark as x86 stable
+
+  12 Aug 2003; Caleb Tennis <caleb@gentoo.org> k3b-0.9.ebuild:
+  Add a warning to the postinst of the ebuild, as noted in bug 14861
+
+  11 Aug 2003; Caleb Tennis <caleb@gentoo.org> k3b-0.9.ebuild:
+  Remove hard dependency on kde 3.1 (bug #26438)
+
+*k3b-0.9 (19 Jul 2003)
+
+  19 Jul 2003; Nick Hadaway <raker@gentoo.org> k3b-0.9.ebuild:
+  Version bump.  Changed mad dependancy.
+
+  07 Jul 2003; Caleb Tennis <caleb@gentoo.org> k3b-0.8.1-r1.ebuild, k3b-0.9_pre2.ebuild:
+  Added runtime dependency on media-sound/normalize.  This closes #23259.
+
+  19 Jun 2003; Rainer Groesslinger <scandium@gentoo.org> k3b-0.9_pre2.ebuild:
+  fixed a problem with parallel builds
+
+*k3b-0.9_pre2 (18 Jun 2003)
+
+  18 Jun 2003; Caleb Tennis <caleb@gentoo.org> k3b-0.9_pre2.ebuild:
+  Version bump
+
+*k3b-0.8.1-r1 (20 Apr 2003)
+
+  20 Apr 2003; Dan Armak <danarmak@gentoo.org> k3b-0.8.1-r1.ebuild:
+  Make the transcode dep dependant on use dvd, and move it to RDEPEND. Closes
+  bug #14810.
+
+  06 Apr 2003; Dan Armak <danarmak@gentoo.org> k3b-0.8.1.ebuild:
+  
+  Mark as x86 (stable).
+
+  15 March 2003; Luca Barbato <lu_zero@gentoo.org> k3b-0.8.1.ebuild :
+  changed -ppc to ~ppc since now transcode is building again
+
+*k3b-0.8.1 (1 March 2003)
+
+  1 March 2003; Bart Verwilst <verwilst@gentoo.org> k3b-0.8.1.ebuild :
+  version bump
+
+  13 Feb 2003; Mark Guertin <gerk@gentoo.org> k3b-0.7.5.ebuild :
+  set -ppc in keywords, can't meet the deps
+
+*k3b-0.8 (12 Feb 2003)
+
+  12 Feb 2003; Hannes Mehnert <hannes@gentoo.org> k3b-0.8.ebuild :
+  version bump
+
+*k3b-0.7.5 (27 Nov 2002)
+
+  22 Jan 2003; Jon Nall <nall@gentoo.org> k3b-0.7.5.ebuild :
+  keyworded ~ppc
+
+  27 Nov 2002; Bart Verwilst <verwilst@gentoo.org>:
+  New version, removed all old ones
+
+*k3b-0.7.4 (14 Nov 2002)
+
+  14 Nov 2002; Hannes Mehnert <hannes@gentoo.org> k3b-0.7.4.ebuild:
+  version bump, thanks absinthe@pobox.com (Dylan Carlson) for submission
+
+*k3b-0.7.3 (17 Oct 2002)
+
+  17 Oct 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  New upstream version, lots of bugfixes and even some new features.
+
+  05 Oct 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  Add missing dep on kdebase; close bug #8311.
+
+  29 Aug 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  Add missing runtime dep on sys-apps/eject. Closes bug #6688. Also, move
+  the cdrtools and cdrdao deps from DEPEND to RDEPEND.
+
+*k3b-0.7 (29 May 2002)
+
+  29 May 2002; Dan Armak <danarmak@gentoo.org> ChangeLog :
+  
+  New upstream version, a geat many changes, new functionality & deps etc.
+
+*k3b-0.5.1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

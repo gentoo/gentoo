@@ -1,0 +1,25 @@
+# ChangeLog for games-arcade/xsfcave
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/xsfcave/ChangeLog,v 1.7 2015/01/06 09:46:55 tupone Exp $
+
+  06 Jan 2015; Tupone Alfredo <tupone@gentoo.org> xsfcave-0.5.ebuild:
+  EAPI 5
+
+  31 May 2009; Tristan Heaven <nyhm@gentoo.org> xsfcave-0.5.ebuild:
+  Fix LICENSE: as-is -> public-domain
+
+  25 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> xsfcave-0.5.ebuild:
+  amd64 stable
+
+  24 Apr 2007; Timothy Redaelli <drizzt@gentoo.org> xsfcave-0.5.ebuild:
+  Add ~x86-fbsd keyword.
+  Thanks to Nathan Smith for reporting wrt bug #175779
+
+  23 Apr 2007; Michael Sterrett <mr_bones_@gentoo.org> xsfcave-0.5.ebuild:
+  touchups; keyword for x86
+
+*xsfcave-0.5 (21 Apr 2007)
+
+  21 Apr 2007; <tupone@gentoo.org> +metadata.xml, +xsfcave-0.5.ebuild:
+  New package. Request bug #128731 by Cristiano Chiucchiolo
+

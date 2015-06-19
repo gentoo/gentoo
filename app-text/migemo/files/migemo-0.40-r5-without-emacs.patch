@@ -1,0 +1,12 @@
+diff -Naurb migemo-0.40.orig/acinclude.m4 migemo-0.40/acinclude.m4
+--- migemo-0.40.orig/acinclude.m4	2001-07-10 13:35:18.000000000 +0900
++++ migemo-0.40/acinclude.m4	2011-10-12 02:03:28.428140601 +0900
+@@ -23,7 +23,7 @@
+     [  --with-emacs=EMACS      compile with EMACS [EMACS=emacs, xemacs...]],
+     [case "${withval}" in
+        yes)	EMACS= ;;
+-       no)	AC_MSG_ERROR([emacs is not available]) ;;
++       no)	EMACS=no ;;
+        *)	EMACS=${withval} ;;
+      esac], EMACS=)
+   if test "x$EMACS" = "xt" -o "x$EMACS" = x; then

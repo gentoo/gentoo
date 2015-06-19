@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=sys-freebsd/freebsd-sources-9.1 virtual/pmake doc? ( app-text/deplate )
+DESCRIPTION=Fuse for FreeBSD
+EAPI=5
+HOMEPAGE=http://fuse4bsd.creo.hu/
+IUSE=doc
+KEYWORDS=~x86-fbsd
+LICENSE=BSD
+RDEPEND=sys-fs/fuse
+SLOT=0
+SRC_URI=http://ftp.FreeBSD.org/pub/FreeBSD/ports/distfiles/fuse4bsd/498acaef33b0.tar.gz mirror://gentoo/freebsd-sbin-9.1.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	portability	a45c088f246ef5091e029f6285d7ce42	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ea2982de24f1cc425b9be9c8137ee001

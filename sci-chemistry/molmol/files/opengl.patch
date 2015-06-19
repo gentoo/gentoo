@@ -1,0 +1,96 @@
+ molmol | 65 +++++++++--------------------------------------------------------
+ 1 file changed, 9 insertions(+), 56 deletions(-)
+
+diff --git a/molmol b/molmol
+index 7863225..b6c75ce 100755
+--- a/molmol
++++ b/molmol
+@@ -11,55 +11,8 @@ ostype=`uname`
+ osrel=`uname -r`
+ osmaj=`echo $osrel | awk -F. '{print $1}'`
+ osmin=`echo $osrel | awk -F. '{print $2}'`
+-localdev=
+-glxdev=
+-
+-if [ $ostype = "IRIX" -o $ostype = "IRIX64" ]; then
+-  if [ $osmaj -eq 6 -a $osmin -ge 2 -o $osmaj -gt 6 ]; then
+-    arch=sgi6
+-    localdev=Motif/OpenGL
+-    glxdev=Motif/OpenGL
+-  elif [ $osmaj -eq 5 -a $osmin -ge 3 -o $osmaj -gt 5 ]; then
+-    arch=sgi5
+-    localdev=Motif/OpenGL
+-    glxdev=Motif/OpenGL
+-  else
+-    arch=sgi4
+-    localdev=Motif/GL
+-  fi
+-  MONITOR=72HZ; export MONITOR
+-elif [ $ostype = "AIX" ]; then
+-  arch=aix
+-  localdev=Motif/OpenGL
+-elif [ $ostype = "HP-UX" ]; then
+-  arch=hp
+-  localdev=Motif/OpenGL
+-  glxdev=Motif/OpenGL
+-elif [ $ostype = "OSF1" ]; then
+-  arch=dec
+-  localdev=Motif/OpenGL
+-elif [ $ostype = "Linux" ]; then
+-  arch=lnx
+-  localdev=Motif/OpenGL
+-elif [ $ostype = "SunOS" ]; then
+-  if [ $osmaj -eq 5 -a $osmin -ge 4 -o $osmaj -gt 5 ]; then
+-    arch=sol
+-    localdev=Motif/OpenGL
+-  else
+-    arch=sun
+-  fi
+-else
+-  arch=unknown
+-fi
+-
+-if [ $ostype = "SunOS" ]; then
+-  xdpy=/usr/openwin/bin/xdpyinfo
+-elif [ $ostype = "HP-UX" ]; then
+-  xdpy=/usr/contrib/bin/X11/xdpyinfo
+-else
+-  xdpy=/usr/bin/X11/xdpyinfo
+-fi
+-
++localdev=Motif/OpenGL
++glxdev=Motif/OpenGL
+ printUsage () {
+   echo "Usage: molmol -ht2as [-o dev] [-r range] [-f macro] files"
+   echo ""
+@@ -121,15 +74,15 @@ done
+ 
+ magictmp=/tmp/molmol_magic$$
+ 
+-if [ ! -d $HOME/molmol ]; then
+-  mkdir $HOME/molmol
++if [ ! -d $HOME/.molmol ]; then
++  mkdir $HOME/.molmol
+ fi
+-startmacro=$HOME/molmol/options.mac
++startmacro=$HOME/.molmol/options.mac
+ cp /dev/null $startmacro
+ 
+ if [ -n "$*" ]; then
+-  if [ -f $HOME/molmol/dump ]; then
+-    mv -f $HOME/molmol/dump $HOME/molmol/dump.old
++  if [ -f $HOME/.molmol/dump ]; then
++    mv -f $HOME/.molmol/dump $HOME/.molmol/dump.old
+   fi
+   echo "0	long	0x3b7a12f9	MOLMOL" > $magictmp
+   echo "0	long	0xf9127a3b	MOLMOL" >> $magictmp
+@@ -209,7 +162,7 @@ elif [ -x $xdpy ]; then
+ fi
+ 
+ if [ "$input" = "-" -o -n "$nograph" ]; then
+-  $MOLMOLHOME/molmol.$arch $xopt
++  $MOLMOLHOME/molmol $xopt
+ else
+-  $MOLMOLHOME/molmol.$arch $xopt < /dev/null
++  $MOLMOLHOME/molmol $xopt < /dev/null
+ fi

@@ -1,0 +1,19 @@
+# ChangeLog for dev-haskell/test-framework-th
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/test-framework-th/ChangeLog,v 1.4 2015/06/06 17:41:13 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  test-framework-th-0.2.4.ebuild:
+  Drop trailing '.' from description.
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*test-framework-th-0.2.4 (25 Aug 2013)
+
+  25 Aug 2013; Alexander Vershilov <qnikst@gentoo.org> +metadata.xml,
+  +test-framework-th-0.2.4.ebuild:
+  dev-haskell/test-framework-th: 0.2.4

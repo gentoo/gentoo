@@ -1,0 +1,190 @@
+# ChangeLog for virtual/perl-Locale-Maketext-Simple
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/perl-Locale-Maketext-Simple/ChangeLog,v 1.40 2015/06/07 14:26:09 dilfridge Exp $
+
+*perl-Locale-Maketext-Simple-0.210.0-r6 (07 Jun 2015)
+
+  07 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Locale-Maketext-Simple-0.210.0-r5.ebuild,
+  +perl-Locale-Maketext-Simple-0.210.0-r6.ebuild:
+  Add Perl 5.22 as provider, remove Perl 5.18 as provider
+
+*perl-Locale-Maketext-Simple-0.210.0-r5 (08 Nov 2014)
+
+  08 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Locale-Maketext-Simple-0.210.0-r4.ebuild,
+  +perl-Locale-Maketext-Simple-0.210.0-r5.ebuild:
+  Remove Perl 5.16 as provider
+
+*perl-Locale-Maketext-Simple-0.210.0-r4 (09 Jul 2014)
+
+  09 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Locale-Maketext-Simple-0.210.0-r2.ebuild,
+  -perl-Locale-Maketext-Simple-0.210.0-r3.ebuild,
+  +perl-Locale-Maketext-Simple-0.210.0-r4.ebuild:
+  Improve dependencies
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  perl-Locale-Maketext-Simple-0.210.0-r2.ebuild,
+  perl-Locale-Maketext-Simple-0.210.0-r3.ebuild:
+  Add arm64 love.
+
+  17 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  perl-Locale-Maketext-Simple-0.210.0-r2.ebuild:
+  Mark m68k stable.
+
+  05 Sep 2013; Patrick Lauer <patrick@gentoo.org>
+  perl-Locale-Maketext-Simple-0.210.0-r3.ebuild:
+  Restore keywords
+
+*perl-Locale-Maketext-Simple-0.210.0-r3 (14 Aug 2013)
+
+  14 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +perl-Locale-Maketext-Simple-0.210.0-r3.ebuild:
+  Import from perl-experimental overlay
+
+  02 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Locale-Maketext-Simple-0.210.0-r2.ebuild:
+  Stable for sh, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Locale-Maketext-Simple-0.210.0-r2.ebuild:
+  Stable for arm, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Locale-Maketext-Simple-0.210.0-r2.ebuild:
+  Stable for s390, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Locale-Maketext-Simple-0.210.0-r2.ebuild:
+  Stable for alpha, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Locale-Maketext-Simple-0.210.0-r2.ebuild:
+  Stable for hppa, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Locale-Maketext-Simple-0.210.0-r2.ebuild:
+  Stable for ppc, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Locale-Maketext-Simple-0.210.0-r2.ebuild:
+  Stable for ppc64, wrt bug #458122
+
+  18 Feb 2013; Zac Medico <zmedico@gentoo.org>
+  perl-Locale-Maketext-Simple-0.210.0-r2.ebuild:
+  Add ~arm-linux keyword.
+
+*perl-Locale-Maketext-Simple-0.210.0-r2 (21 May 2012)
+
+  21 May 2012; Torsten Veller <tove@gentoo.org>
+  -perl-Locale-Maketext-Simple-0.210.0-r1.ebuild,
+  +perl-Locale-Maketext-Simple-0.210.0-r2.ebuild:
+  Add perl-5.16 as provider
+
+  28 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  perl-Locale-Maketext-Simple-0.210.0-r1.ebuild:
+  keyword ~amd64-fbsd
+
+  07 Jul 2011; Alexis Ballier <aballier@gentoo.org>
+  perl-Locale-Maketext-Simple-0.210.0-r1.ebuild:
+  keyword ~x86-fbsd
+
+  28 Jun 2011; Torsten Veller <tove@gentoo.org>
+  perl-Locale-Maketext-Simple-0.210.0-r1.ebuild:
+  Add perl-5.12.4 virtual
+
+*perl-Locale-Maketext-Simple-0.210.0-r1 (18 Jun 2011)
+
+  18 Jun 2011; Torsten Veller <tove@gentoo.org>
+  -perl-Locale-Maketext-Simple-0.210.0.ebuild,
+  +perl-Locale-Maketext-Simple-0.210.0-r1.ebuild:
+  Add perl-5.14 as provider
+
+  13 Jun 2011; Matt Turner <mattst88@gentoo.org>
+  perl-Locale-Maketext-Simple-0.210.0.ebuild:
+  Added ~mips, bug 351526
+
+*perl-Locale-Maketext-Simple-0.210.0 (20 May 2011)
+
+  20 May 2011; Torsten Veller <tove@gentoo.org>
+  -perl-Locale-Maketext-Simple-0.21.ebuild,
+  +perl-Locale-Maketext-Simple-0.210.0.ebuild:
+  Add perl-5.14.0 as provider. Change version scheme
+
+  02 May 2011; Fabian Groffen <grobian@gentoo.org>
+  perl-Locale-Maketext-Simple-0.21.ebuild:
+  Marked ~x64-freebsd
+
+  27 Feb 2011; Fabian Groffen <grobian@gentoo.org>
+  perl-Locale-Maketext-Simple-0.21.ebuild:
+  Add Prefix keywords, bug #351526
+
+  27 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  perl-Locale-Maketext-Simple-0.21.ebuild:
+  Marked ~ppc64 wrt #351526
+
+  29 Jan 2011; Raúl Porcel <armin76@gentoo.org>
+  perl-Locale-Maketext-Simple-0.21.ebuild:
+  Add ~alpha/~arm/~m68k/~s390/~sh wrt #351526
+
+  24 Jan 2011; Jeroen Roovers <jer@gentoo.org>
+  perl-Locale-Maketext-Simple-0.21.ebuild:
+  Marked ~hppa (bug #351526).
+
+  22 Jan 2011; Torsten Veller <tove@gentoo.org>
+  perl-Locale-Maketext-Simple-0.21.ebuild:
+  Add perl-5.12.3 as provider
+
+  17 Jan 2011; Torsten Veller <tove@gentoo.org>
+  -perl-Locale-Maketext-Simple-0.18.ebuild,
+  -perl-Locale-Maketext-Simple-0.20.ebuild:
+  Cleanup
+
+  12 Sep 2010; Raúl Porcel <armin76@gentoo.org>
+  perl-Locale-Maketext-Simple-0.21.ebuild:
+  ia64/sparc stable wrt #333421
+
+  07 Sep 2010; Torsten Veller <tove@gentoo.org>
+  perl-Locale-Maketext-Simple-0.21.ebuild:
+  Add perl-5.12.2 as provider
+
+  20 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  perl-Locale-Maketext-Simple-0.21.ebuild:
+  stable x86, bug 333421
+
+  19 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  perl-Locale-Maketext-Simple-0.21.ebuild:
+  Stable on amd64 wrt bug #333421
+
+  14 Jul 2010; Torsten Veller <tove@gentoo.org>
+  perl-Locale-Maketext-Simple-0.21.ebuild:
+  Add perl-5.12 as provider
+
+  07 Jan 2010; Torsten Veller <tove@gentoo.org>
+  perl-Locale-Maketext-Simple-0.18.ebuild,
+  perl-Locale-Maketext-Simple-0.20.ebuild,
+  perl-Locale-Maketext-Simple-0.21.ebuild:
+  Set empty HOMEPAGE and LICENSE
+
+  25 Aug 2009; Torsten Veller <tove@gentoo.org>
+  perl-Locale-Maketext-Simple-0.18.ebuild:
+  Add support for perl-5.10.1
+
+*perl-Locale-Maketext-Simple-0.21 (18 Aug 2009)
+
+  18 Aug 2009; Torsten Veller <tove@gentoo.org>
+  +perl-Locale-Maketext-Simple-0.21.ebuild:
+  Version bump
+
+*perl-Locale-Maketext-Simple-0.20 (16 Jul 2009)
+
+  16 Jul 2009; Torsten Veller <tove@gentoo.org>
+  +perl-Locale-Maketext-Simple-0.20.ebuild:
+  Version bump
+
+*perl-Locale-Maketext-Simple-0.18 (01 Nov 2008)
+
+  01 Nov 2008; Yuval Yaari <yuval@gentoo.org> +metadata.xml,
+  +perl-Locale-Maketext-Simple-0.18.ebuild:
+  Adding virtuals for dual-lifed modules that come with perl-5.10

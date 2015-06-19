@@ -1,0 +1,39 @@
+# ChangeLog for sci-mathematics/ggnfs
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/ggnfs/ChangeLog,v 1.9 2013/07/05 04:18:28 patrick Exp $
+
+  05 Jul 2013; Patrick Lauer <patrick@gentoo.org> ggnfs-0.77.1-r2.ebuild:
+  Add pdf documentation hidden as .tex in the source
+
+  01 Jul 2013; Patrick Lauer <patrick@gentoo.org> ggnfs-0.77.1-r2.ebuild:
+  Remove futile pkg_setup phase
+
+  10 Mar 2013; Patrick Lauer <patrick@gentoo.org> ggnfs-0.77.1-r2.ebuild:
+  Adding unzip dep
+
+*ggnfs-0.77.1-r2 (07 Mar 2013)
+
+  07 Mar 2013; Justin Lecher <jlec@gentoo.org> -ggnfs-0.77.1-r1.ebuild,
+  +ggnfs-0.77.1-r2.ebuild, +files/ggnfs-0.77.1-gentoo.patch, metadata.xml:
+  Respect CC and CFLAGS and link properly respecting LDFLAGS, #451046
+
+  30 Nov 2012; Patrick Lauer <patrick@gentoo.org> ggnfs-0.77.1-r1.ebuild:
+  Correctify displayed version number
+
+  30 Nov 2012; Patrick Lauer <patrick@gentoo.org> ggnfs-0.77.1-r1.ebuild:
+  Adding another default parameter list file
+
+*ggnfs-0.77.1-r1 (30 Nov 2012)
+
+  30 Nov 2012; Patrick Lauer <patrick@gentoo.org> +ggnfs-0.77.1-r1.ebuild,
+  -ggnfs-0.77.1.ebuild:
+  Adding default parameter list file
+
+  28 Nov 2012; Patrick Lauer <patrick@gentoo.org> ggnfs-0.77.1.ebuild:
+  Avoid parallel make failure
+
+*ggnfs-0.77.1 (27 Nov 2012)
+
+  27 Nov 2012; Patrick Lauer <patrick@gentoo.org> +ggnfs-0.77.1.ebuild,
+  +metadata.xml:
+  Initial import, ebuild by me

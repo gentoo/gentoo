@@ -1,0 +1,131 @@
+diff -uNr opal-3.10.8.orig/plugins/plugin-inc.mak.in opal-3.10.8/plugins/plugin-inc.mak.in
+--- opal-3.10.8.orig/plugins/plugin-inc.mak.in	2012-10-24 12:07:31.000000000 -0400
++++ opal-3.10.8/plugins/plugin-inc.mak.in	2012-10-24 12:09:22.000000000 -0400
+@@ -31,11 +31,13 @@
+ CC            := @CC@
+ CXX           := @CXX@
+ CFLAGS        += @CFLAGS@ -I@prefix@/include -I$(PLUGINDIR)/../include -I$(PLUGINDIR)
++CXXFLAGS      += @CXXFLAGS@ -I@prefix@/include -I$(PLUGINDIR)/../include -I$(PLUGINDIR)
+ LDFLAGS       += @LDFLAGS@ @LDSO@
+ PLUGINEXT     :=@PLUGINEXT@
+ 
+ ifneq ($(DEBUG),)
+ CFLAGS        += -g
++CXXFLAGS      += -g
+ endif
+ 
+ OBJDIR := $(PLUGINDIR)/../lib_@OSTYPE@_@MACHTYPE@/plugins/$(BASENAME)
+@@ -64,11 +66,11 @@
+ 
+ $(OBJDIR)/%.o : %.cxx
+ 	@mkdir -p $(OBJDIR) >/dev/null 2>&1
+-	$(Q_CC)$(CXX) -c $(CXXFLAGS) $(CFLAGS) -o $@ $<
++	$(Q_CC)$(CXX) -c $(CXXFLAGS) -o $@ $<
+ 
+ $(OBJDIR)/%.o : %.cpp
+ 	@mkdir -p $(OBJDIR) >/dev/null 2>&1
+-	$(Q_CC)$(CXX) -c $(CXXFLAGS) $(CFLAGS) -o $@ $<
++	$(Q_CC)$(CXX) -c $(CXXFLAGS) -o $@ $<
+ 
+ OBJECTS	= $(addprefix $(OBJDIR)/,$(patsubst %.cxx,%.o,$(patsubst %.cpp,%.o,$(patsubst %.c,%.o,$(notdir $(SRCS))))))
+ 
+diff -uNr opal-3.10.8.orig/plugins/video/H.261-vic/Makefile.in opal-3.10.8/plugins/video/H.261-vic/Makefile.in
+--- opal-3.10.8.orig/plugins/video/H.261-vic/Makefile.in	2012-10-24 12:07:46.000000000 -0400
++++ opal-3.10.8/plugins/video/H.261-vic/Makefile.in	2012-10-24 12:04:10.000000000 -0400
+@@ -39,7 +39,7 @@
+              $(SRCDIR)/bv.c \
+ 
+ 
+-CFLAGS += -I$(COMMONDIR)
++CXXFLAGS += -I$(COMMONDIR)
+ 
+ INSTALL_DIR := @VC_PLUGIN_DIR@
+ PLUGINDIR   := @PLUGINDIR@
+diff -uNr opal-3.10.8.orig/plugins/video/H.263-1998/Makefile.in opal-3.10.8/plugins/video/H.263-1998/Makefile.in
+--- opal-3.10.8.orig/plugins/video/H.263-1998/Makefile.in	2012-10-24 12:08:02.000000000 -0400
++++ opal-3.10.8/plugins/video/H.263-1998/Makefile.in	2012-10-24 12:04:00.000000000 -0400
+@@ -34,12 +34,12 @@
+              $(COMMONDIR)/mpi.cxx \
+              $(COMMONDIR)/dyna.cxx
+ 
+-CFLAGS += @LIBAVCODEC_CFLAGS@ -I$(COMMONDIR)
++CXXFLAGS += @LIBAVCODEC_CFLAGS@ -I$(COMMONDIR)
+ LIBS   += @DL_LIBS@
+ 
+ HAVE_LIBAVCODEC_RTP_MODE=@HAVE_LIBAVCODEC_RTP_MODE@
+ ifeq ($(HAVE_LIBAVCODEC_RTP_MODE),yes)
+-CFLAGS += -DLIBAVCODEC_RTP_MODE=1
++CXXFLAGS += -DLIBAVCODEC_RTP_MODE=1
+ endif
+ 
+ vpath   %.cxx $(COMMONDIR)
+diff -uNr opal-3.10.8.orig/plugins/video/H.264/gpl/Makefile.in opal-3.10.8/plugins/video/H.264/gpl/Makefile.in
+--- opal-3.10.8.orig/plugins/video/H.264/gpl/Makefile.in	2012-10-24 12:06:15.000000000 -0400
++++ opal-3.10.8/plugins/video/H.264/gpl/Makefile.in	2012-10-24 12:11:11.000000000 -0400
+@@ -47,6 +47,7 @@
+ CC	 	=@CC@
+ CXX	 	=@CXX@
+ CFLAGS  =@X264_CFLAGS@ -I.. -I$(PLUGINDIR) -I$(OPALDIR)/include -DGPL_HELPER_APP -DPLUGINCODEC_TRACING
++CXXFLAGS  =@X264_CFLAGS@ -I.. -I$(PLUGINDIR) -I$(OPALDIR)/include -DGPL_HELPER_APP -DPLUGINCODEC_TRACING
+ LDFLAGS =@LDFLAGS@ @X264_LIBS@
+ 
+ 
+@@ -59,7 +60,7 @@
+ 
+ $(OBJDIR)/%.o : %.cxx
+ 	@mkdir -p $(OBJDIR) >/dev/null 2>&1
+-	$(Q_CC)$(CXX) $(CFLAGS) -c $< -o $@
++	$(Q_CC)$(CXX) $(CXXFLAGS) -c $< -o $@
+ 
+ $(OBJDIR)/%.o : %.c
+ 	@mkdir -p $(OBJDIR) >/dev/null 2>&1
+diff -uNr opal-3.10.8.orig/plugins/video/H.264/Makefile.in opal-3.10.8/plugins/video/H.264/Makefile.in
+--- opal-3.10.8.orig/plugins/video/H.264/Makefile.in	2012-10-24 12:08:17.000000000 -0400
++++ opal-3.10.8/plugins/video/H.264/Makefile.in	2012-10-24 12:04:29.000000000 -0400
+@@ -34,12 +34,12 @@
+            $(SHAREDDIR)/x264wrap.cxx \
+            $(COMMONDIR)/dyna.cxx \
+ 
+-CFLAGS += @LIBAVCODEC_CFLAGS@ -I$(COMMONDIR) -DLIB_DIR='"$(libdir)"' -DVC_PLUGIN_DIR='"@VC_PLUGIN_DIR@"'
++CXXFLAGS += @LIBAVCODEC_CFLAGS@ -I$(COMMONDIR) -DLIB_DIR='"$(libdir)"' -DVC_PLUGIN_DIR='"@VC_PLUGIN_DIR@"'
+ LIBS   += @DL_LIBS@
+ 
+ IS_H264_LICENSED:=@IS_H264_LICENSED@
+ ifeq ($(IS_H264_LICENSED),yes)
+-  CFLAGS += @X264_CFLAGS@ -DX264_LICENSED
++  CXXFLAGS += @X264_CFLAGS@ -DX264_LICENSED
+   LIBS   += @X264_LIBS@
+ else
+   SUBDIRS := gpl
+diff -uNr opal-3.10.8.orig/plugins/video/MPEG4-ffmpeg/Makefile.in opal-3.10.8/plugins/video/MPEG4-ffmpeg/Makefile.in
+--- opal-3.10.8.orig/plugins/video/MPEG4-ffmpeg/Makefile.in	2012-10-24 12:08:36.000000000 -0400
++++ opal-3.10.8/plugins/video/MPEG4-ffmpeg/Makefile.in	2012-10-24 12:04:45.000000000 -0400
+@@ -30,14 +30,14 @@
+ SRCDIR    := .
+ SRCS      := mpeg4.cxx $(COMMONDIR)/dyna.cxx
+ 
+-CFLAGS += @LIBAVCODEC_CFLAGS@ -I$(COMMONDIR)
++CXXFLAGS += @LIBAVCODEC_CFLAGS@ -I$(COMMONDIR)
+ LIBS   += @DL_LIBS@
+ 
+ # Add LIBAVCODEC_SOURCE_DIR to the include path so we can #include <libavcodec/...h>
+ # Also add libavutil, so ffmpeg headers can #include "log.h".
+ LIBAVCODEC_SOURCE_DIR := @LIBAVCODEC_SOURCE_DIR@
+ ifneq (,$(LIBAVCODEC_SOURCE_DIR))
+-CFLAGS += -I$(LIBAVCODEC_SOURCE_DIR) -I$(LIBAVCODEC_SOURCE_DIR)/libavutil
++CXXFLAGS += -I$(LIBAVCODEC_SOURCE_DIR) -I$(LIBAVCODEC_SOURCE_DIR)/libavutil
+ endif
+ 
+ vpath   %.cxx $(COMMONDIR)
+diff -uNr opal-3.10.8.orig/plugins/video/THEORA/Makefile.in opal-3.10.8/plugins/video/THEORA/Makefile.in
+--- opal-3.10.8.orig/plugins/video/THEORA/Makefile.in	2012-10-24 12:08:47.000000000 -0400
++++ opal-3.10.8/plugins/video/THEORA/Makefile.in	2012-10-24 12:05:00.000000000 -0400
+@@ -30,7 +30,7 @@
+ SRCDIR    := .
+ SRCS      := theora_frame.cxx theora_plugin.cxx
+ 
+-CFLAGS += @THEORA_CFLAGS@ -I$(COMMONDIR)
++CXXFLAGS += @THEORA_CFLAGS@ -I$(COMMONDIR)
+ LIBS   += @THEORA_LIBS@
+ 
+ INSTALL_DIR := @VC_PLUGIN_DIR@

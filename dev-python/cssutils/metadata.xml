@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <maintainer>
+    <email>lordvan@gentoo.org</email>
+    <name>Thomas Raschbacher</name>
+  </maintainer>
+  <longdescription lang="en">
+A Python package to parse and build CSS Cascading Style Sheets.
+</longdescription>
+  <upstream>
+    <remote-id type="google-code">cssutils</remote-id>
+    <remote-id type="pypi">cssutils</remote-id>
+    <remote-id type="bitbucket">cthedot/cssutils</remote-id>
+  </upstream>
+</pkgmetadata>

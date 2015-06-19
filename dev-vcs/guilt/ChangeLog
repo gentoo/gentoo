@@ -1,0 +1,63 @@
+# ChangeLog for dev-vcs/guilt
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/guilt/ChangeLog,v 1.4 2012/05/10 16:13:47 ago Exp $
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -guilt-0.32.1.ebuild,
+  -guilt-0.32.2.ebuild:
+  Remove old
+
+*guilt-0.34 (20 Sep 2010)
+
+  20 Sep 2010; Michael Weber <xmw@gentoo.org> +guilt-0.34.ebuild:
+  Version bump (bug #337985)
+
+  17 Mar 2010; Sebastian Pipping <sping@gentoo.org> guilt-0.32.ebuild,
+  guilt-0.32.1.ebuild, guilt-0.32.2.ebuild:
+  Propagate move of dev-util/git to dev-vcs/git
+
+*guilt-0.32.2 (06 Mar 2010)
+
+  06 Mar 2010; Ulrich Mueller <ulm@gentoo.org> +guilt-0.32.ebuild,
+  +guilt-0.32.1.ebuild, +guilt-0.32.2.ebuild, +metadata.xml:
+  Move package from dev-util to dev-vcs, bug 56967. Version bump, remove old.
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> guilt-0.32.ebuild:
+  ppc stable #276090
+
+  31 Jul 2009; <chainsaw@gentoo.org> guilt-0.32.ebuild:
+  Marked stable on AMD64 as requested by Mike "SpanKY" Friesinger
+  <vapier@gentoo.org> in bug #276090. Compile-tested on a dual hex-core
+  Opteron with USE="-doc".
+
+  01 Jul 2009; Christian Faulhammer <fauli@gentoo.org> guilt-0.32.ebuild:
+  stable x86, bug 276090
+
+*guilt-0.32.1 (01 Jul 2009)
+
+  01 Jul 2009; Mike Frysinger <vapier@gentoo.org> +guilt-0.32.1.ebuild:
+  Version bump.
+
+*guilt-0.32 (08 May 2009)
+
+  08 May 2009; Mike Frysinger <vapier@gentoo.org> +guilt-0.32.ebuild:
+  Version bump.
+
+  08 May 2009; Mike Frysinger <vapier@gentoo.org> guilt-0.30.ebuild:
+  Mark amd64/x86 stable.
+
+  16 Aug 2008; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove ingmar from metadata.xml (#202413)
+
+  11 Jun 2008; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  guilt-0.30.ebuild:
+  mark ~ppc (bug #218049)
+
+  28 Apr 2008; Raúl Porcel <armin76@gentoo.org> guilt-0.30.ebuild:
+  Add ~ia64/~sparc wrt #218049
+
+*guilt-0.30 (16 Apr 2008)
+
+  16 Apr 2008; Ingmar Vanhassel <ingmar@gentoo.org> +metadata.xml,
+  +guilt-0.30.ebuild:
+  Import from sunrise, thanks to Denis 'raeLLL' Cheng <crquan@gmail.com> for
+  the ebuild. Fixes bug 205931.

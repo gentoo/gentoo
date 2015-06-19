@@ -1,0 +1,142 @@
+# ChangeLog for app-text/hd2u
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/hd2u/ChangeLog,v 1.45 2012/02/01 09:51:06 jlec Exp $
+
+  01 Feb 2012; Justin Lecher <jlec@gentoo.org> -hd2u-1.0.0.ebuild:
+  Dropped old
+
+  01 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> hd2u-1.0.3.ebuild:
+  ppc/ppc64 stable wrt #396833
+
+  22 Jan 2012; Raúl Porcel <armin76@gentoo.org> hd2u-1.0.3.ebuild:
+  alpha/ia64/sparc stable wrt #396833
+
+  18 Jan 2012; Jeroen Roovers <jer@gentoo.org> hd2u-1.0.3.ebuild:
+  Stable for HPPA (bug #396833).
+
+  15 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> hd2u-1.0.3.ebuild:
+  x86 stable wrt bug #396833
+
+  02 Jan 2012; Agostino Sarubbo <ago@gentoo.org> hd2u-1.0.3.ebuild:
+  Stable for AMD64, wrt bug #396833
+
+  02 Jan 2012; Justin Lecher <jlec@gentoo.org> hd2u-1.0.3.ebuild:
+  Moved to EAPI=4
+
+*hd2u-1.0.3 (05 Jan 2011)
+
+  05 Jan 2011; Justin Lecher <jlec@gentoo.org> files/hd2u-1.0.0-build.patch,
+  +hd2u-1.0.3.ebuild, +files/hd2u-1.0.3-build.patch:
+  Version Bump, Some Clean up
+
+  05 Jan 2011; Justin Lecher <jlec@gentoo.org> hd2u-1.0.0.ebuild:
+  Some Clean up
+
+  15 Aug 2007; Jeroen Roovers <jer@gentoo.org> hd2u-1.0.0.ebuild:
+  Stable for HPPA too.
+
+  11 Jul 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/hd2u-1.0.0-build.patch, hd2u-1.0.0.ebuild:
+  Respect LDFLAGS/DESTDIR and dont strip while installing.
+
+  06 Feb 2006; Simon Stelling <blubb@gentoo.org> hd2u-1.0.0.ebuild:
+  stable on amd64
+
+  03 Aug 2005; Bryan Østergaard <kloeri@gentoo.org> hd2u-1.0.0.ebuild:
+  Stable on alpha.
+
+  18 May 2005; Markus Rothe <corsair@gentoo.org> hd2u-1.0.0.ebuild:
+  Stable on ppc64
+
+  07 May 2005; Aron Griffis <agriffis@gentoo.org> hd2u-1.0.0.ebuild:
+  stable on ia64
+
+  25 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> hd2u-1.0.0.ebuild:
+  Stable on sparc
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> hd2u-1.0.0.ebuild:
+  Stable on ppc.
+
+  23 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> hd2u-1.0.0.ebuild:
+  Marked stable on x86.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> hd2u-0.9.2.ebuild:
+  stable on amd64
+
+  08 Apr 2005; Markus Rothe <corsair@gentoo.org> hd2u-0.9.2.ebuild:
+  Stable on ppc64
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> hd2u-0.9.2.ebuild:
+  stable on ia64
+
+*hd2u-1.0.0 (15 Mar 2005)
+
+  15 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> +hd2u-1.0.0.ebuild:
+  Version bump.
+
+  18 Jan 2005; Bryan Østergaard <kloeri@gentoo.org> hd2u-0.9.2.ebuild:
+  Stable on alpha.
+
+  12 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> hd2u-0.9.2.ebuild:
+  Stable on sparc
+
+  12 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> -hd2u-0.8.0.ebuild,
+  hd2u-0.9.2.ebuild:
+  Marked stable on x86; tidy old ebuild.
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  07 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org> hd2u-0.8.2.ebuild:
+  Stable on sparc
+
+*hd2u-0.9.2 (04 Dec 2004)
+
+  04 Dec 2004; Aaron Walker <ka0ttic@gentoo.org> -hd2u-0.8.1.ebuild,
+  +hd2u-0.9.2.ebuild:
+  Version bump; removed unnecessary src_compile(). Also, fixed deps (added
+  dev-libs/popt).
+
+  29 Nov 2004; Aaron Walker <ka0ttic@gentoo.org> hd2u-0.8.2.ebuild:
+  Marked stable on x86.
+
+  21 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml:
+  Add metadata (shell-tools)
+
+  04 Oct 2004; Tom Gall <tgall@gentoo.org> hd2u-0.8.2.ebuild:
+  stable on ppc64, bug #64270
+
+  12 May 2004; Bryan Østergaard <kloeri@gentoo.org> hd2u-0.8.2.ebuild:
+  Stable on alpha.
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> hd2u-0.8.0.ebuild,
+  hd2u-0.8.1.ebuild:
+  Add die following econf for bug 48950
+
+  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> hd2u-0.8.0.ebuild,
+  hd2u-0.8.1.ebuild, hd2u-0.8.2.ebuild:
+  Don't assign default to S; header fix
+
+*hd2u-0.8.2 (03 Oct 2003)
+
+  03 Oct 2003; Joel Hill <hillster@gentoo.org> hd2u-0.8.2.ebuild:
+  Version bump, homepage correction.
+
+*hd2u-0.8.1 (19 Sep 2003)
+
+  19 Sep 2003; <iggy@gentoo.org> hd2u-0.8.1.ebuild:
+  version bump thanks to hillster
+
+  12 Jun 2003; <msterret@gentoo.org> hd2u-0.8.0.ebuild:
+  fix Header
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*hd2u-0.8.0 (10 May 2002)
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> hd2u-0.8.0.ebuild :
+  Added KEYWORDS, SLOT.
+
+  10 May 2002; G Shapovalov <george@gentoo.org> ChangeLog :
+
+  initial release

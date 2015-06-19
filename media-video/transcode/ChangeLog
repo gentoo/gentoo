@@ -1,0 +1,1496 @@
+# ChangeLog for media-video/transcode
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/transcode/ChangeLog,v 1.327 2015/02/17 03:26:28 vapier Exp $
+
+  17 Feb 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/transcode-1.1.7-libav-10.patch, files/transcode-1.1.7-ffmpeg2.patch,
+  transcode-1.1.7-r3.ebuild:
+  Fix building with newer libav #538500 by Patrick Lauer.
+
+  17 Feb 2015; Mike Frysinger <vapier@gentoo.org>
+  files/transcode-1.1.7-ffmpeg2.patch:
+  Handle renamed CODEC_ID defines #538500 by Patrick Lauer.
+
+  17 Feb 2015; Mike Frysinger <vapier@gentoo.org> transcode-1.1.7-r1.ebuild,
+  transcode-1.1.7-r2.ebuild, transcode-1.1.7-r3.ebuild:
+  Update HOMEPAGE now that berlios is dead.
+
+  30 Jan 2015; Michał Górny <mgorny@gentoo.org> transcode-1.1.7-r1.ebuild,
+  transcode-1.1.7-r2.ebuild, transcode-1.1.7-r3.ebuild:
+  Convert to CPU_FLAGS_X86.
+
+  08 Oct 2014; Alexis Ballier <aballier@gentoo.org> transcode-1.1.7-r3.ebuild,
+  +files/transcode-1.1.7-ffmpeg24.patch:
+  fix build with ffmpeg 2.4+; bug #520190, patch by jospezial and additional
+  guards by me
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> transcode-1.1.7-r1.ebuild,
+  transcode-1.1.7-r2.ebuild, transcode-1.1.7-r3.ebuild:
+  Replace obsolete mirror://bitbucket with the real URI.
+
+  27 May 2014; Mikle Kolyada <zlogene@gentoo.org> transcode-1.1.7-r3.ebuild:
+  ppc stable wrt bug #504790
+
+  17 May 2014; Agostino Sarubbo <ago@gentoo.org> transcode-1.1.7-r3.ebuild:
+  Stable for alpha, wrt bug #504790
+
+  14 May 2014; Agostino Sarubbo <ago@gentoo.org> transcode-1.1.7-r3.ebuild:
+  Stable for sparc, wrt bug #504790
+
+  11 May 2014; Agostino Sarubbo <ago@gentoo.org> transcode-1.1.7-r3.ebuild:
+  Stable for ppc64, wrt bug #504790
+
+  04 May 2014; Agostino Sarubbo <ago@gentoo.org> transcode-1.1.7-r3.ebuild:
+  Stable for x86, wrt bug #504790
+
+  21 Apr 2014; Chema Alonso <nimiux@gentoo.org> transcode-1.1.7-r3.ebuild:
+  Stable for amd64 wrt bug #504790
+
+  10 Dec 2013; Lars Wendler <polynomial-c@gentoo.org>
+  transcode-1.1.7-r3.ebuild, +files/transcode-1.1.7-freetype251.patch:
+  Fixed compilation with >=media-libs/freetype-2.5.1 (bug #493598).
+
+*transcode-1.1.7-r3 (20 Jul 2013)
+
+  20 Jul 2013; Alexis Ballier <aballier@gentoo.org> +transcode-1.1.7-r3.ebuild,
+  +files/transcode-1.1.7-ffmpeg2.patch,
+  +files/transcode-1.1.7-preset-force.patch:
+  Do not force using a preset. Fix build with ffmpeg-2.0. Fix segfaults
+  introduced by wrong usage of the av_dict API in the ffmpeg-0.11 patch. Add
+  missing fixes from the libav9 patch.
+
+*transcode-1.1.7-r2 (27 May 2013)
+
+  27 May 2013; Ian Whyman <thev00d00@gentoo.org>
+  +files/transcode-1.1.7-libav-9.patch, +transcode-1.1.7-r2.ebuild:
+  Add patch to make it build with newer libav/ffmpeg, thanks to Ji?� Moravec for
+  the patch #443214
+
+  10 Mar 2013; Alexis Ballier <aballier@gentoo.org> -transcode-1.1.7.ebuild:
+  remove old
+
+  09 Mar 2013; Agostino Sarubbo <ago@gentoo.org> transcode-1.1.7-r1.ebuild:
+  Stable for alpha, wrt bug #459454
+
+  03 Mar 2013; Agostino Sarubbo <ago@gentoo.org> transcode-1.1.7-r1.ebuild:
+  Stable for sparc, wrt bug #459454
+
+  03 Mar 2013; Agostino Sarubbo <ago@gentoo.org> transcode-1.1.7-r1.ebuild:
+  Stable for ppc64, wrt bug #459454
+
+  03 Mar 2013; Agostino Sarubbo <ago@gentoo.org> transcode-1.1.7-r1.ebuild:
+  Stable for ppc, wrt bug #459454
+
+  03 Mar 2013; Agostino Sarubbo <ago@gentoo.org> transcode-1.1.7-r1.ebuild:
+  Stable for x86, wrt bug #459454
+
+  03 Mar 2013; Agostino Sarubbo <ago@gentoo.org> transcode-1.1.7-r1.ebuild:
+  Stable for amd64, wrt bug #459454
+
+  06 Sep 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -files/transcode-1.0.6-imagemagick.patch, -files/transcode-1.1.4-x264.patch,
+  -files/transcode-1.1.5-ffmpeg.patch, -files/transcode-1.1.5-jpeg-7.patch,
+  -files/transcode-1.1.5-mpa.patch:
+  old
+
+  05 Jul 2012; Alexis Ballier <aballier@gentoo.org> +transcode-1.1.7-r1.ebuild,
+  +files/transcode-1.1.7-ffmpeg-0.11.patch,
+  +files/transcode-1.1.7-preset-free.patch:
+  Fix build with ffmpeg 0.11 and encoding x264 with ffmpeg, both patches by
+  Brennan Shacklett, bugs #322945 and #419551
+
+  17 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> -transcode-1.1.5-r2.ebuild,
+  transcode-1.1.7.ebuild:
+  Stable on sparc as the 1.1.5 is not buildable at all. So worst case is that
+  state wont change for them. Bug#395729.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> transcode-1.1.5-r2.ebuild,
+  transcode-1.1.7.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  17 Apr 2012; Michał Górny <mgorny@gentoo.org> transcode-1.1.7.ebuild:
+  Use mirror://bitbucket.
+
+  19 Feb 2012; Tobias Klausmann <klausman@gentoo.org> transcode-1.1.7.ebuild:
+  Stable on alpha, bug #395729
+
+  01 Feb 2012; Alexis Ballier <aballier@gentoo.org> transcode-1.1.7.ebuild:
+  postproc should build with libav now
+
+  01 Feb 2012; Alexis Ballier <aballier@gentoo.org> transcode-1.1.7.ebuild,
+  -transcode-1.1.7-r1.ebuild:
+  put the ffmpeg 0.10 build fix in 1.1.7, it didnt need a revbump for a build
+  fix, so that we can stabilise ffmpeg 0.10
+
+  01 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> transcode-1.1.7.ebuild:
+  ppc/ppc64 stable wrt #395729
+
+*transcode-1.1.7-r1 (30 Jan 2012)
+
+  30 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +transcode-1.1.7-r1.ebuild, +files/transcode-1.1.7-ffmpeg-0.10.patch:
+  Fix building with media-video/ffmpeg >= 0.10 and USE="postproc" wrt #401287
+  by Olaf Freyer
+
+  04 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> transcode-1.1.7.ebuild:
+  x86 stable wrt bug #395729
+
+  23 Dec 2011; Agostino Sarubbo <ago@gentoo.org> transcode-1.1.7.ebuild:
+  Stable for AMD64, wrt bug #395729
+
+  06 Dec 2011; Samuli Suominen <ssuominen@gentoo.org> transcode-1.1.7.ebuild,
+  metadata.xml:
+  USE="pic" to control text relocation(s) wrt #271476 by Rafał Mużyło
+
+*transcode-1.1.7 (06 Dec 2011)
+
+  06 Dec 2011; Samuli Suominen <ssuominen@gentoo.org> +transcode-1.1.7.ebuild,
+  +files/transcode-1.1.7-ffmpeg.patch:
+  Version bump.
+
+  03 Dec 2011; Alexis Ballier <aballier@gentoo.org> transcode-1.1.5-r2.ebuild:
+  depend on ffmpeg for postproc, it doesnt build with libav, bug #369513
+
+  03 Dec 2011; Alexis Ballier <aballier@gentoo.org> transcode-1.1.5-r2.ebuild:
+  depend on virtual/libiconv
+
+  01 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  transcode-1.1.5-r2.ebuild:
+  Rename USE="v4l2" to USE="v4l" wrt #385241
+
+  17 May 2011; Alexis Ballier <aballier@gentoo.org> transcode-1.1.5-r2.ebuild,
+  +files/transcode-1.1.5-ffmpeg.patch:
+  fix build with ffmpeg git
+
+  26 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Drop unused useflags from metadata.xml
+
+  26 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> -transcode-1.0.7.ebuild,
+  -transcode-1.1.4.ebuild, -transcode-1.1.5.ebuild, -transcode-1.1.5-r1.ebuild,
+  transcode-1.1.5-r2.ebuild:
+  Depend on virtual/ffmpeg instead of media-video/ffmpeg. Drop older non-needed
+  versions.
+
+  07 Nov 2010; Jory A. Pratt <anarchy@gentoo.org> transcode-1.0.7.ebuild,
+  transcode-1.1.4.ebuild, transcode-1.1.5.ebuild, transcode-1.1.5-r1.ebuild,
+  transcode-1.1.5-r2.ebuild:
+  Convert media-libs/jpeg to virtual/jpeg
+
+  10 Oct 2010; Raúl Porcel <armin76@gentoo.org> transcode-1.1.5-r2.ebuild:
+  sparc stable wrt #335429
+
+  13 Sep 2010; Tobias Klausmann <klausman@gentoo.org>
+  transcode-1.1.5-r2.ebuild:
+  Stable on alpha, bug #335429
+
+  11 Sep 2010; Joseph Jezak <josejx@gentoo.org> transcode-1.1.5-r2.ebuild:
+  Marked ppc/ppc64 stable for bug #335429.
+
+  03 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  transcode-1.1.5-r2.ebuild:
+  Stable on amd64 wrt bug #335429
+
+  01 Sep 2010; Christian Faulhammer <fauli@gentoo.org>
+  transcode-1.1.5-r2.ebuild:
+  stable x86, bug 335429
+
+*transcode-1.1.5-r2 (04 Jul 2010)
+
+  04 Jul 2010; Jeff Gardner <je_fro@gentoo.org> +transcode-1.1.5-r2.ebuild,
+  +files/transcode-1.1.5-mpa.patch:
+  Fix mpa codec error. See
+  http://www.mail-archive.com/transcode-users@exit1.org/msg02236.html Thanks
+  to Harry in bug #318525.
+
+  15 Feb 2010; Joseph Jezak <josejx@gentoo.org> transcode-1.1.5-r1.ebuild:
+  Marked ppc stable for bug #297851.
+
+  03 Feb 2010; Markos Chandras <hwoarang@gentoo.org>
+  transcode-1.1.5-r1.ebuild:
+  Stable on amd64 wrt bug #297851
+
+  31 Jan 2010; Raúl Porcel <armin76@gentoo.org> transcode-1.1.5-r1.ebuild:
+  alpha/sparc/x86 stable wrt #297851
+
+  31 Jan 2010; Raúl Porcel <armin76@gentoo.org> transcode-1.1.5.ebuild:
+  sparc stable
+
+  27 Jan 2010; Brent Baude <ranger@gentoo.org> transcode-1.1.5-r1.ebuild:
+  stable ppc64, bug 297851
+
+  24 Jan 2010; Tobias Klausmann <klausman@gentoo.org>
+  transcode-1.1.5.ebuild:
+  Stable on alpha, bug #297851
+
+*transcode-1.1.5-r1 (23 Jan 2010)
+
+  23 Jan 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +transcode-1.1.5-r1.ebuild, +files/transcode-1.1.5-jpeg-7.patch:
+  Fix segmentation fault with jpeg-7 and above wrt #294488 by Salah Coronya.
+
+  22 Jan 2010; Samuli Suominen <ssuominen@gentoo.org>
+  transcode-1.1.5.ebuild:
+  Require SLOT="0" of media-libs/jpeg for headers.
+
+  15 Jan 2010; Alexis Ballier <aballier@gentoo.org> transcode-1.1.5.ebuild:
+  Import some code from vlc ebuilds to fix asm dependencies useflags. sse2
+  -> sse, sse -> mmx, 3dnow -> mmx, bug #300712
+
+  09 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  transcode-1.1.5.ebuild:
+  stable x86, bug 297851
+
+  07 Jan 2010; Brent Baude <ranger@gentoo.org> transcode-1.1.5.ebuild:
+  Marking transcode-1.1.5 ppc for bug 297851
+
+  06 Jan 2010; Brent Baude <ranger@gentoo.org> transcode-1.1.5.ebuild:
+  Marking transcode-1.1.5 ppc64 for bug 297851
+
+  22 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  transcode-1.1.5.ebuild:
+  amd64 stable wrt #297851
+
+  05 Nov 2009; Alexis Ballier <aballier@gentoo.org> transcode-1.1.5.ebuild:
+  Fix libmpeg2 support, by Rafał Mużyło, bug 291734
+
+*transcode-1.1.5 (02 Nov 2009)
+
+  02 Nov 2009; Alexis Ballier <aballier@gentoo.org> +transcode-1.1.5.ebuild:
+  version bump, by Lars Wendler (Polynomial-C) <polynomial-c@gentoo.org>,
+  bug #291607
+
+  26 Oct 2009; Alexis Ballier <aballier@gentoo.org> transcode-1.1.4.ebuild,
+  +files/transcode-1.1.4-x264.patch:
+  Add a patch to fix build/runtime with latest x264
+
+  25 Aug 2009; Alexis Ballier <aballier@gentoo.org>
+  -transcode-1.1.1-r3.ebuild, -transcode-1.1.1-r4.ebuild,
+  -transcode-1.1.2.ebuild, -transcode-1.1.2-r1.ebuild,
+  -transcode-1.1.3.ebuild:
+  remove old
+
+*transcode-1.1.4 (25 Aug 2009)
+
+  25 Aug 2009; Alexis Ballier <aballier@gentoo.org> +transcode-1.1.4.ebuild:
+  version bump, by Lars Wendler (Polynomial-C) <polynomial-c@gentoo.org>,
+  bug #282659
+
+*transcode-1.1.3 (04 Aug 2009)
+
+  04 Aug 2009; Alexis Ballier <aballier@gentoo.org> +transcode-1.1.3.ebuild:
+  version bump, bug #280046
+
+*transcode-1.1.2-r1 (17 May 2009)
+
+  17 May 2009; Jeff Gardner <je_fro@gentoo.org> +transcode-1.1.2-r1.ebuild:
+  Build the deprecated but still useful tcrequant with --enable-deprecated.
+  Move sed to src_prepare to squash repoman warning.
+
+*transcode-1.1.2 (14 Apr 2009)
+
+  14 Apr 2009; Alexis Ballier <aballier@gentoo.org> +transcode-1.1.2.ebuild:
+  version bump
+
+*transcode-1.1.1-r4 (15 Mar 2009)
+
+  15 Mar 2009; Alexis Ballier <aballier@gentoo.org>
+  +transcode-1.1.1-r4.ebuild:
+  depend on faac with use aac by gentoobugsie@gmail.com, bug #262565 and
+  give --enable-experimental to configure so that the faac module and a
+  couple of others are actually built.
+
+  10 Mar 2009; Steve Dibb <beandog@gentoo.org> transcode-1.0.7.ebuild,
+  transcode-1.1.1-r3.ebuild:
+  Move dvdread use flag to simpler dvd one
+
+  09 Mar 2009; Steve Dibb <beandog@gentoo.org> -transcode-1.0.7_rc1.ebuild,
+  -transcode-1.1.1.ebuild, -transcode-1.1.1-r1.ebuild,
+  -transcode-1.1.1-r2.ebuild, transcode-1.1.1-r3.ebuild:
+  Cleanup ebuild; remove old
+
+*transcode-1.1.1-r3 (08 Mar 2009)
+
+  08 Mar 2009; Patrick Lauer <patrick@gentoo.org>
+  +transcode-1.1.1-r3.ebuild:
+  Readding xvid useflag and deps. Closes #261608. Again.
+
+*transcode-1.1.1-r2 (08 Mar 2009)
+
+  08 Mar 2009; Patrick Lauer <patrick@gentoo.org> transcode-1.1.1-r1.ebuild,
+  +transcode-1.1.1-r2.ebuild:
+  Small cleanup for #261608
+
+*transcode-1.1.1-r1 (07 Mar 2009)
+
+  07 Mar 2009; Patrick Lauer <patrick@gentoo.org>
+  +transcode-1.1.1-r1.ebuild:
+  eapi2ifying 1.1.1. No functional changes.
+
+*transcode-1.1.1 (23 Feb 2009)
+
+  23 Feb 2009; Alexis Ballier <aballier@gentoo.org>
+  -transcode-1.1.0_rc5.ebuild, -transcode-1.1.0.ebuild,
+  +transcode-1.1.1.ebuild:
+  version bump, punt old
+
+*transcode-1.1.0 (19 Jan 2009)
+
+  19 Jan 2009; Alexis Ballier <aballier@gentoo.org> +transcode-1.1.0.ebuild:
+  bump to 1.1.0 final
+
+  10 Jan 2009; Raúl Porcel <armin76@gentoo.org> transcode-1.0.7.ebuild:
+  alpha/x86 stable wrt #254061
+
+  10 Jan 2009; Steve Dibb <beandog@gentoo.org> transcode-1.0.7.ebuild:
+  amd64 stable, bug 254061
+
+  09 Jan 2009; Brent Baude <ranger@gentoo.org> transcode-1.0.7.ebuild:
+  stable ppc, bug 254061
+
+  07 Jan 2009; Brent Baude <ranger@gentoo.org> transcode-1.0.7.ebuild:
+  stable ppc64, bug 254061
+
+  07 Jan 2009; Ferris McCormick <fmccor@gentoo.org> transcode-1.0.7.ebuild:
+  Sparc stable, Bug #254061.
+
+*transcode-1.1.0_rc5 (07 Jan 2009)
+
+  07 Jan 2009; Alexis Ballier <aballier@gentoo.org>
+  -transcode-1.1.0_rc1.ebuild, -transcode-1.1.0_rc2.ebuild,
+  -transcode-1.1.0_rc4.ebuild, +transcode-1.1.0_rc5.ebuild:
+  version bump, remove old
+
+  16 Dec 2008; Brent Baude <ranger@gentoo.org> transcode-1.0.7_rc1.ebuild:
+  Marking transcode-1.0.7_rc1 ppc64 for bug 245511
+
+*transcode-1.1.0_rc4 (14 Dec 2008)
+
+  14 Dec 2008; Alexis Ballier <aballier@gentoo.org>
+  +transcode-1.1.0_rc4.ebuild:
+  version bump
+
+*transcode-1.0.7 (17 Nov 2008)
+
+  17 Nov 2008; Alexis Ballier <aballier@gentoo.org> +transcode-1.0.7.ebuild:
+  version bump
+
+  15 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  transcode-1.0.7_rc1.ebuild:
+  ppc stable, bug #245511
+
+  14 Nov 2008; Raúl Porcel <armin76@gentoo.org> transcode-1.0.7_rc1.ebuild:
+  alpha/sparc stable wrt #245511
+
+*transcode-1.1.0_rc2 (10 Nov 2008)
+
+  10 Nov 2008; Alexis Ballier <aballier@gentoo.org>
+  +transcode-1.1.0_rc2.ebuild:
+  version bump
+
+  09 Nov 2008; Markus Meier <maekke@gentoo.org> transcode-1.0.7_rc1.ebuild:
+  x86 stable, bug #245511
+
+  06 Nov 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  transcode-1.0.7_rc1.ebuild:
+  stable amd64, bug 245511
+
+  26 Oct 2008; Raúl Porcel <armin76@gentoo.org> transcode-1.1.0_rc1.ebuild:
+  Re-add ~alpha wrt #243170
+
+  22 Oct 2008; Alexis Ballier <aballier@gentoo.org>
+  -files/transcode-1.1.0_alpha7-new-ffmpeg-headers.patch,
+  -transcode-1.0.4.ebuild, -transcode-1.0.4-r2.ebuild,
+  -transcode-1.0.4-r3.ebuild, -transcode-1.0.6.ebuild,
+  -transcode-1.1.0_alpha7.ebuild, -transcode-1.1.0_alpha7-r1.ebuild:
+  remove unused versions
+
+*transcode-1.1.0_rc1 (25 Sep 2008)
+
+  25 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  +transcode-1.1.0_rc1.ebuild:
+  bump the 1.1 branch too, drop flag messing and hope to get feedback so
+  that we can fix the real bugs instead; readd postproc and imagemagick
+  switches, they should be fine now
+
+*transcode-1.0.7_rc1 (25 Sep 2008)
+
+  25 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  +transcode-1.0.7_rc1.ebuild:
+  version bump
+
+  31 Aug 2008; Brent Baude <ranger@gentoo.org> transcode-1.0.5-r3.ebuild:
+  Marking transcode-1.0.5-r3 ppc64 per bug 207548
+
+  22 Aug 2008; nixnut <nixnut@gentoo.org> transcode-1.0.5-r3.ebuild:
+  Stable on ppc wrt bug 207548
+
+  09 Aug 2008; Alexis Ballier <aballier@gentoo.org>
+  -transcode-1.0.6_rc3.ebuild:
+  remove rc version
+
+  04 Aug 2008; Raúl Porcel <armin76@gentoo.org> transcode-1.0.5-r3.ebuild:
+  x86 stable wrt #207548
+
+  29 Jul 2008; Ferris McCormick <fmccor@gentoo.org>
+  transcode-1.0.5-r3.ebuild:
+  Sparc stable, Bug #207548.
+
+  29 Jul 2008; Steve Dibb <beandog@gentoo.org> transcode-1.0.5-r3.ebuild:
+  amd64 stable, bug 207548
+
+*transcode-1.0.6 (26 Jul 2008)
+
+  26 Jul 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/transcode-1.0.6-imagemagick.patch, +transcode-1.0.6.ebuild:
+  version bump
+
+  22 Jul 2008; Alexis Ballier <aballier@gentoo.org>
+  -transcode-1.0.6_rc2-r1.ebuild:
+  remove unused version
+
+  22 Jul 2008; Alexis Ballier <aballier@gentoo.org>
+  transcode-1.0.6_rc3.ebuild:
+  fix lzo dep, it now uses lzo-2, thanks to Duncan <1i5t5.duncan@cox.net>,
+  bug #232207
+
+*transcode-1.0.5-r3 (16 Jul 2008)
+
+  16 Jul 2008; Steve Dibb <beandog@gentoo.org> +transcode-1.0.5-r3.ebuild:
+  Re-add, cleanup transcode-1.0.5
+
+  16 Jul 2008; Steve Dibb <beandog@gentoo.org> transcode-1.0.4.ebuild,
+  transcode-1.0.4-r2.ebuild, transcode-1.0.4-r3.ebuild,
+  transcode-1.0.6_rc2-r1.ebuild:
+  Fix postproc configure option, bug 230763
+
+*transcode-1.0.6_rc3 (16 Jul 2008)
+
+  16 Jul 2008; Steve Dibb <beandog@gentoo.org> +transcode-1.0.6_rc3.ebuild:
+  Version bump
+
+  16 Jul 2008; Steve Dibb <beandog@gentoo.org> transcode-1.0.4-r3.ebuild:
+  amd64 stable, bug 229953
+
+  16 Jul 2008; nixnut <nixnut@gentoo.org> transcode-1.0.4-r3.ebuild:
+  Stable on ppc wrt bug 229953
+
+  09 Jul 2008; Ferris McCormick <fmccor@gentoo.org>
+  transcode-1.0.4-r3.ebuild:
+  Sparc stable, Bug #229953, matching stable imagemagick-6.4.0.6.
+
+  08 Jul 2008; Christian Faulhammer <opfer@gentoo.org>
+  transcode-1.0.4-r3.ebuild:
+  stable x86, bug 229953
+
+*transcode-1.0.4-r3 (07 Jul 2008)
+
+  07 Jul 2008; Markus Meier <maekke@gentoo.org> +transcode-1.0.4-r3.ebuild:
+  revision bump to work with >=media-gfx/imagemagick-6.4.0.6 (bug #229953)
+
+  29 Jun 2008; Peter Alfredsen <loki_val@gentoo.org> transcode-1.0.4.ebuild,
+  transcode-1.0.4-r2.ebuild, -transcode-1.0.5-r2.ebuild:
+  Fix deps for ffmpeg wrt bug #228833.
+
+  24 May 2008; Steve Dibb <beandog@gentoo.org>
+  transcode-1.0.6_rc2-r1.ebuild:
+  Fix built_with_use check, bug 223183
+
+*transcode-1.1.0_alpha7-r1 (15 May 2008)
+
+  15 May 2008; Steve Dibb <beandog@gentoo.org>
+  +transcode-1.1.0_alpha7-r1.ebuild:
+  Require libsdl with X use flag if compiling with X support, bug 168683
+
+  15 May 2008; Steve Dibb <beandog@gentoo.org>
+  transcode-1.0.6_rc2-r1.ebuild:
+  Require libsdl with X use flag if compiling with X support, bug 168683
+
+*transcode-1.0.6_rc2-r1 (15 May 2008)
+
+  15 May 2008; Steve Dibb <beandog@gentoo.org> -transcode-1.0.6_rc2.ebuild,
+  +transcode-1.0.6_rc2-r1.ebuild:
+  Fix imagemagick dep, bug 218415
+
+*transcode-1.0.6_rc2 (14 Apr 2008)
+
+  14 Apr 2008; Alexis Ballier <aballier@gentoo.org>
+  +transcode-1.0.6_rc2.ebuild:
+  version bump
+
+*transcode-1.1.0_alpha7 (14 Apr 2008)
+
+  14 Apr 2008; Ben de Groot <yngwin@gentoo.org>
+  +files/transcode-1.1.0_alpha7-new-ffmpeg-headers.patch,
+  +transcode-1.1.0_alpha7.ebuild:
+  Adding latest 1.1.0 alpha, which needs more testing/fixing. Patched for
+  new ffmpeg headers layout (bug #214740).
+
+  07 Apr 2008; Ben de Groot <yngwin@gentoo.org>
+  transcode-1.1.0_alpha4.ebuild:
+  Pkgmove x264-svn to x264
+
+  20 Mar 2008; Steve Arnold <nerdboy@gentoo.org>
+  transcode-1.0.6_rc1-r1.ebuild:
+  Quick hack for imagemagick lib breakage (fixes for bug # 213712)
+
+*transcode-1.0.6_rc1-r1 (18 Feb 2008)
+*transcode-1.0.5-r2 (18 Feb 2008)
+
+  18 Feb 2008; Steve Dibb <beandog@gentoo.org> +transcode-1.0.5-r2.ebuild,
+  +transcode-1.0.6_rc1-r1.ebuild:
+  Add nuv use flag, with lzo dep, bug 210352
+
+*transcode-1.0.6_rc1 (15 Feb 2008)
+
+  15 Feb 2008; Steve Dibb <beandog@gentoo.org> +transcode-1.0.6_rc1.ebuild:
+  Version bump
+
+*transcode-1.0.5-r1 (15 Feb 2008)
+
+  15 Feb 2008; Steve Dibb <beandog@gentoo.org> +transcode-1.0.5-r1.ebuild:
+  Filter CFLAGS
+
+  15 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  transcode-1.0.4-r2.ebuild:
+  mark stable x86 for bug 189910
+
+  13 Jan 2008; Alexis Ballier <aballier@gentoo.org> transcode-1.0.3.ebuild,
+  transcode-1.0.3-r1.ebuild, transcode-1.0.4.ebuild,
+  transcode-1.0.4-r2.ebuild, transcode-1.0.5.ebuild,
+  transcode-1.1.0_alpha4.ebuild:
+  add missing pkgconfig dep, bug #205006, add missing alsa-lib dep for 1.1
+
+*transcode-1.0.4-r2 (08 Jan 2008)
+
+  08 Jan 2008; Steve Dibb <beandog@gentoo.org> -transcode-1.0.4-r1.ebuild,
+  +transcode-1.0.4-r2.ebuild:
+  Filter CFLAGS
+
+*transcode-1.0.4-r1 (08 Jan 2008)
+
+  08 Jan 2008; Steve Dibb <beandog@gentoo.org> +transcode-1.0.4-r1.ebuild:
+  Add strip-flags to compile, custom-cflags use flag
+
+  07 Jan 2008; Joseph Jezak <josejx@gentoo.org> transcode-1.0.4.ebuild:
+  Marked ppc/ppc64 stable for bug #204255.
+
+  06 Jan 2008; Raúl Porcel <armin76@gentoo.org> transcode-1.0.4.ebuild:
+  sparc stable wrt #204255
+
+*transcode-1.0.5 (05 Jan 2008)
+
+  05 Jan 2008; Steve Dibb <beandog@gentoo.org> -transcode-1.0.5_rc2.ebuild,
+  +transcode-1.0.5.ebuild:
+  Version bump
+
+  05 Jan 2008; Markus Meier <maekke@gentoo.org> transcode-1.0.4.ebuild:
+  x86 stable, bug #204255
+
+  05 Jan 2008; Steve Dibb <beandog@gentoo.org> transcode-1.0.4.ebuild:
+  amd64 stable, bug 204255
+
+  10 Dec 2007; Raúl Porcel <armin76@gentoo.org> transcode-1.0.4.ebuild,
+  transcode-1.0.5_rc2.ebuild:
+  Add ~alpha wrt #201366
+
+*transcode-1.0.5_rc2 (17 Oct 2007)
+
+  17 Oct 2007; Steve Dibb <beandog@gentoo.org> +transcode-1.0.5_rc2.ebuild:
+  Version bump
+
+  24 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  transcode-1.1.0_alpha4.ebuild:
+  adding some die comments
+
+  24 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  transcode-1.0.4_rc6.ebuild:
+  filtering -fforce-addr on x86, see bug 189910 by jakub; adding some die
+  comments
+
+*transcode-1.1.0_alpha4 (25 Aug 2007)
+
+  25 Aug 2007; Steve Dibb <beandog@gentoo.org>
+  +transcode-1.1.0_alpha4.ebuild, -transcode-1.1.0_pre20070315-r1.ebuild,
+  -transcode-1.1.0_pre20070705.ebuild:
+  Version bump
+
+  16 Aug 2007; Steve Dibb <beandog@gentoo.org> transcode-1.0.4_rc6.ebuild:
+  Fix libmpeg3 dep
+
+*transcode-1.0.4_rc6 (16 Aug 2007)
+
+  16 Aug 2007; Steve Dibb <beandog@gentoo.org> +transcode-1.0.4_rc6.ebuild:
+  Version bump
+
+*transcode-1.0.4_rc3 (15 Aug 2007)
+
+  15 Aug 2007; Steve Dibb <beandog@gentoo.org> +transcode-1.0.4_rc3.ebuild:
+  Version bump
+
+*transcode-1.1.0_pre20070705 (27 Jul 2007)
+
+  27 Jul 2007; Steve Dibb <beandog@gentoo.org>
+  +transcode-1.1.0_pre20070705.ebuild:
+  Version bump
+
+*transcode-1.0.4_rc0 (26 Jul 2007)
+
+  26 Jul 2007; Steve Dibb <beandog@gentoo.org> +transcode-1.0.4_rc0.ebuild:
+  Version bump
+
+  26 Jul 2007; Steve Dibb <beandog@gentoo.org> transcode-1.0.3-r1.ebuild:
+  dosed -> sed, bug 179249
+
+*transcode-1.0.3-r1 (26 Jul 2007)
+
+  26 Jul 2007; Steve Dibb <beandog@gentoo.org>
+  +files/transcode-1.0.3-tomsmocomp-gcc4.patch, +transcode-1.0.3-r1.ebuild:
+  Fix tomsmocomp filter building against gcc4, bug 181239
+
+  03 Jul 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/transcode-1.0.3-ffmpeg_codecs_are_not_in_public_api.patch,
+  +files/transcode-1.0.3-libmpeg3-1.7.patch,
+  -files/transcode-1.0.3_rc2_p20070310-libmpeg3.patch,
+  transcode-1.0.3.ebuild:
+  Fix to build with libmpeg3 1.7 and recent ffmpegs, closing bug #183965 and
+  bug #184014
+
+  31 May 2007; Markus Rothe <corsair@gentoo.org> transcode-1.0.3.ebuild:
+  Do not break on ppc64 any more; use patch from previous versions
+
+  19 May 2007; nixnut <nixnut@gentoo.org> transcode-1.0.3.ebuild:
+  Stable on ppc wrt bug 178871
+
+  19 May 2007; Markus Rothe <corsair@gentoo.org> transcode-1.0.3.ebuild:
+  Stable on ppc64; bug #178871
+
+  18 May 2007; Peter Weller <welp@gentoo.org> transcode-1.0.3.ebuild:
+  Stable on amd64 wrt bug 178871
+
+  17 May 2007; Raúl Porcel <armin76@gentoo.org> transcode-1.0.3.ebuild:
+  x86 stable wrt #178871
+
+  17 May 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  transcode-1.0.3.ebuild:
+  Stable on sparc wrt #178871
+
+*transcode-1.0.3 (20 Apr 2007)
+
+  20 Apr 2007; Steve Dibb <beandog@gentoo.org> +transcode-1.0.3.ebuild:
+  Version bump
+
+  14 Apr 2007; Alexis Ballier <aballier@gentoo.org>
+  transcode-1.0.3_rc2_p20070310-r1.ebuild:
+  Bump libquicktime deps to >=0.9.8 as this is the least version required, bug
+  #174561
+
+  31 Mar 2007; Steve Dibb <beandog@gentoo.org> -transcode-1.0.2-r2.ebuild,
+  transcode-1.0.2-r3.ebuild, transcode-1.0.2-r4.ebuild,
+  transcode-1.0.3_rc2_p20070310-r1.ebuild,
+  transcode-1.1.0_pre20070315-r1.ebuild:
+  Fix x11 dependencies, bug 157979
+
+  25 Mar 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/transcode-1.0.3_rc2_p20070310-libmpeg3.patch,
+  transcode-1.0.3_rc2_p20070310-r1.ebuild:
+  Fix to build and work with libmpeg3 1.7
+
+*transcode-1.1.0_pre20070315-r1 (24 Mar 2007)
+
+  24 Mar 2007; Steve Dibb <beandog@gentoo.org>
+  -transcode-1.1.0_pre20070315.ebuild,
+  +transcode-1.1.0_pre20070315-r1.ebuild:
+  Fix lzo dependency
+
+*transcode-1.0.3_rc2_p20070310-r1 (24 Mar 2007)
+
+  24 Mar 2007; Steve Dibb <beandog@gentoo.org>
+  -transcode-1.0.3_rc2_p20070310.ebuild,
+  +transcode-1.0.3_rc2_p20070310-r1.ebuild:
+  Fix a52 configuration flags, fix lzo dependency
+
+*transcode-1.1.0_pre20070315 (16 Mar 2007)
+
+  16 Mar 2007; Steve Dibb <beandog@gentoo.org>
+  +transcode-1.1.0_pre20070315.ebuild:
+  Add snapshot of upstream's development branch
+
+*transcode-1.0.3_rc2_p20070310 (13 Mar 2007)
+
+  13 Mar 2007; Steve Dibb <beandog@gentoo.org>
+  +transcode-1.0.3_rc2_p20070310.ebuild:
+  version bump
+
+  17 Feb 2007; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-1.0.2-r2.ebuild, transcode-1.0.2-r3.ebuild,
+  transcode-1.0.2-r4.ebuild:
+  Don't abuse $ROOT.
+
+  16 Feb 2007; Simon Stelling <blubb@gentoo.org> transcode-1.0.2-r2.ebuild,
+  transcode-1.0.2-r4.ebuild:
+  depend on >=portage-2.1.2 on amd64 to make sure the assembler USE flags are
+  unmasked
+
+*transcode-1.0.2-r4 (01 Feb 2007)
+
+  01 Feb 2007; Steve Dibb <beandog@gentoo.org>
+  +files/transcode-1.0.2-dvraw.patch, +transcode-1.0.2-r4.ebuild:
+  Add dvraw patch, bug 146307
+
+  01 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  transcode-1.0.2-r3.ebuild:
+  ppc stable, bug #151836
+
+  30 Nov 2006; Markus Rothe <corsair@gentoo.org> transcode-1.0.2-r3.ebuild:
+  Stable on ppc64; bug #151836
+
+  29 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  transcode-1.0.2-r3.ebuild:
+  stable x86, bug #151836
+
+  29 Nov 2006; Steve Dibb <beandog@gentoo.org> transcode-1.0.2-r3.ebuild:
+  amd64 stable, 151836
+
+  29 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  transcode-1.0.2-r3.ebuild:
+  Stable on sparc wrt #151836
+
+  24 Oct 2006; Simon Stelling <blubb@gentoo.org> transcode-1.0.2-r3.ebuild:
+  don't enforce 3dnow on amd64, EM64T doesn't have it
+
+  10 Oct 2006; Alexis Ballier <aballier@gentoo.org>
+  +files/transcode-1.0.2-libmpeg3-1.7.patch, transcode-1.0.2-r3.ebuild:
+  Adding a fix to compile against media-libs/libmpeg3-1.7
+
+  04 Oct 2006; Simon Stelling <blubb@gentoo.org> transcode-1.0.2-r3.ebuild:
+  filter -fweb on amd64 for bug 145849
+
+  01 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-1.0.2-r2.ebuild, transcode-1.0.2-r3.ebuild:
+  Remove build-time dependency on xproto and/or xextproto.
+
+  23 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-1.0.2-r2.ebuild, transcode-1.0.2-r3.ebuild:
+  Force dependency over latest versions of autotools, fixes bug #148706.
+
+  26 Aug 2006; Hanno Boeck <hanno@gentoo.org>
+  +files/transcode-1.0.2-new-ffmpeg, transcode-1.0.2-r3.ebuild:
+  Add fix for latest ffmpeg.
+
+*transcode-1.0.2-r3 (21 Aug 2006)
+
+  21 Aug 2006; Steve Dibb <beandog@gentoo.org> +transcode-1.0.2-r3.ebuild:
+  Remove dependency for libexif, see bug 136739
+
+  09 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-1.0.2-r2.ebuild:
+  Pinpoint virtual/x11 version to less than 7.
+
+  25 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/transcode-1.0.2-autoconf259d.patch, transcode-1.0.2-r2.ebuild:
+  Add patch for compatibility with autoconf 2.59d, fixes bug #137953. Thanks
+  to Jabari R. Roberts for reporting.
+
+  26 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -transcode-0.6.14-r3.ebuild:
+  Drop old versions.
+
+  03 May 2006; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata to list media-video@gentoo.org as maintainer.
+
+  20 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  transcode-1.0.2-r2.ebuild:
+  Marking stable on x86 for bug #129748.
+
+  19 Apr 2006; Daniel Goller <morfic@gentoo.org> transcode-1.0.2-r2.ebuild:
+  Stable on ppc and amd64 wrt bug #129748.
+
+  19 Apr 2006; Jason Wever <weeve@gentoo.org> transcode-1.0.2-r2.ebuild:
+  Stable on SPARC wrt bug #129748.
+
+  17 Apr 2006; Markus Rothe <corsair@gentoo.org> transcode-1.0.2-r2.ebuild:
+  Stable on ppc64; bug #129748
+
+  14 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -transcode-0.6.14-r2.ebuild, -transcode-1.0.2-r1.ebuild:
+  Drop old versions.
+
+  14 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-0.6.14-r2.ebuild, transcode-0.6.14-r3.ebuild,
+  transcode-1.0.2-r1.ebuild, transcode-1.0.2-r2.ebuild:
+  Replace xml2 useflag with xml useflag.
+
+  14 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-1.0.2-r1.ebuild, transcode-1.0.2-r2.ebuild:
+  Drop ffmpeg useflag, as ffmpeg is mandatory. Bug #118963.
+
+  31 Jan 2006; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-1.0.2-r2.ebuild:
+  Add check if X is required before checking if it has been built with xv
+  support (bug #121035). Drop DEPEND on autotools (provided by autotools
+  eclass instead), and fix modular X deps. elibtoolize is already run by
+  eautoreconf now.
+
+  30 Jan 2006; Joshua Jackson <tsunam@gentoo.org> transcode-1.0.2-r2.ebuild:
+  Added ~x86 for bug #93797
+
+  30 Jan 2006; Daniel Goller <morfic@gentoo.org> transcode-1.0.2-r2.ebuild:
+  Adding ~amd64 and ~ppc keywords wrt bug#93797, excluding two filters that
+  conflict with dvdrip unless the user wants them per use flag
+
+  28 Jan 2006; Jason Wever <weeve@gentoo.org> transcode-1.0.2-r2.ebuild:
+  Added ~sparc keyword wrt bug #93797.
+
+*transcode-1.0.2-r2 (27 Jan 2006)
+
+  27 Jan 2006; Markus Rothe <corsair@gentoo.org> +transcode-1.0.2-r2.ebuild:
+  Added patch for ppc64 support. Removing other arches, as this is no trivial
+  change. (bug #93797)
+
+  19 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  transcode-0.6.14-r3.ebuild:
+  Stable on sparc
+
+  10 Jan 2006; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-1.0.2-r1.ebuild:
+  Fix check for xv support in xorg-x11 as per bug #118066. Fix documentation
+  installation as per bug #117022.
+
+  02 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  transcode-0.6.14-r3.ebuild:
+  ppc stable, bug #116181
+
+  01 Jan 2006; Mark Loeser <halcy0n@gentoo.org> transcode-0.6.14-r3.ebuild:
+  Stable on x86; bug #116181
+
+  01 Jan 2006; Simon Stelling <blubb@gentoo.org> transcode-0.6.14-r3.ebuild:
+  stable on amd64 wrt bug 116181
+
+  28 Dec 2005; Luca Barbato <lu_zero@gentoo.org> transcode-0.6.14-r2.ebuild,
+  transcode-0.6.14-r3.ebuild:
+  Missing xml2 dep
+
+  18 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-1.0.2-r1.ebuild:
+  Replace v4l useflag with v4l2 to allow use.masking on sparc profiles using
+  2.4 kernels.
+
+  18 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-0.6.14-r3.ebuild, transcode-1.0.2-r1.ebuild:
+  Disable pvm support as per bug #93003.
+
+  18 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-0.6.14-r2.ebuild:
+  Remove avifile support also in transcode 0.6 series.
+
+  18 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-1.0.2-r1.ebuild:
+  Drop netpbm dependency as per bug #106283.
+
+  14 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  transcode-0.6.14-r3.ebuild, transcode-1.0.2-r1.ebuild:
+  Add modular X dependencies to 0.6. Remove some redundant deps on 1.0. Some
+  differences in 1.0: apparently doesn't link against libXi.
+
+*transcode-1.0.2-r1 (10 Dec 2005)
+
+  10 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/transcode-1.0.2-bigdir.patch, +files/transcode-1.0.2-lzo2.patch,
+  -transcode-1.0.1.ebuild, -transcode-1.0.2.ebuild,
+  +transcode-1.0.2-r1.ebuild:
+  Revision bump and removed previous 1.x versions. Close bug #110997 (modular
+  x support, it's modular friendly saved ffmpeg that is still unfriendly), bug
+  #111290 (missing libxml2 dependency), bug #112995 (long path crashes), bug
+  #112382 (lzo-2 support).
+
+*transcode-1.0.2 (11 Nov 2005)
+
+  11 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +transcode-1.0.2.ebuild:
+  Bump to 1.0.2.
+
+  03 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-0.6.14-r2.ebuild, transcode-0.6.14-r3.ebuild,
+  transcode-1.0.1.ebuild:
+  Update SRC_URI to use transcode mirrors (and remove dead mirror).
+
+  30 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-0.6.14-r2.ebuild:
+  Remove divx4linux useflag.
+
+*transcode-0.6.14-r3 (15 Oct 2005)
+
+  15 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -files/transcode-0.6.11-no-mmx.patch,
+  -files/transcode-0.6.12-gcc-3.4.patch,
+  -files/transcode-0.6.12-r2-dvdmenu.patch,
+  -files/transcode-0.6.12-r2-gcc34.patch, -files/transcode-gcc34.patch,
+  -files/transcode-0.6.13-r1-bitstream.patch, +transcode-0.6.14-r3.ebuild:
+  Removed outdated patches. Added new revision that builds with latest ffmpeg.
+  Also, remove divx4linux and avifile support.
+
+  15 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -transcode-0.6.11.ebuild, -transcode-0.6.12-r1.ebuild,
+  -transcode-0.6.12-r2.ebuild, -transcode-0.6.13-r1.ebuild,
+  -transcode-0.6.14.ebuild:
+  Clean up of older versions.
+
+  15 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> transcode-1.0.1.ebuild:
+  Remove avifile support, use autotools eclass, don't force -j1 as it seems
+  fixed in newer versions.
+
+*transcode-1.0.1 (14 Oct 2005)
+
+  14 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -transcode-1.0.0.ebuild, +transcode-1.0.1.ebuild:
+  Updated to latest upstream version. Dropped divx4linux dependency entirely.
+
+  13 Oct 2005; Matthias Schwarzott <zzam@gentoo.org>
+  transcode-0.6.14-r2.ebuild, transcode-1.0.0.ebuild:
+  Made error message about missing xv for xorg-x11 a bit more useful.
+
+  27 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> transcode-1.0.0.ebuild:
+  Removed gcc-3 dependency from 1.0 series. Closes #100495.
+
+*transcode-1.0.0 (13 Jul 2005)
+
+  13 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -files/transcode-1.0.0_rc1-gcc4.patch, -transcode-1.0.0_rc1.ebuild,
+  +transcode-1.0.0.ebuild:
+  Update to latest upstream stable version (still in package.mask).
+
+*transcode-1.0.0_rc1 (09 Jul 2005)
+
+  09 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/transcode-1.0.0_rc1-gcc4.patch, -transcode-1.0.0_beta3.ebuild,
+  +transcode-1.0.0_rc1.ebuild:
+  Added latest version upstream (works with GCC4). Removed 1.0.0_beta3. Fixed
+  docs installation path.
+
+  24 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-1.0.0_beta3.ebuild:
+  Added dependency over libmpeg2 as per bug #93436. Reported by Gustavo Michels.
+
+  15 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-0.6.11.ebuild, transcode-0.6.12-r1.ebuild,
+  transcode-0.6.12-r2.ebuild:
+  Moved to use toolchain-functs eclass.
+
+  10 May 2005; Luca Barbato <lu_zero@gentoo.org> transcode-0.6.14-r2.ebuild:
+  Marked x86
+
+  10 May 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  transcode-0.6.14-r2.ebuild:
+  Stable on PPC, #92137
+
+  10 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-0.6.14-r2.ebuild:
+  Marked stable on amd64 as per bug #92137.
+
+  10 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-0.6.11.ebuild:
+  Made transcode 0.6.11 depend directly on libquicktime-0.9.2. Fixes #91061.
+
+  07 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-0.6.11.ebuild:
+  Reverted last change
+
+  07 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-0.6.11.ebuild:
+  Make transcode 0.6.11 depend on libquicktime-0.9.2. Fixes #91061.
+
+  07 May 2005; Herbie Hopkins <herbs@gentoo.org>
+  transcode-1.0.0_beta3.ebuild:
+  Enable SIMD extensions on amd64, bug #79990
+
+  29 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-0.6.14-r2.ebuild, transcode-1.0.0_beta3.ebuild:
+  Fixed patchset urls.
+
+*transcode-1.0.0_beta3 (27 Apr 2005)
+*transcode-0.6.14-r2 (27 Apr 2005)
+
+  27 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -files/transcode-0.6.14-amd64_mmx.patch,
+  -files/transcode-0.6.14-gcc4.patch,
+  -files/transcode-0.6.14-libquicktime094.patch,
+  -transcode-0.6.14-r1.ebuild, +transcode-0.6.14-r2.ebuild,
+  +transcode-1.0.0_beta3.ebuild:
+  Removed gcc4 patch as it screw up logic both with old and new gcc, bumped to
+  0.6.14-r2 so that all the users who compiled with that patch will recompile
+  without it. The new -r2 also uses a patch tarball instead of having the
+  patches in files/.
+  
+  Added the latest upstream version (1.0.0_beta3) but still p.masked as it's
+  beta-quality software which needs testing.
+
+  25 Apr 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/transcode-0.6.14-gcc4.patch, transcode-0.6.14-r1.ebuild:
+  Fix building with gcc4.
+
+  25 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-0.6.14-r1.ebuild:
+  Added pkg_setup() to check for xv support in xorg-x11 as it's needed to
+  build transcode. Fixes #76661. Moved gcc and nasm out of DEPEND, removed
+  check for x86 on divx4linux. Splitted oggvorbis useflag in ogg and vorbis.
+
+  25 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-0.6.11.ebuild:
+  Made transcode-0.6.11 use append-flags instead of passing CFLAGS to econf.
+  Fixes #84362
+
+  25 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  transcode-0.6.14-r1.ebuild:
+  Moved libtoolize/autoreconf in src_unpack, and added -i switch to autoreconf
+  to fix #89619.
+
+  17 Apr 2005; Jason Wever <weeve@gentoo.org> transcode-0.6.14-r1.ebuild:
+  Fixed pvm configure pathing logic for sparc.
+
+*transcode-0.6.14-r1 (13 Apr 2005)
+
+  13 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +files/transcode-0.6.14-amd64_mmx.patch,
+  +files/transcode-0.6.14-libquicktime094.patch, +transcode-0.6.14-r1.ebuild:
+  added patch to fix compilation with libquicktime >= 0.9.4, fixes #85865
+
+  05 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -transcode-0.6.10.ebuild, -transcode-0.6.12.ebuild,
+  -transcode-0.6.13.ebuild, transcode-0.6.14.ebuild:
+  Added to ~sparc.  Removed old versions.  Always build shared and static
+  libs.
+
+  10 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> transcode-0.6.14.ebuild:
+  updated gtk dependency, fixes #84253
+
+  09 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> transcode-0.6.10.ebuild,
+  transcode-0.6.11.ebuild, transcode-0.6.12-r1.ebuild,
+  transcode-0.6.12-r2.ebuild, transcode-0.6.12.ebuild,
+  transcode-0.6.13-r1.ebuild, transcode-0.6.13.ebuild,
+  transcode-0.6.14.ebuild:
+  updated HOMEPAGE, fixes #84327
+
+  20 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> transcode-0.6.11.ebuild,
+  transcode-0.6.12-r1.ebuild, transcode-0.6.12-r2.ebuild,
+  transcode-0.6.12.ebuild:
+  divx4linux dependency should be controlled by the respective useflag. fixes
+  #82028
+
+  24 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> transcode-0.6.11.ebuild:
+  updated libdv dependency to fix 77672.
+
+  23 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> transcode-0.6.14.ebuild:
+  cleanups and some enhancements, fixes #74806 and #74007. Thanks to Diego
+  Pettenò <dgp85@users.sourceforge.net>
+
+  21 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  transcode-0.6.14.ebuild:
+  Multilib fix
+
+  17 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> transcode-0.6.11.ebuild,
+  transcode-0.6.14.ebuild:
+  changed useflag freetype to truetype. fixes bug #75757.
+
+  09 Jan 2005; <augustus@gentoo.org> transcode-0.6.14.ebuild:
+  Added ~amd64.
+
+  08 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  transcode-0.6.14.ebuild:
+  Fix bug #75488 not filtering out some CFLAGS.
+
+  28 Dec 2004; Luca Barbato <lu_zero@gentoo.org> transcode-0.6.11.ebuild:
+  Backport fix from the .14
+
+  06 Dec 2004; Marc Hildebrand <zypher@gentoo.org> transcode-0.6.14.ebuild:
+  Added Keyword ~ppc
+  
+*transcode-0.6.14 (15 Nov 2004)
+
+  03 Dec 2004; Marc Hildebrand <zypher@gentoo.org> transcode-0.6.14.ebuild:
+  Added -momit-leaf-frame-pointer to the list of filtered flags.
+  Removed mmx USE-flag. Apparently it won't compile without mmx.
+  Should satisfy bugs #72876, #72923 and #72121.
+   
+  29 Nov 2004; Marc Hildebrand <zypher@gentoo.org> transcode-0.6.14.ebuild:
+  Version bump. Added new local USE-flags a52, dv, dvdread, freetype, lzo,
+  mjpeg, network and v4l. Should fix bugs #69108, #72044, #72140 and 72633.
+
+  08 Nov 2004; Luca Barbato <lu_zero@gentoo.org> transcode-0.6.13-r1.ebuild:
+  Minor workaround
+
+  05 Nov 2004; Marc Hildebrand <zypher@gentoo.org> transcode-0.6.13-r1.ebuild:
+  Added patch to fix dvd::rip issues. Patch and ebuild submitted by folken 
+  see bug #70092
+
+  28 Oct 2004; Marc Hildebrand <zypher@gentoo.org> transcode-0.6.13.ebuild:
+  Configure cleanups, changed virtual/quicktime to media-libs/libquicktime as
+  quicktime-support wouldn't work otherwise.
+
+*transcode-0.6.13 (27 Oct 2004)
+
+  27 Oct 2004; Marc Hildebrand <zypher@gentoo.org> transcode-0.6.13.ebuild:
+  Version bump.
+
+  20 Oct 2004; Chris White <chriswhite@gentoo.org> transcode-0.6.12-r2.ebuild:
+  Fixed some filter-flag stuff with regards to Bug #48699.
+
+  06 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  transcode-0.6.12-r1.ebuild, transcode-0.6.12-r2.ebuild:
+  get_libdir fixes
+
+*transcode-0.6.12-r2 (29 Sep 2004)
+
+  29 Sep 2004; Daniel Goller <morfic@gentoo.org>
+  +files/transcode-0.6.12-r2-dvdmenu.patch,
+  +files/transcode-0.6.12-r2-gcc34.patch, +transcode-0.6.12-r2.ebuild:
+  ebuild cleanup + fixes for bug #43907, bug #57513, bug #56535, bug #39386
+  Special thanks to autovoicer Bret Towe
+
+  08 Aug 2004; Patrick Dawson <pkdawson@gentoo.org> transcode-0.6.11.ebuild:
+  Added another gcc-3.4 fix. Closes bug #54046.
+  Thanks to Michael Guterl <squeegy@cinci.rr.com>
+
+  25 Jun 2004; Daniel Goller <morfic@gentoo.org> transcode-0.6.12-r1.ebuild:
+  Applying 2nd patch to allow compilation on gcc-3.4.0
+  Added patch Thanks to  ecco@piggy.demon.nl
+  Fixes Bug #49457
+
+  09 Jun 2004; Aron Griffis <agriffis@gentoo.org> transcode-0.6.10.ebuild,
+  transcode-0.6.11.ebuild, transcode-0.6.12-r1.ebuild,
+  transcode-0.6.12.ebuild:
+  Fix use invocation
+
+  01 Jun 2004; Travis Tilley <lv@gentoo.org> transcode-0.6.12-r1.ebuild:
+  stable on amd64
+
+  25 May 2004; Danny van Dyk <kugelfang@gentoo.org>
+  transcode-0.6.12-r1.ebuild:
+  Fixed BUG #52023. -fPIC necessary on amd64, so we don't filter-flags it
+  anymore.
+
+  11 May 2004; Scott W Taylor <swtaylor@gentoo.org>
+  transcode-0.6.12-r1.ebuild:
+  cflags=-fPIC yields asm BREG error
+
+  28 Apr 2004; Travis Tilley <lv@gentoo.org> +files/transcode-gcc34.patch,
+  transcode-0.6.12-r1.ebuild:
+  added fix for gcc 3.4
+
+  28 Feb 2004; Marc Hildebrand <zypher@gentoo.org> transcode-0.6.12-r1.ebuild:
+  added two filter-flags, removed use_enable mmx
+  See bug #38570
+
+  27 Feb 2004; Seemant Kulleen <seemant@gentoo.org> transcode-0.6.10.ebuild,
+  transcode-0.6.11.ebuild, transcode-0.6.12-r1.ebuild:
+  move the filter-flags statement into src_compile
+
+  27 Feb 2004; Seemant Kulleen <seemant@gentoo.org> transcode-0.6.10.ebuild,
+  transcode-0.6.11.ebuild:
+  move the filter-flags statement into src_compile
+
+  25 Feb 2004; Jason Wever <weeve@gentoo.org> transcode-0.6.12-r1.ebuild:
+  Masked on sparc because revision bump introduced broken dependencies which
+  cannot be met at this time.
+
+*transcode-0.6.12-r1 (24 Feb 2004)
+
+  24 Feb 2004; Martin Holzer <mholzer@gentoo.org> transcode-0.6.12-r1.ebuild:
+  adding libtheora support.
+
+*transcode-0.6.12 (17 Jan 2004)
+
+  17 Jan 2004; Martin Holzer <mholzer@gentoo.org> transcode-0.6.12.ebuild:
+  Version bumped. Compiles only with gcc3 at this time.
+
+  17 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> transcode-0.6.10.ebuild:
+  manifest fix
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> transcode-0.6.10.ebuild:
+  set ppc in keywords
+
+  29 Dec 2003; Jason Wever <weeve@gentoo.org> transcode-0.6.11.ebuild:
+  Added ~sparc to keywords.
+
+  26 Dec 2003; Martin Holzer <mholzer@gentoo.org> transcode-0.6.11.ebuild:
+  x86 stable. Closes 36444.
+
+*transcode-0.6.11 (06 Nov 2003)
+
+  06 Nov 2003; Martin Schlemmer <azarah@gentoo.org>
+  transcode-0.6.10-r1.ebuild, transcode-0.6.11.ebuild,
+  files/transcode-0.6.10-no-mmx.patch, files/transcode-0.6.11-no-mmx.patch:
+  Update version.  Also fix bug #30877 properly.
+
+  06 Nov 2003; Martin Schlemmer <azarah@gentoo.org> transcode-0.6.10.ebuild:
+  Leave setting configure options if mmx,sse and 3dnow in USE alone for now, as
+  the upstream sources do not set/use the defines (HAVE_MMX,HAVE_MMX_TRUE)
+  correctly, bug #30877.
+
+  11 Oct 2003; Heinrich Wendel <lanius@gentoo.org> transcode-0.6.9.ebuild:
+  stable bump on x86, cause of avifile compile fix
+
+  11 Oct 2003; Heinrich Wendel <lanius@gentoo.org> transcode-0.6.10.ebuild,
+  transcode-0.6.3.ebuild, transcode-0.6.6.ebuild, transcode-0.6.7.ebuild,
+  transcode-0.6.8.ebuild, transcode-0.6.9.ebuild:
+  bug #30196 quicktime dep
+
+*transcode-0.6.10 (26 Sep 2003)
+
+  26 Sep 2003; Martin Holzer <mholzer@gentoo.org> transcode-0.6.10.ebuild:
+  Version bumped.
+
+  25 Sep 2003; Martin Holzer <mholzer@gentoo.org> transcode-0.6.8.ebuild,
+  files/transcode-0.6.8-soxfunc.patch:
+  Added soxfunc patch. Closes #26940
+
+  25 Sep 2003; Martin Holzer <mholzer@gentoo.org> transcode-0.6.6.ebuild:
+  Added 2pass patch. closes #25829
+
+*transcode-0.6.9 (29 Aug 2003)
+
+  29 Aug 2003; Martin Holzer <mholzer@gentoo.org> transcode-0.6.9.ebuild,
+  files/transcode-0.6.9-makefile.patch:
+  Version bumped. Ebuild submitted by José Romildo Malaquias
+  <romildo@uber.com.br> in #26462.
+
+  05 Aug 2003; Martin Holzer <mholzer@gentoo.org> transcode-0.6.3.ebuild,
+  transcode-0.6.6.ebuild, transcode-0.6.7.ebuild, transcode-0.6.8.ebuild:
+  Changed quicktime to virtual/quicktime
+
+  22 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> transcode-*.ebuild :
+  Changed flags alteration.
+
+  11 Jul 2003; Martin Holzer <mholzer@gentoo.org> transcode-0.6.6.ebuild:
+  Marked stable on x86.
+
+*transcode-0.6.8 (11 Jul 2003)
+
+  11 Jul 2003; Martin Holzer <mholzer@gentoo.org> transcode-0.6.8.ebuild:
+  Version bumped.
+
+*transcode-0.6.6 (29 Jun 2003)
+
+  29 Jun 2003; Martin Holzer <mholzer@gentoo.org> transcode-0.6.6.ebuild:
+  Version bumped. Closes #21771.
+
+*transcode-0.6.7 (29 Jun 2003)
+
+  04 Jul 2003; Stefan Jones <cretin@gentoo.org> transcode-0.6.7.ebuild,
+  Added clone_close patch so transcode works with nptl!
+
+  29 Jun 2003; Stefan Jones <cretin@gentoo.org> transcode-0.6.7.ebuild,
+  New version, also updated libdv dep
+ 
+*transcode-0.6.4 (05 May 2003)
+
+  12 May 2003; Martin Holzer <mholzer@gentoo.org> transcode-0.6.3.ebuild,
+  transcode-0.6.4.ebuild, transcode-0.6.4_pre20030409.ebuild:
+  Updated -fPic -> -fPIC
+
+  05 May 2003; Martin Holzer <mholzer@gentoo.org> transcode-0.6.4.ebuild:
+  Version bumped. Closes #20307.
+
+*transcode-0.6.4_pre20030311 (04 May 2003)
+
+  04 May 2003; Martin Holzer <mholzer@gentoo.org>
+  transcode-0.6.4_pre20030311.ebuild, transcode-0.6.4_pre20030409.ebuild:
+  Fixing path to mplayer libpostproc. Closes #16896.
+  Removed mplayer from depend. Closes #20062.
+
+*transcode-0.6.4.20030409 (16 Apr 2003)
+
+  16 Apr 2003; Martin Holzer <mholzer@gentoo.org> transcode-0.6.4.20030311.ebuild,
+  transcode-0.6.4.20030409.ebuild:
+  updating ffmpeg dependency. version bumped.
+
+*transcode-0.6.4.20030311 (24 Feb 2003)
+
+  16 Mar 2003; Luca Barbato <lu_zero@gentoo.org> transcode-0.6.4.20030311.ebuild :
+  That works on ppc, thanks to Strubie from the ppc forum
+
+  05 Mar 2003; Martin Schlemmer <azarah@gentoo.org> transcode-0.6.3.ebuild :
+  Get to work with latest netpbm (10.*0).
+
+*transcode-0.6.3 (24 Feb 2003)
+
+  05 Mar 2003; Martin Schlemmer <azarah@gentoo.org> transcode-0.6.3.ebuild :
+  Get to work with latest netpbm (10.*0).
+
+  02 Mar 2003; Martin Holzer <mholzer@gentoo.org> transcode-0.6.3.ebuild :
+  Marked as stable.
+
+  24 Feb 2003; phoen][x <phoenix@gentoo.org> transcode-0.6.3.ebuild,
+  files/digest-transcode-0.6.3 :
+  Version bump. This closes bug #14833.
+
+*transcode-0.6.3.20030116-r1 (13 Feb 2003)
+
+  12 Mar 2003; root <root@gentoo.org> transcode-0.6.2.20021114.ebuild,
+  transcode-0.6.2.20021114.ebuild, transcode-0.6.3.20021205-r1.ebuild,
+  transcode-0.6.3.20021205-r1.ebuild, transcode-0.6.3.20021219.ebuild,
+  transcode-0.6.3.20021219.ebuild, transcode-0.6.3.20030116-r1.ebuild,
+  transcode-0.6.3.20030116-r1.ebuild, transcode-0.6.3.20030116.ebuild,
+  transcode-0.6.3.20030116.ebuild:
+  cleanup
+
+  24 Feb 2003; phoen][x <phoenix@gentoo.org> :
+  Ebuild has been masked (it'll be deleted later) to avoid
+  downgrade problems (in portage, 0.6.3.* > 0.6.3).
+
+  13 Feb 2003; Nick Hadaway <raker@gentoo.org>
+  transcode-0.6.3.20030116-r1.ebuild,
+  files/digest-transcode-0.6.3.20030116-r1 :
+  Completed library support.  Please note that libpostproc
+  doesn't appear to be detected with mplayer-0.90_rc2 but is
+  with _rc3...
+
+  13 Feb 2003; Nick Hadaway <raker@gentoo.org>
+  transcode-0.6.3.20030116-r1.ebuild,
+  files/digest-transcode-0.6.3.20030116-re :
+  Library support appears now to complete. :)  Depending on the
+  hopefully soon to be marked stable series 10 of netpbm.
+
+  13 Feb 2003; Mark Guertin <gerk@gentoo.org> transcode-0.6.0.ebuild transcode-0.6.1-r1.ebuild
+  transcode-0.6.2.20021114.ebuild transcode-0.6.2.ebuild transcode-0.6.3.20021205-r1.ebuild
+  transcode-0.6.3.20021219.ebuild transcode-0.6.3.20030116.ebuild :
+  Set -ppc in keywords, very x86 specific code.
+
+*transcode-0.6.3.20030116 (13 Feb 2003)
+
+  24 Feb 2003; phoen][x <phoenix@gentoo.org> :
+  Ebuild has been masked (it'll be deleted later) to avoid
+  downgrade problems (in portage, 0.6.3.* > 0.6.3).
+
+  19 Jan 2003; Martin Holzer <mholzer@gentoo.org> transcode-0.6.3.20030116.ebuild files/digest-transcode-0.6.3.20030116 ChangeLog :
+  Version bumped. Closes #14066.
+
+*transcode-0.6.3.20021219 (19 Jan 2003)
+
+  24 Feb 2003; phoen][x <phoenix@gentoo.org> :
+  Ebuild has been masked (it'll be deleted later) to avoid
+  downgrade problems (in portage, 0.6.3.* > 0.6.3).
+
+  19 Jan 2003; Martin Holzer <mholzer@gentoo.org> transcode-0.6.3.20021219.ebuild files/digest-transcode-0.6.3.20021219 ChangeLog :
+  Version bumped. Now works without avifile !!!. Closes #12471.
+
+  18 Jan 2003; Martin Holzer <mholzer@gentoo.org> 
+  Big commit cause avifile.0.7.25 breaks all transcode packages
+
+*transcode-0.6.3.20021205-r1 (19 Jan 2003)
+
+  24 Feb 2003; phoen][x <phoenix@gentoo.org> :
+  Ebuild has been masked (it'll be deleted later) to avoid
+  downgrade problems (in portage, 0.6.3.* > 0.6.3).
+
+  19 Jan 2003; Martin Holzer <mholzer@gentoo.org> transcode-0.6.3.20021205-r1.ebuild files/digest-transcode-0.6.3.20021205-r1 ChangeLog :
+  Now works without avifile !!! and supports subtitles. Closes #12452. 
+
+*transcode-0.6.3.20021205 (11 Dec 2002)
+
+  24 Feb 2003; phoen][x <phoenix@gentoo.org> :
+  Version is not in portage anymore. cvs log shows that mholzer deleted this version
+  on Jan 19 2003.
+
+  11 Dec 2002; B.Lauwers <blauwers@gentoo.org> Changelog, transcode-0.6.3.20021205.ebuild :
+  Bumped to new version per Bug#11114
+
+*transcode-0.6.2 (11 Dec 2002)
+
+  15 Feb 2003; Martin Holzer <mholzer@gentoo.org> transcode-0.6.2.ebuild :
+  Marking as stable.
+
+  11 Dec 2002; B.Lauwers <blauwers@gentoo.org> Changelog, transcode-0.6.2.ebuild :
+  Bumped to new version per Bug#11114
+
+*transcode-0.6.2.20021114 (17 Nov 2002)
+
+  17 Nov 2002; phoen][x <phoenix@gentoo.org> ChangeLog, transcode-0.6.2.20021114.ebuild,
+  files/digest-transcode-0.6.2.20021114 :
+  Bumped to new version and made it DEPEND on the newest mplayer - this should
+  fix the GET_PP_QUALITY_MAX issue. Thanks to Tony Clark <tclark@telia.com>
+  for the contribution.
+
+*transcode-0.6.1-r1 (29 Oct 2002)
+
+  15 Feb 2003; Martin Holzer <mholzer@gentoo.org> transcode-0.6.1-r1.ebuild :
+  Marking as stable
+
+  29 Oct 2002; phoen][x <phoenix@gentoo.org> ChangeLog, transcode-0.6.1-r1.ebuild,
+  files/digest-transcode-0.6.1-r1, transcode-0.6.1-PP_QUALITY_MAX.patch :
+  Added a workaround for the GET_PP_QUALITY_MAX compile problem. This fixes bugs
+  #9351, #10788 and #10790. Thanks for your help, guys.
+
+*transcode-0.6.1 (29 Oct 2002)
+
+  29 Oct 2002; phoen][x <phoenix@gentoo.org> ChangeLog, transcode-0.6.1.ebuild,
+  files/digest-transcode-0.6.1 :
+  Bumped to new version and put it in the unstable profile. This closes bug #9351. 
+  Thanks to Tony Clark <tclark@telia.com> for the submission.
+
+*transcode-0.6.0 (28 Aug 2002)
+
+  18 Jan 2003; Martin Holzer <mholzer@gentoo.org> transcode-0.6.0.ebuild
+  transcode-0.6.0-PP_QUALITY_MAX.patch :
+  Added mplayer dependency, downported PP_QUALITY_MAX patch
+
+  11 Sep 2002; Mark Guertin <gerk@gentoo.org> :
+  set nasm as x86 only dependancy
+
+  28 Aug 2002; phoen][x <phoenix@gentoo.org> transcode-0.6.0.ebuild :
+  Made libsdl an optional dependency.
+  This closes bug 7000.
+
+  28 Aug 2002; phoen][x <phoenix@gentoo.org> transcode-0.6.0.ebuild :
+  Deleted the gtk+ dependency - transcode doesnt need gtk+ while building.
+
+  12 Aug 2002; Martin Schlemmer <azarah@gentoo.org> transcode-0.6.0.ebuild :
+  Add support for MPlayer's libpostproc.a.
+
+  11 Aug 2002; Martin Schlemmer <azarah@gentoo.org> :
+  Updated version.
+
+*transcode-0.6.0_pre5-r2 (29 May 2002)
+
+  11 Aug 2002; phoen][x <phoenix@gentoo.org> transcode-0.6.0_pre5-r2.ebuild :
+  Made transcode depend on libdv-0.9.5*. The new libdv doesnt come with libdv.so.1.
+  This fixes bug 6271.
+
+  29 May 2002; Martin Schlemmer <azarah@gentoo.org> :
+  Seems as if to not want to build without avifile and dvdread
+  currently.
+
+*transcode-0.6.0_pre5-r1 (26 May 2002)
+
+  26 May 2002; Martin Schlemmer <azarah@gentoo.org> :
+  Libtoolize to fix invalid paths in plugin .la's.  Add more configure
+  options according to USE flags.
+
+*transcode-0.6.0_pre5 (16 May 2002)
+
+  16 May 2002; Dan Armak <danarmak@gentoo.org>
+  New upstream version, lots of fixes. Fixes infamous bug #2583 (and many duplicates)
+  - dv_init() being called without parameters.
+
+*transcode-0.6.0_pre4-r2 (3 May 2002)
+
+  3 May 2002; J.Hudson <jhhudso@gentoo.org>
+  transcode-0.6.0_pre4-r2.ebuild,
+  files/digest-transcode-0.6.0_pre4-r1, Changelog :
+  Added a patch that fixes gcc3 compiles with this package.
+	
+*transcode-0.6.0_pre4-r1 (21 Apr 2002)
+
+  21 Apr 2002; Matthew Kennedy <mkennedy@gentoo.org>
+  transcode-0.6.0_pre4-r1.ebuild,
+  files/digest-transcode-0.6.0_pre4-r1, ChangeLog :
+  Added missing dependency media-libs/a52dec. Corrected ChangeLog header.
+
+*transcode-0.6.0_pre4 (15 Apr 2002)
+
+  15 Apr 2002; Seemant Kulleen <seemant@gentoo.org> transcode-0.6.0_pre4.ebuild
+  files/digest-transcode-0.6.0_pre4 :
+  Version bump submitted by doug_shea@alumni.ucsd.edu (Doug Shea) in bug #1740
+
+*transcode-0.5.3 (2 Apr 2002)
+
+  2 Apr 2002; Dan Armak <danarmak@gentoo.org> ChangeLog : initial version

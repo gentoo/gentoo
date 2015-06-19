@@ -1,0 +1,104 @@
+#!/sbin/runscript
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+VARDIR="/var/lib/primecoin"
+CONFFILE="${VARDIR}/.primecoin/primecoin.conf"
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [[ "${PRIMECOIN_USER}" == "" ]] ; then
+		eerror "Please edit /etc/conf.d/primecoind"
+		eerror "A user must be specified to run primecoind as that user."
+		eerror "Modify USER to your needs (you may also add a group after a colon)"
+		return 1
+	fi
+	if ! `getent passwd | cut -d ':' -f 1 | grep $( echo "${PRIMECOIN_USER}" | cut -d ':' -f 1 ) -sq` ; then
+		eerror "Please edit /etc/conf.d/primecoind"
+		eerror "Specified user must exist!"
+		return 1
+	fi
+	if `echo "${PRIMECOIN_USER}" | grep ':' -sq` ; then
+		if ! `cut -d ':' -f 1 /etc/group | grep $( echo "${PRIMECOIN_USER}" | cut -d ':' -f 2 ) -sq` ; then
+			eerror "Please edit /etc/conf.d/primecoind"
+			eerror "Specified group must exist!"
+			return 1
+		fi
+	fi
+	if ! grep -q '^rpcpassword=' "${CONFFILE}"; then
+		eerror "Please edit `readlink -f ${CONFFILE}`"
+		eerror "There must be at least a line assigning rpcpassword=something-secure"
+		return 1
+	fi
+	if ! stat -Lc '%a' "${CONFFILE}" | grep -q '^[4567]00$'; then
+		eerror "`readlink -f ${CONFFILE}` should not be readable by other users"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting Primecoind daemon"
+
+	pkg-config openrc
+	if [ $? = 0 ]; then
+	   start_openrc
+	else
+	   start_baselayout
+	fi
+}
+
+stop() {
+       ebegin "Stopping Primecoin daemon"
+
+       pkg-config openrc
+       if [ $? = 0 ]; then
+	   stop_openrc
+       else
+	   stop_baselayout
+       fi
+}
+
+start_openrc() {
+	start-stop-daemon \
+	--start --user "${PRIMECOIN_USER}" --name primecoind \
+	--pidfile /var/run/primecoind.pid --make-pidfile \
+	--env HOME="${VARDIR}" --exec /usr/bin/primecoind \
+	--nicelevel "${NICELEVEL}" \
+	--background \
+	--wait 2000 \
+	-- ${PRIMECOIN_OPTS}
+	eend $?
+}
+
+stop_openrc() {
+	start-stop-daemon --stop --user "${PRIMECOIN_USER}" \
+	--name primecoind --pidfile /var/run/primecoind.pid \
+	--wait 30000 \
+	--progress
+	eend $?
+}
+
+start_baselayout() {
+	start-stop-daemon \
+	--start --user "${PRIMECOIN_USER}" --name primecoind \
+	--pidfile /var/run/primecoind.pid --make-pidfile \
+	--env HOME="${VARDIR}" --exec /usr/bin/primecoind \
+	--chuid "${PRIMECOIN_USER}" \
+	--nicelevel "${NICELEVEL}" \
+	--background \
+	-- ${PRIMECOIN_OPTS}
+	eend $?
+}
+
+stop_baselayout() {
+	start-stop-daemon \
+	--stop \
+	--user "${PRIMECOIN_USER}" \
+	--name primecoind \
+	--pidfile /var/run/primecoind.pid
+	eend $?
+}

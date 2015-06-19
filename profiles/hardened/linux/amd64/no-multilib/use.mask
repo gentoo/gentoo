@@ -1,0 +1,24 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/amd64/no-multilib/use.mask,v 1.2 2013/05/16 19:29:27 zorry Exp $
+
+# Mask the multilib flags back for non-multilib profile.
+abi_x86_32
+
+# Mirror profile/amd64/no-multilib/use.mask
+
+# 2007/08/29 Christoph Mende <angelos@gentoo.org>
+# app-accessibility/mbrola is x86 only
+mbrola
+
+# 2007/08/24 Michael Marineau <marineam@gentoo.org>
+# Xen HVM support requires building 32-bit binaries.
+hvm
+
+# 2009/05/11 Doug Goldstein <cardoe@gentoo.org>
+# Mask 32bit since this will always require emulation packages
+32bit
+
+# Matt Turner <mattst88@gentoo.org) (10 Feb 2012)
+# mask d3d since wine is 32-bit
+d3d

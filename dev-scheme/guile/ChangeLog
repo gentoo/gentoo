@@ -1,0 +1,718 @@
+# ChangeLog for dev-scheme/guile
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-scheme/guile/ChangeLog,v 1.107 2014/12/16 17:54:40 haubi Exp $
+
+  16 Dec 2014; Michael Haubenwallner <haubi@gentoo.org> guile-1.8.8-r1.ebuild:
+  add ~ppc-aix Prefix keyword
+
+  11 Dec 2014; Zac Medico <zmedico@gentoo.org> guile-1.8.8-r1.ebuild,
+  guile-2.0.0.ebuild:
+  Add sys-apps/texinfo to DEPEND for bug #532214.
+
+  17 Oct 2014; Pacho Ramos <pacho@gentoo.org>
+  +files/guile-1.8.8-gtexinfo-5.patch, guile-1.8.8-r1.ebuild:
+  Fix building with texinfo-5 (#464044)
+
+  10 Jun 2014; Mike Frysinger <vapier@gentoo.org> guile-1.8.8-r1.ebuild:
+  Add arm64/m68k love.
+
+  24 Apr 2013; Panagiotis Christopoulos <pchrist@gentoo.org>
+  guile-1.8.8-r1.ebuild, +files/guile-1.8.8-makeinfo-5.patch:
+  Trivial fixes for latest automake(1.13) and makeinfo-5*, fix bug #467064 and
+  bug #464044, sed hack by Arfrever Frehtes Taifersar Arahesis [arfrever.fta
+  gmail com] and texinfo patch by Cyprien Nicolas (fulax) [gentoo-bugzie fulax
+  fr]
+
+  24 Apr 2013; Panagiotis Christopoulos <pchrist@gentoo.org>
+  guile-1.8.8-r1.ebuild:
+  Force WANT_AUTOMAKE=1.12 , temporary fix for bug #467064, reported by Thomas
+  Witt [bugs thwitt de]
+
+  20 Feb 2013; Zac Medico <zmedico@gentoo.org> guile-1.8.8-r1.ebuild:
+  Add ~arm-linux keyword.
+
+  02 Feb 2013; Pacho Ramos <pacho@gentoo.org> -files/gcc-4.3.patch,
+  -files/guile-1.8.6-interix.patch, -files/guile-1.8.7-fix_tests.patch,
+  -files/guile-1.8.7-gcc45.patch, -files/slibtest.patch, -guile-1.6.8.ebuild,
+  -guile-1.8.4-r1.ebuild, -guile-1.8.4.ebuild, -guile-1.8.5-r1.ebuild,
+  -guile-1.8.5.ebuild, -guile-1.8.6.ebuild, -guile-1.8.7-r1.ebuild,
+  -guile-1.8.7-r2.ebuild, -guile-1.8.7.ebuild, -guile-1.8.8.ebuild,
+  metadata.xml:
+  Drop old
+
+  02 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup up due #154183
+
+  02 Nov 2012; Fabian Groffen <grobian@gentoo.org> guile-1.8.8-r1.ebuild:
+  Marked ~x64-macos
+
+  27 Aug 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  +files/guile-1.8.8-gcc46.patch, guile-1.8.8-r1.ebuild:
+  Backport upstream patch to fix SIGSEGV with gcc-4.6 wrt #424475 by Ivan Bagaev
+  <gmiramir@gmail.com> Thanks to Cyprien Nicolas (fulax)
+  <c.nicolas+bugs@gmail.com> for detailed analysis and finding patch. Acked by
+  hkBst
+
+  02 May 2012; Jeff Horelick <jdhore@gentoo.org> guile-2.0.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> guile-1.8.8-r1.ebuild:
+  keyword ~amd64-fbsd
+
+  28 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> guile-2.0.0.ebuild:
+  Use virtual/libffi instead of dev-libs/libffi in case we have to switch to
+  using copy from GCC in future.
+
+  09 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> guile-1.8.8-r1.ebuild:
+  ppc64 stable wrt #335657
+
+  12 Jun 2011; Raúl Porcel <armin76@gentoo.org> guile-1.8.8-r1.ebuild:
+  ia64/s390/sh/sparc stable wrt #335657
+
+  01 Jun 2011; Tobias Klausmann <klausman@gentoo.org> guile-1.8.8-r1.ebuild:
+  Stable on alpha, bug #335657
+
+  30 May 2011; Markos Chandras <hwoarang@gentoo.org> guile-1.8.8-r1.ebuild:
+  Stable on amd64 wrt bug #335657
+
+  28 May 2011; Brent Baude <ranger@gentoo.org> guile-1.8.8-r1.ebuild:
+  Marking guile-1.8.8-r1 ppc for bug 335657
+
+  24 May 2011; Markus Meier <maekke@gentoo.org> guile-1.8.8-r1.ebuild:
+  arm stable, bug #335657
+
+  22 May 2011; Jeroen Roovers <jer@gentoo.org> guile-1.8.8-r1.ebuild:
+  Stable for HPPA (bug #335657).
+
+  20 May 2011; Thomas Kahle <tomka@gentoo.org> guile-1.8.8-r1.ebuild:
+  x86 stable per bug 335657
+
+*guile-1.8.8-r1 (29 Apr 2011)
+
+  29 Apr 2011; Panagiotis Christopoulos <pchrist@gentoo.org>
+  +guile-1.8.8-r1.ebuild, +files/guile-1.8.8-fix_guile-config.patch:
+  revbump, first try to fix bug #202205. Fix based on old patch from Alexis
+  Ballier (aballier)
+
+  29 Apr 2011; Panagiotis Christopoulos <pchrist@gentoo.org>
+  guile-1.8.8.ebuild:
+  dev-scheme/guile-1.8.8: merging elisp and emacs USE flags to emacs only
+
+*guile-2.0.0 (07 Apr 2011)
+
+  07 Apr 2011; Marijn Schouten <hkBst@gentoo.org> +guile-2.0.0.ebuild:
+  Major bump; keywords dropped
+
+*guile-1.8.8 (24 Dec 2010)
+
+  24 Dec 2010; Panagiotis Christopoulos <pchrist@gentoo.org>
+  +guile-1.8.8.ebuild:
+  Bumped guile to 1.8.8. This is a maintainance release of the 1.8.x series
+
+  14 Nov 2010; Justin Lecher <jlec@gentoo.org> guile-1.6.8.ebuild,
+  guile-1.8.4.ebuild, guile-1.8.4-r1.ebuild, guile-1.8.5.ebuild,
+  guile-1.8.5-r1.ebuild, guile-1.8.6.ebuild, guile-1.8.7.ebuild:
+  QA on quoting, empty lines, ebuild style
+
+*guile-1.8.7-r2 (14 Nov 2010)
+
+  14 Nov 2010; Justin Lecher <jlec@gentoo.org>
+  +files/guile-1.8.6-interix.patch, +guile-1.8.7-r2.ebuild:
+  Imported prefix changes
+
+*guile-1.8.7-r1 (24 Sep 2010)
+
+  24 Sep 2010; Justin Lecher <jlec@gentoo.org> +guile-1.8.7-r1.ebuild:
+  Keyworded for ~-linux and EAPI=3
+
+  30 May 2010; Ryan Hill <dirtyepic@gentoo.org> guile-1.8.7.ebuild,
+  +files/guile-1.8.7-gcc45.patch:
+  Fix building w/ GCC 4.5, patch from xarthisius. (bug #317175)
+
+  08 Mar 2010; Mounir Lamouri <volkmar@gentoo.org> guile-1.8.6.ebuild:
+  Stabilizing 1.8.6 for ppc, bug 245701.
+  Fix bug 228097, bug 267367 and bug 307233.
+
+  14 Dec 2009; Ulrich Mueller <ulm@gentoo.org> guile-1.8.7.ebuild,
+  +files/guile-1.8.7-fix_tests.patch:
+  Fix test failure, bug 295093. Proxy commit for Tomás Touceda (chiiph).
+
+*guile-1.8.7 (05 Dec 2009)
+
+  05 Dec 2009; Ulrich Mueller <ulm@gentoo.org>
+  -files/guile-1.4-inet_aton.patch, -files/guile-1.6.7-gcc4.patch,
+  -files/guile-1.6.7-posix.patch, -files/guile-1.6.7-scmsigs.patch,
+  -files/guile-1.8.1-autotools_fixes.patch,
+  -files/guile-1.8.1-clog-cexp.patch,
+  -files/guile-1.8.1-defaultincludes.patch, -guile-1.8.2.ebuild,
+  -guile-1.8.3.ebuild, -files/guile-1.8-rational.patch,
+  -files/fix-reader-cr.diff, -files/guile-amd64.patch,
+  -guile-1.8.3-r1.ebuild, -guile-1.8.3-r2.ebuild, +guile-1.8.7.ebuild:
+  Version bump, fixes bug 291617, proxy commit for Tomás Touceda (chiiph).
+  Remove intermediate versions and stale patches.
+
+  19 Sep 2009; Markus Meier <maekke@gentoo.org> guile-1.8.5-r1.ebuild:
+  arm stable, bug #245701
+
+  30 Aug 2009; Tobias Klausmann <klausman@gentoo.org> guile-1.8.6.ebuild:
+  Stable on alpha, bug #245701
+
+  31 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> guile-1.8.2.ebuild,
+  guile-1.8.3.ebuild, guile-1.8.3-r1.ebuild, guile-1.8.3-r2.ebuild,
+  guile-1.8.4.ebuild, guile-1.8.4-r1.ebuild, guile-1.8.5.ebuild,
+  guile-1.8.5-r1.ebuild, guile-1.8.6.ebuild:
+  Move USE defaults deprecated, regex and threads from
+  profiles/base/package.use to here.
+
+  26 Feb 2009; Joseph Jezak <josejx@gentoo.org> guile-1.8.5-r1.ebuild:
+  Marked ppc stable for bug #245701.
+
+  14 Dec 2008; Markus Meier <maekke@gentoo.org> guile-1.8.5-r1.ebuild:
+  amd64/x86 stable, bug #245701
+
+  12 Dec 2008; Ferris McCormick <fmccor@gentoo.org> guile-1.8.5-r1.ebuild:
+  Sparc stable, Bug #245701.
+
+*guile-1.8.6 (11 Dec 2008)
+
+  11 Dec 2008; Marijn Schouten <hkBst@gentoo.org> +guile-1.8.6.ebuild:
+  bump
+
+  21 Nov 2008; Jeroen Roovers <jer@gentoo.org> guile-1.8.5-r1.ebuild:
+  Stable for HPPA (bug #245701).
+
+  20 Nov 2008; Brent Baude <ranger@gentoo.org> guile-1.8.5-r1.ebuild:
+  stable ppc64, bug 245701
+
+  12 Oct 2008; Ulrich Mueller <ulm@gentoo.org> guile-1.8.5-r1.ebuild:
+  Specify name of Emacs site-init file explicitely.
+
+  28 Aug 2008; Ulrich Mueller <ulm@gentoo.org> guile-1.8.5-r1.ebuild:
+  Fix byte-compilation of Emacs lisp files, bug 236046.
+
+*guile-1.8.5-r1 (22 Aug 2008)
+
+  22 Aug 2008; Ulrich Mueller <ulm@gentoo.org> +files/50guile-gentoo.el,
+  +guile-1.8.5-r1.ebuild:
+  Fix Emacs support, bug 234898.
+
+  28 Jul 2008; Panagiotis Christopoulos <pchrist@gentoo.org> metadata.xml:
+  Update metadata.xml to include USE flag descriptions. Entries taken from
+  profiles/use.local.desc
+
+  04 Jul 2008; Marijn Schouten <hkBst@gentoo.org> guile-1.8.5.ebuild:
+  fix bug 230754
+
+*guile-1.8.5 (07 May 2008)
+
+  07 May 2008; Marijn Schouten <hkBst@gentoo.org> +guile-1.8.5.ebuild:
+  bump:
+  - Infrastructure changes
+
+    - Guile repository switched from CVS to Git
+    - Add support for `pkg-config'
+
+  - New modules (see the manual for details)
+
+    - `(srfi srfi-88)'
+
+  - New features (see the manual for details)
+
+    - New `postfix' read option, for SRFI-88 keyword syntax
+    - Some I/O primitives have been inlined, which improves I/O performance
+    - New object-based traps infrastructure
+    - New support for working on Guile code from within Emacs
+
+  - Bugs fixed
+
+    - `scm_add_slot ()' no longer segfaults (fixes bug #22369)
+    - Fixed `(ice-9 match)' for patterns like `((_ ...) ...)'
+    - `(oop goops describe)' now properly provides the `describe' feature
+    - Fixed `args-fold' from `(srfi srfi-37)'
+    - `(srfi srfi-35)' is now visible through `cond-expand'
+    - Fixed type-checking for the second argument of `eval'
+    - Fixed type-checking for SRFI-1 `partition'
+    - Fixed `struct-ref' and `struct-set!' on "light structs"
+    - Honor struct field access rights in GOOPS
+    - Changed the storage strategy of source properties, which fixes
+      a deadlock
+    - Allow compilation of Guile-using programs in C99 mode with GCC 4.3
+      and later
+    - Fixed build issue for GNU/Linux on IA64
+    - Fixed build issues on NetBSD 1.6
+    - Fixed build issue on Solaris 2.10 x86_64
+    - Fixed build issue with DEC/Compaq/HP's compiler
+    - Fixed `scm_from_complex_double' build issue on FreeBSD
+    - Fixed `alloca' build issue on FreeBSD 6
+    - Removed use of non-portable makefile constructs
+    - Fixed shadowing of libc's <random.h> on Tru64, which broke compilation
+    - Make sure all tests honor `$TMPDIR'
+
+  - Changes to the distribution
+
+    - New FAQ
+
+  06 May 2008; Marijn Schouten <hkBst@gentoo.org> guile-1.8.4-r1.ebuild:
+  add new fix for libtool-2.2.4, thanks to Panagiotis Christopoulos
+  <pxrist@gmail.com>
+
+*guile-1.8.4-r1 (25 Apr 2008)
+
+  25 Apr 2008; Marijn Schouten <hkBst@gentoo.org> +files/gcc-4.3.patch,
+  +guile-1.8.4-r1.ebuild:
+  add fixes for libtool-2.2 bug 212723 and gcc-4.3, bug 214787
+
+  17 Apr 2008; nixnut <nixnut@gentoo.org> guile-1.8.4.ebuild:
+  Stable on ppc wrt bug 217410
+
+  15 Apr 2008; Jeroen Roovers <jer@gentoo.org> guile-1.8.4.ebuild:
+  Stable for HPPA (bug #217410).
+
+  14 Apr 2008; Markus Rothe <corsair@gentoo.org> guile-1.8.4.ebuild:
+  Stable on ppc64; bug #217410
+
+  14 Apr 2008; Raúl Porcel <armin76@gentoo.org> guile-1.8.4.ebuild:
+  alpha/ia64/sparc stable wrt #217410
+
+  13 Apr 2008; Markus Meier <maekke@gentoo.org> guile-1.8.4.ebuild:
+  amd64/x86 stable, bug #217410
+
+  13 Apr 2008; Marijn Schouten <hkBst@gentoo.org> -guile-1.8.3-r25.ebuild,
+  guile-1.8.4.ebuild:
+  fix license for 1.8.4, bug 212672
+
+  13 Apr 2008; Marijn Schouten <hkBst@gentoo.org> -guile-1.8.3-r25.ebuild:
+  remove experimental prefix=/ ebuild
+
+  24 Feb 2008; Jeroen Roovers <jer@gentoo.org> guile-1.8.3-r2.ebuild:
+  Stable for HPPA (bug #210465).
+
+  24 Feb 2008; Jeroen Roovers <jer@gentoo.org> guile-1.8.2.ebuild:
+  Fix quoting issues.
+
+  21 Feb 2008; Marijn Schouten <hkBst@gentoo.org> guile-1.8.3-r2.ebuild,
+  guile-1.8.4.ebuild:
+  since we don't know whether we are uninstalling or merely cleaning an old
+  install, while leaving a new one, we CANNOT remove
+  /usr/share/guile/site/slibcat, fixes bug 210893, again
+
+  20 Feb 2008; Marijn Schouten <hkBst@gentoo.org> +guile-1.6.8.ebuild:
+  put guile-1.6.8 back as some ebuilds still depend on it, thanks to tove
+
+  20 Feb 2008; Marijn Schouten <hkBst@gentoo.org> -guile-1.6.7.ebuild,
+  -guile-1.6.8.ebuild, -guile-1.8.1-r3.ebuild:
+  remove old stuff
+
+*guile-1.8.4 (20 Feb 2008)
+
+  20 Feb 2008; Marijn Schouten <hkBst@gentoo.org> +guile-1.8.4.ebuild:
+  bump:
+  - Bugs fixed
+
+   - CR (ASCII 0x0d) is (again) recognized as a token delimiter by the
+     reader
+   - Fixed a segmentation fault which occurred when displaying the
+     backtrace of a stack with a promise object (made by `delay') in it
+   - Make `accept' leave guile mode while blocking
+   - `scm_c_read ()' and `scm_c_write ()' now type-check their port
+     argument
+   - Fixed a build problem on AIX (use of func_data identifier)
+   - Fixed a segmentation fault which occurred when hashx-ref or
+     hashx-set! was called with an associator proc that returns neither
+     a pair nor #f.
+   - Secondary threads now always return a valid module for
+     (current-module).
+   - Avoid MacOS build problems caused by incorrect combination of "64"
+     system and library calls.
+   - `guile-snarf' now honors `$TMPDIR'
+   - `guile-config compile' now reports CPPFLAGS used at compile-time
+   - Fixed build with Sun Studio (Solaris 9)
+   - Fixed wrong-type-arg errors when creating zero length SRFI-4
+     uniform vectors on AIX.
+   - Fixed a deadlock that occurs upon GC with multiple threads.
+   - Fixed compile problem with GCC on Solaris and AIX (use of _Complex_I)
+   - Fixed autotool-derived build problems on AIX 6.1.
+   - Fixed NetBSD/alpha support
+   - Fixed MacOS build problem caused by use of rl_get_keymap(_name)
+
+  - New modules (see the manual for details)
+
+   - `(srfi srfi-69)'
+
+  19 Feb 2008; Christoph Mende <angelos@gentoo.org> guile-1.8.3-r2.ebuild:
+  Stable on amd64, bug #210465
+
+  18 Feb 2008; Raúl Porcel <armin76@gentoo.org> guile-1.8.3-r2.ebuild:
+  alpha/ia64/sparc stable wrt #210465
+
+  18 Feb 2008; Brent Baude <ranger@gentoo.org> guile-1.8.3-r2.ebuild:
+  stable ppc64, bug 210465
+
+  17 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  guile-1.8.3-r2.ebuild, guile-1.8.3-r25.ebuild:
+  disable test if USE=regex is not set, fixes bug 164266, reported by zlin
+
+  17 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  guile-1.8.3-r2.ebuild:
+  stable x86, bug 210465
+
+  17 Feb 2008; nixnut <nixnut@gentoo.org> guile-1.8.3-r2.ebuild:
+  Stable on ppc wrt bug 210465
+
+  17 Feb 2008; Marijn Schouten <hkBst@gentoo.org> guile-1.8.3-r2.ebuild:
+  dodir -> keepdir, or else emerging twice will not keep the directory as
+  needed for slib
+
+*guile-1.8.3-r2 (23 Jan 2008)
+
+  23 Jan 2008; Marijn Schouten <hkBst@gentoo.org> +guile-1.8.3-r2.ebuild:
+  fix bug 196639 for guile, and bug 206896 too
+
+  17 Dec 2007; Marijn Schouten <hkBst@gentoo.org> guile-1.8.3-r25.ebuild:
+  fix /-prefix install
+
+  14 Dec 2007; Jeroen Roovers <jer@gentoo.org> guile-1.8.2.ebuild:
+  Stable for HPPA (bug #178360).
+
+  13 Dec 2007; Raúl Porcel <armin76@gentoo.org> guile-1.8.2.ebuild:
+  ia64 stable wrt #178360
+
+  11 Dec 2007; nixnut <nixnut@gentoo.org> guile-1.8.2.ebuild:
+  Stable on ppc wrt bug 178360
+
+*guile-1.8.3-r25 (07 Dec 2007)
+
+  07 Dec 2007; Marijn Schouten <hkBst@gentoo.org> +guile-1.8.3-r25.ebuild:
+  add guile that installs to prefix=/ for einit
+
+  13 Nov 2007; Samuli Suominen <drac@gentoo.org> guile-1.8.2.ebuild:
+  amd64 stable wrt #182995
+
+*guile-1.8.3-r1 (18 Oct 2007)
+
+  18 Oct 2007; Marijn Schouten <hkBst@gentoo.org> +files/fix-reader-cr.diff,
+  +guile-1.8.3-r1.ebuild:
+  fix reader regression
+
+*guile-1.8.3 (17 Oct 2007)
+
+  17 Oct 2007; Marijn Schouten <hkBst@gentoo.org> +guile-1.8.3.ebuild:
+  Add bugfix release 1.8.3:
+  - New modules (see the manual for details)
+
+   - `(srfi srfi-35)'
+   - `(srfi srfi-37)'
+
+  - Bugs fixed
+
+   - The `(ice-9 slib)' module now works as expected
+   - Expressions like "(set! 'x #t)" no longer yield a crash
+   - Warnings about duplicate bindings now go to stderr
+   - A memory leak in `make-socket-address' was fixed
+   - Alignment issues (e.g., on SPARC) in network routines were fixed
+   - A threading issue that showed up at least on NetBSD was fixed
+   - Build problems on Solaris and IRIX fixed
+
+  - Implementation improvements
+
+   - The reader is now faster, which reduces startup time
+   - Procedures returned by `record-accessor' and `record-modifier' are faster
+
+  15 Oct 2007; Markus Rothe <corsair@gentoo.org> guile-1.8.2.ebuild:
+  Stable on ppc64
+
+  05 Oct 2007; Raúl Porcel <armin76@gentoo.org> guile-1.8.2.ebuild:
+  alpha stable wrt #182995, thanks to Tobias Klausmann for testing
+
+  02 Oct 2007; Ferris McCormick <fmccor@gentoo.org> guile-1.8.2.ebuild:
+  Sparc stable --- part of Bug #182995 --- with USE='nls regex deprecated'.
+
+  02 Oct 2007; Christian Faulhammer <opfer@gentoo.org> guile-1.8.2.ebuild:
+  stable x86, bug 182995
+
+*guile-1.8.2 (29 Jul 2007)
+
+  29 Jul 2007; Marijn Schouten <hkBst@gentoo.org> +guile-1.8.2.ebuild:
+  add 1.8.2, remove silly sleep 999 from tests and disable failing patches
+  (all probably upstream)
+
+  23 Jun 2007; Diego Pettenò <flameeyes@gentoo.org> guile-1.8.1-r3.ebuild:
+  Filter -ftree-vectorize flag as per bug #178499.
+
+  02 Jun 2007; nixnut <nixnut@gentoo.org> guile-1.6.8.ebuild:
+  Stable on ppc wrt bug 178360
+
+  31 May 2007; Diego Pettenò <flameeyes@gentoo.org> guile-1.8.1-r3.ebuild:
+  Add ~x86-fbsd keyword.
+
+  25 May 2007; Diego Pettenò <flameeyes@gentoo.org> guile-1.8.1-r3.ebuild:
+  The FreeBSD patches has to be applied before eautoreconf is ran, or they
+  will not be picked up.
+
+  25 May 2007; Marijn Schouten <hkBst@gentoo.org>
+  +files/guile-1.8.1-clog-cexp.patch,
+  +files/guile-1.8.1-defaultincludes.patch, guile-1.8.1-r3.ebuild:
+  add freebsd fixes from flameeyes, bug 179728
+
+  25 May 2007; Marijn Schouten <hkBst@gentoo.org> guile-1.6.8.ebuild:
+  re-enable -j1 for 1.6.8, bug 179738
+
+  20 May 2007; Raúl Porcel <armin76@gentoo.org> guile-1.6.8.ebuild:
+  alpha stable wrt #178360
+
+  19 May 2007; Markus Rothe <corsair@gentoo.org> guile-1.6.8.ebuild:
+  Stable on ppc64; bug #178360
+
+  17 May 2007; Marijn Schouten <hkBst@gentoo.org> +files/slibtest.patch,
+  guile-1.6.8.ebuild:
+  disable the few broken tests, bug 178835; remove large sleep
+
+  16 May 2007; Daniel Gryniewicz <dang@gentoo.org> guile-1.6.8.ebuild:
+  Marked stable on amd64 for bug #178360
+
+  15 May 2007; Ferris McCormick <fmccor@gentoo.org> guile-1.6.8.ebuild:
+  Stable on sparc --- Bug #178360 --- builds, runs all tests, and installs as
+  expected.
+
+  15 May 2007; Jeroen Roovers <jer@gentoo.org> guile-1.6.8.ebuild:
+  Stable for HPPA (bug #178360).
+
+  14 May 2007; Raúl Porcel <armin76@gentoo.org> guile-1.6.8.ebuild:
+  ia64 stable wrt #178360
+
+  14 May 2007; Markus Ullmann <jokey@gentoo.org> guile-1.6.8.ebuild:
+  Stable on x86 wrt bug #178360
+
+  13 Mar 2007; Marijn Schouten <hkBst@gentoo.org> -guile-1.4-r3.ebuild,
+  -guile-1.4.1.ebuild, -guile-1.6.4-r1.ebuild, -guile-1.6.6.ebuild:
+  clean out old guile versions
+
+*guile-1.8.1-r3 (03 Mar 2007)
+
+  03 Mar 2007; Marijn Schouten <hkBst@gentoo.org>
+  +files/guile-1.8.1-autotools_fixes.patch, +files/guile-1.8-rational.patch,
+  -guile-1.8.1-r1.ebuild, +guile-1.8.1-r3.ebuild:
+  add patch for xbindkeys
+
+*guile-1.8.1-r2 (28 Feb 2007)
+
+  28 Feb 2007; Marijn Schouten <hkBst@gentoo.org>
+  +files/guile-1.8-rational.patch, +guile-1.8.1-r2.ebuild:
+  add guile patched for lilypond 2.11.x
+
+  28 Jan 2007; Marijn Schouten <hkBst@gentoo.org> guile-1.8.1-r1.ebuild:
+  deprecated depends on discouraged being enabled, bug 164206
+
+  28 Jan 2007; Marijn Schouten <hkBst@gentoo.org> Manifest:
+  remove guile-1.8.1 with broken econf
+
+*guile-1.8.1-r1 (25 Jan 2007)
+
+  25 Jan 2007; Marijn Schouten <hkBst@gentoo.org> +guile-1.8.1-r1.ebuild:
+  fix missing \ from configure causing all options and use flags to be ignored
+
+*guile-1.8.1 (22 Jan 2007)
+
+  22 Jan 2007; Marijn Schouten <hkBst@gentoo.org> +guile-1.8.1.ebuild:
+  added guile-1.8.1
+
+*guile-1.6.8 (12 Jan 2007)
+
+  12 Jan 2007;  Marijn Schouten <hkBst@gentoo.org> +guile-1.6.8.ebuild:
+  Added 1.6.8 ebuild
+
+  10 Jan 2007;  Marijn Schouten <hkBst@gentoo.org> +files/guile-1.4-inet_aton.patch,
+  +files/guile-amd64.patch, +files/guile-1.6.7-gcc4.patch,
+  +files/guile-1.6.7-posix.patch, +files/guile-1.6.7-scmsigs.patch,
+  +metadata.xml, +guile-1.4-r3.ebuild, +guile-1.4.1.ebuild,
+  +guile-1.6.4-r1.ebuild, +guile-1.6.6.ebuild, +guile-1.6.7.ebuild:
+  Moved from dev-util/guile to dev-scheme/guile.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> guile-1.4-r3.ebuild:
+  Remove gnuconfig_update usage, leave it to econf.
+
+  18 Dec 2006; Fabian Groffen <grobian@gentoo.org>
+  -files/guile-macos-posix.patch, -files/guile-macos-relink.patch,
+  guile-1.6.4-r1.ebuild, guile-1.6.6.ebuild, guile-1.6.7.ebuild:
+  Dropped ppc-macos keyword, see you in prefix.
+
+  18 Mar 2006; Markus Rothe <corsair@gentoo.org> guile-1.6.7.ebuild:
+  Stable on ppc64; bug #126569
+
+  09 Sep 2005; Brent Baude <ranger@gentoo.org> guile-1.6.7.ebuild:
+  Marking guile-1.6.7 as ~ppc64 for bug 103918
+
+  07 Aug 2005; Kito <kito@gentoo.org> +files/guile-1.6.7-posix.patch,
+  +files/guile-1.6.7-scmsigs.patch, guile-1.6.7.ebuild:
+  updated patches or gcc4/Darwin8
+
+  23 Jul 2005; MATSUU Takuto <matsuu@gentoo.org> guile-1.6.7.ebuild:
+  Stable on sh.
+
+  12 Jul 2005; Stephen P. Becker <geoman@gentoo.org> guile-1.6.7.ebuild:
+  stable on mips
+
+  23 Jun 2005; Guy Martin <gmsoft@gentoo.org> guile-1.6.7.ebuild:
+  Stable on hppa.
+
+  14 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org> guile-1.6.7.ebuild:
+  Stable on alpha
+
+  12 Jun 2005; Olivier Crête <tester@gentoo.org> guile-1.6.7.ebuild:
+  Stable on amd64
+
+  12 Jun 2005; Tobias Scherbaum <dertobi123@gentoo.org> guile-1.6.7.ebuild:
+  Stable on ppc.
+
+  06 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> guile-1.6.7.ebuild:
+  Stable on sparc
+
+  24 Apr 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/guile-1.6.7-gcc4.patch, guile-1.6.7.ebuild:
+  Fix to build with gcc-4.0.0.
+
+  06 Apr 2005; Seemant Kulleen <seemant@gentoo.org> guile-1.6.4-r1.ebuild,
+  guile-1.6.6.ebuild, guile-1.6.7.ebuild:
+  make sure ppc compiles this with -O2 rather than -O3 which causes breakage.
+  This should fix bug #85670 by Martin <monsorno@gmx.de>, which should
+  somewhat solve bug #27716, but I leave that to Spanky and Alastair
+
+  06 Apr 2005; Seemant Kulleen <seemant@gentoo.org> -guile-1.6.4.ebuild,
+  -guile-1.6.4-r2.ebuild:
+  remove crufty ebuilds
+
+*guile-1.6.7 (28 Jan 2005)
+
+  28 Jan 2005; Alastair Tse <liquidx@gentoo.org> +guile-1.6.7.ebuild:
+  version bump. should fix compile problems people are having? (#73920)
+
+*guile-1.6.6 (10 Dec 2004)
+
+  10 Dec 2004; Aron Griffis <agriffis@gentoo.org> +guile-1.6.6.ebuild:
+  Bump to 1.6.6
+
+  17 Oct 2004; Alastair Tse <liquidx@gentoo.org>
+  +files/guile-1.4-inet_aton.patch, -files/net_db.c, guile-1.4-r3.ebuild,
+  guile-1.4.1.ebuild:
+  fix inet_aton issue plus remove old net_db.c from FILESDIR
+
+  11 Oct 2004; Mamoru KOMACHI <usata@gentoo.org>
+  +files/guile-macos-posix.patch, +files/guile-macos-relink.patch,
+  guile-1.6.4-r1.ebuild:
+  Added to ~ppc-macos. Thanks to Robin Munn <rmunn@pobox.com>,
+  closing bug #62277.
+
+*guile-1.6.4-r2 (19 Sep 2004)
+
+  19 Sep 2004; Danny van Dyk <kugelfang@gentoo.org> +guile-1.6.4-r2.ebuild:
+  Bumped to version 1.6.4-r2. This version is only necessary for gnucash on
+  amd64. It disables deprecations that leave undefined references in shared
+  libraries.
+
+  13 May 2004; Michael McCabe <randy@gentoo.org> guile-1.6.4-r1.ebuild:
+  Added s390 keywords
+
+  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> guile-1.6.4-r1.ebuild :
+  Stable on AMD64.
+
+  25 Mar 2004; Joshua Kinard <kumba@gentoo.org> guile-1.6.4-r1.ebuild:
+  Marked stable on mips.
+
+  11 Feb 2004; Joshua Kinard <kumba@gentoo.org> guile-1.6.4-r1.ebuild:
+  Added ~mips to satisfy repoman deps
+
+  18 Jan 2004; <gustavoz@gentoo.org> guile-1.6.4-r1.ebuild:
+  marked stable on sparc, we were really falling behind
+
+  14 Jan 2004; <gustavoz@gentoo.org> guile-1.6.4-r1.ebuild:
+  added ~sparc
+
+  12 Jan 2004; <augustus@gentoo.org> guile-1.6.4-r1.ebuild,
+  files/guile-amd64.patch:
+  Added support for AMD64. Builds and installs just fine. Needs further testing.
+  Bug #35481.
+
+  04 Jan 2004; Daniel Ahlberg <aliz@gentoo.org> guile-1.4-r3.ebuild:
+  Add gnuconfig_update. Closing #37166.
+
+  03 Jan 2004; <agriffis@gentoo.org> guile-1.6.4-r1.ebuild:
+  Stable on ia64
+
+  03 Dec 2003; Aron Griffis <agriffis@gentoo.org> guile-1.6.4-r1.ebuild:
+  Stable on alpha
+
+  22 Nov 2003; Alastair Tse <liquidx@gentoo.org> guile-1.6.4-r1.ebuild,
+  metadata.xml:
+  disable parallel builds because it breaks on -j5 (#34029)
+
+  04 Nov 2003; Brad House <brad_mssw@gentoo.org> guile-1.4-r3.ebuild:
+  add amd64 flag
+
+*guile-1.6.4-r1 (06 Sep 2003)
+
+  06 Sep 2003; Daniel Robbins <drobbins@gentoo.org> guile-1.6.4-r1.ebuild: new
+  revision to close bug 23493; texmacs should now be able to find guile via the
+  GUILE_LOAD_PATH env var (/etc/env.d fix.) This shouldn't break any arch so
+  keeping the KEYWORDS the same on this bump.
+  
+  19 Aug 2003; Aron Griffis <agriffis@gentoo.org> guile-1.6.4.ebuild: Fix bug
+  26484 by filtering out -g3
+
+  24 Jul 2003; Tavis Ormandy <taviso@gentoo.org> guile-1.6.4.ebuild:
+  ~alpha
+
+  17 May 2003; Alastair Tse <liquidx@gentoo.org> guile-1.5.4.ebuild:
+  masking 1.5.x
+
+*guile-1.6.4 (28 Apr 2003)
+
+  24 Aug 2003; Guy Martin <gmsoft@gentoo.org> guile-1.6.4.ebuild :
+  Added hppa to KEYWORDS.
+
+  28 Apr 2003; Alastair Tse <liquidx@gentoo.org> guile-1.6.4.ebuild:
+  version bump to 1.6.x series using SLOT=12.
+
+  05 Feb 2003; Jon Nall <nall@gentoo.org> guile-1.4.1.ebuild :
+  ok, moving back to ~ppc as all seems well if compiled with
+  -O2. use flag-o-matic to force -O2 for ppc.
+  
+  05 Feb 2003; Jon Nall <nall@gentoo.org> guile-1.4.1.ebuild :
+  changed to -ppc as this compiles, but guile-config breaks
+  immediately
+
+  05 Feb 2003; Jon Nall <nall@gentoo.org> guile-1.4.1.ebuild :
+  added ~ppc
+
+  04 Feb 2003; Aron Griffis <agriffis@gentoo.org> guile-1.4.1.ebuild :
+  Mark stable on alpha
+
+  16 Dec 2002; Aron Griffis <agriffis@gentoo.org> guile-1.4.1.ebuild :
+  Added ~alpha to KEYWORDS
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*guile-1.4-r3 (23 Apr 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*guile-1.4.1 (19 Aug 2002)
+
+  05 Nov 2002; L. Boshell <leonardop@gentoo.org> guile-1.4.1.ebuild : SLOT
+  was changed.
+  
+  19 Aug 2002; L. Boshell <leonardop@gentoo.org> guile-1.4.1.ebuild : New
+  stable version. Thanks to Rigo Ketelings for the notice.
+  
+*guile-1.5.4 (1 Feb 2002)
+
+  23 Jul 2002; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

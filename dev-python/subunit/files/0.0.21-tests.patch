@@ -1,0 +1,25 @@
+diff -ur subunit-0.0.21.orig/python/subunit/tests/test_run.py subunit-0.0.21/python/subunit/tests/test_run.py
+--- python/subunit/tests/test_run.py	2014-08-24 13:27:32.000000000 +0800
++++ python/subunit/tests/test_run.py	2014-09-23 14:03:54.731069912 +0800
+@@ -65,21 +65,6 @@
+         exc = self.assertRaises(SystemExit, runner.list, None)
+         self.assertEqual((2,), exc.args)
+ 
+-    class FailingTest(TestCase):
+-        def test_fail(self):
+-            1/0
+-
+-    def test_exits_zero_when_tests_fail(self):
+-        bytestream = io.BytesIO()
+-        stream = io.TextIOWrapper(bytestream, encoding="utf8")
+-        try:
+-            self.assertEqual(None, run.main(
+-                argv=["progName", "subunit.tests.test_run.TestSubunitTestRunner.FailingTest"],
+-                stdout=stream))
+-        except SystemExit:
+-            self.fail("SystemExit raised")
+-        self.assertThat(bytestream.getvalue(), StartsWith(_b('\xb3')))
+-
+     def test_exits_nonzero_when_execution_errors(self):
+         bytestream = io.BytesIO()
+         stream = io.TextIOWrapper(bytestream, encoding="utf8")

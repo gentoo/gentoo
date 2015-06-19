@@ -1,0 +1,90 @@
+--- Csound5.16.6/tests/test.py.orig
++++ Csound5.16.6/tests/test.py
+@@ -6,9 +6,6 @@
+ import os
+ import sys
+ 
+-from testUI import TestApplication
+-from Tkinter import *
+-
+ parserType = "--new-parser"
+ showUIatClose = False
+ csoundExecutable = ""
+@@ -104,8 +101,6 @@
+    ]
+ 
+ 
+-    output = ""
+-    tempfile = "/tmp/csound_test_output.txt"
+     counter = 1
+ 
+     retVals = []
+@@ -124,7 +119,7 @@
+             retVal = os.system(command)
+         else:
+             executable = (csoundExecutable == "") and "../csound" or csoundExecutable
+-            command = "%s %s %s %s &> %s"%(executable, parserType, runArgs, filename, tempfile)
++            command = "%s %s %s %s"%(executable, parserType, runArgs, filename)
+             retVal = os.system(command)
+ 
+         print "Test %i: %s (%s)\nReturn Code: %i"%(counter, desc, filename, retVal)
+@@ -136,24 +131,6 @@
+             testFail += 1
+             print "Result: FAIL\n"
+         
+-        output += "%s\n"%("=" * 80)
+-        output += "Test %i: %s (%s)\nReturn Code: %i\n"%(counter, desc, filename, retVal)
+-        output += "%s\n\n"%("=" * 80)
+-
+-        f = open(tempfile, "r")
+-
+-        csOutput = ""
+-
+-        for line in f:
+-            csOutput += line
+-
+-        output += csOutput
+-
+-        f.close()
+-
+-        retVals.append(t + [retVal, csOutput])
+-
+-        output += "\n\n"
+         counter += 1
+ 
+ #    print output
+@@ -162,12 +139,7 @@
+     print "Tests Passed: %i\nTests Failed: %i\n"%(testPass, testFail)
+ 
+ 
+-    f = open("results.txt", "w")
+-    f.write(output)
+-    f.flush()
+-    f.close()
+-
+-    return retVals
++    return testFail
+ 
+ if __name__ == "__main__":
+     if(len(sys.argv) > 1):
+@@ -176,6 +148,8 @@
+                 showHelp()
+                 sys.exit(0)
+             elif arg == "--show-ui":
++                from testUI import TestApplication
++                from Tkinter import *
+                 showUIatClose = True
+             elif arg == "--old-parser":
+                 parserType = "--old-parser"
+@@ -185,6 +159,8 @@
+             elif arg.startswith("--opcodedir64="):
+                 os.environ['OPCODEDIR64'] = arg[14:]
+                 print os.environ['OPCODEDIR64'] 
+-    results = runTest()
+-    if (showUIatClose):
+-        showUI(results)
++    failures = runTest()
++    if failures > 0:
++        sys.exit(1)
++    else:
++        sys.exit(0)

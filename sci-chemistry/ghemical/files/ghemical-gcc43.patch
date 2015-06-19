@@ -1,0 +1,14 @@
+--- src-orig/pangofont_wcl.cpp  2008-11-30 16:15:23.932475487 -0600
++++ src/pangofont_wcl.cpp       2008-11-30 16:16:09.620396370 -0600
+@@ -22,6 +22,10 @@
+ 
+ #include <gtk/gtkgl.h>
+ 
++#include <string.h>
++
++#include <cstdlib>
++using namespace std;
+ /*################################################################################################*/
+ 
+ pangofont_wcl::pangofont_wcl(ogl_camera * cam) :
+

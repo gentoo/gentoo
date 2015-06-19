@@ -1,0 +1,90 @@
+# ChangeLog for net-libs/osptoolkit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/osptoolkit/ChangeLog,v 1.21 2015/05/30 00:09:08 mrueg Exp $
+
+  30 May 2015; Manuel Rüger <mrueg@gentoo.org> -osptoolkit-3.3.6-r1.ebuild,
+  -osptoolkit-3.4.2.ebuild:
+  Remove old.
+
+  27 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due voip herd removal:
+  http://article.gmane.org/gmane.linux.gentoo.devel/88434
+
+*osptoolkit-4.1.5 (06 Oct 2013)
+
+  06 Oct 2013; Tony Vroon <chainsaw@gentoo.org> +osptoolkit-4.1.5.ebuild:
+  Version bump, as requested by Julian "hasufell" Ospald in bug #483644.
+
+  01 Oct 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> metadata.xml:
+  Add chainsaw to maintainers.
+
+  24 Aug 2011; Markus Meier <maekke@gentoo.org> osptoolkit-3.5.0.ebuild:
+  x86 stable, bug #378757
+
+  11 Aug 2011; Tony Vroon <chainsaw@gentoo.org> osptoolkit-3.5.0.ebuild:
+  Mark stable on AMD64 based on arch testing by Agostino "ago" Sarubbo in bug
+  #378757.
+
+  24 Mar 2011; Christoph Mende <angelos@gentoo.org> osptoolkit-3.5.0.ebuild:
+  Keyworded on amd64 wrt bug #360137
+
+  20 Apr 2009; Mounir Lamouri <volkmar@gentoo.org> osptoolkit-3.4.2.ebuild:
+  Use users LDFLAGS.
+
+*osptoolkit-3.5.0 (20 Apr 2009)
+
+  20 Apr 2009; Mounir Lamouri <volkmar@gentoo.org> +osptoolkit-3.5.0.ebuild:
+  Version bump to 3.5.0 with LDFLAGS fix. See bug 259311.
+
+*osptoolkit-3.4.2 (20 Apr 2009)
+
+  20 Apr 2009; Mounir Lamouri <volkmar@gentoo.org> +osptoolkit-3.4.2.ebuild:
+  Version bump to 3.4.2 with major rewrite. See bug 259311.
+
+  15 Apr 2009; Mounir Lamouri <volkmar@gentoo.org> -osptoolkit-3.3.4.ebuild:
+  Remove the older ebuild which is suffering from bug 241034
+
+  14 Apr 2009; Raúl Porcel <armin76@gentoo.org> osptoolkit-3.3.6-r1.ebuild:
+  x86 stable wrt #265494
+
+*osptoolkit-3.3.6-r1 (17 Feb 2009)
+
+  17 Feb 2009; Jeremy Olexa <darkside@gentoo.org> -osptoolkit-3.3.6.ebuild,
+  +osptoolkit-3.3.6-r1.ebuild:
+  (non maintainer commit) migrate to EAPI=2, fix die messages, fix C(XX)FLAGS.
+  Patch by Mounir Lamouri in bug 241034
+
+  16 Aug 2008; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove stkn from metadata.xml (#27693)
+
+*osptoolkit-3.3.6 (01 May 2007)
+
+  01 May 2007; Stefan Schweizer <genstef@gentoo.org>
+  +osptoolkit-3.3.6.ebuild:
+  version bump
+
+  06 Jan 2007; Timothy Redaelli <drizzt@gentoo.org> osptoolkit-3.3.4.ebuild:
+  s/einfo/elog/
+  Misc ebuild cleanups
+
+  06 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  osptoolkit-3.3.4.ebuild:
+  Stable on x86 wrt bug #144941.
+
+  03 Oct 2006; Stefan Schweizer <genstef@gentoo.org>
+  -osptoolkit-3.3.1.ebuild, osptoolkit-3.3.4.ebuild:
+  Fix get_libdir, bug 141779
+
+*osptoolkit-3.3.4 (02 Feb 2006)
+
+  02 Feb 2006; Stefan Knoblich <stkn@gentoo.org> +osptoolkit-3.3.4.ebuild:
+  Version bump.
+
+  28 Aug 2005; Stefan Knoblich <stkn@gentoo.org> osptoolkit-3.3.1.ebuild:
+  Added multilib support for amd64.
+
+*osptoolkit-3.3.1 (19 Aug 2005)
+
+  19 Aug 2005; Stefan Knoblich <stkn@gentoo.org> +metadata.xml,
+  +osptoolkit-3.3.1.ebuild:
+  Initial import, work-in-progress.

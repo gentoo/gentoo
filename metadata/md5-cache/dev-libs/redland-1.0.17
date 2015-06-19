@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=dev-libs/libltdl:0 mysql? ( virtual/mysql ) sqlite? ( =dev-db/sqlite-3* ) berkdb? ( sys-libs/db ) >=media-libs/raptor-2.0.14 >=dev-libs/rasqal-0.9.32 postgres? ( dev-db/postgresql ) iodbc? ( dev-db/libiodbc ) odbc? ( dev-db/unixODBC ) virtual/pkgconfig
+DESCRIPTION=High-level interface for the Resource Description Framework
+EAPI=5
+HOMEPAGE=http://librdf.org/
+IUSE=berkdb iodbc mysql odbc postgres sqlite static-libs
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos
+LICENSE=Apache-2.0 GPL-2 LGPL-2.1
+RDEPEND=dev-libs/libltdl:0 mysql? ( virtual/mysql ) sqlite? ( =dev-db/sqlite-3* ) berkdb? ( sys-libs/db ) >=media-libs/raptor-2.0.14 >=dev-libs/rasqal-0.9.32 postgres? ( dev-db/postgresql ) iodbc? ( dev-db/libiodbc ) odbc? ( dev-db/unixODBC )
+SLOT=0
+SRC_URI=http://download.librdf.org/source/redland-1.0.17.tar.gz
+_eclasses_=db-use	82d0e62839f20e1e0d5a2259abd5316f	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=3ba960f0466046c7e9e5e76107b385e6

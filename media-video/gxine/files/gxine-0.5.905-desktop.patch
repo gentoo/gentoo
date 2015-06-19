@@ -1,0 +1,12 @@
+--- gxine.desktop.in
++++ gxine.desktop.in
+@@ -14,5 +14,5 @@
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+-Categories=AudioVideo;GTK;Player;TV;
+-MimeType=x-content/video-dvd;x-content/audio-cdda;x-content/video-vcd;x-content/video-svcd;
+\ No newline at end of file
++Categories=AudioVideo;Video;GTK;Player;TV;
++MimeType=x-content/audio-cdda;
+\ No newline at end of file

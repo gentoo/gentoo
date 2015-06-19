@@ -1,0 +1,142 @@
+# ChangeLog for x11-wm/windowlab
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/windowlab/ChangeLog,v 1.33 2014/08/10 20:00:35 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> windowlab-1.34.ebuild,
+  windowlab-1.40.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due desktop-wm removal
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> windowlab-1.34.ebuild,
+  windowlab-1.40.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*windowlab-1.40 (30 May 2010)
+
+  30 May 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  +windowlab-1.40.ebuild, +files/windowlab-1.40-gentoo.diff:
+  Version bump. Fixes bug 318101. Thanks to Tomáš Hlušička 
+  <tomas.hlusicka@seznam.cz> for report.
+
+  09 Jan 2009; Rémi Cardona <remi@gentoo.org> windowlab-1.34.ebuild:
+  Change virtual/xft dependency to x11-libs/libXft, bug 253771.
+
+  24 Aug 2007; Santiago M. Mola <coldwind@gentoo.org>
+  -windowlab-1.30.ebuild, -windowlab-1.31.ebuild:
+  Remove old, broken versions.
+
+  24 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  windowlab-1.34.ebuild:
+  ppc stable, bug #189648
+
+  22 Aug 2007; Jurek Bartuszek <jurek@gentoo.org> windowlab-1.34.ebuild:
+  x86 stable (bug #189648)
+
+  21 Aug 2007; Christoph Mende <angelos@gentoo.org> windowlab-1.34.ebuild:
+  Stable on amd64 wrt bug #189648
+
+  20 Aug 2007; Stuart Longland <redhatter@gentoo.org> windowlab-1.34.ebuild:
+  Tested and working on MIPS.  Keyworded ~mips as per bug #114498.
+
+  22 Jul 2007; David Shakaryan <omp@gentoo.org> windowlab-1.30.ebuild,
+  windowlab-1.31.ebuild:
+  Remove virtual/x11 from dependencies.
+
+*windowlab-1.34 (29 Jun 2007)
+
+  29 Jun 2007; Santiago M. Mola <coldwind@gentoo.org>
+  +files/windowlab-1.34-fixed-font.patch, -windowlab-1.32.ebuild,
+  +windowlab-1.34.ebuild:
+  Version bump fixing problems with xft fonts, thanks to Stephen Tallowitz.
+  Fixes bugs #145907, #145913 and #172307.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  15 Mar 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  windowlab-1.30.ebuild, windowlab-1.31.ebuild, windowlab-1.32.ebuild:
+  (#125526) Add modular X deps, based on work by Stephen Tallowitz.
+
+  15 Aug 2005; Luis Medinas <metalgod@gentoo.org> windowlab-1.31.ebuild:
+  Marked Stable on AMD64.
+
+  14 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> windowlab-1.31.ebuild:
+  Stable on ppc.
+
+*windowlab-1.32 (31 Jul 2005)
+
+  31 Jul 2005; Mamoru KOMACHI <usata@gentoo.org> -windowlab-1.24.ebuild,
+  windowlab-1.31.ebuild, +windowlab-1.32.ebuild:
+  Version bumped; bug #99932.
+
+  20 Jul 2005; Herbie Hopkins <herbs@gentoo.org> windowlab-1.30.ebuild:
+  Stable on amd64.
+
+  17 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  windowlab-1.30.ebuild:
+  ppc stable
+
+*windowlab-1.31 (02 Jul 2005)
+
+  02 Jul 2005; Mamoru KOMACHI <usata@gentoo.org> windowlab-1.30.ebuild,
+  +windowlab-1.31.ebuild:
+  Version bumped; bug #96891.
+
+*windowlab-1.30 (28 May 2005)
+
+  28 May 2005; Mamoru KOMACHI <usata@gentoo.org> -windowlab-1.23.ebuild,
+  -windowlab-1.29.ebuild, +windowlab-1.30.ebuild:
+  Version bumped; bug #93650.
+
+*windowlab-1.29 (22 May 2005)
+
+  22 May 2005; Mamoru KOMACHI <usata@gentoo.org> +windowlab-1.29.ebuild:
+  Version bumped. This fixes bug #91188.
+
+  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> -windowlab-1.17.ebuild,
+  -windowlab-1.20.ebuild, windowlab-1.24.ebuild:
+  Stable on x86 and ppc.
+
+  13 Aug 2004; Tom Martin <slarti@gentoo.org> windowlab-1.24.ebuild:
+  Marked ~amd64.
+
+*windowlab-1.24 (24 Jun 2004)
+
+  24 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> metadata.xml,
+  windowlab-1.23.ebuild, +windowlab-1.24.ebuild:
+  Version bumped. Marked 0.23 as stable.
+
+*windowlab-1.23 (23 May 2004)
+
+  23 May 2004; <usata@gentoo.org> windowlab-1.07.ebuild,
+  windowlab-1.12.ebuild, windowlab-1.17.ebuild, windowlab-1.20.ebuild,
+  windowlab-1.23.ebuild:
+  Version bumped. Don't assign default to S. Marked 1.17 and 1.20 stable on
+  x86. Added ~ppc to 1.23. Removed old ebuilds. Closing bug #48964
+
+*windowlab-1.20 (21 Jan 2004)
+
+  21 Jan 2004; Nick Hadaway <raker@gentoo.org> windowlab-1.20.ebuild:
+  Just a version bump.  I love this window manager.
+
+  04 Nov 2003; Brandon Hale <tseng@gentoo.org> windowlab-1.12.ebuild:
+  Marking 1.12 stable on x86
+
+*windowlab-1.17 (03 Nov 2003)
+
+  03 Nov 2003; Brandon Hale <tseng@gentoo.org> windowlab-1.17.ebuild:
+  Version bump.
+
+*windowlab-1.12 (20 Jul 2003)
+
+  20 Jul 2003; Nick Hadaway <raker@gentoo.org> windowlab-1.12.ebuild:
+  Version bump.  Bug fixes and feature enhancements.  (Even though the
+  author has said there will be no more new features) :)  
+
+*windowlab-1.07 (20 Jun 2003)
+
+  20 Jun 2003; mkeadle <mkeadle@gentoo.org> windowlab-1.07.ebuild:
+  initial import. thank go to Bjorn Lindstrom <bkhl@privat.utfors.se> for the
+  ebuild submission in bug #17617.

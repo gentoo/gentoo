@@ -1,0 +1,37 @@
+# ChangeLog for www-apache/mod_fastcgi_handler
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_fastcgi_handler/ChangeLog,v 1.6 2012/11/27 20:22:31 neurogeek Exp $
+
+  27 Nov 2012; Jesus Rivero <neurogeek@gentoo.org> metadata.xml:
+  Added myself as maintainer
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> -mod_fastcgi_handler-0.2.ebuild,
+  -mod_fastcgi_handler-0.4.ebuild, -mod_fastcgi_handler-0.5.ebuild,
+  metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+*mod_fastcgi_handler-0.6 (05 Jun 2011)
+
+  05 Jun 2011; Benedikt Böhm <hollow@gentoo.org>
+  +mod_fastcgi_handler-0.6.ebuild:
+  version bump
+
+*mod_fastcgi_handler-0.5 (23 Mar 2011)
+
+  23 Mar 2011; Benedikt Böhm <hollow@gentoo.org>
+  +mod_fastcgi_handler-0.5.ebuild:
+  version bump
+
+*mod_fastcgi_handler-0.4 (11 Dec 2010)
+
+  11 Dec 2010; Benedikt Böhm <hollow@gentoo.org>
+  +mod_fastcgi_handler-0.4.ebuild:
+  version bump wrt #348190
+
+*mod_fastcgi_handler-0.2 (19 Jun 2010)
+
+  19 Jun 2010; Benedikt Böhm <hollow@gentoo.org>
+  +files/20_mod_fastcgi_handler.conf, +mod_fastcgi_handler-0.2.ebuild,
+  +metadata.xml:
+  initial ebuild

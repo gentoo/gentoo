@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<herd>sound</herd>
+	<maintainer>
+		<email>nikoli@gmx.us</email>
+		<name>Nikoli</name>
+	</maintainer>
+	<use>
+		<flag name="box">Enable Box support</flag>
+		<flag name="dropbox">Enable Dropbox support</flag>
+		<flag name="googledrive">Enable Google Drive support</flag>
+		<flag name="lastfm">Use liblastfm for fetching song info, scrobbling and radio streams</flag>
+		<flag name="moodbar">Enable moodbar support</flag>
+		<flag name="projectm">Build with ProjectM visualization</flag>
+		<flag name="skydrive">Enable Skydrive support</flag>
+		<flag name="system-sqlite">Use the system-wide <pkg>dev-db/sqlite</pkg> installation</flag>
+		<flag name="ubuntu-one">Enable Ubuntu One support</flag>
+		<flag name="wiimote">Enable support for Wii remote</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">clementine-player/Clementine</remote-id>
+	</upstream>
+</pkgmetadata>

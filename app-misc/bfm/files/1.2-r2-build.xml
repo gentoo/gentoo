@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+
+<project name="bfm" default="jar">
+	<!-- some properties -->
+	<property name="src.dir" value="net" />
+	<property name="build.dir" value="build" />
+	<property name="docs.dir" value="docs" />
+	<property name="dist.dir" value="dist" />
+	<property name="lib.dir" value="lib" />
+	<property name="jarfile" value="${dist.dir}/${ant.project.name}.jar" />
+	<property name="target.jdk" value="1.4" />
+
+	<!-- init -->
+	<target name="init">
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${docs.dir}" />
+	</target>	
+
+	<!-- classpath -->
+	<path id="refcp">
+                <fileset dir="${lib.dir}">
+                        <include name="**/*.jar" />
+                </fileset>
+        </path>
+	
+	<!-- compile everything -->
+	<target name="compile" depends="init">
+		<mkdir dir="${build.dir}" />
+		<javac srcdir="${src.dir}" 
+			destdir="${build.dir}"
+			source="${target.jdk}"
+			target="${target.jdk}"
+			classpathref="refcp" />
+
+		<copy todir="${build.dir}">
+			<fileset file="${src.dir}/webhop/bfm/data" />
+		</copy>
+		<copy todir="${build.dir}/net/webhop/bfm/data">
+			<fileset dir="${src.dir}/webhop/bfm/data" />
+		</copy>
+	</target>
+
+	<!-- build the jar file -->
+	<target name="jar" depends="compile">
+		<jar jarfile="${jarfile}" basedir="${build.dir}"
+			manifest="${src.dir}/webhop/bfm/data/manifest" />
+	</target>
+	
+	<!-- generate javadocs -->
+	<target name="docs" depends="init">
+		<javadoc sourcepath="."
+			packagenames="*"
+       		destdir="${docs.dir}"
+       		author="true"
+       		version="true"
+       		use="true"
+       		windowtitle="${ant.project.name} API" />
+	</target>
+	
+	<!-- clean up -->
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${docs.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+        <!-- zip the sources -->
+        <target name="sourcezip">
+		<zip destfile="${dist.dir}/${ant.project.name}-src.zip">
+                        <zipfileset dir="${src.dir}" />
+                </zip>
+        </target>
+
+</project>

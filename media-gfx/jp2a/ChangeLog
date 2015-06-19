@@ -1,0 +1,48 @@
+# ChangeLog for media-gfx/jp2a
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/jp2a/ChangeLog,v 1.12 2013/08/15 08:12:39 grobian Exp $
+
+  15 Aug 2013; Fabian Groffen <grobian@gentoo.org> jp2a-1.0.6-r1.ebuild:
+  Keyworded for ~x64-solaris, ~x64-macos and ~x86-macos
+
+  08 Nov 2010; Samuli Suominen <ssuominen@gentoo.org> jp2a-1.0.6-r1.ebuild:
+  Use virtual/jpeg wrt #327487. Missing sys-libs/ncurses RDEPEND.
+
+  31 Oct 2009; Brent Baude <ranger@gentoo.org> jp2a-1.0.6-r1.ebuild:
+  Marking jp2a-1.0.6-r1 ppc64 for bug 286504
+
+  21 Oct 2009; Markus Meier <maekke@gentoo.org> jp2a-1.0.6-r1.ebuild:
+  x86 stable, bug #286504
+
+  18 Oct 2009; nixnut <nixnut@gentoo.org> jp2a-1.0.6-r1.ebuild:
+  ppc stable #286504
+
+  17 Oct 2009; <chainsaw@gentoo.org> jp2a-1.0.6-r1.ebuild:
+  Marked stable on AMD64 as requested by Pierre in bug #286504. Tested using
+  tux.jpg from linuxadda with USE="curl".
+
+  09 Jan 2008; Brent Baude <ranger@gentoo.org> jp2a-1.0.6-r1.ebuild:
+  Marking  jp2a-1.0.6-r1 ~ppc64 per chainsaw's request
+
+  09 Jan 2008; Tony Vroon <chainsaw@gentoo.org> jp2a-1.0.6-r1.ebuild:
+  Add ~ppc keyword. Tested on a PowerBook 5,9
+
+  09 Jan 2008; Raúl Porcel <armin76@gentoo.org> jp2a-1.0.6-r1.ebuild:
+  Add ~ia64/~sparc
+
+*jp2a-1.0.6-r1 (09 Jan 2008)
+
+  09 Jan 2008; Tony Vroon <chainsaw@gentoo.org> -jp2a-1.0.6.ebuild,
+  +jp2a-1.0.6-r1.ebuild:
+  Make CURL dependency optional, ebuild enhancement by Nadim Kobeissi
+  <nadim@keihatsu.org>.
+
+  09 Jan 2008; Samuli Suominen <drac@gentoo.org> jp2a-1.0.6.ebuild:
+  Keyword ~amd64.
+
+*jp2a-1.0.6 (09 Jan 2008)
+
+  09 Jan 2008; Tony Vroon <chainsaw@gentoo.org> +metadata.xml,
+  +jp2a-1.0.6.ebuild:
+  Initial commit, ebuild by Nadim Kobeissi <nadim@keihatsu.org> with some
+  final tweaks from me. Closes bug #205004.

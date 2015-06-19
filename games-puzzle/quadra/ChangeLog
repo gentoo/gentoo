@@ -1,0 +1,95 @@
+# ChangeLog for games-puzzle/quadra
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/quadra/ChangeLog,v 1.25 2015/03/24 17:25:36 ago Exp $
+
+  24 Mar 2015; Agostino Sarubbo <ago@gentoo.org> quadra-1.2.0.ebuild:
+  Stable for amd64, wrt bug #543224
+
+  11 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> quadra-1.2.0.ebuild:
+  EAPI=5
+
+  27 Jul 2012; Michael Sterrett <mr_bones_@gentoo.org> quadra-1.2.0.ebuild:
+  add bc dep (bug #428270)
+
+  24 Jan 2010; Brent Baude <ranger@gentoo.org> quadra-1.2.0.ebuild:
+  keyworded ~arch for ppc, bug 296290
+
+  20 Nov 2009; Christian Faulhammer <fauli@gentoo.org> quadra-1.2.0.ebuild:
+  stable x86, bug 285402
+
+*quadra-1.2.0 (02 Aug 2009)
+
+  02 Aug 2009; Michael Sterrett <mr_bones_@gentoo.org> +quadra-1.2.0.ebuild:
+  version bump
+
+  02 May 2008; Tristan Heaven <nyhm@gentoo.org>
+  +files/quadra-1.1.8-gcc43.patch, quadra-1.1.8.ebuild:
+  Fix building with gcc-4.3
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> quadra-1.1.8.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  26 Dec 2007; Tupone Alfredo <tupone@gentoo.org>
+  +files/quadra-1.1.8-asneeded.patch, quadra-1.1.8.ebuild:
+  Fix for as-needed. Bug #203280 by Yang Zhao
+
+  06 Jul 2007; Tristan Heaven <nyhm@gentoo.org>
+  +files/quadra-1.1.8-gcc42.patch, quadra-1.1.8.ebuild:
+  Patch for gcc-4.2
+
+  06 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> quadra-1.1.8.ebuild:
+  Remove old virtual/x11 dependency.
+
+  14 Sep 2006; <tupone@gentoo.org> files/quadra-1.1.8-gcc3.patch,
+  -files/quadra-1.1.8-gcc41.patch, quadra-1.1.8.ebuild:
+  Fix building with gcc-3 again merging gcc-3 and gcc-4 patches.
+  Bug #137714 by Rafael Gustavo Gassner
+
+  31 May 2006; <Tupone@gentoo.org> +files/quadra-1.1.8-gcc41.patch,
+  quadra-1.1.8.ebuild:
+  Fix for gcc-4.1, bug #133815 by me
+
+  31 May 2006; <Tupone@gentoo.org> quadra-1.1.8.ebuild:
+  Fix sandbox violation
+
+  17 Feb 2006; <Tupone@gentoo.org> quadra-1.1.8.ebuild:
+  Modular X dependency fix
+  Fix build with svga
+
+  17 May 2005; Chris Gianelloni <wolf31o2@gentoo.org> quadra-1.1.8.ebuild:
+  Cleanup for bug #92745.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  12 Nov 2004; Simon Stelling <blubb@gentoo.org> quadra-1.1.8.ebuild:
+  Added Daniel Karlsson's patch to get it working on amd64 and marked testing
+
+  19 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> quadra-1.1.8.ebuild:
+  use_with svga instead of use_with svgalib; tidy
+
+  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> quadra-1.1.8.ebuild:
+  virtual/x11; depend on sed >= 4; error check sed
+
+  27 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> quadra-1.1.8.ebuild:
+  remove incorrectly named patch attempt
+
+*quadra-1.1.8 (7 May 2002)
+
+  14 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Clean up and support games.eclass.
+
+  27 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Added a patch to make configure detect libpng properly
+
+  30 Sep 2002; Mike Frysinger <vapier@gentoo.org> :
+  Added gcc3.x patch and updated the ebuild in general (to install more stuff)
+
+  7 May 2002; Spider <spider@gentoo.org> quandra-1.1.8.ebuild :
+  fix sourceforge mirroring.
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> quadra-1.1.8.ebuild :
+  Added LICENSE, KEYWORDS.
+
+  28 Apr 2002; Bruce A. Locke <blocke@shivan.org> quadra-1.1.8.ebuild :
+  Added to Gentoo

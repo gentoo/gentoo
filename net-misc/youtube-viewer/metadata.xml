@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>maintainer-needed@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<maintainer status="active">
+			<email>trizenx@gmail.com</email>
+		</maintainer>
+		<bugs-to>https://github.com/trizen/youtube-viewer/issues</bugs-to>
+	</upstream>
+	<longdescription lang="en">
+		Youtube Viewer is a CLI application dedicated for searching and streaming
+		Youtube Videos with MPlayer. It has been written in Perl and plays videos
+		from Youtube at the best quality available without using a flash player. 
+	</longdescription>
+</pkgmetadata>

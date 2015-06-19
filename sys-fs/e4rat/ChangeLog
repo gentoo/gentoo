@@ -1,0 +1,84 @@
+# ChangeLog for sys-fs/e4rat
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/e4rat/ChangeLog,v 1.18 2014/12/01 11:38:10 pacho Exp $
+
+*e4rat-0.2.4_pre20141201 (01 Dec 2014)
+
+  01 Dec 2014; Pacho Ramos <pacho@gentoo.org> +e4rat-0.2.4_pre20141201.ebuild:
+  Add a new snapshot fixing multiple bugs, including bug #506128 by Tim
+  Mohlmann.
+
+  01 Aug 2013; Pacho Ramos <pacho@gentoo.org> e4rat-0.2.3-r1.ebuild:
+  Update README.gentoo doc as referenced wiki page no longer exists (#479376 by
+  Patrick Lauer) and upstream README is enough for us.
+
+  28 Jul 2013; Pacho Ramos <pacho@gentoo.org> e4rat-0.2.3-r1.ebuild:
+  Inform people about how to work with systemd
+
+  21 Jan 2013; Pacho Ramos <pacho@gentoo.org> -e4rat-0.2.3.ebuild,
+  e4rat-0.2.3-r1.ebuild:
+  Install missing doc file, also use readme.gentoo eclass
+
+  15 Jan 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove myself from metadata
+
+  13 Jan 2013; Agostino Sarubbo <ago@gentoo.org> e4rat-0.2.3-r1.ebuild:
+  Stable for x86, wrt bug #448004
+
+  22 Dec 2012; Agostino Sarubbo <ago@gentoo.org> e4rat-0.2.3-r1.ebuild:
+  Stable for amd64, wrt bug #448004
+
+  22 Dec 2012; Pacho Ramos <pacho@gentoo.org> e4rat-0.2.3-r1.ebuild:
+  Add missing lsof RDEPEND, #448004 by Vicente Olivert Riera
+
+  21 Dec 2012; Pacho Ramos <pacho@gentoo.org> -e4rat-0.2.1-r2.ebuild,
+  -e4rat-0.2.2.ebuild, metadata.xml:
+  Add me as comaintainer
+
+*e4rat-0.2.3-r1 (06 Nov 2012)
+
+  06 Nov 2012; Markos Chandras <hwoarang@gentoo.org> +e4rat-0.2.3-r1.ebuild,
+  +files/e4rat-0.2.3-boostfsv3.patch:
+  Apply patch to fix building with boost >= 1.50. Bug #425422, Thanks to Olivier
+  Huber <oli.huber@gmail.com>
+
+  17 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> e4rat-0.2.3.ebuild:
+  x86 stable wrt bug #436684
+
+  07 Oct 2012; Agostino Sarubbo <ago@gentoo.org> e4rat-0.2.3.ebuild:
+  Stable for amd64, wrt bug #436684
+
+*e4rat-0.2.3 (06 May 2012)
+
+  06 May 2012; Markos Chandras <hwoarang@gentoo.org> +e4rat-0.2.3.ebuild:
+  version bump
+
+*e4rat-0.2.2 (05 May 2012)
+
+  05 May 2012; Markos Chandras <hwoarang@gentoo.org> +e4rat-0.2.2.ebuild,
+  +files/e4rat-0.2.2-libdir.patch, +files/e4rat-0.2.2-shared-build.patch,
+  -e4rat-0.2.1-r1.ebuild, -e4rat-0.2.1.ebuild:
+  Version bump. Bug #412825
+
+*e4rat-0.2.1-r2 (08 Jan 2012)
+
+  08 Jan 2012; Markos Chandras <hwoarang@gentoo.org> +e4rat-0.2.1-r2.ebuild:
+  Check for CONFIG_AUDITSYSCALL (#394321). Add link to upstream documentation
+  (#394323). Add note about prelink (#394325). Move binaries to /sbin
+
+*e4rat-0.2.1-r1 (11 Dec 2011)
+
+  11 Dec 2011; Michał Górny <mgorny@gentoo.org> +e4rat-0.2.1-r1.ebuild,
+  +files/e4rat-libdir.patch, +files/e4rat-shared-build.patch:
+  Patch the buildsystem to build against shared libraries, and build shared
+  library as well.
+
+  10 Dec 2011; Markos Chandras <hwoarang@gentoo.org> e4rat-0.2.1.ebuild:
+  Drop erroneous src_prepare function. Bug #394255
+
+*e4rat-0.2.1 (10 Dec 2011)
+
+  10 Dec 2011; Markos Chandras <hwoarang@gentoo.org> +e4rat-0.2.1.ebuild,
+  +metadata.xml:
+  Initial commit. Bug #363207. Thanks to Michael Orlitzky
+  <michael@orlitzky.com>

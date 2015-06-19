@@ -1,0 +1,29 @@
+# ChangeLog for x11-apps/whyteboard
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/whyteboard/ChangeLog,v 1.7 2015/03/20 16:34:47 jlec Exp $
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> metadata.xml,
+  whyteboard-0.41.1.ebuild:
+  Bump to new python eclasses
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> whyteboard-0.41.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  05 Sep 2012; Justin Lecher <jlec@gentoo.org> whyteboard-0.41.1.ebuild:
+  Use domenu instead insinto + doins to install .desktop files
+
+  26 Jan 2012; Fabio Erculiani <lxnay@gentoo.org> whyteboard-0.41.1.ebuild,
+  -files/whyteboard.png:
+  move binary files remotely, closes bug #370923
+
+  20 Jan 2011; Fabio Erculiani <lxnay@gentoo.org> metadata.xml:
+  update manifest.xml, remove duplicated maintainer entry
+
+*whyteboard-0.41.1 (20 Jan 2011)
+
+  20 Jan 2011; Fabio Erculiani <lxnay@gentoo.org> +whyteboard-0.41.1.ebuild,
+  +files/whyteboard.desktop, +files/whyteboard.png, +metadata.xml:
+  new ebuild, close bug #348305

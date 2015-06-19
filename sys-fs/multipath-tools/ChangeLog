@@ -1,0 +1,348 @@
+# ChangeLog for sys-fs/multipath-tools
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/multipath-tools/ChangeLog,v 1.69 2014/12/15 03:08:13 radhermit Exp $
+
+  15 Dec 2014; Tim Harder <radhermit@gentoo.org>
+  -multipath-tools-0.4.9-r5.ebuild,
+  -files/multipath-tools-0.4.8-kparted-ext-partitions.patch,
+  -files/multipath-tools-0.4.9-buffer-overflows.patch,
+  -files/multipath-tools-0.4.9-build.patch,
+  -files/multipath-tools-0.4.9-log_enquery_overflow.patch:
+  Remove old.
+
+  30 Jul 2014; Samuli Suominen <ssuominen@gentoo.org>
+  multipath-tools-0.4.9-r5.ebuild, multipath-tools-0.5.0-r1.ebuild:
+  Use shorter get_udevdir() instead of the longer deprecated udev_get_udevdir()
+  version.
+
+  29 May 2014; Mike Gilbert <floppym@gentoo.org>
+  multipath-tools-0.5.0-r1.ebuild:
+  Override hardcoded /usr/lib/systemd/system in Makefile.
+
+  14 Mar 2014; Agostino Sarubbo <ago@gentoo.org>
+  multipath-tools-0.5.0-r1.ebuild:
+  Stable for ppc64, wrt bug #499320
+
+  09 Mar 2014; Jason A. Donenfeld <zx2c4@gentoo.org>
+  +files/multipath-tools-0.5.0-systemd-pkgconfig.patch,
+  multipath-tools-0.5.0-r1.ebuild:
+  Use pkg-config to find correct systemd libraries. Fixes #502446.
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> multipath-tools-0.5.0-r1.ebuild:
+  amd64 stable, bug #499320
+
+  27 Feb 2014; Mike Gilbert <floppym@gentoo.org>
+  multipath-tools-0.5.0-r1.ebuild:
+  Call epatch_user.
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  multipath-tools-0.5.0-r1.ebuild:
+  x86 stable wrt bug #499320
+
+  02 Feb 2014; Agostino Sarubbo <ago@gentoo.org>
+  multipath-tools-0.5.0-r1.ebuild:
+  Stable for ppc, wrt bug #499320
+
+*multipath-tools-0.5.0-r1 (25 Dec 2013)
+
+  25 Dec 2013; Tim Harder <radhermit@gentoo.org> -multipath-tools-0.5.0.ebuild,
+  +multipath-tools-0.5.0-r1.ebuild:
+  Add systemd use flag.
+
+*multipath-tools-0.5.0 (25 Dec 2013)
+
+  25 Dec 2013; Tim Harder <radhermit@gentoo.org> +multipath-tools-0.5.0.ebuild,
+  +files/multipath-tools-0.5.0-makefile.patch:
+  Version bump (bug #495268).
+
+  03 May 2013; Samuli Suominen <ssuominen@gentoo.org>
+  -multipath-tools-0.4.8-r1.ebuild, -files/init.d-multipath-0.4.8-r1,
+  -files/multipath-tools-0.4.8-build.patch,
+  -files/multipath-tools-0.4.8-r1-kpartx.patch,
+  -files/multipath-tools-0.4.8-socket-cve-2009-0115.patch,
+  -files/multipath-tools-0.4.8-udev-scsi_id-changes.patch,
+  -files/multipath-start.sh, -files/multipath-stop.sh:
+  old
+
+  09 Apr 2013; Samuli Suominen <ssuominen@gentoo.org>
+  multipath-tools-0.4.8-r1.ebuild, multipath-tools-0.4.9-r5.ebuild:
+  Remove sys-fs/device-mapper from || () syntax in favour of sys-fs/lvm2 wrt
+  #461382
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  multipath-tools-0.4.9-r5.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  multipath-tools-0.4.9-r5.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  multipath-tools-0.4.9-r5.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  multipath-tools-0.4.9-r5.ebuild:
+  Stable for ppc, wrt bug #448060
+
+  26 Dec 2012; Jeff Horelick <jdhore@gentoo.org>
+  multipath-tools-0.4.9-r5.ebuild:
+  marked x86 per bug 448060
+
+  24 Dec 2012; Sergey Popov <pinkbyte@gentoo.org>
+  multipath-tools-0.4.9-r5.ebuild:
+  Stable on amd64, wrt bug #448060
+
+  23 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  multipath-tools-0.4.9-r5.ebuild:
+  Stable for ppc64, wrt bug #448060
+
+  11 Dec 2012; Samuli Suominen <ssuominen@gentoo.org>
+  multipath-tools-0.4.8-r1.ebuild, multipath-tools-0.4.9-r5.ebuild:
+  Migrate latest to udev.eclass. Use virtual/udev instead of sys-fs/udev.
+
+  11 Dec 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -multipath-tools-0.4.9-r3.ebuild, -multipath-tools-0.4.9-r4.ebuild:
+  old
+
+  25 Aug 2012; Mike Frysinger <vapier@gentoo.org>
+  multipath-tools-0.4.9-r5.ebuild:
+  Drop useless -vf args to mv #432632 by Joshua B. Kahlenberg.
+
+*multipath-tools-0.4.9-r5 (11 Aug 2012)
+
+  11 Aug 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +multipath-tools-0.4.9-r5.ebuild:
+  Stop using /etc/udev which is reserved for user defined rules. Stop using
+  /lib/udev and read the value of udevdir from udev.pc pkg-config file instead.
+
+  26 May 2012; Alexey Shvetsov <alexxy@gentoo.org>
+  multipath-tools-0.4.9-r4.ebuild:
+  [sys-fs/multipath-tools] Fix src_prepare
+
+*multipath-tools-0.4.9-r4 (25 May 2012)
+
+  25 May 2012; Alexey Shvetsov <alexxy@gentoo.org>
+  +files/multipath-tools-0.4.9-log_enquery_overflow.patch,
+  +multipath-tools-0.4.9-r4.ebuild:
+  [sys-fs/multipath-tools] Fix bugs #413063 and #399569
+
+  22 May 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  files/multipath-tools-0.4.9-build.patch:
+  Fix as-needed error introduced in previous commit. Fixes bug #413171 by Harris
+  Landgarten
+
+  21 Apr 2012; Mike Frysinger <vapier@gentoo.org>
+  multipath-tools-0.4.9-r3.ebuild:
+  Bypass grepping of files in /usr/include #411337 by Leho Kraav.
+
+  21 Apr 2012; Mike Frysinger <vapier@gentoo.org>
+  files/multipath-tools-0.4.9-build.patch:
+  Respect LDFLAGS when linking shared libs.
+
+  20 Apr 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -files/multipath-tools-0.4.7-build.patch,
+  -files/multipath-tools-0.4.7-udev-rules.patch, -multipath-tools-0.4.7-r1.ebuild,
+  -multipath-tools-0.4.7-r2.ebuild, -multipath-tools-0.4.8.ebuild,
+  -multipath-tools-0.4.9-r1.ebuild, -multipath-tools-0.4.9-r2.ebuild,
+  -files/init.d-multipath:
+  old
+
+*multipath-tools-0.4.9-r3 (30 Nov 2011)
+
+  30 Nov 2011; Mike Frysinger <vapier@gentoo.org>
+  +multipath-tools-0.4.9-r3.ebuild, files/multipath-tools-0.4.9-build.patch:
+  Add missing readline depepend, and drop ncurses linkage since it's only
+  there for readline.
+
+  06 Aug 2011; Samuli Suominen <ssuominen@gentoo.org>
+  multipath-tools-0.4.8.ebuild, multipath-tools-0.4.8-r1.ebuild,
+  multipath-tools-0.4.9-r1.ebuild, multipath-tools-0.4.9-r2.ebuild:
+  Remove sys-fs/sysfsutils depend from >= 0.4.8 wrt #377709 by Anthony Basile
+
+*multipath-tools-0.4.9-r2 (03 Jun 2011)
+
+  03 Jun 2011; Mike Frysinger <vapier@gentoo.org>
+  +multipath-tools-0.4.9-r2.ebuild, +files/multipath.rc:
+  Rewrite new init.d script that lacks proc checking bugs #368765 by Samuel
+  BAUER.
+
+*multipath-tools-0.4.9-r1 (28 Nov 2010)
+
+  28 Nov 2010; Tim Harder <radhermit@gentoo.org>
+  -multipath-tools-0.4.8-r2.ebuild, -multipath-tools-0.4.9.ebuild,
+  +multipath-tools-0.4.9-r1.ebuild,
+  +files/multipath-tools-0.4.9-buffer-overflows.patch,
+  files/multipath-tools-0.4.9-build.patch:
+  Revbump and remove old. Specify the library directory before the library name
+  (fixes bug #346345 by Benjamin Schulz) and fix buffer overflows (bug #329049
+  by vapier).
+
+*multipath-tools-0.4.9 (28 Oct 2010)
+
+  28 Oct 2010; Tim Harder <radhermit@gentoo.org>
+  +multipath-tools-0.4.9.ebuild, +files/multipath-tools-0.4.9-build.patch:
+  Version bump (bug #321331 by Krzysiek). Update build patch and remove
+  patches applied upstream, remove -j1 limitation, and use emake instead of
+  make.
+
+  13 Nov 2009; Joseph Jezak <josejx@gentoo.org>
+  multipath-tools-0.4.8-r1.ebuild:
+  Marked ppc stable for bug #264564.
+
+*multipath-tools-0.4.8-r2 (05 Nov 2009)
+
+  05 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +multipath-tools-0.4.8-r2.ebuild,
+  +files/multipath-tools-0.4.8-kparted-ext-partitions.patch:
+  Bug #268961: kpartx fails on extended partitions, referencing the wrong
+  parent device and offset.
+
+  04 Nov 2009; Markus Meier <maekke@gentoo.org>
+  multipath-tools-0.4.8-r1.ebuild:
+  amd64 stable, bug #264564
+
+  03 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  multipath-tools-0.4.8-r1.ebuild:
+  stable x86, security bug 264564
+
+  31 Oct 2009; Brent Baude <ranger@gentoo.org>
+  multipath-tools-0.4.8-r1.ebuild:
+  Marking multipath-tools-0.4.8-r1 ppc64 for bug 264564
+
+  30 Oct 2009; Robin H. Johnson <robbat2@gentoo.org>
+  multipath-tools-0.4.8-r1.ebuild,
+  +files/multipath-tools-0.4.8-socket-cve-2009-0115.patch:
+  Missed one more patch, bug #264564, fix for CVE-2009-0115.
+
+*multipath-tools-0.4.8-r1 (30 Oct 2009)
+
+  30 Oct 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +files/init.d-multipath-0.4.8-r1, +multipath-tools-0.4.8-r1.ebuild,
+  +files/multipath-tools-0.4.8-r1-kpartx.patch,
+  +files/multipath-tools-0.4.8-udev-scsi_id-changes.patch:
+  Upstream is a slacker and has not made a release in 2+ years despite being
+  active in Git. Fixes bug #235836: udev scsi_id lost the -s option a long
+  time ago. Bug #245615: remove the 1TiB limit on kpartx.
+
+  19 Sep 2009; Robin H. Johnson <robbat2@gentoo.org>
+  multipath-tools-0.4.8.ebuild:
+  Adding ~arm support. Tested on mv78100.arm.dev.gentoo.org thanks to
+  Marvell.
+
+  10 Apr 2009; Caleb Tennis <caleb@gentoo.org>
+  multipath-tools-0.4.7-r1.ebuild, multipath-tools-0.4.7-r2.ebuild,
+  multipath-tools-0.4.8.ebuild:
+  Fix device-mapper dep for new lvm2, see bug #265599
+
+  17 Mar 2009; <solar@gentoo.org> files/rc-multipathd:
+  - baselayout-1 needed to make sure modules are loaded first
+
+  07 Mar 2009; Joseph Jezak <josejx@gentoo.org>
+  multipath-tools-0.4.8.ebuild:
+  Marked ppc stable for bug #245383.
+
+  16 Feb 2009; Brent Baude <ranger@gentoo.org> multipath-tools-0.4.8.ebuild:
+  stable ppc64, bug 245383
+
+  09 Feb 2009; Markus Meier <maekke@gentoo.org>
+  multipath-tools-0.4.8.ebuild:
+  amd64/x86 stable, bug #245383
+
+  17 Jul 2008; Markus Rothe <corsair@gentoo.org>
+  multipath-tools-0.4.8.ebuild:
+  Added ~ppc64; bug #231803
+
+  25 Jun 2008; Robin H. Johnson <robbat2@gentoo.org>
+  multipath-tools-0.4.8.ebuild:
+  Bug #228781 - add libaio dep, and also works on ~ppc.
+
+*multipath-tools-0.4.8 (20 Jun 2008)
+
+  20 Jun 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +files/multipath-tools-0.4.8-build.patch, +files/init.d-multipath,
+  +files/multipath-start.sh, +files/multipath-stop.sh,
+  +multipath-tools-0.4.8.ebuild:
+  Make multipath-tools work for early boot environments for both baselayout1
+  and baselayout2. Please read the postinst output if multipath is critical
+  to your environment!
+
+  02 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  multipath-tools-0.4.7-r2.ebuild:
+  stable amd64, bug 208482
+
+  02 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  multipath-tools-0.4.7-r2.ebuild:
+  stable x86, bug 208482
+
+*multipath-tools-0.4.7-r2 (22 Aug 2007)
+
+  22 Aug 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/multipath-tools-0.4.7-udev-rules.patch,
+  +multipath-tools-0.4.7-r2.ebuild:
+  Finally fixed udev-rules to have no udev-internal race conditions, bug 171590.
+
+*multipath-tools-0.4.7-r1 (28 Sep 2006)
+
+  28 Sep 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/multipath-tools-0.4.7-build.patch, files/rc-multipathd,
+  +multipath-tools-0.4.7-r1.ebuild:
+  Clean up build system and fix path in init.d #149308 by Jiri Tyr.
+
+*multipath-tools-0.4.7 (22 May 2006)
+
+  22 May 2006; Martin Schlemmer <azarah@gentoo.org>
+  +multipath-tools-0.4.7.ebuild:
+  Bump version to work with latest sysfsutils.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org>
+  files/digest-multipath-tools-0.4.6.1, Manifest:
+  Fixing SHA256 digest, pass four
+
+*multipath-tools-0.4.6.1-r1 (08 Feb 2006)
+
+  08 Feb 2006; Daniel Drake <dsd@gentoo.org>
+  +files/multipath-tools-0.4.6.1-udev-rules.patch,
+  +multipath-tools-0.4.6.1-r1.ebuild:
+  Fix a bug in the udev rules script which was claiming every available block
+  device for device-mapper
+
+*multipath-tools-0.4.6.1 (26 Jan 2006)
+
+  26 Jan 2006; Seemant Kulleen <seemant@gentoo.org>
+  -multipath-tools-0.4.2.ebuild, -multipath-tools-0.4.5.ebuild,
+  +multipath-tools-0.4.6.1.ebuild:
+  Version bump which has some minor fixes over 0.4.6.1, plus clean out old cruft
+
+*multipath-tools-0.4.6 (06 Dec 2005)
+
+  06 Dec 2005; Daniel Drake <dsd@gentoo.org> +multipath-tools-0.4.6.ebuild:
+  Version bump. If you were seeing udev starting *extremely* slowly, then this
+  is your fix (remember to etc-update/dispatch-conf).
+
+*multipath-tools-0.4.5 (02 Sep 2005)
+
+  02 Sep 2005; Martin Schlemmer <azarah@gentoo.org>
+  +multipath-tools-0.4.5.ebuild:
+  New version.
+
+  02 Mar 2005; Martin Schlemmer <azarah@gentoo.org>
+  multipath-tools-0.4.2.ebuild:
+  Fix device-mapper DEPEND after catagory move.
+
+  28 Feb 2005; Martin Schlemmer <azarah@gentoo.org>
+  multipath-tools-0.4.2.ebuild:
+  Update deps as we need >=device-mapper-1.00.19.
+
+  21 Feb 2005; Martin Schlemmer <azarah@gentoo.org>
+  multipath-tools-0.4.2.ebuild:
+  Add LICENSE.
+
+  21 Feb 2005; Martin Schlemmer <azarah@gentoo.org> files/rc-multipathd:
+  Change script to stop by pidfile.
+
+*multipath-tools-0.4.2 (21 Feb 2005)
+
+  21 Feb 2005; Martin Schlemmer <azarah@gentoo.org> +metadata.xml,
+  +files/rc-multipathd, +multipath-tools-0.4.2.ebuild:
+  Initial version.  Ebuild and scripts by Seemant.

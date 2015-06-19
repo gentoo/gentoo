@@ -1,0 +1,29 @@
+gcc crashes when trying to use pch under hardened kernels
+
+http://bugs.gentoo.org/425524
+
+--- Makefile.in
++++ Makefile.in
+@@ -300,7 +300,7 @@
+ 	src        \
+ 	tests
+ 
+-SANDBOX_PCH = headers.h.gch libsandbox/headers.h.gch libsbutil/headers.h.gch
++SANDBOX_PCH =
+ BUILT_SOURCES = $(SANDBOX_PCH)
+ noinst_LTLIBRARIES = libpch.la
+ nodist_libpch_la_SOURCES = $(SANDBOX_PCH)
+@@ -862,10 +862,9 @@
+ $(builddir)/headers.h.gch: headers.h
+ 	$(AM_V_GEN)$(COMPILE) -c -o $@.o $< && $(GCH_CP)
+ 
+-libsbutil: libsbutil/headers.h.gch
+-libsandbox: libsbutil libsandbox/headers.h.gch
+-src: libsbutil headers.h.gch
+-tests: src headers.h.gch
++libsandbox: libsbutil
++src: libsbutil
++tests: src
+ 
+ ChangeLog:
+ 	touch ChangeLog

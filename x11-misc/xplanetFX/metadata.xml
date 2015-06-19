@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
+	<longdescription>Create high quality renderings of mother earth with realistic clouding and lighting effects as your desktop wallpaper with “realtime” capabilities.
+
+xplanet (by Hari Nair) is a great piece of software capable of creating renderings inside our solar system. To raise the quality of it’s output adding some graphical effects, it was a great candidate to link with imagemagick.
+
+The result is xplanetFX, a user-friendly piece of software to configure, run or daemonize xplanet with h/q capabilities to create wallpapers of mother earth on your desktop.
+
+More realistic maps and backgrounds and a sophisticated graphics handling produce nearly photo realistic images of our mothership. It’s GTK GUI makes it really easy to use and provides a lot of settings and a user friendly access to xplanetFX. And even the templating capabilities give xplanetFX an individual and stylish touch.</longdescription>
+</pkgmetadata>

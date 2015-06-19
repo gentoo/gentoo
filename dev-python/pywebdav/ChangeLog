@@ -1,0 +1,101 @@
+# ChangeLog for dev-python/pywebdav
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pywebdav/ChangeLog,v 1.23 2015/04/08 08:05:06 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pywebdav-0.9.8-r1.ebuild:
+  Drop old Python implementations
+
+  01 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -pywebdav-0.9.8.ebuild:
+  Remove old.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> pywebdav-0.9.8-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+*pywebdav-0.9.8-r1 (10 Oct 2013)
+
+  10 Oct 2013; Michał Górny <mgorny@gentoo.org> +pywebdav-0.9.8-r1.ebuild:
+  Convert to distutils-r1. Thanks for Dennis Lan for the initial patch, bug
+  #487508.
+
+  16 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  python will maintain this: http://www.gossamer-
+  threads.com/lists/gentoo/dev/273296#273296
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> -pywebdav-0.9.4.1.ebuild,
+  metadata.xml:
+  Cleanup due bug #151880
+
+*pywebdav-0.9.8 (05 May 2012)
+
+  05 May 2012; Cédric Krier <cedk@gentoo.org> +pywebdav-0.9.8.ebuild:
+  Version bump
+
+*pywebdav-0.9.4.1 (18 Feb 2011)
+
+  18 Feb 2011; Cédric Krier <cedk@gentoo.org> +pywebdav-0.9.4.1.ebuild,
+  -pywebdav-0.9.4.ebuild:
+  Version bump
+
+*pywebdav-0.9.4 (16 Apr 2010)
+
+  16 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pywebdav-0.9.4.ebuild:
+  Version bump. Set SUPPORT_PYTHON_ABIS.
+
+  03 Nov 2009; Cédric Krier <cedk@gentoo.org> pywebdav-0.9.3.ebuild:
+  Fix license
+
+  04 Sep 2009; Patrick Lauer <patrick@gentoo.org> -pywebdav-0.6.ebuild,
+  -pywebdav-0.7.ebuild, -pywebdav-0.8.ebuild, -pywebdav-0.9.ebuild,
+  -pywebdav-0.9.1.ebuild, -pywebdav-0.9.2.ebuild:
+  Remove old
+
+  27 Jul 2009; Cédric Krier <cedk@gentoo.org> pywebdav-0.6.ebuild,
+  pywebdav-0.7.ebuild, pywebdav-0.8.ebuild, pywebdav-0.9.ebuild,
+  pywebdav-0.9.1.ebuild, pywebdav-0.9.2.ebuild, pywebdav-0.9.3.ebuild:
+  Add missing dependency on dev-python/setuptools for bug #278980
+
+*pywebdav-0.9.3 (02 Jul 2009)
+
+  02 Jul 2009; Cédric Krier <cedk@gentoo.org> +pywebdav-0.9.3.ebuild:
+  Version bump
+
+*pywebdav-0.9.2 (11 May 2009)
+
+  11 May 2009; Cédric Krier <cedk@gentoo.org> +pywebdav-0.9.2.ebuild:
+  Version bump
+
+*pywebdav-0.9.1 (09 May 2009)
+
+  09 May 2009; Cédric Krier <cedk@gentoo.org> +pywebdav-0.9.1.ebuild:
+  Version bump
+
+*pywebdav-0.9 (08 Apr 2009)
+
+  08 Apr 2009; Cédric Krier <cedk@gentoo.org> +pywebdav-0.9.ebuild:
+  Version bump
+
+  15 Feb 2009; Patrick Lauer <patrick@gentoo.org> pywebdav-0.8.ebuild:
+  Adding ~amd64 keyword
+
+  19 Jul 2008; Cédric Krier <cedk@gentoo.org> pywebdav-0.8.ebuild:
+  Remove pyxml from DEPEND
+
+*pywebdav-0.8 (18 Jul 2008)
+
+  18 Jul 2008; Cédric Krier <cedk@gentoo.org> +pywebdav-0.8.ebuild:
+  Version bump
+
+*pywebdav-0.7 (27 May 2008)
+
+  27 May 2008; Cédric Krier <cedk@gentoo.org> +pywebdav-0.7.ebuild:
+  Version bump
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fixing bogus metadata.xml.
+
+*pywebdav-0.6 (14 Feb 2008)
+
+  14 Feb 2008; Cédric Krier <cedk@gentoo.org> +metadata.xml,
+  +pywebdav-0.6.ebuild:
+  New ebuild

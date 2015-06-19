@@ -1,0 +1,46 @@
+# ChangeLog for kde-misc/kvkbd
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kvkbd/ChangeLog,v 1.11 2014/04/24 15:05:37 johu Exp $
+
+  24 Apr 2014; Johannes Huber <johu@gentoo.org> -kvkbd-0.6.ebuild,
+  kvkbd-0.6-r1.ebuild:
+  amd64/x86 stable, remove old.
+
+*kvkbd-0.6-r1 (21 Mar 2014)
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org> +kvkbd-0.6-r1.ebuild:
+  Revision bump to EAPI 5.
+
+  11 Jun 2013; Agostino Sarubbo <ago@gentoo.org> kvkbd-0.6.ebuild:
+  Stable for x86, wrt bug #472986
+
+  11 Jun 2013; Agostino Sarubbo <ago@gentoo.org> kvkbd-0.6.ebuild:
+  Stable for amd64, wrt bug #472986
+
+  29 Oct 2011; Jonathan Callen <abcd@gentoo.org> kvkbd-0.6.ebuild:
+  Bump to EAPI=4
+
+  11 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org> kvkbd-0.6.ebuild,
+  +files/kvkbd-0.6-underlinking.patch:
+  Fix underlinking, bug 372051
+
+  17 Jun 2011; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Switch maintainers from desktop-misc to kde.
+
+  31 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> kvkbd-0.6.ebuild:
+  EAPI3, slotmove to 4
+
+  02 Sep 2009; Patrick Lauer <patrick@gentoo.org> Manifest:
+  Manifest fix
+
+*kvkbd-0.6 (01 Sep 2009)
+
+  01 Sep 2009; Patrick Lauer <patrick@gentoo.org> +kvkbd-0.6.ebuild:
+  Bump to 0.6, fixes #283291. Ebuild patches by Daniel Lin.
+
+*kvkbd-0.5 (13 Oct 2008)
+
+  13 Oct 2008; Ben de Groot <yngwin@gentoo.org> +files/gcc43-fix.patch,
+  +metadata.xml, +kvkbd-0.5.ebuild:
+  Initial commit. Ebuild by me, based on contributions by Jiri Tyr in bug
+  174054.

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-libs/openssl gtk? ( x11-libs/gtk+:2 app-admin/gkrellm:2 ) !gtk? ( x11-wm/windowmaker ) >=x11-libs/libX11-1 >=x11-libs/libXext-1 >=x11-libs/libXpm-3.5.4.2 gtk? ( virtual/pkgconfig ) >=x11-proto/xextproto-7.0.2
+DESCRIPTION=a dockapp and gkrellm2 plugin that fetches the DSL usage information for Australian ISP Internode
+EAPI=2
+HOMEPAGE=http://www.earthmagic.org/?software
+IUSE=gtk
+KEYWORDS=x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/openssl gtk? ( x11-libs/gtk+:2 app-admin/gkrellm:2 ) !gtk? ( x11-wm/windowmaker ) >=x11-libs/libX11-1 >=x11-libs/libXext-1 >=x11-libs/libXpm-3.5.4.2
+SLOT=0
+SRC_URI=http://www.earthmagic.org/files/wmium-1.0.9b.tar.gz
+_md5_=1bd31882b9a2bc7a24c44c4f814402d0

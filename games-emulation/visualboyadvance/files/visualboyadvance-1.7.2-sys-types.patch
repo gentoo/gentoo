@@ -1,0 +1,12 @@
+diff --git a/src/expr.cpp b/src/expr.cpp
+index 25c68f6..47237cb 100644
+--- a/src/expr.cpp
++++ b/src/expr.cpp
+@@ -19,6 +19,7 @@ namespace std {
+ #include <memory.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <sys/types.h>
+ }
+ 
+ using namespace std;

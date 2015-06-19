@@ -1,0 +1,34 @@
+# ChangeLog for dev-php/PEAR-HTML_CSS
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-HTML_CSS/ChangeLog,v 1.6 2014/11/06 15:53:03 grknight Exp $
+
+*PEAR-HTML_CSS-1.5.4-r1 (06 Nov 2014)
+
+  06 Nov 2014; Brian Evans <grknight@gentoo.org> +PEAR-HTML_CSS-1.5.4-r1.ebuild,
+  -PEAR-HTML_CSS-1.5.4.ebuild:
+  EAPI Revbump
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-HTML_CSS-1.5.4.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  01 Jul 2012; Matti Bickel <mabi@gentoo.org> PEAR-HTML_CSS-1.5.4.ebuild:
+  make use of transitive php dependency (from pear) to remove depend.php
+  requirement
+
+  18 Jan 2012; Matti Bickel <mabi@gentoo.org> -PEAR-HTML_CSS-1.5.1.ebuild:
+  remove old
+
+*PEAR-HTML_CSS-1.5.4 (22 Aug 2009)
+
+  22 Aug 2009; Steve Dibb <beandog@gentoo.org> +PEAR-HTML_CSS-1.5.4.ebuild:
+  Version bump
+
+*PEAR-HTML_CSS-1.5.1 (17 Mar 2008)
+
+  17 Mar 2008; <jokey@gentoo.org> +metadata.xml,
+  +PEAR-HTML_CSS-1.5.1.ebuild:
+  Initial import from project overlay
+
+  15 Mar 2008; Jakub Moc <jakub@gentoo.org> +PEAR-HTML_CSS-1.5.1.ebuild:
+  New ebuild

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>gnustep</herd>
+	<longdescription>The DBusKit framework offers tight integration of D-Bus services into Objective-C applications. It handles all low-level details of communication with D-Bus daemons and the services connected to them and exposes an interface similar to Distributed Objects to make it easy for Objective-C programmers to access D-Bus services.</longdescription>
+</pkgmetadata>

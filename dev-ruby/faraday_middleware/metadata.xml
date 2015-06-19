@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>ruby</herd>
+	<maintainer>
+		<email>robbat2@gentoo.org</email>
+		<name>Robin H. Johnson</name>
+	</maintainer>
+	<longdescription lang="en">
+		A collection of useful Faraday middleware.
+	</longdescription>
+	<use>
+		<flag name="parsexml">Include FaradayMiddleware::ParseXml</flag>
+		<flag name="oauth">Include FaradayMiddleware::OAuth</flag>
+		<flag name="mashify">Include FaradayMiddleware::Mashify</flag>
+		<flag name="rashify">Include FaradayMiddleware::Rashify</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">lostisland/faraday_middleware</remote-id>
+	</upstream>
+</pkgmetadata>

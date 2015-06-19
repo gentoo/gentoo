@@ -1,0 +1,79 @@
+# ChangeLog for net-dns/dnrd
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/dnrd/ChangeLog,v 1.16 2013/03/17 15:16:50 hwoarang Exp $
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  14 Jun 2012; Zac Medico <zmedico@gentoo.org> dnrd-2.20.3-r1.ebuild:
+  inherit user for enewgroup and enewuser
+
+*dnrd-2.20.3-r1 (15 Oct 2008)
+
+  15 Oct 2008; Raúl Porcel <armin76@gentoo.org>
+  +files/dnrd-2.20.3-docdir.patch, -dnrd-2.20.3.ebuild,
+  +dnrd-2.20.3-r1.ebuild:
+  New revision bump for bug #241294
+
+*dnrd-2.20.3 (22 Mar 2007)
+
+  22 Mar 2007; Raúl Porcel <armin76@gentoo.org> metadata.xml,
+  -dnrd-2.20.ebuild, -dnrd-2.20.1.ebuild, +dnrd-2.20.3.ebuild:
+  Version bump, bug 170742, remove old, add myself to metadata for
+  proxy-maintain with Natanael Copa
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> dnrd-2.20.ebuild,
+  dnrd-2.20.1.ebuild:
+  Remove gnuconfig_update usage, leave it to econf.
+
+  22 Oct 2006; Thomas Cort <tcort@gentoo.org> dnrd-2.20.1.ebuild:
+  Added ~amd64 keyword wrt Bug #127361.
+
+*dnrd-2.20.1 (01 Jan 2006)
+
+  01 Jan 2006; Chris White <chriswhite@gentoo.org> +dnrd-2.20.1.ebuild:
+  Version bump to 2.20.1. Fixes bug #113995. Thanks to Natanael Copa for
+  reporting.
+
+*dnrd-2.20 (02 Sep 2005)
+
+  02 Sep 2005; Chris White <chriswhite@gentoo.org> files/dnrd,
+  -dnrd-2.19.1.ebuild, +dnrd-2.20.ebuild:
+  Removed obsolete 2.19.1 version in favor of 2.20 version from bug #104150.
+  Modified files/dnrd since --uid dnrd is default now.
+
+  23 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> dnrd-2.19.1.ebuild:
+  Use -1 instead of /bin/false on enewuser call.
+
+  17 Aug 2005; Chris White <chriswhite@gentoo.org> dnrd-2.19.1.ebuild:
+  Permissions fix for bug #102225.
+
+*dnrd-2.19.1 (21 Jul 2005)
+
+  21 Jul 2005; Chris White <chriswhite@gentoo.org> files/dnrd,
+  -dnrd-2.17.2.ebuild, -dnrd-2.18.ebuild, +dnrd-2.19.1.ebuild:
+  Fix for security bug #99520. Thanks to Anarchy for confirming ~ppc. Removed
+  older vulnerable versions.
+
+  19 Apr 2005; Elfyn McBratney <beu@gentoo.org> metadata.xml:
+  Remove retired developer from metadata.xml.
+
+*dnrd-2.18 (11 Jan 2005)
+
+  11 Jan 2005; Chris White <chriswhite@gentoo.org> +dnrd-2.18.ebuild:
+  Version bump to 2.18. Added ~ppc keyword. Fixes bug #77379. Thanks to
+  Natanael Copa for the ebuild.
+
+  11 Jan 2005; Chris White <chriswhite@gentoo.org> +metadata.xml,
+  +files/dnrd, +files/dnrd.conf, +dnrd-2.17.2.ebuild:
+  Move from www-proxy to net-dns as per bug #76216.
+
+*dnrd-2.17.2 (09 Dec 2004)
+
+  09 Dec 2004; Chris White <chriswhite@gentoo.org> +metadata.xml, +files/dnrd,
+  +files/dnrd.conf, +dnrd-2.17.2.ebuild:
+  Initial import into the tree. This closes bug #56378. Thanks to initial ebuild
+  submission by Natanael Copa <mlists@tanael.org>.

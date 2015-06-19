@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>eva@gentoo.org</email>
+	</maintainer>
+	<maintainer>
+		<email>leio@gentoo.org</email>
+	</maintainer>
+	<maintainer>
+		<email>steev@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		Liblarch is a python library built to easily handle data structure such are lists, trees and directed acyclic graphs (tree where nodes can have multiple parents). There's also a liblarch-gtk binding that will allow you to use your data structure in a Gtk.Treeview.
+
+		Liblarch supports multiple views of one data structure and complex filtering. That way, you have a clear separation between your data themselves (Model) and how they are displayed (View).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">liblarch/liblarch</remote-id>
+	</upstream>
+</pkgmetadata>

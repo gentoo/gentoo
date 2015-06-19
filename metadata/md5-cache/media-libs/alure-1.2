@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=media-libs/openal-1.1 dumb? ( media-libs/dumb ) flac? ( media-libs/flac ) fluidsynth? ( >=media-sound/fluidsynth-1.1.1 ) mp3? ( media-sound/mpg123 ) sndfile? ( media-libs/libsndfile ) vorbis? ( media-libs/libvorbis ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=The OpenAL Utility Toolkit
+EAPI=4
+HOMEPAGE=http://kcat.strangesoft.net/alure.html
+IUSE=dumb examples flac fluidsynth mp3 sndfile static-libs vorbis
+KEYWORDS=amd64 ~ppc ~ppc64 x86
+LICENSE=MIT
+RDEPEND=>=media-libs/openal-1.1 dumb? ( media-libs/dumb ) flac? ( media-libs/flac ) fluidsynth? ( >=media-sound/fluidsynth-1.1.1 ) mp3? ( media-sound/mpg123 ) sndfile? ( media-libs/libsndfile ) vorbis? ( media-libs/libvorbis )
+SLOT=0
+SRC_URI=http://kcat.strangesoft.net/alure-releases/alure-1.2.tar.bz2
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=2b1ec26a11d374b65b4396fe09a2a1a9

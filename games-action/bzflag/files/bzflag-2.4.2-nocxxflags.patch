@@ -1,0 +1,56 @@
+--- configure.ac.old	2013-05-12 13:33:05.738250140 +0200
++++ configure.ac	2013-05-12 13:33:24.732927312 +0200
+@@ -89,7 +89,7 @@
+ AM_INIT_AUTOMAKE([1.6 dist-zip dist-bzip2])
+ 
+ dnl all configured definitions get written here
+-AM_CONFIG_HEADER([include/config.h])
++AC_CONFIG_HEADER([include/config.h])
+ 
+ AC_SUBST(MAJOR_VERSION)
+ AC_SUBST(MINOR_VERSION)
+@@ -689,13 +689,9 @@
+ 	       else
+ 		 FLAGS="$FLAGS=$host_cpu"
+ 	       fi
+-	       CONF_CFLAGS="$CONF_CFLAGS $FLAGS";
+-	       CONF_CXXFLAGS="$CONF_CXXFLAGS $FLAGS";
+ 	       CONF_CXXFLAGS="$CONF_CXXFLAGS -fsigned-char";;
+ 	     ppc)
+ 	       FLAGS="-mcpu=$host_cpu"
+-	       CONF_CFLAGS="$CONF_CFLAGS $FLAGS";
+-	       CONF_CXXFLAGS="$CONF_CXXFLAGS $FLAGS";;
+ 	esac;;
+      cygwin)
+ 	AC_DEFINE(HALF_RATE_AUDIO, 1, [Half rate Audio])
+@@ -755,8 +751,6 @@
+ else
+     if test "$GCC" = yes ; then
+ 	OPTIMIZE="-fexpensive-optimizations"
+-	CONF_CFLAGS="$CONF_CFLAGS $OPTIMIZE"
+-	CONF_CXXFLAGS="$CONF_CXXFLAGS $OPTIMIZE"
+     fi
+     AC_DEFINE(NDEBUG, 1, [Debugging disabled])
+ fi
+--- src/other/ares/configure.ac.old	2013-05-12 13:44:25.147676903 +0200
++++ src/other/ares/configure.ac	2013-05-12 13:44:39.353684194 +0200
+@@ -7,7 +7,7 @@
+ CARES_OVERRIDE_AUTOCONF
+ 
+ AC_CONFIG_SRCDIR([ares_ipv6.h])
+-AM_CONFIG_HEADER([ares_config.h ares_build.h])
++AC_CONFIG_HEADER([ares_config.h ares_build.h])
+ AC_CONFIG_MACRO_DIR([m4])
+ AM_MAINTAINER_MODE
+ 
+--- src/other/curl/configure.ac.old	2013-05-12 13:49:00.814352825 +0200
++++ src/other/curl/configure.ac	2013-05-12 13:49:15.216341340 +0200
+@@ -34,7 +34,7 @@
+ terms of the curl license; see COPYING for more details])
+ 
+ AC_CONFIG_SRCDIR([lib/urldata.h])
+-AM_CONFIG_HEADER(lib/curl_config.h src/curl_config.h include/curl/curlbuild.h)
++AC_CONFIG_HEADER(lib/curl_config.h src/curl_config.h include/curl/curlbuild.h)
+ AC_CONFIG_MACRO_DIR([m4])
+ AM_MAINTAINER_MODE
+ 

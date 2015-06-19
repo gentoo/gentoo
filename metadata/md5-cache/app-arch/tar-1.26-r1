@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=xattr? ( sys-apps/attr ) nls? ( >=sys-devel/gettext-0.10.35 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Use this to make tarballs :)
+EAPI=3
+HOMEPAGE=http://www.gnu.org/software/tar/
+IUSE=minimal nls static userland_GNU xattr
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-3+
+RDEPEND=xattr? ( sys-apps/attr )
+SLOT=0
+SRC_URI=mirror://gnu/tar/tar-1.26.tar.bz2 mirror://gnu-alpha/tar/tar-1.26.tar.bz2
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c35f81fd3add10e76aaaf83cee3374a0

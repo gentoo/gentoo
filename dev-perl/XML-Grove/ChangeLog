@@ -1,0 +1,58 @@
+# ChangeLog for dev-perl/XML-Grove
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-Grove/ChangeLog,v 1.19 2014/04/30 20:06:47 zlogene Exp $
+
+  30 Apr 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -XML-Grove-0.46_alpha-r1.ebuild, XML-Grove-0.46_alpha-r2.ebuild:
+  Merge stable keywords from -r1; Drop old.
+
+*XML-Grove-0.46_alpha-r2 (27 Aug 2013)
+
+  27 Aug 2013; Ian Delaney <idella4@gentoo.org> +XML-Grove-0.46_alpha-r2.ebuild:
+  revbump -> EAPI 5
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  XML-Grove-0.46_alpha-r1.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  05 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  XML-Grove-0.46_alpha-r1.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed header
+
+  29 Apr 2005; Sven Wegener <swegener@gentoo.org>
+  XML-Grove-0.46_alpha-r1.ebuild:
+  Fixed SRC_URI.
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -XML-Grove-0.46_alpha.ebuild, XML-Grove-0.46_alpha-r1.ebuild:
+  Cleaning for mirror syntax
+
+  12 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  XML-Grove-0.46_alpha-r1.ebuild:
+  Stable on sparc
+
+  16 Feb 2004; Aron Griffis <agriffis@gentoo.org>
+  XML-Grove-0.46_alpha-r1.ebuild:
+  stable on alpha and ia64
+
+  15 Dec 2003; Jason Wever <weeve@gentoo.org> XML-Grove-0.46_alpha-r1.ebuild:
+  Added ~sparc keyword to fix broken dependencies for app-misc/bins.
+
+*XML-Grove-0.46_alpha-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+  13 Feb 2003; Mark Guertin <gerk@gentoo.org> XML-Grove-0.46_alpha-r1.ebuild XML-Grove-0.46_alpha.ebuild :
+  set ppc in keywords
+
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*XML-Grove-0.46_alpha (24 Oct 2002)
+
+  24 Oct 2002; <mcummings@gentoo.org> XML-Grove-0.46_alpha.ebuild ChangeLog:
+  Initial import. Ebuild submitted by ryan.shaw@standfordalumni.org.

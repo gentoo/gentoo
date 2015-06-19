@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=dev-libs/libxml2:2 dev-libs/libxslt dev-libs/libpcre sys-libs/libunwind
+DESCRIPTION=Toolbox for lexical processing, morphological analysis and generation of words
+EAPI=4
+HOMEPAGE=http://apertium.sourceforge.net
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libxml2:2 dev-libs/libxslt dev-libs/libpcre sys-libs/libunwind
+SLOT=0
+SRC_URI=mirror://sourceforge/apertium/lttoolbox-3.1.0.tar.gz
+_md5_=7895717663904e3d2e92e513c7dc84e4

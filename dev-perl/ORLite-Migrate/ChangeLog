@@ -1,0 +1,50 @@
+# ChangeLog for dev-perl/ORLite-Migrate
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/ORLite-Migrate/ChangeLog,v 1.5 2014/08/26 19:24:31 axs Exp $
+
+*ORLite-Migrate-1.100.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +ORLite-Migrate-1.100.0-r1.ebuild, -ORLite-Migrate-1.100.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org> -ORLite-Migrate-1.90.0.ebuild:
+  Cleanup
+
+*ORLite-Migrate-1.100.0 (02 Feb 2012)
+
+  02 Feb 2012; Torsten Veller <tove@gentoo.org> +ORLite-Migrate-1.100.0.ebuild:
+  Version bump
+
+*ORLite-Migrate-1.90.0 (19 Nov 2011)
+
+  19 Nov 2011; Torsten Veller <tove@gentoo.org> +ORLite-Migrate-1.90.0.ebuild,
+  +metadata.xml:
+  Import from ::perl-experimental for padre
+
+*ORLite-Migrate-1.07 (29 Apr 2010)
+
+  29 Apr 2010; Torsten Veller <tove@gentoo.org> -ORLite-Migrate-1.05.ebuild,
+  +ORLite-Migrate-1.07.ebuild:
+  Version bump. Cleanup
+
+*ORLite-Migrate-1.06 (09 Jan 2010)
+
+  09 Jan 2010; Torsten Veller <tove@gentoo.org> +ORLite-Migrate-1.06.ebuild:
+  Version bump
+
+*ORLite-Migrate-1.05 (08 Oct 2009)
+
+  08 Oct 2009; Michele Beltrame <m@cattlegrid.info>
+  -ORLite-Migrate-0.02.ebuild, +ORLite-Migrate-1.05.ebuild:
+  Bump
+
+  29 May 2009; Torsten Veller <tove@gentoo.org> ORLite-Migrate-0.03.ebuild:
+  Needs virtual/perl-File-Spec-3.27.01 at least
+
+  17 Feb 2009; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +ORLite-Migrate-0.02.ebuild:
+  Initial release

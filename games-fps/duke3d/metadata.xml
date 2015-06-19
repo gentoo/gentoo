@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>games</herd>
+  <longdescription>
+The third chapter in the series, and the first with a 3D perspective 
+(the original Duke Nukem and the sequel, Duke Nukem II, are side 
+scrolling platform games). This game, set sometime in the early 21st 
+century, begins in a ravaged LA, which was overtaken by aliens while you 
+were abducted during Duke Nukem II. Duke, upon returning to Earth, finds 
+himself with another mess to clean up, and another alien race that needs 
+exterminating. Duke is a can-do hero who realizes that sometimes 
+innocent people have to die in order to save Earth, so accuracy of gun 
+fire is not a real concern to him. :) 
+
+This game has a long list of cool things that haven't been attempted in 
+3D action games, yet. The weapons, for example, kick-butt: 
+
+    * There's a mine that can be placed on any wall and sends out a 
+laser trip beam-- perfect for multiplayer games. 
+    * There's also a shrinker ray that reduces an opponent to the size 
+of a G.I. Joe, at which point they are foot fodder--watch them splat! 
+    * As in Shadow Warrior, you can swim under water, and even shoot 
+players who are standing outside the water, or vice versa.
+
+ What works:
+    * Basic gameplay seems fine.
+    * Sound and music.
+    * keyboard input.
+    * mouse input.
+    * Hi-res (what would be "VESA modes" in DOS).
+    * Windowed/fullscreen support.
+    * Save games.
+    * Record and playback demos compatible with the Atomic Edition (1.5).
+    * Shareware and retail versions should all work.
+    * BUILD editor works to a large degree.
+    * DukeBots for multiplayer AI.
+    * Assembly code all has portable C fallbacks, now.
+    * TCP/IP Networking!
+    * Linux/x86 port.
+    * Windows/x86 port.
+    * BeOS/x86 port.
+    * (incomplete) MacOS X port. 
+
+What doesn't work/known bugs:
+    * Joystick input isn't working yet.
+    * File cases need to be exact in some places, not others.
+    * Engine (game?) relies on compiler treating "char" as "unsigned" by default...this needs to be flushed out, for sanity's sake. But I'm anal. :)
+    * Netcode handles packet loss _VERY_ poorly...it's fine for stable connections and LANs, though.
+    * Configuring a multiplayer game involves editing text files and filling in IP addresses. Not very user-friendly.
+    * Some text prompts try to read the SDL input queue instead of stdin like they should.
+    * Probably other stuff. Do NOT consider this stable and complete yet! 
+</longdescription>
+  <use>
+    <flag name="demo">Install the demo files</flag>
+    <flag name='pic'>disable optimized assembly code that is not PIC friendly</flag>
+  </use>
+</pkgmetadata>

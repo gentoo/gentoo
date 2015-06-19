@@ -1,0 +1,23 @@
+http://bugs.gentoo.org/219754
+
+--- src/main.c
++++ src/main.c
+@@ -1853,15 +1853,13 @@
+   //get_options(argc, argv);
+   //display_options();
+ 
+-	if (display_name == NULL)
+-		if ((display_name = getenv("DISPLAY")) == NULL)
+-			display_name = ":0";
+-
+ 	Xdisplay = XOpenDisplay(display_name);
+ 
+ 	if (!Xdisplay)
+ 	{
+-		print_error("can't open display %s", display_name);
++		print_error("can't open display %s", display_name?display_name:
++				getenv("DISPLAY")?getenv("DISPLAY"):
++				"as no -d given and DISPLAY not set");
+ 		exit(EXIT_FAILURE);
+ 	}
+   

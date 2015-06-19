@@ -1,0 +1,164 @@
+# ChangeLog for net-misc/qtm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/qtm/ChangeLog,v 1.38 2015/04/19 11:15:38 pesa Exp $
+
+  19 Apr 2015; Davide Pesavento <pesa@gentoo.org> -qtm-1.3.13.ebuild,
+  -qtm-1.3.14.ebuild, -qtm-1.3.15.ebuild:
+  Cleanup old versions.
+
+  19 Apr 2015; Pacho Ramos <pacho@gentoo.org> qtm-1.3.17.ebuild:
+  x86 stable wrt bug #535612
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> qtm-1.3.17.ebuild:
+  Stable for amd64, wrt bug #535612
+
+*qtm-1.3.17 (03 Mar 2014)
+
+  03 Mar 2014; Markos Chandras <hwoarang@gentoo.org> +qtm-1.3.17.ebuild:
+  Version bump
+
+*qtm-1.3.15 (04 Jan 2014)
+
+  04 Jan 2014; Markos Chandras <hwoarang@gentoo.org> +qtm-1.3.15.ebuild:
+  Version bump. Bug #496930
+
+  03 Jan 2014; Sergey Popov <pinkbyte@gentoo.org> qtm-1.3.14.ebuild:
+  Stable on amd64 and x86, wrt bug #495882
+
+*qtm-1.3.14 (08 Aug 2013)
+
+  08 Aug 2013; Markos Chandras <hwoarang@gentoo.org> +qtm-1.3.14.ebuild:
+  Version bump
+
+  30 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> -qtm-1.3.10.ebuild,
+  -qtm-1.3.12.ebuild, qtm-1.3.13.ebuild:
+  Fix minor QA issues, fix desktop file categories, wrt bug #463810. Drop old
+  versions, as requested in bug #463128
+
+  30 Mar 2013; Agostino Sarubbo <ago@gentoo.org> qtm-1.3.13.ebuild:
+  Stable for x86, wrt bug #463128
+
+  30 Mar 2013; Agostino Sarubbo <ago@gentoo.org> qtm-1.3.13.ebuild:
+  Stable for amd64, wrt bug #463128
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> qtm-1.3.10.ebuild,
+  qtm-1.3.12.ebuild, qtm-1.3.13.ebuild:
+  Move Qt dependencies to the new category
+
+*qtm-1.3.13 (26 Jan 2013)
+
+  26 Jan 2013; Markos Chandras <hwoarang@gentoo.org> +qtm-1.3.13.ebuild:
+  Version bump
+
+*qtm-1.3.12 (23 Oct 2012)
+
+  23 Oct 2012; Markos Chandras <hwoarang@gentoo.org> +qtm-1.3.12.ebuild,
+  -qtm-1.3.11.ebuild:
+  Version bump
+
+*qtm-1.3.11 (13 Oct 2012)
+
+  13 Oct 2012; Markos Chandras <hwoarang@gentoo.org> +qtm-1.3.11.ebuild,
+  -qtm-1.3.6.ebuild:
+  Version bump
+
+  20 Jun 2012; Jeff Horelick <jdhore@gentoo.org> qtm-1.3.10.ebuild:
+  marked x86 per bug 422145
+
+  19 Jun 2012; Agostino Sarubbo <ago@gentoo.org> qtm-1.3.10.ebuild:
+  Stable for amd64, wrt bug #422145
+
+*qtm-1.3.10 (06 May 2012)
+
+  06 May 2012; Markos Chandras <hwoarang@gentoo.org> +qtm-1.3.10.ebuild,
+  -qtm-1.3.7.ebuild:
+  Version bump
+
+*qtm-1.3.7 (06 May 2012)
+
+  06 May 2012; Markos Chandras <hwoarang@gentoo.org> +qtm-1.3.7.ebuild:
+  version bump
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> qtm-1.3.6.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  06 Apr 2012; Davide Pesavento <pesa@gentoo.org> -qtm-1.3.1.ebuild:
+  Remove old.
+
+  06 Apr 2012; Agostino Sarubbo <ago@gentoo.org> qtm-1.3.6.ebuild:
+  Stable for amd64, wrt bug #410897
+
+  05 Apr 2012; Jeff Horelick <jdhore@gentoo.org> qtm-1.3.6.ebuild:
+  marked x86 per bug 410897
+
+  05 Apr 2012; Davide Pesavento <pesa@gentoo.org> -qtm-1.3.3.ebuild,
+  -qtm-1.3.4.ebuild, -qtm-1.3.5.ebuild, metadata.xml:
+  Remove old versions.
+
+*qtm-1.3.6 (07 Jan 2012)
+
+  07 Jan 2012; Markos Chandras <hwoarang@gentoo.org> +qtm-1.3.6.ebuild:
+  Version bump
+
+*qtm-1.3.5 (06 Nov 2011)
+
+  06 Nov 2011; Markos Chandras <hwoarang@gentoo.org> +qtm-1.3.5.ebuild:
+  version bump
+
+*qtm-1.3.4 (15 Oct 2011)
+
+  15 Oct 2011; Markos Chandras <hwoarang@gentoo.org> +qtm-1.3.4.ebuild:
+  version bump
+
+*qtm-1.3.3 (21 Sep 2011)
+
+  21 Sep 2011; Markos Chandras <hwoarang@gentoo.org> -qtm-1.1.1.ebuild,
+  -qtm-1.2.ebuild, -qtm-1.3.ebuild, +qtm-1.3.3.ebuild:
+  Version bump
+
+  29 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> qtm-1.3.1.ebuild:
+  x86 stable wrt bug #367827
+
+  19 May 2011; Markos Chandras <hwoarang@gentoo.org> qtm-1.3.1.ebuild:
+  Stable on amd64 wrt bug #367827
+
+*qtm-1.3.1 (11 Feb 2011)
+
+  11 Feb 2011; Markos Chandras <hwoarang@gentoo.org> qtm-1.3.ebuild,
+  +qtm-1.3.1.ebuild:
+  Fix qt-dbus argument on cmake. Bug #354485. Version bump to 1.3.1
+
+  14 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> qtm-1.3.ebuild:
+  x86 stable wrt bug #340749
+
+  13 Oct 2010; Markos Chandras <hwoarang@gentoo.org> qtm-1.3.ebuild:
+  Stable on amd64 wrt bug #340749
+
+*qtm-1.3 (09 Sep 2010)
+
+  09 Sep 2010; Markos Chandras <hwoarang@gentoo.org> -qtm-1.1.ebuild,
+  +qtm-1.3.ebuild:
+  Version bump. Remove old ebuild
+
+*qtm-1.2 (06 Aug 2010)
+
+  06 Aug 2010; Markos Chandras <hwoarang@gentoo.org> +qtm-1.2.ebuild:
+  Version bump
+
+  29 Jun 2010; Christian Faulhammer <fauli@gentoo.org> qtm-1.1.1.ebuild:
+  stable x86, bug 325763
+
+  27 Jun 2010; Christoph Mende <angelos@gentoo.org> qtm-1.1.1.ebuild:
+  Stable on amd64 wrt bug #325763
+
+*qtm-1.1.1 (20 Nov 2009)
+
+  20 Nov 2009; Markos Chandras <hwoarang@gentoo.org> +qtm-1.1.1.ebuild:
+  Version bump
+
+*qtm-1.1 (27 Jun 2009)
+
+  27 Jun 2009; Markos Chandras <hwoarang@gentoo.org> +qtm-1.1.ebuild,
+  +metadata.xml:
+  Initial commit for qtm application. Thanks to Yar Odin <yarodin@gmail.com>
+  for the initial ebuild. Fixes bug 274952

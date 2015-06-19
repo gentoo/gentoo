@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-perl/POE-API-Peek-1.34 dev-perl/POE dev-perl/Devel-Size dev-lang/perl:=[-build(-)]
+DESCRIPTION=POE Inter-Kernel Communication
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/POE-Component-IKC/
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/POE-API-Peek-1.34 dev-perl/POE dev-perl/Devel-Size dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/G/GW/GWYN/POE-Component-IKC-0.2303.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=f9ceb7770f5fcc1ead5e94022691b98d

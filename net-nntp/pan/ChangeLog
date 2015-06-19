@@ -1,0 +1,653 @@
+# ChangeLog for net-nntp/pan
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-nntp/pan/ChangeLog,v 1.107 2014/04/18 08:35:47 pacho Exp $
+
+  18 Apr 2014; Pacho Ramos <pacho@gentoo.org> -files/pan-0.135-glib-2.31.patch,
+  -pan-0.135.ebuild, -pan-9999.ebuild, metadata.xml:
+  Drop old, drop 9999 ebuild as none of us is really maintaining it, take the
+  package as we are the people are taking care of this for a long time.
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> pan-0.139.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> pan-0.139.ebuild:
+  arch stable, bug 888
+
+  22 Dec 2013; Jeroen Roovers <jer@gentoo.org> pan-0.139.ebuild:
+  Stable for HPPA (bug #478252).
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> pan-0.139.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> pan-0.139.ebuild:
+  amd64 stable, bug #478252
+
+  30 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org> -pan-0.137.ebuild:
+  Clean up old revision.
+
+*pan-0.139 (04 Nov 2012)
+
+  04 Nov 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -pan-0.133-r1.ebuild, -files/pan-0.133-gcc44.patch, -pan-0.134.ebuild,
+  +pan-0.139.ebuild, +files/pan-0.139-pan.desktop.patch, pan-9999.ebuild:
+  Version bump with various bugfixes (bug #427650, thanks to Emmanuel Andry and
+  Chris Smith). Drop old.
+
+*pan-0.137 (06 May 2012)
+
+  06 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org> +pan-0.137.ebuild,
+  pan-9999.ebuild:
+  Version bump (bug #413059, thanks to Emmanuel Andry and Jeroen Roovers); adds
+  support for attachment uploading, SSL connections, gnome-keyring for secure
+  password storage. Update to EAPI4. Update live ebuild.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> pan-0.133-r1.ebuild,
+  pan-0.134.ebuild, pan-0.135.ebuild, pan-9999.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  08 Apr 2012; Alexandre Rostovtsev <tetromino@gentoo.org> pan-0.135.ebuild,
+  +files/pan-0.135-glib-2.31.patch:
+  Fix building with >=glib-2.31 (bug #401437, thanks to Mathias for reporting).
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> pan-0.135.ebuild:
+  alpha/sparc stable wrt #393007
+
+  05 Mar 2012; Brent Baude <ranger@gentoo.org> pan-0.135.ebuild:
+  Marking pan-0.135 ppc stable for bug 393007
+
+  05 Mar 2012; Brent Baude <ranger@gentoo.org> pan-0.135.ebuild:
+  Marking pan-0.135 ppc64 stable for bug 393007
+
+  14 Jan 2012; Markus Meier <maekke@gentoo.org> pan-0.135.ebuild:
+  x86 stable, bug #393007
+
+  29 Dec 2011; Pacho Ramos <pacho@gentoo.org> pan-0.135.ebuild:
+  amd64 stable, bug 393007
+
+  20 Dec 2011; Jeroen Roovers <jer@gentoo.org> pan-0.135.ebuild:
+  Stable for HPPA (bug #393007).
+
+  27 Oct 2011; Alexandre Rostovtsev <tetromino@gentoo.org> pan-0.133-r1.ebuild,
+  pan-0.134.ebuild, pan-0.135.ebuild, pan-9999.ebuild:
+  Slot gtkspell dependency to 2 in preparation for gtkspell-3.
+
+  21 Sep 2011; Michał Górny <mgorny@gentoo.org> pan-9999.ebuild:
+  Migrate to git-2.
+
+*pan-0.135 (20 Sep 2011)
+
+  20 Sep 2011; Gilles Dartiguelongue <eva@gentoo.org> +pan-0.135.ebuild:
+  Version bump.
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> -pan-0.133.ebuild:
+  Remove old
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org> pan-0.133-r1.ebuild:
+  Marking pan-0.133-r1 ppc stable for bug 353436
+
+  21 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> pan-0.133-r1.ebuild:
+  ppc64 stable wrt #353436
+
+  12 Mar 2011; Raúl Porcel <armin76@gentoo.org> pan-0.133-r1.ebuild:
+  alpha/sparc stable wrt #353436
+
+  07 Mar 2011; Jeroen Roovers <jer@gentoo.org> pan-0.133-r1.ebuild:
+  Stable for HPPA (bug #355719).
+
+  24 Feb 2011; Thomas Kahle <tomka@gentoo.org> pan-0.133-r1.ebuild:
+  x86 stable per bug 353436
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org> pan-0.133-r1.ebuild:
+  Stable on amd64 wrt bug 353436
+
+*pan-0.134 (23 Feb 2011)
+
+  23 Feb 2011; Gilles Dartiguelongue <eva@gentoo.org> +pan-0.134.ebuild,
+  pan-9999.ebuild:
+  Version bump.
+
+  17 Dec 2010; Gilles Dartiguelongue <eva@gentoo.org> pan-0.133-r1.ebuild:
+  Pin glib/gtk+ to SLOT 2.
+
+*pan-0.133-r1 (17 Dec 2010)
+
+  17 Dec 2010; Jeroen Roovers <jer@gentoo.org> +pan-0.133-r1.ebuild:
+  Patch for dev-libs/gmime:2.4 (bug #311503).
+
+  21 Sep 2010; Gilles Dartiguelongue <eva@gentoo.org> pan-9999.ebuild:
+  Update live ebuild to gnome git repository, bug #290914. Make it use base
+  eclass and update dependencies.
+
+  15 May 2009; Ryan Hill <dirtyepic@gentoo.org> pan-0.133.ebuild,
+  +files/pan-0.133-gcc44.patch:
+  Fix building with GCC 4.4. Based on patch from Victor Ostorga in bug
+  #269239.
+
+  06 Oct 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  -files/pan-0.132-CVE-2008-2363.patch, -files/pan-0.132-gcc43-fixes.patch,
+  -files/pan-0.132-glib-compat.patch,
+  -files/load-pixbuf-in-1024-byte-chunks.diff, -pan-0.132-r3.ebuild:
+  clean up old revisions.
+
+  06 Oct 2008; Markus Meier <maekke@gentoo.org> pan-0.133.ebuild:
+  amd64/x86 stable, bug #239378
+
+  05 Oct 2008; Tobias Klausmann <klausman@gentoo.org> pan-0.133.ebuild:
+  Stable on alpha, bug #239378
+
+  04 Oct 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  -files/pan-0.14.2.91-gcc4-2.patch,
+  -files/pan-0.14.2-update-desktop-file.patch, -pan-0.14.2.ebuild,
+  -pan-0.14.2.91-r2.ebuild, -pan-0.14.2.91-r3.ebuild, -pan-0.132-r1.ebuild,
+  -pan-0.132-r2.ebuild, pan-0.132-r3.ebuild, pan-0.133.ebuild,
+  pan-9999.ebuild:
+  Fix deps on gmime since it is now slotted, bug #239412. remove old
+  revisions.
+
+  03 Oct 2008; Friedrich Oslage <bluebird@gentoo.org> pan-0.133.ebuild:
+  Stable on sparc, bug #239378
+
+  03 Oct 2008; Jeroen Roovers <jer@gentoo.org> pan-0.133.ebuild:
+  Stable for HPPA (bug #239378).
+
+  02 Oct 2008; Brent Baude <ranger@gentoo.org> pan-0.133.ebuild:
+  stable ppc64, bug 239378
+
+  02 Oct 2008; Brent Baude <ranger@gentoo.org> pan-0.133.ebuild:
+  stable ppc, bug 239378
+
+*pan-0.133 (24 Aug 2008)
+
+  24 Aug 2008; Sven Wegener <swegener@gentoo.org> +pan-0.133.ebuild:
+  Version bump.
+
+*pan-9999 (14 Jul 2008)
+
+  14 Jul 2008; Gilles Dartiguelongue <eva@gentoo.org> +pan-9999.ebuild:
+  add live ebuid, courtesy of Duncan <1i5t5.duncan@cox.net>.
+
+  30 Jun 2008; Jeroen Roovers <jer@gentoo.org> pan-0.132-r3.ebuild:
+  Stable for HPPA (bug #227679).
+
+  24 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org> pan-0.132-r3.ebuild:
+  ppc stable, bug #224051
+
+  21 Jun 2008; Markus Rothe <corsair@gentoo.org> pan-0.132-r2.ebuild:
+  Stable on ppc64; bug #227679
+
+  20 Jun 2008; Christian Faulhammer <opfer@gentoo.org> pan-0.132-r3.ebuild:
+  stable x86, bug 227679
+
+  19 Jun 2008; nixnut <nixnut@gentoo.org> pan-0.132-r2.ebuild:
+  Stable on ppc wrt bug 227679
+
+  19 Jun 2008; Olivier Crête <tester@gentoo.org> pan-0.132-r3.ebuild:
+  Stable on amd64, bug #227679
+
+  17 Jun 2008; Brent Baude <ranger@gentoo.org> pan-0.132-r3.ebuild:
+  Marking pan-0.132-r3 ppc64 for bug 227679
+
+*pan-0.132-r3 (03 Jun 2008)
+
+  03 Jun 2008; Sven Wegener <swegener@gentoo.org>
+  +files/pan-0.132-CVE-2008-2363.patch, +pan-0.132-r3.ebuild:
+  Revision bump, security bug #224051.
+
+  13 Apr 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/pan-0.132-gcc43-fixes.patch, pan-0.132-r2.ebuild:
+  Fix compilation with gcc-4.3, bug #211670
+
+*pan-0.132-r2 (13 Apr 2008)
+
+  13 Apr 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/pan-0.132-glib-compat.patch, -pan-0.14.2-r1.ebuild,
+  +pan-0.132-r2.ebuild:
+  fix compilation with >=glib-2.16, bug #214446
+
+  25 Jan 2008; Wulf C. Krueger <philantrop@gentoo.org> pan-0.132-r1.ebuild:
+  Marked stable on amd64 as per bug 195543.
+
+  16 Jan 2008; Jeroen Roovers <jer@gentoo.org> pan-0.132-r1.ebuild:
+  Stable for HPPA (bug #195543).
+
+  11 Jan 2008; Markus Meier <maekke@gentoo.org> pan-0.132-r1.ebuild:
+  x86 stable, bug #195543
+
+  11 Jan 2008; Brent Baude <ranger@gentoo.org> pan-0.132-r1.ebuild:
+  Marking pan-0.132-r1 ppc and ppc64 for bug 195543
+
+  05 Jan 2008; Sven Wegener <swegener@gentoo.org> -pan-0.131.ebuild,
+  -pan-0.132.ebuild:
+  Small cleanup.
+
+*pan-0.132-r1 (19 Nov 2007)
+
+  19 Nov 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  +files/load-pixbuf-in-1024-byte-chunks.diff, +pan-0.132-r1.ebuild:
+  Added a patch kindly provided by ChazeFroy to fix our bug 199581 (upstream:
+  http://bugzilla.gnome.org/show_bug.cgi?id=477860) with respect to recent
+  gtk+ versions.
+
+  13 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  pan-0.14.2.91-r2.ebuild:
+  ppc. stable
+
+*pan-0.132 (04 Aug 2007)
+
+  04 Aug 2007; Sven Wegener <swegener@gentoo.org> +pan-0.132.ebuild:
+  Version bump, bug #187704.
+
+  08 Jun 2007; Sven Wegener <swegener@gentoo.org> -pan-0.128.ebuild,
+  -pan-0.129.ebuild, -pan-0.130.ebuild:
+  Cleanup.
+
+*pan-0.131 (30 May 2007)
+
+  30 May 2007; Sven Wegener <swegener@gentoo.org> +pan-0.131.ebuild:
+  Version bump.
+
+*pan-0.130 (20 May 2007)
+
+  20 May 2007; Sven Wegener <swegener@gentoo.org> +pan-0.130.ebuild:
+  Version bump.
+
+  18 May 2007; Raúl Porcel <armin76@gentoo.org> pan-0.129.ebuild:
+  Add ~alpha wrt #159654
+
+*pan-0.129 (07 May 2007)
+
+  07 May 2007; Sven Wegener <swegener@gentoo.org> +pan-0.129.ebuild:
+  Version bump.
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org> -pan-0.124.ebuild,
+  -pan-0.125.ebuild, -pan-0.127.ebuild:
+  Cleanup.
+
+*pan-0.128 (23 Apr 2007)
+
+  23 Apr 2007; Sven Wegener <swegener@gentoo.org> +pan-0.128.ebuild:
+  Version bump.
+
+  23 Apr 2007; Peter Weller <welp@gentoo.org> pan-0.127.ebuild:
+  Keyworded ~x86-fbsd
+
+*pan-0.127 (15 Apr 2007)
+
+  15 Apr 2007; Sven Wegener <swegener@gentoo.org> +pan-0.127.ebuild:
+  Version bump.
+
+*pan-0.125 (22 Feb 2007)
+
+  22 Feb 2007; Sven Wegener <swegener@gentoo.org> +pan-0.125.ebuild:
+  Version bump.
+
+  18 Feb 2007; Sven Wegener <swegener@gentoo.org> -pan-0.120.ebuild,
+  -pan-0.121.ebuild, -pan-0.122.ebuild, -pan-0.123.ebuild:
+  Cleanup.
+
+*pan-0.124 (15 Feb 2007)
+
+  15 Feb 2007; Sven Wegener <swegener@gentoo.org> +pan-0.124.ebuild:
+  Version bump.
+
+*pan-0.123 (08 Feb 2007)
+
+  08 Feb 2007; Sven Wegener <swegener@gentoo.org> +pan-0.123.ebuild:
+  Version bump.
+
+*pan-0.122 (04 Feb 2007)
+
+  04 Feb 2007; Sven Wegener <swegener@gentoo.org> +pan-0.122.ebuild:
+  Version bump.
+
+*pan-0.121 (23 Jan 2007)
+
+  23 Jan 2007; Sven Wegener <swegener@gentoo.org> +pan-0.121.ebuild:
+  Version bump.
+
+  10 Jan 2007; Mart Raudsepp <leio@gentoo.org> -pan-0.116.ebuild,
+  -pan-0.117.ebuild, -pan-0.118.ebuild, -pan-0.119.ebuild:
+  Prune old beta versions
+
+*pan-0.120 (04 Jan 2007)
+
+  04 Jan 2007; Sven Wegener <swegener@gentoo.org> +pan-0.120.ebuild:
+  Version bump.
+
+*pan-0.119 (13 Nov 2006)
+
+  13 Nov 2006; Sven Wegener <swegener@gentoo.org> +pan-0.119.ebuild:
+  Version bump.
+
+  04 Nov 2006; Sven Wegener <swegener@gentoo.org> pan-0.14.2.ebuild,
+  pan-0.14.2-r1.ebuild, pan-0.14.2.91-r2.ebuild, pan-0.14.2.91-r3.ebuild,
+  pan-0.116.ebuild, pan-0.117.ebuild, pan-0.118.ebuild:
+  Add missing pkgconfig dep, bug #153273.
+
+*pan-0.118 (03 Nov 2006)
+
+  03 Nov 2006; Sven Wegener <swegener@gentoo.org> +pan-0.118.ebuild:
+  Version bump.
+
+*pan-0.117 (22 Oct 2006)
+
+  22 Oct 2006; Sven Wegener <swegener@gentoo.org> +pan-0.117.ebuild:
+  Version bump.
+
+*pan-0.116 (10 Oct 2006)
+
+  10 Oct 2006; Sven Wegener <swegener@gentoo.org> -files/0.115-size_t.patch,
+  -pan-0.115.ebuild, +pan-0.116.ebuild:
+  Version bump.
+
+  09 Oct 2006; Sven Wegener <swegener@gentoo.org> +files/0.115-size_t.patch,
+  pan-0.115.ebuild:
+  Add patch to fix bug #149865.
+
+  06 Oct 2006; Sven Wegener <swegener@gentoo.org> -pan-0.107.ebuild,
+  -pan-0.109.ebuild, -pan-0.111.ebuild, -pan-0.112.ebuild,
+  -pan-0.113.ebuild, -pan-0.114.ebuild:
+  Cleanup.
+
+*pan-0.115 (01 Oct 2006)
+
+  01 Oct 2006; Sven Wegener <swegener@gentoo.org> +pan-0.115.ebuild:
+  Version bump.
+
+*pan-0.114 (26 Sep 2006)
+
+  26 Sep 2006; Sven Wegener <swegener@gentoo.org> +pan-0.114.ebuild:
+  Version bump.
+
+*pan-0.113 (25 Sep 2006)
+
+  25 Sep 2006; Sven Wegener <swegener@gentoo.org> +pan-0.113.ebuild:
+  Version bump.
+
+*pan-0.112 (10 Sep 2006)
+
+  10 Sep 2006; Sven Wegener <swegener@gentoo.org> +pan-0.112.ebuild:
+  Version bump.
+
+*pan-0.111 (05 Sep 2006)
+
+  05 Sep 2006; Sven Wegener <swegener@gentoo.org> +pan-0.111.ebuild:
+  Version bump.
+
+  03 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org> pan-0.14.2.ebuild:
+  Added eutils to inherit for bug #139655.
+
+*pan-0.109 (19 Aug 2006)
+
+  19 Aug 2006; Sven Wegener <swegener@gentoo.org> +pan-0.109.ebuild:
+  Version bump.
+
+  13 Aug 2006; Markus Rothe <corsair@gentoo.org> pan-0.107.ebuild:
+  Added ~ppc64; bug #142589
+
+  09 Aug 2006; Sven Wegener <swegener@gentoo.org> pan-0.14.2.ebuild:
+  Add the gcc-4 patch to 0.14.2, bug #139656.
+
+*pan-0.107 (09 Aug 2006)
+
+  09 Aug 2006; Sven Wegener <swegener@gentoo.org> -pan-0.106.ebuild,
+  +pan-0.107.ebuild:
+  Version bump.
+
+*pan-0.106 (02 Aug 2006)
+
+  02 Aug 2006; Sven Wegener <swegener@gentoo.org> -pan-0.105.ebuild,
+  +pan-0.106.ebuild:
+  Version bump.
+
+*pan-0.105 (01 Aug 2006)
+
+  01 Aug 2006; Sven Wegener <swegener@gentoo.org> -pan-0.92.ebuild,
+  -pan-0.94.ebuild, +pan-0.105.ebuild:
+  Version bump, bug #142078. Ready for unmasking.
+
+*pan-0.94 (07 May 2006)
+
+  07 May 2006; Sven Wegener <swegener@gentoo.org> +pan-0.94.ebuild:
+  Version bump, bug #130180.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+*pan-0.92 (09 Apr 2006)
+
+  09 Apr 2006; Sven Wegener <swegener@gentoo.org> +pan-0.92.ebuild:
+  Version bump, bug #128584.
+
+  17 Mar 2006; Sven Wegener <swegener@gentoo.org> pan-0.14.2.ebuild,
+  pan-0.14.2-r1.ebuild, pan-0.14.2.91-r2.ebuild, pan-0.14.2.91-r3.ebuild:
+  Remove the CONFIG_PROTECT_MASK workaround, QA bug #125720.
+
+*pan-0.14.2.91-r3 (03 Jul 2005)
+*pan-0.14.2-r1 (03 Jul 2005)
+
+  03 Jul 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/pan-0.14.2-update-desktop-file.patch, +pan-0.14.2-r1.ebuild,
+  +pan-0.14.2.91-r3.ebuild:
+  Install desktop file in new location, and add Categories entry, bug #97815.
+
+*pan-0.14.2.91-r2 (30 Apr 2005)
+
+  30 Apr 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/pan-0.14.2.91-gcc4-2.patch, +pan-0.14.2.91-r2.ebuild:
+  Fix typo in gcc4 patch, bug #90943.
+
+*pan-0.14.2.91-r1 (29 Apr 2005)
+
+  29 Apr 2005; Martin Schlemmer <azarah@gentoo.org>
+  files/pan-0.14.2.91-gcc4.patch, +pan-0.14.2.91-r1.ebuild:
+  Fix gcc4 patch's pointer arithmatic.
+
+  25 Apr 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/pan-0.14.2.91-gcc4.patch, pan-0.14.2.91.ebuild:
+  Fix for building with gcc4.
+
+  06 Feb 2005; Markus Rothe <corsair@gentoo.org> pan-0.14.2.91.ebuild:
+  Stable on ppc64
+
+*pan-0.14.2 (17 Jan 2005)
+
+  17 Jan 2005; Sven Wegener <swegener@gentoo.org> +metadata.xml,
+  +pan-0.14.2.91.ebuild, +pan-0.14.2.ebuild:
+  Moved from net-news/pan to net-nntp/pan.
+
+  23 Dec 2004; Markus Rothe <corsair@gentoo.org> pan-0.14.2.91.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #75353
+
+  05 Dec 2004; Sven Wegener <swegener@gentoo.org> -pan-0.13.0.ebuild,
+  pan-0.14.2.91.ebuild, pan-0.14.2.ebuild:
+  Removed old ebuild. Modified the ebuilds to install more documentation.
+  General cleanup.
+
+  24 Sep 2004; Sven Wegener <swegener@gentoo.org> -pan-0.13.3.ebuild,
+  -pan-0.13.4.ebuild, -pan-0.14.0.ebuild:
+  Removed old ebuilds.
+
+  16 Jul 2004; Sven Wegener <swegener@gentoo.org> metadata.xml:
+  Making net-news the primary herd.
+
+  15 Jul 2004; Sven Wegener <swegener@gentoo.org> pan-0.14.2.91.ebuild:
+  Added dev-libs/libpcre to dependencies. Thanks to Tom Wesley <tom@tomaw.org>
+  for reporting it in bug #57201.
+
+*pan-0.14.2.91 (15 Jul 2004)
+
+  15 Jul 2004; Sven Wegener <swegener@gentoo.org> +pan-0.14.2.91.ebuild:
+  Version bump, contains fixes for amd64 and various other issues.
+
+  10 Jul 2004; Sven Wegener <swegener@gentoo.org> metadata.xml:
+  Added package to the net-news herd.
+
+  09 Jun 2004; Aron Griffis <agriffis@gentoo.org> pan-0.13.0.ebuild,
+  pan-0.13.3.ebuild, pan-0.13.4.ebuild, pan-0.14.0.ebuild, pan-0.14.2.ebuild:
+  Fix use invocation
+
+  20 Apr 2004; Guy Martin <gmsoft@gentoo.org> pan-0.14.2.ebuild:
+  Marked stable on hppa.
+
+  10 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org> pan-0.14.2.ebuild:
+  stable on sparc
+
+  08 Mar 2004; L. Boshell <leonardop@gentoo.org> pan-0.14.2.ebuild:
+  Stable on x86.
+
+  30 Jan 2004; <gustavoz@gentoo.org> pan-0.14.0.ebuild:
+  stable on sparc
+
+  09 Jan 2004; Jason Wever <weeve@gentoo.org> pan-0.14.0.ebuild,
+  pan-0.14.2.ebuild:
+  Added ~sparc keyword to 0.14.0 and 0.14.2
+
+  18 Sep 2003; Alastair Tse <liquidx@gentoo.org> pan-0.14.2.ebuild:
+  pan-0.14.2 can dep on gnet-1 or gnet-2 (#28888)
+
+*pan-0.14.2 (05 Sep 2003)
+
+  05 Sep 2003; <spider@gentoo.org> pan-0.13.0.ebuild, pan-0.13.3.ebuild,
+  pan-0.13.4.ebuild, pan-0.14.0.ebuild, pan-0.14.2.ebuild:
+  Versionbump and a syntax cleanup of all versions. now repoman clean
+
+*pan-0.14.0 (07 May 2003)
+
+  06 Jul 2003; Guy Martin <gmsoft@gentoo.org> pan-0.14.0.ebuild :
+  Added hppa to KEYWORDS.
+
+  07 May 2003; foser <foser@gentoo.org> pan-0.14.0.ebuild :
+  Fixed gnet dep to 1.x branch
+
+  07 May 2003; Patrick Kursawe <phosphan@gentoo.org> pan-0.14.0.ebuild:
+  Version bump
+
+*pan-0.13.4 (27 Feb 2003)
+
+  05 Apr 2003; Jason Wever <weeve@gentoo.org> pan-0.13.4.ebuild:
+  Changed ~sparc keyword to sparc.
+
+  03 Apr 2003; Jason Wever <weeve@gentoo.org> pan-0.13.4.ebuild:
+  Added ~sparc to keywords.
+
+  02 Mar 2003; Alastair Tse <liquidx@gentoo.org> pan-0.13.4.ebuild :
+  Add warning about compiling without nls-less glibc #16624
+
+  27 Feb 2003; foser <foser@gentoo.org> pan-0.13.4.ebuild :
+  Added gnet dep to fix #16515
+
+  27 Feb 2003; foser <foser@gentoo.org> pan-0.13.4.ebuild :
+  New version
+  Removed nls USE flag
+
+*pan-0.13.3 (03 Jan 2003)
+
+  03 Jan 2003; foser <foser@gentoo.org> pan-0.13.3.ebuild :
+  New version
+
+*pan-0.13.2 (29 Nov 2002)
+
+  29 Nov 2002; foser <foser@gentoo.org> pan-0.13.2.ebuild :
+  New version. Fixed deps
+
+*pan-0.13.1 (15 Oct 2002)
+
+  15 Oct 2002; foser <foser@gentoo.org> pan-0.13.1.ebuild :
+  New version. Removed more debug stuff, fixed deps.
+  Enabled gtkspell again.
+
+*pan-0.13.0 (19 Aug 2002)
+  19 Aug 2002; Gabriele Giorgetti <stroke@gentoo.org> pan-0.13.0.ebuild:
+  New stable version, removed debug stuff, updated deps.
+
+*pan-0.12.93 (07 Aug 2002)
+  07 Aug 2002; Gabriele Giorgetti <stroke@gentoo.org> pan-0.12.93.ebuild:
+  New beta version.
+
+*pan-0.12.92-r1 (4 Aug 2002)
+  4 Aug 2002; Spider <spider@gentoo.org> pan-0.12.92-r1.ebuild :
+  gtk-spell support is broken, mask out (it crashes with aspell)
+  inherit debug instead of the manaual debug info
+    
+  4 Aug 2002; Leonardo Boshell <leonardop@gentoo.org> pan-0.12.92-r1.ebuild:
+  Dependencies corrections. libunicode was missing. Closes bug #5879.
+
+*pan-0.12.92 (1 Aug 2002)
+
+  1 Aug 2002; Gabriele Giorgetti <stroke@gentoo.org> pan-0.12.92.ebuild:  
+  New version.
+
+*pan-0.12.91 (28 July 2002)
+
+  28 Jul 2002; Gabriele Giorgetti <stroke@gentoo.org> pan-0.12.91.ebuild:
+  Version bump, added spell support with gtkspell which has been also added
+  as dep if spell is present in USE.
+
+*pan-0.11.4 (17 July 2002)
+
+  17 Jul 2002; Gabriele Giorgetti <stroke@gentoo.org> pan-0.11.4.ebuild:
+  New Gnome1 version of pan. Also updated dependencies and changed the
+  SRC_URI url to point to the correct download location.
+
+*pan-0.12.1 (13 July 2002)
+
+  13 Jul 2002; phoen][x <phoenix@gentoo.org> pan-0.12.1.ebuild:
+  Version bump (bug #4937), added KEYWORDS.
+
+*pan-0.12.0-r2 (01 Jul 2002)
+
+  01 Jul 2002; Gabriele Giorgetti <stroke@gentoo.org> pan-0.12.0-r2.ebuild:
+  Fixed a problem with the libxml-2 dependence. Closes bug #4368  
+
+
+*pan-0.12.0-r1 (23 Jun 2002)
+
+  23 Jun 2002; Gabriele Giorgetti <stroke@gentoo.org> pan-0.12.0-r1.ebuild:
+  Removed libgnome depencence. Closes bug #4003
+
+
+*pan-0.12.0 (19 Jun 2002)
+
+  19 Jun 2002; Gabriele Giorgetti <stroke@gentoo.org> pan-0.12.0.ebuild:
+  New version, and dependencies update.
+
+
+*pan-0.11.94 (7 Jun 2002)
+
+  7 Jun 2002; Seemant Kulleen <seemant@gentoo.org> pan-0.11.94.ebuild
+  files/digest-pan-0.11.94 :
+
+  Version bump.
+
+*pan-0.11.93 (23 May 2002) 
+  23 May 2002; Spider <spider@gentoo.org> pan-0.11.93.ebuild: 
+  New version of the gnome2 branch
+
+*pan-0.11.92 (22 May 2002) 
+  22 May 2002; Spider <spider@gentoo.org> pan-0.11.92.ebuild: 
+  gnome2 port of pan
+
+*pan-0.11.2.91 (6 Apr 2002)
+
+  6 Apr 2002; Jared H. Hudson <jhhudso@gentoo.org> pan-0.11.2.91.ebuild :
+  Added latest pan, is technically a development version, but it seems stable
+  and has support for the new yenc usenet encoding format.
+	
+*pan-0.11.2-r1 (22 Mar 2002)
+
+  22 Mar 2002; Seemant Kulleen <seemant@gentoo.org> pan-0.11.2-r1.ebuild :
+  Matthew Kennedy submitted a fix for disabled nls compilation (USE dependent).
+
+*pan-0.11.2 (17 Feb 2002)
+
+*pan-0.11.1.94 (1 Feb 2002)
+
+*pan-0.11.1.93 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

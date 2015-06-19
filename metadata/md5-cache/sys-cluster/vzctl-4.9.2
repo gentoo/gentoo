@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare unpack
+DEPEND=net-firewall/iptables sys-apps/ed >=sys-apps/iproute2-3.3.0 >=sys-fs/vzquota-3.1 ploop? ( >=sys-cluster/ploop-1.13 sys-block/parted sys-fs/quota dev-libs/libxml2 ) >=dev-libs/libcgroup-0.38 vzmigrate? ( net-misc/openssh net-misc/rsync[xattr,acl] app-arch/tar[xattr,acl] net-misc/bridge-utils virtual/awk ) virtual/udev sys-apps/attr virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=OpenVZ ConTainers control utility
+EAPI=5
+HOMEPAGE=http://openvz.org/
+IUSE=+ploop +vzmigrate
+KEYWORDS=~amd64 ~ppc64 ~x86 -amd64-fbsd -sparc-fbsd -x86-fbsd
+LICENSE=GPL-2
+RDEPEND=net-firewall/iptables sys-apps/ed >=sys-apps/iproute2-3.3.0 >=sys-fs/vzquota-3.1 ploop? ( >=sys-cluster/ploop-1.13 sys-block/parted sys-fs/quota dev-libs/libxml2 ) >=dev-libs/libcgroup-0.38 vzmigrate? ( net-misc/openssh net-misc/rsync[xattr,acl] app-arch/tar[xattr,acl] net-misc/bridge-utils virtual/awk ) virtual/udev sys-apps/attr
+SLOT=0
+SRC_URI=http://download.openvz.org/utils/vzctl/4.9.2/src/vzctl-4.9.2.tar.bz2
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438
+_md5_=fbfbb78df558878d9fe08e79a0205927

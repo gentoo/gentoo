@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=aac? ( media-libs/faac ) aacplus? ( >=media-libs/libaacplus-2.0.0 ) alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) libsamplerate? ( media-libs/libsamplerate ) mp3? ( media-sound/lame ) opus? ( media-libs/opus ) pulseaudio? ( media-sound/pulseaudio ) twolame? ( media-sound/twolame ) vorbis? ( media-libs/libvorbis )
+DESCRIPTION=A live audio streamer
+EAPI=5
+HOMEPAGE=http://code.google.com/p/darkice/
+IUSE=aac aacplus alsa debug jack libsamplerate mp3 opus pulseaudio twolame vorbis
+KEYWORDS=amd64 hppa ppc sparc x86
+LICENSE=GPL-3
+RDEPEND=aac? ( media-libs/faac ) aacplus? ( >=media-libs/libaacplus-2.0.0 ) alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) libsamplerate? ( media-libs/libsamplerate ) mp3? ( media-sound/lame ) opus? ( media-libs/opus ) pulseaudio? ( media-sound/pulseaudio ) twolame? ( media-sound/twolame ) vorbis? ( media-libs/libvorbis )
+REQUIRED_USE=|| ( aac aacplus mp3 opus twolame vorbis ) || ( alsa jack pulseaudio )
+SLOT=0
+SRC_URI=http://darkice.googlecode.com/files/darkice-1.2.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=409cb8ad42af3dfcbc0177c0271cc8b4

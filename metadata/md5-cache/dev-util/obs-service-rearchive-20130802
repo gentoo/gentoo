@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION=Open Build Service client module - rearchive service
+EAPI=5
+HOMEPAGE=http://en.opensuse.org/openSUSE:OSC
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-arch/gzip app-arch/unrar app-arch/unzip dev-util/osc dev-util/suse-build
+SLOT=0
+SRC_URI=https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-rearchive/rearchive -> rearchive-20130802 https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-rearchive/rearchive.service -> rearchive-20130802.service
+_eclasses_=obs-download	8b22473fde39f5051ce00b61062dd086	obs-service	0fc1a1ab792dd8a4e38c10901ff57032
+_md5_=7e3ae61041dea1a43c99632b8eb27686

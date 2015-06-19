@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=dev-lang/tcl-8.2:0 >=dev-libs/libxml2-2.6.9 dev-libs/libxslt >=dev-tcltk/tcllib-1.2 dev-libs/expat !dev-tcltk/tcldom
+DESCRIPTION=Pure Tcl implementation of an XML parser
+EAPI=5
+HOMEPAGE=http://tclxml.sourceforge.net/
+IUSE=debug threads
+KEYWORDS=alpha amd64 ppc sparc x86
+LICENSE=BSD
+RDEPEND=>=dev-lang/tcl-8.2:0 >=dev-libs/libxml2-2.6.9 dev-libs/libxslt >=dev-tcltk/tcllib-1.2 dev-libs/expat !dev-tcltk/tcldom
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/tclxml/tclxml-3.2.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d946b30326f168fb599dd786ce77e7cf

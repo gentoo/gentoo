@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		This package provides a pure interface for compressing and
+		decompressing streams of data represented as lazy
+		&#39;ByteString&#39;s. It uses the bz2 C library so it has high
+		performance.
+		
+		It provides a convenient high level API suitable for most
+		tasks and for the few cases where more control is needed it
+		provides access to the full bzip2 feature set.
+	</longdescription>
+</pkgmetadata>

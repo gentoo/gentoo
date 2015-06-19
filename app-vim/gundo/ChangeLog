@@ -1,0 +1,62 @@
+# ChangeLog for app-vim/gundo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/gundo/ChangeLog,v 1.13 2015/06/07 08:14:00 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> gundo-2.5.0.ebuild:
+  Remove old Python implementations
+
+  21 Oct 2013; Fabian Groffen <grobian@gentoo.org> gundo-2.5.0.ebuild:
+  Marked ~x64-macos, bug #486818
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> gundo-2.5.0.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*gundo-2.5.0 (11 Jul 2013)
+
+  11 Jul 2013; Tim Harder <radhermit@gentoo.org> +gundo-2.5.0.ebuild:
+  Version bump, migrate to python-single-r1.
+
+  03 Aug 2012; Tim Harder <radhermit@gentoo.org> -gundo-2.2.0.ebuild,
+  -gundo-2.2.1.ebuild:
+  Remove old.
+
+*gundo-2.4.0 (03 Aug 2012)
+
+  03 Aug 2012; Tim Harder <radhermit@gentoo.org> +gundo-2.4.0.ebuild:
+  Version bump.
+
+*gundo-2.2.2 (30 Jul 2011)
+
+  30 Jul 2011; Tim Harder <radhermit@gentoo.org> +gundo-2.2.2.ebuild:
+  Version bump.
+
+*gundo-2.2.1 (29 Jun 2011)
+
+  29 Jun 2011; Tim Harder <radhermit@gentoo.org> +gundo-2.2.1.ebuild:
+  Version bump. Use github mirrored tarball.
+
+*gundo-2.2.0 (30 May 2011)
+
+  30 May 2011; Tim Harder <radhermit@gentoo.org> -gundo-2.1.1.ebuild,
+  +gundo-2.2.0.ebuild:
+  Version bump and remove old.
+
+*gundo-2.1.1 (14 Mar 2011)
+
+  14 Mar 2011; Tim Harder <radhermit@gentoo.org> -gundo-2.1.0.ebuild,
+  +gundo-2.1.1.ebuild:
+  Version bump and remove old.
+
+*gundo-2.1.0 (11 Mar 2011)
+
+  11 Mar 2011; Tim Harder <radhermit@gentoo.org> -gundo-2.0.0.ebuild,
+  +gundo-2.1.0.ebuild:
+  Version bump and remove old.
+
+*gundo-2.0.0 (22 Nov 2010)
+
+  22 Nov 2010; Tim Harder <radhermit@gentoo.org> +gundo-2.0.0.ebuild:
+  Initial import.

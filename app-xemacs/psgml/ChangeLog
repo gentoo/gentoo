@@ -1,0 +1,68 @@
+# ChangeLog for app-xemacs/psgml
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/psgml/ChangeLog,v 1.20 2014/08/10 19:24:02 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> psgml-1.44.ebuild,
+  psgml-1.45.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  22 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> psgml-1.45.ebuild:
+  ppc64 stable wrt #369897
+
+  03 Jul 2011; Markos Chandras <hwoarang@gentoo.org> psgml-1.45.ebuild:
+  Stable on amd64 wrt bug #369897
+
+  28 Jun 2011; Brent Baude <ranger@gentoo.org> psgml-1.45.ebuild:
+  Marking psgml-1.45 ppc stable for bug 369897
+
+  25 Jun 2011; Raúl Porcel <armin76@gentoo.org> psgml-1.45.ebuild:
+  alpha/sparc stable wrt #369897
+
+  12 Jun 2011; Thomas Kahle <tomka@gentoo.org> psgml-1.45.ebuild:
+  x86 stable per bug 369897
+
+*psgml-1.45 (22 Feb 2009)
+
+  22 Feb 2009; Hans de Graaff <graaff@gentoo.org> +psgml-1.45.ebuild:
+  Version bump to upstream 1.3.2
+
+  19 Mar 2008; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  A herd should not be listed as maintainer
+
+  25 Oct 2007; Hans de Graaff <graaff@gentoo.org> -psgml-1.38.ebuild:
+  Remove old version
+
+  03 Jun 2007; Hans de Graaff <graaff@gentoo.org> psgml-1.44.ebuild:
+  Stable on amd64, ppc, ppc64, sparc, x86 as per #175560
+
+  29 May 2007; Raúl Porcel <armin76@gentoo.org> psgml-1.44.ebuild:
+  alpha stable wrt #175560
+
+*psgml-1.44 (11 Nov 2006)
+
+  11 Nov 2006; Hans de Graaff <graaff@gentoo.org> -psgml-1.35.ebuild,
+  +psgml-1.44.ebuild:
+  Version bump. Remove old version.
+
+  02 Oct 2004; Robert Coie <rac@gentoo.org> psgml-1.35.ebuild,
+  psgml-1.38.ebuild:
+  eterm -> xemacs-eterm renaming
+
+  16 Mar 2004; <rac@gentoo.org> metadata.xml, psgml-1.38.ebuild:
+  keyword amd64
+
+  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> psgml-1.38.ebuild:
+  Stable on alpha
+
+*psgml-1.38 (22 Feb 2003)
+
+  22 Feb 2003;  <rendhalver@gentoo.org> psgml-1.35.ebuild psgml-1.38.ebuild files/digest-psgml-1.38 :
+  Add ~alpha to KEYWORDS
+
+  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
+  new stable ebuild
+
+*psgml-1.35 (16 Dec 2002)
+
+  16 Dec 2002; Rendhalver [Peter Brown] <rendhalver@gentoo.org> :
+  Initial import.

@@ -1,0 +1,24 @@
+--- configure.ac.old	2011-05-22 14:59:45.801746472 +0100
++++ configure.ac	2011-05-22 15:02:59.437159981 +0100
+@@ -14,16 +14,14 @@ AC_HEADER_STDC
+ 
+ dnl ------ libtool versioning -----------------------------------------------
+ 
+-LT_CURRENT=0
+-LT_REVISION=1
+-AC_SUBST(LT_CURRENT)
+-AC_SUBST(LT_REVISION)
+-LT_AGE=0
++m4_define(LT_CURRENT, 0)
++m4_define(LT_REVISION, 1)
++m4_define(LT_AGE, 0)
+ 
+-LT_VERSION_INFO="$LT_CURRENT:$LT_REVISION:$LT_AGE"
++LT_VERSION_INFO="LT_CURRENT():LT_REVISION():LT_AGE()"
+ AC_SUBST(LT_VERSION_INFO)
+ 
+-LT_CURRENT_MINUS_AGE=`expr $LT_CURRENT - $LT_AGE`
++LT_CURRENT_MINUS_AGE="m4_eval(LT_CURRENT() - LT_AGE())"
+ AC_SUBST(LT_CURRENT_MINUS_AGE)
+ 
+ dnl ------ Check for X Stuff ------------------------------------------------

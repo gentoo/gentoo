@@ -1,0 +1,109 @@
+# ChangeLog for media-plugins/vdr-text2skin
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-text2skin/ChangeLog,v 1.18 2013/10/26 20:39:42 hd_brummy Exp $
+
+  26 Oct 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-text2skin-1.3.2.ebuild, +files/vdr-text2skin-1.3.2_vdr-2.1.2.diff:
+  compilefix vdr-2.1.2; eapi=5
+
+  10 Jun 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-text2skin-1.3.2.ebuild:
+  using KEEP_I18NOBJECT variable from vdr-plugin-2.eclass now
+
+  12 May 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-text2skin-1.3.2.ebuild:
+  fix for vdr-plugin-2.eclass; reported by T.Rheihold on IRC
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> vdr-text2skin-1.3.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  01 May 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-text2skin-1.2.ebuild, -vdr-text2skin-1.3.ebuild,
+  -vdr-text2skin-1.3.1.ebuild, vdr-text2skin-1.3.2.ebuild,
+  files/vdr-text2skin-1.3.2-Makefile.patch:
+  cleanup; vdr-plugin-2.eclass; removed use-flag nls
+
+  07 Apr 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-text2skin-1.3.2.ebuild, +files/vdr-1.7.27.diff:
+  compilefix >=vdr-1.7.27
+
+  15 Jan 2012; Christian Ruppert <idl0r@gentoo.org> vdr-text2skin-1.2.ebuild,
+  vdr-text2skin-1.3.1.ebuild, vdr-text2skin-1.3.2.ebuild,
+  vdr-text2skin-1.3.ebuild:
+  Use mirror://vdr-developerorg
+
+*vdr-text2skin-1.3.2 (15 Jan 2012)
+
+  15 Jan 2012; Christian Ruppert <idl0r@gentoo.org>
+  +vdr-text2skin-1.3.2.ebuild, +files/vdr-text2skin-1.3.2-Makefile.patch,
+  metadata.xml:
+  Version bump to 1.3.2, also fixes bug 314317.
+
+  01 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-text2skin-1.3.1.ebuild:
+  fixed compile error on gcc-4.4
+
+*vdr-text2skin-1.3.1 (30 Dec 2010)
+
+  30 Dec 2010; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -files/20070506/06_vdr-1.5.7.diff, -files/20070906/04_no_direct_blit.diff,
+  -vdr-text2skin-1.0.20070506.ebuild, -files/20070506/01_gcc-4.diff,
+  -files/20070506/02_uint64.diff, -files/20070506/03_gentoo.diff,
+  -files/20070506/04_no_direct_blit.diff,
+  -files/20070506/07_pkgconfig_magick.diff,
+  -files/20070906/07_pkgconfig_magick.diff,
+  -vdr-text2skin-1.0.20070906.ebuild, +vdr-text2skin-1.3.1.ebuild,
+  -files/20070506/05_vdr-1.5.4.diff, -files/20070506/series,
+  -files/20070906/06_vdr-1.5.7.diff, -files/20070906/03_gentoo.diff,
+  -files/20070906/08_cache.diff, metadata.xml:
+  version bump; cleanup
+
+  14 Mar 2010; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-text2skin-1.3.ebuild:
+  keyword ~amd64 added
+
+*vdr-text2skin-1.3 (08 Oct 2009)
+
+  08 Oct 2009; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-text2skin-1.3.ebuild:
+  Version bumped.
+
+*vdr-text2skin-1.2 (09 Jun 2009)
+
+  09 Jun 2009; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-text2skin-1.2.ebuild:
+  Version bumped.
+
+*vdr-text2skin-1.0.20070906 (07 Aug 2008)
+
+  07 Aug 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/20070906/03_gentoo.diff, +files/20070906/04_no_direct_blit.diff,
+  +files/20070906/07_pkgconfig_magick.diff,
+  +files/20070906/06_vdr-1.5.7.diff, +files/20070906/08_cache.diff,
+  +vdr-text2skin-1.0.20070906.ebuild:
+  Added new version. Truetype support here is broken, so disabled for now.
+  Thanks to darav@gmx.de for the ebuild.
+
+  01 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  06 May 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/20070506/07_pkgconfig_magick.diff, files/20070506/series,
+  vdr-text2skin-1.0.20070506.ebuild:
+  Fix compile by removing old include path from Makefile to stop eclass
+  destroying it. Find imagemagick via pkgconfig. Fixed quoting.
+
+  19 Aug 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/20070506/05_vdr-1.5.4.diff, +files/20070506/06_vdr-1.5.7.diff,
+  files/20070506/series, vdr-text2skin-1.0.20070506.ebuild:
+  Added patches to make it compile with vdr-1.5.7
+
+*vdr-text2skin-1.0.20070506 (15 May 2007)
+
+  15 May 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/20070506/03_gentoo.diff, +files/20070506/01_gcc-4.diff,
+  +files/20070506/02_uint64.diff, +files/20070506/04_no_direct_blit.diff,
+  +files/20070506/series, +metadata.xml, +vdr-text2skin-1.0.20070506.ebuild:
+  Initial import of vdr-text2skin (optimized version). Based on ebuild from
+  gentoo.de. Bug #145575.
+

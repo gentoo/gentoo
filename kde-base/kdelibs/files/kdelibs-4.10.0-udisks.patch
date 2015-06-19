@@ -1,0 +1,51 @@
+udisks1 is deprecated and going away, so removing this clause
+will permit us to build without udisks at all.
+
+--- solid/solid/CMakeLists.txt
++++ solid/solid/CMakeLists.txt
+@@ -283,20 +283,6 @@
+            backends/udisks2/udisksgenericinterface.cpp
+            backends/udisks2/dbus/manager.cpp
+            )
+-       else ( WITH_SOLID_UDISKS2 )
+-           message(STATUS "Building Solid UDisks backend." )
+-           set(solid_LIB_SRCS ${solid_LIB_SRCS}
+-           backends/udisks/udisksmanager.cpp
+-           backends/udisks/udisksdevice.cpp
+-           backends/udisks/udisksblock.cpp
+-           backends/udisks/udisksstoragevolume.cpp
+-           backends/udisks/udisksdeviceinterface.cpp
+-           backends/udisks/udisksopticaldisc.cpp
+-           backends/udisks/udisksopticaldrive.cpp
+-           backends/udisks/udisksstoragedrive.cpp
+-           backends/udisks/udisksstorageaccess.cpp
+-           backends/udisks/udisksgenericinterface.cpp
+-          )
+        endif ( WITH_SOLID_UDISKS2 )
+    endif (CMAKE_SYSTEM_NAME MATCHES Linux)
+
+--- solid/solid/managerbase.cpp
++++ solid/solid/managerbase.cpp
+@@ -33,8 +33,6 @@
+ #include "backends/hal/halmanager.h"
+ #if defined (WITH_SOLID_UDISKS2)
+ #include "backends/udisks2/udisksmanager.h"
+-#else
+-#include "backends/udisks/udisksmanager.h"
+ #endif
+ #include "backends/upower/upowermanager.h"
+ 
+@@ -88,11 +86,9 @@
+                     m_backends << new Solid::Backends::UDev::UDevManager(0);
+ #               endif
+ #		if defined(WITH_SOLID_UDISKS2)
+-                m_backends << new Solid::Backends::UDisks2::Manager(0)
+-#		else
+-                m_backends << new Solid::Backends::UDisks::UDisksManager(0)
++                m_backends << new Solid::Backends::UDisks2::Manager(0);
+ #		endif
+-                           << new Solid::Backends::UPower::UPowerManager(0)
++                m_backends << new Solid::Backends::UPower::UPowerManager(0)
+                            << new Solid::Backends::Fstab::FstabManager(0);
+             }
+ #        endif

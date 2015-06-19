@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+	<longdescription>
+	Java Interface to Tobias Oetiker's RRDtool
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">opennms</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+Index: incron-0.5.10/icd-main.cpp
+===================================================================
+--- incron-0.5.10.orig/icd-main.cpp
++++ incron-0.5.10/icd-main.cpp
+@@ -24,6 +24,7 @@
+ #include <dirent.h>
+ #include <syslog.h>
+ #include <errno.h>
++#include <unistd.h>
+ #include <sys/poll.h>
+ #include <sys/stat.h>
+ #include <cstdio>

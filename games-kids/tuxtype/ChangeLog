@@ -1,0 +1,108 @@
+# ChangeLog for games-kids/tuxtype
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-kids/tuxtype/ChangeLog,v 1.22 2015/01/04 06:57:17 mr_bones_ Exp $
+
+  04 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org> tuxtype-1.8.1.ebuild:
+  EAPI=5
+
+  04 Jul 2013; Michael Sterrett <mr_bones_@gentoo.org> tuxtype-1.8.1.ebuild:
+  add slot to libsdl dep
+
+  08 Dec 2011; Michael Sterrett <mr_bones_@gentoo.org> tuxtype-1.8.1.ebuild:
+  correct install with patch from Michael (kensington) (bug #393607)
+
+  01 Jun 2011; Michael Sterrett <mr_bones_@gentoo.org> tuxtype-1.8.1.ebuild:
+  fix librsvg dep and add use flag with patch from Piotr Szymaniak via bug
+  #369275
+
+  04 Mar 2011; Brent Baude <ranger@gentoo.org> tuxtype-1.8.1.ebuild:
+  stable ppc, bug 353819
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org> tuxtype-1.5.16.ebuild,
+  tuxtype-1.8.1.ebuild:
+  Drop sparc keywords
+
+  11 Feb 2011; Markos Chandras <hwoarang@gentoo.org> tuxtype-1.8.1.ebuild:
+  Stable on amd64 wrt bug #353819
+
+  08 Feb 2011; Thomas Kahle <tomka@gentoo.org> tuxtype-1.8.1.ebuild:
+  x86 stable per bug 353819
+
+*tuxtype-1.8.1 (02 Dec 2010)
+
+  02 Dec 2010; Tupone Alfredo <tupone@gentoo.org> tuxtype-1.5.16.ebuild,
+  +tuxtype-1.8.1.ebuild:
+  Version bump to 1.8.1 Bug #321363 by Theofilos Intzoglou
+
+  31 Jul 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  tuxtype-1.5.16.ebuild:
+  Avoid trying to use the random data directories that might be scattered about
+  (bug #233268)
+
+  17 Mar 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  -tuxtype-1.0.3-r1.ebuild, tuxtype-1.5.16.ebuild:
+  sync keywords with tuxtype2 stable to prepare for tuxtype2 removal
+
+*tuxtype-1.5.16 (17 Mar 2008)
+
+  17 Mar 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +tuxtype-1.5.16.ebuild:
+  move tuxtype2 version to tuxtype so tuxtype2 can be removed
+
+  13 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  tuxtype-1.0.3-r1.ebuild:
+  QA cleanup: Fix quoting (again).
+
+  07 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  tuxtype-1.0.3-r1.ebuild:
+  QA cleanup: Fix quoting.
+
+  09 Apr 2007; Peter Weller <welp@gentoo.org> tuxtype-1.0.3-r1.ebuild:
+  Keyworded ~x86-fbsd wrt bug 173391
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  tuxtype-1.0.3-r1.ebuild, tuxtype-1.0.3.ebuild:
+  virtual/glibc -> virtual/libc
+
+  04 Jun 2004; Jason Eric Huebel <jhuebel@gentoo.org> tuxtype-1.0.3-r1.ebuild:
+  gnuconfig_update added, ~amd64
+
+  30 May 2004; Gustavo Zacarias <gustavoz@gentoo.org> tuxtype-1.0.3-r1.ebuild:
+  Stable on sparc
+
+  07 May 2004; Josh Grebe <squash@gentoo.org> tuxtype-1.0.3-r1.ebuild:
+  Added ~sparc, bug #50382
+
+*tuxtype-1.0.3-r1 (20 Mar 2003)
+
+  20 Mar 2003; Graham Forest <vladimir@gentoo.org> tuxtype-1.0.3-r1.ebuild:
+  Removed usage of pic USE flag
+
+*tuxtype-1.0.3 (18 Dec 2002)
+
+  18 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
+  Fix #11789 + version bump + games eclass support.
+
+*tuxtype-1.0-r2 (2 Aug 2002)
+
+  2 Aug 2002; J.Alberto S. L. <bass@gentoo.org> tuxtype-1.0-r2.ebuild
+  Fix #5294 a problem with doc's dir.
+
+*tuxtype-1.0-r1 (7 May 2002)
+
+  7 May 2002; Spider <spider@gentoo.org> tuxtype-1.0-r1.ebuild tuxtype-1.0.ebuild:
+  fix sourceforge mirroring.
+      
+*tuxtype-1.0-r1 (21 Mar 2002)
+
+  12 Mar 2002; Seemant Kulleen <seemant@gentoo.org> tuxtype-1.0-r1.ebuild :
+  HTML documentation is no longer gzipped.
+
+*tuxtype-1.0 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

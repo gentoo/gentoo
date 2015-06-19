@@ -1,0 +1,33 @@
+# ChangeLog for media-video/episoder
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/episoder/ChangeLog,v 1.8 2015/05/07 22:41:31 mrueg Exp $
+
+  07 May 2015; Manuel Rüger <mrueg@gentoo.org> -episoder-0.2.1.ebuild:
+  Remove old.
+
+*episoder-0.4.7 (06 Aug 2008)
+
+  06 Aug 2008; Alexis Ballier <aballier@gentoo.org> +episoder-0.4.7.ebuild:
+  version bump, thanks to Johannes Steidl <johannes@jsteidl.net>, bug
+  #233397
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  03 May 2006; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata to list media-video@gentoo.org as maintainer.
+
+  08 Jan 2006; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Remove retiring dev from metadata.
+
+  28 Jul 2005; David Holm <dholm@gentoo.org> episoder-0.2.1.ebuild:
+  Added to ~ppc.
+
+  23 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> episoder-0.2.1.ebuild:
+  added ~amd64 to KEYWORDS. fixes #79186
+
+*episoder-0.2.1 (21 Jan 2005)
+
+	21 Jan 2005;  Kai Zimmermann <kzimmerm@gentoo.org> :
+	Initial import into the tree.  Closes bug #78527.  Thanks to 
+	Terry Churchill <bugs@doc-linux.co.uk> for the ebuild submission.

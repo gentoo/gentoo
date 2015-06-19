@@ -1,0 +1,32 @@
+From 81529af388c0f0f4e4b169b7bcb285ef5e798f41 Mon Sep 17 00:00:00 2001
+From: Christian Ruppert <idl0r@gentoo.org>
+Date: Sat, 8 Oct 2011 02:05:37 +0200
+Subject: [PATCH] Fix stack smashing because of a typo
+
+IPVS_CMD_ATTR_MAX was the size of __IPVS_SVC_ATTR_MAX before, which has a
+different size and thus it caused trouble. The right enum to use is
+__IPVS_CMD_ATTR_MAX.
+
+Reported-by: Deniss Gaplevsky <slim@inbox.lv>
+X-Gentoo-Bug: 371903
+X-Gentoo-Bug-URL: https://bugs.gentoo.org/371903
+---
+ libipvs/ip_vs.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/libipvs/ip_vs.h b/libipvs/ip_vs.h
+index 9726a17..5e1d544 100644
+--- a/libipvs/ip_vs.h
++++ b/libipvs/ip_vs.h
+@@ -413,7 +413,7 @@ enum {
+ 	__IPVS_CMD_ATTR_MAX,
+ };
+ 
+-#define IPVS_CMD_ATTR_MAX (__IPVS_SVC_ATTR_MAX - 1)
++#define IPVS_CMD_ATTR_MAX (__IPVS_CMD_ATTR_MAX - 1)
+ 
+ /*
+  * Attributes used to describe a service
+-- 
+1.7.3.4
+

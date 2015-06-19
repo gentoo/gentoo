@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=sci-libs/libpdb++ app-arch/sharutils
+DESCRIPTION=An open source implementation of sci-chemistry/dssp
+EAPI=4
+HOMEPAGE=http://www.cgl.ucsf.edu/Overview/software.html
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=sci-libs/libpdb++
+SLOT=0
+SRC_URI=mirror://gentoo/ksdssp-040728.shar
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=dca3df3ff6c295c3ec84a5b7d1c96870

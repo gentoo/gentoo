@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=>=sys-libs/db-4.2 ssl? ( >=dev-libs/openssl-0.9.6 )
+DESCRIPTION=MailDir mailbox synchronizer
+EAPI=5
+HOMEPAGE=http://isync.sourceforge.net/
+IUSE=ssl
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/db-4.2 ssl? ( >=dev-libs/openssl-0.9.6 )
+SLOT=0
+SRC_URI=mirror://sourceforge/isync/isync-1.1.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d81717a50e292038a632499cdf72ffb5

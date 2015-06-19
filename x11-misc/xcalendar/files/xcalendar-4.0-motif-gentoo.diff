@@ -1,0 +1,26 @@
+--- xcalendar.orig/Imakefile	Sat Sep 30 20:19:17 1995
++++ xcalendar/Imakefile	Tue Aug 20 08:37:48 2002
+@@ -1,18 +1,18 @@
+ XCALENDAR_LIBDIR = $(LIBDIR)/xcalendar
+         LIBFILES = larrow.xbm qmark.xbm quit.xbm rarrow.xbm xcalendar.hlp
+ # Comment out the following two lines for the Motif version
+-LOCAL_LIBRARIES = $(XAWLIB) $(XMULIB) $(XTOOLLIB) $(XLIB)
+-  EXTRA_DEFINES = -DATHENA
++#LOCAL_LIBRARIES = $(XAWLIB) $(XMULIB) $(XTOOLLIB) $(XLIB)
++#  EXTRA_DEFINES = -DATHENA
+ # Uncomment the following two lines for the Motif version
+-# LOCAL_LIBRARIES = -L/usr/local/Motif/lib -lXm $(XMULIB) $(XTOOLLIB) $(XLIB)
+-#   EXTRA_DEFINES = -I/usr/local/Motif/include
++ LOCAL_LIBRARIES = -lXm $(XMULIB) $(XTOOLLIB) $(XLIB)
++   EXTRA_DEFINES = 
+             SRCS = xcalendar.c dayeditor.c lists.c
+             OBJS = xcalendar.o dayeditor.o lists.o
+ 
+ #
+ # for Internationalization
+ #
+-EXTRA_DEFINES = -DXI18N -DATHENA
++#EXTRA_DEFINES = -DXI18N -DATHENA
+ ##if !SharedLibXwchar
+ #       _UseCat($(USRLIBDIR),$(CONTRIBSRC)/lib/Xwchar,/libXwchar.a)
+ #       XWCHARLIB = LoaderLibPrefix _Use(-lXwchar,$(DEPXWCHARLIB))

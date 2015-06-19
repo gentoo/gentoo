@@ -1,0 +1,206 @@
+# ChangeLog for dev-db/oracle-instantclient-jdbc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/oracle-instantclient-jdbc/ChangeLog,v 1.39 2015/05/15 08:51:14 zlogene Exp $
+
+  15 May 2015; Mikle Kolyada <zlogene@gentoo.org>
+  oracle-instantclient-jdbc-11.2.0.4.ebuild:
+  x86 stable wrt bug #524924
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org>
+  oracle-instantclient-jdbc-11.2.0.4.ebuild:
+  Stable for amd64, wrt bug #524924
+
+*oracle-instantclient-jdbc-11.2.0.4 (04 Apr 2014)
+
+  04 Apr 2014; Michael Haubenwallner <haubi@gentoo.org>
+  +oracle-instantclient-jdbc-11.2.0.4.ebuild:
+  Revbump. Add RESTRICT=splitdebug. Convert to USE abi_x86_*, bug#506228.
+
+  15 Nov 2012; Michael Haubenwallner <haubi@gentoo.org>
+  oracle-instantclient-jdbc-11.2.0.3.ebuild:
+  Define QA_PREBUILT, bug#443120.
+
+  14 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  oracle-instantclient-jdbc-11.2.0.3.ebuild:
+  Stable for x86, wrt bug #397571
+
+  14 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  oracle-instantclient-jdbc-11.2.0.3.ebuild:
+  Stable for amd64, wrt bug #397571
+
+  04 Jun 2012; Zac Medico <zmedico@gentoo.org>
+  oracle-instantclient-jdbc-10.2.0.3.ebuild,
+  oracle-instantclient-jdbc-11.2.0.2.ebuild,
+  oracle-instantclient-jdbc-11.2.0.3.ebuild:
+  inherit multilib for get_libdir
+
+  07 Mar 2012; Michael Haubenwallner <haubi@gentoo.org>
+  oracle-instantclient-jdbc-11.2.0.3.ebuild:
+  must not set ABI for non-multilib-able archs at all
+
+  07 Mar 2012; Michael Haubenwallner <haubi@gentoo.org>
+  oracle-instantclient-jdbc-11.2.0.3.ebuild:
+  fix typo with non-multilib archs
+
+*oracle-instantclient-jdbc-11.2.0.3 (07 Mar 2012)
+
+  07 Mar 2012; Michael Haubenwallner <haubi@gentoo.org>
+  +oracle-instantclient-jdbc-11.2.0.3.ebuild:
+  Revbump. Use EAPI 4. Update homepage. Drop useless postinst info.
+  Add multilib support.
+  RDEPEND on _same_ version of oracle-instantclient-basic.
+
+  09 Feb 2012; Michael Haubenwallner <haubi@gentoo.org> metadata.xml:
+  Taking over maintainership.
+
+  09 Feb 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #85926
+
+*oracle-instantclient-jdbc-11.2.0.2 (12 Nov 2010)
+
+  12 Nov 2010; Tobias Scherbaum <dertobi123@gentoo.org>
+  -oracle-instantclient-jdbc-11.1.0.7.0.ebuild,
+  -oracle-instantclient-jdbc-11.2.0.0.2.ebuild,
+  -oracle-instantclient-jdbc-11.2.0.1.ebuild,
+  +oracle-instantclient-jdbc-11.2.0.2.ebuild:
+  Version bump
+
+*oracle-instantclient-jdbc-11.2.0.1 (31 Dec 2009)
+*oracle-instantclient-jdbc-11.2.0.0.2 (31 Dec 2009)
+
+  31 Dec 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  +oracle-instantclient-jdbc-11.2.0.0.2.ebuild,
+  +oracle-instantclient-jdbc-11.2.0.1.ebuild:
+  Version bump (#293590)
+
+  31 Dec 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  oracle-instantclient-jdbc-11.1.0.7.0.ebuild:
+  Fix typo
+
+*oracle-instantclient-jdbc-11.1.0.7.0 (27 Dec 2008)
+
+  27 Dec 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  +oracle-instantclient-jdbc-11.1.0.7.0.ebuild:
+  Version bump, #228803
+
+  18 Jun 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  oracle-instantclient-jdbc-10.2.0.3.ebuild:
+  Stable on amd64 wrt bug #225813.
+
+  11 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  -oracle-instantclient-jdbc-10.1.0.5.ebuild:
+  remove old version
+
+  08 Mar 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  oracle-instantclient-jdbc-10.1.0.5.ebuild,
+  oracle-instantclient-jdbc-10.2.0.3.ebuild:
+  Fix multilib handling, bug #208425. Fix quoting.
+
+  27 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  oracle-instantclient-jdbc-10.2.0.3.ebuild:
+  Stable on x86 wrt bug #132791.
+
+  25 Mar 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  -oracle-instantclient-jdbc-10.2.0.2.ebuild:
+  bug #169541
+
+  31 Jan 2007; Marius Mauch <genone@gentoo.org>
+  oracle-instantclient-jdbc-10.1.0.5.ebuild,
+  oracle-instantclient-jdbc-10.2.0.2.ebuild,
+  oracle-instantclient-jdbc-10.2.0.3.ebuild:
+  Replacing einfo with elog
+
+  27 Jan 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  oracle-instantclient-jdbc-10.1.0.5.ebuild,
+  oracle-instantclient-jdbc-10.2.0.2.ebuild,
+  oracle-instantclient-jdbc-10.2.0.3.ebuild:
+  Fix Homepage (thanks to Cardoe), re-add ~amd64 for 10.2.0.3 (bug #162210,
+  thanks to Mark Tomich)
+
+  26 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  -oracle-instantclient-jdbc-10.1.0.2_p2.ebuild,
+  -oracle-instantclient-jdbc-10.1.0.3.ebuild,
+  -oracle-instantclient-jdbc-10.1.0.4.ebuild,
+  -oracle-instantclient-jdbc-10.2.0.1.ebuild,
+  -oracle-instantclient-jdbc-10.2.0.1-r1.ebuild:
+  Cleanup
+
+*oracle-instantclient-jdbc-10.2.0.3 (26 Dec 2006)
+
+  26 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  +oracle-instantclient-jdbc-10.2.0.3.ebuild:
+  Version bump, 10.2.0.3 is only available for x86 as of now.
+
+*oracle-instantclient-jdbc-10.1.0.5 (23 Jul 2006)
+
+  23 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  +oracle-instantclient-jdbc-10.1.0.5.ebuild:
+  Version bump, bug #141269
+
+  06 Jun 2006; Markus Rothe <corsair@gentoo.org>
+  oracle-instantclient-jdbc-10.2.0.2.ebuild:
+  Added ~ppc64
+
+  06 Jun 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  oracle-instantclient-jdbc-10.2.0.2.ebuild:
+  Added support for ppc/ppc64
+
+*oracle-instantclient-jdbc-10.2.0.2 (05 Apr 2006)
+
+  05 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  +oracle-instantclient-jdbc-10.2.0.2.ebuild:
+  Version bump, fix #128901.
+
+  19 Mar 2006; Mark Loeser <halcy0n@gentoo.org>
+  oracle-instantclient-jdbc-10.1.0.4.ebuild,
+  oracle-instantclient-jdbc-10.2.0.1.ebuild,
+  oracle-instantclient-jdbc-10.2.0.1-r1.ebuild:
+  Add DEPEND on app-arch/unzip
+
+  21 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  oracle-instantclient-jdbc-10.1.0.2_p2.ebuild,
+  oracle-instantclient-jdbc-10.1.0.3.ebuild,
+  oracle-instantclient-jdbc-10.1.0.4.ebuild,
+  oracle-instantclient-jdbc-10.2.0.1.ebuild,
+  oracle-instantclient-jdbc-10.2.0.1-r1.ebuild:
+  fix SLOT
+
+*oracle-instantclient-jdbc-10.2.0.1-r1 (08 Jan 2006)
+
+  08 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  +oracle-instantclient-jdbc-10.2.0.1-r1.ebuild:
+  Added amd64 support, many thanks to Danny van Dyk <kugelfang@gentoo.org>.
+  Fixes bug #102171.
+
+*oracle-instantclient-jdbc-10.2.0.1 (07 Jan 2006)
+
+  07 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org> metadata.xml,
+  +oracle-instantclient-jdbc-10.2.0.1.ebuild:
+  Bump to new upstream version.
+  Took over maintainership, bug #102171
+
+*oracle-instantclient-jdbc-10.1.0.4 (21 Jun 2005)
+
+  21 Jun 2005; Radoslaw Stachowiak <radek@gentoo.org>
+  +oracle-instantclient-jdbc-10.1.0.4.ebuild:
+  based on Gustavo Michels work, i did version bump which closes bug #96289
+
+*oracle-instantclient-jdbc-10.1.0.3 (21 Dec 2004)
+
+  21 Dec 2004; Radoslaw Stachowiak <radek@gentoo.org>
+  +oracle-instantclient-jdbc-10.1.0.3.ebuild:
+  Version bump. Also changed slightly number scheme to keep ebuild simpler.
+
+*oracle-instantclient-jdbc-10.1.0.2_p2 (21 Jun 2004)
+
+  21 Jun 2004; Don Seiler <rizzo@gentoo.org>
+  +oracle-instantclient-jdbc-10.1.0.2_p2.ebuild:
+  New an improved version, using insinto to fix permissions problem from bug
+  #46338, and using proper patch numbering.  Also closes Bug #52920, thanks to
+  Miles Grant for reporting that.
+
+*oracle-instantclient-jdbc-10.1.0.2 (22 Mar 2004)
+
+  22 Mar 2004; Don Seiler <rizzo@gentoo.org>; metadata.xml,
+  oracle-instantclient-jdbc-10.1.0.2.ebuild:
+  Initial import, thanks to Jamis Buck for the good work.  Bug #43813

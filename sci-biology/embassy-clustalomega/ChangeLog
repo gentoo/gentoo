@@ -1,0 +1,15 @@
+# ChangeLog for sci-biology/embassy-clustalomega
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/embassy-clustalomega/ChangeLog,v 1.2 2015/03/28 17:56:03 jlec Exp $
+
+  28 Mar 2015; Justin Lecher <jlec@gentoo.org>
+  embassy-clustalomega-1.1.0.ebuild:
+  Clean global scope
+
+*embassy-clustalomega-1.1.0 (28 Mar 2015)
+
+  28 Mar 2015; Justin Lecher <jlec@gentoo.org>
+  +embassy-clustalomega-1.1.0.ebuild,
+  +files/embassy-clustalomega-1.1.0_fix-build-system.patch, +metadata.xml:
+  Import latest changes from science overlay, thanks Ted Tanberry for the work;
+  fixes #335603

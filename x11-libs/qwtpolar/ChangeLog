@@ -1,0 +1,44 @@
+# ChangeLog for x11-libs/qwtpolar
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/qwtpolar/ChangeLog,v 1.9 2014/09/19 12:56:13 jlec Exp $
+
+*qwtpolar-1.1.1 (19 Sep 2014)
+
+  19 Sep 2014; Justin Lecher <jlec@gentoo.org> +qwtpolar-1.1.1.ebuild:
+  Version Bump
+
+*qwtpolar-1.1.0 (15 Feb 2014)
+
+  15 Feb 2014; Justin Lecher <jlec@gentoo.org> +qwtpolar-1.1.0.ebuild,
+  metadata.xml:
+  Version Bump
+
+  23 Dec 2011; Justin Lecher <jlec@gentoo.org> qwtpolar-1.0.0.ebuild:
+  Correct slot for qwt 5 -> 6, #395737
+
+*qwtpolar-1.0.0 (19 Dec 2011)
+
+  19 Dec 2011; Justin Lecher <jlec@gentoo.org> +qwtpolar-1.0.0.ebuild:
+  Version Bump
+
+  07 Aug 2011; Markus Meier <maekke@gentoo.org> qwtpolar-0.1.0-r1.ebuild:
+  x86 stable, bug #375989
+
+  02 Aug 2011; Markos Chandras <hwoarang@gentoo.org> qwtpolar-0.1.0-r1.ebuild:
+  Stable on amd64 wrt bug #375989
+
+*qwtpolar-0.1.0-r1 (04 Jul 2011)
+
+  04 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org> -qwtpolar-0.1.0.ebuild,
+  +qwtpolar-0.1.0-r1.ebuild:
+  Revision bump to fix multilib strictness. Fixes bug #374013.
+
+  14 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org> qwtpolar-0.1.0.ebuild:
+  Do not install qwtlicense manpage as it is just license converted to manpage.
+
+*qwtpolar-0.1.0 (12 Jun 2011)
+
+  12 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org> +qwtpolar-0.1.0.ebuild,
+  +metadata.xml:
+  Initial commit. Required by qgis.
+

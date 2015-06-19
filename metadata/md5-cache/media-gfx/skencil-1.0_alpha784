@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup
+DEPEND=virtual/python-imaging dev-python/pyxml dev-python/reportlab dev-lang/tk sys-devel/gettext =dev-lang/python-2* =dev-lang/python-2*[tk]
+DESCRIPTION=Interactive X11 vector drawing program
+EAPI=3
+HOMEPAGE=http://www.skencil.org/
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/python-imaging dev-python/pyxml dev-python/reportlab dev-lang/tk sys-devel/gettext =dev-lang/python-2* =dev-lang/python-2*[tk]
+SLOT=0
+SRC_URI=http://sk1.googlecode.com/files/skencil-1.0alpha_rev784.tar.gz
+_eclasses_=distutils	92e738ea29389cb3f34778d7a349ac71	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=3c6cedd255cfde5705431d6c5b377294

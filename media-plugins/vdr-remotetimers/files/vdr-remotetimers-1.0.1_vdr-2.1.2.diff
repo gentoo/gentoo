@@ -1,0 +1,137 @@
+diff -Naur remotetimers-1.0.1.orig/menu.c remotetimers-1.0.1/menu.c
+--- remotetimers-1.0.1.orig/menu.c	2014-12-26 18:41:16.359719486 +0100
++++ remotetimers-1.0.1/menu.c	2014-12-26 18:42:58.843051214 +0100
+@@ -189,14 +189,23 @@
+ bool cFreeDiskSpace::HasChanged(const char *SubDir, bool ForceCheck)
+ {
+   cString path(ExchangeChars(strdup(SubDir ? SubDir : ""), true), true);
++#if APIVERSNUM > 20101
++  path = cString::sprintf("%s/%s", cVideoDirectory::Name(), *path);
++#else
+   path = cString::sprintf("%s/%s", VideoDirectory, *path);
++#endif
+   if (ForceCheck || time(NULL) - lastDiskSpaceCheck > DISKSPACECHEK || !EntriesOnSameFileSystem(path, lastPath)) {
+      int FreeMB;
+      int Percent;
+      int MBperMinute = -1;
+      lastPath = path;
++#if APIVERSNUM > 20101
++     if (cVideoDirectory::IsOnVideoDirectoryFileSystem(path)) {
++        Percent = cVideoDirectory::VideoDiskSpace(&FreeMB);
++#else
+      if (IsOnVideoDirectoryFileSystem(path)) {
+         Percent = ::VideoDiskSpace(&FreeMB);
++#endif
+         MBperMinute = Recordings.MBperMinute();
+      }
+      else {
+@@ -1758,8 +1767,13 @@
+         int len = strlen(RemoteTimersSetup.serverDir);
+         bool remote = len == 0 || (strstr(name, RemoteTimersSetup.serverDir) == name && name[len] == FOLDERDELIMCHAR);
+         if (!remote) {
++#if APIVERSNUM > 20101
++           if (RecordingsHandler.GetUsage(*fileName) == ruNone) {
++              if (RecordingsHandler.Add(ruCut, *fileName))
++#else
+            if (!cCutter::Active()) {
+               if (cCutter::Start(*fileName))
++#endif
+                  Skins.Message(mtInfo, tr("Editing process started"));
+               else
+                  Skins.Message(mtError, tr("Can't start editing process!"));
+@@ -1898,7 +1912,11 @@
+          name[len] = '\0';
+      }
+      cString newName(ExchangeChars(strdup(name), true), true);
++#if APIVERSNUM > 20101
++     newName = cString::sprintf("%s/%s%s", cVideoDirectory::Name(), *newName, p);
++#else
+      newName = cString::sprintf("%s/%s%s", VideoDirectory, *newName, p);
++#endif
+      bool wasMoving = cMoveRec::IsMoving();
+      if (Rename(Recording, newName)) {
+         // keep old name when moving recording in background
+@@ -2215,7 +2233,11 @@
+ 
+ cString cMenuRecordings::DirectoryName(void)
+ {
++#if APIVERSNUM > 20101
++  cString d(cVideoDirectory::Name());
++#else
+   cString d(VideoDirectory);
++#endif
+   if (base) {
+      char *s = ExchangeChars(strdup(base), true);
+      d = AddDirectory(d, s);
+@@ -2312,9 +2334,17 @@
+            }
+         cRecording *recording = ri->Recording();
+         cString FileName = recording->FileName();
++#if APIVERSNUM > 20101
++        if (RecordingsHandler.GetUsage(*FileName) != ruNone) {
++#else
+         if (cCutter::Active(ri->Recording()->FileName())) {
++#endif
+            if (Interface->Confirm(tr("Recording is being edited - really delete?"))) {
++#if APIVERSNUM > 20101
++              RecordingsHandler.Del(*FileName);
++#else
+               cCutter::Stop();
++#endif
+               recording = Recordings.GetByName(FileName); // cCutter::Stop() might have deleted it if it was the edited version
+               // we continue with the code below even if recording is NULL,
+               // in order to have the menu updated etc.
+diff -Naur remotetimers-1.0.1.orig/remotetimers.c remotetimers-1.0.1/remotetimers.c
+--- remotetimers-1.0.1.orig/remotetimers.c	2014-12-26 18:41:16.363052819 +0100
++++ remotetimers-1.0.1/remotetimers.c	2014-12-26 18:42:58.846384548 +0100
+@@ -172,11 +172,23 @@
+                    if (*RemoteTimersSetup.serverDir) {
+                       ir->name = cString::sprintf("%s~%s", RemoteTimersSetup.serverDir, recording.Name());
+ 
++#if APIVERSNUM > 20101
++                      int len = strlen(cVideoDirectory::Name());
++#else
+                       int len = strlen(VideoDirectory);
++#endif
+                       ir->fileName = recording.FileName();
++#if APIVERSNUM > 20101
++                      if (strncmp(ir->fileName, cVideoDirectory::Name(), strlen(cVideoDirectory::Name())) == 0 && ir->fileName[len] == '/') {
++#else
+                       if (strncmp(ir->fileName, VideoDirectory, strlen(VideoDirectory)) == 0 && ir->fileName[len] == '/') {
++#endif
+                          char *serverDir = ExchangeChars(strdup(RemoteTimersSetup.serverDir), true);
++#if APIVERSNUM > 20101
++                         ir->fileName = cString::sprintf("%s/%s%s", cVideoDirectory::Name(), serverDir, ir->fileName + len);
++#else
+                          ir->fileName = cString::sprintf("%s/%s%s", VideoDirectory, serverDir, ir->fileName + len);
++#endif
+                          free(serverDir);
+                       }
+                       else {
+diff -Naur remotetimers-1.0.1.orig/watcher.c remotetimers-1.0.1/watcher.c
+--- remotetimers-1.0.1.orig/watcher.c	2014-12-26 18:41:16.363052819 +0100
++++ remotetimers-1.0.1/watcher.c	2014-12-26 18:42:58.846384548 +0100
+@@ -44,7 +44,11 @@
+ cUpdateWatcher::cUpdateWatcher(): cThread("remotetimers update file watcher")
+ {
+ 	serverLastModifiedTime = 0;
++#if APIVERSNUM > 20101
++	clientUpdateFile = AddDirectory(cVideoDirectory::Name(), ".update");
++#else
+ 	clientUpdateFile = AddDirectory(VideoDirectory, ".update");
++#endif
+ 	clientLastDev = 0;
+ 	inSubDir = false;
+ }
+@@ -63,7 +67,11 @@
+ 		// server recordings in subdir: check mtime of subdir/.update
+ 		char *tmpDir = strdup(RemoteTimersSetup.serverDir);
+ 		tmpDir = ExchangeChars(tmpDir, true);
++#if APIVERSNUM > 20101
++		serverUpdateFile = AddDirectory(cVideoDirectory::Name(), AddDirectory(tmpDir, ".update"));
++#else
+ 		serverUpdateFile = AddDirectory(VideoDirectory, AddDirectory(tmpDir, ".update"));
++#endif
+ 	        serverLastModifiedTime = LastModifiedTime(serverUpdateFile);
+ 		free(tmpDir);
+ 	}

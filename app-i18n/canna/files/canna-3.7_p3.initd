@@ -1,0 +1,42 @@
+#!/sbin/runscript
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/canna/files/canna-3.7_p3.initd,v 1.1 2009/09/21 02:55:22 matsuu Exp $
+
+# CANNASERVER_OPTS and CANNASERVER_OWNER is defined in /etc/conf.d/canna
+CANNASERVER_LOGFILE="/var/log/canna/CANNA0msgs"
+
+depend() {
+	after logger
+}
+
+start() {
+	if [ -S /tmp/.iroha_unix/IROHA ] ; then
+		/usr/sbin/cannakill >/dev/null 2>&1
+	fi
+	rm -f /tmp/.iroha_unix/IROHA
+
+	if [ "${CANNASERVER_ENABLE_SYSLOG}" = "yes" ] ; then
+		CANNASERVER_OPTS="${CANNASERVER_OPTS} -syslog"
+	else
+		touch "${CANNASERVER_LOGFILE}"
+		chmod u+w "${CANNASERVER_LOGFILEj}"
+	fi
+
+	if [ ! -z "${CANNASERVER_OWNER}" ] ; then
+		if [ -f "${CANNASERVER_LOGFILE}" ] ; then
+			chown "${CANNASERVER_OWNER}" "${CANNASERVER_LOGFILE}"
+		fi
+		CANNASERVER_OPTS="${CANNASERVER_OPTS} -u ${CANNASERVER_OWNER}"
+	fi
+
+	ebegin "Starting canna"
+	/usr/sbin/cannaserver ${CANNASERVER_OPTS}
+	eend $? "Failed to start canna"
+}
+
+stop() {
+	ebegin "Stopping canna"
+	/usr/sbin/cannakill
+	eend $? "Failed to stop canna"
+}

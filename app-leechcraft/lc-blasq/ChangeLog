@@ -1,0 +1,33 @@
+# ChangeLog for app-leechcraft/lc-blasq
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-leechcraft/lc-blasq/ChangeLog,v 1.7 2014/08/03 18:46:37 maksbotan Exp $
+
+*lc-blasq-0.6.70 (03 Aug 2014)
+
+  03 Aug 2014; Maxim Koltsov <maksbotan@gentoo.org> +lc-blasq-0.6.70.ebuild:
+  Bump LeechCraft to 0.6.70, thanks to 0xd34df00d.
+
+*lc-blasq-0.6.65 (10 Apr 2014)
+
+  10 Apr 2014; Maxim Koltsov <maksbotan@gentoo.org> +lc-blasq-0.6.65.ebuild:
+  Bump LeechCraft to 0.5.65, thanks to 0xd34df00d.
+
+  03 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> lc-blasq-0.6.60.ebuild:
+  x86 stable wrt bug #500914
+
+  02 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> lc-blasq-0.6.60.ebuild:
+  amd64 stable wrt bug #500914
+
+*lc-blasq-0.6.60 (08 Jan 2014)
+
+  08 Jan 2014; Maxim Koltsov <maksbotan@gentoo.org> +lc-blasq-0.6.60.ebuild:
+  Bump to LeecChraft-0.6.60 release, thanks to 0xd34df00d.
+
+  27 Aug 2013; Michael Palimaka <kensington@gentoo.org> lc-blasq-9999.ebuild:
+  Pin dev-qt/qtxmlpatterns SLOT to 4.
+
+*lc-blasq-9999 (18 Aug 2013)
+
+  18 Aug 2013; Maxim Koltsov <maksbotan@gentoo.org> +lc-blasq-9999.ebuild,
+  +metadata.xml:
+  Add lc-blasq-9999, thanks to 0xd34df00d.

@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=The Tim Engler's Lexmark 1100 driver
+EAPI=5
+HOMEPAGE=http://www.linuxprinting.org/show_driver.cgi?driver=lm1100
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://gentoo/lm1100.1.0.2a.tar.gz mirror://gentoo/lm1100maint.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d08a0b565576f3c74181badaf5da6d7b

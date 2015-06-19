@@ -1,0 +1,13 @@
+# ChangeLog for sys-auth/fprint_demo
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/fprint_demo/ChangeLog,v 1.2 2012/11/27 09:50:05 xmw Exp $
+
+  27 Nov 2012; Michael Weber <xmw@gentoo.org> metadata.xml:
+  Fix maintainer email.
+
+*fprint_demo-0.4 (17 Oct 2010)
+
+  17 Oct 2010; Michael Weber <xmw@gentoo.org> +fprint_demo-0.4.ebuild,
+  +metadata.xml:
+  Initial import, fixes bug 227671, thanks to Jan Buecken and others on this
+  bug.

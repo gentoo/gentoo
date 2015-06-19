@@ -1,0 +1,41 @@
+ CMakeLists.txt | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c4b3278..f9ed49d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -637,17 +637,17 @@ if(LIBPROJ4)
+ 	if(LIBPROJ4_FOUND)	
+ 		set(CMAKE_REQUIRED_LIBRARIES ${LIBPROJ4_LIBRARIES} ${GSL_LIBRARIES} m)
+ 
+-		check_library_exists("${LIBPROJ4_LIBRARIES}" pj_init "" USE_LIBPROJ4_NEW)
+-		if(USE_LIBPROJ4_NEW)
++		check_library_exists("${LIBPROJ4_LIBRARIES}" pj_init "" USE_LIBPROJ4)
++		if(USE_LIBPROJ4)
+ #		check_library_exists("${LIBPROJ4_LIBRARIES}" proj_init "" USE_LIBPROJ4)
+ #		if(USE_LIBPROJ4)
+ 
+                         # define USE_LIB_PROJ4 in any case
+ 			set(USE_LIBPROJ4 1)
+ 
+-		else(USE_LIBPROJ4_NEW)
+-			check_library_exists("${LIBPROJ4_LIBRARIES}" proj_init "" USE_LIBPROJ4)
+-			if(NOT USE_LIBPROJ4)
++		else(USE_LIBPROJ4)
++			check_library_exists("${LIBPROJ4_LIBRARIES}" proj_init "" USE_LIBPROJ4_NEW)
++			if(NOT USE_LIBPROJ4_NEW)
+ #		else(USE_LIBPROJ4)
+ #			check_library_exists("${LIBPROJ4_LIBRARIES}" pj_init "" USE_LIBPROJ4_NEW)
+ #			if(NOT USE_LIBPROJ4_NEW)
+@@ -656,8 +656,8 @@ if(LIBPROJ4)
+ 				"Use -DLIBPROJ4DIR=DIR to specify the Libproj4 directory tree.\n"
+ 				"Use -DLIBPRJ4=OFF to not use it.")
+ 
+-			endif(NOT USE_LIBPROJ4)
+-		endif(USE_LIBPROJ4_NEW)
++			endif(NOT USE_LIBPROJ4_NEW)
++		endif(USE_LIBPROJ4)
+ #			endif(NOT USE_LIBPROJ4_NEW)
+ #		endif(USE_LIBPROJ4)
+ 

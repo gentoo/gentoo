@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>games</herd>
+	<longdescription lang="en">
+		The SDL2_gfx library provides the basic drawing functions such
+		as lines, circles or polygons provided by SDL_gfx on SDL2 against
+		renderers of SDL2.
+
+		The current components of the SDL2_gfx library are:
+
+		* Graphic Primitives (SDL_gfxPrimitives.h, SDL_gfxPrimitives.c)
+		* Surface Rotozoomer (SDL_rotozoom.h, SDL_rotozoom.c)
+		* Framerate control (SDL_framerate.h, SDL_framerate.c)
+		* MMX image filters (SDL_imageFilter.h, SDL_imageFilter.c)
+		* Build-in 8x8 Font (SDL_gfxPrimitives_font.h)
+	</longdescription>
+</pkgmetadata>

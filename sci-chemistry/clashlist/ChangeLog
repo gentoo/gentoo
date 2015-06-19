@@ -1,0 +1,25 @@
+# ChangeLog for sci-chemistry/clashlist
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/clashlist/ChangeLog,v 1.5 2015/04/26 16:19:03 pacho Exp $
+
+  26 Apr 2015; Pacho Ramos <pacho@gentoo.org> clashlist-3.17-r1.ebuild:
+  x86 stable wrt bug #547384
+
+  13 Jun 2012; Jeff Horelick <jdhore@gentoo.org> clashlist-3.17.ebuild:
+  marked x86 per bug 419867
+
+  11 Jun 2012; Agostino Sarubbo <ago@gentoo.org> clashlist-3.17.ebuild:
+  Stable for amd64, wrt bug #419867
+
+*clashlist-3.17-r1 (07 Jun 2012)
+
+  07 Jun 2012; Justin Lecher <jlec@gentoo.org> clashlist-3.17.ebuild,
+  +clashlist-3.17-r1.ebuild, metadata.xml:
+  Rename cluster to molprobity-cluster, #419999
+
+*clashlist-3.17 (19 Jul 2010)
+
+  19 Jul 2010; Justin Lecher <jlec@gentoo.org> +clashlist-3.17.ebuild,
+  +metadata.xml:
+  New addition
+

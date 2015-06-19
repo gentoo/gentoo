@@ -1,0 +1,13 @@
+# ChangeLog for sci-libs/libgeodecomp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/libgeodecomp/ChangeLog,v 1.2 2015/05/06 05:35:19 slis Exp $
+
+  06 May 2015; Sławek Lis <slis@gentoo.org> +files/libflatarray.patch,
+  libgeodecomp-0.3.1.ebuild:
+  Trying to fix name collision (#548716)
+
+*libgeodecomp-0.3.1 (19 May 2014)
+
+  19 May 2014; Sławek Lis <slis@gentoo.org> +libgeodecomp-0.3.1.ebuild,
+  +metadata.xml:
+  Added libgeodecomp ebuild

@@ -1,0 +1,180 @@
+# ChangeLog for net-misc/telnet-bsd
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/telnet-bsd/ChangeLog,v 1.52 2013/06/17 00:05:16 mschiff Exp $
+
+  17 Jun 2013; Marc Schiffbauer <mschiff@gentoo.org> telnet-bsd-1.2-r1.ebuild:
+  Add eaclocal to src_prepare. Should fix bug #473096. Thanks to Mark
+  Zhitomirski.
+
+  12 Jun 2013; Jeroen Roovers <jer@gentoo.org> telnet-bsd-1.2-r1.ebuild:
+  Enable -fpie for HPPA.
+
+  28 Feb 2013; Marc Schiffbauer <mschiff@gentoo.org> telnet-bsd-1.2-r1.ebuild:
+  Better fix for #459560
+
+  28 Feb 2013; Marc Schiffbauer <mschiff@gentoo.org> telnet-bsd-1.2-r1.ebuild:
+  EAPI bump, ebuild cleanups and fix bug #459560
+
+  21 Feb 2013; Zac Medico <zmedico@gentoo.org> telnet-bsd-1.2-r1.ebuild:
+  Add ~arm-linux keyword.
+
+  26 Jul 2012; Richard Yao <ryao@gentoo.org> telnet-bsd-1.2-r1.ebuild:
+  Keyword ~amd64-fbsd
+
+  29 May 2012; Naohiro Aota <naota@gentoo.org> files/telnet-bsd-1.2-fbsd.patch:
+  Reworked freebsd patch to work on FreeBSD-9.0 #417509
+
+  14 Apr 2012; Zac Medico <zmedico@gentoo.org> telnet-bsd-1.2-r1.ebuild:
+  Add ~amd64-linux keyword.
+
+  29 Dec 2011; Fabian Groffen <grobian@gentoo.org> telnet-bsd-1.2-r1.ebuild:
+  Marked ~x64-macos, bug #396107
+
+  13 Sep 2011; Marc Schiffbauer <mschiff@gentoo.org> metadata.xml:
+  Added myself as maintainer
+
+  13 Sep 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #353756
+
+  03 Aug 2011; Zac Medico <zmedico@gentoo.org> telnet-bsd-1.2-r1.ebuild:
+  Add ~x86-linux keyword.
+
+  06 Apr 2011; Christopher Brannon <cbrannon@gentoo.org> metadata.xml:
+  Added myself as maintainer.
+
+  20 Jun 2009; Mike Frysinger <vapier@gentoo.org> telnet-bsd-1.2-r1.ebuild:
+  Apply patch from Marco Paolone to pull in xinetd #268326.
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  07 Jan 2007; Alec Warner <antarus@gentoo.org> telnet-bsd-1.2-r1.ebuild:
+  fix autotools for bug # 160549
+
+  14 Oct 2006; Emanuele Giaquinta <exg@gentoo.org>
+  -files/telnet-bsd-1.0-overflow.patch, -files/telnet-bsd_gentoo.diff,
+  -telnet-bsd-1.0-r1.ebuild, -telnet-bsd-1.2.ebuild:
+  Cleanup.
+
+  26 Jun 2006; Henrik Brix Andersen <brix@gentoo.org>
+  telnet-bsd-1.2-r1.ebuild:
+  Cleaned up the brokeness introduced by blubb. This should be wrapped in
+  client/server USE flags.
+
+  26 Jun 2006; Simon Stelling <blubb@gentoo.org> telnet-bsd-1.2-r1.ebuild:
+  add xinetd to RDEPEND
+
+  26 Jun 2006; Simon Stelling <blubb@gentoo.org> telnet-bsd-1.2-r1.ebuild:
+  stable on amd64
+
+  24 May 2006; Michael Hanselmann <hansmi@gentoo.org>
+  telnet-bsd-1.2-r1.ebuild:
+  Stable on ppc.
+
+  23 May 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  telnet-bsd-1.2-r1.ebuild:
+  Stable on sparc
+
+  23 May 2006; Krzysiek Pawlik <nelchael@gentoo.org> +metadata.xml,
+  telnet-bsd-1.2-r1.ebuild:
+  Stable on x86, see bug #133919. Added metadata.xml.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+  13 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  telnet-bsd-1.2-r1.ebuild:
+  Run autotools, add missing dependency upon ncurses, add ~x86-fbsd keyword.
+
+  20 Feb 2006; Markus Rothe <corsair@gentoo.org> telnet-bsd-1.2-r1.ebuild:
+  Stable on ppc64
+
+  28 Jan 2006; Simon Stelling <blubb@gentoo.org>
+  +files/telnet-bsd_gentoo.diff, -files/telnet-bsd_gentoo.diff.gz,
+  telnet-bsd-1.0-r1.ebuild:
+  no need to gzip a smallish patch
+
+  18 Oct 2005; Aron Griffis <agriffis@gentoo.org> telnet-bsd-1.2-r1.ebuild:
+  Mark 1.2-r1 stable on alpha
+
+  17 Oct 2005; Aron Griffis <agriffis@gentoo.org> telnet-bsd-1.2-r1.ebuild:
+  Mark 1.2-r1 stable on ia64
+
+  16 Oct 2005; Guy Martin <gmsoft@gentoo.org> telnet-bsd-1.2-r1.ebuild:
+  Disabled pie on hppa (#109119).
+
+*telnet-bsd-1.2-r1 (13 Aug 2005)
+
+  13 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/telnet-bsd-1.2-fbsd.patch, +telnet-bsd-1.2-r1.ebuild:
+  Added patch to compile on Gentoo/FreeBSD.
+
+  29 Jun 2005; Simon Stelling <blubb@gentoo.org> telnet-bsd-1.2.ebuild:
+  stable on amd64 wrt bug 96156
+
+  28 Jun 2005; Bryan Østergaard <kloeri@gentoo.org> telnet-bsd-1.2.ebuild:
+  Stable on alpha + ia64, bug 96156.
+
+  27 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> telnet-bsd-1.2.ebuild:
+  Stable on hppa.
+
+  26 Jun 2005; Jason Wever <weeve@gentoo.org> telnet-bsd-1.2.ebuild:
+  Stable on SPARC wrt bug #96156.
+
+  26 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> telnet-bsd-1.2.ebuild:
+  Stable on ppc.
+
+  26 Jun 2005; Markus Rothe <corsair@gentoo.org> telnet-bsd-1.2.ebuild:
+  Stable on ppc64 (bug #96156)
+
+*telnet-bsd-1.2 (26 Jun 2005)
+
+  26 Jun 2005; Mike Frysinger <vapier@gentoo.org> +telnet-bsd-1.2.ebuild:
+  Version bump #96156.
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> telnet-bsd-1.0-r1.ebuild:
+  stable on ia64
+
+*telnet-bsd-1.0-r1 (30 Mar 2005)
+
+  30 Mar 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/telnet-bsd-1.0-overflow.patch, +files/telnetd.xinetd,
+  +telnet-bsd-1.0-r1.ebuild:
+  Version bump for security #87019.
+
+  07 Mar 2005; Markus Rothe <corsair@gentoo.org> telnet-bsd-1.0.ebuild:
+  Stable on ppc64
+
+  26 Jan 2005; Markus Rothe <corsair@gentoo.org> telnet-bsd-1.0.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #79567
+
+  09 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> telnet-bsd-1.0.ebuild:
+  fix sandbox violation on nls (bug #73910)
+
+  07 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> telnet-bsd-1.0.ebuild:
+  support nls for bug #73630; DESTDIR install; tidy
+
+  18 Apr 2004; Travis Tilley <lv@gentoo.org> telnet-bsd-1.0.ebuild:
+  stable on amd64
+
+  24 Nov 2003; Aron Griffis <agriffis@gentoo.org> telnet-bsd-1.0.ebuild:
+  Mark stable on alpha
+
+  12 Sep 2003; Jason Wever <weeve@gentoo.org> telnet-bsd-1.0.ebuild:
+  Marked stable for sparc.
+
+  28 Jun 2003; Jason Wever <weeve@gentoo.org> telnet-bsd-1.0.ebuild:
+  Added ~sparc to keywords.
+
+*telnet-bsd-1.0 (11 Dec 2002)
+
+  03 Aug 2003; Guy Martin <gmsoft@gentoo.org> telnet-bsd-1.0.ebuild :
+  Added hppa to KEYWORDS.
+
+  11 Dec 2002; Brad Cowan <bcowan@gentoo.org> telnet-bsd-1.0.ebuild,
+  ChangeLog, files/digest-telnet-bsd-1.0, telnet-bsd_gentoo.diff.gz:
+  
+  Initial import, Thanks to Andrey Ulanov closes bug #11521.
+  
+  

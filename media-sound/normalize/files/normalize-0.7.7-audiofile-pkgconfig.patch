@@ -1,0 +1,55 @@
+Use pkgconfig to check for audiofile since the audiofile-config script was
+removed from >=audiofile-0.3.0.
+
+--- normalize-0.7.7/configure.ac.orig
++++ normalize-0.7.7/configure.ac
+@@ -248,33 +248,16 @@
+ 
+ 
+ dnl *** Stuff for audiofile library ***
+-dnl v0.2.1 and before have bugs with 24-bit LE files
+-AM_PATH_AUDIOFILE([ 0.2.2 ], [ have_audiofile=true ])
+-dnl AC_CHECK_LIB(audiofile, afSetVirtualSampleFormat, have_audiofile=true)
++AC_ARG_WITH(audiofile, AC_HELP_STRING([--with-audiofile],
++		   [use the audiofile library (default yes)]))
+ AH_TEMPLATE([USE_AUDIOFILE],
+ 	    [Define if you want to use the audiofile library.])
+-AC_ARG_WITH(audiofile,
+-    AC_HELP_STRING([--with-audiofile],
+-		   [use the audiofile library (default yes)]),
+-    [ case "$withval" in
+-	  no) with_audiofile=false ;;
+-	  *) with_audiofile=true ;;
+-      esac ])
+ 
+-use_audiofile=false
+-if test x$with_audiofile != xfalse; then
+-    if test x$have_audiofile = xtrue; then
+-	AC_DEFINE(USE_AUDIOFILE)
+-	use_audiofile=true
+-dnl	AUDIOFILELIBS="-laudiofile"
+-    elif test x$with_audiofile = xtrue; then
+-	AC_MSG_ERROR([--with-audiofile specified, but audiofile library not found])
+-    fi
+-fi
+-dnl AC_SUBST(AUDIOFILELIBS)
+-test x$use_audiofile = xfalse && AUDIOFILE_LIBS=
+-test x$use_audiofile = xfalse && AUDIOFILE_CFLAGS=
+-AM_CONDITIONAL(AUDIOFILE, test x$use_audiofile = xtrue)
++AS_IF([test "x$with_audiofile" = "xyes"], [
++    PKG_CHECK_MODULES([AUDIOFILE], [audiofile])
++    AC_DEFINE(USE_AUDIOFILE)
++])
++AM_CONDITIONAL(AUDIOFILE, test x$with_audiofile = xyes)
+ 
+ 
+ dnl *** Stuff for mad mpeg audio decoder library ***
+@@ -330,7 +313,7 @@
+ 
+ echo
+ echo "Configuration:"
+-echo "    audiofile library:         $use_audiofile"
++echo "    audiofile library:         $with_audiofile"
+ echo "    mpeg audio support:        $use_mad"
+ echo "    xmms volume adjust plugin: $use_xmms"
+ echo

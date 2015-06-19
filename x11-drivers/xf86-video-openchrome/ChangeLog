@@ -1,0 +1,405 @@
+# ChangeLog for x11-drivers/xf86-video-openchrome
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-openchrome/ChangeLog,v 1.75 2015/01/15 13:19:13 pacho Exp $
+
+  15 Jan 2015; Pacho Ramos <pacho@gentoo.org>
+  +files/xf86-video-openchrome-0.3.3-glibc-2.20.patch,
+  xf86-video-openchrome-0.3.3.ebuild:
+  Fix building with glibc-2.20 (#526728)
+
+  20 Feb 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -xf86-video-openchrome-0.3.1.ebuild, -xf86-video-openchrome-0.3.2.ebuild,
+  xf86-video-openchrome-0.3.3.ebuild:
+  Fix broken HOMEPAGE and SRC_URI, bug #501822. Remove old.
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-openchrome-0.3.3.ebuild:
+  Stable for x86, wrt bug #475480
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-openchrome-0.3.3.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*xf86-video-openchrome-0.3.3 (23 May 2013)
+
+  23 May 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-openchrome-0.3.3.ebuild:
+  Version bump for security bug 471098.
+
+  28 Mar 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  xf86-video-openchrome-0.3.2.ebuild:
+  Use correct ebuild phase to set XORG_CONFIGURE_OPTIONS
+
+*xf86-video-openchrome-0.3.2 (28 Mar 2013)
+
+  28 Mar 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-openchrome-0.3.2.ebuild,
+  -files/xf86-video-openchrome-0.2.906-xorg-1.12.patch,
+  -xf86-video-openchrome-0.2.905.ebuild, -xf86-video-openchrome-0.2.906.ebuild,
+  -xf86-video-openchrome-0.3.0.ebuild:
+  Version bump.
+
+  18 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-openchrome-0.3.1.ebuild:
+  Stable for x86, wrt bug #440872
+
+  16 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-openchrome-0.3.1.ebuild:
+  Stable for amd64, wrt bug #440872
+
+*xf86-video-openchrome-0.3.1 (06 Sep 2012)
+
+  06 Sep 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-openchrome-0.3.1.ebuild:
+  Version bump.
+
+  07 Aug 2012; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Drop maintainership.
+
+*xf86-video-openchrome-0.3.0 (27 Jul 2012)
+
+  27 Jul 2012; Jeroen Roovers <jer@gentoo.org>
+  -xf86-video-openchrome-0.2.906_p20120726.ebuild,
+  +xf86-video-openchrome-0.3.0.ebuild:
+  Version bump.
+
+*xf86-video-openchrome-0.2.906_p20120726 (26 Jul 2012)
+
+  26 Jul 2012; Jeroen Roovers <jer@gentoo.org>
+  +xf86-video-openchrome-0.2.906_p20120726.ebuild:
+  Add a snapshot to allow building against newestest Xorg (bug #428184).
+
+  17 Jul 2012; Jeroen Roovers <jer@gentoo.org>
+  xf86-video-openchrome-0.2.906.ebuild,
+  +files/xf86-video-openchrome-0.2.906-xorg-1.12.patch:
+  Fix a segmentation fault while running in xorg 1.12 (Debian bug #675407).
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-openchrome-0.2.906.ebuild:
+  Stable for X86, wrt bug #422309
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-openchrome-0.2.906.ebuild:
+  Stable for amd64, wrt bug #419473
+
+*xf86-video-openchrome-0.2.906 (16 May 2012)
+
+  16 May 2012; Jeroen Roovers <jer@gentoo.org>
+  -xf86-video-openchrome-0.2.904_p920.ebuild,
+  +xf86-video-openchrome-0.2.906.ebuild:
+  Version bump.
+
+  05 Apr 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  xf86-video-openchrome-0.2.905.ebuild:
+  x86 stable wrt bug #409667
+
+  29 Mar 2012; Jeroen Roovers <jer@gentoo.org>
+  xf86-video-openchrome-0.2.905.ebuild:
+  Add more dependencies by Ago (bug #409667 comment #1).
+
+  29 Mar 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-openchrome-0.2.905.ebuild:
+  Stable for amd64, wrt bug #409667
+
+*xf86-video-openchrome-0.2.905 (13 Feb 2012)
+
+  13 Feb 2012; Jeroen Roovers <jer@gentoo.org>
+  -xf86-video-openchrome-0.2.904_p952.ebuild,
+  +xf86-video-openchrome-0.2.905.ebuild, metadata.xml:
+  Version bump by Richard Grenville (bug #403275). Add x11 herd (bug #399107).
+
+  28 Dec 2011; Jeroen Roovers <jer@gentoo.org>
+  -xf86-video-openchrome-0.2.904_p930.ebuild,
+  -xf86-video-openchrome-0.2.904_p932.ebuild,
+  -xf86-video-openchrome-0.2.904_p933.ebuild,
+  -xf86-video-openchrome-0.2.904_p939.ebuild,
+  -xf86-video-openchrome-0.2.904_p942.ebuild:
+  Old.
+
+*xf86-video-openchrome-0.2.904_p952 (28 Aug 2011)
+
+  28 Aug 2011; Jeroen Roovers <jer@gentoo.org>
+  +xf86-video-openchrome-0.2.904_p952.ebuild:
+  Version bump.
+
+*xf86-video-openchrome-0.2.904_p942 (12 Aug 2011)
+
+  12 Aug 2011; Jeroen Roovers <jer@gentoo.org>
+  +xf86-video-openchrome-0.2.904_p942.ebuild:
+  Version bump.
+
+  03 Aug 2011; Jeroen Roovers <jer@gentoo.org>
+  xf86-video-openchrome-0.2.904_p939.ebuild:
+  Version bump.
+
+*xf86-video-openchrome-0.2.904_p939 (03 Aug 2011)
+
+  03 Aug 2011; Jeroen Roovers <jer@gentoo.org>
+  +xf86-video-openchrome-0.2.904_p939.ebuild:
+  Version bump.
+
+*xf86-video-openchrome-0.2.904_p933 (28 Jul 2011)
+
+  28 Jul 2011; Jeroen Roovers <jer@gentoo.org>
+  +xf86-video-openchrome-0.2.904_p933.ebuild:
+  Version bump.
+
+  30 Jun 2011; Jeroen Roovers <jer@gentoo.org>
+  -xf86-video-openchrome-0.2.904_p916.ebuild,
+  -xf86-video-openchrome-0.2.904_p918.ebuild,
+  -xf86-video-openchrome-0.2.904_p919.ebuild:
+  ^
+
+  30 Jun 2011; Markos Chandras <hwoarang@gentoo.org>
+  xf86-video-openchrome-0.2.904_p920.ebuild:
+  Stable on amd64 wrt bug #373153
+
+  29 Jun 2011; Markus Meier <maekke@gentoo.org>
+  xf86-video-openchrome-0.2.904_p920.ebuild:
+  x86 stable, bug #373153
+
+*xf86-video-openchrome-0.2.904_p932 (28 Jun 2011)
+
+  28 Jun 2011; Jeroen Roovers <jer@gentoo.org>
+  +xf86-video-openchrome-0.2.904_p932.ebuild:
+  Version bump.
+
+*xf86-video-openchrome-0.2.904_p930 (10 Jun 2011)
+
+  10 Jun 2011; Jeroen Roovers <jer@gentoo.org>
+  +xf86-video-openchrome-0.2.904_p930.ebuild:
+  Version bump.
+
+  19 May 2011; Jeroen Roovers <jer@gentoo.org>
+  -xf86-video-openchrome-0.2.904.ebuild:
+  DEL
+
+  14 May 2011; Thomas Kahle <tomka@gentoo.org>
+  xf86-video-openchrome-0.2.904_p916.ebuild:
+  x86 stable per bug 363619
+
+  08 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  xf86-video-openchrome-0.2.904_p920.ebuild:
+  Use all xorg-2 features, resulting in smaller ebuild.
+
+*xf86-video-openchrome-0.2.904_p920 (04 May 2011)
+
+  04 May 2011; Jeroen Roovers <jer@gentoo.org>
+  xf86-video-openchrome-0.2.904_p916.ebuild,
+  xf86-video-openchrome-0.2.904_p918.ebuild,
+  xf86-video-openchrome-0.2.904_p919.ebuild,
+  +xf86-video-openchrome-0.2.904_p920.ebuild:
+  Version bump. Set appropriate x11-base/xorg-server versions.
+
+  02 May 2011; Markos Chandras <hwoarang@gentoo.org>
+  xf86-video-openchrome-0.2.904_p916.ebuild:
+  Stable on amd64 wrt bug #363619
+
+*xf86-video-openchrome-0.2.904_p919 (26 Apr 2011)
+
+  26 Apr 2011; Jeroen Roovers <jer@gentoo.org>
+  +xf86-video-openchrome-0.2.904_p919.ebuild:
+  Version bump.
+
+*xf86-video-openchrome-0.2.904_p918 (14 Apr 2011)
+
+  14 Apr 2011; Jeroen Roovers <jer@gentoo.org>
+  +xf86-video-openchrome-0.2.904_p918.ebuild:
+  Version bump.
+
+  28 Feb 2011; Michał Górny <mgorny@gentoo.org>
+  xf86-video-openchrome-0.2.904_p909.ebuild,
+  xf86-video-openchrome-0.2.904_p916.ebuild:
+  Replace DOCS var with an array due to xorg-2 eclass changes.
+
+*xf86-video-openchrome-0.2.904_p916 (21 Feb 2011)
+
+  21 Feb 2011; Jeroen Roovers <jer@gentoo.org>
+  -xf86-video-openchrome-0.2.904_p906.ebuild,
+  +xf86-video-openchrome-0.2.904_p916.ebuild:
+  Version bump.
+
+*xf86-video-openchrome-0.2.904_p909 (26 Jan 2011)
+
+  26 Jan 2011; Jeroen Roovers <jer@gentoo.org>
+  -xf86-video-openchrome-0.2.904_p879.ebuild,
+  -xf86-video-openchrome-0.2.904_p891.ebuild,
+  +xf86-video-openchrome-0.2.904_p909.ebuild:
+  Version bump.
+
+*xf86-video-openchrome-0.2.904_p906 (22 Jan 2011)
+
+  22 Jan 2011; Jeroen Roovers <jer@gentoo.org>
+  -xf86-video-openchrome-0.2.904_p904.ebuild,
+  +xf86-video-openchrome-0.2.904_p906.ebuild:
+  Version bump. Do not ship precompiled binaries (bug #352223).
+
+*xf86-video-openchrome-0.2.904_p904 (18 Jan 2011)
+
+  18 Jan 2011; Jeroen Roovers <jer@gentoo.org>
+  +xf86-video-openchrome-0.2.904_p904.ebuild:
+  Version bump.
+
+*xf86-video-openchrome-0.2.904_p891 (28 Dec 2010)
+
+  28 Dec 2010; Jeroen Roovers <jer@gentoo.org>
+  -xf86-video-openchrome-0.2.904_p860.ebuild,
+  +xf86-video-openchrome-0.2.904_p891.ebuild:
+  Version bump.
+
+*xf86-video-openchrome-0.2.904_p879 (24 Nov 2010)
+
+  24 Nov 2010; Jeroen Roovers <jer@gentoo.org>
+  -xf86-video-openchrome-0.2.904_p855.ebuild,
+  -xf86-video-openchrome-0.2.904_p856.ebuild,
+  +xf86-video-openchrome-0.2.904_p879.ebuild:
+  Version bump.
+
+*xf86-video-openchrome-0.2.904_p860 (02 Nov 2010)
+
+  02 Nov 2010; Jeroen Roovers <jer@gentoo.org>
+  +xf86-video-openchrome-0.2.904_p860.ebuild:
+  Version bump.
+
+*xf86-video-openchrome-0.2.904_p856 (13 Jul 2010)
+
+  13 Jul 2010; Jeroen Roovers <jer@gentoo.org>
+  -xf86-video-openchrome-0.2.904_p853.ebuild,
+  -xf86-video-openchrome-0.2.904_p854.ebuild,
+  +xf86-video-openchrome-0.2.904_p856.ebuild:
+  Version bump.
+
+*xf86-video-openchrome-0.2.904_p855 (24 Jun 2010)
+
+  24 Jun 2010; Jeroen Roovers <jer@gentoo.org>
+  -xf86-video-openchrome-0.2.904_p841.ebuild,
+  +xf86-video-openchrome-0.2.904_p855.ebuild:
+  Version bump.
+
+*xf86-video-openchrome-0.2.904_p854 (10 Jun 2010)
+
+  10 Jun 2010; Jeroen Roovers <jer@gentoo.org>
+  +xf86-video-openchrome-0.2.904_p854.ebuild:
+  Version bump.
+
+*xf86-video-openchrome-0.2.904_p853 (06 May 2010)
+
+  06 May 2010; Jeroen Roovers <jer@gentoo.org>
+  +xf86-video-openchrome-0.2.904_p853.ebuild:
+  Yet another svn snapshot.
+
+  06 May 2010; Jeroen Roovers <jer@gentoo.org>
+  xf86-video-openchrome-0.2.904_p841.ebuild:
+  Fix SRC_URI.
+
+*xf86-video-openchrome-0.2.904_p841 (22 Mar 2010)
+
+  22 Mar 2010; Jeroen Roovers <jer@gentoo.org>
+  +xf86-video-openchrome-0.2.904_p841.ebuild:
+  Version bump using an upstream snapshot (bug #298352).
+
+  21 Mar 2010; Jeroen Roovers <jer@gentoo.org>
+  -xf86-video-openchrome-0.2.904-r1.ebuild,
+  -files/xf86-video-openchrome-0.2.904-libdrm-2.4.17.patch:
+  Remove faulty revision bump and patch (bug #298352).
+
+*xf86-video-openchrome-0.2.904-r1 (21 Mar 2010)
+
+  21 Mar 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-openchrome-0.2.904-r1.ebuild,
+  +files/xf86-video-openchrome-0.2.904-libdrm-2.4.17.patch:
+  Patch for bug #298352
+
+  14 Nov 2009; Markus Meier <maekke@gentoo.org>
+  xf86-video-openchrome-0.2.904.ebuild:
+  amd64/x86 stable, bug #292702
+
+*xf86-video-openchrome-0.2.904 (09 Oct 2009)
+
+  09 Oct 2009; Jeroen Roovers <jer@gentoo.org>
+  +xf86-video-openchrome-0.2.904.ebuild,
+  -xf86-video-openchrome-20090907.ebuild:
+  Version bump. Remove old.
+
+  07 Sep 2009; Jeroen Roovers <jer@gentoo.org>
+  -xf86-video-openchrome-0.2.902.ebuild:
+  Remove old.
+
+*xf86-video-openchrome-20090907 (07 Sep 2009)
+
+  07 Sep 2009; Jeroen Roovers <jer@gentoo.org>
+  +xf86-video-openchrome-20090907.ebuild:
+  Version bump, svn revision 782.
+
+  04 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  xf86-video-openchrome-0.2.902.ebuild,
+  xf86-video-openchrome-0.2.903.ebuild:
+  Move use_ functions out of global scope.
+
+  26 Nov 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-openchrome-0.2.902.ebuild,
+  xf86-video-openchrome-0.2.903.ebuild:
+  The USE=dri check is handled in x-modular.eclass now so it's not
+  duplicated everywhere.
+
+  29 Oct 2008; Markus Meier <maekke@gentoo.org>
+  xf86-video-openchrome-0.2.903.ebuild:
+  amd64/x86 stable, bug #244474
+
+  27 Oct 2008; Jeroen Roovers <jer@gentoo.org>
+  -xf86-video-openchrome-0.2.901.ebuild:
+  Remove old.
+
+  05 Oct 2008; Rémi Cardona <remi@gentoo.org>
+  xf86-video-openchrome-0.2.901.ebuild,
+  xf86-video-openchrome-0.2.902.ebuild,
+  xf86-video-openchrome-0.2.903.ebuild:
+  add missing dep on randrproto (fixes bug #239660)
+
+  21 Sep 2008; Jeroen Roovers <jer@gentoo.org>
+  -xf86-video-openchrome-9999.ebuild:
+  Removed.
+
+*xf86-video-openchrome-9999 (16 Sep 2008)
+
+  16 Sep 2008; Jeroen Roovers <jer@gentoo.org>
+  +xf86-video-openchrome-9999.ebuild:
+  Add live ebuild.
+
+  15 Sep 2008; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Remove x11 as herd. Add myself as maintainer (bug #235435).
+
+*xf86-video-openchrome-0.2.903 (03 Sep 2008)
+
+  03 Sep 2008; Jeroen Roovers <jer@gentoo.org>
+  +xf86-video-openchrome-0.2.903.ebuild:
+  Version bump thanks to alpiturchi (bug #235435).
+
+  22 Jun 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  xf86-video-openchrome-0.2.902.ebuild:
+  amd64 stable, bug #227003
+
+  18 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  xf86-video-openchrome-0.2.902.ebuild:
+  stable x86, bug 227003
+
+*xf86-video-openchrome-0.2.902 (10 Apr 2008)
+
+  10 Apr 2008; Steve Dibb <beandog@gentoo.org>
+  +xf86-video-openchrome-0.2.902.ebuild:
+  Version bump
+
+  10 Apr 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-openchrome-0.2.901.ebuild:
+  Stabilize on amd64/x86 for 2008.0.
+
+  15 Mar 2008; Steve Dibb <beandog@gentoo.org>
+  xf86-video-openchrome-0.2.901.ebuild:
+  Fix use flags, add ~x86 (tsunam)
+
+*xf86-video-openchrome-0.2.901 (15 Mar 2008)
+
+  15 Mar 2008; Donnie Berkholz <dberkholz@gentoo.org>; +metadata.xml,
+  +xf86-video-openchrome-0.2.901.ebuild:
+  (#147425) Add openchrome driver, which supports newer Via cards. Ebuild
+  originally by Steve Dibb with modifications by me.

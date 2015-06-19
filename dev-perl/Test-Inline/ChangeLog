@@ -1,0 +1,310 @@
+# ChangeLog for dev-perl/Test-Inline
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Inline/ChangeLog,v 1.86 2015/01/18 17:40:07 zlogene Exp $
+
+  18 Jan 2015; Mikle Kolyada <zlogene@gentoo.org> Test-Inline-2.213.0-r1.ebuild:
+  x86 stable wrt bug #535234
+
+  17 Jan 2015; Agostino Sarubbo <ago@gentoo.org> Test-Inline-2.213.0-r1.ebuild:
+  Stable for ppc, wrt bug #535234
+
+  13 Jan 2015; Jeroen Roovers <jer@gentoo.org> Test-Inline-2.213.0-r1.ebuild:
+  Stable for HPPA (bug #535234).
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> Test-Inline-2.213.0-r1.ebuild:
+  Stable for amd64, wrt bug #535234
+
+*Test-Inline-2.213.0-r1 (24 Aug 2014)
+*Test-Inline-2.212.0-r1 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Test-Inline-2.212.0-r1.ebuild, +Test-Inline-2.213.0-r1.ebuild,
+  -Test-Inline-2.212.0.ebuild, -Test-Inline-2.213.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+*Test-Inline-2.213.0 (15 Aug 2013)
+
+  15 Aug 2013; Patrick Lauer <patrick@gentoo.org> +Test-Inline-2.213.0.ebuild:
+  Bump
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org> -Test-Inline-2.201.ebuild,
+  -Test-Inline-2.208.ebuild:
+  Cleanup
+
+  08 Dec 2012; Jeroen Roovers <jer@gentoo.org> Test-Inline-2.212.0.ebuild:
+  Stable for HPPA (bug #441254).
+
+  06 Dec 2012; Agostino Sarubbo <ago@gentoo.org> Test-Inline-2.212.0.ebuild:
+  Stable for ppc, wrt bug #441254
+
+  06 Dec 2012; <ago@gentoo.org> Test-Inline-2.212.0.ebuild:
+  Stable for x86, wrt bug #441254
+
+  06 Dec 2012; <ago@gentoo.org> Test-Inline-2.212.0.ebuild:
+  Stable for amd64, wrt bug #441254
+
+  08 Oct 2012; Anthony G. Basile <blueness@gentoo.org> Test-Inline-2.208.ebuild:
+  stable ppc, bug #436870
+
+  07 Oct 2012; Agostino Sarubbo <ago@gentoo.org> Test-Inline-2.208.ebuild:
+  Stable for amd64, wrt bug #436870
+
+  27 Aug 2012; Raúl Porcel <armin76@gentoo.org> Test-Inline-2.201.ebuild,
+  Test-Inline-2.208.ebuild, Test-Inline-2.212.0.ebuild:
+  Drop alpha keywords
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  19 Mar 2012; Raúl Porcel <armin76@gentoo.org> Test-Inline-2.201.ebuild,
+  Test-Inline-2.208.ebuild, Test-Inline-2.212.0.ebuild:
+  Drop ia64/sparc keywords
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Test-Inline-2.212.ebuild:
+  Cleanup
+
+*Test-Inline-2.212.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +Test-Inline-2.212.0.ebuild:
+  Change version scheme
+
+  29 Jul 2011; Torsten Veller <tove@gentoo.org> -Test-Inline-2.211.ebuild:
+  Cleanup
+
+*Test-Inline-2.212 (22 Nov 2010)
+
+  22 Nov 2010; Torsten Veller <tove@gentoo.org> +Test-Inline-2.212.ebuild:
+  Version bump
+
+  14 Jan 2010; Fabian Groffen <grobian@gentoo.org> Test-Inline-2.211.ebuild:
+  Transfer Prefix keywords
+
+  16 Jul 2009; Torsten Veller <tove@gentoo.org> -Test-Inline-2.209.ebuild,
+  -Test-Inline-2.210.ebuild:
+  Cleanup
+
+*Test-Inline-2.211 (15 Jul 2009)
+
+  15 Jul 2009; Torsten Veller <tove@gentoo.org> +Test-Inline-2.211.ebuild:
+  Version bump
+
+  02 Jul 2009; Jeroen Roovers <jer@gentoo.org> Test-Inline-2.208.ebuild:
+  Stable for HPPA too.
+
+*Test-Inline-2.210 (22 May 2009)
+
+  22 May 2009; Torsten Veller <tove@gentoo.org> +Test-Inline-2.210.ebuild:
+  Version bump
+
+*Test-Inline-2.209 (19 Apr 2009)
+
+  19 Apr 2009; Torsten Veller <tove@gentoo.org> +Test-Inline-2.209.ebuild:
+  Version bump
+
+  30 Sep 2008; Torsten Veller <tove@gentoo.org> -Test-Inline-2.103.ebuild,
+  -Test-Inline-2.105.ebuild:
+  Cleanup
+
+  17 Jul 2008; Raúl Porcel <armin76@gentoo.org> Test-Inline-2.208.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+  23 May 2008; Samuli Suominen <drac@gentoo.org> Test-Inline-2.208.ebuild:
+  ~amd64 wrt #219723
+
+  17 May 2008; nixnut <nixnut@gentoo.org> Test-Inline-2.208.ebuild:
+  Added ~ppc wrt bug 219723
+
+  29 Apr 2008; Jeroen Roovers <jer@gentoo.org> Test-Inline-2.208.ebuild:
+  Marked ~hppa (bug #219723).
+
+  29 Apr 2008; Ferris McCormick <fmccor@gentoo.org>
+  Test-Inline-2.208.ebuild:
+  Add ~sparc, all tests good.  Bug #219723.
+
+  29 Apr 2008; Raúl Porcel <armin76@gentoo.org> Test-Inline-2.208.ebuild:
+  Add ~alpha/~ia64 wrt #219723
+
+*Test-Inline-2.208 (29 Apr 2008)
+
+  29 Apr 2008; Torsten Veller <tove@gentoo.org> +Test-Inline-2.208.ebuild:
+  Version bump
+
+  19 Mar 2008; Jeroen Roovers <jer@gentoo.org> Test-Inline-2.201.ebuild:
+  Stable for HPPA too.
+
+  13 Jul 2007; Raúl Porcel <armin76@gentoo.org> Test-Inline-2.201.ebuild:
+  alpha/ia64/x86 stable
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Test-Inline-2.201.ebuild:
+  ppc stable
+
+  14 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Test-Inline-2.201.ebuild:
+  Marking sparc stable
+
+  09 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Test-Inline-2.201.ebuild:
+  Marking stable amd64
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> Test-Inline-2.105.ebuild:
+  Stable on x86, bug #169152.
+
+  23 Jan 2007; Jeroen Roovers <jer@gentoo.org> Test-Inline-2.201.ebuild:
+  Marked ~hppa (bug #163014).
+
+  23 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  Test-Inline-2.201.ebuild:
+  Add ~alpha + ~ia64 keywords.
+
+  21 Jan 2007; nixnut <nixnut@gentoo.org> Test-Inline-2.201.ebuild:
+  Added ~ppc wrt bug 163014
+
+*Test-Inline-2.201 (21 Jan 2007)
+
+  21 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  +Test-Inline-2.201.ebuild:
+  Version bump
+
+  08 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Test-Inline-2.105.ebuild:
+  marking sparc stable
+
+  08 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Test-Inline-2.105.ebuild:
+  Marking amd64 stable
+
+*Test-Inline-2.105 (06 Nov 2006)
+
+  06 Nov 2006; Michael Cummings <mcummings@gentoo.org>
+  +Test-Inline-2.105.ebuild:
+  New dep for Test-Class - requires newer version than shipped with perl
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Test-Inline-2.103.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  22 Mar 2006; Chris White <chriswhite@gentoo.org>
+  -Test-Inline-0.15-r1.ebuild, -Test-Inline-0.16.ebuild,
+  Test-Inline-2.103.ebuild:
+  amd64 stable for 2.103. Removed older ebuilds.
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  Test-Inline-0.15-r1.ebuild, Test-Inline-0.16.ebuild,
+  Test-Inline-2.103.ebuild:
+  Virtuals for perl-core
+
+  10 Feb 2006; Aron Griffis <agriffis@gentoo.org> Test-Inline-2.103.ebuild:
+  Mark 2.103 stable on alpha
+
+  06 Feb 2006; Aron Griffis <agriffis@gentoo.org> Test-Inline-2.103.ebuild:
+  Mark 2.103 stable on ia64
+
+  27 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  Test-Inline-2.103.ebuild:
+  Stable on ppc.
+
+  18 Jan 2006; Guy Martin <gmsoft@gentoo.org> Test-Inline-2.103.ebuild:
+  Stable on hppa.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Test-Inline-2.103.ebuild:
+  marking sparc x86 stable
+
+  03 Jan 2006; <plasmaroo@gentoo.org> Test-Inline-2.103.ebuild:
+  Mark ~ia64; bug #113367.
+
+  12 Dec 2005; Luis Medinas <metalgod@gentoo.org> Test-Inline-2.103.ebuild:
+  Added ~amd64 keyword. See bug #113367.
+
+  02 Dec 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  Test-Inline-2.103.ebuild:
+  re-added ~alpha wrt bug #113367
+
+  02 Dec 2005; Joseph Jezak <josejx@gentoo.org> Test-Inline-2.103.ebuild:
+  Marked ~ppc for bug #113367.
+
+*Test-Inline-2.103 (23 Nov 2005)
+
+  23 Nov 2005; Michael Cummings <mcummings@gentoo.org>
+  +Test-Inline-2.103.ebuild:
+  Version bump, bug 113367 for arch keywords to return
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> Test-Inline-0.16.ebuild:
+  Mark 0.16 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> Test-Inline-0.16.ebuild:
+  add ~ia64
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Test-Inline-0.16.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Test-Inline-0.15-r1.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Test-Inline-0.16.ebuild:
+  dev-perl/Test-Harness => perl-core/Test-Harness migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Test-Inline-0.16.ebuild:
+  dev-perl/Memoize => perl-core/Memoize migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Test-Inline-0.15-r1.ebuild:
+  dev-perl/Memoize => perl-core/Memoize migration
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> Test-Inline-0.16.ebuild:
+  Stable on amd64.
+
+  01 May 2005; Guy Martin <gmsoft@gentoo.org> Test-Inline-0.16.ebuild:
+  Stable on hppa.
+
+  30 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Test-Inline-0.16.ebuild:
+  Stable on ppc.
+
+  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  Test-Inline-0.16.ebuild:
+  Stable on alpha.
+
+  29 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Test-Inline-0.16.ebuild:
+  Stable on sparc
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Test-Inline-0.15.ebuild, Test-Inline-0.16.ebuild:
+  Cleaning for mirror syntax
+
+*Test-Inline-0.16 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  Test-Inline-0.16.ebuild:
+  new version on cpan
+
+*Test-Inline-0.15-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*Test-Inline-0.15 (28 Jun 2002)
+
+  12 Sep 2002; <mcummings@gentoo.org>  Test-Inline-0.15.ebuild :
+  Corrected missing dep - thanks to Tristen Henderson, bug 7730
+
+  1 Aug 2002; Calum Selkirk <cselkirk@gentoo.org> Test-Inline-0.15.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  28 Jun 2002; Seemant Kulleen <seemant@gentoo.org> Test-Inline-0.15.ebuild
+  files/digest-Test-Inline-0.15 :
+
+  New package, courtesy of: rac@intrigue.com (Robert Coie) in bug #4183

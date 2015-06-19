@@ -1,0 +1,312 @@
+# ChangeLog for dev-games/simgear
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-games/simgear/ChangeLog,v 1.73 2015/05/14 22:43:12 reavertm Exp $
+
+  14 May 2015; Maciej Mrozowski <reavertm@gentoo.org>
+  -files/simgear-2.8.0-unbundle-expat.patch, -simgear-3.0.0.ebuild,
+  -simgear-3.2.0.ebuild:
+  Remove old
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> simgear-3.4.0.ebuild:
+  Stable for x86, wrt bug #544714
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> simgear-3.4.0.ebuild:
+  Stable for amd64, wrt bug #544714
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> simgear-3.2.0.ebuild:
+  Stable for x86, wrt bug #541288
+
+  06 Mar 2015; Mikle Kolyada <zlogene@gentoo.org> simgear-3.2.0.ebuild:
+  amd64 stable wrt bug #541288
+
+*simgear-3.4.0 (25 Feb 2015)
+
+  25 Feb 2015; Maciej Mrozowski <reavertm@gentoo.org> +simgear-3.4.0.ebuild,
+  simgear-3.0.0.ebuild:
+  Version bump.
+
+*simgear-3.2.0 (11 Jan 2015)
+
+  11 Jan 2015; Maciej Mrozowski <reavertm@gentoo.org> +simgear-3.2.0.ebuild:
+  Version bump.
+
+  12 Aug 2014; Maciej Mrozowski <reavertm@gentoo.org> -simgear-2.10.0.ebuild,
+  -simgear-2.12.1.ebuild, -simgear-2.8.0-r1.ebuild:
+  Removed versions affected by bug 468106. Dropping to ~ppc.
+
+  07 Jun 2014; Agostino Sarubbo <ago@gentoo.org> simgear-3.0.0.ebuild:
+  Stable for x86, wrt bug #505912
+
+  09 May 2014; Chema Alonso <nimiux@gentoo.org> simgear-3.0.0.ebuild:
+  Stable for amd64 wrt bug #505912
+
+*simgear-3.0.0 (27 Mar 2014)
+
+  27 Mar 2014; Maciej Mrozowski <reavertm@gentoo.org> +simgear-3.0.0.ebuild,
+  metadata.xml:
+  Version bump, bug 502246.
+
+*simgear-2.12.1 (12 Dec 2013)
+
+  12 Dec 2013; Maciej Mrozowski <reavertm@gentoo.org> +simgear-2.12.1.ebuild,
+  -simgear-2.12.0.ebuild:
+  Version bump, remove old.
+
+  07 Dec 2013; Pacho Ramos <pacho@gentoo.org> simgear-2.10.0.ebuild:
+  x86 stable, bug #488552
+
+  24 Nov 2013; Pacho Ramos <pacho@gentoo.org> simgear-2.10.0.ebuild:
+  amd64 stable, bug #488552
+
+*simgear-2.12.0 (23 Nov 2013)
+
+  23 Nov 2013; Maciej Mrozowski <reavertm@gentoo.org> +simgear-2.12.0.ebuild:
+  Version bump, bug 485932
+
+*simgear-2.10.0 (20 Feb 2013)
+
+  20 Feb 2013; Maciej Mrozowski <reavertm@gentoo.org> +simgear-2.10.0.ebuild,
+  -files/simgear-2.4.0-boost148.patch, -simgear-2.4.0.ebuild:
+  Version bump, bug 458202. Thanks to Christian Schmitt.
+
+  09 Dec 2012; Agostino Sarubbo <ago@gentoo.org> simgear-2.8.0-r1.ebuild:
+  Stable for ppc, wrt bug #425838
+
+  15 Oct 2012; Andreas Schuerch <nativemad@gentoo.org> simgear-2.8.0-r1.ebuild:
+  x86 stable, see bug 425838
+
+  22 Sep 2012; Agostino Sarubbo <ago@gentoo.org> simgear-2.8.0-r1.ebuild:
+  Stable for amd64, wrt bug #425838
+
+*simgear-2.8.0-r1 (21 Sep 2012)
+
+  21 Sep 2012; Maciej Mrozowski <reavertm@gentoo.org>
+  +files/simgear-2.8.0-unbundle-expat.patch, +simgear-2.8.0-r1.ebuild,
+  -files/simgear-2.8.0-underlinking.patch, -simgear-2.8.0.ebuild:
+  Unbundle expat, bug 253514. Drop obsolete patch.
+
+  31 Aug 2012; Maciej Mrozowski <reavertm@gentoo.org> simgear-2.8.0.ebuild:
+  Remove plib dependency, bug 433143.
+
+*simgear-2.8.0 (27 Aug 2012)
+
+  27 Aug 2012; Maciej Mrozowski <reavertm@gentoo.org>
+  +files/simgear-2.8.0-underlinking.patch, +simgear-2.8.0.ebuild,
+  -files/simgear-1.9.1-gcc44.patch, -simgear-1.9.1.ebuild,
+  -simgear-2.0.0.ebuild:
+  Version bump, bug 405281. Original ebuild by Julian Ospald.
+
+  10 Jul 2012; Michael Weber <xmw@gentoo.org> simgear-2.4.0.ebuild:
+  ppc stable (bug 405665)
+
+  09 Jul 2012; Michael Weber <xmw@gentoo.org>
+  +files/simgear-2.4.0-boost148.patch, simgear-2.4.0.ebuild:
+  Fix boost-1.48 compilation issue (bug 407433, c bou)
+
+  06 Apr 2012; Andreas Schuerch <nativemad@gentoo.org> simgear-2.4.0.ebuild:
+  x86 stable, see bug 405665
+
+  11 Mar 2012; Tony Vroon <chainsaw@gentoo.org> simgear-2.4.0.ebuild:
+  Marked stable on AMD64 based on arch testing by Maurizio "k01" Camisaschi &
+  Elijah "Armageddon" El Lazkani in bug #405665.
+
+*simgear-2.4.0 (16 Oct 2011)
+
+  16 Oct 2011; Maciej Mrozowski <reavertm@gentoo.org> +simgear-2.4.0.ebuild,
+  metadata.xml:
+  Version bump, bug 379617. Take over maintenance.
+
+  26 Feb 2011; Raúl Porcel <armin76@gentoo.org> simgear-1.9.1.ebuild,
+  simgear-2.0.0.ebuild:
+  Drop sparc keywords
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org> simgear-1.9.1.ebuild:
+  Marking simgear-1.9.1 ppc for bug 313613
+
+  24 Mar 2010; Tupone Alfredo <tupone@gentoo.org> simgear-2.0.0.ebuild:
+  Added jpeg-factory to configure. Bug #310769 by Ingo Krabbe
+
+  13 Mar 2010; Pacho Ramos <pacho@gentoo.org> simgear-1.9.1.ebuild:
+  amd64 stable, bug 307793
+
+*simgear-2.0.0 (03 Mar 2010)
+
+  03 Mar 2010; Tupone Alfredo <tupone@gentoo.org> +simgear-2.0.0.ebuild:
+  Version bump to 2.0.0
+
+  02 Mar 2010; Christian Faulhammer <fauli@gentoo.org> simgear-1.9.1.ebuild:
+  stable x86, bug 287539
+
+  20 May 2009; Alfredo Tupone <tupone@gentoo.org>
+  +files/simgear-1.9.1-gcc44.patch, simgear-1.9.1.ebuild:
+  Fix build with gcc-4.4.0 Bug #270116 by Victor Ostorga
+
+  20 Mar 2009; Joseph Jezak <josejx@gentoo.org> simgear-1.9.1.ebuild:
+  Marked ~ppc for bug #252202.
+
+*simgear-1.9.1 (03 Mar 2009)
+
+  03 Mar 2009; Alfredo Tupone <tupone@gentoo.org> +simgear-1.9.1.ebuild:
+  Version bump to 1.9.1 Bug #252202 by Hal Engel
+
+  24 Feb 2009; Joseph Jezak <josejx@gentoo.org> simgear-1.0.0.ebuild:
+  Marked ppc stable for bug #217505.
+
+  18 Nov 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/simgear-1.0.0-gcc44.patch, simgear-1.0.0.ebuild:
+  Small fix for gcc-4.4 compatibility
+
+  20 Sep 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  simgear-1.0.0.ebuild:
+  stable amd64, bug 217505
+
+  19 Sep 2008; Tupone Alfredo <tupone@gentoo.org>
+  +files/simgear-1.0.0-test.patch, simgear-1.0.0.ebuild:
+  Fix the test phase, unblocking Bug #217505
+
+  19 Sep 2008; Tupone Alfredo <tupone@gentoo.org>
+  +files/simgear-0.3.10-gcc43.patch, simgear-0.3.10.ebuild:
+  Fix compilation with gcc-4.3
+
+  07 Sep 2008; Markus Meier <maekke@gentoo.org> simgear-1.0.0.ebuild:
+  x86 stable, bug #217505
+
+*simgear-1.0.0 (19 Dec 2007)
+
+  19 Dec 2007; Tupone Alfredo <tupone@gentoo.org> +simgear-1.0.0.ebuild:
+  Version bump. Bug #202826 by Aniruddha
+
+  27 May 2007; nixnut <nixnut@gentoo.org> simgear-0.3.10.ebuild:
+  Stable on ppc wrt bug 164239
+
+  27 May 2007; Peter Weller <welp@gentoo.org> simgear-0.3.10.ebuild:
+  Stable on amd64 wrt bug 164239
+
+  23 May 2007; Andrej Kacian <ticho@gentoo.org> simgear-0.3.10.ebuild:
+  Stable on x86, bug #164239.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> simgear-0.3.9.ebuild,
+  simgear-0.3.10.ebuild:
+  Removing specific version of openal since the older CVS snapshot versions
+  have been removed from the tree for some time now.
+
+  17 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org> -simgear-0.3.6.ebuild,
+  -simgear-0.3.8.ebuild, simgear-0.3.9.ebuild:
+  Cleaned up older versions.
+
+  09 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org> simgear-0.3.6.ebuild,
+  simgear-0.3.8.ebuild, simgear-0.3.9.ebuild, simgear-0.3.10.ebuild:
+  Removing dependency on CVS snapshots for openal, to force users onto the new
+  0.0.8 version.
+
+  09 May 2006; Chris Gianelloni <wolf31o2@gentoo.org> simgear-0.3.6.ebuild,
+  simgear-0.3.8.ebuild, simgear-0.3.9.ebuild, simgear-0.3.10.ebuild:
+  First off, I would like to really, really apologise to anyone who looks at
+  these dependencies. It's ugly. I know it. However, this is actually correct
+  for the craziness in the tree with openal. At any rate, the idea is to fix
+  this now, then remove all of the openal ebuilds except 0.0.8, then revisit
+  this and clean up all of the extra cruft. Anyway, I apologise again. Enjoy.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-simgear-0.3.6,
+  files/digest-simgear-0.3.8, Manifest:
+  Fixing SHA256 digest, pass four
+
+*simgear-0.3.10 (08 Apr 2006)
+
+  08 Apr 2006; <Tupone@gentoo.org> +simgear-0.3.10.ebuild:
+  Version bump
+
+  04 Apr 2006; <Tupone@gentoo.org> +files/simgear-0.3.9-gcc41.patch,
+  simgear-0.3.9.ebuild:
+  gcc-4.1 fix, bug #127404 by Avuton Olrich
+
+*simgear-0.3.9 (07 Dec 2005)
+
+  07 Dec 2005; Seemant Kulleen <seemant@gentoo.org> +simgear-0.3.9.ebuild:
+  Version bump for upcoming flightgear bump. Thanks to: Mark Tomich in bug
+  #113651
+
+  21 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> simgear-0.3.8.ebuild:
+  Stable on ppc.
+
+  19 Apr 2005; Seemant Kulleen <seemant@gentoo.org> simgear-0.3.8.ebuild:
+  stable on x86
+
+  05 Feb 2005; Chris Gianelloni <wolf31o2@gentoo.org> simgear-0.3.6.ebuild,
+  simgear-0.3.8.ebuild:
+  Removing metakit and glut dependencies and closing bug #80882.
+
+*simgear-0.3.8 (04 Feb 2005)
+
+  04 Feb 2005; Chris Gianelloni <wolf31o2@gentoo.org> -simgear-0.3.5.ebuild,
+  -simgear-0.3.7.ebuild, +simgear-0.3.8.ebuild, -simgear-0.3.8_pre1.ebuild:
+  Updated to 0.3.8 final and resolving bug #78962.
+
+*simgear-0.3.8_pre1 (26 Dec 2004)
+
+  26 Dec 2004; Seemant Kulleen <seemant@gentoo.org> simgear-0.3.6.ebuild,
+  +simgear-0.3.8_pre1.ebuild:
+  version bump for flightgear-0.9.8_pre1, and moving 0.3.6 to stable for
+  flightgear-0.9.5
+
+  22 Oct 2004; Martin Holzer <mholzer@gentoo.org> simgear-0.3.6.ebuild:
+  adding forgotten depend
+
+*simgear-0.3.6 (21 Oct 2004)
+
+  21 Oct 2004; Seemant Kulleen <seemant@gentoo.org> -simgear-0.3.4.ebuild,
+  simgear-0.3.5.ebuild, +simgear-0.3.6.ebuild, +simgear-0.3.7.ebuild:
+  Two version bumps. Version 0.3.6 from: Alonso Schaich <AlonsoSchaich@gmx.de>
+  in bug #59001. This version is required for flightgear-0.9.5 which fixes
+  gcc-3.4 compile issues. Now, Version 0.3.7 is the newest upstream version
+  for flightgear-0.9.6. This version from: Adam Babcock
+  <ababcock@sympatico.ca> in bug #67809. Note that simgear-0.3.4 is removed
+  from portage now, and 0.3.5 moved to stable for x86.
+
+  18 Oct 2004; Luca Barbato <lu_zero@gentoo.org> simgear-0.3.5.ebuild:
+  Marked ppc, this version works with gcc-3.4.1
+
+  11 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> simgear-0.3.5.ebuild:
+  ~amd64 for bug #52454; tidy
+
+  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> simgear-0.3.4.ebuild,
+  simgear-0.3.5.ebuild:
+  Adding IUSE.
+
+  12 Apr 2004; Jason Wever <weeve@gentoo.org> simgear-0.3.5.ebuild:
+  Added ~sparc keyword.
+
+*simgear-0.3.5 (02 Apr 2004)
+
+  02 Apr 2004; Seemant Kulleen <seemant@gentoo.org> simgear-0.3.3.ebuild,
+  simgear-0.3.5.ebuild:
+  version bump. thanks to: Stefan Lesicnik <lists@lsd.za.com> in bug #46464
+
+*simgear-0.3.4 (27 Oct 2003)
+
+  27 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #32059.
+
+*simgear-0.3.3 (11 Jun 2003)
+
+  11 Jun 2003; Seemant Kulleen <seemant@gentoo.org> simgear-0.3.3.ebuild:
+  version bump. flightgear-0.9.2 -- thanks to roger <rogerxxmaillist@san.rr.com>
+  for the notification in bug #22568
+
+*simgear-0.3.1 (09 Dec 2002)
+
+  19 Feb 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog :
+  Note that Michael Pujos <pujos.michael@laposte.net> had submitted an
+  ebuild for this in the neglected bug #8167 :(
+
+  09 Feb 2003; Seemant Kulleen <seemant@gentoo.org> simgear-0.3.1.ebuild :
+  Added specifically that plib should be 1.6.0 or greater in DEPENDS.
+  Closes bug #15354 by Tyler Nielsen <tyler@mithander.com>
+
+  09 Dec 2002; Seemant Kulleen <seemant@gentoo.org> simgear-0.3.1.ebuild
+  ChangeLog files/digest-simgear-0.3.1 :
+  New package -- development libraries for simulation games.  Added as a
+  dependency for app-games/flightgear

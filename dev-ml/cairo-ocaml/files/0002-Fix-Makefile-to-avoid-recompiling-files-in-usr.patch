@@ -1,0 +1,27 @@
+From: Stephane Glondu <steph@glondu.net>
+Date: Tue, 2 Aug 2011 15:34:21 +0200
+Subject: Fix Makefile to avoid recompiling files in /usr
+
+The "-I /path/to/lablgtk2" option should not be used when calling
+ocamldep, otherwise files there are considered as possible targets by
+the build system.
+
+Signed-off-by: Stephane Glondu <steph@glondu.net>
+---
+ src/Makefile |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index 46a62f6..c9c64b7 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -117,7 +117,7 @@ clean :
+ 
+ .depend : $(wildcard *.ml *.mli)
+ 	@echo "making deps"
+-	@$(OCAMLDEP) $(if $(LABLGTKDIR),-I $(LABLGTKDIR)) $^ > $@
++	@$(OCAMLDEP) $^ > $@
+ 
+ -include .depend
+ -include .depend_c
+-- 

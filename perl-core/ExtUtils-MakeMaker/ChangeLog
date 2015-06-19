@@ -1,0 +1,308 @@
+# ChangeLog for perl-core/ExtUtils-MakeMaker
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/perl-core/ExtUtils-MakeMaker/ChangeLog,v 1.68 2015/06/05 20:19:30 dilfridge Exp $
+
+  05 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -ExtUtils-MakeMaker-6.820.0-r1.ebuild, -ExtUtils-MakeMaker-7.40.0.ebuild:
+  Remove old
+
+  28 Feb 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  ExtUtils-MakeMaker-7.40.0.ebuild:
+  Block separate perl-core/ExtUtils-Manifest package here since there is a file
+  collision, bug 541544
+
+*ExtUtils-MakeMaker-7.40.0-r1 (27 Feb 2015)
+
+  27 Feb 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +ExtUtils-MakeMaker-7.40.0-r1.ebuild:
+  Fix bug 539996 and bug 541544
+
+*ExtUtils-MakeMaker-7.40.0 (25 Feb 2015)
+
+  25 Feb 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +ExtUtils-MakeMaker-7.40.0.ebuild,
+  +files/7.04-delete_packlist_podlocal.patch:
+  Version bump, needed for dev-perl/Inline-C
+
+  08 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -ExtUtils-MakeMaker-6.640.0-r1.ebuild:
+  Remove old
+
+*ExtUtils-MakeMaker-6.820.0-r1 (26 Jul 2014)
+*ExtUtils-MakeMaker-6.640.0-r1 (26 Jul 2014)
+
+  26 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +ExtUtils-MakeMaker-6.640.0-r1.ebuild, +ExtUtils-MakeMaker-6.820.0-r1.ebuild,
+  -ExtUtils-MakeMaker-6.640.0.ebuild, -ExtUtils-MakeMaker-6.820.0.ebuild:
+  EAPI bump
+
+  06 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -ExtUtils-MakeMaker-6.56-r1.ebuild, -ExtUtils-MakeMaker-6.580.0.ebuild,
+  -ExtUtils-MakeMaker-6.590.0.ebuild, -ExtUtils-MakeMaker-6.620.0.ebuild,
+  -ExtUtils-MakeMaker-6.620.0-r1.ebuild, -ExtUtils-MakeMaker-6.720.0.ebuild,
+  -ExtUtils-MakeMaker-6.740.0.ebuild:
+  Remove old
+
+  02 Feb 2014; Mike Frysinger <vapier@gentoo.org>
+  ExtUtils-MakeMaker-6.640.0.ebuild, ExtUtils-MakeMaker-6.720.0.ebuild,
+  ExtUtils-MakeMaker-6.740.0.ebuild, ExtUtils-MakeMaker-6.820.0.ebuild:
+  Add m68k love.
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  ExtUtils-MakeMaker-6.56-r1.ebuild, ExtUtils-MakeMaker-6.580.0.ebuild,
+  ExtUtils-MakeMaker-6.590.0.ebuild, ExtUtils-MakeMaker-6.620.0-r1.ebuild,
+  ExtUtils-MakeMaker-6.620.0.ebuild:
+  Add arm64 love.
+
+  19 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  ExtUtils-MakeMaker-6.640.0.ebuild, ExtUtils-MakeMaker-6.720.0.ebuild,
+  ExtUtils-MakeMaker-6.740.0.ebuild, ExtUtils-MakeMaker-6.820.0.ebuild:
+  Add arm64 love.
+
+  17 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  ExtUtils-MakeMaker-6.56-r1.ebuild:
+  Mark sh stable.
+
+  25 Nov 2013;  <civil@gentoo.org> +files/6.82-delete_packlist_podlocal.patch,
+  ExtUtils-MakeMaker-6.820.0.ebuild:
+  Add new version of patch. Fixes #484294
+
+*ExtUtils-MakeMaker-6.820.0 (25 Nov 2013)
+
+  25 Nov 2013;  <civil@gentoo.org> +ExtUtils-MakeMaker-6.820.0.ebuild:
+  Version bump. Bug: #492440
+
+*ExtUtils-MakeMaker-6.740.0 (05 Sep 2013)
+
+  05 Sep 2013; Patrick Lauer <patrick@gentoo.org>
+  +ExtUtils-MakeMaker-6.740.0.ebuild:
+  Bump
+
+*ExtUtils-MakeMaker-6.720.0 (14 Aug 2013)
+
+  14 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +ExtUtils-MakeMaker-6.720.0.ebuild:
+  Bump
+
+  20 Apr 2013; Matt Turner <mattst88@gentoo.org>
+  ExtUtils-MakeMaker-6.640.0.ebuild:
+  Added ~mips.
+
+  16 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-MakeMaker-6.640.0.ebuild:
+  Stable for ppc64, wrt bug #456568
+
+  02 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-MakeMaker-6.640.0.ebuild:
+  Stable for sh, wrt bug #458122
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-MakeMaker-6.640.0.ebuild:
+  Stable for sparc, wrt bug #458122
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-MakeMaker-6.640.0.ebuild:
+  Stable for ia64, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-MakeMaker-6.640.0.ebuild:
+  Stable for arm, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-MakeMaker-6.640.0.ebuild:
+  Stable for s390, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-MakeMaker-6.640.0.ebuild:
+  Stable for alpha, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-MakeMaker-6.640.0.ebuild:
+  Stable for hppa, wrt bug #458122
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org>
+  ExtUtils-MakeMaker-6.640.0.ebuild:
+  Add ~arm-linux keyword.
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-MakeMaker-6.640.0.ebuild:
+  Stable for ppc, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-MakeMaker-6.640.0.ebuild:
+  Stable for x86, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-MakeMaker-6.640.0.ebuild:
+  Stable for amd64, wrt bug #458122
+
+*ExtUtils-MakeMaker-6.640.0 (26 Dec 2012)
+
+  26 Dec 2012; Torsten Veller <tove@gentoo.org>
+  +ExtUtils-MakeMaker-6.640.0.ebuild:
+  Version bump
+
+  09 Sep 2012; Raúl Porcel <armin76@gentoo.org>
+  ExtUtils-MakeMaker-6.620.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #418803
+
+  22 Aug 2012; Michael Weber <xmw@gentoo.org> ExtUtils-MakeMaker-6.620.0.ebuild:
+  ppc stable (bug 418803)
+
+  05 Aug 2012; Markus Meier <maekke@gentoo.org>
+  ExtUtils-MakeMaker-6.620.0.ebuild:
+  arm stable, bug #418803
+
+  02 Aug 2012; Jeroen Roovers <jer@gentoo.org>
+  ExtUtils-MakeMaker-6.620.0.ebuild:
+  Stable for HPPA (bug #418803).
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*ExtUtils-MakeMaker-6.620.0-r1 (29 May 2012)
+
+  29 May 2012; Torsten Veller <tove@gentoo.org>
+  +files/6.62-delete_packlist_podlocal.patch,
+  +ExtUtils-MakeMaker-6.620.0-r1.ebuild:
+  Create perllocal.pod for modules in site in INSTALLSITEARCH
+
+  28 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  ExtUtils-MakeMaker-6.620.0.ebuild:
+  keyword ~amd64-fbsd
+
+  07 Apr 2012; Markus Meier <maekke@gentoo.org>
+  ExtUtils-MakeMaker-6.620.0.ebuild:
+  x86 stable, bug #395297
+
+  06 Apr 2012; Agostino Sarubbo <ago@gentoo.org>
+  ExtUtils-MakeMaker-6.620.0.ebuild:
+  Stable for amd64, wrt bug #395297
+
+  24 Mar 2012; Fabian Groffen <grobian@gentoo.org>
+  ExtUtils-MakeMaker-6.620.0.ebuild:
+  Add Prefix keywords
+
+  14 Feb 2012; Alexis Ballier <aballier@gentoo.org>
+  ExtUtils-MakeMaker-6.620.0.ebuild:
+  keyword ~x86-fbsd
+
+  04 Feb 2012; Raúl Porcel <armin76@gentoo.org>
+  ExtUtils-MakeMaker-6.56-r1.ebuild, ExtUtils-MakeMaker-6.580.0.ebuild,
+  ExtUtils-MakeMaker-6.590.0.ebuild, ExtUtils-MakeMaker-6.620.0.ebuild:
+  Add ~arm/~s390/~sh
+
+*ExtUtils-MakeMaker-6.620.0 (01 Feb 2012)
+
+  01 Feb 2012; Torsten Veller <tove@gentoo.org>
+  +ExtUtils-MakeMaker-6.620.0.ebuild:
+  Version bump
+
+*ExtUtils-MakeMaker-6.590.0 (06 Aug 2011)
+
+  06 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +ExtUtils-MakeMaker-6.590.0.ebuild:
+  Version bump
+
+  26 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  ExtUtils-MakeMaker-6.580.0.ebuild:
+  Marked ~ppc/~ppc64 wrt #357599
+
+  11 Jul 2011; Torsten Veller <tove@gentoo.org>
+  ExtUtils-MakeMaker-6.580.0.ebuild:
+  Move CPAN-Meta and Parse-CPAN-Meta to PDEPEND to avoid circular dependencies
+  (#374743)
+
+*ExtUtils-MakeMaker-6.580.0 (09 Jul 2011)
+
+  09 Jul 2011; Torsten Veller <tove@gentoo.org> +files/6.58-RUNPATH.patch,
+  +files/6.58-delete_packlist_podlocal.patch,
+  +ExtUtils-MakeMaker-6.580.0.ebuild:
+  Version bump
+
+  17 Jan 2011; Torsten Veller <tove@gentoo.org>
+  -ExtUtils-MakeMaker-6.56.ebuild:
+  Cleanup
+
+  13 Sep 2010; Joseph Jezak <josejx@gentoo.org>
+  ExtUtils-MakeMaker-6.56-r1.ebuild:
+  Marked ppc stable for bug #330387.
+
+  28 Aug 2010; Raúl Porcel <armin76@gentoo.org>
+  ExtUtils-MakeMaker-6.56-r1.ebuild:
+  alpha/ia64/sparc stable wrt #330387
+
+  31 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  ExtUtils-MakeMaker-6.56-r1.ebuild:
+  Stable on amd64 wrt bug #330387
+
+  30 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  ExtUtils-MakeMaker-6.56-r1.ebuild:
+  stable x86, bug 330387
+
+  29 Jul 2010; Jeroen Roovers <jer@gentoo.org>
+  ExtUtils-MakeMaker-6.56-r1.ebuild:
+  Stable for HPPA (bug #330387).
+
+*ExtUtils-MakeMaker-6.56-r1 (16 Jun 2010)
+
+  16 Jun 2010; Torsten Veller <tove@gentoo.org>
+  +files/6.56-delete_packlist_podlocal.patch,
+  +ExtUtils-MakeMaker-6.56-r1.ebuild:
+  Don't install .packlist or perllocal.pod for perl or vendor
+
+  14 May 2010; Jeroen Roovers <jer@gentoo.org>
+  ExtUtils-MakeMaker-6.56.ebuild:
+  Marked ~hppa (bug #317877).
+
+  12 May 2010; Joseph Jezak <josejx@gentoo.org>
+  ExtUtils-MakeMaker-6.56.ebuild:
+  Marked ~ppc for bug #317877.
+
+  09 May 2010; Raúl Porcel <armin76@gentoo.org>
+  ExtUtils-MakeMaker-6.56.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #317877
+
+  09 May 2010; Torsten Veller <tove@gentoo.org>
+  ExtUtils-MakeMaker-6.56.ebuild:
+  Fix dependencies in RDEPEND
+
+  30 Apr 2010; Torsten Veller <tove@gentoo.org> +files/RUNPATH-6.54.patch,
+  +ExtUtils-MakeMaker-6.56.ebuild, +metadata.xml:
+  Import from perl-experimental
+
+*ExtUtils-MakeMaker-6.56 (21 Dec 2009)
+
+  21 Dec 2009; Torsten Veller <tove@gentoo.org>
+  +ExtUtils-MakeMaker-6.56.ebuild:
+  Version bump
+
+*ExtUtils-MakeMaker-6.54-r1 (15 Sep 2009)
+
+  15 Sep 2009; Torsten Veller <tove@gentoo.org>
+  -ExtUtils-MakeMaker-6.50-r1.ebuild, -ExtUtils-MakeMaker-6.54.ebuild,
+  +ExtUtils-MakeMaker-6.54-r1.ebuild, -files/RUNPATH.patch:
+  Depend on ExtUtils-Command, -Manifest, -Install
+
+  19 Aug 2009; Kent Fredric <kentfredric@gmail.com>
+  ExtUtils-MakeMaker-6.54.ebuild, +files/RUNPATH-6.54.patch:
+  Applied RUNPATH patch
+
+*ExtUtils-MakeMaker-6.54 (19 Aug 2009)
+
+  19 Aug 2009; Michele Beltrame <m@cattlegrid.info>
+  +ExtUtils-MakeMaker-6.54.ebuild:
+  Bump
+
+*ExtUtils-MakeMaker-6.50-r1 (27 May 2009)
+
+  27 May 2009; Torsten Veller <tove@gentoo.org>
+  -ExtUtils-MakeMaker-6.50.ebuild, +ExtUtils-MakeMaker-6.50-r1.ebuild,
+  +files/RUNPATH.patch:
+  Add runpath patch from dev-lang/perl
+
+*ExtUtils-MakeMaker-6.50 (23 May 2009)
+
+  23 May 2009; Torsten Veller <tove@gentoo.org>
+  +ExtUtils-MakeMaker-6.50.ebuild, +metadata.xml:
+  Add perl-core/ExtUtils-MakeMaker-6.50

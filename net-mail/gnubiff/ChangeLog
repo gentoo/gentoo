@@ -1,0 +1,217 @@
+# ChangeLog for net-mail/gnubiff
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/gnubiff/ChangeLog,v 1.48 2014/11/13 12:10:00 pacho Exp $
+
+  13 Nov 2014; Pacho Ramos <pacho@gentoo.org>
+  -files/gnubiff-2.2.13-fix-nls.patch, -files/gnubiff-2.2.13-gold.patch,
+  -gnubiff-2.2.13-r2.ebuild, -gnubiff-2.2.13-r3.ebuild,
+  -gnubiff-2.2.15-r1.ebuild, -gnubiff-2.2.15.ebuild:
+  Drop old (#508854)
+
+*gnubiff-2.2.15-r2 (22 Jun 2014)
+
+  22 Jun 2014; Pacho Ramos <pacho@gentoo.org> +gnubiff-2.2.15-r2.ebuild:
+  Looks like, for some reason, panel wasn't finally disabled
+
+  17 Jun 2014; Pacho Ramos <pacho@gentoo.org> gnubiff-2.2.15-r1.ebuild:
+  amd64 stable, bug #510664
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gnubiff-2.2.15-r1.ebuild:
+  x86 stable wrt bug #510664
+
+*gnubiff-2.2.15-r1 (18 May 2014)
+
+  18 May 2014; Pacho Ramos <pacho@gentoo.org> +gnubiff-2.2.15-r1.ebuild:
+  Drop support for gnome-panel (#508854)
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> gnubiff-2.2.15.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> gnubiff-2.2.15.ebuild:
+  amd64 stable, bug #478252
+
+  15 Feb 2013; Eray Aslan <eras@gentoo.org>
+  +files/gnubiff-2.2.15-underlink.patch, gnubiff-2.2.15.ebuild:
+  Fix underlinking - bug #456302
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> gnubiff-2.2.13-r2.ebuild,
+  gnubiff-2.2.13-r3.ebuild, gnubiff-2.2.15.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*gnubiff-2.2.15 (05 Mar 2012)
+
+  05 Mar 2012; Eray Aslan <eras@gentoo.org> +gnubiff-2.2.15.ebuild,
+  +files/gnubiff-2.2.15-fix-nls.patch, +files/gnubiff-2.2.15-gold.patch:
+  version bump
+
+*gnubiff-2.2.13-r3 (16 Jan 2012)
+
+  16 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +gnubiff-2.2.13-r3.ebuild:
+  Remove USE="gnome" and always pass --disable-gnome to avoid pulling in
+  deprecated version of gnome-panel.
+
+  04 Dec 2011; Tim Harder <radhermit@gentoo.org> -gnubiff-2.2.13-r1.ebuild:
+  Remove old.
+
+  04 Dec 2011; Raúl Porcel <armin76@gentoo.org> gnubiff-2.2.13-r1.ebuild,
+  gnubiff-2.2.13-r2.ebuild:
+  Drop alpha/ia64 keywords
+
+  25 Nov 2011; Markos Chandras <hwoarang@gentoo.org> gnubiff-2.2.13-r2.ebuild:
+  Stable on amd64 wrt bug #391209
+
+  22 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gnubiff-2.2.13-r2.ebuild:
+  x86 stable wrt bug #391209
+
+*gnubiff-2.2.13-r2 (04 Jun 2011)
+
+  04 Jun 2011; Eray Aslan <eras@gentoo.org> +gnubiff-2.2.13-r2.ebuild,
+  +files/gnubiff-2.2.13-gold.patch:
+  Fix linking with gold - bug #369563. EAPI bump
+
+  23 Mar 2011; Tim Harder <radhermit@gentoo.org> gnubiff-2.2.13-r1.ebuild:
+  Use slot dependency for gtk+.
+
+  08 Dec 2010; Pacho Ramos <pacho@gentoo.org> gnubiff-2.2.13-r1.ebuild:
+  Needs gnome-panel with bonobo support (with Tim Harder permission, bug
+  #348179).
+
+  24 Oct 2010; Tim Harder <radhermit@gentoo.org> -gnubiff-2.2.10.ebuild,
+  -files/gnubiff-2.2.10-gcc43.patch:
+  Remove old.
+
+  23 Oct 2010; Raúl Porcel <armin76@gentoo.org> gnubiff-2.2.13-r1.ebuild:
+  alpha/ia64 stable wrt #339284
+
+  05 Oct 2010; Markus Meier <maekke@gentoo.org> gnubiff-2.2.13-r1.ebuild:
+  x86 stable, bug #339284
+
+  04 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  gnubiff-2.2.13-r1.ebuild:
+  Stable on amd64 wrt bug #339284
+
+*gnubiff-2.2.13-r1 (02 Oct 2010)
+
+  02 Oct 2010; Tim Harder <radhermit@gentoo.org> -gnubiff-2.2.13.ebuild,
+  +gnubiff-2.2.13-r1.ebuild, +files/gnubiff-2.2.13-fix-nls.patch:
+  Revision bump and remove old. Fix compile errors when the nls USE flag is
+  not enabled (fixes bug #339398) and add gnome-base/gnome-panel dependency
+  for GNOME support.
+
+*gnubiff-2.2.13 (29 Aug 2010)
+
+  29 Aug 2010; Tim Harder <radhermit@gentoo.org> -gnubiff-2.2.11.ebuild,
+  +gnubiff-2.2.13.ebuild:
+  Version bump for bug #301196, thanks to Geert Vanhaute for reporting.
+  Remove buggy version, closes bugs #272095 and #333809.
+
+*gnubiff-2.2.11 (22 May 2009)
+
+  22 May 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  -gnubiff-2.1.3.ebuild, +gnubiff-2.2.11.ebuild:
+  Version bump, #268503
+
+  14 Feb 2009; Markus Meier <maekke@gentoo.org> gnubiff-2.2.10.ebuild:
+  amd64/x86 stable, bug #245679
+
+  07 Feb 2009; Tobias Klausmann <klausman@gentoo.org> gnubiff-2.2.10.ebuild:
+  Stable on alpha, bug #245679
+
+  21 Oct 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/gnubiff-2.2.10-gcc43.patch, gnubiff-2.2.10.ebuild:
+  Fix compilation with gcc-4.3. Bug 235320. Thanks to A. Frederick
+  Christensen <christendoc@nosocomia.com>.
+
+  10 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  gnubiff-2.2.10.ebuild:
+  Fix pkgconfig dep (#205440)
+
+*gnubiff-2.2.10 (10 Jun 2008)
+
+  10 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  -gnubiff-2.1.9.ebuild, -gnubiff-2.2.1.ebuild, -gnubiff-2.2.2.ebuild,
+  -gnubiff-2.2.5.ebuild, +gnubiff-2.2.10.ebuild:
+  cleanup, version bump (#225209)
+
+  14 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml,
+  gnubiff-2.1.3.ebuild, gnubiff-2.1.9.ebuild, gnubiff-2.2.1.ebuild,
+  gnubiff-2.2.2.ebuild, gnubiff-2.2.5.ebuild:
+  Removing Masatomo Nakano (nakano, #200340) from metadata.xml. Fixing the
+  minor syntax errors.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; gnubiff-2.1.9.ebuild,
+  gnubiff-2.2.1.ebuild, gnubiff-2.2.2.ebuild, gnubiff-2.2.5.ebuild:
+  Drop virtual/x11 references.
+
+*gnubiff-2.2.5 (02 Mar 2007)
+
+  02 Mar 2007; Masatomo Nakano <nakano@gentoo.org> +gnubiff-2.2.5.ebuild:
+  Version bump.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  21 Oct 2006; Aron Griffis <agriffis@gentoo.org> gnubiff-2.1.3.ebuild:
+  Mark 2.1.3 stable on alpha
+
+*gnubiff-2.2.2 (02 Oct 2006)
+
+  02 Oct 2006; Aron Griffis <agriffis@gentoo.org> +gnubiff-2.2.2.ebuild:
+  Bump to 2.2.2 (from 2.2.1)
+
+  02 Oct 2006; Aron Griffis <agriffis@gentoo.org> gnubiff-2.1.9.ebuild:
+  Update 2.1.9 ebuild to include fixes from 2.2.1 ebuild, and fix
+  password-saving support #133853
+
+*gnubiff-2.2.1 (02 Oct 2006)
+
+  02 Oct 2006; Aron Griffis <agriffis@gentoo.org> gnubiff-2.1.9.ebuild,
+  +gnubiff-2.2.1.ebuild:
+  Bump to 2.2.1
+
+  21 Mar 2006; Daniel Drake <dsd@gentoo.org> gnubiff-2.1.3.ebuild,
+  gnubiff-2.1.9.ebuild:
+  Depend on virtual/fam
+
+*gnubiff-2.1.9 (30 Jan 2006)
+
+  30 Jan 2006; Aron Griffis <agriffis@gentoo.org> -gnubiff-2.1.1.ebuild,
+  gnubiff-2.1.3.ebuild, +gnubiff-2.1.9.ebuild:
+  Bump to 2.1.9 (from 2.1.3) #107359
+  Add app-admin/fam rdep to 2.1.3 #101832
+  Remove 2.1.1
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> gnubiff-2.1.3.ebuild:
+  Mark 2.1.3 ~alpha
+
+  27 Sep 2005; Luis Medinas <metalgod@gentoo.org> gnubiff-2.1.3.ebuild:
+  Added ~amd64 keyword. Closes bug #107280.
+
+  06 May 2005; Masatomo Nakano <nakano@gentoo.org> gnubiff-2.1.3.ebuild:
+  Marked stable on x86.
+
+*gnubiff-2.1.3 (08 Apr 2005)
+
+  08 Apr 2005; Masatomo Nakano <nakano@gentoo.org> +gnubiff-2.1.3.ebuild:
+  Version bump.
+
+  12 Mar 2005; Masatomo Nakano <nakano@gentoo.org> gnubiff-2.1.1.ebuild:
+  Added libglade to DEPEND.
+
+*gnubiff-2.0.2 (10 Mar 2005)
+
+  10 Mar 2005; Masatomo Nakano <nakano@gentoo.org> -gnubiff-2.0.2.ebuild:
+  Remove old ebuild.
+
+*gnubiff-2.1.1 (07 Mar 2005)
+
+  07 Mar 2005; Masatomo Nakano <nakano@gentoo.org> metadata.xml,
+  +gnubiff-2.1.1.ebuild:
+  version bump
+
+  05 Nov 2004; Andrej Kacian <ticho@gentoo.org> :
+  Initial import, closes #39429. Ebuild submitted by Andreas Waschinski
+  <wascha@web.de>.

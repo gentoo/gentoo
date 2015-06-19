@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=fftw? ( sci-libs/fftw:3.0 ) ncurses? ( >=sys-libs/ncurses-5 ) ssl? ( dev-libs/openssl ) ncurses? ( virtual/pkgconfig )
+DESCRIPTION=http protocol ping-like program
+EAPI=5
+HOMEPAGE=http://www.vanheusden.com/httping/
+IUSE=debug fftw linguas_nl ncurses ssl tfo
+KEYWORDS=amd64 hppa ~mips ~ppc ppc64 ~sparc x86
+LICENSE=GPL-2
+RDEPEND=fftw? ( sci-libs/fftw:3.0 ) ncurses? ( >=sys-libs/ncurses-5 ) ssl? ( dev-libs/openssl )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.vanheusden.com/httping/httping-2.4.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=0cd8bc64a806e4b82ec9aab09ceed3e0

@@ -1,0 +1,229 @@
+# ChangeLog for dev-lang/tuprolog
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/tuprolog/ChangeLog,v 1.55 2015/01/11 14:11:56 keri Exp $
+
+*tuprolog-2.9.0 (11 Jan 2015)
+
+  11 Jan 2015; <keri@gentoo.org> +tuprolog-2.9.0.ebuild,
+  +files/tuprolog-2.9.0-no-ikvm.patch, files/build.xml:
+  Version bump
+
+  09 Nov 2014; <keri@gentoo.org> tuprolog-2.7.2.ebuild,
+  +files/tuprolog-2.7.2-no-ikvm.patch:
+  Explicitly disable support for IKVM asm. Closes #527156
+
+*tuprolog-2.7.2 (15 Jul 2013)
+
+  15 Jul 2013; <keri@gentoo.org> +tuprolog-2.7.2.ebuild,
+  +files/tuprolog-2.7.2-javadocs.patch:
+  Version bump
+
+  10 Jul 2013; <keri@gentoo.org> +files/tuprolog-2.7.0-javadocs.patch:
+  Add missing javadocs patch. Closes #475810
+
+*tuprolog-2.7.0 (04 Jul 2013)
+
+  04 Jul 2013; <keri@gentoo.org> +tuprolog-2.7.0.ebuild:
+  Version bump
+
+*tuprolog-2.6.0 (15 May 2013)
+
+  15 May 2013; <keri@gentoo.org> +tuprolog-2.6.0.ebuild,
+  +files/tuprolog-2.6.0-javadocs.patch:
+  Version bump
+
+  07 Oct 2012; <keri@gentoo.org> -tuprolog-2.1.1.ebuild,
+  -files/tuprolog-2.1.1-java1.4.patch, -files/tuprolog-2.1.1-javadocs.patch,
+  -tuprolog-2.3.0_alpha.ebuild, -files/tuprolog-2.3.0_alpha-generics.patch,
+  -files/tuprolog-2.3.0_alpha-javadocs.patch, -tuprolog-2.3.1_beta.ebuild:
+  Remove old versions
+
+  04 Oct 2012; Brent Baude <ranger@gentoo.org> tuprolog-2.4.0_rc5.ebuild:
+  Marking tuprolog-2.4.0_rc5 ppc for bug 429792
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  tuprolog-2.4.0_rc5.ebuild:
+  x86 stable wrt bug #429792
+
+  03 Aug 2012; <keri@gentoo.org> +files/tuprolog-2.5.0-javadocs.patch:
+  Re-add tuprolog-2.5.0-javadocs.patch as a binary file; it contains CVS Id
+  tags
+
+  04 Aug 2012; Agostino Sarubbo <ago@gentoo.org> tuprolog-2.4.0_rc5.ebuild:
+  Stable for amd64, wrt bug #429792
+
+*tuprolog-2.5.0 (03 Aug 2012)
+
+  03 Aug 2012; <keri@gentoo.org> +tuprolog-2.5.0.ebuild,
+  +files/tuprolog-2.5.0-javadocs.patch:
+  Version bump
+
+  01 Jul 2012; <keri@gentoo.org> tuprolog-2.4.0_rc5.ebuild:
+  Depend on ant-junit for tuprolog unit tests
+
+  01 Jul 2012; <keri@gentoo.org> tuprolog-2.4.0_rc5.ebuild, files/build.xml:
+  Fix up dependencies for tuprolog unit tests. Closes #423561
+
+*tuprolog-2.4.0_rc5 (14 Jan 2012)
+
+  14 Jan 2012; <keri@gentoo.org> +tuprolog-2.4.0_rc5.ebuild,
+  +files/tuprolog-2.4.0_rc5-javadocs.patch:
+  Version bump
+
+  14 Jan 2012; <keri@gentoo.org> tuprolog-2.3.1_beta.ebuild:
+  Fix up dependencies for Prolog kernel tests
+
+  14 Jan 2012; <keri@gentoo.org> files/tuprolog-2.3.1_beta-javadocs.patch,
+  files/build.xml:
+  Fix up javadoc warnings
+
+  26 May 2011; <keri@gentoo.org> tuprolog-2.3.1_beta.ebuild:
+  Fix sedding typo in src_prepare
+
+  25 May 2011; <keri@gentoo.org> Manifest:
+  Regenerate manifest for javadocs-patch keyword substitution fixup
+
+*tuprolog-2.3.1_beta (21 May 2011)
+
+  21 May 2011; <keri@gentoo.org> +tuprolog-2.3.1_beta.ebuild,
+  +files/tuprolog-2.3.1_beta-javadocs.patch:
+  Version bump
+
+  05 Nov 2010; <keri@gentoo.org> tuprolog-2.3.0_alpha.ebuild:
+  Add die to do... function calls, add die to cp call
+
+  05 Nov 2010; <keri@gentoo.org> tuprolog-2.3.0_alpha.ebuild,
+  +files/tuprolog-2.3.0_alpha-generics.patch:
+  Add generics patch to fix tuprologx.AnotherList method call on Term lists
+
+  13 Sep 2010; <keri@gentoo.org> tuprolog-2.3.0_alpha.ebuild:
+  Add dev-lang/javassist to RDEPEND. Closes #336952
+
+  11 Sep 2010; <keri@gentoo.org> tuprolog-2.3.0_alpha.ebuild:
+  Do not include src_test(); test files are not included in the alpha
+  release
+
+  10 Sep 2010; <keri@gentoo.org> +files/tuprolog-2.3.0_alpha-javadocs.patch:
+  Re-add tuprolog-2.3.0_alpha-javadocs.patch as a binary file; it contains
+  CVS Id tags
+
+*tuprolog-2.3.0_alpha (08 Sep 2010)
+
+  08 Sep 2010; <keri@gentoo.org> +tuprolog-2.3.0_alpha.ebuild,
+  +files/tuprolog-2.3.0_alpha-javadocs.patch, files/build.xml:
+  Version bump
+
+  28 Feb 2009; <keri@gentoo.org> -files/tuprolog-2.1-DCGLibrary.patch,
+  -files/tuprolog-2.1-java1.4.patch, -files/tuprolog-2.1-javadocs.patch,
+  -files/tuprolog-2.1-junit.patch, -tuprolog-2.1.ebuild:
+  Remove old version
+
+  15 Feb 2009; Markus Meier <maekke@gentoo.org> tuprolog-2.1.1.ebuild:
+  amd64/x86 stable, bug #258681
+
+  12 Feb 2009; nixnut <nixnut@gentoo.org> tuprolog-2.1.1.ebuild:
+  ppc stable #258681
+
+  07 Jan 2009; <keri@gentoo.org> +files/tuprolog-2.1.1-javadocs.patch:
+  Fix up binary javadocs.patch files/tuprolog-2.1.1-javadocs.patch
+
+*tuprolog-2.1.1 (30 Dec 2008)
+
+  30 Dec 2008; <keri@gentoo.org> +files/tuprolog-2.1.1-java1.4.patch,
+  +files/tuprolog-2.1.1-javadocs.patch, +tuprolog-2.1.1.ebuild:
+  Version bump
+
+  09 Nov 2007; keri <keri@gentoo.org> +files/tuprolog-2.1-DCGLibrary.patch,
+  tuprolog-2.1.ebuild:
+  Add DCG \ operator
+
+  11 Aug 2007; Steve Dibb <beandog@gentoo.org> tuprolog-2.1.ebuild:
+  amd64 stable, bug 186260
+
+  04 Aug 2007; keri <keri@gentoo.org> -files/tuprolog-1.3.0-java1.4.patch,
+  -files/tuprolog-1.3.0-javadocs.patch, -files/tuprolog-2.0.1-java1.4.patch,
+  -files/tuprolog-2.0-java1.4.patch, -files/tuprolog-2.0.1-javadocs.patch,
+  -files/tuprolog-2.0-javadocs.patch, -tuprolog-1.3.0-r1.ebuild,
+  -tuprolog-2.0.ebuild, -tuprolog-2.0.1.ebuild:
+  Remove old versions. tuprolog-2.0.1 used deprecated ant-tasks; closes bug
+  #187604.
+
+  25 Jul 2007; Christian Faulhammer <opfer@gentoo.org> tuprolog-2.1.ebuild:
+  stable x86, bug 186260
+
+  23 Jul 2007; nixnut <nixnut@gentoo.org> tuprolog-2.1.ebuild:
+  Stable on ppc wrt bug 186260
+
+  22 Jul 2007; keri <keri@gentoo.org> files/tuprolog-2.1-javadocs.patch:
+  Javadocs update
+
+  22 Jul 2007; keri <keri@gentoo.org> +files/tuprolog-2.1-junit.patch,
+  tuprolog-2.1.ebuild:
+  Fix parser unit test.
+
+  09 Jun 2007; keri <keri@gentoo.org> tuprolog-2.1.ebuild:
+  Update test-suite invocation
+
+  08 Jun 2007; keri <keri@gentoo.org> +files/tuprolog-2.1-java1.4.patch,
+  tuprolog-2.1.ebuild:
+  Tidy up deprecated Java code.
+
+*tuprolog-2.1 (08 Jun 2007)
+
+  08 Jun 2007; keri <keri@gentoo.org> +files/tuprolog-2.1-javadocs.patch,
+  +tuprolog-2.1.ebuild:
+  Version bump.
+
+  07 Jun 2007; keri <keri@gentoo.org> files/tuprolog-2.0.1-javadocs.patch:
+  Fix javadocs patch. Closes #176413.
+
+  18 Feb 2007; keri <keri@gentoo.org> tuprolog-2.0.1.ebuild:
+  Install upstream ChangeLog.
+
+  02 Feb 2007; keri <keri@gentoo.org> tuprolog-2.0.1.ebuild:
+  Add ~amd64 to KEYWORDS.
+
+  02 Feb 2007; keri <keri@gentoo.org> files/tuprolog-2.0.1-javadocs.patch:
+  Patch jedit javadocs.
+
+  01 Feb 2007; keri <keri@gentoo.org> files/build.xml,
+  tuprolog-2.0.1.ebuild:
+  Run Prolog Theory testsuite in src_test()
+
+*tuprolog-2.0.1 (31 Jan 2007)
+
+  31 Jan 2007; keri <keri@gentoo.org> +files/tuprolog-2.0.1-java1.4.patch,
+  +files/tuprolog-2.0.1-javadocs.patch, +tuprolog-2.0.1.ebuild:
+  Version bump.
+
+  21 Jan 2007; keri <keri@gentoo.org> +files/tuprolog-2.0-java1.4.patch,
+  +files/tuprolog-2.0-javadocs.patch, tuprolog-2.0.ebuild:
+  Fix deprecated code and javadoc warnings.
+
+*tuprolog-2.0 (31 Oct 2006)
+
+  31 Oct 2006; keri <keri@gentoo.org> +tuprolog-2.0.ebuild:
+  Version bump.
+
+  07 Oct 2006; keri <keri@gentoo.org> +files/tuprolog-1.3.0-java1.4.patch,
+  tuprolog-1.3.0-r1.ebuild:
+  Add java1.4 patch
+
+  06 Oct 2006; keri <keri@gentoo.org> files/tuprolog-1.3.0-javadocs.patch:
+  Fix generation of javadocs.
+
+  06 Oct 2006; keri <keri@gentoo.org> +files/build.xml:
+  Add custom build.xml
+
+*tuprolog-1.3.0-r1 (04 Oct 2006)
+
+  04 Oct 2006; keri <keri@gentoo.org> -tuprolog-1.3.0.ebuild,
+  +tuprolog-1.3.0-r1.ebuild:
+  Revbump for license change. Thanks to Giulio Piancastelli.
+
+*tuprolog-1.3.0 (10 Sep 2006)
+
+  10 Sep 2006; keri <keri@gentoo.org> +files/tuprolog-1.3.0-javadocs.patch,
+  +metadata.xml, +tuprolog-1.3.0.ebuild:
+  New ebuild for tuProlog.
+

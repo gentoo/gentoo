@@ -1,0 +1,115 @@
+# ChangeLog for sci-geosciences/geocode-glib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/geocode-glib/ChangeLog,v 1.29 2015/06/09 14:17:47 eva Exp $
+
+*geocode-glib-3.16.2 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  -geocode-glib-3.12.2.ebuild, +geocode-glib-3.16.2.ebuild:
+  Version bump for Gnome 3.16. Clean up old revisions.
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> geocode-glib-3.14.0.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> geocode-glib-3.14.0.ebuild:
+  amd64 stable, bug 534012
+
+*geocode-glib-3.14.0 (23 Dec 2014)
+
+  23 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  -geocode-glib-3.10.0.ebuild, -geocode-glib-3.12.0.ebuild,
+  +geocode-glib-3.14.0.ebuild:
+  Version bump for Gnome 3.14. Clean up old revisions.
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> geocode-glib-3.12.2.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> geocode-glib-3.12.2.ebuild:
+  Stable for amd64, wrt bug #512912
+
+*geocode-glib-3.12.2 (31 May 2014)
+
+  31 May 2014; Pacho Ramos <pacho@gentoo.org> +geocode-glib-3.12.2.ebuild:
+  Version bump
+
+*geocode-glib-3.12.0 (27 Apr 2014)
+
+  27 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +geocode-glib-3.12.0.ebuild:
+  Version bump for Gnome 3.12.
+
+  27 Apr 2014; Pacho Ramos <pacho@gentoo.org> -geocode-glib-0.99.0.ebuild,
+  -geocode-glib-0.99.1.ebuild:
+  drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> geocode-glib-3.10.0.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> geocode-glib-3.10.0.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> geocode-glib-3.10.0.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> geocode-glib-3.10.0.ebuild:
+  arch stable, bug 888
+
+*geocode-glib-3.10.0 (24 Dec 2013)
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org> +geocode-glib-3.10.0.ebuild:
+  Version bump for Gnome 3.10
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> geocode-glib-0.99.0.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> geocode-glib-0.99.0.ebuild:
+  amd64 stable, bug #478252
+
+  30 Aug 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  geocode-glib-0.99.0.ebuild, geocode-glib-0.99.1.ebuild:
+  Depend on libsoup-gnome again, clean up old revisions.
+
+  02 Aug 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  geocode-glib-0.99.1.ebuild:
+  Add missing gtk-doc-am build dependency.
+
+*geocode-glib-0.99.1 (01 Aug 2013)
+
+  01 Aug 2013; Pacho Ramos <pacho@gentoo.org> +geocode-glib-0.99.1.ebuild:
+  Version bump and skip tests as they need network (#424719 by flameeyes)
+
+  31 Mar 2013; Pacho Ramos <pacho@gentoo.org> geocode-glib-0.99.0.ebuild:
+  Adapt to libsoup-2.42 dropping gnome USE and splitting (#463702)
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> geocode-glib-0.99.0.ebuild:
+  Add ~arm, wrt bug #449220
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> geocode-glib-0.99.0.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> geocode-glib-0.99.0.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> geocode-glib-0.99.0.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> geocode-glib-0.99.0.ebuild:
+  Add ~ppc64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> geocode-glib-0.99.0.ebuild:
+  Add ~ppc, wrt bug #449220
+
+  24 Sep 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  geocode-glib-0.99.0.ebuild:
+  And one more USE=introspection fix.
+
+  24 Sep 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  geocode-glib-0.99.0.ebuild:
+  Fix USE=introspection dependencies (bug #436006, thanks to Nico R.)
+
+*geocode-glib-0.99.0 (15 May 2012)
+
+  15 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +geocode-glib-0.99.0.ebuild, +metadata.xml:
+  Add glib interface to Yahoo! place finder geocoding service; needed for
+  empathy-3.4.

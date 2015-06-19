@@ -1,0 +1,274 @@
+# ChangeLog for app-i18n/ibus-pinyin
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-pinyin/ChangeLog,v 1.51 2014/12/27 10:51:34 mgorny Exp $
+
+  27 Dec 2014; Michał Górny <mgorny@gentoo.org> ibus-pinyin-1.5.0-r2.ebuild:
+  Add missing PYTHON_DEPS and PYTHON_REQUIRED_USE references.
+
+*ibus-pinyin-1.5.0-r2 (27 Dec 2014)
+
+  27 Dec 2014; Michał Górny <mgorny@gentoo.org> +ibus-pinyin-1.5.0-r2.ebuild:
+  Convert to python-single-r1.
+
+  15 Nov 2014; Pacho Ramos <pacho@gentoo.org> ibus-pinyin-1.5.0-r1.ebuild:
+  amd64/x86 stable, bug #517722
+
+*ibus-pinyin-1.5.0-r1 (19 Jun 2014)
+*ibus-pinyin-1.4.0-r1 (19 Jun 2014)
+
+  19 Jun 2014; Yixun Lan <dlan@gentoo.org> +ibus-pinyin-1.4.0-r1.ebuild,
+  +ibus-pinyin-1.5.0-r1.ebuild:
+  add pygtk dep, fix python shebang, bug 511922. thanks @Yi Yang
+
+  10 Jun 2014; Naohiro Aota <naota@gentoo.org> ibus-pinyin-1.4.0.ebuild,
+  ibus-pinyin-1.5.0.ebuild:
+  Add upper limit of lua dependency. #407483
+
+  17 Jan 2014; Yixun Lan <dlan@gentoo.org> -ibus-pinyin-1.3.99.20110706.ebuild,
+  metadata.xml:
+  drop old version, update maintainer email
+
+  03 Jan 2014; Naohiro Aota <naota@gentoo.org> ibus-pinyin-1.5.0.ebuild:
+  Fix patch name typo
+
+  30 Dec 2013; Naohiro Aota <naota@gentoo.org>
+  +files/ibus-pinyin-1.5.0-content-type-method.patch, ibus-pinyin-1.5.0.ebuild:
+  Apply a patch to set content type method.
+
+*ibus-pinyin-1.5.0 (12 Mar 2013)
+
+  12 Mar 2013; Naohiro Aota <naota@gentoo.org> +ibus-pinyin-1.5.0.ebuild,
+  metadata.xml:
+  Version bump; Assign proxy maintainer. #458678
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  ibus-pinyin-1.3.99.20110706.ebuild, ibus-pinyin-1.4.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  13 Mar 2012; Naohiro Aota <naota@gentoo.org> ChangeLog:
+  Sign
+
+*ibus-pinyin-1.4.0 (13 Mar 2012)
+
+  13 Mar 2012; Naohiro Aota <naota@gentoo.org> +ibus-pinyin-1.4.0.ebuild:
+  Version bump
+
+  11 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  ibus-pinyin-1.3.99.20110706.ebuild:
+  Empty py-compile script instead of symlinking it to /path/to/true for
+  compability with recent automake.
+
+  11 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -ibus-pinyin-1.2.0.20090915.ebuild, -ibus-pinyin-1.3.10.ebuild,
+  -ibus-pinyin-1.3.11.ebuild, -ibus-pinyin-1.3.99.20110217.ebuild,
+  -files/ibus-pinyin-1.3.99.20110217-m_instance.patch,
+  -ibus-pinyin-1.3.99.20110520.ebuild:
+  old
+
+*ibus-pinyin-1.3.99.20110706 (17 Jul 2011)
+
+  17 Jul 2011; Naohiro Aota <naota@gentoo.org>
+  +ibus-pinyin-1.3.99.20110706.ebuild:
+  version bump
+
+*ibus-pinyin-1.3.99.20110520 (06 Jun 2011)
+
+  06 Jun 2011; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-pinyin-1.3.99.20110520.ebuild, metadata.xml:
+  Version bumped. Added lua and opencc USE flags.
+
+  07 May 2011; Naohiro Aota <naota@gentoo.org> ChangeLog:
+  Sign the package.
+
+*ibus-pinyin-1.3.99.20110217 (07 May 2011)
+
+  07 May 2011; Naohiro Aota <naota@gentoo.org>
+  -ibus-pinyin-1.3.99.20101029.ebuild, +ibus-pinyin-1.3.99.20110217.ebuild,
+  +files/ibus-pinyin-1.3.99.20110217-m_instance.patch, metadata.xml:
+  Version bumped; Add boost support; Fix compilation error when disableing
+  boost
+
+  06 May 2011; <naota@gentoo.org> ibus-pinyin-1.3.99.20101029.ebuild:
+  Fix dependency
+
+  16 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  ibus-pinyin-1.2.0.20090915.ebuild, ibus-pinyin-1.3.10.ebuild,
+  ibus-pinyin-1.3.11.ebuild, ibus-pinyin-1.3.99.20101029.ebuild:
+  Fix deprecation warnings.
+
+  10 Feb 2011; Markos Chandras <hwoarang@gentoo.org> ibus-pinyin-1.3.11.ebuild:
+  Stable on amd64 wrt bug #350625
+
+  08 Feb 2011; Thomas Kahle <tomka@gentoo.org> ibus-pinyin-1.3.11.ebuild:
+  x86 stable per bug 350625
+
+*ibus-pinyin-1.3.99.20101029 (05 Nov 2010)
+
+  05 Nov 2010; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-pinyin-1.3.99.20101029.ebuild:
+  Version bumped.
+
+*ibus-pinyin-1.3.11 (20 Sep 2010)
+
+  20 Sep 2010; MATSUU Takuto <matsuu@gentoo.org> -ibus-pinyin-1.3.8.ebuild,
+  -ibus-pinyin-1.3.9.ebuild, +ibus-pinyin-1.3.11.ebuild:
+  Version bumped. Removed old versions.
+
+*ibus-pinyin-1.3.10 (07 Aug 2010)
+
+  07 Aug 2010; MATSUU Takuto <matsuu@gentoo.org> -ibus-pinyin-1.3.5.ebuild,
+  +ibus-pinyin-1.3.10.ebuild:
+  Version bumped.
+
+*ibus-pinyin-1.3.9 (01 Aug 2010)
+
+  01 Aug 2010; MATSUU Takuto <matsuu@gentoo.org> +ibus-pinyin-1.3.9.ebuild:
+  Version bumped.
+
+*ibus-pinyin-1.3.8 (29 May 2010)
+
+  29 May 2010; MATSUU Takuto <matsuu@gentoo.org> -ibus-pinyin-1.3.3.ebuild,
+  -ibus-pinyin-1.3.7.ebuild, +ibus-pinyin-1.3.8.ebuild:
+  Version bumped. Removed old versions.
+
+*ibus-pinyin-1.3.7 (29 May 2010)
+
+  29 May 2010; MATSUU Takuto <matsuu@gentoo.org> +ibus-pinyin-1.3.7.ebuild:
+  Version bumped.
+
+  26 May 2010; Pacho Ramos <pacho@gentoo.org>
+  ibus-pinyin-1.2.0.20090915.ebuild:
+  stable amd64, bug 305761
+
+*ibus-pinyin-1.3.5 (04 May 2010)
+
+  04 May 2010; MATSUU Takuto <matsuu@gentoo.org> -ibus-pinyin-1.3.0.ebuild,
+  -ibus-pinyin-1.3.1.ebuild, -ibus-pinyin-1.3.2.ebuild,
+  +ibus-pinyin-1.3.5.ebuild:
+  Version bumped. Removed old versions.
+
+*ibus-pinyin-1.3.3 (23 Apr 2010)
+
+  23 Apr 2010; MATSUU Takuto <matsuu@gentoo.org> +ibus-pinyin-1.3.3.ebuild:
+  Version bumped.
+
+*ibus-pinyin-1.3.2 (13 Apr 2010)
+
+  13 Apr 2010; MATSUU Takuto <matsuu@gentoo.org> +ibus-pinyin-1.3.2.ebuild:
+  Version bumped.
+
+  12 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ibus-pinyin-1.2.0.20090915.ebuild:
+  x86 stable wrt bug #305761
+
+*ibus-pinyin-1.3.1 (08 Apr 2010)
+
+  08 Apr 2010; MATSUU Takuto <matsuu@gentoo.org>
+  ibus-pinyin-1.2.0.20090915.ebuild, -ibus-pinyin-1.2.99.20100212.ebuild,
+  -ibus-pinyin-1.2.99.20100308.ebuild, -ibus-pinyin-1.2.99.20100318.ebuild,
+  ibus-pinyin-1.3.0.ebuild, +ibus-pinyin-1.3.1.ebuild:
+  Version bumped. Removed old versions. Fixed python dependency, bug
+  #311211.
+
+*ibus-pinyin-1.3.0 (31 Mar 2010)
+
+  31 Mar 2010; MATSUU Takuto <matsuu@gentoo.org> +ibus-pinyin-1.3.0.ebuild:
+  Version bumped.
+
+*ibus-pinyin-1.2.99.20100318 (19 Mar 2010)
+
+  19 Mar 2010; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-pinyin-1.2.99.20100318.ebuild:
+  Version bumped.
+
+*ibus-pinyin-1.2.99.20100308 (13 Mar 2010)
+
+  13 Mar 2010; MATSUU Takuto <matsuu@gentoo.org>
+  -ibus-pinyin-1.1.0.20090612.ebuild, -ibus-pinyin-1.2.99.20100202.ebuild,
+  +ibus-pinyin-1.2.99.20100308.ebuild:
+  Version bumped. Removed old versions.
+
+*ibus-pinyin-1.2.99.20100212 (14 Feb 2010)
+
+  14 Feb 2010; MATSUU Takuto <matsuu@gentoo.org>
+  -ibus-pinyin-1.2.0.20090617.ebuild, ibus-pinyin-1.2.0.20090915.ebuild,
+  -ibus-pinyin-1.2.99.20091211.ebuild, +ibus-pinyin-1.2.99.20100212.ebuild:
+  Version bumped. Removed old versions.
+
+*ibus-pinyin-1.2.99.20100202 (04 Feb 2010)
+
+  04 Feb 2010; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-pinyin-1.2.99.20100202.ebuild:
+  Version bumped.
+
+*ibus-pinyin-1.2.99.20091211 (16 Dec 2009)
+
+  16 Dec 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-pinyin-1.2.99.20091211.ebuild:
+  Version bumped.
+
+*ibus-pinyin-1.2.0.20090915 (15 Sep 2009)
+
+  15 Sep 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-pinyin-1.2.0.20090915.ebuild:
+  Version bumped.
+
+  15 Aug 2009; Petteri Räty <betelgeuse@gentoo.org>
+  -ibus-pinyin-1.1.0.20090225.ebuild, -ibus-pinyin-1.1.0.20090303.ebuild:
+  Remove ebuilds using built_with_use. Bug #261562.
+
+*ibus-pinyin-1.2.0.20090617 (18 Jun 2009)
+
+  18 Jun 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-pinyin-1.2.0.20090617.ebuild:
+  Version bumped.
+
+*ibus-pinyin-1.1.0.20090612 (12 Jun 2009)
+
+  12 Jun 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-pinyin-1.1.0.20090612.ebuild:
+  Version bumped.
+
+*ibus-pinyin-1.1.0.20090303 (03 Mar 2009)
+
+  03 Mar 2009; MATSUU Takuto <matsuu@gentoo.org>
+  -ibus-pinyin-0.1.1.20081004.ebuild, -ibus-pinyin-1.1.0.20090205.ebuild,
+  -ibus-pinyin-1.1.0.20090211.ebuild, +ibus-pinyin-1.1.0.20090303.ebuild:
+  Version bumped. Removed old versions.
+
+*ibus-pinyin-1.1.0.20090225 (25 Feb 2009)
+
+  25 Feb 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-pinyin-1.1.0.20090225.ebuild:
+  Version bumped.
+
+*ibus-pinyin-1.1.0.20090211 (12 Feb 2009)
+
+  12 Feb 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-pinyin-1.1.0.20090211.ebuild:
+  Version bumped.
+
+*ibus-pinyin-1.1.0.20090205 (05 Feb 2009)
+
+  05 Feb 2009; MATSUU Takuto <matsuu@gentoo.org>
+  -ibus-pinyin-0.1.1.20080918.ebuild, ibus-pinyin-0.1.1.20081004.ebuild,
+  +ibus-pinyin-1.1.0.20090205.ebuild:
+  Version bumped. Fixed dependency. Removed old version.
+
+*ibus-pinyin-0.1.1.20081004 (05 Oct 2008)
+
+  05 Oct 2008; MATSUU Takuto <matsuu@gentoo.org>
+  -ibus-pinyin-0.1.1.20080901.ebuild, +ibus-pinyin-0.1.1.20081004.ebuild:
+  Version bumped.
+
+*ibus-pinyin-0.1.1.20080918 (20 Sep 2008)
+
+  20 Sep 2008; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-pinyin-0.1.1.20080918.ebuild:
+  Version bumped, bug #238004.
+
+*ibus-pinyin-0.1.1.20080901 (06 Sep 2008)
+
+  06 Sep 2008; MATSUU Takuto <matsuu@gentoo.org> +metadata.xml,
+  +ibus-pinyin-0.1.1.20080901.ebuild:
+  Initial import. Submitted by Hong Hao, bug 236350.

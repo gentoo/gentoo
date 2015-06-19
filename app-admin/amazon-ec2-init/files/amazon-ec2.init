@@ -1,0 +1,35 @@
+#!/sbin/runscript
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/amazon-ec2-init/files/amazon-ec2.init,v 1.1 2010/11/27 00:31:57 flameeyes Exp $
+
+depend() {
+         before hostname
+         need net.eth0
+}
+
+start() {
+        einfo "Fetching metadata from EC2 servers"
+
+        ebegin "  hostname"
+        local hostname=$(wget -t 2 -T 5 -q -O - http://169.254.169.254/latest/meta-data/local-hostname)
+        echo "hostname=${hostname}" >> /etc/conf.d/hostname
+        eend $?
+
+        ebegin "  SSH keys"
+
+        mkdir -p /root/.ssh
+
+        local keys=$(wget -t 2 -T 5 -q -O - http://169.254.169.254/latest/meta-data/public-keys/ | cut -d = -f 1 | xargs echo)
+        [ -n "${keys}" ] && \
+            wget -t 2 -T 5 -q -O - $(for key in $keys; do echo "http://169.254.169.254/latest/meta-data/public-keys/$key/openssh-key"; done) \
+            >> /root/.ssh/authorized_keys \
+            2>/dev/null
+
+        if [ -f /root/.ssh/authorized_keys ]; then
+            chown root:root /root/.ssh/authorized_keys
+            chmod 0600 /root/.ssh/authorized_keys
+        fi
+
+        eend $?
+}

@@ -1,0 +1,11 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/features/32bit-native/make.defaults,v 1.2 2011/11/17 01:14:26 jmbsvicetto Exp $
+
+FEATURES="-multilib-strict"
+
+USE="-gcc64"
+
+MULTILIB_STRICT_DIRS=""
+MULTILIB_STRICT_DENY=""
+MULTILIB_STRICT_EXEMPT=""

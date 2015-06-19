@@ -1,0 +1,186 @@
+# ChangeLog for app-text/an
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/an/ChangeLog,v 1.52 2014/10/12 22:12:23 jer Exp $
+
+  12 Oct 2014; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Remove short <longdescription>.
+
+  12 Oct 2014; Jeroen Roovers <jer@gentoo.org> -an-1.1.ebuild:
+  Old.
+
+  12 Oct 2014; Agostino Sarubbo <ago@gentoo.org> an-1.2.ebuild:
+  Stable for x86, wrt bug #519410
+
+  05 Oct 2014; Agostino Sarubbo <ago@gentoo.org> an-1.2.ebuild:
+  Stable for ppc, wrt bug #519410
+
+  14 Sep 2014; Agostino Sarubbo <ago@gentoo.org> an-1.2.ebuild:
+  Stable for ppc64, wrt bug #519410
+
+  09 Sep 2014; Chema Alonso <nimiux@gentoo.org> an-1.2.ebuild:
+  Stable for amd64 wrt bug #519410
+
+  09 Aug 2014; Jeroen Roovers <jer@gentoo.org> an-1.2.ebuild:
+  Stable for HPPA (bug #519410).
+
+*an-1.2 (02 Jul 2014)
+
+  02 Jul 2014; Jeroen Roovers <jer@gentoo.org> +an-1.2.ebuild:
+  Version bump.
+
+  02 Mar 2014; Jeroen Roovers <jer@gentoo.org> an-1.1.ebuild:
+  Add dev-libs/icu sub-SLOT dependency (bug #455900).
+
+  28 Jul 2013; Jeroen Roovers <jer@gentoo.org> -an-0.95.3.2.ebuild:
+  Old.
+
+  27 Jul 2013; Agostino Sarubbo <ago@gentoo.org> an-1.1.ebuild:
+  Stable for x86, wrt bug #476852
+
+  22 Jul 2013; Agostino Sarubbo <ago@gentoo.org> an-1.1.ebuild:
+  Stable for ppc64, wrt bug #476852
+
+  22 Jul 2013; Agostino Sarubbo <ago@gentoo.org> an-1.1.ebuild:
+  Stable for ppc, wrt bug #476852
+
+  15 Jul 2013; Chema Alonso <nimiux@gentoo.org> an-1.1.ebuild:
+  Stable for amd64 wrt bug #476852
+
+  15 Jul 2013; Jeroen Roovers <jer@gentoo.org> an-1.1.ebuild:
+  Stable for HPPA (bug #476852).
+
+  11 Jun 2013; Jeroen Roovers <jer@gentoo.org> an-1.1.ebuild:
+  Fix LICENSE.
+
+*an-1.1 (11 Jun 2013)
+
+  11 Jun 2013; Jeroen Roovers <jer@gentoo.org> -an-0.95.3.ebuild,
+  +an-1.1.ebuild, -files/an_0.95-3.diff:
+  Version bump.
+
+  30 Sep 2012; Raúl Porcel <armin76@gentoo.org> an-0.95.3.ebuild,
+  an-0.95.3.2.ebuild:
+  Drop alpha keywords
+
+  12 Sep 2012; Jeroen Roovers <jer@gentoo.org> -files/an-0.95-make.patch:
+  Remove unused patch by jalan (bug #344183).
+
+  09 Jun 2012; Jeroen Roovers <jer@gentoo.org> an-0.95.3.2.ebuild:
+  Stable for HPPA (bug #418637).
+
+  09 Jun 2012; Jeff Horelick <jdhore@gentoo.org> an-0.95.3.2.ebuild:
+  marked x86 per bug 418637
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> an-0.95.3.2.ebuild:
+  Marking an-0.95.3.2 ppc for bug 418637
+
+  05 Jun 2012; Brent Baude <ranger@gentoo.org> an-0.95.3.2.ebuild:
+  Marking an-0.95.3.2 ppc64 for bug 418637
+
+  04 Jun 2012; Agostino Sarubbo <ago@gentoo.org> an-0.95.3.2.ebuild:
+  Stable for amd64, wrt bug #418637
+
+  25 Jan 2011; Jeroen Roovers <jer@gentoo.org> an-0.95.3.ebuild,
+  files/an-0.95-make.patch, files/an_0.95-3.diff:
+  Clean up patches. Fix phases, remove ebegin/eend, make sed die().
+
+*an-0.95.3.2 (27 Jun 2010)
+
+  27 Jun 2010; Jeroen Roovers <jer@gentoo.org> -an-0.95.3.1.ebuild,
+  +an-0.95.3.2.ebuild:
+  Bump the Debian patch set. Replace the Makefile patch with a compatible
+  set of sed scripts. Respect LDFLAGS. Do not patch lib/Makefile since we do
+  not use it. Do not install INSTALL. Properly use EAPI=2.
+
+*an-0.95.3.1 (18 Mar 2009)
+
+  18 Mar 2009; Jeroen Roovers <jer@gentoo.org> +files/an-0.95-make.patch,
+  +an-0.95.3.1.ebuild:
+  Version bump. Do not store Debian patch locally. Remove some redundant
+  comments and notifications.
+
+  07 Mar 2009; Thomas Anderson <gentoofan23@gentoo.org> an-0.95.3.ebuild:
+  Transition to eapi 2 use deps
+
+  28 Aug 2008; Jeroen Roovers <jer@gentoo.org> an-0.95.3.ebuild:
+  Improved HOMEPAGE.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  09 Mar 2006; Jose Luis Rivero <yoswink@gentoo.org> an-0.95.3.ebuild:
+  Marked alpha stable for bug #113966
+
+  31 Jan 2006; Joseph Jezak <josejx@gentoo.org> an-0.95.3.ebuild:
+  Marked ppc stable for bug #113966.
+
+  24 Jan 2006; Patrick McLean <chutzpah@gentoo.org> an-0.95.3.ebuild:
+  Stable on amd64 (bug #113966).
+
+  24 Jan 2006; Ian Leitch <port001@gentoo.org> an-0.95.3.ebuild:
+  Stable on x86 (bug #113966).
+
+  24 Jan 2006; Markus Rothe <corsair@gentoo.org> an-0.95.3.ebuild:
+  Stable on ppc64; bug #113966
+
+  24 Jan 2006; Jeroen Roovers <jer@gentoo.org> an-0.95.3.ebuild:
+  Stable on hppa (bug #113966).
+
+  15 Jan 2006; Jose Luis Rivero <yoswink@gentoo.org> an-0.95.3.ebuild:
+  mark ~alpha as requested by bug #113966
+
+  18 Dec 2005; Jeroen Roovers <jer@gentoo.org> +files/an_0.95-3.diff,
+  -files/an_0.95-3.diff.gz, an-0.95.3.ebuild:
+  Gunzipped the files/*.diff.gz
+
+  12 Dec 2005; Jeroen Roovers <jer@gentoo.org> -an-0.93.ebuild:
+  Removed an 0.93 as suggested in bug #113966, comment #7.
+
+  11 Dec 2005; Stephanie Lockwood-Childs <wormo@gentoo.org> an-0.95.3.ebuild:
+  mark ~ppc as requested by bug #113966
+
+  05 Dec 2005; Jeroen Roovers <jer@gentoo.org> an-0.95.3.ebuild:
+  Reverted versionator changes. Oops.
+
+  05 Dec 2005; Jeroen Roovers <jer@gentoo.org> ChangeLog:
+  Removed versionator dependency, simplified ebuild a lot, changed SRC_URI to
+  use mirror://
+
+  05 Dec 2005; Jeroen Roovers <jer@gentoo.org> an-0.95.3.ebuild:
+  Made warning notice about sys-apps/miscfiles conditional.
+
+  01 Dec 2005; Luis Medinas <metalgod@gentoo.org> an-0.93.ebuild,
+  an-0.95.3.ebuild:
+  Added ~amd64 keyword. Bug #113966.
+
+  01 Dec 2005; Jeroen Roovers <jer@gentoo.org> an-0.93.ebuild,
+  an-0.95.3.ebuild:
+  Fix bad positioning of inherit call (bugs #113994, #114009).
+
+  30 Nov 2005; Tom Gall <tgall@gentoo.org> an-0.95.3.ebuild:
+  add ~ppc64 per bug #113966
+
+  30 Nov 2005; Jeroen Roovers <jer@gentoo.org> an-0.93.ebuild:
+  Removed quaint virtual/libc dependency
+
+*an-0.95.3 (29 Nov 2005)
+
+  29 Nov 2005; Jeroen Roovers <jer@gentoo.org> +files/an_0.95-3.diff.gz,
+  +an-0.95.3.ebuild:
+  Import from Debian's improved an[1].
+  
+  [1] http://lists.debian.org/debian-devel/2000/11/msg00319.html
+
+  22 Nov 2005; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Reassigning to no-herd
+
+  22 Nov 2005; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Fixed herd assignment
+
+  22 Nov 2005; Jeroen Roovers <jer@gentoo.org> an-0.93.ebuild:
+  Changed SRC_URI to something (a lot) more stable
+
+*an-0.93 (22 Nov 2005)
+
+  22 Nov 2005; <jer@gentoo.org> +metadata.xml, +an-0.93.ebuild:
+  Initial commit as per bug 108829.

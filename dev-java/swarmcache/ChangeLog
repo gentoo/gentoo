@@ -1,0 +1,49 @@
+# ChangeLog for dev-java/swarmcache
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/swarmcache/ChangeLog,v 1.10 2014/08/10 20:25:15 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  swarmcache-1.0_pre20050106-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  swarmcache-1.0_pre20050106-r1.ebuild:
+  Transfer Prefix keywords
+
+  23 Mar 2008; Petteri Räty <betelgeuse@gentoo.org>
+  swarmcache-1.0_pre20050106-r1.ebuild:
+  RESTRICT test as it starts a server that just gets stuck but we don't have
+  the needed classes in classpath.
+
+  25 Dec 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -swarmcache-1.0_pre20050106.ebuild:
+  Delete generation 1 ebuild.
+
+  08 Dec 2007; Samuli Suominen <drac@gentoo.org>
+  swarmcache-1.0_pre20050106-r1.ebuild:
+  amd64 stable wrt #201308
+
+  05 Dec 2007; Markus Meier <maekke@gentoo.org>
+  swarmcache-1.0_pre20050106-r1.ebuild:
+  x86 stable, bug #201308
+
+  25 Apr 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  swarmcache-1.0_pre20050106-r1.ebuild:
+  Fix compiling with JAVA_PKG_STRICT.
+
+*swarmcache-1.0_pre20050106-r1 (11 Jan 2007)
+
+  11 Jan 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +swarmcache-1.0_pre20050106-r1.ebuild:
+  Migrated to generation 2 and added the source use flag.
+
+  26 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  swarmcache-1.0_pre20050106.ebuild:
+  stable on amd64 and x86
+
+*swarmcache-1.0_pre20050106 (07 Jan 2005)
+
+  07 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> +metadata.xml,
+  +swarmcache-1.0_pre20050106.ebuild:
+  Initial import. Ebuild based on the contribution of Dan
+  <dan@intuitivelyobvious.net>. Fixes bug #67417.

@@ -1,0 +1,22 @@
+just use implicit rules so correct variables get used
+
+--- pdfcrack-0.13/Makefile
++++ pdfcrack-0.13/Makefile
+@@ -1,16 +1,11 @@
+-CFLAGS= -Wall -Wextra -O3 -g
++CFLAGS+= -Wall -Wextra
+ 
+ all: pdfcrack
+ 
+ pdfcrack: main.o sha256.o rc4.o md5.o pdfcrack.o pdfparser.o passwords.o common.o \
+ 	benchmark.o
+-	gcc $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $@ $+
+ 
+ pdfreader: pdfparser.o pdfreader.o common.o
+-	gcc $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $@ $+
+ 
+ clean:
+ 	rm -f pdfcrack pdfreader testreader *.o
+-
+-%.o: %.c
+-	gcc $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -c -o $@ $+

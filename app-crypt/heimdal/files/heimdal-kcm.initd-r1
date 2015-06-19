@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/heimdal/files/heimdal-kcm.initd-r1,v 1.1 2011/02/16 22:14:12 eras Exp $
+
+depend() {
+	after heimdal-kdc
+}
+
+OPTIONS="${OPTIONS} --detach"
+
+start() {
+	ebegin "Starting Heimdal KCM..."
+	start-stop-daemon --start --pidfile /var/run/kcm.pid --exec /usr/sbin/kcm -- ${OPTIONS# }
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Heimdal KCM..."
+	start-stop-daemon --stop --pidfile /var/run/kcm.pid --retry SIGKILL/5
+	eend $?
+}

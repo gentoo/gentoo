@@ -1,0 +1,149 @@
+# ChangeLog for sys-fs/udiskie
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/udiskie/ChangeLog,v 1.36 2015/06/04 11:06:51 jlec Exp $
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  24 Sep 2014; Markus Meier <maekke@gentoo.org> udiskie-1.1.1.ebuild:
+  add ~arm, bug #518900
+
+*udiskie-1.1.1 (03 Aug 2014)
+
+  03 Aug 2014; Samuli Suominen <ssuominen@gentoo.org> +udiskie-1.1.1.ebuild:
+  Version bump; switch to plain UDisks2 support because of multiple reasons:
+  - Version used has to be specified for setup.py
+  - Syntax changed after 0.8.0 release, so users might as well update
+    their configs for use with UDisks2
+  - UDisks1 is obsolete and only maintained for security
+  Do not file bugs about the switch.
+
+*udiskie-0.6.4 (16 Mar 2014)
+
+  16 Mar 2014; Samuli Suominen <ssuominen@gentoo.org> +udiskie-0.6.4.ebuild:
+  Version bump.
+
+  14 Mar 2014; Samuli Suominen <ssuominen@gentoo.org> -udiskie-0.4.1.ebuild,
+  -udiskie-0.5.0.ebuild:
+  old
+
+  14 Mar 2014; Samuli Suominen <ssuominen@gentoo.org> udiskie-0.6.2.ebuild:
+  Document the command for installing selected SLOT of sys-fs/udisks using
+  readme.gentoo.eclass wrt #504600 by Kai Wüstermann
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> udiskie-0.6.2.ebuild:
+  Stable for x86, wrt bug #502934
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> udiskie-0.6.2.ebuild:
+  amd64 stable, bug #502934
+
+  19 Jan 2014; Samuli Suominen <ssuominen@gentoo.org> udiskie-0.6.2.ebuild:
+  Entirely drop SLOT specification of sys-fs/udisks dependency because we can't
+  know from the .ebuild which parameters the user will use, --use-udisks1 or
+  --use-udisks2. Forcing either one at this point would be wrong.
+
+  19 Jan 2014; Samuli Suominen <ssuominen@gentoo.org> udiskie-0.6.2.ebuild:
+  Build and install udiskie(8) manpage.
+
+*udiskie-0.6.2 (19 Jan 2014)
+
+  19 Jan 2014; Samuli Suominen <ssuominen@gentoo.org> +udiskie-0.6.2.ebuild:
+  Version bump; with switch to UDisks2 wrt #439648, thanks to upstream adding
+  support for it.
+
+*udiskie-0.5.0 (26 Sep 2013)
+
+  26 Sep 2013; Samuli Suominen <ssuominen@gentoo.org> +udiskie-0.5.0.ebuild:
+  Version bump.
+
+  04 Aug 2013; Markus Meier <maekke@gentoo.org> udiskie-0.4.1.ebuild:
+  add ~arm, bug #474024
+
+  01 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> -udiskie-0.3.10.ebuild,
+  -udiskie-0.4.0.ebuild:
+  old
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> udiskie-0.4.1.ebuild:
+  x86 stable wrt bug #433365
+
+  08 Sep 2012; Agostino Sarubbo <ago@gentoo.org> udiskie-0.4.1.ebuild:
+  Stable for amd64, wrt bug #433365
+
+*udiskie-0.4.1 (16 Jul 2012)
+
+  16 Jul 2012; Tim Harder <radhermit@gentoo.org> +udiskie-0.4.1.ebuild:
+  Version bump.
+
+*udiskie-0.4.0 (30 Jun 2012)
+
+  30 Jun 2012; Tim Harder <radhermit@gentoo.org> +udiskie-0.4.0.ebuild:
+  Version bump.
+
+  17 Apr 2012; Michał Górny <mgorny@gentoo.org> udiskie-0.3.10.ebuild:
+  Use mirror://bitbucket.
+
+  27 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> udiskie-0.3.10.ebuild:
+  Pin to SLOT="0" of sys-fs/udisks.
+
+  23 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> -udiskie-0.3.6.ebuild,
+  -udiskie-0.3.7.ebuild, -udiskie-0.3.9.ebuild:
+  old
+
+  23 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> udiskie-0.3.10.ebuild:
+  amd64/x86 stable
+
+  20 Oct 2011; Tim Harder <radhermit@gentoo.org> udiskie-0.3.6.ebuild,
+  udiskie-0.3.7.ebuild, udiskie-0.3.9.ebuild, udiskie-0.3.10.ebuild:
+  Use slot dep for pygobject.
+
+*udiskie-0.3.10 (01 Oct 2011)
+
+  01 Oct 2011; Tim Harder <radhermit@gentoo.org> +udiskie-0.3.10.ebuild:
+  Version bump.
+
+*udiskie-0.3.9 (17 Jul 2011)
+
+  17 Jul 2011; Samuli Suominen <ssuominen@gentoo.org> +udiskie-0.3.9.ebuild:
+  Version bump.
+
+*udiskie-0.3.7 (20 May 2011)
+
+  20 May 2011; Samuli Suominen <ssuominen@gentoo.org> +udiskie-0.3.7.ebuild:
+  Version bump.
+
+  12 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> udiskie-0.3.6.ebuild:
+  amd64/x86 stable
+
+*udiskie-0.3.6 (18 Jan 2011)
+
+  18 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> udiskie-0.3.5.ebuild,
+  +udiskie-0.3.6.ebuild:
+  Version bump and missing pygobject runtime depend wrt #351716 by Lucian
+  Muresan.
+
+  28 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> udiskie-0.3.5.ebuild:
+  Missing dev-python/dbus-python runtime depend wrt #349983 by Dávid Zilahi.
+
+  26 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> udiskie-0.3.5.ebuild:
+  amd64 stable wrt #349581
+
+  25 Dec 2010; Thomas Kahle <tomka@gentoo.org> udiskie-0.3.5.ebuild:
+  x86 stable per bug 349581
+
+*udiskie-0.3.5 (09 Dec 2010)
+
+  09 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> +udiskie-0.3.5.ebuild:
+  Version bump wrt #348286 by Christian Faulhammer.
+
+*udiskie-0.3.3 (10 Oct 2010)
+
+  10 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> +udiskie-0.3.3.ebuild:
+  Version bump wrt #340373 by Roman Sergeev.
+
+  30 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> udiskie-0.3.0.ebuild:
+  amd64/x86 stable
+
+*udiskie-0.3.0 (21 Aug 2010)
+
+  21 Aug 2010; Samuli Suominen <ssuominen@gentoo.org> +udiskie-0.3.0.ebuild:
+  Initial commit.

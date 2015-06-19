@@ -1,0 +1,11 @@
+# ChangeLog for dev-java/felix-utils
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/felix-utils/ChangeLog,v 1.1 2013/10/02 22:18:52 tomwij Exp $
+
+*felix-utils-1.2.0 (02 Oct 2013)
+
+  02 Oct 2013; Tom Wijsman <TomWij@gentoo.org> +felix-utils-1.2.0.ebuild,
+  +files/felix-utils-1.2.0-build.xml, +files/felix-utils-1.2.0-java-fixes.patch,
+  +metadata.xml:
+  New package for dev-java/felix-utils, Felix Utils. Indirect dependency needed
+  for Struts 2.

@@ -1,0 +1,11 @@
+--- src/Makefile.am.orig	2011-12-30 21:17:04.233158203 +0200
++++ src/Makefile.am	2011-12-30 21:18:42.186354842 +0200
+@@ -1,7 +1,7 @@
+ AUTOMAKE_OPTIONS = foreign no-dependencies
+ 
+ if COMPILER_IS_GCC
+-AM_CFLAGS = -Wall -Werror
++AM_CFLAGS = -Wall
+ if BUILD_WITH_DEBUG
+ AM_CFLAGS += -Wextra -g -O0
+ endif

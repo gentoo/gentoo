@@ -1,0 +1,73 @@
+# ChangeLog for app-emacs/edb
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/edb/ChangeLog,v 1.14 2014/08/29 20:47:08 ulm Exp $
+
+  29 Aug 2014; Ulrich Müller <ulm@gentoo.org> edb-1.31.ebuild:
+  Replace einstall by emake.
+
+  24 Feb 2014; Ulrich Müller <ulm@gentoo.org> edb-1.31.ebuild,
+  +files/50edb-gentoo.el, -files/52edb-gentoo.el:
+  Update ebuild to EAPI 5. Specify LICENSE more precisely. Move site-init file
+  to canonical name.
+
+  09 Sep 2010; Ulrich Mueller <ulm@gentoo.org> edb-1.31.ebuild,
+  +files/edb-1.31-skram-path.patch:
+  Fix test failure caused by wrong load-path, bug 319385.
+
+  29 Jan 2009; Christian Faulhammer <fauli@gentoo.org>
+  -files/edb-info-direntry.patch, -edb-1.29.ebuild:
+  clean up
+
+*edb-1.31 (29 May 2008)
+
+  29 May 2008; Ulrich Mueller <ulm@gentoo.org> -edb-1.28_p2.ebuild,
+  +edb-1.31.ebuild:
+  Version bump. Remove old.
+
+*edb-1.29 (17 Jan 2008)
+
+  17 Jan 2008; Ulrich Mueller <ulm@gentoo.org> -edb-1.28.ebuild,
+  -edb-1.28_p1.ebuild, +edb-1.29.ebuild:
+  Version bump. LICENSE changed to GPL-3. Remove old.
+
+*edb-1.28_p2 (27 Dec 2007)
+
+  27 Dec 2007; Ulrich Mueller <ulm@gentoo.org> +edb-1.28_p2.ebuild:
+  Version bump.
+
+*edb-1.28_p1 (13 Dec 2007)
+
+  13 Dec 2007; Ulrich Mueller <ulm@gentoo.org> -files/51edb-gentoo.el,
+  -edb-1.27_p2.ebuild, +edb-1.28_p1.ebuild:
+  Version bump, remove old.
+
+  07 Oct 2007; Ulrich Mueller <ulm@gentoo.org> -files/50edb-gentoo.el,
+  -edb-1.25.ebuild:
+  Remove old.
+
+*edb-1.28 (29 May 2007)
+
+  29 May 2007; Ulrich Mueller <ulm@gentoo.org> files/51edb-gentoo.el,
+  +files/52edb-gentoo.el, +edb-1.28.ebuild:
+  Version bump. Fix autoload command in site file.
+
+*edb-1.27_p2 (20 May 2007)
+
+  20 May 2007; Ulrich Mueller <ulm@gentoo.org> +files/51edb-gentoo.el,
+  +edb-1.27_p2.ebuild:
+  Version bump; updated HOMEPAGE and SRC_URI; use install system of package;
+  added Info dir entry.
+
+  27 Apr 2007; Ulrich Mueller <ulm@gentoo.org> files/50edb-gentoo.el:
+  Don't load at Emacs startup; use autoload instead.
+
+  08 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/digest-edb-1.25, Manifest:
+  recreate Manifest
+
+*edb-1.25 (04 Sep 2005)
+
+  04 Sep 2005; Matthew Kennedy <mkennedy@gentoo.org> +files/50edb-gentoo.el,
+  +metadata.xml, +edb-1.25.ebuild:
+  Initial port.  Ebuild contributed by Matthew Kennedy <mkennedy@gentoo.org>
+

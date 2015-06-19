@@ -1,0 +1,44 @@
+--- a/configure.in
++++ b/configure.in
+@@ -20,6 +20,8 @@
+ AC_CHECK_PROG(SMIDUMP, smidump, smidump)
+ AC_SUBST(SMIDUMP)
+ 
++PKG_PROG_PKG_CONFIG
++
+ AC_DEFINE_UNQUOTED(SCLI_PLUGIN_PATH, "${pkglibdir}")
+ 
+ AC_MSG_CHECKING([whether to enable -Wall])
+@@ -33,19 +35,24 @@
+ 
+ dnl Checks for libraries.
+ 
+-AM_PATH_GLIB_2_0(2.0.0, [], AC_MSG_ERROR(scli needs GLIB), gmodule)
+-AM_PATH_GNET_2_0(2.0.0, [], AC_MSG_ERROR(scli needs GNET))
++PKG_CHECK_MODULES(GLIB, glib-2.0 gmodule-2.0 gthread-2.0,[
++	LIBS="$LIBS $GLIB_LIBS"
++	CPPFLAGS="$CPPFLAGS $GLIB_CFLAGS"
++	], AC_MSG_ERROR(scli needs GLIB))
++PKG_CHECK_MODULES(GNET, gnet-2.0 >= 2.0.0,[
++	LIBS="$LIBS $GNET_LIBS"
++	CPPFLAGS="$CPPFLAGS $GNET_CFLAGS"
++	], AC_MSG_ERROR(scli needs GNET))
+ dnl AM_PATH_GLIB(1.2.0, [], AC_MSG_ERROR(scli needs GLIB), gmodule)
+ dnl AM_PATH_GTK(1.2.0, [], AC_MSG_ERROR(scli needs GTK))
+-AM_PATH_XML2(2.0.0, [], AC_MSG_ERROR(scli needs libxml2))
++PKG_CHECK_MODULES(XML2, libxml-2.0 >= 2.0.0,[
++	LIBS="$LIBS $XML2_LIBS"
++	CPPFLAGS="$CPPFLAGS $XML2_CFLAGS"
++	], AC_MSG_ERROR(scli needs libxml2))
+ PKG_CHECK_MODULES(GSNMP, gsnmp, have_gsnmp=true, have_gsnmp=false)
+ AC_SUBST(GSNMP_CFLAGS)
+ AC_SUBST(GSNMP_LIBS)
+-AC_CHECK_LIB(ncurses, initscr, [],
+-  AC_CHECK_LIB(curses, initscr, [],
+-    AC_MSG_ERROR([scli requires curses functions; install curses first])
+-  )
+-)
++PKG_CHECK_MODULES(ncurses,ncurses,LIBS="$LIBS $ncurses_LIBS",AC_MSG_ERROR([ncurses is required]))
+ AC_CHECK_LIB(readline, readline, [],
+   AC_MSG_ERROR([scli requires readline functions; install libreadline first])
+ )

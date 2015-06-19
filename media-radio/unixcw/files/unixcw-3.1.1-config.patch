@@ -1,0 +1,103 @@
+# Fix wrong conditional logic
+--- configure.ac.orig	2012-08-05 18:19:57.000000000 +0200
++++ configure.ac	2012-08-06 17:20:50.000000000 +0200
+@@ -101,11 +101,11 @@
+ 
+ # disable_alsa - 'no' by default
+ AC_ARG_ENABLE(alsa,
+-    AS_HELP_STRING([--disable-alsa], [disable support for ALSA audio output]),
+-    [disable_alsa=yes],
+-    [disable_alsa=no])
++    AS_HELP_STRING([--enable-alsa], [enable support for ALSA audio output]),
++    [enable_alsa=$enableval],
++    [enable_alsa=yes])
+ AC_MSG_CHECKING([whether to include ALSA audio support])
+-if test "$disable_alsa" = "no" ; then
++if test "$enable_alsa" = "yes" ; then
+     AC_MSG_RESULT(yes)
+ else
+     AC_MSG_RESULT(no)
+@@ -114,11 +114,11 @@
+ 
+ # disable_pulseaudio - 'no' by default
+ AC_ARG_ENABLE(pulseaudio,
+-    AS_HELP_STRING([--disable-pulseaudio], [disable support for PulseAudio audio output]),
+-    [disable_pulseaudio=yes],
+-    [disable_pulseaudio=no])
++    AS_HELP_STRING([--enable-pulseaudio], [enable support for PulseAudio audio output]),
++    [enable_pulseaudio=$enableval],
++    [enable_pulseaudio=yes])
+ AC_MSG_CHECKING([whether to include PulseAudio audio support])
+-if test "$disable_pulseaudio" = "no" ; then
++if test "$enable_pulseaudio" = "yes" ; then
+     AC_MSG_RESULT(yes)
+ else
+     AC_MSG_RESULT(no)
+@@ -127,11 +127,11 @@
+ 
+ # disable_cwcp - 'no' by default
+ AC_ARG_ENABLE(cwcp,
+-    AS_HELP_STRING([--disable-cwcp], [do not build cwcp (application with curses user interface)]),
+-    [disable_cwcp=yes],
+-    [disable_cwcp=no])
++    AS_HELP_STRING([--enable-cwcp], [build cwcp (application with curses user interface)]),
++    [enable_cwcp=$enableval],
++    [enable_cwcp=yes])
+ AC_MSG_CHECKING([whether to build cwcp])
+-if test "$disable_cwcp" = "no" ; then
++if test "$enable_cwcp" = "yes" ; then
+     AC_MSG_RESULT(yes)
+ else
+     AC_MSG_RESULT(no)
+@@ -140,11 +140,11 @@
+ 
+ # disable_xcwcp - 'no' by default
+ AC_ARG_ENABLE(xcwcp,
+-    AS_HELP_STRING([--disable-xcwcp], [do not build xcwcp (application with Qt4 user interface)]),
+-    [disable_xcwcp=yes],
+-    [disable_xcwcp=no])
++    AS_HELP_STRING([--enable-xcwcp], [build xcwcp (application with Qt4 user interface)]),
++    [disable_xcwcp=$enableval],
++    [disable_xcwcp=yes])
+ AC_MSG_CHECKING([whether to build xcwcp])
+-if test "$disable_xcwcp" = "no" ; then
++if test "$disable_xcwcp" = "yes" ; then
+     AC_MSG_RESULT(yes)
+ else
+     AC_MSG_RESULT(no)
+@@ -219,7 +219,7 @@
+ 
+ 
+ 
+-if test "$disable_alsa" = "yes" ; then
++if test "$enable_alsa" = "no" ; then
+     WITH_ALSA='no'
+ else
+     AC_CHECK_LIB(asound, snd_pcm_open)
+@@ -246,7 +246,7 @@
+ 
+ 
+ 
+-if test "$disable_pulseaudio" = "yes" ; then
++if test "$enable_pulseaudio" = "no" ; then
+     WITH_PULSEAUDIO='no'
+ else
+     AC_CHECK_LIB(pulse-simple, pa_simple_new)
+@@ -265,7 +265,7 @@
+ 
+ 
+ 
+-if test "$disable_cwcp" = "yes" ; then
++if test "$enable_cwcp" = "no" ; then
+    WITH_CWCP='no'
+ else
+     AC_CHECK_LIB(curses, initscr)
+@@ -279,7 +279,7 @@
+ 
+ 
+ 
+-if test "$disable_xcwcp" = "yes" ; then
++if test "$enable_xcwcp" = "no" ; then
+     WITH_XCWCP='no'
+ else
+     # autodetection of Qt4 dependencies

@@ -1,0 +1,30 @@
+# ChangeLog for dev-lang/gwydion-dylan-bin
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/gwydion-dylan-bin/ChangeLog,v 1.7 2012/12/20 21:51:01 pacho Exp $
+
+  20 Dec 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer, bug #81411
+
+*gwydion-dylan-bin-2.4.0-r1 (09 Mar 2008)
+
+  09 Mar 2008; Luis F. Araujo <araujo@gentoo.org> -files/20gwydion-dylan,
+  +files/20gwydion-dylan-bin, -gwydion-dylan-bin-2.4.0.ebuild,
+  +gwydion-dylan-bin-2.4.0-r1.ebuild:
+  Adding new revision
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  gwydion-dylan-bin-2.4.0.ebuild:
+  (QA) RESTRICT clean up.
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org>
+  gwydion-dylan-bin-2.4.0.ebuild:
+  Fix *initd, *confd and *envd calls (#17388, #174266)
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*gwydion-dylan-bin-2.4.0 (02 Aug 2005)
+
+  02 Aug 2005; Luis F. Araujo <araujo@gentoo.org> +files/20gwydion-dylan,
+  +metadata.xml, +gwydion-dylan-bin-2.4.0.ebuild:
+  Added The Gwydion-Dylan Compiler for the Dylan Programming Language

@@ -1,0 +1,83 @@
+# ChangeLog for dev-java/jarbundler
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jarbundler/ChangeLog,v 1.19 2015/03/27 10:25:25 ago Exp $
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> jarbundler-1.8.1-r2.ebuild:
+  Stable for x86, wrt bug #535070
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> jarbundler-1.8.1-r2.ebuild:
+  Stable for amd64, wrt bug #535070
+
+*jarbundler-2.3.1 (23 Mar 2015)
+
+  23 Mar 2015; Patrice Clement <monsieurp@gentoo.org> +jarbundler-2.3.1.ebuild:
+  Version bump. Fix bug 541480.
+
+*jarbundler-1.8.1-r2 (03 Aug 2014)
+
+  03 Aug 2014; Ralph Sennhauser <sera@gentoo.org> +jarbundler-1.8.1-r2.ebuild:
+  EAPI bump, add slot deps, use java_prepare and cleanup
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  jarbundler-1.8.1-r1.ebuild:
+  Transfer Prefix keywords
+
+  02 May 2008; Markus Meier <maekke@gentoo.org> jarbundler-1.8.1-r1.ebuild:
+  amd64 stable, bug #212644
+
+  08 Mar 2008; Markus Meier <maekke@gentoo.org> jarbundler-1.8.1-r1.ebuild:
+  x86 stable, bug #212644
+
+  15 Nov 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -jarbundler-1.8.1.ebuild:
+  Delete unused revision.
+
+  15 Nov 2007; Petteri Räty <betelgeuse@gentoo.org>
+  jarbundler-1.8.1-r1.ebuild:
+  Fix dev-java/xerces dep so that it doesn't match multiple slots.
+
+  22 Jul 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  jarbundler-1.7.ebuild:
+  Marked stable on amd64 as per bug 184941.
+
+  14 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  jarbundler-1.7.ebuild:
+  stable x86, bug 184941
+
+*jarbundler-1.8.1-r1 (13 Jul 2007)
+
+  13 Jul 2007; Petteri Räty <betelgeuse@gentoo.org> metadata.xml,
+  +jarbundler-1.8.1-r1.ebuild:
+  Add java-pkg_register-ant-task call and do src_compile via EANT_* variables.
+  Also remove compnerd from metadata.xml.
+
+  13 Jul 2007; Petteri Räty <betelgeuse@gentoo.org> jarbundler-1.7.ebuild:
+  Fix building with the doc use flag pointed in bug #184941. Also remove
+  compnerd from metadata.xml.
+
+*jarbundler-1.8.1 (11 Jul 2007)
+
+  11 Jul 2007; Alistair John Bush <ali_bush@gentoo.org>
+  +jarbundler-1.8.1.ebuild:
+  Bump jarbunder to latest version.
+
+  09 May 2007; Vlastimil Babka <caster@gentoo.org> -jarbundler-1.4.ebuild:
+  Remove unused version, which symlinked to ant-core/lib.
+
+  04 May 2007; Vlastimil Babka <caster@gentoo.org> jarbundler-1.7.ebuild:
+  Fix compiling with JAVA_PKG_STRICT and record ant-core to package.env DEPEND.
+
+*jarbundler-1.7 (30 Apr 2007)
+
+  30 Apr 2007; Alistair John Bush <ali_bush@gentoo.org>
+  +jarbundler-1.7.ebuild:
+  Version bump to latest versioned release, updated java eclasses while at it
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*jarbundler-1.4 (13 Dec 2005)
+
+  13 Dec 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  +jarbundler-1.4.ebuild:
+  Initial import.

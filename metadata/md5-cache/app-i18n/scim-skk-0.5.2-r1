@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=|| ( >=app-i18n/scim-1.2 >=app-i18n/scim-cvs-1.2 ) nls? ( sys-devel/gettext ) virtual/pkgconfig
+DESCRIPTION=Japanese input method SKK IMEngine for SCIM
+HOMEPAGE=http://scim-imengine.sourceforge.jp/index.cgi?cmd=view;name=SCIMSKK
+IUSE=nls
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=|| ( >=app-i18n/scim-1.2 >=app-i18n/scim-cvs-1.2 ) || ( app-i18n/skk-jisyo virtual/skkserv ) nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://sourceforge.jp/scim-imengine/18121/scim-skk-0.5.2.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9f49d20f3c74faca84b2e334e68b0dd4

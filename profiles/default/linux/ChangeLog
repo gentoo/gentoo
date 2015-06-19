@@ -1,0 +1,43 @@
+# ChangeLog for the default/linux profile directory
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/ChangeLog,v 1.8 2015/01/30 22:06:52 blueness Exp $
+
+  05 Jan 2015; William Hubbs <williamh@gentoo.org> packages:
+  Add iproute2 to system set for bug #189149
+
+  30 Sep 2014; Fabian Groffen <grobian@gentoo.org> +ia64/13.0/package.use.mask,
+  ia64/13.0/use.mask, powerpc/ppc32/13.0/package.use.mask,
+  powerpc/ppc64/13.0/package.use.mask, sparc/13.0/package.use.mask:
+  Mask redis for mail-mta/exim to allow stabling, bugs #489676, #517934
+
+  16 Aug 2014; Anthony G. Basile <blueness@gentoo.org> +uclibc/amd64/eapi,
+  +uclibc/amd64/make.defaults, +uclibc/amd64/package.mask,
+  +uclibc/amd64/parent, +uclibc/amd64/use.force, +uclibc/amd64/use.mask,
+  +uclibc/arm/armv6j/eapi, +uclibc/arm/armv6j/make.defaults,
+  +uclibc/arm/armv6j/parent, +uclibc/arm/armv7a/eapi,
+  +uclibc/arm/armv7a/make.defaults, +uclibc/arm/armv7a/parent,
+  +uclibc/arm/eapi, +uclibc/arm/make.defaults, +uclibc/arm/parent,
+  +uclibc/arm/use.force, +uclibc/arm/use.mask, +uclibc/eapi,
+  +uclibc/make.defaults, +uclibc/mips/eapi, +uclibc/mips/make.defaults,
+  +uclibc/mips/mipsel/eapi, +uclibc/mips/mipsel/make.defaults,
+  +uclibc/mips/mipsel/parent, +uclibc/mips/package.mask, +uclibc/mips/parent,
+  +uclibc/mips/use.force, +uclibc/mips/use.mask, +uclibc/package.mask,
+  +uclibc/packages, +uclibc/packages.build, +uclibc/parent, +uclibc/ppc/eapi,
+  +uclibc/ppc/make.defaults, +uclibc/ppc/package.mask,
+  +uclibc/ppc/package.use.mask, +uclibc/ppc/parent, +uclibc/ppc/use.force,
+  +uclibc/ppc/use.mask, +uclibc/use.force, +uclibc/use.mask, +uclibc/x86/eapi,
+  +uclibc/x86/make.defaults, +uclibc/x86/parent, +uclibc/x86/use.force,
+  +uclibc/x86/use.mask:
+  Migrate hardened/linux/uclibc to default/linux/uclibc
+
+  22 Apr 2014; Mike Frysinger <vapier@gentoo.org> packages.build:
+  Add pkgconfig to stage2 #507930.
+
+  17 Apr 2014; Patrick Lauer <patrick@gentoo.org> package.use.mask:
+  Fallout from ruby1.8 masking #505226: Mask
+  app-mobilephone/obexftp-0.23-r1[ruby]
+
+  19 Mar 2014; Andreas K. Huettel <dilfridge@gentoo.org> 13.0/desktop/eapi,
+  13.0/developer/eapi, +eapi:
+  Add ChangeLog, increase EAPI to 5
+

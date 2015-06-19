@@ -1,0 +1,41 @@
+# ChangeLog for app-vim/pgn-syntax
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/pgn-syntax/ChangeLog,v 1.11 2012/12/07 18:41:13 ulm Exp $
+
+  07 Dec 2012; Ulrich Müller <ulm@gentoo.org> pgn-syntax-1.0.ebuild:
+  Fix LICENSE, bug 445808.
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org> pgn-syntax-1.0.ebuild:
+  Drop to ~mips
+
+  23 Nov 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  pgn-syntax-1.0.ebuild:
+  stable on ppc
+
+  07 Apr 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove ciaranm from metadata.xml.
+
+  29 Sep 2005; Luis Medinas <metalgod@gentoo.org> pgn-syntax-1.0.ebuild:
+  Marked Stable on amd64
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> pgn-syntax-1.0.ebuild:
+  Mark 1.0 stable on alpha
+
+  12 Jun 2005; David Holm <dholm@gentoo.org> pgn-syntax-1.0.ebuild:
+  Added to ~ppc.
+
+  06 Apr 2005; Markus Rothe <corsair@gentoo.org> pgn-syntax-1.0.ebuild:
+  Stable on ppc64
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> pgn-syntax-1.0.ebuild:
+  stable on ia64
+
+  06 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> pgn-syntax-1.0.ebuild:
+  x86 sparc mips stable
+
+*pgn-syntax-1.0 (27 Feb 2005)
+
+  27 Feb 2005; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +pgn-syntax-1.0.ebuild:
+  New package
+

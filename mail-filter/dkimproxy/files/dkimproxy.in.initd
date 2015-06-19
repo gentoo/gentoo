@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/dkimproxy/files/dkimproxy.in.initd,v 1.1 2013/02/28 19:14:34 zx2c4 Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting dkimproxy.in"
+	start-stop-daemon --start --exec /usr/bin/dkimproxy.in --pidfile /var/run/dkimproxy.in.pid -- --conf_file /etc/dkimproxy_in.conf --daemonize --group=nobody --user=nobody --pidfile=/var/run/dkimproxy.in.pid
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping dkimproxy.in"
+	start-stop-daemon --stop --exec /usr/bin/dkimproxy.in --pidfile /var/run/dkimproxy.in.pid
+	eend $?
+}

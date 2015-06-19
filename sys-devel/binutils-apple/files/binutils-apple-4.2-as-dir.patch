@@ -1,0 +1,45 @@
+--- as/driver.c
++++ as/driver.c
+@@ -230,7 +230,11 @@
+ 	/*
+ 	 * If this assembler exist try to run it else print an error message.
+ 	 */
++#ifndef ASLIBEXECDIR
+ 	as = makestr(prefix, LIB, arch_name, AS, NULL);
++#else
++	as = makestr(ASLIBEXECDIR, arch_name, AS, NULL);
++#endif
+ 	if(access(as, F_OK) == 0){
+ 	    argv[0] = as;
+ 	    if(execute(argv, verbose))
+@@ -238,6 +242,9 @@
+ 	    else
+ 		exit(1);
+ 	}
++#ifdef ASLIBEXECDIR
++    as_local = "";
++#else
+ 	as_local = makestr(prefix, LOCALLIB, arch_name, AS, NULL);
+ 	if(access(as_local, F_OK) == 0){
+ 	    argv[0] = as_local;
+@@ -246,10 +253,12 @@
+ 	    else
+ 		exit(1);
+ 	}
++#endif
+ 	printf("%s: assembler (%s or %s) for architecture %s not installed\n",
+ 	       progname, as, as_local, arch_name);
+ 	arch_flags = get_arch_flags();
+ 	count = 0;
++#ifndef ASLIBEXECDIR
+ 	for(i = 0; arch_flags[i].name != NULL; i++){
+ 	    as = makestr(prefix, LIB, arch_flags[i].name, AS, NULL);
+ 	    if(access(as, F_OK) == 0){
+@@ -270,6 +279,7 @@
+ 		}
+ 	    }
+ 	}
++#endif
+ 	if(count == 0)
+ 	    printf("%s: no assemblers installed\n", progname);
+ 	exit(1);

@@ -1,0 +1,110 @@
+# ChangeLog for app-dicts/aspell-pl
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-pl/ChangeLog,v 1.28 2014/01/05 11:06:27 pacho Exp $
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> -aspell-pl-6.0.20061121.0.ebuild,
+  metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  27 Aug 2012; Raúl Porcel <armin76@gentoo.org>
+  aspell-pl-6.0.20120418.0.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #418531
+
+  08 Aug 2012; Brent Baude <ranger@gentoo.org> aspell-pl-6.0.20120418.0.ebuild:
+  Marking aspell-pl-6.0.20120418.0 ppc for bug 418531
+
+  06 Aug 2012; Brent Baude <ranger@gentoo.org> aspell-pl-6.0.20120418.0.ebuild:
+  Marking aspell-pl-6.0.20120418.0 ppc64 for bug 418531
+
+  04 Aug 2012; Johannes Huber <johu@gentoo.org>
+  aspell-pl-6.0.20120418.0.ebuild:
+  Stable for x86, wrt bug #418531
+
+  03 Aug 2012; Markos Chandras <hwoarang@gentoo.org>
+  aspell-pl-6.0.20120418.0.ebuild:
+  Stable on amd64 wrt bug #418531
+
+  02 Aug 2012; Markus Meier <maekke@gentoo.org>
+  aspell-pl-6.0.20120418.0.ebuild:
+  arm stable, bug #418531
+
+  01 Aug 2012; Jeroen Roovers <jer@gentoo.org> aspell-pl-6.0.20120418.0.ebuild:
+  Stable for HPPA (bug #418531).
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org>
+  aspell-pl-6.0.20061121.0.ebuild, aspell-pl-6.0.20120418.0.ebuild:
+  keyword ~amd64-fbsd
+
+  18 Apr 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  aspell-pl-6.0.20120418.0.ebuild:
+  aspell-dict goes last on the inherit line
+
+*aspell-pl-6.0.20120418.0 (18 Apr 2012)
+
+  18 Apr 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  +aspell-pl-6.0.20120418.0.ebuild, -aspell-pl-0.50.2.ebuild,
+  -aspell-pl-0.51.0.ebuild:
+  Add latest aspell-pl. Thanks to Sławomir Nizio for the ebuild.
+
+  08 Oct 2010; Mart Raudsepp <leio@gentoo.org> aspell-pl-0.50.2.ebuild,
+  aspell-pl-0.51.0.ebuild:
+  Drop to ~mips
+
+  18 Oct 2009; Mark Loeser <halcy0n@gentoo.org> aspell-pl-0.50.2.ebuild,
+  aspell-pl-0.51.0.ebuild, aspell-pl-6.0.20061121.0.ebuild:
+  QA fixes; IUSE is not defined
+
+  03 Nov 2007; Roy Marples <uberlord@gentoo.org>
+  aspell-pl-6.0.20061121.0.ebuild:
+  Keyworded ~sparc-fbsd and ~x86-fbsd
+
+  15 Aug 2007; Jeroen Roovers <jer@gentoo.org>
+  aspell-pl-6.0.20061121.0.ebuild:
+  Stable for HPPA (bug #178690).
+
+  09 Aug 2007; Markus Rothe <corsair@gentoo.org>
+  aspell-pl-6.0.20061121.0.ebuild:
+  Stable on ppc64; bug #178690
+
+  05 Aug 2007; Raúl Porcel <armin76@gentoo.org>
+  aspell-pl-6.0.20061121.0.ebuild:
+  alpha/ia64/x86 stable wrt #178690
+
+  05 Aug 2007; nixnut <nixnut@gentoo.org> aspell-pl-6.0.20061121.0.ebuild:
+  Stable on ppc wrt bug 178690
+
+  04 Aug 2007; Ferris McCormick <fmccor@gentoo.org>
+  aspell-pl-6.0.20061121.0.ebuild:
+  Sparc stable --- part of Bug #178690
+
+  04 Aug 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  aspell-pl-6.0.20061121.0.ebuild:
+  Marked stable on amd64 as per bug 178690.
+
+*aspell-pl-6.0.20061121.0 (03 Aug 2007)
+
+  03 Aug 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  +aspell-pl-6.0.20061121.0.ebuild:
+  Version bump as per bug 169417. Thanks to Adam Piątyszek for the ebuild!
+
+  01 Dec 2006; Kevin F. Quinn <kevquinn@gentoo.org> aspell-pl-0.50.2.ebuild,
+  aspell-pl-0.51.0.ebuild:
+  Ebuild cleanups for bug #132718
+
+*aspell-pl-0.51.0 (16 May 2004)
+
+  16 May 2004; Seemant Kulleen <seemant@gentoo.org> +metadata.xml,
+  +aspell-pl-0.51.0.ebuild:
+  version bump
+
+*aspell-pl-0.50.2 (22 Oct 2002)
+
+  02 Dec 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
+  Moved from app-i18n to app-dicts
+
+  22 Oct 2002; Seemant Kulleen <seemant@gentoo.org> aspell-pl-0.50.2.ebuild
+  ChangeLog files/digest-aspell-pl-0.50.2 :
+
+  Polish language dictionary for aspell.

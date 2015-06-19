@@ -1,0 +1,245 @@
+# ChangeLog for dev-libs/libmcs
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmcs/ChangeLog,v 1.61 2014/08/10 20:36:29 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> libmcs-0.7.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  08 May 2012; Jeff Horelick <jdhore@gentoo.org> -libmcs-0.7.1-r2.ebuild,
+  -libmcs-0.7.1-r3.ebuild:
+  Remove old.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> libmcs-0.7.1-r2.ebuild,
+  libmcs-0.7.1-r3.ebuild, libmcs-0.7.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> libmcs-0.7.2.ebuild:
+  alpha/sparc stable wrt #403719
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> libmcs-0.7.2.ebuild:
+  Marking libmcs-0.7.2 ppc64 for bug 403719
+
+  23 Feb 2012; Brent Baude <ranger@gentoo.org> libmcs-0.7.2.ebuild:
+  Marking libmcs-0.7.2 ppc for bug 403719
+
+  17 Feb 2012; Jeff Horelick <jdhore@gentoo.org> libmcs-0.7.2.ebuild:
+  marked x86 per bug 403719
+
+  17 Feb 2012; Jeff Horelick <jdhore@gentoo.org> libmcs-0.7.2.ebuild:
+  Remove the dodoc and add a DOCS variable since the ebuild is EAPI=4.
+
+  17 Feb 2012; Agostino Sarubbo <ago@gentoo.org> libmcs-0.7.2.ebuild:
+  Stable for amd64, wrt bug #403719
+
+  17 Feb 2012; Jeroen Roovers <jer@gentoo.org> libmcs-0.7.2.ebuild:
+  Stable for HPPA (bug #403719).
+
+  03 Feb 2012; Jeff Horelick <jdhore@gentoo.org> libmcs-0.7.1-r2.ebuild,
+  libmcs-0.7.1-r3.ebuild, libmcs-0.7.2.ebuild, metadata.xml:
+  Fix dependency to use libmowgli-1. Also take over maintenance as I know
+  chainsaw no longer wants it and do a quick & dirty conversion to EAPI=4.
+
+*libmcs-0.7.2 (02 Sep 2011)
+
+  02 Sep 2011; Tony Vroon <chainsaw@gentoo.org> libmcs-0.7.1-r2.ebuild,
+  libmcs-0.7.1-r3.ebuild, +libmcs-0.7.2.ebuild:
+  Version bump. Correct homepage.
+
+*libmcs-0.7.1-r3 (02 Sep 2011)
+
+  02 Sep 2011; Tony Vroon <chainsaw@gentoo.org> +libmcs-0.7.1-r3.ebuild:
+  Revision bump. EAPI 4 port by Agostino "ago" Sarubbo in bug #381335.
+
+  14 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  libmcs-0.7.1-r2.ebuild:
+  Transfer Prefix keywords
+
+  14 Mar 2009; nixnut <nixnut@gentoo.org> libmcs-0.7.1-r2.ebuild:
+  ppc stable #247287
+
+  13 Dec 2008; Tobias Klausmann <klausman@gentoo.org>
+  libmcs-0.7.1-r2.ebuild:
+  Stable on alpha, bug #247287
+
+  30 Nov 2008; Raúl Porcel <armin76@gentoo.org> libmcs-0.7.1-r2.ebuild:
+  sparc/x86 stable wrt #247287
+
+  27 Nov 2008; Jeroen Roovers <jer@gentoo.org> libmcs-0.7.1-r2.ebuild:
+  Stable for HPPA (bug #247287).
+
+  26 Nov 2008; Brent Baude <ranger@gentoo.org> libmcs-0.7.1-r2.ebuild:
+  Marking libmcs-0.7.1-r2 ppc64 for bug 247287
+
+  24 Nov 2008; <chainsaw@gentoo.org> libmcs-0.7.1-r2.ebuild:
+  Mark stable on AMD64 (Audacious dependency) as it blocks GCC 4.3
+  stabilisation efforts. For bug #247287 by Yaroslav Gorbunov
+  <yagorbunov@mail.ru>.
+
+  06 Oct 2008; Diego Pettenò <flameeyes@gentoo.org> libmcs-0.7.1-r2.ebuild:
+  Fix build-time dependencies.
+
+*libmcs-0.7.1-r2 (27 May 2008)
+
+  27 May 2008; <chainsaw@gentoo.org> -libmcs-0.7.1-r1.ebuild,
+  +libmcs-0.7.1-r2.ebuild:
+  Drop broken KDE functionality more aggressively, closes bug #223849.
+
+  18 May 2008; Samuli Suominen <drac@gentoo.org> libmcs-0.6.0.ebuild:
+  Move pkgconfig to DEPEND.
+
+*libmcs-0.7.1-r1 (17 May 2008)
+
+  17 May 2008; <chainsaw@gentoo.org> +libmcs-0.7.1-r1.ebuild:
+  Drop KDE functionality as it stopped working. Simplify ebuild. Closes bug
+  #222453.
+
+*libmcs-0.7.1 (20 Apr 2008)
+
+  20 Apr 2008; <chainsaw@gentoo.org> libmcs-0.7.0.ebuild,
+  +libmcs-0.7.1.ebuild:
+  Upstream version bump to 0.7.1; the gconf backend now functions correctly.
+  Revise pkg-config dependency.
+
+  11 Apr 2008; Tony Vroon <chainsaw@gentoo.org> libmcs-0.6.0.ebuild,
+  libmcs-0.7.0.ebuild:
+  Add explicit pkg-config dependency to make Evil Compile Person happy,
+  closes bug #216401.
+
+*libmcs-0.7.0 (18 Feb 2008)
+
+  18 Feb 2008; Tony Vroon <chainsaw@gentoo.org> -libmcs-0.4.1.ebuild,
+  -libmcs-0.5.0.ebuild, +libmcs-0.7.0.ebuild:
+  Version bump. Remove old ebuilds, MIPS broke 0.4.1 wrt KDE dependencies.
+
+  29 Jan 2008; Samuli Suominen <drac@gentoo.org> libmcs-0.6.0.ebuild:
+  amd64 stable wrt #198820
+
+  16 Jan 2008; Raúl Porcel <armin76@gentoo.org> libmcs-0.6.0.ebuild:
+  alpha stable wrt #198820, thanks to Tobias Klausmann for testing
+
+  16 Jan 2008; Ferris McCormick <fmccor@gentoo.org> libmcs-0.6.0.ebuild:
+  Sparc stable, part of Bug #198820.
+
+  16 Jan 2008; Brent Baude <ranger@gentoo.org> libmcs-0.6.0.ebuild:
+  Marking libmcs-0.6.0 ppc and ppc64 for bug 198820
+
+  15 Jan 2008; Jeroen Roovers <jer@gentoo.org> libmcs-0.6.0.ebuild:
+  Stable for HPPA (bug #198820).
+
+  15 Jan 2008; Tony Vroon <chainsaw@gentoo.org> libmcs-0.6.0.ebuild:
+  Marked stable on X86.
+
+  14 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org> libmcs-0.5.0.ebuild:
+  ppc. stable
+
+  05 Dec 2007; Joshua Kinard <kumba@gentoo.org> libmcs-0.6.0.ebuild:
+  Marked unstable on mips.
+
+  01 Dec 2007; Markus Rothe <corsair@gentoo.org> libmcs-0.5.0.ebuild:
+  Stable on ppc64
+
+  29 Oct 2007; Raúl Porcel <armin76@gentoo.org> libmcs-0.6.0.ebuild:
+  Add ~alpha wrt #196169, thanks to Tobias Klausmann for testing
+
+  23 Oct 2007; Jeroen Roovers <jer@gentoo.org> libmcs-0.5.0.ebuild:
+  Stable for HPPA too (audacious).
+
+  22 Oct 2007; Roy Marples <uberlord@gentoo.org> libmcs-0.6.0.ebuild:
+  Keyworded #x86-fbsd, #196169.
+
+  18 Oct 2007; Raúl Porcel <armin76@gentoo.org> libmcs-0.4.1.ebuild:
+  alpha stable, thanks to Tobias Klausmann for testing
+
+  17 Oct 2007; Tony Vroon <chainsaw@gentoo.org> libmcs-0.4.1.ebuild,
+  libmcs-0.5.0.ebuild, libmcs-0.6.0.ebuild:
+  Add missing dependency on >=dev-libs/libmowgli-0.4.0 as reported by Jeffrey
+  Gardner <je_fro@gentoo.org>, bug #196169. Dropped alpha, mips & x86-fbsd
+  keywords.
+
+*libmcs-0.6.0 (17 Oct 2007)
+
+  17 Oct 2007; Tony Vroon <chainsaw@gentoo.org> +libmcs-0.6.0.ebuild:
+  Version bump.
+
+  24 Aug 2007; Tony Vroon <chainsaw@gentoo.org> -libmcs-0.3.1.ebuild,
+  -libmcs-0.3.3.ebuild:
+  Clean up old ebuilds.
+
+*libmcs-0.5.0 (24 Aug 2007)
+
+  24 Aug 2007; Tony Vroon <chainsaw@gentoo.org> libmcs-0.3.1.ebuild,
+  libmcs-0.3.3.ebuild, libmcs-0.4.1.ebuild, +libmcs-0.5.0.ebuild:
+  Version bump. Change SRC_URI to point to new dedicated Atheme mirror network
+  for all versions.
+
+  27 May 2007; Joshua Kinard <kumba@gentoo.org> libmcs-0.4.1.ebuild:
+  Stable on mips.
+
+  15 Apr 2007; Peter Weller <welp@gentoo.org> libmcs-0.4.1.ebuild:
+  Stable on amd64
+
+  13 Apr 2007; Raúl Porcel <armin76@gentoo.org> libmcs-0.4.1.ebuild:
+  x86 stable
+
+  10 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> libmcs-0.4.1.ebuild:
+  Stable on sparc
+
+  11 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> libmcs-0.4.1.ebuild:
+  Alpha love.
+
+*libmcs-0.4.1 (27 Feb 2007)
+
+  27 Feb 2007; Javier Villavicencio <the_paya@gentoo.org>
+  -libmcs-0.4.0.ebuild, +libmcs-0.4.1.ebuild:
+  New upstream release, needed to fix my fix :(. Also added ~x86-fbsd keyword,
+  fixed kde linking, and removed 0.4.0
+
+*libmcs-0.4.0 (27 Feb 2007)
+
+  27 Feb 2007; Tony Vroon <chainsaw@gentoo.org> +libmcs-0.4.0.ebuild:
+  New upstream release. FreeBSD portability fixes from Javier Villavicencio
+  <the_paya@gentoo.org> and KDE KConfig support from Diego Pettenò.
+
+*libmcs-0.3.3 (19 Feb 2007)
+
+  19 Feb 2007; Tony Vroon <chainsaw@gentoo.org> +libmcs-0.3.3.ebuild:
+  New upstream release.
+
+  04 Feb 2007; Andrej Kacian <ticho@gentoo.org> libmcs-0.3.1.ebuild:
+  Added ~x86, bug #165161.
+
+*libmcs-0.3.1 (04 Feb 2007)
+
+  04 Feb 2007; Tony Vroon <chainsaw@gentoo.org> -libmcs-0.3.0.ebuild,
+  +libmcs-0.3.1.ebuild:
+  Resolve autoconf difficulties with previous version.
+
+*libmcs-0.3.0 (04 Feb 2007)
+
+  04 Feb 2007; Tony Vroon <chainsaw@gentoo.org> -libmcs-0.2.1.ebuild,
+  +libmcs-0.3.0.ebuild:
+  Reliability fixes from upstream, closes bug #165228.
+
+  04 Feb 2007; Steve Dibb <beandog@gentoo.org> libmcs-0.2.1.ebuild:
+  add ~amd64, bug 165161
+
+  04 Feb 2007; Markus Rothe <corsair@gentoo.org> libmcs-0.2.1.ebuild:
+  Added ~ppc64; bug #165161
+
+  03 Feb 2007; Jeroen Roovers <jer@gentoo.org> libmcs-0.2.1.ebuild:
+  Marked ~hppa (bug #165161).
+
+  03 Feb 2007; Jason Wever <weeve@gentoo.org> libmcs-0.2.1.ebuild:
+  Added ~sparc keyword wrt bug #165161.
+
+*libmcs-0.2.1 (03 Feb 2007)
+
+  03 Feb 2007; Tony Vroon <chainsaw@gentoo.org> -libmcs-0.2.0.ebuild,
+  +libmcs-0.2.1.ebuild:
+  Segfault in mcs-info resolved, configure script added.
+
+*libmcs-0.2.0 (03 Feb 2007)
+
+  03 Feb 2007; Tony Vroon <chainsaw@gentoo.org> +metadata.xml,
+  +libmcs-0.2.0.ebuild:
+  Initial commit. Ebuild by me.

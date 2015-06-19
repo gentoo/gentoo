@@ -1,0 +1,26 @@
+--- configure.ac	2013-04-23 21:14:51.367980659 +0200
++++ configure.ac	2013-04-23 21:19:23.096311763 +0200
+@@ -19,6 +19,9 @@
+ ## Use library (static library)
+ AC_PROG_RANLIB
+ 
++## Determine the archiver
++AM_PROG_AR
++
+ ## Use libtool (share and static library) (add libtoolize to autogen.sh)
+ # AC_PROG_LIBTOOL
+ # LT_PREREQ([2.2.6])
+
+
+--- uglib/Makefile.in	2013-04-23 21:14:51.405980565 +0200
++++ uglib/Makefile.in	2013-04-23 21:17:22.358607880 +0200
+@@ -51,7 +51,7 @@
+ CONFIG_CLEAN_FILES =
+ CONFIG_CLEAN_VPATH_FILES =
+ LIBRARIES = $(noinst_LIBRARIES)
+-AR = ar
++AR = @AR@
+ ARFLAGS = cru
+ libuglib_a_AR = $(AR) $(ARFLAGS)
+ libuglib_a_LIBADD =
+

@@ -1,0 +1,76 @@
+# ChangeLog for app-i18n/scim-tomoe
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-tomoe/ChangeLog,v 1.14 2015/06/09 11:32:35 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> scim-tomoe-0.6.0-r2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  scim-tomoe-0.6.0-r2.ebuild:
+  Fix slot-dep on gtk+
+
+*scim-tomoe-0.6.0-r2 (22 Feb 2009)
+
+  22 Feb 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/scim-tomoe-0.6.0-gucharmap2.patch, metadata.xml,
+  +scim-tomoe-0.6.0-r2.ebuild:
+  Bump to 0.6.0-r2. Fix build with gucharmap-2.24, bug #243160. Add
+  gucharmap to RDEPEND, bug #249753.
+
+*scim-tomoe-0.6.0-r1 (23 Sep 2008)
+
+  23 Sep 2008; MATSUU Takuto <matsuu@gentoo.org>
+  +files/scim-tomoe-0.6.0-gcc43.patch, +scim-tomoe-0.6.0-r1.ebuild:
+  Fixed gcc-4.3 issue, bug #238381.
+
+  14 Oct 2007; <matsuu@gentoo.org> -files/scim-tomoe-0.5.0-gentoo.patch,
+  -scim-tomoe-0.4.0.ebuild, -scim-tomoe-0.5.0-r1.ebuild,
+  -scim-tomoe-0.5.0-r2.ebuild:
+  Removed old versions.
+
+  10 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  scim-tomoe-0.6.0.ebuild:
+  x86 stable, bug 189292
+
+*scim-tomoe-0.6.0 (07 Jul 2007)
+
+  07 Jul 2007; MATSUU Takuto <matsuu@gentoo.org> +scim-tomoe-0.6.0.ebuild:
+  Version bumped, bug #183802.
+
+*scim-tomoe-0.5.0-r2 (02 Jun 2007)
+
+  02 Jun 2007; MATSUU Takuto <matsuu@gentoo.org>
+  +files/scim-tomoe-0.5.0-gentoo.patch, scim-tomoe-0.5.0-r1.ebuild,
+  +scim-tomoe-0.5.0-r2.ebuild:
+  Fixed wrong path, bug #171636.
+  Fixed dependency, bug #179672.
+
+*scim-tomoe-0.5.0-r1 (12 Mar 2007)
+
+  12 Mar 2007; MATSUU Takuto <matsuu@gentoo.org> -scim-tomoe-0.2.0.ebuild,
+  -scim-tomoe-0.3.0.ebuild, -scim-tomoe-0.5.0.ebuild,
+  +scim-tomoe-0.5.0-r1.ebuild:
+  Fixed wrong install directory, bug #170346.
+
+*scim-tomoe-0.5.0 (06 Jan 2007)
+
+  06 Jan 2007; MATSUU Takuto <matsuu@gentoo.org> +scim-tomoe-0.5.0.ebuild:
+  Version bumped.
+
+*scim-tomoe-0.4.0 (02 Dec 2006)
+
+  02 Dec 2006; MATSUU Takuto <matsuu@gentoo.org> +scim-tomoe-0.4.0.ebuild:
+  Version bumped.
+
+*scim-tomoe-0.3.0 (04 Nov 2006)
+
+  04 Nov 2006; MATSUU Takuto <matsuu@gentoo.org> +scim-tomoe-0.3.0.ebuild:
+  Version bumped.
+
+*scim-tomoe-0.2.0 (12 Aug 2006)
+
+  12 Aug 2006; MATSUU Takuto <matsuu@gentoo.org> +scim-tomoe-0.2.0.ebuild:
+  Initial ebuild submitted by Olof <olofshopping@hotmail.com>. bug 140122.

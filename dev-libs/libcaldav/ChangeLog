@@ -1,0 +1,23 @@
+# ChangeLog for dev-libs/libcaldav
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libcaldav/ChangeLog,v 1.5 2015/06/09 14:19:43 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  11 Sep 2012; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Drop maintainership
+
+  06 May 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  libcaldav-0.6.2.ebuild:
+  Adapt to new curl useflags, bug 412433
+
+  18 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  libcaldav-0.6.2.ebuild:
+  Fixed dependencies; this needs curl[gnutls]
+
+*libcaldav-0.6.2 (08 Nov 2010)
+
+  08 Nov 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  +libcaldav-0.6.2.ebuild, +metadata.xml:
+  New library

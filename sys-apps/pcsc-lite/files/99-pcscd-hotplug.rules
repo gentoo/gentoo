@@ -1,0 +1,7 @@
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pcsc-lite/files/99-pcscd-hotplug.rules,v 1.2 2010/12/05 18:45:32 flameeyes Exp $
+
+# We add this here so that it runs after ccid's and ifd-gempc's rules;
+# if we just added a pcscd-owned device, we hotplug the pcscd service.
+ACTION=="add", ENV{PCSCD}=="1", GROUP="pcscd", RUN+="/bin/env IN_HOTPLUG=1 /etc/init.d/pcscd --quiet start"

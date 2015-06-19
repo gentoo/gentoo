@@ -1,0 +1,11 @@
+https://github.com/FreeRDP/Remmina/issues/171
+--- a/remmina/CMakeLists.txt
++++ b/remmina/CMakeLists.txt
+@@ -148,7 +148,6 @@ if(WITH_TRANSLATIONS)
+ endif()
+ add_subdirectory(icons)
+ add_subdirectory(desktop)
+-add_subdirectory(external_tools)
+ 
+ install(TARGETS remmina DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 

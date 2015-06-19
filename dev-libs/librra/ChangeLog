@@ -1,0 +1,22 @@
+# ChangeLog for dev-libs/librra
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/librra/ChangeLog,v 1.5 2015/06/09 14:42:27 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  15 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> -librra-0.14.ebuild:
+  old
+
+*librra-0.16 (15 Jun 2012)
+
+  15 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> +librra-0.16.ebuild:
+  Version bump.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> librra-0.14.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*librra-0.14 (25 Feb 2011)
+
+  25 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> +librra-0.14.ebuild:
+  Initial commit.

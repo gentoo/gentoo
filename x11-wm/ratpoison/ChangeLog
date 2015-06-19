@@ -1,0 +1,428 @@
+# ChangeLog for x11-wm/ratpoison
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/ratpoison/ChangeLog,v 1.114 2014/11/05 11:26:49 jer Exp $
+
+  05 Nov 2014; Jeroen Roovers <jer@gentoo.org> -ratpoison-1.4.7.ebuild:
+  Old.
+
+  01 Nov 2014; Agostino Sarubbo <ago@gentoo.org> ratpoison-1.4.8.ebuild:
+  Stable for ppc, wrt bug #526098
+
+  30 Oct 2014; Agostino Sarubbo <ago@gentoo.org> ratpoison-1.4.8.ebuild:
+  Stable for x86, wrt bug #526098
+
+  29 Oct 2014; Agostino Sarubbo <ago@gentoo.org> ratpoison-1.4.8.ebuild:
+  Stable for amd64, wrt bug #526098
+
+  20 Oct 2014; Jeroen Roovers <jer@gentoo.org> ratpoison-1.4.8.ebuild:
+  Stable for HPPA (bug #526098).
+
+  20 Oct 2014; Jeroen Roovers <jer@gentoo.org> ratpoison-1.4.8.ebuild,
+  ratpoison-9999.ebuild:
+  Remove PN from DESCRIPTION.
+
+  17 Sep 2014; Jeroen Roovers <jer@gentoo.org> ratpoison-1.4.8.ebuild,
+  ratpoison-9999.ebuild:
+  Remove AC_ARG_ENABLE fail kludge.
+
+*ratpoison-1.4.8 (16 Sep 2014)
+
+  16 Sep 2014; Jeroen Roovers <jer@gentoo.org> -ratpoison-1.4.6.ebuild,
+  -ratpoison-1.4.6-r1.ebuild, +ratpoison-1.4.8.ebuild:
+  Version bump.
+
+  01 Aug 2014; Raúl Porcel <armin76@gentoo.org> ratpoison-1.4.6.ebuild,
+  ratpoison-1.4.6-r1.ebuild, ratpoison-1.4.7.ebuild:
+  Drop sparc keyword
+
+  21 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  ratpoison-1.4.6.ebuild, ratpoison-1.4.6-r1.ebuild, ratpoison-1.4.7.ebuild,
+  ratpoison-9999.ebuild:
+  PodParser becomes Pod-Parser
+
+  08 Jun 2014; Agostino Sarubbo <ago@gentoo.org> ratpoison-1.4.7.ebuild:
+  Stable for ppc, wrt bug #511108
+
+  07 Jun 2014; Agostino Sarubbo <ago@gentoo.org> ratpoison-1.4.7.ebuild:
+  Stable for x86, wrt bug #511108
+
+  02 Jun 2014; Jeroen Roovers <jer@gentoo.org> ratpoison-1.4.7.ebuild,
+  ratpoison-9999.ebuild:
+  Remove obsolete configure --disable-history workaround.
+
+  02 Jun 2014; Jeroen Roovers <jer@gentoo.org> ratpoison-1.4.7.ebuild,
+  ratpoison-9999.ebuild:
+  Work around configure error interpreting --disable-debug (bug #512168 by
+  no-person).
+
+  31 May 2014; Chema Alonso <nimiux@gentoo.org> ratpoison-1.4.7.ebuild:
+  Stable for amd64 wrt bug #511108
+
+  24 May 2014; Jeroen Roovers <jer@gentoo.org> ratpoison-1.4.7.ebuild:
+  Stable for HPPA (bug #511108).
+
+*ratpoison-1.4.7 (26 Apr 2014)
+
+  26 Apr 2014; Jeroen Roovers <jer@gentoo.org> +ratpoison-1.4.7.ebuild:
+  Version bump.
+
+  08 Mar 2014; Jeroen Roovers <jer@gentoo.org> ratpoison-1.4.6-r1.ebuild:
+  Fix IUSE sort order.
+
+*ratpoison-1.4.6-r1 (06 Mar 2014)
+
+  06 Mar 2014; Jeroen Roovers <jer@gentoo.org> +ratpoison-1.4.6-r1.ebuild,
+  ratpoison-9999.ebuild, metadata.xml:
+  Add USE=sloppy.
+
+*ratpoison-9999 (29 Jan 2014)
+
+  29 Jan 2014; Jeroen Roovers <jer@gentoo.org> +ratpoison-9999.ebuild:
+  Add live ebuild.
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due desktop-wm removal
+
+  10 Oct 2013; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Maintainership.
+
+  17 Jul 2013; Jeroen Roovers <jer@gentoo.org> ratpoison-1.4.6.ebuild,
+  files/ratpoison.el-gentoo.patch:
+  Fix path in patch, do not cd in src_prepare().
+
+  11 Jun 2013; Jeroen Roovers <jer@gentoo.org>
+  -files/ratpoison-1.4.4-glibc210.patch, -files/ratpoison-1.4.5-asneeded.patch,
+  -files/ratpoisonrc, -ratpoison-1.4.5.ebuild:
+  Old.
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> ratpoison-1.4.6.ebuild:
+  Stable for sparc, wrt bug #469680
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> ratpoison-1.4.6.ebuild:
+  Stable for ppc, wrt bug #469680
+
+  14 May 2013; Jeroen Roovers <jer@gentoo.org> ratpoison-1.4.6.ebuild:
+  Stable for HPPA (bug #469680).
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> ratpoison-1.4.6.ebuild:
+  Stable for x86, wrt bug #469680
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> ratpoison-1.4.6.ebuild:
+  Stable for amd64, wrt bug #469680
+
+  24 Apr 2013; Jeroen Roovers <jer@gentoo.org> ratpoison-1.4.5.ebuild:
+  Fix building with automake-1.13.
+
+*ratpoison-1.4.6 (08 Apr 2013)
+
+  08 Apr 2013; Jeroen Roovers <jer@gentoo.org> +ratpoison-1.4.6.ebuild,
+  files/ratpoison-1.4.5-asneeded.patch, files/ratpoison.el-gentoo.patch:
+  Version bump.
+
+  25 Jan 2011; Jeroen Roovers <jer@gentoo.org>
+  files/ratpoison-1.4.4-glibc210.patch:
+  Clean up patch.
+
+  16 Aug 2010; Jonathan Callen <abcd@gentoo.org> ratpoison-1.4.5.ebuild:
+  Transfer prefix keywords, bump to EAPI=3
+
+  12 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  ratpoison-1.4.5.ebuild, +files/ratpoison.desktop:
+  Install ratpoison.desktop wrt #288851 by Wilke Schwiedop.
+
+  01 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  ratpoison-1.4.5.ebuild, +files/ratpoison-1.4.5-asneeded.patch:
+  Fixing build with as-needed wrt bug 310727. Thanks Diego for report.
+
+  08 Dec 2009; nixnut <nixnut@gentoo.org> ratpoison-1.4.5.ebuild:
+  ppc stable #293517
+
+  28 Nov 2009; Tiago Cunha <tcunha@gentoo.org> ratpoison-1.4.5.ebuild:
+  stable sparc, bug 293517
+
+  25 Nov 2009; Jeroen Roovers <jer@gentoo.org> ratpoison-1.4.5.ebuild:
+  Stable for HPPA (bug #293517).
+
+  23 Nov 2009; Markus Meier <maekke@gentoo.org> ratpoison-1.4.5.ebuild:
+  amd64/x86 stable, bug #293517
+
+*ratpoison-1.4.5 (23 Sep 2009)
+
+  23 Sep 2009; Jeroen Roovers <jer@gentoo.org> -ratpoison-1.4.3.ebuild,
+  +ratpoison-1.4.5.ebuild:
+  Version bump. Remove old.
+
+  01 Aug 2009; Víctor Ostorga <vostorga@gentoo.org> ratpoison-1.4.4-r1.ebuild,
+  +files/ratpoison-1.4.4-glibc210.patch:
+  Adding patch to compile against glibc 2.10 , bug #274965
+
+  11 Jun 2009; Markus Meier <maekke@gentoo.org> ratpoison-1.4.4-r1.ebuild:
+  amd64 stable, bug #271487
+
+  06 Jun 2009; nixnut <nixnut@gentoo.org> ratpoison-1.4.4-r1.ebuild:
+  ppc stable #271487
+
+  02 Jun 2009; Raúl Porcel <armin76@gentoo.org> ratpoison-1.4.4-r1.ebuild:
+  sparc/x86 stable wrt #271487
+
+  02 Jun 2009; Jeroen Roovers <jer@gentoo.org> ratpoison-1.4.4-r1.ebuild:
+  Stable for HPPA (bug #271487).
+
+  01 May 2009; Jeroen Roovers <jer@gentoo.org> ratpoison-1.4.4-r1.ebuild:
+  Build against x11-libs/libXft by default.
+
+  01 May 2009; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Make IUSE=history description more precise.
+
+*ratpoison-1.4.4-r1 (01 May 2009)
+
+  01 May 2009; Jeroen Roovers <jer@gentoo.org> -ratpoison-1.4.1.ebuild,
+  -ratpoison-1.4.2.ebuild, -ratpoison-1.4.4.ebuild,
+  +ratpoison-1.4.4-r1.ebuild:
+  Revision bump to 1.4.4-r1 adding debug USE flag, as well as making libXft
+  support optional (bug #267965 again). Remove old.
+
+*ratpoison-1.4.4 (30 Apr 2009)
+
+  30 Apr 2009; Jeroen Roovers <jer@gentoo.org> +ratpoison-1.4.4-r1.ebuild,
+  metadata.xml:
+  Version bump. Make building libhistory support a default option.
+
+  30 Nov 2008; Raúl Porcel <armin76@gentoo.org> ratpoison-1.4.3.ebuild:
+  sparc stable wrt #247131
+
+  22 Nov 2008; Markus Meier <maekke@gentoo.org> ratpoison-1.4.3.ebuild:
+  x86 stable, bug #247131
+
+  18 Nov 2008; Jeroen Roovers <jer@gentoo.org> ratpoison-1.4.3.ebuild:
+  Stable for HPPA (bug #247131).
+
+  18 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  ratpoison-1.4.3.ebuild:
+  ppc stable, bug #247131
+
+  18 Nov 2008; Jeremy Olexa <darkside@gentoo.org> ratpoison-1.4.3.ebuild:
+  amd64 stable, bug #247131
+
+  15 Sep 2008; Ulrich Mueller <ulm@gentoo.org> ratpoison-1.4.1.ebuild,
+  ratpoison-1.4.2.ebuild, ratpoison-1.4.3.ebuild:
+  Use elisp-compile instead of elisp-comp, bug 235527.
+
+*ratpoison-1.4.3 (24 Apr 2008)
+
+  24 Apr 2008; David Shakaryan <omp@gentoo.org> +ratpoison-1.4.3.ebuild:
+  Version bump; clean up ebuild. (bug #214313)
+
+*ratpoison-1.4.2 (31 Oct 2007)
+
+  31 Oct 2007; Jeroen Roovers <jer@gentoo.org> +ratpoison-1.4.2.ebuild:
+  Version bump.
+
+  19 Sep 2007; David Shakaryan <omp@gentoo.org> ratpoison-1.4.1.ebuild:
+  Remove WANT_AUTOMAKE and WANT_AUTOCONF.
+
+  19 Sep 2007; David Shakaryan <omp@gentoo.org> -ratpoison-1.4.0.ebuild:
+  Remove older version.
+
+  14 Sep 2007; nixnut <nixnut@gentoo.org> ratpoison-1.4.1.ebuild:
+  Stable on ppc wrt bug 189066
+
+  13 Sep 2007; Markus Ullmann <jokey@gentoo.org> ratpoison-1.4.1.ebuild:
+  Stable on sparc wrt bug #189066
+
+  13 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  ratpoison-1.4.1.ebuild:
+  stable x86, bug 189066
+
+  12 Sep 2007; Christoph Mende <angelos@gentoo.org> ratpoison-1.4.1.ebuild:
+  Stable on amd64 wrt bug #189066
+
+  11 Sep 2007; Jeroen Roovers <jer@gentoo.org> ratpoison-1.4.1.ebuild:
+  Stable for HPPA (bug #189066).
+
+  11 Sep 2007; David Shakaryan <omp@gentoo.org> metadata.xml:
+  Taking into desktop-wm herd.
+
+  05 Sep 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing weeve from metadata due to his retirement (see #181019 for
+  reference).
+
+  02 Aug 2007; Roy Marples <uberlord@gentoo.org> ratpoison-1.4.1.ebuild:
+  Keyworded ~x86-fbsd, #157553 thanks to Marc Kowarsky.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  ratpoison-1.4.0.ebuild, ratpoison-1.4.1.ebuild:
+  Drop virtual/x11 references.
+
+  12 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -ratpoison-1.3.0.ebuild, -ratpoison-1.4.0_beta2.ebuild,
+  -ratpoison-1.4.0_beta4.ebuild:
+  Remove ebuilds with broken autotools handling for bug #160061.
+
+  12 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  ratpoison-1.4.0.ebuild:
+  stable amd64, bug 160061
+
+  07 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  ratpoison-1.4.0.ebuild:
+  stable x86, bug 160061
+
+  01 Apr 2007; Michael Hanselmann <hansmi@gentoo.org>
+  ratpoison-1.4.0.ebuild:
+  Stable on ppc.
+
+*ratpoison-1.4.1 (05 Feb 2007)
+
+  05 Feb 2007; Jason Wever <weeve@gentoo.org> +ratpoison-1.4.1.ebuild:
+  Version bump.
+
+  04 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> ratpoison-1.4.0.ebuild:
+  Fix broken autotools handling.
+
+  11 Dec 2006; Jason Wever <weeve@gentoo.org> ratpoison-1.4.0.ebuild:
+  Fixed PodParser dependency, resolves bug #157680.
+
+  09 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  ratpoison-1.4.0.ebuild:
+  Stable on sparc
+
+  07 Aug 2006; Jeroen Roovers <jer@gentoo.org> ratpoison-1.4.0.ebuild:
+  Stable for HPPA (bug #114474).
+
+  28 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-ratpoison-1.3.0, files/digest-ratpoison-1.4.0_beta2,
+  Manifest:
+  Fixing SHA256 digest, pass four
+
+*ratpoison-1.4.0 (06 Apr 2006)
+
+  06 Apr 2006; Jason Wever <weeve@gentoo.org> ratpoison-1.3.0.ebuild,
+  ratpoison-1.4.0_beta2.ebuild, +ratpoison-1.4.0.ebuild:
+  Version bump to 1.4.0.  Also adjusted 1.3.0 and 1.4.0_beta2 for modular X.
+
+  13 Feb 2006; Jeroen Roovers <jer@gentoo.org> ratpoison-1.4.0_beta4.ebuild:
+  Marked ~hppa (bug #114474).
+
+  22 Jan 2006; Jason Wever <weeve@gentoo.org> ratpoison-1.4.0_beta4.ebuild:
+  Added dependencies for X modular wrt bug #119576.
+
+  02 Nov 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  files/50ratpoison-gentoo.el:
+  Added useful Emacs autoloads.
+
+  17 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+*ratpoison-1.4.0_beta4 (21 May 2005)
+
+  21 May 2005; Jason Wever <weeve@gentoo.org> files/ratpoison.xsession,
+  +ratpoison-1.4.0_beta4.ebuild:
+  Version bump, resolves bug #92386.
+
+  08 May 2005; Herbie Hopkins <herbs@gentoo.org> ratpoison-1.3.0.ebuild:
+  Stable on amd64.
+
+*ratpoison-1.4.0_beta2 (26 Mar 2005)
+
+  26 Mar 2005; Jason Wever <weeve@gentoo.org> +ratpoison-1.4.0_beta2.ebuild:
+  Bump that sexy version.
+
+  11 Dec 2004; Jason Wever <weeve@gentoo.org> ratpoison-1.3.0.ebuild:
+  Updated HOMEPAGE and SRC_URI to reflect recent move to savannah.nongnu.org.
+
+  13 Oct 2004; Jason Wever <weeve@gentoo.org> -ratpoison-1.2.2-r1.ebuild,
+  ratpoison-1.3.0.ebuild, -ratpoison-1.3.0_rc1.ebuild:
+  Marked 1.3.0 stable for x86 and sparc, and some old version cleanup.
+
+  30 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  ratpoison-1.3.0.ebuild:
+  Masked ratpoison-1.3.0.ebuild stable for ppc
+
+*ratpoison-1.3.0 (20 Jun 2004)
+
+  20 Jun 2004; Jason Wever <weeve@gentoo.org> +files/ratpoison.xsession,
+  +ratpoison-1.3.0.ebuild:
+  Version bumpage.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> ratpoison-1.3.0_rc1.ebuild:
+  Add inherit eutils
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> ratpoison-1.2.2-r1.ebuild,
+  ratpoison-1.3.0_rc1.ebuild:
+  Add die following econf for bug 48950
+
+  29 Mar 2004; Jason Wever <weeve@gentoo.org> ratpoison-1.1.1.ebuild,
+  ratpoison-1.2.1.ebuild, ratpoison-1.2.2.ebuild,
+  ratpoison-1.3.0_beta3-r1.ebuild, ratpoison-1.3.0_beta3-r2.ebuild,
+  ratpoison-1.3.0_beta3.ebuild, ratpoison-1.3.0_rc1.ebuild:
+  Old version cleanup, changed x11-base/xfree dependency to virtual/x11.
+
+  14 Mar 2004; Brad Cowan <bcowan@gentoo.org> :
+  Fixed read-only var assignment.
+
+*ratpoison-1.3.0_rc1 (23 Nov 2003)
+
+  23 Nov 2003; Jason Wever <weeve@gentoo.org> ratpoison-1.3.0_rc1.ebuild:
+  version bump.
+
+*ratpoison-1.3.0_beta3-r2 (10 Nov 2003)
+
+  10 Nov 2003; <mkennedy@gentoo.org> ratpoison-1.3.0_beta3-r2.ebuild:
+  added emacs USE flag support
+
+  08 Nov 2003; Brad House <brad_mssw@gentoo.org>
+  ratpoison-1.3.0_beta3-r1.ebuild:
+  add ~amd64 flag
+
+*ratpoison-1.2.2-r1 (15 Oct 2003)
+
+  15 Oct 2003; Jason Wever <weeve@gentoo.org> ratpoison-1.2.2-r1.ebuild,
+  ratpoison-1.3.0_beta3-r1.ebuild:
+  Added XSESSION script so ratpoison is now choosable via xdm/kdm/gdm.
+
+*ratpoison-1.3.0_beta3 (14 Oct 2003)
+
+  14 Oct 2003; Jason Wever <weeve@gentoo.org> ratpoison-1.3.0_beta3.ebuild:
+  Version bump, thanks to Björn Lindström <bkhl@elektrubadur.se> for the ebuild.
+  Closes bug #31133.
+
+  02 Jul 2003; Jason Wever <weeve@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+*ratpoison-1.2.2 (12 Jun 2003)
+
+  12 Jun 2003; Jason Wever <weeve@gentoo.org> ratpoison-1.2.2.ebuild:
+  Another day, another version bump.
+
+*ratpoison-1.2.1 (11 Jun 2003)
+
+  11 Jun 2003; Jason Wever <weeve@gentoo.org> ratpoison-1.2.1.ebuild:
+  version bump.
+
+*ratpoison-1.1.1 (06 Jun 2002)
+
+  30 Jan 2003; Jason Wever <weeve@gentoo.org> ratpoison-1.1.1.ebuild : 
+  fixed doins like to actually install ratpoisonrc
+
+  30 Jan 2003; Jason Wever <weeve@gentoo.org files/ratpoisonrc : 
+  Added ratpoisonrc as it was needed by the ebuild.
+
+  26 Jan 2003; Jon Nall <nall@gentoo.org> ratpoison-1.1.1.ebuild :
+  added ~ppc
+
+  05 Jan 2003: Jason Wever <weeve@gentoo.org> ratpoison-1.1.1.ebuild :
+
+  Added sparc to KEYWORDS
+ 
+  24 Dec 2002; Seemant Kulleen <seemant@gentoo.org> ratpoison-1.1.1.ebuild :
+
+  Ebuild fixed to be an actual ebuild by j2 in #gentoo-dev (Maurizio).
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  10 Nov 2002; Jon Nall <nall@gentoo.org> ratpoison-1.1.1.ebuild :
+  added ppc to KEYWORDS
+
+  19 Oct 2002; Jason Wever <weeve@gentoo.org> ratpoison-1.1.1.ebuild, 
+  files/digest-ratpoison-1.1.1: 
+  Initial import. Ebuild submitted by Jason Wever <weeve@gentoo.org>.

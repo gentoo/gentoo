@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=dev-libs/openssl dev-libs/userspace-rcu caps? ( sys-libs/libcap-ng ) idn? ( net-dns/libidn ) virtual/pkgconfig sys-devel/flex virtual/yacc fastparser? ( dev-util/ragel )
+DESCRIPTION=High-performance authoritative-only DNS server
+EAPI=5
+HOMEPAGE=http://www.knot-dns.cz/
+IUSE=debug caps +fastparser idn
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/openssl dev-libs/userspace-rcu caps? ( sys-libs/libcap-ng ) idn? ( net-dns/libidn )
+SLOT=0
+SRC_URI=https://secure.nic.cz/files/knot-dns/knot-1.5.3.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=9ca895399f27e6509dfc194b9f952d66

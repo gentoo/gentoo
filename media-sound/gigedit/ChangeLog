@@ -1,0 +1,32 @@
+# ChangeLog for media-sound/gigedit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gigedit/ChangeLog,v 1.7 2015/05/06 09:44:05 mrueg Exp $
+
+  06 May 2015; Manuel Rüger <mrueg@gentoo.org> -files/gigedit-0.1.1-gcc43.patch,
+  -gigedit-0.1.1.ebuild:
+  Remove old.
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> gigedit-0.2.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  28 May 2011; Thomas Kahle <tomka@gentoo.org> gigedit-0.2.0.ebuild:
+  ~x86 per bug 368619
+
+  28 Mar 2011; Christoph Mende <angelos@gentoo.org> gigedit-0.1.1.ebuild,
+  gigedit-0.2.0.ebuild:
+  Fixed slot deps
+
+*gigedit-0.2.0 (27 Aug 2009)
+
+  27 Aug 2009; Alexis Ballier <aballier@gentoo.org> +gigedit-0.2.0.ebuild:
+  Version bump by keenblade @#-sunrise
+
+  08 Feb 2009; Alexis Ballier <aballier@gentoo.org>
+  +files/gigedit-0.1.1-gcc43.patch, gigedit-0.1.1.ebuild:
+  fix build with gcc 4.3, bug #257516
+
+*gigedit-0.1.1 (27 Jan 2008)
+
+  27 Jan 2008; Alexis Ballier <aballier@gentoo.org> +metadata.xml,
+  +gigedit-0.1.1.ebuild:
+  Initial import, ebuild by me

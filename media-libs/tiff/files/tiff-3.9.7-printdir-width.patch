@@ -1,0 +1,36 @@
+Make TIFFPrintDirectory cope with both TIFF_VARIABLE and TIFF_VARIABLE2
+conventions for field_passcount fields, ie, either 16- or 32-bit counts.
+This patch is taken from upstream commits dated 2012-05-23 ("fix crash
+with odd 16bit count types for some custom fields") and 2012-12-12 ("Fix
+TIFF_VARIABLE/TIFF_VARIABLE2 confusion in TIFFPrintDirectory").
+
+This doesn't qualify as a security issue in itself, mainly because
+TIFFPrintDirectory is unlikely to be used in any security-exposed
+scenarios; but we need to fix it so that our test case for CVE-2012-5581
+works on all platforms.
+
+
+diff -Naur tiff-3.9.4.orig/libtiff/tif_print.c tiff-3.9.4/libtiff/tif_print.c
+--- tiff-3.9.4.orig/libtiff/tif_print.c	2010-06-08 14:50:42.000000000 -0400
++++ tiff-3.9.4/libtiff/tif_print.c	2012-12-13 12:17:33.726765771 -0500
+@@ -518,8 +518,19 @@
+ 			continue;
+ 
+ 		if(fip->field_passcount) {
+-			if(TIFFGetField(tif, tag, &value_count, &raw_data) != 1)
++			if (fip->field_readcount == TIFF_VARIABLE2 ) {
++				if(TIFFGetField(tif, tag, &value_count, &raw_data) != 1)
++					continue;
++			} else if (fip->field_readcount == TIFF_VARIABLE ) {
++				uint16 small_value_count;
++				if(TIFFGetField(tif, tag, &small_value_count, &raw_data) != 1)
++					continue;
++				value_count = small_value_count;
++			} else {
++				assert (fip->field_readcount == TIFF_VARIABLE
++					|| fip->field_readcount == TIFF_VARIABLE2);
+ 				continue;
++			} 
+ 		} else {
+ 			if (fip->field_readcount == TIFF_VARIABLE
+ 			    || fip->field_readcount == TIFF_VARIABLE2)

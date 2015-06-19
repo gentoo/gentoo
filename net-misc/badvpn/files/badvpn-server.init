@@ -1,0 +1,48 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Released under the 3-clause BSD license.
+
+command="${vpn_exec:-/usr/bin/badvpn-server}"
+command_args="${vpn_args}"
+command_background="YES"
+description="BadVPN server"
+pidfile="/var/run/${RC_SVCNAME}.pid"
+start_stop_daemon_args="--user \"${vpn_user:-badvpn}\""
+
+depend() {
+	need localmount
+	after bootmisc
+	if yesno "${vpn_syslog:-NO}"; then
+		use logger
+	fi
+}
+
+start_pre() {
+	if yesno "${vpn_syslog:-NO}"; then
+		command_args="${command_args}
+			--logger syslog
+			--syslog-ident \"${vpn_syslog_ident:-${RC_SVCNAME}}\""
+        fi
+}
+
+start()
+{
+	[ -n "$command" ] || return 0
+	local _background=
+	ebegin "Starting ${name:-$RC_SVCNAME}"
+	if yesno "${command_background}"; then
+		if [ -z "${pidfile}" ]; then
+			eend 1 "command_background option used but no pidfile specified"
+			return 1
+		fi
+		_background="--background --make-pidfile"
+	fi
+	eval start-stop-daemon --start \
+		--exec $command \
+		${procname:+--name} $procname \
+		${pidfile:+--pidfile} $pidfile \
+		$_background $start_stop_daemon_args \
+		-- $command_args
+	eend $? "Failed to start $RC_SVCNAME"
+	return $?
+}

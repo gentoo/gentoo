@@ -1,0 +1,14 @@
+DEFINED_PHASES=install
+DESCRIPTION=Asian and Extended Language Font Packs used by Adobe Reader
+EAPI=4
+HOMEPAGE=http://www.adobe.com/products/acrobat/acrrasianfontpack.html
+IUSE=minimal linguas_ja linguas_ko linguas_zh_CN linguas_zh_TW
+KEYWORDS=amd64 x86
+LICENSE=Adobe
+RDEPEND=!<app-text/acroread-9.4.0
+REQUIRED_USE=|| ( !minimal linguas_ja linguas_ko linguas_zh_CN linguas_zh_TW )
+RESTRICT=strip mirror
+SLOT=0
+SRC_URI=!minimal? ( http://ardownload.adobe.com/pub/adobe/reader/unix/9.x/9.1/misc/FontPack910_xtd_i486-linux.tar.bz2 ) linguas_ja? ( http://ardownload.adobe.com/pub/adobe/reader/unix/9.x/9.1/misc/FontPack910_jpn_i486-linux.tar.bz2 ) linguas_ko? ( http://ardownload.adobe.com/pub/adobe/reader/unix/9.x/9.1/misc/FontPack910_kor_i486-linux.tar.bz2 ) linguas_zh_CN? ( http://ardownload.adobe.com/pub/adobe/reader/unix/9.x/9.1/misc/FontPack910_chs_i486-linux.tar.bz2 ) linguas_zh_TW? ( http://ardownload.adobe.com/pub/adobe/reader/unix/9.x/9.1/misc/FontPack910_cht_i486-linux.tar.bz2 )
+_eclasses_=confutils	2ab69b52fa6ea0c0669a47fb94b354b4	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=dda6cd9ebb1d345b34dcd050488aefd6

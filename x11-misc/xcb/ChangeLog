@@ -1,0 +1,71 @@
+# ChangeLog for x11-misc/xcb
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xcb/ChangeLog,v 1.20 2012/10/24 21:10:33 ulm Exp $
+
+  24 Oct 2012; Ulrich Müller <ulm@gentoo.org> xcb-2.4.ebuild,
+  xcb-2.4-r1.ebuild:
+  Update dependency after package move from x11-libs/openmotif to
+  x11-libs/motif.
+
+  15 May 2012; Julian Ospald <hasufell@gentoo.org> xcb-2.4.ebuild,
+  xcb-2.4-r1.ebuild:
+  fix HOMEPAGE and SRC_URI wrt #415629
+
+  19 Feb 2012; Tobias Klausmann <klausman@gentoo.org> xcb-2.4-r1.ebuild:
+  Stable on alpha, bug #393921
+
+  21 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> xcb-2.4-r1.ebuild:
+  x86 stable wrt bug #393921
+
+  16 Dec 2011; Agostino Sarubbo <ago@gentoo.org> xcb-2.4-r1.ebuild:
+  Stable for AMD64, wrt bug #393921
+
+  10 Oct 2010; Ulrich Mueller <ulm@gentoo.org> xcb-2.4.ebuild,
+  xcb-2.4-r1.ebuild:
+  Fix openmotif dependency.
+
+*xcb-2.4-r1 (17 Sep 2010)
+
+  17 Sep 2010; Jeroen Roovers <jer@gentoo.org> +xcb-2.4-r1.ebuild:
+  Respect LDFLAGS (bug #337522), CPP, LDFLAGS.
+
+  02 May 2009; Samuli Suominen <ssuominen@gentoo.org> xcb-2.4.ebuild:
+  Install app-defaults to /usr/share instead of /usr/X11R6/lib and tc-export
+  CC.
+
+  27 Oct 2006; David Shakaryan <omp@gentoo.org> xcb-2.4.ebuild:
+  Minor cleanup and remove monolithic X from dependencies.
+
+  08 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> xcb-2.4.ebuild:
+  Marked stable on amd64 for bug #146088
+
+  21 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> xcb-2.4.ebuild:
+  Fixed DEPEND for modular X.
+
+  08 Nov 2005; <dang@gentoo.org> xcb-2.4.ebuild:
+  Marked ~amd64
+
+  26 Jul 2005; David Holm <dholm@gentoo.org> xcb-2.4.ebuild:
+  Added to ~ppc.
+
+  11 Jan 2004; Heinrich Wendel <lanius@gentoo.org> xcb-2.4.ebuild:
+  fixed motif dep
+
+  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+  21 Jun 2003; Aron Griffis <agriffis@gentoo.org> xcb-2.4.ebuild:
+  Remove bogus sed (and also the sed dependency)
+
+  20 Jun 2003; <msterret@gentoo.org> xcb-2.4.ebuild:
+  DEPEND on sed >= 4
+  Marked stable on x86 and alpha (per agriffis)
+
+  20 Jun 2003; Aron Griffis <agriffis@gentoo.org> xcb-2.4.ebuild:
+  Add virtual/motif dependency
+
+*xcb-2.4 (20 Jun 2003)
+
+  20 Jun 2003; Aron Griffis <agriffis@gentoo.org> xcb-2.4.ebuild:
+  New ebuild for this excellent X utility
+

@@ -1,0 +1,13 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+If you intend to use syslog-ng together with the systemd journal,
+please be sure to configure it to listen accordingly, e.g. replace
+
+    unix-dgram("/dev/log");
+
+with
+
+    unix-dgram("/run/systemd/journal/syslog");
+
+in /etc/syslog-ng/syslog-ng.conf

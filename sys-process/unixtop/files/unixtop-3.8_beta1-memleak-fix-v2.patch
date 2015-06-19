@@ -1,0 +1,44 @@
+https://hg.openindiana.org/upstream/oracle/userland-gate/raw-file/23c55a2f8a8e/components/top/patches/03.sunos5.patch
+
+*** top-3.8beta1/machine/m_sunos5.c.orig	Wed Aug 31 05:23:52 2011
+--- top-3.8beta1/machine/m_sunos5.c	Wed Aug 31 05:25:25 2011
+***************
+*** 2064,2070 ****
+  
+  	    /* read the whole file */
+  	    p = malloc(st.st_size);
+! 	    (void)pread(fd, p, st.st_size, 0);
+  
+  	    /* cache the file descriptor if we can */
+  	    if (fd < maxfiles)
+--- 2064,2076 ----
+  
+  	    /* read the whole file */
+  	    p = malloc(st.st_size);
+! 	    if (pread(fd, p, st.st_size, 0) != st.st_size)
+! 	    {
+! 		(void) close(fd);
+! 		op->fd_lpsinfo = -1;
+! 		free(p);
+! 		continue;
+! 	    }
+  
+  	    /* cache the file descriptor if we can */
+  	    if (fd < maxfiles)
+***************
+*** 2148,2154 ****
+  		op->oldtime = TIMESPEC_TO_DOUBLE(lwpp->pr_time);
+  		op->seen = 1;
+  	    }
+! 	    free(p);
+  	}
+  #endif
+  
+--- 2154,2160 ----
+  		op->oldtime = TIMESPEC_TO_DOUBLE(lwpp->pr_time);
+  		op->seen = 1;
+  	    }
+! 	    free(prp);
+  	}
+  #endif
+  

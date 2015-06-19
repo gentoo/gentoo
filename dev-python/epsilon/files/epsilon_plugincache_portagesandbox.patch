@@ -1,0 +1,12 @@
+--- epsilon/setuphelper.py.orig	2009-02-11 08:15:39.000000000 +0100
++++ epsilon/setuphelper.py	2009-02-11 08:18:56.000000000 +0100
+@@ -21,6 +21,9 @@
+ def _regeneratePluginCache(pluginPackages):
+     print 'Regenerating cache with path: ',
+     pprint.pprint(sys.path)
++    if os.getenv("PORTAGE_PLUGINCACHE_NOOP") != None:
++        print 'Not regenerating plugin cache for portage sandbox usage.'
++        return
+     from twisted import plugin
+     for pluginModule in pluginModules([
+         p + ".plugins" for p in pluginPackages]):

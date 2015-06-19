@@ -1,0 +1,62 @@
+# ChangeLog for dev-python/pystatgrab
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pystatgrab/ChangeLog,v 1.15 2015/02/01 21:40:11 mrueg Exp $
+
+  01 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -pystatgrab-0.5.ebuild:
+  Remove old.
+
+  17 Dec 2014; Ian Delaney <idella4@gentoo.org> pystatgrab-0.6.ebuild:
+  correct version border in dep, fixes Bug #528944
+
+*pystatgrab-0.6 (17 Oct 2014)
+
+  17 Oct 2014; Ian Delaney <idella4@gentoo.org> +pystatgrab-0.6.ebuild:
+  bump; add test phase
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pystatgrab-0.5.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  04 May 2012; Patrick Lauer <patrick@gentoo.org> pystatgrab-0.5.ebuild:
+  Migrating dev-util/pkgconfig -> virtual/pkgconfig
+
+  22 Feb 2012; Patrick Lauer <patrick@gentoo.org> pystatgrab-0.5.ebuild:
+  Restricting pypy and jython
+
+  23 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pystatgrab-0.5.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  19 May 2008; Samuli Suominen <drac@gentoo.org> pystatgrab-0.3.ebuild:
+  Move pkgconfig to DEPEND.
+
+*pystatgrab-0.5 (15 Jul 2007)
+
+  15 Jul 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  -pystatgrab-0.4.ebuild, +pystatgrab-0.5.ebuild:
+  Version bump: fixed deps. Dropped old version.
+
+  18 Jan 2007; Lukasz Strzygowski <lucass@gentoo.org> pystatgrab-0.3.ebuild,
+  pystatgrab-0.4.ebuild:
+  Added missing dev-util/pkgconfig dep, bug #152243.
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> pystatgrab-0.4.ebuild:
+  Mark 0.4 ~ia64
+
+*pystatgrab-0.4 (24 Nov 2005)
+
+  24 Nov 2005; Marien Zwart <marienz@gentoo.org> metadata.xml,
+  pystatgrab-0.3.ebuild, +pystatgrab-0.4.ebuild:
+  Make pystatgrab-0.3 block >=sys-libs/libstatgrab-0.12, add pystatgrab-0.4
+  that works with libstatgrab-0.12 (bug #106650). Move from the perl to the
+  python herd, remove dams as maintainer.
+
+  02 Sep 2005; Luis Medinas <metalgod@gentoo.org> pystatgrab-0.3.ebuild:
+  Added ~amd64 keywords. Closes bug #98166.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> pystatgrab-0.3.ebuild:
+  Stable on ppc.
+
+*pystatgrab-0.3 (19 Apr 2005)
+
+  19 Apr 2005; <dams@gentoo.org> +metadata.xml, +pystatgrab-0.3.ebuild:
+  first ebuild, from bug 85148

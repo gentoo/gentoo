@@ -1,0 +1,38 @@
+# ChangeLog for dev-perl/Math-Random-MT
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Math-Random-MT/ChangeLog,v 1.7 2014/08/26 14:52:02 axs Exp $
+
+*Math-Random-MT-1.160.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Math-Random-MT-1.160.0-r1.ebuild, -Math-Random-MT-1.160.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org> -Math-Random-MT-1.130.0.ebuild,
+  -Math-Random-MT-1.140.0.ebuild:
+  Cleanup
+
+*Math-Random-MT-1.160.0 (06 Aug 2012)
+
+  06 Aug 2012; Torsten Veller <tove@gentoo.org> +Math-Random-MT-1.160.0.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Math-Random-MT-1.140.0 (28 May 2012)
+
+  28 May 2012; Torsten Veller <tove@gentoo.org> +Math-Random-MT-1.140.0.ebuild:
+  Version bump
+
+*Math-Random-MT-1.130.0 (22 Apr 2012)
+
+  22 Apr 2012; Torsten Veller <tove@gentoo.org> -Math-Random-MT-1.13.ebuild,
+  +Math-Random-MT-1.130.0.ebuild:
+  Change version scheme. Fix Header and LICENSE. Run tests. EAPI=4
+
+*Math-Random-MT-1.13 (11 Apr 2012)
+
+  11 Apr 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +Math-Random-MT-1.13.ebuild, +metadata.xml:
+  Initial import of dependencies of google-api-adwords-perl.

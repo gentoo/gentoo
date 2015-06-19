@@ -1,0 +1,78 @@
+# ChangeLog for net-analyzer/nagvis
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagvis/ChangeLog,v 1.17 2015/06/17 20:07:28 grknight Exp $
+
+  17 Jun 2015; Brian Evans <grknight@gentoo.org> nagvis-1.6.6.ebuild:
+  Remove deprecated need_php_httpd function ; No longer needs depend.php eclass
+
+  16 Dec 2014; Pacho Ramos <pacho@gentoo.org> nagvis-1.6.6.ebuild:
+  confutils was wrongly set making this unbuildable due missing sqlite3 dep,
+  dropping its usage as USE deps in RDEPEND are enough
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> nagvis-1.6.6.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  26 Jun 2014; Michael Palimaka <kensington@gentoo.org> -nagvis-1.4.4-r1.ebuild:
+  Remove old.
+
+  20 May 2013; Patrick Lauer <patrick@gentoo.org> nagvis-1.6.6.ebuild:
+  Fix sqlite3 -> sqlite useflag migration #469538
+
+  22 Dec 2012; Agostino Sarubbo <ago@gentoo.org> nagvis-1.6.6.ebuild:
+  Add ~ppc, wrt bug #429088
+
+*nagvis-1.6.6 (31 Jul 2012)
+
+  31 Jul 2012; Ian Stakenvicius <axs@gentoo.org> +nagvis-1.6.6.ebuild,
+  +files/nagvis-1.6.6-base-path.patch,
+  +files/nagvis-1.6.6-global-definitions.patch:
+  version bump for bug 324641 , thanks to spacefreak for testing ; dropped ~ppc
+  keyword due to missing keyword on net-analyzer/mk-livestatus dep (bug 429088)
+
+  01 Jul 2012; Matti Bickel <mabi@gentoo.org> -nagvis-1.4.4.ebuild:
+  remove old version.
+
+*nagvis-1.4.4-r1 (22 Jun 2012)
+
+  22 Jun 2012; Matti Bickel <mabi@gentoo.org> +nagvis-1.4.4-r1.ebuild:
+  cut dependency on depend.php.eclass, move to EAPI4
+
+  09 Feb 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #85926
+
+*nagvis-1.4.4 (16 Oct 2009)
+
+  16 Oct 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  -nagvis-1.4.2.ebuild, +nagvis-1.4.4.ebuild:
+  Version bump
+
+*nagvis-1.4.2 (15 Aug 2009)
+
+  15 Aug 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  -nagvis-1.3.2.ebuild, -nagvis-1.4.1.ebuild, +nagvis-1.4.2.ebuild:
+  Version bump
+
+*nagvis-1.4.1 (19 Jun 2009)
+
+  19 Jun 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  +nagvis-1.4.1.ebuild:
+  Version bump
+
+  19 Jun 2009; Tobias Scherbaum <dertobi123@gentoo.org> nagvis-1.3.2.ebuild:
+  Fix elog message, #274485
+
+  16 Feb 2009; Tobias Scherbaum <dertobi123@gentoo.org> nagvis-1.3.2.ebuild:
+  Fix deps.
+
+*nagvis-1.3.2 (16 Feb 2009)
+
+  16 Feb 2009; Tobias Scherbaum <dertobi123@gentoo.org> -nagvis-1.3.ebuild,
+  +nagvis-1.3.2.ebuild:
+  Version bump, #252960
+
+*nagvis-1.3 (03 Aug 2008)
+
+  03 Aug 2008; Tobias Scherbaum <dertobi123@gentoo.org> +metadata.xml,
+  +nagvis-1.3.ebuild:
+  Initial import, somewhat based upon on an ebuild by Elias Probst added to
+  #179830

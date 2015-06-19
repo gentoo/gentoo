@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare setup unpack
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=A sidescrolling game of action, puzzles and platforming
+EAPI=5
+HOMEPAGE=http://www.trine2.com/
+IUSE=bundled-libs +launcher
+KEYWORDS=-* amd64 x86
+LICENSE=all-rights-reserved
+RDEPEND=amd64? ( >=dev-libs/glib-2.34.3:2[abi_x86_32(-)] >=sys-libs/zlib-1.2.8-r1[abi_x86_32(-)] >=virtual/glu-9.0-r1[abi_x86_32(-)] >=virtual/opengl-7.0-r1[abi_x86_32(-)] >=media-libs/openal-1.15.1[abi_x86_32(-)] >=media-libs/libogg-1.3.0[abi_x86_32(-)] >=media-libs/libvorbis-1.3.3-r1[abi_x86_32(-)] >=media-libs/freetype-2.5.0.1[abi_x86_32(-)] launcher? ( >=media-libs/fontconfig-2.10.92[abi_x86_32(-)] >=media-libs/libpng-1.5.18:1.5[abi_x86_32(-)] >=x11-libs/gtk+-2.24.23:2[abi_x86_32(-)] >=x11-libs/libSM-1.2.1-r1[abi_x86_32(-)] >=x11-libs/libX11-1.6.2[abi_x86_32(-)] >=x11-libs/libXinerama-1.1.3[abi_x86_32(-)] >=x11-libs/libXxf86vm-1.1.3[abi_x86_32(-)] ) !bundled-libs? ( media-gfx/nvidia-cg-toolkit[multilib] ) ) x86? ( dev-libs/glib:2 media-libs/freetype media-libs/libogg media-libs/libvorbis media-libs/openal sys-libs/zlib virtual/glu virtual/opengl launcher? ( media-libs/fontconfig media-libs/libpng:1.5 x11-libs/gtk+:2 x11-libs/libSM x11-libs/libX11 x11-libs/libXinerama x11-libs/libXxf86vm ) !bundled-libs? ( media-gfx/nvidia-cg-toolkit ) ) games-misc/games-envd
+RESTRICT=fetch bindist splitdebug
+SLOT=0
+SRC_URI=trine2_linux_installer.run
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=969aadd48e6cb4d4aacb766a6e18908a

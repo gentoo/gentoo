@@ -1,0 +1,64 @@
+# ChangeLog for sys-apps/gscanbus
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/gscanbus/ChangeLog,v 1.18 2015/02/23 20:34:18 mgorny Exp $
+
+  23 Feb 2015; Michał Górny <mgorny@gentoo.org> gscanbus-0.8.ebuild:
+  Fix HOMEPAGE & SRC_URI, bug #537798. https://github.com/gentoo/gentoo-portage-
+  rsync-mirror/pull/53 by mm1ke.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> gscanbus-0.8.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  19 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> -gscanbus-0.7.1.ebuild,
+  -files/gscanbus-0.71-gcc33.patch:
+  old
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> gscanbus-0.7.1.ebuild,
+  gscanbus-0.8.ebuild:
+  Drop sparc keywords
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> gscanbus-0.8.ebuild:
+  x86 stable wrt bug #404853
+
+  22 Feb 2012; Brent Baude <ranger@gentoo.org> gscanbus-0.8.ebuild:
+  Marking gscanbus-0.8 ppc for bug 404853
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> gscanbus-0.8.ebuild:
+  Stable for amd64, wrt bug #404853
+
+*gscanbus-0.8 (05 Nov 2011)
+
+  05 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> +gscanbus-0.8.ebuild:
+  Version bump.
+
+  12 Oct 2008; Raúl Porcel <armin76@gentoo.org> gscanbus-0.7.1.ebuild:
+  sparc/x86 stable
+
+  06 May 2008; Samuli Suominen <drac@gentoo.org> gscanbus-0.7.1.ebuild:
+  Use berlios mirrors://
+
+  18 Aug 2006; <malc@gentoo.org> gscanbus-0.7.1.ebuild:
+  Stable on amd64
+
+  26 May 2004; Danny van Dyk <kugelfang@gentoo.org> gscanbus-0.7.1.ebuild:
+  Marked ~amd64.
+
+  04 Apr 2004; Lars Weiler <pylon@gentoo.org> gscanbus-0.7.1.ebuild:
+  stable on ppc
+
+  19 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> gscanbus-0.7.1.ebuild:
+  fix depend (bug #45110); inherit eutils for epatch; patch in src_unpack; tidy
+
+  15 Feb 2004; David Holm <dholm@gentoo.org> gscanbus-0.7.1.ebuild:
+  Added to ~ppc.
+
+  29 Jan 2004; <gustavoz@gentoo.org> gscanbus-0.7.1.ebuild:
+  keyworded ~sparc
+
+*gscanbus-0.7.1 (28 Oct 2003)
+
+  28 Oct 2003; <plasmaroo@gentoo.org> gscanbus-0.7.1.ebuild,
+  files/gscanbus-0.71-gcc33.patch: Initial import...
+
+  Based on the user-contributed ebuild by Thiemo Kellner,
+  <thiemo@thiam.ch> in bug #26745.

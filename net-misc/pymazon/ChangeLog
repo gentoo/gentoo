@@ -1,0 +1,37 @@
+# ChangeLog for net-misc/pymazon
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/pymazon/ChangeLog,v 1.8 2013/06/01 11:19:11 pacho Exp $
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #144305
+
+*pymazon-0.9.1 (09 Dec 2011)
+
+  09 Dec 2011; Jim Ramsay <jim_ramsay@gentoo.org> +pymazon-0.9.1.ebuild:
+  Version 0.9.1 is released
+
+  11 Feb 2011; Markos Chandras <hwoarang@gentoo.org> pymazon-0.9-r1.ebuild:
+  Stable on amd64 wrt bug #354005
+
+  09 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  pymazon-0.9-r1.ebuild:
+  x86 stable wrt bug #354005
+
+  27 Aug 2010; Jim Ramsay <lack@gentoo.org> pymazon-0.9-r1.ebuild:
+  Typo: Had REPEND instead of RDEPEND...
+
+*pymazon-0.9-r1 (27 Jul 2010)
+
+  27 Jul 2010; Jim Ramsay <lack@gentoo.org> -pymazon-0.9.ebuild,
+  +pymazon-0.9-r1.ebuild:
+  Adding dev-python/pycrypto to RDEPEND (Bug #328233)
+
+  01 Jul 2010; Jim Ramsay <lack@gentoo.org> pymazon-0.9.ebuild:
+  Additional python.eclass fixes (Bug #326045)
+
+*pymazon-0.9 (28 Jun 2010)
+
+  28 Jun 2010; Jim Ramsay <lack@gentoo.org> +pymazon-0.9.ebuild,
+  +files/amz.xml, +metadata.xml:
+  Introducing Pymazon-0.9, a graphical open-source replacement for the
+  Amazon.com media downloader (Bug #321599)

@@ -1,0 +1,379 @@
+# ChangeLog for net-proxy/adzapper
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/adzapper/ChangeLog,v 1.70 2015/01/07 13:53:22 pacho Exp $
+
+  07 Jan 2015; Pacho Ramos <pacho@gentoo.org> -adzapper-20080508.ebuild,
+  -adzapper-20110915-r1.ebuild, metadata.xml:
+  Reassign as and cleanup discussed at https://www.mail-archive.com/gentoo-
+  dev@lists.gentoo.org/msg66357.html
+
+  26 May 2013; Agostino Sarubbo <ago@gentoo.org> adzapper-20110915-r2.ebuild:
+  Stable for x86, wrt bug #470568
+
+  26 May 2013; Jeroen Roovers <jer@gentoo.org> adzapper-20110915-r2.ebuild:
+  Stable for HPPA (bug #470568).
+
+  26 May 2013; Agostino Sarubbo <ago@gentoo.org> adzapper-20110915-r2.ebuild:
+  Stable for ppc, wrt bug #470568
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> adzapper-20110915-r2.ebuild:
+  Stable for alpha, wrt bug #470568
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> adzapper-20110915-r2.ebuild:
+  Stable for sparc, wrt bug #470568
+
+  23 May 2013; Agostino Sarubbo <ago@gentoo.org> adzapper-20110915-r2.ebuild:
+  Stable for amd64, wrt bug #470568
+
+*adzapper-20110915-r2 (18 Mar 2013)
+
+  18 Mar 2013; Torsten Veller <tove@gentoo.org> +files/20110915-flush.patch,
+  +adzapper-20110915-r2.ebuild:
+  Removes the use of flush.pl (#425196). Thanks to Brennan Shacklett
+
+*adzapper-20110915-r1 (10 Aug 2012)
+
+  10 Aug 2012; Jeroen Roovers <jer@gentoo.org> -adzapper-20110915.ebuild,
+  +adzapper-20110915-r1.ebuild:
+  Fix installing squid_redirect by Martin Stockinger (bug #430732).
+
+  01 Aug 2012; Jeroen Roovers <jer@gentoo.org> -adzapper-20071120.ebuild:
+  Old.
+
+*adzapper-20110915 (01 Aug 2012)
+
+  01 Aug 2012; Jeroen Roovers <jer@gentoo.org> +adzapper-20110915.ebuild:
+  Version bump thanks to Elias Probst and Florian Steinel (bug #277909).
+
+  20 Apr 2009; Markus Meier <maekke@gentoo.org> adzapper-20080508:
+  amd64 stable, bug #257531
+
+  21 Mar 2009; Jeroen Roovers <jer@gentoo.org> adzapper-20080508.ebuild:
+  Stable for HPPA (bug #257531).
+
+  18 Mar 2009; Brent Baude <ranger@gentoo.org> adzapper-20080508.ebuild:
+  stable ppc, bug 257531
+
+  22 Feb 2009; Raúl Porcel <armin76@gentoo.org> adzapper-20080508.ebuild:
+  sparc/x86 stable wrt #257531
+
+  18 Feb 2009; Tobias Klausmann <klausman@gentoo.org>
+  adzapper-20080508.ebuild:
+  Stable on alpha, bug #257531
+
+  12 Oct 2008; Alin Năstac <mrness@gentoo.org> -adzapper-20070317.ebuild,
+  -adzapper-20071023.ebuild, adzapper-20080508.ebuild:
+  Remove obsolete versions. Remove squid run-time dependency (#241212).
+
+  08 Aug 2008; Steve Dibb <beandog@gentoo.org> adzapper-20071120.ebuild:
+  amd64 stable, bug 231642
+
+  21 Jul 2008; nixnut <nixnut@gentoo.org> adzapper-20071120.ebuild:
+  Stable on ppc wrt bug 231642
+
+  18 Jul 2008; Jeroen Roovers <jer@gentoo.org> adzapper-20071120.ebuild:
+  Stable for HPPA (bug #231642).
+
+  17 Jul 2008; Raúl Porcel <armin76@gentoo.org> adzapper-20071120.ebuild:
+  alpha/sparc/x86 stable wrt #231642
+
+*adzapper-20080508 (12 Jul 2008)
+
+  12 Jul 2008; Alin Năstac <mrness@gentoo.org> +adzapper-20080508.ebuild:
+  Version bump.
+
+*adzapper-20071120 (30 Dec 2007)
+
+  30 Dec 2007; Alin Năstac <mrness@gentoo.org> +adzapper-20071120.ebuild:
+  Version bump.
+
+*adzapper-20071023 (02 Nov 2007)
+
+  02 Nov 2007; Alin Năstac <mrness@gentoo.org> +adzapper-20071023.ebuild:
+  Version bump.
+
+  02 Aug 2007; Alin Năstac <mrness@gentoo.org> -adzapper-20060203.ebuild,
+  -adzapper-20060424.ebuild, -adzapper-20060909.ebuild,
+  -adzapper-20061217.ebuild:
+  Remove obsolete versions.
+
+  05 Jul 2007; Christoph Mende <angelos@gentoo.org>
+  adzapper-20070317.ebuild:
+  Stable on amd64 wrt bug #182292
+
+  02 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  adzapper-20070317.ebuild:
+  Stable on sparc wrt #182292
+
+  01 Jul 2007; Raúl Porcel <armin76@gentoo.org> adzapper-20070317.ebuild:
+  alpha/ia64/x86 stable wrt #182292
+
+  01 Jul 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  adzapper-20070317.ebuild:
+  hppa stable, bug #182292
+
+  01 Jul 2007; Lars Weiler <pylon@gentoo.org> adzapper-20070317.ebuild:
+  Stable on ppc; bug #182292.
+
+  24 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  adzapper-20061217.ebuild:
+  ppc stable, bug #174113
+
+  14 Apr 2007; Jeroen Roovers <jer@gentoo.org> adzapper-20061217.ebuild:
+  Stable for HPPA (bug #174113).
+
+  13 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  adzapper-20061217.ebuild:
+  Stable on sparc wrt #174113
+
+  11 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  adzapper-20061217.ebuild:
+  stable x86, bug 174113
+
+*adzapper-20070317 (11 Apr 2007)
+
+  11 Apr 2007; Alin Năstac <mrness@gentoo.org> adzapper-20061217.ebuild,
+  +adzapper-20070317.ebuild:
+  Stable on amd64. Version bump.
+
+*adzapper-20061217 (17 Jan 2007)
+
+  17 Jan 2007; Alin Năstac <mrness@gentoo.org> adzapper-20060909.ebuild,
+  +adzapper-20061217.ebuild:
+  Stable on amd64. Version bump.
+
+  17 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  adzapper-20060909.ebuild:
+  Stable on sparc
+
+  16 Nov 2006; Alin Nastac <mrness@gentoo.org> adzapper-20060909.ebuild:
+  Stable on x86.
+
+*adzapper-20060909 (20 Sep 2006)
+
+  20 Sep 2006; Alin Nastac <mrness@gentoo.org> +adzapper-20060909.ebuild:
+  Version bump.
+
+  17 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  adzapper-20060424.ebuild:
+  Stable on sparc
+
+  18 Jul 2006; Michael Hanselmann <hansmi@gentoo.org>
+  adzapper-20060424.ebuild:
+  Stable on ppc.
+
+*adzapper-20060424 (18 Jun 2006)
+
+  18 Jun 2006; Alin Nastac <mrness@gentoo.org> -adzapper-20060414.ebuild,
+  +adzapper-20060424.ebuild:
+  Stable on x86.
+
+*adzapper-20060414 (14 Apr 2006)
+
+  14 Apr 2006; Alin Nastac <mrness@gentoo.org> +adzapper-20060414.ebuild:
+  Version bump.
+
+  30 Mar 2006; Alin Nastac <mrness@gentoo.org> -adzapper-20050524.ebuild,
+  -adzapper-20050712.ebuild, -adzapper-20051024.ebuild:
+  Remove obsolete versions.
+
+  06 Mar 2006; Guy Martin <gmsoft@gentoo.org> adzapper-20060203.ebuild:
+  Stable on hppa.
+
+  12 Feb 2006; Jose Luis Rivero <yoswink@gentoo.org>
+  adzapper-20060203.ebuild:
+  Stable on alpha wrt security bug #122308
+
+  12 Feb 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  adzapper-20060203.ebuild:
+  ppc stable, bug #122308
+
+  11 Feb 2006; Alin Nastac <mrness@gentoo.org> adzapper-20060203.ebuild:
+  Stable on x86 wrt bug #122308.
+
+  10 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  adzapper-20060203.ebuild:
+  Stable on sparc wrt security #122308
+
+  10 Feb 2006; Simon Stelling <blubb@gentoo.org> adzapper-20060203.ebuild:
+  stable on amd64 wrt bug 122308
+
+  08 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  adzapper-20051024.ebuild:
+  Stable on sparc
+
+  07 Feb 2006; Simon Stelling <blubb@gentoo.org> adzapper-20051024.ebuild:
+  stable on amd64
+
+  07 Feb 2006; Aron Griffis <agriffis@gentoo.org> adzapper-20051024.ebuild:
+  Mark 20051024 stable on alpha
+
+*adzapper-20060203 (06 Feb 2006)
+
+  06 Feb 2006; Alin Nastac <mrness@gentoo.org> adzapper-20051024.ebuild,
+  +adzapper-20060203.ebuild:
+  Stable on x86. Version bump (#121743).
+
+  24 Dec 2005; Michael Hanselmann <hansmi@gentoo.org>
+  adzapper-20050712.ebuild:
+  Stable on ppc.
+
+  02 Dec 2005; Guy Martin <gmsoft@gentoo.org> adzapper-20050712.ebuild:
+  Stable on hppa.
+
+  02 Dec 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  adzapper-20050712.ebuild:
+  Stable on sparc
+
+*adzapper-20051024 (01 Dec 2005)
+
+  01 Dec 2005; Alin Nastac <mrness@gentoo.org> -adzapper-20050316.ebuild,
+  adzapper-20050712.ebuild, +adzapper-20051024.ebuild:
+  Remove old version. Mark ver 20050712 stable on x86. Version bump.
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> adzapper-20050524.ebuild:
+  Mark 20050524 stable on alpha
+
+  28 Aug 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  adzapper-20050524.ebuild:
+  Stable on amd64.
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  adzapper-20050524.ebuild:
+  Stable on ppc.
+
+  02 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  adzapper-20050524.ebuild:
+  Stable on sparc
+
+*adzapper-20050712 (30 Jul 2005)
+
+  30 Jul 2005; Alin Nastac <mrness@gentoo.org> -adzapper-20040408.ebuild,
+  -adzapper-20050106.ebuild, adzapper-20050524.ebuild,
+  +adzapper-20050712.ebuild:
+  Remove obsolete versions. Mark stable on x86. Version bump.
+
+  19 Jun 2005; Jason Wever <weeve@gentoo.org> adzapper-20050316.ebuild:
+  Stable on SPARC.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  adzapper-20050316.ebuild:
+  Stable on ppc.
+
+  12 Jun 2005; Bryan Østergaard <kloeri@gentoo.org>
+  adzapper-20050316.ebuild:
+  Stable on alpha.
+
+*adzapper-20050524 (04 Jun 2005)
+
+  04 Jun 2005; Alin Nastac <mrness@gentoo.org> +adzapper-20050524.ebuild:
+  Version bump.
+
+  29 May 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  adzapper-20050316.ebuild:
+  Stable on amd64 and x86.
+
+  22 Apr 2005; Alin Nastac <mrness@gentoo.org> :
+  Rename category & herd www-proxy to net-proxy
+
+*adzapper-20050316 (21 Mar 2005)
+
+  21 Mar 2005; Alin Nastac <mrness@gentoo.org> +adzapper-20050316.ebuild:
+  Version bump (#86041).
+
+*adzapper-20050106 (23 Feb 2005)
+
+  23 Feb 2005; Marcus D. Hanwell <cryos@gentoo.org> +adzapper-20050106.ebuild:
+  Version bump, thanks to Stefan Briesenick <sbriesen@gmx.de>, bug 63717.
+
+  17 Feb 2005; Alin Nastac <mrness@gentoo.org> metadata.xml,
+  -adzapper-20031105.ebuild, -adzapper-20040104.ebuild,
+  adzapper-20040408.ebuild:
+  Remove old versions
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  adzapper-20040408.ebuild:
+  Masked adzapper-20040408.ebuild stable for ppc
+
+  16 Aug 2004; Andrew Bevitt <cyfred@gentoo.org>; adzapper-20031105.ebuild,
+  adzapper-20040104.ebuild, adzapper-20040408.ebuild:
+  Updating dependency from net-www/squid to www-proxy/squid
+
+*adzapper-20031105 (15 Aug 2004)
+
+  15 Aug 2004; Stuart Herbert <stuart@gentoo.org> +metadata.xml,
+  +adzapper-20031105.ebuild, +adzapper-20040104.ebuild,
+  +adzapper-20040408.ebuild:
+  Moved from net-www/adzapper to www-proxy/adzapper.
+
+  16 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> adzapper-20040408.ebuild:
+  Stable on alpha.
+
+  11 Jul 2004; Jason Wever <weeve@gentoo.org> adzapper-20040408.ebuild:
+  Stable on sparc.
+
+  06 Jul 2004; Brad Laue <brad@gentoo.org> adzapper-20040408.ebuild:
+  Stable on x86 finally.
+
+*adzapper-20040408 (23 Jun 2004)
+
+  23 Jun 2004; Andrew Bevitt <cyfred@gentoo.org>; +metadata.xml,
+  +adzapper-20040408.ebuild:
+  Adding 20040408 version, adding metadata.xml, cleaning out a few older versions
+
+  19 Jan 2004; Stewart Honsberger <blkdeath@gentoo.org>
+  adzapper-20031105.ebuild, adzapper-20040104.ebuild, metadata.xml:
+  Normalize ebuilds, remove Apache dependancy
+
+*adzapper-20040104 (19 Jan 2004)
+
+  19 Jan 2004; Stewart Honsberger <blkdeath@gentoo.org>
+  adzapper-20030111.ebuild, adzapper-20031105.ebuild,
+  adzapper-20040104.ebuild:
+  Version bump, removed oldest ebuild.
+
+*adzapper-20031105 (24 Dec 2003)
+
+  24 Dec 2003; Martin Holzer <mholzer@gentoo.org> adzapper-20031105.ebuild:
+  Version bumped
+
+*adzapper-20030611 (11 Jun 2003)
+
+  11 Jun 2003; Brad Laue <brad@gentoo.org> adzapper-20030611.ebuild:
+  Submitted by Stewart <bugsubmit@snerk.org>
+  
+  Update to 20030611 snapshot, add stable keywords for all platforms supported
+  by squid.
+
+  05 Jun 2003; Brad Laue <brad@gentoo.org> adzapper-20030525.ebuild:
+  Marking stable on x86.
+
+*adzapper-20030525 (04 June 2003)
+
+  04 June 2003; Brad Laue <brad@gentoo.org> : Version bump, 
+  This is a perl script, so I'm adding architecture support for all
+  platforms squid supports.
+
+*adzapper-20030111 (13 Jan 2003)
+
+  13 Jan 2003; J Robert Ray <jrray@gentoo.org> : Version bump, removing old
+  versions because they are no longer available for download.
+
+  07 Jan 2003; J Robert Ray <jrray@gentoo.org> adzapper-20021128.ebuild :
+  Unmasking for x86.
+
+*adzapper-20021128 (02 Jan 2003)
+
+  02 Jan 2003; J Robert Ray <jrray@gentoo.org> : Version bump, and fixed
+  the digest of the old version, the rules changed a little but the file
+  was not renamed.
+
+*adzapper-20021111 (10 Nov 2002)
+
+  10 Nov 2002; J Robert Ray <jrray@gentoo.org> : New ebuild.

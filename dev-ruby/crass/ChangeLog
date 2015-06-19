@@ -1,0 +1,23 @@
+# ChangeLog for dev-ruby/crass
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/crass/ChangeLog,v 1.5 2015/06/07 17:33:29 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  17 May 2015; Hans de Graaff <graaff@gentoo.org> -crass-1.0.1.ebuild:
+  Cleanup.
+
+*crass-1.0.2 (19 Apr 2015)
+
+  19 Apr 2015; Hans de Graaff <graaff@gentoo.org> +crass-1.0.2.ebuild:
+  Version bump.
+
+  31 Jan 2015; Hans de Graaff <graaff@gentoo.org> crass-1.0.1.ebuild:
+  Add ruby22.
+
+*crass-1.0.1 (23 Dec 2014)
+
+  23 Dec 2014; Hans de Graaff <graaff@gentoo.org> +crass-1.0.1.ebuild,
+  +metadata.xml:
+  Initial import. New dependency for dev-ruby/sanitize.

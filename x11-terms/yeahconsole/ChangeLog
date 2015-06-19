@@ -1,0 +1,53 @@
+# ChangeLog for x11-terms/yeahconsole
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/yeahconsole/ChangeLog,v 1.11 2011/01/25 02:40:00 jer Exp $
+
+  25 Jan 2011; Jeroen Roovers <jer@gentoo.org> yeahconsole-0.3.4-r1.ebuild,
+  files/yeahconsole-0.3.4-make.patch:
+  Clean up patch. Adjust ebuild accordingly.
+
+  22 Jul 2009; Jeremy Olexa <darkside@gentoo.org>
+  yeahconsole-0.3.4-r1.ebuild:
+  amd64 stable, bug 265358
+
+  14 Apr 2009; Raúl Porcel <armin76@gentoo.org>
+  yeahconsole-0.3.4-r1.ebuild:
+  x86 stable wrt #265358
+
+  07 Apr 2009; Jeroen Roovers <jer@gentoo.org> yeahconsole-0.3.4-r1.ebuild:
+  Stable for HPPA (bug #265358).
+
+  03 Mar 2009; Dawid Węgliński <cla@gentoo.org>
+  yeahconsole-0.3.4-r1.ebuild:
+  Keyword ~amd64 per bug #120112)
+
+*yeahconsole-0.3.4-r1 (03 Mar 2009)
+
+  03 Mar 2009; Jeroen Roovers <jer@gentoo.org>
+  files/yeahconsole-0.3.4-make.patch, -yeahconsole-0.3.4.ebuild,
+  +yeahconsole-0.3.4-r1.ebuild:
+  Update patch for --as-needed and revision bump (bug #120112 comment #10).
+
+  26 Feb 2009; Jeroen Roovers <jer@gentoo.org> yeahconsole-0.3.4.ebuild:
+  Clarify terminal emulator requirement better.
+
+  26 Feb 2009; Jeroen Roovers <jer@gentoo.org>
+  files/yeahconsole-0.3.4-make.patch:
+  Slightly nicer patch to apply CFLAGS as intended and to apply CFLAGS and
+  LDFLAGS to TARGET was well.
+
+  25 Feb 2009; Jeroen Roovers <jer@gentoo.org> yeahconsole-0.3.4.ebuild:
+  Marked ~hppa too.
+
+  25 Feb 2009; Jeroen Roovers <jer@gentoo.org>
+  files/yeahconsole-0.3.4-make.patch:
+  Readd -Wall as originally intended.
+
+*yeahconsole-0.3.4 (25 Feb 2009)
+
+  25 Feb 2009; Jeroen Roovers <jer@gentoo.org>
+  +files/yeahconsole-0.3.4-make.patch, +metadata.xml,
+  +yeahconsole-0.3.4.ebuild:
+  Initial commit, thanks to Martín R. Dapás (bug #120112, partly based on
+  the ebuilds attached there).
+

@@ -1,0 +1,48 @@
+# ChangeLog for sys-firmware/ivtv-firmware
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-firmware/ivtv-firmware/ChangeLog,v 1.6 2013/03/16 13:30:42 ssuominen Exp $
+
+  16 Mar 2013; Samuli Suominen <ssuominen@gentoo.org>
+  -ivtv-firmware-20080701.ebuild:
+  old
+
+  16 Mar 2013; Samuli Suominen <ssuominen@gentoo.org>
+  ivtv-firmware-20080701-r1.ebuild:
+  amd64/ppc/x86 stable
+
+*ivtv-firmware-20080701-r1 (11 Feb 2013)
+
+  11 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +ivtv-firmware-20080701-r1.ebuild:
+  Remove file v4l-cx25840.fw because it is part of linux-firmware package wrt
+  #362361 by Marcin Deranek
+
+  11 Feb 2013; Doug Goldstein <cardoe@gentoo.org> ivtv-firmware-20080701.ebuild:
+  Switch to Gentoo mirrors for SRC_URI since upstream's site is gone
+
+  11 Feb 2013; Doug Goldstein <cardoe@gentoo.org> ivtv-firmware-20080701.ebuild:
+  Add back stable keyword
+
+  11 Feb 2013; Doug Goldstein <cardoe@gentoo.org>
+  +ivtv-firmware-20080701.ebuild, +metadata.xml:
+  Move ivtv-firmware to sys-firmware
+
+  11 Feb 2013; Doug Goldstein <cardoe@gentoo.org>
+  ivtv-firmware-20080701.ebuild:
+  Remove RESTRICT=mirror, upstream is no longer around.
+
+  19 Jan 2010; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  change herd to MythTV since that's the herd interested in this
+
+  19 Jan 2010; Doug Goldstein <cardoe@gentoo.org>
+  -ivtv-firmware-20070217.ebuild, ivtv-firmware-20080701.ebuild:
+  stabilize to bring us up to date with reality. Remove old version since
+  you really don't want to use those with newer cards
+
+*ivtv-firmware-20080701 (21 Oct 2008)
+*ivtv-firmware-20070217 (21 Oct 2008)
+
+  21 Oct 2008; Doug Goldstein <cardoe@gentoo.org> +metadata.xml,
+  +ivtv-firmware-20070217.ebuild, +ivtv-firmware-20080701.ebuild:
+  move pvr-firmware to ivtv-firmware since upstream renamed these bits.
+  clean up the ebuilds a little

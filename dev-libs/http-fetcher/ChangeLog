@@ -1,0 +1,110 @@
+# ChangeLog for dev-libs/http-fetcher
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/http-fetcher/ChangeLog,v 1.24 2015/06/09 14:17:51 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  19 Jan 2010; Dawid Węgliński <cla@gentoo.org> http-fetcher-1.1.0.ebuild:
+  Wrap AC_PATH_HFETCHER call inside the brackets (bug #299940)
+
+  14 Jan 2009; Mike Frysinger <vapier@gentoo.org> http-fetcher-1.1.0.ebuild:
+  Do not build with strict code flags #227549.
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  http-fetcher-1.0.2.ebuild, http-fetcher-1.0.3.ebuild,
+  http-fetcher-1.1.0.ebuild:
+  (QA) RESTRICT clean up.
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove ka0ttic from metadata.xml due to retirement.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  28 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-http-fetcher-1.0.2, files/digest-http-fetcher-1.0.3,
+  files/digest-http-fetcher-1.1.0, Manifest:
+  Fixing SHA256 digest, pass four
+
+  06 Feb 2006; Simon Stelling <blubb@gentoo.org> http-fetcher-1.1.0.ebuild:
+  stable on amd64
+
+  14 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  http-fetcher-1.1.0.ebuild:
+  Stable on alpha
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  http-fetcher-1.1.0.ebuild:
+  Stable on ppc.
+
+  06 May 2005; Aaron Walker <ka0ttic@gentoo.org> http-fetcher-1.1.0.ebuild:
+  Stable on x86.
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  http-fetcher-1.0.3.ebuild:
+  Stable on ppc.
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> http-fetcher-1.0.3.ebuild:
+  stable on amd64
+
+*http-fetcher-1.1.0 (11 Feb 2005)
+
+  11 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml,
+  -files/buffer-overflow-gentoo.patch, -files/errno-link-gentoo.patch,
+  -http-fetcher-1.0.1-r1.ebuild, -http-fetcher-1.0.1.ebuild,
+  http-fetcher-1.0.2.ebuild, http-fetcher-1.0.3.ebuild,
+  +http-fetcher-1.1.0.ebuild:
+  Version bump; 1.0.3 stable on x86. Tidy old ebuilds.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  http-fetcher-1.0.1-r1.ebuild, http-fetcher-1.0.1.ebuild,
+  http-fetcher-1.0.2.ebuild, http-fetcher-1.0.3.ebuild:
+  virtual/glibc -> virtual/libc
+
+  23 May 2004; Bryan Østergaard <kloeri@gentoo.org> http-fetcher-1.0.3.ebuild:
+  Stable on alpha.
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> http-fetcher-1.0.2.ebuild:
+  Add die following econf for bug 48950
+
+*http-fetcher-1.0.3 (12 Nov 2003)
+
+  12 Nov 2003; Martin Holzer <mholzer@gentoo.org> http-fetcher-1.0.2.ebuild,
+  http-fetcher-1.0.3.ebuild:
+  Version bumped. Closes #32741.
+
+  23 Jun 2003; Patrick Kursawe <phosphan@gentoo.org>
+  http-fetcher-1.0.2.ebuild:
+  1.0.2 considered stable.
+
+  23 Jun 2003; Patrick Kursawe <phosphan@gentoo.org> :
+  Moving from net-www to dev-libs as requested by package author
+
+*http-fetcher-1.0.2 (18 Jun 2003)
+
+  18 Jun 2003; Patrick Kursawe <phosphan@gentoo.org>
+  http-fetcher-1.0.2.ebuild:
+  Bump to 1.0.2 - request by package author in bug 20075
+
+*http-fetcher-1.0.1-r1 (06 Jan 2003)
+
+  24 Mar 2003; Matthew Kennedy <mkennedy@gentoo.org>
+  http-fetcher-1.0.1-r1.ebuild:
+  patch source to fix errno glib2.3.2 linking problems
+
+  06 Jan 2003; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  http-fetcher-1.0.1-r1.ebuild, files/buffer-overflow-gentoo.patch,
+  files/digest-http-fetcher-1.0.1-r1 :
+
+  Applies a fix for a buffer overflow problem.
+
+*http-fetcher-1.0.1 (01 Jan 2003)
+
+  01 Jan 2003; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  http-fetcher-1.0.1.ebuild, files/digest-http-fetcher-1.0.1 :
+
+  Initial import. Dependency of net-www/fetch.

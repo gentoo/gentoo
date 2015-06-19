@@ -1,0 +1,39 @@
+# ChangeLog for dev-perl/DBIx-Class-InflateColumn-Boolean
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/DBIx-Class-InflateColumn-Boolean/ChangeLog,v 1.8 2014/10/10 22:17:38 zlogene Exp $
+
+  10 Oct 2014; Mikle Kolyada <zlogene@gentoo.org>
+  DBIx-Class-InflateColumn-Boolean-0.2.0.ebuild:
+  Bump to EAPI=5
+
+  08 Jan 2013; Torsten Veller <tove@gentoo.org>
+  -DBIx-Class-InflateColumn-Boolean-0.1.1.ebuild:
+  Cleanup
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop duplication of myself as a maintainer where there is a herd.
+
+*DBIx-Class-InflateColumn-Boolean-0.2.0 (04 Nov 2012)
+
+  04 Nov 2012; Torsten Veller <tove@gentoo.org>
+  +DBIx-Class-InflateColumn-Boolean-0.2.0.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -DBIx-Class-InflateColumn-Boolean-0.001001.ebuild:
+  Cleanup
+
+*DBIx-Class-InflateColumn-Boolean-0.1.1 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +DBIx-Class-InflateColumn-Boolean-0.1.1.ebuild:
+  Change version scheme
+
+*DBIx-Class-InflateColumn-Boolean-0.001001 (23 Jun 2009)
+
+  23 Jun 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +DBIx-Class-InflateColumn-Boolean-0.001001.ebuild, +metadata.xml:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

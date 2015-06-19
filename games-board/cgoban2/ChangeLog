@@ -1,0 +1,138 @@
+# ChangeLog for games-board/cgoban2
+# Copyright 2000-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/cgoban2/ChangeLog,v 1.31 2015/02/06 13:43:34 ago Exp $
+
+  06 Feb 2015; Agostino Sarubbo <ago@gentoo.org> cgoban2-2.6.12.ebuild:
+  Stable for amd64, wrt bug #538860
+
+  29 Oct 2014; Michael Sterrett <mr_bones_@gentoo.org> cgoban2-2.6.12.ebuild:
+  EAPI=5
+
+  13 Mar 2007; Tristan Heaven <nyhm@gentoo.org> cgoban2-2.6.12.ebuild:
+  HOMEPAGE update
+
+  29 Aug 2006; Michael Sterrett <mr_bones_@gentoo.org> files/cgoban2:
+  attempt to fix quoting issue from bug #145060
+
+*cgoban2-2.6.12 (12 Apr 2005)
+
+  12 Apr 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  -cgoban2-2.6.11.ebuild, +cgoban2-2.6.12.ebuild:
+  version bump; clean older version
+
+*cgoban2-2.6.11 (08 Apr 2005)
+
+  08 Apr 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +cgoban2-2.6.11.ebuild:
+  version bump
+
+  02 Apr 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  -cgoban2-2.6.7.ebuild, -cgoban2-2.6.8.ebuild, -cgoban2-2.6.9.ebuild:
+  clean old versions
+
+*cgoban2-2.6.10 (23 Mar 2005)
+
+  23 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org> +cgoban2-2.6.10.ebuild:
+  version bump
+
+*cgoban2-2.6.9 (22 Jan 2005)
+
+  22 Jan 2005; Michael Sterrett <mr_bones_@gentoo.org> +cgoban2-2.6.9.ebuild:
+  version bump
+
+*cgoban2-2.6.8 (10 Dec 2004)
+
+  10 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> -cgoban2-2.6.5.ebuild,
+  -cgoban2-2.6.6.ebuild, +cgoban2-2.6.8.ebuild:
+  clean older ebuilds; version bump
+
+*cgoban2-2.6.7 (19 Nov 2004)
+
+  19 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> +cgoban2-2.6.7.ebuild:
+  version bump
+
+  03 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> -cgoban2-2.6.4.ebuild:
+  clean older ebuild
+
+*cgoban2-2.6.6 (03 Nov 2004)
+
+  03 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> +cgoban2-2.6.6.ebuild:
+  version bump
+
+  27 Oct 2004; Tom Martin <slarti@gentoo.org> cgoban2-2.6.5.ebuild:
+  Marked ~amd64 for bug 61056.
+
+  23 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> -cgoban2-2.5.8.ebuild,
+  -cgoban2-2.6.1.ebuild, -cgoban2-2.6.3.ebuild:
+  clean older versions
+
+*cgoban2-2.6.5 (23 Sep 2004)
+
+  23 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> +cgoban2-2.6.5.ebuild:
+  version bump
+
+*cgoban2-2.6.4 (20 Jul 2004)
+
+  20 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> +cgoban2-2.6.4.ebuild:
+  version bump (bug #57746)
+
+  16 Jul 2004; David Holm <dholm@gentoo.org> cgoban2-2.6.3.ebuild:
+  Added to ~ppc.
+
+*cgoban2-2.6.3 (14 Jul 2004)
+
+  14 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> +cgoban2-2.6.3.ebuild:
+  version bump (bug #56940)
+
+*cgoban2-2.6.1 (27 May 2004)
+
+  27 May 2004; Michael Sterrett <mr_bones_@gentoo.org> cgoban2-2.6.1.ebuild:
+  version bump
+
+*cgoban2-2.5.8 (24 May 2004)
+
+  24 May 2004; Chris Gianelloni <wolf31o2@gentoo.org> +cgoban2-2.5.8.ebuild:
+  Version bumped to 2.5.8 and closing bug #51835.
+
+*cgoban2-2.5.7 (17 Mar 2004)
+
+  17 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> cgoban2-2.5.7.ebuild:
+  version bump (bug #44965)
+
+*cgoban2-2.5.6 (19 Feb 2004)
+
+  19 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> cgoban2-2.5.2.ebuild,
+  cgoban2-2.5.3.ebuild, cgoban2-2.5.5.ebuild, cgoban2-2.5.6.ebuild:
+  version bump
+
+*cgoban2-2.5.5 (29 Dec 2003)
+
+  29 Dec 2003; Michael Sterrett <mr_bones_@gentoo.org> cgoban2-2.5.5.ebuild:
+  version bump
+
+  21 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> cgoban2-2.5.1.ebuild:
+  roll off oldest version
+
+*cgoban2-2.5.3 (21 Oct 2003)
+
+  21 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> cgoban2-2.5.3.ebuild:
+  version bump (bug 31656)
+
+*cgoban2-2.5.2 (26 Sep 2003)
+
+  26 Sep 2003; Michael Sterrett <msterret@gentoo.org> cgoban2-2.5.2.ebuild,
+  files/cgoban2:
+  version bump
+
+*cgoban2-2.5.1 (17 Jul 2003)
+
+  26 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add wrapper script to show nicer errors #29617.
+
+  17 Jul 2003; Michael Sterrett <msterret@gentoo.org> cgoban2-2.5.1.ebuild:
+  version bump (bug 24663)
+
+*cgoban2-2.4.61 (10 Jul 2003)
+
+  10 Jul 2003; Michael Sterrett <msterret@gentoo.org> cgoban2-2.4.61.ebuild:
+  initial commit.  ebuild based on one provided by TGL (bug 15840)

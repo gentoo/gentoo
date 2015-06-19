@@ -1,0 +1,14 @@
+Disable check for new versions.
+
+--- a/BitTorrent/NewVersion.py
++++ b/BitTorrent/NewVersion.py
+@@ -128,6 +128,9 @@ class Updater(object):
+ 
+ 
+     def get(self):
++        self.debug('Skipping version check')
++        return
++
+         try:
+             self.get_available()
+         except BTFailure, e:

@@ -1,0 +1,153 @@
+# ChangeLog for x11-apps/rstart
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/rstart/ChangeLog,v 1.41 2015/04/12 10:34:59 mrueg Exp $
+
+  12 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -rstart-1.0.4.ebuild:
+  Remove old.
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org> rstart-1.0.5.ebuild:
+  Stable for x86, wrt bug #475480
+
+  05 Oct 2013; Markus Meier <maekke@gentoo.org> rstart-1.0.5.ebuild:
+  arm stable, bug #475480
+
+  04 Oct 2013; Agostino Sarubbo <ago@gentoo.org> rstart-1.0.5.ebuild:
+  Stable for ppc64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org> rstart-1.0.5.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org> rstart-1.0.5.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*rstart-1.0.5 (18 Feb 2013)
+
+  18 Feb 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +rstart-1.0.5.ebuild:
+  Version bump.
+
+  14 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org> -rstart-1.0.3.ebuild:
+  old
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> rstart-1.0.4.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> rstart-1.0.4.ebuild:
+  s390/sh stable wrt #344827
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org> rstart-1.0.4.ebuild:
+  arm stable, bug #344827
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org> rstart-1.0.4.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> rstart-1.0.4.ebuild:
+  amd64 stable wrt #344827
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> rstart-1.0.4.ebuild:
+  ppc64 stable wrt #344827
+
+*rstart-1.0.4 (01 Nov 2010)
+
+  01 Nov 2010; Tomáš Chvátal <scarabeus@gentoo.org> +rstart-1.0.4.ebuild:
+  Version bump
+
+  23 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org> -rstart-1.0.2.ebuild:
+  rm
+
+  19 Jan 2010; Raúl Porcel <armin76@gentoo.org> rstart-1.0.3.ebuild:
+  s390 stable wrt #294958
+
+  18 Jan 2010; Raúl Porcel <armin76@gentoo.org> rstart-1.0.3.ebuild:
+  sh stable wrt #294958
+
+  15 Dec 2009; Brent Baude <ranger@gentoo.org> rstart-1.0.3.ebuild:
+  Marking rstart-1.0.3 ppc64 stable for bug 294958
+
+  10 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> rstart-1.0.3.ebuild:
+  amd64 stable wrt #294958
+
+  11 Oct 2009; nixnut <nixnut@gentoo.org> rstart-1.0.3.ebuild:
+  ppc stable #282290
+
+  09 Oct 2009; Markus Meier <maekke@gentoo.org> rstart-1.0.3.ebuild:
+  arm stable, bug #282290
+
+  05 Oct 2009; Christian Faulhammer <fauli@gentoo.org> rstart-1.0.3.ebuild:
+  x86 stable, bug 282290
+
+  30 Sep 2009; Samuli Suominen <ssuominen@gentoo.org> rstart-1.0.3.ebuild:
+  Keyword ~amd64 wrt #282290.
+
+*rstart-1.0.3 (06 Aug 2009)
+
+  06 Aug 2009; Rémi Cardona <remi@gentoo.org> +rstart-1.0.3.ebuild:
+  bump to 1.0.3
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org> rstart-1.0.2.ebuild:
+  fix repoman warnings
+
+  19 Dec 2007; Dawid Węgliński <cla@gentoo.org> rstart-1.0.2.ebuild:
+  Stable on x86 (bug #202087)
+
+  09 Oct 2007; Donnie Berkholz <dberkholz@gentoo.org>; -rstart-1.0.1.ebuild:
+  Drop old ebuilds.
+
+  20 May 2006; Robin H. Johnson <robbat2@gentoo.org> rstart-1.0.2.ebuild:
+  Added ~ppc after testing.
+
+*rstart-1.0.2 (29 Apr 2006)
+
+  29 Apr 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +rstart-1.0.2.ebuild:
+  Version bump.  Includes a build fix.
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> rstart-1.0.1.ebuild:
+  Added ~ppc64
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -rstart-0.99.2.ebuild, -rstart-1.0.0.ebuild:
+  Pull old versions.
+
+*rstart-1.0.1 (23 Dec 2005)
+
+  23 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>; +rstart-1.0.1.ebuild:
+  Bump for 7.0.
+
+*rstart-1.0.0 (18 Dec 2005)
+
+  18 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +rstart-1.0.0.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -files/rstart-destdir.patch:
+  Unused file.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -rstart-0.99.0.ebuild, -rstart-0.99.1.ebuild:
+  Pull old versions.
+
+*rstart-0.99.2 (05 Dec 2005)
+
+  05 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +rstart-0.99.2.ebuild:
+  Bump for 7.0RC3.
+
+*rstart-0.99.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +rstart-0.99.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> rstart-0.99.0.ebuild:
+  Add ~sparc keyword (Modular X testing).
+
+*rstart-0.99.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +files/rstart-destdir.patch, +rstart-0.99.0.ebuild:
+  Initial commit for modular X.

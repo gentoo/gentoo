@@ -1,0 +1,35 @@
+From 89f99089abe0c1369a78a3bb8e2a576c513ec809 Mon Sep 17 00:00:00 2001
+From: Davide Pesavento <pesa@gentoo.org>
+Date: Wed, 6 May 2015 23:21:54 +0200
+Subject: [PATCH] Install assistant_adp binary.
+
+---
+ tools/assistant/compat/compat.pro | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/tools/assistant/compat/compat.pro b/tools/assistant/compat/compat.pro
+index 171106a..a14e3f8 100755
+--- a/tools/assistant/compat/compat.pro
++++ b/tools/assistant/compat/compat.pro
+@@ -14,6 +14,8 @@ QT += xml network
+ 
+ PROJECTNAME = Assistant
+ 
++DESTDIR = ../../../bin
++
+ FORMS += helpdialog.ui \
+         mainwindow.ui \
+         tabbedbrowser.ui \
+@@ -59,6 +61,9 @@ mac {
+     TARGET = Assistant_adp
+ }
+ 
++target.path = $$[QT_INSTALL_BINS]
++INSTALLS += target
++
+ TRANSLATIONS = translations/assistant_adp_de.ts \
+     translations/assistant_adp_ja.ts \
+     translations/assistant_adp_pl.ts \
+-- 
+2.4.0
+

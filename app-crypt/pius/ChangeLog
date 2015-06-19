@@ -1,0 +1,39 @@
+# ChangeLog for app-crypt/pius
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/pius/ChangeLog,v 1.8 2015/06/09 09:34:03 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  17 May 2015; Manuel Rüger <mrueg@gentoo.org> -pius-2.0.8.ebuild:
+  Remove old.
+
+*pius-2.0.11 (11 Oct 2014)
+
+  11 Oct 2014; Tim Harder <radhermit@gentoo.org> +pius-2.0.11.ebuild:
+  Version bump, migrate to python-r1.
+
+  10 Aug 2014; Patrick Lauer <patrick@gentoo.org> pius-2.0.10.ebuild,
+  pius-2.0.8.ebuild, pius-2.0.9.ebuild:
+  Fix description for more repoman happy
+
+*pius-2.0.10 (12 May 2013)
+
+  12 May 2013; Tom Knight <tomk@gentoo.org> +pius-2.0.10.ebuild:
+  Version bump to 2.0.10, fixed bug #469572
+
+*pius-2.0.9 (12 Jan 2012)
+
+  12 Jan 2012; Tim Harder <radhermit@gentoo.org> +pius-2.0.9.ebuild:
+  Version bump.
+
+  15 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pius-2.0.8.ebuild:
+  Use Python 2.
+
+*pius-2.0.8 (14 Feb 2011)
+
+  14 Feb 2011; Tom Knight <tomk@gentoo.org> +pius-2.0.8.ebuild,
+  +metadata.xml:
+  New package - PIUS: A tool for signing and email all UIDs on a set of PGP
+  keys

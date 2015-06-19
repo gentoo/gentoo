@@ -1,0 +1,39 @@
+Fix for Mac Os 10.7
+
+src_compile:
+gtkapplication-quartz-menu.c:265: error: incompatible type for argument 1 of 'roundf'
+make[4]: *** [libgtk_3_la-gtkapplication-quartz-menu.lo] Error 1
+
+More info:
+https://trac.macports.org/ticket/43283
+https://bugzilla.gnome.org/show_bug.cgi?id=727366
+https://bugs.gentoo.org/show_bug.cgi?id=519058
+
+--- gtk/gtkapplication-quartz-menu.c.orig	2014-05-08 01:40:39.000000000 +0200
++++ gtk/gtkapplication-quartz-menu.c	2014-05-15 11:16:09.000000000 +0200
+@@ -30,6 +30,16 @@
+ 
+ #import <Cocoa/Cocoa.h>
+ 
++#if !defined(MAC_OS_X_VERSION_10_7) || \
++MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_7
++
++@interface NSScreen (LionAPI)
++- (CGFloat)backingScaleFactor;
++- (NSRect)convertRectToBacking:(NSRect)aRect;
++@end
++
++#endif // 10.7
++
+ #define ICON_SIZE 16
+ 
+ #define BLACK               "#000000"
+@@ -262,7 +272,7 @@
+         }
+ 
+       theme = gtk_icon_theme_get_default ();
+-      scale = roundf ([[NSScreen mainScreen] backingScaleFactor]);
++      scale = [[NSScreen mainScreen] respondsToSelector:@selector(backingScaleFactor)] ? roundf ([[NSScreen mainScreen] backingScaleFactor]) : 1.;
+       info = gtk_icon_theme_lookup_by_gicon_for_scale (theme, icon, ICON_SIZE, scale, GTK_ICON_LOOKUP_USE_BUILTIN);
+ 
+       if (info != NULL)

@@ -1,0 +1,105 @@
+# ChangeLog for dev-tex/leaflet
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/leaflet/ChangeLog,v 1.33 2014/08/10 21:26:52 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> leaflet-20041222.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> leaflet-20041222.ebuild:
+  keyword ~amd64-fbsd
+
+  16 Oct 2011; Fabian Groffen <grobian@gentoo.org> leaflet-20041222.ebuild:
+  Marked ~x86-macos
+
+  05 Oct 2011; Alexis Ballier <aballier@gentoo.org> leaflet-20041222.ebuild:
+  remove ptex dep as it is going away
+
+  28 Aug 2011; Fabian Groffen <grobian@gentoo.org> leaflet-20041222.ebuild:
+  Marked ~x64-macos
+
+  25 Oct 2010; Alexis Ballier <aballier@gentoo.org>
+  -leaflet-19990601.ebuild:
+  remove old
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  leaflet-20041222.ebuild:
+  Transfer Prefix keywords
+
+  30 May 2009; Ulrich Mueller <ulm@gentoo.org> leaflet-20041222.ebuild:
+  Remove app-text/tetex from dependencies, bug 227443.
+
+  18 Mar 2009; Raúl Porcel <armin76@gentoo.org> leaflet-20041222.ebuild:
+  arm/s390/sh stable wrt #253551
+
+  11 Mar 2009; Raúl Porcel <armin76@gentoo.org> leaflet-20041222.ebuild:
+  Add ~arm/~s390/~sh
+
+  10 Jan 2009; Markus Meier <maekke@gentoo.org> leaflet-20041222.ebuild:
+  amd64/x86 stable, bug #254091
+
+  10 Jan 2009; Raúl Porcel <armin76@gentoo.org> leaflet-20041222.ebuild:
+  ia64/sparc stable wrt #254091
+
+  10 Jan 2009; Tobias Klausmann <klausman@gentoo.org>
+  leaflet-20041222.ebuild:
+  Stable on alpha, bug #254091
+
+  09 Jan 2009; Joseph Jezak <josejx@gentoo.org> leaflet-20041222.ebuild:
+  Marked ppc stable for bug #254091.
+
+  08 Jan 2009; Jeroen Roovers <jer@gentoo.org> leaflet-20041222.ebuild:
+  Stable for HPPA (bug #254091).
+
+  07 Jan 2009; Brent Baude <ranger@gentoo.org> leaflet-20041222.ebuild:
+  stable ppc64, bug 254091
+
+  06 Oct 2008; Jeroen Roovers <jer@gentoo.org> leaflet-20041222.ebuild:
+  Marked ~hppa (bug #237202).
+
+  04 Oct 2008; Brent Baude <ranger@gentoo.org> leaflet-20041222.ebuild:
+  Marking leaflet-20041222 ~ppc for bug 237202
+
+  23 Sep 2008; Raúl Porcel <armin76@gentoo.org> leaflet-20041222.ebuild:
+  Add ~alpha/~ia64 wrt #237202
+
+  21 Sep 2008; Brent Baude <ranger@gentoo.org> leaflet-20041222.ebuild:
+  Marking leaflet-20041222 ~ppc64 for bug 237202
+
+  02 Sep 2008; Alexis Ballier <aballier@gentoo.org> leaflet-20041222.ebuild:
+  keyword ~x86-fbsd and add missing texlive deps
+
+  30 Aug 2008; Alexis Ballier <aballier@gentoo.org> leaflet-20041222.ebuild:
+  unzip should not be in rdepend
+
+*leaflet-20041222 (30 Aug 2008)
+
+  30 Aug 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/leaflet-20041222-logging.patch, +leaflet-20041222.ebuild:
+  bump to latest ctan version and install to texmf-site
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  07 Feb 2007; Marien Zwart <marienz@gentoo.org> leaflet-19990601.ebuild:
+  Fix typo.
+
+  06 Feb 2007; Alexandre Buisse <nattfodd@gentoo.org>
+  leaflet-19990601.ebuild:
+  Updated HOMEPAGE and SRC_URI.
+
+  28 Dec 2004; Dylan Carlson <absinthe@gentoo.org> leaflet-19990601.ebuild:
+  Stable on amd64.
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> leaflet-19990601.ebuild:
+  Added IUSE=.
+
+  13 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> leaflet-19990601.ebuild:
+  marked ~amd64
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*leaflet-19990601 (21 May 2002)
+
+  21 May 2002; Bruce A. Locke <blocke@shivan.org> latex-leaflet-19990601.ebuild :
+
+  Contributed by m-turk@nwu.edu (Matthew Turk)

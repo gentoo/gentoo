@@ -1,0 +1,22 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/features/selinux/package.use.force,v 1.10 2014/12/03 13:22:09 perfinion Exp $
+
+# Sven Vermeulen <swift@gentoo.org> (19 Apr 2013)
+# sys-apps/policycoreutils (semanage command) uses sepolgen, which requires libselinux with USE="python". 
+# sys-apps/policycoreutils also requires libsemanage with USE="python" and
+# setools with USE="python"
+sys-libs/libselinux python
+sys-libs/libsemanage python
+app-admin/setools python
+
+# Sven Vermeulen <swift@gentoo.org> (21 May 2013)
+# sys-apps/policycoreutils has PYTHON_USE_WITH="xml" set, so we force it
+# here to allow stages to build with USE=xml on python
+dev-lang/python xml
+
+# Jason Zaman <perfinion@gentoo.org> (03 Dec 2014)
+# sys-apps/busybox has IUSE="+static", so force static-libs on its deps
+# so stages can build with no interacton. Bug #527938
+sys-libs/libselinux static-libs
+dev-libs/libpcre static-libs

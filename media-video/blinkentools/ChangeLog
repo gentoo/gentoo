@@ -1,0 +1,36 @@
+# ChangeLog for media-video/blinkentools
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/blinkentools/ChangeLog,v 1.9 2014/08/10 20:57:35 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> blinkentools-2.9.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> blinkentools-2.9.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  01 Aug 2009; Jeremy Olexa <darkside@gentoo.org> blinkentools-2.9.ebuild:
+  add pkgconfig dep, use emake instead of make. bug 239802
+
+  29 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Lars Weiler (Pylon) from metadata.xml (as per #215644). Assigning
+  to maintainer-needed.
+
+  27 Nov 2007; Matthias Schwarzott <zzam@gentoo.org>
+  blinkentools-2.9.ebuild:
+  Fixed quoting.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  28 May 2006; Lars Weiler <pylon@gentoo.org> blinkentools-2.9.ebuild:
+  Stable on x86.
+
+  18 Dec 2005; <chainsaw@gentoo.org> blinkentools-2.9.ebuild:
+  Add ~amd64 keyword.
+
+*blinkentools-2.9 (18 Dec 2005)
+
+  18 Dec 2005; Lars Weiler <pylon@gentoo.org> +metadata.xml,
+  +blinkentools-2.9.ebuild:
+  Thanks to Niels 'NachtKind' Will in Bug #61819 for this ebuild, dedicated to
+  all Blinkenlight-lovers.

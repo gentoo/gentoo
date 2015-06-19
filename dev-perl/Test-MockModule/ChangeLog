@@ -1,0 +1,36 @@
+# ChangeLog for dev-perl/Test-MockModule
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-MockModule/ChangeLog,v 1.7 2014/08/22 20:22:51 axs Exp $
+
+*Test-MockModule-0.50.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Test-MockModule-0.50.0-r1.ebuild, -Test-MockModule-0.50.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  23 Nov 2012; Anthony G. Basile <blueness@gentoo.org>
+  Test-MockModule-0.50.0.ebuild:
+  keyword ~arm, bug #442816
+
+  05 Oct 2012; Brent Baude <ranger@gentoo.org> Test-MockModule-0.50.0.ebuild:
+  Marking Test-MockModule-0.50.0 ppc for bug 412881
+
+  13 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Test-MockModule-0.50.0.ebuild:
+  x86 stable wrt bug #412881
+
+  07 Sep 2012; Agostino Sarubbo <ago@gentoo.org> Test-MockModule-0.50.0.ebuild:
+  Stable for amd64, wrt bug #412881
+
+*Test-MockModule-0.50.0 (16 Jul 2012)
+
+  16 Jul 2012; Torsten Veller <tove@gentoo.org> -Test-MockModule-0.05.ebuild,
+  +Test-MockModule-0.50.0.ebuild:
+  Change version scheme. Add ~x86 and pod testing dependencies
+
+*Test-MockModule-0.05 (16 Jul 2012)
+
+  16 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +Test-MockModule-0.05.ebuild, +metadata.xml:
+  Initial import of Test-MockModule required by munin-2's tests.

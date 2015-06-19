@@ -1,0 +1,58 @@
+# ChangeLog for www-client/jumanji
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-client/jumanji/ChangeLog,v 1.12 2015/06/01 13:34:30 xmw Exp $
+
+*jumanji-0.0.0_p20150527 (01 Jun 2015)
+
+  01 Jun 2015; Michael Weber <xmw@gentoo.org> +jumanji-0.0.0_p20150527.ebuild,
+  jumanji-0.0.0_p20130103-r1.ebuild:
+  New vcs snapshot for updated girara.
+
+  04 Apr 2014; Samuli Suominen <ssuominen@gentoo.org>
+  -files/jumanji-0.0.0_p20130103-r1-gtk2.patch,
+  jumanji-0.0.0_p20130103-r1.ebuild, jumanji-9999.ebuild, metadata.xml:
+  Remove USE="deprecated" because SLOT="2" of dev-libs/girara is going away by
+  upstream decision since version 0.2.0
+
+*jumanji-0.0.0_p20130103-r1 (03 Apr 2014)
+
+  03 Apr 2014; Michael Weber <xmw@gentoo.org>
+  +files/jumanji-0.0.0_p20130103-r1-gtk2.patch,
+  +jumanji-0.0.0_p20130103-r1.ebuild, -files/jumanji-0.0.0_p20130103-gtk2.patch,
+  -jumanji-0.0.0_p20130103.ebuild, jumanji-9999.ebuild:
+  Revbump to fix patch file (bug 505922).
+
+*jumanji-0.0.0_p20111209 (22 Jun 2013)
+*jumanji-0.0.0_p20130103 (22 Jun 2013)
+
+  22 Jun 2013; Michael Weber <xmw@gentoo.org>
+  +files/jumanji-0.0.0_p20111209-buildsystem.patch,
+  +files/jumanji-0.0.0_p20130103-gtk2.patch, +jumanji-0.0.0_p20111209.ebuild,
+  +jumanji-0.0.0_p20130103.ebuild, jumanji-9999.ebuild, metadata.xml:
+  Add snapshots of master and develop git HEADs, .desktop file, support gtk+:3
+  support via USE=-deprecated
+
+  18 Dec 2012; Michael Weber <xmw@gentoo.org> jumanji-9999.ebuild:
+  Remove keywords from live ebuild
+
+  19 Aug 2012; Anthony G. Basile <blueness@gentoo.org> jumanji-9999.ebuild:
+  Keyword ~ppc, bug #431822
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> jumanji-9999.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  21 Sep 2011; Michał Górny <mgorny@gentoo.org> jumanji-9999.ebuild:
+  Migrate to git-2.
+
+  09 Feb 2011; Nirbheek Chauhan <nirbheek@gentoo.org> jumanji-9999.ebuild:
+  Fix webkit-gtk and libunique slots -- slotmove took place, and there's a
+  new webkit-gtk version in SLOT=3 coming
+
+  24 Aug 2010; Michael Weber (xmw) <xmw@gentoo.org> jumanji-9999.ebuild:
+  Add libunique depe, wrt bug #334355 by vekin. Updated HOMEPAGE.
+
+*jumanji-9999 (24 Aug 2010)
+
+  24 Aug 2010; Michael Weber <xmw@gentoo.org> +jumanji-9999.ebuild,
+  +metadata.xml:
+  Initial commit for jumanji. Fixes bug #328107.

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION=DTRACE traces ISDN messages with AVM ISDN-controllers
+EAPI=5
+HOMEPAGE=ftp://ftp.avm.de/develper/d3trace/
+KEYWORDS=-* amd64 x86
+LICENSE=AVM-dtrace
+RDEPEND=net-dialup/capi4k-utils
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=ftp://ftp.avm.de/develper/d3trace/linux/dtrace.static -> dtrace-2.01.static ftp://ftp.avm.de/develper/d3trace/linux/readme.txt -> dtrace-2.01-readme.txt
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=99d446379202098e567eb734be49279d

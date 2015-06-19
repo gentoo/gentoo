@@ -1,0 +1,156 @@
+# ChangeLog for x11-misc/xtermcontrol
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xtermcontrol/ChangeLog,v 1.45 2015/02/24 08:38:55 ago Exp $
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> xtermcontrol-3.2.ebuild:
+  Stable for alpha, wrt bug #530652
+
+  22 Feb 2015; Agostino Sarubbo <ago@gentoo.org> xtermcontrol-3.2.ebuild:
+  Stable for ia64, wrt bug #530652
+
+  20 Feb 2015; Agostino Sarubbo <ago@gentoo.org> xtermcontrol-3.2.ebuild:
+  Stable for ppc, wrt bug #530652
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> xtermcontrol-3.2.ebuild:
+  Stable for x86, wrt bug #530652
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org> xtermcontrol-3.2.ebuild:
+  Stable for amd64, wrt bug #530652
+
+*xtermcontrol-3.2 (23 May 2014)
+
+  23 May 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xtermcontrol-3.2.ebuild, -xtermcontrol-2.10.ebuild:
+  Version bump. Remove old.
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xtermcontrol-3.0.ebuild:
+  Stable for x86, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xtermcontrol-3.0.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  05 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xtermcontrol-3.0.ebuild:
+  Stable for alpha, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xtermcontrol-3.0.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org> xtermcontrol-3.0.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*xtermcontrol-3.0 (04 May 2013)
+
+  04 May 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xtermcontrol-3.0.ebuild:
+  Version bump.
+
+  15 Oct 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xtermcontrol-2.9.ebuild:
+  old
+
+  12 Oct 2010; Raúl Porcel <armin76@gentoo.org> xtermcontrol-2.10.ebuild:
+  ia64 stable wrt #339640
+
+  04 Oct 2010; Jeroen Roovers <jer@gentoo.org> xtermcontrol-2.10.ebuild:
+  Stable for PPC (bug #339640).
+
+  12 Sep 2010; Tobias Klausmann <klausman@gentoo.org>
+  xtermcontrol-2.10.ebuild:
+  Stable on alpha, bug #327777
+
+  13 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  xtermcontrol-2.10.ebuild:
+  x86 stable, bug 327777
+
+  12 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  xtermcontrol-2.10.ebuild:
+  Stable on amd64 wrt bug #327777
+
+*xtermcontrol-2.10 (10 Dec 2009)
+
+  10 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +xtermcontrol-2.10.ebuild:
+  Version bump.
+
+  06 Apr 2009; Friedrich Oslage <bluebird@gentoo.org>
+  xtermcontrol-2.9.ebuild:
+  Add ~sparc keyword, bug #251832
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> xtermcontrol-2.9.ebuild:
+  Marking xtermcontrol-2.9 ppc stable for bug 251832
+
+  21 Jun 2008; Samuli Suominen <drac@gentoo.org> -xtermcontrol-2.7.ebuild,
+  -xtermcontrol-2.8.ebuild, xtermcontrol-2.9.ebuild:
+  amd64 stable wrt #227521
+
+  21 Jun 2008; Raúl Porcel <armin76@gentoo.org> xtermcontrol-2.9.ebuild:
+  alpha/ia64/x86 stable wrt #227521
+
+*xtermcontrol-2.9 (15 Nov 2007)
+
+  15 Nov 2007; Samuli Suominen <drac@gentoo.org> xtermcontrol-2.8.ebuild,
+  +xtermcontrol-2.9.ebuild:
+  Version bump, and marking 2.8 stable on amd64.
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove pfeifer from metadata.xml due to retirement.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  21 Oct 2006; Aron Griffis <agriffis@gentoo.org> xtermcontrol-2.8.ebuild:
+  Mark 2.8 stable on alpha/ia64
+
+*xtermcontrol-2.8 (05 Mar 2006)
+
+  05 Mar 2006; Aron Griffis <agriffis@gentoo.org> -xtermcontrol-2.4.ebuild,
+  +xtermcontrol-2.8.ebuild:
+  Bump to 2.8 (from 2.7).  Remove 2.4
+
+  19 Jan 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  xtermcontrol-2.7.ebuild:
+  Fix for modular X, and do a little ebuild cleanup.
+
+  20 Jun 2005; Aron Griffis <agriffis@gentoo.org> xtermcontrol-2.7.ebuild:
+  stable on alpha amd64 ia64 x86
+
+  20 Jun 2005; Aron Griffis <agriffis@gentoo.org> xtermcontrol-2.4.ebuild:
+  stable on alpha amd64
+
+*xtermcontrol-2.7 (10 May 2005)
+
+  10 May 2005; Jay Pfeifer <pfeifer@gentoo.org> +xtermcontrol-2.7.ebuild:
+  Version bump.
+
+  09 Apr 2005; Simon Stelling <blubb@gentoo.org> xtermcontrol-2.4.ebuild:
+  added ~amd64
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> xtermcontrol-2.4.ebuild:
+  stable on ia64
+
+  18 Mar 2005; Mike Gardiner <obz@gentoo.org> xtermcontrol-2.4.ebuild:
+  Keyworded ppc
+
+  08 Feb 2005; Aron Griffis <agriffis@gentoo.org> xtermcontrol-2.4.ebuild:
+  Add ~alpha and ~ia64
+
+  08 Jul 2004; Jay Pfeifer <pfeifer@gentoo.org> xtermcontrol-2.4.ebuild :
+  Marked stable on x86.
+
+*xtermcontrol-2.4 (20 May 2004)
+  
+  20 May 2004; Jay Pfeifer <pfeifer@gentoo.org> xtermcontrol-2.4.ebuild :
+  Version bump.
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> xtermcontrol-2.3.ebuild:
+  Add die following econf for bug 48950
+
+  18 Mar 2004; Jay Pfeifer <pfeifer@gentoo.org> xtermcontrol-2.3.ebuild :
+  Marked stable on x86.
+
+*xtermcontrol-2.3 (22 Feb 2004)
+  
+  22 Feb 2004; Jay Pfeifer <pfeifer@gentoo.org> xtermcontrol-2.3.ebuild :
+
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way.

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>cluster</herd>
+  <maintainer>
+    <email>jsbronder@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="cpusets">Enable pbs_mom to utilize linux cpusets if available</flag>
+    <flag name="drmaa">Enable the Distributed Resource Management Application API</flag>
+    <flag name="munge">Enable authentication via munge</flag>
+    <flag name="nvidia">Enable management of Nvidia GPUs</flag>
+    <flag name="server">Enable compilation of pbs_server and pbs_sched</flag>
+  </use>
+</pkgmetadata>

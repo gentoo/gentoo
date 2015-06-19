@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <longdescription lang="en">
+  BONMIN (Basic Open-source Nonlinear Mixed INteger programming) is an
+  open-source code for solving general MINLP (Mixed Integer NonLinear
+  Programming) problems.
+</longdescription>
+  <use>
+    <flag name="glpk">Undocumented USE</flag>
+  </use>
+</pkgmetadata>

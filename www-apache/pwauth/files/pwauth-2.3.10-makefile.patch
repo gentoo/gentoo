@@ -1,0 +1,42 @@
+--- Makefile.orig	2013-01-01 20:19:30.061522843 +0400
++++ Makefile	2013-01-01 20:20:00.356551208 +0400
+@@ -2,19 +2,7 @@
+ # system.  Most of the configurable stuff is in config.h
+ #
+ #   CC=       an ansi-C compiler.  If "cc" doesn't work, try "gcc".
+-#   LIB=      libraries to link in.  -lcrypt, -lshadow, -lpam sometimes needed.
+-#   LOCALFLAGS=   compiler flags.  Usually -g, -O, and stuff like that.
+-
+-# Settings for author's system (Redhat 6.1)
+-CC=gcc
+-LIB= -lcrypt
+-LOCALFLAGS= -g 
+-
+-# For PAM on Redhat Linux
+-# LIB=-lpam -ldl
+-
+-# For PAM on Solaris or OS X
+-# LIB=-lpam
++#   LIBS=  libraries to link in.  -lcrypt, -lshadow, -lpam sometimes needed.
+ 
+ # -------------------- No User Servicable Parts Below -----------------------
+ 
+@@ -25,16 +13,14 @@
+ 
+ .PHONY: clean distclean
+ 
+-CFLAGS= $(LOCALFLAGS)
+-
+ pwauth: main.o auth_aix.o auth_bsd.o auth_hpux.o auth_mdw.o auth_openbsd.o \
+ 	auth_pam.o auth_sun.o fail_log.o lastlog.o nologin.o snooze.o
+ 	$(CC) -o pwauth $(CFLAGS) main.o auth_aix.o auth_bsd.o auth_hpux.o \
+ 		auth_mdw.o auth_openbsd.o auth_pam.o auth_sun.o fail_log.o \
+-		lastlog.o nologin.o snooze.o $(LIB)
++		lastlog.o nologin.o snooze.o $(LDFLAGS) $(LIBS)
+ 
+ checkfaillog: checkfaillog.o fail_check.o
+-	$(CC) -o checkfaillog $(CFLAGS) checkfaillog.o fail_check.o $(LIB)
++	$(CC) -o checkfaillog $(CFLAGS) checkfaillog.o fail_check.o $(LDFLAGS) $(LIBS)
+ 
+ main.o: main.c config.h pwauth.h fail_log.h
+ auth_aix.o: auth_aix.c config.h pwauth.h

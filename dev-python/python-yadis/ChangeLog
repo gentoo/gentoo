@@ -1,0 +1,42 @@
+# ChangeLog for dev-python/python-yadis
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-yadis/ChangeLog,v 1.8 2015/01/06 05:33:30 idella4 Exp $
+
+*python-yadis-1.1.0-r2 (06 Jan 2015)
+
+  06 Jan 2015; Ian Delaney <idella4@gentoo.org> +python-yadis-1.1.0-r2.ebuild,
+  -python-yadis-1.1.0-r1.ebuild:
+  revbump; conversion -> distutils-r1, rm old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  python-yadis-1.1.0-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  08 Nov 2012; Ian Delaney <idella4@gentoo.org>
+  files/python-yadis-1.1.0-gentoo-test.patch, python-yadis-1.1.0-r1.ebuild:
+  Upgraded test patch wrt Bug #430092
+
+  02 Aug 2012; Jesus Rivero <neurogeek@gentoo.org>
+  python-yadis-1.1.0-r1.ebuild:
+  Bumped to EAPI 4 and added xml(+) to PYTHON_USE_WITH
+
+*python-yadis-1.1.0-r1 (21 Dec 2011)
+
+  21 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org> -python-yadis-1.1.0.ebuild,
+  +python-yadis-1.1.0-r1.ebuild, files/python-yadis-1.1.0-gentoo-test.patch:
+  Replaced test patch with new one by Ian Delaney, bug 297111
+
+  08 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  python-yadis-1.1.0.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  31 May 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  python-yadis-1.1.0.ebuild:
+  Marked ~amd64, bug #180481.
+
+*python-yadis-1.1.0 (31 May 2007)
+
+  31 May 2007; Rob Cakebread <pythonhead@gentoo.org>
+  +files/python-yadis-1.1.0-gentoo-test.patch, +metadata.xml,
+  +python-yadis-1.1.0.ebuild:
+  Initial commit.

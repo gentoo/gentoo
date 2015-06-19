@@ -1,0 +1,82 @@
+# ChangeLog for app-text/crf++
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/crf++/ChangeLog,v 1.17 2015/04/14 23:45:41 mrueg Exp $
+
+  14 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -crf++-0.53.ebuild:
+  Remove old.
+
+*crf++-0.58 (02 Jul 2013)
+
+  02 Jul 2013; Naohiro Aota <naota@gentoo.org> +crf++-0.58.ebuild:
+  version bump
+
+  04 Sep 2011; Markus Meier <maekke@gentoo.org> crf++-0.54.ebuild:
+  x86 stable, bug #380561
+
+  30 Aug 2011; Naohiro Aota <naota@gentoo.org> crf++-0.54.ebuild:
+  Add ~x86-fbsd
+
+  26 Aug 2011; Tony Vroon <chainsaw@gentoo.org> crf++-0.54.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo in bug
+  #380561 filed by Hanno Boeck.
+
+*crf++-0.54 (30 May 2011)
+
+  30 May 2011; MATSUU Takuto <matsuu@gentoo.org> -crf++-0.50.ebuild,
+  -files/crf++-0.50-gcc43.patch, -crf++-0.51.ebuild, +crf++-0.54.ebuild,
+  +files/crf++-0.54-gcc46.patch:
+  Version bumped, bug #356959. Fixed to build with gcc-4.6, bug #365921. Added
+  static-libs USE flag. Removed *.la files. Removed old versions.
+
+  02 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org> crf++-0.51.ebuild,
+  crf++-0.53.ebuild:
+  Drop WANT_AUTOMAKE=latest.
+
+*crf++-0.53 (08 Nov 2009)
+
+  08 Nov 2009; Patrick Lauer <patrick@gentoo.org> +crf++-0.53.ebuild:
+  Bump
+
+*crf++-0.51 (07 Oct 2008)
+
+  07 Oct 2008; MATSUU Takuto <matsuu@gentoo.org> metadata.xml,
+  +crf++-0.51.ebuild:
+  Version bumped, bug #240095. Clean up.
+
+*crf++-0.50 (15 Jun 2008)
+
+  15 Jun 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/crf++-0.50-gcc43.patch, -crf++-0.45.ebuild, -crf++-0.47.ebuild,
+  +crf++-0.50.ebuild:
+  Fix 227295, Gcc-4.3 compatibility. Bump to newest, remove old.
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing usata from metadata.xml as per #22931. Assigning to maintainer-needed.
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+*crf++-0.47 (02 May 2007)
+
+  02 May 2007; Mamoru KOMACHI <usata@gentoo.org> -crf++-0.3.ebuild,
+  -crf++-0.40.ebuild, crf++-0.45.ebuild, +crf++-0.47.ebuild:
+  Version bumped. Updated SRC_URI and HOMEPAGE.
+
+  13 Mar 2007; Leonardo Boshell <leonardop@gentoo.org> metadata.xml:
+  Removing text-markup herd, leaving usata as maintainer.
+
+*crf++-0.45 (29 Nov 2006)
+
+  29 Nov 2006; Mamoru KOMACHI <usata@gentoo.org> +crf++-0.45.ebuild:
+  Version bumped.
+
+*crf++-0.40 (27 Mar 2006)
+
+  27 Mar 2006; Mamoru KOMACHI <usata@gentoo.org> +crf++-0.40.ebuild:
+  Version bumped.
+
+*crf++-0.3 (23 Dec 2005)
+
+  23 Dec 2005; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +crf++-0.3.ebuild:
+  Initial import.

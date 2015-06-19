@@ -1,0 +1,41 @@
+# ChangeLog for net-ftp/cmdftp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/cmdftp/ChangeLog,v 1.11 2015/04/29 20:26:15 mrueg Exp $
+
+  29 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -cmdftp-0.9.6.ebuild,
+  -cmdftp-0.9.7.ebuild:
+  Remove old.
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> cmdftp-0.9.8.ebuild:
+  Stable for x86, wrt bug #535564
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> cmdftp-0.9.8.ebuild:
+  Stable for amd64, wrt bug #535564
+
+  24 Feb 2014; Chema Alonso <nimiux@gentoo.org> cmdftp-0.9.7.ebuild:
+  Stable for amd64 wrt bug #284943
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> cmdftp-0.9.7.ebuild:
+  x86 stable wrt bug #284943
+
+*cmdftp-0.9.8 (10 Feb 2014)
+
+  10 Feb 2014; Bernard Cafarelli <voyageur@gentoo.org> +cmdftp-0.9.8.ebuild:
+  Version bump
+
+  02 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing jsin as a maintainer since he was retired.
+
+  05 Sep 2007; Jason Smathers (jsin) <jsin@gentoo.org> cmdftp-0.9.7.ebuild:
+  added ~x86-fbsd keyword
+
+*cmdftp-0.9.7 (05 Sep 2007)
+
+  05 Sep 2007; Jason Smathers (jsin) <jsin@gentoo.org> +cmdftp-0.9.7.ebuild:
+  bumped to 0.9.7 version.  Jason Smathers (jsin) <jsin@gentoo.org>
+
+*cmdftp-0.9.6 (17 Aug 2007)
+
+  17 Aug 2007; <jsin@gentoo.org> +metadata.xml, +cmdftp-0.9.6.ebuild:
+  Created new ebuild for package cmdftp, see bug #104018

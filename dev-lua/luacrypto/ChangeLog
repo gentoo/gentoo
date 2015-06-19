@@ -1,0 +1,28 @@
+# ChangeLog for dev-lua/luacrypto
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lua/luacrypto/ChangeLog,v 1.6 2015/06/06 19:41:53 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> luacrypto-0.3.2-r1.ebuild:
+  Add SLOT operators
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  23 Mar 2015; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Drop myself as maintainer.
+
+  09 May 2013; Tim Harder <radhermit@gentoo.org> -luacrypto-0.3.2.ebuild,
+  luacrypto-0.3.2-r1.ebuild, -files/luacrypto-0.3.2-test.patch:
+  Remove old and drop unnecessary patch.
+
+*luacrypto-0.3.2-r1 (09 May 2013)
+
+  09 May 2013; Tim Harder <radhermit@gentoo.org> +luacrypto-0.3.2-r1.ebuild,
+  +files/luacrypto-0.3.2-lualibdir.patch:
+  Revbump and convert to autotools build (fixes bug #469182).
+
+*luacrypto-0.3.2 (08 May 2013)
+
+  08 May 2013; Tim Harder <radhermit@gentoo.org> +luacrypto-0.3.2.ebuild,
+  +files/luacrypto-0.3.2-test.patch, +metadata.xml:
+  Initial import, ebuild by me (bug #412015 by hasufell).

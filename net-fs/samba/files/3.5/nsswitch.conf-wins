@@ -1,0 +1,17 @@
+# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/files/3.5/nsswitch.conf-wins,v 1.1 2010/03/01 16:19:54 patrick Exp $
+passwd:      files
+group:       files
+
+hosts:       files dns wins
+networks:    files dns
+
+services:    db files
+protocols:   db files
+rpc:         db files
+ethers:      db files
+netmasks:    files
+netgroup:    files
+bootparams:  files
+
+automount:   files
+aliases:     files

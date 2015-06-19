@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sci-astronomy</herd>
+	<longdescription lang="en">
+		Framework for plotting astronomical and geospatial data
+	</longdescription>
+ 	<upstream>
+    	<remote-id type="pypi">wcsaxes</remote-id>
+	</upstream>
+</pkgmetadata>

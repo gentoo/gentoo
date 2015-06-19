@@ -1,0 +1,87 @@
+# ChangeLog for x11-misc/xwrits
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xwrits/ChangeLog,v 1.27 2015/05/18 21:37:42 mrueg Exp $
+
+  18 May 2015; Manuel Rüger <mrueg@gentoo.org> -xwrits-2.21.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> xwrits-2.21.ebuild,
+  xwrits-2.26.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  19 Jun 2011; Raúl Porcel <armin76@gentoo.org> xwrits-2.21.ebuild,
+  xwrits-2.26.ebuild:
+  Drop sparc keywords
+
+  27 May 2011; Kacper Kowalik <xarthisius@gentoo.org> xwrits-2.26.ebuild:
+  ppc stable wrt #365391
+
+  11 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> xwrits-2.26.ebuild:
+  x86 stable wrt bug #365391
+
+  02 May 2011; Markos Chandras <hwoarang@gentoo.org> xwrits-2.26.ebuild:
+  Stable on amd64 wrt bug #365391
+
+*xwrits-2.26 (16 Aug 2009)
+
+  16 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> +xwrits-2.26.ebuild:
+  Version bump wrt #281470, thanks to James Broadhead for reporting.
+
+  02 Feb 2009; Krzysiek Pawlik <nelchael@gentoo.org> ChangeLog:
+  Fix ChangeLog entries.
+
+*xwrits-2.24 (18 Jan 2009)
+
+  18 Jan 2009; Krzysiek Pawlik <nelchael@gentoo.org> +xwrits-2.24.ebuild:
+  Version bump, see bug #214513.
+
+  02 Aug 2007; Roy Marples <uberlord@gentoo.org> xwrits-2.21.ebuild:
+  Keyworded ~x86-fbsd, #156902 thanks to Marc Kowarsky.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  22 Oct 2006; David Shakaryan <omp@gentoo.org> xwrits-2.21.ebuild:
+  Remove monolithic X from dependencies, add die messages, fix quotes and use
+  $PN in SRC_URI.
+
+  21 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> -xwrits-2.20.ebuild,
+  xwrits-2.21.ebuild:
+  Fixed DEPEND for modular X.
+
+  07 Oct 2005; Matthew Kennedy <mkennedy@gentoo.org> xwrits-2.21.ebuild:
+  Keywording ~amd64.
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> xwrits-2.21.ebuild:
+  Stable on ppc.
+
+  17 May 2005; Markus Nigbur <pyrania@gentoo.org> xwrits-2.20.ebuild,
+  xwrits-2.21.ebuild:
+  Improved DESC, see bug #90705.
+
+  27 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  xwrits-2.21.ebuild:
+  mark ~ppc
+
+  14 Jun 2004; <pyrania@gentoo.org> xwrits-2.21.ebuild:
+  Added IUSE.
+
+*xwrits-2.20 (22 May 2004)
+
+  22 May 2004; Ian Leitch <port001@gentoo.org> xwrits-2.20.ebuild,
+  xwrits-2.21.ebuild:
+  Changed DEPEND to virtual/x11
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> xwrits-2.21.ebuild:
+  Ebuild fixups.
+
+  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*xwrits-2.21 (11 May 2002)
+
+  11 May 2002; Arcady Genkin <agenkin@thpoon.com> xwrits-2.21.ebuild :
+  
+  Updated to the new version.

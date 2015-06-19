@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/epos/files/eposd,v 1.3 2009/11/01 18:48:32 eva Exp $
+
+depend() {
+	use alsasound esound
+}
+
+start() {
+	ebegin "Starting eposd"
+	start-stop-daemon --start --quiet --background --make-pidfile --pidfile /var/run/eposd.pid \
+		--exec /usr/bin/eposd -- -f
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping eposd"
+	start-stop-daemon --stop --quiet --pidfile /var/run/eposd.pid
+	eend $?
+}

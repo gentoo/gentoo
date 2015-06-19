@@ -1,0 +1,16 @@
+# Copyright 1999-2014 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/musl/make.defaults,v 1.6 2014/10/14 17:06:17 blueness Exp $
+
+ELIBC="musl"
+
+FEATURES="sandbox sfperms strict"
+
+USE="hardened nptl pax_kernel pic unicode xattr -berkdb -jit -orc"
+BOOTSTRAP_USE="${BOOTSTRAP_USE} hardened nptl pax_kernel pic -berkdb -jit -nls -orc"
+
+SYMLINK_LIB="no"
+
+# TODO: fix so musl doesn't generate this for all packages
+# that use a charset, it causes package collisons.
+INSTALL_MASK="charset.alias"

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=sys-libs/ncurses sys-libs/readline:0 >=x11-libs/libX11-1.0.0 ls-dos? ( app-arch/unzip dev-util/xdelta:3 )
+DESCRIPTION=Radio Shack TRS-80 emulator
+EAPI=5
+HOMEPAGE=http://www.tim-mann.org/xtrs.html
+IUSE=ls-dos
+KEYWORDS=amd64 ppc x86 ~x86-fbsd
+LICENSE=xtrs ls-dos? ( freedist )
+RDEPEND=sys-libs/ncurses sys-libs/readline:0 >=x11-libs/libX11-1.0.0
+RESTRICT=ls-dos? ( bindist )
+SLOT=0
+SRC_URI=http://www.tim-mann.org/trs80/xtrs-4.9d.tar.gz ls-dos? ( http://www.tim-mann.org/trs80/ld4-631.zip http://dev.gentoo.org/~ulm/distfiles/ld4-631l.xd3 )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=4661d2903fd93d0bb13c7c6e5bf173f4

@@ -1,0 +1,13 @@
+--- ccglue_v0.5.1/configure.in
++++ ccglue_v0.5.1/configure.in
+@@ -19,10 +19,7 @@
+                      [want_debug="$enableval"], [want_debug=no])
+ 
+ if test "x$want_debug" = "xyes"; then
+-    CXXFLAGS="$CXXFLAGS -O0 -ggdb"
+     AC_DEFINE([DEBUG], 1, [Define for debugging])
+-else
+-    CXXFLAGS="$CXXFLAGS -O2"
+ fi
+ 
+ AC_CXX_HAVE_SSTREAM

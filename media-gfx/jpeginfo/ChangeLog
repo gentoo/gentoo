@@ -1,0 +1,103 @@
+# ChangeLog for media-gfx/jpeginfo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/jpeginfo/ChangeLog,v 1.30 2015/05/30 14:15:24 mrueg Exp $
+
+  30 May 2015; Manuel Rüger <mrueg@gentoo.org> -jpeginfo-1.6.0.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> jpeginfo-1.6.0.ebuild,
+  jpeginfo-1.6.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> jpeginfo-1.6.1.ebuild:
+  sparc stable wrt #393717
+
+  19 Feb 2012; Tobias Klausmann <klausman@gentoo.org> jpeginfo-1.6.1.ebuild:
+  Stable on alpha, bug #393717
+
+  02 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> jpeginfo-1.6.1.ebuild:
+  ppc64 stable wrt #393717
+
+  09 Jan 2012; Brent Baude <ranger@gentoo.org> jpeginfo-1.6.1.ebuild:
+  Marking jpeginfo-1.6.1 ppc for bug 393717
+
+  18 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> jpeginfo-1.6.1.ebuild:
+  x86 stable wrt bug #393717
+
+  16 Dec 2011; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Move the package from maintainer-needed to graphics herd.
+
+  16 Dec 2011; Agostino Sarubbo <ago@gentoo.org> jpeginfo-1.6.1.ebuild:
+  Stable for AMD64, wrt bug #393717
+
+*jpeginfo-1.6.1 (27 Apr 2011)
+
+  27 Apr 2011; Samuli Suominen <ssuominen@gentoo.org> +jpeginfo-1.6.1.ebuild:
+  Version bump.
+
+  28 Dec 2010; Michael Weber <xmw@gentoo.org> jpeginfo-1.6.0.ebuild:
+  Change media-libs/jpeg to virtual/jpeg (thanks to Holger Hoffstätte
+  <holger.hoffstaette@googlemail.com> on bug 349598)
+
+  02 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> jpeginfo-1.6.0.ebuild,
+  +files/jpeginfo-1.6.0-parallel_install.patch:
+  Fix parallel make (install) wrt #294820, thanks to Diego E. Pettenò for
+  reporting.
+
+  22 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> jpeginfo-1.6.0.ebuild:
+  Require SLOT="0" of media-libs/jpeg for headers.
+
+  07 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  jpeginfo-1.6.0.ebuild:
+  Transfer Prefix keywords
+
+  27 Nov 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  jpeginfo-1.6.0.ebuild:
+  Use -j1 for install, bug #294820.
+
+  27 Nov 2008; Jeroen Roovers <jer@gentoo.org> jpeginfo-1.6.0.ebuild:
+  Hmm, better not do tc-export in global scope.
+
+  27 Nov 2008; Jeroen Roovers <jer@gentoo.org> jpeginfo-1.6.0.ebuild:
+  Respect CC variable (bug #244156).
+
+  26 Jan 2008; Fabian Groffen <grobian@gentoo.org> jpeginfo-1.6.0.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  15 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  23 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org> jpeginfo-1.6.0.ebuild:
+  Stable on sparc
+
+  25 Nov 2005; Marcus D. Hanwell <cryos@gentoo.org> jpeginfo-1.6.0.ebuild:
+  Stable on amd64.
+
+  30 Oct 2005; Fabian Groffen <grobian@gentoo.org> jpeginfo-1.6.0.ebuild:
+  Marked ~ppc-macos (bug #110823)
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> jpeginfo-1.6.0.ebuild:
+  Stable on ppc.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  20 Jul 2004; Tom Gall <tgall@gentoo.org> jpeginfo-1.6.0.ebuild: 
+  stable on ppc64, bug #57156
+
+  05 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> jpeginfo-1.6.0.ebuild:
+  Stable on alpha.
+
+  20 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> jpeginfo-1.6.0.ebuild:
+  marked ~amd64
+
+*jpeginfo-1.6.0 (12 Feb 2003)
+
+  12 Feb 2003; Seemant Kulleen <seemant@gentoo.org> jpeginfo-1.6.0.ebuild
+  ChangeLog files/digest-jpeginfo-1.6.0 :
+
+  New package to check and report on jpeg files.  Package submitted by:
+  Henry So, Jr. <henryso@panix.com> in bug #14193.

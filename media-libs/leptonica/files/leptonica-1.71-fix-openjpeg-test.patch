@@ -1,0 +1,15 @@
+--- leptonica-1.71.orig/configure.ac	2014-08-31 14:33:16.834598973 +0200
++++ leptonica-1.71/configure.ac	2014-09-01 10:56:59.394975447 +0200
+@@ -78,10 +78,10 @@
+   )
+ )
+ 
+-AS_IF([test "x$with_libopenjp2" != xno],
++AS_IF([test "x$with_libopenjpeg" != xno],
+   AC_CHECK_LIB([openjp2], [opj_create_decompress],
+     AC_DEFINE([HAVE_LIBJP2K], 1, [Define to 1 if you have libopenjp2.]) AC_SUBST([LIBJP2K_LIBS], [-lopenjp2]),
+-    AS_IF([test "x$with_libopenjp2" = xyes], AC_MSG_ERROR([libopenjp2 support requested but library not found]))
++    AS_IF([test "x$with_libopenjpeg" = xyes], AC_MSG_ERROR([libopenjp2 support requested but library not found]))
+   )
+ )
+ 

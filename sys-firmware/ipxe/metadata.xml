@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>cardoe@gentoo.org</email>
+<name>Doug Goldstein</name>
+</maintainer>
+<use>
+	<flag name='iso'>Build a bootable ISO for using PXE</flag>
+	<flag name='usb'>Build a bootable USB image for using PXE</flag>
+	<flag name='undi'>Build a Universal Network Device Interface driver
+		chainloading your existing PXE NIC into iPXE</flag>
+	<flag name='qemu'>Build the required PXE ROM images for <pkg>app-emulation/qemu</pkg> and <pkg>app-emulation/qemu-kvm</pkg></flag>
+	<flag name='vmware'>Build the PXE ROM images that VMWare uses</flag>
+</use>
+</pkgmetadata>

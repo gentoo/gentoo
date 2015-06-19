@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst preinst prepare setup
+DEPEND=mysql? ( virtual/mysql ) radius? ( >=net-dialup/radiusclient-ng-0.5.0 ) postgres? ( dev-db/postgresql:=[server] ) xmpp? ( dev-libs/expat ) ldap? ( net-nds/openldap ssl? ( dev-libs/openssl:0= ) ) >=sys-devel/bison-1.35 >=sys-devel/flex-2.5.4a
+DESCRIPTION=SIP Express Router
+EAPI=5
+HOMEPAGE=http://www.iptel.org/ser
+IUSE=ipv6 mysql radius postgres xmpp ldap ssl
+KEYWORDS=~amd64 ~ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=mysql? ( virtual/mysql ) radius? ( >=net-dialup/radiusclient-ng-0.5.0 ) postgres? ( dev-db/postgresql:=[server] ) xmpp? ( dev-libs/expat ) ldap? ( net-nds/openldap ssl? ( dev-libs/openssl:0= ) )
+SLOT=0
+SRC_URI=http://ftp.iptel.org/pub/ser/0.9.7/src/ser-0.9.7_src.tar.gz mirror://gentoo/silomail-1.0-ser-0.9.0.tar.gz mirror://gentoo/ethz-1.0-ser-0.9.0.tar.gz ldap? ( mirror://gentoo/ldap-1.0-ser-0.9.0.tar.gz mirror://gentoo/ldaps-1.0-ser-0.9.0.tar.gz )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=5b5a30b781caed69d10946d9ab2d664f

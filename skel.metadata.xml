@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<!--
+$Header: /var/cvsroot/gentoo-x86/skel.metadata.xml,v 1.24 2014/08/18 18:40:32 robbat2 Exp $
+
+This is the example metadata file.
+The root element of this file is <pkgmetadata>. Within this element a
+number of subelements are allowed: herd, maintainer, and
+longdescription. herd is a required subelement.
+
+For a full description look at:
+http://devmanual.gentoo.org/ebuild-writing/misc-files/metadata/
+
+
+Before committing, please remove the comments from this file. They are
+not relevant for general metadata.xml files.
+-->
+<pkgmetadata>
+<!-- <herd>some-herd</herd> -->
+<maintainer>
+	<email>@gentoo.org</email>
+<!--  <description>Description of the maintainership</description> -->
+</maintainer>
+<!-- <longdescription>Long description of the package</longdescription> -->
+<!--
+<use>
+	<flag name="flag">Description of how USE='flag' affects this package</flag>
+	<flag name="userland_GNU">Description of how USERLAND='GNU' affects this
+		package</flag>
+	<flag name="aspell">Uses <pkg>app-text/aspell</pkg> for spell checking.
+		Requires an installed dictionary from <cat>app-dicts</cat></flag>
+</use>
+-->
+</pkgmetadata>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>cluster</herd>
+<longdescription>
+libipathverbs is a userspace driver for QLogic InfiniBand HCAs.  It works as a
+plug-in module for libibverbs that allows programs to use QLogic HCAs directly
+from userspace.  See the libibverbs package for more information.
+</longdescription>
+</pkgmetadata>

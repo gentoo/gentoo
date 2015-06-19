@@ -1,0 +1,45 @@
+--- Makefile.orig	2005-02-22 23:24:23.000000000 +0100
++++ Makefile	2008-01-28 00:12:33.000000000 +0100
+@@ -2,22 +2,24 @@
+ # Adapted for wmSMPmon 2.9.x and higher: Thomas Ribbrock
+ 
+ # Change the following two to determine installation location
+-BINDIR=/usr/local/bin/
+-MANDIR=/usr/local/share/man/
++PREFIX=/usr
++BINDIR=$(PREFIX)/bin
++MANDIR=$(PREFIX)/share/man
+ 
+ SRC = general.c sysinfo-linux.c ../wmgeneral/wmgeneral.c wmSMPmon.c 
+ EXE = wmSMPmon
+ MAN = wmSMPmon.1
+ OBJ = $(SRC:.c=.o)
+ INSTALL = /usr/bin/install
+-INSTALLEXEFLAGS = -m 755 -s
++INSTALLEXEFLAGS = -m 755
+ INSTALLMANFLAGS = -m 644
+-CC = gcc
+-CFLAGS = -Wall -O2 -g
+-LIB = -L/usr/X11R6/lib -lXpm -lXext -lX11
++CC ?= gcc
++CFLAGS += -Wall
++LIBDIR ?= /usr/lib
++LIBS= -lXpm -lXext -lX11
+ 
+ all: $(OBJ)
+-	$(CC) -o $(EXE) $(OBJ) $(LIB)
++	$(CC) $(CFLAGS) -o $(EXE) $(OBJ) -L$(LIBDIR) $(LDFLAGS) $(LIBS)
+ 
+ $(OBJ): %.o : %.c 
+ 	$(CC) $(CFLAGS) -c -o $@ $<
+@@ -28,6 +31,7 @@
+ 	rm -rf ../wmgeneral/*.o
+ 
+ install:
+-	$(INSTALL) $(INSTALLEXEFLAGS) $(EXE) $(BINDIR)
+-	$(INSTALL) -d $(MANDIR)/man1
+-	$(INSTALL) $(INSTALLMANFLAGS) $(MAN) $(MANDIR)/man1
++	$(INSTALL) -d $(DESTDIR)$(BINDIR)
++	$(INSTALL) $(INSTALLEXEFLAGS) $(EXE) $(DESTDIR)$(BINDIR)
++	$(INSTALL) -d $(DESTDIR)$(MANDIR)/man1
++	$(INSTALL) $(INSTALLMANFLAGS) $(MAN) $(DESTDIR)$(MANDIR)/man1

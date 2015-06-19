@@ -1,0 +1,340 @@
+# ChangeLog for app-emacs/emacs-w3m
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/emacs-w3m/ChangeLog,v 1.75 2014/02/25 18:06:57 ulm Exp $
+
+*emacs-w3m-1.4.528_pre20140213 (25 Feb 2014)
+
+  25 Feb 2014; Ulrich Müller <ulm@gentoo.org>
+  -emacs-w3m-1.4.437_pre20110310.ebuild, +emacs-w3m-1.4.528_pre20140213.ebuild:
+  New snapshot from CVS.
+
+*emacs-w3m-1.4.513_pre20130204 (25 Feb 2013)
+
+  25 Feb 2013; Ulrich Müller <ulm@gentoo.org>
+  -emacs-w3m-1.4.417_pre20101104.ebuild, emacs-w3m-1.4.437_pre20110310.ebuild,
+  +emacs-w3m-1.4.513_pre20130204.ebuild:
+  New snapshot from CVS, fixes issues with Emacs 24, bug 459202. Remove old.
+  Specify LICENSE more precisely.
+
+  08 Jul 2011; Samuli Suominen <ssuominen@gentoo.org>
+  emacs-w3m-1.4.417_pre20101104.ebuild, emacs-w3m-1.4.437_pre20110310.ebuild:
+  Convert from "useq" to "use".
+
+*emacs-w3m-1.4.437_pre20110310 (12 Mar 2011)
+
+  12 Mar 2011; Ulrich Mueller <ulm@gentoo.org> -emacs-w3m-1.4.4-r3.ebuild,
+  -emacs-w3m-1.4.390_pre20100312.ebuild, +emacs-w3m-1.4.437_pre20110310.ebuild:
+  New snapshot from CVS. Remove old.
+
+*emacs-w3m-1.4.417_pre20101104 (07 Nov 2010)
+
+  07 Nov 2010; Ulrich Mueller <ulm@gentoo.org>
+  -emacs-w3m-1.4.379_pre20100125.ebuild,
+  +emacs-w3m-1.4.417_pre20101104.ebuild:
+  New snapshot from CVS.
+
+  07 Nov 2010; Ulrich Mueller <ulm@gentoo.org> emacs-w3m-1.4.4-r3.ebuild:
+  Depend on <emacs-23 and check for Emacs version in pkg_setup, bug 344361.
+  Drop package to unstable because the released version doesn't support
+  Emacs 23.
+
+*emacs-w3m-1.4.390_pre20100312 (15 Mar 2010)
+
+  15 Mar 2010; Ulrich Mueller <ulm@gentoo.org>
+  -emacs-w3m-1.4.4_p20090605.ebuild, +emacs-w3m-1.4.390_pre20100312.ebuild:
+  New snapshot, supports Emacs 24. Remove old.
+
+*emacs-w3m-1.4.379_pre20100125 (30 Jan 2010)
+
+  30 Jan 2010; Ulrich Mueller <ulm@gentoo.org>
+  +emacs-w3m-1.4.379_pre20100125.ebuild:
+  New snapshot from CVS. Add prefix keywords, change EAPI to 3.
+
+  22 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  -files/71emacs-w3m-gentoo.el, -emacs-w3m-1.4.4-r2.ebuild,
+  -emacs-w3m-1.4.4_p20080214.ebuild:
+  clean up
+
+  22 Jul 2009; Tobias Klausmann <klausman@gentoo.org>
+  emacs-w3m-1.4.4-r3.ebuild:
+  Stable on alpha, bug #276975
+
+  16 Jul 2009; Tiago Cunha <tcunha@gentoo.org> emacs-w3m-1.4.4-r3.ebuild:
+  stable amd64, bug 276975
+
+  16 Jul 2009; nixnut <nixnut@gentoo.org> emacs-w3m-1.4.4-r3.ebuild:
+  ppc stable #276975
+
+  08 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  emacs-w3m-1.4.4-r3.ebuild:
+  stable x86, bug 276975
+
+  07 Jul 2009; Ferris McCormick <fmccor@gentoo.org>
+  emacs-w3m-1.4.4-r3.ebuild:
+  Sparc stable, Bug #276975.
+
+*emacs-w3m-1.4.4_p20090605 (08 Jun 2009)
+*emacs-w3m-1.4.4-r3 (08 Jun 2009)
+
+  08 Jun 2009; Ulrich Mueller <ulm@gentoo.org> +files/70emacs-w3m-gentoo.el,
+  +emacs-w3m-1.4.4-r3.ebuild, +emacs-w3m-1.4.4_p20090605.ebuild:
+  New CVS snapshot. Move pixmaps to SITEETC directory. Respect LINGUAS=ja.
+
+  29 Jan 2009; Christian Faulhammer <fauli@gentoo.org>
+  -emacs-w3m-1.4.4_p20070726.ebuild:
+  clean up
+
+  27 Nov 2008; Ulrich Mueller <ulm@gentoo.org>
+  emacs-w3m-1.4.4_p20070726.ebuild, emacs-w3m-1.4.4_p20080214.ebuild:
+  Install Japanese documentation with LINGUAS=ja only.
+
+*emacs-w3m-1.4.4_p20080214 (22 Feb 2008)
+
+  22 Feb 2008; Ulrich Mueller <ulm@gentoo.org>
+  +emacs-w3m-1.4.4_p20080214.ebuild:
+  New CVS snapshot.
+
+  02 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-w3m-1.4.4-r2.ebuild:
+  amd64 stable
+
+*emacs-w3m-1.4.4_p20070726 (26 Jul 2007)
+
+  26 Jul 2007; Ulrich Mueller <ulm@gentoo.org>
+  -emacs-w3m-1.4.4.20070704.ebuild, +emacs-w3m-1.4.4_p20070726.ebuild:
+  CVS snapshot updated. Name according to ebuild naming policy.
+
+  25 Jul 2007; Ulrich Mueller <ulm@gentoo.org> -files/70emacs-w3m-gentoo.el,
+  -emacs-w3m-1.4.4-r1.ebuild:
+  Remove old.
+
+*emacs-w3m-1.4.4.20070704 (17 Jul 2007)
+
+  17 Jul 2007; Ulrich Mueller <ulm@gentoo.org> emacs-w3m-1.4.4-r2.ebuild,
+  +emacs-w3m-1.4.4.20070704.ebuild:
+  CVS snapshot. Bug #185106, submitted by Timothy Stotts <devel@tstotts.net>.
+
+  06 Jul 2007; Lars Weiler <pylon@gentoo.org> emacs-w3m-1.4.4-r2.ebuild:
+  Stable on ppc; bug #184059.
+
+  04 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  emacs-w3m-1.4.4-r2.ebuild:
+  Stable on sparc wrt #184059
+
+  03 Jul 2007; Raúl Porcel <armin76@gentoo.org> emacs-w3m-1.4.4-r2.ebuild:
+  alpha stable wrt #184059
+
+  03 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-w3m-1.4.4-r2.ebuild:
+  stable x86, bug 184059
+
+*emacs-w3m-1.4.4-r2 (02 Jun 2007)
+
+  02 Jun 2007; Ulrich Mueller <ulm@gentoo.org>
+  -files/emacs-w3m-1.4.3-e23.diff, +files/71emacs-w3m-gentoo.el,
+  +emacs-w3m-1.4.4-r2.ebuild:
+  Ebuild reworked. Remove test for async use flag, fixes bug #180602. Install
+  icons under /usr/share/pixmaps. Require w3m-load for autoload functions.
+  Remove stale file.
+
+  09 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-w3m-1.4.4-r1.ebuild:
+  change an einfo to elog due to importance of that message
+
+  04 Dec 2006; Christian Faulhammer <opfer@gentoo.org>
+  -emacs-w3m-1.3.6.ebuild, -emacs-w3m-1.4.3.ebuild,
+  -emacs-w3m-1.4.3-r2.ebuild, -emacs-w3m-1.4.4.ebuild:
+  clean up old versions
+
+  17 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  emacs-w3m-1.4.4-r1.ebuild:
+  fixed build_with_use check for w3m, reported by <pflm52td@w6.dion.ne.jp> in
+  bug #154759
+
+  19 May 2006; Thomas Cort <tcort@gentoo.org> emacs-w3m-1.4.4-r1.ebuild:
+  Stable on alpha wrt Bug #127429.
+
+  06 May 2006; Jason Wever <weeve@gentoo.org> emacs-w3m-1.4.4-r1.ebuild:
+  Stable on SPARC wrt bug #127429.
+
+  03 May 2006; Mark Loeser <halcy0n@gentoo.org> emacs-w3m-1.4.4-r1.ebuild:
+  Stable on x86; bug #127429
+
+  29 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  emacs-w3m-1.4.4-r1.ebuild:
+  ppc stable, bug #127429
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-emacs-w3m-1.3.6, files/digest-emacs-w3m-1.4.3,
+  files/digest-emacs-w3m-1.4.3-r2, files/digest-emacs-w3m-1.4.4,
+  files/digest-emacs-w3m-1.4.4-r1, Manifest:
+  Fixing SHA256 digest for real, pass three...
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-emacs-w3m-1.3.6, files/digest-emacs-w3m-1.4.3,
+  files/digest-emacs-w3m-1.4.3-r2, files/digest-emacs-w3m-1.4.4,
+  files/digest-emacs-w3m-1.4.4-r1, Manifest:
+  Fixing SHA256 digest, pass two.
+
+*emacs-w3m-1.4.4-r1 (26 Apr 2006)
+
+  26 Apr 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  +emacs-w3m-1.4.4-r1.ebuild:
+  Better handling of the case where www-client/w3m is built with "async" in
+  USE; Resolves Bug #127429.
+
+  03 Aug 2005; Bryan Østergaard <kloeri@gentoo.org> emacs-w3m-1.4.4.ebuild:
+  Stable on alpha.
+
+  26 Jun 2005; Simon Stelling <blubb@gentoo.org> emacs-w3m-1.4.4.ebuild:
+  added ~amd64 keyword
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  emacs-w3m-1.4.4.ebuild:
+  Stable on ppc.
+
+  26 May 2005; Jason Wever <weeve@gentoo.org> emacs-w3m-1.4.4.ebuild:
+  Stable on SPARC.
+
+  21 May 2005; Mamoru KOMACHI <usata@gentoo.org> emacs-w3m-1.4.3-r2.ebuild,
+  emacs-w3m-1.4.4.ebuild:
+  Stable on x86.
+
+*emacs-w3m-1.4.4 (27 Mar 2005)
+
+  27 Mar 2005; Mamoru KOMACHI <usata@gentoo.org>
+  -files/emacs-w3m-1.4.3-e22.diff, -emacs-w3m-1.4.3-r1.ebuild,
+  +emacs-w3m-1.4.4.ebuild:
+  Version bumped.
+
+*emacs-w3m-1.4.3-r2 (06 Mar 2005)
+
+  06 Mar 2005; Mamoru KOMACHI <usata@gentoo.org>
+  +files/emacs-w3m-1.4.3-e23.diff, -emacs-w3m-1.4.2.ebuild,
+  +emacs-w3m-1.4.3-r2.ebuild:
+  Fixed an error with emacs-cvs. Thanks to Ming Zhao <ming@gentoo.org>;
+  bug #81406.
+
+*emacs-w3m-1.4.3-r1 (11 Feb 2005)
+
+  11 Feb 2005; Mamoru KOMACHI <usata@gentoo.org>
+  +files/emacs-w3m-1.4.3-e22.diff, +emacs-w3m-1.4.3-r1.ebuild:
+  Added a patch for emacs-cvs. This closes bug #81406.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  15 Oct 2004; Jason Wever <weeve@gentoo.org> emacs-w3m-1.4.3.ebuild:
+  Stable on sparc.
+
+  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> emacs-w3m-1.3.6.ebuild,
+  emacs-w3m-1.4.3.ebuild:
+  Stable on x86, alpha and ppc.
+
+  24 Aug 2004; Jason Wever <weeve@gentoo.org> emacs-w3m-1.4.2.ebuild:
+  Stable on sparc.
+
+  24 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> emacs-w3m-1.3.6.ebuild,
+  emacs-w3m-1.4.2.ebuild, emacs-w3m-1.4.3.ebuild, emacs-w3m-1.4.ebuild:
+  Aborts if USE has async.
+
+*emacs-w3m-1.4.3 (17 Aug 2004)
+
+  17 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> -emacs-w3m-1.4.1.ebuild,
+  emacs-w3m-1.4.2.ebuild, +emacs-w3m-1.4.3.ebuild:
+  Version bumped. Marked 1.4.2 stable on x86, alpha and ppc.
+
+*emacs-w3m-1.4.2 (17 Jul 2004)
+
+  17 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> +emacs-w3m-1.4.2.ebuild:
+  Version bumped.
+
+*emacs-w3m-1.4.1 (09 Jul 2004)
+
+  09 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> +emacs-w3m-1.4.1.ebuild,
+  -emacs-w3m-1.4.1_rc1.ebuild:
+  Version bumped.
+
+  01 Jul 2004; Jason Wever <weeve@gentoo.org> emacs-w3m-1.4.ebuild:
+  Stable on sparc.
+
+*emacs-w3m-1.4.1_rc1 (28 Jun 2004)
+
+  28 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> +emacs-w3m-1.4.1_rc1.ebuild:
+  Version bumped.
+
+  26 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> emacs-w3m-1.3.6.ebuild,
+  emacs-w3m-1.4.ebuild:
+  Removed hard dependency to flim and added an advisory to install flim to
+  pkg_postsinst(). This closes bug #55028
+
+  24 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> emacs-w3m-1.4.ebuild:
+  Stable on x86 and ppc
+
+  19 Jun 2004; Jason Wever <weeve@gentoo.org> emacs-w3m-1.3.6.ebuild:
+  Stable on sparc.
+
+*emacs-w3m-1.4 (30 Apr 2004)
+
+  30 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> emacs-w3m-1.3.90.ebuild,
+  emacs-w3m-1.4.ebuild:
+  Version bumped.
+
+*emacs-w3m-1.3.90 (26 Apr 2004)
+
+  26 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> emacs-w3m-1.3.2.ebuild,
+  emacs-w3m-1.3.6.ebuild, emacs-w3m-1.3.85.ebuild, emacs-w3m-1.3.90.ebuild,
+  files/emacs-w3m-1.3.80-gentoo.diff:
+  Version bumped. Don't assign default to S. Removed old ebuilds.
+
+  19 Apr 2004; Bryan Østergaard <kloeri@gentoo.org> emacs-w3m-1.3.85.ebuild:
+  Added ~alpha.
+
+*emacs-w3m-1.3.85 (28 Feb 2004)
+
+  28 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> emacs-w3m-1.3.85.ebuild:
+  Version bumped
+
+*emacs-w3m-1.3.80-r2 (01 Feb 2004)
+
+  01 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> emacs-w3m-1.3.80-r2.ebuild,
+  files/emacs-w3m-1.3.80-gentoo.diff:
+  Added a patch to complete http:// if no scheme is specified
+
+*emacs-w3m-1.3.80-r1 (21 Jan 2004)
+
+  21 Jan 2004; Mamoru KOMACHI <usata@gentoo.org> emacs-w3m-1.3.80-r1.ebuild:
+  Changed net-www/w3mmee to virtual/w3m. Note: You cannot use async
+  enabled w3m with emacs-w3m. Please make sure you don't have "async"
+  in your USE flags.
+
+  19 Jan 2004; Mamoru KOMACHI <usata@gentoo.org> emacs-w3m-1.3.80.ebuild:
+  Forced w3mmee version because emacs-w3m needs to have multilingualised w3mmee,
+  see bug #38608
+
+*emacs-w3m-1.3.80 (31 Dec 2003)
+
+  31 Dec 2003; <usata@gentoo.org> emacs-w3m-1.3.80.ebuild:
+  Development branch. Changed virtual/w3m to net-www/w3mmee as
+  net-www/w3m and net-www/w3m-m17n won't run.
+
+  16 Dec 2003; Mamoru KOMACHI <usata@gentoo.org> emacs-w3m-1.3.2.ebuild,
+  emacs-w3m-1.3.6.ebuild:
+  Changed net-www/w3m to virtual/w3m, closing bug #35884
+
+*emacs-w3m-1.3.6 (24 Jul 2003)
+
+  13 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> emacs-w3m-1.3.6.ebuild:
+  Marked stable on x86 and alpha
+
+  24 Jul 2003; Mamoru KOMACHI <usata@gentoo.org> emacs-w3m-1.3.6.ebuild:
+  Version bump, ebuild submitted by Nishimura Naoto <ni_naoto@ybb.ne.jp>
+  closing bug #12194
+
+*emacs-w3m-1.3.2 (31 Oct 2002)
+
+  31 Oct 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  emacs-w3m-1.3.2.ebuild, files/70emacs-w3m-gentoo.el,
+  files/digest-emacs-w3m-1.3.2 :
+
+  Initial import.

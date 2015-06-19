@@ -1,0 +1,31 @@
+# ChangeLog for net-mail/popick
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/popick/ChangeLog,v 1.8 2014/08/10 20:45:35 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> popick-0.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  06 Nov 2013; Patrick Lauer <patrick@gentoo.org> popick-0.1.ebuild:
+  Shorten description, make repoman happier
+
+  10 Aug 2013; Agostino Sarubbo <ago@gentoo.org> popick-0.1.ebuild:
+  Add ~amd64, wrt bug #476750
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org> popick-0.1.ebuild:
+  Virtuals for perl-core
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> popick-0.1.ebuild:
+  dev-perl/Getopt-Long => perl-core/Getopt-Long migration
+
+  07 Mar 2005; Andrej Kacian <ticho@gentoo.org> popick-0.1.ebuild:
+  Stable on x86.
+
+*popick-0.1 (15 Dec 2004)
+
+  15 Dec 2004; Andrej Kacian <ticho@gentoo.org> +metadata.xml,
+  +popick-0.1.ebuild:
+  Initial import. Closes #73364, ebuild submitted by Mina Naguib
+  <webmaster@topfx.com>.

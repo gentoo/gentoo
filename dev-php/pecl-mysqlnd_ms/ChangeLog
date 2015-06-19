@@ -1,0 +1,64 @@
+# ChangeLog for dev-php/pecl-mysqlnd_ms
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-mysqlnd_ms/ChangeLog,v 1.14 2015/01/04 23:41:09 grknight Exp $
+
+  04 Jan 2015; Brian Evans <grknight@gentoo.org>
+  pecl-mysqlnd_ms-1.5.2-r1.ebuild:
+  Fix dependencies wrt bug 531814
+
+*pecl-mysqlnd_ms-1.5.2-r1 (30 Sep 2014)
+
+  30 Sep 2014; Brian Evans <grknight@gentoo.org> +pecl-mysqlnd_ms-1.5.2-r1.ebuild,
+  -pecl-mysqlnd_ms-1.4.1.ebuild, -pecl-mysqlnd_ms-1.5.2.ebuild:
+  Revbump to add 5.5 support; drop 5.3 support
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  pecl-mysqlnd_ms-1.4.1.ebuild, pecl-mysqlnd_ms-1.5.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*pecl-mysqlnd_ms-1.5.2 (03 Jul 2013)
+
+  03 Jul 2013; Matti Bickel <mabi@gentoo.org> +pecl-mysqlnd_ms-1.5.2.ebuild:
+  version bump
+
+  27 Feb 2013; Ole Markus With <olemarkus@gentoo.org> metadata.xml:
+  Proxy maintainer MIA. Removing
+
+  27 Feb 2013; Ole Markus With <olemarkus@gentoo.org>
+  -pecl-mysqlnd_ms-1.1.1.ebuild, -pecl-mysqlnd_ms-1.1.2.ebuild,
+  -pecl-mysqlnd_ms-1.2.2.ebuild:
+  Remove old versions
+
+*pecl-mysqlnd_ms-1.4.1 (27 Feb 2013)
+
+  27 Feb 2013; Ole Markus With <olemarkus@gentoo.org>
+  +pecl-mysqlnd_ms-1.4.1.ebuild:
+  Version bump
+
+  13 Apr 2012; Ulrich Müller <ulm@gentoo.org> pecl-mysqlnd_ms-1.1.1.ebuild,
+  pecl-mysqlnd_ms-1.1.2.ebuild, pecl-mysqlnd_ms-1.2.2.ebuild:
+  Move EAPI assignment to top of ebuild, bug 411875.
+
+  14 Feb 2012; Torsten Veller <tove@gentoo.org> pecl-mysqlnd_ms-1.1.1.ebuild:
+  Fix ebuild header (#398773)
+
+*pecl-mysqlnd_ms-1.2.2 (07 Feb 2012)
+
+  07 Feb 2012; Ole Markus With <olemarkus@gentoo.org>
+  +pecl-mysqlnd_ms-1.2.2.ebuild:
+  Version bump
+
+  15 Jan 2012; Torsten Veller <tove@gentoo.org> pecl-mysqlnd_ms-1.1.2.ebuild:
+  Fix cvs keyword in the header (#398773)
+
+*pecl-mysqlnd_ms-1.1.2 (05 Nov 2011)
+
+  05 Nov 2011; Ole Markus With <olemarkus@gentoo.org>
+  +pecl-mysqlnd_ms-1.1.2.ebuild:
+  Version bump
+
+*pecl-mysqlnd_ms-1.1.1 (24 Oct 2011)
+
+  24 Oct 2011; Ole Markus With <olemarkus@gentoo.org>
+  +pecl-mysqlnd_ms-1.1.1.ebuild, +metadata.xml:
+  New package, pecl-mysqlnd_ms. Thanks to Pavel Stratil

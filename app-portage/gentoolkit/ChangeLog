@@ -1,0 +1,2148 @@
+# ChangeLog for app-portage/gentoolkit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/gentoolkit/ChangeLog,v 1.329 2015/05/27 15:23:25 floppym Exp $
+
+  27 May 2015; Mike Gilbert <floppym@gentoo.org> gentoolkit-0.3.0.8-r2.ebuild,
+  gentoolkit-0.3.0.9-r1.ebuild, gentoolkit-0.3.0.9-r2.ebuild,
+  gentoolkit-0.3.0.9.ebuild, gentoolkit-9999.ebuild:
+  s/python_export_best/python_setup/
+
+  25 Apr 2015; Brian Dolbec <dolsen@gentoo.org> gentoolkit-9999.ebuild:
+  Update EGIT_REPO_URI.
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> gentoolkit-0.3.0.8-r2.ebuild,
+  gentoolkit-0.3.0.9-r1.ebuild, gentoolkit-0.3.0.9-r2.ebuild,
+  gentoolkit-0.3.0.9.ebuild, gentoolkit-9999.ebuild:
+  Remove old Python implementations
+
+  28 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gentoolkit-0.3.0.9-r2.ebuild:
+  Stable for ia64, wrt bug #530264
+
+  28 Feb 2015; Fabian Groffen <grobian@gentoo.org> gentoolkit-0.3.0.9-r1.ebuild,
+  gentoolkit-0.3.0.9-r2.ebuild, gentoolkit-9999.ebuild:
+  drop condition on Prefix for gentoo-functions
+
+  02 Jan 2015; Agostino Sarubbo <ago@gentoo.org> gentoolkit-0.3.0.9-r2.ebuild:
+  Stable for sparc, wrt bug #530264
+
+  31 Dec 2014; Agostino Sarubbo <ago@gentoo.org> gentoolkit-0.3.0.9-r2.ebuild:
+  Stable for ppc, wrt bug #530264
+
+  26 Dec 2014; Agostino Sarubbo <ago@gentoo.org> gentoolkit-0.3.0.9-r2.ebuild:
+  Stable for x86, wrt bug #530264
+
+  23 Dec 2014; Agostino Sarubbo <ago@gentoo.org> gentoolkit-0.3.0.9-r2.ebuild:
+  Stable for alpha, wrt bug #530264
+
+  16 Dec 2014; Markus Meier <maekke@gentoo.org> gentoolkit-0.3.0.9-r2.ebuild:
+  arm stable, bug #530264
+
+  09 Dec 2014; Jeroen Roovers <jer@gentoo.org> gentoolkit-0.3.0.9-r2.ebuild:
+  Stable for HPPA (bug #530264).
+
+  08 Dec 2014; Agostino Sarubbo <ago@gentoo.org> gentoolkit-0.3.0.9-r2.ebuild:
+  Stable for ppc64, wrt bug #530264
+
+  07 Dec 2014; Mikle Kolyada <zlogene@gentoo.org> gentoolkit-0.3.0.9-r2.ebuild:
+  amd64 stable wrt bug #530264
+
+  18 Nov 2014; Michał Górny <mgorny@gentoo.org> gentoolkit-9999.ebuild:
+  Switch to git-r3.
+
+*gentoolkit-0.3.0.9-r2 (12 Nov 2014)
+
+  12 Nov 2014; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.3.0.9-r2.ebuild,
+  gentoolkit-9999.ebuild, +files/0.3.0.9-equery-508114.patch,
+  +files/0.3.0.9-revdep-rebuild-526400.patch,
+  +files/0.3.0.9-equery-strip-XXXFLAGS.patch:
+  Revision bump to add patches for the following:
+  revdep-rebuild: Fix gawk warning. Bug 526400
+  equery: strip leading '-' from CFLAGS, CXXFLAGS, LDFLAGS
+  equery: Don't always print license field. Bug 508114
+  Added Python 3.4 to PYTHON_COMPAT
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> gentoolkit-0.3.0.8-r2.ebuild,
+  gentoolkit-0.3.0.9-r1.ebuild, gentoolkit-0.3.0.9.ebuild,
+  gentoolkit-9999.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+  06 Apr 2014; Michał Górny <mgorny@gentoo.org> gentoolkit-0.3.0.9-r1.ebuild,
+  gentoolkit-9999.ebuild:
+  Enable PYTHON_TARGETS=pypy.
+
+  20 Mar 2014; Paul Varner <fuzzyray@gentoo.org> gentoolkit-0.3.0.9-r1.ebuild,
+  gentoolkit-9999.ebuild:
+  Update sys-apps/gentoo-functions dependency for prefix.
+
+*gentoolkit-0.3.0.9-r1 (19 Mar 2014)
+
+  19 Mar 2014; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.3.0.9-r1.ebuild,
+  gentoolkit-9999.ebuild, +files/0.3.0.9-revdep-rebuild-py-504654-1.patch,
+  +files/0.3.0.9-revdep-rebuild-py-504654-2.patch:
+  Revision bump to fix issues with revdep-rebuild.py (Bug 504654).
+  Fix portage dependency and add dependency on sys-apps/gentoo-functions.
+
+*gentoolkit-0.3.0.9 (12 Mar 2014)
+
+  12 Mar 2014; Paul Varner <fuzzyray@gentoo.org> -gentoolkit-0.3.0.6-r3.ebuild,
+  -gentoolkit-0.3.0.7.ebuild, -gentoolkit-0.3.0.7-r1.ebuild,
+  -gentoolkit-0.3.0.7-r2.ebuild, -gentoolkit-0.3.0.8.ebuild,
+  -gentoolkit-0.3.0.8-r1.ebuild, +gentoolkit-0.3.0.9.ebuild,
+  -files/0.3.0.6-gentoolkit-304125.patch, -files/0.3.0.6-eshowkw-409449.patch,
+  -files/0.3.0.6-euse-410365.patch, -files/0.3.0.7-configroot.patch,
+  -files/0.3.0.6-eread-413577.patch, -files/0.3.0.6-eshowkw-414627.patch,
+  -files/0.3.0.6-euse-422675.patch, -files/0.3.0.7-root.patch:
+  Version bump for bug fixes. See
+  http://git.overlays.gentoo.org/gitweb/?p=proj/gentoolkit.git;a=shortlog;h=ref
+  s/heads/gentoolkit
+  for full list of changes. Removed old ebuilds.
+
+  19 Jan 2014; Mike Frysinger <vapier@gentoo.org> gentoolkit-0.3.0.8-r2.ebuild:
+  Add arm64 love.
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> gentoolkit-0.3.0.8-r2.ebuild:
+  Stable for ppc64, wrt bug #492234
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> gentoolkit-0.3.0.8-r2.ebuild:
+  Stable for ppc, wrt bug #492234
+
+  17 Dec 2013; Raúl Porcel <armin76@gentoo.org> gentoolkit-0.3.0.8-r2.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #492234
+
+  01 Dec 2013; Markus Meier <maekke@gentoo.org> gentoolkit-0.3.0.8-r2.ebuild:
+  arm stable, bug #492234
+
+  01 Dec 2013; Johannes Huber <johu@gentoo.org> gentoolkit-0.3.0.8-r2.ebuild:
+  x86 stable wrt bug #492234
+
+  26 Nov 2013; Pacho Ramos <pacho@gentoo.org> gentoolkit-0.3.0.8-r2.ebuild:
+  amd64 stable, bug #492234
+
+  26 Nov 2013; Jeroen Roovers <jer@gentoo.org> gentoolkit-0.3.0.8-r2.ebuild:
+  Stable for HPPA (bug #492234).
+
+*gentoolkit-0.3.0.8-r2 (02 Oct 2013)
+
+  02 Oct 2013; Justin Lecher <jlec@gentoo.org> +gentoolkit-0.3.0.8-r2.ebuild,
+  metadata.xml:
+  Fix pyABI specific installation of revdep-rebuild.py
+
+  11 Sep 2013; Paul Varner <fuzzyray@gentoo.org> gentoolkit-0.3.0.8-r1.ebuild,
+  gentoolkit-9999.ebuild:
+  Change fowners call to use gid 0 for compatibilty with FreeBSD (Bug 484006).
+
+*gentoolkit-0.3.0.8-r1 (10 Sep 2013)
+
+  10 Sep 2013; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.3.0.8-r1.ebuild,
+  +files/0.3.0.8-revdep-rebuild-476740.patch,
+  +files/0.3.0.8-revdep-rebuild-484340.patch:
+  Revison bump to add patches to fix revdep-rebuild bugs 476740 and 484340.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> gentoolkit-9999.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*gentoolkit-0.3.0.8 (05 Sep 2013)
+
+  05 Sep 2013; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.3.0.8.ebuild:
+  Version bump for bug fixes and conversion to distutils-r1 eclass. See
+  http://git.overlays.gentoo.org/gitweb/?p=proj/gentoolkit.git;a=shortlog;h=refs/heads/gentoolkit
+  for full list of bug fixes.
+
+  04 Sep 2013; Paul Varner <fuzzyray@gentoo.org> gentoolkit-9999.ebuild:
+  Remove dosym calls for eclean-dist and eclean-pkg, since they are now actual
+  files.
+
+  30 Aug 2013; Mike Gilbert <floppym@gentoo.org> gentoolkit-9999.ebuild:
+  Call distutils-r1_python_prepare_all.
+
+  26 Jul 2013; Mike Gilbert <floppym@gentoo.org> gentoolkit-9999.ebuild:
+  Add pypy2.0 and fix PYTHON_REQ_USE after recent remove of xml use flag.
+
+*gentoolkit-0.3.0.7-r2 (12 Mar 2013)
+
+  12 Mar 2013; Mike Frysinger <vapier@gentoo.org>
+  +files/0.3.0.7-configroot.patch, +gentoolkit-0.3.0.7-r2.ebuild:
+  Also respect PORTAGE_CONFIGROOT in various utils.
+
+*gentoolkit-0.3.0.7-r1 (25 Feb 2013)
+
+  25 Feb 2013; Mike Frysinger <vapier@gentoo.org> +files/0.3.0.7-root.patch,
+  +gentoolkit-0.3.0.7-r1.ebuild:
+  Add fix for ROOT handling #160815.
+
+  22 Feb 2013; Zac Medico <zmedico@gentoo.org> gentoolkit-0.3.0.7.ebuild:
+  Add ~arm-linux keyword.
+
+  02 Jan 2013; Paul Varner <fuzzyray@gentoo.org> gentoolkit-9999.ebuild:
+  Migrate gentoolkit-9999 to distutils-r1 eclass.
+  Change einfo to elog, but only call elog if it is a new install.
+
+  29 Dec 2012; Raúl Porcel <armin76@gentoo.org> gentoolkit-0.3.0.7.ebuild:
+  alpha/m68k/s390/sh/sparc stable wrt #446832
+
+  18 Dec 2012; Agostino Sarubbo <ago@gentoo.org> gentoolkit-0.3.0.7.ebuild:
+  Stable for ia64, wrt bug #446832
+
+  18 Dec 2012; Jeroen Roovers <jer@gentoo.org> gentoolkit-0.3.0.7.ebuild:
+  Stable for HPPA (bug #446832).
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> gentoolkit-0.3.0.7.ebuild:
+  Stable for x86, wrt bug #446832
+
+  14 Dec 2012; Anthony G. Basile <blueness@gentoo.org>
+  gentoolkit-0.3.0.7.ebuild:
+  stable arm ppc ppc64, bug #446832
+
+  12 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> gentoolkit-0.3.0.7.ebuild:
+  Stable on amd64, wrt bug #446832
+
+  13 Nov 2012; Paul Varner <fuzzyray@gentoo.org> gentoolkit-9999.ebuild:
+  Add app-portage/portpeek to einfo message.
+
+  07 Nov 2012; Paul Varner <fuzzyray@gentoo.org> gentoolkit-0.3.0.7.ebuild:
+  Remove "inherit eutils", since the eclass is not used.
+
+  06 Nov 2012; Paul Varner <fuzzyray@gentoo.org>
+  -files/0.3.0.4-gentoolkit-375293.patch, -files/0.3.0.4-euse-376393.patch,
+  -files/0.3.0.4-equery-380573.patch, -files/0.3.0.4-euse.patch,
+  -files/0.3.0.4-euse-379599.patch, -files/0.3.0.4-euse-382219.patch,
+  -files/0.3.0.4-setup-394909.patch:
+  Remove unused patches from the files directory.
+
+*gentoolkit-0.3.0.7 (05 Nov 2012)
+
+  05 Nov 2012; Paul Varner <fuzzyray@gentoo.org> -gentoolkit-0.3.0.4-r5.ebuild,
+  -gentoolkit-0.3.0.5.ebuild, +gentoolkit-0.3.0.7.ebuild:
+  Version bump for multiple minor bug fixes. Remove old unused versions.
+
+  01 Nov 2012; Paul Varner <fuzzyray@gentoo.org> gentoolkit-9999.ebuild,
+  metadata.xml:
+  Remove minimal USE flag and add einfo for the utilities that were pulled
+  in as dependencies.
+
+  29 Oct 2012; Michał Górny <mgorny@gentoo.org> gentoolkit-0.3.0.4-r5.ebuild,
+  gentoolkit-0.3.0.5.ebuild, gentoolkit-0.3.0.6-r3.ebuild,
+  gentoolkit-9999.ebuild:
+  Use virtual for argparse.
+
+  22 Sep 2012; Agostino Sarubbo <ago@gentoo.org> -gentoolkit-0.3.0.6-r1.ebuild,
+  -gentoolkit-0.3.0.6-r2.ebuild, -gentoolkit-0.3.0.6.ebuild:
+  Remove old
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> gentoolkit-0.3.0.6-r3.ebuild:
+  alpha/m68k/s390/sh stable wrt #425734
+
+  22 Aug 2012; Jeremy Olexa <darkside@gentoo.org> gentoolkit-0.3.0.6-r3.ebuild,
+  gentoolkit-9999.ebuild:
+  remove revdep-rebuild for Gentoo Prefix (revdep-rebuild.sh was still being
+  installed)
+
+  29 Jul 2012; Jack Morgan <jmorgan@gentoo.org> gentoolkit-0.3.0.6-r3.ebuild:
+  sparc stable wrt BZ-425734
+
+  19 Jul 2012; Markus Meier <maekke@gentoo.org> gentoolkit-0.3.0.6-r3.ebuild:
+  arm stable, bug #425734
+
+  17 Jul 2012; Jeroen Roovers <jer@gentoo.org> gentoolkit-0.3.0.6-r3.ebuild:
+  Stable for HPPA (bug #425734).
+
+  12 Jul 2012; Akinori Hattori <hattya@gentoo.org> gentoolkit-0.3.0.6-r3.ebuild:
+  ia64 stable wrt bug #425734
+
+  12 Jul 2012; Anthony G. Basile <blueness@gentoo.org>
+  gentoolkit-0.3.0.6-r3.ebuild:
+  Stable ppc64, bug #425734
+
+  11 Jul 2012; Agostino Sarubbo <ago@gentoo.org> gentoolkit-0.3.0.6-r3.ebuild:
+  Stable for amd64, wrt bug #425734
+
+  11 Jul 2012; Anthony G. Basile <blueness@gentoo.org>
+  gentoolkit-0.3.0.6-r3.ebuild:
+  Stable ppc, bug #425734
+
+  11 Jul 2012; Jeff Horelick <jdhore@gentoo.org> gentoolkit-0.3.0.6-r3.ebuild:
+  marked x86 per bug 425734
+
+*gentoolkit-0.3.0.6-r3 (20 Jun 2012)
+
+  20 Jun 2012; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.3.0.6-r3.ebuild,
+  +files/0.3.0.6-euse-422675.patch:
+  Revision bump to add patch for euse to support the md5-dict metadata cache
+  format.
+
+  28 May 2012; Raúl Porcel <armin76@gentoo.org> gentoolkit-0.3.0.5.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #411479
+
+*gentoolkit-0.3.0.6-r2 (17 May 2012)
+
+  17 May 2012; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.3.0.6-r2.ebuild,
+  +files/0.3.0.6-gentoolkit-304125.patch, +files/0.3.0.6-eshowkw-409449.patch,
+  +files/0.3.0.6-euse-410365.patch:
+  Revision bump to add patches.
+  Make equery useflag colors match portage.
+  Fix regular expression in euse so c++0x flag displays correctly.
+  Fix output sorting in eshowkw.
+
+  11 May 2012; Michał Górny <mgorny@gentoo.org> gentoolkit-9999.ebuild:
+  eclean-kernel has been moved to app-admin/.
+
+*gentoolkit-0.3.0.6-r1 (09 May 2012)
+
+  09 May 2012; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.3.0.6-r1.ebuild,
+  +files/0.3.0.6-eread-413577.patch, +files/0.3.0.6-eshowkw-414627.patch:
+  Revision bump to add patches to add sorting to eread and fix a python3
+  issue with eshowkw.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> gentoolkit-0.3.0.6.ebuild:
+  keyword ~amd64-fbsd
+
+  17 Apr 2012; Brent Baude <ranger@gentoo.org> gentoolkit-0.3.0.5.ebuild:
+  Marking gentoolkit-0.3.0.5 ppc64 for bug 411479
+
+  16 Apr 2012; Brent Baude <ranger@gentoo.org> gentoolkit-0.3.0.5.ebuild:
+  Marking gentoolkit-0.3.0.5 ppc for bug 411479
+
+  15 Apr 2012; Markus Meier <maekke@gentoo.org> gentoolkit-0.3.0.5.ebuild:
+  arm stable, bug #411479
+
+  13 Apr 2012; Agostino Sarubbo <ago@gentoo.org> gentoolkit-0.3.0.5.ebuild:
+  Stable for amd64, wrt bug #411479
+
+*gentoolkit-0.3.0.6 (11 Apr 2012)
+
+  11 Apr 2012; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.3.0.6.ebuild:
+  Version bump to re-add support for prefix enviroments.
+
+  11 Apr 2012; Jeff Horelick <jdhore@gentoo.org> gentoolkit-0.3.0.5.ebuild:
+  marked x86 per bug 411479
+
+  11 Apr 2012; Paul Varner <fuzzyray@gentoo.org>
+  -gentoolkit-0.2.4.6.1-r1.ebuild, -gentoolkit-0.3.0.4.ebuild,
+  -gentoolkit-0.3.0.4-r4.ebuild:
+  Remove unused versions.
+
+  11 Apr 2012; Jeroen Roovers <jer@gentoo.org> gentoolkit-0.3.0.5.ebuild:
+  Stable for HPPA (bug #411479).
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> gentoolkit-0.3.0.4-r5.ebuild:
+  Marking gentoolkit-0.3.0.4-r5 ppc64 for bug 395303
+
+  01 Mar 2012; Paul Varner <fuzzyray@gentoo.org> gentoolkit-0.3.0.5.ebuild:
+  Drop the prefix keywords for gentoolkit-0.3.0.5 since equery is currently
+  broken. The keywords will be re-added after fixing the code and retesting on
+  the prefix enviroments (Bug 406495).
+
+*gentoolkit-0.3.0.5 (29 Feb 2012)
+
+  29 Feb 2012; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.3.0.5.ebuild:
+  Version bump to consolidate all patches since the gentoolkit-0.3.0.4 release.
+  Additionally, this version of gentoolkit installs the python version of
+  revdep-rebuild as revdep-rebuild.py.
+
+  01 Feb 2012; Brent Baude <ranger@gentoo.org> gentoolkit-0.3.0.4-r5.ebuild:
+  Marking gentoolkit-0.3.0.4-r5 ppc for bug 395303
+
+  31 Jan 2012; Paul Varner <fuzzyray@gentoo.org> gentoolkit-0.3.0.4-r5.ebuild,
+  gentoolkit-9999.ebuild:
+  Update dev-lang/python dependencies so that emerge will block if an installed
+  slot of python is not built with +xml.
+
+  31 Jan 2012; Paul Varner <fuzzyray@gentoo.org> -gentoolkit-0.3.0.4-r1.ebuild,
+  -gentoolkit-0.3.0.4-r2.ebuild, -gentoolkit-0.3.0.4-r3.ebuild:
+  Remove unused versions of gentoolkit-0.3.
+
+  06 Jan 2012; Mike Frysinger <vapier@gentoo.org> gentoolkit-0.3.0.4-r5.ebuild,
+  gentoolkit-9999.ebuild:
+  Allow newer coreutils to provide realpath.
+
+  01 Jan 2012; Raúl Porcel <armin76@gentoo.org> gentoolkit-0.3.0.4-r5.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #395303
+
+  26 Dec 2011; Markus Meier <maekke@gentoo.org> gentoolkit-0.3.0.4-r5.ebuild:
+  arm stable, bug #395303
+
+  20 Dec 2011; Jeroen Roovers <jer@gentoo.org> gentoolkit-0.3.0.4-r5.ebuild:
+  Stable for HPPA (bug #395303).
+
+  20 Dec 2011; Agostino Sarubbo <ago@gentoo.org> gentoolkit-0.3.0.4-r5.ebuild:
+  Stable for X86, wrt bug #395303
+
+  19 Dec 2011; Agostino Sarubbo <ago@gentoo.org> gentoolkit-0.3.0.4-r5.ebuild:
+  Stable for AMD64, wrt bug #395303
+
+*gentoolkit-0.3.0.4-r5 (19 Dec 2011)
+
+  19 Dec 2011; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.3.0.4-r5.ebuild,
+  +files/0.3.0.4-setup-394909.patch:
+  Fix setup.py to work with EPREFIX changes in Portage (Bug 394909).
+
+  04 Dec 2011; Michał Górny <mgorny@gentoo.org> gentoolkit-9999.ebuild,
+  metadata.xml:
+  Pull in a few of my portage tools as external gentoolkit apps with
+  USE=-minimal.
+
+  06 Nov 2011; Brent Baude <ranger@gentoo.org> gentoolkit-0.3.0.4-r4.ebuild:
+  Marking gentoolkit-0.3.0.4-r4 ppc for bug 386679
+
+  23 Oct 2011; Raúl Porcel <armin76@gentoo.org> gentoolkit-0.3.0.4-r4.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #386679
+
+  18 Oct 2011; Jeroen Roovers <jer@gentoo.org> gentoolkit-0.3.0.4-r4.ebuild:
+  Stable for HPPA (bug #386679).
+
+  17 Oct 2011; Markus Meier <maekke@gentoo.org> gentoolkit-0.3.0.4-r4.ebuild:
+  arm stable, bug #386679
+
+  13 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gentoolkit-0.3.0.4-r4.ebuild:
+  x86 stable wrt bug #386679
+
+  12 Oct 2011; Tony Vroon <chainsaw@gentoo.org> gentoolkit-0.3.0.4-r4.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Tomáš "Mepho" Pružina in bug #386679.
+
+*gentoolkit-0.3.0.4-r4 (08 Sep 2011)
+
+  08 Sep 2011; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.3.0.4-r4.ebuild,
+  +files/0.3.0.4-euse-382219.patch:
+  Revison bump to fix missing quotes in euse. Bug 382219
+
+*gentoolkit-0.3.0.4-r3 (26 Aug 2011)
+
+  26 Aug 2011; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.3.0.4-r3.ebuild,
+  +files/0.3.0.4-equery-380573.patch:
+  Revision bump to fix python3 traceback in equery meta.
+
+*gentoolkit-0.3.0.4-r2 (24 Aug 2011)
+
+  24 Aug 2011; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.3.0.4-r2.ebuild,
+  +files/0.3.0.4-gentoolkit-375293.patch, +files/0.3.0.4-euse-376393.patch,
+  +files/0.3.0.4-euse-379599.patch:
+  Revision bump.
+  Fix traversal of cascading profiles by euse (Bug 379599).
+  Fix equery changes Invalid CPV errors (Bug 375293).
+
+  28 Jul 2011; Paul Varner <fuzzyray@gentoo.org>
+  -files/0.3.0_rc11-cpv.py.patch, -files/0.3.0_rc11-eshowkw_indir.patch,
+  -files/0.3.0_rc11-euse.patch, -files/0.3.0_rc11-euse_prefix.patch,
+  -files/0.3.0_rc11-setup.py.patch, -files/eclean.313901.patch:
+  Remove unused patches from files directory
+
+*gentoolkit-0.3.0.4-r1 (28 Jul 2011)
+
+  28 Jul 2011; Paul Varner <fuzzyray@gentoo.org> +files/0.3.0.4-euse.patch,
+  +gentoolkit-0.3.0.4-r1.ebuild:
+  Revison bump to fix missing parenthises in euse. Bug 376393
+
+  18 Jul 2011; Paul Varner <fuzzyray@gentoo.org>
+  -gentoolkit-0.3.0_rc10-r1.ebuild, -gentoolkit-0.3.0_rc11-r3.ebuild,
+  -gentoolkit-0.3.0.ebuild, -gentoolkit-0.3.0.1.ebuild,
+  -gentoolkit-0.3.0.2.ebuild, -gentoolkit-0.3.0.3.ebuild:
+  Removing unused versions. Dropping the ~sparc-fbsd keyword with permission of
+  the bsd team.
+
+  18 Jul 2011; Paul Varner <fuzzyray@gentoo.org> gentoolkit-9999.ebuild:
+  Migrate live ebuild to the git-2 eclass.
+
+  16 Jul 2011; Paul Varner <fuzzyray@gentoo.org> gentoolkit-9999.ebuild:
+  Update live ebuild to remove revdep-rebuild.sh when installed in a prefix
+  environment.
+
+  11 Jul 2011; Alexis Ballier <aballier@gentoo.org> gentoolkit-0.3.0.4.ebuild:
+  keyword ~x86-fbsd, bug #346005
+
+  09 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  gentoolkit-0.3.0.4.ebuild:
+  ppc64 stable wrt #343843
+
+  24 Jun 2011; Raúl Porcel <armin76@gentoo.org> gentoolkit-0.3.0.4.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #343843
+
+  23 Jun 2011; Brent Baude <ranger@gentoo.org> gentoolkit-0.3.0.4.ebuild:
+  Marking gentoolkit-0.3.0.4 ppc for bug 343843
+
+  19 Jun 2011; Markus Meier <maekke@gentoo.org> gentoolkit-0.3.0.4.ebuild:
+  arm stable, bug #343843
+
+  18 Jun 2011; Markos Chandras <hwoarang@gentoo.org> gentoolkit-0.3.0.4.ebuild:
+  Stable on amd64 wrt bug #343843
+
+  15 Jun 2011; Jeroen Roovers <jer@gentoo.org> gentoolkit-0.3.0.4.ebuild:
+  Stable for HPPA (bug #343843).
+
+  15 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gentoolkit-0.3.0.4.ebuild:
+  x86 stable wrt bug #343843
+
+*gentoolkit-0.3.0.4 (25 May 2011)
+
+  25 May 2011; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.3.0.4.ebuild:
+  Version bump to fix revdep-rebuild ordering problems by calling emerge with
+  --complete-graph=y. Please take a look at bug 237964 for more information
+  about the changes in this release. Thanks to all contributors!
+
+*gentoolkit-0.3.0.3 (18 May 2011)
+
+  18 May 2011; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.3.0.3.ebuild:
+  Version bump to fix python3 compatibility with eshowkw. Please take a look at
+  bug 237964 for more information about the changes in this release. Thanks to
+  all contributors!
+
+*gentoolkit-0.3.0.2 (13 May 2011)
+
+  13 May 2011; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.3.0.2.ebuild:
+  Version bump to 0.3.0.2 to rename analyse to enalyze and to fix bug with euse
+  printing out the proper repository name. Please take a look at bug 237964 for
+  more information about the changes in this release. Thanks to all
+  contributors!
+
+  11 May 2011; Paul Varner <fuzzyray@gentoo.org> gentoolkit-0.3.0.1.ebuild:
+  Restore elog message for glsa-check that was mistakenly dropped in the rc10
+  ebuild. Bug 281960
+
+*gentoolkit-0.3.0.1 (09 May 2011)
+
+  09 May 2011; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.3.0.1.ebuild:
+  Version bump to 0.3.0.1 to fix python3 incompatibility with euse. Please take
+  a look at bug 237964 for more information about the changes in this release.
+  Thanks to all contributors!
+
+  25 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gentoolkit-0.2.4.6.1-r1.ebuild:
+  Fix deprecation warnings.
+
+*gentoolkit-0.3.0 (11 Apr 2011)
+
+  11 Apr 2011; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.3.0.ebuild:
+  Version bump to 0.3.0, please take a look at bug 237964 for more information
+  about the changes in this release. Thanks to all contributors!
+
+  06 Apr 2011; Jeremy Olexa <darkside@gentoo.org>
+  gentoolkit-0.3.0_rc11-r3.ebuild, gentoolkit-9999.ebuild:
+  Fix revdep-rebuild manpage removal for Gentoo Prefix
+
+  10 Feb 2011; Jeremy Olexa <darkside@gentoo.org>
+  gentoolkit-0.3.0_rc11-r3.ebuild, gentoolkit-9999.ebuild:
+  remove AIX special case to keep revdep-rebuild as preserve-libs works
+  there too
+
+  04 Feb 2011; Paul Varner <fuzzyray@gentoo.org> gentoolkit-9999.ebuild:
+  Completely remove revdep-rebuild for prefix users that are not running on AIX
+  (Bug 353654). Remove redundant chown and chmod of /var/cache/revdep-rebuild
+  in pkg_postinst(). Import Gentoo Prefix changes and bump to EAPI 3.
+
+  04 Feb 2011; Paul Varner <fuzzyray@gentoo.org>
+  gentoolkit-0.3.0_rc11-r3.ebuild:
+  Completely remove revdep-rebuild for prefix users that are not running on AIX
+  (Bug 353654). Remove redundant chown and chmod of /var/cache/revdep-rebuild
+  in pkg_postinst().
+
+  10 Jan 2011; Paul Varner <fuzzyray@gentoo.org>
+  gentoolkit-0.2.4.6.1-r1.ebuild:
+  Adjust the gentoolkit-0.2.4.6.1-r1.ebuild to only use python2. This fixes bug
+  350979 which occurs when python is set to python3.
+
+  27 Dec 2010; Christian Ruppert <idl0r@gentoo.org> gentoolkit-9999.ebuild:
+  Update the live ebuild to use git from now on.
+
+  26 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gentoolkit-0.3.0_rc10-r1.ebuild, gentoolkit-0.3.0_rc11-r3.ebuild,
+  gentoolkit-9999.ebuild:
+  DISTUTILS_DISABLE_VERSIONING_OF_PYTHON_SCRIPTS -> PYTHON_NONVERSIONED_EXECUTABLES.
+
+  03 Dec 2010; Jeremy Olexa <darkside@gentoo.org>
+  gentoolkit-0.3.0_rc11-r3.ebuild:
+  Add ~amd64-linux, not sure how/why it was missed earlier by me
+
+*gentoolkit-0.3.0_rc11-r3 (24 Nov 2010)
+
+  24 Nov 2010; Paul Varner <fuzzyray@gentoo.org> +files/0.3.0_rc11-euse.patch,
+  +files/0.3.0_rc11-euse_prefix.patch, -gentoolkit-0.3.0_rc11-r2.ebuild,
+  +gentoolkit-0.3.0_rc11-r3.ebuild:
+  Update euse to look for portage config files in new as well as old paths -
+  bug 346519. Make euse prefix aware
+
+*gentoolkit-0.3.0_rc11-r2 (22 Nov 2010)
+
+  22 Nov 2010; Paul Varner <fuzzyray@gentoo.org>
+  +files/0.3.0_rc11-cpv.py.patch, -gentoolkit-0.3.0_rc11-r1.ebuild,
+  +gentoolkit-0.3.0_rc11-r2.ebuild:
+  Revision bump: Fix cpv.py to handle prefix ebuild inter-revisions. Bug 313295
+
+  19 Nov 2010; Paul Varner <fuzzyray@gentoo.org>
+  +files/0.3.0_rc11-setup.py.patch, gentoolkit-0.3.0_rc11-r1.ebuild:
+  Fix UnicodeDecodeError in setup.py, bug 346001
+
+  19 Nov 2010; Jeremy Olexa <darkside@gentoo.org>
+  gentoolkit-0.3.0_rc11-r1.ebuild:
+  Import Gentoo Prefix changes. Bump to EAPI3, add keywords, use EROOT.
+  Approved by tools-portage team
+
+*gentoolkit-0.3.0_rc11-r1 (19 Nov 2010)
+
+  19 Nov 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/0.3.0_rc11-eshowkw_indir.patch, -gentoolkit-0.3.0_rc11.ebuild,
+  +gentoolkit-0.3.0_rc11-r1.ebuild:
+  Revision bump to fix eshowkw bug 346035
+
+*gentoolkit-0.3.0_rc11 (18 Nov 2010)
+
+  18 Nov 2010; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.3.0_rc11.ebuild:
+  Version bump to 0.3.0_rc11, please take a look at bug 237964 for more
+  information about the changes in this release. Thanks to all contributors!
+
+  18 Nov 2010; Paul Varner <fuzzyray@gentoo.org> -gentoolkit-0.2.4.5.ebuild,
+  -gentoolkit-0.2.4.6.1.ebuild, -gentoolkit-0.3.0_rc7.ebuild,
+  -gentoolkit-0.3.0_rc8.ebuild, -gentoolkit-0.3.0_rc8-r1.ebuild,
+  -gentoolkit-0.3.0_rc9.ebuild, -gentoolkit-0.3.0_rc10.ebuild:
+  Remove unused ebuilds
+
+  28 Oct 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  gentoolkit-9999.ebuild:
+  Update ebuild to take eshowkw move into account.
+
+  27 Apr 2010; Alexis Ballier <aballier@gentoo.org>
+  gentoolkit-0.3.0_rc10-r1.ebuild, gentoolkit-9999.ebuild:
+  adapt realpath deps for freebsd and keyword it, bug #299970
+
+  14 Apr 2010; Jeroen Roovers <jer@gentoo.org>
+  gentoolkit-0.2.4.6.1-r1.ebuild:
+  Stable for PPC (bug #305793).
+
+  14 Apr 2010; Jeroen Roovers <jer@gentoo.org>
+  gentoolkit-0.2.4.6.1-r1.ebuild:
+  Stable for HPPA (bug #305793).
+
+  14 Apr 2010; Markos Chandras <hwoarang@gentoo.org>
+  gentoolkit-0.2.4.6.1-r1.ebuild:
+  Stable on amd64 wrt bug #305793
+
+*gentoolkit-0.2.4.6.1-r1 (10 Apr 2010)
+
+  10 Apr 2010; Zac Medico <zmedico@gentoo.org>
+  +gentoolkit-0.2.4.6.1-r1.ebuild:
+  Bug #314247 - Stable revbump with patch just to avoid triggering a
+  'getvirtuals' deprecation warning with sys-apps/portage-2.1.8.x.
+
+*gentoolkit-0.3.0_rc10-r1 (08 Apr 2010)
+
+  08 Apr 2010; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.3.0_rc10-r1.ebuild, +files/eclean.313901.patch:
+  Revision bump to fix regression in eclean where metadata.dtd gets removed
+  (Bug 313901).
+
+*gentoolkit-0.3.0_rc10 (05 Apr 2010)
+
+  05 Apr 2010; Christian Ruppert <idl0r@gentoo.org>
+  +gentoolkit-0.3.0_rc10.ebuild, gentoolkit-9999.ebuild:
+  Version bump to 0.3.0_rc10, please take a look at bug 237964 for more
+  information about the changes in this release. Thanks to all contributors!
+  Merge ebuild related changes in _rc10 to gentoolkit-9999 as well.
+
+  01 Apr 2010; Raúl Porcel <armin76@gentoo.org>
+  gentoolkit-0.2.4.6.1.ebuild, gentoolkit-0.3.0_rc8.ebuild,
+  gentoolkit-0.3.0_rc8-r1.ebuild, gentoolkit-0.3.0_rc9.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #305793
+
+  29 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gentoolkit-0.2.4.6.1.ebuild:
+  x86 stable wrt bug #305793
+
+  23 Mar 2010; Brent Baude <ranger@gentoo.org> gentoolkit-0.2.4.6.1.ebuild:
+  Marking gentoolkit-0.2.4.6.1 ppc64 for bug 305793
+
+  12 Mar 2010; Paul Varner <fuzzyray@gentoo.org> gentoolkit-9999.ebuild:
+  Update gentoolkit-9999 to support the python3 ABI
+
+*gentoolkit-0.2.4.6.1 (11 Mar 2010)
+
+  11 Mar 2010; Paul Varner <fuzzyray@gentoo.org> -gentoolkit-0.2.4.6.ebuild,
+  -gentoolkit-0.2.4.6-r1.ebuild, +gentoolkit-0.2.4.6.1.ebuild,
+  -files/revdep-rebuild.143498.patch:
+  Version bump to backport lastest epkginfo to fix bug 308929. Remove older
+  gentoolkit-0.2.4.6 releases.
+  Bug 305793 tracks fixes to the gentoolkit-0.2.4.6 release.
+
+  01 Mar 2010; Paul Varner <fuzzyray@gentoo.org>
+  files/revdep-rebuild.143498.patch:
+  Fix missing quote in patch
+
+*gentoolkit-0.2.4.6-r1 (01 Mar 2010)
+
+  01 Mar 2010; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.4.6-r1.ebuild, +files/revdep-rebuild.143498.patch:
+  Revision bump to add patch to fully fix Bug 143498
+
+*gentoolkit-0.3.0_rc9 (18 Feb 2010)
+*gentoolkit-0.2.4.6 (18 Feb 2010)
+
+  18 Feb 2010; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.2.4.6.ebuild,
+  +gentoolkit-0.3.0_rc9.ebuild:
+  gentoolkit-0.3.0_rc9 version bump. Bug 237964 tracks changes to
+  gentoolkit-0.3.0.
+  gentoolkit-0.2.4.6 version bump. This is gentoolkit-0.2.4.5 with
+  revdep-rebuild from gentoolkit-0.3.0. Bug 305793 tracks the changes.
+
+  05 Feb 2010; Paul Varner <fuzzyray@gentoo.org>
+  gentoolkit-0.3.0_rc8-r1.ebuild:
+  Update ebuild to run 'setup.py set_version' to set the gentoolkit version
+  number to PVR
+
+  11 Jan 2010; Paul Varner <fuzzyray@gentoo.org> gentoolkit-9999.ebuild:
+  Fix previous commit.
+
+  11 Jan 2010; Paul Varner <fuzzyray@gentoo.org> gentoolkit-9999.ebuild:
+  Apply fix for eclean-dist/eclean-pkg symlinks to gentoolkit-9999 (bug
+  #300070).
+
+*gentoolkit-0.3.0_rc8-r1 (11 Jan 2010)
+
+  11 Jan 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +gentoolkit-0.3.0_rc8-r1.ebuild:
+  Fix eclean-dist and eclean-pkg symlinks (bug #300070).
+
+*gentoolkit-0.3.0_rc8 (06 Jan 2010)
+
+  06 Jan 2010; Paul Varner <fuzzyray@gentoo.org>
+  -gentoolkit-0.3.0_rc5.ebuild, -gentoolkit-0.3.0_rc6.ebuild,
+  +gentoolkit-0.3.0_rc8.ebuild:
+  gentoolkit-0.3.0_rc8 version bump. Bug 237964 tracks changes to
+  gentoolkit-0.3.0.
+  Dropped keywords for ~m68k ~s390 ~sh ~sparc-fbsd ~x86-fbsd in
+  gentoolkit-0.3.0_rc8 due to new runtime dependency on app-misc/realpath.
+  Removed older unused ebuilds.
+
+  10 Dec 2009; Paul Varner <fuzzyray@gentoo.org> gentoolkit-9999.ebuild:
+  Modify live ebuild to use setup.py to set the version of gentoolkit
+  installed.
+
+  05 Dec 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gentoolkit-0.3.0_rc7.ebuild, gentoolkit-9999.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  28 Oct 2009; Christian Ruppert <idl0r@gentoo.org> gentoolkit-9999.ebuild:
+  Add app-misc/realpath dependency wrt r696.
+
+  28 Aug 2009; Paul Varner <fuzzyray@gentoo.org>
+  -files/gentoolkit-0.2.3-r1-equery.patch, -gentoolkit-0.2.4_pre8.ebuild,
+  -gentoolkit-0.2.4.2-r1.ebuild, -files/equery-0.2.4.2_use_expanded.patch:
+  Remove no longer needed versions.
+
+  18 Aug 2009; Robert Buchholz <rbu@gentoo.org> gentoolkit-0.3.0_rc7.ebuild:
+  Update postinst message with changes to glsa-check
+
+  13 Jul 2009; Joseph Jezak <josejx@gentoo.org> gentoolkit-0.2.4.5.ebuild:
+  Marked ppc stable for bug #268001.
+
+  04 Jul 2009; Brent Baude <ranger@gentoo.org> gentoolkit-0.2.4.5.ebuild:
+  Marking gentoolkit-0.2.4.5 ppc64 for bug 268001
+
+  02 Jul 2009; Raúl Porcel <armin76@gentoo.org> gentoolkit-0.2.4.5.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #268001
+
+  02 Jul 2009; Jeroen Roovers <jer@gentoo.org> gentoolkit-0.2.4.5.ebuild:
+  Stable for HPPA (bug #268001).
+
+  01 Jul 2009; Markus Meier <maekke@gentoo.org> gentoolkit-0.2.4.5.ebuild:
+  amd64 stable, bug #268001
+
+  01 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  gentoolkit-0.2.4.5.ebuild:
+  stable x86, bug 268001
+
+  01 Jul 2009; Paul Varner <fuzzyray@gentoo.org> gentoolkit-0.2.4.5.ebuild:
+  Add RESTRICT="test" to gentoolkit-0.2.4.5.ebuild since there are no
+  tests in gentoolkit to execute.
+
+  19 Jun 2009; Paul Varner <fuzzyray@gentoo.org> ChangeLog:
+  Fix tracker bug typo in the ChangeLog for gentoolkit-0.3.0. The tracker
+  bug is 237964
+
+*gentoolkit-0.3.0_rc7 (19 Jun 2009)
+
+  19 Jun 2009; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.3.0_rc7.ebuild:
+  gentoolkit-0.3.0_rc7 version bump. This version fixes bugs 232635, 259337,
+  269171, 269175, 269196, 269454, 270407, 272492, and 273228 
+
+  Bug 237964 tracks changes to gentoolkit-0.3.0.
+
+*gentoolkit-0.2.4.5 (01 Jun 2009)
+
+  01 Jun 2009; Paul Varner <fuzzyray@gentoo.org> -gentoolkit-0.2.4.3.ebuild,
+  -gentoolkit-0.2.4.4.ebuild, +gentoolkit-0.2.4.5.ebuild:
+  gentoolkit-0.2.4.5 revision bump. This version adds the following patches
+  to glsa-check:
+  * Handle unicode encoding when dumping to stdout and start migration to
+  using StringIO
+  * Some python tweaks to speed glsa-check
+  See
+  http://git.goodpoint.de/?p=glsa-check.git;a=shortlog;h=refs/heads/for-0.2.
+  4.4
+  Remove gentoolkit-0.2.4.3 and gentoolkit-0.2.4.4
+
+*gentoolkit-9999 (27 May 2009)
+
+  27 May 2009; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-9999.ebuild:
+  Add Subversion ebuild
+
+*gentoolkit-0.3.0_rc6 (18 May 2009)
+*gentoolkit-0.2.4.4 (18 May 2009)
+
+  18 May 2009; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.2.4.4.ebuild,
+  +gentoolkit-0.3.0_rc6.ebuild:
+  gentoolkit-0.2.4.4 version bump. This version fixes bugs 170784, 182990,
+  218312, 256013, 266996, and 268513. Bug 268001 tracks changes to
+  gentoolkit-0.2.4.
+  gentoolkit-0.3.0_rc6 version bump. This version fixes bugs 170784, 182990,
+  218312, and 268895. Bug 237964 tracks changes to gentoolkit-0.3.0.
+
+  17 May 2009; Alexis Ballier <aballier@gentoo.org>
+  gentoolkit-0.3.0_rc5.ebuild:
+  keyword ~x86-fbsd, bug #236214
+
+  16 May 2009; Alexis Ballier <aballier@gentoo.org>
+  gentoolkit-0.3.0_rc5.ebuild:
+  keyword ~sparc-fbsd, bug #236214
+
+*gentoolkit-0.3.0_rc5 (07 May 2009)
+
+  07 May 2009; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.3.0_rc5.ebuild:
+  New major release. This version contains the equery and gentoolkit library
+  modular rewrite by djanderson. The ebuild has been migrated to using
+  python's distutils for installation and all python modules are installed
+  in site-packages. This release includes fixes for bugs 83080, 237419,
+  256103, 266996, and 268513. Bug 237964 tracks the gentoolkit-0.3.0
+  release.
+
+  05 May 2009; Christian Ruppert <idl0r@gentoo.org>
+  gentoolkit-0.2.4.3.ebuild:
+  Fixed bug 254427 and bug 254255. Cleanup.
+
+*gentoolkit-0.2.4.3 (01 May 2009)
+
+  01 May 2009; Paul Varner <fuzzyray@gentoo.org>
+  -gentoolkit-0.2.3-r1.ebuild, gentoolkit-0.2.4_pre8.ebuild,
+  -gentoolkit-0.2.4.ebuild, -gentoolkit-0.2.4.1.ebuild,
+  -gentoolkit-0.2.4.2.ebuild, gentoolkit-0.2.4.2-r1.ebuild,
+  +gentoolkit-0.2.4.3.ebuild:
+  gentoolkit-0.2.4.3 version bump. This fixes bugs #239000, #243304,
+  #249652, #253968, #259526, and #267898. Removed older ebuilds and added
+  explict RDEPEND to all ebuilds.
+
+  09 Jan 2009; Brent Baude <ranger@gentoo.org> gentoolkit-0.2.4.2-r1.ebuild:
+  stable ppc, bug 253897
+
+  08 Jan 2009; Raúl Porcel <armin76@gentoo.org>
+  gentoolkit-0.2.4.2-r1.ebuild:
+  alpha/ia64/x86 stable wrt #253897
+
+  08 Jan 2009; Jeremy Olexa <darkside@gentoo.org>
+  gentoolkit-0.2.4.2-r1.ebuild:
+  amd64 stable, bug 253897
+
+  07 Jan 2009; Jeroen Roovers <jer@gentoo.org> gentoolkit-0.2.4.2-r1.ebuild:
+  Stable for HPPA (bug #253897).
+
+  07 Jan 2009; Ferris McCormick <fmccor@gentoo.org>
+  gentoolkit-0.2.4.2-r1.ebuild:
+  Sparc stable, Bug #253897.
+
+  07 Jan 2009; Brent Baude <ranger@gentoo.org> gentoolkit-0.2.4.2-r1.ebuild:
+  stable ppc64, bug 253897
+
+*gentoolkit-0.2.4.2-r1 (30 Nov 2008)
+
+  30 Nov 2008; Petteri Räty <betelgeuse@gentoo.org>
+  +files/equery-0.2.4.2_use_expanded.patch, +gentoolkit-0.2.4.2-r1.ebuild:
+  Add patch to read USE expanded variables from their desc files. Fixes bug
+  #238005. Thanks to Michael A. Smith <michael@smith-li.com>.
+
+  03 Oct 2008; Alexis Ballier <aballier@gentoo.org>
+  gentoolkit-0.2.4.2.ebuild:
+  unkeyword x86-fbsd, revdep-rebuild doesn't work, bug #236214
+
+  02 Oct 2008; Brent Baude <ranger@gentoo.org> gentoolkit-0.2.4.2.ebuild:
+  stable ppc, bug 170220
+
+  02 Oct 2008; Raúl Porcel <armin76@gentoo.org> gentoolkit-0.2.4.2.ebuild:
+  alpha/ia64 stable wrt #170220
+
+  01 Oct 2008; Dawid Węgliński <cla@gentoo.org> gentoolkit-0.2.4.2.ebuild:
+  Stable on x86 (bug #170220)
+
+  01 Oct 2008; Brent Baude <ranger@gentoo.org> gentoolkit-0.2.4.2.ebuild:
+  stable ppc64, bug 170220
+
+  01 Oct 2008; Jeremy Olexa <darkside@gentoo.org> gentoolkit-0.2.4.2.ebuild:
+  amd64 stable, bug #170220
+
+  01 Oct 2008; Jeroen Roovers <jer@gentoo.org> gentoolkit-0.2.4.2.ebuild:
+  Stable for HPPA (bug #170220).
+
+  30 Sep 2008; Ferris McCormick <fmccor@gentoo.org>
+  gentoolkit-0.2.4.2.ebuild:
+  Sparc stable early at developer request --- Bug #170220 --- there haven't
+  been any problems seen.
+
+  24 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  gentoolkit-0.2.4.2.ebuild:
+  keyword ~x86-fbsd thanks to Davide Italiano <dav_it@gentoo.org>, bug
+  #236214
+
+*gentoolkit-0.2.4.2 (17 Sep 2008)
+
+  17 Sep 2008; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.2.4.2.ebuild:
+  gentoolkit-0.2.4.2 version bump. This fixes bug #233651. Bug #170220
+  tracks all fixes made for the gentoolkit-0.2.4 release.
+
+*gentoolkit-0.2.4.1 (04 Sep 2008)
+
+  04 Sep 2008; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.2.4.1.ebuild:
+  gentoolkit-0.2.4.1 version bump. This fixes bugs #236483 and #236492. Bug
+  #170220 tracks all fixes made for the gentoolkit-0.2.4 release.
+
+*gentoolkit-0.2.4 (28 Aug 2008)
+
+  28 Aug 2008; Paul Varner <fuzzyray@gentoo.org> -gentoolkit-0.2.3.1.ebuild,
+  -gentoolkit-0.2.4_pre7.ebuild, -gentoolkit-0.2.4_rc2.ebuild,
+  -gentoolkit-0.2.4_rc3.ebuild, -gentoolkit-0.2.4_rc4.ebuild,
+  -gentoolkit-0.2.4_rc5.ebuild, -gentoolkit-0.2.4_rc6.ebuild,
+  +gentoolkit-0.2.4.ebuild:
+  Added gentoolkit-0.2.4 for stablization per Bug #203414. Remove previous
+  versions that are not needed.
+
+*gentoolkit-0.2.4_rc6 (27 Aug 2008)
+
+  27 Aug 2008; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.4_rc6.ebuild:
+  gentoolkit-0.2.4_rc6 version bump. This fixes bugs #203414, #232019,
+  #232270, #232599, #232797, #232803, #232938, #234358, and #234584. Bug
+  #170220 tracks all fixes made for the gentoolkit-0.2.4 release.
+
+*gentoolkit-0.2.4_rc5 (10 Jul 2008)
+
+  10 Jul 2008; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.4_rc5.ebuild:
+  gentoolkit-0.2.4_rc5 version bump. This fixes bugs #203414, #217070,
+  #219612, #220761, and #223255. Bug #170220 tracks all fixes made for the
+  gentoolkit-0.2.4 release.
+
+  29 May 2008; Ali Polatel <hawking@gentoo.org> gentoolkit-0.2.3-r1.ebuild,
+  gentoolkit-0.2.3.1.ebuild, gentoolkit-0.2.4_pre7.ebuild,
+  gentoolkit-0.2.4_pre8.ebuild, gentoolkit-0.2.4_rc2.ebuild,
+  gentoolkit-0.2.4_rc3.ebuild, gentoolkit-0.2.4_rc4.ebuild:
+  python_mod_{cleanup,optimize} are ROOT aware.
+
+  25 Apr 2008; <ricmm@gentoo.org> gentoolkit-0.2.3-r1.ebuild:
+  Drop to ~mips due to unstable deps
+
+*gentoolkit-0.2.4_rc4 (24 Apr 2008)
+
+  24 Apr 2008; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.4_rc4.ebuild:
+  gentoolkit-0.2.4_rc4 version bump. This fixes bugs #211706, #211716,
+  #212573, #213294, #213328, #213659, #214370, and #216865. Bug #170220
+  tracks all fixes made for the gentoolkit-0.2.4 release.
+
+*gentoolkit-0.2.4_rc3 (26 Feb 2008)
+
+  26 Feb 2008; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.4_rc3.ebuild:
+  gentoolkit-0.2.4_rc3 version bump. This fixes bug #210940.
+  Bug #170220 tracks all fixes made for the gentoolkit-0.2.4 release.
+
+*gentoolkit-0.2.4_rc2 (20 Feb 2008)
+
+  20 Feb 2008; Paul Varner <fuzzyray@gentoo.org> gentoolkit-0.2.3-r1.ebuild,
+  -gentoolkit-0.2.4_pre6.ebuild, gentoolkit-0.2.4_pre7.ebuild,
+  -gentoolkit-0.2.4_rc1.ebuild, +gentoolkit-0.2.4_rc2.ebuild:
+  gentoolkit-0.2.4_rc2 version bump. This fixes bugs #106278, #119806,
+  #134440, #162493, #189257, #193979, #194234, #194993, #196460, #205132, and
+  #205227. Bug #170220 tracks all fixes made for the gentoolkit-0.2.4 release.
+  Removed older ebuilds. Fixed date and quoting problems in all ebuilds.
+
+*gentoolkit-0.2.4_pre8 (22 Oct 2007)
+*gentoolkit-0.2.3.1 (22 Oct 2007)
+
+  22 Oct 2007; Paul Varner <fuzzyray@gentoo.org> +gentoolkit-0.2.3.1.ebuild,
+  +gentoolkit-0.2.4_pre8.ebuild:
+  Add gentoolkit-0.2.3.1 for potential stablization.  Contains old
+  revdep-rebuild with -X option fixed. All other tools have all of the
+  gentoolkit-0.2.4 series fixes.  Add gentoolkit-0.2.4_pre8 with
+  revdep-rebuild-sh for initial use on FreeBSD systems.
+
+*gentoolkit-0.2.4_rc1 (26 Sep 2007)
+
+  26 Sep 2007; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.4_rc1.ebuild:
+  gentoolkit-0.2.4_rc1 version bump. This fixes bugs #179392, #182882,
+  #188678, #192979, and #193108
+  Bug #170220 tracks all fixes made for the gentoolkit-0.2.4 release.
+  Removed fbsd keywords until Bug #183657 gets solved.
+
+*gentoolkit-0.2.4_pre7 (13 Sep 2007)
+
+  13 Sep 2007; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.4_pre7.ebuild:
+  gentoolkit-0.2.4_pre7 version bump. This fixes bugs #186945, #187141, #187366,
+  #187453, #187967, #188918, #189994, and #192345.
+  Bug #170220 tracks all fixes made for the gentoolkit-0.2.4 release.
+
+  12 Sep 2007; Paul Varner <fuzzyray@gentoo.org> -gentoolkit-0.2.2.ebuild,
+  -gentoolkit-0.2.3.ebuild, -gentoolkit-0.2.4_pre3.ebuild,
+  -gentoolkit-0.2.4_pre4.ebuild, -gentoolkit-0.2.4_pre5.ebuild,
+  gentoolkit-0.2.4_pre6.ebuild:
+  Cleanup old ebuilds
+
+  02 Aug 2007; Joe Peterson <lavajoe@gentoo.org>
+  gentoolkit-0.2.4_pre6.ebuild:
+  Re-keyword ~x86-fbsd, since it is now masked in fbsd package.mask
+
+  29 Jul 2007; Joe Peterson <lavajoe@gentoo.org>
+  gentoolkit-0.2.4_pre6.ebuild:
+  Remove ~x86-fbsd keyword (bug #183657)
+
+*gentoolkit-0.2.4_pre6 (27 Jul 2007)
+
+  27 Jul 2007; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.4_pre6.ebuild:
+  gentoolkit-0.2.4_pre6 version bump. This fixes bugs #81721, #117454, #117550,
+  #139804, #175759, #176951, #177385, #184042, #185530, and #186409.
+  Bug #170220 tracks all fixes made for the gentoolkit-0.2.4 release.
+
+  24 Apr 2007; Bryan Østergaard <kloeri@gentoo.org>
+  gentoolkit-0.2.3-r1.ebuild:
+  Stable on Mips, bug 172741.
+
+*gentoolkit-0.2.4_pre5 (23 Apr 2007)
+
+  23 Apr 2007; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.4_pre5.ebuild:
+  gentoolkit-0.2.4_pre5 version bump. This fixes bugs #172694 and #175692
+  Bug #170220 tracks all fixes made for the gentoolkit-0.2.4 release.
+
+*gentoolkit-0.2.4_pre4 (11 Apr 2007)
+
+  11 Apr 2007; Paul Varner <fuzzyray@gentoo.org>
+  -gentoolkit-0.2.4_pre1.ebuild, -gentoolkit-0.2.4_pre2.ebuild,
+  +gentoolkit-0.2.4_pre4.ebuild:
+  gentoolkit-0.2.4_pre4 version bump. This fixes bugs #134053, #152325,
+  #164678, #172694, #172968, and #172969.
+  Bug #170220 tracks all fixes made for the gentoolkit-0.2.4 release.
+  Removed older pre-releases.
+
+  06 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  gentoolkit-0.2.3-r1.ebuild:
+  stable amd64, bug 172741
+
+  04 Apr 2007; Fernando J. Pereda <ferdy@gentoo.org>
+  gentoolkit-0.2.3-r1.ebuild:
+  Stable on alpha as per bug #172741
+
+  01 Apr 2007; Tom Gall <tgall@gentoo.org> gentoolkit-0.2.3-r1.ebuild:
+  stable on ppc64 bug 172741
+
+  30 Mar 2007; nixnut <nixnut@gentoo.org> gentoolkit-0.2.3-r1.ebuild:
+  Stable on ppc wrt bug 172741
+
+  30 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoolkit-0.2.3-r1.ebuild:
+  Stable on sparc wrt #172741
+
+  30 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  gentoolkit-0.2.3-r1.ebuild:
+  stable x86, bug 172741
+
+  30 Mar 2007; Jeroen Roovers <jer@gentoo.org> gentoolkit-0.2.3-r1.ebuild:
+  Stable for HPPA (bug #172741).
+
+*gentoolkit-0.2.3-r1 (30 Mar 2007)
+
+  30 Mar 2007; Paul Varner <fuzzyray@gentoo.org>
+  +files/gentoolkit-0.2.3-r1-equery.patch, +gentoolkit-0.2.3-r1.ebuild:
+  Rev bump to remove debug print statement in equery (Bug #172741)
+
+*gentoolkit-0.2.4_pre3 (25 Mar 2007)
+
+  25 Mar 2007; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.4_pre3.ebuild:
+  Version bump to make Makefile more portable (Bug #168983)
+
+*gentoolkit-0.2.4_pre2 (19 Mar 2007)
+
+  19 Mar 2007; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.4_pre2.ebuild:
+  gentoolkit-0.2.4_pre2 version bump. This fixes bugs #77318, #115807, #165165,
+  #168347, #169761, #170702, and #170981.
+  Bug #170220 tracks all fixes made for the gentoolkit-0.2.4 release.
+
+  14 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  gentoolkit-0.2.3.ebuild:
+  Stable on alpha/ia64 wrt bug #169040.
+
+*gentoolkit-0.2.4_pre1 (10 Mar 2007)
+
+  10 Mar 2007; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.4_pre1.ebuild:
+  New release for various bug fixes and enhancements.
+  See http://bugs.gentoo.org/170220 for list.
+
+  07 Mar 2007; Alexander H. Færøy <eroyf@gentoo.org>
+  gentoolkit-0.2.3.ebuild:
+  Stable on MIPS; bug #169040
+
+  06 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoolkit-0.2.3.ebuild:
+  Stable on sparc wrt #169040
+
+  06 Mar 2007; Markus Rothe <corsair@gentoo.org> gentoolkit-0.2.3.ebuild:
+  Stable on ppc64; bug #169040
+
+  03 Mar 2007; Simon Stelling <blubb@gentoo.org> gentoolkit-0.2.3.ebuild:
+  stable on amd64; bug 169040
+
+  02 Mar 2007; Jeroen Roovers <jer@gentoo.org> gentoolkit-0.2.3.ebuild:
+  Stable for HPPA (bug #169040).
+
+  02 Mar 2007; nixnut <nixnut@gentoo.org> gentoolkit-0.2.3.ebuild:
+  Stable on ppc wrt bug 169040
+
+  02 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  gentoolkit-0.2.3.ebuild:
+  stable x86; bug 169040
+
+*gentoolkit-0.2.3 (20 Feb 2007)
+
+  20 Feb 2007; Paul Varner <fuzzyray@gentoo.org>
+  -gentoolkit-0.2.3_pre1.ebuild, -gentoolkit-0.2.3_pre2.ebuild,
+  -gentoolkit-0.2.3_pre3.ebuild, +gentoolkit-0.2.3.ebuild:
+  Release gentoolkit-0.2.3
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> gentoolkit-0.2.2.ebuild:
+  Replacing einfo with elog
+
+*gentoolkit-0.2.3_pre3 (29 Dec 2006)
+
+  29 Dec 2006; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.3_pre3.ebuild:
+  Version bump to release fixed genpkgindex
+
+  17 Oct 2006; Roy Marples <uberlord@gentoo.org>
+  gentoolkit-0.2.3_pre2.ebuild:
+  Added ~sparc-fbsd keyword.
+
+*gentoolkit-0.2.3_pre2 (10 Oct 2006)
+
+  10 Oct 2006; Paul Varner <fuzzyray@gentoo.org> -gentoolkit-0.2.1.ebuild,
+  +gentoolkit-0.2.3_pre2.ebuild:
+  Version bump to add eread, remove gentoolkit-0.2.1
+
+*gentoolkit-0.2.3_pre1 (04 Sep 2006)
+
+  04 Sep 2006; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.3_pre1.ebuild:
+  New release for various bug fixes and enhancements.
+
+  09 Jul 2006; Joshua Kinard <kumba@gentoo.org> gentoolkit-0.2.2.ebuild:
+  Marked stable on mips.
+
+  03 Jul 2006; Fabian Groffen <grobian@gentoo.org> gentoolkit-0.2.2.ebuild:
+  Marked ppc-macos stable (bug #135068)
+
+  19 Jun 2006; Thomas Cort <tcort@gentoo.org> gentoolkit-0.2.2.ebuild:
+  Stable on alpha wrt Bug #135068.
+
+  10 Jun 2006; Jason Wever <weeve@gentoo.org> gentoolkit-0.2.2.ebuild:
+  Stable on SPARC wrt bug #136198.
+
+  10 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  gentoolkit-0.2.2.ebuild:
+  Stable on x86 wrt bug #135068.
+
+  09 Jun 2006; Guy Martin <gmsoft@gentoo.org> gentoolkit-0.2.2.ebuild:
+  Stable on hppa.
+
+  09 Jun 2006; Emanuele Giaquinta <exg@gentoo.org> gentoolkit-0.2.2.ebuild:
+  Stable on ppc; bug #135068
+
+  09 Jun 2006; Markus Rothe <corsair@gentoo.org> gentoolkit-0.2.2.ebuild:
+  Stable on ppc64; bug #135068
+
+  09 Jun 2006; Luis Medinas <metalgod@gentoo.org> gentoolkit-0.2.2.ebuild:
+  Stable on amd64. Bug #136198.
+
+*gentoolkit-0.2.2 (31 May 2006)
+
+  31 May 2006; Paul Varner <fuzzyray@gentoo.org>
+  -gentoolkit-0.2.2_pre4.ebuild, -gentoolkit-0.2.2_rc1.ebuild,
+  +gentoolkit-0.2.2.ebuild:
+  Release gentoolkit-0.2.2 for going stable in conjunction with portage-2.1.
+  Remove outdated ebuilds.
+
+*gentoolkit-0.2.2_rc1 (23 May 2006)
+
+  23 May 2006; Paul Varner <fuzzyray@gentoo.org>
+  -files/qpkg-deprecated.patch, -files/revdep-rebuild.112099.patch,
+  -gentoolkit-0.2.0.ebuild, -gentoolkit-0.2.0-r3.ebuild,
+  -gentoolkit-0.2.2_pre3.ebuild, +gentoolkit-0.2.2_rc1.ebuild:
+  First release candidate for stablization along with portage-2.1. Removed
+  older gentoolkit-0.2.0
+
+  09 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  gentoolkit-0.2.2_pre4.ebuild:
+  Drop dialog dependency for this version (bug #126383).
+
+*gentoolkit-0.2.2_pre4 (03 Apr 2006)
+
+  03 Apr 2006; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.2_pre4.ebuild:
+  Updated revdep-rebuild with fixes for bugs exposed by expat ABI change.
+
+  03 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  gentoolkit-0.2.2_pre3.ebuild:
+  Add ~x86-fbsd keyword.
+
+*gentoolkit-0.2.2_pre3 (09 Mar 2006)
+
+  09 Mar 2006; Paul Varner <fuzzyray@gentoo.org>
+  -gentoolkit-0.2.2_pre2.ebuild, +gentoolkit-0.2.2_pre3.ebuild:
+  New release to add genpkgindex support script. Update revdep-rebuild to look
+  at .la files for missing dependencies.
+
+  09 Feb 2006; Joshua Kinard <kumba@gentoo.org> gentoolkit-0.2.1.ebuild:
+  Marked stable on mips.
+
+  21 Jan 2006; Markus Rothe <corsair@gentoo.org> gentoolkit-0.2.1.ebuild:
+  Stable on ppc64
+
+  21 Jan 2006; Jose Luis Rivero <yoswink@gentoo.org>
+  gentoolkit-0.2.1.ebuild:
+  Stable on alpha wrt bug #112364
+
+  18 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org> gentoolkit-0.2.1.ebuild:
+  Stable on amd64, bug 112364.
+
+  18 Jan 2006; Fabian Groffen <grobian@gentoo.org> gentoolkit-0.2.1.ebuild:
+  Marked ppc-macos stable (bug #112364)
+
+  18 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoolkit-0.2.1.ebuild:
+  Stable on sparc wrt #112364
+
+  18 Jan 2006; Joseph Jezak <josejx@gentoo.org> gentoolkit-0.2.1.ebuild:
+  Marked ppc stable for bug #112364.
+
+  18 Jan 2006; Jeroen Roovers <jer@gentoo.org> gentoolkit-0.2.1.ebuild:
+  Stable on hppa (bug #112364).
+
+  18 Jan 2006; Andrej Kacian <ticho@gentoo.org> gentoolkit-0.2.1.ebuild:
+  Stable on x86, bug #112364.
+
+*gentoolkit-0.2.2_pre2 (07 Jan 2006)
+
+  07 Jan 2006; Paul Varner <fuzzyray@gentoo.org>
+  -files/qpkg-security-fix-68846.diff, -files/glsa.py-revmatch.diff,
+  -gentoolkit-0.2.2_pre1.ebuild, +gentoolkit-0.2.2_pre2.ebuild:
+  Fix revdep-rebuild to work with portage-2.1 Bug #118124
+  Add support for python eclass to manage python modules
+  Clean up files directory
+
+*gentoolkit-0.2.2_pre1 (29 Dec 2005)
+*gentoolkit-0.2.1 (29 Dec 2005)
+
+  29 Dec 2005; Paul Varner <fuzzyray@gentoo.org>
+  -gentoolkit-0.2.1_rc3.ebuild, -gentoolkit-0.2.1_rc4.ebuild,
+  +gentoolkit-0.2.1.ebuild, +gentoolkit-0.2.2_pre1.ebuild:
+  Added gentoolkit-0.2.1 to be the new stable version
+  Added gentoolkit-0.2.2_pre1 to be the new ~arch version
+  Cleaned out previous release candidate builds
+
+*gentoolkit-0.2.1_rc4 (19 Dec 2005)
+
+  19 Dec 2005; Paul Varner <fuzzyray@gentoo.org>
+  -gentoolkit-0.2.1_rc2.ebuild, +gentoolkit-0.2.1_rc4.ebuild:
+  Fix USE flag parsing in equery. Add reqular expression matching to exclude
+  files for eclean. Bugs #115294 and #114365
+
+*gentoolkit-0.2.1_rc3 (08 Dec 2005)
+
+  08 Dec 2005; Paul Varner <fuzzyray@gentoo.org>
+  -gentoolkit-0.2.1_rc1.ebuild, +gentoolkit-0.2.1_rc3.ebuild:
+  Fix revdep-rebuild to work with findutils-4.2.27, remove python-config call.
+  Bugs #111203, 113386
+
+*gentoolkit-0.2.1_rc2 (23 Nov 2005)
+
+  23 Nov 2005; Paul Varner <fuzzyray@gentoo.org>
+  -gentoolkit-0.2.1_pre8.ebuild, -gentoolkit-0.2.1_pre9.ebuild,
+  -gentoolkit-0.2.1_pre10.ebuild, +gentoolkit-0.2.1_rc2.ebuild:
+  Add fixes for glsa-check, man pages for euse and glsa-check, and change
+  default behavior for equery list. Bugs #112522, #112523, #113032, #113134
+
+*gentoolkit-0.2.1_rc1 (12 Nov 2005)
+
+  12 Nov 2005; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.1_rc1.ebuild:
+  First release candidate for stable.  Fixes the following bugs: #75983, #85653,
+  #90384, #99191, #109392
+
+*gentoolkit-0.2.0-r3 (10 Nov 2005)
+
+  10 Nov 2005; Paul Varner <fuzzyray@gentoo.org>
+  +files/revdep-rebuild.112099.patch, -gentoolkit-0.2.0-r2.ebuild,
+  +gentoolkit-0.2.0-r3.ebuild:
+  Patch revdep-rebuild to accept --library parameter for documentation
+  consistency.
+
+*gentoolkit-0.2.1_pre10 (05 Nov 2005)
+
+  05 Nov 2005; Paul Varner <fuzzyray@gentoo.org>
+  -gentoolkit-0.2.0-r1.ebuild, -gentoolkit-0.2.1_pre7.ebuild,
+  +gentoolkit-0.2.1_pre10.ebuild:
+  Version bump to fix Bug 111501. Remove older ebuilds.
+
+*gentoolkit-0.2.1_pre9 (03 Nov 2005)
+
+  03 Nov 2005; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.1_pre9.ebuild:
+  Bug fix release that fixes the following bugs: #71737, #74554, #74569,
+  #77113, #86633, #91286, #94618, #100148, #101377, #103662, #109147, #109156,
+  #111203
+
+*gentoolkit-0.2.0-r2 (12 Oct 2005)
+
+  12 Oct 2005; Paul Varner <fuzzyray@gentoo.org>
+  +files/qpkg-deprecated.patch, +gentoolkit-0.2.0-r2.ebuild:
+  Fix to deprecate qpkg and still have revdep-rebuild work properly. #108899,
+  #109011
+
+*gentoolkit-0.2.0-r1 (11 Oct 2005)
+
+  11 Oct 2005; Mike Frysinger <vapier@gentoo.org>
+  +gentoolkit-0.2.0-r1.ebuild:
+  Dont install qpkg anymore since it is deprecated #108899.
+
+*gentoolkit-0.2.1_pre8 (23 Sep 2005)
+
+  23 Sep 2005; Paul Varner <fuzzyray@gentoo.org>
+  -gentoolkit-0.2.1_pre5.ebuild, -gentoolkit-0.2.1_pre6.ebuild,
+  +gentoolkit-0.2.1_pre8.ebuild:
+  equery bug fix release to fix the following bugs 67152, 73893, 74944, 78687,
+  78921, 82352, 90680, 91623, and 98634. Also removing older ebuilds.
+
+*gentoolkit-0.2.1_pre7 (12 Sep 2005)
+
+  12 Sep 2005; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.1_pre7.ebuild:
+  Fix eclean to be compatible with portage 2.0.52 Bug# 105382
+  Fix broken stat call for revdep-rebuild Bug# 105381
+
+*gentoolkit-0.2.1_pre6 (09 Sep 2005)
+
+  09 Sep 2005; Paul Varner <fuzzyray@gentoo.org>
+  -gentoolkit-0.2.1_pre2.ebuild, -gentoolkit-0.2.1_pre4.ebuild,
+  +gentoolkit-0.2.1_pre6.ebuild:
+  Added eclean 0.4.1 from Thomas de Grenier de Latour (tgl)
+  <degrenier@easyconnect.fr> (bug #33877), Updated README file (bug #103662),
+  removed pre2 and pre4 ebuilds
+
+*gentoolkit-0.2.1_pre5 (16 Aug 2005)
+
+  16 Aug 2005; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.1_pre5.ebuild:
+  Added support for Gentoo/FreeBSD, Bug #102255 and Bug #102409
+
+  31 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> ChangeLog:
+  Re-add ~mips.
+
+  17 Jul 2005; MATSUU Takuto <matsuu@gentoo.org> gentoolkit-0.2.0.ebuild:
+  Stable on sh.
+
+  05 Jul 2005; Paul Varner <fuzzyray@gentoo.org>
+  -gentoolkit-0.2.1_pre3.ebuild, gentoolkit-0.2.1_pre4.ebuild:
+  Keyworded ~ppc-macos with permission of Lina Pezzella <J4rg0n@gentoo.org>
+  Removed older gentoolkit-0.2.1_pre3.ebuild
+
+*gentoolkit-0.2.1_pre4 (30 Jun 2005)
+
+  30 Jun 2005; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.1_pre4.ebuild:
+  Revision bump to fix bug 97171
+
+  24 Jun 2005; Aron Griffis <agriffis@gentoo.org>
+  gentoolkit-0.2.1_pre3.ebuild:
+  add ~ia64
+
+  15 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoolkit-0.2.1_pre3.ebuild:
+  Keyworded ~sparc wrt #62644
+
+  14 Jun 2005; Paul Varner <fuzzyray@gentoo.org>
+  gentoolkit-0.2.1_pre3.ebuild:
+  Removed -* from KEYWORDS, due to potential confusion from end-users
+
+  13 Jun 2005; Jose Luis Rivero <yoswink@gentoo.org>
+  gentoolkit-0.2.1_pre3.ebuild:
+  Marked ~alpha for bug #62644.
+
+  13 Jun 2005; Joseph Jezak <josejx@gentoo.org>
+  gentoolkit-0.2.1_pre3.ebuild:
+  Marked ~ppc for bug #62644.
+
+  13 Jun 2005; Markus Rothe <corsair@gentoo.org>
+  gentoolkit-0.2.1_pre3.ebuild:
+  Added ~ppc64; bug #62644
+
+  13 Jun 2005; Mike Doty <kingtaco@gentoo.org> gentoolkit-0.2.1_pre3.ebuild:
+  ~amd64 added, bug 62644
+
+*gentoolkit-0.2.1_pre3 (12 Jun 2005)
+
+  12 Jun 2005; Paul Varner <fuzzyray@gentoo.org>
+  +gentoolkit-0.2.1_pre3.ebuild:
+  Revision bump to add the new revdep-rebuild from bug #62644 for testing
+
+*gentoolkit-0.2.1_pre2 (26 Apr 2005)
+
+  26 Apr 2005; Marius Mauch <genone@gentoo.org>
+  -gentoolkit-0.2.1_pre1.ebuild, +gentoolkit-0.2.1_pre2.ebuild:
+  New version fixing a few bugs in the Makefile and cleaning out old .pyc and
+  .pyo files.
+
+*gentoolkit-0.2.1_pre1 (25 Apr 2005)
+
+  25 Apr 2005; Marius Mauch <genone@gentoo.org>
+  -gentoolkit-0.2.0_pre8-r1.ebuild, -gentoolkit-0.2.0_pre10-r1.ebuild,
+  -gentoolkit-0.2.0_rc1.ebuild, -gentoolkit-0.2.0_rc1-r1.ebuild,
+  gentoolkit-0.2.0.ebuild, +gentoolkit-0.2.1_pre1.ebuild:
+  Finally getting this bugfix release out, should fix the following bugs:
+  #71136, #74344, #75233, #75525, #79819 and #84521 (and probably a few more).
+  Thanks to everyone who helped solving these and sorry for the long delay.
+
+*gentoolkit-0.2.0 (13 Dec 2004)
+
+  13 Dec 2004; Marius Mauch <genone@gentoo.org> +gentoolkit-0.2.0.ebuild,
+  -gentoolkit-0.2.0_pre10.ebuild, -gentoolkit-0.2.0_pre8.ebuild,
+  -gentoolkit-0.2.0_pre9.ebuild:
+  Release 0.2.0 final (same as 0.2.0_rc1-r1) as stable for all archs.
+
+*gentoolkit-0.2.0_rc1-r1 (09 Dec 2004)
+
+  09 Dec 2004; Marius Mauch <genone@gentoo.org>
+  +gentoolkit-0.2.0_rc1-r1.ebuild:
+  Fixing another bug in the glsa.py matching functions that caused glsa-check
+  to install masked versions.
+
+*gentoolkit-0.2.0_rc1 (08 Dec 2004)
+
+  08 Dec 2004; Marius Mauch <genone@gentoo.org> +gentoolkit-0.2.0_rc1.ebuild:
+  Candidate for 0.2.0 final. Includes lots of bugfixes (see included Changelog
+  for details). This version should go stable very soon (~ 1 week) if there
+  are no new bugs.
+
+*gentoolkit-0.2.0_pre10-r1 (31 Oct 2004)
+*gentoolkit-0.2.0_pre8-r1 (31 Oct 2004)
+
+  31 Oct 2004; Marius Mauch <genone@gentoo.org>
+  +files/qpkg-security-fix-68846.diff, +gentoolkit-0.2.0_pre10-r1.ebuild,
+  +gentoolkit-0.2.0_pre8-r1.ebuild:
+  Added a patch from cvs to qpkg to fix a security bug (#68846).
+
+  14 Oct 2004; Mamoru KOMACHI <usata@gentoo.org>
+  gentoolkit-0.2.0_pre9.ebuild, gentoolkit-0.2.0_pre10.ebuild:
+  Added to ~ppc-macos.
+
+*gentoolkit-0.2.0_pre10 (11 Oct 2004)
+
+  11 Oct 2004; <genone@gentoo.org> +gentoolkit-0.2.0_pre10.ebuild,
+  -gentoolkit-0.2.0_pre7.ebuild, gentoolkit-0.2.0_pre9.ebuild:
+  version bump including a few bugfixes and removing most of the older
+  unsupported scripts, now needs portage-2.0.51 for md5 verification. Removed
+  pre7.
+
+  27 Sep 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  gentoolkit-0.1.38.ebuild gentoolkit-0.2.0_pre3.ebuild
+  gentoolkit-0.2.0_pre4.ebuild gentoolkit-0.2.0_pre5.ebuild
+  gentoolkit-0.2.0_pre6.ebuild: Killed old versions. pre9 will become
+  0.2.0 if no major bloopers show up in the next few weeks.
+
+*gentoolkit-0.2.0_pre9 (27 Sep 2004)
+
+  27 Sep 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  gentoolkit-0.2.0_pre9.ebuild: New upstream release.
+
+*gentoolkit-0.2.0_pre8 (01 Apr 2004)
+
+  01 Apr 2004; Marius Mauch <genone@gentoo.org> gentoolkit-0.2.0_pre8.ebuild:
+  version bump to get the new glsa-check out
+
+  13 Mar 2004; Marius Mauch <genone@gentoo.org> :
+  added temporary glsa-check tool, fixed bugs #42160, #40935, #43389
+
+  03 Mar 2004; Brian Jackson <iggy@gentoo.org> gentoolkit-0.2.0_pre6.ebuild:
+  added s390 keywords
+
+*gentoolkit-0.2.0_pre6 (07 Feb 2004)
+
+  07 Feb 2004; Marius Mauch <genone@gentoo.org> gentoolkit-0.2.0_pre6.ebuild:
+  version bump, fixing several bugs (#40159, #39798, #39652, #39596, #39293)
+
+*gentoolkit-0.2.0_pre5 (23 Jan 2004)
+
+  23 Jan 2004; <genone@gentoo.org> gentoolkit-0.1.38.ebuild,
+  gentoolkit-0.2.0_pre5.ebuild:
+  pre5 with lots of bugfixes again, changed portage dependency to pre19 for
+  stacked profile stuff
+
+*gentoolkit-0.2.0_pre4 (12 Jan 2004)
+
+  12 Jan 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  gentoolkit-0.2.0_pre4.ebuild: Previous release missed 'gentoolkit.py'
+  rendering equery unusable.
+  
+*gentoolkit-0.2.0_pre3 (12 Jan 2004)
+
+  09 Jan 2004; Marius Mauch <genone@gentoo.org>
+  gentoolkit-0.2.0_pre3.ebuild: Fixed a traceback on "equery list",
+  added masking, keywords and slot information on "equery list".
+  Changed whitespace to tab indentation in equery, etcat and gentoolkit.py.
+
+*gentoolkit-0.2.0_pre2 (09 Jan 2004)
+
+  09 Jan 2004; Marius Mauch <genone@gentoo.org>
+  gentoolkit-0.2.0_pre2.ebuild: Lots of bugfixes from _pre1, closing bugs
+  37364, 37514, 37525, 37531 and 37572. Minor code cleanups.
+
+*gentoolkit-0.1.38 (07 Jan 2004)
+
+  07 Jan 2004; Aron Griffis <agriffis@gentoo.org> gentoolkit-0.1.37.ebuild,
+  gentoolkit-0.1.38.ebuild, files/scripts/echangelog,
+  files/scripts/echangelog.1, files/scripts/echangelog.pod:
+  Updates to echangelog to fixup copyright years, and allow echangelog to run in
+  a directory apparently lacking modified files
+
+*gentoolkit-0.2.0_pre1 (07 Jan 2004)
+
+  07 Jan 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  gentoolkit-0.2.0.ebuild: New upstream version. Masked for now. Will be
+  released alongside Portage 2.0.50.
+  
+*gentoolkit-0.1.37 (14 Dec 2003)
+
+  14 Dec 2003; Marius Mauch <genone@gentoo.org> gentoolkit-0.1.37.ebuild,
+  files/scripts/dep-clean:
+  fixed bug #34302 and #30861
+
+*gentoolkit-0.1.36 (18 Nov 2003)
+
+  18 Nov 2003; Karl Trygve Kalleberg <karltk@gentoo.org> 
+  gentoolkit-0.1.36.ebuild: 
+  Fixed man pages: Added "Gentoo:" to all descriptions, to make apropos work
+  better, and added dummy man pages for tools which do not have them.
+  
+*gentoolkit-0.1.35 (10 Nov 2003)
+
+  10 Nov 2003; Martin Holzer <mholzer@gentoo.org> gentoolkit-0.1.35.ebuild,
+  files/scripts/dep-clean:
+  fixing typo. Closes #30248
+
+*gentoolkit-0.1.34 (02 Nov 2003)
+
+  02 Nov 2003; Martin Holzer <mholzer@gentoo.org> gentoolkit-0.1.34.ebuild,
+  files/scripts/qpkg:
+  Adding qpkg patch. Closes #32505.
+
+*gentoolkit-0.1.33 (20 Oct 2003)
+
+  20 Oct 2003; Marius Mauch <genone@gentoo.org> gentoolkit-0.1.33.ebuild,
+  files/scripts/ewhich, files/scripts/ewhich.1:
+  added the wewhich script to find the ebuild name for a given package name
+
+*gentoolkit-0.1.32-r1 (19 Oct 2003)
+
+  19 Oct 2003; Karl Trygve Kalleberg <karltk@gentoo.org> 
+  gentoolkit-0.1.32-r1.ebuild, files/scripts/revdep-rebuild:
+  Fixed --help, patch submitted by Stanislav Brabec <utx@gentoo.org>:
+  Properly documented --soname behaviour (bug #30187), Preserve temporary 
+  files for --fetchonly, too (idea from Henryk Plötz <henryk@ploetzli.ch>)
+  
+*gentoolkit-0.1.32 (17 Oct 2003)
+
+  17 Oct 2003; Martin Holzer <mholzer@gentoo.org> gentoolkit-0.1.32.ebuild,
+  files/scripts/qpkg:  
+  adding patch from Eldad Zack <eldad@stoneshaft.ath.cx>. Closes #31290.
+
+  30 Sep 2003; Martin Holzer <mholzer@gentoo.org> files/scripts/qpkg,
+  files/scripts/revdep-rebuild, files/scripts/dep-clean, gentool-package-count:
+  shorten sort. Closes #26082.
+
+*gentoolkit-0.1.31 (30 Sep 2003)
+
+  30 Sep 2003; Martin Holzer <mholzer@gentoo.org> gentoolkit-0.1.31.ebuild,
+  files/scripts/qpkg:
+  make qpkg cno more case sensitive. Closes #27712
+
+  24 Aug 2003; Heinrich Wendel <lanius@gentoo.org> files/scripts/qpkg:
+  typo fixes, bug #26116
+
+*gentoolkit-0.1.30 (15 Aug 2003)
+
+  15 Aug 2003; Heinrich Wendel <lanius@gentoo.org> gentoolkit-0.1.30.ebuild,
+  metadata.xml, files/euse/README, files/euse/euse, files/euse/euse.1,
+  files/gentool/gentool-author-coverage, files/gentool/gentool-bump-revision,
+  files/gentool/gentool-package-count, files/gentool/gentool-total-coverage,
+  files/gentool/histogram.awk, files/portage-statistics/histogram.awk,
+  files/portage-statistics/pst-author-coverage,
+  files/portage-statistics/pst-package-count,
+  files/portage-statistics/pst-total-coverage, files/scripts/dep-clean,
+  files/scripts/dep-clean.1, files/scripts/echangelog,
+  files/scripts/echangelog.1, files/scripts/echangelog.pod,
+  files/scripts/ekeyword, files/scripts/etcat, files/scripts/etcat.1,
+  files/scripts/mkebuild, files/scripts/pkg-clean, files/scripts/pkg-size,
+  files/scripts/qpkg, files/scripts/qpkg.1, files/scripts/revdep-rebuild,
+  files/scripts/useflag, files/scripts/useflag.1:
+  moved from app-admin to app-portage
+
+  19 Jul 2003; Martin Holzer <mholzer@gentoo.org> gentoolkit-0.1.30.ebuild,
+  files/scripts/revdep-rebuild, files/scripts/revdep-rebuild-1,
+  files/scripts/revdep-rebuild-2:
+  Cleanup
+
+  14 Jul 2003; Stanislav Brabec <utx@gentoo.org> gentoolkit-0.1.30.ebuild:
+  Marked as stable, it was heavily tested by users in the big mysql4 upgrade.
+
+*gentoolkit-0.1.30 (09 Jul 2003)
+
+  09 Jul 2003; Stanislav Brabec <utx@gentoo.org> gentoolkit-0.1.30.ebuild,
+  files/scripts/revdep-rebuild-2:
+  revdep-rebuild: help text fixes and package order evaluation fixes
+  (bug #23791).
+
+*gentoolkit-0.1.29 (30 Jun 2003)
+
+  30 Jun 2003; Stanislav Brabec <utx@gentoo.org> gentoolkit-0.1.29.ebuild,
+  files/scripts/revdep-rebuild-1:
+  New version of revdep-rebuild:
+  - resolving order of recompilation
+  - new options --soname and --soname-regexp
+  - search more directories
+
+*gentoolkit-0.1.28 (22 Jun 2003)
+
+  22 Jun 2003; Aron Griffis <agriffis@gentoo.org> gentoolkit-0.1.28.ebuild,
+  files/scripts/qpkg:
+  Fix bug 22528 by changing qpkg to call uniq -f1 (for the new textutils)
+
+*gentoolkit-0.1.27 (13 Jun 2003)
+
+  13 Jun 2003; Alastair Tse <liquidx@gentoo.org> gentoolkit-0.1.27.ebuild,
+  files/scripts/etcat:
+  etcat update
+
+*gentoolkit-0.1.26-r3 (13 Jun 2003)
+
+  13 Jun 2003; Rajiv Manglani <rajiv@gentoo.org> gentoolkit-0.1.26-r3.ebuild,
+  files/scripts/qpkg:
+  fixed typo. corrects bug #22694. patch from #22432 works now.
+
+*gentoolkit-0.1.26-r2 (12 Jun 2003)
+
+  12 Jun 2003; Martin Holzer <mholzer@gentoo.org> gentoolkit-0.1.26-r1.ebuild,
+  gentoolkit-0.1.26-r2.ebuild, files/scripts/qpkg:
+  readded back patch from #22432.
+
+*gentoolkit-0.1.26-r1 (08 Jun 2003)
+
+  08 Jun 2003; Brandon Low <lostlogic@gentoo.org> gentoolkit-0.1.26-r1.ebuild,
+  files/scripts/qpkg:
+  qpkg fixage from bug 15771
+
+*gentoolkit-0.1.26 (08 Jun 2003)
+
+  08 Jun 2003; Martin Holzer <mholzer@gentoo.org> gentoolkit-0.1.26.ebuild,
+  files/scripts/qpkg:
+  Added two new flags into qpkg. Patch submitted by Dave Vasilevsky
+  <vasi@users.sourceforge.net> in #22432.
+
+*gentoolkit-0.1.25 (26 May 2003)
+
+  26 May 2003; Aron Griffis <agriffis@gentoo.org> gentoolkit-0.1.25.ebuild,
+  files/scripts/echangelog:
+  Fix bug 21022 by restricting echangelog to C locale
+
+*gentoolkit-0.1.24 (25 May 2003)
+
+  25 May 2003; Aron Griffis <agriffis@gentoo.org> gentoolkit-0.1.24.ebuild,
+  files/scripts/echangelog:
+  Fix echangelog to report removed ebuilds only once
+
+*gentoolkit-0.1.23 (09 May 2003)
+
+  09 May 2003; Stanislav Brabec <utx@gentoo.org> files/scripts/revdep-rebuild:
+  Cosmetical - make temporary files name base equal to script name.
+
+  09 May 2003; Arun Bhanu <codebear@gentoo.org> gentoolkit-0.1.23.ebuild,
+  files/euse/euse, files/euse/euse.1, files/euse/README, files/euse/ChangeLog:
+  Introducing euse 0.1.0. Initial release.
+
+*gentoolkit-0.1.22 (08 May 2003)
+
+  08 May 2003; Alastair Tse <liquidx@gentoo.org> gentoolkit-0.1.22.ebuild,
+  files/scripts/etcat, files/scripts/revdep-rebuild:
+  added broken dependency rebuilder script, revdep-rebuild
+
+*gentoolkit-0.1.21-r1 (30 Apr 2003)
+
+  30 Apr 2003; Alastair Tse <liquidx@gentoo.org> files/scripts/etcat:
+  Major functional bugfix for etcat (#20174).
+
+*gentoolkit-0.1.21-r1 (29 Apr 2003)
+
+  29 Apr 2003; Alastair Tse <liquidx@gentoo.org> files/scripts/etcat,
+  files/scripts/etcat.1m gentoolkit-0.1.21-r1.ebuild:
+  etcat 0.1.4 released
+
+*gentoolkit-0.1.21 (27 Apr 2003)
+
+  27 Apr 2003; Aron Griffis <agriffis@gentoo.org> gentoolkit-0.1.21.ebuild,
+  files/scripts/echangelog, files/scripts/echangelog.1,
+  files/scripts/echangelog.pod:
+  Update echangelog and add man-page
+
+*gentoolkit-0.1.20 (24 Apr 2003)
+
+  24 Apr 2003; Alastair Tse <liquidx@gentoo.org> gentoolkit-0.1.20.ebuild,
+  files/scripts/etcat, files/scripts/etcat.1:
+  introducting "etcat". calls for a version bump.
+
+*gentoolkit-0.1.19-r5 (22 Apr 2003)
+
+  22 Apr 2003; Aron Griffis <agriffis@gentoo.org> gentoolkit-0.1.19-r5.ebuild:
+  Update echangelog to ignore Manifest when listing files
+
+*gentoolkit-0.1.19-r4 (22 Apr 2003)
+
+  22 Apr 2003; Martin Holzer <mholzer@gentoo.org> Manifest,
+  gentoolkit-0.1.19-r3.ebuild, gentoolkit-0.1.19-r3.ebuild,
+  gentoolkit-0.1.19-r4.ebuild, files/scripts/qpkg:
+  Chaning qpkg to use /bin/bash. Closes #18915.
+
+*gentoolkit-0.1.19-r3 (12 Mar 2003)
+
+  29 Mar 2003; Seemant Kulleen <seemant@gentoo.org>
+  gentoolkit-0.1.19-r3.ebuild:
+  HOMEPAGE fix by Frantz Dhin <tragedy_rm@hotmail.com> in bug #18299
+
+  21 Mar 2003; Aron Griffis <agriffis@gentoo.org> files/scripts/echangelog:
+  Disallow root as the echangelog user
+
+  21 Mar 2003; Martin Holzer <mholzer@gentoo.org> files/scripts/qpkg:
+  Fixed type in qpkg. Closes #17851.
+
+  12 Mar 2003; Martin Holzer <mholzer@gentoo.org> gentoolkit-0.1.19-r3.ebuild:
+  changed sys-devel/perl to dev-lang/perl
+
+  12 Mar 2003; Aron Griffis <agriffis@gentoo.org> gentoolkit-0.1.19-r3.ebuild:
+  Update echangelog to handle new cvs output better
+
+*gentoolkit-0.1.19-r2 (07 Mar 2003)
+
+  07 Mar 2003; Aron Griffis <agriffis@gentoo.org> gentoolkit-0.1.19-r2.ebuild:
+  Bump revision to pick up minor echangelog fixes
+
+*gentoolkit-0.1.19-r1 (02 Mar 2003)
+
+  02 Mar 2003; Martin Holzer <mholzer@gentoo.org> gentoolkit-0.1.19-r1.ebuild :
+  Removed emerge-webrsync since it's now in portage.
+
+*gentoolkit-0.1.19 (01 Mar 2003)
+
+  01 Mar 2003; Brandon Low <lostlogic@gentoo.org> gentoolkit-0.1.19.ebuild,
+  files/scripts/dep-clean, files/scripts/dep-clean.1:
+  Reincarnate dep-clean, as this adds a utility for users, I went with a version
+  bump rather than just a -r bump.
+
+*gentoolkit-0.1.18-r3 (25 Feb 2003)
+
+  25 Feb 2003; Aron Griffis <agriffis@gentoo.org> gentoolkit-0.1.18-r3.ebuild,
+  files/scripts/echangelog:
+  Bump rev to pick up new echangelog
+
+*gentoolkit-0.1.18-r2 (21 Feb 2003)
+
+  23 Feb 2003; Aron Griffis <agriffis@gentoo.org> files/scripts/echangelog :
+  Update echangelog so that long lines are automatically wrapped, just like
+  this one.
+
+  21 Feb 2003; Zach Welch <zwelch@gentoo.org> gentoolkit-0.1.18-r2.ebuild :
+  Add arm keyword; add missing digest
+
+  21 Feb 2003; Aron Griffis <agriffis@gentoo.org> gentoolkit-0.1.18-r2.ebuild :
+  Bump revision to pick up bugfixes in echangelog and ekeyword
+
+*gentoolkit-0.1.18-r1 (12 Feb 2003)
+
+  12 Feb 2003; Seemant Kulleen <seemant@gentoo.org> files/digest-gentoolkit-0.1.18-r1 :
+  added missing digest
+
+  12 Feb 2003; Aron Griffis <agriffis@gentoo.org> gentoolkit-0.1.18-r1.ebuild files/scripts/echangelog files/scripts/ekeyword :
+  Bump revision to pick up changes to echangelog and ekeyword
+
+  10 Feb 2003; Aron Griffis <agriffis@gentoo.org> gentoolkit-0.1.18.ebuild files/scripts/echangelog files/scripts/ekeyword files/digest-gentoolkit-0.1.18 :
+  Add echangelog and ekeyword.  Bump version to 0.1.18.
+
+  10 Feb 2003; Guy Martin <gmsoft@gentoo.org> gentoolkit-0.1.17-r11.ebuild :
+  Added hppa to keywords.
+
+*gentoolkit-0.1.17-r11 (22 Jan 2003)
+
+  22 Jan 2003; Martin Holzer <mholzer@gentoo.org> gentoolkit-0.1.17-r11.ebuild
+  files/digest-gentoolkit-0.1.17-r10 ChangeLog:
+  fixed emerge-webrsync 
+
+*gentoolkit-0.1.17-r10 (18 Jan 2003)
+
+  18 Jan 2003; Martin Holzer <mholzer@gentoo.org> gentoolkit-0.1.17-r10.ebuild
+  files/digest-gentoolkit-0.1.17-r10 ChangeLog:
+  emerge-webrsync should now work as expected and delete old ebuilds
+
+*gentoolkit-0.1.17-r9 (08 Jan 2003)
+
+  08 Jan 2003; Martin Holzer <mholzer@gentoo.org> gentoolkit-0.1.17-r9.ebuild
+  files/digest-gentoolkit-0.1.17-r9 ChangeLog :
+
+*gentoolkit-0.1.17-r8 (07 Jan 2003)
+
+  07 Jan 2003; Jan Seidel <tuxus@gentoo.org> gentoolkit-0.1.17-r8.ebuild :
+  Added mips to keywords.
+
+  07 Jan 2003; Martin Holzer <mholzer@gentoo.org> gentoolkit-0.1.17-r8.ebuild
+  files/digest-gentoolkit-0.1.17-r8 ChangeLog :
+  Updated mkebuild to meet skel.ebuild specs. This closes #13403. 
+
+*gentoolkit-0.1.17-r7 (04 Jan 2003)
+
+  04 Jan 2003; Martin Holzer <mholzer@gentoo.org gentoolkit-0.1.17-r7.ebuild
+  files/digest-gentoolkit-0.1.17-r7 ChangeLog :
+  since epm is now it's own package i removed it. Closes #13220. 
+  Corrected qpkg help. Closes #5194.
+
+*gentoolkit-0.1.17-r6 (03 Jan 2003)
+
+  03 Jan 2003; Martin Holzer <mholzer@gentoo.org> gentoolkit-0.1.17-r6.ebuild files/digest-gentoolkit-0.1.17-r6 files/scripts/emerge-webrsync Changelog :
+  Added -v option to emerge-webrsync to display wget status. Closes #12477.
+ 
+*gentoolkit-0.1.17-r5 (06 Dec 2002)
+
+  06 Dec 2002; Martin Holzer <mholzer@gentoo.org> gentoolkit-0.1.17-r5.ebuild files/digest-gentoolkit-0.1.17-r5 files/scripts/emerge-webrsync Changelog:
+  emerge-webrsync now changes user and group to root before rsyncing. Fixes #9306
+  
+*gentoolkit-0.1.17-r4 (23 Nov 2002)
+
+  23 Nov 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gentoolkit-0.1.17-r4.ebuild files/digest-gentoolkit-0.1.17-r4:
+  gentool-bump-revision no longer removes the old revision from CVS. Fixes
+  #11057.
+
+*gentoolkit-0.1.17-r3 (11 Nov 2002)
+
+  11 Nov 2002; Martin Holzer <mholzer@gentoo.org> gentoolkit-0.1.17-r3.ebuild files/digest-gentoolkit-0.1.17-r3 files/scripts/emerge-webrsync: 
+  fixed emerge-webrsync 0 byte bug
+  
+*gentoolkit-0.1.17-r2 (30 Oct 2002)
+
+  30 Oct 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gentoolkit-0.1.17-r2.ebuild files/digest-gentoolkit-0.1.17-r2:
+  Removed lintool, as it now lives in dev-util/lintool.
+
+  Removed gentoolkit-0.1.17-r1.ebuild files/digest-gentoolkit-0.1.17-r1
+
+*gentoolkit-0.1.17 (03 Sep 2002)
+
+  09 Sep 2002; phoen][x <phoenix@gentoo.org> gentoolkit-0.1.17-r1.ebuild,
+  files/scripts/emerge-webrsync :
+
+  Bumped to new version in order to force portage to reinstall gentoolkit.
+  emerge-webrsync was broken - it checked /etc/make.conf for GENTOO_MIRRORS
+  but the new baselayout doesn't set GENTOO_MIRRORS in /etc/make.conf.
+  Fixed that with some python-magic from scripts/bootstrap.sh.
+
+*gentoolkit-0.1.17 (03 Sep 2002)
+
+  03 Sep 2002; Brandon Low <lostlogic@gentoo.org> gentoolkit-0.1.17.ebuild:
+
+  Move etc-update to portage.
+
+*gentoolkit-0.1.16 (28 Jul 2002)
+
+  02 Sep 2002; Brandon Low <lostlogic@gentoo.org> files/scripts/qpkg:
+
+  Parse off trailing slash in qpkg.
+
+  06 Aug 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gentoolkit-0.1.16.ebuild files/digest-gentoolkit-0.1.16:
+
+  The utility useflag has been removed, as it is, in its current 
+  implementation, very _DANGEROUS_ (in some common cases, it empties your 
+  /etc/make.conf). If you still want to use it, don't 
+  upgrade beyound 0.1.15-r2. See #5777 for details.
+
+  Old version kept for backwards compatibility.
+
+*gentoolkit-0.1.15-r2 (28 Jul 2002)
+
+  28 Jul 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gentoolkit-0.1.15-r2.ebuild files/digest-gentoolkit-0.1.15-r2:
+
+  Added dependency on grep-2.5-r1 or newer, as old systems may actually not
+  have 2.5 installed.
+
+  Removed gentoolkit-0.1.15-r1.ebuild files/digest-gentoolkit-0.1.15-r1
+
+*gentoolkit-0.1.15-r1 (19 Jul 2002)
+
+  26 Jul 2002; Brandon Low <lostlogic@gentoo.org> files/scripts/qpkg :
+
+  Fix weird bug that Cardoe was experiencing in qpkg -d
+  no -r bump needed as he is the first report I've had.
+
+  22 Jul 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gentoolkit-0.1.15-r1.ebuild :
+
+  Fixed HOMEPAGE url, and update the home page.
+
+  19 Jul 2002; Brandon Low <lostlogic@gentoo.org> files/scripts/dep-clean gentoolkit-0.1.15-r1.ebuild:
+
+  Fix minor permissions error on dep-clean and an issue with 
+  non-escaped '.' characters in dep-clean.  Thanks to Hannes 
+  Mehnert for the catch and patch.
+
+*gentoolkit-0.1.15 (18 Jul 2002)
+
+  18 Jul 2002; Brandon Low <lostlogic@gentoo.org> files/scripts/dep-clean files/scripts/dep-clean.1 :
+
+  New applicion, dep-clean (many people have used this 
+  script under the name "depend" from gentoo.lostlogicx.com, 
+  it now has a manpage thanks to Paul Belt <gaarde at users dot
+  sourceforge dot net>.  Original script and idea thanks to
+  Jerry Haltom <ssrit at larvalstage dot net>.  Script final 
+  version by me.
+
+*gentoolkit-0.1.14-r1 (15 Jul 2002)
+
+  15 Jul 2002; Brandon Low <lostlogic@gentoo.org> files/etc-update/etc-update :
+
+  Fix bug #5019.  Introduced by the new defaulting functionality.
+
+*gentoolkit-0.1.14 (14 Jul 2002)
+
+  15 Jul 2002; Karl Trygve Kalleberg <karltk@gentoo.org> files/scripts/pkg-clean :  
+
+  Fixed non-functioning -y option.
+
+  14 Jul 2002; Brandon Low <lostlogic@gentoo.org> files/scripts/qpkg files/scripts/qpkg.1 files/etc-update/etc-update files/etc-update/ChangeLog : 
+
+  14 Jul 2002; Brandon Low <lostlogic@gentoo.org> files/scripts/qpkg files/scripts/qpkg.1 files/etc-update/etc-update files/etc-update/ChangeLog : 
+
+  Added -q --query-deps option to qpkg and qpkg.1.  
+  See `man qpkg` or `qpkg --help` for more information
+
+  See etc-update specific ChangeLog for etc-update changes.
+
+*gentoolkit-0.1.13 (25 Jun 2002)
+
+  04 Jul 2002; Karl Trygve Kalleberg <karltk@gentoo.org> files/scripts/useflag files/scripts/useflag.1 files/scripts/qpkg.1: 
+
+  useflag, useflag.1: Fixed problem with multiline USE vars, respelled
+  "depreciation" to "deprectation". Patch by Michael Thompson
+  <psionix@grandecom.net>.
+
+  qpkg.1: Fixed misspelling of "group".
+
+  25 Jun 2002; Brandon Low <lostlogic@gentoo.org> gentoolkit-0.1.13.ebuild files/digest-gentoolkit-0.1.13:
+
+  etc-update:  Near complete rewrite of etc-update, should be a lot
+  easier to use, especially with many config files.  See etc-update
+  specific ChangeLog for more complete info
+
+  qpkg:  Fixed dumb bug wherein w/o -v qpkg -l doesn't display all
+  files due to a uniq error.
+
+*gentoolkit-0.1.12 (25 Jun 2002)
+
+  25 Jun 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gentoolkit-0.1.12.ebuild files/digest-gentoolkit-0.1.12:
+
+  Added gentoo-bump-version.
+  Added useflag.
+  Fixed bugs in emerge-webrsync.
+
+  Removed gentoolkit-0.1.11-r1.ebuild files/digest-gentoolkit-0.1.11-r1
+
+*gentoolkit-0.1.11-r1 (08 Jun 2002)
+
+  08 Jun 2002: Brandon Low <lostlogic@gentoo.org> files/scripts/qpkg :
+
+  More qpkg updates, -v and -vv are much more useful, -U works with 
+  the massive number of packages now in portage, which means that 
+  qpkg now actually does what it's help says it will.
+
+  Update qpkg.1 manpage with all the new qpkg workingness.
+
+*gentoolkit-0.1.11 (04 Jun 2002)
+
+  04 Jun 2002: Brandon Low <lostlogic@gentoo.org> files/scripts/qpkg :
+
+  Fixed better, now -c does check for mis-cased md5s, and our time is
+  a nice compromise between everything.  To accomplish this, I used tr
+  instead of awk to do the case change, and only check IF the first md5
+  check fails.
+
+  04 Jun 2002: Brandon Low <lostlogic@gentoo.org> gentoolkit-0.1.11.ebuild files/scripts/qpkg :
+
+  Made qpkg root:wheel 0750 users really shouldn't have more than emerge -s
+  permissions with this kind of stuff.
+
+  qpkg changes: 
+
+  package names print without stupid " *" at the end if -nc switch is
+  given for easy piping to other programs (ie emerge)
+
+  increased comment verbosity in preparation for more changes next
+  time...
+
+  --dups orders packages by COUNTER so that the old version is always
+  above the new version, and also keeps packages of same base name
+  together, and is now colorized (disable with -nc)
+
+  -c no longer awks md5s because it takes too long (5 times as long as
+  w/o awking) this will report broken files on systems installed with
+  whatever it was that was touppering all all md5s.
+
+*gentoolkit-0.1.10-r1 (04 Jun 2002)
+
+  04 Jun 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gentoolkit-0.1.10-r1.ebuild files/digest-gentoolkit-0.1.10-r1:
+
+  etc-update now considers all dirs listed in /etc/make.globals'
+  CONFIG_PROTECT.
+
+  pkg-size now handles very large packages, and packages that have files
+  with space in their names.
+
+  Removed gentoolkit-0.1.10.ebuild files/digest-gentoolkit-0.1.10
+
+*gentoolkit-0.1.10 (15 May 2002)
+
+  15 May 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gentoolkit-0.1.10.ebuild files/digest-gentoolkit-0.1.10:
+
+  New version of lintool out. 
+
+  Removed old versions.
+
+*gentoolkit-0.1.9-r1 (12 May 2002)
+
+  12 May 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gentoolkit-0.1.9-r1.ebuild files/digest-gentoolkit-0.1.9-r1:
+
+  Moved lintool from /usr/sbin to /usr/bin.
+
+  Removed gentoolkit-0.1.9.ebuild files/digest-gentoolkit-0.1.9
+
+*gentoolkit-0.1.9 (30 Apr 2002)
+
+  30 Apr 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gentoolkit-0.1.9.ebuild files/lintool/* :
+
+  Updated lintool with new tests and <jnelson@gentoo.org>'s fixes.
+
+  Removed old versions.
+
+*gentoolkit-0.1.8 (14 Apr 2002)
+
+  14 Apr 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gentoolkit-0.1.8.ebuild files/portage-statistics/* files/gentool/* :
+
+  Renamed all pst-* scripts to gentool-* and added gentool-bump-revision.
+
+  Removed old versions.
+
+*gentoolkit-0.1.7 (10 Apr 2002)
+
+  10 Apr 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gentoolkit-0.1.7.ebuild files/scripts/pkg-size:
+
+  pkg-size: Added this script, which will tell the size of an installed 
+  package.
+
+  Removed old version.
+
+*gentoolkit-0.1.6 (22 Mar 2002)
+
+  22 Mar 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gentoolkit-0.1.6.ebuild files/scripts/etc-update* files/etc-update/*:
+
+  etc-update: Added patches from both M.Kennedy and J.Kossem that allow
+  system-wide configuration of auxiliary commands through
+  /etc/etc-update.conf
+
+*gentoolkit-0.1.5-r2 (18 Mar 2002)
+
+  18 Mar 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gentoolkit-0.1.5-r1.ebuild files/scripts/etc-update:
+
+  etc-update: Removed the default "-E" option to less, which was causing
+  a lot of murmur in the crowd.
+
+  Removed old revisions.
+
+*gentoolkit-0.1.5-r1 (17 Mar 2002)
+
+  17 Mar 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gentoolkit-0.1.5-r1.ebuild files/scripts/pkg-clean:
+
+  Fixed a bug whereby the full path to the ebuild was missing.
+
+*gentoolkit-0.1.5 (17 Mar 2002)
+
+  17 Mar 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gentoolkit-0.1.5.ebuild files/scripts/pkg-clean:
+
+  pkg-clean now has a new dialog-based menu system.
+
+*gentoolkit-0.1.4-r1 (16 Mar 2002)
+
+  16 Mar 2002; Karl Trygve Kalleberg <karltk@gentoo.org> files/scripts/etc-update:
+
+  etc-update now informs the user when there are no config files to process,
+  to avoid confusion with our new users.
+
+*gentoolkit-0.1.4 (16 Mar 2002)
+
+  16 Mar 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gentoolkit-0.1.4.ebuild, various:
+
+  Added man pages to lintool, qpkg and etc-update.
+
+  Removed old versions.
+
+*gentoolkit-0.1.3 (11 Feb 2002)
+
+  11 Feb 2002; Vitaly Kushneriuk <vitaly@gentoo.org> files/scripts/qpkg:
+
+  Bugfixes in qpkg:
+  Fixed "-f" mode for directories.
+  Fixed package name parsing to comply with the latest portage SLOT changes
+  
+*gentoolkit-0.1.1 (3 Feb 2002)
+
+  3 Feb 2002; Vitaly Kushneriuk <vitaly@gentoo.org>:
+
+  Updated qpkg to the latest version.
+  
+*gentoolkit-0.1.1 (2 Feb 2002)
+
+  2 Feb 2002; Leo Lipelis <aeoo@gentoo.org> ChangeLog :
+
+  Jochem Kossen has added a nice diff/sdiff mode to etc-update.  As many
+  people do not prefer vim, etc-update will now default to using diff for
+  displaying changes and sdiff for merging changes! This means, if you
+  use any editor other than vim, the script will now work for you out of
+  the box. But, vim users need not panic! Vim diff functionality is
+  still there in the script.  Just read the top of the etc-update file
+  and configure it appropriately.  To sum up: vim users keep getting
+  what they've been getting, and everyone else gets cool diff/sdiff
+  mode.
+
+*gentoolkit-0.1.0 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog.

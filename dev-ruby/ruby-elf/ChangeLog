@@ -1,0 +1,64 @@
+# ChangeLog for dev-ruby/ruby-elf
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-elf/ChangeLog,v 1.12 2014/10/19 20:55:31 flameeyes Exp $
+
+  19 Oct 2014; Diego E. Pettenò <flameeyes@gentoo.org> ruby-elf-1.0.8.ebuild,
+  ruby-elf-9999.ebuild:
+  Make both live and release to work with ruby20 and not jruby.
+
+  11 Oct 2014; Hans de Graaff <graaff@gentoo.org> ruby-elf-9999.ebuild:
+  Remove jruby now that it is no longer in the tree. It now triggers a repoman
+  warning.
+
+  24 Apr 2014; Manuel Rüger <mrueg@gentoo.org> ruby-elf-1.0.8.ebuild,
+  ruby-elf-9999.ebuild:
+  Remove ruby18 support.
+
+  23 Jun 2013; Hans de Graaff <graaff@gentoo.org> ruby-elf-1.0.8.ebuild:
+  Actually test the new code, rather than what is already installed.
+
+*ruby-elf-9999 (20 Feb 2013)
+*ruby-elf-1.0.8 (20 Feb 2013)
+
+  20 Feb 2013; Diego E. Pettenò <flameeyes@gentoo.org> +ruby-elf-1.0.8.ebuild,
+  +ruby-elf-9999.ebuild, -ruby-elf-1.0.6.1.ebuild, -ruby-elf-1.0.7.ebuild:
+  Version bump and add live ebuild. These new ebuilds always require the tools
+  to generate the man pages, as they are no longer shipped with the tarball, and
+  installs as a full gem.
+
+*ruby-elf-1.0.7 (27 Dec 2012)
+
+  27 Dec 2012; Diego E. Pettenò <flameeyes@gentoo.org> +ruby-elf-1.0.7.ebuild:
+  Version bump.
+
+  20 Oct 2011; Hans de Graaff <graaff@gentoo.org> ruby-elf-1.0.6.1.ebuild:
+  $1
+
+*ruby-elf-1.0.6.1 (28 Aug 2011)
+
+  28 Aug 2011; Diego E. Pettenò <flameeyes@gentoo.org> -ruby-elf-1.0.5.ebuild,
+  +ruby-elf-1.0.6.1.ebuild:
+  Version bump.
+
+*ruby-elf-1.0.5 (16 Jul 2011)
+
+  16 Jul 2011; Diego E. Pettenò <flameeyes@gentoo.org> -ruby-elf-1.0.4.ebuild,
+  +ruby-elf-1.0.5.ebuild:
+  Version bump.
+
+*ruby-elf-1.0.4 (26 Apr 2011)
+
+  26 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org> -ruby-elf-1.0.0.ebuild,
+  -ruby-elf-1.0.3.ebuild, +ruby-elf-1.0.4.ebuild:
+  Version bump.
+
+*ruby-elf-1.0.3 (04 Feb 2011)
+
+  04 Feb 2011; Diego E. Pettenò <flameeyes@gentoo.org> +ruby-elf-1.0.3.ebuild:
+  Version bump.
+
+*ruby-elf-1.0.0 (27 Jan 2011)
+
+  27 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org> +ruby-elf-1.0.0.ebuild,
+  +metadata.xml:
+  Initial import of ruby-elf and its utilities by me.

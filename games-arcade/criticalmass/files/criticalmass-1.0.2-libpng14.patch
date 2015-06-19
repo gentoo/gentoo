@@ -1,0 +1,11 @@
+--- configure.in
++++ configure.in
+@@ -99,7 +99,7 @@ if test "x$TARGET" = xWIN32; then
+ else
+     LIBS="-L/usr/local/lib -L/usr/X11R6/lib $LIBS"
+     CXXFLAGS="$CXXFLAGS -I/usr/X11R6/include"
+-	AC_CHECK_LIB(png12, main,, AC_MSG_ERROR(libpng is needed))
++	AC_CHECK_LIB(png, main,, AC_MSG_ERROR(libpng is needed))
+ 	AC_CHECK_LIB(z, main,, AC_MSG_ERROR(libz is needed))
+ 	if test "x$TARGET" = xUNIX; then
+ 	    if test "x$enable_dyngl" = xoff; then

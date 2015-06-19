@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm setup
+DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=Standard font for Android 4.0 (Ice Cream Sandwich) and later
+EAPI=5
+HOMEPAGE=http://developer.android.com/design/style/typography.html
+IUSE=X
+KEYWORDS=~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~x64-macos
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~yngwin/distfiles/roboto-2015.03.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	font	b3239d2dc442d1717b9725e2be7cb5d6	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=bb4b7c978b880b5ce9366e3e598f57dc

@@ -1,0 +1,46 @@
+# ChangeLog for games-fps/quake1-demodata
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake1-demodata/ChangeLog,v 1.10 2015/01/31 06:50:32 tupone Exp $
+
+  31 Jan 2015; Tupone Alfredo <tupone@gentoo.org> quake1-demodata-1.06.ebuild:
+  EAPI 5
+
+  15 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  quake1-demodata-1.06.ebuild:
+  stable x86, bug 325141
+
+  26 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  quake1-demodata-1.06.ebuild:
+  Stable on amd64 wrt bug #325141
+
+  26 Dec 2007; Christian Heim <phreak@gentoo.org> Manifest:
+  Fixing digestentry.unused (quake1-demodata-1.06.ebuild.rej).
+
+  27 Jul 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake1-demodata-1.06.ebuild:
+  Added a patch from Paul Bredbury <brebs@sent.com> to fix bug #159100.
+  Original idea by John R. Graham <john_r_graham@mindspring.com> in the same
+  bug.
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> quake1-demodata-1.06.ebuild:
+  Replacing einfo with elog
+
+  27 Sep 2006; Tristan Heaven <nyhm@gentoo.org> quake1-demodata-1.06.ebuild:
+  Add app-arch/unzip to DEPEND
+
+  27 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake1-demodata-1.06.ebuild:
+  Added a patch from Paul Bredbury <brebs@sent.com> to make sure we don't
+  conflict with games-fps/quake1-data. Closing bug #137402.
+
+  19 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake1-demodata-1.06.ebuild:
+  Added ~amd64 since this is just binary data.
+
+*quake1-demodata-1.06 (19 Jun 2006)
+
+  19 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +quake1-demodata-1.06.ebuild:
+  Initial import. Ebuild by Paul Bredbury <brebs@sent.com>. Closing bug
+  #136157.
+

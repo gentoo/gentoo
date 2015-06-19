@@ -1,0 +1,92 @@
+# ChangeLog for media-sound/ptabtools
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/ptabtools/ChangeLog,v 1.19 2012/06/09 23:14:46 zmedico Exp $
+
+  09 Jun 2012; Zac Medico <zmedico@gentoo.org> ptabtools-0.5.0.ebuild:
+  inherit multilib for get_libdir
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> ptabtools-0.4.3.ebuild,
+  ptabtools-0.5.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> ptabtools-0.4.3.ebuild,
+  ptabtools-0.5.0.ebuild:
+  Drop sparc keywords
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> ptabtools-0.5.0.ebuild:
+  x86 stable wrt bug #397105
+
+*ptabtools-0.5.0 (02 Jun 2011)
+
+  02 Jun 2011; Tim Harder <radhermit@gentoo.org> +ptabtools-0.5.0.ebuild,
+  +files/ptabtools-0.5.0-makefile.patch:
+  Version bump. Update HOMEPAGE and SRC_URI, respect LDFLAGS (bug #336817), and
+  update to EAPI 4.
+
+  05 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  -files/ptabtools-0.3.1-fPIC.patch,
+  -files/ptabtools-0.3.1-respectflags.patch,
+  -files/ptabtools-0.3.1-soname.patch, -ptabtools-0.3.1.ebuild,
+  -ptabtools-0.3.1-r2.ebuild, ptabtools-0.4.3.ebuild:
+  sparc stable wrt #200137, remove old
+
+  24 Nov 2007; Dawid Węgliński <cla@gentoo.org> ptabtools-0.4.3.ebuild:
+  Stable on x86 (bug #200137)
+
+  28 Jul 2007; Samuli Suominen <drac@gentoo.org> ptabtools-0.4.3.ebuild:
+  Use multilib.
+
+*ptabtools-0.4.3 (28 Jul 2007)
+
+  28 Jul 2007; Samuli Suominen <drac@gentoo.org> +ptabtools-0.4.3.ebuild:
+  Version bump for bug 134256, thanks to Dominique Michel for reporting.
+
+  19 Jun 2007; Christoph Mende <angelos@gentoo.org>
+  ptabtools-0.3.1-r2.ebuild:
+  Added ~amd64
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  29 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> ptabtools-0.3.1.ebuild,
+  ptabtools-0.3.1-r2.ebuild:
+  Add missing glib and pkgconfig dependencies, thanks to Sagar Mittal in bug
+  #142602.
+
+*ptabtools-0.3.1-r2 (15 Mar 2006)
+
+  15 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  files/ptabtools-0.3.1-fPIC.patch,
+  +files/ptabtools-0.3.1-respectflags.patch,
+  +files/ptabtools-0.3.1-soname.patch, -ptabtools-0.3.1-r1.ebuild,
+  +ptabtools-0.3.1-r2.ebuild:
+  New version, this time respecting CFLAGS, LDFLAGS, CC, handling PIC
+  correctly (it can build on amd64), multilib safe, and setting a soname on
+  the shared library. Also fixed missing pkgconfig dependency.
+
+  08 Jan 2006; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Remove retiring dev from metadata.
+
+*ptabtools-0.3.1-r1 (20 Feb 2005)
+
+  20 Feb 2005; Patrick Dawson <pkdawson@gentoo.org>
+  +files/ptabtools-0.3.1-fPIC.patch, +ptabtools-0.3.1-r1.ebuild:
+  Fixed a few problems, made library build with -fPIC.
+  Closes bug #81955. Thanks to Yaakov S.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  ptabtools-0.3.1.ebuild:
+  Stable sparc, x86.
+
+  04 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  ptabtools-0.3.1.ebuild:
+  Added to ~sparc.
+
+  17 Oct 2004; David Holm <dholm@gentoo.org> ptabtools-0.3.1.ebuild:
+  Added to ~ppc.
+
+*ptabtools-0.3.1 (12 Sep 2004)
+
+  12 Sep 2004; Patrick Dawson <pkdawson@gentoo.org> ptabtools-0.3.1.ebuild:
+  Initial import.  Ebuild submitted by Ghislain Bourgeois.
+  Closes bug #63183

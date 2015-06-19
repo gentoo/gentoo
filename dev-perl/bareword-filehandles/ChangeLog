@@ -1,0 +1,13 @@
+# ChangeLog for dev-perl/bareword-filehandles
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/bareword-filehandles/ChangeLog,v 1.2 2015/05/01 12:11:46 dilfridge Exp $
+
+  01 May 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  bareword-filehandles-0.3.0.ebuild:
+  dev-perl/extutils-depends just became dev-perl/ExtUtils-Depends
+
+*bareword-filehandles-0.3.0 (06 Apr 2015)
+
+  06 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +bareword-filehandles-0.3.0.ebuild, +metadata.xml:
+  New package, needed for dev-perl/strictures

@@ -1,0 +1,70 @@
+# ChangeLog for dev-perl/WWW-Dict-Leo-Org
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/WWW-Dict-Leo-Org/ChangeLog,v 1.16 2015/04/07 14:13:18 jlec Exp $
+
+  03 Sep 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -WWW-Dict-Leo-Org-1.350.0.ebuild:
+  Drop old.
+
+*WWW-Dict-Leo-Org-1.390.0 (10 Mar 2014)
+
+  10 Mar 2014; Justin Lecher <jlec@gentoo.org>
+  +WWW-Dict-Leo-Org-1.390.0.ebuild:
+  Version Bump
+
+*WWW-Dict-Leo-Org-1.370.0 (07 Feb 2014)
+
+  07 Feb 2014; Justin Lecher <jlec@gentoo.org> +WWW-Dict-Leo-Org-1.370.0.ebuild:
+  Version Bump
+
+*WWW-Dict-Leo-Org-1.360.0 (07 Jul 2013)
+
+  07 Jul 2013; Justin Lecher <jlec@gentoo.org>
+  +WWW-Dict-Leo-Org-1.360.0.ebuild, metadata.xml:
+  Version Bump
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org>
+  -WWW-Dict-Leo-Org-1.340.0.ebuild:
+  Cleanup
+
+*WWW-Dict-Leo-Org-1.350.0 (30 Jul 2012)
+
+  30 Jul 2012; Justin Lecher <jlec@gentoo.org>
+  +WWW-Dict-Leo-Org-1.350.0.ebuild, metadata.xml:
+  Version Bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -WWW-Dict-Leo-Org-1.34-r2.ebuild:
+  Cleanup
+
+*WWW-Dict-Leo-Org-1.340.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +WWW-Dict-Leo-Org-1.340.0.ebuild:
+  Change version scheme
+
+  09 Apr 2010; Torsten Veller <tove@gentoo.org>
+  -WWW-Dict-Leo-Org-1.34.ebuild, -WWW-Dict-Leo-Org-1.34-r1.ebuild:
+  Cleanup
+
+*WWW-Dict-Leo-Org-1.34-r2 (30 Mar 2010)
+
+  30 Mar 2010; Justin Lecher <jlec@gentoo.org> +files/1.34-umlaut.patch,
+  +WWW-Dict-Leo-Org-1.34-r2.ebuild:
+  Added Postinst msg, Umlaut patch #311997, Added missing virtual/perl-DB_File
+  to RDEPEND #311997
+
+*WWW-Dict-Leo-Org-1.34-r1 (12 Feb 2010)
+
+  12 Feb 2010; Justin Lecher <jlec@gentoo.org>
+  WWW-Dict-Leo-Org-1.34.ebuild, +WWW-Dict-Leo-Org-1.34-r1.ebuild:
+  Fixed file collision with app-editors/leo per 304709
+
+*WWW-Dict-Leo-Org-1.34 (04 Feb 2010)
+
+  04 Feb 2010; Justin Lecher <jlec@gentoo.org>
+  +WWW-Dict-Leo-Org-1.34.ebuild, +metadata.xml:
+  Imported from sunrise, fixed bug 266121

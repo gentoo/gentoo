@@ -1,0 +1,11 @@
+--- a/lib-python/3/distutils/command/install.py
++++ b/lib-python/3/distutils/command/install.py
+@@ -87,7 +87,7 @@
+         'purelib': '$base/site-packages',
+         'platlib': '$base/site-packages',
+         'headers': '$base/include',
+-        'scripts': '$base/bin',
++        'scripts': '/usr/bin',
+         'data'   : '$base',
+         },
+     }

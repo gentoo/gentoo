@@ -1,0 +1,26 @@
+--- src/engine/cBaseMediaFile.cpp	2013-11-23 10:44:04.586110402 +0100
++++ src/engine/cBaseMediaFile.cpp	2013-11-23 12:14:24.914285498 +0100
+@@ -2150,11 +2150,23 @@
+ 
+         #elif defined(LIBAV) && (LIBAVVERSIONINT<=9)
+             // LIBAV9
++            AVFilterBufferRef *m_pBufferRef=NULL;
+             int Ret=av_buffersrc_write_frame(VideoFilterIn,FrameBufferYUV);
+             if (Ret<0) {
+                 ToLog(LOGMSG_CRITICAL,QString("Error in cVideoFile::VideoFilter_Process : av_buffersrc_write_frame"));
+                 return VC_ERROR;
+             }
++            while ((Ret=av_buffersink_read(VideoFilterOut,&m_pBufferRef)) >= 0) {
++                if (!m_pBufferRef) return VC_ERROR; // for first frame ther is no return
++                FrameBufferYUV->interlaced_frame=m_pBufferRef->video->interlaced;
++                FrameBufferYUV->top_field_first =m_pBufferRef->video->top_field_first;
++                if (m_pBufferRef) {
++                    if (FrameBufferYUV->opaque) avfilter_unref_buffer((AVFilterBufferRef *)FrameBufferYUV->opaque);
++                    FrameBufferYUV->opaque=(void *)avfilter_ref_buffer(m_pBufferRef,AV_PERM_READ);
++                    avfilter_unref_buffer(m_pBufferRef);
++                    m_pBufferRef = NULL;
++                }
++            }
+         #else
+             // FFMPEG 1.2
+             int Ret=av_buffersrc_add_frame(VideoFilterIn,FrameBufferYUV,0);

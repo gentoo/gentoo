@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm unpack
+DEPEND=>=app-eselect/eselect-rust-0.3_pre20150425 !dev-lang/rust:0
+DESCRIPTION=Systems programming language from Mozilla
+EAPI=5
+HOMEPAGE=http://www.rust-lang.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA
+RDEPEND=>=app-eselect/eselect-rust-0.3_pre20150425 !dev-lang/rust:0
+SLOT=stable
+SRC_URI=amd64? ( http://static.rust-lang.org/dist/rustc-1.0.0-x86_64-unknown-linux-gnu.tar.gz ) x86? ( http://static.rust-lang.org/dist/rustc-1.0.0-i686-unknown-linux-gnu.tar.gz )
+_eclasses_=bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ce055237d6ecacefbf1c9617c50d8754

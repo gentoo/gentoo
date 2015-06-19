@@ -1,0 +1,180 @@
+iff -ur duke3d/source/buildengine/a.c duke3d-gcc4/source/buildengine/a.c
+--- duke3d/source/buildengine/a.c	2004-11-25 13:55:21.000000000 -0500
++++ duke3d-gcc4/source/buildengine/a.c	2005-06-18 18:14:24.000000000 -0400
+@@ -186,7 +186,9 @@
+     if (i3 == 0)
+     {
+ 	    i1 += i4;
+-	    ((unsigned long)i4) >>= mach3_al;
++			unsigned long temp = i4;
++	    temp >>= mach3_al;
++			i4 = temp;
+ 	    i4 = (i4&0xffffff00) | (source[i4]&0xff);
+ 	    *dest = ((unsigned char*)i2)[i4];
+ 	    return i1;
+diff -ur duke3d/source/buildengine/pragmas.c duke3d-gcc4/source/buildengine/pragmas.c
+--- duke3d/source/buildengine/pragmas.c	2003-07-25 20:11:32.000000000 -0400
++++ duke3d-gcc4/source/buildengine/pragmas.c	2005-06-18 18:25:37.000000000 -0400
+@@ -56,28 +56,39 @@
+ 
+ void clearbufbyte(void *buffer, int size, long fill_value) {
+   int lsize;
++	unsigned char *p=buffer;
++	unsigned short *s=buffer;
+   switch(size){
+   case 0: return;
+-  case 1: *((unsigned char*)buffer)++ = fill_value; return;
+-  case 2: *((unsigned short*)buffer)++ = fill_value; return;
+-  case 3: { unsigned char *p=buffer; p[2]=p[1]=p[0] = fill_value;} return;
++  case 1: *p = fill_value; return;
++  case 2: *s = fill_value; return;
++  case 3: { p[2]=p[1]=p[0] = fill_value;} return;
+   default:
+ 	if ((int)buffer&1) {
+-		*((unsigned char*)buffer)++ = fill_value; size--;
++		*p = fill_value; ++p; size--;
++		buffer = p;
+ 	}
+ 	if ((int)buffer&2) {
+-		*((unsigned short*)buffer)++ = fill_value; size-=2;
++		*s = fill_value; ++s; size-=2;
++		buffer = s;
+ 	}
+ 	lsize = size>>2;
++	unsigned int *up = buffer;
+ 	while(lsize) {
+-		*((unsigned int*)buffer)++ = fill_value;
++		*up = fill_value;
++		++up;
+ 		lsize--;
+ 	}
++	buffer = up;
+ 	if (size&2) {
+-		*((unsigned short*)buffer)++ = fill_value;
++		s = buffer;
++		*s = fill_value;
++		++s;
+ 	}
+ 	if (size&1) {
+-		*((unsigned char*)buffer)++ = fill_value;
++		p = buffer;
++		*p = fill_value;
++		++p;
+ 	}
+   }
+ }
+@@ -122,7 +133,7 @@
+ 	{
+ 		*((unsigned short *)source) = ((linum>>16)&0xffff);
+ 		linum += linum_inc;
+-		((unsigned char*)source) = ((unsigned char*)source) + 2;
++		source = ((unsigned char*)source) + 2;
+ 		size--;
+ 		if (size == 0) return;
+ 	}
+
+diff -u -r duke3d/source/buildengine/a.h duke3d.gcc4.1.1/source/buildengine/a.h
+--- duke3d/source/buildengine/a.h	2003-04-11 08:54:06.000000000 +0200
++++ duke3d.gcc4.1.1/source/buildengine/a.h	2006-06-22 12:14:40.366393568 +0200
+@@ -116,56 +116,56 @@
+ 
+   #if ((defined __GNUC__) && (!defined C_IDENTIFIERS_UNDERSCORED))
+ 
+-    long asm_mmxoverlay(void) __attribute__ ((alias ("_asm_mmxoverlay")));
+-    long asm_sethlinesizes(long,long,long) __attribute__ ((alias ("_asm_sethlinesizes")));
+-    long asm_setpalookupaddress(char *) __attribute__ ((alias ("_asm_setpalookupaddress")));
+-    long asm_setuphlineasm4(long,long) __attribute__ ((alias ("_asm_setuphlineasm4")));
+-    long asm_hlineasm4(long,long,long,long,long,long) __attribute__ ((alias ("_asm_hlineasm4")));
+-    long asm_setuprhlineasm4(long,long,long,long,long,long) __attribute__ ((alias ("_asm_setuprhlineasm4")));
+-    long asm_rhlineasm4(long,long,long,long,long,long) __attribute__ ((alias ("_asm_rhlineasm4")));
+-    long asm_setuprmhlineasm4(long,long,long,long,long,long) __attribute__ ((alias ("_asm_setuprmhlineasm4")));
+-    long asm_rmhlineasm4(long,long,long,long,long,long) __attribute__ ((alias ("_asm_rmhlineasm4")));
+-    long asm_setupqrhlineasm4(long,long,long,long,long,long) __attribute__ ((alias ("_asm_setupqrhlineasm4")));
+-    long asm_qrhlineasm4(long,long,long,long,long,long) __attribute__ ((alias ("_asm_qrhlineasm4")));
+-    long asm_setvlinebpl(long) __attribute__ ((alias ("_asm_setvlinebpl")));
+-    long asm_fixtransluscence(long) __attribute__ ((alias ("_asm_fixtransluscence")));
+-    long asm_prevlineasm1(long,long,long,long,long,long) __attribute__ ((alias ("_asm_prevlineasm1")));
+-    long asm_vlineasm1(long,long,long,long,long,long) __attribute__ ((alias ("_asm_vlineasm1")));
+-    long asm_setuptvlineasm(long) __attribute__ ((alias ("_asm_setuptvlineasm")));
+-    long asm_tvlineasm1(long,long,long,long,long,long) __attribute__ ((alias ("_asm_tvlineasm1")));
+-    long asm_setuptvlineasm2(long,long,long) __attribute__ ((alias ("_asm_setuptvlineasm2")));
+-    long asm_tvlineasm2(long,long,long,long,long,long) __attribute__ ((alias ("_asm_tvlineasm2")));
+-    long asm_mvlineasm1(long,long,long,long,long,long) __attribute__ ((alias ("_asm_mvlineasm1")));
+-    long asm_setupvlineasm(long) __attribute__ ((alias ("_asm_setupvlineasm")));
+-    long asm_vlineasm4(long,long) __attribute__ ((alias ("_asm_vlineasm4")));
+-    long asm_setupmvlineasm(long) __attribute__ ((alias ("_asm_setupmvlineasm")));
+-    long asm_mvlineasm4(long,long) __attribute__ ((alias ("_asm_mvlineasm4")));
+-    void asm_setupspritevline(long,long,long,long,long,long) __attribute__ ((alias ("_asm_setupspritevline")));
+-    void asm_spritevline(long,long,long,long,long,long) __attribute__ ((alias ("_asm_spritevline")));
+-    void asm_msetupspritevline(long,long,long,long,long,long) __attribute__ ((alias ("_asm_msetupspritevline")));
+-    void asm_mspritevline(long,long,long,long,long,long) __attribute__ ((alias ("_asm_mspritevline")));
+-    void asm_tsetupspritevline(long,long,long,long,long,long) __attribute__ ((alias ("_asm_tsetupspritevline")));
+-    void asm_tspritevline(long,long,long,long,long,long) __attribute__ ((alias ("_asm_tspritevline")));
+-    long asm_mhline(long,long,long,long,long,long) __attribute__ ((alias ("_asm_mhline")));
+-    long asm_mhlineskipmodify(long,long,long,long,long,long) __attribute__ ((alias ("_asm_mhlineskipmodify")));
+-    long asm_msethlineshift(long,long) __attribute__ ((alias ("_asm_msethlineshift")));
+-    long asm_thline(long,long,long,long,long,long) __attribute__ ((alias ("_asm_thline")));
+-    long asm_thlineskipmodify(long,long,long,long,long,long) __attribute__ ((alias ("_asm_thlineskipmodify")));
+-    long asm_tsethlineshift(long,long) __attribute__ ((alias ("_asm_tsethlineshift")));
+-    long asm_setupslopevlin(long,long,long) __attribute__ ((alias ("_asm_setupslopevlin")));
+-    long asm_slopevlin(long,long,long,long,long,long) __attribute__ ((alias ("_asm_slopevlin")));
+-    long asm_settransnormal(void) __attribute__ ((alias ("_asm_settransnormal")));
+-    long asm_settransreverse(void) __attribute__ ((alias ("_asm_settransreverse")));
+-    long asm_setupdrawslab(long,long) __attribute__ ((alias ("_asm_setupdrawslab")));
+-    long asm_drawslab(long,long,long,long,long,long) __attribute__ ((alias ("_asm_drawslab")));
+-    long asm_stretchhline(long,long,long,long,long,long) __attribute__ ((alias ("_asm_stretchhline")));
+-    long asm_isvmwarerunning(void) __attribute__ ((alias ("_asm_isvmwarerunning")));
++    long asm_mmxoverlay(void) asm ("_asm_mmxoverlay");
++    long asm_sethlinesizes(long,long,long) asm ("_asm_sethlinesizes");
++    long asm_setpalookupaddress(char *) asm ("_asm_setpalookupaddress");
++    long asm_setuphlineasm4(long,long) asm ("_asm_setuphlineasm4");
++    long asm_hlineasm4(long,long,long,long,long,long) asm ("_asm_hlineasm4");
++    long asm_setuprhlineasm4(long,long,long,long,long,long) asm ("_asm_setuprhlineasm4");
++    long asm_rhlineasm4(long,long,long,long,long,long) asm ("_asm_rhlineasm4");
++    long asm_setuprmhlineasm4(long,long,long,long,long,long) asm ("_asm_setuprmhlineasm4");
++    long asm_rmhlineasm4(long,long,long,long,long,long) asm ("_asm_rmhlineasm4");
++    long asm_setupqrhlineasm4(long,long,long,long,long,long) asm ("_asm_setupqrhlineasm4");
++    long asm_qrhlineasm4(long,long,long,long,long,long) asm ("_asm_qrhlineasm4");
++    long asm_setvlinebpl(long) asm ("_asm_setvlinebpl");
++    long asm_fixtransluscence(long) asm ("_asm_fixtransluscence");
++    long asm_prevlineasm1(long,long,long,long,long,long) asm ("_asm_prevlineasm1");
++    long asm_vlineasm1(long,long,long,long,long,long) asm ("_asm_vlineasm1");
++    long asm_setuptvlineasm(long) asm ("_asm_setuptvlineasm");
++    long asm_tvlineasm1(long,long,long,long,long,long) asm ("_asm_tvlineasm1");
++    long asm_setuptvlineasm2(long,long,long) asm ("_asm_setuptvlineasm2");
++    long asm_tvlineasm2(long,long,long,long,long,long) asm ("_asm_tvlineasm2");
++    long asm_mvlineasm1(long,long,long,long,long,long) asm ("_asm_mvlineasm1");
++    long asm_setupvlineasm(long) asm ("_asm_setupvlineasm");
++    long asm_vlineasm4(long,long) asm ("_asm_vlineasm4");
++    long asm_setupmvlineasm(long) asm ("_asm_setupmvlineasm");
++    long asm_mvlineasm4(long,long) asm ("_asm_mvlineasm4");
++    void asm_setupspritevline(long,long,long,long,long,long) asm ("_asm_setupspritevline");
++    void asm_spritevline(long,long,long,long,long,long) asm ("_asm_spritevline");
++    void asm_msetupspritevline(long,long,long,long,long,long) asm ("_asm_msetupspritevline");
++    void asm_mspritevline(long,long,long,long,long,long) asm ("_asm_mspritevline");
++    void asm_tsetupspritevline(long,long,long,long,long,long) asm ("_asm_tsetupspritevline");
++    void asm_tspritevline(long,long,long,long,long,long) asm ("_asm_tspritevline");
++    long asm_mhline(long,long,long,long,long,long) asm ("_asm_mhline");
++    long asm_mhlineskipmodify(long,long,long,long,long,long) asm("_asm_mhlineskipmodify");
++    long asm_msethlineshift(long,long) asm("_asm_msethlineshift");
++    long asm_thline(long,long,long,long,long,long) asm("_asm_thline");
++    long asm_thlineskipmodify(long,long,long,long,long,long) asm("_asm_thlineskipmodify");
++    long asm_tsethlineshift(long,long) asm("_asm_tsethlineshift");
++    long asm_setupslopevlin(long,long,long) asm("_asm_setupslopevlin");
++    long asm_slopevlin(long,long,long,long,long,long) asm("_asm_slopevlin");
++    long asm_settransnormal(void) asm("_asm_settransnormal");
++    long asm_settransreverse(void) asm("_asm_settransreverse");
++    long asm_setupdrawslab(long,long) asm("_asm_setupdrawslab");
++    long asm_drawslab(long,long,long,long,long,long) asm("_asm_drawslab");
++    long asm_stretchhline(long,long,long,long,long,long) asm("_asm_stretchhline");
++    long asm_isvmwarerunning(void) asm("_asm_isvmwarerunning");
+ 
+     /*
+ 	 * !!! I need a reference to this, for mprotect(), but the actual function
+      * !!!  is never called in BUILD...just from other ASM routines. --ryan.
+ 	 */
+-    long asm_prohlineasm4(void) __attribute__ ((alias ("_asm_prohlineasm4")));
++    long asm_prohlineasm4(void) asm("_asm_prohlineasm4");
+ 
+   #endif /* ELF/GCC */
+ #endif /* defined USE_I386_ASM */

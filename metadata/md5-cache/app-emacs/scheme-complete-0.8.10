@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=Scheme tab-completion and word-completion for Emacs
+EAPI=4
+HOMEPAGE=http://synthcode.com/
+KEYWORDS=alpha amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos
+LICENSE=public-domain
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=http://synthcode.com/emacs/scheme-complete-0.8.10.el.gz
+_eclasses_=elisp	d13b0507622afb8ac9e3f54e91d58614	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=2c8f43a2200f0033786dcdd258724ab4

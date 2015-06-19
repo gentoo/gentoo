@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=x11-libs/libXaw x11-libs/libXmu x11-libs/libXt x11-libs/libXext x11-libs/libX11 x11-misc/xdg-utils || ( media-gfx/graphicsmagick[imagemagick] media-gfx/imagemagick )
+DESCRIPTION=Serial device programmer
+EAPI=5
+HOMEPAGE=http://www.lancos.com/ppwin95.html
+KEYWORDS=amd64 x86
+LICENSE=LGPL-2
+RDEPEND=x11-libs/libXaw x11-libs/libXmu x11-libs/libXt x11-libs/libXext x11-libs/libX11 x11-misc/xdg-utils
+SLOT=0
+SRC_URI=mirror://sourceforge/ponyprog/Pony_Prog2000-2.07c.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=6c3f028d5e5e18f9bdd87f23f5499c58

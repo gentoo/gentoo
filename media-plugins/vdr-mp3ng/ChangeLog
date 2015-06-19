@@ -1,0 +1,111 @@
+# ChangeLog for media-plugins/vdr-mp3ng
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-mp3ng/ChangeLog,v 1.21 2015/01/17 21:22:44 hd_brummy Exp $
+
+  17 Jan 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-mp3ng-0.0.1_pre5.ebuild:
+  fixed typo, this fixed the not founding patch sources, wrt bug 536824, thx to
+  T.Foerster for reporting this
+
+  08 Nov 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-mp3ng-0.0.1_pre5.ebuild:
+  fixed wrt bug 528646, missing patch, thx to Enlik; wrt bug 314307 virtual
+  depends
+
+  08 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-mp3ng-0.0.1_pre4.ebuild:
+  cleanup old, depended on vdr-plugin.eclass
+
+  08 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-mp3ng-0.0.1_pre5.ebuild:
+  fixed epatch
+
+*vdr-mp3ng-0.0.1_pre5 (08 Jan 2014)
+
+  08 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-mp3ng-0.0.1_pre5.ebuild:
+  fixed i18n issues; vdr-plugin-2.eclass
+
+  09 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  vdr-mp3ng-0.0.1_pre4.ebuild, +files/vdr-mp3ng-0.0.1_pre4-glibc-2.10.patch:
+  Fix building with GLIBC 2.10+ wrt #276177.
+
+  25 Oct 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -files/vdr-mp3ng-0.0.1_pre3-1.3.37.diff,
+  -files/vdr-mp3ng-0.0.1_pre3-gcc4.diff,
+  -files/vdr-mp3ng-0.0.1_pre3-gentoo.diff:
+  -
+
+  25 Oct 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/imagemagick-6.4.x.diff, -vdr-mp3ng-0.0.1_pre3.ebuild,
+  vdr-mp3ng-0.0.1_pre4.ebuild:
+  cleanup; added patch to fix missing imagemagick header; thanks also to
+  g.naray on #241618 for reporting this
+
+  29 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-mp3ng-0.0.1_pre3.ebuild, vdr-mp3ng-0.0.1_pre4.ebuild:
+  Fixed quoting.
+
+  29 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-mp3ng-0.0.1_pre4.ebuild:
+  Marked stable on x86.
+
+  01 Apr 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  files/vdr-mp3ng-0.0.1_pre4-vdr-1.5.1.diff:
+  txpo in 1.5.1 diff fixed
+
+  25 Mar 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-mp3ng-0.0.1_pre4-vdr-1.5.1.diff, vdr-mp3ng-0.0.1_pre4.ebuild:
+  patch added; ready for VDR 1.5.x
+
+  11 Sep 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -files/vdr-mp3ng-0.0.1_pre4-span.diff, vdr-mp3ng-0.0.1_pre4.ebuild:
+  moved *-span.diff to filesdir, to make repoman happy
+
+*vdr-mp3ng-0.0.1_pre4 (09 Sep 2006)
+
+  09 Sep 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-mp3ng-0.0.1_pre4-1.3.37.diff,
+  +files/vdr-mp3ng-0.0.1_pre4-gcc4.diff,
+  +files/vdr-mp3ng-0.0.1_pre4-gentoo.diff,
+  +files/vdr-mp3ng-0.0.1_pre4-span.diff, vdr-mp3ng-0.0.1_pre3.ebuild,
+  +vdr-mp3ng-0.0.1_pre4.ebuild:
+  _pre3 x86 ; _pre4 include a patch, needed by vdr-span plugin
+
+  15 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Assigned to Gentoo VDR Project.
+
+  08 Jul 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-mp3ng-0.0.1_pre3-gcc4.diff, vdr-mp3ng-0.0.1_pre3.ebuild:
+  Added gcc4-compatibility patch.
+
+  16 May 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-mp3ng-0.0.1_pre3.ebuild:
+  added eutils to inherit
+
+*vdr-mp3ng-0.0.1_pre3 (04 May 2006)
+
+  04 May 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-mp3ng-0.0.1_pre3-1.3.37.diff,
+  +files/vdr-mp3ng-0.0.1_pre3-gentoo.diff,
+  -files/vdr-mp3ng-0.9.13_pre3-1.3.37.diff,
+  -files/vdr-mp3ng-0.9.13_pre3-gentoo.diff, +vdr-mp3ng-0.0.1_pre3.ebuild,
+  -vdr-mp3ng-0.9.13_pre3.ebuild:
+  mv vdr-mp3ng-0.9.13_pre3 -> vdr-mp3ng-0.0.1_pre3; bad versions fix is needed
+  by a mistake with the developer on comming up versioning
+
+  31 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-mp3ng-0.9.13_pre3.ebuild:
+  ~amd64 added; thanks to Bjoern Mueller for reporting/testing this
+
+  04 Feb 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-mp3ng-0.9.13_pre3-1.3.37.diff, vdr-mp3ng-0.9.13_pre3.ebuild:
+  added patch, to work with >=vdr-1.3.37
+
+*vdr-mp3ng-0.9.13_pre3 (04 Jan 2006)
+
+  04 Jan 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-mp3ng-0.9.13_pre3-gentoo.diff, +files/confd,
+  +files/mp3ngsources, +metadata.xml, +vdr-mp3ng-0.9.13_pre3.ebuild:
+  initial ebuild, written by myself
+

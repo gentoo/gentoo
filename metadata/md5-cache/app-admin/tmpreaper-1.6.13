@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst prepare
+DESCRIPTION=A utility for removing files based on when they were last accessed
+EAPI=3
+HOMEPAGE=http://packages.debian.org/sid/tmpreaper
+KEYWORDS=amd64 ~arm ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://debian/pool/main/t/tmpreaper/tmpreaper_1.6.13+nmu1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=dcf1b43f1f9bd99ea3f0c2746e25b8a3

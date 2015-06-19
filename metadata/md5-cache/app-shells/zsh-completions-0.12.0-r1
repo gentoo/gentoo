@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst prepare
+DESCRIPTION=Additional completion definitions for Zsh
+EAPI=5
+HOMEPAGE=https://github.com/zsh-users/zsh-completions
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=app-shells/zsh
+SLOT=0
+SRC_URI=https://github.com/zsh-users/zsh-completions/archive/0.12.0.tar.gz -> zsh-completions-0.12.0.tar.gz
+_md5_=fc8d360f7525533f0d481383f6c66c0a

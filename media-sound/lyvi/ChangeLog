@@ -1,0 +1,22 @@
+# ChangeLog for media-sound/lyvi
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/lyvi/ChangeLog,v 1.5 2015/03/06 22:43:25 pacho Exp $
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> lyvi-2.0.0.ebuild:
+  amd64 stable, bug 540290
+
+  25 Nov 2014; Pacho Ramos <pacho@gentoo.org> lyvi-2.0.0.ebuild:
+  Support python 3.4
+
+  26 Jun 2014; Ian Delaney <idella4@gentoo.org> lyvi-2.0.0.ebuild:
+  tidy deps, remove rogue pip dep in setup.py, fixes Bug #514976
+
+  25 Jun 2014; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Fix e-mail address.
+
+*lyvi-2.0.0 (22 Jun 2014)
+
+  22 Jun 2014; Ian Delaney <idella4@gentoo.org> +lyvi-2.0.0.ebuild,
+  +metadata.xml:
+  New ebuild written by Witold Pilat who is assigned proxy maintainer. Closes
+  Bug #431842

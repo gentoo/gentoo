@@ -1,0 +1,50 @@
+# ChangeLog for games-puzzle/bastet
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/bastet/ChangeLog,v 1.13 2015/02/13 19:59:53 tupone Exp $
+
+  13 Feb 2015; Tupone Alfredo <tupone@gentoo.org> bastet-0.43.ebuild:
+  EAPI 5
+
+  05 Jan 2011; Samuli Suominen <ssuominen@gentoo.org> bastet-0.43.ebuild:
+  x86 stable wrt #350446
+
+  04 Jan 2011; Markos Chandras <hwoarang@gentoo.org> bastet-0.43.ebuild:
+  Stable on amd64 wrt bug #350446
+
+*bastet-0.43 (02 Dec 2010)
+
+  02 Dec 2010; Tupone Alfredo <tupone@gentoo.org> +bastet-0.43.ebuild,
+  +files/bastet-0.43-gentoo.patch:
+  Version bump to 0.43 Bug #320381 by hitachi
+
+  08 Feb 2009; Tupone Alfredo <tupone@gentoo.org>
+  +files/bastet-0.41-as-needed.patch, bastet-0.41.ebuild:
+  Fix --as-needed bug #247418 by flameeyes@gentoo.org
+
+  19 Oct 2006; Tristan Heaven <nyhm@gentoo.org> bastet-0.41.ebuild:
+  Use LDFLAGS and install the man page
+
+  15 Aug 2006; Thomas Cort <tcort@gentoo.org> bastet-0.41.ebuild:
+  Stable on amd64 wrt Bug #143961
+
+  19 May 2005; Yuta SATOH <nigoro@gentoo.org> bastet-0.41.ebuild:
+  Stable on ppc64
+
+  29 Dec 2004; Joseph Jezak <josejx@gentoo.org> bastet-0.41.ebuild:
+  Marked ppc stable.
+
+  21 Dec 2004; Yuta SATOH <nigoro@gentoo.org> bastet-0.41.ebuild:
+  added ~ppc64
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> bastet-0.41.ebuild:
+  Added ~ppc.
+
+  22 Oct 2004; Simon Stelling <blubb@gentoo.org> bastet-0.41.ebuild:
+  added ~amd64
+
+*bastet-0.41 (21 Oct 2004)
+
+  21 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org> +metadata.xml,
+  +bastet-0.41.ebuild:
+  initial commit
+

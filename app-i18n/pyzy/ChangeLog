@@ -1,0 +1,35 @@
+# ChangeLog for app-i18n/pyzy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/pyzy/ChangeLog,v 1.8 2015/06/08 15:44:47 jlec Exp $
+
+  08 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml,
+  pyzy-0.1.0-r1.ebuild, pyzy-0.1.0.ebuild:
+  Correct remote id
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*pyzy-0.1.0-r1 (27 Dec 2014)
+
+  27 Dec 2014; Michał Górny <mgorny@gentoo.org> +pyzy-0.1.0-r1.ebuild:
+  Convert to python-any-r1.
+
+  15 Nov 2014; Pacho Ramos <pacho@gentoo.org> pyzy-0.1.0.ebuild:
+  amd64/x86 stable, bug #517722
+
+  17 Jan 2014; Yixun Lan <dlan@gentoo.org> metadata.xml:
+  update maintainer email
+
+  06 Mar 2013; Naohiro Aota <naota@gentoo.org> metadata.xml:
+  Add proxy-mainters herd
+
+  03 Mar 2013; Naohiro Aota <naota@gentoo.org> metadata.xml:
+  Set proxy maintainership
+
+*pyzy-0.1.0 (01 Mar 2013)
+
+  01 Mar 2013; Naohiro Aota <naota@gentoo.org>
+  +files/pyzy-dont-download-dictionary-file.patch, +metadata.xml,
+  +pyzy-0.1.0.ebuild:
+  New package app-i18n/pyzy. Written by  Dennis 'dlan' Lan
+  <dennis.yxun@gmail.com>

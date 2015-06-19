@@ -1,0 +1,27 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/files/eblits/pkg_postinst.eblit,v 1.2 2012/04/15 20:04:44 vapier Exp $
+
+eblit-glibc-pkg_postinst() {
+	# nothing to do if just installing headers
+	just_headers && return
+
+	if ! tc-is-cross-compiler && [[ -x ${ROOT}/usr/sbin/iconvconfig ]] ; then
+		# Generate fastloading iconv module configuration file.
+		"${ROOT}"/usr/sbin/iconvconfig --prefix="${ROOT}"
+	fi
+
+	if ! is_crosscompile && [[ ${ROOT} == "/" ]] ; then
+		# Reload init ... if in a chroot or a diff init package, ignore
+		# errors from this step #253697
+		/sbin/telinit U 2>/dev/null
+
+		# if the host locales.gen contains no entries, we'll install everything
+		local locale_list="${ROOT}etc/locale.gen"
+		if [[ -z $(locale-gen --list --config "${locale_list}") ]] ; then
+			ewarn "Generating all locales; edit /etc/locale.gen to save time/space"
+			locale_list="${ROOT}usr/share/i18n/SUPPORTED"
+		fi
+		locale-gen -j $(makeopts_jobs) --config "${locale_list}"
+	fi
+}

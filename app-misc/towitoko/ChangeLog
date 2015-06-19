@@ -1,0 +1,58 @@
+# ChangeLog for app-misc/towitoko
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/towitoko/ChangeLog,v 1.18 2014/08/30 12:23:17 mgorny Exp $
+
+  30 Aug 2014; Michał Górny <mgorny@gentoo.org> towitoko-2.0.7-r2.ebuild:
+  Replace einstall with emake install, bug #521458.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> towitoko-2.0.7-r2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  15 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  towitoko-2.0.7-r2.ebuild:
+  Because only change to -r1 was disabling devfs, mark it stable for
+  ppc/x86. Remove USE static, which was misused. Remove geocities from
+  HOMEPAGE and SRC_URI wrt #297028.
+
+*towitoko-2.0.7-r2 (13 Mar 2009)
+
+  13 Mar 2009; Hanno Boeck <hanno@gentoo.org> +towitoko-2.0.7-r2.ebuild:
+  Don't enable devfs, this results in obsolete paths not available in recent
+  udev versions. Also add ~amd64.
+
+  31 Jul 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org> towitoko-2.0.7-r1.ebuild:
+  x86 stable
+
+  28 Jan 2007; Marius Mauch <genone@gentoo.org> towitoko-2.0.7-r1.ebuild:
+  Replacing einfo with elog
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  towitoko-2.0.7-r1.ebuild:
+  Masked towitoko-2.0.7-r1.ebuild stable for ppc
+
+  17 Jul 2004; David Holm <dholm@gentoo.org> towitoko-2.0.7-r1.ebuild:
+  Added to ~ppc.
+
+*towitoko-2.0.7-r1 (13 Jul 2004)
+
+  13 Jul 2004; Seemant Kulleen <seemant@gentoo.org> +towitoko-2.0.7-r1.ebuild:
+  add use flag for moneyplex to enable usage of libtowitoko with moneyplex
+  software from matrica.de. Thanks to: Daniel Seyffer
+  <gentoo-bugs@seyffer.de> in bug #47909
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> towitoko-2.0.7.ebuild:
+  Add die following econf for bug 48950
+
+*towitoko-2.0.7 (7 Nov 2002)
+  
+  7 Nov 2002; Matt Keadle <mkeadle@gentoo.org> towitoko-2.0.7.ebuild 
+  files/digest-towitoko-2.0.7:
+
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. Thanks to Tobias Bayer for submitting the initial ebuild.

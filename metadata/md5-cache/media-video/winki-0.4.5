@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm prepare
+DEPEND=>=dev-lang/python-2.3 >=dev-python/pygtk-2:2 >=dev-python/pyorbit-2 dev-lang/python
+DESCRIPTION=A Python frontend to many popular encoding programs
+EAPI=3
+HOMEPAGE=http://www.winki-the-ripper.de/
+IUSE=css dvd matroska mjpeg mp3 ogg vcd
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-3
+RDEPEND=>=dev-lang/python-2.3 >=dev-python/pygtk-2:2 >=dev-python/pyorbit-2 media-video/mplayer[encode] media-video/lsdvd virtual/ffmpeg dvd? ( media-video/dvdauthor ) mp3? ( media-sound/lame ) ogg? ( media-sound/ogmtools media-sound/vorbis-tools ) vcd? ( media-video/vcdimager media-libs/libdvb ) mjpeg? ( media-video/mjpegtools ) matroska? ( media-video/mkvtoolnix ) css? ( media-libs/libdvdcss ) dev-lang/python
+SLOT=0
+SRC_URI=http://www.winki-the-ripper.de/share/dist/winki-0.4.5.tar.gz
+_eclasses_=distutils	92e738ea29389cb3f34778d7a349ac71	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=aad50281b9ed5b6fd97dfea4dc43da21

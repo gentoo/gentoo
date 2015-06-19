@@ -1,0 +1,102 @@
+# ChangeLog for dev-perl/Expect
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Expect/ChangeLog,v 1.25 2015/05/18 20:55:50 dilfridge Exp $
+
+*Expect-1.320.0 (18 May 2015)
+
+  18 May 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Expect-1.320.0.ebuild:
+  Version bump
+
+*Expect-1.210.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Expect-1.210.0-r1.ebuild, -Expect-1.210.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  21 Oct 2012; Markus Meier <maekke@gentoo.org> Expect-1.210.0.ebuild:
+  add ~arm, bug #389547
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Expect-1.21.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Expect-1.210.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Expect-1.210.0 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org> +Expect-1.210.0.ebuild:
+  Change version scheme
+
+  19 Nov 2009; Christian Faulhammer <fauli@gentoo.org> Expect-1.21.ebuild:
+  stable x86, bug 284544
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> Expect-1.21.ebuild:
+  ppc stable #284544
+
+  18 Sep 2009; Alexis Ballier <aballier@gentoo.org> Expect-1.21.ebuild:
+  keyword ~ppc64, working fine on a PowerMac 970
+
+  01 May 2009; Torsten Veller <tove@gentoo.org> -Expect-1.20.ebuild:
+  Cleanup
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org> Expect-1.21.ebuild:
+  amd64 stable
+
+  06 Oct 2007; Raúl Porcel <armin76@gentoo.org> Expect-1.21.ebuild:
+  sparc stable
+
+*Expect-1.21 (20 Aug 2007)
+
+  20 Aug 2007; Yuval Yaari <yuval@gentoo.org> +Expect-1.21.ebuild:
+  Version bump
+
+  15 Jan 2007; Michael Cummings <mcummings@gentoo.org> Expect-1.20.ebuild:
+  Ebuild maintenance
+
+  09 Oct 2006; Michael Cummings <mcummings@gentoo.org> -Expect-1.15.ebuild,
+  -Expect-1.16.ebuild, -Expect-1.17.ebuild, -Expect-1.19.ebuild,
+  Expect-1.20.ebuild:
+  Cleaning out stale ebuilds
+
+*Expect-1.20 (19 Aug 2006)
+
+  19 Aug 2006; Michael Cummings <mcummings@gentoo.org> +Expect-1.20.ebuild:
+  Version bump
+
+  07 Aug 2006; Michael Cummings <mcummings@gentoo.org> Expect-1.17.ebuild:
+  Marking stable amd64, sparc
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org> Expect-1.15.ebuild,
+  Expect-1.16.ebuild, Expect-1.17.ebuild, Expect-1.19.ebuild:
+  Adding perl dep; fixed DEPEND
+
+*Expect-1.19 (19 Jul 2006)
+
+  19 Jul 2006; Aaron Kulbe <superlag@gentoo.org> +Expect-1.19.ebuild:
+  Version bump.
+
+*Expect-1.17 (23 Jun 2006)
+
+  23 Jun 2006; Michael Cummings <mcummings@gentoo.org> +Expect-1.17.ebuild:
+  Version bump upstream
+
+*Expect-1.16 (22 May 2006)
+
+  22 May 2006; <mcummings@gentoo.org> +Expect-1.16.ebuild:
+  Version bump
+
+  15 May 2006; Jon Hood <squinky86@gentoo.org> Expect-1.15.ebuild:
+  Add ~amd64 in preparation for #121759.
+
+  04 Apr 2006; Luca Barbato <lu_zero@gentoo.org> Expect-1.15.ebuild:
+  Marked ~ppc
+
+*Expect-1.15 (03 Apr 2006)
+
+  03 Apr 2006; <mcumming@gentoo.org> +metadata.xml, +Expect-1.15.ebuild:
+  Deps for mon

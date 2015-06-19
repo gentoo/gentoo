@@ -1,0 +1,30 @@
+# ChangeLog for dev-java/jsap
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jsap/ChangeLog,v 1.9 2015/06/09 13:50:35 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  24 Apr 2010; Fabian Groffen <grobian@gentoo.org> jsap-2.1.ebuild:
+  Marked ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris, bug #314093
+
+  09 Feb 2010; Joseph Jezak <josejx@gentoo.org> jsap-2.1.ebuild:
+  Marked ppc/ppc64 stable.
+
+  14 Aug 2009; Markus Meier <maekke@gentoo.org> jsap-2.1.ebuild:
+  amd64 stable, bug #281006
+
+  12 Apr 2008; Tobias Scherbaum <dertobi123@gentoo.org> jsap-2.1.ebuild:
+  Added ~ppc, bug #215401
+
+  30 Mar 2008; Markus Rothe <corsair@gentoo.org> jsap-2.1.ebuild:
+  Added ~ppc64
+
+  30 Mar 2008; Alistair Bush <ali_bush@gentoo.org> jsap-2.1.ebuild:
+  keyword ~amd64.
+
+  04 Nov 2007; Christian Faulhammer <opfer@gentoo.org> jsap-2.1.ebuild:
+  stable x86, bug 197861
+
+  21 Apr 2007; Miroslav Šulc <fordfrog@gentoo.org> ChangeLog:
+  New package.

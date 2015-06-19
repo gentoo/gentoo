@@ -1,0 +1,276 @@
+# ChangeLog for app-portage/euses
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/euses/ChangeLog,v 1.74 2015/04/21 19:08:26 jer Exp $
+
+  21 Apr 2015; Jeroen Roovers <jer@gentoo.org> euses-2.5.9.ebuild:
+  Stable for PPC64 too.
+
+  24 Nov 2012; Jeroen Roovers <jer@gentoo.org> -euses-2.5.8.ebuild:
+  Old.
+
+  25 Oct 2012; Kenneth Prugh <ken69267@gentoo.org> euses-2.5.9.ebuild:
+  amd64 stable, bug #434778
+
+  10 Oct 2012; Jeroen Roovers <jer@gentoo.org> -euses-2.5.7.ebuild:
+  Old.
+
+  29 Sep 2012; Raúl Porcel <armin76@gentoo.org> euses-2.5.9.ebuild:
+  alpha/sparc stable wrt #434778
+
+  18 Sep 2012; Johannes Huber <johu@gentoo.org> euses-2.5.9.ebuild:
+  Stable for x86, wrt bug #434778
+
+  12 Sep 2012; Jeroen Roovers <jer@gentoo.org> euses-2.5.9.ebuild:
+  Stable for HPPA (bug #434778).
+
+  12 Sep 2012; Anthony G. Basile <blueness@gentoo.org> euses-2.5.9.ebuild:
+  stable arm, bug #434778
+
+  12 Sep 2012; Anthony G. Basile <blueness@gentoo.org> euses-2.5.9.ebuild:
+  stable ppc, bug #434778
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> euses-2.5.8.ebuild:
+  alpha/sparc stable wrt #429532
+
+*euses-2.5.9 (13 Aug 2012)
+
+  13 Aug 2012; Jeroen Roovers <jer@gentoo.org> +euses-2.5.9.ebuild:
+  Version bump.
+
+  04 Aug 2012; Agostino Sarubbo <ago@gentoo.org> euses-2.5.8.ebuild:
+  Stable for amd64, wrt bug #429532
+
+  04 Aug 2012; Anthony G. Basile <blueness@gentoo.org> euses-2.5.8.ebuild:
+  Stable arm, bug #429532
+
+  04 Aug 2012; Anthony G. Basile <blueness@gentoo.org> euses-2.5.8.ebuild:
+  Stable ppc, keyword ~ppc64, bug #429532
+
+  04 Aug 2012; Jeroen Roovers <jer@gentoo.org> euses-2.5.8.ebuild:
+  Stable for HPPA (bug #429532).
+
+  03 Aug 2012; Jeff Horelick <jdhore@gentoo.org> euses-2.5.8.ebuild:
+  marked x86 per bug 429532
+
+*euses-2.5.8 (02 Jul 2012)
+
+  02 Jul 2012; Jeroen Roovers <jer@gentoo.org> +euses-2.5.8.ebuild:
+  Version bump.
+
+  06 Jun 2010; Raúl Porcel <armin76@gentoo.org> euses-2.5.7.ebuild:
+  arm stable wrt #283101
+
+  08 Mar 2010; Markos Chandras <hwoarang@gentoo.org> euses-2.5.7.ebuild:
+  Stable on amd64 wrt bug #300865
+
+  19 Jan 2010; nixnut <nixnut@gentoo.org> euses-2.5.7.ebuild:
+  ppc stable #300865
+
+  17 Jan 2010; Raúl Porcel <armin76@gentoo.org> euses-2.5.7.ebuild:
+  alpha/sparc/x86 stable wrt #300865
+
+  14 Jan 2010; Jeroen Roovers <jer@gentoo.org> euses-2.5.7.ebuild:
+  Stable for HPPA (bug #300865).
+
+  13 Jan 2010; Jeroen Roovers <jer@gentoo.org> euses-2.5.7.ebuild:
+  Propagate arm keywording.
+
+*euses-2.5.7 (23 Nov 2009)
+
+  23 Nov 2009; Jeroen Roovers <jer@gentoo.org> euses-2.5.6.ebuild,
+  +euses-2.5.7.ebuild:
+  Version bump.
+
+  11 Nov 2009; Christian Ruppert <idl0r@gentoo.org>
+  -files/euses-2.5.0.patch:
+  Remove obsolete patch.
+
+  07 Sep 2009; Raúl Porcel <armin76@gentoo.org> euses-2.5.6.ebuild:
+  Add ~arm wrt #283101
+
+  30 Apr 2009; Jeroen Roovers <jer@gentoo.org> -euses-2.5.5.ebuild:
+  Remove old.
+
+  18 Apr 2009; Raúl Porcel <armin76@gentoo.org> euses-2.5.6.ebuild:
+  alpha/sparc/x86 stable wrt #266335
+
+  18 Apr 2009; Thomas Anderson <gentoofan23@gentoo.org> euses-2.5.6.ebuild:
+  stable amd64, bug 266335
+
+  18 Apr 2009; nixnut <nixnut@gentoo.org> euses-2.5.6.ebuild:
+  ppc stable #266335
+
+  16 Apr 2009; Jeroen Roovers <jer@gentoo.org> euses-2.5.6.ebuild:
+  Stable for HPPA (bug #266335).
+
+*euses-2.5.6 (18 Mar 2009)
+
+  18 Mar 2009; Jeroen Roovers <jer@gentoo.org> euses-2.5.5.ebuild,
+  +euses-2.5.6.ebuild:
+  Version bump (fixes bug #261078 and bug #261079). Do not redundantly set
+  WANT_AUTOCONF.
+
+  24 Oct 2008; Jeroen Roovers <jer@gentoo.org> -euses-2.5.4.ebuild:
+  Remove old.
+
+  18 Oct 2008; Raúl Porcel <armin76@gentoo.org> euses-2.5.5.ebuild:
+  alpha stable wrt #242484
+
+  18 Oct 2008; nixnut <nixnut@gentoo.org> euses-2.5.5.ebuild:
+  Stable on ppc wrt bug 242484
+
+  17 Oct 2008; Markus Meier <maekke@gentoo.org> euses-2.5.5.ebuild:
+  amd64/x86 stable, bug #242484
+
+  17 Oct 2008; Jeroen Roovers <jer@gentoo.org> euses-2.5.5.ebuild:
+  Stable for SPARC (bug #242484).
+
+  17 Oct 2008; Jeroen Roovers <jer@gentoo.org> euses-2.5.5.ebuild:
+  Stable for HPPA (bug #242484).
+
+*euses-2.5.5 (08 Sep 2008)
+
+  08 Sep 2008; Jeroen Roovers <jer@gentoo.org> +euses-2.5.5.ebuild:
+  Version bump. Also fixes LDFLAGS adherance thanks to Davide Pesavento (bug
+  #237070).
+
+  17 Mar 2008; Ferris McCormick <fmccor@gentoo.org> euses-2.5.4.ebuild:
+  Add ~sparc keyword at user's request (Dustin Surawicz) --- Bug #213677 ---
+  tests pass and it works fine.
+
+  09 Oct 2007; Jeroen Roovers <jer@gentoo.org> euses-2.5.4.ebuild:
+  Bring down src_unpack to bare necessities. Trivial quoting correction.
+
+  07 Jun 2007; Raúl Porcel <armin76@gentoo.org> euses-2.5.4.ebuild:
+  Add ~alpha wrt #178401
+
+  15 Jan 2007; Jeroen Roovers <jer@gentoo.org> -euses-2.4.3.ebuild:
+  Remove deprecated version 2.4.3.
+
+  15 Jan 2007; Luis Medinas <metalgod@gentoo.org> euses-2.5.4.ebuild:
+  Stable on amd64. Bug #160275.
+
+  08 Jan 2007; Christian Faulhammer <opfer@gentoo.org> euses-2.5.4.ebuild:
+  stable x86, bug #160275
+
+  07 Jan 2007; Tobias Scherbaum <dertobi123@gentoo.org> euses-2.5.4.ebuild:
+  ppc stable, bug #160275
+
+  05 Jan 2007; Jeroen Roovers <jer@gentoo.org> euses-2.5.4.ebuild:
+  Stable for HPPA (bug #160275).
+
+  05 Jan 2007; Jeroen Roovers <jer@gentoo.org> -euses-2.5.3.ebuild:
+  Remove deprecated version.
+
+  17 Dec 2006; Jeroen Roovers <jer@gentoo.org> euses-2.5.4.ebuild:
+  Removed silly dependencies.
+
+  08 Dec 2006; Timothy Redaelli <drizzt@gentoo.org> euses-2.5.4.ebuild:
+  Add ~ppc keyword
+
+  08 Dec 2006; Jeroen Roovers <jer@gentoo.org> files/digest-euses-2.5.4,
+  Manifest:
+  Fixed digest. :-\
+
+*euses-2.5.4 (08 Dec 2006)
+
+  08 Dec 2006; Jeroen Roovers <jer@gentoo.org> +euses-2.5.4.ebuild:
+  Version bump. Brings a number of small enhancements.
+
+  28 Nov 2006; Timothy Redaelli <drizzt@gentoo.org> euses-2.5.3.ebuild:
+  Added ~x86-fbsd keyword.
+
+*euses-2.5.3 (24 Nov 2006)
+
+  24 Nov 2006; Jeroen Roovers <jer@gentoo.org> -euses-2.5.2.ebuild,
+  +euses-2.5.3.ebuild:
+  Fix bug #156146. Thanks go to Martin von Gagern for the reminder to actually
+  publish the fixed version.
+
+*euses-2.5.2 (22 Nov 2006)
+
+  22 Nov 2006; Jeroen Roovers <jer@gentoo.org> euses-2.4.3.ebuild,
+  -euses-2.5.0-r1.ebuild, -euses-2.5.1.ebuild, +euses-2.5.2.ebuild:
+  Revisited WANT_AUTO*, removed bad bad bad versions. Added nice version.
+
+*euses-2.5.1 (20 Nov 2006)
+
+  20 Nov 2006; Jeroen Roovers <jer@gentoo.org> -euses-2.5.0.ebuild,
+  +euses-2.5.1.ebuild:
+  Version bump. Possibly fixes bug #140321.
+
+*euses-2.5.0-r1 (18 Nov 2006)
+
+  18 Nov 2006; Jeroen Roovers <jer@gentoo.org> +files/euses-2.5.0.patch,
+  +euses-2.5.0-r1.ebuild:
+  Patched 2.5.0 with fixes suggested on bug #140321. Removed redundant
+  src_compile().
+
+  18 Nov 2006; Jeroen Roovers <jer@gentoo.org> -euses-2.5.0_pre1.ebuild:
+  Removed ancient preview.
+
+*euses-2.5.0 (18 Nov 2006)
+
+  18 Nov 2006; Jeroen Roovers <jer@gentoo.org> +euses-2.5.0.ebuild:
+  Version bump.
+
+  08 Nov 2006; Jeroen Roovers <jer@gentoo.org> euses-2.4.3.ebuild,
+  euses-2.5.0_pre1.ebuild:
+  euses does not care about a specific version for WANT_AUTOMAKE.
+
+  08 Nov 2006; Jeroen Roovers <jer@gentoo.org> euses-2.4.3.ebuild,
+  euses-2.5.0_pre1.ebuild:
+  Fix WANT_AUTOMAKE.
+
+  19 Apr 2006; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Added name tag to metadata.xml
+
+  17 Feb 2006; Scott Stoddard <deltacow@gentoo.org> euses-2.4.3.ebuild:
+  Stable on amd64; bug #122885.
+
+  16 Feb 2006; Joshua Jackson <tsunam@gentoo.org> euses-2.4.3.ebuild:
+  Stable on x86; bug #122885
+
+  15 Feb 2006; Jeroen Roovers <jer@gentoo.org> -euses-2.4.2.ebuild,
+  euses-2.4.3.ebuild:
+  Removed 2.4.2, marked 2.4.3 stable on hppa (bug #122885).
+
+*euses-2.5.0_pre1 (01 Feb 2006)
+
+  01 Feb 2006; Jeroen Roovers <jer@gentoo.org> -euses-2.3.ebuild,
+  +euses-2.5.0_pre1.ebuild:
+  Removed old version, added spanking new one with lang.desc support.
+
+  05 Jan 2006; Jeroen Roovers <jer@gentoo.org> euses-2.4.3.ebuild:
+  hppa -> ~hppa for now.
+
+  05 Jan 2006; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Corrected e-mail addy in metadata.xml
+
+*euses-2.4.3 (05 Jan 2006)
+
+  05 Jan 2006; <chainsaw@gentoo.org> metadata.xml, +euses-2.4.3.ebuild:
+  Version bump. Passed maintainership to ReJ.
+
+  04 Dec 2005; Jeroen Roovers <jer@gentoo.org> euses-2.3.ebuild,
+  euses-2.4.2.ebuild:
+  Stable on hppa
+
+  21 Nov 2005; Jeroen Roovers <jer@gentoo.org> euses-2.3.ebuild,
+  euses-2.4.2.ebuild:
+  Added ~hppa keyword
+
+  19 Nov 2005; <chainsaw@gentoo.org> euses-2.4.2.ebuild:
+  Also install upstream ChangeLog.
+
+*euses-2.4.2 (19 Nov 2005)
+
+  19 Nov 2005; <chainsaw@gentoo.org> euses-2.3.ebuild, +euses-2.4.2.ebuild:
+  Use autotools eclass. Add ~amd64 keyword. Version bump, closes bug #113017.
+
+*euses-2.3 (15 Oct 2005)
+
+  15 Oct 2005; Tony Vroon <chainsaw@gentoo.org> +metadata.xml,
+  +euses-2.3.ebuild:
+  Initial commit, ebuild based on the one by JeR <jer@xs4all.nl> in bug #92795.
+

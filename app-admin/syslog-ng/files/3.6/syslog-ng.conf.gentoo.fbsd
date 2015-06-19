@@ -1,0 +1,25 @@
+@version: 3.6
+# $Header: /var/cvsroot/gentoo-x86/app-admin/syslog-ng/files/3.6/syslog-ng.conf.gentoo.fbsd,v 1.1 2014/11/09 08:10:43 mr_bones_ Exp $
+#
+# Syslog-ng default configuration file for Gentoo FreeBSD
+#
+
+# https://bugs.gentoo.org/show_bug.cgi?id=426814
+@include "scl.conf"
+
+options {
+	threaded(yes);
+	chain_hostnames(no);
+
+	# The default action of syslog-ng is to log a STATS line
+	# to the file every 10 minutes.  That's pretty ugly after a while.
+	# Change it to every 12 hours so you get a nice daily update of
+	# how many messages syslog-ng missed (0).
+	stats_freq(43200); 
+};
+
+source src { system(); internal(); };
+
+destination messages { file("/var/log/messages"); };
+
+log { source(src); destination(messages); };

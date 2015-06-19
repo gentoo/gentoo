@@ -1,0 +1,48 @@
+--- modules/webcam/platform/linux/functions.orig	2011-01-19 22:49:55.457000055 -0700
++++ modules/webcam/platform/linux/functions	2011-01-20 18:19:11.046000085 -0700
+@@ -9,6 +9,7 @@
+ 
+ 	# do we have streamer installed ?
+ 	local streamer=`which streamer`
++	local mencoder=`which mencoder`
+ 	if [ -n "$streamer" ]; then
+ 
+ 		# take four pictures every 0.5 seconds as JPEG
+@@ -37,19 +38,32 @@
+ 			fi
+ 
+ 		fi
+-
++	elif [ -n "${mencoder}" ]; then
++		# not sure how to do this same thing with mencoder
++		mplayer tv:// -tv driver=v4l2:noaudio:device=/dev/video0 -frames 10 -vo jpeg &> /dev/null
++		if [ $? == 0 ]; then
++			mv 00000010.jpg "${webcam__picture}" > /dev/null
++			rm 000000*.jpg > /dev/null
++		fi
+ 	fi
+ 
+ }
+ 
+ capture_video() {
+ 
+-	# we should already know if we do have streamer
++	local frames=$(( $webcam__video_capture_time * $webcam__frames_per_second ))
++	
++	# do we have streamer installed ?
++	local streamer=`which streamer`
++	local mencoder=`which mencoder`
++	
+ 	if [ -n "$streamer" ]; then
+-
+-		local frames=$(( $webcam__video_capture_time * $webcam__frames_per_second ))
+ 		$streamer -o "$webcam__video" -f yuv2 -F stereo -r $webcam__frames_per_second -t $frames
+-
++	elif [ -n "${mencoder}" ]; then
++		${mencoder} tv:// -tv driver=v4l2:noaudio:device=/dev/video0 -ovc lavc -ffourcc DX50 -ofps ${webcam__frames_per_second} -endpos ${webcam__video_capture_time} -o "${tmpdir}/prey-video.avi" &> /dev/null
++		if [ $? == 0 ]; then
++			webcam__video="${tmpdir}/prey-video.avi"
++		fi
+ 	fi
+ 
+ }

@@ -1,0 +1,10 @@
+--- async/cpp/AsyncCppDnsLookupWorker.cpp.old	2012-07-31 17:45:31.000000000 +0000
++++ async/cpp/AsyncCppDnsLookupWorker.cpp	2012-07-31 17:45:24.000000000 +0000
+@@ -38,6 +38,7 @@
+  *
+  ****************************************************************************/
+ 
++#include <unistd.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>

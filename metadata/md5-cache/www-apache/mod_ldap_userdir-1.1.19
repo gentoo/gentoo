@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst setup
+DEPEND=net-nds/openldap ssl? ( dev-libs/openssl ) =www-servers/apache-2*
+DESCRIPTION=Look up Apache ~user directories in an LDAP directory
+EAPI=5
+HOMEPAGE=http://horde.net/~jwm/software/mod_ldap_userdir/
+IUSE=ssl
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-1
+RDEPEND=net-nds/openldap ssl? ( dev-libs/openssl ) =www-servers/apache-2*[ldap] =www-servers/apache-2*
+SLOT=0
+SRC_URI=http://horde.net/~jwm/software/mod_ldap_userdir/mod_ldap_userdir-1.1.19.tar.gz
+_eclasses_=apache-module	5c4c90da2d68c2dc8391666824f1293c	depend.apache	1a38534d3f755d1ab1d92ce120bd7dbd	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9bc67729f7c369a90477b24c089e14df

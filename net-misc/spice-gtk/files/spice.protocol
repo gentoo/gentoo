@@ -1,0 +1,12 @@
+[Protocol]
+exec=/usr/bin/spicy --uri="%u"
+protocol=spice
+input=none
+output=none
+helper=true
+listing=
+reading=false
+writing=false
+makedir=false
+deleting=false
+

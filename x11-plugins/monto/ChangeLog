@@ -1,0 +1,25 @@
+# ChangeLog for x11-plugins/monto
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/monto/ChangeLog,v 1.6 2015/03/29 04:05:09 mrueg Exp $
+
+  29 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -monto-0.1.1.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> monto-0.1.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*monto-0.1.1-r1 (30 Nov 2012)
+
+  30 Nov 2012; Bernard Cafarelli <voyageur@gentoo.org> +monto-0.1.1-r1.ebuild:
+  Clean ebuild, respect CC, reported by ago in bug #444942
+
+  27 Nov 2012; Agostino Sarubbo <ago@gentoo.org> monto-0.1.1.ebuild:
+  Add ~amd64
+
+  15 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org> monto-0.1.1.ebuild:
+  Update HOMEPAGE and SRC_URI, thanks Lorenz in bug #394607
+
+*monto-0.1.1 (06 Sep 2010)
+
+  06 Sep 2010; Michele Noberasco <s4t4n@gentoo.org>; +monto-0.1.1.ebuild:
+  Initial import. Closes bug #123307.

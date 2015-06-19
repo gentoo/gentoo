@@ -1,0 +1,11 @@
+--- denemo-0.9.6/pixmaps/denemo.desktop
++++ denemo-0.9.6/pixmaps/denemo.desktop
+@@ -4,7 +4,7 @@
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+-Categories=GNOME;Audio;AudioVideo;Music;Education
++Categories=GNOME;GTK;Audio;AudioVideo;Music;Education;
+ 
+ Name=GNU Denemo
+ Name[de]=GNU Denemo

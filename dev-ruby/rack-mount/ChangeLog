@@ -1,0 +1,141 @@
+# ChangeLog for dev-ruby/rack-mount
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rack-mount/ChangeLog,v 1.35 2015/06/07 19:06:48 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  25 Mar 2015; Hans de Graaff <graaff@gentoo.org> rack-mount-0.8.3-r2.ebuild:
+  Add ruby22.
+
+  16 Mar 2015; Hans de Graaff <graaff@gentoo.org> -rack-mount-0.8.3-r1.ebuild:
+  Cleanup.
+
+  10 Nov 2014; Manuel Rüger <mrueg@gentoo.org> rack-mount-0.8.3-r1.ebuild,
+  rack-mount-0.8.3-r2.ebuild:
+  Drop jruby target.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> rack-mount-0.8.3-r1.ebuild,
+  rack-mount-0.8.3-r2.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+*rack-mount-0.8.3-r2 (25 Jul 2014)
+
+  25 Jul 2014; Manuel Rüger <mrueg@gentoo.org>
+  +files/rack-mount-fix-ruby20.patch, +rack-mount-0.8.3-r2.ebuild:
+  Add ruby20, ruby21 targets.
+
+  21 May 2014; Manuel Rüger <mrueg@gentoo.org> rack-mount-0.8.3-r1.ebuild:
+  Remove ruby18 target.
+
+*rack-mount-0.8.3-r1 (10 Mar 2014)
+
+  10 Mar 2014; Manuel Rüger <mrueg@gentoo.org> +rack-mount-0.8.3-r1.ebuild,
+  -rack-mount-0.8.3.ebuild:
+  EAPI bump. Remove virtual-test-unit. Remove ree18.
+
+  27 Mar 2013; Dion Moult <moult@gentoo.org> -rack-mount-0.6.14.ebuild:
+  Remove dev-ruby/rack-mount:0.6 due to lack of upstream support
+
+  16 Jan 2013; Rick Farina <zerochaos@gentoo.org> rack-mount-0.8.3.ebuild:
+  adding ~arm keywords to net-analyzer/metasploit rdeps
+
+  11 Sep 2012; Hans de Graaff <graaff@gentoo.org> -rack-mount-0.7.4.ebuild:
+  Cleanup. Nothing in the tree depends on it and this should probably have been
+  slot 0.8 anyway.
+
+  13 Aug 2012; Hans de Graaff <graaff@gentoo.org> rack-mount-0.8.3.ebuild:
+  Actually comment out the failing test. Fixes bug 430714.
+
+  12 May 2012; Diego E. Pettenò <flameeyes@gentoo.org> rack-mount-0.6.14.ebuild:
+  Add Ruby 1.9 to the supported list.
+
+  01 May 2012; Raúl Porcel <armin76@gentoo.org> rack-mount-0.6.14.ebuild:
+  Drop ia64/sparc keywords
+
+  04 Apr 2012; Hans de Graaff <graaff@gentoo.org> rack-mount-0.7.4.ebuild,
+  rack-mount-0.8.3.ebuild:
+  Move ~ppc,~ppc64 keywords forward to latest version.
+
+  01 Jan 2012; Fabian Groffen <grobian@gentoo.org> rack-mount-0.8.3.ebuild:
+  Add Prefix keywords
+
+  29 Dec 2011; Hans de Graaff <graaff@gentoo.org> rack-mount-0.8.3.ebuild:
+  Add ruby19. Avoid fragile test.
+
+  29 Dec 2011; Hans de Graaff <graaff@gentoo.org> -rack-mount-0.7.3.ebuild,
+  -rack-mount-0.8.1.ebuild, -rack-mount-0.8.2.ebuild:
+  Remove old versions.
+
+*rack-mount-0.8.3 (16 Sep 2011)
+
+  16 Sep 2011; Hans de Graaff <graaff@gentoo.org> +rack-mount-0.8.3.ebuild:
+  Version bump.
+
+  09 Sep 2011; Fabian Groffen <grobian@gentoo.org> rack-mount-0.6.14.ebuild:
+  Marked ~sparc-solaris
+
+  08 Sep 2011; Fabian Groffen <grobian@gentoo.org> rack-mount-0.6.14.ebuild:
+  Marked ~x86-solaris
+
+*rack-mount-0.8.2 (12 Aug 2011)
+
+  12 Aug 2011; Hans de Graaff <graaff@gentoo.org> +rack-mount-0.8.2.ebuild:
+  Version bump.
+
+  07 Aug 2011; Raúl Porcel <armin76@gentoo.org> rack-mount-0.6.14.ebuild:
+  Add ~ia64/~sparc wrt #351835
+
+  24 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> rack-mount-0.6.14.ebuild:
+  Marked ~ppc/~ppc64 wrt #351835
+
+*rack-mount-0.8.1 (21 Jul 2011)
+
+  21 Jul 2011; Hans de Graaff <graaff@gentoo.org> +rack-mount-0.8.1.ebuild:
+  Version bump.
+
+*rack-mount-0.7.4 (09 Jul 2011)
+
+  09 Jul 2011; Hans de Graaff <graaff@gentoo.org> +rack-mount-0.7.4.ebuild:
+  Version bump.
+
+  04 Jul 2011; Hans de Graaff <graaff@gentoo.org> rack-mount-0.6.14.ebuild,
+  rack-mount-0.7.3.ebuild:
+  Move versions into slots because they are not compatible and actionpack 3.0.x
+  fails tests with the wrong version.
+
+  04 Jul 2011; Hans de Graaff <graaff@gentoo.org> -rack-mount-0.6.13.ebuild,
+  -rack-mount-0.7.1.ebuild, -rack-mount-0.7.2.ebuild:
+  Remove old versions.
+
+*rack-mount-0.6.14 (04 Jul 2011)
+
+  04 Jul 2011; Hans de Graaff <graaff@gentoo.org> +rack-mount-0.6.14.ebuild:
+  Version bump.
+
+  29 Jun 2011; Fabian Groffen <grobian@gentoo.org> rack-mount-0.7.3.ebuild:
+  Marked ~x86-solaris
+
+*rack-mount-0.7.3 (13 May 2011)
+
+  13 May 2011; Hans de Graaff <graaff@gentoo.org> +rack-mount-0.7.3.ebuild:
+  Version bump.
+
+*rack-mount-0.7.2 (20 Apr 2011)
+
+  20 Apr 2011; Hans de Graaff <graaff@gentoo.org> +rack-mount-0.7.2.ebuild:
+  Version bump.
+
+*rack-mount-0.7.1 (10 Apr 2011)
+
+  10 Apr 2011; Hans de Graaff <graaff@gentoo.org> +rack-mount-0.7.1.ebuild:
+  Version bump.
+
+  13 Feb 2011; Thomas Kahle <tomka@gentoo.org> rack-mount-0.6.13.ebuild:
+  keyworded ~x86 per bug 351835
+
+*rack-mount-0.6.13 (03 Dec 2010)
+
+  03 Dec 2010; Hans de Graaff <graaff@gentoo.org> +rack-mount-0.6.13.ebuild,
+  +metadata.xml:
+  Initial import. New dependency of Rails 3.0.3.

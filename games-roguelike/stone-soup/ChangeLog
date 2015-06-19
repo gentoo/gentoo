@@ -1,0 +1,210 @@
+# ChangeLog for games-roguelike/stone-soup
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-roguelike/stone-soup/ChangeLog,v 1.43 2015/05/14 10:28:09 hasufell Exp $
+
+*stone-soup-0.16.1 (14 May 2015)
+
+  14 May 2015; Julian Ospald <hasufell@gentoo.org> +stone-soup-0.16.1.ebuild,
+  +files/stone-soup-0.16.1-Use-pkg-config-for-linking-to-ncurses.patch,
+  +files/stone-soup-0.16.1-respect-flags-and-compiler.patch:
+  version bump
+
+*stone-soup-0.15.2 (27 Oct 2014)
+
+  27 Oct 2014; Julian Ospald <hasufell@gentoo.org> +stone-soup-0.15.2.ebuild,
+  +files/stone-soup-0.15.2-Use-pkg-config-for-linking-to-ncurses.patch,
+  +files/stone-soup-0.15.2-respect-flags-and-compiler.patch:
+  version bump, possibly fix bug #527034
+
+  27 Oct 2014; Patrick Lauer <patrick@gentoo.org> stone-soup-0.13.2.ebuild,
+  stone-soup-0.14.1.ebuild, stone-soup-0.14.2.ebuild,
+  stone-soup-0.15.1-r1.ebuild, stone-soup-0.15.1.ebuild:
+  Shorten description for repoman happy
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> stone-soup-0.14.2.ebuild:
+  Stable for x86, wrt bug #523530
+
+  09 Oct 2014; Agostino Sarubbo <ago@gentoo.org> stone-soup-0.14.2.ebuild:
+  Stable for amd64, wrt bug #523530
+
+*stone-soup-0.15.1-r1 (25 Sep 2014)
+
+  25 Sep 2014; Julian Ospald <hasufell@gentoo.org>
+  +stone-soup-0.15.1-r1.ebuild:
+  use bundled lua
+
+*stone-soup-0.15.1 (23 Sep 2014)
+
+  23 Sep 2014; Julian Ospald <hasufell@gentoo.org> -stone-soup-0.13.1.ebuild,
+  -stone-soup-0.15.0.ebuild, +stone-soup-0.15.1.ebuild,
+  -files/stone-soup-0.13.1-build.patch, -files/stone-soup-0.15.0-build.patch,
+  +files/stone-soup-0.15.1-build.patch:
+  version bump, rm old
+
+*stone-soup-0.15.0 (05 Sep 2014)
+
+  05 Sep 2014; Julian Ospald <hasufell@gentoo.org> +stone-soup-0.15.0.ebuild,
+  +files/stone-soup-0.15.0-build.patch:
+  version bump
+
+*stone-soup-0.14.2 (28 Aug 2014)
+
+  28 Aug 2014; Julian Ospald <hasufell@gentoo.org> +stone-soup-0.14.2.ebuild,
+  +files/stone-soup-0.14.2-build.patch, metadata.xml:
+  version bump, introduce luajit USE flag
+
+  19 Aug 2014; Julian Ospald <hasufell@gentoo.org> -stone-soup-0.11.2.ebuild,
+  -stone-soup-0.12.2.ebuild, -stone-soup-0.12.3.ebuild,
+  -stone-soup-0.13.0.ebuild, -stone-soup-0.14.0.ebuild,
+  -files/stone-soup-0.11.2-build.patch, -files/stone-soup-0.12.2-build.patch,
+  -files/stone-soup-0.12.3-build.patch, -files/stone-soup-0.13.0-build.patch,
+  -files/stone-soup-0.14.0-build.patch:
+  rm old
+
+  19 Aug 2014; Julian Ospald <hasufell@gentoo.org> stone-soup-0.13.1.ebuild,
+  stone-soup-0.13.2.ebuild, stone-soup-0.14.1.ebuild:
+  fix description for better search compatibility
+
+  10 Aug 2014; Agostino Sarubbo <ago@gentoo.org> stone-soup-0.14.1.ebuild:
+  Stable for x86, wrt bug #518224
+
+  01 Aug 2014; Chema Alonso <nimiux@gentoo.org> stone-soup-0.14.1.ebuild:
+  Stable for amd64 wrt bug #518224
+
+*stone-soup-0.14.1 (29 Apr 2014)
+
+  29 Apr 2014; Julian Ospald <hasufell@gentoo.org> +stone-soup-0.14.1.ebuild,
+  +files/stone-soup-0.14.1-build.patch:
+  version bump
+
+  23 Apr 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/stone-soup-0.14.0-build.patch:
+  add missing patch for bug #508464
+
+*stone-soup-0.14.0 (22 Apr 2014)
+
+  22 Apr 2014; Julian Ospald <hasufell@gentoo.org> +stone-soup-0.14.0.ebuild:
+  yet another version bump
+
+*stone-soup-0.13.2 (22 Apr 2014)
+
+  22 Apr 2014; Julian Ospald <hasufell@gentoo.org> +stone-soup-0.13.2.ebuild,
+  +files/stone-soup-0.13.2-build.patch:
+  version bump
+
+  25 Feb 2014; Chema Alonso <nimiux@gentoo.org> stone-soup-0.13.1.ebuild:
+  Stable for amd64 wrt bug #499828
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  stone-soup-0.13.1.ebuild:
+  x86 stable wrt bug #499828
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> stone-soup-0.13.0.ebuild:
+  Stable for x86, wrt bug #491534
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> stone-soup-0.13.0.ebuild:
+  amd64 stable, bug #491534
+
+*stone-soup-0.13.1 (06 Dec 2013)
+
+  06 Dec 2013; Julian Ospald <hasufell@gentoo.org> +stone-soup-0.13.1.ebuild,
+  +files/stone-soup-0.13.1-build.patch:
+  version bump
+
+*stone-soup-0.13.0 (11 Oct 2013)
+
+  11 Oct 2013; Julian Ospald <hasufell@gentoo.org>
+  +files/stone-soup-0.13.0-build.patch, +stone-soup-0.13.0.ebuild:
+  version bump
+
+*stone-soup-0.12.3 (23 Sep 2013)
+
+  23 Sep 2013; Julian Ospald <hasufell@gentoo.org>
+  +files/stone-soup-0.12.3-build.patch, +stone-soup-0.12.3.ebuild:
+  version bump
+
+  27 Aug 2013; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  update metadata.xml
+
+  07 Jul 2013; Agostino Sarubbo <ago@gentoo.org> stone-soup-0.12.2.ebuild:
+  Stable for x86, wrt bug #476022
+
+  07 Jul 2013; Agostino Sarubbo <ago@gentoo.org> stone-soup-0.12.2.ebuild:
+  Stable for amd64, wrt bug #476022
+
+  07 Jul 2013; Julian Ospald <hasufell@gentoo.org> stone-soup-0.12.2.ebuild:
+  add missing media-fonts/dejavu dep wrt #476024
+
+*stone-soup-0.12.2 (04 Jun 2013)
+
+  04 Jun 2013; Julian Ospald <hasufell@gentoo.org> -stone-soup-0.11.0.ebuild,
+  -files/stone-soup-0.11.0-build.patch, -stone-soup-0.11.1-r1.ebuild,
+  -files/stone-soup-0.11.1-build.patch, -stone-soup-0.12.1.ebuild,
+  -files/stone-soup-0.12.1-build.patch, +stone-soup-0.12.2.ebuild,
+  +files/stone-soup-0.12.2-build.patch:
+  version bump, remove old
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> stone-soup-0.11.2.ebuild:
+  Stable for x86, wrt bug #469742
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> stone-soup-0.11.2.ebuild:
+  Stable for amd64, wrt bug #469742
+
+*stone-soup-0.12.1 (05 May 2013)
+
+  05 May 2013; Julian Ospald <hasufell@gentoo.org> +stone-soup-0.12.1.ebuild,
+  +files/stone-soup-0.12.1-build.patch:
+  version bump
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> stone-soup-0.11.0.ebuild,
+  stone-soup-0.11.1-r1.ebuild, stone-soup-0.11.2.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+*stone-soup-0.11.2 (26 Jan 2013)
+
+  26 Jan 2013; Julian Ospald <hasufell@gentoo.org> +stone-soup-0.11.2.ebuild,
+  +files/stone-soup-0.11.2-build.patch:
+  version bump
+
+  13 Dec 2012; Julian Ospald <hasufell@gentoo.org> -stone-soup-0.10.3.ebuild,
+  -files/stone-soup-0.10.3-build.patch, -stone-soup-0.11.1.ebuild:
+  remove old
+
+  13 Dec 2012; Julian Ospald <hasufell@gentoo.org> stone-soup-0.10.3.ebuild,
+  stone-soup-0.11.0.ebuild, stone-soup-0.11.1.ebuild,
+  stone-soup-0.11.1-r1.ebuild:
+  fix dependencies, remove broken lua useflag wrt #447056
+
+  06 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  stone-soup-0.11.0.ebuild:
+  x86 stable wrt bug #445091
+
+  02 Dec 2012; Agostino Sarubbo <ago@gentoo.org> stone-soup-0.11.0.ebuild:
+  Stable for amd64, wrt bug #445091
+
+*stone-soup-0.11.1-r1 (29 Nov 2012)
+
+  29 Nov 2012; Julian Ospald <hasufell@gentoo.org>
+  +stone-soup-0.11.1-r1.ebuild, metadata.xml:
+  add ncurses useflag, allowing to build both variants at the same time
+
+*stone-soup-0.11.1 (22 Nov 2012)
+
+  22 Nov 2012; Julian Ospald <hasufell@gentoo.org> +stone-soup-0.11.1.ebuild,
+  +files/stone-soup-0.11.1-build.patch:
+  version bump
+
+*stone-soup-0.11.0 (05 Oct 2012)
+
+  05 Oct 2012; Julian Ospald <hasufell@gentoo.org> +stone-soup-0.11.0.ebuild,
+  +files/stone-soup-0.11.0-build.patch:
+  version bump
+
+  04 Sep 2012; Michael Sterrett <mr_bones_@gentoo.org> stone-soup-0.10.3.ebuild:
+  add missing test to IUSE
+
+*stone-soup-0.10.3 (28 Aug 2012)
+
+  28 Aug 2012; Julian Ospald <hasufell@gentoo.org> +stone-soup-0.10.3.ebuild,
+  +files/stone-soup-0.10.3-build.patch, +metadata.xml:
+  initial import wrt #374852 reviewed by Michael Sterrett

@@ -1,0 +1,22 @@
+*** bcpp-20050725/code/bcpp.cpp.orig	2008-07-12 10:07:55.000000000 -0700
+--- bcpp-20050725/code/bcpp.cpp	2008-07-12 10:07:57.000000000 -0700
+***************
+*** 3100,3110 ****
+--- 3100,3116 ----
+      const char* pathSepChar;
+      char  backUp;
+      int   count       = 0;
++ 	char buf[40];
+  
+      // test to see if file is in current directory first !
+      if ((pCfgFile = fopen(pCfgName, "r")) != NULL)
+          return;
+  
++ 	// try /etc/bcpp
++ 	snprintf(buf, 40, "/etc/bcpp/%s", pCfgName);
++     if ((pCfgFile = fopen(buf, "r")) != NULL)
++         return;
++ 
+      // environment variable not found, lord knows what it is !
+      if (pSPath == NULL)
+         return;

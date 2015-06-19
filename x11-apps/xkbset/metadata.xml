@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>jer@gentoo.org</email>
+</maintainer>
+<use>
+<flag name='tk'>Install the <pkg>dev-perl/perl-tk</pkg> based xkbset-gui utility</flag>
+</use>
+</pkgmetadata>

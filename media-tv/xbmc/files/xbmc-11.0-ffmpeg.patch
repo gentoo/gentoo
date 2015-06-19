@@ -1,0 +1,46 @@
+https://bugs.gentoo.org/406215
+
+From 97212837ec81c3869ba60e0690f26c09b9428747 Mon Sep 17 00:00:00 2001
+From: Tomas Chvatal <tchvatal@suse.cz>
+Date: Fri, 30 Mar 2012 10:00:46 +0200
+Subject: [PATCH] Ensure we include proper header on ffmpeg.
+
+---
+ configure.in      |    3 +++
+ lib/DllAvFilter.h |    6 +++++-
+ 2 files changed, 8 insertions(+), 1 deletions(-)
+
+diff --git a/configure.in b/configure.in
+index bca9239..d209f80 100755
+--- a/configure.in
++++ b/configure.in
+@@ -1229,6 +1229,9 @@ if test "$use_external_ffmpeg" = "yes"; then
+   AC_CHECK_HEADERS([libswscale/rgb2rgb.h],,)
+   AC_CHECK_HEADERS([ffmpeg/rgb2rgb.h],,)
+ 
++  # check for avcodec header as it is not present on libav
++  AC_CHECK_HEADERS([libavfilter/avcodec.h],,)
++
+   # Check if AVFilterBufferRefVideoProps AVRational member is named
+   # 'pixel_aspect' or 'sample_aspect_ratio'.
+   AC_CHECK_MEMBER([AVFilterBufferRefVideoProps.sample_aspect_ratio],
+diff --git a/lib/DllAvFilter.h b/lib/DllAvFilter.h
+index 827746e..d47623b 100644
+--- a/lib/DllAvFilter.h
++++ b/lib/DllAvFilter.h
+@@ -48,7 +48,11 @@ extern "C" {
+   #endif
+   /* for av_vsrc_buffer_add_frame */
+   #if LIBAVFILTER_VERSION_INT >= AV_VERSION_INT(2,8,0)
+-    #include <libavfilter/vsrc_buffer.h>
++    #if defined(HAVE_LIBAVFILTER_AVCODEC_H)
++      #include <libavfilter/avcodec.h>
++    #else
++      #include <libavfilter/vsrc_buffer.h>
++    #endif
+   #elif LIBAVFILTER_VERSION_INT >= AV_VERSION_INT(2,7,0)
+     int av_vsrc_buffer_add_frame(AVFilterContext *buffer_filter,
+                                  AVFrame *frame);
+-- 
+1.7.3.4
+

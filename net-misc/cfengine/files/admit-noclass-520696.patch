@@ -1,0 +1,15 @@
+Fix a bug with admit/grant that let cfengine2 fails when the class
+of a cfengine fragment does not exist and more than a host or IP
+ranges are specified for a path (see #520696)
+
+--- a/src/install.c
++++ b/src/install.c
+@@ -6561,7 +6561,7 @@
+ if (!IsDefinedClass(classes))
+    {
+    Debug1("Not installing Auth path, no match\n");
+-   InitializeAction();
++//   InitializeAction();
+    return;
+    }
+ 

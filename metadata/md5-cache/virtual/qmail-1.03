@@ -1,0 +1,6 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for qmail
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
+RDEPEND=|| ( ~mail-mta/netqmail-1.05 ~mail-mta/netqmail-1.06 ~mail-mta/mini-qmail-1.05 ~mail-mta/mini-qmail-1.06 ~mail-mta/qmail-ldap-1.03 )
+SLOT=0
+_md5_=8ead293ad8f526539b937acda4537b51

@@ -1,0 +1,118 @@
+# ChangeLog for Gentoo base-profile
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/embedded/ChangeLog,v 1.40 2014/04/29 12:47:16 blueness Exp $
+
+  29 Apr 2014; Anthony G. Basile <blueness@gentoo.org> make.defaults:
+  Add musl to USE_EXPAND_VALUES_ELIBC, bug #509036
+
+  09 Apr 2014; Michał Górny <mgorny@gentoo.org> make.defaults:
+  Fix mailing list address.
+
+  27 Mar 2014; Andreas K. Huettel <dilfridge@gentoo.org> +eapi:
+  Increase EAPI to 5
+
+  30 Jul 2013; Matt Turner <mattst88@gentoo.org> make.defaults:
+  Add ABI_MIPS to USE_EXPAND.
+
+  29 Jul 2013; Sergey Popov <pinkbyte@gentoo.org> make.defaults:
+  Drop MISDN_CARDS, wrt bug #471796
+
+  30 May 2013; Michał Górny <mgorny@gentoo.org> make.defaults:
+  Drop stale ALSA_PCM_PLUGINS from USE_EXPAND. Bug #471792.
+
+  30 Apr 2011; Ulrich Mueller <ulm@gentoo.org> -virtuals:
+  Remove old-style virtual/linux-sources, bug 118442.
+
+  24 Apr 2011; Ulrich Mueller <ulm@gentoo.org> virtuals:
+  Remove old-style virtual/modutils, bug 358891.
+
+  20 Apr 2011; Ulrich Mueller <ulm@gentoo.org> virtuals:
+  Remove cron and libc old-style virtuals, bugs 360109 and 359001.
+
+  16 Apr 2011; Ulrich Mueller <ulm@gentoo.org> virtuals:
+  Remove old-style virtual/aspell-dict, bug 358821.
+  Remove old-style virtual/blackbox, bug 358825.
+  Remove old-style virtual/inetd, bug 358831.
+  Remove old-style virtual/ssh, bug 361121.
+
+  15 Apr 2011; Ulrich Mueller <ulm@gentoo.org> virtuals:
+  Remove old-style virtual/dev-manager, bug 361133.
+
+  14 Apr 2011; Ulrich Mueller <ulm@gentoo.org> virtuals:
+  Remove old-style virtual/os-headers, bug 358999.
+
+  13 Apr 2011; Ulrich Mueller <ulm@gentoo.org> virtuals:
+  Remove old-style virtual/skkserv, bug 358851.
+
+  10 Apr 2011; Ulrich Mueller <ulm@gentoo.org> virtuals:
+  Remove old-style virtual/bootloader, bug 359971.
+
+  07 Apr 2011; Ulrich Mueller <ulm@gentoo.org> virtuals:
+  Remove old-style virtual/logger, bug 358881.
+
+  05 Apr 2011; Ulrich Mueller <ulm@gentoo.org> virtuals:
+  Remove old-style virtual/python, bug 358849.
+  Remove old-style virtual/utempter, bug 361117.
+
+  03 Apr 2011; Ulrich Mueller <ulm@gentoo.org> virtuals:
+  Remove old-style virtual/gzip, bug 358829.
+
+  28 Mar 2011; Eray Aslan <eras@gentoo.org> virtuals:
+  remove old style virtual/mta - bug 360305
+
+  22 Mar 2011; Ulrich Mueller <ulm@gentoo.org> virtuals:
+  Remove old-style virtual/tftp, bug 359125.
+
+  19 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> virtuals:
+  Remove virtual/alsa.
+
+  19 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> virtuals:
+  Move virtual/lpr to new-style virtual.
+
+  19 Mar 2011; Eray Aslan <eras@gentoo.org> virtuals:
+  remove old style virtual/imapd
+
+  16 Mar 2011; Eray Aslan <eras@gentoo.org> virtuals:
+  virtual/imap-c-client changed to new style - bug 358993
+
+  16 Mar 2011; Ulrich Mueller <ulm@gentoo.org> virtuals:
+  Remove old-style virtual/antivirus, bug 358817.
+
+  16 Mar 2011; Eray Aslan <eras@gentoo.org> virtuals:
+  remove old style virtual/mda, bug 358843
+
+  15 Mar 2011; Ulrich Mueller <ulm@gentoo.org> virtuals:
+  Kill old-style virtual/quicktime, bug 358857.
+
+  14 Mar 2011; Ulrich Mueller <ulm@gentoo.org> virtuals:
+  Remove spurious old-style virtuals.
+
+  10 Jan 2011; Zac Medico <zmedico@gentoo.org> use.mask:
+  Bug #351274 - Mask prefix USE flag.
+
+  19 Jan 2010; <solar@gentoo.org> make.defaults, virtuals:
+  -- - quote the variables in the profile cuz PMS and reality differ. pythons
+  shlex module always handled it properly. PMS is being too picky
+
+  21 Sep 2009; Robin H. Johnson <robbat2@gentoo.org> make.defaults:
+  Adding USE="modules" to all Linux profiles to link with new linux-mod
+  behavior for making modules optional if desired.
+
+  21 Jun 2009; Hans de Graaff <graaff@gentoo.org> virtuals:
+  Remove virtual/xemacs since xemacs no longer provides it.
+
+  06 Jun 2008; Rémi Cardona <remi@gentoo.org> package.mask:
+  pkgmove to gnome-base/gnome-control-center
+
+  14 Feb 2008; Raúl Porcel <armin76@gentoo.org> virtuals:
+  Remove useless virtual/bittorrent
+
+  13 Dec 2007; Duncan Coutts <dcoutts@gentoo.org> virtuals:
+  Remove old-style virtual/ghc as it is no longer used.
+
+  05 Nov 2007; Duncan Coutts <dcoutts@gentoo.org> virtuals:
+  Switch to ghc rather than ghc-bin for virtual as we're p.masking ghc-bin
+
+  10 Oct 2007; Christian Faulhammer <opfer@gentoo.org> virtuals:
+  remove virtual/editor, we have a new-style virtual now
+

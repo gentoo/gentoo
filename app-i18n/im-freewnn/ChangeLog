@@ -1,0 +1,77 @@
+# ChangeLog for app-i18n/im-freewnn
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/im-freewnn/ChangeLog,v 1.19 2014/07/24 02:02:10 naota Exp $
+
+  24 Jul 2014; Naohiro Aota <naota@gentoo.org> -im-freewnn-0.0.2.ebuild:
+  Drop old revision. #517820
+
+  21 Apr 2013; Fabio Erculiani <lxnay@gentoo.org> im-freewnn-0.0.2.ebuild,
+  im-freewnn-0.0.2-r1.ebuild:
+  override mantainer due to bug inactivity after 1 year, standardize to
+  gnome2_query_immodules_gtk2, fix bug #413513
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> im-freewnn-0.0.2.ebuild,
+  im-freewnn-0.0.2-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  28 Feb 2012; Brent Baude <ranger@gentoo.org> im-freewnn-0.0.2-r1.ebuild:
+  Marking im-freewnn-0.0.2-r1 ppc for bug 392875
+
+  12 Feb 2012; Tony Vroon <chainsaw@gentoo.org> im-freewnn-0.0.2-r1.ebuild:
+  Marked stable on PPC64 as requested by Paweł Hajdan, Jr. in bug #392875.
+  Compile tested on a PowerMac7,3 (64UL) with GCC 4.5.3.
+
+  18 Dec 2011; Naohiro Aota <naota@gentoo.org> im-freewnn-0.0.2-r1.ebuild:
+  Add missing dependecies.
+
+  14 Dec 2011; Agostino Sarubbo <ago@gentoo.org> im-freewnn-0.0.2-r1.ebuild:
+  Stable for AMD64, wrt bug #392875
+
+  11 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  im-freewnn-0.0.2-r1.ebuild:
+  x86 stable wrt bug #392875
+
+  18 Dec 2011; Naohiro Aota <naota@gentoo.org> im-freewnn-0.0.2-r1.ebuild:
+  Add missing dependecies.
+
+  06 Dec 2011; Naohiro Aota <naota@gentoo.org> im-freewnn-0.0.2-r1.ebuild,
+  +files/im-freewnn-0.0.2-implicit-declaration.patch:
+  Add tiny QA fix to supress implict declaration warning.
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  im-freewnn-0.0.2.ebuild, im-freewnn-0.0.2-r1.ebuild:
+  Fix slot-dep on gtk+
+
+*im-freewnn-0.0.2-r1 (31 Dec 2009)
+
+  31 Dec 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +im-freewnn-0.0.2-r1.ebuild, +files/im-freewnn-0.0.2-as-needed.patch:
+  Fixed as-needed issue, bug #298744.
+
+  22 Apr 2007; Markus Rothe <corsair@gentoo.org> im-freewnn-0.0.2.ebuild:
+  Added ~ppc64
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  14 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  im-freewnn-0.0.2.ebuild:
+  Add missing pkgconfig dependencies, thanks to Patrick Lauer in bug #151264.
+
+  12 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> -im-freewnn-0.0.1.ebuild,
+  im-freewnn-0.0.2.ebuild:
+  Stable on x86 and ppc.
+
+  30 Aug 2004; David Holm <dholm@gentoo.org> im-freewnn-0.0.2.ebuild:
+  Added to ~ppc.
+
+*im-freewnn-0.0.2 (11 Aug 2004)
+
+  11 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> +im-freewnn-0.0.2.ebuild:
+  Version bumped.
+
+*im-freewnn-0.0.1 (05 Aug 2004)
+
+  05 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +files/im-freewnn-wnnrc-gentoo.diff, +im-freewnn-0.0.1.ebuild:
+  Initial import.

@@ -1,0 +1,153 @@
+# ChangeLog for x11-apps/xlogo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xlogo/ChangeLog,v 1.43 2015/04/11 21:49:31 mrueg Exp $
+
+  11 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -xlogo-1.0.3.ebuild:
+  Remove old.
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> xlogo-1.0.4.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #419473
+
+  12 Jul 2012; Brent Baude <ranger@gentoo.org> xlogo-1.0.4.ebuild:
+  Marking xlogo-1.0.4 ppc stable for bug 419473
+
+  11 Jul 2012; Brent Baude <ranger@gentoo.org> xlogo-1.0.4.ebuild:
+  Marking xlogo-1.0.4 ppc64 stable for bug 419473
+
+  28 Jun 2012; Jeroen Roovers <jer@gentoo.org> xlogo-1.0.4.ebuild:
+  Stable for HPPA (bug #419473).
+
+  28 Jun 2012; Markus Meier <maekke@gentoo.org> xlogo-1.0.4.ebuild:
+  arm stable, bug #419473
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> xlogo-1.0.4.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> xlogo-1.0.4.ebuild:
+  Stable for amd64, wrt bug #419473
+
+*xlogo-1.0.4 (23 Mar 2012)
+
+  23 Mar 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xlogo-1.0.4.ebuild:
+  Version bump.
+
+  10 Aug 2011; Markus Duft <mduft@gentoo.org> xlogo-1.0.3.ebuild:
+  added ~x86-interix prefix keyword
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> xlogo-1.0.3.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> xlogo-1.0.3.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #344827
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> xlogo-1.0.3.ebuild:
+  Stable for HPPA (bug #344827).
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org> xlogo-1.0.3.ebuild:
+  arm stable, bug #344827
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org> xlogo-1.0.3.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> xlogo-1.0.3.ebuild:
+  amd64 stable wrt #344827
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> xlogo-1.0.3.ebuild:
+  ppc64 stable wrt #344827
+
+*xlogo-1.0.3 (01 Nov 2010)
+
+  01 Nov 2010; Tomáš Chvátal <scarabeus@gentoo.org> +xlogo-1.0.3.ebuild:
+  Version bump
+
+  10 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> -xlogo-1.0.1.ebuild:
+  rm
+
+  04 Mar 2010; Raúl Porcel <armin76@gentoo.org> xlogo-1.0.2.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable
+
+  15 Feb 2010; Joseph Jezak <josejx@gentoo.org> xlogo-1.0.2.ebuild:
+  Marked ppc/ppc64 stable for bug #302046.
+
+  11 Feb 2010; Jeroen Roovers <jer@gentoo.org> xlogo-1.0.2.ebuild:
+  Stable for HPPA (bug #302046).
+
+  08 Feb 2010; Christian Faulhammer <fauli@gentoo.org> xlogo-1.0.2.ebuild:
+  stable x86, bug 302046
+
+  30 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> xlogo-1.0.2.ebuild:
+  amd64 stable wrt #302046
+
+*xlogo-1.0.2 (15 Dec 2009)
+
+  15 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org> +xlogo-1.0.2.ebuild:
+  Version bump.
+
+  25 Aug 2009; Rémi Cardona <remi@gentoo.org> xlogo-1.0.1.ebuild:
+  add missing x11-libs/libXft dep (fixes bug #227889)
+
+  01 May 2009; Samuli Suominen <ssuominen@gentoo.org> xlogo-1.0.1.ebuild:
+  Remove USE xprint since it works now for this version.
+
+  09 May 2008; Donnie Berkholz <dberkholz@gentoo.org>; xlogo-1.0.1.ebuild:
+  (#204660) Fix build by passing in --with-render.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  10 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>; xlogo-1.0.1.ebuild:
+  Update description to be less generic.
+
+  31 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>; xlogo-1.0.1.ebuild:
+  (#140686) Stable on alpha/amd64/arm/hppa/ia64/mips/ppc/ppc64/sh/sparc/x86.
+
+  20 May 2006; Robin H. Johnson <robbat2@gentoo.org> xlogo-1.0.1.ebuild:
+  Added ~ppc after testing.
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> xlogo-1.0.1.ebuild:
+  Added ~ppc64
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xlogo-0.99.2.ebuild, -xlogo-1.0.0.ebuild:
+  Pull old versions.
+
+*xlogo-1.0.1 (23 Dec 2005)
+
+  23 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>; +xlogo-1.0.1.ebuild:
+  Bump for 7.0.
+
+*xlogo-1.0.0 (18 Dec 2005)
+
+  18 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xlogo-1.0.0.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>; -xlogo-0.99.0.ebuild,
+  -xlogo-0.99.1.ebuild:
+  Pull old versions.
+
+*xlogo-0.99.2 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xlogo-0.99.2.ebuild:
+  Bump for 7.0RC3.
+
+  17 Nov 2005; Herbie Hopkins <herbs@gentoo.org> xlogo-0.99.1.ebuild:
+  Marked ~amd64.
+
+*xlogo-0.99.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>; +xlogo-0.99.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> xlogo-0.99.0.ebuild:
+  Add ~sparc keyword (Modular X testing).
+
+*xlogo-0.99.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>; +xlogo-0.99.0.ebuild:
+  Initial commit for modular X.

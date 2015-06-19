@@ -1,0 +1,20 @@
+# ChangeLog for app-vim/ctrlp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/ctrlp/ChangeLog,v 1.4 2015/06/07 08:13:11 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  28 Nov 2014; Tim Harder <radhermit@gentoo.org> ctrlp-1.79.ebuild:
+  Stabilize for x86 and amd64 (bug #531012).
+
+*ctrlp-1.79 (08 Apr 2013)
+
+  08 Apr 2013; Tim Harder <radhermit@gentoo.org> +ctrlp-1.79.ebuild:
+  Version bump.
+
+*ctrlp-1.78 (09 Sep 2012)
+
+  09 Sep 2012; Tim Harder <radhermit@gentoo.org> +ctrlp-1.78.ebuild,
+  +metadata.xml:
+  Initial import.

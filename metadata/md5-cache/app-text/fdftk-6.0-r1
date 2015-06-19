@@ -1,0 +1,9 @@
+DEFINED_PHASES=install nofetch unpack
+DESCRIPTION=Acrobat FDF Toolkit
+HOMEPAGE=http://www.adobe.com/devnet/acrobat/fdftoolkit.html
+KEYWORDS=-* x86
+LICENSE=Adobe
+RESTRICT=fetch strip mirror
+SLOT=0
+SRC_URI=FDFToolkitForUnix.tar.gz
+_md5_=41ba711a7eb509f8d0284eac3d59152d

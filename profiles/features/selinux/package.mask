@@ -1,0 +1,2 @@
+# $Header: /var/cvsroot/gentoo-x86/profiles/features/selinux/package.mask,v 1.55 2014/10/30 17:52:16 swift Exp $
+

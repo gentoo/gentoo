@@ -1,0 +1,108 @@
+# ChangeLog for dev-cpp/gtkglextmm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gtkglextmm/ChangeLog,v 1.24 2015/06/09 13:01:27 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  02 Dec 2014; Pacho Ramos <pacho@gentoo.org> gtkglextmm-1.2.0-r1.ebuild:
+  Update ebuild
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> gtkglextmm-1.2.0-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  17 Dec 2010; Pacho Ramos <pacho@gentoo.org> gtkglextmm-1.2.0-r1.ebuild:
+  Remove -D.*DISABLE_DEPRECATED cflags, bug #342905 (by Thomas Kister and Diego
+  Elio Pettenò); bump to eapi3 to force gtk+2 related SLOTs, update homepage.
+
+  17 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  gtkglextmm-1.2.0-r1.ebuild:
+  Remove virtual/glu where already virtual/opengl is stated.
+
+  16 Sep 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -gtkglextmm-1.0.1.ebuild, -gtkglextmm-1.2.0.ebuild:
+  Clean up old revisions, closes: #226543.
+
+  10 Aug 2008; Markus Meier <maekke@gentoo.org> gtkglextmm-1.2.0-r1.ebuild:
+  x86 stable, bug #229709
+
+  30 Jul 2008; Brent Baude <ranger@gentoo.org> gtkglextmm-1.2.0-r1.ebuild:
+  Marking gtkglextmm-1.2.0-r1 ppc stable for bug 229709
+
+  27 Jul 2008; Olivier Crête <tester@gentoo.org>
+  gtkglextmm-1.2.0-r1.ebuild:
+  Stable on amd64, bug #229709
+
+*gtkglextmm-1.2.0-r1 (12 Apr 2008)
+
+  12 Apr 2008; Rémi Cardona <remi@gentoo.org> +gtkglextmm-1.2.0-r1.ebuild:
+  remove the autotools amd64-specific stuff, it doesn't seem to be needed
+  anymore (fixes bug 200721)
+
+  20 Mar 2007; Samuli Suominen <drac@gentoo.org> -gtkglextmm-1.1.0.ebuild:
+  Remove unused version which has been masked since 2005 by ka0ttic (retired)
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*gtkglextmm-1.2.0 (12 Jun 2006)
+
+  12 Jun 2006; John N. Laliberte <allanonjl@gentoo.org>
+  +gtkglextmm-1.2.0.ebuild:
+  new version, fixes #125077
+
+  16 Mar 2006; Caleb Tennis <caleb@gentoo.org> -gtkglextmm-1.0.0.ebuild,
+  gtkglextmm-1.0.1.ebuild, gtkglextmm-1.1.0.ebuild:
+  Remove virtual/x11 dep as it's pulled in via gtk+
+
+  22 Jul 2005; David Holm <dholm@gentoo.org> gtkglextmm-1.0.1.ebuild,
+  gtkglextmm-1.1.0.ebuild:
+  Added to ~ppc.
+
+  21 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> gtkglextmm-1.0.0.ebuild,
+  gtkglextmm-1.0.1.ebuild:
+  Fix SLOT of other ebuilds.
+
+*gtkglextmm-1.1.0 (21 Jul 2005)
+
+  21 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> gtkglextmm-1.0.1.ebuild,
+  +gtkglextmm-1.1.0.ebuild:
+  Version bump for bug 58631; currently package.mask'd for testing. Marked
+  1.0.1 stable on x86. Also fixed ebuilds to only install API docs if USE=doc.
+
+  17 Oct 2004; Alastair Tse <liquidx@gentoo.org> gtkglextmm-1.0.1.ebuild:
+  fix R/DEPENDs typo
+
+  30 May 2004; Danny van Dyk <kugelfang@gentoo.org> gtkglextmm-1.0.1.ebuild:
+  Fixing BUG #52389.
+
+  22 May 2004; Danny van Dyk <kugelfang@gentoo.org> gtkglextmm-1.0.1.ebuild:
+  Added aclocal/automake/autoconf; necessary on amd64. Marked ~amd64.
+
+*gtkglextmm-1.0.1 (25 Nov 2003)
+
+  25 Nov 2003; foser <foser@gentoo.org> gtkglextmm-1.0.1.ebuild :
+  New release, added pkgconfig dep
+
+  21 Sep 2003; Alastair Tse <liquidx@gentoo.org> gtkglextmm-0.7.1.ebuild,
+  gtkglextmm-1.0.0.ebuild, metadata.xml:
+  moving from x11-libs/gtkglextmm to dev-cpp/gtkglextmm
+
+  13 Jul 2003; Martin Holzer <mholzer@gentoo.org> gtkglextmm-0.7.1.ebuild,
+  gtkglextmm-0.99.1.ebuild, gtkglextmm-1.0.0.ebuild:
+  update x11-libs/gtkmm to dev-cpp/gtkmm
+
+*gtkglextmm-1.0.0 (22 May 2003)
+
+  22 May 2003; Alastair Tse <liquidx@gentoo.org> gtkglextmm-1.0.0.ebuild:
+  version bump.
+
+*gtkglextmm-0.99.1 (05 May 2003)
+
+  05 May 2003; Alastair Tse <liquidx@gentoo.org> gtkglextmm-0.99.1.ebuild:
+  version bump
+
+*gtkglextmm-0.7.1 (26 Apr 2003)
+
+  26 Apr 2003; Alastair Tse <liquidx@gentoo.org> gtkglextmm-0.7.1.ebuild:
+  initial ebuild

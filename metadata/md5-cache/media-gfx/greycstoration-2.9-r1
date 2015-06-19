@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXrandr fftw? ( >=sci-libs/fftw-3 ) imagemagick? ( media-gfx/imagemagick ) jpeg? ( virtual/jpeg ) lapack? ( virtual/lapack ) png? ( >=media-libs/libpng-1.4 ) tiff? ( media-libs/tiff ) app-arch/unzip fftw? ( virtual/pkgconfig ) lapack? ( virtual/pkgconfig ) png? ( virtual/pkgconfig )
+DESCRIPTION=Image regularization algorithm for denoising, inpainting and resizing
+EAPI=5
+HOMEPAGE=http://www.greyc.ensicaen.fr/~dtschump/greycstoration/
+IUSE=fftw imagemagick jpeg lapack png tiff
+KEYWORDS=~amd64 ~x86
+LICENSE=CeCILL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXrandr fftw? ( >=sci-libs/fftw-3 ) imagemagick? ( media-gfx/imagemagick ) jpeg? ( virtual/jpeg ) lapack? ( virtual/lapack ) png? ( >=media-libs/libpng-1.4 ) tiff? ( media-libs/tiff )
+SLOT=0
+SRC_URI=mirror://sourceforge/cimg/GREYCstoration-2.9.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=564bb56441a4bfdb0529ea0d4f1c0088

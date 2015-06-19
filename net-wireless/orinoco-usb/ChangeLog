@@ -1,0 +1,23 @@
+# ChangeLog for net-wireless/orinoco-usb
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/orinoco-usb/ChangeLog,v 1.4 2012/11/18 11:23:36 pacho Exp $
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+*orinoco-usb-9999.ebuild (29 Aug 2007)
+
+  29 Aug 2007; Stefan Schweizer <genstef@gentoo.org>
+  orinoco-usb-9999.ebuild:
+  CONFIG_CHECK fix for >=2.6.22, NET_RADIO -> WIRELESS_EXT
+
+  13 May 2007; Stefan Schweizer <genstef@gentoo.org>
+  orinoco-usb-9999.ebuild:
+  Make sure the user has a kernel >=2.6.20, thanks to asdfca in #gentoo-dev-help
+
+*orinoco-usb-9999 (10 May 2007)
+
+  10 May 2007; Stefan Schweizer <genstef@gentoo.org> +metadata.xml,
+  +orinoco-usb-9999.ebuild:
+  Add orinoco-usb svn ebuild thanks to Sourav Mandal <sourav@sourav.net> in
+  bug 127300, als fixes bug 162040

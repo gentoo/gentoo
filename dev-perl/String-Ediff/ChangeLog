@@ -1,0 +1,85 @@
+# ChangeLog for dev-perl/String-Ediff
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/String-Ediff/ChangeLog,v 1.20 2014/08/22 20:16:51 axs Exp $
+
+*String-Ediff-0.90.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +String-Ediff-0.90.0-r1.ebuild, -String-Ediff-0.90.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -String-Ediff-0.09.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> String-Ediff-0.90.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*String-Ediff-0.90.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +String-Ediff-0.90.0.ebuild:
+  Change version scheme
+
+  02 May 2009; Torsten Veller <tove@gentoo.org> -String-Ediff-0.08.ebuild:
+  Cleanup
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org> String-Ediff-0.09.ebuild:
+  amd64 stable
+
+  23 Jul 2007; Raúl Porcel <armin76@gentoo.org> String-Ediff-0.09.ebuild:
+  alpha/ia64/x86 stable
+
+  21 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  String-Ediff-0.09.ebuild:
+  Marking sparc stable
+
+*String-Ediff-0.09 (12 May 2007)
+
+  12 May 2007; Michael Cummings <mcummings@gentoo.org>
+  +String-Ediff-0.09.ebuild:
+  Version bump
+
+  15 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  -String-Ediff-0.03.ebuild, String-Ediff-0.08.ebuild:
+  Cleaning out stale ebuild
+
+  18 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  String-Ediff-0.08.ebuild:
+  Marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  String-Ediff-0.03.ebuild, String-Ediff-0.08.ebuild:
+  Adding perl dep; fixed header; fixed DEPEND
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> String-Ediff-0.08.ebuild:
+  Mark 0.08 stable on ia64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> String-Ediff-0.08.ebuild:
+  Mark 0.08 stable on alpha
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  String-Ediff-0.08.ebuild:
+  marking sparc x86 stable
+
+*String-Ediff-0.08 (09 Nov 2005)
+
+  09 Nov 2005; Chris White <chriswhite@gentoo.org>
+  +String-Ediff-0.08.ebuild:
+  Version bump to 0.08. Added SRC_TEST as the test works just fine. Part of
+  bug #111933.
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> String-Ediff-0.03.ebuild:
+  add ~ia64
+
+  04 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  String-Ediff-0.03.ebuild:
+  bug 76590
+
+*String-Ediff-0.03 (05 Aug 2004)
+
+  05 Aug 2004; Aron Griffis <agriffis@gentoo.org> +metadata.xml,
+  +String-Ediff-0.03.ebuild:
+  Add String-Ediff module in support of cvsweb-3.0.1 (not yet in portage)

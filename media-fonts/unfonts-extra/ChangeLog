@@ -1,0 +1,103 @@
+# ChangeLog for media-fonts/unfonts-extra
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/unfonts-extra/ChangeLog,v 1.24 2015/05/18 20:28:21 mrueg Exp $
+
+  18 May 2015; Manuel Rüger <mrueg@gentoo.org>
+  -unfonts-extra-1.0.2_pre080608.ebuild:
+  Remove old.
+
+  24 Dec 2009; Pacho Ramos <pacho@gentoo.org>
+  unfonts-extra-1.0.2_pre080608-r1.ebuild:
+  amd64 stable, bug 287988
+
+  09 Dec 2009; Brent Baude <ranger@gentoo.org>
+  unfonts-extra-1.0.2_pre080608-r1.ebuild:
+  Marking unfonts-extra-1.0.2_pre080608-r1 ppc64 for bug 287988
+
+  11 Oct 2009; nixnut <nixnut@gentoo.org>
+  unfonts-extra-1.0.2_pre080608-r1.ebuild:
+  ppc stable #287988
+
+  10 Oct 2009; Raúl Porcel <armin76@gentoo.org>
+  unfonts-extra-1.0.2_pre080608-r1.ebuild:
+  alpha/arm/ia64/s390/sh/sparc/x86 stable wrt #287988
+
+  07 Oct 2009; Ryan Hill <dirtyepic@gentoo.org> -unfonts-extra-1.0.1.ebuild,
+  -unfonts-extra-1.0.2_pre080514.ebuild:
+  Remove old.
+
+*unfonts-extra-1.0.2_pre080608-r1 (06 Sep 2009)
+
+  06 Sep 2009; Ryan Hill <dirtyepic@gentoo.org>
+  +unfonts-extra-1.0.2_pre080608-r1.ebuild:
+  Fix incorrect SRC_URI (bug #276462, Jeongsu Kim).
+
+  24 Jun 2009; Raúl Porcel <armin76@gentoo.org>
+  unfonts-extra-1.0.2_pre080608.ebuild:
+  arm/ia64/s390/sh stable wrt #271132
+
+  05 Jun 2009; Tiago Cunha <tcunha@gentoo.org>
+  unfonts-extra-1.0.2_pre080608.ebuild:
+  stable sparc, bug 271132
+
+  04 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  unfonts-extra-1.0.2_pre080608.ebuild:
+  Stable on alpha, bug #271132
+
+  01 Jun 2009; Markus Meier <maekke@gentoo.org>
+  unfonts-extra-1.0.2_pre080608.ebuild:
+  amd64 stable, bug #271132
+
+  30 May 2009; nixnut <nixnut@gentoo.org>
+  unfonts-extra-1.0.2_pre080608.ebuild:
+  ppc stable #271132
+
+  27 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  unfonts-extra-1.0.2_pre080608.ebuild:
+  stable x86, bug 271132
+
+  25 May 2009; Brent Baude <ranger@gentoo.org>
+  unfonts-extra-1.0.2_pre080608.ebuild:
+  Marking unfonts-extra-1.0.2_pre080608 ~ppc64 for bug 271132
+
+*unfonts-extra-1.0.2_pre080608 (23 Mar 2009)
+
+  23 Mar 2009; Peter Volkov <pva@gentoo.org>
+  +unfonts-extra-1.0.2_pre080608.ebuild:
+  Version bump, bug #263207, thank Jung Tae-young for report
+
+*unfonts-extra-1.0.2_pre080514 (20 May 2008)
+
+  20 May 2008; Ryan Hill <dirtyepic@gentoo.org>
+  +unfonts-extra-1.0.2_pre080514.ebuild:
+  Version bump.
+
+  26 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  unfonts-extra-1.0.1.ebuild:
+  Add ~x86-fbsd keyword, restrict binchecks and strip.
+
+  12 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  unfonts-extra-1.0.1.ebuild:
+  Mark 1.0.1 stable on ia64
+
+  23 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  unfonts-extra-1.0.1.ebuild:
+  Stable on sparc
+
+  23 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  unfonts-extra-1.0.1.ebuild:
+  Added ~sparc
+
+  15 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  unfonts-extra-1.0.1.ebuild:
+  Stable on amd64.
+
+  29 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> unfonts-extra-1.0.1.ebuild:
+  Stable on x86, alpha and ppc.
+
+*unfonts-extra-1.0.1 (12 Sep 2004)
+
+  12 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +unfonts-extra-1.0.1.ebuild:
+  Initial import. Ebuild submitted by Jung Tae-young <master@mytears.org>.
+  This closes bug #59761.

@@ -1,0 +1,15 @@
+Description: Explicitly link w3mimgdisplay with -lX11 to build with gcc 4.5
+Author: Martin Pitt <martin.pitt@ubuntu.com>
+Bug: https://sourceforge.net/tracker/?func=detail&aid=3126430&group_id=39518&atid=425441
+
+--- w3m-0.5.3.orig/Makefile.in	2011-01-04 18:22:18.000000000 +0900
++++ w3m-0.5.3/Makefile.in	2011-02-06 12:05:40.000000000 +0900
+@@ -199,7 +199,7 @@
+ 	$(CC) $(CFLAGS) -DDUMMY -c -o $@ $?
+ 
+ $(IMGDISPLAY): w3mimgdisplay.o $(ALIB) w3mimg/w3mimg.a
+-	$(IMGLINK) $(CFLAGS) -o $(IMGDISPLAY) w3mimgdisplay.o w3mimg/w3mimg.a $(LDFLAGS) $(LIBS) $(IMGLDFLAGS)
++	$(IMGLINK) $(CFLAGS) -o $(IMGDISPLAY) w3mimgdisplay.o w3mimg/w3mimg.a $(LDFLAGS) $(LIBS) -lX11 $(IMGLDFLAGS)
+ 
+ w3mimgdisplay.o: w3mimgdisplay.c w3mimg/w3mimg.h
+ 	$(CC) $(CFLAGS) $(IMGCFLAGS) -o $@ -c $(srcdir)/w3mimgdisplay.c

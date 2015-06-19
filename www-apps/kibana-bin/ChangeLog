@@ -1,0 +1,15 @@
+# ChangeLog for www-apps/kibana-bin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/kibana-bin/ChangeLog,v 1.2 2015/04/09 09:58:14 idella4 Exp $
+
+*kibana-bin-4.0.2 (09 Apr 2015)
+
+  09 Apr 2015; Ian Delaney <idella4@gentoo.org> +kibana-bin-4.0.2.ebuild:
+  bump
+
+*kibana-bin-4.0.1 (20 Mar 2015)
+
+  20 Mar 2015; Ian Delaney <idella4@gentoo.org> +files/kibana.initd,
+  +kibana-bin-4.0.1.ebuild, +metadata.xml:
+  binary package for the purpose of bringing ELK to Gentoo; written by T. Mozes
+  and runtested in a production env.

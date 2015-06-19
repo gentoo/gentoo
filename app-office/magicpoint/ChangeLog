@@ -1,0 +1,258 @@
+# ChangeLog for app-office/magicpoint
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/magicpoint/ChangeLog,v 1.46 2011/09/14 16:10:59 ssuominen Exp $
+
+  14 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> magicpoint-1.13a.ebuild,
+  +files/magicpoint-1.13a-libpng15.patch:
+  Fix building with libpng15 wrt #378377 by Diego Elio Pettenò
+
+  15 Sep 2010; Tobias Klausmann <klausman@gentoo.org>
+  magicpoint-1.13a.ebuild:
+  Stable on alpha, bug #329433
+
+  31 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  magicpoint-1.13a.ebuild:
+  Stable on amd64 wrt bug #329433
+
+  23 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  magicpoint-1.13a.ebuild:
+  stable x86, bug 329433
+
+  26 May 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  magicpoint-1.13a.ebuild:
+  Respect user flags
+
+  26 May 2010; Samuli Suominen <ssuominen@gentoo.org>
+  magicpoint-1.13a.ebuild:
+  Rename png_set_gray_1_2_4_to_8 to png_set_expand_gray_1_2_4_to_8 in
+  configure.in and image/png.c for libpng14 compability wrt #321531 by Diego
+  E. Pettenò.
+
+  28 Mar 2009; Ulrich Mueller <ulm@gentoo.org> files/50magicpoint-gentoo.el,
+  -files/50mgp-mode-gentoo.el:
+  Use add-to-list instead of cons in Emacs site-init file. Remove unused file.
+
+  04 Jan 2009; Ulrich Mueller <ulm@gentoo.org> magicpoint-1.12a-r1.ebuild,
+  magicpoint-1.13a.ebuild:
+  Change virtual/xft dependency to x11-libs/libXft, bug 253771.
+
+*magicpoint-1.13a (29 Jun 2008)
+
+  29 Jun 2008; Jeremy Olexa <darkside@gentoo.org>
+  +files/magicpoint-1.13a-implicit-declaration.patch,
+  +magicpoint-1.13a.ebuild:
+  Version bump with re-worked implicit declerations patch. bug #220563
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing usata from metadata.xml as per #22931. Assigning to maintainer-needed.
+
+  20 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  -files/magicpoint-1.11b-mng_optional.patch, -magicpoint-1.11b.ebuild:
+  clean up
+
+  02 Nov 2007; Lars Weiler <pylon@gentoo.org> magicpoint-1.12a-r1.ebuild:
+  stable ppc, bug #196885
+
+  27 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  +files/magicpoint-1.12a-implicit-declaration.patch,
+  magicpoint-1.12a-r1.ebuild:
+  add patch to kill QA warnings, provided by Thomas Anderson
+
+  26 Oct 2007; Christoph Mende <angelos@gentoo.org>
+  magicpoint-1.12a-r1.ebuild:
+  Stable on amd64 wrt bug #196885
+
+  24 Oct 2007; Raúl Porcel <armin76@gentoo.org> magicpoint-1.12a-r1.ebuild:
+  alpha/sparc stable wrt #196885
+
+  24 Oct 2007; Markus Meier <maekke@gentoo.org> magicpoint-1.12a-r1.ebuild:
+  x86 stable, bug #196885
+
+  24 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  magicpoint-1.12a-r1.ebuild:
+  correct path for X11 libs, fix Emacs supported, reported by maekke
+
+*magicpoint-1.12a-r1 (25 Sep 2007)
+
+  25 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  -magicpoint-1.12a.ebuild, +magicpoint-1.12a-r1.ebuild:
+  remove old ebuild; introduce doc and examples USE flags; don't install
+  COPYRIGHT files; make intallation succesful even without USE=emacs
+
+  25 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  magicpoint-1.12a.ebuild:
+  exchanging make with emake -j1, as this is equivalent. Thanks to vapier for
+  talking it through; adjusting die messages
+
+  24 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  magicpoint-1.12a.ebuild:
+  clarified why no emake here, plus updated die comments
+
+  24 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  magicpoint-1.12a.ebuild:
+  adding an additonal die comment
+
+*magicpoint-1.12a (24 Sep 2007)
+
+  24 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  +files/50magicpoint-gentoo.el, +magicpoint-1.12a.ebuild:
+  version bump, a lot of bugfixes; on Gentoo side we have better Emacs
+  support; in total fixing bugs 150312, 83313 and 186754
+
+  22 Jul 2007; Denis Dupeyron <calchan@gentoo.org> magicpoint-1.11b.ebuild:
+  Drop virtual/x11 dependency.
+
+  30 Jun 2007; Ulrich Mueller <ulm@gentoo.org> magicpoint-1.11b.ebuild:
+  Fix conditional for calling elisp-site-regen, bug #182639.
+
+  25 Jan 2007; Marius Mauch <genone@gentoo.org> magicpoint-1.11b.ebuild:
+  Replacing einfo with elog
+
+  25 Jan 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  magicpoint-1.11b.ebuild:
+  (#120259) Fix up modular X dep list.
+
+  12 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  magicpoint-1.11b.ebuild:
+  Add modular X dependencies.
+
+  29 Sep 2005; Mamoru KOMACHI <usata@gentoo.org>
+  -files/magicpoint-1.10a-r1-gentoo.diff, -magicpoint-1.10a-r1.ebuild,
+  magicpoint-1.11b.ebuild:
+  Fixed compile error wrt xorg-x11 header path change; bug #103007.
+
+  06 May 2005; Mamoru KOMACHI <usata@gentoo.org>
+  +files/magicpoint-1.11b-mng_optional.patch, magicpoint-1.11b.ebuild:
+  Fixed mng dep. Thanks to James Rowe <jnrowe@ukfsn.org>; bug #91644.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> magicpoint-1.11b.ebuild:
+  stable on amd64
+
+  18 Mar 2005; Mamoru KOMACHI <usata@gentoo.org> magicpoint-1.10a-r1.ebuild,
+  magicpoint-1.11b.ebuild:
+  Use giflib instead of libungif; bug #85720.
+
+  05 Feb 2005; Bryan Østergaard <kloeri@gentoo.org>
+  magicpoint-1.10a-r1.ebuild, magicpoint-1.11b.ebuild:
+  Homepage moved, bug 80903.
+
+  05 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> magicpoint-1.11b.ebuild:
+  Added --x-libraries to econf to fix bug #77946.
+
+  11 Dec 2004; Jason Wever <weeve@gentoo.org> magicpoint-1.11b.ebuild:
+  Stable on sparc.
+
+  04 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> magicpoint-1.11b.ebuild:
+  Stable on x86, alpha and ppc.
+
+*magicpoint-1.11b (06 Oct 2004)
+
+  06 Oct 2004; Mamoru KOMACHI <usata@gentoo.org>
+  +files/magicpoint-1.11b-gentoo.diff, +magicpoint-1.11b.ebuild:
+  Version bumped.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  magicpoint-1.10a-r1.ebuild:
+  Masked magicpoint-1.10a-r1.ebuild stable for ppc
+
+*magicpoint-1.11a (15 Sep 2004)
+
+  15 Sep 2004; Mamoru KOMACHI <usata@gentoo.org>
+  -files/magicpoint-1.10a-gentoo.diff, +files/magicpoint-1.11a-gentoo.diff,
+  +magicpoint-1.11a.ebuild:
+  Version bumped. Added m17n-lib USE flag.
+
+  01 Jun 2004; Aron Griffis <agriffis@gentoo.org> magicpoint-1.10a-r1.ebuild:
+  Fix use invocation
+
+  15 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> magicpoint-1.10a-r1.ebuild:
+  marked ~amd64
+
+  10 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  magicpoint-1.10a-r1.ebuild:
+  don't assign default to S; tidy
+
+  24 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  magicpoint-1.09a-r1.ebuild, magicpoint-1.10a.ebuild:
+  clean old versions
+
+  13 Jan 2004; Marius Mauch <genone@gentoo.org> magicpoint-1.10a-r1.ebuild:
+  install the HTML docs in the correct location
+
+*magicpoint-1.10a (16 Dec 2003)
+
+  16 Dec 2003; Mamoru KOMACHI <usata@gentoo.org> magicpoint-1.09a-r1.ebuild,
+  magicpoint-1.10a-r1.ebuild, magicpoint-1.10a.ebuild, metadata.xml,
+  files/50mgp-mode-gentoo.el, files/magicpoint-1.10a-gentoo.diff,
+  files/magicpoint-1.10a-r1-gentoo.diff:
+  Moved from app-misc/magicpoint. Closing bug #35858
+
+  22 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> magicpoint-1.10a-r1.ebuild,
+  magicpoint-1.10a.ebuild:
+  Changed elisp.eclass to elisp-common.eclass
+
+*magicpoint-1.10a-r1 (02 Sep 2003)
+
+  11 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> magicpoint-1.10a-r1.ebuild:
+  Marked stable on x86 and alpha.
+
+  02 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> magicpoint-1.10a-r1.ebuild,
+  files/magicpoint-1.10a-r1-gentoo.diff:
+  Defaults to Xft2 instead of VFlib2 (added a patch to fix Xft2 problem)
+
+*magicpoint-1.10a (06 Aug 2003)
+
+  02 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> magicpoint-1.09a-r1.ebuild,
+  magicpoint-1.10a.ebuild:
+  Removed redundant SLOT, KEYWORDS and LICENSE variables.
+
+  25 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> magicpoint-1.10a.ebuild:
+  Fixed emacs dependency problem with inherit elisp.  Added ~alpha,
+  ~ppc and ~sparc keywords.  Changed ~x86 to x86.  Simplified conditionals.
+
+  06 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> magicpoint-1.10a.ebuild,
+  files/50mgp-mode-gentoo.el, files/magicpoint-1.10a-gentoo.diff:
+  Version bump.  Added cjk and emacs USE flags.  Upstream now supports
+  Xft2 rendering engine.  However, it is not enabled because there is
+  some problem with Xft2.  Included default font configuration file. 
+  Added support scripts and sample presentation files.
+
+*magicpoint-1.09a-r1 (12 Apr 2002)
+
+  15 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> magicpoint-1.09a-r1.ebuild:
+  Disabled VFlib support because it fails to build if VFlib is installed
+  and no --with-vfontcap specified
+
+  16 Jan 2003; Seemant Kulleen <seemant@gentoo.org> magicpoint-1.09a-r1.ebuild :
+
+  Added charset16 support if both nls and truetype are in USE.  Closes bug
+  #12801 by nakano@gentoo.org (Masatomo Nakano)
+
+  23 Aug 2002; Seemant Kulleen <seemant@gentoo.org> magicpoint-1.09a-r1.ebuild :
+
+  For some silly upstream reason, --enable-freetype disables it.  So, this
+  is removed.  Thanks to: jherfurth@arafox.com (Julien Herfurth) in bug
+  #6856.
+
+  12 Apr 2002; Seemant Kulleen <seemant@gentoo.org> magicpoint-1.09a-r1.ebuild :
+
+  Removed the ungif USE flag, and added nls and imlib and truetype USE dependent
+  compilation.
+
+*magicpoint-1.09a (21 Mar 2002)
+
+  21 Mar 2002; Seemant Kulleen <seemant@gentoo.org> magicpoint-1.09a.ebuild :
+
+  Version upgrade -- copied the 1.07a ebuild over, and updated its syntax from
+  try to die and the copyright info.  Thanks to Matthew Kennedy for the update
+  info.
+
+*magicpoint-1.07a (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

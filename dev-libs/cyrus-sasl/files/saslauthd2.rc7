@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/cyrus-sasl/files/saslauthd2.rc7,v 1.1 2013/07/13 12:01:10 pacho Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting saslauthd"
+	start-stop-daemon --start --quiet --exec /usr/sbin/saslauthd \
+		-- ${SASLAUTHD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping saslauthd"
+	start-stop-daemon --stop --quiet --pidfile /run/saslauthd/saslauthd.pid
+	eend $?
+}

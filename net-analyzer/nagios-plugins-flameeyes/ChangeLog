@@ -1,0 +1,21 @@
+# ChangeLog for net-analyzer/nagios-plugins-flameeyes
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-plugins-flameeyes/ChangeLog,v 1.3 2012/11/30 16:36:29 flameeyes Exp $
+
+  30 Nov 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  nagios-plugins-flameeyes-9999.ebuild:
+  Update to use git-2 and use the http for fetching the repository (to work with
+  proxies).
+
+  26 Nov 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  nagios-plugins-flameeyes-9999.ebuild:
+  Add an USE flag for samba to bring in the dep for check_smb_share.pl.
+
+*nagios-plugins-flameeyes-9999 (23 Nov 2012)
+
+  23 Nov 2012; Diego E. Pettenò <flameeyes@gentoo.org> +metadata.xml,
+  +nagios-plugins-flameeyes-9999.ebuild:
+  Initial import of a live ebuild for my own set of nagios plugins. This makes
+  it much easier to deal with their dependencies, and two out of three at the
+  time of adding are Gentoo-specific. An actual release will follow when I'll be
+  done writing a few more.

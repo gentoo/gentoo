@@ -1,0 +1,110 @@
+# ChangeLog for net-analyzer/nsat
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nsat/ChangeLog,v 1.29 2014/09/16 05:50:32 jer Exp $
+
+  16 Sep 2014; Jeroen Roovers <jer@gentoo.org> -nsat-1.5.ebuild:
+  Old.
+
+  02 Aug 2014; Raúl Porcel <armin76@gentoo.org> nsat-1.5.ebuild,
+  nsat-1.5-r3.ebuild:
+  Drop sparc keywords
+
+  26 Jul 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> nsat-1.5-r3.ebuild:
+  x86 stable wrt bug #516450
+
+  06 Jul 2014; Jeroen Roovers <jer@gentoo.org> files/nsat-1.5-va_list.patch:
+  Improve efficiency somewhat.
+
+*nsat-1.5-r3 (06 Jul 2014)
+
+  06 Jul 2014; Jeroen Roovers <jer@gentoo.org> -nsat-1.5-r1.ebuild,
+  -nsat-1.5-r2.ebuild, +nsat-1.5-r3.ebuild, +files/nsat-1.5-va_list.patch:
+  Fix a segmentation fault with the -n option.
+
+*nsat-1.5-r2 (05 Jul 2014)
+
+  05 Jul 2014; Jeroen Roovers <jer@gentoo.org> +nsat-1.5-r2.ebuild,
+  files/nsat-1.5-amd64-compat.patch, files/nsat-1.5-configure.patch,
+  files/nsat-1.5-lvalue-gcc4.patch, +files/nsat-1.5-misc.patch,
+  files/nsat-1.5-strip.patch:
+  Use dev-libs/libmix instead of bundled libmix++. Fix parallel make issues.
+  Combine sed scripts into patch. Clean up patches.
+
+  05 Jul 2014; Jeroen Roovers <jer@gentoo.org> nsat-1.5-r1.ebuild:
+  Export CC. Make CC calls verbose. Drop -O3.
+
+  09 Jun 2014; Jeroen Roovers <jer@gentoo.org> nsat-1.5-r1.ebuild:
+  Clean up.
+
+  06 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> nsat-1.5-r1.ebuild:
+  Respect LDFLAGS wrt bug #335951
+
+  26 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> nsat-1.5-r1.ebuild:
+  Bump ebuild's EAPI to 2, add some QA fixes wrt bug #335951
+
+  26 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> nsat-1.5-r1.ebuild:
+  Make amd64-compatibility patch applies only on amd64 systems
+
+*nsat-1.5-r1 (25 Sep 2012)
+
+  25 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> +nsat-1.5-r1.ebuild,
+  +files/nsat-1.5-amd64-compat.patch:
+  New revision with amd64 keyword and compatibility patch for it, wrt bug
+  #389767. Thanks to Andrew Savchenko for provided patch
+
+  15 Jan 2009; Jeroen Roovers <jer@gentoo.org> nsat-1.5.ebuild:
+  Oops. Use eautoreconf, not eautoconf (bug #226585 again).
+
+  15 Jan 2009; Jeroen Roovers <jer@gentoo.org>
+  files/nsat-1.5-configure.patch, +files/nsat-1.5-strip.patch,
+  nsat-1.5.ebuild:
+  Clean up configure patch. Do not strip (bug #251981). Do not call autoconf
+  directly (bug #226585).
+
+  22 Jul 2007; <pva@gentoo.org> nsat-1.5.ebuild:
+  Removed virtual/x11 dependency.
+
+  20 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  01 May 2006; Jason Wever <weeve@gentoo.org> nsat-1.5.ebuild:
+  Stable on SPARC.
+
+  19 Apr 2006; Marcelo Goes <vanquirius@gentoo.org>
+  +files/nsat-1.5-lvalue-gcc4.patch, nsat-1.5.ebuild:
+  Add patch to fix lvalue error when compiling with gcc4. Fixes bug 128204,
+  thanks to Robert Marmorstein <rmmarm at wm dot edu>. Also, do not install
+  LICENSE.
+
+  15 Feb 2006; Markus Ullmann <jokey@gentoo.org> nsat-1.5.ebuild:
+  Removing virtual/libpcap wrt bug #117898
+
+  22 Jan 2006; Peter Volkov <pva@gentoo.org> nsat-1.5.ebuild:
+  Modular X dependencies are fixed.
+
+  19 Jul 2005; David Holm <dholm@gentoo.org> nsat-1.5.ebuild:
+  Added to ~ppc.
+
+  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> nsat-1.5.ebuild:
+  changed net-libs/libpcap depend to virtual/libcap
+
+  13 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml:
+  Added metadata
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> nsat-1.5.ebuild:
+  Add inherit eutils
+
+  28 Oct 2003; Daniel Ahlberg <aliz@gentoo.org> nsat-1.5.ebuild :
+  DEPEND fixes, sed fixes and sparc keyword from #31244.
+  Remove 1.43 ebuild so that 1.5 is latest.
+  Fix CFLAGS.
+
+*nsat-1.5 (07 Jan 2003)
+
+  07 Jan 2003; Daniel Ahlberg <aliz@gentoo.org> nsat-1.5.ebuild :
+  Version bump. Found by Kemal Akman <ka@leogic.com> in #13327.
+
+*nsat-1.43 (17 Dec 2002)
+
+  17 Dec 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Initial import. Ebuild contributed by Kemal Akman <ka@leogic.com> in #11367.

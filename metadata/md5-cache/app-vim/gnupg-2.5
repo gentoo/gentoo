@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prepare
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: transparent editing of gpg encrypted files
+EAPI=4
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=3645
+KEYWORDS=amd64 ~arm x86
+LICENSE=GPL-2
+RDEPEND=app-crypt/gnupg || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/gnupg-2.5.tar.bz2 http://dev.gentoo.org/~radhermit/vim/gnupg-2.5.tar.bz2
+_eclasses_=vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=ac3faa8a6e7c715ce29f5e2807d17da2

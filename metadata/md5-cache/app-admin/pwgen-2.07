@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install prepare
+DESCRIPTION=Password Generator
+EAPI=5
+HOMEPAGE=http://sourceforge.net/projects/pwgen/
+IUSE=livecd
+KEYWORDS=alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/pwgen/pwgen-2.07.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=099fab4adc7f577f57ed855423309218

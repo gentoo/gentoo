@@ -1,0 +1,10 @@
+Index: coot-surface/Makefile.am
+===================================================================
+--- coot-surface/Makefile.am	(revision 3478)
++++ coot-surface/Makefile.am	(working copy)
+@@ -29,4 +29,4 @@
+ 
+ libcoot_surface_la_LIBADD = \
+ 	$(top_builddir)/surface/libccp4mg-surface.la \
+-	$(GLUT_LIBS) $(CLIPPER_LIBS) $(MMDB_LIBS) 
++	$(GLUT_LIBS) $(CLIPPER_LIBS) $(MMDB_LIBS) -lGL

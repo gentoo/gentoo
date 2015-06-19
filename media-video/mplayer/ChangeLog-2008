@@ -1,0 +1,2904 @@
+# ChangeLog for media-video/mplayer
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/ChangeLog-2008,v 1.1 2012/01/02 15:53:34 dilfridge Exp $
+
+  22 Dec 2008; Raúl Porcel <armin76@gentoo.org>
+  mplayer-1.0_rc2_p28058-r1.ebuild:
+  ia64/sparc stable wrt #251017
+
+  20 Dec 2008; Tobias Klausmann <klausman@gentoo.org>
+  mplayer-1.0_rc2_p28058-r1.ebuild:
+  Stable on alpha, bug #251017
+
+  18 Dec 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  mplayer-1.0_rc2_p28058-r1.ebuild:
+  ppc stable, bug #251017
+
+  18 Dec 2008; Brent Baude <ranger@gentoo.org>
+  mplayer-1.0_rc2_p28058-r1.ebuild:
+  Marking mplayer-1.0_rc2_p28058-r1 ppc64 for bug 251017
+
+  18 Dec 2008; Joshua Kinard <kumba@gentoo.org>
+  mplayer-1.0_rc2_p28058-r1.ebuild:
+  Added ~mips to KEYWORDS, per #205570.
+
+  17 Dec 2008; Markus Meier <maekke@gentoo.org>
+  mplayer-1.0_rc2_p28058-r1.ebuild:
+  amd64/x86 stable, bug #251017
+
+  17 Dec 2008; Jeroen Roovers <jer@gentoo.org>
+  mplayer-1.0_rc2_p28058-r1.ebuild:
+  Stable for HPPA (bug #251017).
+
+*mplayer-1.0_rc2_p28058-r1 (17 Dec 2008)
+
+  17 Dec 2008; Steve Dibb <beandog@gentoo.org>
+  +files/mplayer-1.0_rc2_p28058-demux_vqf.patch,
+  +mplayer-1.0_rc2_p28058-r1.ebuild:
+  Add patch for security bug 251017; Change realplayer dep to realcodecs,
+  bug 249572
+
+  13 Dec 2008; Friedrich Oslage <bluebird@gentoo.org>
+  +files/mplayer-libmpeg2.patch, +files/mplayer-libavcodec.patch,
+  -files/mplayer-libmpeg2-libavcodec.patch,
+  mplayer-1.0_rc2_p27725-r1.ebuild, mplayer-1.0_rc2_p28058.ebuild:
+  Split sparc compile patch into two files as the old mplayer needs both,
+  the new one only the one for libavcodec
+
+*mplayer-1.0_rc2_p28058 (02 Dec 2008)
+
+  02 Dec 2008; Steve Dibb <beandog@gentoo.org> metadata.xml,
+  +mplayer-1.0_rc2_p28058.ebuild:
+  Snapshot bump; add libdvdnav, mng support; drop unnecessary docbook deps,
+  bug 174521; move srt use flag to ass, bug 241686
+
+  24 Nov 2008; Friedrich Oslage <bluebird@gentoo.org>
+  mplayer-1.0_rc2_p27725-r1.ebuild:
+  Stable on sparc, security bug #239130 and bug #241110
+
+  24 Nov 2008; Steve Dibb <beandog@gentoo.org>
+  +files/mplayer-libmpeg2-libavcodec.patch,
+  mplayer-1.0_rc2_p27725-r1.ebuild:
+  Fix sparc compilation, bug 241110; Thanks to Friedrich Oslage for patch
+
+  10 Nov 2008; Raúl Porcel <armin76@gentoo.org>
+  mplayer-1.0_rc2_p27725-r1.ebuild:
+  ia64 stable wrt #239130
+
+  08 Nov 2008; Tobias Klausmann <klausman@gentoo.org>
+  mplayer-1.0_rc2_p27725-r1.ebuild:
+  Stable on alpha, bug #239130
+
+  30 Oct 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  mplayer-1.0_rc2_p27725-r1.ebuild:
+  ppc stable, bug #239130
+
+  21 Oct 2008; Markus Rothe <corsair@gentoo.org>
+  mplayer-1.0_rc2_p27725-r1.ebuild:
+  Stable on ppc64; bug #239130
+
+  20 Oct 2008; Guy Martin <gmsoft@gentoo.org>
+  mplayer-1.0_rc2_p27725-r1.ebuild:
+  hppa stable, #239130
+
+  19 Oct 2008; Markus Meier <maekke@gentoo.org>
+  mplayer-1.0_rc2_p27725-r1.ebuild:
+  amd64/x86 stable, bug #239130
+
+  15 Oct 2008; Alexis Ballier <aballier@gentoo.org>
+  mplayer-1.0_rc2_p27725-r1.ebuild:
+  keyword ~x86-fbsd
+
+*mplayer-1.0_rc2_p27725-r1 (07 Oct 2008)
+
+  07 Oct 2008; Steve Dibb <beandog@gentoo.org>
+  +files/mplayer-1.0_rc2_p27725-libx264.patch,
+  -mplayer-1.0_rc2_p27725.ebuild, +mplayer-1.0_rc2_p27725-r1.ebuild:
+  Patch to build with x264, thanks to Alex Rostovtsev, bug 240347
+
+*mplayer-1.0_rc2_p27725 (07 Oct 2008)
+
+  07 Oct 2008; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0_rc2_p27725.ebuild:
+  Version bump, security bugs 239130 and 231836
+
+  16 Sep 2008; Jeroen Roovers <jer@gentoo.org>
+  mplayer-1.0_rc2_p27458.ebuild:
+  Marked ~hppa (bug #234629).
+
+  24 Aug 2008; Markus Rothe <corsair@gentoo.org>
+  mplayer-1.0_rc2_p27458.ebuild:
+  Added ~ppc64; bug #234629
+
+  20 Aug 2008; Steve Dibb <beandog@gentoo.org>
+  mplayer-1.0_rc2_p27458.ebuild:
+  Install midentify.sh to midentify
+
+  17 Aug 2008; Alexis Ballier <aballier@gentoo.org> metadata.xml,
+  mplayer-1.0_rc2_p27458.ebuild:
+  Add dirac and schroedinger useflags that were automagic, thanks to Hanno
+  Boeck <hanno@gentoo.org> for reporting in bug #234775.
+
+  17 Aug 2008; Alexis Ballier <aballier@gentoo.org>
+  mplayer-1.0_rc2_p27458.ebuild:
+  dont prestrip binaries
+
+  17 Aug 2008; Alexis Ballier <aballier@gentoo.org>
+  mplayer-1.0_rc2_p27458.ebuild:
+  fix midentify install (was renamed to .sh) and add a die so that it'll be
+  spotted easily later
+
+*mplayer-1.0_rc2_p27120-r1 (13 Aug 2008)
+
+  13 Aug 2008; Steve Dibb <beandog@gentoo.org>
+  -mplayer-1.0_rc2_p27120.ebuild, +mplayer-1.0_rc2_p27120-r1.ebuild:
+  Update x264 deps, bug 234287
+
+*mplayer-1.0_rc2_p27458 (13 Aug 2008)
+
+  13 Aug 2008; Steve Dibb <beandog@gentoo.org> metadata.xml,
+  +mplayer-1.0_rc2_p27458.ebuild:
+  Snapshot bump; Re-enable pvr support, bug 230820; Fix dxr3 deps, bug
+  233542; Fix x264 deps, bug 234287
+
+*mplayer-1.0_rc2_p27120 (21 Jun 2008)
+
+  21 Jun 2008; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0_rc2_p27120.ebuild:
+  Snapshot bump; Add new notices about LINGUAS, gmplayer and cpudetection
+
+  04 Jun 2008; Jeroen Roovers <jer@gentoo.org>
+  mplayer-1.0_rc2_p26753-r1.ebuild:
+  Stable for HPPA too.
+
+*mplayer-1.0_rc2_p26914 (28 May 2008)
+
+  28 May 2008; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0_rc2_p26914.ebuild:
+  Snapshot bump
+
+*mplayer-1.0_rc2_p26753-r2 (26 May 2008)
+
+  26 May 2008; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0_rc2_p26753-r2.ebuild:
+  Add custom-cpuopts use flag; add dxr2, dxr3 use flag, bug 223587
+
+  22 May 2008; Raúl Porcel <armin76@gentoo.org>
+  mplayer-1.0_rc2_p26753-r1.ebuild:
+  ia64/x86 stable
+
+  21 May 2008; Markus Rothe <corsair@gentoo.org>
+  mplayer-1.0_rc2_p26753-r1.ebuild:
+  Stable on ppc; bug #215006
+
+  21 May 2008; Ferris McCormick <fmccor@gentoo.org>
+  mplayer-1.0_rc2_p26753-r1.ebuild:
+  Sparc stable, Security Bug #215006.  All works well.
+
+  21 May 2008; Markus Rothe <corsair@gentoo.org>
+  mplayer-1.0_rc2_p26753-r1.ebuild:
+  Stable on ppc64; bug #215006
+
+*mplayer-1.0_rc2_p26753-r1 (21 May 2008)
+
+  21 May 2008; Steve Dibb <beandog@gentoo.org>
+  +files/configure-altivec.patch, +files/libswscale-sparc.patch,
+  +mplayer-1.0_rc2_p26753-r1.ebuild:
+  Fix compilation on ppc, sparc, bugs 217773, 222447 and 215006
+
+  Fix installing mplayer.desktop and mplayer.xpm, bug 219133
+
+  Remove strip restriction, bug 164492
+
+  Move CPU optimization checks out of custom-cflags use flag check, bug
+  212318
+
+  17 May 2008; Tobias Klausmann <klausman@gentoo.org>
+  mplayer-1.0_rc2_p26753.ebuild:
+  Stable on alpha, bug #215006
+
+  17 May 2008; Markus Meier <maekke@gentoo.org>
+  mplayer-1.0_rc2_p26753.ebuild:
+  amd64/x86 stable, bug #215006
+
+  16 May 2008; Jeroen Roovers <jer@gentoo.org>
+  mplayer-1.0_rc2_p26753.ebuild:
+  Stable for HPPA (bug #215006).
+
+*mplayer-1.0_rc2_p26753 (13 May 2008)
+
+  13 May 2008; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0_rc2_p26753.ebuild:
+  Snapshot bump, security bug 215006; Display SVN version #, bug 218150;
+  Drop tivo use flag (no vstream client in tree); Fix v4l2, faac, faad,
+  xvid, x264, mp3lame disable flags
+
+*mplayer-1.0_rc2_p26454-r2 (17 Apr 2008)
+
+  17 Apr 2008; Steve Dibb <beandog@gentoo.org>
+  +files/configure-unsetauto-v2.patch, -mplayer-1.0_rc2_p26454-r1.ebuild,
+  +mplayer-1.0_rc2_p26454-r2.ebuild:
+  Add patch to build on non-x86 arches
+
+*mplayer-1.0_rc2_p26454-r1 (16 Apr 2008)
+
+  16 Apr 2008; Steve Dibb <beandog@gentoo.org>
+  +files/mplayer-1.0_rc2_p26454-makefile.patch,
+  -mplayer-1.0_rc2_p26454.ebuild, +mplayer-1.0_rc2_p26454-r1.ebuild:
+  Fix installing man pages, bug 217769, thanks to Daniel Pielmeier for patch
+
+*mplayer-1.0_rc2_p26454 (16 Apr 2008)
+
+  16 Apr 2008; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0_rc2_p26454.ebuild:
+  Snapshot bump
+
+*mplayer-1.0_rc2_p24929-r4 (15 Apr 2008)
+
+  15 Apr 2008; Steve Dibb <beandog@gentoo.org>
+  +files/mplayer-1.0_rc2_p24929-pulse.patch,
+  +mplayer-1.0_rc2_p24929-r4.ebuild:
+  Restore an old snapshot to provide some now lost functionality
+
+*mplayer-1.0_rc2_p26450 (15 Apr 2008)
+
+  15 Apr 2008; Ben de Groot <yngwin@gentoo.org>
+  +mplayer-1.0_rc2_p26450.ebuild:
+  Snapshot bump. Removed color-console useflag, as it's no longer an
+  available option. Removed libdvdnav block on beandog's advice.
+
+  07 Apr 2008; Ben de Groot <yngwin@gentoo.org>
+  mplayer-1.0_rc2_p25993.ebuild, mplayer-1.0_rc2_p26258.ebuild,
+  mplayer-1.0_rc2_p26300-r1.ebuild:
+  Pkgmove x264-svn to x264
+
+  30 Mar 2008; Matthias Schwarzott <zzam@gentoo.org>
+  mplayer-1.0_rc2_p26300-r1.ebuild:
+  Fix the hack for USE="-quicktime win32codecs", Bug #213836.
+
+*mplayer-1.0_rc2_p26300-r1 (30 Mar 2008)
+
+  30 Mar 2008; Steve Dibb <beandog@gentoo.org>
+  -mplayer-1.0_rc2_p26300.ebuild, +mplayer-1.0_rc2_p26300-r1.ebuild:
+  Build breaks on newer libdvdnav, add blocker to depend
+
+*mplayer-1.0_rc2_p26300 (29 Mar 2008)
+
+  29 Mar 2008; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0_rc2_p26300.ebuild:
+  Snapshot bump, security bug 215006, compile with x86 and quicktime, bug
+  213836
+
+*mplayer-1.0_rc2_p26258 (17 Mar 2008)
+
+  17 Mar 2008; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0_rc2_p26258.ebuild:
+  Snapshot bump, add dga X11 dep, bug 213390, fix ssa subtitle memory leak,
+  bug 213638, move cpu optimization flags inside custom-cflags check
+
+*mplayer-1.0_rc2_p25993-r1 (23 Feb 2008)
+
+  23 Feb 2008; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0_rc2_p25993-r1.ebuild:
+  Drop livecd use flag, bug 210066
+  Re-enable support for debug use flag
+  Add color-console use flag
+
+  19 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  mplayer-1.0_rc2_p25993.ebuild:
+  ppc stable, bug #208566
+
+  17 Feb 2008; Samuli Suominen <drac@gentoo.org>
+  mplayer-1.0_rc2_p25993.ebuild:
+  Fix unicode characters inside ebuild, someone edited it with notepad.exe or
+  such.
+
+  17 Feb 2008; Samuli Suominen <drac@gentoo.org>
+  mplayer-1.0_rc2_p25993.ebuild:
+  Fixed automagic libXss depend, revealed by asneeded and depclean.
+
+  17 Feb 2008; Christoph Mende <angelos@gentoo.org>
+  mplayer-1.0_rc2_p25993.ebuild:
+  Stable on amd64, security bug #208566
+
+  15 Feb 2008; Raúl Porcel <armin76@gentoo.org>
+  mplayer-1.0_rc2_p25993.ebuild:
+  alpha/ia64 stable wrt security #208566
+
+  15 Feb 2008; Samuli Suominen <drac@gentoo.org> -files/mplayer-dpms.patch,
+  -files/mplayer-xshape.patch, -mplayer-1.0_rc1_p20070824.ebuild,
+  mplayer-1.0_rc2_p24929-r1.ebuild, mplayer-1.0_rc2_p24929-r2.ebuild,
+  -mplayer-1.0_rc2_p24929-r3.ebuild, mplayer-1.0_rc2_p25993.ebuild:
+  Remove libdts references, unused ebuilds and patches.
+
+  15 Feb 2008; Jeroen Roovers <jer@gentoo.org>
+  mplayer-1.0_rc2_p25993.ebuild:
+  Stable for HPPA (bug #208566).
+
+  15 Feb 2008; Brent Baude <ranger@gentoo.org>
+  mplayer-1.0_rc2_p25993.ebuild:
+  Marking mplayer-1.0_rc2_p25993 ppc64 for bug 208566
+
+  14 Feb 2008; Ferris McCormick <fmccor@gentoo.org>
+  mplayer-1.0_rc2_p25993.ebuild:
+  Sparc stable --- security Bug #208566.
+
+  14 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  mplayer-1.0_rc2_p25993.ebuild:
+  stable x86, security bug 208566
+
+*mplayer-1.0_rc2_p25993 (14 Feb 2008)
+
+  14 Feb 2008; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0_rc2_p25993.ebuild:
+  Version snapshot bump, bug 208566
+
+  26 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  mplayer-1.0_rc2_p24929-r3.ebuild:
+  Do the cflags mess on fbsd too, x86 doesnt have more registers there...
+
+*mplayer-1.0_rc2_p24929-r3 (24 Jan 2008)
+
+  24 Jan 2008; Samuli Suominen <drac@gentoo.org>
+  +mplayer-1.0_rc2_p24929-r3.ebuild:
+  Revision bump for new dep., media-libs/libggiwmh used by USE ggi. Unkeyword
+  mips and ppc wrt #205570.
+
+  17 Jan 2008; Raúl Porcel <armin76@gentoo.org>
+  mplayer-1.0_rc2_p24929-r1.ebuild:
+  alpha/ia64/sparc stable wrt #201859
+
+  13 Jan 2008; nixnut <nixnut@gentoo.org> mplayer-1.0_rc2_p24929-r1.ebuild:
+  Stable on ppc wrt bug 201859
+
+  10 Jan 2008; Jeroen Roovers <jer@gentoo.org>
+  mplayer-1.0_rc2_p24929-r1.ebuild:
+  Stable for HPPA (bug #201859).
+
+  07 Jan 2008; Samuli Suominen <drac@gentoo.org>
+  -mplayer-1.0_rc1_p20070622-r1.ebuild,
+  -mplayer-1.0_rc1_p20070622-r4.ebuild:
+  Remove unused versions still depending only libdts because it's getting
+  removed in favour of libdca.
+
+  05 Jan 2008; Brent Baude <ranger@gentoo.org>
+  mplayer-1.0_rc2_p24929-r1.ebuild:
+  Marking mplayer-1.0_rc2_p24929-r1 ppc64 for bug 201859
+
+  05 Jan 2008; Markus Meier <maekke@gentoo.org>
+  mplayer-1.0_rc2_p24929-r1.ebuild:
+  x86 stable, bug #201859
+
+  05 Jan 2008; Samuli Suominen <drac@gentoo.org>
+  mplayer-1.0_rc2_p24929-r1.ebuild:
+  amd64 stable wrt #201859
+
+*mplayer-1.0_rc2_p24929-r2 (05 Jan 2008)
+
+  05 Jan 2008; Steve Dibb <beandog@gentoo.org>
+  +files/mplayer-1.0_rc2_p24929-pulse.patch,
+  +mplayer-1.0_rc2_p24929-r2.ebuild:
+  pulseaudio patch, bug 203430
+
+*mplayer-1.0_rc2_p24929-r1 (03 Jan 2008)
+
+  03 Jan 2008; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0_rc2_p24929-r1.ebuild:
+  Fix x264 encode dep, bug 203594
+  Drop support for IVTV, PVR
+
+  28 Dec 2007; Raúl Porcel <armin76@gentoo.org> mplayer-1.0_rc2.ebuild:
+  alpha/ia64/x86 stable
+
+  05 Dec 2007; Dawid Węgliński <cla@gentoo.org> mplayer-1.0_rc2.ebuild,
+  mplayer-1.0_rc1_p20070824.ebuild, mplayer-1.0_rc1_p20070927-r1.ebuild,
+  mplayer-1.0_rc2_p24929.ebuild:
+  Fix polish locales plus some quotes
+
+  01 Dec 2007; Markus Rothe <corsair@gentoo.org> mplayer-1.0_rc2.ebuild:
+  Stable on ppc64
+
+  02 Nov 2007; Raúl Porcel <armin76@gentoo.org> mplayer-1.0_rc2.ebuild:
+  sparc stable wrt #192601, thanks to Alex Maclean for testing
+
+*mplayer-1.0_rc2_p24929 (02 Nov 2007)
+
+  02 Nov 2007; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0_rc2_p24929.ebuild:
+  Version bump
+  Rename patch versioning scheme to SVN release
+  Add pulseaudio use flag
+  Add ladspa use flag, bug 197753
+  Remove lame use flag, use lame as mp3 encoding
+
+*mplayer-1.0_rc2 (10 Oct 2007)
+
+  10 Oct 2007; Steve Dibb <beandog@gentoo.org> +mplayer-1.0_rc2.ebuild:
+  Version bump, bug 195154
+
+  08 Oct 2007; Markus Rothe <corsair@gentoo.org>
+  mplayer-1.0_rc1_p20070824.ebuild:
+  Stable on ppc64; bug #192601
+
+*mplayer-1.0_rc1_p20070927-r1 (28 Sep 2007)
+
+  28 Sep 2007; Steve Dibb <beandog@gentoo.org>
+  -mplayer-1.0_rc1_p20070927.ebuild, +mplayer-1.0_rc1_p20070927-r1.ebuild:
+  Fix a52 typo, bug 194079
+
+*mplayer-1.0_rc1_p20070927 (27 Sep 2007)
+
+  27 Sep 2007; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0_rc1_p20070927.ebuild:
+  Subversion bump, install a52 by default with dvd use flag, switch xvmc
+  linking back to generic lib
+
+  24 Sep 2007; Samuli Suominen <drac@gentoo.org>
+  mplayer-1.0_rc1_p20070824.ebuild:
+  Trivial fix for video_cards mga installation wrt #192752.
+
+  24 Sep 2007; Raúl Porcel <armin76@gentoo.org>
+  mplayer-1.0_rc1_p20070824.ebuild:
+  alpha/ia64 stable wrt #192601
+
+  16 Sep 2007; Lars Weiler <pylon@gentoo.org>
+  mplayer-1.0_rc1_p20070824.ebuild:
+  Stable on ppc; bug #192601.
+
+  16 Sep 2007; Jeroen Roovers <jer@gentoo.org>
+  mplayer-1.0_rc1_p20070824.ebuild:
+  Stable for HPPA (bug #192601).
+
+  16 Sep 2007; Jurek Bartuszek <jurek@gentoo.org>
+  mplayer-1.0_rc1_p20070824.ebuild:
+  x86 stable (bug #192601)
+
+  15 Sep 2007; Christoph Mende <angelos@gentoo.org>
+  mplayer-1.0_rc1_p20070824.ebuild:
+  Stable on amd64 wrt bug #192601
+
+  08 Sep 2007; Joseph Jezak <josejx@gentoo.org>
+  mplayer-1.0_rc1_p20070622-r4.ebuild:
+  Marked ppc/ppc64 stable for bug #190531.
+
+  07 Sep 2007; Stuart Longland <redhatter@gentoo.org>
+  mplayer-1.0_rc1_p20070824.ebuild:
+  Tested and working on MIPS.  Keyworded ~mips
+
+  02 Sep 2007; Raúl Porcel <armin76@gentoo.org>
+  mplayer-1.0_rc1_p20070622-r4.ebuild:
+  alpha/ia64 stable wrt #190531
+
+  30 Aug 2007; Jeroen Roovers <jer@gentoo.org>
+  mplayer-1.0_rc1_p20070622-r4.ebuild:
+  Stable for HPPA (bug #190531).
+
+  28 Aug 2007; Jurek Bartuszek <jurek@gentoo.org>
+  mplayer-1.0_rc1_p20070622-r4.ebuild:
+  x86 stable (bug #190531)
+
+  28 Aug 2007; Steve Dibb <beandog@gentoo.org> -files/mplayer.desktop:
+  Remove unused mplayer.desktop
+
+*mplayer-1.0_rc1_p20070824 (28 Aug 2007)
+*mplayer-1.0_rc1_p20070622-r4 (28 Aug 2007)
+*mplayer-1.0_rc1_p20070622-r1 (28 Aug 2007)
+
+  28 Aug 2007; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0_rc1_p20070622-r1.ebuild,
+  +mplayer-1.0_rc1_p20070622-r4.ebuild, +mplayer-1.0_rc1_p20070824.ebuild:
+  Fix versioning scheme of ebuilds, bug 175688
+
+  28 Aug 2007; Steve Dibb <beandog@gentoo.org>
+  -files/mplayer-1.0_rc1-asmrules.patch,
+  -files/mplayer-undefined-reference-fix.patch, -mplayer-1.0_rc1-r2.ebuild,
+  -mplayer-1.0.20070321.ebuild, -mplayer-1.0.20070321-r1.ebuild,
+  -mplayer-1.0.20070427.ebuild, -mplayer-1.0.20070622-r3.ebuild,
+  -mplayer-1.0.20070814.ebuild:
+  Remove old (some with security bugs) versions of mplayer w/patches, in
+  anticipation of naming scheme reboot
+
+  28 Aug 2007; Steve Dibb <beandog@gentoo.org>
+  mplayer-1.0.20070622-r4.ebuild:
+  amd64 stable, bug 190531
+
+*mplayer-1.0.20070622-r4 (28 Aug 2007)
+
+  28 Aug 2007; Steve Dibb <beandog@gentoo.org>
+  +files/mplayer-libdvdcss.patch, +mplayer-1.0.20070622-r4.ebuild:
+  Backport libdvdcss patch from upstream, bug 189665
+
+*mplayer-1.0.20070824 (25 Aug 2007)
+
+  25 Aug 2007; Steve Dibb <beandog@gentoo.org> +mplayer-1.0.20070824.ebuild:
+  SVN snapshot version bump
+
+  16 Aug 2007; Steve Dibb <beandog@gentoo.org> mplayer-1.0.20070814.ebuild:
+  Fix ivtv linux-headers dep, re-add PVR use flag
+
+  15 Aug 2007; Samuli Suominen <drac@gentoo.org>
+  mplayer-1.0.20070814.ebuild:
+  Flip libdts and libdca deps around, so libdca gets installed over libdts
+  primarily.
+
+*mplayer-1.0.20070814 (14 Aug 2007)
+
+  14 Aug 2007; Steve Dibb <beandog@gentoo.org> +mplayer-1.0.20070814.ebuild:
+  SVN snapshot version bump
+  Fix xinerama scaling, bug 187382
+  Enable libcdio support, bug 184783
+  Fix broken symlink for mplayer.conf, bug 183099
+  Remove app-arch/unzip from DEPEND
+  Add video card + xvmc support for nvidia, i810, bug 184186
+  Remove dvdnav support
+  Restore original a52 use flag check, add ewarn if using dvd use flag
+  Add teletext use flag
+  Fix DTS dependencies, bug 186854
+
+  12 Aug 2007; Samuli Suominen <drac@gentoo.org> +files/mplayer-dpms.patch,
+  mplayer-1.0.20070622-r3.ebuild:
+  Fix DPMS detection at configure time with -Wl,--as-needed.
+
+*mplayer-1.0.20070622-r3 (28 Jul 2007)
+
+  28 Jul 2007; Steve Dibb <beandog@gentoo.org>
+  mplayer-1.0.20070622-r2.ebuild, +mplayer-1.0.20070622-r3.ebuild:
+  Remove pulseaudio patch, being developed upstream, add warning on old version
+
+*mplayer-1.0.20070622-r2 (26 Jul 2007)
+
+  26 Jul 2007; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0.20070622-r2.ebuild:
+  Remove debug option, since it is broken in this release, add pulseaudio
+  support, bug 183230 (thanks to drizzt for patch)
+
+  05 Jul 2007; Markus Rothe <corsair@gentoo.org>
+  mplayer-1.0.20070622-r1.ebuild:
+  Stable on ppc64; bug #181097
+
+  05 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  mplayer-1.0.20070622-r1.ebuild:
+  alpha/ia64 stable
+
+  04 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  mplayer-1.0.20070622-r1.ebuild:
+  Stable on sparc
+
+  04 Jul 2007; René Nussbaumer <killerfox@gentoo.org>
+  mplayer-1.0.20070622-r1.ebuild:
+  Stable on hppa. See bug #181097.
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  mplayer-1.0_rc1-r2.ebuild, mplayer-1.0.20070321.ebuild,
+  mplayer-1.0.20070321-r1.ebuild, mplayer-1.0.20070427.ebuild,
+  mplayer-1.0.20070622.ebuild, mplayer-1.0.20070622-r1.ebuild:
+  (QA) RESTRICT clean up.
+
+  28 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  mplayer-1.0.20070622-r1.ebuild:
+  ppc stable, bug #181097
+
+  25 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  mplayer-1.0.20070622.ebuild:
+  Stable on sparc wrt security #181097
+
+  25 Jun 2007; Raúl Porcel <armin76@gentoo.org>
+  mplayer-1.0.20070622-r1.ebuild:
+  x86 stable wrt security #181097
+
+  25 Jun 2007; Steve Dibb <beandog@gentoo.org>
+  mplayer-1.0.20070622-r1.ebuild:
+  Add support for SSSE3
+
+*mplayer-1.0.20070622-r1 (24 Jun 2007)
+
+  24 Jun 2007; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0.20070622-r1.ebuild:
+  Cleanup dvd use flags, bug 174721; don't disable a52 internal support unless
+  -dvd is used, bug 181082
+
+  24 Jun 2007; Raúl Porcel <armin76@gentoo.org>
+  mplayer-1.0.20070622.ebuild:
+  alpha/ia64 stable wrt security #181097
+
+  24 Jun 2007; Samuli Suominen <drac@gentoo.org>
+  mplayer-1.0.20070622.ebuild:
+  Makefile allready installs both pixmap and desktop file so stop doing that
+  inside ebuild.
+
+  23 Jun 2007; Christoph Mende <angelos@gentoo.org>
+  mplayer-1.0.20070622.ebuild:
+  Stable on amd64 wrt security bug 181097
+
+  23 Jun 2007; Jeroen Roovers <jer@gentoo.org> mplayer-1.0.20070622.ebuild:
+  Stable for HPPA (bug #181097).
+
+  23 Jun 2007; Markus Rothe <corsair@gentoo.org>
+  mplayer-1.0.20070622.ebuild:
+  Stable on ppc64; bug #181097
+
+  22 Jun 2007; Steve Dibb <beandog@gentoo.org> mplayer-1.0.20070622.ebuild:
+  Fix dts configuration, bug 182914
+
+*mplayer-1.0.20070622 (22 Jun 2007)
+
+  22 Jun 2007; Steve Dibb <beandog@gentoo.org> +mplayer-1.0.20070622.ebuild:
+  Version bump, security bug 181097
+
+  10 Jun 2007; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0.20070427.ebuild:
+  Altivec works on ppc...
+
+  20 May 2007; Steve Dibb <beandog@gentoo.org> mplayer-1.0.20070321.ebuild,
+  mplayer-1.0.20070427.ebuild:
+  Fix install location of desktop xpm, bug 179257
+
+  03 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  mplayer-1.0.20070321.ebuild:
+  ppc stable, bug #168917
+
+  02 May 2007; Jeroen Roovers <jer@gentoo.org> mplayer-1.0.20070321.ebuild:
+  Stable for HPPA (bug #168917).
+
+  02 May 2007; Bryan Østergaard <kloeri@gentoo.org>
+  mplayer-1.0.20070321.ebuild:
+  Stable on Alpha, bug 168917.
+
+*mplayer-1.0.20070321-r1 (01 May 2007)
+
+  01 May 2007; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0.20070321-r1.ebuild:
+  Remove .svn directories, bug 172198
+
+  01 May 2007; Markus Rothe <corsair@gentoo.org>
+  mplayer-1.0.20070321.ebuild:
+  Stable on ppc64; bug #168917
+
+  30 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  mplayer-1.0.20070321.ebuild:
+  Stable on sparc wrt security #168917
+
+  30 Apr 2007; Raúl Porcel <armin76@gentoo.org>
+  mplayer-1.0.20070321.ebuild:
+  ia64 + x86 stable wrt security bug 168917
+
+*mplayer-1.0.20070427 (27 Apr 2007)
+
+  27 Apr 2007; Steve Dibb <beandog@gentoo.org> +mplayer-1.0.20070427.ebuild:
+  Version bump, fix bug 172198
+
+  26 Apr 2007; Steve Dibb <beandog@gentoo.org> mplayer-1.0.20070321.ebuild:
+  amd64 stable
+
+  26 Apr 2007; Steve Dibb <beandog@gentoo.org> -mplayer-1.0_rc1.ebuild,
+  -mplayer-1.0_rc1-r1.ebuild:
+  Removing old version with security issue, bug 159727
+
+  26 Apr 2007; Steve Dibb <beandog@gentoo.org> -mplayer-1.0_pre8-r1.ebuild:
+  Removing old version with security issue, bug 159727
+
+*mplayer-1.0.20070321 (26 Apr 2007)
+
+  26 Apr 2007; Steve Dibb <beandog@gentoo.org> +mplayer-1.0.20070321.ebuild,
+  -mplayer-1.0_rc2_pre20070321-r4.ebuild:
+  Fix naming scheme
+
+  09 Apr 2007; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0_rc2_pre20070321-r4.ebuild:
+  missing places...
+
+  09 Apr 2007; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0_rc2_pre20070321-r4.ebuild:
+  MPlayer now installs the default config in /etc/mplayer/mplayer.conf
+
+  02 Apr 2007; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0_rc2_pre20070321-r4.ebuild:
+  Remove wrong deps
+
+  28 Mar 2007; Steve Dibb <beandog@gentoo.org>
+  -mplayer-1.0_rc2_pre20070321-r3.ebuild,
+  mplayer-1.0_rc2_pre20070321-r4.ebuild:
+  - Fix tga use flag, bug 172372
+  - Make mp2 use flag dependent on encode, make dv and x264 use flags
+  independent, bug 172232
+
+  25 Mar 2007; Steve Dibb <beandog@gentoo.org>
+  mplayer-1.0_rc2_pre20070321-r3.ebuild:
+  Fix tdfx use flag (bug 172170)
+
+*mplayer-1.0_rc2_pre20070321-r4 (25 Mar 2007)
+
+  25 Mar 2007; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0_rc2_pre20070321-r4.ebuild:
+  - Remove dependency on media-libs/a52dec
+  - Fix tdfx use flag (bug 172170)
+  - Remove LINGUAS use flags, rely on variable from make.conf to set languages,
+  add notice of special ordering
+  - Fix CPU optimization use flags ( bug 155232 )
+  - Remove -j1 from MAKEOPTS ( bug 86245 )
+
+*mplayer-1.0_rc2_pre20070321-r3 (23 Mar 2007)
+
+  23 Mar 2007; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0_rc2_pre20070321-r3.ebuild:
+  - Add vidix use flag
+  - Fix lzo use flag dependency
+  - Fix speex use flag dependency
+  - Fix srt+truetype+iconv cascading dependencies
+  - Re-add fontconfig and subfont options to mplayer.conf for truetype
+  - Force win32codecs dep on real use flag for x86
+  - Fix HPPA compilation, disable cpudetection on certain arches ( bug 171879 )
+  - Force OSS audio dep on radio use flag ( bug 171850 )
+  - Fix mp2 dependency ( toolame -> twolame )
+  - Cleanup RDEPEND tree
+  - Drop libdvdread dependency
+  - Add libdvdnav dependency
+  - Optional mp3 dependency on lame
+  - Dont disable vidix on -svga
+  - Cleanup DVB/V4L/Radio checks
+  - dodoc Changelog
+
+*mplayer-1.0_rc2_pre20070321-r2 (22 Mar 2007)
+
+  22 Mar 2007; Steve Dibb <beandog@gentoo.org> +files/mplayer-xshape.patch,
+  +mplayer-1.0_rc2_pre20070321-r2.ebuild:
+  Add XShape detection patch, thanks to anarchy
+
+*mplayer-1.0_rc2_pre20070321-r1 (22 Mar 2007)
+
+  22 Mar 2007; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0_rc2_pre20070321-r1.ebuild:
+  Remove some configuration changes, remove changing font options on mplayer.conf
+
+*mplayer-1.0_rc2_pre20070321 (22 Mar 2007)
+
+  22 Mar 2007; Steve Dibb <beandog@gentoo.org>
+  +mplayer-1.0_rc2_pre20070321.ebuild:
+  Version bump
+
+  17 Feb 2007; Simon Stelling <blubb@gentoo.org> mplayer-1.0_rc1-r2.ebuild:
+  only use amd64codecs if we're not distributing the build
+
+  16 Feb 2007; Simon Stelling <blubb@gentoo.org> mplayer-1.0_rc1-r2.ebuild:
+  depend on >=portage-2.1.2 to make sure the assembler USE flags are unmasked
+  on amd64
+
+  13 Feb 2007; Markus Rothe <corsair@gentoo.org> mplayer-1.0_rc1-r2.ebuild:
+  Stable on ppc64; bug #159727
+
+  12 Feb 2007; Bryan Østergaard <kloeri@gentoo.org>
+  mplayer-1.0_rc1-r2.ebuild:
+  Stable on Alpha, bug 159727.
+
+  12 Feb 2007; Bryan Østergaard <kloeri@gentoo.org>
+  mplayer-1.0_rc1-r2.ebuild:
+  Stable on IA64, bug 159727.
+
+  12 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  mplayer-1.0_rc1-r2.ebuild:
+  Stable on sparc wrt security #159727
+
+  11 Feb 2007; Simon Stelling <blubb@gentoo.org> mplayer-1.0_rc1-r2.ebuild:
+  stable on amd64; security bug 159727
+
+  11 Feb 2007; René Nussbaumer <killerfox@gentoo.org>
+  mplayer-1.0_rc1-r2.ebuild:
+  Stable on hppa. See bug #159727.
+
+  11 Feb 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  mplayer-1.0_rc1-r2.ebuild:
+  Stable on ppc wrt bug #159727.
+
+  11 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  mplayer-1.0_rc1-r2.ebuild:
+  stable x86; security bug #159727
+
+  01 Feb 2007; Steve Dibb <beandog@gentoo.org> mplayer-1.0_rc1.ebuild,
+  mplayer-1.0_rc1-r1.ebuild, mplayer-1.0_rc1-r2.ebuild:
+  Disable ivtv video output support, bug 164748
+
+*mplayer-1.0_rc1-r2 (30 Jan 2007)
+
+  30 Jan 2007; Steve Dibb <beandog@gentoo.org>
+  +files/mplayer-1.0_rc1-asmrules.patch, +mplayer-1.0_rc1-r2.ebuild:
+  Add asmrules security patch from upstream, bug 159727
+
+  30 Jan 2007; Steve Dibb <beandog@gentoo.org> mplayer-1.0_rc1.ebuild,
+  mplayer-1.0_rc1-r1.ebuild:
+  Upgrade main Blue skin to 1.7
+
+  17 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  mplayer-1.0_rc1.ebuild:
+  filter -fomit-frame-pointer when USE=debug is set
+
+  09 Jan 2007; Olivier Crête <tester@gentoo.org> mplayer-1.0_rc1.ebuild:
+  Stable on amd64 for bugs #157814 and #161053
+
+*mplayer-1.0_rc1-r1 (06 Jan 2007)
+
+  06 Jan 2007; Steve Dibb <beandog@gentoo.org> +mplayer-1.0_rc1-r1.ebuild:
+  Add amd64codecs support for real libs on amd64
+
+  04 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  mplayer-1.0_rc1.ebuild:
+  stable x86, bug #157814
+
+  03 Jan 2007; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_rc1.ebuild:
+  disable dvdnav for now
+
+  31 Dec 2006; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_rc1.ebuild:
+  fix mplayer to build against the latest live555.com
+
+  23 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  mplayer-1.0_rc1.ebuild:
+  Stable on ppc wrt bug #157814.
+
+  21 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  mplayer-1.0_pre8.ebuild, mplayer-1.0_pre8-r1.ebuild,
+  mplayer-1.0_rc1.ebuild:
+  Stable on sparc wrt #157814
+
+  21 Dec 2006; Markus Rothe <corsair@gentoo.org> mplayer-1.0_rc1.ebuild:
+  Stable on ppc64; bug #157814
+
+  10 Dec 2006; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_rc1.ebuild:
+  Fix faac dep
+
+  11 Dec 2006; Diego Pettenò <flameeyes@gentoo.org> mplayer-1.0_rc1.ebuild:
+  Tell the configure script to sue the correct CC/BUILD_CC compiler, close bug
+  #155515, thanks to Timothy Redaelli for reporting.
+
+  01 Dec 2006; Steve Dibb <beandog@gentoo.org> mplayer-1.0_rc1.ebuild:
+  Disable pvr support
+
+  21 Nov 2006; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_rc1.ebuild:
+  fix the iconv-truetype logic, thanks to hansmi for pointing the issue
+
+  14 Nov 2006; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_rc1.ebuild:
+  Typo, fixed thanks to baru reddy <barureddy@yahoo.com> and zzam, see 
+  bug #154504
+
+  07 Nov 2006; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_rc1.ebuild:
+  Improve default config
+
+  06 Nov 2006; Steve Dibb <beandog@gentoo.org>
+  files/digest-mplayer-1.0_pre8, files/digest-mplayer-1.0_pre8-r1,
+  files/digest-mplayer-1.0_rc1, Manifest:
+  Fix Blue skin digest, again, bug #152694
+
+  03 Nov 2006; Patrick McLean <chutzpah@gentoo.org> mplayer-1.0_rc1.ebuild:
+  Clean up custom-cflags a bit, add -fomit-frame-pointer as it seems to be
+  required to compile some of the inline asm.
+
+  31 Oct 2006; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_rc1.ebuild:
+  Fix some packaging issue part II
+
+  31 Oct 2006; Luca Barbato <lu_zero@gentoo.org>
+  -mplayer-1.0_pre20060810.ebuild, -mplayer-1.0_pre20061019.ebuild:
+  Cleanup
+
+  31 Oct 2006; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre8.ebuild,
+  mplayer-1.0_pre8-r1.ebuild, mplayer-1.0_pre20060810.ebuild,
+  mplayer-1.0_pre20061019.ebuild, mplayer-1.0_rc1.ebuild:
+  Fix packaging, do not install codecs.conf anymore
+
+  30 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  mplayer-1.0_pre8.ebuild, mplayer-1.0_pre8-r1.ebuild,
+  mplayer-1.0_pre20060810.ebuild, mplayer-1.0_pre20061019.ebuild,
+  mplayer-1.0_rc1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  27 Oct 2006; Steve Dibb <beandog@gentoo.org> mplayer-1.0_rc1.ebuild:
+  Add subtitles USE flag, notes about freetype, iconv
+
+  26 Oct 2006; Vlastimil Babka <caster@gentoo.org> mplayer-1.0_rc1.ebuild:
+  Apply the previous patch in $S. Fixes bug #152842.
+
+  25 Oct 2006; Steve Dibb <beandog@gentoo.org> mplayer-1.0_pre8.ebuild,
+  mplayer-1.0_pre8-r1.ebuild, mplayer-1.0_pre20060810.ebuild,
+  mplayer-1.0_pre20061019.ebuild, mplayer-1.0_rc1.ebuild:
+  Remove XMMS support
+
+  25 Oct 2006; Luca Barbato <lu_zero@gentoo.org>
+  +files/mplayer-undefined-reference-fix.patch, mplayer-1.0_rc1.ebuild:
+  fix ppc64
+
+  25 Oct 2006; Steve Dibb <beandog@gentoo.org>
+  files/digest-mplayer-1.0_pre8, files/digest-mplayer-1.0_pre8-r1,
+  files/digest-mplayer-1.0_pre20060810,
+  files/digest-mplayer-1.0_pre20061019, files/digest-mplayer-1.0_rc1,
+  Manifest:
+  Fix digest for blue skin, bug #152694
+
+  25 Oct 2006; Simon Stelling <blubb@gentoo.org> mplayer-1.0_pre8.ebuild,
+  mplayer-1.0_pre8-r1.ebuild, mplayer-1.0_rc1.ebuild:
+  backport the asm fixes and don't hard-enable mmxext either
+
+  25 Oct 2006; Luca Barbato <lu_zero@gentoo.org>
+  files/digest-mplayer-1.0_pre8, files/digest-mplayer-1.0_pre8-r1,
+  files/digest-mplayer-1.0_pre20060810,
+  files/digest-mplayer-1.0_pre20061019, files/digest-mplayer-1.0_rc1,
+  Manifest:
+  Redigest
+
+  24 Oct 2006; Simon Stelling <blubb@gentoo.org> mplayer-1.0_rc1.ebuild:
+  don't hard-enable 3dnow(ext) on amd64 as EM64T doesn't have it
+
+*mplayer-1.0_rc1 (23 Oct 2006)
+
+  23 Oct 2006; Luca Barbato <lu_zero@gentoo.org> +mplayer-1.0_rc1.ebuild:
+  New version
+
+  20 Oct 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0_pre20061019.ebuild:
+  change the src_uri to something valid
+
+*mplayer-1.0_pre20061019 (19 Oct 2006)
+
+  19 Oct 2006; Luca Barbato <lu_zero@gentoo.org>
+  +mplayer-1.0_pre20061019.ebuild:
+  New snapshot
+
+  19 Oct 2006; Luca Barbato <lu_zero@gentoo.org>
+  files/digest-mplayer-1.0_pre8, files/digest-mplayer-1.0_pre8-r1,
+  files/digest-mplayer-1.0_pre20060810, Manifest:
+  Redigesting Blue-1.6 skin
+
+  06 Oct 2006; Simon Stelling <blubb@gentoo.org>
+  +files/mplayer-1.0_pre8-amr-64bit.patch, mplayer-1.0_pre8-r1.ebuild:
+  fix AMR support on amd64; bug 140753; thanks to Maxxer for providing a patch
+
+  22 Sep 2006; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre8.ebuild,
+  mplayer-1.0_pre8-r1.ebuild, mplayer-1.0_pre20060810.ebuild:
+  LINGUAS support updated, thanks to Damien THEBAULT
+  <damien.thebault@laposte.net> for providing the initial patch in bug #143782
+
+  21 Sep 2006; Patrick McLean <chutzpah@gentoo.org> mplayer-1.0_pre8.ebuild,
+  mplayer-1.0_pre8-r1.ebuild, mplayer-1.0_pre20060810.ebuild:
+  Bump Blue skin to version 1.6.
+
+  12 Aug 2006; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre8.ebuild,
+  mplayer-1.0_pre8-r1.ebuild:
+  Pin x264 version to avoid build issue with snapshots too new
+
+  10 Aug 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0_pre20060810.ebuild:
+  Everything ready for wider usage
+
+  10 Aug 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0_pre20060810.ebuild:
+  hickup during the snapshot, temp masked
+
+  10 Aug 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0_pre20060810.ebuild:
+  don't try to specify dvb include path
+
+  10 Aug 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0_pre20060810.ebuild:
+  x264 dep updated
+
+*mplayer-1.0_pre20060810 (10 Aug 2006)
+
+  10 Aug 2006; Luca Barbato <lu_zero@gentoo.org>
+  +mplayer-1.0_pre20060810.ebuild:
+  Early snapshot
+
+  10 Aug 2006; Luca Barbato <lu_zero@gentoo.org>
+  -files/mplayer-1.0_pre7-gcc4-amd64.patch,
+  -files/mplayer-1.0_pre7-gcc4.patch,
+  -files/mplayer-1.0_pre7-gcc_detection.patch,
+  -files/mplayer-1.0_pre7-ppc64.patch,
+  -files/gcc-3-register_allocation.patch, -files/mplayer-mythtv.patch,
+  -mplayer-1.0_pre7-r1.ebuild, -mplayer-1.0.20060102.ebuild,
+  -mplayer-1.0.20060217.ebuild, -mplayer-1.0.20060302.ebuild,
+  -mplayer-1.0.20060408.ebuild, -mplayer-1.0.20060415.ebuild:
+  Cleanup
+
+  28 Jul 2006; Chris Bainbridge <chrb@gentoo.org> mplayer-1.0_pre8.ebuild,
+  mplayer-1.0_pre8-r1.ebuild:
+  Fix "line 338: !use: command not found"
+
+  18 Jul 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  mplayer-1.0_pre8.ebuild, mplayer-1.0_pre8-r1.ebuild:
+  Made sure the win32codecs code is not used when USE has either livecd or
+  bindist in it. This allows us to redistribute mplayer for GRP, though it
+  does reduce its functionality.
+
+  15 Jul 2006; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre8-r1.ebuild:
+  split unicode from iconv
+
+  13 Jul 2006; Aron Griffis <agriffis@gentoo.org> mplayer-1.0_pre8.ebuild,
+  mplayer-1.0_pre8-r1.ebuild, mplayer-1.0.20060102.ebuild,
+  mplayer-1.0.20060217.ebuild, mplayer-1.0.20060302.ebuild,
+  mplayer-1.0.20060408.ebuild, mplayer-1.0.20060415.ebuild:
+  Mark 1.0_pre8 stable on ia64, mark 1.0_pre8-r1 ~ia64, arch-mask 1.0.20060415
+  1.0.20060408 1.0.20060302 1.0.20060217 1.0.20060102 on ia64. #136520 #139955
+
+  12 Jul 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  mplayer-1.0_pre8-r1.ebuild:
+  Keyworded ~sparc wrt #139955
+
+  12 Jul 2006; Danny van Dyk <kugelfang@gentoo.org>
+  mplayer-1.0_pre8-r1.ebuild, mplayer-1.0.20060408.ebuild,
+  mplayer-1.0.20060415.ebuild:
+  QA: Added nls, enca to IUSE.
+
+  11 Jul 2006; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre8-r1.ebuild:
+  Cleanup and modular X only now
+
+  09 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  mplayer-1.0_pre7-r1.ebuild, mplayer-1.0_pre8.ebuild,
+  mplayer-1.0.20060102.ebuild, mplayer-1.0.20060217.ebuild,
+  mplayer-1.0.20060302.ebuild, mplayer-1.0.20060408.ebuild,
+  mplayer-1.0.20060415.ebuild:
+  Pinpoint virtual/x11 version to less than 7.
+
+*mplayer-1.0_pre8-r1 (11 Jul 2006)
+
+  11 Jul 2006; Luca Barbato <lu_zero@gentoo.org>
+  +mplayer-1.0_pre8-r1.ebuild:
+  New ebuild, adds amr, enca and xvmc wrappers support
+
+  03 Jul 2006; Thomas Cort <tcort@gentoo.org> mplayer-1.0.20060102.ebuild,
+  mplayer-1.0.20060217.ebuild, mplayer-1.0.20060302.ebuild,
+  mplayer-1.0.20060408.ebuild, mplayer-1.0.20060415.ebuild:
+  -alpha and -amd64 all snapshots wrt Bug #136520.
+
+  28 Jun 2006; Thomas Cort <tcort@gentoo.org> mplayer-1.0_pre8.ebuild:
+  Stable on alpha wrt Bug #136520.
+
+  27 Jun 2006; Guy Martin <gmsoft@gentoo.org> mplayer-1.0_pre8.ebuild,
+  mplayer-1.0.20060217.ebuild, mplayer-1.0.20060408.ebuild,
+  mplayer-1.0.20060415.ebuild:
+  Stable on hppa.
+
+  25 Jun 2006; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre8.ebuild:
+  phase out nls, unicode triggers iconv dep
+
+  25 Jun 2006; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre8.ebuild:
+  set charset to noconv if you disable unicode
+
+  25 Jun 2006; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre8.ebuild:
+  make debug more useful
+
+  22 Jun 2006; Fabian Groffen <grobian@gentoo.org> mplayer-1.0_pre8.ebuild:
+  Marked ~ppc-macos, I'm stunned (bug #107795)
+
+  19 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  mplayer-1.0.20060102.ebuild, mplayer-1.0.20060217.ebuild,
+  mplayer-1.0.20060302.ebuild, mplayer-1.0.20060408.ebuild,
+  mplayer-1.0.20060415.ebuild:
+  -sparc snapshot versions to let pre8 win
+
+  16 Jun 2006; Jason Wever <weeve@gentoo.org> mplayer-1.0_pre8.ebuild:
+  Stable on SPARC wrt bug #136520.
+
+  16 Jun 2006; Patrick McLean <chutzpah@gentoo.org> mplayer-1.0_pre8.ebuild:
+  Stable on amd64 (bug #136520).
+
+  14 Jun 2006; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre8.ebuild,
+  mplayer-1.0.20060102.ebuild, mplayer-1.0.20060217.ebuild,
+  mplayer-1.0.20060302.ebuild, mplayer-1.0.20060408.ebuild,
+  mplayer-1.0.20060415.ebuild:
+  pre8 stable for ppc and ppc64
+
+  14 Jun 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0.20060102.ebuild, mplayer-1.0.20060217.ebuild,
+  mplayer-1.0.20060302.ebuild, mplayer-1.0.20060408.ebuild,
+  mplayer-1.0.20060415.ebuild:
+  -x86 on the snapshots to leave the new release available for public
+  consumption, enjoy
+
+  13 Jun 2006; Markus Rothe <corsair@gentoo.org> mplayer-1.0_pre8.ebuild:
+  Stable on ppc64; bug #136520
+
+  12 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  mplayer-1.0_pre8.ebuild:
+  Stable on x86 wrt bug #136520.
+
+  12 Jun 2006; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre8.ebuild:
+  x264 dep updated
+
+*mplayer-1.0_pre8 (11 Jun 2006)
+
+  11 Jun 2006; Luca Barbato <lu_zero@gentoo.org> +mplayer-1.0_pre8.ebuild:
+  New release
+
+  10 Jun 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0.20060415.ebuild:
+  typo for the speex support fixed, see bug #136287, thanks to Adam Jones
+  <adam@yggdrasl.demon.co.uk> for spotting it
+
+  10 May 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0.20060415.ebuild:
+  Added speex useflag, thanks to Roman Polach <rpolach@atlas.cz> for spotting 
+  it.
+
+  03 May 2006; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata to list media-video@gentoo.org as maintainer.
+
+  30 Apr 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0.20060415.ebuild:
+  Blue skin updated
+
+  29 Apr 2006; Luis Medinas <metalgod@gentoo.org>
+  mplayer-1.0.20060415.ebuild:
+  Stable on amd64. For security bug #127969.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-mplayer-1.0_pre7-r1, files/digest-mplayer-1.0.20060102,
+  files/digest-mplayer-1.0.20060217, files/digest-mplayer-1.0.20060302,
+  Manifest:
+  Fixing SHA256 digest, pass four
+
+  22 Apr 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0.20060415.ebuild:
+  Overall fixes, spotted on NetBSD
+
+  20 Apr 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0.20060415.ebuild:
+  LINGUAS disabled
+
+  17 Apr 2006; Markus Rothe <corsair@gentoo.org>
+  mplayer-1.0.20060415.ebuild:
+  Stable on ppc64; bug #127969
+
+  17 Apr 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  mplayer-1.0.20060415.ebuild:
+  Stable on hppa. See bug #127969.
+
+  17 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  mplayer-1.0.20060415.ebuild:
+  ppc stable, bug #127969
+
+  17 Apr 2006; Joshua Jackson <tsunam@gentoo.org>
+  mplayer-1.0.20060408.ebuild, mplayer-1.0.20060415.ebuild:
+  Stable on x86; security bug #127969
+
+  16 Apr 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0.20060415.ebuild:
+  Fixed SRC_URI, as pointed in bug #130071
+
+  16 Apr 2006; Luca Barbato <lu_zero@gentoo.org>
+  files/gcc-3-register_allocation.patch:
+  Patch updated
+
+  16 Apr 2006; Luca Barbato <lu_zero@gentoo.org>
+  +files/gcc-3-register_allocation.patch, mplayer-1.0.20060415.ebuild:
+  Fixed a typo in the gcc workarounds triggering an ICE on gcc-3.
+
+  16 Apr 2006; Jason Wever <weeve@gentoo.org> mplayer-1.0.20060415.ebuild:
+  Stable on SPARC wrt security bug #127969.
+
+  15 Apr 2006; Thomas Cort <tcort@gentoo.org> ChangeLog:
+  Stable on alpha wrt security Bug #127969.
+
+  15 Apr 2006; Joshua Jackson <tsunam@gentoo.org>
+  mplayer-1.0.20060408.ebuild, mplayer-1.0.20060415.ebuild:
+  Stable on x86; bug #127969
+
+*mplayer-1.0.20060415 (14 Apr 2006)
+
+  14 Apr 2006; Luca Barbato <lu_zero@gentoo.org>
+  +mplayer-1.0.20060415.ebuild:
+  New snapshot LANG related issue corrected
+
+  11 Apr 2006; Joshua Jackson <tsunam@gentoo.org>
+  mplayer-1.0.20060408.ebuild:
+  Stable for security bug #127969
+
+  09 Apr 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  mplayer-1.0.20060408.ebuild:
+  Stable on hppa. See bug #127969.
+
+  09 Apr 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0.20060408.ebuild:
+  Deps update
+
+  08 Apr 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0.20060408.ebuild:
+  Lots of fixed related to the new unicode support and vidix support
+
+*mplayer-1.0.20060408 (08 Apr 2006)
+
+  08 Apr 2006; Luca Barbato <lu_zero@gentoo.org>
+  +mplayer-1.0.20060408.ebuild:
+  New snapshot
+
+  02 Apr 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0.20060302.ebuild:
+  Proper fix for bug #127901, solves bug #128410
+
+  31 Mar 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0.20060302.ebuild:
+  Workaround for the new dvdnav, fixes bug #127901 thanks to Ed Catmur
+  <ed@catmur.co.uk> for pointing out
+
+  24 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  mplayer-1.0.20060302.ebuild:
+  Mark 1.0.20060302 stable on ia64
+
+  19 Mar 2006; Fernando J. Pereda <ferdy@gentoo.org>
+  mplayer-1.0.20060302.ebuild:
+  Stable on alpha wrt bug #126627. Thanks to both Mike Hlavac
+  <mike@flyingpenguins.org> and Thomas Cort <tcort@cs.ubishops.ca>
+
+  18 Mar 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0.20060302.ebuild:
+  bsd related changes
+
+  03 Mar 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  mplayer-1.0.20060217.ebuild:
+  Stable on hppa. See bug #115760.
+
+  03 Mar 2006; Fernando J. Pereda <ferdy@gentoo.org>
+  mplayer-1.0.20060302.ebuild:
+  Re-add ~alpha keyword wrt bug #124776. Tested by Thomas Cort
+  <tcort@cs.ubishops.ca>
+
+  26 Feb 2006; Bryan Østergaard <kloeri@gentoo.org
+  mplayer-1.0.20060217.ebuild:
+  Stable on alpha, bug 115760.
+
+*mplayer-1.0.20060302 (02 Mar 2006)
+
+  02 Mar 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0.20060217.ebuild, +mplayer-1.0.20060302.ebuild:
+  openal removed again from 20060217, since could not work for everybody, new
+  snapshot with fixes and x264 support
+
+  22 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  mplayer-1.0.20060217.ebuild:
+  Mark 1.0.20060217 stable on ia64. #115760
+
+  22 Feb 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  mplayer-1.0.20060217.ebuild:
+  ppc stable, bug #115760
+
+  22 Feb 2006; Markus Rothe <corsair@gentoo.org>
+  mplayer-1.0.20060217.ebuild:
+  Stable on ppc64; bug #115760
+
+  22 Feb 2006; Herbie Hopkins <herbs@gentoo.org>
+  mplayer-1.0.20060217.ebuild:
+  Stable on amd64 wrt bug #115760.
+
+  22 Feb 2006; Joshua Jackson <tsunam@gentoo.org>
+  mplayer-1.0.20060217.ebuild:
+  Stable on x86; Security bug #115760
+
+  20 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  mplayer-1.0.20060217.ebuild:
+  Stable on sparc wrt security #115760
+
+  21 Feb 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0.20060217.ebuild:
+  Fixed some of the logic, openal should work now, thanks to Reimar for
+  helping, as usual
+
+  20 Feb 2006; Luca Barbato <lu_zero@gentoo.org>
+  -files/mmst_fix_20050415.diff, -files/rtsp_fix_20050415.diff,
+  mplayer-1.0.20060217.ebuild:
+  fixed faad autodetection
+
+  17 Feb 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0.20060217.ebuild:
+  openal disabled, pending update
+
+*mplayer-1.0.20060217 (17 Feb 2006)
+
+  17 Feb 2006; Luca Barbato <lu_zero@gentoo.org>
+  +mplayer-1.0.20060217.ebuild:
+  New snapshot
+
+  15 Feb 2006; Diego Pettenò <flameeyes@gentoo.org>
+  mplayer-1.0_pre7-r1.ebuild, mplayer-1.0.20060102.ebuild:
+  Put gettext as a build-time dependency, and use virtual/libintl as RDEPEND
+  instead.
+
+  13 Feb 2006; Patrick McLean <chutzpah@gentoo.org>
+  mplayer-1.0.20060102.ebuild:
+  Add "musepack" USE flag to support the musepack audio codec (bug #122081).
+
+  03 Feb 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0.20060102.ebuild:
+  dvb changes
+
+  26 Jan 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0.20060102.ebuild:
+  gtk2 support as default
+
+  06 Jan 2006; Luca Barbato <lu_zero@gentoo.org>
+  mplayer-1.0.20060102.ebuild:
+  mythtv useflag removed since the patch got incorporated as stated in bug
+  #117725
+
+  03 Jan 2006; Daniel Black <dragonheart@gentoo.org>
+  mplayer-1.0_pre7-r1.ebuild, mplayer-1.0.20060102.ebuild:
+  dependency changed to =dev-libs/lzo-1* so that unmasking lzo-2 will not
+  break this package as per bug #112374
+
+*mplayer-1.0.20060102 (03 Jan 2006)
+
+  03 Jan 2006; Luca Barbato <lu_zero@gentoo.org>
+  +mplayer-1.0.20060102.ebuild:
+  Snapshot version
+
+  12 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  mplayer-1.0_pre7-r1.ebuild:
+  (#110990) Add modular X dependencies.
+
+  03 Dec 2005; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre7-r1.ebuild:
+  Typo fixed, thanks Oldrich Jedlicka <oldium.pro@seznam.cz> for reporting
+
+  03 Dec 2005; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre7-r1.ebuild:
+  livecd and bindist support, minor changes overall
+
+  01 Nov 2005; Luca Barbato <lu_zero@gentoo.org>
+  -files/mplayer-1.0_pre6-codecs.patch,
+  -files/mplayer-1.0_pre6-configure.patch,
+  -files/mplayer-1.0_pre6-pic.patch, -files/mplayer-1.0_pre6-ppc64.patch,
+  +files/mplayer-1.0_pre7-ppc64.patch, -files/mplayer-avi_crash.patch,
+  -files/mplayer-gcc_detection.patch, -files/mplayer-jack.patch,
+  -files/mplayer-nl.patch, -mplayer-1.0_pre6-r4.ebuild,
+  -mplayer-1.0_pre6-r5.ebuild, -mplayer-1.0_pre6-r6.ebuild,
+  -mplayer-1.0_pre7.ebuild, mplayer-1.0_pre7-r1.ebuild:
+  Complete cleanup
+
+  01 Nov 2005; Luca Barbato <lu_zero@gentoo.org>
+  -mplayer-1.0_pre6-r4.ebuild, -mplayer-1.0_pre6-r5.ebuild,
+  -mplayer-1.0_pre6-r6.ebuild:
+  Pruning mplayer-1.0_pre6 ebuilds
+
+  31 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  mplayer-1.0_pre6-r4.ebuild, mplayer-1.0_pre6-r5.ebuild,
+  mplayer-1.0_pre6-r6.ebuild, mplayer-1.0_pre7.ebuild:
+  Disable divx4linux in every version, not just the last one, to avoid
+  breakage now that the package is gone.
+
+  30 Oct 2005; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre7-r1.ebuild:
+  Removed ancient divx4linux support, internal support if far better anyway.
+
+  06 Nov 2005; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre7-r1.ebuild:
+  disable x264 for now
+
+  10 Oct 2005; Luca Barbato <lu_zero@gentoo.org>
+  +files/mplayer-1.0_pre7-gcc4-amd64.patch, mplayer-1.0_pre7-r1.ebuild:
+  Fix for gcc-4.0.1 and amd64
+
+  31 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  mplayer-1.0_pre7-r1.ebuild:
+  stable on alpha #103555
+
+  31 Aug 2005; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre7-r1.ebuild:
+  Cleanup
+
+  30 Aug 2005; Ian Leitch <port001@gentoo.org> mplayer-1.0_pre7-r1.ebuild:
+  Stable on x86, bug #103555
+
+  30 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  mplayer-1.0_pre7-r1.ebuild:
+  Stable on sparc wrt #103555
+
+  28 Aug 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  mplayer-1.0_pre7-r1.ebuild:
+  Stable on amd64 wrt bug 103555.
+
+  27 Aug 2005; Markus Rothe <corsair@gentoo.org> mplayer-1.0_pre7-r1.ebuild:
+  Stable on ppc64 (bug #103555)
+
+  27 Aug 2005; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre7-r1.ebuild:
+  Marked ppc
+
+*mplayer-1.0_pre7-r1 (27 Aug 2005)
+
+  27 Aug 2005; Luca Barbato <lu_zero@gentoo.org>
+  +mplayer-1.0_pre7-r1.ebuild:
+  Hotfix release for a recently discovered buffer overflow, bug #103555
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> mplayer-1.0_pre7.ebuild:
+  stable on ia64
+
+  04 Aug 2005; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre7.ebuild:
+  Removed the libmatroska dep, fixes bug #99024, thanks to Giacomo Perale
+  <ghepeu@virgilio.it> for pointing out
+
+  04 Aug 2005; Luca Barbato <lu_zero@gentoo.org> files/mplayer.desktop:
+  Fix for the .desktop file, bug #98268
+
+  25 May 2005; Herbie Hopkins <herbs@gentoo.org> mplayer-1.0_pre7.ebuild:
+  Multilib fix, bad path to libxmms.
+
+  16 May 2005; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre6-r6.ebuild,
+  mplayer-1.0_pre7.ebuild:
+  Fix bug #92751
+
+  10 May 2005; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre7.ebuild:
+  aalib support fixed
+
+  09 May 2005; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre6-r6.ebuild,
+  mplayer-1.0_pre7.ebuild:
+  3dfx requires dga. Fix for bug #91351
+
+  09 May 2005; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre6-r6.ebuild,
+  mplayer-1.0_pre7.ebuild:
+  Purge problematic cflag
+
+  09 May 2005; Luca Barbato <lu_zero@gentoo.org>
+  files/mplayer-gcc_detection.patch:
+  Simpler gcc_detection patch, update from Diego Biurrun
+
+  09 May 2005; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre6-r6.ebuild,
+  mplayer-1.0_pre7.ebuild:
+  Minor updates
+
+  06 May 2005; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre6-r6.ebuild,
+  mplayer-1.0_pre7.ebuild:
+  Fix the ebuilds to enable cpudetection correctly, thanks to Emanuele
+  Giaquinta <emanuele.giaquinta@gmail.com>
+
+  05 May 2005; Aron Griffis <agriffis@gentoo.org> mplayer-1.0_pre6-r5.ebuild,
+  mplayer-1.0_pre6-r6.ebuild, mplayer-1.0_pre7.ebuild:
+  add ~ia64
+
+  05 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  -files/mplayer-0.90-coreutils-fixup.patch, -files/mplayer-1.0-gtk2.patch,
+  -files/mplayer-1.0_pre5-alsa-gcc34.patch,
+  -files/mplayer-1.0_pre5-bio2jack.patch,
+  -files/mplayer-1.0_pre5-configure.patch,
+  -files/mplayer-1.0_pre5-gcc_detection.patch,
+  -files/mplayer-1.0_pre5-help_mp-ro.h.patch,
+  -files/mplayer-1.0_pre5-live.patch,
+  -files/mplayer-1.0_pre5-mga-kernel-2.6.patch,
+  -files/mplayer-1.0_pre5-mips64.patch,
+  -files/mplayer-1.0_pre5-r1-conf_locale.patch,
+  -files/mplayer-1.0_pre5-r4-ppc64.patch,
+  -files/mplayer-1.0_pre5-r5-configure.patch,
+  -files/mplayer-1.0_pre5-yuv2rgb_fix.patch, -files/cachefill.patch,
+  -files/gui_vuln_code.patch, -files/mplayer-gif.patch,
+  -files/mplayer-odml.patch, -files/mplayer-x11.patch,
+  -files/real_demux.patch, -files/str_undefined.patch, -files/strl.c,
+  -files/vuln02-fix.diff, -mplayer-1.0_pre5-r5.ebuild:
+  removed old vulnerable version and unneeded patches.
+
+  25 Apr 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/mplayer-1.0_pre7-gcc4.patch,
+  +files/mplayer-1.0_pre7-gcc_detection.patch, mplayer-1.0_pre7.ebuild:
+  Fix building with gcc4. Patch from Genady Okrain (Mafteah) 's overlay (plus
+  some added fixes to libvo/aclib_template.c that whoever seemed to have
+  missed).
+
+  21 Apr 2005; Herbie Hopkins <herbs@gentoo.org> mplayer-1.0_pre7.ebuild:
+  Same amd64 cleanup, new version.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> mplayer-1.0_pre6-r6.ebuild:
+  minor amd64-specific cleanup
+
+  19 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  mplayer-1.0_pre6-r4.ebuild:
+  Stable on alpha, bug 89277.
+
+  17 Apr 2005; Jason Wever <weeve@gentoo.org> mplayer-1.0_pre6-r4.ebuild:
+  Stable on SPARC wrt security bug #89277.
+
+  18 Apr 2005; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre6-r6.ebuild,
+  mplayer-1.0_pre7.ebuild:
+  Minor polishing, thanks to Gurgh <gurgh@gurga.com> for the suggestions
+
+  17 Apr 2005; Luca Barbato <lu_zero@gentoo.org>
+  +files/mplayer-1.0_pre5-alsa-gcc34.patch,
+  +files/mplayer-1.0_pre5-help_mp-ro.h.patch, mplayer-1.0_pre5-r5.ebuild,
+  mplayer-1.0_pre7.ebuild:
+  Fixed pre5 patchset
+
+  17 Apr 2005; Markus Rothe <corsair@gentoo.org> mplayer-1.0_pre6-r4.ebuild:
+  Stable on ppc64; bug #89277
+
+*mplayer-1.0_pre7 (17 Apr 2005)
+
+  17 Apr 2005; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre6-r6.ebuild,
+  +mplayer-1.0_pre7.ebuild:
+  New experimental ebuild and minor fix
+
+  16 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mplayer-1.0_pre6-r4.ebuild:
+  Stable on ppc.
+
+  16 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  mplayer-1.0_pre6-r4.ebuild:
+  stable on amd64 and x86 wrt #89277
+
+*mplayer-1.0_pre6-r4 (16 Apr 2005)
+
+  16 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  -mplayer-1.0_pre6-r1.ebuild, -mplayer-1.0_pre6-r2.ebuild,
+  -mplayer-1.0_pre6-r3.ebuild, +mplayer-1.0_pre6-r4.ebuild,
+  +mplayer-1.0_pre6-r5.ebuild, +mplayer-1.0_pre6-r6.ebuild:
+  updated revisions for security bug #89277
+
+  16 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> metadata.xml,
+  +files/mmst_fix_20050415.diff, +files/rtsp_fix_20050415.diff,
+  mplayer-1.0_pre6-r1.ebuild, mplayer-1.0_pre6-r2.ebuild,
+  mplayer-1.0_pre6-r3.ebuild:
+  added 2 security related patches to the _pre6 ebuilds. see #89277. also
+  updated metadata.xml, chriswhite is retired.
+
+  16 Apr 2005; Luca Barbato <lu_zero@gentoo.org>
+  -files/mplayer-1.0_pre4-alsa-gcc34.patch,
+  -files/mplayer-1.0_pre4-altivec-gcc34.patch,
+  -files/mplayer-1.0_pre4-help_mp-ro.h.patch,
+  -files/mplayer-1.0_pre4-mpst.patch, -mplayer-1.0_pre4-r7.ebuild,
+  -mplayer-1.0_pre5-r2.ebuild, -mplayer-1.0_pre5-r3.ebuild,
+  -mplayer-1.0_pre5-r4.ebuild, mplayer-1.0_pre5-r5.ebuild,
+  mplayer-1.0_pre6-r1.ebuild, mplayer-1.0_pre6-r2.ebuild,
+  mplayer-1.0_pre6-r3.ebuild:
+  useflag move 3dnowex -> 3dnowext, global cleanup
+
+*mplayer-1.0_pre6-r3 (12 Apr 2005)
+
+  12 Apr 2005; Luca Barbato <lu_zero@gentoo.org>
+  +mplayer-1.0_pre6-r3.ebuild:
+  New p.masked ebuild, cpudetection and custom-cflags added.
+
+  11 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  mplayer-1.0_pre6-r1.ebuild, mplayer-1.0_pre6-r2.ebuild:
+  added support for blinkenlights, fixes #86776. we also dont install useless
+  menu entries any longer if use -gtk, fixes bug #86399
+
+  07 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  mplayer-1.0_pre6-r1.ebuild, mplayer-1.0_pre6-r2.ebuild:
+  MAKEOPTS -jN has to be -j1 for successful compilation. fixes #86245
+
+  02 Apr 2005; Chris White <chriswhite@gentoo.org>
+  mplayer-1.0_pre6-r2.ebuild:
+  Removed april fools segment.
+
+  01 Apr 2005; Chris White <chriswhite@gentoo.org>
+  files/mplayer-gcc_detection.patch, mplayer-1.0_pre5-r5.ebuild,
+  mplayer-1.0_pre6-r2.ebuild:
+  Fixed gcc detection patch. Converted avi USE flag to win32codecs USE flag to
+  get rid of ugly arch conditional nestings.
+
+  22 Mar 2005; Chris White <chriswhite@gentoo.org>
+  mplayer-1.0_pre6-r2.ebuild:
+  Fixing bug #85861 as well as changing over to 3dnowext to match the cpu flag
+  in mplayer-1.0_pre6-r2.
+
+  22 Mar 2005; Chris White <chriswhite@gentoo.org>
+  files/mplayer-1.0_pre6-pic.patch:
+  Fixing the pic patch for reals this time.
+
+  21 Mar 2005; Chris White <chriswhite@gentoo.org>
+  files/mplayer-1.0_pre6-pic.patch:
+  Fix 3dnow conditional for idcmt 3dnow unresolved errors.
+
+*mplayer-1.0_pre6-r2 (21 Mar 2005)
+
+  21 Mar 2005; Chris White <chriswhite@gentoo.org>
+  +files/mplayer-1.0_pre6-pic.patch, +mplayer-1.0_pre6-r2.ebuild:
+  The big closer. Bug #51853 goes bye bye. MPlayer will now compile with pic
+  and x86 without filtration.
+
+  20 Mar 2005; Chris White <chriswhite@gentoo.org>
+  mplayer-1.0_pre6-r1.ebuild:
+  Fix bug #85945 (no longer need the alsa-gui patch for pre6).
+
+  20 Mar 2005; Chris White <chriswhite@gentoo.org>
+  mplayer-1.0_pre5-r5.ebuild:
+  Fixed bad if logic (must be getting good at this :|) for real codecs.
+
+  19 Mar 2005; Guy Martin <gmsoft@gentoo.org> mplayer-1.0_pre6-r1.ebuild:
+  Stable on hppa.
+
+  19 Mar 2005; Chris White <chriswhite@gentoo.org>
+  mplayer-1.0_pre6-r1.ebuild:
+  Forgot the mmxext params in ecpu_check for pre6-r1.
+
+*mplayer-1.0_pre6-r1 (19 Mar 2005)
+
+  19 Mar 2005; Chris White <chriswhite@gentoo.org>
+  +files/mplayer-1.0_pre6-codecs.patch, mplayer-1.0_pre4-r7.ebuild,
+  mplayer-1.0_pre5-r3.ebuild, mplayer-1.0_pre5-r4.ebuild,
+  mplayer-1.0_pre5-r5.ebuild, +mplayer-1.0_pre6-r1.ebuild,
+  -mplayer-1.0_pre6.ebuild:
+  Fixed bugs #85642 #85534 #83609 #83546. Pre6 gets a revbump because it uses
+  RealPlayer's codecs instead of win32codecs and because of new 3gp codec
+  support. Old pre6 goes bye bye. mmx2->mmxext.
+
+  16 Mar 2005; Chris White <chriswhite@gentoo.org>
+  +files/mplayer-1.0_pre5-gcc_detection.patch, mplayer-1.0_pre5-r3.ebuild:
+  Fixed optimization logics for mips, hopefully solving bug #83633. Added gcc
+  detection patch to make mplayer actually compile.
+
+  16 Mar 2005; Chris White <chriswhite@gentoo.org>
+  mplayer-1.0_pre5-r3.ebuild:
+  Fixed mplayer-1.0_pre5-r3's message about not using custom CFLAGS. Put in
+  the strip-flags which is supposed to be in there.
+
+  24 Feb 2005; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre6.ebuild:
+  Re-added x86 only USE flag logic for win32codecs.  Fixes #82535.
+
+  19 Feb 2005; Chris White <chriswhite@gentoo.org>
+  +files/mplayer-gcc_detection.patch, +files/mplayer-jack.patch,
+  mplayer-1.0_pre6.ebuild:
+  Fixed endianess issues with jack output.  Fixed gcc being detected improperly.
+
+  07 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  mplayer-1.0_pre5-r5.ebuild:
+  use_enable avi should only be possible on x86. fixed #81149
+
+  07 Feb 2005; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre6.ebuild:
+  Repoman fix trailing white space.
+
+  07 Feb 2005; Chris White <chriswhite@gentoo.org> files/mplayer.desktop,
+  mplayer-1.0_pre5-r5.ebuild, mplayer-1.0_pre6.ebuild:
+  Fixed bug #65914 (desktop file) bug #79207 (real libs logic) bug #78481 (avi
+  USE flag for win32codecs).
+
+  07 Feb 2005; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r5.ebuild,
+  mplayer-1.0_pre6.ebuild:
+  Added dga logic to fix bug #80861.
+
+  06 Feb 2005; Chris White <chriswhite@gentoo.org> files/mplayer-x11.patch:
+  Fixing the patch to work with 71478's issue as well.
+
+  06 Feb 2005; Chris White <chriswhite@gentoo.org> +files/mplayer-x11.patch,
+  mplayer-1.0_pre5-r5.ebuild, mplayer-1.0_pre6.ebuild:
+  Fixed bug #80564 with a patch by nickc and removed uneeded deps on portage and
+  nasm.
+
+  06 Feb 2005; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r5.ebuild,
+  mplayer-1.0_pre6.ebuild:
+  Apparently mmx2 shows up in /proc/cpuinfo as mmxext, so disabling mmx2 cpu
+  checking until I can rework ecpu_check to handle this properly.
+
+  05 Feb 2005; Chris White <chriswhite@gentoo.org> +files/mplayer-gif.patch,
+  mplayer-1.0_pre5-r5.ebuild:
+  Fixed giflib support by backing mplayer pre6 giflib detection.
+
+  04 Feb 2005; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r5.ebuild,
+  mplayer-1.0_pre6.ebuild:
+  Re-enabled sse2 as people with x86's say it works ok. Enabled new
+  ecpu_check-ing functionality.
+
+  30 Jan 2005; Chris White <chriswhite@gentoo.org>
+  +files/mplayer-avi_crash.patch, mplayer-1.0_pre5-r5.ebuild,
+  mplayer-1.0_pre6.ebuild:
+  Fixed bugs #79243 and 78337.
+
+  30 Jan 2005; Chris White <chriswhite@gentoo.org>
+  mplayer-1.0_pre5-r5.ebuild, mplayer-1.0_pre6.ebuild:
+  altivec fix for #76559.
+
+  30 Jan 2005; Chris White <chriswhite@gentoo.org>
+  mplayer-1.0_pre5-r5.ebuild, mplayer-1.0_pre6.ebuild:
+  Fixed real being force enabled (instead of USE flag configured..) and
+  RESTRICT=nostrip to hopefully fix bug #71672.
+
+  24 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> mplayer-1.0_pre6.ebuild:
+  added dv to IUSE, it was already used by the ebuild. fixes bug #79319
+
+  23 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  mplayer-1.0_pre5-r5.ebuild, mplayer-1.0_pre6.ebuild:
+  applied patch to make distcc compiling possible. fixes bug #77235
+
+  23 Jan 2005; Chris White <chriswhite@gentoo.org>
+  mplayer-1.0_pre5-r5.ebuild, mplayer-1.0_pre6.ebuild:
+  Fixed bug #78209. Also removed the gif lib logic in pre6 as it's no longer
+  required (fixed upstream) and now gif is a true enable/disable style flag.
+
+  23 Jan 2005; Chris White <chriswhite@gentoo.org> +files/mplayer-nl.patch,
+  mplayer-1.0_pre6.ebuild:
+  Fixed bug #76429.  Added mplayer-nl.patch to solve.
+
+  23 Jan 2005; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r4.ebuild,
+  mplayer-1.0_pre5-r5.ebuild, mplayer-1.0_pre6.ebuild:
+  Fixed dk from Swedish to Danish.
+
+  14 Jan 2005; Sven Wegener <swegener@gentoo.org>
+  mplayer-1.0_pre5-r5.ebuild, mplayer-1.0_pre6.ebuild:
+  Added missing ? in *DEPEND.
+
+  14 Jan 2005; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r5.ebuild,
+  mplayer-1.0_pre6.ebuild:
+  Re-fixing gif logic (someone messed with it :|) to fix #77463.
+
+  11 Jan 2005; Danny van Dyk <kugelfang@gentoo.org> mplayer-1.0_pre6.ebuild:
+  mplayer now contains SIMD assembler code for AMD64. The AMD64 Team decided
+  to hard-enable SIMD assembler for all users.
+
+  11 Jan 2005; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre6.ebuild:
+  Adding anti-sse2 until someone tells me it doesn't create strange code.
+
+  09 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  mplayer-1.0_pre5-r4.ebuild, mplayer-1.0_pre5-r5.ebuild,
+  mplayer-1.0_pre6.ebuild:
+  made some trivial changes to the alsa related warning in pkg_postinst. fixes
+  bug #76469.
+
+  07 Jan 2005; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r5.ebuild,
+  mplayer-1.0_pre6.ebuild:
+  Re-adding pic logic in (bad chris) and also getting strip-flags added to
+  pre5-r5.
+
+  06 Jan 2005; Patrick Kursawe <phosphan@gentoo.org> mplayer-1.0_pre6.ebuild:
+  Fixed unpack problem (bug #76854)
+
+  06 Jan 2005; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre6.ebuild:
+  MPlayer pre6 was missing docs upstream, adding an 'a' prefix to get the latest
+  alpha version that contains the docs. Note that none of the actual code was
+  changed.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  27 Dec 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre6.ebuild:
+  Fixed dts -> libdts configure option as per bug #75762.
+
+  27 Dec 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre6.ebuild:
+  Added dts support back per bug #75669. Also fixed libdv being forced
+  required as per bug #72146.
+
+  27 Dec 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre6.ebuild:
+  Fixed bio2jack dep issues as per bug #75720. Also force enabled networking
+  support as it causes more issues then solves them.
+
+  27 Dec 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre6.ebuild:
+  tossing in -frename-registers as per bug #75690. Tested it to make sure it
+  wouldn't make hardened gcc cry with BREG errors.
+
+*mplayer-1.0_pre6 (26 Dec 2004)
+
+  26 Dec 2004; Chris White <chriswhite@gentoo.org>
+  +files/mplayer-1.0_pre6-configure.patch,
+  +files/mplayer-1.0_pre6-ppc64.patch, +mplayer-1.0_pre6.ebuild:
+  Infamous 1.0_pre6 bump.
+
+  19 Dec 2004; Bryan Østergaard <kloeri@gentoo.org>
+  mplayer-1.0_pre5-r5.ebuild:
+  Stable on alpha, bug 74473.
+
+  18 Dec 2004; Jason Wever <weeve@gentoo.org> mplayer-1.0_pre5-r5.ebuild:
+  Stable on sparc wrt security bug #74473.
+
+  19 Dec 2004; Michael Hanselmann <hansmi@gentoo.org>
+  mplayer-1.0_pre5-r5.ebuild:
+  Stable on ppc.
+
+  18 Dec 2004; Dylan Carlson <absinthe@gentoo.org>
+  mplayer-1.0_pre5-r5.ebuild:
+  Stable on amd64.
+
+  18 Dec 2004; Markus Rothe <corsair@gentoo.org> mplayer-1.0_pre5-r5.ebuild:
+  Stable on ppc64; bug #74473
+
+  19 Dec 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r5.ebuild:
+  Arrg, forgot to bump down ppc64 keywords :|.
+
+*mplayer-1.0_pre5-r5 (19 Dec 2004)
+
+  19 Dec 2004; Chris White <chriswhite@gentoo.org>
+  +files/mplayer-1.0_pre5-r5-configure.patch, mplayer-1.0_pre4-r7.ebuild,
+  mplayer-1.0_pre5-r2.ebuild, mplayer-1.0_pre5-r3.ebuild,
+  +mplayer-1.0_pre5-r5.ebuild:
+  Bumping to pre5-r5 as per bug #74473. Tested on 20 randomly encoded .avis,
+  mp3s, and even streaming video/audio. Marked x86 stable.
+
+  17 Dec 2004; Markus Rothe <corsair@gentoo.org> mplayer-1.0_pre5-r4.ebuild:
+  Stable on ppc64
+
+  02 Dec 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r4.ebuild:
+  vo -> ao in alsa warning.
+
+  14 Nov 2004; Markus Rothe <corsair@gentoo.org>
+  +files/mplayer-1.0_pre5-r4-ppc64.patch, mplayer-1.0_pre5-r4.ebuild:
+  Marked ~ppc64 (bug #68112) and added ppc64 patch.
+
+  11 Nov 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r4.ebuild:
+  Copied midentify to /usr/bin for emovix for bug #58580.
+
+  11 Nov 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre4-r7.ebuild,
+  mplayer-1.0_pre5-r4.ebuild:
+  Removed mga buiding in MPlayer due to reasons in bug #28846.
+
+  10 Nov 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r4.ebuild:
+  Lots of fancy bash scripting to make MPlayer deal with the normal (and proper)
+  LINGUAS format. Closes bug #49710.
+
+  10 Nov 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r4.ebuild:
+  Added a message about the alsa -ao format to postinstall.  Closes bug #57256.
+
+  10 Nov 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre4-r7.ebuild,
+  mplayer-1.0_pre5-r2.ebuild, mplayer-1.0_pre5-r3.ebuild,
+  mplayer-1.0_pre5-r4.ebuild:
+  Fixed tdfxvid output logic as per bug #64218.
+
+  06 Nov 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r4.ebuild:
+  Added a real USE flag warning to -pre5-r4.
+
+  06 Nov 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre4-r7.ebuild,
+  mplayer-1.0_pre5-r4.ebuild:
+  Fixed optimization filtering per bug #70175.
+
+  31 Oct 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre4-r7.ebuild,
+  mplayer-1.0_pre5-r2.ebuild, mplayer-1.0_pre5-r4.ebuild:
+  Added filtering for -falign-functions. Thanks to jstubbs for pointing that
+  out.
+
+  24 Oct 2004; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre5-r3.ebuild,
+  mplayer-1.0_pre5-r4.ebuild:
+  Minor cleanup
+
+  24 Oct 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre4-r7.ebuild,
+  mplayer-1.0_pre5-r4.ebuild:
+  Converted to kernel-mod eclass. Thanks to Stefan Schweizer
+  <sschweizer@gmail.com> for helping out with that in bug #68444.
+
+  24 Oct 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre4-r7.ebuild:
+  Bad bash logic... [ v. ).
+
+  24 Oct 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r4.ebuild:
+  Added some minor font functionality as per bug #48440.
+
+  24 Oct 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r4.ebuild:
+  Finished off Bug #61451 and closed bug #68552.
+
+  24 Oct 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre4-r7.ebuild:
+  Alpha stable marked live, so changing the dep/patch logic for it. Only amd64
+  left and this ebuild will look ok again.
+
+  24 Oct 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre4-r7.ebuild:
+  Fixed Live issues in Bug #68649 and half solved configure issues in Bug #61451
+  regarding real directories.
+
+  23 Oct 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r2.ebuild:
+  Fixed epatch issues.
+
+  22 Oct 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre4-r7.ebuild:
+  Fixed some more filtering that needed to be done for pic stuff to work.
+
+  20 Oct 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre4-r7.ebuild,
+  mplayer-1.0_pre5-r4.ebuild:
+  Fixed some xvidix logic as per bug #28865.
+
+  19 Oct 2004; Chris White <chriswhite@gentoo.org> :
+  Did filter flags on a few problematic flags as per Bug #67903.
+
+  17 Oct 2004; Bryan Østergaard <kloeri@gentoo.org>
+  mplayer-1.0_pre5-r3.ebuild:
+  alpha happiness, bug 66571.
+
+  17 Oct 2004; Chris White <chriswhite@gentoo.org> :
+  Fixed digest issues :|. Removed ia64 keyword per Bug #67836.
+
+  16 Oct 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre4-r7.ebuild,
+  mplayer-1.0_pre5-r2.ebuild, mplayer-1.0_pre5-r3.ebuild,
+  mplayer-1.0_pre5-r4.ebuild:
+  Removed sse2 as it's broken. Custom CFLAGS now holds. Ncurses as default
+  terminal lib as per bug #64212.
+
+  15 Oct 2004; Seemant Kulleen <seemant@gentoo.org>
+  files/mplayer-1.0_pre5-yuv2rgb_fix.patch:
+  fix the yuv2rgb patch to work properly on altivec enabled ppc's
+
+  06 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mplayer-1.0_pre5-r3.ebuild, mplayer-1.0_pre5-r4.ebuild:
+  get_libdir fixes.
+
+  07 Oct 2004; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre5-r3.ebuild:
+  Backport yuv2rgb_fix
+
+  05 Oct 2004; Luca Barbato <lu_zero@gentoo.org>
+  -files/mplayer-1.0_pre5-yuv2rbg_fix.patch,
+  -files/mplayer-1.0_pre5-yuv2rbg_kludge.patch,
+  +files/mplayer-1.0_pre5-yuv2rgb_fix.patch, mplayer-1.0_pre5-r4.ebuild:
+  Hopefully the latest fix to that part
+
+  04 Oct 2004; Luca Barbato <lu_zero@gentoo.org>
+  +files/mplayer-1.0_pre5-yuv2rbg_fix.patch, mplayer-1.0_pre5-r4.ebuild:
+  Eventually I fixed the yuv2rgb_altivec for vo_x11, the other scalers could
+  have wrong colours
+
+  05 Oct 2004; Luca Barbato <lu_zero@gentoo.org>
+  -files/mplayer-1.0_pre5-yuv2rbg_kludge.patch,
+  +files/mplayer-1.0_pre5-yuv2rgb_fix.patch, mplayer-1.0_pre5-r4.ebuild:
+  Hopefully the latest fix to that part
+
+  03 Oct 2004; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre5-r4.ebuild:
+  Eventually I fixed the yuv2rgb_altivec for vo_x11, the other scalers could
+  have wrong colours
+
+  27 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mplayer-1.0_pre5-r3.ebuild:
+  Moved jack support back to -r3 to fix compilation on systems with jack
+  installed.
+
+  22 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  mplayer-1.0_pre5-r4.ebuild:
+  dev-libs/bio2jack -> media-libs/bio2jack
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  mplayer-1.0_pre4-r7.ebuild, mplayer-1.0_pre5-r2.ebuild,
+  mplayer-1.0_pre5-r3.ebuild:
+  Switch to use epause and ebeep, bug #62950
+
+  29 Aug 2004; Luca Barbato <lu_zero@gentoo.org>
+  +files/mplayer-1.0_pre5-bio2jack.patch, mplayer-1.0_pre5-r4.ebuild:
+  Jack support
+
+  25 Aug 2004; Hardave Riar <hardave@gentoo.org> mplayer-1.0_pre5-r3.ebuild:
+  Added ~mips keyword.
+
+  25 Aug 2004; Chris White <chriswhite@gentoo.org>
+  +files/mplayer-1.0_pre5-mips64.patch, mplayer-1.0_pre5-r3.ebuild:
+  Added mips64 patch.  Closes bug #61466.
+
+*mplayer-1.0_pre5-r4 (22 Aug 2004)
+
+  22 Aug 2004; Chris White <chriswhite@gentoo.org>
+  +files/mplayer-1.0_pre5-configure.patch, +mplayer-1.0_pre5-r4.ebuild:
+  Added MPlayer ebuild with custom CFLAGS.
+
+*mplayer-1.0_pre5-r3 (20 Aug 2004)
+
+  20 Aug 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r2.ebuild,
+  mplayer-1.0_pre5-r3.ebuild:
+  Fixed 3dnowex logic in -r3.  Fixed some bad patch logic as well.
+
+  18 Aug 2004; Chris White <chriswhite@gentoo.org> :
+  I added some xvmc related USE flags. Fixed matroska and live versions. Added a
+  doc USE flag in -r3. Fixed an mspt issue in pre4-r7. Anything else I can't
+  remember too.
+
+  14 Aug 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre4-r7.ebuild,
+  mplayer-1.0_pre5-r2.ebuild:
+  Fixed some live version issues.  Thanks to Merlin for reporting.
+
+  13 Aug 2004; Chris White <chriswhite@gentoo.org>
+  -files/amd64_fix_the_blue_love.patch, -files/default-skin.diff,
+  -files/mencoder-segfault.patch, -files/mplayer-0.90-divx.patch,
+  -files/mplayer-0.90-ppc-benh-2.patch, -files/mplayer-0.90_rc4-gtk2.patch,
+  -files/mplayer-1.0_pre3-alsa-gcc34.patch,
+  -files/mplayer-1.0_pre3-libavcodec-gcc34.patch,
+  -files/mplayer-1.0_pre3-libmatroska063.diff,
+  -files/mplayer-1.0_pre3-xmms.patch,
+  -files/mplayer-1.0_pre4-gcc34-mtune.patch, -files/noenca.patch,
+  -files/ppc750FX-fix.patch, -files/vuln01-fix.diff, -mplayer-0.92-r1.ebuild,
+  -mplayer-1.0_pre2-r1.ebuild, -mplayer-1.0_pre3-r3.ebuild,
+  -mplayer-1.0_pre3-r4.ebuild, -mplayer-1.0_pre3-r5.ebuild,
+  -mplayer-1.0_pre4-r1.ebuild, -mplayer-1.0_pre4-r2.ebuild,
+  -mplayer-1.0_pre4-r3.ebuild, -mplayer-1.0_pre4-r4.ebuild,
+  -mplayer-1.0_pre4.ebuild:
+  Cleaned out old unsupported mplayers and old patches.
+
+  12 Aug 2004; Brian Harring <ferringb@gentoo.org> mplayer-1.0_pre4-r7.ebuild:
+  Corrected an issue with USE="gtk -png".  bug #60136.
+
+  13 Aug 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r2.ebuild:
+  Added tdfxfb support.
+
+  11 Aug 2004; Anders Rune Jensen <arj@gentoo.org> mplayer-1.0_pre5-r2.ebuild, 
+  files/mplayer-1.0_pre5-alsa-gui.patch:
+  Make the alsa patch work with dxr3. Fixes #59200. Caused by #58619.
+
+  03 Aug 2004; Chris White <chriswhite@gentoo.org> :
+  Fixed digest issues.
+
+  01 Aug 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre4-r7.ebuild,
+  mplayer-1.0_pre5-r2.ebuild:
+  Should have been marked stable.
+
+  31 Jul 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r2.ebuild:
+  Ensure proper LIVE version for live fix patch.
+
+  31 Jul 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre4-r7.ebuild,
+  mplayer-1.0_pre5-r2.ebuild:
+  Fixed some use logic with live and network.
+
+  31 Jul 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r2.ebuild:
+  Took pre5-r2 down to unstable.  See Bug #55456 for more information.
+
+  30 Jul 2004; Bryan Østergaard <kloeri@gentoo.org>
+  mplayer-1.0_pre4-r7.ebuild:
+  Stable on alpha, see bug #55456.
+
+  30 Jul 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  mplayer-1.0_pre5-r2.ebuild:
+  Stable on sparc wrt #55456
+
+  31 Jul 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r2.ebuild:
+  Took pre5-r2 down to unstable.  See Bug #55456 for more information.
+
+  30 Jul 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5-r2.ebuild:
+  Added einfo about the network USE flag. This enables/disables streaming and is
+  not set by default in most users' make.conf/package.use. After recieving
+  duplicate issues on this, I've decided to add the einfo in.
+
+  30 Jul 2004; Chris White <chriswhite@gentoo.org>
+  +files/mplayer-1.0_pre5-live.patch, mplayer-1.0_pre5-r2.ebuild:
+  Added fix for latest live-2004-07* for live USE flag.  Fixes Bug #58807.
+
+  29 Jul 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre4-r7.ebuild,
+  mplayer-1.0_pre5-r2.ebuild:
+  Fixed live dependancy issue that was causing world update downgrades.
+
+  29 Jul 2004; Chris White <chriswhite@gentoo.org> :
+  Re-added(?) myself as maintainer.  Fixed alsa gui bug in #58619.
+
+  27 Jul 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre4-r7.ebuild,
+  mplayer-1.0_pre5-r2.ebuild:
+  Added -fPIC to kill register clobbering.
+
+  27 Jul 2004; Daniel Ostrow <dostrow@gentoo.org> mplayer-1.0_pre4-r7.ebuild:
+  Stable on ppc.
+
+  27 Jul 2004; Brian Harring <ferringb@gentoo.org> mplayer-1.0_pre4-r7.ebuild,
+  mplayer-1.0_pre5-r2.ebuild:
+  Corrected USE="v4l2" configuring.
+
+  25 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mplayer-1.0_pre4-r7.ebuild, mplayer-1.0_pre5-r2.ebuild:
+  Changed amd64 stable to pre4 because of some problems in gmplayer. A patch to
+  pre5 will be put in soon.
+
+  24 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mplayer-1.0_pre5-r2.ebuild:
+  Tested and marked stable for amd64 and x86.
+
+*mplayer-1.0_pre5-r2 mplayer-1.0_pre4-r7 (24 Jul 2004)
+
+  24 Jul 2004; Brian Harring <ferringb@gentoo.org> mplayer-1.0_pre4-r6.ebuild,
+  mplayer-1.0_pre4-r7.ebuild, mplayer-1.0_pre5-r2.ebuild:
+  As it stands, these ebuilds should now be the targets for stabling. Mplayer
+  1.0_pre4-r7 and 1.0_pre5-r2 are *not* to be fooled with, compilation fixes
+  are the only thing that should be added to these ebuilds- anything else
+  belongs in another unstable revbump. This fixes compilation issues w/
+  USE="-gtk png", USE="-gtk" and any of xv X xinerama, 
+  USE="gif" (compilation failure), USE="-gif" (unconditionally linking in 
+  libgif broken in previous fix for #58086), DOCS/TOOLS not being installed, 
+  removed dep on X for gif (it was caused by said fix), USE="dvdread -dvd" 
+  bring in dvdread and not using it, etc.  Pretty large amount of fixes.  
+  Versions 1.0_pre4-r6 and 1.0_pre5-r1 are removed from the tree, no user 
+  should be using them (borked badly).
+  These ebuilds ought to end up as the targets for stabling for the gui 
+  vulnerablity issues, thus they shouldn't be fooled w/ for anything but
+  needed fixes.
+
+  24 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  files/cachefill.patch:
+  Typo in the patch was in the conf file, not the source... fixing.
+
+  24 Jul 2004; Chris White <chriswhite@gentoo.org> files/cachefill.patch,
+  +files/mplayer-1.0_pre5-r1-conf_locale.patch, mplayer-1.0_pre4-r6.ebuild,
+  mplayer-1.0_pre5-r1.ebuild:
+  Moved x11 support/xv driver to X USE flag. Fixed gif needing deps on X11.
+  Fixed small typo in the cachefill patch. Address issues mentioned in Bug
+  #58086.  Also adds locale fix patch for Bug #58082.
+
+  23 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mplayer-1.0_pre5-r1.ebuild:
+  Added kernel-2.6 fix on sparc (removes old workaround).
+
+  23 Jul 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre4-r6.ebuild,
+  mplayer-1.0_pre5-r1.ebuild:
+  Fixes some strange issue with the .20 live plugins being pulled in, despite
+  .27 being coded in. Re-Removed dvdread stuff.
+
+  23 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mplayer-1.0_pre5-r1.ebuild:
+  Making USE=xvid work on all archs.
+
+  23 Jul 2004; Brian Harring <ferringb@gentoo.org> mplayer-1.0_pre4-r6.ebuild,
+  mplayer-1.0_pre5-r1.ebuild:
+  Fixed broken deps for media-plugins/live and media-libs/libtheora for ia64
+
+  23 Jul 2004; Brian Harring <ferringb@gentoo.org> mplayer-1.0_pre4-r6.ebuild,
+  mplayer-1.0_pre5-r1.ebuild, files/cachefill.patch:
+  Slipping eradicators cachefill patch in, bug #55936
+
+  23 Jul 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre4-r6.ebuild,
+  mplayer-1.0_pre5-r1.ebuild:
+  Fixed an ia64 dependancy error.
+
+*mplayer-1.0_pre5-r1 (23 Jul 2004)
+
+  23 Jul 2004; Chris White <chriswhite@gentoo.org>
+  +files/mplayer-mythtv.patch, +files/mplayer-odml.patch,
+  -mplayer-1.0_pre4-r5.ebuild, +mplayer-1.0_pre4-r6.ebuild,
+  +mplayer-1.0_pre5-r1.ebuild, -mplayer-1.0_pre5.ebuild:
+  Cleaned up with the help of Mr_Bones_, solar, and ferringb. Added in mythtv
+  patch to fix bug #23544. Stable version for Bug #55456.
+
+  23 Jul 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre4-r5.ebuild:
+  Helps if you commit the gui vulnerability patch when you're fixing a
+  vulnerability bug.
+
+  23 Jul 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5.ebuild:
+  Fixed live dependancies.  Fixes Bug #57963.
+
+  23 Jul 2004; Chris White <chriswhite@gentoo.org>
+  -files/mga-kernel-2.6.patch, +files/mplayer-1.0_pre4-mga-kernel2.6.patch,
+  mplayer-1.0_pre4-r5.ebuild, mplayer-1.0_pre5.ebuild:
+  Cleaned up the ebuilds for pre4-r5 and pre5.
+
+  19 Jul 2004; Travis Tilley <lv@gentoo.org> mplayer-1.0_pre4-r5.ebuild:
+  stable on amd64
+
+  19 Jul 2004; Chris White <chriswhite@gentoo.org> +files/gui_vuln_code.patch,
+  +files/str_undefined.patch, +files/strl.c, mplayer-1.0_pre4-r5.ebuild:
+  Fixed mplayer pre4-r5 compiling issues with undefined str* references and
+  re-stabilized for gui vuln bug for amd64. Added fullscreen patch as well.
+
+  16 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> mplayer-1.0_pre5.ebuild:
+  Stable on alpha, see bug #55456.
+
+*mplayer-1.0_pre4-r5 (18 Jul 2004)
+
+  18 Jul 2004; Chris White <chriswhite@gentoo.org>
+  +files/amd64_fix_the_blue_love.patch, +files/real_demux.patch,
+  mplayer-1.0_pre4-r4.ebuild, +mplayer-1.0_pre4-r5.ebuild:
+  Fixes Bug #53634 and Bug #55456 for amd64.
+
+  15 Jul 2004; Jason Wever <weeve@gentoo.org> mplayer-1.0_pre5.ebuild:
+  Stable on sparc wrt bug #55456.
+
+  16 Jul 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5.ebuild:
+  Weeve gave the heads up to mark this stable on sparc.  Doing so.
+
+  16 Jul 2004; Daniel Ostrow <dostrow@gentoo.org> mplayer-1.0_pre5.ebuild:
+  Stable on ppc.
+
+  15 Jul 2004; Luca Barbato <lu_zero@gentoo.org>
+  +files/mplayer-1.0_pre5-yuv2rbg_kludge.patch, mplayer-1.0_pre5.ebuild:
+  Fixed the altivec scaler
+
+  15 Jul 2004; Chris White <chriswhite@gentoo.org>
+  +files/mplayer-1.0_pre5-mga-kernel-2.6.patch, mplayer-1.0_pre5.ebuild:
+  Re-added the mga_vid.c patch to pre5. Thanks to Norman Yarvin for the heads
+  up. This fixes Bug #57138
+
+  15 Jul 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5.ebuild:
+  Yay, more fun, they replaced the test ebuild which needed the noenca patch
+  with the final release.. (finally) so now I have to remove the patch :|
+
+  15 Jul 2004; Chris White <chriswhite@gentoo.org> mplayer-1.0_pre5.ebuild:
+  Fixed the weird md5-ness with the tarballs
+
+*mplayer-1.0_pre5 (15 Jul 2004)
+
+  15 Jul 2004; Chris White <chriswhite@gentoo.org> +files/noenca.patch,
+  +mplayer-1.0_pre5.ebuild:
+  Adding to the tree for stable marking on Bug #55456
+
+  10 Jul 2004; Jason Wever <weeve@gentoo.org> mplayer-1.0_pre4.ebuild:
+  Stable on sparc.
+
+  29 Jun 2004; Brian Harring <ferringb@gentoo.org> mplayer-1.0_pre4-r1.ebuild,
+  mplayer-1.0_pre4-r2.ebuild, mplayer-1.0_pre4-r3.ebuild,
+  mplayer-1.0_pre4-r4.ebuild, files/mplayer-1.0_pre4-gcc34-mtune.patch, 
+  files/mplayer-1.0_pre4-help_mp-ro.h:
+  Closing out bugs #49669 (help/help_mp-ro.h having completely broken syntax),
+  gcc3.4 s:-mcpu:-mtune: (bug #49488).
+
+  17 Jun 2004; Seemant Kulleen <seemant@gentoo.org>
+  mplayer-1.0_pre4-r4.ebuild:
+  added two variables: BLUV and SVGV to hold the version numbers of the tarballs
+  for BLUE and svga_helper, respectively. Now, version bumping those two things
+  shouldn't break mplayer's emerge processes.
+
+  17 Jun 2004; Seemant Kulleen <seemant@gentoo.org>
+  mplayer-1.0_pre4-r4.ebuild:
+  change the occurrence of Blue-1.0 to Blue-1.4 to correspond to the recent
+  version bump
+
+  17 Jun 2004; Luca Barbato <lu_zero@gentoo.org>
+  +files/mplayer-1.0_pre4-altivec-gcc34.patch, mplayer-1.0_pre4-r4.ebuild:
+  gcc-3.4 altivec fix
+
+  16 Jun 2004; Martin Schlemmer <azarah@gentoo.org>
+  mplayer-1.0_pre4-r4.ebuild:
+  Update Blue skin to version 1.4
+
+  09 Jun 2004; Aron Griffis <agriffis@gentoo.org> mplayer-0.92-r1.ebuild,
+  mplayer-1.0_pre2-r1.ebuild, mplayer-1.0_pre3-r3.ebuild,
+  mplayer-1.0_pre3-r4.ebuild, mplayer-1.0_pre3-r5.ebuild,
+  mplayer-1.0_pre4-r1.ebuild, mplayer-1.0_pre4-r2.ebuild,
+  mplayer-1.0_pre4-r3.ebuild, mplayer-1.0_pre4-r4.ebuild,
+  mplayer-1.0_pre4.ebuild:
+  Fix use invocation
+
+  08 Jun 2004; Patrick Kursawe <phosphan@gentoo.org>
+  mplayer-1.0_pre4-r3.ebuild, mplayer-1.0_pre4-r4.ebuild:
+  Doing matrox related stuff only when matrox is in USE, see bug #53222
+
+  02 Jun 2004; Brian Harring <ferringb@gentoo.org> mplayer-1.0_pre4-r1.ebuild,
+  mplayer-1.0_pre4-r2.ebuild, mplayer-1.0_pre4-r3.ebuild,
+  mplayer-1.0_pre4-r4.ebuild, mplayer-1.0_pre4.ebuild:
+  Missing IUSE for nas, nls. Added live use flag to pre4, removed the inline
+  autodetect of live, making it a use flag controlled dep. moved all IUSE
+  statements below inherit, where they should stay. Closed bugs #49481 and 
+  #36815.
+
+  01 Jun 2004; Travis Tilley <lv@gentoo.org> mplayer-1.0_pre4-r4.ebuild:
+  stable on amd64
+
+  01 Jun 2004; Brian Harring <ferringb@gentoo.org> mplayer-1.0_pre4-r1.ebuild,
+  mplayer-1.0_pre4-r2.ebuild, mplayer-1.0_pre4-r3.ebuild,
+  mplayer-1.0_pre4-r4.ebuild, mplayer-1.0_pre4.ebuild:
+  Added necessary --internal-(matroska|faad) for matroska (bug #50533) and mpeg.
+  MPlayer uses external libs when those flags are specified, otherwise,
+  internal. Also fixed missing IUSE flags.  Fixed use dvb syntax error in pre4-r2.
+
+  01 Jun 2004; Brian Harring <ferringb@gentoo.org> mplayer-1.0_pre4-r4.ebuild,
+  mplayer-1.0_pre4.ebuild:
+  Added use flags for libcaca since mplayer autodetects it already (bug #49369),
+  and missing xinerama IUSE (bug #51509)
+
+  28 May 2004; Guy Martin <gmsoft@gentoo.org> mplayer-1.0_pre4-r4.ebuild:
+  Added ~hppa to KEYWORDS. Little build fix.
+
+*mplayer-1.0_pre4-r4 (28 May 2004)
+
+  28 May 2004; Luca Barbato <lu_zero@gentoo.org> +mplayer-1.0_pre4-r4.ebuild:
+  Upstream requested change to the ebuild
+
+  28 May 2004; Patrick Kursawe <phosphan@gentoo.org>
+  mplayer-1.0_pre4-r3.ebuild:
+  The sandbox fixes were fine for 2.6.6, but failed with 2.6.5. Fixed that, see
+  bug #40616 again.
+
+  27 May 2004; Daniel Ostrow <dostrow@gentoo.org> mplayer-1.0_pre4-r3.ebuild:
+  Stable on ppc.
+
+  27 May 2004; Jon Portnoy <avenj@gentoo.org> mplayer-1.0_pre4-r3.ebuild :
+  Stable on AMD64
+
+  27 May 2004; Brian Harring <ferringb@gentoo.org> mplayer-1.0_pre4-r1.ebuild,
+  mplayer-1.0_pre4-r2.ebuild, mplayer-1.0_pre4-r3.ebuild,
+  mplayer-1.0_pre4.ebuild:
+  Adding xvid, divx4linux use flags (bug #30242), bidi (bug #41482), and mad
+  (bug #32606). Bit of cleanup of myconf, moved IUSE after inherit for
+  1.0_pre4-r3 (portage 2.0.51_pre9 doesn't play nice w/ IUSE above inherit, see
+  bug #52160).
+
+*mplayer-1.0_pre4-r3 (26 May 2004)
+
+  26 May 2004; Patrick Kursawe <phosphan@gentoo.org>
+  mplayer-1.0_pre4-r3.ebuild:
+  Sandbox problems (like bug #52058) should be history now.
+  Using kmod.eclass instead of check-kernel now (bug #51903)
+
+*mplayer-1.0_pre4-r2 (19 May 2004)
+
+  19 May 2004; Patrick Kursawe <phosphan@gentoo.org>
+  mplayer-1.0_pre4-r2.ebuild, files/mga-kernel-2.6.patch:
+  Fixing bug #40616 (mga driver), little cleanups for the patch section.
+
+  12 May 2004; Alexander Gabert <pappy@gentoo.org> mplayer-1.0_pre3-r5.ebuild,
+  mplayer-1.0_pre4-r1.ebuild, mplayer-1.0_pre4.ebuild:
+  added new hardened PIE SSP switches
+
+  12 May 2004; Alexander Gabert <pappy@gentoo.org> mplayer-0.92-r1.ebuild,
+  mplayer-1.0_pre2-r1.ebuild, mplayer-1.0_pre3-r3.ebuild,
+  mplayer-1.0_pre3-r4.ebuild:
+  removed hardened-gcc logic, added filter-flags fPIC logic
+
+  02 May 2004; Jason Wever <weeve@gentoo.org> mplayer-1.0_pre4-r1.ebuild:
+  Changed -sparc keyword back to ~sparc.
+
+  30 Apr 2004; Bryan Østergaard <kloeri@gentoo.org>
+  mplayer-1.0_pre4-r1.ebuild:
+  Stable on alpha.
+
+*mplayer-1.0_pre4-r1 (30 Apr 2004)
+
+  30 Apr 2004; Martin Holzer <mholzer@gentoo.org> mplayer-1.0_pre4-r1.ebuild:
+  live is now a local use flag.
+
+  30 Apr 2004; Martin Holzer <mholzer@gentoo.org> mplayer-1.0_pre4.ebuild:
+  fixing live depend. closes 49481
+
+  29 Apr 2004; Brandon Hale <tseng@gentoo.org> mplayer-1.0_pre4.ebuild:
+  Stable on x86 for multiple vulnerabilities, bug #49387.
+
+*mplayer-1.0_pre4 (28 Apr 2004)
+
+  28 Apr 2004; Martin Holzer <mholzer@gentoo.org> mplayer-1.0_pre4.ebuild:
+  Version bumped.
+
+  28 Apr 2004; Travis Tilley <lv@gentoo.org>
+  +files/mplayer-1.0_pre3-alsa-gcc34.patch,
+  +files/mplayer-1.0_pre3-libavcodec-gcc34.patch, mplayer-1.0_pre3-r5.ebuild:
+  added a fix for compiling with gcc 3.4. yaaay! =)
+
+  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> mplayer-0.92-r1.ebuild,
+  mplayer-1.0_pre2-r1.ebuild, mplayer-1.0_pre3-r3.ebuild,
+  mplayer-1.0_pre3-r4.ebuild, mplayer-1.0_pre3-r5.ebuild:
+  Removed broken gtk2 patch from all versions still in portage and closing bug
+  #15786.
+
+  13 Apr 2004; Scott W Taylor <swtaylor@gentoo.org>
+  mplayer-1.0_pre3-r5.ebuild:
+  update -fPIC handling for post-hardened-gcc
+
+  08 Apr 2004; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre3-r5.ebuild:
+  Added useflags for v4l and v4l2
+
+  06 Apr 2004; Brandon Hale <tseng@gentoo.org> mplayer-1.0_pre3-r5.ebuild:
+  Update -fPIC filtering magic for post hardened-gcc.
+
+  04 Apr 2004; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre3-r5.ebuild,
+  files/ppc750FX-fix.patch:
+  Minor fix to extend the G3 cpu supported, thanks to Simon Strandman
+  <simon.strandman@telia.com>, bug #44276
+
+  31 Mar 2004; Martin Holzer <mholzer@gentoo.org> mplayer-1.0_pre3-r5.ebuild:
+  adding ipv6 configure. closes 42940
+
+*mplayer-1.0_pre3-r3 (31 Mar 2004)
+*mplayer-1.0_pre3-r5 (31 Mar 2004)
+*mplayer-1.0_pre3-r4 (31 Mar 2004)
+*mplayer-1.0_pre2-r1 (31 Mar 2004)
+*mplayer-0.92-r1 (31 Mar 2004)
+
+  31 Mar 2004; Patrick Kursawe <phosphan@gentoo.org> mplayer-0.92-r1.ebuild,
+  mplayer-0.92.ebuild, mplayer-1.0_pre2-r1.ebuild, mplayer-1.0_pre2.ebuild,
+  mplayer-1.0_pre3-r1.ebuild, mplayer-1.0_pre3-r2.ebuild,
+  mplayer-1.0_pre3-r3.ebuild, mplayer-1.0_pre3-r4.ebuild,
+  mplayer-1.0_pre3-r5.ebuild, mplayer-1.0_pre3.ebuild, files/vuln02-fix.diff:
+  Revision bumped all currently available ebuilds and added a patch for a
+  security problem, see bug #46246.
+  Because of different keywordings for 1.0_pre3 they were bumped like follows:
+  1.0_pre3 -> 1.0_pre3-r3
+  1.0_pre3-r1 -> 1.0_pre3-r4
+  1.0_pre3-r2 -> 1.0_pre3-r5
+
+  29 Mar 2004; Donnie Berkholz <spyderous@gentoo.org>; mplayer-0.92.ebuild,
+  mplayer-1.0_pre2.ebuild, mplayer-1.0_pre3-r1.ebuild,
+  mplayer-1.0_pre3-r2.ebuild, mplayer-1.0_pre3.ebuild:
+  Change x11-base/xfree dependency to virtual/x11.
+
+  23 Mar 2004; Martin Holzer <mholzer@gentoo.org> mplayer-1.0_pre3-r2.ebuild,
+  files/mplayer-1.0_pre3-xmms.patch:
+  added patch to disable xmms. closes 45356
+
+  21 Mar 2004; Jason Wever <weeve@gentoo.org> mplayer-1.0_pre3-r2.ebuild:
+  Added ~sparc keyword.
+
+  21 Mar 2004; Jason Wever <weeve@gentoo.org> mplayer-1.0_pre3-r2.ebuild:
+  Marked -sparc until libtheora builds on sparc.
+
+*mplayer-1.0_pre3-r2 (21 Mar 2004)
+
+  21 Mar 2004; Martin Holzer <mholzer@gentoo.org> mplayer-1.0_pre3-r2.ebuild:
+  adding libtheora support.
+
+  18 Mar 2004; Martin Holzer <mholzer@gentoo.org> mplayer-1.0_pre3-r1.ebuild,
+  files/mplayer-1.0_pre3-libmatroska063.diff:
+  adding patch to compile with latest libmatroska
+
+  16 Mar 2004; Stephen P. Becker <geoman@gentoo.org> mplayer-1.0_pre3.ebuild:
+  Added ~mips keyword.
+
+  15 Mar 2004; Jason Wever <weeve@gentoo.org> mplayer-0.92.ebuild:
+  Marked stable on sparc.
+
+*mplayer-1.0_pre3-r1 (11 Mar 2004)
+
+  11 Mar 2004; <kanaka@gentoo.org> mplayer-1.0_pre3-r1.ebuild:
+  Updated to NOT install libpostproc libraries (bug 43640). Now provided by
+  >=ffmpeg-0.4.8.20040222.
+
+  27 Feb 2004; Jason Wever <weeve@gentoo.org> mplayer-1.0_pre3.ebuild:
+  Nothing but ~sparc.
+
+  26 Feb 2004; Guy Martin <gmsoft@gentoo.org> :
+  Keyworded ~hppa.
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> mplayer-1.0_pre3.ebuild:
+  set ppc in keywords
+
+  25 Dec 2003; Seemant Kulleen <seemant@gentoo.org> mplayer-0.92.ebuild,
+  mplayer-1.0_pre1-r1.ebuild, mplayer-1.0_pre2.ebuild,
+  mplayer-1.0_pre3.ebuild:
+  changed SRC_URI to use mirror://mplayer instead
+
+  14 Dec 2003; Martin Holzer <mholzer@gentoo.org> mplayer-1.0_pre3.ebuild:
+  Changing matroska version. Closes #35787
+
+  12 Dec 2003; Seemant Kulleen <seemant@gentoo.org> mplayer-1.0_pre3.ebuild:
+  --disable-css is a deprecated configure option now. Closes bug #35644 by
+  butters@opengames.net and its duplicates
+
+*mplayer-1.0_pre3 (11 Dec 2003)
+
+  20 Dec 2003; Guy Martin <gmsoft@gentoo.org> mplayer-1.0_pre3.ebuild :
+  Fixed detection of hppa boxes.
+
+  11 Dec 2003; Seemant Kulleen <seemant@gentoo.org> mplayer-1.0_pre3.ebuild,
+  files/mplayer-1.0-gtk2.patch:
+  version bump to newest release -- includes updated gtk2 patch
+
+  04 Dec 2003; Seemant Kulleen <seemant@gentoo.org> mplayer-0.92.ebuild,
+  mplayer-1.0_pre1-r1.ebuild, mplayer-1.0_pre2.ebuild:
+  fix the gtk/gtk2 USE flag syntax, closing bug #34567 by Spider
+  <spider@gentoo.org>
+
+  16 Nov 2003; Brad House <brad_mssw@gentoo.org> mplayer-1.0_pre2.ebuild:
+  mark stable on amd64
+
+  30 Oct 2003; Martin Holzer <mholzer@gentoo.org> mplayer-1.0_pre2.ebuild:
+  Adding joystick support. Closes #31470.
+
+  26 Oct 2003; Luca Barbato <lu_zero@gentoo.org> mplayer-1.0_pre2.ebuild:
+  Added debug useflag, minor fixes. Closes #31978 and #31996.
+  thanks to Andrew Kirilenko <icedank@gmx.net> and Juri Haberland 
+  <juri@koschikode.com>.
+
+  20 Oct 2003; Martin Holzer <mholzer@gentoo.org> mplayer-1.0_pre1-r1.ebuild,
+  mplayer-1.0_pre2.ebuild:
+  added matroska support. Closes #28636.
+
+  14 Oct 2003; Martin Holzer <mholzer@gentoo.org> mplayer-0.92.ebuild,
+  mplayer-1.0_pre1-r1.ebuild, mplayer-1.0_pre2.ebuild:
+  RDEPEND error fixed. Closes #30624.
+
+  14 Oct 2003; Martin Holzer <mholzer@gentoo.org> mplayer-0.92.ebuild,
+  mplayer-1.0_pre1-r1.ebuild, mplayer-1.0_pre2.ebuild:
+  adding lirc IUSE flag. Closes #31031.
+
+  11 Oct 2003; Martin Holzer <mholzer@gentoo.org> mplayer-0.92.ebuild,
+  mplayer-1.0_pre1-r1.ebuild, mplayer-1.0_pre2.ebuild:
+  fixed Doc permissions. Closes #30724.
+
+  09 Oct 2003; Martin Schlemmer <azarah@gentoo.org> mplayer-0.92.ebuild,
+  mplayer-1.0_pre1-r1.ebuild, mplayer-1.0_pre2.ebuild:
+  Add a note about us using MPlayer set C[XX]FLAGS to avoid confusion.
+
+  09 Oct 2003; Martin Schlemmer <azarah@gentoo.org> mplayer-0.92.ebuild,
+  mplayer-1.0_pre1-r1.ebuild, mplayer-1.0_pre2.ebuild:
+  Get fonts to install properly again, fixing bug #30213.
+
+  08 Oct 2003; Luca Barbato<lu_zero@gentoo.org> mplayer-1.0_pre2.ebuild:
+  ppc related fix.
+
+*mplayer-1.0_pre2 (07 Oct 2003)
+
+  07 Oct 2003; Martin Holzer <mholzer@gentoo.org> mplayer-1.0_pre2.ebuild:
+  Version bumped. Closes #30415.
+
+  06 Oct 2003; Martin Holzer <mholzer@gentoo.org> mplayer-0.92.ebuild,
+  mplayer-1.0_pre1-r1.ebuild:
+  Adding aalib configure strings. Closes #21984.
+
+  29 Sep 2003; Martin Holzer <mholzer@gentoo.org> :
+  Fixing digest.
+
+*mplayer-1.0_pre1-r1 (27 Sep 2003)
+
+  27 Sep 2003; <solar@gentoo.org> mplayer-1.0_pre1-r1.ebuild,
+  files/vuln01-fix.diff:
+  security fix for devel branch
+
+*mplayer-0.92 (28 Sep 2003)
+
+  28 Sep 2003; Martin Holzer <mholzer@gentoo.org> mplayer-0.92.ebuild:
+  Version bumped. Closes a security Problem.
+
+  23 Sep 2003; Martin Holzer <mholzer@gentoo.org> :
+  digest update. closes #29363
+
+  12 Sep 2003; heinrich Wendel <lanius@gentoo.org> mplayer-1.0_pre1.ebuild,
+  mplayer-0.91.ebuild:
+  fixed samba dep to version 2.2.8a
+
+  07 Sep 2003; Alexander Gabert <pappy@gentoo.org> mplayer-0.91.ebuild:
+  added hardened-gcc excludes
+
+  06 Sep 2003; Martin Schlemmer <azarah@gentoo.org> mplayer-1.0_pre1.ebuild:
+  Cleanup libpostproc stuff a bit. Last time I checked, we should not need to
+  install the static version of the library.
+
+  04 Sep 2003; Heinrich Wendel <lanius@gentoo.org> mplayer-0.90-r2.ebuild,
+  mplayer-0.90-r5.ebuild, mplayer-0.90_rc4.ebuild, mplayer-0.91.ebuild,
+  mplayer-1.0_pre1.ebuild, files/mplayer-0.90-fix-version.patch:
+  - removed old ebuilds
+  - fixed samba bug #25912
+  - fixed fs bug #12751
+  - marked 0.91 stable on x86 and ppc
+
+*mplayer-1.0_pre1 (04 Sep 2003)
+
+  04 Sep 2003; Martin Holzer <mholzer@gentoo.org> mplayer-1.0_pre1.ebuild:
+  Version bumped.
+
+  24 Aug 2003; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90-r2.ebuild,
+  mplayer-0.90-r5.ebuild, mplayer-0.90_rc4.ebuild, mplayer-0.91.ebuild,
+  files/mencoder-segfault.patch:
+  Fix mencoder segfault when used improperly, bug #23611
+
+*mplayer-0.91 (20 Aug 2003)
+
+  20 Aug 2003; Martin Schlemmer <azarah@gentoo.org> mplayer-0.91.ebuild:
+  New version.
+
+*mplayer-0.90-r5 (10 Aug 2003)
+
+  10 Aug 2003; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90-r5.ebuild:
+  Some cleanups - do not try to autodetect video/audio settings, as MPlayer does
+  it by itself these days. Change a few things as suggested by Gabucino
+  (--enable-3dfx is broken, and --enable-dynamic-plugins could have issues).
+  Eventually add the new default Skin of MPlayer (Blue).
+
+  04 Aug 2003; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90-r4.ebuild,
+  files/mplayer-0.90-ppc-benh-2.patch:
+  Fix ppc-benh.patch to play nicely with coreutils-fixup.patch, bug #25833
+
+*mplayer-0.90-r4 (03 Aug 2003)
+
+  03 Aug 2003; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90-r4.ebuild,
+  files/mplayer-0.90-coreutils-fixup.patch:
+  Remove building of svgalib kernel module.  Should fix bug #25062.
+
+  18 Jul 2003; Martin Holzer <mholzer@gentoo.org> mplayer-0.90-r3.ebuild:
+  Final fix.
+
+  16 Jul 2003; Luca Barbato<lu_zero@gentoo.org> mplayer-0.90-r2.ebuild,
+  mplayer-0.90-r3.ebuild:
+  Make it install every documentation file. Closes #20662.
+  
+  16 Jul 2003; Martin Holzer <mholzer@gentoo.org> mplayer-0.90-r2.ebuild,
+  mplayer-0.90-r3.ebuild, mplayer-0.90_rc4.ebuild, mplayer-0.90_rc5.ebuild:
+  Added IUSE flag for xmms. Closes #20090.
+
+  16 Jul 2003; Martin Holzer <mholzer@gentoo.org> mplayer-0.90-r2.ebuild:
+  Marked x86 stable.
+
+*mplayer-0.90-r3 (16 Jul 2003)
+
+  16 Jul 2003; Martin Holzer <mholzer@gentoo.org> mplayer-0.90-r3.ebuild:
+  Added vidix support. Submitted by phoen][x <fisi.tilman.klar@gmx.de> in #20114.
+
+*mplayer-0.90-r2 (01 Jul 2003)
+
+  01 Jul 2003; Martin Holzer <mholzer@gentoo.org> mplayer-0.90-r2.ebuild,
+  files/mplayer-0.90-divx.patch:
+  Adding logic to detect newer DivX Api and patching. Closes #23795.
+
+  11 Jun 2003; Jason Wever <weeve@gentoo.org> mplayer-0.90-r1.ebuild:
+  Added ~sparc to keywords.
+
+*mplayer-0.90-r1 (27 Apr 2003)
+
+  27 Apr 2003; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90-r1.ebulid,
+  mplayer-0.90-fix-version.patch :
+  - Fix version (still displayed as rc5), bug #19691.
+  - Change DEPEND to only depend and enable faad2 support if 'mpeg' in USE,
+    closing bug #19119.
+  - Add SMB (Samba) support, closing bug #16395.
+
+*mplayer-0.90 (09 Apr 2003)
+
+  20 Apr 2003; Seemant Kulleen <seemant@gentoo.org> mplayer-0.90.ebuild :
+  Added faad2 and enabling faad in econf -- satisies many requests to be able to
+  play the Matrix trailers.
+
+  16 Apr 2003; Lars Weiler <pylon@gentoo.org> mplayer-0.90.ebuild,
+  files/mplayer-0.90-ppc-benh.patch:
+  No big change.
+  Added the mentioned patch in bug #18511 for the right order of the
+  ppc-processor-switch and some more ppc-related einfo-lines about the altivec
+  issue with DivX.
+
+  09 Mar 2003; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90.ebuild :
+  New version:
+  - Add 'dvb' use flag (bug #13809), thanks to Juri Haberland <juri@koschikode.com>
+  - Fix MPlayer to detect/use altivec on benh kernels (bug #18511), thanks to
+    Stephan van Maris <svmaris@e-village.nl> and Lars Weiler <pylon@gentoo.org>.
+  - Remove dvdnav support as its broken anyhow.  According to lists, no effort
+    will be made soon to get it fixed.
+  This should also close bug #18879.
+
+  30 Mar 2003; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_rc5.ebuild :
+  Mark stable for x86.  Fix bug #18211, thanks to Philippe Lafoucri?re
+  <lafou@wanadoo.fr>.
+
+*mplayer-0.90_rc5 (18 Mar 2003)
+
+  16 Apr 2003; Martin Holzer <mholzer@gentoo.org> mplayer-0.90_rc5.ebuild:
+  Forcing to use old libdvdnav.
+
+  18 Mar 2003; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_rc5.ebuild :
+  New version.
+
+  13 mar 2003; Olivier Reisch <doctomoe@gentoo.org> mplayer-0.90_rc4.ebuild :
+  Marked ppc stable
+
+*mplayer-0.90_rc4 (16 Feb 2003)
+
+  16 Apr 2003; Martin Holzer <mholzer@gentoo.org> mplayer-0.90_rc4.ebuild:
+  Forcing to use old libdvdnav.
+
+  06 March 2003; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_rc4.ebuild :
+
+  - Fix esound not disabled if 'esd' not in USE, bug #16758.
+  - Remove --enable-shared-pp from ./configure, as it breaks mplayer with
+    gcc-2.95.3,bug #14479.
+  - Mark stable for x86.
+
+  16 Feb 2003; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_rc4.ebuild :
+
+  Update version.
+  Add LIVE.COM support, thanks to J Robert Ray <jrray@gentoo.org>, bug #14766.
+
+  02 Feb 2003; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_*.ebuild :
+
+  Fix SRC_URI for fonts, closing bug #14770.
+
+  21 Jan 2003; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_rc3.ebuild :
+
+  Add --with-x11incdir=/usr/X11R6/include as a temporary fix for bug #14311.
+
+*mplayer-0.90_rc3 (20 Jan 2003)
+
+  20 Jan 2003; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_rc3.ebuild :
+
+  New version.
+
+  19 Jan 2003; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_rc2.ebuild :
+
+  Only enable devfs support if /dev/.devfsd exists, bug #13613.
+
+  07 Dec 2002; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_rc2.ebuild :
+
+  Add lirc support, thanks to Jarkko Haapalainen <johaapa@student.oulu.fi>,
+  bug #12244.  Mark stable for x86, and fix to depend on xfree-4.2.1-r2, fixing
+  problems with gtk2 support and freetype.
+
+*mplayer-0.90_rc2 (26 Dec 2002)
+
+  26 Dec 2002; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_rc2.ebuild :
+
+  New version.
+
+*mplayer-0.90_rc1-r1 (13 Dec 2002)
+
+  13 Dec 2002; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_rc1-r1.ebuild :
+
+  Fix the xvid bork.  Add gtk2 support :D
+
+*mplayer-0.90_rc1 (8 Dec 2002)
+
+  08 Dec 2002; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_rc1.ebuild :
+
+  New version, closing bug #11775.
+
+  01 Dec 2002; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_pre10.ebuild :
+
+  Mark as stable.
+
+  24 Nov 2002; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_pre10.ebuild :
+
+  Add arts support, closing bug #11122.
+
+*mplayer-0.90_pre10 (11 Nov 2002)
+
+  11 Nov 2002; Martin Schlemmer <azarah@gentoo.org> :
+
+  Nev version.
+
+  5 Nov 2002; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_pre9.ebuild :
+
+  Add realplayer support, closing bug #6286.
+
+*mplayer-0.90_pre9 (27 Oct 2002)
+
+  27 Oct 2002; Martin Schlemmer <azarah@gentoo.org> :
+
+  New version.
+
+*mplayer-0.90_pre8-r1 (12 Oct 2002)
+
+  12 Oct 2002; Martin Schlemmer <azarah@gentoo.org> :
+
+  Add patch for build failure without oss if "TV" is enabled by
+  configure.  Thanks goes to  Chad Netzer <chad.netzer@stanfordalumni.org>.
+  This closes bug #8604.
+
+*mplayer-0.90_pre8 (26 Sep 2002)
+
+  26 Sep 2002; Kevyn Shortell<trance@gentoo.org> mplayer-0.90_pre8.ebuild :
+  PPC keyword added, tested on ibook 300mhz, worked well.
+
+*mplayer-0.90_pre8 (19 Sep 2002)
+
+  19 Sep 2002; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_pre8.ebuild :
+  New bugfix release.
+
+*mplayer-0.90_pre7 (16 Sep 2002)
+
+  16 Sep 2002; Olivier Reisch <doctomoe@gentoo.org> mplayer-0.90_pre7.ebuild :
+  Removed ppc keyword. Audio does not work at all on PPC.
+
+  15 Sep 2002; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_pre7.ebuild :
+  Update version.
+
+*mplayer-0.90_pre6-r3 (12 Aug 2002)
+
+  16 Sep 2002; Olivier Reisch <doctomoe@gentoo.org> mplayer-0.90_pre6-r3.ebuild :
+  Removed ppc keyword. Audio does not work at all on PPC.
+
+  Sep 11 2002; Mark Guertin <gerk@gentoo.org> mplayer-0.90_pre6-63.ebuild :
+  Adjusted divx4linux as x86 only dep (it supplies x86 binary libs), goes along
+  with bug #7796
+
+  Sep 10 2002, Mark Guertin <gerk@gentoo.org> :
+  adjusted nasm and win32codes to use x86 USE flags (they don't work on 
+  anything except x86)
+
+  12 Aug 2002; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_pre6-r3.ebuild :
+
+  Add patch to support libdvdnav-0.1.3.
+
+  Fix screwup with new patch.
+
+*mplayer-0.90_pre6-r2 (07 Aug 2002)
+
+  07 Aug 2002; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_pre6-r2.ebuild :
+
+  Update DEPEND to block libdvdnav-0.1.3.  Change "emake" to "make", as
+  'make -j' fails in some cases.
+
+*mplayer-0.90_pre6-r1 (07 Aug 2002)
+
+  07 Aug 2002; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_pre6-r1.ebuild :
+
+  Fix compile problems if "dvd" not in USE.  Added two patches for this:
+  
+    mplayer-0.90_pre6-no-dvd.patch
+    mplayer-0.90_pre6-stream-include.patch
+
+*mplayer-0.90_pre6 (06 Aug 2002)
+
+  06 Aug 2002; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_pre6.ebuild :
+
+  New version.  Patch vidix's Makefile not to fail if it cannot install
+  any drivers.  This should resolve bug #5246.
+
+*mplayer-0.90_pre5-r1 (13 Jun 2002)
+
+  13 Jun 2002; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_pre5-r1.ebuild :
+
+  Fix missing subtitles for region 4 DVD's, bug #3679, thanks to report
+  from Bernardo S. A. Silva.
+
+*mplayer-0.90_pre5 (10 Jun 2002)
+
+  10 Jun 2002; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_pre5.ebuild :
+
+  Version update with a few fixes (vidix install location, #include errors,
+  etc).
+
+*mplayer-0.90_pre4 (21 May 2002)
+
+  21 May 2002; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_pre4.ebuild :
+
+  Add new version. Resolves bug #2891.  This version seems to fix many
+  of the bugs with previous 0.90_pre versions.
+
+*mplayer-0.90_pre3-r1 (5 May 2002)
+
+  8 May 2002; Jon Nelson <jnelson@gentoo.org> mplayer-0.90_pre3-r1.ebuild :
+ 
+  Use new check_KV from portage 1.9.10
+ 
+  5 May 2002; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_pre3-r1.ebuild :
+
+  Fix some compile problems for Gui, thanks to Gwenn Gueguen.
+
+*mplayer-0.90_pre3 (5 May 2002)
+
+*mplayer-0.90_pre2-r2 (5 May 2002)
+
+  5 May 2002; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_pre2-r2.ebuild :
+
+  Resolve bug #2386 (hopefully); also fix a vidix problem I and other users
+  on gentoo-user experienced.
+
+*mplayer-0.90_pre2-r1 (1 May 2002)
+
+  1 May 2002; Martin Schlemmer <azarah@gentoo.org> mplayer-0.90_pre2-r1.ebuild :
+
+  Resolve bug #2284.
+
+*mplayer-0.90_pre2 (30 Apr 2002)
+
+  26 Apr 2002; William McArthur <sandymac@gentoo.org> mplayer-0.90_pre1.ebuild :
+
+  Commented out a matrox specific patch that seems to be aready in the upstream
+  package.
+
+*mplayer-0.90_pre1 (23 Apr 2002)
+
+*mplayer-0.60-r6 (22 Apr 2002)
+
+  22 Apr 2002; Seemant Kulleen <seemant@gentoo.org> mplayer-0.60-r6.ebuild :
+
+  Removed directfb flag for now, until next mplayer release.  Also, added
+  --disable-runtime-cpudetection for increased performance.  First one thanks
+  to naz in #gentoo, second one thanks to 
+  dwright@beached.dyndns.org (Darrell Wright) in bug #1967
+  
+
+  18 Apr 2002; Seemant Kulleen <seemant@gentoo.org>
+  fixed a small typo I made in the matrox section
+
+  17 Apr 2002; Seemant Kulleen <seemant@gentoo.org> mplayer-0.60-r6.ebuild
+  files/digest-mplayer-0.60-r6 :
+
+  Removed -- the old source tarball will be mirrored on ibilio instead.
+
+*mplayer-0.60-r6 (17 Apr 2002)
+
+  17 Apr 2002; Seemant Kulleen <seemant@gentoo.org> mplayer-0.60-r6.ebuild
+  files/digest-mplayer-0.60-r6 :
+
+  This is an upgrade in a way, because it is now fetching the cvs snapshot
+  from the site.  The actual 0.60 sources have been removed from the
+  SRC_URI, and they are replaced with a weekly snapshot.  This is fine
+  because it offers much better performance than the old "stable" version.
+
+*mplayer-0.60-r5 (14 Apr 2002)
+
+  14 Apr 2002; Seemant Kulleen <seemant@gentoo.org> mplayer-0.60-r5.ebuild :
+
+  Cleaned up some of the USE flag checking, and made it more consistent, so
+  that there are no if then fi constructs for USE flags.
+
+*mplayer-0.60-r5 (12 Apr 2002)
+
+  14 Apr 2002; M.Schlemmer <azarah@gentoo.org> mplayer-0.60-r5 :
+
+  Remove the png USE flag, as the gui depends on libpng.  Take --enable-dvdread
+  out of the main ./configure part, as its now done with the dvd use flag.
+  Clean the mmx and X USE flag selection parts up.
+
+*mplayer-0.60-r4 (12 Apr 2002)
+
+  12 Apr 2002; Seemant Kulleen <seemant@gentoo.org> mplayer-0.60-r4.ebuild :
+
+  Added png USE flag and removed css USE flag for dvd flag instead. And, 
+  compile against newest libpng
+
+*mplayer-0.60-r3 (28 Mar 2002)
+
+  28 Mar 2002; Seemant Kulleen <seemant@gentoo.org> mplayer-0.60-r3.ebuild :
+
+  ogg and vorbis USE flags combined to have oggvorbis USE flag instead.
+
+*mplayer-0.60-r3 (3 March 2002)
+
+  3 March 2002; M.Schlemmer <azarah@gentoo.org> mplayer-0.60-r3.ebuild :
+
+  Add the DXR3 patch. Update the DEPEND to include libpng if gtk is in USE.
+
+  25 Feb 2002; M.Schlemmer <azarah@gentoo.org> mplayer-0.60-r2.ebuild :
+
+  Fix the 'fbcon' USE to actually enable fbdev support.
+
+  17 Feb 2002; M.Schlemmer <azarah@gentoo.org> mplayer-0.60-r2.ebuild :
+
+  Make DVD support default.  Changed the USE flag for DVD decription from
+  'decss' to 'css'.  Added 3DFX support with the '3dfx' use variable. Fixed
+  a problem where if 'sse' or '3dnow' was in USE, but now MMX, sound would be
+  distorted .. this should resolve bug #536.
+
+*mplayer-0.60-r1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

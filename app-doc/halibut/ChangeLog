@@ -1,0 +1,57 @@
+# ChangeLog for app-doc/halibut
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-doc/halibut/ChangeLog,v 1.16 2014/12/20 11:42:50 blueness Exp $
+
+  20 Dec 2014; Anthony G. Basile <blueness@gentoo.org> ChangeLog:
+  Fix gpg signature
+
+*halibut-1.1 (20 Dec 2014)
+
+  20 Dec 2014; Anthony G. Basile <blueness@gentoo.org> +halibut-1.1.ebuild:
+  Version bump
+
+  27 Jan 2014; Anthony G. Basile <blueness@gentoo.org> metadata.xml:
+  Needed for agedu which I take care of
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> -halibut-0.9.ebuild, metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/sgml-herd-has-no-maintainers-
+  again-td259655.html
+
+  18 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  18 Jul 2010; <nixnut@gentoo.org> halibut-1.0.ebuild:
+  ppc stable #324211
+
+  07 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> halibut-1.0.ebuild:
+  x86 stable wrt bug #324211
+
+  24 Jun 2010; Pacho Ramos <pacho@gentoo.org> halibut-1.0.ebuild:
+  stable amd64, bug 324211
+
+  16 Jun 2010; Michael Sterrett <mr_bones_@gentoo.org> halibut-1.0.ebuild:
+  work around parallel make issue (bug #299502)
+
+*halibut-1.0 (18 Aug 2009)
+
+  18 Aug 2009; Mike Frysinger <vapier@gentoo.org> +halibut-1.0.ebuild:
+  Version bump.
+
+  12 Mar 2007; Leonardo Boshell <leonardop@gentoo.org> metadata.xml:
+  Re-assigning to the sgml herd, after text-markup split.
+
+  05 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  31 Oct 2004; Sven Wegener <swegener@gentoo.org> metadata.xml:
+  Corrected metadata.xml to match DTD.
+
+  05 Sep 2004; David Holm <dholm@gentoo.org> halibut-0.9.ebuild:
+  Added to ~ppc.
+
+*halibut-0.9 (04 Sep 2004)
+
+  04 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +halibut-0.9.ebuild:
+  Initial import. Ebuild submitted by Sven Wegener <swegener@gentoo.org>,
+  closing bug #50884.

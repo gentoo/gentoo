@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=app-text/htmltidy dev-libs/libpcre dev-libs/openssl net-misc/curl virtual/pkgconfig
+DESCRIPTION=A C++ implementation of an OpenID decentralized identity system
+EAPI=5
+HOMEPAGE=http://kin.klever.net/libopkele/
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=app-text/htmltidy dev-libs/libpcre dev-libs/openssl net-misc/curl
+SLOT=0
+SRC_URI=http://kin.klever.net/dist/libopkele-2.0.4.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=060cf4a47198a3329d6f93df4154891f

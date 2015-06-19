@@ -1,0 +1,206 @@
+# ChangeLog for virtual/perl-Package-Constants
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/perl-Package-Constants/ChangeLog,v 1.44 2015/06/08 20:34:56 dilfridge Exp $
+
+*perl-Package-Constants-0.60.0 (08 Jun 2015)
+
+  08 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Package-Constants-0.20.0-r5.ebuild,
+  +perl-Package-Constants-0.60.0.ebuild:
+  Version bump; remove old
+
+  05 Apr 2015; Mike Frysinger <vapier@gentoo.org>
+  perl-Package-Constants-0.40.0.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Package-Constants-0.40.0.ebuild:
+  Stable for alpha, wrt bug #536790
+
+  17 Feb 2015; Markus Meier <maekke@gentoo.org>
+  perl-Package-Constants-0.40.0.ebuild:
+  arm stable, bug #536790
+
+  17 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Package-Constants-0.40.0.ebuild:
+  Stable for ia64, wrt bug #536790
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Package-Constants-0.40.0.ebuild:
+  Stable for sparc, wrt bug #536790
+
+  15 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Package-Constants-0.40.0.ebuild:
+  Stable for ppc64, wrt bug #536790
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Package-Constants-0.40.0.ebuild:
+  Stable for ppc, wrt bug #536790
+
+  13 Feb 2015; Jeroen Roovers <jer@gentoo.org>
+  perl-Package-Constants-0.40.0.ebuild:
+  Stable for HPPA (bug #536790).
+
+  13 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Package-Constants-0.40.0.ebuild:
+  Stable for x86, wrt bug #536790
+
+  08 Feb 2015; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Package-Constants-0.40.0.ebuild:
+  amd64 stable wrt bug #536790
+
+*perl-Package-Constants-0.20.0-r5 (08 Nov 2014)
+
+  08 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Package-Constants-0.20.0-r4.ebuild,
+  +perl-Package-Constants-0.20.0-r5.ebuild:
+  Remove Perl 5.16 as provider
+
+*perl-Package-Constants-0.40.0 (10 Jul 2014)
+*perl-Package-Constants-0.20.0-r4 (10 Jul 2014)
+
+  10 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Package-Constants-0.20.0-r2.ebuild,
+  -perl-Package-Constants-0.20.0-r3.ebuild,
+  +perl-Package-Constants-0.20.0-r4.ebuild,
+  +perl-Package-Constants-0.40.0.ebuild:
+  Add perl-5.20 version; improve dependencies
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  perl-Package-Constants-0.20.0-r2.ebuild,
+  perl-Package-Constants-0.20.0-r3.ebuild:
+  Add arm64 love.
+
+  31 Dec 2013; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Package-Constants-0.20.0-r2.ebuild,
+  perl-Package-Constants-0.20.0-r3.ebuild:
+  Drop perl-5.10* dependency
+
+  05 Sep 2013; Patrick Lauer <patrick@gentoo.org>
+  perl-Package-Constants-0.20.0-r3.ebuild:
+  Restore keywords
+
+*perl-Package-Constants-0.20.0-r3 (14 Aug 2013)
+
+  14 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +perl-Package-Constants-0.20.0-r3.ebuild:
+  Import from perl-experimental overlay
+
+  18 Feb 2013; Zac Medico <zmedico@gentoo.org>
+  perl-Package-Constants-0.20.0-r2.ebuild:
+  Add ~arm-linux keyword.
+
+*perl-Package-Constants-0.20.0-r2 (21 May 2012)
+
+  21 May 2012; Torsten Veller <tove@gentoo.org>
+  -perl-Package-Constants-0.20.0-r1.ebuild,
+  +perl-Package-Constants-0.20.0-r2.ebuild:
+  Add perl-5.16 as provider
+
+  28 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  perl-Package-Constants-0.20.0-r1.ebuild:
+  keyword ~amd64-fbsd
+
+  06 Nov 2011; Fabian Groffen <grobian@gentoo.org>
+  perl-Package-Constants-0.20.0-r1.ebuild:
+  Marked ~sparc64-solaris
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org>
+  perl-Package-Constants-0.20.0-r1.ebuild:
+  Drop ~sparc-fbsd KEYWORD
+
+  28 Jun 2011; Torsten Veller <tove@gentoo.org>
+  perl-Package-Constants-0.20.0-r1.ebuild:
+  Add perl-5.12.4 virtual
+
+*perl-Package-Constants-0.20.0-r1 (18 Jun 2011)
+
+  18 Jun 2011; Torsten Veller <tove@gentoo.org>
+  -perl-Package-Constants-0.20.0.ebuild,
+  +perl-Package-Constants-0.20.0-r1.ebuild:
+  Add perl-5.14 as provider
+
+*perl-Package-Constants-0.20.0 (20 May 2011)
+
+  20 May 2011; Torsten Veller <tove@gentoo.org>
+  -perl-Package-Constants-0.02.ebuild, +perl-Package-Constants-0.20.0.ebuild:
+  Add perl-5.14.0 as provider. Change version scheme
+
+  02 May 2011; Fabian Groffen <grobian@gentoo.org>
+  perl-Package-Constants-0.02.ebuild:
+  Marked ~x64-freebsd
+
+  22 Jan 2011; Torsten Veller <tove@gentoo.org>
+  perl-Package-Constants-0.02.ebuild:
+  Add perl-5.12.3 as provider
+
+  07 Dec 2010; Matt Turner <mattst88@gentoo.org>
+  perl-Package-Constants-0.02.ebuild:
+  Added ~mips, for bug 262363.
+
+  07 Sep 2010; Torsten Veller <tove@gentoo.org>
+  perl-Package-Constants-0.02.ebuild:
+  Add perl-5.12.2 as provider
+
+  14 Jul 2010; Torsten Veller <tove@gentoo.org>
+  perl-Package-Constants-0.02.ebuild:
+  Add perl-5.12 as provider
+
+  17 Jan 2010; Torsten Veller <tove@gentoo.org>
+  -perl-Package-Constants-0.01.ebuild:
+  Cleanup
+
+  07 Jan 2010; Torsten Veller <tove@gentoo.org>
+  perl-Package-Constants-0.01.ebuild, perl-Package-Constants-0.02.ebuild:
+  Set empty HOMEPAGE and LICENSE
+
+  05 Jan 2010; nixnut <nixnut@gentoo.org>
+  perl-Package-Constants-0.02.ebuild:
+  ppc stable #288026
+
+  15 Dec 2009; Jonathan Callen <abcd@gentoo.org>
+  perl-Package-Constants-0.02.ebuild:
+  QA: Add prefix keywords
+
+  14 Dec 2009; Raúl Porcel <armin76@gentoo.org>
+  perl-Package-Constants-0.02.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #288026
+
+  10 Dec 2009; Brent Baude <ranger@gentoo.org>
+  perl-Package-Constants-0.02.ebuild:
+  Marking perl-Package-Constants-0.02 ppc64 stable for bug 288026
+
+  07 Dec 2009; Markus Meier <maekke@gentoo.org>
+  perl-Package-Constants-0.02.ebuild:
+  arm stable, bug #288026
+
+  07 Dec 2009; Jeroen Roovers <jer@gentoo.org>
+  perl-Package-Constants-0.02.ebuild:
+  Stable for HPPA (bug #288026).
+
+  07 Dec 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Add perl herd
+
+  04 Dec 2009; Torsten Veller <tove@gentoo.org>
+  perl-Package-Constants-0.02.ebuild:
+  Stable on amd64 (#288026)
+
+  04 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  perl-Package-Constants-0.02.ebuild:
+  x86 stable, bug 288026
+
+  25 Aug 2009; Torsten Veller <tove@gentoo.org>
+  perl-Package-Constants-0.02.ebuild:
+  Add support for perl-5.10.1
+
+  19 Aug 2009; Torsten Veller <tove@gentoo.org>
+  perl-Package-Constants-0.01.ebuild, perl-Package-Constants-0.02.ebuild:
+  Fix DESCRIPTION. Thanks to Kent Fredric
+
+*perl-Package-Constants-0.02 (10 Aug 2009)
+*perl-Package-Constants-0.01 (10 Aug 2009)
+
+  10 Aug 2009; Torsten Veller <tove@gentoo.org>
+  +perl-Package-Constants-0.01.ebuild, +perl-Package-Constants-0.02.ebuild,
+  +metadata.xml:
+  Add virtual for Package-Constants

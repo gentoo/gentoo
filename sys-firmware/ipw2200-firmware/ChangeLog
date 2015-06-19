@@ -1,0 +1,121 @@
+# ChangeLog for sys-firmware/ipw2200-firmware
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-firmware/ipw2200-firmware/ChangeLog,v 1.1 2013/02/11 14:23:01 ssuominen Exp $
+
+  11 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +ipw2200-firmware-3.1.ebuild, +metadata.xml:
+  Move from net-wireless category.
+
+  10 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  ipw2200-firmware-3.1.ebuild:
+  Synchronize with net-wireless/ipw2100-firmware ebuild.
+
+  10 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  -ipw2200-firmware-2.2.ebuild, -ipw2200-firmware-2.4.ebuild:
+  old
+
+  08 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  ipw2200-firmware-2.2.ebuild, ipw2200-firmware-2.4.ebuild,
+  ipw2200-firmware-3.1.ebuild:
+  Remove virtual/udev dependency wrt #432504
+
+  21 Jan 2013; Samuli Suominen <ssuominen@gentoo.org>
+  ipw2200-firmware-2.2.ebuild, ipw2200-firmware-2.4.ebuild,
+  ipw2200-firmware-3.1.ebuild:
+  Remove sys-apps/hotplug dependency from || () in favour of virtual/udev wrt
+  #145809
+
+  11 Dec 2012; Ian Stakenvicius <axs@gentoo.org> ipw2200-firmware-2.2.ebuild,
+  ipw2200-firmware-2.4.ebuild, ipw2200-firmware-3.1.ebuild:
+  virtualize udev dependency
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> -ipw2200-firmware-2.3.ebuild,
+  -ipw2200-firmware-3.0.ebuild, metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+  22 May 2010; Pacho Ramos <pacho@gentoo.org> ipw2200-firmware-3.1.ebuild:
+  stable amd64, bug 306167
+
+  23 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  ipw2200-firmware-3.1.ebuild:
+  stable x86, bug 306167
+
+*ipw2200-firmware-3.1 (05 May 2009)
+
+  05 May 2009; Raúl Porcel <armin76@gentoo.org>
+  +ipw2200-firmware-3.1.ebuild:
+  Version bump wrt #265498
+
+  25 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  ipw2200-firmware-3.0.ebuild:
+  Marking stable on amd64 for 2008.0's release.
+
+  04 Nov 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing myself as the maintainer.
+
+  12 Sep 2007; Roy Marples <uberlord@gentoo.org>
+  ipw2200-firmware-2.4.ebuild:
+  Blank LDFLAGS for building on FreeBSD
+
+  24 May 2007; Roy Marples <uberlord@gentoo.org>
+  ipw2200-firmware-2.4.ebuild, ipw2200-firmware-3.0.ebuild:
+  We should not RDEPEND on sources nor DEPEND on runtime only stuff
+
+  15 Jan 2007; Christian Heim <phreak@gentoo.org>
+  ipw2200-firmware-2.2.ebuild, ipw2200-firmware-2.3.ebuild,
+  ipw2200-firmware-2.4.ebuild, ipw2200-firmware-3.0.ebuild:
+  Fixing the DEPEND syntax (#162183).
+
+  07 Dec 2006; Roy Marples <uberlord@gentoo.org>
+  ipw2200-firmware-2.4.ebuild:
+  Add FreeBSD support for 6.2 kernels only.
+
+  22 Apr 2006; Henrik Brix Andersen <brix@gentoo.org>
+  ipw2200-firmware-3.0.ebuild:
+  Stable on x86.
+
+*ipw2200-firmware-3.0 (08 Mar 2006)
+
+  08 Mar 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +ipw2200-firmware-3.0.ebuild:
+  Version bump (for use with ipw2200-1.1.1 and newer).
+
+  17 Nov 2005; Henrik Brix Andersen <brix@gentoo.org>
+  ipw2200-firmware-2.4.ebuild:
+  Stable on x86.
+
+*ipw2200-firmware-2.4 (18 Oct 2005)
+
+  18 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +ipw2200-firmware-2.4.ebuild:
+  Version bump.
+
+  16 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  ipw2200-firmware-2.3.ebuild:
+  Stable on x86.
+
+*ipw2200-firmware-2.3 (18 May 2005)
+
+  18 May 2005; <brix@gentoo.org> +ipw2200-firmware-2.3.ebuild:
+  Version bump.
+
+  02 Mar 2005; Henrik Brix Andersen <brix@gentoo.org>
+  ipw2200-firmware-2.2.ebuild:
+  Stable on x86.
+
+  25 Feb 2005; Simon Stelling <blubb@gentoo.org>
+  ipw2200-firmware-2.2.ebuild:
+  added ~amd64
+
+  14 Feb 2005; Henrik Brix Andersen <brix@gentoo.org>
+  ipw2200-firmware-2.2.ebuild:
+  Slotted.
+
+  01 Feb 2005; Henrik Brix Andersen <brix@gentoo.org> metadata.xml:
+  Transferred ownership to brix@gentoo.org.
+
+*ipw2200-firmware-2.2 (18 Jan 2005)
+
+  18 Jan 2005; Henrik Brix Andersen <brix@gentoo.org> +metadata.xml,
+  +ipw2200-firmware-2.2.ebuild:
+  New ebuild, split from net-wireless/ipw2200.

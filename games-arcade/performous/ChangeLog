@@ -1,0 +1,103 @@
+# ChangeLog for games-arcade/performous
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/performous/ChangeLog,v 1.22 2015/06/02 01:28:32 mr_bones_ Exp $
+
+  02 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org> performous-1.0.ebuild:
+  add some slot deps for repoman
+
+  13 May 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/performous-0.7.0-cmake.patch, -files/performous-0.7.0-desktop.patch,
+  -files/performous-0.7.0-freetype.patch, -files/performous-0.7.0-gentoo.patch,
+  -files/performous-0.7.0-libav.patch, -files/performous-0.7.0-linguas.patch,
+  -performous-0.7.0-r1.ebuild, -performous-0.7.0.ebuild:
+  old
+
+  13 May 2015; Agostino Sarubbo <ago@gentoo.org> performous-1.0.ebuild:
+  Stable for x86, wrt bug #548292
+
+  12 May 2015; Agostino Sarubbo <ago@gentoo.org> performous-1.0.ebuild:
+  Stable for amd64, wrt bug #548292
+
+*performous-1.0 (31 Mar 2015)
+
+  31 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/performous-1.0-gentoo.patch, +files/performous-1.0-include.patch,
+  +files/performous-1.0-libav.patch, +files/performous-1.0-linguas.patch,
+  +performous-1.0.ebuild:
+  version bump
+
+  14 Jul 2014; Alfredo Tupone <tupone@gentoo.org> performous-0.7.0-r1.ebuild,
+  +files/performous-0.7.0-freetype.patch:
+  freetype is not directly needed. Fix bug #515768 by Patrick Lauer
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> performous-0.7.0.ebuild,
+  performous-0.7.0-r1.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+*performous-0.7.0-r1 (24 Jan 2013)
+
+  24 Jan 2013; Julian Ospald <hasufell@gentoo.org> +performous-0.7.0-r1.ebuild,
+  +files/performous-0.7.0-cmake.patch, metadata.xml:
+  add missing deps, add midi and webcam useflag, fix build time issues wrt
+  #452476, bump EAPI
+
+  13 Jan 2013; Agostino Sarubbo <ago@gentoo.org> performous-0.7.0.ebuild:
+  Stable for x86, wrt bug #449932
+
+  07 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/performous-0.6.1-boost150.patch, -files/performous-0.6.1-ffmpeg.patch,
+  -files/performous-0.6.1-gentoo.patch, -files/performous-0.6.1-glib232.patch,
+  -files/performous-0.6.1-libav.patch, -files/performous-0.6.1-libpng.patch,
+  -files/performous-0.6.1-linguas.patch, -performous-0.6.1.ebuild:
+  old
+
+  03 Jan 2013; Agostino Sarubbo <ago@gentoo.org> performous-0.7.0.ebuild:
+  Stable for amd64, wrt bug #449932
+
+*performous-0.7.0 (15 Nov 2012)
+
+  15 Nov 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/performous-0.7.0-desktop.patch, +files/performous-0.7.0-gentoo.patch,
+  +files/performous-0.7.0-libav.patch, +files/performous-0.7.0-linguas.patch,
+  +performous-0.7.0.ebuild:
+  version bump
+
+  05 Nov 2012; Tupone Alfredo <tupone@gentoo.org> performous-0.6.1.ebuild,
+  +files/performous-0.6.1-boost150.patch:
+  Build with boost-1.51 Bug #425574 by Diego
+
+  28 Jun 2012; Tupone Alfredo <tupone@gentoo.org> performous-0.6.1.ebuild,
+  +files/performous-0.6.1-glib232.patch, metadata.xml:
+  Build with glib-2.32. Bug #423641 by flameeyes@gentoo.org
+  Replacing me as maintainer with the games herd 
+
+  16 May 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/performous-0.6.1-libav.patch, performous-0.6.1.ebuild:
+  Build with libav and thus depend on virtual/ffmpeg.
+
+  15 Mar 2012; Michael Sterrett <mr_bones_@gentoo.org> performous-0.6.1.ebuild:
+  games-arcade/ultrastar-ng is gone
+
+  15 Mar 2012; Michael Sterrett <mr_bones_@gentoo.org> performous-0.6.1.ebuild:
+  use the lastest boost
+
+  14 Mar 2012; Tupone Alfredo <tupone@gentoo.org> performous-0.6.1.ebuild:
+  Fix install of songs. Bug #408167 by lexofleviafan@gmail.com
+
+  05 Mar 2012; Mike Frysinger <vapier@gentoo.org> performous-0.6.1.ebuild,
+  +files/performous-0.6.1-linguas.patch:
+  Clean up ebuild.
+
+  05 Mar 2012; Tupone Alfredo <tupone@gentoo.org> performous-0.6.1.ebuild:
+  Respect LINGUAS settings. Bug #406551 by Piotr Szymaniak
+
+  27 Feb 2012; Tupone Alfredo <tupone@gentoo.org> performous-0.6.1.ebuild:
+  Fixing dodoc. Bug #405925 by Dennis Schridde
+
+*performous-0.6.1 (21 Feb 2012)
+
+  21 Feb 2012; Tupone Alfredo <tupone@gentoo.org> +performous-0.6.1.ebuild,
+  +files/performous-0.6.1-ffmpeg.patch, +files/performous-0.6.1-gentoo.patch,
+  +files/performous-0.6.1-libpng.patch, +metadata.xml:
+  Version bump to 0.6.1 and rename from ultrastar-ng to performous. Bug #245452
+  by Vincent Le Ligeour

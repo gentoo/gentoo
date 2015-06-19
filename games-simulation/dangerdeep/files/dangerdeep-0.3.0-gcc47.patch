@@ -1,0 +1,10 @@
+--- src/faulthandler.h.old	2012-07-25 14:37:32.000000000 +0200
++++ src/faulthandler.h	2012-07-25 14:38:16.000000000 +0200
+@@ -50,6 +50,7 @@
+ #include <signal.h>
+ #include <string>
+ #include <sstream>
++#include <unistd.h>
+ 
+ // Note: use --export-dynamic as linker option or you won't get function names here.
+ 

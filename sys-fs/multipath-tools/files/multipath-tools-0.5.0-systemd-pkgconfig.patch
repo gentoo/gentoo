@@ -1,0 +1,24 @@
+diff -ru multipath-tools-0.5.0/libmultipath/Makefile multipath-tools-0.5.0-modified/libmultipath/Makefile
+--- multipath-tools-0.5.0/libmultipath/Makefile	2013-12-17 22:40:41.000000000 +0100
++++ multipath-tools-0.5.0-modified/libmultipath/Makefile	2014-03-07 04:03:45.963309627 +0100
+@@ -9,7 +9,7 @@
+ LIBS = $(DEVLIB).$(SONAME)
+ LIBDEPS = -lpthread -ldl -ldevmapper -ludev
+ ifdef SYSTEMD
+-	LIBDEPS += -lsystemd-daemon
++	LIBDEPS += $(shell pkg-config --libs libsystemd 2>/dev/null || pkg-config --libs libsystemd-daemon 2>/dev/null)
+ endif
+ 
+ OBJS = memory.o parser.o vector.o devmapper.o callout.o \
+diff -ru multipath-tools-0.5.0/multipathd/Makefile multipath-tools-0.5.0-modified/multipathd/Makefile
+--- multipath-tools-0.5.0/multipathd/Makefile	2014-03-07 04:05:09.340307633 +0100
++++ multipath-tools-0.5.0-modified/multipathd/Makefile	2014-03-07 04:04:03.555309206 +0100
+@@ -11,7 +11,7 @@
+ endif
+ LIBS += -lpthread -ldevmapper -lreadline
+ ifdef SYSTEMD
+-	LIBS += -lsystemd-daemon
++	LIBS += $(shell pkg-config --libs libsystemd 2>/dev/null || pkg-config --libs libsystemd-daemon 2>/dev/null)
+ endif
+ LIBS += -ludev -ldl \
+ 	-L$(multipathdir) -lmultipath -L$(mpathpersistdir) -lmpathpersist

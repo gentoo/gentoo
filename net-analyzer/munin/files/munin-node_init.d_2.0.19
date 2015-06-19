@@ -1,0 +1,27 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/munin/files/munin-node_init.d_2.0.19,v 1.1 2013/12/15 22:12:55 flameeyes Exp $
+
+get_munin_config() {
+	awk '$1 == "'$1'" { s=$2 } END { print s }' "$CFGFILE"
+}
+
+: ${CFGFILE:=/etc/munin/munin-node.conf}
+
+command=/usr/sbin/munin-node
+command_args="--config ${CFGFILE}"
+pidfile=$(get_munin_config pid_file)
+start_stop_daemon_args="--nicelevel ${NICE_LEVEL:-0} --wait 1500"
+extra_started_commands="reload"
+
+depend() {
+	config "$CFGFILE"
+
+	before cron
+
+	[ "$(get_munin_config log_file)" = "Sys::Syslog" ] && \
+		use logger
+}
+
+# vim: filetype=gentoo-init-d:

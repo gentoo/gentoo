@@ -1,0 +1,62 @@
+diff -urN xml-xalan.orig//c/src/xalanc/Makefile.in xml-xalan/c/src/xalanc/Makefile.in
+--- xml-xalan.orig//c/src/xalanc/Makefile.in	2010-02-23 10:51:30.058353490 +0100
++++ xml-xalan/c/src/xalanc/Makefile.in	2010-02-23 10:52:53.251679288 +0100
+@@ -84,6 +84,10 @@
+ SAMPLES_DIR = ${XALANCROOT}/samples
+ TESTS_DIR = ${XALANCROOT}/Tests
+ 
++TESTXSLT_OBJS = ${XSL_OBJ_DIR}/process.o
++XALANEXE_OBJS = ${XSL_OBJ_DIR}/XalanExe.o
++TESTXPATH_OBJS = ${XSL_OBJ_DIR}/TestXPath.o ${XSL_OBJ_DIR}/NodeNameTreeWalker.o
++
+ ALL_VPATH_CPP = \
+ $(XALANDOM_DIR):$(PLATFORMSUPPORT_DIR):$(DOMSUPPORT_DIR):$(XMLSUPPORT_DIR): \
+ $(XPATH_DIR):$(XERCESPARSERLIAISON_DIR):$(DEPRECATED_XERCESPARSERLIAISON_DIR):$(XALANSOURCETREE_DIR):$(XPATHCAPI_DIR): \
+@@ -169,6 +173,9 @@
+ 
+ compile:	 $(ALL_OBJECTS) 
+ 
++$(ALL_OBJECTS) $(TESTXSLT_OBJS) $(XALANEXE_OBJS) $(TESTXPATH_OBJS): locale
++locale: prepare
++
+ ifeq (${OS390BATCH},1)
+ XalanExe: lib  "//'$(LOADSAMP)(${BATCH_XALAN_UTIL_NAME})'"
+ 
+@@ -188,28 +195,28 @@
+ 
+ else # Not OS390BATCH
+ 
+-XalanExe: lib  $(XSL_BIN_DIR)/Xalan
++XalanExe: $(XSL_BIN_DIR)/Xalan
+ 
+-$(XSL_BIN_DIR)/Xalan: ${XSL_OBJ_DIR}/XalanExe.o
++$(XSL_BIN_DIR)/Xalan: lib ${XALANEXE_OBJS}
+ 	${LINK} $(XSL_BUILD_OPTIONS) ${PLATFORM_LIB_LINK_OPTIONS}  \
+-	${EXTRA_LINK_OPTIONS} $^ -o $@	$(OTHER_LINK_PARAMETERS) $(XALAN_LIB) $(ALLLIBS)
++	${EXTRA_LINK_OPTIONS} ${XALANEXE_OBJS} -o $@	$(OTHER_LINK_PARAMETERS) $(XALAN_LIB) $(ALLLIBS)
+ ${XSL_OBJ_DIR}/XalanExe.o: $(XALANEXE_DIR)/XalanExe.cpp
+ 	$(CC1) $(XSL_BUILD_OPTIONS) -c $(XSL_INCL) $(EXTRA_COMPILE_OPTIONS) -o $@ $<
+ endif
+ 
+-testXSLT: lib  $(XSL_BIN_DIR)/testXSLT
++testXSLT: $(XSL_BIN_DIR)/testXSLT
+ 
+-$(XSL_BIN_DIR)/testXSLT: ${XSL_OBJ_DIR}/process.o
++$(XSL_BIN_DIR)/testXSLT: lib ${TESTXSLT_OBJS}
+ 	${LINK} $(XSL_BUILD_OPTIONS) ${PLATFORM_LIB_LINK_OPTIONS}  \
+-	${EXTRA_LINK_OPTIONS} $^ -o $@	$(OTHER_LINK_PARAMETERS) $(XALAN_LIB) $(ALLLIBS)
++	${EXTRA_LINK_OPTIONS} ${TESTXSLT_OBJS} -o $@	$(OTHER_LINK_PARAMETERS) $(XALAN_LIB) $(ALLLIBS)
+ ${XSL_OBJ_DIR}/process.o: $(TESTXSLT_DIR)/process.cpp
+ 	$(CC1) $(XSL_BUILD_OPTIONS) -c $(XSL_INCL) $(EXTRA_COMPILE_OPTIONS) -o $@ $<
+ 
+-testXPath: lib  $(XSL_BIN_DIR)/testXPath
++testXPath: $(XSL_BIN_DIR)/testXPath
+ 
+-$(XSL_BIN_DIR)/testXPath: ${XSL_OBJ_DIR}/TestXPath.o ${XSL_OBJ_DIR}/NodeNameTreeWalker.o
++$(XSL_BIN_DIR)/testXPath: lib ${TESTXPATH_OBJS}
+ 	${LINK} $(XSL_BUILD_OPTIONS) ${PLATFORM_LIB_LINK_OPTIONS}  \
+-	${EXTRA_LINK_OPTIONS} $(CXXFLAGS) $^ -o $@	$(OTHER_LINK_PARAMETERS) $(XALAN_LIB) $(ALLLIBS)
++	${EXTRA_LINK_OPTIONS} $(CXXFLAGS) ${TESTXPATH_OBJS} -o $@	$(OTHER_LINK_PARAMETERS) $(XALAN_LIB) $(ALLLIBS)
+ ${XSL_OBJ_DIR}/%.o:$(TESTXPATH_DIR)/%.cpp
+ 	$(CC1) $(XSL_BUILD_OPTIONS) -c $(XSL_INCL) $(EXTRA_COMPILE_OPTIONS) -o $@ $<
+ 

@@ -1,0 +1,14 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id: sh.eselect-0.4-r2,v 1.1 2015/03/31 16:56:30 ulm Exp $
+
+DESCRIPTION="Manage /bin/sh (POSIX shell) implementations"
+MAINTAINER="mgorny@gentoo.org"
+VERSION="0.4"
+
+SYMLINK_PATH=/bin/sh
+SYMLINK_TARGETS=( bash dash posh mksh )
+SYMLINK_DESCRIPTION='POSIX shell'
+SYMLINK_CRUCIAL=1
+
+inherit bin-symlink

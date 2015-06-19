@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=>=dev-lang/mono-2.4 app-arch/unzip
+DESCRIPTION=A .Net Library for accessing the Flickr API - Binary version
+EAPI=2
+HOMEPAGE=http://www.codeplex.com/FlickrNet
+KEYWORDS=amd64 ppc x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-lang/mono-2.4
+SLOT=0
+SRC_URI=mirror://gentoo/FlickrNet2.2.zip
+_eclasses_=mono	203a4295c06155d318bdff9c6b2d5e1c	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=6c29ff79c9bb32d253742ef4d6df00f1

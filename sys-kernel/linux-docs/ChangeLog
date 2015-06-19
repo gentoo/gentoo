@@ -1,0 +1,250 @@
+# ChangeLog for sys-kernel/linux-docs
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/linux-docs/ChangeLog,v 1.49 2014/10/17 13:15:09 mpagano Exp $
+
+*linux-docs-3.17.1 (17 Oct 2014)
+*linux-docs-3.16.6 (17 Oct 2014)
+*linux-docs-3.14.22 (17 Oct 2014)
+*linux-docs-3.12.30 (17 Oct 2014)
+*linux-docs-3.10.58 (17 Oct 2014)
+*linux-docs-3.4.104 (17 Oct 2014)
+
+  17 Oct 2014; Mike Pagano <mpagano@gentoo.org> -linux-docs-3.2.55.ebuild,
+  -linux-docs-3.4.82.ebuild, +linux-docs-3.4.104.ebuild,
+  -linux-docs-3.10.32.ebuild, +linux-docs-3.10.58.ebuild,
+  -linux-docs-3.12.16.ebuild, +linux-docs-3.12.30.ebuild,
+  -linux-docs-3.13.9.ebuild, +linux-docs-3.14.22.ebuild,
+  +linux-docs-3.16.6.ebuild, +linux-docs-3.17.1.ebuild:
+  Version bumps. Remove old and fix bug in install for USE=html. Thanks to Ted
+  Marston. See bug #515520
+
+*linux-docs-3.13.9 (14 Apr 2014)
+
+  14 Apr 2014; Mike Pagano <mpagano@gentoo.org> -linux-docs-3.13.5.ebuild,
+  +linux-docs-3.13.9.ebuild:
+  Version bump, remove old, eapi bump
+
+*linux-docs-3.12.16 (14 Apr 2014)
+
+  14 Apr 2014; Mike Pagano <mpagano@gentoo.org> -linux-docs-3.12.13.ebuild,
+  +linux-docs-3.12.16.ebuild:
+  Version and eapi bump
+
+  14 Apr 2014; Mike Pagano <mpagano@gentoo.org> linux-docs-3.10.32.ebuild:
+  Version bump
+
+  14 Apr 2014; Mike Pagano <mpagano@gentoo.org> linux-docs-3.2.55.ebuild:
+  Update eapi
+
+  14 Apr 2014;  <mpagano@gentoo.org> linux-docs-3.4.82.ebuild:
+  Update eapi
+
+  06 Apr 2014; Mike Frysinger <vapier@gentoo.org> linux-docs-3.13.5.ebuild:
+  Add arm64 love.
+
+*linux-docs-3.13.5 (25 Feb 2014)
+*linux-docs-3.12.13 (25 Feb 2014)
+*linux-docs-3.10.32 (25 Feb 2014)
+*linux-docs-3.4.82 (25 Feb 2014)
+*linux-docs-3.2.55 (25 Feb 2014)
+
+  25 Feb 2014; Mike Pagano <mpagano@gentoo.org> -linux-docs-3.0.101.ebuild,
+  +linux-docs-3.2.55.ebuild, -linux-docs-3.4.67.ebuild,
+  +linux-docs-3.4.82.ebuild, -linux-docs-3.10.17.ebuild,
+  +linux-docs-3.10.32.ebuild, -linux-docs-3.11.6.ebuild,
+  +linux-docs-3.12.13.ebuild, +linux-docs-3.13.5.ebuild:
+  Version bumps, remove old
+
+*linux-docs-3.11.6 (31 Oct 2013)
+*linux-docs-3.10.17 (31 Oct 2013)
+*linux-docs-3.4.67 (31 Oct 2013)
+*linux-docs-3.0.101 (31 Oct 2013)
+
+  31 Oct 2013; Michael Pagano <mpagano@gentoo.org> -linux-docs-2.6.16.ebuild,
+  -linux-docs-2.6.27.7.ebuild, -linux-docs-2.6.32.23.ebuild,
+  -linux-docs-3.0.ebuild, +linux-docs-3.0.101.ebuild, -linux-docs-3.1.ebuild,
+  -linux-docs-3.2.1.ebuild, -linux-docs-3.4.1.ebuild,
+  +linux-docs-3.4.67.ebuild, -linux-docs-3.6.11.ebuild,
+  -linux-docs-3.7.1.ebuild, +linux-docs-3.10.17.ebuild,
+  +linux-docs-3.11.6.ebuild:
+  Cleanup. Remove old, commit new.
+
+*linux-docs-3.6.11 (15 Jan 2013)
+
+  15 Jan 2013; Michael Pagano <mpagano@gentoo.org> -linux-docs-3.6.2.ebuild,
+  +linux-docs-3.6.11.ebuild:
+  Add candidate for stabilization. Remove old.
+
+*linux-docs-3.7.1 (02 Jan 2013)
+
+  02 Jan 2013; Michael Pagano <mpagano@gentoo.org> +linux-docs-3.7.1.ebuild:
+  Add new version
+
+  08 Dec 2012; Agostino Sarubbo <ago@gentoo.org> linux-docs-3.4.1.ebuild:
+  Stable for ppc64, wrt bug #429218
+
+  07 Dec 2012; Agostino Sarubbo <ago@gentoo.org> linux-docs-3.4.1.ebuild:
+  Stable for ppc, wrt bug #429218
+
+*linux-docs-3.6.2 (17 Oct 2012)
+
+  17 Oct 2012; Michael Pagano <mpagano@gentoo.org> +linux-docs-3.6.2.ebuild:
+  Version bump
+
+  29 Sep 2012; Raúl Porcel <armin76@gentoo.org> linux-docs-3.4.1.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #429219
+
+  19 Sep 2012; Johannes Huber <johu@gentoo.org> linux-docs-3.4.1.ebuild:
+  Stable for x86, wrt bug #429218
+
+  16 Sep 2012; Markus Meier <maekke@gentoo.org> linux-docs-3.4.1.ebuild:
+  arm stable, bug #429218
+
+  13 Sep 2012; Agostino Sarubbo <ago@gentoo.org> linux-docs-3.4.1.ebuild:
+  Stable for amd64, wrt bug #429218
+
+*linux-docs-3.4.1 (04 Jun 2012)
+
+  04 Jun 2012; Michael Pagano <mpagano@gentoo.org> +linux-docs-3.4.1.ebuild:
+  Version bump
+
+*linux-docs-3.2.1 (18 Jan 2012)
+
+  18 Jan 2012; Michael Pagano <mpagano@gentoo.org> -linux-docs-2.6.35.2.ebuild,
+  -linux-docs-2.6.35.7.ebuild, +linux-docs-3.2.1.ebuild:
+  Add new version and remove old.
+
+*linux-docs-3.0 (11 Dec 2011)
+
+  11 Dec 2011; Michael Pagano <mpagano@gentoo.org> +linux-docs-3.0.ebuild:
+  Add 3.0 documentation
+
+  24 Nov 2011; Michael Pagano <mpagano@gentoo.org> -linux-docs-2.6.36.ebuild,
+  linux-docs-3.1.ebuild:
+  Fix SRC_URI and drop old
+
+*linux-docs-3.1 (28 Oct 2011)
+
+  28 Oct 2011; Michael Pagano <mpagano@gentoo.org> +linux-docs-3.1.ebuild:
+  Version bump
+
+*linux-docs-2.6.36 (21 Nov 2010)
+*linux-docs-2.6.35.2 (21 Nov 2010)
+
+  21 Nov 2010; Michael Pagano <mpagano@gentoo.org>
+  -linux-docs-2.6.25.2.ebuild, +linux-docs-2.6.35.2.ebuild,
+  +linux-docs-2.6.36.ebuild:
+  Add docs for 2.6.36
+
+*linux-docs-2.6.35.7 (04 Oct 2010)
+*linux-docs-2.6.32.23 (04 Oct 2010)
+
+  04 Oct 2010; Mike Pagano <mpagano@gentoo.org> -linux-docs-2.6.26.4.ebuild,
+  -linux-docs-2.6.31.ebuild, +linux-docs-2.6.32.23.ebuild,
+  +linux-docs-2.6.35.7.ebuild:
+  Version bumps and old version cleanups
+
+*linux-docs-2.6.31 (18 Sep 2009)
+
+  18 Sep 2009; Mike Pagano <mpagano@gentoo.org> -linux-docs-2.6.28.7.ebuild,
+  +linux-docs-2.6.31.ebuild:
+  Version bump and old version cleanup
+
+*linux-docs-2.6.28.7 (24 Feb 2009)
+
+  24 Feb 2009; Mike Pagano <mpagano@gentoo.org> -linux-docs-2.6.23.1.ebuild,
+  -linux-docs-2.6.24.2.ebuild, +linux-docs-2.6.28.7.ebuild:
+  Version bump and old version cleanup
+
+  26 Nov 2008; Mike Pagano <mpagano@gentoo.org> -linux-docs-2.4.32.ebuild,
+  -linux-docs-2.4.35.3.ebuild, linux-docs-2.6.16.ebuild,
+  linux-docs-2.6.23.1.ebuild, linux-docs-2.6.24.2.ebuild,
+  linux-docs-2.6.25.2.ebuild:
+  Cleanup of old versions and more parallel build fixes.
+
+  26 Nov 2008; Mike Pagano <mpagano@gentoo.org> linux-docs-2.6.26.4.ebuild,
+  linux-docs-2.6.27.7.ebuild:
+  sed update and additional parallel make fix. bug #248337
+
+  26 Nov 2008; Mike Pagano <mpagano@gentoo.org> linux-docs-2.6.27.7.ebuild:
+  Removed unneeded cruft.
+
+*linux-docs-2.6.27.7 (26 Nov 2008)
+
+  26 Nov 2008; Mike Pagano <mpagano@gentoo.org> +linux-docs-2.6.27.7.ebuild:
+  Version bump and parallel build fix as per bug #248337. Thanks to Diego for
+  the help.
+
+*linux-docs-2.6.26.4 (08 Sep 2008)
+
+  08 Sep 2008; Mike Pagano <mpagano@gentoo.org> +linux-docs-2.6.26.4.ebuild:
+  Version bump
+
+  22 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  08 May 2008; Mike Pagano <mpagano@gentoo.org> linux-docs-2.4.32.ebuild,
+  linux-docs-2.6.16.ebuild, +linux-docs-2.6.25.2.ebuild:
+  Version bump and qa cleanups
+
+*linux-docs-2.6.25.2 (08 May 2008)
+
+  08 May 2008; Mike Pagano <mpagano@gentoo.org> +linux-docs-2.6.25.2.ebuild:
+  Version bump
+
+*linux-docs-2.6.24.2 (17 Feb 2008)
+
+  17 Feb 2008; Mike Pagano <mpagano@gentoo.org> +linux-docs-2.6.24.2.ebuild:
+  Version bump for 2.6.24 series
+
+  05 Nov 2007; Michael Pagano <mpagano@gentoo.org> ChangeLog:
+  Added myself as maintainer, version bumps for 2.4 and 2.6 kernel documentation.
+
+  04 Nov 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing myself as the maintainer.
+
+  12 May 2007; Daniel Drake <dsd@gentoo.org> metadata.xml:
+  Remove kernel herd from metadata
+
+  13 Nov 2006; Joseph Jezak <josejx@gentoo.org> linux-docs-2.6.16.ebuild:
+  Marked ppc stable for bug #154904.
+
+  17 Aug 2006; Markus Rothe <corsair@gentoo.org> linux-docs-2.6.16.ebuild:
+  Stable on ppc64
+
+  02 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  linux-docs-2.4.32.ebuild, linux-docs-2.6.16.ebuild:
+  Stable on sparc
+
+  24 Jul 2006; Daniel Drake <dsd@gentoo.org> linux-docs-2.6.16.ebuild:
+  Stable on x86 and amd64
+
+  27 Jun 2006; Guy Martin <gmsoft@gentoo.org> linux-docs-2.6.16.ebuild:
+  Added ~hppa to KEYWORDS.
+
+  30 May 2006; Markus Rothe <corsair@gentoo.org> linux-docs-2.6.16.ebuild:
+  Added ~ppc64; bug #134615
+
+  30 May 2006; Joseph Jezak <josejx@gentoo.org> linux-docs-2.4.32.ebuild,
+  linux-docs-2.6.16.ebuild:
+  Marked ~ppc for bug #134615.
+
+  30 May 2006; Jason Wever <weeve@gentoo.org> linux-docs-2.4.32.ebuild,
+  linux-docs-2.6.16.ebuild:
+  Added ~sparc keywords wrt bug #134615.
+
+  28 May 2006; Thomas Cort <tcort@gentoo.org> linux-docs-2.4.32.ebuild,
+  linux-docs-2.6.16.ebuild:
+  Added ~alpha keyword wrt Bug #134615.
+
+  28 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  linux-docs-2.4.32.ebuild, linux-docs-2.6.16.ebuild:
+  Add ~amd64 keyword as per bug #134615.
+
+*linux-docs-2.6.16 (11 May 2006)
+*linux-docs-2.4.32 (11 May 2006)
+
+  11 May 2006; Henrik Brix Andersen <brix@gentoo.org> +metadata.xml,
+  +linux-docs-2.4.32.ebuild, +linux-docs-2.6.16.ebuild:
+  Initial versions of split-out Linux kernel documentation (man pages, HTML
+  docs). Will eventually fix bug #131648.

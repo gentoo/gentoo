@@ -1,0 +1,118 @@
+# ChangeLog for media-libs/avidemux-core
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/avidemux-core/ChangeLog,v 1.26 2015/01/29 17:24:24 mgorny Exp $
+
+  29 Jan 2015; Michał Górny <mgorny@gentoo.org> avidemux-core-2.6.2-r1.ebuild:
+  Switch to CPU_FLAGS_X86.
+
+  06 Jan 2015; Manuel Rüger <mrueg@gentoo.org> avidemux-core-2.6.5.ebuild,
+  avidemux-core-2.6.7.ebuild, avidemux-core-2.6.8.ebuild,
+  avidemux-core-9999.ebuild:
+  Update xvba dependency to use bundled vaapi in x11-drivers/ati-drivers. See
+  bug #534710
+
+  12 Dec 2014; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  USE='vaapi' is now global, removing it's description from metadata
+
+  14 Nov 2014; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Remove myself.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  avidemux-core-2.6.2-r1.ebuild, avidemux-core-2.6.3.ebuild,
+  avidemux-core-2.6.4.ebuild, avidemux-core-2.6.5.ebuild,
+  avidemux-core-2.6.7.ebuild, avidemux-core-2.6.8.ebuild,
+  avidemux-core-9999.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*avidemux-core-2.6.8 (17 Mar 2014)
+
+  17 Mar 2014; Tom Wijsman <TomWij@gentoo.org> +avidemux-core-2.6.8.ebuild:
+  Version bump to 2.6.8; fixes bug #504780, reported by Frank Krömmelbein.
+
+  10 Mar 2014; Samuli Suominen <ssuominen@gentoo.org>
+  avidemux-core-2.6.2-r1.ebuild, avidemux-core-2.6.3.ebuild,
+  avidemux-core-2.6.4.ebuild:
+  Remove guessed SLOTs from sys-devel/gettext dependency.
+
+  10 Mar 2014; Samuli Suominen <ssuominen@gentoo.org>
+  avidemux-core-2.6.5.ebuild, avidemux-core-2.6.7.ebuild,
+  avidemux-core-9999.ebuild:
+  Remove guessed SLOTs from gettext, pkg-config and yasm.
+
+  30 Jan 2014; Tom Wijsman <TomWij@gentoo.org> avidemux-core-2.6.2-r1.ebuild,
+  avidemux-core-2.6.3.ebuild, avidemux-core-2.6.4.ebuild,
+  avidemux-core-2.6.5.ebuild, avidemux-core-2.6.7.ebuild,
+  avidemux-core-9999.ebuild:
+  Further corrected libintl dependencies, suggested by Nikoli.
+
+  30 Jan 2014; Tom Wijsman <TomWij@gentoo.org> avidemux-core-9999.ebuild:
+  Corrected libintl dependencies, suggested by Nikoli.
+
+*avidemux-core-2.6.7 (17 Dec 2013)
+
+  17 Dec 2013; Tom Wijsman <TomWij@gentoo.org> +avidemux-core-2.6.7.ebuild,
+  avidemux-core-9999.ebuild:
+  Version bump to 2.6.7, fixes bug #493730.
+
+*avidemux-core-2.6.5 (01 Sep 2013)
+
+  01 Sep 2013; Tom Wijsman <TomWij@gentoo.org> +avidemux-core-2.6.5.ebuild:
+  Version bump to 2.6.5.
+
+  31 Aug 2013; Tom Wijsman <TomWij@gentoo.org> avidemux-core-9999.ebuild,
+  metadata.xml:
+  Preparation for 2.6.5, added libva and xvba support.
+
+  11 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  avidemux-core-2.6.2-r1.ebuild, avidemux-core-2.6.3.ebuild,
+  avidemux-core-2.6.4.ebuild:
+  depend on slot 0 for ffmpeg
+
+  09 Aug 2013; Ian Stakenvicius <axs@gentoo.org> avidemux-core-2.6.2-r1.ebuild:
+  Adjusted deps for dev-lang/spidermonkey to ensure SLOT=0
+
+  16 Jul 2013; Tom Wijsman <TomWij@gentoo.org> avidemux-core-2.6.2-r1.ebuild,
+  avidemux-core-2.6.3.ebuild, avidemux-core-2.6.4.ebuild,
+  avidemux-core-9999.ebuild:
+  Slotted the blocker to allow versions of other slots to be installed.
+
+*avidemux-core-9999 (16 Jul 2013)
+
+  16 Jul 2013; Tom Wijsman <TomWij@gentoo.org> +avidemux-core-9999.ebuild:
+  Made 9999 ebuild that uses upstream's git, applied various cmake related
+  ebuild fixes to simplify maintenance; thanks to Nikoli for the suggestion.
+
+  12 Jul 2013; Tom Wijsman <TomWij@gentoo.org> avidemux-core-2.6.4.ebuild:
+  Cleaned up ebuild to make it shorter, use the eclass more and lowercase
+  variables.
+
+  07 Jul 2013; Tom Wijsman <TomWij@gentoo.org> avidemux-core-2.6.2-r1.ebuild:
+  Add sub slot operator for media-libs/x264 dependency.
+
+*avidemux-core-2.6.4 (16 May 2013)
+
+  16 May 2013; Tom Wijsman <TomWij@gentoo.org> +avidemux-core-2.6.4.ebuild,
+  avidemux-core-2.6.2-r1.ebuild, avidemux-core-2.6.3.ebuild:
+  Version bump to 2.6.4.
+
+  19 Apr 2013; Tom Wijsman <TomWij@gentoo.org> avidemux-core-2.6.3.ebuild:
+  Added missing dev-lang/yasm[nls=] DEPEND to media-libs/avidemux-core-2.6.3
+  [-system-ffmpeg], reported by Nikoli. Fixes bug #466318.
+
+*avidemux-core-2.6.3 (29 Mar 2013)
+
+  29 Mar 2013; Tom Wijsman <TomWij@gentoo.org> +avidemux-core-2.6.3.ebuild,
+  metadata.xml:
+  Version bump to 2.6.3. Reworked USE flags to be more specific to each avidemux
+  package, the way it is meant to be; introduced additional support for some
+  libraries through USE flags as a consequence.
+
+  16 Mar 2013; Tom Wijsman <TomWij@gentoo.org> avidemux-core-2.6.2.ebuild:
+  Made avidemux-core block old versions of avidemux that had the core libraries,
+  this resolves file collisions.
+
+*avidemux-core-2.6.2 (16 Mar 2013)
+
+  16 Mar 2013; Tom Wijsman <TomWij@gentoo.org> +avidemux-core-2.6.2.ebuild,
+  +metadata.xml:
+  New package to separate the core libraries from avidemux.

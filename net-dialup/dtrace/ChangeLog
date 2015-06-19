@@ -1,0 +1,40 @@
+# ChangeLog for net-dialup/dtrace
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/dtrace/ChangeLog,v 1.7 2013/05/25 00:10:04 sbriesen Exp $
+
+  25 May 2013; Stefan Briesenick <sbriesen@gentoo.org> -dtrace-2.01.ebuild,
+  -dtrace-2.01-r1.ebuild:
+  old revsions removed.
+
+  25 May 2013; Stefan Briesenick <sbriesen@gentoo.org> dtrace-2.01-r2.ebuild:
+  stabilized. solves bug #469986.
+
+*dtrace-2.01-r2 (15 May 2013)
+
+  15 May 2013; Ulrich Müller <ulm@gentoo.org> +dtrace-2.01-r2.ebuild:
+  Fix LICENSE, proprietary license according to AVM. Redistribution is not
+  allowed, therefore adding mirror and bindist restrictions and fetching
+  directly from upstream FTP server. Bug 446156.
+
+  07 May 2010; Stefan Briesenick <sbriesen@gentoo.org>
+  dtrace-2.01-r1.ebuild:
+  moved pre-compiled binary into /opt.
+
+*dtrace-2.01-r1 (07 May 2010)
+
+  07 May 2010; Stefan Briesenick <sbriesen@gentoo.org>
+  +dtrace-2.01-r1.ebuild:
+  resolved name clash (executable renamed to dtrace-avm), added amd64
+  keyword (it's 32-Bit, but works on amd64). solving bug #297945.
+
+  27 Dec 2005; Stefan Briesenick <sbriesen@gentoo.org> dtrace-2.01.ebuild:
+  stable on x86.
+
+*dtrace-2.01 (04 Nov 2005)
+
+  04 Nov 2005; Stefan Briesenick <sbriesen@gentoo.org> +metadata.xml,
+  +dtrace-2.01.ebuild:
+  initial commit. Archive created from the contents of
+  ftp://ftp.avm.de/develper/d3trace/linux/ and then uploaded to
+  gentoo-mirrors.
+

@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=dev-libs/glib-2.26:2 >=x11-libs/cairo-1.10[glib] >=x11-libs/gtk+-3.5.2:3 virtual/pkgconfig
+DESCRIPTION=The Unico GTK+ 3.x theming engine
+EAPI=5
+HOMEPAGE=https://launchpad.net/unico
+KEYWORDS=amd64 ~ppc ~ppc64 x86
+LICENSE=LGPL-2.1+
+RDEPEND=>=dev-libs/glib-2.26:2 >=x11-libs/cairo-1.10[glib] >=x11-libs/gtk+-3.5.2:3
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~tetromino/distfiles/gtk-engines-unico/unico-1.0.3_pre20121212.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ccbad40c45c419ec09f62b3908f1b3cf

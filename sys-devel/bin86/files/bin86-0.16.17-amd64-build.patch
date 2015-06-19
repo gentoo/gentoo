@@ -1,0 +1,17 @@
+This should make it built on other archictectures as well
+
+https://bugs.gentoo.org/428228
+
+--- ld/x86_aout.h
++++ ld/x86_aout.h
+@@ -13,7 +13,9 @@
+ typedef long Long;
+ #define __OUT_OK 1
+ #else
+-typedef char Long[4];
++#define __OUT_OK 1
++#include <inttypes.h>
++typedef int32_t Long;
+ #endif
+ 
+ struct	exec {			/* a.out header */

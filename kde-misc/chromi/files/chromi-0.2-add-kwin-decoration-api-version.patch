@@ -1,0 +1,18 @@
+diff -Naur a/src/factory.cpp b/src/factory.cpp
+--- a/src/factory.cpp	2010-02-23 04:55:28.000000000 +0100
++++ b/src/factory.cpp	2013-06-14 21:46:50.803829770 +0200
+@@ -35,9 +35,13 @@
+ {
+     return new Chromi::Factory();
+ }
++
++KWIN_EXPORT int decoration_version() {
++    return KWIN_DECORATION_API_VERSION;
++}
+ }
+ 
+-                              
++
+ namespace Chromi
+ {
+ 

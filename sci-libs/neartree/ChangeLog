@@ -1,0 +1,128 @@
+# ChangeLog for sci-libs/neartree
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/neartree/ChangeLog,v 1.27 2013/06/19 04:40:34 bicatali Exp $
+
+  19 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  sci herd only
+
+  04 Dec 2012; Justin Lecher <jlec@gentoo.org> -neartree-2.3.2.ebuild,
+  -neartree-3.1.1.ebuild:
+  Drop old
+
+  04 Dec 2012;  <ago@gentoo.org> neartree-3.1.1-r3.ebuild:
+  Stable for x86, wrt bug #440372
+
+  01 Nov 2012; Anthony G. Basile <blueness@gentoo.org> neartree-3.1.1-r3.ebuild:
+  stable ppc, bug #440372
+
+  31 Oct 2012; Agostino Sarubbo <ago@gentoo.org> neartree-3.1.1-r3.ebuild:
+  Stable for amd64, wrt bug #440372
+
+*neartree-3.1.1-r3 (17 Jun 2012)
+
+  17 Jun 2012; Justin Lecher <jlec@gentoo.org> -neartree-3.1.1-r2.ebuild,
+  +neartree-3.1.1-r3.ebuild, files/CMakeLists.txt:
+  Install docs into $PF, #421629
+
+*neartree-3.1.1-r2 (30 May 2012)
+
+  30 May 2012; Justin Lecher <jlec@gentoo.org> -neartree-3.1.1-r1.ebuild,
+  +neartree-3.1.1-r2.ebuild, files/CMakeLists.txt:
+  Don't install into /usr/usr/lib
+
+*neartree-3.1.1-r1 (30 May 2012)
+
+  30 May 2012; Justin Lecher <jlec@gentoo.org> +neartree-3.1.1-r1.ebuild,
+  +files/CMakeLists.txt, metadata.xml:
+  Clean buildsystem and move to cmake instead of patching
+
+  01 Mar 2012; Brent Baude <ranger@gentoo.org> neartree-2.3.2.ebuild:
+  Marking neartree-2.3.2 ppc for bug 393999
+
+  21 Dec 2011; Justin Lecher <jlec@gentoo.org> -neartree-2.3.1-r1.ebuild:
+  Cleaned old
+
+  21 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> neartree-2.3.2.ebuild:
+  x86 stable wrt bug #393999
+
+  15 Dec 2011; Justin Lecher <jlec@gentoo.org> neartree-2.3.2.ebuild,
+  neartree-3.1.1.ebuild:
+  Handle static libs, as requested by ago, #393999
+
+  15 Dec 2011; Agostino Sarubbo <ago@gentoo.org> neartree-2.3.2.ebuild:
+  Stable for AMD64, wrt bug #393999
+
+  15 Dec 2011; Justin Lecher <jlec@gentoo.org> neartree-2.3.2.ebuild:
+  Add missing die before ago complains
+
+*neartree-3.1.1 (14 Dec 2011)
+
+  14 Dec 2011; Justin Lecher <jlec@gentoo.org> +files/3.1.1-gentoo.patch,
+  +files/3.1.1-notest.patch, +files/3.1.1-test.patch,
+  -files/2.1.4-gcc4.3.patch, -files/2.1.4-gentoo.patch,
+  -files/2.1.4-iterator.patch, -neartree-2.1.4-r2.ebuild,
+  -neartree-2.3.1.ebuild, +neartree-3.1.1.ebuild:
+  Version Bump
+
+  09 May 2011; Justin Lecher <jlec@gentoo.org> +files/2.3.2-notest.patch,
+  neartree-2.3.2.ebuild:
+  Do not test during installation patch
+
+*neartree-2.3.2 (05 May 2011)
+
+  05 May 2011; Justin Lecher <jlec@gentoo.org> +files/2.3.2-gentoo.patch,
+  neartree-2.3.1.ebuild, neartree-2.3.1-r1.ebuild, +neartree-2.3.2.ebuild:
+  Version Bump, notified by euscan
+
+  25 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  neartree-2.3.1-r1.ebuild:
+  stable x86, bug 351987
+
+  23 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  neartree-2.3.1-r1.ebuild:
+  Mark ~ppc wrt #351989
+
+  20 Jan 2011; Markos Chandras <hwoarang@gentoo.org> neartree-2.3.1-r1.ebuild:
+  Stable on amd64 wrt bug #351987
+
+*neartree-2.3.1-r1 (13 Sep 2010)
+
+  13 Sep 2010; Justin Lecher <jlec@gentoo.org> files/2.3.1-gentoo.patch,
+  +neartree-2.3.1-r1.ebuild:
+  Respect CFLAGS
+
+*neartree-2.3.1 (12 Sep 2010)
+
+  12 Sep 2010; Justin Lecher <jlec@gentoo.org> +files/2.3.1-gentoo.patch,
+  +neartree-2.3.1.ebuild:
+  Version Bump, don't mix CFLAGS/CXXFLAGS
+
+  15 Jul 2010; Markus Meier <maekke@gentoo.org> neartree-2.1.4-r2.ebuild:
+  x86 stable, bug #326039
+
+  28 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  neartree-2.1.4-r2.ebuild:
+  Stable on amd64 wrt bug #326039
+
+*neartree-2.1.4-r2 (15 Jun 2010)
+
+  15 Jun 2010; Justin Lecher <jlec@gentoo.org> -files/2.1.4-FLAGS.patch,
+  +neartree-2.1.4-r2.ebuild, -files/2.1.4-dynlib.patch,
+  +files/2.1.4-gentoo.patch, -neartree-2.1.4-r1.ebuild:
+  Fixed clean install of libs
+
+*neartree-2.1.4-r1 (07 Mar 2010)
+
+  07 Mar 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +files/2.1.4-dynlib.patch, -neartree-2.1.4.ebuild,
+  +neartree-2.1.4-r1.ebuild:
+  building shared libs now
+
+*neartree-2.1.4 (03 Feb 2010)
+
+  03 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +files/2.1.4-FLAGS.patch, +files/2.1.4-gcc4.3.patch,
+  +files/2.1.4-iterator.patch, +files/2.1.4-test.patch,
+  +neartree-2.1.4.ebuild, +metadata.xml:
+  function library efficiently solving the Nearest Neighbor Problem(known as
+  the post office problem)

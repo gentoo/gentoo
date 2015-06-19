@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>pinkbyte@gentoo.org</email>
+		<name>Sergey Popov</name>
+	</maintainer>
+	<longdescription lang="en">
+		RetroShare is a Open Source cross-platform, Friend-2-Friend and
+		secure decentralised communication platform.
+		It lets you to securely chat and share files with your friends
+		and family, using a web-of-trust to authenticate peers and OpenSSL
+		to encrypt all communication.
+		RetroShare provides filesharing, chat, messages, forums and
+		channels
+	</longdescription>
+	<use>
+		<flag name="cli">Enables the CLI version of RetroShare</flag>
+		<flag name="feedreader">Enables the Feedreader plugin</flag>
+		<flag name="qt4">Enables the GUI using qt4</flag>
+		<flag name="links-cloud">Enables LinkClouds plugin</flag>
+		<flag name="voip">Enables VOIP plugin</flag>
+	</use>
+	<upstream>
+		<bugs-to>http://sourceforge.net/p/retroshare/bugs</bugs-to>
+		<remote-id type="sourceforge">retroshare</remote-id>
+	</upstream>
+</pkgmetadata>

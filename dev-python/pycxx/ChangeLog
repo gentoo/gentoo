@@ -1,0 +1,218 @@
+# ChangeLog for dev-python/pycxx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pycxx/ChangeLog,v 1.54 2015/06/09 16:01:45 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pycxx-6.2.5.ebuild:
+  Drop old Python implementations
+
+*pycxx-6.2.6 (14 Jan 2015)
+
+  14 Jan 2015; Ian Delaney <idella4@gentoo.org> +pycxx-6.2.6.ebuild,
+  -files/pycxx-6.2.3-python-3.2-Py_hash_t.patch,
+  -files/pycxx-6.2.3-python-3.2.patch, -files/pycxx-6.2.3-python-3.patch,
+  -pycxx-6.2.3-r2.ebuild, -pycxx-6.2.3-r3.ebuild, -pycxx-6.2.4-r1.ebuild,
+  -pycxx-6.2.4.ebuild, pycxx-6.2.5.ebuild:
+  bump; clean old impl, rm disused patches & old versions
+
+  14 Aug 2014; Ian Delaney <idella4@gentoo.org> pycxx-6.2.5.ebuild:
+  drop py2.6 pypy add py3_4
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> pycxx-6.2.5.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> pycxx-6.2.5.ebuild:
+  Stable for ppc, wrt bug #495612
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> pycxx-6.2.5.ebuild:
+  amd64 stable, bug #495612
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> pycxx-6.2.5.ebuild:
+  x86 stable wrt bug #495612
+
+*pycxx-6.2.5 (28 Aug 2013)
+
+  28 Aug 2013; Mike Gilbert <floppym@gentoo.org> +pycxx-6.2.5.ebuild:
+  Version bump. Convert to distutils-r1.
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> pycxx-6.2.4-r1.ebuild:
+  x86 stable wrt bug #418907
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> pycxx-6.2.4-r1.ebuild:
+  Marking pycxx-6.2.4-r1 ppc for bug 418907
+
+  01 Jun 2012; Agostino Sarubbo <ago@gentoo.org> pycxx-6.2.4-r1.ebuild:
+  Stable for amd64, wrt bug #418907
+
+  04 Apr 2012; Jeff Horelick <jdhore@gentoo.org> pycxx-6.2.3-r3.ebuild:
+  marked x86 per bug 409029
+
+*pycxx-6.2.4-r1 (30 Mar 2012)
+
+  30 Mar 2012; Mike Gilbert <floppym@gentoo.org> +pycxx-6.2.4-r1.ebuild:
+  Restore sed call to fix pysvn breakage. Reported by Arfrever.
+
+*pycxx-6.2.4 (29 Mar 2012)
+
+  29 Mar 2012; Dirkjan Ochtman <djc@gentoo.org> +pycxx-6.2.4.ebuild:
+  Version bump to 6.2.4, bug 408589 (thanks to Ian Delaney for testing).
+
+  25 Mar 2012; Brent Baude <ranger@gentoo.org> pycxx-6.2.3-r3.ebuild:
+  Marking pycxx-6.2.3-r3 ppc for bug 409029
+
+  24 Mar 2012; Agostino Sarubbo <ago@gentoo.org> pycxx-6.2.3-r3.ebuild:
+  Stable for amd64, wrt bug #409029
+
+  23 Dec 2011; Mike Gilbert <floppym@gentoo.org>
+  files/pycxx-6.2.3-python-3.2-Py_hash_t.patch, pycxx-6.2.3-r3.ebuild:
+  Add upstream bug url for last change.
+
+*pycxx-6.2.3-r3 (23 Dec 2011)
+
+  23 Dec 2011; Mike Gilbert <floppym@gentoo.org>
+  +files/pycxx-6.2.3-python-3.2-Py_hash_t.patch, +pycxx-6.2.3-r3.ebuild:
+  Add patch to fix the hash_handler prototype under python-3.2. Should resolve
+  bug 369329.
+
+  29 Nov 2011; Naohiro Aota <naota@gentoo.org> pycxx-6.2.3-r2.ebuild:
+  Add ~x86-fbsd
+
+  23 Jun 2011; Markos Chandras <hwoarang@gentoo.org>
+  -files/pycxx-6.1.0-C_compatible_headers.patch, -pycxx-6.2.3-r1.ebuild:
+  Remove old ebuilds. Requested by Arfrever
+
+  28 May 2011; Brent Baude <ranger@gentoo.org> pycxx-6.2.3-r2.ebuild:
+  Marking pycxx-6.2.3-r2 ppc for bug 366669
+
+  15 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> pycxx-6.2.3-r2.ebuild:
+  x86 stable wrt bug #366669
+
+  11 May 2011; Markos Chandras <hwoarang@gentoo.org> pycxx-6.2.3-r2.ebuild:
+  Stable on amd64 wrt bug #366669
+
+  15 Apr 2011; Christoph Mende <angelos@gentoo.org> pycxx-6.2.3-r1.ebuild:
+  Stable on amd64 wrt bug #362765
+
+  14 Apr 2011; Brent Baude <ranger@gentoo.org> pycxx-6.2.3-r1.ebuild:
+  stable ppc, bug 362765
+
+  14 Apr 2011; Thomas Kahle <tomka@gentoo.org> pycxx-6.2.3-r1.ebuild:
+  x86 stable per bug 362765
+
+*pycxx-6.2.3-r2 (09 Apr 2011)
+
+  09 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pycxx-6.2.3-r2.ebuild, +files/pycxx-6.2.3-python-3.2.patch:
+  Fix compatibility with Python 3.2 (bug #292415).
+
+*pycxx-6.2.3-r1 (09 Mar 2011)
+
+  09 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pycxx-6.2.3.ebuild, +pycxx-6.2.3-r1.ebuild,
+  files/pycxx-6.2.3-installation.patch:
+  Install all required files (bug #358027).
+
+*pycxx-6.2.3 (07 Mar 2011)
+
+  07 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pycxx-6.2.3.ebuild:
+  Version bump.
+
+*pycxx-6.2.2 (21 Feb 2011)
+
+  21 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pycxx-6.1.1.ebuild, -pycxx-6.2.1.ebuild, +pycxx-6.2.2.ebuild:
+  Version bump.
+
+  05 Feb 2011; Markus Meier <maekke@gentoo.org> pycxx-6.2.1-r1.ebuild:
+  add ~arm, bug #350648
+
+  07 Jan 2011; Brent Baude <ranger@gentoo.org> pycxx-6.2.1-r1.ebuild:
+  Marking pycxx-6.2.1-r1 ppc for bug 349199
+
+  20 Dec 2010; Markos Chandras <hwoarang@gentoo.org> pycxx-6.2.1-r1.ebuild:
+  Stable on amd64 wrt bug #349199
+
+  20 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  pycxx-6.2.1-r1.ebuild:
+  x86 stable wrt bug #349199
+
+*pycxx-6.2.1-r1 (28 Nov 2010)
+
+  28 Nov 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pycxx-6.1.0.ebuild, +pycxx-6.2.1-r1.ebuild,
+  +files/pycxx-6.2.1-python-3.1.3.patch:
+  Fix compatibility with Python 3.1.3 (bug #344831).
+
+  04 Nov 2010; Markus Meier <maekke@gentoo.org> pycxx-6.2.1.ebuild:
+  x86 stable, bug #343381
+
+  31 Oct 2010; Markos Chandras <hwoarang@gentoo.org> pycxx-6.2.1.ebuild:
+  Stable on amd64 wrt bug #343381
+
+  23 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> pycxx-6.2.1.ebuild:
+  Keyword ~ppc64 wrt #341699
+
+*pycxx-6.2.1 (01 Oct 2010)
+
+  01 Oct 2010; Sébastien Fabbro <bicatali@gentoo.org> +pycxx-6.2.1.ebuild:
+  Bump
+
+  30 Sep 2010; Fabian Groffen <grobian@gentoo.org> pycxx-6.1.1.ebuild:
+  Marked ~x86-solaris
+
+  09 Dec 2009; nixnut <nixnut@gentoo.org> pycxx-6.1.1.ebuild:
+  ppc stable #290609
+
+  23 Nov 2009; Markus Meier <maekke@gentoo.org> pycxx-6.1.1.ebuild:
+  amd64/x86 stable, bug #290609
+
+  08 Nov 2009; nixnut <nixnut@gentoo.org> pycxx-6.1.0.ebuild:
+  ppc stable #290607
+
+  04 Nov 2009; Markus Meier <maekke@gentoo.org> pycxx-6.1.0.ebuild:
+  amd64/x86 stable, bug #290607
+
+*pycxx-6.1.1 (17 Oct 2009)
+
+  17 Oct 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pycxx-6.1.1.ebuild:
+  Version bump.
+
+  11 Oct 2009; Fabian Groffen <grobian@gentoo.org> pycxx-6.1.0.ebuild:
+  Merge from Prefix
+
+  05 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> pycxx-6.1.0.ebuild:
+  Keywording for ppc, bug 280023
+
+  06 Sep 2009; Christian Ruppert <idl0r@gentoo.org>
+  -files/pycxx-5.4.2-headers-c.patch:
+  Remove unused patch.
+
+  04 Sep 2009; Patrick Lauer <patrick@gentoo.org> -pycxx-5.4.2.ebuild,
+  -pycxx-5.5.0.ebuild:
+  Remove old
+
+  10 Aug 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pycxx-6.1.0.ebuild:
+  Fix includes (bug #280732).
+
+*pycxx-6.1.0 (05 Aug 2009)
+
+  05 Aug 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pycxx-6.1.0.ebuild, +files/pycxx-6.1.0-C_compatible_headers.patch,
+  +files/pycxx-6.1.0-python-3.patch, +files/pycxx-6.1.0-setup.py.patch:
+  Version bump. Set SUPPORT_PYTHON_ABIS.
+
+*pycxx-5.5.0 (15 Feb 2009)
+
+  15 Feb 2009; Patrick Lauer <patrick@gentoo.org> +pycxx-5.5.0.ebuild:
+  Bump to 5.5.0. With thanks to idl0r for the ebuild improvements.
+
+*pycxx-5.4.2 (15 Jan 2009)
+
+  15 Jan 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/pycxx-5.4.2-headers-c.patch, +metadata.xml, +pycxx-5.4.2.ebuild:
+  Initial import

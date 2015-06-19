@@ -1,0 +1,104 @@
+From 1997ac0f475488849d3f55fecd3dcad6d10193ef Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Tue, 16 Jun 2015 23:47:41 +0300
+Subject: [PATCH] tests: cert-tests: pkcs7: support separate builddir
+
+please consider to always check package using separate builddir before
+release.
+
+please consider adding quotes all over in shell scripts, to support
+spaces and other special characters within base path.
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ tests/cert-tests/pkcs7 | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/tests/cert-tests/pkcs7 b/tests/cert-tests/pkcs7
+index 04e4058..7d28c84 100755
+--- a/tests/cert-tests/pkcs7
++++ b/tests/cert-tests/pkcs7
+@@ -39,7 +39,7 @@ if test "$rc" != "0"; then
+   exit $rc
+ fi
+ 
+-$DIFF $OUTFILE $FILE.out >/dev/null
++$DIFF $OUTFILE $srcdir/$FILE.out >/dev/null
+ if test "$?" != "0"; then
+   echo "$FILE: PKCS7 decoding didn't produce the correct file"
+   exit 1
+@@ -86,7 +86,7 @@ if test "$rc" = "0"; then
+   exit 2
+ fi
+ 
+-$VALGRIND $CERTTOOL --inder --p7-verify --load-data pkcs7-detached.txt --load-ca-certificate $srcdir/../../doc/credentials/x509/ca.pem --infile $srcdir/$FILE
++$VALGRIND $CERTTOOL --inder --p7-verify --load-data $srcdir/pkcs7-detached.txt --load-ca-certificate $srcdir/../../doc/credentials/x509/ca.pem --infile $srcdir/$FILE
+ rc=$?
+ 
+ if test "$rc" != "0"; then
+@@ -106,7 +106,7 @@ if test "$rc" != "0"; then
+   exit $rc
+ fi
+ 
+-$DIFF $OUTFILE p7-combined.out >/dev/null
++$DIFF $OUTFILE $srcdir/p7-combined.out >/dev/null
+ if test "$?" != "0"; then
+   echo "$FILE: PKCS7 generation didn't produce the correct file"
+   exit 1
+@@ -114,7 +114,7 @@ fi
+ 
+ # Test signing
+ FILE=signing
+-$VALGRIND $CERTTOOL --p7-sign --load-privkey  $srcdir/../../doc/credentials/x509/key-rsa.pem --load-certificate $srcdir/../../doc/credentials/x509/cert-rsa.pem --infile pkcs7-detached.txt >$OUTFILE
++$VALGRIND $CERTTOOL --p7-sign --load-privkey  $srcdir/../../doc/credentials/x509/key-rsa.pem --load-certificate $srcdir/../../doc/credentials/x509/cert-rsa.pem --infile $srcdir/pkcs7-detached.txt >$OUTFILE
+ rc=$?
+ 
+ if test "$rc" != "0"; then
+@@ -133,7 +133,7 @@ fi
+ 
+ 
+ FILE=signing-detached
+-$VALGRIND $CERTTOOL --p7-detached-sign --load-privkey  $srcdir/../../doc/credentials/x509/key-rsa.pem --load-certificate $srcdir/../../doc/credentials/x509/cert-rsa.pem --infile pkcs7-detached.txt >$OUTFILE
++$VALGRIND $CERTTOOL --p7-detached-sign --load-privkey  $srcdir/../../doc/credentials/x509/key-rsa.pem --load-certificate $srcdir/../../doc/credentials/x509/cert-rsa.pem --infile $srcdir/pkcs7-detached.txt >$OUTFILE
+ rc=$?
+ 
+ if test "$rc" != "0"; then
+@@ -142,7 +142,7 @@ if test "$rc" != "0"; then
+ fi
+ 
+ FILE=signing-detached-verify
+-$VALGRIND $CERTTOOL --p7-verify --load-certificate $srcdir/../../doc/credentials/x509/cert-rsa.pem --load-data pkcs7-detached.txt <$OUTFILE
++$VALGRIND $CERTTOOL --p7-verify --load-certificate $srcdir/../../doc/credentials/x509/cert-rsa.pem --load-data $srcdir/pkcs7-detached.txt <$OUTFILE
+ rc=$?
+ 
+ if test "$rc" != "0"; then
+@@ -152,7 +152,7 @@ fi
+ 
+ # Test signing with broken algorithms
+ FILE=signing-broken
+-$VALGRIND $CERTTOOL --hash md5 --p7-sign --load-privkey  $srcdir/../../doc/credentials/x509/key-rsa.pem --load-certificate $srcdir/../../doc/credentials/x509/cert-rsa.pem --infile pkcs7-detached.txt >$OUTFILE
++$VALGRIND $CERTTOOL --hash md5 --p7-sign --load-privkey  $srcdir/../../doc/credentials/x509/key-rsa.pem --load-certificate $srcdir/../../doc/credentials/x509/cert-rsa.pem --infile $srcdir/pkcs7-detached.txt >$OUTFILE
+ rc=$?
+ 
+ if test "$rc" != "0"; then
+@@ -170,7 +170,7 @@ if test "$rc" = "0"; then
+ fi
+ 
+ FILE=signing-time
+-$VALGRIND $CERTTOOL --p7-detached-sign --p7-time --load-privkey  $srcdir/../../doc/credentials/x509/key-rsa.pem --load-certificate $srcdir/../../doc/credentials/x509/cert-rsa.pem --infile pkcs7-detached.txt >$OUTFILE
++$VALGRIND $CERTTOOL --p7-detached-sign --p7-time --load-privkey  $srcdir/../../doc/credentials/x509/key-rsa.pem --load-certificate $srcdir/../../doc/credentials/x509/cert-rsa.pem --infile $srcdir/pkcs7-detached.txt >$OUTFILE
+ rc=$?
+ 
+ if test "$rc" != "0"; then
+@@ -185,7 +185,7 @@ if test "$rc" != "0"; then
+ fi
+ 
+ FILE=signing-time-verify
+-$VALGRIND $CERTTOOL --p7-verify --load-certificate $srcdir/../../doc/credentials/x509/cert-rsa.pem --load-data pkcs7-detached.txt <$OUTFILE
++$VALGRIND $CERTTOOL --p7-verify --load-certificate $srcdir/../../doc/credentials/x509/cert-rsa.pem --load-data $srcdir/pkcs7-detached.txt <$OUTFILE
+ rc=$?
+ 
+ if test "$rc" != "0"; then
+-- 
+2.3.6
+

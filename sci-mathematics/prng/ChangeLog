@@ -1,0 +1,31 @@
+# ChangeLog for sci-mathematics/prng
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/prng/ChangeLog,v 1.7 2012/07/06 23:46:37 bicatali Exp $
+
+  06 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org> prng-3.0.2.ebuild:
+  fixed examples installation directory, bug #424942
+
+  05 Jul 2012; Agostino Sarubbo <ago@gentoo.org> prng-3.0.2.ebuild:
+  Stable for amd64, wrt bug #424741
+
+  05 Jul 2012; Justin Lecher <jlec@gentoo.org> prng-3.0.2.ebuild:
+  Fix out of source buildproblem
+
+  04 Jul 2012; Jeff Horelick <jdhore@gentoo.org> prng-3.0.2.ebuild:
+  marked x86 per bug 424741
+
+  04 Jul 2012; Justin Lecher <jlec@gentoo.org> prng-3.0.2.ebuild, metadata.xml:
+  Move to autotool-utils.eclass
+
+  26 Jun 2012; Sebastien Fabbro <fabbros@gentoo.org> prng-3.0.2.ebuild:
+  keyword ~amd64-linux ~x86-linux
+
+  17 Dec 2010; Sébastien Fabbro <bicatali@gentoo.org> +prng-3.0.2.ebuild,
+  +files/prng-3.0.2-shared.patch, +metadata.xml:
+  Moved to the main tree
+
+*prng-3.0.2 (16 Oct 2010)
+
+  16 Oct 2010; Sébastien Fabbro <bicatali@gentoo.org> +prng-3.0.2.ebuild,
+  +files/prng-3.0.2-shared.patch, +metadata.xml:
+  Initial import

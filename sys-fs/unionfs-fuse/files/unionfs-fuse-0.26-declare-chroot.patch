@@ -1,0 +1,12 @@
+--- unionfs-fuse-0.26/src/unionfs.c	2012-09-22 22:24:05.090568485 +0200
++++ unionfs-fuse-0.26/src/unionfs.c	2012-09-22 22:24:09.036519156 +0200
+@@ -13,6 +13,9 @@
+ #ifdef linux
+ 	// For pread()/pwrite()/utimensat()
+ 	#define _XOPEN_SOURCE 700
++	
++	// For chroot
++	#define _BSD_SOURCE
+ #endif
+ 
+ #include <fuse.h>

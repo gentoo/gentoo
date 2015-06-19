@@ -1,0 +1,12 @@
+--- miniaudicle.eselect-1.0.1.orig	2010-07-14 23:21:11.000000000 -0400
++++ miniaudicle.eselect-1.0.1	2010-07-14 23:22:22.000000000 -0400
+@@ -73,7 +73,7 @@
+ 	targets=( $(find_targets ) )
+ 	write_list_start "Available miniAudicle audio engines:"
+ 	for (( i = 0 ; i < ${#targets[@]} ; i = i + 1 )) ; do
+-		[[ ${targets[${i}]} == $(basename $(canonicalise ${ROOT}/usr/bin/miniAudicle ) ) ]] && \
++		[[ ${targets[${i}]} == $(basename $(canonicalise ${ROOT}/usr/bin/miniAudicle- ) ) ]] && \
+ 			targets[${i}]=$(highlight_maker "${targets[${i}]}")
+ 	done
+ 	write_numbered_list -m "(none found)" "${targets[@]}"
+

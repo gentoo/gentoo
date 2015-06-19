@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=dev-db/sqlite:3 x11-libs/cairo[X?] virtual/libffi
+DESCRIPTION=Racket is a general-purpose programming language with strong support for domain-specific languages
+EAPI=5
+HOMEPAGE=http://racket-lang.org/
+IUSE=doc +futures +jit minimal +places +threads +X
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-db/sqlite:3 x11-libs/cairo[X?] virtual/libffi
+REQUIRED_USE=futures? ( jit )
+SLOT=0
+SRC_URI=minimal? ( http://download.racket-lang.org/installers/6.0.1/racket-minimal-6.0.1-src-builtpkgs.tgz ) !minimal? ( http://download.racket-lang.org/installers/6.0.1/racket-6.0.1-src-builtpkgs.tgz )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=5be0403520317b802b81b4a5ed1bf17e

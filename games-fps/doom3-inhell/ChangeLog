@@ -1,0 +1,38 @@
+# ChangeLog for games-fps/doom3-inhell
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/doom3-inhell/ChangeLog,v 1.7 2013/04/29 16:19:30 ulm Exp $
+
+  29 Apr 2013; Ulrich Müller <ulm@gentoo.org> doom3-inhell-1.1-r1.ebuild:
+  Fix LICENSE, bug 467512.
+
+  08 Oct 2009; Tristan Heaven <nyhm@gentoo.org> doom3-inhell-1.1-r1.ebuild:
+  EAPI=2; RESTRICT=fetch
+
+  13 Jul 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  doom3-inhell-1.1-r1.ebuild:
+  switch to working SRC_URI (bug #262877)
+
+  15 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  -doom3-inhell-1.1.ebuild, doom3-inhell-1.1-r1.ebuild:
+  Marking stable on amd64/x86 as there's no code differences, just ebuild
+  differences, and this has been in the tree for a long time with no bugs
+  filed.
+
+*doom3-inhell-1.1-r1 (30 Oct 2006)
+
+  30 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +doom3-inhell-1.1-r1.ebuild:
+  Added new revision for testing which uses the brand-spankin-new
+  games-mods.eclass to reduce ebuild code.
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  doom3-inhell-1.1.ebuild:
+  Changed nomirror to mirror and nostrip to strip.
+
+*doom3-inhell-1.1 (22 Mar 2006)
+
+  22 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +doom3-inhell-1.1.ebuild:
+  Initial import. Ebuild by Paul Bredbury <brebs@sent.com>. Closing bug
+  #119258.
+

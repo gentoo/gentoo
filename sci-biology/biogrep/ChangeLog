@@ -1,0 +1,22 @@
+# ChangeLog for sci-biology/biogrep
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/biogrep/ChangeLog,v 1.2 2010/10/10 17:43:49 jlec Exp $
+
+*biogrep-1.0-r1 (10 Oct 2010)
+
+  10 Oct 2010; Justin Lecher <jlec@gentoo.org> +biogrep-1.0-r1.ebuild,
+  metadata.xml:
+  Package taken, respect CC now
+
+*biogrep-1.0 (04 Jun 2010)
+
+  04 Jun 2010; Markos Chandras <hwoarang@gentoo.org> +biogrep-1.0.ebuild,
+  +metadata.xml:
+  Moved from sunrise overlay. Fixes bug #235952. 
+  Thanks to Chad A Simmons (CCIEChad) <chad.simmons@member.fsf.org> 
+  for the ebuild
+
+  27 Aug 2008; Chad A Simmons (CCIEChad) <chad.simmons@member.fsf.org>
+  +biogrep-1.0.ebuild, +metadata.xml:
+  New Ebuild for bug 235952 thanks to Tommy and gentoofan23 for the review.
+

@@ -1,0 +1,32 @@
+# ChangeLog for net-misc/netkit-rwall
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-rwall/ChangeLog,v 1.7 2012/09/26 18:40:55 kensington Exp $
+
+  26 Sep 2012; Michael Palimaka <kensington@gentoo.org>
+  -netkit-rwall-0.17.ebuild:
+  Remove old.
+
+  21 Jun 2012; Justin Lecher <jlec@gentoo.org> netkit-rwall-0.17-r1.ebuild:
+  Moved to EAPI=4, keyworded for ~amd64
+
+*netkit-rwall-0.17-r1 (20 Sep 2010)
+
+  20 Sep 2010; Jeroen Roovers <jer@gentoo.org> +netkit-rwall-0.17-r1.ebuild:
+  Respect LDFLAGS (bug #337892), CC. Do not set empty DEPEND.
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  11 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  fix herd
+
+  24 Oct 2004; Wout Mertens <wmertens@gentoo.org> netkit-rwall-0.17.ebuild:
+  Changed keywords to be only ~x86. Removed my fancy sed use (-i is not
+  supported on all sed versions). No revision bump since it does not impact
+  the program itself.
+
+*netkit-rwall-0.17 (23 Oct 2004)
+
+  23 Oct 2004; Wout Mertens <wmertens@gentoo.org> netkit-rwall-0.17.ebuild:
+  Initial import. Ebuild submitted by I.Radusch <ilja@radusch.com>.

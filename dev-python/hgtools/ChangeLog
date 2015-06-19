@@ -1,0 +1,78 @@
+# ChangeLog for dev-python/hgtools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/hgtools/ChangeLog,v 1.17 2015/06/17 08:15:01 idella4 Exp $
+
+*hgtools-6.3 (17 Jun 2015)
+
+  17 Jun 2015; Ian Delaney <idella4@gentoo.org> +hgtools-6.3.ebuild,
+  -hgtools-2.0.2-r1.ebuild, -hgtools-2.0.2.ebuild, -hgtools-3.0.2.ebuild,
+  -hgtools-4.0.ebuild:
+  bump; rm old
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add bitbucket to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> hgtools-2.0.2-r1.ebuild,
+  hgtools-2.0.2.ebuild, hgtools-3.0.2.ebuild, hgtools-4.0.ebuild,
+  hgtools-6.0.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> hgtools-6.0.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> hgtools-6.0.ebuild:
+  amd64 stable, bug 540290
+
+*hgtools-6.0 (12 Jun 2014)
+
+  12 Jun 2014; Patrick Lauer <patrick@gentoo.org> +hgtools-6.0.ebuild:
+  Bump, add py34
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> hgtools-2.0.2-r1.ebuild,
+  hgtools-2.0.2.ebuild, hgtools-3.0.2.ebuild, hgtools-4.0.ebuild:
+  Add support for the new PyPy slotting.
+
+*hgtools-4.0 (07 Oct 2013)
+
+  07 Oct 2013; Matthew Thode <prometheanfire@gentoo.org> +hgtools-4.0.ebuild:
+  update, fixes bug 482492
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> hgtools-2.0.2-r1.ebuild,
+  hgtools-2.0.2.ebuild, hgtools-3.0.2.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*hgtools-3.0.2 (23 Jun 2013)
+
+  23 Jun 2013; Ian Delaney <idella4@gentoo.org> +hgtools-3.0.2.ebuild,
+  files/hgtools-doctest-2.0.2.patch:
+  bump, py2.5 support dropped (upstream)
+
+*hgtools-2.0.2-r1 (06 May 2013)
+
+  06 May 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +files/hgtools-doctest-2.0.2.patch, +hgtools-2.0.2-r1.ebuild:
+  fixing python 3.2 tests for bug 450666
+
+  06 Jan 2013; Michał Górny <mgorny@gentoo.org> hgtools-2.0.2.ebuild,
+  metadata.xml:
+  Clean up the ebuild. Add a dep on mercurial, and use-deps on other Python
+  packages. Enable more implementations. Fix running tests. Add Python team as a
+  co-maintainer.
+
+  01 Jan 2013; Matthew Thode <prometheanfire@gentoo.org> hgtools-2.0.2.ebuild:
+  update to eapi5 and distutils-r1
+
+  01 Jan 2013; Matthew Thode <prometheanfire@gentoo.org> hgtools-2.0.2.ebuild:
+  eapi5 and distutils-r1
+
+  28 Dec 2012; Matthew Thode <prometheanfire@gentoo.org> hgtools-2.0.2.ebuild:
+  Fixed the licencing of hgtools to be correct (as BSD-2, now GPL-2)
+
+*hgtools-2.0.2 (28 Dec 2012)
+
+  28 Dec 2012; Matthew Thode <prometheanfire@gentoo.org> +hgtools-2.0.2.ebuild,
+  +metadata.xml:
+  initial add of dev-python/hgtools (needed for dev-python/pytest-runner)

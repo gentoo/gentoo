@@ -1,0 +1,42 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-fs/ncpfs/files/ipx.init,v 1.1 2011/02/10 09:26:38 kumba Exp $
+
+#NB: Config is in /etc/conf.d/ipx
+
+depend() {
+	need net netmount
+}
+
+start() {
+	local retval=0
+	
+	ebegin "Bringing IPX up"
+	if [ ${IPX_INTERNAL_NET} = "yes" ]
+	then
+		/usr/bin/ipx_internal_net add ${IPX_NETNUM} ${IPX_NODENUM}
+		retval=$?
+	else
+		/usr/bin/ipx_interface add -p ${IPX_DEVICE} \
+			${IPX_FRAME} ${IPX_NETNUM}
+		retval=$?
+	fi
+	
+	/usr/bin/ipx_configure \
+		--auto_primary=${IPX_AUTO_PRIMARY} \
+		--auto_interface=${IPX_AUTO_INTERFACE}
+	retval=$(( $retval + $? ))
+	eend ${retval} "Failed to bring IPX up"
+}
+
+stop() {
+	local retval=0
+	
+	ebegin "Bringing IPX down"
+	/usr/bin/ipx_configure --auto_primary=off --auto_interface=off
+	retval=$?
+	/usr/bin/ipx_interface delall
+	retval=$(( $retval + $? ))
+	eend ${retval} "Failed to down IPX"
+}

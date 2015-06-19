@@ -1,0 +1,10 @@
+# ChangeLog for dev-java/spring-core
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/spring-core/ChangeLog,v 1.1 2013/10/18 16:38:55 ercpe Exp $
+
+*spring-core-3.2.4 (18 Oct 2013)
+
+  18 Oct 2013; Johann Schmitz <ercpe@gentoo.org> +metadata.xml,
+  +spring-core-3.2.4.ebuild:
+  Ebuild for the core module of the spring framework (wrt #97004) Needed
+  standalone and as a dependency of multiple packages.

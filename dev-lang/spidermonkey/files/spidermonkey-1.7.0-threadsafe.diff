@@ -1,0 +1,18 @@
+Index: src/Makefile.ref
+===================================================================
+--- src.orig/Makefile.ref
++++ src/Makefile.ref
+@@ -63,11 +63,11 @@ INCLUDES   += -I$(OBJDIR)
+ 
+ ifdef JS_THREADSAFE
+ DEFINES += -DJS_THREADSAFE
+-INCLUDES += -I$(DIST)/include/nspr
++INCLUDES += -I/usr/include/nspr
+ ifdef USE_MSVC
+ OTHER_LIBS += $(DIST)/lib/libnspr$(NSPR_LIBSUFFIX).lib
+ else
+-OTHER_LIBS += -L$(DIST)/lib -lnspr$(NSPR_LIBSUFFIX)
++OTHER_LIBS += -L/usr/$(LIBDIR)/nspr -lnspr$(NSPR_LIBSUFFIX)
+ endif
+ endif
+ 

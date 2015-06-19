@@ -1,0 +1,83 @@
+# ChangeLog for sys-fs/obexfs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/obexfs/ChangeLog,v 1.13 2015/01/04 11:06:06 pacho Exp $
+
+  04 Jan 2015; Pacho Ramos <pacho@gentoo.org> obexfs-0.12.ebuild:
+  Fix building, bug #523062 (from ArchLinux)
+
+  09 Apr 2014; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  [QA] Dissolve the mobile-phone herd to maintainer-needed because it is empty
+  and nobody joined it after multiple recruitment mails.
+
+*obexfs-0.12 (23 Jul 2009)
+
+  23 Jul 2009; Alin Năstac <mrness@gentoo.org>
+  -files/obexfs-0.10-as-needed.patch, -obexfs-0.10.ebuild,
+  -obexfs-0.11_rc3.ebuild, +obexfs-0.12.ebuild:
+  Version bump (#278453).
+
+  08 Nov 2008; Markus Meier <maekke@gentoo.org> obexfs-0.11.ebuild:
+  amd64/x86 stable, bug #245456
+
+*obexfs-0.11 (21 Jun 2008)
+
+  21 Jun 2008; Alin Năstac <mrness@gentoo.org> obexfs-0.10.ebuild,
+  +obexfs-0.11.ebuild:
+  Fix bug #225833. Version bump.
+
+*obexfs-0.11_rc3 (05 Sep 2007)
+
+  05 Sep 2007; Alin Năstac <mrness@gentoo.org> -obexfs-0.11_rc2.ebuild,
+  +obexfs-0.11_rc3.ebuild:
+  Version bump.
+
+*obexfs-0.11_rc2 (04 Sep 2007)
+
+  04 Sep 2007; Alin Năstac <mrness@gentoo.org>
+  -files/obexfs-0.8-as-needed.patch, -obexfs-0.8.ebuild,
+  +obexfs-0.11_rc2.ebuild:
+  Version bump (#190751) and homepage update.
+
+  23 Jun 2007; Christoph Mende <angelos@gentoo.org> obexfs-0.10.ebuild:
+  Stable on amd64 wrt bug 179505
+
+  26 May 2007; Andrej Kacian <ticho@gentoo.org> obexfs-0.10.ebuild:
+  Stable on x86, bug #179505.
+
+  17 Apr 2007; Christian Faulhammer <opfer@gentoo.org> obexfs-0.10.ebuild:
+  keyworded ~amd64, bug 172311
+
+*obexfs-0.10 (13 Sep 2006)
+
+  13 Sep 2006; Alin Nastac <mrness@gentoo.org>
+  +files/obexfs-0.10-as-needed.patch, -obexfs-0.7.ebuild,
+  +obexfs-0.10.ebuild:
+  Version bump (#147295).
+
+  04 Jun 2006; Alin Nastac <mrness@gentoo.org>
+  +files/obexfs-0.8-as-needed.patch, +metadata.xml, +obexfs-0.7.ebuild,
+  +obexfs-0.8.ebuild:
+  Move obexfs from app-mobilephone to sys-fs.
+
+*obexfs-0.8 (05 Apr 2006)
+
+  05 Apr 2006; Alin Nastac <mrness@gentoo.org>
+  +files/obexfs-0.8-as-needed.patch, +obexfs-0.8.ebuild:
+  Version bump. Fix broken compilation when LDFLAGS contains "-Wl,--as-needed"
+  by applying patch imported from bug #128671. Thanks goes to 
+  Mike Auty <mike.auty@gmail.com>.
+
+  04 Mar 2006; Alin Nastac <mrness@gentoo.org> obexfs-0.7.ebuild:
+  Add net-wireless/bluez-libs missing dependency (#124849).
+
+*obexfs-0.7 (22 Jan 2006)
+
+  22 Jan 2006; Alin Nastac <mrness@gentoo.org> -obexfs-0.6.ebuild,
+  +obexfs-0.7.ebuild:
+  Version bump (#119500).
+
+*obexfs-0.6 (03 Jan 2006)
+
+  03 Jan 2006; Alin Nastac <mrness@gentoo.org> +metadata.xml,
+  +obexfs-0.6.ebuild:
+  Initial import from bug #111997.

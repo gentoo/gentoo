@@ -1,0 +1,24 @@
+# ChangeLog for dev-python/webassets
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/webassets/ChangeLog,v 1.6 2015/06/07 16:30:49 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  09 Mar 2015; Pacho Ramos <pacho@gentoo.org> webassets-0.10.1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> webassets-0.10.1.ebuild:
+  amd64 stable, bug 540290
+
+  13 Dec 2014; Ben de Groot <yngwin@gentoo.org> webassets-0.10.1.ebuild:
+  Add setuptools dependency (bug #532150)
+
+  25 Nov 2014; Pacho Ramos <pacho@gentoo.org> webassets-0.10.1.ebuild:
+  Support python 3.4
+
+*webassets-0.10.1 (30 Sep 2014)
+
+  30 Sep 2014; Ben de Groot <yngwin@gentoo.org> +metadata.xml,
+  +webassets-0.10.1.ebuild:
+  Initial commit from bug #505682. Dependency needed for www-apps/nikola.

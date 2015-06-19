@@ -1,0 +1,81 @@
+# ChangeLog for dev-ruby/xpath
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/xpath/ChangeLog,v 1.20 2015/06/08 06:36:28 jlec Exp $
+
+  08 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  12 Apr 2015; Hans de Graaff <graaff@gentoo.org> xpath-0.1.4-r1.ebuild:
+  Add ruby22.
+
+  12 Apr 2015; Hans de Graaff <graaff@gentoo.org> -xpath-1.0.0-r1.ebuild:
+  Cleanup.
+
+  26 Mar 2015; Hans de Graaff <graaff@gentoo.org> xpath-2.0.0-r1.ebuild:
+  Add ruby22.
+
+  11 Mar 2015; Agostino Sarubbo <ago@gentoo.org> xpath-2.0.0-r1.ebuild:
+  Add ~x86, wrt bug #510614
+
+  11 Nov 2014; Manuel Rüger <mrueg@gentoo.org> xpath-0.1.4-r1.ebuild,
+  xpath-1.0.0-r1.ebuild, xpath-2.0.0-r1.ebuild:
+  Drop jruby target.
+
+  10 Oct 2014; Manuel Rüger <mrueg@gentoo.org> xpath-0.1.4-r1.ebuild,
+  xpath-1.0.0-r1.ebuild:
+  Add ruby21 support.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> xpath-0.1.4-r1.ebuild,
+  xpath-1.0.0-r1.ebuild, xpath-2.0.0-r1.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  30 Apr 2014; Hans de Graaff <graaff@gentoo.org> xpath-2.0.0-r1.ebuild:
+  Add ruby21.
+
+  05 Apr 2014; Manuel Rüger <mrueg@gentoo.org> xpath-0.1.4-r1.ebuild,
+  xpath-1.0.0-r1.ebuild, xpath-2.0.0-r1.ebuild:
+  Remove ruby18 target.
+
+  02 Nov 2013; Manuel Rüger <mrueg@gentoo.org> -xpath-0.1.4.ebuild,
+  -xpath-1.0.0.ebuild, -xpath-2.0.0.ebuild:
+  Cleanup old.
+
+*xpath-0.1.4-r1 (09 Oct 2013)
+*xpath-2.0.0-r1 (09 Oct 2013)
+*xpath-1.0.0-r1 (09 Oct 2013)
+
+  09 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +xpath-0.1.4-r1.ebuild,
+  +xpath-1.0.0-r1.ebuild, +xpath-2.0.0-r1.ebuild:
+  Add ruby20 target. Add missing nokogiri testing dependency.
+
+*xpath-2.0.0 (19 Apr 2013)
+
+  19 Apr 2013; Hans de Graaff <graaff@gentoo.org> +xpath-2.0.0.ebuild:
+  Version bump.
+
+  21 Nov 2012; Hans de Graaff <graaff@gentoo.org> xpath-1.0.0.ebuild:
+  Add back jruby.
+
+*xpath-1.0.0 (21 Nov 2012)
+
+  21 Nov 2012; Hans de Graaff <graaff@gentoo.org> +xpath-1.0.0.ebuild:
+  Version bump.
+
+  05 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> xpath-0.1.4.ebuild:
+  Use the new rspec testing support; remove jruby from the compatible
+  implementations because tests fail only there.
+
+  11 Jan 2012; Hans de Graaff <graaff@gentoo.org> xpath-0.1.4.ebuild:
+  Add ruby19.
+
+  10 Jun 2011; Hans de Graaff <graaff@gentoo.org> xpath-0.1.4.ebuild:
+  Add back jruby support.
+
+  19 May 2011; Hans de Graaff <graaff@gentoo.org> xpath-0.1.4.ebuild:
+  Drop jruby support since we don't have a jruby-ready rspec:2 in the tree yet.
+
+*xpath-0.1.4 (18 May 2011)
+
+  18 May 2011; Hans de Graaff <graaff@gentoo.org> +xpath-0.1.4.ebuild,
+  +metadata.xml:
+  Initial import. Dependency of forthcoming capybara.

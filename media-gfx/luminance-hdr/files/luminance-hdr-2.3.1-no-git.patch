@@ -1,0 +1,52 @@
+--- luminance-hdr-2.3.1/CMakeLists.txt
++++ luminance-hdr-2.3.1/CMakeLists.txt
+@@ -32,12 +32,6 @@
+     ${QT_QTCORE_LIBRARIES} ${QT_QTGUI_LIBRARIES} ${QT_QTNETWORK_LIBRARIES}
+     ${QT_QTWEBKIT_LIBRARIES} ${QT_QTXML_LIBRARIES} ${QT_QTSQL_LIBRARIES})
+ 
+-FIND_PACKAGE(Git)
+-IF(GIT_FOUND)
+-    include(GetGitRevisionDescription)
+-    get_git_head_revision(GIT_REFSPEC GIT_SHA1)
+-ENDIF()
+-
+ IF(WIN32)
+     # Windows Section
+     
+--- luminance-hdr-2.3.1.orig/src/Common/CMakeLists.txt
++++ luminance-hdr-2.3.1/src/Common/CMakeLists.txt
+@@ -1,5 +1,3 @@
+-CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/GitSHA1.cpp.in
+-                ${CMAKE_CURRENT_BINARY_DIR}/GitSHA1.cpp @ONLY)
+ CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/global.hxx.in
+                 ${CMAKE_CURRENT_BINARY_DIR}/global.hxx @ONLY)
+ CONFIGURE_FILE( ${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
+@@ -32,8 +30,7 @@
+ 
+ ADD_LIBRARY(common ${FILES_H} ${FILES_CPP} ${FILES_MOC} ${FILES_HXX} ${FILES_UI_H}
+     ${CMAKE_CURRENT_BINARY_DIR}/global.hxx
+-    ${CMAKE_CURRENT_BINARY_DIR}/config.h
+-    ${CMAKE_CURRENT_BINARY_DIR}/GitSHA1.cpp)
++    ${CMAKE_CURRENT_BINARY_DIR}/config.h)
+ 
+ SET(FILES_TO_TRANSLATE ${FILES_TO_TRANSLATE} ${FILES_CPP} ${FILES_H} ${FILES_UI} ${FILES_HXX} PARENT_SCOPE)
+ SET(LUMINANCE_MODULES_GUI ${LUMINANCE_MODULES_GUI} common PARENT_SCOPE)
+--- luminance-hdr-2.3.1.orig/src/UI/UMessageBox.cpp
++++ luminance-hdr-2.3.1/src/UI/UMessageBox.cpp
+@@ -28,7 +28,6 @@
+ 
+ #include "UI/UMessageBox.h"
+ 
+-#include "Common/GitSHA1.h"
+ #include "Common/config.h"
+ #include "Common/archs.h"
+ #include "ui_about.h"
+@@ -92,7 +91,7 @@
+     ui.authorsBox->setOpenExternalLinks(true);
+     ui.thanksToBox->setOpenExternalLinks(true);
+     ui.GPLbox->setTextInteractionFlags(Qt::TextSelectableByMouse);
+-    ui.label_version->setText(ui.label_version->text().append(QString(LUMINANCEVERSION)).append(" [Build ").append(QString(g_GIT_SHA1).left(6)).append("]"));
++    ui.label_version->setText(ui.label_version->text().append(QString(LUMINANCEVERSION)));
+ 
+     bool license_file_not_found=true;
+     QString docDir = QCoreApplication::applicationDirPath();

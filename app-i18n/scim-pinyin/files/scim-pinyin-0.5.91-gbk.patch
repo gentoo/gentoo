@@ -1,0 +1,62 @@
+diff -Nru scim-pinyin-0.5.91.orig/src/scim_pinyin_imengine.cpp scim-pinyin-0.5.91/src/scim_pinyin_imengine.cpp
+--- scim-pinyin-0.5.91.orig/src/scim_pinyin_imengine.cpp	2005-08-06 23:31:08.000000000 +0800
++++ scim-pinyin-0.5.91/src/scim_pinyin_imengine.cpp	2009-02-18 00:06:34.000000000 +0800
+@@ -706,8 +706,12 @@
+         m_sys_phrase_lib = m_pinyin_global->get_sys_phrase_lib ();
+         m_user_phrase_lib = m_pinyin_global->get_user_phrase_lib ();
+     }
+-
+-    if (encoding == "GBK" || encoding == "GB2312") {
++    
++    if (encoding == "GBK") {
++        m_simplified = true;
++        m_traditional = true;
++        m_chinese_iconv.set_encoding ("GBK");
++    } else if (encoding == "GB2312") {
+         m_simplified = true;
+         m_traditional = false;
+         m_chinese_iconv.set_encoding ("GB2312");
+@@ -930,10 +934,39 @@
+ 
+     m_iconv.set_encoding (encoding);
+ 
+-    if (encoding == "GBK" || encoding == "GB2312") {
+-        m_simplified = true;
+-        m_traditional = false;
+-        m_chinese_iconv.set_encoding ("GB2312");
++    if (encoding == "GBK") {
++        if (m_simplified == false) {
++            if(m_traditional == true){
++                ; //Big5. Big5togbk is not implemented. Set to next available. 
++                m_simplified = true;
++                m_chinese_iconv.set_encoding ("GBK");
++            }else{ // nochinese mode. Should not happen. 
++                m_forward = true;
++                m_chinese_iconv.set_encoding ("");
++            }
++        }else{
++            if( m_traditional == false) //GB2312
++                m_chinese_iconv.set_encoding("GB2312");
++            else m_chinese_iconv.set_encoding ("GBK"); //ALL
++        }
++    } else if (encoding == "GB2312") {
++        if ( m_simplified == false ) {
++            if(m_traditional == true) {
++                ; //partly map big5 to gb2312 is not done. Set to next.
++                m_forward = true;
++                m_chinese_iconv.set_encoding ("");
++            }else{//Should not happen. 
++                m_forward = true;
++                m_chinese_iconv.set_encoding("");
++            }
++        }else{
++            if (m_traditional == true) { //Should not happen. 
++                m_forward = true;
++                m_chinese_iconv.set_encoding ("");
++            }else{
++                m_chinese_iconv.set_encoding ("GB2312");
++            }
++        }
+     } else if (encoding == "BIG5" || encoding == "BIG5-HKSCS") {
+         m_simplified = false;
+         m_traditional = true;

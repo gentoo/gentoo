@@ -1,0 +1,100 @@
+# ChangeLog for app-laptop/i8kutils
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/i8kutils/ChangeLog,v 1.25 2015/04/07 14:06:39 jlec Exp $
+
+  15 Feb 2014; Pacho Ramos <pacho@gentoo.org> -i8kutils-1.33.ebuild,
+  i8kutils-1.33-r1.ebuild:
+  x86/amd64 stable (#500084), drop old
+
+*i8kutils-1.33-r1 (06 Jan 2014)
+
+  06 Jan 2014; Pacho Ramos <pacho@gentoo.org> +files/i8kmon.service,
+  +i8kutils-1.33-r1.ebuild:
+  Add unit file for i8kmon (#497178)
+
+  22 Aug 2012; Michael Palimaka <kensington@gentoo.org> -files/i8k.init,
+  -i8kutils-1.25-r1.ebuild, -i8kutils-1.25.ebuild:
+  Remove old.
+
+  21 Aug 2012; Johannes Huber <johu@gentoo.org> i8kutils-1.33.ebuild:
+  Stable for x86, wrt bug #428876
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> i8kutils-1.33.ebuild:
+  Stable for amd64, wrt bug #428876
+
+*i8kutils-1.33 (01 Jul 2012)
+
+  01 Jul 2012; Justin Lecher <jlec@gentoo.org> i8kutils-1.25.ebuild,
+  i8kutils-1.25-r1.ebuild, +i8kutils-1.33.ebuild:
+  Version Bump, Correct HOMEPAGE, correct SRC_URI; respect CFLAGS, #240015;
+  respect LDFLAGS, #337349; respect CC, #243602; handle examples installation
+  through USE; move to EAPI=4
+
+  01 Jul 2012; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> i8kutils-1.25.ebuild,
+  i8kutils-1.25-r1.ebuild:
+  Remove virtual/libc
+
+*i8kutils-1.25-r1 (29 Oct 2008)
+
+  29 Oct 2008; Olivier Crête <tester@gentoo.org> +files/i8k.init-r1,
+  +i8kutils-1.25-r1.ebuild:
+  Fix init script, fixes bug #216742
+
+  21 Apr 2007; Olivier Crête <tester@gentoo.org> i8kutils-1.25.ebuild:
+  Use newconfd/newinitd (bug #174266)
+
+  02 Oct 2006; Olivier Crête <tester@gentoo.org> files/i8k.init:
+  Make i8kmon init script really work, fixes #110572
+
+  09 Aug 2006; Doug Goldstein <cardoe@gentoo.org> i8kutils-1.25.ebuild:
+  USE flag split tcltk->tcl & tk per bug #17808
+
+  16 Jan 2006; Mark Loeser <halcy0n@gentoo.org> i8kutils-1.25.ebuild:
+  Whitespace fix
+
+  15 Jan 2006; Olivier Crête <tester@gentoo.org> i8kutils-1.25.ebuild:
+  More fixing of the installation of i8kmon
+
+  06 Jan 2006; Olivier Crête <tester@gentoo.org> metadata.xml,
+  -i8kutils-1.17.ebuild, -i8kutils-1.17-r1.ebuild, i8kutils-1.25.ebuild:
+  Taking over unmaintained package, removed older versions, removed
+  virtual/x11 dep since tk already has the deps, fixed use of tcltk flag
+
+  21 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  i8kutils-1.17-r1.ebuild, i8kutils-1.17.ebuild, i8kutils-1.25.ebuild:
+  added -* since Dell only makes x86 and amd64 hardware
+
+  31 Mar 2005; <blubb@gentoo.org> i8kutils-1.25.ebuild:
+  stable on amd64
+
+  08 Dec 2004; Olivier Crete <tester@gentoo.org> i8kutils-1.25.ebuild:
+  Mark stable on x86 since 1.17 doesnt build on 2.6.. Fixes bug 58093
+
+*i8kutils-1.25 (04 Aug 2004)
+
+  04 Aug 2004; Karol Wojtaszek <sekretarz@gentoo.org> +i8kutils-1.25.ebuild:
+  Version bump, fixing SRC_URI
+
+*i8kutils-1.17 (08 Mar 2004)
+
+  08 Mar 2004; Peter Johanson <latexer@gentoo.org> i8kutils-1.17-r1.ebuild,
+  i8kutils-1.17.ebuild, metadata.xml, files/i8k.conf, files/i8k.init:
+  Moved to app-laptop from sys-apps
+
+*i8kutils-1.17-r1 (04 Dec 2003)
+
+  04 Dec 2003; Hanno Boeck <hanno@gentoo.org> i8kutils-1.17-r1.ebuild,
+  files/i8k.conf, files/i8k.init:
+  init-script added (thanks to Frank Szczerba in bug #17022).
+
+*i8kutils-1.17 (08 Nov 2002)
+
+  24 Feb 2003; Nicholas Wourms <dragon@gentoo.org> i8kutils-1.17.ebuild :
+  This is definitely not for mips.
+
+  08 Nov 2002; Hanno Boeck <hanno@gentoo.org> i8kutils-1.17.ebuild :
+  Added i8kutils-ebuild. Resolves bug #4628.

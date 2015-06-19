@@ -1,0 +1,23 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/heimdal/files/heimdal-kadmind.initd-r2,v 1.1 2013/01/16 19:58:57 eras Exp $
+
+depend() {
+	use net heimdal-kdc
+	after logger
+}
+
+start() {
+	ebegin "Starting Heimdal kadmind"
+		/usr/sbin/kadmind "${OPTIONS}" &
+		echo $! > /var/run/heimdal-kadmind.pid
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Heimdal kadmind"
+	start-stop-daemon --stop --quiet --exec \
+		/usr/sbin/kadmind
+	eend $?
+}

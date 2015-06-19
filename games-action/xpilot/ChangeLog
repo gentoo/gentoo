@@ -1,0 +1,64 @@
+# ChangeLog for games-action/xpilot
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/xpilot/ChangeLog,v 1.14 2015/02/19 00:46:13 mr_bones_ Exp $
+
+  19 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> xpilot-4.5.5.ebuild:
+  EAPI=5; build with newer glibc (bug #540306)
+
+  02 Jan 2015; Tupone Alfredo <tupone@gentoo.org> xpilot-4.5.5.ebuild:
+  EAPI 4
+
+  21 Jun 2010; Markus Meier <maekke@gentoo.org> xpilot-4.5.5.ebuild:
+  amd64/x86 stable, bug #323121
+
+*xpilot-4.5.5 (06 Apr 2010)
+
+  06 Apr 2010; Tristan Heaven <nyhm@gentoo.org> +xpilot-4.5.5.ebuild:
+  Version bump
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> xpilot-4.5.4.ebuild:
+  Removing old virtual/x11 dependency.
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> xpilot-4.5.4.ebuild:
+  Removing old virtual/x11 dependency.
+
+  25 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org> xpilot-4.5.4.ebuild:
+  Added modular X and closing bug #119986.
+
+  31 May 2005; Marcus D. Hanwell <marcus@gentoo.org> xpilot-4.5.4.ebuild:
+  Stable on amd64.
+
+  06 Mar 2005; Danny van Dyk <kugelfang@gentoo.org> xpilot-4.5.4.ebuild:
+  Marked ~amd64.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  02 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> xpilot-4.5.4.ebuild:
+  die backticks
+
+  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> xpilot-4.5.4.ebuild:
+  sed in unpack; IUSE; virtual/x11
+
+  17 Jun 2003; msterret xpilot-4.5.4.ebuild:
+  use sed -i and emake
+
+*xpilot-4.5.4 (15 Dec 2002)
+
+  15 Dec 2002; Maik Schreiber <blizzy@gentoo.org> : New version.
+
+  30 Nov 2002; Jon Nall <nall@gentoo.org> xpilot-4.5.3.ebuild:
+  keyworded as ~ppc
+
+  17 Jul 2002; Jose Alberto Suárez López <bass@gentoo.org> xpilot-4.5.3.ebuild:
+  Added KEYWORDS.
+
+*xpilot-4.5.3 (21 Jun 2002)
+
+  21 Jun 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog:
+
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

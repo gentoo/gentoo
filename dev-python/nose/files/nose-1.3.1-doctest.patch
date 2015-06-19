@@ -1,0 +1,45 @@
+https://github.com/nose-devs/nose/commit/5bcedc9a0601b4f70e2cba6c14c3046fb326bfaa.diff
+diff --git a/unit_tests/test_config_defaults.rst b/unit_tests/test_config_defaults.rst
+index 944d370..034f58e 100644
+--- a/unit_tests/test_config_defaults.rst
++++ b/unit_tests/test_config_defaults.rst
+@@ -89,9 +89,9 @@ Invalid config files
+ 
+ (file-like object)
+ 
+-    >>> options, args = parse([], StringIO("spam"))
++    >>> options, args = parse([], StringIO("spam")) # doctest: +ELLIPSIS
+     error: Error reading config file '<???>': File contains no section headers.
+-    file: <???>, line: 1
++    file: ...<???>..., line: 1
+     'spam'
+ 
+ (filename)
+@@ -99,7 +99,7 @@ Invalid config files
+     >>> options, args = parse([], os.path.join(support, "invalid.cfg"))
+     ... # doctest: +ELLIPSIS
+     error: Error reading config file '...invalid.cfg': File contains no section headers.
+-    file: ...invalid.cfg, line: 1
++    file: ...invalid.cfg..., line: 1
+     'spam\n'
+ 
+ (filenames, length == 1)
+@@ -107,7 +107,7 @@ Invalid config files
+     >>> options, args = parse([], [os.path.join(support, "invalid.cfg")])
+     ... # doctest: +ELLIPSIS
+     error: Error reading config file '...invalid.cfg': File contains no section headers.
+-    file: ...invalid.cfg, line: 1
++    file: ...invalid.cfg..., line: 1
+     'spam\n'
+ 
+ (filenames, length > 1)
+@@ -120,7 +120,7 @@ file is bad
+     ...                            os.path.join(support, "b.cfg")])
+     ... # doctest: +ELLIPSIS
+     error: Error reading config file '...invalid.cfg': File contains no section headers.
+-    file: ...invalid.cfg, line: 1
++    file: ...invalid.cfg..., line: 1
+     'spam\n'
+ 
+ 
+

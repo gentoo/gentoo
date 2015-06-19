@@ -1,0 +1,21 @@
+# ChangeLog for net-dns/cagibi
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/cagibi/ChangeLog,v 1.4 2015/04/04 16:54:18 kensington Exp $
+
+  04 Apr 2015; Michael Palimaka <kensington@gentoo.org> -cagibi-0.1.1.ebuild:
+  Remove old.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> cagibi-0.1.1.ebuild,
+  cagibi-0.2.0.ebuild:
+  Move Qt dependencies to the new category
+
+*cagibi-0.2.0 (10 Jan 2012)
+
+  10 Jan 2012; Johannes Huber <johu@gentoo.org> +cagibi-0.2.0.ebuild:
+  Version bump.
+
+*cagibi-0.1.1 (09 Sep 2010)
+
+  09 Sep 2010; Maciej Mrozowski <reavertm@gentoo.org> +cagibi-0.1.1.ebuild,
+  +metadata.xml:
+  Add new package. Ebuild by Dennis Schridde

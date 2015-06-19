@@ -1,0 +1,130 @@
+# ChangeLog for app-vim/vimcommander
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/vimcommander/ChangeLog,v 1.33 2014/06/26 06:23:17 radhermit Exp $
+
+*vimcommander-0.81 (26 Jun 2014)
+
+  26 Jun 2014; Tim Harder <radhermit@gentoo.org> +vimcommander-0.81.ebuild:
+  Version bump (bug #515082).
+
+*vimcommander-0.80 (26 Jun 2014)
+
+  26 Jun 2014; Tim Harder <radhermit@gentoo.org> +vimcommander-0.80.ebuild,
+  -vimcommander-80.ebuild:
+  Update to upstream's new versioning scheme.
+
+  07 Jan 2011; Tim Harder <radhermit@gentoo.org> -vimcommander-1.54.2.9.ebuild,
+  -vimcommander-75.ebuild:
+  Remove old
+
+  07 Jan 2011; Brent Baude <ranger@gentoo.org> vimcommander-80.ebuild:
+  stable ppc, bug 345069
+
+  14 Nov 2010; Raúl Porcel <armin76@gentoo.org> vimcommander-80.ebuild:
+  alpha/ia64/sparc stable
+
+  14 Nov 2010; Markus Meier <maekke@gentoo.org> vimcommander-80.ebuild:
+  x86 stable, bug #345069
+
+  11 Nov 2010; Markos Chandras <hwoarang@gentoo.org> vimcommander-80.ebuild:
+  Stable on amd64 wrt bug #345069
+
+*vimcommander-80 (03 Oct 2010)
+
+  03 Oct 2010; Tim Harder <radhermit@gentoo.org> +vimcommander-80.ebuild:
+  Version bump. Remove the src_unpack phase that generated documentation
+  since the plugin now includes a doc file.
+
+  17 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  vimcommander-1.54.2.9.ebuild, vimcommander-75.ebuild:
+  QA: add prefix keywords
+
+  17 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  -vimcommander-1.54.2.2.ebuild:
+  clean up
+
+  17 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  vimcommander-1.54.2.9.ebuild:
+  stable x86
+
+*vimcommander-75 (26 Mar 2008)
+
+  26 Mar 2008; Ali Polatel <hawking@gentoo.org> +vimcommander-75.ebuild:
+  Version bump.
+
+  24 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  vimcommander-1.54.2.9.ebuild:
+  amd64 stable, quoting fixed.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  28 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  vimcommander-1.54.2.9.ebuild:
+  Stable on sparc
+
+  19 Oct 2006; Aron Griffis <agriffis@gentoo.org>
+  vimcommander-1.54.2.9.ebuild:
+  Mark 1.54.2.9 stable on alpha
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  vimcommander-1.54.2.9.ebuild:
+  ppc stable
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  vimcommander-1.54.2.9.ebuild:
+  Mark 1.54.2.9 stable on ia64
+
+  07 Apr 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove ciaranm from metadata.xml.
+
+*vimcommander-1.54.2.9 (17 Dec 2005)
+
+  17 Dec 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  +vimcommander-1.54.2.9.ebuild:
+  New version, bug #105131.
+
+  30 Sep 2005; Luis Medinas <metalgod@gentoo.org>
+  vimcommander-1.54.2.2.ebuild:
+  Added ~amd64 keywords.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  vimcommander-1.54.2.2.ebuild:
+  Stable on ppc.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  -vimcommander-1.52.ebuild, vimcommander-1.54.2.2.ebuild:
+  x86 stable, tidy up
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  vimcommander-1.54.2.2.ebuild:
+  Display plugin help text, bug #62559
+
+  20 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  vimcommander-1.54.2.2.ebuild:
+  Stable on sparc
+
+  13 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  vimcommander-1.54.2.2.ebuild:
+  Stable on alpha.
+
+  29 Mar 2004; David Holm <dholm@gentoo.org> vimcommander-1.54.2.2.ebuild:
+  Added to ~ppc.
+
+*vimcommander-1.54.2.2 (28 Mar 2004)
+
+  28 Mar 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  vimcommander-1.54.2.2.ebuild:
+  Version bump, thanks to Daniel Webert in bug #46013
+
+  15 Mar 2004; Ciaran McCreesh <ciaranm@gentoo.org> vimcommander-1.52.ebuild:
+  Stable on sparc
+
+*vimcommander-1.52 (20 Nov 2003)
+
+  20 Nov 2003; Ciaran McCreesh <ciaranm@gentoo.org> metadata.xml,
+  vimcommander-1.52.ebuild:
+  Initial Version

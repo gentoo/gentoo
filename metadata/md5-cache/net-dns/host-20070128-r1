@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=A powerful command-line DNS query and test tool implementing many additional protocols
+EAPI=2
+HOMEPAGE=http://www.weird.com/~woods/projects/host.html
+IUSE=debug
+KEYWORDS=alpha amd64 hppa ~mips ppc ppc64 sparc x86
+LICENSE=BSD
+RESTRICT=test
+SLOT=0
+SRC_URI=ftp://ftp.weird.com/pub/Planix/host-20070128.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=1136780b0a19d6479c750f68f87ee44b

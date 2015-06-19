@@ -1,0 +1,42 @@
+# ChangeLog for net-libs/gsnmp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/gsnmp/ChangeLog,v 1.11 2014/11/06 00:28:58 jer Exp $
+
+  06 Nov 2014; Jeroen Roovers <jer@gentoo.org> gsnmp-0.3.0.ebuild,
+  +files/gsnmp-0.3.0-pkg_config.patch:
+  Fix building against =net-libs/gnet-2.0.8-r2 (bug #528378).
+
+  16 Jul 2014; Jeroen Roovers <jer@gentoo.org> gsnmp-0.3.0.ebuild:
+  EAPI bump. New HOMEPAGE.
+
+  24 Apr 2013; Jeroen Roovers <jer@gentoo.org>
+  +files/gsnmp-0.3.0-underquoting.patch, gsnmp-0.3.0.ebuild:
+  Fix underquoting in gsnmp.m4.
+
+  10 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> gsnmp-0.3.0.ebuild:
+  Add ~amd64-linux keyword
+
+  24 Sep 2012; Andreas Schuerch <nativemad@gentoo.org> gsnmp-0.3.0.ebuild:
+  x86 stable, see bug 409541
+
+  23 Sep 2012; Agostino Sarubbo <ago@gentoo.org> gsnmp-0.3.0.ebuild:
+  Stable for amd64, wrt bug #409541
+
+  09 Mar 2012; Jeroen Roovers <jer@gentoo.org> gsnmp-0.3.0.ebuild,
+  +files/gsnmp-0.3.0-g_access.patch:
+  Add missing include.
+
+  28 Nov 2011; Tim Harder <radhermit@gentoo.org> gsnmp-0.3.0.ebuild:
+  Bump to EAPI 4 and fix autotools-utils usage (bug #392107).
+
+  27 Nov 2011; Tim Harder <radhermit@gentoo.org> gsnmp-0.3.0.ebuild:
+  Build in the source tree.
+
+  05 Jun 2011; Kacper Kowalik <xarthisius@gentoo.org> gsnmp-0.3.0.ebuild:
+  Marked ~ppc wrt #369595
+
+*gsnmp-0.3.0 (01 Jun 2011)
+
+  01 Jun 2011; Jeroen Roovers <jer@gentoo.org> +gsnmp-0.3.0.ebuild,
+  +metadata.xml:
+  Initial commit (for net-analyzer/scli-0.4).

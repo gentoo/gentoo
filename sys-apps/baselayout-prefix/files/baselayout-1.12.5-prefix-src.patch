@@ -1,0 +1,102 @@
+--- baselayout-1.12.5/src/runscript.c	2007-10-17 21:11:10 +0400
++++ baselayout-1.12.5/src/runscript.c	2007-10-17 21:13:56 +0400
+@@ -22,16 +22,16 @@
+ # define LIBDIR		"lib"
+ #endif
+ 
+-#define SBIN_RC		"/sbin/rc"
+-#define PROFILE_ENV	"/etc/profile.env"
+-#define RCSCRIPTS_LIB	"/" LIBDIR "/rcscripts"
++#define SBIN_RC		"@GENTOO_PORTAGE_EPREFIX@/sbin/rc"
++#define PROFILE_ENV	"@GENTOO_PORTAGE_EPREFIX@/etc/profile.env"
++#define RCSCRIPTS_LIB	"@GENTOO_PORTAGE_EPREFIX@/" LIBDIR "/rcscripts"
+ #define SYS_WHITELIST	RCSCRIPTS_LIB "/conf.d/env_whitelist"
+-#define USR_WHITELIST	"/etc/conf.d/env_whitelist"
++#define USR_WHITELIST	"@GENTOO_PORTAGE_EPREFIX@/etc/conf.d/env_whitelist"
+ #define RCSCRIPT_HELP	RCSCRIPTS_LIB "/sh/rc-help.sh"
+ #define SELINUX_LIB	RCSCRIPTS_LIB "/runscript_selinux.so"
+ #define SOFTLEVEL	"SOFTLEVEL"
+ 
+-#define DEFAULT_PATH	"PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin"
++#define DEFAULT_PATH	"PATH=@GENTOO_PORTAGE_EPREFIX@/bin:@GENTOO_PORTAGE_EPREFIX@/sbin:@GENTOO_PORTAGE_EPREFIX@/usr/bin:@GENTOO_PORTAGE_EPREFIX@/usr/sbin:@GENTOO_PORTAGE_EPREFIX@/usr/local/sbin"
+ 
+ #define IS_SBIN_RC()	(0 == strcmp(caller, SBIN_RC))
+ 
+@@ -217,7 +217,7 @@
+ 	int new = 1;
+ 
+ 	/* Need to be /bin/bash, else BASH is invalid */
+-	myargs[0] = "/bin/bash";
++	myargs[0] = "@GENTOO_PORTAGE_EPREFIX@/bin/bash";
+ 	while (argv[new] != 0) {
+ 		myargs[new] = argv[new];
+ 		new++;
+@@ -243,10 +243,10 @@
+ 	setup_selinux(argc, argv);
+ 
+ 	if (!IS_SBIN_RC()) {
+-		if (execve("/sbin/runscript.sh", myargs, myenv) < 0)
++		if (execve("@GENTOO_PORTAGE_EPREFIX@/sbin/runscript.sh", myargs, myenv) < 0)
+ 			exit(1);
+ 	} else {
+-		if (execve("/bin/bash", myargs, myenv) < 0)
++		if (execve("@GENTOO_PORTAGE_EPREFIX@/bin/bash", myargs, myenv) < 0)
+ 			exit(1);
+ 	}
+ 
+diff -ur ./sbin/depscan.sh /Users/dirk/src@GENTOO_PORTAGE_EPREFIX@/sbin/depscan.sh
+--- baselayout-1.12.5/sbin/depscan.sh	2007-10-17 21:26:21 +0400
++++ baselayout-1.12.5/sbin/depscan.sh	2007-10-17 18:58:23 +0400
+@@ -7,7 +7,7 @@
+ fi
+ 
+ argv0=${0##*/}
+-source /etc/init.d/functions.sh || {
++source @GENTOO_PORTAGE_EPREFIX@/etc/init.d/functions.sh || {
+ 	echo "${argv0}: Could not source /etc/init.d/functions.sh!" 1>&2
+ 	exit 1
+ }
+@@ -89,7 +91,7 @@
+ 	fi
+ 
+ 	touch "${mtime_test}"
+-	for config in /etc/conf.d/* /etc/init.d/* /etc/rc.conf
++	for config in @GENTOO_PORTAGE_EPREFIX@/etc/conf.d/* @GENTOO_PORTAGE_EPREFIX@/etc/init.d/* @GENTOO_PORTAGE_EPREFIX@/etc/rc.conf
+ 	do
+ 		! ${update} \
+ 			&& is_older_than "${mysvcdir}/depcache" "${config}" \
+@@ -104,7 +106,7 @@
+ 	rm -f "${mtime_test}"
+ 
+ 	if [[ ${clock_screw} == 1 ]] ; then
+-		ewarn "One of the files in /etc/{conf.d,init.d} or /etc/rc.conf"
++		ewarn "One of the files in @GENTOO_PORTAGE_EPREFIX@/etc/{conf.d,init.d} or @GENTOO_PORTAGE_EPREFIX@/etc/rc.conf"
+ 		ewarn "has a modification time in the future!"
+ 	fi
+ 
+@@ -125,17 +127,17 @@
+ 
+ export SVCDIR DEPTYPES ORDTYPES
+ 
+-cd /etc/init.d
++cd @GENTOO_PORTAGE_EPREFIX@/etc/init.d
+ 
+-/bin/gawk \
+-	-f /lib/rcscripts/awk/functions.awk \
+-	-f /lib/rcscripts/awk/cachedepends.awk || \
++@GENTOO_PORTAGE_EPREFIX@/bin/gawk \
++	-f @GENTOO_PORTAGE_EPREFIX@/lib/rcscripts/awk/functions.awk \
++	-f @GENTOO_PORTAGE_EPREFIX@/lib/rcscripts/awk/cachedepends.awk || \
+ 	retval=1
+ 
+-bash "${mysvcdir}/depcache" | \
+-/bin/gawk \
+-	-f /lib/rcscripts/awk/functions.awk \
+-	-f /lib/rcscripts/awk/gendepends.awk || \
++@GENTOO_PORTAGE_EPREFIX@/bin/bash "${mysvcdir}/depcache" | \
++@GENTOO_PORTAGE_EPREFIX@/bin/gawk \
++	-f @GENTOO_PORTAGE_EPREFIX@/lib/rcscripts/awk/functions.awk \
++	-f @GENTOO_PORTAGE_EPREFIX@/lib/rcscripts/awk/gendepends.awk || \
+ 	retval=1
+ 
+ touch "${mysvcdir}"/dep{cache,tree}

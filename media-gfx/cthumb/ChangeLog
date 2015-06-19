@@ -1,0 +1,32 @@
+# ChangeLog for media-gfx/cthumb
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/cthumb/ChangeLog,v 1.14 2014/08/10 21:13:54 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> cthumb-4.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  15 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> cthumb-4.2.ebuild:
+  Stable on ppc.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  13 Oct 2004; Tom Martin <slarti@gentoo.org> cthumb-4.2.ebuild:
+  Marked ~amd64, see bug 64361.
+
+  05 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> cthumb-4.2.ebuild:
+  Stable on alpha.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*cthumb-4.2 (05 Sep 2002) 
+
+  05 Sep 2002; Sven Vermeulen <sven.vermeulen@rug.ac.be> cthumb-4.2.ebuild :
+
+  Created first cthumb-ebuild. Commited by mcummings, closes bug 7542

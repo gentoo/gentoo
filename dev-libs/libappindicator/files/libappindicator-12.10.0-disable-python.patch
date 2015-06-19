@@ -1,0 +1,50 @@
+From 67b08b7e1e315120e295ba9dc7191b85f9c12bb2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 7 May 2015 21:10:45 +0200
+Subject: [PATCH] Disable Python completely
+
+Python bindings are only meaningful for GTK+2 and are going to cause
+issues for multilib, so since we really don't need them, it's easier to
+kill them completely.
+---
+ bindings/Makefile.am | 1 -
+ configure.ac         | 4 ++++
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/bindings/Makefile.am b/bindings/Makefile.am
+index d1f6d73..dccca6c 100644
+--- a/bindings/Makefile.am
++++ b/bindings/Makefile.am
+@@ -3,7 +3,6 @@ SUBDIRS =	\
+ 	vala
+ else
+ SUBDIRS =		\
+-	python		\
+ 	vala
+ endif
+ 
+diff --git a/configure.ac b/configure.ac
+index ee03390..6d16e2f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -185,6 +185,8 @@ AC_ARG_ENABLE(localinstall, AS_HELP_STRING([--enable-localinstall], [install all
+ # Python
+ ###########################
+ 
++if false ; then
++
+ PYGTK_REQUIRED=2.14.0
+ PYGOBJECT_REQUIRED=0.22
+ 
+@@ -208,6 +210,8 @@ PYGTK_CODEGEN="$PYTHON `$PKG_CONFIG --variable=codegendir pygtk-2.0`/codegen.py"
+ AC_SUBST(PYGTK_CODEGEN)
+ AC_MSG_RESULT($PYGTK_CODEGEN)
+ 
++fi
++
+ #########################
+ # Check if build tests
+ #########################
+-- 
+2.4.0
+

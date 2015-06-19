@@ -1,0 +1,11 @@
+--- Makefile.am	2010-03-26 12:05:47.000000000 +0100
++++ Makefile.am.doc	2010-07-02 14:53:52.429888536 +0200
+@@ -41,7 +41,7 @@
+ SNMP_SUBAGENT_DIR = snmp_subagent
+ endif
+ 
+-SUBDIRS	= $(LIBLTDL_DIR) replace include lib mgmt $(CIM_PROVIDER_DIR) $(TSA_PLUGIN_DIR) $(SNMP_SUBAGENT_DIR) doc
++SUBDIRS	= $(LIBLTDL_DIR) replace include lib mgmt $(CIM_PROVIDER_DIR) $(TSA_PLUGIN_DIR) $(SNMP_SUBAGENT_DIR)
+ 
+ tgz:
+ 	rm -f $(TARFILE)

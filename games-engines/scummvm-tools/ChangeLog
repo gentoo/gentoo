@@ -1,0 +1,286 @@
+# ChangeLog for games-engines/scummvm-tools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-engines/scummvm-tools/ChangeLog,v 1.67 2015/03/09 21:53:24 mr_bones_ Exp $
+
+  09 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/scummvm-tools-1.7.0-binprefix.patch, scummvm-tools-1.7.0.ebuild:
+  fix install (bug #542560)
+
+  19 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  scummvm-tools-1.7.0.ebuild:
+  tidy
+
+  30 Oct 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/scummvm-tools-1.4.0-boost.patch, -scummvm-tools-1.4.0.ebuild:
+  old
+
+  27 Oct 2014; Agostino Sarubbo <ago@gentoo.org> scummvm-tools-1.7.0.ebuild:
+  Stable for ppc64, wrt bug #520878
+
+  18 Oct 2014; Agostino Sarubbo <ago@gentoo.org> scummvm-tools-1.7.0.ebuild:
+  Stable for ppc, wrt bug #520878
+
+  12 Oct 2014; Agostino Sarubbo <ago@gentoo.org> scummvm-tools-1.7.0.ebuild:
+  Stable for x86, wrt bug #520878
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> scummvm-tools-1.7.0.ebuild:
+  Stable for amd64, wrt bug #520878
+
+  25 Aug 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  -scummvm-tools-1.6.0.ebuild:
+  old
+
+*scummvm-tools-1.7.0 (23 Jul 2014)
+
+  23 Jul 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  +scummvm-tools-1.7.0.ebuild:
+  version bump
+
+*scummvm-tools-1.6.0 (02 Jun 2013)
+
+  02 Jun 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  +scummvm-tools-1.6.0.ebuild:
+  version bump
+
+  04 Nov 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/scummvm-tools-1.4.0-boost.patch, scummvm-tools-1.4.0.ebuild:
+  add upstream patch to support building against latest boost (bug #422769)
+
+  01 Nov 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  -scummvm-tools-1.3.0.ebuild:
+  old
+
+  10 Jul 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  scummvm-tools-1.4.0.ebuild:
+  use latest boost available
+
+  02 May 2012; Jeff Horelick <jdhore@gentoo.org> scummvm-tools-1.3.0.ebuild,
+  scummvm-tools-1.4.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  06 Feb 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  scummvm-tools-1.4.0.ebuild:
+  use $T instead of /tmp - bug #402459
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  scummvm-tools-1.4.0.ebuild:
+  x86 stable wrt bug #400803
+
+  27 Jan 2012; Agostino Sarubbo <ago@gentoo.org> scummvm-tools-1.4.0.ebuild:
+  Stable for amd64, wrt bug #400803
+
+*scummvm-tools-1.4.0 (22 Dec 2011)
+
+  22 Dec 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  -scummvm-tools-1.2.0.ebuild, +scummvm-tools-1.4.0.ebuild:
+  version bump
+
+  21 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  scummvm-tools-1.3.0.ebuild:
+  x86 stable wrt bug #379413
+
+  17 Aug 2011; Markos Chandras <hwoarang@gentoo.org>
+  scummvm-tools-1.3.0.ebuild:
+  Stable on amd64 wrt bug #379413
+
+  08 Aug 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  scummvm-tools-1.3.0.ebuild:
+  restrict tests since some need external files (bug #378177)
+
+*scummvm-tools-1.3.0 (01 Jun 2011)
+
+  01 Jun 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  +scummvm-tools-1.3.0.ebuild:
+  version bump
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org> scummvm-tools-1.2.0.ebuild:
+  Drop sparc keywords
+
+  30 Nov 2010; Markus Meier <maekke@gentoo.org> scummvm-tools-1.2.0.ebuild:
+  amd64/x86 stable, bug #347121
+
+*scummvm-tools-1.2.0 (19 Oct 2010)
+
+  19 Oct 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +scummvm-tools-1.2.0.ebuild:
+  version bump
+
+  19 Jul 2010; Joseph Jezak <josejx@gentoo.org> scummvm-tools-1.1.1.ebuild:
+  Marked ppc stable for bug #322631.
+
+  11 Jul 2010; Raúl Porcel <armin76@gentoo.org> scummvm-tools-1.1.1.ebuild:
+  sparc stable wrt #322631
+
+  06 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  scummvm-tools-1.1.1.ebuild:
+  ppc64 stable wrt #322631
+
+  25 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  scummvm-tools-1.1.1.ebuild:
+  stable x86, bug 322631
+
+  24 Jun 2010; Pacho Ramos <pacho@gentoo.org> scummvm-tools-1.1.1.ebuild:
+  stable amd64, bug 322631
+
+*scummvm-tools-1.1.1 (03 May 2010)
+
+  03 May 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +scummvm-tools-1.1.1.ebuild:
+  version bump
+
+*scummvm-tools-1.1.0 (05 Apr 2010)
+
+  05 Apr 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +scummvm-tools-1.1.0.ebuild:
+  version bump
+
+  30 Jan 2010; Raúl Porcel <armin76@gentoo.org> scummvm-tools-1.0.0.ebuild:
+  sparc stable wrt #297264
+
+  05 Jan 2010; Joseph Jezak <josejx@gentoo.org> scummvm-tools-1.0.0.ebuild:
+  Marked ppc stable for bug #297262.
+
+  31 Dec 2009; Brent Baude <ranger@gentoo.org> scummvm-tools-1.0.0.ebuild:
+  Marking scummvm-tools-1.0.0 ppc64 for bug 297264
+
+  31 Dec 2009; Markus Meier <maekke@gentoo.org> scummvm-tools-1.0.0.ebuild:
+  x86 stable, bug #297264
+
+  17 Dec 2009; Pacho Ramos <pacho@gentoo.org> scummvm-tools-1.0.0.ebuild:
+  amd64 stable, bug 297264
+
+  26 Nov 2009; Joseph Jezak <josejx@gentoo.org>
+  scummvm-tools-1.0.0_rc1.ebuild:
+  Marked ppc/ppc64 stable for bug #292946.
+
+*scummvm-tools-1.0.0 (17 Nov 2009)
+
+  17 Nov 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +scummvm-tools-1.0.0.ebuild:
+  version bump
+
+  14 Nov 2009; Markus Meier <maekke@gentoo.org>
+  scummvm-tools-1.0.0_rc1.ebuild:
+  amd64/x86 stable, bug #292948
+
+*scummvm-tools-1.0.0_rc1 (10 Sep 2009)
+
+  10 Sep 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +scummvm-tools-1.0.0_rc1.ebuild:
+  version bump
+
+  01 Aug 2009; <chainsaw@gentoo.org> scummvm-tools-0.13.0.ebuild:
+  Marked stable on AMD64 as requested by Michael "Mr. Bones" Sterrett
+  <mr_bones_@gentoo.org> in bug #277384. Compile-tested on a dual hex-core
+  Opteron.
+
+  15 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  scummvm-tools-0.13.0.ebuild:
+  stable x86, bug 277384
+
+  13 Jul 2009; Joseph Jezak <josejx@gentoo.org> scummvm-tools-0.13.0.ebuild:
+  Marked ppc stable for bug #277384. Marked ~ppc64.
+
+  13 Jul 2009; Ferris McCormick <fmccor@gentoo.org>
+  scummvm-tools-0.13.0.ebuild:
+  Sparc stable, bug #277384.
+
+*scummvm-tools-0.13.0 (02 Mar 2009)
+
+  02 Mar 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +scummvm-tools-0.13.0.ebuild:
+  version bump
+
+  26 Feb 2009; Joseph Jezak <josejx@gentoo.org> scummvm-tools-0.12.0.ebuild:
+  Marked ppc stable for bug #255574.
+
+  23 Jan 2009; Markus Meier <maekke@gentoo.org> scummvm-tools-0.12.0.ebuild:
+  amd64/x86 stable, bug #255574
+
+  21 Jan 2009; Ferris McCormick <fmccor@gentoo.org>
+  scummvm-tools-0.12.0.ebuild:
+  Add ~sparc to allow testing, related to Bug #255573.
+
+  25 Sep 2008; Tristan Heaven <nyhm@gentoo.org> scummvm-tools-0.12.0.ebuild:
+  Use wxwidgets eclass; add missing deps
+
+*scummvm-tools-0.12.0 (01 Sep 2008)
+
+  01 Sep 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +scummvm-tools-0.12.0.ebuild:
+  version bump
+
+  14 Jun 2008; Santiago M. Mola <coldwind@gentoo.org>
+  scummvm-tools-0.11.0.ebuild:
+  amd64 stable wrt bug #225621
+
+  14 Jun 2008; nixnut <nixnut@gentoo.org> scummvm-tools-0.11.0.ebuild:
+  Stable on ppc wrt bug 225621
+
+  13 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  scummvm-tools-0.11.0.ebuild:
+  stable x86, bug 225621
+
+*scummvm-tools-0.11.0 (11 Feb 2008)
+
+  11 Feb 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +scummvm-tools-0.11.0.ebuild:
+  version bump
+
+*scummvm-tools-0.10.0 (27 Dec 2007)
+
+  27 Dec 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  +scummvm-tools-0.10.0.ebuild:
+  version bump (ebuild submitted by Davide Cendron via bug #203190)
+
+  06 Nov 2006; Javier Villavicencio <the_paya@gentoo.org>
+  scummvm-tools-0.9.0.ebuild:
+  Keyworded ~x86-fbsd.
+
+  05 Nov 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  -scummvm-tools-0.8.0.ebuild, scummvm-tools-0.9.0.ebuild:
+  clean out old ebuild; bsd fixup reported by Javier Villavicencio via
+  bug #154130
+
+*scummvm-tools-0.9.0 (15 Jul 2006)
+
+  15 Jul 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  +scummvm-tools-0.9.0.ebuild:
+  version bump
+
+  04 May 2006; Joseph Jezak <josejx@gentoo.org> scummvm-tools-0.8.0.ebuild:
+  Added ppc big endian fix for bug #132207.
+
+*scummvm-tools-0.8.0 (31 Oct 2005)
+
+  31 Oct 2005; Mike Frysinger <vapier@gentoo.org>
+  +scummvm-tools-0.8.0.ebuild:
+  Version bump #110930 by Robert Lundmark.
+
+*scummvm-tools-0.7.0 (26 Dec 2004)
+
+  26 Dec 2004; Mike Frysinger <vapier@gentoo.org>
+  +scummvm-tools-0.7.0.ebuild:
+  Version bump #75615 by cpu.
+
+  03 Sep 2004; Tom Martin <slarti@gentoo.org> scummvm-tools-0.6.1.ebuild:
+  Marked ~amd64, resolves bug 62314. Thanks to Adrian Frühwirth
+  <adrian.fruehwirth@gmx.at> for reporting.
+
+*scummvm-tools-0.6.1 (29 Jul 2004)
+
+  29 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +scummvm-tools-0.6.1.ebuild:
+  version bump
+
+*scummvm-tools-0.6.0 (05 Apr 2004)
+
+  05 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  scummvm-tools-0.6.0.ebuild:
+  version bump (bug #44826); now installed with ${PN} prefix so badly named
+  utilities won't conflict with other packages
+
+*scummvm-tools-0.5.0 (26 Sep 2003)
+
+  26 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial ebuild #29167.

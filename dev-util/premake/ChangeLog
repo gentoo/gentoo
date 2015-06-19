@@ -1,0 +1,70 @@
+# ChangeLog for dev-util/premake
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/premake/ChangeLog,v 1.16 2013/06/06 01:10:03 titanofold Exp $
+
+  06 Jun 2013; Aaron W. Swenson <titanofold@gentoo.org> -premake-3.5.ebuild,
+  -premake-4.3.ebuild:
+  Clean out non-slotted ebuilds.
+
+  26 May 2013; Agostino Sarubbo <ago@gentoo.org> premake-4.3-r1.ebuild:
+  Stable for ppc, wrt bug #468862
+
+  10 May 2013; Patrick Lauer <patrick@gentoo.org> premake-4.3-r1.ebuild:
+  Fix inherit
+
+  07 May 2013; Agostino Sarubbo <ago@gentoo.org> premake-3.7.ebuild,
+  premake-4.3-r1.ebuild:
+  Stable for x86, wrt bug #468862
+
+  07 May 2013; Agostino Sarubbo <ago@gentoo.org> premake-3.7.ebuild,
+  premake-4.3-r1.ebuild:
+  Stable for amd64, wrt bug #468862
+
+*premake-4.3-r1 (09 Apr 2013)
+*premake-3.7 (09 Apr 2013)
+
+  09 Apr 2013; Aaron W. Swenson <titanofold@gentoo.org> +premake-3.7.ebuild,
+  +premake-4.3-r1.ebuild:
+  Version bump. Now slotted, thanks to Dominique Michel. Fixes bug 435744.
+
+  03 Jan 2013; Agostino Sarubbo <ago@gentoo.org> premake-4.3.ebuild:
+  Add ~ppc, wrt bug #449956
+
+  01 May 2012; Agostino Sarubbo <ago@gentoo.org> premake-3.5.ebuild:
+  amd64/x86 stable
+
+  01 May 2012; Agostino Sarubbo <ago@gentoo.org> premake-3.5.ebuild:
+  EAPI4 and cleanup
+
+  26 Feb 2012; Aaron W. Swenson <titanofold@gentoo.org> +premake-3.5.ebuild:
+  Adding back Premake 3.5
+
+  22 Feb 2012; Aaron W. Swenson <titanofold@gentoo.org> -premake-3.5.ebuild,
+  premake-4.3.ebuild:
+  Changed LICENSE from GPL-2 to BSD. Fixes bug 398565. Remove old.
+
+  04 Sep 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> premake-4.3.ebuild:
+  x86 stable wrt bug #380963
+
+  28 Aug 2011; Tony Vroon <chainsaw@gentoo.org> premake-4.3.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo in bug
+  #380963 filed by Aaron W. "titanofold" Swenson.
+
+  28 Aug 2011; Aaron W. Swenson <titanofold@gentoo.org> premake-4.3.ebuild,
+  metadata.xml:
+  Hijacking Premake. Corrected homepage and removed unnecessary '|| die' from
+  ebuild.
+
+*premake-4.3 (01 May 2011)
+
+  01 May 2011; Markos Chandras <hwoarang@gentoo.org> +premake-4.3.ebuild,
+  +files/archless.patch:
+  Version bump. Thanks to Aaron W. Swenson <titanofold@gentoo.org> for the
+  ebuild and the patch. Bug #364017
+
+*premake-3.5 (22 Feb 2011)
+
+  22 Feb 2011; Markos Chandras <hwoarang@gentoo.org> +premake-3.5.ebuild,
+  +metadata.xml:
+  Moved from sunrise overlay. Initial ebuild from Patrick Zimmermann (moHiJ)
+  <patrick@zakweb.de>. Bug #60960

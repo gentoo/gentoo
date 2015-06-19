@@ -1,0 +1,35 @@
+# ChangeLog for dev-java/apple-jdk-bin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/apple-jdk-bin/ChangeLog,v 1.5 2015/02/11 08:56:52 fordfrog Exp $
+
+  11 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org>
+  -apple-jdk-bin-1.4.2.ebuild, -apple-jdk-bin-1.5.0.ebuild:
+  removed obsolete ebuilds
+
+  27 Nov 2012; Fabian Groffen <grobian@gentoo.org> apple-jdk-bin-1.4.2.ebuild,
+  apple-jdk-bin-1.5.0.ebuild, apple-jdk-bin-1.6.0.ebuild:
+  Change licence from as-is to public-domain, because we only install symlinks,
+  bug #444858
+
+  01 Nov 2012; Fabian Groffen <grobian@gentoo.org> apple-jdk-bin-1.6.0.ebuild:
+  Marked ~x86-macos, it doesn't matter much that the JVM is 64-bits, although
+  being on a 32-bits profile, because Java is agnostic to that
+
+  22 Oct 2010; Fabian Groffen <grobian@gentoo.org>
+  apple-jdk-bin-1.4.2.ebuild, apple-jdk-bin-1.6.0.ebuild:
+  Sort out keywords, based on architectures really available on 10.5 for the
+  binaries, bug #341625
+
+*apple-jdk-bin-1.6.0 (25 Jan 2010)
+*apple-jdk-bin-1.5.0 (25 Jan 2010)
+*apple-jdk-bin-1.4.2 (25 Jan 2010)
+
+  25 Jan 2010; Fabian Groffen <grobian@gentoo.org>
+  +apple-jdk-bin-1.4.2.ebuild, +files/apple-jdk-bin-1.4.env,
+  +apple-jdk-bin-1.5.0.ebuild, +files/apple-jdk-bin-1.5.env,
+  +apple-jdk-bin-1.6.0.ebuild, +files/apple-jdk-bin-1.6.env, +metadata.xml:
+  Imported from Prefix tree
+
+  19 Nov 2007; Fabian Groffen <grobian@gentoo.org> ChangeLog:
+  First shot at some symlinks to Apple's installed Java, as enabler for the
+  OSX platform

@@ -1,0 +1,132 @@
+ src/common/latex.py |   52 ++++++++++++++++++++++++++++++--------------------
+ 1 files changed, 31 insertions(+), 21 deletions(-)
+
+diff --git a/src/common/latex.py b/src/common/latex.py
+index 7567eb6..cedf2f1 100644
+--- a/src/common/latex.py
++++ b/src/common/latex.py
+@@ -29,7 +29,7 @@
+ 
+ import os
+ import random
+-from tempfile import gettempdir
++from tempfile import mkstemp, mkdtemp
+ from subprocess import Popen, PIPE
+ 
+ import logging
+@@ -57,11 +57,6 @@ def check_blacklist(str_):
+             return True
+     return False
+ 
+-def get_tmpfile_name():
+-    random.seed()
+-    int_ = random.randint(0, 100)
+-    return os.path.join(gettempdir(), 'gajimtex_' + int_.__str__())
+-
+ def write_latex(filename, str_):
+     texstr = '\\documentclass[12pt]{article}\\usepackage[dvips]{graphicx}'
+     texstr += '\\usepackage{amsmath}\\usepackage{amssymb}'
+@@ -78,12 +73,13 @@ def write_latex(filename, str_):
+ # a wrapper for Popen so that no window gets opened on Windows
+ # (i think this is the reason we're using Popen rather than just system())
+ # stdout goes to a pipe so that it can be read
+-def popen_nt_friendly(command):
++def popen_nt_friendly(command, directory):
+     if os.name == 'nt':
+         # CREATE_NO_WINDOW
+-        return Popen(command, creationflags=0x08000000, cwd=gettempdir(), stdout=PIPE)
++        return Popen(command, creationflags=0x08000000, cwd=directory,
++            stdout=PIPE)
+     else:
+-        return Popen(command, cwd=gettempdir(), stdout=PIPE)
++        return Popen(command, cwd=directory, stdout=PIPE)
+ 
+ def check_for_latex_support():
+     """
+@@ -99,16 +95,16 @@ def check_for_latex_support():
+     except LatexError:
+         return False
+ 
+-def try_run(argv):
++def try_run(argv, directory):
+     try:
+-        p = popen_nt_friendly(argv)
++        p = popen_nt_friendly(argv, directory)
+         out = p.communicate()[0]
+         log.info(out)
+         return p.wait()
+     except Exception, e:
+         return _('Error executing "%(command)s": %(error)s') % {
+-                'command': " ".join(argv),
+-                'error': helpers.decode_string(str(e))}
++            'command': " ".join(argv),
++            'error': helpers.decode_string(str(e))}
+ 
+ 
+ def latex_to_image(str_):
+@@ -124,32 +120,41 @@ def latex_to_image(str_):
+             return []
+         except AttributeError:
+             # interface may not be available when we test latext at startup
+-            return ['-fg', 'rgb 0.0 0.0 0.0']
++            return {'hex': ['+level-colors', '0x000000'],
++                'tex': ['-fg', 'rgb 0.0 0.0 0.0']}[fmt]
+ 
+     # filter latex code with bad commands
+     if check_blacklist(str_):
+         # we triggered the blacklist, immediately return None
+         return None
+ 
+-    tmpfile = get_tmpfile_name()
++    try:
++        tmpdir = mkdtemp(prefix='gajimtex')
++        tmppng = mkstemp(prefix='gajim_tex', suffix='.png')[1]
++    except Exception:
++        raise LatexError('could not securely create one or more temporary files'
++            ' for LaTeX conversion')
++
++    tmpfile = os.path.join(tmpdir, 'gajim_tex')
+ 
+     # build latex string
+-    write_latex(os.path.join(tmpfile + '.tex'), str_)
++    write_latex(tmpfile + '.tex', str_)
+ 
+     # convert TeX to dvi
+-    exitcode = try_run(['latex', '--interaction=nonstopmode',
+-                      tmpfile + '.tex'])
++    exitcode = try_run(['latex', '--interaction=nonstopmode', tmpfile + '.tex'],
++        tmpdir)
+ 
+     if exitcode == 0:
+         # convert dvi to png
+         latex_png_dpi = gajim.config.get('latex_png_dpi')
+         exitcode = try_run(['dvipng'] + fg_str('tex') + ['-T', 'tight', '-D',
+-            latex_png_dpi, tmpfile + '.dvi', '-o', tmpfile + '.png'])
++            latex_png_dpi, tmpfile + '.dvi', '-o', tmpfile + '.png'], tmpdir)
+ 
+         if exitcode:
+             # dvipng failed, try convert
+             exitcode = try_run(['convert'] + fg_str('hex') + ['-trim',
+-                '-density', latex_png_dpi, tmpfile + '.dvi', tmpfile + '.png'])
++                '-density', latex_png_dpi, tmpfile + '.dvi', tmpfile + '.png'],
++                tmpdir)
+ 
+     # remove temp files created by us and TeX
+     extensions = ['.tex', '.log', '.aux', '.dvi']
+@@ -159,10 +164,15 @@ def latex_to_image(str_):
+         except Exception:
+             pass
+ 
++    if exitcode == 0:
++        os.rename(tmpfile + '.png', tmppng)
++
++    os.rmdir(tmpdir)
++
+     if isinstance(exitcode, (unicode, str)):
+         raise LatexError(exitcode)
+ 
+     if exitcode == 0:
+-        result = tmpfile + '.png'
++        result = tmppng
+ 
+     return result

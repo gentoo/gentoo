@@ -1,0 +1,77 @@
+# ChangeLog for app-text/sigil
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/sigil/ChangeLog,v 1.18 2015/06/07 08:12:51 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*sigil-0.8.6 (27 May 2015)
+
+  27 May 2015; Manuel Rüger <mrueg@gentoo.org> +sigil-0.8.6.ebuild,
+  -sigil-0.6.2.ebuild, metadata.xml:
+  Version bump. Remove old. Drop myself from metadata.
+
+*sigil-0.8.5 (05 Apr 2015)
+
+  05 Apr 2015; Maxim Koltsov <maksbotan@gentoo.org> +sigil-0.8.5.ebuild:
+  Bump to 0.8.5, update deps reflecting switch to Qt5.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> sigil-0.6.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  15 Jul 2014; Manuel Rüger <mrueg@gentoo.org> metadata.xml:
+  Add tomboy64@sina.cn as proxied maintainer.
+
+  13 Oct 2013; Pacho Ramos <pacho@gentoo.org> sigil-0.6.2.ebuild:
+  Add missing depend (#476134)
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> -sigil-0.6.0.ebuild, metadata.xml:
+  Cleanup due #92799
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> sigil-0.6.0.ebuild,
+  sigil-0.6.2.ebuild:
+  Move Qt dependencies to the new category
+
+  24 Jan 2013; Stefan Briesenick <sbriesen@gentoo.org> -sigil-0.5.3.ebuild:
+  removed also sigil-0.5.3
+
+  24 Jan 2013; Stefan Briesenick <sbriesen@gentoo.org> -sigil-0.4.2.ebuild,
+  -sigil-0.4.905_beta1.ebuild, -sigil-0.5.0.ebuild:
+  removed old versions
+
+*sigil-0.6.2 (24 Jan 2013)
+
+  24 Jan 2013; Stefan Briesenick <sbriesen@gentoo.org> +sigil-0.6.2.ebuild:
+  version bump, solving bug #451568.
+
+  31 Oct 2012; Diego E. Pettenò <flameeyes@gentoo.org> sigil-0.6.0.ebuild:
+  QA: drop maximum boost version dep; if it fails to build, it has to be fixed.
+
+*sigil-0.6.0 (31 Oct 2012)
+
+  31 Oct 2012; Stefan Briesenick <sbriesen@gentoo.org> +sigil-0.6.0.ebuild:
+  version bump
+
+  10 Aug 2012; Michael Palimaka <kensington@gentoo.org> sigil-0.4.2.ebuild,
+  sigil-0.4.905_beta1.ebuild, sigil-0.5.0.ebuild, sigil-0.5.3.ebuild:
+  Add missing slot dependencies on Qt.
+
+*sigil-0.5.3 (19 Mar 2012)
+
+  19 Mar 2012; Stefan Briesenick <sbriesen@gentoo.org> +sigil-0.5.3.ebuild:
+  version bump. solving bug #407815.
+
+  20 Feb 2012; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Drop no-herd.
+
+*sigil-0.5.0 (26 Jan 2012)
+
+  26 Jan 2012; Stefan Briesenick <sbriesen@gentoo.org> +sigil-0.5.0.ebuild:
+  version bump
+
+*sigil-0.4.905_beta1 (10 Jan 2012)
+*sigil-0.4.2 (10 Jan 2012)
+
+  10 Jan 2012; Stefan Briesenick <sbriesen@gentoo.org> +sigil-0.4.2.ebuild,
+  +sigil-0.4.905_beta1.ebuild, +metadata.xml:
+  initial commit. solving bug #285060.

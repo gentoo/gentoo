@@ -1,0 +1,275 @@
+# ChangeLog for app-text/mftrace
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/mftrace/ChangeLog,v 1.72 2015/04/14 23:53:00 mrueg Exp $
+
+  14 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -mftrace-1.2.17.ebuild:
+  Remove old.
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> mftrace-1.2.18.ebuild:
+  x86 stable wrt bug #433890
+
+  07 Sep 2012; Agostino Sarubbo <ago@gentoo.org> mftrace-1.2.18.ebuild:
+  Stable for amd64, wrt bug #433980
+
+  06 Sep 2012; Anthony G. Basile <blueness@gentoo.org> mftrace-1.2.18.ebuild:
+  Stable ppc, bug #433890
+
+  25 Mar 2012; Tim Harder <radhermit@gentoo.org> -mftrace-1.2.13.ebuild,
+  -mftrace-1.2.13-r1.ebuild, -files/mftrace-1.2.13-python-2.6.patch,
+  -mftrace-1.2.16.ebuild:
+  Remove old.
+
+  06 Jan 2012; Brent Baude <ranger@gentoo.org> mftrace-1.2.17.ebuild:
+  Marking mftrace-1.2.17 ppc for bug 390661
+
+*mftrace-1.2.18 (16 Dec 2011)
+
+  16 Dec 2011; Tim Harder <radhermit@gentoo.org> +mftrace-1.2.18.ebuild:
+  Version bump.
+
+  09 Dec 2011; Naohiro Aota <naota@gentoo.org> mftrace-1.2.17.ebuild:
+  Add ~x86-fbsd
+
+  03 Dec 2011; Raúl Porcel <armin76@gentoo.org> mftrace-1.2.13.ebuild,
+  mftrace-1.2.13-r1.ebuild, mftrace-1.2.16.ebuild, mftrace-1.2.17.ebuild:
+  Drop alpha/ia64/sparc keywords
+
+  17 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> mftrace-1.2.17.ebuild:
+  x86 stable wrt bug #390661
+
+  16 Nov 2011; Tony Vroon <chainsaw@gentoo.org> mftrace-1.2.17.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Elijah "Armageddon" El Lazkani in bug #390661.
+
+  15 Nov 2011; Tim Harder <radhermit@gentoo.org> mftrace-1.2.17.ebuild:
+  Fix deps.
+
+  15 Nov 2011; Tim Harder <radhermit@gentoo.org> mftrace-1.2.17.ebuild:
+  Use multi-line econf invocation.
+
+  15 Nov 2011; Tim Harder <radhermit@gentoo.org> mftrace-1.2.17.ebuild:
+  Update to EAPI 4, use correct python shebang, and fix test deps.
+
+*mftrace-1.2.17 (22 Aug 2011)
+
+  22 Aug 2011; Tim Harder <radhermit@gentoo.org> +mftrace-1.2.17.ebuild:
+  Version bump.
+
+  30 Jun 2011; Jeroen Roovers <jer@gentoo.org> mftrace-1.2.16.ebuild:
+  Marked ~hppa (bug #356069).
+
+*mftrace-1.2.16 (11 Jun 2010)
+
+  11 Jun 2010; Alexis Ballier <aballier@gentoo.org> +mftrace-1.2.16.ebuild:
+  version bump, bug #316279
+
+  11 Jun 2010; Alexis Ballier <aballier@gentoo.org> mftrace-1.2.13.ebuild,
+  mftrace-1.2.13-r1.ebuild:
+  update homepage
+
+  01 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  mftrace-1.2.13.ebuild:
+  Backport fixes for deprecation warnings from mftrace-1.2.13-r1.
+
+*mftrace-1.2.13-r1 (20 Apr 2010)
+
+  20 Apr 2010; Ryan Hill <dirtyepic@gentoo.org> +mftrace-1.2.13-r1.ebuild:
+  Revision bump to migrate to new python framework and bump to EAPI3. Patch
+  by Arfrever (bug #312111).
+
+  08 Sep 2009; Tristan Heaven <nyhm@gentoo.org> mftrace-1.2.13.ebuild:
+  Add src_configure
+
+  19 Aug 2009; Patrick Lauer <patrick@gentoo.org> mftrace-1.2.13.ebuild,
+  +files/mftrace-1.2.13-python-2.6.patch:
+  Py 2.6 fix, closes #279997. Thanks to David Leverton.
+
+  11 Jan 2009; Markus Meier <maekke@gentoo.org> mftrace-1.2.13.ebuild:
+  x86 stable, bug #254222
+
+  10 Jan 2009; Jeremy Olexa <darkside@gentoo.org> mftrace-1.2.13.ebuild:
+  amd64 stable, bug 254222
+
+  10 Jan 2009; Tobias Klausmann <klausman@gentoo.org> mftrace-1.2.13.ebuild:
+  Stable on alpha, bug #254222
+
+  10 Jan 2009; Raúl Porcel <armin76@gentoo.org> mftrace-1.2.13.ebuild:
+  ia64 stable wrt #254222
+
+  09 Jan 2009; Joseph Jezak <josejx@gentoo.org> mftrace-1.2.13.ebuild:
+  Marked ppc stable for bug #254222.
+
+  08 Jan 2009; Ferris McCormick <fmccor@gentoo.org> mftrace-1.2.13.ebuild:
+  Sparc stable --- Bug #254222 --- tests are fine.
+
+  04 Sep 2008; Christian Faulhammer <opfer@gentoo.org>
+  mftrace-1.0.34.ebuild, mftrace-1.1.16.ebuild, mftrace-1.1.17.ebuild,
+  mftrace-1.1.19.ebuild, mftrace-1.2.9.ebuild:
+  change dependency from virtual/tetex to virtual/latex-base
+
+  13 Jan 2008; Alexis Ballier <aballier@gentoo.org> mftrace-1.0.34.ebuild,
+  mftrace-1.1.16.ebuild, mftrace-1.1.17.ebuild, mftrace-1.1.19.ebuild,
+  mftrace-1.2.9.ebuild:
+  add autotrace/potrace to depends as it would fail if not present at
+  buildtime, bug #153373
+
+*mftrace-1.2.13 (13 Jan 2008)
+
+  13 Jan 2008; Alexis Ballier <aballier@gentoo.org> +mftrace-1.2.13.ebuild:
+  version bump, bug #200168, switch to latex-base
+
+  13 Nov 2007; Raúl Porcel <armin76@gentoo.org> mftrace-1.2.9.ebuild:
+  ia64 stable
+
+  13 Nov 2007; Samuli Suominen <drac@gentoo.org> mftrace-1.2.9.ebuild:
+  amd64 stable
+
+  10 Nov 2007; Raúl Porcel <armin76@gentoo.org> mftrace-1.2.9.ebuild:
+  sparc stable wrt #182995
+
+  05 Oct 2007; Raúl Porcel <armin76@gentoo.org> mftrace-1.2.9.ebuild:
+  alpha stable
+
+  02 Oct 2007; Christian Faulhammer <opfer@gentoo.org> mftrace-1.2.9.ebuild:
+  stable x86, bug 182995
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*mftrace-1.2.9 (11 Feb 2007)
+
+  11 Feb 2007; Alexandre Buisse <nattfodd@gentoo.org> +mftrace-1.2.9.ebuild:
+  Bump to 1.2.9, requested in bug #163428.
+
+  08 Jul 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  mftrace-1.1.16.ebuild, mftrace-1.1.17.ebuild:
+  remove optional dep that is no longer in portage
+
+  21 Jun 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  mftrace-1.0.34.ebuild, -mftrace-1.1.2.ebuild:
+  fix deps; remove old ebuild (bug #136456)
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-mftrace-1.0.34, files/digest-mftrace-1.1.2,
+  files/digest-mftrace-1.1.16, files/digest-mftrace-1.1.17, Manifest:
+  Fixing SHA256 digest, pass four
+
+*mftrace-1.1.19 (01 Apr 2006)
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> mftrace-1.1.17.ebuild,
+  +mftrace-1.1.19.ebuild:
+  Bump to 1.1.19 (from 1.1.17).  Mark 1.1.17 stable on ia64
+
+  07 Feb 2006; Aron Griffis <agriffis@gentoo.org> mftrace-1.1.16.ebuild:
+  Mark 1.1.16 stable on alpha
+
+  11 Jan 2006; Robin H. Johnson <robbat2@gentoo.org> mftrace-1.1.17.ebuild:
+  One-liner compile fix to use CFLAGS instead of ignoring them.
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> mftrace-1.1.16.ebuild:
+  Stable on ppc.
+
+  31 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org> mftrace-1.1.16.ebuild:
+  Stable on sparc
+
+*mftrace-1.1.17 (29 Oct 2005)
+
+  29 Oct 2005; Mamoru KOMACHI <usata@gentoo.org> mftrace-1.1.16.ebuild,
+  +mftrace-1.1.17.ebuild:
+  Version bumped. This closes bug #110743.
+
+*mftrace-1.1.16 (23 Sep 2005)
+
+  23 Sep 2005; MATSUU Takuto <matsuu@gentoo.org> mftrace-1.0.34.ebuild,
+  mftrace-1.1.2.ebuild, +mftrace-1.1.16.ebuild:
+  Fixed HOMEPAGE and SRC_URI, Bug 98962.
+  Version bumped, Bug 100292.
+
+  23 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> mftrace-1.0.34.ebuild:
+  Stable on sparc
+
+  18 Feb 2005; Aron Griffis <agriffis@gentoo.org> mftrace-1.0.34.ebuild:
+  stable on ia64
+
+  18 Feb 2005; Aron Griffis <agriffis@gentoo.org> mftrace-1.0.34.ebuild:
+  stable on amd64
+
+*mftrace-1.1.2 (12 Feb 2005)
+
+  12 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> -mftrace-1.0.33.ebuild,
+  +mftrace-1.1.2.ebuild:
+  Version bumped. This closes bug #81266.
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> -mftrace-1.0.31.ebuild,
+  mftrace-1.0.34.ebuild:
+  Stable on x86, alpha and ppc.
+
+  02 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> mftrace-1.0.31.ebuild,
+  mftrace-1.0.33.ebuild, mftrace-1.0.34.ebuild:
+  Added media-gfx/potrace to an alternative to media-gfx/autotrace.
+
+*mftrace-1.0.34 (29 Aug 2004)
+
+  29 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> -mftrace-1.0.19.ebuild,
+  mftrace-1.0.31.ebuild, mftrace-1.0.33.ebuild, +mftrace-1.0.34.ebuild:
+  Version bumped. Marked previous version stable on x86 and ppc.
+
+  19 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mftrace-1.0.33.ebuild:
+  Added to ~sparc.
+
+  04 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> mftrace-1.0.31.ebuild:
+  Stable on alpha.
+
+*mftrace-1.0.33 (24 Jun 2004)
+
+  24 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> mftrace-1.0.31.ebuild,
+  +mftrace-1.0.33.ebuild:
+  Version bumped. Marked 1.0.31 stable on x86
+
+  19 May 2004; Danny van Dyk <kugelfang@gentoo.org> mftrace-1.0.31.ebuild:
+  Marked ~amd64.
+
+*mftrace-1.0.31 (18 May 2004)
+
+  18 May 2004; Mamoru KOMACHI <usata@gentoo.org> mftrace-1.0.10.ebuild,
+  mftrace-1.0.19.ebuild, mftrace-1.0.31.ebuild:
+  Version bumped. Changed app-text/tetex to virutal/tetex.
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> mftrace-1.0.10.ebuild,
+  mftrace-1.0.19.ebuild:
+  Add die following econf for bug 48950
+
+  21 Mar 2004; David Holm <dholm@gentoo.org> mftrace-1.0.19.ebuild:
+  Added to ~ppc.
+
+  03 Dec 2003; Aron Griffis <agriffis@gentoo.org> mftrace-1.0.19.ebuild:
+  Stable on all arches to support stable lilypond-1.8.2
+
+  12 Sep 2003; Aron Griffis <agriffis@gentoo.org> mftrace-1.0.19.ebuild:
+  Add missing copyright lines
+
+*mftrace-1.0.19 (12 Sep 2003)
+
+  12 Sep 2003; Aron Griffis <agriffis@gentoo.org> mftrace-1.0.19.ebuild:
+  Version bump to 1.0.19 to support lilypond-1.8.2.  Thanks to Mike Ossman in
+  bug 24765
+
+  07 Jan 2003; J Robert Ray <jrray@gentoo.org> : Unmasked for x86.
+
+*mftrace-1.0.10 (12 Nov 2002)
+
+  12 Nov 2002; J Robert Ray <jrray@gentoo.org> :
+  New ebuild for mftrace, formerly known as pktrace.  Ebuild submitted
+  by Mike Ossmann <mike@ossmann.com>.
+
+*pktrace-1.0.4 (11 Jul 2002)
+
+  11 Jul 2002; Aron Griffis <agriffis@gentoo.org> pktrace-1.0.4.ebuild:
+  New ebuild for pktrace, dependency of lilypond.

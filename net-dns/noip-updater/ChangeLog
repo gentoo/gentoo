@@ -1,0 +1,210 @@
+# ChangeLog for net-dns/noip-updater
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/noip-updater/ChangeLog,v 1.51 2015/04/17 06:03:40 idella4 Exp $
+
+  17 Apr 2015; Ian Delaney <idella4@gentoo.org> metadata.xml:
+  set proxy maintainer under supervision of the proxy-maintainers project per
+  request to the project via email
+
+  08 Jul 2014; Pacho Ramos <pacho@gentoo.org> files/noip.service:
+  Needs network-online (#512056 by Martin Vath)
+
+  22 Mar 2014; Michael Palimaka <kensington@gentoo.org>
+  -noip-updater-2.1.9.ebuild:
+  Remove old.
+
+  10 Jan 2014; Pacho Ramos <pacho@gentoo.org> noip-updater-2.1.9-r1.ebuild:
+  ia64 stable, bug #485138
+
+  23 Sep 2013; Agostino Sarubbo <ago@gentoo.org> noip-updater-2.1.9-r1.ebuild:
+  Stable for sparc, wrt bug #485138
+
+  23 Sep 2013; Agostino Sarubbo <ago@gentoo.org> noip-updater-2.1.9-r1.ebuild:
+  Stable for ppc64, wrt bug #485138
+
+  23 Sep 2013; Agostino Sarubbo <ago@gentoo.org> noip-updater-2.1.9-r1.ebuild:
+  Stable for alpha, wrt bug #485138
+
+  22 Sep 2013; Agostino Sarubbo <ago@gentoo.org> noip-updater-2.1.9-r1.ebuild:
+  Stable for x86, wrt bug #485138
+
+  21 Sep 2013; Agostino Sarubbo <ago@gentoo.org> noip-updater-2.1.9-r1.ebuild:
+  Stable for amd64, wrt bug #485138
+
+*noip-updater-2.1.9-r1 (31 Aug 2013)
+
+  31 Aug 2013; Pacho Ramos <pacho@gentoo.org> +files/noip.service,
+  +noip-updater-2.1.9-r1.ebuild:
+  Add unit file (#481490 by Galym Kerimbekov)
+
+  24 Aug 2013; Markus Meier <maekke@gentoo.org> noip-updater-2.1.9.ebuild:
+  add ~arm, bug #479860
+
+  20 Aug 2011; Lars Wendler <polynomial-c@gentoo.org> files/noip2.start:
+  non-maintainer commit: Removed --oknodo from init script. Thanks to Marcin
+  Mirosław who reported this in bug #379437.
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #34534
+
+  04 Jan 2009; Daniel Black <dragonheart@gentoo.org>
+  -files/noip-2.1.3-cflags.patch, -files/noip-2.1.4-daemon.patch,
+  -noip-updater-2.1.7.ebuild, -noip-updater-2.1.7-r1.ebuild:
+  vulnerable version cleanout
+
+  22 Dec 2008; Raúl Porcel <armin76@gentoo.org> noip-updater-2.1.9.ebuild:
+  ia64/sparc stable wrt #248709
+
+  17 Dec 2008; Markus Meier <maekke@gentoo.org> noip-updater-2.1.9.ebuild:
+  amd64/x86 stable, bug #248709
+
+  15 Dec 2008; Tobias Klausmann <klausman@gentoo.org>
+  noip-updater-2.1.9.ebuild:
+  Stable on alpha, bug #248709
+
+  15 Dec 2008; Brent Baude <ranger@gentoo.org> noip-updater-2.1.9.ebuild:
+  Marking noip-updater-2.1.9 ppc64 for bug 248709
+
+*noip-updater-2.1.9 (14 Dec 2008)
+
+  14 Dec 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/noip-2.1.9-daemon.patch, +files/noip-2.1.9-flags.patch,
+  +noip-updater-2.1.9.ebuild:
+  Bump to 2.1.9 for security bug #248709 and bug #248758.
+
+*noip-updater-2.1.7-r1 (02 May 2008)
+
+  02 May 2008; Daniel Black <dragonheart@gentoo.org>  noip-updater-2.1.7-r1.ebuild:
+  as per bug #218001 there was a extra space in the init script. Thanks to Roy for finding it.
+
+  05 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  noip-updater-2.1.7.ebuild:
+  amd64 stable wrt bug #210943
+
+  23 Jan 2008; Raúl Porcel <armin76@gentoo.org> -files/noip-2.1.1.patch,
+  -noip-updater-2.1.1-r1.ebuild, -noip-updater-2.1.3.ebuild,
+  -noip-updater-2.1.4.ebuild, -noip-updater-2.1.4-r1.ebuild:
+  old
+
+  12 Jan 2008; Brent Baude <ranger@gentoo.org> noip-updater-2.1.7.ebuild:
+  Marking noip-updater-2.1.7 ppc64 for bug 203310
+
+  25 Dec 2007; Raúl Porcel <armin76@gentoo.org> noip-updater-2.1.7.ebuild:
+  alpha/ia64 stable wrt #203310
+
+  25 Dec 2007; Markus Ullmann <jokey@gentoo.org> noip-updater-2.1.7.ebuild:
+  make qa tools happy
+
+  25 Dec 2007; Markus Ullmann <jokey@gentoo.org> noip-updater-2.1.7.ebuild:
+  Stable on sparc/x86
+
+*noip-updater-2.1.7 (25 Dec 2007)
+
+  25 Dec 2007; Markus Ullmann <jokey@gentoo.org> +noip-updater-2.1.7.ebuild:
+  Version bump, syslog silence bugfix
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing seemant from metadata.xml as per #202469.
+
+*noip-updater-2.1.4-r1 (26 Jul 2007)
+
+  26 Jul 2007; Roy Marples <uberlord@gentoo.org>
+  +files/noip-2.1.4-daemon.patch, +noip-updater-2.1.4-r1.ebuild:
+  Daemonise properly, #185471.
+
+  06 May 2007; Marius Mauch <genone@gentoo.org>
+  noip-updater-2.1.1-r1.ebuild, noip-updater-2.1.3.ebuild,
+  noip-updater-2.1.4.ebuild:
+  Replacing einfo with elog
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org>
+  noip-updater-2.1.1-r1.ebuild, noip-updater-2.1.3.ebuild,
+  noip-updater-2.1.4.ebuild:
+  Fix *initd and *envd calls, bug #173884.
+
+*noip-updater-2.1.4 (19 Apr 2007)
+
+  19 Apr 2007; Daniel Black <dragonheart@gentoo.org>
+  +noip-updater-2.1.4.ebuild:
+  version bump as per bug #173827 thanks to Dekel Amrani
+
+*noip-updater-2.1.3 (29 Oct 2006)
+
+  29 Oct 2006; Daniel Black <dragonheart@gentoo.org>
+  +files/noip-2.1.3-cflags.patch, +noip-updater-2.1.3.ebuild:
+  version bump thanks to Martin von Gagern bug #145635
+
+  23 May 2006; Markus Rothe <corsair@gentoo.org>
+  noip-updater-2.1.1-r1.ebuild:
+  Stable on ppc64
+
+  29 Apr 2006; Jason Wever <weeve@gentoo.org> noip-updater-2.1.1-r1.ebuild:
+  Stable on SPARC.
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org>
+  noip-updater-2.1.1-r1.ebuild:
+  stable on ia64
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  02 Dec 2004; Daniel Black <dragonheart@gentoo.org> -files/noip-2.0.12.patch,
+  -files/noip-2.0.15.patch, -files/noip.c.patch, -files/noip.start,
+  -noip-updater-2.0.15.ebuild:
+  old version cleanout
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  noip-updater-2.0.15.ebuild, noip-updater-2.1.1-r1.ebuild:
+  virtual/glibc -> virtual/libc
+
+*noip-updater-2.1.1-r1 (09 Jun 2004)
+
+  09 Jun 2004; Seemant Kulleen <seemant@gentoo.org> -noip-updater-1.6.ebuild,
+  -noip-updater-2.0.12.ebuild, +noip-updater-2.1.1-r1.ebuild,
+  -noip-updater-2.1.1.ebuild:
+  part of the problem with the new version is that the sourcefile uses PREFIX so
+  it wants to put config files in /usr/etc of all things. Since this was in
+  stable, I'm moving this revision bump with a sed statement to remove the
+  nonsense in the sourcefile to stable x86. Closes bug #53374 by Joshua Banks
+  <l0f33t@yahoo.com>
+
+  06 Jun 2004; Daniel Black <dragonheart@gentoo.org>
+  noip-updater-2.0.15.ebuild, noip-updater-2.1.1.ebuild:
+  x86 keyword
+
+  05 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> noip-updater-2.1.1.ebuild:
+  Stable on alpha.
+
+*noip-updater-2.1.1 (18 Apr 2004)
+
+  18 Apr 2004; Daniel Black <dragonheart@gentoo.org> metadata.xml,
+  noip-updater-2.1.1.ebuild, files/noip-2.1.1.patch:
+  Version bump - thanks to Paulo Fidalgo <kanniball@zmail.pt> in bug #43153
+
+*noip-updater-2.0.15 (30 Dec 2003)
+
+  30 Dec 2003; Seemant Kulleen <seemant@gentoo.org>
+  noip-updater-2.0.12.ebuild, noip-updater-2.0.15.ebuild,
+  files/noip-2.0.15.patch:
+  version bump, thanks to: Shaun Cloherty <s.cloherty@gsbme.unsw.edu.au> in bug
+  #36324
+
+  03 Aug 2003; Seemant Kulleen <seemant@gentoo.org>
+  noip-updater-2.0.12.ebuild, files/noip2.start:
+  dns dependency in initscript changed to use dns instead of need dns. Thanks to
+  Davi Arnaut <davi@hotpop.com> (dv in #gentoo/freenode)
+
+*noip-updater-2.0.12 (15 Jun 2003)
+
+  15 Jun 2003; Jared Hudson <jhhudso@gentoo.org> : Incremented to latest
+  version and set older version as stable (x86). Credit goes to Low Zhen Lin
+  <lowzl@hotmail.com> for providing the updated ebuild.
+	
+*noip-updater-1.6 (15 Dec 2002)
+
+  15 Dec 2002; Seemant Kulleen <seemant@gentoo.org> noip-updater-1.6.ebuild
+  ChangeLog files/noip.c.patch files/noip.start
+  files/digest-noip-updater-1.6 :
+
+  New package -- client to upgrade your noip.com DNS entry.  Provided by: 
+  Low Zhen Lin <lowzl@hotmail.com> in bug #9745

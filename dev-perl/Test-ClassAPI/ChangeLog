@@ -1,0 +1,185 @@
+# ChangeLog for dev-perl/Test-ClassAPI
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-ClassAPI/ChangeLog,v 1.45 2014/08/23 01:53:59 axs Exp $
+
+*Test-ClassAPI-1.60.0-r1 (23 Aug 2014)
+
+  23 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Test-ClassAPI-1.60.0-r1.ebuild, -Test-ClassAPI-1.60.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Test-ClassAPI-1.06.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Test-ClassAPI-1.60.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Test-ClassAPI-1.60.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +Test-ClassAPI-1.60.0.ebuild:
+  Change version scheme
+
+  14 Jan 2010; Fabian Groffen <grobian@gentoo.org>
+  Test-ClassAPI-1.06.ebuild:
+  Transfer Prefix keywords
+
+  24 Dec 2009; Torsten Veller <tove@gentoo.org>
+  -Test-ClassAPI-1.04-r1.ebuild:
+  Cleanup
+
+  28 Oct 2009; Raúl Porcel <armin76@gentoo.org> Test-ClassAPI-1.06.ebuild:
+  ia64 stable
+
+  18 Oct 2009; Tobias Klausmann <klausman@gentoo.org>
+  Test-ClassAPI-1.06.ebuild:
+  Stable on alpha, bug #283969
+
+  07 Oct 2009; Tiago Cunha <tcunha@gentoo.org> Test-ClassAPI-1.06.ebuild:
+  stable sparc, bug 283969
+
+  19 Sep 2009; nixnut <nixnut@gentoo.org> Test-ClassAPI-1.06.ebuild:
+  ppc stable #283969
+
+  18 Sep 2009; Torsten Veller <tove@gentoo.org> Test-ClassAPI-1.06.ebuild:
+  Stable on amd64 (#283969)
+
+  18 Sep 2009; Torsten Veller <tove@gentoo.org> Test-ClassAPI-1.06.ebuild:
+  Stable on amd64 (#283969)
+
+  17 Sep 2009; Jeroen Roovers <jer@gentoo.org> Test-ClassAPI-1.06.ebuild:
+  Stable for HPPA (bug #283969).
+
+  10 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  Test-ClassAPI-1.06.ebuild:
+  x86 stable, bug 283969
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org> -Test-ClassAPI-1.05.ebuild:
+  Cleanup
+
+*Test-ClassAPI-1.06 (14 Jul 2009)
+
+  14 Jul 2009; Torsten Veller <tove@gentoo.org> +Test-ClassAPI-1.06.ebuild:
+  Version bump
+
+  30 Sep 2008; Torsten Veller <tove@gentoo.org> -Test-ClassAPI-1.02.ebuild,
+  -Test-ClassAPI-1.03.ebuild:
+  Cleanup
+
+*Test-ClassAPI-1.05 (02 Aug 2008)
+
+  02 Aug 2008; Torsten Veller <tove@gentoo.org> +Test-ClassAPI-1.05.ebuild:
+  Version bump
+
+  28 Mar 2008; Jeroen Roovers <jer@gentoo.org> Test-ClassAPI-1.04-r1.ebuild:
+  Stable for HPPA too.
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  Test-ClassAPI-1.04-r1.ebuild:
+  amd64 stable
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Test-ClassAPI-1.04-r1.ebuild:
+  Stable on ppc.
+
+  23 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  Test-ClassAPI-1.04-r1.ebuild:
+  Stable on sparc
+
+  13 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  Test-ClassAPI-1.04-r1.ebuild:
+  alpha/ia64/x86 stable
+
+*Test-ClassAPI-1.04-r1 (06 Jul 2007)
+
+  06 Jul 2007; Michael Cummings <mcummings@gentoo.org>
+  -Test-ClassAPI-1.04.ebuild, +Test-ClassAPI-1.04-r1.ebuild:
+  Missing dep on dev-perl/Params-Util
+
+  21 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  Test-ClassAPI-1.04.ebuild:
+  Marking sparc stable
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Test-ClassAPI-1.03.ebuild:
+  ppc stable
+
+  14 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Test-ClassAPI-1.03.ebuild:
+  Marking sparc stable
+
+  09 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Test-ClassAPI-1.03.ebuild:
+  Marking stable amd64
+
+*Test-ClassAPI-1.04 (13 Mar 2007)
+
+  13 Mar 2007; Michael Cummings <mcummings@gentoo.org>
+  +Test-ClassAPI-1.04.ebuild:
+  Version bump
+
+*Test-ClassAPI-1.03 (17 Feb 2007)
+
+  17 Feb 2007; Michael Cummings <mcummings@gentoo.org>
+  +Test-ClassAPI-1.03.ebuild:
+  Version bump
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Test-ClassAPI-1.02.ebuild:
+  Ebuild maintenance
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Test-ClassAPI-1.02.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  05 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  Test-ClassAPI-1.02.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+  03 Mar 2006; Chris White <chriswhite@gentoo.org>
+  Test-ClassAPI-1.02.ebuild:
+  Added 1.02 to amd64 stable.
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  Test-ClassAPI-1.02.ebuild:
+  Virtuals for some perl-core deps
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> Test-ClassAPI-1.02.ebuild:
+  Mark 1.02 stable on ia64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> Test-ClassAPI-1.02.ebuild:
+  Mark 1.02 stable on alpha
+
+  27 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  Test-ClassAPI-1.02.ebuild:
+  Stable on ppc.
+
+  18 Jan 2006; Guy Martin <gmsoft@gentoo.org> Test-ClassAPI-1.02.ebuild:
+  Stable on hppa.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Test-ClassAPI-1.02.ebuild:
+  Marking stable sparc x86
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> Test-ClassAPI-1.02.ebuild:
+  add ~ia64
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Test-ClassAPI-1.02.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Test-ClassAPI-1.02.ebuild:
+  dev-perl/File-Spec => perl-core/File-Spec migration
+
+  30 Nov 2004; Sven Wegener <swegener@gentoo.org> Test-ClassAPI-1.02.ebuild:
+  Fixed invalid atoms in *DEPEND.
+
+*Test-ClassAPI-1.02 (16 Oct 2004)
+
+  16 Oct 2004; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +Test-ClassAPI-1.02.ebuild:
+  New dep for dev-perl/File-Flat

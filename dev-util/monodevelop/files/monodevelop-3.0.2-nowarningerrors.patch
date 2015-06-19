@@ -1,0 +1,22 @@
+--- a/src/core/MonoDevelop.Core/Makefile.am
++++ b/src/core/MonoDevelop.Core/Makefile.am
+@@ -394,7 +394,7 @@
+ all: $(ASSEMBLY) $(ASSEMBLY).mdb
+ 
+ $(ASSEMBLY): $(build_sources) $(build_resources)
+-	$(CSC) $(CSC_FLAGS) -warnaserror -unsafe -debug -out:$@ -target:library $(REFS) $(build_resources:%=/resource:%) $(build_sources) \
++	$(CSC) $(CSC_FLAGS) -unsafe -debug -out:$@ -target:library $(REFS) $(build_resources:%=/resource:%) $(build_sources) \
+ 	&& cp $(srcdir)/$(CONFIG) $(top_builddir)/build/bin
+ 
+ $(ASSEMBLY).mdb: $(ASSEMBLY)
+--- a/src/core/MonoDevelop.Core/Makefile.in
++++ b/src/core/MonoDevelop.Core/Makefile.in
+@@ -809,7 +809,7 @@
+ all: $(ASSEMBLY) $(ASSEMBLY).mdb
+ 
+ $(ASSEMBLY): $(build_sources) $(build_resources)
+-	$(CSC) $(CSC_FLAGS) -warnaserror -unsafe -debug -out:$@ -target:library $(REFS) $(build_resources:%=/resource:%) $(build_sources) \
++	$(CSC) $(CSC_FLAGS) -unsafe -debug -out:$@ -target:library $(REFS) $(build_resources:%=/resource:%) $(build_sources) \
+ 	&& cp $(srcdir)/$(CONFIG) $(top_builddir)/build/bin
+ 
+ $(ASSEMBLY).mdb: $(ASSEMBLY)

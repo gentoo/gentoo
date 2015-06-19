@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/neutron/files/neutron.initd,v 1.1 2014/05/11 13:03:17 vadimk Exp $
+
+description="Starts ${SVCNAME} service for OpenStack"
+
+command=/usr/bin/"${SVCNAME}"
+command_background=yes
+pidfile=/var/run/neutron/"${SVCNAME}".pid
+required_files=(${NEUTRON_CONFS[@]:-/etc/neutron/neutron.conf})
+command_args="${required_files[@]/#/--config-file } --log-file /var/log/neutron/${SVCNAME#*-}.log"
+start_stop_daemon_args="--quiet --user ${NEUTRON_USER:-neutron}"
+
+depend() {
+	need net
+}
+
+start_pre() {
+	checkpath --directory --owner "${NEUTRON_USER:-neutron}":"${NEUTRON_GROUP:-neutron}" --mode 0755 "${NEUTRON_RUN:-/var/run/neutron}"
+}

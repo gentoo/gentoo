@@ -1,0 +1,143 @@
+# ChangeLog for app-mobilephone/smstools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/smstools/ChangeLog,v 1.22 2015/04/20 20:37:51 mrueg Exp $
+
+  20 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -smstools-2.2.20.ebuild:
+  Remove old.
+
+*smstools-3.1.15-r2 (06 May 2014)
+
+  06 May 2014; Tony Vroon <chainsaw@gentoo.org> -smstools-3.1.14.ebuild,
+  -smstools-3.1.14-r1.ebuild, -smstools-3.1.14-r2.ebuild,
+  -smstools-3.1.15.ebuild, +smstools-3.1.15-r2.ebuild,
+  +files/3.1.15-makefile-whitespace.patch:
+  Fixes by Mike Benson to cope with the less forgiving behaviour of GNU Make
+  4.0; closes bug #408676.
+
+*smstools-3.1.15-r1 (22 Dec 2013)
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> +files/smsd.service,
+  +files/smsd.tmpfiles, +smstools-3.1.15-r1.ebuild:
+  Add unit file (#493908 by Marcin Kowalski)
+
+*smstools-3.1.15 (20 Dec 2012)
+
+  20 Dec 2012; Tony Vroon <chainsaw@gentoo.org> +smstools-3.1.15.ebuild,
+  +files/smsd.initd3:
+  Cope with sudden new /run semantics, fix by Tomasz Chilinski in bug #435664.
+  Bump to version 3.1.15 as requested by Kilburn Abrahams in bug #439376.
+
+  02 Jun 2012; Zac Medico <zmedico@gentoo.org> smstools-2.2.20.ebuild,
+  smstools-3.1.14-r1.ebuild, smstools-3.1.14-r2.ebuild, smstools-3.1.14.ebuild:
+  inherit user for enewgroup and enewuser
+
+*smstools-3.1.14-r2 (28 Nov 2011)
+
+  28 Nov 2011; Tony Vroon <chainsaw@gentoo.org> +smstools-3.1.14-r2.ebuild:
+  CFLAGS respect & die statements by Agostino "ago" Sarubbo in bug #385273.
+
+*smstools-3.1.14-r1 (27 Jul 2011)
+
+  27 Jul 2011; Tony Vroon <chainsaw@gentoo.org> +smstools-3.1.14-r1.ebuild,
+  +files/smsd.initd2:
+  The init script was not fully compatible with baselayout2; this new revision
+  should fare much better.
+
+*smstools-3.1.14 (06 Jun 2011)
+
+  06 Jun 2011; Tony Vroon <chainsaw@gentoo.org> +smstools-3.1.14.ebuild:
+  Version bump to forked 3.X branch, closes bug #224191. With thanks to Walter
+  for reporting the bug and to Gabor Veszi for ebuild work.
+
+  31 Oct 2008; <chainsaw@gentoo.org> smstools-2.2.20.ebuild:
+  Update ebuild based on -dev ML feedback by Torsten Veller
+  <ml-en@veller.net>.
+
+  31 Oct 2008; <chainsaw@gentoo.org> -smstools-2.2.9.ebuild,
+  -smstools-2.2.13.ebuild:
+  Remove old ebuilds.
+
+  31 Oct 2008; <chainsaw@gentoo.org> smstools-2.2.20.ebuild:
+  Respect CC variable, closes bug #243690 by Diego Pettenò
+  <flameeyes@gentoo.org>.
+
+  31 Jul 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+*smstools-2.2.20 (14 Jan 2008)
+
+  14 Jan 2008; Tony Vroon <chainsaw@gentoo.org> smstools-2.2.9.ebuild,
+  +smstools-2.2.20.ebuild:
+  Version bump. Incoming spool should be setgid, as pointed out by
+  tucksonjack@gmail.com in bug #196366. Also quote a few variables.
+
+  04 Nov 2007; Alin Năstac <mrness@gentoo.org> smstools-2.2.9.ebuild,
+  smstools-2.2.13.ebuild:
+  Remove useless pkg_preinst function.
+
+*smstools-2.2.13 (04 Dec 2006)
+
+  04 Dec 2006; Tony Vroon <chainsaw@gentoo.org>
+  -files/2.2.12-buffer-overflow.patch, +files/2.2.13-sendsms-chmod.patch,
+  -files/2.2.12-sendsms-chmod.patch, -smstools-2.2.12-r1.ebuild,
+  +smstools-2.2.13.ebuild:
+  Upstream developer Niclas Felske <nfelske@gmx.de> has incorporated the
+  buffer overflow patch in 2.2.13 and pointed out that the SRC_URI was no
+  longer correct. Closes bug #157077.
+
+*smstools-2.2.12-r1 (02 Dec 2006)
+
+  02 Dec 2006; Tony Vroon <chainsaw@gentoo.org>
+  +files/2.2.12-sendsms-chmod.patch, metadata.xml, -smstools-2.2.12.ebuild,
+  +smstools-2.2.12-r1.ebuild:
+  Necessary chmod for unprivileged operation was missing, added. Primary
+  maintainership not respected in mobile-phone herd, unherding package.
+
+*smstools-2.2.12 (02 Dec 2006)
+
+  02 Dec 2006; Alin Năstac <mrness@gentoo.org>
+  +files/2.2.12-buffer-overflow.patch, -smstools-2.2.1-r3.ebuild,
+  -smstools-2.2.3.ebuild, +smstools-2.2.12.ebuild:
+  Version bump. Fix buffer overflow, thanks to Niclas Felske <nfelske@gmx.de>
+  (#155928).
+
+*smstools-2.2.9 (20 Oct 2006)
+
+  20 Oct 2006; Tony Vroon <chainsaw@gentoo.org> +smstools-2.2.9.ebuild:
+  Version bump, as requested by Alin Nastac <mrness@gentoo.org> in bug #147927.
+
+*smstools-2.2.3 (02 Jul 2006)
+
+  02 Jul 2006; Tony Vroon <chainsaw@gentoo.org> +smstools-2.2.3.ebuild:
+  Version bump thanks to Jorma Rus <jormarus@operamail.com>, closes bug
+  #138791. Add ~ppc keyword.
+
+*smstools-2.2.1-r3 (21 Jun 2006)
+
+  21 Jun 2006; Tony Vroon <chainsaw@gentoo.org> -smstools-2.2.1-r2.ebuild,
+  +smstools-2.2.1-r3.ebuild:
+  Install additional scripts (some as documentation only). Also install HTML
+  documentation and support statistics with a local USE-flag. Implemented
+  thanks to the suggestions of Scott McKenzie <nzgreen@operamail.com> in bugs
+  #137461 and #137463.
+
+*smstools-2.2.1-r2 (15 Jun 2006)
+
+  15 Jun 2006; Tony Vroon <chainsaw@gentoo.org> files/smsd.initd,
+  -smstools-2.2.1-r1.ebuild, +smstools-2.2.1-r2.ebuild:
+  Run the daemon as an unprivileged user.
+
+*smstools-2.2.1-r1 (15 Jun 2006)
+
+  15 Jun 2006; Tony Vroon <chainsaw@gentoo.org>
+  +files/2.2.1-skip-dirlock.patch, -smstools-2.2.1.ebuild,
+  +smstools-2.2.1-r1.ebuild:
+  Automatically create directory structure necessary for normal operation as
+  suggested by Graham Murray <gmurray@webwayone.co.uk> in bug #136861. Patched
+  smsd to ignore portage .keep files.
+
+*smstools-2.2.1 (14 Jun 2006)
+
+  14 Jun 2006; Tony Vroon <chainsaw@gentoo.org> +files/smsd.initd,
+  +metadata.xml, +smstools-2.2.1.ebuild:
+  Initial commit. Ebuild by me.

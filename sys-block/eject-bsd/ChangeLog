@@ -1,0 +1,20 @@
+# ChangeLog for sys-block/eject-bsd
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/eject-bsd/ChangeLog,v 1.4 2012/06/04 22:31:12 alexxy Exp $
+
+  04 Jun 2012; Alexey Shvetsov <alexxy@gentoo.org> eject-bsd-1.5.ebuild:
+  [sys-block/eject-bsd] Works on ~amd64-fbsd
+
+  24 Apr 2012; Michał Górny <mgorny@gentoo.org> eject-bsd-1.5.ebuild:
+  Update to use mirror://.
+
+  23 May 2006; Diego Pettenò <flameeyes@gentoo.org> eject-bsd-1.5.ebuild:
+  Fix quoting.
+
+*eject-bsd-1.5 (22 May 2006)
+
+  22 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/eject-bsd-1.5-devname.patch, +files/eject-bsd-1.5-manpage.patch,
+  +metadata.xml, +eject-bsd-1.5.ebuild:
+  Initial import from gentoo-alt overlay.
+

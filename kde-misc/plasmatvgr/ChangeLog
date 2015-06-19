@@ -1,0 +1,28 @@
+# ChangeLog for kde-misc/plasmatvgr
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/plasmatvgr/ChangeLog,v 1.6 2014/03/21 18:59:02 johu Exp $
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org> plasmatvgr-0.47.ebuild:
+  Bump to EAPI 5.
+
+  29 Oct 2011; Jonathan Callen <abcd@gentoo.org> plasmatvgr-0.47.ebuild:
+  Bump to EAPI=4
+
+  13 Jun 2011; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove myself from metadata.xml
+
+  31 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  -plasmatvgr-0.46.ebuild, plasmatvgr-0.47.ebuild:
+  EAPI3, slotmove to 4, remove old
+
+*plasmatvgr-0.47 (01 Jul 2010)
+
+  01 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  +plasmatvgr-0.47.ebuild:
+  Version bump
+
+*plasmatvgr-0.46 (28 Jun 2010)
+
+  28 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  +plasmatvgr-0.46.ebuild, +metadata.xml:
+  Initial commit. Moved from kde overlay

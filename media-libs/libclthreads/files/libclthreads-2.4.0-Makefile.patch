@@ -1,0 +1,42 @@
+Index: Makefile
+===================================================================
+--- Makefile.orig
++++ Makefile
+@@ -28,7 +28,7 @@ VERSION = $(MAJVERS).$(MINVERS)
+ DISTDIR = clthreads-$(VERSION)
+ 
+ 
+-CPPFLAGS += -Wall -I. -fpic -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS -O2 
++CPPFLAGS += -Wall -I. -fpic -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS
+ LDLFAGS += 
+ LDLIBS +=
+ 
+@@ -36,22 +36,20 @@ LDLIBS +=
+ CLTHREADS_SO = libclthreads.so
+ CLTHREADS_MAJ = $(CLTHREADS_SO).$(MAJVERS)
+ CLTHREADS_MIN = $(CLTHREADS_MAJ).$(MINVERS)
+-CLTHREADS_DEP = -lpthread
++CLTHREADS_DEP = -lpthread -lrt
+ CLTHREADS_O = p_thread.o a_thread.o itc_mesg.o itc_ip1q.o itc_ctrl.o textmsg.o
+ CLTHREADS_H = clthreads.h
+ 
+ 
+ $(CLTHREADS_MIN): $(CLTHREADS_O)
+-	g++ -shared $(LDFLAGS) -Wl,-soname,$(CLTHREADS_MAJ) -o $(CLTHREADS_MIN) $(CLTHREADS_O) $(CLTHREADS_DEP)
++	$(CXX) -shared $(LDFLAGS) -Wl,-soname,$(CLTHREADS_MAJ) -o $(CLTHREADS_MIN) $(CLTHREADS_O) $(CLTHREADS_DEP)
+ 
+ 
+ install:	$(CLTHREADS_MIN)
+-	/usr/bin/install -d $(PREFIX)/$(LIBDIR)
+-	/usr/bin/install -m 644 $(CLTHREADS_H) $(PREFIX)/include
+-	/usr/bin/install -m 755 $(CLTHREADS_MIN) $(PREFIX)/$(LIBDIR)
+-	/sbin/ldconfig -n $(PREFIX)/$(LIBDIR)
+-	ln -sf $(CLTHREADS_MIN) $(PREFIX)/$(LIBDIR)/$(CLTHREADS_SO)
+-
++	/usr/bin/install -D $(CLTHREADS_H) $(DESTDIR)usr/include/$(CLTHREADS_H)
++	/usr/bin/install -D $(CLTHREADS_MIN) $(DESTDIR)$(CLTHREADS_LIBDIR)/$(CLTHREADS_MIN)
++	ln -sf $(CLTHREADS_MIN) $(DESTDIR)$(CLTHREADS_LIBDIR)/$(CLTHREADS_MAJ)
++	ln -sf $(CLTHREADS_MAJ) $(DESTDIR)$(CLTHREADS_LIBDIR)/$(CLTHREADS_SO)
+ 
+ clean:
+ 	/bin/rm -f *~ *.o *.a *.d *.so.*

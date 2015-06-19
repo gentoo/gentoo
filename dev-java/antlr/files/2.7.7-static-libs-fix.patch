@@ -1,0 +1,22 @@
+diff --git a/scripts/antlr-config.in.old b/scripts/antlr-config.in
+index 75b94c6..adab1e6 100755
+--- a/scripts/antlr-config.in.old
++++ b/scripts/antlr-config.in
+@@ -19,7 +19,7 @@ Options:
+ 	[--cflags]
+ 	[--cxxflags]
+ Libraries:
+-	libantlr.a
++	libantlr.so
+ EOF
+ 	exit $1
+ }
+@@ -58,7 +58,7 @@ while test $# -gt 0; do
+           libs="${libdir}/antlr.lib"
+           ;;
+           *)
+-          libs="${libdir}/libantlr.a"
++          libs="${libdir}/libantlr.so"
+           ;;
+       esac
+       echo_libs=yes

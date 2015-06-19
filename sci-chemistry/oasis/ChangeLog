@@ -1,0 +1,96 @@
+# ChangeLog for sci-chemistry/oasis
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/oasis/ChangeLog,v 1.26 2015/03/09 13:33:02 jlec Exp $
+
+  09 Mar 2015; Justin Lecher <jlec@gentoo.org> -oasis-4.0-r2.ebuild,
+  oasis-4.0-r3.ebuild:
+  Drop old
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> oasis-4.0-r3.ebuild:
+  Stable for x86, wrt bug #485944
+
+  28 Sep 2013; Justin Lecher <jlec@gentoo.org> oasis-4.0-r3.ebuild:
+  Drop unnessecary die
+
+  27 Sep 2013; Chema Alonso <nimiux@gentoo.org> oasis-4.0-r3.ebuild:
+  Stable for amd64 wrt bug #485944
+
+  25 Sep 2013; Justin Lecher <jlec@gentoo.org> oasis-4.0-r3.ebuild,
+  metadata.xml:
+  Bump EAPI
+
+  19 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  sci-chemistry only
+
+  19 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  Changed herd to sci-chemistry
+
+  19 Oct 2012; Justin Lecher <jlec@gentoo.org> oasis-4.0-r2.ebuild,
+  oasis-4.0-r3.ebuild:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+*oasis-4.0-r3 (06 Oct 2012)
+
+  06 Oct 2012; Justin Lecher <jlec@gentoo.org> oasis-4.0-r2.ebuild,
+  +oasis-4.0-r3.ebuild:
+  Resolve clash with dev-ml/oasis, #436800
+
+  14 Apr 2012; Andreas Schuerch <nativemad@gentoo.org> oasis-4.0-r2.ebuild:
+  x86 stable, see bug 375917, thanks all.
+
+  16 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> oasis-4.0-r2.ebuild:
+  amd64 restable
+
+  08 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> oasis-4.0-r2.ebuild:
+  Revert back to ~arch for security and libpng porting.
+
+  06 Oct 2011; Tony Vroon <chainsaw@gentoo.org> oasis-4.0-r2.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo in bug
+  #351753.
+
+  21 Jul 2011; Justin Lecher <jlec@gentoo.org> oasis-4.0-r2.ebuild,
+  metadata.xml:
+  Some cleanup
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> oasis-4.0-r2.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> oasis-4.0-r2.ebuild:
+  Added fortran-2.eclass support
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> oasis-4.0-r2.ebuild:
+  marked ~ppc wrt #303931
+
+  16 Dec 2010; Justin Lecher <jlec@gentoo.org> oasis-4.0-r2.ebuild:
+  Removal of fortran.eclass, #348851
+
+  06 Jul 2010; Justin Lecher <jlec@gentoo.org> oasis-4.0-r2.ebuild:
+  Fix installation problems
+
+*oasis-4.0-r2 (06 Jul 2010)
+
+  06 Jul 2010; Justin Lecher <jlec@gentoo.org> -oasis-4.0.ebuild,
+  -oasis-4.0-r1.ebuild, +oasis-4.0-r2.ebuild:
+  Use FFLAGS instead of CFLAGS for compilation, Xarthisius on irc
+
+  15 Jun 2010; Justin Lecher <jlec@gentoo.org> oasis-4.0-r1.ebuild:
+  Installing html at correct place
+
+*oasis-4.0-r1 (22 May 2010)
+
+  22 May 2010; Justin Lecher <jlec@gentoo.org> +oasis-4.0-r1.ebuild:
+  Fixes for bug 314053
+
+  05 Apr 2010; Justin Lecher <jlec@gentoo.org> oasis-4.0.ebuild:
+  Keyworded for ~x86-linux ~amd64-linux, tested by me
+
+  24 Feb 2010; Justin Lecher <jlec@gentoo.org> oasis-4.0.ebuild:
+  fperms -> chmod to use bash globs, fixes 306061
+  removed circular dependencies
+
+*oasis-4.0 (06 Feb 2010)
+
+  06 Feb 2010; Justin Lecher <jlec@gentoo.org>
+  +files/4.0-makefile.patch, +oasis-4.0.ebuild, +metadata.xml:
+  updated version for oasis from ccp4

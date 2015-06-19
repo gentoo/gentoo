@@ -1,0 +1,38 @@
+# ChangeLog for x11-misc/i855crt
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/i855crt/ChangeLog,v 1.9 2011/12/04 17:10:39 jer Exp $
+
+  04 Dec 2011; Jeroen Roovers <jer@gentoo.org> files/i855crt-i915support.diff,
+  i855crt-0.4-r1.ebuild:
+  Add missing DEPEND (libX11), remove unused DEPEND (libXext). Clean up path
+  names in patch. Fix underlinking (bug #369319). Respect CC.
+
+  04 Dec 2011; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Remove meaningless maintainer tag.
+
+  08 Apr 2007; Simon Stelling <blubb@gentoo.org> metadata.xml:
+  reassign to maintainer-needed
+
+*i855crt-0.4-r1 (20 Sep 2006)
+
+  20 Sep 2006; <blubb@gentoo.org> +files/i855crt-i915support.diff,
+  +i855crt-0.4-r1.ebuild:
+  adding a patch to support the i915 chipset
+
+  06 Aug 2006; Simon Stelling <blubb@gentoo.org> i855crt-0.4.ebuild:
+  re-adding explicit RDEPEND
+
+  06 Aug 2006; Simon Stelling <blubb@gentoo.org> i855crt-0.4.ebuild:
+  fix SRC_URI
+
+  10 Apr 2006; <smithj@gentoo.org> i855crt-0.4.ebuild:
+  removed RDEPEND=
+
+  05 Mar 2006; Simon Stelling <blubb@gentoo.org> i855crt-0.4.ebuild:
+  remove unneeded src_compile
+
+*i855crt-0.4 (03 Mar 2006)
+
+  03 Mar 2006; Simon Stelling <blubb@gentoo.org> +metadata.xml, +i855crt-0.4.ebuild:
+  initial import by me
+

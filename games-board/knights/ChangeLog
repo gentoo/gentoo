@@ -1,0 +1,115 @@
+# ChangeLog for games-board/knights
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/knights/ChangeLog,v 1.42 2015/06/04 19:02:46 kensington Exp $
+
+  04 Jun 2015; Michael Palimaka <kensington@gentoo.org> knights-2.5.0-r1.ebuild:
+  Move various kde-base packages to kde-apps.
+
+  13 Apr 2014; Johannes Huber <johu@gentoo.org> -knights-2.5.0.ebuild:
+  Remove old.
+
+  13 Apr 2014; Johannes Huber <johu@gentoo.org> knights-2.5.0-r1.ebuild:
+  x86 stable, bug #505292
+
+  09 Apr 2014; Johannes Huber <johu@gentoo.org> knights-2.5.0-r1.ebuild:
+  Add DEPEND on sys-devel/gettext by Nikoli <nikoli@gmx.us>, bug #507222.
+
+  09 Apr 2014; Chema Alonso <nimiux@gentoo.org> knights-2.5.0-r1.ebuild:
+  Stable for amd64 wrt bug #505292
+
+*knights-2.5.0-r1 (21 Mar 2014)
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org> +knights-2.5.0-r1.ebuild:
+  Revision bump to EAPI 5.
+
+  24 Nov 2012; Johannes Huber <johu@gentoo.org> -knights-2.4.2.ebuild:
+  Remove old.
+
+  23 Nov 2012; Agostino Sarubbo <ago@gentoo.org> knights-2.5.0.ebuild:
+  Stable for x86, wrt bug #442394
+
+  23 Nov 2012; Agostino Sarubbo <ago@gentoo.org> knights-2.5.0.ebuild:
+  Stable for amd64, wrt bug #442394
+
+*knights-2.5.0 (15 Aug 2012)
+
+  15 Aug 2012; Johannes Huber <johu@gentoo.org> +knights-2.5.0.ebuild:
+  Version bump, which is compatible with KDE 4.9, fixes bug #429418.
+
+  02 Jun 2012; Johannes Huber <johu@gentoo.org> -knights-2.3.2.ebuild:
+  Remove old.
+
+  02 Jun 2012; Johannes Huber <johu@gentoo.org> knights-2.4.2.ebuild:
+  Stable for x86, wrt bug #418983
+
+  01 Jun 2012; Agostino Sarubbo <ago@gentoo.org> knights-2.4.2.ebuild:
+  Stable for amd64, wrt bug #418983
+
+  04 May 2012; Michael Sterrett <mr_bones_@gentoo.org> -knights-2.4.1.ebuild:
+  old
+
+*knights-2.4.2 (22 Apr 2012)
+
+  22 Apr 2012; Johannes Huber <johu@gentoo.org> +knights-2.4.2.ebuild,
+  -knights-2.4.0.ebuild:
+  Version bump, remove old.
+
+*knights-2.4.1 (27 Jan 2012)
+
+  27 Jan 2012; Johannes Huber <johu@gentoo.org> +knights-2.4.1.ebuild:
+  Version bump.
+
+*knights-2.4.0 (30 Oct 2011)
+
+  30 Oct 2011; Tomáš Chvátal <scarabeus@gentoo.org> -knights-2.3.1.ebuild,
+  knights-2.3.2.ebuild, +knights-2.4.0.ebuild:
+  Stable 2.3.2 on x86 and amd64. Add latest version.
+
+  14 Sep 2011; Michael Sterrett <mr_bones_@gentoo.org> knights-2.3.2.ebuild:
+  Add message at the end about possible computer players (bug #382915)
+
+*knights-2.3.2 (21 May 2011)
+
+  21 May 2011; Tomáš Chvátal <scarabeus@gentoo.org> -knights-2.3.0.ebuild,
+  knights-2.3.1.ebuild, +knights-2.3.2.ebuild:
+  Stabilise 2.3.1 on amd64 and x86. Bump to latest.
+
+*knights-2.3.1 (20 Apr 2011)
+
+  20 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> -knights-2.2.0.ebuild,
+  knights-2.3.0.ebuild, +knights-2.3.1.ebuild:
+  Version bump to latest. Stabilise 2.3.0 on amd64 and x86.
+
+*knights-2.3.0 (10 Mar 2011)
+
+  10 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> +knights-2.3.0.ebuild:
+  Version bump.
+
+  30 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> -knights-2.0.ebuild:
+  Remove old
+
+  30 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> knights-2.2.0.ebuild:
+  x86 stable wrt bug #352546
+
+  25 Jan 2011; Markos Chandras <hwoarang@gentoo.org> knights-2.2.0.ebuild:
+  Stable on amd64 wrt bug #352546
+
+  22 Dec 2010; Tomáš Chvátal <scarabeus@gentoo.org> knights-2.2.0.ebuild:
+  Fix QA repoman warning.
+
+*knights-2.2.0 (22 Dec 2010)
+
+  22 Dec 2010; Tomáš Chvátal <scarabeus@gentoo.org> +knights-2.2.0.ebuild:
+  Version bump
+
+  13 Jul 2010; Christian Faulhammer <fauli@gentoo.org> knights-2.0.ebuild:
+  stable x86, bug 318521
+
+  25 May 2010; Pacho Ramos <pacho@gentoo.org> knights-2.0.ebuild:
+  stable amd64, bug 318521
+
+*knights-2.0 (04 Apr 2010)
+
+  04 Apr 2010; Tomáš Chvátal <scarabeus@gentoo.org> +knights-2.0.ebuild,
+  +metadata.xml:
+  Initial commit of game that was removed with kde3 removal.

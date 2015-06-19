@@ -1,0 +1,39 @@
+.\" Man page for make-memtest86+-boot-floppy 
+
+.TH make-memtest86+-boot-floppy 1
+
+.SH NAME
+make-memtest86+-boot-floppy \- create a memtest86+ boot-floppy using GRUB.
+
+.SH SYNOPSIS
+
+.B make-memtest86+-boot-floppy [ \-\-memtest 
+.I <path to memtest86+-image>
+.B ] [ \-\-floppyimage 
+.I <path to floppyimage/device>
+.B ]
+
+.SH DESCRIPTION
+.B make-memtest86+-boot-floppy
+can create a memtest86+ boot floppy using GRUB as the bootloader.
+
+.SH OPTIONS
+
+.IP "\-\-memtest <path to the memtest-image>"
+Path to the memtest86+-image, default is /boot/memtest86+.bin.
+
+.IP "\-\-floppyimage <path to the floppyimage or device>"
+File or device where the boot-image should be written to, default is /dev/fd0.
+
+.IP "\-\-help" 
+Display a short message about the options of the tool.
+
+.SH AUTHOR
+This man-page has been written by Thomas Schmidt <thomas@thsnet.de>
+.PP
+Permission is granted to copy, distribute and/or modify this document under
+the terms of the GNU General Public License, Version 2 any
+later version published by the Free Software Foundation.
+.PP
+On Debian systems, the complete text of the GNU General Public
+License can be found in /usr/share/common\-licenses/GPL.

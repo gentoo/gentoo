@@ -1,0 +1,78 @@
+# ChangeLog for www-servers/gatling
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-servers/gatling/ChangeLog,v 1.15 2015/03/28 23:05:16 mrueg Exp $
+
+  28 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -gatling-0.12-r1.ebuild,
+  -gatling-0.12.ebuild:
+  Remove old.
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> gatling-0.12-r1.ebuild,
+  gatling-0.12-r2.ebuild, gatling-0.12.ebuild, gatling-0.13.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+  07 Jun 2013; Sebastian Pipping <sping@gentoo.org> gatling-0.13.ebuild:
+  Use ${ROOT} to fix cross compilation (bug #472096)
+
+*gatling-0.13 (05 Nov 2012)
+
+  05 Nov 2012; Patrick Lauer <patrick@gentoo.org>
+  +files/gatling-0.13-compile.patch, +gatling-0.13.ebuild:
+  Bump
+
+  10 Apr 2012; Sebastian Pipping <sping@gentoo.org> gatling-0.12-r2.ebuild,
+  +files/gatling-0.12-compile.patch:
+  Unbreak diet mode (bug #314115)
+
+*gatling-0.12-r2 (22 Mar 2012)
+
+  22 Mar 2012; Patrick Lauer <patrick@gentoo.org> +files/gatling.initd-2,
+  +gatling-0.12-r2.ebuild, -files/gentoo-vars.patch:
+  Init script fixes for #409245
+
+*gatling-0.12-r1 (10 Mar 2012)
+
+  10 Mar 2012; Sebastian Pipping <sping@gentoo.org> +gatling-0.12-r1.ebuild,
+  metadata.xml:
+  Fix compilation on amd64, make dietlibc optional (bug #314115), allow
+  optional SSL
+
+  13 Aug 2010; Patrick Lauer <patrick@gentoo.org> gatling-0.12.ebuild:
+  Fixing init.d install quoting so it actually does something. Thanks to
+  Sebastian Lechte for noticing the problem. Fixes #332453
+
+  18 Jun 2010; Patrick Lauer <patrick@gentoo.org> -gatling-0.9.ebuild,
+  -gatling-0.11.ebuild, -gatling-0.11-r1.ebuild:
+  Remove old
+
+  30 May 2010; Víctor Ostorga <vostorga@gentoo.org> gatling-0.12.ebuild,
+  +files/gatling-0.12-FLAGS.patch:
+  Respecting LDFLAGS, fixing pre-stripped files bug #314111
+
+*gatling-0.12 (03 May 2010)
+
+  03 May 2010; Patrick Lauer <patrick@gentoo.org> +gatling-0.12.ebuild:
+  Bump
+
+  04 Nov 2009; Patrick Lauer <patrick@gentoo.org> gatling-0.9.ebuild,
+  gatling-0.11.ebuild, gatling-0.11-r1.ebuild:
+  Small dep fix for #291796
+
+*gatling-0.11-r1 (18 Aug 2009)
+
+  18 Aug 2009; Patrick Lauer <patrick@gentoo.org> +gatling-0.11-r1.ebuild,
+  +files/gatling.confd, +files/gatling.initd:
+  Adding init script support, fixes #272564. Thanks to Fernando V.
+
+*gatling-0.11 (15 Aug 2009)
+
+  15 Aug 2009; Víctor Ostorga <vostorga@gentoo.org> +gatling-0.11.ebuild,
+  metadata.xml:
+  Version bump to 0.11
+  Adding myself to metadata.xml
+
+  01 May 2009; Patrick Lauer <patrick@gentoo.org> ChangeLog:
+  Initial import from sunrise.
+
+  12 May 2008; Maximilian Gaß <mxey@cloudconnected.org +gatling-0.9.ebuild,
+  +files/gentoo-vars.patch, +metadata.xml:
+  New Ebuild for bug 221841

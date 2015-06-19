@@ -1,0 +1,29 @@
+diff -ruN kismet-2011-03-R2.orig/conf/kismet.conf.in kismet-2011-03-R2/conf/kismet.conf.in
+--- kismet-2011-03-R2.orig/conf/kismet.conf.in	2012-05-22 21:33:23.371718460 -0500
++++ kismet-2011-03-R2/conf/kismet.conf.in	2012-05-22 21:43:08.641691490 -0500
+@@ -7,7 +7,8 @@
+ version=2009-newcore
+ 
+ # Name of server (Purely for organizational purposes)
+-servername=Kismet_2009
++# If commented out, defaults to host name of system
++#servername=Kismet_Server
+ 
+ # Prefix of where we log (as used in the logtemplate later)
+ # logprefix=/some/path/to/logs
+diff -ruN kismet-2011-03-R2.orig/kismet_server.cc kismet-2011-03-R2/kismet_server.cc
+--- kismet-2011-03-R2.orig/kismet_server.cc	2011-03-03 23:34:42.000000000 -0600
++++ kismet-2011-03-R2/kismet_server.cc	2012-05-22 21:42:31.319693185 -0500
+@@ -897,7 +897,11 @@
+ 	}
+ 
+ 	if (conf->FetchOpt("servername") == "") {
+-		globalregistry->servername = "Kismet";
++		char hostname[64];
++		if (gethostname(hostname, 64) < 0)
++			globalregistry->servername = "Kismet";
++		else
++			globalregistry->servername = string(hostname);
+ 	} else {
+ 		globalregistry->servername = MungeToPrintable(conf->FetchOpt("servername"));
+ 	}

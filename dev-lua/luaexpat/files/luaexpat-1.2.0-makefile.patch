@@ -1,0 +1,19 @@
+--- makefile.old	2006-06-08 20:41:48.000000000 +0000
++++ makefile	2009-10-26 14:19:08.000000000 +0000
+@@ -18,11 +18,11 @@
+ 	$(CC) -c $(CFLAGS) -o $@ $(COMPAT_DIR)/compat-5.1.c
+ 
+ install:
+-	mkdir -p $(LUA_LIBDIR)
+-	cp src/$(LIBNAME) $(LUA_LIBDIR)
+-	cd $(LUA_LIBDIR); ln -f -s $(LIBNAME) $T.so
+-	mkdir -p $(LUA_DIR)/$T
+-	cp src/$T/lom.lua $(LUA_DIR)/$T
++	mkdir -p $(DESTDIR)$(LUA_LIBDIR)
++	cp src/$(LIBNAME) $(DESTDIR)$(LUA_LIBDIR)
++	cd $(DESTDIR)$(LUA_LIBDIR); ln -f -s $(LIBNAME) $T.so
++	mkdir -p $(DESTDIR)$(LUA_DIR)/$T
++	cp src/$T/lom.lua $(DESTDIR)$(LUA_DIR)/$T
+ 
+ clean:
+ 	rm -f src/$(LIBNAME) $(OBJS)

@@ -1,0 +1,53 @@
+ core/configure.ac    |    6 ++++++
+ core/src/Makefile.am |    2 +-
+ 2 files changed, 7 insertions(+), 1 deletions(-)
+
+diff --git a/core/configure.ac b/core/configure.ac
+index c5fbb84..ae9e235 100644
+--- a/core/configure.ac
++++ b/core/configure.ac
+@@ -616,6 +616,7 @@ AS_IF(
+ AC_SUBST([PNG_CFLAGS])
+ AC_SUBST([PNG_LIBS])
+ 
++BZ2_LIBS=
+ AS_IF(
+   [test "x${config_ttf}" = "xyes"],
+   [
+@@ -625,8 +626,13 @@ AS_IF(
+       ,
+       [AC_MSG_ERROR([freetype was not found.])]
+     )
++    AC_CHECK_LIB([bz2], [BZ2_bzDecompress],
++      [BZ2_LIBS="${BZ2_LIBS} -lbz2"],
++      [AC_MSG_ERROR(['libbz2' library was not found.])]
++    )
+   ]
+ )
++AC_SUBST([BZ2_LIBS])
+ 
+ AH_TOP([#ifndef __SPLASH_CONFIG_H
+ #define __SPLASH_CONFIG_H])
+diff --git a/core/src/Makefile.am b/core/src/Makefile.am
+index d6ce315..349b5e7 100644
+--- a/core/src/Makefile.am
++++ b/core/src/Makefile.am
+@@ -121,6 +121,9 @@
+ libfbsplashrender_la_LDFLAGS  = $(AM_LDFLAGS) -version-info $(libfbsplashrender_version)
+ libfbsplashrender_la_LIBADD   = libfbsplash.la
+ 
++libfbsplashrender_la_CFLAGS  += $(BZ2_CFLAGS)
++libfbsplashrender_la_LIBADD  += $(BZ2_LIBS)
++
+ libfbsplashrender_la_CFLAGS  += $(JPEG_CFLAGS)
+ libfbsplashrender_la_LIBADD  += $(JPEG_LIBS)
+ 
+@@ -190,7 +193,7 @@
+ fbsplashctl_CFLAGS          = $(AM_CFLAGS) $(PTHREAD_STATIC_CFLAGS) $(RT_CFLAGS) $(libfbsplashrender_la_CFLAGS) -DUNIFIED_BUILD
+ fbsplashctl_CPPFLAGS        = $(fbsplashd_CPPFLAGS) $(splash_util_CPPFLAGS)
+ fbsplashctl_LDFLAGS         = $(AM_LDFLAGS) -all-static
+-fbsplashctl_LDADD           = libfbsplashrender.la libfbsplash.la $(PTHREAD_STATIC_LIBS) $(RT_LIBS) $(GPM_LIBS)
++fbsplashctl_LDADD           = libfbsplashrender.la libfbsplash.la $(PTHREAD_STATIC_LIBS) $(RT_LIBS) $(GPM_LIBS) $(BZ2_LIBS)
+ 
+ if CONFIG_FBCON_DECOR
+ fbsplashctl_SOURCES += $(fbcondecor_ctl_SOURCES)

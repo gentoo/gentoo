@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
+	<longdescription>Geeqie is a lightweight image viewer. It was forked from GQview. The development is focused on features for photo collection maintenance: raw format, Exif/IPTC/XMP metadata and integration with programs like UFraw, ImageMagick, Gimp, gPhoto or ExifTool</longdescription>
+</pkgmetadata>

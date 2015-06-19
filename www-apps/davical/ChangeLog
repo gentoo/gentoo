@@ -1,0 +1,183 @@
+# ChangeLog for www-apps/davical
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/davical/ChangeLog,v 1.9 2015/05/02 03:12:18 grknight Exp $
+
+*davical-1.1.0-r1 (02 May 2015)
+*davical-1.1.1-r2 (02 May 2015)
+*davical-1.0.2-r2 (02 May 2015)
+*davical-1.1.3.1-r2 (02 May 2015)
+
+  02 May 2015; Brian Evans <grknight@gentoo.org> +davical-1.0.2-r2.ebuild,
+  +davical-1.1.0-r1.ebuild, +davical-1.1.1-r2.ebuild,
+  +davical-1.1.3.1-r2.ebuild, -davical-1.0.2-r1.ebuild, -davical-1.1.0.ebuild,
+  -davical-1.1.1-r1.ebuild, -davical-1.1.1.ebuild, -davical-1.1.3.1-r1.ebuild:
+  Revbump to update EAPI, fix DEPEND and eliminate the unnecessary re-building
+  of the documentation which is present in the archive
+
+*davical-1.1.3.1-r1 (14 Feb 2015)
+
+  14 Feb 2015; Michael Orlitzky <mjo@gentoo.org> +davical-1.1.3.1-r1.ebuild,
+  -davical-1.1.3.1.ebuild:
+  Revbump to fix dev-php/awl lower bound, bug #529994.
+
+*davical-1.1.3.1 (14 Nov 2014)
+
+  14 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  +davical-1.1.3.1.ebuild, +files/awl-locations.patch:
+  Version bump fixes bug 523138. New patch fixes bug 481528. Somewhere along
+  the way bug 506558 was fixed.
+
+  21 Oct 2013; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Removed François from metadata.xml per his request.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*davical-1.1.1-r1 (28 Jan 2013)
+
+  28 Jan 2013; Patrick Lauer <patrick@gentoo.org> +davical-1.1.1-r1.ebuild:
+  Dep fix for #445604
+
+*davical-1.1.1 (17 Jul 2012)
+
+  17 Jul 2012; Patrick Lauer <patrick@gentoo.org> +davical-1.1.1.ebuild:
+  Bump
+
+*davical-1.1.0 (26 Jun 2012)
+
+  26 Jun 2012; Patrick Lauer <patrick@gentoo.org> +davical-1.1.0.ebuild:
+  Bump for #423603
+
+  12 Mar 2012; lebarjack <francois.perichon@univ-lille2.fr>
+  -davical-1.0.2.ebuild, +davical-1.0.2-r1.ebuild:
+  Added a php dependency on calendar and curl uses
+
+  12 Mar 2012; lebarjack <francois.perichon@univ-lille2.fr>
+  files/awl_location.patch:
+  Corrected path for awl when building translations
+
+  22 Jan 2012; Mike Gilbert <floppym@gentoo.org> davical-1.0.2.ebuild:
+  www-apps/davical: rm || die
+
+  16 Jan 2012; lebarjack <francois.perichon@univ-lille2.fr>
+  -davical-0.9.9.7.ebuild, +davical-1.0.2.ebuild, files/awl_location.patch,
+  +files/inc_path.patch, files/postinstall-en.txt, files/vhost-example:
+  New version of davical
+
+  05 Nov 2011; Sven Schwyn (svoop) <gentoo@bitcetera.com>
+  -davical-0.9.9.6.ebuild, +davical-0.9.9.7.ebuild:
+  Version bump for davical
+
+  05 Oct 2011; lebarjack <francois.perichon@univ-lille2.fr>
+  -davical-0.9.9.4.ebuild, -files/postinstall-en-0.9.9.4.txt,
+  +davical-0.9.9.6.ebuild, +files/awl_location.patch,
+  +files/postinstall-en.txt:
+  New version of davical
+
+  14 Jan 2011; lebarjack <francois.perichon@univ-lille2.fr>
+  -davical-0.9.9.3.ebuild, -files/postinstall-en-0.9.9.3.txt,
+  +davical-0.9.9.4.ebuild, +files/postinstall-en-0.9.9.4.txt:
+  New version of davical
+
+  05 Nov 2010; lebarjack <francois.perichon@univ-lille2.fr>
+  -davical-0.9.9.ebuild, +davical-0.9.9.3.ebuild,
+  +files/postinstall-en-0.9.9.3.txt, -files/postinstall-en-0.9.9.txt:
+  New version of davical
+
+  03 Nov 2010; lebarjack <francois.perichon@univ-lille2.fr>
+  davical-0.9.9.ebuild:
+  Dropped the pcre use for >=php-5.3 as done for awl by Michael Weber (xmw)
+  (See bug #342597 - Thanks to Sven Schwyn (svoop) <svoop@delirium.ch>
+  reporting this on bug #343691)
+
+  21 Apr 2010; lebarjack <francois.perichon@univ-lille2.fr>
+  -davical-0.9.8.4-r1.ebuild, -files/postinstall-en-0.9.8.4.txt,
+  +davical-0.9.9.ebuild, +files/postinstall-en-0.9.9.txt, -files/rscds.conf,
+  +files/vhost-example:
+  New version for davical New installation layout. (Thanks to Aurelien Requiem
+  <aurelien@menfin.net>
+
+  12 Apr 2010; lebarjack <francois.perichon@univ-lille2.fr>
+  -davical-0.9.8.4.ebuild, +davical-0.9.8.4-r1.ebuild:
+  Source archive modified by upstream
+
+  12 Mar 2010; lebarjack <francois.perichon@univ-lille2.fr>
+  -davical-0.9.8.3.ebuild, -files/postinstall-en-0.9.8.3.txt,
+  +davical-0.9.8.4.ebuild, +files/postinstall-en-0.9.8.4.txt:
+  New version for davical
+
+  27 Feb 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  davical-0.9.8.3.ebuild:
+  drop unnecessary pkg_setup
+
+  26 Feb 2010; lebarjack <francois.perichon@univ-lille2.fr>
+  -davical-0.9.8.1.ebuild, -files/postinstall-en-0.9.8.1.txt,
+  +davical-0.9.8.3.ebuild, +files/postinstall-en-0.9.8.3.txt:
+  New version for davical
+
+  11 Feb 2010; lebarjack <francois.perichon@univ-lille2.fr>
+  -davical-0.9.8.ebuild, +davical-0.9.8.1.ebuild,
+  +files/postinstall-en-0.9.8.1.txt, -files/postinstall-en-0.9.8.txt:
+  New version for davical
+
+  07 Jan 2010; lebarjack <francois.perichon@univ-lille2.fr>
+  -davical-0.9.7.6.ebuild, -files/postinstall-en-0.9.7.6.txt,
+  +davical-0.9.8.ebuild, +files/postinstall-en-0.9.8.txt:
+  Version bump, now depends on php with pdo
+
+  28 Oct 2009; lebarjack <francois.perichon@univ-lille2.fr>
+  -davical-0.9.7.4.ebuild, -files/postinstall-en-0.9.7.4.txt,
+  +davical-0.9.7.6.ebuild, +files/postinstall-en-0.9.7.6.txt:
+  version bump
+
+  12 Oct 2009; lebarjack <francois.perichon@univ-lille2.fr>
+  -davical-0.9.7.2.ebuild, -files/postinstall-en-0.9.7.2.txt,
+  +davical-0.9.7.4.ebuild, +files/postinstall-en-0.9.7.4.txt:
+  New version for davical
+
+  17 Sep 2009; lebarjack <francois.perichon@univ-lille2.fr>
+  -davical-0.9.7.1.ebuild, -files/postinstall-en-0.9.7.1.txt,
+  +davical-0.9.7.2.ebuild, +files/postinstall-en-0.9.7.2.txt:
+  New version
+
+  03 Sep 2009; lebarjack <francois.perichon@univ-lille2.fr>
+  -davical-0.9.7.ebuild, +davical-0.9.7.1.ebuild,
+  +files/postinstall-en-0.9.7.1.txt, -files/postinstall-en-0.9.7.txt:
+  Version bump for davical
+
+  01 Jul 2009; lebarjack <francois.perichon@univ-lille2.fr>
+  -davical-0.9.6.3.ebuild, -files/postinstall-en-0.9.6.3.txt,
+  +davical-0.9.7.ebuild, +files/postinstall-en-0.9.7.txt:
+  New version for davical
+
+  22 Apr 2009; Christian Ruppert <idl0r@gentoo.org> davical-0.9.6.3.ebuild:
+  Removed unused inherits, added missing die statements.
+
+  22 Apr 2009; lebarjack <francois.perichon@univ-lille2.fr>
+  -davical-0.9.6.2.ebuild, -files/postinstall-en-0.9.6.2.txt,
+  +davical-0.9.6.3.ebuild, +files/postinstall-en-0.9.6.3.txt:
+  Version bump to 0.9.6.3
+
+  16 Mar 2009; Nick Fortino (nfortino) <nfortino@gmail.com>
+  davical-0.9.6.2.ebuild:
+  Update ebuild to use EAPI 2. Thanks to Cristian Ruppert and Thomas Sachau
+  for review
+
+  24 Nov 2008; lebarjack <francois.perichon@univ-lille2.fr>
+  -davical-0.9.6.1.ebuild, -files/postinstall-en-0.9.6.1.txt,
+  +davical-0.9.6.2.ebuild, +files/postinstall-en-0.9.6.2.txt:
+  New version for davical - Better ical calendar support
+
+  05 Nov 2008; lebarjack <francois.perichon@univ-lille2.fr>
+  -davical-0.9.5.2.ebuild, -files/postinstall-en-0.9.5.txt,
+  +davical-0.9.6.1.ebuild, +files/postinstall-en-0.9.6.1.txt:
+  New version
+
+  16 Sep 2008; lebarjack <francois.perichon@univ-lille2.fr>
+  -davical-0.9.5.ebuild, +davical-0.9.5.2.ebuild, -files/driver_ldap.patch:
+  New version for davical (Ex-rscds)
+
+  23 Jun 2008; lebarjack <francois.perichon@univ-lille2.fr>
+  +davical-0.9.5.ebuild, +files/postinstall-en-0.9.5.txt,
+  +files/driver_ldap.patch, +files/rscds.conf, +metadata.xml:
+  New ebuild for bug 195118 - (initial work by Cory Coager <ccoager@gmail.com>)

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare setup test
+DEPEND=dev-db/tokyocabinet sys-libs/zlib app-arch/bzip2 lua? ( dev-lang/lua )
+DESCRIPTION=A network interface to Tokyo Cabinet
+EAPI=2
+HOMEPAGE=http://fallabs.com/tokyotyrant/
+IUSE=debug examples lua
+KEYWORDS=~amd64 ~x86 ~ppc-macos ~x86-macos
+LICENSE=LGPL-2.1
+RDEPEND=dev-db/tokyocabinet sys-libs/zlib app-arch/bzip2 lua? ( dev-lang/lua )
+SLOT=0
+SRC_URI=http://fallabs.com/tokyotyrant/tokyotyrant-1.1.41.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=373e119d474e01d995eca4ba0f75c645

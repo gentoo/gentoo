@@ -1,0 +1,132 @@
+# ChangeLog for virtual/perl-Text-ParseWords
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/perl-Text-ParseWords/ChangeLog,v 1.27 2015/06/12 22:40:48 dilfridge Exp $
+
+*perl-Text-ParseWords-3.300.0 (12 Jun 2015)
+
+  12 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Text-ParseWords-3.280.0-r2.ebuild,
+  +perl-Text-ParseWords-3.300.0.ebuild:
+  Add Perl 5.22 version, remove old
+
+  04 Apr 2015; Mike Frysinger <vapier@gentoo.org>
+  perl-Text-ParseWords-3.290.0-r1.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Text-ParseWords-3.290.0-r1.ebuild:
+  Stable for alpha, wrt bug #536790
+
+  17 Feb 2015; Markus Meier <maekke@gentoo.org>
+  perl-Text-ParseWords-3.290.0-r1.ebuild:
+  arm stable, bug #536790
+
+  17 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Text-ParseWords-3.290.0-r1.ebuild:
+  Stable for ia64, wrt bug #536790
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Text-ParseWords-3.290.0-r1.ebuild:
+  Stable for sparc, wrt bug #536790
+
+  15 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Text-ParseWords-3.290.0-r1.ebuild:
+  Stable for ppc64, wrt bug #536790
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Text-ParseWords-3.290.0-r1.ebuild:
+  Stable for ppc, wrt bug #536790
+
+  13 Feb 2015; Jeroen Roovers <jer@gentoo.org>
+  perl-Text-ParseWords-3.290.0-r1.ebuild:
+  Stable for HPPA (bug #536790).
+
+  29 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  perl-Text-ParseWords-3.290.0-r1.ebuild:
+  Copy keywords from Perl 5.20 provider
+
+  08 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Text-ParseWords-3.270.0-r1.ebuild:
+  Remove old (Perl 5.16 cleanup)
+
+  27 Sep 2014; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Text-ParseWords-3.290.0-r1.ebuild:
+  x86 stable wrt bug #512092
+
+  23 Sep 2014; Agostino Sarubbo <ago@gentoo.org>
+  perl-Text-ParseWords-3.280.0-r2.ebuild:
+  Stable for sparc, wrt bug #504786
+
+  22 Sep 2014; Agostino Sarubbo <ago@gentoo.org>
+  perl-Text-ParseWords-3.280.0-r2.ebuild:
+  Stable for x86, wrt bug #504786
+
+  22 Sep 2014; Agostino Sarubbo <ago@gentoo.org>
+  perl-Text-ParseWords-3.280.0-r2.ebuild:
+  Stable for ia64, wrt bug #504786
+
+  21 Sep 2014; Agostino Sarubbo <ago@gentoo.org>
+  perl-Text-ParseWords-3.280.0-r2.ebuild:
+  Stable for ppc, wrt bug #504786
+
+  21 Sep 2014; Agostino Sarubbo <ago@gentoo.org>
+  perl-Text-ParseWords-3.280.0-r2.ebuild:
+  Stable for ppc64, wrt bug #504786
+
+  17 Sep 2014; Jeroen Roovers <jer@gentoo.org>
+  perl-Text-ParseWords-3.280.0-r2.ebuild:
+  Stable for HPPA (bug #504786).
+
+  30 Aug 2014; Chema Alonso <nimiux@gentoo.org>
+  perl-Text-ParseWords-3.290.0-r1.ebuild:
+  Stable for amd64 wrt bug #512092
+
+  31 Jul 2014; Vladimir Smirnov perl-Text-ParseWords-3.280.0-r2.ebuild,
+  perl-Text-ParseWords-3.290.0-r1.ebuild:
+  Keyword for ~arm
+
+  28 Jul 2014; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Text-ParseWords-3.280.0-r2.ebuild:
+  amd64 stable wrt bug #381424
+
+  24 Jul 2014; Tobias Klausmann <klausman@gentoo.org>
+  perl-Text-ParseWords-3.280.0-r2.ebuild:
+  Stable on alpha, bug #381424
+
+*perl-Text-ParseWords-3.290.0-r1 (13 Jul 2014)
+*perl-Text-ParseWords-3.280.0-r2 (13 Jul 2014)
+*perl-Text-ParseWords-3.270.0-r1 (13 Jul 2014)
+
+  13 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Text-ParseWords-3.270.0.ebuild,
+  +perl-Text-ParseWords-3.270.0-r1.ebuild,
+  -perl-Text-ParseWords-3.280.0.ebuild,
+  -perl-Text-ParseWords-3.280.0-r1.ebuild,
+  +perl-Text-ParseWords-3.280.0-r2.ebuild,
+  -perl-Text-ParseWords-3.290.0.ebuild,
+  +perl-Text-ParseWords-3.290.0-r1.ebuild:
+  Improve dependencies; remove old
+
+*perl-Text-ParseWords-3.290.0 (24 Aug 2013)
+
+  24 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +perl-Text-ParseWords-3.290.0.ebuild:
+  Bump
+
+*perl-Text-ParseWords-3.280.0-r1 (14 Aug 2013)
+
+  14 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +perl-Text-ParseWords-3.280.0-r1.ebuild:
+  Import from perl-experimental overlay
+
+*perl-Text-ParseWords-3.280.0 (13 Mar 2013)
+
+  13 Mar 2013; Torsten Veller <tove@gentoo.org>
+  +perl-Text-ParseWords-3.280.0.ebuild:
+  Version bump
+
+*perl-Text-ParseWords-3.270.0 (24 Jun 2012)
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org>
+  +perl-Text-ParseWords-3.270.0.ebuild, +metadata.xml:
+  Initial commit

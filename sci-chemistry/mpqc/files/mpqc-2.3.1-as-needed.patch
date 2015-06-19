@@ -1,0 +1,163 @@
+--- mpqc-2.3.1.orig/src/lib/chemistry/molecule/Makefile	2005-05-26 08:00:29.000000000 +0200
++++ mpqc-2.3.1/src/lib/chemistry/molecule/Makefile	2010-02-13 14:28:46.514285918 +0100
+@@ -66,6 +66,12 @@
+ interface:: $(DEPENDINCLUDE)
+ 
+ LIBS = $(shell $(LISTLIBS) $(INCLUDE) $(SRCDIR)/LIBS.h)
++LIBADD = $(SRCDIR)/$(TOPDIR)/lib/libSCcontainer.la \
++	$(SRCDIR)/$(TOPDIR)/lib/libSCclass.la \
++	$(SRCDIR)/$(TOPDIR)/lib/libSCkeyval.la \
++	$(SRCDIR)/$(TOPDIR)/lib/libSCoptimize.la \
++	$(SRCDIR)/$(TOPDIR)/lib/libSCscmat.la \
++	$(SRCDIR)/$(TOPDIR)/lib/libSCsymmetry.la
+ 
+ LD = $(CXX)
+ 
+--- mpqc-2.3.1.orig/src/lib/chemistry/qc/wfn/Makefile	2004-06-12 06:50:35.000000000 +0200
++++ mpqc-2.3.1/src/lib/chemistry/qc/wfn/Makefile	2010-02-13 14:20:06.911896080 +0100
+@@ -48,6 +48,12 @@
+ 
+ LIBS = $(shell $(LISTLIBS) $(INCLUDE) $(SRCDIR)/../dft/LIBS.h)
+ 
++LIBADD = $(SRCDIR)/$(TOPDIR)/lib/libSCisosurf.la \
++	$(SRCDIR)/$(TOPDIR)/lib/libSCsolvent.la \
++	$(SRCDIR)/$(TOPDIR)/lib/libSCbasis.la \
++	$(SRCDIR)/$(TOPDIR)/lib/libSCdft.la \
++	$(SRCDIR)/$(TOPDIR)/lib/libSCintv3.la
++
+ wfntest:: wfntest.$(OBJSUF) $(LIBS)
+ 	$(LTLINK) $(CXX) $(LDFLAGS) -o wfntest $^ $(SYSLIBS) $(LTLINKBINOPTS)
+ 
+--- mpqc-2.3.1.orig/src/lib/chemistry/qc/intv3/Makefile	2002-04-04 01:08:04.000000000 +0200
++++ mpqc-2.3.1/src/lib/chemistry/qc/intv3/Makefile	2010-02-13 14:04:15.393432311 +0100
+@@ -52,6 +52,8 @@
+ LIBOBJ = $(LIBSRC:%.c=%.$(OBJSUF))
+ LIBOBJ := $(LIBOBJ:%.cc=%.$(OBJSUF))
+ 
++LIBADD = $(SRCDIR)/$(TOPDIR)/lib/libSCoint3.la
++
+ DISTFILES = $(TESTCSRC) $(INC) atoms.sgen Makefile LIBS.h
+ 
+ DEPENDINCLUDE = $(INC) $(GENINC) $(SGENINC)
+--- mpqc-2.3.1.orig/src/lib/chemistry/qc/mbpt/Makefile	2005-07-07 17:54:05.000000000 +0200
++++ mpqc-2.3.1/src/lib/chemistry/qc/mbpt/Makefile	2010-02-13 14:12:38.975370147 +0100
+@@ -44,6 +44,7 @@
+ CSRCS = bzerofast.c
+ 
+ LIBOBJ= $(CXXSRCS:%.cc=%.$(OBJSUF)) $(CSRCS:%.c=%.$(OBJSUF))
++LIBADD= $(SRCDIR)/$(TOPDIR)/lib/libSCsymmetry.la
+ 
+ default:: $(DEPENDINCLUDE)
+ 
+--- mpqc-2.3.1.orig/src/lib/chemistry/qc/basis/Makefile	2004-02-11 01:24:43.000000000 +0100
++++ mpqc-2.3.1/src/lib/chemistry/qc/basis/Makefile	2010-02-13 14:04:15.395432868 +0100
+@@ -59,6 +59,7 @@
+ DISTFILES = $(CXXSRC) $(INC) Makefile $(TESTSRC) $(TESTFILES)
+ 
+ LIBOBJ= $(CXXSRC:%.cc=%.$(OBJSUF))
++LIBADD = $(SYSLIBS)
+ 
+ default:: $(DEPENDINCLUDE)
+ 
+--- mpqc-2.3.1.orig/src/lib/math/scmat/Makefile	2003-09-16 17:07:03.000000000 +0200
++++ mpqc-2.3.1/src/lib/math/scmat/Makefile	2010-02-13 14:27:36.028370446 +0100
+@@ -75,6 +75,8 @@
+ DISTFILES = $(CXXSRC) $(INC) scmat.h $(WEBSRC) Makefile LIBS.h \
+             $(TESTSRC) $(TESTFILES)
+ 
++LIBADD = $(SRCDIR)/$(TOPDIR)/lib/libSCgroup.la $(SYSLIBS)
++
+ LIBS = $(shell $(LISTLIBS) $(INCLUDE) $(SRCDIR)/LIBS.h)
+ 
+ matrixtest:
+--- mpqc-2.3.1.orig/src/lib/util/class/Makefile	2005-05-26 08:00:49.000000000 +0200
++++ mpqc-2.3.1/src/lib/util/class/Makefile	2010-02-13 14:04:15.396433004 +0100
+@@ -41,6 +41,7 @@
+ 
+ BIN_OR_LIB = LIB
+ TARGET_TO_MAKE = libSCclass
++LIBADD = $(SYSLIBS)
+ 
+ TESTCXXSRC = classtest.cc scextest.cc
+ DISTFILES = $(CXXSRC) $(INC) Makefile LIBS.h $(TESTCXXSRC)
+--- mpqc-2.3.1.orig/src/lib/util/state/Makefile	2005-05-26 08:00:51.000000000 +0200
++++ mpqc-2.3.1/src/lib/util/state/Makefile	2010-02-13 14:22:06.302369965 +0100
+@@ -50,6 +50,7 @@
+ 
+ BIN_OR_LIB = LIB
+ TARGET_TO_MAKE = libSCstate
++LIBADD = $(SRCDIR)/$(TOPDIR)/lib/libSCkeyval.la
+ 
+ default:: $(DEPENDINCLUDE)
+ 
+--- mpqc-2.3.1.orig/src/lib/util/group/Makefile	2005-07-30 02:30:18.000000000 +0200
++++ mpqc-2.3.1/src/lib/util/group/Makefile	2010-02-13 14:21:38.582370124 +0100
+@@ -61,6 +61,7 @@
+ 
+ BIN_OR_LIB = LIB
+ TARGET_TO_MAKE = libSCgroup
++LIBADD = $(SRCDIR)/$(TOPDIR)/lib/libSCkeyval.la
+ 
+ TESTCXXSRC = pooltest.cc messtest.cc rnglocktest.cc thrtest.cc prttest.cc
+ DISTFILES = $(REQUIREDCXXSRC) $(OPTIONALCXXSRC) $(INC) \
+--- mpqc-2.3.1.orig/src/lib/util/Makefile	2001-08-07 00:29:56.000000000 +0200
++++ mpqc-2.3.1/src/lib/util/Makefile	2010-02-13 14:40:23.611369920 +0100
+@@ -5,7 +5,7 @@
+ 
+ include $(SRCDIR)/$(TOPDIR)/lib/GlobalMakefile
+ 
+-SUBDIRS = options ref container class state misc keyval group render
++SUBDIRS = options keyval ref container class state misc group render
+ 
+ include $(SRCDIR)/$(TOPDIR)/lib/GlobalSubDirs
+ 
+--- mpqc-2.3.1.orig/lib/GlobalRules	2010-02-13 19:47:19.019432588 +0100
++++ mpqc-2.3.1/lib/GlobalRules	2010-02-13 19:47:57.760370198 +0100
+@@ -75,7 +75,7 @@
+ 	$(RANLIB) $@
+ 
+ $(TOPDIR)/lib/$(TARGET_TO_MAKE).la: $(LIBOBJ)
+-	$(LTLINK) $(CXX) -o $@ $^ $(wildcard $(TMPLREPO)/*.o) $(LTLINKLIBOPTS)
++	$(LTLINK) $(CXX) $(LDFLAGS) -o $@ $^ $(wildcard $(TMPLREPO)/*.o) $(LTLINKLIBOPTS) $(LIBADD)
+ 
+ else
+ 
+@@ -104,7 +104,7 @@
+ endif
+ 
+ $(TOPDIR)/lib/$(TARGET_TO_MAKE).la: $(LIBOBJ)
+-	$(LTLINK) $(CXX) -o $@ $^ $(LTLINKLIBOPTS)
++	$(LTLINK) $(CXX) $(LDFLAGS) -o $@ $^ $(LTLINKLIBOPTS) $(LIBADD)
+ 
+ endif
+ 
+--- mpqc-2.3.1.orig/doc/devsamp/Makefile	2004-04-28 22:45:14.000000000 +0200
++++ mpqc-2.3.1/doc/devsamp/Makefile	2010-02-13 19:58:56.958452043 +0100
+@@ -9,4 +9,4 @@
+ LTLINKBINOPTS := $(shell $(SCCONFIG) --ltlinkbinopts)
+ 
+ mp2: mp2.o
+-	$(LTLINK) $(CXX) $(CXXFLAGS) -o $@ $^ -L$(LIBDIR) -lmpqc $(LIBS) $(LTLINKBINOPTS)
++	$(LTLINK) $(CXX) $(LDFLAGS) $(CXXFLAGS) -o $@ $^ -L$(LIBDIR) -lmpqc $(LIBS) $(LTLINKBINOPTS)
+--- mpqc-2.3.1.orig/src/bin/mpqc/Makefile	2005-07-28 18:57:47.000000000 +0200
++++ mpqc-2.3.1/src/bin/mpqc/Makefile	2010-02-13 19:57:40.484216235 +0100
+@@ -82,7 +82,7 @@
+ 	$(RANLIB) $@
+ 
+ $(TOPDIR)/lib/libmpqc.la: $(BINOBJ)
+-	$(LTLINK) $(CXX) -o $@ $^ $(LTLINKLIBOPTS)
++	$(LTLINK) $(CXX) $(LDFLAGS) -o $@ $^ $(LTLINKLIBOPTS)
+ 
+ install_devel:: $(TOPDIR)/lib/libmpqc.$(LIBSUF)
+ 	$(INSTALL) $(INSTALLDIROPT) $(installroot)$(libdir)
+--- mpqc-2.3.1.orig/src/lib/chemistry/qc/Makefile.orig	2010-06-18 18:09:58.192621760 +0000
++++ mpqc-2.3.1/src/lib/chemistry/qc/Makefile	2010-06-18 18:10:10.350261767 +0000
+@@ -33,7 +33,7 @@
+ include $(SRCDIR)/$(TOPDIR)/lib/GlobalMakefile
+ include $(TOPDIR)/lib/Makedirlist
+ 
+-SUBDIRS = basis oint3 intv3 wfn scf dft mbpt
++SUBDIRS = basis oint3 intv3 dft wfn scf mbpt
+ ifeq ($(HAVE_SC_SRC_LIB_CHEMISTRY_QC_PSI),yes)
+ SUBDIRS := $(SUBDIRS) psi
+ endif

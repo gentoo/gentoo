@@ -1,0 +1,65 @@
+# ChangeLog for dev-python/python-fastimport
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-fastimport/ChangeLog,v 1.14 2015/06/09 16:46:12 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  27 May 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -python-fastimport-0.9.2.ebuild:
+  Clean up old.
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org>
+  python-fastimport-0.9.2-r1.ebuild:
+  Stable for x86, wrt bug #535360
+
+  21 May 2015; Agostino Sarubbo <ago@gentoo.org>
+  python-fastimport-0.9.2-r1.ebuild:
+  Stable for amd64, wrt bug #535360
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org>
+  python-fastimport-0.9.2-r1.ebuild:
+  Drop old Python implementations
+
+  13 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -python-fastimport-0.9.1.ebuild:
+  Remove old.
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org>
+  python-fastimport-0.9.2-r1.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+*python-fastimport-0.9.2-r1 (16 Apr 2014)
+
+  16 Apr 2014; Michał Górny <mgorny@gentoo.org>
+  +python-fastimport-0.9.2-r1.ebuild:
+  Convert to distutils-r1. Enable tests.
+
+  11 Aug 2012; Agostino Sarubbo <ago@gentoo.org>
+  python-fastimport-0.9.2.ebuild:
+  Stable for amd64, wrt bug #427522
+
+  21 Jul 2012; Jeff Horelick <jdhore@gentoo.org>
+  python-fastimport-0.9.2.ebuild:
+  marked x86 per bug 427522
+
+*python-fastimport-0.9.2 (04 Apr 2012)
+
+  04 Apr 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -python-fastimport-0.9.0.ebuild, +python-fastimport-0.9.2.ebuild:
+  Version bump, improves timezone parsing. Drop old.
+
+*python-fastimport-0.9.1 (17 Mar 2012)
+
+  17 Mar 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +python-fastimport-0.9.1.ebuild:
+  Version bump.
+
+  13 Feb 2012; Alexandre Rostovtsev <tetromino@gentoo.org> metadata.xml:
+  Add to bazaar herd, acked by fauli.
+
+*python-fastimport-0.9.0 (13 Feb 2012)
+
+  13 Feb 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +python-fastimport-0.9.0.ebuild, +metadata.xml:
+  New ebuild for a fastimport format parser library, needed for bzr-fastimport.

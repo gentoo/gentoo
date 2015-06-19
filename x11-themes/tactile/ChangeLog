@@ -1,0 +1,22 @@
+# ChangeLog for x11-themes/tactile
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/tactile/ChangeLog,v 1.5 2014/08/10 19:58:39 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  tactile-0_pre20060612.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> tactile-0_pre20060612.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  24 Aug 2011; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add package to proxy-maintainers herd
+
+  01 Jul 2011; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  update email for proxy maintainer
+
+*tactile-0_pre20060612 (24 Jun 2011)
+
+  24 Jun 2011; Markos Chandras <hwoarang@gentoo.org>
+  +tactile-0_pre20060612.ebuild, +metadata.xml:
+  Initial commit of tactile gtk2.x theme

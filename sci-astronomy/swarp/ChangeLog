@@ -1,0 +1,59 @@
+# ChangeLog for sci-astronomy/swarp
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/swarp/ChangeLog,v 1.7 2012/07/04 21:39:45 bicatali Exp $
+
+  04 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/swarp-configure.patch, -swarp-2.17.1.ebuild, -swarp-2.17.6.ebuild,
+  swarp-2.19.1.ebuild:
+  Switch to EAPI4, removed old, keyword amd64-linux, x86-linux
+
+  04 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  Switched herd to sci-astronomy
+
+*swarp-2.19.1 (24 Sep 2010)
+
+  24 Sep 2010; Sébastien Fabbro <bicatali@gentoo.org> +swarp-2.19.1.ebuild:
+  Version bump
+
+  08 Jun 2010; Sébastien Fabbro <bicatali@gentoo.org> swarp-2.17.6.ebuild,
+  +files/swarp-nodoc.patch:
+  Fixed a bad directory creating with newer autotools
+
+  28 Jul 2009; Sébastien Fabbro <bicatali@gentoo.org> swarp-2.17.6.ebuild:
+  Updated license to CeCILL-2
+
+*swarp-2.17.6 (28 Jul 2009)
+
+  28 Jul 2009; Sébastien Fabbro <bicatali@gentoo.org> +swarp-2.17.6.ebuild,
+  +files/swarp-configure.patch:
+  Version bump
+
+*swarp-2.17.1 (17 Feb 2009)
+
+  17 Feb 2009; Sébastien Fabbro <bicatali@gentoo.org> +metadata.xml,
+  +swarp-2.17.1.ebuild:
+  Initial import to the main tree from the sci overlay, closing bug #65684
+
+  14 Jan 2008; Sébastien Fabbro <bicatali@gentoo.org> -swarp-2.17.0.ebuild,
+  +swarp-2.17.1.ebuild:
+  Version bump
+
+  09 Jan 2008; Sébastien Fabbro <bicatali@gentoo.org> +swarp-2.17.0.ebuild:
+  Version bump
+
+  01 Aug 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  -swarp-2.16.0-r1.ebuild, +swarp-2.16.4.ebuild:
+  Version bump
+
+  26 Mar 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  swarp-2.16.0-r1.ebuild:
+  cleaning
+
+  29 Dec 2006; Sebastien Fabbro <seb@ist.utl.pt>;
+  Removed icc flag, too buggy.
+	
+  15 Oct 2006; Sebastien Fabbro <seb@ist.utl.pt> swarp-2.16.0-r1.ebuild
+  Removed flag filtering. Some cleaning.
+
+  10 Sep 2006; Sebastien Fabbro <seb@ist.utl.pt> swarp-2.16.0.ebuild
+  Initial import.

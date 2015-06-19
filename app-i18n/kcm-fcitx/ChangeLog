@@ -1,0 +1,38 @@
+# ChangeLog for app-i18n/kcm-fcitx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/kcm-fcitx/ChangeLog,v 1.9 2015/05/09 13:09:08 yngwin Exp $
+
+*kcm-fcitx-0.5.0 (09 May 2015)
+
+  09 May 2015; Ben de Groot <yngwin@gentoo.org> +kcm-fcitx-0.5.0.ebuild:
+  Version bump. Drop ppc and ppc64 keywords for lack of KF5 support.
+
+  01 May 2015; Jeroen Roovers <jer@gentoo.org> kcm-fcitx-0.4.3.ebuild:
+  Stable for PPC64 (bug #540844).
+
+  19 Apr 2015; Anthony G. Basile <blueness@gentoo.org> kcm-fcitx-0.4.2.ebuild,
+  kcm-fcitx-0.4.3.ebuild:
+  Keyword ~ppc and ~ppc64.  Bug #498686.
+
+  08 Mar 2014; Pacho Ramos <pacho@gentoo.org> kcm-fcitx-0.4.3.ebuild:
+  amd64 stable, bug 498688
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> kcm-fcitx-0.4.2.ebuild:
+  Stable for ppc, wrt bug #461512
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> kcm-fcitx-0.4.2.ebuild:
+  Stable for x86, wrt bug #461512
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> kcm-fcitx-0.4.2.ebuild:
+  Stable for amd64, wrt bug #461512
+
+*kcm-fcitx-0.4.3 (25 Jul 2013)
+
+  25 Jul 2013; Ben de Groot <yngwin@gentoo.org> +kcm-fcitx-0.4.3.ebuild:
+  Version bump
+
+*kcm-fcitx-0.4.2 (31 Jan 2013)
+
+  31 Jan 2013; Ben de Groot <yngwin@gentoo.org> +kcm-fcitx-0.4.2.ebuild,
+  +metadata.xml:
+  Initial commit

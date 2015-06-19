@@ -1,0 +1,40 @@
+# ChangeLog for media-sound/xmp
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/xmp/ChangeLog,v 1.20 2012/05/05 08:55:47 mgorny Exp $
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> xmp-3.5.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  28 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> -xmp-3.1.0.ebuild,
+  -xmp-3.3.0.ebuild, -xmp-3.4.0.ebuild, -xmp-3.4.1.ebuild:
+  old
+
+  28 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> xmp-3.5.0.ebuild:
+  Missing RDEPEND, missing dev-util/pkgconfig DEPEND and missing
+  virtual/os-headers DEPEND for USE="oss"
+
+*xmp-3.5.0 (28 Jan 2012)
+
+  28 Jan 2012; Tim Harder <radhermit@gentoo.org> +xmp-3.5.0.ebuild:
+  Version bump.
+
+*xmp-3.4.1 (14 Aug 2011)
+
+  14 Aug 2011; Tim Harder <radhermit@gentoo.org> +xmp-3.4.1.ebuild:
+  Version bump
+
+*xmp-3.4.0 (10 Aug 2011)
+
+  10 Aug 2011; Tim Harder <radhermit@gentoo.org> +xmp-3.4.0.ebuild:
+  Version bump
+
+*xmp-3.3.0 (28 Apr 2011)
+
+  28 Apr 2011; Alexis Ballier <aballier@gentoo.org> +xmp-3.3.0.ebuild:
+  version bump
+
+*xmp-3.1.0 (24 Jan 2010)
+
+  24 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> +xmp-3.1.0.ebuild:
+  Initial commit wrt #236825 by Andrew Church.
+

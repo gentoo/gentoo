@@ -1,0 +1,25 @@
+From 35224edbb3647c3d0a7828584c952f254ac4eb2d Mon Sep 17 00:00:00 2001
+From: Christopher Meng <i@cicku.me>
+Date: Thu, 28 Aug 2014 17:02:04 +0800
+Subject: [PATCH] Fix-latex2rtf-FTBFS-with-texinfo-5
+
+---
+ doc/latex2rtf.texi | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/doc/latex2rtf.texi b/doc/latex2rtf.texi
+index 9da9180..b6b7a4f 100755
+--- a/doc/latex2rtf.texi
++++ b/doc/latex2rtf.texi
+@@ -1,6 +1,8 @@
++@iftex
+ \def\LaTeX{L\kern-.36em\raise.3ex\hbox{\sc a}\kern-.15em\TeX}
+ \def\LaTeXe{\LaTeX\kern.15em 2$_\varepsilon$}
+ \def\BibTeX{B\kern-.05em{\sc i\kern-.025em b}\kern-.08em\TeX}
++@end iftex
+ 
+ \input texinfo  
+ @c -*-texinfo-*-
+-- 
+2.1.0
+

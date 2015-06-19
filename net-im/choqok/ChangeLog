@@ -1,0 +1,203 @@
+# ChangeLog for net-im/choqok
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/choqok/ChangeLog,v 1.46 2015/05/13 13:06:36 kensington Exp $
+
+  13 May 2015; Michael Palimaka <kensington@gentoo.org> -choqok-1.4.ebuild:
+  Remove old.
+
+  13 May 2015; Agostino Sarubbo <ago@gentoo.org> choqok-1.5.ebuild:
+  Stable for x86, wrt bug #548152
+
+  13 May 2015; Agostino Sarubbo <ago@gentoo.org> choqok-1.5.ebuild:
+  Stable for amd64, wrt bug #548152
+
+*choqok-1.5 (26 Jan 2015)
+
+  26 Jan 2015; Johannes Huber <johu@gentoo.org> +choqok-1.5.ebuild,
+  metadata.xml:
+  Version bump, bug #537828.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> choqok-1.4.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  09 Feb 2014; Michael Palimaka <kensington@gentoo.org> choqok-1.4.ebuild:
+  dev-libs/libattica[qt4] is going away.
+
+  20 Jan 2014; Michael Palimaka <kensington@gentoo.org> choqok-1.4.ebuild:
+  Requires libattica built against Qt4.
+
+  27 Oct 2013; Johannes Huber <johu@gentoo.org> -choqok-1.3_p20130618.ebuild:
+  Remove old.
+
+  26 Oct 2013; Agostino Sarubbo <ago@gentoo.org> choqok-1.4.ebuild:
+  Stable for x86, wrt bug #489314
+
+  26 Oct 2013; Agostino Sarubbo <ago@gentoo.org> choqok-1.4.ebuild:
+  Stable for amd64, wrt bug #489314
+
+*choqok-1.4 (04 Sep 2013)
+
+  04 Sep 2013; Michael Palimaka <kensington@gentoo.org> +choqok-1.4.ebuild:
+  Version bump.
+
+  25 Jun 2013; Johannes Huber <johu@gentoo.org> -choqok-1.3.ebuild:
+  Remove old.
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> choqok-1.3_p20130618.ebuild:
+  Stable for amd64, wrt bug #473196
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> choqok-1.3_p20130618.ebuild:
+  Stable for x86, wrt bug #473196
+
+*choqok-1.3_p20130618 (18 Jun 2013)
+
+  18 Jun 2013; Johannes Huber <johu@gentoo.org> +choqok-1.3_p20130618.ebuild,
+  choqok-1.3.ebuild:
+  Add upstream snapshot to have a functional version in tree again. Current
+  stable does not work with present twitter api 1.1, see bug #473196.
+
+  18 Apr 2012; Johannes Huber <johu@gentoo.org> -choqok-1.2.ebuild:
+  Remove old.
+
+  18 Apr 2012; Markus Meier <maekke@gentoo.org> choqok-1.3.ebuild:
+  x86 stable, bug #409403
+
+  04 Apr 2012; Agostino Sarubbo <ago@gentoo.org> choqok-1.3.ebuild:
+  Stable for amd64, wrt bug #409403
+
+*choqok-1.3 (13 Mar 2012)
+
+  13 Mar 2012; Johannes Huber <johu@gentoo.org> +choqok-1.3.ebuild:
+  Version bump.
+
+  18 Feb 2012; nixnut <nixnut@gentoo.org> choqok-1.2.ebuild:
+  ~ppc, preparing for #396359
+
+  14 Feb 2012; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  ayatana is now global per http://archives.gentoo.org/gentoo-
+  dev/msg_f2eb26947d0c86020625a9aeca6f25e4.xml
+
+  17 Jan 2012; Johannes Huber <johu@gentoo.org> -choqok-0.9.90-r1.ebuild,
+  -choqok-1.1-r1.ebuild, -files/choqok-1.1-twitter.patch:
+  Remove old.
+
+  16 Jan 2012; Agostino Sarubbo <ago@gentoo.org> choqok-1.2.ebuild:
+  Stable for amd64, wrt bug #396359
+
+  09 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> choqok-1.2.ebuild:
+  x86 stable wrt bug #396359
+
+*choqok-1.2 (24 Nov 2011)
+
+  24 Nov 2011; Andreas K. Huettel <dilfridge@gentoo.org> +choqok-1.2.ebuild:
+  Version bump, thanks johu!
+
+  19 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> choqok-1.1-r1.ebuild,
+  metadata.xml:
+  Rename USE="indicate" to USE="ayatana" to get it covered by the current
+  use.mask.
+
+  28 Oct 2011; Jonathan Callen <abcd@gentoo.org> -choqok-1.0.ebuild,
+  -choqok-1.1.ebuild:
+  remove old
+
+*choqok-1.1-r1 (23 Sep 2011)
+
+  23 Sep 2011; Andreas K. Huettel <dilfridge@gentoo.org> +choqok-1.1-r1.ebuild,
+  +files/choqok-1.1-twitter.patch:
+  Fix twitter authentication, bug 383307
+
+*choqok-1.1 (12 Apr 2011)
+
+  12 Apr 2011; Theo Chatzimichos <tampakrap@gentoo.org> +choqok-1.1.ebuild:
+  Version bump
+
+  03 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org> choqok-1.0.ebuild:
+  Add russian translations
+
+*choqok-1.0 (28 Jan 2011)
+
+  28 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  -choqok-0.9.98-r1.ebuild, -files/choqok-0.9.98-libindicate.patch,
+  +choqok-1.0.ebuild:
+  Version bump, bug 352990 and bug 348456
+
+*choqok-0.9.98-r1 (13 Jan 2011)
+
+  13 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  -files/choqok-0.9.55_qt47.patch, -choqok-0.9.92.ebuild,
+  -choqok-0.9.98.ebuild, +choqok-0.9.98-r1.ebuild,
+  +files/choqok-0.9.98-libindicate.patch:
+  Fix automagic depedency for libindicate-qt, bug 348456
+
+*choqok-0.9.98 (08 Dec 2010)
+
+  08 Dec 2010; Tomáš Chvátal <scarabeus@gentoo.org> +choqok-0.9.98.ebuild:
+  Version bump
+
+  20 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  choqok-0.9.90-r1.ebuild:
+  stable x86, bug 341251
+
+  18 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  choqok-0.9.90-r1.ebuild:
+  Stable on amd64 wrt bug #341251
+
+*choqok-0.9.92 (16 Oct 2010)
+
+  16 Oct 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  -choqok-0.9.55.ebuild, -choqok-0.9.85.ebuild, -choqok-0.9.90.ebuild,
+  choqok-0.9.90-r1.ebuild, +choqok-0.9.92.ebuild:
+  Version bump, remove old ones, EAPI3
+
+*choqok-0.9.90-r1 (07 Sep 2010)
+
+  07 Sep 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  +choqok-0.9.90-r1.ebuild:
+  Upstream used new tarball that fixes a crash, bug 336307, kde bug 249748
+
+*choqok-0.9.90 (01 Sep 2010)
+
+  01 Sep 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  +choqok-0.9.90.ebuild:
+  Version bump
+
+*choqok-0.9.85 (21 Aug 2010)
+
+  21 Aug 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  +choqok-0.9.85.ebuild:
+  Version bump
+
+  27 Jun 2010; Markos Chandras <hwoarang@gentoo.org> choqok-0.9.55.ebuild,
+  +files/choqok-0.9.55_qt47.patch:
+  Apply patch to fix compilation with Qt-4.7. Fixes bug #325585
+
+  25 Mar 2010; Tomáš Chvátal <scarabeus@gentoo.org> choqok-0.9.55.ebuild:
+  Drop redundant keywords line, how the heck it get there...
+
+*choqok-0.9.55 (25 Mar 2010)
+
+  25 Mar 2010; Tomáš Chvátal <scarabeus@gentoo.org> -choqok-0.6.1.ebuild,
+  -choqok-0.6.6.ebuild, +choqok-0.9.55.ebuild:
+  Version bump. Drop all old.
+
+  21 Dec 2009; Theo Chatzimichos <tampakrap@gentoo.org> choqok-0.6.1.ebuild,
+  choqok-0.6.6.ebuild:
+  Slotmove to 4
+
+*choqok-0.6.6 (08 Aug 2009)
+
+  08 Aug 2009; Ben de Groot <yngwin@gentoo.org> +choqok-0.6.6.ebuild:
+  Version bump. Change SRC_URI to the only mirror that actually works.
+
+*choqok-0.6.1 (16 Jun 2009)
+
+  16 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org> -choqok-0.6.ebuild,
+  +choqok-0.6.1.ebuild:
+  Version bump. Fixes usage issues. Per bug #274245.
+
+*choqok-0.6 (25 May 2009)
+
+  25 May 2009; Tomáš Chvátal <scarabeus@gentoo.org> +choqok-0.6.ebuild,
+  +metadata.xml:
+  Add new package for bloging. Per bug #257548.

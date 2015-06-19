@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=png? ( media-libs/libpng:0 ) mad? ( media-libs/libmad ) flac? ( media-libs/flac ) vorbis? ( media-libs/libvorbis ) iconv? ( virtual/libiconv media-libs/freetype:2 ) sys-libs/zlib >=dev-libs/boost-1.32 x11-libs/wxGTK:2.8 virtual/pkgconfig
+DESCRIPTION=utilities for the SCUMM game engine
+EAPI=5
+HOMEPAGE=http://scummvm.sourceforge.net/
+IUSE=flac iconv mad png vorbis
+KEYWORDS=amd64 ppc ppc64 x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=png? ( media-libs/libpng:0 ) mad? ( media-libs/libmad ) flac? ( media-libs/flac ) vorbis? ( media-libs/libvorbis ) iconv? ( virtual/libiconv media-libs/freetype:2 ) sys-libs/zlib >=dev-libs/boost-1.32 x11-libs/wxGTK:2.8 games-misc/games-envd
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/scummvm/scummvm-tools-1.7.0.tar.bz2
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
+_md5_=a6f8f5ae8fb8d37d977c344ac10c91ce

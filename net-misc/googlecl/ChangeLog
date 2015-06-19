@@ -1,0 +1,71 @@
+# ChangeLog for net-misc/googlecl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/googlecl/ChangeLog,v 1.14 2015/04/21 00:57:56 mrueg Exp $
+
+  21 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -googlecl-0.9.11.ebuild,
+  -googlecl-0.9.12-r1.ebuild, -googlecl-0.9.12.ebuild, -googlecl-0.9.13.ebuild:
+  Remove old.
+
+  21 Feb 2013; Zac Medico <zmedico@gentoo.org> googlecl-0.9.14.ebuild:
+  Add ~arm-linux and ~x86-linux keywords.
+
+  06 Feb 2013; Alex Alexander <wired@gentoo.org> googlecl-0.9.14.ebuild:
+  ~arm keyword, bug #392333
+
+*googlecl-0.9.14 (12 Jan 2013)
+
+  12 Jan 2013; Alex Alexander <wired@gentoo.org> +googlecl-0.9.14.ebuild:
+  version bump
+
+*googlecl-0.9.13 (01 Apr 2011)
+
+  01 Apr 2011; Alex Alexander <wired@gentoo.org> +googlecl-0.9.13.ebuild:
+  version bump
+
+*googlecl-0.9.12-r1 (23 Feb 2011)
+
+  23 Feb 2011; Alex Alexander <wired@gentoo.org> +googlecl-0.9.12-r1.ebuild,
+  +files/googlecl-0.9.12-calendar_dates.patch:
+  fixed bug #355913 (date not showing in the calendar's 'when' field)
+
+*googlecl-0.9.12 (28 Jan 2011)
+
+  28 Jan 2011; Alex Alexander <wired@gentoo.org> +googlecl-0.9.12.ebuild:
+  version bump, bug #352661
+
+  05 Dec 2010; Alex Alexander <wired@gentoo.org> -googlecl-0.9.7-r1.ebuild,
+  -googlecl-0.9.8.ebuild, -googlecl-0.9.9.ebuild, -googlecl-0.9.10.ebuild,
+  googlecl-0.9.11.ebuild:
+  removed old. updated python dependency to include 2.7, bug #347487
+
+*googlecl-0.9.11 (28 Oct 2010)
+
+  28 Oct 2010; Alex Alexander <wired@gentoo.org> +googlecl-0.9.11.ebuild:
+  version bump
+
+*googlecl-0.9.10 (05 Sep 2010)
+
+  05 Sep 2010; Alex Alexander <wired@gentoo.org> +googlecl-0.9.10.ebuild:
+  version bump
+
+*googlecl-0.9.9 (29 Jul 2010)
+
+  29 Jul 2010; Alex Alexander <wired@gentoo.org> +googlecl-0.9.9.ebuild:
+  version bump
+
+*googlecl-0.9.8 (18 Jul 2010)
+
+  18 Jul 2010; Alex Alexander <wired@gentoo.org> +googlecl-0.9.8.ebuild:
+  version bump
+
+*googlecl-0.9.7-r1 (21 Jun 2010)
+
+  21 Jun 2010; Alex Alexander <wired@gentoo.org> -googlecl-0.9.7.ebuild,
+  +googlecl-0.9.7-r1.ebuild:
+  install manpage - bug #324629 comment #9 - thanks to Nao Nakashima
+
+*googlecl-0.9.7 (20 Jun 2010)
+
+  20 Jun 2010; Alex Alexander <wired@gentoo.org> +googlecl-0.9.7.ebuild,
+  +metadata.xml:
+  new ebuild for google command line tools

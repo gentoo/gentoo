@@ -1,0 +1,91 @@
+ CMakeLists.txt                   | 20 ++++----------------
+ gui/configurationSettingsDlg.cpp | 10 ++++------
+ 2 files changed, 8 insertions(+), 22 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fec954b..b87d157 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -24,10 +24,10 @@ SET (CMAKE_VERBOSE_MAKEFILE ON)
+ #############################################################
+ # Enable warnings and treat them as errors, on GNU/Linux only
+ IF (UNIX)
+-  SET (PEDANTIC TRUE CACHE BOOL "Should we compile with -Wall -Werror.")
++  SET (PEDANTIC TRUE CACHE BOOL "Should we compile with -Wall.")
+   
+   IF (PEDANTIC)
+-    ADD_DEFINITIONS (-Wall -Werror)
++    ADD_DEFINITIONS (-Wall)
+   ENDIF (PEDANTIC)
+ ENDIF (UNIX)
+ 
+@@ -64,12 +64,12 @@ IF (UNIX AND NOT APPLE)
+   # Plugin-specific stuff, some distros set CMAKE_INSTALL_LIBDIR to
+   # /usr/lib64 (Fedora64, for example)
+   IF (NOT CMAKE_INSTALL_LIBDIR)
+-    SET (CMAKE_INSTALL_LIBDIR ${CMAKE_INSTALL_PREFIX}/lib)
++    SET (CMAKE_INSTALL_LIBDIR ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX})
+   ENDIF (NOT CMAKE_INSTALL_LIBDIR)
+   SET (MASSXPERT_PLUGIN_DIR ${CMAKE_INSTALL_LIBDIR}/massxpert/plugins)
+ 
+   SET (MASSXPERT_LOCALE_DIR ${CMAKE_INSTALL_PREFIX}/share/massxpert/locales)
+-  SET (MASSXPERT_DOC_DIR ${CMAKE_INSTALL_PREFIX}/share/doc/massxpert)
++  SET (MASSXPERT_DOC_DIR ${CMAKE_INSTALL_PREFIX}/share/doc/massxpert-${VERSION})
+   SET (MASSXPERT_USERMAN_DIR ${MASSXPERT_DOC_DIR}/usermanual)
+ ENDIF (UNIX AND NOT APPLE)
+ 
+@@ -144,10 +144,6 @@ IF (${BUILD_PROGRAM})
+   ###############
+   # install stuff
+ 
+-  # The license file
+-  INSTALL (FILES COPYING
+-    DESTINATION ${MASSXPERT_DOC_DIR})
+-
+   # The desktop file
+   IF (UNIX AND NOT APPLE)
+     INSTALL (FILES massxpert.desktop
+@@ -185,10 +181,6 @@ IF (${BUILD_DATA})
+   ###############
+   # install stuff
+   
+-  # The license file
+-  INSTALL (FILES COPYING
+-    DESTINATION ${MASSXPERT_DOC_DIR})
+-  
+   # The manual pages (data)
+   IF (UNIX AND NOT APPLE)
+     INSTALL (FILES massxpert-data.7
+@@ -219,10 +211,6 @@ IF (${BUILD_USERMANUAL})
+   ###############
+   # install stuff
+   
+-  # The license file
+-  INSTALL (FILES COPYING
+-    DESTINATION ${MASSXPERT_DOC_DIR})
+-  
+   # The manual pages (user manual)
+   IF (UNIX AND NOT APPLE)
+     INSTALL (FILES massxpert-doc.7
+diff --git a/gui/configurationSettingsDlg.cpp b/gui/configurationSettingsDlg.cpp
+index bf595d5..82cad21 100644
+--- a/gui/configurationSettingsDlg.cpp
++++ b/gui/configurationSettingsDlg.cpp
+@@ -309,13 +309,11 @@ namespace massXpert
+   bool 
+   ConfigurationSettingsDlg::checkLocalizationDir(const QDir &dir)
+   {
+-    // At the moment there is the french translation: massxpert_fr.qm
++    // Gentoo provides optional installing of translations.
++    // If you decide not to have translations, then this check
++    // would fail.
+ 
+-    QString filePath(dir.absolutePath() +
+-		      QDir::separator() +
+-		      "massxpert_fr.qm");
+-    
+-    return QFile::exists(filePath);
++    return true;
+   }
+   
+ 

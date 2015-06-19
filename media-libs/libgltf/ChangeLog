@@ -1,0 +1,21 @@
+# ChangeLog for media-libs/libgltf
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libgltf/ChangeLog,v 1.4 2015/02/15 14:59:16 ago Exp $
+
+  15 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libgltf-0.0.2.ebuild:
+  Stable for x86, wrt bug #534684
+
+  15 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libgltf-0.0.2.ebuild:
+  Stable for amd64, wrt bug #534684
+
+*libgltf-0.0.2 (27 Dec 2014)
+
+  27 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org> +libgltf-0.0.2.ebuild:
+  Version bump
+
+*libgltf-9999 (14 Sep 2014)
+*libgltf-0.0.1 (14 Sep 2014)
+
+  14 Sep 2014; Andreas K. Huettel <dilfridge@gentoo.org> +libgltf-0.0.1.ebuild,
+  +libgltf-9999.ebuild, +metadata.xml:
+  New library, dependency of libreoffice-4.3. Thanks to Andreas Sturmlechner.

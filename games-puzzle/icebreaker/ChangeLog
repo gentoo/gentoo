@@ -1,0 +1,107 @@
+# ChangeLog for games-puzzle/icebreaker
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/icebreaker/ChangeLog,v 1.23 2015/02/05 03:50:07 mr_bones_ Exp $
+
+  05 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/icebreaker-1.9.5-gentoo.patch, -files/icebreaker-1.9.5-ldflags.patch,
+  -files/icebreaker-1.9.5-parallell-install.patch, -icebreaker-1.9.5.ebuild:
+  old
+
+  28 Jan 2015; Agostino Sarubbo <ago@gentoo.org> icebreaker-1.9.6.ebuild:
+  Stable for ppc, wrt bug #535810
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> icebreaker-1.9.6.ebuild:
+  Stable for x86, wrt bug #535810
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org> icebreaker-1.9.6.ebuild:
+  Stable for amd64, wrt bug #535810
+
+  06 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org> icebreaker-1.9.6.ebuild:
+  use epatch
+
+  24 Jun 2013; Tupone Alfredo <tupone@gentoo.org> icebreaker-1.9.6.ebuild,
+  +files/icebreaker-1.9.6-ovfl.patch:
+  Fix overflow. Bug #458458 by Diego
+
+*icebreaker-1.9.6 (17 Feb 2013)
+
+  17 Feb 2013; Julian Ospald <hasufell@gentoo.org> +icebreaker-1.9.6.ebuild,
+  +files/icebreaker-1.9.6-gentoo.patch, +files/icebreaker-1.9.6-ldflags.patch,
+  +files/icebreaker-1.9.6-parallell-install.patch:
+  version bump
+
+  19 Oct 2010; Tupone Alfredo <tupone@gentoo.org> icebreaker-1.9.5.ebuild,
+  +files/icebreaker-1.9.5-parallell-install.patch:
+  Fix parallel install. Bug #341111 by flameeyes@gentoo.org
+
+  15 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  icebreaker-1.9.5.ebuild:
+  Disable parallel install (bug #341111).
+
+  11 Oct 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  icebreaker-1.9.5.ebuild, +files/icebreaker-1.9.5-gentoo.patch,
+  files/icebreaker-1.9.5-ldflags.patch:
+  clean up compile warnings
+
+  11 Oct 2010; Tupone Alfredo <tupone@gentoo.org> icebreaker-1.9.5.ebuild,
+  +files/icebreaker-1.9.5-ldflags.patch:
+  Respect LDFLAGS. Bug #335797 by flameeyes@gentoo.org
+
+  13 Mar 2007; Tristan Heaven <nyhm@gentoo.org> icebreaker-1.9.5.ebuild:
+  Install menu entry, bug #160226
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  29 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  icebreaker-1.9.5.ebuild:
+  Fixed binaries being pre-stripped. Thanks to Tristan Heaven
+  <tristanheaven@gmail.com> for the patch. Closing bug #137718.
+
+  13 Mar 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  icebreaker-1.9.5.ebuild:
+  X is implicit
+
+  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  icebreaker-1.9.5.ebuild:
+  Removed INSTALL file.
+
+  05 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org> icebreaker-1.9.5.ebuild:
+  stable on amd64
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  25 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org>
+  icebreaker-1.2.1.ebuild, icebreaker-1.9.2.ebuild:
+  tidy older versions of ebuild
+
+*icebreaker-1.9.5 (28 Sep 2003)
+
+  28 Sep 2003; Michael Sterrett <msterret@gentoo.org> icebreaker-1.9.5.ebuild:
+  version bump
+
+*icebreaker-1.9.2 (21 May 2002)
+
+  11 Aug 2002; Seemant Kulleen <seemant@gentoo.org> icebreaker-1.9.2.ebuild :
+
+  Make /var/lib/games the highscore directory instead of
+  /var/local/lib/games
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> icebreaker-1.9.2.ebuild :
+  Added KEYWORDS, SLOT.
+
+  21 May 2002; Seemant Kulleen <seemant@gentoo.org> icebreaker-1.9.2.ebuild
+  files/digest-icebreaker-1.9.2 :
+
+  Version bump to the development branch of the game
+
+*icebreaker-1.2.1 (26 Apr 2002)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> icebreaker-1.2.1.ebuild :
+  Added KEYWORDS, SLOT.
+
+  26 Apr 2002; Seemant Kulleen <seemant@gentoo.org> icebreaker-1.2.1.ebuild
+  files/digest-icebreaker-1.2.1 :
+
+  New game

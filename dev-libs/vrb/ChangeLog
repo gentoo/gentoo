@@ -1,0 +1,45 @@
+# ChangeLog for dev-libs/vrb
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/vrb/ChangeLog,v 1.15 2012/06/06 03:51:43 zmedico Exp $
+
+  06 Jun 2012; Zac Medico <zmedico@gentoo.org> vrb-0.3.0.ebuild:
+  inherit multilib for get_libdir
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> vrb-0.3.0.ebuild,
+  vrb-0.5.1.ebuild:
+  Remove virtual/libc
+
+  06 Aug 2009; Víctor Ostorga <vostorga@gentoo.org> vrb-0.3.0.ebuild,
+  vrb-0.5.1.ebuild, files/vrb-0.5.1-configure.patch:
+  respecting CC variable, CFLAGS, LDFLAGS, omiting -Werror, fixing links,
+  bugs #240232 #243956 #260888
+
+  27 Aug 2008; Raúl Porcel <armin76@gentoo.org> vrb-0.5.1.ebuild:
+  Re-add ~sparc
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> vrb-0.5.1.ebuild:
+  (QA) RESTRICT clean up.
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+*vrb-0.5.1 (08 Mar 2007)
+
+  08 Mar 2007; Anant Narayanan <anant@gentoo.org> +files/vrb-0.5.1-configure.patch,
+  +vrb-0.5.1.ebuild:
+  vBump to 0.5.1, closes bug #167389
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> vrb-0.3.0.ebuild:
+  virtual/glibc -> virtual/libc
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*vrb-0.3.0 (12 Jul 2002)
+
+  12 Jul 2002; Arcady Genkin <agenkin@thpoon.com> vrb-0.3.0.ebuild:
+
+  Initial version.
+  ebuild submitted by Johannes Findeisen <you@hanez.org>.

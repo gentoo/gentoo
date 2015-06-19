@@ -1,0 +1,119 @@
+# ChangeLog for sys-fs/hfsutils
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/hfsutils/ChangeLog,v 1.21 2015/03/20 15:15:24 jlec Exp $
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> hfsutils-3.2.6-r5.ebuild:
+  Fix ebuild layout
+
+  02 Aug 2013; Markus Meier <maekke@gentoo.org> hfsutils-3.2.6-r5.ebuild:
+  add ~arm, bug #473474
+
+  26 Jan 2013; Lars Wendler <polynomial-c@gentoo.org> hfsutils-3.2.6-r5.ebuild,
+  +files/hfsutils-3.2.6-fix-tcl-8.6.patch:
+  Non-maintainer commit: Fixed compilation with tcl-8.6. Thanks to Vicente
+  Olivert Riera for providing a fix and an ebuild patch in bug #451112.
+
+  11 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  hfsutils-3.2.6-r5.ebuild:
+  Fix DEPEND/RDEPEND assignment.
+
+  02 Jun 2009; Raúl Porcel <armin76@gentoo.org> hfsutils-3.2.6-r5.ebuild:
+  sparc stable wrt #262745
+
+  13 Nov 2006; Joseph Jezak <josejx@gentoo.org> -hfsutils-3.2.6.ebuild,
+  -hfsutils-3.2.6-r1.ebuild, -hfsutils-3.2.6-r2.ebuild,
+  -hfsutils-3.2.6-r3.ebuild, hfsutils-3.2.6-r5.ebuild:
+  Fixed bug #150437.  Removed old versions.
+
+  19 Sep 2006; Doug Goldstein <cardoe@gentoo.org> hfsutils-3.2.6-r1.ebuild,
+  hfsutils-3.2.6-r2.ebuild, hfsutils-3.2.6-r3.ebuild,
+  hfsutils-3.2.6-r5.ebuild:
+  tcltk -> tk USE flag change as per bug #17808
+
+*hfsutils-3.2.6-r5 (27 Mar 2006)
+
+  27 Mar 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  -files/hfsutils-3.2.6-softlinks.patch, -hfsutils-3.2.6-r4.ebuild,
+  +hfsutils-3.2.6-r5.ebuild:
+  Removing softlink patch as it breaks the package. Revbumping to force
+  upgrade. See http://forums.gentoo.org/viewtopic-t-446715.html .
+
+  23 Mar 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/hfsutils-3.2.6-softlinks.patch, hfsutils-3.2.6-r4.ebuild:
+  Cleanup ebuild and create softlinks instead of hardlinks.
+
+  02 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  hfsutils-3.2.6-r4.ebuild:
+  Stable on ppc.
+
+  27 Dec 2005; Mark Loeser <halcy0n@gentoo.org> hfsutils-3.2.6-r4.ebuild:
+  Stable on x86; bug #116760
+
+  15 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  hfsutils-3.2.6-r4.ebuild:
+  Export toolchain commands, allowing to distcc on a non-ppc server.
+
+  05 Sep 2005; Markus Rothe <corsair@gentoo.org> hfsutils-3.2.6-r4.ebuild:
+  Stable on ppc64
+
+  02 Aug 2005; Simon Stelling <blubb@gentoo.org> hfsutils-3.2.6-r4.ebuild:
+  stable on amd64
+
+  23 Jun 2005; Simon Stelling <blubb@gentoo.org> hfsutils-3.2.6-r4.ebuild:
+  added ~amd64 keyword
+
+*hfsutils-3.2.6-r4 (05 Feb 2005)
+
+  05 Feb 2005; Michael Hanselmann <hansmi@gentoo.org>
+  +files/largerthan2gb.patch, +hfsutils-3.2.6-r4.ebuild:
+  New revision with support for files larger than 2 GB, see bug 80093.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  hfsutils-3.2.6-r3.ebuild:
+  virtual/glibc -> virtual/libc
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> hfsutils-3.2.6-r2.ebuild,
+  hfsutils-3.2.6-r3.ebuild:
+  Add inherit eutils
+
+  26 Apr 2004; Jason Wever <weeve@gentoo.org> hfsutils-3.2.6-r3.ebuild:
+  Added ~sparc keyword to resolve bug #48564.
+
+*hfsutils-3.2.6 (15 Sep 2003)
+
+  15 Sep 2003; Seemant Kulleen <seemant@gentoo.org> hfsutils-3.2.6-r1.ebuild,
+  hfsutils-3.2.6-r2.ebuild, hfsutils-3.2.6-r3.ebuild, hfsutils-3.2.6.ebuild,
+  files/hfsutils-3.2.6-errno.patch:
+  moved to sys-fs
+
+*hfsutils-3.2.6-r3 (11 Apr 2003)
+
+  11 Apr 2003; Pieter Van den Abeele <pvdabeel@gentoo.org> hfsutils-3.2.6-r3.ebuild:
+  Now also makes and installs hfsck
+
+*hfsutils-3.2.6-r2 (31 Mar 2003)
+
+  31 Mar 2003; Luca Barbato <lu_zero@gentoo.org> hfsutils-3.2.6-r2.ebuild:
+  Fix the errno issue on glibc-2.3.2
+
+*hfsutils-3.2.6-r1 (04 Feb 2003)
+
+  04 Feb 2002; Jon Nall <nall@gentoo.org> hfsutils-3.2.6-r1.ebuild,
+  files/digest-hfsutils-3.2.6-r1 :
+  added tcltk dependency if tcltk use var is set
+
+*hfsutils-3.2.6 (Sun Mar 17 23:27:28 CST 2002)
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> hfsutils-3.2.6.ebuild :
+  Added KEYWORDS.
+
+June 21 2002 Gerk (gerk@gentoo.org)
+
+	Added ARCH checks
+
+
+Sun Mar 17 23:29:06 CST 2002; Kain <kain@kain.org> all:
+
+	This is an initial .ebuild for hfsutils 3.2.6 for ppc machines.

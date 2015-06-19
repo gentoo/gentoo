@@ -1,0 +1,56 @@
+# ChangeLog for net-misc/netpipes
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netpipes/ChangeLog,v 1.14 2014/07/18 19:53:46 jer Exp $
+
+  18 Jul 2014; Jeroen Roovers <jer@gentoo.org> -netpipes-4.2-r1.ebuild,
+  netpipes-4.2-r2.ebuild, metadata.xml:
+  Use dodir instead of mkdir.
+
+  04 May 2014; Agostino Sarubbo <ago@gentoo.org> netpipes-4.2-r2.ebuild:
+  Stable for x86, wrt bug #502898
+
+  30 Apr 2014; Chema Alonso <nimiux@gentoo.org> netpipes-4.2-r2.ebuild:
+  Stable for amd64 wrt bug #502898
+
+*netpipes-4.2-r2 (29 Nov 2013)
+
+  29 Nov 2013; Jeroen Roovers <jer@gentoo.org> netpipes-4.2-r1.ebuild,
+  +netpipes-4.2-r2.ebuild, files/netpipes-4.2-string.patch:
+  Fix Manifest/WORKDIR for upstream repackaging. Clean up.
+
+  19 Dec 2011; Tim Harder <radhermit@gentoo.org> -netpipes-4.2.ebuild:
+  Remove old.
+
+  15 Dec 2011; Agostino Sarubbo <ago@gentoo.org> netpipes-4.2-r1.ebuild:
+  Stable for AMD64, wrt bug #393907
+
+  14 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> netpipes-4.2-r1.ebuild:
+  x86 stable wrt bug #393907
+
+*netpipes-4.2-r1 (16 Sep 2010)
+
+  16 Sep 2010; Jeroen Roovers <jer@gentoo.org> +netpipes-4.2-r1.ebuild:
+  Respect LDFLAGS (bug #337648). Clean up.
+
+  08 Nov 2008; Cédric Krier <cedk@gentoo.org>
+  +files/netpipes-4.2-string.patch, netpipes-4.2.ebuild:
+  Fix C(XX)FLAGS for bug #241074, add missing quote and add missing string.h
+
+  20 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  22 Oct 2006; Thomas Cort <tcort@gentoo.org> netpipes-4.2.ebuild:
+  Added ~amd64 keyword wrt Bug #138357.
+
+  05 Aug 2006; Chris White <chriswhite@gentoo.org> metadata.xml:
+  metadata.xml translation by Yoshino-san in bug #136639
+
+  13 Jan 2005; Sven Wegener <swegener@gentoo.org> :
+  Added missing digest entries.
+
+*netpipes-4.2 (13 Jan 2005)
+
+  13 Jan 2005; Daniel Black <dragonheart@gentoo.org> +netpipes-4.2.ebuild,
+  metadata.xml:
+  Initial import as per bug #72959. Thanks to the author thoth@purplefrog.com
+  for the program and ebuild

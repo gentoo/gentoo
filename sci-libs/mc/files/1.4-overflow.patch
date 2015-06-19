@@ -1,0 +1,13 @@
+diff --git a/src/gem/gemdisp.c b/src/gem/gemdisp.c
+index 01f277f..96d5851 100644
+--- a/src/gem/gemdisp.c
++++ b/src/gem/gemdisp.c
+@@ -1631,7 +1631,7 @@ VPUBLIC void Gem_writeDX(Gem *thee, Vio *sock,
+ VPUBLIC void Gem_writeTEC(Gem *thee, Vio *sock,
+     int fldKey, double *defX[MAXV])
+ {
+-    char str1[10], str2[10];
++    char str1[16], str2[16];
+     int i, j, vec, dim, dimII, dimVV, numVV, numSS;
+     VV *vx;
+     SS *sm;

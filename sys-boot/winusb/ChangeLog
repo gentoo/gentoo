@@ -1,0 +1,12 @@
+# ChangeLog for sys-boot/winusb
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/winusb/ChangeLog,v 1.3 2015/01/02 18:11:42 zlogene Exp $
+
+  02 Jan 2015; Mikle Kolyada <zlogene@gentoo.org> winusb-1.0.11.ebuild:
+  Mark stable
+
+*winusb-1.0.11 (11 May 2014)
+
+  11 May 2014; Jan Matejka <yac@gentoo.org> +metadata.xml,
+  +winusb-1.0.11.ebuild:
+  Adding sys-boot/winusb

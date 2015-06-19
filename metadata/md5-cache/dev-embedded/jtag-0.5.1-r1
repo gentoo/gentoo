@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare
+DEPEND=dev-embedded/include
+DESCRIPTION=Software for working with JTAG-aware (IEEE 1149.1) devices (parts) and boards through JTAG adapter
+EAPI=4
+HOMEPAGE=http://openwince.sourceforge.net/jtag/
+KEYWORDS=x86 sparc ~ppc
+LICENSE=GPL-2
+RDEPEND=dev-embedded/include !dev-embedded/urjtag
+SLOT=0
+SRC_URI=mirror://sourceforge/openwince/jtag-0.5.1.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d4196fc6fc39e87b398b211eeea33bcf

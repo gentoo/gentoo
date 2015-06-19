@@ -1,0 +1,416 @@
+# ChangeLog for media-sound/grip
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/grip/ChangeLog,v 1.99 2012/11/22 15:31:19 polynomial-c Exp $
+
+  22 Nov 2012; Lars Wendler <polynomial-c@gentoo.org> -grip-3.3.1-r2.ebuild,
+  grip-3.3.1-r3.ebuild:
+  non-maintainer commit: Updated homepage. Removed old version.
+
+  17 Jun 2012; Raúl Porcel <armin76@gentoo.org> grip-3.3.1-r3.ebuild:
+  alpha/ia64/sparc stable wrt #414825
+
+  29 May 2012; Brent Baude <ranger@gentoo.org> grip-3.3.1-r3.ebuild:
+  Marking grip-3.3.1-r3 ppc for bug 414825
+
+  23 May 2012; Brent Baude <ranger@gentoo.org> grip-3.3.1-r3.ebuild:
+  Marking grip-3.3.1-r3 ppc64 for bug 414825
+
+  21 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> grip-3.3.1-r3.ebuild:
+  x86 stable wrt bug #414825
+
+  21 May 2012; Samuli Suominen <ssuominen@gentoo.org> grip-3.3.1-r2.ebuild,
+  grip-3.3.1-r3.ebuild:
+  Remove gnome-extra/yelp from dependencies to avoid pulling vulnerably copy of
+  net-libs/xulrunner wrt #416843; futhermore, grip will work fine without yelp
+  even if this wasn't the case.
+
+  08 May 2012; Agostino Sarubbo <ago@gentoo.org> grip-3.3.1-r3.ebuild:
+  Stable for amd64, wrt bug #414825
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> grip-3.3.1-r2.ebuild,
+  grip-3.3.1-r3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> grip-3.3.1-r2.ebuild,
+  grip-3.3.1-r3.ebuild:
+  Use SLOT dependencies for x11-libs/vte.
+
+  20 Feb 2011; Mike Frysinger <vapier@gentoo.org> grip-3.3.1-r3.ebuild:
+  Touchup style, and fix building with newer versions of bash.
+
+*grip-3.3.1-r3 (15 Oct 2010)
+
+  15 Oct 2010; Lars Wendler <polynomial-c@gentoo.org> -grip-3.3.1.ebuild,
+  +grip-3.3.1-r3.ebuild, +files/grip-3.3.1-invalid-genre-size.patch:
+  Fixed segfault caused by invalid size in ID3 genre code. Thanks to Adrian
+  Smith for reporting this in bug #285105 and to Frédéric Fauberteau for
+  providing the patch.
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org> grip-3.3.1.ebuild,
+  grip-3.3.1-r2.ebuild:
+  Drop HPPA keywording (bug #324511).
+
+  09 Jul 2010; Pacho Ramos <pacho@gentoo.org> grip-3.3.1-r2.ebuild:
+  Drop hppa stable keyword per bug #324511 because they won't stabilize yelp
+  any longer.
+
+  25 Jun 2009; Raúl Porcel <armin76@gentoo.org> grip-3.3.1-r2.ebuild:
+  ia64/sparc stable wrt #272802
+
+  19 Jun 2009; Brent Baude <ranger@gentoo.org> grip-3.3.1-r2.ebuild:
+  stable ppc64, bug 272802
+
+  16 Jun 2009; Tobias Klausmann <klausman@gentoo.org> grip-3.3.1-r2.ebuild:
+  Stable on alpha, bug #272802
+
+  10 Jun 2009; Markus Meier <maekke@gentoo.org> grip-3.3.1-r2.ebuild:
+  amd64/x86 stable, bug #272802
+
+  07 Jun 2009; Jeroen Roovers <jer@gentoo.org> grip-3.3.1-r2.ebuild:
+  Stable for HPPA (bug #272802).
+
+  07 Jun 2009; nixnut <nixnut@gentoo.org> grip-3.3.1-r2.ebuild:
+  ppc stable #272802
+
+  08 Mar 2009; Mike Frysinger <vapier@gentoo.org>
+  files/grip-3.3.1-implicit-declaration.patch:
+  Fix more implict decls (some of which cause failures on 64bit systems).
+
+*grip-3.3.1-r2 (05 Mar 2009)
+
+  05 Mar 2009; Steve Dibb <beandog@gentoo.org> +grip-3.3.1-r2.ebuild:
+  Add yelp dependency
+
+  13 Jan 2008; Alexis Ballier <aballier@gentoo.org> grip-3.3.1.ebuild,
+  grip-3.3.1-r1.ebuild:
+  add missing pkgconfig dep, bug #205649
+
+  01 Oct 2007; Joe Peterson <lavajoe@gentoo.org> grip-3.3.1-r1.ebuild:
+  Add elibtoolize (required for FreeBSD)
+
+*grip-3.3.1-r1 (29 Jul 2007)
+
+  29 Jul 2007; Samuli Suominen <drac@gentoo.org>
+  +files/grip-3.3.1-implicit-declaration.patch, +grip-3.3.1-r1.ebuild:
+  Fix warning, implicit declaration of built-in function strlen.
+
+  20 Jun 2007; Raúl Porcel <armin76@gentoo.org> grip-3.3.1.ebuild:
+  alpha/ia64 stable wrt #136137, thanks to Tobias Klausmann for testing
+
+  19 May 2007; Peter Weller <welp@gentoo.org> grip-3.3.1.ebuild:
+  Keyworded ~x86-fbsd wrt bug 178236
+
+  01 Feb 2007; Jeroen Roovers <jer@gentoo.org> grip-3.3.1.ebuild:
+  Stable for HPPA (bug #136137).
+
+  01 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org> grip-3.3.1.ebuild:
+  Stable on sparc wrt #136137
+
+  01 Feb 2007; Markus Rothe <corsair@gentoo.org> grip-3.3.1.ebuild:
+  Stable on ppc64; bug #136137
+
+  01 Feb 2007; Christian Faulhammer <opfer@gentoo.org> grip-3.3.1.ebuild:
+  stable x86; bug #136137
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> grip-3.3.0.ebuild,
+  grip-3.3.1.ebuild:
+  Remove gnuconfig inherit.
+
+  24 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org> grip-3.3.1.ebuild:
+  Stable on ppc.
+
+  07 Dec 2006; Steve Dibb <beandog@gentoo.org> grip-3.3.1.ebuild:
+  amd64 stable, bug 136137
+
+  17 Nov 2006; Timothy Redaelli <drizzt@gentoo.org> grip-3.3.0.ebuild,
+  grip-3.3.1.ebuild:
+  Removed libghttp dep wrt bug #155428.
+  Authorized by Tony Vroon.
+
+  03 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org> grip-3.3.0.ebuild:
+  hppa stable
+
+  16 Jun 2006; Diego Pettenò <flameeyes@gentoo.org> grip-3.3.0.ebuild,
+  grip-3.3.1.ebuild:
+  Remove gnuconfig update.
+
+  03 Apr 2006; Patrick McLean <chutzpah@gentoo.org> grip-3.3.0.ebuild,
+  grip-3.3.1.ebuild:
+  Strip all unsupported LINGUAS values (bug #128453)
+
+  26 Dec 2005; Luca Barbato <lu_zero@gentoo.org> grip-3.3.0.ebuild,
+  grip-3.3.1.ebuild:
+  oggvorbis Cleanup
+
+  07 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> grip-3.3.0.ebuild,
+  grip-3.3.1.ebuild:
+  Don't require db-1 as that is probably an old dependency no more needed as
+  far as I can see. Look at bug #111766. Also use $(tc-arch) to see if it's
+  x86 architecture.
+
+*grip-3.3.1 (09 Oct 2005)
+
+  09 Oct 2005; <chainsaw@gentoo.org> +grip-3.3.1.ebuild:
+  Version bump, closes bug #104104.
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> grip-3.3.0.ebuild:
+  Mark 3.3.0 stable on ia64
+
+  31 Aug 2005; Aron Griffis <agriffis@gentoo.org> grip-3.3.0.ebuild:
+  add ~ia64
+
+  18 Mar 2005; Chris White <chriswhite@gentoo.org> -grip-3.2.0-r1.ebuild,
+  -grip-3.2.0.ebuild:
+  Removing insecure versions per bug #84704.
+
+  17 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> grip-3.3.0.ebuild:
+  Stable on alpha, bug 84704.
+
+  14 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> grip-3.3.0.ebuild:
+  stable on amd64 and x86 wrt #84704
+
+  14 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> grip-3.3.0.ebuild:
+  Stable on sparc wrt #84704
+
+  14 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> grip-3.3.0.ebuild:
+  Stable on ppc.
+
+  14 Mar 2005; Markus Rothe <corsair@gentoo.org> grip-3.3.0.ebuild:
+  Stable on ppc64; bug #84704
+
+*grip-3.3.0 (13 Mar 2005)
+
+  13 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +files/3.3.0-crashfix.patch, +grip-3.3.0.ebuild:
+  new upstream version, fixes #84223. added a patch to fix a buffer overflow,
+  see #84704
+
+*grip-3.2.0-r1 (02 Mar 2005)
+
+  02 Mar 2005; Tony Vroon <chainsaw@gentoo.org>
+  -files/grip-3.0.6-NPTL-compat.patch, -files/grip-3.1.4-cdda.patch,
+  -files/grip-3.1.8-statuscheck-lp64.patch,
+  -files/grip-3.1.9-statuscheck-lp64.patch, +files/grip-3.2.0-proxy.patch,
+  -grip-3.0.3.ebuild, +grip-3.2.0-r1.ebuild:
+  Patch to fix proxy support for CDDB fetches, closes bug #83539. Also purged
+  one old ebuild and several stale patches.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> grip-3.2.0.ebuild:
+  Stable on ppc64
+
+  28 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org> grip-3.2.0.ebuild:
+  Added -mno-sse to fix bug #69536.
+
+  08 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> grip-3.2.0.ebuild:
+  gnuconfig_update in src_unpack
+
+  06 Nov 2004; Lars Weiler <pylon@gentoo.org> grip-3.2.0.ebuild:
+  Stable on ppc.
+
+  01 Nov 2004; Markus Rothe <corsair@gentoo.org>
+
+  grip-3.2.0.ebuild:
+  Marked ~ppc64; bug #64636
+
+  31 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> grip-3.2.0.ebuild:
+  Only install .desktop to applications.
+
+  19 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> -grip-3.0.7.ebuild,
+  -grip-3.1.10.ebuild, -grip-3.1.9.ebuild:
+  Removing old versions.
+
+  13 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> grip-3.2.0.ebuild:
+  Stable on alpha.
+
+  18 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org> grip-3.2.0.ebuild:
+  Stable amd64.
+
+  13 Jun 2004; Jason Wever <weeve@gentoo.org> grip-3.2.0.ebuild:
+  Stable on sparc.
+
+  30 May 2004; Jeremy Huddleston <eradicator@gentoo.org> grip-3.2.0.ebuild:
+  Stable x86.
+
+*grip-3.2.0 (28 Apr 2004)
+
+  28 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> grip-3.2.0.ebuild:
+  Version bump closes bug #49186.
+
+*grip-3.1.10 (24 Apr 2004)
+
+  24 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> grip-3.1.10.ebuild,
+  grip-3.1.5.ebuild, grip-3.1.8.ebuild:
+  Version bump and removed old versions.
+
+  03 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> grip-3.1.9.ebuild,
+  files/grip-3.1.9-statuscheck-lp64.patch:
+  Readding the amd64 fix for the new version.
+
+*grip-3.1.9 (03 Apr 2004)
+
+  03 Apr 2004; Brandon Low <lostlogic@gentoo.org> grip-3.1.9.ebuild:
+  Bump unstable
+
+  02 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> grip-3.1.8.ebuild:
+  Added net-misc/curl dep.  Only 3.1.8 seems to need it.  Closes bug #46398.
+
+  01 Apr 2004; Jason Eric Huebel <jhuebel@gentoo.org> grip-3.1.8.ebuild,
+  files/grip-3.1.8-statuscheck-lp64.patch:
+  patch for AMD64 SMP crash, submitted by Brian Silverthorn <bcs26@cornell.edu>
+
+*grip-3.1.8 (30 Mar 2004)
+
+  30 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> grip-3.0.3.ebuild,
+  grip-3.0.7.ebuild, grip-3.1.7.ebuild, grip-3.1.8.ebuild:
+  Version bump.  Removing buggy version.  See bug #45922
+
+*grip-3.1.7 (22 Mar 2004)
+
+  22 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> grip-3.1.4.ebuild,
+  grip-3.1.7.ebuild:
+  Removing old ebuild.  Version bump closes bug #45449.
+
+*grip-3.1.5 (07 Mar 2004)
+
+  07 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> grip-3.1.5.ebuild:
+  Version bump.  Closes bug #43805.
+
+  07 Feb 2004; Aron Griffis <agriffis@gentoo.org> grip-3.1.4.ebuild:
+  stable on alpha
+
+  27 Jan 2004; Jason Wever <weeve@gentoo.org> grip-3.1.4.ebuild:
+  Added ~sparc keyword.
+
+  23 Jan 2004; Nick Hadaway <raker@gentoo.org> grip-*.ebuild:
+  Loosened gtk+ dependancy on the 3.1.x series.  See bug #36490.  Thanks
+  to Adam for testing grip with gtk+-2.3.1.  Also updated copyright 
+  years.
+
+*grip-3.1.4 (03 Jan 2004)
+
+  03 Jan 2004; Martin Holzer <mholzer@gentoo.org> grip-3.1.4.ebuild,
+  files/grip-3.1.4-cdda.patch:
+  Version bumped. Closes 36744
+
+  20 Dec 2003; Guy Martin <gmsoft@gentoo.org> grip-3.1.3.ebuild:
+  Marked stable on hppa.
+
+*grip-3.1.3 (04 Nov 2003)
+
+  04 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> grip-3.1.3.ebuild:
+  development version bump
+
+  27 Oct 2003; Brad House <brad_mssw@gentoo.org> grip-3.1.2.ebuild:
+  add ~amd64 flag
+
+*grip-3.1.2 (19 Oct 2003)
+
+  19 Oct 2003; Martin Holzer <mholzer@gentoo.org> grip-3.1.2.ebuild:
+  Version bumped. Closes #30914
+
+*grip-3.1.1-r1 (13 Jul 2003)
+
+  13 Jul 2003; <spider@gentoo.org> grip-3.1.1-r1.ebuild:
+  Removing old dependency of gnome-libs (those are gnome 1.4 not 2.x)
+
+  11 Jul 2003; Martin Holzer <mholzer@gentoo.org> grip-3.1.1.ebuild:
+  Added Depend. Closes #24310.
+
+*grip-3.1.1 (11 Jul 2003)
+
+  11 Jul 2003; Martin Holzer <mholzer@gentoo.org> grip-3.1.1.ebuild:
+  Version bumped. Closes #24275
+
+  26 Apr 2003; Martin Schlemmer <azarah@gentoo.org> :
+  Rip NPTL stuff, as its no longer needed.
+
+*grip-3.0.7 (23 Apr 2003)
+
+  23 Apr 2003;  Arcady Genkin <agenkin@gentoo.org> :
+  Version bump.
+
+*grip-3.0.6 (16 Feb 2003)
+
+  25 Mar 2003; Aron Griffis <agriffis@gentoo.org> grip-3.0.6.ebuild:
+  Add ~alpha to KEYWORDS
+
+  06 March 2003; Martin Schlemmer <azarah@gentoo.org> grip-3.0.6.ebuild :
+  The NPTL pthreads implementation do not support the
+  pthread_kill_other_threads_np function, as its a true posix threading
+  library .. patch grip thus to use pthread_kill if we are using NPTL.
+
+  16 Feb 2003;  Arcady Genkin <agenkin@gentoo.org> :
+  Version bump.
+
+*grip-3.0.5 (21 Jan 2003)
+
+  21 Jan 2003;  Arcady Genkin <agenkin@gentoo.org> :
+  Version bump.
+
+*grip-3.0.4 (30 Dec 2002)
+
+  30 Dec 2002; Ryan Phillips <rphillips@gentoo.org> grip-3.0.4.ebuild :
+  Version bump
+
+*grip-3.0.3 (26 Sep 2002)
+
+  26 Sep 2002; Arcady Genkin <agenkin@gentoo.org> grip-3.0.3.ebuild :
+
+  Update to 3.0.3.
+  Moved Makefile.in mangling into src_unpack(), where it belongs.
+  Commented out src_unpack(), since the aforementioned mangling no
+  longer seems to be required.
+
+*grip-3.0.1 (19 Jun 2002)
+
+  19 Jun 2002; Arcady Genkin <agenkin@thpoon.com> grip-3.0.1.ebuild :
+
+  Version 3.0.1 is out.
+
+*grip-3.0.0-r1 (25 Apr 2002)
+
+  25 Apr 2002; Seemant Kulleen <seemant@gentoo.org> grip-3.0.0-r1.ebuild
+  files/digest-grip-3.0.0 :
+
+  Added db1 to the DEPEND list. Thanks to: ivar_k@hotmail.com (Ivar Kvalvik)
+  in bug #1980
+
+*grip-3.0.0 (19 Apr 2002)
+
+  19 Apr 2002; Seemant Kulleen <seemant@gentoo.org> grip-3.0.0.ebuild :
+
+  Version bump to newest stable
+
+*grip-2.98.6-r1 (12 Apr 2002)
+
+  12 Apr 2002; Seemant Kulleen <seemant@gentoo.org> grip-2.98.6-r1.ebuild :
+
+  Changed ogg flag to oggvorbis instead.
+
+*grip-2.98.6 (11 Feb 2002)
+
+  11 Feb 2002; Bruce A. Locke <blocke@shivan.org> ChangeLog:
+
+  Grip 2.98.6 with added optional ogg dependency
+
+*grip-2.98.5 (1 Feb 2002)
+  
+  1 Feb 2002; T.Neidt <tod@gentoo.org> ChangeLog :
+
+  New version released to fix nasty bug in 2.98.3 that caused grip to crash
+  after ripping the last track of a cd.  No changes to the ebuild, just a 
+  copy of grip-2.98.3-r1.ebuild to grip-2.98.5.ebuild. =media-sound/grip-2.98.3
+  has been package masked.
+  
+*grip-2.98.3-r1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

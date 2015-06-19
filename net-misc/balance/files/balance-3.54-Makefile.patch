@@ -1,0 +1,52 @@
+--- balance-3.54/Makefile
++++ balance-3.54/Makefile
+@@ -1,14 +1,14 @@
+ # $Id: balance-3.54-Makefile.patch,v 1.1 2012/06/16 22:51:30 xmw Exp $
+ 
+ #CFLAGS=-g -I.
+-CFLAGS=-O2 -Wall -Wstrict-prototypes -Wuninitialized
++CFLAGS+=-Wall -Wstrict-prototypes -Wuninitialized
+ 
+ # uncomment for any OS other than Cygwin
+ BALANCE=balance
+ ROOT=root
+ INSTALL=install
+ BINDIR=/usr/sbin
+-MANDIR=${BINDIR}/../man/man1
++MANDIR=/usr/share/man/man1
+ 
+ # uncomment for Solaris:
+ # LIBRARIES=-lsocket -lnsl
+@@ -20,13 +20,13 @@
+ # BALANCE=balance.exe
+ # ROOT=Administrators
+ 
+-CC=gcc
++CC?=gcc
+ RELEASE=3.54
+ 
+ all: balance 
+ 
+ balance: balance.o butils.o
+-	$(CC) $(CFLAGS) -I. -o balance balance.o butils.o $(LIBRARIES)
++	$(CC) $(CFLAGS) $(LDFLAGS) -I. -o balance balance.o butils.o $(LIBRARIES)
+ 
+ balance.o: balance.c balance.h
+ 	$(CC) $(CFLAGS) -I. -c balance.c
+@@ -48,12 +48,15 @@
+ 	rm -f $(BALANCE) *.o balance.ps balance.pdf
+ 
+ install:
++	$(INSTALL) -o $(ROOT) -g $(ROOT) -m 755  -d \
++		$(DESTDIR)$(BINDIR) \
++		$(DESTDIR)$(MANDIR)
+ 	$(INSTALL) -o $(ROOT) -g $(ROOT) -m 755  $(BALANCE) \
+ 		$(DESTDIR)$(BINDIR)/$(BALANCE) 
+ 	$(INSTALL) -o $(ROOT) -g $(ROOT) -m 755  balance.1 \
+ 		$(DESTDIR)$(MANDIR) 
+ 	mkdir -p $(DESTDIR)/var/run/balance
+-	chmod 1777 $(DESTDIR)/var/run/balance
++	chmod 1755 $(DESTDIR)/var/run/balance
+ 
+ release: balance.pdf
+ 	rm -rf ./releases/balance-$(RELEASE)

@@ -1,0 +1,52 @@
+# ChangeLog for x11-plugins/wmapm
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmapm/ChangeLog,v 1.14 2012/02/15 09:44:03 voyageur Exp $
+
+  15 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org> wmapm-3.1-r1.ebuild:
+  Update HOMEPAGE and SRC_URI, thanks Lorenz in bug #394607
+
+  11 Oct 2010; Michele Noberasco <s4t4n@gentoo.org>; wmapm-3.1-r1.ebuild:
+  Fixed HOMEPAGE and SRC_URI, closing bug #338810.
+
+  31 Aug 2010; Michele Noberasco <s4t4n@gentoo.org>; wmapm-3.1-r1.ebuild:
+  Honour LDFLAGS, see bug #334747.
+  Honour CFLAGS.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; wmapm-3.1-r1.ebuild:
+  Drop virtual/x11 references.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  22 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml:
+  Moved to desktop-dock.
+
+  22 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> -wmapm-3.1.ebuild,
+  wmapm-3.1-r1.ebuild:
+  Fixed DEPEND for modular X.
+
+  31 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org> wmapm-3.1-r1.ebuild:
+  Fixed dodoc not to install COPYING and INSTALL.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*wmapm-3.1-r1 (03 Nov 2002)
+
+  03 Nov 2002; Seemant Kulleen <seemant@gentoo.org> wmapm-3.1-r1.ebuild
+  files/digest-wmapm-3.1-r1 :
+
+  Made more FHS compliant, and installed documentation.
+
+*wmapm-3.1 (1 Feb 2002)
+  
+  29 Aug 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
+  Relocated to x11-plugins
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

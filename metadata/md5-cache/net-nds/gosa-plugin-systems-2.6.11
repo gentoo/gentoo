@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=GOsa plugin for common systems integration
+EAPI=3
+HOMEPAGE=https://oss.gonicus.de/labs/gosa/wiki/WikiStart.
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=~net-nds/gosa-core-2.6.11
+SLOT=0
+SRC_URI=ftp://oss.gonicus.de/pub/gosa/gosa-plugin-systems-2.6.11.tar.bz2 http://oss.gonicus.de/pub/gosa/gosa-plugin-systems-2.6.11.tar.bz2 ftp://oss.gonicus.de/pub/gosa/archive/gosa-plugin-systems-2.6.11.tar.bz2 http://oss.gonicus.de/pub/gosa/archive/gosa-plugin-systems-2.6.11.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d06c3d4ff4df291b4fdae4e181386026

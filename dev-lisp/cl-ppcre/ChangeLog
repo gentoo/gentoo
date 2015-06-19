@@ -1,0 +1,248 @@
+# ChangeLog for dev-lisp/cl-ppcre
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-ppcre/ChangeLog,v 1.52 2015/05/23 15:14:52 pacho Exp $
+
+  23 May 2015; Pacho Ramos <pacho@gentoo.org> cl-ppcre-1.2.16.ebuild:
+  x86 stable wrt bug #511170
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> cl-ppcre-1.2.10.ebuild,
+  cl-ppcre-1.2.11.ebuild, cl-ppcre-1.2.12.ebuild, cl-ppcre-1.2.13.ebuild,
+  cl-ppcre-1.2.14.ebuild, cl-ppcre-1.2.15.ebuild, cl-ppcre-1.2.16.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  11 Jul 2014; Patrick Lauer <patrick@gentoo.org> cl-ppcre-1.2.16.ebuild:
+  Stable on amd64 #511170
+
+  07 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  cl-ppcre-1.2.16.ebuild:
+  Transfer Prefix keywords
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*cl-ppcre-1.2.16 (23 Jul 2006)
+
+  23 Jul 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  +cl-ppcre-1.2.16.ebuild:
+  New upstream version.
+
+*cl-ppcre-1.2.15 (09 Jul 2006)
+
+  09 Jul 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  +cl-ppcre-1.2.15.ebuild:
+  New upstream version.
+
+*cl-ppcre-1.2.14 (24 May 2006)
+
+  24 May 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  +cl-ppcre-1.2.14.ebuild:
+  New upstream version.
+
+*cl-ppcre-1.2.13 (06 Dec 2005)
+
+  06 Dec 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +cl-ppcre-1.2.13.ebuild:
+  New upstream version.
+
+*cl-ppcre-1.2.12 (02 Nov 2005)
+
+  02 Nov 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +cl-ppcre-1.2.12.ebuild:
+  New upstream version.
+
+*cl-ppcre-1.2.11 (02 Aug 2005)
+
+  02 Aug 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +cl-ppcre-1.2.11.ebuild:
+  New upstream version.
+
+*cl-ppcre-1.2.10 (21 Jul 2005)
+
+  21 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org> -cl-ppcre-1.2.7.ebuild,
+  -cl-ppcre-1.2.8.ebuild, +cl-ppcre-1.2.10.ebuild:
+  New upstream version.
+
+*cl-ppcre-1.2.8 (10 Jun 2005)
+
+  10 Jun 2005; Matthew Kennedy <mkennedy@gentoo.org> +cl-ppcre-1.2.8.ebuild:
+  New upstream version.
+
+  24 May 2005; <mkennedy@gentoo.org> cl-ppcre-1.2.7.ebuild:
+  Keywording ~sparc
+
+*cl-ppcre-1.2.7 (18 May 2005)
+
+  18 May 2005; Matthew Kennedy <mkennedy@gentoo.org> -cl-ppcre-1.2.6.ebuild,
+  +cl-ppcre-1.2.7.ebuild:
+  New upstream version.
+
+  17 Apr 2005; Matthew Kennedy <mkennedy@gentoo.org> -cl-ppcre-1.2.1.ebuild,
+  -cl-ppcre-1.2.3.ebuild, -cl-ppcre-1.2.4.ebuild, -cl-ppcre-1.2.5.ebuild:
+  Removed old ebuilds.
+
+*cl-ppcre-1.2.6 (13 Apr 2005)
+
+  13 Apr 2005; Matthew Kennedy <mkennedy@gentoo.org> +cl-ppcre-1.2.6.ebuild:
+  New upstream version.
+
+  18 Mar 2005; Matthew Kennedy <mkennedy@gentoo.org> cl-ppcre-1.2.5.ebuild:
+  Keywording for ~amd64
+
+*cl-ppcre-1.2.5 (09 Mar 2005)
+
+  09 Mar 2005; Matthew Kennedy <mkennedy@gentoo.org> +cl-ppcre-1.2.5.ebuild:
+  New upstream version.
+
+*cl-ppcre-1.2.4 (08 Mar 2005)
+
+  08 Mar 2005; Matthew Kennedy <mkennedy@gentoo.org> +cl-ppcre-1.2.4.ebuild:
+  New upstream version.
+
+*cl-ppcre-1.2.3 (02 Feb 2005)
+
+  02 Feb 2005; Matthew Kennedy <mkennedy@gentoo.org> -cl-ppcre-0.9.4.ebuild,
+  -cl-ppcre-1.0.0.ebuild, -cl-ppcre-1.1.0.ebuild, +cl-ppcre-1.2.3.ebuild:
+  New upstream version; Removed older ebuilds.
+
+*cl-ppcre-1.2.1 (24 Jan 2005)
+
+  24 Jan 2005; Matthew Kennedy <mkennedy@gentoo.org> +cl-ppcre-1.2.1.ebuild:
+  New upstream version.
+
+*cl-ppcre-1.1.0 (23 Jan 2005)
+
+  23 Jan 2005; Matthew Kennedy <mkennedy@gentoo.org> +cl-ppcre-1.1.0.ebuild:
+  New upstream version.
+
+*cl-ppcre-1.0.0 (22 Dec 2004)
+
+  22 Dec 2004; Matthew Kennedy <mkennedy@gentoo.org> +cl-ppcre-1.0.0.ebuild:
+  New upstream version
+
+*cl-ppcre-0.9.4 (18 Dec 2004)
+
+  18 Dec 2004; Matthew Kennedy <mkennedy@gentoo.org> -cl-ppcre-0.9.0.ebuild,
+  -cl-ppcre-0.9.1.ebuild, -cl-ppcre-0.9.2.ebuild, -cl-ppcre-0.9.3.ebuild,
+  +cl-ppcre-0.9.4.ebuild:
+  New upstream version; Purged older ebuilds.
+
+*cl-ppcre-0.9.2 (09 Dec 2004)
+
+  09 Dec 2004; Matthew Kennedy <mkennedy@gentoo.org> +cl-ppcre-0.9.2.ebuild,
+  +cl-ppcre-0.9.3.ebuild:
+  New upstream version.
+
+*cl-ppcre-0.9.1 (01 Dec 2004)
+
+  01 Dec 2004; Matthew Kennedy <mkennedy@gentoo.org> -cl-ppcre-0.7.9.ebuild,
+  -cl-ppcre-0.8.1.ebuild, +cl-ppcre-0.9.1.ebuild:
+  New upstream version; purged older major versions.
+
+*cl-ppcre-0.9.0 (15 Oct 2004)
+
+  15 Oct 2004; <mkennedy@gentoo.org> -cl-ppcre-0.7.3-r1.ebuild,
+  -cl-ppcre-0.7.4.ebuild, -cl-ppcre-0.7.6.ebuild, -cl-ppcre-0.7.7.ebuild,
+  -cl-ppcre-0.7.8.ebuild, -cl-ppcre-0.8.0.ebuild, +cl-ppcre-0.9.0.ebuild:
+  New upstream version; Removed older ebuilds.
+
+*cl-ppcre-0.8.1 (10 Oct 2004)
+
+  10 Oct 2004; <mkennedy@gentoo.org> +cl-ppcre-0.8.1.ebuild:
+  New upstream version.
+
+*cl-ppcre-0.8.0 (17 Sep 2004)
+
+  17 Sep 2004; <mkennedy@gentoo.org> :
+  New upstream version.
+
+*cl-ppcre-0.7.9 (14 Jul 2004)
+
+  14 Jul 2004; <mkennedy@gentoo.org> +cl-ppcre-0.7.9.ebuild:
+  New upstream version.
+
+*cl-ppcre-0.7.8 (13 Jul 2004)
+
+  13 Jul 2004; <mkennedy@gentoo.org> +cl-ppcre-0.7.8.ebuild:
+  New upstream version.
+
+*cl-ppcre-0.7.7 (20 May 2004)
+
+  20 May 2004; <mkennedy@gentoo.org> +cl-ppcre-0.7.7.ebuild:
+  New upstream version.
+
+  09 May 2004; David Holm <dholm@gentoo.org> cl-ppcre-0.7.6.ebuild:
+  Added to ~ppc.
+
+*cl-ppcre-0.7.6 (20 Apr 2004)
+
+  20 Apr 2004; <mkennedy@gentoo.org> +cl-ppcre-0.7.6.ebuild:
+  New upstream version
+
+  30 Mar 2004; <mkennedy@gentoo.org> cl-ppcre-0.7.4.ebuild:
+  Corrected ${S}
+
+*cl-ppcre-0.7.4 (17 Feb 2004)
+
+  17 Feb 2004; <mkennedy@gentoo.org> cl-ppcre-0.6.1.ebuild,
+  cl-ppcre-0.7.0.ebuild, cl-ppcre-0.7.1.ebuild, cl-ppcre-0.7.2.ebuild,
+  cl-ppcre-0.7.3.ebuild:
+  New upstream.  Removed older ebuilds.  Stable x86 keywords.
+
+*cl-ppcre-0.7.3-r1 (12 Feb 2004)
+
+  12 Feb 2004; <mkennedy@gentoo.org> cl-ppcre-0.7.3-r1.ebuild, metadata.xml:
+  Cleanup for eclass changes.
+
+*cl-ppcre-0.7.3 (30 Jan 2004)
+
+  30 Jan 2004; <mkennedy@gentoo.org> cl-ppcre-0.7.3.ebuild, metadata.xml:
+  New upstream.
+
+*cl-ppcre-0.7.2 (27 Jan 2004)
+
+  27 Jan 2004; <mkennedy@gentoo.org> cl-ppcre-0.7.2.ebuild:
+  New upstream.
+
+*cl-ppcre-0.7.1 (24 Oct 2003)
+
+  24 Oct 2003; Matthew Kennedy <mkennedy@gentoo.org> cl-ppcre-0.7.1.ebuild:
+  new upstream, pruned older version from portage
+
+*cl-ppcre-0.7.0 (23 Oct 2003)
+
+  23 Oct 2003; Matthew Kennedy <mkennedy@gentoo.org> cl-ppcre-0.7.0.ebuild:
+  new upstream. changed SRC_URI naming to Edi's conventions.
+
+  16 Oct 2003; Matthew Kennedy <mkennedy@gentoo.org> cl-ppcre-0.6.1.ebuild,
+  metadata.xml:
+  postrm, preinst
+
+*cl-ppcre-0.6.1 (11 Oct 2003)
+
+  11 Oct 2003; Matthew Kennedy <mkennedy@gentoo.org> cl-ppcre-0.6.1.ebuild:
+  new upstream
+
+*cl-ppcre-0.6.0 (07 Oct 2003)
+
+  07 Oct 2003; Matthew Kennedy <mkennedy@gentoo.org> cl-ppcre-0.6.0.ebuild:
+  new upstream
+
+*cl-ppcre-0.5.9 (05 Oct 2003)
+
+  05 Oct 2003; Matthew Kennedy <mkennedy@gentoo.org> cl-ppcre-0.5.9.ebuild:
+  new upstream
+
+*cl-ppcre-0.5.8 (16 Sep 2003)
+
+  16 Sep 2003; Matthew Kennedy <mkennedy@gentoo.org> cl-ppcre-0.5.8.ebuild:
+  new upstream
+
+*cl-ppcre-0.5.7 (16 Sep 2003)
+
+  16 Sep 2003; Matthew Kennedy <mkennedy@gentoo.org> cl-ppcre-0.5.7.ebuild:
+  minor version bump and SRC_URI change
+
+*cl-pprce-0.5.4b (07 Jul 2003)
+
+  07 Jul 2003; Matthew Kennedy <mkennedy@gentoo.org> :
+  initial import

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=isag? ( dev-lang/tk:* dev-vcs/rcs sci-visualization/gnuplot ) nls? ( virtual/libintl ) lm_sensors? ( sys-apps/lm_sensors ) nls? ( sys-devel/gettext ) virtual/pkgconfig
+DESCRIPTION=System performance tools for Linux
+EAPI=5
+HOMEPAGE=http://pagesperso-orange.fr/sebastien.godard/
+IUSE=debug +doc isag nls lm_sensors selinux
+LICENSE=GPL-2
+RDEPEND=isag? ( dev-lang/tk:* dev-vcs/rcs sci-visualization/gnuplot ) nls? ( virtual/libintl ) lm_sensors? ( sys-apps/lm_sensors ) selinux? ( sec-policy/selinux-sysstat )
+SLOT=0
+SRC_URI=http://pagesperso-orange.fr/sebastien.godard/sysstat-11.1.5.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8bb8acca305659035956682be6bed1d8

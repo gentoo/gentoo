@@ -1,0 +1,27 @@
+From 2be32c3c41207c029f54ebd0f4aa08e216bd3c21 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Fri, 8 Aug 2014 05:45:32 -0400
+Subject: [PATCH 3/3] fix implicit decls of rpc_{g,s}et_error
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ lib/libnfs-zdr.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/lib/libnfs-zdr.c b/lib/libnfs-zdr.c
+index b6b3ed9..90abe26 100644
+--- a/lib/libnfs-zdr.c
++++ b/lib/libnfs-zdr.c
+@@ -41,6 +41,9 @@
+ #include <time.h>
+ #include <unistd.h>
+ #include "libnfs-zdr.h"
++#include "libnfs.h"
++#include "libnfs-raw.h"
++#include "libnfs-private.h"
+ 
+ struct opaque_auth _null_auth;
+ 
+-- 
+2.0.0
+

@@ -1,0 +1,92 @@
+# ChangeLog for media-fonts/sil-abyssinica
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/sil-abyssinica/ChangeLog,v 1.6 2012/05/27 12:21:12 yngwin Exp $
+
+  27 May 2012; Ben de Groot <yngwin@gentoo.org> sil-abyssinica-1.200.ebuild:
+  Mark 1.200 stable, bug #414763.
+
+  07 Jan 2012; Ryan Hill <dirtyepic@gentoo.org> sil-abyssinica-1.200.ebuild:
+  Add dependency on unzip.
+
+*sil-abyssinica-1.200 (07 Jan 2012)
+
+  07 Jan 2012; Ryan Hill <dirtyepic@gentoo.org> +sil-abyssinica-1.200.ebuild:
+  Version bump.
+
+  14 Jun 2011; Fabian Groffen <grobian@gentoo.org> sil-abyssinica-1.0.ebuild:
+  Marked ~x86-macos (#369547) and ~ppc-macos
+
+  20 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing joslwah as a maintainer since he was retired.
+
+*sil-abyssinica-1.0 (19 May 2008)
+
+  19 May 2008; Ryan Hill <dirtyepic@gentoo.org> +metadata.xml,
+  +sil-abyssinica-1.0.ebuild:
+  Move ttf-sil-abyssinica -> sil-abyssinica.
+
+  24 Feb 2008; Raúl Porcel <armin76@gentoo.org>
+  ttf-sil-abyssinica-1.0.ebuild:
+  alpha stable
+
+  11 Feb 2008; Santiago M. Mola <coldwind@gentoo.org>
+  ttf-sil-abyssinica-1.0.ebuild:
+  amd64 stable wrt bug #206706
+
+  22 Jan 2008; Raúl Porcel <armin76@gentoo.org>
+  ttf-sil-abyssinica-1.0.ebuild:
+  ia64/sparc stable, add ~alpha wrt #206706
+
+  21 Jan 2008; Jeroen Roovers <jer@gentoo.org>
+  ttf-sil-abyssinica-1.0.ebuild:
+  Stable for HPPA (bug #206706).
+
+  20 Jan 2008; Markus Meier <maekke@gentoo.org>
+  ttf-sil-abyssinica-1.0.ebuild:
+  x86 stable, bug #206706
+
+  20 Jan 2008; Brent Baude <ranger@gentoo.org>
+  ttf-sil-abyssinica-1.0.ebuild:
+  Marking ttf-sil-abyssinica-1.0 ppc64 for bug 206706
+
+  20 Jan 2008; nixnut <nixnut@gentoo.org> ttf-sil-abyssinica-1.0.ebuild:
+  Stable on ppc wrt bug 206706
+
+  19 Jan 2008; Ryan Hill <dirtyepic@gentoo.org>
+  ttf-sil-abyssinica-1.0.ebuild:
+  Ebuild touchup.
+
+  25 Mar 2007; Raúl Porcel <armin76@gentoo.org>
+  ttf-sil-abyssinica-1.0.ebuild:
+  Add ~ia64 wrt bug 154084
+
+  26 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  ttf-sil-abyssinica-1.0.ebuild:
+  Add ~x86-fbsd keyword.
+
+  05 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  ttf-sil-abyssinica-1.0.ebuild:
+  keyworded ~x86, bug #154084
+
+  05 Nov 2006; Jeroen Roovers <jer@gentoo.org>
+  ttf-sil-abyssinica-1.0.ebuild:
+  Marked ~hppa (bug #154084).
+
+  05 Nov 2006; Ferris McCormick <fmccor@gentoo.org>
+  ttf-sil-abyssinica-1.0.ebuild:
+  Add ~sparc keyword --- Bug #154084
+
+  05 Nov 2006; nixnut <nixnut@gentoo.org> ttf-sil-abyssinica-1.0.ebuild:
+  Added ~ppc keyword wrt bug 154084
+
+  05 Nov 2006; Olivier Crête <tester@gentoo.org>
+  ttf-sil-abyssinica-1.0.ebuild:
+  Mark ~amd64, bug #154084
+
+*ttf-sil-abyssinica-1.0 (04 Nov 2006)
+
+  04 Nov 2006; Joshua <joslwah@gentoo.org> +metadata.xml,
+  +ttf-sil-abyssinica-1.0.ebuild:
+  Initial commit of Abyssinica Typeface.
+

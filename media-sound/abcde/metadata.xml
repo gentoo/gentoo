@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sound</herd>
+	<use>
+		<flag name='id3tag'>Support ID3, ID3v2 tagging of audio files</flag>
+		<flag name='normalize'>Add support for normalizing audio file volume levels</flag>
+		<flag name='replaygain'>Support for Replay Gain metadata, for relative volume adjustment</flag>
+		<flag name='opus'>Support opus encoding using opusenc</flag>
+	</use>
+	<upstream>
+		<remote-id type="google-code">abcde</remote-id>
+	</upstream>
+</pkgmetadata>

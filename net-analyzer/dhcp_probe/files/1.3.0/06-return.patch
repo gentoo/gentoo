@@ -1,0 +1,11 @@
+--- dhcp_probe-1.3.0/src/dhcp_probe.c.orig	2009-11-19 18:13:31.000000000 +0100
++++ dhcp_probe-1.3.0/src/dhcp_probe.c	2009-11-19 18:13:59.000000000 +0100
+@@ -684,6 +684,8 @@
+ 		pcap_close(pd_template); 
+ 
+ 	my_exit(0, 1, 1);
++
++	return 0; /* will not be reached */
+ }
+ 
+ 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>video</herd>
+	<herd>proxy-maintainers</herd>
+	<herd>dotnet</herd>
+	<maintainer>
+		<email>mail@pedrocastro.org</email>
+		<name>Pedro Castro</name>
+		<description>Upstream</description>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">gnome-subtitles</remote-id>
+	</upstream>
+</pkgmetadata>

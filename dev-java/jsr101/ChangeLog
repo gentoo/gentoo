@@ -1,0 +1,54 @@
+# ChangeLog for dev-java/jsr101
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jsr101/ChangeLog,v 1.13 2015/06/13 09:44:33 zlogene Exp $
+
+  13 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> -jsr101-1.4-r1.ebuild,
+  jsr101-1.4-r2.ebuild:
+  amd64/x86 stable wrt bug #551536; Drop old.
+
+*jsr101-1.4-r2 (09 Jun 2015)
+
+  09 Jun 2015; Patrice Clement <monsieurp@gentoo.org> +jsr101-1.4-r2.ebuild:
+  EAPI 5 bump.
+
+  16 Jun 2008; Serkan Kaba <serkan@gentoo.org> -jsr101-1.1.ebuild,
+  -jsr101-1.4.ebuild:
+  Remove old versions.
+
+  04 May 2008; Christian Faulhammer <opfer@gentoo.org> jsr101-1.4-r1.ebuild:
+  stable x86, bug 219932
+
+  03 May 2008; Kenneth Prugh <ken69267@gentoo.org> jsr101-1.4-r1.ebuild:
+  amd64 stable, bug #219932
+
+*jsr101-1.4-r1 (03 May 2008)
+
+  03 May 2008; Petteri Räty <betelgeuse@gentoo.org> +jsr101-1.4-r1.ebuild:
+  Fix building on 1.5 by using java-virtuals/saaj-api.
+
+*jsr101-1.4 (02 May 2008)
+
+  02 May 2008; Petteri Räty <betelgeuse@gentoo.org> +jsr101-1.4.ebuild:
+  Version bump building the classes from axis sources to remove fetch
+  restriction. Fixes bug #219932.
+
+  05 Dec 2007; Krzysiek Pawlik <nelchael@gentoo.org> jsr101-1.1.ebuild:
+  Fix download URL, see bug #201339.
+
+  19 Aug 2007; William L. Thomson Jr. <wltjr@gentoo.org> jsr101-1.1.ebuild:
+  amd64 stable, bug #187681.
+
+  15 Aug 2007; Christian Faulhammer <opfer@gentoo.org> jsr101-1.1.ebuild:
+  stable x86, bug 187681
+
+  11 Aug 2007; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml:
+  Remove myself from <maintainer>.
+
+  23 May 2007; Diego Pettenò <flameeyes@gentoo.org> jsr101-1.1.ebuild:
+  Add ~x86-fbsd keyword. Bug #176906.
+
+*jsr101-1.1 (01 May 2007)
+
+  01 May 2007; Krzysiek Pawlik <nelchael@gentoo.org> +metadata.xml,
+  +jsr101-1.1.ebuild:
+  Initial commit of jsr101.

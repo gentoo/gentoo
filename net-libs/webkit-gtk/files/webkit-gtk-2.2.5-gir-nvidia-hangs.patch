@@ -1,0 +1,95 @@
+Description: deadlock in gobject introspection
+Bug-Dyson: http://osdyson.org/issues/161
+Bug-Gentoo: https://bugs.gentoo.org/show_bug.cgi?id=463960
+Stack:
+25849:  /home/pashev/packaging/webkitgtk/webkitgtk-2.0.4/build-2.0/tmp-introsp
+-----------------  lwp# 1 / thread# 1  --------------------
+ fffffd7ffeeaf957 lwp_park (0, 0, 0)
+ fffffd7ffeea8036 mutex_lock_impl () + 156
+ fffffd7ffeea810b mutex_lock () + b
+ fffffd7ffee340fa _preexec_atfork_unload () + 3a
+ fffffd7ffee343ab _preexec_exit_handlers () + bb
+ fffffd7fff5ccf0d purge_exit_handlers () + 10d
+ fffffd7fff5cec18 remove_hdl () + ce8
+ fffffd7fff5c8895 dlclose_core () + c5
+ fffffd7fff5c88e5 dlclose_intn () + 15
+ fffffd7fff5c89bb dlclose_check () + 7b
+ fffffd7fff5c8a21 dlclose () + 41
+ fffffd7ffaa03c41 px_module_manager_load () + 191
+ fffffd7ffaa03cf6 px_module_manager_load_dir () + 66
+ fffffd7ffaa050d7 px_proxy_factory_new () + 107
+ fffffd7ffb201671 ???????? ()
+ fffffd7feca30eca g_type_create_instance () + 16a
+ fffffd7feca1597c ???????? ()
+ fffffd7feca17472 g_object_newv () + 792
+ fffffd7feca17aec g_object_new () + ec
+ fffffd7fece5d052 ???????? ()
+ fffffd7fece5d1d8 ???????? ()
+ fffffd7fc98659a5 ???????? ()
+ fffffd7feca173f6 g_object_newv () + 716
+ fffffd7feca17aec g_object_new () + ec
+ fffffd7fc986da24 soup_session_add_feature_by_type () + e4
+ fffffd7fc986fb43 ???????? ()
+ fffffd7feca17e00 g_object_set_valist () + 300
+ fffffd7feca186d7 g_object_set () + e7
+ fffffd7fc5724f87 WebCore::ResourceHandle::defaultSession() () + a7
+ fffffd7fc48da299 webkitExit() () + 9
+ fffffd7ffee33f56 _exithandle () + 66
+ fffffd7ffee1e191 exit () + 11
+ 00000000004086af ???????? ()
+ 000000000040724c _start () + 6c
+-----------------  lwp# 2 / thread# 2  --------------------
+ fffffd7ffeeaf957 lwp_park (0, 0, 0)
+ fffffd7ffeea94bf cond_wait_queue () + 4f
+ fffffd7ffeea9b12 __cond_wait () + b2
+ fffffd7ffeea9b42 cond_wait () + 22
+ fffffd7ffeea9b79 pthread_cond_wait () + 9
+ fffffd7fc4eed04b WebCore::IconDatabase::syncThreadMainLoop() () + 12b
+ fffffd7fc4eed278 WebCore::IconDatabase::iconDatabaseSyncThread() () + 138
+ fffffd7fc3b2bc59 WTF::wtfThreadEntryPoint(void*) () + 19
+ fffffd7ffeeaf617 _thrp_setup () + 77
+ fffffd7ffeeaf910 _lwp_start ()
+-----------------  lwp# 3 / thread# 3  --------------------
+ fffffd7ffeeaf957 lwp_park (0, 0, 0)
+ fffffd7ffeea8036 mutex_lock_impl () + 156
+ fffffd7ffeea810b mutex_lock () + b
+ fffffd7ffee33e17 atexit_locks () + 17
+ fffffd7ffee58ce9 libc_prepare_atfork () + 9
+ fffffd7ffee34533 _prefork_handler () + 33
+ fffffd7ffee9fc85 forkx () + 275
+ fffffd7ffee9fcab fork () + b
+ fffffd7fec68aacb ???????? ()
+ fffffd7fec68b2a7 g_spawn_sync () + 167
+ fffffd7fec68b994 g_spawn_command_line_sync () + 74
+ fffffd7feceb2748 ???????? ()
+ fffffd7feceb4019 g_dbus_address_get_for_bus_sync () + 2c9
+ fffffd7fecebd11e ???????? ()
+ fffffd7fecec4643 g_bus_get_sync () + 63
+ fffffd7ffc60700b ???????? ()
+ fffffd7ffc60714f ???????? ()
+ fffffd7fec648ad0 g_main_context_dispatch () + 130
+ fffffd7fec648e40 ???????? ()
+ fffffd7fec648f08 g_main_context_iteration () + 38
+ fffffd7ffc606f65 ???????? ()
+ fffffd7fec66d50d ???????? ()
+ fffffd7ffeeaf617 _thrp_setup () + 77
+ fffffd7ffeeaf910 _lwp_start ()
+Index: webkit/Source/WebKit/gtk/webkit/webkitglobals.cpp
+===================================================================
+--- webkit.orig/Source/WebKit/gtk/webkit/webkitglobals.cpp	2013-12-02 00:06:10.504150531 +0400
++++ webkit/Source/WebKit/gtk/webkit/webkitglobals.cpp	2013-12-03 14:08:05.956932011 +0400
+@@ -564,6 +564,14 @@
+ 
+     WebCore::SchemeRegistry::registerURLSchemeAsLocal("resource");
+ 
++    // http://osdyson.org/issues/161
++    // WebKitGTK FTBFS when building GObject introspection due to deadlock.
++    // When gobject introspection is done, a simple program call exit()
++    // exit() -> webkitExit() -> g_object_unref() -> webkit_get_default_session()
++    // -> ResourceHandle::defaultSession() => default session doesn't exist! AND
++    // we try to create it! Thus deadlock. So, create default session earlier:
++    (void) webkit_get_default_session();
++
+     atexit(webkitExit);
+ }
+ 

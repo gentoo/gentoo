@@ -1,0 +1,48 @@
+From 3b3679c900f6739f7067f8d720e15d548bb39be9 Mon Sep 17 00:00:00 2001
+From: Vasily Khoruzhick <anarsoul@gmail.com>
+Date: Sun, 13 Jan 2013 13:43:38 +0000
+Subject: upeke2: Add support for 147e:2020 ID
+
+https://bugs.freedesktop.org/show_bug.cgi?id=59320
+---
+diff --git a/libfprint/drivers/upeke2.c b/libfprint/drivers/upeke2.c
+index ed8f43d..a7db54d 100644
+--- a/libfprint/drivers/upeke2.c
++++ b/libfprint/drivers/upeke2.c
+@@ -46,6 +46,11 @@
+ #define MSG_READ_BUF_SIZE 0x40
+ #define MAX_DATA_IN_READ_BUF (MSG_READ_BUF_SIZE - 9)
+ 
++enum {
++        UPEKE2_2016,
++        UPEKE2_2020,
++};
++
+ struct upeke2_dev {
+ 	gboolean enroll_passed;
+ 	gboolean first_verify_iteration;
+@@ -848,8 +853,10 @@ static struct fpi_ssm *deinitsm_new(struct fp_dev *dev)
+ 
+ static int discover(struct libusb_device_descriptor *dsc, uint32_t *devtype)
+ {
+-	/* Revision 2 is what we're interested in */
+-	if (dsc->bcdDevice == 2)
++	if (dsc->idProduct == 0x2016 && dsc->bcdDevice == 2)
++		return 1;
++
++	if (dsc->idProduct == 0x2020 && dsc->bcdDevice == 1)
+ 		return 1;
+ 
+ 	return 0;
+@@ -1453,7 +1460,8 @@ static int verify_stop(struct fp_dev *dev, gboolean iterating)
+ }
+ 
+ static const struct usb_id id_table[] = {
+-	{ .vendor = 0x147e, .product = 0x2016 },
++	{ .vendor = 0x147e, .product = 0x2016, .driver_data = UPEKE2_2016 },
++	{ .vendor = 0x147e, .product = 0x2020, .driver_data = UPEKE2_2020 },
+ 	{ 0, 0, 0, }, /* terminating entry */
+ };
+ 
+--
+cgit v0.9.0.2-2-gbebe

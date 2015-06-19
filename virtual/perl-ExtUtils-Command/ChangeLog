@@ -1,0 +1,272 @@
+# ChangeLog for virtual/perl-ExtUtils-Command
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/perl-ExtUtils-Command/ChangeLog,v 1.56 2015/06/04 22:10:25 dilfridge Exp $
+
+*perl-ExtUtils-Command-1.200.0 (04 Jun 2015)
+
+  04 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-ExtUtils-Command-1.170.0-r6.ebuild,
+  +perl-ExtUtils-Command-1.200.0.ebuild:
+  Add Perl 5.22 version, remove old
+
+  05 Apr 2015; Mike Frysinger <vapier@gentoo.org>
+  perl-ExtUtils-Command-1.180.0-r2.ebuild:
+  Mark m68k/s390/sh stable.
+
+  02 Apr 2015; Tom Gall <tgall@gentoo.org>
+  perl-ExtUtils-Command-1.180.0-r2.ebuild:
+  stable on arm64
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-Command-1.180.0-r2.ebuild:
+  Stable for alpha, wrt bug #536790
+
+  17 Feb 2015; Markus Meier <maekke@gentoo.org>
+  perl-ExtUtils-Command-1.180.0-r2.ebuild:
+  arm stable, bug #536790
+
+  17 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-Command-1.180.0-r2.ebuild:
+  Stable for ia64, wrt bug #536790
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-Command-1.180.0-r2.ebuild:
+  Stable for sparc, wrt bug #536790
+
+  15 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-Command-1.180.0-r2.ebuild:
+  Stable for ppc64, wrt bug #536790
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-Command-1.180.0-r2.ebuild:
+  Stable for ppc, wrt bug #536790
+
+  13 Feb 2015; Jeroen Roovers <jer@gentoo.org>
+  perl-ExtUtils-Command-1.180.0-r2.ebuild:
+  Stable for HPPA (bug #536790).
+
+  13 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-Command-1.180.0-r2.ebuild:
+  Stable for x86, wrt bug #536790
+
+  08 Feb 2015; Mikle Kolyada <zlogene@gentoo.org>
+  perl-ExtUtils-Command-1.180.0-r2.ebuild:
+  amd64 stable wrt bug #536790
+
+*perl-ExtUtils-Command-1.170.0-r6 (08 Nov 2014)
+
+  08 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-ExtUtils-Command-1.170.0-r5.ebuild,
+  +perl-ExtUtils-Command-1.170.0-r6.ebuild:
+  Remove Perl 5.16 as provider
+
+  18 Oct 2014; Mike Frysinger <vapier@gentoo.org>
+  perl-ExtUtils-Command-1.170.0-r5.ebuild,
+  perl-ExtUtils-Command-1.180.0-r2.ebuild:
+  Add m68k love.
+
+*perl-ExtUtils-Command-1.180.0-r2 (19 Jul 2014)
+*perl-ExtUtils-Command-1.170.0-r5 (19 Jul 2014)
+
+  19 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-ExtUtils-Command-1.170.0-r4.ebuild,
+  +perl-ExtUtils-Command-1.170.0-r5.ebuild,
+  -perl-ExtUtils-Command-1.180.0-r1.ebuild,
+  +perl-ExtUtils-Command-1.180.0-r2.ebuild:
+  Improve dependencies
+
+*perl-ExtUtils-Command-1.180.0-r1 (06 Jul 2014)
+
+  06 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-ExtUtils-Command-1.170.0-r3.ebuild,
+  +perl-ExtUtils-Command-1.170.0-r4.ebuild,
+  -perl-ExtUtils-Command-1.180.0.ebuild,
+  +perl-ExtUtils-Command-1.180.0-r1.ebuild:
+  Revision bump for added provider
+
+  05 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  perl-ExtUtils-Command-1.170.0-r3.ebuild,
+  -perl-ExtUtils-Command-1.170.0-r4.ebuild,
+  perl-ExtUtils-Command-1.180.0.ebuild:
+  Improve dependencies
+
+  19 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  perl-ExtUtils-Command-1.170.0-r3.ebuild,
+  perl-ExtUtils-Command-1.170.0-r4.ebuild, perl-ExtUtils-Command-1.180.0.ebuild:
+  Add arm64 love.
+
+  30 Dec 2013; Mikle Kolyada <zlogene@gentoo.org>
+  -perl-ExtUtils-Command-1.16.ebuild:
+  Drop old
+
+*perl-ExtUtils-Command-1.180.0 (18 Sep 2013)
+
+  18 Sep 2013; Patrick Lauer <patrick@gentoo.org>
+  +perl-ExtUtils-Command-1.180.0.ebuild:
+  Bump
+
+*perl-ExtUtils-Command-1.170.0-r4 (06 Sep 2013)
+
+  06 Sep 2013; Patrick Lauer <patrick@gentoo.org>
+  +perl-ExtUtils-Command-1.170.0-r4.ebuild:
+  Fix dependencies for perl-5.18 #483796
+
+  20 Apr 2013; Matt Turner <mattst88@gentoo.org>
+  perl-ExtUtils-Command-1.170.0-r3.ebuild:
+  Added ~mips.
+
+  16 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-Command-1.170.0-r3.ebuild:
+  Stable for ppc64, wrt bug #456568
+
+  02 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-Command-1.170.0-r3.ebuild:
+  Stable for sh, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-Command-1.170.0-r3.ebuild:
+  Stable for arm, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-Command-1.170.0-r3.ebuild:
+  Stable for s390, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-Command-1.170.0-r3.ebuild:
+  Stable for alpha, wrt bug #458122
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org>
+  perl-ExtUtils-Command-1.170.0-r3.ebuild:
+  Add ~arm-linux keyword.
+
+  06 Jan 2013; Raúl Porcel <armin76@gentoo.org>
+  perl-ExtUtils-Command-1.16.ebuild:
+  s390/sh stable
+
+  07 Nov 2012; Anthony G. Basile <blueness@gentoo.org>
+  perl-ExtUtils-Command-1.16.ebuild:
+  keyword ~ppc64, bug #437532
+
+  05 Aug 2012; Markus Meier <maekke@gentoo.org>
+  perl-ExtUtils-Command-1.16.ebuild:
+  arm stable, bug #418803
+
+*perl-ExtUtils-Command-1.170.0-r3 (21 May 2012)
+
+  21 May 2012; Torsten Veller <tove@gentoo.org>
+  -perl-ExtUtils-Command-1.170.0-r2.ebuild,
+  +perl-ExtUtils-Command-1.170.0-r3.ebuild:
+  Add perl-5.16 as provider
+
+  28 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  perl-ExtUtils-Command-1.170.0-r2.ebuild:
+  keyword ~amd64-fbsd
+
+  24 Mar 2012; Fabian Groffen <grobian@gentoo.org>
+  perl-ExtUtils-Command-1.170.0-r2.ebuild:
+  Add Prefix keywords
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org>
+  perl-ExtUtils-Command-1.170.0-r2.ebuild:
+  ia64/sparc/x86 stable wrt #397195
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org>
+  perl-ExtUtils-Command-1.170.0-r2.ebuild:
+  Add hppa and ppc KEYWORDS (#397195)
+
+  14 Feb 2012; Alexis Ballier <aballier@gentoo.org>
+  perl-ExtUtils-Command-1.170.0-r2.ebuild:
+  keyword ~x86-fbsd
+
+  04 Feb 2012; Raúl Porcel <armin76@gentoo.org>
+  perl-ExtUtils-Command-1.16.ebuild, perl-ExtUtils-Command-1.170.0-r2.ebuild:
+  Add ~arm/~s390/~sh
+
+  03 Feb 2012; Torsten Veller <tove@gentoo.org>
+  perl-ExtUtils-Command-1.170.0-r2.ebuild:
+  Stable for amd64, wrt bug #397195
+
+  26 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  perl-ExtUtils-Command-1.170.0-r2.ebuild:
+  Marked ~ppc64 wrt #357599
+
+  28 Jun 2011; Torsten Veller <tove@gentoo.org>
+  perl-ExtUtils-Command-1.16.ebuild:
+  Add perl-5.12.4 virtual
+
+*perl-ExtUtils-Command-1.170.0-r2 (18 Jun 2011)
+
+  18 Jun 2011; Torsten Veller <tove@gentoo.org>
+  -perl-ExtUtils-Command-1.170.0-r1.ebuild,
+  +perl-ExtUtils-Command-1.170.0-r2.ebuild:
+  Add perl-5.14 as provider
+
+*perl-ExtUtils-Command-1.170.0-r1 (21 May 2011)
+
+  21 May 2011; Torsten Veller <tove@gentoo.org>
+  -perl-ExtUtils-Command-1.170.0.ebuild,
+  +perl-ExtUtils-Command-1.170.0-r1.ebuild:
+  Add perl-5.14.0 as provider
+
+*perl-ExtUtils-Command-1.170.0 (01 Mar 2011)
+
+  01 Mar 2011; Torsten Veller <tove@gentoo.org>
+  +perl-ExtUtils-Command-1.170.0.ebuild:
+  Version bump
+
+  22 Jan 2011; Torsten Veller <tove@gentoo.org>
+  perl-ExtUtils-Command-1.16.ebuild:
+  Add perl-5.12.3 as provider
+
+  13 Sep 2010; Joseph Jezak <josejx@gentoo.org>
+  perl-ExtUtils-Command-1.16.ebuild:
+  Marked ppc stable for bug #330387.
+
+  07 Sep 2010; Torsten Veller <tove@gentoo.org>
+  perl-ExtUtils-Command-1.16.ebuild:
+  Add perl-5.12.2 as provider
+
+  28 Aug 2010; Raúl Porcel <armin76@gentoo.org>
+  perl-ExtUtils-Command-1.16.ebuild:
+  alpha/ia64/sparc stable wrt #330387
+
+  31 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  perl-ExtUtils-Command-1.16.ebuild:
+  Stable on amd64 wrt bug #330387
+
+  30 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  perl-ExtUtils-Command-1.16.ebuild:
+  stable x86, bug 330387
+
+  29 Jul 2010; Jeroen Roovers <jer@gentoo.org>
+  perl-ExtUtils-Command-1.16.ebuild:
+  Stable for HPPA (bug #330387).
+
+  14 Jul 2010; Torsten Veller <tove@gentoo.org>
+  perl-ExtUtils-Command-1.16.ebuild:
+  Add perl-5.12 as provider
+
+  14 May 2010; Jeroen Roovers <jer@gentoo.org>
+  perl-ExtUtils-Command-1.16.ebuild:
+  Marked ~hppa (bug #317877).
+
+  12 May 2010; Joseph Jezak <josejx@gentoo.org>
+  perl-ExtUtils-Command-1.16.ebuild:
+  Marked ~ppc for bug #317877.
+
+  09 May 2010; Raúl Porcel <armin76@gentoo.org>
+  perl-ExtUtils-Command-1.16.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #317877
+
+*perl-ExtUtils-Command-1.16 (30 Apr 2010)
+
+  30 Apr 2010; Torsten Veller <tove@gentoo.org>
+  +perl-ExtUtils-Command-1.16.ebuild, +metadata.xml:
+  Import from perl-experimental
+
+  07 Jan 2010; Torsten Veller <tove@gentoo.org>
+  perl-ExtUtils-Command-1.16.ebuild:
+  Add empty HOMEPAGE and LICENSE. Add mandatory SRC_URI
+
+  15 Sep 2009; Torsten Veller <tove@gentoo.org> +metadata.xml:
+  Initial commit

@@ -1,0 +1,43 @@
+# ChangeLog for media-sound/ttaenc
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/ttaenc/ChangeLog,v 1.10 2011/12/07 07:58:04 radhermit Exp $
+
+  07 Dec 2011; Tim Harder <radhermit@gentoo.org> -ttaenc-3.4.1.ebuild:
+  Remove old.
+
+  07 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> ttaenc-3.4.1-r1.ebuild:
+  x86 stable wrt bug #392829
+
+  04 Dec 2011; Markos Chandras <hwoarang@gentoo.org> ttaenc-3.4.1-r1.ebuild:
+  Stable on amd64 wrt bug #392829
+
+  02 Dec 2011; Tim Harder <radhermit@gentoo.org> ttaenc-3.4.1-r1.ebuild:
+  Update to EAPI 4.
+
+*ttaenc-3.4.1-r1 (19 Oct 2010)
+
+  19 Oct 2010; <chainsaw@gentoo.org> +ttaenc-3.4.1-r1.ebuild:
+  Instill LDFLAGS respect into build system. Port to EAPI=2. Closes bug
+  #337848 by Diego Elio "Flameeyes" Pettenò <flameeyes@gentoo.org>.
+
+  14 Jan 2010; Markus Meier <maekke@gentoo.org> ttaenc-3.4.1.ebuild:
+  amd64/x86 stable, bug #298565
+
+  24 Nov 2008; <ssuominen@gentoo.org> metadata.xml:
+  Re-assign to sound herd.
+
+  09 Dec 2007; Samuli Suominen <drac@gentoo.org> ttaenc-3.4.1.ebuild:
+  ~amd64 wrt #201756
+
+*ttaenc-3.4.1 (05 Aug 2007)
+
+  05 Aug 2007; Samuli Suominen <drac@gentoo.org> +ttaenc-3.4.1.ebuild:
+  Version bump for bug 187802, thanks to Sergey D. for reporting.
+
+*ttaenc-3.3 (22 Apr 2007)
+
+  22 Apr 2007; Samuli Suominen <drac@gentoo.org>
+  +files/ttaenc-3.3-cflags.patch, +files/ttaenc-3.3-warnings.patch,
+  +ttaenc-3.3.ebuild:
+  Initial commit for bug 174342, thanks to Sergey D. and Tony Vroon.
+

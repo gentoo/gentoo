@@ -1,0 +1,45 @@
+From fc732def0944aac5c7b18860b4f46444e6d50044 Mon Sep 17 00:00:00 2001
+From: Nathan Phillip Brink <binki@gentoo.org>
+Date: Mon, 17 Oct 2011 21:01:22 +0000
+Subject: [PATCH] Use AM_GPGME_PATH macro from gpgme instead of home-built gpgme detection.
+
+Fixes compilation on Gentoo, where CPPFLAGS=-I/usr/include/gpgme is
+necessary.
+---
+ configure.ac |   20 ++++++++++++--------
+ 1 files changed, 12 insertions(+), 8 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index c23da75..87cd359 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -161,14 +161,18 @@ AM_CONDITIONAL([HAVE_LIBSSL], [test "x$with_openssl" = "xyes"])
+ # Check for gpgme
+ AC_MSG_CHECKING(whether to link with libgpgme)
+ AS_IF([test "x$with_gpgme" != "xno"],
+-	[AC_MSG_RESULT(yes)
+-	AC_CHECK_LIB([gpgme], [gpgme_check_version], ,
+-	[if test "x$with_gpgme" != "xcheck"; then
+-		AC_MSG_FAILURE([--with-ggpme was given, but -lgpgme was not found])
+-	fi],
+-	[-lgpgme])
+-	with_gpgme=$ac_cv_lib_gpgme_gpgme_check_version],
+-	AC_MSG_RESULT(no))
++	[AC_MSG_RESULT([yes])],
++	[AC_MSG_RESULT([no])])
++AS_IF([test "x$with_gpgme" != "xno"],
++	[AM_PATH_GPGME([],
++		[LIBS="$LIBS $GPGME_LIBS"
++		CPPFLAGS="$CPPFLAGS $GPGME_CPPFLAGS"
++		CFLAGS="$CFLAGS $GPGME_CFLAGS"
++		with_gpgme=yes
++		AC_DEFINE([HAVE_LIBGPGME], [1], [Define if gpgme should be used to provide GPG signature support.])],
++		[AS_IF([test "x$with_gpgme" != "xcheck"],
++			[AC_MSG_FAILURE([--with-gpgme was given, but gpgme was not found])])
++		with_gpgme=no])])
+ AM_CONDITIONAL([HAVE_LIBGPGME], [test "x$with_gpgme" = "xyes"])
+ 
+ # Checks for header files.
+-- 
+1.7.3.4
+

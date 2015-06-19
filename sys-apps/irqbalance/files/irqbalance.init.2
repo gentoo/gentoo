@@ -1,0 +1,12 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/irqbalance/files/irqbalance.init.2,v 1.1 2012/04/06 18:03:29 flameeyes Exp $
+
+depend() {
+	need localmount
+	after bootmisc
+}
+
+command="/usr/sbin/irqbalance"
+command_args="${IRQBALANCE_OPTS}"

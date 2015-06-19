@@ -1,0 +1,300 @@
+# ChangeLog for sys-freebsd/freebsd-pam-modules
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-pam-modules/ChangeLog,v 1.49 2015/06/05 16:43:55 mgorny Exp $
+
+  05 Jun 2015; Michał Górny <mgorny@gentoo.org> freebsd-pam-modules-10.1.ebuild:
+  Bump to EAPI=5. Use upstream tarballs.
+
+  24 May 2015; Michał Górny <mgorny@gentoo.org> -freebsd-pam-modules-9.2.ebuild,
+  -freebsd-pam-modules-9.2_rc1.ebuild, -freebsd-pam-modules-9.2_rc2.ebuild,
+  -freebsd-pam-modules-9.2_rc3.ebuild:
+  Remove 9.2. Part of https://github.com/gentoo/gentoo-portage-rsync-
+  mirror/pull/126 by nigoro.
+
+*freebsd-pam-modules-10.1 (08 Mar 2015)
+
+  08 Mar 2015; Michał Górny <mgorny@gentoo.org>
+  +freebsd-pam-modules-10.1.ebuild:
+  Add FreeBSD 10.1 ebuilds, https://github.com/gentoo/gentoo-portage-rsync-
+  mirror/pull/46 by nigoro.
+
+*freebsd-pam-modules-9.2 (09 Nov 2013)
+
+  09 Nov 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-pam-modules-9.2.ebuild:
+  bump to 9.2
+
+*freebsd-pam-modules-9.2_rc3 (26 Aug 2013)
+
+  26 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-pam-modules-9.2_rc3.ebuild:
+  bump to rc3
+
+*freebsd-pam-modules-9.2_rc2 (22 Aug 2013)
+
+  22 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-pam-modules-9.2_rc2.ebuild:
+  bump to rc2
+
+*freebsd-pam-modules-9.2_rc1 (10 Aug 2013)
+
+  10 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-pam-modules-9.2_rc1.ebuild:
+  Version bump, based on work of Yuta SATOH in bug #476646
+
+  09 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-pam-modules-9.0.ebuild, -freebsd-pam-modules-9.1.ebuild:
+  remove old
+
+*freebsd-pam-modules-9.1-r1 (27 Jun 2013)
+
+  27 Jun 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-pam-modules-9.1-r1.ebuild:
+  do not build pam_krb5 as it has its own ebuild, bug #473368 by
+  henning.f@swipnet.se
+
+  18 Jun 2013; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-pam-modules-7.2.ebuild, -freebsd-pam-modules-8.0.ebuild:
+  remove old
+
+  27 Jan 2013; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-pam-modules-9.1_rc1.ebuild, -freebsd-pam-modules-9.1_rc2.ebuild,
+  -freebsd-pam-modules-9.1_rc3.ebuild:
+  remove rc versions
+
+*freebsd-pam-modules-9.1 (27 Jan 2013)
+
+  27 Jan 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-pam-modules-9.1.ebuild:
+  Bump to 9.1
+
+  24 Nov 2012; Alexis Ballier <aballier@gentoo.org>
+  freebsd-pam-modules-9.1_rc3.ebuild:
+  Simplify to call freebsd_src_unpack, bug #444506 by Yuta SATOH
+
+*freebsd-pam-modules-9.1_rc3 (06 Nov 2012)
+
+  06 Nov 2012; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-pam-modules-9.1_rc3.ebuild:
+  bump to rc3
+
+*freebsd-pam-modules-9.1_rc2 (14 Oct 2012)
+
+  14 Oct 2012; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-pam-modules-9.1_rc2.ebuild:
+  bump to 9.1_rc2
+
+*freebsd-pam-modules-9.1_rc1 (11 Sep 2012)
+
+  11 Sep 2012; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-pam-modules-9.1_rc1.ebuild:
+  bump to 9.1_rc1 from bsd overlay by Yuta SATOH, bug #426838
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  freebsd-pam-modules-9.0.ebuild:
+  keyword ~amd64-fbsd
+
+  30 Mar 2012; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-pam-modules-9.0_rc1.ebuild, -freebsd-pam-modules-9.0_rc2.ebuild,
+  -freebsd-pam-modules-9.0_rc3.ebuild:
+  remove old
+
+*freebsd-pam-modules-9.0 (16 Jan 2012)
+
+  16 Jan 2012; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-pam-modules-9.0.ebuild:
+  bump to 9.0
+
+*freebsd-pam-modules-9.0_rc3 (09 Dec 2011)
+
+  09 Dec 2011; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-pam-modules-9.0_rc3.ebuild:
+  bump to 9.0_rc3
+
+*freebsd-pam-modules-9.0_rc2 (07 Dec 2011)
+
+  07 Dec 2011; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-pam-modules-9.0_rc2.ebuild:
+  bump to rc2
+
+*freebsd-pam-modules-9.0_rc1 (07 Nov 2011)
+
+  07 Nov 2011; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-pam-modules-9.0_rc1.ebuild,
+  +files/freebsd-pam-modules-9.0-gentoo.patch:
+  bump to 9.0_rc1
+
+*freebsd-pam-modules-8.2 (06 Jul 2011)
+
+  06 Jul 2011; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-pam-modules-8.2.ebuild:
+  bump to 8.2
+
+*freebsd-pam-modules-8.0 (19 Mar 2010)
+
+  19 Mar 2010; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-pam-modules-8.0.ebuild:
+  bump to 8.0 from the bsd overlay
+
+  11 Mar 2010; Alexis Ballier <aballier@gentoo.org> -files/5.4/README.pamd,
+  -files/5.4/convert.pl, -files/5.4/pam.d/other, -files/5.4/pam.d/system,
+  -files/5.4/pam.d/system-auth, -freebsd-pam-modules-6.2-r1.ebuild,
+  -freebsd-pam-modules-7.1.ebuild:
+  remove old
+
+*freebsd-pam-modules-7.2 (22 May 2009)
+
+  22 May 2009; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-pam-modules-7.2.ebuild:
+  bump to 7.2
+
+*freebsd-pam-modules-7.1 (22 Jan 2009)
+
+  22 Jan 2009; Javier Villavicencio <the_paya@gentoo.org>
+  +files/README.pamd, +freebsd-pam-modules-7.1.ebuild:
+  Import 7.1 ebuilds from gentoo-bsd overlay.
+
+  08 Jan 2009; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-pam-modules-6.2.ebuild:
+  remove old
+
+  09 Jun 2008; Javier Villavicencio <the_paya@gentoo.org>
+  freebsd-pam-modules-6.2-r1.ebuild:
+  Keyworded again.
+
+*freebsd-pam-modules-6.2-r1 (19 Feb 2008)
+
+  19 Feb 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-pam-modules-6.2-r1.ebuild:
+  Update to work with the new pambase package, don't provide pamd files anymore.
+
+*freebsd-pam-modules-6.2 (15 Jan 2007)
+
+  15 Jan 2007; Timothy Redaelli <drizzt@gentoo.org>
+  -freebsd-pam-modules-6.2_rc2.ebuild, +freebsd-pam-modules-6.2.ebuild:
+  Bump to 6.2 and remove old version.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-pam-modules-6.1.ebuild:
+  Remove 6.1 ebuild.
+
+*freebsd-pam-modules-6.2_rc2 (29 Dec 2006)
+
+  29 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-pam-modules-6.2_beta3.ebuild,
+  -freebsd-pam-modules-6.2_rc1.ebuild, +freebsd-pam-modules-6.2_rc2.ebuild:
+  Bump to rc2 and remove older versions.
+
+*freebsd-pam-modules-6.2_rc1 (19 Nov 2006)
+
+  19 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-pam-modules-6.2_rc1.ebuild:
+  Version bump to 6.2-RC1.
+
+  18 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-pam-modules-6.2_beta2.ebuild:
+  Remove 6.2_beta2.
+
+*freebsd-pam-modules-6.2_beta3 (01 Nov 2006)
+
+  01 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-pam-modules-6.2_beta3.ebuild:
+  Bump to 6.2_beta3.
+
+  19 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Remove 6.2_beta1 ebuild.
+
+  19 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-pam-modules-6.2_beta1.ebuild:
+  Remove 6.2_beta1 ebuild.
+
+  17 Oct 2006; Roy Marples <uberlord@gentoo.org>
+  freebsd-pam-modules-6.2_beta2.ebuild:
+  Added ~sparc-fbsd keyword.
+
+*freebsd-pam-modules-6.2_beta2 (05 Oct 2006)
+
+  05 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-pam-modules-6.2_beta2.ebuild:
+  Version 6.2_beta2.
+
+*freebsd-pam-modules-6.2_beta1 (21 Sep 2006)
+
+  21 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-pam-modules-6.2_beta1.ebuild:
+  Add 6.2_beta1 ebuilds.
+
+  27 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-pam-modules-6.0.ebuild:
+  Remove 6.0 version.
+
+*freebsd-pam-modules-6.1 (09 May 2006)
+
+  09 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-pam-modules-6.1_rc2.ebuild, +freebsd-pam-modules-6.1.ebuild:
+  Update to 6.1-RELEASE.
+
+*freebsd-pam-modules-6.1_rc2 (02 May 2006)
+
+  02 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-pam-modules-6.1_rc1.ebuild, +freebsd-pam-modules-6.1_rc2.ebuild:
+  Update to 6.1_rc2.
+
+*freebsd-pam-modules-6.1_rc1 (01 May 2006)
+
+  01 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-pam-modules-6.1_rc1.ebuild:
+  Update to 6.1_rc1 and don't install convert.pl.
+
+  20 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-pam-modules-6.0.ebuild:
+  Drop dependency on freebsd-headers.
+
+  02 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/freebsd-pam-modules-gentoo.patch:
+  Drop obsolete files.
+
+*freebsd-pam-modules-6.0 (01 Apr 2006)
+
+  01 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> +files/5.4/README.pamd,
+  +files/5.4/pam.d/other, +files/freebsd-pam-modules-6.0-gentoo.patch,
+  +files/5.4/convert.pl, +files/5.4/pam.d/system,
+  +files/5.4/pam.d/system-auth, +files/freebsd-pam-modules-gentoo.patch,
+  +metadata.xml, +freebsd-pam-modules-6.0.ebuild:
+  Import into portage.
+
+  25 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> +files/5.4/README.pamd,
+  +files/5.4/convert.pl, +files/5.4/pam.d/other, +files/5.4/pam.d/system,
+  +files/5.4/pam.d/system-auth, +files/freebsd-pam-modules-gentoo.patch,
+  +freebsd-pam-modules-5.4-r2.ebuild:
+  Moved to sys-freebsd.
+
+*freebsd-pam-modules-5.4-r2 (04 Jun 2005)
+
+  04 Jun 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -files/freebsd-lib-fixmakefiles.patch,
+  +files/freebsd-pam-modules-gentoo.patch,
+  +files/freebsd-pam-modules-minimal.patch,
+  +files/freebsd-pam-modules-nopasswdqc.patch,
+  -freebsd-pam-modules-5.4-r1.ebuild, +freebsd-pam-modules-5.4-r2.ebuild:
+  Install modules in /lib/security as with Linux-PAM. Remove static version
+  building. Use sys-libs/openpam as pam library instead of its own. Removed
+  pam_deny, pam_permit (in sys-libs/openpam) and pam_passwdqc (in
+  sys-libs/pam_passwdqc).
+
+*freebsd-pam-modules-5.4-r1 (23 May 2005)
+
+  23 May 2005; Diego Pettenò <flameeyes@gentoo.org> +files/5.4/README.pamd,
+  +files/5.4/pam.d/other, +files/5.4/convert.pl, +files/5.4/pam.d/system,
+  +files/5.4/pam.d/system-auth, -freebsd-pam-modules-5.4.ebuild,
+  +freebsd-pam-modules-5.4-r1.ebuild:
+  New revision, this time installs correctly (pamd, not envd). Pam.d files are
+  in $FILESDIR instead than in an external tarball, as they are quite less
+  than before.
+
+*freebsd-pam-modules-5.4_rc3-r1 (03 May 2005)
+
+  03 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-pam-modules-5.4_rc3.ebuild,
+  +freebsd-pam-modules-5.4_rc3-r1.ebuild:
+  New revision which installs pam configuration files.

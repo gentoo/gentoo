@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=dev-libs/zziplib >=media-libs/libpng-1.4:0= >=x11-libs/cairo-1.12 >x11-libs/pixman-0.18 app-text/poppler:=[xpdf-headers(+)] sys-libs/zlib >=dev-libs/kpathsea-6.1.0_p20120701 virtual/pkgconfig
+DESCRIPTION=An extended version of pdfTeX using Lua as an embedded scripting language
+EAPI=5
+HOMEPAGE=http://www.luatex.org/
+IUSE=doc
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=dev-libs/zziplib >=media-libs/libpng-1.4:0= >=x11-libs/cairo-1.12 >x11-libs/pixman-0.18 app-text/poppler:=[xpdf-headers(+)] sys-libs/zlib >=dev-libs/kpathsea-6.1.0_p20120701
+SLOT=0
+SRC_URI=http://foundry.supelec.fr/frs/download.php/file/15745/luatex-beta-0.76.0-source.tar.bz2 http://foundry.supelec.fr/frs/download.php/file/15747/luatex-beta-0.76.0-doc.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	texlive-common	8bd0f2143e4bb5fa3bb0bb56aa08006f	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=fa6acf33a49a4acda35f986514fb6d1e

@@ -1,0 +1,38 @@
+--- library/base/CMakeLists.txt	2013-08-09 17:32:49.000000000 +0200
++++ library/base/CMakeLists.txt	2013-08-26 00:10:45.695132307 +0200
+@@ -2,6 +2,6 @@
+ 
+ add_library(wbbase util_functions.cpp sqlstring.cpp file_functions.cpp file_utilities.cpp threaded_timer.cpp string_utilities.cpp geometry.cpp notifications.cpp ui_form.cpp config_file.cpp drawing.cpp log.cpp threading.cpp profiling.cpp)
+ 
+-target_link_libraries(wbbase ${CAIRO_LIBRARIES} ${GLIB_LIBRARIES} ${GTHREAD_LIBRARIES})
++target_link_libraries(wbbase ${CAIRO_LIBRARIES} ${GLIB_LIBRARIES} ${GTHREAD_LIBRARIES} ${PCRE_LIBRARIES})
+ 
+ install(TARGETS wbbase DESTINATION ${WB_INSTALL_LIB_DIR})
+--- backend/wbprivate/CMakeLists.txt	2013-08-09 17:32:50.000000000 +0200
++++ backend/wbprivate/CMakeLists.txt	2013-08-26 00:24:34.762132208 +0200
+@@ -6,6 +6,7 @@
+     ${GRT_INCLUDE_DIRS}
+     ${ANTLR3C_INCLUDE_DIRS}
+     ${MYSQLCPPCONN_INCLUDE_DIRS}
++    ${PCRE_INCLUDE_DIRS}
+     ${PROJECT_SOURCE_DIR}
+     ${PROJECT_SOURCE_DIR}/library/grt/src 
+     ${PROJECT_SOURCE_DIR}/library/base
+@@ -97,6 +98,7 @@
+     ${SIGC++_LIBRARIES}
+     ${LIBZIP_LIBRARIES}
+     ${TINYXML_LIBRARY}
++    ${PCRE_LIBRARIES}
+ )
+ 
+ #install(TARGETS wbprivate DESTINATION ${WB_INSTALL_LIB_DIR})
+--- backend/wbpublic/CMakeLists.txt	2013-08-09 17:32:53.000000000 +0200
++++ backend/wbpublic/CMakeLists.txt	2013-08-26 00:24:09.226132211 +0200
+@@ -176,6 +176,6 @@
+ #	)
+ #endif()
+ 
+-target_link_libraries(wbpublic wbbase mdcanvas mforms cdbc ${VSQLITE_LIBRARIES} wbscintilla mysqlparser ${CAIRO_LIBRARIES} ${GNOME_KEYRING_LIBRARIES} ${CTEMPLATE_LIBRARIES} ${OPENGL_LIBRARIES})
++target_link_libraries(wbpublic wbbase mdcanvas mforms cdbc ${VSQLITE_LIBRARIES} wbscintilla mysqlparser ${CAIRO_LIBRARIES} ${GNOME_KEYRING_LIBRARIES} ${CTEMPLATE_LIBRARIES} ${OPENGL_LIBRARIES} ${PCRE_LIBRARIES})
+ 
+ install(TARGETS wbpublic DESTINATION ${WB_INSTALL_LIB_DIR})

@@ -1,0 +1,20 @@
+#!/sbin/runscript
+
+depend() {
+	need logger
+}
+
+
+start() {
+	ebegin "Starting ipr initialization daemon"
+
+	if [ ! -d /sys/class/scsi_generic ] ; then
+		/sbin/modprobe sg
+	fi
+	start-stop-daemon --start  --quiet --exec /usr/sbin/iprinit -- --daemon
+}
+
+stop() {
+	ebegin "Shutting down ipr initialization daemon"
+	start-stop-daemon --stop --name iprinit
+}

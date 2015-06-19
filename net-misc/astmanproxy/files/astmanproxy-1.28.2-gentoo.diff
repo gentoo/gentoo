@@ -1,0 +1,39 @@
+diff -uNr astmanproxy-1.28.2.ORIG/Makefile astmanproxy-1.28.2/Makefile
+--- astmanproxy-1.28.2.ORIG/Makefile	2014-02-10 11:18:06.027132570 +0000
++++ astmanproxy-1.28.2/Makefile	2014-02-10 11:21:07.382135291 +0000
+@@ -17,7 +17,7 @@
+ 
+ CC := gcc
+ INCLUDES :=
+-PREFIX:= /usr/local
++PREFIX:= /usr
+ BINDIR := $(DESTDIR)$(PREFIX)/sbin
+ 
+ # For compilation dependencies
+@@ -27,7 +27,7 @@
+ LIBS := -lssl
+ 
+ # Add -g below for debug/GDB symbols
+-CFLAGS:=-Wall -O2 -D_REENTRANT -D_GNU_SOURCE -fPIC -Isrc/include -I/usr/include/openssl
++CFLAGS += -Wall -O2 -D_REENTRANT -D_GNU_SOURCE -fPIC -Isrc/include -I/usr/include/openssl
+ 
+ ifeq (${OSARCH},Darwin)  
+   LIBS+=-lresolv
+@@ -62,7 +62,7 @@
+ DEFINES+='-DMDIR="$(MODDIR)"' '-DPDIR="$(PERMDIR)"' '-DPFILE="$(PERMFILE)"'
+ 
+ PROXYCERT := $(CERTDIR)/proxy-server.pem
+-PROXYSSLCONF := $(CONFDIR)/proxy-ssl.conf
++PROXYSSLCONF := $(DESTDIR)$(CONFDIR)/proxy-ssl.conf
+ 
+ CFLAGS += $(DEFINES)
+ 
+@@ -76,7 +76,7 @@
+ SRCS := $(MODS:%=src/%.c)
+ HDRS := src/include/astmanproxy.h
+ 
+-all: astmanproxy cert
++all: astmanproxy
+ 
+ astmanproxy: $(OBJS) $(SOBJS)
+ 	$(CC) $(CFLAGS) -o $@ $(ASTLINK) $(OBJS) $(LIBS)

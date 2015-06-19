@@ -1,0 +1,402 @@
+# ChangeLog for app-admin/system-tools-backends
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/system-tools-backends/ChangeLog,v 1.80 2015/04/03 10:40:39 dlan Exp $
+
+  03 Apr 2015; Yixun Lan <dlan@gentoo.org> system-tools-backends-2.10.2.ebuild:
+  keyword arm64, tested on cortex-a53 hardware
+
+  23 Nov 2014; Pacho Ramos <pacho@gentoo.org>
+  system-tools-backends-2.10.2.ebuild:
+  Bump eapi and follow current policies
+
+  22 Jun 2014; Markus Meier <maekke@gentoo.org>
+  system-tools-backends-2.10.2.ebuild:
+  add ~arm, bug #512040
+
+  05 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -system-tools-backends-2.10.1.ebuild:
+  Clean up old revision.
+
+  31 May 2012; Zac Medico <zmedico@gentoo.org>
+  system-tools-backends-2.10.1.ebuild, system-tools-backends-2.10.2.ebuild:
+  inherit user for enewgroup
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  system-tools-backends-2.10.1.ebuild, system-tools-backends-2.10.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  13 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  system-tools-backends-2.10.1.ebuild, system-tools-backends-2.10.2.ebuild:
+  Switch to virtual/shadow.
+
+  02 Nov 2011; Mike Frysinger <vapier@gentoo.org>
+  system-tools-backends-2.10.1.ebuild, system-tools-backends-2.10.2.ebuild:
+  Drop "die" from enew{user,group} since these have always taken care of
+  calling it when necessary.
+
+  05 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  system-tools-backends-2.10.2.ebuild:
+  ppc stable wrt #369909
+
+  13 Aug 2011; Raúl Porcel <armin76@gentoo.org>
+  system-tools-backends-2.10.2.ebuild:
+  alpha/ia64/sparc stable wrt #369909
+
+  14 Jul 2011; Thomas Kahle <tomka@gentoo.org>
+  system-tools-backends-2.10.2.ebuild:
+  x86 stable per bug 369909
+
+  01 Jul 2011; Markos Chandras <hwoarang@gentoo.org>
+  system-tools-backends-2.10.2.ebuild:
+  Stable on amd64 wrt bug #278255
+
+*system-tools-backends-2.10.2 (03 Apr 2011)
+
+  03 Apr 2011; Pacho Ramos <pacho@gentoo.org>
+  -system-tools-backends-2.10.0.ebuild, +system-tools-backends-2.10.2.ebuild:
+  Version bump: Don't create empty /etc/ntp.conf; allow any sessions, not only
+  active ones, to authenticate via PolicyKit; support creating groups with
+  default GID instead of fixed one. Remove old.
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org>
+  system-tools-backends-2.10.1.ebuild:
+  Marking system-tools-backends-2.10.1 ppc stable for bug 353436
+
+  30 Jan 2011; Raúl Porcel <armin76@gentoo.org>
+  system-tools-backends-2.10.0.ebuild, system-tools-backends-2.10.1.ebuild:
+  alpha/ia64/sparc stable wrt #348987
+
+  19 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  system-tools-backends-2.10.1.ebuild:
+  Stable on amd64 wrt bug #348987
+
+  18 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  system-tools-backends-2.10.1.ebuild:
+  x86 stable, bug 348987
+
+  11 Sep 2010; Joseph Jezak <josejx@gentoo.org>
+  system-tools-backends-2.10.0.ebuild:
+  Marked ppc for bug #324077.
+
+*system-tools-backends-2.10.1 (06 Sep 2010)
+
+  06 Sep 2010; Pacho Ramos <pacho@gentoo.org>
+  +system-tools-backends-2.10.1.ebuild:
+  Version bump: Rework handling of home directory changes, allowing several
+  files migration schemes depending on user's choices; allow erasing already
+  existing files in home when creating a user; set D-Bus timeout to maximum
+  for replies from modules, to allow long operations to complete without
+  error; fix chown syntax which was not supported on all platforms; update
+  MAINTAINERS file.
+
+  06 Sep 2010; Pacho Ramos <pacho@gentoo.org>
+  -files/system-tools-backends-2.8.2-1ubuntu1.1.patch,
+  -files/system-tools-backends-2.8.2-automagic-polkit.patch,
+  -system-tools-backends-2.8.3.ebuild, metadata.xml:
+  Remove old.
+
+  11 Aug 2010; Joseph Jezak <josejx@gentoo.org>
+  system-tools-backends-2.8.3.ebuild, system-tools-backends-2.10.0.ebuild:
+  Marked ~ppc for bug #313563.
+
+  09 Aug 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  system-tools-backends-2.10.0.ebuild:
+  Remove unneeded eautoreconf call.
+
+  01 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  system-tools-backends-2.10.0.ebuild:
+  x86 stable, bug 324077
+
+  31 Jul 2010; Pacho Ramos <pacho@gentoo.org>
+  system-tools-backends-2.10.0.ebuild:
+  amd64 stable, bug 324077
+
+*system-tools-backends-2.10.0 (16 Jun 2010)
+
+  16 Jun 2010; Pacho Ramos <pacho@gentoo.org>
+  +system-tools-backends-2.10.0.ebuild:
+  Version bump with lots of bugfixes, it now requires polkit
+  unconditionally.
+
+  31 May 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -files/system-tools-backends-2.6.0-1ubuntu1.1.patch,
+  -files/system-tools-backends-2.6.0-automagic-polkit.patch,
+  -files/system-tools-backends-2.6.0-cleanup-pid-file.patch,
+  -files/system-tools-backends-2.6.0-cve-2008-4311.patch,
+  -files/system-tools-backends-2.6.0-default-permissions.patch,
+  -files/system-tools-backends-2.6.0-handle-services.patch,
+  -files/system-tools-backends-2.6.0-services.patch,
+  -files/system-tools-backends-2.6.0-users.patch,
+  -system-tools-backends-2.6.1-r1.ebuild,
+  -files/system-tools-backends-2.6.1-gettext.patch:
+  Clean up old revisions.
+
+  22 May 2010; Raúl Porcel <armin76@gentoo.org>
+  system-tools-backends-2.8.3.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #313563
+
+  20 Jan 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  files/system-tools-backends-2.8.2-automagic-polkit.patch,
+  system-tools-backends-2.8.3.ebuild, files/stb.rc:
+  Fix configure loop, bug #297482. Fix localstatedir for init script.
+
+*system-tools-backends-2.8.3 (17 Dec 2009)
+
+  17 Dec 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -system-tools-backends-1.4.2-r1.ebuild,
+  -files/system-tools-backends-2.4.1-baselayout2.patch,
+  -system-tools-backends-2.4.2.ebuild,
+  -system-tools-backends-2.6.0-r1.ebuild,
+  -system-tools-backends-2.6.0-r2.ebuild,
+  -files/system-tools-backends-2.6.0-gcc43.patch,
+  -system-tools-backends-2.6.1.ebuild,
+  +files/system-tools-backends-2.8.2-1ubuntu1.1.patch,
+  +files/system-tools-backends-2.8.2-automagic-polkit.patch,
+  +files/system-tools-backends-2.8.2-cve-2008-4311.patch,
+  +files/system-tools-backends-2.8.2-default-permissions.patch,
+  +system-tools-backends-2.8.3.ebuild:
+  Version bump. Clean up old revisions.
+
+*system-tools-backends-2.6.1-r1 (23 Jul 2009)
+
+  23 Jul 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/system-tools-backends-2.6.0-1ubuntu1.1.patch,
+  +system-tools-backends-2.6.1-r1.ebuild,
+  +files/system-tools-backends-2.6.1-gettext.patch:
+  Version bump. Add ubuntu fix for CVE 2008-6792, bug #270326. Set
+  GETTEXT_PACKAGE variable, bug #270338.
+
+*system-tools-backends-2.6.1 (16 Apr 2009)
+
+  16 Apr 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +system-tools-backends-2.6.1.ebuild:
+  Bump to 2.6.1.
+
+*system-tools-backends-2.6.0-r2 (09 Apr 2009)
+
+  09 Apr 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/system-tools-backends-2.6.0-cleanup-pid-file.patch,
+  +files/system-tools-backends-2.6.0-cve-2008-4311.patch,
+  +files/system-tools-backends-2.6.0-default-permissions.patch,
+  +files/system-tools-backends-2.6.0-gcc43.patch,
+  +files/system-tools-backends-2.6.0-handle-services.patch,
+  +system-tools-backends-2.6.0-r2.ebuild:
+  Bump to 2.6.0-r2. Include more patches from bug #214265 and from ubuntu.
+
+*system-tools-backends-2.6.0-r1 (13 Oct 2008)
+
+  13 Oct 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/system-tools-backends-2.6.0-automagic-polkit.patch,
+  +files/system-tools-backends-2.6.0-services.patch,
+  +files/system-tools-backends-2.6.0-users.patch,
+  -system-tools-backends-2.4.1-r1.ebuild,
+  -system-tools-backends-2.6.0.ebuild,
+  +system-tools-backends-2.6.0-r1.ebuild, metadata.xml:
+  bump to 2.6.0-r1. Integrate patch from bug #214265, thanks to Jeremy
+  Guitton and fix policykit automagic dependency.
+
+*system-tools-backends-2.6.0 (23 Mar 2008)
+
+  23 Mar 2008; Gilles Dartiguelongue <eva@gentoo.org> metadata.xml,
+  +system-tools-backends-2.6.0.ebuild:
+  New version for GNOME-2.22. Uses GIO, supposedly uses DBus
+  activation and optionally policykit.
+
+*system-tools-backends-2.4.2 (24 Jan 2008)
+
+  24 Jan 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +system-tools-backends-2.4.2.ebuild:
+  bump to 2.4.2, fixes for Times
+
+*system-tools-backends-2.4.1-r1 (24 Jan 2008)
+
+  24 Jan 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/system-tools-backends-2.4.1-baselayout2.patch, +files/stb.rc,
+  +system-tools-backends-2.4.1-r1.ebuild:
+  bumping to 2.4.1 with a compatibility patch for baselayout-2
+
+  27 May 2007; Mart Raudsepp <leio@gentoo.org>
+  -system-tools-backends-1.4.2.ebuild:
+  Remove old
+
+  21 May 2007; Raúl Porcel <armin76@gentoo.org>
+  system-tools-backends-1.4.2-r1.ebuild:
+  alpha stable wrt #164978
+
+  04 Feb 2007; Jeroen Roovers <jer@gentoo.org>
+  system-tools-backends-1.4.2-r1.ebuild:
+  Stable for HPPA (bug #164978).
+
+  04 Feb 2007; Markus Rothe <corsair@gentoo.org>
+  system-tools-backends-1.4.2-r1.ebuild:
+  Stable on ppc64; bug #164978
+
+  03 Feb 2007; Andrej Kacian <ticho@gentoo.org>
+  system-tools-backends-1.4.2-r1.ebuild:
+  Stable on x86, bug #164978.
+
+  03 Feb 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  system-tools-backends-1.4.2-r1.ebuild:
+  Stable on ppc wrt bug #164978.
+
+  03 Feb 2007; Olivier Crête <tester@gentoo.org>
+  system-tools-backends-1.4.2-r1.ebuild:
+  Stable on amd64 per bug #164978
+
+  02 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  system-tools-backends-1.4.2-r1.ebuild:
+  Stable on sparc wrt #164978
+
+  16 Jan 2007; Roy Marples <uberlord@gentoo.org>
+  system-tools-backends-1.4.2.ebuild, system-tools-backends-1.4.2-r1.ebuild:
+  Added ~x86-fbsd keyword.
+
+*system-tools-backends-1.4.2-r1 (04 Jan 2007)
+
+  04 Jan 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  +system-tools-backends-1.4.2-r1.ebuild:
+  Revbump to create stb-admin group (bug #155618)
+
+  04 Jan 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  -system-tools-backends-1.2.0.ebuild, -system-tools-backends-1.4.1.ebuild:
+  prune old versions
+
+  04 Sep 2006; Joshua Kinard <kumba@gentoo.org>
+  system-tools-backends-1.2.0.ebuild, system-tools-backends-1.4.1.ebuild,
+  system-tools-backends-1.4.2.ebuild:
+  Removing mips keywords as gnome isn't supported for us anymore.
+
+  23 Jul 2006; Daniel Gryniewicz <dang@gentoo.org>
+  -system-tools-backends-1.4.0.ebuild:
+  Clean up unnecessary versions
+
+  17 Jul 2006; Daniel Gryniewicz <dang@gentoo.org> ChangeLog:
+  Marked stable on amd64 for bug #139612
+
+  21 Apr 2006; Thomas Cort <tcort@gentoo.org>
+  system-tools-backends-1.4.2.ebuild:
+  Stable on alpha wrt Bug #126321.
+
+  19 Mar 2006; Markus Rothe <corsair@gentoo.org>
+  system-tools-backends-1.4.2.ebuild:
+  Stable on ppc64
+
+  18 Mar 2006; Olivier Crête <tester@gentoo.org>
+  system-tools-backends-1.4.2.ebuild:
+  Stable on amd64 per bug #126321
+
+  17 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  system-tools-backends-1.4.2.ebuild:
+  Stable on x86 wrt bug #126321.
+
+  17 Mar 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  system-tools-backends-1.4.2.ebuild:
+  Stable gnome-2.12.3 for ppc, bug #126321
+
+  14 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  system-tools-backends-1.4.2.ebuild:
+  Stable on hppa
+
+  13 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  system-tools-backends-1.4.2.ebuild:
+  Stable on sparc
+
+  20 Feb 2006; Joshua Kinard <kumba@gentoo.org>
+  system-tools-backends-1.4.1.ebuild:
+  Marked stable on mips.
+
+*system-tools-backends-1.4.2 (12 Feb 2006)
+
+  12 Feb 2006; John N. Laliberte <allanonjl@gentoo.org>
+  +system-tools-backends-1.4.2.ebuild:
+  new version
+
+  03 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  system-tools-backends-1.4.1.ebuild:
+  Mark 1.4.1 stable on alpha
+
+  22 Jan 2006; Markus Rothe <corsair@gentoo.org>
+  system-tools-backends-1.4.1.ebuild:
+  Stable on ppc64
+
+  22 Jan 2006; <dang@gentoo.org> system-tools-backends-1.4.1.ebuild:
+  Marked stable on amd64 per bug #119634
+
+  22 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  system-tools-backends-1.4.1.ebuild:
+  Marked ppc stable for bug #119634; Stabilize Gnome-2.12.2
+
+  22 Jan 2006; Joshua Jackson <tsunam@gentoo.org>
+  system-tools-backends-1.4.1.ebuild:
+  Stable on x86 for bug #119634; Stabilize Gnome-2.12.2
+
+  20 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  system-tools-backends-1.4.1.ebuild:
+  Stable on sparc wrt #119634
+
+*system-tools-backends-1.4.1 (05 Dec 2005)
+
+  05 Dec 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  +system-tools-backends-1.4.1.ebuild:
+  Version bump from upstream. Added dev-lang/perl to rdep as it installs a
+  number of a perl scripts.
+
+*system-tools-backends-1.4.0 (11 Sep 2005)
+
+  11 Sep 2005; John N. Laliberte <allanonjl@gentoo.org>
+  -system-tools-backends-1.3.92.ebuild, +system-tools-backends-1.4.0.ebuild:
+  2.12 release vbump
+
+*system-tools-backends-1.3.92 (26 Aug 2005)
+
+  26 Aug 2005; John N. Laliberte <allanonjl@gentoo.org>
+  -system-tools-backends-1.3.2.ebuild, +system-tools-backends-1.3.92.ebuild:
+  new version
+
+*system-tools-backends-1.3.2 (20 Aug 2005)
+
+  20 Aug 2005; John N. Laliberte <allanonjl@gentoo.org>
+  +system-tools-backends-1.3.2.ebuild:
+  new version.
+
+  20 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  system-tools-backends-1.2.0.ebuild:
+  Depend on shadow only for GNU userland. See bug #103121.
+
+  11 Jul 2005; Stephen P. Becker <geoman@gentoo.org>
+  system-tools-backends-1.2.0.ebuild:
+  stable on mips
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  system-tools-backends-1.2.0.ebuild:
+  Stable on alpha.
+
+  25 Jun 2005; Guy Martin <gmsoft@gentoo.org>
+  system-tools-backends-1.2.0.ebuild:
+  Stable on hppa.
+
+  12 Jun 2005; Olivier Crête <tester@gentoo.org>
+  system-tools-backends-1.2.0.ebuild:
+  Stable on amd64
+
+  12 Jun 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  system-tools-backends-1.2.0.ebuild:
+  Stable on ppc.
+
+  09 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  system-tools-backends-1.2.0.ebuild:
+  Stable on sparc
+
+  09 Jun 2005; Markus Rothe <corsair@gentoo.org>
+  system-tools-backends-1.2.0.ebuild:
+  Stable on ppc64
+
+  06 May 2005; Markus Rothe <corsair@gentoo.org>
+  system-tools-backends-1.2.0.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*system-tools-backends-1.2.0 (09 Mar 2005)
+
+  09 Mar 2005; Joe McCann <joem@gentoo.org> +metadata.xml,
+  +system-tools-backends-1.2.0.ebuild:
+  New package. Backend for gnome-system-tools

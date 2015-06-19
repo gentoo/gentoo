@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst prepare prerm
+DESCRIPTION=return all related RFCs based upon a number or a search string
+EAPI=4
+HOMEPAGE=http://www.dewn.com/rfc/
+KEYWORDS=amd64 ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=freedist
+RDEPEND=dev-lang/perl || ( www-client/lynx virtual/w3m )
+SLOT=0
+SRC_URI=http://www.dewn.com/rfc/rfc-3.2.3.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=bdbd6ef54bbc3664a52aeef65231e4df

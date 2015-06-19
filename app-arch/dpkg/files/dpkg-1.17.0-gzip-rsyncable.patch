@@ -1,0 +1,11 @@
+--- a/scripts/Dpkg/Compression.pm
++++ b/scripts/Dpkg/Compression.pm
+@@ -52,7 +52,7 @@
+ my $COMP = {
+     gzip => {
+ 	file_ext => 'gz',
+-	comp_prog => [ 'gzip', '--no-name', '--rsyncable' ],
++	comp_prog => [ 'gzip', '--no-name' ],
+ 	decomp_prog => [ 'gunzip' ],
+ 	default_level => 9,
+     },

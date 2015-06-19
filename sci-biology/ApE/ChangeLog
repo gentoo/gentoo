@@ -1,0 +1,48 @@
+# ChangeLog for sci-biology/ApE
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/ApE/ChangeLog,v 1.10 2015/03/20 15:39:09 jlec Exp $
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> -ApE-2.0.7.ebuild,
+  ApE-2.0.7-r1.ebuild, metadata.xml:
+  Fix tcl/tk slotting;drop old; Bump EAPI
+
+*ApE-2.0.7-r1 (31 Dec 2012)
+
+  31 Dec 2012; Jeff Gardner <je_fro@gentoo.org> +ApE-2.0.7-r1.ebuild:
+  Forward command line arguments to ApE startup script, thanks to Markus Meier
+  in bug #375919
+
+  25 Apr 2012; Jeff Gardner <je_fro@gentoo.org> ApE-2.0.7.ebuild:
+  Fix SRC_URI thanks to Horea Christian in bug #405367.
+
+*ApE-2.0.7 (15 Jun 2011)
+
+  15 Jun 2011; Jeff Gardner <je_fro@gentoo.org> ApE-1.17.ebuild,
+  +ApE-2.0.7.ebuild:
+  New version, fix bugs raised in #371473, thanks to Piotr Szymaniak and Jeroen
+  Roovers.
+
+  14 Nov 2009; Jeff Gardner <je_fro@gentoo.org> Manifest:
+  Update digest thanks to a bump from Martin Mokrejs and Stefanie D. Hueber
+  in bug #292789.
+
+*ApE-1.17 (17 Feb 2009)
+
+  17 Feb 2009; Jeff Gardner <je_fro@gentoo.org> -ApE-1.12.ebuild,
+  +ApE-1.17.ebuild:
+  Bump to latest version. Thanks to Sascha Lucas on bug #259267.
+
+  30 Dec 2008; Jeff Gardner <je_fro@gentoo.org> Manifest:
+  Fix manifest
+
+  02 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Fixed the broken herd by adding no-herd to metadata.xml.
+
+  09 Jul 2008; Jeff Gardner <je_fro@gentoo.org> ApE-1.12.ebuild:
+  RESTRICT=mirror, thanks to tove who caught it.
+
+*ApE-1.12 (09 Jul 2008)
+
+  09 Jul 2008; Jeff Gardner <je_fro@gentoo.org> +ApE-1.12.ebuild:
+  Initial import, thanks to Marek Miller on bug #231231.

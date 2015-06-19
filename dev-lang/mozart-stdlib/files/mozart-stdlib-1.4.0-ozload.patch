@@ -1,0 +1,13 @@
+--- mozart-1.4.0.20080704-std.orig/ozmake/Makefile.in	2004-04-01 00:52:55.000000000 +1200
++++ mozart-1.4.0.20080704-std/ozmake/Makefile.in	2008-07-06 19:56:25.000000000 +1200
+@@ -37,8 +37,8 @@
+ 
+ # these additional 2 lines makes it possible to build in a directory
+ # different from the source directory
+-OZLOAD = prefix=$(CYGSRCDIR)=$(CYGBUILDDIR)$(OZLOADSEP)root=$(CYGBUILDDIR)$(OZLOADSEP)root=$(CYGSRCDIR)$(OZLOADSEP)cache=~/.oz/cache$(OZLOADSEP)cache=$(OZHOME)/cache
+-export OZLOAD
++#OZLOAD = prefix=$(CYGSRCDIR)=$(CYGBUILDDIR)$(OZLOADSEP)root=$(CYGBUILDDIR)$(OZLOADSEP)root=$(CYGSRCDIR)$(OZLOADSEP)cache=~/.oz/cache$(OZLOADSEP)cache=$(OZHOME)/cache
++#export OZLOAD
+ 
+ XSLTPROC	= @VAR_XSLTPROC@
+ LYNX		= @VAR_LYNX@

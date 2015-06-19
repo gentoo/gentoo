@@ -1,0 +1,76 @@
+# ChangeLog for www-client/w3mir
+# Copyright 2000-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-client/w3mir/ChangeLog,v 1.18 2014/07/25 00:27:42 zlogene Exp $
+
+  25 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> -w3mir-1.0.10-r1.ebuild,
+  w3mir-1.0.10-r2.ebuild:
+  Mark stable; Drop old.
+
+*w3mir-1.0.10-r2 (15 Jul 2014)
+
+  15 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> +w3mir-1.0.10-r2.ebuild:
+  Revision bump: EAPI=5
+
+  23 Feb 2013; Zac Medico <zmedico@gentoo.org> w3mir-1.0.10-r1.ebuild:
+  Add ~arm-linux and ~x86-linux keywords.
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  17 Jan 2008; Raúl Porcel <armin76@gentoo.org> -w3mir-1.0.10.ebuild:
+  old
+
+  11 May 2007; Thilo Bangert <bangert@gentoo.org> +metadata.xml:
+  add metadata.xml
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  04 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  25 Mar 2006; Joseph Jezak <josejx@gentoo.org> w3mir-1.0.10-r1.ebuild:
+  Marked ppc stable for bug #115183.
+
+  24 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> w3mir-1.0.10-r1.ebuild:
+  Stable on x86 wrt bug #115183.
+
+  24 Mar 2006; Fernando J. Pereda <ferdy@gentoo.org> w3mir-1.0.10-r1.ebuild:
+  Stable on alpha wrt bug #115183. Tested by Thomas Cort <tcort@cs.ubishops.ca>
+
+*w3mir-1.0.10-r1 (24 Mar 2006)
+
+  24 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/w3mir-1.0.10-cwd.diff, +w3mir-1.0.10-r1.ebuild:
+  Add patch to fix mirroring to /, thanks to Patric Mueller for the patch (bug
+  #115183). Add ~amd64.
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org> w3mir-1.0.10.ebuild:
+  Virtuals for perl-core
+
+  28 Nov 2005; <mcumming@gentoo.org> w3mir-1.0.10.ebuild:
+  Switched from perl-module to perl-app eclass
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> w3mir-1.0.10.ebuild:
+  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
+
+*w3mir-1.0.10 (18 Mar 2005)
+
+  18 Mar 2005; Seemant Kulleen <seemant@gentoo.org> +w3mir-1.0.10.ebuild:
+  Moved from net-www/w3mir to www-client/w3mir.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  04 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  w3mir-1.0.10.ebuild:
+  Masked w3mir-1.0.10.ebuild stable for ppc
+
+  11 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> w3mir-1.0.10.ebuild:
+  Stable on alpha.
+
+*w3mir-1.0.10 (07 May 2003)
+
+  07 May 2003; <rac@gentoo.org> w3mir-1.0.10.ebuild:
+  Initial import.  Ebuild submitted by Mol <newsg@infofab.no> in bug #13164.

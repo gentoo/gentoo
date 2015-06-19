@@ -1,0 +1,28 @@
+--- scmail-1.3.orig/doc/embed.scm
++++ scmail-1.3/doc/embed.scm
+@@ -1,3 +1,4 @@
++(use gauche.charconv)
+ (use gauche.regexp)
+ (define (escape str)
+   (set! str (regexp-replace-all #/&/ str "&amp;"))
+@@ -15,12 +16,18 @@
+ (define (main args)
+   (call-with-input-file (cadr args)
+     (lambda (in)
+-      (let* ((content (port->string in))
++      (let* ((content (port->string (open-input-conversion-port in "*jp")))
+              (content (regexp-replace-all #/#\{(.*?)\}/ content
+                                           (lambda (m)
+                                             (string-append 
+                                              "<pre>\n"
+                                              (read-file-and-escape (rxmatch-substring m 1))
+-                                             "</pre>\n")))))
++                                             "</pre>\n"))))
++             (content (regexp-replace #/(encoding=").*?(")/ content
++                                      (lambda (m)
++                                        (string-append
++                                         (rxmatch-substring m 1)
++                                         (ces-guess-from-string content "*jp")
++                                         (rxmatch-substring m 2))))))
+         (display content))))
+   0)

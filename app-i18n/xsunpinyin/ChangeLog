@@ -1,0 +1,44 @@
+# ChangeLog for app-i18n/xsunpinyin
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/xsunpinyin/ChangeLog,v 1.8 2013/01/30 14:35:14 yngwin Exp $
+
+  30 Jan 2013; Ben de Groot <yngwin@gentoo.org>
+  xsunpinyin-2.0.4_pre20130108.ebuild:
+  More precise dep on sunpinyin version
+
+*xsunpinyin-2.0.4_pre20130108 (30 Jan 2013)
+
+  30 Jan 2013; Ben de Groot <yngwin@gentoo.org> +files/README.gentoo,
+  +xsunpinyin-2.0.4_pre20130108.ebuild:
+  Version bump to newest sunpinyin snapshot. Use subslot on sunpinyin dependency
+  to trigger rebuild.
+
+*xsunpinyin-2.0.3-r3 (30 Jan 2013)
+
+  30 Jan 2013; Ben de Groot <yngwin@gentoo.org> +xsunpinyin-2.0.3-r3.ebuild,
+  -xsunpinyin-2.0.3-r2.ebuild, metadata.xml:
+  Make sure this depends on correct sunpinyin version. Migrate to eapi5.
+
+  17 Apr 2011; Mu Qiao <qiaomuf@gentoo.org> -xsunpinyin-2.0.3-r1.ebuild,
+  xsunpinyin-2.0.3-r2.ebuild:
+  Fix bug #363759, remove old version
+
+*xsunpinyin-2.0.3-r2 (26 Feb 2011)
+
+  26 Feb 2011; Mu Qiao <qiaomuf@gentoo.org> +xsunpinyin-2.0.3-r2.ebuild,
+  +files/xsunpinyin-2.0.3-force-switch.patch:
+  Include upstream patch.
+
+*xsunpinyin-2.0.3-r1 (23 Feb 2011)
+
+  23 Feb 2011; Mu Qiao <qiaomuf@gentoo.org> +xsunpinyin-2.0.3-r1.ebuild:
+  Reversion bump wrt bug #356091
+
+  23 Feb 2011; Mu Qiao <qiaomuf@gentoo.org> xsunpinyin-2.0.3.ebuild:
+  Add export-dynamic to ldflags wrt bug #356091
+
+*xsunpinyin-2.0.3 (20 Feb 2011)
+
+  20 Feb 2011; Mu Qiao <qiaomuf@gentoo.org> +xsunpinyin-2.0.3.ebuild,
+  +metadata.xml:
+  New ebuild for xsunpinyin.

@@ -1,0 +1,213 @@
+# ChangeLog for dev-python/pmw
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pmw/ChangeLog,v 1.57 2015/06/03 20:49:12 jlec Exp $
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  02 Jun 2015; Jack Morgan <jmorgan@gentoo.org> pmw-1.3.3-r2.ebuild,
+  pmw-2.0.0-r2.ebuild:
+  sparc stable wrt bug #540290
+
+  27 May 2015; Justin Lecher <jlec@gentoo.org> pmw-2.0.1.ebuild:
+  Fix installation error due to missing file, bug #550512
+
+*pmw-2.0.1 (26 May 2015)
+
+  26 May 2015; Justin Lecher <jlec@gentoo.org> +pmw-2.0.1.ebuild,
+  -pmw-1.3.2-r2.ebuild:
+  Version Bump; drop old
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> pmw-1.3.3-r2.ebuild,
+  pmw-2.0.0-r2.ebuild:
+  Stable for ia64, wrt bug #540290
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> pmw-1.3.3-r2.ebuild,
+  pmw-2.0.0-r2.ebuild:
+  Stable for alpha, wrt bug #540290
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pmw-1.3.3-r2.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> pmw-2.0.0-r2.ebuild:
+  x86 stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> pmw-1.3.3-r2.ebuild,
+  pmw-2.0.0-r2.ebuild:
+  ppc stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> pmw-2.0.0-r2.ebuild:
+  amd64 stable, bug 540290
+
+  06 Jan 2015; Ian Delaney <idella4@gentoo.org> pmw-2.0.0-r2.ebuild:
+  clean old impl
+
+  25 Nov 2014; Pacho Ramos <pacho@gentoo.org> pmw-2.0.0-r2.ebuild:
+  Support python 3.4
+
+  13 Aug 2014; Andreas Schuerch <nativemad@gentoo.org> pmw-1.3.3-r2.ebuild:
+  x86 stable, see bug 507142
+
+  27 May 2014; Markos Chandras <hwoarang@gentoo.org> pmw-1.3.3-r2.ebuild,
+  pmw-2.0.0-r2.ebuild:
+  Drop 2.0.0 back to ~testing and stabilize 1.1.3-r2 as required for #507142
+
+  27 May 2014; Markos Chandras <hwoarang@gentoo.org> pmw-2.0.0-r2.ebuild:
+  Stable on amd64 wrt bug #507142
+
+*pmw-2.0.0-r2 (23 Sep 2013)
+*pmw-1.3.3-r2 (23 Sep 2013)
+
+  23 Sep 2013; Justin Lecher <jlec@gentoo.org> -pmw-1.3.3-r1.ebuild,
+  +pmw-1.3.3-r2.ebuild, -pmw-2.0.0-r1.ebuild, +pmw-2.0.0-r2.ebuild,
+  +files/pmw-1.3.3-install-no-docs.patch:
+  Fix patch and more pyton eclass funtion uses
+
+*pmw-2.0.0-r1 (23 Sep 2013)
+*pmw-1.3.3-r1 (23 Sep 2013)
+
+  23 Sep 2013; Justin Lecher <jlec@gentoo.org> -pmw-1.3.3.ebuild,
+  +pmw-1.3.3-r1.ebuild, -pmw-2.0.0.ebuild, +pmw-2.0.0-r1.ebuild:
+  Fix Typos
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> pmw-1.3.3.ebuild,
+  pmw-2.0.0.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  10 May 2013; Patrick Lauer <patrick@gentoo.org> pmw-1.3.3.ebuild,
+  pmw-2.0.0.ebuild:
+  Quoting
+
+  06 Feb 2013; Ian Delaney <idella4@gentoo.org> pmw-1.3.3.ebuild,
+  pmw-2.0.0.ebuild:
+  Added test phase to 1.3.3 & 2.0.0 while restricting tests due to it doesn't
+  work, dropped unusable 1.3 patches from -2.0.0, added required conversion to
+  py3 code state in -2.0.0, fixed doc install fixing Bug #454974 by Juergen Rose
+
+  29 Jan 2013; Justin Lecher <jlec@gentoo.org> pmw-1.3.2-r2.ebuild,
+  pmw-1.3.3.ebuild, pmw-2.0.0.ebuild:
+  Correct SLOTs, #453570
+
+*pmw-2.0.0 (21 Jan 2013)
+*pmw-1.3.3 (21 Jan 2013)
+
+  21 Jan 2013; Justin Lecher <jlec@gentoo.org> +pmw-1.3.3.ebuild,
+  +pmw-2.0.0.ebuild, metadata.xml:
+  Version Bump
+
+  21 Feb 2012; Patrick Lauer <patrick@gentoo.org> pmw-1.3.2-r2.ebuild:
+  Restricting jython
+
+  20 Feb 2012; Patrick Lauer <patrick@gentoo.org> pmw-1.3.2-r2.ebuild:
+  Restricting pypy #403801
+
+  21 Nov 2011; Justin Lecher <jlec@gentoo.org> pmw-1.3.2-r2.ebuild:
+  keyworded for ~x86-macos ~x64-macos, tested by Johan Hattne #390123
+
+  30 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pmw-1.3.2-r2.ebuild:
+  Update EAPI. Fix dependencies.
+
+  08 Jun 2010; Markos Chandras <hwoarang@gentoo.org> pmw-1.3.2-r2.ebuild:
+  Stable on amd64 wrt bug #310775
+
+  24 May 2010; Raúl Porcel <armin76@gentoo.org> pmw-1.3.2-r2.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #310775
+
+  18 Apr 2010; <nixnut@gentoo.org> pmw-1.3.2-r2.ebuild:
+  ppc stable #310775
+
+  26 Feb 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pmw-1.3.2-r2.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*pmw-1.3.2-r2 (20 Feb 2010)
+
+  20 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +files/1.3.2-python2.5.patch, +pmw-1.3.2-r2.ebuild:
+  Make deletecommand work with python 2.5, patched grabbed from debian
+
+  07 Feb 2010; Peter Volkov <pva@gentoo.org> pmw-1.3.2-r1.ebuild:
+  Add inherit eutils: epatch is defined there.
+
+  11 Oct 2009; Fabian Groffen <grobian@gentoo.org> pmw-1.3.2-r1.ebuild:
+  Merge from Prefix
+
+*pmw-1.3.2-r1 (01 Mar 2009)
+
+  01 Mar 2009; Jesus Rivero <neurogeek@gentoo.org> -pmw-1.3.2.ebuild,
+  +pmw-1.3.2-r1.ebuild:
+  Revbump. EAPI 2 support for python tk USE flag. Removed older version
+
+*pmw-1.3.2 (06 Aug 2008)
+
+  06 Aug 2008; Jesus Rivero <neurogeek@gentoo.org>
+  +files/pmw-1.3.2-install-no-docs.patch, pmw-1.2.ebuild, +pmw-1.3.2.ebuild:
+  Added PYTHON_MODNAME to pmw-1.2. Added pmw-1.3.2.ebuild. Fixes bug
+  #233638. Thanks to Necoro <gentoo@necoro.eu>
+
+  06 Jan 2007; Tiziano Müller <dev-zero@gentoo.org> -pmw-0.8.5.ebuild,
+  -pmw-1.1.ebuild:
+  Dropped old versions
+
+  27 Sep 2006; Marien Zwart <marienz@gentoo.org> pmw-0.8.5.ebuild,
+  pmw-1.1.ebuild, pmw-1.2.ebuild:
+  Clean up error message on missing Tkinter. Closes bug #149324, thanks to
+  Gerolf Ziegenhain <derverstand@web.de> for reporting.
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> pmw-1.2.ebuild:
+  Mark 1.2 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> pmw-1.2.ebuild:
+  add ~ia64
+
+  24 Apr 2005; Simon Stelling <blubb@gentoo.org> pmw-1.2.ebuild:
+  stable on amd64
+
+  21 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> pmw-1.2.ebuild:
+  Stable on ppc.
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  09 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> pmw-1.2.ebuild:
+  Stable on alpha.
+
+  17 May 2004; Bryan Østergaard <kloeri@gentoo.org> pmw-1.2.ebuild:
+  Add ~alpha.
+
+  15 May 2004; Danny van Dyk <kugelfang@gentoo.org> pmw-1.2.ebuild:
+  Marked ~amd64.
+
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> pmw-0.8.5.ebuild:
+  Add missing IUSE.
+
+  26 Feb 2004; Sven Blumenstein <bazik@gentoo.org> pmw-1.2.ebuild:
+  Stable on sparc.
+
+*pmw-1.2 (12 Oct 2003)
+
+  12 Oct 2003; Alastair Tse <liquidx@gentoo.org> pmw-1.2.ebuild:
+  version bump
+
+  28 Apr 2003; Alastair Tse <liquidx@gentoo.org> pmw-1.1.ebuild:
+  be verbose about missing tk
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*pmw-1.1 (24 Oct 2002)
+
+  24 Oct 2002; Arcady Genkin <agenkin@gentoo.org> pmw-1.1.ebuild :
+
+  Updated to version 1.1
+
+*pmw-0.8.5 (Mar 19 2002)
+
+  29 Jul 2002; George Shapovalov <george@gentoo.org> pmw-0.8.5.ebuild :
+
+  Added KEYWORDS,SLOT,LICENSE
+  headers clean-up
+
+  19 Mar 2002; Arcady Genkin <agenkin@thpoon.com> pmw-0.8.5.ebuild :
+  
+  Initial version of the package.

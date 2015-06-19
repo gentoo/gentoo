@@ -1,0 +1,49 @@
+Set SHELL since the generic jabber user used on Gentoo for jabber servers
+doesn't have a valid shell set by default and fix EXEC_CMD otherwise it fails
+with "This account is currently not available" again due to jabber not having
+a valid shell.
+
+Also, workaround the assumption that jabber's $HOME is a directory when instead
+it defaults to /dev/null on Gentoo.
+
+--- ejabberd-15.03/ejabberdctl.template
++++ ejabberd-15.03/ejabberdctl.template
+@@ -15,6 +15,7 @@
+ IEX={{bindir}}/iex
+ EPMD={{bindir}}/epmd
+ INSTALLUSER={{installuser}}
++SHELL=/bin/sh
+ 
+ # Compatibility in ZSH
+ #setopt shwordsplit 2>/dev/null
+@@ -25,11 +26,11 @@
+     for GID in `id -G`; do
+         if [ $GID -eq 0 ] ; then
+             INSTALLUSER_HOME=$(getent passwd "$INSTALLUSER" | cut -d: -f6)
+-            if [ -n "$INSTALLUSER_HOME" ] && [ ! -d "$INSTALLUSER_HOME" ] ; then
++            if [ -n "$INSTALLUSER_HOME" ] && [ ! -e "$INSTALLUSER_HOME" ] ; then
+                 mkdir -p "$INSTALLUSER_HOME"
+                 chown "$INSTALLUSER" "$INSTALLUSER_HOME"
+             fi
+-            EXEC_CMD="su $INSTALLUSER -c"
++            EXEC_CMD="su $INSTALLUSER -p -c"
+         fi
+     done
+     if [ `id -g` -eq `id -g $INSTALLUSER` ] ; then
+@@ -111,6 +112,7 @@
+ DATETIME=`date "+%Y%m%d-%H%M%S"`
+ ERL_CRASH_DUMP=$LOGS_DIR/erl_crash_$DATETIME.dump
+ ERL_INETRC=$ETC_DIR/inetrc
++HOME=$SPOOL_DIR
+ 
+ # define erl parameters
+ ERL_OPTIONS=$(echo $ERL_OPTIONS | sed 's/ /\\ /g')
+@@ -167,6 +169,8 @@
+ export ERL_INETRC
+ export ERL_MAX_PORTS
+ export ERL_MAX_ETS_TABLES
++export HOME
++export SHELL
+ 
+ # start server
+ start()

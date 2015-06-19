@@ -1,0 +1,111 @@
+--- bristol-0.60.11/bin/Makefile.am
++++ bristol-0.60.11/bin/Makefile.am
+@@ -1,7 +1,7 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+ LDFLAGS = -Bdynamic -lm -lpthread `pkg-config --silence-errors --libs jack`
+-AM_CFLAGS = -pthread -Wall -g -I. -I$(srcdir)/../include/bristol @BRISTOL_HAS_JACK@ @BRISTOL_HAS_JACK_MIDI@ @JACK_CFLAGS@
++AM_CFLAGS = -pthread -Wall -I. -I$(srcdir)/../include/bristol @BRISTOL_HAS_JACK@ @BRISTOL_HAS_JACK_MIDI@ @JACK_CFLAGS@
+ 
+ #bin_PROGRAMS = bristoljackstats bristolnotegen bristolNRPgen
+ bin_PROGRAMS = bristoljackstats
+--- bristol-0.60.11/brighton/Makefile.am
++++ bristol-0.60.11/brighton/Makefile.am
+@@ -1,6 +1,6 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+-AM_CFLAGS = -pthread -Wall -g -I$(srcdir)/../include/brighton -I$(srcdir)/../include/bristol -DBRISTOL_HAS_ALSA=@BRISTOL_HAS_ALSA@ @BRIGHTON_HAS_X11@ -DBRISTOL_VOICECOUNT=@_BRISTOL_VOICES@
++AM_CFLAGS = -pthread -Wall -I$(srcdir)/../include/brighton -I$(srcdir)/../include/bristol -DBRISTOL_HAS_ALSA=@BRISTOL_HAS_ALSA@ @BRIGHTON_HAS_X11@ -DBRISTOL_VOICECOUNT=@_BRISTOL_VOICES@
+ 
+ bin_PROGRAMS = brighton
+ brighton_LDFLAGS = -Bdynamic -L../libbrighton/ -L../libbristolmidi/.libs @BRIGHTON_LIBXLIBS@ -L/usr/X11R6/lib -L../libbvg
+--- bristol-0.60.11/bristol/Makefile.am
++++ bristol-0.60.11/bristol/Makefile.am
+@@ -1,6 +1,6 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+-AM_CFLAGS = -pthread -Wall -g -I$(srcdir)/../include/slab -I$(srcdir)/../include/bristol -I. -DBRISTOL_VOICECOUNT=@_BRISTOL_VOICES@ @BRISTOL_JACK_DEFAULT_MIDI@ @BRISTOL_JACK_DEFAULT@ @BRISTOL_JACK_MULTI_CLOSE@ @BRISTOL_SEMAPHORE@ @BRISTOL_SEM_OPEN@ @BRISTOL_BARRIER@ @BRISTOL_HAS_PA@ -DBRISTOL_RAMP_RATE=@BRR@ @BRISTOL_LIN_ATTACK@ @BRISTOL_HAS_DRAIN@ @BRISTOL_HAS_JACK@ @BRISTOL_HAS_JACK_MIDI@ @BRISTOL_HAS_JACK_SESSION@ -DBRISTOL_HAS_ALSA=@BRISTOL_HAS_ALSA@ @JACK_CFLAGS@ @ALSA_CFLAGS@ -msse -mfpmath=sse -ffast-math -fomit-frame-pointer -O2
++AM_CFLAGS = -pthread -Wall -I$(srcdir)/../include/slab -I$(srcdir)/../include/bristol -I. -DBRISTOL_VOICECOUNT=@_BRISTOL_VOICES@ @BRISTOL_JACK_DEFAULT_MIDI@ @BRISTOL_JACK_DEFAULT@ @BRISTOL_JACK_MULTI_CLOSE@ @BRISTOL_SEMAPHORE@ @BRISTOL_SEM_OPEN@ @BRISTOL_BARRIER@ @BRISTOL_HAS_PA@ -DBRISTOL_RAMP_RATE=@BRR@ @BRISTOL_LIN_ATTACK@ @BRISTOL_HAS_DRAIN@ @BRISTOL_HAS_JACK@ @BRISTOL_HAS_JACK_MIDI@ @BRISTOL_HAS_JACK_SESSION@ -DBRISTOL_HAS_ALSA=@BRISTOL_HAS_ALSA@ @JACK_CFLAGS@ @ALSA_CFLAGS@
+ 
+ bin_PROGRAMS = bristol
+ #bristol_LDFLAGS = -Bdynamic -L../libbristolmidi/.libs -L../libbristolaudio/.libs -L../libbristol -L../libbristolic
+--- bristol-0.60.11/libbrighton/Makefile.am
++++ bristol-0.60.11/libbrighton/Makefile.am
+@@ -1,6 +1,6 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+-AM_CFLAGS = -pthread -Wall -g -I$(srcdir)/../include/brighton -I/usr/X11R6/include/ -I. -O0 @BRIGHTON_HAS_X11@ @BRIGHTON_HAS_AUTOZOOM@
++AM_CFLAGS = -pthread -Wall -I$(srcdir)/../include/brighton -I/usr/X11R6/include/ -I. -O0 @BRIGHTON_HAS_X11@ @BRIGHTON_HAS_AUTOZOOM@
+ 
+ noinst_LIBRARIES = libbrighton.a
+ #libbrighton_a_LDFLAGS=-export-dynamic -version-info @BRISTOL_SO_VERSION@ @BRIGHTON_LIBXLIBS@ @BRIGHTON_LIBXLIBS@
+--- bristol-0.60.11/libbrightonC11/Makefile.am
++++ bristol-0.60.11/libbrightonC11/Makefile.am
+@@ -1,6 +1,6 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+-AM_CFLAGS = -pthread -Wall -g -I$(srcdir)/../include/brighton @BRIGHTON_HAS_XIMAGE@
++AM_CFLAGS = -pthread -Wall -I$(srcdir)/../include/brighton @BRIGHTON_HAS_XIMAGE@
+ 
+ #libC11_la_LDFLAGS= -export-dynamic -version-info @BRISTOL_SO_VERSION@
+ #libC11_la_LIBADD=
+--- bristol-0.60.11/libbrightonX11/Makefile.am
++++ bristol-0.60.11/libbrightonX11/Makefile.am
+@@ -1,6 +1,6 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+-AM_CFLAGS = -pthread -Wall -g -I$(srcdir)/../include/brighton -I/usr/X11R6/include/ @BRIGHTON_HAS_XIMAGE@ @BRIGHTON_HAS_SHMIMAGE@ @BRIGHTON_HAS_X11@
++AM_CFLAGS = -pthread -Wall -I$(srcdir)/../include/brighton -I/usr/X11R6/include/ @BRIGHTON_HAS_XIMAGE@ @BRIGHTON_HAS_SHMIMAGE@ @BRIGHTON_HAS_X11@
+ 
+ #libB11_a_LDFLAGS= -export-dynamic -version-info @BRISTOL_SO_VERSION@
+ #libB11_a_LIBADD= -L/usr/X11R6/lib -lX11
+--- bristol-0.60.11/libbristol/Makefile.am
++++ bristol-0.60.11/libbristol/Makefile.am
+@@ -1,6 +1,6 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+-AM_CFLAGS = -pthread -Wall -g -I$(srcdir)/../include/bristol -I$(srcdir)/../include/slab -DBRISTOL_HAS_ALSA=@BRISTOL_HAS_ALSA@ @BRISTOL_HAS_PA@
++AM_CFLAGS = -pthread -Wall -I$(srcdir)/../include/bristol -I$(srcdir)/../include/slab -DBRISTOL_HAS_ALSA=@BRISTOL_HAS_ALSA@ @BRISTOL_HAS_PA@
+ #libbristol_a_LDFLAGS=-export-dynamic -version-info @BRISTOL_SO_VERSION@ -march=core2 -msse -msse2 -mfpmath=sse -ffast-math -fomit-frame-pointer -O3
+ #libbristol_la_LIBADD=$(top_builddir)/libbristol/libbristol.la
+ 
+--- bristol-0.60.11/libbristolaudio/Makefile.am
++++ bristol-0.60.11/libbristolaudio/Makefile.am
+@@ -1,6 +1,6 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+-AM_CFLAGS = -pthread -Wall -g -I$(srcdir)/../include/slab -I$(srcdir)/../include/bristol -DBRISTOL_HAS_OSS=@BRISTOL_HAS_OSS@ @BRISTOL_HAS_DRAIN@ -DBRISTOL_HAS_ALSA=@BRISTOL_HAS_ALSA@ @BRISTOL_HAS_JACK@ @BRISTOL_HAS_JACK_MIDI@ @BRISTOL_HAS_JACK_SESSION@ @ALSA_CFLAGS@ @JACK_CFLAGS@ @BRISTOL_HAS_PA@
++AM_CFLAGS = -pthread -Wall -I$(srcdir)/../include/slab -I$(srcdir)/../include/bristol -DBRISTOL_HAS_OSS=@BRISTOL_HAS_OSS@ @BRISTOL_HAS_DRAIN@ -DBRISTOL_HAS_ALSA=@BRISTOL_HAS_ALSA@ @BRISTOL_HAS_JACK@ @BRISTOL_HAS_JACK_MIDI@ @BRISTOL_HAS_JACK_SESSION@ @ALSA_CFLAGS@ @JACK_CFLAGS@ @BRISTOL_HAS_PA@
+ 
+ #libbristolaudio_la_LDFLAGS=-export-dynamic -version-info @BRISTOL_SO_VERSION@
+ #libbristolaudio_la_LIBADD=@ALSA_LIBS@ @JACK_LIBS@
+--- bristol-0.60.11/libbristolic/Makefile.am
++++ bristol-0.60.11/libbristolic/Makefile.am
+@@ -1,6 +1,6 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+-AM_CFLAGS = -pthread -Wall -g -I$(srcdir)/../include/bristol -DBRISOL_HAS_ALSA=@BRISTOL_HAS_ALSA@
++AM_CFLAGS = -pthread -Wall -I$(srcdir)/../include/bristol -DBRISOL_HAS_ALSA=@BRISTOL_HAS_ALSA@
+ #libbristolic_la_LDFLAGS=-export-dynamic -version-info @BRISTOL_SO_VERSION@
+ 
+ noinst_LIBRARIES = libbristolic.a
+--- bristol-0.60.11/libbristolmidi/Makefile.am
++++ bristol-0.60.11/libbristolmidi/Makefile.am
+@@ -1,6 +1,6 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+-AM_CFLAGS = -pthread -Wall -g -I$(srcdir)/../include/slab -I$(srcdir)/../include/bristol @ALSA_CFLAGS@ @JACK_CFLAGS@ @BRISTOL_HAS_JACK_MIDI@ -DBRISTOL_HAS_ALSA=@BRISTOL_HAS_ALSA@ @BRISTOL_HAS_JACK@ -O1
++AM_CFLAGS = -pthread -Wall -I$(srcdir)/../include/slab -I$(srcdir)/../include/bristol @ALSA_CFLAGS@ @JACK_CFLAGS@ @BRISTOL_HAS_JACK_MIDI@ -DBRISTOL_HAS_ALSA=@BRISTOL_HAS_ALSA@ @BRISTOL_HAS_JACK@ -O1
+ libbristolmidi_la_LDFLAGS=-export-dynamic -version-info @BRISTOL_SO_VERSION@
+ libbristolmidi_la_LIBADD=@ALSA_LIBS@ @JACK_LIBS@ -lm
+ 
+--- bristol-0.60.11/libbvg/Makefile.am
++++ bristol-0.60.11/libbvg/Makefile.am
+@@ -1,6 +1,6 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+-AM_CFLAGS = -pthread -Wall -g -I$(srcdir)/../include/brighton -DBRISOL_HAS_ALSA=@BRISTOL_HAS_ALSA@
++AM_CFLAGS = -pthread -Wall -I$(srcdir)/../include/brighton -DBRISOL_HAS_ALSA=@BRISTOL_HAS_ALSA@
+ 
+ noinst_LIBRARIES = libbvg.a
+ #libbvg_a_LDFLAGS=-export-dynamic -version-info @BRISTOL_SO_VERSION@

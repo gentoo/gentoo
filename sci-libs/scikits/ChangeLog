@@ -1,0 +1,39 @@
+# ChangeLog for sci-libs/scikits
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/scikits/ChangeLog,v 1.9 2015/04/08 18:49:16 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> scikits-0.1-r1.ebuild:
+  Drop old Python implementations
+
+  26 Oct 2014; Justin Lecher <jlec@gentoo.org> -scikits-0.1.ebuild,
+  scikits-0.1-r1.ebuild:
+  Add python 3_4 support; drop old
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> scikits-0.1-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> scikits-0.1-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  04 Jun 2013; Justin Lecher <jlec@gentoo.org> scikits-0.1-r1.ebuild:
+  Fix for correct usage of new python eclasses
+
+*scikits-0.1-r1 (06 Feb 2013)
+
+  06 Feb 2013; Justin Lecher <jlec@gentoo.org> scikits-0.1.ebuild,
+  +scikits-0.1-r1.ebuild, metadata.xml:
+  Convert to new python eclasses
+
+  26 Jun 2012; Sebastien Fabbro <fabbros@gentoo.org> scikits-0.1.ebuild:
+  keyword amd64-linux and x86-linux
+
+  09 Mar 2011; Sébastien Fabbro <bicatali@gentoo.org> scikits-0.1.ebuild:
+  Now really install examples (bug #357775)
+
+  08 Jan 2011; Sébastien Fabbro <bicatali@gentoo.org> +scikits-0.1.ebuild:
+  Initial import to the main tree
+
+*scikits-0.1 (04 Dec 2010)
+
+  04 Dec 2010; Sébastien Fabbro <bicatali@gentoo.org> +scikits-0.1.ebuild:
+  Initial import

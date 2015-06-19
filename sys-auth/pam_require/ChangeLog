@@ -1,0 +1,41 @@
+# ChangeLog for sys-auth/pam_require
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_require/ChangeLog,v 1.8 2014/08/10 20:22:40 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pam_require-0.7.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> -pam_require-0.6.ebuild,
+  metadata.xml:
+  Cleanup due #63939
+
+  03 Nov 2009; Raúl Porcel <armin76@gentoo.org> pam_require-0.7.ebuild:
+  Add ~ia64 wrt #282971
+
+*pam_require-0.7 (16 Sep 2008)
+
+  16 Sep 2008; Christian Parpart <trapni@gentoo.org>
+  +pam_require-0.7.ebuild:
+  version bump. Thanks Yakub Moc, for this notice. fixes #212541
+
+  15 May 2008; Diego Pettenò <flameeyes@gentoo.org> pam_require-0.6.ebuild:
+  Depend on virtual/pam as the code builds fine with OpenPAM.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  03 Jul 2005; David Holm <dholm@gentoo.org> pam_require-0.6.ebuild:
+  Added to ~ppc.
+
+  02 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> +metadata.xml,
+  +pam_require-0.6.ebuild:
+  Moved from sys-libs/pam_require to sys-auth/pam_require.
+
+  02 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> pam_require-0.6.ebuild:
+  Use dopammod to install the module (as make install is wrong). Added ~amd64.
+
+*pam_require-0.6 (05 Dec 2004)
+
+  05 Dec 2004; Christian Parpart <trapni@gentoo.org> +metadata.xml,
+  +pam_require-0.6.ebuild:
+  initial import

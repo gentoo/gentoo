@@ -1,0 +1,8 @@
+diff -r c79adcae9869 -r 6de952f4069f lib/scripts/run-polyml
+--- a/lib/scripts/run-polyml	Fri May 25 13:23:43 2012 +0200
++++ b/lib/scripts/run-polyml	Fri May 25 17:14:14 2012 +0200
+@@ -76,3 +76,3 @@
+  "$ISABELLE_HOME/lib/scripts/feeder" -p -h "$MLTEXT" -t "$MLEXIT" $FEEDER_OPTS | \
+-  { read FPID; "$POLY" -q $ML_OPTIONS; RC="$?"; kill -HUP "$FPID"; exit "$RC"; }
++  { read FPID; "$POLY" -q $ML_OPTIONS; RC="$?"; kill -TERM "$FPID"; exit "$RC"; }
+  RC="$?"

@@ -1,0 +1,23 @@
+--- flac-1.3.1/configure.ac
++++ flac-1.3.1/configure.ac
+@@ -348,12 +348,8 @@
+ 
+ if test "x$debug" = xtrue; then
+ 	CPPFLAGS="-DDEBUG $CPPFLAGS"
+-	CFLAGS=$(echo "$CFLAGS" | sed 's/-g//')
+-	CFLAGS="-g $CFLAGS"
+ else
+ 	CPPFLAGS="-DNDEBUG $CPPFLAGS"
+-	CFLAGS=$(echo "$CFLAGS" | sed 's/-O2//;s/-g//')
+-	CFLAGS="-O3 -funroll-loops $CFLAGS"
+ fi
+ 
+ XIPH_GCC_VERSION
+@@ -363,7 +359,6 @@
+ 	CXXFLAGS="$CXXFLAGS -Wall -Wextra -Wcast-align -Wshadow -Wwrite-strings -Wctor-dtor-privacy -Wnon-virtual-dtor -Wreorder -Wsign-promo -Wundef -Wunreachable-code " # -Wcast-qual -Wbad-function-cast -Wwrite-strings -Woverloaded-virtual -Wmissing-declarations
+ 
+ 	XIPH_ADD_CFLAGS([-Wdeclaration-after-statement])
+-	XIPH_ADD_CFLAGS([-D_FORTIFY_SOURCE=2])
+ 
+ 	AC_LANG_PUSH([C++])
+ 	XIPH_ADD_CXXFLAGS([-Weffc++])

@@ -1,0 +1,26 @@
+# ChangeLog for sci-mathematics/spass
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/spass/ChangeLog,v 1.6 2012/12/05 10:35:35 gienah Exp $
+
+  05 Dec 2012; Mark Wright <gienah@gentoo.org> spass-3.7.ebuild:
+  EAPI=5 with subslot depends to automatically rebuild spass when isabelle is
+  updated if the isabelle use flag is enabled.
+
+  22 Oct 2012; Mark Wright <gienah@gentoo.org> spass-3.7.ebuild:
+  Thanks to Imre Vadasz for reporting bug #439178 and providing the fix, -z
+  should be -n.
+
+  10 Aug 2012; Justin Lecher <jlec@gentoo.org> spass-3.7.ebuild:
+  Clean residuals from another fix solution
+
+  10 Aug 2012; Justin Lecher <jlec@gentoo.org> spass-3.7.ebuild, metadata.xml:
+  Respect CFLAGS, #430676; add missing USE=examples
+
+  10 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Fix metadata.
+
+*spass-3.7 (30 May 2012)
+
+  30 May 2012; Mark Wright <gienah@gentoo.org> +metadata.xml, +spass-3.7.ebuild:
+  Add SPASS automated theorem prover, with optional Isabelle/HOL sledgehammer
+  integration.

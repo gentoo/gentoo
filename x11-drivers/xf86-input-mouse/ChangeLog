@@ -1,0 +1,641 @@
+# ChangeLog for x11-drivers/xf86-input-mouse
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-mouse/ChangeLog,v 1.157 2015/03/14 14:04:02 maekke Exp $
+
+  14 Mar 2015; Markus Meier <maekke@gentoo.org> xf86-input-mouse-1.9.1.ebuild:
+  arm stable, bug #530652
+
+  06 Mar 2015; Jeroen Roovers <jer@gentoo.org> xf86-input-mouse-1.9.1.ebuild:
+  Stable for HPPA (bug #530652).
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> xf86-input-mouse-1.9.1.ebuild:
+  add arm64 support, tested on A53 board
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.9.1.ebuild:
+  Stable for alpha, wrt bug #530652
+
+  23 Feb 2015; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.9.1.ebuild:
+  Stable for sparc, wrt bug #530652
+
+  22 Feb 2015; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.9.1.ebuild:
+  Stable for ia64, wrt bug #530652
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.9.1.ebuild:
+  Stable for ppc64, wrt bug #530652
+
+  20 Feb 2015; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.9.1.ebuild:
+  Stable for ppc, wrt bug #530652
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.9.1.ebuild:
+  Stable for x86, wrt bug #530652
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.9.1.ebuild:
+  Stable for amd64, wrt bug #530652
+
+*xf86-input-mouse-1.9.1 (22 Oct 2014)
+
+  22 Oct 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-input-mouse-1.9.1.ebuild:
+  Version bump.
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.9.0.ebuild:
+  Stable for x86, wrt bug #475480
+
+  07 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.9.0.ebuild:
+  Stable for sparc, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.9.0.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  05 Oct 2013; Markus Meier <maekke@gentoo.org> xf86-input-mouse-1.9.0.ebuild:
+  arm stable, bug #475480
+
+  05 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.9.0.ebuild:
+  Stable for alpha, wrt bug #475480
+
+  04 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.9.0.ebuild:
+  Stable for ppc64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.9.0.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  02 Oct 2013; Jeroen Roovers <jer@gentoo.org> xf86-input-mouse-1.9.0.ebuild:
+  Stable for HPPA (bug #475480).
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.9.0.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*xf86-input-mouse-1.9.0 (27 Mar 2013)
+
+  27 Mar 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-input-mouse-1.9.0.ebuild, -xf86-input-mouse-1.7.0.ebuild,
+  -xf86-input-mouse-1.7.1.ebuild, -xf86-input-mouse-1.7.2.ebuild,
+  -xf86-input-mouse-1.8.0.ebuild:
+  Version bump.
+
+  07 Mar 2013; Benda Xu <heroxbd@gentoo.org> xf86-input-mouse-1.8.1.ebuild:
+  keyword ~amd64-linux and ~x86-linux
+
+  04 Jan 2013; Jeroen Roovers <jer@gentoo.org> xf86-input-mouse-1.8.1.ebuild:
+  Stable for HPPA (bug #440872).
+
+  01 Jan 2013; Raúl Porcel <armin76@gentoo.org> xf86-input-mouse-1.8.1.ebuild:
+  sh stable wrt #440872
+
+  30 Dec 2012; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.8.1.ebuild:
+  Stable for alpha, wrt bug #440872
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.8.1.ebuild:
+  Stable for sparc, wrt bug #440872
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.8.1.ebuild:
+  Stable for ia64, wrt bug #440872
+
+  17 Dec 2012; Markus Meier <maekke@gentoo.org> xf86-input-mouse-1.8.1.ebuild:
+  arm stable, bug #440872
+
+  08 Dec 2012; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.8.1.ebuild:
+  Stable for ppc64, wrt bug #440872
+
+  28 Nov 2012; Brent Baude <ranger@gentoo.org> xf86-input-mouse-1.8.1.ebuild:
+  Marking xf86-input-mouse-1.8.1 ppc stable for bug 440872
+
+  18 Nov 2012; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.8.1.ebuild:
+  Stable for x86, wrt bug #440872
+
+  16 Nov 2012; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.8.1.ebuild:
+  Stable for amd64, wrt bug #440872
+
+  04 Oct 2012;  <naota@gentoo.org>
+  +files/xf86-input-mouse-1.8.1-gcc46-workaround.patch,
+  xf86-input-mouse-1.8.1.ebuild:
+  Add patch to workaround gcc-4.6 bug. #435640
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> xf86-input-mouse-1.7.2.ebuild:
+  alpha/ia64/sh/sparc stable wrt #419473
+
+*xf86-input-mouse-1.8.1 (09 Aug 2012)
+
+  09 Aug 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-input-mouse-1.8.1.ebuild:
+  Version bump.
+
+*xf86-input-mouse-1.8.0 (27 Jul 2012)
+
+  27 Jul 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-input-mouse-1.8.0.ebuild:
+  Version bump.
+
+  12 Jul 2012; Brent Baude <ranger@gentoo.org> xf86-input-mouse-1.7.2.ebuild:
+  Marking xf86-input-mouse-1.7.2 ppc stable for bug 419473
+
+  11 Jul 2012; Brent Baude <ranger@gentoo.org> xf86-input-mouse-1.7.2.ebuild:
+  Marking xf86-input-mouse-1.7.2 ppc64 stable for bug 419473
+
+  29 Jun 2012; Markus Meier <maekke@gentoo.org> xf86-input-mouse-1.7.2.ebuild:
+  arm stable, bug #419473
+
+  28 Jun 2012; Jeroen Roovers <jer@gentoo.org> xf86-input-mouse-1.7.2.ebuild:
+  Stable for HPPA (bug #419473).
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.7.2.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> xf86-input-mouse-1.7.2.ebuild:
+  Stable for amd64, wrt bug #419473
+
+  16 May 2012; Alexis Ballier <aballier@gentoo.org>
+  xf86-input-mouse-1.7.2.ebuild:
+  keyword ~amd64-fbsd (compile tested only)
+
+*xf86-input-mouse-1.7.2 (16 Mar 2012)
+
+  16 Mar 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-input-mouse-1.7.2.ebuild:
+  Version bump.
+
+  03 Oct 2011; Joseph Jezak <josejx@gentoo.org> xf86-input-mouse-1.7.1.ebuild:
+  Marked ppc ppc64 stable for bug #380421.
+
+  02 Oct 2011; Raúl Porcel <armin76@gentoo.org> xf86-input-mouse-1.7.1.ebuild:
+  alpha/ia64/sh/sparc stable wrt #380421
+
+  21 Sep 2011; Jeroen Roovers <jer@gentoo.org> xf86-input-mouse-1.7.1.ebuild:
+  Stable for HPPA (bug #380421).
+
+  05 Sep 2011; Markus Meier <maekke@gentoo.org> xf86-input-mouse-1.7.1.ebuild:
+  arm stable, bug #380421
+
+  04 Sep 2011; Markus Meier <maekke@gentoo.org> xf86-input-mouse-1.7.1.ebuild:
+  x86 stable, bug #380421
+
+  30 Aug 2011; Tony Vroon <chainsaw@gentoo.org> xf86-input-mouse-1.7.1.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo in bug
+  #380421 filed by Chí-Thanh Christopher Nguyễn.
+
+*xf86-input-mouse-1.7.1 (06 Jul 2011)
+
+  06 Jul 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-input-mouse-1.7.1.ebuild:
+  Version bump.
+
+  18 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86-input-mouse-1.6.0.ebuild:
+  old
+
+  16 Apr 2011; Raúl Porcel <armin76@gentoo.org> xf86-input-mouse-1.7.0.ebuild:
+  alpha/ia64/sh/sparc stable wrt #359059
+
+  08 Apr 2011; Markus Meier <maekke@gentoo.org> xf86-input-mouse-1.7.0.ebuild:
+  arm stable, bug #359059
+
+  04 Apr 2011; Jeroen Roovers <jer@gentoo.org> xf86-input-mouse-1.7.0.ebuild:
+  Stable for HPPA (bug #359059).
+
+  26 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  xf86-input-mouse-1.7.0.ebuild:
+  x86 stable, bug 359059
+
+  21 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  xf86-input-mouse-1.7.0.ebuild:
+  Stable on amd64 wrt bug #359059
+
+  15 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  xf86-input-mouse-1.7.0.ebuild:
+  ppc/ppc64 stable wrt #359059
+
+*xf86-input-mouse-1.7.0 (10 Mar 2011)
+
+  10 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +xf86-input-mouse-1.7.0.ebuild:
+  Version bump.
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  xf86-input-mouse-1.6.0.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> xf86-input-mouse-1.6.0.ebuild:
+  alpha/ia64/sh/sparc stable wrt #344827
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> xf86-input-mouse-1.6.0.ebuild:
+  Stable for HPPA (bug #344827).
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org> xf86-input-mouse-1.6.0.ebuild:
+  arm stable, bug #344827
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  xf86-input-mouse-1.6.0.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org>
+  xf86-input-mouse-1.6.0.ebuild:
+  amd64 stable wrt #344827
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org>
+  xf86-input-mouse-1.6.0.ebuild:
+  ppc64 stable wrt #344827
+
+*xf86-input-mouse-1.6.0 (21 Sep 2010)
+
+  21 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +xf86-input-mouse-1.6.0.ebuild:
+  Version bump.
+
+  23 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86-input-mouse-1.4.0.ebuild:
+  rm
+
+  18 Jan 2010; Raúl Porcel <armin76@gentoo.org>
+  xf86-input-mouse-1.5.0.ebuild:
+  alpha/ia64/sh/sparc stable wrt #294958
+
+  14 Jan 2010; Markus Meier <maekke@gentoo.org>
+  xf86-input-mouse-1.5.0.ebuild:
+  arm stable, bug #294958
+
+  14 Jan 2010; Jeroen Roovers <jer@gentoo.org>
+  xf86-input-mouse-1.5.0.ebuild:
+  Stable for HPPA (bug #294958).
+
+  27 Dec 2009; Joseph Jezak <josejx@gentoo.org>
+  xf86-input-mouse-1.5.0.ebuild:
+  Marked ppc stable for bug #294958.
+
+  15 Dec 2009; Brent Baude <ranger@gentoo.org>
+  xf86-input-mouse-1.5.0.ebuild:
+  Marking xf86-input-mouse-1.5.0 ppc64 stable for bug 294958
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  xf86-input-mouse-1.5.0.ebuild:
+  x86 stable, bug 294958
+
+  10 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  xf86-input-mouse-1.5.0.ebuild:
+  amd64 stable wrt #294958
+
+  22 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/1.2.2-zaphod-xinerama-fix.diff:
+  Drop stale patches.
+
+*xf86-input-mouse-1.5.0 (06 Oct 2009)
+
+  06 Oct 2009; Rémi Cardona <remi@gentoo.org>
+  +xf86-input-mouse-1.5.0.ebuild:
+  bump to 1.5.0, sync with the x11 overlay
+
+  19 Sep 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86-input-mouse-1.2.2.ebuild, -xf86-input-mouse-1.2.2-r1.ebuild,
+  -xf86-input-mouse-1.2.3.ebuild, -xf86-input-mouse-1.3.0.ebuild:
+  Cleanup. Removal of old xorg versions.
+
+  23 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  xf86-input-mouse-1.4.0.ebuild:
+  Stable on alpha for xorg-server-1.5/xorg-x11-7.4
+
+  15 May 2009; Raúl Porcel <armin76@gentoo.org>
+  xf86-input-mouse-1.4.0.ebuild:
+  arm stable
+
+  16 Apr 2009; Jeroen Roovers <jer@gentoo.org>
+  xf86-input-mouse-1.4.0.ebuild:
+  Stable for HPPA (bug #251832).
+
+  15 Apr 2009; Raúl Porcel <armin76@gentoo.org>
+  xf86-input-mouse-1.4.0.ebuild:
+  ia64/sh stable wrt #251832
+
+  06 Apr 2009; Friedrich Oslage <bluebird@gentoo.org>
+  xf86-input-mouse-1.4.0.ebuild:
+  Stable on sparc, bug #251832
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org>
+  xf86-input-mouse-1.4.0.ebuild:
+  x86 stable, bug #251832
+
+  05 Apr 2009; Olivier Crête <tester@gentoo.org>
+  xf86-input-mouse-1.4.0.ebuild:
+  Stable on amd64, bug #251832
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking xf86-input-mouse-1.4.0 ppc64 stable for bug 251832
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking xf86-input-mouse-1.4.0 ppc stable for bug 251832
+
+*xf86-input-mouse-1.4.0 (12 Jan 2009)
+
+  12 Jan 2009; Rémi Cardona <remi@gentoo.org>
+  +xf86-input-mouse-1.4.0.ebuild:
+  bump to 1.4.0
+
+*xf86-input-mouse-1.3.0 (24 Mar 2008)
+
+  24 Mar 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-input-mouse-1.3.0.ebuild:
+  Bump.
+
+  19 Mar 2008; Samuli Suominen <drac@gentoo.org>
+  xf86-input-mouse-1.2.3.ebuild:
+  amd64 stable
+
+  24 Feb 2008; Donnie Berkholz <dberkholz@gentoo.org>; ChangeLog:
+  Update my email.
+
+  05 Feb 2008; Markus Rothe <corsair@gentoo.org>
+  xf86-input-mouse-1.2.3.ebuild:
+  Stable on ppc64
+
+  31 Jan 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-input-mouse-1.1.1.ebuild, -xf86-input-mouse-1.2.0.ebuild,
+  -xf86-input-mouse-1.2.1.ebuild:
+  Clean up.
+
+  27 Jan 2008; Raúl Porcel <armin76@gentoo.org>
+  xf86-input-mouse-1.2.3.ebuild:
+  alpha/ia64/sparc stable
+
+  19 Dec 2007; Dawid Węgliński <cla@gentoo.org>
+  xf86-input-mouse-1.2.3.ebuild:
+  Stable on x86 (bug #202087)
+
+  16 Dec 2007; Markus Rothe <corsair@gentoo.org>
+  xf86-input-mouse-1.2.2-r1.ebuild:
+  Stable on ppc64; bug #202087
+
+  16 Dec 2007; nixnut <nixnut@gentoo.org> xf86-input-mouse-1.2.3.ebuild:
+  Stable on ppc wrt bug 202087
+
+  16 Dec 2007; nixnut <nixnut@gentoo.org> xf86-input-mouse-1.2.2-r1.ebuild:
+  Stable on ppc wrt bug 202087
+
+  15 Dec 2007; Doug Klima <cardoe@gentoo.org>
+  xf86-input-mouse-1.2.2-r1.ebuild:
+  amd64 stable wrt bug #202087
+
+  13 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  xf86-input-mouse-1.2.2-r1.ebuild:
+  alpha/ia64 stable wrt #202087
+
+  12 Dec 2007; Ferris McCormick <fmccor@gentoo.org>
+  xf86-input-mouse-1.2.2-r1.ebuild:
+  Sparc stable, Bug #202087.
+
+*xf86-input-mouse-1.2.3 (07 Nov 2007)
+
+  07 Nov 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-input-mouse-1.2.3.ebuild:
+  Bump.
+
+  01 Oct 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/1.2.2-zaphod-xinerama-fix.diff:
+  Sorry, forgot to commit the actual patch.
+
+*xf86-input-mouse-1.2.2-r1 (01 Oct 2007)
+
+  01 Oct 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-input-mouse-1.2.2-r1.ebuild:
+  (#192657) Stop getting cursor stuck on right screen in zaphod-mode
+  dual-screen setups (Hanno Meyer-Thurow).
+
+  29 Sep 2007; Raúl Porcel <armin76@gentoo.org>
+  xf86-input-mouse-1.2.2.ebuild:
+  sparc stable wrt #191615
+
+  28 Sep 2007; Joshua Kinard <kumba@gentoo.org>
+  xf86-input-mouse-1.2.2.ebuild:
+  Stable on mips, per #191615.
+
+  10 Sep 2007; Jeroen Roovers <jer@gentoo.org>
+  xf86-input-mouse-1.2.2.ebuild:
+  Stable for HPPA (bug #191615).
+
+  09 Sep 2007; Raúl Porcel <armin76@gentoo.org>
+  xf86-input-mouse-1.2.2.ebuild:
+  alpha/ia64 stable wrt #191615
+
+  08 Sep 2007; Joseph Jezak <josejx@gentoo.org>
+  xf86-input-mouse-1.2.2.ebuild:
+  Marked ppc/ppc64 stable for bug #191615.
+
+  07 Sep 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  xf86-input-mouse-1.2.2.ebuild:
+  Stable on x86 wrt bug #191615.
+
+  07 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  xf86-input-mouse-1.2.1.ebuild:
+  Stable on sparc wrt #175465
+
+*xf86-input-mouse-1.2.2 (01 Aug 2007)
+
+  01 Aug 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-input-mouse-1.2.2.ebuild:
+  Bump. Adds Sensitivity option for high-res mice and doc fixes.
+
+  03 Jul 2007; Lars Weiler <pylon@gentoo.org> xf86-input-mouse-1.2.1.ebuild:
+  Stable on ppc; bug #175465.
+
+  02 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  xf86-input-mouse-1.2.1.ebuild:
+  alpha stable wrt #175465
+
+  01 Jun 2007; Joshua Kinard <kumba@gentoo.org>
+  xf86-input-mouse-1.2.1.ebuild:
+  Stable on mips.
+
+  20 May 2007; Jeroen Roovers <jer@gentoo.org>
+  xf86-input-mouse-1.2.1.ebuild:
+  Stable for HPPA (bug #175465).
+
+  05 May 2007; Daniel Gryniewicz <dang@gentoo.org>
+  xf86-input-mouse-1.2.1.ebuild:
+  Marked stable on amd64 for bug #175465
+
+  29 Apr 2007; Andrej Kacian <ticho@gentoo.org>
+  xf86-input-mouse-1.2.1.ebuild:
+  Stable on x86, bug #175465.
+
+  25 Apr 2007; Raúl Porcel <armin76@gentoo.org>
+  xf86-input-mouse-1.2.1.ebuild:
+  Stable on ia64 wrt bug #175465
+
+  25 Apr 2007; Markus Rothe <corsair@gentoo.org>
+  xf86-input-mouse-1.2.1.ebuild:
+  Stable on ppc64; bug #175465
+
+  24 Jan 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-input-mouse-1.0.4.ebuild:
+  Stop supporting Xorg 7.0.
+
+*xf86-input-mouse-1.2.1 (02 Dec 2006)
+
+  02 Dec 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-input-mouse-1.2.1.ebuild:
+  Version bump for 7.2RC3.  Fixes a VT switch issue.
+
+*xf86-input-mouse-1.2.0 (02 Nov 2006)
+
+  02 Nov 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xf86-input-mouse-1.1.2.ebuild, +xf86-input-mouse-1.2.0.ebuild:
+  Version bump.  Includes port to new motion history API.
+
+*xf86-input-mouse-1.1.2 (21 Oct 2006)
+
+  21 Oct 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-input-mouse-1.1.2.ebuild:
+  Version bump.
+
+  13 Oct 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  xf86-input-mouse-1.1.1.ebuild:
+  AMD64/x86 stable for bug #144549 (X7.1).
+
+  12 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  xf86-input-mouse-1.1.1.ebuild:
+  Stable on hppa
+
+  19 Jul 2006; Guy Martin <gmsoft@gentoo.org> xf86-input-mouse-1.0.4.ebuild:
+  Stable on hppa.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  xf86-input-mouse-1.1.1.ebuild:
+  Mark 1.1.1 stable on ia64
+
+  01 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-input-mouse-1.1.1.ebuild:
+  ppc/sparc/mips/alpha/arm/sh stable
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org>
+  xf86-input-mouse-1.1.1.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  xf86-input-mouse-1.0.4.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org>
+  xf86-input-mouse-1.0.4.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-input-mouse-1.0.4.ebuild:
+  x86 stable.
+
+  05 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xf86-input-mouse-1.1.1.ebuild:
+  Add ~x86-fbsd keyword.
+
+*xf86-input-mouse-1.1.1 (28 May 2006)
+
+  28 May 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  -files/1.1.0-CVS-20060520.patch, -xf86-input-mouse-1.1.0-r1.ebuild,
+  +xf86-input-mouse-1.1.1.ebuild:
+  Version bump for 7.1.  This basically includes the changes introduced by the
+  patch in 1.1.0-r1.
+
+*xf86-input-mouse-1.1.0-r1 (20 May 2006)
+
+  20 May 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/1.1.0-CVS-20060520.patch, -xf86-input-mouse-1.1.0.ebuild,
+  +xf86-input-mouse-1.1.0-r1.ebuild:
+  Update to current CVS to fix problem where left and right events are
+  generated when scrolling up and down quickly. This is particularly annoying
+  with Firefox.
+
+  16 Apr 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-input-mouse-1.1.0.ebuild:
+  (#130019) Minimum xorg-server of 1.0.99 needed.
+
+  16 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xf86-input-mouse-1.0.4.ebuild:
+  Add ~x86-fbsd keyword.
+
+*xf86-input-mouse-1.1.0 (14 Apr 2006)
+
+  14 Apr 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-input-mouse-1.1.0.ebuild:
+  Bump for 7.1 RC1.
+
+  06 Mar 2006; Stefaan De Roeck <stefaan@gentoo.org>
+  xf86-input-mouse-1.0.4.ebuild:
+  Marked ~alpha (bug #122726)
+
+  04 Mar 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  xf86-input-mouse-1.0.4.ebuild:
+  Unstable on hppa.
+
+*xf86-input-mouse-1.0.4 (28 Feb 2006)
+
+  28 Feb 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-input-mouse-1.0.3.1.ebuild, +xf86-input-mouse-1.0.4.ebuild:
+  Bump, for a mouse wheel emulation fix and updated man pages.
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org>
+  xf86-input-mouse-1.0.3.1.ebuild:
+  Added ~ppc64
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xf86-input-mouse-1.0.2.ebuild, -xf86-input-mouse-1.0.3.ebuild:
+  Pull old versions.
+
+*xf86-input-mouse-1.0.3.1 (23 Dec 2005)
+
+  23 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-input-mouse-1.0.3.1.ebuild:
+  Bump for 7.0.
+
+*xf86-input-mouse-1.0.3 (18 Dec 2005)
+
+  18 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-input-mouse-1.0.3.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  files/digest-xf86-input-mouse-1.0.2, Manifest:
+  Update digest to match patch introduced by x-modular.eclass changes.
+
+  09 Dec 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-input-mouse-1.0.0.ebuild, -xf86-input-mouse-1.0.0.1.ebuild,
+  -xf86-input-mouse-1.0.1.ebuild:
+  Pull old versions.
+
+*xf86-input-mouse-1.0.2 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-input-mouse-1.0.2.ebuild:
+  Bump for 7.0RC3.
+
+*xf86-input-mouse-1.0.1 (11 Nov 2005)
+
+  11 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-input-mouse-1.0.1.ebuild:
+  Bump for 7.0RC2.
+
+*xf86-input-mouse-1.0.0.1 (20 Oct 2005)
+
+  20 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-input-mouse-1.0.0.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <dberkholz@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  04 Sep 2005; MATSUU Takuto <matsuu@gentoo.org>
+  xf86-input-mouse-1.0.0.ebuild:
+  Added ~sh
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org>
+  xf86-input-mouse-1.0.0.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org>
+  xf86-input-mouse-1.0.0.ebuild:
+  Marked ~amd64.
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org>
+  xf86-input-mouse-1.0.0.ebuild:
+  Add ~sparc keyword (X modular testing).
+
+*xf86-input-mouse-1.0.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-input-mouse-1.0.0.ebuild:
+  Initial commit for modular X.

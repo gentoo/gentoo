@@ -1,0 +1,101 @@
+# ChangeLog for x11-libs/libmatchbox
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libmatchbox/ChangeLog,v 1.25 2014/08/10 20:06:29 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> libmatchbox-1.9-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  09 Mar 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +files/libmatchbox-1.9-underlinking.patch, libmatchbox-1.9-r1.ebuild:
+  Fix underlinking wrt #367683 by Diego Elio Pettenò
+
+  04 Jun 2012; Michael Weber <xmw@gentoo.org> libmatchbox-1.9-r1.ebuild:
+  ppc stable (bug 309407)
+
+  05 Mar 2012; Thomas Kahle <tomka@gentoo.org> libmatchbox-1.9-r1.ebuild:
+  marked x86 per bug 309407
+
+  04 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #112268
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> libmatchbox-1.9-r1.ebuild:
+  Stable for amd64, wrt bug #309407
+
+  17 Sep 2011; Samuli Suominen <ssuominen@gentoo.org>
+  libmatchbox-1.9-r1.ebuild, +files/libmatchbox-1.9-libpng15.patch:
+  Fix building with libpng15 wrt #383201 by Diego Elio Pettenò.
+  USE="static-libs" and punt libtool archive in favour of pkg-config file.
+
+*libmatchbox-1.9-r1 (20 Mar 2011)
+
+  20 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +libmatchbox-1.9-r1.ebuild, files/libmatchbox-1.9-libpng14.patch:
+  Fix libpng-1.4.x patch wrt #359583.
+
+  26 Feb 2011; Kevin McCarthy <signals@gentoo.org> libmatchbox-1.9.ebuild:
+  Updated depends from media-libs/jpeg to virtual/jpeg
+
+  10 Jul 2010; Yuri Vasilevski <yvasilev@gentoo.org> libmatchbox-1.9.ebuild:
+  Explicitly disabling tests as they are very broken (missing files and
+  such).
+
+  04 May 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  libmatchbox-1.9.ebuild:
+  QA: add missing libtool inherit.
+
+  26 Apr 2010; Yuri Vasilevski <yvasilev@gentoo.org> libmatchbox-1.9.ebuild:
+  Fixed installation of ChangeLog file (Bug #316497), fixed dependencies,
+  added conditional dependency to dev-libs/check (needed for running tests).
+
+  09 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  libmatchbox-1.9.ebuild, +files/libmatchbox-1.9-libpng14.patch:
+  Fix building with libpng14.
+
+  14 Mar 2009; <solar@gentoo.org> libmatchbox-1.9.ebuild:
+  keyword ~amd64
+
+  16 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  23 May 2008; <solar@gentoo.org> libmatchbox-1.9.ebuild:
+  - Keyworded
+
+  27 Feb 2008; Yuri Vasilevski <yvasilev@gentoo.org> libmatchbox-1.8.ebuild,
+  libmatchbox-1.9.ebuild:
+  Updated HOMEPAGE and SRC_URI to it's new location
+  http://matchbox-project.org/ (Bug #211244).
+
+  26 Sep 2007; Jeroen Roovers <jer@gentoo.org> libmatchbox-1.9.ebuild:
+  Marked ~hppa too.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  libmatchbox-1.8.ebuild, libmatchbox-1.9.ebuild:
+  Drop virtual/x11 references.
+
+*libmatchbox-1.9 (17 Aug 2006)
+
+  17 Aug 2006; <yvasilev@gentoo.org> -libmatchbox-1.7.ebuild,
+  libmatchbox-1.8.ebuild, +libmatchbox-1.9.ebuild:
+  Added version 1.9 (bug #143137), removed version 1.7 and put KEYWORDS in
+  alphabetical order.
+
+  07 Aug 2006; <yvasilev@gentoo.org> libmatchbox-1.8.ebuild:
+  Added ~arm keyword.
+
+  14 Jul 2006; <yvasilev@gentoo.org> libmatchbox-1.7.ebuild,
+  libmatchbox-1.8.ebuild:
+  Added a warning if emerging with incompatible USE flags. Bug #138135
+
+*libmatchbox-1.8 (04 Jun 2006)
+
+  04 Jun 2006; <yvasilev@gentoo.org> +libmatchbox-1.8.ebuild:
+  - Version dump.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+*libmatchbox-1.7 (12 Mar 2006)
+
+  12 Mar 2006; <yvasilev@gentoo.org> +metadata.xml, +libmatchbox-1.7.ebuild:
+  - Initial import. Original ebuild by Priit Laes, modificationsby Björn
+  Ruberg and Yuri Vasilevski.

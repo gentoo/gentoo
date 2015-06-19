@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare
+DEPEND=dev-cpp/glibmm:2 dev-cpp/gtkmm:3.0 dev-libs/libsigc++:2 >=net-libs/libinfinity-0.4[gtk,avahi?] x11-libs/gtk+:3 dev-cpp/libxmlpp:2.6 x11-libs/gtksourceview:3.0 virtual/pkgconfig doc? ( app-text/gnome-doc-utils app-text/scrollkeeper ) nls? ( >=sys-devel/gettext-0.12.1 ) >=sys-apps/sed-4
+DESCRIPTION=GTK-based collaborative editor
+EAPI=2
+HOMEPAGE=http://gobby.0x539.de/
+IUSE=avahi doc nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-cpp/glibmm:2 dev-cpp/gtkmm:3.0 dev-libs/libsigc++:2 >=net-libs/libinfinity-0.4[gtk,avahi?] x11-libs/gtk+:3 dev-cpp/libxmlpp:2.6 x11-libs/gtksourceview:3.0
+SLOT=0.5
+SRC_URI=http://releases.0x539.de/gobby/gobby-0.4.94.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=5d98ca43bc78f96d195d2de1aa58ad84

@@ -1,0 +1,36 @@
+# ChangeLog for net-misc/ntpclient
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ntpclient/ChangeLog,v 1.9 2014/08/10 20:45:38 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> ntpclient-2010.365.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  22 Sep 2013; Agostino Sarubbo <ago@gentoo.org> ntpclient-2010.365.ebuild:
+  Stable for x86, wrt bug #485208
+
+  21 Sep 2013; Agostino Sarubbo <ago@gentoo.org> ntpclient-2010.365.ebuild:
+  Stable for amd64, wrt bug #485208
+
+  08 Jun 2012; Pacho Ramos <pacho@gentoo.org> -ntpclient-2007.365.ebuild,
+  metadata.xml:
+  Drop maintainer from metadata as talked with him.
+
+*ntpclient-2010.365 (02 Jun 2012)
+
+  02 Jun 2012; Jeroen Roovers <jer@gentoo.org> +ntpclient-2010.365.ebuild:
+  Version bump by Daniel Lange (bug #402643).
+
+  30 Jul 2009; <solar@gentoo.org> ntpclient-2007.365.ebuild:
+  install a few docs
+
+  14 Jan 2009; <solar@gentoo.org> ntpclient-2007.365.ebuild:
+  - do not use hidden symbol __adjtimex directly ; bug 254952
+
+  16 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  ntpclient-2007.365.ebuild:
+  Fix for --as-needed rather than filtering it out wrongly.
+
+*ntpclient-2007.365 (22 Jun 2008)
+
+  22 Jun 2008; <solar@gentoo.org> +metadata.xml, +ntpclient-2007.365.ebuild:
+  - Initial commit

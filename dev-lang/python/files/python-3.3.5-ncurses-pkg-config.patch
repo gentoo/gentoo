@@ -1,0 +1,40 @@
+do not hardcode /usr/include paths
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -668,6 +668,8 @@ AC_ARG_WITH(cxx_main,
+ ])
+ AC_MSG_RESULT($with_cxx_main)
+ 
++AC_PATH_TOOL([PKG_CONFIG], [pkg-config])
++
+ preset_cxx="$CXX"
+ if test -z "$CXX"
+ then
+@@ -1513,7 +1515,7 @@ dnl AC_MSG_RESULT($cpp_type)
+ # checks for header files
+ AC_HEADER_STDC
+ ac_save_cppflags="$CPPFLAGS"
+-CPPFLAGS="$CPPFLAGS -I/usr/include/ncursesw"
++CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags ncursesw`"
+ AC_CHECK_HEADERS(asm/types.h conio.h curses.h direct.h dlfcn.h errno.h \
+ fcntl.h grp.h \
+ ieeefp.h io.h langinfo.h libintl.h ncurses.h process.h pthread.h \
+@@ -2225,8 +2227,6 @@ LIBS="$withval $LIBS"
+ ],
+ [AC_MSG_RESULT(no)])
+ 
+-AC_PATH_TOOL([PKG_CONFIG], [pkg-config])
+-
+ # Check for use of the system expat library
+ AC_MSG_CHECKING(for --with-system-expat)
+ AC_ARG_WITH(system_expat,
+@@ -4273,7 +4273,7 @@ then
+ fi
+ 
+ ac_save_cppflags="$CPPFLAGS"
+-CPPFLAGS="$CPPFLAGS -I/usr/include/ncursesw"
++CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags ncursesw`"
+ # On HP/UX 11.0, mvwdelch is a block with a return statement
+ AC_MSG_CHECKING(whether mvwdelch is an expression)
+ AC_CACHE_VAL(ac_cv_mvwdelch_is_expression,

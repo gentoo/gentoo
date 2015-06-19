@@ -1,0 +1,11 @@
+# ChangeLog for sys-apps/paxctld
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/paxctld/ChangeLog,v 1.3 2014/12/26 17:44:03 blueness Exp $
+
+  26 Dec 2014; Anthony G. Basile <blueness@gentoo.org> paxctld-1.0.ebuild:
+  Fix the build Header line
+
+*paxctld-1.0 (26 Dec 2014)
+
+  26 Dec 2014; Anthony G. Basile <blueness@gentoo.org> :
+  Initial commit.

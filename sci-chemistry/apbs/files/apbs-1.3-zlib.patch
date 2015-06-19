@@ -1,0 +1,43 @@
+diff --git a/configure.ac b/configure.ac
+index 31a0053..7301f0f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1052,10 +1053,10 @@ AC_ARG_ENABLE(
+ 	[zlib],
+ 	AS_HELP_STRING([--disable-zlib], [disable zlib compilation]),,
+ )
+-if test x"$disable_zlib" == "xno"; then
++if test x"$disable_zlib" == "xyes"; then
+ 	AC_MSG_RESULT([yes])
+ 	zlib="zlib"
+-	z_lib=${contrib_path}/zlib/.libs/libz.a
++	z_lib=-lz
+ 	AC_DEFINE([HAVE_ZLIB], [], [have zlib compression enabled])
+ fi
+ AC_SUBST(zlib)
+@@ -1307,12 +1308,8 @@ AC_CONFIG_FILES([
+     Makefile
+ 
+     contrib/Makefile
+-    contrib/blas/Makefile
+     contrib/pmgZ/Makefile
+     contrib/aqua/Makefile
+-    contrib/opal/Makefile
+-    contrib/opal/ZSI/Makefile
+-    contrib/zlib/Makefile	
+ 	
+     tools/Makefile
+     tools/mesh/Makefile
+diff --git a/src/mg/vgrid.c b/src/mg/vgrid.c
+index d183bb2..e0669ab 100644
+--- a/src/mg/vgrid.c
++++ b/src/mg/vgrid.c
+@@ -432,7 +432,7 @@ VPUBLIC int Vgrid_gradient(Vgrid *thee, double pt[3], double grad[3]) {
+  /////////////////////////////////////////////////////////////////////////// */
+ #ifdef HAVE_ZLIB
+ #define off_t long
+-#include "../../contrib/zlib/zlib.h"
++#include <zlib.h>
+ #endif
+ VPUBLIC int Vgrid_readGZ(Vgrid *thee, const char *fname) {
+ 

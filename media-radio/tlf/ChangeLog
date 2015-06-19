@@ -1,0 +1,271 @@
+# ChangeLog for media-radio/tlf
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-radio/tlf/ChangeLog,v 1.55 2014/10/10 11:08:44 ago Exp $
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> tlf-1.2.1.ebuild:
+  Stable for x86, wrt bug #519694
+
+  09 Oct 2014; Agostino Sarubbo <ago@gentoo.org> tlf-1.2.1.ebuild:
+  Stable for amd64, wrt bug #519694
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> tlf-1.2.0.ebuild:
+  x86 stable wrt bug #507964
+
+  09 Jun 2014; Chema Alonso <nimiux@gentoo.org> tlf-1.2.0.ebuild:
+  Stable for amd64 wrt bug #507964
+
+*tlf-1.2.1 (16 May 2014)
+
+  16 May 2014; Thomas Beierlein <tomjbe@gentoo.org> +tlf-1.2.1.ebuild:
+  Version bump
+
+*tlf-1.2.0 (23 Feb 2014)
+
+  23 Feb 2014; Thomas Beierlein <tomjbe@gentoo.org> +tlf-1.2.0.ebuild:
+  Version bump
+
+  05 Sep 2013; Agostino Sarubbo <ago@gentoo.org> tlf-1.1.6.ebuild:
+  Stable for x86, wrt bug #482122
+
+  31 Aug 2013; Agostino Sarubbo <ago@gentoo.org> tlf-1.1.6.ebuild:
+  Stable for amd64, wrt bug #482122
+
+*tlf-1.1.6 (05 Jul 2013)
+
+  05 Jul 2013; Thomas Beierlein <tomjbe@gentoo.org> +tlf-1.1.6.ebuild:
+  Version bump
+
+  07 Feb 2013; Thomas Beierlein <tomjbe@gentoo.org> -tlf-1.1.1.ebuild,
+  -tlf-1.1.2.ebuild, -tlf-1.1.3.ebuild, -tlf-1.1.4.ebuild, tlf-1.1.5.ebuild:
+  Drop unneeded awk dep (bug #455736). Remove old
+
+  20 Jan 2013; Agostino Sarubbo <ago@gentoo.org> tlf-1.1.5.ebuild:
+  Stable for x86, wrt bug #452722
+
+  20 Jan 2013; Agostino Sarubbo <ago@gentoo.org> tlf-1.1.5.ebuild:
+  Stable for amd64, wrt bug #452722
+
+*tlf-1.1.5 (05 Dec 2012)
+
+  05 Dec 2012; Thomas Beierlein <tomjbe@gentoo.org> +tlf-1.1.5.ebuild:
+  Version bump
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> tlf-1.1.3.ebuild:
+  Stable for x86, wrt bug #441698
+
+  11 Nov 2012; <ago@gentoo.org> tlf-1.1.3.ebuild:
+  Stable for amd64, wrt bug #441698
+
+  02 Nov 2012; Thomas Beierlein <tomjbe@gentoo.org> tlf-1.1.2.ebuild,
+  tlf-1.1.3.ebuild, tlf-1.1.4.ebuild:
+  Fix QA warning
+
+*tlf-1.1.4 (30 Oct 2012)
+
+  30 Oct 2012; Thomas Beierlein <tomjbe@gentoo.org> +tlf-1.1.4.ebuild:
+  Version bump
+
+*tlf-1.1.3 (26 Aug 2012)
+
+  26 Aug 2012; Thomas Beierlein <tomjbe@gentoo.org> +tlf-1.1.3.ebuild:
+  Version bump
+
+  25 Jun 2012; Jeff Horelick <jdhore@gentoo.org> tlf-1.1.2.ebuild:
+  marked x86 per bug 422119
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> tlf-1.1.2.ebuild:
+  Stable for amd64, wrt bug #422119
+
+  18 Jun 2012; Agostino Sarubbo <ago@gentoo.org> -tlf-1.0.5.ebuild:
+  Remove old
+
+  30 May 2012; Thomas Beierlein <tomjbe@gentoo.org> -tlf-1.0.0.ebuild,
+  -tlf-1.1.0.ebuild:
+  Cleanup old
+
+*tlf-1.1.2 (07 May 2012)
+
+  07 May 2012; Thomas Beierlein <tomjbe@gentoo.org> +tlf-1.1.2.ebuild:
+  Version bump
+
+  24 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> tlf-1.1.1.ebuild:
+  x86 stable wrt bug #407147
+
+  08 Mar 2012; Markos Chandras <hwoarang@gentoo.org> tlf-1.1.1.ebuild:
+  Stable on amd64 wrt bug #407147
+
+*tlf-1.1.1 (19 Jan 2012)
+
+  19 Jan 2012; Thomas Beierlein <tomjbe@gentoo.org> +tlf-1.1.1.ebuild:
+  Version bump
+
+  04 Jan 2012; Thomas Beierlein <tomjbe@gentoo.org> -tlf-1.0.3.ebuild,
+  -tlf-1.0.4.ebuild:
+  Remove old unstable versions
+
+  26 Dec 2011; Markus Meier <maekke@gentoo.org> tlf-1.0.5.ebuild:
+  x86 stable, bug #394087
+
+*tlf-1.1.0 (24 Dec 2011)
+
+  24 Dec 2011; Thomas Beierlein <tomjbe@gentoo.org> +tlf-1.1.0.ebuild:
+  Major version bump
+
+  16 Dec 2011; Agostino Sarubbo <ago@gentoo.org> tlf-1.0.5.ebuild:
+  Stable for AMD64, wrt bug #394087
+
+  12 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> tlf-1.0.0.ebuild,
+  tlf-1.0.3.ebuild, tlf-1.0.4.ebuild, tlf-1.0.5.ebuild:
+  Drop ~ppc wrt #333603
+
+*tlf-1.0.5 (10 Jun 2011)
+
+  10 Jun 2011; Thomas Beierlein <tomjbe@gentoo.org> +tlf-1.0.5.ebuild:
+  Version bump. Fix wrong documentation entry
+
+*tlf-1.0.4 (26 May 2011)
+
+  26 May 2011; Thomas Beierlein <tomjbe@gentoo.org> +tlf-1.0.4.ebuild:
+  Minor maintenance release
+
+*tlf-1.0.3 (19 Feb 2011)
+
+  19 Feb 2011; Thomas Beierlein <tomjbe@gentoo.org> -tlf-0.9.31.2.ebuild,
+  -tlf-0.9.31.2-r1.ebuild, -files/tlf-0.9.31.2-segfault-fix.patch,
+  +tlf-1.0.3.ebuild:
+  Maintenance release. Remove old versions.
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org> tlf-0.9.31.2.ebuild,
+  tlf-0.9.31.2-r1.ebuild, tlf-1.0.0.ebuild:
+  Drop alpha keywords
+
+  30 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> tlf-1.0.0.ebuild:
+  x86 stable wrt bug #352619
+
+  27 Jan 2011; Markos Chandras <hwoarang@gentoo.org> tlf-1.0.0.ebuild:
+  Stable on amd64 wrt bug #352619
+
+*tlf-1.0.0 (25 Dec 2010)
+
+  25 Dec 2010; Thomas Beierlein <tomjbe@gentoo.org> +tlf-1.0.0.ebuild,
+  metadata.xml:
+  Version bump. Took over maintainership.
+
+*tlf-0.9.31.2-r1 (08 Oct 2009)
+
+  08 Oct 2009; Víctor Ostorga <vostorga@gentoo.org>
+  +tlf-0.9.31.2-r1.ebuild, +files/tlf-0.9.31.2-segfault-fix.patch:
+  Fixing segfault if called with 'tlf -n' patch thanks to Thomas Beierlein
+  <tb@forth-ev.de> bug 287640
+
+  05 Dec 2008; Raúl Porcel <armin76@gentoo.org> tlf-0.9.31.2.ebuild:
+  x86 stable wrt #249491
+
+  15 Jun 2008; Tobias Klausmann <klausman@gentoo.org> tlf-0.9.23.ebuild:
+  Depends on media-libs/hamlib which can't really be tested (no hardware),
+  so back to ~alpha for both.
+
+*tlf-0.9.31.2 (08 May 2008)
+
+  08 May 2008; Samuli Suominen <drac@gentoo.org> +tlf-0.9.31.2.ebuild:
+  Version bump by Thomas Beierlein from #-sunrise.
+
+  06 Jan 2007; Danny van Dyk <kugelfang@gentoo.org> -tlf-0.9.20.ebuild,
+  -tlf-0.9.21.ebuild, -tlf-0.9.22.ebuild:
+  QA: Removed unused versions.
+
+  30 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> +metadata.xml,
+  tlf-0.9.23.ebuild:
+  Fix DEPEND/RDEPEND, thanks to Patrick Lauer in bug #153417. Add
+  maintainer-needed metadata.
+
+  06 Jul 2006; Jon Hood <squinky86@gentoo.org> tlf-0.9.23.ebuild:
+  Add ~amd64, bug #104935.
+
+  14 Sep 2005; Aron Griffis <agriffis@gentoo.org> tlf-0.9.23.ebuild:
+  Mark 0.9.23 stable on alpha
+
+*tlf-0.9.23 (30 Mar 2005)
+
+  30 Mar 2005; Robb Romans <killsoft@gentoo.org> +tlf-0.9.23.ebuild:
+  New version 0.9.23
+  * New function: start cw before call is complete. In contest mode, you can
+    start sending the call from the call window with 'space' or with
+    'down-arrow'.
+  * New command: :CHAR asks for number of characters the call must have before
+    sending starts. Default: 0 = OFF. If CHARS is 3, tlf starts sending as soon
+    as you have input the first 3 letters of the call. If you are on slow speed
+    you then have time to complete the call (including backspacing) before
+    sending the first 3 letters is finished. This is of limited use when running
+    above 40 wpm :)
+  * incorporated patch from W9WI fixing a bug in the voice keyer.
+  * changed cw speed control: now default active in call and exchange fields,
+    even if field is not empty
+  * changed qso save logic: RETURN now always logs the qso in SSB and in general
+    qso mode.
+  * New parameter: CHANGE_RST. If set in logcfg.dat, Pg-up and Pg-down will
+    change RST instead of CW speed if field is not empty. Default: off.
+  * fixed nasty bug which caused CQDELAY to start at 0 instead of the default in
+    logcfg.dat
+  * manpage updated for version 0.9.23
+
+*tlf-0.9.22 (30 Mar 2005)
+
+  30 Mar 2005; Robb Romans <killsoft@gentoo.org> tlf-0.9.22.ebuild:
+  Mark stable on x86
+
+  15 Feb 2005; Robb Romans <killsoft@gentoo.org> :
+  * New upstream version 0.9.22
+  
+  * This release fixes a bug to make it compatible with
+    gcc-4.0 / AMD64
+  
+  * The (local swedish) ssa_mt contest has changed its
+    exchange format into serial number + 4-character grid
+    field. This made it necessary to make a new parameter
+    called SERIAL+GRID4. Tlf extracts the first 4 characters
+    for the multiplier.
+    
+  * Input format:
+    e.g. 01 JO21QI, the mult will be JO21.
+  
+  * The rules file has also been updated.
+  
+  * Man page updated for version 0.9.22.
+
+  08 Dec 2004; Robb Romans <killsoft@gentoo.org> :
+  Changes:
+  (0.9.21)
+  * The cw sidetone setting (TONE) in logcfg.dat has become CWTONE=
+  * A new parameter LOWBANDS_DOUBLE has been introduced
+  * A new parameter CLUSTER_LOG has been intgroduced. When set
+    the cluster messages are written to a 'clusterlog' file... this can be tailed
+    to a terminal window (tail -f clusterlog) for people who are on a dead band,
+    so they can watch the game.
+  * The initial exchange function now also recognises embedded
+    calls (CT3/PA0R/QRP)
+  * The logcfg.dat template has been updated to version 0.9.21.
+  * The manpage has been updated to version 0.9.21.
+
+  04 Aug 2004; Robb Romans <killsoft@gentoo.org> tlf-0.9.19.ebuild:
+  Mark stable on x86.
+
+  04 Aug 2004; Robb Romans <killsoft@gentoo.org> tlf-0.9.19.ebuild:
+  mark stable on x86
+
+*tlf-0.9.20 (22 Jul 2004)
+
+  22 Jul 2004; Robb Romans <killsoft@gentoo.org> +tlf-0.9.20.ebuild:
+  Add ebuild for new version.
+
+  29 Jun 2004; Robb Romans <killsoft@gentoo.org> tlf-0.9.19.ebuild:
+  Move to virtual/libc
+
+  28 Jun 2004; David Holm <dholm@gentoo.org> tlf-0.9.19.ebuild:
+  Added to ~ppc.
+
+*tlf-0.9.19 (27 Jun 2004)
+
+  27 Jun 2004; Robb Romans <killsoft@gentoo.org> +metadata.xml,
+  +tlf-0.9.19.ebuild:
+  Initial import.

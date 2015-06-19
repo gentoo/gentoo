@@ -1,0 +1,64 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/files/nscd,v 1.7 2007/02/23 12:09:39 uberlord Exp $
+
+depend() {
+	use dns ldap net slapd
+}
+
+checkconfig() {
+	if [ ! -d /var/run/nscd ] ; then
+		mkdir -p /var/run/nscd
+		chmod 755 /var/run/nscd
+	fi
+	if [ -z "${NSCD_PERMS_OK}" ] && [ "$(stat -c %a /var/run/nscd)" != "755" ] ; then
+		echo ""
+		ewarn "nscd run dir is not world readable, you should reset the perms:"
+		ewarn "chmod 755 /var/run/nscd"
+		ewarn "chmod a+rw /var/run/nscd/socket"
+		echo ""
+		ewarn "To disable this warning, set 'NSCD_PERMS_OK' in /etc/conf.d/nscd"
+		echo ""
+	fi
+}
+
+start() {
+	checkconfig
+
+	ebegin "Starting Name Service Cache Daemon"
+	local secure=`while read curline ; do
+		table=${curline%:*}
+		entries=${curline##$table:}
+		table=${table%%[^a-z]*}
+		case $table in
+			passwd*|group*|hosts)
+			for entry in $entries ; do
+			case $entry in
+				nisplus*)
+					/usr/sbin/nscd_nischeck $table || \
+					/echo "-S $table,yes"
+				;;
+			esac
+			done
+		;;
+		esac
+		done < /etc/nsswitch.conf`
+	local pidfile="$(strings /usr/sbin/nscd | grep nscd.pid)"
+	mkdir -p "$(dirname ${pidfile})"
+	save_options pidfile "${pidfile}"
+	start-stop-daemon --start --quiet \
+		--exec /usr/sbin/nscd --pidfile "${pidfile}" \
+		-- $secure
+	eend $?
+}
+
+stop() {
+	local pidfile="$(get_options pidfile)"
+	[ -n "${pidfile}" ] && pidfile="--pidfile ${pidfile}"
+	ebegin "Shutting down Name Service Cache Daemon"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/nscd ${pidfile}
+	eend $?
+}
+
+# vim:ts=4

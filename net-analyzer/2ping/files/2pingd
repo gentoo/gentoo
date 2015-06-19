@@ -1,0 +1,36 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/2ping/files/2pingd,v 1.1 2012/03/18 12:55:41 blueness Exp $
+
+DAEMON="/usr/bin/2ping"
+PIDFILE="/var/run/2ping"
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting 2ping server"
+	start-stop-daemon --start \
+		--background --make-pidfile \
+		--pidfile "${PIDFILE}" \
+		--exec "${DAEMON}" -- \
+		--listen -q ${OPTS} \
+		>/dev/null
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping 2ping server"
+	start-stop-daemon --stop --pidfile "${PIDFILE}"
+	eend $?
+}
+
+restart() {
+	ebegin "Restarting 2ping server"
+	start-stop-daemon --stop --pidfile "${PIDFILE}"
+	sleep 1
+	start-stop-daemon --start --exec "${DAEMON}" --pidfile "${PIDFILE}"
+	eend $?
+}

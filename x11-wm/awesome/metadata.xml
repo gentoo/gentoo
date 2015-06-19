@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>maksbotan@gentoo.org</email>
+    <name>Maxim Koltsov</name>
+  </maintainer>
+  <maintainer>
+    <email>skrattaren@yandex.ru</email>
+    <name>Nikolaj Sjujskij</name>
+  </maintainer>
+  <maintainer>
+    <email>wired@gentoo.org</email>
+    <name>Alex Alexander</name>
+  </maintainer>
+</pkgmetadata>

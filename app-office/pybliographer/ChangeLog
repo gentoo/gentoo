@@ -1,0 +1,155 @@
+# ChangeLog for app-office/pybliographer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/pybliographer/ChangeLog,v 1.38 2015/06/09 11:58:48 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  18 Apr 2015; Pacho Ramos <pacho@gentoo.org> -pybliographer-1.2.15.ebuild:
+  drop old
+
+  18 Apr 2015; Pacho Ramos <pacho@gentoo.org> pybliographer-1.2.15-r1.ebuild:
+  ppc stable wrt bug #531498
+
+  18 Apr 2015; Pacho Ramos <pacho@gentoo.org> pybliographer-1.2.15-r1.ebuild:
+  gnome-doc-utils needed at buildtime
+
+  06 Feb 2015; Pacho Ramos <pacho@gentoo.org> -pybliographer-1.2.12-r1.ebuild,
+  -pybliographer-1.2.14.ebuild:
+  Drop old
+
+  29 Jan 2015; Pacho Ramos <pacho@gentoo.org> pybliographer-1.2.15-r1.ebuild:
+  amd64/x86 stable, bug #531498
+
+  25 Dec 2014; Michał Górny <mgorny@gentoo.org> pybliographer-1.2.15-r1.ebuild:
+  Convert to python-single-r1.
+
+*pybliographer-1.2.15-r1 (02 Dec 2014)
+
+  02 Dec 2014; Pacho Ramos <pacho@gentoo.org> +pybliographer-1.2.15-r1.ebuild:
+  Use new python eclasses and make it buildable again (#487204 by Pariksheet
+  Nanda, lumbrius and Joaquim Uchoa)
+
+  23 Sep 2014; Dirkjan Ochtman <djc@gentoo.org> metadata.xml:
+  Remove python, not a python library
+
+  10 Aug 2012; Anthony G. Basile <blueness@gentoo.org>
+  pybliographer-1.2.15.ebuild:
+  Stable ppc, bug #418629
+
+  08 Aug 2012; Andreas Schuerch <nativemad@gentoo.org>
+  pybliographer-1.2.15.ebuild:
+  x86 stable, see bug 418629
+
+*pybliographer-1.2.15 (23 Apr 2012)
+
+  23 Apr 2012; Patrick Lauer <patrick@gentoo.org> +pybliographer-1.2.15.ebuild:
+  Bump
+
+  17 Apr 2012; Brent Baude <ranger@gentoo.org> pybliographer-1.2.14.ebuild:
+  Marking pybliographer-1.2.14 ppc for bug 404615
+
+  05 Apr 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  pybliographer-1.2.14.ebuild:
+  x86 stable wrt bug #404615
+
+*pybliographer-1.2.14 (29 Jul 2011)
+
+  29 Jul 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  +pybliographer-1.2.14.ebuild, metadata.xml:
+  Version bump
+
+  27 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pybliographer-1.2.12-r1.ebuild:
+  Update dependencies (bug #352917).
+
+  13 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  pybliographer-1.2.12-r1.ebuild:
+  x86 stable wrt bug #317949
+
+  10 May 2010; nixnut <nixnut@gentoo.org> pybliographer-1.2.12-r1.ebuild:
+  ppc stable #317949
+
+*pybliographer-1.2.12-r1 (27 Mar 2010)
+
+  27 Mar 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pybliographer-1.2.12-r1.ebuild:
+  Install Python modules into site-packages directories (bug #247558).
+  Set Python 2 as active version.
+
+*pybliographer-1.2.12 (07 Mar 2009)
+
+  07 Mar 2009; Patrick Lauer <patrick@gentoo.org>
+  +pybliographer-1.2.12.ebuild:
+  Bump to 1.2.12. Fixes #254628
+
+  07 Feb 2009; Christian Faulhammer <fauli@gentoo.org>
+  pybliographer-1.2.11.ebuild:
+  stable x86, bug 247558
+
+  23 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  pybliographer-1.2.11.ebuild:
+  ppc stable, bug #247558
+
+*pybliographer-1.2.11 (01 Mar 2008)
+
+  01 Mar 2008; Tiziano Müller <dev-zero@gentoo.org>
+  -pybliographer-1.2.4.ebuild, -pybliographer-1.2.6.2.ebuild,
+  +pybliographer-1.2.11.ebuild:
+  Version bump (bug #167874). Dropped old versions.
+
+  21 Oct 2007; Markus Meier <maekke@gentoo.org> pybliographer-1.2.9.ebuild:
+  x86 stable, bug #175169 and quotes
+
+  21 Oct 2007; nixnut <nixnut@gentoo.org> pybliographer-1.2.9.ebuild:
+  Stable on ppc wrt bug 175169
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*pybliographer-1.2.9 (18 Jul 2006)
+
+  18 Jul 2006; Alexandre Buisse <nattfodd@gentoo.org>
+  +pybliographer-1.2.9.ebuild:
+  Bump to 1.2.9 (requested in bug #130696).
+
+  06 Dec 2005; Marien Zwart <marienz@gentoo.org> pybliographer-1.2.4.ebuild,
+  pybliographer-1.2.6.2.ebuild:
+  Add missing scrollkeeper dependency (bug #107379)
+
+  16 Jul 2005; Joseph Jezak <josejx@gentoo.org> pybliographer-1.2.4.ebuild:
+  Marked ppc stable for bug #99175.
+
+*pybliographer-1.2.6.2 (02 Jul 2005)
+
+  02 Jul 2005; Mamoru KOMACHI <usata@gentoo.org> pybliographer-1.2.4.ebuild,
+  +pybliographer-1.2.6.2.ebuild:
+  Version bumped; bug #97664.
+
+  28 Jun 2005; John N. Laliberte <allanonjl@gentoo.org>
+  pybliographer-1.2.4.ebuild:
+  fix for access violation due to gnome2 eclass change, see bug #92920
+
+  11 Apr 2005; Simon Stelling <blubb@gentoo.org> pybliographer-1.2.4.ebuild:
+  added ~amd64
+
+  17 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> pybliographer-1.2.4.ebuild:
+  Added to ~ppc; bug #70211.
+
+  21 Oct 2004; Mamoru KOMACHI <usata@gentoo.org>
+  +files/pybliographer-1.2.4-gentoo.diff, pybliographer-1.2.4.ebuild:
+  Disables setup-check.py; bug #68309.
+
+  21 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> pybliographer-1.2.4.ebuild:
+  Uses gnome2.eclass.
+
+*pybliographer-1.2.4 (17 Oct 2004)
+
+  17 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +pybliographer-1.2.4.ebuild:
+  Initial import. Thanks to John Steele Scott <toojays@toojays.net>,
+  Jean-Luc Jox <jljox@yahoo.com> and Ronny Haryanto <rh-gentoo@terasi.net>.
+  This closes bug #20027.

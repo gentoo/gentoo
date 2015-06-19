@@ -1,0 +1,82 @@
+# ChangeLog for media-sound/fmtools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/fmtools/ChangeLog,v 1.20 2015/05/30 00:25:30 mrueg Exp $
+
+  30 May 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/fmtools-1.0.2-ldflags.patch, -fmtools-1.0.2-r1.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> fmtools-1.0.2-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  04 May 2014; Agostino Sarubbo <ago@gentoo.org> fmtools-2.0.7.ebuild:
+  Stable for x86, wrt bug #502856
+
+  30 Apr 2014; Chema Alonso <nimiux@gentoo.org> fmtools-2.0.7.ebuild:
+  Stable for amd64 wrt bug #502856
+
+*fmtools-2.0.7 (25 Jan 2014)
+
+  25 Jan 2014; Tim Harder <radhermit@gentoo.org> +fmtools-2.0.7.ebuild:
+  Version bump.
+
+  07 Dec 2011; Tim Harder <radhermit@gentoo.org> -fmtools-0.99.1.ebuild,
+  -fmtools-1.0.2.ebuild:
+  Remove old.
+
+  07 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> fmtools-1.0.2-r1.ebuild:
+  x86 stable wrt bug #392805
+
+  03 Dec 2011; Markos Chandras <hwoarang@gentoo.org> fmtools-1.0.2-r1.ebuild:
+  Stable on amd64 wrt bug #392805
+
+*fmtools-1.0.2-r1 (19 Oct 2010)
+
+  19 Oct 2010; <chainsaw@gentoo.org> +fmtools-1.0.2-r1.ebuild,
+  +files/fmtools-1.0.2-ldflags.patch:
+  Instill LDFLAGS respect into upstream build system. Closes bug #337449 by
+  Diego Elio "Flameeyes" Pettenò <flameeyes@gentoo.org>.
+
+  11 Jun 2009; Christian Faulhammer <fauli@gentoo.org> fmtools-1.0.2.ebuild:
+  stable x86, bug 272680
+
+  05 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> fmtools-1.0.2.ebuild:
+  amd64 stable wrt #272680
+
+*fmtools-1.0.2 (27 Jul 2007)
+
+  27 Jul 2007; Samuli Suominen <drac@gentoo.org> +fmtools-1.0.2.ebuild:
+  Version bump.
+
+  03 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  07 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> fmtools-0.99.1.ebuild,
+  fmtools-1.0.ebuild:
+  Don't install COPYING file. Don't depend on virtual/libc. Use emake instead
+  of make.
+
+  04 Sep 2005; Jason Wever <weeve@gentoo.org> fmtools-1.0.ebuild:
+  Changed -sparc keyword to ~sparc wrt bug #104809.
+
+*fmtools-1.0 (29 Mar 2005)
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> fmtools-0.99.1.ebuild,
+  +fmtools-1.0.ebuild:
+  new upstream version, updated HOMEPAGE. fixes #86891
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  fmtools-0.99.1.ebuild:
+  virtual/glibc -> virtual/libc
+
+  16 Nov 2003; Brad House <brad_mssw@gentoo.org> fmtools-0.99.1.ebuild:
+  mark stable on amd64
+
+*fmtools-0.99.1 (12 Feb 2003)
+
+  12 Feb 2003; Seemant Kulleen <seemant@gentoo.org> ChangeLog
+  fmtools-0.99.1.ebuild, files/digest-fmtools-0.99.1 :
+
+  New ebuild. fmtools is a set of command line tools for controlling
+  v4l radio devices. Ebuild submission by:  Burton Samograd
+  <kruhft@kruhft.dyndns.org> in bug #13046

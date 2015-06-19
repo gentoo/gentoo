@@ -1,0 +1,20 @@
+diff --git a/doc/conf.py b/doc/conf.py
+index fb5d79e..7d3571b 100644
+--- a/doc/conf.py
++++ b/doc/conf.py
+@@ -13,6 +13,7 @@
+ 
+ import sys, os
+ import six
++import sphinx_rtd_theme
+ 
+ # If extensions (or modules to document with autodoc) are in another directory,
+ # add these directories to sys.path here. If the directory is relative to the
+@@ -106,6 +107,7 @@ html_theme = 'sphinx_rtd_theme'
+ 
+ # Add any paths that contain custom themes here, relative to this directory.
+ #html_theme_path = []
++html_theme_path = [ sphinx_rtd_theme.get_html_theme_path() ]
+ 
+ # The name for this set of Sphinx documents.  If None, it defaults to
+ # "<project> v<release> documentation".

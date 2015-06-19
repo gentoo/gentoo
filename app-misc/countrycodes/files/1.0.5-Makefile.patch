@@ -1,0 +1,42 @@
+diff --git a/src/Makefile b/src/Makefile
+index 9330578..3ff7319 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -26,13 +26,13 @@ BINMODE=755
+ LOGDIRMODE=700
+ 
+ # Compiler to use
+-CC=gcc
++CC ?= gcc
+ 
+ # Compiler warnings
+-WARNINGS= -pedantic -Wall
++WARNINGS= 
+ 
+ # Compiler flags
+-CCOPTS = -O2 -fomit-frame-pointer
++CCOPTS = ${CFLAGS}
+ 
+ # The makefile standards document I read says that I have to put it here...
+ SHELL = /bin/sh
+@@ -61,7 +61,7 @@ PROGRAM = iso3166
+ all: $(PROGRAM)
+ 
+ $(PROGRAM): $(ISO3166OBJ)
+-	$(CC) $(CCOPTS) $(ISO3166OBJ) -o $@
++	$(CC) $(CCOPTS) $(LDFLAGS) $(ISO3166OBJ) -o $@
+ 
+ clean:
+ 	rm -f $(ISO3166OBJ) core defines.h $(PROGRAM)
+@@ -70,8 +70,10 @@ strip:
+ 	strip $(PROGRAM)
+ 
+ install:
+-	$(INSTALL) -g root -m $(BINMODE) -o root -s ${srcdir}/$(PROGRAM) ${bindir}
++	mkdir -p ${bindir}
++	$(INSTALL) -g root -m $(BINMODE) -o root ${srcdir}/$(PROGRAM) ${bindir}
+ 	@echo "Installing man page..."
++	mkdir -p ${mandir}
+ 	@$(SEDBIN) $(SEDCMDS) ${docdir}/iso3166.1.in > ${mandir}/iso3166.1
+ 	@chown 0.0 ${mandir}/iso3166.1
+ 	@echo

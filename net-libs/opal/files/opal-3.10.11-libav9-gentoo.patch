@@ -1,0 +1,262 @@
+--- plugins/video/common/dyna.cxx
++++ plugins/video/common/dyna.cxx
+@@ -37,6 +37,7 @@
+  *                 Craig Southeren (craigs@postincrement.com)
+  *                 Matthias Schneider (ma30002000@yahoo.de)
+  */
++#include <stdio.h>
+ #include "dyna.h"
+ 
+ bool DynaLink::Open(const char *name)
+@@ -210,14 +211,14 @@
+ #endif
+ 
+ 
+-FFMPEGLibrary::FFMPEGLibrary(CodecID codec)
++FFMPEGLibrary::FFMPEGLibrary(AVCodecID codec)
+ {
+   m_codec = codec;
+-  if (m_codec==CODEC_ID_H264)
++  if (m_codec==AV_CODEC_ID_H264)
+       snprintf( m_codecString, sizeof(m_codecString), "H264");
+-  if (m_codec==CODEC_ID_H263P)
++  if (m_codec==AV_CODEC_ID_H263P)
+       snprintf( m_codecString, sizeof(m_codecString), "H263+");
+-  if (m_codec==CODEC_ID_MPEG4)
++  if (m_codec==AV_CODEC_ID_MPEG4)
+       snprintf( m_codecString, sizeof(m_codecString), "MPEG4");
+   m_isLoadedOK = false;
+ }
+@@ -348,12 +349,12 @@
+   return true;
+ }
+ 
+-AVCodec *FFMPEGLibrary::AvcodecFindEncoder(enum CodecID id)
++AVCodec *FFMPEGLibrary::AvcodecFindEncoder(enum AVCodecID id)
+ {
+   return Favcodec_find_encoder(id);
+ }
+ 
+-AVCodec *FFMPEGLibrary::AvcodecFindDecoder(enum CodecID id)
++AVCodec *FFMPEGLibrary::AvcodecFindDecoder(enum AVCodecID id)
+ {
+   WaitAndSignal m(processLock);
+ 
+--- plugins/video/common/dyna.h
++++ plugins/video/common/dyna.h
+@@ -88,13 +88,13 @@
+ class FFMPEGLibrary 
+ {
+   public:
+-    FFMPEGLibrary(CodecID codec);
++    FFMPEGLibrary(AVCodecID codec);
+     ~FFMPEGLibrary();
+ 
+     bool Load();
+ 
+-    AVCodec *AvcodecFindEncoder(enum CodecID id);
+-    AVCodec *AvcodecFindDecoder(enum CodecID id);
++    AVCodec *AvcodecFindEncoder(enum AVCodecID id);
++    AVCodec *AvcodecFindDecoder(enum AVCodecID id);
+     AVCodecContext *AvcodecAllocContext(void);
+     AVFrame *AvcodecAllocFrame(void);
+     int AvcodecOpen(AVCodecContext *ctx, AVCodec *codec);
+@@ -117,15 +117,15 @@
+     DynaLink m_libAvcodec;
+     DynaLink m_libAvutil;
+ 
+-    CodecID m_codec;
++    AVCodecID m_codec;
+     char m_codecString[32];
+ 
+     void (*Favcodec_init)(void);
+     void (*Fav_init_packet)(AVPacket *pkt);
+ 
+     void (*Favcodec_register_all)(void);
+-    AVCodec *(*Favcodec_find_encoder)(enum CodecID id);
+-    AVCodec *(*Favcodec_find_decoder)(enum CodecID id);
++    AVCodec *(*Favcodec_find_encoder)(enum AVCodecID id);
++    AVCodec *(*Favcodec_find_decoder)(enum AVCodecID id);
+     AVCodecContext *(*Favcodec_alloc_context)(void);
+     AVFrame *(*Favcodec_alloc_frame)(void);
+     int (*Favcodec_open)(AVCodecContext *ctx, AVCodec *codec);
+--- plugins/video/H.263-1998/h263-1998.cxx
++++ plugins/video/H.263-1998/h263-1998.cxx
+@@ -43,6 +43,12 @@
+  * $Date: 2014/04/29 09:02:06 $
+  */
+ 
++#define CODEC_FLAG_H263P_UMV      0x02000000
++#define CODEC_FLAG_H263P_SLICE_STRUCT 0x10000000
++#define CODEC_FLAG_H263P_AIV      0x00000008
++#define CODEC_FLAG_OBMC           0x00000001
++#define FF_I_TYPE  1
++
+ #ifndef PLUGIN_CODEC_DLL_EXPORTS
+ #include "plugin-config.h"
+ #endif
+@@ -94,7 +100,7 @@
+   { CIF16_WIDTH, CIF16_HEIGHT, PLUGINCODEC_CIF16_MPI },
+ };
+ 
+-static FFMPEGLibrary FFMPEGLibraryInstance(CODEC_ID_H263P);
++static FFMPEGLibrary FFMPEGLibraryInstance(AV_CODEC_ID_H263P);
+ 
+ 
+ /////////////////////////////////////////////////////////////////////////////
+@@ -203,7 +209,7 @@
+   PTRACE(4, m_prefix, "Encoder closed");
+ }
+ 
+-bool H263_Base_EncoderContext::Init(CodecID codecId)
++bool H263_Base_EncoderContext::Init(AVCodecID codecId)
+ {
+   PTRACE(5, m_prefix, "Opening encoder");
+ 
+@@ -616,7 +622,7 @@
+ 
+ bool H263_RFC2190_EncoderContext::Init()
+ {
+-  if (!H263_Base_EncoderContext::Init(CODEC_ID_H263))
++  if (!H263_Base_EncoderContext::Init(AV_CODEC_ID_H263))
+     return false;
+ 
+ #if LIBAVCODEC_RTP_MODE
+@@ -661,7 +667,7 @@
+ 
+ bool H263_RFC2429_EncoderContext::Init()
+ {
+-  return H263_Base_EncoderContext::Init(CODEC_ID_H263P);
++  return H263_Base_EncoderContext::Init(AV_CODEC_ID_H263P);
+ }
+ 
+ 
+@@ -685,7 +691,7 @@
+   if (!FFMPEGLibraryInstance.Load())
+     return;
+ 
+-  if ((m_codec = FFMPEGLibraryInstance.AvcodecFindDecoder(CODEC_ID_H263)) == NULL) {
++  if ((m_codec = FFMPEGLibraryInstance.AvcodecFindDecoder(AV_CODEC_ID_H263)) == NULL) {
+     PTRACE(1, m_prefix, "Codec not found for decoder");
+     return;
+   }
+--- plugins/video/H.263-1998/h263-1998.h
++++ plugins/video/H.263-1998/h263-1998.h
+@@ -115,7 +115,7 @@
+     virtual ~H263_Base_EncoderContext();
+ 
+     virtual bool Init() = 0;
+-    virtual bool Init(CodecID codecId);
++    virtual bool Init(AVCodecID codecId);
+ 
+     virtual bool SetOptions(const char * const * options);
+     virtual void SetOption(const char * option, const char * value);
+--- plugins/video/H.263-1998/Makefile.in
++++ plugins/video/H.263-1998/Makefile.in
+@@ -34,7 +34,7 @@
+              $(COMMONDIR)/mpi.cxx \
+              $(COMMONDIR)/dyna.cxx
+ 
+-CXXFLAGS += @LIBAVCODEC_CFLAGS@ -I$(COMMONDIR)
++CXXFLAGS += @LIBAVCODEC_CFLAGS@ -I$(COMMONDIR) -fpermissive
+ LIBS   += @DL_LIBS@
+ 
+ HAVE_LIBAVCODEC_RTP_MODE=@HAVE_LIBAVCODEC_RTP_MODE@
+--- plugins/video/H.264/h264-x264.cxx
++++ plugins/video/H.264/h264-x264.cxx
+@@ -36,6 +36,15 @@
+  * $Date: 2014/04/29 09:02:06 $
+  */
+ 
++#define FF_ER_AGGRESSIVE      3
++#define CODEC_FLAG2_BRDO          0x00000400 
++#define CODEC_FLAG2_MEMC_ONLY     0x00001000
++#define CODEC_FLAG2_DROP_FRAME_TIMECODE 0x00002000
++#define CODEC_FLAG2_SKIP_RD       0x00004000 ///< RD optimal MB level residual skipping
++#define FF_IDCT_H264          11
++
++#include <stdio.h>
++
+ #ifndef PLUGIN_CODEC_DLL_EXPORTS
+ #include "plugin-config.h"
+ #endif
+@@ -104,7 +113,7 @@
+ 
+ ///////////////////////////////////////////////////////////////////////////////
+ 
+-FFMPEGLibrary FFMPEGLibraryInstance(CODEC_ID_H264);
++FFMPEGLibrary FFMPEGLibraryInstance(AV_CODEC_ID_H264);
+ 
+ PLUGINCODEC_CONTROL_LOG_FUNCTION_DEF
+ 
+@@ -1064,7 +1073,7 @@
+          allows you to fail the create operation (return false), which cannot
+          be done in the normal C++ constructor. */
+ 
+-      if ((m_codec = FFMPEGLibraryInstance.AvcodecFindDecoder(CODEC_ID_H264)) == NULL)
++      if ((m_codec = FFMPEGLibraryInstance.AvcodecFindDecoder(AV_CODEC_ID_H264)) == NULL)
+         return false;
+ 
+       if ((m_context = FFMPEGLibraryInstance.AvcodecAllocContext()) == NULL)
+@@ -1072,7 +1081,7 @@
+ 
+       m_context->workaround_bugs = FF_BUG_AUTODETECT;
+ #ifdef FF_ER_AGGRESSIVE
+-      m_context->error_recognition = FF_ER_AGGRESSIVE;
++      m_context->err_recognition = FF_ER_AGGRESSIVE;
+ #endif
+       m_context->idct_algo = FF_IDCT_H264;
+       m_context->error_concealment = FF_EC_GUESS_MVS | FF_EC_DEBLOCK;
+ 
+--- plugins/video/MPEG4-ffmpeg/mpeg4.cxx
++++ plugins/video/MPEG4-ffmpeg/mpeg4.cxx
+@@ -53,6 +53,11 @@
+ 
+  */
+ 
++#define CODEC_FLAG_H263P_UMV      0x02000000
++#define CODEC_FLAG_H263P_SLICE_STRUCT 0x10000000
++#define FF_I_TYPE  1
++#define CODEC_FLAG_PART   0x0080
++
+ // Plugin specific
+ #define _CRT_SECURE_NO_DEPRECATE
+ 
+@@ -205,7 +210,7 @@
+     { 0 }
+ };
+ 
+-FFMPEGLibrary FFMPEGLibraryInstance(CODEC_ID_MPEG4);
++FFMPEGLibrary FFMPEGLibraryInstance(AV_CODEC_ID_MPEG4);
+ 
+ 
+ static bool mpeg4IsIframe (BYTE * frameBuffer, unsigned int frameLen )
+@@ -701,7 +706,7 @@
+     return false;
+   }
+ 
+-  if((m_avcodec = FFMPEGLibraryInstance.AvcodecFindEncoder(CODEC_ID_MPEG4)) == NULL){
++  if((m_avcodec = FFMPEGLibraryInstance.AvcodecFindEncoder(AV_CODEC_ID_MPEG4)) == NULL){
+     PTRACE(1, "MPEG4", "Encoder not found");
+     return false;
+   }
+@@ -1391,7 +1396,7 @@
+ 
+ bool MPEG4DecoderContext::OpenCodec()
+ {
+-    if ((m_avcodec = FFMPEGLibraryInstance.AvcodecFindDecoder(CODEC_ID_MPEG4)) == NULL) {
++    if ((m_avcodec = FFMPEGLibraryInstance.AvcodecFindDecoder(AV_CODEC_ID_MPEG4)) == NULL) {
+         PTRACE(1, "MPEG4", "Decoder not found for encoder");
+         return false;
+     }
+--- plugins/video/MPEG4-ffmpeg/Makefile.in
++++ plugins/video/MPEG4-ffmpeg/Makefile.in
+@@ -30,7 +30,7 @@
+ SRCDIR    := .
+ SRCS      := mpeg4.cxx $(COMMONDIR)/dyna.cxx
+ 
+-CXXFLAGS += @LIBAVCODEC_CFLAGS@ -I$(COMMONDIR)
++CXXFLAGS += @LIBAVCODEC_CFLAGS@ -I$(COMMONDIR) -fpermissive
+ LIBS   += @DL_LIBS@
+ 
+ # Add LIBAVCODEC_SOURCE_DIR to the include path so we can #include <libavcodec/...h>

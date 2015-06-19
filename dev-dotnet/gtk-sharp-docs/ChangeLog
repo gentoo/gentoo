@@ -1,0 +1,49 @@
+# ChangeLog for dev-dotnet/gtk-sharp-docs
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/gtk-sharp-docs/ChangeLog,v 1.10 2010/10/07 19:34:43 pacho Exp $
+
+  07 Oct 2010; Pacho Ramos <pacho@gentoo.org> -gtk-sharp-docs-2.12.9.ebuild:
+  Remove old.
+
+  12 Sep 2010; Joseph Jezak <josejx@gentoo.org>
+  gtk-sharp-docs-2.12.10.ebuild:
+  Marked ppc for bug #327279.
+
+  12 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  gtk-sharp-docs-2.12.10.ebuild:
+  stable x86, bug 327279
+
+  09 Jul 2010; Pacho Ramos <pacho@gentoo.org> gtk-sharp-docs-2.12.10.ebuild:
+  amd64 stable, bug 327279
+
+*gtk-sharp-docs-2.12.10 (17 Jun 2010)
+
+  17 Jun 2010; Pacho Ramos <pacho@gentoo.org> -gtk-sharp-docs-2.12.8.ebuild,
+  +gtk-sharp-docs-2.12.10.ebuild:
+  Version bump with lots of bugfixes. Remove old.
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> gtk-sharp-docs-2.12.9.ebuild:
+  ppc stable #283739
+
+  11 Sep 2009; Markus Meier <maekke@gentoo.org>
+  gtk-sharp-docs-2.12.9.ebuild:
+  amd64/x86 stable, bug #283739
+
+*gtk-sharp-docs-2.12.9 (28 May 2009)
+
+  28 May 2009; Peter Alfredsen <loki_val@gentoo.org>
+  +gtk-sharp-docs-2.12.9.ebuild:
+  gtk-sharp-2.12.9 bump
+
+*gtk-sharp-docs-2.12.8 (08 Feb 2009)
+
+  08 Feb 2009; Peter Alfredsen <loki_val@gentoo.org>
+  -gtk-sharp-docs-2.12.7-r10.ebuild, +gtk-sharp-docs-2.12.8.ebuild:
+  Bump to 2.12.8
+
+*gtk-sharp-docs-2.12.7-r10 (29 Jan 2009)
+
+  29 Jan 2009; Peter Alfredsen <loki_val@gentoo.org> +metadata.xml,
+  +gtk-sharp-docs-2.12.7-r10.ebuild:
+  Initial ebuild w.r.t. bug 249704.
+

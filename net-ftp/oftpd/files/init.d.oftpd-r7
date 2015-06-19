@@ -1,0 +1,29 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/oftpd/files/init.d.oftpd-r7,v 1.1 2011/06/17 00:35:32 xmw Exp $
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ -z "${OFTPD_OPTS}" ] ; then
+		eerror "You need to setup OFTPD_OPTS /etc/conf.d/oftpd"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+
+	ebegin "Starting oftpd"
+       	start-stop-daemon --start --exec /usr/sbin/oftpd -- ${OFTPD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping oftpd"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/oftpd
+	eend $?
+}

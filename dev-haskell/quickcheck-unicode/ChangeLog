@@ -1,0 +1,14 @@
+# ChangeLog for dev-haskell/quickcheck-unicode
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/quickcheck-unicode/ChangeLog,v 1.2 2015/06/06 15:53:53 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*quickcheck-unicode-1.0.0.0 (20 Dec 2014)
+
+  20 Dec 2014; Mark Wright <gienah@gentoo.org> +metadata.xml,
+  +quickcheck-unicode-1.0.0.0.ebuild:
+  Thanks to Chris Kerr for reporting, add quickcheck-unicode, part of fix for
+  Bug 533126 - dev-haskell/text-1.2.0.3 requires quickcheck-unicode for
+  FEATURES=test

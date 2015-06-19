@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=a member function stub generator for C++
+EAPI=4
+HOMEPAGE=http://www.radwin.org/michael/projects/stubgen/
+KEYWORDS=amd64 x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=http://www.radwin.org/michael/projects/stubgen/dist/stubgen-2.08.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f7b9ac38d49d4eadfea120a2329fadc4

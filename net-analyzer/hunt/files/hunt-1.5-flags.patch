@@ -1,0 +1,21 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,8 +1,7 @@
+-CFLAGS=-Wall -O2 -g -D_REENTRANT
++CFLAGS += -I. -Wall -D_REENTRANT
+ #CFLAGS+=-DSYNC_FAST
+ #CFLAGS+=-D_WITH_LINUX_KERNEL_HDR
+ 
+-LDFLAGS=
+ #LDFLAGS=-static
+ 
+ OBJ=hunt.o main.o c/list.o c/hash.o c/array.o util.o net.o \
+@@ -11,7 +10,7 @@
+ 	addpolicy.o options.o resolv.o timer.o pktrelay.o
+ 	
+ hunt: $(OBJ)
+-	$(CC) ${LDFLAGS} -o $@ $^ -lpthread
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -lpthread
+ 
+ hunt_static: $(OBJ)
+ 	$(CC) ${LDFLAGS} -static -o $@ $^ -lpthread

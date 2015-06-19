@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Analysis of repetitive DNA found in genome sequences
+EAPI=2
+HOMEPAGE=http://www.drive5.com/piler/
+KEYWORDS=amd64 x86
+LICENSE=public-domain
+RDEPEND=|| ( sci-biology/muscle sci-libs/libmuscle ) sci-biology/pals
+SLOT=0
+SRC_URI=mirror://gentoo/piler-1.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=bf9e1eb7c8e3ca10c18a22930b2c0bfc

@@ -1,0 +1,244 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/files/eblits/src_install.eblit,v 1.38 2014/09/10 18:15:55 vapier Exp $
+
+toolchain-glibc_src_install() {
+	local builddir=$(builddir $(want_linuxthreads && echo linuxthreads || echo nptl))
+	cd "${builddir}"
+
+	emake install_root="${D}$(alt_prefix)" install || die
+
+	if want_linuxthreads && want_nptl ; then
+		einfo "Installing NPTL to $(alt_libdir)/tls/..."
+		cd "$(builddir nptl)"
+		dodir $(alt_libdir)/tls $(alt_usrlibdir)/nptl
+
+		local l src_lib
+		for l in libc libm librt libpthread libthread_db ; do
+			# take care of shared lib first ...
+			l=${l}.so
+			if [[ -e ${l} ]] ; then
+				src_lib=${l}
+			else
+				src_lib=$(eval echo */${l})
+			fi
+			cp -a ${src_lib} "${ED}"$(alt_libdir)/tls/${l} || die "copying nptl ${l}"
+			fperms a+rx $(alt_libdir)/tls/${l}
+			dosym ${l} $(alt_libdir)/tls/$(scanelf -qSF'%S#F' ${src_lib})
+
+			# then grab the linker script or the symlink ...
+			if [[ -L ${ED}$(alt_usrlibdir)/${l} ]] ; then
+				dosym $(alt_libdir)/tls/${l} $(alt_usrlibdir)/nptl/${l}
+			else
+				sed \
+					-e "s:/${l}:/tls/${l}:g" \
+					-e "s:/${l/%.so/_nonshared.a}:/nptl/${l/%.so/_nonshared.a}:g" \
+					"${ED}"$(alt_usrlibdir)/${l} > "${ED}"$(alt_usrlibdir)/nptl/${l}
+			fi
+
+			# then grab the static lib ...
+			src_lib=${src_lib/%.so/.a}
+			[[ ! -e ${src_lib} ]] && src_lib=${src_lib/%.a/_pic.a}
+			cp -a ${src_lib} "${ED}"$(alt_usrlibdir)/nptl/ || die "copying nptl ${src_lib}"
+			src_lib=${src_lib/%.a/_nonshared.a}
+			if [[ -e ${src_lib} ]] ; then
+				cp -a ${src_lib} "${ED}"$(alt_usrlibdir)/nptl/ || die "copying nptl ${src_lib}"
+			fi
+		done
+
+		# use the nptl linker instead of the linuxthreads one as the linuxthreads
+		# one may lack TLS support and that can be really bad for business
+		cp -a elf/ld.so "${ED}"$(alt_libdir)/$(scanelf -qSF'%S#F' elf/ld.so) || die "copying nptl interp"
+	fi
+
+	# We'll take care of the cache ourselves
+	rm -f "${ED}"/etc/ld.so.cache
+
+	# Everything past this point just needs to be done once ...
+	is_final_abi || return 0
+
+	# Make sure the non-native interp can be found on multilib systems even
+	# if the main library set isn't installed into the right place.  Maybe
+	# we should query the active gcc for info instead of hardcoding it ?
+	local i ldso_abi ldso_name
+	local ldso_abi_list=(
+		# x86
+		amd64   /lib64/ld-linux-x86-64.so.2
+		x32     /libx32/ld-linux-x32.so.2
+		x86     /lib/ld-linux.so.2
+		# mips
+		o32     /lib/ld.so.1
+		n32     /lib32/ld.so.1
+		n64     /lib64/ld.so.1
+		# powerpc
+		ppc     /lib/ld.so.1
+		ppc64   /lib64/ld64.so.1
+		# s390
+		s390    /lib/ld.so.1
+		s390x   /lib/ld64.so.1
+		# sparc
+		sparc32 /lib/ld-linux.so.2
+		sparc64 /lib64/ld-linux.so.2
+	)
+	case $(tc-endian) in
+	little)
+		ldso_abi_list+=(
+			# arm
+			arm64   /lib/ld-linux-aarch64.so.1
+		)
+		;;
+	big)
+		ldso_abi_list+=(
+			# arm
+			arm64   /lib/ld-linux-aarch64_be.so.1
+		)
+		;;
+	esac
+	if [[ ${SYMLINK_LIB} == "yes" ]] && [[ ! -e ${ED}/$(alt_prefix)/lib ]] ; then
+		dosym $(get_abi_LIBDIR ${DEFAULT_ABI}) $(alt_prefix)/lib
+	fi
+	for (( i = 0; i < ${#ldso_abi_list[@]}; i += 2 )) ; do
+		ldso_abi=${ldso_abi_list[i]}
+		has ${ldso_abi} $(get_install_abis) || continue
+
+		ldso_name="$(alt_prefix)${ldso_abi_list[i+1]}"
+		if [[ ! -L ${D}/${ldso_name} && ! -e ${D}/${ldso_name} ]] ; then
+			dosym ../$(get_abi_LIBDIR ${ldso_abi})/${ldso_name##*/} ${ldso_name}
+		fi
+	done
+
+	# With devpts under Linux mounted properly, we do not need the pt_chown
+	# binary to be setuid.  This is because the default owners/perms will be
+	# exactly what we want.
+	if in_iuse suid && ! use suid ; then
+		find "${D}" -name pt_chown -exec chmod -s {} +
+	fi
+
+	#################################################################
+	# EVERYTHING AFTER THIS POINT IS FOR NATIVE GLIBC INSTALLS ONLY #
+	# Make sure we install some symlink hacks so that when we build
+	# a 2nd stage cross-compiler, gcc finds the target system
+	# headers correctly.  See gcc/doc/gccinstall.info
+	if is_crosscompile ; then
+		# We need to make sure that /lib and /usr/lib always exists.
+		# gcc likes to use relative paths to get to its multilibs like
+		# /usr/lib/../lib64/.  So while we don't install any files into
+		# /usr/lib/, we do need it to exist.
+		cd "${ED}"$(alt_libdir)/..
+		[[ -e lib ]] || mkdir lib
+		cd "${ED}"$(alt_usrlibdir)/..
+		[[ -e lib ]] || mkdir lib
+
+		dosym usr/include $(alt_prefix)/sys-include
+		return 0
+	fi
+
+	# Files for Debian-style locale updating
+	dodir /usr/share/i18n
+	sed \
+		-e "/^#/d" \
+		-e "/SUPPORTED-LOCALES=/d" \
+		-e "s: \\\\::g" -e "s:/: :g" \
+		"${S}"/localedata/SUPPORTED > "${ED}"/usr/share/i18n/SUPPORTED \
+		|| die "generating /usr/share/i18n/SUPPORTED failed"
+	cd "${WORKDIR}"/extra/locale
+	dosbin locale-gen || die
+	doman *.[0-8]
+	insinto /etc
+	doins locale.gen || die
+
+	# Make sure all the ABI's can find the locales and so we only
+	# have to generate one set
+	local a
+	keepdir /usr/$(get_libdir)/locale
+	for a in $(get_install_abis) ; do
+		if [[ ! -e ${ED}/usr/$(get_abi_LIBDIR ${a})/locale ]] ; then
+			dosym /usr/$(get_libdir)/locale /usr/$(get_abi_LIBDIR ${a})/locale
+		fi
+	done
+
+	cd "${S}"
+
+	# Install misc network config files
+	insinto /etc
+	doins nscd/nscd.conf posix/gai.conf nss/nsswitch.conf || die
+	doins "${WORKDIR}"/extra/etc/*.conf || die
+
+	if ! in_iuse nscd || use nscd ; then
+		doinitd "${WORKDIR}"/extra/etc/nscd || die
+
+		local nscd_args=(
+			-e "s:@PIDFILE@:$(strings "${ED}"/usr/sbin/nscd | grep nscd.pid):"
+		)
+		version_is_at_least 2.16 || nscd_args+=( -e 's: --foreground : :' )
+		sed -i "${nscd_args[@]}" "${ED}"/etc/init.d/nscd
+
+		# Newer versions of glibc include the nscd.service themselves.
+		# TODO: Drop the $FILESDIR copy once 2.19 goes stable.
+		if version_is_at_least 2.19 ; then
+			systemd_dounit nscd/nscd.service || die
+			systemd_newtmpfilesd nscd/nscd.tmpfiles nscd.conf || die
+		else
+			systemd_dounit "${FILESDIR}"/nscd.service || die
+			systemd_newtmpfilesd "${FILESDIR}"/nscd.tmpfilesd nscd.conf || die
+		fi
+	else
+		# Do this since extra/etc/*.conf above might have nscd.conf.
+		rm -f "${ED}"/etc/nscd.conf
+	fi
+
+	echo 'LDPATH="include ld.so.conf.d/*.conf"' > "${T}"/00glibc
+	doenvd "${T}"/00glibc || die
+
+	for d in BUGS ChangeLog* CONFORMANCE FAQ NEWS NOTES PROJECTS README* ; do
+		[[ -s ${d} ]] && dodoc ${d}
+	done
+
+	# Prevent overwriting of the /etc/localtime symlink.  We'll handle the
+	# creation of the "factory" symlink in pkg_postinst().
+	rm -f "${ED}"/etc/localtime
+}
+
+toolchain-glibc_headers_install() {
+	local builddir=$(builddir "headers")
+	cd "${builddir}"
+	emake install_root="${D}$(alt_prefix)" install-headers || die
+	if ! version_is_at_least 2.16 ; then
+		insinto $(alt_headers)/bits
+		doins bits/stdio_lim.h || die
+	fi
+	insinto $(alt_headers)/gnu
+	doins "${S}"/include/gnu/stubs.h || die "doins include gnu"
+	# Make sure we install the sys-include symlink so that when
+	# we build a 2nd stage cross-compiler, gcc finds the target
+	# system headers correctly.  See gcc/doc/gccinstall.info
+	dosym usr/include /usr/${CTARGET}/sys-include
+}
+
+src_strip() {
+	# gdb is lame and requires some debugging information to remain in
+	# libpthread, so we need to strip it by hand.  libthread_db makes no
+	# sense stripped as it is only used when debugging.
+	local pthread=$(has splitdebug ${FEATURES} && echo "libthread_db" || echo "lib{pthread,thread_db}")
+	env \
+		-uRESTRICT \
+		CHOST=${CTARGET} \
+		STRIP_MASK="/*/{,tls/}${pthread}*" \
+		prepallstrip
+	# if user has stripping enabled and does not have split debug turned on,
+	# then leave the debugging sections in libpthread.
+	if ! has nostrip ${FEATURES} && ! has splitdebug ${FEATURES} ; then
+		${STRIP:-${CTARGET}-strip} --strip-debug "${ED}"/*/libpthread-*.so
+	fi
+}
+
+eblit-glibc-src_install() {
+	if just_headers ; then
+		export ABI=default
+		toolchain-glibc_headers_install
+		return
+	fi
+
+	foreach_abi toolchain-glibc_src_install
+	src_strip
+}

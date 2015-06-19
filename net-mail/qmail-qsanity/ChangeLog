@@ -1,0 +1,25 @@
+# ChangeLog for net-mail/qmail-qsanity
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/qmail-qsanity/ChangeLog,v 1.7 2014/08/10 20:46:01 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> qmail-qsanity-0.52.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  02 Feb 2013; Ulrich Müller <ulm@gentoo.org> qmail-qsanity-0.52.ebuild:
+  Fix LICENSE, bug 453166.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  20 Feb 2006; Michael Hanselmann <hansmi@gentoo.org>
+  qmail-qsanity-0.52.ebuild:
+  Changed to virtual/qmail, stable on x86, added to ~hppa and ~ppc.
+
+  04 Aug 2003; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  fix metadata.xml
+
+*qmail-qsanity-0.52 (04 Aug 2003)
+
+  04 Aug 2003; Robin H. Johnson <robbat2@gentoo.org> metadata.xml,
+  qmail-qsanity-0.52.ebuild:
+  Initial Commit.

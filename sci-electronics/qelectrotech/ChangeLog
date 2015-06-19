@@ -1,0 +1,87 @@
+# ChangeLog for sci-electronics/qelectrotech
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/qelectrotech/ChangeLog,v 1.18 2014/10/10 14:47:39 pesa Exp $
+
+  10 Oct 2014; Davide Pesavento <pesa@gentoo.org>
+  -files/qelectrotech-0.2-fix-paths.patch, -qelectrotech-0.22.ebuild:
+  old
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> qelectrotech-0.30.ebuild:
+  Stable for x86, wrt bug #524476
+
+  09 Oct 2014; Agostino Sarubbo <ago@gentoo.org> qelectrotech-0.30.ebuild:
+  Stable for amd64, wrt bug #524476
+
+  04 Oct 2014; Davide Pesavento <pesa@gentoo.org> qelectrotech-0.30.ebuild,
+  qelectrotech-9999.ebuild:
+  Add missing dep on dev-qt/designer (bug 514214); stop using dohtml.
+
+  22 Dec 2013; Davide Pesavento <pesa@gentoo.org> qelectrotech-9999.ebuild:
+  Update live ebuild too.
+
+*qelectrotech-0.30 (22 Dec 2013)
+
+  22 Dec 2013; Davide Pesavento <pesa@gentoo.org> +qelectrotech-0.30.ebuild,
+  -qelectrotech-0.30_alpha.ebuild, files/qelectrotech-0.3-fix-paths.patch,
+  metadata.xml:
+  Version bump.
+
+  23 Jun 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  remove myself from metadata
+
+*qelectrotech-9999 (02 Jun 2013)
+
+  02 Jun 2013; Markos Chandras <hwoarang@gentoo.org> +qelectrotech-9999.ebuild:
+  Add live ebuild per user's request
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> qelectrotech-0.22.ebuild,
+  qelectrotech-0.30_alpha.ebuild:
+  Move Qt dependencies to the new category
+
+*qelectrotech-0.30_alpha (27 May 2012)
+
+  27 May 2012; Markos Chandras <hwoarang@gentoo.org>
+  +files/qelectrotech-0.3-fix-paths.patch, +qelectrotech-0.30_alpha.ebuild:
+  Version bump
+
+  25 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  -qelectrotech-0.2-r1.ebuild, -qelectrotech-0.21.ebuild:
+  Remove old ebuilds
+
+  22 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  qelectrotech-0.22.ebuild:
+  Stable on amd64 wrt bug #322689. Thanks to Thomas Beierlein
+  <tomjbe@gentoo.org>
+
+  15 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  qelectrotech-0.22.ebuild:
+  x86 stable wrt bug #322689
+
+*qelectrotech-0.22 (14 Mar 2010)
+
+  14 Mar 2010; Markos Chandras <hwoarang@gentoo.org>
+  +qelectrotech-0.22.ebuild:
+  Version bump
+
+*qelectrotech-0.21 (06 Mar 2010)
+
+  06 Mar 2010; Markos Chandras <hwoarang@gentoo.org>
+  +qelectrotech-0.21.ebuild:
+  Version bump
+
+  06 Jan 2010; <hwoarang@gentoo.org> qelectrotech-0.2-r1.ebuild:
+  Migrate to qt4-r2 eclass
+
+*qelectrotech-0.2-r1 (29 Aug 2009)
+
+  29 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -qelectrotech-0.2.ebuild, +qelectrotech-0.2-r1.ebuild,
+  +files/qelectrotech-0.2-fix-paths.patch:
+  Fix ebuild to not install in /usr/local. Thanks to Davide Pesavento in bug
+  #282908.
+
+*qelectrotech-0.2 (28 Jun 2009)
+
+  28 Jun 2009; Markos Chandras <hwoarang@gentoo.org>
+  +qelectrotech-0.2.ebuild, +metadata.xml:
+  Initial commit of qelectrotech

@@ -1,0 +1,141 @@
+# ChangeLog for games-strategy/openra
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/openra/ChangeLog,v 1.34 2014/11/05 17:07:50 hasufell Exp $
+
+*openra-20141029 (05 Nov 2014)
+
+  05 Nov 2014; Julian Ospald <hasufell@gentoo.org> +openra-20141029.ebuild:
+  version bump
+
+  12 Oct 2014; Agostino Sarubbo <ago@gentoo.org> openra-20140722.ebuild:
+  Stable for x86, wrt bug #521052
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> openra-20140722.ebuild:
+  Stable for amd64, wrt bug #521052
+
+  13 Aug 2014; Julian Ospald <hasufell@gentoo.org> -openra-20121019.ebuild,
+  -openra-20130915.ebuild, -files/openra-20130915-make.patch:
+  rm old
+
+*openra-20140722 (13 Aug 2014)
+
+  13 Aug 2014; Julian Ospald <hasufell@gentoo.org> +openra-20140722.ebuild:
+  version bump wrt #519754
+
+*openra-20140608 (09 Jun 2014)
+
+  09 Jun 2014; Julian Ospald <hasufell@gentoo.org> +openra-20140608.ebuild,
+  metadata.xml:
+  version bump
+
+  08 Jun 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  remove proxy maintainer
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> openra-20131223-r1.ebuild:
+  Stable for x86, wrt bug #502360
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> openra-20131223-r1.ebuild:
+  amd64 stable, bug #502360
+
+  25 Dec 2013; Julian Ospald <hasufell@gentoo.org>
+  files/openra-20131223-sdl2.patch:
+  slightly different patch
+
+*openra-20131223-r1 (24 Dec 2013)
+
+  24 Dec 2013; Julian Ospald <hasufell@gentoo.org> -openra-20131223.ebuild,
+  +openra-20131223-r1.ebuild, +files/openra-20131223-sdl2.patch:
+  revbump, rm obsolete cg useflag, fix sdl2 support
+
+*openra-20131223 (22 Dec 2013)
+
+  22 Dec 2013; Julian Ospald <hasufell@gentoo.org> +openra-20131223.ebuild:
+  version bump
+
+*openra-20130915 (23 Sep 2013)
+
+  23 Sep 2013; Julian Ospald <hasufell@gentoo.org> +openra-20130915.ebuild,
+  +files/openra-20130915-make.patch:
+  version bump
+
+  05 Jul 2013; Julian Ospald <hasufell@gentoo.org>
+  files/openra-20130514-makefile.patch:
+  fix non-fatal bug (crash when clicking on CREDITS), no revbump
+
+  04 Jul 2013; Julian Ospald <hasufell@gentoo.org> -openra-20130514.ebuild:
+  remove old
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> openra-20130514-r1.ebuild:
+  Stable for x86, wrt bug #475670
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> openra-20130514-r1.ebuild:
+  Stable for amd64, wrt bug #475670
+
+*openra-20130514-r1 (03 Jul 2013)
+
+  03 Jul 2013; Julian Ospald <hasufell@gentoo.org> +openra-20130514-r1.ebuild,
+  +files/openra-20130514-makefile.patch:
+  fix broken d2k mod caused by incomplete install rule
+
+  29 Jun 2013; Julian Ospald <hasufell@gentoo.org> openra-20130514.ebuild:
+  don't build stuff in src_install
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> openra-20130514.ebuild:
+  Stable for amd64, wrt bug #474390
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> openra-20130514.ebuild:
+  Stable for x86, wrt bug #474390
+
+  23 Jun 2013; Julian Ospald <hasufell@gentoo.org> openra-20130514.ebuild:
+  migrate to mono-env
+
+*openra-20130514 (13 May 2013)
+
+  13 May 2013; Julian Ospald <hasufell@gentoo.org> +openra-20130514.ebuild:
+  version bump
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  02 Jan 2013; Agostino Sarubbo <ago@gentoo.org> openra-20120630.ebuild:
+  Stable for x86, wrt bug #445093
+
+  02 Jan 2013; Agostino Sarubbo <ago@gentoo.org> openra-20120630.ebuild:
+  Stable for amd64, wrt bug #445093
+
+*openra-20121019 (21 Oct 2012)
+
+  21 Oct 2012; Julian Ospald <hasufell@gentoo.org> +openra-20121019.ebuild:
+  version bump
+
+  29 Jul 2012; Julian Ospald <hasufell@gentoo.org> openra-20120630.ebuild:
+  minor fix to elog
+
+  01 Jul 2012; Julian Ospald <hasufell@gentoo.org> openra-20120630.ebuild:
+  fix SRC_URI
+
+*openra-20120630 (01 Jul 2012)
+
+  01 Jul 2012; Julian Ospald <hasufell@gentoo.org> -openra-20120504.ebuild,
+  -files/openra-20120504-makefile.patch, +openra-20120630.ebuild,
+  +files/openra-20120630-sound.patch:
+  version bump, remove old
+
+  02 Jun 2012; Julian Ospald <hasufell@gentoo.org> openra-20120504.ebuild:
+  bump to EAPI=4
+
+  14 May 2012; Julian Ospald <hasufell@gentoo.org> openra-20120504.ebuild:
+  improve elog
+
+  04 May 2012; Julian Ospald <hasufell@gentoo.org> openra-20120504.ebuild:
+  add missing '|| die' to emake
+
+  04 May 2012; Julian Ospald <hasufell@gentoo.org> +files/README.gentoo,
+  +files/openra-20120504-makefile.patch:
+  missed files dir
+
+*openra-20120504 (04 May 2012)
+
+  04 May 2012; Julian Ospald <hasufell@gentoo.org> +openra-20120504.ebuild,
+  +metadata.xml:
+  initial commit wrt #372029 with help from diamond

@@ -1,0 +1,15 @@
+# ChangeLog for dev-java/balloontip
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/balloontip/ChangeLog,v 1.2 2014/08/10 20:08:33 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> balloontip-1.2.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*balloontip-1.2.1 (13 Jul 2013)
+
+  13 Jul 2013; Tom Wijsman <TomWij@gentoo.org> +balloontip-1.2.1.ebuild,
+  +files/balloontip-1.2.1-build.xml, +metadata.xml:
+  New ebuild for dev-java/balloontip, a balloon tip component to spice up your
+  Java Swing applications. Needed dependency of app-office/ganttproject, see bug
+  #119276. Imported from lh-overlay, contributed by Johann Schmitz (ercpe);
+  small adjustements made, added examples USE flag.

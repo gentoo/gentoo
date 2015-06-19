@@ -1,0 +1,29 @@
+From 201bd67de450320520a12e2b0c465c8eb6818bd2 Mon Sep 17 00:00:00 2001
+From: Rico Tzschichholz <ricotz@ubuntu.com>
+Date: Mon, 17 Mar 2014 20:57:49 +0100
+Subject: [PATCH] WhereClause: Fix array-length to work with string.joinv of
+ vala-0.24
+
+---
+ libzeitgeist/where-clause.vala | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/libzeitgeist/where-clause.vala b/libzeitgeist/where-clause.vala
+index a830599..d981914 100644
+--- a/libzeitgeist/where-clause.vala
++++ b/libzeitgeist/where-clause.vala
+@@ -211,7 +211,11 @@ namespace Zeitgeist
+          */
+         private T[] generic_array_to_unowned_array<T> (GenericArray<T> gptrarr)
+         {
++#if VALA_0_24
++            long[] pointers = new long[gptrarr.length];
++#else
+             long[] pointers = new long[gptrarr.length + 1];
++#endif
+             Memory.copy(pointers, ((PtrArray *) gptrarr)->pdata,
+                 (gptrarr.length) * sizeof (void *));
+             return (T[]) pointers;
+-- 
+2.3.0
+

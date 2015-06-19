@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>accessibility</herd>
+<maintainer>
+ <email>williamh@gentoo.org</email>
+</maintainer>
+<longdescription lang="en">
+	Emacspeak speech servers for DoubleTalk PC and AT, 
+	Braille 'n Speak, Type 'n Speak, Braille Lite from Blazie,
+	Accent SA, Apollo 2, JUNO, and JUNO-sp from Dolphin, 
+	Spanish ciber 232 (+plus), Spanish PC Hablado notebook.
+</longdescription>
+<longdescription lang="ja">
+	DoubleTalkPC and ATとBraille 'n SpeakとType 'n SpeakとBlazieから
+	Braille LiteとAccent SAとApollo SAとApollo 2とDolphinからJUNO
+	and JUNO-spとSpanish ciber 232 (+plus)とSpanish PC Hablado
+	notebookのEmacspeakスピーチサーバーです。
+</longdescription>
+</pkgmetadata>

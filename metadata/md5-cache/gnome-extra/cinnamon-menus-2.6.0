@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+DEPEND=>=dev-libs/glib-2.29.15:2 introspection? ( >=dev-libs/gobject-introspection-0.9.5:= ) dev-libs/gobject-introspection-common >=dev-util/intltool-0.40 gnome-base/gnome-common sys-devel/gettext virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4
+DESCRIPTION=Cinnamon's library for the Desktop Menu fd.o specification
+EAPI=5
+HOMEPAGE=http://cinnamon.linuxmint.com/
+IUSE=+introspection debug
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+ LGPL-2+
+RDEPEND=>=dev-libs/glib-2.29.15:2 introspection? ( >=dev-libs/gobject-introspection-0.9.5:= )
+SLOT=0
+SRC_URI=https://github.com/linuxmint/cinnamon-menus/archive/2.6.0.tar.gz -> cinnamon-menus-2.6.0.tar.gz
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=d79ebe6419758945dbd74c123d8bf743

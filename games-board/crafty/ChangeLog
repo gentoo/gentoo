@@ -1,0 +1,267 @@
+# ChangeLog for games-board/crafty
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/crafty/ChangeLog,v 1.64 2015/05/16 00:05:10 mr_bones_ Exp $
+
+  16 May 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/crafty-24.1-numcpus.patch, crafty-24.1.ebuild:
+  Add patch from Thomas Jürges to compile with numcpus=1 or USE=no-opts (bug
+  #542848)
+
+  31 Dec 2014; Michael Sterrett <mr_bones_@gentoo.org> -crafty-23.4.ebuild,
+  -files/crafty-23.4-64bits.patch:
+  old
+
+  31 Dec 2014; Agostino Sarubbo <ago@gentoo.org> crafty-24.1.ebuild:
+  Stable for ppc, wrt bug #532022
+
+  28 Dec 2014; Agostino Sarubbo <ago@gentoo.org> crafty-24.1.ebuild:
+  Stable for x86, wrt bug #532022
+
+  27 Dec 2014; Agostino Sarubbo <ago@gentoo.org> crafty-24.1.ebuild:
+  Stable for amd64, wrt bug #532022
+
+*crafty-24.1 (30 Oct 2014)
+
+  30 Oct 2014; Michael Sterrett <mr_bones_@gentoo.org> +crafty-24.1.ebuild,
+  -crafty-24.0.ebuild:
+  version bump
+
+  16 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org> -crafty-23.8.ebuild:
+  old
+
+*crafty-24.0 (12 Sep 2014)
+
+  12 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org> +crafty-24.0.ebuild:
+  version bump
+
+*crafty-23.8 (16 Mar 2014)
+
+  16 Mar 2014; Michael Sterrett <mr_bones_@gentoo.org> +crafty-23.8.ebuild:
+  version bump (bug #501884)
+
+  07 Apr 2013; Alfredo Tupone <tupone@gentoo.org> crafty-23.4.ebuild,
+  +files/crafty-23.4-64bits.patch:
+  Fix bad behaviour on x86. Bug #463164 by Kobboi
+
+  25 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org> crafty-23.4.ebuild:
+  point HOMEPAGE at an actual web page
+
+  25 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org> -crafty-23.3.ebuild:
+  old
+
+  10 Jan 2012; Brent Baude <ranger@gentoo.org> crafty-23.4.ebuild:
+  Marking crafty-23.4 ppc for bug 388503
+
+  02 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> crafty-23.4.ebuild:
+  x86 stable wrt bug #388503
+
+  28 Oct 2011; Tony Vroon <chainsaw@gentoo.org> crafty-23.4.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo & Ian
+  "idella4" Delaney in bug #388503.
+
+*crafty-23.4 (23 Sep 2011)
+
+  23 Sep 2011; Dawid Węgliński <cla@gentoo.org> +crafty-23.4.ebuild:
+  Version bump
+
+  15 Oct 2010; Brent Baude <ranger@gentoo.org> crafty-23.3.ebuild:
+  stable ppc, bug 337538
+
+  06 Oct 2010; Markos Chandras <hwoarang@gentoo.org> crafty-23.3.ebuild:
+  Stable on amd64 wrt bug #337538
+
+  25 Sep 2010; Markus Meier <maekke@gentoo.org> crafty-23.3.ebuild:
+  x86 stable, bug #337538
+
+*crafty-23.3 (16 Aug 2010)
+
+  16 Aug 2010; Michael Sterrett <mr_bones_@gentoo.org> +crafty-23.3.ebuild:
+  version bump
+
+  24 Jun 2010; Pacho Ramos <pacho@gentoo.org> crafty-23.2.ebuild:
+  stable amd64, bug 322627
+
+  16 Jun 2010; Christian Faulhammer <fauli@gentoo.org> crafty-23.2.ebuild:
+  stable x86, bug 322627
+
+  22 May 2010; Pacho Ramos <pacho@gentoo.org> crafty-23.1.ebuild:
+  stable amd64, bug 305903
+
+*crafty-23.2 (08 Apr 2010)
+
+  08 Apr 2010; Michael Sterrett <mr_bones_@gentoo.org> +crafty-23.2.ebuild:
+  version bump
+
+  24 Mar 2010; Brent Baude <ranger@gentoo.org> crafty-23.1.ebuild:
+  stable ppc, bug 305903
+
+  02 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> crafty-23.1.ebuild:
+  x86 stable wrt bug #305903
+
+*crafty-23.1 (19 Jan 2010)
+
+  19 Jan 2010; Michael Sterrett <mr_bones_@gentoo.org> +crafty-23.1.ebuild:
+  version bump (bug #301461)
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> crafty-23.0.ebuild:
+  ppc stable #286430
+
+  27 Sep 2009; Markus Meier <maekke@gentoo.org> crafty-23.0.ebuild:
+  amd64/x86 stable, bug #286430
+
+*crafty-23.0 (11 May 2009)
+
+  11 May 2009; Michael Sterrett <mr_bones_@gentoo.org> +crafty-23.0.ebuild:
+  version bump (bug #269358)
+
+*crafty-22.9 (30 Jan 2009)
+
+  30 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org> -crafty-22.8.ebuild,
+  +crafty-22.9.ebuild:
+  version bump; clean old
+
+  13 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org> crafty-22.8.ebuild:
+  newer gcc uses -pthread (bug #254689)
+
+*crafty-22.8 (03 Jan 2009)
+
+  03 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org> +crafty-22.8.ebuild:
+  version bump; also enable skill command for bug #252883
+
+  25 Jun 2008; nixnut <nixnut@gentoo.org> crafty-22.1.ebuild:
+  Stable on ppc wrt bug 229161
+
+  24 Jun 2008; Christian Faulhammer <opfer@gentoo.org> crafty-22.1.ebuild:
+  stable x86, bug 229161
+
+  24 Jun 2008; Thomas Anderson <gentoofan23@gentoo.org> crafty-22.1.ebuild:
+  amd64 stable, bug #229161
+
+*crafty-22.1 (23 Apr 2008)
+
+  23 Apr 2008; Michael Sterrett <mr_bones_@gentoo.org> +crafty-22.1.ebuild:
+  version bump (bug #218922)
+
+  11 Apr 2008; Chris Gianelloni <wolf31o2@gentoo.org> crafty-20.13.ebuild,
+  -crafty-21.6-r1.ebuild, crafty-22.0.ebuild:
+  Removed icc USE flag use for bug #216511.
+
+*crafty-22.0 (29 Feb 2008)
+
+  29 Feb 2008; Tupone Alfredo <tupone@gentoo.org> +crafty-22.0.ebuild:
+  Version bump to 22.0 Bug #211888 by Thomas Riedel
+
+*crafty-21.6-r1 (26 Dec 2007)
+
+  26 Dec 2007; Tupone Alfredo <tupone@gentoo.org> +crafty-21.6-r1.ebuild:
+  Adding some documentation.
+
+  09 Dec 2007; <atupone@gentoo.org> crafty-21.6.ebuild:
+  Fix problem on x86_64 platform.
+  Bug #195918 by HTS.
+  Bug #201630 by Chris Smith
+
+*crafty-21.6 (07 Dec 2007)
+
+  07 Dec 2007; Tupone Alfredo <tupone@gentoo.org> +crafty-21.6.ebuild:
+  Version bump. Bug #197935 by Christos Gitsis
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> crafty-20.13.ebuild,
+  crafty-20.14.ebuild:
+  Replacing einfo with elog
+
+  07 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org> crafty-20.13.ebuild,
+  crafty-20.14.ebuild:
+  Change all instances of [ to [[.
+
+*crafty-20.14 (02 Oct 2006)
+
+  02 Oct 2006; Tristan Heaven <nyhm@gentoo.org> +crafty-20.14.ebuild:
+  Version bump
+
+*crafty-20.13 (08 Jun 2006)
+
+  08 Jun 2006; Michael Sterrett <mr_bones_@gentoo.org> crafty-20.1.ebuild,
+  crafty-20.11.ebuild, +crafty-20.13.ebuild:
+  version bump (bug #135849)
+
+*crafty-20.11 (02 Jun 2006)
+
+  02 Jun 2006; Michael Sterrett <mr_bones_@gentoo.org> +crafty-20.11.ebuild:
+  version bump (bug #135224)
+
+  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> crafty-19.8.ebuild:
+  Making games last on inherit line.
+
+  12 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> crafty-19.20.ebuild:
+  Stable on ppc.
+
+*crafty-19.20 (25 Aug 2005)
+
+  25 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> +crafty-19.20.ebuild:
+  version bump (bug #103567)
+
+  24 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> -crafty-19.1.ebuild,
+  -crafty-19.12.ebuild, -crafty-19.15.ebuild, -crafty-19.18.ebuild:
+  clean old ebuilds
+
+  24 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> crafty-19.19.ebuild:
+  stable on x86
+
+*crafty-19.19 (31 May 2005)
+
+  31 May 2005; Michael Sterrett <mr_bones_@gentoo.org> +crafty-19.19.ebuild:
+  version bump (bug #94641)
+
+*crafty-19.18 (12 Apr 2005)
+
+  12 Apr 2005; Michael Sterrett <mr_bones_@gentoo.org> +crafty-19.18.ebuild:
+  version bump
+
+*crafty-19.15 (20 Jul 2004)
+
+  20 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> +crafty-19.15.ebuild:
+  version bump
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> crafty-19.1.ebuild,
+  crafty-19.12.ebuild, crafty-19.8.ebuild:
+  virtual/glibc -> virtual/libc
+
+  03 Jun 2004; Aron Griffis <agriffis@gentoo.org> crafty-19.8.ebuild:
+  Fix use invocation
+
+*crafty-19.12 (06 Apr 2004)
+
+  06 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> crafty-19.12.ebuild:
+  version bump
+
+*crafty-19.8 (31 Dec 2003)
+
+  31 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
+  Update to 19.8 and clean up #34789.
+
+*crafty-19.1 (25 Oct 2002)
+
+  13 Dec 2003; Brad House <brad_mssw@gentoo.org> crafty-19.1.ebuild:
+  mark stable on amd64
+
+  25 Oct 2002; Mike Frysinger <vapier@gentoo.org> :
+  Update to 19.1 per #9657.
+
+*crafty-18.15-r2 (13 Feb 2003)
+
+  29 Jun 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*crafty-18.15-r1.ebuild (15 Jul 2002)
+
+  30 Sep 2002; Mike Frysinger <vapier@gentoo.org> crafty-18.15-r2.ebuild :
+  Updated to allow for compile on gcc3.x and i586 optimizations
+
+*crafty-18.15-r1.ebuild (15 Jul 2002)
+
+  07 Aug 2002; Mark Guertin <gerk@gentoo.org> crafty-18.15-r1.ebuild :
+  Added ppc patch to close bug #5932 and ppc to keywords
+
+  15 Jul 2002; J.Alberto S.L. <bass@gentoo.org> crafty-18.15-r1.ebuild :
+  First relase. Ebuild submitted by Frank Eibisch <feibisch@estec.net>.

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>perfinion@gentoo.org</email>
+  </maintainer>
+  <longdescription>A simple library for using the TPM chip to secure SSH keys</longdescription>
+  <upstream>
+    <remote-id type="github">ThomasHabets/simple-tpm-pk11</remote-id>
+  </upstream>
+</pkgmetadata>

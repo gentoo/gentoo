@@ -1,0 +1,48 @@
+# ChangeLog for sci-chemistry/makecif
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/makecif/ChangeLog,v 1.13 2013/02/03 17:56:31 ago Exp $
+
+  03 Feb 2013; Agostino Sarubbo <ago@gentoo.org> makecif-5.6.6-r1.ebuild:
+  Stable for ppc, wrt bug #454310
+
+  19 Oct 2012; Justin Lecher <jlec@gentoo.org> makecif-5.6.6.ebuild,
+  makecif-5.6.6-r1.ebuild:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  21 Nov 2011; Justin Lecher <jlec@gentoo.org> makecif-5.6.6-r1.ebuild:
+  keyworded for ~x86-macos ~x64-macos, tested by Johan Hattne #390123
+
+*makecif-5.6.6-r1 (29 Jun 2011)
+
+  29 Jun 2011; Justin Lecher <jlec@gentoo.org> makecif-5.6.6.ebuild,
+  +makecif-5.6.6-r1.ebuild, metadata.xml:
+  Fix blocking of refmac-5.6, EAPI bump
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> makecif-5.6.6.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> makecif-5.6.6.ebuild:
+  Added fortran-2.eclass support
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> makecif-5.6.6.ebuild:
+  marked ~ppc wrt #303931
+
+  01 Jan 2011; Markos Chandras <hwoarang@gentoo.org> makecif-5.6.6.ebuild:
+  Stable on amd64 wrt bug #349586
+
+  25 Dec 2010; Thomas Kahle <tomka@gentoo.org> makecif-5.6.6.ebuild:
+  x86 stable per bug 349586
+
+  16 Dec 2010; Justin Lecher <jlec@gentoo.org> makecif-5.6.6.ebuild:
+  Added missing toolchain-funcs.eclass
+
+
+  16 Dec 2010; Justin Lecher <jlec@gentoo.org> makecif-5.6.6.ebuild:
+  Removal of fortran.eclass, #348851
+
+*makecif-5.6.6 (15 Jun 2010)
+
+  15 Jun 2010; Justin Lecher <jlec@gentoo.org> +files/5.6.6-makefile.patch,
+  +makecif-5.6.6.ebuild, +metadata.xml:
+  New addition, unbundled from sci-chemistry/refmac

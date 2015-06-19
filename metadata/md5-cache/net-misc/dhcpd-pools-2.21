@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure
+DEPEND=dev-libs/uthash doc? ( app-doc/doxygen )
+DESCRIPTION=ISC dhcpd lease analysis and reporting
+EAPI=5
+HOMEPAGE=http://dhcpd-pools.sf.net
+IUSE=doc
+KEYWORDS=~amd64
+LICENSE=BSD-2
+SLOT=0
+SRC_URI=mirror://sourceforge/dhcpd-pools/dhcpd-pools-2.21.tar.xz
+_md5_=aea699df24d1d26b59ba66d894e4d9c8

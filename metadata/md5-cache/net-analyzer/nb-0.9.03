@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/libedit dev-lang/perl virtual/pkgconfig sys-apps/texinfo
+DESCRIPTION=Nodebrain is a tool to monitor and do event correlation
+EAPI=5
+HOMEPAGE=http://nodebrain.sourceforge.net/
+IUSE=static-libs
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=MIT
+RDEPEND=dev-libs/libedit !sys-boot/netboot !www-apps/nanoblogger
+SLOT=0
+SRC_URI=mirror://sourceforge/nodebrain/nodebrain-0.9.03.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=1bd816776100c2fbd248b5598b0cb10e

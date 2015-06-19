@@ -1,0 +1,156 @@
+# ChangeLog for sys-apps/mawk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/mawk/ChangeLog,v 1.36 2015/03/31 20:24:07 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> mawk-1.3.4_p20131226.ebuild,
+  mawk-1.3.4_p20140914.ebuild, mawk-1.3.4_p20141027.ebuild,
+  mawk-1.3.4_p20141206.ebuild:
+  Update dependency after package move of eselect modules to app-eselect.
+
+*mawk-1.3.4_p20141206 (08 Dec 2014)
+
+  08 Dec 2014; Tim Harder <radhermit@gentoo.org> +mawk-1.3.4_p20141206.ebuild:
+  Version bump.
+
+*mawk-1.3.4_p20141027 (24 Nov 2014)
+
+  24 Nov 2014; Tim Harder <radhermit@gentoo.org> +mawk-1.3.4_p20141027.ebuild:
+  Version bump.
+
+  08 Oct 2014; Tim Harder <radhermit@gentoo.org> -mawk-1.3.4_p20101210.ebuild,
+  -mawk-1.3.4_p20120627.ebuild, -mawk-1.3.4_p20121129.ebuild,
+  -mawk-1.3.4_p20121209.ebuild, -mawk-1.3.4_p20130219.ebuild,
+  -mawk-1.3.4_p20130803.ebuild:
+  Remove old.
+
+*mawk-1.3.4_p20140914 (08 Oct 2014)
+
+  08 Oct 2014; Tim Harder <radhermit@gentoo.org> +mawk-1.3.4_p20140914.ebuild:
+  Version bump.
+
+*mawk-1.3.4_p20131226 (29 Dec 2013)
+
+  29 Dec 2013; Tim Harder <radhermit@gentoo.org> +mawk-1.3.4_p20131226.ebuild:
+  Version bump.
+
+*mawk-1.3.4_p20130803 (05 Aug 2013)
+
+  05 Aug 2013; Tim Harder <radhermit@gentoo.org> +mawk-1.3.4_p20130803.ebuild:
+  Version bump.
+
+*mawk-1.3.4_p20130219 (10 Mar 2013)
+
+  10 Mar 2013; Tim Harder <radhermit@gentoo.org> +mawk-1.3.4_p20130219.ebuild:
+  Version bump.
+
+*mawk-1.3.4_p20121209 (10 Dec 2012)
+
+  10 Dec 2012; Tim Harder <radhermit@gentoo.org> +mawk-1.3.4_p20121209.ebuild:
+  Version bump.
+
+*mawk-1.3.4_p20121129 (30 Nov 2012)
+
+  30 Nov 2012; Tim Harder <radhermit@gentoo.org> +mawk-1.3.4_p20121129.ebuild:
+  Version bump.
+
+  10 Oct 2012; Christoph Junghans <ottxor@gentoo.org>
+  mawk-1.3.4_p20120627.ebuild:
+  add support for virtual/awk (bug #426624)
+
+*mawk-1.3.4_p20120627 (28 Jun 2012)
+
+  28 Jun 2012; Tim Harder <radhermit@gentoo.org> +mawk-1.3.4_p20120627.ebuild:
+  Version bump.
+
+  30 May 2012; Tim Harder <radhermit@gentoo.org> -mawk-1.3.3.ebuild,
+  -mawk-1.3.3_p20090820.ebuild, -mawk-1.3.4_p20100507.ebuild,
+  -mawk-1.3.4_p20100507-r1.ebuild:
+  Remove old.
+
+*mawk-1.3.4_p20101210 (30 May 2012)
+
+  30 May 2012; Tim Harder <radhermit@gentoo.org> +mawk-1.3.4_p20101210.ebuild:
+  Version bump. Update to EAPI 4.
+
+  17 Dec 2011; Raúl Porcel <armin76@gentoo.org> mawk-1.3.4_p20100625.ebuild:
+  alpha/ia64/sparc stable wrt #387875
+
+  24 Oct 2011; Markus Meier <maekke@gentoo.org> mawk-1.3.4_p20100625.ebuild:
+  x86 stable, bug #387875
+
+  23 Oct 2011; nixnut <nixnut@gentoo.org> mawk-1.3.4_p20100625.ebuild:
+  ppc stable #387875
+
+  20 Oct 2011; Markos Chandras <hwoarang@gentoo.org>
+  mawk-1.3.4_p20100625.ebuild:
+  Stable on amd64 wrt bug #387875
+
+  20 Oct 2011; Mike Frysinger <vapier@gentoo.org> mawk-1.3.4_p20100625.ebuild,
+  +files/mawk-1.3.4-cross-compile.patch:
+  Make this package cross-compile.
+
+*mawk-1.3.4_p20100625 (14 Jul 2010)
+
+  14 Jul 2010; Sebastian Pipping <sping@gentoo.org>
+  +mawk-1.3.4_p20100625.ebuild:
+  Bump to 1.3.4_p20100625
+
+  14 Jul 2010; Sebastian Pipping <sping@gentoo.org>
+  mawk-1.3.4_p20100507-r1.ebuild:
+  Install samples to /usr/share/doc/${PF}/examples, not
+  /usr/share/${PN}/examples
+
+  22 Jun 2010; Sebastian Pipping <sping@gentoo.org>
+  mawk-1.3.4_p20100507-r1.ebuild:
+  Add comment as proposed by vapier
+
+*mawk-1.3.4_p20100507-r1 (15 Jun 2010)
+
+  15 Jun 2010; Sebastian Pipping <sping@gentoo.org>
+  +mawk-1.3.4_p20100507-r1.ebuild:
+  Install example scripts, too
+
+*mawk-1.3.4_p20100507 (02 Jun 2010)
+
+  02 Jun 2010; Mike Frysinger <vapier@gentoo.org>
+  +mawk-1.3.4_p20100507.ebuild:
+  Version bump #322501 by Etaoin Shrdlu.
+
+  07 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  mawk-1.3.3_p20090820.ebuild:
+  Transfer Prefix keywords
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> mawk-1.3.3.ebuild:
+  Remove virtual/libc
+
+*mawk-1.3.3_p20090820 (23 Aug 2009)
+
+  23 Aug 2009; Mike Frysinger <vapier@gentoo.org>
+  +mawk-1.3.3_p20090820.ebuild:
+  Version bump #278468 by Etaoin Shrdlu.
+
+  16 May 2009; Diego E. Pettenò <flameeyes@gentoo.org> mawk-1.3.3.ebuild:
+  Add ~x86-fbsd keyword.
+
+  28 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org> mawk-1.3.3.ebuild:
+  Stable on sparc
+
+  31 May 2006; <solar@gentoo.org> mawk-1.3.3.ebuild:
+  - dont use full hardcoded path for the math library. bug 134956
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> mawk-1.3.3.ebuild:
+  Masked mawk-1.3.3.ebuild stable for ppc
+
+  24 Aug 2004; Sven Wegener <swegener@gentoo.org> mawk-1.3.3.ebuild:
+  Don't override MAKEOPTS, pass options directly do emake.
+
+  30 Jun 2004; Aron Griffis <agriffis@gentoo.org> mawk-1.3.3.ebuild:
+  glibc -> libc, update HOMEPAGE
+
+  29 Mar 2004; Jon Portnoy <avenj@gentoo.org> mawk-1.3.3.ebuild :
+  Set MATHLIB to libm.so.6 in the ebuild to fix bug #45636.
+
+*mawk-1.3.3 (08 Jun 2003)
+
+  08 Jun 2003; Brandon Low <lostlogic@gentoo.org> mawk-1.3.3.ebuild:
+  Initial import thanks to bug 20443

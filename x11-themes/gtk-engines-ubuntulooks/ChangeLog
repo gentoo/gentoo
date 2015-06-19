@@ -1,0 +1,70 @@
+# ChangeLog for x11-themes/gtk-engines-ubuntulooks
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-ubuntulooks/ChangeLog,v 1.15 2012/06/03 19:58:12 ssuominen Exp $
+
+  03 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -gtk-engines-ubuntulooks-0.9.12-r2.ebuild:
+  old
+
+  03 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  gtk-engines-ubuntulooks-0.9.12-r3.ebuild,
+  +files/gtk-engines-ubuntulooks-0.9.12-glib-2.31.patch:
+  Fix building with dev-libs/glib >= 2.31 wrt #419395 by Pacho Ramos
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  gtk-engines-ubuntulooks-0.9.12-r2.ebuild,
+  gtk-engines-ubuntulooks-0.9.12-r3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 Mar 2011; Kevin McCarthy <signals@gentoo.org>
+  gtk-engines-ubuntulooks-0.9.12-r2.ebuild:
+  Slotted gtk+ depend and EAPI=2 bump to support it.
+
+  16 Aug 2010; Jonathan Callen <abcd@gentoo.org>
+  gtk-engines-ubuntulooks-0.9.12-r3.ebuild:
+  Transfer prefix keywords, add eautoreconf for Interix
+
+  11 Jul 2009; <chainsaw@gentoo.org>
+  gtk-engines-ubuntulooks-0.9.12-r3.ebuild:
+  Marked stable on AMD64 for bug #277103; tested on a dual Opteron 2354.
+
+  08 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  gtk-engines-ubuntulooks-0.9.12-r3.ebuild:
+  stable x86, bug 277103
+
+*gtk-engines-ubuntulooks-0.9.12-r3 (30 Apr 2009)
+
+  30 Apr 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +gtk-engines-ubuntulooks-0.9.12-r3.ebuild:
+  Bump patchset to version 12 wrt #253358, thanks to Pacho Ramos.
+
+  18 Dec 2008; Samuli Suominen <ssuominen@gentoo.org>
+  gtk-engines-ubuntulooks-0.9.12-r2.ebuild:
+  x86 stable
+
+*gtk-engines-ubuntulooks-0.9.12-r2 (14 May 2008)
+
+  14 May 2008; Samuli Suominen <ssuominen@gentoo.org>
+  +gtk-engines-ubuntulooks-0.9.12-r2.ebuild:
+  Bump patchset to version 11.
+
+  22 Dec 2007; nixnut <nixnut@gentoo.org>
+  gtk-engines-ubuntulooks-0.9.12-r1.ebuild:
+  Added ~ppc wrt bug 195000
+
+  01 Nov 2007; Samuli Suominen <ssuominen@gentoo.org>
+  gtk-engines-ubuntulooks-0.9.12-r1.ebuild:
+  Keyword ~amd64 wrt #194989
+
+*gtk-engines-ubuntulooks-0.9.12-r1 (07 Oct 2007)
+
+  07 Oct 2007; Samuli Suominen <ssuominen@gentoo.org>
+  +gtk-engines-ubuntulooks-0.9.12-r1.ebuild:
+  Bump patchset to version 8.
+
+*gtk-engines-ubuntulooks-0.9.12 (07 Oct 2007)
+
+  07 Oct 2007; Samuli Suominen <ssuominen@gentoo.org>
+  +gtk-engines-ubuntulooks-0.9.12.ebuild:
+  Initial commit for bug 126966.
+

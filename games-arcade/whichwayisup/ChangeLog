@@ -1,0 +1,94 @@
+# ChangeLog for games-arcade/whichwayisup
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/whichwayisup/ChangeLog,v 1.24 2015/02/05 03:58:00 mr_bones_ Exp $
+
+  05 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -whichwayisup-0.7.9.ebuild:
+  old
+
+  28 Jan 2015; Agostino Sarubbo <ago@gentoo.org> whichwayisup-0.7.9-r1.ebuild:
+  Stable for ppc, wrt bug #534250
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> whichwayisup-0.7.9-r1.ebuild:
+  Stable for x86, wrt bug #534250
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org> whichwayisup-0.7.9-r1.ebuild:
+  Stable for amd64, wrt bug #534250
+
+*whichwayisup-0.7.9-r1 (01 Jan 2015)
+
+  01 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +whichwayisup-0.7.9-r1.ebuild:
+  EAPI=5; use python-single-r1
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> whichwayisup-0.7.9.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  13 Apr 2012; Ulrich Müller <ulm@gentoo.org> whichwayisup-0.7.9.ebuild:
+  Move EAPI assignment to top of ebuild, bug 411875.
+
+  25 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  whichwayisup-0.7.9.ebuild:
+  Fix deprecation warnings.
+
+  04 May 2010; Tupone Alfredo <tupone@gentoo.org> whichwayisup-0.7.9.ebuild:
+  Force python2 fixing bug #312235 by arfrever@gentoo.org
+
+  26 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  whichwayisup-0.7.9.ebuild:
+  EAPI=2
+
+  25 Oct 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove coldwind from metadata.xml (#181764)
+
+  22 Jun 2008; Markus Meier <maekke@gentoo.org> whichwayisup-0.7.9.ebuild:
+  x86 stable, bug #227647
+
+  19 Jun 2008; Santiago M. Mola <coldwind@gentoo.org>
+  whichwayisup-0.7.9.ebuild:
+  amd64 stable wrt bug #227647, thanks to Thomas Anderson.
+
+  19 Jun 2008; nixnut <nixnut@gentoo.org> whichwayisup-0.7.9.ebuild:
+  Stable on ppc wrt bug 227647
+
+  29 May 2008; Ali Polatel <hawking@gentoo.org> whichwayisup-0.7.0.ebuild,
+  whichwayisup-0.7.9.ebuild:
+  python_mod_optimize is ROOT aware.
+
+  28 Mar 2008; Tristan Heaven <nyhm@gentoo.org> whichwayisup-0.7.0.ebuild,
+  whichwayisup-0.7.9.ebuild:
+  Fix python eclass usage
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> whichwayisup-0.7.0.ebuild,
+  whichwayisup-0.7.9.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+*whichwayisup-0.7.9 (26 Feb 2008)
+
+  26 Feb 2008; Santiago M. Mola <coldwind@gentoo.org>
+  +whichwayisup-0.7.9.ebuild:
+  Version bump, closes bug #209986
+
+  20 Feb 2008; nixnut <nixnut@gentoo.org> whichwayisup-0.7.0.ebuild:
+  Added ~ppc wrt bug 207910
+
+  07 Feb 2008; Markus Meier <maekke@gentoo.org> whichwayisup-0.7.0.ebuild:
+  x86 stable, bug #209287
+
+  07 Feb 2008; Santiago M. Mola <coldwind@gentoo.org>
+  whichwayisup-0.7.0.ebuild:
+  amd64 stable
+
+  29 Nov 2007; Santiago M. Mola <coldwind@gentoo.org>
+  whichwayisup-0.7.0.ebuild:
+  ~amd64 added.
+
+  13 Aug 2007; Santiago M. Mola <coldwind@gentoo.org>
+  whichwayisup-0.7.0.ebuild:
+  Add CCPL-Attribution-3.0 license and fix inherit order.
+
+*whichwayisup-0.7.0 (13 Aug 2007)
+
+  13 Aug 2007; Santiago M. Mola <coldwind@gentoo.org>
+  +files/whichwayisup-32.xpm, +metadata.xml, +whichwayisup-0.7.0.ebuild:
+  Initial ebuild. Thanks to Denilson.

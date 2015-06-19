@@ -1,0 +1,49 @@
+# ChangeLog for dev-python/mygpoclient
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/mygpoclient/ChangeLog,v 1.11 2015/04/08 08:05:23 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> mygpoclient-1.7-r1.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> mygpoclient-1.7-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> mygpoclient-1.7-r1.ebuild:
+  amd64 stable, bug 540290
+
+  23 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -mygpoclient-1.5.ebuild,
+  -mygpoclient-1.6.ebuild, -mygpoclient-1.7.ebuild:
+  Remove old.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> mygpoclient-1.7-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> mygpoclient-1.7-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*mygpoclient-1.7-r1 (09 Mar 2013)
+
+  09 Mar 2013; Ian Delaney <idella4@gentoo.org> +files/tests.patch,
+  +mygpoclient-1.7-r1.ebuild:
+  revbump
+
+*mygpoclient-1.7 (22 Feb 2013)
+
+  22 Feb 2013; Patrick Lauer <patrick@gentoo.org> +mygpoclient-1.7.ebuild:
+  Bump
+
+*mygpoclient-1.6 (19 Apr 2012)
+
+  19 Apr 2012; Patrick Lauer <patrick@gentoo.org> +mygpoclient-1.6.ebuild:
+  Bump
+
+  22 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  mygpoclient-1.5.ebuild:
+  Require dev-python/simplejson. Disable tests requiring network connection
+  (bug #359775). Don't install tests.
+
+*mygpoclient-1.5 (31 Oct 2010)
+
+  31 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +mygpoclient-1.5.ebuild:
+  Initial commit wrt #285263 by Greg Fitzgerald (and others).

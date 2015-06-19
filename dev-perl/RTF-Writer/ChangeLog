@@ -1,0 +1,39 @@
+# ChangeLog for dev-perl/RTF-Writer
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/RTF-Writer/ChangeLog,v 1.9 2014/08/26 17:32:15 axs Exp $
+
+*RTF-Writer-1.110.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +RTF-Writer-1.110.0-r1.ebuild, -RTF-Writer-1.110.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -RTF-Writer-1.11.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> RTF-Writer-1.110.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*RTF-Writer-1.110.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org> +RTF-Writer-1.110.0.ebuild:
+  Change version scheme
+
+  24 Oct 2010; Torsten Veller <tove@gentoo.org> RTF-Writer-1.11.ebuild:
+  Maintenance. EAPI bump. Drop Test-Harness. Add ~amd64 (#342347)
+
+  02 Aug 2008; Torsten Veller <tove@gentoo.org> RTF-Writer-1.11.ebuild:
+  perl-core/Test-Harness -> virtual/perl-Test-Harness (#211623)
+
+  27 Dec 2007; Andrej Kacian <ticho@gentoo.org> RTF-Writer-1.11.ebuild:
+  Stable on x86.
+
+*RTF-Writer-1.11 (15 Aug 2007)
+
+  15 Aug 2007; Christian Hartmann <ian@gentoo.org> +metadata.xml,
+  +RTF-Writer-1.11.ebuild:
+  New package

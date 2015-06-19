@@ -1,0 +1,360 @@
+# ChangeLog for net-analyzer/nessus-plugins
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nessus-plugins/ChangeLog,v 1.82 2011/09/12 08:04:31 radhermit Exp $
+
+  12 Sep 2011; Tim Harder <radhermit@gentoo.org> -nessus-plugins-2.2.9.ebuild:
+  Remove old.
+
+  12 Sep 2011; Tim Harder <radhermit@gentoo.org>
+  nessus-plugins-2.2.9-r1.ebuild:
+  Add dependency on nessus-libraries (bug #382193).
+
+  20 Apr 2011; Justin Lecher <jlec@gentoo.org> -nessus-plugins-2.3.1.ebuild:
+  Dropped due to pending removal request, #169466
+
+*nessus-plugins-2.2.9-r1 (20 Apr 2011)
+
+  20 Apr 2011; Justin Lecher <jlec@gentoo.org> +files/2.2.9-gentoo.patch,
+  nessus-plugins-2.2.9.ebuild, +nessus-plugins-2.2.9-r1.ebuild:
+  Respect LDFLAGS, #343335
+
+  06 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  -nessus-plugins-2.2.6.ebuild:
+  Revert back to ~arch wrt #330455.
+
+  11 Apr 2007; Peter Weller <welp@gentoo.org> nessus-plugins-2.2.9.ebuild:
+  Keyworded ~x86-fbsd wrt bug 172890
+
+*nessus-plugins-2.2.9 (03 Apr 2007)
+
+  03 Apr 2007; Marcelo Goes <vanquirius@gentoo.org>
+  +nessus-plugins-2.2.9.ebuild:
+  2.2.9 version bump for bug 169466. Thanks to Jared Breland <nitro322 at
+  gmail dot com>.
+
+  26 Mar 2007; Fabian Groffen <grobian@gentoo.org>
+  nessus-plugins-2.3.1.ebuild:
+  Dropped ppc-macos keyword
+
+  01 Feb 2007; Markus Ullmann <jokey@gentoo.org>
+  -nessus-plugins-2.2.7.ebuild, -nessus-plugins-2.2.8.ebuild:
+  cleanup
+
+*nessus-plugins-2.2.8 (01 Jun 2006)
+
+  01 Jun 2006; Markus Ullmann <jokey@gentoo.org>
+  +nessus-plugins-2.2.8.ebuild:
+  Version bump wrt bug #134036
+
+*nessus-plugins-2.2.7 (09 Mar 2006)
+
+  09 Mar 2006; Marcelo Goes <vanquirius@gentoo.org>
+  +nessus-plugins-2.2.7.ebuild:
+  2.2.7 version bump for bug 125519. Thanks to ChazeFroy <chazefroy at gmail
+  dot com>.
+
+  18 Feb 2006; Fabian Groffen <grobian@gentoo.org>
+  nessus-plugins-2.3.1.ebuild:
+  Marked ~ppc-macos (bug #123308)
+
+  12 Feb 2006; Marcelo Goes <vanquirius@gentoo.org>
+  -nessus-plugins-2.2.4.ebuild, -nessus-plugins-2.2.5.ebuild:
+  Remove old ebuilds.
+
+  07 Feb 2006; Simon Stelling <blubb@gentoo.org>
+  nessus-plugins-2.2.6.ebuild:
+  stable on amd64
+
+  24 Dec 2005; Michael Hanselmann <hansmi@gentoo.org>
+  nessus-plugins-2.2.6.ebuild:
+  Stable on ppc.
+
+  20 Dec 2005; Bryan Østergaard <kloeri@gentoo.org
+  nessus-plugins-2.2.6.ebuild:
+  Stable on alpha.
+
+  18 Dec 2005; Markus Rothe <corsair@gentoo.org>
+  nessus-plugins-2.2.6.ebuild:
+  Stable on ppc64
+
+  16 Dec 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  nessus-plugins-2.2.6.ebuild:
+  Stable on sparc
+
+  15 Dec 2005; Marcelo Goes <vanquirius@gentoo.org>
+  nessus-plugins-2.2.6.ebuild:
+  Marking nessus suite 2.2.6 x86 stable.
+
+  04 Dec 2005; Tom Gall <tgall@gentoo.org> 
+  nessus-plugins-2.2.5.ebuild:
+  stable on ppc64
+
+*nessus-plugins-2.2.6 (09 Nov 2005)
+
+  09 Nov 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +nessus-plugins-2.2.6.ebuild:
+  2.2.6 version bump. Fixes bug 111973. Thanks to ChazeFroy <chazefroy at
+  gmail dot com>.
+
+  05 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  nessus-plugins-2.2.5.ebuild:
+  Stable on sparc
+
+  02 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  nessus-plugins-2.2.5.ebuild:
+  Stable on ppc.
+
+  01 Oct 2005; Luis Medinas <metalgod@gentoo.org>
+  nessus-plugins-2.2.5.ebuild:
+  Marked Stable on amd64.
+
+  26 Sep 2005; Marcelo Goes <vanquirius@gentoo.org>
+  nessus-plugins-2.2.5.ebuild:
+  nessus 2.2.5 series x86 stable.
+
+*nessus-plugins-2.2.5 (24 Jul 2005)
+
+  24 Jul 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +nessus-plugins-2.2.5.ebuild:
+  Version bump for bug 100024. Thanks to ChazeFroy <chazefroy@gmail.com>.
+
+  19 Jun 2005; Marcelo Goes <vanquirius@gentoo.org>
+  -nessus-plugins-2.0.12.ebuild, -nessus-plugins-2.2.0.ebuild,
+  -nessus-plugins-2.3.0.ebuild:
+  Remove old ebuilds.
+
+  09 Jun 2005; Olivier Crête <tester@gentoo.org>
+  nessus-plugins-2.2.4.ebuild:
+  Marking stable on amd64
+
+  02 Jun 2005; Joseph Jezak <josejx@gentoo.org> nessus-plugins-2.2.4.ebuild:
+  Marked ppc stable.
+
+  22 May 2005; Bryan Østergaard <kloeri@gentoo.org>
+  nessus-plugins-2.2.4.ebuild:
+  Stable on alpha.
+
+*nessus-plugins-2.3.1 (15 May 2005)
+
+  15 May 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +nessus-plugins-2.3.1.ebuild:
+  Version bump.
+
+  02 May 2005; Jason Wever <weeve@gentoo.org> nessus-plugins-2.2.4.ebuild:
+  Stable on SPARC.
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org>
+  nessus-plugins-2.2.4.ebuild:
+  Stable on ppc64
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  nessus-plugins-2.2.0.ebuild:
+  Stable on ppc.
+
+  24 Apr 2005; Marcelo Goes <vanquirius@gentoo.org>
+  -nessus-plugins-2.2.2a.ebuild, -nessus-plugins-2.2.3.ebuild,
+  nessus-plugins-2.2.4.ebuild:
+  Removing ebuild clutter, marking 2.2.4 x86 stable.
+
+  31 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  nessus-plugins-2.2.0.ebuild:
+  Stable on alpha.
+
+  27 Mar 2005; Jason Wever <weeve@gentoo.org> nessus-plugins-2.2.0.ebuild:
+  Stable on SPARC.
+
+  24 Mar 2005; Marcelo Goes <vanquirius@gentoo.org>
+  nessus-plugins-2.0.12.ebuild, nessus-plugins-2.2.0.ebuild:
+  Marking 2.2.0 x86 stable, cleaning up unnecessary src_compile.
+
+*nessus-plugins-2.2.4 (23 Mar 2005)
+
+  23 Mar 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +nessus-plugins-2.2.4.ebuild:
+  Version bump, bug 86392. Thanks to Omkhar Arasaratnam <omkhar@rogers.com> for
+  reporting.
+
+*nessus-plugins-2.2.3 (26 Feb 2005)
+
+  26 Feb 2005; Daniel Black <dragonheart@gentoo.org>
+  +nessus-plugins-2.2.3.ebuild:
+  Version bump as per bug #81580. Thanks to ChazeFroy <chazefroy@gmail.com> and
+  Omkhar Arasaratnam <omkhar@rogers.com>.
+
+*nessus-plugins-2.2.2a (28 Jan 2005)
+
+  28 Jan 2005; Daniel Black <dragonheart@gentoo.org>
+  nessus-plugins-2.2.0.ebuild, +nessus-plugins-2.2.2a.ebuild,
+  nessus-plugins-2.3.0.ebuild:
+  Add latest stable version. 2.3.0 uses correct CC now. Added missing ppc64
+  keywords
+
+*nessus-plugins-2.3.0 (12 Jan 2005)
+
+  12 Jan 2005; Daniel Black <dragonheart@gentoo.org>
+  +nessus-plugins-2.3.0.ebuild:
+  Version bump as per bug #73780. Thanks to Holger Hoffstätte <holger@wizards.de>
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*nessus-plugins-2.2.0 (28 Oct 2004)
+
+  28 Oct 2004; Eldad Zack <eldad@gentoo.org> -nessus-plugins-2.1.1.ebuild,
+  +nessus-plugins-2.2.0.ebuild:
+  Version bump: new stable series. Removed 2.1.x development series.
+
+  25 Sep 2004; Tom Gall <tgall@gentoo.org> nessus-plugins-2.0.12.ebuild:
+  stable on ppc64, bug #58014
+
+  28 Aug 2004; Eldad Zack <eldad@gentoo.org> nessus-plugins-2.1.1.ebuild:
+  x86 stable
+
+  13 Aug 2004; Bryan Østergaard <kloeri@gentoo.org>
+  nessus-plugins-2.0.12.ebuild:
+  Stable on alpha, bug 58014.
+
+  12 Aug 2004; Eldad Zack <eldad@gentoo.org> nessus-plugins-2.0.10a.ebuild:
+  GLSA 200408-11: masking 2.0.10a for all archs besides alpha until 2.0.12 will
+  be stable on alpha
+
+  12 Aug 2004; Eldad Zack <eldad@gentoo.org> -nessus-plugins-2.0.11.ebuild,
+  nessus-plugins-2.0.12.ebuild, -nessus-plugins-2.0.7.ebuild,
+  -nessus-plugins-2.0.8a.ebuild, -nessus-plugins-2.0.9.ebuild,
+  -nessus-plugins-2.1.0.ebuild:
+  GLSA 200408-11 (Bug #58014) ebuild purging. ppc64 -> ~ppc64, and moved to
+  2.0.12. wrt bug #57456.
+
+  12 Aug 2004; <SeJo@gentoo.org> nessus-plugins-2.0.12.ebuild:
+  stable masking ppc for bug 58014
+
+  01 Aug 2004; Tom Gall <tgall@gentoo.org> nessus-plugins-2.0.11.ebuild:
+  stable on ppc64,bug #57456
+
+*nessus-plugins-2.1.1 (24 Jul 2004)
+
+  24 Jul 2004; Eldad Zack <eldad@gentoo.org> +nessus-plugins-2.1.1.ebuild:
+  Version bump
+
+  23 Jul 2004; Jason Wever <weeve@gentoo.org> nessus-plugins-2.0.12.ebuild:
+  Stable on sparc wrt security bug #58014.
+
+*nessus-plugins-2.0.12 (23 Jul 2004)
+
+  23 Jul 2004; Eldad Zack <eldad@gentoo.org> +nessus-plugins-2.0.12.ebuild:
+  Version bump - Security update (x86 stable). Bug 58014.
+
+*nessus-plugins-2.0.11 (21 Jul 2004)
+
+  21 Jul 2004; Eldad Zack <eldad@gentoo.org> +nessus-plugins-2.0.11.ebuild:
+  Version bump
+
+  19 Jul 2004; Jason Wever <weeve@gentoo.org> nessus-plugins-2.0.10a.ebuild:
+  Stable on sparc.
+
+*nessus-plugins-2.1.0 (16 Jul 2004)
+
+  16 Jul 2004; Eldad Zack <eldad@gentoo.org> +nessus-plugins-2.1.0.ebuild:
+  Added development series 2.1.0 (hard-masked). Closes #56436
+
+  13 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
+  nessus-plugins-2.0.10a.ebuild:
+  marked x86 stable
+
+  05 Jun 2004; Bryan Østergaard <kloeri@gentoo.org>
+  nessus-plugins-2.0.10a.ebuild:
+  Stable on alpha.
+
+*nessus-plugins-2.0.10a (09 Feb 2004)
+
+  09 Feb 2004; Patrick Kursawe <phosphan@gentoo.org>
+  nessus-plugins-2.0.10a.ebuild:
+  Version bump
+
+*nessus-plugins-2.0.9 (19 Nov 2003)
+
+  19 Nov 2003; Patrick Kursawe <phosphan@gentoo.org>
+  nessus-plugins-2.0.6a.ebuild, nessus-plugins-2.0.9.ebuild:
+  Version bump
+
+*nessus-plugins-2.0.8a (13 Oct 2003)
+
+  13 Oct 2003; Patrick Kursawe <phosphan@gentoo.org>
+  nessus-plugins-2.0.8a.ebuild:
+  Version bump
+
+  15 Sep 2003; Jason Wever <weeve@gentoo.org> nessus-plugins-2.0.7.ebuild:
+  Added ~sparc keyword.
+
+  02 Sep 2003; Patrick Kursawe <phosphan@gentoo.org>
+  nessus-plugins-2.0.7.ebuild:
+  Changing DEPEND from = to >= because of bug 27544
+
+  05 Aug 2003; Patrick Kursawe <phosphan@gentoo.org>
+  nessus-plugins-2.0.6a.ebuild:
+  Corrected dependency (bug 25874)
+
+*nessus-plugins-2.0.7 (10 Jul 2003)
+
+  10 Jul 2003; Patrick Kursawe <phosphan@gentoo.org>
+  nessus-plugins-2.0.7.ebuild:
+  Version bump
+
+*nessus-plugins-2.0.6a (23 May 2003)
+
+  23 May 2003; Patrick Kursawe <phosphan@gentoo.org>
+  nessus-plugins-2.0.6a.ebuild:
+  Version bump, should fix bug 21529
+
+*nessus-plugins-2.0.5 (13 May 2003)
+
+  13 May 2003; Patrick Kursawe <phosphan@gentoo.org>
+  nessus-plugins-2.0.5.ebuild:
+  Version bump, bug #20901.
+
+*nessus-plugins-2.0.4 (23 Apr 2003)
+
+  23 Apr 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump. Found in #18978.
+
+*nessus-plugins-2.0.0 (25 Feb 2003)
+
+  25 Feb 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump. Ebuild submitted by Blu3 <david+gentoo.org@blue-labs.org> in #16310.
+
+*nessus-plugins-1.2.7 (04 Jan 2003)
+
+  12 Jan 2003; Nick Hadaway <raker@gentoo.org> nessus-plugins-1.2.7.ebuild :
+  doc install fix.  Marked stable for x86.
+
+  04 Jan 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump. Found by Raskasi <raskasi@gmx.net>.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*nessus-plugins-1.2.6 (05 Nov 2002)
+
+  15 Dec 2002; Bjoern Brauel <bjb@gentoo.org> nessus-plugins-1.2.6.ebuild :
+  Add ~alpha to KEYWORDS
+
+  05 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
+
+*nessus-plugins-1.2.4 (22 Aug 2002)
+
+  15 Dec 2002; Bjoern Brauel <bjb@gentoo.org> nessus-plugins-1.2.4.ebuild :
+  Add alpha to KEYWORDS
+
+  22 Aug 2002; Nick Hadaway <raker@gentoo.org>
+  nessus-plugins-1.2.4.ebuild, files/digest-nessus-plugins-1.2.4 :
+  Version bump.
+
+*nessus-plugins-1.2.3 (26 Jul 2002)
+
+  26 Jul 2002; Nick Hadaway <raker@gentoo.org>
+  nessus-plugins-1.2.3.ebuild, files/digest-nessus-plugins-1.2.3 :
+
+  Split out the "nessus" ebuild to the individual nessues components
+  to allow pieces to build and install properly.  "nessus" is still
+  an installable ebuild, it just pulls in the individual components.
+  nessus-plugins is the third of those components.

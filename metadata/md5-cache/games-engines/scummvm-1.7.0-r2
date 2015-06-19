@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=>=media-libs/libsdl-1.2.2[sound,joystick,video] zlib? ( sys-libs/zlib ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0 ) vorbis? ( media-libs/libogg media-libs/libvorbis ) theora? ( media-libs/libtheora ) aac? ( media-libs/faad2 ) alsa? ( media-libs/alsa-lib ) mp3? ( media-libs/libmad ) mpeg2? ( media-libs/libmpeg2 ) flac? ( media-libs/flac ) opengl? ( virtual/opengl ) truetype? ( media-libs/freetype:2 ) fluidsynth? ( media-sound/fluidsynth ) x86? ( dev-lang/nasm ) >=sys-apps/sed-4
+DESCRIPTION=Reimplementation of the SCUMM game engine used in Lucasarts adventures
+EAPI=5
+HOMEPAGE=http://scummvm.sourceforge.net/
+IUSE=aac alsa debug flac fluidsynth jpeg mpeg2 mp3 opengl png theora truetype unsupported vorbis zlib
+KEYWORDS=amd64 ppc ppc64 x86 ~x86-fbsd
+LICENSE=GPL-2 LGPL-2.1 BSD GPL-3-with-font-exception
+RDEPEND=>=media-libs/libsdl-1.2.2[sound,joystick,video] zlib? ( sys-libs/zlib ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0 ) vorbis? ( media-libs/libogg media-libs/libvorbis ) theora? ( media-libs/libtheora ) aac? ( media-libs/faad2 ) alsa? ( media-libs/alsa-lib ) mp3? ( media-libs/libmad ) mpeg2? ( media-libs/libmpeg2 ) flac? ( media-libs/flac ) opengl? ( virtual/opengl ) truetype? ( media-libs/freetype:2 ) fluidsynth? ( media-sound/fluidsynth ) games-misc/games-envd
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/scummvm/scummvm-1.7.0.tar.bz2
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=8288dfcc0d0cc5b50f34c2e56dfab124

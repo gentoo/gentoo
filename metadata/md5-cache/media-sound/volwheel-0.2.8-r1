@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm preinst prepare
+DEPEND=dev-lang/perl >=sys-apps/sed-4
+DESCRIPTION=A volume control trayicon with mouse wheel support
+EAPI=5
+HOMEPAGE=http://oliwer.net/b/volwheel.html
+IUSE=alsa
+KEYWORDS=amd64 ~mips x86
+LICENSE=GPL-3
+RDEPEND=dev-lang/perl dev-perl/gtk2-perl alsa? ( media-sound/alsa-utils )
+SLOT=0
+SRC_URI=http://olwtools.googlecode.com/files/volwheel-0.2.8.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=db03ad9c736fd7f54c4e6cafc82e715b

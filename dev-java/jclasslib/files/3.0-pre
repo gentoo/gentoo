@@ -1,0 +1,1 @@
+[[ ${BROWSER} ]] && gjl_java_args="${gjl_java_args} -Dgentoo.browser=${BROWSER}"

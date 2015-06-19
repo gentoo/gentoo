@@ -1,0 +1,17 @@
+# ChangeLog for net-misc/pycnb
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/pycnb/ChangeLog,v 1.4 2015/06/04 10:47:55 jlec Exp $
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pycnb-0.0.4.ebuild:
+  Drop old Python implementations
+
+  06 Dec 2013; Jan Matejka <yac@gentoo.org> pycnb-0.0.4.ebuild:
+  stable
+
+*pycnb-0.0.4 (10 May 2013)
+
+  10 May 2013; Jan Matejka <yac@gentoo.org> +metadata.xml, +pycnb-0.0.4.ebuild:
+  New ebuild for net-misc/pycnb

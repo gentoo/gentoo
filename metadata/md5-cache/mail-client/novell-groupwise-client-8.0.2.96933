@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install nofetch unpack
+DEPEND=>=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=Novell Groupwise Client for Linux
+EAPI=5
+HOMEPAGE=http://www.novell.com/products/groupwise/
+KEYWORDS=~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=sys-libs/libstdc++-v3 >=x11-libs/libX11-1.6.2[abi_x86_32(-)] >=x11-libs/libXau-1.0.8[abi_x86_32(-)] >=x11-libs/libXcursor-1.1.14[abi_x86_32(-)] >=x11-libs/libXdmcp-1.1.1-r1[abi_x86_32(-)] >=x11-libs/libXext-1.3.3[abi_x86_32(-)] >=x11-libs/libXfixes-5.0.1[abi_x86_32(-)] >=x11-libs/libXi-1.7.4[abi_x86_32(-)] >=x11-libs/libXrender-0.9.8[abi_x86_32(-)] >=x11-libs/libXtst-1.2.2[abi_x86_32(-)] >=x11-libs/libxcb-1.11-r1[abi_x86_32(-)] x11-libs/motif:2.2[abi_x86_32(-)] >=media-libs/alsa-lib-1.0.28[abi_x86_32(-)] >=media-libs/freetype-2.5.5[abi_x86_32(-)]
+RESTRICT=binchecks fetch mirror strip
+SLOT=0
+SRC_URI=gw802_hp3_client_linux_multi.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	rpm	b94b54b44f14d6bee3e966c8f5c86fba	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=3735b6f999aee3ccf2b3cb4eb6e56189

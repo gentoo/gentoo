@@ -1,0 +1,11 @@
+--- mkimage/imagetool-uncompressed.py
++++ mkimage/imagetool-uncompressed.py
+@@ -46,7 +47,7 @@
+ f = open(args.bootimage, "wb")
+ 
+ for m in mem:
+-   f.write(chr(m))
++   f.write(chr(m).encode('latin1'))
+ 
+ f.write(kernel_image)
+ f.close()

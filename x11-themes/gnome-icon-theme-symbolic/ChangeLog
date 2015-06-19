@@ -1,0 +1,260 @@
+# ChangeLog for x11-themes/gnome-icon-theme-symbolic
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gnome-icon-theme-symbolic/ChangeLog,v 1.55 2014/07/23 15:39:02 ago Exp $
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-symbolic-3.12.0.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-symbolic-3.12.0.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  16 Jun 2014; Anthony G. Basile <blueness@gentoo.org>
+  gnome-icon-theme-symbolic-3.10.1.ebuild,
+  gnome-icon-theme-symbolic-3.12.0.ebuild:
+  Keyword ~mips
+
+*gnome-icon-theme-symbolic-3.12.0 (27 Apr 2014)
+
+  27 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-icon-theme-symbolic-3.12.0.ebuild:
+  Version bump for Gnome 3.12.
+
+  27 Apr 2014; Pacho Ramos <pacho@gentoo.org>
+  gnome-icon-theme-symbolic-3.10.1.ebuild:
+  gnome-base/librsvg will be needed by apps using this icons, bug #508210 by
+  Sebastian
+
+  27 Apr 2014; Pacho Ramos <pacho@gentoo.org>
+  -gnome-icon-theme-symbolic-3.6.2.ebuild,
+  -gnome-icon-theme-symbolic-3.8.3.ebuild:
+  drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org>
+  gnome-icon-theme-symbolic-3.10.1.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org>
+  gnome-icon-theme-symbolic-3.10.1.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org>
+  gnome-icon-theme-symbolic-3.10.1.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org>
+  gnome-icon-theme-symbolic-3.10.1.ebuild:
+  arch stable, bug 888
+
+*gnome-icon-theme-symbolic-3.10.1 (24 Dec 2013)
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org>
+  +gnome-icon-theme-symbolic-3.10.1.ebuild,
+  -gnome-icon-theme-symbolic-3.8.2.2.ebuild:
+  Version bump for Gnome 3.10
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org>
+  gnome-icon-theme-symbolic-3.8.3.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org>
+  gnome-icon-theme-symbolic-3.8.3.ebuild:
+  amd64 stable, bug #478252
+
+  16 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  gnome-icon-theme-symbolic-3.8.3.ebuild:
+  keyword ~amd64-fbsd
+
+*gnome-icon-theme-symbolic-3.8.3 (18 Jun 2013)
+
+  18 Jun 2013; Pacho Ramos <pacho@gentoo.org>
+  +gnome-icon-theme-symbolic-3.8.3.ebuild,
+  -gnome-icon-theme-symbolic-3.8.2.1.ebuild:
+  Version bump, drop old.
+
+*gnome-icon-theme-symbolic-3.8.2.2 (14 May 2013)
+
+  14 May 2013; Pacho Ramos <pacho@gentoo.org>
+  +gnome-icon-theme-symbolic-3.8.2.2.ebuild,
+  -gnome-icon-theme-symbolic-3.8.0.1.ebuild:
+  Version bump, drop old
+
+*gnome-icon-theme-symbolic-3.8.2.1 (13 May 2013)
+
+  13 May 2013; Pacho Ramos <pacho@gentoo.org>
+  +gnome-icon-theme-symbolic-3.8.2.1.ebuild,
+  -gnome-icon-theme-symbolic-3.4.0.ebuild:
+  Version bump, drop old
+
+  09 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-symbolic-3.6.2.ebuild:
+  Stable for sh, wrt bug #458984
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-symbolic-3.6.2.ebuild:
+  Stable for sparc, wrt bug #458984
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-symbolic-3.6.2.ebuild:
+  Stable for alpha, wrt bug #458984
+
+  29 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-symbolic-3.6.2.ebuild:
+  Stable for ia64, wrt bug #458984
+
+*gnome-icon-theme-symbolic-3.8.0.1 (28 Mar 2013)
+
+  28 Mar 2013; Pacho Ramos <pacho@gentoo.org>
+  +gnome-icon-theme-symbolic-3.8.0.1.ebuild:
+  Version bump for Gnome 3.8
+
+  28 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-symbolic-3.6.2.ebuild:
+  Stable for arm, wrt bug #458984
+
+  27 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-symbolic-3.6.2.ebuild:
+  Stable for ppc64, wrt bug #458984
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-symbolic-3.6.2.ebuild:
+  Stable for ppc, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-symbolic-3.6.2.ebuild:
+  Stable for x86, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-symbolic-3.6.2.ebuild:
+  Stable for amd64, wrt bug #458984
+
+  25 Feb 2013; Zac Medico <zmedico@gentoo.org>
+  gnome-icon-theme-symbolic-3.6.2.ebuild:
+  Add ~arm-linux keyword.
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org>
+  gnome-icon-theme-symbolic-3.4.0.ebuild,
+  gnome-icon-theme-symbolic-3.6.2.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+*gnome-icon-theme-symbolic-3.6.2 (16 Dec 2012)
+
+  16 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-icon-theme-symbolic-3.0.0.ebuild,
+  -gnome-icon-theme-symbolic-3.2.2.ebuild,
+  +gnome-icon-theme-symbolic-3.6.2.ebuild:
+  Version bump for Gnome 3.6. Drop old revision.
+
+  28 Oct 2012; Raúl Porcel <armin76@gentoo.org>
+  gnome-icon-theme-symbolic-3.4.0.ebuild:
+  ia64/sh/sparc stable wrt #427544
+
+  16 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  gnome-icon-theme-symbolic-3.4.0.ebuild:
+  stable ppc, bug #427544
+
+  14 Oct 2012; Matt Turner <mattst88@gentoo.org>
+  gnome-icon-theme-symbolic-3.4.0.ebuild:
+  Stable on alpha, bug 427544.
+
+  14 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  gnome-icon-theme-symbolic-3.4.0.ebuild:
+  stable ppc64, bug #427544
+
+  06 Oct 2012; Markus Meier <maekke@gentoo.org>
+  gnome-icon-theme-symbolic-3.4.0.ebuild:
+  arm stable, bug #427544
+
+  04 Oct 2012; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-symbolic-3.4.0.ebuild:
+  Stable for amd64, wrt bug #427544
+
+  03 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gnome-icon-theme-symbolic-3.4.0.ebuild:
+  x86 stable wrt bug #427544
+
+  20 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  gnome-icon-theme-symbolic-3.2.2.ebuild:
+  ppc stable wrt #407643
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  gnome-icon-theme-symbolic-3.0.0.ebuild,
+  gnome-icon-theme-symbolic-3.2.2.ebuild,
+  gnome-icon-theme-symbolic-3.4.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*gnome-icon-theme-symbolic-3.4.0 (02 Apr 2012)
+
+  02 Apr 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -gnome-icon-theme-symbolic-3.2.1.ebuild,
+  +gnome-icon-theme-symbolic-3.4.0.ebuild:
+  Version bump, drop old. Fixes edit-select-all-symbolic.svg (bug #410483,
+  thanks to Maxim Kammerer for reporting) and several other incorrectly
+  generated icons.
+
+  01 Apr 2012; Raúl Porcel <armin76@gentoo.org>
+  gnome-icon-theme-symbolic-3.2.2.ebuild:
+  alpha/ia64/sh/sparc stable wrt #407643
+
+  25 Mar 2012; Markus Meier <maekke@gentoo.org>
+  gnome-icon-theme-symbolic-3.2.2.ebuild:
+  arm stable, bug #407643
+
+  16 Mar 2012; Jeff Horelick <jdhore@gentoo.org>
+  gnome-icon-theme-symbolic-3.2.2.ebuild:
+  marked x86 per bug 407643
+
+  13 Mar 2012; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-symbolic-3.2.2.ebuild:
+  Stable for amd64, wrt bug #407643
+
+  12 Mar 2012; Brent Baude <ranger@gentoo.org>
+  gnome-icon-theme-symbolic-3.2.2.ebuild:
+  Marking gnome-icon-theme-symbolic-3.2.2 ppc64 stable for bug 407643
+
+*gnome-icon-theme-symbolic-3.2.2 (15 Jan 2012)
+
+  15 Jan 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +gnome-icon-theme-symbolic-3.2.2.ebuild:
+  Bump, adds some more icons, fixes rendering issues.
+
+  30 Oct 2011; Raúl Porcel <armin76@gentoo.org>
+  gnome-icon-theme-symbolic-3.2.1.ebuild:
+  alpha/ia64/sh/sparc stable wrt #385699
+
+*gnome-icon-theme-symbolic-3.2.1 (30 Oct 2011)
+
+  30 Oct 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +gnome-icon-theme-symbolic-3.2.1.ebuild:
+  Bump to 3.2.1 from the gnome overlay.
+
+  28 Oct 2011; Markus Meier <maekke@gentoo.org>
+  gnome-icon-theme-symbolic-3.0.0.ebuild:
+  arm stable, bug #385699
+
+  21 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gnome-icon-theme-symbolic-3.0.0.ebuild:
+  x86 stable wrt bug #385699
+
+  16 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  gnome-icon-theme-symbolic-3.0.0.ebuild:
+  ppc/ppc64 stable wrt #385699
+
+  14 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gnome-icon-theme-symbolic-3.0.0.ebuild:
+  amd64 stable wrt #385699
+
+  15 Aug 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  gnome-icon-theme-symbolic-3.0.0.ebuild:
+  Add missing keywords, ebuild does not install any binaries
+
+  23 Jul 2011; Pacho Ramos <pacho@gentoo.org>
+  gnome-icon-theme-symbolic-3.0.0.ebuild:
+  Fix DESCRIPTION, bug #376039 by Alexandre Rostovtsev.
+
+*gnome-icon-theme-symbolic-3.0.0 (02 Jun 2011)
+
+  02 Jun 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +gnome-icon-theme-symbolic-3.0.0.ebuild, +metadata.xml:
+  Move ebuild from GNOME overlay

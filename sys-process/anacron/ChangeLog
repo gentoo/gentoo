@@ -1,0 +1,78 @@
+# ChangeLog for sys-process/anacron
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/anacron/ChangeLog,v 1.11 2012/11/16 08:25:22 ulm Exp $
+
+  16 Nov 2012; Ulrich Müller <ulm@gentoo.org> anacron-2.3-r2.ebuild:
+  Update LICENSE, GPL-2+ according to notice in source files, bug 441830.
+
+  12 Jun 2011; Markus Meier <maekke@gentoo.org> anacron-2.3-r2.ebuild:
+  add ~arm, bug #370209
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> anacron-2.3-r2.ebuild:
+  Remove virtual/libc
+
+  12 May 2009; Thilo Bangert <bangert@gentoo.org> files/anacrontab:
+  disable run-parts by default - warn about double execution
+  bug #235174
+
+  12 Oct 2008; Thilo Bangert <bangert@gentoo.org> anacron-2.3-r2.ebuild:
+  add dep on cronbase (fixing bug #241426) - fix quoting
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  01 Oct 2005; Aaron Walker <ka0ttic@gentoo.org> anacron-2.3-r2.ebuild:
+  /var/spool/anacron should be keepdir'd, bug #107756; also use newinitd
+  instead of newexe.
+
+*anacron-2.3-r2 (14 Jul 2005)
+
+  14 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> files/anacrontab,
+  -anacron-2.3-r1.ebuild, +anacron-2.3-r2.ebuild:
+  Revert previous --lsbsysinit changes as they did not fix the issue. See bugs
+  96730 and 95173.
+
+*anacron-2.3-r1 (22 Jun 2005)
+
+  22 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> files/anacrontab,
+  -anacron-2.3.ebuild, +anacron-2.3-r1.ebuild:
+  Revision bump; make sure run-parts is invoked with --lsbsysinit option, bug
+  96730.
+
+*anacron-2.3 (03 Mar 2005)
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +files/anacron-2.3-compile-fix-from-debian.patch, +files/anacron.rc6,
+  +files/anacrontab, +anacron-2.3.ebuild:
+  Moved from sys-apps/anacron to sys-process/anacron.
+
+  10 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> anacron-2.3.ebuild:
+  Added in a message with a link to the Cron Guide, bug #77320
+
+  08 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> files/anacron.rc6:
+  Init script should use rather than depend on logger.
+
+  08 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> metadata.xml:
+  Updated metadata info.
+
+  24 Aug 2004; Sven Wegener <swegener@gentoo.org> anacron-2.3.ebuild:
+  Changed SRC_URI to use mirror:// syntax.
+
+  14 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> anacron-2.3.ebuild:
+  inherit eutils for epatch; IUSE; tidy
+
+  03 Jun 2004; Seemant Kulleen <seemant@gentoo.org>
+  +files/anacron-2.3-compile-fix-from-debian.patch, anacron-2.3.ebuild:
+  Add the compilation fix from debian (available at:
+  http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=240043). This should close
+  bug #49029 by Meder Bakirov <bakirov@transfer.kg>. The fix was found by: Jan
+  Falkenhagen <meinspam@onlinehome.de>. Not version bumping, since this was a
+  non-working ebuild anyway, and now it works.
+
+*anacron-2.3 (03 Aug 2002)
+
+  15 Feb 2003; Mark Guertin <gerk@gentoo.org> anacron-2.3.ebuild :
+  set ppc in keywords
+
+  03 Aug 2002; Daniel Ahlberg <aliz@gentoo.org> anacron-2.3.ebuild : 
+  Initial import. Ebuild submitted by Jim Liedeka <jliedeka@tds.net>.

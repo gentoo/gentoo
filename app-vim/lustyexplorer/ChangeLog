@@ -1,0 +1,19 @@
+# ChangeLog for app-vim/lustyexplorer
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/lustyexplorer/ChangeLog,v 1.3 2012/12/22 08:17:37 ulm Exp $
+
+  22 Dec 2012; Ulrich Müller <ulm@gentoo.org> lustyexplorer-4.1.ebuild,
+  lustyexplorer-4.3.ebuild:
+  Fix LICENSE, bug 448064.
+
+*lustyexplorer-4.3 (06 Aug 2012)
+
+  06 Aug 2012; Tim Harder <radhermit@gentoo.org> +lustyexplorer-4.3.ebuild:
+  Version bump.
+
+*lustyexplorer-4.1 (20 May 2011)
+
+  20 May 2011; Tim Harder <radhermit@gentoo.org> +lustyexplorer-4.1.ebuild,
+  +metadata.xml:
+  Initial import.
+

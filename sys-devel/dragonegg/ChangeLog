@@ -1,0 +1,119 @@
+# ChangeLog for sys-devel/dragonegg
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/dragonegg/ChangeLog,v 1.23 2015/02/27 21:54:21 voyageur Exp $
+
+*dragonegg-3.6.0 (27 Feb 2015)
+
+  27 Feb 2015; Bernard Cafarelli <voyageur@gentoo.org> +dragonegg-3.6.0.ebuild:
+  Version bump
+
+  18 Feb 2015; Bernard Cafarelli <voyageur@gentoo.org> -dragonegg-3.5.0.ebuild,
+  dragonegg-3.5.1.ebuild, dragonegg-9999.ebuild:
+  Check the active gcc version (4.9 does not work), thanks everyone in bug
+  #511640
+
+*dragonegg-3.5.1 (21 Jan 2015)
+
+  21 Jan 2015; Bernard Cafarelli <voyageur@gentoo.org> +dragonegg-3.5.1.ebuild:
+  Version bump
+
+*dragonegg-3.5.0 (17 Sep 2014)
+
+  17 Sep 2014; Bernard Cafarelli <voyageur@gentoo.org> -dragonegg-3.3.ebuild,
+  -dragonegg-3.4.ebuild, +dragonegg-3.5.0.ebuild, dragonegg-9999.ebuild,
+  -files/dragonegg-gcc-4.8.patch:
+  Version bump to 3.5.0, remove older versions as this one officially supports
+  gcc 4.8 and tests pass. Also drop dep on lto USE flag that was removed in gcc
+
+  25 Jun 2014; Bernard Cafarelli <voyageur@gentoo.org> -dragonegg-3.0.ebuild,
+  -dragonegg-3.1.ebuild, -dragonegg-3.2.ebuild, dragonegg-3.3.ebuild,
+  dragonegg-3.4.ebuild, +files/dragonegg-gcc-4.8.patch:
+  Fix compilation with gcc 4.8, bug #514992 by patrick
+
+  11 May 2014; Bernard Cafarelli <voyageur@gentoo.org> dragonegg-3.4.ebuild:
+  Relax dependency on llvm for 3.4.1
+
+  17 Apr 2014; Christoph Junghans <ottxor@gentoo.org> dragonegg-9999.ebuild:
+  switch to git (bug #506692)
+
+*dragonegg-3.4 (06 Jan 2014)
+
+  06 Jan 2014; Bernard Cafarelli <voyageur@gentoo.org> +dragonegg-3.4.ebuild:
+  Version bump
+
+*dragonegg-3.3 (18 Jun 2013)
+
+  18 Jun 2013; Bernard Cafarelli <voyageur@gentoo.org>
+  -dragonegg-3.3_rc3.ebuild, +dragonegg-3.3.ebuild:
+  Bump to final version, remove release candidate
+
+*dragonegg-3.3_rc3 (10 Jun 2013)
+
+  10 Jun 2013; Bernard Cafarelli <voyageur@gentoo.org>
+  +dragonegg-3.3_rc3.ebuild, dragonegg-9999.ebuild:
+  3.3_rc bump, fix live ebuild test call
+
+  03 Apr 2013; Bernard Cafarelli <voyageur@gentoo.org> dragonegg-9999.ebuild:
+  Fix test check in src_unpack, spotted in bug #464350
+
+*dragonegg-3.2 (21 Dec 2012)
+
+  21 Dec 2012; Bernard Cafarelli <voyageur@gentoo.org>
+  -dragonegg-3.2_rc3.ebuild, +dragonegg-3.2.ebuild:
+  Bump to final version, remove release candidate
+
+*dragonegg-3.2_rc3 (07 Dec 2012)
+
+  07 Dec 2012; Bernard Cafarelli <voyageur@gentoo.org>
+  -dragonegg-3.2_rc2.ebuild, +dragonegg-3.2_rc3.ebuild:
+  RC bump, set C locale for tests to correctly get 'gcc -v' output
+
+*dragonegg-3.2_rc2 (03 Dec 2012)
+
+  03 Dec 2012; Bernard Cafarelli <voyageur@gentoo.org>
+  +dragonegg-3.2_rc2.ebuild, dragonegg-9999.ebuild:
+  Release candidate bump, sync changes in live ebuild
+
+  04 Jul 2012; Michael Sterrett <mr_bones_@gentoo.org> dragonegg-3.1.ebuild:
+  add missing test to IUSE
+
+  03 Jul 2012; Bernard Cafarelli <voyageur@gentoo.org> dragonegg-3.1.ebuild,
+  dragonegg-9999.ebuild:
+  Tests require lit from llvm. Note that at the moment, test suites are
+  external, so running tests will not produce many results. Bug #423511
+
+*dragonegg-3.1 (24 May 2012)
+
+  24 May 2012; Kacper Kowalik <xarthisius@gentoo.org> +dragonegg-3.1.ebuild:
+  Version bump, acked by voyageur. Update SRC_URI, add toolchain-funcs.eclass
+  for tc-get*
+
+  27 Jan 2012; Christoph Junghans <ottxor@gentoo.org> dragonegg-3.0.ebuild:
+  keyword ~amd64-linux
+
+*dragonegg-9999 (02 Dec 2011)
+
+  02 Dec 2011; Bernard Cafarelli <voyageur@gentoo.org> +dragonegg-9999.ebuild:
+  Add live ebuild for dragonegg
+
+*dragonegg-3.0 (02 Dec 2011)
+
+  02 Dec 2011; Bernard Cafarelli <voyageur@gentoo.org>
+  -dragonegg-3.0_rc4.ebuild, +dragonegg-3.0.ebuild:
+  Final release bump, remove rc
+
+  30 Nov 2011; Bernard Cafarelli <voyageur@gentoo.org>
+  dragonegg-3.0_rc4.ebuild:
+  gcc-4.6 has lto by default (and no USE flag), thanks alexxy, bug #392483
+
+*dragonegg-3.0_rc4 (28 Nov 2011)
+
+  28 Nov 2011; Bernard Cafarelli <voyageur@gentoo.org>
+  -dragonegg-3.0_rc3.ebuild, +dragonegg-3.0_rc4.ebuild:
+  Final rc bump
+
+*dragonegg-3.0_rc3 (10 Nov 2011)
+
+  10 Nov 2011; Bernard Cafarelli <voyageur@gentoo.org>
+  +dragonegg-3.0_rc3.ebuild, +metadata.xml:
+  Initial commit

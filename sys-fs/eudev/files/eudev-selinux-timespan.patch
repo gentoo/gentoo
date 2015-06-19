@@ -1,0 +1,27 @@
+commit 3cc37a5e294048a52fa3c2aa2c1ed89b0cd07169
+Author: Ian Stakenvicius <axs@gentoo.org>
+Date:   Thu Aug 8 11:09:30 2013 -0400
+
+    Fixed compile error when --enable-selinux
+    
+    FORMAT_TIMESPAN_MAX is used in src/udev/label.c in selinux-related
+    code, but this was not defined as it is located in a shared header
+    in systemd.  Added the define to label.h.  Didn't bother to track
+    down what commit added (or removed) this code (define)
+    
+    Signed-off-by: Ian Stakenvicius <axs@gentoo.org>
+
+diff --git a/src/udev/label.h b/src/udev/label.h
+index 3d12ac2..507fd2c 100644
+--- a/src/udev/label.h
++++ b/src/udev/label.h
+@@ -25,6 +25,9 @@
+ #include <stdbool.h>
+ #include <sys/socket.h>
+ 
++/* from systemd src/shared/time-util.h */
++#define FORMAT_TIMESPAN_MAX 64
++
+ int label_init(const char *prefix);
+ void label_finish(void);
+ 

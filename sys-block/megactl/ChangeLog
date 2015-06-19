@@ -1,0 +1,28 @@
+# ChangeLog for sys-block/megactl
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/megactl/ChangeLog,v 1.7 2014/07/15 16:42:16 robbat2 Exp $
+
+*megactl-0.4.1-r2 (15 Jul 2014)
+
+  15 Jul 2014; Robin H. Johnson <robbat2@gentoo.org>
+  +files/megactl-0.4.1-gcc-fixes.patch, +files/megactl-0.4.1-tracefix.patch,
+  +megactl-0.4.1-r2.ebuild:
+  Cleanups to run better.
+
+*megactl-0.4.1-r1 (21 Nov 2009)
+
+  21 Nov 2009; Wolfram Schlich <wschlich@gentoo.org>
+  +files/megactl-0.4.1-Makefile.patch, +megactl-0.4.1-r1.ebuild:
+  fix bug #218606
+
+  28 May 2008; Markus Meier <maekke@gentoo.org> megactl-0.4.1.ebuild:
+  add ~amd64, bug #218606
+
+  13 Feb 2008; Wolfram Schlich <wschlich@gentoo.org> megactl-0.4.1.ebuild:
+  extend DESCRIPTION
+
+*megactl-0.4.1 (10 Feb 2008)
+
+  10 Feb 2008; Wolfram Schlich <wschlich@gentoo.org>
+  +files/megactl-0.4.1.patch, +metadata.xml, +megactl-0.4.1.ebuild:
+  initial import

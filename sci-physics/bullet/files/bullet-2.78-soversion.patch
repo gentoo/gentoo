@@ -1,0 +1,44 @@
+ Extras/Serialize/BulletFileLoader/CMakeLists.txt   |    2 ++
+ .../Serialize/BulletWorldImporter/CMakeLists.txt   |    2 ++
+ Extras/glui/CMakeLists.txt                         |    2 ++
+ 3 files changed, 6 insertions(+), 0 deletions(-)
+
+diff --git a/Extras/Serialize/BulletFileLoader/CMakeLists.txt b/Extras/Serialize/BulletFileLoader/CMakeLists.txt
+index 486cfdc..f1e0884 100644
+--- a/Extras/Serialize/BulletFileLoader/CMakeLists.txt
++++ b/Extras/Serialize/BulletFileLoader/CMakeLists.txt
+@@ -16,6 +16,8 @@ btBulletFile.cpp
+ btBulletFile.h 
+ )
+ 
++SET_TARGET_PROPERTIES(BulletFileLoader PROPERTIES VERSION ${BULLET_VERSION})
++SET_TARGET_PROPERTIES(BulletFileLoader PROPERTIES SOVERSION ${BULLET_VERSION})
+ IF (BUILD_SHARED_LIBS)
+         TARGET_LINK_LIBRARIES(BulletFileLoader LinearMath)
+ ENDIF (BUILD_SHARED_LIBS)
+diff --git a/Extras/Serialize/BulletWorldImporter/CMakeLists.txt b/Extras/Serialize/BulletWorldImporter/CMakeLists.txt
+index e620315..e04e8e9 100644
+--- a/Extras/Serialize/BulletWorldImporter/CMakeLists.txt
++++ b/Extras/Serialize/BulletWorldImporter/CMakeLists.txt
+@@ -9,6 +9,8 @@ btBulletWorldImporter.cpp
+ btBulletWorldImporter.h 
+ )
+ 
++SET_TARGET_PROPERTIES(BulletWorldImporter PROPERTIES VERSION ${BULLET_VERSION})
++SET_TARGET_PROPERTIES(BulletWorldImporter PROPERTIES SOVERSION ${BULLET_VERSION})
+ IF (BUILD_SHARED_LIBS)
+         TARGET_LINK_LIBRARIES(BulletWorldImporter BulletDynamics BulletCollision BulletFileLoader LinearMath)
+ ENDIF (BUILD_SHARED_LIBS)
+diff --git a/Extras/glui/CMakeLists.txt b/Extras/glui/CMakeLists.txt
+index c2018a7..9a8d90f 100644
+--- a/Extras/glui/CMakeLists.txt
++++ b/Extras/glui/CMakeLists.txt
+@@ -61,6 +61,8 @@ arcball.cpp			glui_button.cpp			glui_filebrowser.cpp		glui_node.cpp			glui_separ
+ 	
+ )
+ 
++SET_TARGET_PROPERTIES(GLUI PROPERTIES VERSION ${BULLET_VERSION})
++SET_TARGET_PROPERTIES(GLUI PROPERTIES SOVERSION ${BULLET_VERSION})
+ IF (BUILD_SHARED_LIBS)
+   TARGET_LINK_LIBRARIES(GLUI ${GLUT_glut_LIBRARY} ${OPENGL_gl_LIBRARY} ${OPENGL_glu_LIBRARY})
+ ENDIF (BUILD_SHARED_LIBS)

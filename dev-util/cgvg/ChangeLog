@@ -1,0 +1,16 @@
+# ChangeLog for dev-util/cgvg
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cgvg/ChangeLog,v 1.3 2010/10/19 05:20:15 leio Exp $
+
+  19 Oct 2010; Mart Raudsepp <leio@gentoo.org> cgvg-1.6.2.ebuild:
+  Drop to ~mips
+
+  11 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  fix herd
+
+*cgvg-1.6.2 (26 Nov 2006)
+
+  26 Nov 2006; Greg Kroah-Hartman <gregkh@gentoo.org> +metadata.xml,
+  +cgvg-1.6.2.ebuild:
+  initial version of the ebuild
+

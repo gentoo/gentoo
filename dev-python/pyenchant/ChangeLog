@@ -1,0 +1,205 @@
+# ChangeLog for dev-python/pyenchant
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyenchant/ChangeLog,v 1.55 2015/02/01 21:28:21 mrueg Exp $
+
+  01 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -pyenchant-1.6.5-r1.ebuild,
+  -pyenchant-1.6.5.ebuild:
+  Remove old.
+
+  02 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pyenchant-1.6.6.ebuild:
+  Stable for sparc, wrt bug #530302
+
+  26 Dec 2014; Agostino Sarubbo <ago@gentoo.org> pyenchant-1.6.6.ebuild:
+  Stable for x86, wrt bug #530302
+
+  09 Dec 2014; Jeroen Roovers <jer@gentoo.org> pyenchant-1.6.6.ebuild:
+  Stable for HPPA (bug #530302).
+
+  08 Dec 2014; Agostino Sarubbo <ago@gentoo.org> pyenchant-1.6.6.ebuild:
+  Stable for ppc64, wrt bug #530302
+
+  07 Dec 2014; Agostino Sarubbo <ago@gentoo.org> pyenchant-1.6.6.ebuild:
+  Stable for ppc, wrt bug #530302
+
+  04 Dec 2014; Agostino Sarubbo <ago@gentoo.org> pyenchant-1.6.6.ebuild:
+  Stable for amd64, wrt bug #530302
+
+  29 Nov 2014; Ian Delaney <idella4@gentoo.org> pyenchant-1.6.6.ebuild:
+  clean old python impl
+
+*pyenchant-1.6.6 (30 Jun 2014)
+
+  30 Jun 2014; Ian Delaney <idella4@gentoo.org> +pyenchant-1.6.6.ebuild:
+  bump; drop py2.6 add py3.3 py3.4 pypy
+
+  06 Jul 2013; Mike Gilbert <floppym@gentoo.org> +files/pyenchant-setup.patch,
+  pyenchant-1.6.5-r1.ebuild, pyenchant-1.6.5.ebuild:
+  Prevent distribute bootstrap. Resolves error with setuptools-0.7, bug 475290.
+
+*pyenchant-1.6.5-r1 (29 Jun 2013)
+
+  29 Jun 2013; Justin Lecher <jlec@gentoo.org> pyenchant-1.6.5.ebuild,
+  +pyenchant-1.6.5-r1.ebuild, metadata.xml:
+  Bump to distutils-r1.eclass
+
+  13 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pyenchant-1.6.2.ebuild, -pyenchant-1.6.3.ebuild, -pyenchant-1.6.4.ebuild:
+  Delete.
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org> pyenchant-1.6.5.ebuild:
+  sparc stable wrt #352775
+
+  08 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  pyenchant-1.6.5.ebuild:
+  ppc/ppc64 stable wrt #352725
+
+  26 Jan 2011; Markos Chandras <hwoarang@gentoo.org> pyenchant-1.6.5.ebuild:
+  Stable on amd64 wrt bug #352725
+
+  26 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  pyenchant-1.6.5.ebuild:
+  x86 stable wrt bug #352725
+
+  25 Jan 2011; Jeroen Roovers <jer@gentoo.org> pyenchant-1.6.5.ebuild:
+  Stable for HPPA (bug #352725).
+
+  06 Jan 2011; Brent Baude <ranger@gentoo.org> pyenchant-1.6.3.ebuild:
+  Marking pyenchant-1.6.3 ppc for bug 341623
+
+  27 Dec 2010; Brent Baude <ranger@gentoo.org> pyenchant-1.6.3.ebuild:
+  Marking pyenchant-1.6.3 ppc64 for bug 341623
+
+*pyenchant-1.6.5 (18 Dec 2010)
+
+  18 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pyenchant-1.6.5.ebuild:
+  Version bump. Fixed tests with Python 3.2 (bug #338309).
+
+*pyenchant-1.6.4 (13 Dec 2010)
+
+  13 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pyenchant-1.5.3.ebuild, -pyenchant-1.6.1.ebuild, +pyenchant-1.6.4.ebuild:
+  Version bump.
+
+  31 Oct 2010; Raúl Porcel <armin76@gentoo.org> pyenchant-1.6.3.ebuild:
+  sparc stable wrt #341623
+
+  22 Oct 2010; Jeroen Roovers <jer@gentoo.org> pyenchant-1.6.3.ebuild:
+  Stable for HPPA (bug #341623).
+
+  20 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  pyenchant-1.6.3.ebuild:
+  x86 stable wrt bug #341623
+
+  19 Oct 2010; Markos Chandras <hwoarang@gentoo.org> pyenchant-1.6.3.ebuild:
+  Stable on amd64 wrt bug #341623
+
+  26 Sep 2010; Raúl Porcel <armin76@gentoo.org> pyenchant-1.6.2.ebuild:
+  sparc stable wrt #323093
+
+*pyenchant-1.6.3 (21 Sep 2010)
+
+  21 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pyenchant-1.6.3.ebuild:
+  Version bump.
+
+  18 Jul 2010; <nixnut@gentoo.org> pyenchant-1.6.2.ebuild:
+  ppc stable #323093
+
+  14 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  pyenchant-1.6.2.ebuild:
+  stable x86, bug 323093
+
+  06 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  pyenchant-1.6.2.ebuild:
+  ppc64 stable wrt 323093
+
+  10 Jun 2010; Jeroen Roovers <jer@gentoo.org> pyenchant-1.6.2.ebuild:
+  Stable for HPPA (bug #323093).
+
+  08 Jun 2010; Markos Chandras <hwoarang@gentoo.org> pyenchant-1.6.2.ebuild:
+  Stable on amd64 wrt bug #323093
+
+*pyenchant-1.6.2 (29 May 2010)
+
+  29 May 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pyenchant-1.6.0.ebuild, +pyenchant-1.6.2.ebuild:
+  Version bump.
+
+  09 May 2010; Raúl Porcel <armin76@gentoo.org> pyenchant-1.6.1.ebuild:
+  sparc stable wrt #313771
+
+  22 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  pyenchant-1.6.1.ebuild:
+  stable x86, bug 313771
+
+  16 Apr 2010; Brent Baude <ranger@gentoo.org> pyenchant-1.6.1.ebuild:
+  Marking pyenchant-1.6.1 ~ppc64 for bug 300741
+
+  08 Apr 2010; Jeroen Roovers <jer@gentoo.org> pyenchant-1.5.3.ebuild:
+  Stable for HPPA (bug #308201).
+
+*pyenchant-1.6.1 (07 Mar 2010)
+
+  07 Mar 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pyenchant-1.6.1.ebuild:
+  Version bump.
+
+*pyenchant-1.6.0 (04 Mar 2010)
+
+  04 Mar 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pyenchant-1.1.5.ebuild, +pyenchant-1.6.0.ebuild:
+  Version bump.
+
+  13 Jan 2010; Jeroen Roovers <jer@gentoo.org> pyenchant-1.5.3.ebuild:
+  Marked ~hppa (bug #300741).
+
+  11 Nov 2009; Tiago Cunha <tcunha@gentoo.org> pyenchant-1.5.3.ebuild:
+  stable sparc, bug 291519
+
+  08 Nov 2009; nixnut <nixnut@gentoo.org> pyenchant-1.5.3.ebuild:
+  ppc stable #291519
+
+  04 Nov 2009; Markus Meier <maekke@gentoo.org> pyenchant-1.5.3.ebuild:
+  amd64/x86 stable, bug #291519
+
+  02 Nov 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pyenchant-1.5.3.ebuild:
+  Set SUPPORT_PYTHON_ABIS. Restrict tests (bug #261908).
+
+*pyenchant-1.5.3 (06 Jun 2009)
+
+  06 Jun 2009; Peter Volkov <pva@gentoo.org> +pyenchant-1.5.3.ebuild:
+  Version bump, required for qbzr.
+
+  03 Jun 2009; Ferris McCormick <fmccor@gentoo.org> pyenchant-1.1.5.ebuild:
+  Sparc stable, needed for Bug #266452.
+
+  31 May 2009; nixnut <nixnut@gentoo.org> pyenchant-1.1.5.ebuild:
+  ppc stable #266452
+
+  19 Mar 2009; Joseph Jezak <josejx@gentoo.org> pyenchant-1.1.5.ebuild:
+  Marked ~ppc.
+
+  09 Mar 2009; Ferris McCormick <fmccor@gentoo.org> pyenchant-1.1.5.ebuild:
+  Add ~sparc for testing, required by Bug #261672.
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Marien Zwart (marienz, #107204) from metadata.xml.
+
+  30 Mar 2007; Peter Weller <welp@gentoo.org> pyenchant-1.1.5.ebuild:
+  Stable on amd64 wrt bug 172740
+
+  30 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  pyenchant-1.1.5.ebuild:
+  stable x86, bug 172740
+
+  22 Nov 2006; Piotr Jaroszyński <peper@gentoo.org> pyenchant-1.1.5.ebuild:
+  Add ~amd64 wrt bug #136008.
+
+*pyenchant-1.1.5 (07 Jun 2006)
+
+  07 Jun 2006; Marien Zwart <marienz@gentoo.org> +metadata.xml,
+  +pyenchant-1.1.5.ebuild:
+  New package, based on an ebuild from Ryan Kelly (ryan-gentoo@rfk.id.au).
+  Closes bug #85959.

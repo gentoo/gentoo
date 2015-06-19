@@ -1,0 +1,48 @@
+diff -Naur ipv6calc-0.96.0.orig/ipv6calc/Makefile.in ipv6calc-0.96.0/ipv6calc/Makefile.in
+--- ipv6calc-0.96.0.orig/ipv6calc/Makefile.in	2014-02-03 01:45:20.000000000 -0500
++++ ipv6calc-0.96.0/ipv6calc/Makefile.in	2014-02-19 09:36:48.504688355 -0500
+@@ -16,7 +16,7 @@
+ 
+ INCLUDES= @MD5_INCLUDE@ @GETOPT_INCLUDE@ @IP2LOCATION_INCLUDE@ @GEOIP_INCLUDE@ -I../ -I../lib/ -I../databases/lib/
+ 
+-LIBS = @IP2LOCATION_LIB@ @GEOIP_LIB@ @DYNLOAD_LIB@ @IPV6CALC_LIB@
++LIBS = @IPV6CALC_LIB@ @IP2LOCATION_LIB@ @GEOIP_LIB@ @DYNLOAD_LIB@
+ 
+ GETOBJS = @LIBOBJS@
+ 
+diff -Naur ipv6calc-0.96.0.orig/ipv6loganon/Makefile.in ipv6calc-0.96.0/ipv6loganon/Makefile.in
+--- ipv6calc-0.96.0.orig/ipv6loganon/Makefile.in	2014-02-02 14:33:21.000000000 -0500
++++ ipv6calc-0.96.0/ipv6loganon/Makefile.in	2014-02-19 09:37:01.211687339 -0500
+@@ -18,7 +18,7 @@
+ 
+ INCLUDES= $(COPTS) @MD5_INCLUDE@ @GETOPT_INCLUDE@ @IP2LOCATION_INCLUDE@ @GEOIP_INCLUDE@ -I../ -I../lib/
+ 
+-LIBS = @IP2LOCATION_LIB@ @GEOIP_LIB@ @DYNLOAD_LIB@ @IPV6CALC_LIB@
++LIBS = @IPV6CALC_LIB@ @IP2LOCATION_LIB@ @GEOIP_LIB@ @DYNLOAD_LIB@
+ 
+ GETOBJS = @LIBOBJS@
+ 
+diff -Naur ipv6calc-0.96.0.orig/ipv6logconv/Makefile.in ipv6calc-0.96.0/ipv6logconv/Makefile.in
+--- ipv6calc-0.96.0.orig/ipv6logconv/Makefile.in	2014-02-02 14:33:21.000000000 -0500
++++ ipv6calc-0.96.0/ipv6logconv/Makefile.in	2014-02-19 09:36:32.225689657 -0500
+@@ -18,7 +18,7 @@
+ 
+ INCLUDES= @MD5_INCLUDE@ @GETOPT_INCLUDE@ @IP2LOCATION_INCLUDE@ @GEOIP_INCLUDE@ -I../ -I../lib/ -I../databases/lib/
+ 
+-LIBS = @IP2LOCATION_LIB@ @GEOIP_LIB@ @DYNLOAD_LIB@ @IPV6CALC_LIB@
++LIBS = @IPV6CALC_LIB@ @IP2LOCATION_LIB@ @GEOIP_LIB@ @DYNLOAD_LIB@
+ 
+ GETOBJS = @LIBOBJS@
+ 
+diff -Naur ipv6calc-0.96.0.orig/ipv6logstats/Makefile.in ipv6calc-0.96.0/ipv6logstats/Makefile.in
+--- ipv6calc-0.96.0.orig/ipv6logstats/Makefile.in	2014-02-02 14:33:21.000000000 -0500
++++ ipv6calc-0.96.0/ipv6logstats/Makefile.in	2014-02-19 09:37:15.840686169 -0500
+@@ -18,7 +18,7 @@
+ 
+ INCLUDES= $(COPTS) @MD5_INCLUDE@ @GETOPT_INCLUDE@ @IP2LOCATION_INCLUDE@ @GEOIP_INCLUDE@ -I../ -I../lib/ -I../databases/lib/
+ 
+-LIBS = @IP2LOCATION_LIB@ @GEOIP_LIB@ @DYNLOAD_LIB@ @IPV6CALC_LIB@
++LIBS = @IPV6CALC_LIB@ @IP2LOCATION_LIB@ @GEOIP_LIB@ @DYNLOAD_LIB@
+ 
+ GETOBJS = @LIBOBJS@
+ 

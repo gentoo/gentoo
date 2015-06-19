@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=>=media-video/vdr-1.2.0 >=dev-perl/DateManip-5.42a-r1 >=virtual/perl-IO-Compress-1.22 >=dev-perl/Archive-Zip-1.14 >=dev-perl/Text-Iconv-1.4 >=dev-perl/libwww-perl-5.69-r2 >=dev-perl/HTML-Parser-3.34-r1 >=dev-perl/HTML-Scrubber-0.08 >=dev-perl/HTML-TableContentParser-0.13 >=dev-perl/XML-Simple-DTDReader-0.03 >=media-gfx/imagemagick-6.2.2.3 dev-perl/DateManip dev-perl/XML-Simple-DTDReader
+DESCRIPTION=load the program guide from tvmovie and others to vdr
+HOMEPAGE=http://steckrue.be/tvm2vdr/
+KEYWORDS=x86
+LICENSE=GPL-2
+RDEPEND=>=media-video/vdr-1.2.0 >=dev-perl/DateManip-5.42a-r1 >=virtual/perl-IO-Compress-1.22 >=dev-perl/Archive-Zip-1.14 >=dev-perl/Text-Iconv-1.4 >=dev-perl/libwww-perl-5.69-r2 >=dev-perl/HTML-Parser-3.34-r1 >=dev-perl/HTML-Scrubber-0.08 >=dev-perl/HTML-TableContentParser-0.13 >=dev-perl/XML-Simple-DTDReader-0.03 >=media-gfx/imagemagick-6.2.2.3 dev-perl/DateManip dev-perl/XML-Simple-DTDReader
+SLOT=0
+SRC_URI=http://steckrue.be/download/tvmovie2vdr-0.5.13.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=fa06f41e6a08779cd0b09284e5b3ae93

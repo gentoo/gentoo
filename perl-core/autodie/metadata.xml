@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>perl</herd>
+	<upstream>
+        <remote-id type="cpan">autodie</remote-id>
+        <remote-id type="cpan-module">Fatal</remote-id>
+        <remote-id type="cpan-module">autodie</remote-id>
+        <remote-id type="cpan-module">autodie::Scope::Guard</remote-id>
+        <remote-id type="cpan-module">autodie::exception</remote-id>
+        <remote-id type="cpan-module">autodie::exception::system</remote-id>
+        <remote-id type="cpan-module">autodie::hints</remote-id>
+        <remote-id type="cpan-module">autodie::skip</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare pretend setup
+DEPEND=>=dev-lang/perl-5.10 virtual/perl-Digest-SHA =net-firewall/shorewall-core-4.5.21.9 virtual/pkgconfig
+DESCRIPTION=The Shoreline Firewall, commonly known as Shorewall, is a high-level tool for configuring Netfilter
+EAPI=5
+HOMEPAGE=http://www.shorewall.net/
+IUSE=doc
+KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/perl-5.10 virtual/perl-Digest-SHA =net-firewall/shorewall-core-4.5.21.9 >=net-firewall/iptables-1.4.20 >=sys-apps/iproute2-3.8.0[-minimal] >=sys-devel/bc-1.06.95
+SLOT=0
+SRC_URI=http://www1.shorewall.net/pub/shorewall/4.5/shorewall-4.5.21/shorewall-4.5.21.9.tar.bz2 doc? ( http://www1.shorewall.net/pub/shorewall/4.5/shorewall-4.5.21/shorewall-docs-html-4.5.21.9.tar.bz2 )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	prefix	21058c21ca48453d771df15500873ede	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=0514ec90a679620e655d1cee82c2da5f

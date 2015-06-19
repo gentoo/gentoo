@@ -1,0 +1,23 @@
+--- drbd-8.0.0/scripts/adjust_drbd_config_h.sh.orig	2007-02-05 01:20:58.000000000 +0100
++++ drbd-8.0.0/scripts/adjust_drbd_config_h.sh	2007-02-05 01:21:28.000000000 +0100
+@@ -26,19 +26,7 @@
+ pushd $KDIR
+ 
+ KDIR=${KDIR%/}
+-if test -z "$O"; then
+-	## just in case...
+-	## detect if $KDIR points to something which is actually $O ...
+-	X=$( make help | sed -ne '/ -C .* O=.* help$/p' | tr -s ' ' )
+-	if [[ -n $X ]]; then
+-		KDIR=${X##* -C }; KDIR=${KDIR%% *}; KDIR=$(cd $KDIR && pwd)
+-		O=${X##* O=}; O=${O%% *}; O=$(cd $KDIR && cd $O && pwd)
+-	else
+-		O=$KDIR;
+-	fi
+-else
+-	O=${O%/}
+-fi
++O=$KDIR;
+ 
+ # some paranoia: check that all files are where we expect them
+ ls > /dev/null \

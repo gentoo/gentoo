@@ -1,0 +1,15 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+start() {
+	ebegin "Starting RStudio Server"
+	start-stop-daemon --start --quiet --exec /usr/bin/rserver
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping RStudio Server"
+	start-stop-daemon --stop --quiet --retry=TERM/30/KILL/5 --name /usr/bin/rserver
+	eend $?
+}

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst setup
+DEPEND==net-libs/nghttp2-0.7* ssl? ( www-servers/apache[alpn] ) =www-servers/apache-2.4*
+DESCRIPTION=HTTP/2 module for Apache
+EAPI=5
+HOMEPAGE=https://github.com/icing/mod_h2
+IUSE=ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND==net-libs/nghttp2-0.7* ssl? ( www-servers/apache[alpn] ) || ( www-servers/apache[apache2_mpms_worker] www-servers/apache[apache2_mpms_event] www-servers/apache[threads,-apache2_mpms_prefork,-apache2_mpms_peruser] ) =www-servers/apache-2.4*
+SLOT=0
+SRC_URI=https://github.com/icing/mod_h2/releases/download/v0.6.6/mod_h2-0.6.6.tar.gz
+_eclasses_=apache-module	5c4c90da2d68c2dc8391666824f1293c	depend.apache	1a38534d3f755d1ab1d92ce120bd7dbd	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=fda740bf6cb3bee841d0d92bc67c5a11

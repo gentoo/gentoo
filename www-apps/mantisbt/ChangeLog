@@ -1,0 +1,583 @@
+# ChangeLog for www-apps/mantisbt
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/mantisbt/ChangeLog,v 1.128 2013/12/26 19:31:33 zlogene Exp $
+
+  26 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> -mantisbt-1.2.15.ebuild:
+  Drop old wrt bug #489050
+
+  06 Dec 2013; Agostino Sarubbo <ago@gentoo.org> mantisbt-1.2.15-r1.ebuild:
+  Stable for x86, wrt bug #489050
+
+  06 Dec 2013; Agostino Sarubbo <ago@gentoo.org> mantisbt-1.2.15-r1.ebuild:
+  Stable for amd64, wrt bug #489050
+
+*mantisbt-1.2.15-r1 (03 Dec 2013)
+
+  03 Dec 2013; Chris Reffett <creffett@gentoo.org>
+  +files/mantisbt-1.2.15-cve20134460.patch, +mantisbt-1.2.15-r1.ebuild:
+  Security bump wrt bug 489050
+
+  21 May 2013; Patrick Lauer <patrick@gentoo.org> -mantisbt-1.2.11.ebuild,
+  -mantisbt-1.2.12.ebuild, -mantisbt-1.2.8.ebuild:
+  Prune old versions with ezc dependencies
+
+  19 May 2013; Agostino Sarubbo <ago@gentoo.org> mantisbt-1.2.15.ebuild:
+  Stable for x86, wrt bug #443106
+
+  19 May 2013; Agostino Sarubbo <ago@gentoo.org> mantisbt-1.2.15.ebuild:
+  Stable for amd64, wrt bug #443106
+
+*mantisbt-1.2.15 (11 May 2013)
+
+  11 May 2013; Peter Volkov <pva@gentoo.org> +mantisbt-1.2.15.ebuild,
+  metadata.xml:
+  Version bump. Drop use of system ezc libraries, bug #432230 wrt Ole Markus
+  With. Fixes number of security issues reported in bug #443106.
+
+*mantisbt-1.2.12 (06 Mar 2013)
+
+  06 Mar 2013; Patrick Lauer <patrick@gentoo.org> +mantisbt-1.2.12.ebuild:
+  Bump for #443106
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #96436
+
+  08 Oct 2012; Andreas Schuerch <nativemad@gentoo.org> mantisbt-1.2.11.ebuild:
+  x86 stable, see bug 420375
+
+  28 Sep 2012; Agostino Sarubbo <ago@gentoo.org> mantisbt-1.2.11.ebuild:
+  Stable for amd64, wrt bug #420375
+
+*mantisbt-1.2.11 (31 Jul 2012)
+
+  31 Jul 2012; Patrick Lauer <patrick@gentoo.org> +mantisbt-1.2.11.ebuild:
+  Bump
+
+  14 Dec 2011; Matti Bickel <mabi@gentoo.org> mantisbt-1.2.8.ebuild:
+  Merging categories dev-php5 and dev-php (bug #324665)
+
+  08 Oct 2011; Peter Volkov <pva@gentoo.org> -mantisbt-1.2.7-r1.ebuild,
+  -files/mantisbt-1.2.7-file-inclusion.patch:
+  Drop vulnerable version, bug #386153, thank GLSAMaker/CVETool Bot for report.
+
+  12 Sep 2011; Markus Meier <maekke@gentoo.org> mantisbt-1.2.8.ebuild:
+  amd64/x86 stable, bug #381785
+
+*mantisbt-1.2.8 (07 Sep 2011)
+
+  07 Sep 2011; Peter Volkov <pva@gentoo.org> +mantisbt-1.2.8.ebuild:
+  Version bump, fixes security issues reported in bug #381785 by Tim Sammut.
+  Thank David Hicks for upstream updates on this issue.
+
+  04 Sep 2011; Peter Volkov <pva@gentoo.org> -mantisbt-1.2.4.ebuild,
+  -mantisbt-1.2.5.ebuild, -mantisbt-1.2.6.ebuild, -mantisbt-1.2.7.ebuild,
+  metadata.xml:
+  Drop vulnerable versions. Update David's email in metadata.xml
+
+  04 Sep 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  mantisbt-1.2.7-r1.ebuild:
+  x86 stable wrt security bug #381417
+
+  02 Sep 2011; Tony Vroon <chainsaw@gentoo.org> mantisbt-1.2.7-r1.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in security bug #381417 filed by David Hicks.
+
+*mantisbt-1.2.7-r1 (01 Sep 2011)
+
+  01 Sep 2011; Peter Volkov <pva@gentoo.org> +mantisbt-1.2.7-r1.ebuild,
+  +files/mantisbt-1.2.7-file-inclusion.patch:
+  Add patch to address local file inclusion/path traversal, bug 381417 wrt
+  David Hicks.
+
+  26 Aug 2011; Tony Vroon <chainsaw@gentoo.org> mantisbt-1.2.7.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo in
+  security bug #379739 filed by David Hicks.
+
+  26 Aug 2011; Thomas Kahle <tomka@gentoo.org> mantisbt-1.2.7.ebuild:
+  x86 stable per bug 379739
+
+  25 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> mantisbt-1.2.4.ebuild,
+  mantisbt-1.2.5.ebuild, mantisbt-1.2.6.ebuild, mantisbt-1.2.7.ebuild:
+  drop ppc keywords wrt #379739
+
+*mantisbt-1.2.7 (25 Aug 2011)
+
+  25 Aug 2011; Peter Volkov <pva@gentoo.org> +mantisbt-1.2.7.ebuild:
+  Version bump, fixes security issue, bug #379739 thank David Hicks for report.
+
+*mantisbt-1.2.6 (27 Jul 2011)
+
+  27 Jul 2011; Peter Volkov <pva@gentoo.org> +mantisbt-1.2.6.ebuild:
+  Version bump.
+
+*mantisbt-1.2.5 (06 Apr 2011)
+
+  06 Apr 2011; Peter Volkov <pva@gentoo.org> -mantisbt-1.2.3.ebuild,
+  +mantisbt-1.2.5.ebuild:
+  Version bump. Drop old.
+
+  11 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> mantisbt-1.2.4.ebuild:
+  ppc stable wrt #348761
+
+  20 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  mantisbt-1.2.4.ebuild:
+  x86 stable wrt bug #348761
+
+  20 Dec 2010; Markos Chandras <hwoarang@gentoo.org> mantisbt-1.2.4.ebuild:
+  Stable on amd64 wrt bug #348761
+
+*mantisbt-1.2.4 (19 Dec 2010)
+
+  19 Dec 2010; Peter Volkov <pva@gentoo.org> -mantisbt-1.1.8.ebuild,
+  -mantisbt-1.2.2.ebuild, +mantisbt-1.2.4.ebuild:
+  Version bump, fixes security vulnerability reported in bug #348761, thank
+  David Hicks for report. Drop old, vulnerable versions.
+
+  08 Oct 2010; Brent Baude <ranger@gentoo.org> mantisbt-1.2.3.ebuild:
+  Marking mantisbt-1.2.3 ppc for bug 335850
+
+  18 Sep 2010; Markos Chandras <hwoarang@gentoo.org> mantisbt-1.2.3.ebuild:
+  Stable on amd64 wrt bug #335850
+
+  15 Sep 2010; Christian Faulhammer <fauli@gentoo.org>
+  mantisbt-1.2.3.ebuild:
+  stable x86, security bug 335850
+
+*mantisbt-1.2.3 (15 Sep 2010)
+
+  15 Sep 2010; Peter Volkov <pva@gentoo.org> +mantisbt-1.2.3.ebuild:
+  Version bump, fixes security bug #335850, thank Tim Sammut fr report and
+  David Hicks for keeping bug up to date.
+
+  11 Aug 2010; Joseph Jezak <josejx@gentoo.org> mantisbt-1.2.2.ebuild:
+  Marked ppc stable for bug #330481.
+
+  03 Aug 2010; Peter Volkov <pva@gentoo.org> metadata.xml:
+  Drop outdated postinst message about postgresql, bug #330833, thank David
+  Hicks for report. Added David into metadata.xml.
+
+  01 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  mantisbt-1.2.2.ebuild:
+  stable x86, security bug 330481
+
+  01 Aug 2010; Markos Chandras <hwoarang@gentoo.org> mantisbt-1.2.2.ebuild:
+  Stable on amd64 wrt bug #330481
+
+*mantisbt-1.2.2 (30 Jul 2010)
+
+  30 Jul 2010; Peter Volkov <pva@gentoo.org> -mantisbt-1.2.1.ebuild,
+  -mantisbt-1.2.1-r1.ebuild, +mantisbt-1.2.2.ebuild:
+  Version bump. Fixes security issue, bug #330481
+
+*mantisbt-1.2.1-r1 (03 Jul 2010)
+
+  03 Jul 2010; Matti Bickel <mabi@gentoo.org> +mantisbt-1.2.1-r1.ebuild:
+  eapi bump for php-5.3 (bug #298205)
+
+  25 May 2010; Peter Volkov <pva@gentoo.org> mantisbt-1.2.1.ebuild:
+  Update ezc dependencies to make to make graphs work, bug #319461, thank
+  Philippe Chaintreuil for report and investigation.
+
+  13 May 2010; Joseph Jezak <josejx@gentoo.org> mantisbt-1.2.1.ebuild:
+  Marked ~ppc for bug #319263.
+
+*mantisbt-1.2.1 (11 May 2010)
+
+  11 May 2010; Peter Volkov <pva@gentoo.org> -mantisbt-1.1.6.ebuild,
+  -mantisbt-1.1.7.ebuild, +mantisbt-1.2.1.ebuild:
+  Version bump, bug #311391, thank David Hicks and useful comments on the
+  mailing list.
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> mantisbt-1.1.8.ebuild:
+  ppc stable #278435
+
+  27 Jul 2009; <chainsaw@gentoo.org> mantisbt-1.1.8.ebuild:
+  Marked stable on AMD64 as requested by Peter Volkov <pva@gentoo.org> in
+  bug #278435. Compile-tested on a Core2 Duo with USE="-vhosts".
+
+  22 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  mantisbt-1.1.8.ebuild:
+  stable x86, bug 278435
+
+*mantisbt-1.1.8 (17 Jun 2009)
+
+  17 Jun 2009; Peter Volkov <pva@gentoo.org> +mantisbt-1.1.8.ebuild:
+  Version bump.
+
+*mantisbt-1.1.7 (22 Apr 2009)
+
+  22 Apr 2009; Peter Volkov <pva@gentoo.org>
+  -files/mantisbt-1.1.4-r5687:5688.patch,
+  -files/mantisbt-1.1.5-caching.patch,
+  -files/mantisbt-1.1.5-extensions.patch, -mantisbt-1.1.4-r2.ebuild,
+  -mantisbt-1.1.5.ebuild, +mantisbt-1.1.7.ebuild:
+  Version bump, remove old.
+
+  04 Jan 2009; Markus Meier <maekke@gentoo.org> mantisbt-1.1.6.ebuild:
+  amd64/x86 stable, bug #252659
+
+  02 Jan 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  mantisbt-1.1.6.ebuild:
+  ppc stable, bug #252659
+
+*mantisbt-1.1.6 (09 Dec 2008)
+
+  09 Dec 2008; Peter Volkov <pva@gentoo.org> +mantisbt-1.1.6.ebuild:
+  Version bump.
+
+*mantisbt-1.1.5 (28 Nov 2008)
+
+  28 Nov 2008; Peter Volkov <pva@gentoo.org>
+  +files/mantisbt-1.1.5-caching.patch,
+  +files/mantisbt-1.1.5-extensions.patch, -mantisbt-1.1.4-r3.ebuild,
+  +mantisbt-1.1.5.ebuild:
+  Version bump, added some fixes from upstream. Remove unsed version.
+
+*mantisbt-1.1.4-r3 (07 Nov 2008)
+
+  07 Nov 2008; Peter Volkov <pva@gentoo.org>
+  -files/mantisbt-1.1.2-svn-5369:5587.patch,
+  -files/mantisbt-1.1.3-up-to-r5674.patch, -mantisbt-1.1.3-r1.ebuild,
+  -mantisbt-1.1.4.ebuild, +mantisbt-1.1.4-r3.ebuild:
+  1.1.5 is too close so upstream asked to test this revision to avoid
+  history with previous releases. Please test it! Removed broken versions.
+
+  30 Oct 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  mantisbt-1.1.4-r2.ebuild:
+  ppc stable, bug #242722
+
+  25 Oct 2008; Markus Meier <maekke@gentoo.org> mantisbt-1.1.4-r2.ebuild:
+  amd64/x86 stable, bug #242722
+
+*mantisbt-1.1.4-r2 (24 Oct 2008)
+
+  24 Oct 2008; Peter Volkov <pva@gentoo.org>
+  +files/mantisbt-1.1.4-r5687:5688.patch, -files/mantis-1.1.4-r5702.patch,
+  -mantisbt-1.1.4-r1.ebuild, +mantisbt-1.1.4-r2.ebuild:
+  Further fixes from upstream, reset password should work now, bug #243360,
+  thank Marek Królikowski for report.
+
+*mantisbt-1.1.4-r1 (20 Oct 2008)
+
+  20 Oct 2008; Peter Volkov <pva@gentoo.org>
+  +files/mantis-1.1.4-r5702.patch, +mantisbt-1.1.4-r1.ebuild:
+  Backport fixes from upstream svn, see bug #242722 comment 4 for details.
+
+  19 Oct 2008; Markus Meier <maekke@gentoo.org> mantisbt-1.1.4.ebuild:
+  amd64/x86 stable, bug #242722
+
+*mantisbt-1.1.4 (19 Oct 2008)
+
+  19 Oct 2008; Peter Volkov <pva@gentoo.org> -mantisbt-1.1.2-r1.ebuild,
+  +mantisbt-1.1.4.ebuild:
+  Version bump. Again security bug #242722.
+
+  16 Oct 2008; Markus Meier <maekke@gentoo.org> mantisbt-1.1.3-r1.ebuild:
+  amd64/x86 stable, bug #241940
+
+  16 Oct 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  mantisbt-1.1.3-r1.ebuild:
+  ppc stable, bug #241940
+
+*mantisbt-1.1.3-r1 (15 Oct 2008)
+
+  15 Oct 2008; Peter Volkov <pva@gentoo.org>
+  +files/mantisbt-1.1.3-up-to-r5674.patch, -mantisbt-1.1.3.ebuild,
+  +mantisbt-1.1.3-r1.ebuild:
+  Fixed inability to report issues in mantis, reported in bug #241940 by
+  Marek Królikowski.
+
+*mantisbt-1.1.3 (14 Oct 2008)
+
+  14 Oct 2008; Peter Volkov <pva@gentoo.org> +mantisbt-1.1.3.ebuild:
+  Version bump.
+
+  04 Oct 2008; Peter Volkov <pva@gentoo.org> -mantisbt-1.1.2.ebuild,
+  mantisbt-1.1.2-r1.ebuild:
+  PostgreSQL support is broken, added note about this, bug #239375.
+
+  01 Oct 2008; Markus Meier <maekke@gentoo.org> mantisbt-1.1.2-r1.ebuild:
+  amd64/x86 stable, bug #238570
+
+  01 Oct 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  mantisbt-1.1.2-r1.ebuild:
+  ppc stable, bug #238570
+
+*mantisbt-1.1.2-r1 (25 Sep 2008)
+
+  25 Sep 2008; Peter Volkov <pva@gentoo.org>
+  -files/mantisbt-1.0.8-avoid-XS-type-in-schema.php.patch,
+  -files/mantisbt-1.0.8-avoid-XSS-in-file_api.php.patch,
+  +files/mantisbt-1.1.2-svn-5369:5587.patch, -mantisbt-1.0.8-r1.ebuild,
+  -mantisbt-1.1.1.ebuild, +mantisbt-1.1.2-r1.ebuild:
+  Pushing fixes from svn, should fix security issue #238570, thank Robert
+  Buchholz for report. Remove old.
+
+  19 Sep 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  mantisbt-1.1.2.ebuild:
+  ppc stable, bug #233336
+
+  07 Sep 2008; Markus Meier <maekke@gentoo.org> mantisbt-1.1.2.ebuild:
+  amd64/x86 stable, bug #233336
+
+  23 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*mantisbt-1.1.2 (13 Jul 2008)
+
+  13 Jul 2008; Peter Volkov <pva@gentoo.org> +mantisbt-1.1.2.ebuild:
+  Version bump, bug #229105 thank Philippe Chaintreuil. Fixes security issue
+  #222649, thank Robert Buchholz for report.
+
+  23 Jan 2008; <pva@gentoo.org> -mantisbt-1.0.8.ebuild,
+  -mantisbt-1.1.0.ebuild:
+  Cleaned vulnerable and unused ebuilds.
+
+  23 Jan 2008; Steve Dibb <beandog@gentoo.org> mantisbt-1.0.8-r1.ebuild:
+  amd64 stable, security bug 203791
+
+*mantisbt-1.1.1 (22 Jan 2008)
+
+  22 Jan 2008; <pva@gentoo.org> +mantisbt-1.1.1.ebuild:
+  Version bump.
+
+  14 Jan 2008; <pva@gentoo.org> files/postinstall-en-1.0.0.txt:
+  Added link to upgrade instructions and to manual into postinstall.
+
+*mantisbt-1.1.0 (10 Jan 2008)
+
+  10 Jan 2008; <pva@gentoo.org> +mantisbt-1.1.0.ebuild:
+  Version bump. Thank all people, who notified me about this release.
+
+  06 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  mantisbt-1.0.8-r1.ebuild:
+  ppc stable, bug #203791
+
+  01 Jan 2008; Markus Meier <maekke@gentoo.org> mantisbt-1.0.8-r1.ebuild:
+  x86 stable, security bug #203791
+
+*mantisbt-1.0.8-r1 (30 Dec 2007)
+
+  30 Dec 2007; <pva@gentoo.org>
+  +files/mantisbt-1.0.8-avoid-XSS-in-file_api.php.patch,
+  +mantisbt-1.0.8-r1.ebuild:
+  Fixes "Upload File" Script Insertion Vulnerability, bug 203791, reported by
+  Pierre-Yves Rofes <py AT gentoo.org>.
+
+  10 Dec 2007; <pva@gentoo.org> mantisbt-1.0.8.ebuild:
+  Fixed apache2 DEPEND, bug #201822. Thank Nick Devito <nick AT nick125.com>
+  for report and Gunnar Wrobel <wrobel AT gentoo.org> for the fix.
+
+  18 Nov 2007; <pva@gentoo.org> mantisbt-1.0.8.ebuild:
+  amd64 stable, see Kingtaco's letter on -core at Tue, 13 Nov 2007
+
+  05 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  mantisbt-1.0.8.ebuild:
+  stable x86, bug 197988
+
+  04 Nov 2007; Lars Weiler <pylon@gentoo.org> mantisbt-1.0.8.ebuild:
+  stable ppc, bug #197988
+
+  03 Nov 2007; <pva@gentoo.org> -mantisbt-1.0.7.ebuild,
+  mantisbt-1.0.8.ebuild:
+  Remove old. Quotation fixes.
+
+*mantisbt-1.0.8 (12 Aug 2007)
+
+  12 Aug 2007; <pva@gentoo.org>
+  +files/mantisbt-1.0.8-avoid-XS-type-in-schema.php.patch,
+  +mantisbt-1.0.8.ebuild:
+  Version bump. Thank Philippe Chaintreuil <pchaintreuil AT syrres.com> for
+  report in bug #184953.
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org> mantisbt-1.0.7.ebuild:
+  Fixing the DEPEND/RDEPEND for the move of net-www/apache to
+  www-servers/apache (#78622).
+
+  12 May 2007; <pva@gentoo.org> -mantisbt-1.0.6.ebuild:
+  Cleaning vulnerable version.
+
+  11 May 2007; <pva@gentoo.org> metadata.xml, mantisbt-1.0.7.ebuild:
+  Quotation update. Added myself to metadata. Version 1.0.7 fixes bug #157970.
+
+*mantisbt-1.0.7 (09 May 2007)
+
+  09 May 2007; Christian Parpart <trapni@gentoo.org> +mantisbt-1.0.7.ebuild:
+  version bump
+
+  02 Jan 2007; Renat Lumpau <rl03@gentoo.org> mantisbt-1.0.6.ebuild:
+  Drop mysql dep wrt bug 159781
+
+  23 Nov 2006; Francesco Riosa <vivo@gentoo.org> mantisbt-1.0.6.ebuild:
+  dev-db/mysql => virtual/mysql
+
+*mantisbt-1.0.6 (01 Nov 2006)
+
+  01 Nov 2006; Renat Lumpau <rl03@gentoo.org> -mantisbt-1.0.3.ebuild,
+  -mantisbt-1.0.5.ebuild, +mantisbt-1.0.6.ebuild:
+  Version bump, bug #153578.
+
+  02 Aug 2006; Renat Lumpau <rl03@gentoo.org> mantisbt-1.0.5.ebuild:
+  Typo in S
+
+*mantisbt-1.0.5 (01 Aug 2006)
+
+  01 Aug 2006; Renat Lumpau <rl03@gentoo.org> -mantisbt-1.0.4.ebuild,
+  +mantisbt-1.0.5.ebuild:
+  Version bump, bug #142433
+
+*mantisbt-1.0.4 (24 Jul 2006)
+
+  24 Jul 2006; Renat Lumpau <rl03@gentoo.org> +mantisbt-1.0.4.ebuild:
+  Version bump
+
+  24 Jul 2006; Renat Lumpau <rl03@gentoo.org> -files/0.19.4-debian.patch,
+  -files/postinstall-en.txt, -mantisbt-0.19.4.ebuild,
+  -mantisbt-1.0.2.ebuild:
+  Housekeeping
+
+  08 May 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  mantisbt-1.0.3.ebuild:
+  ppc stable, bug #132703
+
+*mantisbt-1.0.3 (08 May 2006)
+
+  08 May 2006; Renat Lumpau <rl03@gentoo.org> +mantisbt-1.0.3.ebuild:
+  Version bump
+
+  20 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  mantisbt-1.0.2.ebuild:
+  ppc stable, bug #128822
+
+*mantisbt-1.0.2 (20 Apr 2006)
+
+  20 Apr 2006; Renat Lumpau <rl03@gentoo.org> -mantisbt-1.0.1.ebuild,
+  +mantisbt-1.0.2.ebuild:
+  Version bump wrt security bug #128822.
+
+*mantisbt-1.0.1 (23 Feb 2006)
+
+  23 Feb 2006; Renat Lumpau <rl03@gentoo.org> -mantisbt-1.0.0.ebuild,
+  +mantisbt-1.0.1.ebuild:
+  Version bump wrt bug #123809.
+
+*mantisbt-1.0.0 (04 Feb 2006)
+
+  04 Feb 2006; Renat Lumpau <rl03@gentoo.org> -mantisbt-1.0.0_rc2.ebuild,
+  -mantisbt-1.0.0_rc3.ebuild, -mantisbt-1.0.0_rc4.ebuild,
+  -mantisbt-1.0.0_rc5.ebuild, +mantisbt-1.0.0.ebuild:
+  Version bump. Still in p.mask pending verification of upstream tickets 5956
+  and 6002.
+
+*mantisbt-1.0.0_rc5 (17 Jan 2006)
+
+  17 Jan 2006; Renat Lumpau <rl03@gentoo.org> +mantisbt-1.0.0_rc5.ebuild:
+  Version bump wrt security bug #119324.
+
+  20 Dec 2005; Renat Lumpau <rl03@gentoo.org> -files/0.19.3-debian.patch,
+  -mantisbt-0.19.3.ebuild:
+  Removed old version
+
+  19 Dec 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mantisbt-0.19.4.ebuild:
+  Stable on ppc. See bug #116036.
+
+*mantisbt-0.19.4 (19 Dec 2005)
+
+  19 Dec 2005; Renat Lumpau <rl03@gentoo.org> +files/0.19.4-debian.patch,
+  +mantisbt-0.19.4.ebuild:
+  Version bump wrt security bug #116036.
+
+*mantisbt-1.0.0_rc4 (14 Dec 2005)
+
+  14 Dec 2005; Renat Lumpau <rl03@gentoo.org> +mantisbt-1.0.0_rc4.ebuild:
+  Version bump wrt security bug #110680.
+
+*mantisbt-1.0.0_rc3 (31 Oct 2005)
+
+  31 Oct 2005; Renat Lumpau <rl03@gentoo.org> +mantisbt-1.0.0_rc3.ebuild:
+  Version bump
+
+  25 Oct 2005; Renat Lumpau <rl03@gentoo.org> mantisbt-1.0.0_rc2.ebuild:
+  Added postgres support wrt bug #106488.
+
+  25 Oct 2005; Renat Lumpau <rl03@gentoo.org> -files/0.19.2-debian.patch,
+  -mantisbt-0.19.2.ebuild:
+  Removing old version
+
+  24 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mantisbt-0.19.3.ebuild:
+  Stable on ppc.
+
+*mantisbt-0.19.3 (24 Oct 2005)
+
+  24 Oct 2005; Renat Lumpau <rl03@gentoo.org> +files/0.19.3-debian.patch,
+  +mantisbt-0.19.3.ebuild:
+  Version bump wrt security bug #110326.
+
+  16 Sep 2005; Renat Lumpau <rl03@gentoo.org> mantisbt-0.19.2.ebuild:
+  Fixed ${S}
+
+  15 Sep 2005; Renat Lumpau <rl03@gentoo.org> -mantisbt-0.18.3.ebuild:
+  Removing vulnerable version wrt security bug #103308.
+
+  15 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mantisbt-0.19.2.ebuild:
+  Stable on ppc.
+
+*mantisbt-0.19.2 (14 Sep 2005)
+
+  14 Sep 2005; Renat Lumpau <rl03@gentoo.org> +files/0.19.2-debian.patch,
+  +mantisbt-0.19.2.ebuild:
+  Version bump wrt security bug #103308. Using a Debian patch.
+
+*mantisbt-1.0.0_rc2 (14 Sep 2005)
+
+  14 Sep 2005; Renat Lumpau <rl03@gentoo.org> -mantisbt-1.0.0_rc1.ebuild,
+  +mantisbt-1.0.0_rc2.ebuild:
+  Version bump
+
+  11 Sep 2005; Renat Lumpau <rl03@gentoo.org> mantisbt-0.18.3.ebuild,
+  mantisbt-1.0.0_rc1.ebuild:
+  Fixed php deps wrt bug #105419.
+
+  22 Aug 2005; Renat Lumpau <rl03@gentoo.org>
+  files/postinstall-en-1.0.0.txt:
+  Housekeeping
+
+  22 Aug 2005; Renat Lumpau <rl03@gentoo.org>
+  files/postinstall-en-1.0.0.txt, mantisbt-1.0.0_rc1.ebuild:
+  Housekeeping
+
+  12 Aug 2005; Luis Medinas <metalgod@gentoo.org> mantisbt-1.0.0_rc1.ebuild:
+  Add ~amd64 Keywords. Closes bug #98747.
+
+*mantisbt-1.0.0_rc1 (28 Jul 2005)
+
+  28 Jul 2005; Renat Lumpau <rl03@gentoo.org>
+  +files/postinstall-en-1.0.0.txt, -mantisbt-1.0.0_alpha3.ebuild,
+  +mantisbt-1.0.0_rc1.ebuild:
+  Version bump (bug #100564)
+
+*mantisbt-1.0.0_alpha3 (04 Jul 2005)
+
+  04 Jul 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
+  +mantisbt-1.0.0_alpha3.ebuild:
+  Version bump, closes #77253.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  mantisbt-0.18.3.ebuild:
+  Masked mantisbt-0.18.3.ebuild stable for ppc
+
+  03 Sep 2004; David Holm <dholm@gentoo.org> mantisbt-0.18.3.ebuild:
+  Added to ~ppc.
+
+  30 Aug 2004; Renat Lumpau <rl03@gentoo.org> mantisbt-0.18.3.ebuild:
+  Fixed DEPEND/RDEPEND
+
+*mantisbt-0.18.3 (30 Aug 2004)
+
+  30 Aug 2004; Renat Lumpau <rl03@gentoo.org> +metadata.xml,
+  +files/postinstall-en.txt, +mantisbt-0.18.3.ebuild:
+  Initial ebuild (by swegener, really). Thanks to blubber, Jacob Smullyan
+  <smulloni@smullyan.org>, and swegener for their work. Closes #27161.

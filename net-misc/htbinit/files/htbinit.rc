@@ -1,0 +1,47 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/htbinit/files/htbinit.rc,v 1.3 2012/01/01 00:56:46 idl0r Exp $
+
+extra_commands="stats list timecheck"
+extra_started_commands="reload"
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting htbinit"
+	/usr/sbin/htb.init start
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping htbinit"
+	/usr/sbin/htb.init stop
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading htbinit"
+	/usr/sbin/htb.init start invalidate
+	eend $?
+}
+
+stats() {
+	ebegin "Showing htbinit stats"
+	/usr/sbin/htb.init stats
+	eend $?
+}
+
+list() {
+	ebegin "Showing htbinit list"
+	/usr/sbin/htb.init list
+	eend $?
+}
+
+timecheck() {
+	ebegin "Showing htbinit timecheck"
+	/usr/sbin/htb.init timecheck
+	eend $?
+}

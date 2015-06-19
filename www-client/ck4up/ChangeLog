@@ -1,0 +1,27 @@
+# ChangeLog for www-client/ck4up
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-client/ck4up/ChangeLog,v 1.5 2011/07/20 17:37:57 pacho Exp $
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> -ck4up-1.0.ebuild,
+  -ck4up-1.1.ebuild, metadata.xml:
+  Drop maintainer due retirement, bug #118937; remove old.
+
+*ck4up-1.2 (18 Apr 2009)
+
+  18 Apr 2009; Thilo Bangert <bangert@gentoo.org> +ck4up-1.2.ebuild:
+  version bump
+
+*ck4up-1.1 (17 Feb 2009)
+
+  17 Feb 2009; Thilo Bangert <bangert@gentoo.org> +ck4up-1.1.ebuild:
+  version bump
+
+  02 Jun 2008; Thilo Bangert <bangert@gentoo.org> ck4up-1.0.ebuild:
+  fix installation path of man page - bug# 224489 - thanks mulaz and marek
+
+*ck4up-1.0 (31 May 2008)
+
+  31 May 2008; Thilo Bangert <bangert@gentoo.org> +metadata.xml,
+  +ck4up-1.0.ebuild:
+  initial ebuild
+

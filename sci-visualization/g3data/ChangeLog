@@ -1,0 +1,76 @@
+# ChangeLog for sci-visualization/g3data
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/g3data/ChangeLog,v 1.16 2015/05/13 12:34:55 jlec Exp $
+
+  13 May 2015; Justin Lecher <jlec@gentoo.org> -g3data-1.5.3.ebuild,
+  g3data-1.5.4.ebuild:
+  Drop old; obsoletes bug #538534; fix HOMEPAGE, bug #523562
+
+  13 May 2015; Agostino Sarubbo <ago@gentoo.org> g3data-1.5.4.ebuild:
+  Stable for x86, wrt bug #549152
+
+  12 May 2015; Agostino Sarubbo <ago@gentoo.org> g3data-1.5.4.ebuild:
+  Stable for amd64, wrt bug #549152
+
+  08 Jul 2013; Justin Lecher <jlec@gentoo.org> g3data-1.5.4.ebuild,
+  metadata.xml:
+  Bump to EAPI=5 and use thirdpartymirror
+
+*g3data-1.5.4 (06 Aug 2012)
+
+  06 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> +g3data-1.5.4.ebuild,
+  -files/g3data-1.5.1-makefile.patch, -g3data-1.5.1.ebuild:
+  Version bump
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> g3data-1.5.1.ebuild,
+  g3data-1.5.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #70723
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> g3data-1.5.1.ebuild,
+  g3data-1.5.3.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> g3data-1.5.1.ebuild,
+  g3data-1.5.3.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  16 Apr 2010; Markos Chandras <hwoarang@gentoo.org> g3data-1.5.3.ebuild:
+  Stable on amd64 wrt bug #299847
+
+  19 Jan 2010; Sébastien Fabbro <bicatali@gentoo.org> g3data-1.5.3.ebuild,
+  files/g3data-1.5.3-makefile.patch:
+  Added a doc flag
+
+  12 Jan 2010; Christian Faulhammer <fauli@gentoo.org> g3data-1.5.3.ebuild:
+  stable x86, bug 299847
+
+*g3data-1.5.3 (26 Feb 2009)
+
+  26 Feb 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/g3data-1.5.3-makefile.patch, +g3data-1.5.3.ebuild:
+  Version bump, fixing more flag propagation in makefile
+
+  27 Nov 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/g3data-1.5.1-makefile.patch, metadata.xml, g3data-1.5.1.ebuild:
+  Removed imlib dependency (bug #249077, thanks Dustin Polke), added
+  pkg-config depend and respect cflags
+
+  18 Jul 2007; Marcus D. Hanwell <cryos@gentoo.org> -g3data-1.5.0.ebuild,
+  g3data-1.5.1.ebuild:
+  Marked stable on amd64. Pruned old version.
+
+*g3data-1.5.1 (11 Jun 2007)
+
+  11 Jun 2007; Marcus D. Hanwell <cryos@gentoo.org> +g3data-1.5.1.ebuild:
+  Version bump.
+
+*g3data-1.5.0 (06 Jun 2006)
+
+  06 Jun 2006; Marcus D. Hanwell <cryos@gentoo.org> +metadata.xml,
+  +g3data-1.5.0.ebuild:
+  Initial import, moved from the science overlay, originally from bug 50565.
+  Thanks to Jonathan S. Romero <jonnyro@jonnyro.isa-geek.com> and Maxim
+  Loginov <Zeliboba@mail.ru> for their work on the initial ebuild.

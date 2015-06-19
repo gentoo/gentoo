@@ -1,0 +1,411 @@
+# ChangeLog for x11-wm/compiz
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/compiz/ChangeLog,v 1.82 2014/12/17 18:37:14 kensington Exp $
+
+  17 Dec 2014; Michael Palimaka <kensington@gentoo.org> compiz-0.8.8-r3.ebuild:
+  Remove bogus dependency.
+
+  05 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> -compiz-0.8.8-r2.ebuild:
+  Drop old revision
+
+*compiz-0.8.8-r3 (09 Apr 2013)
+
+  09 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> -compiz-0.8.8-r1.ebuild,
+  +compiz-0.8.8-r3.ebuild:
+  Revbump to add subslot operator for media-libs/libpng, drop old revision
+
+*compiz-0.8.8-r2 (10 Feb 2013)
+
+  10 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> +compiz-0.8.8-r2.ebuild,
+  +files/compiz-kde-4.10.patch:
+  Revision bump: EAPI 5, add KDE 4.10 support, patch from stuff overlay
+
+  10 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> files/compiz.desktop:
+  Remove deprecated key from desktop file
+
+  11 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> compiz-0.8.8-r1.ebuild:
+  Add missing virtual/glu dependency wrt bug #437922
+
+  25 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> -compiz-0.8.6-r3.ebuild,
+  -files/compiz-0.8.6-gdk-display-deprecated.patch,
+  -files/compiz-0.8.6-r2-fontcorruption.patch:
+  Drop old compiz version
+
+  12 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> files/compiz-gcc-4.7.patch:
+  Updated version of gcc 4.7 compatibility patch
+
+  12 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> compiz-0.8.8-r1.ebuild,
+  +files/compiz-gcc-4.7.patch:
+  Add patch for compatibility with gcc 4.7 or higher, wrt bug #433870. Thanks
+  to Christian for discovering this issue and megabaks - for providing solution
+  to it
+
+*compiz-0.8.8-r1 (12 Sep 2012)
+
+  12 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> -compiz-0.8.8.ebuild,
+  +compiz-0.8.8-r1.ebuild:
+  Revision bump, add missing run-time dependencies, needed for compiz-manager
+  script
+
+  12 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> compiz-0.8.8.ebuild:
+  Add missing dependency on dev-libs/dbus-glib when building compiz with dbus
+  USE-flag
+
+  11 Sep 2012; Sergey Popov <pinkbyte@gentoo.org>
+  -files/compiz-0.6.2-CVE-2007-3920.patch, -files/compiz-0.7.8-framesvg.patch,
+  -files/compiz-0.8.2-gtk-gnome-missing-gconf-flags.patch,
+  -files/compiz-0.8.4-crash-on-opening-windows.patch,
+  -files/compiz-0.8.4-gtk+-2.20-build.patch, -files/compiz-0.8.4-kde44.patch,
+  -files/compiz-0.8.4-libpng14.patch, -files/compiz-0.8.4-place-plugin.patch,
+  -files/compiz-0.8.4-window-region-calculation.patch:
+  Remove unneeded files
+
+  11 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> -files/0.3.6/compiz-start:
+  Remove old script
+
+  11 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> compiz-0.8.8.ebuild,
+  +files/compiz-kde-4.9.patch:
+  Add compatibility patch for KDE 4.9
+
+  31 Aug 2012; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Remove myself and proxy maintainer from maintainers
+
+  31 Jul 2012; Naohiro Aota <naota@gentoo.org> compiz-0.8.6-r3.ebuild,
+  compiz-0.8.8.ebuild:
+  Remove warning about AddARGBGLXVisuals. #427608
+
+  23 Jul 2012; Naohiro Aota <naota@gentoo.org> compiz-0.8.6-r3.ebuild,
+  compiz-0.8.8.ebuild, metadata.xml:
+  Add notifcation to use AddARGBGLXVisuals options with nvidia-drivers. #427608;
+  Update maintainer mail addres.
+
+  18 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> compiz-0.8.8.ebuild:
+  Update to EAPI4 and prune_libtool_files.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> compiz-0.8.6-r3.ebuild,
+  compiz-0.8.8.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*compiz-0.8.8 (09 Apr 2012)
+
+  09 Apr 2012; Naohiro Aota <naota@gentoo.org> +compiz-0.8.8.ebuild,
+  +files/compiz-kde-4.8.patch, metadata.xml:
+  Bump to 0.8.8; Assign new maintainer. Bug #363321
+
+  11 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> compiz-0.8.6-r3.ebuild:
+  Remove support for DBUS wrt #365121
+
+  20 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> -compiz-0.8.4.ebuild,
+  -compiz-0.8.4-r1.ebuild, -compiz-0.8.4-r2.ebuild, -compiz-0.8.4-r3.ebuild,
+  -compiz-0.8.6.ebuild, -compiz-0.8.6-r1.ebuild, -compiz-0.8.6-r2.ebuild,
+  compiz-0.8.6-r3.ebuild:
+  Fix slot-deps on gtk+ and other libs, remove old
+
+  06 Dec 2010; Mike Auty <ikelos@gentoo.org>
+  files/compiz-0.8.6-gdk-display-deprecated.patch:
+  Fix gdk-display-deprecation patch to allow compilation under amd64.
+
+*compiz-0.8.6-r3 (04 Dec 2010)
+
+  04 Dec 2010; Mike Auty <ikelos@gentoo.org> +compiz-0.8.6-r3.ebuild,
+  +files/compiz-0.8.6-gdk-display-deprecated.patch:
+  Add in patch to fix deprecated use of gdk-display (bug 344293).
+
+*compiz-0.8.6-r2 (11 Nov 2010)
+
+  11 Nov 2010; Michael Weber <xmw@gentoo.org> +compiz-0.8.6-r2.ebuild,
+  +files/compiz-0.8.6-r2-fontcorruption.patch:
+  Add fontcorruption.patch, thanks to Manuel Danisch
+  <oeffentlicheszeug@googlemail.com> for his report (bug #343861).
+
+  02 Nov 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  compiz-0.8.6-r1.ebuild:
+  Clarify gnome-desktop dep as being slot 2
+
+  21 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> compiz-0.8.4.ebuild,
+  compiz-0.8.4-r1.ebuild, compiz-0.8.4-r2.ebuild, compiz-0.8.4-r3.ebuild,
+  compiz-0.8.6.ebuild, compiz-0.8.6-r1.ebuild:
+  Update the dep on libX11 this time using proper version.
+
+  09 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> compiz-0.8.4.ebuild,
+  compiz-0.8.4-r1.ebuild, compiz-0.8.4-r2.ebuild, compiz-0.8.4-r3.ebuild,
+  compiz-0.8.6.ebuild, compiz-0.8.6-r1.ebuild:
+  Update deps on libX11[xcb].
+
+*compiz-0.8.6-r1 (04 Sep 2010)
+
+  04 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +compiz-0.8.6-r1.ebuild, metadata.xml:
+  Helping out a bit: disable static libraries (they are not linked against,
+  are most plugins) and .la files (same reasoning); add a gconf USE flag
+  because even if you want GNOME integration you might not want to pay the
+  GConf toll (lots of schemas) and rather prefer flat files. Wire the svg
+  USE flag to librsvg.
+
+*compiz-0.8.6 (03 Apr 2010)
+*compiz-0.8.4-r3 (03 Apr 2010)
+
+  03 Apr 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +compiz-0.8.4-r3.ebuild, +files/compiz-0.8.4-gtk+-2.20-build.patch,
+  +compiz-0.8.6.ebuild:
+  Replaced compiz ~ deps with >= deps to support the new compiz-0.8.6
+  release and to avoid future dep issues.
+  Did a revbump to avoid issues with installed packages.
+  Added a patch to enable emerald to build with gtk+-2.20. Fixes bug 311743
+  - thanks to Guillaume ZITTA <gentoo@zitta.fr>.
+
+  20 Feb 2010; Hanno Boeck <hanno@gentoo.org> compiz-0.8.4-r2.ebuild,
+  +files/compiz-0.8.4-kde44.patch, +files/compiz-0.8.4-libpng14.patch:
+  Compilation fixes for KDE 4.4 and libpng 1.4.
+
+*compiz-0.8.4-r2 (02 Feb 2010)
+
+  02 Feb 2010; Romain Perier <mrpouet@gentoo.org> +compiz-0.8.4-r2.ebuild,
+  +files/compiz-0.8.4-window-region-calculation.patch:
+  Fix window region calculation for windows that have border width set,
+  patch imported from upstream, per bug #302308.
+
+*compiz-0.8.4-r1 (31 Jan 2010)
+
+  31 Jan 2010; Romain Perier <mrpouet@gentoo.org> +compiz-0.8.4-r1.ebuild,
+  +files/compiz-0.8.4-crash-on-opening-windows.patch,
+  +files/compiz-0.8.4-place-plugin.patch:
+  Fix crash on opening windows, and placement mode. Replace URI per a bziped
+  tarball, per bug #302308. Many thanks to Denilson.
+
+  20 Dec 2009; Romain Perier <mrpouet@gentoo.org> -compiz-0.8.2.ebuild:
+  Clean up old version
+
+  12 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org> +compiz-0.8.2.ebuild:
+  Revert wrongly removed ebuild
+
+  11 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -compiz-0.8.2-r3.ebuild:
+  Drop no-longer required ebuild.
+
+  25 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  compiz-0.8.2-r3.ebuild, compiz-0.8.4.ebuild, metadata.xml:
+  Remove KDE3 support.
+
+*compiz-0.8.4 (15 Oct 2009)
+
+  15 Oct 2009; Romain Perier <mrpouet@gentoo.org>
+  +compiz-0.8.4.ebuild, files/compiz-manager:
+  Version bump. Many bugfixes, 2 new plugins, Ported KDE4 window decorator
+  to KDE 4.3. Fix bug #286431 thanks to Evert.
+
+*compiz-0.8.2-r3 (29 Aug 2009)
+
+  29 Aug 2009; Romain Perier <mrpouet@gentoo.org>
+  -compiz-0.6.2-r1.ebuild, -compiz-0.8.2.ebuild, -compiz-0.8.2-r1.ebuild,
+  -compiz-0.8.2-r2.ebuild, +compiz-0.8.2-r3.ebuild,
+  +files/compiz-0.8.2-gtk-gnome-missing-gconf-flags.patch, files/compiz-manager,
+  metadata.xml:
+  Fix libGL.so.1.2 path in compiz-manager (bug #274762), update KDE4
+  dependencies (bug #277016), fix missing gconf flags in gnome plugin (bug
+  #282807), fix QA warnings, Drop old revisions.
+
+*compiz-0.8.2-r2 (12 Jun 2009)
+
+  12 Jun 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +compiz-0.8.2-r2.ebuild:
+  Dropped the "bogus" glitz dep. Fixes bug 272968 - thanks to Christophe
+  Saout <christophe@saout.de>.
+
+  26 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  compiz-0.8.2-r1:
+  Added missing call to gnome2_gconf_savelist. Thanks to Pacho Ramos
+  <pacho@condmat1.ciencias.uniovi.es> - fixes bug 258238.
+
+*compiz-0.8.2-r1 (26 Apr 2009)
+
+  26 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +files/compiz.desktop, +compiz-0.8.2-r1.ebuild:
+  Added fix for tests. Thanks to Pacho Ramos
+  <pacho@condmat1.ciencias.uniovi.es> for initial report and Brent Baude
+  <ranger@gentoo.org> for recalling me about it again - fixes bug 265226.
+  Install compiz.desktop file. Thanks to Philip Allison <sane@not.co.uk> for
+  the file and Nirbheek Chauhan <nirbheek@gentoo.org> for the check from the
+  gnome team - fixes bug 254166.
+
+  25 Apr 2009; Brent Baude <ranger@gentoo.org> compiz-0.8.2.ebuild:
+  Marking compiz-0.8.2 ~ppc for bug 246804
+
+  25 Apr 2009; Brent Baude <ranger@gentoo.org> compiz-0.8.2.ebuild:
+  Marking compiz-0.8.2 ~ppc64 for bug 246804
+
+*compiz-0.8.2 (03 Apr 2009)
+
+  03 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +compiz-0.8.2.ebuild:
+  Bumped compiz to the 0.8.2 release.
+
+  19 Feb 2009; Alexey Shvetsov <alexxy@gentoo.org> -compiz-0.7.8.ebuild:
+  Drop compiz-0.7.8 since it doesnt support kde 4.2
+
+*compiz-0.7.8-r2 (31 Dec 2008)
+
+  31 Dec 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  files/compiz-manager, compiz-0.7.8.ebuild, +compiz-0.7.8-r2.ebuild:
+  Fixed the hardcoded /lib path in compiz-manager. Fixes bug #253246.
+
+  03 Dec 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  compiz-0.7.8-r1.ebuild:
+  It's ${P} and not ${PN} we need.
+
+*compiz-0.7.8-r1 (02 Dec 2008)
+
+  02 Dec 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +files/compiz-0.7.8-framesvg.patch, compiz-0.7.8.ebuild,
+  +compiz-0.7.8-r1.ebuild:
+  Reviewed compiz-0.7.8 KDE4 deps as it only works with kwin:4.1 at the
+  moment. Added compiz-0.7.8-r1 with a dep on kwin:4.2 / kwin:live that
+  applies a patch for compiz to build.
+
+  27 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  ChangeLog:
+  Removed the executable bit from compiz-start - dobin ensures the file is
+  installed as executable.
+
+  15 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  compiz-0.7.8.ebuild:
+  Removed the mirror restriction that was used for the overlay.
+
+  03 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  compiz-0.7.8.ebuild:
+  Added a warning that it's required to rebuild compiz after updating
+  metacity to 2.24 or gtk-window-decorator will crash.
+
+  01 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +files/compiz-manager:
+  Added the missing compiz-manager file.
+
+  31 Oct 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +files/compiz-no-gconf.patch:
+  Added missing patch to compiz.
+
+*compiz-0.7.8 (27 Oct 2008)
+
+  27 Oct 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml, +compiz-0.7.8.ebuild:
+  Added compiz-0.7.8 to the tree
+
+  29 Aug 2008; Diego Pettenò <flameeyes@gentoo.org> compiz-0.6.2-r1.ebuild:
+  Add some missing build-time dependencies (closes bug #204863), disable
+  fuse plugin, until a new version with an USE flag is provided, avoid
+  automagic dep (closes bug #212120).
+
+  25 Jul 2008; Carsten Lohrke <carlo@gentoo.org> compiz-0.6.2-r1.ebuild:
+  Wrong split/monolithic dependency order, missing slot dependency.
+
+  05 Jun 2008; Rémi Cardona <remi@gentoo.org> compiz-0.5.0.ebuild,
+  compiz-0.5.2.ebuild, compiz-0.6.2.ebuild, compiz-0.6.2-r1.ebuild:
+  pkgmove to gnome-base/gnome-control-center
+
+  27 Feb 2008; Doug Klima <cardoe@gentoo.org> compiz-0.6.2-r1.ebuild:
+  fix quoting and add dbus-glib to depend. bug #202436
+
+  26 Nov 2007; Markus Rothe <corsair@gentoo.org> compiz-0.6.2-r1.ebuild:
+  Added ~ppc64
+
+*compiz-0.6.2-r1 (06 Nov 2007)
+
+  06 Nov 2007; Hanno Boeck <hanno@gentoo.org>
+  +files/compiz-0.6.2-CVE-2007-3920.patch, +compiz-0.6.2-r1.ebuild:
+  Security fix for CVE-2007-3920.
+
+  31 Oct 2007; Hanno Boeck <hanno@gentoo.org> compiz-0.6.2.ebuild:
+  Lower libwnck-dep again.
+
+*compiz-0.6.2 (18 Oct 2007)
+
+  18 Oct 2007; Hanno Boeck <hanno@gentoo.org> +compiz-0.6.2.ebuild:
+  Version bump.
+
+  19 Aug 2007; Hanno Boeck <hanno@gentoo.org> compiz-0.5.2.ebuild:
+  Switch kde-dependencies, so kdebase is preferred before kwin.
+
+  17 Aug 2007; Hanno Boeck <hanno@gentoo.org> compiz-0.5.2.ebuild:
+  Add libwnck-dep.
+
+*compiz-0.5.2 (13 Aug 2007)
+
+  13 Aug 2007; Hanno Boeck <hanno@gentoo.org> +compiz-0.5.2.ebuild:
+  Version bump.
+
+  03 May 2007; Hanno Boeck <hanno@gentoo.org> files/compiz-start,
+  compiz-0.5.0.ebuild:
+  Fix some minor issues (gconf schema installation, more deps).
+
+*compiz-0.5.0 (24 Apr 2007)
+
+  24 Apr 2007; Hanno Boeck <hanno@gentoo.org> +compiz-0.5.0.ebuild:
+  Version bump.
+
+  10 Mar 2007; Hanno Boeck <hanno@gentoo.org> files/compiz-start:
+  Fix typo.
+
+  28 Jan 2007; Hanno Boeck <hanno@gentoo.org> compiz-0.3.6.ebuild:
+  Fix dep issues, dbus is always required if kde-decorator is built.
+
+  20 Jan 2007; Hanno Boeck <hanno@gentoo.org> compiz-0.3.6.ebuild:
+  Fix a bunch of smaller issues, mostly depend-related, don't install
+  old/broken compiz-aiglx/xgl/nvidia-scripts any more, please use and test
+  compiz-start instead.
+
+*compiz-0.3.6 (06 Jan 2007)
+
+  06 Jan 2007; Hanno Boeck <hanno@gentoo.org> +files/0.3.6/compiz-start,
+  +compiz-0.3.6.ebuild:
+  Version bump, now with kde-decorator.
+
+  29 Nov 2006; Hanno Boeck <hanno@gentoo.org> +files/compiz-start,
+  compiz-0.3.4.ebuild:
+  Add generic compiz start script.
+
+  26 Nov 2006; Hanno Boeck <hanno@gentoo.org> compiz-0.3.4.ebuild:
+  Add dependency to libXinerama.
+
+*compiz-0.3.4 (22 Nov 2006)
+
+  22 Nov 2006; Hanno Boeck <hanno@gentoo.org> +compiz-0.3.4.ebuild:
+  Version bump.
+
+*compiz-0.3.2 (01 Nov 2006)
+
+  01 Nov 2006; Hanno Boeck <hanno@gentoo.org> +compiz-0.3.2.ebuild:
+  Version bump.
+
+  18 Oct 2006; Olivier Crête <tester@gentoo.org> compiz-0.2.0.ebuild:
+  Use gnome2 eclass to install schemas properly, bug #150535
+
+*compiz-0.2.0 (03 Oct 2006)
+
+  03 Oct 2006; Hanno Boeck <hanno@gentoo.org> +compiz-0.2.0.ebuild:
+  Add first release version.
+
+*compiz-0.0.13_pre20060928 (28 Sep 2006)
+
+  28 Sep 2006; Hanno Boeck <hanno@gentoo.org> files/compiz-aiglx,
+  +files/compiz-nvidia, +files/compiz-xgl,
+  +compiz-0.0.13_pre20060928.ebuild:
+  Version bump, new scripts for xgl and nvidia, misc fixes.
+
+  21 Sep 2006; Hanno Boeck <hanno@gentoo.org>
+  compiz-0.0.13_pre20060921.ebuild:
+  Re-add gnome-deps, seems it's not possible at the moment to have less
+  dependencies.
+
+*compiz-0.0.13_pre20060921 (21 Sep 2006)
+
+  21 Sep 2006; Hanno Boeck <hanno@gentoo.org> files/compiz-aiglx,
+  +compiz-0.0.13_pre20060921.ebuild:
+  Version bump, cleaned up dependencies.
+
+*compiz-0.0.13_pre20060916 (16 Sep 2006)
+
+  16 Sep 2006; Hanno Boeck <hanno@gentoo.org>
+  +files/03-composite-cube-logo.patch, +files/04-fbconfig-depth-fix.patch,
+  +files/06-glfinish.patch, +files/07-cow.patch, +files/compiz-aiglx,
+  +compiz-0.0.13_pre20060916.ebuild:
+  Initial commit of compiz.

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=A library to ease explicit vectorization of C++ code
+EAPI=5
+HOMEPAGE=http://code.compeng.uni-frankfurt.de/projects/vc
+IUSE=test
+KEYWORDS=amd64 x86
+LICENSE=LGPL-3
+SLOT=0
+SRC_URI=test? ( http://compeng.uni-frankfurt.de/~kretz/Vc-testdata/reference-acos-dp.dat -> vc-0.7.3-reference-acos-dp.dat ) test? ( http://compeng.uni-frankfurt.de/~kretz/Vc-testdata/reference-acos-sp.dat -> vc-0.7.3-reference-acos-sp.dat ) test? ( http://compeng.uni-frankfurt.de/~kretz/Vc-testdata/reference-asin-dp.dat -> vc-0.7.3-reference-asin-dp.dat ) test? ( http://compeng.uni-frankfurt.de/~kretz/Vc-testdata/reference-asin-sp.dat -> vc-0.7.3-reference-asin-sp.dat ) test? ( http://compeng.uni-frankfurt.de/~kretz/Vc-testdata/reference-atan-dp.dat -> vc-0.7.3-reference-atan-dp.dat ) test? ( http://compeng.uni-frankfurt.de/~kretz/Vc-testdata/reference-atan-sp.dat -> vc-0.7.3-reference-atan-sp.dat ) test? ( http://compeng.uni-frankfurt.de/~kretz/Vc-testdata/reference-ln-dp.dat -> vc-0.7.3-reference-ln-dp.dat ) test? ( http://compeng.uni-frankfurt.de/~kretz/Vc-testdata/reference-ln-sp.dat -> vc-0.7.3-reference-ln-sp.dat ) test? ( http://compeng.uni-frankfurt.de/~kretz/Vc-testdata/reference-log2-dp.dat -> vc-0.7.3-reference-log2-dp.dat ) test? ( http://compeng.uni-frankfurt.de/~kretz/Vc-testdata/reference-log2-sp.dat -> vc-0.7.3-reference-log2-sp.dat ) test? ( http://compeng.uni-frankfurt.de/~kretz/Vc-testdata/reference-log10-dp.dat -> vc-0.7.3-reference-log10-dp.dat ) test? ( http://compeng.uni-frankfurt.de/~kretz/Vc-testdata/reference-log10-sp.dat -> vc-0.7.3-reference-log10-sp.dat ) test? ( http://compeng.uni-frankfurt.de/~kretz/Vc-testdata/reference-sincos-dp.dat -> vc-0.7.3-reference-sincos-dp.dat ) test? ( http://compeng.uni-frankfurt.de/~kretz/Vc-testdata/reference-sincos-sp.dat -> vc-0.7.3-reference-sincos-sp.dat ) https://gitorious.org/vc/vc/archive-tarball/0.7.3 -> vc-0.7.3.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vcs-snapshot	58b766562c9fbfb3268b04e33cdf2f66
+_md5_=474ab9e7f1710a922d6edc4c93c4fac8

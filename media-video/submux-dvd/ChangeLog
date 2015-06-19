@@ -1,0 +1,59 @@
+# ChangeLog for media-video/submux-dvd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/submux-dvd/ChangeLog,v 1.16 2015/03/29 23:54:45 mrueg Exp $
+
+  29 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -submux-dvd-0.5.1.ebuild:
+  Remove old.
+
+*submux-dvd-0.5.2 (11 Mar 2012)
+
+  11 Mar 2012; <lordvan@gentoo.org> +submux-dvd-0.5.2.ebuild,
+  submux-dvd-0.5.1.ebuild:
+  added new version with updated homepage and download link
+  fixes bug #370609
+
+  29 Jan 2012;  <lordvan@gentoo.org> -submux-dvd-0.5.ebuild:
+  update of src_uri
+
+  29 Jan 2012; <lordvan@gentoo.org> -submux-dvd-0.5.ebuild,
+  submux-dvd-0.5.1.ebuild:
+  actually removed 0.5 now and fixed SRC_URI and HOMEPAGE. fixes bug #370609
+  (thanks to David for pointing this out)
+
+  25 Mar 2010; <lordvan@gentoo.org> submux-dvd-0.5.1.ebuild:
+  removed submux-dvd-0.5.ebuild
+  fixed QA issues bug #305553 Thanks to Christophe LEFEBVRE
+  <chtof62@gmail.com> and flameeyes
+
+  27 Nov 2007; Matthias Schwarzott <zzam@gentoo.org> submux-dvd-0.5.ebuild:
+  Fixed quoting. No longer install LICENSE file.
+
+*submux-dvd-0.5.1 (25 Aug 2007)
+
+  25 Aug 2007; Steve Dibb <beandog@gentoo.org> +submux-dvd-0.5.1.ebuild:
+  Version bump, bug 109854
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  28 Jul 2005; David Holm <dholm@gentoo.org> submux-dvd-0.5.ebuild:
+  Added to ~ppc.
+
+  30 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  submux-dvd-0.5.ebuild:
+  toolchain love for bug #69014.
+
+  05 Sep 2004; <blubb@gentoo.org> :
+  added ~amd64 keyword
+
+  09 Aug 2004; Tom Martin <slarti@gentoo.org> submux-dvd-0.5.ebuild:
+  Marked ~amd64, resolves bug 59088.
+
+  09 Jun 2004; Thomas Raschbacher <lordvan@gentoo.org> submux-dvd-0.5.ebuild:
+  fixes bug #52405, thanks to Stefan Briesenick <sbriesen@gmx.de>
+
+*submux-dvd-0.5 (27 May 2004)
+
+  27 May 2004; Thomas Raschbacher <lordvan@gentoo.org> +metadata.xml,
+  +files/submux-dvd-0.5.patch, +submux-dvd-0.5.ebuild:
+  initial import

@@ -1,0 +1,293 @@
+# ChangeLog for app-backup/flexbackup
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/flexbackup/ChangeLog,v 1.53 2015/06/09 09:03:34 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  19 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -flexbackup-1.2.1-r11.ebuild:
+  Remove old.
+
+  05 Mar 2014; Jeroen Roovers <jer@gentoo.org> flexbackup-1.2.1-r12.ebuild:
+  Stable for HPPA (bug #502610).
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> flexbackup-1.2.1-r12.ebuild:
+  Stable for ppc, wrt bug #502610
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> flexbackup-1.2.1-r12.ebuild:
+  Stable for x86, wrt bug #502610
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> flexbackup-1.2.1-r12.ebuild:
+  amd64 stable, bug #502610
+
+*flexbackup-1.2.1-r12 (24 Dec 2013)
+
+  24 Dec 2013; Hans de Graaff <graaff@gentoo.org> +flexbackup-1.2.1-r12.ebuild,
+  +files/flexbackup-1.2.1-perl-5.16-deprecation-warning.patch:
+  Fix deprecation warning introduced by perl 5.16, fixing bug 495232.
+
+  24 Dec 2013; Tom Wijsman <TomWij@gentoo.org>
+  -files/flexbackup-1.2.1-perl-5.12-deprecation-warning2.patch:
+  [QA] Remove unused files.
+
+  08 Oct 2011; Hans de Graaff <graaff@gentoo.org> -flexbackup-1.2.1-r10.ebuild:
+  Remove old version.
+
+  10 Jan 2011; Brent Baude <ranger@gentoo.org> flexbackup-1.2.1-r11.ebuild:
+  stable ppc, bug 346939
+
+  29 Dec 2010; Markos Chandras <hwoarang@gentoo.org>
+  flexbackup-1.2.1-r11.ebuild:
+  Stable on amd64 wrt bug #346939
+
+  02 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  flexbackup-1.2.1-r11.ebuild:
+  x86 stable wrt bug #346939
+
+  29 Nov 2010; Jeroen Roovers <jer@gentoo.org> flexbackup-1.2.1-r11.ebuild:
+  Stable for HPPA (bug #346939).
+
+*flexbackup-1.2.1-r11 (09 Nov 2010)
+
+  09 Nov 2010; Hans de Graaff <graaff@gentoo.org>
+  +flexbackup-1.2.1-r11.ebuild,
+  files/flexbackup-1.2.1-perl-5.12-deprecation-warning.patch:
+  Fix perl 5.12 deprecation warnings properly by merging both patches.
+
+  09 Nov 2010; Hans de Graaff <graaff@gentoo.org>
+  -flexbackup-1.2.1-r8.ebuild, -flexbackup-1.2.1-r9.ebuild:
+  Remove old versions.
+
+  24 Oct 2010; Jeroen Roovers <jer@gentoo.org> flexbackup-1.2.1-r10.ebuild:
+  Stable for HPPA (bug #340031).
+
+  23 Oct 2010; Brent Baude <ranger@gentoo.org> flexbackup-1.2.1-r10.ebuild:
+  Marking flexbackup-1.2.1-r10 ppc for bug 340031
+
+  22 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  flexbackup-1.2.1-r10.ebuild:
+  Stable on amd64 wrt bug #340031
+
+  22 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  flexbackup-1.2.1-r10.ebuild:
+  stable x86, bug 340031
+
+  12 Oct 2010; Hans de Graaff <graaff@gentoo.org>
+  -files/flexbackup-1.2.1-CAN-2005-2965.patch:
+  Remove unused file. Fixes #340178.
+
+*flexbackup-1.2.1-r10 (09 Oct 2010)
+
+  09 Oct 2010; Hans de Graaff <graaff@gentoo.org>
+  +flexbackup-1.2.1-r10.ebuild,
+  +files/flexbackup-1.2.1-perl-5.12-deprecation-warning2.patch:
+  Update patch for perl 5.12 warnings as suggested by Paul Colquhoun in bug
+  333909.
+
+*flexbackup-1.2.1-r9 (14 Aug 2010)
+
+  14 Aug 2010; Hans de Graaff <graaff@gentoo.org>
+  +flexbackup-1.2.1-r9.ebuild,
+  +files/flexbackup-1.2.1-perl-5.12-deprecation-warning.patch:
+  Fix perl 5.12 deprecation warnings, thanks to John R. Graham for providing
+  a patch in bug 331673.
+
+  08 Aug 2009; Hans de Graaff <graaff@gentoo.org>
+  -flexbackup-1.2.1-r7.ebuild:
+  Remove old version.
+
+  24 Mar 2009; Guy Martin <gmsoft@gentoo.org> flexbackup-1.2.1-r8.ebuild:
+  hppa stable, #262374
+
+  22 Mar 2009; Markus Meier <maekke@gentoo.org> flexbackup-1.2.1-r8.ebuild:
+  amd64 stable, bug #262374
+
+  20 Mar 2009; Raúl Porcel <armin76@gentoo.org> flexbackup-1.2.1-r8.ebuild:
+  x86 stable wrt #262374
+
+  18 Mar 2009; Brent Baude <ranger@gentoo.org> flexbackup-1.2.1-r8.ebuild:
+  stable ppc, bug 262374
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/flexbackup-1.2.1-secure-tempfile.patch:
+  Fix patch to apply.
+
+  06 Oct 2008; Hans de Graaff <graaff@gentoo.org>
+  files/flexbackup-1.2.1-lzma.patch:
+  Don't use absolute path in patch file, fixing #239212
+
+*flexbackup-1.2.1-r8 (27 Aug 2008)
+
+  27 Aug 2008; Hans de Graaff <graaff@gentoo.org>
+  +files/flexbackup-1.2.1-quieten.patch, +flexbackup-1.2.1-r8.ebuild:
+  Quieten flexbackup: don't write normal status message to stderr, fixing bug
+  235416, patch by John R. Graham <john_r_graham@mindspring.com>.
+
+  27 Aug 2008; Hans de Graaff <graaff@gentoo.org>
+  -flexbackup-1.2.1-r2.ebuild, -flexbackup-1.2.1-r5.ebuild,
+  -flexbackup-1.2.1-r6.ebuild:
+  Remove old versions
+
+  22 Mar 2008; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  List myself as maintainer since I'm using this on several machines.
+
+  17 Mar 2008; Markus Meier <maekke@gentoo.org> flexbackup-1.2.1-r7.ebuild:
+  amd64/x86 stable, bug #213513
+
+  17 Mar 2008; Jeroen Roovers <jer@gentoo.org> flexbackup-1.2.1-r7.ebuild:
+  Stable for HPPA (bug #213513).
+
+  15 Mar 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  flexbackup-1.2.1-r7.ebuild:
+  ppc stable, bug #213513
+
+*flexbackup-1.2.1-r7 (01 Sep 2007)
+
+  01 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  +files/flexbackup-1.2.1-afio-large-files.patch,
+  +flexbackup-1.2.1-r7.ebuild:
+  fix bug 190357, patch by John R. Graham <john_r_graham@mindspring.com>,
+  provided on bug and Sunrise
+
+  19 Jul 2007; John R. Graham (john_r_graham) <john_r_graham@mindspring.com>
+  +flexbackup-1.2.1-r6.ebuild,
+  +files/flexbackup-1.2.1-spaces-in-filenames.patch:
+  New ebuild addresses bug #184560 (fails to backup targets with spaces in
+  their names).
+
+  12 May 2007; John R. Graham (john_r_graham) <john_r_graham@mindspring.com>
+  +flexbackup-1.2.1-r5.ebuild, +files/flexbackup-1.2.1-prune.patch:
+  New revision addresses bug #178126 (subtree pruning issue, minor
+  documentation enhancements).
+
+  15 Apr 2007; John R. Graham (john_r_graham) <john_r_graham@mindspring.com>
+  +flexbackup-1.2.1-r4.ebuild, +files/flexbackup-1.2.1-mbuffer-switch.patch,
+  +files/flexbackup-1.2.1-remote-bufftest.patch:
+  New ebuild addresses bugs #171205 (mbuffer command line option fix & doc
+  improvements) and #173672 (remote host buffer detection).
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove mholzer from metadata.xml due to retirement.
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org> flexbackup-1.2.1-r2.ebuild:
+  x86 stable
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> flexbackup-1.2.0-r1.ebuild,
+  flexbackup-1.2.1.ebuild, flexbackup-1.2.1-r1.ebuild,
+  flexbackup-1.2.1-r2.ebuild, flexbackup-1.2.1-r3.ebuild:
+  Replacing einfo with elog
+
+*flexbackup-1.2.1-r3 (15 Jan 2007)
+
+  15 Jan 2007; Gustavo Felisberto <humpback@gentoo.org>;
+  +files/flexbackup-1.2.1-bash.patch, +files/flexbackup-1.2.1-lzma.patch,
+  +flexbackup-1.2.1-r3.ebuild:
+  Added new revision that fixes upsteam bugs #1611851 and #1222376 about lzma
+  compression and bash 3 detection.
+
+  15 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  flexbackup-1.2.1-r2.ebuild:
+  hppa stable
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  flexbackup-1.2.1-r2.ebuild:
+  ppc stable
+
+  24 Aug 2006; <malc@gentoo.org> flexbackup-1.2.1-r2.ebuild:
+  Stable on amd64
+
+*flexbackup-1.2.1-r2 (26 May 2006)
+
+  26 May 2006; Lisa Seelye <lisa@gentoo.org>
+  +files/flexbackup-1.2.1-secure-tempfile.patch,
+  +flexbackup-1.2.1-r2.ebuild:
+  Resolve remote backup issue following CAN-2005-2965 - see bug 116510.
+
+  21 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  flexbackup-1.2.1-r1.ebuild:
+  Stable on hppa, ppc.
+
+*flexbackup-1.2.1-r1 (20 Oct 2005)
+
+  20 Oct 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/flexbackup-1.2.1-CAN-2005-2965.patch, +flexbackup-1.2.1-r1.ebuild:
+  Version bump for security #105000.
+
+  04 Jul 2005; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +flexbackup-1.2.0-r1.ebuild, +flexbackup-1.2.1.ebuild:
+  Moved from app-arch/flexbackup to app-backup/flexbackup.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  flexbackup-1.2.1.ebuild:
+  Stable on ppc.
+
+  23 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  flexbackup-1.2.1.ebuild:
+  mark as ~ppc
+
+  03 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> flexbackup-1.2.1.ebuild:
+  added ~amd64 to KEYWORDS. fixes #72751
+
+  15 Oct 2004; Guy Martin <gmsoft@gentoo.org> flexbackup-1.2.1.ebuild:
+  Stable on hppa.
+
+  22 Oct 2003; Martin Holzer <mholzer@gentoo.org> flexbackup-1.2.0-r1.ebuild,
+  flexbackup-1.2.1.ebuild:
+  adding RESTRICT="nomirror"
+
+*flexbackup-1.2.1 (11 Oct 2003)
+
+  11 Oct 2003; Max Kalika <max@gentoo.org> flexbackup-1.2.1.ebuild:
+  Bump to version 1.2.1. Add support for new man pages (contributed upstream by
+  yours truly).
+
+  03 Sep 2003; Max Kalika <max@gentoo.org> flexbackup-1.2.0-r1.ebuild:
+  Mark stable on x86.
+
+  08 Aug 2003; Max Kalika <max@gentoo.org> flexbackup-1.2.0-r1.ebuild:
+  Fix sed command.
+
+*flexbackup-1.2.0-r1 (04 Aug 2003)
+
+  04 Aug 2003; Max Kalika <max@gentoo.org> flexbackup-1.2.0-r1.ebuild:
+  Major cleanup. Drop depend on dump and afio. Drop Makefile patch -- installs
+  fine passing CONFFILE= and BINPATH= to einstall(). Drop unneeded src_unpack().
+  Other fixes.
+
+  24 Jul 2003; Martin Holzer <mholzer@gentoo.org> flexbackup-1.2.0.ebuild:
+  Marked as stable on x86
+
+*flexbackup-1.2.0 (09 Jul 2003)
+
+  09 Jul 2003; Martin Holzer <mholzer@gentoo.org> flexbackup-1.2.0.ebuild:
+  Version bumped.
+
+*flexbackup-1.1.8 (03 Jul 2003)
+
+  03 Jul 2003; Martin Holzer <mholzer@gentoo.org> flexbackup-1.1.8.ebuild:
+  Version bumped.
+
+*flexbackup-1.0.5 (03 Jul 2003)
+
+  03 Jul 2003; Martin Holzer <mholzer@gentoo.org> flexbackup-1.0.5.ebuild:
+  Version bumped.
+
+*flexbackup-1.1.7 (25 Jun 2003)
+
+  25 Jun 2003; Martin Holzer <mholzer@gentoo.org> flexbackup-1.1.7.ebuild:
+  Version bumped.
+
+*flexbackup-1.0.4 (25 Jun 2003)
+
+  25 Jun 2003; Martin Holzer <mholzer@gentoo.org> flexbackup-1.0.4.ebuild:
+  Version bumped.
+
+*flexbackup-1.1.6 (16 Apr 2003)
+
+  16 Apr 2003; Martin Holzer <mholzer@gentoo.org> Manifest, flexbackup-1.0.3.ebuild,
+  flexbackup-1.1.6.ebuild, files/Makefile-gentoo.diff:
+  Initial ebuild by myself. Thx to Raphael Deimel for the devfs hint with the
+  tape.

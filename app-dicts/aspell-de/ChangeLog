@@ -1,0 +1,127 @@
+# ChangeLog for app-dicts/aspell-de
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-de/ChangeLog,v 1.26 2014/01/05 10:57:38 pacho Exp $
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> -aspell-de-0.50.2.ebuild,
+  metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org> aspell-de-0.50.2.ebuild,
+  aspell-de-0.60_pre20030222.ebuild:
+  keyword ~amd64-fbsd
+
+  17 Mar 2012; Matt Turner <mattst88@gentoo.org>
+  aspell-de-0.60_pre20030222.ebuild:
+  Added ~mips. How did this get dropped?
+
+  18 Jan 2011; Fabian Groffen <grobian@gentoo.org>
+  aspell-de-0.60_pre20030222.ebuild:
+  Marked ~ppc-macos, bug #351946
+
+  08 Oct 2010; Mart Raudsepp <leio@gentoo.org> aspell-de-0.50.2.ebuild:
+  Drop to ~mips
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  aspell-de-0.60_pre20030222.ebuild:
+  Transfer Prefix keywords
+
+  18 Oct 2009; Mark Loeser <halcy0n@gentoo.org> aspell-de-0.50.2.ebuild,
+  aspell-de-0.60_pre20030222.ebuild:
+  QA fixes; IUSE is not defined
+
+  03 Nov 2007; Roy Marples <uberlord@gentoo.org>
+  aspell-de-0.60_pre20030222.ebuild:
+  Keyworded ~sparc-fbsd and ~x86-fbsd
+
+  15 Aug 2007; Jeroen Roovers <jer@gentoo.org>
+  aspell-de-0.60_pre20030222.ebuild:
+  Stable for HPPA (bug #178690).
+
+  09 Aug 2007; Markus Rothe <corsair@gentoo.org>
+  aspell-de-0.60_pre20030222.ebuild:
+  Stable on ppc64; bug #178690
+
+  05 Aug 2007; Raúl Porcel <armin76@gentoo.org>
+  aspell-de-0.60_pre20030222.ebuild:
+  alpha/ia64/x86 stable wrt #178690
+
+  05 Aug 2007; nixnut <nixnut@gentoo.org> aspell-de-0.60_pre20030222.ebuild:
+  Stable on ppc wrt bug 178690
+
+  04 Aug 2007; Ferris McCormick <fmccor@gentoo.org>
+  aspell-de-0.60_pre20030222.ebuild:
+  Sparc stable --- part of Bug #178690
+
+  04 Aug 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  aspell-de-0.60_pre20030222.ebuild:
+  Marked stable on amd64 as per bug 178690.
+
+  04 Aug 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  aspell-de-0.60_pre20030222.ebuild:
+  Tested on alpha and re-added the keyword.
+
+  12 May 2007; Markus Rothe <corsair@gentoo.org>
+  aspell-de-0.60_pre20030222.ebuild:
+  Added ~ppc64; bug #147568
+
+  22 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  aspell-de-0.60_pre20030222.ebuild:
+  Use mirror://gnu/ rather than ftp.gnu.org.
+
+  01 Dec 2006; Kevin F. Quinn <kevquinn@gentoo.org> aspell-de-0.50.2.ebuild,
+  aspell-de-0.60_pre20030222.ebuild:
+  Ebuild cleanups for bug #132718
+
+  20 Feb 2005; Anders Rune Jensen <arj@gentoo.org> aspell-de-0.60_pre20030222:
+  Fix KEYWORDS.
+
+*aspell-de-0.60_pre20030222 (21 Nov 2004)
+
+  21 Nov 2004; Anders Rune Jensen <arj@gentoo.org> aspell-de-0.60_pre20030222 :
+  Version bump. Fixes #71794.
+	
+  30 Jul 2004; Anders Rune Jensen <arj@gentoo.org> +metadata.xml, 
+  QA - IUSE fix and {add missing,correct} metatata.xml.
+
+*aspell-de-0.50.2 (03 Sep 2002)
+
+  02 Dec 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
+  Moved from app-i18n to app-dicts
+
+  03 Sep 2002; Seemant Kulleen <seemant@gentoo.org> aspell-de-0.50.2.ebuild
+  files/digest-aspell-de-0.50.2 :
+
+  Version bump to bugfix release.
+
+*aspell-de-0.50.1 (23 Aug 2002)
+
+  23 Aug 2002; Seemant Kulleen <seemant@gentoo.org> aspell-de-0.50.1.ebuild
+  files/digest-aspell-de-0.50.1 :
+
+  Version bump for stable aspell-0.50
+
+*aspell-de-0.1.0.10 (15 Aug 2002)
+
+  15 Aug 2002; Seemant Kulleen <seemant@gentoo.org>
+  aspell-de-0.1.0.10.ebuild files/digest-aspell-de-0.1.0.10 :
+
+  New dictionary for aspell-0.50_pre
+
+*aspell-de-20011124 (11 Jul 2002)
+
+  11 Jul 2002; Seemant Kulleen <seemant@gentoo.org>
+  aspell-de-20011124.ebuild files/digest-aspell-de-20011124 :
+
+  Version bump.
+
+*aspell-de-20001109 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

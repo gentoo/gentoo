@@ -1,0 +1,24 @@
+ doc/CMakeLists.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+index 2d8eb24..aeac8ed 100644
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -1,4 +1,8 @@
+ find_package(LATEX)
++
++if (NOT DOCDIR)
++  set(DOCDIR share/doc/flann)
++endif ()
+  
+ if (EXISTS ${PDFLATEX_COMPILER} AND EXISTS ${BIBTEX_COMPILER})
+     include(${PROJECT_SOURCE_DIR}/cmake/UseLATEX.cmake)
+@@ -14,6 +18,6 @@ endif()
+ 
+ install(
+     FILES manual.pdf
+-    DESTINATION share/doc/flann
++    DESTINATION ${DOCDIR}
+     OPTIONAL
+ )

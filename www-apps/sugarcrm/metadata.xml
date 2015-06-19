@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>andreis.vinogradovs@gmail.com</email>
+		<name>Andreis Vinogradovs</name>
+	</maintainer>
+	<maintainer>
+		<email>maksbotan@gentoo.org</email>
+		<name>Maxim Koltsov</name>
+	</maintainer>
+	<use>
+		<flag name="json">Add JSON (JavaScript Object Notation) support</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">sugarcrm</remote-id>
+	</upstream>
+</pkgmetadata>

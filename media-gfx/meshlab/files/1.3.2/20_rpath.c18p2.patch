@@ -1,0 +1,43 @@
+From: Teemu Ikonen <tpikonen@gmail.com>
+Subject: Use /usr/lib/meshlab as RPATH in binaries.
+Git-Branch: p/rpath
+Git-Diff: 532bdd9a6bde03cf47da8fb63fee60..0ecffa4d55bfff6f3b98a478d0cd82
+
+ meshlab/src/meshlab/meshlab.pro             |    4 +---
+ meshlab/src/meshlabserver/meshlabserver.pro |    4 +---
+ 2 files changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/meshlab/src/meshlab/meshlab.pro b/meshlab/src/meshlab/meshlab.pro
+index 4a7d0fd..f67ba07 100644
+--- a/meshlab/src/meshlab/meshlab.pro
++++ b/meshlab/src/meshlab/meshlab.pro
+@@ -130,11 +130,9 @@ win32-g++:LIBS        	+= -L../external/lib/win32-gcc -L../distrib -lcommon
+ #}
+ 
+ linux-g++:LIBS += -L../external/lib/linux-g++ -ljhead -L../distrib -lcommon -lGLU
+-linux-g++:QMAKE_RPATHDIR += ../distrib
++linux-g++:QMAKE_RPATHDIR += /usr/lib/meshlab
+ linux-g++-32:LIBS += -L../external/lib/linux-g++-32 -L../distrib -lcommon -lGLU
+-linux-g++-32:QMAKE_RPATHDIR += ../distrib
+ linux-g++-64:LIBS += -L../external/lib/linux-g++-64 -L../distrib -lcommon -lGLU
+-linux-g++-64:QMAKE_RPATHDIR += ../distrib
+ 
+ # uncomment in your local copy only in emergency cases.
+ # We should never be too permissive
+diff --git a/meshlab/src/meshlabserver/meshlabserver.pro b/meshlab/src/meshlabserver/meshlabserver.pro
+index cca5560..6a19b81 100644
+--- a/meshlab/src/meshlabserver/meshlabserver.pro
++++ b/meshlab/src/meshlabserver/meshlabserver.pro
+@@ -26,11 +26,9 @@ win32-msvc2008:  LIBS += -L../distrib -lcommon
+ win32-msvc2010:  LIBS += -L../distrib -lcommon
+ win32-g++:  LIBS += -L../distrib -lcommon
+ linux-g++:  LIBS += -L../distrib -lcommon
+-linux-g++:QMAKE_RPATHDIR += ../distrib
++linux-g++:QMAKE_RPATHDIR += /usr/lib/meshlab
+ linux-g++-32:  LIBS += -L../distrib -lcommon
+-linux-g++-32:QMAKE_RPATHDIR += ../distrib
+ linux-g++-64:  LIBS += -L../distrib -lcommon
+-linux-g++-64:QMAKE_RPATHDIR += ../distrib
+ #CONFIG (release,debug | release) {
+ #	win32-msvc2005:release:  LIBS += -L../common/release -lcommon
+ #	win32-msvc2008:release:  LIBS += -L../common/release -lcommon

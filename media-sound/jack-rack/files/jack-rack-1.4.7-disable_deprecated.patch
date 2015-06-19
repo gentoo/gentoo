@@ -1,0 +1,19 @@
+http://bugs.gentoo.org/376899
+
+--- src/Makefile.am
++++ src/Makefile.am
+@@ -53,13 +53,7 @@
+ 	$(XML_CFLAGS) \
+ 	-DPKGDATADIR=\"$(pkgdatadir)\" \
+ 	-DPIXMAPDIR=\"$(pixmapdir)\" \
+-	-DDTDDIR=\"$(dtddir)\" \
+-	-DG_DISABLE_DEPRECATED=1 \
+-	-DGTK_DISABLE_DEPRECATED=1 \
+-	-DGDK_DISABLE_DEPRECATED=1 \
+-	-DGDK_PIXBUF_DISABLE_DEPRECATED=1 \
+-	-DGNOME_DISABLE_DEPRECATED=1
+-
++	-DDTDDIR=\"$(dtddir)\"
+ 
+ jack_rack_LDFLAGS = \
+ 	$(JACK_LIBS) \

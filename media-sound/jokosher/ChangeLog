@@ -1,0 +1,61 @@
+# ChangeLog for media-sound/jokosher
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/jokosher/ChangeLog,v 1.16 2015/01/29 10:54:49 pacho Exp $
+
+  29 Jan 2015; Pacho Ramos <pacho@gentoo.org> -jokosher-0.11.1.ebuild,
+  -jokosher-0.11.5.ebuild:
+  Drop old
+
+  29 Jan 2015; Pacho Ramos <pacho@gentoo.org> jokosher-0.11.5-r1.ebuild:
+  amd64/x86 stable, bug #531490
+
+*jokosher-0.11.5-r1 (02 Dec 2014)
+
+  02 Dec 2014; Pacho Ramos <pacho@gentoo.org> +jokosher-0.11.5-r1.ebuild:
+  Port to new python eclasses
+
+  25 Oct 2012; Gilles Dartiguelongue <eva@gentoo.org> jokosher-0.11.1.ebuild,
+  jokosher-0.11.5.ebuild:
+  Pin gstreamer dependencies to slot 0.10.
+
+*jokosher-0.11.5 (09 May 2011)
+
+  09 May 2011; Christoph Mende <angelos@gentoo.org> +jokosher-0.11.5.ebuild,
+  +files/jokosher-0.11.5-cairo.patch:
+  Version bump (bug #347723)
+
+  11 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  jokosher-0.11.1.ebuild:
+  Use Python 2 (bug #313953).
+
+  06 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  jokosher-0.11.1.ebuild:
+  Use PYTHON_DEPEND instead of NEED_PYTHON.
+
+  11 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  jokosher-0.11.1.ebuild:
+  stable x86, bug 272823
+
+*jokosher-0.11.1 (12 May 2009)
+
+  12 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +jokosher-0.11.1.ebuild, +files/jokosher-0.11.1-update-database.patch:
+  Version bump wrt #260967, thanks to Dennis Lichtenthäler.
+
+  30 Dec 2007; Markus Ullmann <jokey@gentoo.org> jokosher-0.9.ebuild:
+  Stable on x86
+
+  30 Dec 2007; Markus Ullmann <jokey@gentoo.org> jokosher-0.9.ebuild:
+  Add setuptools runtime dep
+
+  18 Nov 2007; Alexis Ballier <aballier@gentoo.org> jokosher-0.9.ebuild:
+  add ~amd64, works like a charm here
+
+*jokosher-0.9 (17 Sep 2007)
+
+  17 Sep 2007; Samuli Suominen <ssuominen@gentoo.org>
+  +files/jokosher-0.9-desktop-entry.patch,
+  +files/jokosher-0.9-update-database.patch, +jokosher-0.9.ebuild:
+  Initial commit for bug 141362, thanks to Denis Gubanov, Eric Anderson, James
+  Kirkham, Jose daLuz, Alex Rostovtsev and many others I missed to mention
+  here.

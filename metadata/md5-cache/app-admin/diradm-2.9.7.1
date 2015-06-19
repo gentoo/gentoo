@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst setup test
+DEPEND=>=net-nds/openldap-2.3 sys-apps/gawk sys-apps/coreutils sys-apps/grep dev-lang/perl app-shells/bash sys-apps/sed virtual/perl-MIME-Base64 samba? ( dev-perl/Crypt-SmbHash >=net-fs/samba-3.0.6 ) test? ( dev-perl/Crypt-SmbHash >=net-fs/samba-3.0.6 dev-util/dejagnu net-nds/openldap[-minimal] )
+DESCRIPTION=diradm is a nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP
+EAPI=2
+HOMEPAGE=http://orbis-terrarum.net/~robbat2/
+IUSE=samba irixpasswd automount test
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=>=net-nds/openldap-2.3 sys-apps/gawk sys-apps/coreutils sys-apps/grep dev-lang/perl app-shells/bash sys-apps/sed virtual/perl-MIME-Base64 samba? ( dev-perl/Crypt-SmbHash >=net-fs/samba-3.0.6 )
+SLOT=0
+SRC_URI=http://orbis-terrarum.net/~robbat2/diradm-2.9.7.1.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8ed470f5d2468c2bdb1163d9a72962f0

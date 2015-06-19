@@ -1,0 +1,35 @@
+# ChangeLog for app-misc/gcstar
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/gcstar/ChangeLog,v 1.7 2013/07/27 02:39:47 tetromino Exp $
+
+  27 Jul 2013; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -gcstar-1.6.2.ebuild:
+  Remove old.
+
+  17 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> gcstar-1.7.0.ebuild:
+  x86 stable wrt bug #437952
+
+  11 Oct 2012; Agostino Sarubbo <ago@gentoo.org> gcstar-1.7.0.ebuild:
+  Stable for amd64, wrt bug #437952
+
+*gcstar-1.7.0 (08 Sep 2012)
+
+  08 Sep 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +gcstar-1.7.0.ebuild, +files/gcstar-1.7.0-gcstar.desktop.patch:
+  Version bump with bug fixes and UI improvements.
+
+  05 Apr 2012; Jeff Horelick <jdhore@gentoo.org> gcstar-1.6.2.ebuild:
+  marked x86 per bug 397727
+
+  07 Jan 2012; Agostino Sarubbo <ago@gentoo.org> gcstar-1.6.2.ebuild:
+  Stable for AMD64, wrt bug #397727
+
+*gcstar-1.6.2 (20 Nov 2011)
+
+  20 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +files/gcstar-1.4.0-man.patch, +gcstar-1.6.2.ebuild, +metadata.xml:
+  Add new collection manager ebuild from the sunrise overlay (bug #139940);
+  thanks to Tiziano Müller <gentoo@dev-zero.ch> for the original ebuild, and
+  to Jakub Moc, Dawid Węgliński, Thomas Sachau, and Markos Chandras for
+  helping maintain it in sunrise.
+

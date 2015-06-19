@@ -1,0 +1,129 @@
+# ChangeLog for sci-libs/scikits_image
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/scikits_image/ChangeLog,v 1.22 2015/04/08 18:49:15 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> scikits_image-0.10.0.ebuild,
+  scikits_image-0.10.1.ebuild, scikits_image-0.9.3.ebuild:
+  Drop old Python implementations
+
+  18 Jan 2015; Justin Lecher <jlec@gentoo.org> scikits_image-0.10.1.ebuild:
+  Add missing dep, #536880
+
+*scikits_image-0.10.1 (26 Oct 2014)
+
+  26 Oct 2014; Justin Lecher <jlec@gentoo.org> +scikits_image-0.10.1.ebuild,
+  metadata.xml:
+  Version Bump
+
+*scikits_image-0.10.0 (20 Jun 2014)
+
+  20 Jun 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  +scikits_image-0.10.0.ebuild, -scikits_image-0.8.2.ebuild,
+  -scikits_image-0.9.1.ebuild:
+  Version bump
+
+*scikits_image-0.9.3 (26 Nov 2013)
+
+  26 Nov 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +scikits_image-0.9.3.ebuild:
+  Version bump
+
+*scikits_image-0.9.1 (23 Oct 2013)
+
+  23 Oct 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +scikits_image-0.9.1.ebuild, metadata.xml:
+  Version bump
+
+  18 Sep 2013; Justin Lecher <jlec@gentoo.org> scikits_image-0.8.2.ebuild,
+  metadata.xml:
+  Fix missing die
+
+  17 Sep 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  scikits_image-0.8.2.ebuild:
+  Cleanup tests for distutils-r1 wrappers
+
+  18 Jun 2013; Patrick Lauer <patrick@gentoo.org> scikits_image-0.8.2.ebuild:
+  Fix python targets as pyamg does not have py3 support yet
+
+  17 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  -scikits_image-0.7.2-r2.ebuild, scikits_image-0.8.2.ebuild:
+  Call scipy with sparse flag instead of umfpack. Fixed python-2 only dependency
+  for pygtk
+
+*scikits_image-0.8.2 (19 Mar 2013)
+
+  19 Mar 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +scikits_image-0.8.2.ebuild, -scikits_image-0.7.2-r1.ebuild, metadata.xml:
+  Version bump
+
+*scikits_image-0.7.2-r2 (08 Feb 2013)
+
+  08 Feb 2013; Justin Lecher <jlec@gentoo.org> +scikits_image-0.7.2-r2.ebuild,
+  metadata.xml:
+  Version Bump; move to new python eclasses
+
+  03 Jan 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  scikits_image-0.7.2-r1.ebuild:
+  Restricting to all python-3 versions
+
+*scikits_image-0.7.2-r1 (10 Dec 2012)
+
+  10 Dec 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +scikits_image-0.7.2-r1.ebuild, -scikits_image-0.5.ebuild,
+  -scikits_image-0.6.ebuild, -scikits_image-0.7.2.ebuild, metadata.xml:
+  Fixed dependencies. Removed doc building because of missing files. Restrict
+  more python versions, rewrote test building, added freeimage possible
+  dependency
+
+*scikits_image-0.7.2 (29 Oct 2012)
+
+  29 Oct 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +scikits_image-0.7.2.ebuild:
+  Version bump
+
+*scikits_image-0.6 (09 Jul 2012)
+
+  09 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org> +scikits_image-0.6.ebuild,
+  -scikits_image-0.3.1.ebuild, -scikits_image-0.4.2.ebuild:
+  Version bump. Keyword amd64-linux, x86-linux
+
+  21 Jun 2012; Sébastien Fabbro <bicatali@gentoo.org> scikits_image-0.5.ebuild:
+  Restrict pypy
+
+*scikits_image-0.5 (02 Mar 2012)
+
+  02 Mar 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +scikits_image-0.5.ebuild:
+  Version bump
+
+*scikits_image-0.4.2 (20 Dec 2011)
+
+  20 Dec 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  -scikits_image-0.2.2.ebuild, +scikits_image-0.4.2.ebuild:
+  Version bump
+
+*scikits_image-0.3.1 (25 Nov 2011)
+
+  25 Nov 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  +scikits_image-0.3.1.ebuild:
+  Version bump
+
+  08 Jan 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  +scikits_image-0.2.2.ebuild, +metadata.xml:
+  Initial import to the main tree
+
+  04 Dec 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  scikits_image-0.2.2.ebuild:
+  Now depend on common scikits
+
+  29 Jun 2010; Justin Lecher <jlec@gentoo.org> scikits_image-0.2.2.ebuild:
+  Python ABI fixes
+
+  29 Jun 2010; Justin Lecher <jlec@gentoo.org> scikits_image-0.2.2.ebuild:
+  removed old
+
+*scikits_image-0.2.2 (26 Mar 2010)
+
+  26 Mar 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +scikits_image-0.2.2.ebuild, +metadata.xml:
+  Initial import

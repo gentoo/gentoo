@@ -1,0 +1,23 @@
+# ChangeLog for dev-perl/Image-Scale
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Image-Scale/ChangeLog,v 1.4 2014/08/26 17:01:28 axs Exp $
+
+*Image-Scale-0.80.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Image-Scale-0.80.0-r1.ebuild, -Image-Scale-0.80.0.ebuild:
+  bumped EAPI to 5, simplified src_configure, default-enabled png because either
+  it or jpeg should be default on (to satisfy REQUIRED_USE) and I like png more
+
+  10 Jul 2013; Mikle Kolyada <zlogene@gentoo.org> Image-Scale-0.80.0.ebuild:
+  Make USE=gif as default wrt bug #422793
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Image-Scale-0.80.0 (04 Apr 2012)
+
+  04 Apr 2012; Torsten Veller <tove@gentoo.org>
+  +files/0.80.0-disable_autodetect.patch, +Image-Scale-0.80.0.ebuild,
+  +files/libpng-1.5-memcpy.patch, +metadata.xml:
+  Initial commit for squeezeboxserver (#389739)

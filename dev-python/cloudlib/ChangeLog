@@ -1,0 +1,18 @@
+# ChangeLog for dev-python/cloudlib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cloudlib/ChangeLog,v 1.4 2015/06/07 12:34:30 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  09 May 2015; Matthew Thode <prometheanfire@gentoo.org> cloudlib-0.4.0.ebuild:
+  fixing python_prepare statement
+
+*cloudlib-0.4.0 (09 May 2015)
+
+  09 May 2015; Matthew Thode <prometheanfire@gentoo.org> +cloudlib-0.4.0.ebuild,
+  +metadata.xml:
+  adding for os-ansible-deployment

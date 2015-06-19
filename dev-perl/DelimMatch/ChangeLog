@@ -1,0 +1,118 @@
+# ChangeLog for dev-perl/DelimMatch
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/DelimMatch/ChangeLog,v 1.37 2014/12/07 13:25:55 zlogene Exp $
+
+  07 Dec 2014; Mikle Kolyada <zlogene@gentoo.org> DelimMatch-1.06-r1.ebuild:
+  Drop dev-lang/perl dependency
+
+  08 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> -DelimMatch-1.06.ebuild,
+  DelimMatch-1.06-r1.ebuild:
+  ppc/ppc64 stable wrt bug #492124; Drop old revision.
+
+  08 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> DelimMatch-1.06-r1.ebuild:
+  sparc stable wrt bug #492124
+
+  08 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> DelimMatch-1.06-r1.ebuild:
+  ia64 stable wrt bug #492124
+
+  08 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> DelimMatch-1.06-r1.ebuild:
+  amd64 stable wrt bug #492124
+
+  08 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> DelimMatch-1.06-r1.ebuild:
+  x86 stable wrt bug #492124
+
+  08 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> DelimMatch-1.06-r1.ebuild:
+  alpha stable wrt bug #492124
+
+*DelimMatch-1.06-r1 (25 Aug 2013)
+
+  25 Aug 2013; Ian Delaney <idella4@gentoo.org> +DelimMatch-1.06-r1.ebuild:
+  revbump -> EAPI 5 plus test phase
+
+  14 Dec 2012; Ulrich Müller <ulm@gentoo.org> DelimMatch-1.06.ebuild:
+  Fix LICENSE, same terms as Perl itself according to README file, bug 445262.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  17 Aug 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  DelimMatch-1.06.ebuild:
+  keyword ~sparc-solaris
+
+  09 Jan 2010; Fabian Groffen <grobian@gentoo.org> DelimMatch-1.06.ebuild:
+  Transfer Prefix keywords
+
+  02 Jul 2009; Jeroen Roovers <jer@gentoo.org> DelimMatch-1.06.ebuild:
+  Marked ~hppa too.
+
+  15 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  DelimMatch-1.06.ebuild:
+  Ebuild maintenance
+
+  28 Nov 2006; Tiziano Müller <dev-zero@gentoo.org> DelimMatch-1.06.ebuild:
+  ~x86-fbsd keyword added.
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  DelimMatch-1.06.ebuild:
+  Adding perl dep; fixed header; fixed DEPEND
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> DelimMatch-1.06.ebuild:
+  Mark 1.06 stable on ia64
+
+  03 Sep 2005; Markus Rothe <corsair@gentoo.org> DelimMatch-1.06.ebuild:
+  Stable on ppc64
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> DelimMatch-1.06.ebuild:
+  add ~ia64
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -DelimMatch-1.04-r1.ebuild, -DelimMatch-1.04.ebuild, DelimMatch-1.06.ebuild:
+  cleaning
+
+  10 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  DelimMatch-1.06.ebuild:
+  Stable on ppc.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  25 Dec 2004; Yuta SATOH <nigoro@gentoo.org> DelimMatch-1.06.ebuild:
+  added ~ppc64
+
+  04 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> DelimMatch-1.06.ebuild:
+  Stable on alpha.
+
+  26 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> DelimMatch-1.06.ebuild:
+  Marked stable on amd64.
+
+  25 Feb 2004; Sven Blumenstein <bazik@gentoo.org> DelimMatch-1.06.ebuild:
+  Stable on sparc, thanks to Josh Grebe <josh@brokedown.net> for testing!
+
+*DelimMatch-1.06 (15 Feb 2004)
+
+  15 Feb 2004; Michael Cummings,,, <mcummings@gentoo.org>
+  DelimMatch-1.06.ebuild:
+  New version off cpan
+
+*DelimMatch-1.04-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*DelimMatch-1.4 (31 05 2002)
+
+  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> DelimMatch-1.4.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  31 May 2002; B.Lauwers <blauwers@gentoo.org> ChangeLog: Added initial ebuild
+
+*DelimMatch-1.04 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.

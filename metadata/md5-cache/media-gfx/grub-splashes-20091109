@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst setup unpack
+DEPEND=|| ( sys-boot/grub sys-boot/grub-static )
+DESCRIPTION=Collection of grub splashes
+HOMEPAGE=http://dev.gentoo.org/~welp/grub-splashes.xml
+KEYWORDS=amd64 x86 ~x86-fbsd
+LICENSE=GPL-2 Artistic-2
+RDEPEND=|| ( sys-boot/grub sys-boot/grub-static )
+SLOT=0
+SRC_URI=mirror://gentoo/grub-splashes-0.1.tar.gz http://www.kde-look.org/CONTENT/content-files/49074-natural_gentoo-8.0.tar.gz http://www.kde-look.org/CONTENT/content-files/98478-gentoo-splash.xpm.gz
+_md5_=7c3b32bbf44a025b2bd5decac640d8fa

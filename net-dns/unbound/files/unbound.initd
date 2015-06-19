@@ -1,0 +1,56 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/unbound/files/unbound.initd,v 1.2 2011/09/13 15:14:49 matsuu Exp $
+
+name="unbound daemon"
+extra_commands="configtest"
+extra_started_commands="reload"
+description="unbound is a Domain Name Server (DNS) that is used to resolve host names to IP address."
+description_configtest="Run syntax tests for configuration files only."
+description_reload="Kills all children and reloads the configuration."
+
+
+UNBOUND_BINARY=${UNBOUND_BINARY:-/usr/sbin/unbound}
+UNBOUND_CHECKCONF=${UNBOUND_CHECKCONF:-/usr/sbin/unbound-checkconf}
+UNBOUND_CONFFILE=${UNBOUND_CONFFILE:-/etc/unbound/${SVCNAME}.conf}
+
+depend() {
+	need net
+	use logger
+	provide dns
+	after auth-dns
+}
+
+checkconfig() {
+	UNBOUND_PIDFILE=$("${UNBOUND_CHECKCONF}" -o pidfile "${UNBOUND_CONFFILE}")
+	return $?
+}
+
+configtest() {
+	ebegin "Checking ${SVCNAME} configuration"
+	checkconfig
+	eend $?
+}
+
+start() {
+	checkconfig || return $?
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --pidfile "${UNBOUND_PIDFILE}" \
+		--exec "${UNBOUND_BINARY}" -- -c "${UNBOUND_CONFFILE}"
+	eend $?
+}
+
+stop() {
+	checkconfig || return $?
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --pidfile "${UNBOUND_PIDFILE}"
+	eend $?
+}
+
+reload() {
+	checkconfig || return $?
+	ebegin "Reloading ${SVCNAME}"
+	start-stop-daemon --signal HUP --pidfile "${UNBOUND_PIDFILE}"
+	eend $?
+}

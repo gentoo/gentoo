@@ -1,0 +1,43 @@
+# ChangeLog for dev-games/libnw
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-games/libnw/ChangeLog,v 1.15 2015/06/09 13:26:25 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  12 Mar 2015; Agostino Sarubbo <ago@gentoo.org> libnw-1.30.02.ebuild:
+  Stable for amd64, wrt bug #542740
+
+  07 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> libnw-1.30.02.ebuild:
+  EAPI=5
+
+  13 Jul 2011; Michael Sterrett <mr_bones_@gentoo.org> libnw-1.30.02.ebuild:
+  Add blocker for sci-biology/newick-utils (bug #375059)
+
+  18 Mar 2009; Brent Baude <ranger@gentoo.org> libnw-1.30.02.ebuild:
+  stable ppc, bug 256732
+
+  22 Feb 2009; Raúl Porcel <armin76@gentoo.org> libnw-1.30.02.ebuild:
+  x86 stable wrt #256732
+
+  29 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org> libnw-1.30.02.ebuild:
+  EAPI=2; respect CC
+
+*libnw-1.30.02 (05 Sep 2008)
+
+  05 Sep 2008; Tristan Heaven <nyhm@gentoo.org> +libnw-1.30.02.ebuild:
+  Version bump
+
+  08 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  30 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> libnw-1.30.01.ebuild:
+  Removed INSTALL.
+
+  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> libnw-1.30.01.ebuild:
+  Adding IUSE.
+
+*libnw-1.30.01 (11 Jul 2003)
+
+  11 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Francois Guimond <eyrdan@users.sourceforge.net> #20455.

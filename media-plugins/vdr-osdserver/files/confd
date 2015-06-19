@@ -1,0 +1,7 @@
+# /etc/conf.d/vdr.osdserver
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-osdserver/files/confd,v 1.1 2007/12/02 16:02:37 hd_brummy Exp $
+
+### Listening port for osdserver plugin
+#   default: 2010
+#OSDSERVER_PORT="2010"
+

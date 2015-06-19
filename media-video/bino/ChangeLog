@@ -1,0 +1,40 @@
+# ChangeLog for media-video/bino
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/bino/ChangeLog,v 1.7 2015/02/27 22:24:32 mgorny Exp $
+
+  27 Feb 2015; Michał Górny <mgorny@gentoo.org> bino-1.6.1.ebuild:
+  Use USE=libav to control ffmpeg/libav linking. Patch provided by Nikoli in
+  https://github.com/gentoo/gentoo-portage-rsync-mirror/pull/62.
+
+*bino-1.6.1 (28 Dec 2014)
+
+  28 Dec 2014; Robin H. Johnson <robbat2@gentoo.org> +bino-1.6.1.ebuild:
+  Bump.
+
+*bino-1.4.4 (02 May 2014)
+
+  02 May 2014; Sven Vermeulen <swift@gentoo.org> +bino-1.4.4.ebuild:
+  Bump bino to 1.4.4 thanks to PhobosK, see bug #501374, #499772 and #482938
+
+*bino-1.4.2-r1 (12 May 2013)
+
+  12 May 2013; Markos Chandras <hwoarang@gentoo.org> +bino-1.4.2-r1.ebuild,
+  +files/bino-1.4.2-lirc-detect.patch, +files/bino.html, -bino-1.4.2.ebuild:
+  Revbump to add missing files. Raise media-libs/openal dependency. Bug #465172.
+  Thanks to Jožka Kejzlar (cuchac)
+
+*bino-1.4.2 (21 Apr 2013)
+
+  21 Apr 2013; Luca Barbato <lu_zero@gentoo.org> +bino-1.4.2.ebuild:
+  New version, thanks to PhobosK <phobosk@fastmail.fm> for the initial ebuild,
+  fix bug #465172
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> bino-1.3.0.ebuild:
+  Move Qt dependencies to the new category
+
+*bino-1.3.0 (20 Oct 2012)
+
+  20 Oct 2012; Robin H. Johnson <robbat2@gentoo.org> +bino-1.3.0.ebuild,
+  +metadata.xml:
+  Initial commit, bug #355543. Ebuild submitted by Jožka Kejzlar (cuchac)
+  <cuchac@email.cz>.

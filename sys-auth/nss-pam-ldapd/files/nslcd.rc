@@ -1,0 +1,35 @@
+#!/sbin/runscript
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/nss-pam-ldapd/files/nslcd.rc,v 1.1 2012/07/24 07:16:14 prometheanfire Exp $
+
+opts="checkconfig"
+
+depend() {
+	need net	
+	use dns logger
+}
+
+checkconfig() {
+	if [ ! -f /etc/nss-ldapd.conf ] ; then
+		eerror "Please create /etc/nss-ldapd.conf"
+		eerror "Example config: /usr/share/nss-ldapd/nss-ldapd.conf"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	checkconfig || return $?
+
+	ebegin "Starting nslcd"
+	start-stop-daemon --start --pidfile /var/run/nslcd/nslcd.pid \
+		--exec /usr/sbin/nslcd
+	eend $? "Failed to start nslcd"
+}
+
+stop() {
+	ebegin "Stopping nslcd"
+	start-stop-daemon --stop --pidfile /var/run/nslcd/nslcd.pid
+	eend $? "Failed to stop nslcd"
+}

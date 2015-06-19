@@ -1,0 +1,259 @@
+# ChangeLog for perl-core/CPAN-Meta
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/perl-core/CPAN-Meta/ChangeLog,v 1.52 2015/06/04 16:38:49 dilfridge Exp $
+
+  04 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -CPAN-Meta-2.120.921-r1.ebuild, -CPAN-Meta-2.132.510-r1.ebuild:
+  Remove old
+
+*CPAN-Meta-2.143.240 (27 Feb 2015)
+
+  27 Feb 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +CPAN-Meta-2.143.240.ebuild:
+  Version bump
+
+*CPAN-Meta-2.120.921-r1 (25 Jul 2014)
+*CPAN-Meta-2.132.510-r1 (25 Jul 2014)
+
+  25 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +CPAN-Meta-2.120.921-r1.ebuild, +CPAN-Meta-2.132.510-r1.ebuild,
+  -CPAN-Meta-2.120.921.ebuild, -CPAN-Meta-2.132.510.ebuild:
+  EAPI bump
+
+  18 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -CPAN-Meta-2.120.630.ebuild:
+  Remove old
+
+  05 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -CPAN-Meta-2.110.580.ebuild, -CPAN-Meta-2.110.910.ebuild,
+  -CPAN-Meta-2.110.930.ebuild, -CPAN-Meta-2.112.150.ebuild,
+  -CPAN-Meta-2.112.621.ebuild, -CPAN-Meta-2.113.640.ebuild,
+  -CPAN-Meta-2.120.351.ebuild, -CPAN-Meta-2.120.900.ebuild,
+  -CPAN-Meta-2.132.140.ebuild:
+  Remove old
+
+  05 Jun 2014; Mikle Kolyada <zlogene@gentoo.org> -CPAN-Meta-2.110.440.ebuild:
+  Drop old
+
+  19 Jan 2014; Mike Frysinger <vapier@gentoo.org> CPAN-Meta-2.120.921.ebuild,
+  CPAN-Meta-2.132.140.ebuild, CPAN-Meta-2.132.510.ebuild:
+  Add arm64 love.
+
+  17 Jan 2014; Mike Frysinger <vapier@gentoo.org> CPAN-Meta-2.120.921.ebuild:
+  Mark m68k stable.
+
+*CPAN-Meta-2.132.510 (09 Sep 2013)
+
+  09 Sep 2013; Patrick Lauer <patrick@gentoo.org> +CPAN-Meta-2.132.510.ebuild:
+  Bump
+
+*CPAN-Meta-2.132.140 (14 Aug 2013)
+
+  14 Aug 2013; Patrick Lauer <patrick@gentoo.org> +CPAN-Meta-2.132.140.ebuild:
+  Bump
+
+  02 Mar 2013; Agostino Sarubbo <ago@gentoo.org> CPAN-Meta-2.120.921.ebuild:
+  Stable for sh, wrt bug #458122
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org> CPAN-Meta-2.120.921.ebuild:
+  Stable for sparc, wrt bug #458122
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org> CPAN-Meta-2.120.921.ebuild:
+  Stable for ia64, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> CPAN-Meta-2.120.921.ebuild:
+  Stable for arm, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> CPAN-Meta-2.120.921.ebuild:
+  Stable for s390, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> CPAN-Meta-2.120.921.ebuild:
+  Stable for alpha, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> CPAN-Meta-2.120.921.ebuild:
+  Stable for hppa, wrt bug #458122
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org> CPAN-Meta-2.120.921.ebuild:
+  Add ~arm-linux keyword.
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> CPAN-Meta-2.120.921.ebuild:
+  Stable for ppc, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> CPAN-Meta-2.120.921.ebuild:
+  Stable for ppc64, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> CPAN-Meta-2.120.921.ebuild:
+  Stable for x86, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> CPAN-Meta-2.120.921.ebuild:
+  Stable for amd64, wrt bug #458122
+
+  07 Jan 2013; Mike Frysinger <vapier@gentoo.org> CPAN-Meta-2.110.440.ebuild,
+  CPAN-Meta-2.110.580.ebuild, CPAN-Meta-2.110.910.ebuild,
+  CPAN-Meta-2.110.930.ebuild, CPAN-Meta-2.112.150.ebuild,
+  CPAN-Meta-2.112.621.ebuild, CPAN-Meta-2.113.640.ebuild,
+  CPAN-Meta-2.120.351.ebuild, CPAN-Meta-2.120.630.ebuild,
+  CPAN-Meta-2.120.900.ebuild, CPAN-Meta-2.120.921.ebuild:
+  Add m68k love.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  15 May 2012; Mark Loeser <halcy0n@gentoo.org> CPAN-Meta-2.112.621.ebuild:
+  Stable for ppc64; bug #393397
+
+  28 Apr 2012; Alexis Ballier <aballier@gentoo.org> CPAN-Meta-2.120.921.ebuild:
+  keyword ~amd64-fbsd
+
+*CPAN-Meta-2.120.921 (02 Apr 2012)
+
+  02 Apr 2012; Torsten Veller <tove@gentoo.org> +CPAN-Meta-2.120.921.ebuild:
+  Version bump
+
+*CPAN-Meta-2.120.900 (30 Mar 2012)
+
+  30 Mar 2012; Torsten Veller <tove@gentoo.org> +CPAN-Meta-2.120.900.ebuild:
+  Version bump
+
+*CPAN-Meta-2.120.630 (04 Mar 2012)
+
+  04 Mar 2012; Torsten Veller <tove@gentoo.org> +CPAN-Meta-2.120.630.ebuild:
+  Version bump
+
+  01 Mar 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Add cpan remote-id tags in metadata.xml (#406287)
+
+*CPAN-Meta-2.120.351 (04 Feb 2012)
+
+  04 Feb 2012; Torsten Veller <tove@gentoo.org> +CPAN-Meta-2.120.351.ebuild:
+  Version bump
+
+  02 Feb 2012; Brent Baude <ranger@gentoo.org> CPAN-Meta-2.112.621.ebuild:
+  Marking CPAN-Meta-2.112.621 ppc stable for bug 393397
+
+  15 Jan 2012; Raúl Porcel <armin76@gentoo.org> CPAN-Meta-2.112.621.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #393397
+
+*CPAN-Meta-2.113.640 (08 Jan 2012)
+
+  08 Jan 2012; Torsten Veller <tove@gentoo.org> +CPAN-Meta-2.113.640.ebuild:
+  Version bump
+
+  22 Dec 2011; Markus Meier <maekke@gentoo.org> CPAN-Meta-2.112.621.ebuild:
+  x86 stable, bug #393397
+
+  20 Dec 2011; Agostino Sarubbo <ago@gentoo.org> CPAN-Meta-2.112.621.ebuild:
+  Stable for AMD64, wrt bug #393397
+
+  14 Dec 2011; Markus Meier <maekke@gentoo.org> CPAN-Meta-2.112.621.ebuild:
+  arm stable, bug #393397
+
+  07 Dec 2011; Jeroen Roovers <jer@gentoo.org> CPAN-Meta-2.112.621.ebuild:
+  Stable for HPPA (bug #393397).
+
+*CPAN-Meta-2.112.621 (24 Sep 2011)
+
+  24 Sep 2011; Torsten Veller <tove@gentoo.org> +CPAN-Meta-2.112.621.ebuild:
+  Version bump
+
+*CPAN-Meta-2.112.150 (06 Aug 2011)
+
+  06 Aug 2011; Torsten Veller <tove@gentoo.org> +CPAN-Meta-2.112.150.ebuild:
+  Version bump
+
+  26 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  CPAN-Meta-2.110.930.ebuild:
+  Marked ~ppc/~ppc64 wrt #357599
+
+  07 Jul 2011; Alexis Ballier <aballier@gentoo.org> CPAN-Meta-2.110.930.ebuild:
+  keyword ~x86-fbsd
+
+  13 Jun 2011; Matt Turner <mattst88@gentoo.org> CPAN-Meta-2.110.930.ebuild:
+  Added ~mips, bug 357599
+
+  02 May 2011; Fabian Groffen <grobian@gentoo.org> CPAN-Meta-2.110.930.ebuild:
+  Marked ~x64-freebsd
+
+*CPAN-Meta-2.110.930 (03 Apr 2011)
+
+  03 Apr 2011; Torsten Veller <tove@gentoo.org> +CPAN-Meta-2.110.930.ebuild:
+  Version bump
+
+*CPAN-Meta-2.110.910 (02 Apr 2011)
+
+  02 Apr 2011; Torsten Veller <tove@gentoo.org> +CPAN-Meta-2.110.910.ebuild:
+  Version bump
+
+  19 Mar 2011; Raúl Porcel <armin76@gentoo.org> CPAN-Meta-2.110.440.ebuild,
+  CPAN-Meta-2.110.580.ebuild:
+  Add ~alpha/~arm/~ia64/~s390/~sh/~sparc wrt #357599
+
+  08 Mar 2011; Jeroen Roovers <jer@gentoo.org> CPAN-Meta-2.110.440.ebuild,
+  CPAN-Meta-2.110.580.ebuild:
+  Marked ~hppa (bug #357599).
+
+*CPAN-Meta-2.110.580 (08 Mar 2011)
+
+  08 Mar 2011; Torsten Veller <tove@gentoo.org> +CPAN-Meta-2.110.580.ebuild:
+  Version bump
+
+  06 Mar 2011; Fabian Groffen <grobian@gentoo.org> CPAN-Meta-2.110.440.ebuild:
+  Added Prefix keywords, bug #357599
+
+  06 Mar 2011; Torsten Veller <tove@gentoo.org> +CPAN-Meta-2.110.440.ebuild,
+  +metadata.xml:
+  Move from perl-experimental for Module-Build
+
+*CPAN-Meta-2.110.440 (13 Feb 2011)
+
+  13 Feb 2011; Torsten Veller <tove@gentoo.org> +CPAN-Meta-2.110.440.ebuild:
+  Version bump
+
+*CPAN-Meta-2.110.420 (12 Feb 2011)
+
+  12 Feb 2011; Torsten Veller <tove@gentoo.org> +CPAN-Meta-2.110.420.ebuild:
+  Version bump
+
+*CPAN-Meta-2.110.390 (08 Feb 2011)
+
+  08 Feb 2011; Torsten Veller <tove@gentoo.org> +CPAN-Meta-2.110.390.ebuild:
+  Version bump
+
+*CPAN-Meta-2.110.350 (04 Feb 2011)
+
+  04 Feb 2011; Torsten Veller <tove@gentoo.org> CPAN-Meta-2.110.240.ebuild,
+  +CPAN-Meta-2.110.350.ebuild:
+  Version bump. Fix depent typo
+
+*CPAN-Meta-2.110.240 (30 Jan 2011)
+
+  30 Jan 2011; Kent Fredric <kentfredric@gmail.com>
+  +CPAN-Meta-2.110.240.ebuild:
+  Bump
+
+*CPAN-Meta-2.102.400 (30 Jan 2011)
+*CPAN-Meta-2.102.160 (30 Jan 2011)
+*CPAN-Meta-2.101.670 (30 Jan 2011)
+
+  30 Jan 2011; Kent Fredric <kentfredric@gmail.com>
+  +CPAN-Meta-2.101.670.ebuild, +CPAN-Meta-2.102.160.ebuild,
+  +CPAN-Meta-2.102.400.ebuild, -CPAN-Meta-2.101670.ebuild,
+  -CPAN-Meta-2.102160.ebuild, -CPAN-Meta-2.102400.ebuild:
+  Migrate to new version scheme
+
+*CPAN-Meta-2.102400 (09 Sep 2010)
+
+  09 Sep 2010; Kent Fredric <kentfredric@gmail.com>
+  +CPAN-Meta-2.102400.ebuild:
+  Bump
+
+*CPAN-Meta-2.102160 (05 Aug 2010)
+
+  05 Aug 2010; Torsten Veller <tove@gentoo.org> +CPAN-Meta-2.102160.ebuild:
+  Version bump
+
+*CPAN-Meta-2.101670 (18 Jun 2010)
+
+  18 Jun 2010; Kent Fredric <kentfredric@gmail.com>
+  +CPAN-Meta-2.101670.ebuild, +metadata.xml:
+  Initial insertion.

@@ -1,0 +1,49 @@
+# ChangeLog for app-editors/wxhexeditor
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/wxhexeditor/ChangeLog,v 1.8 2015/06/09 10:53:41 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> wxhexeditor-0.20.ebuild,
+  wxhexeditor-0.21.ebuild, wxhexeditor-0.22.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*wxhexeditor-0.22 (24 Jun 2013)
+
+  24 Jun 2013; Justin Lecher <jlec@gentoo.org> +wxhexeditor-0.22.ebuild,
+  +files/wxhexeditor-0.22-makefile.patch, metadata.xml:
+  Version Bump
+
+*wxhexeditor-0.21 (16 Mar 2013)
+
+  16 Mar 2013; Ryan Hill <dirtyepic@gentoo.org> -wxhexeditor-0.11.ebuild,
+  -files/wxhexeditor-0.11-makefile.patch, +wxhexeditor-0.21.ebuild,
+  +files/wxhexeditor-0.21-desktop-validation.patch,
+  +files/wxhexeditor-0.21-makefile.patch:
+  Version bump (Bug #455956 by Dave Armstrong). Fix .desktop file validation
+  warnings. Remove old.
+
+  05 Feb 2013; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+*wxhexeditor-0.20 (02 Jul 2012)
+
+  02 Jul 2012; Ryan Hill <dirtyepic@gentoo.org> -wxhexeditor-0.09.ebuild,
+  -files/wxhexeditor-0.09-gcc45.patch, +wxhexeditor-0.20.ebuild,
+  +files/wxhexeditor-0.20-makefile.patch:
+  Version bump, bug #407161. Remove old.
+
+*wxhexeditor-0.11 (19 Aug 2011)
+
+  19 Aug 2011; Ryan Hill <dirtyepic@gentoo.org> +wxhexeditor-0.11.ebuild,
+  +files/wxhexeditor-0.11-makefile.patch:
+  Version bump (bug #373665 by Gary Hunt). Also respect compiler flags, fix
+  parallel build, and use system version of udis86.
+
+*wxhexeditor-0.09 (31 Aug 2010)
+
+  31 Aug 2010; Ryan Hill <dirtyepic@gentoo.org> +wxhexeditor-0.09.ebuild,
+  +files/wxhexeditor-0.09-gcc45.patch, +metadata.xml:
+  Initial import. Based on ebuilds by Yoshi Watanabe and Philipp Richter in
+  bug #283994.

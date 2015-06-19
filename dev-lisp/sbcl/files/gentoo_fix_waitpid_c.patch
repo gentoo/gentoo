@@ -1,0 +1,11 @@
+diff -uNr sbcl-1.0.55.orig/src/runtime/run-program.c sbcl-1.0.55/src/runtime/run-program.c
+--- a/src/runtime/run-program.c  2012-03-26 06:01:42.000000000 -0400
++++ b/src/runtime/run-program.c       2012-03-26 06:02:07.000000000 -0400
+@@ -20,6 +20,7 @@
+ #include <stdlib.h>
+ #include <sys/file.h>
+ #include <sys/types.h>
++#include <sys/wait.h>
+ #include <signal.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>

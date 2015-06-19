@@ -1,0 +1,27 @@
+--- Makefile.am~	2002-12-06 03:01:37.000000000 +0100
++++ Makefile.am	2003-04-15 20:14:34.000000000 +0200
+@@ -32,24 +32,7 @@
+ 		$(DESTDIR)$(SETTINGS_FILE) > $(DESTDIR)$(SETTINGS_FILE).tmp && \
+ 	mv -f $(DESTDIR)$(SETTINGS_FILE).tmp $(DESTDIR)$(SETTINGS_FILE)
+ 
+-	PATH="$(DESTDIR)$(bindir):$(FVWM_BINDIR):$$PATH"; \
+-	$(DESTDIR)$(bindir)/fvwm-themes-config --site --reset
+ 
+-	if test "$(BUILD_MENUS)" = "yes"; then \
+-		$(DESTDIR)$(bindir)/fvwm-themes-menuapp --site --build-menus --remove-popup; \
+-	fi
+-
+-	if test "$(GNOME_ICONS)" = "yes"; then \
+-		$(DESTDIR)$(bindir)/fvwm-themes-images --ft-install --gnome; \
+-	fi
+-
+-	if test "$(KDE2_ICONS)" = "yes"; then \
+-		$(DESTDIR)$(bindir)/fvwm-themes-images --ft-install --kde2; \
+-	fi
+-
+-	if test "$(RUN_UPDATEMENU)" = "yes"; then \
+-		$(UPDATE_MENU); \
+-	fi
+ 
+ 	@echo
+ 	@echo ------------------------------------------------------------------------------

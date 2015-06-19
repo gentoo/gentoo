@@ -1,0 +1,61 @@
+# ChangeLog for dev-python/apipkg
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/apipkg/ChangeLog,v 1.14 2015/04/06 03:38:35 idella4 Exp $
+
+*apipkg-1.4 (06 Apr 2015)
+
+  06 Apr 2015; Ian Delaney <idella4@gentoo.org> +apipkg-1.4.ebuild,
+  -apipkg-1.3.ebuild:
+  bump; rm -1.3 on the basis of msg in ChangeLog 'revert the automated version
+  gathering'
+
+*apipkg-1.3 (19 Mar 2015)
+
+  19 Mar 2015; Ian Delaney <idella4@gentoo.org> +apipkg-1.3.ebuild:
+  bump; add missing dep & update deps, add IUSE test & examples and
+  corresponding install phase, drop use of un-needed patch
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> apipkg-1.2-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> apipkg-1.2-r1.ebuild:
+  amd64 stable, bug 540290
+
+  13 Dec 2014; Ian Delaney <idella4@gentoo.org> apipkg-1.2-r1.ebuild:
+  offending test seded out wrt Bug #530388
+
+  13 Dec 2014; Ian Delaney <idella4@gentoo.org> -apipkg-1.0.ebuild,
+  -apipkg-1.2.ebuild, apipkg-1.2-r1.ebuild:
+  clean old impls add py3.4 pypy3 support wrt Bug #530388, rm old
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> apipkg-1.2-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> apipkg-1.2-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*apipkg-1.2-r1 (19 Jan 2013)
+
+  19 Jan 2013; Michał Górny <mgorny@gentoo.org> +apipkg-1.2-r1.ebuild:
+  Migrate to distutils-r1.
+
+  19 Jun 2012; Kacper Kowalik <xarthisius@gentoo.org> apipkg-1.2.ebuild:
+  Drop MY_P, bump to eapi4, add missing dependency on app-arch/unzip, drop test
+  fixes as they're no longer necessary. Thanks to Arfrever for the patch
+
+*apipkg-1.2 (19 Jun 2012)
+
+  19 Jun 2012; Patrick Lauer <patrick@gentoo.org> +apipkg-1.2.ebuild:
+  Bump, fixes #341673 #421793
+
+*apipkg-1.0 (16 Oct 2010)
+
+  16 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -apipkg-1.0_beta6.ebuild, +apipkg-1.0.ebuild:
+  Version bump.
+
+*apipkg-1.0_beta6 (02 Oct 2010)
+
+  02 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +apipkg-1.0_beta6.ebuild, +metadata.xml:
+  Initial addition. Ebuild written by me.

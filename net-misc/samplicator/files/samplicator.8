@@ -1,0 +1,86 @@
+.TH samplicator 8 "February 25, 2013" "" "samplicator"
+.SH NAME
+.B samplicator
+\- UDP packets forwarder and duplicator
+.SH SYNOPSIS
+.B samplicator
+.RB [ \-p
+.IR port ]
+.RB [ \-s
+.IR address ]
+.RB [ \-d
+.IR level ]
+.RB [ \-b
+.IR size ]
+.RB [ \-n ]
+.RB [ \-S ]
+.RB [ \-x
+.IR delay ]
+.RB [ \-c
+.IR config ]
+.RB [ \-f ]
+.RB [ \-h ]
+.RB A.B.C.D[/\fIport\fP[/\fIfreq\fP][,\fIttl\fP]]
+.SH DESCRIPTION
+.B samplicator
+is simple program listens for UDP datagrams (NetFlow, sFlow, SNMP Trap, Syslog)
+on a network port, and sends copies of these datagrams on to a set of destinations.
+Optionally, it can perform sampling, i.e. rather than forwarding every packet,
+forward only 1 in N. Another option is that it can "spoof" the IP source address,
+so that the copies appear to come from the original source, rather than the relay.
+.SH OPTIONS
+The following command-line options are accepted by the server:
+.IP "\-p \fIport\fP"
+UDP port to accept flows on. Default \- 2000.
+.IP "\-s \fIaddress\fP"
+interface address to accept flows on. Default \- any.
+.IP "\-d \fIlevel\fP"
+debug level
+.IP "\-b \fIsize\fP"
+set socket buffer size. Default \- 65536.
+.IP \-n
+don't compute UDP checksum (leave at 0)
+.IP \-S
+maintain (spoof) source addresses
+.IP "\-x \fIdelay\fP"
+transmit delay in microseconds
+.IP "\-c \fIconfig\fP"
+specify a config file to read
+.IP \-f
+fork program into background
+.IP \-h
+print this usage message and exit
+.IP A.B.C.D
+is the receiver's IP address
+.IP "\fIport\fP"
+is the UDP port to send to. Default \- 2000.
+.IP "\fIfreq\fP"
+is the sampling rate. Default \- 1.
+.IP "\fIttl\fP"
+is the sending packets TTL value. Default \- 64.
+.SH CONFIG
+A.B.C.D[/E.F.G.H]: receiver
+.IP A.B.C.D
+is the senders IP address
+.IP E.F.G.H
+is a mask to apply to the sender. Default \- 255.255.255.255.
+.IP receiver
+is the IP address of receiver
+.SH NOTES
+.B samplicator
+currently only supports IPv4.
+.PP
+Receivers specified on the command line will get all packets, those specified in the
+.IR config
+will get only packets with a matching source.
+
+.SH FILES
+.B
+/usr/sbin/samplicate
+
+.SH AUTHOR
+.B samplicator
+was originally written by Simon Leinen <simon.einen@gmail.com>.
+.PP
+This manual page was written by Vladimir Pavljuchenkov <spiderx@spiderx.dp.ua>
+for Gentoo Linux (and may be used by others)

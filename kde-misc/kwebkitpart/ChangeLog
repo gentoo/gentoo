@@ -1,0 +1,171 @@
+# ChangeLog for kde-misc/kwebkitpart
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kwebkitpart/ChangeLog,v 1.46 2014/12/27 19:56:19 mrueg Exp $
+
+  27 Dec 2014; Manuel Rüger <mrueg@gentoo.org> -kwebkitpart-1.3.3.ebuild,
+  -kwebkitpart-1.3.4.ebuild:
+  Remove old.
+
+  27 Dec 2014; Agostino Sarubbo <ago@gentoo.org> kwebkitpart-1.3.4-r1.ebuild:
+  Stable for amd64, wrt bug #527438
+
+  04 Dec 2014; Agostino Sarubbo <ago@gentoo.org> kwebkitpart-1.3.4-r1.ebuild:
+  Stable for ppc64, wrt bug #527438
+
+  03 Dec 2014; Agostino Sarubbo <ago@gentoo.org> kwebkitpart-1.3.4-r1.ebuild:
+  Stable for ppc, wrt bug #527438
+
+  25 Nov 2014; Agostino Sarubbo <ago@gentoo.org> kwebkitpart-1.3.4-r1.ebuild:
+  Stable for x86, wrt bug #527438
+
+  16 Nov 2014; Alexey Shvetsov <alexxy@gentoo.org>
+  +files/kwebkitpart-1.3.4-CVE-2014-8600.patch:
+  Update per CVE-2014-8600
+
+  03 Nov 2014; Agostino Sarubbo <ago@gentoo.org> kwebkitpart-1.3.4.ebuild:
+  Stable for x86, wrt bug #527438
+
+  01 Nov 2014; Agostino Sarubbo <ago@gentoo.org> kwebkitpart-1.3.4.ebuild:
+  Stable for ppc, wrt bug #527438
+
+  31 Oct 2014; Agostino Sarubbo <ago@gentoo.org> kwebkitpart-1.3.4.ebuild:
+  Stable for ppc64, wrt bug #527438
+
+  30 Oct 2014; Agostino Sarubbo <ago@gentoo.org> kwebkitpart-1.3.4.ebuild:
+  Stable for amd64, wrt bug #527438
+
+*kwebkitpart-1.3.4 (16 Jun 2014)
+
+  16 Jun 2014; Michael Palimaka <kensington@gentoo.org>
+  +kwebkitpart-1.3.4.ebuild:
+  Version bump.
+
+  31 Jan 2014; Johannes Huber <johu@gentoo.org> -kwebkitpart-1.3.1.ebuild:
+  Remove old.
+
+  19 Jan 2014; Agostino Sarubbo <ago@gentoo.org> kwebkitpart-1.3.3.ebuild:
+  Stable for ppc64, wrt bug #495682
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> kwebkitpart-1.3.3.ebuild:
+  Stable for ppc, wrt bug #495682
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> kwebkitpart-1.3.3.ebuild:
+  Stable for x86, wrt bug #495682
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> kwebkitpart-1.3.3.ebuild:
+  amd64 stable, bug #495682
+
+*kwebkitpart-1.3.3 (03 Nov 2013)
+
+  03 Nov 2013; Johannes Huber <johu@gentoo.org> +kwebkitpart-1.3.3.ebuild:
+  Version bump wrt bug #490084.
+
+  09 Apr 2013; Agostino Sarubbo <ago@gentoo.org> kwebkitpart-1.3.1.ebuild:
+  Stable for ppc64, wrt to bug #462890
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org> kwebkitpart-1.3.1.ebuild:
+  Add ~ppc64, wrt bug #455960
+
+  28 Jan 2013; Michael Palimaka <kensington@gentoo.org>
+  -kwebkitpart-1.3.0.ebuild:
+  Remove old.
+
+  28 Jan 2013; Agostino Sarubbo <ago@gentoo.org> kwebkitpart-1.3.1.ebuild:
+  Stable for ppc, wrt bug #450678
+
+  27 Jan 2013; Agostino Sarubbo <ago@gentoo.org> kwebkitpart-1.3.1.ebuild:
+  Stable for x86, wrt bug #450678
+
+  27 Jan 2013; Agostino Sarubbo <ago@gentoo.org> kwebkitpart-1.3.1.ebuild:
+  Stable for amd64, wrt bug #450678
+
+  11 Jan 2013; Agostino Sarubbo <ago@gentoo.org> kwebkitpart-1.3.0.ebuild,
+  kwebkitpart-1.3.1.ebuild:
+  Drop ~ppc64
+
+  23 Dec 2012; Markus Meier <maekke@gentoo.org> kwebkitpart-1.3.1.ebuild:
+  add ~arm
+
+*kwebkitpart-1.3.1 (24 Nov 2012)
+
+  24 Nov 2012; Johannes Huber <johu@gentoo.org> +kwebkitpart-1.3.1.ebuild:
+  Version bump.
+
+  15 Nov 2012; Michael Palimaka <kensington@gentoo.org>
+  -kwebkitpart-1.2.0.ebuild:
+  Remove old.
+
+  15 Nov 2012; Anthony G. Basile <blueness@gentoo.org> kwebkitpart-1.3.0.ebuild:
+  stable ppc, bug #441332
+
+  14 Nov 2012; Johannes Huber <johu@gentoo.org> kwebkitpart-1.3.0.ebuild:
+  Stable for x86, wrt bug #441332
+
+  06 Nov 2012; Agostino Sarubbo <ago@gentoo.org> kwebkitpart-1.3.0.ebuild:
+  Stable for amd64, wrt bug #441332
+
+  17 Oct 2012; Michael Palimaka <kensington@gentoo.org>
+  kwebkitpart-1.3.0.ebuild:
+  Fix typo in HOMEPAGE.
+
+*kwebkitpart-1.3.0 (02 Oct 2012)
+
+  02 Oct 2012; Johannes Huber <johu@gentoo.org> +kwebkitpart-1.3.0.ebuild:
+  Version bump wrt bug #436546.
+
+  12 Mar 2012; Johannes Huber <johu@gentoo.org> -kwebkitpart-0.9.6.ebuild,
+  -kwebkitpart-1.1.1.ebuild:
+  Remove old.
+
+  10 Mar 2012; Brent Baude <ranger@gentoo.org> kwebkitpart-1.2.0.ebuild:
+  Marking kwebkitpart-1.2.0 ppc for bug 404773
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  kwebkitpart-1.2.0.ebuild:
+  x86 stable wrt bug #404773
+
+  23 Feb 2012; Agostino Sarubbo <ago@gentoo.org> kwebkitpart-1.2.0.ebuild:
+  Stable for amd64, wrt bug #404773
+
+*kwebkitpart-1.2.0 (29 Oct 2011)
+
+  29 Oct 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +kwebkitpart-1.2.0.ebuild:
+  Version bump by Ian, moved here from KDE overlay
+
+*kwebkitpart-1.1.1 (19 Jun 2011)
+
+  19 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +kwebkitpart-1.1.1.ebuild:
+  Version bump: made a snapshot of the newest tag, since upstream doesn't feel
+  like releasing tarballs...
+
+  01 Jun 2011; Brent Baude <ranger@gentoo.org> kwebkitpart-0.9.6.ebuild:
+  Marking kwebkitpart-0.9.6 ppc stable for bug 354033
+
+  09 May 2011; Markos Chandras <hwoarang@gentoo.org> kwebkitpart-0.9.6.ebuild:
+  Stable on amd64 wrt bug #354033
+
+  09 May 2011; Thomas Kahle <tomka@gentoo.org> kwebkitpart-0.9.6.ebuild:
+  x86 stable per bug 354033
+
+  30 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  kwebkitpart-0.9.6.ebuild:
+  Update to eapi3. Fix license.
+
+  28 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  kwebkitpart-0.9.6.ebuild:
+  Update eapi to 3.
+
+  03 Nov 2010; Samuli Suominen <ssuominen@gentoo.org>
+  kwebkitpart-0.9.6.ebuild:
+  Keyword ~ppc64 wrt #337385
+
+  23 Oct 2010; Brent Baude <ranger@gentoo.org> kwebkitpart-0.9.6.ebuild:
+  Marking kwebkitpart-0.9.6 ~ppc for bug 337385
+
+*kwebkitpart-0.9.6 (25 Jul 2010)
+
+  25 Jul 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  +kwebkitpart-0.9.6.ebuild, +metadata.xml:
+  Add technology preview of WebKit support for konqueror browser

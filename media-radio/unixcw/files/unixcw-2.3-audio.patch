@@ -1,0 +1,147 @@
+diff -ur unixcw-2.3.orig/src/cw/cw.c unixcw-2.3/src/cw/cw.c
+--- unixcw-2.3.orig/src/cw/cw.c	2006-06-18 23:58:46.000000000 +0200
++++ unixcw-2.3/src/cw/cw.c	2010-02-03 14:46:58.000000000 +0100
+@@ -922,5 +922,9 @@
+ 
+   /* Await final tone completion before exiting. */
+   cw_wait_for_tone_queue ();
++ 
++  /* Reset to ensure that the mixer volume gets restored. */
++  cw_complete_reset();
++ 
+   return EXIT_SUCCESS;
+ }
+Only in unixcw-2.3/src/cw: cw.o
+Only in unixcw-2.3/src/cwcp: cwcp
+diff -ur unixcw-2.3.orig/src/cwcp/cwcp.c unixcw-2.3/src/cwcp/cwcp.c
+--- unixcw-2.3.orig/src/cwcp/cwcp.c	2006-06-22 05:50:05.000000000 +0200
++++ unixcw-2.3/src/cwcp/cwcp.c	2010-02-03 14:48:31.000000000 +0100
+@@ -1625,6 +1625,9 @@
+   /* Attempt to wrestle the screen back from curses. */
+   interface_destroy ();
+ 
++  /* Reset to ensure that the mixer volumes gets restored */
++  cw_complete_reset();
++
+   /* Show the signal caught, and exit. */
+   fprintf (stderr, _("\nCaught signal %d, exiting...\n"), signal_number);
+   exit (EXIT_SUCCESS);
+@@ -1685,5 +1688,9 @@
+   /* Clean up and return. */
+   interface_destroy ();
+   cw_wait_for_tone_queue ();
++
++  /* Reset to ensure that the mixer volumes gets restored */
++  cw_complete_reset();
++
+   return EXIT_SUCCESS;
+ }
+diff -ur unixcw-2.3.orig/src/cwlib/cwlib.c unixcw-2.3/src/cwlib/cwlib.c
+--- unixcw-2.3.orig/src/cwlib/cwlib.c	2006-06-23 03:54:01.000000000 +0200
++++ unixcw-2.3/src/cwlib/cwlib.c	2010-02-04 19:36:32.000000000 +0100
+@@ -2138,12 +2138,33 @@
+ {
+   int read_volume, mixer, device_mask;
+ 
+-  /* Try to use the main /dev/audio device for ioctls first. */
+-  if (ioctl (cw_sound_descriptor,
+-             MIXER_READ (SOUND_MIXER_PCM), &read_volume) == 0)
++  /* Try to use the main /dev/audio device for ioctls first.
++   * Check the available mixer channels for the audio file. 
++   */
++  if (ioctl (cw_sound_descriptor, SOUND_MIXER_READ_DEVMASK, &device_mask) != -1)
+     {
+-      *volume = read_volume;
+-      return RC_SUCCESS;
++	/* Could read device_mask, so check availabel channels */
++	if (device_mask & SOUND_MASK_PCM)
++	  /* First try PCM channel, ... */
++	  {
++	    if (ioctl (cw_sound_descriptor,
++                       MIXER_READ (SOUND_MIXER_PCM), &read_volume) == 0)
++              {
++                *volume = read_volume;
++                return RC_SUCCESS;
++              }
++	  }
++
++	if (device_mask & SOUND_MASK_VOLUME)
++	  /* then master volume */
++	  {
++	    if (ioctl (cw_sound_descriptor,
++                       MIXER_READ (SOUND_MIXER_VOLUME), &read_volume) == 0)
++              {
++                *volume = read_volume;
++                return RC_SUCCESS;
++              }
++	  }
+     }
+ 
+   /* Volume not found; try the mixer PCM channel volume instead. */
+@@ -2215,13 +2236,35 @@
+ cw_set_sound_pcm_volume_internal (int volume)
+ {
+   int mixer, device_mask;
++  /* Try the mixer PCM channel volume instead. */
++    /* Try to use the main /dev/audio device for ioctls first.
++   * Check the available mixer channels for the audio file. 
++   */
++  if (ioctl (cw_sound_descriptor, SOUND_MIXER_READ_DEVMASK, &device_mask) != -1)
++    {
++	/* Could read device_mask, so check availabel channels */
++	if (device_mask & SOUND_MASK_PCM)
++	  /* First try PCM channel, ... */
++	  {
++	    if (ioctl (cw_sound_descriptor,
++                       MIXER_WRITE (SOUND_MIXER_PCM), &volume) == 0)
++              {
++                return RC_SUCCESS;
++              }
++	  }
++
++	if (device_mask & SOUND_MASK_VOLUME)
++	  /* then master volume */
++	  {
++	    if (ioctl (cw_sound_descriptor,
++                       MIXER_WRITE (SOUND_MIXER_VOLUME), &volume) == 0)
++              {
++                return RC_SUCCESS;
++              }
++	  }
++    }
+ 
+-  /* Try to use the main /dev/audio device for ioctls first. */
+-  if (ioctl (cw_sound_descriptor,
+-             MIXER_WRITE (SOUND_MIXER_PCM), &volume) == 0)
+-    return RC_SUCCESS;
+ 
+-  /* Try the mixer PCM channel volume instead. */
+   mixer = open (cw_mixer_device, O_RDWR | O_NONBLOCK);
+   if (mixer == -1)
+     {
+diff -ur unixcw-2.3.orig/src/xcwcp/application.cc unixcw-2.3/src/xcwcp/application.cc
+--- unixcw-2.3.orig/src/xcwcp/application.cc	2006-06-22 08:22:36.000000000 +0200
++++ unixcw-2.3/src/xcwcp/application.cc	2010-02-09 14:12:24.000000000 +0100
+@@ -498,6 +498,9 @@
+ 
+       // Done with the CW library sender for now.
+       cwlib_user_application_instance = NULL;
++
++      /* Reset to ensure that the mixer volumes gets restored */
++      cw_complete_reset();
+ 
+       file_menu_->setItemEnabled (file_start_id_, true);
+       file_menu_->setItemEnabled (file_stop_id_, false);
+diff -ur unixcw-2.3.orig/src/xcwcp/main.cc unixcw-2.3/src/xcwcp/main.cc
+--- unixcw-2.3.orig/src/xcwcp/main.cc	2006-06-18 23:39:34.000000000 +0200
++++ unixcw-2.3/src/xcwcp/main.cc	2010-02-09 14:06:17.000000000 +0100
+@@ -370,6 +370,9 @@
+ void
+ signal_handler (int signal_number)
+ {
++  /* Reset to ensure that the mixer volumes gets restored */
++  cw_complete_reset();
++
+   std::clog << _("Caught signal ") << signal_number
+             << _(", exiting...") << std::endl;
+   exit (EXIT_SUCCESS);

@@ -1,0 +1,23 @@
+#!/sbin/runscript
+# Copyright 2005 Robin H. Johnson <robbat2@orbis-terrarum.net>
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/readahead-list/files/init.d-readahead-list-early,v 1.1 2009/09/21 02:03:32 robbat2 Exp $
+
+
+depend() {
+	after checkroot
+	# this should start as early as possible
+	# we can't do 'before *' as that breaks it
+	before hostname modules domainname crypto-loop checkfs localmount
+}
+
+start() {
+	# force reading
+	source /etc/conf.d/readahead-list
+	f="${READAHEAD_LIST_call_early}"
+	ebegin "readahead(2): ${f}"
+	/sbin/readahead-list ${f}
+	eend $?
+}
+
+# vim: ts=4 sw=4

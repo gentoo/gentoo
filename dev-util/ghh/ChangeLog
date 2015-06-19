@@ -1,0 +1,26 @@
+# ChangeLog for dev-util/ghh
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ghh/ChangeLog,v 1.7 2012/05/04 17:51:45 jdhore Exp $
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> ghh-9999.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  26 Nov 2011; Mike Gilbert <floppym@gentoo.org> ghh-9999.ebuild:
+  Python-related improvements by Ian Delaney. Bug 324399.
+
+  20 Sep 2011; Michał Górny <mgorny@gentoo.org> ghh-9999.ebuild:
+  Migrate to git-2, update EGIT_REPO_URI.
+
+  28 Mar 2011; Christoph Mende <angelos@gentoo.org> ghh-9999.ebuild:
+  Fixed gtk+ dep and some cleanup
+
+  17 Mar 2010; Sebastian Pipping <sping@gentoo.org> ghh-9999.ebuild:
+  Propagate move of dev-util/git to dev-vcs/git
+
+  19 Oct 2008; Mike Frysinger <vapier@gentoo.org> ghh-9999.ebuild:
+  DEPEND on app-text/asciidoc #242322 by Daniel Willmann.
+
+*ghh-9999 (14 Jan 2008)
+
+  14 Jan 2008; Mike Frysinger <vapier@gentoo.org> +ghh-9999.ebuild:
+  Initial import.  Ebuild by me.

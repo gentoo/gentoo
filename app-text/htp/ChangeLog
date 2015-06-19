@@ -1,0 +1,53 @@
+# ChangeLog for app-text/htp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/htp/ChangeLog,v 1.14 2015/06/09 12:24:35 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*htp-1.16-r1 (18 Aug 2014)
+
+  18 Aug 2014; Christopher Reffett <2011creffett@gentoo.org>
+  +htp-1.16-r1.ebuild, -htp-1.16.ebuild:
+  QA: EAPI bump, revbump, remove old
+
+  18 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  31 Dec 2010; Mike Frysinger <vapier@gentoo.org> htp-1.16.ebuild,
+  files/strip.patch:
+  Rewrite ebuild to clean it all up.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> htp-1.15.ebuild,
+  htp-1.16.ebuild:
+  Remove virtual/libc
+
+  11 Oct 2008; Gunnar Wrobel <wrobel@gentoo.org> +files/strip.patch,
+  htp-1.16.ebuild:
+  Fix for #240110.
+
+*htp-1.16 (10 Sep 2008)
+
+  10 Sep 2008; wrobel@gentoo.org +files/easteregg.patch, +htp-1.16.ebuild:
+  Added htp-1.16 (#233678).
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  08 Sep 2004; Renat Lumpau <rl03@gentoo.org> metadata.xml:
+  Fixed herd name
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> htp-1.15.ebuild:
+  virtual/glibc -> virtual/libc
+
+*htp-1.15 (23 Apr 2004)
+
+  23 Apr 2004; Stuart Herbert <stuart@gentoo.org> htp-1.15.ebuild,
+  metadata.xml:
+  Moved from dev-util to app-text; added -l switch to patch
+
+*htp-1.15 (23 Apr 2004)
+
+  23 Apr 2004; Stuart Herbert <stuart@gentoo.org> htp-1.15.ebuild,
+  metadata.xml:
+  Initial import; thanks to DC <ddcc@email.com>; see bug #40573

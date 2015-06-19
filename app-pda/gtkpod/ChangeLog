@@ -1,0 +1,546 @@
+# ChangeLog for app-pda/gtkpod
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-pda/gtkpod/ChangeLog,v 1.132 2015/06/09 12:01:15 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  26 Jul 2014; Samuli Suominen <ssuominen@gentoo.org>
+  -files/gtkpod-2.1.3-gdl-3.6.patch, -gtkpod-2.1.3-r1.ebuild,
+  -gtkpod-2.1.4_pre20130428.ebuild:
+  old
+
+  01 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> gtkpod-2.1.4.ebuild:
+  x86 stable wrt bug #500240
+
+  30 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> gtkpod-2.1.4.ebuild:
+  amd64 stable wrt bug #500240
+
+*gtkpod-2.1.4 (04 Feb 2014)
+
+  04 Feb 2014; Samuli Suominen <ssuominen@gentoo.org> +gtkpod-2.1.4.ebuild:
+  Version bump wrt #498286 by "Nikoli"
+
+*gtkpod-2.1.4_pre20130428 (01 May 2013)
+
+  01 May 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +gtkpod-2.1.4_pre20130428.ebuild:
+  Use upstream git 8f833a3 snapshot dated 20130428 for multiple upstream fixes,
+  including a fix for the "Track filter" wrt #466240 by David De Sousa
+
+  01 May 2013; Samuli Suominen <ssuominen@gentoo.org> gtkpod-2.1.3-r1.ebuild:
+  Use AC_CONFIG_HEADERS instead of AM_CONFIG_HEADER for automake-1.13
+  compability wrt #467598 by Ian Stakenvicius.
+  Punt GTK+ related "DEPRECATED" preprocessor flags for forward compability.
+  Fix USE="cdr" dependencies since the plug-in links to -lgstreamer-0.10.
+  Compress gst-element-check-0.10.m4 to SRC_URI instead of using hard DEPEND
+  for media-libs/gstreamer (as required by eautoreconf).
+
+  12 Apr 2013; Samuli Suominen <ssuominen@gentoo.org> gtkpod-2.1.3-r1.ebuild:
+  Force more recent dev-util/anjuta too in addition to dev-libs/gdl
+  wrt #452608 by Andrew John Hughes
+
+  10 Apr 2013; Samuli Suominen <ssuominen@gentoo.org> gtkpod-2.1.3-r1.ebuild:
+  Pull in correct SLOT of media-libs/gstreamer to get gst-element-check-0.10.m4
+  file for eautoreconf.
+
+  10 Apr 2013; Samuli Suominen <ssuominen@gentoo.org> -gtkpod-2.1.2-r1.ebuild,
+  -files/gtkpod-2.1.2-bffr-overflow.patch:
+  old
+
+  10 Apr 2013; Samuli Suominen <ssuominen@gentoo.org> gtkpod-2.1.3-r1.ebuild:
+  amd64/x86 stable
+
+  10 Apr 2013; Samuli Suominen <ssuominen@gentoo.org> gtkpod-2.1.3-r1.ebuild:
+  Force more recent dev-libs/gdl wrt #452608 by Andrew John Hughes. Pull in
+  media-libs/gstreamer always to get gst-element-check-0.10.m4 file for macro
+  AM_GST_ELEMENT_CHECK wrt #462110 by Ben Blum.
+
+*gtkpod-2.1.3-r1 (11 Jan 2013)
+
+  11 Jan 2013; Justin Lecher <jlec@gentoo.org> -gtkpod-2.1.3.ebuild,
+  +gtkpod-2.1.3-r1.ebuild:
+  Reintroduce the versions for deps and fix patch against usage of
+  libmusicbrainz4, thanks ssuominen
+
+*gtkpod-2.1.3 (11 Jan 2013)
+
+  11 Jan 2013; Justin Lecher <jlec@gentoo.org> +gtkpod-2.1.3.ebuild,
+  +files/gtkpod-2.1.3-gdl-3.6.patch, +files/gtkpod-2.1.3-gold.patch,
+  metadata.xml:
+  Version Bump, fixescompilation against anujata-3.6, #448766; add fix for
+  dev-libs/gdl-3.6.2, #448760 and gold
+
+  06 Dec 2012; Justin Lecher <jlec@gentoo.org> -gtkpod-2.1.2.ebuild:
+  Drop old
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org> gtkpod-2.1.2-r1.ebuild:
+  Stable for x86, wrt bug #440928
+
+  04 Nov 2012; <ago@gentoo.org> gtkpod-2.1.2-r1.ebuild:
+  Stable for amd64, wrt bug #440928
+
+*gtkpod-2.1.2-r1 (02 Nov 2012)
+
+  02 Nov 2012; Justin Lecher <jlec@gentoo.org> +gtkpod-2.1.2-r1.ebuild,
+  +files/gtkpod-2.1.2-bffr-overflow.patch, metadata.xml:
+  Fid for buffer overflow, #434220
+
+  23 Sep 2012; Samuli Suominen <ssuominen@gentoo.org> -gtkpod-2.1.1-r3.ebuild,
+  -files/gtkpod-2.1.1-segfault_with_directory_creation.patch:
+  old
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> gtkpod-2.1.2.ebuild:
+  x86 stable wrt bug #433535
+
+  07 Sep 2012; Agostino Sarubbo <ago@gentoo.org> gtkpod-2.1.2.ebuild:
+  Stable for amd64, wrt bug #433535
+
+  02 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> gtkpod-2.1.2.ebuild:
+  Use Python 2.x in scripts/sync-palm-jppy.py for now.
+
+  20 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> -gtkpod-2.0.2.ebuild,
+  -gtkpod-2.1.2_beta2.ebuild:
+  old
+
+  20 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> gtkpod-2.1.1-r3.ebuild:
+  x86 stable wrt #420007
+
+*gtkpod-2.1.2 (20 Jun 2012)
+
+  20 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> +gtkpod-2.1.2.ebuild:
+  Version bump.
+
+  19 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  gtkpod-2.1.2_beta2.ebuild:
+  Export the GST_INSPECT environment variable to "true" in order to avoid
+  running gst-inspect-0.10 which is breaking sandbox when accessing
+  /root/.gstreamer-0.10 wrt #420279. Thanks to Kirk Diviney for testing and
+  "Maeredhel" for reporting.
+
+  11 Jun 2012; Agostino Sarubbo <ago@gentoo.org> gtkpod-2.1.1-r3.ebuild:
+  Stable for amd64, wrt bug #420007
+
+*gtkpod-2.1.2_beta2 (07 Jun 2012)
+
+  07 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +gtkpod-2.1.2_beta2.ebuild:
+  Version bump to development release in order to get rid of the
+  media-libs/libmp4v2 dependency problem.
+
+  10 May 2012; Samuli Suominen <ssuominen@gentoo.org> -gtkpod-2.1.1-r2.ebuild:
+  old
+
+  10 May 2012; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  The package is maintained by the pda@ herd (team)
+
+*gtkpod-2.1.1-r3 (10 May 2012)
+
+  10 May 2012; Samuli Suominen <ssuominen@gentoo.org> +gtkpod-2.1.1-r3.ebuild,
+  +files/gtkpod-2.1.1-segfault_with_directory_creation.patch:
+  Include upstream patch for double free segmentation fault occuring with, for
+  example, directory creation wrt #414753 by "Flavio"
+
+  09 May 2012; Samuli Suominen <ssuominen@gentoo.org> -gtkpod-2.1.1-r1.ebuild,
+  -files/gtkpod-2.1.1-libmp4v2_so_2.patch:
+  old
+
+*gtkpod-2.1.1-r2 (09 May 2012)
+
+  09 May 2012; Samuli Suominen <ssuominen@gentoo.org> gtkpod-2.0.2.ebuild,
+  +gtkpod-2.1.1-r2.ebuild:
+  Use ABI SLOT="1" of media-libs/libmp4v2 for libmp4v2.so.1 which is used
+  through dlopen(). Upstream has switched to AtomicParsley for >= 2.1.2.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> gtkpod-2.0.2.ebuild,
+  gtkpod-2.1.1-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  21 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> -gtkpod-2.1.0.ebuild,
+  -gtkpod-2.1.1.ebuild:
+  old
+
+*gtkpod-2.1.1-r1 (21 Mar 2012)
+
+  21 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> +gtkpod-2.1.1-r1.ebuild,
+  +files/gtkpod-2.1.1-libmp4v2_so_2.patch:
+  Fix dlopen() for libmp4v2.so.2 from media-libs/libmp4v2 >= 1.9.1_p479.
+
+*gtkpod-2.1.1 (23 Feb 2012)
+
+  23 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> +gtkpod-2.1.1.ebuild,
+  metadata.xml:
+  Version bump.
+
+  22 Dec 2011; Samuli Suominen <ssuominen@gentoo.org> gtkpod-2.1.0.ebuild:
+  Remove --uninstall argument from gnome2_schemas_update wrt #394733 by
+  Alexandre Rostovtsev
+
+*gtkpod-2.1.0 (17 Sep 2011)
+
+  17 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> +gtkpod-2.1.0.ebuild:
+  Version bump wrt #362461 by Alex Ermakov
+
+  17 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> -gtkpod-1.0.0.ebuild,
+  -gtkpod-2.0.0.ebuild:
+  [This is a placeholder. Please ignore.]
+
+  16 Sep 2011; Tony Vroon <chainsaw@gentoo.org> gtkpod-2.0.2.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani & Agostino "ago" Sarubbo in bug #376405.
+
+  16 Sep 2011; Andreas Schuerch <nativemad@gentoo.org> gtkpod-2.0.2.ebuild:
+  x86 stable, thanks JD. Bug 376405
+
+*gtkpod-2.0.2 (15 Jun 2011)
+
+  15 Jun 2011; Samuli Suominen <ssuominen@gentoo.org> +gtkpod-2.0.2.ebuild:
+  Version bump.
+
+  09 Apr 2011; Samuli Suominen <ssuominen@gentoo.org> gtkpod-2.0.0.ebuild:
+  Force dev-util/anjuta 2.x wrt #362461 to avoid overlay version by Alex
+  Ermakov.
+
+*gtkpod-2.0.0 (29 Mar 2011)
+
+  29 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> +gtkpod-2.0.0.ebuild:
+  Version bump wrt #361037 by wyvern.
+
+  05 Nov 2010; Samuli Suominen <ssuominen@gentoo.org> gtkpod-1.0.0.ebuild:
+  amd64 stable wrt #343697
+
+  04 Nov 2010; Christian Faulhammer <fauli@gentoo.org> gtkpod-1.0.0.ebuild:
+  stable x86, bug 343697
+
+  31 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  gtkpod-0.99.14_p20090710.ebuild:
+  Remove ppc/ppc64 keywording wrt #313691.
+
+*gtkpod-1.0.0 (31 Oct 2010)
+
+  31 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> +gtkpod-1.0.0.ebuild:
+  Version bump wrt #339607 by "Sebastian".
+
+  09 May 2010; Raúl Porcel <armin76@gentoo.org>
+  gtkpod-0.99.14_p20090710.ebuild, gtkpod-0.99.16.ebuild:
+  Drop sparc keyword
+
+*gtkpod-0.99.16 (07 Apr 2010)
+
+  07 Apr 2010; Olivier Crête <tester@gentoo.org> +gtkpod-0.99.16.ebuild:
+  Version bump, bug #311095
+
+  31 Oct 2009; Brent Baude <ranger@gentoo.org>
+  gtkpod-0.99.14_p20090710.ebuild:
+  Marking gtkpod-0.99.14_p20090710 ppc64 for bug 280792
+
+  10 Oct 2009; Raúl Porcel <armin76@gentoo.org>
+  gtkpod-0.99.14_p20090710.ebuild:
+  sparc stable wrt #280792
+
+  10 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  gtkpod-0.99.14_p20090710.ebuild,
+  +files/gtkpod-0.99.14_p20090710-libmp4v2.patch:
+  dlopen libmp4v2.so.1 instead of libmp4v2.so.0 wrt #284471, thanks to
+  Arthur Spitzer for reporting.
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> gtkpod-0.99.14_p20090710.ebuild:
+  ppc stable #280792
+
+  15 Aug 2009; Markus Meier <maekke@gentoo.org>
+  gtkpod-0.99.14_p20090710.ebuild:
+  amd64/x86 stable, bug #280792
+
+  10 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  gtkpod-0.99.14_p20090710.ebuild:
+  Run eautoreconf wrt #277345 by Fabiano Francesconi.
+
+*gtkpod-0.99.14_p20090710 (10 Jul 2009)
+
+  10 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +gtkpod-0.99.14_p20090710.ebuild:
+  Snapshot; because 0.99.14 doesn't compile with >= libmp4v2 1.9.0.
+
+  02 Jun 2009; Raúl Porcel <armin76@gentoo.org> gtkpod-0.99.14.ebuild:
+  sparc stable wrt #271496
+
+  02 Jun 2009; Raúl Porcel <armin76@gentoo.org> gtkpod-0.99.14.ebuild:
+  sparc stable wrt #271496
+
+  31 May 2009; Brent Baude <ranger@gentoo.org> gtkpod-0.99.14.ebuild:
+  stable ppc64, bug 271496
+
+  31 May 2009; nixnut <nixnut@gentoo.org> gtkpod-0.99.14.ebuild:
+  ppc stable #271496
+
+  29 May 2009; Olivier Crête <tester@gentoo.org> -gtkpod-0.99.10.ebuild,
+  gtkpod-0.99.14.ebuild:
+  amd64 stable, remove old
+
+  26 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  gtkpod-0.99.14.ebuild:
+  stable x86, to fix my mess
+
+  31 Jan 2009; Olivier Crête <tester@gentoo.org> gtkpod-0.99.14.ebuild:
+  Bump libgpod dep, bug #255751
+
+*gtkpod-0.99.14 (19 Jan 2009)
+
+  19 Jan 2009; Olivier Crête <tester@gentoo.org> +gtkpod-0.99.14.ebuild:
+  Versionbump
+
+  30 Nov 2008; Friedrich Oslage <bluebird@gentoo.org> gtkpod-0.99.12.ebuild:
+  Stable on sparc, bug #231573
+
+  17 Aug 2008; Markus Meier <maekke@gentoo.org> gtkpod-0.99.12.ebuild:
+  x86 stable, bug #231573
+
+  06 Aug 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  gtkpod-0.99.12.ebuild:
+  stable amd64, bug 231573
+
+*gtkpod-0.99.12 (18 Dec 2007)
+
+  18 Dec 2007; Olivier Crête <tester@gentoo.org> -gtkpod-0.99.8.ebuild,
+  -gtkpod-0.99.8-r1.ebuild, +gtkpod-0.99.12.ebuild:
+  Version bump
+
+  05 Nov 2007; Markus Meier <maekke@gentoo.org> gtkpod-0.99.10.ebuild:
+  x86 stable, bug 197716 and add quotes
+
+  05 Nov 2007; Joseph Jezak <josejx@gentoo.org> gtkpod-0.99.10.ebuild:
+  Marked ppc/ppc64 stable for bug #197716.
+
+  01 Nov 2007; Steve Dibb <beandog@gentoo.org> gtkpod-0.99.10.ebuild:
+  amd64 stable, bug 197716
+
+  21 Aug 2007; Joseph Jezak <josejx@gentoo.org> gtkpod-0.99.10.ebuild:
+  Marked ~ppc64.
+
+  03 Jul 2007; Olivier Crête <tester@gentoo.org> gtkpod-0.99.10.ebuild:
+  Fix dependencies (bug #183780)
+
+  29 Jun 2007; <tester@gentoo.org> gtkpod-0.99.10.ebuild:
+  Fix libgpod dep and use absolute path for configure
+
+*gtkpod-0.99.10 (28 Jun 2007)
+
+  28 Jun 2007; Olivier Crête <tester@gentoo.org> +gtkpod-0.99.10.ebuild:
+  Version bump
+
+  28 Feb 2007; Simon Stelling <blubb@gentoo.org> gtkpod-0.99.8-r1.ebuild:
+  stable on amd64; bug 167921
+
+  27 Feb 2007; Matti Bickel <mabi@gentoo.org> gtkpod-0.99.8-r1.ebuild:
+  ppc stable (bug #167921)
+
+  21 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  gtkpod-0.99.8-r1.ebuild:
+  stable x86; bug 167921
+
+*gtkpod-0.99.8-r1 (18 Jan 2007)
+
+  18 Jan 2007; Olivier Crête <tester@gentoo.org> gtkpod-0.99.8.ebuild,
+  +gtkpod-0.99.8-r1.ebuild:
+  New version to support libgpod 0.4.2, limit old version to 0.4.0
+
+  24 Nov 2006; Olivier Crête <tester@gentoo.org> -gtkpod-0.94.0.ebuild,
+  -gtkpod-0.99.4.ebuild:
+  Remove old versions
+
+  21 Nov 2006; Christian Faulhammer <opfer@gentoo.org> gtkpod-0.99.8.ebuild:
+  stable x86, bug #154832
+
+  18 Nov 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  gtkpod-0.99.8.ebuild:
+  ppc stable, bug #154832
+
+  11 Nov 2006; Olivier Crête <tester@gentoo.org> gtkpod-0.99.8.ebuild:
+  Stable on amd64
+
+*gtkpod-0.99.8 (24 Sep 2006)
+
+  24 Sep 2006; Olivier Crête <tester@gentoo.org> +gtkpod-0.99.8.ebuild:
+  New version
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  gtkpod-0.99.4.ebuild:
+  ppc stable
+
+  08 Jul 2006; Michael Sterrett <mr_bones_@gentoo.org> gtkpod-0.94.0.ebuild:
+  remove optional dep that is no longer in portage
+
+  09 Apr 2006; Olivier Crête <tester@gentoo.org> gtkpod-0.99.4.ebuild:
+  Stable on amd64
+
+*gtkpod-0.99.4 (05 Mar 2006)
+
+  05 Mar 2006; Olivier Crête <tester@gentoo.org> -gtkpod-0.99.2.ebuild,
+  +gtkpod-0.99.4.ebuild:
+  Version bump
+
+  16 Jan 2006; Jason Wever <weeve@gentoo.org> gtkpod-0.99.2.ebuild:
+  Added ~sparc keyword as it was dropped in the version dump.
+
+  08 Jan 2006; Joseph Jezak <josejx@gentoo.org> gtkpod-0.99.2.ebuild:
+  Marked ~ppc for bug #115265.
+
+  20 Dec 2005; Olivier Crête <tester@gentoo.org> gtkpod-0.94.0.ebuild,
+  gtkpod-0.99.2.ebuild:
+  Use media-libs/libmp4v2 for libmp4v2
+
+*gtkpod-0.99.2 (14 Dec 2005)
+
+  14 Dec 2005; Olivier Crête <tester@gentoo.org> -gtkpod-0.99.0.ebuild,
+  +gtkpod-0.99.2.ebuild:
+  Version bump
+
+*gtkpod-0.99.0 (12 Dec 2005)
+
+  12 Dec 2005; Olivier Crête <tester@gentoo.org> -gtkpod-0.88.2.ebuild,
+  +gtkpod-0.99.0.ebuild:
+  Version bump
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> gtkpod-0.94.0.ebuild:
+  Stable on ppc.
+
+  24 Aug 2005; Olivier Crête <tester@gentoo.org> -gtkpod-0.93.1.ebuild,
+  gtkpod-0.94.0.ebuild:
+  Stable on amd64 and x86
+
+*gtkpod-0.94.0 (19 Jul 2005)
+
+  19 Jul 2005; Olivier Crête <tester@gentoo.org> +gtkpod-0.94.0.ebuild:
+  Version bump
+
+*gtkpod-0.93.1 (25 Jun 2005)
+
+  25 Jun 2005; Olivier Crête <tester@gentoo.org> -gtkpod-0.93.ebuild,
+  +gtkpod-0.93.1.ebuild:
+  Version bump
+
+*gtkpod-0.93 (24 Jun 2005)
+
+  24 Jun 2005; Olivier Crête <tester@gentoo.org> +gtkpod-0.93.ebuild:
+  Version bump
+
+  09 May 2005; Olivier Crête <tester@gentoo.org> -gtkpod-0.85.0.ebuild,
+  gtkpod-0.88.2.ebuild:
+  Stable on amd64, cleanup old version
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> gtkpod-0.88.2.ebuild:
+  Stable on ppc.
+
+  23 Apr 2005; Olivier Crête <tester@gentoo.org> -gtkpod-0.80.2.ebuild,
+  -gtkpod-0.88.1.ebuild, gtkpod-0.88.2.ebuild:
+  Stable on x86
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> gtkpod-0.85.0.ebuild:
+  stable on amd64
+
+  01 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> gtkpod-0.85.0.ebuild:
+  Stable on ppc.
+
+*gtkpod-0.88.2 (01 Apr 2005)
+
+  01 Apr 2005; Olivier Crête <tester@gentoo.org> +gtkpod-0.88.2.ebuild:
+  Version bump
+
+*gtkpod-0.88.1 (17 Mar 2005)
+
+  17 Mar 2005; Olivier Crête <tester@gentoo.org> +gtkpod-0.88.1.ebuild,
+  -gtkpod-0.88.ebuild:
+  Version bump
+
+*gtkpod-0.88 (10 Mar 2005)
+
+  10 Mar 2005; Olivier Crête <tester@gentoo.org>
+  -files/gtkpod-0.72-c89_fix.patch, -files/gtkpod-0.72-faad2.patch,
+  -gtkpod-0.72.ebuild, -gtkpod-0.87.3.ebuild, +gtkpod-0.88.ebuild:
+  Version bump, clean 0.72 and 0.87.3
+
+*gtkpod-0.87.3 (04 Mar 2005)
+
+  04 Mar 2005; Olivier Crete <tester@gentoo.org> +gtkpod-0.87.3.ebuild:
+  Version bump
+
+  20 Dec 2004; Olivier Crete <tester@gentoo.org> gtkpod-0.85.0.ebuild:
+  Stable on x86
+
+  14 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org> gtkpod-0.72.ebuild,
+  gtkpod-0.80.2.ebuild, gtkpod-0.85.0.ebuild:
+  Changed USE flag to aac.
+
+*gtkpod-0.85.0 (20 Nov 2004)
+
+  20 Nov 2004; Olivier Crete <tester@gentoo.org> +gtkpod-0.85.0.ebuild:
+  Version bump
+
+  31 Oct 2004; Lars Weiler <pylon@gentoo.org> gtkpod-0.80.2.ebuild:
+  Stable on ppc.
+
+  23 Aug 2004; Jason Wever <weeve@gentoo.org> gtkpod-0.80.2.ebuild:
+  Added ~sparc keyword.
+
+  20 Aug 2004; <tester@gentoo.org> gtkpod-0.80.2.ebuild:
+  Marking stable on x86
+
+  06 Aug 2004; <tester@gentoo.org> gtkpod-0.80.2.ebuild, -gtkpod-0.70.ebuild:
+  Added patch so it compiles with gtk 2.0 and cleanup up 0.70
+
+*gtkpod-0.80.2 (18 Jul 2004)
+
+  18 Jul 2004; <tester@gentoo.org> +gtkpod-0.80.2.ebuild:
+  Version bump
+
+  06 Jul 2004; <tester@gentoo.org> :
+  Added upstream patch for <gtk-2.4 support
+
+*gtkpod-0.80 (04 Jul 2004)
+
+  04 Jul 2004; <tester@gentoo.org> +gtkpod-0.80.ebuild:
+  Version bump
+
+  02 Jun 2004; <SeJo@gentoo.org> gtkpod-0.72.ebuild:
+  added ~ppc keyword
+
+  29 May 2004; Danny van Dyk <kugelfang@gentoo.org> gtkpod-0.72.ebuild:
+  Marked ~amd64.
+
+  27 Feb 2004; <tester@gentoo.org> gtkpod-0.72.ebuild,
+  files/gtkpod-0.72-faad2.patch:
+  Add patch to allow gtkpod's m4a support to work with the libmp4v2 from faad2
+  too. The dependency is now mpeg4ip or faad2.
+
+  05 Feb 2004; <tester@gentoo.org> gtkpod-0.72.ebuild,
+  files/gtkpod-0.72-c89_fix.patch:
+  Added patch to make gtkpod compilable with gcc 2.95 from bug #39177
+
+*gtkpod-0.72 (21 Jan 2004)
+
+  21 Jan 2004; <tester@gentoo.org> gtkpod-0.72.ebuild:
+  Version bump, dep switch from id3lib to libid3tag
+
+*gtkpod-0.70 (14 Dec 2003)
+
+  14 Dec 2003; <tester@gentoo.org> gtkpod-0.70.ebuild:
+  Bumped and added mpeg4 use flag for mpeg4ip to be able to load mpeg aac files.
+  Thanks to martin dederer <st.ing.ray@gmx.de> for reporting this new version.
+
+*gtkpod-0.60 (08 Oct 2003)
+
+  08 Oct 2003; Olivier Crete <tester@gentoo.org> gtkpod-0.60.ebuild:
+  New version bump
+
+*gtkpod-0.52 (27 Jul 2003)
+
+  27 Jul 2003; Olivier Crete <tester@gentoo.org> gtkpod-0.52.ebuild:
+  Version bump
+
+  27 May 2003; <jrray@gentoo.org> gtkpod-0.51.ebuild:
+  Depend on a newer version of pango to avoid linker errors with old version.
+  Also, install the README file.
+
+*gtkpod-0.51 (18 May 2003)
+
+  18 May 2003; J Robert Ray <jrray@gentoo.org> : Initial ebuild.

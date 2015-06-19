@@ -1,0 +1,309 @@
+# ChangeLog for x11-libs/libXvMC
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXvMC/ChangeLog,v 1.82 2015/03/31 20:29:33 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> libXvMC-1.0.8.ebuild,
+  libXvMC-1.0.9.ebuild:
+  Update dependency after package move of eselect modules to app-eselect.
+
+*libXvMC-1.0.9 (26 Mar 2015)
+
+  26 Mar 2015; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libXvMC-1.0.9.ebuild:
+  Version bump.
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> libXvMC-1.0.8.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  26 Mar 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -libXvMC-1.0.6.ebuild, -libXvMC-1.0.7-r1.ebuild, -libXvMC-1.0.7.ebuild:
+  Remove old/vulnerable versions, bug #471098.
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXvMC-1.0.8.ebuild:
+  Stable for x86, wrt bug #475480
+
+  07 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXvMC-1.0.8.ebuild:
+  Stable for sparc, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXvMC-1.0.8.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  05 Oct 2013; Markus Meier <maekke@gentoo.org> libXvMC-1.0.8.ebuild:
+  arm stable, bug #475480
+
+  05 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXvMC-1.0.8.ebuild:
+  Stable for alpha, wrt bug #475480
+
+  04 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXvMC-1.0.8.ebuild:
+  Stable for ppc64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXvMC-1.0.8.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  02 Oct 2013; Jeroen Roovers <jer@gentoo.org> libXvMC-1.0.8.ebuild:
+  Stable for HPPA (bug #475480).
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org> libXvMC-1.0.8.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*libXvMC-1.0.8 (18 Jun 2013)
+
+  18 Jun 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libXvMC-1.0.8.ebuild:
+  Version bump.
+
+*libXvMC-1.0.7-r1 (26 Feb 2013)
+
+  26 Feb 2013; Michał Górny <mgorny@gentoo.org> +libXvMC-1.0.7-r1.ebuild:
+  Enable multilib.
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> libXvMC-1.0.7.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #419473
+
+  12 Jul 2012; Brent Baude <ranger@gentoo.org> libXvMC-1.0.7.ebuild:
+  Marking libXvMC-1.0.7 ppc stable for bug 419473
+
+  11 Jul 2012; Brent Baude <ranger@gentoo.org> libXvMC-1.0.7.ebuild:
+  Marking libXvMC-1.0.7 ppc64 stable for bug 419473
+
+  29 Jun 2012; Markus Meier <maekke@gentoo.org> libXvMC-1.0.7.ebuild:
+  arm stable, bug #419473
+
+  28 Jun 2012; Jeroen Roovers <jer@gentoo.org> libXvMC-1.0.7.ebuild:
+  Stable for HPPA (bug #419473).
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libXvMC-1.0.7.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libXvMC-1.0.7.ebuild:
+  Stable for amd64, wrt bug #419473
+
+  10 May 2012; Alexis Ballier <aballier@gentoo.org> libXvMC-1.0.7.ebuild:
+  keyword ~amd64-fbsd
+
+*libXvMC-1.0.7 (09 Mar 2012)
+
+  09 Mar 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libXvMC-1.0.7.ebuild:
+  Version bump.
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> libXvMC-1.0.6.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> libXvMC-1.0.6.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #344827
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> libXvMC-1.0.6.ebuild:
+  Stable for HPPA (bug #344827).
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org> libXvMC-1.0.6.ebuild:
+  arm stable, bug #344827
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org> libXvMC-1.0.6.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> libXvMC-1.0.6.ebuild:
+  amd64 stable wrt #344827
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> libXvMC-1.0.6.ebuild:
+  ppc64 stable wrt #344827
+
+*libXvMC-1.0.6 (14 Aug 2010)
+
+  14 Aug 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -libXvMC-1.0.4.ebuild, +libXvMC-1.0.6.ebuild:
+  Version bump. Drop older.
+
+  19 Jan 2010; Raúl Porcel <armin76@gentoo.org> libXvMC-1.0.5.ebuild:
+  s390 stable wrt #294958
+
+  18 Jan 2010; Raúl Porcel <armin76@gentoo.org> libXvMC-1.0.5.ebuild:
+  alpha/ia64/sh/sparc stable wrt #294958
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org> libXvMC-1.0.5.ebuild:
+  Transfer Prefix keywords
+
+  14 Jan 2010; Markus Meier <maekke@gentoo.org> libXvMC-1.0.5.ebuild:
+  arm stable, bug #294958
+
+  14 Jan 2010; Jeroen Roovers <jer@gentoo.org> libXvMC-1.0.5.ebuild:
+  Stable for HPPA (bug #294958).
+
+  27 Dec 2009; Joseph Jezak <josejx@gentoo.org> libXvMC-1.0.5.ebuild:
+  Marked ppc stable for bug #294958.
+
+  15 Dec 2009; Brent Baude <ranger@gentoo.org> libXvMC-1.0.5.ebuild:
+  Marking libXvMC-1.0.5 ppc64 stable for bug 294958
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org> libXvMC-1.0.5.ebuild:
+  x86 stable, bug 294958
+
+  10 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> libXvMC-1.0.5.ebuild:
+  amd64 stable wrt #294958
+
+*libXvMC-1.0.5 (12 Oct 2009)
+
+  12 Oct 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  +libXvMC-1.0.5.ebuild:
+  Version bump.
+
+  03 Oct 2008; Doug Goldstein <cardoe@gentoo.org> libXvMC-1.0.4.ebuild:
+  add app-admin/eselect-xvmc as a PDEPEND for assistance in configuring this
+  library
+
+  31 Jan 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  -libXvMC-1.0.2.ebuild:
+  Clean up.
+
+  07 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> libXvMC-1.0.4.ebuild:
+  Stable on sparc wrt #175465
+
+  03 Jul 2007; Lars Weiler <pylon@gentoo.org> libXvMC-1.0.4.ebuild:
+  Stable on ppc; bug #175465.
+
+  02 Jul 2007; Raúl Porcel <armin76@gentoo.org> libXvMC-1.0.4.ebuild:
+  alpha stable wrt #175465
+
+  24 Jun 2007; Joshua Kinard <kumba@gentoo.org> libXvMC-1.0.4.ebuild:
+  Stable on mips, per #176465.
+
+  20 May 2007; Jeroen Roovers <jer@gentoo.org> libXvMC-1.0.4.ebuild:
+  Stable for HPPA (bug #175465).
+
+  05 May 2007; Daniel Gryniewicz <dang@gentoo.org> libXvMC-1.0.4.ebuild:
+  Marked stable on amd64 for bug #175465
+
+  29 Apr 2007; Andrej Kacian <ticho@gentoo.org> libXvMC-1.0.4.ebuild:
+  Stable on x86, bug #175465.
+
+  25 Apr 2007; Raúl Porcel <armin76@gentoo.org> libXvMC-1.0.4.ebuild:
+  Stable on ia64 wrt bug #175465.
+
+  25 Apr 2007; Markus Rothe <corsair@gentoo.org> libXvMC-1.0.4.ebuild:
+  Stable on ppc64; bug #175465
+
+  21 Apr 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  -libXvMC-1.0.3.ebuild:
+  Drop unused version.
+
+*libXvMC-1.0.4 (16 Dec 2006)
+
+  16 Dec 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXvMC-1.0.4.ebuild:
+  Version bump for 7.2.  Build/dist fix only.
+
+  01 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>; libXvMC-1.0.2.ebuild,
+  libXvMC-1.0.3.ebuild:
+  libXext has a runtime dep on xextproto now, so we don't need to depend on it
+  here.
+
+*libXvMC-1.0.3 (29 Sep 2006)
+
+  29 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  +libXvMC-1.0.3.ebuild:
+  Bump. Minor fixes.
+
+  19 Jul 2006; Guy Martin <gmsoft@gentoo.org> libXvMC-1.0.2.ebuild:
+  Stable on hppa.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> libXvMC-1.0.2.ebuild:
+  Mark 1.0.2 stable on ia64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>; libXvMC-1.0.2.ebuild:
+  ppc/sparc/mips/alpha/arm/sh stable
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  -files/1.0.1-xvmc-xconfigdir.patch, -libXvMC-1.0.1-r1.ebuild:
+  Pull old ebuild.
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> libXvMC-1.0.2.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org> libXvMC-1.0.2.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>; libXvMC-1.0.2.ebuild:
+  x86 stable.
+
+*libXvMC-1.0.2 (29 Apr 2006)
+
+  29 Apr 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXvMC-1.0.2.ebuild:
+  Version bump.  Cygwin build fix.  Includes the config directory patch.
+
+  16 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  libXvMC-1.0.1-r1.ebuild:
+  Add ~x86-fbsd keyword.
+
+*libXvMC-1.0.1-r1 (22 Mar 2006)
+
+  22 Mar 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  +files/1.0.1-xvmc-xconfigdir.patch, -libXvMC-1.0.1.ebuild,
+  +libXvMC-1.0.1-r1.ebuild:
+  (#127143) Find a real XvMCConfig file.
+
+  15 Feb 2006; Stefaan De Roeck <stefaan@gentoo.org> libXvMC-1.0.1.ebuild:
+  Marked ~alpha (bug #122726)
+
+  15 Feb 2006; Donnie Berkholz <spyderous@gentoo.org>; libXvMC-1.0.1.ebuild:
+  (#122726) Keyword ~ppc.
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> libXvMC-1.0.1.ebuild:
+  Added ~ppc64; bug #122726
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -libXvMC-0.99.2.ebuild, -libXvMC-1.0.0.ebuild:
+  Pull old versions.
+
+*libXvMC-1.0.1 (23 Dec 2005)
+
+  23 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libXvMC-1.0.1.ebuild:
+  Bump for 7.0.
+
+*libXvMC-1.0.0 (17 Dec 2005)
+
+  17 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXvMC-1.0.0.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -libXvMC-0.99.1.ebuild:
+  Pull old versions.
+
+*libXvMC-0.99.2 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXvMC-0.99.2.ebuild:
+  Bump for 7.0RC3.
+
+  04 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -libXvMC-0.99.0.ebuild, libXvMC-0.99.1.ebuild:
+  Fix proto depends to reflect compile-time requirements. Drop old version.
+
+*libXvMC-0.99.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libXvMC-0.99.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  06 Sep 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  libXvMC-0.99.0.ebuild:
+  Added x11-libs/libXv as a RDEPEND per bug #104833. Thanks to Søren F.
+  Nielsen.
+
+  23 Aug 2005; Herbie Hopkins <herbs@gentoo.org> libXvMC-0.99.0.ebuild:
+  Marked ~amd64.
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> libXvMC-0.99.0.ebuild:
+  Add ~sparc keyword (modular X testing).
+
+*libXvMC-0.99.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libXvMC-0.99.0.ebuild:
+  Initial commit for modular X.

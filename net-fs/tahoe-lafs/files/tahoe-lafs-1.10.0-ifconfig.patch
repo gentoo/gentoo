@@ -1,0 +1,20 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Thu Aug  1 14:17:10 UTC 2013
+Subject: don't hardcode ifconfig path
+
+--- allmydata-tahoe-1.10.0/src/allmydata/util/iputil.py
++++ allmydata-tahoe-1.10.0/src/allmydata/util/iputil.py
+@@ -177,11 +177,11 @@
+ _win32_re = re.compile('^\s*\d+\.\d+\.\d+\.\d+\s.+\s(?P<address>\d+\.\d+\.\d+\.\d+)\s+(?P<metric>\d+)\s*$', flags=re.M|re.I|re.S)
+ 
+ # These work in Redhat 6.x and Debian 2.2 potato
+-_linux_path = '/sbin/ifconfig'
++_linux_path = 'ifconfig'
+ _linux_re = re.compile('^\s*inet [a-zA-Z]*:?(?P<address>\d+\.\d+\.\d+\.\d+)\s.+$', flags=re.M|re.I|re.S)
+ 
+ # NetBSD 1.4 (submitted by Rhialto), Darwin, Mac OS X
+-_netbsd_path = '/sbin/ifconfig'
++_netbsd_path = 'ifconfig'
+ _netbsd_args = ('-a',)
+ _netbsd_re = re.compile('^\s+inet [a-zA-Z]*:?(?P<address>\d+\.\d+\.\d+\.\d+)\s.+$', flags=re.M|re.I|re.S)
+ 

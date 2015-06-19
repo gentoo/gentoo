@@ -1,0 +1,174 @@
+diff -urN opencascade.orig/ros/Makefile.am opencascade/ros/Makefile.am
+--- opencascade.orig/ros/Makefile.am	2011-03-06 16:08:59.000000000 +0100
++++ opencascade/ros/Makefile.am	2011-03-06 16:13:35.000000000 +0100
+@@ -86,106 +86,106 @@
+ dir_SunOS=sun
+ 
+ install-exec-local:
+-	$(INSTALL) -d $(prefix)/$(platform)
+-	if [ -e $(prefix)/bin -a ! -e $(prefix)/$(platform)/bin ]; then \
+-		cd $(prefix)/$(platform) && ln -s ../bin bin; \
++	$(INSTALL) -d $(DESTDIR)$(prefix)/$(platform)
++	if [ -e $(DESTDIR)$(prefix)/bin -a ! -e $(DESTDIR)$(prefix)/$(platform)/bin ]; then \
++		cd $(DESTDIR)$(prefix)/$(platform) && ln -s ../bin bin; \
+ 	fi
+-	if [ -e $(prefix)/lib -a ! -e $(prefix)/$(platform)/lib ]; then \
+-		cd $(prefix)/$(platform) && ln -s ../lib lib; \
++	if [ -e $(DESTDIR)$(prefix)/lib -a ! -e $(DESTDIR)$(prefix)/$(platform)/lib ]; then \
++		cd $(DESTDIR)$(prefix)/$(platform) && ln -s ../lib lib; \
+ 	fi
+-	$(INSTALL) -d $(prefix)/$(dir_$(platform))
+-	if [ -e $(prefix)/bin -a ! -e $(prefix)/$(dir_$(platform))/bin ]; then \
+-		cd $(prefix)/$(dir_$(platform)) && ln -s ../bin bin; \
++	$(INSTALL) -d $(DESTDIR)$(prefix)/$(dir_$(platform))
++	if [ -e $(DESTDIR)$(prefix)/bin -a ! -e $(DESTDIR)$(prefix)/$(dir_$(platform))/bin ]; then \
++		cd $(DESTDIR)$(prefix)/$(dir_$(platform)) && ln -s ../bin bin; \
+ 	fi
+-	if [ -e $(prefix)/lib -a ! -e $(prefix)/$(dir_$(platform))/lib ]; then \
+-		cd $(prefix)/$(dir_$(platform)) && ln -s ../lib lib; \
++	if [ -e $(DESTDIR)$(prefix)/lib -a ! -e $(DESTDIR)$(prefix)/$(dir_$(platform))/lib ]; then \
++		cd $(DESTDIR)$(prefix)/$(dir_$(platform)) && ln -s ../lib lib; \
+ 	fi
+-	bd=`pwd`; cd $(top_srcdir); sd=`pwd`; cd $(prefix); pd=`pwd`; cd $$bd; \
++	bd=`pwd`; cd $(top_srcdir); sd=`pwd`; cd $(DESTDIR)$(prefix); pd=`pwd`; cd $$bd; \
+ 	if [ "$$pd" != "$$sd" ]; then \
+-		$(INSTALL) -d $(prefix)/inc; \
+-		cp -fr$(CP_$(platform)) $(top_srcdir)/inc $(prefix); \
++		$(INSTALL) -d $(DESTDIR)$(prefix)/inc; \
++		cp -fr$(CP_$(platform)) $(top_srcdir)/inc $(DESTDIR)$(prefix); \
+ 	fi; \
+ 	if [ "$$pd" != "$$bd" ]; then \
+-		cp -fr$(CP_$(platform)) $$bd/config.h $(prefix); \
++		cp -fr$(CP_$(platform)) $$bd/config.h $(DESTDIR)$(prefix); \
+ 	fi
+-	if [ -e $(prefix)/inc/config.h ]; then \
+-		unlink $(prefix)/inc/config.h; \
++	if [ -e $(DESTDIR)$(prefix)/inc/config.h ]; then \
++		unlink $(DESTDIR)$(prefix)/inc/config.h; \
+ 	fi
+-	cd $(prefix)/inc && ln -s ../config.h config.h 
+-	bd=`pwd`; cd $(top_srcdir); sd=`pwd`; cd $(prefix); pd=`pwd`; cd $$bd; \
++	cd $(DESTDIR)$(prefix)/inc && ln -s ../config.h config.h 
++	bd=`pwd`; cd $(top_srcdir); sd=`pwd`; cd $(DESTDIR)$(prefix); pd=`pwd`; cd $$bd; \
+ 	if [ "$$pd" != "$$sd" -a -d $(top_srcdir)/src/UnitsAPI ]; then \
+-		$(INSTALL) -d $(prefix)/src; \
+-		$(INSTALL) -d $(prefix)/src/UnitsAPI; \
+-		cp -fr$(CP_$(platform)) $(top_srcdir)/src/UnitsAPI $(prefix)/src; \
+-		cp -f$(CP_$(platform)) $(top_srcdir)/env_DRAW.sh $(prefix); \
++		$(INSTALL) -d $(DESTDIR)$(prefix)/src; \
++		$(INSTALL) -d $(DESTDIR)$(prefix)/src/UnitsAPI; \
++		cp -fr$(CP_$(platform)) $(top_srcdir)/src/UnitsAPI $(DESTDIR)$(prefix)/src; \
++		cp -f$(CP_$(platform)) $(top_srcdir)/env_DRAW.sh $(DESTDIR)$(prefix); \
+ 	fi
+-	bd=`pwd`; cd $(top_srcdir); sd=`pwd`; cd $(prefix); pd=`pwd`; cd $$bd; \
++	bd=`pwd`; cd $(top_srcdir); sd=`pwd`; cd $(DESTDIR)$(prefix); pd=`pwd`; cd $$bd; \
+ 	if [ "$$pd" != "$$sd" ]; then \
+ 		inst_dirs="$(FoundationClasses_DIRS)"; \
+ 		if test "x$(FoundationClasses_DIRS)" != "x"; then \
+ 			for d in $$inst_dirs; do \
+-				$(INSTALL) -d $(prefix)/src/$$d; \
+-				cp -fr$(CP_$(platform)) $(top_srcdir)/src/$$d $(prefix)/src; \
++				$(INSTALL) -d $(DESTDIR)$(prefix)/src/$$d; \
++				cp -fr$(CP_$(platform)) $(top_srcdir)/src/$$d $(DESTDIR)$(prefix)/src; \
+ 			done; \
+ 		fi; \
+ 	fi
+-	bd=`pwd`; cd $(top_srcdir); sd=`pwd`; cd $(prefix); pd=`pwd`; cd $$bd; \
++	bd=`pwd`; cd $(top_srcdir); sd=`pwd`; cd $(DESTDIR)$(prefix); pd=`pwd`; cd $$bd; \
+ 	if [ "$$pd" != "$$sd" ]; then \
+ 		inst_dirs="$(ModelingData_DIRS)"; \
+ 		if test "x$(ModelingData_DIRS)" != "x"; then \
+ 			for d in $$inst_dirs; do \
+-				$(INSTALL) -d $(prefix)/src/$$d; \
+-				cp -fr$(CP_$(platform)) $(top_srcdir)/src/$$d $(prefix)/src; \
++				$(INSTALL) -d $(DESTDIR)$(prefix)/src/$$d; \
++				cp -fr$(CP_$(platform)) $(top_srcdir)/src/$$d $(DESTDIR)$(prefix)/src; \
+ 			done; \
+ 		fi; \
+ 	fi
+-	bd=`pwd`; cd $(top_srcdir); sd=`pwd`; cd $(prefix); pd=`pwd`; cd $$bd; \
++	bd=`pwd`; cd $(top_srcdir); sd=`pwd`; cd $(DESTDIR)$(prefix); pd=`pwd`; cd $$bd; \
+ 	if [ "$$pd" != "$$sd" ]; then \
+ 		inst_dirs="$(ModelingAlgorithms_DIRS)"; \
+ 		if test "x$(ModelingAlgorithms_DIRS)" != "x"; then \
+ 			for d in $$inst_dirs; do \
+-				$(INSTALL) -d $(prefix)/src/$$d; \
+-				cp -fr$(CP_$(platform)) $(top_srcdir)/src/$$d $(prefix)/src; \
++				$(INSTALL) -d $(DESTDIR)$(prefix)/src/$$d; \
++				cp -fr$(CP_$(platform)) $(top_srcdir)/src/$$d $(DESTDIR)$(prefix)/src; \
+ 			done; \
+ 		fi; \
+ 	fi
+-	bd=`pwd`; cd $(top_srcdir); sd=`pwd`; cd $(prefix); pd=`pwd`; cd $$bd; \
++	bd=`pwd`; cd $(top_srcdir); sd=`pwd`; cd $(DESTDIR)$(prefix); pd=`pwd`; cd $$bd; \
+ 	if [ "$$pd" != "$$sd" ]; then \
+ 		inst_dirs="$(Visualization_DIRS)"; \
+ 		if test "x$(Visualization_DIRS)" != "x"; then \
+ 			for d in $$inst_dirs; do \
+-				$(INSTALL) -d $(prefix)/src/$$d; \
+-				cp -fr$(CP_$(platform)) $(top_srcdir)/src/$$d $(prefix)/src; \
++				$(INSTALL) -d $(DESTDIR)$(prefix)/src/$$d; \
++				cp -fr$(CP_$(platform)) $(top_srcdir)/src/$$d $(DESTDIR)$(prefix)/src; \
+ 			done; \
+ 		fi; \
+ 	fi
+-	bd=`pwd`; cd $(top_srcdir); sd=`pwd`; cd $(prefix); pd=`pwd`; cd $$bd; \
++	bd=`pwd`; cd $(top_srcdir); sd=`pwd`; cd $(DESTDIR)$(prefix); pd=`pwd`; cd $$bd; \
+ 	if [ "$$pd" != "$$sd" ]; then \
+ 		inst_dirs="$(ApplicationFramework_DIRS)"; \
+ 		if test "x$(ApplicationFramework_DIRS)" != "x"; then \
+ 			for d in $$inst_dirs; do \
+-				$(INSTALL) -d $(prefix)/src/$$d; \
+-				cp -fr$(CP_$(platform)) $(top_srcdir)/src/$$d $(prefix)/src; \
++				$(INSTALL) -d $(DESTDIR)$(prefix)/src/$$d; \
++				cp -fr$(CP_$(platform)) $(top_srcdir)/src/$$d $(DESTDIR)$(prefix)/src; \
+ 			done; \
+ 		fi; \
+ 	fi
+-	bd=`pwd`; cd $(top_srcdir); sd=`pwd`; cd $(prefix); pd=`pwd`; cd $$bd; \
++	bd=`pwd`; cd $(top_srcdir); sd=`pwd`; cd $(DESTDIR)$(prefix); pd=`pwd`; cd $$bd; \
+ 	if [ "$$pd" != "$$sd" ]; then \
+ 		inst_dirs="$(DataExchange_DIRS)"; \
+ 		if test "x$(DataExchange_DIRS)" != "x"; then \
+ 			for d in $$inst_dirs; do \
+-				$(INSTALL) -d $(prefix)/src/$$d; \
+-				cp -fr$(CP_$(platform)) $(top_srcdir)/src/$$d $(prefix)/src; \
++				$(INSTALL) -d $(DESTDIR)$(prefix)/src/$$d; \
++				cp -fr$(CP_$(platform)) $(top_srcdir)/src/$$d $(DESTDIR)$(prefix)/src; \
+ 			done; \
+ 		fi; \
+ 	fi
+-	bd=`pwd`; cd $(top_srcdir); sd=`pwd`; cd $(prefix); pd=`pwd`; cd $$bd; \
++	bd=`pwd`; cd $(top_srcdir); sd=`pwd`; cd $(DESTDIR)$(prefix); pd=`pwd`; cd $$bd; \
+ 	if [ "$$pd" != "$$sd" ]; then \
+ 		inst_dirs="$(Draw_DIRS)"; \
+ 		if test "x$(Draw_DIRS)" != "x"; then \
+ 			for d in $$inst_dirs; do \
+-				$(INSTALL) -d $(prefix)/src/$$d; \
+-				cp -fr$(CP_$(platform)) $(top_srcdir)/src/$$d $(prefix)/src; \
++				$(INSTALL) -d $(DESTDIR)$(prefix)/src/$$d; \
++				cp -fr$(CP_$(platform)) $(top_srcdir)/src/$$d $(DESTDIR)$(prefix)/src; \
+ 			done; \
+ 		fi; \
+ 	fi
+diff -urN opencascade.orig/ros/configure.in opencascade/ros/configure.in
+--- opencascade/ros/configure.in.orig	2011-03-06 19:36:08.000000000 +0100
++++ opencascade/ros/configure.in	2011-03-06 22:24:04.000000000 +0100
+@@ -422,7 +422,7 @@
+   HAVE_FTGL=yes
+   HAVE_FTGL_INC=yes
+   CPPFLAGS="-I$ftgl/include $CPPFLAGS";
+-  AC_CHECK_HEADER( [FTGL/FTGL.h], [], [HAVE_FTGL_INC=no] )
++  AC_CHECK_HEADER( [FTGL/ftgl.h], [], [HAVE_FTGL_INC=no] )
+   if test "x$HAVE_FTGL_INC" = "xyes"; then
+     CSF_FTGL_INCLUDES="-I$ftgl/include/FTGL"
+     HAVE_FTGL_LIB=yes
+@@ -433,7 +433,7 @@
+     #we have problem with unresolved symbols on 64 stations
+     CSF_FTGL_LIB="-L$ftgl/lib -lftgl"
+     AC_TRY_LINK([
+-#include <FTGL/FTGL.h>
++#include <FTGL/ftgl.h>
+ #include <FTGL/FTGLTextureFont.h>
+ ], [
+ FTGLTextureFont font("");], [

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=dev-libs/openssl net-libs/libpcap sys-libs/zlib X? ( x11-libs/fltk:1 )
+DESCRIPTION=Enhanced version of WepAttack a tool for breaking 802.11 WEP keys
+EAPI=4
+HOMEPAGE=http://wepdecrypt.sourceforge.net/
+IUSE=X
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/openssl net-libs/libpcap sys-libs/zlib X? ( x11-libs/fltk:1 )
+SLOT=0
+SRC_URI=mirror://sourceforge/wepdecrypt/wepdecrypt-0.8.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ffb4430446b56b53d7fd80ed10f42955

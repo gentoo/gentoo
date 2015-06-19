@@ -1,0 +1,31 @@
+# ChangeLog for dev-perl/JavaScript-Minifier
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/JavaScript-Minifier/ChangeLog,v 1.6 2014/08/26 15:18:57 axs Exp $
+
+*JavaScript-Minifier-1.50.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +JavaScript-Minifier-1.50.0-r1.ebuild, -JavaScript-Minifier-1.50.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  01 Mar 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Add missing cpan remote-id tags in metadata.xml (#406287)
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -JavaScript-Minifier-1.05.ebuild:
+  Cleanup
+
+*JavaScript-Minifier-1.50.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +JavaScript-Minifier-1.50.0.ebuild:
+  Change version scheme
+
+*JavaScript-Minifier-1.05 (15 Aug 2011)
+
+  15 Aug 2011; Patrick Lauer <patrick@gentoo.org>
+  +JavaScript-Minifier-1.05.ebuild, +metadata.xml:
+  Initial import from Rion overlay, ebuilds by the respective authors

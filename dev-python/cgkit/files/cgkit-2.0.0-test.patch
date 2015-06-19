@@ -1,0 +1,11 @@
+diff -ur cgkit-2.0.0alpha9.orig/unittests/test_sequence.py cgkit-2.0.0alpha9/unittests/test_sequence.py
+--- unittests/test_sequence.py	2009-08-15 19:37:35.000000000 +0800
++++ unittests/test_sequence.py	2012-11-07 06:58:07.024791790 +0800
+@@ -594,6 +594,7 @@
+                           ("spam1_5.tif", "foo0006.tif")], list(ong))
+ 
+ 
++@unittest.skip("Seeks absent dep 3delight")
+ class TestSeqUtils(unittest.TestCase):
+     """Test the sequence utilities.
+     """

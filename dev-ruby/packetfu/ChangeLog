@@ -1,0 +1,31 @@
+# ChangeLog for dev-ruby/packetfu
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/packetfu/ChangeLog,v 1.6 2015/06/14 06:45:51 graaff Exp $
+
+  14 Jun 2015; Hans de Graaff <graaff@gentoo.org> -packetfu-1.1.10.ebuild:
+  Cleanup.
+
+  11 Apr 2015; Hans de Graaff <graaff@gentoo.org> packetfu-1.1.10-r1.ebuild:
+  Add ruby22.
+
+  19 Dec 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org> packetfu-1.1.9.ebuild:
+  added ruby21 , proxying for Zero_Chaos
+
+*packetfu-1.1.10-r1 (09 Dec 2014)
+
+  09 Dec 2014; Manuel Rüger <mrueg@gentoo.org>
+  +files/packetfu-1.1.10-ruby2x-encoding.patch, +packetfu-1.1.10-r1.ebuild:
+  Apply (retabbed) patch that makes ruby2.x tests succeed. Add ruby20, ruby21
+  target.
+
+*packetfu-1.1.10 (15 Jan 2014)
+
+  15 Jan 2014; Hans de Graaff <graaff@gentoo.org> +packetfu-1.1.10.ebuild:
+  Version bump. Run tests. Drop unused sdoc dependency. Fix broken USE=doc and
+  install documentation.
+
+*packetfu-1.1.9 (15 Dec 2013)
+
+  15 Dec 2013; Rick Farina <zerochaos@gentoo.org> +metadata.xml,
+  +packetfu-1.1.9.ebuild:
+  importing from pentoo for use with metasploit

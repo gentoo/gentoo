@@ -1,0 +1,155 @@
+# ChangeLog for net-misc/mico
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/mico/ChangeLog,v 1.44 2015/04/26 22:55:48 mrueg Exp $
+
+  26 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -mico-2.3.13-r4.ebuild,
+  -mico-2.3.13-r5.ebuild, -mico-2.3.13-r6.ebuild:
+  Remove old.
+
+  25 Mar 2015; Justin Lecher <jlec@gentoo.org> mico-2.3.13-r4.ebuild,
+  mico-2.3.13-r5.ebuild, mico-2.3.13-r6.ebuild, mico-2.3.13-r7.ebuild,
+  mico-9999.ebuild:
+  Fix tcl/tk slotting; bump to EAPI=5
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org> mico-2.3.13-r4.ebuild,
+  mico-2.3.13-r5.ebuild, mico-2.3.13-r6.ebuild, mico-2.3.13-r7.ebuild,
+  mico-9999.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org> mico-2.3.13-r4.ebuild,
+  mico-2.3.13-r5.ebuild, mico-2.3.13-r6.ebuild, mico-2.3.13-r7.ebuild,
+  mico-9999.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+*mico-2.3.13-r7 (19 Feb 2014)
+
+  19 Feb 2014; Michael Haubenwallner <haubi@gentoo.org> +mico-2.3.13-r7.ebuild,
+  mico-9999.ebuild:
+  Install the libs in correct libdir (multilib-strict), bug#500744.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> mico-2.3.13-r4.ebuild,
+  mico-2.3.13-r5.ebuild, mico-2.3.13-r6.ebuild, mico-9999.ebuild:
+  Move Qt dependencies to the new category
+
+  08 Oct 2012; Michael Haubenwallner <haubi@gentoo.org>
+  -files/find-bug343827.patch, mico-2.3.13-r5.ebuild, mico-2.3.13-r6.ebuild,
+  metadata.xml:
+  Drop helpers to find bug#343827, per bug#437346.
+
+  24 Sep 2012; Michael Haubenwallner <haubi@gentoo.org> mico-9999.ebuild:
+  Update patchset: Drop obsole patches. Avoid the need to resolve hostnames
+  within idl-compiler, bug#343827. Search for gtk releases by major number, can
+  drop the gtk-1 wrapper. But still does not support gtk-3.
+
+*mico-2.3.13-r6 (24 Sep 2012)
+
+  24 Sep 2012; Michael Haubenwallner <haubi@gentoo.org> +mico-2.3.13-r6.ebuild:
+  Avoid the need to resolve hostnames within idl-compiler, bug#343827.
+
+  29 Jun 2011; Michael Haubenwallner <haubi@gentoo.org>
+  +files/find-bug343827.patch, mico-2.3.13-r5.ebuild, metadata.xml:
+  try to find bug#343827 via extra patch upon USE=findbug
+
+  26 May 2011; Michael Haubenwallner <haubi@gentoo.org> mico-9999.ebuild:
+  err, do not try to trigger the description problem
+
+  26 May 2011; Michael Haubenwallner <haubi@gentoo.org> mico-9999.ebuild:
+  Do all inherits before any other metadata. Little reorg in metadata
+  setting for more readability.
+
+*mico-9999 (26 May 2011)
+
+  26 May 2011; Michael Haubenwallner <haubi@gentoo.org>
+  -mico-2.3.13-r3.ebuild, +mico-9999.ebuild:
+  drop old version. add live-darcs version.
+
+*mico-2.3.13-r5 (26 May 2011)
+
+  26 May 2011; Michael Haubenwallner <haubi@gentoo.org>
+  +mico-2.3.13-r5.ebuild:
+  Fix building with gcc-4.6.0 (#365117). run eautoreconf. Improve support
+  for -Wl,--as-needed (#280678); Keep patches-tarball in devspace.
+
+*mico-2.3.13-r4 (29 Nov 2010)
+
+  29 Nov 2010; Michael Haubenwallner <haubi@gentoo.org>
+  +mico-2.3.13-r4.ebuild:
+  EAPI 3 bump. Listen to CFLAGS/CXXFLAGS. Better grouping of econf options.
+
+  16 Aug 2010; Michael Haubenwallner <haubi@gentoo.org>
+  mico-2.3.13-r3.ebuild, -files/mico-2.3.13-aix.patch,
+  -files/mico-2.3.13-as-needed.patch,
+  -files/mico-2.3.13-drop-pgsql-header-check.patch,
+  -files/mico-2.3.13-gcc43.patch, -files/mico-2.3.13-hpux.patch,
+  -files/mico-2.3.13-nolibcheck.patch, -files/mico-2.3.13-pthread.patch,
+  -files/mico-2.3.13-qt4-nothread.patch,
+  -files/mico-2.3.13-winnt-coss.patch, -files/mico-2.3.13-winnt-other.patch,
+  -files/gtk-config:
+  move all files/ to gentoo/src/patchsets repository (#328653)
+
+  16 Aug 2010; Michael Haubenwallner <haubi@gentoo.org>
+  mico-2.3.13-r3.ebuild, -files/mico-2.3.13-winnt.patch.bz2,
+  +files/mico-2.3.13-winnt-coss.patch, +files/mico-2.3.13-winnt-other.patch:
+  avoid compressed patch (bug#328653)
+
+  17 Jun 2010; Patrick Lauer <patrick@gentoo.org> mico-2.3.13-r3.ebuild:
+  Migrating away from deprecated postgres virtuals
+
+*mico-2.3.13-r3 (24 Feb 2010)
+
+  24 Feb 2010; Michael Haubenwallner <haubi@gentoo.org>
+  -mico-2.3.13-r2.ebuild, +mico-2.3.13-r3.ebuild,
+  +files/mico-2.3.13-drop-pgsql-header-check.patch:
+  update postgres dependency to use virtual/postgresql-base (#306255)
+
+  24 Feb 2010; Michael Haubenwallner <haubi@gentoo.org>
+  mico-2.3.13-r2.ebuild:
+  add RESTRICT=test for now (#298101)
+
+*mico-2.3.13-r2 (13 Jan 2010)
+
+  13 Jan 2010; Michael Haubenwallner <haubi@gentoo.org>
+  +mico-2.3.13-r2.ebuild, +files/mico-2.3.13-qt4-nothread.patch:
+  upgrade from qt3 to qt4 using Qt3Support. fix some prefix issues.
+
+  28 Sep 2009; Michael Haubenwallner <haubi@gentoo.org>
+  mico-2.3.13-r1.ebuild, +files/mico-2.3.13-winnt.patch.bz2:
+  incorporated prefix support and keywords
+
+*mico-2.3.13-r1 (09 Sep 2009)
+
+  09 Sep 2009; Michael Haubenwallner <haubi@gentoo.org>
+  +mico-2.3.13-r1.ebuild, +files/mico-2.3.13-as-needed.patch:
+  work with (forced) --as-needed linker flag (#280678)
+
+  07 Jul 2009; Michael Haubenwallner <haubi@gentoo.org>
+  +files/mico-2.3.13-hpux.patch, mico-2.3.13.ebuild:
+  fixed hpux build
+
+  16 Apr 2009; Michael Haubenwallner <haubi@gentoo.org>
+  +files/mico-2.3.13-aix.patch, +files/mico-2.3.13-pthread.patch,
+  mico-2.3.13.ebuild:
+  use gcc pthread flag instead of -lpthread.
+  do not link -lstdc++ explicitly on aix.
+
+  07 Apr 2009; Michael Haubenwallner <haubi@gentoo.org> metadata.xml:
+  added <longdescription lang=en/>
+
+  31 Mar 2009; Michael Haubenwallner <haubi@gentoo.org> mico-2.3.13.ebuild:
+  no need to call ldconfig during src_install
+
+  20 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Fixed metadata.
+
+  10 Feb 2009; Michael Haubenwallner <haubi@gentoo.org> mico-2.3.13.ebuild:
+  added keywords found in old mico-2.3.11-r1.ebuild: ~alpha ~amd64 ~ppc
+  ~sparc - did only ~x86 initially. (#257984)
+
+*mico-2.3.13 (09 Feb 2009)
+
+  09 Feb 2009; Michael Haubenwallner <haubi@gentoo.org>
+  +files/mico-2.3.13-gcc43.patch, +files/mico-2.3.13-nolibcheck.patch,
+  +files/gtk-config, +metadata.xml, +mico-2.3.13.ebuild:
+  added mico-2.3.13 (#257984), without bluetooth/wireless/sl3ac, with gcc43
+  patch from Malcolm MacLeod <mmacleod@webmail.co.za>

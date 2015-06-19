@@ -1,0 +1,28 @@
+# default: off
+# description: hotway daemon
+#   - You need to add a line that says "hotwayd         110/tcp" to your
+#     /etc/services file. Change the port number if necessary, see below.
+#   - By default it listens to port 110 (default for pop3)
+#     If you already have a pop3 server running, or you want it to listen
+#     to another port change the value of "port = 110" below.
+#     Change the value in your email client and in /etc/services accordingly.
+#   - By default it only allows access from localhost.
+#   - Also all xinetd entries do not start by default.
+#     One should manually enable the entries that one wants by
+#     changing the value of "disable = yes" to "disable = no".
+#   - Restart xinetd after changing anything in this file:
+#     # /etc/init.d/xinetd restart
+
+service hotwayd
+{
+        only_from               = localhost
+	socket_type		= stream
+	wait			= no
+	user			= nobody
+	port			= 110
+	server			= /usr/sbin/hotwayd
+	#server_args		= - http://proxy:8080 -u proxy_user -q proxy_password
+	log_on_success		+= USERID
+	log_on_failure		+= USERID
+	disable			= yes
+}

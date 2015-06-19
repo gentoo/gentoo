@@ -1,0 +1,30 @@
+diff -Naur a/linux/inode.c b/linux/inode.c
+--- a/vmblock-only/linux/inode.c	2013-10-03 04:29:47.471339204 -0400
++++ b/vmblock-only/linux/inode.c	2013-10-03 04:31:56.607334636 -0400
+@@ -36,7 +36,7 @@
+ 
+ /* Inode operations */
+ static struct dentry *InodeOpLookup(struct inode *dir,
+-                                    struct dentry *dentry, struct nameidata *nd);
++                                    struct dentry *dentry, unsigned int flags);
+ static int InodeOpReadlink(struct dentry *dentry, char __user *buffer, int buflen);
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
+ static void *InodeOpFollowlink(struct dentry *dentry, struct nameidata *nd);
+@@ -75,7 +75,7 @@
+ static struct dentry *
+ InodeOpLookup(struct inode *dir,      // IN: parent directory's inode
+               struct dentry *dentry,  // IN: dentry to lookup
+-              struct nameidata *nd)   // IN: lookup intent and information
++              unsigned int flags)     // IN: lookup intent and information
+ {
+    char *filename;
+    struct inode *inode;
+@@ -221,7 +221,7 @@
+       goto out;
+    }
+ 
+-   ret = vfs_follow_link(nd, iinfo->name);
++   nd_set_link(nd, iinfo->name);
+ 
+ out:
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)

@@ -1,0 +1,50 @@
+# ChangeLog for dev-util/xxdiff
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/xxdiff/ChangeLog,v 1.62 2014/05/27 12:36:00 ssuominen Exp $
+
+*xxdiff-4.0_beta1_p20110426-r1 (27 May 2014)
+
+  27 May 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +files/xxdiff-4.0_beta1_p20110426-bison3.patch,
+  +xxdiff-4.0_beta1_p20110426-r1.ebuild, xxdiff-4.0_beta1_p20110426.ebuild:
+  Restrict -r0 to <sys-devel/bison-3 and fix building in -r1 wrt #511560 by
+  "zimous"
+
+  03 Mar 2013; Samuli Suominen <ssuominen@gentoo.org>
+  xxdiff-4.0_beta1_p20110426.ebuild:
+  Replace use of distutils.eclass with -r1.eclass. Update EAPI in order to drop
+  prepalldocs. Remove usage of PATCHES since it will cause a conflict when both
+  distutils-r1.eclass and qt4-r1.eclass runs it.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org>
+  xxdiff-4.0_beta1_p20110426.ebuild:
+  Move Qt dependencies to the new category
+
+  15 Jan 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove myself from metadata
+
+  30 Nov 2012; Markos Chandras <hwoarang@gentoo.org>
+  +files/xxdiff-4.0_beta1_p20110426-gcc47.patch,
+  xxdiff-4.0_beta1_p20110426.ebuild:
+  Apply upstream patch to fix building with gcc-4.7. Bug #442302
+
+  05 Oct 2012; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Taking over package. Adding qt@ as backup herd
+
+  28 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Push to maintainer-needed.
+
+  14 Dec 2011; Samuli Suominen <ssuominen@gentoo.org>
+  xxdiff-4.0_beta1_p20110426.ebuild:
+  amd64/x86 stable
+
+  27 Apr 2011; Samuli Suominen <ssuominen@gentoo.org>
+  xxdiff-4.0_beta1_p20110426.ebuild:
+  Remove usage of qPixmapFromMimeSource to avoid x11-libs/qt-qt3support:4 wrt
+  #365019 by Rafał Mużyło
+
+*xxdiff-4.0_beta1_p20110426 (26 Apr 2011)
+
+  26 Apr 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +xxdiff-4.0_beta1_p20110426.ebuild:
+  Initial commit.

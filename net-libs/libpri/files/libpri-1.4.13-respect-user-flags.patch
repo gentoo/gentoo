@@ -1,0 +1,41 @@
+--- libpri-1.4.13/Makefile.orig	2012-09-26 17:46:23.000000000 +0200
++++ libpri-1.4.13/Makefile	2012-10-10 08:11:24.000000000 +0200
+@@ -67,7 +67,7 @@
+ DYNAMIC_OBJS= \
+ 	$(STATIC_OBJS)
+ CFLAGS ?= -g
+-CFLAGS += -Wall -Werror -Wstrict-prototypes -Wmissing-prototypes
++CFLAGS += -Wall -Wstrict-prototypes -Wmissing-prototypes
+ CFLAGS += -fPIC $(ALERTING) $(LIBPRI_OPT) $(COVERAGE_CFLAGS)
+ INSTALL_PREFIX=$(DESTDIR)
+ INSTALL_BASE=/usr
+@@ -107,17 +107,12 @@
+ #The problem with sparc is the best stuff is in newer versions of gcc (post 3.0) only.
+ #This works for even old (2.96) versions of gcc and provides a small boost either way.
+ #A ultrasparc cpu is really v9 but the stock debian stable 3.0 gcc doesnt support it.
+-ifeq ($(PROC),sparc64)
+-PROC=ultrasparc
+-LIBPRI_OPT = -mtune=$(PROC) -O3 -pipe -fomit-frame-pointer -mcpu=v8
+-else
+-  ifneq ($(CODE_COVERAGE),)
++ifneq ($(CODE_COVERAGE),)
+     LIBPRI_OPT=
+     COVERAGE_CFLAGS=-ftest-coverage -fprofile-arcs
+     COVERAGE_LDFLAGS=-ftest-coverage -fprofile-arcs
+-  else
+-    LIBPRI_OPT=-O2
+-  endif
++else
++    LIBPRI_OPT=
+ endif
+ 
+ ifeq ($(CPUARCH),i686)
+@@ -196,7 +191,7 @@
+ 	ranlib $(STATIC_LIBRARY)
+ 
+ $(DYNAMIC_LIBRARY): $(DYNAMIC_OBJS)
+-	$(CC) $(SOFLAGS) -o $@ $(DYNAMIC_OBJS)
++	$(CC) $(SOFLAGS) $(LDFLAGS) -o $@ $(DYNAMIC_OBJS)
+ 	$(LDCONFIG) $(LDCONFIG_FLAGS) .
+ 	ln -sf $(DYNAMIC_LIBRARY) libpri.so
+ 

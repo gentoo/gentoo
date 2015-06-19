@@ -1,0 +1,167 @@
+# ChangeLog for games-fps/nexuiz
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/nexuiz/ChangeLog,v 1.42 2015/03/11 21:35:19 mr_bones_ Exp $
+
+  11 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> nexuiz-2.5.2.ebuild:
+  add opengl use dep for libsdl (bug #476816)
+
+  21 Nov 2013; Michael Sterrett <mr_bones_@gentoo.org> nexuiz-2.5.2.ebuild:
+  EAPI=5; tidy
+
+  19 Nov 2013; Julian Ospald <hasufell@gentoo.org>
+  +files/nexuiz-2.5.2-libpng-1.4.patch, nexuiz-2.5.2.ebuild:
+  fix libpng error wrt #491610
+
+  25 Mar 2013; Michael Sterrett <mr_bones_@gentoo.org> nexuiz-2.5.2.ebuild:
+  add x11-libs/libXpm dep (bug #463288)
+
+  26 Feb 2011; Kevin McCarthy <signals@gentoo.org> nexuiz-2.5.2.ebuild:
+  Updated depends from media-libs/jpeg to virtual/jpeg
+
+  25 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> nexuiz-2.5.2.ebuild:
+  amd64 stable wrt #305991
+
+  05 Mar 2010; Christian Faulhammer <fauli@gentoo.org> nexuiz-2.5.2.ebuild:
+  stable x86, bug 305991
+
+  03 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org> +nexuiz-2.5.2.ebuild:
+  version bump - ebuild submitted by Merlijn Hofstra via bug #287260
+
+*nexuiz-2.5.1-r1 (24 Aug 2009)
+
+  24 Aug 2009; Tristan Heaven <nyhm@gentoo.org> +nexuiz-2.5.1-r1.ebuild,
+  +files/nexuiz-2.5.1-jpeg.patch:
+  Patch from Gef Lebster to fix incompatibility with jpeg-7, bug #282406
+
+  10 Jul 2009; Michael Sterrett <mr_bones_@gentoo.org> nexuiz-2.5.1.ebuild:
+  add use-based deps for libsdl (bug #277275)
+
+  30 May 2009; Tristan Heaven <nyhm@gentoo.org> nexuiz-2.5.1.ebuild:
+  Install images for html docs, bug #268739
+
+*nexuiz-2.5.1 (02 May 2009)
+
+  02 May 2009; Michael Sterrett <mr_bones_@gentoo.org> +nexuiz-2.5.1.ebuild:
+  version bump (bug #268240)
+
+*nexuiz-2.5 (09 Apr 2009)
+
+  09 Apr 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/nexuiz-2.5-memory-leak.patch, +nexuiz-2.5.ebuild:
+  version bump - ebuild submitted by Merlijn Hofstra and Tomáš Chvátal (bug
+  #264794)
+
+  03 Apr 2009; Michael Sterrett <mr_bones_@gentoo.org> nexuiz-2.4.2.ebuild:
+  EAPI=2; tidy; handle strip more precisely
+
+  16 Oct 2008; Raúl Porcel <armin76@gentoo.org> nexuiz-2.4.2.ebuild:
+  x86 stable wrt #240708
+
+  14 Oct 2008; Jeremy Olexa <darkside@gentoo.org> nexuiz-2.4.2.ebuild:
+  amd64 stable, bug #240708
+
+*nexuiz-2.4.2 (12 May 2008)
+
+  12 May 2008; Tristan Heaven <nyhm@gentoo.org> +nexuiz-2.4.2.ebuild:
+  Version bump
+
+*nexuiz-2.4 (03 Mar 2008)
+
+  03 Mar 2008; Michael Sterrett <mr_bones_@gentoo.org> +nexuiz-2.4.ebuild:
+  version bump
+
+  14 Oct 2007; Markus Rothe <corsair@gentoo.org> nexuiz-2.3.ebuild:
+  Stable on amd64; bug #194529
+
+  02 Oct 2007; Christian Faulhammer <opfer@gentoo.org> nexuiz-2.3.ebuild:
+  stable x86, bug 194529
+
+*nexuiz-2.3 (31 May 2007)
+
+  31 May 2007; Tristan Heaven <nyhm@gentoo.org> +nexuiz-2.3.ebuild:
+  Version bump, bug #180453
+
+  09 Feb 2007; Michael Sterrett <mr_bones_@gentoo.org> -nexuiz-2.1.ebuild,
+  nexuiz-2.2.3.ebuild:
+  whack old DOSable version (bug #166044)
+
+*nexuiz-2.2.3 (28 Jan 2007)
+
+  28 Jan 2007; Michael Sterrett <mr_bones_@gentoo.org> +nexuiz-2.2.3.ebuild:
+  version bump
+
+*nexuiz-2.2.2 (03 Jan 2007)
+
+  03 Jan 2007; Tristan Heaven <nyhm@gentoo.org> -nexuiz-1.5.ebuild,
+  -nexuiz-2.2.1.ebuild, +nexuiz-2.2.2.ebuild:
+  Version bump
+
+*nexuiz-2.2.1 (13 Dec 2006)
+
+  13 Dec 2006; Tristan Heaven <nyhm@gentoo.org> +nexuiz-2.2.1.ebuild:
+  Version bump
+
+  05 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> nexuiz-1.5.ebuild,
+  nexuiz-2.0.ebuild:
+  Removing old virtual/x11 dependency.
+
+  27 Nov 2006; Tristan Heaven <nyhm@gentoo.org> nexuiz-2.1.ebuild:
+  Add missing net-misc/curl dependency, bug #153155
+
+  10 Nov 2006; Chris Gianelloni <wolf31o2@gentoo.org> nexuiz-2.1.ebuild:
+  Sorry about that, I made the wrong package stable. This one should not be
+  marked stable on PPC yet.
+
+  10 Nov 2006; Chris Gianelloni <wolf31o2@gentoo.org> nexuiz-2.1.ebuild:
+  Stable on amd64/ppc/x86.
+
+*nexuiz-2.1 (27 Sep 2006)
+
+  27 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org> +nexuiz-2.1.ebuild:
+  Version bump to 2.1 from 2.0 with a simple ebuild copy and adding
+  DP_FS_BASEDIR=${GAMES_DATADIR}/quake1 to each emake line.
+
+  28 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> nexuiz-2.0.ebuild:
+  Fixing dependencies and closing bug #138380.
+
+  27 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> nexuiz-2.0.ebuild:
+  Updated dependencies to be more accurate.
+
+*nexuiz-2.0 (27 Jun 2006)
+
+  27 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> -nexuiz-1.2.1.ebuild,
+  nexuiz-1.5.ebuild, +nexuiz-2.0.ebuild:
+  Version bump. Ebuild by Paul Bredbury <brebs@sent.com> and edit by me.
+  Closing bug #136979.
+
+  11 Jun 2006; Simon Stelling <blubb@gentoo.org> nexuiz-1.5.ebuild:
+  marking stable on amd64 and changing description per bug 134694
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> nexuiz-1.5.ebuild:
+  Moved games_pkg_setup to the top of pkg_setup.
+
+  24 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> nexuiz-1.5.ebuild:
+  Moved games_pkg_postinst to beginning of pkg_postinst.
+
+  20 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> nexuiz-1.5.ebuild:
+  Changed how the default client is determined and closing bug #126985.
+
+*nexuiz-1.5 (17 Mar 2006)
+
+  17 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> +nexuiz-1.5.ebuild:
+  Version bumped to 1.5 and closing bug #122838.
+
+  13 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org> nexuiz-1.2.1.ebuild:
+  added to ~ppc, bug #118872
+
+  08 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org> nexuiz-1.2.1.ebuild:
+  stable for x86
+
+  07 Oct 2005; Luis Medinas <metalgod@gentoo.org> nexuiz-1.2.1.ebuild:
+  Added ~amd64 keyword. Bug #108310.
+
+*nexuiz-1.2.1 (18 Sep 2005)
+
+  18 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org> +metadata.xml,
+  +nexuiz-1.2.1.ebuild:
+  initial commit - ebuild submitted by fabien Zouaoui via bug #94764

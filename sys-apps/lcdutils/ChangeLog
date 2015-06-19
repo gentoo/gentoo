@@ -1,0 +1,30 @@
+# ChangeLog for sys-apps/lcdutils
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/lcdutils/ChangeLog,v 1.7 2011/06/14 03:55:20 mattst88 Exp $
+
+  14 Jun 2011; Matt Turner <mattst88@gentoo.org> lcdutils-0.2.ebuild,
+  +files/include-stdlib.h-for-exit.patch:
+  Fix QA issues and bug 298023
+
+  08 Oct 2010; Mart Raudsepp <leio@gentoo.org> lcdutils-0.2.ebuild:
+  Drop to ~mips
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  26 Nov 2006; Steve Dibb <beandog@gentoo.org> lcdutils-0.2.ebuild:
+  Update homepage
+
+  10 Jun 2004; Joshua Kinard <kumba@gentoo.org> lcdutils-0.2.ebuild:
+  Changed the ebuild to allow installation on x86 systems, since newer Cobalt
+  models (i.e. XTR) apparently work with this package.
+
+*lcdutils-0.2 (01 Feb 2004)
+
+  01 Feb 2004; Joshua Kinard <kumba@gentoo.org> lcdutils-0.2.ebuild,
+  metadata.xml:
+  Initial revision (probably the only known revision). These tools are used on
+  Cobalt Microserver systems, specififcally the RaQ2 and Qube2 to write text to
+  the front LCD panel (RaQ2) or Rear panel (Qube2), or read button input from
+  the machines.
+

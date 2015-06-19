@@ -1,0 +1,583 @@
+# ChangeLog for dev-libs/DirectFB
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/DirectFB/ChangeLog,v 1.143 2015/03/29 14:01:19 pacho Exp $
+
+  29 Mar 2015; Pacho Ramos <pacho@gentoo.org> DirectFB-1.7.6.ebuild:
+  Disable svg support as it relies on obsolete libsvg-cairo (#537918)
+
+  16 Feb 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/DirectFB-1.7.6-cle266.patch, DirectFB-1.7.6.ebuild:
+  Add fix by Jonathan Horowitz for building the cle266 driver #527986 by Toralf
+  Förster.
+
+  28 Jan 2015; Michał Górny <mgorny@gentoo.org> DirectFB-1.4.9-r1.ebuild,
+  DirectFB-1.6.3-r1.ebuild, DirectFB-1.7.1.ebuild, DirectFB-1.7.5.ebuild,
+  DirectFB-1.7.6.ebuild:
+  Switch to CPU_FLAGS_X86.
+
+  22 Oct 2014; Mike Frysinger <vapier@gentoo.org> DirectFB-1.7.6.ebuild:
+  Drop broken CXXFLAGS munging from configure #526196 by Octave Berry.
+
+*DirectFB-1.7.6 (19 Oct 2014)
+
+  19 Oct 2014; Mike Frysinger <vapier@gentoo.org> +DirectFB-1.7.6.ebuild:
+  Version bump #525872 by Arfrever Frehtes Taifersar Arahesis.
+
+*DirectFB-1.7.5 (18 Oct 2014)
+
+  18 Oct 2014; Mike Frysinger <vapier@gentoo.org> +DirectFB-1.7.5.ebuild,
+  +files/DirectFB-1.7.5-flags.patch:
+  Version bump #510472 by Agostino Sarubbo.
+
+  18 Oct 2014; Mike Frysinger <vapier@gentoo.org> DirectFB-1.7.1.ebuild:
+  Do not hard define raspberry pi support for egl targets #497124 by Juergen
+  Rose.
+
+  18 Oct 2014; Mike Frysinger <vapier@gentoo.org> DirectFB-1.7.1.ebuild:
+  Hard disable xine vdpau support #499740 by Silvio.
+
+  04 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org> metadata.xml:
+  move dev-libs/DirectFB to graphics herd
+
+  31 Jul 2014; Sergey Popov <pinkbyte@gentoo.org> DirectFB-1.6.3-r1.ebuild,
+  DirectFB-1.7.1.ebuild:
+  Enable USE="dynload" by default, wrt bug #517184
+
+*DirectFB-1.7.1 (04 Jan 2014)
+
+  04 Jan 2014; Julian Ospald <hasufell@gentoo.org> +DirectFB-1.7.1.ebuild,
+  +files/DirectFB-1.7.1-build.patch, +files/DirectFB-1.7.1-flags.patch:
+  version bump wrt #476834
+
+  19 Mar 2013; Mike Frysinger <vapier@gentoo.org> +files/DirectFB-1.6.3-atomic-f
+  ix-compiler-error-when-building-for-thumb2.patch, DirectFB-1.6.3-r1.ebuild:
+  Add fix from ChromiumOS for building on arm targets.
+
+*DirectFB-1.6.3-r1 (09 Feb 2013)
+
+  09 Feb 2013; Julian Ospald <hasufell@gentoo.org> -DirectFB-1.6.3.ebuild,
+  +DirectFB-1.6.3-r1.ebuild, +files/DirectFB-1.6.3-setregion.patch,
+  metadata.xml:
+  fix logic/syntax of --with-gfxdrivers and --with-inputdrivers, fix bug
+  #456112 , fix bug #456122 , drop broken video_cards_savage, remove old
+
+*DirectFB-1.6.3 (07 Feb 2013)
+
+  07 Feb 2013; Julian Ospald <hasufell@gentoo.org> +DirectFB-1.6.3.ebuild,
+  +files/DirectFB-1.6.3-build.patch, +files/DirectFB-1.6.3-flags.patch,
+  +files/DirectFB-1.6.3-pkgconfig.patch, metadata.xml:
+  version bump wrt #452264
+
+  27 Jan 2012; Tupone Alfredo <tupone@gentoo.org> DirectFB-1.4.9-r1.ebuild,
+  metadata.xml:
+  Remove dependency on sys-fs/sysfsutils. Bug #377681 by Anthony Basile
+
+  01 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> DirectFB-1.4.9-r1.ebuild:
+  Rename USE="v4l2" to USE="v4l" while removing support for video4linux 1.x wrt
+  #385241
+
+  01 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> -DirectFB-1.4.5.ebuild,
+  -DirectFB-1.4.9.ebuild:
+  old
+
+  04 Oct 2011; Jeroen Roovers <jer@gentoo.org> DirectFB-1.4.9-r1.ebuild:
+  Stable for HPPA (bug #375499).
+
+  16 Aug 2011; Raúl Porcel <armin76@gentoo.org> DirectFB-1.4.9-r1.ebuild:
+  alpha/ia64/sh stable wrt #375499
+
+  31 Jul 2011; Markus Meier <maekke@gentoo.org> DirectFB-1.4.9-r1.ebuild:
+  amd64/arm/x86 stable, bug #375499
+
+  25 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> DirectFB-1.4.9-r1.ebuild:
+  ppc/ppc64 stable wrt #375499
+
+  13 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> DirectFB-1.4.9.ebuild:
+  ppc64 stable wrt #360709
+
+  24 Jun 2011; Brent Baude <ranger@gentoo.org> DirectFB-1.4.9.ebuild:
+  Marking DirectFB-1.4.9 ppc for bug 360709
+
+*DirectFB-1.4.9-r1 (08 Jun 2011)
+
+  08 Jun 2011; Mike Frysinger <vapier@gentoo.org> +DirectFB-1.4.9-r1.ebuild,
+  files/DirectFB-1.4.9-libpng-1.5.patch:
+  Fix up typo in libpng patch point out by Victor Tseng #370607.
+
+  07 Apr 2011; Jeroen Roovers <jer@gentoo.org> DirectFB-1.4.9.ebuild:
+  Stable for HPPA (bug #360709).
+
+  02 Apr 2011; Raúl Porcel <armin76@gentoo.org> DirectFB-1.4.9.ebuild:
+  arm/ia64/sh/x86 stable wrt #360709
+
+  27 Mar 2011; Christoph Mende <angelos@gentoo.org> DirectFB-1.4.9.ebuild:
+  Stable on amd64 wrt bug #360709
+
+  27 Mar 2011; Tobias Klausmann <klausman@gentoo.org> DirectFB-1.4.9.ebuild:
+  Stable on alpha, bug #360709
+
+  25 Feb 2011; Kevin McCarthy <signals@gentoo.org> DirectFB-1.4.5.ebuild:
+  Update depends from media-libs/jpeg to virtual/jpeg
+
+*DirectFB-1.4.9 (21 Feb 2011)
+
+  21 Feb 2011; Mike Frysinger <vapier@gentoo.org> +DirectFB-1.4.9.ebuild,
+  +files/DirectFB-1.4.9-libpng-1.5.patch:
+  Version bump. Fix building with libpng-1.5.x.
+
+  22 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> DirectFB-1.4.5.ebuild:
+  ppc64 stable wrt #343103
+
+  11 Jan 2011; Brent Baude <ranger@gentoo.org> DirectFB-1.4.5.ebuild:
+  Marking DirectFB-1.4.5 ppc for bug 343103
+
+  13 Nov 2010; Raúl Porcel <armin76@gentoo.org> DirectFB-1.4.5.ebuild:
+  alpha/ia64/sh stable wrt #343103
+
+  04 Nov 2010; Jeroen Roovers <jer@gentoo.org> DirectFB-1.4.5.ebuild:
+  Stable for HPPA (bug #343103).
+
+  04 Nov 2010; Markus Meier <maekke@gentoo.org> DirectFB-1.4.5.ebuild:
+  arm/x86 stable, bug #343103
+
+  29 Oct 2010; Markos Chandras <hwoarang@gentoo.org> DirectFB-1.4.5.ebuild:
+  Stable on amd64 wrt bug #343103
+
+*DirectFB-1.4.5 (23 Sep 2010)
+
+  23 Sep 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +DirectFB-1.4.5.ebuild:
+  version bump (bug #337396)
+
+  13 Sep 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  DirectFB-1.4.2.ebuild, DirectFB-1.4.3.ebuild, metadata.xml:
+  remove fusion support since dev-libs/linux-fusion is gone.
+
+  31 Jul 2010; Raúl Porcel <armin76@gentoo.org> DirectFB-1.4.3.ebuild:
+  ia64 stable wrt #315195
+
+  21 Jul 2010; Jeroen Roovers <jer@gentoo.org> DirectFB-1.4.3.ebuild:
+  Stable for HPPA (bug #315195).
+
+  26 Jun 2010; <nixnut@gentoo.org> DirectFB-1.4.3.ebuild:
+  ppc stable #315195
+
+  19 Jun 2010; Raúl Porcel <armin76@gentoo.org> DirectFB-1.4.3.ebuild:
+  alpha/arm/ia64/sh stable wrt #315195
+
+  23 May 2010; Pacho Ramos <pacho@gentoo.org> DirectFB-1.4.3.ebuild:
+  stable amd64, bug 315195
+
+  20 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  DirectFB-1.4.3.ebuild:
+  x86 stable wrt bug #315195
+
+  11 May 2010; Brent Baude <ranger@gentoo.org> DirectFB-1.4.3.ebuild:
+  stable ppc64, bug 315195
+
+  14 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> DirectFB-1.4.3.ebuild,
+  +files/DirectFB-1.4.3-libpng14.patch:
+  Fix building with libpng14 wrt #309303 by Peter Alfredsen.
+
+*DirectFB-1.4.3 (16 Jan 2010)
+
+  16 Jan 2010; Mike Frysinger <vapier@gentoo.org> +DirectFB-1.4.3.ebuild:
+  Version bump and avoid running ld directly #300779 by Nathan Phillip
+  Brink.
+
+  15 Jan 2010; Mike Frysinger <vapier@gentoo.org> DirectFB-1.4.2.ebuild:
+  Mark ia64 stable #296263.
+
+  14 Jan 2010; Jeroen Roovers <jer@gentoo.org> DirectFB-1.4.2.ebuild:
+  Stable for HPPA (bug #296263).
+
+  06 Jan 2010; Mike Frysinger <vapier@gentoo.org> DirectFB-1.4.2.ebuild:
+  Drop special "none" handling with VIDEO_CARDS/INPUT_DEVICES #299920 by
+  Jeroen Roovers.
+
+  05 Jan 2010; nixnut <nixnut@gentoo.org> DirectFB-1.4.2.ebuild:
+  ppc stable #296263
+
+  01 Jan 2010; Tobias Klausmann <klausman@gentoo.org> DirectFB-1.4.2.ebuild:
+  Stable on alpha, bug #296263
+
+  31 Dec 2009; Brent Baude <ranger@gentoo.org> DirectFB-1.4.2.ebuild:
+  Marking DirectFB-1.4.2 ppc64 for bug 296263
+
+  29 Dec 2009; Markus Meier <maekke@gentoo.org> DirectFB-1.4.2.ebuild:
+  amd64 stable, bug #296263
+
+  09 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  DirectFB-1.4.2.ebuild:
+  stable x86, bug 296263
+
+*DirectFB-1.4.2 (29 Sep 2009)
+
+  29 Sep 2009; Mike Frysinger <vapier@gentoo.org> +DirectFB-1.4.2.ebuild:
+  Version bump #283922 by Victor Tseng.
+
+*DirectFB-1.2.9 (29 Sep 2009)
+
+  29 Sep 2009; Mike Frysinger <vapier@gentoo.org> +DirectFB-1.2.9.ebuild:
+  Version bump.
+
+  30 Apr 2009; Jeroen Roovers <jer@gentoo.org> DirectFB-1.2.7.ebuild:
+  Stable for HPPA (bug #265042).
+
+  23 Apr 2009; Raúl Porcel <armin76@gentoo.org> DirectFB-1.2.7.ebuild:
+  arm/ia64/sh stable wrt #265042
+
+  18 Apr 2009; Markus Meier <maekke@gentoo.org> DirectFB-1.2.7:
+  amd64/x86 stable, bug #265042
+
+  15 Apr 2009; Brent Baude <ranger@gentoo.org> DirectFB-1.2.7.ebuild:
+  Marking DirectFB-1.2.7 ppc64 for bug 265042
+
+  12 Apr 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/DirectFB-0.9.25.1-headers.patch, -DirectFB-0.9.25.1.ebuild:
+  clean old
+
+  11 Apr 2009; nixnut <nixnut@gentoo.org> DirectFB-1.2.6.ebuild,
+  DirectFB-1.2.7.ebuild:
+  ppc stable #265042
+
+  07 Apr 2009; Tobias Klausmann <klausman@gentoo.org> DirectFB-1.2.7.ebuild:
+  Stable on alpha, bug #265042
+
+  15 Mar 2009; Brent Baude <ranger@gentoo.org> DirectFB-1.2.6.ebuild:
+  Marking DirectFB-1.2.6 ppc64 for bug 255701
+
+  23 Feb 2009; Raúl Porcel <armin76@gentoo.org> DirectFB-1.2.6.ebuild:
+  arm/ia64/sh stable wrt #255701
+
+  06 Feb 2009; Jeroen Roovers <jer@gentoo.org> DirectFB-1.2.6.ebuild:
+  Stable for HPPA (bug #255701).
+
+  01 Feb 2009; Tobias Klausmann <klausman@gentoo.org> DirectFB-1.2.6.ebuild:
+  Stable on alpha, bug #255701
+
+  25 Jan 2009; Markus Meier <maekke@gentoo.org> DirectFB-1.2.6.ebuild:
+  amd64/x86 stable, bug #255701
+
+*DirectFB-1.2.7 (20 Jan 2009)
+
+  20 Jan 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/DirectFB-1.2.7-CFLAGS.patch, +DirectFB-1.2.7.ebuild:
+  Version bump.
+
+*DirectFB-1.2.6 (09 Oct 2008)
+
+  09 Oct 2008; Mike Frysinger <vapier@gentoo.org> +DirectFB-1.2.6.ebuild:
+  Version bump.
+
+*DirectFB-1.2.3 (19 Aug 2008)
+
+  19 Aug 2008; Mike Frysinger <vapier@gentoo.org> +DirectFB-1.2.3.ebuild:
+  Version bump.
+
+*DirectFB-1.2.2 (16 Aug 2008)
+
+  16 Aug 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/DirectFB-1.2.0-headers.patch, +DirectFB-1.2.2.ebuild:
+  Version bump #233272 by Benjamin Schleinzer.
+
+  06 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  21 Jan 2008; Mike Frysinger <vapier@gentoo.org> DirectFB-1.1.1.ebuild:
+  Handle the edge cases better with VIDEO_CARDS/INPUT_DEVICES. Not set implies
+  all, set but not matching any possibilities implies none. Fixes #206824 by
+  peter.
+
+  24 Dec 2007; Mike Frysinger <vapier@gentoo.org> DirectFB-1.1.1.ebuild:
+  Add support for USE=X #201970 by Alexis Ballier.
+
+*DirectFB-1.1.1 (24 Dec 2007)
+
+  24 Dec 2007; Mike Frysinger <vapier@gentoo.org>
+  +files/DirectFB-1.1.1-headers.patch,
+  +files/DirectFB-1.1.1-pkgconfig.patch, +DirectFB-1.1.1.ebuild:
+  Version bump.
+
+  08 Dec 2007; Mike Frysinger <vapier@gentoo.org> DirectFB-1.1.0.ebuild:
+  Delete /usr/X11R6/ flags from build #201626 by Arfrever Frehtes Taifersar
+  Arahesis.
+
+*DirectFB-1.1.0 (02 Dec 2007)
+
+  02 Dec 2007; Mike Frysinger <vapier@gentoo.org>
+  +files/DirectFB-1.1.0-headers.patch,
+  +files/DirectFB-1.1.0-pkgconfig.patch, +DirectFB-1.1.0.ebuild:
+  Version bump #190463 by Alexandre Bique. Fix from Andrew Williams for the
+  .pc file #200661.
+
+  19 Apr 2007; Markus Rothe <corsair@gentoo.org> DirectFB-1.0.0.ebuild:
+  Added ~ppc64; bug #175166
+
+*DirectFB-1.0.0 (20 Mar 2007)
+
+  20 Mar 2007; Mike Frysinger <vapier@gentoo.org>
+  +files/DirectFB-1.0.0-headers.patch, +DirectFB-1.0.0.ebuild:
+  Version bump #171469 by Michele Noberasco.
+
+  03 Mar 2007; Marius Mauch <genone@gentoo.org> DirectFB-0.9.22.ebuild,
+  DirectFB-0.9.24.ebuild, DirectFB-0.9.25.1.ebuild:
+  Replacing einfo with ewarn
+
+  07 Feb 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  DirectFB-0.9.25.1.ebuild:
+  removed static use flag and always build static libs (bug #165761)
+
+  04 Jan 2007; Jeroen Roovers <jer@gentoo.org> DirectFB-0.9.25.1.ebuild:
+  Stable for HPPA (bug #159554).
+
+  31 Dec 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/DirectFB-0.9.25.1-headers.patch, DirectFB-0.9.25.1.ebuild:
+  Fix building with sanitized headers #152614.
+
+  30 Oct 2006; Matti Bickel <mabi@gentoo.org> DirectFB-0.9.25.1.ebuild:
+  Stable on ppc (bug #149813)
+
+  23 Oct 2006; Simon Stelling <blubb@gentoo.org> DirectFB-0.9.25.1.ebuild:
+  stable on amd64
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> DirectFB-0.9.24.ebuild:
+  Stable on Alpha.
+
+  10 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  DirectFB-0.9.25.1.ebuild:
+  Stable on x86 wrt bug #149813.
+
+  24 May 2006; Michael Hanselmann <hansmi@gentoo.org>
+  DirectFB-0.9.24.ebuild:
+  Stable on ppc.
+
+  08 May 2006; Michele Noberasco <s4t4n@gentoo.org> DirectFB-0.9.24.ebuild:
+  Stable for x86. See bug #132535.
+
+*DirectFB-0.9.25.1 (07 May 2006)
+
+  07 May 2006; Mike Frysinger <vapier@gentoo.org> +DirectFB-0.9.25.1.ebuild:
+  Version bump #132531 by Håvard Wall.
+
+  16 Apr 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/DirectFB-0.9.24-CFLAGS.patch, DirectFB-0.9.24.ebuild:
+  Scrub CFLAGS from configure.
+
+*DirectFB-0.9.24 (28 Oct 2005)
+
+  28 Oct 2005; Mike Frysinger <vapier@gentoo.org> +DirectFB-0.9.24.ebuild:
+  Version bump #110627 by James Gatt.
+
+  02 Sep 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/DirectFB-0.9.22-i830-detect.patch, DirectFB-0.9.22.ebuild:
+  Clean up the way we disable wm97xx/sis315 and enable i830.
+
+  21 Aug 2005; Mike Frysinger <vapier@gentoo.org> DirectFB-0.9.22.ebuild:
+  Add support for USE=zlib by Steve Dibb in #103150.
+
+  19 May 2005; Mike Frysinger <vapier@gentoo.org> DirectFB-0.9.22.ebuild:
+  Add support for INPUT_DRIVERS.  Patch by Lachlan Pease #93046.
+
+*DirectFB-0.9.22 (01 Mar 2005)
+
+  01 Mar 2005; Mike Frysinger <vapier@gentoo.org> +DirectFB-0.9.22.ebuild:
+  Version bump.
+
+*DirectFB-0.9.21 (24 Dec 2004)
+
+  24 Dec 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/0.9.21-simd-amd64.patch, +DirectFB-0.9.21.ebuild:
+  Version bump #75283 by Michele Noberasco.
+
+  04 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  DirectFB-0.9.20-r1.ebuild:
+  use emake (bug #72199)
+
+  09 Sep 2004; Mike Frysinger <vapier@gentoo.org> DirectFB-0.9.20-r1.ebuild,
+  -DirectFB-0.9.20.ebuild:
+  Add detection to prevent circular dependency causing build failures #61592 by
+  Anton Starikov.
+
+*DirectFB-0.9.20-r1 (12 Aug 2004)
+
+  12 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +DirectFB-0.9.20-r1.ebuild:
+  Fix mms/sse for non-amd64; error check sed; tidy
+
+  04 May 2004; Travis Tilley <lv@gentoo.org>
+  +files/DirectFB-0.9.20-64bit.diff, +files/DirectFB-0.9.20-simd-amd64.diff,
+  DirectFB-0.9.20.ebuild:
+  added misc 64bit fixes and enabled simd optimisations for amd64
+
+  18 Apr 2004; Travis Tilley <lv@gentoo.org> DirectFB-0.9.20.ebuild:
+  marking as stable on amd64
+
+  14 Mar 2004; Stephen P. Becker <geoman@gentoo.org> DirectFB-0.9.20.ebuild:
+  Masking on mips because of unsupported hardware.
+
+  28 Jan 2004; Aron Griffis <agriffis@gentoo.org> DirectFB-0.9.20.ebuild:
+  stable on ia64
+
+  02 Jan 2004; Sven Blumenstein <bazik@gentoo.org> DirectFB-0.9.12.ebuild,
+  DirectFB-0.9.19-r1.ebuild, DirectFB-0.9.20.ebuild:
+  Masking because sparc hardware is not supported by DirectFB.
+
+*DirectFB-0.9.20 (28 Oct 2003)
+
+  23 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add small patch to make this stuff work with linux 2.6 headers.
+
+  16 Dec 2003; Jason Wever <weeve@gentoo.org> DirectFB-0.9.12.ebuild:
+  Changed sparc keyword to ~sparc as quicktime dependency previous had no
+  keyword and the usability of this on sparc is questionable at this time.
+
+  23 Nov 2003; Aron Griffis <agriffis@gentoo.org> DirectFB-0.9.20.ebuild:
+  Stable on alpha
+
+  28 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #32207.
+
+*DirectFB-0.9.19-r1 (05 Aug 2003)
+
+  02 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add support so user can select what video card drivers to build.
+
+  05 Aug 2003; Patrick Kursawe <phosphan@gentoo.org>
+  DirectFB-0.9.19-r1.ebuild:
+  Trying to fix bug 25097
+
+  05 Aug 2003; Martin Holzer <mholzer@gentoo.org> DirectFB-0.9.12.ebuild,
+  DirectFB-0.9.16.ebuild:
+  Updated quicktime to virtual/quicktime
+
+*DirectFB-0.9.19 (30 Jul 2003)
+
+  30 Jul 2003; Brandon Low <lostlogic@gentoo.org> DirectFB-0.9.19.ebuild:
+  Bump
+
+*DirectFB-0.9.18 (25 Jun 2003)
+
+  06 Aug 2003; Patrick Kursawe <phosphan@gentoo.org> DirectFB-0.9.18.ebuild:
+  Moved to x86 to fix bug 25947
+
+  25 Jun 2003; Brandon Low <lostlogic@gentoo.org> DirectFB-0.9.18.ebuild:
+  Bump
+
+  13 Jun 2003; Seemant Kulleen <seemant@gentoo.org> DirectFB-0.9.16-r1.ebuild:
+  moved to x86
+
+*DirectFB-0.9.17 (05 Mar 2003)
+
+  05 Mar 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump + cleanups.  PDEPEND removed since extra isnt available yet.
+
+*DirectFB-0.9.16-r1 (02 Feb 2003)
+
+  02 Feb 2003; Seemant Kulleen <seemant@gentoo.org>
+  DirectFB-0.9.16-r1.ebuild files/digest-DirectFB-0.9.16-r1 :
+
+  Many fixes -- avifile, flash, quicktime, and imlib2 providers are now in
+  DirectFB-extra, and sdl is autodetected, to prevent the circular dependency
+  (it is still an experimental thing upstream, so hopefully the circular dep
+  thing gets sorted when it's less experimental). 
+  DirectFB-extra made a PDEPEND.
+
+*DirectFB-0.9.16 (17 Jan 2003)
+
+  17 Jan 2003; Mike Frysinger <vapier@gentoo.org> DirectFB-0.9.16.ebuild
+  files/digest-DirectFB-0.9.16 :
+  Version bump.
+
+*DirectFB-0.9.15 (13 Nov 2002)
+
+  13 Nov 2002; Seemant Kulleen <seemant@gentoo.org> DirectFB-0.9.15.ebuild
+  files/digest-DirectFB-0.9.15 :
+  Version bump.
+
+*DirectFB-0.9.13-r1 (30 Oct 2002)
+
+  15 Dec 2002; Bjoern Brauel <bjb@gentoo.org> DirectFB-0.9.13-r1.ebuild :
+  Add alpha to KEYWORDS
+
+  30 Oct 2002; Mike Frysinger <vapier@gentoo.org> :
+  Added a gcc3.x fix for libflash and a library linkage fix for libpng-1.2.5
+
+*DirectFB-0.9.13 (27 Aug 2002)
+
+  27 Aug 2002; Seemant Kulleen <seemant@gentoo.org> DirectFB-0.9.13.ebuild
+  files/digest-DirectFB-0.9.13 :
+  Version bump.
+
+*DirectFB-0.9.12 (20 Jun 2002)
+
+  19 Oct 2002; Calum Selkirk <cselkirk@gentoo.org> DirectFB-0.9.12.ebuild :
+  Added ppc to KEYWORDS.
+
+  20 Jun 2002; Seemant Kulleen <seemant@gentoo.org> DirectFB-0.9.12.ebuild
+  files/digest-DirectFB-0.9.12 :
+  Version bump.
+
+*DirectFB-0.9.11 (7 Jun 2002)
+
+  7 Jun 2002; Seemant Kulleen <seemant@gentoo.org> DirectFB-0.9.11-r1.ebuild
+  files/digest-DirectFB-0.9.11-r1 :
+  Fixed so that it finds the libmpeg3 headers.
+
+*DirectFB-0.9.11 (6 Jun 2002)
+
+  6 Jun 2002; Seemant Kulleen <seemant@gentoo.org> DirectFB-0.9.11.ebuild
+  files/digest-DirectFB-0.9.11 :
+  Version bump.
+
+*DirectFB-0.9.10-r1 (26 Apr 2002)
+
+  26 May 2002; Martin Schlemmer <azarah@gentoo.org> DirectFB-0.9.10-r1.ebuild :
+  Having "mmx" in use did not enable it .. fixed.  Updated avifile DEPEND
+  for now ... this will be needed when I can get it patched to work with
+  avifile-0.7.4.
+
+*DirectFB-0.9.10 (26 Apr 2002)
+
+  26 Apr 2002; Seemant Kulleen <seemant@gentoo.org> DirectFB-0.9.10.ebuild
+  files/digest-DirectFB-0.9.10 :
+  Version bump to bugfix release.
+
+*DirectFB-0.9.9-r2 (15 Apr 2002)
+
+  15 Apr 2002; Seemant Kulleen <seemant@gentoo.org> DirectFB-0.9.9-r2.ebuild :
+  Update: still blah.  I have removed the necessity of the libmpeg3 tarball
+  at least.  These people need to learn about libtool.  Anyway, by patching
+  the Makefile to point it to the static libmpeg3.a file in /usr/lib, it
+  emerges fine. Sheesh @ hoops though
+
+  Update: blah, this needs the unpacked libmpeg3 tarball itself.  It seems to 
+  completely vomit on an installed libmpeg3. Sigh.
+
+  avi support is broken, and libmpeg3 support is broken as well.  Upstream
+  has been made aware of the libmpeg3 issue, so that will hopefully get
+  sorted out soon.
+
+*DirectFB-0.9.9-r1 (12 Apr 2002)
+  12 Apr 2002; Spider <spider@gentoo.org> DirectFB-0.9.9-r1.ebuild :
+  Versionbump, libpng update
+ 
+*DirectFB-0.9.9 (12 Apr 2002)
+
+  12 Apr 2002; Seemant Kulleen <seemant@gentoo.org> DirectFB-0.9.9.ebuild :
+  Version bump, but avi support is still broken.  Note that the avifile
+  USE toggle is now just avi.
+
+*DirectFB-0.9.7 (21 Mar 2002)
+  
+  21 Mar 2002; Seemant Kulleen <seemant@gentoo.org> DirectFB-0.9.7.ebuild :
+  HTML documentation need not be gzipped.
+
+*DirectFB-0.9.7 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

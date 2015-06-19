@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>base-system</herd>
+  <maintainer>
+    <email>williamh@gentoo.org</email>
+    <name>William Hubbs</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:roy_marples:dhcpcd</remote-id>
+</upstream>
+<use>
+	<flag name="embedded">
+		Embed the definitions of dhcp options in the dhcpcd executable
+	</flag>
+</use>
+</pkgmetadata>

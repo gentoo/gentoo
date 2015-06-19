@@ -1,0 +1,78 @@
+# ChangeLog for dev-vcs/hgsvn
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/hgsvn/ChangeLog,v 1.8 2015/02/23 06:53:13 idella4 Exp $
+
+*hgsvn-0.2.3-r1 (23 Feb 2015)
+
+  23 Feb 2015; Ian Delaney <idella4@gentoo.org> +hgsvn-0.2.3-r1.ebuild,
+  -hgsvn-0.2.3.ebuild:
+  revbump; convert -> distutils-r1, rm old
+
+  26 Jun 2014; Michael Palimaka <kensington@gentoo.org> -hgsvn-0.1.9.ebuild:
+  Remove old.
+
+*hgsvn-0.2.3 (16 Dec 2013)
+
+  16 Dec 2013; Patrick Lauer <patrick@gentoo.org> +hgsvn-0.2.3.ebuild:
+  Bump
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #151880
+
+*hgsvn-0.1.9 (04 Dec 2011)
+
+  04 Dec 2011; Cédric Krier <cedk@gentoo.org> -hgsvn-0.1.8.ebuild,
+  +hgsvn-0.1.9.ebuild:
+  Version bump
+
+*hgsvn-0.1.8 (29 Jun 2010)
+
+  29 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -hgsvn-0.1.3.ebuild, -hgsvn-0.1.4.ebuild, -hgsvn-0.1.6.ebuild,
+  -hgsvn-0.1.7.ebuild, +hgsvn-0.1.8.ebuild:
+  Version bump. Set SUPPORT_PYTHON_ABIS.
+
+  22 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  hgsvn-0.1.3.ebuild, hgsvn-0.1.4.ebuild, hgsvn-0.1.6.ebuild,
+  hgsvn-0.1.7.ebuild:
+  dev-util/subversion renamed to dev-vcs/subversion.
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org> hgsvn-0.1.7.ebuild:
+  Transfer Prefix keywords
+
+*hgsvn-0.1.7 (11 Sep 2009)
+
+  11 Sep 2009; Patrick Lauer <patrick@gentoo.org> +hgsvn-0.1.7.ebuild:
+  Bump
+
+  11 Nov 2008; Jeremy Olexa <darkside@gentoo.org> hgsvn-0.1.6.ebuild:
+  add ~amd64 kw, bug 245633
+
+*hgsvn-0.1.6 (19 Jul 2008)
+
+  19 Jul 2008; Cédric Krier <cedk@gentoo.org> +hgsvn-0.1.6.ebuild:
+  Version bump
+
+  13 Jun 2008; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  hgsvn-0.1.4.ebuild:
+  mark ~ppc (bug #215869)
+
+*hgsvn-0.1.4 (19 Jan 2008)
+
+  19 Jan 2008; Cédric Krier <cedk@gentoo.org> +hgsvn-0.1.4.ebuild:
+  Version bump
+
+  24 Jun 2007; Cédric Krier <cedk@gentoo.org> hgsvn-0.1.3.ebuild:
+  Add setuptools to the RDEPEND
+
+  24 Jun 2007; Cédric Krier <cedk@gentoo.org> hgsvn-0.1.3.ebuild:
+  Fix need python 2.4
+
+  23 Jun 2007; Cédric Krier <cedk@gentoo.org> hgsvn-0.1.3.ebuild:
+  Fix RDEPEND on elementtre for python-2.5
+
+*hgsvn-0.1.3 (23 Jun 2007)
+
+  23 Jun 2007; Cédric Krier <cedk@gentoo.org> +metadata.xml,
+  +hgsvn-0.1.3.ebuild:
+  New ebuild

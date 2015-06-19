@@ -1,0 +1,156 @@
+# ChangeLog for app-emulation/kvm-kmod
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/kvm-kmod/ChangeLog,v 1.26 2015/06/09 11:09:23 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*kvm-kmod-3.10.1 (02 Aug 2013)
+*kvm-kmod-3.6 (02 Aug 2013)
+*kvm-kmod-3.8 (02 Aug 2013)
+
+  02 Aug 2013; Doug Goldstein <cardoe@gentoo.org> +kvm-kmod-3.10.1.ebuild,
+  +kvm-kmod-3.6.ebuild, +kvm-kmod-3.8.ebuild, -kvm-kmod-2.6.32.27.ebuild:
+  Version bumps to provide more options. bug #451718
+
+*kvm-kmod-3.4 (13 Jun 2012)
+*kvm-kmod-3.3.6 (13 Jun 2012)
+
+  13 Jun 2012; Doug Goldstein <cardoe@gentoo.org> -kvm-kmod-2.6.38.6.ebuild,
+  +kvm-kmod-3.3.6.ebuild, +kvm-kmod-3.4.ebuild:
+  Long needed bump
+
+  01 Aug 2011; Doug Goldstein <cardoe@gentoo.org> -kvm-kmod-2.6.36.1.ebuild,
+  -kvm-kmod-2.6.36.2.ebuild:
+  Remove older versions
+
+  27 May 2011; Doug Goldstein <cardoe@gentoo.org> -kvm-kmod-2.6.32.17.ebuild:
+  Removed for CVE-2010-0435
+
+*kvm-kmod-2.6.38.6 (25 May 2011)
+*kvm-kmod-2.6.36.2 (25 May 2011)
+*kvm-kmod-2.6.32.27 (25 May 2011)
+
+  25 May 2011; Doug Goldstein <cardoe@gentoo.org> +kvm-kmod-2.6.32.27.ebuild,
+  -kvm-kmod-2.6.34.1.ebuild, -kvm-kmod-2.6.35.6.ebuild,
+  -kvm-kmod-2.6.36.ebuild, +kvm-kmod-2.6.36.2.ebuild,
+  +kvm-kmod-2.6.38.6.ebuild:
+  Bump versions and clean out old versions
+
+  04 Jan 2011; Doug Goldstein <cardoe@gentoo.org> kvm-kmod-2.6.32.17.ebuild,
+  kvm-kmod-2.6.34.1.ebuild, kvm-kmod-2.6.35.6.ebuild, kvm-kmod-2.6.36.ebuild,
+  kvm-kmod-2.6.36.1.ebuild:
+  Really fix the issue with pkg_setup
+
+*kvm-kmod-2.6.36.1 (04 Jan 2011)
+
+  04 Jan 2011; Doug Goldstein <cardoe@gentoo.org> +kvm-kmod-2.6.36.1.ebuild:
+  version bump
+
+  04 Jan 2011; Doug Goldstein <cardoe@gentoo.org> kvm-kmod-2.6.32.17.ebuild,
+  kvm-kmod-2.6.34.1.ebuild, -kvm-kmod-2.6.35.ebuild, kvm-kmod-2.6.35.6.ebuild,
+  kvm-kmod-2.6.36.ebuild:
+  Fix issue where linux-mod_pkg_setup was not called early enough. Get rid of
+  an older version
+
+*kvm-kmod-2.6.36 (17 Nov 2010)
+*kvm-kmod-2.6.35.6 (17 Nov 2010)
+
+  17 Nov 2010; Doug Goldstein <cardoe@gentoo.org>
+  -kvm-kmod-2.6.32.16.ebuild, +kvm-kmod-2.6.35.6.ebuild,
+  +kvm-kmod-2.6.36.ebuild:
+  version bumps and clean out old version
+
+  21 Sep 2010; Doug Goldstein <cardoe@gentoo.org> kvm-kmod-2.6.32.16.ebuild,
+  kvm-kmod-2.6.32.17.ebuild, kvm-kmod-2.6.34.1.ebuild,
+  kvm-kmod-2.6.35.ebuild:
+  Yet another eclass change... s/linux-chkconfig_exists/linux_config_exists/
+
+*kvm-kmod-2.6.32.17 (25 Aug 2010)
+
+  25 Aug 2010; Doug Goldstein <cardoe@gentoo.org>
+  +kvm-kmod-2.6.32.17.ebuild:
+  version bump
+
+  25 Aug 2010; Doug Goldstein <cardoe@gentoo.org>
+  -kvm-kmod-2.6.32.12.ebuild, kvm-kmod-2.6.32.16.ebuild,
+  -kvm-kmod-2.6.33.3.ebuild, -kvm-kmod-2.6.34.ebuild,
+  kvm-kmod-2.6.34.1.ebuild, kvm-kmod-2.6.35.ebuild:
+  Fix QA warning about linux_chkconfig_exists and remove older versions.
+
+*kvm-kmod-2.6.35 (20 Aug 2010)
+
+  20 Aug 2010; Doug Goldstein <cardoe@gentoo.org> +kvm-kmod-2.6.35.ebuild:
+  version bump
+
+*kvm-kmod-2.6.34.1 (07 Jul 2010)
+*kvm-kmod-2.6.32.16 (07 Jul 2010)
+
+  07 Jul 2010; Doug Goldstein <cardoe@gentoo.org> -kvm-kmod-2.6.32.7.ebuild,
+  +kvm-kmod-2.6.32.16.ebuild, +kvm-kmod-2.6.34.1.ebuild:
+  Bump for upstream bug fixes
+
+*kvm-kmod-2.6.34 (26 May 2010)
+
+  26 May 2010; Doug Goldstein <cardoe@gentoo.org> +kvm-kmod-2.6.34.ebuild:
+  latest upstream version bump
+
+*kvm-kmod-2.6.33.3 (29 Apr 2010)
+*kvm-kmod-2.6.32.12 (29 Apr 2010)
+
+  29 Apr 2010; Doug Goldstein <cardoe@gentoo.org>
+  +kvm-kmod-2.6.32.12.ebuild, +kvm-kmod-2.6.33.3.ebuild:
+  bump versions to the latest versions. The goal is going to be to stabilize
+  the 2.6.32.x series while maintaining 2.6.3x at the cutting edge to test
+  with. Useful for people who don't want to constantly upgrade their kernel
+  to get the latest KVM updates.
+
+  29 Apr 2010; Doug Goldstein <cardoe@gentoo.org> -kvm-kmod-2.6.32.2.ebuild,
+  -kvm-kmod-2.6.32.3.ebuild:
+  drop older versions
+
+*kvm-kmod-2.6.32.7 (01 Feb 2010)
+
+  01 Feb 2010; Doug Goldstein <cardoe@gentoo.org> +kvm-kmod-2.6.32.7.ebuild:
+  version bump to correct some bugs in the userspace interface and fix a
+  small kernel leak per VCPU creation
+
+*kvm-kmod-2.6.32.3 (12 Jan 2010)
+
+  12 Jan 2010; Doug Goldstein <cardoe@gentoo.org> +kvm-kmod-2.6.32.3.ebuild:
+  version bump. fixes migration issues. fixes Windows 2008 R2
+
+*kvm-kmod-2.6.32.2 (05 Jan 2010)
+
+  05 Jan 2010; Doug Goldstein <cardoe@gentoo.org> +kvm-kmod-2.6.32.2.ebuild,
+  -kvm-kmod-85.ebuild, -kvm-kmod-86.ebuild, -kvm-kmod-88-r1.ebuild,
+  metadata.xml:
+  change to new style kvm-kmod upstream package
+
+  21 Sep 2009; Daniel Gryniewicz <dang@gentoo.org> metadata.xml:
+  Remove myself as maintainer
+
+*kvm-kmod-88-r1 (27 Jul 2009)
+
+  27 Jul 2009; Daniel Gryniewicz <dang@gentoo.org> -kvm-kmod-88.ebuild,
+  +kvm-kmod-88-r1.ebuild, +files/kvm-kmod-devel-88-2.6.30.patch:
+  Fix kvm-kmod for 2.6.30; bug #278804
+
+
+*kvm-kmod-88 (21 Jul 2009)
+
+  21 Jul 2009; Daniel Gryniewicz <dang@gentoo.org> +kvm-kmod-88.ebuild:
+  Bump to kvm-kmod-88
+
+
+*kvm-kmod-86 (28 May 2009)
+
+  28 May 2009; Daniel Gryniewicz <dang@gentoo.org> +kvm-kmod-86.ebuild:
+  Bump to kvm-kmod-86
+
+
+*kvm-kmod-85 (28 Apr 2009)
+
+  28 Apr 2009; Daniel Gryniewicz <dang@gentoo.org> +metadata.xml,
+  +kvm-kmod-85.ebuild:
+  New kvm modules package; upstream split them up

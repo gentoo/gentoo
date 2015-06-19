@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gnome</herd>
+  <upstream>
+    <bugs-to>http://bugs.gnome.org</bugs-to>
+    <changelog>http://git.gnome.org/browse/libgrss</changelog>
+  </upstream>
+  <maintainer>
+    <email>lxnay@gentoo.org</email>
+    <name>Fabio Erculiani</name>
+  </maintainer>
+</pkgmetadata>

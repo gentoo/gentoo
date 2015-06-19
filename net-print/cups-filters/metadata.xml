@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>printing</herd>
+  <use>
+  <flag name='foomatic'>
+     Build the included foomatic-rip printer driver. Strongly recommended.
+  </flag>
+  </use>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+--- Makefile.in.orig	2009-07-12 00:09:33.000000000 +0200
++++ Makefile.in	2009-07-12 00:11:09.000000000 +0200
+@@ -26,7 +26,7 @@
+ 	install -d $(AUTOLOAD_DIR)
+ 	cp $(GLIBNAME) $(AUTOLOAD_DIR)
+ 	cp $(OLIBNAME) $(AUTOLOAD_DIR)
+-	test -d ${GRASSTABLES_DIR} || mkdir ${GRASSTABLES_DIR}
++	test -d ${GRASSTABLES_DIR} || mkdir -p ${GRASSTABLES_DIR}
+ 	test -d ${GRASSTABLES_DIR}/etc || mkdir ${GRASSTABLES_DIR}/etc
+ 	cp @GRASS_GISBASE@/etc/ellipse.table ${GRASSTABLES_DIR}/etc
+ 	cp @GRASS_GISBASE@/etc/datum.table @GRASS_GISBASE@/etc/datumtransform.table ${GRASSTABLES_DIR}/etc

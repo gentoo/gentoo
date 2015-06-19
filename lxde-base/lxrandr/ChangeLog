@@ -1,0 +1,76 @@
+# ChangeLog for lxde-base/lxrandr
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/lxde-base/lxrandr/ChangeLog,v 1.21 2015/03/03 08:07:52 dlan Exp $
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> lxrandr-0.1.2.ebuild:
+  add arm64 support, tested on A53 board
+
+  23 Feb 2013; Zac Medico <zmedico@gentoo.org> lxrandr-0.1.2.ebuild:
+  Add ~arm-linux and ~x86-linux keywords.
+
+  25 Aug 2012; Markos Chandras <hwoarang@gentoo.org>
+  -files/lxrandr-0.1.1-intltool.patch, -lxrandr-0.1.1.ebuild:
+  Remove old LXDE packages
+
+  05 Jun 2012; Michael Weber <xmw@gentoo.org> lxrandr-0.1.2.ebuild:
+  ppc stable (bug 385189)
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> lxrandr-0.1.1.ebuild,
+  lxrandr-0.1.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  09 Oct 2011; Markus Meier <maekke@gentoo.org> lxrandr-0.1.2.ebuild:
+  arm stable, bug #385189
+
+  07 Oct 2011; Markos Chandras <hwoarang@gentoo.org> lxrandr-0.1.2.ebuild:
+  Stable on amd64 wrt bug #385189
+
+  05 Oct 2011; Andreas Schuerch <nativemad@gentoo.org> lxrandr-0.1.2.ebuild:
+  x86 stable, bug 385189
+
+*lxrandr-0.1.2 (26 Jul 2011)
+
+  26 Jul 2011; Markos Chandras <hwoarang@gentoo.org> +lxrandr-0.1.2.ebuild:
+  Version bump
+
+  07 Mar 2011; Tobias Klausmann <klausman@gentoo.org> lxrandr-0.1.1.ebuild:
+  Keyworded on alpha, bug #330911
+
+  23 Feb 2010; Raúl Porcel <armin76@gentoo.org> lxrandr-0.1.1.ebuild:
+  arm stable wrt #306433
+
+  24 Jan 2010; Raúl Porcel <armin76@gentoo.org> lxrandr-0.1.1.ebuild:
+  Add ~arm
+
+  17 Dec 2009; Víctor Ostorga <vostorga@gentoo.org> lxrandr-0.1.1.ebuild:
+  Adding x11-apps/xrandr as RDEPEND, bug #297115
+
+  21 Nov 2009; nixnut <nixnut@gentoo.org> lxrandr-0.1.1.ebuild:
+  ppc stable #292698
+
+  20 Nov 2009; Markus Meier <maekke@gentoo.org> lxrandr-0.1.1.ebuild:
+  amd64/x86 stable, bug #292698
+
+  05 Nov 2009; Víctor Ostorga <vostorga@gentoo.org> -lxrandr-0.1.ebuild:
+  Cleaning out old ebuild
+
+  27 Aug 2009; Víctor Ostorga <vostorga@gentoo.org> lxrandr-0.1.1.ebuild:
+  Fixing dev-util/intltool DEPEND
+
+  27 Aug 2009; Víctor Ostorga <vostorga@gentoo.org> lxrandr-0.1.1.ebuild:
+  Adding dev-util/intltool to DEPEND
+
+  15 Aug 2009; Mounir Lamouri <volkmar@gentoo.org> lxrandr-0.1.1.ebuild:
+  Keywording for ppc. Bug 271148
+
+*lxrandr-0.1.1 (03 Aug 2009)
+
+  03 Aug 2009; Víctor Ostorga <vostorga@gentoo.org> +lxrandr-0.1.1.ebuild,
+  +files/lxrandr-0.1.1-intltool.patch:
+  Version bump to 0.1.1
+
+*lxrandr-0.1 (07 Nov 2008)
+
+  07 Nov 2008; Ben de Groot <yngwin@gentoo.org> +metadata.xml,
+  +lxrandr-0.1.ebuild:
+  Initial import of ebuild from lxde overlay

@@ -1,0 +1,31 @@
+# ChangeLog for dev-util/exmap
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/exmap/ChangeLog,v 1.6 2013/05/04 04:27:52 xmw Exp $
+
+*exmap-0.10-r1 (04 May 2013)
+
+  04 May 2013; Michael Weber <xmw@gentoo.org> +exmap-0.10-r1.ebuild,
+  +files/exmap-0.10-r1-makefiles.patch:
+  Remove -Werror, thanks patrick and dirtyepic, bug 468246.
+
+  19 Sep 2012; Michael Weber <xmw@gentoo.org>
+  +files/exmap-0.10-kernel-3.5.patch, exmap-0.10.ebuild:
+  No longer run make clean in kernel dir (bug 431068, reported by Wonko and
+  Andreas Sturmlechner).
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> exmap-0.10.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  29 Dec 2010; Michael Weber <xmw@gentoo.org> exmap-0.10.ebuild:
+  Add missing dev-cpp/gtkmm:2.4 dep (thanks to Yevgeny Filatov
+  <itspec.ru@gmail.com> for his report on bug 348242)
+
+*exmap-0.10 (24 Aug 2010)
+
+  24 Aug 2010; Michael Weber <xmw@gentoo.org> +exmap-0.10.ebuild,
+  +files/exmap-0.10-as-needed.patch, +files/exmap-0.10-fix64bit.patch,
+  +files/exmap-0.10-gcc.patch, +files/exmap-0.10-gcc45.patch,
+  +files/exmap-0.10-kernel.patch, +files/exmap-0.10-makefiles.patch,
+  +metadata.xml:
+  Initial commit for exmap. Fixes bug #158382, thanks to Paul Pacheco and
+  all the other contributors there.

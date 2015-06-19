@@ -1,0 +1,21 @@
+# ChangeLog for dev-ml/ocaml-augeas
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocaml-augeas/ChangeLog,v 1.4 2013/09/12 08:19:14 prometheanfire Exp $
+
+*ocaml-augeas-0.5 (12 Sep 2013)
+
+  12 Sep 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +ocaml-augeas-0.5.ebuild, -ocaml-augeas-0.4.ebuild:
+  fixes for bug 422589
+
+  03 Feb 2013; Matthew Thode <prometheanfire@gentoo.org> metadata.xml:
+  taking maintership
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #22900
+
+*ocaml-augeas-0.4 (24 Feb 2009)
+
+  24 Feb 2009; MATSUU Takuto <matsuu@gentoo.org> +metadata.xml,
+  +ocaml-augeas-0.4.ebuild:
+  Initial import, bug #229361.

@@ -1,0 +1,30 @@
+# ChangeLog for dev-python/wsgilog
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/wsgilog/ChangeLog,v 1.7 2015/06/04 09:58:19 jlec Exp $
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> wsgilog-0.3-r1.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -wsgilog-0.3.ebuild:
+  Remove old.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> wsgilog-0.3-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> wsgilog-0.3-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*wsgilog-0.3-r1 (16 Mar 2013)
+
+  16 Mar 2013; Ian Delaney <idella4@gentoo.org> +wsgilog-0.3-r1.ebuild:
+  migration revbump
+
+*wsgilog-0.3 (22 Dec 2012)
+
+  22 Dec 2012; Markos Chandras <hwoarang@gentoo.org> +metadata.xml,
+  +wsgilog-0.3.ebuild:
+  Initial commit. Bug #441642. Thanks to Jens Ott <jo@opteamax.de> who will be
+  the maintainer

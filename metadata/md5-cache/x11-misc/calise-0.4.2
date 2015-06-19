@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=dev-python/pyxdg[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/dbus-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygobject[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] sci-astronomy/pyephem[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] x11-themes/hicolor-icon-theme dev-python/python-distutils-extra[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-util/intltool sys-kernel/linux-headers x11-libs/libX11 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] virtual/pkgconfig
+DESCRIPTION=Computes ambient brightness and sets screen's correct backlight using a webcam
+EAPI=5
+HOMEPAGE=http://calise.sourceforge.net/
+IUSE=python_targets_python2_7
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=dev-python/pyxdg[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/dbus-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygobject[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] sci-astronomy/pyephem[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] x11-themes/hicolor-icon-theme python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=http://sourceforge.net/projects/calise/files/calise-beta/0.4.2/calise-0.4.2.tar.gz
+_eclasses_=distutils-r1	c01d5c4af34f4a37a51fc9638299c222	eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	6d3a3cb5705b9fff1aeb7cfa4e3336fe	python-utils-r1	096f8247eae93026af13ab88cf4305cd	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=4e58275aa2a029e224ff64c467f67753

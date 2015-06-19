@@ -1,0 +1,23 @@
+--- quotatool-1.4.13/local.mk.in
++++ quotatool-1.4.13/local.mk.in
+@@ -17,7 +17,8 @@
+ 
+ CC              :=   @CC@
+ CFLAGS          :=   @CFLAGS@
+-CPPFLAGS         =   $(inc) @DEFS@
++LDFLAGS         :=   @LDFLAGS@
++CPPFLAGS         =   @CPPFLAGS@ $(inc) @DEFS@
+ 
+ 
+ INSTALL         :=   @INSTALL@
+--- quotatool-1.4.13/Makefile
++++ quotatool-1.4.13/Makefile
+@@ -58,7 +58,7 @@
+ # compile the program (and the objects)
+ all: $(prog)
+ $(prog): $(objs)
+-	$(CC) -o $(prog) $(objs) $(libs) $(CFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $(prog) $(objs) $(libs)
+ 
+ 
+ 

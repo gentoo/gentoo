@@ -1,0 +1,41 @@
+# ChangeLog for dev-php/pecl-xdiff
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-xdiff/ChangeLog,v 1.5 2014/09/06 18:12:38 olemarkus Exp $
+
+*pecl-xdiff-1.5.2-r2 (06 Sep 2014)
+
+  06 Sep 2014; Ole Markus With <olemarkus@gentoo.org>
+  +pecl-xdiff-1.5.2-r2.ebuild, -pecl-xdiff-1.5.2-r1.ebuild,
+  -pecl-xdiff-1.5.2.ebuild:
+  Revbump to support php 5.6
+
+*pecl-xdiff-1.5.2-r1 (07 Nov 2013)
+
+  07 Nov 2013; Matti Bickel <mabi@gentoo.org> +pecl-xdiff-1.5.2-r1.ebuild:
+  allow building against php5.5
+
+  05 Mar 2013; Ole Markus With <olemarkus@gentoo.org>
+  -pecl-xdiff-1.5.1-r1.ebuild:
+  Removed older ebuilds
+
+*pecl-xdiff-1.5.2 (23 Dec 2012)
+
+  23 Dec 2012; Ole Markus With <olemarkus@gentoo.org> +pecl-xdiff-1.5.2.ebuild:
+  Version bump. Bug 433477. Thanks to Anthony Ryan
+
+*pecl-xdiff-1.5.1-r1 (04 Nov 2010)
+
+  04 Nov 2010; Matti Bickel <mabi@gentoo.org> +pecl-xdiff-1.5.1-r1.ebuild:
+  add version supporting minor version slotting
+
+*pecl-xdiff-1.5.1 (04 Jul 2010)
+
+  04 Jul 2010; Matti Bickel <mabi@gentoo.org> -pecl-xdiff-1.4.1.ebuild,
+  +pecl-xdiff-1.5.1.ebuild:
+  bump thanks to Ole Markus With (bug #324831)
+
+*pecl-xdiff-1.4.1 (01 Jan 2010)
+
+  01 Jan 2010; Ben de Groot <yngwin@gentoo.org> +pecl-xdiff-1.4.1.ebuild,
+  +metadata.xml:
+  Initial import from php testing overlay. Fixes bug 257593.

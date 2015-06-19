@@ -1,0 +1,62 @@
+# ChangeLog for games-misc/fortune-mod-all
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-all/ChangeLog,v 1.17 2015/02/03 20:43:26 tupone Exp $
+
+  03 Feb 2015; Tupone Alfredo <tupone@gentoo.org> fortune-mod-all-1.ebuild:
+  EAPI 5
+
+  04 Nov 2012; Ulrich Müller <ulm@gentoo.org> fortune-mod-all-1.ebuild:
+  Change LICENSE to "metapackage".
+
+  12 Dec 2010; Fabian Groffen <grobian@gentoo.org> fortune-mod-all-1.ebuild:
+  Added Prefix keywords
+
+  23 Aug 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  fortune-mod-all-1.ebuild:
+  remove quotes from Martin Piskernig as his request (bug #282420)
+
+  02 Aug 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  fortune-mod-all-1.ebuild:
+  EAPI=2; mips isn't stable
+
+  04 Feb 2008; Tristan Heaven <nyhm@gentoo.org> fortune-mod-all-1.ebuild:
+  Add linguas flags to IUSE
+
+  19 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  fortune-mod-all-1.ebuild:
+  Add ~x86-fbsd keyword
+
+  14 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  fortune-mod-all-1.ebuild:
+  add games-misc/fortune-mod-firefly for bug #112478
+
+  27 Aug 2005; Markus Rothe <corsair@gentoo.org> fortune-mod-all-1.ebuild:
+  Stable on ppc64
+
+  31 Jul 2005; Markus Rothe <corsair@gentoo.org> fortune-mod-all-1.ebuild:
+  Added ~ppc64 (bug #100217)
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  05 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  fortune-mod-all-1.ebuild:
+  add games-misc/fortune-mod-strangelove
+
+*fortune-mod-all-1 (19 Oct 2004)
+
+  19 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +fortune-mod-all-1.ebuild:
+  DESCRIPTION and package update (bug #67672)
+
+  06 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> fortune-mod-all-0.ebuild:
+  Add fortune-mod-dune.
+
+  05 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  fortune-mod-all-0.ebuild:
+  add games-misc/fortune-mod-debilneho and fortune-mod-zx-error (bug 40496)
+
+*fortune-mod-all-0 (12 Dec 2003)
+
+  12 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me for #35436.

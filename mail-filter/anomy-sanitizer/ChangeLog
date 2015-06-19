@@ -1,0 +1,93 @@
+# ChangeLog for mail-filter/anomy-sanitizer
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/anomy-sanitizer/ChangeLog,v 1.21 2013/07/13 07:48:36 ago Exp $
+
+  13 Jul 2013; Agostino Sarubbo <ago@gentoo.org> anomy-sanitizer-1.76-r1.ebuild:
+  Stable for x86, wrt bug #476106
+
+  12 Jul 2013; Agostino Sarubbo <ago@gentoo.org> anomy-sanitizer-1.76-r1.ebuild:
+  Stable for amd64, wrt bug #476106
+
+  28 Feb 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  anomy-sanitizer-1.76-r1.ebuild:
+  quote ROOT
+
+  04 Jun 2012; Zac Medico <zmedico@gentoo.org> anomy-sanitizer-1.76-r1.ebuild:
+  inherit user for enewgroup and enewuser
+
+  04 Mar 2012; Pacho Ramos <pacho@gentoo.org>
+  -files/sample_e-mail-architektur.flw, anomy-sanitizer-1.76-r1.ebuild:
+  Move binary file away from CVS tree
+
+  13 Jun 2011; Justin Lecher <jlec@gentoo.org> -anomy-sanitizer-1.67.ebuild,
+  -anomy-sanitizer-1.70.ebuild, -anomy-sanitizer-1.76.ebuild,
+  anomy-sanitizer-1.76-r1.ebuild, -files/sample_e-mail-architecture.png:
+  No binaryfiles in VCS please, #370867
+
+  09 Jun 2011; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Move to maintainer-needed
+
+  18 Mar 2007; Marius Mauch <genone@gentoo.org> anomy-sanitizer-1.67.ebuild,
+  anomy-sanitizer-1.70.ebuild, anomy-sanitizer-1.76.ebuild,
+  anomy-sanitizer-1.76-r1.ebuild:
+  Replacing einfo with elog
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*anomy-sanitizer-1.76-r1 (20 Feb 2006)
+
+  20 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  +anomy-sanitizer-1.76-r1.ebuild:
+  Bug 123522, ebuild submitted by jakub to clean up anomy-sanitizer
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  anomy-sanitizer-1.67.ebuild, anomy-sanitizer-1.70.ebuild,
+  anomy-sanitizer-1.76.ebuild:
+  Virtuals for perl-core
+
+*anomy-sanitizer-1.76 (08 Jan 2006)
+
+  08 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  +anomy-sanitizer-1.76.ebuild:
+  Version bump; also closes bug 100592
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  anomy-sanitizer-1.70.ebuild:
+  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  anomy-sanitizer-1.67.ebuild:
+  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
+
+*anomy-sanitizer-1.70 (13 May 2005)
+
+  13 May 2005; Michael Cummings <mcummings@gentoo.org>
+  +anomy-sanitizer-1.70.ebuild:
+  Version bump, bug 78001
+
+  25 Sep 2004; Tom Martin <slarti@gentoo.org> anomy-sanitizer-1.67.ebuild:
+  Marked ~amd64.
+
+  04 Sep 2004; Thomas Matthijs <axxo@gentoo.org> anomy-sanitizer-1.67.ebuild:
+  fix depend syntax 58347
+
+  05 Jun 2004; David Holm <dholm@gentoo.org> anomy-sanitizer-1.67.ebuild:
+  Added to ~ppc.
+
+*anomy-sanitizer-1.67 (02 Jun 2004)
+
+  02 Jun 2004; Seemant Kulleen <seemant@gentoo.org> +metadata.xml,
+  +files/anomy.conf, +files/sample2_mailfilter.sh,
+  +files/sample_e-mail-architecture.png, +files/sample_e-mail-architektur.flw,
+  +files/sample_mailfiler.sh, +anomy-sanitizer-1.67.ebuild:
+  Moved from net-mail/anomy-sanitizer to mail-filter/anomy-sanitizer.
+
+*anomy-sanitizer-1.67 (16 Apr 2004)
+
+  16 Apr 2004; Michael Cummings <mcummings@gentoo.org>
+  anomy-sanitizer-1.67.ebuild, metadata.xml, files/anomy.conf,
+  files/sample2_mailfilter.sh, files/sample_e-mail-architecture.png,
+  files/sample_e-mail-architektur.flw, files/sample_mailfiler.sh:
+  Anomy-sanitizer mail filter, originally posted by Thiemo Kellner
+  <thiemo@thiam.ch> and worked on by Alessandro Pisani <alextxm@tin.it>.

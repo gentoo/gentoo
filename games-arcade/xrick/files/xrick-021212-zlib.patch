@@ -1,0 +1,13 @@
+--- include/unzip.h.old	2012-03-24 16:13:16.012854948 +0100
++++ include/unzip.h	2012-03-24 16:15:42.744346771 +0100
+@@ -49,6 +49,10 @@
+ #include "zlib.h"
+ #endif
+ 
++#ifdef _Z_OF
++#define OF _Z_OF
++#endif
++
+ #if defined(STRICTUNZIP) || defined(STRICTZIPUNZIP)
+ /* like the STRICT of WIN32, we define a pointer that cannot be converted
+     from (void*) without cast */

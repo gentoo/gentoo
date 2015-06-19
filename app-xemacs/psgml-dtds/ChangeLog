@@ -1,0 +1,41 @@
+# ChangeLog for app-xemacs/psgml-dtds
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/psgml-dtds/ChangeLog,v 1.14 2014/08/10 19:24:38 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> psgml-dtds-1.03.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  19 Mar 2008; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  A herd should not be listed as maintainer
+
+  25 Oct 2007; Hans de Graaff <graaff@gentoo.org> -psgml-dtds-1.02.ebuild:
+  Remove old version
+
+  03 Jun 2007; Hans de Graaff <graaff@gentoo.org> psgml-dtds-1.03.ebuild:
+  Stable on amd64, ppc, ppc64, sparc, x86 as per #175560
+
+  29 May 2007; Raúl Porcel <armin76@gentoo.org> psgml-dtds-1.03.ebuild:
+  alpha stable wrt #175560
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*psgml-dtds-1.03 (11 Nov 2006)
+
+  11 Nov 2006; Hans de Graaff <graaff@gentoo.org> +psgml-dtds-1.03.ebuild:
+  Version bump.
+
+  02 Oct 2004; Robert Coie <rac@gentoo.org> +metadata.xml,
+  psgml-dtds-1.02.ebuild:
+  eterm -> xemacs-eterm renaming
+
+  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> psgml-dtds-1.02.ebuild:
+  Stable on alpha
+
+*psgml-dtds-1.02 (16 Dec 2002)
+
+  22 Feb 2003;  <rendhalver@gentoo.org> psgml-dtds-1.02.ebuild :
+  Add ~alpha to KEYWORDS
+
+  16 Dec 2002; Rendhalver [Peter Brown] <rendhalver@gentoo.org> :
+  Initial import.

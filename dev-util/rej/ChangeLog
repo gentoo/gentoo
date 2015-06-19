@@ -1,0 +1,52 @@
+# ChangeLog for dev-util/rej
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/rej/ChangeLog,v 1.14 2011/03/15 19:23:57 abcd Exp $
+
+  15 Mar 2011; Jonathan Callen <abcd@gentoo.org> rej-0.16.ebuild:
+  Transfer prefix keywords from overlay
+
+  12 Jan 2009; Jeroen Roovers <jer@gentoo.org> rej-0.16.ebuild:
+  Do not block app-editors/mp any longer, thanks to Guenther Brunthaler (bug
+  #254363).
+
+  19 Nov 2008; Jeroen Roovers <jer@gentoo.org> rej-0.16.ebuild:
+  Block packages that install mp and/or qp (bugs #189857 and #247434).
+
+  01 Nov 2008; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Take up maintainership.
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  24 Jan 2006; Daniel Drake <dsd@gentoo.org> rej-0.16.ebuild:
+  Stable on amd64
+
+  29 Dec 2005; Daniel Drake <dsd@gentoo.org> rej-0.16.ebuild:
+  Testing on amd64
+
+  21 Nov 2005; Daniel Drake <dsd@gentoo.org> -rej-0.15.ebuild:
+  Remove old version
+
+  25 Oct 2005; Daniel Drake <dsd@gentoo.org> rej-0.16.ebuild:
+  Stable on x86
+
+*rej-0.16 (05 Oct 2005)
+
+  05 Oct 2005; Daniel Drake <dsd@gentoo.org> +rej-0.16.ebuild:
+  Version bump, adds a mercucial patch queue tool
+
+  06 Jul 2005; Daniel Drake <dsd@gentoo.org> rej-0.15.ebuild:
+  Stable on x86
+
+  07 May 2005; David Holm <dholm@gentoo.org> rej-0.15.ebuild:
+  Added to ~ppc.
+
+*rej-0.15 (22 Apr 2005)
+
+  22 Apr 2005; Daniel Drake <dsd@gentoo.org> +metadata.xml,
+  +rej-0.15.ebuild:
+  Initial import. Ebuild written by me.
+

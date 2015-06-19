@@ -1,0 +1,14 @@
+# ChangeLog for sys-apps/inxi
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/inxi/ChangeLog,v 1.2 2015/03/03 12:38:22 dastergon Exp $
+
+*inxi-2.2.19 (03 Mar 2015)
+
+  03 Mar 2015; Pavlos Ratis <dastergon@gentoo.org> +inxi-2.2.19.ebuild:
+  Version bump
+
+*inxi-2.2.14 (10 Feb 2015)
+
+  10 Feb 2015; Pavlos Ratis <dastergon@gentoo.org> +inxi-2.2.14.ebuild,
+  +metadata.xml:
+  initial ebuild

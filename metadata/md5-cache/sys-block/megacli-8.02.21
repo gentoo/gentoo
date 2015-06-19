@@ -1,0 +1,12 @@
+DEFINED_PHASES=install nofetch postinst unpack
+DEPEND=app-arch/unzip app-admin/chrpath >=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=LSI Logic MegaRAID Command Line Interface management tool
+EAPI=4
+HOMEPAGE=http://www.lsi.com/
+KEYWORDS=amd64 x86
+LICENSE=LSI
+RESTRICT=mirror fetch
+SLOT=0
+SRC_URI=http://www.lsi.com/downloads/Public/RAID%20Controllers/RAID%20Controllers%20Common%20Files/8.02.21_MegaCLI.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	rpm	b94b54b44f14d6bee3e966c8f5c86fba	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f9fd0c48b6fea0ae1b021c1861c40caf

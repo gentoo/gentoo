@@ -1,0 +1,19 @@
+# ChangeLog for dev-libs/libbegemot
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libbegemot/ChangeLog,v 1.4 2014/09/08 13:54:58 naota Exp $
+
+  08 Sep 2014; Naohiro Aota <naota@gentoo.org> libbegemot-1.11.ebuild:
+  Replace einstall with emake. #521542
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> libbegemot-1.11.ebuild:
+  keyword ~amd64-fbsd
+
+  22 May 2006; Diego Pettenò <flameeyes@gentoo.org> libbegemot-1.11.ebuild:
+  Add ~x86-fbsd keyword.
+
+*libbegemot-1.11 (20 Sep 2005)
+
+  20 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> +metadata.xml,
+  +libbegemot-1.11.ebuild:
+  Added libbegemot 1.11. This will be used by Gentoo/FreeBSD and for bsnmp as
+  soon as it will work on Linux.

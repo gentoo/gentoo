@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>idella4@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>timo@rothenpieler.org</email>
+    <name>Timo Rothenpieler</name>
+    <description>proxy maintainer</description>
+  </maintainer>
+  <maintainer>
+    <email>realnc@gmail.com</email>
+    <name>Nikos Chantziaras</name>
+    <description>proxy maintainer</description>
+  </maintainer>
+  <upstream>
+    <remote-id type="pypi">singledispatch</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,60 @@
+--- rstudio-0.98.1091-orig/src/cpp/desktop/DesktopApplicationLaunch.hpp	2014-11-06 23:15:47.000000000 +1100
++++ rstudio-0.98.1091/src/cpp/desktop/DesktopApplicationLaunch.hpp	2015-02-28 14:01:51.970672316 +1100
+@@ -19,7 +19,10 @@
+ #include <QObject>
+ #include <QWidget>
+ #include <QApplication>
++// see https://bugreports.qt-project.org/browse/QTBUG-22829
++#ifndef Q_MOC_RUN
+ #include <boost/scoped_ptr.hpp>
++#endif
+ 
+ namespace desktop {
+ 
+--- rstudio-0.98.1091-orig/src/cpp/desktop/DesktopSessionLauncher.hpp	2014-11-06 23:15:47.000000000 +1100
++++ rstudio-0.98.1091/src/cpp/desktop/DesktopSessionLauncher.hpp	2015-02-28 14:01:51.972672316 +1100
+@@ -18,7 +18,10 @@
+ 
+ #include <string>
+ 
++// see https://bugreports.qt-project.org/browse/QTBUG-22829
++#ifndef Q_MOC_RUN
+ #include <boost/utility.hpp>
++#endif
+ 
+ #include <core/Error.hpp>
+ #include <core/FilePath.hpp>
+--- rstudio-0.98.1091-orig/src/cpp/core/include/core/FilePath.hpp	2014-11-06 23:15:47.000000000 +1100
++++ rstudio-0.98.1091/src/cpp/core/include/core/FilePath.hpp	2015-02-28 14:01:51.984672314 +1100
+@@ -23,11 +23,14 @@
+ #include <vector>
+ #include <iosfwd>
+ 
++// see https://bugreports.qt-project.org/browse/QTBUG-22829
++#ifndef Q_MOC_RUN
+ #include <boost/shared_ptr.hpp>
+ #include <boost/scoped_ptr.hpp>
+ #include <boost/function.hpp>
+ 
+ #include <boost/utility.hpp>
++#endif
+ 
+ #include <core/Error.hpp>
+ #include <core/Log.hpp>
+--- rstudio-0.98.1091-orig/src/cpp/core/include/core/Error.hpp	2014-11-06 23:15:47.000000000 +1100
++++ rstudio-0.98.1091/src/cpp/core/include/core/Error.hpp	2015-02-28 14:01:51.977672315 +1100
+@@ -20,11 +20,14 @@
+ #include <string>
+ #include <vector>
+ 
++// see https://bugreports.qt-project.org/browse/QTBUG-22829
++#ifndef Q_MOC_RUN
+ #include <boost/shared_ptr.hpp>
+ 
+ #include <boost/system/error_code.hpp>
+ 
+ #include <boost/current_function.hpp>
++#endif
+ 
+ namespace core {
+ 

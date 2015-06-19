@@ -1,0 +1,81 @@
+# ChangeLog for dev-perl/Gtk2-Ex-Simple-List
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Gtk2-Ex-Simple-List/ChangeLog,v 1.18 2014/08/24 13:08:22 axs Exp $
+
+*Gtk2-Ex-Simple-List-0.500.0-r1 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Gtk2-Ex-Simple-List-0.500.0-r1.ebuild, -Gtk2-Ex-Simple-List-0.500.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  24 May 2012; Torsten Veller <tove@gentoo.org>
+  Gtk2-Ex-Simple-List-0.500.0.ebuild:
+  Fix dependencies (#417297). Adjust LICENSE
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -Gtk2-Ex-Simple-List-0.50.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org>
+  Gtk2-Ex-Simple-List-0.500.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Gtk2-Ex-Simple-List-0.500.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Gtk2-Ex-Simple-List-0.500.0.ebuild:
+  Change version scheme
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org>
+  Gtk2-Ex-Simple-List-0.50.ebuild:
+  Fixed slot deps
+
+  12 Jan 2010; Torsten Veller <tove@gentoo.org>
+  Gtk2-Ex-Simple-List-0.50.ebuild:
+  Fix SRC_URI
+
+  26 Aug 2009; Torsten Veller <tove@gentoo.org>
+  Gtk2-Ex-Simple-List-0.50.ebuild:
+  Disable tests
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Gtk2-Ex-Simple-List-0.50.ebuild:
+  Marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Gtk2-Ex-Simple-List-0.50.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  Gtk2-Ex-Simple-List-0.50.ebuild:
+  Mark 0.50 stable on ia64
+
+  24 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  Gtk2-Ex-Simple-List-0.50.ebuild:
+  Keywording ~amd64
+
+  22 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Gtk2-Ex-Simple-List-0.50.ebuild:
+  Stable on sparc
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  Gtk2-Ex-Simple-List-0.50.ebuild:
+  Mark 0.50 ~ia64
+
+  20 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  Gtk2-Ex-Simple-List-0.50.ebuild:
+  Keywording ~sparc
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Gtk2-Ex-Simple-List-0.50.ebuild:
+  marking stable x86
+
+*Gtk2-Ex-Simple-List-0.50 (12 Dec 2005)
+
+  12 Dec 2005; <mcumming@gentoo.org> +metadata.xml,
+  +Gtk2-Ex-Simple-List-0.50.ebuild:
+  Dep for app-text/podbrowser

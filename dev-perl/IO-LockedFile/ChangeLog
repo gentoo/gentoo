@@ -1,0 +1,41 @@
+# ChangeLog for dev-perl/IO-LockedFile
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/IO-LockedFile/ChangeLog,v 1.9 2014/08/22 18:01:21 axs Exp $
+
+*IO-LockedFile-0.230.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +IO-LockedFile-0.230.0-r1.ebuild, -IO-LockedFile-0.230.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -IO-LockedFile-0.23.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> IO-LockedFile-0.230.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*IO-LockedFile-0.230.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org> +IO-LockedFile-0.230.0.ebuild:
+  Change version scheme
+
+  29 Apr 2009; Tiago Cunha <tcunha@gentoo.org> IO-LockedFile-0.23.ebuild:
+  stable amd64, bug 267874
+
+  29 Apr 2009; Torsten Veller <tove@gentoo.org> IO-LockedFile-0.23.ebuild:
+  Stable on x86 (#267874). EAPI=2 and run tests
+
+  17 Sep 2008; Santiago M. Mola <coldwind@gentoo.org>
+  IO-LockedFile-0.23.ebuild:
+  Add ~amd64 keyword, requested in bug #237751.
+
+*IO-LockedFile-0.23 (07 Sep 2008)
+
+  07 Sep 2008; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +IO-LockedFile-0.23.ebuild:
+  Needed for dev-perl/Authen-Htpasswd. Requested in #236716. Ebuild based on
+  Michele Beltrame's ebuild from the perl-experimental overlay.

@@ -1,0 +1,43 @@
+diff -ru usbirboy-0.2.1-orig/usbirboykmod/usbirboy.c usbirboy-0.2.1/usbirboykmod/usbirboy.c
+--- usbirboy-0.2.1-orig/usbirboykmod/usbirboy.c	2006-06-08 07:52:54.211338228 +0200
++++ usbirboy-0.2.1/usbirboykmod/usbirboy.c	2006-06-08 07:57:26.989743855 +0200
+@@ -76,6 +76,14 @@
+ #define LIRC_SET_REC_MODE              _IOW('i', 0x00000012, __u32)
+ 
+ 
++#include <linux/version.h>
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,16)
++#define USBIRBOY_THIS_MODULE(x) x,
++#else /* >= 2.6.16 */
++#define USBIRBOY_THIS_MODULE(x)
++#endif
++
+ 
+ /* prevent races between open() and disconnect() */
+ static DECLARE_MUTEX (disconnect_sem);
+@@ -778,7 +784,7 @@
+ 
+ /*defines user space function bodies*/
+ static struct file_operations usbirboy_fops = {
+-	.owner =	THIS_MODULE,
++	USBIRBOY_THIS_MODULE(.owner =	THIS_MODULE)
+ 	.read =		usbirboy_user_read,
+ 	.ioctl = 	usbirboy_user_ioctl,
+ 	.open =		usbirboy_user_open,
+@@ -790,13 +796,13 @@
+ static struct usb_class_driver usbirboy_class = {
+ 	.name =		DRIVER_NAME,
+ 	.fops =		&usbirboy_fops,
+-	.mode =		S_IFCHR | S_IRUSR | S_IRGRP | S_IROTH,
++	USBIRBOY_THIS_MODULE(.mode =		S_IFCHR | S_IRUSR | S_IRGRP | S_IROTH)
+ 	.minor_base =	USBIRBOY_MINOR_BASE,
+ };
+ 
+ /*driver info for kernel*/
+ static struct usb_driver usbirboy_driver = {
+-        .owner =        THIS_MODULE,
++        USBIRBOY_THIS_MODULE(.owner =        THIS_MODULE)
+         .name =         DRIVER_NAME,
+         .id_table =     usbirboy_device_table,
+         .probe =        usbirboy_usb_probe,

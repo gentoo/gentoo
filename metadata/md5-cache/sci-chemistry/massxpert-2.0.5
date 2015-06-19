@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=doc? ( virtual/latex-base ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=A software suite to predict/analyze mass spectrometric data on (bio)polymers
+EAPI=2
+HOMEPAGE=http://massxpert.org
+IUSE=debug doc linguas_fr
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtsvg:4[debug?]
+SLOT=0
+SRC_URI=http://download.tuxfamily.org/massxpert/source/massxpert-2.0.5.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=837a0d48c6b360c1b4fbc84e4e588884

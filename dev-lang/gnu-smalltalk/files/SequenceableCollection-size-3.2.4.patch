@@ -1,0 +1,23 @@
+--- a/kernel/SeqCollect.st
++++ b/kernel/SeqCollect.st
+@@ -1104,9 +1104,16 @@ some access and manipulation methods.'>
+ 	^count
+     ]
+ 
++    size [
++	"Answer a dummy size of 0, so that SequenceableCollection>>#do: works."
++
++	<category: 'testing collections'>
++	^0
++    ]
++
+     growSize [
+ 	<category: 'private methods'>
+-	^self size
++	^(self size max: 8)
+     ]
+ 
+     swap: anIndex with: anotherIndex [
+-- 
+1.7.2.5
+

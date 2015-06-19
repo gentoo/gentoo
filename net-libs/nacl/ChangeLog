@@ -1,0 +1,12 @@
+# ChangeLog for net-libs/nacl
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/nacl/ChangeLog,v 1.2 2013/07/04 14:35:49 xmw Exp $
+
+  04 Jul 2013; Michael Weber <xmw@gentoo.org> nacl-0_p20110221.ebuild:
+  Add ~x86 keywords as requested on bug 475668.
+
+*nacl-0_p20110221 (31 May 2013)
+
+  31 May 2013; Michael Weber <xmw@gentoo.org> +metadata.xml,
+  +nacl-0_p20110221.ebuild:
+  Initial import, dep of net-analyzer/netsniff-ng

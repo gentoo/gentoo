@@ -1,0 +1,209 @@
+# ChangeLog for games-fps/quake3
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3/ChangeLog,v 1.71 2014/08/12 12:01:00 vapier Exp $
+
+  12 Aug 2014; Mike Frysinger <vapier@gentoo.org> quake3-1.36-r1.ebuild,
+  quake3-9999.ebuild:
+  Add ia64 love and simplify my_platform logic #509216 by Émeric Maschino.
+
+  24 May 2014; Sergei Trofimovich <slyfox@gentoo.org> quake3-9999.ebuild:
+  Fix missing files in 'dodoc' call.
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> quake3-1.36-r1.ebuild,
+  quake3-9999.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  31 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/quake3-1.34_rc3-gcc42.patch, -quake3-1.34_rc3.ebuild,
+  -quake3-1.36.ebuild:
+  old
+
+  13 Jan 2013; Agostino Sarubbo <ago@gentoo.org> quake3-1.36-r1.ebuild:
+  Stable for x86, wrt bug #447164
+
+  03 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> quake3-9999.ebuild:
+  Add missing 'die' statement to renderers installation, add new docs
+
+  03 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> quake3-9999.ebuild:
+  Add workarounds for zlib and renderers loading, wrt bug #449510. Thanks to
+  robo9k <robo+gentoo AT 9k.lv> for discovering these issues
+
+  03 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> quake3-9999.ebuild:
+  Set new repo address for live ebuild, wrt bug #449510
+
+  20 Dec 2012; Agostino Sarubbo <ago@gentoo.org> quake3-1.36-r1.ebuild:
+  Stable for amd64, wrt bug #447164
+
+  25 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> quake3-1.36-r1.ebuild:
+  Disable patch for jpeg unbundling, cause it is uncompleted and may cause
+  graphics glitches
+
+*quake3-1.36-r1 (07 Sep 2012)
+
+  07 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> +quake3-1.36-r1.ebuild,
+  +files/quake3-1.36-remove-bundled-jpeg.patch:
+  Use system jpeg library wrt bug #430518
+
+  13 Jul 2012; Jeff Horelick <jdhore@gentoo.org> quake3-1.36.ebuild:
+  marked x86 per bug 406039
+
+  12 Jul 2012; Agostino Sarubbo <ago@gentoo.org> quake3-1.36.ebuild:
+  Stable for amd64, wrt bug #406039
+
+  14 May 2011; Matt Turner <mattst88@gentoo.org> quake3-9999.ebuild:
+  Make sure to call subversion_wc_info. Thanks to Andrey Vihrov, bug 222005.
+
+  06 May 2011; Matt Turner <mattst88@gentoo.org> quake3-1.36.ebuild,
+  quake3-9999.ebuild, metadata.xml:
+  Rewritten ebuild from Andrey Vihrov. Adds curl, mumble, opengl, openal,
+  voice, and vorbis USE flags (Bug 222005). Removes bundled openal, curl,
+  speex, sdl, zlib, and jpeg in favor of using system libraries and headers
+  (Bug 250080). Huge thanks to Andrey Vihrov!
+
+  31 Jan 2011; Michael Sterrett <mr_bones_@gentoo.org> quake3-1.36.ebuild,
+  +files/quake3-1.36-bots.patch:
+  add Redhat patch to fix bot loading on 64bit (bug #353257)
+
+  28 Nov 2010; Michael Sterrett <mr_bones_@gentoo.org> quake3-1.36.ebuild,
+  quake3-9999.ebuild:
+  fix KEYWORDS (bug #346329)
+
+*quake3-1.36 (13 Nov 2010)
+
+  13 Nov 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  quake3-1.34_rc3.ebuild, +quake3-1.36.ebuild, quake3-9999.ebuild:
+  version bump; add opengl use dep for libsdl for bug #345213
+
+  09 Nov 2010; Tupone Alfredo <tupone@gentoo.org> quake3-1.34_rc3.ebuild:
+  Fix compiling as per bug #344441 by morgan wahl
+
+  28 Dec 2009; Markus Meier <maekke@gentoo.org> quake3-1.34_rc3.ebuild:
+  amd64 stable, bug #296119
+
+  09 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  quake3-1.34_rc3.ebuild:
+  stable x86, bug 296119
+
+  10 Aug 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  quake3-1.34_rc3.ebuild, quake3-9999.ebuild:
+  EAPI=2; add joystick use dep for bug #264741
+
+  31 Dec 2007; Mike Frysinger <vapier@gentoo.org> quake3-9999.ebuild:
+  Fixes from David Watzke for building with newer svn checkouts #203733.
+
+  24 Jun 2007; Piotr Jaroszyński <peper@gentoo.org> quake3-9999.ebuild:
+  (QA) Don't use KEYWORDS="-*". bug #160519.
+
+  22 Jun 2007; Mike Frysinger <vapier@gentoo.org>
+  +files/quake3-1.34_rc3-gcc42.patch, quake3-1.34_rc3.ebuild:
+  Fix by nyhm for gcc-4.2 issues #179649 by Philipp.
+
+  30 Jan 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  -quake3-1.34_rc2.ebuild, quake3-1.34_rc3.ebuild, quake3-9999.ebuild:
+  Cleaned older ebuilds and fixed up dependencies with a patch from Sascha
+  Geschwandtner <s.geschwandtner@gmx.de> and closing bug #162425.
+
+*quake3-1.34_rc3 (29 Nov 2006)
+
+  29 Nov 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +quake3-1.34_rc3.ebuild:
+  Version bump to 1.34_rc3.
+
+  25 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -quake3-1.34_alpha789.ebuild:
+  Clean up older ebuilds.
+
+*quake3-1.34_rc2 (19 Oct 2006)
+
+  19 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-1.34_alpha789.ebuild, +quake3-1.34_rc2.ebuild, quake3-9999.ebuild:
+  Version bump and fix filter-flags.  Blame zakk.
+
+  03 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/quake3-1.34_alpha778-gfbsd.patch, -quake3-1.34_alpha778.ebuild,
+  quake3-1.34_alpha789.ebuild, quake3-9999.ebuild:
+  Added filter-flags to remove -mfpmath=sse for bug #149008.
+
+*quake3-1.34_alpha789 (26 May 2006)
+
+  26 May 2006; Mike Frysinger <vapier@gentoo.org>
+  +quake3-1.34_alpha789.ebuild:
+  Version bump.
+
+  24 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/quake3-1.34_alpha778-gfbsd.patch, quake3-1.34_alpha778.ebuild:
+  Add patch by Robert Sebastian Gerus to build on Gentoo/FreeBSD (bug
+  #134147). Add ~x86-fbsd keyword.
+
+  23 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-1.34_alpha778.ebuild, quake3-9999.ebuild:
+  Remove dirty botlib hack that was put in place for bug #121428.
+
+  23 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -quake3-1.34_alpha632.ebuild, -quake3-1.34_alpha711.ebuild,
+  quake3-1.34_alpha778.ebuild, quake3-9999.ebuild:
+  Added teamarena to IUSE and removed older snapshots that had vulnerabilities
+  CVE-2006-2082 and CVE-2006-2236.
+
+*quake3-1.34_alpha778 (10 May 2006)
+
+  10 May 2006; Mike Frysinger <vapier@gentoo.org>
+  +quake3-1.34_alpha778.ebuild:
+  Version bump for security #132377.
+
+*quake3-1.34_alpha711 (19 Apr 2006)
+
+  19 Apr 2006; Mike Frysinger <vapier@gentoo.org>
+  +quake3-1.34_alpha711.ebuild:
+  Version bump.
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-1.34_alpha632.ebuild, quake3-9999.ebuild:
+  Adding a 'fix' from FreeBSD for bug #121428 until a proper solution is
+  hashed out upstream.
+
+  27 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-1.34_alpha632.ebuild, quake3-9999.ebuild:
+  Added initial support for quake3-teamarena.
+
+  24 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -quake3-1.33_alpha510.ebuild:
+  Cleaned up older ebuilds.
+
+  24 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-1.33_alpha510.ebuild, quake3-1.34_alpha632.ebuild:
+  Changed xpm to png and closing bug #127450.
+
+*quake3-1.34_alpha632 (11 Mar 2006)
+
+  11 Mar 2006; Mike Frysinger <vapier@gentoo.org>
+  +quake3-1.34_alpha632.ebuild:
+  Update snapshot.
+
+  22 Jan 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  quake3-1.33_alpha510.ebuild:
+  support dedicated use flag more (bug #119874)
+
+*quake3-1.33_alpha510 (20 Jan 2006)
+
+  20 Jan 2006; Mike Frysinger <vapier@gentoo.org>
+  +quake3-1.33_alpha510.ebuild:
+  Version bump.
+
+  08 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-1.33_alpha255.ebuild, quake3-1.33_alpha364.ebuild:
+  Added media-libs/openal to RDEPEND and closing bug #118232.
+
+  05 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-1.33_alpha255.ebuild, quake3-1.33_alpha364.ebuild:
+  Added modular X dependencies.
+
+  18 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-1.33_alpha364.ebuild:
+  Added openal to RDEPEND and closing bug #112906.
+
+*quake3-1.33_alpha* (26 Oct 2005)
+
+  26 Oct 2005; Mike Frysinger <vapier@gentoo.org> :
+  Initial version of quake3-from-source #103591.

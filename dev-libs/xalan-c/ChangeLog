@@ -1,0 +1,150 @@
+# ChangeLog for dev-libs/xalan-c
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/xalan-c/ChangeLog,v 1.34 2015/05/05 19:23:48 mrueg Exp $
+
+  05 May 2015; Manuel Rüger <mrueg@gentoo.org> -xalan-c-1.10.0.ebuild,
+  -xalan-c-1.11.0_pre705082.ebuild, -xalan-c-1.11.0_pre797991.ebuild:
+  Remove old.
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> xalan-c-1.10.0.ebuild,
+  xalan-c-1.11.0_pre705082.ebuild:
+  use ecvs_clean
+
+  24 Apr 2012; Michał Górny <mgorny@gentoo.org> xalan-c-1.10.0.ebuild:
+  Use mirror:// in SRC_URI.
+
+  18 Dec 2011; Raúl Porcel <armin76@gentoo.org> xalan-c-1.10.0.ebuild,
+  xalan-c-1.11.0_pre705082.ebuild, xalan-c-1.11.0_pre797991.ebuild,
+  xalan-c-1.11.0_pre1153059.ebuild:
+  Drop sparc keywords
+
+  18 Sep 2011; Markus Meier <maekke@gentoo.org>
+  xalan-c-1.11.0_pre1153059.ebuild:
+  x86 stable, bug #382781
+
+  16 Sep 2011; Tony Vroon <chainsaw@gentoo.org>
+  xalan-c-1.11.0_pre1153059.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo & Ian
+  "idella4" Delaney in bug #382781.
+
+*xalan-c-1.11.0_pre1153059 (04 Aug 2011)
+
+  04 Aug 2011; Tiziano Müller <dev-zero@gentoo.org>
+  +xalan-c-1.11.0_pre1153059.ebuild:
+  Version bump, fixes compilation with gcc-4.6 (bug #363531). Also fixed
+  compilation with USE=-nls (bug #373035) and use EAPI-4.
+
+  25 Feb 2011; Tiziano Müller <dev-zero@gentoo.org>
+  xalan-c-1.11.0_pre797991.ebuild:
+  Removed temporary parallel build workaround.
+
+  25 Feb 2011; Tiziano Müller <dev-zero@gentoo.org>
+  files/1.11.0_pre797991-parallel-build.patch:
+  Update patch to fix parallel build issues (bug #296749, thanks to Martin von
+  Gagern and Torsten Kurbad).
+
+  12 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  xalan-c-1.11.0_pre797991.ebuild:
+  Stable on amd64 wrt bug #335745
+
+  06 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  xalan-c-1.11.0_pre797991.ebuild:
+  x86 stable wrt bug #335745
+
+  02 Sep 2010; Andrey Kislyuk <weaver@gentoo.org>
+  xalan-c-1.11.0_pre797991.ebuild:
+  The latest version is not parallel make safe despite the patch. Adding
+  workaround. Feel free to fix properly.
+
+*xalan-c-1.11.0_pre797991 (26 Jul 2009)
+
+  26 Jul 2009; Tiziano Müller <dev-zero@gentoo.org>
+  +files/1.11.0_pre797991-as-needed.patch,
+  +files/1.11.0_pre797991-bugfixes.patch,
+  +files/1.11.0_pre797991-parallel-build.patch,
+  +xalan-c-1.11.0_pre797991.ebuild:
+  Version bump (fixes bug #247082 and maybe bug #253549 (unable to
+  reproduce)).
+
+  14 Dec 2008; Markus Meier <maekke@gentoo.org>
+  xalan-c-1.11.0_pre705082.ebuild:
+  amd64/x86 stable, bug #240496
+
+  23 Nov 2008; Ferris McCormick <fmccor@gentoo.org>
+  xalan-c-1.11.0_pre705082.ebuild:
+  Sparc stable, Bug #242218.
+
+*xalan-c-1.11.0_pre705082 (12 Nov 2008)
+
+  12 Nov 2008; Mark Loeser <halcy0n@gentoo.org>
+  +xalan-c-1.11.0_pre705082.ebuild:
+  Bump to a snapshot to fix compilation against xerces-c-3. Thanks a lot to
+  Martin von Gagern <Martin DOT vGagern AT gmx DOT net> for the analysis of
+  this issue; bug #242218
+
+  09 Aug 2008; Tiziano Müller <dev-zero@gentoo.org> xalan-c-1.10.0.ebuild:
+  Updated xerces-c dependency
+
+  26 Jul 2008; Tiziano Müller <dev-zero@gentoo.org> xalan-c-1.10.0.ebuild:
+  Added =dev-libs/xerces-c-2.8.0-r1 as possible dependency
+
+  27 Apr 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +files/xalan-c-1.10.0+gcc-4.3.patch, xalan-c-1.10.0.ebuild:
+  Add patch allowing building with GCC 4.3. Patch by ape in bug #213136.
+
+  22 Dec 2007; Tiziano Müller <dev-zero@gentoo.org> xalan-c-1.10.0.ebuild:
+  Changed xerces-c version to match only 2.7.0 (bug #202922) since upstream
+  doesn't guarantee compatibility with 2.8.0
+
+  28 Jun 2007; Joseph Jezak <josejx@gentoo.org> xalan-c-1.10.0.ebuild:
+  Marked ~ppc.
+
+  18 May 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +files/1.10.0-as-needed.patch, xalan-c-1.10.0.ebuild:
+  Add patch to fix building with -Wl,--as-needed. Fixes bug #165434. Thanks to
+  Daniel Lin <dtlin@andrew.cmu.edu> for the patch. Also fixed LICENSE to
+  Apache-2.0.
+
+  05 Apr 2007; Tiziano Müller <dev-zero@gentoo.org> Manifest:
+  Manifest rebuilt (bug #173450)
+
+  03 Feb 2007; Simon Stelling <blubb@gentoo.org> xalan-c-1.10.0.ebuild:
+  fix typo causing bug 165168
+
+  02 Feb 2007; Simon Stelling <blubb@gentoo.org> xalan-c-1.10.0.ebuild:
+  fix multilib-strict; bug 154279; credits to Christoph Mende
+
+  04 Dec 2006; Tiziano Müller <dev-zero@gentoo.org>
+  -files/1.8.0-gcc34.patch, -xalan-c-1.7.0.ebuild, -xalan-c-1.8.0.ebuild,
+  xalan-c-1.10.0.ebuild:
+  Dropping old versions. Added API-doc generation (bug #157046) using doxygen.
+  Updated ebuild to make the package use our CXXFLAGS.
+
+  07 Nov 2006; Daniel Gryniewicz <dang@gentoo.org> xalan-c-1.10.0.ebuild:
+  Marked stable on amd64 for bug #152042
+
+  30 Oct 2006; Christian Faulhammer <opfer@gentoo.org>
+  xalan-c-1.10.0.ebuild:
+  keyworded x86 as requested in bug #152042
+
+  22 Oct 2006; Jason Wever <weeve@gentoo.org> xalan-c-1.10.0.ebuild:
+  Stable on SPARC wrt bug #152042.
+
+*xalan-c-1.10.0 (03 Sep 2006)
+
+  03 Sep 2006; Mike Frysinger <vapier@gentoo.org> +xalan-c-1.10.0.ebuild:
+  Version bump #146061 by Colonel Paneek.
+
+  30 May 2005; Sven Wegener <swegener@gentoo.org> xalan-c-1.7.0.ebuild:
+  Moved from gcc.eclass to toolchain-funcs.eclass, bug #92745.
+
+*xalan-c-1.8.0 (10 Nov 2004)
+
+  10 Nov 2004; Mike Frysinger <vapier@gentoo.org> +files/1.8.0-gcc34.patch,
+  xalan-c-1.7.0.ebuild, +xalan-c-1.8.0.ebuild:
+  Version bump #62196 by Sebastian Roth.
+
+*xalan-c-1.7.0 (21 Feb 2004)
+
+  21 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Chris Mayo #36836.

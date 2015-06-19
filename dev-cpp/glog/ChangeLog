@@ -1,0 +1,77 @@
+# ChangeLog for dev-cpp/glog
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/glog/ChangeLog,v 1.20 2015/05/01 05:50:04 jer Exp $
+
+  01 May 2015; Jeroen Roovers <jer@gentoo.org> glog-0.3.3-r1.ebuild:
+  Stable for PPC64 (bug #540844).
+
+  02 Mar 2015; Yixun Lan <dlan@gentoo.org> glog-0.3.3-r1.ebuild:
+  add arm64 support, tested on A53 board
+
+  25 Oct 2014; Markus Meier <maekke@gentoo.org> glog-0.3.3-r1.ebuild:
+  arm stable, bug #525968
+
+  23 Oct 2014; Pacho Ramos <pacho@gentoo.org> glog-0.3.3-r1.ebuild:
+  amd64/x86 stable, bug #525968
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> glog-0.3.3-r1.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+*glog-0.3.3-r1 (27 Mar 2014)
+
+  27 Mar 2014; Mike Frysinger <vapier@gentoo.org> +glog-0.3.3-r1.ebuild:
+  Add multilib build support.
+
+  19 Oct 2013; Mike Frysinger <vapier@gentoo.org> glog-0.3.3.ebuild:
+  Add keywords for everyone.
+
+  18 Aug 2013; Agostino Sarubbo <ago@gentoo.org> glog-0.3.3.ebuild:
+  Stable for x86, wrt bug #478210
+
+  07 Aug 2013; Sergey Popov <pinkbyte@gentoo.org> glog-0.3.3.ebuild:
+  Stable on arm, wrt bug #478210
+
+  04 Aug 2013; Agostino Sarubbo <ago@gentoo.org> glog-0.3.3.ebuild:
+  Stable for amd64, wrt bug #478210
+
+*glog-0.3.3 (04 May 2013)
+
+  04 May 2013; Mike Frysinger <vapier@gentoo.org> +glog-0.3.3.ebuild:
+  Version bump #467926 by Agostino Sarubbo.
+
+  10 Jan 2013; Mike Frysinger <vapier@gentoo.org> glog-0.3.2.ebuild:
+  Use configure flags to install doc files and fix EAPI=4 handling of $ED.
+
+  10 Jan 2013; Mike Frysinger <vapier@gentoo.org> glog-0.3.1.ebuild:
+  Add build fix to older version too.
+
+  19 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> glog-0.3.2.ebuild:
+  Keyworded amd64-linux and x86-linux
+
+  10 Sep 2012; Mike Frysinger <vapier@gentoo.org>
+  +files/glog-0.3.2-avoid-inline-asm.patch, glog-0.3.2.ebuild:
+  Make unittest a bit more portable.
+
+  23 Jul 2012; Markus Meier <maekke@gentoo.org> glog-0.3.2.ebuild:
+  add ~arm, bug #426430
+
+*glog-0.3.2 (13 Jul 2012)
+
+  13 Jul 2012; Tiziano Müller <dev-zero@gentoo.org> +glog-0.3.2.ebuild,
+  metadata.xml:
+  Version bump, correct doc installation, do not install .la files if static-
+  libs is not requested, add unwind USE flag for explicit libunwind usage, add
+  cpp-herd.
+
+  20 Feb 2012; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Drop no-herd.
+
+  12 Nov 2011; Mike Frysinger <vapier@gentoo.org> glog-0.3.1.ebuild:
+  do not actually need versionator
+
+*glog-0.3.1 (11 Nov 2011)
+
+  11 Nov 2011; Mike Frysinger <vapier@gentoo.org> +glog-0.3.1.ebuild,
+  +metadata.xml:
+  Initial import based on ChromeOS's ebuild.

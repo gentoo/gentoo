@@ -1,0 +1,65 @@
+# ChangeLog for dev-python/pycdio
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pycdio/ChangeLog,v 1.14 2015/01/02 04:32:08 idella4 Exp $
+
+*pycdio-0.20-r1 (02 Jan 2015)
+
+  02 Jan 2015; Ian Delaney <idella4@gentoo.org> +pycdio-0.20-r1.ebuild,
+  -pycdio-0.18.ebuild, -pycdio-0.19.ebuild, -pycdio-0.20.ebuild:
+  revbump; conversion -> distutils-r1, rm old
+
+*pycdio-0.20 (18 Sep 2013)
+
+  18 Sep 2013; Patrick Lauer <patrick@gentoo.org> +pycdio-0.20.ebuild:
+  Bump
+
+*pycdio-0.19 (04 Aug 2013)
+
+  04 Aug 2013; Stefan Briesenick <sbriesen@gentoo.org> +pycdio-0.19.ebuild:
+  version bump
+
+  22 Jul 2013; Dirkjan Ochtman <djc@gentoo.org> metadata.xml:
+  Add python herd.
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> -pycdio-0.17.ebuild, metadata.xml:
+  Cleanup due #92799
+
+*pycdio-0.18 (16 Jan 2013)
+
+  16 Jan 2013; Samuli Suominen <ssuominen@gentoo.org> +pycdio-0.18.ebuild:
+  Version bump for >=dev-libs/libcdio-0.90 compability.
+
+  22 Feb 2012; Patrick Lauer <patrick@gentoo.org> pycdio-0.17.ebuild:
+  Restricting jython
+
+*pycdio-0.17 (01 Nov 2010)
+
+  01 Nov 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pycdio-0.16.ebuild, +pycdio-0.17.ebuild:
+  Version bump.
+
+*pycdio-0.16 (25 Dec 2009)
+
+  25 Dec 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pycdio-0.16.ebuild:
+  Version bump. Set SUPPORT_PYTHON_ABIS.
+
+  29 May 2008; Ali Polatel <hawking@gentoo.org> pycdio-0.13.ebuild:
+  python_mod_compile is ROOT aware and can take multiple file arguments.
+
+  14 May 2008; Stefan Briesenick <sbriesen@gentoo.org> pycdio-0.13.ebuild:
+  fixed dependencies (solves bug #221473).
+
+  14 May 2008; Stefan Briesenick <sbriesen@gentoo.org> -pycdio-0.12.ebuild:
+  removed old version
+
+*pycdio-0.13 (17 Nov 2007)
+
+  17 Nov 2007; Stefan Briesenick <sbriesen@gentoo.org> +pycdio-0.13.ebuild:
+  version bump.
+
+*pycdio-0.12 (16 May 2007)
+
+  16 May 2007; Stefan Briesenick <sbriesen@gentoo.org> +metadata.xml,
+  +pycdio-0.12.ebuild:
+  initial commit.

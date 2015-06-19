@@ -1,0 +1,32 @@
+# ChangeLog for sys-auth/pam_ssh_agent_auth
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_ssh_agent_auth/ChangeLog,v 1.5 2015/05/21 03:03:31 vapier Exp $
+
+*pam_ssh_agent_auth-0.10.2 (21 May 2015)
+
+  21 May 2015; Mike Frysinger <vapier@gentoo.org>
+  +pam_ssh_agent_auth-0.10.2.ebuild:
+  Version bump #508658 by David Klann.
+
+*pam_ssh_agent_auth-0.9.4 (31 Dec 2012)
+
+  31 Dec 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +pam_ssh_agent_auth-0.9.4.ebuild:
+  Version bump.
+
+*pam_ssh_agent_auth-0.9.3 (02 Aug 2012)
+
+  02 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +pam_ssh_agent_auth-0.9.3.ebuild:
+  Version bump.
+
+  12 Apr 2011; Christoph Mende <angelos@gentoo.org>
+  pam_ssh_agent_auth-0.9.2.ebuild, +files/pam_ssh_agent_auth-0.9.2-libs.patch:
+  Fixed building with --as-needed, thanks to marienz for the help (bug #363151)
+
+*pam_ssh_agent_auth-0.9.2 (05 Feb 2011)
+
+  05 Feb 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +pam_ssh_agent_auth-0.9.2.ebuild, +metadata.xml:
+  Initial import of pam_ssh_agent_auth; ebuild based on the work by Andrian
+  Nord.

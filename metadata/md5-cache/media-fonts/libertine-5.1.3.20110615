@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm setup
+DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=OpenType fonts from the Linux Libertine Open Fonts Project
+HOMEPAGE=http://linuxlibertine.sourceforge.net/
+IUSE=X
+KEYWORDS=alpha amd64 ~arm ia64 ppc ~ppc64 sparc x86
+LICENSE=|| ( GPL-2-with-font-exception OFL )
+RDEPEND=!<x11-libs/pango-1.20.4
+SLOT=0
+SRC_URI=mirror://sourceforge/linuxlibertine/LinLibertineTTF-5.1.3_2011_06_15.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	font	b3239d2dc442d1717b9725e2be7cb5d6	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=3abd37faa56086767f11b95f489bc99b

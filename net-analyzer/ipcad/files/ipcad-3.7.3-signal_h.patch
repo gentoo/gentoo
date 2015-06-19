@@ -1,0 +1,32 @@
+--- a/main.c
++++ b/main.c
+@@ -26,6 +26,8 @@
+  * $Id: ipcad-3.7.3-signal_h.patch,v 1.3 2014/07/12 17:45:38 jer Exp $
+  */
+ 
++#include <signal.h> /* signal */
++
+ #include "ipcad.h"
+ #include "cfgvar.h"
+ #include "servers.h"
+--- a/pps.c
++++ b/pps.c
+@@ -26,6 +26,7 @@
+  * $Id: ipcad-3.7.3-signal_h.patch,v 1.3 2014/07/12 17:45:38 jer Exp $
+  */
+ 
++#include <signal.h> /* sigprocmask */
+ 
+ #include "ipcad.h"
+ #include "opt.h"
+--- a/servers.c
++++ b/servers.c
+@@ -26,6 +26,8 @@
+  * $Id: ipcad-3.7.3-signal_h.patch,v 1.3 2014/07/12 17:45:38 jer Exp $
+  */
+ 
++#include <signal.h> /* pthread_kill and sigprocmask */
++
+ #include "ipcad.h"
+ #include "servers.h"
+ #include "opt.h"

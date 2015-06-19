@@ -1,0 +1,32 @@
+--- svgalib-1.9.25.orig/kernel/svgalib_helper/main.c
++++ svgalib-1.9.25/kernel/svgalib_helper/main.c
+@@ -162,10 +162,16 @@ static void task_startad(void *data) {
+ 	get_user(pciv.address, &user_pciv->address); \
+ 	get_user(pciv.val, &user_pciv->val); 
+ #define PUT_PCIV \
+-	put_user(pciv.val, &user_pciv->val); 
++	put_user(pciv.val, &user_pciv->val);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,36) 
+ static int svgalib_helper_ioctl( struct inode *inode, struct file *filp, 
+                           unsigned int cmd, unsigned long arg) {
++#else
++static int svgalib_helper_ioctl(struct file *filp, 
++                          unsigned int cmd, unsigned long arg) {
++    struct inode *inode=filp->f_dentry->d_inode;
++#endif
+ 
+     io_t iov, *user_iov=(io_t *)arg;
+     pcic_t pciv, *user_pciv=(pcic_t *)arg;
+     int minor = my_minor(inode->i_rdev);
+@@ -595,7 +601,11 @@ struct file_operations svgalib_helper_fo
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,3,0)
+    .owner	= THIS_MODULE,
+ #endif
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,36)
+    .ioctl	= svgalib_helper_ioctl,
++#else
++   .unlocked_ioctl	= svgalib_helper_ioctl,
++#endif
+    .mmap	= svgalib_helper_mmap,
+    .open	= svgalib_helper_open,
+    .release	= svgalib_helper_release,

@@ -1,0 +1,65 @@
+# ChangeLog for media-fonts/mikachan-font-ttc
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/mikachan-font-ttc/ChangeLog,v 1.15 2007/01/22 20:57:50 flameeyes Exp $
+
+  22 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  mikachan-font-ttc-9.1.ebuild:
+  Use FONT_S to make vapier happy.
+
+  01 Dec 2006; Brent Baude <ranger@gentoo.org> mikachan-font-ttc-9.1.ebuild:
+  Marking mikachan-font-ttc-9.1 ppc64 for bug 156357
+
+  29 Nov 2006; Jeroen Roovers <jer@gentoo.org> mikachan-font-ttc-9.1.ebuild:
+  Stable for HPPA (bug #156357).
+
+  29 Nov 2006; Timothy Redaelli <drizzt@gentoo.org>
+  mikachan-font-ttc-9.1.ebuild:
+  Stable on ppc wrt bug 156357.
+
+  28 Nov 2006; Bryan Østergaard <kloeri@gentoo.org>
+  mikachan-font-ttc-9.1.ebuild:
+  Stable on Alpha + ia64.
+
+  27 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  mikachan-font-ttc-9.1.ebuild:
+  stable x86, bug #156357
+
+  27 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  mikachan-font-ttc-9.1.ebuild:
+  Stable on sparc wrt #156357
+
+  26 Nov 2006; <malc@gentoo.org> mikachan-font-ttc-9.1.ebuild:
+  Stable on amd64 - bug #156357
+
+  26 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  mikachan-font-ttc-9.1.ebuild:
+  Restrict binchecks and strip, cuts about 20 seconds on the merge, as the
+  package installs only fonts data (and docs).
+
+  12 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  mikachan-font-ttc-9.1.ebuild:
+  Add ~arm ~s390 ~hppa ~sh with vapier's ack.
+
+  12 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  mikachan-font-ttc-9.1.ebuild:
+  Add ~alpha and ~ia64 keywords, requested by flameeyes.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  mikachan-font-ttc-9.1.ebuild:
+  ~sparc'd wrt #149931
+
+  04 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  mikachan-font-ttc-9.1.ebuild:
+  Added ~amd64/~x86 for bug #149931.
+
+  03 Oct 2006; Markus Rothe <corsair@gentoo.org>
+  mikachan-font-ttc-9.1.ebuild:
+  Added ~ppc64; bug #149931
+
+*mikachan-font-ttc-9.1 (03 Oct 2006)
+
+  03 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> +metadata.xml,
+  +mikachan-font-ttc-9.1.ebuild:
+  Initial import, mikachan font in TrueType Collection format. See bug #148097
+  for information.
+

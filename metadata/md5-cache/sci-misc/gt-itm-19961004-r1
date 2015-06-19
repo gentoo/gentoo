@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=dev-util/sgb
+DESCRIPTION=Routines to generate and analyze graphs using different models for internetwork topology
+HOMEPAGE=http://www.cc.gatech.edu/fac/Ellen.Zegura/graphs.html http://www.isi.edu/nsnam/ns/ns-topogen.html#gt-itm
+KEYWORDS=~x86 ~amd64
+LICENSE=all-rights-reserved sgb2ns
+RDEPEND=dev-util/sgb
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=http://www.cc.gatech.edu/fac/Ellen.Zegura/gt-itm/gt-itm.tar.gz http://www.isi.edu/nsnam/dist/sgb2ns.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a180df36d72be13c75e984d75b9c4fd9

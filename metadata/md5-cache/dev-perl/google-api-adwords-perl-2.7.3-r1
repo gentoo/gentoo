@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-perl/Cache dev-perl/IO-Socket-SSL dev-perl/Log-Log4perl dev-perl/libwww-perl dev-perl/Math-Random-MT >=dev-perl/Net-OAuth-0.27 >=dev-perl/SOAP-WSDL-2.00.10 dev-perl/URI dev-perl/XML-Simple dev-perl/XML-XPath dev-perl/CHI test? ( virtual/perl-Test-Simple dev-perl/Test-MockObject virtual/perl-Getopt-Long dev-perl/Config-Properties dev-perl/Data-Uniqid ) dev-perl/Module-Build dev-lang/perl:=[-build(-)]
+DESCRIPTION=Google AdWords API Perl Client
+EAPI=5
+HOMEPAGE=http://code.google.com/p/google-api-adwords-perl/
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-perl/Cache dev-perl/IO-Socket-SSL dev-perl/Log-Log4perl dev-perl/libwww-perl dev-perl/Math-Random-MT >=dev-perl/Net-OAuth-0.27 >=dev-perl/SOAP-WSDL-2.00.10 dev-perl/URI dev-perl/XML-Simple dev-perl/XML-XPath dev-perl/CHI dev-lang/perl:=[-build(-)]
+RESTRICT=test
+SLOT=0
+SRC_URI=http://google-api-adwords-perl.googlecode.com/files/awapi_perl_lib_2_7_3.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=146d9dc83580422ca6d716437d33704f

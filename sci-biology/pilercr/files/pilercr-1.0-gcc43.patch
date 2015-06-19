@@ -1,0 +1,33 @@
+diff -dur work/multaln.h work-orig/multaln.h
+--- work/multaln.h	2007-04-17 19:02:18.000000000 +0000
++++ work-orig/multaln.h	2009-02-18 21:25:26.166333299 +0000
+@@ -6,6 +6,7 @@
+ #define _CRT_SECURE_NO_DEPRECATE	1
+ #endif
+ 
++#include <cstring>
+ #include <vector>
+ #include <limits.h>
+ #include <ctype.h>
+diff -dur work/seqvect.h work-orig/seqvect.h
+--- work/seqvect.h	2006-04-06 23:36:18.000000000 +0000
++++ work-orig/seqvect.h	2009-02-18 21:25:26.171090246 +0000
+@@ -1,6 +1,7 @@
+ #ifndef SeqVect_h
+ #define SeqVect_h
+ 
++#include <stdio.h>
+ #include <vector>
+ #include "seq.h"
+ 
+diff -dur work/tree.h work-orig/tree.h
+--- work/tree.h	2006-04-05 23:52:42.000000000 +0000
++++ work-orig/tree.h	2009-02-18 21:25:26.171090246 +0000
+@@ -1,6 +1,7 @@
+ #ifndef tree_h
+ #define tree_h
+ 
++#include <stdlib.h>
+ #include <limits.h>
+ 
+ class Clust;

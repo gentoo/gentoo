@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=virtual/pkgconfig
+DESCRIPTION=client library for accessing NFS shares over a network
+EAPI=4
+HOMEPAGE=https://github.com/sahlberg/libnfs
+IUSE=static-libs
+KEYWORDS=amd64 x86
+LICENSE=LGPL-2.1 GPL-3
+SLOT=0
+SRC_URI=mirror://github/sahlberg/libnfs/libnfs-1.5.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=652ef942e979ee77fc65d4f3c6a7786c

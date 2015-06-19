@@ -1,0 +1,426 @@
+diff --git a/config/spl-build.m4 b/config/spl-build.m4
+index 8a8e3ba..da179e3 100644
+--- a/config/spl-build.m4
++++ b/config/spl-build.m4
+@@ -33,6 +33,8 @@ AC_DEFUN([SPL_AC_CONFIG_KERNEL], [
+ 	SPL_AC_TASK_CURR
+ 	SPL_AC_CTL_UNNUMBERED
+ 	SPL_AC_CTL_NAME
++	SPL_AC_VMALLOC_INFO
++	SPL_AC_PDE_DATA
+ 	SPL_AC_FLS64
+ 	SPL_AC_DEVICE_CREATE
+ 	SPL_AC_5ARGS_DEVICE_CREATE
+@@ -1358,6 +1360,43 @@ AC_DEFUN([SPL_AC_GET_VMALLOC_INFO],
+ ])
+ 
+ dnl #
++dnl # 3.10 API change,
++dnl # struct vmalloc_info is now declared in linux/vmalloc.h
++dnl #
++AC_DEFUN([SPL_AC_VMALLOC_INFO], [
++	AC_MSG_CHECKING([whether struct vmalloc_info is declared])
++	SPL_LINUX_TRY_COMPILE([
++		#include <linux/vmalloc.h>
++		struct vmalloc_info { void *a; };
++	],[
++		return 0;
++	],[
++		AC_MSG_RESULT(no)
++	],[
++		AC_MSG_RESULT(yes)
++		AC_DEFINE(HAVE_VMALLOC_INFO, 1, [yes])
++	])
++])
++
++dnl #
++dnl # 3.10 API change,
++dnl # PDE is replaced by PDE_DATA
++dnl #
++AC_DEFUN([SPL_AC_PDE_DATA], [
++	AC_MSG_CHECKING([whether PDE_DATA() is available])
++	SPL_LINUX_TRY_COMPILE_SYMBOL([
++		#include <linux/proc_fs.h>
++	], [
++		PDE_DATA(NULL);
++	], [PDE_DATA], [], [
++		AC_MSG_RESULT(yes)
++		AC_DEFINE(HAVE_PDE_DATA, 1, [yes])
++	],[
++		AC_MSG_RESULT(no)
++	])
++])
++
++dnl #
+ dnl # 2.6.17 API change
+ dnl # The helper functions first_online_pgdat(), next_online_pgdat(), and
+ dnl # next_zone() are introduced to simplify for_each_zone().  These symbols
+diff --git a/include/linux/proc_compat.h b/include/linux/proc_compat.h
+index 434ffa3..7b044e7 100644
+--- a/include/linux/proc_compat.h
++++ b/include/linux/proc_compat.h
+@@ -43,9 +43,6 @@
+ #endif
+ 
+ extern struct proc_dir_entry *proc_spl_kstat;
+-struct proc_dir_entry *proc_dir_entry_find(struct proc_dir_entry *root,
+-					   const char *str);
+-int proc_dir_entries(struct proc_dir_entry *root);
+ 
+ int spl_proc_init(void);
+ void spl_proc_fini(void);
+diff --git a/include/sys/kstat.h b/include/sys/kstat.h
+index 9275c1e..da3c589 100644
+--- a/include/sys/kstat.h
++++ b/include/sys/kstat.h
+@@ -83,6 +83,13 @@ struct kstat_s;
+ typedef int kid_t;                                  /* unique kstat id */
+ typedef int kstat_update_t(struct kstat_s *, int);  /* dynamic update cb */
+ 
++typedef struct kstat_module {
++	char             ksm_name[KSTAT_STRLEN+1];  /* module name */
++	struct list_head ksm_module_list;           /* module linkage */
++	struct list_head ksm_kstat_list;            /* list of kstat entries */
++	struct proc_dir_entry *ksm_proc;            /* proc entry */
++} kstat_module_t;
++
+ typedef struct kstat_s {
+ 	int              ks_magic;                  /* magic value */
+         kid_t            ks_kid;                    /* unique kstat ID */
+@@ -102,6 +109,7 @@ typedef struct kstat_s {
+         void             *ks_private;               /* private data */
+         kmutex_t         ks_lock;                   /* kstat data lock */
+         struct list_head ks_list;                   /* kstat linkage */
++	kstat_module_t   *ks_owner;                 /* kstat module linkage */
+ } kstat_t;
+ 
+ typedef struct kstat_named_s {
+diff --git a/include/sys/vmsystm.h b/include/sys/vmsystm.h
+index 9c52d28..34aea2b 100644
+--- a/include/sys/vmsystm.h
++++ b/include/sys/vmsystm.h
+@@ -74,10 +74,12 @@ extern size_t vmem_size(vmem_t *vmp, int typemask);
+ #ifndef HAVE_GET_VMALLOC_INFO
+ #ifdef CONFIG_MMU
+ 
++#ifndef HAVE_VMALLOC_INFO
+ struct vmalloc_info {
+ 	unsigned long used;
+ 	unsigned long largest_chunk;
+ };
++#endif
+ 
+ typedef void (*get_vmalloc_info_t)(struct vmalloc_info *);
+ extern get_vmalloc_info_t get_vmalloc_info_fn;
+diff --git a/module/spl/spl-kstat.c b/module/spl/spl-kstat.c
+index b7e4b94..4e900c0 100644
+--- a/module/spl/spl-kstat.c
++++ b/module/spl/spl-kstat.c
+@@ -33,9 +33,12 @@
+ #endif
+ 
+ #define SS_DEBUG_SUBSYS SS_KSTAT
++#ifndef HAVE_PDE_DATA
++#define PDE_DATA(x) (PDE(x)->data)
++#endif
+ 
+-static spinlock_t kstat_lock;
+-static struct list_head kstat_list;
++static kmutex_t kstat_module_lock;
++static struct list_head kstat_module_list;
+ static kid_t kstat_id;
+ 
+ static void
+@@ -348,6 +351,47 @@ static struct seq_operations kstat_seq_ops = {
+         .stop  = kstat_seq_stop,
+ };
+ 
++static kstat_module_t *
++kstat_find_module(char *name)
++{
++	kstat_module_t *module;
++
++	list_for_each_entry(module, &kstat_module_list, ksm_module_list)
++		if (strncmp(name, module->ksm_name, KSTAT_STRLEN) == 0)
++			return (module);
++
++	return (NULL);
++}
++
++static kstat_module_t *
++kstat_create_module(char *name)
++{
++	kstat_module_t *module;
++	struct proc_dir_entry *pde;
++
++	pde = proc_mkdir(name, proc_spl_kstat);
++	if (pde == NULL)
++		return (NULL);
++
++	module = kmem_alloc(sizeof (kstat_module_t), KM_SLEEP);
++	module->ksm_proc = pde;
++	strlcpy(module->ksm_name, name, KSTAT_STRLEN+1);
++	INIT_LIST_HEAD(&module->ksm_kstat_list);
++	list_add_tail(&module->ksm_module_list, &kstat_module_list);
++
++	return (module);
++
++}
++
++static void
++kstat_delete_module(kstat_module_t *module)
++{
++	ASSERT(list_empty(&module->ksm_kstat_list));
++	remove_proc_entry(module->ksm_name, proc_spl_kstat);
++	list_del(&module->ksm_module_list);
++	kmem_free(module, sizeof(kstat_module_t));
++}
++
+ static int
+ proc_kstat_open(struct inode *inode, struct file *filp)
+ {
+@@ -359,7 +403,7 @@ proc_kstat_open(struct inode *inode, struct file *filp)
+                 return rc;
+ 
+         f = filp->private_data;
+-        f->private = PDE(inode)->data;
++        f->private = PDE_DATA(inode);
+ 
+         return rc;
+ }
+@@ -390,10 +434,10 @@ __kstat_create(const char *ks_module, int ks_instance, const char *ks_name,
+ 	if (ksp == NULL)
+ 		return ksp;
+ 
+-	spin_lock(&kstat_lock);
++	mutex_enter(&kstat_module_lock);
+ 	ksp->ks_kid = kstat_id;
+         kstat_id++;
+-	spin_unlock(&kstat_lock);
++	mutex_exit(&kstat_module_lock);
+ 
+         ksp->ks_magic = KS_MAGIC;
+ 	mutex_init(&ksp->ks_lock, NULL, MUTEX_DEFAULT, NULL);
+@@ -456,71 +500,64 @@ EXPORT_SYMBOL(__kstat_create);
+ void
+ __kstat_install(kstat_t *ksp)
+ {
+-	struct proc_dir_entry *de_module, *de_name;
++	kstat_module_t *module;
+ 	kstat_t *tmp;
+-	int rc = 0;
+-	SENTRY;
+-
+-	spin_lock(&kstat_lock);
+ 
+-	/* Item may only be added to the list once */
+-        list_for_each_entry(tmp, &kstat_list, ks_list) {
+-                if (tmp == ksp) {
+-		        spin_unlock(&kstat_lock);
+-			SGOTO(out, rc = -EEXIST);
+-		}
+-	}
++	ASSERT(ksp);
+ 
+-        list_add_tail(&ksp->ks_list, &kstat_list);
+-	spin_unlock(&kstat_lock);
++	mutex_enter(&kstat_module_lock);
+ 
+-	de_module = proc_dir_entry_find(proc_spl_kstat, ksp->ks_module);
+-	if (de_module == NULL) {
+-                de_module = proc_mkdir(ksp->ks_module, proc_spl_kstat);
+-		if (de_module == NULL)
+-			SGOTO(out, rc = -EUNATCH);
++	module = kstat_find_module(ksp->ks_module);
++	if (module == NULL) {
++		module = kstat_create_module(ksp->ks_module);
++		if (module == NULL)
++			goto out;
+ 	}
+ 
+-	de_name = create_proc_entry(ksp->ks_name, 0444, de_module);
+-	if (de_name == NULL)
+-		SGOTO(out, rc = -EUNATCH);
++	/*
++	 * Only one entry by this name per-module, on failure the module
++	 * shouldn't be deleted because we know it has at least one entry.
++	 */
++	list_for_each_entry(tmp, &module->ksm_kstat_list, ks_list)
++		if (strncmp(tmp->ks_name, ksp->ks_name, KSTAT_STRLEN) == 0)
++			goto out;
++
++	list_add_tail(&ksp->ks_list, &module->ksm_kstat_list);
+ 
+ 	mutex_enter(&ksp->ks_lock);
+-	ksp->ks_proc = de_name;
+-	de_name->proc_fops = &proc_kstat_operations;
+-        de_name->data = (void *)ksp;
++	ksp->ks_owner = module;
++	ksp->ks_proc = proc_create_data(ksp->ks_name, 0444,
++	    module->ksm_proc, &proc_kstat_operations, (void *)ksp);
++	if (ksp->ks_proc == NULL) {
++		list_del_init(&ksp->ks_list);
++		if (list_empty(&module->ksm_kstat_list))
++			kstat_delete_module(module);
++	}
+ 	mutex_exit(&ksp->ks_lock);
+ out:
+-	if (rc) {
+-		spin_lock(&kstat_lock);
+-	        list_del_init(&ksp->ks_list);
+-		spin_unlock(&kstat_lock);
+-	}
+-
+-	SEXIT;
++	mutex_exit(&kstat_module_lock);
+ }
+ EXPORT_SYMBOL(__kstat_install);
+ 
+ void
+ __kstat_delete(kstat_t *ksp)
+ {
+-	struct proc_dir_entry *de_module;
++	kstat_module_t *module = ksp->ks_owner;
+ 
+-	spin_lock(&kstat_lock);
+-        list_del_init(&ksp->ks_list);
+-	spin_unlock(&kstat_lock);
++	mutex_enter(&kstat_module_lock);
++	list_del_init(&ksp->ks_list);
++	mutex_exit(&kstat_module_lock);
+ 
+-        if (ksp->ks_proc) {
+-	        de_module = ksp->ks_proc->parent;
+-	        remove_proc_entry(ksp->ks_name, de_module);
++	if (ksp->ks_proc) {
++		remove_proc_entry(ksp->ks_name, module->ksm_proc);
+ 
+-	        /* Remove top level module directory if it's empty */
+-	        if (proc_dir_entries(de_module) == 0)
+-		        remove_proc_entry(de_module->name, de_module->parent);
++		/* Remove top level module directory if it's empty */
++		if (list_empty(&module->ksm_kstat_list))
++			kstat_delete_module(module);
+ 	}
+ 
+ 	if (!(ksp->ks_flags & KSTAT_FLAG_VIRTUAL))
+-                kmem_free(ksp->ks_data, ksp->ks_data_size);
++		kmem_free(ksp->ks_data, ksp->ks_data_size);
+ 
+ 	mutex_destroy(&ksp->ks_lock);
+ 	kmem_free(ksp, sizeof(*ksp));
+@@ -533,8 +570,8 @@ int
+ spl_kstat_init(void)
+ {
+ 	SENTRY;
+-	spin_lock_init(&kstat_lock);
+-	INIT_LIST_HEAD(&kstat_list);
++	mutex_init(&kstat_module_lock, NULL, MUTEX_DEFAULT, NULL);
++	INIT_LIST_HEAD(&kstat_module_list);
+         kstat_id = 0;
+ 	SRETURN(0);
+ }
+@@ -543,7 +580,8 @@ void
+ spl_kstat_fini(void)
+ {
+ 	SENTRY;
+-	ASSERT(list_empty(&kstat_list));
++	ASSERT(list_empty(&kstat_module_list));
++	mutex_destroy(&kstat_module_lock);
+ 	SEXIT;
+ }
+ 
+diff --git a/module/spl/spl-proc.c b/module/spl/spl-proc.c
+index cd4fa1b..b8379d0 100644
+--- a/module/spl/spl-proc.c
++++ b/module/spl/spl-proc.c
+@@ -1120,39 +1120,6 @@ static struct ctl_table spl_root[] = {
+ 	{ 0 }
+ };
+ 
+-static int
+-proc_dir_entry_match(int len, const char *name, struct proc_dir_entry *de)
+-{
+-        if (de->namelen != len)
+-                return 0;
+-
+-        return !memcmp(name, de->name, len);
+-}
+-
+-struct proc_dir_entry *
+-proc_dir_entry_find(struct proc_dir_entry *root, const char *str)
+-{
+-	struct proc_dir_entry *de;
+-
+-	for (de = root->subdir; de; de = de->next)
+-		if (proc_dir_entry_match(strlen(str), str, de))
+-			return de;
+-
+-	return NULL;
+-}
+-
+-int
+-proc_dir_entries(struct proc_dir_entry *root)
+-{
+-	struct proc_dir_entry *de;
+-	int i = 0;
+-
+-	for (de = root->subdir; de; de = de->next)
+-		i++;
+-
+-	return i;
+-}
+-
+ int
+ spl_proc_init(void)
+ {
+@@ -1174,11 +1141,11 @@ spl_proc_init(void)
+         if (proc_spl_kmem == NULL)
+                 SGOTO(out, rc = -EUNATCH);
+ 
+-	proc_spl_kmem_slab = create_proc_entry("slab", 0444, proc_spl_kmem);
++	proc_spl_kmem_slab = proc_create_data("slab", 0444,
++		proc_spl_kmem, &proc_slab_operations, NULL);
+         if (proc_spl_kmem_slab == NULL)
+ 		SGOTO(out, rc = -EUNATCH);
+ 
+-        proc_spl_kmem_slab->proc_fops = &proc_slab_operations;
+ #endif /* DEBUG_KMEM */
+ 
+         proc_spl_kstat = proc_mkdir("kstat", proc_spl);
+diff --git a/module/splat/splat-atomic.c b/module/splat/splat-atomic.c
+index df3b38f..f702196 100644
+--- a/module/splat/splat-atomic.c
++++ b/module/splat/splat-atomic.c
+@@ -26,6 +26,7 @@
+ 
+ #include <sys/atomic.h>
+ #include <sys/thread.h>
++#include <linux/slab.h>
+ #include "splat-internal.h"
+ 
+ #define SPLAT_ATOMIC_NAME		"atomic"
+diff --git a/module/splat/splat-thread.c b/module/splat/splat-thread.c
+index a1e70db..e55acd0 100644
+--- a/module/splat/splat-thread.c
++++ b/module/splat/splat-thread.c
+@@ -26,6 +26,7 @@
+ 
+ #include <sys/thread.h>
+ #include <sys/random.h>
++#include <linux/slab.h>
+ #include "splat-internal.h"
+ 
+ #define SPLAT_THREAD_NAME		"thread"
+diff --git a/module/splat/splat-time.c b/module/splat/splat-time.c
+index ca60c45..cd513c9 100644
+--- a/module/splat/splat-time.c
++++ b/module/splat/splat-time.c
+@@ -25,6 +25,7 @@
+ \*****************************************************************************/
+ 
+ #include <sys/time.h>
++#include <linux/slab.h>
+ #include "splat-internal.h"
+ 
+ #define SPLAT_TIME_NAME			"time"

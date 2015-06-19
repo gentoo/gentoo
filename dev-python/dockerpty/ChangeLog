@@ -1,0 +1,31 @@
+# ChangeLog for dev-python/dockerpty
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/dockerpty/ChangeLog,v 1.6 2015/06/13 16:06:00 alunduil Exp $
+
+  13 Jun 2015; Alex Brandt <alunduil@gentoo.org> -dockerpty-0.2.4.ebuild:
+  remove version 0.2.4
+
+*dockerpty-0.3.4 (13 Jun 2015)
+
+  13 Jun 2015; Alex Brandt <alunduil@gentoo.org> +dockerpty-0.3.4.ebuild:
+  add version 0.3.4
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*dockerpty-0.3.3 (23 May 2015)
+
+  23 May 2015; Alex Brandt <alunduil@gentoo.org> +dockerpty-0.3.3.ebuild,
+  metadata.xml:
+  add version 0.3.3
+
+*dockerpty-0.3.2 (10 Nov 2014)
+
+  10 Nov 2014; Alex Brandt <alunduil@gentoo.org> +dockerpty-0.3.2.ebuild:
+  add version 0.3.2
+
+*dockerpty-0.2.4 (27 Oct 2014)
+
+  27 Oct 2014; Alex Brandt <alunduil@gentoo.org> +dockerpty-0.2.4.ebuild,
+  +metadata.xml:
+  add ebuild written by me

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>java</herd>
+  <use>
+    <flag name="antlr">Enable ANTLR Ant tasks</flag>
+    <flag name="bcel">Enable bcel (bytecode manipulation) Ant tasks</flag>
+    <flag name="commonslogging">Enable commons-logging Ant tasks</flag>
+    <flag name="commonsnet">Enable commons-net Ant tasks</flag>
+    <flag name="jai">Enable JAI (Java Imaging) Ant task</flag>
+    <flag name="javamail">Enable JavaMail Ant task</flag>
+    <flag name="jdepend">Enable Jdepend Ant tasks</flag>
+    <flag name="jmf">Enable JMF (Java Media Framework) Ant tasks</flag>
+    <flag name="jsch">Disable Jsch (ssh, scp and related) Ant tasks</flag>
+    <flag name="log4j">Enable Apache log4j Ant tasks</flag>
+    <flag name="oro">Enable Apache Oro Ant tasks</flag>
+    <flag name="regexp">Enable Apache Regexp Ant tasks</flag>
+    <flag name="resolver">Enable Apache Resolver Ant tasks</flag>
+    <flag name="testutil">Enable optional test util classes</flag>
+  </use>
+</pkgmetadata>

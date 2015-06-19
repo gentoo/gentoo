@@ -1,0 +1,17 @@
+Patch from redhat/fedora which made it into upstream.
+
+--- automake.in	Wed Jul 12 11:40:03 2000
++++ automake.in	Thu Nov  9 07:04:46 2000
+@@ -6882,9 +6882,11 @@
+ 		    $suppress = 1;
+ 
+ 		    # Maybe run libtoolize.
++		    @libtoolize_args = ('--automake');
++		    push @libtoolize_args, '-c'  if $copy_missing;
+ 		    if ($seen_libtool
+ 			&& grep ($_ eq $file, @libtoolize_files)
+-			&& system ('libtoolize', '--automake'))
++			&& system ('libtoolize', @libtoolize_args))
+ 		    {
+ 			$message = "installing \`$errfile'";
+ 			$suppress = 0;

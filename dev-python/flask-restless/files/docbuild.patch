@@ -1,0 +1,57 @@
+A number of these settings are simply unworkable in gentoo
+diff -ur flask-restless-0.11.0.orig/docs/conf.py flask-restless-0.11.0/docs/conf.py
+--- docs/conf.py	2013-05-19 01:50:21.000000000 +0800
++++ docs/conf.py	2013-06-10 23:39:05.741199580 +0800
+@@ -99,7 +99,6 @@
+
+ # The name of the Pygments (syntax highlighting) style to use.
+ #pygments_style = 'sphinx'
+-pygments_style = 'flask_theme_support.FlaskyStyle'
+
+ # A list of ignored prefixes for module index sorting.
+ #modindex_common_prefix = []
+@@ -110,14 +110,11 @@
+ # The theme to use for HTML and HTML Help pages.  See the documentation for
+ # a list of builtin themes.
+ #html_theme = 'default'
+-html_theme = 'flask'
++#html_theme = 'flask'
+ 
+ # Theme options are theme-specific and customize the look and feel of a theme
+ # further.  For a list of options available for each theme, see the
+ # documentation.
+-html_theme_options = {
+-    'index_logo':       'flask-restless.png'
+-}
+ 
+ # Add any paths that contain custom themes here, relative to this directory.
+ html_theme_path = ['_themes']
+@@ -253,25 +250,12 @@
+      [u'Jeffrey Finkelstein'], 1)
+ ]
+ 
+-
+-# Example configuration for intersphinx: refer to the Python standard library.
+-intersphinx_mapping = {'python': ('http://docs.python.org/', None),
+-                       'flask': ('http://flask.pocoo.org/docs', None),
+-                       'sqlalchemy': ('http://sqlalchemy.org/docs', None),
+-                       'flasksqlalchemy':
+-                           ('http://packages.python.org/Flask-SQLAlchemy',
+-                            None)}
+-
+ # fall back if theme is not there
+ try:
+-    __import__('flask_theme_support')
++    from flaskext import themes
++    themes.html_theme = 'flask'
+ except ImportError, e:
+-    print '-' * 74
+-    print 'Warning: Flask themes unavailable.  Building with default theme'
+-    print 'If you want the Flask themes, run this command and build again:'
+-    print
+-    print '  git submodule update --init'
+-    print '-' * 74
++    print 'flask theme unavailable'
+ 
+     pygments_style = 'tango'
+     html_theme = 'default'

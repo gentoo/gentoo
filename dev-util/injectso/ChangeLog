@@ -1,0 +1,45 @@
+# ChangeLog for dev-util/injectso
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/injectso/ChangeLog,v 1.13 2012/11/23 12:48:30 kensington Exp $
+
+  23 Nov 2012; Michael Palimaka <kensington@gentoo.org> -injectso-0.2.ebuild:
+  Remove old.
+
+  22 Nov 2012; Agostino Sarubbo <ago@gentoo.org> injectso-0.2-r1.ebuild:
+  Stable for x86, tested by Vincent Olivert Riera <peratu@carrosses.com>, wrt
+  bug #441314
+
+*injectso-0.2-r1 (01 Sep 2009)
+
+  01 Sep 2009; Jeroen Roovers <jer@gentoo.org> +injectso-0.2-r1.ebuild:
+  Respect CC (bug #244006).
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/injectso-0.2-gcc4.patch:
+  Fix patch with absolute paths.
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/injectso-0.2-gcc4.patch:
+  Fix patch with absolute paths.
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  05 Mar 2007; Marius Mauch <genone@gentoo.org> injectso-0.2.ebuild:
+  Replacing einfo with elog
+
+  17 Dec 2006; Charlie Shepherd <masterdriverz@gentoo.org>
+  +files/injectso-0.2-gcc4.patch, injectso-0.2.ebuild:
+  Add fix for gcc4; bug 152093
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> injectso-0.2.ebuild:
+  virtual/glibc -> virtual/libc
+
+*injectso-0.2 (18 Aug 2002)
+
+  18 Aug 2002; Bruce A. Locke <blocke@shivan.org> injectso-0.2.ebuild:
+
+  Initial Ebuild.

@@ -1,0 +1,20 @@
+# ChangeLog for dev-perl/Net-Subnet
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Subnet/ChangeLog,v 1.3 2014/07/15 09:42:18 chainsaw Exp $
+
+  15 Jul 2014; Tony Vroon <chainsaw@gentoo.org> -files/1.03-pod-spelling.patch,
+  +files/1.30.0-pod-spelling.patch:
+  Properly complete renaming exercise.
+
+*Net-Subnet-1.30.0 (11 Jul 2014)
+
+  11 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> +Net-Subnet-1.30.0.ebuild,
+  -Net-Subnet-1.03.ebuild:
+  Fix wrong version scheme
+
+*Net-Subnet-1.03 (11 Jul 2014)
+
+  11 Jul 2014; Tony Vroon <chainsaw@gentoo.org> +Net-Subnet-1.03.ebuild,
+  +files/1.03-pod-spelling.patch, +metadata.xml:
+  Ebuild request from Moyaze Shivji in the LINX engineering team. Incorporates
+  Debian patch from CPAN bug report 92222 for a spelling mistake.

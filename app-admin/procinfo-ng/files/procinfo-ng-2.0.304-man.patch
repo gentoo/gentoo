@@ -1,0 +1,11 @@
+--- procinfo-ng-2.0.217/procinfo.8.orig	2009-01-11 11:21:23.000000000 +0100
++++ procinfo-ng-2.0.217/procinfo.8	2009-01-11 11:21:48.000000000 +0100
+@@ -6,7 +6,7 @@
+ .SH SYNOPSIS
+ .B procinfo
+ [
+-.IR \-fdDSbrhv
++.IR \-dDSbrhv
+ ] [
+ .IR \-n N
+ ]

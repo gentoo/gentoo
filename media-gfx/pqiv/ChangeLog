@@ -1,0 +1,185 @@
+# ChangeLog for media-gfx/pqiv
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/pqiv/ChangeLog,v 1.45 2014/12/11 03:41:59 radhermit Exp $
+
+  11 Dec 2014; Tim Harder <radhermit@gentoo.org> -pqiv-2.0.ebuild,
+  -pqiv-2.1.ebuild, -pqiv-2.1.1.ebuild, -files/pqiv-2.0-ldflags.patch:
+  Remove old.
+
+  11 Dec 2014; Tim Harder <radhermit@gentoo.org> pqiv-2.2.ebuild:
+  Stabilize for amd64 and x86.
+
+*pqiv-2.2 (20 Jun 2014)
+
+  20 Jun 2014; Tim Harder <radhermit@gentoo.org> +pqiv-2.2.ebuild:
+  Version bump.
+
+*pqiv-2.1.1 (04 Feb 2014)
+
+  04 Feb 2014; Tim Harder <radhermit@gentoo.org> +pqiv-2.1.1.ebuild:
+  Version bump.
+
+  29 Dec 2013; Tim Harder <radhermit@gentoo.org> -pqiv-0.11.ebuild,
+  -pqiv-0.12.ebuild, -pqiv-1.0.ebuild, -files/pqiv-0.11-glib-2.31.patch:
+  Remove old.
+
+*pqiv-2.1 (29 Dec 2013)
+
+  29 Dec 2013; Tim Harder <radhermit@gentoo.org> +pqiv-2.1.ebuild:
+  Version bump.
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pqiv-2.0.ebuild:
+  Stable for x86, wrt bug #493512
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> pqiv-2.0.ebuild:
+  amd64 stable, bug #493512
+
+*pqiv-2.0 (08 Sep 2013)
+
+  08 Sep 2013; Tim Harder <radhermit@gentoo.org> +pqiv-2.0.ebuild,
+  +files/pqiv-2.0-ldflags.patch:
+  Version bump.
+
+*pqiv-1.0 (27 Aug 2013)
+
+  27 Aug 2013; Tim Harder <radhermit@gentoo.org> +pqiv-1.0.ebuild:
+  Version bump.
+
+  20 Jun 2012; Jeff Horelick <jdhore@gentoo.org> pqiv-0.12.ebuild:
+  marked x86 per bug 422101
+
+  19 Jun 2012; Agostino Sarubbo <ago@gentoo.org> pqiv-0.12.ebuild:
+  Stable for amd64, wrt bug #422101
+
+*pqiv-0.12 (19 May 2012)
+
+  19 May 2012; Samuli Suominen <ssuominen@gentoo.org> +pqiv-0.12.ebuild:
+  Version bump wrt #416487 by Phillip Berndt
+
+  14 May 2012; Samuli Suominen <ssuominen@gentoo.org> -pqiv-0.10.1.ebuild:
+  old
+
+  13 May 2012; Jeff Horelick <jdhore@gentoo.org> pqiv-0.11.ebuild:
+  marked x86 per bug 415335
+
+  11 May 2012; Agostino Sarubbo <ago@gentoo.org> pqiv-0.11.ebuild:
+  Stable for amd64, wrt bug #415335
+
+  10 May 2012; Samuli Suominen <ssuominen@gentoo.org> pqiv-0.11.ebuild,
+  +files/pqiv-0.11-glib-2.31.patch:
+  Fix building with dev-libs/glib >= 2.31 wrt #415325 by Paul Hartman
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> pqiv-0.10.1.ebuild,
+  pqiv-0.11.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*pqiv-0.11 (22 Jun 2010)
+
+  22 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> +pqiv-0.11.ebuild:
+  Version bump wrt #324913 by Phillip Berndt.
+
+  05 Jan 2010; Markus Meier <maekke@gentoo.org> -pqiv-0.8.ebuild:
+  old
+
+  05 Jan 2010; Markus Meier <maekke@gentoo.org> pqiv-0.10.1.ebuild:
+  x86 stable, bug #298091
+
+  25 Dec 2009; <hwoarang@gentoo.org> pqiv-0.10.1.ebuild:
+  Stable for amd64 wrt bug #298091
+
+*pqiv-0.10.1 (16 Oct 2009)
+
+  16 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> +pqiv-0.10.1.ebuild:
+  Version bump.
+
+*pqiv-0.10 (09 Oct 2009)
+
+  09 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> +pqiv-0.10.ebuild:
+  Version bump.
+
+*pqiv-0.9 (06 May 2009)
+
+  06 May 2009; Samuli Suominen <ssuominen@gentoo.org> +pqiv-0.9.ebuild:
+  Version bump.
+
+  22 Mar 2009; Markus Meier <maekke@gentoo.org>
+  -files/pqiv-0.7.1-as-needed.patch, -pqiv-0.7.1.ebuild:
+  old
+
+  22 Mar 2009; Markus Meier <maekke@gentoo.org> pqiv-0.8.ebuild:
+  amd64 stable, bug #263145
+
+  21 Mar 2009; Raúl Porcel <armin76@gentoo.org> pqiv-0.8.ebuild:
+  x86 stable, bug #263145
+
+*pqiv-0.8 (07 Dec 2008)
+
+  07 Dec 2008; Samuli Suominen <ssuominen@gentoo.org> +pqiv-0.8.ebuild:
+  Version bump wrt #250205, thanks to Phillip Berndt for applying our
+  asneeded patch.
+
+  30 Nov 2008; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Add Phillip Berndt, upstream and Gentoo user to metadata.xml.
+
+  30 Nov 2008; Markus Meier <maekke@gentoo.org>
+  +files/pqiv-0.7.1-as-needed.patch, pqiv-0.7.1.ebuild:
+  fix building with forced as-needed, bug #247735
+
+  12 Jun 2008; Raúl Porcel <armin76@gentoo.org> pqiv-0.7.1.ebuild:
+  x86 stable
+
+  12 Jun 2008; Samuli Suominen <ssuominen@gentoo.org> pqiv-0.7.1.ebuild:
+  amd64 stable
+
+*pqiv-0.7.1 (24 May 2008)
+
+  24 May 2008; Samuli Suominen <ssuominen@gentoo.org> -pqiv-0.7.ebuild,
+  +pqiv-0.7.1.ebuild:
+  Version bump to close bug 222423. Thanks to Phillip Berndt and Rafał
+  Mużyło.
+
+*pqiv-0.7 (09 Mar 2008)
+
+  09 Mar 2008; Samuli Suominen <ssuominen@gentoo.org> -pqiv-0.5.ebuild,
+  -pqiv-0.6.1.ebuild, +pqiv-0.7.ebuild:
+  Version bump.
+
+*pqiv-0.6.1 (25 Oct 2007)
+
+  25 Oct 2007; Samuli Suominen <ssuominen@gentoo.org> +pqiv-0.6.1.ebuild:
+  Version bump for bug 197021.
+
+*pqiv-0.5 (15 Sep 2007)
+
+  15 Sep 2007; Samuli Suominen <ssuominen@gentoo.org> +pqiv-0.5.ebuild:
+  Version bump.
+
+*pqiv-0.4 (05 Aug 2007)
+
+  05 Aug 2007; Samuli Suominen <ssuominen@gentoo.org>
+  +files/pqiv-0.4-Makefile.patch, +pqiv-0.4.ebuild:
+  Version bump.
+
+*pqiv-0.4_rc1 (27 Jul 2007)
+
+  27 Jul 2007; Samuli Suominen <ssuominen@gentoo.org>
+  +files/pqiv-0.4_rc1-Makefile.patch, +pqiv-0.4_rc1.ebuild:
+  Version bump, and patch to respect DESTDIR and to prevent prestripping of
+  qiv binary. Thanks to Phillip Berndt for original ebuild and software.
+
+*pqiv-0.2 (19 Jun 2007)
+
+  19 Jun 2007; Samuli Suominen <ssuominen@gentoo.org> -pqiv-0.1.ebuild,
+  +pqiv-0.2.ebuild:
+  Version bump.
+
+  01 Jun 2007; Christoph Mende <angelos@gentoo.org> pqiv-0.1.ebuild:
+  Added ~amd64
+
+  27 May 2007; Samuli Suominen <ssuominen@gentoo.org> pqiv-0.1.ebuild:
+  Fix HOMEPAGE and install README.
+
+*pqiv-0.1 (27 May 2007)
+
+  27 May 2007; Samuli Suominen <ssuominen@gentoo.org> +pqiv-0.1.ebuild:
+  Initial commit for bug 166009. Ebuild and program itself by Phillip Berndt.

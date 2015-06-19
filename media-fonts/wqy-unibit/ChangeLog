@@ -1,0 +1,15 @@
+# ChangeLog for media-fonts/wqy-unibit
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/wqy-unibit/ChangeLog,v 1.3 2013/02/05 00:56:03 heroxbd Exp $
+
+  05 Feb 2013; Benda Xu <heroxbd@gentoo.org> wqy-unibit-1.1.0_p1.ebuild:
+  keyword ~arm
+
+  11 Sep 2009; Markus Meier <maekke@gentoo.org> wqy-unibit-1.1.0_p1.ebuild:
+  amd64/x86 stable, bug #284010
+
+*wqy-unibit-1.1.0_p1 (01 Jan 2009)
+
+  01 Jan 2009; MATSUU Takuto <matsuu@gentoo.org> +metadata.xml,
+  +wqy-unibit-1.1.0_p1.ebuild:
+  Initial import. Ebuild is submitted by Lei Qing, bug #200155.

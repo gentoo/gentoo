@@ -1,0 +1,11 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/uclibc/ppc/package.use.mask,v 1.4 2014/03/31 22:05:28 tomwij Exp $
+
+# Joseph Jezak <josejx@gentoo.org> (28 Jun 2007)
+# Masked Parallel LCD devices for bug #180683
+app-misc/lcd4linux lcd_devices_hd44780
+
+# Petteri Räty <betelgeuse@gentoo.org> (22 Oct 2006)
+# Not all of them support the nsplugin use flag. Resolves bug #147908.
+=dev-java/ibm-jdk-bin-1.5* -nsplugin

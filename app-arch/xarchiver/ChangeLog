@@ -1,0 +1,21 @@
+# ChangeLog for app-arch/xarchiver
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/xarchiver/ChangeLog,v 1.45 2015/06/09 08:59:20 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  21 Apr 2015; Denis Dupeyron <calchan@gentoo.org> -xarchiver-0.5.3.ebuild,
+  -xarchiver-0.5.3-r1.ebuild, -files/xarchiver-0.5.3-fix-double-escaping.patch,
+  -files/xarchiver-0.5.3-rar5-whitespace.patch:
+  Cleanup.
+
+*xarchiver-0.5.4 (21 Apr 2015)
+
+  21 Apr 2015; Denis Dupeyron <calchan@gentoo.org> +xarchiver-0.5.4.ebuild:
+  Version bump, bug #524688.
+
+*xarchiver-0.5.3 (11 May 2014)
+
+  11 May 2014; Samuli Suominen <ssuominen@gentoo.org> +xarchiver-0.5.3.ebuild:
+  Restore from CVS Attic because 0.5.3 now has .xz and rar5 support wrt #483588

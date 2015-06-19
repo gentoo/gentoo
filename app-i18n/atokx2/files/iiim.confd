@@ -1,0 +1,8 @@
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/atokx2/files/iiim.confd,v 1.1 2005/02/10 11:54:47 usata Exp $
+
+# Config file for /etc/init.d/iiim
+
+# If you want to use Shift + Space to enable/disable ATOK, uncomment
+#JUSTSYSTEM_TRIGGER_SHIFT_SPACE=t

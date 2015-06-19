@@ -1,0 +1,24 @@
+#! /sbin/runscript
+
+depend() {
+        need net
+}
+
+start() {
+        ebegin "Starting monitorix"
+        start-stop-daemon --start --exec /usr/sbin/monitorix --pidfile /var/run/monitorix.pid -- -c /etc/monitorix/monitorix.conf -p /var/run/monitorix.pid
+        local i=0
+        local timeout=5
+        while [ ! -f /var/run/monitorix.pid ] && [ $i -le $timeout ]; do
+                sleep 1
+                i=$(($i + 1))
+        done
+        [ $timeout -gt $i ]
+        eend $?
+}
+
+stop() {
+        ebegin "Stopping monitorix"
+        start-stop-daemon --stop --signal QUIT --stop --exec /usr/sbin/monitorix --pidfile /var/run/monitorix.pid
+        eend $?
+}

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=X? ( x11-libs/libX11 ) !ncurses? ( !X? ( !sdl? ( sys-libs/ncurses ) ) ) ncurses? ( sys-libs/ncurses ) sdl? ( media-libs/libsdl[video,X] media-libs/sdl-ttf media-libs/sdl-image sound? ( media-libs/sdl-mixer media-libs/libsdl[sound] ) ) virtual/pkgconfig
+DESCRIPTION=A roguelike dungeon exploration game based on the books of J.R.R. Tolkien
+EAPI=5
+HOMEPAGE=http://rephial.org/
+IUSE=ncurses sdl +sound X
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=X? ( x11-libs/libX11 ) !ncurses? ( !X? ( !sdl? ( sys-libs/ncurses ) ) ) ncurses? ( sys-libs/ncurses ) sdl? ( media-libs/libsdl[video,X] media-libs/sdl-ttf media-libs/sdl-image sound? ( media-libs/sdl-mixer media-libs/libsdl[sound] ) ) games-misc/games-envd
+SLOT=0
+SRC_URI=http://rephial.org/downloads/3.4/angband-v3.4.1.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=5b9c3c3e73f8f805bdc3135946a5df8a

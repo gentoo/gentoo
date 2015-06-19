@@ -1,0 +1,61 @@
+# ChangeLog for media-libs/libxtract
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libxtract/ChangeLog,v 1.16 2015/05/06 10:01:51 mrueg Exp $
+
+  06 May 2015; Manuel Rüger <mrueg@gentoo.org> -libxtract-0.4.7.ebuild,
+  -libxtract-0.6.3.ebuild:
+  Remove old.
+
+  19 Sep 2014; Agostino Sarubbo <ago@gentoo.org> libxtract-0.6.6.ebuild:
+  Stable for ppc64, wrt bug #470516
+
+  07 Mar 2014; Pacho Ramos <pacho@gentoo.org> libxtract-0.6.6.ebuild:
+  amd64 stable, bug 470516
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> libxtract-0.6.6.ebuild:
+  x86 stable wrt bug #470516
+
+*libxtract-0.6.6 (04 Apr 2013)
+
+  04 Apr 2013; Alexis Ballier <aballier@gentoo.org> +libxtract-0.6.6.ebuild:
+  version bump
+
+  04 Apr 2013; Alexis Ballier <aballier@gentoo.org> libxtract-0.6.3.ebuild:
+  convert to eapi5
+
+  04 Apr 2013; Alexis Ballier <aballier@gentoo.org> libxtract-0.4.7.ebuild,
+  libxtract-0.6.3.ebuild:
+  update homepage
+
+  04 Apr 2013; Alexis Ballier <aballier@gentoo.org> libxtract-0.6.3.ebuild:
+  add static-libs useflag, drop .la file, bug #397669
+
+  04 Apr 2013; Alexis Ballier <aballier@gentoo.org> libxtract-0.6.3.ebuild:
+  drop debug useflag: it only appends cflags, bug #397667 by Agostino Sarubbo
+
+*libxtract-0.6.3 (26 Dec 2010)
+
+  26 Dec 2010; Alexis Ballier <aballier@gentoo.org> +libxtract-0.6.3.ebuild:
+  version bump
+
+  11 Feb 2008; Olivier Crête <tester@gentoo.org> libxtract-0.4.7.ebuild:
+  Stable on amd64, bug #199751
+
+  29 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  libxtract-0.4.7.ebuild:
+  stable x86, security bug 199751
+
+  29 Jan 2008; Markus Rothe <corsair@gentoo.org> libxtract-0.4.7.ebuild:
+  Stable on ppc64; bug #199751
+
+  25 Nov 2007; Brent Baude <ranger@gentoo.org> libxtract-0.4.7.ebuild:
+  Marking ~ppc for dep on bug 199390
+
+  20 Nov 2007; Markus Rothe <corsair@gentoo.org> libxtract-0.4.7.ebuild:
+  Added ~ppc64; bug #199390
+
+*libxtract-0.4.7 (18 Nov 2007)
+
+  18 Nov 2007; Alexis Ballier <aballier@gentoo.org> +metadata.xml,
+  +libxtract-0.4.7.ebuild:
+  initial import

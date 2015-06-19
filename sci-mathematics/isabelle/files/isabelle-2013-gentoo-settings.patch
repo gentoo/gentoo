@@ -1,0 +1,19 @@
+--- Isabelle2013-orig/etc/settings	2013-02-13 00:31:02.000000000 +1100
++++ Isabelle2013/etc/settings	2013-08-17 14:47:46.045988000 +1000
+@@ -176,3 +176,16 @@
+ #ISABELLE_GHC="/usr/bin/ghc"
+ #ISABELLE_OCAML="/usr/bin/ocaml"
+ #ISABELLE_SWIPL="/usr/bin/swipl"
++
++# Poly/ML Gentoo (x86_64)
++ML_PLATFORM=x86_64-linux
++ML_HOME="/usr/bin"
++ML_SYSTEM=polyml-5.5.0
++ML_OPTIONS="-H 1000"
++ML_SOURCES="/usr/src/debug/dev-lang/polyml-5.5.0"
++
++# Proof General home
++PROOFGENERAL_HOME="/usr/share/emacs/site-lisp/ProofGeneral"
++PROOFGENERAL_OPTIONS=""
++#PROOFGENERAL_OPTIONS="-m no_brackets -m no_type_brackets"
++

@@ -1,0 +1,18 @@
+# configuraton file for /etc/init.d/ziproxy
+#
+# you can symlink /etc/init.d/ziproxy to a different name
+# and then copy this config to a new file with the same name
+# as the symlinked init-script to run multiple instances of
+# ziproxy. You have to change the location for CONFIG then
+# of course... ;-)
+
+# Full path to ziproxy.conf file (instead of default one).
+#
+#CONFIG="/etc/ziproxy/ziproxy.conf"
+
+# Limit incoming connections only from the specified address(es).
+# This option has the same meaning, but higher precedence as
+# "OnlyFrom=" option in configuration file. Uncomment it
+# if you want to set it.
+#
+#ONLYFROM="<IP.address or hostname>"

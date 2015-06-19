@@ -1,0 +1,24 @@
+# ChangeLog for virtual/package-manager
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/package-manager/ChangeLog,v 1.6 2014/03/26 08:58:21 ulm Exp $
+
+  26 Mar 2014; Ulrich Müller <ulm@gentoo.org> package-manager-0.ebuild:
+  Update to EAPI 5. Remove empty variable assignments.
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> package-manager-0.ebuild:
+  Add arm64 love.
+
+  17 Feb 2013; Zac Medico <zmedico@gentoo.org> package-manager-0.ebuild:
+  Add ~arm-linux keyword.
+
+  27 Apr 2012; Alexis Ballier <aballier@gentoo.org> package-manager-0.ebuild:
+  keyword ~amd64-fbsd
+
+  25 Sep 2011; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Remove myself as maintainer.
+
+*package-manager-0 (09 Apr 2011)
+
+  09 Apr 2011; Ulrich Mueller <ulm@gentoo.org> +package-manager-0.ebuild,
+  +metadata.xml:
+  Initial import, bug 358847.

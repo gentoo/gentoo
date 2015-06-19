@@ -1,0 +1,157 @@
+# ChangeLog for app-arch/lrzip
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/lrzip/ChangeLog,v 1.40 2015/05/29 05:24:58 jmorgan Exp $
+
+  29 May 2015; Jack Morgan <jmorgan@gentoo.org> lrzip-0.621.ebuild:
+  sparc stable wrt bug #473794
+
+*lrzip-0.621 (25 Mar 2015)
+
+  25 Mar 2015; Ben de Groot <yngwin@gentoo.org> +lrzip-0.621.ebuild,
+  -lrzip-0.44.ebuild, -lrzip-0.611.ebuild, metadata.xml:
+  Version bump. Metadata formatting. Clean old.
+
+  10 Aug 2014; Patrick Lauer <patrick@gentoo.org> lrzip-0.611.ebuild:
+  Fix description for more repoman happy
+
+  21 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org> lrzip-0.611.ebuild,
+  lrzip-0.614.ebuild, lrzip-0.616.ebuild:
+  PodParser becomes Pod-Parser
+
+  11 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> lrzip-0.614.ebuild:
+  ppc stable wrt bug #458184
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> lrzip-0.614.ebuild:
+  x86 stable wrt bug #458184
+
+  26 Jan 2014; Akinori Hattori <hattya@gentoo.org> lrzip-0.616.ebuild:
+  keyword ~ia64 wrt bug #468854
+
+  08 Jan 2014; Anthony G. Basile <blueness@gentoo.org>
+  +files/lrzip-missing-stdarg_h.patch, lrzip-0.614.ebuild, lrzip-0.616.ebuild:
+  Add missing stdarg.h header, bug #492976
+
+  03 Jan 2014; Matt Turner <mattst88@gentoo.org> lrzip-0.616.ebuild:
+  Added ~alpha, bug 468854.
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> lrzip-0.614.ebuild:
+  Stable for ppc64, wrt bug #458184
+
+  21 Nov 2013; Sergey Popov <pinkbyte@gentoo.org> lrzip-0.614.ebuild:
+  Stable on arm, wrt bug #458184
+
+  01 Nov 2013; Agostino Sarubbo <ago@gentoo.org> lrzip-0.614.ebuild:
+  Stable for amd64, wrt bug #458184
+
+  26 Oct 2013; Jeroen Roovers <jer@gentoo.org> lrzip-0.614.ebuild:
+  Stable for HPPA (bug #458184).
+
+*lrzip-0.616 (26 Oct 2013)
+
+  26 Oct 2013; Ben de Groot <yngwin@gentoo.org> +lrzip-0.616.ebuild:
+  version bump
+
+  17 Aug 2013; Matt Turner <mattst88@gentoo.org> lrzip-0.614.ebuild:
+  Added ~mips, bug 468854.
+
+  19 May 2013; Alexis Ballier <aballier@gentoo.org> lrzip-0.614.ebuild:
+  keyword ~amd64-fbsd, bug #468854
+
+  11 May 2013; Markus Meier <maekke@gentoo.org> lrzip-0.614.ebuild:
+  add ~arm, bug #468854
+
+  07 May 2013; Naohiro Aota <naota@gentoo.org> lrzip-0.614.ebuild:
+  Add ~x86-fbsd wrt #468854
+
+  17 Dec 2012; Agostino Sarubbo <ago@gentoo.org> lrzip-0.614.ebuild:
+  Add ~ppc64, wrt bug #442188
+
+  10 Nov 2012; Jeroen Roovers <jer@gentoo.org> lrzip-0.614.ebuild:
+  Marked ~hppa (bug #442188).
+
+  31 Jul 2012; Ben de Groot <yngwin@gentoo.org> lrzip-0.614.ebuild:
+  Remove redundant DOCS="", bug #428700
+
+*lrzip-0.614 (25 Jul 2012)
+
+  25 Jul 2012; Ben de Groot <yngwin@gentoo.org> +lrzip-0.614.ebuild,
+  metadata.xml:
+  Take over maintainership since spatz is being retired. Version bump (bug
+  #426404). Install docs in proper place.
+
+*lrzip-0.611 (16 Mar 2012)
+
+  16 Mar 2012; Joshua Kinard <kumba@gentoo.org> -lrzip-0.606.ebuild,
+  +lrzip-0.611.ebuild:
+  Add 0.611 and remove 0.606. Closes #383345.
+
+*lrzip-0.606 (17 May 2011)
+
+  17 May 2011; Dror Levin <spatz@gentoo.org> -lrzip-0.45.ebuild,
+  -lrzip-0.46.ebuild, +lrzip-0.606.ebuild:
+  Version bump, bug 360423. Bump to EAPI 4.
+
+*lrzip-0.46 (02 Jun 2010)
+
+  02 Jun 2010; Dror Levin <spatz@gentoo.org> -lrzip-0.23.ebuild,
+  +lrzip-0.46.ebuild:
+  Version bump, drop old.
+
+  26 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> lrzip-0.44.ebuild:
+  x86 stable wrt bug #314853
+
+  22 Apr 2010; Dror Levin <spatz@gentoo.org> lrzip-0.45.ebuild:
+  Add dep on virtual/perl-PodParser, bug 316645, thanks to j.habenicht.
+
+*lrzip-0.45 (20 Apr 2010)
+
+  20 Apr 2010; Dror Levin <spatz@gentoo.org> -lrzip-0.43.ebuild,
+  +lrzip-0.45.ebuild:
+  Version bump, bug 316359. Remove old.
+
+  16 Apr 2010; Brent Baude <ranger@gentoo.org> lrzip-0.44.ebuild:
+  stable ppc, bug 314853
+
+  13 Apr 2010; Markos Chandras <hwoarang@gentoo.org> lrzip-0.44.ebuild:
+  Stable on amd64 wrt bug #314853
+
+*lrzip-0.44 (14 Mar 2010)
+
+  14 Mar 2010; Dror Levin <spatz@gentoo.org> +lrzip-0.44.ebuild:
+  Version bump, bug 302913.
+
+*lrzip-0.43 (07 Jan 2010)
+
+  07 Jan 2010; Patrick Lauer <patrick@gentoo.org> +lrzip-0.43.ebuild:
+  Bump for #220829
+
+  27 Sep 2009; Markus Meier <maekke@gentoo.org> lrzip-0.23.ebuild:
+  amd64/x86 stable, bug #286337
+
+  15 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org> lrzip-0.23.ebuild:
+  Invert dependencies.
+
+  15 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org> lrzip-0.23.ebuild:
+  Add nasm dependency on x86; quote ${D}.
+
+*lrzip-0.23 (08 May 2008)
+
+  08 May 2008; Luca Barbato <lu_zero@gentoo.org> +lrzip-0.23.ebuild:
+  New version
+
+*lrzip-0.19 (29 Dec 2007)
+
+  29 Dec 2007; Luca Barbato <lu_zero@gentoo.org> +lrzip-0.19.ebuild:
+  Version Bump
+
+  11 May 2007; Luca Barbato <lu_zero@gentoo.org> lrzip-0.18.ebuild:
+  Marked ~amd64 and ~sparc according to yngwin report
+
+  02 May 2007; Samuli Suominen <drac@gentoo.org> lrzip-0.18.ebuild:
+  Keyword ~x86.
+
+*lrzip-0.18 (15 Apr 2007)
+
+  15 Apr 2007; Luca Barbato <lu_zero@gentoo.org> +metadata.xml,
+  +lrzip-0.18.ebuild:
+  first commit

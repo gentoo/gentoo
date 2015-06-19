@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare unpack
+DEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DESCRIPTION=Type1 cyrillic fonts collection
+EAPI=4
+HOMEPAGE=ftp://scon155.phys.msu.su/pub/russian/psfonts/
+KEYWORDS=~amd64 ~x86
+LICENSE=LPPL-1.2
+RDEPEND=virtual/latex-base
+SLOT=0
+SRC_URI=ftp://scon155.phys.msu.su/pub/russian/psfonts/0.4d-beta/PSCyr-0.4-beta9-tex.tar.gz ftp://scon155.phys.msu.su/pub/russian/psfonts/0.4d-beta/PSCyr-0.4-beta9-type1.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	latex-package	d023314500e725be8c78a868e4771dbb	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=81b93bba14c84212c736471dcf3c48d9

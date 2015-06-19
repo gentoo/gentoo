@@ -1,0 +1,63 @@
+# ChangeLog for app-vim/eselect-syntax
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/eselect-syntax/ChangeLog,v 1.15 2013/10/21 11:53:57 grobian Exp $
+
+  21 Oct 2013; Fabian Groffen <grobian@gentoo.org>
+  eselect-syntax-20070506.ebuild:
+  Marked ~x64-macos, bug #486818
+
+  07 Jul 2013; Alexis Ballier <aballier@gentoo.org>
+  eselect-syntax-20070506.ebuild:
+  keyword ~amd64-fbsd, bug #475964
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org>
+  eselect-syntax-20070506.ebuild:
+  Drop to ~mips
+
+  17 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  eselect-syntax-20070506.ebuild:
+  silence repoman warnings
+
+  17 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  eselect-syntax-20070506.ebuild:
+  QA: add prefix keywords
+
+  05 Aug 2007; nixnut <nixnut@gentoo.org> eselect-syntax-20070506.ebuild:
+  Stable on ppc wrt bug 185691
+
+  01 Aug 2007; Joshua Kinard <kumba@gentoo.org>
+  eselect-syntax-20070506.ebuild:
+  Stable on mips.
+
+  01 Aug 2007; <metalgod@gentoo.org> eselect-syntax-20070506.ebuild:
+  Stable on amd64. See bug #185691.
+
+  30 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  eselect-syntax-20070506.ebuild:
+  alpha/ia64 stable wrt #185691
+
+  30 Jul 2007; Jeroen Roovers <jer@gentoo.org>
+  eselect-syntax-20070506.ebuild:
+  Stable for HPPA (bug #185691).
+
+  30 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  eselect-syntax-20070506.ebuild:
+  Stable on sparc
+
+  30 Jul 2007; Markus Rothe <corsair@gentoo.org>
+  eselect-syntax-20070506.ebuild:
+  Stable on ppc64; bug #185691
+
+  30 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  eselect-syntax-20070506.ebuild:
+  stable x86, bug 185691
+
+  07 May 2007; Mike Kelly <pioto@gentoo.org> eselect-syntax-20070506.ebuild:
+  Make sure we block older version of gentoo-syntax that we collide with.
+  Fixes Bug #177404.
+
+*eselect-syntax-20070506 (06 May 2007)
+
+  06 May 2007; Mike Kelly <pioto@gentoo.org> +metadata.xml,
+  +eselect-syntax-20070506.ebuild:
+  Initial release. Was split off from gentoo-syntax.

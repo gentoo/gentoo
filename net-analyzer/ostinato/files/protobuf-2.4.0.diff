@@ -1,0 +1,11 @@
+--- common/protocol.proto	2010-11-08 11:47:19.000000000 -0500
++++ common/protocol.proto.new	2011-04-18 13:54:03.725337006 -0400
+@@ -19,6 +19,8 @@
+ 
+ package OstProto;
+ 
++option cc_generic_services = true;
++
+ message StreamId {
+     required uint32 id = 1;
+ }

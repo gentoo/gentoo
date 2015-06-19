@@ -1,0 +1,14 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/net-snmp/files/snmptrapd.init.2,v 1.2 2012/10/22 02:57:05 flameeyes Exp $
+
+SNMPTRAPD_PIDFILE="${SNMPTRAPD_PIDFILE:-/var/run/snmptrapd.pid}"
+
+command="/usr/sbin/snmptrapd"
+command_args="-p ${SNMPTRAPD_PIDFILE} ${SNMPTRAPD_FLAGS}"
+pidfile="${SNMPTRAPD_PIDFILE}"
+
+depend() {
+	use logger
+}

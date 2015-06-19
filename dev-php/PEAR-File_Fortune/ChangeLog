@@ -1,0 +1,55 @@
+# ChangeLog for dev-php/PEAR-File_Fortune
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-File_Fortune/ChangeLog,v 1.12 2015/04/14 17:53:35 grknight Exp $
+
+  14 Apr 2015; Brian Evans <grknight@gentoo.org> PEAR-File_Fortune-1.0.0.ebuild:
+  Fix repoman warning
+
+  14 Jan 2015; Brian Evans <grknight@gentoo.org> PEAR-File_Fortune-1.0.0.ebuild:
+  EAPI bump
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-File_Fortune-1.0.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  05 Dec 2007; Markus Ullmann <jokey@gentoo.org>
+  PEAR-File_Fortune-1.0.0.ebuild:
+  LICENSE fix from project overlay
+
+  02 Dec 2007; Jakub Moc <jakub@gentoo.org>
+  PEAR-File_Fortune-1.0.0.ebuild:
+  Fix LICENSE
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org>
+  -PEAR-File_Fortune-0.9.0.ebuild:
+  Cleanup
+
+*PEAR-File_Fortune-1.0.0 (17 Aug 2007)
+
+  17 Aug 2007; Christian Hoffmann <hoffie@gentoo.org>
+  +PEAR-File_Fortune-1.0.0.ebuild:
+  version bump wrt bug 158633, thanks to Jakub Moc
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  25 Nov 2006; Bryan Østergaard <kloeri@gentoo.org>
+  PEAR-File_Fortune-0.9.0.ebuild:
+  Add ~alpha + ~ia64 keywords, bug 134270.
+
+  27 May 2006; Luca Longinotti <chtekk@gentoo.org>
+  PEAR-File_Fortune-0.9.0.ebuild:
+  Added to ~amd64. See bug #134270.
+
+  25 May 2006; Michael Hanselmann <hansmi@gentoo.org>
+  PEAR-File_Fortune-0.9.0.ebuild:
+  Added to ~hppa, ~ppc64, ~sparc. See bug #134270.
+
+  25 May 2006; <nixnut@gentoo.org> PEAR-File_Fortune-0.9.0.ebuild:
+  Added ~ppc. bug #134270
+
+*PEAR-File_Fortune-0.9.0 (11 Mar 2006)
+
+  11 Mar 2006; Sebastian Bergmann <sebastian@gentoo.org> +metadata.xml,
+  +PEAR-File_Fortune-0.9.0.ebuild:
+  Initial ebuild.

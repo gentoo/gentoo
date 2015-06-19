@@ -1,0 +1,1105 @@
+# ChangeLog for app-emulation/vmware-workstation
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/vmware-workstation/ChangeLog,v 1.262 2015/06/07 07:55:11 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*vmware-workstation-10.0.3.1895310 (16 Oct 2014)
+
+  16 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +vmware-workstation-10.0.3.1895310.ebuild:
+  Version bump, bug 516044
+
+  26 Apr 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -files/vmware-server-8.0.rc:
+  Clean up
+
+  26 Apr 2014; Andreas K. Huettel <dilfridge@gentoo.org> files/vmware-9.0.rc,
+  files/vmware-10.0.rc:
+  Update init script to try to use kernel vmw_vmci module if vmci is
+  unavailable
+
+*vmware-workstation-10.0.2.1744117 (19 Apr 2014)
+
+  19 Apr 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -vmware-workstation-10.0.0.1295980.ebuild,
+  -vmware-workstation-10.0.1.1379776.ebuild,
+  +vmware-workstation-10.0.2.1744117.ebuild:
+  Version bump; remove old
+
+*vmware-workstation-9.0.3.1410761 (12 Apr 2014)
+
+  12 Apr 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -vmware-workstation-9.0.2.1031769-r1.ebuild,
+  +vmware-workstation-9.0.3.1410761.ebuild:
+  Version bump, bug 497816; remove old
+
+  12 Apr 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -vmware-workstation-8.0.5.893925.ebuild, -files/vmware-8.0.rc:
+  Drop old
+
+  01 Mar 2014; Michał Górny <mgorny@gentoo.org>
+  vmware-workstation-10.0.1.1379776-r1.ebuild:
+  Update libgcrypt dep to use slot :0.
+
+*vmware-workstation-10.0.1.1379776-r1 (07 Jan 2014)
+
+  07 Jan 2014; Jason A. Donenfeld <zx2c4@gentoo.org>
+  +vmware-workstation-10.0.1.1379776-r1.ebuild:
+  Add missing deps that depclean purges that @preserved-rebuild then gets.
+
+  31 Dec 2013; Tom Wijsman <TomWij@gentoo.org> -files/vmware-player.desktop,
+  -files/vmware-workstation.desktop:
+  [QA] Remove unused files.
+
+  02 Dec 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  vmware-workstation-10.0.0.1295980.ebuild,
+  vmware-workstation-10.0.1.1379776.ebuild,
+  vmware-workstation-8.0.5.893925.ebuild,
+  vmware-workstation-9.0.2.1031769-r1.ebuild:
+  Undo previous change. Brings its own libraries and that confuses portage, bug
+  493018
+
+  02 Dec 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  vmware-workstation-8.0.5.893925.ebuild,
+  vmware-workstation-9.0.2.1031769-r1.ebuild,
+  vmware-workstation-10.0.0.1295980.ebuild,
+  vmware-workstation-10.0.1.1379776.ebuild:
+  Add missing dependency on (old) gnome-keyring, found when it was updated to
+  gnome-keyring-3.8
+
+*vmware-workstation-10.0.1.1379776 (06 Nov 2013)
+
+  06 Nov 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +vmware-workstation-10.0.1.1379776.ebuild:
+  Version bump
+
+  02 Nov 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  vmware-workstation-10.0.0.1295980.ebuild:
+  Re-add keywords after testing
+
+  22 Oct 2013; Andreas K. Huettel <dilfridge@gentoo.org> -files/vmware-7.0.rc,
+  -vmware-workstation-7.1.6.744570.ebuild,
+  -vmware-workstation-9.0.2.1031769.ebuild:
+  Drop old
+
+*vmware-workstation-10.0.0.1295980 (19 Oct 2013)
+
+  19 Oct 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +vmware-workstation-10.0.0.1295980.ebuild, +files/vmware-10.0.rc,
+  +files/vmware-server-10.0.rc:
+  Version bump, added without keywords for testing. Bug 484098. Thanks to Billy
+  DeVincentis for the files.
+
+*vmware-workstation-9.0.2.1031769-r1 (24 Jul 2013)
+
+  24 Jul 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +vmware-workstation-9.0.2.1031769-r1.ebuild:
+  Add experimental systemd unit files, bug 411901
+
+  23 Jun 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  -vmware-workstation-8.0.4.744019-r1.ebuild:
+  Drop old
+
+  22 Jun 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  vmware-workstation-7.1.6.744570.ebuild,
+  vmware-workstation-8.0.4.744019-r1.ebuild,
+  vmware-workstation-8.0.5.893925.ebuild,
+  vmware-workstation-9.0.2.1031769.ebuild:
+  Add init script license, bug 425902
+
+  16 Jun 2013; Vadim Kuznetsov vadimk@gentoo.org metadata.xml:
+  dropped myself as a maintainer. maintainer needed
+
+*vmware-workstation-9.0.2.1031769 (10 Mar 2013)
+
+  10 Mar 2013; Vadim Kuznetsov vadimk@gentoo.org
+  +vmware-workstation-9.0.2.1031769.ebuild,
+  -vmware-workstation-9.0.1.894247.ebuild:
+  vmware desktop 9.0.2 version bump. Bugs 459566, 458228, 460908.
+
+  07 Jan 2013; Vadim Kuznetsov vadimk@gentoo.org
+  vmware-workstation-9.0.1.894247.ebuild:
+  binchecks should not be restricted
+
+*vmware-workstation-8.0.5.893925 (07 Jan 2013)
+
+  07 Jan 2013; Vadim Kuznetsov vadimk@gentoo.org
+  +vmware-workstation-8.0.5.893925.ebuild:
+  vmware desktop 8.0.5 version bump
+
+*vmware-workstation-9.0.1.894247 (09 Dec 2012)
+
+  09 Dec 2012; Vadim Kuznetsov vadimk@gentoo.org +files/vmware-9.0.rc,
+  +files/vmware-server-9.0.rc, +vmware-workstation-9.0.1.894247.ebuild:
+  vmware desktop 9.0.1 version bump. bugs 432918, 443022
+
+  29 Oct 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  vmware-workstation-7.1.6.744570.ebuild,
+  vmware-workstation-8.0.4.744019-r1.ebuild:
+  QA: binchecks should not be restricted.
+
+*vmware-workstation-8.0.4.744019-r1 (17 Jun 2012)
+*vmware-workstation-7.1.6.744570 (17 Jun 2012)
+
+  17 Jun 2012; Vadim Kuznetsov vadimk@gentoo.org +files/configure-hostd.sh,
+  +vmware-workstation-7.1.6.744570.ebuild,
+  +vmware-workstation-8.0.4.744019-r1.ebuild,
+  -vmware-workstation-7.1.5.491717.ebuild,
+  -vmware-workstation-8.0.3.703057.ebuild:
+  bump vmware desktop. bug 421269
+
+*vmware-workstation-8.0.3.703057 (05 May 2012)
+
+  05 May 2012; Vadim Kuznetsov vadimk@gentoo.org
+  +vmware-workstation-8.0.3.703057.ebuild,
+  -vmware-workstation-8.0.2.591240.ebuild:
+  VMware desktop build 703057
+
+  24 Mar 2012; Vadim Kuznetsov <vadimk@gentoo.org>
+  vmware-workstation-7.1.5.491717.ebuild:
+  added x11-themes/hicolor-icon-theme dependency. bug 287842
+
+  24 Mar 2012; Vadim Kuznetsov <vadimk@gentoo.org>
+  -vmware-workstation-8.0.1.528992-r2.ebuild:
+  cleanup
+
+*vmware-workstation-8.0.2.591240 (10 Mar 2012)
+
+  10 Mar 2012; Vadim Kuznetsov <vadimk@gentoo.org>
+  +vmware-workstation-8.0.2.591240.ebuild:
+  vmware desktop version bump
+
+  11 Dec 2011; Vadim Kuznetsov <vadimk@gentoo.org> -files/90vmware-workstation,
+  -files/vmware-workstation.xml:
+  removed old files
+
+  07 Dec 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -vmware-workstation-8.0.1.528992-r1.ebuild,
+  +vmware-workstation-8.0.1.528992-r2.ebuild:
+  fixed fperms star issue. Bug 393225
+
+*vmware-workstation-8.0.1.528992-r2 (07 Dec 2011)
+
+  05 Dec 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -files/vmware-workstation-6.5.5.328052-installer.patch,
+  -files/vmware-workstation-6.5.rc, -files/6.5.5.328052/vmware-player.py.patch,
+  -files/6.5.5.328052/vmware-player-extras.py.patch,
+  -files/6.5.5.328052/vmware-vix.py.patch,
+  -files/6.5.5.328052/vmware-workstation.py.patch,
+  -vmware-workstation-6.5.5.328052.ebuild, -files/helpers/module_patcher.sh,
+  -files/helpers/unbundler.sh, -files/helpers/vmware-config.sh,
+  -files/vmware-workstation.rc:
+  removed old version. bug 385727.
+
+*vmware-workstation-8.0.1.528992-r1 (04 Dec 2011)
+
+  04 Dec 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -vmware-workstation-8.0.1.528992.ebuild,
+  +vmware-workstation-8.0.1.528992-r1.ebuild:
+  fixed vmware-wssc-adminTool filename. thanks AlphatPC@gmail.com.
+  Bug 382907
+
+*vmware-workstation-8.0.1.528992 (03 Dec 2011)
+
+  03 Dec 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  vmware-workstation-6.5.5.328052.ebuild,
+  vmware-workstation-7.1.5.491717.ebuild,
+  +vmware-workstation-8.0.1.528992.ebuild, +files/vmware-8.0.rc,
+  +files/vmware-server-8.0.rc, metadata.xml:
+  vmware desktop version bump
+
+  17 Oct 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -vmware-workstation-7.1.4.385536.ebuild:
+  cleanup
+
+*vmware-workstation-7.1.5.491717 (08 Oct 2011)
+
+  08 Oct 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  +vmware-workstation-7.1.5.491717.ebuild:
+  Version bump. Bug 385727.
+
+  10 Aug 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  vmware-workstation-7.1.4.385536.ebuild:
+  Bug 377345 (a bit more)
+
+  10 Aug 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  vmware-workstation-7.1.4.385536.ebuild:
+  Bug 377345
+
+  16 Jul 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -vmware-workstation-7.1.3.324285.ebuild:
+  bug 374599
+
+*vmware-workstation-7.1.4.385536 (15 Apr 2011)
+
+  15 Apr 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  +vmware-workstation-7.1.4.385536.ebuild:
+  version bump
+
+  29 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  vmware-workstation-7.1.3.324285.ebuild:
+  Fix slot-deps on gnome libs
+
+*vmware-workstation-7.1.3.324285 (27 Mar 2011)
+
+  27 Mar 2011; Vadim Kuznetsov <vadimk@gentoo.org> +files/vmware-7.0.rc,
+  +vmware-workstation-7.1.3.324285.ebuild, +files/list-bundle-components.xsl,
+  +files/list-component-files.xsl:
+  Bug 291241. Version bump. Thanks to ALL.
+
+  16 Mar 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -files/5.5.9.126128/000_all_initd-location.patch,
+  -files/5.5.9.126128/001_all_fix-permissions.patch,
+  -files/5.5.9.126128/002_all_pagebreak-detection-fix.patch,
+  -files/5.5.9.126128/004_all_do-not-build-modules.patch,
+  -files/5.5.9.126128/007_all_use-modprobe-over-insmod.patch,
+  -files/5.5.9.126128/009_all_init.d-modules-warning.patch,
+  -vmware-workstation-5.5.9.126128.ebuild:
+  Bug 354383.
+
+  26 Feb 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -vmware-workstation-6.5.3.185404.ebuild,
+  -files/6.5.3.185404/vmware-player-extras.py.patch,
+  -files/vmware-workstation-6.5.3.185404-installer.patch,
+  -files/6.5.3.185404/vmware-player.py.patch,
+  -files/6.5.3.185404/vmware-workstation.py.patch,
+  -files/vmware-workstation-6.5.4.246459-installer.patch,
+  -files/6.5.3.185404/vmware-vix.py.patch,
+  -files/6.5.4.246459/vmware-player.py.patch,
+  -files/6.5.4.246459/vmware-player-extras.py.patch,
+  -files/6.5.4.246459/vmware-vix.py.patch,
+  -vmware-workstation-6.5.4.246459.ebuild,
+  -files/6.5.4.246459/vmware-workstation.py.patch:
+  removed old versions
+
+  17 Feb 2011; Thomas Kahle <tomka@gentoo.org>
+  vmware-workstation-6.5.5.328052.ebuild:
+  x86 stable per bug 352421
+
+  25 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  vmware-workstation-6.5.5.328052.ebuild:
+  Stable on amd64 wrt bug #352421
+
+  29 Dec 2010; Vadim Kuznetsov <vadimk@gentoo.org>
+  vmware-workstation-6.5.3.185404.ebuild,
+  vmware-workstation-6.5.4.246459.ebuild,
+  vmware-workstation-6.5.5.328052.ebuild:
+  Bug 345377
+
+*vmware-workstation-6.5.5.328052 (29 Dec 2010)
+
+  29 Dec 2010; Vadim Kuznetsov <vadimk@gentoo.org>
+  +files/vmware-workstation-6.5.5.328052-installer.patch,
+  +files/6.5.5.328052/vmware-player.py.patch,
+  +files/6.5.5.328052/vmware-player-extras.py.patch,
+  +files/6.5.5.328052/vmware-vix.py.patch,
+  +files/6.5.5.328052/vmware-workstation.py.patch,
+  +vmware-workstation-6.5.5.328052.ebuild:
+  Version bump. Bugs 350073, 345377
+
+*vmware-workstation-6.5.4.246459 (15 Sep 2010)
+
+  15 Sep 2010; Vadim Kuznetsov <vadimk@gentoo.org>
+  +files/vmware-workstation-6.5.4.246459-installer.patch,
+  +files/6.5.4.246459/vmware-player.py.patch,
+  +files/6.5.4.246459/vmware-player-extras.py.patch,
+  +files/6.5.4.246459/vmware-vix.py.patch,
+  +vmware-workstation-6.5.4.246459.ebuild,
+  +files/6.5.4.246459/vmware-workstation.py.patch, metadata.xml:
+  Bug 314847. Version bump.
+
+  09 Mar 2010; Jonathan Callen <abcd@gentoo.org>
+  vmware-workstation-5.5.9.126128.ebuild:
+  QA: When not using an absolute path, you MUST NOT use a file extension
+  (.png, .svg, or .xpm) on the icon name for make_desktop_entry
+
+  25 Sep 2009; Markus Meier <maekke@gentoo.org>
+  vmware-workstation-6.5.3.185404.ebuild:
+  amd64 stable, bug #282213
+
+  25 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  vmware-workstation-6.5.3.185404.ebuild:
+  stable x86, security bug 282213
+
+  22 Aug 2009; Vadim Kuznetsov vadimk@gentoo.org
+  vmware-workstation-6.5.3.185404.ebuild:
+  Added pkg_prerm for safe unmerge
+
+*vmware-workstation-6.5.3.185404 (22 Aug 2009)
+
+  22 Aug 2009; Vadim Kuznetsov vadimk@gentoo.org
+  +files/vmware-workstation-6.5.3.185404-installer.patch,
+  +files/6.5.3.185404/vmware-player.py.patch,
+  +files/6.5.3.185404/vmware-player-extras.py.patch,
+  +files/6.5.3.185404/vmware-vix.py.patch,
+  +files/6.5.3.185404/vmware-workstation.py.patch,
+  +vmware-workstation-6.5.3.185404.ebuild:
+  Version bump. Bug 282213.
+
+  30 Jul 2009; Markus Meier <maekke@gentoo.org>
+  vmware-workstation-6.5.2.156735.ebuild:
+  amd64 stable, bug #265139
+
+  06 Jul 2009; Vadim Kuznetsov vadimk@gentoo.org metadata.xml:
+  Updated metadata.
+
+*vmware-workstation-6.5.2.156735-r1 (14 Jun 2009)
+
+  14 Jun 2009; Vadim Kuznetsov vadimk@gentoo.org
+  +vmware-workstation-6.5.2.156735-r1.ebuild, metadata.xml:
+  Bug 273750.
+
+  02 Jun 2009; Vadim Kuznetsov vadimk@gentoo.org Manifest:
+  Bug 272290. Fixing Manifest
+
+  28 May 2009; Vadim Kuznetsov vadimk@gentoo.org
+  vmware-workstation-6.5.2.156735.ebuild:
+  Bug 254836. New download url.
+
+  28 May 2009; Vadim Kuznetsov vadimk@gentoo.org
+  vmware-workstation-6.5.2.156735.ebuild:
+  Bug 271245. No more /sbin/lsmod link after module-init-tools version bump.
+
+  12 May 2009; Mike Auty <ikelos@gentoo.org>
+  vmware-workstation-6.5.2.156735.ebuild:
+  Add libgksu to RDEPEND, after it got dropped from 6.5.1 somehow. Fixes bug
+  258621.
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  vmware-workstation-6.5.2.156735.ebuild:
+  stable x86, bug 265139
+
+*vmware-workstation-6.5.2.156735 (06 Apr 2009)
+
+  06 Apr 2009; Mike Auty <ikelos@gentoo.org>
+  +files/6.5.2.156735/vmware-player.py.patch,
+  +files/6.5.2.156735/vmware-vix.py.patch,
+  +files/vmware-workstation-6.5.2.156735-installer.patch,
+  +files/6.5.2.156735/vmware-player-extras.py.patch,
+  +files/6.5.2.156735/vmware-workstation.py.patch,
+  +vmware-workstation-6.5.2.156735.ebuild:
+  Version bump vmware-workstation to 6.5.2.156735.
+
+  25 Mar 2009; Mike Auty <ikelos@gentoo.org>
+  vmware-workstation-6.5.1.126130.ebuild:
+  gtkmm's accessibility is now always enabled (see bug #247249)
+
+  12 Mar 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  vmware-workstation-6.5.1.126130.ebuild:
+  Remove binchecks restriction (package installs binaries!).
+
+  22 Feb 2009; Mike Auty <ikelos@gentoo.org>
+  -files/6.5.0.118166/vmware-player.py.patch,
+  -files/6.5.0.118166/vmware-workstation.py.patch,
+  -files/6.5.0.118166/vmware-vix.py.patch,
+  -files/5.5.7.91707/000_all_initd-location.patch,
+  -files/5.5.7.91707/001_all_fix-permissions.patch,
+  -files/5.5.7.91707/002_all_pagebreak-detection-fix.patch,
+  -files/5.5.7.91707/004_all_do-not-build-modules.patch,
+  -files/5.5.7.91707/007_all_use-modprobe-over-insmod.patch,
+  -files/5.5.7.91707/009_all_init.d-modules-warning.patch,
+  -files/5.5.8.108000/000_all_initd-location.patch,
+  -files/5.5.8.108000/001_all_fix-permissions.patch,
+  -files/5.5.8.108000/002_all_pagebreak-detection-fix.patch,
+  -files/5.5.8.108000/004_all_do-not-build-modules.patch,
+  -files/5.5.8.108000/007_all_use-modprobe-over-insmod.patch,
+  -files/5.5.8.108000/009_all_init.d-modules-warning.patch,
+  -files/6.0.4.93057/000_all_initd-location.patch,
+  -files/6.0.4.93057/001_all_fix-permissions.patch,
+  -files/6.0.4.93057/002_all_pagebreak-detection-fix.patch,
+  -files/6.0.4.93057/004_all_do-not-build-modules.patch,
+  -files/6.0.4.93057/007_all_use-modprobe-over-insmod.patch,
+  -files/6.0.4.93057/009_all_init.d-modules-warning.patch,
+  -files/6.0.4.93057/011_all_legit-modules-only.patch,
+  -files/6.0.5.109488/000_all_initd-location.patch,
+  -files/6.0.5.109488/001_all_fix-permissions.patch,
+  -files/6.0.5.109488/002_all_pagebreak-detection-fix.patch,
+  -files/6.0.5.109488/004_all_do-not-build-modules.patch,
+  -files/6.0.5.109488/007_all_use-modprobe-over-insmod.patch,
+  -files/6.0.5.109488/009_all_init.d-modules-warning.patch,
+  -files/6.0.5.109488/011_all_legit-modules-only.patch,
+  -files/6.5.0.118166/vmware-player-extras.py.patch,
+  -vmware-workstation-5.5.7.91707.ebuild,
+  -vmware-workstation-5.5.8.108000.ebuild,
+  -vmware-workstation-6.0.4.93057.ebuild,
+  -vmware-workstation-6.0.5.109488.ebuild,
+  -vmware-workstation-6.5.0.118166.ebuild:
+  Clear out old insecure versions of vmware-workstation (bug 245941).
+
+  14 Feb 2009; Mike Auty <ikelos@gentoo.org>
+  vmware-workstation-6.5.1.126130.ebuild:
+  Add in dependency on x11-libs/libgksu thanks to Jeff Mitchell, bug 258621.
+
+  12 Jan 2009; Markus Meier <maekke@gentoo.org>
+  vmware-workstation-5.5.9.126128.ebuild,
+  vmware-workstation-6.5.1.126130.ebuild:
+  amd64/x86 stable, bug #245941
+
+  11 Jan 2009; Markus Meier <maekke@gentoo.org>
+  vmware-workstation-5.5.8.108000.ebuild:
+  amd64/x86 stable, bug #236167
+
+  10 Jan 2009; Mike Auty <ikelos@gentoo.org>
+  vmware-workstation-6.5.1.126130.ebuild:
+  Fixing bug 253906.
+
+  04 Jan 2009; Ulrich Mueller <ulm@gentoo.org>
+  vmware-workstation-5.5.7.91707.ebuild,
+  vmware-workstation-5.5.8.108000.ebuild,
+  vmware-workstation-5.5.9.126128.ebuild,
+  vmware-workstation-6.0.4.93057.ebuild,
+  vmware-workstation-6.0.5.109488.ebuild,
+  vmware-workstation-6.5.0.118166.ebuild,
+  vmware-workstation-6.5.1.126130.ebuild:
+  Change virtual/xft dependency to x11-libs/libXft, bug 253771.
+
+  31 Dec 2008; Mike Auty <ikelos@gentoo.org>
+  vmware-workstation-6.5.0.118166.ebuild,
+  vmware-workstation-6.5.1.126130.ebuild:
+  Depend on >=libview-0.6.2, fixes bug 247138.
+
+*vmware-workstation-6.5.1.126130 (31 Dec 2008)
+
+  31 Dec 2008; Mike Auty <ikelos@gentoo.org>
+  +files/6.5.1.126130/vmware-player.py.patch,
+  +files/6.5.1.126130/vmware-vix.py.patch,
+  +files/vmware-workstation-6.5.1.126130-installer.patch,
+  +files/6.5.1.126130/vmware-player-extras.py.patch,
+  +files/6.5.1.126130/vmware-workstation.py.patch,
+  +vmware-workstation-6.5.1.126130.ebuild:
+  Version bump vmware-workstation to 6.5.1.
+
+  27 Nov 2008; Mike Auty <ikelos@gentoo.org> files/helpers/vmware-config.sh:
+  Fix up vmware-config.sh helper (bug 246854).
+
+  17 Nov 2008; Mike Auty <ikelos@gentoo.org>
+  vmware-workstation-6.5.0.118166.ebuild:
+  Fix up missing ncurses USE dep, and clarify not-in-screen message.
+
+  11 Nov 2008; Mike Auty <ikelos@gentoo.org>
+  vmware-workstation-6.5.0.118166.ebuild:
+  Add in properties=Interactive for vmware-workstation-6.5.
+
+  10 Nov 2008; Mike Auty <ikelos@gentoo.org>
+  vmware-workstation-6.5.0.118166.ebuild:
+  Ensure it dies properly and put in a better check for screen.
+
+*vmware-workstation-6.5.0.118166 (09 Nov 2008)
+*vmware-workstation-5.5.9.126128 (09 Nov 2008)
+
+  09 Nov 2008; Mike Auty <ikelos@gentoo.org>
+  +files/5.5.9.126128/000_all_initd-location.patch,
+  +files/5.5.9.126128/002_all_pagebreak-detection-fix.patch,
+  +files/6.5.0.118166/vmware-player.py.patch,
+  +files/5.5.9.126128/001_all_fix-permissions.patch,
+  +files/5.5.9.126128/004_all_do-not-build-modules.patch,
+  +files/6.5.0.118166/vmware-player-extras.py.patch,
+  +files/vmware-workstation-6.5.0.118166-installer.patch,
+  +files/5.5.9.126128/007_all_use-modprobe-over-insmod.patch,
+  +files/6.5.0.118166/vmware-vix.py.patch, +files/vmware-workstation-6.5.rc,
+  +files/5.5.9.126128/009_all_init.d-modules-warning.patch,
+  +files/6.5.0.118166/vmware-workstation.py.patch,
+  +files/helpers/module_patcher.sh, +files/helpers/unbundler.sh,
+  +files/helpers/vmware-config.sh, +vmware-workstation-5.5.9.126128.ebuild,
+  +vmware-workstation-6.5.0.118166.ebuild:
+  Add in vmware-workstation 5.5.9 and introduce 6.5.0 for bug 245941.
+
+*vmware-workstation-6.0.5.109488 (30 Sep 2008)
+*vmware-workstation-5.5.8.108000 (30 Sep 2008)
+
+  30 Sep 2008; Mike Auty <ikelos@gentoo.org>
+  -files/4.5.3.19414/000_all_initd-location.patch,
+  -files/4.5.3.19414/000_all_librarypath.patch,
+  -files/4.5.3.19414/001_all_fix-permissions.patch,
+  -files/4.5.3.19414/002_all_pagebreak-detection-fix.patch,
+  -files/4.5.3.19414/004_all_do-not-build-modules.patch,
+  -files/4.5.3.19414/007_all_use-modprobe-over-insmod.patch,
+  -files/4.5.3.19414/009_all_init.d-modules-warning.patch,
+  -files/5.5.6.80404/000_all_initd-location.patch,
+  -files/5.5.6.80404/001_all_fix-permissions.patch,
+  -files/5.5.6.80404/002_all_pagebreak-detection-fix.patch,
+  -files/5.5.6.80404/004_all_do-not-build-modules.patch,
+  -files/5.5.6.80404/007_all_use-modprobe-over-insmod.patch,
+  -files/5.5.6.80404/009_all_init.d-modules-warning.patch,
+  +files/5.5.8.108000/000_all_initd-location.patch,
+  +files/5.5.8.108000/001_all_fix-permissions.patch,
+  +files/5.5.8.108000/002_all_pagebreak-detection-fix.patch,
+  +files/5.5.8.108000/004_all_do-not-build-modules.patch,
+  +files/5.5.8.108000/007_all_use-modprobe-over-insmod.patch,
+  +files/5.5.8.108000/009_all_init.d-modules-warning.patch,
+  -files/6.0.3.80004/000_all_initd-location.patch,
+  -files/6.0.3.80004/001_all_fix-permissions.patch,
+  -files/6.0.3.80004/002_all_pagebreak-detection-fix.patch,
+  -files/6.0.3.80004/004_all_do-not-build-modules.patch,
+  -files/6.0.3.80004/007_all_use-modprobe-over-insmod.patch,
+  -files/6.0.3.80004/009_all_init.d-modules-warning.patch,
+  -files/6.0.3.80004/011_all_legit-modules-only.patch,
+  +files/6.0.5.109488/000_all_initd-location.patch,
+  +files/6.0.5.109488/001_all_fix-permissions.patch,
+  +files/6.0.5.109488/002_all_pagebreak-detection-fix.patch,
+  +files/6.0.5.109488/004_all_do-not-build-modules.patch,
+  +files/6.0.5.109488/007_all_use-modprobe-over-insmod.patch,
+  +files/6.0.5.109488/009_all_init.d-modules-warning.patch,
+  +files/6.0.5.109488/011_all_legit-modules-only.patch,
+  -vmware-workstation-4.5.3.19414-r7.ebuild,
+  -vmware-workstation-5.5.6.80404.ebuild,
+  +vmware-workstation-5.5.8.108000.ebuild,
+  -vmware-workstation-6.0.3.80004.ebuild,
+  +vmware-workstation-6.0.5.109488.ebuild:
+  Clear out old/masked versions and bump to 5.5.8 and 6.0.5.
+
+  03 Jul 2008; Christian Faulhammer <opfer@gentoo.org>
+  vmware-workstation-5.5.7.91707.ebuild:
+  stable x86, security bug 224637
+
+  30 Jun 2008; Mike Auty <ikelos@gentoo.org>
+  vmware-workstation-6.0.3.80004.ebuild,
+  vmware-workstation-6.0.4.93057.ebuild:
+  Fix typo, bug 230237, thanks to Christian Schmidt for pointing it out.
+
+  22 Jun 2008; Markus Meier <maekke@gentoo.org>
+  vmware-workstation-5.5.7.91707.ebuild:
+  amd64 stable, bug #224637
+
+*vmware-workstation-6.0.4.93057 (14 Jun 2008)
+*vmware-workstation-5.5.7.91707 (14 Jun 2008)
+
+  14 Jun 2008; Mike Auty <ikelos@gentoo.org>
+  -files/5.5.5.56455/000_all_initd-location.patch,
+  -files/5.5.5.56455/001_all_fix-permissions.patch,
+  -files/5.5.5.56455/002_all_pagebreak-detection-fix.patch,
+  -files/5.5.5.56455/004_all_do-not-build-modules.patch,
+  -files/5.5.5.56455/007_all_use-modprobe-over-insmod.patch,
+  -files/5.5.5.56455/009_all_init.d-modules-warning.patch,
+  +files/5.5.7.91707/000_all_initd-location.patch,
+  +files/5.5.7.91707/001_all_fix-permissions.patch,
+  +files/5.5.7.91707/002_all_pagebreak-detection-fix.patch,
+  +files/5.5.7.91707/004_all_do-not-build-modules.patch,
+  +files/5.5.7.91707/007_all_use-modprobe-over-insmod.patch,
+  +files/5.5.7.91707/009_all_init.d-modules-warning.patch,
+  -files/6.0.2.59824/000_all_initd-location.patch,
+  -files/6.0.2.59824/001_all_fix-permissions.patch,
+  -files/6.0.2.59824/002_all_pagebreak-detection-fix.patch,
+  -files/6.0.2.59824/004_all_do-not-build-modules.patch,
+  -files/6.0.2.59824/007_all_use-modprobe-over-insmod.patch,
+  -files/6.0.2.59824/009_all_init.d-modules-warning.patch,
+  -files/6.0.2.59824/011_all_legit-modules-only.patch,
+  +files/6.0.4.93057/000_all_initd-location.patch,
+  +files/6.0.4.93057/001_all_fix-permissions.patch,
+  +files/6.0.4.93057/002_all_pagebreak-detection-fix.patch,
+  +files/6.0.4.93057/004_all_do-not-build-modules.patch,
+  +files/6.0.4.93057/007_all_use-modprobe-over-insmod.patch,
+  +files/6.0.4.93057/009_all_init.d-modules-warning.patch,
+  +files/6.0.4.93057/011_all_legit-modules-only.patch,
+  -vmware-workstation-5.5.5.56455.ebuild,
+  +vmware-workstation-5.5.7.91707.ebuild,
+  -vmware-workstation-6.0.2.59824.ebuild,
+  +vmware-workstation-6.0.4.93057.ebuild:
+  Version bump for bug 224637. Also clear out old version.
+
+  12 May 2008; Markus Meier <maekke@gentoo.org>
+  vmware-workstation-5.5.6.80404.ebuild:
+  amd64 stable, bug #213548
+
+  07 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  vmware-workstation-5.5.6.80404.ebuild:
+  stable x86, bug 213548
+
+  26 Apr 2008; Mike Auty <ikelos@gentoo.org>
+  -files/6.0.1.55017/000_all_initd-location.patch,
+  -files/6.0.1.55017/002_all_pagebreak-detection-fix.patch,
+  -files/6.0.1.55017/001_all_fix-permissions.patch,
+  -files/6.0.1.55017/004_all_do-not-build-modules.patch,
+  -files/6.0.1.55017/007_all_use-modprobe-over-insmod.patch,
+  -files/6.0.1.55017/009_all_init.d-modules-warning.patch,
+  -files/6.0.1.55017/011_all_legit-modules-only.patch,
+  +files/vmware-player.desktop, +files/vmware-workstation.desktop,
+  vmware-workstation-5.5.6.80404.ebuild,
+  -vmware-workstation-6.0.1.55017.ebuild,
+  vmware-workstation-6.0.2.59824.ebuild,
+  vmware-workstation-6.0.3.80004.ebuild:
+  Fix up bugs 219076 and 123665, remove old ebuild and fix minor QA issues.
+
+*vmware-workstation-5.5.6.80404 (04 Apr 2008)
+
+  04 Apr 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/5.5.6.80404/000_all_initd-location.patch,
+  +files/5.5.6.80404/001_all_fix-permissions.patch,
+  +files/5.5.6.80404/002_all_pagebreak-detection-fix.patch,
+  +files/5.5.6.80404/004_all_do-not-build-modules.patch,
+  +files/5.5.6.80404/007_all_use-modprobe-over-insmod.patch,
+  +files/5.5.6.80404/009_all_init.d-modules-warning.patch,
+  +vmware-workstation-5.5.6.80404.ebuild:
+  Version bump to 5.5.6.80404 for bug #213548.
+
+*vmware-workstation-6.0.3.80004 (22 Mar 2008)
+
+  22 Mar 2008; Mike Auty <ikelos@gentoo.org>
+  +files/6.0.3.80004/000_all_initd-location.patch,
+  +files/6.0.3.80004/001_all_fix-permissions.patch,
+  +files/6.0.3.80004/002_all_pagebreak-detection-fix.patch,
+  +files/6.0.3.80004/004_all_do-not-build-modules.patch,
+  +files/6.0.3.80004/007_all_use-modprobe-over-insmod.patch,
+  +files/6.0.3.80004/009_all_init.d-modules-warning.patch,
+  +files/6.0.3.80004/011_all_legit-modules-only.patch,
+  +vmware-workstation-6.0.3.80004.ebuild:
+  Version bump, to fix bug 213548.
+
+  31 Jan 2008; Mike Auty <ikelos@gentoo.org> ChangeLog:
+  Re-sign digestless manifest.
+
+  26 Jan 2008; Mike Auty <ikelos@gentoo.org>
+  files/digest-vmware-workstation-4.5.3.19414-r7,
+  files/digest-vmware-workstation-5.5.5.56455,
+  files/digest-vmware-workstation-6.0.1.55017,
+  files/digest-vmware-workstation-6.0.2.59824, Manifest:
+  Redigest for any-any-update115.
+
+*vmware-workstation-6.0.2.59824 (25 Nov 2007)
+
+  25 Nov 2007; Mike Auty <ikelos@gentoo.org>
+  +files/6.0.2.59824/000_all_initd-location.patch,
+  +files/6.0.2.59824/001_all_fix-permissions.patch,
+  +files/6.0.2.59824/002_all_pagebreak-detection-fix.patch,
+  +files/6.0.2.59824/004_all_do-not-build-modules.patch,
+  +files/6.0.2.59824/007_all_use-modprobe-over-insmod.patch,
+  +files/6.0.2.59824/009_all_init.d-modules-warning.patch,
+  +files/6.0.2.59824/011_all_legit-modules-only.patch,
+  files/vmware-workstation.rc, +vmware-workstation-6.0.2.59824.ebuild:
+  Version bump to 6.0.2.
+
+  07 Nov 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/5.5.4.44386/000_all_initd-location.patch,
+  -files/5.5.4.44386/002_all_pagebreak-detection-fix.patch,
+  -files/6.0.0.45731/000_all_initd-location.patch,
+  -files/5.5.4.44386/001_all_fix-permissions.patch,
+  -files/5.5.4.44386/004_all_do-not-build-modules.patch,
+  -files/5.5.4.44386/007_all_use-modprobe-over-insmod.patch,
+  -files/5.5.4.44386/009_all_init.d-modules-warning.patch,
+  -files/6.0.0.45731/001_all_fix-permissions.patch,
+  -files/6.0.0.45731/002_all_pagebreak-detection-fix.patch,
+  -files/6.0.0.45731/004_all_do-not-build-modules.patch,
+  -files/6.0.0.45731/007_all_use-modprobe-over-insmod.patch,
+  -files/6.0.0.45731/009_all_init.d-modules-warning.patch,
+  -vmware-workstation-5.5.4.44386.ebuild,
+  -vmware-workstation-6.0.0.45731.ebuild:
+  Cleaning up older ebuilds.
+
+*vmware-workstation-6.0.1.55017 (14 Oct 2007)
+
+  14 Oct 2007; Mike Auty <ikelos@gentoo.org>
+  +files/6.0.1.55017/000_all_initd-location.patch,
+  +files/6.0.1.55017/001_all_fix-permissions.patch,
+  +files/6.0.1.55017/002_all_pagebreak-detection-fix.patch,
+  +files/6.0.1.55017/004_all_do-not-build-modules.patch,
+  +files/6.0.1.55017/007_all_use-modprobe-over-insmod.patch,
+  +files/6.0.1.55017/009_all_init.d-modules-warning.patch,
+  +files/6.0.1.55017/011_all_legit-modules-only.patch,
+  +vmware-workstation-6.0.1.55017.ebuild:
+  Version bump, fixes some security bugs
+
+  11 Oct 2007; Mike Doty <kingtaco@gentoo.org>
+  vmware-workstation-5.5.5.56455.ebuild:
+  amd64 stable, bug 193196
+
+  23 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  vmware-workstation-5.5.5.56455.ebuild:
+  stable x86, security bug 193196
+
+*vmware-workstation-5.5.5.56455 (21 Sep 2007)
+
+  21 Sep 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/5.5.5.56455/000_all_initd-location.patch,
+  +files/5.5.5.56455/001_all_fix-permissions.patch,
+  +files/5.5.5.56455/002_all_pagebreak-detection-fix.patch,
+  +files/5.5.5.56455/004_all_do-not-build-modules.patch,
+  +files/5.5.5.56455/007_all_use-modprobe-over-insmod.patch,
+  +files/5.5.5.56455/009_all_init.d-modules-warning.patch,
+  +vmware-workstation-5.5.5.56455.ebuild:
+  Version bump for bug #193196.
+
+  16 Sep 2007; Mike Auty <ikelos@gentoo.org> files/vmware-workstation.rc:
+  Alter init script to interoperate with baselayout-2 and unusual shells such
+  as dash.
+
+  31 Jul 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-workstation-6.0.0.45731.ebuild:
+  Typo fix.
+
+  28 Jul 2007; Mike Auty <ikelos@gentoo.org>
+  vmware-workstation-6.0.0.45731.ebuild:
+  Redigest for vmware-any-any-update112 and fix fetch restriction problems.
+
+  13 Jul 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-workstation-4.5.3.19414-r7.ebuild,
+  vmware-workstation-5.5.4.44386.ebuild,
+  vmware-workstation-6.0.0.45731.ebuild:
+  Added another mirror for the vmware-any-any-update patchset.
+
+  13 Jul 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/5.5.3.34685/000_all_initd-location.patch,
+  -files/5.5.3.34685/001_all_fix-permissions.patch,
+  -files/5.5.3.34685/002_all_pagebreak-detection-fix.patch,
+  -files/5.5.3.34685/004_all_do-not-build-modules.patch,
+  -files/5.5.3.34685/007_all_use-modprobe-over-insmod.patch,
+  -files/5.5.3.34685/009_all_init.d-modules-warning.patch,
+  -vmware-workstation-5.5.3.34685.ebuild:
+  Removing older versions which are no longer needed.
+
+*vmware-workstation-6.0.0.45731 (24 Jun 2007)
+
+  24 Jun 2007; Mike Auty <ikelos@gentoo.org>
+  -files/5.5.1.19175/000_all_initd-location.patch,
+  -files/5.5.1.19175/001_all_fix-permissions.patch,
+  -files/5.5.1.19175/002_all_pagebreak-detection-fix.patch,
+  -files/5.5.1.19175/004_all_do-not-build-modules.patch,
+  -files/5.5.1.19175/007_all_use-modprobe-over-insmod.patch,
+  -files/5.5.1.19175/009_all_init.d-modules-warning.patch,
+  -files/5.5.2.29772/000_all_initd-location.patch,
+  -files/5.5.2.29772/001_all_fix-permissions.patch,
+  -files/5.5.2.29772/002_all_pagebreak-detection-fix.patch,
+  -files/5.5.2.29772/004_all_do-not-build-modules.patch,
+  -files/5.5.2.29772/007_all_use-modprobe-over-insmod.patch,
+  -files/5.5.2.29772/009_all_init.d-modules-warning.patch,
+  +files/6.0.0.45731/000_all_initd-location.patch,
+  +files/6.0.0.45731/001_all_fix-permissions.patch,
+  +files/6.0.0.45731/002_all_pagebreak-detection-fix.patch,
+  +files/6.0.0.45731/004_all_do-not-build-modules.patch,
+  +files/6.0.0.45731/007_all_use-modprobe-over-insmod.patch,
+  +files/6.0.0.45731/009_all_init.d-modules-warning.patch,
+  +vmware-workstation-6.0.0.45731.ebuild:
+  Version bump, the new version features a native 64-bit version, USB 2.0 and
+  some speed improvements too.
+
+*vmware-workstation-5.5.4.44386 (15 May 2007)
+
+  15 May 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/5.5.4.44386/000_all_initd-location.patch,
+  +files/5.5.4.44386/001_all_fix-permissions.patch,
+  +files/5.5.4.44386/002_all_pagebreak-detection-fix.patch,
+  +files/5.5.4.44386/004_all_do-not-build-modules.patch,
+  +files/5.5.4.44386/007_all_use-modprobe-over-insmod.patch,
+  +files/5.5.4.44386/009_all_init.d-modules-warning.patch,
+  +vmware-workstation-5.5.4.44386.ebuild:
+  Version bump to 5.5.4 for bug #176678 and bug #176647.
+
+  28 Apr 2007; Mike Auty <ikelos@gentoo.org> files/vmware-workstation.rc:
+  Redigest for vmware-any-any109, and fix rc file for baselayout-2.
+
+  23 Apr 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  files/vmware-workstation.rc:
+  Added use hald to the VMware Workstation init script thanks to bug #155450.
+
+  20 Apr 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-workstation-5.5.3.34685.ebuild:
+  Added some ewarn about hald fro bug #155450.
+
+  07 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  files/vmware-workstation.rc:
+  Change all instances of [ to [[.
+
+  05 Mar 2007; Mike Auty <ikelos@gentoo.org>
+  files/digest-vmware-workstation-4.5.3.19414-r7,
+  files/digest-vmware-workstation-5.5.3.34685, Manifest:
+  Bump vmware-any-any to 108.
+
+  07 Feb 2007; Mike Auty <ikelos@gentoo.org>
+  files/digest-vmware-workstation-5.5.3.34685, Manifest:
+  Fix broken digest.
+
+  05 Feb 2007; Mike Auty <ikelos@gentoo.org>
+  files/digest-vmware-workstation-4.5.3.19414-r7,
+  files/digest-vmware-workstation-5.5.3.34685, Manifest:
+  Vmware-any-any bump.
+
+  14 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-workstation-4.5.3.19414-r7.ebuild,
+  vmware-workstation-5.5.3.34685.ebuild:
+  Fixed typo for bug #158134.
+
+  04 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-workstation-4.5.3.19414-r7.ebuild,
+  vmware-workstation-5.5.3.34685.ebuild:
+  Removed RESTRICT=stricter since it has been removed from portage. This is
+  for bug #131633. If you have any problems with this, please reply to that
+  bug report.
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -vmware-workstation-5.5.1.19175-r7.ebuild,
+  -vmware-workstation-5.5.2.29772.ebuild,
+  vmware-workstation-5.5.3.34685.ebuild:
+  Updated digest/Manifest for vmware-any-any-update105, marked 5.5.3 stable on
+  amd64/x86, and removing older 5.5 ebuilds.
+
+*vmware-workstation-5.5.3.34685 (20 Nov 2006)
+
+  20 Nov 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/5.5.3.34685/000_all_initd-location.patch,
+  +files/5.5.3.34685/001_all_fix-permissions.patch,
+  +files/5.5.3.34685/002_all_pagebreak-detection-fix.patch,
+  +files/5.5.3.34685/004_all_do-not-build-modules.patch,
+  +files/5.5.3.34685/007_all_use-modprobe-over-insmod.patch,
+  +files/5.5.3.34685/009_all_init.d-modules-warning.patch,
+  +vmware-workstation-5.5.3.34685.ebuild:
+  Added 5.5.3 version and closing bug #155593. Remember, kids, every time you
+  file a 0-day bump request, God kills a kitten. Please think of the kittens.
+
+  16 Nov 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-workstation-5.5.2.29772.ebuild:
+  Added another mirror for VMware Workstation 5.5.2, so it can be fetched
+  properly.
+
+  30 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -vmware-workstation-4.5.3.19414-r4.ebuild,
+  -vmware-workstation-4.5.3.19414-r6.ebuild,
+  -vmware-workstation-5.5.1.19175-r4.ebuild,
+  -vmware-workstation-5.5.1.19175-r6.ebuild:
+  Cleaning up some older ebuilds.
+
+  30 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/3.2.1.2242/vmware-glibc-2.3.2-compat.c,
+  -files/3.2.1.2242/90vmware-workstation, -files/3.2.1.2242/vmware,
+  -files/3.2.1.2242/vmware-config.pl-gcc-generalized.patch,
+  -vmware-workstation-3.2.1.2242-r12.ebuild:
+  Removing VMware 3.2.1 as it is unmaintainable due to my being unable to test
+  fixes on it and upstream has abandoned support for it, so new patches are no
+  longer made for this product.
+
+  24 Oct 2006; Simon Stelling <blubb@gentoo.org>
+  vmware-workstation-4.5.3.19414-r7.ebuild,
+  vmware-workstation-5.5.1.19175-r7.ebuild:
+  stable on amd64 wrt bug 148682
+
+  20 Oct 2006; Joshua Jackson <tsunam@gentoo.org>
+  vmware-workstation-4.5.3.19414-r7.ebuild,
+  vmware-workstation-5.5.1.19175-r7.ebuild:
+  Stable x86; bug #148682
+
+*vmware-workstation-5.5.1.19175-r7 (03 Oct 2006)
+*vmware-workstation-4.5.3.19414-r7 (03 Oct 2006)
+
+  03 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +vmware-workstation-4.5.3.19414-r7.ebuild,
+  +vmware-workstation-5.5.1.19175-r7.ebuild,
+  vmware-workstation-5.5.2.29772.ebuild:
+  New revision ebuilds to hopefully finally fix bug #148682.
+
+*vmware-workstation-5.5.1.19175-r6 (02 Oct 2006)
+*vmware-workstation-4.5.3.19414-r6 (02 Oct 2006)
+
+  02 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -vmware-workstation-4.5.3.19414-r5.ebuild,
+  +vmware-workstation-4.5.3.19414-r6.ebuild,
+  -vmware-workstation-5.5.1.19175-r5.ebuild,
+  +vmware-workstation-5.5.1.19175-r6.ebuild,
+  vmware-workstation-5.5.2.29772.ebuild:
+  Alright, we are revision-bumping again so that we pull in my pre-compiled
+  libssl.so.0.9.7 for bug #148862.
+
+  02 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -vmware-workstation-3.2.1.2242-r11.ebuild,
+  vmware-workstation-3.2.1.2242-r12.ebuild:
+  Marking 3.2.1.2242-r12 stable on x86 because it gives identical output to -r11.
+
+  29 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/4.5.3.19414/000_all_initd-location.patch,
+  +files/4.5.3.19414/001_all_fix-permissions.patch,
+  +files/4.5.3.19414/004_all_do-not-build-modules.patch,
+  +files/4.5.3.19414/007_all_use-modprobe-over-insmod.patch:
+  Added some more patches from 5.5 to hopefully resolve bug #122322.
+
+*vmware-workstation-5.5.2.29772 (28 Sep 2006)
+
+  28 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/5.5.2.29772/000_all_initd-location.patch,
+  +files/5.5.2.29772/001_all_fix-permissions.patch,
+  +files/5.5.2.29772/002_all_pagebreak-detection-fix.patch,
+  +files/5.5.2.29772/004_all_do-not-build-modules.patch,
+  +files/5.5.2.29772/007_all_use-modprobe-over-insmod.patch,
+  +files/5.5.2.29772/009_all_init.d-modules-warning.patch,
+  +vmware-workstation-5.5.2.29772.ebuild:
+  Version bump to 5.5.2, which I am leaving masked for the time being because
+  I hate the idea of forcing more than 100MB on people that they don't need. I
+  will unmask this once I come up with a better solution.
+
+  28 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-workstation-3.2.1.2242-r11.ebuild,
+  vmware-workstation-3.2.1.2242-r12.ebuild,
+  vmware-workstation-4.5.3.19414-r4.ebuild,
+  vmware-workstation-4.5.3.19414-r5.ebuild,
+  vmware-workstation-5.5.1.19175-r4.ebuild,
+  vmware-workstation-5.5.1.19175-r5.ebuild:
+  TEXTREL->TEXTRELS and added stricter to RESTRICT.  Closing bug #143100.
+
+  28 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-workstation-3.2.1.2242-r11.ebuild,
+  vmware-workstation-3.2.1.2242-r12.ebuild,
+  vmware-workstation-4.5.3.19414-r4.ebuild,
+  vmware-workstation-4.5.3.19414-r5.ebuild,
+  vmware-workstation-5.5.1.19175-r4.ebuild,
+  vmware-workstation-5.5.1.19175-r5.ebuild:
+  Changed VMWare to VMware.
+
+*vmware-workstation-5.5.1.19175-r5 (27 Sep 2006)
+*vmware-workstation-4.5.3.19414-r5 (27 Sep 2006)
+*vmware-workstation-3.2.1.2242-r12 (27 Sep 2006)
+
+  27 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-workstation-3.2.1.2242-r11.ebuild,
+  +vmware-workstation-3.2.1.2242-r12.ebuild,
+  vmware-workstation-4.5.3.19414-r4.ebuild,
+  +vmware-workstation-4.5.3.19414-r5.ebuild,
+  vmware-workstation-5.5.1.19175-r4.ebuild,
+  +vmware-workstation-5.5.1.19175-r5.ebuild:
+  Revision bump to force an upgrade due to bug #148682.
+
+  15 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-workstation-3.2.1.2242-r11.ebuild,
+  vmware-workstation-4.5.3.19414-r4.ebuild,
+  vmware-workstation-5.5.1.19175-r4.ebuild:
+  Added a bunch of QA variable information for bug #143100.
+
+  10 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-workstation-5.5.1.19175-r4.ebuild:
+  Alright, uncomment the creation of our own VMware desktop entry, change it
+  to use type=System, and add an entry for VMware Player. This makes the icons
+  the same as what is provided by upstream.
+
+  09 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-workstation-5.5.1.19175-r4.ebuild:
+  Remove the desktop entry that we're creating in favor the the
+  VMware-supplied versions.
+
+  25 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  files/digest-vmware-workstation-3.2.1.2242-r11,
+  files/digest-vmware-workstation-4.5.3.19414-r4,
+  files/digest-vmware-workstation-5.5.1.19175-r4, Manifest:
+  Redigested for vmware-any-any-update104.
+
+  25 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/vmware-workstation-4.5.3.19414-librarypath.patch,
+  -files/vmware-workstation-5.5.1.19175-config.patch,
+  -files/vmware-workstation-5.5.1.19175-config2.patch,
+  -files/vmware-workstation-5.5.1.19175-config3.patch, -files/vmware.rc,
+  -files/vmware.xml, -vmware-workstation-3.2.1.2242-r10.ebuild,
+  vmware-workstation-3.2.1.2242-r11.ebuild,
+  -vmware-workstation-4.5.3.19414-r3.ebuild,
+  vmware-workstation-4.5.3.19414-r4.ebuild,
+  -vmware-workstation-5.5.1.19175-r3.ebuild,
+  vmware-workstation-5.5.1.19175-r4.ebuild:
+  Stable on amd64/x86 and removing older ebuilds.
+
+  09 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-workstation-4.5.3.19414-r4.ebuild,
+  vmware-workstation-5.5.1.19175-r4.ebuild:
+  Fix icons to point to the right place. Blame Paul Varner
+  <fuzzyray@gentoo.org> on bug #123655.
+
+  09 Aug 2006; Mike Auty <ikelos@gentoo.org>
+  vmware-workstation-3.2.1.2242-r10.ebuild,
+  vmware-workstation-3.2.1.2242-r11.ebuild,
+  vmware-workstation-4.5.3.19414-r3.ebuild,
+  vmware-workstation-4.5.3.19414-r4.ebuild,
+  vmware-workstation-5.5.1.19175-r3.ebuild,
+  vmware-workstation-5.5.1.19175-r4.ebuild:
+  -m Alter ebuild so that the metadata cache is invalidated.
+
+  08 Aug 2006; Mike Auty <ikelos@gentoo.org>
+  files/digest-vmware-workstation-3.2.1.2242-r11,
+  files/digest-vmware-workstation-4.5.3.19414-r4,
+  files/digest-vmware-workstation-5.5.1.19175-r4, Manifest:
+  New digests to work with vmware-any-any103, which fixes some problems with
+  the 2.6.18 kernel.
+
+  04 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-workstation-3.2.1.2242-r11.ebuild,
+  vmware-workstation-4.5.3.19414-r4.ebuild,
+  vmware-workstation-5.5.1.19175-r4.ebuild:
+  Fix up the icon creation for each of the new revisions.
+
+*vmware-workstation-5.5.1.19175-r4 (04 Aug 2006)
+*vmware-workstation-4.5.3.19414-r4 (04 Aug 2006)
+*vmware-workstation-3.2.1.2242-r11 (04 Aug 2006)
+
+  04 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/4.5.3.19414/000_all_librarypath.patch,
+  +files/5.5.1.19175/000_all_initd-location.patch,
+  +files/4.5.3.19414/002_all_pagebreak-detection-fix.patch,
+  +files/5.5.1.19175/001_all_fix-permissions.patch,
+  +files/4.5.3.19414/009_all_init.d-modules-warning.patch,
+  +files/5.5.1.19175/002_all_pagebreak-detection-fix.patch,
+  +files/5.5.1.19175/004_all_do-not-build-modules.patch,
+  +files/5.5.1.19175/007_all_use-modprobe-over-insmod.patch,
+  +files/5.5.1.19175/009_all_init.d-modules-warning.patch,
+  +files/vmware-workstation.rc, +files/vmware-workstation.xml,
+  +vmware-workstation-3.2.1.2242-r11.ebuild,
+  +vmware-workstation-4.5.3.19414-r4.ebuild,
+  +vmware-workstation-5.5.1.19175-r4.ebuild:
+  Moved vmware-workstation ebuilds using the new vmware eclass from the vmware
+  overlay to the tree.
+
+  27 Jul 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-workstation-3.2.1.2242-r10.ebuild,
+  vmware-workstation-4.5.3.19414-r3.ebuild,
+  vmware-workstation-5.5.1.19175-r3.ebuild:
+  Changed to use mirror://vmware instead of the individual sites.
+
+  17 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -vmware-workstation-3.2.1.2242-r7.ebuild,
+  -vmware-workstation-4.5.3.19414.ebuild,
+  -vmware-workstation-5.5.1.19175.ebuild:
+  Removing older ebuilds.
+
+  17 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-workstation-3.2.1.2242-r10.ebuild,
+  vmware-workstation-4.5.3.19414-r3.ebuild,
+  vmware-workstation-5.5.1.19175-r3.ebuild:
+  Marking stable on amd64/x86 (where applicable) to force users to upgrade to
+  the new update101 patch, which fixes compilation on several kernels.
+
+*vmware-workstation-5.5.1.19175-r3 (17 Apr 2006)
+*vmware-workstation-4.5.3.19414-r3 (17 Apr 2006)
+*vmware-workstation-3.2.1.2242-r10 (17 Apr 2006)
+
+  17 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -vmware-workstation-3.2.1.2242-r9.ebuild,
+  +vmware-workstation-3.2.1.2242-r10.ebuild,
+  -vmware-workstation-4.5.3.19414-r2.ebuild,
+  +vmware-workstation-4.5.3.19414-r3.ebuild,
+  -vmware-workstation-5.5.1.19175-r2.ebuild,
+  +vmware-workstation-5.5.1.19175-r3.ebuild:
+  Revision bump to bring in update101.
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-workstation-5.5.1.19175-r2.ebuild:
+  It helps if I actually add the patch to the ebuild. Closing bug #127023 and
+  bug #127661.
+
+*vmware-workstation-5.5.1.19175-r2 (31 Mar 2006)
+*vmware-workstation-4.5.3.19414-r2 (31 Mar 2006)
+*vmware-workstation-3.2.1.2242-r9 (31 Mar 2006)
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/vmware-workstation-5.5.1.19175-config3.patch,
+  -vmware-workstation-3.2.1.2242-r8.ebuild,
+  +vmware-workstation-3.2.1.2242-r9.ebuild,
+  -vmware-workstation-4.5.3.19414-r1.ebuild,
+  +vmware-workstation-4.5.3.19414-r2.ebuild,
+  -vmware-workstation-5.5.1.19175-r1.ebuild,
+  +vmware-workstation-5.5.1.19175-r2.ebuild:
+  Added patch for vmware-config.pl to allow for 2G/2G from 2.6.16 and closing
+  bug #127661 and bug #127023.
+
+*vmware-workstation-5.5.1.19175-r1 (20 Mar 2006)
+*vmware-workstation-4.5.3.19414-r1 (20 Mar 2006)
+*vmware-workstation-3.2.1.2242-r8 (20 Mar 2006)
+
+  20 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-workstation-3.2.1.2242-r7.ebuild,
+  +vmware-workstation-3.2.1.2242-r8.ebuild,
+  +vmware-workstation-4.5.3.19414-r1.ebuild,
+  +vmware-workstation-5.5.1.19175-r1.ebuild:
+  Added a new revision with vmware-any-any-update98 that should also resolve
+  bug #117696.

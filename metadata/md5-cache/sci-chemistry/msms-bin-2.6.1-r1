@@ -1,0 +1,10 @@
+DEFINED_PHASES=install nofetch
+DESCRIPTION=MSMS allows to compute very efficiently triangulations of Solvent Excluded Surfaces
+EAPI=4
+HOMEPAGE=http://mgl.scripps.edu/people/sanner/html/msms_home.html
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=MSMS
+RESTRICT=fetch
+SLOT=0
+SRC_URI=amd64? ( msms_i86_64Linux2_2.6.1.tar.gz ) x86? ( msms_i86Linux2_2.6.1.tar.gz )
+_md5_=9e825a93c1933539422eb71060ea6a16

@@ -1,0 +1,72 @@
+# ChangeLog for sys-apps/pacman
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pacman/ChangeLog,v 1.14 2015/01/05 21:46:57 mgorny Exp $
+
+  05 Jan 2015; Michał Górny <mgorny@gentoo.org> pacman-4.0.3-r1.ebuild:
+  Use python-any-r1 for tests.
+
+*pacman-4.0.3-r1 (24 Oct 2014)
+
+  24 Oct 2014; Michał Górny <mgorny@gentoo.org> +pacman-4.0.3-r1.ebuild:
+  Add missing aliases for completions, bug #526316.
+
+*pacman-4.0.3 (02 Jul 2012)
+
+  02 Jul 2012; Nathan Phillip Brink <binki@gentoo.org> +pacman-4.0.3.ebuild:
+  Add pacman-4.0.3, fixing bug #421313.
+
+  16 Jun 2012; Nathan Phillip Brink <binki@gentoo.org> pacman-4.0.1.ebuild:
+  Fix inconsistency between m4/gettext.m4 and Makefile.in.in caused by
+  autopoint running. Fixes bug #420469 by Ilya Gordeev.
+
+  08 May 2012; Jeff Horelick <jdhore@gentoo.org> pacman-4.0.1.ebuild:
+  Keyword ~x86. Tested by me, signed off by binki.
+
+*pacman-4.0.1 (28 Jan 2012)
+
+  28 Jan 2012; Nathan Phillip Brink <binki@gentoo.org> -pacman-3.5.4.ebuild,
+  -pacman-4.0.0.ebuild, +pacman-4.0.1.ebuild:
+  Bump to pacman-4.0.1, dropping old pacmen. Fixes bug #400933 where pacman was
+  incompatible with >=libarchive-3.
+
+*pacman-4.0.0 (18 Oct 2011)
+
+  18 Oct 2011; Nathan Phillip Brink <binki@gentoo.org> +pacman-4.0.0.ebuild,
+  +files/pacman-4.0.0-gpgme.patch, metadata.xml:
+  Bump to pacman-4.0.0. Add support for gpgme with help of buildsystem patch,
+  support new libcurl functionality, add missing asciidoc DEPEND, and install
+  bash completion files.
+
+  16 Oct 2011; Nathan Phillip Brink <binki@gentoo.org> -pacman-3.4.1.ebuild,
+  -pacman-3.5.2.ebuild:
+  Clean out old versions (pacman-3.4.1, pacman-3.5.2).
+
+*pacman-3.5.4 (23 Aug 2011)
+
+  23 Aug 2011; Nathan Phillip Brink <binki@gentoo.org> +pacman-3.5.4.ebuild:
+  Bump to pacman-3.5.4 (bug #379305).
+
+  08 Jun 2011; Nathan Phillip Brink <binki@gentoo.org> -pacman-3.3.3.ebuild:
+  Drop old pacman-3.3.3.
+
+*pacman-3.5.2 (08 Jun 2011)
+
+  08 Jun 2011; Nathan Phillip Brink <binki@gentoo.org> +pacman-3.5.2.ebuild:
+  Bump to pacman-3.5.2 and use EAPI=4 and autotools-utils eclass for it.
+
+  04 May 2011; Nathan Phillip Brink <binki@gentoo.org> metadata.xml:
+  Take over pacman which used to be proxy maintained for me.
+
+*pacman-3.4.1 (01 Nov 2010)
+
+  01 Nov 2010; Markos Chandras <hwoarang@gentoo.org> +pacman-3.4.1.ebuild:
+  Version bump. Thanks to Nathan Phillip Brink
+  (ohnobinki)<ohnobinki@ohnopublishing.net>. Bug #341229
+
+*pacman-3.3.3 (12 May 2010)
+
+  12 May 2010; Markos Chandras <hwoarang@gentoo.org> +pacman-3.3.3.ebuild,
+  +metadata.xml:
+  Initial commit of pacman package manager. Moved from sunrise overlay.
+  Thanks to Nathan Phillip Brink (ohnobinki) <ohnobinki@ohnopublishing.net>.
+  Fixes bug #299275

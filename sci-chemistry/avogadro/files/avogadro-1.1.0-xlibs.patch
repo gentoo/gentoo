@@ -1,0 +1,16 @@
+ * Info: Using [gentoo] (https://bugs.gentoo.org/xmlrpc.cgi)
+ * Info: Getting attachment 403034
+ * Info: Viewing attachment: "X11.patch"
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 60ec98f..03443a7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -225,6 +225,7 @@ set(I18N_LANGUAGE "" CACHE STRING "Build i18n only for selected language")
+ 
+ find_package(Qt4 4.6.0 REQUIRED) # find and setup Qt4 for this project
+ find_package(OpenGL REQUIRED) # find and setup OpenGL
++find_package(X11 REQUIRED)
+ find_package(Linguist) # find and setup Linguist
+ if(NOT Linguist_FOUND)
+   message(WARNING " Qt4 Linguist not found, please install it if you want Avogadro translations")
+

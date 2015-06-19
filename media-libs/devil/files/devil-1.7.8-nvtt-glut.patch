@@ -1,0 +1,83 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Tue May  1 20:00:44 UTC 2012
+Subject: build system
+
+remove automagic handling of glut and add configure option
+fix "header present but cannot be compiled" warning for nvtt
+
+--- m4/ax_check_glut.m4
++++ m4/ax_check_glut.m4
+@@ -114,4 +114,11 @@
+ 
+ AC_SUBST([GLUT_CFLAGS])
+ AC_SUBST([GLUT_LIBS])
++
++AC_ARG_ENABLE([glut],
++	       [AS_HELP_STRING([--enable-glut],
++			       [Enable support for glut (default=yes)]) ],
++	       [enable_glut=$enableval],
++	       [enable_glut="yes"])
++
+ ])dnl
+--- m4/devil-api_checks.m4
++++ m4/devil-api_checks.m4
+@@ -31,8 +31,8 @@
+                  AS_IF([test "x$no_gl" != "xyes" -a "x$no_glu" != "xyes"],
+                        [use_ogl="yes"
+ 		        ILUT_LIBS="$GLU_LIBS $GL_LIBS $ILUT_LIBS" 
+-                        AS_IF([test "x$no_glut" != "xyes"],
+-                              [have_glut="yes"
++                        AS_IF([test "x$no_glut" != "xyes" -a "x$enable_glut" = "xyes"],
++                              [use_glut="yes"
+                                ILUT_LIBS="$GLUT_LIBS  $ILUT_LIBS"])
+                         AC_DEFINE([ILUT_USE_OPENGL],
+ 	                          [1],
+--- configure.ac
++++ configure.ac
+@@ -343,8 +343,10 @@
+ 			    [Do you want to use the Nvidia texture tools if possible? (enables GPU accelerated image manipulation, default="yes")]) ],
+ 	    [],
+ 	    [with_nvtt="yes"])
++AC_LANG_PUSH([C++])
+ AS_IF([test "x$with_nvtt" = "xyes"],
+       [DEVIL_CHECK_NVIDIA_TEXTOOLS])
++AC_LANG_POP
+ 
+ dnl
+ dnl ILUT APIs library checking
+@@ -392,8 +394,8 @@
+ AM_CONDITIONAL([USE_OPENGL],
+                [test "x$use_ogl" = "xyes"])
+ 
+-AM_CONDITIONAL([HAVE_GLUT],
+-	       [test "x$have_glut" = "xyes"])
++AM_CONDITIONAL([USE_GLUT],
++	       [test "x$use_glut" = "xyes"])
+ 
+ AM_CONDITIONAL([USE_SDL],
+                [test "x$use_sdl" = "xyes"])
+@@ -410,7 +412,7 @@
+ AM_CONDITIONAL([USE_X11],
+                [test "x$use_x11" = "xyes"])
+ #this is instedad AM_COND_IF([USE_OPENGL && USE_X11])
+-AS_IF([test "x$have_glut" = "xyes" -a "x$use_x11" = "xyes"],
++AS_IF([test "x$use_glut" = "xyes" -a "x$use_x11" = "xyes"],
+       [EXAMPLES_TO_BUILD="$EXAMPLES_TO_BUILD ILUT_gl ILUT_volume"])
+ 
+ dnl Win32
+--- bin/Makefile.am
++++ bin/Makefile.am
+@@ -45,11 +45,11 @@
+ examples_PROGRAMS += ILUT_animation
+ endif #USE_W32
+ 
+-if HAVE_GLUT
++if USE_GLUT
+ if USE_X11
+ examples_PROGRAMS += ILUT_gl ILUT_volume
+ endif #USE_X11
+-endif #HAVE_GLUT
++endif #USE_GLUT
+ 
+ endif #BUILD_ILUT
+ 

@@ -1,0 +1,188 @@
+# ChangeLog for x11-libs/libXevie
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXevie/ChangeLog,v 1.48 2011/02/14 23:22:40 xarthisius Exp $
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> libXevie-1.0.3.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> libXevie-1.0.3.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #344827
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> libXevie-1.0.2.ebuild:
+  Drop to ~mips
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> libXevie-1.0.3.ebuild:
+  Stable for HPPA (bug #344827).
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org> libXevie-1.0.3.ebuild:
+  arm stable, bug #344827
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  libXevie-1.0.3.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> libXevie-1.0.3.ebuild:
+  amd64 stable wrt #344827
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> libXevie-1.0.3.ebuild:
+  ppc64 stable wrt #344827
+
+*libXevie-1.0.3 (01 Nov 2010)
+
+  01 Nov 2010; Tomáš Chvátal <scarabeus@gentoo.org> +libXevie-1.0.3.ebuild:
+  Version bump
+
+  31 Jan 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  -files/fix_shadow_manpages.patch, -libXevie-1.0.1.ebuild:
+  Clean up.
+
+  07 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> libXevie-1.0.2.ebuild:
+  Stable on sparc wrt #175465
+
+  03 Jul 2007; Lars Weiler <pylon@gentoo.org> libXevie-1.0.2.ebuild:
+  Stable on ppc; bug #175465.
+
+  02 Jul 2007; Raúl Porcel <armin76@gentoo.org> libXevie-1.0.2.ebuild:
+  alpha stable wrt #175465
+
+  24 Jun 2007; Joshua Kinard <kumba@gentoo.org> libXevie-1.0.2.ebuild:
+  Stable on mips, per #175465.
+
+  20 May 2007; Jeroen Roovers <jer@gentoo.org> libXevie-1.0.2.ebuild:
+  Stable for HPPA (bug #175465).
+
+  04 May 2007; Daniel Gryniewicz <dang@gentoo.org> libXevie-1.0.2.ebuild:
+  Marked stable on amd64 for bug #175465
+
+  30 Apr 2007; Roy Marples <uberlord@gentoo.org> libXevie-1.0.2.ebuild:
+  Added ~x86-fbsd keyword, #176517.
+
+  29 Apr 2007; Andrej Kacian <ticho@gentoo.org> libXevie-1.0.2.ebuild:
+  Stable on x86, bug #175465.
+
+  25 Apr 2007; Raúl Porcel <armin76@gentoo.org> libXevie-1.0.2.ebuild:
+  Stable on ia64 wrt bug #175465.
+
+  25 Apr 2007; Markus Rothe <corsair@gentoo.org> libXevie-1.0.2.ebuild:
+  Stable on ppc64; bug #175465
+
+*libXevie-1.0.2 (21 Oct 2006)
+
+  21 Oct 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXevie-1.0.2.ebuild:
+  Version bump.
+
+  01 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  libXevie-1.0.1.ebuild:
+  libXext has a runtime dep on xextproto now, so we don't need to depend on it
+  here.
+
+  19 Jul 2006; Guy Martin <gmsoft@gentoo.org> libXevie-1.0.1.ebuild:
+  Stable on hppa.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> libXevie-1.0.1.ebuild:
+  Mark 1.0.1 stable on ia64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  libXevie-1.0.1.ebuild:
+  ppc/sparc/mips/alpha/arm/sh stable
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  -libXevie-1.0.0-r1.ebuild:
+  Pull old versions.
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> libXevie-1.0.1.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org> libXevie-1.0.1.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  libXevie-1.0.1.ebuild:
+  x86 stable.
+
+*libXevie-1.0.1 (29 Apr 2006)
+
+  29 Apr 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXevie-1.0.1.ebuild:
+  Version bump.  Includes some Cygwin build fixes and the shadow manpages fix.
+
+  28 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-libXevie-1.0.0-r1, Manifest:
+  Revert to working digest.
+
+  28 Apr 2006; Alec Warner <antarus@gentoo.org>
+  files/digest-libXevie-1.0.0-r1, Manifest:
+  Fixing SHA256 digest, pass four
+
+  26 Mar 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  libXevie-1.0.0-r1.ebuild:
+  (#127452) Add evieext to RDEPEND.
+
+  24 Mar 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  libXevie-1.0.0-r1.ebuild:
+  (#127306) Digests changed between release candidates and final release for
+  the same tarballs.
+
+*libXevie-1.0.0-r1 (22 Feb 2006)
+
+  22 Feb 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +files/fix_shadow_manpages.patch, -libXevie-1.0.0.ebuild,
+  +libXevie-1.0.0-r1.ebuild:
+  Fix shadow manpages.
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> libXevie-1.0.0.ebuild:
+  Added ~ppc64; bug #122726
+
+  09 Feb 2006; Luca Barbato <lu_zero@gentoo.org> libXevie-1.0.0.ebuild:
+  Marked ~ppc
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -libXevie-0.99.3.ebuild:
+  Pull old versions.
+
+*libXevie-1.0.0 (17 Dec 2005)
+
+  17 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXevie-1.0.0.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -libXevie-0.99.2.ebuild:
+  Pull old versions.
+
+*libXevie-0.99.3 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXevie-0.99.3.ebuild:
+  Bump for 7.0RC3.
+
+  26 Nov 2005; Simon Stelling <blubb@gentoo.org> libXevie-0.99.2.ebuild:
+  added ~amd64 keyword
+
+  04 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -libXevie-0.99.0.ebuild:
+  Drop old version.
+
+  30 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  libXevie-0.99.2.ebuild:
+  Move xproto dep to reflect compile-time requirements.
+
+*libXevie-0.99.2 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libXevie-0.99.2.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> libXevie-0.99.0.ebuild:
+  Add ~sparc keyword (modular X testing).
+
+*libXevie-0.99.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libXevie-0.99.0.ebuild:
+  Initial commit for modular X.
+

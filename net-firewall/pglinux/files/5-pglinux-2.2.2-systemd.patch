@@ -1,0 +1,18 @@
+commit fe6a60d6be7c611d0568042e5bdbdd9398f9a7e8
+Author: jre <jre-phoenix@users.sourceforge.net>
+Date:   Tue Jun 11 22:42:21 2013 +0200
+
+    add RemainAfterExit to prevent timeout during long blocklist downloads
+
+diff --git a/pgl/pglcmd/init/pgl.service.in b/pgl/pglcmd/init/pgl.service.in
+index c8809d0..64ee040 100644
+--- a/pgl/pglcmd/init/pgl.service.in
++++ b/pgl/pglcmd/init/pgl.service.in
+@@ -10,6 +10,7 @@ Type=forking
+ ExecStart=@BIN_DIR@/pglcmd start
+ ExecStop=@BIN_DIR@/pglcmd stop
+ PIDFile=@PID_DIR@/pgld.pid
++RemainAfterExit=yes
+ 
+ [Install]
+ WantedBy=multi-user.target

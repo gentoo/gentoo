@@ -1,0 +1,27 @@
+# ChangeLog for app-vim/nerdtree
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/nerdtree/ChangeLog,v 1.6 2013/11/30 12:53:50 johu Exp $
+
+  30 Nov 2013; Johannes Huber <johu@gentoo.org> nerdtree-4.2.0.ebuild:
+  x86 stable wrt bug #481840
+
+  05 Nov 2013; Tony Vroon <chainsaw@gentoo.org> nerdtree-4.2.0.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #481840.
+
+  21 Oct 2013; Fabian Groffen <grobian@gentoo.org> nerdtree-4.2.0.ebuild:
+  Marked ~x64-macos, bug #486818
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, #274113
+
+*nerdtree-4.2.0 (03 Aug 2012)
+
+  03 Aug 2012; Tim Harder <radhermit@gentoo.org> +nerdtree-4.2.0.ebuild:
+  Version bump (bug #417559).
+
+*nerdtree-4.1.0 (27 Jun 2010)
+
+  27 Jun 2010; Dror Levin <spatz@gentoo.org> +nerdtree-4.1.0.ebuild,
+  +metadata.xml:
+  Initial import.

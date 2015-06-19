@@ -1,0 +1,20 @@
+# ChangeLog for dev-perl/ExtUtils-Config
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/ExtUtils-Config/ChangeLog,v 1.5 2015/05/20 04:47:53 mattst88 Exp $
+
+  20 May 2015; Matt Turner <mattst88@gentoo.org> ExtUtils-Config-0.7.0.ebuild:
+  Added ~alpha, bug 548352.
+
+  03 May 2015; Jeroen Roovers <jer@gentoo.org> ExtUtils-Config-0.7.0.ebuild:
+  Mark ~hppa (bug #548352).
+
+  03 May 2015; Jeroen Roovers <jer@gentoo.org> ExtUtils-Config-0.7.0.ebuild:
+  Mark ~ppc64 (bug #548352).
+
+  09 Nov 2014; Mikle Kolyada <zlogene@gentoo.org> ExtUtils-Config-0.7.0.ebuild:
+  Add ~ppc keyword wrt bug #518644
+
+*ExtUtils-Config-0.7.0 (31 Jul 2014)
+
+  31 Jul 2014; Vladimir Smirnov +ExtUtils-Config-0.7.0.ebuild, +metadata.xml:
+  Initial Release. Based on kent's ebuild from perl-experimental.

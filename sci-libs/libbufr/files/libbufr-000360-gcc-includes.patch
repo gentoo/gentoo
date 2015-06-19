@@ -1,0 +1,15 @@
+--- examples/bufr_decode.c.orig	2008-09-17 03:02:39.000000000 -0700
++++ examples/bufr_decode.c	2010-12-27 19:03:57.000000000 -0800
+@@ -7,9 +7,9 @@
+ * See LICENSE and gpl-3.0.txt for details.
+ */
+ 
+-#include "stdio.h"
+-#include "stdlib.h"
+-
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ 
+ 
+ int main(int argc, char *argv[])

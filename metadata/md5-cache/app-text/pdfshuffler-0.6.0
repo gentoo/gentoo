@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup
+DEPEND=dev-python/pyPdf dev-python/python-poppler =dev-lang/python-2* >=sys-apps/sed-4
+DESCRIPTION=PDF-Shuffler is GUI app that can merge or split pdfs and rotate, crop and rearrange their pages
+EAPI=4
+HOMEPAGE=http://sourceforge.net/projects/pdfshuffler/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-python/pyPdf dev-python/python-poppler =dev-lang/python-2*
+SLOT=0
+SRC_URI=mirror://sourceforge/pdfshuffler/pdfshuffler-0.6.0.tar.gz
+_eclasses_=distutils	92e738ea29389cb3f34778d7a349ac71	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=2099443b4b56d990978cbc7e79c2a067

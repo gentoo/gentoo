@@ -1,0 +1,27 @@
+Index: quotatool-1.4.11/local.mk.in
+===================================================================
+--- quotatool-1.4.11.orig/local.mk.in
++++ quotatool-1.4.11/local.mk.in
+@@ -17,7 +17,8 @@ SHELL           :=   /bin/sh
+ 
+ CC              :=   @CC@
+ CFLAGS          :=   @CFLAGS@
+-CPPFLAGS         =   $(inc) @DEFS@
++LDFLAGS         :=   @LDFLAGS@
++CPPFLAGS         =   @CPPFLAGS@ $(inc) @DEFS@
+ 
+ 
+ INSTALL         :=   @INSTALL@
+Index: quotatool-1.4.11/Makefile
+===================================================================
+--- quotatool-1.4.11.orig/Makefile
++++ quotatool-1.4.11/Makefile
+@@ -58,7 +58,7 @@ subdirs    :=   src
+ # compile the program (and the objects)
+ all: $(prog)
+ $(prog): $(objs) 
+-	$(CC) -o $(prog) $(objs) $(libs) $(CFLAGS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $(prog) $(objs) $(libs)
+ 
+ 
+ 

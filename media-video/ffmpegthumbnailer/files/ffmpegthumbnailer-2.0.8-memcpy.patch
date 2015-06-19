@@ -1,0 +1,13 @@
+libffmpegthumbnailer/pngwriter.cpp: In function 'void ffmpegthumbnailer::writeDataCallback(png_structp, png_bytep, png_size_t)':
+libffmpegthumbnailer/pngwriter.cpp:111:52: error: 'memcpy' was not declared in this scope
+
+--- libffmpegthumbnailer/pngwriter.cpp
++++ libffmpegthumbnailer/pngwriter.cpp
+@@ -17,6 +17,7 @@
+ #include "pngwriter.h"
+ #include <stdexcept>
+ #include <cassert>
++#include <cstring>
+ 
+ using namespace std;
+ 

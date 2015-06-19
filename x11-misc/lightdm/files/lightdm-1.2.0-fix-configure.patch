@@ -1,0 +1,10 @@
+--- configure.ac~	2012-04-23 12:12:44.000000000 +0100
++++ configure.ac	2012-04-23 12:25:51.050999668 +0100
+@@ -93,6 +93,7 @@
+     PKG_CHECK_MODULES(LIBLIGHTDM_QT, [
+         QtCore
+         QtDBus
++        QtGui
+     ])
+     QT4_BINDIR=`$PKG_CONFIG Qt --variable bindir`
+     AC_CHECK_TOOLS(MOC, [moc-qt4 moc],, [$QT4_BINDIR:$PATH])

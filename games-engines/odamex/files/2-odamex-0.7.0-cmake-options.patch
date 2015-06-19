@@ -1,0 +1,110 @@
+From 851bc58a74eadd89838c924167f27df1b9d3be37 Mon Sep 17 00:00:00 2001
+From: hasufell <hasufell@gentoo.org>
+Date: Thu, 27 Mar 2014 21:14:20 +0100
+Subject: [PATCH 2/4] add various cmake options
+
+---
+ CMakeLists.txt        | 26 ++++++++++++++++++++++----
+ client/CMakeLists.txt | 34 ++++++++++++++++++++--------------
+ 2 files changed, 42 insertions(+), 18 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 262e3db..91d5c50 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,13 @@
+ include(CMakeDependentOption)
+ include(GNUInstallDirs)
+ 
++# options
++option(BUILD_CLIENT "Build client target" 1)
++option(BUILD_SERVER "Build server target" 1)
++option(BUILD_MASTER "Build master server target" 1)
++cmake_dependent_option( BUILD_ODALAUNCH "Build odalaunch target" 1 BUILD_CLIENT 0 )
++cmake_dependent_option( ENABLE_PORTMIDI "Enable portmidi support" 1 BUILD_CLIENT 0 )
++
+ project(Odamex)
+ cmake_minimum_required(VERSION 2.8)
+ 
+@@ -73,10 +80,21 @@ if(USE_INTREE_PORTMIDI)
+ endif()
+ 
+ # Subdirectories for Odamex projects
+-add_subdirectory(client)
+-add_subdirectory(server)
+-add_subdirectory(master)
+-add_subdirectory(odalaunch)
++if(BUILD_CLIENT)
++	add_subdirectory(client)
++endif()
++if(BUILD_SERVER)
++	add_subdirectory(server)
++endif()
++if(BUILD_MASTER)
++	add_subdirectory(master)
++endif()
++if(BUILD_ODALAUNCH)
++	add_subdirectory(odalaunch)
++endif()
++if(NOT BUILD_CLIENT AND NOT BUILD_SERVER AND NOT BUILD_MASTER)
++	message(FATAL_ERROR "No target chosen, doing nothing.")
++endif()
+ 
+ # Disable the ag-odalaunch target completely: -DNO_AG-ODALAUNCH_TARGET
+ # This is only really useful when setting up a universal build.
+diff --git a/client/CMakeLists.txt b/client/CMakeLists.txt
+index 3f73ab5..7363c5a 100644
+--- a/client/CMakeLists.txt
++++ b/client/CMakeLists.txt
+@@ -107,17 +107,21 @@ include_directories(${PNG_INCLUDE_DIRS})
+ add_definitions(-DUSE_PNG)
+ 
+ # PortMidi configuration
+-if(USE_INTREE_PORTMIDI)
+-  include_directories(../libraries/portmidi/pm_common/ ../libraries/portmidi/porttime/)
+-  add_definitions(-DPORTMIDI)
++if(ENABLE_PORTMIDI)
++	if(USE_INTREE_PORTMIDI)
++	  include_directories(../libraries/portmidi/pm_common/ ../libraries/portmidi/porttime/)
++	  add_definitions(-DPORTMIDI)
++	else()
++	  find_package(PortMidi QUIET)
++	  if(PORTMIDI_FOUND)
++		include_directories(${PORTMIDI_INCLUDE_DIR})
++		add_definitions(-DPORTMIDI)
++	  else()
++		message(WARNING "PortMidi not found, client will be built without PortMidi support.")
++	  endif()
++	endif()
+ else()
+-  find_package(PortMidi QUIET)
+-  if(PORTMIDI_FOUND)
+-    include_directories(${PORTMIDI_INCLUDE_DIR})
+-    add_definitions(-DPORTMIDI)
+-  else()
+-    message(WARNING "PortMidi not found, client will be built without PortMidi support.")
+-  endif()
++	message(STATUS "Portmidi disabled.")
+ endif()
+ 
+ # Find Mac frameworks
+@@ -147,10 +151,12 @@ if(SDL_FOUND AND SDLMIXER_FOUND)
+   target_link_libraries(odamex ${ZLIB_LIBRARY})
+   target_link_libraries(odamex ${PNG_LIBRARY} ${ZLIB_LIBRARY})
+ 
+-  if(USE_INTREE_PORTMIDI)
+-    target_link_libraries(odamex portmidi-static)
+-  elseif(PORTMIDI_FOUND)
+-    target_link_libraries(odamex ${PORTMIDI_LIBRARIES})
++  if(ENABLE_PORTMIDI)
++	  if(USE_INTREE_PORTMIDI)
++		target_link_libraries(odamex portmidi-static)
++	  elseif(PORTMIDI_FOUND)
++		target_link_libraries(odamex ${PORTMIDI_LIBRARIES})
++	  endif()
+   endif()
+ 
+   if(WIN32)
+-- 
+1.9.1
+

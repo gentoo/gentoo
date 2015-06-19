@@ -1,0 +1,16 @@
+--- src/org/apache/axis/i18n/ProjectResourceBundle.java.orig	2006-04-23 03:57:27.000000000 +0200
++++ src/org/apache/axis/i18n/ProjectResourceBundle.java	2009-11-08 19:08:20.000000000 +0100
+@@ -357,13 +357,6 @@
+         return resourceName;
+     }
+ 
+-    /**
+-     * Clears the internal cache
+-     */
+-    public static void clearCache()
+-    {
+-        bundleCache.clear();
+-    }
+     
+     public String toString() {
+         return resourceName;

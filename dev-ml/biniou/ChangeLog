@@ -1,0 +1,10 @@
+# ChangeLog for dev-ml/biniou
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/biniou/ChangeLog,v 1.1 2015/02/15 09:15:59 aballier Exp $
+
+*biniou-1.0.9 (15 Feb 2015)
+
+  15 Feb 2015; Alexis Ballier <aballier@gentoo.org> +biniou-1.0.9.ebuild,
+  +metadata.xml:
+  initial import, ebuild by José Romildo Malaquias, bug #539326
+

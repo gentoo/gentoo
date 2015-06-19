@@ -1,0 +1,63 @@
+# ChangeLog for sci-misc/oww
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/oww/ChangeLog,v 1.12 2015/04/08 06:53:09 jlec Exp $
+
+*oww-0.86.5 (08 Apr 2015)
+
+  08 Apr 2015; Justin Lecher <jlec@gentoo.org>
+  +files/oww-0.86.5-format-security.patch, +oww-0.86.5.ebuild:
+  Version Bump, bug #545636
+
+*oww-0.86.4 (08 Oct 2013)
+
+  08 Oct 2013; Justin Lecher <jlec@gentoo.org> -oww-0.82.1.ebuild,
+  -oww-0.83.2.ebuild, -oww-0.86.2.ebuild, +oww-0.86.4.ebuild,
+  +files/oww-0.86.4-build.patch:
+  Drop old and version bump, #487278
+
+*oww-0.86.2 (12 Mar 2013)
+
+  12 Mar 2013; Justin Lecher <jlec@gentoo.org> +oww-0.86.2.ebuild,
+  metadata.xml:
+  Version Bump
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> oww-0.82.1.ebuild,
+  oww-0.83.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*oww-0.83.2 (24 Jun 2010)
+
+  24 Jun 2010; Justin Lecher <jlec@gentoo.org> -oww-0.81.9.ebuild,
+  oww-0.82.1.ebuild, +oww-0.83.2.ebuild:
+  Version Bump, removed old version, included updates for 286165
+
+*oww-0.82.1 (07 Jul 2008)
+
+  07 Jul 2008; Sébastien Fabbro <bicatali@gentoo.org> +oww-0.82.1.ebuild:
+  Version bump, closing bug #231003
+
+  21 Dec 2006; Saleem Abdulrasool <compnerd@gentoo.org> -oww-0.71.1.ebuild:
+  gnome-1.x removal
+
+*oww-0.81.9 (28 Nov 2006)
+
+  28 Nov 2006; Markus Dittrich <markusle@gentoo.org> +oww-0.81.9.ebuild:
+  Version bump (see bug #156425).
+
+  17 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+*oww-0.71.1 (27 Dec 2004)
+
+  27 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +oww-0.71.1.ebuild:
+  Moved from app-sci/oww to sci-misc/oww.
+
+  19 Apr 2004; Patrick Kursawe <phosphan@gentoo.org> oww-0.71.1.ebuild:
+  Adding IUSE
+
+*oww-0.71.1 (17 Dec 2003)
+
+  17 Dec 2003; Patrick Kursawe <phosphan@gentoo.org> metadata.xml,
+  oww-0.71.1.ebuild:
+  Initial import based on bug #19974 by Roger Pau Monné <royger@bdftech.com>

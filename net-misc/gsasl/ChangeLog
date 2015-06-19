@@ -1,0 +1,244 @@
+# ChangeLog for net-misc/gsasl
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/gsasl/ChangeLog,v 1.61 2014/03/01 22:11:24 mgorny Exp $
+
+  01 Mar 2014; Michał Górny <mgorny@gentoo.org> gsasl-1.8.0-r1.ebuild:
+  Update libgcrypt dep to use slot :0.
+
+  21 Dec 2012; Eray Aslan <eras@gentoo.org> -gsasl-1.6.1.ebuild,
+  -gsasl-1.8.0.ebuild:
+  Remove old
+
+  29 Nov 2012; Brent Baude <ranger@gentoo.org> gsasl-1.8.0-r1.ebuild:
+  Marking gsasl-1.8.0-r1 ppc for bug 441932
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org> gsasl-1.8.0-r1.ebuild:
+  Stable for x86, wrt bug #441932
+
+  06 Nov 2012; Agostino Sarubbo <ago@gentoo.org> gsasl-1.8.0-r1.ebuild:
+  Stable for amd64, wrt bug #441932
+
+  22 Aug 2012; Johannes Huber <johu@gentoo.org> gsasl-1.8.0.ebuild:
+  Stable for x86, wrt bug #429178
+
+*gsasl-1.8.0-r1 (22 Aug 2012)
+
+  22 Aug 2012; Eray Aslan <eras@gentoo.org> +gsasl-1.8.0-r1.ebuild:
+  Add kerberos implementation info to configure - bug #432220
+
+  15 Aug 2012; Anthony G. Basile <blueness@gentoo.org> gsasl-1.8.0.ebuild:
+  Stable ppc, bug #429178
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> gsasl-1.8.0.ebuild:
+  Stable for amd64, wrt bug #429178
+
+  12 Jun 2012; Eray Aslan <eras@gentoo.org> gsasl-1.8.0.ebuild:
+  Don't use AM_PROG_AR in configure.ac as automake-1.11 does not recognize it
+
+  12 Jun 2012; Eray Aslan <eras@gentoo.org> gsasl-1.8.0.ebuild:
+  Fix failing autoreconf
+
+*gsasl-1.8.0 (29 May 2012)
+
+  29 May 2012; Tim Harder <radhermit@gentoo.org> +gsasl-1.8.0.ebuild:
+  Version bump. Add threads use flag and update to EAPI 4.
+
+  20 Feb 2012; Naohiro Aota <naota@gentoo.org> gsasl-1.6.1.ebuild:
+  Add ~x86-fbsd
+
+  27 Nov 2011; Jeroen Roovers <jer@gentoo.org> gsasl-1.6.1.ebuild:
+  Do not inherit autotools-utils.eclass (bug #392117).
+
+  27 Nov 2011; Tim Harder <radhermit@gentoo.org> gsasl-1.6.1.ebuild:
+  Build in the source tree.
+
+  05 Nov 2011; Eray Aslan <eras@gentoo.org> gsasl-1.6.1.ebuild,
+  +files/gsasl-gss-extra.patch:
+  Fix compiling against heimdal - bug #359005. Thanks to Rafał Mużyło.
+
+  06 Aug 2011; Eray Aslan <eras@gentoo.org> -gsasl-0.2.4.ebuild,
+  -gsasl-0.2.29.ebuild, -gsasl-1.1.ebuild, -gsasl-1.4.1.ebuild,
+  -gsasl-1.6.0.ebuild, -gsasl-1.6.0-r1.ebuild:
+  remove old
+
+  19 Jul 2011; Markus Meier <maekke@gentoo.org> gsasl-1.6.1.ebuild:
+  x86 stable, bug #364523
+
+  24 Jun 2011; Raúl Porcel <armin76@gentoo.org> gsasl-0.2.4.ebuild,
+  gsasl-0.2.29.ebuild, gsasl-1.1.ebuild, gsasl-1.4.1.ebuild,
+  gsasl-1.6.0.ebuild, gsasl-1.6.0-r1.ebuild, gsasl-1.6.1.ebuild:
+  Drop ia64/sparc keywords
+
+  22 Jun 2011; Brent Baude <ranger@gentoo.org> gsasl-1.6.1.ebuild:
+  Marking gsasl-1.6.1 ppc for bug 364523
+
+  18 Jun 2011; Markos Chandras <hwoarang@gentoo.org> gsasl-1.6.1.ebuild:
+  Stable on amd64 wrt bug #364523
+
+  02 May 2011; Jeroen Roovers <jer@gentoo.org> gsasl-1.6.0.ebuild,
+  gsasl-1.6.0-r1.ebuild:
+  Fix USE=static in other ebuilds too.
+
+*gsasl-1.6.1 (02 May 2011)
+
+  02 May 2011; Jeroen Roovers <jer@gentoo.org> +gsasl-1.6.1.ebuild:
+  Version bump. Have USE=static-libs not USE=static.
+
+*gsasl-1.6.0-r1 (25 Apr 2011)
+
+  25 Apr 2011; Eray Aslan <eras@gentoo.org> +gsasl-1.6.0-r1.ebuild,
+  metadata.xml:
+  EAPI bump. Tidy up and hopefully solve bug #331707
+
+  15 Mar 2011; Jeroen Roovers <jer@gentoo.org> gsasl-1.6.0.ebuild,
+  metadata.xml:
+  Optionally depend on dev-libs/libgcrypt by Marcin Mirosław (bug #358693).
+
+*gsasl-1.6.0 (09 Jan 2011)
+
+  09 Jan 2011; Jeroen Roovers <jer@gentoo.org> +gsasl-1.6.0.ebuild:
+  Version bump (bug #311319).
+
+  09 Jan 2011; Jeroen Roovers <jer@gentoo.org> gsasl-1.4.1.ebuild:
+  Do not run tests under valgrind (bug #346131).
+
+  17 Feb 2010; Jeroen Roovers <jer@gentoo.org> gsasl-0.2.4.ebuild,
+  gsasl-0.2.29.ebuild, gsasl-1.1.ebuild, gsasl-1.4.1.ebuild:
+  Switch to new style virtuals (bug #237400).
+
+*gsasl-1.4.1 (17 Feb 2010)
+
+  17 Feb 2010; Jeroen Roovers <jer@gentoo.org> gsasl-1.1.ebuild,
+  +gsasl-1.4.1.ebuild:
+  Version bump
+
+  (bug #300551). Have SRC_URI use mirror://gnu. Do not hardcode package name
+  in SRC_URI.
+
+  07 Jan 2010; Christian Faulhammer <fauli@gentoo.org> gsasl-1.1.ebuild:
+  Transfer Prefix keywords
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> gsasl-0.2.4.ebuild:
+  Remove virtual/libc
+
+*gsasl-1.1 (25 Apr 2009)
+
+  25 Apr 2009; Patrick Lauer <patrick@gentoo.org> +gsasl-1.1.ebuild:
+  Bump to 1.1, fixes half of #263867
+
+*gsasl-0.2.29 (29 Nov 2008)
+
+  29 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  -gsasl-0.2.28.ebuild, +gsasl-0.2.29.ebuild:
+  Version bump, bug #246507
+
+*gsasl-0.2.28 (07 Sep 2008)
+
+  07 Sep 2008; Tobias Scherbaum <dertobi123@gentoo.org> -gsasl-0.2.3.ebuild,
+  -gsasl-0.2.10.ebuild, -gsasl-0.2.21.ebuild, -gsasl-0.2.26.ebuild,
+  +gsasl-0.2.28.ebuild:
+  Version bump, #236712 and cleanup
+
+*gsasl-0.2.26 (15 Jun 2008)
+
+  15 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  +gsasl-0.2.26.ebuild:
+  Version bump (#217015), remove useless virtual/libc depend, remove static
+  use flag (#165740)
+
+  03 Feb 2008; Fabian Groffen <grobian@gentoo.org> gsasl-0.2.10.ebuild,
+  gsasl-0.2.21.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+*gsasl-0.2.21 (30 Sep 2007)
+
+  30 Sep 2007; Andrej Kacian <ticho@gentoo.org> +gsasl-0.2.21.ebuild:
+  Version bump.
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  14 Jan 2006; Fabian Groffen <grobian@gentoo.org> gsasl-0.2.10.ebuild:
+  Marked ~ppc-macos (bug #111381)
+
+*gsasl-0.2.10 (02 Jan 2006)
+
+  02 Jan 2006; Tom Martin <slarti@gentoo.org> +gsasl-0.2.10.ebuild:
+  Version bump, resolves bug #117318.
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> gsasl-0.2.4.ebuild:
+  Mark 0.2.4 stable on ia64
+
+  05 Jul 2005; Tom Martin <slarti@gentoo.org> gsasl-0.2.4.ebuild:
+  Marked ~ia64.
+
+  02 May 2005; Michael Hanselmann <hansmi@gentoo.org> gsasl-0.2.4.ebuild:
+  Stable on ppc.
+
+  02 May 2005; Elfyn McBratney <beu@gentoo.org> gsasl-0.2.4.ebuild:
+  Stable on x86.
+
+  02 May 2005; Tom Martin <slarti@gentoo.org> gsasl-0.2.4.ebuild:
+  Fix a typing error, preventing the ebuild from installing anything but docs.
+
+  19 Apr 2005; Tom Martin <slarti@gentoo.org> gsasl-0.2.4.ebuild:
+  Stable on amd64 and sparc.
+
+  10 Mar 2005; Tom Martin <slarti@gentoo.org> gsasl-0.2.4.ebuild:
+  Marked ~sparc.
+
+  22 Jan 2005; Tom Martin <slarti@gentoo.org> -gsasl-0.1.1.ebuild,
+  -gsasl-0.1.4.ebuild, -gsasl-0.2.0.ebuild:
+  Purge old versions.
+
+  22 Jan 2005; Andrej Kacian <ticho@gentoo.org> gsasl-0.2.3.ebuild:
+  Stable on x86.
+
+  22 Jan 2005; Lars Weiler <pylon@gentoo.org> gsasl-0.2.3.ebuild:
+  Stable on ppc.
+
+*gsasl-0.2.4 (22 Jan 2005)
+
+  22 Jan 2005; Tom Martin <slarti@gentoo.org> gsasl-0.2.3.ebuild,
+  +gsasl-0.2.4.ebuild:
+  Version bump, 0.2.3 stable on amd64.
+
+  25 Dec 2004; Andrej Kacian <ticho@gentoo.org> gsasl-0.2.0.ebuild:
+  Stable on x86.
+
+*gsasl-0.2.3 (25 Dec 2004)
+
+  25 Dec 2004; Tom Martin <slarti@gentoo.org> gsasl-0.2.0.ebuild,
+  +gsasl-0.2.3.ebuild:
+  Version bump, stabilise 0.2.0 on amd64.
+
+  13 Nov 2004; Tom Martin <slarti@gentoo.org> gsasl-0.2.0.ebuild:
+  I'd left gssapi out of use_enable kerberos, adding it back in.
+
+*gsasl-0.2.0 (13 Nov 2004)
+
+  13 Nov 2004; Tom Martin <slarti@gentoo.org> +gsasl-0.2.0.ebuild,
+  gsasl-0.1.4.ebuild,  metadata.xml:
+  Version bump to 0.2.0; Removed unnecessary variables (myconf,
+  UPST_SRC); added doc USE flag to install extra API documentation. Taking
+  over as maintainer. Stabilised 0.1.4 on amd64.
+
+*gsasl-0.1.4 (11 Oct 2004)
+
+  11 Oct 2004; Tom Martin <slarti@gentoo.org> gsasl-0.1.1.ebuild,
+  +gsasl-0.1.4.ebuild:
+  Marked 0.1.1 stable on amd64, version bumped -> 0.1.4.
+
+  09 Jul 2004; Michael Hanselmann <hansmi@gentoo.org> gsasl-0.1.1.ebuild:
+  Added to ~ppc.
+
+  07 Jul 2004; Tom Martin <slarti@gentoo.org> gsasl-0.1.1.ebuild:
+  Added to ~amd64.
+
+  06 Jul 2004; <langthang@gentoo.org> gsasl-0.1.1.ebuild:
+  added PROVIDE virtual/gsasl, changed description, re-keyword.
+
+*gsasl-0.1.1 (05 Jul 2004)
+
+  05 Jul 2004; <langthang@gentoo.org> +metadata.xml, +gsasl-0.1.1.ebuild:
+  New ebuild, bug #56015

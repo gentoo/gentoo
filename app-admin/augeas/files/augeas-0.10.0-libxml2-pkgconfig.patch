@@ -1,0 +1,24 @@
+From b41deef293841da50a236023bad486ea3f57e4dc Mon Sep 17 00:00:00 2001
+From: "Richard W.M. Jones" <rjones@redhat.com>
+Date: Sat, 3 Dec 2011 14:21:50 +0000
+Subject: [PATCH] pkg-config: Augeas requires libxml2.
+
+---
+ augeas.pc.in |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/augeas.pc.in b/augeas.pc.in
+index c97847d..9e166db 100644
+--- a/augeas.pc.in
++++ b/augeas.pc.in
+@@ -6,6 +6,6 @@ includedir=@includedir@
+ Name: augeas
+ Version: @VERSION@
+ Description: Augeas configuration editing library
+-Requires:
++Requires.private: libxml-2.0
+ Libs: -L${libdir} -laugeas @LIBS@
+ Cflags: -I${includedir}
+-- 
+1.7.6
+

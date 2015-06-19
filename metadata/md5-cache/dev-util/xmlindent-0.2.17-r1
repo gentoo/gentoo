@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=sys-devel/flex
+DESCRIPTION=XML Indent is an XML stream reformatter written in ANSI C, analogous to GNU indent
+EAPI=2
+HOMEPAGE=http://xmlindent.sourceforge.net/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/xmlindent/xmlindent-0.2.17.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ad06bcac8e853a0f3ea3887721924aae

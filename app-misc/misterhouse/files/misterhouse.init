@@ -1,0 +1,18 @@
+#!/sbin/runscript
+
+depend() {
+	need clock hostname net
+}
+
+start() {
+	export mh_parms="/etc/conf.d/misterhouse"
+	ebegin "Starting misterhouse"
+        start-stop-daemon --start --background --exec /opt/misterhouse/bin/mh -- -log_file="/var/log/misterhouse.log"
+	eend $? "Failed to start misterhouse"
+}
+
+stop() {
+	ebegin "Stopping misterhouse"
+	start-stop-daemon --stop --quiet --pidfile /var/run/misterhouse.pid
+	eend $? "Failed to stop misterhouse"
+}

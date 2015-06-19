@@ -1,0 +1,36 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/ddclient/files/ddclient.initd-r4,v 1.1 2014/01/30 12:33:29 titanofold Exp $
+
+PIDFILE="/run/ddclient/ddclient.pid"
+
+depend() {
+    before cron
+    need net
+    use dns logger squid
+}
+
+checkconfig() {
+    checkpath -f -m 0600 -o ddclient:ddclient /etc/ddclient/ddclient.conf || return 1
+    checkpath -d -m 0700 -o ddclient:ddclient /run/ddclient || return 1
+    checkpath -d -m 0700 -o ddclient:ddclient /var/cache/ddclient || return 1
+}
+
+start() {
+    checkconfig || return 1
+
+    ebegin "Starting ${SVCNAME}"
+    start-stop-daemon --start \
+        --user ddclient \
+	--name ddclient \
+        --pidfile ${PIDFILE} \
+        --exec /usr/sbin/ddclient -- -pid=${PIDFILE}
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping ${SVCNAME}"
+    start-stop-daemon --stop --signal USR1 --pidfile ${PIDFILE}
+    eend $?
+}

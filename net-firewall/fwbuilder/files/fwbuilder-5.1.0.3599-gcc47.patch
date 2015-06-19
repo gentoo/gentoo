@@ -1,0 +1,11 @@
+diff -ruN fwbuilder-5.1.0.3599.orig/src/libfwbuilder/src/fwbuilder/ThreadTools.h fwbuilder-5.1.0.3599/src/libfwbuilder/src/fwbuilder/ThreadTools.h
+--- fwbuilder-5.1.0.3599.orig/src/libfwbuilder/src/fwbuilder/ThreadTools.h	2012-03-23 07:10:54.000000000 +0100
++++ fwbuilder-5.1.0.3599/src/libfwbuilder/src/fwbuilder/ThreadTools.h	2012-06-27 02:33:32.122340892 +0200
+@@ -31,6 +31,7 @@
+ 
+ #include <time.h> //for time_t definition
+ #include <pthread.h>
++#include <unistd.h>
+ 
+ #include <string>
+ #include <queue>

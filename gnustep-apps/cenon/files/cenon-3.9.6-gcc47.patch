@@ -1,0 +1,11 @@
+--- cenon.app-3.93.orig/VHFShared/vhfCompatibility.h
++++ cenon.app-3.93/VHFShared/vhfCompatibility.h
+@@ -44,7 +44,7 @@
+ #if defined( GNUSTEP_BASE_VERSION )
+ 
+ #    define VHFIsDrawingToScreen()	[[NSGraphicsContext currentContext] isDrawingToScreen]
+-#    define VHFSelectorIsEqual(a, b)	sel_eq(a, b)
++#    define VHFSelectorIsEqual(a, b)	sel_isEqual(a, b)
+ #    define VHFAntialiasing()		[[NSGraphicsContext currentContext] shouldAntialias]
+ #    define VHFSetAntialiasing(f)	[[NSGraphicsContext currentContext] setShouldAntialias:f]
+ #    define PSWait()			[[NSGraphicsContext currentContext] flushGraphics]

@@ -1,0 +1,154 @@
+# ChangeLog for dev-perl/CPAN-Mini-Inject
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/CPAN-Mini-Inject/ChangeLog,v 1.32 2015/06/13 19:35:51 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  CPAN-Mini-Inject-0.330.0-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+  29 Aug 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -CPAN-Mini-Inject-0.310.0.ebuild:
+  Drop old
+
+*CPAN-Mini-Inject-0.330.0-r1 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +CPAN-Mini-Inject-0.330.0-r1.ebuild, -CPAN-Mini-Inject-0.330.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  04 Aug 2014; Mikle Kolyada <zlogene@gentoo.org>
+  CPAN-Mini-Inject-0.310.0.ebuild, CPAN-Mini-Inject-0.330.0.ebuild:
+  Fix DESCRIPTION
+
+  16 Dec 2013; Mikle Kolyada <zlogene@gentoo.org>
+  CPAN-Mini-Inject-0.330.0.ebuild:
+  amd64/x86 stable wrt bug #492080
+
+*CPAN-Mini-Inject-0.330.0 (25 Aug 2013)
+
+  25 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +CPAN-Mini-Inject-0.330.0.ebuild:
+  Bump
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org>
+  CPAN-Mini-Inject-0.310.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  03 Jun 2012; Torsten Veller <tove@gentoo.org> -CPAN-Mini-Inject-0.18.ebuild,
+  -CPAN-Mini-Inject-0.300.0.ebuild:
+  Cleanup
+
+  21 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  CPAN-Mini-Inject-0.310.0.ebuild:
+  x86 stable wrt bug #413011
+
+  19 Mar 2012; Raúl Porcel <armin76@gentoo.org> CPAN-Mini-Inject-0.18.ebuild,
+  CPAN-Mini-Inject-0.300.0.ebuild, CPAN-Mini-Inject-0.310.0.ebuild:
+  Drop ia64/sparc keywords
+
+*CPAN-Mini-Inject-0.310.0 (29 Feb 2012)
+
+  29 Feb 2012; Robin H. Johnson <robbat2@gentoo.org>
+  +CPAN-Mini-Inject-0.310.0.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org> -CPAN-Mini-Inject-0.27.ebuild,
+  -CPAN-Mini-Inject-0.290.0.ebuild:
+  Cleanup
+
+*CPAN-Mini-Inject-0.300.0 (14 Jun 2011)
+
+  14 Jun 2011; Torsten Veller <tove@gentoo.org>
+  +CPAN-Mini-Inject-0.300.0.ebuild:
+  Version bump
+
+*CPAN-Mini-Inject-0.290.0 (16 May 2011)
+
+  16 May 2011; Torsten Veller <tove@gentoo.org>
+  +CPAN-Mini-Inject-0.290.0.ebuild:
+  Version bump
+
+  03 Apr 2011; Torsten Veller <tove@gentoo.org> -CPAN-Mini-Inject-0.26.ebuild:
+  Cleanup
+
+*CPAN-Mini-Inject-0.27 (29 Jan 2010)
+
+  29 Jan 2010; Torsten Veller <tove@gentoo.org>
+  +CPAN-Mini-Inject-0.27.ebuild:
+  Version bump
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org>
+  -CPAN-Mini-Inject-0.25.ebuild:
+  Cleanup
+
+*CPAN-Mini-Inject-0.26 (25 Aug 2009)
+
+  25 Aug 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +CPAN-Mini-Inject-0.26.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  19 Jul 2009; Torsten Veller <tove@gentoo.org>
+  CPAN-Mini-Inject-0.18.ebuild, CPAN-Mini-Inject-0.25.ebuild:
+  IO-Compress replaces Compress-Zlib
+
+  03 Jun 2009; Torsten Veller <tove@gentoo.org>
+  -CPAN-Mini-Inject-0.23.ebuild, -CPAN-Mini-Inject-0.24.ebuild:
+  Cleanup
+
+*CPAN-Mini-Inject-0.25 (30 May 2009)
+
+  30 May 2009; Torsten Veller <tove@gentoo.org>
+  +CPAN-Mini-Inject-0.25.ebuild:
+  Version bump
+
+*CPAN-Mini-Inject-0.24 (11 May 2009)
+
+  11 May 2009; Torsten Veller <tove@gentoo.org>
+  +CPAN-Mini-Inject-0.24.ebuild:
+  Version bump
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org>
+  CPAN-Mini-Inject-0.18.ebuild, CPAN-Mini-Inject-0.23.ebuild:
+  New virtuals: Archive-Tar Compress-Zlib
+
+*CPAN-Mini-Inject-0.23 (26 Oct 2008)
+
+  26 Oct 2008; Torsten Veller <tove@gentoo.org>
+  +CPAN-Mini-Inject-0.23.ebuild:
+  Version bump
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  CPAN-Mini-Inject-0.18.ebuild:
+  Stable on ia64.
+
+  04 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  CPAN-Mini-Inject-0.18.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  03 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  CPAN-Mini-Inject-0.18.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  CPAN-Mini-Inject-0.18.ebuild:
+  Mark 0.18 ~ia64
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  -CPAN-Mini-Inject-0.16.ebuild, CPAN-Mini-Inject-0.18.ebuild:
+  marking stable sparc x86
+
+*CPAN-Mini-Inject-0.18 (22 Nov 2005)
+
+  22 Nov 2005; Michael Cummings <mcummings@gentoo.org>
+  CPAN-Mini-Inject-0.16.ebuild, +CPAN-Mini-Inject-0.18.ebuild:
+  Version bump, unmasking
+
+*CPAN-Mini-Inject-0.16 (08 Mar 2005)
+
+  08 Mar 2005; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +CPAN-Mini-Inject-0.16.ebuild:
+  Provides injection mechanism for minicpan distros

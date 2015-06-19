@@ -1,0 +1,110 @@
+# ChangeLog for dev-util/wiggle
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/wiggle/ChangeLog,v 1.32 2015/04/07 14:23:34 jlec Exp $
+
+  04 May 2013; Justin Lecher <jlec@gentoo.org> wiggle-0.9.ebuild, metadata.xml:
+  Add compatibility with ncurses[tinfo]
+
+  02 Mar 2013; Christoph Junghans <ottxor@gentoo.org> wiggle-0.8-r1.ebuild,
+  wiggle-0.9.ebuild:
+  switched to virtual/awk (bug #455658)
+
+  24 Oct 2012; Anthony G. Basile <blueness@gentoo.org> wiggle-0.9.ebuild:
+  stable ppc, bug #429068
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> wiggle-0.9.ebuild:
+  x86 stable wrt bug #429068
+
+  13 Sep 2012; Agostino Sarubbo <ago@gentoo.org> wiggle-0.9.ebuild:
+  Stable for amd64, wrt bug #429068
+
+*wiggle-0.9 (09 Jun 2012)
+
+  09 Jun 2012; Justin Lecher <jlec@gentoo.org> -wiggle-0.6-r3.ebuild,
+  -wiggle-0.8.ebuild, +wiggle-0.9.ebuild, metadata.xml:
+  Version Bump, Drop old
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> wiggle-0.8-r1.ebuild:
+  x86 stable wrt bug #397031
+
+  15 Feb 2012; Brent Baude <ranger@gentoo.org> wiggle-0.8-r1.ebuild:
+  Marking wiggle-0.8-r1 ppc for bug 397031
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org> wiggle-0.8-r1.ebuild:
+  Stable for amd64, wrt bug #397031
+
+*wiggle-0.8-r1 (29 Sep 2010)
+
+  29 Sep 2010; Jonathan Callen <abcd@gentoo.org> +wiggle-0.8-r1.ebuild,
+  +files/wiggle-0.8-buffer-overflow.patch:
+  Revbump; patch to fix buffer overflows (bug 339073)
+
+*wiggle-0.8 (24 Mar 2010)
+
+  24 Mar 2010; Robin H. Johnson <robbat2@gentoo.org> +wiggle-0.8.ebuild:
+  Version bump, alerted to it by upstream author.
+
+  10 Jan 2010; Jonathan Callen <abcd@gentoo.org> wiggle-0.6-r3.ebuild:
+  QA: die on failure, spelling fix; add prefix keywords
+
+  15 May 2008; Samuli Suominen <drac@gentoo.org> wiggle-0.6-r3.ebuild:
+  Because we get more warnings with GCC 4.3, disable -Werror from Makefile
+  wrt #218495.
+
+  14 Jun 2007; Christoph Mende <angelos@gentoo.org> wiggle-0.6-r3.ebuild:
+  Stable on amd64 wrt bug 181582
+
+  15 Apr 2007; nixnut <nixnut@gentoo.org> wiggle-0.6-r3.ebuild:
+  Stable on ppc wrt bug 173855
+
+  09 Apr 2007; Peter Weller <welp@gentoo.org> ChangeLog:
+  Stable on amd64 wrt bug 173855
+
+  09 Apr 2007; Raúl Porcel <armin76@gentoo.org> wiggle-0.6-r3.ebuild:
+  x86 stable wrt bug 173855
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*wiggle-0.6-r3 (13 May 2006)
+
+  13 May 2006; Robin H. Johnson <robbat2@gentoo.org> +wiggle-0.6-r3.ebuild:
+  Bug #132450, various cleanups.
+
+  29 Dec 2005; <dang@gentoo.org> wiggle-0.6-r2.ebuild:
+  Marked ~amd64 Per bug #116881
+
+*wiggle-0.6-r2 (12 Dec 2005)
+
+  12 Dec 2005; Robin H. Johnson <robbat2@gentoo.org> +wiggle-0.6-r2.ebuild:
+  Version bump.
+
+  07 May 2005; David Holm <dholm@gentoo.org> wiggle-0.6-r1.ebuild:
+  Added to ~ppc.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> wiggle-0.6.ebuild:
+  Dependency update: sys-apps/time -> sys-process/time.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> wiggle-0.6-r1.ebuild:
+  Dependency update: sys-apps/time -> sys-process/time.
+
+  21 Nov 2004; Robin H. Johnson <robbat2@gentoo.org> wiggle-0.6-r1.ebuild:
+  Stable on x86.
+
+*wiggle-0.6-r1 (28 Jun 2004)
+
+  28 Jun 2004; Robin H. Johnson <robbat2@gentoo.org> metadata.xml,
+  wiggle-0.6-r1.ebuild:
+  revision bump, cleanup.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> wiggle-0.6.ebuild:
+  Add inherit eutils
+
+  14 Jun 2003; Seemant Kulleen <seemant@gentoo.org> wiggle-0.6.ebuild:
+  sandbox violation fix, epatch for patching
+
+*wiggle-0.6 (11 Jun 2003)
+
+  11 Jun 2003; Robin Johnson <robbat2@orbis-terrarum.net> wiggle-0.6.ebuid,
+  files/digest-wiggle-0.6, ChangeLog, Manifest:
+  Initial import. Ebuild done by myself. 

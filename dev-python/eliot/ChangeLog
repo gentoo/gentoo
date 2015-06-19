@@ -1,0 +1,17 @@
+# ChangeLog for dev-python/eliot
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/eliot/ChangeLog,v 1.4 2015/06/07 13:15:06 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  12 Dec 2014; Michał Górny <mgorny@gentoo.org> eliot-0.4.0.ebuild:
+  Rename net-zope/zope-interface to dev-python/zope-interface.
+
+*eliot-0.4.0 (25 Sep 2014)
+
+  25 Sep 2014; Richard Yao <ryao@gentoo.org> +eliot-0.4.0.ebuild, +metadata.xml:
+  New package dev-python/eliot

@@ -1,0 +1,38 @@
+From 68141bf6f469ed7618c7ebd068eb7f8db260dfdb Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Thu, 2 May 2013 23:22:36 +0200
+Subject: [PATCH] Fix crash with TERM=vt100
+
+---
+ elogv | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/elogv b/elogv
+index 53c37cd..a8440d1 100755
+--- a/elogv
++++ b/elogv
+@@ -96,12 +96,15 @@ class ElogViewer:
+         self.screen = screen
+ 
+         # Our color pairs
+-        curses.use_default_colors()
+-        curses.init_pair(selected, curses.COLOR_BLACK, curses.COLOR_WHITE)
+-        curses.init_pair(einfo, curses.COLOR_GREEN, curses.COLOR_BLACK)
+-        curses.init_pair(ewarn, curses.COLOR_YELLOW, curses.COLOR_BLACK)
+-        curses.init_pair(eerror, curses.COLOR_RED, curses.COLOR_BLACK)
+-        curses.init_pair(elog, curses.COLOR_MAGENTA, curses.COLOR_BLACK)
++        try:
++            curses.use_default_colors()
++            curses.init_pair(selected, curses.COLOR_BLACK, curses.COLOR_WHITE)
++            curses.init_pair(einfo, curses.COLOR_GREEN, curses.COLOR_BLACK)
++            curses.init_pair(ewarn, curses.COLOR_YELLOW, curses.COLOR_BLACK)
++            curses.init_pair(eerror, curses.COLOR_RED, curses.COLOR_BLACK)
++            curses.init_pair(elog, curses.COLOR_MAGENTA, curses.COLOR_BLACK)
++        except curses.error:  # e.g. with "TERM=vt100 elogv" invokation
++            pass
+ 
+         # This attributes are used to manage the scrolling of the list
+         # of files    
+-- 
+1.8.1.5
+

@@ -1,0 +1,27 @@
+# ChangeLog for dev-tex/texamator
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/texamator/ChangeLog,v 1.6 2015/04/23 00:16:23 mrueg Exp $
+
+  23 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -texamator-1.5b.ebuild:
+  Remove old.
+
+  23 Sep 2014; Dirkjan Ochtman <djc@gentoo.org> metadata.xml:
+  Remove python, not a python library
+
+  30 May 2014; Davide Pesavento <pesa@gentoo.org> metadata.xml:
+  Remove qt from metadata.
+
+*texamator-1.7.5 (02 Aug 2012)
+
+  02 Aug 2012; Davide Pesavento <pesa@gentoo.org> +texamator-1.7.5.ebuild:
+  Version bump.
+
+  25 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  texamator-1.5b.ebuild, files/texamator:
+  Use Python 2.
+
+*texamator-1.5b (03 Dec 2009)
+
+  03 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +texamator-1.5b.ebuild, +files/texamator:
+  Initial commit.

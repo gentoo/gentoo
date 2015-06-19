@@ -1,0 +1,83 @@
+# ChangeLog for app-editors/jext
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/jext/ChangeLog,v 1.23 2015/06/09 09:50:13 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*jext-5.0-r1 (05 Apr 2015)
+
+  05 Apr 2015; Patrice Clement <monsieurp@gentoo.org> +jext-5.0-r1.ebuild,
+  jext-5.0.ebuild:
+  EAPI 5 bump wrt bug 543906.
+
+  17 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org> -files/jext-gentoo.sh:
+  Removed unused file, bug #340571 (thanks to jalan <jalanpalmer@gmail.com>)
+
+  23 Jul 2009; Alistair Bush <ali_bush@gentoo.org> -jext-3.2_pre3-r1.ebuild:
+  Cleanup old version.
+
+*jext-5.0 (11 Jun 2009)
+
+  11 Jun 2009; Vlastimil Babka <caster@gentoo.org> +jext-5.0.ebuild,
+  +files/jext-pre:
+  Version bump, adpated from java-experimental.
+
+  10 Jan 2009; Alistair Bush <ali_bush@gentoo.org> jext-3.2_pre3-r1.ebuild:
+  Fixed incorrect LICENSE. see #252951
+
+  11 Feb 2007; Vlastimil Babka <caster@gentoo.org> -jext-3.2_pre3.ebuild:
+  Cleanup.
+
+  11 Feb 2007; nixnut <nixnut@gentoo.org> jext-3.2_pre3-r1.ebuild:
+  Stable on ppc wrt bug 166257
+
+  11 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  jext-3.2_pre3-r1.ebuild:
+  stable x86; bug #166257
+
+  13 Oct 2006; Vlastimil Babka <caster@gentoo.org> jext-3.2_pre3.ebuild:
+  Fixed jython dependency, solves bug #151160.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> jext-3.2_pre3.ebuild,
+  jext-3.2_pre3-r1.ebuild:
+  Dropping sparc keywords, see #96229
+
+*jext-3.2_pre3-r1 (31 Jul 2006)
+
+  31 Jul 2006; Joshua Nichols <nichoj@gentoo.org> +jext-3.2_pre3-r1.ebuild:
+  Revision bump to support new Java system.
+
+  14 Sep 2005; <dang@gentoo.org> jext-3.2_pre3.ebuild:
+  Marked ~amd64
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> jext-3.2_pre3.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  jext-3.2_pre3.ebuild:
+  Masked jext-3.2_pre3.ebuild stable for ppc
+
+  12 Sep 2004; Thomas Matthijs <axxo@gentoo.org> jext-3.2_pre3.ebuild:
+  ebuild cleanups
+
+  30 Jul 2004; Karl Trygve Kalleberg <karltk@gentoo.org> jext-3.2_pre3.ebuild:
+  Moved dev-java/jython to dev-java/jython-bin.
+
+  19 Jun 2004; Jason Wever <weeve@gentoo.org> jext-3.2_pre3.ebuild:
+  Stable on sparc.
+
+  01 Jun 2004; Aron Griffis <agriffis@gentoo.org> jext-3.2_pre3.ebuild:
+  Fix use invocation
+
+*jext-3.2_pre3 (23 May 2003)
+
+  23 May 2003; Todd Berman <tberman@gentoo.org> jext-3.2_pre3.ebuild,
+  files/jext-gentoo.sh:
+  Moved, Fixed Bug #12072
+
+*jext-3.2_pre3 (29 Apr 2003)
+
+  29 Apr 2003; Todd Berman <tberman@gentoo.org> jext-3.2_pre3.ebuild:
+  Initial Import.

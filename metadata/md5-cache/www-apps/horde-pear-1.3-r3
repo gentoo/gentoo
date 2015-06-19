@@ -1,0 +1,8 @@
+DEFINED_PHASES=-
+DESCRIPTION=Meta package for the PEAR packages required by Horde
+HOMEPAGE=http://pear.php.net/
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 s390 sparc x86
+LICENSE=metapackage
+RDEPEND=dev-php/PEAR-Log dev-php/PEAR-Net_Sieve dev-php/PEAR-Mail_Mime >=dev-php/PEAR-DB-1.6.0 dev-php/PEAR-File dev-php/PEAR-Date >=dev-php/PEAR-Services_Weather-1.3.1 dev-php/PEAR-Mail
+SLOT=1
+_md5_=21b9c8e35af464130b24282d8a55d802

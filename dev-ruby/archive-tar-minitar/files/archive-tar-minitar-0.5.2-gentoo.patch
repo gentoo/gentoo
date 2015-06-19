@@ -1,0 +1,20 @@
+Index: archive-tar-minitar-0.5.2/bin/minitar
+===================================================================
+--- archive-tar-minitar-0.5.2.orig/bin/minitar
++++ archive-tar-minitar-0.5.2/bin/minitar
+@@ -12,15 +12,6 @@
+ # $Id: archive-tar-minitar-0.5.2-gentoo.patch,v 1.1 2012/06/14 16:26:19 flameeyes Exp $
+ #++
+ 
+-  # 1) Try to load Archive::Tar::Minitar from the gem.
+-  # 2) Try to load Archive::Tar::Minitar from $LOAD_PATH.
+-begin
+-  require 'rubygems'
+-  require_gem 'archive-tar-minitar', '= 0.5.2'
+-rescue LoadError
+-  nil
+-end
+-
+ require 'archive/tar/minitar'
+ require 'archive/tar/minitar/command'
+ 

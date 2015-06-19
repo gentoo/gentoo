@@ -1,0 +1,10 @@
+# Copyright 2013-2014 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/desc/abi_s390.desc,v 1.1 2014/04/01 06:53:48 vapier Exp $
+
+# This file contains descriptions of ABI_S390 USE_EXPAND flags.
+
+# Keep it sorted. Please do not add anything without prior discussion
+# on gentoo-dev.
+32 - 32-bit (s390) libraries
+64 - 64-bit (s390x) libraries

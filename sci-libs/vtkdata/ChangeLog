@@ -1,0 +1,29 @@
+# ChangeLog for sci-libs/vtkdata
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/vtkdata/ChangeLog,v 1.7 2015/03/09 00:05:53 pacho Exp $
+
+  09 Mar 2015; Pacho Ramos <pacho@gentoo.org> vtkdata-6.1.0.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> vtkdata-6.1.0.ebuild:
+  amd64 stable, bug 540290
+
+  30 Oct 2014; Alexis Ballier <aballier@gentoo.org> vtkdata-6.1.0.ebuild:
+  keyword ~arm
+
+  27 Jan 2014; Justin Lecher <jlec@gentoo.org> vtkdata-6.1.0.ebuild:
+  Fix S
+
+*vtkdata-6.1.0 (27 Jan 2014)
+
+  27 Jan 2014; Justin Lecher <jlec@gentoo.org> +vtkdata-6.1.0.ebuild:
+  Version Bump
+
+  02 Jan 2014; Justin Lecher <jlec@gentoo.org> vtkdata-6.0.0.ebuild:
+  Fix installation directory
+
+*vtkdata-6.0.0 (02 Jan 2014)
+
+  02 Jan 2014; Justin Lecher <jlec@gentoo.org> +vtkdata-6.0.0.ebuild,
+  +metadata.xml:
+  New addition

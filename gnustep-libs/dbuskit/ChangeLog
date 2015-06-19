@@ -1,0 +1,45 @@
+# ChangeLog for gnustep-libs/dbuskit
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-libs/dbuskit/ChangeLog,v 1.12 2013/07/05 16:28:56 voyageur Exp $
+
+  05 Jul 2013; Bernard Cafarelli <voyageur@gentoo.org> dbuskit-0.1.1.ebuild:
+  ObjectiveC2/runtime.h is still needed in some cases
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> dbuskit-0.1.1.ebuild:
+  Stable for ppc, wrt bug #474224
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> dbuskit-0.1.1.ebuild:
+  Stable for amd64, wrt bug #474224
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> dbuskit-0.1.1.ebuild:
+  Stable for x86, wrt bug #474224
+
+*dbuskit-0.1.1 (24 Apr 2013)
+
+  24 Apr 2013; Bernard Cafarelli <voyageur@gentoo.org> +dbuskit-0.1.1.ebuild:
+  Version bump, bugfix release
+
+  07 Jun 2012; Michael Weber <xmw@gentoo.org> dbuskit-0.1.ebuild:
+  ppc stable (bug 410601)
+
+  07 Apr 2012; Markus Meier <maekke@gentoo.org> dbuskit-0.1.ebuild:
+  x86 stable, bug #410601
+
+  05 Apr 2012; Agostino Sarubbo <ago@gentoo.org> dbuskit-0.1.ebuild:
+  Stable for amd64, wrt bug #410601
+
+  03 Apr 2012; Bernard Cafarelli <voyageur@gentoo.org> dbuskit-0.1.ebuild:
+  Fix ObjectiveC2 framework path in configure, spotted by ago in bug #410697
+
+  14 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org> dbuskit-0.1.ebuild,
+  +files/dbuskit-0.1-configure.patch:
+  Fix configure with clang
+
+  02 May 2011; Bernard Cafarelli <voyageur@gentoo.org> dbuskit-0.1.ebuild:
+  Also works on ppc
+
+*dbuskit-0.1 (02 May 2011)
+
+  02 May 2011; Bernard Cafarelli <voyageur@gentoo.org> +dbuskit-0.1.ebuild,
+  +metadata.xml:
+  Initial commit

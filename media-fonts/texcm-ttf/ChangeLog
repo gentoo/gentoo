@@ -1,0 +1,59 @@
+# ChangeLog for media-fonts/texcm-ttf
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/texcm-ttf/ChangeLog,v 1.17 2011/02/19 13:51:54 xarthisius Exp $
+
+  19 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> texcm-ttf-1.0.ebuild:
+  ppc64 stable wrt #353678
+
+  23 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> texcm-ttf-1.0.ebuild:
+  Keyword ~ppc64 wrt #341699
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org> texcm-ttf-1.0.ebuild:
+  Transfer Prefix keywords
+
+  08 Nov 2009; nixnut <nixnut@gentoo.org> texcm-ttf-1.0.ebuild:
+  ppc stable #290607
+
+  06 Jul 2009; Jeroen Roovers <jer@gentoo.org> texcm-ttf-1.0.ebuild:
+  Stable for HPPA too.
+
+  01 Feb 2009; Peter Volkov <pva@gentoo.org> texcm-ttf-1.0.ebuild:
+  Added missing FONT_S, bug #257220, thank Elias Pipping for report.
+
+  24 Feb 2008; Raúl Porcel <armin76@gentoo.org> texcm-ttf-1.0.ebuild:
+  alpha stable
+
+  23 Jan 2008; Raúl Porcel <armin76@gentoo.org> texcm-ttf-1.0.ebuild:
+  Add ~alpha
+
+  11 Sep 2007; Christoph Mende <angelos@gentoo.org> texcm-ttf-1.0.ebuild:
+  Stable on amd64 wrt bug #191927
+
+  21 Feb 2007; Christian Faulhammer <opfer@gentoo.org> texcm-ttf-1.0.ebuild:
+  stable x86; bug 167022
+
+  26 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> texcm-ttf-1.0.ebuild:
+  Add ~x86-fbsd keyword.
+
+  11 Jul 2006; Aron Griffis <agriffis@gentoo.org> texcm-ttf-1.0.ebuild:
+  Mark 1.0 stable on ia64
+
+  10 Jan 2006; Michael Hanselmann <hansmi@gentoo.org> texcm-ttf-1.0.ebuild:
+  Added to ~hppa, ~ppc.
+
+  23 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> texcm-ttf-1.0.ebuild:
+  Stable on sparc
+
+  23 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> texcm-ttf-1.0.ebuild:
+  Added ~sparc
+
+  26 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> texcm-ttf-1.0.ebuild:
+  Added to ~amd64.
+
+*texcm-ttf-1.0 (03 May 2005)
+
+  03 May 2005; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +texcm-ttf-1.0.ebuild:
+  Initial import. Ebuild submitted by Matthieu Sozeau <mattam@gentoo.org>;
+  bug #52014.
+

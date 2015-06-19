@@ -1,0 +1,9 @@
+diff -ur libprojectM-1.2.0.orig/BuiltinParams.cpp libprojectM-1.2.0/BuiltinParams.cpp
+--- libprojectM-1.2.0.orig/BuiltinParams.cpp	2008-06-12 03:39:28.000000000 +0000
++++ libprojectM-1.2.0/BuiltinParams.cpp	2009-05-07 20:05:54.000000000 +0000
+@@ -1,4 +1,4 @@
+-
++#include <cstdio>
+ #include "fatal.h"
+ #include "BuiltinParams.hpp"
+ #include <cassert>

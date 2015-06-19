@@ -1,0 +1,142 @@
+# ChangeLog for dev-ml/pomap
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/pomap/ChangeLog,v 1.43 2015/06/07 09:28:19 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  25 Feb 2015; Agostino Sarubbo <ago@gentoo.org> pomap-3.0.5.ebuild:
+  Stable for x86, wrt bug #535134
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> pomap-3.0.5.ebuild:
+  Stable for ppc, wrt bug #535134
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> pomap-3.0.5.ebuild:
+  Stable for amd64, wrt bug #535134
+
+*pomap-3.0.5 (01 Dec 2014)
+
+  01 Dec 2014; Alexis Ballier <aballier@gentoo.org> +pomap-3.0.5.ebuild:
+  version bump, update homepage/src_uri
+
+  28 Nov 2014; Alexis Ballier <aballier@gentoo.org> pomap-3.0.3.ebuild:
+  update deps for ocaml 4.02
+
+  13 Apr 2014; Agostino Sarubbo <ago@gentoo.org> pomap-3.0.3.ebuild:
+  Stable for ppc, wrt bug #502732
+
+  05 Apr 2014; Agostino Sarubbo <ago@gentoo.org> pomap-3.0.3.ebuild:
+  Stable for x86, wrt bug #502732
+
+  25 Mar 2014; Chema Alonso <nimiux@gentoo.org> pomap-3.0.3.ebuild:
+  Stable for amd64 wrt bug #502732
+
+  19 Jan 2014; Alexis Ballier <aballier@gentoo.org> -pomap-3.0.1.ebuild,
+  -files/pomap-3.0.1-ocaml-4.01.patch:
+  remove old
+
+*pomap-3.0.3 (19 Jan 2014)
+
+  19 Jan 2014; Alexis Ballier <aballier@gentoo.org> +pomap-3.0.3.ebuild:
+  version bump
+
+  18 Jan 2014; Pacho Ramos <pacho@gentoo.org> pomap-3.0.2.ebuild:
+  amd64 stable, bug #492056
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pomap-3.0.2.ebuild:
+  Stable for x86, wrt bug #492056
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pomap-3.0.2.ebuild:
+  Stable for ppc, wrt bug #492056
+
+*pomap-3.0.2 (19 Aug 2013)
+
+  19 Aug 2013; Alexis Ballier <aballier@gentoo.org> +pomap-3.0.2.ebuild:
+  Version bump with upstream patch to build with ocaml 4.01. Do not compress
+  examples
+
+  19 Aug 2013; Alexis Ballier <aballier@gentoo.org> pomap-3.0.1.ebuild,
+  +files/pomap-3.0.1-ocaml-4.01.patch:
+  Fix build with ocaml 4.01.
+
+  10 Mar 2013; Alexis Ballier <aballier@gentoo.org> -pomap-2.9.9.ebuild:
+  remove old
+
+  12 Feb 2013; Agostino Sarubbo <ago@gentoo.org> pomap-3.0.1.ebuild:
+  Stable for ppc, wrt bug #456558
+
+  11 Feb 2013; Agostino Sarubbo <ago@gentoo.org> pomap-3.0.1.ebuild:
+  Stable for x86, wrt bug #456558
+
+  11 Feb 2013; Agostino Sarubbo <ago@gentoo.org> pomap-3.0.1.ebuild:
+  Stable for amd64, wrt bug #456558
+
+  11 Feb 2013; Alexis Ballier <aballier@gentoo.org> pomap-3.0.1.ebuild:
+  eapi5, add subslot and use := deps
+
+*pomap-3.0.1 (10 Oct 2012)
+
+  10 Oct 2012; Alexis Ballier <aballier@gentoo.org> +pomap-3.0.1.ebuild:
+  version bump
+
+  28 Sep 2009; Petteri Räty <betelgeuse@gentoo.org> -pomap-2.9.8.ebuild:
+  Remove old version using built_with_use.
+
+  14 Aug 2009; Markus Meier <maekke@gentoo.org> pomap-2.9.9.ebuild:
+  amd64/x86 stable, bug #280417
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> pomap-2.9.9.ebuild:
+  ppc stable #280417
+
+*pomap-2.9.9 (21 Jun 2009)
+
+  21 Jun 2009; Alexis Ballier <aballier@gentoo.org> +pomap-2.9.9.ebuild:
+  version bump
+
+  21 Jun 2009; Alexis Ballier <aballier@gentoo.org> pomap-2.9.8.ebuild:
+  define eapi before inherit and assign rdepend explicitly
+
+  13 Apr 2008; Alexis Ballier <aballier@gentoo.org> -pomap-2.9.4.ebuild:
+  remove old
+
+  12 Apr 2008; Tobias Scherbaum <dertobi123@gentoo.org> pomap-2.9.8.ebuild:
+  ppc stable, bug #216964
+
+  11 Apr 2008; Markus Meier <maekke@gentoo.org> pomap-2.9.8.ebuild:
+  amd64/x86 stable, bug #216964
+
+*pomap-2.9.8 (04 Jan 2008)
+
+  04 Jan 2008; Alexis Ballier <aballier@gentoo.org> +pomap-2.9.8.ebuild:
+  version bump, allow to build without ocamlopt
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> pomap-2.9.4.ebuild:
+  stable on amd64
+
+  25 Sep 2004; Matthieu Sozeau <mattam@gentoo.org> pomap-2.9.4.ebuild:
+  Fix bug #65089 (unsupported parallel builds) and add ~amd64 as suggested.
+
+  31 Aug 2004; David Holm <dholm@gentoo.org> pomap-2.9.4.ebuild:
+  Added to ~ppc.
+
+  25 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> -pomap-2.9.1.ebuild,
+  pomap-2.9.4.ebuild:
+  Remove old version, move to stable.
+
+  25 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> pomap-2.9.4.ebuild:
+  Use findlib eclass.
+
+*pomap-2.9.4 (08 Aug 2004)
+
+  08 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> +pomap-2.9.4.ebuild:
+  Version bump, fixes bug #56910.
+
+*pomap-2.9.1 (24 Apr 2003)
+
+  24 Apr 2003; George Shapovalov <george@gentoo.org> pomap-2.9.1.ebuild, files/{digest-pomap-2.9.1} :
+  initial release (#17520)
+  Partially Ordered Map ADT for O'Caml
+  ebuild submitted by Bardur Arantsson <bardur-gta@odense.kollegienet.dk>

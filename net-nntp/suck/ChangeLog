@@ -1,0 +1,32 @@
+# ChangeLog for net-nntp/suck
+# Copyright 2000-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-nntp/suck/ChangeLog,v 1.5 2014/10/09 19:57:10 dilfridge Exp $
+
+  09 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org> suck-4.3.2.ebuild:
+  The libperl ebuild is only a dummy and will be removed; libperl is provided
+  by dev-lang/perl.
+
+  18 Apr 2007; Wulf C. Krueger <philantrop@gentoo.org> suck-4.3.2.ebuild:
+  Added ~amd64 to KEYWORDS.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*suck-4.3.2 (17 Jan 2005)
+
+  17 Jan 2005; Sven Wegener <swegener@gentoo.org> +metadata.xml,
+  +suck-4.3.2.ebuild:
+  Moved from net-news/suck to net-nntp/suck.
+
+  30 Jul 2004; Sven Wegener <swegener@gentoo.org> suck-4.3.2.ebuild:
+  Marked stable on x86.
+
+  23 Jun 2004; David Holm <dholm@gentoo.org> suck-4.3.2.ebuild:
+  Added to ~ppc.
+
+*suck-4.3.2 (23 Jun 2004)
+
+  23 Jun 2004; Sven Wegener <swegener@gentoo.org> +metadata.xml,
+  +suck-4.3.2.ebuild:
+  Initial import, ebuild written by me.
+

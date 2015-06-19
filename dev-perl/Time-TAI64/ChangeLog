@@ -1,0 +1,30 @@
+# ChangeLog for dev-perl/Time-TAI64
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Time-TAI64/ChangeLog,v 1.6 2014/08/26 15:54:33 axs Exp $
+
+*Time-TAI64-2.110.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Time-TAI64-2.110.0-r1.ebuild, -Time-TAI64-2.110.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop duplication of myself as a maintainer where there is a herd.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Time-TAI64-2.11.ebuild:
+  Cleanup
+
+*Time-TAI64-2.110.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +Time-TAI64-2.110.0.ebuild:
+  Change version scheme
+
+*Time-TAI64-2.11 (02 Dec 2007)
+
+  02 Dec 2007; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +Time-TAI64-2.11.ebuild:
+  New package. Dependancy for WattsUp-Daemon. Ebuild by Robin H. Johnson
+  <robbat2@gentoo.org>.

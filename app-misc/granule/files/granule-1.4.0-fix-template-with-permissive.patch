@@ -1,0 +1,15 @@
+Description: Fix build with gcc4.8 and -fpermissive
+Bug-Debian: http://bugs.debian.org/701292
+Last-Update: 2013-08-11
+
+--- granule-1.4.0-7.orig/src/Granule.cpp
++++ granule-1.4.0-7/src/Granule.cpp
+@@ -56,7 +56,7 @@ ASSA_DECL_SINGLETON(Granule);
+ 
+ static const int TIMEOUT = 2000;  // 2 seconds (1,000 mls = 1 sec).
+ 
+-template <> xmlExternalEntityLoader Granule::m_default_entity_loader = 0;
++xmlExternalEntityLoader Granule::m_default_entity_loader = 0;
+ 
+ /*******************************************************************************
+                           Member Functions

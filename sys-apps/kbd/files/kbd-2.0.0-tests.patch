@@ -1,0 +1,31 @@
+--- configure.ac
++++ configure.ac
+@@ -11,7 +11,13 @@
+ AC_CONFIG_SRCDIR([src/loadkeys.c])
+ AC_CONFIG_HEADERS(config.h)
+ 
+-PKG_CHECK_MODULES([CHECK], [check >= 0.9.4])
++AC_ARG_ENABLE(tests,
++	AS_HELP_STRING(--enable-tests, [build tests]),
++	[BUILD_TESTS=$enableval],[BUILD_TESTS=no])
++AM_CONDITIONAL(BUILD_TESTS, test "$BUILD_TESTS" = "yes")
++if test "$BUILD_TESTS" = "yes"; then
++	PKG_CHECK_MODULES([CHECK], [check >= 0.9.4])
++fi
+ 
+ m4_ifndef([AM_SILENT_RULES], [m4_define([AM_SILENT_RULES],[])])
+ AM_SILENT_RULES([yes])
+--- Makefile.am
++++ Makefile.am
+@@ -8,7 +8,10 @@
+ 	CREDITS \
+ 	contrib docs rc
+ 
+-SUBDIRS = src data po tests docs
++SUBDIRS = src data po docs
++if BUILD_TESTS
++SUBDIRS += tests
++endif
+ 
+ kbd-$(VERSION).tar.xz:
+ 	make distcheck

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+  <email>maintainer-needed@gentoo.org</email>
+  <description>This package lacks a primary herd or maintainer.</description>
+</maintainer>
+<maintainer>
+  <email>emacs@gentoo.org</email>
+  <description>Components installed with USE=emacs.
+    Do not assign for anything else.</description>
+</maintainer>
+</pkgmetadata>

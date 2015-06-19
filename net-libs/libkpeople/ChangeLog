@@ -1,0 +1,48 @@
+# ChangeLog for net-libs/libkpeople
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libkpeople/ChangeLog,v 1.12 2015/05/12 14:05:38 kensington Exp $
+
+  12 May 2015; Michael Palimaka <kensington@gentoo.org>
+  -libkpeople-0.2.2.ebuild, libkpeople-0.3.0.ebuild:
+  Introduce minimal USE flag to permit avoiding file collisions with kde-
+  frameworks/kpeople wrt bug #548976. Remove old.
+
+  12 Feb 2015; Johannes Huber <johu@gentoo.org> libkpeople-0.2.2.ebuild,
+  libkpeople-0.3.0.ebuild:
+  Update HOMEPAGE
+
+*libkpeople-0.3.0 (16 Sep 2014)
+
+  16 Sep 2014; Johannes Huber <johu@gentoo.org> +libkpeople-0.3.0.ebuild:
+  Version bump.
+
+  26 Apr 2014; Johannes Huber <johu@gentoo.org> -libkpeople-0.1.0.ebuild,
+  -libkpeople-0.2.1.ebuild:
+  Remove old.
+
+*libkpeople-0.2.2 (26 Apr 2014)
+
+  26 Apr 2014; Johannes Huber <johu@gentoo.org> +libkpeople-0.2.2.ebuild:
+  Version bump.
+
+  09 Mar 2014; Johannes Huber <johu@gentoo.org> libkpeople-0.2.1.ebuild:
+  Fix DEPEND by upstream changes.
+
+  23 Feb 2014; Manuel Rüger <mrueg@gentoo.org> -libkpeople-0.2.0.ebuild:
+  Really cleanup 0.2.0.
+
+*libkpeople-0.2.1 (22 Feb 2014)
+
+  22 Feb 2014; Manuel Rüger <mrueg@gentoo.org> +libkpeople-0.2.1.ebuild:
+  Version bump. Cleanup old.
+
+*libkpeople-0.2.0 (18 Feb 2014)
+
+  18 Feb 2014; Manuel Rüger <mrueg@gentoo.org> +libkpeople-0.2.0.ebuild:
+  Version bump.
+
+*libkpeople-0.1.0 (29 Oct 2013)
+
+  29 Oct 2013; Johannes Huber <johu@gentoo.org> +libkpeople-0.1.0.ebuild,
+  +metadata.xml:
+  New package. Import from kde overlay. Will be required for KDE Telepathy 0.7.

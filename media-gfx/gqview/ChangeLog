@@ -1,0 +1,442 @@
+# ChangeLog for media-gfx/gqview
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gqview/ChangeLog,v 1.109 2014/12/05 16:59:17 mr_bones_ Exp $
+
+  05 Dec 2014; Michael Sterrett <mr_bones_@gentoo.org> -gqview-2.1.5.ebuild:
+  clean old
+
+  05 Dec 2014; Agostino Sarubbo <ago@gentoo.org> gqview-2.1.5-r1.ebuild:
+  Stable for x86, wrt bug #529166
+
+  04 Dec 2014; Agostino Sarubbo <ago@gentoo.org> gqview-2.1.5-r1.ebuild:
+  Stable for ppc64, wrt bug #529166
+
+  03 Dec 2014; Agostino Sarubbo <ago@gentoo.org> gqview-2.1.5-r1.ebuild:
+  Stable for ppc, wrt bug #529166
+
+  27 Nov 2014; Michael Sterrett <mr_bones_@gentoo.org> gqview-2.1.5-r1.ebuild:
+  avoid warning from autotools.eclass re: configure.in
+
+  26 Nov 2014; Agostino Sarubbo <ago@gentoo.org> gqview-2.1.5-r1.ebuild:
+  Stable for amd64, wrt bug #529166
+
+*gqview-2.1.5-r1 (27 Oct 2014)
+
+  27 Oct 2014; Michael Sterrett <mr_bones_@gentoo.org> +gqview-2.1.5-r1.ebuild:
+  drop lcms:0 support (bug #526822)
+
+  25 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org> gqview-2.1.5.ebuild:
+  tidy
+
+  06 Sep 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gqview-2.1.5-glibc.patch, gqview-2.1.5.ebuild:
+  add patch to build against newer glibc from  Dennis 'dlan' Lan (bug #403051)
+
+  26 Jul 2012; Anthony G. Basile <blueness@gentoo.org> gqview-2.1.5.ebuild:
+  Keyword ~arm
+
+  28 May 2012; Anthony G. Basile <blueness@gentoo.org> gqview-2.1.5.ebuild:
+  Keyword ~mips
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> gqview-2.1.5.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  12 Mar 2011; Tim Harder <radhermit@gentoo.org> gqview-2.1.5.ebuild:
+  Use slot deps for gtk+ and lcms.
+
+  21 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> gqview-2.1.5.ebuild:
+  Restrict media-libs/lcms depend to old version.
+
+  18 Mar 2010; Michael Sterrett <mr_bones_@gentoo.org> gqview-2.1.5.ebuild:
+  fix desktop entry issues reported by desktop-file-validate
+
+  20 Oct 2009; Jonathan Callen <abcd@gentoo.org> gqview-2.1.5.ebuild:
+  Remove check for X USE flag on gtk+, was never needed
+
+  30 Jul 2009; Markus Meier <maekke@gentoo.org> gqview-2.1.5.ebuild:
+  x11-libs/gtk+ needs to be built with USE=X by Fabian Holler in bug #278460
+
+  13 Mar 2009; Christian Faulhammer <fauli@gentoo.org> -gqview-2.0.4.ebuild:
+  clean up
+
+  25 Jan 2009; Raúl Porcel <armin76@gentoo.org> gqview-2.1.5.ebuild:
+  ia64 stable wrt #254900
+
+  20 Jan 2009; Tiago Cunha <tcunha@gentoo.org> gqview-2.1.5.ebuild:
+  stable sparc, bug 254900
+
+  18 Jan 2009; Markus Meier <maekke@gentoo.org> gqview-2.1.5.ebuild:
+  amd64/x86 stable, bug #254900
+
+  18 Jan 2009; Tobias Klausmann <klausman@gentoo.org> gqview-2.1.5.ebuild:
+  Stable on alpha, bug #254900
+
+  17 Jan 2009; nixnut <nixnut@gentoo.org> gqview-2.1.5.ebuild:
+  ppc stable #254900
+
+  14 Jan 2009; Brent Baude <ranger@gentoo.org> gqview-2.1.5.ebuild:
+  stable ppc64, bug 254900
+
+  02 Sep 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gqview-2.1.5-windows.patch, gqview-2.1.5.ebuild:
+  add patch from geckosenator on upstream forums for saving window information,
+  even when maximized. (bug #228821)
+
+  14 Oct 2007; Markus Rothe <corsair@gentoo.org> gqview-2.0.4.ebuild:
+  Stable on ppc64; bug #194935
+
+  10 Oct 2007; Lars Weiler <pylon@gentoo.org> gqview-2.0.4.ebuild:
+  stable ppc, bug #194935
+
+  09 Oct 2007; Christoph Mende <angelos@gentoo.org> gqview-2.0.4.ebuild:
+  Stable on amd64 wrt bug #194935
+
+  08 Oct 2007; Raúl Porcel <armin76@gentoo.org> gqview-2.0.4.ebuild:
+  alpha/ia64/sparc stable wrt #194935
+
+  08 Oct 2007; Christian Faulhammer <opfer@gentoo.org> gqview-2.0.4.ebuild:
+  stable x86, bug 194935
+
+*gqview-2.1.5 (10 Dec 2006)
+*gqview-2.0.4 (10 Dec 2006)
+
+  10 Dec 2006; Michael Sterrett <mr_bones_@gentoo.org> -gqview-2.0.3.ebuild,
+  +gqview-2.0.4.ebuild, +gqview-2.1.5.ebuild:
+  stable and unstable version bumps
+
+*gqview-2.1.4 (06 Nov 2006)
+*gqview-2.0.3 (06 Nov 2006)
+
+  06 Nov 2006; Michael Sterrett <mr_bones_@gentoo.org> -gqview-2.0.2.ebuild,
+  +gqview-2.0.3.ebuild, -gqview-2.1.1.ebuild, +gqview-2.1.4.ebuild:
+  stable and development version bumps
+
+  27 Oct 2006; Michael Sterrett <mr_bones_@gentoo.org> gqview-2.0.1.ebuild:
+  add needed pkgconfig dep (bug #153066)
+
+*gqview-2.1.2 (20 Oct 2006)
+*gqview-2.0.2 (20 Oct 2006)
+
+  20 Oct 2006; Michael Sterrett <mr_bones_@gentoo.org> +gqview-2.0.2.ebuild,
+  +gqview-2.1.2.ebuild:
+  stable and unstable version bumps (bug #151860)
+
+  21 Feb 2006; Michael Sterrett <mr_bones_@gentoo.org> gqview-2.0.1.ebuild,
+  gqview-2.1.1.ebuild:
+  make the gettext depend unconditional (bug #122891)
+
+  06 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org> -gqview-1.4.5.ebuild,
+  -gqview-1.5.1.ebuild, -gqview-1.5.3.ebuild, -gqview-1.5.4.ebuild,
+  -gqview-2.0.0.ebuild, -gqview-2.1.0.ebuild:
+  clean old ebuilds
+
+  06 Jul 2005; Herbie Hopkins <herbs@gentoo.org> gqview-2.0.1.ebuild:
+  Stable on amd64.
+
+  18 Jun 2005; Markus Rothe <corsair@gentoo.org> gqview-2.0.1.ebuild:
+  Stable on ppc64
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> gqview-2.0.1.ebuild:
+  Stable on ppc.
+
+  16 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> gqview-2.0.1.ebuild:
+  Stable on sparc
+
+*gqview-2.1.1 (15 Jun 2005)
+
+  15 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org> +gqview-2.1.1.ebuild:
+  unstable version bump
+
+  15 Jun 2005; Aron Griffis <agriffis@gentoo.org> gqview-2.0.1.ebuild:
+  stable on alpha ia64
+
+  15 Jun 2005; Aron Griffis <agriffis@gentoo.org> gqview-2.0.0.ebuild:
+  stable on alpha ia64
+
+  15 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org> gqview-2.0.1.ebuild:
+  stable on x86
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> gqview-2.0.0.ebuild:
+  Stable on ppc.
+
+  03 Jun 2005; Luca Barbato <lu_zero@gentoo.org> metadata.xml:
+  Metadata fix
+
+  21 May 2005; Markus Rothe <corsair@gentoo.org> gqview-2.0.0.ebuild:
+  Stable on ppc64
+
+  16 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> gqview-2.0.0.ebuild:
+  Stable on sparc
+
+*gqview-2.0.1 (15 May 2005)
+
+  15 May 2005; Michael Sterrett <mr_bones_@gentoo.org> gqview-2.0.0.ebuild,
+  +gqview-2.0.1.ebuild:
+  2.0.0 stable for x86; stable version bump
+
+  08 May 2005; Aron Griffis <agriffis@gentoo.org> gqview-1.5.4.ebuild:
+  stable on ia64
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> gqview-1.5.3.ebuild:
+  Stable on ppc64
+
+  06 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org> -gqview-1.4.1.ebuild,
+  -gqview-1.5.0.ebuild:
+  add unstable version; clean older ebuilds
+
+  06 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org> gqview-1.4.5.ebuild:
+  stable for x86
+
+  01 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org> -gqview-1.5.8.ebuild,
+  -gqview-1.5.9.ebuild:
+  clean old
+
+*gqview-2.0.0 (26 Feb 2005)
+
+  26 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> +gqview-2.0.0.ebuild:
+  stable version bump
+
+*gqview-1.5.9 (15 Feb 2005)
+
+  15 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> +gqview-1.5.9.ebuild:
+  unstable version bump
+
+*gqview-1.5.8 (08 Feb 2005)
+
+  08 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> +gqview-1.5.8.ebuild:
+  unstable version bump
+
+*gqview-1.5.7 (31 Jan 2005)
+
+  31 Jan 2005; Michael Sterrett <mr_bones_@gentoo.org> +gqview-1.5.7.ebuild:
+  unstable version bump
+
+*gqview-1.5.6 (12 Jan 2004)
+
+  12 Jan 2004; Jon Portnoy <avenj@gentoo.org> gqview-1.5.6.ebuild :
+  Version bump.
+
+  02 Jan 2005; Michael Hanselmann <hansmi@gentoo.org> gqview-1.5.4.ebuild:
+  Stable on ppc.
+
+*gqview-1.5.5 (28 Dec 2004)
+
+  28 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> +gqview-1.5.5.ebuild:
+  unstable version bump
+
+*gqview-1.5.4 (10 Nov 2004)
+
+  10 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> +gqview-1.5.4.ebuild:
+  unstable version bump
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> gqview-1.4.5.ebuild,
+  gqview-1.5.1.ebuild, gqview-1.5.3.ebuild:
+  Stable on amd64.
+
+  18 Oct 2004; Gustavo Zacarias <gustavoz@gentoo.org> gqview-1.5.3.ebuild:
+  Stable on sparc
+
+  15 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org> gqview-1.5.3.ebuild:
+  stable for x86
+
+  15 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org> -gqview-1.4.4.ebuild,
+  -gqview-1.5.2.ebuild:
+  clean older ebuilds
+
+*gqview-1.4.5 (15 Oct 2004)
+
+  15 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org> +gqview-1.4.5.ebuild:
+  stable version bump
+
+  14 Oct 2004; Aron Griffis <agriffis@gentoo.org> gqview-1.5.3.ebuild:
+  add ~alpha and ~ia64
+
+*gqview-1.5.3 (21 Sep 2004)
+
+  21 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> +gqview-1.5.3.ebuild:
+  version bump
+
+  18 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/rotate_crash_fix.patch, -gqview-1.3.9.ebuild, -gqview-1.4.0.ebuild:
+  clean older ebuilds
+
+*gqview-1.4.4 (18 Sep 2004)
+
+  18 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> +gqview-1.4.4.ebuild:
+  stable version bump
+
+*gqview-1.5.2 (06 Sep 2004)
+
+  06 Sep 2004; Malcolm Lashley <malc@gentoo.org> +gqview-1.5.2.ebuild:
+  Revbump with avenj's blessing. Closes bug #62142
+
+  03 Sep 2004; <blubb@gentoo.org> :
+  added ~amd64 keyword
+
+  20 Jul 2004; Tom Gall <tgall@gentoo.org> gqview-1.5.1.ebuild:
+  stable on ppc64, bug #57154
+
+  14 May 2004; Lars Weiler <pylon@gentoo.org> gqview-1.5.1.ebuild:
+  Stable on ppc
+
+*gqview-1.5.1 (06 Apr 2004)
+
+  06 Apr 2004; Jon Portnoy <avenj@gentoo.org> gqview-1.5.1.ebuild :
+  Version bump.
+
+  05 Apr 2004; Jason Wever <weeve@gentoo.org> gqview-1.5.0.ebuild:
+  Stable on sparc.
+
+  30 Mar 2004; Jon Portnoy <avenj@gentoo.org> gqview-1.5.0.ebuild :
+  Stable on x86 and AMD64.
+
+*gqview-1.5.0 (12 Mar 2004)
+
+  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> gqview-1.5.0.ebuild:
+  unstable version bump
+
+*gqview-1.4.1 (01 Mar 2004)
+
+  01 Mar 2004; Jon Portnoy <avenj@gentoo.org> gqview-1.4.1.ebuild :
+  Version bump.
+
+  23 Feb 2004; Sven Blumenstein <bazik@gentoo.org> gqview-1.0.2-r1.ebuild,
+  gqview-1.2.1.ebuild, gqview-1.3.4.ebuild, gqview-1.3.5.ebuild,
+  gqview-1.3.6-r1.ebuild, gqview-1.3.6.ebuild, gqview-1.4.0.ebuild:
+  Stable on sparc and pcc (thanks Pylon for testing), removed 6 outdated ebuilds.
+
+*gqview-1.4.0 (21 Feb 2004)
+
+  21 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> gqview-1.4.0.ebuild:
+  version bump - new stable version
+
+*gqview-1.3.9 (03 Feb 2004)
+
+  03 Feb 2004; Jon Portnoy <avenj@gentoo.org> gqview-1.3.9.ebuild :
+  Version bump, allegedly the last before 1.4.0.
+
+*gqview-1.3.8 (23 Jan 2004)
+
+  23 Jan 2004; Jon Portnoy <avenj@gentoo.org> gqview-1.3.8.ebuild :
+  Version bump. Bugfixes and translation updates.
+
+  13 Jan 2004; Jon Portnoy <avenj@gentoo.org> gqview-1.3.7.ebuild :
+  Stable on x86 and AMD64.
+
+*gqview-1.3.7 (22 Dec 2003)
+
+  22 Dec 2003; Jon Portnoy <avenj@gentoo.org> gqview-1.3.7.ebuild :
+  Version bump - lots of bugfixes and a new Swedish translation,
+  apparently.
+
+*gqview-1.3.6-r1 (16 Dec 2003)
+
+  16 Dec 2003; Jon Portnoy <avenj@gentoo.org> gqview-1.3.6-r1.ebuild,
+  files/rotate_crash_fix.patch :
+  Patch from upstream to fix a crash when rotating images.
+
+*gqview-1.3.6 (15 Dec 2003)
+
+  15 Dec 2003; Jon Portnoy <avenj@gentoo.org> gqview-1.3.6.ebuild :
+  Version bump.
+
+*gqview-1.3.5 (09 Nov 2003)
+
+  09 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> gqview-1.3.5.ebuild:
+  version bump
+
+*gqview-1.3.4 (31 Oct 2003)
+
+  31 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> gqview-1.3.4.ebuild:
+  version bump
+
+  30 Oct 2003; Jon Portnoy <avenj@gentoo.org> gqview-1.3.3.ebuild :
+  Stable on x86.
+
+  24 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> gqview-1.3.3.ebuild:
+  mark stable on amd64 per bug 31883
+
+  24 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> metadata.xml:
+  Add myself as well to the list of maintainers for this package.
+
+*gqview-1.3.3 (21 Oct 2003)
+
+  21 Oct 2003; Jon Portnoy <avenj@gentoo.org> gqview-1.3.3.ebuild :
+  Version bump.
+  From freshmeat:
+  "The sorting of the results of finding duplicates has been reworked. 
+   The preload next image option now also remembers the previous image. 
+   Auto refresh can now be disabled. The size of the Exif sidebar is now 
+   adjustable. Undo was added to the sort manager. The German and 
+   Spanish translations were updated."
+
+  18 Oct 2003; Sven Blumenstein <bazik@gentoo.org> gqview-1.3.2.ebuild:
+  ~sparc keyword added.
+
+  01 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> gqview-1.3.2.ebuild:
+  use use_enable; don't remove duplicate README as the program looks for it (bug
+  30111); error message for emake
+
+*gqview-1.3.2 (15 Jun 2003)
+
+  15 Jun 2003; Jon Portnoy <avenj@gentoo.org> gqview-1.3.2.ebuild :
+  Version bump.
+
+  25 Apr 2003; Jon Portnoy <avenj@gentoo.org> gqview-1.3.1.ebuild :
+  gdk-pixbuf dependency fix in 1.3 ebuilds, fixes bug #17392.
+
+*gqview-1.3.1 (3 March 2003)
+
+  03 March 2003; Jon Portnoy <avenj@gentoo.org> gqview-1.3.1.ebuild :
+  Version bump, latest unstable (gtk2) gqview.
+
+  02 March 2003; Jon Portnoy <avenj@gentoo.org> gqview-1.2.1.ebuild
+  gqview 1.2.0.ebuild gqview-1.1.6.ebuild :
+
+  gdk-pixbuf dependency fix per bug #16554.
+
+*gqview-1.3.0 (4 Feb 2003)
+
+  4 Feb 3003; Jon Portnoy <avenj@gentoo.org> gqview-1.3.0.ebuild :
+
+   Latest beta gqview, now uses GTK 2.
+
+*gqview-1.2.1 (24 Jan 2003)
+
+  24 Jan 2003; Jon Portnoy <avenj@gentoo.org> gqview-1.2.1.ebuild :
+
+  Latest stable gqview.
+
+*gqview-1.2.0 (13 Dec 2002)
+
+  13 Dec 2002; Jon Portnoy <avenj@gentoo.org> gqview-1.2.0.ebuild :
+
+  Latest gqview.
+
+*gqview-1.1.6 (24 Oct 2002)
+
+  24 Oct 2002; foser <foser@gentoo.org> gqview-1.1.6.ebuild :
+
+  New development release. Thanks to Jon Portnoy <avenj@tellink.net>
+
+*gqview-1.0.2-r1 (12 Apr 2002)
+
+  12 Apr 2002; Seemant Kulleen <seemant@gentoo.org> gqview-1.0.2-r1.ebuild :
+
+  Compile against latest libpng
+
+*gqview-1.0.2 (2 Feb 2002)
+
+  2 Feb 2002; M.Schlemmer <azarah@gentoo.org> gqview-1.0.2.ebuild :
+
+  Updated the copyright in the header.  Bumped the version.
+
+*gqview-1.0.1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

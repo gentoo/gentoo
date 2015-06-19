@@ -1,0 +1,13 @@
+DEFINED_PHASES=config configure install postinst
+DEPEND=>=net-libs/librsync-0.9.5 mysql? ( virtual/mysql ) sqlite? ( >=dev-db/sqlite-3.0 ) ssl? ( >=net-libs/gnutls-2.7.3 ) xinetd? ( sys-apps/xinetd ) virtual/pkgconfig
+DESCRIPTION=Cluster synchronization tool
+EAPI=5
+HOMEPAGE=http://oss.linbit.com/csync2/
+IUSE=mysql sqlite ssl xinetd
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=net-libs/librsync-0.9.5 mysql? ( virtual/mysql ) sqlite? ( >=dev-db/sqlite-3.0 ) ssl? ( >=net-libs/gnutls-2.7.3 ) xinetd? ( sys-apps/xinetd )
+SLOT=0
+SRC_URI=http://oss.linbit.com/csync2/csync2-2.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=4fcce46ec890196c0ca2b88a0527dbeb

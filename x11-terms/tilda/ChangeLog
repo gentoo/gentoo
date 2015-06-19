@@ -1,0 +1,115 @@
+# ChangeLog for x11-terms/tilda
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/tilda/ChangeLog,v 1.26 2012/07/21 13:40:06 pacho Exp $
+
+  21 Jul 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/tilda-0.9.6-glib-single-include.patch, -tilda-0.9.5.ebuild,
+  tilda-0.9.6.ebuild:
+  Let it compile against glib-2.32, drop old.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> tilda-0.9.5.ebuild,
+  tilda-0.9.6.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> tilda-0.9.5.ebuild,
+  tilda-0.9.6.ebuild:
+  Use SLOT dependencies for x11-libs/vte.
+
+  04 Apr 2010; <steev@gentoo.org> tilda-0.9.6.ebuild,
+  +files/tilda-0.9.6-gdk_resources.patch:
+  Add patch to fix a segfault. Fixes bug #310295. Thanks to Simon
+  <s7mon@web.de> and Lars <hermes.trismegistos@web.de> for their work on
+  this.
+
+  06 Jan 2010; Christian Faulhammer <fauli@gentoo.org> tilda-0.9.6.ebuild:
+  Transfer Prefix keywords
+
+  06 Jan 2010; Christian Faulhammer <fauli@gentoo.org> tilda-0.9.6.ebuild:
+  add libglade dependency from Prefix
+
+  24 Mar 2009; Joseph Jezak <josejx@gentoo.org> tilda-0.9.6.ebuild:
+  Marked ppc stable for bug #236885.
+
+  23 Mar 2009; Markus Meier <maekke@gentoo.org> tilda-0.9.6.ebuild:
+  amd64/x86 stable, bug #236885
+
+  08 Aug 2008; Alexis Ballier <aballier@gentoo.org> tilda-0.9.6.ebuild:
+  keyword ~x86-fbsd thanks to Davide Italiano <dav_it@gentoo.org>, bug
+  #233659
+
+*tilda-0.9.6 (06 May 2008)
+
+  06 May 2008; Steev Klimaszewski <steev@gentoo.org> +tilda-0.9.6.ebuild:
+  New tilda release, thanks to Pacho Ramos
+  <pacho@condmat1.ciencias.uniovi.es> for reporting. Closes bug #219930
+
+  22 Apr 2008; Samuli Suominen <drac@gentoo.org> -tilda-0.9.4.ebuild,
+  tilda-0.9.5.ebuild:
+  Move pkgconfig from RDEPEND to DEPEND and remove unused version.
+
+  17 Mar 2008; Dawid Węgliński <cla@gentoo.org> tilda-0.9.5.ebuild:
+  Stable on x86 (bug #213482)
+
+  16 Mar 2008; nixnut <nixnut@gentoo.org> tilda-0.9.5.ebuild:
+  Stable on ppc wrt bug 213482
+
+  16 Mar 2008; Richard Freeman <rich0@gentoo.org> tilda-0.9.5.ebuild:
+  amd64 stable - 213482
+
+*tilda-0.9.5 (16 Jan 2008)
+
+  16 Jan 2008; Steev Klimaszewski <steev@gentoo.org> -tilda-0.09.2.ebuild,
+  -tilda-0.09.3.ebuild, +tilda-0.9.5.ebuild:
+  New 0.9.5 release.  Closes bug #202409, thanks to Pacho Ramos 
+  <pacho@condmat1.ciencias.uniovi.es> for reporting.  Also add the 
+  pkgconfig dep which closes bug #205078, thanks to bonsaikitten for 
+  reporting. Minor cleanups with quoting.
+
+  17 Apr 2007; <welp@gentoo.org> tilda-0.9.4.ebuild:
+  Stable on amd64 wrt bug 172156
+
+  30 Mar 2007; nixnut <nixnut@gentoo.org> tilda-0.9.4.ebuild:
+  Stable on ppc wrt bug 172156
+
+  25 Mar 2007; Andrej Kacian <ticho@gentoo.org> tilda-0.9.4.ebuild:
+  Stable on x86, bug #172156.
+
+*tilda-0.9.4 (30 Nov 2006)
+
+  30 Nov 2006; Steev Klimaszewski <steev@gentoo.org> +tilda-0.9.4.ebuild:
+  New upstream release.  Version naming from being 0.09.x to 0.9.x.  Please
+  test.
+
+*tilda-0.09.3 (29 Jun 2006)
+
+  29 Jun 2006; Steev Klimaszewski <steev@gentoo.org> +tilda-0.09.3.ebuild:
+  New upstream release.
+
+  15 May 2006; Mark Loeser <halcy0n@gentoo.org> tilda-0.09.2.ebuild:
+  Stable on x86; bug #133379
+
+  17 Apr 2006; Steev Klimaszewski <steev@gentoo.org> tilda-0.09.2.ebuild:
+  Cosmetic change to ebuild, based off the gentoo.tampered.net/stabe url.
+
+*tilda-0.09.2 (27 Feb 2006)
+
+  27 Feb 2006; Steev Klimaszewski <steev@gentoo.org> -tilda-0.09.1.ebuild,
+  +tilda-0.09.2.ebuild:
+  Version bump to 0.09.2. Introduces dependency on confuse and glib.
+  Closes bug #77857.  Thank you to Tristan Sloughter for the report.
+
+  03 Nov 2005; Steev Klimaszewski <steev@gentoo.org> tilda-0.09.1.ebuild:
+  Add ~amd64 and ~ppc
+
+*tilda-0.09.1 (01 Nov 2005)
+
+  01 Nov 2005; Steev Klimaszewski <steev@gentoo.org> metadata.xml,
+  -tilda-0.02.ebuild, +tilda-0.09.1.ebuild:
+  Version bump to 0.09.1.  Remove 0.02.  Removal from p.mask.
+
+*tilda-0.02 (08 Jan 2005)
+
+  08 Jan 2005; Stuart Herbert <stuart@gentoo.org> +metadata.xml,
+  +tilda-0.02.ebuild:
+  Initial import; thanks to Tristan Sloughter <kungfooguru@gmail.com>; see bug
+  #77052

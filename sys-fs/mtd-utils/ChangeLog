@@ -1,0 +1,248 @@
+# ChangeLog for sys-fs/mtd-utils
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/mtd-utils/ChangeLog,v 1.62 2015/01/27 04:48:51 vapier Exp $
+
+*mtd-utils-1.5.1 (27 Jan 2015)
+
+  27 Jan 2015; Mike Frysinger <vapier@gentoo.org> +mtd-utils-1.5.1.ebuild:
+  Version bump.
+
+  21 Feb 2013; Zac Medico <zmedico@gentoo.org> mtd-utils-1.5.0.ebuild,
+  mtd-utils-99999999.ebuild:
+  Add ~arm-linux keywords.
+
+  03 Jan 2013; Mike Frysinger <vapier@gentoo.org> mtd-utils-1.5.0.ebuild,
+  mtd-utils-99999999.ebuild:
+  Respect env AR/CC/RANLIB #446202 by Ambroz Bizjak.
+
+  24 Aug 2012; Michael Weber <xmw@gentoo.org> mtd-utils-1.5.0.ebuild:
+  ppc stable (bug 422217).
+
+  20 Aug 2012; Johannes Huber <johu@gentoo.org> mtd-utils-1.5.0.ebuild:
+  Stable for x86, wrt bug #422217
+
+  11 Aug 2012; Markus Meier <maekke@gentoo.org> mtd-utils-1.5.0.ebuild:
+  arm stable, bug #422217
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> mtd-utils-1.5.0.ebuild:
+  Stable for amd64, wrt bug #422217
+
+*mtd-utils-1.5.0 (07 May 2012)
+
+  07 May 2012; Mike Frysinger <vapier@gentoo.org> +mtd-utils-1.5.0.ebuild:
+  Version bump.
+
+  17 Apr 2012; Brent Baude <ranger@gentoo.org> mtd-utils-1.4.8.ebuild:
+  Marking mtd-utils-1.4.8 ppc for bug 404863
+
+  14 Apr 2012; Zac Medico <zmedico@gentoo.org> mtd-utils-1.4.8.ebuild,
+  mtd-utils-99999999.ebuild:
+  Add ~amd64-linux keyword.
+
+  05 Apr 2012; Jeff Horelick <jdhore@gentoo.org> mtd-utils-1.4.8.ebuild:
+  marked x86 per bug 404863
+
+  30 Mar 2012; Markus Meier <maekke@gentoo.org> mtd-utils-1.4.8.ebuild:
+  arm stable, bug #404863
+
+  28 Mar 2012; Agostino Sarubbo <ago@gentoo.org> mtd-utils-1.4.8.ebuild:
+  Stable for amd64, wrt bug #404863
+
+*mtd-utils-1.4.8 (19 Nov 2011)
+
+  19 Nov 2011; Mike Frysinger <vapier@gentoo.org> +mtd-utils-1.4.8.ebuild,
+  +files/mtd-utils-1.4.8-install.patch:
+  Version bump.
+
+  07 Nov 2011; Mike Frysinger <vapier@gentoo.org> -mtd-utils-1.4.4.ebuild,
+  -mtd-utils-20100718.ebuild, -files/mtd-utils-20100718-ubi-parallel.patch:
+  Drop old versions that mask newer ones.
+
+  07 Nov 2011; Brent Baude <ranger@gentoo.org> mtd-utils-1.4.5.ebuild:
+  Marking mtd-utils-1.4.5 ppc for bug 379875
+
+  21 Sep 2011; Michał Górny <mgorny@gentoo.org> mtd-utils-99999999.ebuild:
+  Migrate to git-2.
+
+  28 Aug 2011; Markus Meier <maekke@gentoo.org> mtd-utils-1.4.5.ebuild:
+  arm stable, bug #379875
+
+  22 Aug 2011; Tony Vroon <chainsaw@gentoo.org> mtd-utils-1.4.5.ebuild:
+  Marked stable on AMD64 based on arch testing by Ian "idella4" Delaney &
+  Agostino "ago" Sarubbo in bug #379875.
+
+  21 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> mtd-utils-1.4.5.ebuild:
+  x86 stable wrt bug #379875
+
+*mtd-utils-1.4.6 (19 Aug 2011)
+
+  19 Aug 2011; Mike Frysinger <vapier@gentoo.org> +mtd-utils-1.4.6.ebuild:
+  Version bump.
+
+  29 Jul 2011; Zac Medico <zmedico@gentoo.org> mtd-utils-1.4.5.ebuild,
+  mtd-utils-99999999.ebuild:
+  Add ~x86-linux keyword.
+
+  28 Jul 2011; Zac Medico <zmedico@gentoo.org> mtd-utils-1.4.5.ebuild,
+  mtd-utils-99999999.ebuild:
+  Fix for prefix.
+
+*mtd-utils-1.4.5 (11 Jul 2011)
+
+  11 Jul 2011; Mike Frysinger <vapier@gentoo.org> +mtd-utils-1.4.5.ebuild:
+  Version bump.
+
+*mtd-utils-1.4.4 (06 Apr 2011)
+
+  06 Apr 2011; Mike Frysinger <vapier@gentoo.org> +mtd-utils-1.4.4.ebuild:
+  Version bump.
+
+  25 Sep 2010; Markus Meier <maekke@gentoo.org> mtd-utils-20100718.ebuild:
+  arm stable, bug #335949
+
+  24 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  mtd-utils-20100718.ebuild:
+  Stable on amd64 wrt bug #335949
+
+  13 Sep 2010; Joseph Jezak <josejx@gentoo.org> mtd-utils-20100718.ebuild:
+  Marked ppc stable for bug #335949.
+
+  12 Sep 2010; Robin H. Johnson <robbat2@gentoo.org>
+  mtd-utils-20080907.ebuild, mtd-utils-20090630.ebuild,
+  mtd-utils-20100718.ebuild, mtd-utils-99999999.ebuild:
+  Bug #299138: improve the description to say what filesystems are
+  supported.
+
+  10 Sep 2010; Christian Faulhammer <fauli@gentoo.org>
+  mtd-utils-20100718.ebuild:
+  stable x86, bug 335949
+
+  20 Jul 2010; Mike Frysinger <vapier@gentoo.org> mtd-utils-20100718.ebuild,
+  +files/mtd-utils-20100718-ubi-parallel.patch:
+  Fix parallel build issues with libubi and mkfs.ubifs #276374.
+
+*mtd-utils-20100718 (18 Jul 2010)
+
+  18 Jul 2010; Mike Frysinger <vapier@gentoo.org>
+  +mtd-utils-20100718.ebuild, mtd-utils-99999999.ebuild:
+  Update snapshot and merge the live/snap ebuilds #327775 by Raúl Porcel.
+
+  14 Feb 2010; Robin H. Johnson <robbat2@gentoo.org>
+  mtd-utils-20090630.ebuild:
+  Fix cross-compiling again per bug #276374, thanks to solar.
+
+  13 Feb 2010; Robin H. Johnson <robbat2@gentoo.org>
+  mtd-utils-20090630.ebuild:
+  Bug #276374 again, trying for a different workaround.
+
+  29 Dec 2009; Mike Frysinger <vapier@gentoo.org> mtd-utils-20080907.ebuild:
+  Add -j1 for #276374 and fix more ranlib issues #295932.
+
+  29 Dec 2009; Mike Frysinger <vapier@gentoo.org> mtd-utils-20080907.ebuild,
+  mtd-utils-20090630.ebuild, mtd-utils-99999999.ebuild:
+  Pull in util-linux for libuuid.
+
+  04 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  mtd-utils-20090630.ebuild:
+  Add -j1 to build (bug #276374).
+
+  01 Dec 2009; Mike Frysinger <vapier@gentoo.org> mtd-utils-20080907.ebuild:
+  Set AR/RANLIB so correct tools are used.
+
+  01 Dec 2009; Mike Frysinger <vapier@gentoo.org> mtd-utils-20090630.ebuild,
+  mtd-utils-99999999.ebuild:
+  Set CROSS when running make so correct ar/ranlib is used.
+
+*mtd-utils-20090630 (03 Jul 2009)
+
+  03 Jul 2009; Mike Frysinger <vapier@gentoo.org>
+  +mtd-utils-20090630.ebuild:
+  Update snapshot.
+
+*mtd-utils-99999999 (10 Mar 2009)
+
+  10 Mar 2009; Raúl Porcel <armin76@gentoo.org> -mtd-utils-9999.ebuild,
+  +mtd-utils-99999999.ebuild:
+  Replace 9999 by 99999999, so its always newer
+
+  08 Mar 2009; Mike Frysinger <vapier@gentoo.org> mtd-utils-20080907.ebuild:
+  Mark arm/ppc stable #258264.
+
+  15 Feb 2009; Markus Meier <maekke@gentoo.org> mtd-utils-20080907.ebuild:
+  x86 stable, bug #258264
+
+  12 Feb 2009; Jeremy Olexa <darkside@gentoo.org> mtd-utils-20080907.ebuild:
+  amd64 stable, bug 258264
+
+  11 Oct 2008; Diego Pettenò <flameeyes@gentoo.org>
+  mtd-utils-20080907.ebuild:
+  Fix build dependencies.
+
+  24 Sep 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +files/mtd-utils-fixup.patch, mtd-utils-20080907.ebuild:
+  Fix inverted xattr logic per bug #238435 and also parallel build.
+
+*mtd-utils-20080907 (21 Sep 2008)
+
+  21 Sep 2008; Mike Frysinger <vapier@gentoo.org>
+  +mtd-utils-20080907.ebuild:
+  Version bump.
+
+  22 Jun 2008; Zac Medico <zmedico@gentoo.org> mtd-utils-9999.ebuild:
+  Add -f to rm arguments in src_install since ${D}/usr/include doesn't
+  necessarily exist. Also add emake -j1 option to avoid make failures.
+
+  16 Jun 2008; <solar@gentoo.org> mtd-utils-20080102.ebuild:
+  - don't use argp.h http://patchwork.ozlabs.org/linux-mtd/patch?id=17501
+
+  25 May 2008; <solar@gentoo.org> mtd-utils-20080102.ebuild:
+  - stable on arm/amd64/x86
+
+  23 Feb 2008; Mike Frysinger <vapier@gentoo.org> mtd-utils-20060907.ebuild:
+  Move to amd64 stable #203855.
+
+  01 Feb 2008; Mike Frysinger <vapier@gentoo.org> mtd-utils-9999.ebuild,
+  -mtd-utils-20060606.ebuild, mtd-utils-20080102.ebuild:
+  Pull in lzo since we use it #208428 by Mart Raudsepp.
+
+  26 Jan 2008; Mike Frysinger <vapier@gentoo.org> mtd-utils-20060907.ebuild:
+  Move to mips stable #203855.
+
+*mtd-utils-20080102 (02 Jan 2008)
+
+  02 Jan 2008; Robin H. Johnson <robbat2@gentoo.org> mtd-utils-9999.ebuild,
+  +mtd-utils-20080102.ebuild:
+  Version bump using a snapshot from the actual Git repo now. Also update the
+  live ebuild to use the Git repo directly. attr/acl are totally optional now.
+
+  01 Jan 2008; Markus Meier <maekke@gentoo.org> mtd-utils-20060907.ebuild:
+  x86 stable, bug #203855
+
+  31 Dec 2007; Joseph Jezak <josejx@gentoo.org> mtd-utils-20060907.ebuild:
+  Marked ppc stable for bug #203855.
+
+*mtd-utils-9999 (27 Dec 2007)
+
+  27 Dec 2007; Mike Frysinger <vapier@gentoo.org> +mtd-utils-9999.ebuild:
+  Live cvs ebuild.
+
+  26 Dec 2007; Robin H. Johnson <robbat2@gentoo.org>
+  mtd-utils-20060907.ebuild:
+  Fix the deps, acl is only needed to build, as the headers are used. No linking.
+
+*mtd-utils-20060907 (08 Sep 2006)
+
+  08 Sep 2006; Robin H. Johnson <robbat2@gentoo.org>
+  mtd-utils-20060606.ebuild, +mtd-utils-20060907.ebuild:
+  Fix bug #146362 and version bump.
+
+  08 Jun 2006; Robin H. Johnson <robbat2@gentoo.org>
+  mtd-utils-20060606.ebuild:
+  Forgot to block old package.
+
+*mtd-utils-20060606 (08 Jun 2006)
+
+  08 Jun 2006; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +mtd-utils-20060606.ebuild:
+  Initial commit. New variant of the old sys-fs/mtd package, maintained
+  seperately by upstream.

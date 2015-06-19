@@ -1,0 +1,94 @@
+# ChangeLog for app-arch/freeze
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/freeze/ChangeLog,v 1.30 2013/02/06 16:41:39 kensington Exp $
+
+  06 Feb 2013; Michael Palimaka <kensington@gentoo.org> -freeze-2.5.0.ebuild:
+  Remove old.
+
+  13 Jan 2013; Agostino Sarubbo <ago@gentoo.org> freeze-2.5.0-r1.ebuild:
+  Stable for x86, wrt bug #449920
+
+  07 Jan 2013; Agostino Sarubbo <ago@gentoo.org> freeze-2.5.0-r1.ebuild:
+  Stable for alpha, wrt bug #449920
+
+  05 Jan 2013; Agostino Sarubbo <ago@gentoo.org> freeze-2.5.0-r1.ebuild:
+  Stable for sparc, wrt bug #449920
+
+  04 Jan 2013; Agostino Sarubbo <ago@gentoo.org> freeze-2.5.0-r1.ebuild:
+  Stable for ppc64, wrt bug #449920
+
+  04 Jan 2013; Agostino Sarubbo <ago@gentoo.org> freeze-2.5.0-r1.ebuild:
+  Stable for ppc, wrt bug #449920
+
+  03 Jan 2013; Jeroen Roovers <jer@gentoo.org> freeze-2.5.0-r1.ebuild:
+  Stable for HPPA (bug #449920).
+
+  03 Jan 2013; Agostino Sarubbo <ago@gentoo.org> freeze-2.5.0-r1.ebuild:
+  Stable for amd64, wrt bug #449920
+
+  12 Dec 2012; Jeroen Roovers <jer@gentoo.org> freeze-2.5.0-r1.ebuild,
+  +files/freeze-2.5.0-gentoo.patch:
+  Fix symlinks in /usr/bin and mandir.
+
+*freeze-2.5.0-r1 (12 Dec 2012)
+
+  12 Dec 2012; Jeroen Roovers <jer@gentoo.org> freeze-2.5.0.ebuild,
+  +freeze-2.5.0-r1.ebuild:
+  Adjust sleuthkit blocker to a specific minimal version. Revision bump for an
+  ebuild that removes the fcat and fcat.1 symlinks (bug #444872).
+
+  09 Dec 2012; Jeroen Roovers <jer@gentoo.org> freeze-2.5.0.ebuild:
+  Block app-forensics/sleuthkit (bug #444872 by Marc Schiffbauer).
+
+  22 Nov 2012; Ulrich Müller <ulm@gentoo.org> freeze-2.5.0.ebuild:
+  Fix LICENSE, bug 444342.
+
+  05 Jul 2009; Ben de Groot <yngwin@gentoo.org> freeze-2.5.0.ebuild:
+  Block media-libs/mlt[melt] (bug 274671). Eapi-2-ify.
+
+  13 May 2008; Jeroen Roovers <jer@gentoo.org> freeze-2.5.0.ebuild:
+  Stable for HPPA (LuckyLuke). Fixed quoting issue.
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  04 Dec 2006; Charlie Shepherd <masterdriverz@gentoo.org>
+  freeze-2.5.0.ebuild:
+  Stop Makefile stripping files, thanks to Jakub for the patch, bug 152224
+
+  13 Nov 2005; Jason Wever <weeve@gentoo.org> freeze-2.5.0.ebuild:
+  Stable on SPARC.
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> freeze-2.5.0.ebuild:
+  Mark 2.5.0 stable on alpha
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  18 Dec 2004; Simon Stelling <blubb@gentoo.org> freeze-2.5.0.ebuild:
+  was testing for a long time, marking stable on amd64
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  freeze-2.5.0.ebuild:
+  Masked freeze-2.5.0.ebuild stable for ppc
+
+  02 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> freeze-2.5.0.ebuild:
+  Keyword ~alpha.
+
+  28 Aug 2004; Tom Gall <tgall@gentoo.org> freeze-2.5.0.ebuild:
+  stable on ppc64, bug #60194
+
+  15 Aug 2004; Jason Wever <weeve@gentoo.org> freeze-2.5.0.ebuild:
+  Added ~sparc keyword wrt bug #59010.
+
+  27 Apr 2004; Max Kalika <max@gentoo.org> freeze-2.5.0.ebuild, metadata.xml:
+  Fix digest, and other cleanups.
+
+  18 Mar 2004; David Holm <dholm@gentoo.org> freeze-2.5.0.ebuild:
+  Added to ~ppc.
+
+*freeze-2.5.0 (10 Mar 2004)
+
+  10 Mar 2004; Marc Hildebrand <zypher@gentoo.org> freeze-2.5.0.ebuild:
+  Initial ebuild. Submitted by Cory Visi, bug #44301

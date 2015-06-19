@@ -1,0 +1,39 @@
+# ChangeLog for x11-misc/xtscal
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xtscal/ChangeLog,v 1.10 2015/06/05 14:48:57 chithanh Exp $
+
+*xtscal-0.6.3-r1 (05 Jun 2015)
+
+  05 Jun 2015; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xtscal-0.6.3-r1.ebuild, xtscal-0.6.3.ebuild:
+  Fix underlinking against libXrender, bug #370017.
+
+  07 Nov 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  xtscal-0.6.3.ebuild:
+  Add missing libXft dependency, bug #514262.
+
+  21 Oct 2010; Brent Baude <ranger@gentoo.org> xtscal-0.6.3.ebuild:
+  Marking xtscal-0.6.3 ppc stable for bug 239063
+
+  28 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> xtscal-0.6.3.ebuild:
+  ppc64 stable wrt #327777
+
+  12 Sep 2010; Tobias Klausmann <klausman@gentoo.org> xtscal-0.6.3.ebuild:
+  Stable on alpha, bug #327777
+
+  22 Jul 2010; Markus Meier <maekke@gentoo.org> xtscal-0.6.3.ebuild:
+  arm stable, bug #327777
+
+  14 Jul 2010; Jeroen Roovers <jer@gentoo.org> xtscal-0.6.3.ebuild:
+  Stable for HPPA (bug #327777).
+
+  13 Jul 2010; Christian Faulhammer <fauli@gentoo.org> xtscal-0.6.3.ebuild:
+  x86 stable, bug 327777
+
+  12 Jul 2010; Markos Chandras <hwoarang@gentoo.org> xtscal-0.6.3.ebuild:
+  Stable on amd64 wrt bug #327777
+
+*xtscal-0.6.3 (15 Mar 2009)
+
+  15 Mar 2009; <solar@gentoo.org> +metadata.xml, +xtscal-0.6.3.ebuild:
+  - initial commit of xtscal-0.6.3

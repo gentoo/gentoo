@@ -1,0 +1,246 @@
+# ChangeLog for dev-perl/gnome2-vfs-perl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/gnome2-vfs-perl/ChangeLog,v 1.58 2015/05/01 12:27:33 dilfridge Exp $
+
+  01 May 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  gnome2-vfs-perl-1.81.0-r1.ebuild:
+  dev-perl/extutils-depends just became dev-perl/ExtUtils-Depends
+
+  12 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  gnome2-vfs-perl-1.81.0-r1.ebuild:
+  Hard-disable tests since they need to set up a dbus desktop environment, bug
+  423473
+
+*gnome2-vfs-perl-1.81.0-r1 (25 Aug 2014)
+
+  25 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +gnome2-vfs-perl-1.81.0-r1.ebuild, -gnome2-vfs-perl-1.81.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  05 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> gnome2-vfs-perl-1.81.0.ebuild:
+  Fix DESCRIPTION
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> gnome2-vfs-perl-1.81.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  05 Apr 2012; Torsten Veller <tove@gentoo.org> -gnome2-vfs-perl-1.061.ebuild:
+  Cleanup
+
+  31 Mar 2012; Tobias Klausmann <klausman@gentoo.org>
+  gnome2-vfs-perl-1.81.0.ebuild:
+  Stable on alpha, bug #400289
+
+  31 Mar 2012; Raúl Porcel <armin76@gentoo.org> gnome2-vfs-perl-1.061.ebuild,
+  gnome2-vfs-perl-1.81.0.ebuild:
+  Drop ia64/sparc keywords
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gnome2-vfs-perl-1.81.0.ebuild:
+  x86 stable wrt bug #400289
+
+  27 Feb 2012; Brent Baude <ranger@gentoo.org> gnome2-vfs-perl-1.81.0.ebuild:
+  Marking gnome2-vfs-perl-1.81.0 ppc for bug 400289
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> gnome2-vfs-perl-1.81.0.ebuild:
+  Stable for amd64, wrt bug #400289
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -gnome2-vfs-perl-1.081.ebuild:
+  Cleanup
+
+*gnome2-vfs-perl-1.81.0 (27 Aug 2011)
+
+  27 Aug 2011; Torsten Veller <tove@gentoo.org> +gnome2-vfs-perl-1.81.0.ebuild:
+  Change version scheme
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org> gnome2-vfs-perl-1.061.ebuild,
+  gnome2-vfs-perl-1.081.ebuild:
+  Drop HPPA keywording (bug #324511).
+
+  10 Jan 2010; Fabian Groffen <grobian@gentoo.org>
+  gnome2-vfs-perl-1.081.ebuild:
+  Transfer Prefix keywords
+
+  16 Aug 2009; Torsten Veller <tove@gentoo.org> -files/vfs.typemap:
+  Cleanup
+
+  29 Nov 2008; <ssuominen@gentoo.org> gnome2-vfs-perl-1.061.ebuild:
+  Move extutils-pkgconfig to DEPEND wrt #223075.
+
+*gnome2-vfs-perl-1.081 (21 Sep 2008)
+
+  21 Sep 2008; Torsten Veller <tove@gentoo.org>
+  +gnome2-vfs-perl-1.081.ebuild:
+  Version bump. Try tests. Fix LICENSE.
+
+  20 Apr 2008; Samuli Suominen <drac@gentoo.org>
+  -gnome2-vfs-perl-1.041.ebuild, -gnome2-vfs-perl-1.060.ebuild,
+  gnome2-vfs-perl-1.061.ebuild:
+  Move pkgconfig from RDEPEND to DEPEND.
+
+  19 Mar 2008; Jeroen Roovers <jer@gentoo.org> gnome2-vfs-perl-1.061.ebuild:
+  Stable for HPPA too.
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  gnome2-vfs-perl-1.061.ebuild:
+  ppc stable
+
+  30 Mar 2007; Michael Cummings <mcummings@gentoo.org>
+  gnome2-vfs-perl-1.041.ebuild, gnome2-vfs-perl-1.060.ebuild,
+  gnome2-vfs-perl-1.061.ebuild:
+  Bug 152206, deps updated
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org>
+  gnome2-vfs-perl-1.061.ebuild:
+  Stable on x86, bug #169152.
+
+  22 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  gnome2-vfs-perl-1.061.ebuild:
+  Stable on Alpha + IA64.
+
+  11 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gnome2-vfs-perl-1.061.ebuild:
+  Stable on sparc
+
+  08 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -gnome2-vfs-perl-1.00.ebuild, -gnome2-vfs-perl-1.021.ebuild,
+  gnome2-vfs-perl-1.041.ebuild, gnome2-vfs-perl-1.060.ebuild,
+  gnome2-vfs-perl-1.061.ebuild:
+  marking amd64 stable
+
+*gnome2-vfs-perl-1.061 (03 Dec 2006)
+
+  03 Dec 2006; Michael Cummings <mcummings@gentoo.org>
+  +gnome2-vfs-perl-1.061.ebuild:
+  Version bump
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  gnome2-vfs-perl-1.060.ebuild:
+  Stable on Alpha.
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  gnome2-vfs-perl-1.060.ebuild:
+  Stable on ia64.
+
+  17 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  gnome2-vfs-perl-1.060.ebuild:
+  ppc stable
+
+  17 Sep 2006; Christian Hartmann <ian@gentoo.org>
+  gnome2-vfs-perl-1.060.ebuild:
+  Fixed broken version deps; bug #147858
+
+  05 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gnome2-vfs-perl-1.060.ebuild:
+  Stable on sparc
+
+  07 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  gnome2-vfs-perl-1.060.ebuild:
+  Marking amd64 stable
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  gnome2-vfs-perl-1.00.ebuild, gnome2-vfs-perl-1.021.ebuild,
+  gnome2-vfs-perl-1.041.ebuild, gnome2-vfs-perl-1.060.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  05 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  gnome2-vfs-perl-1.00.ebuild, gnome2-vfs-perl-1.021.ebuild,
+  gnome2-vfs-perl-1.041.ebuild, gnome2-vfs-perl-1.060.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-gnome2-vfs-perl-1.00, files/digest-gnome2-vfs-perl-1.021,
+  files/digest-gnome2-vfs-perl-1.041, Manifest:
+  Fixing SHA256 digest, pass four
+
+*gnome2-vfs-perl-1.060 (26 Apr 2006)
+
+  26 Apr 2006; <mcummings@gentoo.org> +gnome2-vfs-perl-1.060.ebuild:
+  Version bump
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  gnome2-vfs-perl-1.041.ebuild:
+  Mark 1.041 stable on ia64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org>
+  gnome2-vfs-perl-1.041.ebuild:
+  Mark 1.041 stable on alpha
+
+  18 Jan 2006; Guy Martin <gmsoft@gentoo.org> gnome2-vfs-perl-1.041.ebuild:
+  Stable on hppa.
+
+  16 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gnome2-vfs-perl-1.041.ebuild:
+  Stable on sparc
+
+  15 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  gnome2-vfs-perl-1.041.ebuild:
+  Stable on ppc.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  gnome2-vfs-perl-1.041.ebuild:
+  Marking stable x86
+
+  09 Jan 2006; <mcumming@gentoo.org> gnome2-vfs-perl-1.00.ebuild,
+  gnome2-vfs-perl-1.021.ebuild:
+  Typo in descriptions, yuval strikes again
+
+*gnome2-vfs-perl-1.041 (14 Nov 2005)
+
+  14 Nov 2005; Michael Cummings <mcummings@gentoo.org>
+  +gnome2-vfs-perl-1.041.ebuild:
+  Version bump upstream
+
+  08 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  gnome2-vfs-perl-1.00.ebuild:
+  Mark 1.00 stable on alpha
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  gnome2-vfs-perl-1.021.ebuild:
+  add ~ia64
+
+  14 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gnome2-vfs-perl-1.00.ebuild:
+  Stable on ppc.
+
+  09 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  gnome2-vfs-perl-1.00.ebuild:
+  Stable on sparc
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org>
+  gnome2-vfs-perl-1.00.ebuild, gnome2-vfs-perl-1.021.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+*gnome2-vfs-perl-1.021 (29 Apr 2005)
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -gnome2-vfs-perl-0.05.ebuild, gnome2-vfs-perl-1.00.ebuild,
+  +gnome2-vfs-perl-1.021.ebuild:
+  Cleaning for mirror syntax
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  gnome2-vfs-perl-1.00.ebuild:
+  stable on amd64
+
+  20 Apr 2004; Guy Martin <gmsoft@gentoo.org> gnome2-vfs-perl-1.00.ebuild:
+  Marked stable on hppa.
+
+*gnome2-vfs-perl-1.00 (29 Mar 2004)
+
+  29 Mar 2004; Michael Cummings <mcummings@gentoo.org>
+  gnome2-vfs-perl-1.00.ebuild:
+  version bump
+
+  07 Mar 2004; Jon Portnoy <avenj@gentoo.org> gnome2-vfs-perl-0.05.ebuild :
+  AMD64 keywords.
+
+*gnome2-vfs-perl-0.05 (30 Dec 2003)
+
+  30 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
+  gnome2-vfs-perl-0.05.ebuild, files/vfs.typemap:
+  Initial check in - this is a dependancy for the current stable gnome2-perl.
+  The vfs.typemap in files/ contains a two line addition that allows this to
+  build correctly. I've submitted a bug via CPAN for this, #4787.

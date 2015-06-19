@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>graaff@gentoo.org</email>
+	</maintainer>
+	<herd>net-p2p</herd>
+	<upstream>
+		<remote-id type="sourceforge">gtk-gnutella</remote-id>
+	</upstream>
+</pkgmetadata>

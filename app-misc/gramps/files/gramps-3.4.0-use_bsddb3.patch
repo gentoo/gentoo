@@ -1,0 +1,11 @@
+--- src/config.py.orig	2012-06-02 07:05:21.479670747 +0200
++++ src/config.py	2012-06-02 07:05:58.444713800 +0200
+@@ -302,7 +302,7 @@
+ register('preferences.use-last-view', True)
+ register('preferences.last-view', '')
+ register('preferences.last-views', [])
+-register('preferences.use-bsddb3', False)
++register('preferences.use-bsddb3', True)
+ register('preferences.family-relation-type', 3) # UNKNOWN
+ 
+ register('researcher.researcher-addr', '')

@@ -1,0 +1,16 @@
+Fix missing icon and text with new PyGObject
+Gentoo bugreport - https://bugs.gentoo.org/show_bug.cgi?id=487106
+Patch by  Small_Penguin <dark.shadow AT gmx.at>
+
+diff -Naur ccsm-0.8.4~/ccm/Utils.py ccsm-0.8.4/ccm/Utils.py
+--- ccsm-0.8.4~/ccm/Utils.py	2009-10-14 03:05:30.000000000 +0200
++++ ccsm-0.8.4/ccm/Utils.py	2013-10-05 10:16:10.050030522 +0200
+@@ -184,7 +184,7 @@
+         if has_focus:
+             self.unset_flags (gtk.HAS_FOCUS)
+ 
+-        ret = super (PrettyButton, self).do_expose_event (self, event)
++        ret = gtk.Button.do_expose_event (self, event)
+ 
+         if has_focus:
+             self.set_flags (gtk.HAS_FOCUS)

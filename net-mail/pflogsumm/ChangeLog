@@ -1,0 +1,113 @@
+# ChangeLog for net-mail/pflogsumm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/pflogsumm/ChangeLog,v 1.27 2015/04/12 18:59:51 mrueg Exp $
+
+  12 Apr 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/1.1.0-postfix-2.3-logs.patch, -pflogsumm-1.1.3.ebuild,
+  -pflogsumm-1.1.4.ebuild:
+  Remove old.
+
+  07 May 2013; Agostino Sarubbo <ago@gentoo.org> pflogsumm-1.1.5.ebuild:
+  Stable for sparc, wrt bug #462820
+
+  30 Apr 2013; Agostino Sarubbo <ago@gentoo.org> pflogsumm-1.1.5.ebuild:
+  Stable for x86, wrt bug #462820
+
+  30 Apr 2013; Agostino Sarubbo <ago@gentoo.org> pflogsumm-1.1.5.ebuild:
+  Stable for amd64, wrt bug #462820
+
+*pflogsumm-1.1.5 (06 Feb 2012)
+
+  06 Feb 2012; Eray Aslan <eras@gentoo.org> +pflogsumm-1.1.5.ebuild:
+  version bump
+
+*pflogsumm-1.1.4 (04 Feb 2012)
+
+  04 Feb 2012; Eray Aslan <eras@gentoo.org> +pflogsumm-1.1.4.ebuild:
+  version bump
+
+  27 Jun 2011; Eray Aslan <eras@gentoo.org> -pflogsumm-1.1.1.ebuild:
+  Remove old
+
+  25 Jun 2011; Raúl Porcel <armin76@gentoo.org> pflogsumm-1.1.3.ebuild:
+  sparc stable wrt #370261
+
+  14 Jun 2011; Markus Meier <maekke@gentoo.org> pflogsumm-1.1.3.ebuild:
+  x86 stable, bug #370261
+
+  08 Jun 2011; Markos Chandras <hwoarang@gentoo.org> pflogsumm-1.1.3.ebuild:
+  Stable on amd64 wrt bug #370261
+
+  06 Jun 2011; Eray Aslan <eras@gentoo.org> -pflogsumm-1.0.11.ebuild,
+  -pflogsumm-1.1.0.ebuild, -pflogsumm-1.1.0-r2.ebuild:
+  Remove old
+
+*pflogsumm-1.1.3 (27 Aug 2010)
+
+  27 Aug 2010; Tim Harder <radhermit@gentoo.org> +pflogsumm-1.1.3.ebuild:
+  Version bump for bug #317827.
+
+  22 Aug 2008; Markus Meier <maekke@gentoo.org> pflogsumm-1.1.1.ebuild:
+  amd64 stable, bug #232963
+
+  01 Aug 2008; Raúl Porcel <armin76@gentoo.org> pflogsumm-1.1.1.ebuild:
+  x86 stable wrt #232963
+
+  27 Jul 2008; Friedrich Oslage <bluebird@gentoo.org>
+  pflogsumm-1.1.1.ebuild:
+  Stable on sparc, bug #232963
+
+  30 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Andrej Kacian (Ticho) from metadata.xml (as per #59986).
+
+*pflogsumm-1.1.1 (16 Mar 2008)
+
+  16 Mar 2008; Andrej Kacian <ticho@gentoo.org> +pflogsumm-1.1.1.ebuild:
+  Version bump.
+
+  28 Feb 2008; Raúl Porcel <armin76@gentoo.org> pflogsumm-1.0.11.ebuild,
+  pflogsumm-1.1.0-r2.ebuild:
+  I keyworded the wrong ebuild
+
+  17 Jan 2008; Raúl Porcel <armin76@gentoo.org> pflogsumm-1.0.11.ebuild:
+  Add ~sparc wrt #206424
+
+*pflogsumm-1.1.0-r2 (03 Mar 2007)
+
+  03 Mar 2007; Andrej Kacian <ticho@gentoo.org>
+  files/1.1.0-postfix-2.3-logs.patch, -pflogsumm-1.1.0-r1.ebuild,
+  +pflogsumm-1.1.0-r2.ebuild:
+  Fixed the postfix 2.3 compatibility patch, thanks to Kevin Parent <kparent
+  at enersea.net>, bug 168766.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*pflogsumm-1.1.0-r1 (17 Nov 2006)
+
+  17 Nov 2006; Andrej Kacian <ticho@gentoo.org>
+  +files/1.1.0-postfix-2.3-logs.patch, +pflogsumm-1.1.0-r1.ebuild:
+  Add patch to be able to parse postfix-2.3 logs. Suggested by crywolf at
+  kyndimarion.net in bug #144236.
+
+  01 Jun 2005; Andrej Kacian <ticho@gentoo.org> pflogsumm-1.1.0.ebuild:
+  Stable on amd64.
+
+  10 Apr 2005; Andrej Kacian <ticho@gentoo.org> pflogsumm-1.1.0.ebuild:
+  Added ~amd64 keyword.
+
+  14 Dec 2004; Andrej Kacian <ticho@gentoo.org> pflogsumm-1.0.11.ebuild,
+  pflogsumm-1.1.0.ebuild:
+  Stable on x86.
+
+*pflogsumm-1.1.0 (12 Dec 2004)
+
+  12 Dec 2004; Andrej Kacian <ticho@gentoo.org> +pflogsumm-1.1.0.ebuild:
+  Version bump. Closes #74144, reported by Justin Lambert <jlambert@eml.cc>.
+
+*pflogsumm-1.0.11 (03 Nov 2004)
+
+  03 Nov 2004; Andrej Kacian <ticho@gentoo.org> +metadata.xml,
+  +pflogsumm-1.0.11.ebuild:
+  Initial import. Closes bug #32445, ebuild submitted by eric sammer
+  <eric@ineoconcepts.com>.

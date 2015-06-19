@@ -1,0 +1,624 @@
+# ChangeLog for media-plugins/gst-plugins-x
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-x/ChangeLog,v 1.152 2014/10/11 13:31:39 maekke Exp $
+
+  11 Oct 2014; Markus Meier <maekke@gentoo.org>
+  gst-plugins-x-0.10.36-r1.ebuild:
+  arm stable, bug #512012
+
+  15 Sep 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-x-0.10.36-r1.ebuild:
+  Stable for sparc, wrt bug #512012
+
+  25 Aug 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-x-0.10.36-r1.ebuild:
+  Stable for alpha, wrt bug #512012
+
+  23 Aug 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-x-0.10.36-r1.ebuild:
+  Stable for ia64, wrt bug #512012
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-x-0.10.36-r1.ebuild:
+  Stable for ppc64, wrt bug #512012
+
+  07 Aug 2014; Jeroen Roovers <jer@gentoo.org> gst-plugins-x-0.10.36-r1.ebuild:
+  Stable for HPPA (bug #512012).
+
+  28 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-x-0.10.36-r1.ebuild:
+  Stable for ppc, wrt bug #512012
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-x-0.10.36-r1.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-x-0.10.36-r1.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> gst-plugins-x-0.10.36-r1.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+*gst-plugins-x-0.10.36-r1 (10 Jun 2014)
+
+  10 Jun 2014; Michał Górny <mgorny@gentoo.org>
+  +gst-plugins-x-0.10.36-r1.ebuild:
+  Enable multilib support, bug #493176.
+
+  05 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -gst-plugins-x-0.10.35.ebuild, -gst-plugins-x-0.10.35-r1.ebuild:
+  Clean up old revisions.
+
+  24 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gst-plugins-x-0.10.36.ebuild:
+  Stable for sh, wrt bug #456476
+
+  10 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gst-plugins-x-0.10.36.ebuild:
+  Stable for sparc, wrt bug #454906
+
+  07 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gst-plugins-x-0.10.36.ebuild:
+  Stable for hppa, wrt bug #454906
+
+  04 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gst-plugins-x-0.10.36.ebuild:
+  Stable for arm, wrt bug #454906
+
+  04 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gst-plugins-x-0.10.36.ebuild:
+  Stable for alpha, wrt bug #454906
+
+  04 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gst-plugins-x-0.10.36.ebuild:
+  Stable for ia64, wrt bug #454906
+
+  01 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gst-plugins-x-0.10.36.ebuild:
+  Stable for ppc, wrt bug #454906
+
+  01 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gst-plugins-x-0.10.36.ebuild:
+  Stable for ppc64, wrt bug #454906
+
+  01 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gst-plugins-x-0.10.36.ebuild:
+  Stable for x86, wrt bug #454906
+
+  01 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gst-plugins-x-0.10.36.ebuild:
+  Stable for amd64, wrt bug #454906
+
+  02 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  gst-plugins-x-0.10.35.ebuild, gst-plugins-x-0.10.35-r1.ebuild:
+  Add src_prepare due to eclass changes.
+
+  02 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  gst-plugins-x-0.10.36.ebuild:
+  Update with ebuild from gnome overlay.
+
+  02 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  -gst-plugins-x-0.10.32.ebuild, gst-plugins-x-0.10.35.ebuild:
+  Clean up old revisions. EAPI bump stable due to pending eclass changes and
+  slot pinning.
+
+*gst-plugins-x-0.10.36 (21 Oct 2012)
+
+  21 Oct 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gst-plugins-x-0.10.35.ebuild, +gst-plugins-x-0.10.36.ebuild:
+  Version bump with some bugfixes.
+
+*gst-plugins-x-0.10.35-r1 (19 Oct 2012)
+
+  19 Oct 2012; Arun Raghavan <ford_prefect@gentoo.org>
+  +gst-plugins-x-0.10.35-r1.ebuild:
+  Prevent unnecessary linking with libICE, libSM. Fixes #368753.
+
+  12 May 2012; Alexis Ballier <aballier@gentoo.org>
+  gst-plugins-x-0.10.35.ebuild:
+  keyword ~amd64-fbsd
+
+  15 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  gst-plugins-x-0.10.35.ebuild:
+  ppc/ppc64 stable wrt #382225
+
+  11 Oct 2011; Jeroen Roovers <jer@gentoo.org> gst-plugins-x-0.10.35.ebuild:
+  Stable for HPPA (bug #382225).
+
+  09 Oct 2011; Raúl Porcel <armin76@gentoo.org> gst-plugins-x-0.10.35.ebuild:
+  alpha/ia64/sh/sparc stable wrt #382225
+
+  03 Oct 2011; Markus Meier <maekke@gentoo.org> gst-plugins-x-0.10.35.ebuild:
+  arm stable, bug #382225
+
+  25 Sep 2011; Tony Vroon <chainsaw@gentoo.org> gst-plugins-x-0.10.35.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Tomáš "Mepho" Pružina in bug #382225.
+
+  20 Sep 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gst-plugins-x-0.10.35.ebuild:
+  x86 stable wrt bug #382225
+
+  25 Aug 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  -gst-plugins-x-0.10.31.ebuild:
+  Remove old
+
+  25 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  gst-plugins-x-0.10.32.ebuild:
+  ppc/ppc64 stable wrt #368281
+
+*gst-plugins-x-0.10.35 (04 Jul 2011)
+
+  04 Jul 2011; Mart Raudsepp <leio@gentoo.org>
+  -gst-plugins-x-0.10.29.ebuild, +gst-plugins-x-0.10.35.ebuild:
+  Version bump with a small bug fix
+
+  09 Jun 2011; Jeroen Roovers <jer@gentoo.org> gst-plugins-x-0.10.32.ebuild:
+  Stable for HPPA (bug #368281).
+
+  05 Jun 2011; Raúl Porcel <armin76@gentoo.org> gst-plugins-x-0.10.32.ebuild:
+  alpha/ia64/sh/sparc stable wrt #368281
+
+  05 Jun 2011; Markus Meier <maekke@gentoo.org> gst-plugins-x-0.10.32.ebuild:
+  arm stable, bug #368281
+
+  23 May 2011; Markos Chandras <hwoarang@gentoo.org>
+  gst-plugins-x-0.10.32.ebuild:
+  Stable on amd64 wrt bug #368281
+
+  23 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gst-plugins-x-0.10.32.ebuild:
+  x86 stable wrt bug #368281
+
+  29 Mar 2011; Mart Raudsepp <leio@gentoo.org> gst-plugins-x-0.10.32.ebuild:
+  Add ~mips keyword
+
+  13 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  gst-plugins-x-0.10.31.ebuild:
+  ppc64 stable wrt #353434
+
+  05 Mar 2011; Raúl Porcel <armin76@gentoo.org> gst-plugins-x-0.10.31.ebuild:
+  alpha/ia64/sh/sparc stable wrt #353434
+
+  01 Mar 2011; Jeroen Roovers <jer@gentoo.org> gst-plugins-x-0.10.31.ebuild:
+  Stable for HPPA (bug #353434).
+
+  27 Feb 2011; Brent Baude <ranger@gentoo.org> gst-plugins-x-0.10.31.ebuild:
+  Marking gst-plugins-x-0.10.31 ppc stable for bug 353434
+
+*gst-plugins-x-0.10.32 (24 Feb 2011)
+
+  24 Feb 2011; Mart Raudsepp <leio@gentoo.org>
+  -gst-plugins-x-0.10.24.ebuild, -gst-plugins-x-0.10.25.ebuild,
+  -gst-plugins-x-0.10.28.ebuild, -gst-plugins-x-0.10.30.ebuild,
+  +gst-plugins-x-0.10.32.ebuild:
+  Version bump. New read-only properties window-width and window-height
+
+  20 Feb 2011; Markus Meier <maekke@gentoo.org> gst-plugins-x-0.10.31.ebuild:
+  arm stable, bug #353434
+
+  14 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gst-plugins-x-0.10.31.ebuild:
+  x86 stable wrt bug #353434
+
+  11 Feb 2011; Markos Chandras <hwoarang@gentoo.org>
+  gst-plugins-x-0.10.31.ebuild:
+  Stable on amd64 wrt bug #353434
+
+*gst-plugins-x-0.10.31 (12 Jan 2011)
+
+  12 Jan 2011; Arun Raghavan <ford_prefect@gentoo.org>
+  +gst-plugins-x-0.10.31.ebuild:
+  Bump to 0.10.31. Minor fixes in this release.
+
+*gst-plugins-x-0.10.30 (19 Nov 2010)
+
+  19 Nov 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  +gst-plugins-x-0.10.30.ebuild:
+  Bump to 0.10.30. No major changes.
+
+  11 Sep 2010; <nixnut@gentoo.org> gst-plugins-x-0.10.29.ebuild:
+  ppc stable #329703
+
+  05 Sep 2010; Tobias Klausmann <klausman@gentoo.org>
+  gst-plugins-x-0.10.29.ebuild:
+  Stable on alpha, bug #329703
+
+  05 Sep 2010; Raúl Porcel <armin76@gentoo.org>
+  gst-plugins-x-0.10.29.ebuild:
+  ia64/sh/sparc stable wrt #329703
+
+  04 Sep 2010; Raúl Porcel <armin76@gentoo.org>
+  gst-plugins-x-0.10.28.ebuild:
+  alpha/ia64/sh/sparc stable wrt #324691
+
+  10 Aug 2010; Jeroen Roovers <jer@gentoo.org> gst-plugins-x-0.10.29.ebuild:
+  Stable for HPPA (bug #329703).
+
+  05 Aug 2010; Samuli Suominen <ssuominen@gentoo.org>
+  gst-plugins-x-0.10.29.ebuild:
+  ppc64 stable wrt #324691
+
+  03 Aug 2010; Markus Meier <maekke@gentoo.org>
+  gst-plugins-x-0.10.29.ebuild:
+  arm stable, bug #329703
+
+  01 Aug 2010; Tobias Klausmann <klausman@gentoo.org>
+  gst-plugins-x-0.10.28.ebuild:
+  Stable on alpha, bug #324691
+
+  27 Jul 2010; Pacho Ramos <pacho@gentoo.org> gst-plugins-x-0.10.29.ebuild:
+  amd64 stable, bug 329703
+
+  27 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  gst-plugins-x-0.10.29.ebuild:
+  x86 stable, bug 329703
+
+  24 Jul 2010; Markus Meier <maekke@gentoo.org>
+  gst-plugins-x-0.10.28.ebuild:
+  arm stable, bug #324691
+
+  12 Jul 2010; Jeroen Roovers <jer@gentoo.org> gst-plugins-x-0.10.28.ebuild:
+  Stable for HPPA (bug #324691).
+
+  01 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  gst-plugins-x-0.10.28.ebuild:
+  x86 stable, bug 324691
+
+*gst-plugins-x-0.10.29 (28 Jun 2010)
+
+  28 Jun 2010; Mart Raudsepp <leio@gentoo.org>
+  +gst-plugins-x-0.10.29.ebuild:
+  Version bump. Various bug fixes
+
+  27 Jun 2010; <nixnut@gentoo.org> gst-plugins-x-0.10.28.ebuild:
+  ppc stable #324691
+
+  24 Jun 2010; Jeroen Roovers <jer@gentoo.org> gst-plugins-x-0.10.25.ebuild:
+  Stable for HPPA (bug #308379).
+
+  24 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  gst-plugins-x-0.10.28.ebuild:
+  Stable on amd64 wrt bug #324691
+
+  18 Apr 2010; <nixnut@gentoo.org> gst-plugins-x-0.10.25.ebuild:
+  ppc stable #308379
+
+  05 Apr 2010; Raúl Porcel <armin76@gentoo.org>
+  gst-plugins-x-0.10.25.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #308379
+
+  24 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  gst-plugins-x-0.10.25.ebuild:
+  stable x86, bug 308379
+
+  19 Mar 2010; Pacho Ramos <pacho@gentoo.org> gst-plugins-x-0.10.25.ebuild:
+  amd64 stable, bug 308379
+
+*gst-plugins-x-0.10.28 (19 Mar 2010)
+
+  19 Mar 2010; Mart Raudsepp <leio@gentoo.org>
+  -gst-plugins-x-0.10.23.ebuild, +gst-plugins-x-0.10.28.ebuild:
+  Version bump with a small optimization
+
+  28 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  gst-plugins-x-0.10.25.ebuild:
+  mark ~x86-freebsd
+
+  10 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  gst-plugins-x-0.10.25.ebuild:
+  Transfer Prefix keywords
+
+  05 Jan 2010; nixnut <nixnut@gentoo.org> gst-plugins-x-0.10.24.ebuild:
+  ppc stable #290343
+
+  29 Dec 2009; Raúl Porcel <armin76@gentoo.org>
+  gst-plugins-x-0.10.24.ebuild:
+  ia64/sh/sparc stable wrt #290343
+
+  27 Nov 2009; Markus Meier <maekke@gentoo.org>
+  gst-plugins-x-0.10.24.ebuild:
+  arm stable, bug #290343
+
+  22 Nov 2009; Tobias Klausmann <klausman@gentoo.org>
+  gst-plugins-x-0.10.24.ebuild:
+  Stable on alpha, bug #290343
+
+  18 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  gst-plugins-x-0.10.24.ebuild:
+  x86 stable, bug 290343
+
+  18 Nov 2009; Jeroen Roovers <jer@gentoo.org> gst-plugins-x-0.10.24.ebuild:
+  Stable for HPPA (bug #290343).
+
+  17 Nov 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking gst-plugins-x-0.10.24 ppc64 stable for bug 290343
+
+*gst-plugins-x-0.10.25 (16 Nov 2009)
+
+  16 Nov 2009; Mart Raudsepp <leio@gentoo.org>
+  -gst-plugins-x-0.10.22.ebuild, +gst-plugins-x-0.10.25.ebuild:
+  Version bump, trivial changes. Add missing xshm support dependencies
+
+  10 Nov 2009; Olivier Crête <tester@gentoo.org>
+  gst-plugins-x-0.10.24.ebuild:
+  Stable on amd64, bug #290343
+
+  15 Sep 2009; Jeroen Roovers <jer@gentoo.org> gst-plugins-x-0.10.23.ebuild:
+  Stable for HPPA (bug #280946).
+
+  31 Aug 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking gst-plugins-x-0.10.23 ppc64 stable for bug 280946
+
+  29 Aug 2009; Raúl Porcel <armin76@gentoo.org>
+  gst-plugins-x-0.10.23.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #280946
+
+  23 Aug 2009; nixnut <nixnut@gentoo.org> gst-plugins-x-0.10.23.ebuild:
+  ppc stable #280946
+
+  21 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  gst-plugins-x-0.10.23.ebuild:
+  stable x86, bug 280946
+
+*gst-plugins-x-0.10.24 (15 Aug 2009)
+
+  15 Aug 2009; Olivier Crête <tester@gentoo.org>
+  +gst-plugins-x-0.10.24.ebuild:
+  Version bump
+
+  15 Aug 2009; Olivier Crête <tester@gentoo.org>
+  gst-plugins-x-0.10.23.ebuild:
+  Stable on amd64, bug #280946
+
+  05 Aug 2009; Mart Raudsepp <leio@gentoo.org>
+  -gst-plugins-x-0.10.14.ebuild, -gst-plugins-x-0.10.20.ebuild,
+  -gst-plugins-x-0.10.21.ebuild:
+  Remove old
+
+  01 Jul 2009; Raúl Porcel <armin76@gentoo.org>
+  gst-plugins-x-0.10.22.ebuild:
+  arm/ia64/sh/sparc stable wrt #266986
+
+  23 May 2009; Jeroen Roovers <jer@gentoo.org> gst-plugins-x-0.10.22.ebuild:
+  Stable for HPPA (bug #266986).
+
+  21 May 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking gst-plugins-x-0.10.22 ppc64 stable for bug 266986
+
+  21 May 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking gst-plugins-x-0.10.22 ppc stable for bug 266986
+
+  14 May 2009; Markus Meier <maekke@gentoo.org>
+  gst-plugins-x-0.10.22.ebuild:
+  amd64 stable, bug #266986
+
+  12 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  gst-plugins-x-0.10.22.ebuild:
+  stable x86, bug 266986
+
+*gst-plugins-x-0.10.23 (11 May 2009)
+
+  11 May 2009; Olivier Crête <tester@gentoo.org>
+  +gst-plugins-x-0.10.23.ebuild:
+  Version bump
+
+  03 May 2009; Tobias Klausmann <klausman@gentoo.org>
+  gst-plugins-x-0.10.22.ebuild:
+  Stable on alpha, bug #266986
+
+  05 Apr 2009; Raúl Porcel <armin76@gentoo.org>
+  gst-plugins-x-0.10.20.ebuild:
+  arm/sh stable wrt #232054
+
+*gst-plugins-x-0.10.22 (30 Mar 2009)
+
+  30 Mar 2009; Olivier Crête <tester@gentoo.org>
+  +gst-plugins-x-0.10.22.ebuild:
+  Version bump
+
+*gst-plugins-x-0.10.21 (05 Dec 2008)
+
+  05 Dec 2008; <ssuominen@gentoo.org> +gst-plugins-x-0.10.21.ebuild:
+  Version bump.
+
+  23 Sep 2008; Jeroen Roovers <jer@gentoo.org> gst-plugins-x-0.10.20.ebuild:
+  Stable for HPPA (bug #232054).
+
+  08 Aug 2008; Markus Meier <maekke@gentoo.org>
+  gst-plugins-x-0.10.20.ebuild:
+  x86 stable, bug #232054
+
+  07 Aug 2008; Tobias Klausmann <klausman@gentoo.org>
+  gst-plugins-x-0.10.20.ebuild:
+  Stable on alpha, bug #232054
+
+  31 Jul 2008; Raúl Porcel <armin76@gentoo.org>
+  gst-plugins-x-0.10.20.ebuild:
+  ia64/sparc stable wrt #232054
+
+  01 Aug 2008; Brent Baude <ranger@gentoo.org> gst-plugins-x-0.10.20.ebuild:
+  Marking gst-plugins-x-0.10.20 ppc64 stable for bug 232054
+
+  30 Jul 2008; Brent Baude <ranger@gentoo.org> gst-plugins-x-0.10.20.ebuild:
+  Marking gst-plugins-x-0.10.20 ppc stable for bug 232054
+
+  26 Jul 2008; Olivier Crête <tester@gentoo.org>
+  gst-plugins-x-0.10.20.ebuild:
+  Stable on amd64, bug #232054
+
+*gst-plugins-x-0.10.20 (29 Jun 2008)
+
+  29 Jun 2008; Samuli Suominen <drac@gentoo.org>
+  +gst-plugins-x-0.10.20.ebuild:
+  Version bump.
+
+*gst-plugins-x-0.10.17 (01 Feb 2008)
+
+  01 Feb 2008; Samuli Suominen <drac@gentoo.org>
+  -gst-plugins-x-0.10.11.ebuild, -gst-plugins-x-0.10.15.ebuild,
+  +gst-plugins-x-0.10.17.ebuild:
+  Version bump.
+
+*gst-plugins-x-0.10.15 (17 Nov 2007)
+
+  17 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  +gst-plugins-x-0.10.15.ebuild:
+  Version bump.
+
+  01 Nov 2007; Raúl Porcel <armin76@gentoo.org>
+  gst-plugins-x-0.10.14.ebuild:
+  sparc stable wrt #190900, thanks to Alex Maclean for testing
+
+  11 Oct 2007; Markus Rothe <corsair@gentoo.org>
+  gst-plugins-x-0.10.14.ebuild:
+  Stable on ppc64; bug #190900
+
+  26 Sep 2007; Raúl Porcel <armin76@gentoo.org>
+  gst-plugins-x-0.10.14.ebuild:
+  alpha/ia64 stable wrt #190900
+
+  21 Sep 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  gst-plugins-x-0.10.14.ebuild:
+  Stable on amd64 wrt bug #190900.
+
+  10 Sep 2007; nixnut <nixnut@gentoo.org> gst-plugins-x-0.10.14.ebuild:
+  Stable on ppc wrt bug 190900
+
+  09 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  gst-plugins-x-0.10.14.ebuild:
+  x86 stable, bug 190900
+
+  03 Sep 2007; Jeroen Roovers <jer@gentoo.org> gst-plugins-x-0.10.14.ebuild:
+  Stable for HPPA (bug #190900).
+
+*gst-plugins-x-0.10.14 (31 Aug 2007)
+
+  31 Aug 2007; Samuli Suominen <drac@gentoo.org>
+  +gst-plugins-x-0.10.14.ebuild:
+  Version bump.
+
+  26 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gst-plugins-x-0.10.12.ebuild:
+  Stable on sparc
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  gst-plugins-x-0.10.4.ebuild, gst-plugins-x-0.10.6.ebuild,
+  gst-plugins-x-0.10.7.ebuild, gst-plugins-x-0.10.9.ebuild,
+  gst-plugins-x-0.10.10.ebuild, gst-plugins-x-0.10.11.ebuild,
+  gst-plugins-x-0.10.12.ebuild:
+  Drop virtual/x11 references.
+
+  28 Jun 2007; Joseph Jezak <josejx@gentoo.org>
+  gst-plugins-x-0.10.11.ebuild:
+  Marked ppc stable for bug #163541.
+
+*gst-plugins-x-0.10.12 (23 Mar 2007)
+
+  23 Mar 2007; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  +gst-plugins-x-0.10.12.ebuild:
+  version bump
+
+  16 Feb 2007; Roy Marples <uberlord@gentoo.org>
+  gst-plugins-x-0.10.11.ebuild:
+  Added ~x86-fbsd keyword.
+
+  12 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  gst-plugins-x-0.10.11.ebuild:
+  stable x86; bug 163541
+
+  31 Jan 2007; Markus Rothe <corsair@gentoo.org>
+  gst-plugins-x-0.10.11.ebuild:
+  Stable on ppc64; bug #163541
+
+  30 Jan 2007; Jeroen Roovers <jer@gentoo.org> gst-plugins-x-0.10.11.ebuild:
+  Stable for HPPA (bug #163541).
+
+  27 Jan 2007; Olivier Crête <tester@gentoo.org>
+  gst-plugins-x-0.10.11.ebuild:
+  Stable on amd64 for bug #163541
+
+  23 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gst-plugins-x-0.10.11.ebuild:
+  Stable on sparc
+
+  21 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gst-plugins-x-0.10.11.ebuild:
+  Back to ~sparc
+
+*gst-plugins-x-0.10.10 (26 Sep 2006)
+
+  26 Sep 2006; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  gst-plugins-x-0.10.10.ebuild:
+  version bump
+
+  13 Sep 2006; Aron Griffis <agriffis@gentoo.org>
+  gst-plugins-x-0.10.4.ebuild:
+  Mark 0.10.4 stable on ia64
+
+*gst-plugins-x-0.10.9 (15 Jul 2006)
+
+  15 Jul 2006; <zaheerm@gentoo.org> +gst-plugins-x-0.10.9.ebuild:
+  version bump
+
+*gst-plugins-x-0.10.8 (12 Jun 2006)
+
+  12 Jun 2006; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  +gst-plugins-x-0.10.8.ebuild:
+  version bump
+
+  29 May 2006; Guy Martin <gmsoft@gentoo.org> gst-plugins-x-0.10.4.ebuild:
+  Stable on hppa.
+
+  21 May 2006; Thomas Cort <tcort@gentoo.org> gst-plugins-x-0.10.4.ebuild:
+  Stable on alpha.
+
+*gst-plugins-x-0.10.7 (15 May 2006)
+
+  15 May 2006; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  +gst-plugins-x-0.10.7.ebuild:
+  version bump
+
+  13 May 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  gst-plugins-x-0.10.6.ebuild:
+  Added ~hppa
+
+  05 May 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  gst-plugins-x-0.10.4.ebuild:
+  ppc stable, bug #128737
+
+  03 May 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gst-plugins-x-0.10.4.ebuild:
+  Stable on sparc wrt #128737
+
+*gst-plugins-x-0.10.6 (02 May 2006)
+
+  02 May 2006; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  +gst-plugins-x-0.10.6.ebuild:
+  version bump
+
+  23 Apr 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  gst-plugins-x-0.10.4.ebuild:
+  stable on x86 (bug #128737)
+
+  17 Apr 2006; Markus Rothe <corsair@gentoo.org>
+  gst-plugins-x-0.10.4.ebuild:
+  Stable on ppc64; bug #128737
+
+  13 Apr 2006; Thomas Cort <tcort@gentoo.org> gst-plugins-x-0.10.4.ebuild:
+  Added ~alpha keyword.
+
+  08 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  gst-plugins-x-0.10.4.ebuild:
+  Added to ~ppc
+
+  05 Apr 2006; Patrick McLean <chutzpah@gentoo.org>
+  gst-plugins-x-0.10.4.ebuild:
+  Stable on amd64 (bug #128737).
+
+  25 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  gst-plugins-x-0.10.4.ebuild:
+  Mark 0.10.4 ~ia64
+
+  23 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gst-plugins-x-0.10.4.ebuild:
+  Keyworded ~sparc wrt #125232
+
+*gst-plugins-x-0.10.4 (21 Mar 2006)
+
+  21 Mar 2006; Marinus Schraal <foser@gentoo.org>
+  gst-plugins-x-0.10.4.ebuild., ChangeLog, metadata.xml :
+  Initial commit, split out from gst-plugins-base
+  Add to gstreamer herd

@@ -1,0 +1,98 @@
+# ChangeLog for app-misc/screenie
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/screenie/ChangeLog,v 1.26 2013/06/02 10:56:21 pacho Exp $
+
+  02 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #328951
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  26 Apr 2011; Dane Smith <c1pher@gentoo.org> metadata.xml:
+  Updated metadata.xml to reflect new maintainers. Thanks Robert Kowalski 
+  for offering to help.
+
+  10 Jun 2009; Alex Legler <a3li@gentoo.org> -screenie-1.30.0.ebuild:
+  Removing vulnerable version, bug 250476.
+
+  10 Jun 2009; Markus Meier <maekke@gentoo.org> screenie-1.30.0-r1.ebuild:
+  amd64 stable, bug #250476
+
+  09 Jun 2009; Raúl Porcel <armin76@gentoo.org> screenie-1.30.0-r1.ebuild:
+  ia64 stable wrt #250476
+
+  08 Jun 2009; Jeroen Roovers <jer@gentoo.org> screenie-1.30.0-r1.ebuild:
+  Stable for HPPA (bug #250476).
+
+  08 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  screenie-1.30.0-r1.ebuild:
+  stable x86, security bug 250476
+
+  08 Jun 2009; Ferris McCormick <fmccor@gentoo.org>
+  screenie-1.30.0-r1.ebuild:
+  Sparc stable, security bug #250476.
+
+*screenie-1.30.0-r1 (08 Jun 2009)
+
+  08 Jun 2009; Alex Legler <a3li@gentoo.org> +screenie-1.30.0-r1.ebuild,
+  +files/screenie-CVE-2008-5371.patch:
+  Non-maintainer commit: Applying patch for CVE-2008-5371, bug 250476.
+
+  22 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing hawking as a maintainer since he was retired.
+
+  10 Oct 2008; Ali Polatel <hawking@gentoo.org> screenie-1.30.0.ebuild:
+  Shorten DESCRIPTION, bug 211377.
+
+  18 Sep 2008; Jeroen Roovers <jer@gentoo.org> screenie-1.30.0.ebuild:
+  Fix HOMEPAGE and SRC_URI (bug #211377).
+
+  08 Aug 2008; Alexis Ballier <aballier@gentoo.org> screenie-1.30.0.ebuild:
+  keyword ~x86-fbsd thanks to Davide Italiano <dav_it@gentoo.org>, bug
+  #233619
+
+  26 Mar 2008; Raúl Porcel <armin76@gentoo.org> screenie-1.30.0.ebuild:
+  sparc/x86 stable
+
+  25 Feb 2008; Jeroen Roovers <jer@gentoo.org> screenie-1.30.0.ebuild:
+  Stable for HPPA too.
+
+  15 Jul 2007; Ali Polatel <hawking@gentoo.org> metadata.xml:
+  Changed maintainer to hawking
+
+  14 Jul 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Assigning app-misc/screenie to m-needed, as chriswhite has been retired
+  (#56211).
+
+  25 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  screenie-1.30.0.ebuild:
+  stable x86/amd64, bug  151892
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org> -screenie-1.19.0.ebuild:
+  old
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  23 Oct 2006; Chris White <chriswhite@gentoo.org> ChangeLog:
+  Signed manifest test for new gnupg
+
+*screenie-1.30.0 (19 Apr 2006)
+
+  19 Apr 2006; Chris White <chriswhite@gentoo.org> +screenie-1.30.0.ebuild:
+  Version bump to version 1.30.0 for bug #130481. Thanks to Matthew Lange for
+  the report.
+
+  02 Dec 2005; Chris White <chriswhite@gentoo.org> -screenie-1.26.0.ebuild:
+  Remove should not be here ebuild.
+
+  07 Sep 2005; Tom Martin <slarti@gentoo.org> screenie-1.19.0.ebuild:
+  Marked ~amd64, ~sparc, ~ia64.
+
+*screenie-1.19.0 (07 Sep 2005)
+
+  07 Sep 2005; Chris White <chriswhite@gentoo.org> +metadata.xml,
+  +screenie-1.19.0.ebuild:
+  Initial import into the tree. This closes bug #104782. Thanks to Henry
+  Bucklow for providing the draft ebuild.

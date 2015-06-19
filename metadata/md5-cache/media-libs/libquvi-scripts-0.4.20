@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=app-arch/xz-utils
+DESCRIPTION=Embedded lua scripts for libquvi
+EAPI=5
+HOMEPAGE=http://quvi.sourceforge.net/
+IUSE=offensive
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-3
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/quvi/0.4/libquvi-scripts-0.4.20.tar.xz
+_md5_=f864a5a5881dd5578f8e7277157fecbd

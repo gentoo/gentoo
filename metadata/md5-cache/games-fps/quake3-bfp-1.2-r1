@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Quake III Bid For Power - take control of Ki-powered superheros and battle in a mostly aerial fight
+EAPI=2
+HOMEPAGE=http://www.planetquake.com/bidforpower/
+IUSE=dedicated opengl dedicated opengl
+KEYWORDS=amd64 ~ppc x86
+LICENSE=freedist
+RDEPEND=games-misc/games-envd dedicated? ( || ( games-fps/quake3[dedicated] games-fps/quake3-bin[dedicated] ) ) opengl? ( || ( || ( games-fps/quake3[opengl] games-fps/quake3[-dedicated] ) || ( games-fps/quake3-bin[opengl] games-fps/quake3-bin[-dedicated] ) ) ) !dedicated? ( !opengl? ( || ( || ( games-fps/quake3[opengl] games-fps/quake3[-dedicated] ) || ( games-fps/quake3-bin[opengl] games-fps/quake3-bin[-dedicated] ) ) ) )
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=mirror://quakeunity/modifications/bidforpower/bidforpower1-2.zip
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	games-mods	9d44c6f45289592ca9cf29d77424a048	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=3ec00f50abc7f113cbc444cf629a852d

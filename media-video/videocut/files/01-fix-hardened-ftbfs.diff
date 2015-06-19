@@ -1,0 +1,16 @@
+# Fix FTBFS with enabled hardened flags and gcc-4.6 failure
+# https://bugs.gentoo.org/show_bug.cgi?id=380439
+
+--- a/src/TPreviewPanel/TPreviewPanel.cpp
++++ b/src/TPreviewPanel/TPreviewPanel.cpp
+@@ -167,7 +167,9 @@
+ 
+ void TPreviewPanel::adjustItems()
+ {
+-	backgroundRect->setSize(&QRectF(0, 0, 1, 1));
++	QRectF myRect(0, 0, 1, 1);
++	backgroundRect->setSize(&myRect);
++
+ 	logo->setSize(QRect(0, 0, 1, 1));
+ 	
+ 	// adjust meta text

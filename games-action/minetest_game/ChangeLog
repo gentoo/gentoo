@@ -1,0 +1,66 @@
+# ChangeLog for games-action/minetest_game
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/minetest_game/ChangeLog,v 1.17 2015/04/20 20:14:24 mr_bones_ Exp $
+
+  20 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -minetest_game-0.4.9.ebuild:
+  old
+
+  19 Apr 2015; Pacho Ramos <pacho@gentoo.org> minetest_game-0.4.10.ebuild:
+  x86 stable wrt bug #522906
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  15 Oct 2014; Chema Alonso <nimiux@gentoo.org> minetest_game-0.4.10.ebuild:
+  Stable for amd64 wrt bug #522906
+
+  09 Sep 2014; Julian Ospald <hasufell@gentoo.org> -minetest_game-0.4.7.ebuild,
+  -minetest_game-0.4.8.ebuild:
+  rm old
+
+*minetest_game-0.4.10 (07 Jul 2014)
+
+  07 Jul 2014; Julian Ospald <hasufell@gentoo.org>
+  +minetest_game-0.4.10.ebuild:
+  version bump
+
+  05 Apr 2014; Agostino Sarubbo <ago@gentoo.org> minetest_game-0.4.9.ebuild:
+  Stable for x86, wrt bug #504358
+
+  30 Mar 2014; Chema Alonso <nimiux@gentoo.org> minetest_game-0.4.9.ebuild:
+  Stable for amd64 wrt bug #504358
+
+*minetest_game-0.4.9 (03 Jan 2014)
+
+  03 Jan 2014; Julian Ospald <hasufell@gentoo.org> +minetest_game-0.4.9.ebuild:
+  version bump
+
+  11 Dec 2013; Julian Ospald <hasufell@gentoo.org> minetest_game-0.4.7.ebuild:
+  fix deps wrt #492946
+
+  30 Nov 2013; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  add proxy-maintainer
+
+  29 Nov 2013; Julian Ospald <hasufell@gentoo.org> minetest_game-0.4.8.ebuild:
+  remove obsolete RDEPEND wrt #492882
+
+*minetest_game-0.4.8 (24 Nov 2013)
+
+  24 Nov 2013; Julian Ospald <hasufell@gentoo.org> +minetest_game-0.4.8.ebuild:
+  version bump
+
+  27 Oct 2013; Julian Ospald <hasufell@gentoo.org> minetest_game-0.4.7.ebuild:
+  stable for x86 wrt #486228
+
+  27 Oct 2013; Julian Ospald <hasufell@gentoo.org> minetest_game-0.4.7.ebuild:
+  stable for amd64 wrt #486228
+
+  05 Aug 2013; Julian Ospald <hasufell@gentoo.org> minetest_game-0.4.7.ebuild:
+  update homepage
+
+*minetest_game-0.4.7 (05 Aug 2013)
+
+  05 Aug 2013; Julian Ospald <hasufell@gentoo.org> +minetest_game-0.4.7.ebuild,
+  +metadata.xml:
+  initial import wrt #399867

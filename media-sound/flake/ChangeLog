@@ -1,0 +1,26 @@
+# ChangeLog for media-sound/flake
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/flake/ChangeLog,v 1.7 2015/03/25 14:08:35 ago Exp $
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> flake-0.11.ebuild:
+  Stable for x86, wrt bug #543092
+
+  24 Mar 2015; Agostino Sarubbo <ago@gentoo.org> flake-0.11.ebuild:
+  Stable for amd64, wrt bug #543092
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> flake-0.11.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*flake-0.11 (05 Aug 2007)
+
+  05 Aug 2007; Samuli Suominen <drac@gentoo.org> +flake-0.11.ebuild:
+  Version bump for bug 187791.
+
+  15 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  08 Mar 2007; Zac Medico <zmedico@gentoo.org>
+  Fix broken Manifest due to commit without repoman.
+
+  08 Mar 2007; Steve Dibb <beandog@gentoo.org> ChangeLog:
+  Initial import, thanks to Ben de Groot for ebuild

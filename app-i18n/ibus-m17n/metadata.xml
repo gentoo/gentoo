@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>cjk</herd>
+  <longdescription lang="en">
+    M17N engine for IBus input platform. It allows input of many
+    launguaes using the input table maps from m17n-db.
+  </longdescription>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:ibus_project:ibus-m17n</remote-id>
+  </upstream>
+  <use>
+    <flag name='gtk'>
+      Build the preference interfaces, based on
+      <pkg>x11-libs/gtk+</pkg> (GTK+ 2).
+    </flag>
+  </use>
+</pkgmetadata>

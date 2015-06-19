@@ -1,0 +1,935 @@
+# ChangeLog for media-video/vdr
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/vdr/ChangeLog,v 1.194 2015/03/30 13:25:58 hd_brummy Exp $
+
+  30 Mar 2015; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-2.2.0.ebuild:
+  stable amd64, x86
+
+  20 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org> metadata.xml:
+  minor syntax fixes, metadata.xml
+
+  20 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org> -vdr-2.0.4.ebuild,
+  -vdr-2.0.5.ebuild, -vdr-2.0.6-r2.ebuild, vdr-2.2.0.ebuild,
+  -files/vdr-2.0.0-fixkeeptracksinit.diff, -files/vdr-2.0.0_gentoo.patch,
+  -files/vdr-2.0.6_systemd_argsdir.patch,
+  -files/vdr-2.0.6_systemd_argsdir_vanilla.patch:
+  big cleanup old
+
+  19 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-2.2.0.ebuild:
+  fixed upstream owner name
+
+  19 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-2.2.0.ebuild:
+  fixed previous_less
+
+*vdr-2.2.0 (19 Feb 2015)
+
+  19 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-2.0.4.ebuild,
+  vdr-2.0.5.ebuild, vdr-2.0.6-r1.ebuild, vdr-2.0.6-r2.ebuild, vdr-2.0.7.ebuild,
+  +vdr-2.2.0.ebuild, +files/vdr-2.2.0_gentoo.patch, metadata.xml:
+  BUMP, 15 YEARS ANNIVERSARY EDITON; minor fixes on virtual/jpeg
+
+  03 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-2.0.6-r1.ebuild:
+  stable amd64 x86
+
+*vdr-2.0.7 (23 Jan 2015)
+
+  23 Jan 2015; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-2.0.7.ebuild,
+  +files/vdr-2.0.7_systemd_argsdir.patch,
+  +files/vdr-2.0.7_systemd_argsdir_vanilla.patch:
+  bump
+
+*vdr-2.0.6-r2 (20 Jan 2015)
+
+  20 Jan 2015; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-2.0.6-r2.ebuild,
+  +files/vdr-2.0.6-r2_gentoo.patch, +files/vdr-2.0.6_systemd_argsdir.patch,
+  +files/vdr-2.0.6_systemd_argsdir_vanilla.patch:
+  added better systemd support, backported from vdr-2.1.7, based on patch by
+  Lucian Muresan
+
+  04 Jan 2015; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-2.0.4.ebuild,
+  vdr-2.0.5.ebuild, vdr-2.0.6-r1.ebuild:
+  fixed documentation URL, wrt bug 534486
+
+  25 Nov 2014; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  No proxy-maintainers.
+
+*vdr-2.0.6-r1 (01 Oct 2014)
+
+  01 Oct 2014; Joerg Bornkessel <hd_brummy@gentoo.org> -vdr-2.0.6.ebuild,
+  +vdr-2.0.6-r1.ebuild:
+  naludump patch fixed, reported by M.Dummer
+
+  27 Sep 2014; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-2.0.6.ebuild:
+  fixed typo in patchset
+
+*vdr-2.0.6 (26 Sep 2014)
+
+  26 Sep 2014; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-2.0.6.ebuild,
+  +files/vdr-2.0.6_gentoo.patch, metadata.xml:
+  bump; removed use-flag setup depends; extended patchset for vdr-permashift-1;
+  wrt bug 521570; wrt bug 499444
+
+  15 Jun 2014; Joerg Bornkessel <hd_brummy@gentoo.org> -vdr-1.6.0_p2-r7.ebuild,
+  -vdr-1.6.0_p2-r11.ebuild, -files/vdr-1.6.0-extensions-72-gcc-4.4.diff,
+  -files/vdr-1.6.0-gcc-4.4.diff, -files/vdr-1.6.0-ldflags.patch,
+  -files/vdr-1.6.0-makefile-install-header.diff,
+  -files/vdr-1.6.0-shared-tinyxml.diff, -files/vdr-1.6.0-use-v4l2.patch,
+  -files/vdr-1.6.0_p2_fontconfig_fontsort.patch,
+  -files/vdr-1.6.0_p2_gcc-4.7.patch, -files/vdr-1.6.0_p2_linguas-v3.diff,
+  -files/vdr-dvb-api-5-is-fine.diff, metadata.xml:
+  cleanup old
+
+*vdr-2.0.5 (20 Jan 2014)
+
+  20 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-2.0.5.ebuild:
+  bump; use-flag setup and depended plugin vdr-setup will be removed in the
+  future, use as equivalent plugin vdr-menuorg
+
+  02 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org> -vdr-2.0.2-r1.ebuild,
+  -vdr-2.0.3.ebuild, vdr-2.0.4.ebuild:
+  stable amd64 x86; cleanup
+
+*vdr-2.0.4 (26 Oct 2013)
+
+  26 Oct 2013; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-2.0.4.ebuild:
+  bump, bug fixes; removed unused use-flag dxr3
+
+*vdr-2.0.3 (01 Sep 2013)
+
+  01 Sep 2013; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-2.0.3.ebuild:
+  bump
+
+  07 Jul 2013; Joerg Bornkessel <hd_brummy@gentoo.org> -vdr-2.0.1-r1.ebuild,
+  -vdr-2.0.2.ebuild, vdr-2.0.2-r1.ebuild:
+  stable amd64 x86; cleanup
+
+*vdr-2.0.2-r1 (04 Jun 2013)
+
+  04 Jun 2013; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-2.0.2-r1.ebuild:
+  new extpatchng, supports media-plugins/vdr-permashift-0.5.4,
+  media-plugins/vdr-pinplugin-0.1.14
+
+*vdr-2.0.2 (20 May 2013)
+
+  20 May 2013; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.6.0_p2-r7.ebuild,
+  vdr-1.6.0_p2-r11.ebuild, -vdr-2.0.1.ebuild, vdr-2.0.1-r1.ebuild,
+  +vdr-2.0.2.ebuild:
+  bump; fixed wrt bug 469808, respect AR; fixed wrt bug 469814, respect CXX
+
+*vdr-2.0.1-r1 (27 Apr 2013)
+
+  27 Apr 2013; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-2.0.1-r1.ebuild,
+  metadata.xml:
+  fribidi support added, for languages written from right to left; minor ebuild
+  fixes
+
+*vdr-2.0.1 (13 Apr 2013)
+
+  13 Apr 2013; Joerg Bornkessel <hd_brummy@gentoo.org> -vdr-2.0.0.ebuild,
+  -vdr-2.0.0-r1.ebuild, +vdr-2.0.1.ebuild:
+  bump, bugfixes; cleanup
+
+*vdr-2.0.0-r1 (06 Apr 2013)
+
+  06 Apr 2013; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-2.0.0-r1.ebuild,
+  +files/vdr-2.0.0-fixkeeptracksinit.diff:
+  fixed 'keepTracks is initialized too late in the cDevice'
+
+*vdr-2.0.0 (31 Mar 2013)
+
+  31 Mar 2013; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-2.0.0.ebuild,
+  +files/vdr-2.0.0_gentoo.patch, +files/channel_alternative.conf, metadata.xml:
+  bump, major release
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  17 Sep 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.6.0_p2-r11.ebuild:
+  fixed variable name
+
+  17 Sep 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-1.6.0_p2-r10.ebuild, +vdr-1.6.0_p2-r11.ebuild:
+  reverted wrong stable commit amd64 x86
+
+*vdr-1.6.0_p2-r11 (17 Sep 2012)
+
+  17 Sep 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-1.6.0_p2-r10.ebuild, +vdr-1.6.0_p2-r11.ebuild:
+  fixed detection of LINGUAS, reported on forums.gentoo.org #7138380; thanks to
+  heifisch for the hints
+
+  22 Jun 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.6.0_p2-r10.ebuild,
+  -files/vdr-1.6.0_p2_linguas-v2.diff, +files/vdr-1.6.0_p2_linguas-v3.diff:
+  fixed linguas patch, failed install, reported by flameeyes@g.o
+
+  19 Jun 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.6.0_p2-r10.ebuild:
+  added missing inherit toolchain-funcs; stable x86 amd64
+
+  10 Jun 2012; Joerg Bornkessel <hd_brummy@gentoo.org> -vdr-1.6.0_p2-r9.ebuild,
+  vdr-1.6.0_p2-r10.ebuild, +files/vdr-1.6.0_p2_gcc-4.7.patch,
+  -files/vdr-1.6.0_p2_linguas.diff:
+  fixed gcc-4.7 compile; cleanup; strip-linguas en fixing
+
+  03 Jun 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.6.0_p2-r10.ebuild:
+  fixed code executes g++ instead of ${CHOST}-g++
+
+*vdr-1.6.0_p2-r10 (20 May 2012)
+
+  20 May 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-1.6.0_p2-r10.ebuild, +files/vdr-1.6.0_p2_linguas-v2.diff:
+  linguas install fails on unsupported values, reported by Michael B. on IRC
+  #gentoo-vdr
+
+  06 May 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  files/vdr-1.6.0_p2_linguas.diff:
+  fixed linguas patch, failed on install if LINGUAS value is en
+
+  06 May 2012; Joerg Bornkessel <hd_brummy@gentoo.org> -vdr-1.6.0_p2-r8.ebuild,
+  vdr-1.6.0_p2-r9.ebuild, +files/vdr-1.6.0_p2_fontconfig_fontsort.patch:
+  cleanup; compilefix >=fontconfig-0.2.9
+
+  30 Apr 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.6.0_p2-r9.ebuild:
+  removed un_ifdef handling breaks vdr-setup compile, readdded un_ifdef
+  handling
+
+*vdr-1.6.0_p2-r9 (29 Apr 2012)
+
+  29 Apr 2012; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-1.6.0_p2-r9.ebuild,
+  +files/vdr-1.6.0_p2_linguas.diff:
+  removed unneeded unifdef handling; added LINGUAS support
+
+*vdr-1.6.0_p2-r8 (25 Apr 2012)
+
+  25 Apr 2012; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-1.6.0_p2-r8.ebuild:
+  changed to new handling portage own epatch_user, VDR_LOCAL_PATCHES_DIR is
+  obsolet
+
+  18 Apr 2012; Joerg Bornkessel <hd_brummy@gentoo.org> -vdr-1.6.0_p2-r6.ebuild,
+  -files/vdr-1.6.0-dxr3-subtitlehack.diff,
+  -files/vdr-1.6.0-extensions-gcc-4.4.diff:
+  cleanup
+
+  16 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.6.0_p2-r7.ebuild:
+  stable x86 amd64
+
+  16 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.6.0_p2-r7.ebuild:
+  ecommit fixed depend vdr-dxr3 version, changed use-flag check to REQUIRED_USE
+
+  15 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.6.0_p2-r6.ebuild,
+  vdr-1.6.0_p2-r7.ebuild:
+  fix media-tv to virtual/linuxtv-dvb-headers, bug #403929
+
+  17 Jan 2012; Christian Ruppert <idl0r@gentoo.org> vdr-1.6.0_p2-r7.ebuild:
+  Adjust media-tv/linuxtv-dvb-headers depdency
+
+  12 Nov 2011; Joerg Bornkessel <hd_brummy@gentoo.org> -vdr-1.6.0_p2.ebuild,
+  -vdr-1.6.0_p2-r2.ebuild, -vdr-1.6.0_p2-r3.ebuild, -vdr-1.6.0_p2-r4.ebuild,
+  -vdr-1.6.0_p2-r5.ebuild:
+  cleanup
+
+  24 Oct 2011; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.6.0_p2-r7.ebuild:
+  keyworded ~arm
+
+*vdr-1.6.0_p2-r7 (23 Oct 2011)
+
+  23 Oct 2011; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-1.6.0_p2-r7.ebuild,
+  +files/vdr-1.6.0-shared-tinyxml.diff:
+  eapi=4; removed tinyxml bundle, use now externel tinyxml lib; keyword ~arm
+  droped; removed dxr3 patch, updated vdr-dxr3 dont need the patch anymore
+
+  22 Oct 2011; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.6.0_p2-r6.ebuild:
+  keyworded ~arm
+
+  22 Oct 2011; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.6.0_p2-r6.ebuild:
+  keyworded ~arm
+
+  19 Oct 2011; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.6.0_p2-r6.ebuild:
+  move back to linuxtv-dvb-header; stable x86, #384733 #387313
+
+  19 Oct 2011; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.6.0_p2-r6.ebuild:
+  changed from media-tv/linuxtv-dvb-headers to
+  sys-kernel/linux-headers-2.6.38+, to make it more clear about the really
+  needed depends
+
+  17 Oct 2011; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.6.0_p2-r6.ebuild:
+  stable amd64, depend on stable linux-headers-2.6.38+
+
+*vdr-1.6.0_p2-r6 (11 Apr 2011)
+
+  11 Apr 2011; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.6.0_p2-r6.ebuild,
+  +files/vdr-1.6.0-use-v4l2.patch:
+  Backported v4l2 support from vdr-1.7.3. Bug #359409.
+
+  26 Feb 2011; Kevin McCarthy <signals@gentoo.org> vdr-1.6.0_p2.ebuild,
+  vdr-1.6.0_p2-r2.ebuild, vdr-1.6.0_p2-r3.ebuild, vdr-1.6.0_p2-r4.ebuild,
+  vdr-1.6.0_p2-r5.ebuild:
+  Updated depends from media-libs/jpeg to virtual/jpeg
+
+  22 Dec 2010; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-1.6.0_p2-r5.ebuild:
+  Stable amd64
+
+  18 Dec 2010; Matthias Schwarzott <zzam@gentoo.org> vdr-1.6.0_p2-r5.ebuild:
+  Marked stable on x86.
+
+*vdr-1.6.0_p2-r5 (05 Oct 2010)
+
+  05 Oct 2010; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-1.6.0_p2-r5.ebuild, +files/vdr-1.6.0-ldflags.patch:
+  Fix vdr not respecting LDFLAGS, Bug #333493.
+
+  05 Oct 2010; Matthias Schwarzott <zzam@gentoo.org>
+  -files/vdr-add-svdrp-down-0.1.diff, -vdr-1.4.6.ebuild,
+  -vdr-1.4.7-r10.ebuild, -vdr-1.4.7-r11.ebuild, -vdr-1.4.7-r12.ebuild,
+  -files/vdr-1.4.7-gcc-4.3.diff, -files/vdr-1.4.7-makefile-destdir.diff,
+  -files/vdr-1.4.7-makefile-install-header.diff,
+  -files/vdr-set-dumpable.diff, metadata.xml:
+  Removed the old vdr-1.4 ebuilds.
+
+*vdr-1.6.0_p2-r4 (08 Sep 2010)
+
+  08 Sep 2010; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-1.6.0_p2-r4.ebuild:
+  added 1.6.0_p2-r4; changed libdvdnav to libdvdread, bug #222985
+
+  06 Sep 2010; Matthias Schwarzott <zzam@gentoo.org> vdr-1.6.0_p2-r3.ebuild:
+  Marked stable on x86, Bug #335428.
+
+  11 Oct 2009; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.6.ebuild,
+  vdr-1.4.7-r10.ebuild, vdr-1.4.7-r11.ebuild, vdr-1.4.7-r12.ebuild,
+  vdr-1.6.0_p2.ebuild, vdr-1.6.0_p2-r2.ebuild, vdr-1.6.0_p2-r3.ebuild:
+  Change uris to point to the new homepage/download location.
+
+  06 Jul 2009; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.6.ebuild,
+  vdr-1.4.7-r10.ebuild, vdr-1.4.7-r11.ebuild, vdr-1.4.7-r12.ebuild,
+  vdr-1.6.0_p2.ebuild, vdr-1.6.0_p2-r2.ebuild, vdr-1.6.0_p2-r3.ebuild:
+  Remove debug use-flag, that did just enable -g compiler flag.
+
+  01 Jul 2009; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.7-r10.ebuild,
+  vdr-1.4.7-r11.ebuild, vdr-1.4.7-r12.ebuild, vdr-1.6.0_p2.ebuild,
+  vdr-1.6.0_p2-r2.ebuild, vdr-1.6.0_p2-r3.ebuild:
+  Small cleanups.
+
+  01 Jul 2009; Matthias Schwarzott <zzam@gentoo.org> vdr-1.6.0_p2.ebuild,
+  vdr-1.6.0_p2-r2.ebuild, vdr-1.6.0_p2-r3.ebuild:
+  Fix test for vdr-1.6 upgrade message
+
+  16 Jun 2009; Matthias Schwarzott <zzam@gentoo.org>
+  files/vdr-1.6.0-gcc-4.4.diff, files/vdr-dvb-api-5-is-fine.diff:
+  Improve patches.
+
+*vdr-1.6.0_p2-r3 (04 Jun 2009)
+
+  04 Jun 2009; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-1.6.0_p2-r3.ebuild, +files/vdr-1.6.0-extensions-72-gcc-4.4.diff,
+  metadata.xml:
+  Update to extensions patch v72. Do not support streamdevext patch for now.
+
+  04 Jun 2009; Matthias Schwarzott <zzam@gentoo.org> vdr-1.6.0_p2-r2.ebuild,
+  +files/vdr-1.6.0-extensions-gcc-4.4.diff, +files/vdr-1.6.0-gcc-4.4.diff:
+  Add patch to fix compiling with gcc-4.4. Bug #271617.
+
+  29 Mar 2009; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-1.6.0_p2-r2.ebuild:
+  fixed wrong header include dvdread -> dvdnav; thanks to R.Hertell for
+  reporting on #263840
+
+*vdr-1.6.0_p2-r2 (25 Mar 2009)
+
+  25 Mar 2009; Matthias Schwarzott <zzam@gentoo.org> metadata.xml,
+  -vdr-1.6.0_p2-r1.ebuild, +vdr-1.6.0_p2-r2.ebuild:
+  Rename pluginprams back to iptv and liemiext back to liemikuutio.
+
+  24 Mar 2009; Matthias Schwarzott <zzam@gentoo.org> vdr-1.6.0_p2.ebuild:
+  Marked stable on x86.
+
+  24 Mar 2009; Matthias Schwarzott <zzam@gentoo.org> -vdr-1.6.0.ebuild,
+  -vdr-1.6.0-r1.ebuild, -vdr-1.6.0-r2.ebuild, -vdr-1.6.0_p1.ebuild,
+  -vdr-1.6.0_p1-r1.ebuild, vdr-1.6.0_p2-r1.ebuild:
+  Cleanup old ebuilds
+
+*vdr-1.6.0_p2-r1 (21 Mar 2009)
+
+  21 Mar 2009; Matthias Schwarzott <zzam@gentoo.org> metadata.xml,
+  vdr-1.6.0_p2.ebuild, +vdr-1.6.0_p2-r1.ebuild:
+  Updated to extensions-patch v68. Added an update note for version 1.6
+
+  12 Jan 2009; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-dvb-api-5-is-fine.diff, vdr-1.4.6.ebuild, vdr-1.4.7-r10.ebuild,
+  vdr-1.4.7-r11.ebuild, vdr-1.4.7-r12.ebuild, vdr-1.6.0.ebuild,
+  vdr-1.6.0-r1.ebuild, vdr-1.6.0-r2.ebuild, vdr-1.6.0_p1.ebuild,
+  vdr-1.6.0_p1-r1.ebuild, vdr-1.6.0_p2.ebuild:
+  Do not abort compilation wwhen detecting dvb api 5 (headers installed by
+  linux-headers-2.6.28) as that is backward compatible to api version 3, Bug
+  #254269
+
+  11 Nov 2008; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.7-r12.ebuild:
+  Mark stable on x86.
+
+  11 Nov 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-1.4.7-gcc-4.3.diff, vdr-1.4.7-r10.ebuild, vdr-1.4.7-r11.ebuild,
+  vdr-1.4.7-r12.ebuild:
+  Fix compiling vdr-1.4.7 with gcc-4.3.
+
+  16 Sep 2008; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.6.0_p2.ebuild:
+  added new ExtPatch-64 version; fix for bug 237583
+
+*vdr-1.6.0_p2 (13 Sep 2008)
+
+  13 Sep 2008; Matthias Schwarzott <zzam@gentoo.org> metadata.xml,
+  +vdr-1.6.0_p2.ebuild:
+  Version bumped. vdr now is at maintainance patch 1.6.0-2, extensions-patch
+  at v63. Fixed a typo in name of new extension cmdreccmdi18n.
+
+*vdr-1.4.7-r12 (29 Jun 2008)
+
+  29 Jun 2008; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.4.7-r12.ebuild:
+  Added use-flag shutdown_rewrite to use the new shutdown code of vdr-1.5
+  and newer.
+
+*vdr-1.4.7-r11 (27 Jun 2008)
+
+  27 Jun 2008; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.4.7-r11.ebuild,
+  vdr-1.6.0_p1-r1.ebuild:
+  Updated vdr-1.4.7 to latest 1.4 compatible extensions-patch. Fix doc
+  installing for extensions-patch.
+
+  15 Jun 2008; Zac Medico <zmedico@gentoo.org> vdr-1.4.6.ebuild,
+  vdr-1.4.7-r10.ebuild, vdr-1.6.0.ebuild, vdr-1.6.0-r1.ebuild,
+  vdr-1.6.0-r2.ebuild, vdr-1.6.0_p1.ebuild, vdr-1.6.0_p1-r1.ebuild:
+  Bug #226505 - For compatibility with phase execution order in
+  >=portage-2.1.5, call has_version inside pkg_preinst instead of
+  pkg_postinst.
+
+*vdr-1.6.0_p1-r1 (21 May 2008)
+
+  21 May 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-1.6.0_p1-r1.ebuild:
+  Updated extensions-patch to version 62. Fixed installing docs. Add DVBDIR
+  to include path.
+
+  21 May 2008; Matthias Schwarzott <zzam@gentoo.org> vdr-1.6.0_p1.ebuild:
+  Add libdvdnav dependency for dvdarchive&&dvdchapjump use-flags, Bug
+  #222985.
+
+  12 May 2008; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.6.ebuild,
+  vdr-1.4.7-r10.ebuild, vdr-1.6.0.ebuild, vdr-1.6.0-r1.ebuild,
+  vdr-1.6.0-r2.ebuild, vdr-1.6.0_p1.ebuild:
+  Fix DEPEND and RDEPEND. Move unifdef to be only DEPEND, Bug #221531.
+
+  23 Apr 2008; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.6.ebuild,
+  vdr-1.4.7-r10.ebuild, vdr-1.6.0.ebuild, vdr-1.6.0-r1.ebuild,
+  vdr-1.6.0-r2.ebuild, vdr-1.6.0_p1.ebuild:
+  Added link to our vdr-guide into the output of pkg_postinst.
+
+  19 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  -files/vdr-1.6.0_p1-ext-changes.diff, vdr-1.6.0_p1.ebuild:
+  Updated to extensions-patch version 59. Added back keywords as this should
+  make it work completely again.
+
+*vdr-1.6.0_p1 (15 Apr 2008)
+
+  15 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-1.6.0_p1-ext-changes.diff, +vdr-1.6.0_p1.ebuild:
+  Added vdr-1.6.0_p1 for testing without KEYWORDS.
+
+  13 Apr 2008; Matthias Schwarzott <zzam@gentoo.org> vdr-1.6.0-r2.ebuild:
+  Change comment, as media-fonts/skinenigmang-fonts got moved to
+  media-fonts/vdrsymbols-ttf.
+
+  07 Apr 2008; Matthias Schwarzott <zzam@gentoo.org> vdr-1.6.0-r2.ebuild:
+  Added info about skinenigmang-fonts.
+
+*vdr-1.6.0-r2 (07 Apr 2008)
+
+  07 Apr 2008; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.6.0-r2.ebuild:
+  Updated to extensions-patch version 57.
+
+*vdr-1.6.0-r1 (05 Apr 2008)
+
+  05 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-1.6.0-dxr3-subtitlehack.diff, +vdr-1.6.0-r1.ebuild:
+  Bump version of extensions patch to 56. Add dxr3 hack for subtitles, Bug
+  #215460. Small cleanups of ebuild.
+
+  05 Apr 2008; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.7-r10.ebuild,
+  vdr-1.6.0.ebuild:
+  Do not create video-directory as this will have wrong permission if we
+  create it - and not everyone wants it, init-script does mkdir if needed.
+
+*vdr-1.6.0 (24 Mar 2008)
+
+  24 Mar 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-1.6.0-makefile-install-header.diff, +vdr-1.6.0.ebuild:
+  version bump
+
+  10 Feb 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -files/vdr-1.2.6-gentoo.diff, -files/vdr-1.2.6_CAN-2005-0071.patch,
+  -files/extensions-patch-32-plugin-link-error.diff, -vdr-1.2.6-r1.ebuild,
+  -vdr-1.3.36-r3.ebuild, -vdr-1.4.1-r2.ebuild, -vdr-1.4.3.ebuild,
+  -vdr-1.4.4.ebuild, -vdr-1.4.4_p3.ebuild, -vdr-1.4.5.ebuild,
+  -vdr-1.4.7-r4.ebuild, -vdr-1.4.7-r5.ebuild, -vdr-1.4.7-r6.ebuild,
+  -vdr-1.4.7-r7.ebuild, -vdr-1.4.7-r8.ebuild, -vdr-1.4.7-r9.ebuild,
+  vdr-1.4.7-r10.ebuild:
+  vdr-1.4.7-r10 stabel on x86; cleanup old versions
+
+  10 Feb 2008; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.4.7-r10.ebuild:
+  added test for multiple menu manipulation ; bug 201601
+
+*vdr-1.4.7-r10 (08 Jan 2008)
+
+  08 Jan 2008; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.4.7-r10.ebuild:
+  Updated extensions patch to version 42.
+
+*vdr-1.4.7-r9 (23 Dec 2007)
+
+  23 Dec 2007; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.4.7-r9.ebuild:
+  Updated extensions-patch to version 41. Added volctrl and lircsettings
+  useflags.
+
+  27 Nov 2007; Matthias Schwarzott <zzam@gentoo.org> vdr-1.2.6-r1.ebuild:
+  No longer install COPYING.
+
+*vdr-1.4.7-r8 (12 Nov 2007)
+
+  12 Nov 2007; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.4.7-r8.ebuild:
+  Remove useless make fonts that required libX11. abort if make install fails.
+
+  11 Nov 2007; Matthias Schwarzott <zzam@gentoo.org>
+  files/digest-vdr-1.4.7-r7, Manifest:
+  Updated to correct patchset file.
+
+*vdr-1.4.7-r7 (11 Nov 2007)
+
+  11 Nov 2007; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.4.7-r7.ebuild:
+  Updated extensions-patch to 37.1. This adds iptv support. Now correctly
+  uncomment iptv sources.conf entry.
+
+  19 Oct 2007; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.7-r6.ebuild:
+  Do not try to install non-existant doc-file.
+
+*vdr-1.4.7-r6 (08 Oct 2007)
+
+  08 Oct 2007; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.4.7-r6.ebuild:
+  Updated extensions patch. This adds menuorg patch.
+
+  08 Oct 2007; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.36-r3.ebuild,
+  vdr-1.4.1-r2.ebuild, vdr-1.4.3.ebuild, vdr-1.4.4.ebuild,
+  vdr-1.4.4_p3.ebuild, vdr-1.4.5.ebuild, vdr-1.4.6.ebuild,
+  vdr-1.4.7-r4.ebuild, vdr-1.4.7-r5.ebuild:
+  Depend on either gentoo-vdr-scripts-0.4.2 or vdrplugin-rebuild, as the
+  latter will disappear soon.
+
+  08 Oct 2007; Matthias Schwarzott <zzam@gentoo.org>
+  -files/vdr-setup-menu-0.2.3.xml:
+  Removed now useless file.
+
+  08 Oct 2007; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.1-r2.ebuild,
+  vdr-1.4.3.ebuild, vdr-1.4.4.ebuild, vdr-1.4.5.ebuild:
+  No longer install vdr-menu.xml to prevent file-collision with vdr-setup.
+
+  08 Oct 2007; Matthias Schwarzott <zzam@gentoo.org> vdr-1.2.6-r1.ebuild,
+  vdr-1.3.36-r3.ebuild, vdr-1.4.1-r2.ebuild, vdr-1.4.3.ebuild,
+  vdr-1.4.4.ebuild, vdr-1.4.4_p3.ebuild, vdr-1.4.5.ebuild,
+  vdr-1.4.7-r4.ebuild:
+  Quoting fix.
+
+  01 Oct 2007; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.6.ebuild:
+  Fix patching logic for USE=bigpatch noepg, Bug #193550.
+
+  01 Oct 2007; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.7-r5.ebuild:
+  Code cleanup.
+
+*vdr-1.4.7-r5 (30 Sep 2007)
+
+  30 Sep 2007; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.4.7-r5.ebuild:
+  Updated extensions-patch, this fixes some bugs with hlcutter. Added more
+  quoting to ebuild.
+
+*vdr-1.4.7-r4 (12 Sep 2007)
+
+  12 Sep 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-add-svdrp-down-0.1.diff,
+  +files/vdr-1.4.7-makefile-destdir.diff,
+  +files/vdr-1.4.7-makefile-install-header.diff,
+  +files/extensions-patch-32-plugin-link-error.diff,
+  +files/vdr-set-dumpable.diff, +vdr-1.4.7-r4.ebuild:
+  versions bump; new patchset handling and a lot of new use-flags up from this
+  version
+
+  11 Sep 2007; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.6.ebuild:
+  Marked stable on x86.
+
+  30 Jul 2007; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.4_p3.ebuild,
+  vdr-1.4.6.ebuild:
+  No longer install vdr-setup file, but PDEPEND on vdr-setup-0.3.1-r1 as
+  keywords allow.
+
+  30 Jul 2007; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.36-r3.ebuild,
+  vdr-1.4.1-r2.ebuild, vdr-1.4.3.ebuild, vdr-1.4.4.ebuild,
+  vdr-1.4.4_p3.ebuild, vdr-1.4.5.ebuild, vdr-1.4.6.ebuild:
+  Added vdr-setup as PDEPEND to guarantee it gets installed when associated
+  use-flag is set.
+
+*vdr-1.4.6 (19 Mar 2007)
+
+  19 Mar 2007; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.4.6.ebuild:
+  Version bumped. New patchset can use bigpatch+subtitles, Bug #168189. Only
+  print msg about setup-plugin if it is not yet installed&activated.
+
+  14 Mar 2007; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.4.1-r2.ebuild,
+  vdr-1.4.3.ebuild, vdr-1.4.4.ebuild, vdr-1.4.4_p3.ebuild, vdr-1.4.5.ebuild:
+  fixed install message if you use use-flag setup-plugin
+
+  17 Feb 2007; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.36-r3.ebuild,
+  vdr-1.4.1-r2.ebuild, vdr-1.4.3.ebuild, vdr-1.4.4.ebuild,
+  vdr-1.4.4_p3.ebuild, vdr-1.4.5.ebuild:
+  No longer abuse ROOT, Bug #167285. Corrected wrong variable for key-check.
+
+  07 Feb 2007; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.5.ebuild:
+  Marked stable on x86.
+
+  19 Jan 2007; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.4.1-r2.ebuild,
+  vdr-1.4.3.ebuild, vdr-1.4.4.ebuild, vdr-1.4.4_p3.ebuild, vdr-1.4.5.ebuild:
+  small typo fixed
+
+*vdr-1.4.5 (07 Jan 2007)
+
+  07 Jan 2007; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.4.5.ebuild:
+  Version bumped.
+
+  05 Jan 2007; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.3.36-r3.ebuild,
+  vdr-1.4.1-r2.ebuild, vdr-1.4.3.ebuild, vdr-1.4.4.ebuild,
+  vdr-1.4.4_p3.ebuild:
+  einfo converted to elog
+
+*vdr-1.4.4_p3 (05 Jan 2007)
+
+  05 Jan 2007; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.4.4_p3.ebuild:
+  Version bumped. Added code to look into different dirs for finding local
+  patches.
+
+  09 Dec 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.4.ebuild:
+  Marked stable on x86.
+
+  21 Nov 2006; Matthias Schwarzott <zzam@gentoo.org>
+  -files/vdr-add-svdrp-down-0.1.diff,
+  -files/1.3.27/vdr-1.3.27-SourceCaps.diff,
+  -files/1.3.27/vdr-1.3.27-SourceCaps-lnb-sharing.diff,
+  -files/vdr-1.3.32-daemon.patch,
+  -files/1.3.34/SourceCaps-1.3.33-lnb-sharing.patch,
+  -files/1.3.34/SourceCaps-1.3.33.patch,
+  -files/1.3.34/vdr-1.3.34-shutdown-retry.diff,
+  -files/vdr-1.3.36-SourceCaps.patch,
+  -files/vdr-1.3.36-SourceCaps-for-lnb-sharing.patch,
+  -files/vdr-1.3.36-low-space-crash.diff, -vdr-1.3.27.ebuild,
+  -vdr-1.3.34.ebuild, -vdr-1.3.34-r1.ebuild, -vdr-1.3.34-r2.ebuild,
+  -vdr-1.3.36.ebuild, -vdr-1.3.36-r1.ebuild, -vdr-1.3.36-r2.ebuild,
+  -vdr-1.3.41.ebuild, -vdr-1.3.41-r1.ebuild, -vdr-1.3.41-r2.ebuild,
+  -vdr-1.3.44.ebuild, -vdr-1.3.45.ebuild, -vdr-1.3.45-r1.ebuild,
+  -vdr-1.4.0.ebuild, -vdr-1.4.0-r1.ebuild, -vdr-1.4.1.ebuild,
+  -vdr-1.4.1-r1.ebuild:
+  Now did cleanup of old vdr-ebuilds.
+
+  07 Nov 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.3.ebuild:
+  Marked stable on x86.
+
+*vdr-1.4.4 (07 Nov 2006)
+
+  07 Nov 2006; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.4.4.ebuild:
+  Version bumped. Apply-logic has now been moved to patchset. That makes the
+  ebuild a lot simpler. No parser for patch-headers, no special vanilla logic.
+  New patch noepg.
+
+*vdr-1.4.3 (26 Sep 2006)
+
+  26 Sep 2006; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.4.3.ebuild:
+  Version bumped.
+
+  09 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.1-r2.ebuild:
+  Marked stable on x86.
+
+  01 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Assigned to VDR-Project.
+
+  01 Jul 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.0.ebuild,
+  vdr-1.4.0-r1.ebuild, vdr-1.4.1.ebuild, vdr-1.4.1-r1.ebuild,
+  vdr-1.4.1-r2.ebuild:
+  Do not try to unpack patchset when use-flag vanilla is set.
+
+  28 Jun 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.0-r1.ebuild:
+  Marked stable on x86.
+
+*vdr-1.4.1-r2 (27 Jun 2006)
+
+  27 Jun 2006; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.4.1-r2.ebuild:
+  Bumped patchset. Contains maintainance-patch 1.4.1-1 updated bigpatch and a
+  few small optional patches controlled by dxr3-audio-denoise and
+  dolby-record-switch.
+
+*vdr-1.4.1-r1 (17 Jun 2006)
+
+  17 Jun 2006; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.4.1-r1.ebuild:
+  Search the plugins using multilib-generated path (lib/lib32/lib64). See Bug
+  #136605. Moved capability file to /usr/share.
+
+*vdr-1.4.1 (13 Jun 2006)
+
+  13 Jun 2006; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.4.1.ebuild:
+  Version bumped. Now also copy capability-flags from patches. New useflag
+  cmdsubmenu.
+
+*vdr-1.4.0-r1 (14 May 2006)
+
+  14 May 2006; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.4.0-r1.ebuild:
+  Updated vdr-patchset. Added new bugfixes from KLS.
+
+  09 May 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.45-r1.ebuild:
+  Stable on x86.
+
+  04 May 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.0.ebuild:
+  Updated patchset. Contains a fix for shutdown-behaviour
+
+  04 May 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-1.4.0.ebuild:
+  Added code to warn about no longer used keys for remotes.
+
+*vdr-1.4.0 (03 May 2006)
+
+  03 May 2006; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.4.0.ebuild:
+  Version bumped.
+
+*vdr-1.3.45-r1 (10 Apr 2006)
+
+  10 Apr 2006; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.3.45-r1.ebuild:
+  Updated patchset to 1.3.45-2
+
+  30 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
+  files/digest-vdr-1.3.45, Manifest:
+  Corrected wrong digest-entry for patchset
+
+*vdr-1.3.45 (29 Mar 2006)
+
+  29 Mar 2006; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.3.45.ebuild:
+  Version bumped. Added some more patches controlled by use-flags. Added
+  use-flag vanilla for unpatched version.
+
+  27 Mar 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.44.ebuild:
+  Re-added ~ppc - no longer blocked by media-plugins/vdr-setup.
+
+  20 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-1.3.44.ebuild:
+  removed PDEPEND for vdr-setup Plugin; added info how it's to handle it, to
+  use the vdr-setup plugin
+
+  15 Mar 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.44.ebuild:
+  added debug use-flag
+
+*vdr-1.3.44 (13 Mar 2006)
+
+  13 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-1.3.44.ebuild:
+  version bump
+
+*vdr-1.3.41-r2 (10 Mar 2006)
+
+  10 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-1.3.41-r2.ebuild:
+  update patchset to 0.6, added fix for shutdown, tvmovie-crash
+
+  04 Mar 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.36-r3.ebuild:
+  Marked vdr-1.3.36-r3 stable on x86
+
+*vdr-1.3.41-r1 (18 Feb 2006)
+
+  18 Feb 2006; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.3.41-r1.ebuild:
+  updated patchset to 0.5, added fix for a crash in libsi
+
+  08 Feb 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.41.ebuild:
+  Modified patchset to work with useflag bigpatch (See bug #122100)
+
+  05 Feb 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.41.ebuild:
+  updated patchset, contains patch for decruft-plugin
+
+  04 Feb 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-setup-menu-0.2.3.xml, vdr-1.3.41.ebuild:
+  added config-file for setup-patch
+
+  04 Feb 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.41.ebuild:
+  updated patchset, includes newer bugfixes and an updated setup-patch
+
+*vdr-1.3.41 (31 Jan 2006)
+
+  31 Jan 2006; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.3.41.ebuild:
+  Version bumped.
+
+  31 Jan 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.36-r3.ebuild:
+  added update-notice for removed useflags vfat, rcu & lirc
+
+  30 Jan 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.36-r3.ebuild:
+  prepared for unmasking: changed SRC_URI to mirror://gentoo, changed name of
+  patchset-name-variable
+
+  29 Jan 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.36-r3.ebuild:
+  changed to patchset version 0.2 (solves a bug with USE=subtitles bigpatch)
+
+  27 Jan 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.36-r3.ebuild:
+  updated patchset, works now with setup-plugin
+
+*vdr-1.3.36-r3 (22 Jan 2006)
+
+  22 Jan 2006; Matthias Schwarzott <zzam@gentoo.org> +vdr-1.3.36-r3.ebuild:
+  Added new patch-system with pre-built patchset. Removed use-flags lirc, rcu
+  and vfat.
+
+  17 Jan 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.36-r2.ebuild:
+  Small changes to DEPEND.
+
+  10 Jan 2006; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.36-r2.ebuild:
+  added installation of documentation, thanks to Michael Mauch
+  <michael.mauch@gmx.de> (Bug #118325)
+
+*vdr-1.3.36-r2 (30 Dec 2005)
+
+  30 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-add-svdrp-down-0.1.diff, +vdr-1.3.36-r2.ebuild:
+  Added new patch which enables scripts to trigger auto-shutdown.
+
+  27 Dec 2005; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.36-r1.ebuild:
+  Marked ebuild with crash-bugfix stable on x86
+
+*vdr-1.3.36-r1 (27 Dec 2005)
+
+  27 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-1.3.36-low-space-crash.diff, +vdr-1.3.36-r1.ebuild:
+  added patch against crash when having low disk space during cutting
+
+  17 Dec 2005; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.27.ebuild,
+  vdr-1.3.34.ebuild, vdr-1.3.34-r1.ebuild, vdr-1.3.34-r2.ebuild,
+  vdr-1.3.36.ebuild:
+  fixed setting permissions of config and home-directory
+
+  15 Dec 2005; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.36.ebuild:
+  Marked stable on x86.
+
+  10 Dec 2005; Michael Hanselmann <hansmi@gentoo.org> vdr-1.3.36.ebuild:
+  Added to ~ppc.
+
+  09 Dec 2005; Matthias Schwarzott <zzam@gentoo.org> vdr-1.2.6-r1.ebuild:
+  removed warning that Kernel 2.4 needs media-tv/linuxtv-dvb
+
+  09 Dec 2005; Matthias Schwarzott <zzam@gentoo.org> vdr-1.2.6-r1.ebuild:
+  added dependency to linuxtv-dvb-headers
+
+  08 Dec 2005; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.27.ebuild,
+  vdr-1.3.34.ebuild, vdr-1.3.34-r1.ebuild, vdr-1.3.34-r2.ebuild,
+  vdr-1.3.36.ebuild:
+  moved dependency for dvb-headers to own packet linuxtv-dvb-headers
+
+*vdr-1.3.36 (09 Nov 2005)
+
+  09 Nov 2005; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-1.3.36-SourceCaps.patch,
+  +files/vdr-1.3.36-SourceCaps-for-lnb-sharing.patch, +vdr-1.3.36.ebuild:
+  Version bumped. This version includes some bugfixes.
+
+*vdr-1.3.34-r2 (24 Oct 2005)
+
+  24 Oct 2005; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-1.3.32-daemon.patch, +vdr-1.3.34-r2.ebuild:
+  Added patch for better daemonization.
+
+  22 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.34-r1.ebuild:
+  Better source installation for debugging
+
+  18 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.27.ebuild,
+  vdr-1.3.34.ebuild, vdr-1.3.34-r1.ebuild:
+  Added installation of missing header files, needed for some plugins.
+
+*vdr-1.3.34-r1 (12 Oct 2005)
+
+  12 Oct 2005; Matthias Schwarzott <zzam@gentoo.org>
+  +files/1.3.34/vdr-1.3.34-shutdown-retry.diff, +vdr-1.3.34-r1.ebuild:
+  Changed shutdown-behaviour, and corrected a bug in shutdown. Cosmetic
+  changes to ebuild.
+
+  11 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> vdr-1.2.6-r1.ebuild,
+  vdr-1.3.27.ebuild, vdr-1.3.34.ebuild:
+  changed DESCRIPTION to contain DVB
+
+*vdr-1.3.34 (08 Oct 2005)
+
+  08 Oct 2005; Matthias Schwarzott <zzam@gentoo.org>
+  +files/1.3.34/SourceCaps-1.3.33-lnb-sharing.patch,
+  +files/1.3.34/SourceCaps-1.3.33.patch, +vdr-1.3.34.ebuild:
+  Version bumped.
+
+  09 Sep 2005; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.27.ebuild:
+  Creating default video directory
+
+  21 Aug 2005; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Set myself and herd media-tv as maintainer.
+
+  21 Aug 2005; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.27.ebuild:
+  changed ownership of config-files and renamed some variables
+
+  14 Aug 2005; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.27.ebuild:
+  add keyword ~amd64
+
+  13 Aug 2005; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.27.ebuild:
+  create user and group vdr
+
+  13 Aug 2005; Matthias Schwarzott <zzam@gentoo.org> vdr-1.3.27.ebuild:
+  sorted dependencies and added vdr script package and plugin reemerge package
+
+*vdr-1.3.27 (23 Jul 2005)
+
+  23 Jul 2005; Matthias Schwarzott <zzam@gentoo.org>
+  +files/1.3.27/vdr-1.3.27-SourceCaps.diff,
+  +files/1.3.27/vdr-1.3.27-SourceCaps-lnb-sharing.diff, +vdr-1.3.27.ebuild:
+  new version with completely new ebuild, but without init and other
+  additional scripts
+
+  21 May 2005; Simon Stelling <blubb@gentoo.org> vdr-1.2.6-r1.ebuild:
+  added ~amd64 keyword
+
+  19 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  files/vdr-1.2.6-gentoo.diff, vdr-1.2.6-r1.ebuild:
+  modified patch to fix #85915
+
+  13 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  -files/vdr-1.1.27-gentoo.diff, -vdr-1.1.27.ebuild, -vdr-1.2.6.ebuild:
+  removed old versions, cleanup
+
+*vdr-1.2.6-r1 (27 Jan 2005)
+
+  27 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> +vdr-1.2.6-r1.ebuild:
+  new revision to point up the patch for people who have vdr installed. see
+  #78230
+
+  25 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> vdr-1.2.6.ebuild:
+  stable on x86
+
+  25 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +files/vdr-1.2.6_CAN-2005-0071.patch, vdr-1.2.6.ebuild:
+  added security patch to fix CAN-2005-0071. also see bug #78230
+
+  27 Oct 2004; Patrick Kursawe <phosphan@gentoo.org>
+  files/vdr-1.2.6-gentoo.diff, vdr-1.2.6.ebuild:
+  Modified patch for gcc 3.4, removed dvb dependency (native for 2.6 kernels).
+
+  13 Aug 2004; Chris White <chriswhite@gentoo.org> +metadata.xml:
+  Adding missing metadata.xml.
+
+  17 Jul 2004; David Holm <dholm@gentoo.org> vdr-1.2.6.ebuild:
+  Added to ~ppc.
+
+*vdr-1.2.6 (12 Dec 2003)
+
+  12 Dec 2003; Daniel Ahlberg <aliz@gentoo.org> vdr-1.1.27.ebuild:
+  Version bump.
+
+*vdr-1.1.27 (13 Apr 2003)
+
+  13 Apr 2003; Martin Holzer <mholzer@gentoo.org> vdr-1.1.27.ebuild,
+  files/vdr-1.1.27-gentoo.diff files/digest-vdr-1.1.27 ChangeLog:
+
+  Initial ebuild by myself.

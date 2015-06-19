@@ -1,0 +1,25 @@
+Merge info from README file with these.
+
+To use Liquid Feedback you have to follow these
+simple steps, which have to be done as the postgres system user (or
+which ever is the database superuser):
+
+$ createuser liquid_feedback
+and answer the following
+Shall the new role be a superuser? (y/n) n
+Shall the new role be allowed to create databases? (y/n) y
+Shall the new role be allowed to create more new roles? (y/n) n
+
+$ psql 
+postgres=# ALTER USER liquid_feedback WITH PASSWORD 'the_new_password';
+
+$ createdb -U liquid_feedback liquid_feedback
+$ psql -U liquid_feedback liquid_feedback
+liquid_feedback=# \i /usr/share/liquid_feedback_code/core.sql
+liquid_feedback=# \i /usr/share/liquid_feedback_code/init.sql
+INSERT INTO system_setting (member_ttl) VALUES ('1 year');
+INSERT INTO contingent (polling, time_frame, text_entry_limit, initiative_limit) VALUES (false, '1 hour', 20, 6);
+INSERT INTO contingent (polling, time_frame, text_entry_limit, initiative_limit) VALUES (false, '1 day', 80, 12);
+INSERT INTO contingent (polling, time_frame, text_entry_limit, initiative_limit) VALUES (true, '1 hour', 200, 60);
+INSERT INTO contingent (polling, time_frame, text_entry_limit, initiative_limit) VALUES (true, '1 day', 800, 120);
+INSERT INTO policy (index, name, admission_time, discussion_time, verification_time, voting_time, issue_quorum_num, issue_quorum_den, initiative_quorum_num, initiative_quorum_den) VALUES (1, 'Default policy', '8 days', '15 days', '8 days', '15 days', 10, 100, 10, 100);

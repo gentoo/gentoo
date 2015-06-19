@@ -1,0 +1,22 @@
+# ChangeLog for dev-embedded/powersoftplus-libftdi
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/powersoftplus-libftdi/ChangeLog,v 1.3 2012/02/26 12:34:47 pacho Exp $
+
+  26 Feb 2012; Pacho Ramos <pacho@gentoo.org>
+  powersoftplus-libftdi-0.1.8-r1.ebuild:
+  Respect CFLAGS and CC variables.
+
+*powersoftplus-libftdi-0.1.8-r1 (02 Sep 2007)
+
+  02 Sep 2007; Jurek Bartuszek <jurek@gentoo.org>
+  -powersoftplus-libftdi-0.1.8.ebuild,
+  +powersoftplus-libftdi-0.1.8-r1.ebuild:
+  - Moved libftd2xx to a separate package
+  - Changed DESCRIPTION
+
+*powersoftplus-libftdi-0.1.8 (01 Sep 2007)
+
+  01 Sep 2007; Jurek Bartuszek <jurek@gentoo.org> +metadata.xml,
+  +powersoftplus-libftdi-0.1.8.ebuild:
+  Initial version
+

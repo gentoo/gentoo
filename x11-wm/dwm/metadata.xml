@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+	<email>michael.stahn.42@gmail.com</email>
+	<name>Michael Stahn</name>
+	<description>Maintainer. Assign bugs to him</description>
+</maintainer>
+<longdescription>dwm is a dynamic window manager for X. It manages windows in tiling and floating modes. Either mode can be applied dynamically, optimizing the environment for the application in use and the task performed.</longdescription>
+</pkgmetadata>

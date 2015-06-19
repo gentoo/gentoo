@@ -1,0 +1,214 @@
+# ChangeLog for dev-vcs/gitg
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/gitg/ChangeLog,v 1.37 2015/06/09 09:33:46 eva Exp $
+
+*gitg-3.16.1 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org> +gitg-3.16.1.ebuild:
+  Version bump for Gnome 3.16.
+
+  15 May 2015; Pacho Ramos <pacho@gentoo.org> gitg-3.14.0.ebuild:
+  amd64/x86 stable, bug #530272
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> gitg-0.3.2.ebuild:
+  Drop old Python implementations
+
+  12 Feb 2015; Justin Lecher <jlec@gentoo.org>
+  +files/gitg-3.14.1-libgit2-glib-0.22.0.patch, gitg-3.14.1.ebuild:
+  Backport fixes for API changes in libgit2-glib, #537232
+
+*gitg-3.14.1 (24 Dec 2014)
+
+  24 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org> +gitg-3.14.1.ebuild:
+  Version bump for Gnome 3.14.
+
+  01 Dec 2014; Michał Górny <mgorny@gentoo.org> gitg-3.14.0.ebuild:
+  Add a proper REQUIRED_USE for libpeas compatibility, use python_setup() to use
+  the correct implementation.
+
+  24 Nov 2014; Alexandre Rostovtsev <tetromino@gentoo.org> gitg-3.14.0.ebuild:
+  Add python-3.4 support.
+
+*gitg-3.14.0 (24 Nov 2014)
+
+  24 Nov 2014; Alexandre Rostovtsev <tetromino@gentoo.org> gitg-0.3.2.ebuild,
+  +gitg-3.14.0.ebuild:
+  Non-maintainer version bump for compatibility with current versions of
+  libgit2-glib; see bug #514468.
+
+  26 Apr 2014; Pacho Ramos <pacho@gentoo.org> -gitg-0.2.6.ebuild:
+  drop old
+
+  05 Apr 2014; Mike Auty <ikelos@gentoo.org> -gitg-0.0.6.ebuild,
+  -gitg-0.1.2.ebuild, gitg-0.2.6.ebuild, gitg-0.2.7.ebuild, gitg-0.3.2.ebuild:
+  Fix up dependencies (bug 506590 and bug 501696), and clear out old versions.
+
+  03 Apr 2014; Sebastian Pipping <sping@gentoo.org> metadata.xml:
+  Remove myself as a maintainer
+
+  15 Mar 2014; Sebastian Pipping <sping@gentoo.org> gitg-0.3.2.ebuild:
+  eautoreconf needs GNOME_COMPILE_WARNINGS from
+  /usr/share/aclocal/gnome-compiler-flags.m4 to rebuild configure script (bug
+  #504070)
+
+*gitg-0.3.2 (08 Feb 2014)
+
+  08 Feb 2014; Justin Lecher <jlec@gentoo.org> +gitg-0.3.2.ebuild,
+  metadata.xml:
+  Version Bump, #497358; thanks for Mark R. Pariente, Konstantin and Jesús
+  Pérez (Chuso) working on the ebuild
+
+  18 Aug 2013; Agostino Sarubbo <ago@gentoo.org> gitg-0.2.7.ebuild:
+  Stable for x86, wrt bug #478274
+
+  27 Jul 2013; Agostino Sarubbo <ago@gentoo.org> gitg-0.2.7.ebuild:
+  Stable for amd64, wrt bug #478274
+
+*gitg-0.2.7 (13 Apr 2013)
+
+  13 Apr 2013; Mike Auty <ikelos@gentoo.org> -gitg-0.2.5.ebuild,
+  gitg-0.2.6.ebuild, +gitg-0.2.7.ebuild:
+  Bump gitg to 0.2.7 and block 0.2.6 from gnome-3.8 libraries due to a
+  segfault. Fixes bug 465526.
+
+*gitg-0.2.6 (29 Mar 2013)
+
+  29 Mar 2013; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/gitg-0.2.6-fix-libreoffice.patch, +gitg-0.2.6.ebuild,
+  -files/gitg-0.2.1-fix-disable-debug.patch, -gitg-0.1.0.ebuild,
+  -gitg-0.2.2.ebuild, -gitg-0.2.4.ebuild:
+  Version bump to latest and add patch to make it work with huge repos
+  (libreoffice). Drop overshadowed packages to reduce versions clutter.
+
+  11 Jun 2012; Agostino Sarubbo <ago@gentoo.org> gitg-0.1.2.ebuild:
+  Stable for amd64, wrt bug #419893
+
+  09 Jun 2012; Sebastian Pipping <sping@gentoo.org> gitg-0.0.6.ebuild,
+  gitg-0.1.0.ebuild, gitg-0.1.2.ebuild, gitg-0.2.2.ebuild, gitg-0.2.4.ebuild,
+  gitg-0.2.5.ebuild:
+  Fix homepage link (bug #420019)
+
+  06 Jun 2012; Jeff Horelick <jdhore@gentoo.org> gitg-0.1.2.ebuild:
+  marked x86 per bug 419893
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> gitg-0.0.6.ebuild,
+  gitg-0.1.0.ebuild, gitg-0.1.2.ebuild, gitg-0.2.2.ebuild, gitg-0.2.4.ebuild,
+  gitg-0.2.5.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  14 Apr 2012; Zac Medico <zmedico@gentoo.org> gitg-0.2.5.ebuild:
+  Add ~amd64-linux keyword.
+
+*gitg-0.2.5 (28 Sep 2011)
+
+  28 Sep 2011; Sebastian Pipping <sping@gentoo.org> +gitg-0.2.5.ebuild:
+  Bump to 0.2.5 (bug #383527)
+
+  07 Aug 2011; Zac Medico <zmedico@gentoo.org> gitg-0.2.4.ebuild:
+  Add ~x86-linux keyword.
+
+*gitg-0.2.4 (31 Jul 2011)
+
+  31 Jul 2011; Sebastian Pipping <sping@gentoo.org> +gitg-0.2.4.ebuild:
+  Bump to 0.2.4: Downstream patching no longer needed, newer version of
+  gtksourceview required
+
+*gitg-0.2.2 (15 Jul 2011)
+
+  15 Jul 2011; Sebastian Pipping <sping@gentoo.org>
+  +files/gitg-0.2.1-fix-disable-debug.patch, +gitg-0.2.2.ebuild:
+  Insert 0.2.2 from gnome overlay (bug #360659)
+
+  12 Apr 2011; Sebastian Pipping <sping@gentoo.org> gitg-0.1.2.ebuild:
+  Remove -Werror (bug #363009)
+
+*gitg-0.1.2 (27 Mar 2011)
+
+  27 Mar 2011; Sebastian Pipping <sping@gentoo.org> +gitg-0.1.2.ebuild,
+  +files/gitg-0.1.2-fix-disable-debug.patch, metadata.xml:
+  Bump to 0.1.2
+
+  21 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> -gitg-0.0.5.ebuild,
+  gitg-0.0.6.ebuild, -gitg-0.0.8.ebuild, gitg-0.1.0.ebuild:
+  Fix slot-deps on gnome libs
+
+*gitg-0.1.0 (25 Feb 2011)
+
+  25 Feb 2011; Mike Auty <ikelos@gentoo.org> +gitg-0.1.0.ebuild:
+  Bump to 0.1.0, thanks to Alphat-PC (bug 354065).
+
+  02 Jan 2011; Sebastian Pipping <sping@gentoo.org> gitg-0.0.8.ebuild:
+  Remove gone configure option --disable-bundle, integrate test suite from
+  "make check"
+
+  30 Dec 2010; Mike Auty <ikelos@gentoo.org> gitg-0.0.8.ebuild:
+  Fix a few dependency/ebuild issues as mentioned in bug 350189.
+
+  30 Dec 2010; Mike Auty <ikelos@gentoo.org> -gitg-0.0.1.ebuild,
+  -gitg-0.0.2.ebuild, -gitg-0.0.3.ebuild, -gitg-0.0.4.ebuild,
+  +gitg-0.0.8.ebuild:
+  Remove old never-stabilized versions of gitg.
+
+*gitg-0.0.8 (30 Dec 2010)
+
+  30 Dec 2010; Mike Auty <ikelos@gentoo.org> +gitg-0.0.8.ebuild:
+  Version bump gitg to 0.0.8.
+
+  17 Jul 2010; Thomas Anderson <tanderson@gentoo.org> gitg-0.0.6.ebuild:
+  stable amd64, bug 327337
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org> gitg-0.0.6.ebuild:
+  stable x86, bug 327337
+
+  17 Mar 2010; Sebastian Pipping <sping@gentoo.org> gitg-0.0.1.ebuild,
+  gitg-0.0.2.ebuild, gitg-0.0.3.ebuild, gitg-0.0.4.ebuild,
+  gitg-0.0.5.ebuild, gitg-0.0.6.ebuild:
+  Propagate move of dev-util/git to dev-vcs/git
+
+*gitg-0.0.6 (21 Feb 2010)
+
+  21 Feb 2010; Sebastian Pipping <sping@gentoo.org> +gitg-0.0.6.ebuild:
+  Bump to 0.0.6
+
+  07 Dec 2009; Markus Meier <maekke@gentoo.org> gitg-0.0.5.ebuild:
+  amd64 stable, bug #288185
+
+  04 Dec 2009; Christian Faulhammer <fauli@gentoo.org> gitg-0.0.5.ebuild:
+  stable x86, bug 288185
+
+  08 Oct 2009; Romain Perier <mrpouet@gentoo.org>
+  gitg-0.0.4.ebuild:
+  Stable for amd64 per bug #288185.
+
+*gitg-0.0.5 (08 Oct 2009)
+
+  08 Oct 2009; Sebastian Pipping <sping@gentoo.org> +gitg-0.0.5.ebuild,
+  metadata.xml:
+  Bump to 0.0.5, fix license, add myself as maintainer
+
+  22 Jul 2009; Mike Auty <ikelos@gentoo.org> gitg-0.0.4.ebuild:
+  Fix up bug 278347.
+
+  16 Jul 2009; Mike Auty <ikelos@gentoo.org> gitg-0.0.4.ebuild:
+  Fix up bug 278025.
+
+*gitg-0.0.4 (12 Jul 2009)
+
+  12 Jul 2009; Mike Auty <ikelos@gentoo.org> +gitg-0.0.4.ebuild:
+  Version bump, bug 277327.
+
+*gitg-0.0.3 (29 Apr 2009)
+
+  29 Apr 2009; Mike Auty <ikelos@gentoo.org> +gitg-0.0.3.ebuild:
+  Version bump gitg, thanks to voyageur for the notice.
+
+*gitg-0.0.2 (05 Apr 2009)
+
+  05 Apr 2009; Mike Auty <ikelos@gentoo.org> +gitg-0.0.2.ebuild:
+  Version bump, thanks to sping for the notice.
+
+*gitg-0.0.1 (08 Mar 2009)
+
+  08 Mar 2009; Mike Auty <ikelos@gentoo.org> +metadata.xml,
+  +gitg-0.0.1.ebuild:
+  Initial import, ebuild courtesy of Thorsten Vollmer (bug 258741).

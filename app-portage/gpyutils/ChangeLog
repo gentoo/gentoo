@@ -1,0 +1,81 @@
+# ChangeLog for app-portage/gpyutils
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/gpyutils/ChangeLog,v 1.19 2015/06/07 19:06:57 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add bitbucket to remote-id in metadata.xml
+
+*gpyutils-0.1.4 (08 Apr 2015)
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> +gpyutils-0.1.4.ebuild:
+  Version bump. Supports reporting stabilization candidates in gpy-upgrade-impl,
+  fixes to gpy-depcands and gpy-drop-dead-impls.
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> gpyutils-0.1.2.ebuild,
+  gpyutils-0.1.3.ebuild, gpyutils-0.1.ebuild, gpyutils-9999.ebuild:
+  Remove old Python implementations
+
+  27 Dec 2014; Michał Górny <mgorny@gentoo.org> files/implementations.txt:
+  Update impl status.
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> gpyutils-0.1.2.ebuild,
+  gpyutils-0.1.3.ebuild, gpyutils-0.1.ebuild, gpyutils-9999.ebuild:
+  Replace obsolete mirror://bitbucket with the real URI.
+
+  22 Jun 2014; Michał Górny <mgorny@gentoo.org> files/implementations.txt:
+  Update implementation support status.
+
+*gpyutils-0.1.3 (09 Apr 2014)
+
+  09 Apr 2014; Michał Górny <mgorny@gentoo.org> +gpyutils-0.1.3.ebuild:
+  Version bump. Fixes prepending to PYTHON_COMPAT and handling python.eclass-
+  unsupported implementations. Reads implementation support state from the
+  repository. gpy-upgrade-impl updates both live and non-live ebuilds, bug
+  #506246. gpy-showimpls marks keywords and exact eclass used.
+
+  09 Apr 2014; Michał Górny <mgorny@gentoo.org> files/implementations.txt:
+  Update status on PyPy support.
+
+  06 Apr 2014; Michał Górny <mgorny@gentoo.org> gpyutils-0.1.2.ebuild,
+  gpyutils-9999.ebuild:
+  Enable PYTHON_TARGETS=pypy.
+
+  30 Mar 2014; Michał Górny <mgorny@gentoo.org> files/implementations.txt:
+  Describe table columns. Remove python.eclass codes for implementations that
+  will not be added to python.eclass.
+
+  30 Mar 2014; Michał Górny <mgorny@gentoo.org> gpyutils-9999.ebuild:
+  Enable tests.
+
+  30 Mar 2014; Michał Górny <mgorny@gentoo.org> +files/implementations.txt:
+  Add an implementation table to avoid re-releasing gpyutils on every change.
+
+  30 Mar 2014; Mike Gilbert <floppym@gentoo.org> gpyutils-9999.ebuild:
+  Add python3.4.
+
+*gpyutils-0.1.2 (29 Mar 2014)
+
+  29 Mar 2014; Michał Górny <mgorny@gentoo.org> +gpyutils-0.1.2.ebuild:
+  Version bump.
+
+  14 Oct 2013; Michał Górny <mgorny@gentoo.org> gpyutils-9999.ebuild:
+  Switch to git-r3.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> gpyutils-0.1.ebuild,
+  gpyutils-9999.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*gpyutils-0.1 (08 Aug 2013)
+
+  08 Aug 2013; Michał Górny <mgorny@gentoo.org> +gpyutils-0.1.ebuild,
+  gpyutils-9999.ebuild:
+  Introduce the initial release version of my Python maintenance utilities.
+
+  05 Aug 2013; Michał Górny <mgorny@gentoo.org> gpyutils-9999.ebuild:
+  Add missing PYTHON_USEDEP.
+
+*gpyutils-9999 (05 Aug 2013)
+
+  05 Aug 2013; Michał Górny <mgorny@gentoo.org> +gpyutils-9999.ebuild,
+  +metadata.xml:
+  Introduce an ebuild for our Python maintenance utilities.

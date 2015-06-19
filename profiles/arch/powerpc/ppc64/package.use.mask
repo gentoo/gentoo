@@ -1,0 +1,123 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/powerpc/ppc64/package.use.mask,v 1.70 2015/06/16 08:27:24 jlec Exp $
+
+# Justin Lecher <jlec@gentoo.org> (16 June 2015)
+# Pending bug upstream, #550818
+=app-office/scribus-1.5.0-r1 osg
+
+# Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
+# dev-lang/luajit lack ppc64 keyword, bug #551540
+dev-libs/libpeas jit
+
+# James Le Cuirot <chewi@gentoo.org> (21 May 2015)
+# Mask rdeps of icedtea-web to deal with bug #549134. I had hoped to
+# apply the ppc64 keyword today but it segfaulted upon testing.
+dev-java/icedtea nsplugin webstart
+
+# Jeroen Roovers <jer@gentoo.org> (26 Apr 2015)
+# Needs the entire LXDE to be useful (bug #520296)
+xfce-extra/xfce4-power-manager lxpanel
+
+# Johannes Huber <johu@gentoo.org> (28 Jan 2015)
+# Missing keyword on dev-libs/botan, bug #458438
+app-crypt/qca botan
+
+# Matthias Maier <tamiko@gentoo.org> (24 Dec 2014)
+# sys-devel/clang is not keyworded
+app-doc/doxygen clang
+
+# Michael Sterrett <mr_bones_@gentoo.org (12 Nov 2013)
+# Mask openmedia use flag because the content generation tools
+# are missing keywords.
+games-simulation/openttd openmedia
+
+# Michael Palimaka <kensington@gentoo.org> (02 Apr 2013)
+# Requires dev-lang/mono which currently has some issues
+# on ppc64.
+kde-base/kdebindings-meta csharp
+net-libs/libkolabxml csharp
+
+# Sergey Popov <pinkbyte@gentoo.org> (18 Feb 2013)
+# sys-cluster/ploop can not be build on ppc64, bug #447644
+# Masking USE-dep on it
+sys-cluster/vzctl ploop
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Dec 2012)
+# requires app-office/unoconv, which requires virtual/ooo, which is not
+# keyworded here. Remove mask if this situation changes.
+gnome-extra/sushi office
+
+# Michael Weber <xmw@gentoo.org> (14 Jun 2012)
+# Mask net-misc/networkmanager[wimax] till bug 386121 is resolved
+net-misc/networkmanager wimax
+
+# Kacper Kowalik <xarthisius@gentoo.org> (09 Mar 2012)
+# Mask media-video/ffmpeg[vpx] and media-video/mplayer[vpx]
+# on ppc64 as there is no stable version yet
+media-video/ffmpeg vpx
+
+# Kacper Kowalik <xarthisius@gentoo.org> (02 Sep 2011)
+# Mask www-client/seamonkey[ipc] on ppc64 wrt #381191
+www-client/seamonkey ipc
+
+# Sergei Trofimovich <slyfox@gentoo.org> (03 Aug 2011)
+# sys-devel/llvm has no ppc64 keywords yet (bug #320221)
+dev-lang/ghc llvm
+
+# Kacper Kowalik <xarthisius@gentoo.org> (22 Mar 2011)
+# Mask polkit[kde] wrt #354509
+sys-auth/polkit kde
+
+# Alexey Shvetsov <alexxy@gentoo.org> (26 Jan 2011)
+# Mask gps for marble
+kde-apps/marble	gps
+
+# Pacho Ramos <pacho@gentoo.org> (08 Jul 2010)
+# Needs app-mobilephone/obex-data-server keyworded, bug 305913
+gnome-base/gvfs bluetooth
+
+# Samuli Suominen <ssuominen@gentoo.org> (21 Jun 2010)
+# These need stable kdelibs-4.
+app-i18n/uim kde
+app-arch/p7zip kde
+dev-vcs/subversion kde
+media-video/vlc kde
+net-libs/libproxy kde
+
+# Tomáš Chvátal <scarabeus@gentoo.org> (06 June 2010)
+# requires more keywording per bug #323003
+kde-base/kde-meta sdk
+
+# Kacper Kowalik <xarthisius@gentoo.org> (30 May 2010)
+# quesoglc is not keyworded
+x11-misc/rss-glx quesoglc
+
+# uses games-board/ggz-gtk-client
+games-strategy/freeciv ggz
+
+# Mark Loeser <halcy0n@gentoo.org> (02 Mar 2010)
+# Mask webkit useflag since dev-python/mako and dev-python/pywebkitgtk are not
+# keyworded
+media-sound/rhythmbox webkit
+
+# Ben de Groot <yngwin@gentoo.org> (15 Jul 2009)
+# Mask dillo useflag as current version is unkeyworded (bug 253083)
+mail-client/claws-mail dillo
+
+# Brent Baude <ranger@gentoo.org> (05 May 2009)
+# Masking webkit from  libproxy due to TOC failure on webkit
+# and stupid 64bit toolchain.
+net-libs/libproxy webkit
+
+# Brent Baude <ranger@gentoo.org> (11 June 2008)
+# Masking webkit from gimp do to lame ppc64 toolchain and TOC
+>=media-gfx/gimp-2.6.4 webkit
+
+# Brent Baude <ranger@gentoo.org> (11 June 2008)
+# Masking out passwdqc from pambase since passwdqc
+sys-auth/pambase passwdqc
+
+# Joseph Jezak <josejx@gentoo.org> (12 February 2010)
+# Mask unstable pidgin deps until we can mark them stable (farsight2)
+net-im/pidgin gstreamer

@@ -1,0 +1,97 @@
+# ChangeLog for dev-tcltk/tkTheme
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tkTheme/ChangeLog,v 1.30 2012/03/19 08:02:58 jlec Exp $
+
+  19 Mar 2012; Justin Lecher <jlec@gentoo.org> -tkTheme-1.0-r1.ebuild:
+  Cleaned old
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> tkTheme-1.0-r1.ebuild,
+  tkTheme-1.0-r2.ebuild:
+  Drop sparc keywords
+
+  02 Mar 2012; Tobias Klausmann <klausman@gentoo.org> tkTheme-1.0-r2.ebuild:
+  Stable on alpha, bug #397011
+
+  01 Feb 2012; Brent Baude <ranger@gentoo.org> tkTheme-1.0-r2.ebuild:
+  Marking tkTheme-1.0-r2 ppc for bug 397011
+
+  15 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> tkTheme-1.0-r2.ebuild:
+  x86 stable wrt bug #397011
+
+  06 Jan 2012; Justin Lecher <jlec@gentoo.org> tkTheme-1.0-r2.ebuild:
+  Aded missing RDEP on x11-libs/libX11
+
+  06 Jan 2012; Agostino Sarubbo <ago@gentoo.org> tkTheme-1.0-r2.ebuild:
+  Stable for AMD64, wrt bug #397011
+
+  02 Jan 2012; Justin Lecher <jlec@gentoo.org> -tkTheme-1.0.ebuild:
+  Removed old
+
+  02 Jan 2012; Justin Lecher <jlec@gentoo.org> +files/1.0-cflags.patch,
+  tkTheme-1.0-r2.ebuild, files/1.0-Makefile.in.diff, metadata.xml:
+  Moved to EAPI=4 and autotools-utils.eclass, handle examples static-libs and
+  threading support correctly, added missing deps
+
+*tkTheme-1.0-r2 (22 Mar 2010)
+
+  22 Mar 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +tkTheme-1.0-r2.ebuild:
+  EAPI=3 bump and cleanup, respecting CC
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> tkTheme-1.0-r1.ebuild:
+  ppc stable #281394
+
+  29 Aug 2009; Tobias Klausmann <klausman@gentoo.org> tkTheme-1.0-r1.ebuild:
+  Stable on alpha, bug #281394
+
+  18 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  tkTheme-1.0-r1.ebuild:
+  stable x86, bug 281394
+
+  14 Aug 2009; Federico Ferri <mescalinum@gentoo.org> tkTheme-1.0-r1.ebuild:
+  add libXpm dep, fix bug 227865
+
+  14 Aug 2007; Ferris McCormick <fmccor@gentoo.org> tkTheme-1.0-r1.ebuild:
+  Sparc stable --- works fine.
+
+  18 May 2007; Peter Weller <welp@gentoo.org> tkTheme-1.0-r1.ebuild:
+  Stable on amd64
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  27 Jun 2005; David Holm <dholm@gentoo.org> tkTheme-1.0-r1.ebuild:
+  Added to ~ppc.
+
+*tkTheme-1.0-r1 (26 Jun 2005)
+
+  26 Jun 2005; MATSUU Takuto <matsuu@gentoo.org> +files/1.0-configure.diff,
+  +tkTheme-1.0-r1.ebuild:
+  Fixed fail to compile on amd64.
+
+  07 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> tkTheme-1.0.ebuild:
+  added ~amd64 to KEYWORDS, fixes #88185
+
+  02 Apr 2005; Jason Wever <weeve@gentoo.org> tkTheme-1.0.ebuild:
+  Stable on SPARC.
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  19 Jun 2004; Jason Wever <weeve@gentoo.org> tkTheme-1.0.ebuild:
+  Added ~sparc keyword.
+
+  03 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> tkTheme-1.0.ebuild:
+  Stable on alpha.
+
+  04 Apr 2004; Chris Aniszczyk <zx@gentoo.org> metadata.xml,
+  tkTheme-1.0.ebuild:
+  Clean up.
+
+  14 Jan 2004; Aron Griffis <agriffis@gentoo.org> tkTheme-1.0.ebuild:
+  add ~alpha
+
+*tkTheme-1.0 (01 Feb 2003)
+
+  01 Feb 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Initial version of the package.

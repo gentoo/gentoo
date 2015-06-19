@@ -1,0 +1,21 @@
+# ChangeLog for media-libs/icclib
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/icclib/ChangeLog,v 1.3 2012/09/24 02:35:11 radhermit Exp $
+
+  24 Sep 2012; Tim Harder <radhermit@gentoo.org> -icclib-2.13.ebuild,
+  -files/icclib-2.13-make.patch:
+  Remove old, vulnerable version (bug #435696).
+
+*icclib-2.14 (24 Sep 2012)
+
+  24 Sep 2012; Tim Harder <radhermit@gentoo.org> files/icclib-2.13-make.patch,
+  +icclib-2.14.ebuild, +files/icclib-2.14-make.patch:
+  Version bump.
+
+*icclib-2.13 (20 May 2012)
+
+  20 May 2012; Andreas K. Huettel <dilfridge@gentoo.org> +icclib-2.13.ebuild,
+  +files/icclib-2.13-make.patch:
+  Beat this package into generating a shared library and add it here. Intended
+  for unbundling in ghostscript-gpl, see bug 206893
+

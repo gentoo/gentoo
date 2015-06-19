@@ -1,0 +1,55 @@
+# ChangeLog for x11-libs/libdesktop-agnostic
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libdesktop-agnostic/ChangeLog,v 1.12 2015/01/26 09:39:51 ago Exp $
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org>
+  libdesktop-agnostic-0.3.92-r1.ebuild:
+  Stable for x86, wrt bug #534430
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org>
+  libdesktop-agnostic-0.3.92-r1.ebuild:
+  Stable for amd64, wrt bug #534430
+
+  03 Jan 2015; Michał Górny <mgorny@gentoo.org>
+  libdesktop-agnostic-0.3.92-r1.ebuild:
+  Add PYTHON_REQ_USE as necessary for waf.
+
+*libdesktop-agnostic-0.3.92-r1 (25 Dec 2014)
+
+  25 Dec 2014; Michał Górny <mgorny@gentoo.org>
+  +libdesktop-agnostic-0.3.92-r1.ebuild:
+  Convert to python-single-r1.
+
+  27 Jun 2014; Christoph Mende <angelos@gentoo.org>
+  libdesktop-agnostic-0.3.92.ebuild:
+  Correct glade configure parameter (bug #514828)
+
+  09 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  libdesktop-agnostic-0.3.92.ebuild:
+  Stable for x86, wrt bug #465222
+
+  09 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  libdesktop-agnostic-0.3.92.ebuild:
+  Stable for amd64, wrt bug #465222
+
+  29 Mar 2013; Christoph Mende <angelos@gentoo.org>
+  libdesktop-agnostic-0.3.92.ebuild:
+  Convert to vala.eclass
+
+  22 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  libdesktop-agnostic-0.3.92.ebuild:
+  Enable introspection by default.
+
+  24 May 2011; Christoph Mende <angelos@gentoo.org>
+  libdesktop-agnostic-0.3.92.ebuild:
+  gobject-introspection is always required to build
+
+  13 Mar 2011; <angelos@gentoo.org> libdesktop-agnostic-0.3.92.ebuild,
+  metadata.xml:
+  Removed gnome-vfs support
+
+*libdesktop-agnostic-0.3.92 (13 Mar 2011)
+
+  13 Mar 2011; <angelos@gentoo.org> +libdesktop-agnostic-0.3.92.ebuild,
+  +metadata.xml:
+  Initial import

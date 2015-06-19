@@ -1,0 +1,18 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/sagan/files/sagan.init-r1,v 1.1 2014/12/05 19:19:55 maksbotan Exp $
+
+pidfile="/var/run/sagan/sagan.pid"
+command="/usr/bin/sagan"
+command_args="-D \"${SAGAN_OPTS}\" -u \"${SAGAN_USER}\""
+
+depend() {
+      use logger mysql postgresql
+      need localmount
+}
+
+start_pre() {
+    checkpath -d -o sagan /run/sagan
+    checkpath -p -o sagan -m 0644 /run/sagan/sagan.fifo
+}

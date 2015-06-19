@@ -1,0 +1,97 @@
+# ChangeLog for media-sound/cplay
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/cplay/ChangeLog,v 1.26 2014/08/10 21:05:01 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> cplay-1.49.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  30 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> cplay-1.49.ebuild:
+  Fix python.eclass usage wrt #313941 by Arfrever Frehtes Taifersar
+  Arahesis.
+
+  27 Feb 2009; Alexis Ballier <aballier@gentoo.org> cplay-1.49.ebuild:
+  sed the script after installing it if we're sedding in D; bug #256142
+
+  16 Dec 2008; Diego E. Pettenò <flameeyes@gentoo.org> cplay-1.49.ebuild:
+  Replace dosed with direct sed call and avoid it failing.
+
+  17 May 2008; Samuli Suominen <drac@gentoo.org> cplay-1.49.ebuild:
+  Use virtual/mpg123.
+
+  18 Sep 2007; Samuli Suominen <drac@gentoo.org> cplay-1.49.ebuild:
+  Add media-sound/mpg123 as alternative in USE mp3.
+
+  04 Feb 2007; Samuli Suominen <drac@gentoo.org> cplay-1.49.ebuild:
+  Add missing gettext depend for bug 164509.
+
+  05 Jan 2007; Jeroen Roovers <jer@gentoo.org> cplay-1.49.ebuild:
+  Stable for HPPA.
+
+  27 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> cplay-1.47.ebuild,
+  cplay-1.49.ebuild:
+  Fix HOMEPAGE/SRC_URI, thanks to Samuli Suominen.
+
+  05 Jun 2006; Stefan Schweizer <genstef@gentoo.org> cplay-1.49.ebuild:
+  new use flags thanks to Samuli Suominen <sasuomin@uusikaupunki.fi> in bug
+  135668
+
+  09 Jan 2006; Jeroen Roovers <jer@gentoo.org> cplay-1.49.ebuild:
+  Marked ~hppa.
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org> cplay-1.49.ebuild:
+  Stable sparc.
+
+  22 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org> cplay-1.49.ebuild:
+  Added to ~sparc.
+
+  22 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org> cplay-1.49.ebuild:
+  Cleaned up deps and added to ~sparc.
+
+  18 Oct 2004; Tom Gall <tgall@gentoo.org> cplay-1.49.ebuild:
+  stable on ppc64, bug #64531
+
+  06 Oct 2004; <SeJo@gentoo.org> cplay-1.49.ebuild:
+  unstable on ppc
+
+  26 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> cplay-1.47.ebuild,
+  cplay-1.49.ebuild:
+  Stable on x86.
+
+*cplay-1.49 (20 Feb 2004)
+
+  20 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org> cplay-1.47.ebuild,
+  cplay-1.49.ebuild, metadata.xml:
+  Version bump.  Add metadata.  Header change.
+
+  26 Sep 2003; Martin Holzer <mholzer@gentoo.org> cplay-1.47.ebuild:
+  Marked stable. Closes #29304.
+
+  20 Sep 2003; jje <jje@gentoo.org> cplay-1.47.ebuild:
+  Fix source URI. See #27946.
+
+*cplay-1.47 (15 Aug 2003)
+
+  15 Aug 2003; Nick Hadaway <raker@gentoo.org> cplay-1.47.ebuild:
+  Version bump.  No other changes needed.  Thanks to Frank Tobin on bug
+  #26667 for the heads up.
+
+*cplay-1.46-r1 (03 Jan 2003)
+
+  03 Jan 2003; B.Lauwers <blauwers@gentoo.org> :
+  Fix per Bug# 7806
+
+*cplay-1.46 (17 Dec 2002)
+
+  17 Dec 2002; B.Lauwers <blauwers@gentoo.org> ;
+  Version bump, new homepage and source location
+
+*cplay-1.45 (12 Dec 2002)
+
+  11 Sep 2002; Väinö Järvelä <vaino.jarvela@pp.inet.fi> cplay-1.45.ebuild, Changelog :
+
+  Initial release of cplay, which is curses based audio frontend that uses
+  external programs for playing files. Supported players are:
+  ogg123, mpg123, mpg321, splay, madplay and mikmod.

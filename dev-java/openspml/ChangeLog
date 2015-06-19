@@ -1,0 +1,34 @@
+# ChangeLog for dev-java/openspml
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/openspml/ChangeLog,v 1.8 2014/10/28 05:39:55 ercpe Exp $
+
+  28 Oct 2014; Johann Schmitz <ercpe@gentoo.org> openspml-0.5-r1.ebuild:
+  Added -source to JAVAC_ARGS to fix bug #526720
+
+*openspml-0.5-r1 (06 Sep 2014)
+
+  06 Sep 2014; Johann Schmitz <ercpe@gentoo.org> +openspml-0.5-r1.ebuild:
+  Fixed bug #174614, dropped ant for java-pkg-simple and bumped to EAPI 5
+
+  16 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org> openspml-0.5.ebuild:
+  ppc stable, bug #186196
+
+  15 Aug 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  openspml-0.5.ebuild:
+  amd64 stable, bug #186196.
+
+  15 Aug 2007; Petteri Räty <betelgeuse@gentoo.org> openspml-0.5.ebuild:
+  Switch to java-pkg_dojavadoc. Problem found in bug #186196. Add
+  app-arch/unzip to DEPEND.
+
+  11 Aug 2007; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml:
+  Remove myself from <maintainer>.
+
+  24 Jul 2007; Christian Faulhammer <opfer@gentoo.org> openspml-0.5.ebuild:
+  stable x86, bug 186196
+
+*openspml-0.5 (11 Sep 2006)
+
+  11 Sep 2006; Krzysiek Pawlik <nelchael@gentoo.org> +files/build.xml-0.5,
+  +metadata.xml, +openspml-0.5.ebuild:
+  Initial import - dependency of dev-java/jldap.

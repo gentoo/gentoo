@@ -1,0 +1,56 @@
+From 2945539d12bbb79c44fd4402e87150b4ec58af25 Mon Sep 17 00:00:00 2001
+From: Thomas D.
+Date: Tue, 24 Mar 2015 02:03:13 +0100
+Subject: [PATCH] Add option to disable valgrind usage in testbench
+
+Temporary workaround for https://github.com/rsyslog/rsyslog/issues/263
+
+---
+ configure.ac | 27 +++++++++++++++++++++++----
+ 1 file changed, 23 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 0c72f80..cdfdd25 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -13,10 +13,6 @@ AC_CONFIG_HEADERS([config.h])
+ 
+ AC_USE_SYSTEM_EXTENSIONS
+ 
+-# check if valgrind is present
+-AC_CHECK_PROG(have_valgrind, [valgrind], [yes])
+-AM_CONDITIONAL(HAVE_VALGRIND, test x$have_valgrind = xyes)
+-
+ # Checks for programs.
+ AC_PROG_LEX
+ AC_PROG_YACC
+@@ -1125,6 +1121,29 @@ if test "x$enable_testbench" = "xyes"; then
+ fi
+ 
+ 
++# valgrind-testbench
++AC_ARG_WITH([valgrind_testbench],
++        [AS_HELP_STRING([--without-valgrind-testbench], [Don't use valgrind in testbench])]
++)
++
++if test "x$with_valgrind_testbench" != "xno"; then
++        AC_CHECK_PROG(VALGRIND, [valgrind], [valgrind], [no])
++
++        if test "x$enable_testbench" = "xyes" && test "x$VALGRIND" = "xno"; then
++                if test "x$with_valgrind_testbench" = "xyes"; then
++                        AC_MSG_ERROR([valgrind is missing but forced with --with-valgrind-testbench. Either install valgrind or remove the option!])
++                else
++                        AC_MSG_WARN([valgrind is missing -- testbench won't use valgrind!])
++                fi
++        else
++                AC_MSG_NOTICE([testbench will use valgrind])
++        fi
++else
++	AC_MSG_NOTICE([testbench won't use valgrind due to set --without-valgrind-testbench option])
++fi
++AM_CONDITIONAL([HAVE_VALGRIND], [test "x$with_valgrind_testbench" != "xno" && test "x$VALGRIND" != "xno"])
++
++
+ # settings for the file input module
+ AC_ARG_ENABLE(imfile,
+         [AS_HELP_STRING([--enable-imfile],[file input module enabled @<:@default=no@:>@])],

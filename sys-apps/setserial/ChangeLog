@@ -1,0 +1,90 @@
+# ChangeLog for sys-apps/setserial
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/setserial/ChangeLog,v 1.25 2011/04/07 05:36:42 vapier Exp $
+
+  07 Apr 2011; Mike Frysinger <vapier@gentoo.org> files/serial-2.17-r4:
+  Drop old module loading #360453 by Robert Cernansky, and drop useless init.d
+  depend -- all the files we need are in the rootfs.
+
+  08 Oct 2010; Mart Raudsepp <leio@gentoo.org> setserial-2.17-r3.ebuild:
+  Drop to ~mips
+
+  11 May 2010; Brent Baude <ranger@gentoo.org> setserial-2.17-r4.ebuild:
+  stable ppc64, bug 314741
+
+  17 Apr 2010; Raúl Porcel <armin76@gentoo.org> setserial-2.17-r4.ebuild:
+  alpha/arm/ia64/s390/sh/sparc/x86 stable wrt #314741
+
+  16 Apr 2010; Markos Chandras <hwoarang@gentoo.org>
+  setserial-2.17-r4.ebuild:
+  Stable on amd64 wrt bug #314741
+
+  16 Apr 2010; Brent Baude <ranger@gentoo.org> setserial-2.17-r4.ebuild:
+  stable ppc, bug 314741
+
+  16 Apr 2010; Jeroen Roovers <jer@gentoo.org> setserial-2.17-r4.ebuild:
+  Stable for HPPA (bug #314741).
+
+  11 Apr 2010; Mike Frysinger <vapier@gentoo.org> setserial-2.17-r4.ebuild,
+  +files/setserial-2.17-hayes-esp.patch:
+  Fix building with newer linux-headers where hayes esp no longer exists
+  #309883 by Gary Stein.
+
+  11 May 2008; <solar@gentoo.org> setserial-2.17-r4.ebuild:
+  - cross compile fix
+
+  18 Jan 2008; Robin H. Johnson <robbat2@gentoo.org> files/serial-2.17-r4:
+  Fix typo bug.
+
+*setserial-2.17-r4 (15 Jan 2008)
+
+  15 Jan 2008; Robin H. Johnson <robbat2@gentoo.org> +files/serial-2.17-r4,
+  +setserial-2.17-r4.ebuild:
+  Implement stty keyword per bug #103423.
+
+  13 Jun 2007; Mike Frysinger <vapier@gentoo.org> files/serial:
+  Cleanup init.d script and throw out a lot of old stuff.
+
+  05 Jun 2007; Matthias Schwarzott <zzam@gentoo.org> files/serial:
+  Removed some bashisms.
+
+  03 Apr 2007; Mike Frysinger <vapier@gentoo.org>
+  +files/setserial-2.17-build.patch, +files/setserial-2.17-headers.patch,
+  setserial-2.17-r3.ebuild:
+  Include proper headers and respect LDFLAGS.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*setserial-2.17-r3 (21 Feb 2005)
+
+  21 Feb 2005; Mike Frysinger <vapier@gentoo.org> +files/serial,
+  +files/setserial-2.17-manpage-updates.patch,
+  +files/setserial-2.17-spelling.patch, -setserial-2.17-r2.ebuild,
+  +setserial-2.17-r3.ebuild:
+  Move the init.d script out of baselayout and touchup the manpage #81946.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  setserial-2.17-r2.ebuild:
+  virtual/glibc -> virtual/libc
+
+  02 Mar 2004; Brian Jackson <iggy@gentoo.org> setserial-2.17-r2.ebuild:
+  adding initial s390 support
+
+  09 Feb 2003; Guy Martin <gmsoft@gentoo.org> setserial-2.17-r2.ebuild :
+  Added hppa to keywords.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*setserial-2.17-r2 (1 Feb 2002)
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> setserial-2.17-r2.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

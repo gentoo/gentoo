@@ -1,0 +1,25 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/sercd/files/sercd.initd,v 1.2 2014/12/04 07:14:50 pinkbyte Exp $
+
+PIDFILE=/run/${SVCNAME}.pid
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --quiet --background --make-pidfile \
+		--exec /usr/sbin/sercd --chuid ${SERCD_USER} --pidfile "${PIDFILE}" \
+		-- ${SERCD_OPTS} -p ${SERCD_PORT} -l ${SERCD_ADDR} \
+		${SERCD_LOGLEVEL} "${SERCD_DEVFILE}" "${SERCD_LOCKFILE}" ${SERCD_POLLINTERV}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --quiet --name sercd --pidfile "${PIDFILE}"
+	eend $?
+}

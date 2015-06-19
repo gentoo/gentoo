@@ -1,0 +1,90 @@
+# ChangeLog for app-misc/mtail
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/mtail/ChangeLog,v 1.26 2014/12/27 16:03:09 mgorny Exp $
+
+*mtail-1.1.1-r3 (27 Dec 2014)
+
+  27 Dec 2014; Michał Górny <mgorny@gentoo.org> +mtail-1.1.1-r3.ebuild:
+  Convert to python-single-r1.
+
+  02 Dec 2012; Tim Harder <radhermit@gentoo.org> mtail-1.1.1-r2.ebuild:
+  Fix LICENSE (bug #444500 by ulm).
+
+  27 Mar 2011; Jeremy Olexa <darkside@gentoo.org> -mtail-1.1.1-r1.ebuild:
+  remove old ebuilds
+
+  05 Jan 2011; Justin Lecher <jlec@gentoo.org> mtail-1.1.1-r1.ebuild,
+  mtail-1.1.1-r2.ebuild:
+  Some Clean up
+
+  19 Oct 2010; Mart Raudsepp <leio@gentoo.org> mtail-1.1.1-r1.ebuild:
+  Drop to ~mips
+
+  24 May 2010; Pacho Ramos <pacho@gentoo.org> mtail-1.1.1-r2.ebuild:
+  stable amd64, bug 317415
+
+  13 May 2010; Joseph Jezak <josejx@gentoo.org> mtail-1.1.1-r2.ebuild:
+  Marked ppc stable for bug #317415.
+
+  09 May 2010; Raúl Porcel <armin76@gentoo.org> mtail-1.1.1-r2.ebuild:
+  alpha/sparc/x86 stable wrt #317415
+
+*mtail-1.1.1-r2 (27 Mar 2010)
+
+  27 Mar 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +mtail-1.1.1-r2.ebuild:
+  Fix for new Python situation, #311531
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  mtail-1.1.1-r1.ebuild:
+  Transfer Prefix keywords
+
+  03 Feb 2008; Fabian Groffen <grobian@gentoo.org> mtail-1.1.1-r1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing taviso from metadata.xml as per #202471.
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> mtail-1.1.1-r1.ebuild:
+  Stable on ppc.
+
+  10 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  mtail-1.1.1-r1.ebuild:
+  mark ~ppc
+
+  27 Dec 2004; <gongloo@gentoo.org> mtail-1.1.1-r1.ebuild:
+  Added ~ppc-macos.
+
+  28 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> mtail-1.1.1-r1.ebuild:
+  Stable on mips
+
+  17 Apr 2004; Tavis Ormandy <taviso@gentoo.org> mtail-1.1.1-r1.ebuild:
+  missing IUSE variable.
+
+  16 Feb 2004; Ciaran McCreesh <ciaranm@gentoo.org> mtail-1.1.1-r1.ebuild:
+  Added in ~mips
+
+*mtail-1.1.1-r1 (11 Jan 2004)
+
+  11 Jan 2004; Tavis Ormandy <taviso@gentoo.org> mtail-1.1.1-r1.ebuild:
+  ciaran's patch is awesome, marking stable.
+
+  26 Dec 2003; Tavis Ormandy <taviso@gentoo.org>
+  files/mtail-1.1.1-remove-blanks.patch:
+  Added an additional example rc file.
+  Applying a patch from ciaranm@gentoo.org to strip blank lines.
+
+  24 Oct 2003; Sven Blumenstein <bazik@gentoo.org> mtail-1.1.1.ebuild:
+  Added sparc keyword (#31905)
+
+  17 Sep 2003; Tavis Ormandy <taviso@gentoo.org> mtail-1.1.1.ebuild:
+  stable
+
+*mtail-1.1.1 (07 Jul 2003)
+
+  07 Jul 2003; Tavis Ormandy <taviso@gentoo.org> metadata.xml,
+  mtail-1.1.1.ebuild:
+  initial import

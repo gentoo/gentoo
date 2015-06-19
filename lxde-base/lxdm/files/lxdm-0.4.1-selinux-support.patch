@@ -1,0 +1,7 @@
+--- a/pam/lxdm	2011-12-05 17:30:39.749064359 -0600
++++ b/pam/lxdm	2011-12-05 17:31:19.355569211 -0600
+@@ -7,3 +7,4 @@
+ session    required	pam_loginuid.so
+ #session    optional	pam_console.so
+ session    optional	pam_gnome_keyring.so auto_start
++session	   optional	pam_selinux.so

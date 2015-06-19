@@ -1,0 +1,130 @@
+# ChangeLog for net-nntp/sabnzbd
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-nntp/sabnzbd/ChangeLog,v 1.25 2014/12/16 02:03:49 jsbronder Exp $
+
+*sabnzbd-0.7.20 (16 Dec 2014)
+
+  16 Dec 2014; Justin Bronder <jsbronder@gentoo.org> +sabnzbd-0.7.20.ebuild:
+  Bump (#530894)
+
+*sabnzbd-0.7.19 (08 Nov 2014)
+
+  08 Nov 2014; Justin Bronder <jsbronder@gentoo.org> +sabnzbd-0.7.19.ebuild:
+  bump #528518
+
+*sabnzbd-0.7.18 (26 Aug 2014)
+
+  26 Aug 2014; Justin Bronder <jsbronder@gentoo.org> +sabnzbd-0.7.18.ebuild:
+  Version bump (#516786). Thanks to James Chew for the report.
+
+  19 Jun 2014; Justin Bronder <jsbronder@gentoo.org> files/sabnzbd.initd:
+  Check that api is not disabled before attempting to use it for shutdown.
+  Thanks to eponymous, #494640
+
+*sabnzbd-0.7.17 (26 Apr 2014)
+
+  26 Apr 2014; Justin Bronder <jsbronder@gentoo.org> +sabnzbd-0.7.17.ebuild:
+  Bump, #506318
+
+  16 Jan 2014; Jeroen Roovers <jer@gentoo.org> sabnzbd-0.7.16.ebuild:
+  Spelling.
+
+  11 Oct 2013; Justin Bronder <jsbronder@gentoo.org> files/sabnzbd.initd:
+  Update initd script to match the correct [misc] section. Thanks to eponymous
+  (#483786).
+
+*sabnzbd-0.7.16 (08 Oct 2013)
+
+  08 Oct 2013; Justin Bronder <jsbronder@gentoo.org> -sabnzbd-0.7.13-r2.ebuild,
+  -sabnzbd-0.7.14.ebuild, +sabnzbd-0.7.16.ebuild, +files/par2cmdline.patch,
+  files/sabnzbd.initd, -files/sabnzbd.logrotate:
+  Version bump and remove old (#484226). Fix initd script thanks to eponymous
+  (#483786). Remove logrotate (#483672). Fix issues with stable version of
+  par2cmdline thanks to dcb (#480302).
+
+  08 Sep 2013; Jeroen Roovers <jer@gentoo.org> files/sabnzbd.ini:
+  Fix CRLF by eponymous (bug #484236).
+
+*sabnzbd-0.7.14 (11 Jul 2013)
+
+  11 Jul 2013; Justin Bronder <jsbronder@gentoo.org> +sabnzbd-0.7.14.ebuild:
+  version bump
+
+*sabnzbd-0.7.13-r2 (25 Jun 2013)
+
+  25 Jun 2013; Justin Bronder <jsbronder@gentoo.org> +sabnzbd-0.7.13-r2.ebuild,
+  -sabnzbd-0.7.13-r1.ebuild, -sabnzbd-0.7.13.ebuild, files/sabnzbd.confd,
+  files/sabnzbd.ini, files/sabnzbd.initd:
+  Update init.d scripts to use vars from the config file.  Disable growl by
+  default.
+
+*sabnzbd-0.7.13-r1 (24 Jun 2013)
+
+  24 Jun 2013; Justin Bronder <jsbronder@gentoo.org> +sabnzbd-0.7.13-r1.ebuild,
+  +files/growler-support-gntp-1.0.patch:
+  Support newer versions of dev-python/gntp, resolves #474540.
+
+  24 Jun 2013; Justin Bronder <jsbronder@gentoo.org> -sabnzbd-0.7.10.ebuild,
+  -sabnzbd-0.7.11.ebuild, -sabnzbd-0.7.12.ebuild:
+  remove old
+
+*sabnzbd-0.7.13 (21 Jun 2013)
+
+  21 Jun 2013; Justin Bronder <jsbronder@gentoo.org> +sabnzbd-0.7.13.ebuild:
+  bump
+
+*sabnzbd-0.7.12 (12 Jun 2013)
+
+  12 Jun 2013; Justin Bronder <jsbronder@gentoo.org> +sabnzbd-0.7.12.ebuild:
+  version bump
+
+  08 Mar 2013; Justin Bronder <jsbronder@gentoo.org> files/sabnzbd.initd:
+  Fix init.d stop(), re #459992
+
+  22 Feb 2013; Justin Bronder <jsbronder@gentoo.org> files/sabnzbd.initd:
+  Correctly track status via pidfile re #458034. Thanks to Gerard Neil for the
+  patch.
+
+*sabnzbd-0.7.11 (14 Feb 2013)
+
+  14 Feb 2013; Justin Bronder <jsbronder@gentoo.org> +sabnzbd-0.7.11.ebuild:
+  Version bump (#456336). Rebundle cherrypy until 0.8.0 comes out (#450242,
+  #456338 and see comments in ebuild).  Remove default user/pass from config.
+
+*sabnzbd-0.7.10 (06 Feb 2013)
+
+  06 Feb 2013; Justin Bronder <jsbronder@gentoo.org> -sabnzbd-0.7.7.ebuild,
+  -sabnzbd-0.7.9.ebuild, +sabnzbd-0.7.10.ebuild, +files/sabnzbd.ini,
+  +files/sabnzbd.logrotate:
+  Bump, add .ini and logrotate files, use yenc by default, fix rar dep
+  (#455190). Fix unbundling of cherrypy.
+
+  11 Jan 2013; Justin Bronder <jsbronder@gentoo.org> files/sabnzbd:
+  Wrap sabnzbd.py with either python2.7 or python2.6. Resolves #450698.
+
+  07 Jan 2013; Zac Medico <zmedico@gentoo.org> Manifest:
+  Fix incorrect Manifest entry for SABnzbd-0.7.9-src.tar.gz.
+
+*sabnzbd-0.7.9 (06 Jan 2013)
+
+  06 Jan 2013; Justin Bronder <jsbronder@gentoo.org> -sabnzbd-0.7.8.ebuild,
+  +sabnzbd-0.7.9.ebuild:
+  Bump, remove broken 0.7.8 release
+
+*sabnzbd-0.7.8 (06 Jan 2013)
+
+  06 Jan 2013; Justin Bronder <jsbronder@gentoo.org> +sabnzbd-0.7.8.ebuild,
+  files/sabnzbd.initd:
+  Bump (#450208), use system cherrypy-3.2* (#450242), respect logging settings
+  from conf.d
+
+  03 Jan 2013; Justin Bronder <jsbronder@gentoo.org> sabnzbd-0.7.7.ebuild,
+  metadata.xml:
+  Add support for using yenc
+
+*sabnzbd-0.7.7 (03 Jan 2013)
+
+  03 Jan 2013; Justin Bronder <jsbronder@gentoo.org> +sabnzbd-0.7.7.ebuild,
+  +files/sabnzbd, +files/sabnzbd.confd, +files/sabnzbd.initd,
+  +files/use-system-configobj-and-feedparser.patch, +metadata.xml:
+  add net-nntp/sabnzbd

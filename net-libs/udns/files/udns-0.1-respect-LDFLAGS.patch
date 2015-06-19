@@ -1,0 +1,13 @@
+=== modified file 'Makefile.in'
+--- Makefile.in	2011-10-02 18:48:41 +0000
++++ Makefile.in	2011-10-02 18:50:00 +0000
+@@ -72,7 +72,7 @@
+ sharedlib: $(SOLIBV)
+ 
+ $(SOLIBV): $(SOBJS)
+-	$(CC) -shared -Wl,--soname,$(SOLIBV) -o $@ $(SOBJS)
++	$(CC) $(LDFLAGS) -shared -Wl,--soname,$(SOLIBV) -o $@ $(SOBJS)
+ $(SOLIB): $(SOLIBV)
+ 	rm -f $@
+ 	ln -s $(SOLIBV) $@
+

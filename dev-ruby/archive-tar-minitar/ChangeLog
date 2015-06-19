@@ -1,0 +1,292 @@
+# ChangeLog for dev-ruby/archive-tar-minitar
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/archive-tar-minitar/ChangeLog,v 1.65 2015/06/07 16:45:58 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  09 May 2015; Hans de Graaff <graaff@gentoo.org>
+  archive-tar-minitar-0.5.4-r1.ebuild, archive-tar-minitar-0.5.4-r2.ebuild:
+  Use rm -f to avoid issues like bug 540182.
+
+  27 Mar 2015; Manuel Rüger <mrueg@gentoo.org>
+  -archive-tar-minitar-0.5.4.ebuild:
+  Remove old.
+
+  26 Mar 2015; Agostino Sarubbo <ago@gentoo.org>
+  archive-tar-minitar-0.5.4-r1.ebuild:
+  Stable for alpha/ia64/sparc, wrt bug #542556
+
+  13 Mar 2015; Agostino Sarubbo <ago@gentoo.org>
+  archive-tar-minitar-0.5.4-r1.ebuild:
+  Stable for ppc64, wrt bug #542556
+
+  13 Mar 2015; Agostino Sarubbo <ago@gentoo.org>
+  archive-tar-minitar-0.5.4-r1.ebuild:
+  Stable for ppc, wrt bug #542556
+
+  13 Mar 2015; Jeroen Roovers <jer@gentoo.org>
+  archive-tar-minitar-0.5.4-r1.ebuild:
+  Stable for HPPA (bug #542556).
+
+  11 Mar 2015; Agostino Sarubbo <ago@gentoo.org>
+  archive-tar-minitar-0.5.4-r1.ebuild:
+  Stable for x86, wrt bug #542556
+
+  11 Mar 2015; Agostino Sarubbo <ago@gentoo.org>
+  archive-tar-minitar-0.5.4-r1.ebuild:
+  Stable for amd64, wrt bug #542556
+
+*archive-tar-minitar-0.5.4-r2 (08 Mar 2015)
+
+  08 Mar 2015; Hans de Graaff <graaff@gentoo.org>
+  +archive-tar-minitar-0.5.4-r2.ebuild:
+  New revision with ruby21 and ruby22.
+
+  08 Mar 2015; Hans de Graaff <graaff@gentoo.org>
+  archive-tar-minitar-0.5.4-r1.ebuild:
+  Run as many tests as possible and fix ruby19+ incompatible tests, fixing bug
+  455248.
+
+  10 Nov 2014; Manuel Rüger <mrueg@gentoo.org>
+  archive-tar-minitar-0.5.4-r1.ebuild, archive-tar-minitar-0.5.4.ebuild:
+  Drop jruby target.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org>
+  archive-tar-minitar-0.5.4-r1.ebuild, archive-tar-minitar-0.5.4.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  05 Apr 2014; Manuel Rüger <mrueg@gentoo.org>
+  archive-tar-minitar-0.5.4-r1.ebuild, archive-tar-minitar-0.5.4.ebuild:
+  Remove ree18 and ruby18 target.
+
+*archive-tar-minitar-0.5.4-r1 (05 Nov 2013)
+
+  05 Nov 2013; Manuel Rüger <mrueg@gentoo.org>
+  +archive-tar-minitar-0.5.4-r1.ebuild:
+  Add ruby20 support. Tests still broken, but no difference to ruby19.
+
+  04 Sep 2013; Manuel Rüger <mrueg@gentoo.org>
+  -archive-tar-minitar-0.5.2-r2.ebuild:
+  Cleanup old.
+
+  09 Jan 2013; Jeroen Roovers <jer@gentoo.org>
+  archive-tar-minitar-0.5.4.ebuild:
+  Stable for HPPA (bug #450144).
+
+  07 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  archive-tar-minitar-0.5.4.ebuild:
+  Stable for alpha, wrt bug #450144
+
+  05 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  archive-tar-minitar-0.5.4.ebuild:
+  Stable for sparc, wrt bug #450144
+
+  05 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  archive-tar-minitar-0.5.4.ebuild:
+  Stable for x86, wrt bug #450144
+
+  05 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  archive-tar-minitar-0.5.4.ebuild:
+  Stable for amd64, wrt bug #450144
+
+  04 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  archive-tar-minitar-0.5.4.ebuild:
+  Stable for ia64, wrt bug #450144
+
+  04 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  archive-tar-minitar-0.5.4.ebuild:
+  Stable for ppc64, wrt bug #450144
+
+  04 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  archive-tar-minitar-0.5.4.ebuild:
+  Stable for ppc, wrt bug #450144
+
+  04 Jan 2013; Hans de Graaff <graaff@gentoo.org>
+  -archive-tar-minitar-0.5.2-r4.ebuild, -archive-tar-minitar-0.5.3-r2.ebuild:
+  Cleanup.
+
+*archive-tar-minitar-0.5.4 (17 Nov 2012)
+
+  17 Nov 2012; Hans de Graaff <graaff@gentoo.org>
+  +archive-tar-minitar-0.5.4.ebuild:
+  Version bump.
+
+  28 Oct 2012; Raúl Porcel <armin76@gentoo.org>
+  archive-tar-minitar-0.5.2-r2.ebuild:
+  alpha stable
+
+  26 Jun 2012; Hans de Graaff <graaff@gentoo.org>
+  archive-tar-minitar-0.5.3-r2.ebuild:
+  Remove non-existing all_fakegem_prepare. Document some unexpected things. Add
+  test scenario and link to upstream bug about current failures.
+
+  26 Jun 2012; Hans de Graaff <graaff@gentoo.org>
+  -archive-tar-minitar-0.5.2-r1.ebuild:
+  Remove old version.
+
+*archive-tar-minitar-0.5.3-r2 (15 Jun 2012)
+
+  15 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +archive-tar-minitar-0.5.3-r2.ebuild, -archive-tar-minitar-0.5.3-r1.ebuild,
+  -archive-tar-minitar-0.5.3.ebuild:
+  Fix gemspec (sorry).
+
+*archive-tar-minitar-0.5.3-r1 (15 Jun 2012)
+
+  15 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +archive-tar-minitar-0.5.3-r1.ebuild,
+  +files/archive-tar-minitar-0.5.3-pipes.patch:
+  Add patch to fix minitar's reader on non-seekable streams.
+
+*archive-tar-minitar-0.5.3 (15 Jun 2012)
+
+  15 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +archive-tar-minitar-0.5.3.ebuild:
+  Update from minitar gem.
+
+*archive-tar-minitar-0.5.2-r4 (14 Jun 2012)
+
+  14 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +archive-tar-minitar-0.5.2-r4.ebuild,
+  +files/archive-tar-minitar-0.5.2-gentoo.patch,
+  -archive-tar-minitar-0.5.2-r3.ebuild:
+  Fix minitar command on recent systems.
+
+  14 Sep 2011; Jeroen Roovers <jer@gentoo.org>
+  archive-tar-minitar-0.5.2-r2.ebuild:
+  Stable for HPPA (bug #369573).
+
+  10 Jul 2011; Mark Loeser <halcy0n@gentoo.org>
+  archive-tar-minitar-0.5.2-r2.ebuild:
+  Stable for ppc64; bug #353130
+
+  01 Apr 2011; Michael Weber <xmw@gentoo.org>
+  archive-tar-minitar-0.5.2-r2.ebuild:
+  sparc stable (bug 353130)
+
+  27 Mar 2011; Brent Baude <ranger@gentoo.org>
+  archive-tar-minitar-0.5.2-r2.ebuild:
+  Marking archive-tar-minitar-0.5.2-r2 ppc stable for bug 353130
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org>
+  archive-tar-minitar-0.5.2-r2.ebuild:
+  ia64 stable wrt #353130
+
+  31 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  archive-tar-minitar-0.5.2-r2.ebuild:
+  stable x86, bug 353130
+
+  30 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  archive-tar-minitar-0.5.2-r2.ebuild:
+  Stable on amd64 wrt bug #353130
+
+  29 Jan 2011; Hans de Graaff <graaff@gentoo.org>
+  archive-tar-minitar-0.5.2-r2.ebuild, archive-tar-minitar-0.5.2-r3.ebuild:
+  Move forward ~ppc keyword, not clear why this was dropped in the first
+  place.
+
+  27 Dec 2010; Fabian Groffen <grobian@gentoo.org>
+  archive-tar-minitar-0.5.2-r3.ebuild:
+  Added Prefix keywords
+
+  02 Dec 2010; Fabian Groffen <grobian@gentoo.org>
+  archive-tar-minitar-0.5.2-r3.ebuild:
+  Marked ~{ppc,x64,x86}-macos
+
+  31 Oct 2010; Hans de Graaff <graaff@gentoo.org>
+  -archive-tar-minitar-0.5.2.ebuild:
+  Remove old version.
+
+  23 Oct 2010; Jeroen Roovers <jer@gentoo.org>
+  archive-tar-minitar-0.5.2-r2.ebuild, archive-tar-minitar-0.5.2-r3.ebuild:
+  Marked ~hppa (bug #337956).
+
+  10 Oct 2010; Tobias Klausmann <klausman@gentoo.org>
+  archive-tar-minitar-0.5.2-r3.ebuild:
+  Keyworded on alpha, bug #330337
+
+*archive-tar-minitar-0.5.2-r3 (06 Oct 2010)
+
+  06 Oct 2010; Hans de Graaff <graaff@gentoo.org>
+  archive-tar-minitar-0.5.2-r2.ebuild, +archive-tar-minitar-0.5.2-r3.ebuild:
+  Revision bump to create a revision ready for stabilization without ruby19.
+
+  29 Aug 2010; Raúl Porcel <armin76@gentoo.org>
+  archive-tar-minitar-0.5.2-r1.ebuild:
+  ia64 stable wrt #330327
+
+  12 Aug 2010; Markus Meier <maekke@gentoo.org>
+  archive-tar-minitar-0.5.2-r1.ebuild:
+  x86 stable, bug #330327
+
+  01 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  archive-tar-minitar-0.5.2-r1.ebuild:
+  Stable on amd64 wrt bug #330327
+
+*archive-tar-minitar-0.5.2-r2 (01 Aug 2010)
+
+  01 Aug 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  archive-tar-minitar-0.5.2-r1.ebuild, +archive-tar-minitar-0.5.2-r2.ebuild:
+  Move non-ruby18 support to a new revision to mark one stable.
+
+  22 May 2010; Alex Legler <a3li@gentoo.org>
+  archive-tar-minitar-0.5.2-r1.ebuild:
+  Add REE18 support
+
+  13 Feb 2010; Raúl Porcel <armin76@gentoo.org>
+  archive-tar-minitar-0.5.2.ebuild, archive-tar-minitar-0.5.2-r1.ebuild:
+  Add ~sparc
+
+  14 Jan 2010; Brent Baude <ranger@gentoo.org>
+  archive-tar-minitar-0.5.2-r1.ebuild:
+  Marking archive-tar-minitar-0.5.2-r1 ~ppc for bug 297036
+
+  22 Dec 2009; Brent Baude <ranger@gentoo.org>
+  archive-tar-minitar-0.5.2-r1.ebuild:
+  Marking archive-tar-minitar-0.5.2-r1 ~ppc64 for bug 297036
+
+*archive-tar-minitar-0.5.2-r1 (15 Dec 2009)
+
+  15 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +archive-tar-minitar-0.5.2-r1.ebuild:
+  Bump to ruby-fakegem.
+
+  09 Dec 2009; Hans de Graaff <graaff@gentoo.org>
+  -archive-tar-minitar-0.5.1.ebuild:
+  Remove old version.
+
+  22 Aug 2009; Hans de Graaff <graaff@gentoo.org>
+  archive-tar-minitar-0.5.2.ebuild:
+  Mark stable for amd64 per #265435
+
+  25 Apr 2009; Raúl Porcel <armin76@gentoo.org>
+  archive-tar-minitar-0.5.2.ebuild:
+  ia64 stable wrt #265435
+
+  20 Apr 2009; Markus Meier <maekke@gentoo.org> archive-tar-minitar-0.5.2:
+  x86 stable, bug #265435
+
+  14 Apr 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  archive-tar-minitar-0.5.1.ebuild:
+  stable amd64, bug 265435
+
+  24 Mar 2008; Raúl Porcel <armin76@gentoo.org>
+  archive-tar-minitar-0.5.2.ebuild:
+  Add ~ia64
+
+*archive-tar-minitar-0.5.2 (19 Mar 2008)
+
+  19 Mar 2008; Hans de Graaff <graaff@gentoo.org>
+  +archive-tar-minitar-0.5.2.ebuild:
+  Version bump: Fixed a Ruby 1.9 compatibility error.
+
+  12 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  archive-tar-minitar-0.5.1.ebuild:
+  keyworded ~arch for x86, bug 209691
+
+*archive-tar-minitar-0.5.1 (22 Jan 2008)
+
+  22 Jan 2008; Richard Brown <rbrown@gentoo.org> +metadata.xml,
+  +archive-tar-minitar-0.5.1.ebuild:
+  Initial commit, for dev-ruby/color

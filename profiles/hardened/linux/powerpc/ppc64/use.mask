@@ -1,0 +1,55 @@
+# this is a list of USE flags
+# that should not be used on PPC64
+# Tom Gall <tgall@gentoo.org> manages this list
+mplayer
+ruby
+mono
+
+# should be ok
+jikes
+junit
+
+guile
+
+# need to test libaio
+aio
+# needs some asm written
+ocaml
+
+# until media-libs/portaudio is keyworded for ppc64
+portaudio
+
+# mask mozilla/firefox (bug #108020)
+mozilla
+firefox
+seamonkey
+
+# 2006/03/20 - Donnie Berkholz <dberkholz@gentoo.org>
+# Modular X: mask for architectures on which they aren't available
+video_cards_apm
+video_cards_ark
+video_cards_cyrix
+video_cards_i128
+video_cards_i740
+video_cards_intel
+video_cards_neomagic
+video_cards_nsc
+video_cards_rendition
+video_cards_siliconmotion
+video_cards_sis
+video_cards_tga
+video_cards_tseng
+video_cards_vesa
+video_cards_via
+
+# Masked p2p for bug #155302 <josejx@gentoo.org>
+p2p
+
+# 02 Dec 2006; Tony Vroon <chainsaw@gentoo.org> 
+# Keywording wpa_supplicant, but I don't have madwifi(-ng) hardware to test with, only BCM4306.
+madwifi
+
+# USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
+# Bug #184563, 18 Sep 2007 
+# Robin H. Johnson <robbat2@gentoo.org>
+audit

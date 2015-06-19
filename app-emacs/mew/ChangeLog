@@ -1,0 +1,380 @@
+# ChangeLog for app-emacs/mew
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/mew/ChangeLog,v 1.92 2014/10/18 14:37:08 ago Exp $
+
+  18 Oct 2014; Agostino Sarubbo <ago@gentoo.org> mew-6.6.ebuild:
+  Stable for ppc, wrt bug #522312
+
+  12 Oct 2014; Agostino Sarubbo <ago@gentoo.org> mew-6.6.ebuild:
+  Stable for x86, wrt bug #522312
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> mew-6.6.ebuild:
+  Stable for amd64, wrt bug #522312
+
+*mew-6.6 (06 Sep 2014)
+
+  06 Sep 2014; Ulrich Müller <ulm@gentoo.org> +mew-6.6.ebuild:
+  Version bump, bug 522236. Update ebuild to EAPI 5. Use readme.gentoo.eclass.
+
+  16 May 2013; Christian Faulhammer <fauli@gentoo.org> -mew-6.4-r1.ebuild:
+  clean up
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> mew-6.5.ebuild:
+  Stable for ppc, wrt bug #469886
+
+  15 May 2013; Agostino Sarubbo <ago@gentoo.org> mew-6.5.ebuild:
+  Stable for x86, wrt bug #469886
+
+  15 May 2013; Agostino Sarubbo <ago@gentoo.org> mew-6.5.ebuild:
+  Stable for amd64, wrt bug #469886
+
+  13 Jan 2013; Christian Faulhammer <fauli@gentoo.org> -mew-6.2.ebuild,
+  -mew-6.3.ebuild:
+  clean up
+
+*mew-6.5 (13 Jan 2013)
+
+  13 Jan 2013; Christian Faulhammer <fauli@gentoo.org> +mew-6.5.ebuild:
+  version bump for bug 451686
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> mew-6.2.ebuild,
+  mew-6.3.ebuild, mew-6.4-r1.ebuild:
+  Drop alpha/sparc keywords
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> mew-6.4-r1.ebuild:
+  x86 stable wrt bug #404603
+
+  23 Feb 2012; Brent Baude <ranger@gentoo.org> mew-6.4-r1.ebuild:
+  Marking mew-6.4-r1 ppc for bug 404603
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> mew-6.4-r1.ebuild:
+  Stable for amd64, wrt bug #404603
+
+  01 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> mew-6.3.ebuild:
+  x86 stable wrt bug #391633
+
+  28 Nov 2011; Tony Vroon <chainsaw@gentoo.org> mew-6.3.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani & Agostino "ago" Sarubbo in bug #391633.
+
+  26 Nov 2011; Ulrich Mueller <ulm@gentoo.org> mew-6.2.ebuild, mew-6.3.ebuild,
+  mew-6.4-r1.ebuild:
+  Add explicit dependency on sys-libs/zlib, bug 391633 comment #5.
+
+*mew-6.4-r1 (24 Nov 2011)
+
+  24 Nov 2011; Ulrich Mueller <ulm@gentoo.org> mew-6.3.ebuild, -mew-6.4.ebuild,
+  +mew-6.4-r1.ebuild:
+  Remove spurious backup file in info dir, bug 391633 comment #3.
+
+*mew-6.4 (21 Nov 2011)
+
+  21 Nov 2011; Ulrich Mueller <ulm@gentoo.org> +mew-6.4.ebuild:
+  Version bump.
+
+*mew-6.3 (12 Apr 2010)
+
+  12 Apr 2010; Christian Faulhammer <fauli@gentoo.org> +mew-6.3.ebuild:
+  version bump, reported by user on
+  http://forums.gentoo.org/viewtopic-p-6241340.html
+
+  12 Jan 2010; Ulrich Mueller <ulm@gentoo.org> files/50mew-gentoo.el,
+  mew-6.2.ebuild, -files/51mew-gentoo.el:
+  Clean up old site-init file.
+
+  03 Apr 2009; Christian Faulhammer <fauli@gentoo.org> -mew-6.1.ebuild:
+  clean up
+
+  03 Apr 2009; Raúl Porcel <armin76@gentoo.org> mew-6.2.ebuild:
+  alpha/x86 stable wrt #263773
+
+  31 Mar 2009; Tiago Cunha <tcunha@gentoo.org> mew-6.2.ebuild:
+  stable amd64/sparc, bug 263773
+
+  26 Mar 2009; Brent Baude <ranger@gentoo.org> mew-6.2.ebuild:
+  stable ppc, bug 263773
+
+*mew-6.2 (23 Feb 2009)
+
+  23 Feb 2009; Ulrich Mueller <ulm@gentoo.org> +files/51mew-gentoo.el,
+  +mew-6.2.ebuild:
+  Version bump, fixes bug 260074. Change location of etcdir.
+
+  27 Oct 2008; Christian Faulhammer <opfer@gentoo.org> -mew-5.2.ebuild:
+  clean up
+
+  26 Oct 2008; nixnut <nixnut@gentoo.org> mew-6.1.ebuild:
+  Stable on ppc wrt bug 234592
+
+  23 Aug 2008; Markus Meier <maekke@gentoo.org> mew-6.1.ebuild:
+  amd64 stable, bug #234592
+
+  13 Aug 2008; Raúl Porcel <armin76@gentoo.org> mew-6.1.ebuild:
+  alpha/x86 stable wrt #234592
+
+  13 Aug 2008; Ferris McCormick <fmccor@gentoo.org> mew-6.1.ebuild:
+  Sparc stable, Bug #234592.
+
+  21 Jun 2008; Christian Faulhammer <opfer@gentoo.org> -mew-5.1.ebuild:
+  clean up
+
+  21 Jun 2008; nixnut <nixnut@gentoo.org> mew-5.2.ebuild:
+  Stable on ppc wrt bug 226715
+
+  16 Jun 2008; Raúl Porcel <armin76@gentoo.org> mew-5.2.ebuild:
+  alpha/sparc stable wrt #226715
+
+  16 Jun 2008; Christian Faulhammer <opfer@gentoo.org> mew-5.2.ebuild:
+  stable x86/amd64, bug 226715
+
+*mew-6.1 (14 Jun 2008)
+
+  14 Jun 2008; Ulrich Mueller <ulm@gentoo.org> +mew-6.1.ebuild:
+  Major version bump.
+
+  11 May 2008; Ulrich Mueller <ulm@gentoo.org> -mew-4.2.ebuild,
+  mew-5.2.ebuild:
+  Install Japanese Info files with LINGUAS=ja, fixes bug 221585. Remove old.
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing usata from metadata.xml as per #22931.
+
+  03 Jul 2007; Christian Faulhammer <opfer@gentoo.org> mew-5.2.ebuild:
+  add some quotes; remove pkg_postrm as it is the same from elisp.eclass
+
+  08 Jun 2007; Ulrich Mueller <ulm@gentoo.org> -mew-4.1.ebuild:
+  Remove old version.
+
+  01 Jun 2007; nixnut <nixnut@gentoo.org> mew-4.2.ebuild, mew-5.1.ebuild:
+  Stable on ppc wrt bug 177904
+
+*mew-5.2 (20 May 2007)
+
+  20 May 2007; Ulrich Mueller <ulm@gentoo.org> mew-4.2.ebuild,
+  mew-5.1.ebuild, +mew-5.2.ebuild:
+  Version bump. Fixes bug #177878, reported by <aryixb@gmail.com>.
+
+  20 May 2007; Raúl Porcel <armin76@gentoo.org> mew-4.2.ebuild,
+  mew-5.1.ebuild:
+  alpha stable wrt #177904
+
+  15 May 2007; Fabian Groffen <grobian@gentoo.org> mew-4.1.ebuild,
+  mew-4.2.ebuild, mew-5.1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  15 May 2007; Christian Faulhammer <opfer@gentoo.org> mew-5.1.ebuild:
+  stable amd64, bug 177904
+
+  15 May 2007; Christian Faulhammer <opfer@gentoo.org> mew-4.2.ebuild:
+  stable amd64; bug 177904
+
+  12 May 2007; Torsten Veller <tove@gentoo.org> mew-4.2.ebuild,
+  mew-5.1.ebuild:
+  Stable on x86 (#177904)
+
+  11 May 2007; Ulrich Mueller <ulm@gentoo.org>
+  -files/mew-5.1-make-check.patch, mew-4.2.ebuild, mew-5.1.ebuild:
+  Undo previous change and use RESTRICT="test" instead; upstream says we are
+  not supposed to use "make check".
+
+  11 May 2007; Gustavo Zacarias <gustavoz@gentoo.org> mew-4.2.ebuild,
+  mew-5.1.ebuild:
+  Stable on sparc wrt #177904
+
+  10 May 2007; Ulrich Mueller <ulm@gentoo.org>
+  +files/mew-5.1-make-check.patch, mew-4.2.ebuild, mew-5.1.ebuild:
+  Patch to make "make check" work; thanks to Torsten Veller <tove@gentoo.org>
+  for pointing this out (bug #177904). Don't install 00copyright* in doc.
+
+  10 May 2007; Ulrich Mueller <ulm@gentoo.org> -files/3.x/50mew-gentoo.el,
+  files/50mew-gentoo.el, mew-4.1.ebuild, mew-4.2.ebuild, mew-5.1.ebuild:
+  Removed unused old sitefile; moved new sitefile from files/3.x/ to files/.
+  Add load path correctly in the new sitefile, too, finally fixing bug #169588.
+  Updated SRC_URI.
+
+  08 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/50mew-gentoo.el:
+  add load path correctly, fixes bug 169588, reported by Ulrich Mueller
+  <ulm@kph.uni-mainz.de>
+
+  23 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  -files/mew-smtp-2.3-gentoo.patch, -mew-2.3-r1.ebuild:
+  clean up
+
+  28 Jan 2007; Marius Mauch <genone@gentoo.org> mew-2.3-r1.ebuild,
+  mew-4.1.ebuild, mew-4.2.ebuild, mew-5.1.ebuild:
+  Replacing einfo with elog
+
+*mew-5.1 (02 Nov 2006)
+
+  02 Nov 2006; Mamoru KOMACHI <usata@gentoo.org> -mew-3.3.ebuild,
+  +mew-5.1.ebuild:
+  Version bumped. Removed old ebuild. This closes bug #143210.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> mew-4.1.ebuild:
+  Stable on ppc.
+
+  23 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> mew-4.2.ebuild:
+  Added to ~ppc.
+
+  30 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> mew-4.1.ebuild:
+  Added to ~ppc.
+
+*mew-4.2 (12 Feb 2005)
+
+  12 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> mew-4.1.ebuild,
+  +mew-4.2.ebuild:
+  Version bumped.
+
+  12 Jan 2005; Tom Martin <slarti@gentoo.org> mew-4.1.ebuild:
+  Stabilising on amd64.
+
+  05 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> mew-4.1.ebuild:
+  Stable on sparc
+
+  07 Dec 2004; Jason Wever <weeve@gentoo.org> mew-4.1.ebuild:
+  Added ~sparc keyword.
+
+  30 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> mew-4.1.ebuild:
+  Don't install /etc/skel/.mew.el and /etc/skel/.emacs.mew; bug #72482.
+  Stable on x86 and alpha.
+
+*mew-4.1 (19 Oct 2004)
+
+  19 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> +mew-4.1.ebuild,
+  -mew-4.1_rc3.ebuild:
+  Version bumped.
+
+*mew-4.1_rc3 (14 Oct 2004)
+
+  14 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> -mew-3.1.ebuild,
+  -mew-4.0.64.ebuild, -mew-4.0.67.ebuild, +mew-4.1_rc3.ebuild:
+  Added RC3. Removed old development versions.
+
+  03 Sep 2004; Tom Martin <slarti@gentoo.org> mew-4.0.67.ebuild:
+  Marked ~amd64, resolves #58523. Thanks to Gabriel Ebner <ge@gabrielebner.at>
+  for reporting.
+
+*mew-4.0.67 (27 Aug 2004)
+
+  27 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> +mew-4.0.67.ebuild:
+  Version bumped.
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> mew-3.1.ebuild:
+  sync IUSE (missing), trim trailing whitespace
+
+  01 Jun 2004; Aron Griffis <agriffis@gentoo.org> mew-2.3-r1.ebuild:
+  Fix use invocation
+
+  05 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> mew-2.3-r1.ebuild,
+  mew-3.1.ebuild, mew-3.3.ebuild, mew-4.0.62.ebuild, mew-4.0.64.ebuild:
+  Corrected LICENSE (it's not GPL-2 but BSD)
+
+*mew-4.0.64 (09 Mar 2004)
+
+  09 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> mew-4.0.64.ebuild:
+  Version bumped
+
+*mew-4.0.62 (27 Feb 2004)
+
+  27 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> mew-4.0.62.ebuild:
+  Development branch.
+
+*mew-3.3 (29 Jul 2003)
+
+  25 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> mew-3.3.ebuild:
+  Marked stable on alpha and sparc
+
+  13 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> mew-3.3.ebuild:
+  Marked stable on x86 and ppc
+
+  29 Jul 2003; Mamoru KOMACHI <usata@gentoo.org> mew-3.1.ebuild,
+  mew-3.2-r1.ebuild, mew-3.2.ebuild, files/3.1/50mew-gentoo.el,
+  files/3.2/50mew-gentoo.el:
+  Unified the location of SITEFILE for 3.x version
+
+  29 Jul 2003; Mamoru KOMACHI <usata@gentoo.org> mew-3.3.ebuild,
+  files/3.x/50mew-gentoo.el:
+  Version bump. Added ~sparc and ~alpha keywords.
+  Added ssl USE flag.
+
+*mew-3.2-r1 (18 Jun 2003)
+
+  25 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> mew-3.2-r1.ebuild,
+  mew-3.2.ebuild:
+  Removed for security risk with skey implementation.  This problem
+  is fixed in mew 3.3 and doesn't exist in mew 3.1
+
+  03 Jul 2003; Masatomo Nakano <nakano@gentoo.org> mew-3.2-r1.ebuild:
+  marked stable for x86,ppc
+
+  18 Jun 2003; Masatomo Nakano <nakano@gentoo.org> mew-3.2-r1.ebuild:
+  fixed bug about man path
+
+*mew-3.2 (01 Mar 2003)
+
+  29 May 2003; <yakina@gentoo.org> mew-2.2.ebuild, mew-3.1.ebuild,
+  mew-3.2.ebuild:
+  Added S
+
+  25 Mar 2003; Masatomo Nakano <nakano@gentoo.org> ChangeLog, mew-3.2.ebuild:
+
+  Markded as stable for x86,ppc.
+
+  01 Mar 2003; Masatomo Nakano <nakano@gentoo.org> ChangeLog, mew-3.2.ebuild:
+
+  Version bump.
+
+*mew-3.1 (13 Dec 2002)
+
+  24 Dec 2002; Masatomo Nakano <nakano@gentoo.org> ChangeLog,
+  mew-3.1.ebuild:
+
+  Changed Keywords from ~x86 ~ppc to x86 ppc.
+
+  21 Dec 2002; Jungmin Seo <seo@gentoo.org> ChangeLog,
+  mew-3.1.ebuild:
+
+  added ~ppc
+
+  20 Dec 2002; Masatomo Nakano <nakano@gentoo.org> ChangeLog,
+  mew-3.1.ebuild, files/3.1/50mew-gentoo.el
+
+  fixed bug about pop3 port No.
+
+  13 Dec 2002; Masatomo Nakano <nakano@gentoo.org> ChangeLog,
+  mew-3.1.ebuild, files/digest-mew-3.1:
+
+  Version bump.
+
+*mew-2.3-r1 (07 Aug 2003)
+
+  13 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> mew-2.3-r1.ebuild:
+  Fixed mandir.  Added cjk IUSE flag to determine whether to install
+  Japanese info.  You may need to add (auto-compression-mode) to your
+  .emacs file to read Japanese info correctly.
+
+  13 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> mew-2.3-r1.ebuild:
+  Marked stable
+
+  07 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> mew-2.3-r1.ebuild,
+  files/mew-smtp-2.3-gentoo.patch:
+  Fixed smtp bug that sends mails to unintended recipients
+
+*mew-2.3 (05 Aug 2003)
+
+  05 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> mew-2.3.ebuild:
+  Stable version bump
+
+*mew-2.2 (31 Oct 2002)
+
+  13 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> mew-2.2.ebuild:
+  Removed.  See http://www.mew.org/ml/mew-int-3.1/msg00063.html
+
+  added ~ppc
+
+  31 Oct 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  mew-2.2.ebuild, files/50mew-gentoo.el, 
+  files/digest-mew-2.2 :
+
+  Initial import.

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>ml</herd>
+  <longdescription lang="en">
+  Core is Jane Street Capital's Ocaml standard library overlay.  It
+  provides tail recursive versions of non tail recursive functions in
+  the standard library, changes the signature of many of the standard
+  modules, and adds new functionality.
+
+  Core_extended adds new functionality, but is only code reviewed on an
+  ad-hoc basis.
+  </longdescription>
+</pkgmetadata>

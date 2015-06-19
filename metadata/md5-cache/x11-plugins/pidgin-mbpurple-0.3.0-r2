@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup unpack
+DEPEND=net-im/pidgin twitgin? ( net-im/pidgin[gtk] ) virtual/pkgconfig
+DESCRIPTION=Libpurple (Pidgin) plug-in supporting microblog services like Twitter or identi.ca
+EAPI=2
+HOMEPAGE=http://code.google.com/p/microblog-purple/
+IUSE=+twitgin
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=net-im/pidgin twitgin? ( net-im/pidgin[gtk] )
+SLOT=0
+SRC_URI=http://microblog-purple.googlecode.com/files/mbpurple-0.3.0.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=104761c2c3294204d2ea5f525834a708

@@ -1,0 +1,7 @@
+
+# Space separated list of methods to listen for OpenFlow connections from switches
+# The default ist "ptcp:" which starts ovs-controller listening on port 6633 on all interfaces.
+METHODS="ptcp:"
+
+# Additional options
+# OPTIONS=""

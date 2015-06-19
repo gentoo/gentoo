@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>gnome</herd>
+  <herd>virtualization</herd>
+  <use>
+    <flag name="gtk3">Build the gtk3 gtk-vnc library and other gtk3 assets</flag>
+  </use>
+</pkgmetadata>

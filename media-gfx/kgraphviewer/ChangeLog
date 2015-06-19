@@ -1,0 +1,61 @@
+# ChangeLog for media-gfx/kgraphviewer
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/kgraphviewer/ChangeLog,v 1.12 2014/11/20 11:44:26 mrueg Exp $
+
+*kgraphviewer-2.2.0 (20 Nov 2014)
+
+  20 Nov 2014; Manuel Rüger <mrueg@gentoo.org> +kgraphviewer-2.2.0.ebuild:
+  Version bump.
+
+  01 Apr 2014; Michael Palimaka <kensington@gentoo.org>
+  kgraphviewer-2.1.1.ebuild, kgraphviewer-2.1.1_p20140331.ebuild:
+  Update HOMEPAGE.
+
+*kgraphviewer-2.1.1_p20140331 (31 Mar 2014)
+
+  31 Mar 2014; Michael Palimaka <kensington@gentoo.org>
+  +kgraphviewer-2.1.1_p20140331.ebuild:
+  Add upstream snapshot wrt bug #491760.
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org> kgraphviewer-2.1.1.ebuild:
+  Bump to EAPI 5.
+
+  10 Jul 2012; Michael Palimaka <kensington@gentoo.org>
+  +files/kgraphviewer-2.1.1-boost-1.50.patch, kgraphviewer-2.1.1.ebuild:
+  Fix build with boost-1.50, wrt bug #425478.
+
+  28 Oct 2011; Jonathan Callen <abcd@gentoo.org> kgraphviewer-2.1.1.ebuild:
+  Bump to EAPI=4; set KDE_HANDBOOK
+
+*kgraphviewer-2.1.1 (17 Dec 2010)
+
+  17 Dec 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -kgraphviewer-2.0.2-r1.ebuild, -kgraphviewer-2.1.ebuild,
+  +kgraphviewer-2.1.1.ebuild:
+  Version bump. Drop old.
+
+*kgraphviewer-2.1 (07 Nov 2010)
+
+  07 Nov 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  +kgraphviewer-2.1.ebuild:
+  Version bump
+
+  09 Aug 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  kgraphviewer-2.0.2-r1.ebuild:
+  Remove unnecessary KDE_MINIMAL, QA
+
+*kgraphviewer-2.0.2-r1 (21 Feb 2010)
+
+  21 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +kgraphviewer-2.0.2-r1.ebuild:
+  Version bump (extragear from KDE 4.4.0).
+
+  29 Jan 2010; Samuli Suominen <ssuominen@gentoo.org>
+  kgraphviewer-2.0.2.ebuild:
+  Fix missing graphviz and boost deps wrt #302753.
+
+*kgraphviewer-2.0.2 (28 Jan 2010)
+
+  28 Jan 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +kgraphviewer-2.0.2.ebuild:
+  Initial commit wrt #135245.

@@ -1,0 +1,12 @@
+# ChangeLog for dev-python/liblarch
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/liblarch/ChangeLog,v 1.2 2015/04/08 08:04:56 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> liblarch-2.1.0.ebuild:
+  Drop old Python implementations
+
+*liblarch-2.1.0 (04 Feb 2013)
+
+  04 Feb 2013; Gilles Dartiguelongue <eva@gentoo.org> +liblarch-2.1.0.ebuild,
+  +metadata.xml:
+  Initial ebuild, needed for new app-office/gtg.

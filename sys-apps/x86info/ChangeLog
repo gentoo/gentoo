@@ -1,0 +1,161 @@
+# ChangeLog for sys-apps/x86info
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/x86info/ChangeLog,v 1.36 2012/06/15 11:59:22 jlec Exp $
+
+  15 Jun 2012; Justin Lecher <jlec@gentoo.org> x86info-1.30.ebuild,
+  metadata.xml:
+  Use linux-info.eclas instead of elog
+
+  30 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> -x86info-1.21.ebuild,
+  -x86info-1.24-r1.ebuild, -x86info-1.24-r2.ebuild, -x86info-1.25.ebuild,
+  -files/x86info-1.25-parallel-make-cleanup.patch, -x86info-1.29.ebuild:
+  old
+
+  24 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> x86info-1.30.ebuild:
+  x86 stable wrt bug #407917
+
+  13 Mar 2012; Agostino Sarubbo <ago@gentoo.org> x86info-1.30.ebuild:
+  Stable for amd64, wrt bug #407917
+
+*x86info-1.30 (12 Mar 2012)
+
+  12 Mar 2012; Robin H. Johnson <robbat2@gentoo.org> +x86info-1.30.ebuild:
+  Version bump per bug# 400743, as earlier versions needed python2.
+
+*x86info-1.29 (15 May 2011)
+
+  15 May 2011; Robin H. Johnson <robbat2@gentoo.org> +x86info-1.29.ebuild,
+  +files/x86info-1.29-parallel-make-cleanup.patch:
+  Bug #342537: version bump
+
+  07 Feb 2010; Markus Meier <maekke@gentoo.org> x86info-1.25.ebuild:
+  amd64/x86 stable, bug #301776
+
+*x86info-1.25 (04 Nov 2009)
+
+  04 Nov 2009; Robin H. Johnson <robbat2@gentoo.org> +x86info-1.25.ebuild,
+  +files/x86info-1.25-parallel-make-cleanup.patch:
+  Version bump per bug #291446, also more parallel make fixes.
+
+  15 Aug 2009; Mike Frysinger <vapier@gentoo.org> x86info-1.24-r2.ebuild,
+  +files/x86info-1.24-pic.patch:
+  Fix by Radoslaw Madej for PIC issues with cpuid #270388 by Richard Scott.
+  Also fix $ROOT checking in pkg_preinst.
+
+*x86info-1.24-r2 (05 Jul 2009)
+
+  05 Jul 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +x86info-1.24-r2.ebuild:
+  modprobe.d filename style change for new modprobe.
+
+  14 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  x86info-1.24-r1.ebuild:
+  stable x86, bug 268973
+
+  12 May 2009; Kenneth Prugh <ken69267@gentoo.org> x86info-1.24-r1.ebuild:
+  amd64 stable, bug #268973
+
+  07 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  x86info-1.24-r1.ebuild:
+  Remove ChangeLog from dodoc wrt #265591, thanks to Victor Ostorga. Make
+  use of toolchain-funcs for CC.
+
+*x86info-1.24-r1 (12 Apr 2009)
+
+  12 Apr 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +x86info-1.24-r1.ebuild:
+  Bug #214034: modprobe.d conversion, patch thanks to Victor Ostorga
+  <vostorga@gmail.com>.
+
+*x86info-1.24 (11 Feb 2009)
+
+  11 Feb 2009; Robin H. Johnson <robbat2@gentoo.org> +x86info-1.24.ebuild:
+  Version bump.
+
+*x86info-1.23 (29 Dec 2008)
+
+  29 Dec 2008; Robin H. Johnson <robbat2@gentoo.org> +x86info-1.23.ebuild:
+  Version bump, has Intel i7 stuff.
+
+  17 Apr 2008; Kenneth Prugh <ken69267@gentoo.org> x86info-1.21.ebuild:
+  amd64 stable, bug #215075
+
+  16 Jan 2008; Raúl Porcel <armin76@gentoo.org> x86info-1.21.ebuild:
+  x86 stable
+
+*x86info-1.21 (27 Nov 2007)
+
+  27 Nov 2007; Robin H. Johnson <robbat2@gentoo.org> +files/1.21-pic.patch,
+  +x86info-1.21.ebuild:
+  Version bump.
+
+  24 Apr 2007; Christian Faulhammer <opfer@gentoo.org> x86info-1.20.ebuild:
+  stable amd64, bug 175732
+
+  23 Apr 2007; Robin H. Johnson <robbat2@gentoo.org> -x86info-1.12b.ebuild,
+  -x86info-1.13.ebuild, -x86info-1.14.ebuild, -x86info-1.15.ebuild,
+  -x86info-1.17.ebuild, -x86info-1.18.ebuild:
+  Cleanup old versions.
+
+  23 Apr 2007; Raúl Porcel <armin76@gentoo.org> x86info-1.20.ebuild:
+  x86 stable
+
+*x86info-1.20 (30 Sep 2006)
+
+  30 Sep 2006; Robin H. Johnson <robbat2@gentoo.org> +x86info-1.20.ebuild:
+  Version bump.
+
+  30 Sep 2006; Robin H. Johnson <robbat2@gentoo.org> x86info-1.18.ebuild:
+  Add ~amd64 so I can use it.
+
+*x86info-1.18 (08 Sep 2006)
+
+  08 Sep 2006; Robin H. Johnson <robbat2@gentoo.org> +x86info-1.18.ebuild:
+  Bug #146169, version bump.
+
+*x86info-1.17 (24 Jan 2006)
+
+  24 Jan 2006; Robin H. Johnson <robbat2@gentoo.org> +x86info-1.17.ebuild:
+  Version bump, bug #119048.
+
+  12 Dec 2005; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Update metadata.
+
+*x86info-1.15 (02 Sep 2005)
+
+  02 Sep 2005; Mike Frysinger <vapier@gentoo.org> +x86info-1.15.ebuild:
+  Version bump #103577 by Ulrich Mueller.
+
+*x86info-1.14 (24 Aug 2005)
+
+  24 Aug 2005; Mike Frysinger <vapier@gentoo.org> +x86info-1.14.ebuild:
+  Version bump.
+
+*x86info-1.13 (02 May 2005)
+
+  02 May 2005; Olivier Crête <tester@gentoo.org> +x86info-1.13.ebuild:
+  Version bump (bug #91211)
+
+  13 Oct 2004; Mike Frysinger <vapier@gentoo.org> x86info-1.12b.ebuild:
+  Add a pic patch to fix #67365.
+
+  05 May 2004; Travis Tilley <lv@gentoo.org> x86info-1.11.ebuild,
+  x86info-1.12b.ebuild:
+  I have no idea what the person who marked these as installable on amd64 was
+  thinking, but 32bit assembly just doesnt work with a 64bit compiler, and we
+  dont support multilib.
+
+*x86info-1.12b (14 Nov 2003)
+
+  14 Nov 2003; Robin H. Johnson <robbat2@gentoo.org> metadata.xml,
+  x86info-1.12b.ebuild:
+  version bump per bug #33426, and metadata.xml
+
+*x86info-1.11 (04 May 2003)
+
+  11 May 2003; Robin Johnson <robbat2@gentoo.org> x86info-1.11.ebuild:
+  Moved to x86
+
+  04 May 2003; Robin Johnson <robbat2@gentoo.org> x86info-1.11.ebuild,
+  files/x86info-modules.conf-rc:
+  Initial import. Ebuild submitted by Robin Johnson <robbat2@gentoo.org>.

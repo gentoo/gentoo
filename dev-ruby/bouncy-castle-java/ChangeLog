@@ -1,0 +1,38 @@
+# ChangeLog for dev-ruby/bouncy-castle-java
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/bouncy-castle-java/ChangeLog,v 1.7 2013/04/29 05:26:21 graaff Exp $
+
+*bouncy-castle-java-1.5.0147 (28 Apr 2013)
+
+  28 Apr 2013; Hans de Graaff <graaff@gentoo.org>
+  +bouncy-castle-java-1.5.0147.ebuild:
+  Version bump.
+
+  05 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  bouncy-castle-java-1.5.0146.1.ebuild:
+  Bump to EAPI=4 so that it will force the java RUBY_TARGETS to be enabled in
+  pretend.
+
+  14 Jun 2011; Markus Meier <maekke@gentoo.org>
+  bouncy-castle-java-1.5.0146.1.ebuild:
+  amd64/x86 stable, bug #369553
+
+  31 May 2011; Hans de Graaff <graaff@gentoo.org>
+  -bouncy-castle-java-1.5.0145.2.ebuild:
+  Remove old version.
+
+  23 May 2011; Thomas Kahle <tomka@gentoo.org>
+  bouncy-castle-java-1.5.0146.1.ebuild:
+  ~x86 keyword per bug 365379
+
+*bouncy-castle-java-1.5.0146.1 (30 Apr 2011)
+
+  30 Apr 2011; Hans de Graaff <graaff@gentoo.org>
+  +bouncy-castle-java-1.5.0146.1.ebuild:
+  Version bump.
+
+*bouncy-castle-java-1.5.0145.2 (20 Apr 2011)
+
+  20 Apr 2011; Hans de Graaff <graaff@gentoo.org>
+  +bouncy-castle-java-1.5.0145.2.ebuild, +metadata.xml:
+  Initial import. New dependency for jruby-openssl.

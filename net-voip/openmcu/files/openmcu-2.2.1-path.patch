@@ -1,0 +1,48 @@
+diff -u openmcu_v2_2_1.orig/main.cxx openmcu_v2_2_1/main.cxx
+--- openmcu_v2_2_1.orig/main.cxx	2006-06-09 00:39:59.000000000 -0400
++++ openmcu_v2_2_1/main.cxx	2009-02-10 23:09:49.000000000 -0500
+@@ -54,9 +54,9 @@
+ #include <ptlib.h>
+ #include "mcu.h"
+ 
+-static const char DefaultConnectingWAVFile[] = "connecting.wav";
+-static const char DefaultEnteringWAVFile[]   = "entering.wav";
+-static const char DefaultLeavingWAVFile[]    = "leaving.wav";
++static const char DefaultConnectingWAVFile[] = "/usr/share/openmcu/sounds/connecting.wav";
++static const char DefaultEnteringWAVFile[]   = "/usr/share/openmcu/sounds/entering.wav";
++static const char DefaultLeavingWAVFile[]    = "/usr/share/openmcu/sounds/leaving.wav";
+ 
+ static const char ConnectingWAVFileKey[]  = "Connecting WAV File";
+ static const char EnteringWAVFileKey[]    = "Entering WAV File";
+diff -u openmcu_v2_2_1.orig/mcu.cxx openmcu_v2_2_1/mcu.cxx
+--- openmcu_v2_2_1.orig/mcu.cxx	2006-07-14 01:28:01.000000000 -0400
++++ openmcu_v2_2_1/mcu.cxx	2009-02-10 23:11:43.000000000 -0500
+@@ -83,7 +83,7 @@
+ static const char DefaultRoomKey[]          = "Default room";
+ static const char DefaultRoomTimeLimitKey[] = "Room time limit";
+ 
+-static const char DefaultCallLogFilename[] = "mcu_log.txt"; 
++static const char DefaultCallLogFilename[] = "/var/log/openmcu/openmcu.log"; 
+ static const char DefaultRoom[]            = "room101";
+ 
+ #if OPENMCU_VIDEO
+@@ -154,8 +154,8 @@
+ #endif
+   exeDir.Change();
+ 
+-  httpNameSpace.AddResource(new PHTTPDirectory("data", "data"));
+-  httpNameSpace.AddResource(new PServiceHTTPDirectory("html", "html"));
++  httpNameSpace.AddResource(new PHTTPDirectory("data", "/usr/share/openmcu/data"));
++  httpNameSpace.AddResource(new PServiceHTTPDirectory("html", "/usr/share/openmcu/html"));
+ 
+   manager  = CreateConferenceManager();
+   endpoint = CreateEndPoint(*manager);
+@@ -229,7 +229,7 @@
+ 
+ #if P_SSL
+   // SSL certificate file.
+-  PString certificateFile = cfg.GetString(HTTPCertificateFileKey, "server.pem");
++  PString certificateFile = cfg.GetString(HTTPCertificateFileKey, "/etc/openmcu/server.pem");
+   rsrc->Add(new PHTTPStringField(HTTPCertificateFileKey, 25, certificateFile));
+   if (!SetServerCertificate(certificateFile, TRUE)) {
+     PSYSTEMLOG(Fatal, "MCU\tCould not load certificate \"" << certificateFile << '"');

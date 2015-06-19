@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure unpack
+DEPEND=ssl? ( dev-libs/openssl ) dev-vcs/git
+DESCRIPTION=Useful set of performance and usability-oriented extensions to C
+EAPI=4
+HOMEPAGE=http://www.atheme.org/project/mowgli
+IUSE=ssl
+LICENSE=BSD-2
+RDEPEND=ssl? ( dev-libs/openssl )
+SLOT=2
+_eclasses_=git-2	e28f0d8a9b321431b1e699782851b827
+_md5_=3b57aab2e5ce2b5a82ff76de98293f34

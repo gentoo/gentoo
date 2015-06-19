@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=pcsc-lite? ( sys-apps/pcsc-lite ) readline? ( sys-libs/readline ) usb? ( virtual/libusb:0 ) doc? ( app-doc/doxygen )
+DESCRIPTION=Near Field Communications (NFC) library
+EAPI=4
+HOMEPAGE=http://www.libnfc.org/
+IUSE=doc pcsc-lite readline static-libs usb
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=LGPL-3
+RDEPEND=pcsc-lite? ( sys-apps/pcsc-lite ) readline? ( sys-libs/readline ) usb? ( virtual/libusb:0 )
+SLOT=0
+SRC_URI=http://libnfc.googlecode.com/files/libnfc-1.5.1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ecf054545426e209aaafc26d5a969ad8

@@ -1,0 +1,103 @@
+# ChangeLog for app-text/kding
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/kding/ChangeLog,v 1.24 2014/08/10 18:25:47 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> kding-0.6-r2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  26 Apr 2014; Johannes Huber <johu@gentoo.org> -kding-0.6-r1.ebuild,
+  kding-0.6-r2.ebuild:
+  amd64/x86 stable, remove old.
+
+*kding-0.6-r2 (20 Mar 2014)
+
+  20 Mar 2014; Johannes Huber <johu@gentoo.org> +kding-0.6-r2.ebuild:
+  Revision bump to EAPI 5.
+
+  16 Nov 2012; Johannes Huber <johu@gentoo.org> -kding-0.6.ebuild:
+  Remove old.
+
+  16 Nov 2012; Johannes Huber <johu@gentoo.org> kding-0.6-r1.ebuild:
+  Stable for x86, wrt bug #441112
+
+  16 Nov 2012; Agostino Sarubbo <ago@gentoo.org> kding-0.6-r1.ebuild:
+  Stable for amd64, wrt bug #441112
+
+  16 Nov 2012; Johannes Huber <johu@gentoo.org> kding-0.6-r1.ebuild:
+  Fix .desktop file validation with newer dektop-file-utils.
+
+*kding-0.6-r1 (24 Aug 2012)
+
+  24 Aug 2012; Johannes Huber <johu@gentoo.org> +kding-0.6-r1.ebuild:
+  Bump to EAPI 4. Shorten the description. Use kde4 eclass specific var for
+  handbook use flag. Fix .desktop file to pass validation.
+
+  30 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> kding-0.6.ebuild:
+  EAPI3
+
+  29 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> kding-0.6.ebuild,
+  +files/kding-0.6-dtd.patch:
+  Change DTD version scheme from 4.1.2 to 4.2 wrt #338466 by Diego E.
+  Pettenò.
+
+  19 Nov 2009; Christian Faulhammer <fauli@gentoo.org> kding-0.6.ebuild:
+  stable x86, bug 292736
+
+  10 Nov 2009; Samuli Suominen <ssuominen@gentoo.org> kding-0.6.ebuild:
+  amd64 stable wrt #292736
+
+*kding-0.6 (20 Sep 2009)
+
+  20 Sep 2009; Tomáš Chvátal <scarabeus@gentoo.org> +kding-0.6.ebuild:
+  Version bump.
+
+*kding-0.5.2 (24 Aug 2009)
+
+  24 Aug 2009; Tomáš Chvátal <scarabeus@gentoo.org> -kding-0.5.1.ebuild,
+  +kding-0.5.2.ebuild:
+  Version bump. Per bug #282528.
+
+*kding-0.5.1 (11 Aug 2009)
+
+  11 Aug 2009; Tomáš Chvátal <scarabeus@gentoo.org> -kding-0.5.ebuild,
+  +kding-0.5.1.ebuild:
+  Version bump. Per bug #281015.
+
+*kding-0.5 (28 Jul 2009)
+
+  28 Jul 2009; Timo Gurr <tgurr@gentoo.org> -kding-0.4.1.ebuild,
+  -files/kding-0.4.1-appsdir.patch, -files/kding-0.4.1-desktopentry.patch,
+  -files/kding-0.4.1-localization-de.patch, +kding-0.5.ebuild:
+  Version bump thanks to Alexander Stein, fixes bug #278387.
+
+  08 Jul 2009; Markus Meier <maekke@gentoo.org> kding-0.4.3.ebuild:
+  amd64 stable, bug #226699
+
+  17 Jun 2009; Christian Faulhammer <fauli@gentoo.org> kding-0.4.3.ebuild:
+  stable x86, bug 226699
+
+  14 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org> kding-0.4.1.ebuild,
+  kding-0.4.3.ebuild:
+  Slotmove.
+
+*kding-0.4.3 (01 Jun 2008)
+
+  01 Jun 2008; Timo Gurr <tgurr@gentoo.org> +kding-0.4.3.ebuild:
+  Version bump.
+
+  30 Dec 2007; Markus Meier <maekke@gentoo.org> kding-0.4.1.ebuild:
+  x86 stable, bug #203342
+
+  30 Dec 2007; Samuli Suominen <drac@gentoo.org> kding-0.4.1.ebuild:
+  amd64 stable wrt #203342
+
+  26 Sep 2007; Timo Gurr <tgurr@gentoo.org> Manifest:
+  Fixed Manifest.
+
+*kding-0.4.1 (26 Sep 2007)
+
+  26 Sep 2007; Timo Gurr <tgurr@gentoo.org>
+  +files/kding-0.4.1-appsdir.patch, +files/kding-0.4.1-desktopentry.patch,
+  +files/kding-0.4.1-localization-de.patch, +metadata.xml,
+  +kding-0.4.1.ebuild:
+  Initial ebuild. Bug 189125, also thanks to Tobias Roeser (bug 124466).

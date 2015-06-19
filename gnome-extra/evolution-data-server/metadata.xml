@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>gnome</herd>
+	<use>
+		<flag name="api-doc-extras">Build documentation for private APIs</flag>
+		<flag name="gnome-online-accounts">Enable using
+			<pkg>net-libs/gnome-online-accounts</pkg> for authorization</flag>
+		<flag name="weather">Enable optional weather calendar support</flag>
+	</use>
+</pkgmetadata>

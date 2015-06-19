@@ -1,0 +1,12 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/perl/files/eblits/pkg_postrm-v50160001.eblit,v 1.1 2012/06/05 17:52:35 tove Exp $
+
+eblit-perl-pkg_postrm(){
+	dual_scripts
+
+#	if [[ -e ${ARCH_LIB}/Encode/ConfigLocal.pm ]] ; then
+#		ebegin "Removing ConfigLocal.pm"
+#		rm "${ARCH_LIB}/Encode/ConfigLocal.pm"
+#	fi
+}

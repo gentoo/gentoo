@@ -1,0 +1,12 @@
+--- moc-2.5.0-beta1/configure.in
++++ moc-2.5.0-beta1/configure.in
+@@ -341,9 +341,6 @@
+ 		AC_MSG_ERROR([You need curses/ncurses library and header files.])
+ fi
+ 
+-dnl popt
+-AC_SEARCH_LIBS([poptGetContext], [popt], , [POPT_MISSING="yes"])
+-
+ dnl getopt
+ AC_CHECK_FUNC(getopt_long,
+ 	      [AC_CHECK_HEADERS([getopt.h],,[AC_MSG_ERROR([You need getopt.h.])])],

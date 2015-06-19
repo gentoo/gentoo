@@ -1,0 +1,31 @@
+# ChangeLog for dev-java/wstx
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/wstx/ChangeLog,v 1.7 2013/07/09 15:34:03 tomwij Exp $
+
+*wstx-3.2.9 (09 Jul 2013)
+
+  09 Jul 2013; Tom Wijsman <TomWij@gentoo.org>
+  +files/wstx-3.2.9-build.xml.patch, +wstx-3.2.9.ebuild:
+  Version bump to 3.2.9.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  20 Jan 2010; Brent Baude <ranger@gentoo.org> wstx-3.2.8.ebuild:
+  Marking wstx-3.2.8 ppc64 for bug 287619
+
+  07 Jan 2010; Brent Baude <ranger@gentoo.org> wstx-3.2.8.ebuild:
+  Marking wstx-3.2.8 ppc for bug 287619
+
+  15 Oct 2009; Markus Meier <maekke@gentoo.org> wstx-3.2.8.ebuild:
+  amd64/x86 stable, bug #287619
+
+  20 Apr 2009; Markus Meier <maekke@gentoo.org> wstx-3.2.8:
+  add ~amd64, bug #258616
+
+*wstx-3.2.8 (11 Feb 2009)
+
+  11 Feb 2009; Petteri Räty <betelgeuse@gentoo.org> +metadata.xml,
+  +wstx-3.2.8.ebuild:
+  Moved from java-experimental to main tree. Fixes bug #257831. Thanks to
+  Mike Weissman <mike@weisso.com> for the ebuild.

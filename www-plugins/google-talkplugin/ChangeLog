@@ -1,0 +1,480 @@
+# ChangeLog for www-plugins/google-talkplugin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/google-talkplugin/ChangeLog,v 1.87 2015/04/14 18:45:39 mrueg Exp $
+
+*google-talkplugin-5.41.0.0 (14 Apr 2015)
+
+  14 Apr 2015; Manuel Rüger <mrueg@gentoo.org>
+  +google-talkplugin-5.41.0.0.ebuild, google-talkplugin-5.40.2.0.ebuild:
+  Version bump. Fixes bug #546338.
+
+*google-talkplugin-5.40.2.0 (01 Mar 2015)
+
+  01 Mar 2015; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-5.40.2.0.ebuild, google-talkplugin-5.38.6.0.ebuild,
+  google-talkplugin-9999.ebuild:
+  version bump
+
+*google-talkplugin-5.38.6.0 (01 Dec 2014)
+
+  01 Dec 2014; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-5.38.6.0.ebuild, -google-talkplugin-5.38.5.0.ebuild:
+  version bump (bug #531208)
+
+*google-talkplugin-5.38.5.0 (08 Nov 2014)
+
+  08 Nov 2014; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-5.38.5.0.ebuild, google-talkplugin-5.4.2.0.ebuild,
+  google-talkplugin-9999.ebuild:
+  version bump
+
+  02 Nov 2014; Sven Vermeulen <swift@gentoo.org>
+  google-talkplugin-5.4.2.0.ebuild, google-talkplugin-9999.ebuild:
+  Remove sec-policy/selinux-* dependency from DEPEND but keep in RDEPEND (bug
+  #527698)
+
+  12 Aug 2014; Christoph Junghans <ottxor@gentoo.org>
+  -google-talkplugin-4.4.2.0.ebuild, -google-talkplugin-5.4.1.0.ebuild,
+  metadata.xml:
+  remove old (bug #506574)
+
+  10 Aug 2014; Agostino Sarubbo <ago@gentoo.org>
+  google-talkplugin-5.4.2.0.ebuild:
+  Stable for x86, wrt bug #506676
+
+  17 Jul 2014; Chema Alonso <nimiux@gentoo.org>
+  google-talkplugin-5.4.2.0.ebuild:
+  Stable for amd64 wrt bug #506676
+
+*google-talkplugin-5.4.2.0 (13 Jun 2014)
+
+  13 Jun 2014; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-5.4.2.0.ebuild, -google-talkplugin-5.3.1.0.ebuild,
+  google-talkplugin-5.4.1.0.ebuild:
+  version bump (bug #513058)
+
+  25 May 2014; Christoph Junghans <ottxor@gentoo.org>
+  -google-talkplugin-5.1.5.0.ebuild, -google-talkplugin-5.2.4.0.ebuild:
+  remove old
+
+*google-talkplugin-5.4.1.0 (25 May 2014)
+
+  25 May 2014; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-5.4.1.0.ebuild:
+  version bump (bug #511488)
+
+  23 May 2014; Mike Gilbert <floppym@gentoo.org>
+  google-talkplugin-5.3.1.0.ebuild, google-talkplugin-9999.ebuild:
+  Install to the right place when SYMLINK_LIB=no.
+
+  16 May 2014; Sven Vermeulen <swift@gentoo.org>
+  google-talkplugin-4.4.2.0.ebuild, google-talkplugin-5.1.5.0.ebuild,
+  google-talkplugin-5.2.4.0.ebuild, google-talkplugin-5.3.1.0.ebuild,
+  google-talkplugin-9999.ebuild:
+  Fix bug #509740 - Add USE=selinux dependency to sec-policy/selinux-googletalk
+
+*google-talkplugin-5.3.1.0 (12 May 2014)
+
+  12 May 2014; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-5.3.1.0.ebuild, google-talkplugin-5.2.4.0.ebuild,
+  google-talkplugin-9999.ebuild:
+  version bump, install ppapi plugins (bug #509116)
+
+  03 Apr 2014; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-5.2.4.0.ebuild, google-talkplugin-9999.ebuild:
+  drop system-libCg use flag (bug #506574#c2)
+
+  03 Apr 2014; Christoph Junghans <ottxor@gentoo.org>
+  -google-talkplugin-4.7.0.0.ebuild, -google-talkplugin-4.8.3.0.ebuild,
+  -google-talkplugin-4.9.1.0.ebuild, -google-talkplugin-5.1.4.0.ebuild:
+  remove old
+
+*google-talkplugin-5.2.4.0 (03 Apr 2014)
+
+  03 Apr 2014; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-5.2.4.0.ebuild, google-talkplugin-5.1.5.0.ebuild:
+  version bump (bug #506574)
+
+*google-talkplugin-5.1.5.0 (04 Mar 2014)
+
+  04 Mar 2014; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-5.1.5.0.ebuild:
+  version bump (bug #503150)
+
+*google-talkplugin-5.1.4.0 (15 Feb 2014)
+
+  15 Feb 2014; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-5.1.4.0.ebuild, google-talkplugin-4.9.1.0.ebuild:
+  version bump (bug #501350)
+
+*google-talkplugin-4.9.1.0 (13 Nov 2013)
+
+  13 Nov 2013; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-4.9.1.0.ebuild, google-talkplugin-4.8.3.0.ebuild:
+  version bump (bug #491116)
+
+  29 Oct 2013; Christoph Junghans <ottxor@gentoo.org>
+  -google-talkplugin-4.5.3.0.ebuild, -google-talkplugin-4.6.3.0.ebuild:
+  remove old
+
+*google-talkplugin-4.8.3.0 (29 Oct 2013)
+
+  29 Oct 2013; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-4.8.3.0.ebuild, google-talkplugin-4.7.0.0.ebuild:
+  version bump (bug #489818)
+
+*google-talkplugin-4.7.0.0 (01 Oct 2013)
+
+  01 Oct 2013; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-4.7.0.0.ebuild, google-talkplugin-4.6.3.0.ebuild:
+  version bump (bug #486706)
+
+*google-talkplugin-4.6.3.0 (24 Sep 2013)
+
+  24 Sep 2013; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-4.6.3.0.ebuild, google-talkplugin-4.5.3.0.ebuild:
+  version bump (bug #485856)
+
+  24 Sep 2013; Christoph Junghans <ottxor@gentoo.org>
+  -google-talkplugin-3.17.0.0.ebuild:
+  remove old
+
+  14 Sep 2013; Agostino Sarubbo <ago@gentoo.org>
+  google-talkplugin-4.4.2.0.ebuild:
+  Stable for x86, wrt bug #482468
+
+*google-talkplugin-4.5.3.0 (04 Sep 2013)
+
+  04 Sep 2013; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-4.5.3.0.ebuild, google-talkplugin-4.4.2.0.ebuild,
+  google-talkplugin-9999.ebuild:
+  version bump (bug #483566, thx to ago)
+
+  31 Aug 2013; Agostino Sarubbo <ago@gentoo.org>
+  google-talkplugin-4.4.2.0.ebuild:
+  Stable for amd64, wrt bug #482468
+
+  09 Aug 2013; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-4.4.2.0.ebuild:
+  clean up
+
+*google-talkplugin-4.4.2.0 (09 Aug 2013)
+
+  09 Aug 2013; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-4.4.2.0.ebuild, -google-talkplugin-4.1.3.0.ebuild,
+  -google-talkplugin-4.2.1.0.ebuild:
+  version bump (bug #480246)
+
+*google-talkplugin-4.2.1.0 (03 Aug 2013)
+
+  03 Aug 2013; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-4.2.1.0.ebuild, google-talkplugin-3.17.0.0.ebuild,
+  google-talkplugin-4.1.3.0.ebuild:
+  version bump (thx to ago)
+
+  31 Jul 2013; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-3.17.0.0.ebuild, google-talkplugin-4.1.3.0.ebuild,
+  google-talkplugin-9999.ebuild:
+  fixed license (bug #478944)
+
+*google-talkplugin-4.1.3.0 (09 Jul 2013)
+
+  09 Jul 2013; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-4.1.3.0.ebuild, -google-talkplugin-4.0.3.0.ebuild:
+  version bump (bug #476292, thx to Zack)
+
+*google-talkplugin-4.0.3.0 (21 Jun 2013)
+
+  21 Jun 2013; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-4.0.3.0.ebuild, -google-talkplugin-3.19.1.0.ebuild,
+  -google-talkplugin-4.0.1.0.ebuild, google-talkplugin-9999.ebuild:
+  version bump (bug #473964)
+
+*google-talkplugin-4.0.1.0 (16 Jun 2013)
+
+  16 Jun 2013; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-4.0.1.0.ebuild, google-talkplugin-3.17.0.0.ebuild,
+  google-talkplugin-3.19.1.0.ebuild:
+  version bump (bug #473446, thx to Anton
+
+*google-talkplugin-3.19.1.0 (17 May 2013)
+
+  17 May 2013; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-3.19.1.0.ebuild, -google-talkplugin-3.10.2.0-r1.ebuild,
+  google-talkplugin-3.17.0.0.ebuild:
+  version bump (bug #470028, thx to Dennis)
+
+  03 May 2013; Agostino Sarubbo <ago@gentoo.org>
+  google-talkplugin-3.17.0.0.ebuild:
+  Stable for x86, wrt bug #468342
+
+  03 May 2013; Agostino Sarubbo <ago@gentoo.org>
+  google-talkplugin-3.17.0.0.ebuild:
+  Stable for amd64, wrt bug #468342
+
+  25 Apr 2013; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-9999.ebuild:
+  inherit cvs.eclass to make it part of @live-rebuild
+
+  22 Apr 2013; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-3.17.0.0.ebuild, google-talkplugin-9999.ebuild:
+  fixed deps (bug #466796, thx to Tibor Vago)
+
+*google-talkplugin-3.17.0.0 (04 Apr 2013)
+
+  04 Apr 2013; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-3.17.0.0.ebuild, -google-talkplugin-3.16.0.0.ebuild:
+  version bump (bug #464600, thx to Jauhien)
+
+*google-talkplugin-3.16.0.0 (23 Mar 2013)
+
+  23 Mar 2013; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-3.16.0.0.ebuild, -google-talkplugin-3.15.2.0.ebuild:
+  version bump (bug #462684)
+
+*google-talkplugin-3.15.2.0 (07 Mar 2013)
+
+  07 Mar 2013; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-3.15.2.0.ebuild, -google-talkplugin-3.14.17.0-r1.ebuild:
+  version bump (bug #460670)
+
+*google-talkplugin-3.14.17.0-r1 (27 Feb 2013)
+
+  27 Feb 2013; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-3.14.17.0-r1.ebuild, -google-talkplugin-3.14.17.0.ebuild,
+  google-talkplugin-9999.ebuild:
+  install additional datafiles to make plugins work (bug #438198)
+
+*google-talkplugin-3.14.17.0 (26 Feb 2013)
+
+  26 Feb 2013; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-3.14.17.0.ebuild, -google-talkplugin-3.13.2.0.ebuild:
+  version bump
+
+*google-talkplugin-3.13.2.0 (15 Feb 2013)
+
+  15 Feb 2013; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-3.13.2.0.ebuild, -google-talkplugin-3.9.1.0.ebuild,
+  google-talkplugin-3.10.2.0-r1.ebuild:
+  version bump (thx to devurandom@gmx.net, bug #457736)
+
+  31 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  google-talkplugin-3.10.2.0-r1.ebuild:
+  Stable for x86, wrt bug #453524
+
+  31 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  google-talkplugin-3.10.2.0-r1.ebuild:
+  Stable for amd64, wrt bug #453524
+
+*google-talkplugin-3.10.2.0-r1 (09 Jan 2013)
+
+  09 Jan 2013; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-3.10.2.0-r1.ebuild, -google-talkplugin-3.10.2.0.ebuild,
+  -google-talkplugin-3.7.1.0.ebuild, google-talkplugin-9999.ebuild:
+  fix bug #424409 (thx to Jeff Simpson), removed old, license update
+
+  18 Dec 2012; Mike Frysinger <vapier@gentoo.org>
+  google-talkplugin-3.10.2.0.ebuild, google-talkplugin-3.7.1.0.ebuild,
+  google-talkplugin-3.9.1.0.ebuild, google-talkplugin-9999.ebuild:
+  Change LICENSE=google-talkplugin to LICENSE=Google-TOS to reflect license/
+  rename.
+
+  08 Nov 2012; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-3.7.1.0.ebuild, google-talkplugin-3.9.1.0.ebuild:
+  updated RESTRICT and nofetch message - forgotten at version bump
+
+*google-talkplugin-3.10.2.0 (03 Nov 2012)
+
+  03 Nov 2012; Jeroen Roovers <jer@gentoo.org>
+  +google-talkplugin-3.10.2.0.ebuild:
+  Version bump by Seong-ho, Cho (bug #441574).
+
+*google-talkplugin-3.9.1.0 (13 Oct 2012)
+
+  13 Oct 2012; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-3.9.1.0.ebuild, -google-talkplugin-3.6.1.0.ebuild,
+  google-talkplugin-3.7.1.0.ebuild:
+  version bump
+
+*google-talkplugin-3.7.1.0 (03 Oct 2012)
+
+  03 Oct 2012; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-3.7.1.0.ebuild, -google-talkplugin-3.5.1.0.ebuild,
+  google-talkplugin-3.6.1.0.ebuild:
+  version bump (bug #437042)
+
+  24 Sep 2012; Mike Frysinger <vapier@gentoo.org>
+  google-talkplugin-3.5.1.0.ebuild, google-talkplugin-3.6.1.0.ebuild,
+  google-talkplugin-9999.ebuild:
+  QA_DT_HASH (old/deprecated) -> QA_FLAGS_IGNORED (new hotness).
+
+*google-talkplugin-3.6.1.0 (16 Sep 2012)
+
+  16 Sep 2012; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-3.6.1.0.ebuild, -google-talkplugin-3.2.4.0.ebuild,
+  google-talkplugin-3.5.1.0.ebuild, google-talkplugin-9999.ebuild:
+  version bump (bug #435038)
+
+*google-talkplugin-3.5.1.0 (26 Aug 2012)
+
+  26 Aug 2012; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-3.5.1.0.ebuild, -google-talkplugin-3.1.4.0.ebuild,
+  google-talkplugin-3.2.4.0.ebuild, google-talkplugin-9999.ebuild:
+  version bump
+
+*google-talkplugin-3.2.4.0 (20 Jul 2012)
+
+  20 Jul 2012; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-3.2.4.0.ebuild, -google-talkplugin-2.9.10.0.ebuild,
+  google-talkplugin-3.1.4.0.ebuild, google-talkplugin-9999.ebuild:
+  version bump
+
+*google-talkplugin-3.1.4.0 (28 Jun 2012)
+
+  28 Jun 2012; Christoph Junghans <ottxor@gentoo.org>
+  -google-talkplugin-2.8.5.0.ebuild, google-talkplugin-2.9.10.0.ebuild,
+  +google-talkplugin-3.1.4.0.ebuild, google-talkplugin-9999.ebuild:
+  version bump (bug #423905)
+
+*google-talkplugin-2.9.10.0 (25 May 2012)
+
+  25 May 2012; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-2.8.5.0.ebuild, +google-talkplugin-2.9.10.0.ebuild:
+  version bump (bug #417435)
+
+  12 May 2012; Christoph Junghans <ottxor@gentoo.org>
+  -google-talkplugin-2.3.2.0.ebuild, -google-talkplugin-2.5.6.0-r1.ebuild,
+  -google-talkplugin-2.6.1.0.ebuild, -google-talkplugin-2.7.5.0.ebuild:
+  remove old
+
+  05 Apr 2012; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-2.8.5.0.ebuild, google-talkplugin-9999.ebuild:
+  Fix bug #410887 (due to bug #408801)
+
+  30 Mar 2012; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-2.8.5.0.ebuild:
+  warn about bug #402401
+
+*google-talkplugin-2.8.5.0 (29 Mar 2012)
+
+  29 Mar 2012; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-2.7.5.0.ebuild, +google-talkplugin-2.8.5.0.ebuild:
+  version bump (bug #410095)
+
+*google-talkplugin-2.7.5.0 (19 Mar 2012)
+
+  19 Mar 2012; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-2.6.1.0.ebuild, +google-talkplugin-2.7.5.0.ebuild,
+  google-talkplugin-9999.ebuild:
+  version bump
+
+*google-talkplugin-2.6.1.0 (21 Jan 2012)
+
+  21 Jan 2012; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-2.5.6.0-r1.ebuild, +google-talkplugin-2.6.1.0.ebuild:
+  version bump
+
+  07 Jan 2012; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-9999.ebuild:
+  add screen sharing and LINGUAS support (bug #397463)
+
+*google-talkplugin-2.5.6.0-r1 (04 Jan 2012)
+
+  04 Jan 2012; Christoph Junghans <ottxor@gentoo.org>
+  -google-talkplugin-2.5.6.0.ebuild, +google-talkplugin-2.5.6.0-r1.ebuild:
+  add screen sharing and LINGUAS support (bug #397463)
+
+  19 Nov 2011; Christoph Junghans <ottxor@gentoo.org>
+  -google-talkplugin-1.8.0.0.ebuild, -google-talkplugin-2.1.7.0.ebuild,
+  -google-talkplugin-2.2.2.0.ebuild, -google-talkplugin-2.4.5.0.ebuild:
+  Removed old
+
+*google-talkplugin-2.5.6.0 (19 Nov 2011)
+
+  19 Nov 2011; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-2.4.5.0.ebuild, +google-talkplugin-2.5.6.0.ebuild:
+  Version bump
+
+*google-talkplugin-9999 (16 Nov 2011)
+
+  16 Nov 2011; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-9999.ebuild:
+  added live ebuild (bug #384803)
+
+*google-talkplugin-2.4.5.0 (16 Nov 2011)
+
+  16 Nov 2011; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-2.3.2.0.ebuild, +google-talkplugin-2.4.5.0.ebuild:
+  version bump
+
+*google-talkplugin-2.3.2.0 (14 Sep 2011)
+
+  14 Sep 2011; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-2.2.2.0.ebuild, +google-talkplugin-2.3.2.0.ebuild:
+  version bump
+
+*google-talkplugin-2.2.2.0 (16 Aug 2011)
+
+  16 Aug 2011; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-2.1.7.0.ebuild, +google-talkplugin-2.2.2.0.ebuild:
+  version bump
+
+  03 Aug 2011; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-2.1.7.0.ebuild:
+  fixes bug #376741 and bug #377249#c1
+
+  29 Jul 2011; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-2.1.7.0.ebuild:
+  workaround for bug #376741
+
+  02 Jul 2011; Zac Medico <zmedico@gentoo.org>
+  google-talkplugin-2.1.7.0.ebuild:
+  Fix duplicate INSTALL_BASE when calling inst_plugin.
+
+*google-talkplugin-2.1.7.0 (01 Jul 2011)
+
+  01 Jul 2011; Christoph Junghans <ottxor@gentoo.org>
+  -google-talkplugin-2.1.6.0.ebuild, +google-talkplugin-2.1.7.0.ebuild:
+  Version bump (bug #373657) + bump to EAPI=4
+
+*google-talkplugin-2.1.6.0 (14 Jun 2011)
+
+  14 Jun 2011; Christoph Junghans <ottxor@gentoo.org>
+  -google-talkplugin-2.0.6.0.ebuild, +google-talkplugin-2.1.6.0.ebuild:
+  Version bump
+
+  02 Jun 2011; Markus Meier <maekke@gentoo.org>
+  google-talkplugin-1.8.0.0.ebuild:
+  x86 stable, bug #361683
+
+  12 May 2011; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-1.8.0.0.ebuild:
+  1.8.0.0 is no longer available (bug #366965)
+
+*google-talkplugin-2.0.6.0 (27 Apr 2011)
+
+  27 Apr 2011; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-2.0.6.0.ebuild:
+  version bump
+
+  09 Apr 2011; Christoph Mende <angelos@gentoo.org>
+  google-talkplugin-1.8.0.0.ebuild:
+  Stable on amd64 wrt bug #361683
+
+  05 Apr 2011; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-1.8.0.0.ebuild:
+  fixed qa (bug #361683#c2)
+
+  17 Mar 2011; Christoph Junghans <ottxor@gentoo.org>
+  google-talkplugin-1.8.0.0.ebuild:
+  Updated license
+
+  19 Feb 2011; Alexey Shvetsov <alexxy@gentoo.org>
+  google-talkplugin-1.8.0.0.ebuild:
+  Add ~amd64 keyword since it works here
+
+*google-talkplugin-1.8.0.0 (15 Feb 2011)
+
+  15 Feb 2011; Christoph Junghans <ottxor@gentoo.org>
+  +google-talkplugin-1.8.0.0.ebuild, +metadata.xml:
+  Initial commit from cj-overlay (bug #333579)

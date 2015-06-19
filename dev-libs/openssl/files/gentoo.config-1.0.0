@@ -1,0 +1,159 @@
+#!/usr/bin/env bash
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/openssl/files/gentoo.config-1.0.0,v 1.5 2012/05/25 17:41:21 vapier Exp $
+#
+# Openssl doesn't play along nicely with cross-compiling
+# like autotools based projects, so let's teach it new tricks.
+#
+# Review the bundled 'config' script to see why kind of targets
+# we can pass to the 'Configure' script.
+
+
+# Testing routines
+if [[ $1 == "test" ]] ; then
+	for c in \
+		"arm-gentoo-linux-uclibc      |linux-generic32 -DL_ENDIAN" \
+		"armv5b-linux-gnu             |linux-armv4 -DB_ENDIAN" \
+		"x86_64-pc-linux-gnu          |linux-x86_64" \
+		"alphaev56-unknown-linux-gnu  |linux-alpha+bwx-gcc" \
+		"i686-pc-linux-gnu            |linux-elf" \
+		"whatever-gentoo-freebsdX.Y   |BSD-generic32" \
+		"i686-gentoo-freebsdX.Y       |BSD-x86-elf" \
+		"sparc64-alpha-freebsdX.Y     |BSD-sparc64" \
+		"ia64-gentoo-freebsd5.99234   |BSD-ia64" \
+		"x86_64-gentoo-freebsdX.Y     |BSD-x86_64" \
+		"hppa64-aldsF-linux-gnu5.3    |linux-generic32 -DB_ENDIAN" \
+		"powerpc-gentOO-linux-uclibc  |linux-ppc" \
+		"powerpc64-unk-linux-gnu      |linux-ppc64" \
+		"x86_64-apple-darwinX         |darwin64-x86_64-cc" \
+		"powerpc64-apple-darwinX      |darwin64-ppc-cc" \
+		"i686-apple-darwinX           |darwin-i386-cc" \
+		"i386-apple-darwinX           |darwin-i386-cc" \
+		"powerpc-apple-darwinX        |darwin-ppc-cc" \
+		"i586-pc-winnt                |winnt-parity" \
+		"s390-ibm-linux-gnu           |linux-generic32 -DB_ENDIAN" \
+		"s390x-linux-gnu              |linux-s390x" \
+	;do
+		CHOST=${c/|*}
+		ret_want=${c/*|}
+		ret_got=$(CHOST=${CHOST} "$0")
+
+		if [[ ${ret_want} == "${ret_got}" ]] ; then
+			echo "PASS: ${CHOST}"
+		else
+			echo "FAIL: ${CHOST}"
+			echo -e "\twanted: ${ret_want}"
+			echo -e "\twe got: ${ret_got}"
+		fi
+	done
+	exit 0
+fi
+[[ -z ${CHOST} && -n $1 ]] && CHOST=$1
+
+
+# Detect the operating system
+case ${CHOST} in
+	*-aix*)          system="aix";;
+	*-darwin*)       system="darwin";;
+	*-freebsd*)      system="BSD";;
+	*-hpux*)         system="hpux";;
+	*-linux*)        system="linux";;
+	*-solaris*)      system="solaris";;
+	*-winnt*)        system="winnt";;
+	x86_64-*-mingw*) system="mingw64";;
+	*mingw*)         system="mingw";;
+	*)               exit 0;;
+esac
+
+
+# Compiler munging
+compiler="gcc"
+if [[ ${CC} == "ccc" ]] ; then
+	compiler=${CC}
+fi
+
+
+# Detect target arch
+machine=""
+chost_machine=${CHOST%%-*}
+case ${system} in
+linux)
+	case ${chost_machine}:${ABI} in
+		alphaev56*)   machine=alpha+bwx-${compiler};;
+		alphaev[678]*)machine=alpha+bwx-${compiler};;
+		alpha*)       machine=alpha-${compiler};;
+		armv[4-9]*b*) machine="armv4 -DB_ENDIAN";;
+		armv[4-9]*)   machine="armv4 -DL_ENDIAN";;
+		arm*b*)       machine="generic32 -DB_ENDIAN";;
+		arm*)         machine="generic32 -DL_ENDIAN";;
+		avr*)         machine="generic32 -DL_ENDIAN";;
+		bfin*)        machine="generic32 -DL_ENDIAN";;
+	#	hppa64*)      machine=parisc64;;
+		hppa*)        machine="generic32 -DB_ENDIAN";;
+		i[0-9]86*|\
+		x86_64*:x86)  machine=elf;;
+		ia64*)        machine=ia64;;
+		m68*)         machine="generic32 -DB_ENDIAN";;
+		mips*el*)     machine="generic32 -DL_ENDIAN";;
+		mips*)        machine="generic32 -DB_ENDIAN";;
+		powerpc64*)   machine=ppc64;;
+		powerpc*)     machine=ppc;;
+	#	sh64*)        machine=elf;;
+		sh*b*)        machine="generic32 -DB_ENDIAN";;
+		sh*)          machine="generic32 -DL_ENDIAN";;
+		sparc*v7*)    machine="generic32 -DB_ENDIAN";;
+		sparc64*)     machine=sparcv9;;
+		sparc*)       machine=sparcv8;;
+		s390x*)       machine=s390x;;
+		s390*)        machine="generic32 -DB_ENDIAN";;
+		x86_64*:x32)  machine=x32;;
+		x86_64*)      machine=x86_64;;
+	esac
+	;;
+BSD)
+	case ${chost_machine} in
+		alpha*)       machine=generic64;;
+		i[6-9]86*)    machine=x86-elf;;
+		ia64*)        machine=ia64;;
+		sparc64*)     machine=sparc64;;
+		x86_64*)      machine=x86_64;;
+		*)            machine=generic32;;
+	esac
+	;;
+aix)
+	machine=${compiler}
+	;;
+darwin)
+	case ${chost_machine} in
+		powerpc64)    machine=ppc-cc; system=${system}64;;
+		powerpc)      machine=ppc-cc;;
+		i?86*)        machine=i386-cc;;
+		x86_64)       machine=x86_64-cc; system=${system}64;;
+	esac
+	;;
+hpux)
+	case ${chost_machine} in
+		ia64)	machine=ia64-${compiler} ;;
+	esac
+	;;
+solaris)
+	case ${chost_machine} in
+		i386)         machine=x86-${compiler} ;;
+		x86_64*)      machine=x86_64-${compiler}; system=${system}64;;
+		sparcv9*)     machine=sparcv9-${compiler}; system=${system}64;;
+		sparc*)       machine=sparcv8-${compiler};;
+	esac
+	;;
+winnt)
+	machine=parity
+	;;
+mingw*)
+	# special case ... no xxx-yyy style name
+	echo ${system}
+	;;
+esac
+
+
+# If we have something, show it
+[[ -n ${machine} ]] && echo ${system}-${machine}

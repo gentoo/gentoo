@@ -1,0 +1,223 @@
+# ChangeLog for media-gfx/sam2p
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/sam2p/ChangeLog,v 1.60 2015/05/23 01:09:00 mrueg Exp $
+
+  23 May 2015; Manuel Rüger <mrueg@gentoo.org> -sam2p-0.47.ebuild,
+  -sam2p-0.48.ebuild:
+  Remove old.
+
+  08 Nov 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/sam2p-0.49-glibc-2.20.patch, sam2p-0.49.1.ebuild, sam2p-0.49.2.ebuild:
+  Fix by Dmitry Derevyanko for building w/glibc-2.20 #524048 by Dale Lukas
+  Peterson.
+
+*sam2p-0.49.2 (02 Nov 2014)
+
+  02 Nov 2014; Alexis Ballier <aballier@gentoo.org> +sam2p-0.49.2.ebuild:
+  version bump
+
+  27 Aug 2013; Alexis Ballier <aballier@gentoo.org> sam2p-0.49.1.ebuild,
+  +files/sam2p-0.49.1-gcc48.patch:
+  Fix build with gcc 4.8, bug #463434 by Philipp
+
+  09 Sep 2012; Raúl Porcel <armin76@gentoo.org> sam2p-0.49.1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #419071
+
+  22 Aug 2012; Michael Weber <xmw@gentoo.org> sam2p-0.49.1.ebuild:
+  ppc stable (bug 419071).
+
+  11 Aug 2012; Markus Meier <maekke@gentoo.org> sam2p-0.49.1.ebuild:
+  x86 stable, bug #419071
+
+  06 Aug 2012; Brent Baude <ranger@gentoo.org> sam2p-0.49.1.ebuild:
+  Marking sam2p-0.49.1 ppc64 for bug 419071
+
+  05 Aug 2012; Markus Meier <maekke@gentoo.org> sam2p-0.49.1.ebuild:
+  arm stable, bug #419071
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> sam2p-0.49.1.ebuild:
+  Stable for amd64, wrt bug #419071
+
+  02 Aug 2012; Jeroen Roovers <jer@gentoo.org> sam2p-0.49.1.ebuild:
+  Stable for HPPA (bug #419071).
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> sam2p-0.49.1.ebuild:
+  keyword ~amd64-fbsd
+
+*sam2p-0.49.1 (26 Feb 2012)
+
+  26 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> +sam2p-0.49.1.ebuild,
+  +files/sam2p-0.49.1-build.patch:
+  Version bump.
+
+  13 Jun 2011; Matt Turner <mattst88@gentoo.org> sam2p-0.48.ebuild:
+  Added ~mips, bug 342513
+
+*sam2p-0.48 (18 Apr 2011)
+
+  18 Apr 2011; Alexis Ballier <aballier@gentoo.org> +sam2p-0.48.ebuild:
+  version bump
+
+  05 Oct 2010; Markus Meier <maekke@gentoo.org> sam2p-0.47.ebuild:
+  x86 stable, bug #334153
+
+  26 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> sam2p-0.47.ebuild:
+  ppc64 stable wrt #334153
+
+  18 Sep 2010; Raúl Porcel <armin76@gentoo.org> sam2p-0.47.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #334153
+
+  30 Aug 2010; Jeroen Roovers <jer@gentoo.org> sam2p-0.47.ebuild:
+  Stable for HPPA PPC (bug #334153).
+
+  24 Aug 2010; Markos Chandras <hwoarang@gentoo.org> sam2p-0.47.ebuild:
+  Stable on amd64 wrt bug #334153
+
+  23 Aug 2010; Samuli Suominen <ssuominen@gentoo.org> sam2p-0.47.ebuild:
+  Workaround bug in ccdep.pl with GCC 4.5.x wrt #315619.
+
+*sam2p-0.47 (11 Jun 2010)
+
+  11 Jun 2010; Alexis Ballier <aballier@gentoo.org> +sam2p-0.47.ebuild:
+  version bump, bug #317271
+
+  11 Jun 2010; Alexis Ballier <aballier@gentoo.org> sam2p-0.45-r1.ebuild,
+  sam2p-0.46.ebuild:
+  update homepage
+
+*sam2p-0.46 (24 Jun 2009)
+
+  24 Jun 2009; Alexis Ballier <aballier@gentoo.org> +sam2p-0.46.ebuild:
+  version bump
+
+  18 Mar 2009; Raúl Porcel <armin76@gentoo.org> sam2p-0.45-r1.ebuild:
+  arm/s390/sh stable wrt #253551
+
+  11 Mar 2009; Raúl Porcel <armin76@gentoo.org> sam2p-0.45-r1.ebuild:
+  Add ~arm/~s390/~sh
+
+  29 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org> -sam2p-0.45.ebuild,
+  sam2p-0.45-r1.ebuild:
+  ppc stable, bug #232306
+
+  14 Nov 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/sam2p-0.45-distcc.patch, sam2p-0.45-r1.ebuild:
+  fix build with distcc instead of disabling it, by David Leverton
+  <levertond@googlemail.com>, bug #245333
+
+  07 Oct 2008; Zac Medico <zmedico@gentoo.org> sam2p-0.45-r1.ebuild:
+  Bug #239671 - Fix the distcc workaround so it also works when ccache is
+  enabled.
+
+  29 Aug 2008; Alexis Ballier <aballier@gentoo.org> sam2p-0.45-r1.ebuild:
+  Nicer way to deal with distcc problems, taken from Zac's fix for bug
+  #214327. This closes bug #222063.
+
+  28 Aug 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/sam2p-0.45-parallelmake.patch, sam2p-0.45-r1.ebuild:
+  fix parallel make, by Diego Pettenò <flameeyes@gentoo.org>, bug #236030.
+
+  23 Aug 2008; Markus Meier <maekke@gentoo.org> sam2p-0.45-r1.ebuild:
+  x86 stable, bug #232306
+
+  04 Jun 2008; Alexis Ballier <aballier@gentoo.org> metadata.xml:
+  put under tex herd, we use it for texlive
+
+  04 Jun 2008; Alexis Ballier <aballier@gentoo.org> -sam2p-0.44.ebuild:
+  remove old
+
+  16 Apr 2008; Peter Volkov <pva@gentoo.org> sam2p-0.45-r1.ebuild:
+  amd64 stable, bug #215735.
+
+  08 Apr 2008; Raúl Porcel <armin76@gentoo.org> sam2p-0.45-r1.ebuild:
+  alpha/ia64/sparc stable wrt #215735
+
+  08 Apr 2008; Jeroen Roovers <jer@gentoo.org> sam2p-0.45-r1.ebuild:
+  Stable for HPPA (bug #215735).
+
+  06 Apr 2008; Markus Rothe <corsair@gentoo.org> sam2p-0.45-r1.ebuild:
+  Stable on ppc64; bug #215735
+
+*sam2p-0.45-r1 (10 Feb 2008)
+
+  10 Feb 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/sam2p-0.45-cflags.patch, +files/sam2p-0.45-fbsd.patch,
+  +files/sam2p-0.45-nostrip.patch, +sam2p-0.45-r1.ebuild:
+  Respect cflags, dont prestrip executables, call gmake for Makedep as GNU
+  make is required, import a patch from bsd ports to make it build on fbsd,
+  keyword ~x86-fbsd; install examples via examples useflag. There still
+  remains that 'gmake Makedep' breaks if used with distcc, I couldn't fix it.
+
+  18 Dec 2007; Jeroen Roovers <jer@gentoo.org> sam2p-0.45.ebuild:
+  Marked ~hppa (bug #195815).
+
+  25 Oct 2007; Raúl Porcel <armin76@gentoo.org> sam2p-0.45.ebuild:
+  Add ~alpha/~ia64 wrt #195815
+
+  23 Oct 2007; Ferris McCormick <fmccor@gentoo.org> sam2p-0.45.ebuild:
+  Add ~sparc for testing (seems to be needed in Bug #195815).
+
+  14 Oct 2007; Markus Rothe <corsair@gentoo.org> sam2p-0.45.ebuild:
+  Added ~ppc64; bug #194359
+
+  01 Sep 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing twp from metadata due to his retirement (see #190561 for reference).
+
+  01 Sep 2007; Christian Faulhammer <opfer@gentoo.org> sam2p-0.45.ebuild:
+  stable x86, bug 154787; make it properly die with FEATURES=distcc and revamp
+  the ebuild a bit: adding output to die calls; don't use a local myconf
+  construct, just call econf with options directly; use emake instead of just
+  make
+
+  01 Sep 2007; nixnut <nixnut@gentoo.org> sam2p-0.45.ebuild:
+  Stable on ppc wrt bug 154787
+
+  12 Feb 2007; Simon Stelling <blubb@gentoo.org> sam2p-0.45.ebuild:
+  RESTRICT=test as it doesn't work and mark ~amd64; bug 155062
+
+*sam2p-0.45 (09 Nov 2006)
+
+  09 Nov 2006; <twp@gentoo.org> sam2p-0.44.ebuild, +sam2p-0.45.ebuild:
+  Version bump. Should fix compile issues with >=sys-devel/gcc-3.4. BUug #
+  111258. Bug # 154586.
+
+  06 Jun 2006; Jeremy Huddleston <eradicator@gentoo.org> sam2p-0.44.ebuild:
+  Removed gcc-config from DEPEND as it's not neccessary.
+
+  25 Jul 2005; Tom Payne <twp@gentoo.org> sam2p-0.44.ebuild:
+  Update DESCRIPTION and RDEPEND. Bug # 99718.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> sam2p-0.44.ebuild:
+  Stable on ppc.
+
+  13 May 2005; Tom Payne <twp@gentoo.org> -sam2p-0.43.ebuild,
+  sam2p-0.44.ebuild:
+  Update to use toolchain-funcs. Remove old version.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> sam2p-0.43.ebuild:
+  virtual/glibc -> virtual/libc
+
+  31 May 2004; <twp@gentoo.org> sam2p-0.44.ebuild:
+  Stable on x86
+
+  26 Apr 2004; David Holm <dholm@gentoo.org> sam2p-0.44.ebuild:
+  Added to ~ppc.
+
+*sam2p-0.44 (25 Apr 2004)
+
+  25 Apr 2004; <twp@gentoo.org> +sam2p-0.44.ebuild:
+  Version bump.
+
+  28 Sep 2003; Tom Payne <twp@gentoo.org> :
+  Added metadata.xml.
+  
+*sam2p-0.43 (30 Aug 2003)
+
+  30 Aug 2003; Tom Payne <twp@gentoo.org> sam2p-0.43.ebuild :
+  Version bump.
+
+*sam2p-0.41 (10 Apr 2003)
+
+  10 Apr 2003; Tom Payne <twp@gentoo.org> sam2p-0.41.ebuild :
+
+  Initial release (bug # 15939).

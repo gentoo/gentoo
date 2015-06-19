@@ -1,0 +1,42 @@
+Upstream-Status: Pending
+
+Add X32 support in gmp configure.
+
+Patch Originator: H J Lu @ Intel
+Patch modified for Yocto by Nitin Kamble
+Signed Off By: Nitin A Kamble <nitin.a.kamble@intel.com> 2011/11/21
+
+--- gmp-5.1.0/configure
++++ gmp-5.1.0/configure
+@@ -5237,6 +5237,22 @@ echo "include_mpn(\`vax/elf.m4')" >> $gmp_tmpconfigm4i
+ 	    extra_functions_64="invert_limb_table"
+ 	fi
+ 
++	# X32 support.
++	case x"$path_64" in
++	  xx86_64*)
++		abilist="x32 64 32"
++		path_x32="$path_64"
++		limb_x32=longlong
++		cclist_x32="gcc"
++		gcc_x32_cflags="-O2 -mx32"
++		any_x32_testlist="sizeof-long-4"
++		CALLING_CONVENTIONS_OBJS_x32=$CALLING_CONVENTIONS_OBJS_64
++		SPEED_CYCLECOUNTER_OBJ_x32=$SPEED_CYCLECOUNTER_OBJ_64
++		cyclecounter_size_x32=$cyclecounter_size_64
++		extra_functions_x32=$extra_functions_64
++	    ;;
++	esac
++
+ 	case $host in
+ 	  *-*-solaris*)
+ 	    # Sun cc.
+@@ -28611,7 +28627,7 @@ echo "include_mpn(\`x86/darwin.m4')" >> $gmp_tmpconfigm4i
+  ;;
+ 	  esac
+           ;;
+-        64)
++        64|x32)
+ 
+ echo "include_mpn(\`x86_64/x86_64-defs.m4')" >> $gmp_tmpconfigm4i
+ 

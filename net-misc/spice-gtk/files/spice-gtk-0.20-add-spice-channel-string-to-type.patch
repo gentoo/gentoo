@@ -1,0 +1,84 @@
+From b85ca792af72d5f1e10aa6af9515eb96a044fc5c Mon Sep 17 00:00:00 2001
+From: Hans de Goede <hdegoede@redhat.com>
+Date: Wed, 26 Jun 2013 15:39:39 +0000
+Subject: Add spice_channel_string_to_type to map files
+
+And document both spice_channel_string_to_type and
+spice_channel_type_to_string.
+
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+---
+diff --git a/doc/reference/spice-gtk-sections.txt b/doc/reference/spice-gtk-sections.txt
+index e1e2833..8d61aa9 100644
+--- a/doc/reference/spice-gtk-sections.txt
++++ b/doc/reference/spice-gtk-sections.txt
+@@ -98,6 +98,7 @@ spice_channel_disconnect
+ spice_channel_test_capability
+ spice_channel_test_common_capability
+ spice_channel_type_to_string
++spice_channel_string_to_type
+ spice_channel_set_capability
+ spice_channel_flush_async
+ spice_channel_flush_finish
+diff --git a/gtk/map-file b/gtk/map-file
+index a0b7330..a69eb40 100644
+--- a/gtk/map-file
++++ b/gtk/map-file
+@@ -11,6 +11,7 @@ spice_channel_get_type;
+ spice_channel_new;
+ spice_channel_open_fd;
+ spice_channel_set_capability;
++spice_channel_string_to_type;
+ spice_channel_test_capability;
+ spice_channel_test_common_capability;
+ spice_channel_type_to_string;
+diff --git a/gtk/spice-channel.c b/gtk/spice-channel.c
+index 0a32d6c..093b292 100644
+--- a/gtk/spice-channel.c
++++ b/gtk/spice-channel.c
+@@ -1884,6 +1884,15 @@ static const char *to_string[] = {
+     [ SPICE_CHANNEL_PORT ] = "port",
+ };
+ 
++/**
++ * spice_channel_type_to_string:
++ * @type: a channel-type property value
++ *
++ * Convert a channel-type property value to a string.
++ *
++ * Returns: string representation of @type.
++ * Since: 0.20
++ **/
+ const gchar* spice_channel_type_to_string(gint type)
+ {
+     const char *str = NULL;
+@@ -1895,6 +1904,15 @@ const gchar* spice_channel_type_to_string(gint type)
+     return str ? str : "unknown channel type";
+ }
+ 
++/**
++ * spice_channel_string_to_type:
++ * @str: a string representation of the channel-type property
++ *
++ * Convert a channel-type property value to a string.
++ *
++ * Returns: the channel-type property value for a @str channel
++ * Since: 0.21
++ **/
+ gint spice_channel_string_to_type(const gchar *str)
+ {
+     int i;
+diff --git a/gtk/spice-glib-sym-file b/gtk/spice-glib-sym-file
+index 2b172d0..8540307 100644
+--- a/gtk/spice-glib-sym-file
++++ b/gtk/spice-glib-sym-file
+@@ -14,6 +14,7 @@ spice_channel_set_capability
+ spice_channel_test_capability
+ spice_channel_test_common_capability
+ spice_channel_type_to_string
++spice_channel_string_to_type
+ spice_client_error_quark
+ spice_cursor_channel_get_type
+ spice_display_channel_get_type
+--
+cgit v0.9.0.2-2-gbebe

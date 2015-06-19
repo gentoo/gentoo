@@ -1,0 +1,40 @@
+# ChangeLog for dev-perl/self
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/self/ChangeLog,v 1.9 2014/08/26 18:06:02 axs Exp $
+
+*self-0.340.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +self-0.340.0-r1.ebuild, -self-0.340.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  04 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> self-0.340.0.ebuild:
+  Fix DESCRIPTION
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop duplication of myself as a maintainer where there is a herd.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -self-0.340.ebuild:
+  Cleanup
+
+*self-0.340.0 (27 Aug 2011)
+
+  27 Aug 2011; Torsten Veller <tove@gentoo.org> +self-0.340.0.ebuild:
+  Change version scheme
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -self-0.32.ebuild:
+  Cleanup
+
+*self-0.340 (12 Jan 2011)
+
+  12 Jan 2011; Torsten Veller <tove@gentoo.org> +self-0.340.ebuild:
+  Version bump
+
+*self-0.32 (23 Jun 2009)
+
+  23 Jun 2009; Robin H. Johnson <robbat2@gentoo.org> +self-0.32.ebuild,
+  +metadata.xml:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

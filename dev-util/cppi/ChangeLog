@@ -1,0 +1,63 @@
+# ChangeLog for dev-util/cppi
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cppi/ChangeLog,v 1.15 2013/05/21 16:37:52 jer Exp $
+
+  21 May 2013; Jeroen Roovers <jer@gentoo.org> -cppi-1.17.ebuild:
+  Old.
+
+  20 May 2013; Chema Alonso <nimiux@gentoo.org> cppi-1.18.ebuild:
+  Stable for amd64 wrt bug #470484
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> cppi-1.18.ebuild:
+  Stable for x86, wrt bug #470484
+
+*cppi-1.18 (18 Mar 2013)
+
+  18 Mar 2013; Jeroen Roovers <jer@gentoo.org> cppi-1.17.ebuild,
+  +cppi-1.18.ebuild:
+  Run eautoreconf (bug #426336). Version bump.
+
+  09 Oct 2012; Jeroen Roovers <jer@gentoo.org> -cppi-1.16.ebuild:
+  Old.
+
+  28 Sep 2012; Johannes Huber <johu@gentoo.org> cppi-1.17.ebuild:
+  Stable for x86, wrt bug #436128
+
+  26 Sep 2012; Tony Vroon <chainsaw@gentoo.org> cppi-1.17.ebuild:
+  Marked stable on AMD64 based on arch testing by Vicente "peratu" Olivert
+  Riera, Elijah "Armageddon" El Lazkani & Mikle "Zlogene" Kolyada in bug
+  #436128.
+
+*cppi-1.17 (05 Aug 2012)
+
+  05 Aug 2012; Jeroen Roovers <jer@gentoo.org> +cppi-1.17.ebuild:
+  Version bump.
+
+  15 Mar 2012; Jeroen Roovers <jer@gentoo.org> -cppi-1.14.ebuild,
+  -cppi-1.15.ebuild:
+  Old.
+
+  26 Jan 2012; Jeroen Roovers <jer@gentoo.org> cppi-1.16.ebuild:
+  Add LINGUAS support.
+
+  26 Jan 2012; Jeroen Roovers <jer@gentoo.org> cppi-1.16.ebuild:
+  Marked ~amd64 too.
+
+*cppi-1.16 (26 Jan 2012)
+
+  26 Jan 2012; Jeroen Roovers <jer@gentoo.org> +cppi-1.16.ebuild:
+  Version bump.
+
+*cppi-1.15 (22 Mar 2010)
+
+  22 Mar 2010; Jeroen Roovers <jer@gentoo.org> +cppi-1.15.ebuild:
+  Version bump.
+
+  05 Mar 2010; Jeroen Roovers <jer@gentoo.org> cppi-1.14.ebuild:
+  Update HOMEPAGE.
+
+*cppi-1.14 (04 Mar 2010)
+
+  04 Mar 2010; Jeroen Roovers <jer@gentoo.org> +cppi-1.14.ebuild,
+  +metadata.xml:
+  Initial commit.

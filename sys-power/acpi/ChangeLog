@@ -1,0 +1,88 @@
+# ChangeLog for sys-power/acpi
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-power/acpi/ChangeLog,v 1.18 2014/08/10 20:12:05 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> acpi-1.6.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  05 Jun 2014; Samuli Suominen <ssuominen@gentoo.org> acpi-1.6.ebuild:
+  Update from eapi4 to eapi5
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> -acpi-1.5.ebuild, metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+  24 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> acpi-1.6.ebuild:
+  x86 stable wrt bug #406949
+
+  08 Mar 2012; Markos Chandras <hwoarang@gentoo.org> acpi-1.6.ebuild:
+  Stable on amd64 wrt bug #406949
+
+*acpi-1.6 (30 Jan 2012)
+
+  30 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> +acpi-1.6.ebuild:
+  Version bump.
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org> acpi-1.5.ebuild:
+  stable x86, bug 327451
+
+  09 Jul 2010; Pacho Ramos <pacho@gentoo.org> acpi-1.5.ebuild:
+  stable amd64, bug 327451
+
+*acpi-1.5 (28 Apr 2010)
+
+  28 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> +acpi-1.5.ebuild:
+  Version bump.
+
+  04 Jun 2009; Christian Faulhammer <fauli@gentoo.org> acpi-1.4.ebuild:
+  stable x86, bug 215870
+
+  03 Jun 2009; Dawid Węgliński <cla@gentoo.org> acpi-1.4.ebuild:
+  Stable on amd64 (bug #215870)
+
+*acpi-1.4 (03 Jun 2009)
+
+  03 Jun 2009; Peter Alfredsen <loki_val@gentoo.org> +acpi-1.4.ebuild,
+  metadata.xml:
+  Bump. Now compatible with new /sys interface.
+
+  27 Mar 2008; Raúl Porcel <armin76@gentoo.org> acpi-0.06-r5.ebuild:
+  Fix debian HOMEPAGE
+
+  07 Apr 2007; Christian Faulhammer <opfer@gentoo.org> acpi-0.06-r5.ebuild:
+  SRC_URI changed to mirror://, fixes bug 163312
+
+  26 Oct 2006; Piotr Jaroszyński <peper@gentoo.org> acpi-0.06-r5.ebuild:
+  Fix deps and a few other things.
+
+*acpi-0.09 (22 Apr 2005)
+
+  22 Apr 2005; Stefan Schweizer <genstef@gentoo.org> +acpi-0.09.ebuild:
+  Version bump thanks to Daniel Webert <rockoo@gmail.com> in bug 88205
+
+*acpi-0.06-r5 (22 Apr 2005)
+
+  22 Apr 2005; Stefan Schweizer <genstef@gentoo.org> +metadata.xml,
+  +acpi-0.06-r5.ebuild:
+  Moved from sys-apps/acpi to sys-power/acpi.
+
+  30 May 2004; Danny van Dyk <kugelfang@gentoo.org> acpi-0.06-r5.ebuild:
+  Marked ~amd64.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> acpi-0.06-r5.ebuild:
+  Add inherit eutils
+
+*acpi-0.06-r5 (13 Oct 2003)
+
+  13 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> acpi-0.06-r5.ebuild:
+  fixed bug #31002, used debian patches
+
+  25 Sep 2003; Tom Payne <twp@gentoo.org> acpi-0.06.ebuild :
+  Marked stable on x86 and n/a for other arches.
+
+*acpi-0.06 (27 Jul 2003)
+
+  28 Aug 2003; Tom Payne <twp@gentoo.org> acpi-0.06.ebuild :
+  Fix typo. Bug # 25451.
+
+  27 Jul 2003; Tom Payne <twp@gentoo.org> acpi-0.06.ebuild :
+  Initial version.

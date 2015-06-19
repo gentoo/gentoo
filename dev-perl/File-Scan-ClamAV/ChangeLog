@@ -1,0 +1,30 @@
+# ChangeLog for dev-perl/File-Scan-ClamAV
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-Scan-ClamAV/ChangeLog,v 1.6 2014/08/26 15:13:32 axs Exp $
+
+*File-Scan-ClamAV-1.910.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +File-Scan-ClamAV-1.910.0-r1.ebuild, -File-Scan-ClamAV-1.910.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  09 Feb 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #85926
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -File-Scan-ClamAV-1.91.ebuild:
+  Cleanup
+
+*File-Scan-ClamAV-1.910.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +File-Scan-ClamAV-1.910.0.ebuild:
+  Change version scheme
+
+*File-Scan-ClamAV-1.91 (17 May 2009)
+
+  17 May 2009; Tobias Scherbaum <dertobi123@gentoo.org> +metadata.xml,
+  +File-Scan-ClamAV-1.91.ebuild:
+  Initial import, #172805

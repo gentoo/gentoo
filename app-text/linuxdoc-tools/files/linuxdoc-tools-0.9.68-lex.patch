@@ -1,0 +1,11 @@
+--- rtf-fix/rtf2rtf.l.orig	2013-03-20 13:14:06.146829954 +0400
++++ rtf-fix/rtf2rtf.l	2013-03-20 13:14:28.193830654 +0400
+@@ -72,7 +72,7 @@
+ int skipnewline = 0;
+ 
+ extern char *yytext;
+-extern int yyleng;
++extern yy_size_t yyleng;
+ 
+ #define CHAPTER 1
+ #define SECTION 2

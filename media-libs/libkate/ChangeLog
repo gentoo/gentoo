@@ -1,0 +1,241 @@
+# ChangeLog for media-libs/libkate
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libkate/ChangeLog,v 1.57 2012/10/10 04:01:30 zerochaos Exp $
+
+  10 Oct 2012; Rick Farina <zerochaos@gentoo.org> libkate-0.3.7.ebuild,
+  libkate-0.3.8.ebuild, libkate-0.4.1.ebuild:
+  missed a conditional, thanks to Arfrever for pointing out. minor style fixes
+
+  10 Oct 2012; Rick Farina <zerochaos@gentoo.org> libkate-0.3.7.ebuild,
+  libkate-0.3.8.ebuild, libkate-0.4.1.ebuild:
+  python fixes from bug #313533 and ported to all versions, required to build if
+  python 3 is eselected
+
+  29 May 2012; Alexis Ballier <aballier@gentoo.org> libkate-0.4.1.ebuild:
+  keyword ~amd64-fbsd
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> libkate-0.3.7.ebuild,
+  libkate-0.3.8.ebuild, libkate-0.4.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*libkate-0.4.1 (08 Sep 2011)
+
+  08 Sep 2011; Alexis Ballier <aballier@gentoo.org> +libkate-0.4.1.ebuild:
+  version bump
+
+  24 Sep 2010; Raúl Porcel <armin76@gentoo.org> libkate-0.3.7.ebuild:
+  ia64 stable
+
+*libkate-0.3.8 (11 Aug 2010)
+
+  11 Aug 2010; Alexis Ballier <aballier@gentoo.org> +libkate-0.3.8.ebuild:
+  version bump
+
+  23 Jul 2010; Markus Meier <maekke@gentoo.org> libkate-0.3.7.ebuild:
+  arm stable, bug #324269
+
+  26 Jun 2010; Jeroen Roovers <jer@gentoo.org> libkate-0.3.7.ebuild:
+  Stable for HPPA (bug #324269).
+
+  29 May 2010; Raúl Porcel <armin76@gentoo.org> libkate-0.3.7.ebuild:
+  Add ~ia64 wrt #313245
+
+  15 Apr 2010; Jeroen Roovers <jer@gentoo.org> libkate-0.3.7.ebuild:
+  Marked ~hppa (bug #313245).
+
+  08 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> libkate-0.3.7.ebuild,
+  +files/libkate-0.3.7-libpng14.patch:
+  Fix building with libpng14.
+
+  24 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> libkate-0.3.7.ebuild:
+  Rename USE wxwindows to wxwidgets wrt #306291.
+
+  21 Jan 2010; Brent Baude <ranger@gentoo.org> libkate-0.3.7.ebuild:
+  Marking libkate-0.3.7 ppc64 for bug 300697
+
+  21 Jan 2010; Raúl Porcel <armin76@gentoo.org> libkate-0.3.7.ebuild:
+  sparc stable wrt #300697
+
+  19 Jan 2010; nixnut <nixnut@gentoo.org> libkate-0.3.7.ebuild:
+  ppc stable #300697
+
+  16 Jan 2010; Christian Faulhammer <fauli@gentoo.org> libkate-0.3.7.ebuild:
+  stable x86, bug 300697
+
+  16 Jan 2010; Tobias Klausmann <klausman@gentoo.org> libkate-0.3.7.ebuild:
+  Stable on alpha, bug #300697
+
+  16 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> libkate-0.3.7.ebuild:
+  amd64 stable wrt #300697
+
+*libkate-0.3.7 (16 Nov 2009)
+
+  16 Nov 2009; Alexis Ballier <aballier@gentoo.org> +libkate-0.3.7.ebuild:
+  version bump
+
+  13 Nov 2009; Joseph Jezak <josejx@gentoo.org> libkate-0.2.5.ebuild:
+  Marked ppc64 stable.
+
+  06 Sep 2009; Alexis Ballier <aballier@gentoo.org> -libkate-0.3.4.ebuild,
+  -libkate-0.3.5.ebuild:
+  remove old
+
+*libkate-0.3.6 (06 Sep 2009)
+
+  06 Sep 2009; Alexis Ballier <aballier@gentoo.org> +libkate-0.3.6.ebuild:
+  version bump
+
+*libkate-0.3.5 (02 Sep 2009)
+
+  02 Sep 2009; Alexis Ballier <aballier@gentoo.org> +libkate-0.3.5.ebuild:
+  version bump
+
+  22 Jul 2009; <solar@gentoo.org> libkate-0.3.4.ebuild:
+  - keyword ~arm for vlc
+
+*libkate-0.3.4 (07 Jul 2009)
+
+  07 Jul 2009; Alexis Ballier <aballier@gentoo.org> -libkate-0.3.3.ebuild,
+  +libkate-0.3.4.ebuild:
+  version bump
+
+  15 May 2009; Alexis Ballier <aballier@gentoo.org> -libkate-0.2.8.ebuild,
+  -libkate-0.3.0.ebuild, -libkate-0.3.2.ebuild:
+  remove old
+
+*libkate-0.3.3 (15 May 2009)
+
+  15 May 2009; Alexis Ballier <aballier@gentoo.org> +libkate-0.3.3.ebuild:
+  version bump
+
+*libkate-0.3.2 (03 May 2009)
+
+  03 May 2009; Alexis Ballier <aballier@gentoo.org> +libkate-0.3.2.ebuild:
+  version bump
+
+  15 Mar 2009; Brent Baude <ranger@gentoo.org> libkate-0.3.0.ebuild:
+  Marking libkate-0.3.0 ~ppc64 for bug 254306
+
+  25 Jan 2009; Tobias Klausmann <klausman@gentoo.org> libkate-0.3.0.ebuild:
+  Keyworded on alpha, bug #254306
+
+  17 Jan 2009; Friedrich Oslage <bluebird@gentoo.org> libkate-0.3.0.ebuild:
+  Re-add ~sparc keyword, bug #254306
+
+*libkate-0.3.0 (09 Jan 2009)
+
+  09 Jan 2009; Alexis Ballier <aballier@gentoo.org> +libkate-0.3.0.ebuild:
+  version bump
+
+  19 Dec 2008; Alexis Ballier <aballier@gentoo.org> -libkate-0.2.6.ebuild,
+  -libkate-0.2.7.ebuild:
+  remove unused versions
+
+*libkate-0.2.8 (19 Dec 2008)
+
+  19 Dec 2008; Alexis Ballier <aballier@gentoo.org> +libkate-0.2.8.ebuild:
+  version bump
+
+  13 Dec 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  libkate-0.2.5.ebuild:
+  ppc stable, bug #249391
+
+*libkate-0.2.7 (30 Nov 2008)
+
+  30 Nov 2008; Alexis Ballier <aballier@gentoo.org> +libkate-0.2.7.ebuild:
+  version bump
+
+*libkate-0.2.6 (14 Nov 2008)
+
+  14 Nov 2008; Alexis Ballier <aballier@gentoo.org> +libkate-0.2.6.ebuild:
+  version bump
+
+  09 Nov 2008; Tobias Klausmann <klausman@gentoo.org> libkate-0.2.5.ebuild:
+  Stable on alpha, bug #245774
+
+  09 Nov 2008; Markus Meier <maekke@gentoo.org> libkate-0.2.5.ebuild:
+  amd64/x86 stable, bug #245774
+
+  06 Nov 2008; Ferris McCormick <fmccor@gentoo.org> libkate-0.2.5.ebuild:
+  Sparc stable, part of Bug #245774.
+
+  18 Oct 2008; Brent Baude <ranger@gentoo.org> libkate-0.2.5.ebuild:
+  Marking libkate-0.2.5 ~ppc and ~ppc64 for bug 237813
+
+*libkate-0.2.5 (18 Oct 2008)
+
+  18 Oct 2008; Alexis Ballier <aballier@gentoo.org> -libkate-0.2.4.ebuild,
+  +libkate-0.2.5.ebuild:
+  version bump
+
+*libkate-0.2.4 (15 Oct 2008)
+
+  15 Oct 2008; Alexis Ballier <aballier@gentoo.org> -libkate-0.2.3.ebuild,
+  +libkate-0.2.4.ebuild:
+  version bump
+
+*libkate-0.2.3 (08 Oct 2008)
+
+  08 Oct 2008; Alexis Ballier <aballier@gentoo.org> -libkate-0.2.2.ebuild,
+  +libkate-0.2.3.ebuild:
+  version bump
+
+  05 Oct 2008; Tobias Klausmann <klausman@gentoo.org> libkate-0.2.2.ebuild:
+  Keyworded on alpha, bug #237813
+
+*libkate-0.2.2 (02 Oct 2008)
+
+  02 Oct 2008; Alexis Ballier <aballier@gentoo.org>
+  -files/libkate-0.2.1-doc.patch, -libkate-0.2.1.ebuild,
+  +libkate-0.2.2.ebuild:
+  version bump
+
+  30 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  files/libkate-0.2.1-doc.patch:
+  Add a link to upstream bug report in the patch
+
+*libkate-0.2.1 (29 Sep 2008)
+
+  29 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/libkate-0.2.1-doc.patch, -libkate-0.2.0.ebuild,
+  +libkate-0.2.1.ebuild:
+  version bump and fix build without doxygen, bug #238858
+
+  27 Sep 2008; Ferris McCormick <fmccor@gentoo.org> libkate-0.2.0.ebuild:
+  Add ~sparc for testing.  Part of Bug #237813 and now needed for vlc.
+
+  24 Sep 2008; Alexis Ballier <aballier@gentoo.org> libkate-0.2.0.ebuild:
+  keyword ~x86-fbsd
+
+*libkate-0.2.0 (23 Sep 2008)
+
+  23 Sep 2008; Alexis Ballier <aballier@gentoo.org> -libkate-0.1.12.ebuild,
+  +libkate-0.2.0.ebuild:
+  version bump
+
+  18 Sep 2008; Markus Meier <maekke@gentoo.org> libkate-0.1.12.ebuild:
+  add ~x86, bug #237813
+
+*libkate-0.1.12 (16 Sep 2008)
+
+  16 Sep 2008; Alexis Ballier <aballier@gentoo.org> -libkate-0.1.11.ebuild,
+  +libkate-0.1.12.ebuild:
+  version bump
+
+*libkate-0.1.11 (08 Sep 2008)
+
+  08 Sep 2008; Alexis Ballier <aballier@gentoo.org> -libkate-0.1.8.ebuild,
+  +libkate-0.1.11.ebuild:
+  version bump
+
+*libkate-0.1.8 (28 Aug 2008)
+
+  28 Aug 2008; Alexis Ballier <aballier@gentoo.org> -libkate-0.1.7.ebuild,
+  +libkate-0.1.8.ebuild:
+  version bump
+
+*libkate-0.1.7 (25 Aug 2008)
+
+  25 Aug 2008; Alexis Ballier <aballier@gentoo.org> +metadata.xml,
+  +libkate-0.1.7.ebuild:
+  initial import, ebuild by me

@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=>=sys-libs/glibc-2.10 libevent? ( >=dev-libs/libevent-2.0 ) udns? ( >=net-libs/udns-0.1 ) app-text/docbook-xml-dtd:4.5 app-text/xmlto >=app-text/asciidoc-8.4
+DESCRIPTION=Lightweight connection pooler for PostgreSQL
+EAPI=5
+HOMEPAGE=https://pgbouncer.github.io
+IUSE=debug doc libevent udns
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=sys-libs/glibc-2.10 libevent? ( >=dev-libs/libevent-2.0 ) udns? ( >=net-libs/udns-0.1 )
+REQUIRED_USE=libevent? ( !udns ) udns? ( !libevent )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://pgbouncer.github.io/downloads/pgbouncer-1.5.5.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=f6c7621cbcb60ee95ec9a67aadb87069

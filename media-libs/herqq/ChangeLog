@@ -1,0 +1,69 @@
+# ChangeLog for media-libs/herqq
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/herqq/ChangeLog,v 1.18 2015/01/26 11:08:59 mrueg Exp $
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -herqq-1.0.0-r1.ebuild:
+  Remove old.
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> herqq-1.0.0-r2.ebuild:
+  Stable for x86, wrt bug #535456
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org> herqq-1.0.0-r2.ebuild:
+  Stable for amd64, wrt bug #535456
+
+*herqq-1.0.0-r2 (23 Jun 2014)
+
+  23 Jun 2014; Michael Palimaka <kensington@gentoo.org> +herqq-1.0.0-r2.ebuild:
+  Bump EAPI. Correct dependencies wrt bug #514558. Disable building of test
+  application. Fix unconditional API documentation installation.
+
+  02 Jan 2014; Sergey Popov <pinkbyte@gentoo.org> herqq-1.0.0-r1.ebuild:
+  Add blocker for media-libs/hupnp-ng, which is fork of this library
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> herqq-1.0.0-r1.ebuild:
+  Stable for x86, wrt bug #462890
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> herqq-1.0.0-r1.ebuild:
+  Move Qt dependencies to the new category
+
+  18 Jul 2012; Christoph Junghans <ottxor@gentoo.org> herqq-1.0.0-r1.ebuild,
+  metadata.xml:
+  remove me as maintainer
+
+  07 Dec 2011; Markos Chandras <hwoarang@gentoo.org> herqq-1.0.0-r1.ebuild:
+  Stable on amd64 wrt bug #388279
+
+  05 Nov 2011; Kacper Kowalik <xarthisius@gentoo.org> herqq-1.0.0-r1.ebuild:
+  Marked ~ppc/~ppc64 for KDE SC 4.7.3
+
+  04 Nov 2011; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Added herd kde to metadata
+
+  15 Aug 2011; Christoph Junghans <ottxor@gentoo.org> herqq-1.0.0-r1.ebuild:
+  fixed deps (bug #378853)
+
+  28 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> -herqq-0.8.0-r1.ebuild,
+  herqq-1.0.0-r1.ebuild:
+  QA: Obey the multilib, do not nedlessly die, etc, etc.
+
+*herqq-1.0.0-r1 (28 Apr 2011)
+*herqq-0.8.0-r1 (28 Apr 2011)
+
+  28 Apr 2011; Christoph Junghans <ottxor@gentoo.org> -herqq-0.8.0.ebuild,
+  +herqq-0.8.0-r1.ebuild, -herqq-1.0.0.ebuild, +herqq-1.0.0-r1.ebuild:
+  added multilib support (fixes bug #365155)
+
+*herqq-1.0.0 (20 Apr 2011)
+
+  20 Apr 2011; Christoph Junghans <ottxor@gentoo.org> +herqq-1.0.0.ebuild:
+  Version bump
+
+  19 Apr 2011; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  herqq-0.8.0.ebuild:
+  Added ~amd64 keyword.
+
+*herqq-0.8.0 (21 Feb 2011)
+
+  21 Feb 2011; Christoph Junghans <ottxor@gentoo.org> +herqq-0.8.0.ebuild,
+  +metadata.xml:
+  Import from cj-overlay (dep for bug #351916)

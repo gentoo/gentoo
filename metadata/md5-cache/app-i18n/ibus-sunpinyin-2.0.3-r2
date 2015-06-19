@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare setup
+DEPEND=app-i18n/ibus ~app-i18n/sunpinyin-2.0.3 sys-devel/gettext || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) dev-util/scons
+DESCRIPTION=The SunPinYin IMEngine for IBus Framework
+EAPI=5
+HOMEPAGE=http://sunpinyin.googlecode.com
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1 CDDL
+RDEPEND=app-i18n/ibus ~app-i18n/sunpinyin-2.0.3 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
+SLOT=0
+SRC_URI=http://sunpinyin.googlecode.com/files/ibus-sunpinyin-2.0.3.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	scons-utils	988e24b9e2e4642189b4e97c03e5ae71	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=2f53960af9a4c44a2d57d7189fd52d51

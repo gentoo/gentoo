@@ -1,0 +1,181 @@
+# ChangeLog for dev-php/pecl-http
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-http/ChangeLog,v 1.23 2015/04/29 01:25:50 grknight Exp $
+
+*pecl-http-1.7.6-r3 (29 Apr 2015)
+
+  29 Apr 2015; Brian Evans <grknight@gentoo.org> +pecl-http-1.7.6-r3.ebuild:
+  Revbump to make dependencies more specific and silence repoman
+
+  11 Jan 2015; Brian Evans <grknight@gentoo.org> -pecl-http-1.7.5.ebuild:
+  Drop old
+
+  04 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pecl-http-1.7.6-r2.ebuild:
+  Stable for x86, wrt bug #534562
+
+  04 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pecl-http-1.7.6-r2.ebuild:
+  Stable for amd64, wrt bug #534562
+
+*pecl-http-1.7.6-r2 (30 Sep 2014)
+
+  30 Sep 2014; Brian Evans <grknight@gentoo.org> +pecl-http-1.7.6-r2.ebuild,
+  -pecl-http-1.7.4.ebuild, -pecl-http-1.7.6-r1.ebuild, -pecl-http-1.7.6.ebuild:
+  Revision bump to drop 5.3 support; remove old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pecl-http-1.7.4.ebuild,
+  pecl-http-1.7.5.ebuild, pecl-http-1.7.6-r1.ebuild, pecl-http-1.7.6.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*pecl-http-1.7.6-r1 (08 Aug 2014)
+
+  08 Aug 2014; Tiziano Müller <dev-zero@gentoo.org> +pecl-http-1.7.6-r1.ebuild:
+  Rev bump to add php5-5 USE flag.
+
+*pecl-http-1.7.6 (03 Jun 2014)
+
+  03 Jun 2014; Ole Markus With <olemarkus@gentoo.org> +pecl-http-1.7.6.ebuild:
+  Version bump
+
+  07 Aug 2013; Agostino Sarubbo <ago@gentoo.org> pecl-http-1.7.5.ebuild:
+  Stable for x86, wrt bug #470442
+
+  28 Jul 2013; Agostino Sarubbo <ago@gentoo.org> pecl-http-1.7.5.ebuild:
+  Stable for amd64, wrt bug #470442
+
+*pecl-http-1.7.5 (07 Mar 2013)
+
+  07 Mar 2013; Ole Markus With <olemarkus@gentoo.org> +pecl-http-1.7.5.ebuild:
+  Version bump
+
+  05 Mar 2013; Ole Markus With <olemarkus@gentoo.org>
+  -pecl-http-1.7.0-r1.ebuild, -pecl-http-1.7.1.ebuild,
+  -pecl-http-1.7.3-r1.ebuild, -pecl-http-1.7.3.ebuild:
+  Removed older ebuilds
+
+  21 Oct 2012; Markus Meier <maekke@gentoo.org> pecl-http-1.7.4.ebuild:
+  x86 stable, bug #427024
+
+  22 Aug 2012; Agostino Sarubbo <ago@gentoo.org> pecl-http-1.7.4.ebuild:
+  Stable for amd64, wrt bug #427024
+
+*pecl-http-1.7.4 (02 Apr 2012)
+
+  02 Apr 2012; Ole Markus With <olemarkus@gentoo.org> +pecl-http-1.7.4.ebuild:
+  Version bump
+
+*pecl-http-1.7.3-r1 (10 Mar 2012)
+
+  10 Mar 2012; Ole Markus With <olemarkus@gentoo.org>
+  +pecl-http-1.7.3-r1.ebuild:
+  Revbump with cleaner deps
+
+*pecl-http-1.7.3 (08 Mar 2012)
+
+  08 Mar 2012; Ole Markus With <olemarkus@gentoo.org> +pecl-http-1.7.3.ebuild:
+  Version bump
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> pecl-http-1.7.1.ebuild:
+  x86 stable wrt bug #397001
+
+  21 Feb 2012; Ole Markus With <olemarkus@gentoo.org> Manifest:
+  1.7.1 now blocks php[threads] as compilation fails. Bug 368595
+
+  21 Feb 2012; Ole Markus With <olemarkus@gentoo.org> pecl-http-1.7.1.ebuild:
+  1.7.1 now blocks php[threads] as compilation fails. Bug 368595
+
+  04 Jan 2012; Agostino Sarubbo <ago@gentoo.org> pecl-http-1.7.1.ebuild:
+  Stable for AMD64, wrt bug #397001
+
+*pecl-http-1.7.1 (05 May 2011)
+
+  05 May 2011; Ole Markus With <olemarkus@gentoo.org> +pecl-http-1.7.1.ebuild:
+  Version bump
+
+  04 Jan 2011; Markos Chandras <hwoarang@gentoo.org> pecl-http-1.7.0-r1.ebuild:
+  Stable on amd64 wrt bug #349659
+
+  04 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  pecl-http-1.7.0-r1.ebuild:
+  stable x86, bug 349659
+
+*pecl-http-1.7.0-r1 (04 Nov 2010)
+*pecl-http-1.7.0 (04 Nov 2010)
+
+  04 Nov 2010; Matti Bickel <mabi@gentoo.org> -pecl-http-1.6.0.ebuild,
+  +pecl-http-1.7.0.ebuild, +pecl-http-1.7.0-r1.ebuild:
+  add version that supports minor version slotting, version bump, cleanup
+
+  20 Oct 2010; Markos Chandras <hwoarang@gentoo.org> pecl-http-1.6.6.ebuild:
+  Stable on amd64 wrt bug #336869
+
+  14 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  pecl-http-1.6.6.ebuild:
+  x86 stable, bug 336869
+
+  13 Sep 2010; Matti Bickel <mabi@gentoo.org> pecl-http-1.6.6.ebuild:
+  fix DEPEND for php-5.3 (bug #332489)
+
+*pecl-http-1.6.6 (05 Apr 2010)
+
+  05 Apr 2010; <mabi@gentoo.org> +pecl-http-1.6.6.ebuild:
+  bump (bug #266977)
+
+  05 May 2008; Markus Meier <maekke@gentoo.org> pecl-http-1.6.0.ebuild:
+  amd64/x86 stable, bug #213566
+
+  06 Dec 2007; Markus Ullmann <jokey@gentoo.org> -pecl-http-1.5.6.ebuild,
+  pecl-http-1.6.0.ebuild:
+  LICENSE fix from project overlay
+
+  03 Dec 2007; Jakub Moc <jakub@gentoo.org> pecl-http-1.6.0.ebuild:
+  Fix LICENSE
+
+*pecl-http-1.6.0 (29 Nov 2007)
+
+  29 Nov 2007; Markus Ullmann <jokey@gentoo.org> -pecl-http-1.5.4.ebuild,
+  +pecl-http-1.6.0.ebuild:
+  Version bump from project overlay
+
+  26 Nov 2007; Jakub Moc <jakub@gentoo.org> +pecl-http-1.6.0.ebuild:
+  Version bump. Add defaults to ini file.
+
+*pecl-http-1.5.6 (11 Oct 2007)
+
+  11 Oct 2007; Anant Narayanan <anant@gentoo.org> +pecl-http-1.5.6.ebuild:
+  bump to 1.5.6 (from overlay)
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org> -pecl-http-1.5.2.ebuild:
+  Cleanup
+
+  28 Aug 2007; Jakub Moc <jakub@gentoo.org> pecl-http-1.5.4.ebuild:
+  Check for hash, not mhash in postinst.
+
+*pecl-http-1.5.4 (27 Aug 2007)
+
+  27 Aug 2007; Markus Ullmann <jokey@gentoo.org> +pecl-http-1.5.4.ebuild:
+  version bump for bug #190381
+
+  27 Aug 2007; Jakub Moc <jakub@gentoo.org> +metadata.xml,
+  +pecl-http-1.5.4.ebuild:
+  Version bump, Bug 190381
+
+*pecl-http-1.5.2 (17 Mar 2007)
+
+  17 Mar 2007; Luca Longinotti <chtekk@gentoo.org> -pecl-http-1.3.1.ebuild,
+  +pecl-http-1.5.2.ebuild:
+  Version bump.
+
+*pecl-http-1.3.1 (02 Oct 2006)
+
+  02 Oct 2006; Sebastian Bergmann <sebastian@gentoo.org>
+  -pecl-http-1.2.1.ebuild, +pecl-http-1.3.1.ebuild:
+  Version bump.
+
+  17 Sep 2006; Konstantin Arkhipov <voxus@gentoo.org> pecl-http-1.2.1.ebuild:
+  Keyworded ~amd64 wrt bug #147529./
+
+*pecl-http-1.2.1 (26 Aug 2006)
+
+  26 Aug 2006; Sebastian Bergmann <sebastian@gentoo.org> +metadata.xml,
+  +pecl-http-1.2.1.ebuild:
+  Initial ebuild.

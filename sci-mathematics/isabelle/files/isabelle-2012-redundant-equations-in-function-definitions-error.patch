@@ -1,0 +1,35 @@
+diff -r dd611ab202a8 -r e7e647949c95 src/HOL/Tools/Function/fun.ML
+--- a/src/HOL/Tools/Function/fun.ML	Wed Jun 06 10:35:05 2012 +0200
++++ b/src/HOL/Tools/Function/fun.ML	Wed Jun 06 21:36:21 2012 +0200
+@@ -84,10 +84,10 @@
+     spec @ mk_catchall fixes arity_of
+   end
+ 
+-fun warnings ctxt origs tss =
++fun further_checks ctxt origs tss =
+   let
+-    fun warn_redundant t =
+-      warning ("Ignoring redundant equation: " ^ quote (Syntax.string_of_term ctxt t))
++    fun fail_redundant t =
++      error (cat_lines ["Equation is redundant (covered by preceding clauses):", Syntax.string_of_term ctxt t])
+     fun warn_missing strs =
+       warning (cat_lines ("Missing patterns in function definition:" :: strs))
+ 
+@@ -100,7 +100,7 @@
+          @ ["(" ^ string_of_int (length rest) ^ " more)"])
+ 
+     val _ = (origs ~~ tss')
+-      |> map (fn (t, ts) => if null ts then warn_redundant t else ())
++      |> map (fn (t, ts) => if null ts then fail_redundant t else ())
+   in
+     ()
+   end
+@@ -119,7 +119,7 @@
+       val compleqs = add_catchall ctxt fixes feqs (* Completion *)
+ 
+       val spliteqs = Function_Split.split_all_equations ctxt compleqs
+-        |> tap (warnings ctxt feqs)
++        |> tap (further_checks ctxt feqs)
+ 
+       fun restore_spec thms =
+         bnds ~~ take (length bnds) (unflat spliteqs thms)

@@ -1,0 +1,17 @@
+diff -Nur work.orig/usr.bin/grep/Makefile work/usr.bin/grep/Makefile
+--- work.orig/usr.bin/grep/Makefile	2012-07-16 04:59:01.000000000 +0900
++++ work/usr.bin/grep/Makefile	2012-07-16 05:00:15.000000000 +0900
+@@ -40,13 +40,6 @@
+ 	grep.1 lzfgrep.1
+ .endif
+ 
+-LINKS+=	${BINDIR}/${PROG} ${BINDIR}/xzgrep \
+-	${BINDIR}/${PROG} ${BINDIR}/xzegrep \
+-	${BINDIR}/${PROG} ${BINDIR}/xzfgrep \
+-	${BINDIR}/${PROG} ${BINDIR}/lzgrep \
+-	${BINDIR}/${PROG} ${BINDIR}/lzegrep \
+-	${BINDIR}/${PROG} ${BINDIR}/lzfgrep
+-
+ LDADD=	-lz -llzma
+ DPADD=	${LIBZ} ${LIBLZMA}
+ 

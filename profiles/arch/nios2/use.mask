@@ -1,0 +1,241 @@
+# Unmask the flag which corresponds to ARCH.
+-nios2
+
+# doomsday ebuild is not available on this architecture
+doomsday
+
+# Markus Meier <maekke@gentoo.org> (22 Aug 2010)
+# net-wireless/wimax not tested
+wimax
+
+# Markus Meier <maekke@gentoo.org> (21 Aug 2010)
+# app-antivirus/clamav not tested
+clamav
+
+# Kacper Kowalik <xarthisius@gentoo.org> (9 Aug 2010)
+# cblas-external as virtual/cblas is also masked
+cblas-external
+
+# Samuli Suominen <ssuominen@gentoo.org> (17 Oct 2009)
+# Required package: media-sound/musepack-tools
+musepack
+
+# Raúl Porcel <armin76@gentoo.org>
+# I've been told xfs is broken on ARM
+xfs
+
+# Raúl Porcel <armin76@gentoo.org>
+# Fails to build/work
+openexr
+
+# Samuli Suominen <drac@gentoo.org>
+# media-libs/amrnb and media-libs/amrwb not tested.
+amr
+
+# Samuli Suominen <drac@gentoo.org>
+# sci-visualization/grace not tested.
+grace
+
+# Samuli Suominen <drac@gentoo.org>
+# media-gfx/gimp not tested.
+gimp
+
+# No hardware to test by the team
+dvb
+ios
+ipod
+
+# Stuff that doesn't make sense on this arch
+3dfx
+cpufreq
+dell
+laptop
+dmi
+
+# Stuff we don't want
+chicken
+fuse
+R
+octave
+tracker
+xindy
+lyx
+mpi
+lasi
+fusion
+debug-utils
+schroedinger
+hardened
+frei0r
+libvirt
+pdfannotextractor
+prelude
+mssql
+
+# havent tested yet
+ruby
+ctypes-python
+sasl
+libproxy
+pkcs11
+gnutls
+bazaar
+darcs
+mercurial
+kerberos
+gpg
+gnome
+gnome-keyring
+cupsddk
+doc
+emacs
+gphoto2
+mythtv
+afs
+mono
+pike
+lirc
+lm_sensors
+netjack
+beagle
+nvtv
+mzscheme
+xemacs
+rpm
+scanner
+madwifi
+libupnp
+zvbi
+ldap
+mysql
+postgres
+dvd
+fluidsynth
+gnomecd
+cblas
+prolog
+sid
+mms
+mtp
+ieee1394
+sctp
+pm-utils
+wicd
+darcs
+bs2b
+toolame
+ladspa
+ldns
+ggi
+nut
+xanim
+dvd
+fits
+tokyocabinet
+vaapi
+rtmp
+vpx
+iplayer
+plotutils
+lpsol
+upnp
+quvi
+bluray
+libtar
+zvbi
+aacplus
+devil
+gts
+anthy
+ace
+csharp
+icu
+gtk
+qt4
+qt5
+R
+sdl
+slang
+tk
+vim-syntax
+X
+
+# 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
+# Modular X: mask for architectures on which they aren't available
+video_cards_apm
+video_cards_ark
+video_cards_ast
+video_cards_ati
+video_cards_cirrus
+video_cards_chips
+video_cards_cyrix
+video_cards_glint
+video_cards_i128
+video_cards_i740
+video_cards_intel
+video_cards_mach64
+video_cards_mga
+video_cards_neomagic
+video_cards_newport
+video_cards_nouveau
+video_cards_nsc
+video_cards_nv
+video_cards_r128
+video_cards_radeon
+video_cards_rendition
+video_cards_s3
+video_cards_s3virge
+video_cards_savage
+video_cards_siliconmotion
+video_cards_sis
+video_cards_tdfx
+video_cards_tga
+video_cards_trident
+video_cards_tseng
+video_cards_vesa
+video_cards_via
+video_cards_voodoo
+
+# Matt Turner <mattst88@gentoo.org>
+# Mask more VIDEO_CARDs added with mesa-8.0
+video_cards_r100
+video_cards_r200
+video_cards_r300
+video_cards_r600
+video_cards_radeonsi
+video_cards_i915
+video_cards_i965
+video_cards_ilo
+# vmware wasn't added with mesa-8.0, but it should still be masked
+video_cards_vmware
+
+# USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
+# Bug #184563, 18 Sep 2007
+# Robin H. Johnson <robbat2@gentoo.org>
+audit
+
+# Matt Turner <mattst88@gentoo.org) (10 Feb 2012)
+# mask d3d since we don't have wine
+d3d
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Dec 2012)
+# media-libs/xine-lib is not keyworded
+xine
+
+# Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)
+# libdlm and cman are not keyworded
+cman
+clvm
+
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
+# virtual/opencl is not keyworded
+opencl
+
+# This one we need to test ...
+python_targets_python3_3
+
+# sys-libs/libseccomp has not been ported to this arch yet #524148
+seccomp
+
+# No nios2 java support yet.
+java

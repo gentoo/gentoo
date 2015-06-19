@@ -1,0 +1,28 @@
+Description: Use a custom target, programfilesdir, to install to pkglibdir.
+ Automake 1.11.2 changed behaviour here, breaking the build.
+Author: Iain Lane <laney@debian.org>
+Forwarded: no
+
+Index: b/Makefile.am
+===================================================================
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,3 +1,3 @@
+ EXTRA_DIST =  expansions.m4
+ SUBDIRS = Zeitgeist
+-EXTRA_DIST = LICENSE MAINTAINERS NEWS
++EXTRA_DIST += LICENSE MAINTAINERS NEWS
+Index: b/Zeitgeist/Makefile.am
+===================================================================
+--- a/Zeitgeist/Makefile.am
++++ b/Zeitgeist/Makefile.am
+@@ -13,7 +13,8 @@
+ ZS_GACUTIL_UNINSTALL = $(GACUTIL) -u $(ZS_ASSEMBLY_NAME) $(GACUTIL_FLAGS)
+ 
+ # magic automake variables
+-pkglib_DATA = \
++programfilesdir = $(pkglibdir)
++programfiles_DATA = \
+ 	$(ZS_ASSEMBLY_TARGET) $(ZS_ASSEMBLY_TARGET).mdb
+ 
+ EXTRA_DIST = \

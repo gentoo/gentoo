@@ -1,0 +1,187 @@
+# ChangeLog for dev-java/gjdoc
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/gjdoc/ChangeLog,v 1.51 2014/08/10 20:13:49 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> gjdoc-0.7.9-r2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  03 Aug 2014; Ralph Sennhauser <sera@gentoo.org> -gjdoc-0.7.9-r1.ebuild:
+  Remove old
+
+  11 May 2012; Alexis Ballier <aballier@gentoo.org> gjdoc-0.7.9-r2.ebuild:
+  keyword ~amd64-fbsd
+
+  09 Feb 2010; Joseph Jezak <josejx@gentoo.org> gjdoc-0.7.9-r2.ebuild:
+  Marked ppc stable for bug #296215.
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  gjdoc-0.7.9-r2.ebuild:
+  Transfer Prefix keywords
+
+  14 Dec 2009; Brent Baude <ranger@gentoo.org> gjdoc-0.7.9-r2.ebuild:
+  Marking gjdoc-0.7.9-r2 ppc64 for bug 296215
+
+  09 Dec 2009; Markus Meier <maekke@gentoo.org> gjdoc-0.7.9-r2.ebuild:
+  amd64/x86 stable, bug #296215
+
+*gjdoc-0.7.9-r2 (13 Nov 2009)
+
+  13 Nov 2009; Vlastimil Babka <caster@gentoo.org> -gjdoc-0.7.9.ebuild,
+  +gjdoc-0.7.9-r2.ebuild:
+  Revbump to use gjl launcher instead of custom script. Bug #293007 by
+  Martin von Gagern <Martin.vGagern@gmx.net>.
+
+  24 Mar 2009; Petteri Räty <betelgeuse@gentoo.org> gjdoc-0.7.9.ebuild,
+  gjdoc-0.7.9-r1.ebuild:
+  Add slot deps for antlr.
+
+  24 Mar 2009; Petteri Räty <betelgeuse@gentoo.org> -gjdoc-0.7.8.ebuild:
+  Remove old version.
+
+  18 Mar 2009; Brent Baude <ranger@gentoo.org> gjdoc-0.7.9-r1.ebuild:
+  stable ppc, bug 262541
+
+  15 Mar 2009; Markus Meier <maekke@gentoo.org> gjdoc-0.7.9-r1.ebuild:
+  amd64/x86 stable, bug #262541
+
+  15 Mar 2009; Brent Baude <ranger@gentoo.org> gjdoc-0.7.9-r1.ebuild:
+  stable ppc64, bug 262541
+
+  09 Mar 2009; Markus Meier <maekke@gentoo.org> gjdoc-0.7.9.ebuild:
+  amd64/x86 stable, bug #259036
+
+  16 Feb 2009; Brent Baude <ranger@gentoo.org> gjdoc-0.7.9.ebuild:
+  stable ppc, bug 259036
+
+*gjdoc-0.7.9-r1 (15 Feb 2009)
+
+  15 Feb 2009; Petteri Räty <betelgeuse@gentoo.org>
+  +files/0.7.9-main-execute.patch, +gjdoc-0.7.9-r1.ebuild:
+  Add patch for a method in Main.java that is needed by testng.
+
+  04 Jan 2009; Raúl Porcel <armin76@gentoo.org> gjdoc-0.7.8.ebuild,
+  gjdoc-0.7.9.ebuild:
+  Drop ia64 keyword
+
+  01 Oct 2008; Petteri Räty <betelgeuse@gentoo.org> gjdoc-0.7.9.ebuild:
+  Don't run econf twice.
+
+  27 Sep 2008; Petteri Räty <betelgeuse@gentoo.org> gjdoc-0.7.9.ebuild:
+  Use EAPI 2 use dependencies to require antlr with the java use flag. Fixes
+  bug #233765.
+
+*gjdoc-0.7.9 (22 Apr 2008)
+
+  22 Apr 2008; Petteri Räty <betelgeuse@gentoo.org> +gjdoc-0.7.9.ebuild:
+  Version bump. Fixes bug #218805.
+
+  22 Apr 2008; Petteri Räty <betelgeuse@gentoo.org> -gjdoc-0.7.7-r1.ebuild:
+  Remove old version.
+
+  25 Nov 2007; Brent Baude <ranger@gentoo.org> gjdoc-0.7.8.ebuild:
+  Marking gjdoc-0.7.8 ppc for bug 199248
+
+  18 Nov 2007; Markus Rothe <corsair@gentoo.org> gjdoc-0.7.8.ebuild:
+  Stable on ppc64; bug #199248
+
+  17 Nov 2007; Dawid Węgliński <cla@gentoo.org> gjdoc-0.7.8.ebuild:
+  Stable on x86 (bug #199248)
+
+  17 Nov 2007; William L. Thomson Jr. <wltjr@gentoo.org> gjdoc-0.7.8.ebuild:
+  amd64 stable, bug #199248.
+
+*gjdoc-0.7.8 (22 Apr 2007)
+
+  22 Apr 2007; Petteri Räty <betelgeuse@gentoo.org> +gjdoc-0.7.8.ebuild:
+  Version bump. Features support for 1.5 features in GNU Classpath.
+
+  14 Feb 2007; Vlastimil Babka <caster@gentoo.org> -gjdoc-0.7.7.ebuild:
+  Cleanup.
+
+  10 Jan 2007; Steve Dibb <beandog@gentoo.org> gjdoc-0.7.7-r1.ebuild:
+  amd64 stable, bug 157464
+
+  31 Dec 2006; Markus Rothe <corsair@gentoo.org> gjdoc-0.7.7-r1.ebuild:
+  Stable on ppc64; bug #157464
+
+  09 Dec 2006; nixnut <nixnut@gentoo.org> gjdoc-0.7.7-r1.ebuild:
+  Stable on ppc wrt bug 157464
+
+  09 Dec 2006; Diego Pettenò <flameeyes@gentoo.org> gjdoc-0.7.7-r1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  08 Dec 2006; Vlastimil Babka <caster@gentoo.org>
+  +files/gjdoc-0.7.7-gcp.patch, gjdoc-0.7.7-r1.ebuild:
+  Fix building on fbsd, thanks to Diego Pettenò <flameeyes@gentoo.org>, bug
+  #157389.
+
+  08 Dec 2006; Christian Faulhammer <opfer@gentoo.org>
+  gjdoc-0.7.7-r1.ebuild:
+  stable x86, bug #157464
+
+  16 Oct 2006; Joshua Nichols <nichoj@gentoo.org> gjdoc-0.7.7-r1.ebuild:
+  Keyworded ~ia64.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> gjdoc-0.7.7.ebuild,
+  gjdoc-0.7.7-r1.ebuild:
+  Dropping sparc keywords, see #96229
+
+  19 Aug 2006; Thomas Cort <tcort@gentoo.org> gjdoc-0.7.7.ebuild:
+  Stable on amd64 wrt Bug #141048.
+
+  13 Aug 2006; Markus Rothe <corsair@gentoo.org> gjdoc-0.7.7.ebuild:
+  Stable on ppc64; bug #141048
+
+  09 Aug 2006; Joshua Jackson <tsunam@gentoo.org> gjdoc-0.7.7.ebuild:
+  Stable x86; bug #137827
+
+  20 Jul 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  gjdoc-0.7.7.ebuild:
+  stable on ppc (Bug #141048)
+
+*gjdoc-0.7.7-r1 (01 Jul 2006)
+
+  01 Jul 2006; Joshua Nichols <nichoj@gentoo.org> +gjdoc-0.7.7-r1.ebuild:
+  Revision bump to support new Java system.
+
+  15 May 2006; Petteri Räty <betelgeuse@gentoo.org> gjdoc-0.7.7.ebuild:
+  Changed SRC_URI to use mirror://gnu.
+
+  06 Feb 2006; Markus Rothe <corsair@gentoo.org> gjdoc-0.7.7.ebuild:
+  Added ~ppc64; bug #119910
+
+  23 Jan 2006; Petteri Räty <betelgeuse@gentoo.org> -gjdoc-0.7.6.ebuild:
+  Removed old version.
+
+  23 Jan 2006; Petteri Räty <betelgeuse@gentoo.org> gjdoc-0.7.7.ebuild:
+  Forcing to use java and javac binaries to solve bug #116804. Thanks to Zac
+  Medico <zmedico@gmail.com> for the fix.
+
+*gjdoc-0.7.7 (19 Dec 2005)
+
+  19 Dec 2005; Petteri Räty <betelgeuse@gentoo.org> -gjdoc-0.7.5.ebuild,
+  +gjdoc-0.7.7.ebuild:
+  Version bump. Added xmldoclet and source use flags. Removed the oldest 
+  version.
+
+  21 Nov 2005; Joseph Jezak <josejx@gentoo.org> gjdoc-0.7.5.ebuild,
+  gjdoc-0.7.6.ebuild:
+  Marked ~ppc for bug #106829.
+
+*gjdoc-0.7.6 (16 Oct 2005)
+
+  16 Oct 2005; Petteri Räty <betelgeuse@gentoo.org> +gjdoc-0.7.6.ebuild:
+  Version bump.
+
+  02 Oct 2005; Gustavo Felisberto <humpback@gentoo.org>; gjdoc-0.7.5.ebuild:
+  Added ~amd64
+
+  01 Oct 2005; Jason Wever <weeve@gentoo.org> gjdoc-0.7.5.ebuild:
+  Added ~sparc keyword wrt bug #107432.
+
+*gjdoc-0.7.5 (27 Sep 2005)
+
+  27 Sep 2005; Petteri Räty <betelgeuse@gentoo.org> +files/gjdoc,
+  +metadata.xml, +gjdoc-0.7.5.ebuild:
+  Initial addition. Thanks to nichoj and belanger for the initial packaging in
+  experimental.

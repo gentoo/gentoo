@@ -1,0 +1,71 @@
+# ChangeLog for net-ftp/bareftp
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/bareftp/ChangeLog,v 1.15 2013/08/26 14:06:11 patrick Exp $
+
+*bareftp-0.3.10 (26 Aug 2013)
+
+  26 Aug 2013; Patrick Lauer <patrick@gentoo.org> +bareftp-0.3.10.ebuild:
+  Bump
+
+  16 Jun 2012; Agostino Sarubbo <ago@gentoo.org> -bareftp-0.3.8.ebuild:
+  Remove old as requested by Pacho Ramos, <pacho@gentoo.org>
+
+  22 May 2012; Agostino Sarubbo <ago@gentoo.org> bareftp-0.3.9.ebuild:
+  Stable for amd64, wrt bug #407701
+
+  09 Apr 2012; Markus Meier <maekke@gentoo.org> bareftp-0.3.9.ebuild:
+  x86 stable, bug #407701
+
+*bareftp-0.3.9 (22 Jan 2012)
+
+  22 Jan 2012; Pacho Ramos <pacho@gentoo.org> +bareftp-0.3.9.ebuild,
+  -bareftp-0.3.7.ebuild:
+  Version bump, drop old.
+
+  30 Jun 2011; Christoph Mende <angelos@gentoo.org> bareftp-0.3.8.ebuild:
+  Stable on amd64 wrt bug #371163
+
+  21 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> bareftp-0.3.8.ebuild:
+  x86 stable wrt bug #371163
+
+*bareftp-0.3.8 (18 Apr 2011)
+
+  18 Apr 2011; Christoph Mende <angelos@gentoo.org> +bareftp-0.3.8.ebuild:
+  Version bump
+
+  29 Jan 2011; Markos Chandras <hwoarang@gentoo.org> bareftp-0.3.7.ebuild:
+  Stable on amd64 wrt bug #352808
+
+  29 Jan 2011; Christian Faulhammer <fauli@gentoo.org> bareftp-0.3.7.ebuild:
+  stable x86, bug 352808
+
+*bareftp-0.3.7 (10 Dec 2010)
+
+  10 Dec 2010; Pacho Ramos <pacho@gentoo.org> -bareftp-0.3.4.ebuild,
+  +bareftp-0.3.7.ebuild:
+  Version bump with bugfixes, including a fix for tests and a security one (bug
+  #348340). Remove old.
+
+*bareftp-0.3.4 (03 Jul 2010)
+
+  03 Jul 2010; Pacho Ramos <pacho@gentoo.org> -bareftp-0.2.2.ebuild,
+  -files/bareftp-0.2.2-script.patch, -bareftp-0.2.3.ebuild,
+  +bareftp-0.3.4.ebuild:
+  Version bump with lots of bugfixes and fixing tests (bug #279892 by
+  Diego). Remove old and buggy versions.
+
+  11 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  bareftp-0.2.2.ebuild, bareftp-0.2.3.ebuild:
+  Fix DEPEND/RDEPEND assignment.
+
+*bareftp-0.2.3 (18 Jun 2009)
+
+  18 Jun 2009; Peter Alfredsen <loki_val@gentoo.org> +bareftp-0.2.3.ebuild:
+  Bump
+
+*bareftp-0.2.2 (21 Apr 2009)
+
+  21 Apr 2009; Peter Alfredsen <loki_val@gentoo.org>
+  +files/bareftp-0.2.2-script.patch, +metadata.xml, +bareftp-0.2.2.ebuild:
+  Initial commit. Ebuild by Sebastian Magrí <sebasmagri@gmail.com> . Bug
+  266932.

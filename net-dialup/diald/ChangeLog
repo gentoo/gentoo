@@ -1,0 +1,67 @@
+# ChangeLog for net-dialup/diald
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/diald/ChangeLog,v 1.17 2013/01/27 12:26:40 ulm Exp $
+
+  27 Jan 2013; Ulrich Müller <ulm@gentoo.org> diald-1.0-r2.ebuild:
+  Fix LICENSE, see LICENSE file, bugs 451890 and 426008.
+
+  14 May 2008; Diego Pettenò <flameeyes@gentoo.org> diald-1.0-r2.ebuild:
+  Depend on virtual/pam as the code builds fine with OpenPAM.
+
+  13 Apr 2008; Alin Năstac <mrness@gentoo.org>
+  files/diald-1.0-gentoo.patch, files/diald-1.0-nopam.patch,
+  diald-1.0-r2.ebuild:
+  Cosmetic pam changes (#210863).
+
+  18 Jul 2007; Alin Năstac <mrness@gentoo.org> -diald-1.0-r1.ebuild:
+  Remove old revision.
+
+  17 Jul 2007; Christian Faulhammer <opfer@gentoo.org> diald-1.0-r2.ebuild:
+  stable x86, bug 185016
+
+*diald-1.0-r2 (12 Jul 2007)
+
+  12 Jul 2007; Alin Năstac <mrness@gentoo.org>
+  files/diald-1.0-gentoo.patch, +files/diald-1.0-nopam.patch,
+  +diald-1.0-r2.ebuild:
+  Add pam USE flag and update /etc/pam.d/diald file (#185016). Add ~amd64
+  keyword.
+
+  14 Apr 2007; Alin Năstac <mrness@gentoo.org>
+  files/diald-1.0-gentoo.patch:
+  Fix pre-stripped QA warning.
+
+  21 Sep 2006; Alin Nastac <mrness@gentoo.org>
+  -files/diald-1.0-c-files.patch, files/diald-1.0-gentoo.patch,
+  +files/diald-1.0-posix.patch, diald-1.0-r1.ebuild:
+  Make source code POSIX.1-2001 compliant.
+
+  12 Mar 2006; Alin Nastac <mrness@gentoo.org> diald-1.0-r1.ebuild:
+  Quote strings containing env vars.
+
+  19 Sep 2005; Alin Nastac <mrness@gentoo.org>
+  files/diald-1.0-c-files.patch, files/diald-1.0-gentoo.patch,
+  diald-1.0-r1.ebuild:
+  Apply patches using epatch.
+
+  29 Aug 2005; Alin Nastac <mrness@gentoo.org> diald-1.0-r1.ebuild:
+  Fix cp -a usage for Gentoo BSD (#103487).
+
+  19 Nov 2003; Heinrich Wendel <lanius@gentoo.org> metadata.xml:
+  metadata
+
+*diald-1.0-r1 (22 May 2003)
+  
+  22 May 2003; Chuck Brewer <killian@gentoo.org>:
+  Added Manifest 
+
+*diald-1.0-r1 (3 May 2002)
+  
+  3 May 2002; Donny Davies <woodchip@gentoo.org> :
+  Added LICENSE, SLOT, $Headers.
+
+*diald-1.0 (2 Apr 2002)
+
+  2 Apr 2002; Donny Davies <woodchip@gentoo.org> :
+  Initial checkin to portage.
+

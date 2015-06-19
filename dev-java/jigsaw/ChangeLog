@@ -1,0 +1,13 @@
+# ChangeLog for dev-java/jigsaw
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jigsaw/ChangeLog,v 1.2 2012/12/16 14:12:53 pacho Exp $
+
+  16 Dec 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due retirement, #95685
+
+*jigsaw-2.2.6 (23 Feb 2012)
+
+  23 Feb 2012; Krzysztof Pawlik <nelchael@gentoo.org> +jigsaw-2.2.6.ebuild,
+  +files/jigsaw-2.2.6-build.xml.patch, +metadata.xml:
+  Initial version of htmlparser: W3 Consortium's Java-based Web server
+  libraries.

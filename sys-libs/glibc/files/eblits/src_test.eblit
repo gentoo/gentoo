@@ -1,0 +1,30 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/files/eblits/src_test.eblit,v 1.9 2014/09/17 22:53:43 vapier Exp $
+
+glibc_src_test() {
+	cd "$(builddir $1)"
+	nonfatal emake -j1 check && return 0
+	einfo "make check failed - re-running with --keep-going to get the rest of the results"
+	nonfatal emake -j1 -k check
+	ewarn "make check failed for ${ABI}-${CTARGET}-$1"
+	return 1
+}
+
+toolchain-glibc_src_test() {
+	local ret=0 t
+	for t in linuxthreads nptl ; do
+		if want_${t} ; then
+			glibc_src_test ${t}
+			: $(( ret |= $? ))
+		fi
+	done
+	return ${ret}
+}
+
+eblit-glibc-src_test() {
+	# Give tests more time to complete.
+	export TIMEOUTFACTOR=5
+
+	foreach_abi toolchain-glibc_src_test || die "tests failed"
+}

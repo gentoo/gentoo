@@ -1,0 +1,217 @@
+# ChangeLog for net-misc/networkmanager-openconnect
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/networkmanager-openconnect/ChangeLog,v 1.38 2015/05/17 15:55:31 ago Exp $
+
+  17 May 2015; Agostino Sarubbo <ago@gentoo.org>
+  networkmanager-openconnect-1.0.2.ebuild:
+  Stable for x86, wrt bug #545980
+
+  17 May 2015; Agostino Sarubbo <ago@gentoo.org>
+  networkmanager-openconnect-1.0.2.ebuild:
+  Stable for amd64, wrt bug #545980
+
+*networkmanager-openconnect-1.0.2 (17 May 2015)
+
+  17 May 2015; Pacho Ramos <pacho@gentoo.org>
+  +networkmanager-openconnect-1.0.2.ebuild:
+  Version bump
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org>
+  networkmanager-openconnect-1.0.0.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org>
+  networkmanager-openconnect-1.0.0.ebuild:
+  amd64 stable, bug 534012
+
+*networkmanager-openconnect-1.0.0 (10 Jan 2015)
+
+  10 Jan 2015; Pacho Ramos <pacho@gentoo.org>
+  +networkmanager-openconnect-1.0.0.ebuild,
+  -networkmanager-openconnect-0.9.8.6.ebuild:
+  Version bump, drop old
+
+  19 Dec 2014; Pacho Ramos <pacho@gentoo.org>
+  networkmanager-openconnect-0.9.10.0.ebuild:
+  amd64 stable, bug 529964
+
+  18 Dec 2014; Pacho Ramos <pacho@gentoo.org>
+  networkmanager-openconnect-0.9.10.0.ebuild:
+  x86 stable, bug 529964
+
+*networkmanager-openconnect-0.9.10.0-r1 (10 Dec 2014)
+
+  10 Dec 2014; Mike Gilbert <floppym@gentoo.org>
+  +files/0.9.10.0/0016-Add-HOTP-support.patch,
+  +files/0.9.10.0/0017-Always-return-success-from-auth-dialog.patch,
+  +files/0.9.10.0/0025-Support-libopenconnect.so.4.patch,
+  +files/0.9.10.0/0026-Drop-support-for-libopenconnect.so.1.patch, +files/0.9.10
+  .0/0028-Update-to-new-hash-handling-fix-to-match-stored-cert.patch,
+  +networkmanager-openconnect-0.9.10.0-r1.ebuild,
+  networkmanager-openconnect-0.9.10.0.ebuild:
+  Backport support for >=openconnect-7.0.
+
+*networkmanager-openconnect-0.9.10.0 (22 Sep 2014)
+
+  22 Sep 2014; Pacho Ramos <pacho@gentoo.org>
+  +networkmanager-openconnect-0.9.10.0.ebuild:
+  Version bump
+
+  24 Jun 2014; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -networkmanager-openconnect-0.9.8.4.ebuild,
+  networkmanager-openconnect-0.9.8.6.ebuild,
+  -files/networkmanager-openconnect-0.9.8.4-auth-dialog-formchoice.patch,
+  -files/networkmanager-openconnect-0.9.8.4-auth-dialog-ignore.patch,
+  -files/networkmanager-openconnect-0.9.8.4-auth-dialog-newgroup.patch:
+  Missing libgnome-keyring dependency. Clean up old.
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org>
+  networkmanager-openconnect-0.9.8.6.ebuild:
+  x86 stable, bug 508862
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org>
+  networkmanager-openconnect-0.9.8.6.ebuild:
+  amd64 stable, bug 508862
+
+  27 Apr 2014; Pacho Ramos <pacho@gentoo.org>
+  -networkmanager-openconnect-0.9.8.4-r1.ebuild:
+  drop old
+
+*networkmanager-openconnect-0.9.8.6 (16 Mar 2014)
+
+  16 Mar 2014; Pacho Ramos <pacho@gentoo.org>
+  +networkmanager-openconnect-0.9.8.6.ebuild,
+  -networkmanager-openconnect-0.9.6.2.ebuild,
+  -networkmanager-openconnect-0.9.8.2.ebuild:
+  Version bump, drop old
+
+*networkmanager-openconnect-0.9.8.4-r1 (12 Mar 2014)
+
+  12 Mar 2014; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +networkmanager-openconnect-0.9.8.4-r1.ebuild,
+  +files/networkmanager-openconnect-0.9.8.4-auth-dialog-formchoice.patch,
+  +files/networkmanager-openconnect-0.9.8.4-auth-dialog-ignore.patch,
+  +files/networkmanager-openconnect-0.9.8.4-auth-dialog-newgroup.patch:
+  Fix support for >=openconnect-5.99 (bug #504192, thanks to Kobboi and Pacho
+  Ramos).
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org>
+  networkmanager-openconnect-0.9.8.4.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org>
+  networkmanager-openconnect-0.9.8.4.ebuild:
+  amd64 stable, bug #478252
+
+*networkmanager-openconnect-0.9.8.4 (16 Sep 2013)
+
+  16 Sep 2013; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +networkmanager-openconnect-0.9.8.4.ebuild:
+  Version bump.
+
+  16 Jun 2013; Pacho Ramos <pacho@gentoo.org>
+  -networkmanager-openconnect-0.9.8.0.ebuild, metadata.xml:
+  Drop old, gnome team will take this
+
+*networkmanager-openconnect-0.9.8.2 (10 Jun 2013)
+
+  10 Jun 2013; Pacho Ramos <pacho@gentoo.org>
+  +networkmanager-openconnect-0.9.8.2.ebuild,
+  -networkmanager-openconnect-0.9.4.0.ebuild:
+  Version bump, drop old
+
+*networkmanager-openconnect-0.9.8.0 (07 Apr 2013)
+
+  07 Apr 2013; Pacho Ramos <pacho@gentoo.org>
+  +networkmanager-openconnect-0.9.8.0.ebuild:
+  Version bump for Gnome 3.8
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #333419
+
+  31 Jan 2013; Alexandre Rostovtsev <tetromino@gentoo.org>
+  networkmanager-openconnect-0.9.4.0.ebuild,
+  networkmanager-openconnect-0.9.6.2.ebuild:
+  Add ":=" dependencies and gnome2_disable_deprecation_warning, as requested by
+  Pacho Ramos (bug #454742). Update license.
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  networkmanager-openconnect-0.9.6.2.ebuild:
+  Stable for x86, wrt bug #453936
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  networkmanager-openconnect-0.9.6.2.ebuild:
+  Stable for amd64, wrt bug #453936
+
+  27 Jan 2013; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -networkmanager-openconnect-0.8.4.ebuild:
+  Drop old.
+
+  24 Jan 2013; Alexandre Rostovtsev <tetromino@gentoo.org> metadata.xml:
+  Add myself to maintainer list to reflect reality.
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer as talked with him.
+
+*networkmanager-openconnect-0.9.6.2 (13 Sep 2012)
+
+  13 Sep 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -networkmanager-openconnect-0.9.0.ebuild,
+  -networkmanager-openconnect-0.9.2.0.ebuild,
+  -networkmanager-openconnect-0.9.2.0-r1.ebuild,
+  -files/networkmanager-openconnect-0.9.2.0-glib-2.31.patch,
+  +networkmanager-openconnect-0.9.6.2.ebuild:
+  Version bump, now stores passwords in gnome-keyring. Drop old.
+
+  14 Aug 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  networkmanager-openconnect-0.8.4.ebuild,
+  networkmanager-openconnect-0.9.0.ebuild,
+  networkmanager-openconnect-0.9.2.0.ebuild,
+  networkmanager-openconnect-0.9.2.0-r1.ebuild,
+  networkmanager-openconnect-0.9.4.0.ebuild:
+  Renamed 'gnome' USE flag to 'gtk', since non-gnome users probably want it too
+  (bug #427406, thanks to Alex Brandt).
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  networkmanager-openconnect-0.8.4.ebuild,
+  networkmanager-openconnect-0.9.0.ebuild,
+  networkmanager-openconnect-0.9.2.0.ebuild,
+  networkmanager-openconnect-0.9.2.0-r1.ebuild,
+  networkmanager-openconnect-0.9.4.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*networkmanager-openconnect-0.9.4.0 (27 Mar 2012)
+
+  27 Mar 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +networkmanager-openconnect-0.9.4.0.ebuild:
+  Version bump for the 0.9.4 series.
+
+*networkmanager-openconnect-0.9.2.0-r1 (14 Mar 2012)
+
+  14 Mar 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +networkmanager-openconnect-0.9.2.0-r1.ebuild,
+  +files/networkmanager-openconnect-0.9.2.0-glib-2.31.patch:
+  Create nm-openconnect user (bug #408141, thanks to Berthold Humkamp). Fix
+  building with glib-2.31.
+
+*networkmanager-openconnect-0.9.2.0 (25 Nov 2011)
+
+  25 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -networkmanager-openconnect-0.9_rc2.ebuild,
+  +networkmanager-openconnect-0.9.2.0.ebuild:
+  Version bump to the 0.9.2 release, drop old. Improves warning messages.
+
+*networkmanager-openconnect-0.9.0 (26 Aug 2011)
+
+  26 Aug 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  networkmanager-openconnect-0.8.4.ebuild,
+  +networkmanager-openconnect-0.9.0.ebuild:
+  Fix bug 380641, bump to 0.9.0, add missing libxml2 dep
+
+*networkmanager-openconnect-0.9_rc2 (17 Aug 2011)
+*networkmanager-openconnect-0.8.4 (17 Aug 2011)
+
+  17 Aug 2011; Robert Piasek <dagger@gentoo.org>
+  +networkmanager-openconnect-0.8.4.ebuild,
+  +networkmanager-openconnect-0.9_rc2.ebuild, +metadata.xml:
+  Initial version of networkmanager-openconnect plugin for NM-0.8 and NM-0.9

@@ -1,0 +1,11 @@
+diff -Naur obfsproxy-0.2.9.orig/setup.py obfsproxy-0.2.9/setup.py
+--- obfsproxy-0.2.9.orig/setup.py	2014-05-01 14:37:27.000000000 -0400
++++ obfsproxy-0.2.9/setup.py	2014-05-02 09:28:37.278675261 -0400
+@@ -32,7 +32,6 @@
+         'setuptools',
+         'PyCrypto',
+         'Twisted',
+-        'argparse',
+         'pyptlib >= 0.0.6',
+         'pyyaml'
+         ],

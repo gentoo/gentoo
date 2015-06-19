@@ -1,0 +1,30 @@
+diff -Naur libsmbios-2.2.19.orig/src/bin/dellMediaDirectCtl.cpp libsmbios-2.2.19/src/bin/dellMediaDirectCtl.cpp
+--- libsmbios-2.2.19.orig/src/bin/dellMediaDirectCtl.cpp	2009-02-26 14:29:03.000000000 +0000
++++ libsmbios-2.2.19/src/bin/dellMediaDirectCtl.cpp	2011-01-20 06:55:48.000000000 +0000
+@@ -183,16 +183,21 @@
+ {
+     iopl(3);
+ 
++    u32 tmpebx;
+     __asm__ __volatile__ (
+-           //   magic    port
+-        "outb   %%al,    %%dx     \n\t"
+-
++          "movl   %%ebx,%[tmpebx]\n\t"
++          "movl   %[ebx],%%ebx\n\t"
++      //   magic    port
++          "outb   %%al,    %%dx     \n\t"
++          "movl   %%ebx,%[ebx]\n\t"
++          "movl   %[tmpebx],%%ebx\n\t"
+         : /* output args */
+           "=a" (r->eax),
+-          "=b" (r->ebx),
++          [ebx] "=rm" (r->ebx),
+           "=c" (r->ecx),
+           "=S" (r->esi),
+-          "=D" (r->edi)
++          "=D" (r->edi),
++          [tmpebx] "+m" (tmpebx)
+         : /* input args */
+           "0" (r->eax),
+           "1" (r->ebx),

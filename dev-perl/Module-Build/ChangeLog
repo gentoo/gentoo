@@ -1,0 +1,718 @@
+# ChangeLog for dev-perl/Module-Build
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Module-Build/ChangeLog,v 1.2 2015/06/13 12:37:49 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org> ChangeLog:
+  Move from perl-core to dev-perl
+
+  07 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -Module-Build-0.400.300-r1.ebuild, -Module-Build-0.420.0-r1.ebuild:
+  Remove old
+
+  04 Apr 2015; Mike Frysinger <vapier@gentoo.org> Module-Build-0.420.500.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org> Module-Build-0.420.500.ebuild:
+  Stable for alpha, wrt bug #536790
+
+  17 Feb 2015; Markus Meier <maekke@gentoo.org> Module-Build-0.420.500.ebuild:
+  arm stable, bug #536790
+
+  17 Feb 2015; Agostino Sarubbo <ago@gentoo.org> Module-Build-0.420.500.ebuild:
+  Stable for ia64, wrt bug #536790
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org> Module-Build-0.420.500.ebuild:
+  Stable for sparc, wrt bug #536790
+
+  15 Feb 2015; Agostino Sarubbo <ago@gentoo.org> Module-Build-0.420.500.ebuild:
+  Stable for ppc64, wrt bug #536790
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org> Module-Build-0.420.500.ebuild:
+  Stable for ppc, wrt bug #536790
+
+  13 Feb 2015; Jeroen Roovers <jer@gentoo.org> Module-Build-0.420.500.ebuild:
+  Stable for HPPA (bug #536790).
+
+  13 Feb 2015; Agostino Sarubbo <ago@gentoo.org> Module-Build-0.420.500.ebuild:
+  Stable for x86, wrt bug #536790
+
+  08 Feb 2015; Mikle Kolyada <zlogene@gentoo.org> Module-Build-0.420.500.ebuild:
+  amd64 stable wrt bug #536790
+
+  29 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  Module-Build-0.420.500.ebuild:
+  Copy keywords from dev-lang/perl-5.20
+
+*Module-Build-0.420.500 (29 Nov 2014)
+
+  29 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Module-Build-0.420.500.ebuild:
+  Add Perl 5.20 version; the bundled copy is deprecated
+
+*Module-Build-0.400.300-r1 (26 Jul 2014)
+*Module-Build-0.420.0-r1 (26 Jul 2014)
+
+  26 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Module-Build-0.400.300-r1.ebuild, +Module-Build-0.420.0-r1.ebuild,
+  -Module-Build-0.400.300.ebuild, -Module-Build-0.420.0.ebuild:
+  EAPI bump
+
+  09 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -Module-Build-0.36.07.ebuild, -Module-Build-0.362.400.ebuild,
+  -Module-Build-0.380.0.ebuild, -Module-Build-0.400.0.ebuild,
+  -Module-Build-0.400.100.ebuild, -Module-Build-0.400.200.ebuild,
+  -Module-Build-0.400.700.ebuild:
+  Remove old
+
+*Module-Build-0.420.0 (10 Mar 2014)
+
+  10 Mar 2014; Vladimir Smirnov <civil@gentoo.org> +Module-Build-0.420.0.ebuild:
+  Version bump
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org> Module-Build-0.36.07.ebuild,
+  Module-Build-0.362.400.ebuild, Module-Build-0.380.0.ebuild,
+  Module-Build-0.400.0.ebuild, Module-Build-0.400.100.ebuild,
+  Module-Build-0.400.200.ebuild, Module-Build-0.400.300.ebuild,
+  Module-Build-0.400.700.ebuild:
+  Add arm64 love.
+
+  17 Jan 2014; Mike Frysinger <vapier@gentoo.org> Module-Build-0.400.300.ebuild:
+  Mark m68k stable.
+
+  31 Dec 2013; Mikle Kolyada <zlogene@gentoo.org>
+  -Module-Build-0.34.0201.ebuild:
+  Drop old
+
+*Module-Build-0.400.700 (14 Aug 2013)
+
+  14 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +Module-Build-0.400.700.ebuild:
+  Bump
+
+  02 Mar 2013; Agostino Sarubbo <ago@gentoo.org> Module-Build-0.400.300.ebuild:
+  Stable for sh, wrt bug #458122
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Module-Build-0.400.300.ebuild:
+  Stable for sparc, wrt bug #458122
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Module-Build-0.400.300.ebuild:
+  Stable for ia64, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Module-Build-0.400.300.ebuild:
+  Stable for arm, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Module-Build-0.400.300.ebuild:
+  Stable for s390, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Module-Build-0.400.300.ebuild:
+  Stable for alpha, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Module-Build-0.400.300.ebuild:
+  Stable for hppa, wrt bug #458122
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org> Module-Build-0.400.300.ebuild:
+  Add ~arm-linux keyword.
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Module-Build-0.400.300.ebuild:
+  Stable for ppc, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Module-Build-0.400.300.ebuild:
+  Stable for ppc64, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Module-Build-0.400.300.ebuild:
+  Stable for x86, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Module-Build-0.400.300.ebuild:
+  Stable for amd64, wrt bug #458122
+
+  06 Jan 2013; Mike Frysinger <vapier@gentoo.org> Module-Build-0.34.0201.ebuild,
+  Module-Build-0.36.07.ebuild, Module-Build-0.362.400.ebuild,
+  Module-Build-0.380.0.ebuild, Module-Build-0.400.0.ebuild,
+  Module-Build-0.400.100.ebuild, Module-Build-0.400.200.ebuild,
+  Module-Build-0.400.300.ebuild:
+  Add back m68k keywords.
+
+*Module-Build-0.400.300 (22 Aug 2012)
+
+  22 Aug 2012; Torsten Veller <tove@gentoo.org> +Module-Build-0.400.300.ebuild:
+  Version bump
+
+*Module-Build-0.400.200 (27 Jul 2012)
+
+  27 Jul 2012; Torsten Veller <tove@gentoo.org> +Module-Build-0.400.200.ebuild:
+  Version bump
+
+*Module-Build-0.400.100 (28 Jun 2012)
+
+  28 Jun 2012; Torsten Veller <tove@gentoo.org> +Module-Build-0.400.100.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  15 May 2012; Mark Loeser <halcy0n@gentoo.org> Module-Build-0.380.0.ebuild:
+  Stable for ppc64; bug #393397
+
+  28 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  Module-Build-0.400.0.ebuild:
+  keyword ~amd64-fbsd
+
+*Module-Build-0.400.0 (25 Feb 2012)
+
+  25 Feb 2012; Torsten Veller <tove@gentoo.org> +Module-Build-0.400.0.ebuild:
+  Version bump
+
+  02 Feb 2012; Brent Baude <ranger@gentoo.org> Module-Build-0.380.0.ebuild:
+  Marking Module-Build-0.380.0 ppc stable for bug 393397
+
+  15 Jan 2012; Raúl Porcel <armin76@gentoo.org> Module-Build-0.380.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #393397
+
+  22 Dec 2011; Markus Meier <maekke@gentoo.org> Module-Build-0.380.0.ebuild:
+  x86 stable, bug #393397
+
+  20 Dec 2011; Agostino Sarubbo <ago@gentoo.org> Module-Build-0.380.0.ebuild:
+  Stable for AMD64, wrt bug #393397
+
+  14 Dec 2011; Markus Meier <maekke@gentoo.org> Module-Build-0.380.0.ebuild:
+  arm stable, bug #393397
+
+  07 Dec 2011; Jeroen Roovers <jer@gentoo.org> Module-Build-0.380.0.ebuild:
+  Stable for HPPA (bug #393397).
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org> Module-Build-0.34.0201.ebuild,
+  Module-Build-0.36.07.ebuild:
+  Drop ~sparc-fbsd KEYWORD
+
+  26 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  Module-Build-0.380.0.ebuild:
+  Marked ~ppc/~ppc64 wrt #357599
+
+  07 Jul 2011; Alexis Ballier <aballier@gentoo.org>
+  Module-Build-0.380.0.ebuild:
+  keyword ~x86-fbsd, bug #357599
+
+  13 Jun 2011; Matt Turner <mattst88@gentoo.org> Module-Build-0.380.0.ebuild:
+  Added ~mips, bug 357599
+
+  02 May 2011; Fabian Groffen <grobian@gentoo.org> Module-Build-0.380.0.ebuild:
+  Marked ~x64-freebsd
+
+*Module-Build-0.380.0 (06 Mar 2011)
+
+  06 Mar 2011; Torsten Veller <tove@gentoo.org> +Module-Build-0.380.0.ebuild:
+  Version bump
+
+  27 Feb 2011; Fabian Groffen <grobian@gentoo.org>
+  Module-Build-0.362.400.ebuild:
+  Add Prefix keywords, bug #353115
+
+  27 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  Module-Build-0.362.400.ebuild:
+  Marked ~ppc/~ppc64 wrt #353115
+
+  30 Jan 2011; Raúl Porcel <armin76@gentoo.org> Module-Build-0.362.400.ebuild:
+  Add ~alpha/~arm/~ia64/~m68k/~s390/~sh/~sparc wrt #353115
+
+  29 Jan 2011; Jeroen Roovers <jer@gentoo.org> Module-Build-0.362.400.ebuild:
+  Marked ~hppa (bug #353115).
+
+*Module-Build-0.362.400 (29 Jan 2011)
+
+  29 Jan 2011; Torsten Veller <tove@gentoo.org> +Module-Build-0.362.400.ebuild:
+  Version bump
+
+  17 Jan 2011; Torsten Veller <tove@gentoo.org> -Module-Build-0.35.ebuild,
+  -Module-Build-0.36.01.ebuild, -Module-Build-0.36.03.ebuild:
+  Cleanup
+
+  07 Dec 2010; Matt Turner <mattst88@gentoo.org>
+  Module-Build-0.36.07.ebuild:
+  Added ~mips, bug 298183.
+
+  22 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  Module-Build-0.36.07.ebuild:
+  ppc64 stable wrt #333421
+
+  18 Oct 2010; Jeroen Roovers <jer@gentoo.org> Module-Build-0.36.07.ebuild:
+  Stable for HPPA (bug #323529).
+
+  27 Jun 2010; <nixnut@gentoo.org> Module-Build-0.36.07.ebuild:
+  ppc stable #323529
+
+  21 Jun 2010; Raúl Porcel <armin76@gentoo.org>
+  Module-Build-0.36.07.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #323529
+
+  15 Jun 2010; Torsten Veller <tove@gentoo.org> Module-Build-0.36.07.ebuild:
+  Stable on amd64 and x86 (#323529)
+
+*Module-Build-0.36.07 (07 Apr 2010)
+
+  07 Apr 2010; Torsten Veller <tove@gentoo.org>
+  +Module-Build-0.36.07.ebuild:
+  Version bump
+
+  23 Feb 2010; Joseph Jezak <josejx@gentoo.org> Module-Build-0.36.01.ebuild,
+  Module-Build-0.36.03.ebuild:
+  Marked ~ppc for bug #298183.
+
+  08 Feb 2010; Fabian Groffen <grobian@gentoo.org>
+  Module-Build-0.36.03.ebuild:
+  Marked ~ppc-aix, bug #298183
+
+*Module-Build-0.36.03 (21 Jan 2010)
+
+  21 Jan 2010; Torsten Veller <tove@gentoo.org>
+  +Module-Build-0.36.03.ebuild:
+  Version bump
+
+  17 Jan 2010; Raúl Porcel <armin76@gentoo.org>
+  Module-Build-0.36.01.ebuild:
+  Add ~alpha/~ia64/~m68k/~s390/~sh/~sparc wrt #298183
+
+  17 Jan 2010; Torsten Veller <tove@gentoo.org>
+  -Module-Build-0.28.08.ebuild, -Module-Build-0.32.ebuild,
+  -Module-Build-0.33.ebuild, -Module-Build-0.34.ebuild:
+  Cleanup
+
+  10 Jan 2010; Markus Meier <maekke@gentoo.org> Module-Build-0.36.01.ebuild:
+  add ~arm, bug #298183
+
+  09 Jan 2010; Fabian Groffen <grobian@gentoo.org>
+  Module-Build-0.36.01.ebuild:
+  Add back Prefix keywords, bug #298183
+
+  09 Jan 2010; Alexis Ballier <aballier@gentoo.org>
+  Module-Build-0.36.01.ebuild:
+  keyword ~sparc-fbsd, bug #298183
+
+  07 Jan 2010; Alexis Ballier <aballier@gentoo.org>
+  Module-Build-0.36.01.ebuild:
+  keyword ~x86-fbsd, bug #298183
+
+  06 Jan 2010; Brent Baude <ranger@gentoo.org> Module-Build-0.36.01.ebuild:
+  Marking Module-Build-0.36.01 ~ppc64 for bug 298183
+
+  05 Jan 2010; nixnut <nixnut@gentoo.org> Module-Build-0.34.0201.ebuild:
+  ppc stable #288026
+
+  24 Dec 2009; Jeroen Roovers <jer@gentoo.org> Module-Build-0.36.01.ebuild:
+  Marked ~hppa (bug #298183).
+
+*Module-Build-0.36.01 (24 Dec 2009)
+
+  24 Dec 2009; Torsten Veller <tove@gentoo.org>
+  +Module-Build-0.36.01.ebuild:
+  Version bump
+
+  16 Dec 2009; Jonathan Callen <abcd@gentoo.org> Module-Build-0.32.ebuild,
+  Module-Build-0.33.ebuild, Module-Build-0.34.ebuild,
+  Module-Build-0.34.0201.ebuild, Module-Build-0.35.ebuild:
+  QA: Transfer prefix keywords
+
+  14 Dec 2009; Raúl Porcel <armin76@gentoo.org>
+  Module-Build-0.34.0201.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #288026
+
+  10 Dec 2009; Brent Baude <ranger@gentoo.org>
+  Module-Build-0.34.0201.ebuild:
+  Marking Module-Build-0.34.0201 ppc64 stable for bug 288026
+
+  07 Dec 2009; Markus Meier <maekke@gentoo.org>
+  Module-Build-0.34.0201.ebuild:
+  arm stable, bug #288026
+
+  07 Dec 2009; Jeroen Roovers <jer@gentoo.org>
+  Module-Build-0.34.0201.ebuild:
+  Stable for HPPA (bug #288026).
+
+  04 Dec 2009; Torsten Veller <tove@gentoo.org>
+  Module-Build-0.34.0201.ebuild:
+  Stable on amd64 (#288026)
+
+  04 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  Module-Build-0.34.0201.ebuild:
+  x86 stable, bug 288026
+
+*Module-Build-0.35 (28 Aug 2009)
+
+  28 Aug 2009; Torsten Veller <tove@gentoo.org> +Module-Build-0.35.ebuild:
+  Version bump
+
+*Module-Build-0.34.0201 (10 Aug 2009)
+
+  10 Aug 2009; Torsten Veller <tove@gentoo.org>
+  +Module-Build-0.34.0201.ebuild:
+  Version bump
+
+*Module-Build-0.34 (08 Jul 2009)
+
+  08 Jul 2009; Torsten Veller <tove@gentoo.org> +Module-Build-0.34.ebuild:
+  Version bump
+
+*Module-Build-0.33 (04 May 2009)
+
+  04 May 2009; Torsten Veller <tove@gentoo.org> +Module-Build-0.33.ebuild:
+  Version bump
+
+  13 Mar 2009; Torsten Veller <tove@gentoo.org>
+  -Module-Build-0.28-r1.ebuild, -Module-Build-0.30.ebuild,
+  -Module-Build-0.31.ebuild, -Module-Build-0.31.012.ebuild:
+  Cleanup
+
+*Module-Build-0.32 (26 Feb 2009)
+
+  26 Feb 2009; Torsten Veller <tove@gentoo.org> +Module-Build-0.32.ebuild:
+  Version bump
+
+*Module-Build-0.31.012 (14 Jan 2009)
+
+  14 Jan 2009; Torsten Veller <tove@gentoo.org>
+  -Module-Build-0.31.011.ebuild, +Module-Build-0.31.012.ebuild:
+  Version bump. Cleanup
+
+*Module-Build-0.31.011 (13 Jan 2009)
+
+  13 Jan 2009; Torsten Veller <tove@gentoo.org>
+  +Module-Build-0.31.011.ebuild, -Module-Build-0.31011.ebuild:
+  Rename version: 0.31011 -> 0.31.011
+
+*Module-Build-0.31011 (13 Jan 2009)
+
+  13 Jan 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Module-Build-0.31011.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*Module-Build-0.31 (23 Dec 2008)
+
+  23 Dec 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +Module-Build-0.31.ebuild:
+  Version bump.
+
+  04 Nov 2008; Mike Frysinger <vapier@gentoo.org>
+  Module-Build-0.28.08.ebuild, Module-Build-0.30.ebuild:
+  Add arm/s390/sh love.
+
+*Module-Build-0.30 (01 Nov 2008)
+*Module-Build-0.28.08 (01 Nov 2008)
+*Module-Build-0.28-r1 (01 Nov 2008)
+
+  01 Nov 2008; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +Module-Build-0.28-r1.ebuild, +Module-Build-0.28.08.ebuild,
+  +Module-Build-0.30.ebuild:
+  dev-perl => perl-core migration
+
+  01 Nov 2008; Torsten Veller <tove@gentoo.org> module-build-0.28-r1.ebuild,
+  module-build-0.28.08.ebuild, module-build-0.30.ebuild:
+  New virtuals: Archive-Tar ExtUtils-CBuilder extutils-parsexs
+
+*module-build-0.30 (05 Oct 2008)
+
+  05 Oct 2008; Torsten Veller <tove@gentoo.org> +module-build-0.30.ebuild:
+  Version bump
+
+  15 Sep 2008; Torsten Veller <tove@gentoo.org> -module-build-0.28.ebuild,
+  -module-build-0.28.05.ebuild, -module-build-0.28.06.ebuild,
+  -module-build-0.28.07.ebuild, module-build-0.28.08.ebuild:
+  Cleanup. Remove dev-perl/version from DEPEND as it is not needed anymore.
+
+  28 Mar 2008; Jeroen Roovers <jer@gentoo.org> module-build-0.28.08.ebuild:
+  Stable for HPPA too.
+
+  29 Dec 2007; <welp@gentoo.org> module-build-0.28.08.ebuild:
+  Keyworded ~sparc-fbsd; bug 203655
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  module-build-0.28.08.ebuild:
+  amd64 stable
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  module-build-0.28.08.ebuild:
+  Stable on ppc.
+
+  11 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  module-build-0.28.08.ebuild:
+  alpha/ia64/x86 stable
+
+  07 Jul 2007; Tom Gall <tgall@gentoo.org> module-build-0.28.08.ebuild:
+  stable on ppc64
+
+  30 Jun 2007; Joshua Kinard <kumba@gentoo.org> module-build-0.28.08.ebuild:
+  Stable on mips.
+
+  21 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  module-build-0.28.07.ebuild, module-build-0.28.08.ebuild:
+  Marking sparc stable
+
+  12 May 2007; Joshua Kinard <kumba@gentoo.org> module-build-0.28.06.ebuild:
+  Stable on mips.
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  module-build-0.28.06.ebuild:
+  ppc stable
+
+*module-build-0.28.08 (29 Apr 2007)
+
+  29 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  +module-build-0.28.08.ebuild:
+  Version bump
+
+*module-build-0.28.07 (16 Apr 2007)
+
+  16 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  +module-build-0.28.07.ebuild:
+  Version bump
+
+  16 Apr 2007; Markus Rothe <corsair@gentoo.org>
+  module-build-0.28.05.ebuild:
+  Stable on ppc64
+
+  14 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  module-build-0.28.06.ebuild:
+  Marking sparc stable
+
+  09 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  module-build-0.28.06.ebuild:
+  Marking stable amd64
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> module-build-0.28.05.ebuild:
+  Stable on x86, bug #169152.
+
+*module-build-0.28.06 (23 Jan 2007)
+
+  23 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  +module-build-0.28.06.ebuild:
+  Version bump
+
+  21 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -module-build-0.25.ebuild, -module-build-0.26.10.ebuild,
+  -module-build-0.26.11.ebuild, module-build-0.28.ebuild,
+  module-build-0.28-r1.ebuild, -module-build-0.28.01.ebuild,
+  module-build-0.28.05.ebuild:
+  Ebuild maintenance
+
+  23 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  module-build-0.28.05.ebuild:
+  Stable on hppa
+
+  21 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  module-build-0.28.05.ebuild:
+  ppc stable
+
+  20 Oct 2006; Aron Griffis <agriffis@gentoo.org>
+  module-build-0.28.05.ebuild:
+  Mark 0.28.05 stable on ia64
+
+  20 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  module-build-0.28.05.ebuild:
+  Marking amd64 stable
+
+  20 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  module-build-0.28.05.ebuild:
+  Marking sparc stable
+
+  04 Sep 2006; Joshua Kinard <kumba@gentoo.org> module-build-0.28-r1.ebuild:
+  Marked stable on mips.
+
+*module-build-0.28.05 (21 Aug 2006)
+
+  21 Aug 2006; Yuval Yaari <yuval@gentoo.org> +module-build-0.28.05.ebuild:
+  Version bump
+
+  18 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  module-build-0.28-r1.ebuild:
+  Marking amd64 stable
+
+  19 Jul 2006; Bryan Østergaard <kloeri@gentoo.org>
+  module-build-0.28-r1.ebuild:
+  Stable on alpha.
+
+  14 Jul 2006; Thomas Cort <tcort@gentoo.org> module-build-0.28.ebuild:
+  Stable on alpha wrt Bug #136708.
+
+  02 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  module-build-0.28.ebuild:
+  Marking stable amd64
+
+  29 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  module-build-0.28-r1.ebuild:
+  Stable on hppa
+
+  27 Jun 2006; Guy Martin <gmsoft@gentoo.org> module-build-0.28.ebuild:
+  Stable on hppa.
+
+*module-build-0.28.01 (23 Jun 2006)
+
+  23 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  +module-build-0.28.01.ebuild:
+  Version bump upstream
+
+  18 Jun 2006; Andrej Kacian <ticho@gentoo.org> module-build-0.28.ebuild:
+  Stable on x86. Bug #136708.
+
+  18 Jun 2006; Markus Rothe <corsair@gentoo.org> module-build-0.28.ebuild:
+  Stable on ppc64; bug #136708
+
+*module-build-0.28-r1 (18 Jun 2006)
+
+  18 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  module-build-0.28.ebuild, +module-build-0.28-r1.ebuild:
+  Bug 137118 - PDEPENDing the deps we dropped since they do add post installed
+  functionality necessary for other tools that dep on module-build
+
+  16 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  module-build-0.28.ebuild:
+  Bug 136928 - dep loop fixed
+
+  14 Jun 2006; <nixnut@gentoo.org> module-build-0.28.ebuild:
+  Stable on ppc; bug #136708
+
+  11 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  module-build-0.28.ebuild:
+  Marking stable sparc
+
+  27 May 2006; <mcummings@gentoo.org> module-build-0.26.11.ebuild:
+  Marking stable amd64, tested on pitr, closes all the module-build sandbox bugs.
+
+  02 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  module-build-0.28.ebuild:
+  Add ~x86-fbsd keyword.
+
+*module-build-0.28 (01 May 2006)
+
+  01 May 2006; <mcumming@gentoo.org> +module-build-0.28.ebuild:
+  Version bump
+
+  24 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  module-build-0.26.11.ebuild:
+  Add ~x86-fbsd keyword.
+
+  26 Feb 2006; Joshua Kinard <kumba@gentoo.org> module-build-0.26.11.ebuild:
+  Marked stable on mips.
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org>
+  module-build-0.26.11.ebuild:
+  Mark 0.26.11 stable on alpha
+
+  21 Jan 2006; Markus Rothe <corsair@gentoo.org>
+  module-build-0.26.11.ebuild:
+  Stable on ppc64
+
+  15 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  module-build-0.26.11.ebuild:
+  Stable on ppc.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  module-build-0.26.11.ebuild:
+  marking sparc x86 stable
+
+*module-build-0.26.11 (19 Jul 2005)
+
+  19 Jul 2005; Michael Cummings <mcummings@gentoo.org>
+  +module-build-0.26.11.ebuild:
+  Version bump
+
+*module-build-0.26.10 (28 Apr 2005)
+
+  28 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -module-build-0.18.ebuild, -module-build-0.19.ebuild,
+  -module-build-0.22.ebuild, -module-build-0.26.08.ebuild,
+  +module-build-0.26.10.ebuild:
+  Cleaning mirror
+
+  01 Apr 2005; Simon Stelling <blubb@gentoo.org> module-build-0.25.ebuild:
+  stable on amd64
+
+  18 Mar 2005; Aron Griffis <agriffis@gentoo.org> module-build-0.25.ebuild,
+  module-build-0.26.08.ebuild:
+  Add ia64 and ~ia64 keywords
+
+  15 Mar 2005; Michael Cummings <mcummings@gentoo.org>
+  module-build-0.22.ebuild, module-build-0.25.ebuild,
+  module-build-0.26.08.ebuild:
+  What a mess. I had included a dependancy for dev-perl/extutils-parsexs becaue
+  module-build *can* use it. But extutils-parsexs now ships with a Build.PL,
+  which our intelligent new eclass saw (if it ships with a Build.PL, use it) and
+  caused a loop of dependancy nightmares. I've removed the dependancy, and we
+  can revisit this later for a better bootstrapping method if needed, but right
+  now it is out. This should finalize the additional reports on bug 68570.
+
+  12 Mar 2005; Markus Rothe <corsair@gentoo.org> module-build-0.25.ebuild:
+  Stable on ppc64
+
+*module-build-0.26.08 (11 Mar 2005)
+
+  11 Mar 2005; Michael Cummings <mcummings@gentoo.org>
+  +module-build-0.26.08.ebuild:
+  New version, fixes some bugs, nothing that has cropped up (yet)
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  22 Dec 2004; Yuta SATOH <nigoro@gentoo.org> module-build-0.25.ebuild:
+  added ~ppc64
+
+  21 Nov 2004; Hardave Riar <hardave@gentoo.org> module-build-0.25.ebuild:
+  Stable on mips, bug #68570
+
+  20 Nov 2004; Daniel Black <dragonheart@gentoo.org> module-build-0.25.ebuild:
+  ppc stable for bug #68570
+
+  31 Oct 2004; Michael Cummings <mcummings@gentoo.org>
+  module-build-0.25.ebuild:
+  Added tests for 0.25 for platform verification
+
+  24 Oct 2004; Bryan Østergaard <kloeri@gentoo.org>
+  module-build-0.25.ebuild:
+  Stable on alpha.
+
+  22 Oct 2004; Michael Cummings <mcummings@gentoo.org>
+  module-build-0.25.ebuild:
+  marking stable for x86 and sparc
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> module-build-0.22.ebuild:
+  Stable on amd64.
+
+*module-build-0.25 (30 Jul 2004)
+
+  30 Jul 2004; Michael Cummings <mcummings@gentoo.org>
+  +module-build-0.25.ebuild:
+  New version on CPAN
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  module-build-0.22.ebuild:
+  fixed archive-tar dep, missing deps
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org> module-build-0.22.ebuild:
+  Stable on alpha.
+
+  05 Apr 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  module-build-0.19.ebuild:
+  Stable on sparc
+
+*module-build-0.22 (19 Jan 2004)
+
+  19 Jan 2004; Eric Sammer <esammer@gentoo.org> module-build-0.18.ebuild,
+  module-build-0.19.ebuild, module-build-0.22.ebuild:
+  Bumped revision to 0.22. Fixes bug 38704.
+
+  20 Jul 2003; Michael Cummings <mcummings@gentoo.org>
+  module-build-0.19.ebuild:
+  missing dep on yaml
+
+*module-build-0.19 (10 Jul 2003)
+
+  10 Jul 2003; Michael Cummings <mcummings@gentoo.org>
+  module-build-0.18.ebuild, module-build-0.19.ebuild:
+  CPAN version bump. Fixed dependancy for Archive-Tar (must be >= 1.0)
+
+  26 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  module-build-0.18.ebuild:
+  Updated this ebuild because of additions to perl-modules.eclass
+
+*module-build-0.18 (26 Jun 2003)
+
+  26 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  module-build-0.18.ebuild:
+  module-build is a dep for alzabo; it's a new perl module installer

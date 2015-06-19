@@ -1,0 +1,66 @@
+# ChangeLog for net-analyzer/arpoison
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/arpoison/ChangeLog,v 1.18 2014/07/10 19:13:35 jer Exp $
+
+  10 Jul 2014; Jeroen Roovers <jer@gentoo.org> arpoison-0.6-r2.ebuild:
+  Clean up unused vars. Remove die() message. Set SLOT dependency on
+  net-libs/libnet.
+
+  28 Dec 2012; Jeroen Roovers <jer@gentoo.org> -arpoison-0.6.ebuild,
+  -arpoison-0.6-r1.ebuild:
+  Old.
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org> arpoison-0.6-r2.ebuild:
+  Stable for ppc, wrt bug #375655
+
+  26 Dec 2012; Agostino Sarubbo <ago@gentoo.org> arpoison-0.6-r2.ebuild:
+  Stable for x86, wrt bug #375655
+
+  26 Dec 2012; Agostino Sarubbo <ago@gentoo.org> arpoison-0.6-r2.ebuild:
+  Stable for amd64, wrt bug #375655
+
+  26 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> arpoison-0.6-r2.ebuild:
+  Add ~arm keyword
+
+*arpoison-0.6-r2 (26 Dec 2012)
+
+  26 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> +arpoison-0.6-r2.ebuild:
+  Revision bump: EAPI 5, fix for crosscompilation, wrt bug #375655
+
+  09 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> +arpoison-0.6.ebuild:
+  Bring old revision back, cause it's the one stable on ppc and x86
+
+  09 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> -arpoison-0.6.ebuild:
+  Drop old revision
+
+*arpoison-0.6-r1 (18 Sep 2010)
+
+  18 Sep 2010; Jeroen Roovers <jer@gentoo.org> +arpoison-0.6-r1.ebuild:
+  Respect LDFLAGS (bug #337896). Do not hardcode CC, CFLAGS.
+
+  05 Dec 2008; Jeremy Olexa <darkside@gentoo.org> arpoison-0.6.ebuild:
+  typo, pointed out by nightmorph
+
+  24 Apr 2007; Peter Weller <welp@gentoo.org> arpoison-0.6.ebuild:
+  Keyworded ~amd64 wrt bug 175703
+
+  29 Oct 2006; Peter Volkov <pva@gentoo.org> arpoison-0.6.ebuild:
+  Fix RDEPEND bug #153242. Thank Evil Compile Person for report.
+
+  17 Jan 2006; <nixnut@gentoo.org> arpoison-0.6.ebuild:
+  Added ppc keyword. bug 118407
+
+  11 Jan 2006; Mark Loeser <halcy0n@gentoo.org> arpoison-0.6.ebuild:
+  Stable on x86; bug #118407
+
+  19 Jul 2005; David Holm <dholm@gentoo.org> arpoison-0.6.ebuild:
+  Added to ~ppc.
+
+  03 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> arpoison-0.6.ebuild:
+  Update src_unpack now that upstream fixed their tarball.
+
+*arpoison-0.6 (31 Jan 2005)
+
+  31 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml,
+  +arpoison-0.6.ebuild:
+  Initial commit for bug 62844.

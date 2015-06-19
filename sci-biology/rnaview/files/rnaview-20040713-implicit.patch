@@ -1,0 +1,13 @@
+Fix implicit function declaration
+
+--- src/xml2ps.c
++++ src/xml2ps.c
+@@ -36,7 +36,7 @@
+ void read_sugar_syn(char *inpfile, long **sugar_syn);
+ void get_sugar_syn(FILE *inp, char *value_ch);
+ void get_chain_broken(long nres, double **a, double **b, long *chain_broken);
+-
++extern void get_BDIR(char *BDIR, char *filename);
+ 
+ 
+ FILE  *psfile; 

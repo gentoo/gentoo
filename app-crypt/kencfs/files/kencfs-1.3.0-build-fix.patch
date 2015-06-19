@@ -1,0 +1,12 @@
+diff -ruN kencfs-1.3.0.old/qtlocalpeer.cpp kencfs-1.3.0/qtlocalpeer.cpp
+--- kencfs-1.3.0.old/qtlocalpeer.cpp	2013-01-08 21:04:48.000000000 +0100
++++ kencfs-1.3.0/qtlocalpeer.cpp	2014-03-10 11:03:16.909581255 +0100
+@@ -100,7 +100,7 @@
+         socketName += QLatin1Char('-') + QString::number(sessionId, 16);
+     }
+ #else
+-    socketName += QLatin1Char('-') + QString::number(QtLP_Private::getuid(), 16);
++    socketName += QLatin1Char('-') + QString::number(::getuid(), 16);
+ #endif
+ 
+     server = new QLocalServer(this);

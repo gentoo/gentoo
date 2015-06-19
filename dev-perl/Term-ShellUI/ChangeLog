@@ -1,0 +1,41 @@
+# ChangeLog for dev-perl/Term-ShellUI
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Term-ShellUI/ChangeLog,v 1.8 2014/08/26 19:22:28 axs Exp $
+
+*Term-ShellUI-0.920.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Term-ShellUI-0.920.0-r1.ebuild, -Term-ShellUI-0.920.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Aug 2012; Agostino Sarubbo <ago@gentoo.org> Term-ShellUI-0.920.0.ebuild:
+  Stable for x86, wrt bug #426190
+
+  24 Aug 2012; Agostino Sarubbo <ago@gentoo.org> Term-ShellUI-0.920.0.ebuild:
+  Stable for amd64, wrt bug #426190
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  01 Mar 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Add missing cpan remote-id tags in metadata.xml (#406287)
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org> -Term-ShellUI-0.910.0.ebuild:
+  Cleanup
+
+*Term-ShellUI-0.920.0 (04 Feb 2012)
+
+  04 Feb 2012; Torsten Veller <tove@gentoo.org> +Term-ShellUI-0.920.0.ebuild:
+  Version bump
+
+  19 Oct 2011; Peter Volkov <pva@gentoo.org> +Term-ShellUI-0.910.0.ebuild,
+  +metadata.xml:
+  Merge from ::perl-experimental. Added suggested dependency on
+  dev-perl/Term-ReadLine-Gnu. Thank Torsten Veller for this work.
+
+*Term-ShellUI-0.910.0 (17 Oct 2011)
+
+  17 Oct 2011; Torsten Veller <tove@gentoo.org> +Term-ShellUI-0.910.0.ebuild,
+  +metadata.xml:
+  Initial commit

@@ -1,0 +1,103 @@
+# ChangeLog for app-emulation/vboxgtk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/vboxgtk/ChangeLog,v 1.22 2015/04/08 07:30:35 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> vboxgtk-0.8.2-r1.ebuild:
+  Remove old Python implementations
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  22 Jul 2013; Michał Górny <mgorny@gentoo.org> -vboxgtk-0.8.0-r3.ebuild,
+  -vboxgtk-0.8.2.ebuild:
+  Drop old.
+
+  10 Apr 2013; Michał Górny <mgorny@gentoo.org> vboxgtk-0.8.2-r1.ebuild:
+  distutils-r1_python_prepare_all has to be called after modifying ${S}. This
+  will ensure that proper files are copied if package is switched to an in-
+  source build.
+
+  06 Jan 2013; Julian Ospald <hasufell@gentoo.org> vboxgtk-0.8.2-r1.ebuild:
+  remove obsolete deps
+
+  06 Jan 2013; Julian Ospald <hasufell@gentoo.org> vboxgtk-0.8.2-r1.ebuild:
+  fix argparse dep
+
+  06 Jan 2013; Julian Ospald <hasufell@gentoo.org> vboxgtk-0.8.2-r1.ebuild:
+  add virtual/python-argparse to RDEPEND
+
+*vboxgtk-0.8.2-r1 (06 Jan 2013)
+
+  06 Jan 2013; Julian Ospald <hasufell@gentoo.org> +vboxgtk-0.8.2-r1.ebuild:
+  revbump: migrate to distutils-r1
+
+*vboxgtk-0.8.2 (27 Oct 2012)
+
+  27 Oct 2012; Julian Ospald <hasufell@gentoo.org> -vboxgtk-0.8.1.ebuild,
+  +vboxgtk-0.8.2.ebuild, -files/vboxgtk.desktop.in:
+  version bump
+
+*vboxgtk-0.8.1 (26 Oct 2012)
+
+  26 Oct 2012; Julian Ospald <hasufell@gentoo.org> +vboxgtk-0.8.1.ebuild,
+  +files/vboxgtk.desktop.in:
+  version bump
+
+  26 Oct 2012; Julian Ospald <hasufell@gentoo.org> vboxgtk-0.8.0-r3.ebuild:
+  fix build time deps
+
+*vboxgtk-0.8.0-r3 (24 Oct 2012)
+
+  24 Oct 2012; Julian Ospald <hasufell@gentoo.org> -vboxgtk-0.8.0-r2.ebuild,
+  +vboxgtk-0.8.0-r3.ebuild:
+  fix dependencies wrt #438682
+
+*vboxgtk-0.8.0-r2 (17 Oct 2012)
+
+  17 Oct 2012; Julian Ospald <hasufell@gentoo.org> -vboxgtk-0.8.0.ebuild,
+  -vboxgtk-0.8.0-r1.ebuild, +vboxgtk-0.8.0-r2.ebuild:
+  force revbump, so no user is left with broken runtime deps
+
+  17 Oct 2012; Julian Ospald <hasufell@gentoo.org> vboxgtk-0.8.0.ebuild,
+  vboxgtk-0.8.0-r1.ebuild:
+  fix dependencies wrt #438682
+
+*vboxgtk-0.8.0-r1 (26 Sep 2012)
+
+  26 Sep 2012; Julian Ospald <hasufell@gentoo.org> +vboxgtk-0.8.0-r1.ebuild:
+  migrate to python-distutils-ng.eclass
+
+  23 Jul 2012; Julian Ospald <hasufell@gentoo.org> vboxgtk-0.8.0.ebuild,
+  metadata.xml:
+  adopt package, fix RESTRICT_PYTHON_ABIS, remove shebang-conversion, don't
+  overwrite distutils_src_prepare
+
+*vboxgtk-0.8.0 (22 Jul 2012)
+
+  22 Jul 2012; Pacho Ramos <pacho@gentoo.org> +vboxgtk-0.8.0.ebuild,
+  -vboxgtk-0.5.0-r1.ebuild:
+  Version bump, remove old (#398443 by b1254633).
+
+  16 Jun 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer as he is not able to maintain this anymore.
+
+  07 Jan 2011; Lars Wendler <polynomial-c@gentoo.org> vboxgtk-0.5.0.ebuild,
+  vboxgtk-0.5.0-r1.ebuild:
+  app-emulation/virtualbox-ose was pkgmoved to app-emulation/virtualbox.
+
+*vboxgtk-0.5.0-r1 (28 Apr 2010)
+
+  28 Apr 2010; Mounir Lamouri <volkmar@gentoo.org> +vboxgtk-0.5.0-r1.ebuild:
+  vboxgtk doesn't support python-3. Fix bug 311191.
+
+*vboxgtk-0.5.0 (11 Oct 2009)
+
+  11 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> -vboxgtk-0.4.1.ebuild,
+  +vboxgtk-0.5.0.ebuild:
+  Version bump to 0.5.0
+
+*vboxgtk-0.4.1 (30 May 2009)
+
+  30 May 2009; Mounir Lamouri <volkmar@gentoo.org> +metadata.xml,
+  +vboxgtk-0.4.1.ebuild:
+  Initial commit, see bug 254718

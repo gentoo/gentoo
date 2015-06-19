@@ -1,0 +1,121 @@
+# ChangeLog for net-misc/netkit-timed
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-timed/ChangeLog,v 1.31 2012/08/17 16:47:42 kensington Exp $
+
+  17 Aug 2012; Michael Palimaka <kensington@gentoo.org>
+  -netkit-timed-0.17-r7.ebuild, -netkit-timed-0.17-r8.ebuild:
+  Remove old.
+
+  31 Jul 2012; Anthony G. Basile <blueness@gentoo.org>
+  netkit-timed-0.17-r9.ebuild:
+  Stable ppc64, bug #393757
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> netkit-timed-0.17-r9.ebuild:
+  sparc stable wrt #393757
+
+  12 Jul 2012; Ian Stakenvicius <axs@gentoo.org> netkit-timed-0.17-r7.ebuild,
+  netkit-timed-0.17-r8.ebuild, netkit-timed-0.17-r9.ebuild:
+  added GPL-2 to LICENSE per bug 426074
+
+  29 Jun 2012; Brent Baude <ranger@gentoo.org> netkit-timed-0.17-r9.ebuild:
+  Marking netkit-timed-0.17-r9 ppc for bug 393757
+
+  19 Dec 2011; Agostino Sarubbo <ago@gentoo.org> netkit-timed-0.17-r9.ebuild:
+  Stable for AMD64, added missing RDEPEND and 'die'; wrt bug #393757
+
+  18 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  netkit-timed-0.17-r9.ebuild:
+  x86 stable wrt bug #393757
+
+  18 Oct 2010; Mart Raudsepp <leio@gentoo.org> netkit-timed-0.17-r7.ebuild:
+  Drop to ~mips
+
+*netkit-timed-0.17-r9 (26 Aug 2010)
+
+  26 Aug 2010; Jeroen Roovers <jer@gentoo.org> +netkit-timed-0.17-r9.ebuild:
+  Respect CC. Respect LDFLAGS (bug #334633).
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org>
+  netkit-timed-0.17-r7.ebuild, netkit-timed-0.17-r8.ebuild:
+  Remove virtual/libc
+
+  23 Aug 2009; Jeremy Olexa <darkside@gentoo.org> -files/0.17-timed.patch,
+  -files/timed.rc5:
+  remove unused patches
+
+  05 Feb 2008; Markus Rothe <corsair@gentoo.org>
+  netkit-timed-0.17-r8.ebuild:
+  Stable on ppc64
+
+  25 Jan 2008; Raúl Porcel <armin76@gentoo.org>
+  netkit-timed-0.17-r8.ebuild:
+  sparc/x86 stable
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org>
+  netkit-timed-0.17-r7.ebuild, netkit-timed-0.17-r8.ebuild:
+  Fix *initd, *confd and *envd calls (#17388, #174266)
+
+  08 Jan 2007; Danny van Dyk <kugelfang@gentoo.org>
+  -netkit-timed-0.17-r6.ebuild:
+  QA: Removed unused versions.
+
+*netkit-timed-0.17-r8 (28 Jul 2006)
+
+  26 Jul 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  +files/0.17-timed-opt-parsing.patch, netkit-timed-0.17-r7.ebuild,
+  +netkit-timed-0.17-r8.ebuild:
+  Fixed compilation with modern glibc: 
+  Thanks to Martin von Gagern for both reporting this issue and submitting
+  the patch (see Bug #141439)
+  Fixed a bug in command line parsing:
+  problem detecting end of args on arches where 'char' defaults to unsigned
+
+  16 May 2006; Cory Visi <visi@gentoo.org> netkit-timed-0.17-r7.ebuild:
+  Keyworded for unstable on amd64
+
+  26 Sep 2004; Tom Gall <tgall@gentoo.org> netkit-timed-0.17-r7.ebuild:
+  stable on ppc64, bug #59610
+
+  16 Aug 2004; Daniel Black <dragonheart@gentoo.org>
+  netkit-timed-0.17-r6.ebuild, netkit-timed-0.17-r7.ebuild:
+  x86 stable
+
+  14 Aug 2004; Hardave Riar <hardave@gentoo.org> netkit-timed-0.17-r7.ebuild:
+  Stable on mips, bug #59610
+
+  09 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  netkit-timed-0.17-r7.ebuild:
+  Stable on sparc wrt #59610
+
+*netkit-timed-0.17-r7 (07 Aug 2004)
+
+  07 Aug 2004; Daniel Black <dragonheart@gentoo.org>
+  +files/0.17-CFLAG-DEF-fix.patch, +files/0.17-timed.patch, -files/timed.c,
+  netkit-timed-0.17-r6.ebuild, +netkit-timed-0.17-r7.ebuild +metadata.xml:
+  0.17-r6 broken as per bug #59610. Removed timed.c and replaced with patch.
+  Version 0.17-r7 fixed the problem. Thanks to Antonio <netbix@tiscali.it> for
+  the bug report and Jens Lindemann <jens.lindemann@gmail.com> for the fix.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> netkit-timed-0.17-r6.ebuild:
+  change virtual/glibc to virtual/libc, add IUSE
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*netkit-timed-0.17-r6 (1 Feb 2002)
+
+  24 Feb 2003; Nicholas Wourms <dragon@gentoo.org> netkit-timed-0.17-r6.ebuild :
+  Added stable mips keyword to the ebuild.
+
+  20 Oct 2002; Calum Selkirk <cselkirk@gentoo.org> netkit-timed-0.17-r6.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  09 Jul 2002; phoen][x <phoenix@gentoo.org> netkit-timed-0.17-r6.ebuild :
+  Added KEYWORDS, LICENSE, SLOT.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

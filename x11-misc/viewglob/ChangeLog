@@ -1,0 +1,90 @@
+# ChangeLog for x11-misc/viewglob
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/viewglob/ChangeLog,v 1.25 2015/03/02 10:16:43 mrueg Exp $
+
+  02 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -viewglob-2.0.4.ebuild:
+  Remove old.
+
+  02 Mar 2015; Agostino Sarubbo <ago@gentoo.org> viewglob-2.0.4-r1.ebuild:
+  Stable for ppc, wrt bug #540802
+
+  25 Feb 2015; Agostino Sarubbo <ago@gentoo.org> viewglob-2.0.4-r1.ebuild:
+  Stable for x86, wrt bug #540802
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> viewglob-2.0.4-r1.ebuild:
+  Stable for amd64, wrt bug #540802
+
+  24 Feb 2015; Justin Lecher <jlec@gentoo.org>
+  +files/viewglob-2.0.4-format-security.patch, viewglob-2.0.4-r1.ebuild:
+  Fix for format-security, #541212
+
+  20 Feb 2015; Justin Lecher <jlec@gentoo.org> viewglob-2.0.4-r1.ebuild,
+  viewglob-2.0.4.ebuild:
+  fix SLOT operators
+
+*viewglob-2.0.4-r1 (20 Feb 2015)
+
+  20 Feb 2015; Justin Lecher <jlec@gentoo.org> +files/README.gentoo,
+  +files/viewglob-2.0.4-underlinking.patch, +viewglob-2.0.4-r1.ebuild,
+  metadata.xml:
+  Bump to EAPI=5 and fix underlinking problem, #512478 & #540802
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> viewglob-2.0.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  27 Dec 2011; Michael Weber <xmw@gentoo.org> viewglob-2.0.4.ebuild:
+  ppc stable (bug 350900)
+
+  01 Mar 2011; Tim Harder <radhermit@gentoo.org> viewglob-2.0.4.ebuild:
+  Bump to EAPI 1 and add a slot dependency on gtk+:2.
+
+  15 Jan 2011; Markus Meier <maekke@gentoo.org> viewglob-2.0.4.ebuild:
+  x86 stable, bug #350900
+
+  07 Jan 2011; Markos Chandras <hwoarang@gentoo.org> viewglob-2.0.4.ebuild:
+  Stable on amd64 wrt bug #350900
+
+  06 Jan 2011; Justin Lecher <jlec@gentoo.org> viewglob-2.0.4.ebuild:
+  Some Clean up
+
+  20 Aug 2009; Jeremy Olexa <darkside@gentoo.org>
+  -files/viewglob-2.0.2-64bit.patch:
+  remove unused patches
+
+  04 Oct 2008; Peter Alfredsen <loki_val@gentoo.org> viewglob-2.0.4.ebuild:
+  Fix pkg-config deps, bug 204966. Blame Evil Compile Person
+  <bugs@dev.gentooexperimental.org>
+
+*viewglob-2.0.4 (17 Dec 2007)
+
+  17 Dec 2007; Raúl Porcel <armin76@gentoo.org> -viewglob-2.0.2.ebuild,
+  -viewglob-2.0.3.ebuild, +viewglob-2.0.4.ebuild:
+  Version bump and remove old, bug #161268
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  06 Nov 2005; Tom Martin <slarti@gentoo.org> viewglob-2.0.3.ebuild:
+  Several stylistic changes to the ebuild. Thanks a lot to Petteri Räty
+  <betelgeuse@gentoo.org> in bug #111548.
+
+  05 Nov 2005; Petteri Räty <betelgeuse@gentoo.org> viewglob-2.0.3.ebuild:
+  Added ~x86 keyword. Fixes bug #111543.
+
+  04 Aug 2005; Tom Martin <slarti@gentoo.org> ChangeLog:
+  Marked ~sparc.
+
+*viewglob-2.0.3 (02 Aug 2005)
+
+  02 Aug 2005; Tom Martin <slarti@gentoo.org> +viewglob-2.0.3.ebuild:
+  Version bump, resolves bug 99796.
+
+  16 Jul 2005; David Holm <dholm@gentoo.org> viewglob-2.0.2.ebuild:
+  Added to ~ppc.
+
+*viewglob-2.0.2 (15 Jul 2005)
+
+  15 Jul 2005; Tom Martin <slarti@gentoo.org> +metadata.xml,
+  +viewglob-2.0.2.ebuild:
+  Initial import, resolves bug 63484. Thanks to Stephen Bach
+  <sjbach@users.sourceforge.net> for the submission.

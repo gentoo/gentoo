@@ -1,0 +1,110 @@
+diff -urN keepalived-1.1.20-orig/configure.in keepalived-1.1.20/configure.in
+--- keepalived-1.1.20-orig/configure.in	2009-11-05 18:23:04.000000000 +0100
++++ keepalived-1.1.20/configure.in	2010-05-31 11:42:05.000000000 +0200
+@@ -51,103 +51,18 @@
+ AC_CHECK_LIB(popt, poptGetContext,,AC_MSG_ERROR([Popt libraries is required]))
+ 
+ dnl ----[ Kernel version check ]----
+-CPPFLAGS="$CPPFLAGS -I$kernelinc"
+-AC_MSG_CHECKING([for kernel version])
+-AC_TRY_RUN([
+-    #include <stdlib.h>
+-    #include <stdio.h>
+-    #include <linux/version.h>
+-    #if !defined(UTS_RELEASE) && !defined(LINUX_VERSION_CODE)
+-    #include <linux/utsrelease.h>
+-    #endif
+-    int main (void) {
+-      FILE *fp = fopen ("linuxinfo", "w");
+-      if (!fp) return 1;
+-    #if defined(UTS_RELEASE)
+-      fprintf (fp, "%s\n", UTS_RELEASE);
+-    #elif defined(LINUX_VERSION_CODE)
+-      fprintf (fp, "%d.%d.%d\n", LINUX_VERSION_CODE >> 16, (LINUX_VERSION_CODE >> 8) & 0xFF, LINUX_VERSION_CODE & 0xFF);
+-    #else
+-      fprintf (fp, "0.0.0\n"); /* Let's fail gently */
+-    #endif
+-      fclose (fp); 
+-      return 0;
+-    } 
+-  ], [
+-    LINUX_MAJOR=`cat linuxinfo | cut -d'.' -f1`
+-    LINUX_MINOR=`cat linuxinfo | cut -d'.' -f2`
+-    LINUX_PATCH=`cat linuxinfo | cut -d'.' -f3`
+-  ], [
+-    LINUX_MAJOR="0"
+-    LINUX_MINOR="0"
+-    LINUX_PATCH="0"
+-  ], [
+-    LINUX_MAJOR="0"
+-    LINUX_MINOR="0"
+-    LINUX_PATCH="0"
+-  ])
+-  rm -f linuxinfo
+-
+-  if test "$kernelversion" = "2.4"; then
+-    KERN="_KRNL_2_4_"
+-    AC_MSG_RESULT([2.4])
+-  elif test "$kernelversion" = "2.6"; then
+-    KERN="_KRNL_2_6_"
+-    AC_MSG_RESULT([2.6])
+-  else
+-    AC_MSG_RESULT([$LINUX_MAJOR.$LINUX_MINOR.$LINUX_PATCH])
+-    if test "$LINUX_MINOR" = "6"; then
+-      KERN="_KRNL_2_6_"
+-    elif test "$LINUX_MINOR" = "4"; then
+-      KERN="_KRNL_2_4_"
+-    else
+-      KERN="_KRNL_2_6_"
+-    fi
+-    if test "$LINUX_MAJOR" = "0" -a "$LINUX_MINOR" = "0" -a "$LINUX_PATCH" = "0"; then
+-      AC_MSG_WARN([Cannot determine Linux Kernel version.])
+-    fi
+-  fi
+-
++KERN="_KRNL_2_6_"
+ AC_SUBST(KERN)
+ 
+ dnl ----[ Checks for LVS and VRRP support ]----
+-IPVS_SUPPORT="_WITHOUT_LVS_"
+-if test "$enable_lvs" != "no"; then
+-  AC_CHECK_HEADER([net/ip_vs.h],
+-    [IPVS_SUPPORT="_WITH_LVS_"],
+-    [
+-      IPVS_SUPPORT="_WITHOUT_LVS_"
+-      AC_MSG_WARN([keepalived will be built without LVS support.])
+-    ])
+-fi  
++IPVS_SUPPORT="_WITH_LVS_"
+ 
+ if test "$IPVS_SUPPORT" = "_WITHOUT_LVS_" -a "$enable_vrrp" = "no"; then
+   AC_MSG_ERROR([keepalived MUST be compiled at least with LVS or VRRP framework])
+ fi
+ 
+ dnl ----[ IPVS syncd support probe ]---
+-IPVS_SYNCD="_WITHOUT_IPVS_SYNCD_"
+-if test "$IPVS_SUPPORT" = "_WITH_LVS_"; then
+-  AC_MSG_CHECKING([for IPVS syncd support])
+-  if test "$KERN" = "_KRNL_2_6_"; then
+-    IPVS_SYNCD="_HAVE_IPVS_SYNCD_"
+-  elif test "_KRNL_2_4_"; then
+-    IPVS_SYNCD="_HAVE_IPVS_SYNCD_"
+-  else
+-    IPVS_SYNCD="_WITHOUT_IPVS_SYNCD_"
+-  fi
+-
+-  if test "${IPVS_SUPPORT}" = "_WITHOUT_LVS_" -o "$enable_lvs_syncd" = "no"; then
+-    IPVS_SYNCD="_WITHOUT_IPVS_SYNCD_"
+-  fi
+-
+-  if test "$IPVS_SYNCD" = "_HAVE_IPVS_SYNCD_"; then
+-    AC_MSG_RESULT([yes])
+-  else
+-    AC_MSG_RESULT([no])
+-  fi
+-fi
+-
++IPVS_SYNCD="_HAVE_IPVS_SYNCD_"
+ AC_SUBST(IPVS_SYNCD)
+ 
+ dnl ----[ Checks for kernel netlink support ]----

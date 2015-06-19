@@ -1,0 +1,14 @@
+--- data/desktop/xlog.desktop.orig	2013-05-24 08:23:25.000000000 +0200
++++ data/desktop/xlog.desktop	2013-05-24 08:24:47.000000000 +0200
+@@ -5,8 +5,8 @@
+ Comment[pl]=Dziennik łączności dla radioamatorów
+ TryExec=xlog
+ Exec=xlog %F
+-Icon=xlog-icon.png
++Icon=xlog-icon
+ Terminal=false
+ Type=Application
+-Categories=Utility;Database;HamRadio;GTK
+-MimeType=text/x-xlog
++Categories=Utility;Database;HamRadio;GTK;
++MimeType=text/x-xlog;

@@ -1,0 +1,52 @@
+# ChangeLog for dev-perl/DateTimeX-Easy
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/DateTimeX-Easy/ChangeLog,v 1.12 2014/10/17 20:18:24 zlogene Exp $
+
+  17 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> DateTimeX-Easy-0.89.0.ebuild:
+  Drop dead dependency (bug #525368)
+
+  12 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> DateTimeX-Easy-0.89.0.ebuild:
+  Bump to EAPI=5
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -DateTimeX-Easy-0.089.ebuild:
+  Cleanup
+
+*DateTimeX-Easy-0.89.0 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org> +DateTimeX-Easy-0.89.0.ebuild:
+  Change version scheme
+
+  20 Oct 2010; Torsten Veller <tove@gentoo.org>
+  -DateTimeX-Easy-0.088.ebuild:
+  Cleanup
+
+  26 Aug 2010; Torsten Veller <tove@gentoo.org> DateTimeX-Easy-0.089.ebuild:
+  Add EU::MM dependency
+
+*DateTimeX-Easy-0.089 (24 Aug 2010)
+
+  24 Aug 2010; Robin H. Johnson <robbat2@gentoo.org>
+  +DateTimeX-Easy-0.089.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  09 Apr 2010; Torsten Veller <tove@gentoo.org>
+  -DateTimeX-Easy-0.087.ebuild:
+  Cleanup
+
+*DateTimeX-Easy-0.088 (08 Jan 2010)
+
+  08 Jan 2010; Torsten Veller <tove@gentoo.org>
+  +DateTimeX-Easy-0.088.ebuild:
+  Version bump
+
+  10 Jun 2009; Torsten Veller <tove@gentoo.org> DateTimeX-Easy-0.087.ebuild:
+  Add ~amd64 (#273456)
+
+*DateTimeX-Easy-0.087 (09 Jun 2009)
+
+  09 Jun 2009; Torsten Veller <tove@gentoo.org>
+  +DateTimeX-Easy-0.087.ebuild, +metadata.xml:
+  Initial commit

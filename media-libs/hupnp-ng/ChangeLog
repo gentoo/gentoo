@@ -1,0 +1,10 @@
+# ChangeLog for media-libs/hupnp-ng
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/hupnp-ng/ChangeLog,v 1.1 2014/01/02 18:45:13 pinkbyte Exp $
+
+*hupnp-ng-9999 (02 Jan 2014)
+
+  02 Jan 2014; Sergey Popov <pinkbyte@gentoo.org> +hupnp-ng-9999.ebuild,
+  +metadata.xml:
+  Initial commit, thanks to 0xd34df00d
+

@@ -1,0 +1,82 @@
+# ChangeLog for app-eselect/eselect-mpost
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-mpost/ChangeLog,v 1.1 2015/03/31 16:51:56 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> +eselect-mpost-0.1.ebuild,
+  +eselect-mpost-0.2.ebuild, +eselect-mpost-0.3.ebuild,
+  +files/mpost.eselect-0.1, +files/mpost.eselect-0.2, +files/mpost.eselect-0.3,
+  +metadata.xml:
+  Move package from app-admin to app-eselect category.
+
+  01 Jan 2012; Raúl Porcel <armin76@gentoo.org> eselect-mpost-0.3.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #393879
+
+  21 Dec 2011; Markus Meier <maekke@gentoo.org> eselect-mpost-0.3.ebuild:
+  arm stable, bug #393879
+
+  21 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  eselect-mpost-0.3.ebuild:
+  x86 stable wrt bug #393879
+
+  20 Dec 2011; Jeroen Roovers <jer@gentoo.org> eselect-mpost-0.3.ebuild:
+  Stable for HPPA (bug #393879).
+
+  17 Dec 2011; Agostino Sarubbo <ago@gentoo.org> eselect-mpost-0.3.ebuild:
+  Stable for AMD64, wrt bug #393879
+
+*eselect-mpost-0.3 (09 Jan 2011)
+
+  09 Jan 2011; Alexis Ballier <aballier@gentoo.org> +files/mpost.eselect-0.3,
+  +eselect-mpost-0.3.ebuild:
+  Handle better the fmtutil-sys call and fix a typo
+
+*eselect-mpost-0.2 (06 Nov 2009)
+
+  06 Nov 2009; Ulrich Mueller <ulm@gentoo.org> +files/mpost.eselect-0.2,
+  +eselect-mpost-0.2.ebuild:
+  Version bump, bug 292107.
+
+  18 Mar 2009; Raúl Porcel <armin76@gentoo.org> eselect-mpost-0.1.ebuild:
+  alpha/arm/ia64/s390/sh stable wrt #253551
+
+  11 Mar 2009; Markus Meier <maekke@gentoo.org> eselect-mpost-0.1.ebuild:
+  amd64 stable, bug #253551
+
+  10 Mar 2009; Raúl Porcel <armin76@gentoo.org> eselect-mpost-0.1.ebuild:
+  Add ~arm/~s390/~sh
+
+  07 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  eselect-mpost-0.1.ebuild:
+  x86 stable, bug 253551
+
+  06 Mar 2009; Jeroen Roovers <jer@gentoo.org> eselect-mpost-0.1.ebuild:
+  Straight to stable for HPPA (bug #253551).
+
+  27 Feb 2009; Ferris McCormick <fmccor@gentoo.org>
+  eselect-mpost-0.1.ebuild:
+  Sparc stable, part of Bug #253551.
+
+  04 Oct 2008; Brent Baude <ranger@gentoo.org> eselect-mpost-0.1.ebuild:
+  Marking eselect-mpost-0.1 ~ppc for bug 237202
+
+  26 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  eselect-mpost-0.1.ebuild:
+  keyword ~ppc64, working fine on a PowerMac 970
+
+  24 Sep 2008; Raúl Porcel <armin76@gentoo.org> eselect-mpost-0.1.ebuild:
+  Add ~alpha/~ia64 wrt #237202
+
+  11 Sep 2008; Markus Meier <maekke@gentoo.org> eselect-mpost-0.1.ebuild:
+  add ~x86, bug #237202
+
+  09 Sep 2008; Ferris McCormick <fmccor@gentoo.org>
+  eselect-mpost-0.1.ebuild:
+  Add ~sparc keyword in preparation for Bug #237202.
+
+*eselect-mpost-0.1 (09 Sep 2008)
+
+  09 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/mpost.eselect-0.1, +metadata.xml, +eselect-mpost-0.1.ebuild:
+  Initial import: manages /usr/bin/mpost symlinks to allow easy usage of
+  mplib's mpost.
+

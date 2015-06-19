@@ -1,0 +1,405 @@
+# ChangeLog for dev-php/onphp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/onphp/ChangeLog,v 1.8 2014/08/10 21:00:24 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> onphp-1.0.10.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  26 Jan 2012; Matti Bickel <mabi@gentoo.org> -onphp-0.10.13.ebuild,
+  -onphp-1.0.9.ebuild, onphp-1.0.10.ebuild:
+  remove unneeded php-lib-r1.php reference, EAPI bump
+
+*onphp-1.0.10 (03 Nov 2010)
+
+  03 Nov 2010; Matti Bickel <mabi@gentoo.org> -onphp-0.10.12.ebuild,
+  -onphp-1.0.7.ebuild, -onphp-1.0.8.ebuild, +onphp-1.0.10.ebuild:
+  EAPI and version bump
+
+*onphp-1.0.9 (13 Sep 2009)
+
+  13 Sep 2009; Konstantin V. Arkhipov <voxus@gentoo.org>
+  +onphp-1.0.9.ebuild:
+  Version bump.
+
+*onphp-1.0.8 (31 Dec 2008)
+*onphp-0.10.13 (31 Dec 2008)
+
+  31 Dec 2008; Konstantin V. Arkhipov <voxus@gentoo.org>
+  -onphp-0.10.11.ebuild, onphp-0.10.12.ebuild, +onphp-0.10.13.ebuild,
+  -onphp-1.0.5.ebuild, -onphp-1.0.6.ebuild, onphp-1.0.7.ebuild,
+  +onphp-1.0.8.ebuild:
+  Version bump, stabilization, cleanup.
+
+*onphp-1.0.7 (14 Sep 2008)
+
+  14 Sep 2008; Konstantin V. Arkhipov <voxus@gentoo.org>
+  +onphp-1.0.7.ebuild:
+  Version bump.
+
+*onphp-1.0.6 (07 Aug 2008)
+*onphp-0.10.12 (07 Aug 2008)
+
+  07 Aug 2008; Konstantin V. Arkhipov <voxus@gentoo.org>
+  +onphp-0.10.12.ebuild, +onphp-1.0.6.ebuild:
+  Version bump.
+
+  14 Jul 2008; Konstantin V. Arkhipov <voxus@gentoo.org>
+  -onphp-0.10.9.ebuild, -onphp-0.10.10.ebuild, onphp-0.10.11.ebuild,
+  -onphp-1.0.1.ebuild, -onphp-1.0.2.ebuild, -onphp-1.0.3.ebuild,
+  -onphp-1.0.4.ebuild, onphp-1.0.5.ebuild:
+  Stabilization.
+
+*onphp-1.0.5 (17 Jun 2008)
+*onphp-0.10.11 (17 Jun 2008)
+
+  17 Jun 2008; Konstantin V. Arkhipov <voxus@gentoo.org>
+  +onphp-0.10.11.ebuild, +onphp-1.0.5.ebuild:
+  Version bump.
+
+*onphp-1.0.4 (30 Mar 2008)
+
+  30 Mar 2008; Konstantin V. Arkhipov <voxus@gentoo.org>
+  +onphp-1.0.4.ebuild:
+  Version bump.
+
+*onphp-1.0.3 (24 Mar 2008)
+
+  24 Mar 2008; Konstantin V. Arkhipov <voxus@gentoo.org>
+  +onphp-1.0.3.ebuild:
+  Version bump.
+
+*onphp-1.0.2 (28 Feb 2008)
+*onphp-0.10.10 (28 Feb 2008)
+
+  28 Feb 2008; Konstantin V. Arkhipov <voxus@gentoo.org>
+  -onphp-0.10.8.ebuild, onphp-0.10.9.ebuild, +onphp-0.10.10.ebuild,
+  -onphp-1.0.0.ebuild, onphp-1.0.1.ebuild, +onphp-1.0.2.ebuild:
+  Dobule bump, stabilization.
+
+*onphp-1.0.1 (21 Jan 2008)
+*onphp-0.10.9 (21 Jan 2008)
+
+  21 Jan 2008; Konstantin V. Arkhipov <voxus@gentoo.org>
+  +onphp-0.10.9.ebuild, +onphp-1.0.1.ebuild:
+  Double bump.
+
+  05 Jan 2008; Konstantin V. Arkhipov <voxus@gentoo.org>
+  onphp-0.10.8.ebuild, onphp-1.0.0.ebuild:
+  License fixed.
+
+*onphp-1.0.0 (05 Jan 2008)
+
+  05 Jan 2008; Konstantin V. Arkhipov <voxus@gentoo.org>
+  -onphp-0.10.0.ebuild, onphp-0.10.8.ebuild, +onphp-1.0.0.ebuild:
+  Version bump.
+
+*onphp-0.10.8 (09 Dec 2007)
+
+  09 Dec 2007; Konstantin V. Arkhipov <voxus@gentoo.org>
+  -onphp-0.10.7.ebuild, +onphp-0.10.8.ebuild:
+  Version bump.
+
+*onphp-0.10.7 (20 Oct 2007)
+
+  20 Oct 2007; Konstantin V. Arkhipov <voxus@gentoo.org>
+  -onphp-0.10.6-r1.ebuild, +onphp-0.10.7.ebuild:
+  Version bump.
+
+*onphp-0.10.6-r1 (18 Oct 2007)
+
+  18 Oct 2007; Konstantin V. Arkhipov <voxus@gentoo.org>
+  -onphp-0.10.6.ebuild, +onphp-0.10.6-r1.ebuild:
+  Fixed docs installing.
+
+*onphp-0.10.6 (14 Oct 2007)
+
+  14 Oct 2007; Konstantin V. Arkhipov <voxus@gentoo.org>
+  -onphp-0.10.3.ebuild, -onphp-0.10.4.ebuild, +onphp-0.10.6.ebuild:
+  Version bump.
+
+*onphp-0.10.4 (01 Sep 2007)
+
+  01 Sep 2007; Konstantin V. Arkhipov <voxus@gentoo.org>
+  +onphp-0.10.4.ebuild:
+  Version bump.
+
+*onphp-0.10.3 (12 Jul 2007)
+
+  12 Jul 2007; Konstantin V. Arkhipov <voxus@gentoo.org>
+  -onphp-0.10.1.ebuild, -onphp-0.10.2.ebuild, +onphp-0.10.3.ebuild:
+  Version bump.
+
+*onphp-0.10.2 (16 Jun 2007)
+
+  16 Jun 2007; Konstantin V. Arkhipov <voxus@gentoo.org>
+  +onphp-0.10.2.ebuild:
+  Version bump.
+
+*onphp-0.10.1 (02 Jun 2007)
+
+  02 Jun 2007; Konstantin V. Arkhipov <voxus@gentoo.org>
+  -onphp-0.2.18.ebuild, -onphp-0.4.11.ebuild, -onphp-0.6.4.ebuild,
+  -onphp-0.8.5.ebuild, -onphp-0.8.6.ebuild, onphp-0.10.0.ebuild,
+  +onphp-0.10.1.ebuild:
+  Stabilization, cleanup of legacy branches.
+
+*onphp-0.10.0 (30 Apr 2007)
+
+  30 Apr 2007; Konstantin V. Arkhipov <voxus@gentoo.org>
+  +onphp-0.10.0.ebuild:
+  Version bump.
+
+  18 Mar 2007; Luca Longinotti <chtekk@gentoo.org> metadata.xml,
+  onphp-0.2.18.ebuild, onphp-0.4.11.ebuild, onphp-0.6.4.ebuild,
+  onphp-0.8.5.ebuild, onphp-0.8.6.ebuild:
+  Cleanup.
+
+*onphp-0.8.6 (11 Mar 2007)
+
+  11 Mar 2007; Konstantin V. Arkhipov <voxus@gentoo.org>
+  +onphp-0.8.6.ebuild:
+  Version bump.
+
+  04 Mar 2007; Konstantin V. Arkhipov <voxus@gentoo.org>
+  -onphp-0.8.4.ebuild, onphp-0.8.5.ebuild:
+  Goes stable on amd64 and x86.
+
+*onphp-0.8.5 (13 Feb 2007)
+
+  13 Feb 2007; Konstantin V. Arkhipov <voxus@gentoo.org>
+  -onphp-0.2.17.ebuild, onphp-0.2.18.ebuild, -onphp-0.4.10.ebuild,
+  onphp-0.4.11.ebuild, -onphp-0.6.3.ebuild, onphp-0.6.4.ebuild,
+  -onphp-0.8.3.ebuild, onphp-0.8.4.ebuild, +onphp-0.8.5.ebuild:
+  Version bump, stabilization.
+
+*onphp-0.8.4 (08 Jan 2007)
+*onphp-0.6.4 (08 Jan 2007)
+*onphp-0.4.11 (08 Jan 2007)
+*onphp-0.2.18 (08 Jan 2007)
+
+  08 Jan 2007; Konstantin V. Arkhipov <voxus@gentoo.org>
+  +onphp-0.2.18.ebuild, +onphp-0.4.11.ebuild, +onphp-0.6.4.ebuild,
+  +onphp-0.8.4.ebuild:
+  Version bump for all branches.
+
+  26 Dec 2006; Konstantin V. Arkhipov <voxus@gentoo.org>
+  -onphp-0.8.2.ebuild, onphp-0.8.3.ebuild:
+  Goes stable.
+
+*onphp-0.8.3 (17 Dec 2006)
+
+  17 Dec 2006; Konstantin V. Arkhipov <voxus@gentoo.org>
+  +onphp-0.8.3.ebuild:
+  Version bump.
+
+  04 Dec 2006; Konstantin V. Arkhipov <voxus@gentoo.org> onphp-0.8.2.ebuild:
+  Goes stable on amd64 and x86.
+
+*onphp-0.8.2 (11 Nov 2006)
+
+  11 Nov 2006; Konstantin V. Arkhipov <voxus@gentoo.org>
+  -onphp-0.8.0.ebuild, -onphp-0.8.1.ebuild, +onphp-0.8.2.ebuild:
+  Version bump.
+
+*onphp-0.8.1 (05 Nov 2006)
+
+  05 Nov 2006; Konstantin V. Arkhipov <voxus@gentoo.org>
+  +onphp-0.8.1.ebuild:
+  Version bump.
+
+  30 Oct 2006; Konstantin V. Arkhipov <voxus@gentoo.org>
+  -onphp-0.2.16.ebuild, onphp-0.2.17.ebuild, -onphp-0.4.8.ebuild,
+  onphp-0.4.10.ebuild, -onphp-0.6.2.ebuild, onphp-0.6.3.ebuild:
+  Legacy bugfix-releases goes stable.
+
+*onphp-0.8.0 (21 Oct 2006)
+*onphp-0.6.3 (21 Oct 2006)
+*onphp-0.4.10 (21 Oct 2006)
+*onphp-0.2.17 (21 Oct 2006)
+
+  21 Oct 2006; Konstantin V. Arkhipov <voxus@gentoo.org>
+  +onphp-0.2.17.ebuild, +onphp-0.4.10.ebuild, +onphp-0.6.3.ebuild,
+  +onphp-0.8.0.ebuild:
+  Version bump for all branches.
+
+  01 Oct 2006; Konstantin Arkhipov <voxus@gentoo.org> onphp-0.6.2.ebuild,
+  -onphp-0.6.1.ebuild:
+  Goes stable on amd64 and x86.
+
+*onphp-0.6.2 (17 Sep 2006)
+
+  17 Sep 2006; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.6.2.ebuild,
+  -onphp-0.6.0.ebuild, -onphp-0.4.8.ebuild:
+  Version bump. 0.4.9 and 0.6.1 goes stable on both amd64 and x86.
+
+*onphp-0.4.9 (17 Aug 2006)
+
+  17 Aug 2006; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.4.9.ebuild:
+  Bump.
+
+*onphp-0.6.1 (10 Aug 2006)
+
+  10 Aug 2006; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.6.1.ebuild:
+  Version bump.
+
+  31 Jul 2006; Konstantin Arkhipov <voxus@gentoo.org> onphp-0.2.16.ebuild,
+  onphp-0.4.8.ebuild:
+  Goes stable on amd64 and x86, since it's a "several one-liners" releases.
+
+*onphp-0.6.0 (21 Jul 2006)
+*onphp-0.4.8 (21 Jul 2006)
+*onphp-0.2.16 (21 Jul 2006)
+
+  21 Jul 2006; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.2.16.ebuild,
+  +onphp-0.4.8.ebuild, +onphp-0.6.0.ebuild:
+  Triple bump.
+
+  02 Jul 2006; Konstantin Arkhipov <voxus@gentoo.org> onphp-0.4.7-r1.ebuild,
+  onphp-0.2.15.ebuild, -onphp-0.2.12.ebuild, -onphp-0.2.13.ebuild,
+  -onphp-0.2.14.ebuild, -onphp-0.4.2.ebuild, -onphp-0.4.3.ebuild,
+  -onphp-0.4.4.ebuild, -onphp-0.4.5.ebuild, -onphp-0.4.6.ebuild,
+  -onphp-0.4.7.ebuild:
+  0.2.15 and 0.4.7-r1 goes stable on x86 and amd64, wiped out old ebuilds.
+
+*onphp-0.4.7-r1 (27 Jun 2006)
+
+  27 Jun 2006; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.4.7-r1.ebuild:
+  Now installs metaconfiguration too.
+
+*onphp-0.4.7 (25 Jun 2006)
+*onphp-0.2.15 (25 Jun 2006)
+
+  25 Jun 2006; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.4.7.ebuild,
+  +onphp-0.2.15.ebuild:
+  Double bump.
+
+*onphp-0.4.6 (11 Jun 2006)
+
+  11 Jun 2006; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.4.6.ebuild:
+  Bump.
+
+  08 Jun 2006; Konstantin Arkhipov <voxus@gentoo.org> onphp-0.4.5.ebuild,
+  onphp-0.2.14.ebuild:
+  Goes stable on both amd64 and x86.
+
+*onphp-0.4.5 (27 May 2006)
+*onphp-0.2.14 (27 May 2006)
+
+  27 May 2006; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.4.5.ebuild,
+  +onphp-0.2.14.ebuild:
+  Double bump.
+
+*onphp-0.4.4 (20 May 2006)
+
+  20 May 2006; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.4.4.ebuild,
+  onphp-0.2.13.ebuild, onphp-0.4.3.ebuild:
+  Version bump. 0.2.13 and 0.4.3 goes stable on both amd64 and x86.
+
+*onphp-0.4.3 (01 May 2006)
+*onphp-0.2.13 (01 May 2006)
+
+  01 May 2006; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.4.3.ebuild,
+  +onphp-0.2.13.ebuild:
+  Bump.
+
+  30 Apr 2006; Konstantin Arkhipov <voxus@gentoo.org> onphp-0.4.2.ebuild,
+  onphp-0.2.12.ebuild:
+  Goes stable on both x86 and amd64 due to quite critical fixes
+  in main/Containers.
+
+*onphp-0.4.2 (17 Apr 2006)
+*onphp-0.2.12 (17 Apr 2006)
+
+  17 Apr 2006; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.4.2.ebuild,
+  +onphp-0.2.12.ebuild, -onphp-0.2.11.ebuild, -onphp-0.4.1.ebuild:
+  Double bump.
+
+*onphp-0.4.1 (09 Apr 2006)
+*onphp-0.2.11 (09 Apr 2006)
+
+  09 Apr 2006; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.4.1.ebuild,
+  +onphp-0.2.11.ebuild, -onphp-0.2.10.ebuild, -onphp-0.4.0.ebuild:
+  Double bump again.
+
+*onphp-0.4.0 (03 Apr 2006)
+*onphp-0.2.10 (03 Apr 2006)
+
+  03 Apr 2006; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.4.0.ebuild,
+  +onphp-0.2.10.ebuild:
+  Double bump.
+
+  02 Apr 2006; Konstantin Arkhipov <voxus@gentoo.org> onphp-0.2.9.ebuild:
+  Goes stable on x86 and amd64.
+
+*onphp-0.2.9 (09 Mar 2006)
+
+  09 Mar 2006; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.2.9.ebuild,
+  -onphp-0.2.7.ebuild:
+  Version bump.
+
+  28 Feb 2006; Konstantin Arkhipov <voxus@gentoo.org> onphp-0.2.8.ebuild:
+  Stable on x86.
+
+  24 Feb 2006; Konstantin Arkhipov <voxus@gentoo.org> onphp-0.2.8.ebuild:
+  Stable on amd64.
+
+*onphp-0.2.8 (08 Feb 2006)
+
+  08 Feb 2006; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.2.8.ebuild:
+  Version bump.
+
+  23 Jan 2006; Konstantin Arkhipov <voxus@gentoo.org> onphp-0.2.7.ebuild:
+  Goes stable on amd64.
+
+  21 Jan 2006; Konstantin Arkhipov <voxus@gentoo.org> onphp-0.2.7.ebuild:
+  Goes stable on x86.
+
+*onphp-0.2.7 (31 Dec 2005)
+
+  31 Dec 2005; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.2.7.ebuild,
+  -onphp-0.2.6.ebuild:
+  Version bump.
+
+  26 Nov 2005; Luca Longinotti <chtekk@gentoo.org> onphp-0.2.6.ebuild:
+  Fix var ordering, encase var in "" to prevent breakage, add has_php call.
+
+*onphp-0.2.6 (24 Nov 2005)
+
+  24 Nov 2005; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.2.6.ebuild,
+  -onphp-0.2.5.ebuild:
+  Version bump.
+
+*onphp-0.2.5 (16 Nov 2005)
+
+  16 Nov 2005; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.2.5.ebuild,
+  -onphp-0.2.4.ebuild:
+  Version bump, now with API optional docs.
+
+*onphp-0.2.4 (11 Nov 2005)
+
+  11 Nov 2005; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.2.4.ebuild,
+  -onphp-0.2.1.ebuild, -onphp-0.2.2.ebuild:
+  Moved to dev-php5 category and bumped to 0.2.4. Ebuild taken from Gentoo's
+  PHP overlay, thanks to Luca Longinotti for maintaining it there.
+
+*onphp-0.2.2 (23 Sep 2005)
+
+  23 Sep 2005; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.2.2.ebuild:
+  Version bump.
+
+*onphp-0.2.1 (11 Sep 2005)
+
+  11 Sep 2005; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.2.1.ebuild,
+  -onphp-0.2.0-r1.ebuild:
+  Version bump.
+
+*onphp-0.2.0-r1 (04 Sep 2005)
+
+  04 Sep 2005; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.2.0-r1.ebuild,
+  -onphp-0.2.0.ebuild:
+  Fixed RDEPEND and installation dir with regard to Stuart's feedback.
+
+*onphp-0.2.0 (03 Sep 2005)
+
+  03 Sep 2005; Konstantin Arkhipov <voxus@gentoo.org> +onphp-0.2.0.ebuild:
+  Initial import.

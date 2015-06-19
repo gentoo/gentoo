@@ -1,0 +1,51 @@
+# ChangeLog for net-misc/stargazer
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/stargazer/ChangeLog,v 1.8 2014/12/28 16:42:54 titanofold Exp $
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org> stargazer-2.408.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org> stargazer-2.408.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+  26 Apr 2014; Tom Wijsman <TomWij@gentoo.org> stargazer-2.408.ebuild:
+  Depending on virtual/mysql instead of dev-db/mysql, added epatch_user, fixed
+  move of library directory; fixes bug #508800, reported by Brian Evans
+  (grknight), proxied commit for SpiderX.
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> stargazer-2.408.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+  09 Jul 2013; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Removed myself from metadata.xml to avoid duplication, as I am part of proxy-
+  maintainers herd now.
+
+  03 Mar 2013; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Added the proxy-maintainers herd as requested on the dev ML.
+
+  24 Feb 2013; Tom Wijsman <TomWij@gentoo.org> stargazer-2.408.ebuild:
+  Corrected USE flag conditionals in pkg_postinst (accidental double negations),
+  introduced more die calls to make ebuild more reliable. Thanks to SpiderX for
+  proof-reading the corrections I made.
+
+*stargazer-2.408 (23 Feb 2013)
+
+  23 Feb 2013; Tom Wijsman <TomWij@gentoo.org> +files/logrotate,
+  +files/mans/rscriptd.8, +files/mans/sgauth.8, +files/mans/sgconf.1,
+  +files/mans/sgconf_xml.1, +files/mans/sgconv.1, +files/mans/stargazer.8,
+  +files/patches/stg-2.408-build-upstream.patch,
+  +files/patches/stg-2.408-build.patch,
+  +files/patches/stg-2.408-correct-paths.patch,
+  +files/patches/stg-2.408-fix-crash-on-stop.patch,
+  +files/patches/stg-2.408-makefile-build-upstream.patch,
+  +files/patches/stg-2.408-makefile-firebird-upstream.patch,
+  +files/patches/stg-2.408-makefile.patch,
+  +files/patches/stg-2.408-on-upstream.patch,
+  +files/patches/stg-2.408-radius-upstream.patch,
+  +files/patches/stg-2.408-rscriptd-upstream.patch,
+  +files/patches/stg-2.408-rscriptd.conf-upstream.patch,
+  +files/patches/stg-2.408-sgauth.conf-upstream.patch,
+  +files/patches/stg-2.408-sgconv-upstream.patch,
+  +files/patches/stg-2.408-static-libs.patch, +files/rscriptd, +files/sgauth,
+  +metadata.xml, +stargazer-2.408.ebuild:
+  New ebuild for stargazer. Contributed by SpiderX. Fixes bug #452916.

@@ -1,0 +1,30 @@
+# ChangeLog for dev-ml/ocaml-expat
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocaml-expat/ChangeLog,v 1.6 2013/08/19 13:33:11 aballier Exp $
+
+  19 Aug 2013; Alexis Ballier <aballier@gentoo.org> ocaml-expat-0.9.1.ebuild:
+  EAPI5, define suslot and add := dep on ocaml
+
+  28 Sep 2009; Petteri Räty <betelgeuse@gentoo.org>
+  ocaml-expat-0.9.1.ebuild:
+  Migrate to EAPI 2 in order to nuke built_with_use.
+
+  13 Jul 2008; Joseph Jezak <josejx@gentoo.org> ocaml-expat-0.9.1.ebuild:
+  Marked ~ppc for bug #197363.
+
+  11 Mar 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/ocaml-expat-0.9.1-test.patch, ocaml-expat-0.9.1.ebuild:
+  Disable broken test that needs a non existant file, add ounit dep for tests,
+  bug #212961, test native code version too, allow to build without ocamlopt,
+  keyword ~amd64
+
+  07 Feb 2007; Alexandre Buisse <nattfodd@gentoo.org>
+  ocaml-expat-0.9.1.ebuild:
+  Changed LICENSE to the correct value (MIT instead of as-is). Fixes bug #165723.
+
+*ocaml-expat-0.9.1 (06 Feb 2007)
+
+  06 Feb 2007; Alexandre Buisse <nattfodd@gentoo.org> +metadata.xml,
+  +ocaml-expat-0.9.1.ebuild:
+  Initial commit, ebuild courtesy of Oscar Hellström (bug #164443).
+

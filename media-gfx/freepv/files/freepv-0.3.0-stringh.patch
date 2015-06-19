@@ -1,0 +1,10 @@
+--- src/libfreepv/Image.cpp.ORIG	2009-05-02 01:12:31.000000000 +0200
++++ src/libfreepv/Image.cpp	2013-04-11 09:37:07.436358208 +0200
+@@ -23,6 +23,7 @@
+  */
+ 
+ #include <assert.h>
++#include <string.h>
+ 
+ #include "Image.h"
+ #include "JpegReader.h"

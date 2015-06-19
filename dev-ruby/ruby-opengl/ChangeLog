@@ -1,0 +1,282 @@
+# ChangeLog for dev-ruby/ruby-opengl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-opengl/ChangeLog,v 1.71 2015/06/07 19:36:43 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  24 Feb 2015; Hans de Graaff <graaff@gentoo.org> ruby-opengl-0.9.2.ebuild:
+  Add ruby22.
+
+*ruby-opengl-0.9.2 (10 Jan 2015)
+
+  10 Jan 2015; Manuel Rüger <mrueg@gentoo.org> +ruby-opengl-0.9.2.ebuild,
+  -ruby-opengl-0.9.0.ebuild, -ruby-opengl-0.9.1.ebuild:
+  Version bump. Remove old.
+
+*ruby-opengl-0.9.1 (08 Oct 2014)
+
+  08 Oct 2014; Hans de Graaff <graaff@gentoo.org> +ruby-opengl-0.9.1.ebuild:
+  Version bump. Add ruby21.
+
+*ruby-opengl-0.9.0 (26 Mar 2014)
+
+  26 Mar 2014; Manuel Rüger <mrueg@gentoo.org> +ruby-opengl-0.9.0.ebuild:
+  Version bump.
+
+  29 Dec 2013; Hans de Graaff <graaff@gentoo.org>
+  -ruby-opengl-0.60.1-r2.ebuild:
+  Remove old version that still overshadows newer version with lower version
+  number. Fixes bug 495006.
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> ruby-opengl-0.8.0.ebuild:
+  Stable for x86, wrt bug #495006
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> ruby-opengl-0.8.0.ebuild:
+  Stable for ppc, wrt bug #495006
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> ruby-opengl-0.60.1-r2.ebuild:
+  Force the 'downgrade' to newer version (#495006)
+
+  22 Dec 2013; Jeroen Roovers <jer@gentoo.org> ruby-opengl-0.8.0.ebuild,
+  ruby-opengl-0.60.1-r2.ebuild:
+  Stable for HPPA (bug #495006).
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> ruby-opengl-0.8.0.ebuild:
+  amd64 stable, bug #495006
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> ruby-opengl-0.8.0.ebuild:
+  Stable for ppc64, wrt bug #495006
+
+*ruby-opengl-0.8.0 (29 Oct 2013)
+
+  29 Oct 2013; Hans de Graaff <graaff@gentoo.org> +ruby-opengl-0.8.0.ebuild:
+  Version bump. Dropped ruby18 since it is no longer supported upstream. Add
+  ruby20.
+
+  16 Apr 2013; Hans de Graaff <graaff@gentoo.org>
+  -ruby-opengl-0.60.1-r1.ebuild:
+  Cleanup.
+
+  08 Jan 2013; Andreas Schuerch <nativemad@gentoo.org>
+  ruby-opengl-0.60.1-r2.ebuild:
+  x86 stable, needed for bug 430206
+
+  08 Nov 2012; Anthony G. Basile <blueness@gentoo.org>
+  ruby-opengl-0.60.1-r2.ebuild:
+  stable ppc, bug #430206
+
+  07 Nov 2012; Jeroen Roovers <jer@gentoo.org> ruby-opengl-0.60.1-r2.ebuild:
+  Stable for HPPA (bug #430206).
+
+  05 Oct 2012; Brent Baude <ranger@gentoo.org> ruby-opengl-0.60.1-r2.ebuild:
+  Marking ruby-opengl-0.60.1-r2 ppc64 for bug 430206
+
+  27 Sep 2012; Samuli Suominen <ssuominen@gentoo.org>
+  ruby-opengl-0.60.1-r2.ebuild:
+  Keyword ~ppc64 wrt #422887
+
+  11 Aug 2012; Agostino Sarubbo <ago@gentoo.org> ruby-opengl-0.60.1-r2.ebuild:
+  Stable for amd64, wrt bug #430206
+
+  09 Jul 2012; Jeroen Roovers <jer@gentoo.org> ruby-opengl-0.60.1-r2.ebuild:
+  Marked ~hppa (bug #422887).
+
+  01 Jul 2012; Raúl Porcel <armin76@gentoo.org> ruby-opengl-0.60.1-r1.ebuild,
+  ruby-opengl-0.60.1-r2.ebuild:
+  Drop alpha keywords
+
+  01 May 2012; Raúl Porcel <armin76@gentoo.org> ruby-opengl-0.60.1-r1.ebuild,
+  ruby-opengl-0.60.1-r2.ebuild:
+  Drop ia64/sparc keywords
+
+  28 Dec 2011; Hans de Graaff <graaff@gentoo.org> ruby-opengl-0.60.1-r1.ebuild:
+  Drop ruby19 from stable version.
+
+*ruby-opengl-0.60.1-r2 (05 May 2011)
+
+  05 May 2011; Hans de Graaff <graaff@gentoo.org>
+  +ruby-opengl-0.60.1-r2.ebuild:
+  Fix dodoc warning, bug 366011. Respect LDFLAGS.
+
+  15 Jan 2011; Hans de Graaff <graaff@gentoo.org>
+  -ruby-opengl-0.60.1.ebuild:
+  Remove old version.
+
+  20 Oct 2010; Brent Baude <ranger@gentoo.org> ruby-opengl-0.60.1-r1.ebuild:
+  Marking ruby-opengl-0.60.1-r1 ppc for bug 329807
+
+  16 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  ruby-opengl-0.60.1.ebuild, ruby-opengl-0.60.1-r1.ebuild:
+  virtual/glut -> media-libs/glut
+
+  28 Aug 2010; Raúl Porcel <armin76@gentoo.org>
+  ruby-opengl-0.60.1-r1.ebuild:
+  alpha/ia64/sparc stable wrt #329807
+
+  21 Aug 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/ruby-opengl-0.32c-extconf-gentoo.diff,
+  -files/ruby-opengl-0.32c-font-gentoo.diff, ruby-opengl-0.60.1-r1.ebuild:
+  Remove unused file. Cleanup fakegem ebuild to actually work.
+
+  01 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  ruby-opengl-0.60.1-r1.ebuild:
+  Stable on amd64 wrt bug #329807
+
+  26 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  ruby-opengl-0.60.1-r1.ebuild:
+  x86 stable, bug 329807
+
+  22 May 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  ruby-opengl-0.60.1.ebuild:
+  Various cleanups.
+
+*ruby-opengl-0.60.1-r1 (15 Jan 2010)
+
+  15 Jan 2010; Hans de Graaff <graaff@gentoo.org>
+  +ruby-opengl-0.60.1-r1.ebuild:
+  Convert to ruby-fakegem.
+
+  09 Dec 2009; Hans de Graaff <graaff@gentoo.org>
+  -ruby-opengl-0.60.0.ebuild:
+  Remove old version.
+
+  05 Oct 2009; Raúl Porcel <armin76@gentoo.org> ruby-opengl-0.60.1.ebuild:
+  ia64/sparc stable wrt #282603
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> ruby-opengl-0.60.1.ebuild:
+  ppc stable #282603
+
+  06 Sep 2009; Markus Meier <maekke@gentoo.org> ruby-opengl-0.60.1.ebuild:
+  amd64/x86 stable, bug #282603
+
+  30 Aug 2009; Tobias Klausmann <klausman@gentoo.org>
+  ruby-opengl-0.60.1.ebuild:
+  Stable on alpha, bug #282603
+
+*ruby-opengl-0.60.1 (07 Mar 2009)
+
+  07 Mar 2009; Hans de Graaff <graaff@gentoo.org>
+  +ruby-opengl-0.60.1.ebuild:
+  Version bump with better ruby 1.9.x support and bugfixes.
+
+  07 Mar 2009; Hans de Graaff <graaff@gentoo.org> -ruby-opengl-0.32c.ebuild,
+  -ruby-opengl-0.32d.ebuild, -ruby-opengl-0.32g.ebuild:
+  Remove old versions
+
+  17 Jan 2009; nixnut <nixnut@gentoo.org> ruby-opengl-0.60.0.ebuild:
+  ppc stable #250933
+
+  11 Jan 2009; Raúl Porcel <armin76@gentoo.org> ruby-opengl-0.60.0.ebuild:
+  ia64 stable wrt #250933
+
+  10 Jan 2009; Tobias Klausmann <klausman@gentoo.org>
+  ruby-opengl-0.60.0.ebuild:
+  Stable on alpha, bug #250933
+
+  21 Dec 2008; Markus Meier <maekke@gentoo.org> ruby-opengl-0.60.0.ebuild:
+  x86 stable, bug #250933
+
+  20 Dec 2008; nixnut <nixnut@gentoo.org> ruby-opengl-0.60.0.ebuild:
+  ~ppc wrt bug 216480
+
+  19 Dec 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  ruby-opengl-0.60.0.ebuild:
+  stable amd64, bug 250933
+
+  14 Dec 2008; Ferris McCormick <fmccor@gentoo.org>
+  ruby-opengl-0.60.0.ebuild:
+  Sparc stable, part of Bug #250933.
+
+  30 Nov 2008; Hans de Graaff <graaff@gentoo.org> ruby-opengl-0.60.0.ebuild:
+  Request at least rake 0.7.3 since bug 249173 seems to indicate that this is
+  the minimal version that works correctly.
+
+  12 Apr 2008; nixnut <nixnut@gentoo.org> ruby-opengl-0.32g.ebuild:
+  Stable on ppc wrt bug 216476
+
+  09 Apr 2008; Raúl Porcel <armin76@gentoo.org> ruby-opengl-0.32g.ebuild,
+  ruby-opengl-0.60.0.ebuild:
+  Add ~ia64/~sparc wrt #216480 and ia64/sparc stable wrt #216476
+
+  08 Apr 2008; Tobias Klausmann <klausman@gentoo.org>
+  ruby-opengl-0.60.0.ebuild:
+  Keyworded on alpha, bug #216480
+
+  06 Apr 2008; Markus Meier <maekke@gentoo.org> ruby-opengl-0.32g.ebuild:
+  amd64/x86 stable, bug #216476
+
+*ruby-opengl-0.60.0 (06 Apr 2008)
+
+  06 Apr 2008; Hans de Graaff <graaff@gentoo.org>
+  +ruby-opengl-0.60.0.ebuild:
+  Version bump: upstream has changed ownership and location, switched to gem
+  version for easier maintenance, dropped most keywords due to newly
+  introduced dependency. Closes #201833.
+
+  06 Apr 2008; Hans de Graaff <graaff@gentoo.org> ruby-opengl-0.32c.ebuild,
+  ruby-opengl-0.32d.ebuild, ruby-opengl-0.32g.ebuild:
+  Add missing dependencies to 32c version, fixing #216379; fix quotation of
+  variables
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  12 May 2006; Caleb Tennis <caleb@gentoo.org> ruby-opengl-0.32g.ebuild:
+  Don't use the sub platform trick
+
+*ruby-opengl-0.32g (29 Apr 2006)
+
+  29 Apr 2006; Caleb Tennis <caleb@gentoo.org> +ruby-opengl-0.32g.ebuild:
+  version bump
+
+  13 Jan 2006; Ferris McCormick <fmccor@gentoo.org>
+  ruby-opengl-0.32d.ebuild:
+  There are two implementations of glut (media-libs/glut, media-libs/freeglut),
+  and both provide virtual/glut, both work with ruby-opengl.  Hence, depend on
+  virtual/glut instead of media-libs/glut (Bug #118899).
+
+  17 Oct 2005; Aron Griffis <agriffis@gentoo.org> ruby-opengl-0.32d.ebuild:
+  Mark 0.32d stable on ia64
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org> ruby-opengl-0.32d.ebuild:
+  Mark 0.32d ~ia64
+
+  09 Sep 2005; Ferris McCormick <fmccor@gentoo.org>
+  ruby-opengl-0.32d.ebuild:
+  Stable on sparc.  Runs with no problems.
+
+  24 Apr 2005; Simon Stelling <blubb@gentoo.org> ruby-opengl-0.32c.ebuild,
+  ruby-opengl-0.32d.ebuild:
+  0.32d ~amd64, 0.32c amd64
+
+  03 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> ruby-opengl-0.32d.ebuild:
+  Stable on x86, ppc and alpha.
+
+  12 Aug 2004; Tom Martin <slarti@gentoo.org> ruby-opengl-0.32c.ebuild:
+  Marked ~amd64; resolving bug 57618. Thanks to Robert Gogolok
+  <robertgogolok@gmx.de> for reporting.
+
+  05 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> ruby-opengl-0.32c.ebuild,
+  ruby-opengl-0.32d.ebuild:
+  Added to ~alpha
+
+*ruby-opengl-0.32d (05 Jul 2004)
+
+  05 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> ruby-opengl-0.32c.ebuild,
+  +ruby-opengl-0.32d.ebuild:
+  Version bumped.
+
+  23 May 2004; Ferris McCormick <fmccor@gentoo.org> ruby-opengl-0.32c.ebuild:
+  Add ~sparc keyword.
+
+  17 Apr 2004; David Holm <dholm@gentoo.org> ruby-opengl-0.32c.ebuild:
+  Added to ~ppc.
+
+*ruby-opengl-0.32c (21 Feb 2004)
+
+  21 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> metadata.xml,
+  ruby-opengl-0.32c.ebuild, files/ruby-opengl-0.32c-extconf-gentoo.diff,
+  files/ruby-opengl-0.32c-font-gentoo.diff:
+  Initial import. Ebuild submitted by Mathias Gumz <gumz@cs.uni-magdeburg.de>,
+  closing bug #23099

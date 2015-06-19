@@ -1,0 +1,117 @@
+# ChangeLog for sci-chemistry/votca-csg
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/votca-csg/ChangeLog,v 1.28 2015/03/16 08:23:47 ago Exp $
+
+  16 Mar 2015; Agostino Sarubbo <ago@gentoo.org> votca-csg-1.2.4-r1.ebuild:
+  Stable for x86, wrt bug #526968
+
+  02 Jan 2015; Chema Alonso <nimiux@gentoo.org> votca-csg-1.2.4-r1.ebuild:
+  Stable for amd64 wrt bug #526968
+
+*votca-csg-1.2.4-r1 (24 Oct 2014)
+
+  24 Oct 2014; Christoph Junghans <ottxor@gentoo.org>
+  +votca-csg-1.2.4-r1.ebuild, -votca-csg-1.2.4.ebuild:
+  fixed bash-comp (bug #526320)
+
+*votca-csg-1.2.4 (31 Aug 2014)
+
+  31 Aug 2014; Christoph Junghans <ottxor@gentoo.org> +votca-csg-1.2.4.ebuild,
+  -votca-csg-1.2.3-r1.ebuild, -votca-csg-1.2.3.ebuild:
+  version bump
+
+*votca-csg-1.2.3-r1 (14 Apr 2013)
+
+  14 Apr 2013; Christoph Junghans <ottxor@gentoo.org>
+  +votca-csg-1.2.3-r1.ebuild:
+  added subslot deps
+
+  27 Feb 2013; Michael Sterrett <mr_bones_@gentoo.org> votca-csg-1.2.3.ebuild:
+  fix broken dep
+
+  26 Dec 2012; Christoph Junghans <ottxor@gentoo.org> votca-csg-1.2.2.ebuild,
+  votca-csg-1.2.3.ebuild:
+  use new mercurial.eclass defaults
+
+  17 Nov 2012; Christoph Junghans <ottxor@gentoo.org> metadata.xml:
+  updated metadata.xml
+
+*votca-csg-1.2.3 (17 Aug 2012)
+
+  17 Aug 2012; Christoph Junghans <ottxor@gentoo.org> +votca-csg-1.2.3.ebuild:
+  version bump
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> votca-csg-1.2.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Feb 2012; Kacper Kowalik <xarthisius@gentoo.org> votca-csg-1.2.2.ebuild:
+  Fix dependency on app-doc/doxygen wrt converting useflags 'nodot' to 'dot'.
+  Fixes bug 405451 by Marien Zwart <marienz@gentoo.org>
+
+  05 Feb 2012; Christoph Junghans <ottxor@gentoo.org> -votca-csg-1.2.1.ebuild:
+  remove old
+
+  25 Jan 2012; Thomas Kahle <tomka@gentoo.org> votca-csg-1.2.2.ebuild:
+  x86 stable per bug 389681
+
+  25 Jan 2012; Christoph Junghans <ottxor@gentoo.org> votca-csg-1.2.2.ebuild:
+  keyword ~x86-macos and fix bug #398437
+
+  17 Jan 2012; Agostino Sarubbo <ago@gentoo.org> votca-csg-1.2.2.ebuild:
+  Stable for amd64, wrt bug #389681
+
+  13 Jan 2012; Christoph Junghans <ottxor@gentoo.org> votca-csg-1.2.2.ebuild:
+  keyword ~amd64-linux
+
+*votca-csg-1.2.2 (11 Jan 2012)
+
+  11 Jan 2012; Christoph Junghans <ottxor@gentoo.org> +votca-csg-1.2.2.ebuild:
+  version bump
+
+  14 Dec 2011; Agostino Sarubbo <ago@gentoo.org> votca-csg-1.2.1.ebuild:
+  Stable for AMD64, wrt bug #389681
+
+  05 Nov 2011; Christoph Junghans <ottxor@gentoo.org> votca-csg-1.2.1.ebuild:
+  multilib support
+
+  10 Sep 2011; Christoph Junghans <ottxor@gentoo.org> votca-csg-1.2.1.ebuild:
+  Migrate to the bash-completion-r1 eclass manifest
+
+*votca-csg-1.2.1 (25 Aug 2011)
+
+  25 Aug 2011; Christoph Junghans <ottxor@gentoo.org> -votca-csg-1.2.ebuild,
+  +votca-csg-1.2.1.ebuild, metadata.xml:
+  version bump
+
+  14 Aug 2011; Christoph Junghans <ottxor@gentoo.org> -votca-csg-1.1.1.ebuild,
+  -votca-csg-1.1.2.ebuild, votca-csg-1.2.ebuild, metadata.xml:
+  renamed boost useflag to system-boost and removed old
+
+  17 Jul 2011; Christoph Junghans <ottxor@gentoo.org> votca-csg-1.2.ebuild:
+  Added IUSE=examples
+
+*votca-csg-1.2 (17 Jun 2011)
+
+  17 Jun 2011; Christoph Junghans <ottxor@gentoo.org> +votca-csg-1.2.ebuild,
+  metadata.xml:
+  Version bump
+
+*votca-csg-1.1.2 (04 Apr 2011)
+
+  04 Apr 2011; Christoph Junghans <ottxor@gentoo.org> +votca-csg-1.1.2.ebuild:
+  Version bump
+
+  09 Mar 2011; Christoph Junghans <ottxor@gentoo.org> votca-csg-1.1.1.ebuild:
+  added ~amd64 (bug #357983)
+
+*votca-csg-1.1.1 (07 Mar 2011)
+
+  07 Mar 2011; Christoph Junghans <ottxor@gentoo.org> -votca-csg-1.0.1.ebuild,
+  +votca-csg-1.1.1.ebuild:
+  version bump
+
+*votca-csg-1.0.1 (12 Feb 2011)
+
+  12 Feb 2011; Christoph Junghans <ottxor@gentoo.org> +votca-csg-1.0.1.ebuild,
+  +metadata.xml:
+  Initial commit (bug #296707)

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>patrick@gentoo.org</email>
+		<name>Patrick Lauer</name>
+	</maintainer>
+	<use>
+		<flag name="secure-updates">Enable secure updates</flag>
+		<flag name="fast-libs">Enable fast libs</flag>
+	</use>
+</pkgmetadata>

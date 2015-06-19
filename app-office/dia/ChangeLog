@@ -1,0 +1,676 @@
+# ChangeLog for app-office/dia
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/dia/ChangeLog,v 1.179 2015/05/01 04:49:38 jer Exp $
+
+  01 May 2015; Jeroen Roovers <jer@gentoo.org> dia-0.97.3.ebuild:
+  Stable for PPC64 too.
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> dia-0.97.3.ebuild,
+  dia-0.97.3_pre20140417-r1.ebuild:
+  Remove old Python implementations
+
+  19 Dec 2014; Pacho Ramos <pacho@gentoo.org> dia-0.97.3.ebuild:
+  amd64 stable, bug 529964
+
+  18 Dec 2014; Pacho Ramos <pacho@gentoo.org> dia-0.97.3.ebuild:
+  x86 stable, bug 529964
+
+  12 Dec 2014; Jeroen Roovers <jer@gentoo.org> dia-0.97.3.ebuild:
+  Stable for HPPA (bug #529964).
+
+*dia-0.97.3 (24 Sep 2014)
+
+  24 Sep 2014; Pacho Ramos <pacho@gentoo.org> +dia-0.97.3.ebuild,
+  -dia-0.97.3_pre20140417.ebuild:
+  Version bump, drop old
+
+  07 Aug 2014; Jeroen Roovers <jer@gentoo.org>
+  dia-0.97.3_pre20140417-r1.ebuild:
+  Stable for HPPA (bug #512012).
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  dia-0.97.3_pre20140417-r1.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  dia-0.97.3_pre20140417-r1.ebuild:
+  Stable for amd64, wrt bug #512912
+
+*dia-0.97.3_pre20140417-r1 (25 Jun 2014)
+
+  25 Jun 2014; Pacho Ramos <pacho@gentoo.org> +dia-0.97.3_pre20140417-r1.ebuild,
+  +files/dia-0.97.2-png-crash.patch:
+  Fix crash and test failure (#508566 by Kolan Sh. and Drunkard Zhang; #458460
+  by flameeyes and eroen)
+
+  12 Jun 2014; Pacho Ramos <pacho@gentoo.org>
+  +files/dia-0.97.2-disable-cairo.patch, -dia-0.97.2-r2.ebuild,
+  -files/dia-0.97.2-freetype251.patch, -files/dia-0.97.2-glib-2.31.patch,
+  -files/dia-0.97.2-glib2.36.patch,
+  -files/dia-0.97.2-implicit-declaration.patch, dia-0.97.3_pre20140417.ebuild:
+  Fix build without cairo (#509636 by Marcel Pennewib and gokturk), drop old.
+
+  07 May 2014; Pacho Ramos <pacho@gentoo.org> dia-0.97.3_pre20140417.ebuild:
+  Add bug references (thanks to Gilles for finding them)
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org> dia-0.97.3_pre20140417.ebuild:
+  x86 stable, bug 508862
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org> dia-0.97.3_pre20140417.ebuild:
+  amd64 stable, bug 508862
+
+  02 May 2014; Jeroen Roovers <jer@gentoo.org> dia-0.97.3_pre20140417.ebuild:
+  Stable for HPPA (bug #508862).
+
+*dia-0.97.3_pre20140417 (17 Apr 2014)
+
+  17 Apr 2014; Pacho Ramos <pacho@gentoo.org> +dia-0.97.3_pre20140417.ebuild,
+  -dia-0.97.2-r1.ebuild:
+  Bump to a newer snapshot fixing bug #505928 (by Sergey S. Starikoff) and many
+  other problems. Drop old.
+
+  11 Mar 2014; Lars Wendler <polynomial-c@gentoo.org> dia-0.97.2-r1.ebuild,
+  dia-0.97.2-r2.ebuild, +files/dia-0.97.2-freetype251.patch:
+  Fixed compilation with >=freetype-2.5.1 (bug #493604).
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> dia-0.97.2-r2.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> dia-0.97.2-r2.ebuild:
+  arch stable, bug 888
+
+  22 Dec 2013; Jeroen Roovers <jer@gentoo.org> dia-0.97.2-r2.ebuild:
+  Stable for HPPA (bug #478252).
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> dia-0.97.2-r2.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> dia-0.97.2-r2.ebuild:
+  amd64 stable, bug #478252
+
+  22 Sep 2013; Pacho Ramos <pacho@gentoo.org> dia-0.97.2-r2.ebuild:
+  --enable-gnome only adds support for deprecated stuff, bugs #442294 and
+  #485668
+
+*dia-0.97.2-r2 (22 Sep 2013)
+
+  22 Sep 2013; Pacho Ramos <pacho@gentoo.org> +dia-0.97.2-r2.ebuild,
+  +files/dia-0.97.2-glib2.36.patch,
+  +files/dia-0.97.2-implicit-declaration.patch:
+  Migrate to new python eclasses, improve desktop file translations, drop
+  unneeded libgnome* deps, let it compile with latest automake, don't mess with
+  localedir, fix glib-2.36 compat, apply upstream patch to fix some warnings.
+
+  05 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org> -dia-0.97.1.ebuild,
+  -files/dia-0.97.1-libpng15.patch, -dia-0.97.2.ebuild,
+  -files/dia-0.97-acinclude-python-fixes.patch:
+  Clean up old revisions.
+
+  28 Oct 2012; Raúl Porcel <armin76@gentoo.org> dia-0.97.2-r1.ebuild:
+  ia64/sparc stable wrt #427544
+
+  16 Oct 2012; Anthony G. Basile <blueness@gentoo.org> dia-0.97.2-r1.ebuild:
+  stable ppc, bug #427544
+
+  16 Oct 2012; Matt Turner <mattst88@gentoo.org> dia-0.97.2-r1.ebuild:
+  Stable on alpha, bug 427544.
+
+  07 Oct 2012; Anthony G. Basile <blueness@gentoo.org> dia-0.97.2-r1.ebuild:
+  stable ppc64, bug #427544
+
+  04 Oct 2012; Agostino Sarubbo <ago@gentoo.org> dia-0.97.2-r1.ebuild:
+  Stable for amd64, wrt bug #427544
+
+  03 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> dia-0.97.2-r1.ebuild:
+  x86 stable wrt bug #427544
+
+  02 Oct 2012; Jeroen Roovers <jer@gentoo.org> dia-0.97.2-r1.ebuild:
+  Stable for HPPA (bug #427544).
+
+  15 Jul 2012; Raúl Porcel <armin76@gentoo.org> dia-0.97.2.ebuild:
+  alpha/ia64/sparc stable wrt #410611
+
+  07 Jul 2012; Michał Górny <mgorny@gentoo.org>
+  +files/dia-0.97.2-underlinking.patch, dia-0.97.2-r1.ebuild:
+  Fix underlinking (bug #420685). Also remove intltoolize call which is
+  redundant with newer eautoreconf.
+
+  09 Jun 2012; Justin Lecher <jlec@gentoo.org> dia-0.97.2-r1.ebuild:
+  Prefix fix
+
+  02 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> dia-0.97.2-r1.ebuild:
+  Pull in correct SLOT of media-libs/libpng for headers and symlink.
+
+*dia-0.97.2-r1 (02 Jun 2012)
+
+  02 Jun 2012; Sebastian Pipping <sping@gentoo.org> +dia-0.97.2-r1.ebuild:
+  Install second desktop file for integrated mode (bug #415495)
+
+  24 May 2012; Samuli Suominen <ssuominen@gentoo.org> dia-0.97.2.ebuild:
+  ppc stable wrt #410611
+
+  16 May 2012; Jeroen Roovers <jer@gentoo.org> dia-0.97.2.ebuild:
+  Stable for HPPA (bug #410611).
+
+  08 May 2012; Mike Frysinger <vapier@gentoo.org> dia-0.97.2.ebuild:
+  Add arm love.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> dia-0.97.1.ebuild,
+  dia-0.97.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  29 Apr 2012; Markus Meier <maekke@gentoo.org> dia-0.97.2.ebuild:
+  x86 stable, bug #410611
+
+  19 Apr 2012; Brent Baude <ranger@gentoo.org> dia-0.97.2.ebuild:
+  Marking dia-0.97.2 ppc64 stable for bug 410611
+
+  18 Apr 2012; Agostino Sarubbo <ago@gentoo.org> dia-0.97.2.ebuild:
+  Stable for amd64, wrt bug #410611
+
+  08 Apr 2012; Alexandre Rostovtsev <tetromino@gentoo.org> dia-0.97.2.ebuild,
+  +files/dia-0.97.2-glib-2.31.patch:
+  Fix building against >=glib-2.31 (bug #401331, thanks to Maciej Piechotka for
+  reporting).
+
+*dia-0.97.2 (22 Dec 2011)
+
+  22 Dec 2011; Samuli Suominen <ssuominen@gentoo.org> +dia-0.97.2.ebuild:
+  Version bump.
+
+  15 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org> dia-0.97.1.ebuild:
+  QA: eautoreconf should be before gnome2_src_prepare.
+
+  07 Aug 2011; Samuli Suominen <ssuominen@gentoo.org> dia-0.97.1.ebuild,
+  +files/dia-0.97.1-libpng15.patch:
+  Fix building with libpng15 wrt #373871 by Stuart Longland. Remove automagic
+  USE="png zlib" and always depend on libpng and zlib.
+
+  14 Apr 2011; Jonathan Callen <abcd@gentoo.org> dia-0.97.1.ebuild:
+  Add prefix support and keywords
+
+  26 Jan 2011; Pacho Ramos <pacho@gentoo.org> dia-0.97.1.ebuild:
+  Let it compile when python3 is main interpreter. Bump to eapi3.
+
+  09 Sep 2010; Pacho Ramos <pacho@gentoo.org> dia-0.97.1.ebuild:
+  Don't use -DGTK_DISABLE_DEPRECATED (bug #333439) and RDEPEND on gtk+:2.
+
+  16 May 2010; Gilles Dartiguelongue <eva@gentoo.org> -dia-0.97-r1.ebuild,
+  dia-0.97.1.ebuild, -files/dia-0.97-automagic-libemf.patch,
+  -files/dia-0.97-fix-bashism.patch:
+  Fix homepage URL, bug #319797. Also remove unneeded *.la files. Clean up
+  old revision.
+
+  09 Mar 2010; Joseph Jezak <josejx@gentoo.org> dia-0.97.1.ebuild:
+  Marked ppc stable for bug #257020.
+
+  07 Mar 2010; Gilles Dartiguelongue <eva@gentoo.org> -dia-0.95.1.ebuild,
+  -dia-0.96.1-r1.ebuild, -files/dia-0.96.1-64bit-fixes.patch,
+  -files/dia-0.96.1-gnome-doc.patch, -files/dia-0.96.1-xml-fixes.patch,
+  -dia-0.97.ebuild, dia-0.97-r1.ebuild, metadata.xml:
+  Clean up old revisions, bug #277869.
+
+  28 Feb 2010; Tobias Heinlein <keytoaster@gentoo.org> dia-0.97.1.ebuild:
+  amd64 stable, security bug #257020
+
+  25 Feb 2010; Raúl Porcel <armin76@gentoo.org> dia-0.97.1.ebuild:
+  alpha/ia64/sparc stable wrt #257020
+
+  23 Feb 2010; Brent Baude <ranger@gentoo.org> dia-0.97.1.ebuild:
+  Marking dia-0.97.1 ppc64 for bug 257020
+
+  21 Feb 2010; Christian Faulhammer <fauli@gentoo.org> dia-0.97.1.ebuild:
+  stable x86, bug 257020
+
+  17 Feb 2010; Jeroen Roovers <jer@gentoo.org> dia-0.97.1.ebuild:
+  Stable for HPPA (bug #257020).
+
+*dia-0.97.1 (16 Feb 2010)
+
+  16 Feb 2010; Romain Perier <mrpouet@gentoo.org> +dia-0.97.1.ebuild:
+  Version bump, Many bugsfixes, Fix a security issue (CVE-2008-5984). Per
+  bug #257020.
+
+  03 Aug 2009; Jeroen Roovers <jer@gentoo.org> dia-0.97-r1.ebuild:
+  Stable for HPPA (bug #277843).
+
+  02 Aug 2009; Raúl Porcel <armin76@gentoo.org> dia-0.97-r1.ebuild:
+  alpha/ia64/sparc stable wrt #277843
+
+  31 Jul 2009; Christian Faulhammer <fauli@gentoo.org> dia-0.97-r1.ebuild:
+  stable x86, bug 277843
+
+  27 Jul 2009; nixnut <nixnut@gentoo.org> dia-0.97-r1.ebuild:
+  ppc stable #277843
+
+  26 Jul 2009; Brent Baude <ranger@gentoo.org> dia-0.97-r1.ebuild:
+  Marking dia-0.97-r1 ppc64 for bug 277843
+
+  25 Jul 2009; Jeremy Olexa <darkside@gentoo.org> dia-0.97-r1.ebuild:
+  amd64 stable, bug 277843
+
+*dia-0.97-r1 (14 Jul 2009)
+
+  14 Jul 2009; Gilles Dartiguelongue <eva@gentoo.org> +dia-0.97-r1.ebuild,
+  +files/dia-0.97-automagic-libemf.patch, +files/dia-0.97-fix-bashism.patch:
+  Version bump. Fix inverted test to build documentation, bug #271047. Fix
+  bashism in configure.ac. Fix automagic libemf detection, bug #276148.
+
+  27 Jun 2009; Romain Perier <mrpouet@gentoo.org> dia-0.97.ebuild:
+  Fix bug #275468 -- automake failure for doc/*/Makefile.am to a bad sed
+  expression which skiped an if block without skip the endif
+
+  21 Jun 2009; <mrpouet@gentoo.org> dia-0.97.ebuild,
+  +files/dia-0.97-acinclude-python-fixes.patch:
+  Fix compilation error with USE="python", bug #271855, and fix missing EAPI="2"
+
+*dia-0.97 (18 May 2009)
+
+  18 May 2009; Gilles Dartiguelongue <eva@gentoo.org> +dia-0.97.ebuild,
+  +files/dia-0.97.0-gnome-doc.patch:
+  Bump to 0.97. Bug fixes, user GtkPrint for printing, and more, bug
+  #270306.
+
+  04 Dec 2008; Gilles Dartiguelongue <eva@gentoo.org> -dia-0.96.1.ebuild,
+  dia-0.96.1-r1.ebuild:
+  Add python_need_rebuild, bug #244749.
+
+  03 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  28 Jul 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/dia-0.96.1-64bit-fixes.patch, dia-0.96.1-r1.ebuild:
+  add 64 bit compilation fix patch, bug #191673.
+
+  29 May 2008; Ali Polatel <hawking@gentoo.org> dia-0.96.1-r1.ebuild:
+  python_mod_optimize is ROOT aware.
+
+  07 May 2008; Markus Rothe <corsair@gentoo.org> dia-0.96.1-r1.ebuild:
+  Stable on ppc64; bug #191673
+
+  06 May 2008; Jeroen Roovers <jer@gentoo.org> dia-0.96.1-r1.ebuild:
+  Stable for HPPA (bug #191673).
+
+  01 May 2008; Markus Meier <maekke@gentoo.org> dia-0.96.1-r1.ebuild:
+  amd64/x86 stable, bug #191673
+
+  01 May 2008; Raúl Porcel <armin76@gentoo.org> dia-0.96.1-r1.ebuild:
+  alpha/ia64/sparc stable wrt #191673
+
+  01 May 2008; nixnut <nixnut@gentoo.org> dia-0.96.1-r1.ebuild:
+  Stable on ppc wrt bug 191673
+
+*dia-0.96.1-r1 (03 Apr 2008)
+
+  03 Apr 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/dia-0.96.1-gnome-doc.patch, +files/dia-0.96.1-xml-fixes.patch,
+  +dia-0.96.1-r1.ebuild:
+  Remove man generation if USE="-doc", fix bug #205067. Always install
+  documentation where gnome can find it. Conditional destination doesn't do
+  any good anyway, fix #159381.
+
+  09 Mar 2008; Mart Raudsepp <leio@gentoo.org> dia-0.95.1.ebuild,
+  dia-0.96.1.ebuild:
+  Fix build with newer intltool, bug 199598
+
+  17 Nov 2007; Gilles Dartiguelongue <eva@gentoo.org> dia-0.96.1.ebuild:
+  added conditional doc generation, fix bug #199412
+
+*dia-0.96.1 (10 Apr 2007)
+
+  10 Apr 2007; Robin H. Johnson <robbat2@gentoo.org> -dia-0.96_pre3.ebuild,
+  +dia-0.96.1.ebuild:
+  Replace pre3 with the final of 0.96 now that it is available. ~mips dropped
+  due to new libgnomeprint dependancy.
+
+  10 Mar 2007; Peter Weller <welp@gentoo.org> dia-0.95.1.ebuild:
+  Keyworded ~x86-fbsd
+
+  05 Feb 2007; Jeroen Roovers <jer@gentoo.org> dia-0.95.1.ebuild:
+  Stable for HPPA (inkscape).
+
+*dia-0.96_pre3 (02 Feb 2007)
+
+  02 Feb 2007; Robin H. Johnson <robbat2@gentoo.org> +dia-0.96_pre3.ebuild:
+  Version bump to prerelease, fixes glitches with text overflow in exports
+  that I need.
+
+  27 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  -files/dia-0.94-db2man.patch, -files/dia-0.94-help.patch,
+  -files/0.94-disable_python_gtk_import.patch, -files/dia-0.94-gcc4.patch,
+  -files/dia-0.94-no_font_cache.patch, -files/dia-0.94-pkgconfig.patch,
+  -files/dia-0.94-png.patch, -files/dia-0.94-secure-eval.patch,
+  -files/dia-0.94_xfigoverflowfix.patch, -dia-0.94-r3.ebuild,
+  -dia-0.94-r4.ebuild, -dia-0.94-r5.ebuild:
+  Cleanup wrt #140499
+
+  15 Oct 2006; Aron Griffis <agriffis@gentoo.org> dia-0.95.1.ebuild:
+  Mark 0.95.1 stable on ia64. #140499
+
+  28 Jun 2006; Jeroen Roovers <jer@gentoo.org> dia-0.95.1.ebuild:
+  Marked ~hppa (for media-gfx/inkscape).
+
+  07 Jun 2006; John N. Laliberte <allanonjl@gentoo.org> dia-0.94-r4.ebuild,
+  dia-0.94-r5.ebuild:
+  mirrors to mirror, fixes #135898
+
+  31 May 2006; Thomas Cort <tcort@gentoo.org> dia-0.95.1.ebuild:
+  Stable on alpha wrt security Bug #133699.
+
+  30 May 2006; Gustavo Zacarias <gustavoz@gentoo.org> dia-0.95.1.ebuild:
+  Stable on sparc wrt security #133699
+
+  30 May 2006; Chris Gianelloni <wolf31o2@gentoo.org> dia-0.95.1.ebuild:
+  Stable on amd64 and x86 wrt bug #133699.
+
+  30 May 2006; Markus Rothe <corsair@gentoo.org> dia-0.95.1.ebuild:
+  Stable on ppc64; bug #133699
+
+  30 May 2006; Tobias Scherbaum <dertobi123@gentoo.org> dia-0.95.1.ebuild:
+  ppc stable, bug #133699
+
+*dia-0.95.1 (30 May 2006)
+
+  30 May 2006; John N. Laliberte <allanonjl@gentoo.org> +dia-0.95.1.ebuild:
+  new version.  fixes #133699 and #130742.  cleanup of ebuild.
+
+  22 Apr 2006; Thomas Cort <tcort@gentoo.org> dia-0.94-r5.ebuild:
+  Stable on amd64 wrt security Bug #128107.
+
+  22 Apr 2006; Markus Rothe <corsair@gentoo.org> dia-0.94-r5.ebuild:
+  Stable on ppc64; bug #128107
+
+  21 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org> dia-0.94-r5.ebuild:
+  ppc stable, bug #128107
+
+  21 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org> dia-0.94-r5.ebuild:
+  Stable on x86 wrt bug #128107.
+
+  21 Apr 2006; Jason Wever <weeve@gentoo.org> dia-0.94-r5.ebuild:
+  Stable on SPARC wrt security bug #128107.
+
+  21 Apr 2006; Thomas Cort <tcort@gentoo.org> dia-0.94-r5.ebuild:
+  Stable on alpha wrt security Bug #128107.
+
+*dia-0.94-r5 (20 Apr 2006)
+
+  20 Apr 2006; John N. Laliberte <allanonjl@gentoo.org>
+  +files/dia-0.94_xfigoverflowfix.patch, +dia-0.94-r5.ebuild:
+  add patch for #128107
+
+  22 Mar 2006; Marinus Schraal <foser@gentoo.org> -files/dia-0.94-sheets-png.tar.bz2 :
+  Move png sheets to mirrors (#120627)
+
+  17 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  +files/dia-0.94-pkgconfig.patch, dia-0.94-r4.ebuild:
+  Fix gnome compilation #118591.  Mark 0.94-r4 stable on ia64
+
+*dia-0.94-r4 (02 Nov 2005)
+
+  02 Nov 2005; Mike Gardiner <obz@gentoo.org> +files/dia-0.94-png.patch,
+  +files/dia-0.94-sheets-png.tar.bz2, +dia-0.94-r4.ebuild:
+  Moved all of the xpm's to png's for the sheets. See bug #103401, and Gnome
+  Bug, #154079 for more information.
+
+  04 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> dia-0.94-r3.ebuild:
+  Stable on ppc.
+
+  03 Oct 2005; Markus Rothe <corsair@gentoo.org> dia-0.94-r3.ebuild:
+  Stable on ppc64 (bug #107916)
+
+  03 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org> dia-0.94-r3.ebuild:
+  stable on alpha wrt bug #107916
+
+  03 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org> dia-0.94-r3.ebuild:
+  Stable on sparc wrt #107916
+
+  03 Oct 2005; <mkay@gentoo.org> dia-0.94-r3.ebuild:
+  Marked stable on x86
+
+  03 Oct 2005; <dang@gentoo.org> dia-0.94-r3.ebuild:
+  Marked stable on amd64
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org> dia-0.94-r3.ebuild:
+  Mark 0.94-r3 stable on ia64 #107916
+
+*dia-0.94-r3 (03 Oct 2005)
+
+  03 Oct 2005; <dang@gentoo.org> +files/dia-0.94-secure-eval.patch,
+  +dia-0.94-r3.ebuild:
+  Fix insecure python eval. Bug #107916
+
+  03 Oct 2005; Hardave Riar <hardave@gentoo.org> dia-0.94-r2.ebuild:
+  Keyworded ~mips.
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> dia-0.94-r2.ebuild:
+  Mark 0.94-r2 stable on ia64
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> dia-0.94-r2.ebuild:
+  Mark 0.94-r2 stable on alpha
+
+  03 Sep 2005; Markus Rothe <corsair@gentoo.org> dia-0.94-r2.ebuild:
+  Stable on ppc64
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> dia-0.94-r2.ebuild:
+  Stable on ppc.
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> dia-0.94-r2.ebuild:
+  add ~ia64
+
+  24 Aug 2005; Marcus D. Hanwell <cryos@gentoo.org> dia-0.94-r2.ebuild:
+  Stable on amd64, closes bug 103540.
+
+  23 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> dia-0.94-r2.ebuild:
+  Stable on sparc
+
+  23 Aug 2005; Leonardo Boshell <leonardop@gentoo.org> dia-0.94-r2.ebuild:
+  Stable on x86.
+
+*dia-0.94-r2 (12 Jul 2005)
+
+  12 Jul 2005; Leonardo Boshell <leonardop@gentoo.org> dia-0.94-r2.ebuild,
+  files/dia-0.94-db2man.patch:
+  New revision. Added patch from upstream's CVS repository to correctly
+  generate the man page, resolves bug #98610.
+
+  13 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org> dia-0.94-r1.ebuild:
+  alpha stable
+
+  05 Jun 2005; Markus Rothe <corsair@gentoo.org> dia-0.94-r1.ebuild:
+  Stable on ppc64; dependency for bug #92995
+
+  27 May 2005; Leonardo Boshell <leonardop@gentoo.org> dia-0.94-r1.ebuild:
+  Added dependency to docbook-xml-dtd-4.2. Resolves bug #93967.
+
+  21 May 2005; Markus Rothe <corsair@gentoo.org> dia-0.94-r1.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  27 Apr 2005; Alastair Tse <liquidx@gentoo.org>
+  +files/0.94-disable_python_gtk_import.patch, dia-0.94-r1.ebuild:
+  taking out python gtk check to avoid problems for people building with X
+  (#31589)
+
+  17 Apr 2005; Mark Loeser <halcy0n@gentoo.org> +files/dia-0.94-gcc4.patch,
+  dia-0.94-r1.ebuild:
+  Adding patch to fix GCC4 compilation issues.
+
+  11 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> dia-0.94-r1.ebuild:
+  Stable on sparc
+
+  10 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> dia-0.94-r1.ebuild:
+  Stable on ppc.
+
+  10 Apr 2005; Simon Stelling <blubb@gentoo.org> dia-0.94-r1.ebuild:
+  stable on amd64
+
+  09 Apr 2005; Leonardo Boshell <leonardop@gentoo.org> dia-0.94-r1.ebuild:
+  Marked stable on x86.
+
+*dia-0.94-r1 (17 Mar 2005)
+
+  17 Mar 2005; Leonardo Boshell <leonardop@gentoo.org> dia-0.94-r1.ebuild,
+  files/dia-0.94-no_font_cache.patch, files/dia-0.94-help.patch:
+  New revision. Added the `static' use flag. Added a patch to fix incorrect
+  font display due to a buggy cache implementation. Resolves bug #81227 and
+  possibly #67999. Thanks to Markus Luisser for his help on bug #81227.
+  Added a patch to fix the Help->Manual action under gnome. See bug #83726.
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> dia-0.93.ebuild:
+  Stable on alpha.
+
+  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org> dia-0.93.ebuild:
+  stable on amd64.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> dia-0.93.ebuild:
+  Masked dia-0.93.ebuild stable for ppc
+
+*dia-0.94 (03 Sep 2004)
+
+  03 Sep 2004; L. Boshell <leonardop@gentoo.org> dia-0.94.ebuild:
+  New release.
+
+  20 Aug 2004; foser <foser@gentoo.org> dia-0.92.2.ebuild :
+  Added patch by Benoit Boissinot fixing the FT includes (#44113)
+
+  05 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> dia-0.93.ebuild:
+  Stable on sparc
+
+  26 Jul 2004; Mike Gardiner <obz@gentoo.org> dia-0.93.ebuild:
+  Marked 0.93 x86, as requested in bug #57564
+
+  14 Jun 2004; L. Boshell <leonardop@gentoo.org> dia-0.93.ebuild:
+  Inherit from eutils.
+
+*dia-0.93 (07 Jun 2004)
+
+  07 Jun 2004; L. Boshell <leonardop@gentoo.org> dia-0.93.ebuild,
+  files/dia-0.93-fix_py_prefix.patch:
+  New release, resolves bug #50144. Dependencies corrections. Patch that
+  fixes python-related checks in the configure script.
+
+  05 May 2004; Bryan Østergaard <kloeri@gentoo.org> dia-0.92.2.ebuild:
+  Stable on alpha.
+
+  03 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org> dia-0.92.2.ebuild:
+  stable on sparc
+
+  09 Feb 2004; Dylan Carlson <absinthe@gentoo.org> dia-0.92.2.ebuild:
+  added amd64 keyword.
+
+  17 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> :
+  manifest fix
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> dia-0.92.2.ebuild:
+  set ppc in keywords
+
+  10 Nov 2003; Aron Griffis <agriffis@gentoo.org> dia-0.92.2.ebuild:
+  Add ~alpha
+
+*dia-0.92.2 (07 Nov 2003)
+
+  07 Nov 2003; Alastair Tse <liquidx@gentoo.org> dia-0.92.2.ebuild:
+  version bump
+
+*dia-0.92.1 (28 Oct 2003)
+
+  28 Oct 2003; Alastair Tse <liquidx@gentoo.org> dia-0.92.1.ebuild:
+  bugfix release that solves a couple show stopping font bugs
+
+*dia-0.92 (21 Oct 2003)
+
+  21 Oct 2003; foser <foser@gentoo.org> dia-0.92.ebuild :
+  New stable release, remove some obsolete cruft and smoothen deps
+
+*dia-0.92_pre7 (15 Oct 2003)
+
+  15 Oct 2003; Alastair Tse <liquidx@gentoo.org> dia-0.92_pre7.ebuild:
+  preemptive version bump because _pre4 had problems with non latin chars
+
+  12 Oct 2003; Alastair Tse <liquidx@gentoo.org> dia-0.92_pre4.ebuild:
+  re-add cisco shapes patch
+
+*dia-0.92_pre4 (10 Oct 2003)
+
+  10 Oct 2003; Alastair Tse <liquidx@gentoo.org> dia-0.92_pre4.ebuild:
+  version bump. this is more stable than 0.91 and also fixes the pango text
+  problem with >=1.2.4
+
+*dia-0.91 (26 Mar 2003)
+
+  21 Sep 2003; foser <foser@gentoo.org> dia-0.91.ebuild :
+  Add gcc33 patch as supplied by brandy@gentoo.org (#21940)
+  Fix pango dep (#29121)
+  Use gnome2 eclass
+
+  31 Mar 2003; Alastair Tse <liquidx@gentoo.org> dia-0.91.ebuild:
+  fix dia menu desktop entry. python, pygtk and gnome dep fixes.
+
+  30 Mar 2003; Martin Holzer <mholzer@gentoo.org> dia-0.91.ebuild:
+  fixed pango dependency. closes #18480.
+
+  26 Mar 2003: Jungmin Seo <seo@gentoo.org> dia-0.91.ebuild :
+  Fixed 'SRC_URI'
+
+  26 Mar 2003; Jungmin Seo <seo@gentoo.org> dia-0.91.ebuild :
+  New version. now supports gtk+-2. 
+
+*dia-0.90-r2 (22 Oct 2002)
+
+  13 Feb 2003; Mark Guertin <gerk@gentoo.org> dia-0.90-r2.ebuild :
+  set ppc in keywords
+
+  11 Jan 2003; foser <foser@gentoo.org> dia-0.90-r2.ebuild :
+  Fixed png deps (bug #13408)
+
+  15 Dev 2002; Jack Morgan <jmorgan@gentoo.org> dia-0.90-r2.ebuild :
+  Added ~sparc keyword
+
+  23 Oct 2002; foser <foser@gentoo.org> dia-0.90-r2.ebuild :
+  Added libart_lgpl dep for png USE
+  Thanks go to Ryan Tolboom <rxt1077@njit.edu> for notifying
+
+  22 Oct 2002; foser <foser@gentoo.org> dia-0.90-r2.ebuild :
+  Added truetype and png USE flags (bug #8916)
+
+*dia-0.90-r1 (21 Jun 2002)
+
+  30 Aug 2002; Seemant Kulleen <seemant@gentoo.org> dia-0.90-r1.ebuild :
+
+  LFH compliance and massive cleanup
+
+  06 Aug 2002; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
+
+  25 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> dia-0.90.ebuild :
+  Added KEYWORDS.
+
+  25 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> dia-0.90-r1.ebuild :
+  Added KEYWORDS.
+
+  21 Jun 2002; Gabriele Giorgetti <stroke@gentoo.org> ChangeLog :
+
+  Added missing dep to dev-libs/libunicode. Fixes bug #3959
+
+
+*dia-0.90 (20 Jun 2002)
+
+  20 Jun 2002; Gabriele Giorgetti <stroke@gentoo.org> ChangeLog :
+
+  New version, SLOT, LICENSE added, and updated dependencies.
+
+
+*dia-0.88.1-r1 (1 Feb 2002)
+
+  25 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> dia-0.88.1-r1.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

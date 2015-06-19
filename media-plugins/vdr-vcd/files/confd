@@ -1,0 +1,11 @@
+# /etc/conf.d/vdr.vcd:
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-vcd/files/confd,v 1.1 2006/03/05 10:28:43 zzam Exp $
+
+# Config file for vdr plugin vcd
+
+#Device to read VCDs from
+#  allowed values: cdrom-device names
+#  default: VDR_CDREADER from /etc/conf.d/vdr.cd-dvd
+#            (or if file does not exist /dev/cdrom)
+#VCD_DEVICE="/dev/cdrom"
+

@@ -1,0 +1,7 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/10.7/x86/package.use.force,v 1.1 2011/07/04 08:27:54 grobian Exp $
+
+# Elias Pipping <pipping@gentoo.org> (30 Sep 2007)
+# compiles with -aqua, doesn't work, though
+media-video/mplayer aqua

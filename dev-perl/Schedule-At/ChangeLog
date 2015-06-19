@@ -1,0 +1,150 @@
+# ChangeLog for dev-perl/Schedule-At
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Schedule-At/ChangeLog,v 1.37 2014/08/24 02:33:49 axs Exp $
+
+*Schedule-At-1.150.0-r1 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Schedule-At-1.150.0-r1.ebuild, -Schedule-At-1.150.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org> -Schedule-At-1.130.0.ebuild:
+  Cleanup
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> Schedule-At-1.150.0.ebuild:
+  Stable for amd64, wrt bug #422047
+
+  31 Jul 2012; Johannes Huber <johu@gentoo.org> Schedule-At-1.150.0.ebuild:
+  Stable for x86, wrt bug #422047
+
+  29 Jul 2012; Torsten Veller <tove@gentoo.org> -Schedule-At-1.140.0.ebuild:
+  Cleanup
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Schedule-At-1.150.0 (04 May 2012)
+
+  04 May 2012; Torsten Veller <tove@gentoo.org> +Schedule-At-1.150.0.ebuild:
+  Version bump
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org> -Schedule-At-1.10.ebuild:
+  Cleanup
+
+  12 Feb 2012; Raúl Porcel <armin76@gentoo.org> Schedule-At-1.10.ebuild,
+  Schedule-At-1.130.0.ebuild, Schedule-At-1.140.0.ebuild:
+  Drop ia64/sparc, x86 stable wrt #396951
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Schedule-At-1.130.0.ebuild:
+  Stable for amd64, wrt bug #396951
+
+*Schedule-At-1.140.0 (31 Jan 2012)
+
+  31 Jan 2012; Torsten Veller <tove@gentoo.org> +Schedule-At-1.140.0.ebuild:
+  Version bump
+
+  29 Jul 2011; Torsten Veller <tove@gentoo.org> -Schedule-At-1.110.ebuild,
+  -Schedule-At-1.120.0.ebuild:
+  Cleanup
+
+*Schedule-At-1.130.0 (23 Jun 2011)
+
+  23 Jun 2011; Torsten Veller <tove@gentoo.org> +Schedule-At-1.130.0.ebuild:
+  Version bump
+
+*Schedule-At-1.120.0 (26 May 2011)
+
+  26 May 2011; Torsten Veller <tove@gentoo.org> +Schedule-At-1.120.0.ebuild:
+  Version bump
+
+*Schedule-At-1.110 (12 Jan 2011)
+
+  12 Jan 2011; Torsten Veller <tove@gentoo.org> +Schedule-At-1.110.ebuild:
+  Version bump
+
+  20 Oct 2010; Torsten Veller <tove@gentoo.org> -Schedule-At-1.06.ebuild,
+  -Schedule-At-1.09.ebuild:
+  Cleanup
+
+  21 Jun 2010; Raúl Porcel <armin76@gentoo.org> Schedule-At-1.10.ebuild:
+  ia64/sparc stable wrt #323529
+
+  15 Jun 2010; Torsten Veller <tove@gentoo.org> Schedule-At-1.10.ebuild:
+  Stable on amd64 and x86 (#323529)
+
+*Schedule-At-1.10 (08 Apr 2010)
+
+  08 Apr 2010; Torsten Veller <tove@gentoo.org> +Schedule-At-1.10.ebuild:
+  Version bump
+
+  24 Dec 2009; Torsten Veller <tove@gentoo.org> -Schedule-At-1.08.ebuild:
+  Cleanup
+
+*Schedule-At-1.09 (16 Dec 2009)
+
+  16 Dec 2009; Torsten Veller <tove@gentoo.org> +Schedule-At-1.09.ebuild:
+  Version bump
+
+  30 Dec 2008; Torsten Veller <tove@gentoo.org> -Schedule-At-1.05.ebuild,
+  -Schedule-At-1.07.ebuild:
+  Cleanup
+
+*Schedule-At-1.08 (09 Oct 2008)
+
+  09 Oct 2008; Torsten Veller <tove@gentoo.org> +Schedule-At-1.08.ebuild:
+  Version bump
+
+*Schedule-At-1.07 (09 Sep 2008)
+
+  09 Sep 2008; Torsten Veller <tove@gentoo.org> +Schedule-At-1.07.ebuild:
+  Version bump
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> Schedule-At-1.06.ebuild:
+  Stable on x86, bug #169152.
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Schedule-At-1.05.ebuild:
+  Ebuild maintenance
+
+  24 Nov 2006; Michael Cummings <mcummings@gentoo.org>
+  Schedule-At-1.06.ebuild:
+  amd64 stable
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Schedule-At-1.06.ebuild:
+  Stable on ia64.
+
+  17 Sep 2006; Michael Cummings <mcummings@gentoo.org> ChangeLog:
+  Keywording ~amd64
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Schedule-At-1.05.ebuild, Schedule-At-1.06.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org> Schedule-At-1.05.ebuild,
+  Schedule-At-1.06.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  Schedule-At-1.06.ebuild:
+  Marking sparc stable
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org> Schedule-At-1.06.ebuild:
+  Mark 1.06 ~ia64
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Schedule-At-1.05.ebuild:
+  Marking sparc x86 stable
+
+*Schedule-At-1.06 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Schedule-At-1.05.ebuild, +Schedule-At-1.06.ebuild:
+  Version bump
+
+*Schedule-At-1.05 (14 May 2005)
+
+  14 May 2005; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +Schedule-At-1.05.ebuild:
+  Bug 88118 - portknock dep

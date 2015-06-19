@@ -1,0 +1,77 @@
+# ChangeLog for dev-perl/X500-DN
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/X500-DN/ChangeLog,v 1.22 2014/08/24 01:21:22 axs Exp $
+
+*X500-DN-0.290.0-r1 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +X500-DN-0.290.0-r1.ebuild, -X500-DN-0.290.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -X500-DN-0.29.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> X500-DN-0.290.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*X500-DN-0.290.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +X500-DN-0.290.0.ebuild:
+  Change version scheme
+
+  02 May 2009; Torsten Veller <tove@gentoo.org> -X500-DN-0.28.ebuild:
+  Cleanup
+
+  13 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org> X500-DN-0.29.ebuild:
+  ppc. stable
+
+  17 Dec 2007; Samuli Suominen <drac@gentoo.org> X500-DN-0.29.ebuild:
+  amd64 stable
+
+  06 Dec 2007; Raúl Porcel <armin76@gentoo.org> X500-DN-0.29.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+*X500-DN-0.29 (19 Oct 2007)
+
+  19 Oct 2007; Christian Hartmann <ian@gentoo.org> +X500-DN-0.29.ebuild:
+  Version bump
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org> X500-DN-0.28.ebuild:
+  Ebuild maintenance
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org> X500-DN-0.28.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  05 Jul 2006; Christian Hartmann <ian@gentoo.org> X500-DN-0.28.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed header
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> X500-DN-0.28.ebuild:
+  Mark 0.28 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> X500-DN-0.28.ebuild:
+  add ~ia64
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> X500-DN-0.28.ebuild:
+  Stable on ppc.
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> X500-DN-0.28.ebuild:
+  Stable on amd64.
+
+  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> X500-DN-0.28.ebuild:
+  Stable on alpha.
+
+  28 Apr 2005; Michael Cummings <mcummings@gentoo.org> X500-DN-0.28.ebuild:
+  Bumping for x86 and sparc
+
+  30 Mar 2005; Michael Cummings <mcummings@gentoo.org> X500-DN-0.28.ebuild:
+  Another dep missing in the Makefile. Bug 87216
+
+*X500-DN-0.28 (06 Jun 2004)
+
+  06 Jun 2004; Michael Cummings <mcummings@gentoo.org> X500-DN-0.28.ebuild,
+  metadata.xml:
+  missing dep for openca-req

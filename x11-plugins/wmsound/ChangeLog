@@ -1,0 +1,51 @@
+# ChangeLog for x11-plugins/wmsound
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmsound/ChangeLog,v 1.13 2012/06/14 19:23:39 ssuominen Exp $
+
+*wmsound-0.9.5-r1 (14 Jun 2012)
+
+  14 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> +wmsound-0.9.5-r1.ebuild:
+  Revision bump to get rid of unused libwmsnd.a static archive and wmsnd.h
+  include.
+
+  14 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> wmsound-0.9.5.ebuild:
+  Update this ancient ebuild to not use /usr/X11R6 anymore. Use
+  toolchain-funcs.eclass to pass correct CC. Convert from "einstall" to "emake
+  install". Missing x11-misc/gccmakedep DEPEND.
+
+  14 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> wmsound-0.9.5.ebuild:
+  x11-libs/libPropList rename to x11-libs/libproplist
+
+  18 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> wmsound-0.9.5.ebuild,
+  -files/wmsound-esd.patch:
+  Remove USE="esd" because media-sound/esound isn't in tree anymore.
+
+  31 Aug 2010; Michele Noberasco <s4t4n@gentoo.org> wmsound-0.9.5.ebuild:
+  Make package honour LDFLAGS. Closes bug #335029.
+
+  19 Jan 2009; Michele Noberasco <s4t4n@gentoo.org> wmsound-0.9.5.ebuild:
+  Fixed compilation with --as-needed. Closes bug #248650.
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/wmsound-esd.patch:
+  Fix patch with absolute paths.
+
+  27 Oct 2006; Michele Noberasco <s4t4n@gentoo.org> wmsound-0.9.5.ebuild:
+  Added missing imake dependancy. Closes bug #150659.
+
+  31 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> wmsound-0.9.5.ebuild:
+  Fixed DEPEND for modular X.
+
+  30 Mar 2005; Michele Noberasco <s4t4n@gentoo.org> wmsound-0.9.5.ebuild:
+  Apply esd patch only if esd USE flag is enabled. Closes bug #87223.
+
+  01 Oct 2004; <pyrania@gentoo.org> wmsound-0.9.5.ebuild:
+  Marked stable on x86.
+
+  22 Jul 2004; David Holm <dholm@gentoo.org> wmsound-0.9.5.ebuild:
+  Added to ~ppc.
+
+*wmsound-0.9.5 (22 Jul 2004)
+
+  22 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmsound-0.9.5.ebuild:
+  Initial import. Thanks to Przemyslaw Maciag. Closes #51063.

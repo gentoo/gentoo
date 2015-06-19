@@ -1,0 +1,116 @@
+# ChangeLog for dev-python/pyode
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyode/ChangeLog,v 1.28 2015/06/09 16:29:13 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pyode-1.2.0_p20100322-r1.ebuild:
+  Drop old Python implementations
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> pyode-1.2.0_p20100322-r1.ebuild:
+  ppc stable, bug 540290
+
+  19 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -pyode-1.2.0_p20100322.ebuild:
+  old
+
+  10 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  pyode-1.2.0_p20100322-r1.ebuild:
+  Stable for x86, wrt bug #538880
+
+  06 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  pyode-1.2.0_p20100322-r1.ebuild:
+  Stable for amd64, wrt bug #538880
+
+  05 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  pyode-1.2.0_p20100322-r1.ebuild:
+  punt python 2_6
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> pyode-1.2.0_p20100322-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  01 Dec 2013; Mike Gilbert <floppym@gentoo.org>
+  pyode-1.2.0_p20100322-r1.ebuild:
+  Only exclude examples from compression.
+
+*pyode-1.2.0_p20100322-r1 (01 Dec 2013)
+
+  01 Dec 2013; Mike Gilbert <floppym@gentoo.org>
+  +pyode-1.2.0_p20100322-r1.ebuild:
+  Convert to distutils-r1, bug 493042.
+
+  14 Apr 2011; Brent Baude <ranger@gentoo.org> pyode-1.2.0_p20100322.ebuild:
+  stable ppc, bug 362471
+
+  13 Apr 2011; Thomas Kahle <tomka@gentoo.org> pyode-1.2.0_p20100322.ebuild:
+  x86 stable per bug 362471
+
+  09 Apr 2011; Christoph Mende <angelos@gentoo.org>
+  pyode-1.2.0_p20100322.ebuild:
+  Stable on amd64 wrt bug #362471
+
+  01 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pyode-1.2.0_p20100322.ebuild:
+  Fix dependencies. Set SUPPORT_PYTHON_ABIS. Avoid breaking strict-aliasing
+  rules.
+
+*pyode-1.2.0_p20100322 (25 Dec 2010)
+
+  25 Dec 2010; Krzysztof Pawlik <nelchael@gentoo.org>
+  -pyode-1.1.0_p20060728.ebuild, +pyode-1.2.0_p20100322.ebuild,
+  -files/setup.py:
+  Version bump (bug #347886), removed old.
+
+  21 Nov 2009; Markus Meier <maekke@gentoo.org> pyode-1.2.0.ebuild:
+  x86 stable, bug #288897
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> pyode-1.2.0.ebuild:
+  ppc stable #288897
+
+  23 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> pyode-1.2.0.ebuild:
+  amd64 stable wrt #288897
+
+  03 Jul 2007; Lukasz Strzygowski <lucass@gentoo.org> -files/odepath.patch,
+  -pyode-1.0.0.ebuild, -pyode-1.1.0.ebuild, pyode-1.1.0_p20060728.ebuild,
+  pyode-1.2.0.ebuild:
+  Dropped old versions. Cleanup. Added examples use-flag.
+
+*pyode-1.2.0 (12 Feb 2007)
+
+  12 Feb 2007; Chris Bainbridge <chrb@gentoo.org> +pyode-1.2.0.ebuild:
+  Version bump for ode and pyode.
+
+  10 Dec 2006; Ryan Hill <dirtyepic@gentoo.org> pyode-1.1.0.ebuild,
+  pyode-1.1.0_p20060728.ebuild:
+  Fix GCC-4.x build error and update dependencies. Thanks to peper gentoo org
+  in bug #135029
+
+  04 Sep 2006; Javier Villavicencio <the_paya@gentoo.org>
+  pyode-1.1.0_p20060728.ebuild:
+  Added ~x86-fbsd keyword.
+
+*pyode-1.1.0_p20060728 (28 Jul 2006)
+
+  28 Jul 2006; Chris Bainbridge <chrb@gentoo.org> +files/setup.py,
+  +pyode-1.1.0_p20060728.ebuild:
+  Version bump made necessary by ode-0.6.
+
+  04 Aug 2005; David Holm <dholm@gentoo.org> pyode-1.1.0.ebuild:
+  Added to ~ppc.
+
+*pyode-1.1.0 (03 Aug 2005)
+
+  03 Aug 2005; Chris Bainbridge <chrb@gentoo.org> +pyode-1.1.0.ebuild:
+  Version bump. If you have compile problems rebuild ode.
+
+  26 Feb 2005; Lukasz Strzygowski <lucass@gentoo.org> pyode-1.0.0.ebuild:
+  Marked stable.
+
+  25 Jan 2005; Lukasz Strzygowski <lucass@gentoo.org> +files/odepath.patch:
+  Added missing odepath.patch. Closing bug #77792.
+
+*pyode-1.0.0 (30 Dec 2004)
+
+  30 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> +pyode-1.0.0.ebuild:
+  Initial import. Ebuild submitted by Daniel Holth <dholth@fastmail.fm>.

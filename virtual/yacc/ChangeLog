@@ -1,0 +1,33 @@
+# ChangeLog for virtual/yacc
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/yacc/ChangeLog,v 1.9 2014/01/18 02:57:18 vapier Exp $
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> yacc-0.ebuild:
+  Add arm64 love.
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org> yacc-0.ebuild:
+  Add ~arm-linux keyword.
+
+  26 Sep 2012; Tim Harder <radhermit@gentoo.org> yacc-0.ebuild:
+  Add byacc to the list.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> yacc-0.ebuild:
+  keyword ~amd64-fbsd
+
+  28 Aug 2011; Fabian Groffen <grobian@gentoo.org> yacc-0.ebuild:
+  Add Prefix keywords (from bison)
+
+  22 Aug 2011; Markus Duft <mduft@gentoo.org> yacc-0.ebuild:
+  keyworded ~x86-linux
+
+  22 Aug 2011; Markus Duft <mduft@gentoo.org> yacc-0.ebuild:
+  keyworded ~x86-interix
+
+  15 Aug 2011; Nirbheek Chauhan <nirbheek@gentoo.org> yacc-0.ebuild:
+  Copy over sys-devel/bison's KEYWORDS to avoid repoman warnings
+
+*yacc-0 (11 Aug 2011)
+
+  11 Aug 2011; Mike Frysinger <vapier@gentoo.org> +yacc-0.ebuild,
+  +metadata.xml:
+  Initial yacc virtual.

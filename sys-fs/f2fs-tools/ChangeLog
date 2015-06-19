@@ -1,0 +1,64 @@
+# ChangeLog for sys-fs/f2fs-tools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/f2fs-tools/ChangeLog,v 1.15 2015/03/07 15:56:52 blueness Exp $
+
+*f2fs-tools-1.4.0 (07 Mar 2015)
+*f2fs-tools-1.4.1 (07 Mar 2015)
+
+  07 Mar 2015; Anthony G. Basile <blueness@gentoo.org> +f2fs-tools-1.4.0.ebuild,
+  +f2fs-tools-1.4.1.ebuild:
+  Version bumps.  Bug #523420.
+
+*f2fs-tools-1.3.0 (15 Mar 2014)
+
+  15 Mar 2014; Anthony G. Basile <blueness@gentoo.org> +f2fs-tools-1.3.0.ebuild:
+  Version bump, bug #504676
+
+*f2fs-tools-1.2.0 (30 Jan 2014)
+
+  30 Jan 2014; Anthony G. Basile <blueness@gentoo.org> +f2fs-tools-1.2.0.ebuild:
+  Version bump, bug #499614
+
+  05 Sep 2013; Agostino Sarubbo <ago@gentoo.org> f2fs-tools-1.1.0-r1.ebuild:
+  Stable for ppc64, wrt bug #481916
+
+  31 Aug 2013; Agostino Sarubbo <ago@gentoo.org> f2fs-tools-1.1.0-r1.ebuild:
+  Stable for arm, wrt bug #481916
+
+  28 Aug 2013; Agostino Sarubbo <ago@gentoo.org> f2fs-tools-1.1.0-r1.ebuild:
+  Stable for x86, wrt bug #481916
+
+  26 Aug 2013; Agostino Sarubbo <ago@gentoo.org> f2fs-tools-1.1.0-r1.ebuild:
+  Stable for ppc, wrt bug #481916
+
+  23 Aug 2013; Agostino Sarubbo <ago@gentoo.org> f2fs-tools-1.1.0-r1.ebuild:
+  Stable for amd64, wrt bug #481916
+
+  21 Aug 2013; Anthony G. Basile <blueness@gentoo.org>
+  f2fs-tools-1.1.0-r1.ebuild:
+  Keyword ~ppc64
+
+  18 Aug 2013; Patrick Lauer <patrick@gentoo.org> f2fs-tools-1.1.0-r1.ebuild:
+  Whitespace
+
+*f2fs-tools-1.1.0-r1 (15 Aug 2013)
+
+  15 Aug 2013; Anthony G. Basile <blueness@gentoo.org>
+  +f2fs-tools-1.1.0-r1.ebuild, -f2fs-tools-1.1.0.ebuild:
+  Restore econf for bug #481110
+
+  23 Jul 2013; Vicente Olivert Riera <vincent@gentoo.org>
+  f2fs-tools-1.1.0.ebuild:
+  added ppc keyword, bug #473474
+
+  05 Jun 2013; Mike Frysinger <vapier@gentoo.org> f2fs-tools-1.1.0.ebuild:
+  Delete unused code, add proper HOMEPAGE, and punt unneeded econf call.
+
+  02 Apr 2013; Anthony G. Basile <blueness@gentoo.org> f2fs-tools-1.1.0.ebuild:
+  Keyword ~arm ~x86, bug #464178
+
+*f2fs-tools-1.1.0 (24 Feb 2013)
+
+  24 Feb 2013; Anthony G. Basile <blueness@gentoo.org>
+  +f2fs-tools-1.1.0.ebuild, +metadata.xml:
+  Initial commit, bug #458872

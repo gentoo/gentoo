@@ -1,0 +1,326 @@
+# ChangeLog for media-libs/libbluray
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libbluray/ChangeLog,v 1.79 2015/06/02 05:22:55 jmorgan Exp $
+
+  02 Jun 2015; Jack Morgan <jmorgan@gentoo.org> libbluray-0.6.2.ebuild:
+  sparc stable wrt bug #526004
+
+*libbluray-0.8.1 (01 Jun 2015)
+
+  01 Jun 2015; Alexis Ballier <aballier@gentoo.org> +libbluray-0.8.1.ebuild:
+  version bump
+
+  17 May 2015; Pacho Ramos <pacho@gentoo.org> libbluray-0.6.2.ebuild:
+  ppc64 stable wrt bug #526004
+
+  12 May 2015; Alexis Ballier <aballier@gentoo.org> libbluray-0.8.0.ebuild:
+  fix install with use=utils, bug #549202
+
+  11 May 2015; Alexis Ballier <aballier@gentoo.org> libbluray-0.8.0.ebuild:
+  fix build with java useflag, bug #549160
+
+*libbluray-0.8.0 (11 May 2015)
+
+  11 May 2015; Alexis Ballier <aballier@gentoo.org> +libbluray-0.8.0.ebuild:
+  version bump
+
+  19 Apr 2015; Pacho Ramos <pacho@gentoo.org> libbluray-0.6.2.ebuild:
+  x86 stable wrt bug #526004
+
+  15 Mar 2015; Ben de Groot <yngwin@gentoo.org> libbluray-0.7.0.ebuild,
+  libbluray-9999.ebuild, metadata.xml:
+  Add bdplus useflag (as requested in bug #524396). Sync live ebuild with 0.7.0
+  changes.
+
+  02 Mar 2015; Agostino Sarubbo <ago@gentoo.org> libbluray-0.6.2.ebuild:
+  Stable for ppc, wrt bug #526004
+
+  12 Feb 2015; Pacho Ramos <pacho@gentoo.org> libbluray-0.6.2.ebuild:
+  amd64 stable, bug #526004
+
+*libbluray-0.7.0 (29 Jan 2015)
+
+  29 Jan 2015; Tim Harder <radhermit@gentoo.org> +libbluray-0.7.0.ebuild:
+  Version bump, add fontconfig use flag.
+
+*libbluray-0.6.2 (22 Sep 2014)
+
+  22 Sep 2014; Tim Harder <radhermit@gentoo.org> +libbluray-0.6.2.ebuild:
+  Version bump.
+
+  05 Aug 2014; Lars Wendler <polynomial-c@gentoo.org> libbluray-9999.ebuild:
+  Adjusted live ebuild.
+
+*libbluray-0.6.1 (05 Aug 2014)
+
+  05 Aug 2014; Lars Wendler <polynomial-c@gentoo.org> -libbluray-0.2.2.ebuild,
+  -libbluray-0.2.3.ebuild, -libbluray-0.3.0-r1.ebuild, -libbluray-0.4.0.ebuild,
+  +libbluray-0.6.1.ebuild:
+  Version bump. Removed old. Thanks to Uwe L. Korn for providing an ebuild
+  patch in bug #516770.
+
+  04 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libbluray-0.5.0.ebuild:
+  Stable for sparc, wrt bug #504788
+
+  04 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libbluray-0.5.0.ebuild:
+  Stable for ppc64, wrt bug #504788
+
+  04 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libbluray-0.5.0.ebuild:
+  Stable for ppc, wrt bug #504788
+
+  19 Jun 2014; Michał Górny <mgorny@gentoo.org> libbluray-0.5.0-r1.ebuild,
+  libbluray-9999.ebuild:
+  Fix multilib dependencies to use safe versions, bug #513718.
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> libbluray-0.5.0.ebuild:
+  x86 stable wrt bug #504788
+
+  10 Jun 2014; Chema Alonso <nimiux@gentoo.org> libbluray-0.5.0.ebuild:
+  Stable for amd64 wrt bug #504788
+
+  04 Jun 2014; Tim Harder <radhermit@gentoo.org> libbluray-0.5.0-r1.ebuild:
+  Sync live ebuild changes (fixes bug #512368).
+
+  24 May 2014; Manuel Rüger <mrueg@gentoo.org> libbluray-0.5.0-r1.ebuild:
+  Add ~arm keyword.
+
+  28 Apr 2014; Michał Górny <mgorny@gentoo.org> libbluray-9999.ebuild:
+  Use multilib_native_use* and multilib_is_native_abi.
+
+  21 Apr 2014; Michał Górny <mgorny@gentoo.org> libbluray-0.5.0-r1.ebuild:
+  Use multilib_build_binaries consistently, and the new multilib_native_use*
+  functions.
+
+*libbluray-0.5.0-r1 (11 Apr 2014)
+
+  11 Apr 2014; Alexis Ballier <aballier@gentoo.org> +libbluray-0.5.0-r1.ebuild,
+  libbluray-9999.ebuild:
+  go multilib
+
+*libbluray-0.5.0 (22 Dec 2013)
+
+  22 Dec 2013; Tim Harder <radhermit@gentoo.org> +libbluray-0.5.0.ebuild,
+  libbluray-9999.ebuild:
+  Version bump.
+
+  10 Dec 2013; Lars Wendler <polynomial-c@gentoo.org> libbluray-0.4.0.ebuild:
+  Fixed compilation with >=media-libs/freetype-2.5.1 (bug #493594).
+
+*libbluray-0.4.0 (23 Sep 2013)
+
+  23 Sep 2013; Tim Harder <radhermit@gentoo.org> +libbluray-0.4.0.ebuild,
+  libbluray-9999.ebuild:
+  Version bump and update live ebuild.
+
+  22 Sep 2013; Luca Barbato <lu_zero@gentoo.org> libbluray-0.3.0-r1.ebuild,
+  libbluray-9999.ebuild:
+  The utilities do not need static-libs anymore, thanks to Nikoli for reporting
+  in bug #485620
+
+  08 Aug 2013; Agostino Sarubbo <ago@gentoo.org> libbluray-0.3.0-r1.ebuild:
+  Stable for sparc, wrt bug #473302
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libbluray-0.3.0-r1.ebuild:
+  Stable for amd64, wrt bug #474238
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libbluray-0.3.0-r1.ebuild:
+  Stable for x86, wrt bug #474238
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libbluray-0.3.0-r1.ebuild:
+  Stable for ppc64, wrt bug #474238
+
+  24 Jun 2013; Agostino Sarubbo <ago@gentoo.org> libbluray-0.3.0-r1.ebuild:
+  Stable for ppc, wrt bug #474238
+
+*libbluray-0.3.0-r1 (03 May 2013)
+
+  03 May 2013; Tim Harder <radhermit@gentoo.org> -libbluray-0.3.0.ebuild,
+  +libbluray-0.3.0-r1.ebuild:
+  Revbump and remove old. Properly apply java patch (bug #468494) and make
+  freetype dep only apply when java is enabled.
+
+  03 May 2013; Samuli Suominen <ssuominen@gentoo.org> libbluray-0.2.2.ebuild,
+  libbluray-0.2.3.ebuild, libbluray-0.3.0.ebuild:
+  Use http:// instead of ftp:// for fetching the libbluray tarball because of
+  checksum failure from ftp://
+
+*libbluray-0.3.0 (03 May 2013)
+
+  03 May 2013; Tim Harder <radhermit@gentoo.org> +libbluray-0.3.0.ebuild:
+  Version bump, add truetype use flag.
+
+  16 Jan 2013; Agostino Sarubbo <ago@gentoo.org> libbluray-0.2.3.ebuild:
+  Stable for ppc64, wrt bug #450336
+
+  16 Jan 2013; Agostino Sarubbo <ago@gentoo.org> libbluray-0.2.3.ebuild:
+  Stable for ppc, wrt bug #450336
+
+  13 Jan 2013; Agostino Sarubbo <ago@gentoo.org> libbluray-0.2.3.ebuild:
+  Stable for x86, wrt bug #450336
+
+  05 Jan 2013; Agostino Sarubbo <ago@gentoo.org> libbluray-0.2.3.ebuild:
+  Stable for amd64, wrt bug #450336
+
+  18 Nov 2012; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove beandog wrt #131511
+
+  27 Aug 2012; Tim Harder <radhermit@gentoo.org> libbluray-9999.ebuild:
+  Use prune_libtool_files to remove unnecessary libtool files.
+
+  27 Aug 2012; Tim Harder <radhermit@gentoo.org> -libbluray-0.2.1-r1.ebuild:
+  Remove old.
+
+*libbluray-0.2.3 (27 Aug 2012)
+
+  27 Aug 2012; Tim Harder <radhermit@gentoo.org> +libbluray-0.2.3.ebuild:
+  Version bump (bug #431900).
+
+  28 Jun 2012; Brent Baude <ranger@gentoo.org> libbluray-0.2.2.ebuild:
+  Marking libbluray-0.2.2 ppc for bug 422107
+
+  22 Jun 2012; Brent Baude <ranger@gentoo.org> libbluray-0.2.2.ebuild:
+  Marking libbluray-0.2.2 ppc64 for bug 422107
+
+  20 Jun 2012; Jeff Horelick <jdhore@gentoo.org> libbluray-0.2.2.ebuild:
+  marked x86 per bug 422107
+
+  19 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libbluray-0.2.2.ebuild:
+  Stable for amd64, wrt bug #422107
+
+  29 May 2012; Alexis Ballier <aballier@gentoo.org> libbluray-0.2.2.ebuild:
+  keyword ~amd64-fbsd
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> libbluray-0.2.1-r1.ebuild,
+  libbluray-0.2.2.ebuild, libbluray-9999.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  28 Mar 2012; Tim Harder <radhermit@gentoo.org> libbluray-9999.ebuild:
+  Update live ebuild (fixes bug #398187).
+
+*libbluray-0.2.2 (26 Mar 2012)
+
+  26 Mar 2012; Tim Harder <radhermit@gentoo.org> +libbluray-0.2.2.ebuild:
+  Version bump.
+
+  29 Feb 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -libbluray-0.0.1_pre20110819.ebuild:
+  old
+
+  29 Feb 2012; Samuli Suominen <ssuominen@gentoo.org>
+  libbluray-0.2.1-r1.ebuild:
+  ppc64/x86 stable wrt #405661
+
+  28 Feb 2012; Brent Baude <ranger@gentoo.org> libbluray-0.2.1-r1.ebuild:
+  Marking libbluray-0.2.1-r1 ppc for bug 405661
+
+  25 Feb 2012; Agostino Sarubbo <ago@gentoo.org> libbluray-0.2.1-r1.ebuild:
+  Stable for amd64, wrt bug #405661
+
+  28 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  libbluray-0.2.1-r1.ebuild:
+  Keyword ~ppc/~ppc64 wrt #397531
+
+  28 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  libbluray-0.0.1_pre20110819.ebuild, libbluray-0.2.1-r1.ebuild,
+  libbluray-9999.ebuild:
+  Replace media-video/aacskeys depend with media-libs/libaacs which is dlopened
+  wrt #398233 by Petri Hintukainen. It could be that media-libs/libaacs should
+  have depend for media-video/aacskeys, but it doesn't belong to this ebuild.
+
+  28 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -libbluray-0.0.1_pre20110210-r1.ebuild, -libbluray-0.2.1.ebuild:
+  old
+
+  03 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  libbluray-0.2.1-r1.ebuild, libbluray-9999.ebuild:
+  Remove USE="xine" and PDEPEND for libbluray-xine because the plug-in is now
+  part of xine-lib since 1.2.0.
+
+  15 Dec 2011; Agostino Sarubbo <ago@gentoo.org>
+  libbluray-0.0.1_pre20110819.ebuild:
+  Stable for AMD64, wrt bug #390593
+
+*libbluray-0.2.1-r1 (12 Dec 2011)
+
+  12 Dec 2011; Tim Harder <radhermit@gentoo.org> +libbluray-0.2.1-r1.ebuild:
+  Revision bump to pull in libaacs when aacs supported is enabled.
+
+  12 Dec 2011; Tim Harder <radhermit@gentoo.org>
+  libbluray-0.0.1_pre20110210-r1.ebuild, libbluray-0.0.1_pre20110819.ebuild,
+  libbluray-0.2.1.ebuild:
+  Use correct LICENSE.
+
+  09 Dec 2011; Alexis Ballier <aballier@gentoo.org> libbluray-0.2.1.ebuild:
+  keyword ~x86-fbsd
+
+  04 Dec 2011; Tim Harder <radhermit@gentoo.org> libbluray-0.2.1.ebuild:
+  Add missing BD-J files (fixes bug #393003).
+
+*libbluray-0.2.1 (02 Dec 2011)
+
+  02 Dec 2011; Steve Dibb <beandog@gentoo.org> +libbluray-0.2.1.ebuild:
+  Version bump, bug 392661
+
+  09 Oct 2011; Markus Meier <maekke@gentoo.org>
+  libbluray-0.0.1_pre20110210-r1.ebuild:
+  x86 stable, bug #365951
+
+  08 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  libbluray-0.0.1_pre20110819.ebuild:
+  x86 stable wrt security bug #379297
+
+  24 Aug 2011; Tony Vroon <chainsaw@gentoo.org>
+  libbluray-0.0.1_pre20110210-r1.ebuild:
+  Marked stable on AMD64 based on arch testing by Ian "idella4" Delaney in bug
+  #365951 filed by Jeremy "darkside" Olexa.
+
+*libbluray-0.0.1_pre20110819 (22 Aug 2011)
+
+  22 Aug 2011; Tim Harder <radhermit@gentoo.org>
+  +libbluray-0.0.1_pre20110819.ebuild:
+  Version bump to new snapshot.
+
+  21 Aug 2011; Tim Harder <radhermit@gentoo.org>
+  libbluray-0.0.1_pre20110210-r1.ebuild, libbluray-9999.ebuild:
+  Respect user CFLAGS
+
+  05 Aug 2011; Tim Harder <radhermit@gentoo.org> libbluray-9999.ebuild:
+  Update live ebuild to use the git-2 eclass and new xine plugin package.
+
+  05 Aug 2011; Tim Harder <radhermit@gentoo.org>
+  libbluray-0.0.1_pre20110210-r1.ebuild:
+  Require similar libbluray-xine version.
+
+*libbluray-0.0.1_pre20110210-r1 (05 Aug 2011)
+
+  05 Aug 2011; Tim Harder <radhermit@gentoo.org>
+  -libbluray-0.0.1_pre20110210.ebuild, +libbluray-0.0.1_pre20110210-r1.ebuild:
+  Revbump and remove old. Fix build error with xine plugin (bug #355331), set
+  REQUIRED_USE, and remove the libtool archive when not building static libs.
+  Based on work by Martin von Gagern.
+
+*libbluray-0.0.1_pre20110210 (10 Feb 2011)
+
+  10 Feb 2011; Tim Harder <radhermit@gentoo.org>
+  +libbluray-0.0.1_pre20110210.ebuild:
+  Add development snapshot.
+
+  04 Feb 2011; Tim Harder <radhermit@gentoo.org> libbluray-9999.ebuild:
+  Add dependency on dev-java/ant-core for bug #353635. Bump to EAPI 4 and use
+  diff friendly dependency lines.
+
+  01 Feb 2011; Tim Harder <radhermit@gentoo.org> +files/90libbluray,
+  libbluray-9999.ebuild:
+  Add env.d file to set the libbluray classpath variable correctly.
+
+  01 Feb 2011; Tim Harder <radhermit@gentoo.org> libbluray-9999.ebuild,
+  metadata.xml:
+  Update live ebuild for bug #352033 thanks to Nikoli. Update dependencies and
+  add static-libs, utils, and xine USE flags. Allow for building and installing
+  BD-J support.
+
+*libbluray-9999 (17 Jul 2010)
+
+  17 Jul 2010; Steve Dibb <beandog@gentoo.org> +libbluray-9999.ebuild,
+  +metadata.xml:
+  Initial commit; original ebuild from gentoo multimedia overlay

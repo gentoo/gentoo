@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer>
+        <email>vadimk@gentoo.org</email>
+        <name>Vadim Kuznetsov</name>
+    </maintainer>
+    <longdescription lang="en">
+        This is an alternative C driver for MongoDB, with slightly different
+        goals than the official one:
+        libmongo-client is meant to be a stable (API, ABI and quality alike), 
+        clean, well documented and well tested shared library, that strives 
+        to make the most common use cases as convenient as possible.
+    </longdescription>
+    <upstream>
+        <remote-id type="github">algernon/libmongo-client</remote-id>
+    </upstream>
+</pkgmetadata>

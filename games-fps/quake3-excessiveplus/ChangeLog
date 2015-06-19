@@ -1,0 +1,28 @@
+# ChangeLog for games-fps/quake3-excessiveplus
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-excessiveplus/ChangeLog,v 1.5 2015/01/27 07:23:42 mr_bones_ Exp $
+
+  27 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -quake3-excessiveplus-1.03.ebuild:
+  old
+
+  18 Apr 2014; Ulrich Müller <ulm@gentoo.org>
+  quake3-excessiveplus-1.03.ebuild, quake3-excessiveplus-2.2b.ebuild:
+  Fix LICENSE, bug 505716.
+
+*quake3-excessiveplus-2.2b (16 Sep 2011)
+
+  16 Sep 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  +quake3-excessiveplus-2.2b.ebuild:
+  version bump (bug #383275)
+
+  06 Oct 2009; Tristan Heaven <nyhm@gentoo.org>
+  quake3-excessiveplus-1.03.ebuild:
+  EAPI=2; remove useless files
+
+*quake3-excessiveplus-1.03 (26 Oct 2006)
+
+  26 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +quake3-excessiveplus-1.03.ebuild:
+  Initial import. Original ebuild by Patrick Zimmermann <patrick@zakweb.de>
+  and ported to games-mods.eclass by me. Closing bug #125242.

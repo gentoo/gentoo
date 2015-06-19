@@ -1,0 +1,66 @@
+# ChangeLog for app-emacs/nxml-libvirt-schemas
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/nxml-libvirt-schemas/ChangeLog,v 1.10 2014/06/07 11:26:49 ulm Exp $
+
+  07 Jun 2014; Ulrich Müller <ulm@gentoo.org>
+  nxml-libvirt-schemas-0.9.7.ebuild, nxml-libvirt-schemas-1.2.1.ebuild:
+  Remove redundant NEED_EMACS assignment.
+
+*nxml-libvirt-schemas-1.2.1 (13 Feb 2014)
+
+  13 Feb 2014; Ulrich Müller <ulm@gentoo.org>
+  -nxml-libvirt-schemas-0.8.8.ebuild, -nxml-libvirt-schemas-0.9.0_rc1.ebuild,
+  +nxml-libvirt-schemas-1.2.1.ebuild:
+  Version bump. Remove old.
+
+*nxml-libvirt-schemas-0.9.7 (19 Mar 2012)
+
+  19 Mar 2012; Ulrich Müller <ulm@gentoo.org>
+  +nxml-libvirt-schemas-0.9.7.ebuild:
+  Version bump.
+
+*nxml-libvirt-schemas-0.9.0_rc1 (28 Mar 2011)
+
+  28 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  nxml-libvirt-schemas-0.8.8.ebuild, +nxml-libvirt-schemas-0.9.0_rc1.ebuild:
+  Version bump to 0.9.0_rc1; update 0.8.8 to use identical content.
+
+  12 Mar 2011; Ulrich Mueller <ulm@gentoo.org>
+  nxml-libvirt-schemas-0.8.8.ebuild:
+  Drop dependency on app-emacs/nxml-mode.
+
+*nxml-libvirt-schemas-0.8.8 (17 Feb 2011)
+
+  17 Feb 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -nxml-libvirt-schemas-0.8.5.ebuild, -nxml-libvirt-schemas-0.8.6.ebuild,
+  +nxml-libvirt-schemas-0.8.8.ebuild:
+  Version bump, remove old versions.
+
+*nxml-libvirt-schemas-0.8.6 (01 Dec 2010)
+
+  01 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +nxml-libvirt-schemas-0.8.6.ebuild:
+  Version bump.
+
+*nxml-libvirt-schemas-0.8.5 (29 Oct 2010)
+
+  29 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -nxml-libvirt-schemas-0.7.4.ebuild, -nxml-libvirt-schemas-0.8.2.ebuild,
+  +nxml-libvirt-schemas-0.8.5.ebuild:
+  Version bump and cleanup old versions.
+
+*nxml-libvirt-schemas-0.8.2 (25 Jul 2010)
+
+  25 Jul 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +nxml-libvirt-schemas-0.8.2.ebuild:
+  Bump to latest version.
+
+*nxml-libvirt-schemas-0.7.4 (16 Dec 2009)
+
+  16 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/60nxml-libvirt-schemas-gentoo.el,
+  +nxml-libvirt-schemas-0.7.4.ebuild, +files/Makefile-trang,
+  +files/schemas.xml, +metadata.xml:
+  Initial import of nxml-mode schemas for libvirt; it requires patches
+  backported from the upstream tree for the files to properly validate.
+

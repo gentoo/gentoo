@@ -1,0 +1,22 @@
+Fix memleak due circular references blocking garbage collection.
+
+http://www.cplusplus.com/forum/general/56971/ provides a testcase for a memory
+leak with the threadpool due to shared_ptr usage.
+
+I really needed threadpool to work for me, so I traced & fixed it as best as
+possible. When the threadpool is being destroyed, your threads should have
+terminated already. Do so deliberately if not done yet, so that they free the
+memory.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+--- threadpool-0_2_5-src/threadpool/boost/threadpool/detail/pool_core.hpp	2012-09-27 22:33:21.098626892 -0700
++++ threadpool-0_2_5-src/threadpool/boost/threadpool/detail/pool_core.hpp	2012-09-27 22:51:12.291997839 -0700
+@@ -150,6 +150,7 @@
+     /// Destructor.
+     ~pool_core()
+     {
++		terminate_all_workers(true);
+     }
+ 
+     /*! Gets the size controller which manages the number of threads in the pool. 

@@ -1,0 +1,44 @@
+# ChangeLog for app-crypt/gpg-ringmgr
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gpg-ringmgr/ChangeLog,v 1.14 2014/07/22 20:33:24 mrueg Exp $
+
+  22 Jul 2014; Manuel Rüger <mrueg@gentoo.org> gpg-ringmgr-1.12.ebuild:
+  Update HOMEPAGE
+
+  14 Oct 2009; Mark Loeser <halcy0n@gentoo.org> gpg-ringmgr-1.12.ebuild:
+  QA fixes; unquoted variables
+
+  11 Jan 2007; Mike Frysinger <vapier@gentoo.org> gpg-ringmgr-1.12.ebuild:
+  Remove pointless call to prepalldocs.
+
+  01 Dec 2005; Robin H. Johnson <robbat2@gentoo.org>
+  gpg-ringmgr-1.12.ebuild:
+  Bug #99507, fix homepage/src_uri.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> gpg-ringmgr-1.12.ebuild:
+  stable on amd64
+
+  11 Dec 2004; Jason Wever <weeve@gentoo.org> gpg-ringmgr-1.12.ebuild:
+  Stable on sparc.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gpg-ringmgr-1.12.ebuild:
+  Masked gpg-ringmgr-1.12.ebuild stable for ppc
+
+  19 Jul 2004; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  add metadata.xml
+
+  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> metadata.xml,
+  gpg-ringmgr-1.12.ebuild:
+  QA - IUSE fix
+
+  05 Apr 2004; Chris Aniszczyk <zx@gentoo.org> gpg-ringmgr-1.12.ebuild:
+  Marking stable on hppa
+
+  03 Oct 2003; Aron Griffis <agriffis@gentoo.org> gpg-ringmgr-1.12.ebuild:
+  Stable on alpha
+
+*gpg-ringmgr-1.12 (05 May 2003)
+
+  05 May 2003; Robin Johnson <robbat2@gentoo.org> gpg-ringmgr-1.12.ebuild:
+  Initial import. Ebuild submitted by Robin Johnson <robbat2@gentoo.org>.

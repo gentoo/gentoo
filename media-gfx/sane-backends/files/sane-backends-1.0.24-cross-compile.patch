@@ -1,0 +1,14 @@
+https://alioth.debian.org/tracker/index.php?func=detail&aid=315060&group_id=30186&atid=410366
+
+do not hardcode /usr/local paths that break cross-compiles
+
+--- a/configure.in
++++ b/configure.in
+@@ -82,7 +82,6 @@ AM_CONDITIONAL(CROSS_COMPILING, test x$cross_compiling = xyes)
+ dnl ***********************************************************************
+ dnl set compiler/linker flags
+ dnl ***********************************************************************
+-INCLUDES="${INCLUDES} -I/usr/local/include"
+ AC_SUBST(INCLUDES)
+ SANE_SET_CFLAGS([$is_release])
+ SANE_SET_LDFLAGS

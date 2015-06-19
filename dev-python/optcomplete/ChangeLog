@@ -1,0 +1,63 @@
+# ChangeLog for dev-python/optcomplete
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/optcomplete/ChangeLog,v 1.17 2015/04/08 08:05:16 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> optcomplete-1.2-r1.ebuild:
+  Drop old Python implementations
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -optcomplete-1.2.ebuild:
+  Remove old.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> optcomplete-1.2-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> optcomplete-1.2-r1.ebuild:
+  Stable for ppc, wrt bug #495596
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> optcomplete-1.2-r1.ebuild:
+  amd64 stable, bug #495596
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  optcomplete-1.2-r1.ebuild:
+  x86 stable wrt bug #495596
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> optcomplete-1.2-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*optcomplete-1.2-r1 (28 Jul 2013)
+
+  28 Jul 2013; Ian Delaney <idella4@gentoo.org> +optcomplete-1.2-r1.ebuild:
+  migrate -> distutils-r1, keep -1.2 stable
+
+  15 May 2012; Jeremy Olexa <darkside@gentoo.org> optcomplete-1.2.ebuild:
+  add ~x86-linux, bug 416007 by Dan Wallis
+
+  01 Feb 2012; Brent Baude <ranger@gentoo.org> optcomplete-1.2.ebuild:
+  Marking optcomplete-1.2 ppc for bug 386723
+
+  13 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> optcomplete-1.2.ebuild:
+  x86 stable wrt bug #386723
+
+  12 Oct 2011; Tony Vroon <chainsaw@gentoo.org> optcomplete-1.2.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo & Ian
+  "idella4" Delaney in bug #386723.
+
+  08 Jun 2011; Kacper Kowalik <xarthisius@gentoo.org> optcomplete-1.2.ebuild:
+  Marked ~ppc wrt #366541
+
+  28 May 2011; Thomas Kahle <tomka@gentoo.org> optcomplete-1.2.ebuild:
+  ~x86 per bug 366541
+
+  22 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  optcomplete-1.2.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  26 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing hawking as a maintainer since he was retired.
+
+*optcomplete-1.2 (25 Jun 2008)
+
+  25 Jun 2008; Ali Polatel <hawking@gentoo.org> +metadata.xml,
+  +optcomplete-1.2.ebuild:
+  Initial ebuild for optcomplete.

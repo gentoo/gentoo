@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=>=app-i18n/uim-1.5.0 >=app-i18n/scim-1.4.0 virtual/pkgconfig
+DESCRIPTION=scim-uim is an input module for Smart Common Input Method (SCIM) which uses uim as backend
+EAPI=2
+HOMEPAGE=http://www.scim-im.org/
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=app-i18n/uim-1.5.0 >=app-i18n/scim-1.4.0
+SLOT=0
+SRC_URI=mirror://sourceforge/scim/scim-uim-0.2.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f4bb4a6341641ff0dc3a71ca8202a5f7

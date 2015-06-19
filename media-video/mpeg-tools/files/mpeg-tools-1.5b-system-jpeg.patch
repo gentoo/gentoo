@@ -1,0 +1,38 @@
+Use the system jpeg rather than the bundled one
+
+--- mpeg_encode/Makefile
++++ mpeg_encode/Makefile
+@@ -36,9 +36,9 @@
+ ##############
+ # JPEG STUFF #
+ ##############
+-JPEG_LIB = jpeg/libjpeg.a
+-JPEG_DIR = -Ijpeg
+-JPEG_LIB_DIR = -Ljpeg
++JPEG_LIB = -ljpeg
++JPEG_DIR = 
++JPEG_LIB_DIR = 
+ MP_JPEG_OBJS = jpeg.o
+ MP_JPEG_SRCS = jpeg.c
+ 
+@@ -57,7 +57,7 @@
+ #################
+ # INCLUDE FILES # 
+ #################
+-INCLUDEDIR = -Iheaders -I/usr/include $(JPEG_DIR)
++INCLUDEDIR = -Iheaders
+ 
+ ############################################################################
+ # LIBRARIES # specify library directories; need jpg lib and maybe pbm	   #
+--- mpeg_encode/jpeg.c
++++ mpeg_encode/jpeg.c
+@@ -79,7 +79,8 @@
+ 
+ /* make it happier.... */
+ #undef DCTSIZE2
+-#include "jpeg/jpeglib.h"
++#include "jpeglib.h"
++#include "jpegint.h"
+ 
+ 
+ #define HEADER_SIZE 607   /*JFIF header size used on output images*/

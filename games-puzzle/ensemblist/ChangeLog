@@ -1,0 +1,51 @@
+# ChangeLog for games-puzzle/ensemblist
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/ensemblist/ChangeLog,v 1.12 2015/03/23 07:13:49 mr_bones_ Exp $
+
+  23 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> ensemblist-040126.ebuild:
+  EAPI=5
+
+  18 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> ensemblist-040126.ebuild:
+  Let REQUIRED_USE in libmikmod's ebuild force audio backend and remove the
+  forced USE="oss" from here. Pull in correct SLOTs of libmikmod and libpng to
+  ensure headers are installed.
+
+  04 Oct 2010; Tupone Alfredo <tupone@gentoo.org> ensemblist-040126.ebuild:
+  Respect LDFLAGS. Bug #337272 by flameeyes@gentoo.org
+
+  16 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  ensemblist-040126.ebuild:
+  virtual/glut -> media-libs/glut
+
+  23 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/ensemblist-040126-build.patch, ensemblist-040126.ebuild:
+  EAPI=2; add use-based dep; fixup build process a bit
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ensemblist-040126.ebuild:
+  Remove old virtual/x11 dependency.
+
+  29 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ensemblist-040126.ebuild:
+  Fixed binaries being pre-stripped. Thanks to Tristan Heaven
+  <tristanheaven@gmail.com> for the patch. Closing bug #137711.
+
+  16 Feb 2006; <Tupone@gentoo.org> ensemblist-040126.ebuild:
+  modular X dependency fix
+  curl dependency dropped from upstream
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  ensemblist-040126.ebuild:
+  Stable on ppc.
+
+  17 Oct 2004; David Holm <dholm@gentoo.org> ensemblist-040126.ebuild:
+  Added to ~ppc.
+
+*ensemblist-040126 (25 Sep 2004)
+
+  25 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +ensemblist-040126.ebuild:
+  initial commit - ebuild from Greg Watson via bug #64408

@@ -1,0 +1,7 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for SKK server
+EAPI=3
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
+RDEPEND=|| ( app-i18n/skkserv app-i18n/mecab-skkserv app-i18n/multiskkserv )
+SLOT=0
+_md5_=d20e24c4b005957fc699ecada8141c2d

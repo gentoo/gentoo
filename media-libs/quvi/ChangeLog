@@ -1,0 +1,250 @@
+# ChangeLog for media-libs/quvi
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/quvi/ChangeLog,v 1.56 2015/05/11 04:26:25 jer Exp $
+
+  11 May 2015; Jeroen Roovers <jer@gentoo.org> quvi-0.9.5.ebuild:
+  Stable for PPC64 (bug #526016).
+
+  23 Feb 2014; Pacho Ramos <pacho@gentoo.org> quvi-0.9.5.ebuild:
+  amd64/x86 stable, bug #501720
+
+  22 Feb 2014; Jeroen Roovers <jer@gentoo.org> quvi-0.4.2.ebuild,
+  quvi-0.9.5.ebuild:
+  Marked ~hppa too.
+
+*quvi-0.9.5 (21 Nov 2013)
+
+  21 Nov 2013; Tim Harder <radhermit@gentoo.org> +quvi-0.9.5.ebuild:
+  Version bump.
+
+  06 Nov 2013; Tim Harder <radhermit@gentoo.org> -quvi-0.9.1.ebuild,
+  -quvi-0.9.2.ebuild, -quvi-0.9.3.ebuild:
+  Remove old.
+
+*quvi-0.9.4 (06 Nov 2013)
+
+  06 Nov 2013; Tim Harder <radhermit@gentoo.org> +quvi-0.9.4.ebuild:
+  Version bump.
+
+*quvi-0.9.3 (08 Aug 2013)
+
+  08 Aug 2013; Tim Harder <radhermit@gentoo.org> +quvi-0.9.3.ebuild:
+  Version bump.
+
+*quvi-0.9.2 (25 Jun 2013)
+
+  25 Jun 2013; Tim Harder <radhermit@gentoo.org> +quvi-0.9.2.ebuild:
+  Version bump.
+
+*quvi-0.9.1 (22 May 2013)
+
+  22 May 2013; Tim Harder <radhermit@gentoo.org> +quvi-0.9.1.ebuild,
+  +files/quvi-0.9.1-automagic.patch, metadata.xml:
+  Version bump, update to EAPI 5, and add json, nls, and xml use flags.
+
+  23 Dec 2012; Agostino Sarubbo <ago@gentoo.org> quvi-0.4.2.ebuild:
+  Stable for ppc64, wrt bug #447554
+
+  23 Dec 2012; Jeff Horelick <jdhore@gentoo.org> quvi-0.4.2.ebuild:
+  marked x86 per bug 447554
+
+  23 Dec 2012; Jeff Horelick <jdhore@gentoo.org> quvi-0.4.2.ebuild:
+  marked x86 per bug 447554
+
+  22 Dec 2012; Agostino Sarubbo <ago@gentoo.org> quvi-0.4.2.ebuild:
+  Stable for ppc, wrt bug #447554
+
+  17 Dec 2012; Chema Alonso <nimiux@gentoo.org> quvi-0.4.2.ebuild:
+  Marked stable for amd64 wrt bug #447554
+
+  17 Dec 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  25 Sep 2012; Anthony G. Basile <blueness@gentoo.org> quvi-0.4.2.ebuild:
+  Keyword ~ppc ~ppc64, bug #386611
+
+  01 Aug 2012; Tim Harder <radhermit@gentoo.org> -quvi-0.4.1.ebuild:
+  Remove old.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> quvi-0.2.19.ebuild,
+  quvi-0.4.1.ebuild, quvi-0.4.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  06 Mar 2012; Tim Harder <radhermit@gentoo.org> -quvi-0.4.0.ebuild:
+  Remove old.
+
+*quvi-0.4.2 (06 Mar 2012)
+
+  06 Mar 2012; Tim Harder <radhermit@gentoo.org> +quvi-0.4.2.ebuild:
+  Version bump.
+
+*quvi-0.4.1 (05 Dec 2011)
+
+  05 Dec 2011; Tim Harder <radhermit@gentoo.org> +quvi-0.4.1.ebuild:
+  Version bump.
+
+  15 Oct 2011; Tim Harder <radhermit@gentoo.org> -quvi-0.2.13.ebuild,
+  -quvi-0.2.15.ebuild, -quvi-0.2.16.ebuild, -quvi-0.2.17.ebuild,
+  -quvi-0.2.17-r1.ebuild, -quvi-0.2.18.ebuild:
+  Remove old.
+
+  15 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org> quvi-0.2.19.ebuild:
+  ppc/ppc64 stable wrt #386629
+
+  14 Oct 2011; Markos Chandras <hwoarang@gentoo.org> quvi-0.2.19.ebuild:
+  Stable on amd64 wrt bug #386629
+
+  13 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> quvi-0.2.19.ebuild:
+  x86 stable wrt bug #386629
+
+*quvi-0.4.0 (10 Oct 2011)
+
+  10 Oct 2011; Tim Harder <radhermit@gentoo.org> +quvi-0.4.0.ebuild:
+  Version bump.
+
+*quvi-0.2.19 (05 Aug 2011)
+
+  05 Aug 2011; Hanno Boeck <hanno@gentoo.org> +quvi-0.2.19.ebuild:
+  Version bump.
+
+*quvi-0.2.18 (29 Jul 2011)
+
+  29 Jul 2011; Tim Harder <radhermit@gentoo.org> +quvi-0.2.18.ebuild:
+  Version bump.
+
+  17 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> quvi-0.2.15.ebuild:
+  ppc/ppc64 stable wrt #366245
+
+*quvi-0.2.17-r1 (09 Jul 2011)
+
+  09 Jul 2011; Tim Harder <radhermit@gentoo.org> +quvi-0.2.17-r1.ebuild:
+  Install example code instead of compiling it (fixes bugs #372573 and
+  #372713).
+
+*quvi-0.2.17 (22 Jun 2011)
+
+  22 Jun 2011; Tim Harder <radhermit@gentoo.org> +quvi-0.2.17.ebuild:
+  Version bump. Drop doc USE flag.
+
+  14 Jun 2011; Markus Meier <maekke@gentoo.org> quvi-0.2.15.ebuild:
+  x86 stable, bug #366245
+
+  08 Jun 2011; Markos Chandras <hwoarang@gentoo.org> quvi-0.2.15.ebuild:
+  Stable on amd64 wrt bug #366245
+
+*quvi-0.2.16 (22 May 2011)
+
+  22 May 2011; Tim Harder <radhermit@gentoo.org> +quvi-0.2.16.ebuild:
+  Version bump.
+
+*quvi-0.2.15 (17 Apr 2011)
+
+  17 Apr 2011; Tim Harder <radhermit@gentoo.org> -quvi-0.2.14.ebuild,
+  -quvi-0.2.14-r1.ebuild, -files/quvi-0.2.14-docs.patch,
+  -files/quvi-0.2.14-youtube-video-ids.patch, +quvi-0.2.15.ebuild:
+  Version bump and remove old.
+
+  30 Mar 2011; Tim Harder <radhermit@gentoo.org> quvi-0.2.14-r1.ebuild:
+  Add dependency on >=sys-devel/autoconf-2.68 (bug #361261 by Pacho Ramos).
+
+*quvi-0.2.14-r1 (30 Mar 2011)
+
+  30 Mar 2011; Tim Harder <radhermit@gentoo.org> +quvi-0.2.14-r1.ebuild,
+  +files/quvi-0.2.14-docs.patch, +files/quvi-0.2.14-youtube-video-ids.patch:
+  Revision bump. Update to EAPI 4, apply upstream patch to fix totem-pl-parser
+  and youtube videos (bug #360643 by Pacho Ramos), use bash syntax instead of
+  versionator eclass for SRC_URI, and remove empty doc directory.
+
+  13 Mar 2011; Tim Harder <radhermit@gentoo.org> -quvi-0.2.11.ebuild,
+  -quvi-0.2.12.ebuild:
+  Remove old.
+
+  13 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> quvi-0.2.13.ebuild:
+  ppc64 stable wrt #354739
+
+*quvi-0.2.14 (11 Mar 2011)
+
+  11 Mar 2011; Tim Harder <radhermit@gentoo.org> +quvi-0.2.14.ebuild:
+  Version bump. Update to EAPI 3 and use xz tarball.
+
+  05 Mar 2011; Brent Baude <ranger@gentoo.org> quvi-0.2.13.ebuild:
+  stable ppc, bug 354739
+
+  18 Feb 2011; Thomas Kahle <tomka@gentoo.org> quvi-0.2.13.ebuild:
+  x86 stable per bug 354739
+
+  16 Feb 2011; Markos Chandras <hwoarang@gentoo.org> quvi-0.2.13.ebuild:
+  Stable on amd64 wrt bug #354739
+
+*quvi-0.2.13 (09 Feb 2011)
+
+  09 Feb 2011; Tim Harder <radhermit@gentoo.org> -quvi-0.2.7.ebuild,
+  -quvi-0.2.8.ebuild, -quvi-0.2.9.ebuild, -quvi-0.2.10.ebuild,
+  +quvi-0.2.13.ebuild:
+  Version bump and remove old.
+
+*quvi-0.2.12 (02 Feb 2011)
+
+  02 Feb 2011; Tim Harder <radhermit@gentoo.org> +quvi-0.2.12.ebuild:
+  Version bump
+
+*quvi-0.2.11 (07 Jan 2011)
+
+  07 Jan 2011; Alexis Ballier <aballier@gentoo.org> +quvi-0.2.11.ebuild:
+  version bump
+
+*quvi-0.2.10 (10 Dec 2010)
+
+  10 Dec 2010; Hanno Boeck <hanno@gentoo.org> +quvi-0.2.10.ebuild:
+  Version bump.
+
+*quvi-0.2.9 (09 Dec 2010)
+
+  09 Dec 2010; Alexis Ballier <aballier@gentoo.org> +quvi-0.2.9.ebuild:
+  version bump
+
+*quvi-0.2.8 (15 Nov 2010)
+
+  15 Nov 2010; Tim Harder <radhermit@gentoo.org> +quvi-0.2.8.ebuild:
+  Version bump. Don't try to install the TODO file since it was removed in
+  this release.
+
+  23 Oct 2010; Alexis Ballier <aballier@gentoo.org> -quvi-0.1.1.ebuild,
+  -quvi-0.1.4.ebuild, -quvi-0.2.0.ebuild, -quvi-0.2.1.ebuild,
+  -quvi-0.2.5.ebuild:
+  remove old
+
+*quvi-0.2.7 (23 Oct 2010)
+
+  23 Oct 2010; Alexis Ballier <aballier@gentoo.org> +quvi-0.2.7.ebuild:
+  version bump
+
+*quvi-0.2.5 (10 Oct 2010)
+
+  10 Oct 2010; Alexis Ballier <aballier@gentoo.org> +quvi-0.2.5.ebuild:
+  version bump
+
+*quvi-0.2.1 (28 Jul 2010)
+
+  28 Jul 2010; Hanno Boeck <hanno@gentoo.org> +quvi-0.2.1.ebuild:
+  Version bump, restrict tests as they depend on live websites.
+
+  25 Jun 2010; Alexis Ballier <aballier@gentoo.org> quvi-0.2.0.ebuild:
+  depend on lua[deprecated] by Arseny Solokha <b0ntrict0r@yandex.ru>, bug
+  #323899
+
+*quvi-0.2.0 (12 Jun 2010)
+
+  12 Jun 2010; Alexis Ballier <aballier@gentoo.org> +quvi-0.2.0.ebuild:
+  version bump
+
+*quvi-0.1.4 (12 Apr 2010)
+
+  12 Apr 2010; Alexis Ballier <aballier@gentoo.org> +quvi-0.1.4.ebuild:
+  version bump
+
+*quvi-0.1.1 (14 Feb 2010)
+
+  14 Feb 2010; Hanno Boeck <hanno@gentoo.org> +quvi-0.1.1.ebuild,
+  +metadata.xml:
+  Initial commit, required for new cclive versions.

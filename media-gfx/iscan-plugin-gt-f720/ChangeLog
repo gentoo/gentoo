@@ -1,0 +1,50 @@
+# ChangeLog for media-gfx/iscan-plugin-gt-f720
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/iscan-plugin-gt-f720/ChangeLog,v 1.11 2014/08/10 21:14:41 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  iscan-plugin-gt-f720-0.0.1.2.ebuild, iscan-plugin-gt-f720-0.0.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org>
+  iscan-plugin-gt-f720-0.0.1.2.ebuild:
+  amd64 stable, bug #474232
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org>
+  iscan-plugin-gt-f720-0.0.1.2.ebuild:
+  amd64 stable, bug #474232
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  iscan-plugin-gt-f720-0.0.1.2.ebuild:
+  x86 stable wrt bug #474232
+
+  18 Jun 2013; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Take over.
+
+  16 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #200380
+
+*iscan-plugin-gt-f720-0.0.1.2 (18 Feb 2013)
+
+  18 Feb 2013; Diego E. Pettenò <flameeyes@gentoo.org>
+  +iscan-plugin-gt-f720-0.0.1.2.ebuild:
+  Version bump with new SRC_URI. Thanks to Jared in bug #455776.
+
+  08 Jun 2012; Zac Medico <zmedico@gentoo.org>
+  iscan-plugin-gt-f720-0.0.1.ebuild:
+  inherit multilib for get_libdir
+
+  21 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  iscan-plugin-gt-f720-0.0.1.ebuild:
+  QA: fix header line.
+
+  04 Nov 2009; Markus Meier <maekke@gentoo.org>
+  iscan-plugin-gt-f720-0.0.1.ebuild:
+  amd64/x86 stable, bug #291536
+
+*iscan-plugin-gt-f720-0.0.1 (01 Oct 2009)
+
+  01 Oct 2009; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  +iscan-plugin-gt-f720-0.0.1.ebuild:
+  Initial import from bug #274625. Ebuild contributed by W. Trevor King and
+  Will Lepofsky, thanks guys.

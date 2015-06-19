@@ -1,0 +1,34 @@
+# ChangeLog for dev-go/go-text
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-go/go-text/ChangeLog,v 1.7 2015/06/09 03:07:26 zmedico Exp $
+
+*go-text-1.4.2_p20150604 (09 Jun 2015)
+
+  09 Jun 2015; Zac Medico <zmedico@gentoo.org> +go-text-1.4.2_p20150604.ebuild,
+  go-text-9999.ebuild:
+  Add 1.4.2_p20150604 snapshot with timestamp preservation for bug 551486.
+
+  24 May 2015; Zac Medico <zmedico@gentoo.org> go-text-1.4.2_p20150506.ebuild,
+  go-text-9999.ebuild:
+  Add workaround for TestLinking in display/dict_test.go.
+
+  21 May 2015; Zac Medico <zmedico@gentoo.org> go-text-1.4.2_p20150506.ebuild:
+  Add ~amd64 keyword.
+
+  21 May 2015; Zac Medico <zmedico@gentoo.org> go-text-1.4.2_p20150506.ebuild,
+  go-text-9999.ebuild:
+  Enable more tests.
+
+*go-text-1.4.2_p20150506 (21 May 2015)
+
+  21 May 2015; Zac Medico <zmedico@gentoo.org> +go-text-1.4.2_p20150506.ebuild:
+  Add 1.4.2_p20150506 snapshot.
+
+  21 May 2015; Zac Medico <zmedico@gentoo.org> go-text-9999.ebuild:
+  Add src_test.
+
+*go-text-9999 (18 May 2015)
+
+  18 May 2015; Zac Medico <zmedico@gentoo.org> +go-text-9999.ebuild,
+  +metadata.xml:
+  Add go-text.

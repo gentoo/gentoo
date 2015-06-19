@@ -1,0 +1,12 @@
+diff -up gdl-0.9.4/src/pythongdl.cpp.python gdl-0.9.4/src/pythongdl.cpp
+--- gdl-0.9.4/src/pythongdl.cpp.python	2013-07-26 03:30:32.000000000 -0600
++++ gdl-0.9.4/src/pythongdl.cpp	2013-09-30 10:24:27.092666180 -0600
+@@ -373,7 +373,7 @@ PyObject *GDLSub( PyObject *self, PyObje
+     if( libCall)
+       e = new EnvT( NULL, sub);
+     else
+-      e = new EnvUDT( NULL, sub);
++      e = new EnvUDT( NULL, static_cast<DSubUD*>(sub));
+ 
+     Guard< EnvBaseT> e_guard( e);
+ 

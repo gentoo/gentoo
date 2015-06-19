@@ -1,0 +1,17 @@
+btrfsck.o: In function `maybe_free_inode_rec':
+btrfsck.c:(.text+0xce6): undefined reference to `S_ISDIR'
+btrfsck.c:(.text+0xd13): undefined reference to `S_ISREG'
+btrfsck.c:(.text+0xdc7): undefined reference to `S_ISREG'
+btrfsck.c:(.text+0xe2e): undefined reference to `S_ISLNK'
+btrfsck.c:(.text+0xe5b): undefined reference to `S_ISLNK'
+
+--- btrfsck.c
++++ btrfsck.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <fcntl.h>
++#include <sys/stat.h>
+ #include "kerncompat.h"
+ #include "ctree.h"
+ #include "disk-io.h"

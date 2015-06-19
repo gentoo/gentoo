@@ -1,0 +1,13 @@
+Index: ViSP-2.10.0/CMakeLists.txt
+===================================================================
+--- ViSP-2.10.0.orig/CMakeLists.txt
++++ ViSP-2.10.0/CMakeLists.txt
+@@ -1450,7 +1450,7 @@ if(USE_OPENCV)
+       list(APPEND VISP_EXTERN_LIBRARIES ${OpenCV_LIBS})
+     endif()
+     list(APPEND VISP_EXTERN_INCLUDE_DIRS ${OpenCV_INCLUDE_DIRS})
+-    #LIST(APPEND VISP_EXTERN_LIBRARIES ${OpenCV_LIBS})
++    LIST(APPEND VISP_EXTERN_LIBRARIES ${OpenCV_LIBRARIES})
+     #MESSAGE("OpenCV_INCLUDE_DIRS = ${OpenCV_INCLUDE_DIRS}")
+     #MESSAGE("OpenCV_LIBS = ${OpenCV_LIBS}")
+     #MESSAGE("OpenCV_LIB_DIR = ${OpenCV_LIB_DIR}")

@@ -1,0 +1,19 @@
+# ChangeLog for media-video/subdl
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/subdl/ChangeLog,v 1.4 2014/04/07 16:13:43 ssuominen Exp $
+
+  07 Apr 2014; Samuli Suominen <ssuominen@gentoo.org> subdl-1.0.3.ebuild:
+  Use PYTHON_REQUIRED_USE.
+
+  11 Aug 2013; Samuli Suominen <ssuominen@gentoo.org> subdl-1.0.3.ebuild:
+  Use python-single-r1.eclass (instead of the deprecated python.eclass)
+
+*subdl-1.0.3 (02 Nov 2010)
+
+  02 Nov 2010; Samuli Suominen <ssuominen@gentoo.org> +subdl-1.0.3.ebuild:
+  Version bump.
+
+*subdl-1.0.2 (25 Mar 2010)
+
+  25 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> +subdl-1.0.2.ebuild:
+  Initial commit.

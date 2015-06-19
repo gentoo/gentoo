@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=A console perl script for sending SMS to cell phones
+EAPI=4
+HOMEPAGE=http://linuxsms.sourceforge.net/
+KEYWORDS=~amd64 arm ppc s390 sparc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/perl-5.6.1
+SLOT=0
+SRC_URI=mirror://sourceforge/linuxsms/linuxsms-0.77.tar.gz
+_md5_=2eeb3ef9d6b6583de10a1d58f71a3790

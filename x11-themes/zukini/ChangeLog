@@ -1,0 +1,23 @@
+# ChangeLog for x11-themes/zukini
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/zukini/ChangeLog,v 1.5 2012/10/17 03:23:38 phajdan.jr Exp $
+
+  17 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> zukini-20120806.ebuild:
+  x86 stable wrt bug #436388
+
+  07 Oct 2012; Agostino Sarubbo <ago@gentoo.org> zukini-20120806.ebuild:
+  Stable for amd64, wrt bug #436388
+
+  06 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> -zukini-20120607.ebuild:
+  old
+
+*zukini-20120806 (06 Aug 2012)
+
+  06 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> +zukini-20120806.ebuild:
+  Use -> to rename tarball and update to latest size.
+
+*zukini-20120607 (15 Jun 2012)
+
+  15 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> +zukini-20120607.ebuild:
+  Initial commit.
+

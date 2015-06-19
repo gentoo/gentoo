@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<use>
+		<flag name="analitza">Enable <pkg>kde-base/analitza</pkg> backend support</flag>
+		<flag name="qalculate">Enable <pkg>sci-libs/libqalculate</pkg> backend support</flag>
+		<flag name="R">Enable <pkg>dev-lang/R</pkg> backend support</flag>
+	</use>
+</pkgmetadata>

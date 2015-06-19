@@ -1,0 +1,543 @@
+# ChangeLog for dev-util/global
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/global/ChangeLog,v 1.137 2014/11/05 19:14:18 floppym Exp $
+
+  05 Nov 2014; Mike Gilbert <floppym@gentoo.org> global-6.3.1.ebuild:
+  Adjust libtool dep for new libltdl package.
+
+  18 Oct 2014; Mike Gilbert <floppym@gentoo.org> -global-6.2.10.ebuild,
+  -global-6.2.11.ebuild, -global-6.2.12.ebuild, -global-6.3.ebuild:
+  Remove old.
+
+  18 Oct 2014; Agostino Sarubbo <ago@gentoo.org> global-6.3.1.ebuild:
+  Stable for ppc, wrt bug #524248
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> global-6.3.1.ebuild:
+  Stable for x86, wrt bug #524248
+
+  09 Oct 2014; Agostino Sarubbo <ago@gentoo.org> global-6.3.1.ebuild:
+  Stable for amd64, wrt bug #524248
+
+  01 Oct 2014; Mike Gilbert <floppym@gentoo.org> global-6.3.1.ebuild:
+  Fix installation with tex not available. Patch by Arfrever.
+
+  08 Sep 2014; Chema Alonso <nimiux@gentoo.org> global-6.3.ebuild:
+  Stable for amd64 wrt bug #518612
+
+  14 Aug 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> global-6.3.ebuild:
+  x86 stable wrt bug #518612
+
+*global-6.3.1 (11 Aug 2014)
+
+  11 Aug 2014; Mike Gilbert <floppym@gentoo.org> +global-6.3.1.ebuild:
+  Version bump. Ebuild by Arfrever.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> global-6.2.10.ebuild,
+  global-6.2.11.ebuild, global-6.2.12.ebuild, global-6.3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  24 Jun 2014; Agostino Sarubbo <ago@gentoo.org> global-6.2.11.ebuild:
+  Stable for x86, wrt bug #512456
+
+*global-6.3 (10 Jun 2014)
+*global-6.2.12 (10 Jun 2014)
+
+  10 Jun 2014; Mike Gilbert <floppym@gentoo.org> +global-6.2.12.ebuild,
+  +global-6.3.ebuild:
+  Version bumps (bug #512832). Ebuilds by Arfrever.
+
+  08 Jun 2014; Agostino Sarubbo <ago@gentoo.org> global-6.2.11.ebuild:
+  Stable for ppc, wrt bug #512456
+
+  08 Jun 2014; Chema Alonso <nimiux@gentoo.org> global-6.2.11.ebuild:
+  Stable for amd64 wrt bug #512456
+
+*global-6.2.11 (15 Mar 2014)
+
+  15 Mar 2014; Mike Gilbert <floppym@gentoo.org> +global-6.2.11.ebuild:
+  Version bump. Ebuild by Arfrever.
+
+  11 Mar 2014; Mike Gilbert <floppym@gentoo.org> -global-6.2.8.ebuild,
+  -global-6.2.9.ebuild:
+  Remove per Arfrever.
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> global-6.2.10.ebuild:
+  Stable for ppc, wrt bug #502806
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> global-6.2.10.ebuild:
+  Stable for x86, wrt bug #502806
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> global-6.2.10.ebuild:
+  amd64 stable, bug #502806
+
+*global-6.2.10 (18 Jan 2014)
+
+  18 Jan 2014; Mike Gilbert <floppym@gentoo.org> +global-6.2.10.ebuild:
+  Version bump. Ebuild by Arfrever.
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> global-6.2.9.ebuild:
+  Stable for ppc, wrt bug #495670
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> global-6.2.9.ebuild:
+  Stable for x86, wrt bug #495670
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> global-6.2.9.ebuild:
+  amd64 stable, bug #495670
+
+  06 Jan 2014; Naohiro Aota <naota@gentoo.org> +files/global-6.2.9-tinfo.patch,
+  global-6.2.9.ebuild:
+  Add a patch to handle ncurses[tinfo]
+
+*global-6.2.9 (28 Aug 2013)
+
+  28 Aug 2013; Mike Gilbert <floppym@gentoo.org> +global-6.2.9.ebuild:
+  Version bump. Ebuild by Arfrever.
+
+  03 Jun 2013; Mike Gilbert <floppym@gentoo.org> -global-5.9.5.ebuild,
+  -global-5.9.7.ebuild, -global-6.1.ebuild, -global-6.2.1.ebuild,
+  -global-6.2.2.ebuild, -global-6.2.4.ebuild, -global-6.2.7-r1.ebuild,
+  -global-6.2.7.ebuild, -global-6.2.ebuild:
+  Remove old per Arfrever.
+
+  26 May 2013; Agostino Sarubbo <ago@gentoo.org> global-6.2.8.ebuild:
+  Stable for x86, wrt bug #470490
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> global-6.2.8.ebuild:
+  Stable for ppc, wrt bug #470490
+
+  20 May 2013; Chema Alonso <nimiux@gentoo.org> global-6.2.8.ebuild:
+  Stable for amd64 wrt bug #470490
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*global-6.2.8 (05 Mar 2013)
+
+  05 Mar 2013; Mike Gilbert <floppym@gentoo.org> +global-6.2.8.ebuild:
+  Version bump. Ebuild by Arfrever.
+
+*global-6.2.7-r1 (18 Feb 2013)
+
+  18 Feb 2013; Naohiro Aota <naota@gentoo.org> +global-6.2.7-r1.ebuild:
+  Do not drop all .la files. #457856
+
+*global-6.2.7 (20 Jan 2013)
+
+  20 Jan 2013; Mike Gilbert <floppym@gentoo.org> +global-6.2.7.ebuild:
+  Version bump by Arfrever.
+
+  09 Sep 2012; Raúl Porcel <armin76@gentoo.org> global-5.9.5.ebuild,
+  global-5.9.7.ebuild, global-6.1.ebuild, global-6.2.ebuild,
+  global-6.2.1.ebuild, global-6.2.2.ebuild, global-6.2.4.ebuild:
+  Drop sparc keywords
+
+  21 Aug 2012; Johannes Huber <johu@gentoo.org> global-6.2.4.ebuild:
+  Stable for x86, wrt bug #429058
+
+  11 Aug 2012; Agostino Sarubbo <ago@gentoo.org> global-6.2.4.ebuild:
+  Stable for amd64, wrt bug #429058
+
+  10 Aug 2012; Anthony G. Basile <blueness@gentoo.org> global-6.2.4.ebuild:
+  Stable ppc, bug #429058
+
+  13 Jun 2012; Jeff Horelick <jdhore@gentoo.org> global-6.2.2.ebuild:
+  marked x86 per bug 418957
+
+  13 Jun 2012; Agostino Sarubbo <ago@gentoo.org> global-6.2.2.ebuild:
+  Stable for amd64, wrt bug #418957
+
+*global-6.2.4 (02 Jun 2012)
+
+  02 Jun 2012; Mike Gilbert <floppym@gentoo.org> +global-6.2.4.ebuild:
+  Version bump. Ebuild by Arfrever.
+
+  24 Apr 2012; Michał Górny <mgorny@gentoo.org> global-5.9.5.ebuild,
+  global-5.9.7.ebuild, global-6.1.ebuild, global-6.2.ebuild,
+  global-6.2.1.ebuild, global-6.2.2.ebuild:
+  Update to use mirror://.
+
+*global-6.2.2 (16 Mar 2012)
+
+  16 Mar 2012; Mike Gilbert <floppym@gentoo.org> +global-6.2.2.ebuild:
+  Version bump. Ebuild by Arfrever.
+
+*global-6.2.1 (13 Mar 2012)
+
+  13 Mar 2012; Mike Gilbert <floppym@gentoo.org> +global-6.2.1.ebuild:
+  Version bump. Ebuild by Arfrever.
+
+*global-6.2 (26 Jan 2012)
+
+  26 Jan 2012; Mike Gilbert <floppym@gentoo.org> +global-6.2.ebuild:
+  Version bump for Arfrever.
+
+*global-6.1 (14 Oct 2011)
+
+  14 Oct 2011; Naohiro Aota <naota@gentoo.org> +global-6.1.ebuild:
+  Version bumped.
+
+  17 Sep 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Add Arfrever as proxy maintainer as requested by him.
+
+  16 Sep 2011; Naohiro Aota <naota@gentoo.org> metadata.xml:
+  Assign me as new maintainer
+
+  13 Sep 2011; Pacho Ramos <pacho@gentoo.org> -global-5.9.6.ebuild,
+  metadata.xml:
+  Drop maintainer due retirement, bug #246793; remove old.
+
+*global-5.9.7 (08 Aug 2011)
+
+  08 Aug 2011; Markos Chandras <hwoarang@gentoo.org> +global-5.9.7.ebuild:
+  Version bump. Ebuild by Arfrever
+
+*global-5.9.6 (08 Aug 2011)
+
+  08 Aug 2011; Markos Chandras <hwoarang@gentoo.org> +global-5.9.6.ebuild:
+  Version bump. Ebuild by Arfrever
+
+  05 Aug 2011; Markos Chandras <hwoarang@gentoo.org> -global-5.9.3.ebuild,
+  -global-5.9.4.ebuild:
+  Remove old ebuild. Requested by Arfrever
+
+  13 Jul 2011; Markus Meier <maekke@gentoo.org> global-5.9.5.ebuild:
+  x86 stable, bug #372303
+
+  26 Jun 2011; Brent Baude <ranger@gentoo.org> global-5.9.5.ebuild:
+  Marking global-5.9.5 ppc for bug 372303
+
+  20 Jun 2011; Markos Chandras <hwoarang@gentoo.org> global-5.9.5.ebuild:
+  Stable on amd64 wrt bug #372303
+
+  24 May 2011; Brent Baude <ranger@gentoo.org> global-5.9.4.ebuild:
+  Marking global-5.9.4 ppc for bug 362761
+
+*global-5.9.5 (17 May 2011)
+
+  17 May 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +global-5.9.5.ebuild:
+  Version bump.
+
+  10 May 2011; Naohiro Aota <naota@gentoo.org> global-5.9.4.ebuild:
+  Add ~x86-fbsd keyword
+
+  07 May 2011; Thomas Kahle <tomka@gentoo.org> global-5.9.4.ebuild:
+  x86 stable per bug 362761
+
+  10 Apr 2011; Markos Chandras <hwoarang@gentoo.org> global-5.9.4.ebuild:
+  Stable on amd64 wrt bug #362761
+
+*global-5.9.4 (09 Mar 2011)
+
+  09 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +global-5.9.4.ebuild:
+  Version bump.
+
+  28 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -global-5.9.2-r2.ebuild, -files/global-5.9.2-localstatedir.patch:
+  Delete.
+
+  28 Feb 2011; Brent Baude <ranger@gentoo.org> global-5.9.3.ebuild:
+  stable ppc, bug 351668
+
+  24 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> global-5.9.3.ebuild:
+  x86 stable wrt bug #351668
+
+  15 Jan 2011; Markos Chandras <hwoarang@gentoo.org> global-5.9.3.ebuild:
+  Stable on amd64 wrt bug #351668
+
+*global-5.9.3 (15 Dec 2010)
+
+  15 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +global-5.9.3.ebuild:
+  Version bump.
+
+  13 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -global-5.9.ebuild, -global-5.9.1.ebuild:
+  Delete.
+
+  13 Dec 2010; Brent Baude <ranger@gentoo.org> global-5.9.2-r2.ebuild:
+  stable ppc, bug 341311
+
+  20 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  global-5.9.2-r2.ebuild:
+  stable x86, bug 341311
+
+  16 Oct 2010; Markos Chandras <hwoarang@gentoo.org> global-5.9.2-r2.ebuild:
+  Stable on amd64 wrt bug #341311
+
+  10 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  metadata.xml:
+  Restore previous maintainer.
+
+*global-5.9.2-r2 (10 Sep 2010)
+
+  10 Sep 2010; Jeroen Roovers <jer@gentoo.org> -global-5.9.2-r1.ebuild,
+  +global-5.9.2-r2.ebuild:
+  Set SITELISP through configure by Ulrich Müller (bug #336727).
+
+*global-5.9.2-r1 (02 Sep 2010)
+
+  02 Sep 2010; Jeroen Roovers <jer@gentoo.org> -global-5.9.2.ebuild,
+  +global-5.9.2-r1.ebuild, files/global-5.9.2-localstatedir.patch:
+  Fix bad patch after upstream review.
+
+  01 Sep 2010; Jeroen Roovers <jer@gentoo.org> -global-5.8.2.ebuild,
+  global-5.9.1.ebuild, global-5.9.2.ebuild:
+  Install site file into correct location (bug #285600).
+
+*global-5.9.2 (01 Sep 2010)
+
+  01 Sep 2010; Jeroen Roovers <jer@gentoo.org> +global-5.9.2.ebuild,
+  +files/global-5.9.2-localstatedir.patch:
+  Version bump.
+
+  19 Aug 2010; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Remove arfrever.
+
+  13 Aug 2010; Joseph Jezak <josejx@gentoo.org> global-5.9.ebuild:
+  Marked ppc stable for bug #327481.
+
+*global-5.9.1 (19 Jul 2010)
+
+  19 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +global-5.9.1.ebuild:
+  Version bump.
+
+  12 Jul 2010; Christian Faulhammer <fauli@gentoo.org> global-5.9.ebuild:
+  stable x86, bug 327481
+
+  10 Jul 2010; Markos Chandras <hwoarang@gentoo.org> global-5.9.ebuild:
+  Stable on amd64 wrt bug #327481
+
+  09 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  global-5.9.ebuild:
+  Delete no longer needed doins (bug #327621).
+
+*global-5.9 (08 Jun 2010)
+
+  08 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -global-5.7.7.ebuild, -global-5.8.ebuild, +global-5.9.ebuild:
+  Version bump.
+
+  04 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> global-5.8.2.ebuild:
+  x86 stable wrt bug #318815
+
+  21 May 2010; Markos Chandras <hwoarang@gentoo.org> global-5.8.2.ebuild:
+  Stable on amd64 wrt bug #318815
+
+  10 May 2010; nixnut <nixnut@gentoo.org> global-5.8.2.ebuild:
+  ppc stable #318815
+
+  27 Apr 2010; Tiago Cunha <tcunha@gentoo.org> global-5.8.1.ebuild:
+  stable sparc, bug 313775
+
+  26 Apr 2010; Christian Faulhammer <fauli@gentoo.org> global-5.8.1.ebuild:
+  stable x86, bug 313775
+
+  16 Apr 2010; Brent Baude <ranger@gentoo.org> global-5.8.1.ebuild:
+  stable ppc, bug 313775
+
+  09 Apr 2010; Markos Chandras <hwoarang@gentoo.org> global-5.8.1.ebuild:
+  Stable on amd64 wrt bug #313775
+
+*global-5.8.2 (04 Apr 2010)
+
+  04 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +global-5.8.2.ebuild:
+  Version bump (bug #312607).
+
+*global-5.8.1 (07 Mar 2010)
+
+  07 Mar 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +global-5.8.1.ebuild:
+  Version bump.
+
+*global-5.8 (20 Feb 2010)
+
+  20 Feb 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +global-5.8.ebuild:
+  Version bump.
+
+  03 Feb 2010; Markus Meier <maekke@gentoo.org> global-5.7.7.ebuild:
+  amd64/x86 stable, bug #301406
+
+  26 Jan 2010; Tiago Cunha <tcunha@gentoo.org> global-5.7.7.ebuild:
+  stable sparc, bug 301406
+
+  22 Jan 2010; Brent Baude <ranger@gentoo.org> global-5.7.7.ebuild:
+  stable ppc, bug 301406
+
+*global-5.7.7 (19 Dec 2009)
+
+  19 Dec 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +global-5.7.7.ebuild:
+  Version bump.
+
+  22 Nov 2009; Tiago Cunha <tcunha@gentoo.org> global-5.7.6.ebuild:
+  stable sparc, bug 292307
+
+  21 Nov 2009; nixnut <nixnut@gentoo.org> global-5.7.6.ebuild:
+  ppc stable #292307
+
+  16 Nov 2009; Markus Meier <maekke@gentoo.org> global-5.7.6.ebuild:
+  amd64/x86 stable, bug #292307
+
+*global-5.7.6 (06 Oct 2009)
+
+  06 Oct 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -global-5.6.2.ebuild, -global-5.7.4.ebuild, +global-5.7.6.ebuild:
+  Version bump.
+
+  06 May 2009; Christian Faulhammer <fauli@gentoo.org> global-5.7.5.ebuild:
+  stable x86, bug 267439
+
+  26 Apr 2009; Brent Baude <ranger@gentoo.org> global-5.7.5.ebuild:
+  stable ppc, bug 267439
+
+  26 Apr 2009; Tiago Cunha <tcunha@gentoo.org> global-5.7.5.ebuild:
+  stable amd64/sparc, bug 267439
+
+  10 Apr 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  global-5.7.5.ebuild:
+  Fix 'dodoc: doc/global.pdf does not exist'.
+
+*global-5.7.5 (21 Mar 2009)
+
+  21 Mar 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -global-5.7.1.ebuild, -global-5.7.3.ebuild, +global-5.7.5.ebuild:
+  Version bump.
+
+*global-5.7.4 (13 Jan 2009)
+
+  13 Jan 2009; Mike Pagano <mpagano@gentoo.org> +global-5.7.4.ebuild:
+  Version bump as per bug #254408
+
+*global-5.7.3 (27 Nov 2008)
+
+  27 Nov 2008; Jeroen Roovers <jer@gentoo.org> +global-5.7.3.ebuild:
+  Version bump (bug #246495) thanks to Arfrever Frehtes Taifersar Arahesis.
+
+  24 Aug 2008; Ulrich Mueller <ulm@gentoo.org> global-5.6.2.ebuild,
+  global-5.7.1.ebuild:
+  Use elisp-compile instead of elisp-comp, bug 235586.
+
+*global-5.7.1 (29 Jun 2008)
+
+  29 Jun 2008; Jeremy Olexa <darkside@gentoo.org> -global-4.7.2.ebuild,
+  -global-5.3.ebuild, -global-5.6.1.ebuild, +global-5.7.1.ebuild:
+  Version bump, bug #217405. Remove old versions
+
+  21 May 2008; Tiziano Müller <dev-zero@gentoo.org> global-4.7.2.ebuild:
+  Changed dependency for postgresql from dev-db/postgresql to
+  virtual/postgresql-server
+
+  20 Apr 2008; Markus Meier <maekke@gentoo.org> global-5.6.2.ebuild:
+  x86 stable, bug #217407
+
+  21 Mar 2008; Tiziano Müller <dev-zero@gentoo.org> global-5.6.2.ebuild:
+  Fixed minorsyns and shortened description.
+
+  21 Mar 2008; Tiziano Müller <dev-zero@gentoo.org> global-5.6.2.ebuild:
+  Changed dependency to allow gvim as vim-dependency.
+
+*global-5.6.2 (08 Jan 2008)
+
+  08 Jan 2008; Carsten Lohrke <carlo@gentoo.org> +global-5.6.2.ebuild:
+  Version bump.
+
+*global-5.6.1 (27 Aug 2007)
+
+  27 Aug 2007; Raúl Porcel <armin76@gentoo.org> -global-4.5.ebuild,
+  global-4.7.2.ebuild, -global-5.2.ebuild, global-5.3.ebuild,
+  +global-5.6.1.ebuild:
+  Version bump, bug 175417, x86 stable, remove old
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*global-5.3 (24 Jan 2007)
+
+  24 Jan 2007; Alec Warner <antarus@gentoo.org> +global-5.3.ebuild:
+  bump to 5.3
+
+  06 Jan 2007; Danny van Dyk <kugelfang@gentoo.org> -global-4.8.2.ebuild,
+  -global-4.8.7.ebuild:
+  QA: Removed unused versions.
+
+*global-5.2 (19 Aug 2006)
+
+  19 Aug 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  +global-5.2.ebuild:
+  version bump, suggested by yusuke iijima (Bug #141970)
+
+*global-4.8.7 (31 Jan 2006)
+
+  31 Jan 2006; Luis Medinas <metalgod@gentoo.org> +global-4.8.7.ebuild:
+  Version Bump. Closes bug #120939.
+
+  31 Jan 2006; Luis Medinas <metalgod@gentoo.org> global-4.8.2.ebuild:
+  Added ~amd64 keywords. Closes bug #120919.
+
+  08 Dec 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/50gtags-gentoo.el, global-4.8.2.ebuild:
+  Corrected support for Emacs (inherit "elisp-common", not "emacs"); Add Emacs
+  Lisp site-file including autoload; Resolves Bug #110979.
+
+  30 Apr 2005; David Holm <dholm@gentoo.org> global-4.8.2.ebuild:
+  Readded to ~ppc
+
+  20 Mar 2005; Jason Wever <weeve@gentoo.org> global-4.8.2.ebuild:
+  Added ~sparc keyword as it was dropped in the version bump.
+
+*global-4.8.2 (10 Feb 2005)
+
+  10 Feb 2005; Daniel Black <dragonheart@gentoo.org> +global-4.8.2.ebuild:
+  Version bump as per bug #80946. Thanks Matteo Settenvini
+  <matteo-ml@member.fsf.org>
+
+  03 Jul 2004; David Holm <dholm@gentoo.org> global-4.7.2.ebuild:
+  Added to ~ppc.
+
+  02 Jul 2004; Seemant Kulleen <seemant@gentoo.org> global-4.7.2.ebuild:
+  added ~amd64 KEYWORD since michael (see below) tested it on that architecture
+
+*global-4.7.2 (02 Jul 2004)
+
+  02 Jul 2004; Seemant Kulleen <seemant@gentoo.org> +global-4.7.2.ebuild:
+  version bump to 4.7.2 which uses the new sort arguments in coreutils 5 and
+  later. This should close out bug #43838 by Michael Labhard
+  <m.labhard@comcast.net>.  Due to the concerns in that bug, we really
+  should try and get this to stable sooner rather than later.  30 day
+  countdown begins now.
+
+  28 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> global-4.6.1.ebuild:
+  Added ~sparc, ~mips
+
+  03 Jun 2004; Aron Griffis <agriffis@gentoo.org> global-4.5.3.ebuild:
+  Fix use invocation
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> global-4.6.1.ebuild:
+  Add die following econf for bug 48950
+
+  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> global-4.5.3.ebuild,
+  global-4.5.ebuild, global-4.6.1.ebuild:
+  Don't assign default to S; header fix
+
+*global-4.6.1 (27 Jan 2004)
+
+  27 Jan 2004; Martin Holzer <mholzer@gentoo.org> global-4.6.1.ebuild:
+  Version bumped. Closes 39492
+
+*global-4.5.3 (25 Jul 2003)
+
+  25 Jul 2003; Martin Holzer <mholzer@gentoo.org> global-4.5.3.ebuild:
+  Version bumped. Ebuild submitted by Sven Rubben <srubben@acm.org> in #23331.
+
+*global-4.5 (26 Oct 2002)
+
+  26 Oct 2002; J Robert Ray <jrray@gentoo.org> : New ebuild, submitted
+  by Rigo Ketelings <rigo@home.nl>.

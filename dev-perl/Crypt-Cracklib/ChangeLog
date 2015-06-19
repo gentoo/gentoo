@@ -1,0 +1,145 @@
+# ChangeLog for dev-perl/Crypt-Cracklib
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-Cracklib/ChangeLog,v 1.35 2014/08/22 19:08:18 axs Exp $
+
+*Crypt-Cracklib-1.700.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Crypt-Cracklib-1.700.0-r1.ebuild, -Crypt-Cracklib-1.700.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  03 Jun 2012; Torsten Veller <tove@gentoo.org> -Crypt-Cracklib-1.5.ebuild:
+  Cleanup
+
+  28 May 2012; Raúl Porcel <armin76@gentoo.org> Crypt-Cracklib-1.5.ebuild,
+  Crypt-Cracklib-1.700.0.ebuild:
+  Drop ia64 keywords
+
+  24 Apr 2012; Agostino Sarubbo <ago@gentoo.org> Crypt-Cracklib-1.700.0.ebuild:
+  Stable for amd64, wrt bug #413089
+
+  24 Apr 2012; Jeff Horelick <jdhore@gentoo.org> Crypt-Cracklib-1.700.0.ebuild:
+  marked x86 per bug 413089
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Crypt-Cracklib-1.700.ebuild:
+  Cleanup
+
+*Crypt-Cracklib-1.700.0 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org> +Crypt-Cracklib-1.700.0.ebuild:
+  Change version scheme
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -Crypt-Cracklib-1.1.ebuild,
+  -Crypt-Cracklib-1.2.ebuild, -Crypt-Cracklib-1.4-r1.ebuild:
+  Cleanup
+
+*Crypt-Cracklib-1.700 (12 Jan 2011)
+
+  12 Jan 2011; Torsten Veller <tove@gentoo.org> +Crypt-Cracklib-1.700.ebuild:
+  Version bump
+
+  13 Nov 2010; Raúl Porcel <armin76@gentoo.org> Crypt-Cracklib-1.5.ebuild:
+  ia64 stable wrt #341865
+
+  05 Nov 2010; Markos Chandras <hwoarang@gentoo.org>
+  Crypt-Cracklib-1.5.ebuild:
+  Stable on amd64 wrt bug #341865
+
+  04 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  Crypt-Cracklib-1.5.ebuild:
+  x86 stable, bug 341865
+
+*Crypt-Cracklib-1.5 (22 Jul 2010)
+
+  22 Jul 2010; Torsten Veller <tove@gentoo.org> +Crypt-Cracklib-1.5.ebuild:
+  Version bump
+
+  06 Jan 2010; Torsten Veller <tove@gentoo.org>
+  +files/1.4-disable-reversed-test.patch, Crypt-Cracklib-1.4-r1.ebuild:
+  Disable reversed test (#278196)
+
+  02 May 2009; Torsten Veller <tove@gentoo.org> -Crypt-Cracklib-0.01.ebuild:
+  Cleanup
+
+*Crypt-Cracklib-1.4-r1 (30 Jul 2008)
+
+  30 Jul 2008; Torsten Veller <tove@gentoo.org> -Crypt-Cracklib-1.4.ebuild,
+  +Crypt-Cracklib-1.4-r1.ebuild:
+  Move modules from site to vendor. Remove src_{compile,install} as
+  perl-module_src_{compile,install} work.
+
+*Crypt-Cracklib-1.4 (29 Jul 2008)
+
+  29 Jul 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +Crypt-Cracklib-1.4.ebuild:
+  Version bump.
+
+  13 Jun 2008; Raúl Porcel <armin76@gentoo.org> Crypt-Cracklib-1.2.ebuild:
+  ia64/x86 stable
+
+*Crypt-Cracklib-1.2 (29 Apr 2008)
+
+  29 Apr 2008; Yuval Yaari <yuval@gentoo.org> +Crypt-Cracklib-1.2.ebuild:
+  Version bump
+
+  05 Jul 2007; Raúl Porcel <armin76@gentoo.org> Crypt-Cracklib-1.1.ebuild:
+  ia64/x86 stable
+
+  08 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Crypt-Cracklib-1.1.ebuild:
+  Marking amd64 stable
+
+  13 Mar 2007; Michael Cummings <mcummings@gentoo.org>
+  Crypt-Cracklib-0.01.ebuild, Crypt-Cracklib-1.1.ebuild:
+  removing CHANGES from dodoc
+
+*Crypt-Cracklib-1.1 (06 Jan 2007)
+
+  06 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  +Crypt-Cracklib-1.1.ebuild:
+  Version bump
+
+  20 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Crypt-Cracklib-0.01.ebuild:
+  Marking amd64 stable
+
+  10 Sep 2006; Michael Cummings <mcummings@gentoo.org>
+  Crypt-Cracklib-0.01.ebuild:
+  Keywording ~amd64
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Crypt-Cracklib-0.01.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  Crypt-Cracklib-0.01.ebuild:
+  Mark 0.01 stable on ia64
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  Crypt-Cracklib-0.01.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed DEPEND
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  Crypt-Cracklib-0.01.ebuild:
+  Mark 0.01 ~ia64
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  Crypt-Cracklib-0.01.ebuild:
+  Cleaning
+
+  14 Aug 2004; Sven Wegener <swegener@gentoo.org> Crypt-Cracklib-0.01.ebuild:
+  Trimmed trailing whitespace.
+
+  07 Nov 2003; Robin H. Johnson <robbat2@gentoo.org>
+  Crypt-Cracklib-0.01.ebuild:
+  fix a sandbox violation
+
+*Crypt-Cracklib-0.01 (18 Aug 2003)
+
+  18 Aug 2003; Robin H. Johnson <robbat2@gentoo.org>
+  Crypt-Cracklib-0.01.ebuild:
+  initial commit

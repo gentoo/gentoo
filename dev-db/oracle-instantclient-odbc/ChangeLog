@@ -1,0 +1,83 @@
+# ChangeLog for dev-db/oracle-instantclient-odbc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/oracle-instantclient-odbc/ChangeLog,v 1.17 2015/05/15 08:50:34 zlogene Exp $
+
+  15 May 2015; Mikle Kolyada <zlogene@gentoo.org>
+  oracle-instantclient-odbc-11.2.0.4.ebuild:
+  x86 stable wrt bug #524924
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org>
+  oracle-instantclient-odbc-11.2.0.4.ebuild:
+  Stable for amd64, wrt bug #524924
+
+*oracle-instantclient-odbc-11.2.0.4 (04 Apr 2014)
+
+  04 Apr 2014; Michael Haubenwallner <haubi@gentoo.org>
+  +oracle-instantclient-odbc-11.2.0.4.ebuild:
+  Revbump. Add RESTRICT=splitdebug. Convert to USE abi_x86_*, bug#506228.
+
+  15 Nov 2012; Michael Haubenwallner <haubi@gentoo.org>
+  oracle-instantclient-odbc-11.2.0.3.ebuild:
+  Define QA_PREBUILT, bug#443120.
+
+  14 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  oracle-instantclient-odbc-11.2.0.3.ebuild:
+  Stable for x86, wrt bug #397571
+
+  14 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  oracle-instantclient-odbc-11.2.0.3.ebuild:
+  Stable for amd64, wrt bug #397571
+
+  04 Jun 2012; Zac Medico <zmedico@gentoo.org>
+  oracle-instantclient-odbc-11.2.0.2-r1.ebuild,
+  oracle-instantclient-odbc-11.2.0.3.ebuild:
+  inherit multilib for get_libdir
+
+  07 Mar 2012; Michael Haubenwallner <haubi@gentoo.org>
+  oracle-instantclient-odbc-11.2.0.3.ebuild:
+  must not set ABI for non-multilib-able archs at all
+
+  07 Mar 2012; Michael Haubenwallner <haubi@gentoo.org>
+  oracle-instantclient-odbc-11.2.0.3.ebuild:
+  fix typo with non-multilib archs
+
+*oracle-instantclient-odbc-11.2.0.3 (07 Mar 2012)
+
+  07 Mar 2012; Michael Haubenwallner <haubi@gentoo.org>
+  +oracle-instantclient-odbc-11.2.0.3.ebuild:
+  Revbump. Use EAPI 4. Update homepage.
+  Add multilib support.
+  RDEPEND on _same_ version of oracle-instantclient-basic.
+
+  09 Feb 2012; Michael Haubenwallner <haubi@gentoo.org> metadata.xml:
+  Taking over maintainership.
+
+  09 Feb 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #85926
+
+*oracle-instantclient-odbc-11.2.0.2-r1 (28 Aug 2011)
+
+  28 Aug 2011; Tobias Scherbaum <dertobi123@gentoo.org>
+  -oracle-instantclient-odbc-11.2.0.2.ebuild,
+  +oracle-instantclient-odbc-11.2.0.2-r1.ebuild:
+  Install libsqora 11.1 instead of 11.2 (#365949)
+
+*oracle-instantclient-odbc-11.2.0.2 (12 Nov 2010)
+
+  12 Nov 2010; Tobias Scherbaum <dertobi123@gentoo.org>
+  -oracle-instantclient-odbc-11.1.0.7.0.ebuild,
+  -oracle-instantclient-odbc-11.2.0.1.ebuild,
+  +oracle-instantclient-odbc-11.2.0.2.ebuild:
+  Version bump
+
+*oracle-instantclient-odbc-11.2.0.1 (31 Dec 2009)
+
+  31 Dec 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  +oracle-instantclient-odbc-11.2.0.1.ebuild:
+  Version bump (#293590)
+
+*oracle-instantclient-odbc-11.1.0.7.0 (30 Dec 2008)
+
+  30 Dec 2008; Tobias Scherbaum <dertobi123@gentoo.org> +metadata.xml,
+  +oracle-instantclient-odbc-11.1.0.7.0.ebuild:
+  Initial import, #252981

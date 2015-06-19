@@ -1,0 +1,36 @@
+# ChangeLog for sci-geosciences/gpx-viewer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gpx-viewer/ChangeLog,v 1.7 2015/06/02 08:46:13 jlec Exp $
+
+*gpx-viewer-0.4.0-r1 (02 Jun 2015)
+
+  02 Jun 2015; Justin Lecher <jlec@gentoo.org>
+  +files/gpx-viewer-0.4.0-crash-backport, +gpx-viewer-0.4.0-r1.ebuild,
+  -files/gpx-viewer-0.3.0-autopoint.patch, -gpx-viewer-0.3.0.ebuild,
+  -gpx-viewer-0.4.0.ebuild:
+  Backport crash fix, bug #535886; Drop old
+
+*gpx-viewer-0.4.0 (07 Jan 2015)
+
+  07 Jan 2015; Justin Lecher <jlec@gentoo.org> +gpx-viewer-0.4.0.ebuild:
+  Version Bump
+
+  18 Sep 2013; Justin Lecher <jlec@gentoo.org> gpx-viewer-0.3.0.ebuild,
+  +files/gpx-viewer-0.3.0-autopoint.patch:
+  Add fix for autopoint usage, #484992
+
+  24 Apr 2013; Justin Lecher <jlec@gentoo.org> gpx-viewer-0.3.0.ebuild:
+  vala_depend is a function not a variable
+
+  07 Apr 2013; Justin Lecher <jlec@gentoo.org> gpx-viewer-0.3.0.ebuild,
+  metadata.xml:
+  Make all ebuilds use vala.eclass, #463720
+
+  07 Oct 2012; Justin Lecher <jlec@gentoo.org> gpx-viewer-0.3.0.ebuild:
+  Remove last bit from old naming
+
+*gpx-viewer-0.3.0 (06 Oct 2012)
+
+  06 Oct 2012; Justin Lecher <jlec@gentoo.org> +gpx-viewer-0.3.0.ebuild,
+  +metadata.xml:
+  Copied over from sci-geosciences/gpxviewer to fit upstream name

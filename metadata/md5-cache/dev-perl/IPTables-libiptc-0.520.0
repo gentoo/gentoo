@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=<net-firewall/iptables-1.4.18:= dev-lang/perl:=[-build(-)]
+DESCRIPTION=Perl extension for iptables libiptc library
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/IPTables-libiptc/
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=<net-firewall/iptables-1.4.18:= dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/H/HA/HAWK/IPTables-libiptc-0.52.tar.gz http://dev.gentoo.org/~pinkbyte/distfiles/IPTables-libiptc/IPTables-libiptc-0.520.0-support-for-iptables-1.4.12.patch.bz2 http://dev.gentoo.org/~pinkbyte/distfiles/IPTables-libiptc/IPTables-libiptc-0.520.0-support-for-iptables-1.4.16.2.patch.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=aeb6ed7edcefc203a42fadcba1ac44f3

@@ -1,0 +1,173 @@
+# ChangeLog for dev-python/mpmath
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/mpmath/ChangeLog,v 1.36 2015/04/08 08:04:58 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> mpmath-0.18.ebuild,
+  mpmath-0.19.ebuild:
+  Drop old Python implementations
+
+  27 Aug 2014; Anthony G. Basile <blueness@gentoo.org> mpmath-0.18.ebuild,
+  mpmath-0.19.ebuild:
+  Keyword ~ppc ~ppc64, bug #495116
+
+  05 Aug 2014; Ian Delaney <idella4@gentoo.org> mpmath-0.19.ebuild:
+  drop py2.6 add py3.4 support
+
+  22 Jul 2014; Rick Farina <zerochaos@gentoo.org> mpmath-0.18.ebuild,
+  mpmath-0.19.ebuild:
+  adding ~arm keyword
+
+*mpmath-0.19 (11 Jun 2014)
+
+  11 Jun 2014; Andrey Grozin <grozin@gentoo.org> -mpmath-0.17-r1.ebuild,
+  +mpmath-0.19.ebuild, -files/mpmath-0.17-gmpy2.patch,
+  -files/mpmath-0.17-python-3.2.patch:
+  Version bump
+
+*mpmath-0.17-r1 (02 Feb 2014)
+
+  02 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/mpmath-0.17-gmpy2.patch, +files/mpmath-0.17-python-3.2.patch,
+  +mpmath-0.17-r1.ebuild:
+  re-add older versions
+
+  02 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/mpmath-0.17-gmpy2.patch, -files/mpmath-0.17-python-3.2.patch,
+  -mpmath-0.16.ebuild, -mpmath-0.17-r1.ebuild, -mpmath-0.17.ebuild,
+  metadata.xml, mpmath-0.18.ebuild:
+  More prefix keywording, and ebuild cleaning
+
+*mpmath-0.18 (11 Jan 2014)
+
+  11 Jan 2014; Andrey Grozin <grozin@gentoo.org> +mpmath-0.18.ebuild:
+  Version bump
+
+  13 Oct 2013; Pacho Ramos <pacho@gentoo.org> mpmath-0.17-r1.ebuild:
+  Also compatible with python3_3
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> mpmath-0.17-r1.ebuild,
+  mpmath-0.17.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*mpmath-0.17-r1 (18 Jul 2013)
+
+  18 Jul 2013; Justin Lecher <jlec@gentoo.org> +mpmath-0.17-r1.ebuild,
+  +files/mpmath-0.17-gmpy2.patch:
+  Backport compatibility for gmpy-2, #477098
+
+  18 Jan 2013; Justin Lecher <jlec@gentoo.org> mpmath-0.17.ebuild,
+  metadata.xml:
+  Bump to new python stuff and fix build for py3, #438584
+
+  26 Jun 2012; Justin Lecher <jlec@gentoo.org> mpmath-0.17.ebuild:
+  Drop unnecessary PYTHON_DEPEND
+
+  26 Jun 2012; Justin Lecher <jlec@gentoo.org> mpmath-0.17.ebuild:
+  Remove test dependency, as it is automatically added by eclass
+
+  26 Jun 2012; Justin Lecher <jlec@gentoo.org> mpmath-0.17.ebuild:
+  Add missing dep on pytest for tests, remove src_test and use eclass default,
+  restrict pypy
+
+  26 Jun 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/mpmath-0.17-python-3.2.patch, mpmath-0.17.ebuild:
+  Fixed tests for python-3.2, thanks Arfrever. Some cleaning.
+
+  20 Jun 2012; Justin Lecher <jlec@gentoo.org> mpmath-0.16.ebuild,
+  mpmath-0.17.ebuild, metadata.xml:
+  Bump EAPI to 4, fix testing, #422593
+
+  18 May 2011; Andrey Grozin <grozin@gentoo.org> mpmath-0.17.ebuild:
+  Fixing prefix-related bug #367461, thanks to Steven Trogdon
+  <strogdon@d.umn.edu>
+
+*mpmath-0.17 (12 Feb 2011)
+
+  12 Feb 2011; Andrey Grozin <grozin@gentoo.org> +mpmath-0.17.ebuild,
+  +files/mpmath.patch:
+  Version bump, python-3 now supported
+
+  13 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -mpmath-0.15.ebuild:
+  Delete.
+
+  10 Nov 2010; Fabian Groffen <grobian@gentoo.org> mpmath-0.16.ebuild:
+  Marked ~x86-linux, ~ppc-macos, bug #341995
+
+  01 Nov 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  mpmath-0.16.ebuild:
+  Fix dependencies.
+
+  01 Nov 2010; Andrey Grozin <grozin@gentoo.org> mpmath-0.15.ebuild,
+  mpmath-0.16.ebuild, metadata.xml:
+  Fixed #278251 (I hope); new USE flag matplotlib
+
+*mpmath-0.16 (24 Sep 2010)
+
+  24 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -mpmath-0.14.ebuild, +mpmath-0.16.ebuild:
+  Version bump.
+
+*mpmath-0.15 (07 Jun 2010)
+
+  07 Jun 2010; Andrey Grozin <grozin@gentoo.org> -mpmath-0.13.ebuild,
+  +mpmath-0.15.ebuild:
+  Version bump
+
+  07 Feb 2010; Peter Volkov <pva@gentoo.org> mpmath-0.13.ebuild:
+  $HOMEPAGE: Never refer to a variable name in the string; include only raw
+  text.
+
+  06 Feb 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  mpmath-0.14.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*mpmath-0.14 (06 Feb 2010)
+
+  06 Feb 2010; Andrey Grozin <grozin@gentoo.org> -mpmath-0.12-r1.ebuild,
+  -files/mpmath-0.12-test.patch, +mpmath-0.14.ebuild:
+  Version bump
+
+*mpmath-0.13 (17 Aug 2009)
+
+  17 Aug 2009; Andrey Grozin <grozin@gentoo.org> -mpmath-0.11.ebuild,
+  +mpmath-0.13.ebuild:
+  Version bump
+
+*mpmath-0.12-r1 (11 Jun 2009)
+
+  11 Jun 2009; Andrey Grozin <grozin@gentoo.org> -mpmath-0.12.ebuild,
+  +mpmath-0.12-r1.ebuild, +files/mpmath-0.12-test.patch:
+  2 failing tests fixed
+
+*mpmath-0.12 (10 Jun 2009)
+
+  10 Jun 2009; Andrey Grozin <grozin@gentoo.org> -mpmath-0.10.ebuild,
+  +mpmath-0.12.ebuild:
+  Version bump (it fails 2 tests, but this is a question to the upstream)
+
+  15 Feb 2009; Patrick Lauer <patrick@gentoo.org> mpmath-0.11.ebuild:
+  Adding ~amd64 keyword
+
+*mpmath-0.11 (28 Jan 2009)
+
+  28 Jan 2009; Andrey Grozin <grozin@gentoo.org> -mpmath-0.9.ebuild,
+  +mpmath-0.11.ebuild:
+  Version bump
+
+*mpmath-0.10 (20 Oct 2008)
+
+  20 Oct 2008; Andrey Grozin <grozin@gentoo.org> -mpmath-0.8.ebuild,
+  +mpmath-0.10.ebuild:
+  Version bump
+
+*mpmath-0.9 (26 Aug 2008)
+
+  26 Aug 2008; Andrey Grozin <grozin@gentoo.org> +mpmath-0.9.ebuild:
+  Version bump, new USE flag gmp
+
+*mpmath-0.8 (08 Jul 2008)
+
+  08 Jul 2008; Andrey Grozin <grozin@gentoo.org> +metadata.xml,
+  +mpmath-0.8.ebuild:
+  Initial import

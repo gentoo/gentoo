@@ -1,0 +1,29 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/mcelog/files/mcelog.init,v 1.1 2012/10/24 16:17:10 hasufell Exp $
+
+description='Start/stop mcelog in daemon mode'
+
+PIDFILE="/var/run/mcelog.pid"
+
+depend() {
+	after udev 
+	need localmount
+	use logging
+}
+
+start() {
+	ebegin "Starting mcelog"
+	start-stop-daemon \
+		--start \
+		--pidfile ${PIDFILE} \
+		--exec /usr/sbin/mcelog -- --daemon --pidfile ${PIDFILE} ${MCELOG_OPTS} 
+        eend $?
+}
+
+stop() {
+	ebegin "Stopping mcelog"
+	start-stop-daemon --stop --pidfile ${PIDFILE}
+	eend $?
+}

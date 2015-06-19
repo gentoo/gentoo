@@ -1,0 +1,17 @@
+--- makefile	2003-01-29 09:53:45.000000000 +0100
++++ makefile.new	2009-08-17 08:33:16.000000000 +0200
+@@ -11,11 +11,11 @@
+ HEADERS = general.h clustalw.h
+ 
+ CC	= cc
+-CFLAGS  = -c -O
+-LFLAGS	= -O -lm 
++CFLAGS  += -c
++LIBS	= -lm 
+ 
+ clustalw : $(OBJECTS) amenu.o clustalw.o
+-	$(CC) -o $@ $(OBJECTS) amenu.o clustalw.o $(LFLAGS)
++	$(CC) $(LDFLAGS) -o $@ $(OBJECTS) amenu.o clustalw.o $(LIBS)
+ 
+ interface.o : interface.c $(HEADERS) param.h
+ 	$(CC) $(CFLAGS) $*.c

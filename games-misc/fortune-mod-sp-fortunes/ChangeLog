@@ -1,0 +1,48 @@
+# ChangeLog for games-misc/fortune-mod-sp-fortunes
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-sp-fortunes/ChangeLog,v 1.11 2015/03/29 16:35:29 mr_bones_ Exp $
+
+  29 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  fortune-mod-sp-fortunes-0.2.ebuild:
+  EAPI=5
+
+  12 Dec 2010; Fabian Groffen <grobian@gentoo.org>
+  fortune-mod-sp-fortunes-0.2.ebuild:
+  Added Prefix keywords
+
+  08 Oct 2010; Mart Raudsepp <leio@gentoo.org>
+  fortune-mod-sp-fortunes-0.2.ebuild:
+  Drop to ~mips
+
+  19 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  fortune-mod-sp-fortunes-0.2.ebuild:
+  Add ~x86-fbsd keyword
+
+*fortune-mod-sp-fortunes-0.2 (13 Oct 2005)
+
+  13 Oct 2005; Mike Frysinger <vapier@gentoo.org>
+  +fortune-mod-sp-fortunes-0.2.ebuild:
+  Version bump #108375 by Peter Hyman.
+
+  27 Aug 2005; Markus Rothe <corsair@gentoo.org>
+  fortune-mod-sp-fortunes-0.1.ebuild:
+  Stable on ppc64
+
+  31 Jul 2005; Markus Rothe <corsair@gentoo.org>
+  fortune-mod-sp-fortunes-0.1.ebuild:
+  Added ~ppc64 (bug #100217)
+
+  16 Sep 2003; David Holm <dholm@gentoo.org>
+  fortune-mod-sp-fortunes-0.1.ebuild:
+  Added to ~ppc
+
+*fortune-mod-sp-fortunes-0.1 (03 Sep 2003)
+
+  03 Sep 2003; Michael Sterrett <msterret@gentoo.org>
+  fortune-mod-sp-fortunes-0.1.ebuild:
+  fix download name (bug 27859)
+
+*sp-fortunes-0.1 (22 Apr 2003)
+
+  22 Apr 2003; Seth Chandler <sethbc@gentoo.org>; sp-fortunes-0.1.ebuild:
+  initial import courtesy of Susie Edgeworth <arienadean@yahoo.com>

@@ -1,0 +1,36 @@
+From f2f43212b33dea42635061c82645287454a70107 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sat, 11 Jun 2011 15:21:55 -0400
+Subject: [PATCH] add multiple inclusion protection to rpc/des.h
+
+If you try to include this file multiple times, you get a build failure
+due to redefinitions of enums and such.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ tirpc/rpc/des.h |    5 +++++
+ 1 files changed, 5 insertions(+), 0 deletions(-)
+
+diff --git a/tirpc/rpc/des.h b/tirpc/rpc/des.h
+index e3d6897..d2881ad 100644
+--- a/tirpc/rpc/des.h
++++ b/tirpc/rpc/des.h
+@@ -33,6 +33,9 @@
+  * Copyright (c) 1986 by Sun Microsystems, Inc.
+  */
+ 
++#ifndef _RPC_DES_H_
++#define _RPC_DES_H_
++
+ #define DES_MAXLEN 	65536	/* maximum # of bytes to encrypt  */
+ #define DES_QUICKLEN	16	/* maximum # of bytes to encrypt quickly */
+ 
+@@ -80,3 +83,5 @@ struct desparams {
+  * Software DES.
+  */
+ extern int _des_crypt( char *, int, struct desparams * );
++
++#endif
+-- 
+1.7.5.3
+

@@ -1,0 +1,165 @@
+# ChangeLog for media-fonts/sil-doulos
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/sil-doulos/ChangeLog,v 1.25 2015/03/07 07:58:59 yngwin Exp $
+
+*sil-doulos-5.000 (07 Mar 2015)
+
+  07 Mar 2015; Ben de Groot <yngwin@gentoo.org> +sil-doulos-5.000.ebuild:
+  version bump
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> sil-doulos-4.110.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #404777
+
+  05 Mar 2012; Markus Meier <maekke@gentoo.org> sil-doulos-4.110.ebuild:
+  arm stable, bug #404777
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> sil-doulos-4.110.ebuild:
+  Marking sil-doulos-4.110 ppc64 for bug 404777
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> sil-doulos-4.110.ebuild:
+  x86 stable wrt bug #404777
+
+  23 Feb 2012; Brent Baude <ranger@gentoo.org> sil-doulos-4.110.ebuild:
+  Marking sil-doulos-4.110 ppc for bug 404777
+
+  21 Feb 2012; Jeroen Roovers <jer@gentoo.org> sil-doulos-4.110.ebuild:
+  Stable for HPPA (bug #404777).
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> sil-doulos-4.110.ebuild:
+  Stable for amd64, wrt bug #404777
+
+  07 Jan 2012; Ryan Hill <dirtyepic@gentoo.org> sil-doulos-4.110.ebuild:
+  Fix docs installation, only install pdfs w/ USE=doc.
+
+  07 Jan 2012; Ryan Hill <dirtyepic@gentoo.org> -sil-doulos-4.100.0.ebuild,
+  -sil-doulos-4.104.ebuild, sil-doulos-4.106.ebuild:
+  Stabilize on ppc/ppc64 (bug #393709).
+
+  18 Dec 2011; Raúl Porcel <armin76@gentoo.org> sil-doulos-4.106.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #393709
+
+  15 Dec 2011; Agostino Sarubbo <ago@gentoo.org> sil-doulos-4.106.ebuild:
+  Stable for AMD64, wrt bug #393709
+
+  14 Dec 2011; Markus Meier <maekke@gentoo.org> sil-doulos-4.106.ebuild:
+  arm stable, bug #393709
+
+  14 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> sil-doulos-4.106.ebuild:
+  x86 stable wrt bug #393709
+
+  12 Dec 2011; Jeroen Roovers <jer@gentoo.org> sil-doulos-4.106.ebuild:
+  Stable for HPPA (bug #393709).
+
+*sil-doulos-4.110 (12 Dec 2011)
+
+  12 Dec 2011; Peter Volkov <pva@gentoo.org> +sil-doulos-4.110.ebuild:
+  Version bump.
+
+  27 Sep 2009; Mounir Lamouri <volkmar@gentoo.org> sil-doulos-4.104.ebuild:
+  Stable for ppc. Fix bug 283915
+
+  17 Sep 2009; Jeroen Roovers <jer@gentoo.org> sil-doulos-4.104.ebuild:
+  Stable for HPPA (bug #283915).
+
+  12 Sep 2009; Raúl Porcel <armin76@gentoo.org> sil-doulos-4.104.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #283915
+
+  11 Sep 2009; Markus Meier <maekke@gentoo.org> sil-doulos-4.104.ebuild:
+  amd64/x86 stable, bug #283915
+
+  07 Sep 2009; Brent Baude <ranger@gentoo.org> sil-doulos-4.104.ebuild:
+  Marking sil-doulos-4.104 ppc64 for bug 283915
+
+*sil-doulos-4.106 (07 Sep 2009)
+
+  07 Sep 2009; Ryan Hill <dirtyepic@gentoo.org> +sil-doulos-4.106.ebuild:
+  Version bump.
+
+  20 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing joslwah as a maintainer since he was retired.
+
+*sil-doulos-4.104 (19 May 2008)
+
+  19 May 2008; Ryan Hill <dirtyepic@gentoo.org> +sil-doulos-4.104.ebuild:
+  Version bump.
+
+*sil-doulos-4.100.0 (19 May 2008)
+
+  19 May 2008; Ryan Hill <dirtyepic@gentoo.org> +metadata.xml,
+  +sil-doulos-4.100.0.ebuild:
+  Move ttf-sil-doulos -> sil-doulos.
+
+  24 Feb 2008; Raúl Porcel <armin76@gentoo.org>
+  ttf-sil-doulos-4.100.0.ebuild:
+  alpha stable
+
+  23 Jan 2008; Raúl Porcel <armin76@gentoo.org>
+  ttf-sil-doulos-4.100.0.ebuild:
+  Add ~alpha
+
+  19 Jan 2008; Ryan Hill <dirtyepic@gentoo.org>
+  ttf-sil-doulos-4.100.0.ebuild:
+  Ebuild touchup.
+
+  25 Sep 2007; Raúl Porcel <armin76@gentoo.org>
+  ttf-sil-doulos-4.100.0.ebuild:
+  sparc stable wrt #187764
+
+  11 Sep 2007; Christoph Mende <angelos@gentoo.org>
+  ttf-sil-doulos-4.100.0.ebuild:
+  Stable on amd64
+
+  07 Sep 2007; Joseph Jezak <josejx@gentoo.org>
+  ttf-sil-doulos-4.100.0.ebuild:
+  Marked ppc/ppc64 stable for bug #187764.
+
+  06 Sep 2007; Raúl Porcel <armin76@gentoo.org>
+  ttf-sil-doulos-4.100.0.ebuild:
+  ia64 stable wrt #187764
+
+  05 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  ttf-sil-doulos-4.100.0.ebuild:
+  stable x86, bug 187764
+
+  04 Sep 2007; Jeroen Roovers <jer@gentoo.org>
+  ttf-sil-doulos-4.100.0.ebuild:
+  Stable for HPPA (bug #187764).
+
+  25 Mar 2007; Raúl Porcel <armin76@gentoo.org>
+  ttf-sil-doulos-4.0.14.ebuild, ttf-sil-doulos-4.100.0.ebuild:
+  Add ~ia64 wrt bug 154087
+
+*ttf-sil-doulos-4.100.0 (25 Mar 2007)
+
+  25 Mar 2007; Joshua <joslwah@gentoo.org> +ttf-sil-doulos-4.100.0.ebuild:
+  Update to 4.100.  Fixes various bugs including a nasty interaction with
+  pango.
+
+  26 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  ttf-sil-doulos-4.0.14.ebuild:
+  Add ~x86-fbsd keyword.
+
+  05 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  ttf-sil-doulos-4.0.14.ebuild:
+  keyworded ~x86, bug #154087
+
+  05 Nov 2006; Jeroen Roovers <jer@gentoo.org> ttf-sil-doulos-4.0.14.ebuild:
+  Marked ~hppa (bug #154087).
+
+  05 Nov 2006; Ferris McCormick <fmccor@gentoo.org>
+  ttf-sil-doulos-4.0.14.ebuild:
+  Add ~sparc keyword ---Bug #154087
+
+  05 Nov 2006; nixnut <nixnut@gentoo.org> ttf-sil-doulos-4.0.14.ebuild:
+  Added ~ppc keyword wrt bug 154087
+
+  05 Nov 2006; Olivier Crête <tester@gentoo.org>
+  ttf-sil-doulos-4.0.14.ebuild:
+  Mark ~amd64, bug #154087
+
+*ttf-sil-doulos-4.0.14 (04 Nov 2006)
+
+  04 Nov 2006; Joshua <joslwah@gentoo.org> +metadata.xml,
+  +ttf-sil-doulos-4.0.14.ebuild:
+  Initial commit of Doulos Typeface.

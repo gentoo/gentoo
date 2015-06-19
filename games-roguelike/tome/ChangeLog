@@ -1,0 +1,203 @@
+# ChangeLog for games-roguelike/tome
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-roguelike/tome/ChangeLog,v 1.38 2015/02/07 13:30:43 ago Exp $
+
+  07 Feb 2015; Agostino Sarubbo <ago@gentoo.org> tome-2.3.5.ebuild:
+  Stable for amd64, wrt bug #539134
+
+  22 Nov 2014; Michael Sterrett <mr_bones_@gentoo.org> tome-2.3.5.ebuild:
+  build with ncurses[tinfo] (bug #529746)
+
+  04 Jul 2014; Michael Sterrett <mr_bones_@gentoo.org> tome-2.3.5.ebuild:
+  fix underlinking (bug #516264); EAPI=5
+
+  28 May 2012; Tupone Alfredo <tupone@gentoo.org> tome-2.3.5.ebuild,
+  +files/tome-2.3.5-noX.patch, -files/tome-2.3.5-overflow.patch:
+  Fix QA notice about patch with relative file addressing
+  Fix build without X11. Bug #369279 by Piotr Szymaniak
+
+  20 Mar 2010; Tupone Alfredo <tupone@gentoo.org> tome-2.3.5.ebuild,
+  +files/tome-2.3.5-overflow.patch:
+  Fix buffer overflow during save. Bug #310379 by Markus Sander
+
+  22 Jan 2010; Brent Baude <ranger@gentoo.org> tome-2.3.5.ebuild:
+  stable ppc, bug 285406
+
+  20 Nov 2009; Christian Faulhammer <fauli@gentoo.org> tome-2.3.5.ebuild:
+  stable x86, bug 285406
+
+  31 Jul 2009; Tristan Heaven <nyhm@gentoo.org> tome-2.3.1.ebuild,
+  tome-2.3.4.ebuild, tome-2.3.5.ebuild:
+  Fix typo in DEPEND, bug #279797
+
+*tome-2.3.5 (17 Sep 2008)
+
+  17 Sep 2008; Tupone Alfredo <tupone@gentoo.org>
+  +files/2.3.5-gentoo-paths.patch, +tome-2.3.5.ebuild:
+  Version bump to 2.3.5. Bug #222891 by Elio Cuevas Gómez
+
+  14 Jan 2008; Fabian Groffen <grobian@gentoo.org> tome-2.3.1.ebuild,
+  tome-2.3.4.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  23 Jul 2007; Mike Frysinger <vapier@gentoo.org> tome-2.3.4.ebuild:
+  Punt bindnow-flags usage.
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> tome-2.3.1.ebuild,
+  tome-2.3.3.ebuild:
+  Replacing einfo with elog
+
+  06 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> tome-2.3.1.ebuild,
+  tome-2.3.3.ebuild, tome-2.3.4.ebuild:
+  Remove old virtual/x11 dependency.
+
+*tome-2.3.4 (24 Nov 2006)
+
+  24 Nov 2006; Tristan Heaven <nyhm@gentoo.org>
+  -files/2.3.0-gentoo-paths.patch, +files/tome-2.3.4-gcc41.patch,
+  -files/2.2.7-gentoo-paths.patch, +files/2.3.4-gentoo-paths.patch,
+  -tome-2.2.7-r1.ebuild, -tome-2.3.0.ebuild, +tome-2.3.4.ebuild:
+  Version bump
+
+  08 Oct 2006; <tupone@gentoo.org> +files/tome-2.3.3-gcc41.patch,
+  tome-2.3.3.ebuild:
+  Failed emerging with gcc-4. Bug #145125 by Elmo Todurov
+
+  07 Mar 2006; <Tupone@gentoo.org> tome-2.3.3.ebuild:
+  using bindnow-flags and adding ~ppc-macosx
+
+*tome-2.3.3 (28 Feb 2006)
+
+  28 Feb 2006; <Tupone@gentoo.org> +files/2.3.3-gentoo-paths.patch,
+  +tome-2.3.3.ebuild:
+  version bump (bug #104980). Thanks Andrew.
+  gtk, sdl and Xaw3d support added (bug #78781). Thanks Gustavo Ribeiro Alves.
+  ppc-macos support dropped, until media-libs/sdl-ttf & media-libs/sdl-image
+  are supported there
+
+  27 Feb 2006; <Tupone@gentoo.org> -files/2.2.6-gentoo-paths.patch,
+  -files/2.2.5-gentoo-paths.patch, tome-2.2.7-r1.ebuild, tome-2.3.0.ebuild,
+  tome-2.3.1.ebuild:
+  Modular X dependency fix
+  Purging old patch files
+
+  20 Sep 2005; Kito <kito@gentoo.org> tome-2.3.1.ebuild:
+  ~ppc-macos. Closes Bug 106571
+
+  30 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> tome-2.3.1.ebuild:
+  Stable on ppc.
+
+*tome-2.3.1 (20 Jan 2005)
+
+  20 Jan 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/2.3.1-gentoo-paths.patch, -tome-2.2.5-r1.ebuild, -tome-2.2.6.ebuild,
+  -tome-2.2.7.ebuild, +tome-2.3.1.ebuild:
+  version bump; clean older versions
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  17 Dec 2004; Joseph Jezak <josejx@gentoo.org> tome-2.2.7-r1.ebuild:
+  Marked ppc stable.
+
+*tome-2.3.0 (10 Dec 2004)
+
+  10 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/2.3.0-gentoo-paths.patch, +tome-2.3.0.ebuild:
+  version bump (bug #73849)
+
+  25 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> tome-2.2.7-r1.ebuild:
+  Enable text mode again - #bug #53640
+
+*tome-2.2.7-r1 (25 Jun 2004)
+
+  25 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> +tome-2.2.7-r1.ebuild:
+  rev bump for the upgrade
+
+  25 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/2.2.7-gentoo-paths.patch, tome-2.2.7.ebuild:
+  Restore the patching of the source (bug #53636)
+
+  03 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> tome-2.2.3.ebuild,
+  tome-2.2.5.ebuild:
+  clean older ebuilds
+
+*tome-2.2.7 (03 Jun 2004)
+
+  03 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> tome-2.2.7.ebuild:
+  version bump (bug #52560)
+
+*tome-2.2.6 (14 Apr 2004)
+
+  14 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> tome-2.2.6.ebuild,
+  files/2.2.6-gentoo-paths.patch:
+  version bump (bug #47185)
+
+  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> tome-1.0.0.ebuild:
+  remove version 1
+
+  10 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> tome-2.2.5-r1.ebuild:
+  Adding amd64 keyword. Closing #44154.
+
+*tome-2.2.5-r1 (14 Jan 2004)
+
+  14 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Move scores file out of /usr/share and into /var/games #37594.
+
+*tome-2.2.5 (01 Jan 2004)
+
+  01 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bumpage #36798.
+
+*tome-2.2.3 (13 Oct 2003)
+
+  13 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bumpage #30817 to also fix permissions #26334.
+
+*tome-2.2.2 (28 Jul 2003)
+
+  28 Jul 2003; Michael Sterrett <msterret@gentoo.org> tome-2.2.2.ebuild:
+  version bump (bug 23729)
+  
+  Note that this version of ToME is not save game compatible with older versions.
+
+  28 Jul 2003; Michael Sterrett <msterret@gentoo.org> tome-2.2.1.ebuild:
+  added a pkg_postinst() that warns people that the new version of ToME isn't
+  compatible with their old save games.
+
+  28 Jul 2003; Michael Sterrett <msterret@gentoo.org> tome-1.0.0.ebuild,
+  tome-2.0.0.ebuild, tome-2.1.0.ebuild, tome-2.2.1.ebuild:
+  fix DESCRIPTION
+
+  01 Jul 2003; <msterret@gentoo.org> tome-2.2.1.ebuild:
+  mark stable for ppc.  SpanKY said so.
+
+*tome-2.2.1 (01 Jul 2003)
+
+  01 Jul 2003; Michael Sterrett <msterret@gentoo.org> tome-2.2.1.ebuild:
+  added ~ppc keyword (bug 23729)
+
+  30 Jun 2003; Michael Sterrett <msterret@gentoo.org> :
+  version bump - seems to install in roughly the same way as 2.1
+
+  30 Jun 2003; Michael Sterrett <msterret@gentoo.org> tome-2.1.0.ebuild:
+  use sed -i
+  sed file in unpack
+  install more docs
+  more error checking
+
+*tome-2.1.0 (21 Dec 2002)
+  
+  21 Dec 2002; J.Alberto Suarez L. <bass@gentoo.org> tome-2.1.0.ebuild:
+  New version.
+  Maybe it have a little incompatibility with Tome-2.0.
+
+*tome-2.0.0 (13 Feb 2003)
+
+  29 Jun 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*tome-1.0.0 (1 Aug 2002)
+
+  1 Aug 2002; Jose Alberto Suárez López <bass@gentoo.org> tome-1.0.0.ebuild:
+  First release.

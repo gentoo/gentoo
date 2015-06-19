@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=media-libs/freetype:2 media-libs/jbig2dec >=media-libs/openjpeg-1.5:0 virtual/jpeg X? ( x11-libs/libX11 x11-libs/libXext ) virtual/pkgconfig
+DESCRIPTION=a lightweight PDF viewer and toolkit written in portable C
+EAPI=4
+HOMEPAGE=http://mupdf.com/
+IUSE=X vanilla
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=GPL-3
+RDEPEND=media-libs/freetype:2 media-libs/jbig2dec >=media-libs/openjpeg-1.5:0 virtual/jpeg X? ( x11-libs/libX11 x11-libs/libXext )
+SLOT=0
+SRC_URI=mirror://gentoo/mupdf-1.1_p20121127.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=354659b987f3bf51131a8534bd247d1e

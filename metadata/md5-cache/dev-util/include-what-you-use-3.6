@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND==sys-devel/llvm-3.6* =sys-devel/clang-3.6* sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=find unused include directives in C/C++ programs
+EAPI=5
+HOMEPAGE=https://code.google.com/p/include-what-you-use/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND==sys-devel/llvm-3.6* =sys-devel/clang-3.6*
+SLOT=0
+SRC_URI=http://include-what-you-use.org/downloads/include-what-you-use-0.4.src.tar.gz -> include-what-you-use-3.6.src.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b766170995ac809b4d6d8cb9cbd2347e

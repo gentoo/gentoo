@@ -1,0 +1,26 @@
+# ChangeLog for net-libs/hubbub
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/hubbub/ChangeLog,v 1.5 2014/11/06 18:31:20 xmw Exp $
+
+*hubbub-0.1.2-r1 (06 Nov 2014)
+
+  06 Nov 2014; Michael Weber <xmw@gentoo.org>
+  +files/hubbub-0.1.2-glibc-2.20.patch, +hubbub-0.1.2-r1.ebuild,
+  hubbub-0.1.2.ebuild:
+  fix for glibc-2.20 (bug 527360)
+
+  28 Feb 2013; Michael Weber <xmw@gentoo.org> hubbub-0.1.2.ebuild,
+  +files/hubbub-0.1.2-error.patch:
+  netsurf eclass preparation. Fix enum comparision and unused vars.
+
+  18 Jul 2012; Michael Sterrett <mr_bones_@gentoo.org> hubbub-0.1.2.ebuild:
+  add missing test to IUSE
+
+  18 Jul 2012; Michael Weber <xmw@gentoo.org> hubbub-0.1.2.ebuild:
+  fix inherit
+
+*hubbub-0.1.2 (17 Jul 2012)
+
+  17 Jul 2012; Michael Weber <xmw@gentoo.org> +hubbub-0.1.2.ebuild,
+  +metadata.xml:
+  Initial import

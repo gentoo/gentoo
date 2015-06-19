@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>calchan@gentoo.org</email>
+    <name>Denis Dupeyron</name>
+  </maintainer>
+  <use>
+    <flag name="consolekit">Keep track of the various users, sessions, and seats present on the system.</flag>
+    <flag name="dpms">Turn on the display on screensaver deactivation.</flag>
+    <flag name="gtk3">Build with GTK+ 3 instead of GTK+ 2.</flag>
+    <flag name="screensaver">Lock the screen on screensaver activation.</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">the-cavalry/light-locker</remote-id>
+  </upstream>
+</pkgmetadata>

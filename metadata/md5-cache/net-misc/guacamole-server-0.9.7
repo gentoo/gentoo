@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=x11-libs/cairo media-libs/libpng:* dev-libs/ossp-uuid rdesktop? ( <net-misc/freerdp-1.1.0_beta1_p20150312 ) ssh? ( x11-libs/pango net-libs/libssh2 ) telnet? ( net-libs/libtelnet x11-libs/pango ) vnc? ( net-libs/libvncserver pulseaudio? ( media-sound/pulseaudio ) ) ssl? ( dev-libs/openssl:* ) vorbis? ( media-libs/libvorbis ) virtual/pkgconfig
+DESCRIPTION=This is the proxy-daemon used by www-apps/guacamole
+EAPI=5
+HOMEPAGE=http://guac-dev.org/
+IUSE=rdesktop vnc ssh pulseaudio vorbis telnet ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=x11-libs/cairo media-libs/libpng:* dev-libs/ossp-uuid rdesktop? ( <net-misc/freerdp-1.1.0_beta1_p20150312 ) ssh? ( x11-libs/pango net-libs/libssh2 ) telnet? ( net-libs/libtelnet x11-libs/pango ) vnc? ( net-libs/libvncserver pulseaudio? ( media-sound/pulseaudio ) ) ssl? ( dev-libs/openssl:* ) vorbis? ( media-libs/libvorbis )
+SLOT=0
+SRC_URI=mirror://sourceforge/guacamole/guacamole-server-0.9.7.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=ce006480645ce9220a54f352619e5b3d

@@ -1,0 +1,255 @@
+# ChangeLog for sci-biology/cutg
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/cutg/ChangeLog,v 1.62 2015/03/29 09:35:00 jlec Exp $
+
+  29 Mar 2015; Justin Lecher <jlec@gentoo.org> -cutg-151.ebuild,
+  -cutg-160.ebuild:
+  Drop old
+
+  28 Mar 2015; Agostino Sarubbo <ago@gentoo.org> cutg-160-r1.ebuild:
+  Stable for ppc, wrt bug #542246
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> cutg-160-r1.ebuild:
+  Stable for x86, wrt bug #542246
+
+  09 Mar 2015; Agostino Sarubbo <ago@gentoo.org> cutg-160-r1.ebuild:
+  Stable for amd64, wrt bug #542246
+
+  07 Mar 2015; Justin Lecher <jlec@gentoo.org> cutg-160-r1.ebuild:
+  Fix broken doc installations, #542348
+
+*cutg-160-r1 (05 Mar 2015)
+
+  05 Mar 2015; Justin Lecher <jlec@gentoo.org> +cutg-160-r1.ebuild,
+  metadata.xml:
+  Bump to EAPI=5 and host tarball instead of just mirror it
+
+  09 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> cutg-151.ebuild,
+  cutg-160.ebuild:
+  ppc64 keyword dropped
+
+  06 Apr 2011; Justin Lecher <jlec@gentoo.org> cutg-151.ebuild,
+  cutg-160.ebuild:
+  Removed checks for DB only packages
+
+  13 Mar 2011; Raúl Porcel <armin76@gentoo.org> cutg-151.ebuild,
+  cutg-160.ebuild:
+  Drop sparc keywords
+
+  07 Mar 2010; Justin Lecher (jlec) <jlec@gentoo.org> cutg-160.ebuild:
+  Moved to EAPI=3 for PREFIX support, imported prefix patches from overlay,
+  keyworded as in overlay
+
+  01 Sep 2009; Olivier Fisette <ribosome@gentoo.org> metadata.xml:
+  Giving up maintainership of this package.
+
+  31 Aug 2009; Olivier Fisette <ribosome@gentoo.org> cutg-160.ebuild:
+  Stabilised on x86 and amd64.
+
+*cutg-160 (27 Aug 2008)
+
+  27 Aug 2008; Olivier Fisette <ribosome@gentoo.org> +cutg-160.ebuild:
+  New upstream version.
+
+  10 Dec 2006; Olivier Fisette <ribosome@gentoo.org> -cutg-150.ebuild:
+  Pruned old version.
+
+  20 Nov 2006; <blubb@gentoo.org> cutg-151.ebuild:
+  stable on amd64
+
+  15 Nov 2006; Markus Rothe <corsair@gentoo.org> cutg-151.ebuild:
+  Stable on ppc64; bug #153766
+
+  03 Nov 2006; nixnut <nixnut@gentoo.org> cutg-151.ebuild:
+  Stable on ppc wrt bug 153766
+
+  03 Nov 2006; Olivier Fisette <ribosome@gentoo.org> -cutg-148.ebuild,
+  -cutg-149.ebuild:
+  Pruned old versions.
+
+  02 Nov 2006; Fabian Groffen <grobian@gentoo.org> cutg-148.ebuild,
+  cutg-149.ebuild, cutg-150.ebuild, cutg-151.ebuild:
+  Dropped ppc-macos, see you in prefix.
+
+  02 Nov 2006; Olivier Fisette <ribosome@gentoo.org> cutg-151.ebuild:
+  Added to x86.
+
+  18 Aug 2006; Jason Wever <weeve@gentoo.org> cutg-151.ebuild:
+  Added ~sparc keyword wrt bug #144241.
+
+*cutg-151 (26 Jun 2006)
+
+  26 Jun 2006; Olivier Fisette <ribosome@gentoo.org> +cutg-151.ebuild:
+  New version.
+
+  08 Apr 2006; Simon Stelling <blubb@gentoo.org> cutg-150.ebuild:
+  stable on amd64
+
+  22 Feb 2006; Fabian Groffen <grobian@gentoo.org> cutg-150.ebuild:
+  Marked ppc-macos stable (bug #123333)
+
+  22 Feb 2006; <nixnut@gentoo.org> cutg-150.ebuild:
+  Stable on ppc. bug 123333
+
+  21 Feb 2006; Markus Rothe <corsair@gentoo.org> cutg-150.ebuild:
+  Stable on ppc64; bug #123333
+
+  20 Feb 2006; Joshua Jackson <tsunam@gentoo.org> cutg-150.ebuild:
+  Stable on x86; bug #123333
+
+  24 Dec 2005; Simon Stelling <blubb@gentoo.org> cutg-149.ebuild:
+  stable on amd64
+
+  23 Dec 2005; Tobias Scherbaum <dertobi123@gentoo.org> cutg-149.ebuild:
+  Marked ppc stable, #115446
+
+  13 Dec 2005; Markus Rothe <corsair@gentoo.org> cutg-149.ebuild:
+  Stable on ppc64; bug #115446
+
+*cutg-150 (13 Dec 2005)
+
+  13 Dec 2005; Olivier Fisette <ribosome@gentoo.org> cutg-149.ebuild,
+  +cutg-150.ebuild:
+  Added 149 to x86. New version.
+
+  19 Nov 2005; Simon Stelling <blubb@gentoo.org> cutg-148.ebuild:
+  stable on amd64
+
+*cutg-149 (18 Oct 2005)
+
+  18 Oct 2005; Olivier Fisette <ribosome@gentoo.org> -cutg-147-r1.ebuild,
+  +cutg-149.ebuild:
+  New version. Pruned old version.
+
+  08 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> cutg-148.ebuild:
+  Stable on ppc.
+
+  08 Oct 2005; Lina Pezzella <j4rg0n@gentoo.org> cutg-148.ebuild:
+  Stable ppc-macos, as per Bug 108332
+
+  07 Oct 2005; Brent Baude <ranger@gentoo.org> cutg-148.ebuild:
+  Marking cutg-148 stable ppc64 for bug 108332
+
+  07 Oct 2005; Olivier Fisette <ribosome@gentoo.org> cutg-148.ebuild:
+  Stable on x86.
+
+  04 Sep 2005; Simon Stelling <blubb@gentoo.org> cutg-148.ebuild:
+  added ~amd64 keyword
+
+  31 Aug 2005; Olivier Fisette <ribosome@gentoo.org> -cutg-146.ebuild:
+  Removed obsolete versions.
+
+  29 Aug 2005; Lina Pezzella <j4rg0n@gentoo.org> cutg-147-r1.ebuild:
+  Stable ppc-macos
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> cutg-147-r1.ebuild:
+  Stable on ppc.
+
+  09 Aug 2005; Markus Rothe <corsair@gentoo.org> cutg-147-r1.ebuild:
+  Stable on ppc64
+
+*cutg-148 (06 Aug 2005)
+
+  06 Aug 2005; Olivier Fisette <ribosome@gentoo.org> -cutg-145.ebuild,
+  -cutg-147.ebuild, cutg-147-r1.ebuild, +cutg-148.ebuild:
+  New version: 148. Added 147-r1 to x86. Removed old versions.
+
+  26 Jun 2005; Lina Pezzella <j4rg0n@gentoo.org> cutg-146.ebuild:
+  Stable ppc-macos
+
+*cutg-147-r1 (25 Jun 2005)
+
+  25 Jun 2005; Olivier Fisette <ribosome@gentoo.org> +cutg-147-r1.ebuild:
+  Trying to fix some ppc-macos bug reported in #96819.
+
+*cutg-147 (19 Jun 2005)
+
+  19 Jun 2005; Olivier Fisette <ribosome@gentoo.org> +cutg-147.ebuild:
+  New version.
+
+  18 Jun 2005; Olivier Fisette <ribosome@gentoo.org> -cutg-144.ebuild:
+  Removed obsolete version.
+
+  18 Jun 2005; Markus Rothe <corsair@gentoo.org> cutg-146.ebuild:
+  Stable on ppc64
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> cutg-146.ebuild:
+  Stable on ppc.
+
+  16 Jun 2005; Olivier Fisette <ribosome@gentoo.org> cutg-146.ebuild:
+  Added to x86.
+
+  31 May 2005; Lina Pezzella <j4rg0n@gentoo.org> cutg-145.ebuild:
+  Stable ppc-macos
+
+*cutg-146 (10 May 2005)
+
+  10 May 2005; Olivier Fisette <ribosome@gentoo.org> cutg-145.ebuild,
+  +cutg-146.ebuild:
+  New version: 146. Added 145 to x86.
+
+  02 May 2005; Michael Hanselmann <hansmi@gentoo.org> cutg-144.ebuild:
+  Stable on ppc.
+
+  05 Mar 2005; Markus Rothe <corsair@gentoo.org> cutg-144.ebuild:
+  Stable on ppc64
+
+*cutg-145 (27 Feb 2005)
+
+  27 Feb 2005; Olivier Fisette <ribosome@gentoo.org> +cutg-145.ebuild:
+  New version.
+
+  22 Feb 2005; Olivier Fisette <ribosome@gentoo.org> -cutg-143.ebuild,
+  cutg-144.ebuild:
+  Added support for the "emboss" and "minimal" "USE" flags.
+
+  02 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> cutg-144.ebuild:
+  Stable ppc-macos
+
+  18 Jan 2005; Olivier Fisette <ribosome@gentoo.org> cutg-144.ebuild:
+  Added to x86.
+
+  01 Jan 2005; Markus Rothe <corsair@gentoo.org> cutg-144.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  01 Jan 2005; Lina Pezzella <j4rg0n@gentoo.org> cutg-144.ebuild:
+  Unstable ppc-macos.
+
+*cutg-143 (23 Dec 2004)
+
+  23 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +cutg-143.ebuild, +cutg-144.ebuild:
+  Moved from app-sci/cutg to sci-biology/cutg.
+
+*cutg-144 (23 Nov 2004)
+
+  23 Nov 2004; Olivier Fisette <ribosome@gentoo.org> +cutg-144.ebuild:
+  New version.
+
+  31 Oct 2004; Olivier Fisette <ribosome@gentoo.org> -cutg-142.ebuild,
+  cutg-143.ebuild:
+  Removed old version. Added 143 to x86.
+
+*cutg-143 (29 Sep 2004)
+
+  29 Sep 2004; Olivier Fisette <ribosome@gentoo.org> -cutg-141.0.ebuild,
+  cutg-142.ebuild, +cutg-143.ebuild:
+  Added 142 to x86. Added new version 142. Removed old version.
+
+*cutg-142 (10 Aug 2004)
+
+  10 Aug 2004; Olivier Fisette <ribosome@gentoo.org>
+  cutg-141.0.ebuild:
+  Added to x86.
+  cutg-142.ebuild:
+  Updated package.
+
+  26 Jun 2004; David Holm <dholm@gentoo.org> cutg-141.0.ebuild:
+  Added to ~ppc.
+
+*cutg-141.0 (24 Jun 2004)
+
+  24 Jun 2004; Olivier Fisette <ribosome@gentoo.org>
+  cutg-141.0.ebuild, metadata.xml :
+  Initial import.  Ebuild submitted by Olivier Fisette <ribosome@gentoo.org>.
+  Reference: Gentoo Bugzilla, bug #54322

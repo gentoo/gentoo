@@ -1,0 +1,381 @@
+diff -ru a/core/src/common.h b/core/src/common.h
+--- a/core/src/common.h	2013-01-11 06:35:35.000000000 +0200
++++ b/core/src/common.h	2013-01-11 06:34:08.000000000 +0200
+@@ -34,6 +34,10 @@
+ 	#define PATH_PROC	FBSPLASH_DIR"/proc"
+ #endif
+ 
++/* Maximum number of keyboard connected to a machine.
++ * The number is big (8) to be on the safe side */
++#define MAX_KBDS 8
++
+ /* Useful short-named types */
+ typedef u_int8_t	u8;
+ typedef u_int16_t	u16;
+diff -ru a/core/src/daemon.c b/core/src/daemon.c
+--- a/core/src/daemon.c	2013-01-11 06:35:35.000000000 +0200
++++ b/core/src/daemon.c	2013-01-11 06:34:08.000000000 +0200
+@@ -20,6 +20,7 @@
+ #include <sys/ioctl.h>
+ #include <sys/wait.h>
+ #include <sys/mman.h>
++#include <sys/select.h>
+ #include <pthread.h>
+ #include <errno.h>
+ #include <dirent.h>
+@@ -29,6 +30,8 @@
+ #include "common.h"
+ #include "daemon.h"
+ 
++#define EV_BUF_SIZE 8
++
+ /* Threading structures */
+ pthread_mutex_t mtx_tty = PTHREAD_MUTEX_INITIALIZER;
+ pthread_mutex_t mtx_paint = PTHREAD_MUTEX_INITIALIZER;
+@@ -41,7 +44,8 @@
+ int ctty = CTTY_VERBOSE;
+ 
+ /* File descriptors */
+-int fd_evdev = -1;
++int fd_evdevs[MAX_KBDS];
++int evdev_count = 0;
+ #ifdef CONFIG_GPM
+ int fd_gpm = -1;
+ #endif
+@@ -51,7 +55,6 @@
+ 
+ /* Misc settings */
+ char *notify[2];
+-char *evdev = NULL;
+ 
+ /* Service list */
+ list svcs = { NULL, NULL };
+@@ -400,56 +403,83 @@
+ 	}
+ }
+ 
++__u16 get_ev_key_pressed(int fd_evdev, int ev_buf_size, 
++		struct input_event *ev_buf) {
++	size_t rb;
++	int i;
++	rb = read(fd_evdev, ev_buf, sizeof(struct input_event) * ev_buf_size);
++	if (rb < (int) sizeof(struct input_event))
++		return 0;
++
++	for (i = 0; i < (int) (rb / sizeof(struct input_event)); i++) {
++		if (ev_buf[i].type != EV_KEY || ev_buf[i].value != 0)
++			continue;
++		return ev_buf[i].code;
++	}	
++}
++
+ /*
+  * Event device monitor thread.
+  */
+ void* thf_switch_evdev(void *unused)
+ {
+-	int i, h, oldstate;
+-	size_t rb;
+-	struct input_event ev[8];
++	int i, h, oldstate, nfds, retval, fd_evdev;
++	fd_set rfds;
++	struct input_event ev_buf[EV_BUF_SIZE];
++	__u16 key_pressed = 0;
+ 
+ 	while (1) {
+-		rb = read(fd_evdev, ev, sizeof(struct input_event)*8);
+-		if (rb < (int) sizeof(struct input_event))
+-			continue;
++		nfds = 0, fd_evdev = -1;		
++		FD_ZERO(&rfds);
++		for (i = 0;i < evdev_count;i++) {
++			FD_SET(fd_evdevs[i], &rfds);
++			nfds = max(nfds, fd_evdevs[i]);
++		}
+ 
+-		for (i = 0; i < (int) (rb / sizeof(struct input_event)); i++) {
+-			if (ev[i].type != EV_KEY || ev[i].value != 0)
+-				continue;
++		nfds++;
+ 
+-			switch (ev[i].code) {
+-			case KEY_F2:
+-				pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, &oldstate);
+-				pthread_mutex_lock(&mtx_paint);
+-				if (ctty == CTTY_SILENT) {
+-					h = config.tty_v;
+-				} else {
+-					h = config.tty_s;
++		retval = select(nfds, &rfds, NULL, NULL, NULL);
++		if (retval == -1)
++			perror("select()");
++		else if (retval) {
++			for (i = 0;i < evdev_count;i++) {
++				if (FD_ISSET(fd_evdevs[i], &rfds)) {
++					fd_evdev = fd_evdevs[i];
++					break;
+ 				}
+-				pthread_mutex_unlock(&mtx_paint);
+-				pthread_setcancelstate(oldstate, NULL);
++			}
++			key_pressed = get_ev_key_pressed(fd_evdev, EV_BUF_SIZE, ev_buf);
++			if (key_pressed == -1)
++				continue;
++			switch (key_pressed) {
++				case KEY_F2:
++					pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, &oldstate);
++					pthread_mutex_lock(&mtx_paint);
++					h = (ctty == CTTY_SILENT) ? config.tty_v : config.tty_s;
++					pthread_mutex_unlock(&mtx_paint);
++					pthread_setcancelstate(oldstate, NULL);
++
++					/* Switch to the new tty. This ioctl has to be done on
++					 * the silent tty. Sometimes init will mess with the
++					 * settings of the verbose console which will prevent
++					 * console switching from working properly.
++					 *
++					 * Don't worry about fd_tty[config.tty_s] 
++					 * not being protected by a mutex -- 
++					 * this thread is always killed before any changes
++					 * are made to fd_tty[config.tty_s].
++					 */
++					ioctl(fd_tty[config.tty_s], VT_ACTIVATE, h);
++					break;
+ 
+-				/* Switch to the new tty. This ioctl has to be done on
+-				 * the silent tty. Sometimes init will mess with the
+-				 * settings of the verbose console which will prevent
+-				 * console switching from working properly.
+-				 *
+-				 * Don't worry about fd_tty[config.tty_s] not being protected by a
+-				 * mutex -- this thread is always killed before any changes
+-				 * are made to fd_tty[config.tty_s].
+-				 */
+-				ioctl(fd_tty[config.tty_s], VT_ACTIVATE, h);
+-				break;
+-
+-			case KEY_F3:
+-				config.textbox_visible = !config.textbox_visible;
+-				invalidate_textbox(theme, config.textbox_visible);
+-				cmd_paint(NULL);
+-				break;
++				case KEY_F3:
++					config.textbox_visible = !config.textbox_visible;
++					invalidate_textbox(theme, config.textbox_visible);
++					cmd_paint(NULL);
++					break;
+ 			}
+-		}
+-	}
++		} /* end of else if (retval) */
++	} /* end of while(1) */
+ 
+ 	pthread_exit(NULL);
+ }
+@@ -519,7 +549,7 @@
+ 
+ 	/* Do we have to start a monitor thread? */
+ 	if (update & UPD_MON) {
+-		if (fd_evdev != -1) {
++		if (evdev_count >= 0) {
+ 			if (pthread_create(&th_switchmon, NULL, &thf_switch_evdev, NULL)) {
+ 				iprint(MSG_ERROR, "Evdev monitor thread creation failed.\n");
+ 				exit(3);
+diff -ru a/core/src/daemon.h b/core/src/daemon.h
+--- a/core/src/daemon.h	2013-01-11 06:35:35.000000000 +0200
++++ b/core/src/daemon.h	2013-01-11 06:34:08.000000000 +0200
+@@ -40,13 +40,13 @@
+ extern int fd_tty_s, fd_tty1, fd_tty0;
+ 
+ /*
+- * Event device on which the daemon listens for F2 keypresses.
+- * The proper device has to be detected by an external program and
++ * Event devices on which the daemon listens for F2 keypresses.
++ * The proper devices have to be detected by an external program and
+  * then enabled by sending an appropriate command to the splash
+  * daemon.
+  */
+-extern int fd_evdev;
+-extern char *evdev;
++extern int fd_evdevs[];
++extern int evdev_count;
+ 
+ #ifdef CONFIG_GPM
+ #include <gpm.h>
+diff -ru a/core/src/daemon_cmd.c b/core/src/daemon_cmd.c
+--- a/core/src/daemon_cmd.c	2013-01-11 06:35:35.000000000 +0200
++++ b/core/src/daemon_cmd.c	2013-01-11 06:34:08.000000000 +0200
+@@ -239,18 +239,35 @@
+  */
+ int cmd_set_event_dev(void **args)
+ {
+-	if (evdev)
+-		free(evdev);
+-
+-	evdev = strdup(args[0]);
++	char *evdevs;
++	char *evdev;
++	int i, j, fd_evdev = -1;
+ 
+ 	pthread_cancel(th_switchmon);
++	for (i = 0;i < evdev_count;i++) {
++		close(fd_evdevs[i]);
++	}
++	evdevs = strdup(args[1]);
++	evdev_count = *(int*)args[0];	
++	j = 0;
++	for (i = 0;i < evdev_count;i++, evdevs = NULL) {
++		evdev = strtok(evdevs, ",");
++		fd_evdev = open(evdev, O_RDONLY);
++		if (fd_evdev != -1) {
++			fd_evdevs[j] = fd_evdev;
++			j++;
++		} else {
++			perror("failed to open event device");
++		}
++	}
++	if (j == 0) { /* all input devices failed to open */
++		evdev_count = -1;
++		free(evdevs);
++		return -1;
++	}
+ 
+-	if (fd_evdev != -1)
+-		close(fd_evdev);
+-
+-	fd_evdev = open(evdev, O_RDONLY);
+-
++	evdev_count = j;
++	free(evdevs);
+ 	switchmon_start(UPD_MON, config.tty_s);
+ 
+ 	return 0;
+@@ -524,8 +541,8 @@
+ 
+ 	{	.cmd = "set event dev",
+ 		.handler = cmd_set_event_dev,
+-		.args = 1,
+-		.specs = "s"
++		.args = 2,
++		.specs = "ds"
+ 	},
+ 
+ 	{	.cmd = "set message",
+@@ -628,7 +645,7 @@
+ 					continue;
+ 
+ 				for (j = 0; j < known_cmds[i].args; j++) {
+-					for (; buf[k] == ' '; buf[k] = 0, k++);
++					for (; buf[k] == ' '; buf[k] = '\0', k++);
+ 					if (!buf[k]) {
+ 						args[j] = NULL;
+ 						continue;
+diff -ru a/core/src/libfbsplash.c b/core/src/libfbsplash.c
+--- a/core/src/libfbsplash.c	2013-01-11 06:35:35.000000000 +0200
++++ b/core/src/libfbsplash.c	2013-01-11 06:34:08.000000000 +0200
+@@ -588,6 +588,8 @@
+ 	return -1;
+ }
+ 
++#define EVDV_BUF_LEN 128 
++
+ /**
+  * Try to set the event device for the splash daemon.
+  *
+@@ -595,10 +597,14 @@
+  */
+ int fbsplash_set_evdev(void)
+ {
+-	char buf[128];
++	char buf[EVDV_BUF_LEN];
++	char evdev_devs[EVDV_BUF_LEN * MAX_KBDS];
+ 	FILE *fp;
+ 	int i, j;
+-
++	int kbd_count;
++	int max_chars, chars_left, dev_path_len;
++	char dev_path[] = PATH_DEV "/input/";
++	dev_path_len = strlen(dev_path);
+ 	char *evdev_cmds[] = {
+ 		"/bin/grep -Hsi keyboard " PATH_SYS "/class/input/input*/name | /bin/sed -e 's#.*input\\([0-9]*\\)/name.*#event\\1#'",
+ 		"/bin/grep -Hsi keyboard " PATH_SYS "/class/input/event*/device/driver/description | /bin/grep -o 'event[0-9]\\+'",
+@@ -608,22 +614,43 @@
+ 
+ 	/* Try to activate the event device interface so that F2 can
+ 	 * be used to switch from verbose to silent. */
+-	buf[0] = 0;
+-	for (i = 0; i < sizeof(evdev_cmds)/sizeof(char*); i++) {
++	buf[0] = '\0';
++	kbd_count = 0;
++	max_chars = sizeof(evdev_devs) / sizeof(char*);
++	chars_left = max_chars - 1;
++	evdev_devs[0] = '\0';
++	for (i = 0; i < sizeof(evdev_cmds) / sizeof(char*); i++) {
+ 		fp = popen(evdev_cmds[i], "r");
+ 		if (fp) {
+-			fgets(buf, 128, fp);
+-			if ((j = strlen(buf)) > 0) {
+-				if (buf[j-1] == '\n')
+-					buf[j-1] = 0;
+-				break;
++			while (fgets(buf, 128, fp) && kbd_count < MAX_KBDS) {
++				if ((j = strlen(buf)) > 0) {
++					if (buf[j-1] == '\n')
++						buf[j-1] = ',';
++					if (chars_left < (j + dev_path_len)) {
++						break;
++					}
++					kbd_count++;
++					strncat(evdev_devs, dev_path, chars_left);
++					chars_left -= dev_path_len;
++					strncat(evdev_devs, buf, chars_left);
++					chars_left -= j;
++				}
++			}
++			/* replace the last ',' with '\n' */
++			if (chars_left > 0 && evdev_devs[0] != '\0') {
++				j = strlen(evdev_devs);
++				if (j > 2) {
++					evdev_devs[j - 1] = '\n';
++				}
+ 			}
+ 			pclose(fp);
+ 		}
++		if (kbd_count > 0) 
++			break;
+ 	}
+ 
+-	if (buf[0] != 0) {
+-		fbsplash_send("set event dev " PATH_DEV "/input/%s\n", buf);
++	if (evdev_devs[0] != '\0') {
++		fbsplash_send("set event dev %d %s", kbd_count, evdev_devs);
+ 		return 0;
+ 	} else {
+ 		return -1;
+@@ -661,6 +688,8 @@
+ 	return 0;
+ }
+ 
++#define MAX_CMD 2048
++
+ /**
+  * Send stuff to the splash daemon using the splash FIFO.
+  *
+@@ -668,7 +697,7 @@
+  */
+ int fbsplash_send(const char *fmt, ...)
+ {
+-	char cmd[256];
++	char cmd[MAX_CMD];
+ 	va_list ap;
+ 
+ 	if (!fp_fifo) {
+@@ -690,7 +719,7 @@
+ 	}
+ 
+ 	va_start(ap, fmt);
+-	vsnprintf(cmd, 256, fmt, ap);
++	vsnprintf(cmd, MAX_CMD, fmt, ap);
+ 	va_end(ap);
+ 
+ 	fprintf(fp_fifo, cmd);

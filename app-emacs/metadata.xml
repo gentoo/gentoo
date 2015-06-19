@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-emacs category contains extension packages for the Emacs text
+		editor.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-emacs enthält Pakete für den Texteditor Emacs.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-emacs contiene paquetes de extensión para el editor
+		de texto Emacs.
+	</longdescription>
+	<longdescription lang="ja">
+		app-emacsカテゴリにはEmacsテキストエディタに関連した
+		拡張パッケージが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De app-emacs categorie bevat extensies voor Emacs.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-emacs chứa các gói mở rộng cho trình soạn
+		thảo văn bản Emacs.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-emacs contiene pacchetti di estensioni per l'editor di testo Emacs.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-emacs contém pacotes de extensão para o editor de
+		texto Emacs.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-emacs zawiera pakiety związane z edytorem tekstu Emacs.
+	</longdescription>
+</catmetadata>

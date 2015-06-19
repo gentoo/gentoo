@@ -1,0 +1,46 @@
+# ChangeLog for dev-tcltk/anigif
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/anigif/ChangeLog,v 1.12 2015/03/29 09:23:15 jlec Exp $
+
+  29 Mar 2015; Justin Lecher <jlec@gentoo.org> -anigif-1.3.ebuild:
+  Drop old
+
+  28 Mar 2015; Agostino Sarubbo <ago@gentoo.org> anigif-1.3-r1.ebuild:
+  Stable for ppc, wrt bug #542692
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> anigif-1.3-r1.ebuild:
+  Stable for x86, wrt bug #542692
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> anigif-1.3-r1.ebuild:
+  Fix tcl/tk slotting
+
+  12 Mar 2015; Agostino Sarubbo <ago@gentoo.org> anigif-1.3-r1.ebuild:
+  Stable for amd64, wrt bug #542692
+
+*anigif-1.3-r1 (09 Mar 2015)
+
+  09 Mar 2015; Justin Lecher <jlec@gentoo.org> +anigif-1.3-r1.ebuild,
+  metadata.xml:
+  Bump to EAPI=5
+
+  05 Dec 2012; Ulrich Müller <ulm@gentoo.org> anigif-1.3.ebuild:
+  Fix LICENSE, see anygif.tcl: "AniGif is distributed under the same license
+  as Tcl/Tk." Bug 445468.
+
+  18 Jan 2011; Thomas Kahle <tomka@gentoo.org> anigif-1.3.ebuild:
+  x86 stable per bug 351749
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> anigif-1.3.ebuild:
+  marked ~ppc wrt #303931
+
+  16 Jan 2011; Markos Chandras <hwoarang@gentoo.org> anigif-1.3.ebuild:
+  Stable on amd64 wrt bug #351749
+
+  15 Jan 2011; Justin Lecher <jlec@gentoo.org> anigif-1.3.ebuild:
+  Keyworded for ~-linux, tested by me
+
+*anigif-1.3 (06 Feb 2010)
+
+  06 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org> +anigif-1.3.ebuild,
+  +metadata.xml:
+  Initial commit

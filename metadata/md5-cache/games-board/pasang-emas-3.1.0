@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=app-text/gnome-doc-utils >=x11-libs/gtk+-2.18.2:2 virtual/libintl app-text/rarian nls? ( sys-devel/gettext ) >=sys-apps/sed-4
+DESCRIPTION=A traditional game of Brunei
+EAPI=5
+HOMEPAGE=http://pasang-emas.sourceforge.net/
+IUSE=extras nls
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=app-text/gnome-doc-utils >=x11-libs/gtk+-2.18.2:2 virtual/libintl games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://sourceforge/pasang-emas/pasang-emas-3.1.0.tar.bz2 extras? ( mirror://sourceforge/pasang-emas/pasang-emas-themes-1.0.tar.bz2 mirror://sourceforge/pasang-emas/pet-marble.tar.bz2 mirror://sourceforge/pasang-emas/pet-fragrance.tar.bz2 )
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=909e7d8d69282875adc863d28a72c2ef

@@ -1,0 +1,263 @@
+# ChangeLog for media-libs/phonon-vlc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/phonon-vlc/ChangeLog,v 1.54 2015/01/30 21:41:38 johu Exp $
+
+  30 Jan 2015; Johannes Huber <johu@gentoo.org> -phonon-vlc-0.8.1.ebuild,
+  phonon-vlc-0.8.2.ebuild, phonon-vlc-9999.ebuild:
+  Shorten pkg setup. Sort functions. Remove old.
+
+*phonon-vlc-0.8.2 (11 Dec 2014)
+
+  11 Dec 2014; Manuel Rüger <mrueg@gentoo.org> +phonon-vlc-0.8.2.ebuild:
+  Version bump.
+
+  13 Nov 2014; Michael Palimaka <kensington@gentoo.org>
+  -phonon-vlc-0.6.2.ebuild, -phonon-vlc-0.8.0.ebuild:
+  Remove old.
+
+*phonon-vlc-0.8.1 (04 Nov 2014)
+
+  04 Nov 2014; Manuel Rüger <mrueg@gentoo.org> +phonon-vlc-0.8.1.ebuild:
+  Version bump.
+
+  18 Oct 2014; Agostino Sarubbo <ago@gentoo.org> phonon-vlc-0.7.2.ebuild:
+  Stable for ppc64, wrt bug #519592
+
+  18 Oct 2014; Agostino Sarubbo <ago@gentoo.org> phonon-vlc-0.7.2.ebuild:
+  Stable for ppc, wrt bug #519592
+
+  12 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> phonon-vlc-0.7.2.ebuild:
+  x86 stable wrt bug #519592
+
+  12 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> phonon-vlc-0.7.2.ebuild:
+  amd64 stable wrt bug #519592
+
+*phonon-vlc-0.8.0 (09 Sep 2014)
+
+  09 Sep 2014; Michael Palimaka <kensington@gentoo.org>
+  +phonon-vlc-0.8.0.ebuild, phonon-vlc-9999.ebuild:
+  Version bump.
+
+  10 Aug 2014; Johannes Huber <johu@gentoo.org> -phonon-vlc-0.7.1.ebuild:
+  Remove old.
+
+*phonon-vlc-0.7.2 (21 Jun 2014)
+
+  21 Jun 2014; Michael Palimaka <kensington@gentoo.org>
+  +phonon-vlc-0.7.2.ebuild, phonon-vlc-9999.ebuild:
+  Version bump.
+
+*phonon-vlc-0.7.1 (06 Dec 2013)
+
+  06 Dec 2013; Johannes Huber <johu@gentoo.org> +phonon-vlc-0.7.1.ebuild,
+  -phonon-vlc-0.7.0.ebuild:
+  Version bump, remove old.
+
+  18 Nov 2013; Johannes Huber <johu@gentoo.org> phonon-vlc-0.7.0.ebuild,
+  phonon-vlc-9999.ebuild:
+  Use subslot for media-libs/phonon-vlc, bug #489616.
+
+*phonon-vlc-0.7.0 (11 Nov 2013)
+
+  11 Nov 2013; Johannes Huber <johu@gentoo.org> +phonon-vlc-0.7.0.ebuild,
+  phonon-vlc-9999.ebuild:
+  Version bump wrt bug #490758. Automagic dependency on media-sound/pulseaudio
+  fixed by upstream, bug #433627.
+
+  09 Apr 2013; Michael Palimaka <kensington@gentoo.org>
+  -files/phonon-vlc-0.6.0-desktop.patch, -phonon-vlc-0.6.0-r1.ebuild,
+  -phonon-vlc-0.6.1.ebuild:
+  Remove old.
+
+  09 Apr 2013; Agostino Sarubbo <ago@gentoo.org> phonon-vlc-0.6.2.ebuild:
+  Stable for ppc/ppc64, wrt to bug #462890
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> phonon-vlc-0.6.2.ebuild:
+  Stable for x86, wrt bug #462890
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> phonon-vlc-0.6.2.ebuild:
+  Stable for amd64, wrt bug #462890
+
+  17 Mar 2013; Michael Palimaka <kensington@gentoo.org> phonon-vlc-9999.ebuild:
+  Sync live ebuild.
+
+  17 Mar 2013; Michael Palimaka <kensington@gentoo.org> phonon-vlc-0.6.2.ebuild:
+  Fix build with portage-multilib wrt bug #406357.
+
+*phonon-vlc-0.6.2 (04 Mar 2013)
+
+  04 Mar 2013; Michael Palimaka <kensington@gentoo.org>
+  +phonon-vlc-0.6.2.ebuild:
+  Version bump wrt bug #457742.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> phonon-vlc-0.6.0-r1.ebuild,
+  phonon-vlc-0.6.1.ebuild, phonon-vlc-9999.ebuild:
+  Move Qt dependencies to the new category
+
+  16 Nov 2012; Agostino Sarubbo <ago@gentoo.org> phonon-vlc-0.6.0-r1.ebuild,
+  phonon-vlc-0.6.1.ebuild:
+  workaround for bug 399061
+
+*phonon-vlc-0.6.1 (13 Nov 2012)
+
+  13 Nov 2012; Johannes Huber <johu@gentoo.org> +phonon-vlc-0.6.1.ebuild:
+  Version bump.
+
+  23 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  phonon-vlc-0.6.0-r1.ebuild:
+  keyword ~arm, bug #431190
+
+  22 Sep 2012; Johannes Huber <johu@gentoo.org> -phonon-vlc-0.4.1.ebuild:
+  Remove old.
+
+  21 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  phonon-vlc-0.6.0-r1.ebuild:
+  stable ppc ppc64, bug #431190
+
+  21 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  phonon-vlc-0.6.0-r1.ebuild:
+  Keyword ~ppc ~ppc64, bug #432420
+
+  15 Sep 2012; Agostino Sarubbo <ago@gentoo.org> phonon-vlc-0.6.0-r1.ebuild:
+  Now really stable, wrt to bug #431190
+
+  15 Sep 2012; Agostino Sarubbo <ago@gentoo.org> phonon-vlc-0.6.0-r1.ebuild:
+  Stable for x86, wrt bug #431190
+
+*phonon-vlc-0.6.0-r1 (23 Aug 2012)
+
+  23 Aug 2012; Johannes Huber <johu@gentoo.org>
+  +files/phonon-vlc-0.6.0-desktop.patch, +phonon-vlc-0.6.0-r1.ebuild,
+  -phonon-vlc-0.5.0.ebuild, -phonon-vlc-0.6.0.ebuild:
+  Add upstream patch to pass .desktop validation by Michael Palimaka
+  <kensington@gentoo.org> wrt bug #432408. Remove old.
+
+*phonon-vlc-0.6.0 (09 Aug 2012)
+
+  09 Aug 2012; Johannes Huber <johu@gentoo.org> +phonon-vlc-0.6.0.ebuild,
+  phonon-vlc-9999.ebuild:
+  Version bump.
+
+  15 Jun 2012; Johannes Huber <johu@gentoo.org> -phonon-vlc-0.4.0.ebuild:
+  Remove old.
+
+  15 Jun 2012; Agostino Sarubbo <ago@gentoo.org> phonon-vlc-0.4.1.ebuild:
+  stable for amd64/x86, wrt to bug #401301
+
+  15 Jun 2012; Michael Weber <xmw@gentoo.org> phonon-vlc-0.4.1.ebuild,
+  phonon-vlc-0.5.0.ebuild:
+  ppc stable (bug 401301)
+
+  29 May 2012; Alexis Ballier <aballier@gentoo.org> phonon-vlc-0.5.0.ebuild,
+  phonon-vlc-9999.ebuild:
+  keyword ~amd64-fbsd
+
+  04 May 2012; Johannes Huber <johu@gentoo.org> phonon-vlc-0.4.0.ebuild,
+  phonon-vlc-0.4.1.ebuild, phonon-vlc-0.5.0.ebuild, phonon-vlc-9999.ebuild:
+  Migrate to virtual/pkgconfig.
+
+*phonon-vlc-0.5.0 (16 Feb 2012)
+
+  16 Feb 2012; Johannes Huber <johu@gentoo.org> +phonon-vlc-0.5.0.ebuild,
+  phonon-vlc-9999.ebuild:
+  Version bump.
+
+  10 Jan 2012; Brent Baude <ranger@gentoo.org> phonon-vlc-0.4.0.ebuild:
+  Marking phonon-vlc-0.4.0 ppc for bug 396359
+
+  06 Jan 2012; Johannes Huber <johu@gentoo.org> phonon-vlc-9999.ebuild:
+  Update deps for live wrt bug #397911.
+
+  24 Dec 2011; Johannes Huber <johu@gentoo.org> phonon-vlc-0.4.0.ebuild,
+  phonon-vlc-0.4.1.ebuild:
+  Restrict dep range for media-libs/phonon to 2.5, fix bug #395885.
+
+  20 Oct 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  phonon-vlc-0.4.0.ebuild, phonon-vlc-0.4.1.ebuild, phonon-vlc-9999.ebuild:
+  QA: remove reference to USE flag that is no longer present.
+
+  02 Oct 2011; Maciej Mrozowski <reavertm@gentoo.org> phonon-vlc-0.4.0.ebuild,
+  phonon-vlc-0.4.1.ebuild, phonon-vlc-9999.ebuild:
+  Remove v4l dependencies (support is optional and determined runtime). Bug
+  385243.
+
+  02 Sep 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -phonon-vlc-0.3.2.ebuild:
+  Remove old
+
+  07 Aug 2011; Markus Meier <maekke@gentoo.org> phonon-vlc-0.4.0.ebuild:
+  x86 stable, bug #371187
+
+*phonon-vlc-0.4.1 (01 Aug 2011)
+
+  01 Aug 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  +phonon-vlc-0.4.1.ebuild:
+  Version bump
+
+  14 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  phonon-vlc-0.3.2.ebuild, phonon-vlc-0.4.0.ebuild, phonon-vlc-9999.ebuild:
+  Require ogg and vorbis support in vlc, bug 372833
+
+  21 Jun 2011; Markos Chandras <hwoarang@gentoo.org> phonon-vlc-0.4.0.ebuild:
+  Stable on amd64 wrt bug #371187
+
+  22 May 2011; Joseph Jezak <josejx@gentoo.org> phonon-vlc-0.3.2.ebuild,
+  phonon-vlc-0.4.0.ebuild:
+  Marked ~ppc/~ppc64.
+
+  09 May 2011; Markos Chandras <hwoarang@gentoo.org> phonon-vlc-0.3.2.ebuild:
+  Stable on amd64 wrt bug #354033
+
+  09 May 2011; Tomáš Chvátal <scarabeus@gentoo.org> phonon-vlc-0.4.0.ebuild,
+  phonon-vlc-9999.ebuild:
+  Eapi4 and unify the live and release ebuild.
+
+  09 May 2011; Thomas Kahle <tomka@gentoo.org> phonon-vlc-0.3.2.ebuild:
+  x86 stable per bug 354033
+
+*phonon-vlc-0.4.0 (08 May 2011)
+
+  08 May 2011; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +phonon-vlc-0.4.0.ebuild:
+  Bumped phonon-vlc to the 0.4.0 release.
+
+  28 Mar 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +phonon-vlc-0.3.2.ebuild, +phonon-vlc-9999.ebuild, +metadata.xml:
+  Moved to media-libs
+
+  26 Mar 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  phonon-vlc-0.3.2.ebuild, phonon-vlc-9999.ebuild:
+  Adapt phonon dependency for package move
+
+  28 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -phonon-vlc-0.3.1.ebuild:
+  old
+
+*phonon-vlc-9999 (23 Jan 2011)
+*phonon-vlc-0.3.2 (23 Jan 2011)
+
+  23 Jan 2011; Maciej Mrozowski <reavertm@gentoo.org>
+  -phonon-vlc-0.2.0.ebuild, +phonon-vlc-0.3.2.ebuild,
+  +phonon-vlc-9999.ebuild:
+  Version bump 0.3.2, remove old, add live ebuild from kde overlay
+
+  04 Dec 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  phonon-vlc-0.2.0.ebuild, phonon-vlc-0.3.1.ebuild:
+  Added dep on vlc[dbus] - fixes bug 347714.
+
+  04 Dec 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  phonon-vlc-0.2.0.ebuild, phonon-vlc-0.3.1.ebuild:
+  Added ~x86 keywords to phonon-vlc ebuilds. Thanks to Agostino Sarubbo (ago)
+  for testing.
+
+*phonon-vlc-0.3.1 (04 Dec 2010)
+
+  04 Dec 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +phonon-vlc-0.3.1.ebuild:
+  Bumped phonon-vlc to the 0.3.1 release.
+
+*phonon-vlc-0.2.0 (24 Jul 2010)
+
+  24 Jul 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +phonon-vlc-0.2.0.ebuild, +metadata.xml:
+  Initial import of the first phonon vlc backend release (0.2.0).

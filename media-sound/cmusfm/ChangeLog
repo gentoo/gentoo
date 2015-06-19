@@ -1,0 +1,10 @@
+# ChangeLog for media-sound/cmusfm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/cmusfm/ChangeLog,v 1.1 2014/12/13 07:24:00 yngwin Exp $
+
+*cmusfm-0.2.5 (13 Dec 2014)
+
+  13 Dec 2014; Ben de Groot <yngwin@gentoo.org> +cmusfm-0.2.5.ebuild,
+  +metadata.xml:
+  Initial commit. Ebuild adapted from the one submitted by Petr Vaněk in bug
+  #532122.

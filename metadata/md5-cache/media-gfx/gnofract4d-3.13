@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm prepare
+DEPEND=x11-libs/gtk+:2 >=media-libs/libpng-1.4 virtual/jpeg >=dev-python/pygtk-2 >=gnome-base/gconf-2 virtual/pkgconfig || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+DESCRIPTION=A program for drawing beautiful mathematically-based images known as fractals
+EAPI=3
+HOMEPAGE=http://gnofract4d.sourceforge.net/
+KEYWORDS=amd64 x86
+LICENSE=BSD
+RDEPEND=x11-libs/gtk+:2 >=media-libs/libpng-1.4 virtual/jpeg >=dev-python/pygtk-2 >=gnome-base/gconf-2 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+SLOT=0
+SRC_URI=mirror://sourceforge/gnofract4d/gnofract4d-3.13.tar.gz
+_eclasses_=distutils	92e738ea29389cb3f34778d7a349ac71	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8f5d4f1322686c7caec5e13e08f1660c

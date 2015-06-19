@@ -1,0 +1,18 @@
+--- Tools/qmake/mkspecs/features/features.prf	2014-09-27 11:09:50.010617142 +0100
++++ Tools/qmake/mkspecs/features/features.prf	2014-09-27 11:17:10.741678989 +0100
+@@ -96,14 +96,8 @@
+     use?(3d_graphics): WEBKIT_CONFIG += webgl
+ 
+     # HTML5 Media Support for builds with GStreamer
+-    unix:!mac:!contains(QT_CONFIG, no-pkg-config) {
+-        packagesExist("glib-2.0 gio-2.0 gstreamer-1.0 gstreamer-plugins-base-1.0") {
+-            WEBKIT_CONFIG += video use_gstreamer
+-        } else: packagesExist("glib-2.0 gio-2.0 \'gstreamer-0.10 >= 0.10.30\' \'gstreamer-plugins-base-0.10 >= 0.10.30\'") {
+-            WEBKIT_CONFIG += video use_gstreamer use_gstreamer010
+-        }
++        WEBKIT_CONFIG += video use_gstreamer use_gstreamer010
+         use?(gstreamer): WEBKIT_CONFIG += use_native_fullscreen_video
+-    }
+ 
+     !enable?(video):qtHaveModule(multimediawidgets) {
+         WEBKIT_CONFIG += video use_qt_multimedia

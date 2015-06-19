@@ -1,0 +1,74 @@
+--- Makefile.old	2001-02-11 21:26:08.000000000 -0500
++++ Makefile	2007-11-18 08:03:19.000000000 -0500
+@@ -62,7 +62,7 @@
+ 
+ # OBJS in execution frequency order.  CFILES after qhull.c are alphabetical
+ OBJS = user.o global.o stat.o io.o geom2.o poly2.o \
+-       merge.o qhull.o geom.o poly.o qset.o mem.o
++       merge.o qhull.o geom.o poly.o qset.o mem.o unix.o
+ 
+ CFILES= unix.c qhull.c geom.c geom2.c global.c io.c mem.c merge.c poly.c \
+         poly2.c qset.c stat.c user.c qconvex.c qdelaun.c qhalf.c qvoronoi.c
+@@ -78,7 +78,7 @@
+ 		qh-poly.htm qh-qhull.htm qh-set.htm qh-stat.htm qh-user.htm \
+ 		qdelau_f.htm qhalf.htm qvoronoi.htm qvoron_f.htm rbox.htm 
+ 
+-all: rbox qconvex qdelaunay qhalf qvoronoi qhull
++all: rbox qconvex qdelaunay qhalf qvoronoi qhull libqhull.so
+ 
+ unix.o:   qhull.h user.h mem.h
+ qconvex.o:   qhull.h user.h mem.h
+@@ -100,6 +100,8 @@
+ 
+ .c.o:
+ 	$(CC) -c $(CCOPTS1) $<
++	mkdir -p .libs
++	$(CC) -c $(CCOPTS1) -fPIC $< -o .libs/$@
+ 
+ clean:
+ 	rm -f *.o ../core qconvex qdelaunay qhalf qvoronoi qhull 
+@@ -142,23 +144,23 @@
+ 
+ # don't use ../qconvex.  Does not work on Red Hat Linux
+ qconvex: qconvex.o libqhull.a
+-	$(CC) -o qconvex $(CCOPTS2) qconvex.o -L. -lqhull -lm 
++	$(CC) -o qconvex $(CCOPTS2) qconvex.o -L. libqhull.a -lm 
+ 	cp qconvex ..
+ 
+ qdelaunay: qdelaun.o libqhull.a
+-	$(CC) -o qdelaunay $(CCOPTS2) qdelaun.o -L. -lqhull -lm 
++	$(CC) -o qdelaunay $(CCOPTS2) qdelaun.o -L. libqhull.a -lm 
+ 	cp qdelaunay ..
+ 
+ qhalf: qhalf.o libqhull.a
+-	$(CC) -o qhalf $(CCOPTS2) qhalf.o -L. -lqhull -lm 
++	$(CC) -o qhalf $(CCOPTS2) qhalf.o -L. libqhull.a -lm 
+ 	cp qhalf ..
+ 
+ qvoronoi: qvoronoi.o libqhull.a
+-	$(CC) -o qvoronoi $(CCOPTS2) qvoronoi.o -L. -lqhull -lm 
++	$(CC) -o qvoronoi $(CCOPTS2) qvoronoi.o -L. libqhull.a -lm 
+ 	cp qvoronoi ..
+ 
+ qhull: unix.o libqhull.a
+-	$(CC) -o qhull $(CCOPTS2) unix.o -L. -lqhull -lm 
++	$(CC) -o qhull $(CCOPTS2) unix.o -L. libqhull.a -lm 
+ 	cp qhull ..
+ 	-chmod +x ../eg/q_test ../eg/q_eg ../eg/q_egtest
+ 	-cd ..; ./rbox D4 | ./qhull
+@@ -179,11 +181,13 @@
+ 	cp rbox ..
+ 
+ user_eg: user_eg.o libqhull.a 
+-	$(CC)  -o user_eg $(CCOPTS2) user_eg.o  -L. -lqhull -lm 
++	$(CC)  -o user_eg $(CCOPTS2) user_eg.o  -L. libqhull.a -lm 
+ 	cp user_eg ..
+ 
+ user_eg2: user_eg2.o libqhull.a 
+-	$(CC)  -o user_eg2 $(CCOPTS2) user_eg2.o  -L. -lqhull -lm 
++	$(CC)  -o user_eg2 $(CCOPTS2) user_eg2.o  -L. libqhull.a -lm 
+ 	cp user_eg2 ..
+ 
+ # end of Makefile
++libqhull.so: $(OBJS)
++	c++ -shared -Xlinker -soname -Xlinker $@ -o libqhull.so $(addprefix .libs/,$(OBJS))

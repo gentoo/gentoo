@@ -1,0 +1,63 @@
+# ChangeLog for app-i18n/scim-wnn
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-wnn/ChangeLog,v 1.13 2012/10/02 02:40:49 naota Exp $
+
+  02 Oct 2012;  <naota@gentoo.org> scim-wnn-1.0.0-r1.ebuild,
+  scim-wnn-1.0.0.ebuild:
+  Force scim not to use gtk3.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> scim-wnn-1.0.0-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*scim-wnn-1.0.0-r1 (08 Dec 2009)
+
+  08 Dec 2009; MATSUU Takuto <matsuu@gentoo.org> +scim-wnn-1.0.0-r1.ebuild,
+  +files/scim-wnn-1.0.0-gcc43.patch:
+  Fixed gcc-4.3 issue, bug #295733. clean up.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> scim-wnn-0.2.4.ebuild,
+  scim-wnn-1.0.0.ebuild:
+  Convert to use elog.
+
+  30 Dec 2006; Mamoru KOMACHI <usata@gentoo.org> scim-wnn-1.0.0.ebuild:
+  Fixed --as-needed bug. Thanks to Gilles Dartiguelongue <dartigug@esiee.fr>
+  for the patch. This closes bug #140794. Added to ~amd64.
+
+*scim-wnn-1.0.0 (29 Jun 2006)
+
+  29 Jun 2006; Mamoru KOMACHI <usata@gentoo.org> +scim-wnn-1.0.0.ebuild:
+  Version bumped.
+
+  16 Apr 2005; Mamoru KOMACHI <usata@gentoo.org> -scim-wnn-0.2.2.ebuild,
+  -scim-wnn-0.2.3.ebuild, scim-wnn-0.2.4.ebuild:
+  Stable on x86. Removed old versions.
+
+*scim-wnn-0.2.4 (30 Mar 2005)
+
+  30 Mar 2005; Mamoru KOMACHI <usata@gentoo.org> -scim-wnn-0.1.0.ebuild,
+  -scim-wnn-0.2.1.ebuild, +scim-wnn-0.2.4.ebuild:
+  Version bumped. Removed old versions.
+
+*scim-wnn-0.2.3 (21 Mar 2005)
+
+  21 Mar 2005; Mamoru KOMACHI <usata@gentoo.org> scim-wnn-0.2.2.ebuild,
+  +scim-wnn-0.2.3.ebuild:
+  Version bumped.
+
+*scim-wnn-0.2.2 (12 Feb 2005)
+
+  12 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> scim-wnn-0.2.1.ebuild,
+  +scim-wnn-0.2.2.ebuild:
+  Version bumped. Marked previous version stable.
+
+*scim-wnn-0.2.1 (21 Jan 2005)
+
+  21 Jan 2005; Mamoru KOMACHI <usata@gentoo.org> scim-wnn-0.1.0.ebuild,
+  +scim-wnn-0.2.1.ebuild:
+  Version bumped. Marked previous version stable.
+
+*scim-wnn-0.1.0 (30 Nov 2004)
+
+  30 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +scim-wnn-0.1.0.ebuild:
+  Initial import.

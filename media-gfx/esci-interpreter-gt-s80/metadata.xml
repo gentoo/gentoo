@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>flameeyes@gentoo.org</email>
+  </maintainer>
+  <longdescription lang="en">
+    Proprietary plugin for several EPSON scanner models, to be used
+    with the epkowa SANE backend (provided by
+    <pkg>media-gfx/iscan</pkg>). 32-bit and 64-bit.
+
+    Supports the following models:
+
+    EPSON GT-S80 / ES-D400
+    EPSON GT-S85
+    EPSON GT-S50 / ES-D200
+    EPSON GT-S55
+  </longdescription>
+</pkgmetadata>

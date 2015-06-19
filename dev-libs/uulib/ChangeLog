@@ -1,0 +1,75 @@
+# ChangeLog for dev-libs/uulib
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/uulib/ChangeLog,v 1.23 2014/10/11 20:19:46 zlogene Exp $
+
+  11 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> uulib-0.5.20-r1.ebuild:
+  Add ~ppc64 keyword wrt bug #268307
+
+*uulib-0.5.20-r1 (11 Oct 2014)
+
+  11 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +uulib-0.5.20-r1.ebuild, +files/uulib-0.5.20-shared.patch:
+  Add patch to also build and install a shared object, needed for bug 268307
+
+  11 Mar 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #53266
+
+  03 Jun 2012; Mike Frysinger <vapier@gentoo.org> uulib-0.5.20.ebuild:
+  Update to EAPI=4 and respect ar/ranlib settings.
+
+  14 Jan 2010; Christian Faulhammer <fauli@gentoo.org> uulib-0.5.20.ebuild:
+  Transfer Prefix keywords
+
+  21 Sep 2008; <solar@gentoo.org> uulib-0.5.20.ebuild:
+  - make cross compile aware
+
+  25 Jan 2008; Fabian Groffen <grobian@gentoo.org> uulib-0.5.20.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  29 Aug 2005; Lina Pezzella <j4rg0n@gentoo.org> uulib-0.5.20.ebuild:
+  Stable ppc-macos
+
+  09 Jul 2005; Lina Pezzella <j4rg0n@gentoo.org> uulib-0.5.20.ebuild:
+  Testing ppc-macos. Submitted on behalf of Fabian Groffen.
+
+  20 Jun 2005; Simon Stelling <blubb@gentoo.org> uulib-0.5.20.ebuild:
+  stable on amd64
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> uulib-0.5.20.ebuild:
+  stable on ia64
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  23 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> uulib-0.5.20.ebuild:
+  Stable on alpha.
+
+  19 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> uulib-0.5.20.ebuild:
+  Stable on sparc
+
+  24 Jul 2004; Lars Weiler <pylon@gentoo.org> uulib-0.5.20.ebuild:
+  Stable on ppc.
+
+  17 Jul 2004; Sven Wegener <swegener@gentoo.org> uulib-0.5.20.ebuild:
+  Marked stable on x86.
+
+  15 Jul 2004; Sven Wegener <swegener@gentoo.org> uulib-0.5.20.ebuild:
+  Added to ~arm after testing on coral.dev.gentoo.org.
+
+  22 Jun 2004; Gustavo Zacarias <gustavoz@gentoo.org> uulib-0.5.20.ebuild:
+  Keyworded ~sparc wrt #54351
+
+  22 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> uulib-0.5.20.ebuild:
+  Add ~alpha, bug #54351.
+
+  19 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> uulib-0.5.20.ebuild:
+  Marked ~amd64.
+
+  18 Jun 2004; David Holm <dholm@gentoo.org> uulib-0.5.20.ebuild:
+  Added to ~ppc.
+
+*uulib-0.5.20 (17 Jun 2004)
+
+  17 Jun 2004; Sven Wegener <swegener@gentoo.org> +uulib-0.5.20.ebuild:
+  Initial import, ebuild written by me. Needed as a dependency for the to be
+  added net-news/nzbget.

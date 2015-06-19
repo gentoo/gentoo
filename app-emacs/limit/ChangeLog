@@ -1,0 +1,157 @@
+# ChangeLog for app-emacs/limit
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/limit/ChangeLog,v 1.36 2014/02/18 19:53:10 ulm Exp $
+
+  18 Feb 2014; Ulrich Müller <ulm@gentoo.org>
+  limit-1.14.10_pre200811252332.ebuild:
+  Update ebuild to EAPI 5. Update HOMEPAGE. Specify LICENSE more precisely.
+
+  16 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  -limit-1.14.10_pre20070618.ebuild:
+  clean up
+
+  16 Jul 2009; nixnut <nixnut@gentoo.org>
+  limit-1.14.10_pre200811252332.ebuild:
+  ppc stable #274554
+
+  12 Jul 2009; Raúl Porcel <armin76@gentoo.org>
+  limit-1.14.10_pre200811252332.ebuild:
+  sparc stable wrt #274554
+
+  05 Jul 2009; Markus Meier <maekke@gentoo.org>
+  limit-1.14.10_pre200811252332.ebuild:
+  amd64 stable, bug #274554
+
+  27 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  limit-1.14.10_pre200811252332.ebuild:
+  Stable on alpha, bug #274554
+
+  17 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  limit-1.14.10_pre200811252332.ebuild:
+  stable x86, bug 274554
+
+*limit-1.14.10_pre200811252332 (16 May 2009)
+
+  16 May 2009; Ulrich Mueller <ulm@gentoo.org> files/60flim-gentoo.el,
+  limit-1.14.10_pre20070618.ebuild, +limit-1.14.10_pre200811252332.ebuild:
+  Version bump. Update HOMEPAGE. Change versioning scheme, since the 8 digit
+  limit for version components has been lifted.
+
+  05 May 2009; Ulrich Mueller <ulm@gentoo.org>
+  limit-1.14.10_pre20070618.ebuild:
+  Fix dependencies, blocker belongs in RDEPEND only.
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  limit-1.14.10_pre20070618.ebuild:
+  set explicit RDEPEND
+
+  29 Jan 2009; Christian Faulhammer <fauli@gentoo.org>
+  -limit-1.14.9_pre20041001.ebuild:
+  clean up
+
+  21 Dec 2007; nixnut <nixnut@gentoo.org> limit-1.14.10_pre20070618.ebuild:
+  Stable on ppc wrt bug 202655
+
+  19 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  limit-1.14.10_pre20070618.ebuild:
+  alpha/sparc stable wrt #202655
+
+  18 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  limit-1.14.10_pre20070618.ebuild:
+  stable amd64/x86, bug 202655
+
+*limit-1.14.10_pre20070618 (27 Aug 2007)
+
+  27 Aug 2007; Ulrich Mueller <ulm@gentoo.org>
+  limit-1.14.9_pre20041001.ebuild, +limit-1.14.10_pre20070618.ebuild:
+  Version bump. SRC_URI changed. Dropped ppc-macos keyword.
+
+  04 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  limit-1.14.9_pre20041001.ebuild:
+  adjust DESCRIPTION; manual make to emake; some die comments added; some
+  quotes added
+
+  15 May 2007; Ulrich Mueller <ulm@gentoo.org>
+  limit-1.14.9_pre20041001.ebuild:
+  Don't provide virtual/flim, it is a new-style virtual now.
+
+  15 May 2007; Ulrich Mueller <ulm@gentoo.org>
+  limit-1.14.9_pre20041001.ebuild:
+  Prepare for new-style virtual/flim: change blocking dependency from
+  !virtual/flim to !app-emacs/flim.
+
+  07 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/60flim-gentoo.el:
+  add load path correctly, fixes bug 169588, reported by Ulrich Mueller
+  <ulm@kph.uni-mainz.de>
+
+  23 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  -limit-1.14.8_pre20040415.ebuild:
+  clean up
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  28 Aug 2005; Olivier Crête <tester@gentoo.org>
+  limit-1.14.9_pre20041001.ebuild:
+  Marked ~amd64, thanks to AT AJ Armstrong <aja@gentoo.org> for testing
+
+  12 Dec 2004; Jason Wever <weeve@gentoo.org>
+  limit-1.14.9_pre20041001.ebuild:
+  Stable on sparc.
+
+  04 Nov 2004; Mamoru KOMACHI <usata@gentoo.org>
+  limit-1.14.9_pre20041001.ebuild:
+  Stable on x86, alpha, ppc and ppc-macos.
+
+*limit-1.14.9_pre20041001 (06 Oct 2004)
+
+  06 Oct 2004; Mamoru KOMACHI <usata@gentoo.org>
+  +limit-1.14.9_pre20041001.ebuild:
+  Version bumped. Added ~sparc keyword back because _pre20040112 snapshot
+  had that keyword.
+
+  19 Jul 2004; Mamoru KOMACHI <usata@gentoo.org>
+  limit-1.14.8_pre20040415.ebuild:
+  Added to macos
+
+  26 Apr 2004; David Holm <dholm@gentoo.org> limit-1.14.8_pre20040415.ebuild:
+  Added to ~ppc.
+
+*limit-1.14.8_pre20040415 (26 Apr 2004)
+
+  26 Apr 2004; Mamoru KOMACHI <usata@gentoo.org>
+  limit-1.14.8_pre20040112.ebuild, limit-1.14.8_pre20040415.ebuild:
+  Updated CVS snapshot. Marked the snapshot on 20040112 stable
+
+  28 Feb 2004; Jason Wever <weeve@gentoo.org> limit-1.14.8_pre20031214.ebuild:
+  Added ~sparc keyword.
+
+*limit-1.14.8_pre20040112 (01 Feb 2004)
+
+  01 Feb 2004; Mamoru KOMACHI <usata@gentoo.org>
+  limit-1.14.8_pre20040112.ebuild:
+  New CVS snapshot
+
+*limit-1.14.8_pre20031214 (16 Dec 2003)
+
+  16 Dec 2003; Mamoru KOMACHI <usata@gentoo.org>
+  limit-1.14.7.20031113.ebuild, limit-1.14.8_pre20031214.ebuild:
+  CVS snapshot update. Marked previous snapshot stable
+
+*limit-1.14.7.20031113 (21 Nov 2003)
+
+  21 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> limit-1.14.7.20031113.ebuild:
+  New CVS snapshot.
+
+*limit-1.14.7.20030430 (25 Jul 2003)
+
+  21 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> limit-1.14.7.20030430.ebuild:
+  Marked stable on ppc and sparc.
+
+  13 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> limit-1.14.7.20030430.ebuild:
+  Added Gentoo mirror to SRC_URI.  Marked stable on x86 and alpha.
+
+  25 Jul 2003; Mamoru KOMACHI <usata@gentoo.org> limit-1.14.7.20030430.ebuild:
+  Initial import
+

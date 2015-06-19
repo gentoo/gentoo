@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>desktop-dock</herd>
+	<longdescription>
+		wmMoonClock displays phases and ephemeris of the Moon. Clicking on the App
+		cycles the user through several `pages' of ephemeris information. Included are
+		age, fraction of current lunar cycle, the % illumination, whether its currently
+		visible or not, the rise/set times for yesterday, today and tomorrow, the
+		`horizon coordinates", and the "ecliptic coordinates". wmMoonClock supports
+		8-bit and high-color displays.
+	</longdescription>
+</pkgmetadata>

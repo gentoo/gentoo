@@ -1,0 +1,29 @@
+ Makefile.gcc |    6 +++---
+ 1 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.gcc b/Makefile.gcc
+index 8d09549..59af556 100644
+--- a/Makefile.gcc
++++ b/Makefile.gcc
+@@ -1,10 +1,10 @@
+ # Makefile August 2006 by Alexandros Stamatakis
+ # Makefile cleanup October 2006, Courtesy of Peter Cordes <peter@cordes.ca>
+ 
+-CC = gcc 
++CC ?= gcc 
+ 
+ 
+-CFLAGS = -D_GNU_SOURCE -fomit-frame-pointer -funroll-loops -O2 
++CFLAGS += -D_GNU_SOURCE
+ #-Wall -std=c99 -pedantic -Wunused-parameter -Wredundant-decls  -Wreturn-type  -Wswitch-default -Wunused-value -Wimplicit  -Wimplicit-function-declaration  -Wimplicit-int -Wimport -pedantic-errors -Wunused  -Wunused-function  -Wunused-label -Wno-int-to-pointer-cast -Wbad-function-cast  -Wmissing-declarations -Wmissing-prototypes  -Wnested-externs  -Wold-style-definition -Wstrict-prototypes  -Wdeclaration-after-statement -Wpointer-sign -Wextra -Wredundant-decls -Wunused -Wunused-function -Wunused-parameter -Wunused-value  -Wunused-variable -Wformat  -Wformat-nonliteral -Wparentheses -Wsequence-point -Wuninitialized -Wundef -Wbad-function-cast
+ 
+ 
+@@ -19,7 +19,7 @@ all : raxmlHPC
+ GLOBAL_DEPS = axml.h globalVariables.h
+ 
+ raxmlHPC : $(objs)
+-	$(CC) -o raxmlHPC $(objs) $(LIBRARIES) 
++	$(CC) $(LDFLAGS) -o raxmlHPC $(objs) $(LIBRARIES) 
+ 
+ classify.o : classify.c $(GLOBAL_DEPS)
+ evaluatePartialSpecialGeneric.o : evaluatePartialSpecialGeneric.c $(GLOBAL_DEPS)

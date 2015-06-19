@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/show_bug.cgi?id=429914
+--- setup.py
++++ setup.py
+@@ -1,10 +1,11 @@
+ # -*- coding: utf-8 -*-
+ 
++import codecs
+ import os
+ from setuptools import setup, find_packages
+ 
+ HERE = os.path.dirname(os.path.abspath(__file__))
+-long_desc = open(os.path.join(HERE, 'README')).read()
++long_desc = codecs.open(os.path.join(HERE, 'README'), encoding='utf-8').read()
+ 
+ requires = ['Sphinx>=0.6']
+ 

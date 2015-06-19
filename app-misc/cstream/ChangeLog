@@ -1,0 +1,35 @@
+# ChangeLog for app-misc/cstream
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/cstream/ChangeLog,v 1.8 2013/03/02 19:37:12 pinkbyte Exp $
+
+  02 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> cstream-3.0.0.ebuild,
+  cstream-3.1.1.ebuild:
+  QA: fix description
+
+*cstream-3.1.1 (02 Mar 2013)
+
+  02 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> +cstream-3.1.1.ebuild:
+  Version bump, wrt bug #459320. EAPI 5, port to autotools-utils eclass
+
+  27 Feb 2013; Agostino Sarubbo <ago@gentoo.org> cstream-3.0.0.ebuild:
+  Stable for x86, wrt bug #459318
+
+  26 Feb 2013; Chema Alonso <nimiux@gentoo.org> cstream-3.0.0.ebuild:
+  Stable for amd64 wrt bug #459318
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -cstream-2.7.6.ebuild:
+  Remove old
+
+*cstream-3.0.0 (14 Mar 2012)
+
+  14 Mar 2012; Patrick Lauer <patrick@gentoo.org> +cstream-3.0.0.ebuild:
+  Bump
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #118937
+
+*cstream-2.7.6 (16 Mar 2009)
+
+  16 Mar 2009; Thilo Bangert <bangert@gentoo.org> +metadata.xml,
+  +cstream-2.7.6.ebuild:
+  cstream is a general-purpose stream-handling tool like UNIX dd - bug #215545

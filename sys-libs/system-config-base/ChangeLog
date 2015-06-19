@@ -1,0 +1,40 @@
+# ChangeLog for sys-libs/system-config-base
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/system-config-base/ChangeLog,v 1.8 2009/01/31 07:48:12 dberkholz Exp $
+
+  31 Jan 2009; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Give up maintainership; reassign to maintainer-needed.
+
+  19 Mar 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  system-config-base-1-r1.ebuild:
+  Keyword ~amd64.
+
+  19 Mar 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  system-config-base-1-r1.ebuild:
+  Add quotes.
+
+  19 Mar 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  system-config-base-1-r1.ebuild:
+  Reformat post-installation message and change echo to ewarn so it shows up
+  in the messages at the end of a merge.
+
+  31 Jan 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  -system-config-base-1.ebuild:
+  Clean up.
+
+*system-config-base-1-r1 (14 Jul 2007)
+
+  14 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/1-r1-pam-0.99.8.0-r2-compat.patch, +system-config-base-1-r1.ebuild:
+  Bump for compat with new pam. Stop using pam_timestamp.
+
+  06 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  system-config-base-1.ebuild:
+  Inherit pam eclass to use the new dopamd function.
+
+*system-config-base-1 (05 Sep 2006)
+
+  05 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>; +files/config-util,
+  +metadata.xml, +system-config-base-1.ebuild:
+  system-config-base-1.ebuild layout package
+

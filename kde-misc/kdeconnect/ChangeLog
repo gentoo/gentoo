@@ -1,0 +1,73 @@
+# ChangeLog for kde-misc/kdeconnect
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kdeconnect/ChangeLog,v 1.15 2015/02/22 18:41:23 mgorny Exp $
+
+  22 Feb 2015; Michał Górny <mgorny@gentoo.org> kdeconnect-0.7.3.ebuild,
+  kdeconnect-0.8.ebuild:
+  Update dependency on QCA plugins to use USE flags on app-crypt/qca:2
+  unconditionally, to provide a single sane path for dependency resolution. Bug
+  #541066.
+
+*kdeconnect-0.8 (21 Feb 2015)
+
+  21 Feb 2015; Michael Palimaka <kensington@gentoo.org> +kdeconnect-0.8.ebuild:
+  Version bump.
+
+  02 Feb 2015; Michael Palimaka <kensington@gentoo.org> kdeconnect-0.7.3.ebuild:
+  Drop net-dns/avahi dependency which is no longer needed wrt bug #538166.
+
+  28 Jan 2015; Michael Palimaka <kensington@gentoo.org> kdeconnect-0.7.3.ebuild:
+  Adjust app-crypt/qca dependencies to handle merged plugins wrt bug #537640.
+
+  22 Nov 2014; Manuel Rüger <mrueg@gentoo.org> -kdeconnect-0.7.2.ebuild:
+  Cleanup old.
+
+  15 Oct 2014; Manuel Rüger <mrueg@gentoo.org> kdeconnect-0.7.3.ebuild:
+  Add missing dep on libfakekey. Fixes bug #525518.
+
+*kdeconnect-0.7.3 (15 Oct 2014)
+
+  15 Oct 2014; Manuel Rüger <mrueg@gentoo.org> +kdeconnect-0.7.3.ebuild:
+  Version bump.
+
+  12 Oct 2014; Michael Palimaka <kensington@gentoo.org>
+  -kdeconnect-0.5.2.1.ebuild, -kdeconnect-0.7.1.ebuild:
+  Remove old.
+
+*kdeconnect-0.7.2 (05 Jul 2014)
+
+  05 Jul 2014; Manuel Rüger <mrueg@gentoo.org> +kdeconnect-0.7.2.ebuild:
+  Version bump.
+
+*kdeconnect-0.7.1 (30 Jun 2014)
+
+  30 Jun 2014; Manuel Rüger <mrueg@gentoo.org> +kdeconnect-0.7.1.ebuild,
+  -kdeconnect-0.5.1.ebuild, -kdeconnect-0.7.ebuild:
+  Version bump. Cleanup old.
+
+*kdeconnect-0.7 (28 Jun 2014)
+
+  28 Jun 2014; Manuel Rüger <mrueg@gentoo.org> +kdeconnect-0.7.ebuild:
+  Version bump. Fixes bug #515592
+
+  16 Jun 2014; Michael Palimaka <kensington@gentoo.org> kdeconnect-0.5.1.ebuild,
+  kdeconnect-0.5.2.1.ebuild:
+  Add missing dependency wrt bug #513372.
+
+*kdeconnect-0.5.2.1 (15 May 2014)
+
+  15 May 2014; Manuel Rüger <mrueg@gentoo.org> +kdeconnect-0.5.2.1.ebuild:
+  Version bump. Respect LINGUAS.
+
+*kdeconnect-0.5.1 (11 Mar 2014)
+
+  11 Mar 2014; Manuel Rüger <mrueg@gentoo.org> +kdeconnect-0.5.1.ebuild,
+  -kdeconnect-0.5.ebuild:
+  Version bump. Add info about optional rdep: sshfs-fuse. Thanks to Andreas
+  Sturmlechner. Fixes bug #504022
+
+*kdeconnect-0.5 (20 Feb 2014)
+
+  20 Feb 2014; Manuel Rüger <mrueg@gentoo.org> +kdeconnect-0.5.ebuild,
+  +metadata.xml:
+  Initial version. Ebuild pulled from kde-overlay.

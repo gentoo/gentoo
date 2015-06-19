@@ -1,0 +1,62 @@
+# ChangeLog for dev-util/makepp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/makepp/ChangeLog,v 1.11 2014/09/09 05:12:10 polynomial-c Exp $
+
+*makepp-2.0.98.5 (09 Sep 2014)
+
+  09 Sep 2014; Lars Wendler <polynomial-c@gentoo.org> -makepp-2.0.98.3.ebuild,
+  +makepp-2.0.98.5.ebuild:
+  Version bump. Removed old.
+
+*makepp-2.0.98.4 (15 Jun 2014)
+
+  15 Jun 2014; Mike Frysinger <vapier@gentoo.org> +makepp-2.0.98.4.ebuild:
+  Version bump.
+
+*makepp-2.0.98.3 (24 Mar 2013)
+
+  24 Mar 2013; Mike Frysinger <vapier@gentoo.org> +makepp-2.0.98.3.ebuild:
+  Version bump.
+
+  18 Nov 2012; Agostino Sarubbo <ago@gentoo.org> makepp-2.0-r1.ebuild:
+  Add ~amd64
+
+  19 Aug 2012; Christoph Junghans <ottxor@gentoo.org> makepp-2.0-r1.ebuild:
+  added prefix keywords
+
+*makepp-2.0-r1 (01 Jul 2012)
+
+  01 Jul 2012; Mike Frysinger <vapier@gentoo.org>
+  +files/makepp-2.0-destdir.patch, +makepp-2.0-r1.ebuild, -makepp-2.0.ebuild:
+  Fix destdir installs #424237 by PetaMem R&D.
+
+*makepp-2.0 (30 Jun 2012)
+
+  30 Jun 2012; Mike Frysinger <vapier@gentoo.org> +makepp-2.0.ebuild:
+  Version bump #424237 by PetaMem R&D.
+
+*makepp-1.50_pre110621 (07 Aug 2011)
+
+  07 Aug 2011; Mike Frysinger <vapier@gentoo.org>
+  +makepp-1.50_pre110621.ebuild:
+  Version bump #378047 by PetaMem R&D.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*makepp-1.40.1a (21 Sep 2005)
+
+  21 Sep 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/makepp-1.40.1a-install.patch, +makepp-1.40.1a.ebuild:
+  Version bump to fix #106780.
+
+  03 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  11 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> makepp-1.18.ebuild:
+  Stable on alpha.
+
+*makepp-1.18 (27 Apr 2003)
+
+  27 Apr 2003; <rac@gentoo.org> makepp-1.18.ebuild:
+  Initial import, requested in bug 4191

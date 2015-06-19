@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst
+DESCRIPTION=MPlayer wrapper script to save/resume playback position
+EAPI=2
+HOMEPAGE=http://www.spaceparanoids.org/trac/bend/wiki/mplayer-resume
+IUSE=+lirc
+KEYWORDS=amd64 x86
+LICENSE=public-domain
+RDEPEND=lirc? ( app-misc/lirc media-video/mplayer[lirc] ) dev-lang/php[cli] || ( <dev-lang/php-5.3[pcre] >=dev-lang/php-5.3 ) media-video/mplayer
+SLOT=0
+SRC_URI=http://spaceparanoids.org/downloads/mplayer-resume/mplayer-resume-2.0.tar.gz
+_md5_=35ca889f34faa5e87cb20312eadb5279

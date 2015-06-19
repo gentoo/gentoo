@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prepare
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: easily browse vim buffers
+EAPI=5
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=42
+KEYWORDS=~amd64 ~x86
+LICENSE=bufexplorer.vim
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/bufexplorer-7.4.5.tar.bz2 http://dev.gentoo.org/~radhermit/vim/bufexplorer-7.4.5.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=22ebfd3daec923cae2a7d192231c34a4

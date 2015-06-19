@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=xpm? ( x11-libs/libXpm ) xinerama? ( x11-libs/libXinerama ) x11-libs/libXext x11-libs/libXrender x11-libs/libXau x11-libs/libXdmcp truetype? ( x11-libs/libXft ) png? ( media-libs/libpng ) jpeg? ( virtual/jpeg ) bidi? ( dev-libs/fribidi ) dev-libs/expat x11-proto/xproto x11-proto/xextproto xinerama? ( x11-proto/xineramaproto )
+DESCRIPTION=Very fast and lightweight still powerful window manager for X
+EAPI=4
+HOMEPAGE=http://joewing.net/programs/jwm/
+IUSE=bidi debug jpeg png truetype xinerama xpm
+KEYWORDS=amd64 hppa ppc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=xpm? ( x11-libs/libXpm ) xinerama? ( x11-libs/libXinerama ) x11-libs/libXext x11-libs/libXrender x11-libs/libXau x11-libs/libXdmcp truetype? ( x11-libs/libXft ) png? ( media-libs/libpng ) jpeg? ( virtual/jpeg ) bidi? ( dev-libs/fribidi ) dev-libs/expat
+SLOT=0
+SRC_URI=http://joewing.net/programs/jwm/releases/jwm-2.1.0.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=922a1188027a2b4434e4606b991b4260

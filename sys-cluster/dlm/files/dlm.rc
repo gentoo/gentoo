@@ -1,0 +1,53 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/dlm/files/dlm.rc,v 1.4 2007/03/09 11:11:59 xmerlin Exp $
+
+depend() {
+	use net
+	need cluster-manager
+	provide cluster-locking-manager
+}
+
+load_modules() {
+	local module modules
+	modules=$1
+	
+	for module in ${modules}; do
+		ebegin "Loading ${module} kernel module"
+		modprobe ${module}
+		eend $? "Failed to load ${module} kernel module"
+	done
+}
+
+unload_modules() {
+	local module modules
+	modules=$1
+	
+	for module in ${modules}; do
+		ebegin "Unloading ${module} kernel module"
+		modprobe -r ${module}
+		eend $? "Failed to unload ${module} kernel module"
+	done
+}
+
+start() {
+	ebegin "Loading dlm module"
+	load_modules dlm
+	eend $?
+}
+
+stop() {
+
+	local modules
+
+	if [ -d /proc/cluster/lock_dlm ]; then
+		modules="${modules} lock_dlm"
+	fi
+	if [ -d /proc/cluster/config/dlm ]; then
+		modules="${modules} dlm"
+	fi
+	unload_modules ${modules}
+
+}
+

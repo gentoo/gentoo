@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst prepare
+DESCRIPTION=Next Generation tools for configuration of Atheros based IEEE 802.11a/b/g wireless LAN cards
+EAPI=2
+HOMEPAGE=http://www.madwifi-project.org/
+KEYWORDS=amd64 ~ppc x86
+LICENSE=|| ( BSD GPL-2 )
+RDEPEND=!net-wireless/madwifi-old-tools
+SLOT=0
+SRC_URI=http://snapshots.madwifi-project.org/madwifi-0.9.4/madwifi-0.9.4-r4133-20100621.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=7a27fdb8fd1a8e08d80f55706a417a1f

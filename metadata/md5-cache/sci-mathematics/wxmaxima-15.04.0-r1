@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare
+DEPEND=dev-libs/libxml2:2 x11-libs/wxGTK:3.0 >=sys-apps/sed-4
+DESCRIPTION=Graphical frontend to Maxima, using the wxWidgets toolkit
+EAPI=5
+HOMEPAGE=http://andrejv.github.io/wxmaxima/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libxml2:2 x11-libs/wxGTK:3.0 media-fonts/jsmath sci-visualization/gnuplot[wxwidgets] sci-mathematics/maxima
+SLOT=0
+SRC_URI=mirror://sourceforge/wxmaxima/wxmaxima-15.04.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
+_md5_=dc057d5ca0a359828f5feb0a845cdd15

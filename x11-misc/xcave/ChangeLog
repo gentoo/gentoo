@@ -1,0 +1,25 @@
+# ChangeLog for x11-misc/xcave
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xcave/ChangeLog,v 1.6 2013/05/11 07:35:41 patrick Exp $
+
+  11 May 2013; Patrick Lauer <patrick@gentoo.org> xcave-2.4.0.ebuild:
+  Fix inherit
+
+  08 Jan 2013; Jeroen Roovers <jer@gentoo.org> xcave-2.4.0.ebuild:
+  Set RESTRICT=test (bug #450894).
+
+*xcave-2.4.0 (15 Oct 2012)
+
+  15 Oct 2012; Michael Weber <xmw@gentoo.org> +xcave-2.4.0.ebuild:
+  Version bump (euscan)
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> xcave-2.3.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  21 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> xcave-2.3.2.ebuild:
+  Fix testsuite wrt #324967 by Diego E. Pettenò.
+
+*xcave-2.3.2 (20 Jun 2010)
+
+  20 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> +xcave-2.3.2.ebuild:
+  Initial commit wrt #53890 by Arnaud Launay.

@@ -1,0 +1,213 @@
+# ChangeLog for sys-block/tw_cli
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/tw_cli/ChangeLog,v 1.41 2014/01/05 01:43:10 tomwij Exp $
+
+  05 Jan 2014; Tom Wijsman <TomWij@gentoo.org> tw_cli-10.2.2.1.ebuild:
+  [QA] Whitespace changes to make RepoMan happy.
+
+*tw_cli-10.2.2.1 (04 Jan 2014)
+
+  04 Jan 2014; Robin H. Johnson <robbat2@gentoo.org> +tw_cli-10.2.2.1.ebuild,
+  tw_cli-10.2.ebuild:
+  Version bump per bug #456184, also solves bug #432140. Please note the new
+  license per the LSI 3ware-buyout.
+
+  03 Mar 2013; Wolfram Schlich <wschlich@gentoo.org> metadata.xml:
+  removed myself from metadata.xml
+
+  01 Dec 2012; Jesus Rivero <neurogeek@gentoo.org> metadata.xml:
+  Added myself as maintainer
+
+  05 Aug 2011; Matt Turner <mattst88@gentoo.org> tw_cli-9.4.1.2.ebuild,
+  tw_cli-9.4.2.ebuild, tw_cli-9.5.0.ebuild, tw_cli-9.5.0.1.ebuild,
+  tw_cli-9.5.1.1.ebuild, tw_cli-9.5.2.ebuild, tw_cli-9.5.3.ebuild,
+  tw_cli-10.1.ebuild, tw_cli-10.2.ebuild:
+  Updated homepage.
+
+  11 Jan 2011; Justin Lecher <jlec@gentoo.org> tw_cli-10.1.ebuild,
+  tw_cli-10.2.ebuild:
+  Added DEPEND on app-arch/unzip, #351349
+
+  08 Jan 2011; Christian Faulhammer <fauli@gentoo.org> tw_cli-10.2.ebuild:
+  stable x86, bug 350218
+
+  02 Jan 2011; Markos Chandras <hwoarang@gentoo.org> tw_cli-10.2.ebuild:
+  Stable on amd64 wrt bug #350218
+
+*tw_cli-10.2 (15 Nov 2010)
+
+  15 Nov 2010; Robin H. Johnson <robbat2@gentoo.org> +tw_cli-10.2.ebuild:
+  Version bump. Change the RESTRICT=fetch to primaryuri, and let upstream
+  count the downloads that way. Also update my test list as some of that
+  hardware is long gone.
+
+*tw_cli-10.1 (18 Jun 2010)
+
+  18 Jun 2010; Robin H. Johnson <robbat2@gentoo.org> +tw_cli-10.1.ebuild:
+  Bug #320295: version bump.
+
+*tw_cli-9.5.3 (26 Dec 2009)
+
+  26 Dec 2009; Robin H. Johnson <robbat2@gentoo.org> +tw_cli-9.5.3.ebuild:
+  Version bump per bug #298188.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> tw_cli-9.2.1.1.ebuild,
+  tw_cli-9.3.0.2.ebuild, tw_cli-9.3.0.3.ebuild, tw_cli-9.3.0.4.ebuild,
+  tw_cli-9.4.0.ebuild, tw_cli-9.4.0.1.ebuild, tw_cli-9.4.1.2.ebuild,
+  tw_cli-9.4.2.ebuild, tw_cli-9.5.0.ebuild, tw_cli-9.5.0.1.ebuild,
+  tw_cli-9.5.1.1.ebuild, tw_cli-9.5.2.ebuild:
+  Remove virtual/libc
+
+  05 Sep 2009; Robin H. Johnson <robbat2@gentoo.org> tw_cli-9.5.2.ebuild:
+  Stabilizing, vouching for this myself, as I actively use it on my
+  machines.
+
+  09 Jun 2009; Robin H. Johnson <robbat2@gentoo.org> tw_cli-9.5.2.ebuild:
+  As per bug 60690, comment 106
+  (http://bugs.gentoo.org/show_bug.cgi?id=60690#c106), we do now have
+  permission from upstream to redistribute the files. They would just like
+  users to still see the message so that they could get a rough count.
+
+*tw_cli-9.5.2 (09 Jun 2009)
+
+  09 Jun 2009; Robin H. Johnson <robbat2@gentoo.org> +tw_cli-9.5.2.ebuild:
+  Version bump per bug #272841.
+
+*tw_cli-9.5.1.1 (12 Apr 2009)
+
+  12 Apr 2009; Robin H. Johnson <robbat2@gentoo.org> +tw_cli-9.5.1.1.ebuild:
+  Version bump per bug #261009.
+
+*tw_cli-9.5.0.1 (12 Mar 2008)
+
+  12 Mar 2008; Robin H. Johnson <robbat2@gentoo.org> +tw_cli-9.5.0.1.ebuild:
+  Version bump. If you use a 9690SA card, you are STRONGLY recommended to use
+  the Update9690 app from upstream to resolve a data-loss bug. Upstream has
+  removed the tw_sched utility as of this release, and finalized the FreeBSD
+  version of the tw_cli tool.
+
+  27 Feb 2008; Robin H. Johnson <robbat2@gentoo.org> tw_cli-9.4.0.ebuild,
+  tw_cli-9.4.0.1.ebuild, tw_cli-9.4.1.2.ebuild, tw_cli-9.4.2.ebuild,
+  tw_cli-9.5.0.ebuild:
+  Clean up links to the release notes for each of the recent versions, and
+  also make preperations for the FreeBSD version of the tool.
+
+  27 Feb 2008; Robin H. Johnson <robbat2@gentoo.org> tw_cli-9.4.2.ebuild,
+  tw_cli-9.5.0.ebuild:
+  Upstream distfiles changed layout slightly, adjust ebuilds to match.
+
+*tw_cli-9.5.0 (26 Feb 2008)
+*tw_cli-9.4.2 (26 Feb 2008)
+
+  26 Feb 2008; Robin H. Johnson <robbat2@gentoo.org> +tw_cli-9.4.2.ebuild,
+  +tw_cli-9.5.0.ebuild:
+  Version bump.
+
+  30 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  tw_cli-9.4.1.2.ebuild:
+  stable x86, bug 186919
+
+  28 Jul 2007; Steve Dibb <beandog@gentoo.org> tw_cli-9.4.1.2.ebuild:
+  amd64 stable, bug 186919
+
+*tw_cli-9.4.1.2 (28 Jul 2007)
+
+  28 Jul 2007; Robin H. Johnson <robbat2@gentoo.org> -tw_cli-9.4.1.ebuild,
+  +tw_cli-9.4.1.2.ebuild:
+  Upstream has modified thier site (noted by Gentoo bug 186881) and made CLI
+  versions 9.4.1.0 and 9.4.1.1 point to the 9.4.1.2 release strictly. The
+  9.4.1.2 release fixes a large RAID6 bug. The old 9.4.1.* versions are no
+  longer available. Upstream also provides a nice ChangeLog page that we now
+  link to as HOMEPAGE.
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> tw_cli-9.2.1.1.ebuild,
+  tw_cli-9.3.0.2.ebuild, tw_cli-9.3.0.3.ebuild, tw_cli-9.3.0.4.ebuild,
+  tw_cli-9.4.0.ebuild, tw_cli-9.4.0.1.ebuild, tw_cli-9.4.1.ebuild:
+  (QA) RESTRICT clean up.
+
+*tw_cli-9.4.1 (01 Apr 2007)
+
+  01 Apr 2007; Robin H. Johnson <robbat2@gentoo.org> tw_cli-9.4.0.1.ebuild,
+  +tw_cli-9.4.1.ebuild:
+  More cleanup of ebuild style for 9.4.0.1. Version bump to 9.4.1 to support
+  new variants of 9650SE. If you have any 9xxx card, esp. the 9650SE units, you
+  should check your firmware to see if updates are needed!
+
+*tw_cli-9.4.0.1 (01 Apr 2007)
+
+  01 Apr 2007; Robin H. Johnson <robbat2@gentoo.org> +tw_cli-9.4.0.1.ebuild:
+  Bug #170492, bump to new upstream version, apparently fixes some bugs with
+  the very modern 9650SE controllers. Also clean up display of pkg_nofetch
+  URLs
+
+  21 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org> tw_cli-9.4.0.ebuild:
+  Stable on amd64 wrt bug #168069.
+
+  23 Feb 2007; Christian Faulhammer <opfer@gentoo.org> tw_cli-9.4.0.ebuild:
+  stable x86; bug 168069
+
+  22 Feb 2007; Robin H. Johnson <robbat2@gentoo.org>
+  -tw_cli-2.00.00.032b.ebuild, -tw_cli-2.00.00.042.ebuild,
+  -tw_cli-9.2.ebuild:
+  Remove some old versions. Fix Manifest for Manifest2 migration.
+
+*tw_cli-9.4.0 (23 Nov 2006)
+
+  23 Nov 2006; Robin H. Johnson <robbat2@gentoo.org> +tw_cli-9.4.0.ebuild:
+  New major version from upstream to support 9650SE hardware.
+
+*tw_cli-9.3.0.4 (13 Sep 2006)
+
+  13 Sep 2006; Robin H. Johnson <robbat2@gentoo.org> tw_cli-9.3.0.3.ebuild,
+  +tw_cli-9.3.0.4.ebuild:
+  Upstream broke the download URLs in a site re-arrange, fix em. Also version
+  bump.
+
+*tw_cli-9.3.0.3 (24 Mar 2006)
+
+  24 Mar 2006; Robin H. Johnson <robbat2@gentoo.org> +tw_cli-9.3.0.3.ebuild:
+  Version bump.
+
+*tw_cli-9.3.0.2 (12 Jan 2006)
+
+  12 Jan 2006; Wolfram Schlich <wschlich@gentoo.org> metadata.xml,
+  +tw_cli-9.3.0.2.ebuild:
+  version bump, bug #118044. metadata update.
+
+*tw_cli-9.2.1.1 (03 Sep 2005)
+
+  03 Sep 2005; Robin H. Johnson <robbat2@gentoo.org> +tw_cli-9.2.1.1.ebuild:
+  Version bump, bug #104485. Note new fetching stuff in ebuild.
+
+*tw_cli-9.2 (03 Jul 2005)
+
+  03 Jul 2005; Robin H. Johnson <robbat2@gentoo.org> +tw_cli-9.2.ebuild:
+  Upstream now has version numbers on tarballs! Bug #60689.
+
+  03 May 2005; Herbie Hopkins <herbs@gentoo.org> tw_cli-2.00.00.042.ebuild:
+  Stable on amd64 wrt bug #90985
+
+  08 Apr 2005; Robin H. Johnson <robbat2@gentoo.org>
+  tw_cli-2.00.00.042.ebuild:
+  Clean up .042 ebuild, and move it to stable x86.
+
+*tw_cli-2.00.00.032b (05 Mar 2005)
+
+  05 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +tw_cli-2.00.00.032b.ebuild, +tw_cli-2.00.00.042.ebuild:
+  Moved from sys-apps/tw_cli to sys-block/tw_cli
+
+*tw_cli-2.00.00.032b (20 Feb 2005)
+
+  20 Feb 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +tw_cli-2.00.00.032b.ebuild, +tw_cli-2.00.00.042.ebuild,
+  -tw_cli-7.7.1.ebuild:
+  Change version scheme at request of upstream. Add in the current upstream
+  experimental, which is needed for any modern 2.6 kernel actually.
+
+*tw_cli-7.7.1 (09 Feb 2005)
+
+  09 Feb 2005; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +tw_cli-7.7.1.ebuild:
+  Initial commit. Based on ebuild submission by Joshua Schmidlkofer
+  <menion@asylumwear.com>.

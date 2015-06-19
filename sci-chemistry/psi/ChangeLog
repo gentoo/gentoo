@@ -1,0 +1,109 @@
+# ChangeLog for sci-chemistry/psi
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/psi/ChangeLog,v 1.23 2013/02/19 16:31:05 jlec Exp $
+
+  19 Feb 2013; Justin Lecher <jlec@gentoo.org> psi-3.4.0-r2.ebuild:
+  Add missing dep on virtual/pkgconfig
+
+  19 Feb 2013; Justin Lecher <jlec@gentoo.org>
+  -files/psi-3.3.0-parallel-make.patch, psi-3.4.0-r2.ebuild,
+  -files/3.3.0-gcc-4.3.patch, -files/add-libint-error-message.patch,
+  -files/dont-build-libint.patch, -files/try-more-compilers.patch,
+  -files/try-pthread-for-blas-lapack.patch, metadata.xml:
+  Use tc-getPKG_CONFIG from toolchain-funcs.eclass instead of plain pkg-config;
+  drop old patches
+
+  19 Oct 2012; Justin Lecher <jlec@gentoo.org> psi-3.4.0-r2.ebuild,
+  metadata.xml:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  21 Dec 2011; Justin Lecher <jlec@gentoo.org> -psi-3.2.3.ebuild,
+  -psi-3.3.0.ebuild, -psi-3.4.0-r1.ebuild:
+  Cleaned old
+
+  21 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> psi-3.4.0-r2.ebuild:
+  x86 stable wrt bug #393873
+
+  16 Dec 2011; Agostino Sarubbo <ago@gentoo.org> psi-3.4.0-r2.ebuild:
+  Stable for AMD64, wrt bug #393873
+
+  16 Dec 2011; Justin Lecher <jlec@gentoo.org> psi-3.4.0-r2.ebuild:
+  Moved to autotoolutils.eclass, fixed detection of lapack
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> psi-3.2.3.ebuild,
+  psi-3.3.0.ebuild, psi-3.4.0-r1.ebuild, psi-3.4.0-r2.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> psi-3.2.3.ebuild,
+  psi-3.3.0.ebuild, psi-3.4.0-r1.ebuild, psi-3.4.0-r2.ebuild:
+  Added fortran-2.eclass support
+
+*psi-3.4.0-r2 (25 Apr 2011)
+
+  25 Apr 2011; Justin Lecher <jlec@gentoo.org> +files/3.4.0-fortify.patch,
+  +psi-3.4.0-r2.ebuild:
+  _FORTIFY_SOURCE indicates presence of overflow Fix, #341715
+
+*psi-3.4.0-r1 (06 Jul 2010)
+
+  06 Jul 2010; Justin Lecher <jlec@gentoo.org> +files/3.4.0-ldflags.patch,
+  -psi-3.4.0.ebuild, +files/3.4.0-man_paths.patch,
+  +files/3.4.0-parallel_fix.patch, +psi-3.4.0-r1.ebuild:
+  Prll build fix, sanbox violation fix, #326185, LDFLAGS respected, thanks
+  to Xarthisius providing the patches
+
+*psi-3.4.0 (24 Jun 2010)
+
+  24 Jun 2010; Justin Lecher <jlec@gentoo.org> +files/3.4.0-destdir.patch,
+  +psi-3.4.0.ebuild, +files/psi-3.4.0-parallel-make.patch,
+  +files/3.4.0-dont-build-libint.patch, +files/3.4.0-gcc-4.3.patch:
+  Version Bump, #279566
+
+  26 Feb 2010; Markus Dittrich <markusle@gentoo.org> psi-3.2.3.ebuild:
+  Fixed some QA issues.
+
+  26 Feb 2010; Markus Dittrich <markusle@gentoo.org> psi-3.3.0.ebuild,
+  +files/psi-3.3.0-parallel-make.patch:
+  Added parallel make patch (fixes #305249). Thanks much to 
+  Kacper Kowalik for his patch.
+
+  19 Feb 2009; Andrey Grozin <grozin@gentoo.org> psi-3.3.0.ebuild:
+  A typo in dependencies fixed in 3.3.0
+
+  07 Dec 2008; Andrey Grozin <grozin@gentoo.org> psi-3.2.3.ebuild,
+  psi-3.3.0.ebuild:
+  Fixing file collision with sci-visualization/extrema, bug #249423.
+
+*psi-3.3.0 (07 Jul 2008)
+
+  07 Jul 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/3.3.0-gcc-4.3.patch, +psi-3.3.0.ebuild:
+  (#202980) Bump. Add a gcc-4.3 patch, pull in the latest libint, keyword
+  ~amd64, add src_test() to call the test suite.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  20 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  (#148281) Change herd to sci-chemistry from sci.
+
+  05 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Remove myself as maintainer, anyone feel free to work on this, although I'll
+  continue to do so as well.
+
+  09 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>; psi-3.2.3.ebuild:
+  x86 stable.
+
+  07 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Update to my new email address.
+
+*psi-3.2.3 (12 Feb 2006)
+
+  12 Feb 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/add-libint-error-message.patch, +files/dont-build-libint.patch,
+  +files/try-more-compilers.patch, +files/try-pthread-for-blas-lapack.patch,
+  +files/use-external-libint.patch, +metadata.xml, +psi-3.2.3.ebuild:
+  Add a GPL suite of ab initio quantum chemistry programs to compute various
+  molecular properties.
+

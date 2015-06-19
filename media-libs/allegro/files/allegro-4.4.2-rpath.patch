@@ -1,0 +1,8 @@
+--- setup/CMakeLists.txt
++++ setup/CMakeLists.txt
+@@ -1,3 +1,5 @@
++set(CMAKE_SKIP_BUILD_RPATH TRUE)
++
+ add_our_executable(setup setup.c)
+ copy_files(copy_setup_data setup.dat)
+ 

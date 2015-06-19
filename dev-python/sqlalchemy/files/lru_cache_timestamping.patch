@@ -1,0 +1,33 @@
+diff -r d1c7b3df098a lib/sqlalchemy/util/_collections.py
+
+Index: lib/sqlalchemy/util/_collections.py
+===================================================================
+--- a/lib/sqlalchemy/util/_collections.py Wed Jan 18 12:42:54 2012 -0500
++++ b/lib/sqlalchemy/util/_collections.py Thu Jan 19 10:01:28 2012 -0500
+@@ -769,10 +769,15 @@
+     def __init__(self, capacity=100, threshold=.5):
+         self.capacity = capacity
+         self.threshold = threshold
++        self._counter = 0
++
++    def _inc_counter(self):
++        self._counter += 1
++        return self._counter
+ 
+     def __getitem__(self, key):
+         item = dict.__getitem__(self, key)
+-        item[2] = time_func()
++        item[2] = self._inc_counter()
+         return item[1]
+ 
+     def values(self):
+@@ -788,7 +793,7 @@
+     def __setitem__(self, key, value):
+         item = dict.get(self, key)
+         if item is None:
+-            item = [key, value, time_func()]
++            item = [key, value, self._inc_counter()]
+             dict.__setitem__(self, key, item)
+         else:
+             item[1] = value
+

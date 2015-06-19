@@ -1,0 +1,496 @@
+# ChangeLog for sci-libs/itpp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/itpp/ChangeLog,v 1.120 2014/06/02 13:15:44 zerochaos Exp $
+
+*itpp-4.3.1-r1 (02 Jun 2014)
+
+  02 Jun 2014; Rick Farina <zerochaos@gentoo.org> +itpp-4.3.1-r1.ebuild:
+  fixing multilib-strict failure, acked by xarthisius
+
+*itpp-4.3.1 (15 Jan 2014)
+
+  15 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org> +itpp-4.3.1.ebuild:
+  Version bump
+
+*itpp-4.3.0 (25 Jun 2013)
+
+  25 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> +itpp-4.3.0.ebuild,
+  metadata.xml:
+  Version bump
+
+  21 Feb 2013; Justin Lecher <jlec@gentoo.org> -itpp-4.0.6.ebuild,
+  itpp-4.2-r1.ebuild, itpp-4.2-r2.ebuild, metadata.xml:
+  Use tc-getPKG_CONFIG from toolchain-funcs.eclass instead of plain pkg-config
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> itpp-4.2-r2.ebuild:
+  Keyword amd64-linux x86-linux
+
+  17 Jul 2012; Justin Lecher <jlec@gentoo.org> itpp-4.2-r1.ebuild,
+  itpp-4.2-r2.ebuild, +files/itpp-4.2-pkg-config.patch:
+  Add patch for pkg-config file creation
+
+*itpp-4.2-r2 (17 Jul 2012)
+
+  17 Jul 2012; Justin Lecher <jlec@gentoo.org> +itpp-4.2-r2.ebuild:
+  revbump, because stable automake do not like AM_PROG_AR, #426402
+
+  15 Jul 2012; Justin Lecher <jlec@gentoo.org> itpp-4.2-r1.ebuild,
+  files/itpp-4.2-automake-1.12.patch:
+  Fixes to automake-1.12 patch
+
+  06 Jul 2012; Justin Lecher <jlec@gentoo.org> itpp-4.0.6.ebuild,
+  itpp-4.2-r1.ebuild, +files/itpp-4.2-automake-1.12.patch:
+  Add fix for automake-1.12, #317328; add missing eclass; don't run elibtoolize
+  twice
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> itpp-4.2-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  26 Apr 2012; Justin Lecher <jlec@gentoo.org> itpp-4.0.6.ebuild, metadata.xml:
+  Drop unnessecary die, add LICENSE
+
+  08 Mar 2012; Brent Baude <ranger@gentoo.org> itpp-4.2-r1.ebuild:
+  Marking itpp-4.2-r1 ppc64 for bug 394037
+
+  01 Mar 2012; Brent Baude <ranger@gentoo.org> itpp-4.2-r1.ebuild:
+  Marking itpp-4.2-r1 ppc for bug 394037
+
+  05 Feb 2012; Raúl Porcel <armin76@gentoo.org> itpp-4.0.6.ebuild,
+  itpp-4.2-r1.ebuild:
+  Drop sparc keywords
+
+  21 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> itpp-4.2-r1.ebuild:
+  x86 stable wrt bug #394037
+
+  16 Dec 2011; Justin Lecher <jlec@gentoo.org> itpp-4.2-r1.ebuild:
+  Drop -pipe request by ago, #394037
+
+  16 Dec 2011; Agostino Sarubbo <ago@gentoo.org> itpp-4.2-r1.ebuild:
+  Stable for AMD64, wrt bug #394037
+
+  16 Dec 2011; Justin Lecher <jlec@gentoo.org> itpp-4.2-r1.ebuild:
+  Moved to autotools-utils.eclass in order to handle .a/.la correctly
+
+  05 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> itpp-4.2-r1.ebuild:
+  added autotools eclass
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #105599
+
+  09 Jun 2011; Sébastien Fabbro <bicatali@gentoo.org> itpp-4.2-r1.ebuild,
+  +files/itpp-4.2-test-fftw.patch:
+  Added patch for test from upstream, closing bug #358885
+
+*itpp-4.2-r1 (09 Jun 2011)
+
+  09 Jun 2011; Sébastien Fabbro <bicatali@gentoo.org> -itpp-4.0.7-r1.ebuild,
+  -files/itpp-4.0.7-window_test_fail_fix.patch, -itpp-4.2.ebuild,
+  +itpp-4.2-r1.ebuild, +files/itpp-4.2-fastica-correct-dim.patch:
+  Applied a patch for FastICA from Gert Wollny (bug #370475). Switched to
+  EAPI4. Removed old.
+
+  03 Jan 2011; Sébastien Fabbro <bicatali@gentoo.org> itpp-4.0.7-r1.ebuild,
+  +files/itpp-4.0.7-window_test_fail_fix.patch:
+  Fixed tests, bug #349450 thanks Adam Piątyszek
+
+  16 Dec 2010; Justin Lecher <jlec@gentoo.org> itpp-4.0.6.ebuild:
+  Removal of fortran.eclass, #348851
+
+*itpp-4.2 (25 Sep 2010)
+
+  25 Sep 2010; Sébastien Fabbro <bicatali@gentoo.org> -itpp-4.0.5.ebuild,
+  -itpp-4.0.7.ebuild, +itpp-4.2.ebuild:
+  Bump, thanks Adam Piątyszek
+
+*itpp-4.0.7-r1 (10 Aug 2010)
+
+  10 Aug 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +itpp-4.0.7-r1.ebuild, +files/itpp-4.0.7-fastica-fix-endless-loop.patch,
+  metadata.xml:
+  Added patch for FastICA, thanks Gert Wollny (bug #327527). Added
+  static-libs flag, switch to EAPI3, added missing pkgconfig dependency,
+  simplified ebuild, removed the strip restricting (leaving out to user),
+  and added longdescription.
+
+  14 Mar 2010; Markos Chandras <hwoarang@gentoo.org> itpp-4.0.6.ebuild:
+  Stable on amd64 wrt bug #300279
+
+  30 Jan 2010; Raúl Porcel <armin76@gentoo.org> itpp-4.0.6.ebuild:
+  sparc stable wrt #300279
+
+  11 Jan 2010; Brent Baude <ranger@gentoo.org> itpp-4.0.6.ebuild:
+  stable ppc64, bug 300279
+
+  11 Jan 2010; Brent Baude <ranger@gentoo.org> itpp-4.0.6.ebuild:
+  stable ppc, bug 300279
+
+  09 Jan 2010; Christian Faulhammer <fauli@gentoo.org> itpp-4.0.6.ebuild:
+  stable x86, bug 300279
+
+*itpp-4.0.7 (09 Jan 2010)
+
+  09 Jan 2010; Markus Dittrich <markusle@gentoo.org>
+  -files/itpp-4.0.1-zdotu-debian.patch, -itpp-4.0.3.ebuild,
+  -itpp-4.0.4.ebuild, -files/itpp-4.0.4-vec.patch, +itpp-4.0.7.ebuild:
+  Version bump and removed old versions.
+
+  30 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> itpp-4.0.6.ebuild,
+  +files/itpp-4.0.6-gcc44.patch:
+  Fix building with GCC 4.4 wrt #275916.
+
+  26 Nov 2008; Brent Baude <ranger@gentoo.org> itpp-4.0.5.ebuild:
+  stable ppc64, bug 244832
+
+  02 Nov 2008; Markus Meier <maekke@gentoo.org> itpp-4.0.5.ebuild:
+  amd64/x86 stable, bug #244832
+
+  01 Nov 2008; nixnut <nixnut@gentoo.org> itpp-4.0.5.ebuild:
+  Stable on ppc wrt bug 244832
+
+  29 Oct 2008; Ferris McCormick <fmccor@gentoo.org> itpp-4.0.5.ebuild:
+  Sparc stable, Bug #244832.
+
+*itpp-4.0.6 (08 Oct 2008)
+
+  08 Oct 2008; Markus Dittrich <markusle@gentoo.org> +itpp-4.0.6.ebuild:
+  Version bump.
+
+*itpp-4.0.5 (30 Jul 2008)
+
+  30 Jul 2008; Markus Dittrich <markusle@gentoo.org> +itpp-4.0.5.ebuild:
+  Version bump.
+
+  25 May 2008; Markus Rothe <corsair@gentoo.org> itpp-4.0.4.ebuild:
+  Stable on ppc64; bug #223209
+
+  24 May 2008; nixnut <nixnut@gentoo.org> itpp-4.0.4.ebuild:
+  Stable on ppc wrt bug 223209
+
+  22 May 2008; Markus Meier <maekke@gentoo.org> itpp-4.0.4.ebuild:
+  amd64/x86 stable, bug #223209
+
+  22 May 2008; Ferris McCormick <fmccor@gentoo.org> itpp-4.0.4.ebuild:
+  Sparc stable, Bug #223209.  It's been around a while and all tests are good.
+
+  18 May 2008; Markus Dittrich <markusle@gentoo.org> 
+  itpp-4.0.3.ebuild, itpp-4.0.4.ebuild:
+  Switched virtual/tetex -> virtual/latex-base (see bug #222501).
+
+  17 May 2008; Markus Dittrich <markusle@gentoo.org> itpp-4.0.4.ebuild:
+  Made stripping of -g CXXFLAG unconditional.
+
+  17 May 2008; Markus Dittrich <markusle@gentoo.org> itpp-4.0.4.ebuild:
+  Added RESTRICT="strip" to prevent debug lib from being stripped.
+
+  12 May 2008; Markus Dittrich <markusle@gentoo.org> itpp-4.0.3.ebuild,
+  itpp-4.0.4.ebuild:
+  Removed runtime dependency on app-doc/doxygen (fixed bug #221689).
+
+  15 Apr 2008; Markus Dittrich <markusle@gentoo.org>
+  +files/itpp-4.0.4-vec.patch, itpp-4.0.4.ebuild:
+  Fixed regression in vec.h (see bug #217621).
+
+  09 Apr 2008; Markus Dittrich <markusle@gentoo.org> -itpp-3.10.12.ebuild,
+  -itpp-4.0.1.ebuild, itpp-4.0.3.ebuild, itpp-4.0.4.ebuild:
+  Changed package description and removed old versions.
+
+  08 Apr 2008; Raúl Porcel <armin76@gentoo.org> itpp-4.0.3.ebuild:
+  sparc stable wrt #216495
+
+  07 Apr 2008; Brent Baude <ranger@gentoo.org> itpp-4.0.3.ebuild:
+  stable ppc, bug 216495
+
+  07 Apr 2008; Markus Rothe <corsair@gentoo.org> itpp-4.0.3.ebuild:
+  Stable on ppc64; bug #216495
+
+  06 Apr 2008; Markus Meier <maekke@gentoo.org> itpp-4.0.3.ebuild:
+  amd64/x86 stable, bug #216495
+
+*itpp-4.0.4 (04 Apr 2008)
+
+  04 Apr 2008; Markus Dittrich <markusle@gentoo.org> -itpp-4.0.0.ebuild,
+  +itpp-4.0.4.ebuild:
+  Version bump.
+
+  21 Feb 2008; Markus Dittrich <markusle@gentoo.org> itpp-4.0.3.ebuild:
+  Fixed typo ChangeLog2007 --> ChangeLog-2007.
+
+*itpp-4.0.3 (21 Feb 2008)
+
+  21 Feb 2008; Markus Dittrich <markusle@gentoo.org> itpp-3.10.12.ebuild,
+  itpp-4.0.0.ebuild, itpp-4.0.1.ebuild, +itpp-4.0.3.ebuild:
+  Version bump.
+
+  25 Jan 2008; Samuli Suominen <drac@gentoo.org> itpp-4.0.1.ebuild:
+  amd64 stable wrt #206850
+
+  22 Jan 2008; Raúl Porcel <armin76@gentoo.org> itpp-4.0.1.ebuild:
+  sparc stable wrt #206850
+
+  22 Jan 2008; Brent Baude <ranger@gentoo.org> itpp-4.0.1.ebuild:
+  Marking itpp-4.0.1 ppc for bug 206850
+
+  22 Jan 2008; Brent Baude <ranger@gentoo.org> itpp-4.0.1.ebuild:
+  Marking itpp-4.0.1 ppc64 for bug 206850
+
+  21 Jan 2008; Markus Meier <maekke@gentoo.org> itpp-4.0.1.ebuild:
+  x86 stable, bug #206850
+
+  21 Dec 2007; Markus Dittrich <markusle@gentoo.org>
+  +files/itpp-4.0.1-zdotu-debian.patch, itpp-4.0.1.ebuild:
+  Added a patch from upstream and cleaned up the ebuild. Thanks much
+  to Adam Piątyszek <ediap@ET.PUT.Poznan.PL> for his help.
+
+  18 Dec 2007; Markus Dittrich <markusle@gentoo.org> itpp-4.0.1.ebuild:
+  Added missing myconf to econf and fixed installation path of html docs
+  (fixes bug #202574 and #202578). Thanks much to Adam Piątyszek
+  <ediap@et.put.poznan.pl> for pointing this out.
+
+*itpp-4.0.1 (18 Dec 2007)
+
+  18 Dec 2007; Markus Dittrich <markusle@gentoo.org> -itpp-3.99.3.1.ebuild,
+  -itpp-4.0.0_rc2.ebuild, +itpp-4.0.1.ebuild:
+  Version bump and removed old ebuilds.
+
+  17 Oct 2007; Markus Dittrich <markusle@gentoo.org> itpp-4.0.0.ebuild:
+  Streamlined the blas/lapack configuration.
+
+*itpp-4.0.0 (16 Oct 2007)
+
+  16 Oct 2007; Markus Dittrich <markusle@gentoo.org> -itpp-3.10.10.ebuild,
+  +itpp-4.0.0.ebuild:
+  New revision and removed obsolete version.
+
+  10 Oct 2007; Markus Rothe <corsair@gentoo.org> itpp-3.10.12.ebuild:
+  Stable on ppc64; bug #190183
+
+  09 Oct 2007; Markus Dittrich <markusle@gentoo.org> itpp-4.0.0_rc2.ebuild:
+  Fixed weird quoting issue that seems to trip up itpp's configure
+  (see bug #195189).
+
+  09 Oct 2007; Raúl Porcel <armin76@gentoo.org> itpp-3.10.12.ebuild:
+  sparc stable wrt #190183
+
+*itpp-4.0.0_rc2 (08 Oct 2007)
+
+  08 Oct 2007; Markus Dittrich <markusle@gentoo.org> +itpp-4.0.0_rc2.ebuild:
+  Version bump (see bug #194317). Thanks much to Adam Piątyszek 
+  <ediap@et.put.poznan.pl> for his patch.
+
+  11 Sep 2007; Christian Faulhammer <opfer@gentoo.org> itpp-3.10.12.ebuild:
+  stable x86, bug 190183
+
+  01 Sep 2007; Christoph Mende <angelos@gentoo.org> itpp-3.10.12.ebuild:
+  Stable on amd64 wrt bug #190183
+
+  28 Aug 2007; nixnut <nixnut@gentoo.org> itpp-3.10.12.ebuild:
+  Stable on ppc wrt bug 190183
+
+  25 Aug 2007; Markus Dittrich <markusle@gentoo.org> -itpp-3.10.9.ebuild,
+  -itpp-3.10.11.ebuild, -itpp-3.99.2.ebuild:
+  Removed obsolete versions.
+
+*itpp-3.99.3.1 (11 Aug 2007)
+
+  11 Aug 2007; Markus Dittrich <markusle@gentoo.org> +itpp-3.99.3.1.ebuild:
+  Version bump (see bug #188314). As always, thanks much to    
+    Adam Piątyszek <ediap@et.put.poznan.pl> for his ebuilds.
+
+*itpp-3.10.12 (14 Jul 2007)
+
+  14 Jul 2007; Markus Dittrich <markusle@gentoo.org> +itpp-3.10.12.ebuild,
+  -itpp-3.99.1.ebuild:
+  Version bump and removed obsolete version.
+
+*itpp-3.99.2 (22 Jun 2007)
+
+  22 Jun 2007; Markus Dittrich <markusle@gentoo.org> itpp-3.10.11.ebuild,
+  +itpp-3.99.2.ebuild:
+  Version bump.
+
+  14 Jun 2007; Christoph Mende <angelos@gentoo.org> itpp-3.10.10.ebuild:
+  Stable on amd64 wrt bug 181252
+
+  11 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org> itpp-3.10.10.ebuild:
+  Stable on sparc wrt #181252
+
+  10 Jun 2007; Raúl Porcel <armin76@gentoo.org> itpp-3.10.10.ebuild:
+  x86 stable wrt #181252
+
+  09 Jun 2007; nixnut <nixnut@gentoo.org> itpp-3.10.10.ebuild:
+  Stable on ppc wrt bug 181252
+
+  09 Jun 2007; Markus Rothe <corsair@gentoo.org> itpp-3.10.10.ebuild:
+  Stable on ppc64; bug #181252
+
+  06 Jun 2007; Markus Dittrich <markusle@gentoo.org> itpp-3.10.10.ebuild,
+  itpp-3.10.11.ebuild, itpp-3.99.1.ebuild:
+  Added acml as possible dependency for fftw. Thanks much to
+  Adam Piątyszek <ediap@et.put.poznan.pl> for pointing
+  this out (see bug #181057).
+
+*itpp-3.10.11 (04 Jun 2007)
+
+  04 Jun 2007; Markus Dittrich <markusle@gentoo.org> -itpp-3.10.7.ebuild,
+  +itpp-3.10.11.ebuild, -itpp-3.99.0.ebuild:
+  Version bump and removed old ebuilds.
+
+  11 Apr 2007; Peter Weller <welp@gentoo.org> itpp-3.10.9.ebuild:
+  Stable on amd64 wrt bug 170759
+
+  11 Apr 2007; Markus Dittrich <markusle@gentoo.org> itpp-3.10.10.ebuild:
+  Accidentally marked new version stable. Fixed now. Sorry!
+
+*itpp-3.10.10 (11 Apr 2007)
+
+  11 Apr 2007; Markus Dittrich <markusle@gentoo.org> -itpp-3.10.8.ebuild,
+  +itpp-3.10.10.ebuild:
+  Version bump and removed old version.
+
+*itpp-3.99.1 (23 Mar 2007)
+
+  23 Mar 2007; Markus Dittrich <markusle@gentoo.org> +itpp-3.99.1.ebuild:
+  Version bump (fixes bug #171859).
+
+  17 Mar 2007; nixnut <nixnut@gentoo.org> itpp-3.10.9.ebuild:
+  Stable on ppc wrt bug 170759
+
+  15 Mar 2007; Markus Rothe <corsair@gentoo.org> itpp-3.10.9.ebuild:
+  Stable on ppc64; bug #170759
+
+  14 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org> itpp-3.10.9.ebuild:
+  Stable on sparc wrt #170759
+
+  14 Mar 2007; Christian Faulhammer <opfer@gentoo.org> itpp-3.10.9.ebuild:
+  stable x86, bug 170759
+
+  15 Feb 2007; Ferris McCormick <fmccor@gentoo.org> itpp-3.10.7.ebuild:
+  Stable on sparc (no problems reported for 30 days).
+
+*itpp-3.10.9 (13 Feb 2007)
+
+  13 Feb 2007; Markus Dittrich <markusle@gentoo.org> -itpp-3.10.5.ebuild,
+  -itpp-3.10.6.ebuild, +itpp-3.10.9.ebuild, itpp-3.99.0.ebuild:
+  Version bump (fixes bug #166238). Also added the 3.99.0 development
+  version to ~ppc since the ppc folks already marked 3.10.8.
+  Thanks to Adam Piątyszek <ediap@et.put.poznan.pl> for keeping us 
+  up to date :)
+
+  05 Feb 2007; Simon Stelling <blubb@gentoo.org> itpp-3.10.7.ebuild:
+  stable on amd64
+
+  03 Feb 2007; nixnut <nixnut@gentoo.org> itpp-3.10.8.ebuild:
+  Added ~ppc wrt bug 164755
+
+  31 Jan 2007; Markus Rothe <corsair@gentoo.org> itpp-3.10.8.ebuild,
+  itpp-3.99.0.ebuild:
+  Added ~ppc64; bug #163755
+
+*itpp-3.99.0 (29 Jan 2007)
+
+  29 Jan 2007; Markus Dittrich <markusle@gentoo.org> +itpp-3.99.0.ebuild:
+  Version bump to new development release. As usual, many thanks to
+  Adam Piątyszek <ediap@et.put.poznan.pl> for his ebuild (see bug
+  #163121).
+
+  25 Jan 2007; Ferris McCormick <fmccor@gentoo.org> itpp-3.10.8.ebuild:
+  Add ~sparc keyword --- Bug #163755 (Comment #3, upstream request) --- builds
+  and installs fine; runs all tests successfully.
+
+  25 Jan 2007; Ferris McCormick <fmccor@gentoo.org> itpp-3.10.7.ebuild:
+  Add ~sparc keyword --- Bug #163755 --- builds with suggested USE flags and the
+  tests all run successfully.
+
+*itpp-3.10.8 (16 Jan 2007)
+
+  16 Jan 2007; Markus Dittrich <markusle@gentoo.org> +itpp-3.10.8.ebuild:
+  Version bump (fixes bug #162074). Thanks to Adam Piątyszek
+  <ediap@et.put.poznan.pl> for keeping us up to date :)
+
+  07 Jan 2007; Torsten Veller <tove@gentoo.org> itpp-3.10.7.ebuild:
+  Stable on x86 (#160469)
+
+*itpp-3.10.7 (05 Dec 2006)
+
+  05 Dec 2006; Markus Dittrich <markusle@gentoo.org> +itpp-3.10.7.ebuild:
+  Version bump (this fixes bug #157128). As usual, thanks much to 
+  Adam Piątyszek <ediap@et.put.poznan.pl> for keeping us up to date.
+
+  23 Nov 2006; <blubb@gentoo.org> itpp-3.10.6.ebuild:
+  stable on amd64
+
+  19 Nov 2006; Christian Faulhammer <opfer@gentoo.org> itpp-3.10.6.ebuild:
+  stable x86, bug #155588
+
+*itpp-3.10.6 (16 Oct 2006)
+
+  16 Oct 2006; Markus Dittrich <markusle@gentoo.org> -itpp-3.10.3.ebuild,
+  -itpp-3.10.4.ebuild, +itpp-3.10.6.ebuild:
+  Version bump and removed some of the old versions. Thanks much
+  to Adam Piątyszek <ediap@et.put.poznan.pl> for keeping us up
+  to date on new versions. This fixes bug #151487.
+
+  12 Oct 2006; Jeff Gardner <je_fro@gentoo.org> itpp-3.10.5.ebuild:
+  Keyword itpp-3.10.5 ~amd64 per bug #129809
+
+  08 Oct 2006; Andrej Kacian <ticho@gentoo.org> itpp-3.10.5.ebuild:
+  Stable on x86, bug #150388.
+
+  18 Aug 2006; Joshua Jackson <tsunam@gentoo.org> itpp-3.10.3.ebuild:
+  Stable x86; bug #143879
+
+*itpp-3.10.5 (16 Aug 2006)
+
+  16 Aug 2006; Markus Dittrich <markusle@gentoo.org> +itpp-3.10.5.ebuild:
+  Version bump. Thanks much to Adam Piątyszek <ediap@et.put.poznan.pl>
+  for keeping us posted. This fixes bug #143076.
+
+*itpp-3.10.4 (08 Aug 2006)
+
+  08 Aug 2006; Markus Dittrich <markusle@gentoo.org> +itpp-3.10.4.ebuild:
+  Version bump. Thanks to Adam Piątyszek <ediap@et.put.poznan.pl>
+  for the heads up. This fixes bug #143076.
+
+*itpp-3.10.3 (12 Jul 2006)
+
+  12 Jul 2006; Markus Dittrich <markusle@gentoo.org> -itpp-3.10.0.ebuild,
+  -itpp-3.10.1.ebuild, -itpp-3.10.2.ebuild, +itpp-3.10.3.ebuild:
+  New revision and pruned old versions. This fixes bug #139992.
+
+  12 Jun 2006; Markus Dittrich <markusle@gentoo.org> itpp-3.10.2.ebuild:
+  Replaced app-text/tetex with virtual/tetex in DEPEND. This fixes
+  bug #136476.
+
+*itpp-3.10.2 (23 May 2006)
+
+  23 May 2006; Markus Dittrich <markusle@gentoo.org> +itpp-3.10.2.ebuild:
+  Version bump. Thanks much to Adam Piątyszek <ediap@et.put.poznan.pl>
+  for his ebuild. This fixes bug #133411.
+
+*itpp-3.10.1 (12 Apr 2006)
+
+  12 Apr 2006; Markus Dittrich <markusle@gentoo.org> -itpp-3.9.1.ebuild,
+  +itpp-3.10.1.ebuild:
+  Version bump. Thanks much to Adam Piątyszek <ediap@et.put.poznan.pl>
+  for his ebuild. This fixes bug #129622. Also removed old version
+  which is not supported by upstream anymore.
+
+  27 Mar 2006; Markus Dittrich <markusle@gentoo.org> itpp-3.10.0.ebuild:
+  Added the newly added cblas-reference ebuild as a possible 
+  dependency for the cblas USE flag. Also, changed ebuild such that 
+  lapack is only enabled in conjunction with blas. Thanks to Adam 
+  Piątyszek <ediap@et.put.poznan.pl> for pointing this out 
+  (see bug #126299).
+
+*itpp-3.10.0 (18 Mar 2006)
+
+  18 Mar 2006; Markus Dittrich <markusle@gentoo.org> +itpp-3.10.0.ebuild:
+  Version bump. Thanks to Adam Piątyszek <ediap@et.put.poznan.pl>
+  for his ebuild and suggestions. This fixes bug #126299.
+
+*itpp-3.9.1 (30 Jan 2006)
+
+  30 Jan 2006; Markus Dittrich <markusle@gentoo.org> +metadata.xml,
+  +itpp-3.9.1.ebuild:
+  Initial import (fixes bug #120163). Many thanks to Adam Piątyszek
+  <ediap@et.put.poznan.pl> for his ebuild.

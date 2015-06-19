@@ -1,0 +1,292 @@
+# ChangeLog for net-analyzer/tcpreplay
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/tcpreplay/ChangeLog,v 1.63 2015/05/25 05:18:31 jer Exp $
+
+  25 May 2015; Jeroen Roovers <jer@gentoo.org> -tcpreplay-4.0.4.ebuild:
+  Old.
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> tcpreplay-4.0.5-r1.ebuild:
+  Stable for x86, wrt bug #545118
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> tcpreplay-4.0.5-r1.ebuild:
+  Stable for amd64, wrt bug #545118
+
+*tcpreplay-4.1.0-r1 (16 Apr 2015)
+*tcpreplay-4.0.5-r1 (16 Apr 2015)
+
+  16 Apr 2015; Jeroen Roovers <jer@gentoo.org> -tcpreplay-4.0.5.ebuild,
+  +tcpreplay-4.0.5-r1.ebuild, -tcpreplay-4.1.0.ebuild,
+  +tcpreplay-4.1.0-r1.ebuild,
+  +files/tcpreplay-4.1.0-enable-pcap_findalldevs.patch:
+  Fix configure logic in disabling pcap_findalldevs() (bug #546762).
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> tcpreplay-4.0.5.ebuild:
+  Stable for amd64, wrt bug #545118
+
+*tcpreplay-4.1.0 (31 Mar 2015)
+
+  31 Mar 2015; Jeroen Roovers <jer@gentoo.org> -tcpreplay-3.4.4-r1.ebuild,
+  +tcpreplay-4.1.0.ebuild, -files/tcpreplay-3.4.4-crash.patch:
+  Version bump.
+
+  30 Oct 2014; Agostino Sarubbo <ago@gentoo.org> tcpreplay-4.0.4.ebuild:
+  Stable for x86, wrt bug #509058
+
+*tcpreplay-4.0.5 (17 Sep 2014)
+
+  17 Sep 2014; Jeroen Roovers <jer@gentoo.org> +tcpreplay-4.0.5.ebuild:
+  Version bump.
+
+  29 Aug 2014; Chema Alonso <nimiux@gentoo.org> tcpreplay-4.0.4.ebuild:
+  Stable for amd64 wrt bug #509058
+
+  17 Jul 2014; Jeroen Roovers <jer@gentoo.org> -tcpreplay-4.0.3.ebuild,
+  files/tcpreplay-3.4.4-crash.patch:
+  Clean up patch.
+
+*tcpreplay-4.0.4 (16 Apr 2014)
+
+  16 Apr 2014; Jeroen Roovers <jer@gentoo.org> tcpreplay-4.0.3.ebuild,
+  +tcpreplay-4.0.4.ebuild:
+  Version bump. Fix LICENSE.
+
+*tcpreplay-4.0.3 (01 Mar 2014)
+
+  01 Mar 2014; Jeroen Roovers <jer@gentoo.org> -tcpreplay-4.0.2.ebuild,
+  +tcpreplay-4.0.3.ebuild:
+  Version bump, fixes compile failure (bug #503048).
+
+  01 Feb 2014; Jeroen Roovers <jer@gentoo.org> tcpreplay-4.0.2.ebuild:
+  Add new HOMEPAGE.
+
+  31 Jan 2014; Jeroen Roovers <jer@gentoo.org> tcpreplay-4.0.2.ebuild:
+  Set NICs to local loopback for src_test() (bug #359353).
+
+  31 Jan 2014; Jeroen Roovers <jer@gentoo.org> tcpreplay-3.4.4-r1.ebuild:
+  Revisit sys-devel/autogen dependency.
+
+*tcpreplay-4.0.2 (31 Jan 2014)
+
+  31 Jan 2014; Jeroen Roovers <jer@gentoo.org> -tcpreplay-3.4.4-r2.ebuild,
+  -tcpreplay-3.5.0_beta1.ebuild, +tcpreplay-4.0.2.ebuild,
+  -files/tcpreplay-3.4.4-cross-compile.patch:
+  Version bump (bug #499824).
+
+  29 May 2013; Jeroen Roovers <jer@gentoo.org> tcpreplay-3.5.0_beta1.ebuild:
+  Fix comment. Remove extraneous whitespace.
+
+*tcpreplay-3.5.0_beta1 (29 May 2013)
+
+  29 May 2013; Jeroen Roovers <jer@gentoo.org> -tcpreplay-3.4.5_beta2.ebuild,
+  -tcpreplay-3.4.5_beta3.ebuild, +tcpreplay-3.5.0_beta1.ebuild:
+  Version bump.
+
+*tcpreplay-3.4.4-r2 (12 Apr 2012)
+
+  12 Apr 2012; Jeroen Roovers <jer@gentoo.org> tcpreplay-3.4.4-r1.ebuild,
+  +tcpreplay-3.4.4-r2.ebuild, +files/tcpreplay-3.4.4-cross-compile.patch,
+  tcpreplay-3.4.5_beta3.ebuild:
+  Add cross-compile patch by Bertrand Jacquin (bug #375679). Use emake instead
+  of make. Fix one quoting issue.
+
+*tcpreplay-3.4.5_beta3 (22 Jan 2012)
+
+  22 Jan 2012; Jeroen Roovers <jer@gentoo.org> -tcpreplay-3.4.3.ebuild,
+  -tcpreplay-3.4.4.ebuild, tcpreplay-3.4.4-r1.ebuild,
+  tcpreplay-3.4.5_beta2.ebuild, +tcpreplay-3.4.5_beta3.ebuild:
+  Version bump. Add --enable-dynamic-link to configure by Tupone Alfredo (bug
+  #399749).
+
+  21 Mar 2011; Thomas Kahle <tomka@gentoo.org> tcpreplay-3.4.4-r1.ebuild:
+  x86 stable per bug 358665
+
+  14 Mar 2011; Markos Chandras <hwoarang@gentoo.org> tcpreplay-3.4.4-r1.ebuild:
+  Stable on amd64 wrt bug #358665
+
+*tcpreplay-3.4.4-r1 (29 Oct 2010)
+
+  29 Oct 2010; Peter Volkov <pva@gentoo.org> +tcpreplay-3.4.4-r1.ebuild,
+  +files/tcpreplay-3.4.4-crash.patch:
+  Fix buffer overflow (bug #336605) in stable version.
+
+*tcpreplay-3.4.5_beta2 (29 Oct 2010)
+
+  29 Oct 2010; Jeroen Roovers <jer@gentoo.org>
+  +tcpreplay-3.4.5_beta2.ebuild:
+  Beta version bump, fixes buffer overflow (bug #336605).
+
+*tcpreplay-3.4.4 (21 Apr 2010)
+
+  21 Apr 2010; Peter Volkov <pva@gentoo.org> -tcpreplay-2.3.5.ebuild,
+  -tcpreplay-3.2.3.ebuild, -tcpreplay-3.3.2.ebuild, -tcpreplay-3.4.1.ebuild,
+  -files/tcpreplay-3.4.1-errx-exit.patch, -tcpreplay-3.4.2.ebuild,
+  +tcpreplay-3.4.4.ebuild:
+  Version bump. Drop old.
+
+  19 Nov 2009; Markus Meier <maekke@gentoo.org> tcpreplay-3.4.3.ebuild:
+  amd64/x86 stable, bug #293533
+
+  17 Nov 2009; Peter Volkov <pva@gentoo.org> tcpreplay-3.4.3.ebuild:
+  Stop FEATURES misuse (userpriv), bug 278752, thank Thilo Bangert for
+  report.
+
+  08 Jul 2009; Markus Meier <maekke@gentoo.org> tcpreplay-3.4.2.ebuild:
+  amd64 stable, bug #274470
+
+  08 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  tcpreplay-3.4.2.ebuild:
+  stable x86, bug 274470
+
+  08 Jul 2009; Peter Volkov <pva@gentoo.org> tcpreplay-3.4.3.ebuild:
+  We don't need inherit/eautoreconf here. Forgot to drop it after work on
+  fix which is now upstream...
+
+*tcpreplay-3.4.3 (08 Jul 2009)
+
+  08 Jul 2009; Peter Volkov <pva@gentoo.org> +tcpreplay-3.4.3.ebuild:
+  Version bump, fixes bug #274813, thank Andrew Savchenko for report.
+
+*tcpreplay-3.4.2 (24 May 2009)
+
+  24 May 2009; Peter Volkov <pva@gentoo.org> +tcpreplay-3.4.2.ebuild:
+  Version bump. Now with ipv6 support.
+
+*tcpreplay-3.4.1 (05 Apr 2009)
+
+  05 Apr 2009; Peter Volkov <pva@gentoo.org>
+  +files/tcpreplay-3.4.1-errx-exit.patch, metadata.xml,
+  +tcpreplay-3.4.1.ebuild:
+  Version bump, bug #261201, thank DrChandra the Gentoo Person for report.
+  Fixes statical linking with libpcap and make sure we don't use bundled
+  libopts, bug #252940, thank Diego E. 'Flameeyes' Pettenò for report.
+
+  17 Aug 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  tcpreplay-3.3.2.ebuild:
+  stable amd64, bug 234735
+
+  14 Aug 2008; Raúl Porcel <armin76@gentoo.org> tcpreplay-3.3.2.ebuild:
+  x86 stable wrt #234735
+
+  04 Aug 2008; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Describe local USE flags for GLEP 56.
+
+*tcpreplay-3.3.2 (07 Jul 2008)
+
+  07 Jul 2008; Markus Ullmann <jokey@gentoo.org> +tcpreplay-3.3.2.ebuild:
+  Version bump for bug #229259
+
+  23 Mar 2008; <pva@gentoo.org> -tcpreplay-3.2.1.ebuild,
+  tcpreplay-3.2.3.ebuild:
+  Remove old. Fix 'rm man2html', thank Markus Meier for report in bug #201842.
+
+  21 Mar 2008; Markus Meier <maekke@gentoo.org> tcpreplay-3.2.3.ebuild:
+  amd64 stable, bug #201842
+
+  15 Feb 2008; Dawid Węgliński <cla@gentoo.org> tcpreplay-3.2.3.ebuild:
+  Stable on x86 (bug #201842)
+
+*tcpreplay-3.2.3 (10 Dec 2007)
+
+  10 Dec 2007; <pva@gentoo.org> tcpreplay-3.2.1.ebuild,
+  +tcpreplay-3.2.3.ebuild:
+  Version bump. Fixed bug, which caused emerge with FEATURES=test always fail
+  on tests.
+
+  05 Nov 2007; Raúl Porcel <armin76@gentoo.org> tcpreplay-3.2.1.ebuild:
+  Re-add ~sparc wrt #197761
+
+*tcpreplay-3.2.1 (01 Nov 2007)
+
+  01 Nov 2007; <pva@gentoo.org> -tcpreplay-1.4.6.ebuild,
+  -tcpreplay-2.2.2.ebuild, -tcpreplay-2.3.2.ebuild, -tcpreplay-2.3.3.ebuild,
+  -tcpreplay-2.3.3-r1.ebuild, -tcpreplay-3.0_beta7.ebuild,
+  +tcpreplay-3.2.1.ebuild:
+  Version bump. Thank Raúl Porcel <armin76 AT gentoo.org> for report in bug
+  #184766.
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> tcpreplay-2.2.2.ebuild,
+  tcpreplay-2.3.2.ebuild, tcpreplay-2.3.3.ebuild, tcpreplay-2.3.3-r1.ebuild,
+  tcpreplay-2.3.5.ebuild, tcpreplay-3.0_beta7.ebuild:
+  (QA) RESTRICT clean up.
+
+  20 Mar 2007; Raúl Porcel <armin76@gentoo.org> tcpreplay-2.3.5.ebuild:
+  x86 stable
+
+  20 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  30 Oct 2006; Jason Wever <weeve@gentoo.org> tcpreplay-2.3.5.ebuild:
+  Added ~sparc keyword wrt bug #142493.
+
+  28 Apr 2006; Alec Warner <antarus@gentoo.org> ChangeLog:
+  Fixing broken SHA256 digest round six
+
+  16 Feb 2006; Markus Ullmann <jokey@gentoo.org> tcpreplay-1.4.6.ebuild,
+  tcpreplay-2.2.2.ebuild, tcpreplay-2.3.2.ebuild, tcpreplay-2.3.3.ebuild,
+  tcpreplay-2.3.3-r1.ebuild, tcpreplay-2.3.5.ebuild,
+  tcpreplay-3.0_beta7.ebuild:
+  Removing virtual/libpcap wrt bug #117898
+
+*tcpreplay-3.0_beta7 (06 Feb 2006)
+*tcpreplay-2.3.5 (06 Feb 2006)
+
+  06 Feb 2006; Markus Ullmann <jokey@gentoo.org> +tcpreplay-2.3.5.ebuild,
+  -tcpreplay-3.0_beta1.ebuild, +tcpreplay-3.0_beta7.ebuild:
+  Version bump wrt bug #118466
+
+  24 Apr 2005; Marcelo Goes <vanquirius@gentoo.org>
+  tcpreplay-3.0_beta1.ebuild:
+  Use make install instead of emake install.
+
+  05 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> tcpreplay-3.0_beta1.ebuild:
+  Don't install their man2html, bug 88017.
+
+*tcpreplay-3.0_beta1 (04 Apr 2005)
+
+  04 Apr 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +tcpreplay-3.0_beta1.ebuild:
+  Version bump. Thanks Marco Morales <soulse@gmail.com>. Fixes bug 87868.
+
+*tcpreplay-2.3.3-r1 (16 Mar 2005)
+
+  16 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> +tcpreplay-2.3.3-r1.ebuild:
+  Revision bump; added new optional dep on libpcapnav. Thanks to soulse in bug
+  84895.
+
+*tcpreplay-2.3.3 (07 Mar 2005)
+
+  07 Mar 2005; Daniel Black <dragonheart@gentoo.org> +tcpreplay-2.3.3.ebuild:
+  Version bump as per bug #83992. Thanks to Dave Stahl <cybertech@cybertech.org>
+
+*tcpreplay-2.3.2 (30 Jan 2005)
+
+  30 Jan 2005; Daniel Black <dragonheart@gentoo.org> tcpreplay-1.4.6.ebuild,
+  tcpreplay-2.2.2.ebuild, +tcpreplay-2.3.2.ebuild:
+  Version bump and transition to virtual/libpcap
+
+  10 Aug 2004; Eldad Zack <eldad@gentoo.org> tcpreplay-2.2.2.ebuild:
+  marked x86 stable
+
+  09 Aug 2004; Tom Martin <slarti@gentoo.org> tcpreplay-2.2.2.ebuild:
+  Marked ~amd64, resolves bug 58732.
+
+  09 Jul 2004; Eldad Zack <eldad@gentoo.org> metadata.xml,
+  tcpreplay-1.4.6.ebuild:
+  metadata: changed bugwranglers to netmon. 1.4.6 marked x86 stable.
+
+*tcpreplay-2.2.2 (23 Jun 2004)
+
+  23 Jun 2004; Sven Wegener <swegener@gentoo.org> +metadata.xml,
+  tcpreplay-1.4.6.ebuild, +tcpreplay-2.2.2.ebuild:
+  Version bump. Added support for the debug USE flag. Added metadata.xml and
+  IUSE="".
+
+*tcpreplay-1.4.6 (11 Dec 2003)
+
+  11 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #35373.
+
+*tcpreplay-1.4.5 (22 Sep 2003)
+
+  22 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Daniel Black <dragonheart@tpg.com.au> #29320.

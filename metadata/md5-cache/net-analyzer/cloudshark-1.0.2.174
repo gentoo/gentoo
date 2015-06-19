@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Easily upload your wireshark captures to CloudShark
+EAPI=5
+HOMEPAGE=http://appliance.cloudshark.org/plug-ins-wireshark.html
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+PDEPEND=net-analyzer/wireshark:=[lua] net-misc/curl
+SLOT=0
+SRC_URI=http://appliance.cloudshark.org/downloads/cloudshark-plugin-1.0.2-174.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=5753228f460013cb955f2e3a49d41b74

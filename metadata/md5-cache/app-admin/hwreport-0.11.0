@@ -1,0 +1,11 @@
+DEFINED_PHASES=postinst prepare
+DEPEND=virtual/libusb:1
+DESCRIPTION=Collect system informations for the hardware4linux.info site
+EAPI=5
+HOMEPAGE=http://hardware4linux.info/
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/libusb:1 >=sys-apps/dmidecode-2.8 >=sys-apps/pciutils-2.2.0
+SLOT=0
+SRC_URI=http://hardware4linux.info/res/hwreport-0.11.0.tar.bz2
+_md5_=197889f554e59727795b52a12a829e17

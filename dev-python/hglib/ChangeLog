@@ -1,0 +1,61 @@
+# ChangeLog for dev-python/hglib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/hglib/ChangeLog,v 1.13 2015/04/08 08:04:52 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> hglib-1.0.ebuild,
+  hglib-1.5.ebuild:
+  Drop old Python implementations
+
+*hglib-1.5 (18 Jan 2015)
+
+  18 Jan 2015; Kacper Kowalik <xarthisius@gentoo.org> +hglib-1.5.ebuild:
+  Version bump
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> hglib-1.0.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> hglib-1.0.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  26 Jun 2013; Mike Gilbert <floppym@gentoo.org> -hglib-0.3.ebuild,
+  -hglib-0.9.ebuild, hglib-1.0.ebuild:
+  Replace PYTHON_USE_WITH wit PYTHON_REQ_USE. Remove old.
+
+  24 Jun 2013; Ian Delaney <idella4@gentoo.org>
+  +files/hglib-0.9-pypy-tests.patch, hglib-0.9.ebuild:
+  patch to fix tests, acquired http://bz.selenic.com/show_bug.cgi?id=3965
+
+*hglib-1.0 (23 Jun 2013)
+
+  23 Jun 2013; Ian Delaney <idella4@gentoo.org> +hglib-1.0.ebuild:
+  bump again
+
+*hglib-0.9 (18 Jun 2013)
+
+  18 Jun 2013; Ian Delaney <idella4@gentoo.org> +hglib-0.9.ebuild,
+  -hglib-0.1.ebuild, -hglib-0.2.ebuild, hglib-0.3.ebuild:
+  update to 0.3, bump
+
+  23 Jan 2013; Ian Delaney <idella4@gentoo.org> +files/hglib-0.3-tests.patch,
+  hglib-0.3.ebuild:
+  tests.patch allowing pypy to pass testsuite, pypy support added, see upstream
+  pypy.org/issue1380
+
+*hglib-0.3 (22 Jan 2013)
+
+  22 Jan 2013; Ian Delaney <idella4@gentoo.org> +hglib-0.3.ebuild:
+  bump
+
+*hglib-0.2 (16 Mar 2012)
+
+  16 Mar 2012; Patrick Lauer <patrick@gentoo.org> +hglib-0.2.ebuild:
+  Bump for #407413
+
+  22 Feb 2012; Patrick Lauer <patrick@gentoo.org> hglib-0.1.ebuild:
+  Restricting pypy
+
+*hglib-0.1 (04 Dec 2011)
+
+  04 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org> +hglib-0.1.ebuild,
+  +metadata.xml:
+  Added dev-python/hglib-0.1, thanks to Arne Babenhauserheide. Bug #392387

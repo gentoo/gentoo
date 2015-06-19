@@ -1,0 +1,9 @@
+# ChangeLog for dev-perl/Test-Mock-LWP-Dispatch
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Mock-LWP-Dispatch/ChangeLog,v 1.1 2015/05/19 22:48:12 dilfridge Exp $
+
+*Test-Mock-LWP-Dispatch-0.60.0 (19 May 2015)
+
+  19 May 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Test-Mock-LWP-Dispatch-0.60.0.ebuild, +metadata.xml:
+  New package, neeed for net-misc/youtube-viewer, bug 549218

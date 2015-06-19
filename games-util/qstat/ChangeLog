@@ -1,0 +1,132 @@
+# ChangeLog for games-util/qstat
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-util/qstat/ChangeLog,v 1.30 2014/12/04 17:03:29 mr_bones_ Exp $
+
+  04 Dec 2014; Michael Sterrett <mr_bones_@gentoo.org> qstat-2.11.ebuild:
+  this strndup is local (bug #530952)
+
+  28 Nov 2014; Michael Sterrett <mr_bones_@gentoo.org> qstat-2.11.ebuild:
+  EAPI=5
+
+  06 Sep 2012; Anthony G. Basile <blueness@gentoo.org> qstat-2.11.ebuild:
+  Keyword ~arm
+
+  01 Nov 2010; Michael Sterrett <mr_bones_@gentoo.org> qstat-2.11.ebuild:
+  EAPI=2
+
+  04 Oct 2008; Brent Baude <ranger@gentoo.org> qstat-2.11.ebuild:
+  stable ppc64, bug 236389
+
+  13 Sep 2008; nixnut <nixnut@gentoo.org> qstat-2.11.ebuild:
+  Stable on ppc wrt bug 236389
+
+  06 Sep 2008; Jeroen Roovers <jer@gentoo.org> qstat-2.11.ebuild:
+  Stable for HPPA (bug #236389).
+
+  06 Sep 2008; Raúl Porcel <armin76@gentoo.org> qstat-2.11.ebuild:
+  x86 stable wrt #236389
+
+  05 Sep 2008; Thomas Anderson <gentoofan23@gentoo.org> qstat-2.11.ebuild:
+  stable amd64, bug 236389
+
+  06 Apr 2008; Tristan Heaven <nyhm@gentoo.org> qstat-2.10.ebuild,
+  qstat-2.11.ebuild:
+  Block sys-cluster/torque, bug #207059
+
+  14 Jan 2008; Fabian Groffen <grobian@gentoo.org> qstat-2.10.ebuild,
+  qstat-2.11.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+*qstat-2.11 (04 Nov 2006)
+
+  04 Nov 2006; Tristan Heaven <nyhm@gentoo.org> +qstat-2.11.ebuild:
+  Version bump
+
+  21 Oct 2006; Thomas Cort <tcort@gentoo.org> qstat-2.10.ebuild:
+  Added ~alpha keyword.
+
+  07 May 2006; Markus Rothe <corsair@gentoo.org> qstat-2.10.ebuild:
+  Stable on ppc64
+
+  17 Dec 2005; Markus Rothe <corsair@gentoo.org> qstat-2.10.ebuild:
+  Added ~ppc64
+
+*qstat-2.10 (23 Nov 2005)
+
+  23 Nov 2005; Mike Frysinger <vapier@gentoo.org> +qstat-2.10.ebuild:
+  Version bump #110126 by Mark <Line72> Dillavou.
+
+  18 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> qstat-2.8.ebuild:
+  Stable on ppc.
+
+  17 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> qstat-2.8.ebuild:
+  stable for x86
+
+*qstat-2.8 (06 Apr 2005)
+
+  06 Apr 2005; Mike Frysinger <vapier@gentoo.org> +qstat-2.8.ebuild:
+  Version bump.
+
+  20 Feb 2005; <gongloo@gentoo.org> qstat-2.7.ebuild:
+  Stable on ppc-macos.
+
+  20 Jan 2005; <gongloo@gentoo.org> qstat-2.7.ebuild:
+  Keyworded ~ppc-macos.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*qstat-2.7 (24 Dec 2004)
+
+  24 Dec 2004; Mike Frysinger <vapier@gentoo.org> +qstat-2.7.ebuild:
+  Version bump for new xqf.
+
+  08 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> qstat-2.6.ebuild:
+  sysconfdir patch from vi@sh.nu via bug #73830
+
+*qstat-2.5c (16 Aug 2004)
+
+  16 Aug 2004; Mike Frysinger <vapier@gentoo.org> -files/qstat-25b.gcc3-fix,
+  +qstat-2.5c.ebuild, +qstat-2.6.ebuild, -qstat-25b-r1.ebuild,
+  -qstat-25c.ebuild:
+  Version bump and version renaming #60622 by Keith Constable.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> qstat-25b-r1.ebuild,
+  qstat-25c.ebuild:
+  virtual/glibc -> virtual/libc
+
+  05 Jan 2004; Jon Portnoy <avenj@gentoo.org> qstat-25c.ebuild :
+  AMD64 keywords.
+
+*qstat-25c (13 Nov 2002)
+
+  14 Jan 2003; Jon Nall <nall@gentoo.org> qstat-25c.ebuild :
+  added ~ppc
+
+  13 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Version bump
+
+*qstat-25b-r1 (16 Sep 2002)
+
+  16 Sep 2002; Bryon Roche <kain@gentoo.org>
+  qstat-25b-r1.ebuild, files/qstat-25b.gcc3-fix:
+  Off-by-one fix in file-read mode.
+  Gcc-3 fixes.
+
+*qstat-25b (07 Sep 2002)
+
+  07 Sep 2002; J.Alberto Suárez López <bass@gentoo.org>
+  qstat-25b.ebuild:
+  Bumped version and fix LICENSE. Thanks vapier@netzero.com (SpanKY). 
+
+*qstat-24e (29 Mar 2002)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> qstat-24e.ebuild :
+  Added LICENSE, KEYWORDS.
+
+  13 April 2002; Bart Verwilst <verwilst@gentoo.org> Changelog: removed 
+  old version, and did some general cleanups in the ebuild.
+
+  29 Mar 2002; Bruce A. Locke <blocke@shivan.org> ChangeLog :
+  Qstat updated to 24e and ebuild was revamped to make it more version
+  independent

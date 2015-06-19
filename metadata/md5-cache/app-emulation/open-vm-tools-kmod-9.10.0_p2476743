@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
+DEPEND=kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources ) virtual/pkgconfig
+DESCRIPTION=Opensourced tools for VMware guests
+EAPI=5
+HOMEPAGE=http://open-vm-tools.sourceforge.net/
+IUSE=+vmhgfs +vmxnet kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=mirror://sourceforge/open-vm-tools/open-vm-tools-9.10.0-2476743.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	linux-mod	101302d4b7b694ea9622bbffb187d0de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=4952e49155f59d140830ba39f714eccc

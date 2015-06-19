@@ -1,0 +1,140 @@
+# ChangeLog for dev-python/enable
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/enable/ChangeLog,v 1.31 2015/06/07 13:15:48 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  18 Apr 2015; Sven Wegener <swegener@gentoo.org> enable-4.4.1.ebuild:
+  Rename distfile to include package name.
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> enable-4.4.1.ebuild:
+  x86 stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> enable-4.4.1.ebuild:
+  Needs swig:0
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> enable-4.4.1.ebuild:
+  amd64 stable, bug 540290
+
+  28 Dec 2014; Mike Gilbert <floppym@gentoo.org> -enable-4.3.0.ebuild:
+  Remove old.
+
+*enable-4.4.1 (14 Nov 2014)
+
+  14 Nov 2014; Ian Delaney <idella4@gentoo.org> +enable-4.4.1.ebuild:
+  bump; update SRC_URI, add missing test dep, fix qa issue in build, drop old
+  patches, minor fix to doc build, upgrade test phase
+
+*enable-4.3.0 (14 May 2013)
+
+  14 May 2013; Ian Delaney <idella4@gentoo.org> +enable-4.3.0.ebuild,
+  -enable-3.4.0.ebuild, -enable-3.4.1.ebuild, -enable-4.0.0.ebuild,
+  -enable-4.1.0.ebuild, -enable-4.2.0-r1.ebuild, -enable-4.2.0.ebuild,
+  files/enable-4-rogue-tests.patch:
+  bump, re-make of enable-4-rogue-tests.patch for new version, drop old
+
+  15 Apr 2013; Ian Delaney <idella4@gentoo.org> enable-4.2.0-r1.ebuild:
+  minor corrections/tidyup
+
+*enable-4.2.0-r1 (15 Apr 2013)
+
+  15 Apr 2013; Ian Delaney <idella4@gentoo.org> +enable-4.2.0-r1.ebuild:
+  migration -> distutils-r1
+
+  03 Apr 2013; Patrick Lauer <patrick@gentoo.org> enable-4.2.0.ebuild:
+  Fix dependencies
+
+  06 Dec 2012; Sébastien Fabbro <bicatali@gentoo.org> enable-4.2.0.ebuild:
+  Keyword amd64-linux and x86-linux
+
+  30 Nov 2012; Ian Delaney <idella4@gentoo.org>
+  +files/enable-4-rogue-tests.patch, enable-4.1.0.ebuild, enable-4.2.0.ebuild:
+  Fixes to test suites in 4.1,2.0, special patch saved to devspace to make
+  workable mix of correct and wrong import paths, skirt 1 invalid test, set 2
+  tests to xfail, fixes Bug #422945
+
+*enable-4.2.0 (09 Oct 2012)
+
+  09 Oct 2012; Patrick Lauer <patrick@gentoo.org> +enable-4.2.0.ebuild:
+  Bump
+
+  07 Aug 2012; Patrick Lauer <patrick@gentoo.org> enable-4.1.0.ebuild:
+  Restricting py-2.5
+
+  24 Feb 2012; Patrick Lauer <patrick@gentoo.org> enable-3.4.0.ebuild,
+  enable-3.4.1.ebuild, enable-4.0.0.ebuild, enable-4.1.0.ebuild:
+  Restricting pypy
+
+*enable-4.1.0 (17 Jan 2012)
+
+  17 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org> +enable-4.1.0.ebuild:
+  Version bump
+
+  06 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> enable-4.0.0.ebuild:
+  Syntax fix
+
+  06 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> enable-4.0.0.ebuild:
+  Fixed tests thanks to Arfrever
+
+*enable-4.0.0 (03 Aug 2011)
+
+  03 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> +enable-4.0.0.ebuild:
+  Version bump. Possible API break.
+
+*enable-3.4.1 (27 Mar 2011)
+
+  27 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +enable-3.4.1.ebuild:
+  Version bump.
+
+*enable-3.4.0 (30 Jan 2011)
+
+  30 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -files/enable-3.0.2-nofreetype.patch, -enable-3.3.2.ebuild,
+  +enable-3.4.0.ebuild:
+  Version bump.
+
+*enable-3.3.2 (18 Oct 2010)
+
+  18 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -enable-3.3.1.ebuild, +enable-3.3.2.ebuild:
+  Version bump.
+
+  16 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> enable-3.3.1.ebuild:
+  virtual/glu -> virtual/opengl
+
+*enable-3.3.1 (07 Jul 2010)
+
+  07 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -enable-3.2.0.ebuild, +enable-3.3.1.ebuild:
+  Version bump.
+
+  24 Mar 2010; Sébastien Fabbro <bicatali@gentoo.org> enable-3.3.0.ebuild,
+  +files/enable-3.3.0-nofreetype.patch:
+  Added proper patch this time and updated docs
+
+*enable-3.3.0 (21 Mar 2010)
+
+  21 Mar 2010; Sébastien Fabbro <bicatali@gentoo.org> +enable-3.3.0.ebuild:
+  Version bump
+
+  16 Mar 2010; Sébastien Fabbro <bicatali@gentoo.org> -enable-3.1.0.ebuild:
+  Removed old
+
+*enable-3.2.0 (05 Sep 2009)
+
+  05 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -enable-3.0.2.ebuild, +enable-3.2.0.ebuild:
+  Version bump. Set SUPPORT_PYTHON_ABIS.
+
+*enable-3.1.0 (27 Mar 2009)
+
+  27 Mar 2009; Sébastien Fabbro <bicatali@gentoo.org> +enable-3.1.0.ebuild:
+  Version bump
+
+*enable-3.0.2 (15 Jan 2009)
+
+  15 Jan 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/enable-3.0.2-nofreetype.patch, +metadata.xml, +enable-3.0.2.ebuild:
+  Initial import

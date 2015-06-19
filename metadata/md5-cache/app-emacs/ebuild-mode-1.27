@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=Emacs modes for editing ebuilds and other Gentoo specific files
+EAPI=5
+HOMEPAGE=http://wiki.gentoo.org/wiki/Project:Emacs
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=GPL-2+
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~ulm/emacs/ebuild-mode-1.27.tar.xz
+_eclasses_=elisp	d13b0507622afb8ac9e3f54e91d58614	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8aff9953e233cd0da3baa62827757641

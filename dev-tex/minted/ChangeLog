@@ -1,0 +1,14 @@
+# ChangeLog for dev-tex/minted
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/minted/ChangeLog,v 1.4 2015/04/07 14:23:10 jlec Exp $
+
+*minted-2.0 (23 Mar 2015)
+
+  23 Mar 2015; Justin Lecher <jlec@gentoo.org> +minted-2.0.ebuild:
+  Version Bump, bug #539466
+
+*minted-1.7 (11 Jan 2013)
+
+  11 Jan 2013; Justin Lecher <jlec@gentoo.org> +minted-1.7.ebuild,
+  +metadata.xml:
+  New addition, #312603; prepared by José Romildo Malaquias

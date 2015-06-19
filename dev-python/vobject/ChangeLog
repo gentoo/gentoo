@@ -1,0 +1,84 @@
+# ChangeLog for dev-python/vobject
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/vobject/ChangeLog,v 1.21 2015/04/08 08:05:14 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> vobject-0.8.1c-r1.ebuild:
+  Drop old Python implementations
+
+  23 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -vobject-0.8.1c.ebuild:
+  Remove old.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> vobject-0.8.1c-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> vobject-0.8.1c-r1.ebuild:
+  Stable for amd64, wrt bug #474206
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> vobject-0.8.1c-r1.ebuild:
+  Stable for x86, wrt bug #474206
+
+*vobject-0.8.1c-r1 (09 May 2013)
+
+  09 May 2013; Ian Delaney <idella4@gentoo.org> +vobject-0.8.1c-r1.ebuild:
+  migrate -> distutils-r1, change license to correct version of Apache, fixes
+  Bug #468198
+
+  01 Apr 2012; Mike Gilbert <floppym@gentoo.org> vobject-0.8.1c.ebuild:
+  python-dateutil no longer needs a slot dep.
+
+  01 Apr 2012; Mike Gilbert <floppym@gentoo.org> vobject-0.8.1c.ebuild:
+  Add runtime dependency on setuptools.
+
+  24 Jan 2012; Kacper Kowalik <xarthisius@gentoo.org> vobject-0.8.1c.ebuild:
+  Depend on proper slot of dev-python/python-dateutil
+
+  11 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  vobject-0.8.1c.ebuild:
+  stable x86, bug 326245
+
+  08 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  vobject-0.8.1b.ebuild:
+  Use PYTHON_DEPEND instead of NEED_PYTHON.
+
+  06 Jul 2010; Markos Chandras <hwoarang@gentoo.org> vobject-0.8.1c.ebuild:
+  Stable on amd64 wrt bug #326245
+
+  30 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  vobject-0.8.1c.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  04 Sep 2009; Patrick Lauer <patrick@gentoo.org> -vobject-0.7.1.ebuild:
+  Remove old
+
+*vobject-0.8.1c (01 Jun 2009)
+
+  01 Jun 2009; Patrick Lauer <patrick@gentoo.org> +vobject-0.8.1c.ebuild:
+  Bump to 0.8.1c, fixes #272093
+
+  23 Apr 2009; Markus Meier <maekke@gentoo.org> vobject-0.8.1b:
+  amd64/x86 stable, bug #266976
+
+*vobject-0.8.1b (15 Feb 2009)
+
+  15 Feb 2009; Patrick Lauer <patrick@gentoo.org> +vobject-0.8.1b.ebuild:
+  Bump to 0.8.1b
+
+  08 Jan 2009; Patrick Lauer <patrick@gentoo.org> -vobject-0.6.0.ebuild,
+  -vobject-0.6.6.ebuild:
+  Removing old
+
+*vobject-0.7.1 (06 Dec 2008)
+
+  06 Dec 2008; Patrick Lauer <patrick@gentoo.org> +vobject-0.7.1.ebuild:
+  Bumping to 0.7.1, closing #248881
+
+*vobject-0.6.6 (25 Jun 2008)
+
+  25 Jun 2008; Ali Polatel <hawking@gentoo.org> +vobject-0.6.6.ebuild:
+  Version bump.
+
+*vobject-0.6.0 (22 Apr 2008)
+
+  22 Apr 2008; Tiziano Müller <dev-zero@gentoo.org> +metadata.xml,
+  +vobject-0.6.0.ebuild:
+  Initial commit (bug #148532, thanks to Charles Clément)

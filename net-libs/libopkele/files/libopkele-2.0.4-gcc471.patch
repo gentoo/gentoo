@@ -1,0 +1,23 @@
+From 9ff6244998b0d41e71f7cc7351403ad590e990e4 Mon Sep 17 00:00:00 2001
+From: qdii <qdii@reblochon.be>
+Date: Fri, 02 Nov 2012 19:46:03 +0000
+Subject: Fix argument-lookup failure on GCC 4.7.1, causing compilation to crash.
+
+Modified-by: Michael Krelin <hacker@klever.net>
+Signed-off-by: Michael Krelin <hacker@klever.net>
+---
+diff --git a/include/opkele/discovery.h b/include/opkele/discovery.h
+index f2721a6..985eef6 100644
+--- a/include/opkele/discovery.h
++++ b/include/opkele/discovery.h
+@@ -21,7 +21,7 @@ namespace opkele {
+ 		public:
+ 
+ 		    inline _DT& add(long priority,const _DT& d) {
+-			return insert(typename map_type::value_type(priority,d))->second;
++			return this->insert(typename map_type::value_type(priority,d))->second;
+ 		    }
+ 
+ 		    bool has_value(const _DT& d) const {
+--
+cgit v0.9-30-gcd78

@@ -1,0 +1,77 @@
+# ChangeLog for app-misc/beancounter
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/beancounter/ChangeLog,v 1.17 2014/01/24 19:37:29 zlogene Exp $
+
+  24 Jan 2014; Mikle Kolyada <zlogene@gentoo.org> -beancounter-0.8.10.ebuild:
+  Remove version with old EAPI
+
+*beancounter-0.8.10-r1 (27 Aug 2013)
+
+  27 Aug 2013; Ian Delaney <idella4@gentoo.org> +beancounter-0.8.10-r1.ebuild:
+  revbump -> EAPI 5
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -beancounter-0.8.8.ebuild,
+  -beancounter-0.8.9.ebuild:
+  Remove old
+
+  07 Sep 2010; Jeroen Roovers <jer@gentoo.org> beancounter-0.8.8.ebuild,
+  beancounter-0.8.9.ebuild, beancounter-0.8.10.ebuild:
+  Set RDEPEND to include DEPEND by James Rowe (bug #336360).
+
+*beancounter-0.8.10 (06 Sep 2010)
+
+  06 Sep 2010; Michael Weber <xmw@gentoo.org> +beancounter-0.8.10.ebuild:
+  Version bump to fix bug #326941, thanks to Jerome Asselin and Dane Smith.
+
+*beancounter-0.8.9 (13 Feb 2010)
+
+  13 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +beancounter-0.8.9.ebuild:
+  Version Bump and keyworded for ~amd64, bug 304173
+
+  07 Jun 2008; Jeremy Olexa <darkside@gentoo.org> ChangeLog:
+  Version bump, bug #221839. Added dev-perl/DBI to RDEPEND, appears it is
+  needed. Also removed old versions, I don't think we need >3 versions in the
+  tree
+
+  14 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Christian Andreetta (satya, #48841) from metadata.xml.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*beancounter-0.8.7 (09 May 2006)
+
+  09 May 2006; Christian Andreetta <satya@gentoo.org>
+  +beancounter-0.8.7.ebuild:
+  version bump (bug #132402)
+
+*beancounter-0.8.6 (28 Mar 2006)
+
+  28 Mar 2006; Christian Andreetta <satya@gentoo.org>
+  +beancounter-0.8.6.ebuild:
+  version bump (bug #127814)
+
+*beancounter-0.8.4 (28 Feb 2006)
+
+  28 Feb 2006; Christian Andreetta <satya@gentoo.org>
+  +beancounter-0.8.4.ebuild:
+  version bump (bug #124336)
+
+  28 Nov 2005; <mcumming@gentoo.org> beancounter-0.8.1.ebuild:
+  Switched from perl-module to perl-app eclass
+
+  21 Jul 2005; David Holm <dholm@gentoo.org> beancounter-0.8.1.ebuild:
+  Added to ~ppc.
+
+  26 May 2005; Sven Wegener <swegener@gentoo.org> metadata.xml:
+  Herd name is 'no-herd' not 'noherd'
+
+  05 May 2005; Sven Wegener <swegener@gentoo.org> beancounter-0.8.1.ebuild:
+  Fixed DEPEND.
+
+*beancounter-0.8.1 (04 May 2005)
+
+  04 May 2005; Christian Andreetta <satya@gentoo.org> +metadata.xml,
+  +beancounter-0.8.1.ebuild:
+  initial submission

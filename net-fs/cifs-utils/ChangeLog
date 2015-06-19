@@ -1,0 +1,344 @@
+# ChangeLog for net-fs/cifs-utils
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-fs/cifs-utils/ChangeLog,v 1.83 2015/03/03 09:22:39 dlan Exp $
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> cifs-utils-6.4.ebuild:
+  add arm64 support, tested on A53 board
+
+  20 Feb 2015; Raúl Porcel <armin76@gentoo.org> cifs-utils-6.1-r1.ebuild:
+  s390/sh/sparc stable wrt #486312
+
+  13 Aug 2014; Agostino Sarubbo <ago@gentoo.org> cifs-utils-6.1-r1.ebuild:
+  Stable for ppc, wrt bug #486312
+
+*cifs-utils-6.4 (21 Jul 2014)
+
+  21 Jul 2014; Lars Wendler <polynomial-c@gentoo.org> -cifs-utils-6.2.ebuild,
+  +cifs-utils-6.4.ebuild:
+  Version bump. Removed old.
+
+  22 Jun 2014; Tobias Klausmann <klausman@gentoo.org> cifs-utils-6.1-r1.ebuild:
+  Stable on alpha, bug #486312
+
+  29 Jan 2014; Pacho Ramos <pacho@gentoo.org> cifs-utils-6.1-r1.ebuild:
+  ia64 stable, bug #486312 (thanks to Emeric Maschino for testing)
+
+  26 Jan 2014; Pacho Ramos <pacho@gentoo.org> cifs-utils-6.1-r1.ebuild,
+  cifs-utils-6.2.ebuild, cifs-utils-6.3.ebuild:
+  Rekeyword as the package causing the keyword lost regained keywords time ago
+  (#476406)
+
+*cifs-utils-6.3 (11 Jan 2014)
+
+  11 Jan 2014; Lars Wendler <polynomial-c@gentoo.org> -cifs-utils-6.0.ebuild,
+  +cifs-utils-6.3.ebuild:
+  Version bump. Removed old.
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> cifs-utils-6.1-r1.ebuild:
+  Stable for ppc64, wrt bug #486312
+
+  14 Dec 2013; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  cifs-utils-6.1-r1.ebuild, cifs-utils-6.2.ebuild:
+  Move the samba dependency to the pdepend block. Non-mainainer commit.
+
+  11 Dec 2013; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  cifs-utils-6.1-r1.ebuild, cifs-utils-6.2.ebuild:
+  Replace the RDEPEND with a PDEPEND - completely fix bug 489472. Non-maintainer
+  commit acknowledged by Patrick (bonsaikitten).
+
+  07 Dec 2013; Pacho Ramos <pacho@gentoo.org> cifs-utils-6.1-r1.ebuild:
+  x86 stable, bug #486312
+
+  15 Nov 2013; Rick Farina <zerochaos@gentoo.org> cifs-utils-6.1-r1.ebuild,
+  cifs-utils-6.2.ebuild:
+  acl use flag is default from profiles/releases/make.defaults and requires ads
+  use flag
+
+  22 Oct 2013; Lars Wendler <polynomial-c@gentoo.org> cifs-utils-5.9-r1.ebuild,
+  cifs-utils-6.0.ebuild, cifs-utils-6.1-r1.ebuild, cifs-utils-6.2.ebuild,
+  metadata.xml:
+  Removed "upcall" USE flag as it provides the same features like "ads" USE
+  flag.
+
+  20 Oct 2013; Markus Meier <maekke@gentoo.org> cifs-utils-6.1-r1.ebuild:
+  arm stable, bug #486312
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> cifs-utils-6.1-r1.ebuild:
+  amd64 stable, bug #486312
+
+  16 Oct 2013; Jeroen Roovers <jer@gentoo.org> cifs-utils-6.1-r1.ebuild:
+  Stable for HPPA (bug #486312).
+
+*cifs-utils-6.2 (07 Oct 2013)
+
+  07 Oct 2013; Lars Wendler <polynomial-c@gentoo.org> -cifs-utils-6.1.ebuild,
+  +cifs-utils-6.2.ebuild:
+  Version bump. Removed old.
+
+*cifs-utils-6.1-r1 (21 Sep 2013)
+
+  21 Sep 2013; Pacho Ramos <pacho@gentoo.org> +cifs-utils-6.1-r1.ebuild,
+  +files/cifs-utils-6.1-hardcoded-path.patch:
+  Do not rely on hardcoded path to systemd-ask-password, bug #478538 by Dennis
+  Lichtenthäler
+
+*cifs-utils-6.1 (10 Jul 2013)
+
+  10 Jul 2013; Lars Wendler <polynomial-c@gentoo.org>
+  -cifs-utils-5.6-r1.ebuild, -cifs-utils-5.8-r1.ebuild,
+  -cifs-utils-6.0-r1.ebuild, +cifs-utils-6.1.ebuild:
+  Non-maintainer commit: Version bump. Removed old. Really fixed bug #466364
+  this time.
+
+*cifs-utils-6.0-r1 (22 Apr 2013)
+
+  22 Apr 2013; Lars Wendler <polynomial-c@gentoo.org>
+  +cifs-utils-6.0-r1.ebuild:
+  Revbump to EAPI-5. Added a patch by Torsten Kurbad to default enable
+  libcap-ng and some additionaly tweaks in the ebuild (bug #466364). Reworked
+  USE flag logic. Now "caps" USE flag controls both caps implementations and
+  "caps-ng" is the switch between one of them.
+
+  14 Apr 2013; Agostino Sarubbo <ago@gentoo.org> cifs-utils-5.9-r1.ebuild:
+  Stable for sh, wrt bug #464356
+
+  13 Apr 2013; Agostino Sarubbo <ago@gentoo.org> cifs-utils-5.9-r1.ebuild:
+  Stable for s390, wrt bug #464356
+
+  13 Apr 2013; Agostino Sarubbo <ago@gentoo.org> cifs-utils-5.9-r1.ebuild:
+  Stable for sparc, wrt bug #464356
+
+  12 Apr 2013; Agostino Sarubbo <ago@gentoo.org> cifs-utils-5.9-r1.ebuild:
+  Stable for ia64, wrt bug #464356
+
+  12 Apr 2013; Agostino Sarubbo <ago@gentoo.org> cifs-utils-5.9-r1.ebuild:
+  Stable for alpha, wrt bug #464356
+
+  10 Apr 2013; Jeroen Roovers <jer@gentoo.org> cifs-utils-5.9-r1.ebuild:
+  Stable for HPPA (bug #464356).
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> cifs-utils-5.9-r1.ebuild:
+  Stable for arm, wrt bug #464356
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> cifs-utils-5.9-r1.ebuild:
+  Stable for ppc64, wrt bug #464356
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> cifs-utils-5.9-r1.ebuild:
+  Stable for ppc, wrt bug #464356
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> cifs-utils-5.9-r1.ebuild:
+  Stable for x86, wrt bug #464356
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> cifs-utils-5.9-r1.ebuild:
+  Stable for amd64, wrt bug #464356
+
+*cifs-utils-6.0 (03 Apr 2013)
+
+  03 Apr 2013; Lars Wendler <polynomial-c@gentoo.org> +cifs-utils-6.0.ebuild:
+  Non-maintainer commit: Version bump.
+
+*cifs-utils-5.9-r1 (25 Feb 2013)
+
+  25 Feb 2013; Lars Wendler <polynomial-c@gentoo.org> -cifs-utils-5.9.ebuild,
+  +cifs-utils-5.9-r1.ebuild,
+  +files/cifs-utils-5.9-set-parsed_info-got_user-when-a-cred-file.patch:
+  Mounting with credentials file fixed. Thanks to Michael Buchfink for
+  reporting this in bug #459040.
+
+*cifs-utils-5.9 (22 Feb 2013)
+
+  22 Feb 2013; Lars Wendler <polynomial-c@gentoo.org>
+  -cifs-utils-5.5-r1.ebuild, +cifs-utils-5.9.ebuild:
+  Non-maintainer commit: Version bump. Removed old.
+
+  22 Feb 2013; Zac Medico <zmedico@gentoo.org> cifs-utils-5.8-r1.ebuild:
+  Fix for prefix and add ~arm-linux + ~x86-linux keywords.
+
+  01 Jan 2013; Raúl Porcel <armin76@gentoo.org> cifs-utils-5.6-r1.ebuild:
+  s390/sh stable wrt #444672
+
+  30 Dec 2012; Agostino Sarubbo <ago@gentoo.org> cifs-utils-5.6-r1.ebuild:
+  Stable for alpha, wrt bug #444672
+
+  29 Dec 2012; Agostino Sarubbo <ago@gentoo.org> cifs-utils-5.6-r1.ebuild:
+  Stable for sparc, wrt bug #444672
+
+  17 Dec 2012; Agostino Sarubbo <ago@gentoo.org> cifs-utils-5.6-r1.ebuild:
+  Stable for ia64, wrt bug #444672
+
+  06 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  cifs-utils-5.6-r1.ebuild:
+  x86 stable wrt bug #444672
+
+*cifs-utils-5.8-r1 (04 Dec 2012)
+
+  04 Dec 2012; Tiziano Müller <dev-zero@gentoo.org> +cifs-utils-5.8-r1.ebuild,
+  -cifs-utils-5.8.ebuild:
+  Fix linux-info eclass usage by calling its pkg_setup method. Don't install
+  empty dir.
+
+  01 Dec 2012; Anthony G. Basile <blueness@gentoo.org> cifs-utils-5.6-r1.ebuild:
+  stable arm ppc64, bug #444672
+
+  29 Nov 2012; Brent Baude <ranger@gentoo.org> cifs-utils-5.6-r1.ebuild:
+  Marking cifs-utils-5.6-r1 ppc for bug 444672
+
+  29 Nov 2012; Jeroen Roovers <jer@gentoo.org> cifs-utils-5.6-r1.ebuild:
+  Stable for HPPA (bug #444672).
+
+  25 Nov 2012; <ago@gentoo.org> cifs-utils-5.6-r1.ebuild:
+  Stable for amd64, wrt bug #444672
+
+*cifs-utils-5.8 (25 Nov 2012)
+
+  25 Nov 2012; Lars Wendler <polynomial-c@gentoo.org> -cifs-utils-5.4.ebuild,
+  +cifs-utils-5.8.ebuild:
+  non-maintainer commit: Version bump. Removed old.
+
+  29 Sep 2012; Raúl Porcel <armin76@gentoo.org> cifs-utils-5.5-r1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #433325
+
+  18 Sep 2012; Jeroen Roovers <jer@gentoo.org> cifs-utils-5.5-r1.ebuild:
+  Stable for HPPA (bug #433325).
+
+*cifs-utils-5.6-r1 (18 Sep 2012)
+
+  18 Sep 2012; Lars Wendler <polynomial-c@gentoo.org> -cifs-utils-5.6.ebuild,
+  +cifs-utils-5.6-r1.ebuild:
+  non-maintainer commit: Revbump to fix econf line in src_configure() (bug
+  #435366).
+
+  13 Sep 2012; Lars Wendler <polynomial-c@gentoo.org> cifs-utils-5.6.ebuild:
+  non-maintainer commit: Removed failing epatch command as patch is not
+  necessary for this version.
+
+*cifs-utils-5.6 (13 Sep 2012)
+
+  13 Sep 2012; Tomáš Chvátal <scarabeus@gentoo.org> +cifs-utils-5.6.ebuild:
+  Version bump to latest.
+
+  13 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  cifs-utils-5.5-r1.ebuild:
+  Stable arm, bug #433325
+
+  09 Sep 2012; Tomáš Chvátal <scarabeus@gentoo.org> cifs-utils-5.5-r1.ebuild:
+  Stable on amd64, x86, ppc and ppc64 wrt bug#433325.
+
+  07 Aug 2012; Raúl Porcel <armin76@gentoo.org> cifs-utils-5.4.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #420895
+
+  10 Jul 2012; Brent Baude <ranger@gentoo.org> cifs-utils-5.4.ebuild:
+  Marking cifs-utils-5.4 ppc64 for bug 420895
+
+  10 Jul 2012; Brent Baude <ranger@gentoo.org> cifs-utils-5.4.ebuild:
+  Marking cifs-utils-5.4 ppc for bug 420895
+
+  08 Jul 2012; Jeroen Roovers <jer@gentoo.org> cifs-utils-5.4.ebuild:
+  Stable for HPPA (bug #420895).
+
+*cifs-utils-5.5-r1 (04 Jul 2012)
+
+  04 Jul 2012; Lars Wendler <polynomial-c@gentoo.org> cifs-utils-5.4.ebuild,
+  -cifs-utils-5.5.ebuild, +cifs-utils-5.5-r1.ebuild,
+  +files/cifs-utils-5.5-initialize_rc_var_properly.patch:
+  non-maintainer commit: Added patch to 5.5 version so it mounts shares again.
+  Thanks to Martin Wegner for reporting this problem in bug #424487. Fixed
+  leading spaces in ebuilds.
+
+*cifs-utils-5.5 (28 Jun 2012)
+
+  28 Jun 2012; Patrick Lauer <patrick@gentoo.org> +cifs-utils-5.5.ebuild:
+  Bump
+
+  20 Jun 2012; Markus Meier <maekke@gentoo.org> cifs-utils-5.4.ebuild:
+  arm stable, bug #420895
+
+  13 Jun 2012; Agostino Sarubbo <ago@gentoo.org> cifs-utils-5.4.ebuild:
+  Stable for amd64, wrt bug #420895
+
+  13 Jun 2012; Jeff Horelick <jdhore@gentoo.org> cifs-utils-5.4.ebuild:
+  marked x86 per bug 420895
+
+*cifs-utils-5.4 (23 Apr 2012)
+
+  23 Apr 2012; Víctor Ostorga <vostorga@gentoo.org> -cifs-utils-5.1.ebuild,
+  -cifs-utils-5.3.ebuild, +cifs-utils-5.4.ebuild:
+  Version bump to 5.4 . Includes fixes for CVE-2012-1586, bug 410989
+
+*cifs-utils-5.3 (13 Feb 2012)
+
+  13 Feb 2012; Víctor Ostorga <vostorga@gentoo.org> +cifs-utils-5.3.ebuild:
+  Version bump to 5.3
+
+  28 Oct 2011; Víctor Ostorga <vostorga@gentoo.org> cifs-utils-5.1.ebuild:
+  Disabling cifsidmap and cifsacl support, because they look for a 
+  non-existant wbclient.h bug 385475, fixing libcap-ng use flag
+
+  04 Oct 2011; Víctor Ostorga <vostorga@gentoo.org> cifs-utils-5.1.ebuild:
+  Dropping setuid flag, CVE-2011-3585  bug 385315
+
+  03 Oct 2011; Víctor Ostorga <vostorga@gentoo.org> -cifs-utils-5.0.ebuild:
+  Cleaning up vulnerable versions, CVE-2011-2724, bug 382263
+
+*cifs-utils-5.1 (26 Sep 2011)
+
+  26 Sep 2011; Víctor Ostorga <vostorga@gentoo.org> +cifs-utils-5.1.ebuild:
+  Moving to EAPI 4, adding upcall use flag, which enable cifsidmap, forcing
+  user to choice either caps or caps-ng support
+
+  09 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> cifs-utils-5.0.ebuild:
+  Marked ~ppc64 wrt #358401
+
+  07 Aug 2011; Raúl Porcel <armin76@gentoo.org> cifs-utils-5.0.ebuild:
+  Add ~ia64/~s390/~sh/~sparc wrt #358401
+
+  15 Jul 2011; Matt Turner <mattst88@gentoo.org> cifs-utils-5.0.ebuild:
+  Added ~mips, bug 358401
+
+  30 Jun 2011; Víctor Ostorga <vostorga@gentoo.org> -cifs-utils-4.8.1.ebuild,
+  cifs-utils-5.0.ebuild:
+  Fixing DEPEND on !<net-fs/samba-3.6_rc2 bug #364225
+
+  02 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org> cifs-utils-5.0.ebuild:
+  Keyword ~arm, bug 358401
+
+  02 Jun 2011; Víctor Ostorga <vostorga@gentoo.org> cifs-utils-5.0.ebuild:
+  Using use_with in the caps-ng use flag case, thanks to leio for the heads up
+
+*cifs-utils-5.0 (02 Jun 2011)
+
+  02 Jun 2011; Víctor Ostorga <vostorga@gentoo.org> +cifs-utils-5.0.ebuild:
+  Version bump to 5.0
+
+  09 May 2011; Víctor Ostorga <vostorga@gentoo.org>
+  cifs-utils-4.8.1.ebuild:
+  Shining up checking of CIFS kernel parameter, thanks to Jeremy Olexa
+  <darkside@gentoo.org> bug #364679
+
+  27 Apr 2011; Víctor Ostorga <vostorga@gentoo.org>
+  cifs-utils-4.8.1.ebuild:
+  Replacing eerror to ewarn, and dropping die bug #364679
+
+  31 Mar 2011; Jeroen Roovers <jer@gentoo.org> cifs-utils-4.8.1.ebuild:
+  Marked ~hppa (bug #358401).
+
+  27 Mar 2011; Tobias Klausmann <klausman@gentoo.org> cifs-utils-4.8.1.ebuild:
+  Keyworded on alpha, bug #358401
+
+  10 Mar 2011; Víctor Ostorga <vostorga@gentoo.org>
+  cifs-utils-4.8.1.ebuild:
+  Fixing dependency on sys-apps/keyutils when using creds useflag, thanks to
+  Gil Desmarais <gil.desmarais+bugs.gentoo.org@gmail.com> bug 355667
+
+  22 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  cifs-utils-4.8.1.ebuild:
+  Marked ~ppc wrt #355997. Thanks to hiyuh <hiyuh.root@gmail.com> for report
+  and testing.
+
+*cifs-utils-4.8.1 (28 Jan 2011)
+
+  28 Jan 2011; Víctor Ostorga <vostorga@gentoo.org>
+  +cifs-utils-4.8.1.ebuild, +metadata.xml:
+  Initial import, ebuild based on work from Ewoud Kohl van Wijngaarden
+  <gentoo@kohlvanwijngaarden.nl> and Sebastiaan <s.breedveld@erasmusmc.nl>
+  bug 308655

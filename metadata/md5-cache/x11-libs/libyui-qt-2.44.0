@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-qt/qtgui:4 media-libs/freetype x11-libs/libX11 x11-libs/libyui:0/6 dev-libs/boost dev-qt/qtsvg:4 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=UI abstraction library - Qt plugin
+EAPI=5
+HOMEPAGE=https://github.com/libyui/libyui-qt
+IUSE=static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtgui:4 media-libs/freetype x11-libs/libX11 x11-libs/libyui:0/6
+SLOT=0/6
+SRC_URI=https://github.com/libyui/libyui-qt/archive/libyui-qt/master/2.44.0.tar.gz -> libyui-qt-2.44.0.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=4f9674e47c35e969d0dd723fb460f411

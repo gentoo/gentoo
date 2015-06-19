@@ -1,0 +1,12 @@
+diff -Naur opendchub-0.7.14.vanilla/src/main.c opendchub-0.7.14/src/main.c
+--- opendchub-0.7.14.vanilla/src/main.c	2003-11-15 08:01:16.000000000 -0600
++++ opendchub-0.7.14/src/main.c	2004-08-23 15:58:33.119710184 -0500
+@@ -1056,7 +1056,7 @@
+ 	     /* The chat command, starts with <nick> */
+ 	     else if(*temp == '<')
+ 	       {
+-		  if((user->type & (SCRIPT | UNKEYED | LINKED | NON_LOGGED)) == 0)
++		  if((user->type & (SCRIPT | UNKEYED | LINKED | NON_LOGGED | NON_LOGGED_ADM)) == 0)
+ 		    chat(temp, user);
+ 	       }
+ 	     

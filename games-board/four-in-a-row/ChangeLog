@@ -1,0 +1,82 @@
+# ChangeLog for games-board/four-in-a-row
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/four-in-a-row/ChangeLog,v 1.20 2015/06/09 15:11:40 eva Exp $
+
+*four-in-a-row-3.16.2 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  -four-in-a-row-3.12.3.ebuild, +four-in-a-row-3.16.2.ebuild:
+  Version bump for Gnome 3.16. Clean up old revision.
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> four-in-a-row-3.14.2.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> four-in-a-row-3.14.2.ebuild:
+  amd64 stable, bug 534012
+
+*four-in-a-row-3.14.2 (22 Dec 2014)
+
+  22 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  -four-in-a-row-3.10.1.ebuild, +four-in-a-row-3.14.2.ebuild:
+  Version bump for Gnome 3.14. Clean up old revision.
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> four-in-a-row-3.12.3.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> four-in-a-row-3.12.3.ebuild:
+  Stable for amd64, wrt bug #512912
+
+*four-in-a-row-3.12.3 (26 Jun 2014)
+
+  26 Jun 2014; Pacho Ramos <pacho@gentoo.org> +four-in-a-row-3.12.3.ebuild,
+  -four-in-a-row-3.12.1.ebuild, -four-in-a-row-3.12.2.ebuild:
+  Version bump, drop old
+
+*four-in-a-row-3.12.2 (30 May 2014)
+
+  30 May 2014; Pacho Ramos <pacho@gentoo.org> +four-in-a-row-3.12.2.ebuild:
+  Version bump
+
+*four-in-a-row-3.12.1 (27 Apr 2014)
+
+  27 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +four-in-a-row-3.12.1.ebuild:
+  Version bump for Gnome 3.12.
+
+  26 Apr 2014; Pacho Ramos <pacho@gentoo.org> -four-in-a-row-3.8.1.ebuild:
+  drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> four-in-a-row-3.10.1.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> four-in-a-row-3.10.1.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> four-in-a-row-3.10.1.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> four-in-a-row-3.10.1.ebuild:
+  arch stable, bug 888
+
+*four-in-a-row-3.10.1 (24 Dec 2013)
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org> +four-in-a-row-3.10.1.ebuild:
+  Version bump for Gnome 3.10
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> four-in-a-row-3.8.1.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> four-in-a-row-3.8.1.ebuild:
+  amd64 stable, bug #478252
+
+  06 Nov 2013; Pacho Ramos <pacho@gentoo.org> four-in-a-row-3.8.1.ebuild:
+  x86 keyword, bug #476710
+
+  31 Aug 2013; Sergey Popov <pinkbyte@gentoo.org> four-in-a-row-3.8.1.ebuild:
+  Add ~arm keyword, wrt bug #476710
+
+*four-in-a-row-3.8.1 (30 Jun 2013)
+
+  30 Jun 2013; Pacho Ramos <pacho@gentoo.org> +four-in-a-row-3.8.1.ebuild,
+  +metadata.xml:
+  Add game splitted from gnome-games by upstream

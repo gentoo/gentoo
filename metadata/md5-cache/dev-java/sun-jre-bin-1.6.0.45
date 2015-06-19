@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install nofetch postinst postrm prerm setup unpack
+DEPEND=pax_kernel? ( sys-apps/paxctl ) selinux? ( sec-policy/selinux-java ) >=dev-java/java-config-2.2.0 app-eselect/eselect-java
+DESCRIPTION=Oracle's Java SE Runtime Environment
+EAPI=5
+HOMEPAGE=http://www.oracle.com/technetwork/java/javase/
+IUSE=X alsa jce nsplugin pax_kernel selinux
+KEYWORDS=amd64 x86
+LICENSE=Oracle-BCLA-JavaSE
+RDEPEND=X? ( x11-libs/libXext x11-libs/libXi x11-libs/libXrender x11-libs/libXtst x11-libs/libX11 ) alsa? ( media-libs/alsa-lib ) jce? ( dev-java/sun-jce-bin:1.6 ) !prefix? ( sys-libs/glibc ) selinux? ( sec-policy/selinux-java ) >=dev-java/java-config-2.2.0 app-eselect/eselect-java
+RESTRICT=fetch strip
+SLOT=1.6
+SRC_URI=amd64? ( jre-6u45-linux-x64.bin ) ia64? ( jre-6u45-linux-ia64.bin ) x86? ( jre-6u45-linux-i586.bin )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	java-vm-2	caa0212cf1c60716fd4b3ab09268be3e	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=bfcd5a38fcbbd5c65c3e6b605cf51a05

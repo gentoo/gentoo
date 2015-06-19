@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=dev-libs/uthash sys-libs/libcap net-libs/librsync sys-libs/ncurses sys-libs/zlib acl? ( sys-apps/acl ) afs? ( net-fs/openafs ) nls? ( sys-devel/gettext ) ssl? ( dev-libs/openssl:0 ) tcpd? ( sys-apps/tcp-wrappers ) xattr? ( sys-apps/attr )
+DESCRIPTION=Network backup and restore client and server for Unix and Windows
+EAPI=5
+HOMEPAGE=http://burp.grke.org/
+IUSE=acl afs nls ssl tcpd xattr
+KEYWORDS=~amd64
+LICENSE=AGPL-3
+RDEPEND=dev-libs/uthash sys-libs/libcap net-libs/librsync sys-libs/ncurses sys-libs/zlib acl? ( sys-apps/acl ) afs? ( net-fs/openafs ) nls? ( sys-devel/gettext ) ssl? ( dev-libs/openssl:0 ) tcpd? ( sys-apps/tcp-wrappers ) xattr? ( sys-apps/attr ) virtual/logger
+SLOT=0
+SRC_URI=http://burp.grke.org/downloads/burp-1.3.8/burp-1.3.8.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=41b806b3394c20b25f453ee51604f01a

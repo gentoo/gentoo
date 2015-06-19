@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/linux-identd/files/identd.init,v 1.1 2005/04/06 19:55:17 seemant Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting identd"
+	start-stop-daemon --start --quiet --name identd \
+		--startas /usr/sbin/identd -- -d
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping identd"
+	start-stop-daemon --stop --quiet --name identd
+	eend $?
+}

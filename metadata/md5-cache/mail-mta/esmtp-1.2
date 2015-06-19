@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst
+DEPEND=net-libs/libesmtp dev-libs/openssl sys-devel/flex
+DESCRIPTION=esmtp is a user configurable relay-only Mail Transfer Agent (MTA) with a sendmail compatible syntax
+HOMEPAGE=http://esmtp.sourceforge.net/
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~x86-macos
+LICENSE=GPL-2
+RDEPEND=net-libs/libesmtp dev-libs/openssl !mail-mta/courier !mail-mta/exim !mail-mta/mini-qmail !mail-mta/msmtp !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/ssmtp !mail-mta/opensmtpd
+SLOT=0
+SRC_URI=mirror://sourceforge/esmtp/esmtp-1.2.tar.bz2
+_md5_=d3bf2ed20e33d368415e3444b336ced7

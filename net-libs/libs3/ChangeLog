@@ -1,0 +1,22 @@
+# ChangeLog for net-libs/libs3
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libs3/ChangeLog,v 1.4 2014/05/24 07:43:03 pacho Exp $
+
+  24 May 2014; Pacho Ramos <pacho@gentoo.org> -libs3-2.0.ebuild, metadata.xml:
+  Cleanup due #199047
+
+*libs3-2.0-r1 (10 Nov 2012)
+
+  10 Nov 2012; Justin Lecher <jlec@gentoo.org> +libs3-2.0-r1.ebuild,
+  +files/libs3-2.0-build.patch:
+  Drop Werror; do not strip files, #438416; respect CC; be verbose in build;
+  support sane multilib; handle static libs
+
+  20 Feb 2012; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Drop no-herd.
+
+*libs3-2.0 (31 Oct 2011)
+
+  31 Oct 2011; Andrey Kislyuk <weaver@gentoo.org> +libs3-2.0.ebuild,
+  +metadata.xml:
+  New package, ebuild written by me

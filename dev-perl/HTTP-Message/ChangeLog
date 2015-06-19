@@ -1,0 +1,161 @@
+# ChangeLog for dev-perl/HTTP-Message
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTTP-Message/ChangeLog,v 1.45 2014/08/22 16:22:39 axs Exp $
+
+*HTTP-Message-6.60.0-r1 (22 Aug 2014)
+*HTTP-Message-6.40.0-r1 (22 Aug 2014)
+*HTTP-Message-6.30.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +HTTP-Message-6.30.0-r1.ebuild, +HTTP-Message-6.40.0-r1.ebuild,
+  +HTTP-Message-6.60.0-r1.ebuild, -HTTP-Message-6.30.0.ebuild,
+  -HTTP-Message-6.40.0.ebuild, -HTTP-Message-6.60.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org> HTTP-Message-6.30.0.ebuild,
+  HTTP-Message-6.40.0.ebuild, HTTP-Message-6.60.0.ebuild:
+  Add arm64 love.
+
+  30 Jul 2013; Fabian Groffen <grobian@gentoo.org> HTTP-Message-6.60.0.ebuild:
+  Re-add Prefix keywords, bug #437532
+
+  30 Jul 2013; Sergey Popov <pinkbyte@gentoo.org> HTTP-Message-6.60.0.ebuild:
+  Add ~amd64-linux keyword, wrt bug #437532
+
+  11 May 2013; Matt Turner <mattst88@gentoo.org> HTTP-Message-6.60.0.ebuild:
+  Added ~mips, bug 437532.
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org> HTTP-Message-6.30.0.ebuild,
+  HTTP-Message-6.60.0.ebuild:
+  Add ~arm-linux + ~x86-linux keywords.
+
+  01 Dec 2012; Raúl Porcel <armin76@gentoo.org> HTTP-Message-6.40.0.ebuild,
+  HTTP-Message-6.60.0.ebuild:
+  Add ~alpha/~ia64/~m68k/~s390/~sh/~sparc wrt #437532
+
+  07 Nov 2012; Anthony G. Basile <blueness@gentoo.org>
+  HTTP-Message-6.60.0.ebuild:
+  keyword ~ppc ~ppc64, bug #437532
+
+  06 Nov 2012; Alexis Ballier <aballier@gentoo.org> HTTP-Message-6.60.0.ebuild:
+  keyword ~amd64-fbsd, bug #437532
+
+*HTTP-Message-6.60.0 (04 Nov 2012)
+
+  04 Nov 2012; Torsten Veller <tove@gentoo.org> +HTTP-Message-6.60.0.ebuild:
+  Version bump
+
+  17 Oct 2012; Jeroen Roovers <jer@gentoo.org> HTTP-Message-6.40.0.ebuild:
+  Marked ~hppa (bug #437532).
+
+  16 Oct 2012; Markus Meier <maekke@gentoo.org> HTTP-Message-6.40.0.ebuild:
+  add ~arm, bug #437532
+
+  08 Oct 2012;  <naota@gentoo.org> HTTP-Message-6.40.0.ebuild:
+  Add ~x86-fbsd wrt bug #437532
+
+*HTTP-Message-6.40.0 (07 Oct 2012)
+
+  07 Oct 2012; Torsten Veller <tove@gentoo.org> +HTTP-Message-6.40.0.ebuild:
+  Version bump
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org> -HTTP-Message-6.20.0.ebuild:
+  Cleanup
+
+  19 Aug 2012; Raúl Porcel <armin76@gentoo.org> HTTP-Message-6.30.0.ebuild:
+  alpha/m68k/s390/sh/sparc stable wrt #414741
+
+  14 Jul 2012; Akinori Hattori <hattya@gentoo.org> HTTP-Message-6.30.0.ebuild:
+  ia64 stable wrt bug #414741
+
+  03 Jul 2012; Brent Baude <ranger@gentoo.org> HTTP-Message-6.30.0.ebuild:
+  Marking HTTP-Message-6.30.0 ppc for bug 414741
+
+  29 Jun 2012; Jeroen Roovers <jer@gentoo.org> HTTP-Message-6.30.0.ebuild:
+  Stable for HPPA (bug #414741).
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  22 Jun 2012; Brent Baude <ranger@gentoo.org> HTTP-Message-6.30.0.ebuild:
+  Marking HTTP-Message-6.30.0 ppc64 for bug 414741
+
+  21 Jun 2012; Markus Meier <maekke@gentoo.org> HTTP-Message-6.30.0.ebuild:
+  arm stable, bug #414741
+
+  19 Jun 2012; Agostino Sarubbo <ago@gentoo.org> HTTP-Message-6.30.0.ebuild:
+  Stable for amd64, wrt bug #414741
+
+  19 Jun 2012; Jeff Horelick <jdhore@gentoo.org> HTTP-Message-6.30.0.ebuild:
+  marked x86 per bug 414741
+
+  05 May 2012; Alexis Ballier <aballier@gentoo.org> HTTP-Message-6.30.0.ebuild:
+  keyword ~amd64-fbsd
+
+  01 Mar 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Add missing cpan remote-id tags in metadata.xml (#406287)
+
+*HTTP-Message-6.30.0 (17 Feb 2012)
+
+  17 Feb 2012; Torsten Veller <tove@gentoo.org> +HTTP-Message-6.30.0.ebuild:
+  Version bump
+
+  18 Dec 2011; Mark Loeser <halcy0n@gentoo.org> HTTP-Message-6.20.0.ebuild:
+  Stable for ppc64; bug #386309
+
+  19 Nov 2011; Raúl Porcel <armin76@gentoo.org> HTTP-Message-6.20.0.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #386309
+
+  08 Nov 2011; Tony Vroon <chainsaw@gentoo.org> HTTP-Message-6.20.0.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo & Ian
+  "idella4" Delaney in security bug #386309.
+
+  07 Nov 2011; Jeroen Roovers <jer@gentoo.org> HTTP-Message-6.20.0.ebuild:
+  Stable for HPPA (bug #386309).
+
+  06 Nov 2011; Markus Meier <maekke@gentoo.org> HTTP-Message-6.20.0.ebuild:
+  arm stable, bug #386309
+
+  06 Nov 2011; Andreas Schuerch <nativemad@gentoo.org>
+  HTTP-Message-6.20.0.ebuild:
+  x86 stable, bug 386309. Thanks Myckel Habets.
+
+  06 Nov 2011; Brent Baude <ranger@gentoo.org> HTTP-Message-6.20.0.ebuild:
+  Marking HTTP-Message-6.20.0 ppc stable for bug 386309
+
+  09 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  HTTP-Message-6.20.0.ebuild:
+  Marked ~ppc/~ppc64 wrt #358079
+
+  15 Jun 2011; Naohiro Aota <naota@gentoo.org> HTTP-Message-6.20.0.ebuild:
+  Added ~x86-fbsd, bug #358079
+
+  13 Jun 2011; Matt Turner <mattst88@gentoo.org> HTTP-Message-6.20.0.ebuild:
+  Added ~mips, bug 358079
+
+  15 May 2011; Raúl Porcel <armin76@gentoo.org> HTTP-Message-6.20.0.ebuild:
+  Add ~alpha/~ia64/~m68k/~s390/~sh/~sparc wrt #358079
+
+  24 Apr 2011; Fabian Groffen <grobian@gentoo.org> HTTP-Message-6.20.0.ebuild:
+  (Re)keyword for Prefix, bug #358079
+
+  08 Apr 2011; Markus Meier <maekke@gentoo.org> HTTP-Message-6.20.0.ebuild:
+  add ~arm, bug #358079
+
+  04 Apr 2011; Jeroen Roovers <jer@gentoo.org> HTTP-Message-6.20.0.ebuild:
+  Marked ~hppa (bug #358079).
+
+  03 Apr 2011; Torsten Veller <tove@gentoo.org> -HTTP-Message-6.10.0.ebuild:
+  Cleanup
+
+*HTTP-Message-6.20.0 (22 Mar 2011)
+
+  22 Mar 2011; Torsten Veller <tove@gentoo.org> +HTTP-Message-6.20.0.ebuild:
+  Version bump
+
+*HTTP-Message-6.10.0 (09 Mar 2011)
+
+  09 Mar 2011; Torsten Veller <tove@gentoo.org> +HTTP-Message-6.10.0.ebuild,
+  +metadata.xml:
+  Initial commit - unbundled from libwww-perl

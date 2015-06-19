@@ -1,0 +1,18 @@
+# ChangeLog for media-libs/ccaudio2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/ccaudio2/ChangeLog,v 1.3 2014/06/27 09:00:05 maksbotan Exp $
+
+*ccaudio2-2.1.3 (27 Jun 2014)
+
+  27 Jun 2014; Maxim Koltsov <maksbotan@gentoo.org> +ccaudio2-2.1.3.ebuild,
+  -ccaudio2-2.0.5.ebuild:
+  Bump to 2.1.3, thanks to slepnoga
+
+  21 Jun 2012; Maxim Koltsov <maksbotan@gentoo.org> ccaudio2-2.0.5.ebuild:
+  Enable speex by default, bug 422823. Thanks to slepnoga
+
+*ccaudio2-2.0.5 (26 Feb 2012)
+
+  26 Feb 2012; Maxim Koltsov <maksbotan@gentoo.org> +ccaudio2-2.0.5.ebuild,
+  +files/disable_gsm_automagic.patch, +metadata.xml:
+  Add media-libs/ccaudio2, bug #109034. Thanks to slepnoga

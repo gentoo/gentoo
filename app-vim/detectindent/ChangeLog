@@ -1,0 +1,38 @@
+# ChangeLog for app-vim/detectindent
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/detectindent/ChangeLog,v 1.9 2011/07/24 04:36:15 radhermit Exp $
+
+*detectindent-1.0_p20110723 (24 Jul 2011)
+
+  24 Jul 2011; Tim Harder <radhermit@gentoo.org>
+  +detectindent-1.0_p20110723.ebuild:
+  Version bump to new snapshot.
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org> detectindent-1.0.ebuild:
+  Drop to ~mips
+
+  22 Nov 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  detectindent-1.0.ebuild:
+  stable on ppc
+
+  07 Apr 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove ciaranm from metadata.xml.
+
+  24 Jan 2006; Patrick McLean <chutzpah@gentoo.org> detectindent-1.0.ebuild:
+  stable on amd64
+
+  09 Dec 2005; <dang@gentoo.org> detectindent-1.0.ebuild:
+  Marked ~amd64
+
+  07 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> detectindent-1.0.ebuild:
+  x86 sparc mips stable
+
+  06 Aug 2005; David Holm <dholm@gentoo.org> detectindent-1.0.ebuild:
+  Added to ~ppc.
+
+*detectindent-1.0 (05 Aug 2005)
+
+  05 Aug 2005; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +detectindent-1.0.ebuild:
+  New package, bug #79003
+

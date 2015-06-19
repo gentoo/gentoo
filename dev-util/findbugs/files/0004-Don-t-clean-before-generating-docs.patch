@@ -1,0 +1,25 @@
+From c73984b12bb3c80a67d993a30c894ee05613d422 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Fri, 13 Mar 2015 13:59:22 +0000
+Subject: [PATCH 4/4] Don't clean before generating docs
+
+---
+ findbugs/build.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/findbugs/build.xml b/findbugs/build.xml
+index 48c8f2b..d0cbc04 100644
+--- a/findbugs/build.xml
++++ b/findbugs/build.xml
+@@ -652,7 +652,7 @@
+     </target>
+ 
+ 
+-    <target name="checkdocs" depends="clean">
++    <target name="checkdocs">
+         <!-- FIXME: check whether docs are up to date -->
+     </target>
+ 
+-- 
+2.0.4
+

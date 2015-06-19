@@ -1,0 +1,296 @@
+# ChangeLog for app-arch/dump
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/dump/ChangeLog,v 1.72 2015/06/09 08:51:43 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> dump-0.4.44-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  31 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -files/dump-0.4b43-pkg_config4blkid.patch,
+  -files/dump-0.4b43-pkg_config4crypto.patch,
+  -files/dump-0.4b43-pkg_config4ext2fs.patch, -dump-0.4.41.ebuild,
+  -dump-0.4.42.ebuild, -dump-0.4.43.ebuild, -dump-0.4.44.ebuild:
+  old
+
+  31 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> dump-0.4.44-r1.ebuild:
+  ppc64 stable wrt #395883
+
+  15 Jan 2012; Raúl Porcel <armin76@gentoo.org> dump-0.4.44-r1.ebuild:
+  alpha/ia64/sparc stable wrt #395883
+
+  04 Jan 2012; Brent Baude <ranger@gentoo.org> dump-0.4.44-r1.ebuild:
+  Marking dump-0.4.44-r1 ppc for bug 395883
+
+  04 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> dump-0.4.44-r1.ebuild:
+  x86 stable wrt bug #395883
+
+  31 Dec 2011; Agostino Sarubbo <ago@gentoo.org> dump-0.4.44-r1.ebuild:
+  Stable for AMD64, wrt bug #395883
+
+*dump-0.4.44-r1 (20 Jun 2011)
+
+  20 Jun 2011; Peter Volkov <pva@gentoo.org> +dump-0.4.44-r1.ebuild,
+  +files/dump-0.4.44-fix-pointers-aliasing.patch,
+  +files/dump-0.4.44-rl_completion_matches-detection.patch:
+  Fix poor programming practices bug 370637 by Hans de Graaff.
+
+  16 Jun 2011; Peter Volkov <pva@gentoo.org> dump-0.4.44.ebuild,
+  +files/dump-0.4.44-underlinking.patch:
+  Fix underlinking build problem, bug #369461 thank Diego Elio Pettenò for
+  report.
+
+*dump-0.4.44 (14 Jun 2011)
+
+  14 Jun 2011; Jeroen Roovers <jer@gentoo.org> +dump-0.4.44.ebuild:
+  Version bump.
+
+*dump-0.4.43 (23 May 2011)
+
+  23 May 2011; Peter Volkov <pva@gentoo.org>
+  +files/dump-0.4b43-pkg_config4blkid.patch,
+  +files/dump-0.4b43-pkg_config4crypto.patch,
+  +files/dump-0.4b43-pkg_config4ext2fs.patch, +dump-0.4.43.ebuild:
+  Version bump. Fixes build with USE=static. Fixes dodoc called on a directory,
+  #367885 thank Diego Elio Pettenò for report.
+
+*dump-0.4.42 (30 Sep 2009)
+
+  30 Sep 2009; Mike Frysinger <vapier@gentoo.org> +dump-0.4.42.ebuild:
+  Version bump #286533 by fdupoux.
+
+  17 Jul 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  remove non-existant packages
+
+  29 Dec 2007; Richard Freeman <rich0@gentoo.org> dump-0.4.41.ebuild:
+  amd64 stable
+
+  29 Aug 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing agriffis from metadata due to his retirement (see #182294 for
+  reference).
+
+  24 Jul 2007; Raúl Porcel <armin76@gentoo.org> dump-0.4.41.ebuild:
+  alpha stable, thanks to Tobias Klausmann for testing
+
+  15 Apr 2007; Markus Rothe <corsair@gentoo.org> dump-0.4.41.ebuild:
+  Stable on ppc64
+
+  06 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org> dump-0.4.41.ebuild:
+  ppc stable
+
+  03 Apr 2007; Raúl Porcel <armin76@gentoo.org> dump-0.4.41.ebuild:
+  ia64 stable
+
+  22 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org> dump-0.4.41.ebuild:
+  Stable on sparc
+
+  20 Mar 2007; Raúl Porcel <armin76@gentoo.org> dump-0.4.41.ebuild:
+  x86 stable
+
+  17 Mar 2007; Steve Dibb <beandog@gentoo.org> dump-0.4.40.ebuild:
+  amd64 stable
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org> dump-0.4.40.ebuild:
+  x86 stable
+
+  18 Feb 2007; Markus Rothe <corsair@gentoo.org> dump-0.4.40.ebuild:
+  Stable on ppc64
+
+  28 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> dump-0.4.40.ebuild:
+  Stable on sparc
+
+  24 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org> dump-0.4.40.ebuild:
+  Stable on ppc.
+
+*dump-0.4.41 (01 Nov 2006)
+
+  01 Nov 2006; Aron Griffis <agriffis@gentoo.org> dump-0.4.40.ebuild,
+  +dump-0.4.41.ebuild:
+  Mark 0.4.40 stable on alpha/ia64. Bump to 0.4.41 with ermt support #136997
+
+  09 Aug 2006; Brent Baude <ranger@gentoo.org> dump-0.4.40.ebuild:
+  Keywording app-arch/dump-0.4.40 ~ppc64 for bug 142830
+
+  16 Jul 2006; Harald van Dĳk <truedfx@gentoo.org> dump-0.4.40.ebuild:
+  Don't use --enable-staticz with USE=static. It breaks stuff (bug #99163) and
+  libz/libbz2 will be statically linked anyway without it.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> files/digest-dump-0.4.37,
+  files/digest-dump-0.4.39, files/digest-dump-0.4.40, Manifest:
+  Fixing duff SHA256 digests: Bug # 131293
+
+  27 May 2005; Joseph Jezak <josejx@gentoo.org> dump-0.4.39.ebuild:
+  Marked ppc stable.
+
+  11 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> dump-0.4.39.ebuild:
+  Stable on sparc
+
+*dump-0.4.40 (10 May 2005)
+
+  10 May 2005; Aron Griffis <agriffis@gentoo.org> dump-0.4.39.ebuild,
+  +dump-0.4.40.ebuild:
+  bump to 0.4.40.  mark 0.4.39 stable on alpha amd64 ia64 x86
+
+*dump-0.4.39 (28 Mar 2005)
+
+  28 Mar 2005; Martin Holzer <mholzer@gentoo.org> +dump-0.4.39.ebuild:
+  Version bumped. Cloeses 79761
+
+  05 Feb 2005; <solar@gentoo.org> dump-0.4.37.ebuild:
+  - q/a fix. os-headers are not needed in RDEPEND
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  25 Oct 2004; Mike Frysinger <vapier@gentoo.org> :
+  Install rmt as 'dump-rmt' so as to not kill the rmt installed by tar.  Also 
+  stabilize for everyone to clean up #68791 by Peter Gantner.
+
+  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org> dump-0.4.37.ebuild:
+  keywords ~amd64.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> dump-0.4.32.ebuild,
+  dump-0.4.36.ebuild:
+  Masked dump-0.4.36.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> dump-0.4.32.ebuild:
+  Masked dump-0.4.32.ebuild stable for ppc
+
+*dump-0.4.37 (23 Jul 2004)
+
+  23 Jul 2004; Martin Holzer <mholzer@gentoo.org> +dump-0.4.37.ebuild:
+  Version bumped. Closes 58009
+
+  15 Jul 2004; Gustavo Zacarias <gustavoz@gentoo.org> dump-0.4.36.ebuild:
+  Stable on sparc
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> dump-0.4.36.ebuild:
+  stable on alpha, ia64, x86
+
+  01 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> dump-0.4.33.ebuild,
+  dump-0.4.35.ebuild:
+  thin ebuilds
+
+  01 Jun 2004; Aron Griffis <agriffis@gentoo.org> dump-0.4.31.ebuild,
+  dump-0.4.32.ebuild, dump-0.4.33.ebuild, dump-0.4.34.ebuild,
+  dump-0.4.35.ebuild, dump-0.4.36.ebuild:
+  Fix use invocation
+
+  17 May 2004; Jason Eric Huebel <jhuebel@gentoo.org> dump-0.4.34.ebuild:
+  amd64
+
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> dump-0.4.34.ebuild:
+  Stable on alpha.
+
+*dump-0.4.36 (28 Apr 2004)
+
+  28 Apr 2004; Martin Holzer <mholzer@gentoo.org> dump-0.4.36.ebuild:
+  Version bumped.
+
+*dump-0.4.35 (27 Apr 2004)
+
+  27 Apr 2004; Martin Holzer <mholzer@gentoo.org> dump-0.4.35.ebuild:
+  Version bumped.
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> dump-0.4.31.ebuild:
+  Add die following econf for bug 48950
+
+  23 Feb 2004; Sven Blumenstein <bazik@gentoo.org> dump-0.4.34.ebuild:
+  Stable on sparc. Dont tell Linus that you use it!
+
+  14 Jan 2004; Aron Griffis <agriffis@gentoo.org> dump-0.4.34.ebuild:
+  add ~alpha now that it seems to build (contrary to my experience a couple
+  months ago in bug 31328)
+
+  17 Oct 2003; Aron Griffis <agriffis@gentoo.org> dump-0.4.34.ebuild:
+  This version doesn't build on alpha (yet), so remove ~alpha
+
+  03 Oct 2003; Aron Griffis <agriffis@gentoo.org> dump-0.4.32.ebuild:
+  Stable on alpha
+
+*dump-0.4.34 (08 Sep 2003)
+
+  08 Sep 2003; Martin Holzer <mholzer@gentoo.org> dump-0.4.34.ebuild:
+  Version bumped.
+
+*dump-0.4.33 (08 Sep 2003)
+
+  08 Sep 2003; Martin Holzer <mholzer@gentoo.org> dump-0.4.33.ebuild:
+  Version bumped.
+
+*dump-0.4.32 (15 Jan 2003)
+
+  15 Jan 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump
+
+*dump-0.4.31 (13 Aug 2002)
+
+  15 Dec 2002; Seemant Kulleen <seemant@gentoo.org> dump-0.4.31.ebuild
+  dump-0.4.30.ebuild dump-0.4.29.ebuild :
+
+  changed "snable-static to "enable-static"  Thanks to: a-wall@qwest.net in
+  bug #12216
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  19 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> dump-0.4.31.ebuild :
+  Updated to mirror://sourceforge in SRC_URI.
+
+  6 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
+
+  13 Aug 2002; Nick Hadaway <raker@gentoo.org>
+  dump-0.4.31.ebuild, files/digest-dump-0.4.31 :
+  Version bump.
+
+*dump-0.4.30 (27 Jul 2002)
+
+  19 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> dump-0.4.30.ebuild :
+  Updated to mirror://sourceforge in SRC_URI.
+
+  27 Jul 2002; Nick Hadaway <raker@gentoo.org>
+  dump-0.4.30.ebuild, files/digest-dump-0.4.30 :
+  Version bump.
+
+*dump-0.4.29 (11 Jul 2002)
+
+  19 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> dump-0.4.29.ebuild :
+  Updated to mirror://sourceforge in SRC_URI.
+
+  11 Jul 2002; Seemant Kulleen <seemant@gentoo.org> dump-0.4.29.ebuild
+  files/digest-dump-0.4.29 :
+  Version bump.
+
+*dump-0.4.28-r1 (5 Jun 2002)
+
+  5 Jun 2002; Seemant Kulleen <seemant@gentoo.org> dump-0.4.28-r1.ebuild
+  files/digest-dump-0.4.28-r1 :
+  Fixed the dumpdates directory to /etc/dumpdates instead of /etc, and also
+  made readline an optional dependency.  Closes bug #3403 by
+  shane@trontech.net (Shane Hyde)
+
+*dump-0.4.28 (26 Apr 2002)
+
+  26 Apr 2002; Seemant Kulleen <seemant@gentoo.org> dump-0.4.28.ebuild
+  files/digest-dump-0.4.28, dump-0.4.24-r1.ebuild :
+  Cleaned up the old ebuild to give a better example, and version bumped.
+
+*dump-0.4.24-r1 (24 Apr 2002)
+
+  24 Apr 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  dump-0.4.24-r1.ebuild, files/digest-dump-0.4.24-r1 :
+  Fixed sandbox violations. Create statically linked binaries (dump
+  uses bzip2 whose libs are on /usr). Resovles #1873, #1986. Thanks to
+  kingsqueak@kingsqueak.org for the initial patch.
+
+	
+*dump-0.4.24 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

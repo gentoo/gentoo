@@ -1,0 +1,61 @@
+# ChangeLog for dev-python/sphinxcontrib-httpdomain
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sphinxcontrib-httpdomain/ChangeLog,v 1.12 2015/06/07 19:37:24 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add bitbucket to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org>
+  sphinxcontrib-httpdomain-1.1.8.ebuild, sphinxcontrib-httpdomain-1.1.9.ebuild,
+  sphinxcontrib-httpdomain-1.2.0.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org>
+  sphinxcontrib-httpdomain-1.3.0.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org>
+  sphinxcontrib-httpdomain-1.3.0.ebuild:
+  amd64 stable, bug 540290
+
+*sphinxcontrib-httpdomain-1.3.0 (14 Aug 2014)
+
+  14 Aug 2014; Ian Delaney <idella4@gentoo.org>
+  +sphinxcontrib-httpdomain-1.3.0.ebuild:
+  bump
+
+*sphinxcontrib-httpdomain-1.2.1 (14 May 2014)
+
+  14 May 2014; Tim Harder <radhermit@gentoo.org>
+  +sphinxcontrib-httpdomain-1.2.1.ebuild:
+  Version bump.
+
+  10 Apr 2014; Michael Palimaka <kensington@gentoo.org> metadata.xml:
+  Remove KDE herd.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org>
+  sphinxcontrib-httpdomain-1.1.8.ebuild, sphinxcontrib-httpdomain-1.1.9.ebuild,
+  sphinxcontrib-httpdomain-1.2.0.ebuild:
+  Add support for the new PyPy slotting.
+
+*sphinxcontrib-httpdomain-1.2.0 (28 Oct 2013)
+
+  28 Oct 2013; Patrick Lauer <patrick@gentoo.org>
+  +sphinxcontrib-httpdomain-1.2.0.ebuild:
+  Bump
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org>
+  sphinxcontrib-httpdomain-1.1.8.ebuild, sphinxcontrib-httpdomain-1.1.9.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*sphinxcontrib-httpdomain-1.1.9 (10 Aug 2013)
+
+  10 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +sphinxcontrib-httpdomain-1.1.9.ebuild:
+  Bump
+
+*sphinxcontrib-httpdomain-1.1.8 (10 Jun 2013)
+
+  10 Jun 2013; Ian Delaney <idella4@gentoo.org> +metadata.xml,
+  +sphinxcontrib-httpdomain-1.1.8.ebuild:
+  ebuild prepared by me, needed for flask-restless

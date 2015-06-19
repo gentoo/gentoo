@@ -1,0 +1,79 @@
+# HG changeset patch
+# User Armin Rigo <arigo@tunes.org>
+# Date 1424942568 -3600
+# Node ID c7edb1e84eb3c29cac0674790cb4efcbcf1683b2
+# Parent  95e0563201602a2e1a8d83cc95a6a70048dfeece
+issue #177: workaround for some Linux kernels
+
+diff --git a/c/malloc_closure.h b/c/malloc_closure.h
+--- a/c/malloc_closure.h
++++ b/c/malloc_closure.h
+@@ -14,6 +14,54 @@
+ # endif
+ #endif
+ 
++/* On PaX enable kernels that have MPROTECT enable we can't use PROT_EXEC.
++
++   This is, apparently, an undocumented change to ffi_prep_closure():
++   depending on the Linux kernel we're running on, we must give it a
++   mmap that is either PROT_READ|PROT_WRITE|PROT_EXEC or only
++   PROT_READ|PROT_WRITE.  In the latter case, just trying to obtain a
++   mmap with PROT_READ|PROT_WRITE|PROT_EXEC would kill our process(!),
++   but in that situation libffi is fine with only PROT_READ|PROT_WRITE.
++   There is nothing in the libffi API to know that, though, so we have
++   to guess by parsing /proc/self/status.  "Meh."
++ */
++#ifdef __linux__
++#include <stdlib.h>
++
++static int emutramp_enabled = -1;
++
++static int
++emutramp_enabled_check (void)
++{
++    char *buf = NULL;
++    size_t len = 0;
++    FILE *f;
++    int ret;
++    f = fopen ("/proc/self/status", "r");
++    if (f == NULL)
++        return 0;
++    ret = 0;
++
++    while (getline (&buf, &len, f) != -1)
++        if (!strncmp (buf, "PaX:", 4))
++            {
++                char emutramp;
++                if (sscanf (buf, "%*s %*c%c", &emutramp) == 1)
++                    ret = (emutramp == 'E');
++                break;
++            }
++    free (buf);
++    fclose (f);
++    return ret;
++}
++
++#define is_emutramp_enabled() (emutramp_enabled >= 0 ? emutramp_enabled \
++        : (emutramp_enabled = emutramp_enabled_check ()))
++#else
++#define is_emutramp_enabled() 0
++#endif
++
++
+ /* 'allocate_num_pages' is dynamically adjusted starting from one
+    page.  It grows by a factor of PAGE_ALLOCATION_GROWTH_RATE.  This is
+    meant to handle both the common case of not needing a lot of pages,
+@@ -77,9 +125,12 @@
+     if (item == NULL)
+         return;
+ #else
++    int prot = PROT_READ | PROT_WRITE | PROT_EXEC;
++    if (is_emutramp_enabled ())
++        prot &= ~PROT_EXEC;
+     item = (union mmaped_block *)mmap(NULL,
+                         allocate_num_pages * _pagesize,
+-                        PROT_READ | PROT_WRITE | PROT_EXEC,
++                        prot,
+                         MAP_PRIVATE | MAP_ANONYMOUS,
+                         -1,
+                         0);

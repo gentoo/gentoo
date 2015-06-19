@@ -1,0 +1,139 @@
+# ChangeLog for net-dialup/moserial
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/moserial/ChangeLog,v 1.33 2014/12/28 12:24:33 ago Exp $
+
+  28 Dec 2014; Agostino Sarubbo <ago@gentoo.org> moserial-3.0.9.ebuild:
+  Stable for ppc, wrt bug #529964
+
+  19 Dec 2014; Pacho Ramos <pacho@gentoo.org> moserial-3.0.9.ebuild:
+  amd64 stable, bug 529964
+
+  18 Dec 2014; Pacho Ramos <pacho@gentoo.org> moserial-3.0.9.ebuild:
+  x86 stable, bug 529964
+
+*moserial-3.0.9 (03 Oct 2014)
+
+  03 Oct 2014; Pacho Ramos <pacho@gentoo.org> +moserial-3.0.9.ebuild:
+  Version bump
+
+  29 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org> -moserial-3.0.7.ebuild:
+  Clean up old revision.
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> moserial-3.0.8.ebuild:
+  Stable for ppc, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> moserial-3.0.8.ebuild:
+  Stable for x86, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> moserial-3.0.8.ebuild:
+  Stable for amd64, wrt bug #458984
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup after talking with leio
+
+*moserial-3.0.8 (24 Dec 2012)
+
+  24 Dec 2012; Pacho Ramos <pacho@gentoo.org> +moserial-3.0.8.ebuild,
+  -moserial-3.0.6.ebuild:
+  Version bump, drop old
+
+  16 Oct 2012; Anthony G. Basile <blueness@gentoo.org> moserial-3.0.7.ebuild:
+  stable ppc, bug #427544
+
+  04 Oct 2012; Agostino Sarubbo <ago@gentoo.org> moserial-3.0.7.ebuild:
+  Stable for amd64, wrt bug #427544
+
+  03 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> moserial-3.0.7.ebuild:
+  x86 stable wrt bug #427544
+
+*moserial-3.0.7 (16 Jun 2012)
+
+  16 Jun 2012; Pacho Ramos <pacho@gentoo.org> +moserial-3.0.7.ebuild:
+  Version bump.
+
+*moserial-3.0.6 (16 Jun 2012)
+
+  16 Jun 2012; Pacho Ramos <pacho@gentoo.org> +moserial-3.0.6.ebuild,
+  -moserial-3.0.5.ebuild:
+  Readd ebuild removed previusly by error and drop proper one.
+
+  16 Jun 2012; Pacho Ramos <pacho@gentoo.org> -moserial-2.30.0.ebuild,
+  -moserial-3.0.6.ebuild, metadata.xml:
+  Leio is second maintainer for this. Drop old.
+
+  24 May 2012; Samuli Suominen <ssuominen@gentoo.org> moserial-3.0.6.ebuild:
+  ppc stable wrt #410611
+
+  10 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  moserial-3.0.5.ebuild, moserial-3.0.6.ebuild:
+  Add missing gsettings-desktop-schemas dependency (bug #415243, thanks to John
+  Doe).
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> moserial-2.30.0.ebuild,
+  moserial-3.0.5.ebuild, moserial-3.0.6.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  29 Apr 2012; Markus Meier <maekke@gentoo.org> moserial-3.0.6.ebuild:
+  x86 stable, bug #410611
+
+  18 Apr 2012; Agostino Sarubbo <ago@gentoo.org> moserial-3.0.6.ebuild:
+  Stable for amd64, wrt bug #410611
+
+*moserial-3.0.6 (03 Mar 2012)
+
+  03 Mar 2012; Pacho Ramos <pacho@gentoo.org> +moserial-3.0.6.ebuild,
+  -moserial-3.0.4.ebuild:
+  Version bump, drop old.
+
+*moserial-3.0.5 (29 Jan 2012)
+
+  29 Jan 2012; Pacho Ramos <pacho@gentoo.org> +moserial-3.0.5.ebuild:
+  Version bump.
+
+*moserial-3.0.4 (22 Jan 2012)
+
+  22 Jan 2012; Pacho Ramos <pacho@gentoo.org> +moserial-3.0.4.ebuild,
+  -moserial-2.26.1.ebuild, metadata.xml:
+  Version bump, remove old, add gnome team as fallback maintainers.
+
+  30 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  moserial-2.30.0.ebuild:
+  stable x86, bug 319843
+
+  26 Jun 2010; <nixnut@gentoo.org> moserial-2.30.0.ebuild:
+  ppc stable #319843
+
+  25 May 2010; Pacho Ramos <pacho@gentoo.org> moserial-2.30.0.ebuild:
+  stable amd64, bug 319843
+
+*moserial-2.30.0 (05 Apr 2010)
+
+  05 Apr 2010; <steev@gentoo.org> +moserial-2.30.0.ebuild, metadata.xml:
+  moserial: Bump to 2.30.0 for new release. Add myself as a maintainer 
+  along with leio, with his approval.
+
+  11 Nov 2009; Joseph Jezak <josejx@gentoo.org> moserial-2.26.1.ebuild:
+  Marked ~ppc.
+
+*moserial-2.26.1 (23 May 2009)
+
+  23 May 2009; Mart Raudsepp <leio@gentoo.org> -moserial-2.26.0.ebuild,
+  +moserial-2.26.1.ebuild:
+  Version bump. Makes translations actually work; translation updates
+
+  12 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  moserial-2.26.0.ebuild:
+  keyworded ~arch for x86, bug 264694
+
+*moserial-2.26.0 (08 May 2009)
+
+  08 May 2009; Mart Raudsepp <leio@gentoo.org> -moserial-1.0.8.ebuild,
+  +moserial-2.26.0.ebuild:
+  Version bump. Adds Esc keybinding to return to end of scrollback and focus
+  the output entry, and choice to send escape keycode as line terminator
+
+*moserial-1.0.8 (02 Apr 2009)
+
+  02 Apr 2009; Mart Raudsepp <leio@gentoo.org> +metadata.xml,
+  +moserial-1.0.8.ebuild:
+  Initial addition of moserial - a GTK+ based serial terminal

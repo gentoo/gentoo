@@ -1,0 +1,87 @@
+# ChangeLog for dev-perl/Lingua-Stem-It
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Lingua-Stem-It/ChangeLog,v 1.21 2014/08/22 18:08:42 axs Exp $
+
+*Lingua-Stem-It-0.20.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Lingua-Stem-It-0.20.0-r1.ebuild, -Lingua-Stem-It-0.20.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Lingua-Stem-It-0.02.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Lingua-Stem-It-0.20.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Lingua-Stem-It-0.20.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org> +Lingua-Stem-It-0.20.0.ebuild:
+  Change version scheme
+
+  04 Feb 2010; Torsten Veller <tove@gentoo.org> Lingua-Stem-It-0.02.ebuild:
+  Fix LICENSE: same terms as perl (#301969). Maintenance
+
+  01 May 2009; Torsten Veller <tove@gentoo.org> -Lingua-Stem-It-0.01.ebuild:
+  Cleanup
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org> Lingua-Stem-It-0.02.ebuild:
+  amd64 stable
+
+  09 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  Lingua-Stem-It-0.02.ebuild:
+  Stable on sparc
+
+  29 Jul 2007; Raúl Porcel <armin76@gentoo.org> Lingua-Stem-It-0.02.ebuild:
+  ia64/x86 stable
+
+*Lingua-Stem-It-0.02 (25 Jun 2007)
+
+  25 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  +Lingua-Stem-It-0.02.ebuild:
+  Version bump
+
+  16 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Lingua-Stem-It-0.01.ebuild:
+  Ebuild maintenance
+
+  17 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Lingua-Stem-It-0.01.ebuild:
+  Marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Lingua-Stem-It-0.01.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  Lingua-Stem-It-0.01.ebuild:
+  Mark 0.01 stable on ia64
+
+  01 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  Lingua-Stem-It-0.01.ebuild:
+  Keywording ~amd64
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  Lingua-Stem-It-0.01.ebuild:
+  Mark 0.01 ~ia64
+
+  05 Aug 2005; David Holm <dholm@gentoo.org> Lingua-Stem-It-0.01.ebuild:
+  Added to ~ppc.
+
+  17 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Lingua-Stem-It-0.01.ebuild:
+  Stable on sparc
+
+  22 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  Lingua-Stem-It-0.01.ebuild:
+  Unmasking for x86
+
+*Lingua-Stem-It-0.01 (06 Oct 2004)
+
+  06 Oct 2004; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +Lingua-Stem-It-0.01.ebuild:
+  Dep for Plucene - perl port of lucene

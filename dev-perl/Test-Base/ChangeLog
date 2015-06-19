@@ -1,0 +1,266 @@
+# ChangeLog for dev-perl/Test-Base
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Base/ChangeLog,v 1.70 2015/03/09 12:17:31 zlogene Exp $
+
+  09 Mar 2015; Mikle Kolyada <zlogene@gentoo.org> Test-Base-0.880.0.ebuild:
+  Add ~alpha/~ia64/~ppc64/~sparc keywords
+
+  28 Feb 2015; Fabian Groffen <grobian@gentoo.org> Test-Base-0.880.0.ebuild:
+  Added some Prefix keywords, bug #541380
+
+*Test-Base-0.880.0 (21 Feb 2015)
+
+  21 Feb 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Test-Base-0.880.0.ebuild:
+  Version bump
+
+*Test-Base-0.600.0-r1 (23 Aug 2014)
+
+  23 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Test-Base-0.600.0-r1.ebuild, -Test-Base-0.600.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org> -Test-Base-0.58.ebuild:
+  Cleanup
+
+  03 Feb 2012; Brent Baude <ranger@gentoo.org> Test-Base-0.600.0.ebuild:
+  Marking Test-Base-0.600.0 ppc for bug 393833
+
+  01 Jan 2012; Raúl Porcel <armin76@gentoo.org> Test-Base-0.600.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #393833
+
+  21 Dec 2011; Markus Meier <maekke@gentoo.org> Test-Base-0.600.0.ebuild:
+  arm stable, bug #393833
+
+  20 Dec 2011; Jeroen Roovers <jer@gentoo.org> Test-Base-0.600.0.ebuild:
+  Stable for HPPA (bug #393833).
+
+  18 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Test-Base-0.600.0.ebuild:
+  x86 stable wrt bug #393833
+
+  17 Dec 2011; Agostino Sarubbo <ago@gentoo.org> Test-Base-0.600.0.ebuild:
+  Stable for AMD64, wrt bug #393833
+
+  29 Jul 2011; Torsten Veller <tove@gentoo.org> -Test-Base-0.59.ebuild:
+  Cleanup
+
+*Test-Base-0.600.0 (07 Apr 2011)
+
+  07 Apr 2011; Torsten Veller <tove@gentoo.org> +Test-Base-0.600.0.ebuild:
+  Version bump
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -Test-Base-0.55.ebuild:
+  Cleanup
+
+  07 Dec 2010; Matt Turner <mattst88@gentoo.org> Test-Base-0.59.ebuild:
+  Added ~mips, bug 261707.
+
+  14 Jan 2010; Fabian Groffen <grobian@gentoo.org> Test-Base-0.59.ebuild:
+  Transfer Prefix keywords
+
+*Test-Base-0.59 (25 Aug 2009)
+
+  25 Aug 2009; Robin H. Johnson <robbat2@gentoo.org> +Test-Base-0.59.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  16 May 2009; Alexis Ballier <aballier@gentoo.org> Test-Base-0.58.ebuild:
+  keyword ~x86-fbsd
+
+  07 May 2009; Torsten Veller <tove@gentoo.org> -Test-Base-0.54.ebuild,
+  Test-Base-0.55.ebuild:
+  Cleanup
+
+  06 May 2009; Jeroen Roovers <jer@gentoo.org> Test-Base-0.58.ebuild:
+  Stable for HPPA (bug #268183).
+
+  04 May 2009; Raúl Porcel <armin76@gentoo.org> Test-Base-0.58.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #268183
+
+  03 May 2009; Markus Meier <maekke@gentoo.org> Test-Base-0.58.ebuild:
+  amd64 stable, bug #268183
+
+  02 May 2009; nixnut <nixnut@gentoo.org> Test-Base-0.58.ebuild:
+  ppc stable #268183
+
+  02 May 2009; Torsten Veller <tove@gentoo.org> Test-Base-0.58.ebuild:
+  Stable on x86 (#268183)
+
+  01 May 2009; Torsten Veller <tove@gentoo.org> -Test-Base-0.50.ebuild,
+  -Test-Base-0.56.ebuild:
+  Cleanup
+
+  06 Apr 2009; Raúl Porcel <armin76@gentoo.org> Test-Base-0.50.ebuild,
+  Test-Base-0.54.ebuild, Test-Base-0.56.ebuild, Test-Base-0.58.ebuild:
+  Add ~arm/~s390/~sh
+
+*Test-Base-0.58 (27 Mar 2009)
+
+  27 Mar 2009; Torsten Veller <tove@gentoo.org> +Test-Base-0.58.ebuild:
+  Version bump
+
+  21 Mar 2009; Jeroen Roovers <jer@gentoo.org> Test-Base-0.56.ebuild:
+  Marked ~hppa (bug #261707).
+
+  15 Mar 2009; Brent Baude <ranger@gentoo.org> Test-Base-0.56.ebuild:
+  Marking Test-Base-0.56 ~ppc64 for bug 261707
+
+*Test-Base-0.56 (08 Mar 2009)
+
+  08 Mar 2009; Torsten Veller <tove@gentoo.org> +Test-Base-0.56.ebuild:
+  Version bump
+
+  13 Feb 2009; Raúl Porcel <armin76@gentoo.org> Test-Base-0.55.ebuild:
+  Re-add ~arm/~s390/~sh
+
+*Test-Base-0.55 (08 Dec 2008)
+
+  08 Dec 2008; Robin H. Johnson <robbat2@gentoo.org> +Test-Base-0.55.ebuild:
+  Version bump.
+
+  30 Sep 2008; Torsten Veller <tove@gentoo.org> -Test-Base-0.52.ebuild,
+  -Test-Base-0.53.ebuild, Test-Base-0.54.ebuild:
+  Cleanup
+
+  28 Mar 2008; Jeroen Roovers <jer@gentoo.org> Test-Base-0.54.ebuild:
+  Stable for HPPA too.
+
+  27 Dec 2007; Andrej Kacian <ticho@gentoo.org> Test-Base-0.54.ebuild:
+  Stable on x86.
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org> Test-Base-0.54.ebuild:
+  amd64 stable
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Test-Base-0.54.ebuild:
+  Stable on ppc.
+
+  09 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> Test-Base-0.54.ebuild:
+  Stable on sparc
+
+  30 Jul 2007; Raúl Porcel <armin76@gentoo.org> Test-Base-0.54.ebuild:
+  alpha/ia64 stable
+
+*Test-Base-0.54 (29 Jun 2007)
+
+  29 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  +Test-Base-0.54.ebuild:
+  Version bump
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Test-Base-0.53.ebuild:
+  ppc stable
+
+  22 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> Test-Base-0.53.ebuild:
+  Stable on Alpha + IA64.
+
+  08 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Test-Base-0.53.ebuild:
+  Marking sparc stable
+
+  08 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Test-Base-0.53.ebuild:
+  marking amd64 stable
+
+*Test-Base-0.53 (03 Dec 2006)
+
+  03 Dec 2006; Michael Cummings <mcummings@gentoo.org>
+  +Test-Base-0.53.ebuild:
+  Version bump
+
+  23 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> Test-Base-0.52.ebuild:
+  Stable on hppa
+
+  21 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Test-Base-0.52.ebuild:
+  ppc stable
+
+  20 Oct 2006; Aron Griffis <agriffis@gentoo.org> Test-Base-0.52.ebuild:
+  Mark 0.52 stable on ia64
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> Test-Base-0.52.ebuild:
+  Stable on Alpha.
+
+  15 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  -Test-Base-0.46.ebuild, -Test-Base-0.47.ebuild, Test-Base-0.50.ebuild,
+  Test-Base-0.52.ebuild:
+  Keywording amd64, sparc stable; cleaning up stale ebuilds
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Test-Base-0.50.ebuild:
+  ppc stable
+
+  18 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Test-Base-0.50.ebuild:
+  Marking amd64 stable
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org> Test-Base-0.46.ebuild,
+  Test-Base-0.47.ebuild, Test-Base-0.50.ebuild, Test-Base-0.52.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+  29 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org> Test-Base-0.50.ebuild:
+  Stable on hppa
+
+*Test-Base-0.52 (23 Jun 2006)
+
+  23 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  +Test-Base-0.52.ebuild:
+  Version bump upstream
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  Test-Base-0.46.ebuild, Test-Base-0.47.ebuild, Test-Base-0.50.ebuild:
+  Marking sparc stable
+
+  24 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> Test-Base-0.50.ebuild:
+  Add ~x86-fbsd keyword.
+
+  20 Apr 2006; Thomas Cort <tcort@gentoo.org> Test-Base-0.50.ebuild:
+  Added ~amd64 keyword wrt Bug #119199.
+
+  20 Apr 2006; Thomas Cort <tcort@gentoo.org> Test-Base-0.50.ebuild:
+  Added ~alpha keyword wrt Bug #119199.
+
+  10 Mar 2006; Aron Griffis <agriffis@gentoo.org> Test-Base-0.50.ebuild:
+  Mark 0.50 ~ia64. #119199
+
+  26 Feb 2006; Joshua Kinard <kumba@gentoo.org> Test-Base-0.50.ebuild:
+  Added ~mips to KEYWORDS.
+
+*Test-Base-0.50 (20 Feb 2006)
+
+  20 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  +Test-Base-0.50.ebuild:
+  Version bump upstream
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  Test-Base-0.46.ebuild, Test-Base-0.47.ebuild:
+  Virtuals for perl-core
+
+  23 Jan 2006; Markus Rothe <corsair@gentoo.org> Test-Base-0.47.ebuild:
+  Added ~ppc64; bug #119199
+
+  22 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Test-Base-0.47.ebuild:
+  Commited before updating, adding lost ~hppa
+
+*Test-Base-0.47 (22 Jan 2006)
+
+  22 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  +Test-Base-0.47.ebuild:
+  Version bump upstream
+
+  21 Jan 2006; Jeroen Roovers <jer@gentoo.org> Test-Base-0.46.ebuild:
+  Marked ~hppa (bug #119199).
+
+  17 Jan 2006; <nixnut@gentoo.org> Test-Base-0.46.ebuild:
+  Added ~ppc keyword. bug 119199
+
+*Test-Base-0.46 (16 Jan 2006)
+
+  16 Jan 2006; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +Test-Base-0.46.ebuild:
+  New dep for yaml

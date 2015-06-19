@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-perl/DateTime dev-perl/Any-Moose dev-perl/UNIVERSAL-require dev-perl/XML-LibXML test? ( dev-perl/yaml ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=(de)serializer perl module for Adobe's AMF (Action Message Format)
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Data-AMF/
+IUSE=test
+KEYWORDS=amd64 x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/DateTime dev-perl/Any-Moose dev-perl/UNIVERSAL-require dev-perl/XML-LibXML dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/T/TY/TYPESTER/Data-AMF-0.09.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=9dd116db245e28ea0dcc5fbd38345df4

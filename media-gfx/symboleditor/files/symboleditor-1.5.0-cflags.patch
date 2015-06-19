@@ -1,0 +1,25 @@
+From a495671be994a32f4b52840f7e5c358916a378dc Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Tue, 26 Aug 2014 20:17:22 +1000
+Subject: [PATCH] Respect user-defined CFLAGS.
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3166676..50786be 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -43,7 +43,7 @@ kde4_add_executable (SymbolEditor ${SymbolEditor_SRCS})
+ 
+ target_link_libraries (SymbolEditor ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS})
+ 
+-set (CMAKE_CXX_FLAGS "-DQT_NO_COMPAT -DKDE_NO_COMPAT")
++set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fexceptions -DQT_NO_COMPAT -DKDE_NO_COMPAT")
+ 
+ install (TARGETS SymbolEditor DESTINATION ${BIN_INSTALL_DIR})
+ install (FILES SymbolEditorui.rc DESTINATION ${DATA_INSTALL_DIR}/SymbolEditor)
+-- 
+1.8.5.5
+

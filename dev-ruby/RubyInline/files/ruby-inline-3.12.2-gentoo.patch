@@ -1,0 +1,67 @@
+we have to patch the code so that it takes the RUBY_DESCRIPTION into
+consideration, to avoid loading Ruby-Enterprise (REE18) objects in MRI
+and vice-versa; we're a bit “greedier” since we will rebuild objects
+even when just switching versions, but it'll be better this way than
+being too conservatives.
+
+Index: ruby-inline-3.8.4/lib/inline.rb
+===================================================================
+--- ruby-inline-3.8.4.orig/lib/inline.rb
++++ ruby-inline-3.8.4/lib/inline.rb
+@@ -360,13 +360,18 @@ module Inline
+       ext.join "\n"
+     end
+ 
++    def implementation_checksum
++      @implementation_checksum ||=
++        (Digest::MD5.new << RUBY_DESCRIPTION).to_s[0,4]
++    end
++
+     def module_name
+       unless defined? @module_name then
+         module_name = @mod.name.gsub('::','__')
+         md5 = Digest::MD5.new
+         @pre.each { |m| md5 << m.to_s }
+         @sig.keys.sort_by { |x| x.to_s }.each { |m| md5 << m.to_s }
+-        @module_name = "Inline_#{module_name}_#{md5}"
++        @module_name = "Inline_#{module_name}_#{md5}_#{implementation_checksum}"
+       end
+       @module_name
+     end
+Index: ruby-inline-3.8.4/test/test_inline.rb
+===================================================================
+--- ruby-inline-3.8.4.orig/test/test_inline.rb
++++ ruby-inline-3.8.4/test/test_inline.rb
+@@ -404,6 +404,7 @@ static VALUE method_name_equals(VALUE se
+   end
+ 
+   def util_module_name(*signatures)
++    implementation = (Digest::MD5.new << RUBY_DESCRIPTION).to_s[0,4]
+     md5 = Digest::MD5.new
+ 
+     signatures.each do |signature|
+@@ -411,6 +412,6 @@ static VALUE method_name_equals(VALUE se
+       md5 << signature.to_s
+     end
+ 
+-    assert_equal("Inline_TestInline__TestC_#{md5}", @builder.module_name)
++    assert_equal("Inline_TestInline__TestC_#{md5}_#{implementation}", @builder.module_name)
+   end
+ 
+@@ -757,6 +758,7 @@ puts(s); return rb_str_new2(s)}"
+     @builder.c "VALUE my_method() { return Qnil; }"
+ 
+     windoze = "\n  __declspec(dllexport)" if Inline::WINDOZE
++    implementation = (Digest::MD5.new << RUBY_DESCRIPTION).to_s[0,4]
+ 
+     expected = <<-EXT
+ #include "ruby.h"
+@@ -773,7 +775,7 @@ static VALUE my_method(VALUE self) {
+ #ifdef __cplusplus
+ extern \"C\" {
+ #endif#{windoze}
+-  void Init_Inline_TestInline__TestC_3ab8c09639e499394bb1f0a0194a839f() {
++  void Init_Inline_TestInline__TestC_3ab8c09639e499394bb1f0a0194a839f_#{implementation}() {
+     VALUE c = rb_cObject;
+     c = rb_const_get(c, rb_intern("TestInline"));
+     c = rb_const_get(c, rb_intern("TestC"));

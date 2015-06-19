@@ -1,0 +1,11 @@
+Index: src/common/connection.py
+===================================================================
+--- src/common/connection.py	(revision 14431)
++++ src/common/connection.py	(revision 14476)
+@@ -1329,5 +1329,5 @@
+                 return True
+             i += 1
+-        if hasattr(con.Connection, 'ssl_fingerprint_sha1'):
++        if con.Connection.ssl_fingerprint_sha1:
+             saved_fingerprint = gajim.config.get_per('accounts', self.name,
+                 'ssl_fingerprint_sha1')

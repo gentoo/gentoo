@@ -1,0 +1,56 @@
+# Bazaar merge directive format 2 (Bazaar 0.90)
+# revision_id: vapier@gentoo.org-20111019170935-fheqs03szv6mhh3o
+# target_branch: http://bazaar.launchpad.net/~scott/libnih/trunk/
+# testament_sha1: 84b368e08fdd9f8276611cdfe97d34f51cd90598
+# timestamp: 2011-10-19 13:13:52 -0400
+# base_revision_id: scott@netsplit.com-20110901184103-d2xbvc5hbt0vqxf0
+# 
+# Begin patch
+=== modified file 'nih-dbus/Makefile.am'
+--- nih-dbus/Makefile.am	2009-11-21 21:44:23 +0000
++++ nih-dbus/Makefile.am	2011-10-19 17:09:35 +0000
+@@ -49,7 +49,7 @@
+ 	test_dbus.h
+ 
+ 
+-pkgconfigdir = $(prefix)/lib/pkgconfig
++pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = libnih-dbus.pc
+ 
+ 
+
+=== modified file 'nih/Makefile.am'
+--- nih/Makefile.am	2009-11-21 21:44:23 +0000
++++ nih/Makefile.am	2011-10-19 17:09:35 +0000
+@@ -71,7 +71,7 @@
+ 	test_hash.h
+ 
+ 
+-pkgconfigdir = $(prefix)/lib/pkgconfig
++pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = libnih.pc
+ 
+ 
+
+# Begin bundle
+IyBCYXphYXIgcmV2aXNpb24gYnVuZGxlIHY0CiMKQlpoOTFBWSZTWerAspcAAhZfgAAQVGf/93Mi
+DAC/7//wUASW8VttRtyKRaUhJU00ZTUab1GBT9JpNNqeiAADEEpDUwp5Gk9KeiZAANAAABIo0hE9
+GTTJJ5AMo8oB6IwmmMNDQAAAaAAAAAEkgQBGTCGmmoZQPSIxoCJYV1m4Z59VmltTEiVlNBLfEBWL
+DPUvZdcke3iHe+YuVhuGNtnl+0Xxmwcuy+RkTlRw9Ct83uYaZ7PH3vOd/AqYc6mhoKnwOCJD7ej5
+jS/rj7FmeOwxohzIMw9Ftarf11sHFhfFyWQEWL15gMctp9IL8d5sOYp0YoMOIw5htiyuYikcaPZ+
+xeB0ZI+IpppnCWQD3qlFKeI1NHACFmRBrQ2Sn1nmVurFZLNeqWK2Xy7eKAJK1SuguZhs8DekVjKE
+YGJwURdteHklA3WkfNMdKKNMQHQqnTtxAg1ShnXAzzkjnDtTSCwNhnuoY0WM1bLLCJlFM6NphCLS
+CGV+ZxUbN6YirSh9tVJWBzJKQaE5HEstAsAuqdVKlAlNKIrkYPSb3oy9WkKNsyyLYUiplUvi8C3i
+ioz+SscYWhwHzkxL/k0TPk8tL6l5FzzBa8FCKRWbDCTa0nbGzEhoJmaYEfwBog+pmXpsuVNUZmF4
+OreOMqF7JyNA1HJJ14+yxa6SRpJ51jBFyaNAojQK2ai7BtxEVZFoG3TYZiaTnR8LwZPDCtw7GqpA
+6mKFWiqtj/KxW+zQNmQbh9XE5eCCdFBTQzJmb7H3fDQpKW1njIoLHI+HeAXGDxYmu7HJ3DoZtH3Z
+7UfYYlEO8WoZpHZIMdDSCTWUE41kdp0nBWlshTuqcODflplwgnc03YlpZF9eBKQsUJi4gRvOhwmO
+XzuHW8qzc+JojHueBjZGJRiZQktKmJFoSD3k4+SOEue4uOh88jC0uRC8zDtbDCuz1fd6m5nsBrXh
+4KCGR5mWo4953Ie6CdWVops43mZdcboGGpUVirZZC+SPwwvwVSDuTAzASyFMevBBdbmdy3y0L0Y2
+oqRD3LY5+RqPM9R4/XEkdVuXmAxvF7GgrzRSIuDsTD2MANhmBxuF+EEbTKN/ciAzAUxnOdie1hol
+lqAkHxA44ja0WMKzYlmGU28kSdqB1i6h4nLevOVCnK+WtEKLpuOy6eZFThX5IsRrjenja/BSN2iu
+FFE+cHoYwJzGRI9yFKvpRUQ+H0qqaIoI5lP18lEqsPiBhRHMkpPIHqMuoiGiZyQxSXC0ynqSTYNX
+80VoGbTVLspApI9vo8XZBOScj6oHLR6qkjlnhkwwNQ8/wZdSfNBI0NSKLNasgKl6LF7FVbx4MCcj
+jYREWWzVEEVd81rloiAfu+h8H33/8DPhciqmx3QHdcdLEOKQ1mHIp8NQLYDAhQjJPmRA4hvGfSG+
+dwTBj1rKUFKGB7BYiKJ+C3dZ91NewHQ8kxHGlS0rSLioLvwrlwNSrRgtyZzWVFTWB8C7kinChIdW
+BZS4

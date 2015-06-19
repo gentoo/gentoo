@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=sys-libs/zlib-1.2.5.1-r1 dev-libs/openssl
+DESCRIPTION=HTTrack Website Copier, Open Source Offline Browser
+EAPI=4
+HOMEPAGE=http://www.httrack.com/
+IUSE=static-libs
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=GPL-3
+RDEPEND=>=sys-libs/zlib-1.2.5.1-r1 dev-libs/openssl
+SLOT=0
+SRC_URI=http://mirror.httrack.com/historical/httrack-3.47.27.tar.gz
+_md5_=8a31fde7e6b3709d2002a436826fdf93

@@ -1,0 +1,632 @@
+# ChangeLog for sys-auth/pambase
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/pambase/ChangeLog,v 1.150 2015/05/17 05:23:58 vapier Exp $
+
+  17 May 2015; Mike Frysinger <vapier@gentoo.org> pambase-20150213.ebuild:
+  Mark alpha/arm64/ia64/m68k/ppc64/s390/sh stable #547434.
+
+  15 May 2015; Mikle Kolyada <zlogene@gentoo.org> pambase-20150213.ebuild:
+  sparc stable wrt bug #547434
+
+  15 May 2015; Pacho Ramos <pacho@gentoo.org> pambase-20150213.ebuild:
+  ppc stable wrt bug #547434
+
+  13 May 2015; Mikle Kolyada <zlogene@gentoo.org> pambase-20150213.ebuild:
+  arm stable wrt bug #547434
+
+  13 May 2015; Agostino Sarubbo <ago@gentoo.org> pambase-20150213.ebuild:
+  Stable for x86, wrt bug #547434
+
+  06 May 2015; Mikle Kolyada <zlogene@gentoo.org> pambase-20150213.ebuild:
+  amd64 stable wrt bug #547434
+
+  05 May 2015; Jeroen Roovers <jer@gentoo.org> pambase-20150213.ebuild:
+  Stable for HPPA (bug #547434).
+
+  17 Apr 2015; Sven Vermeulen <swift@gentoo.org> pambase-20150213.ebuild,
+  +files/pambase-20150213-selinux-note.patch:
+  Fix note in system-login so it is not seen as a processor directive (bug
+  #540096)
+
+  21 Feb 2015; Mike Frysinger <vapier@gentoo.org> pambase-20150213.ebuild:
+  Fix typo in SRC_URI after typo fix
+
+  15 Feb 2015; Mike Frysinger <vapier@gentoo.org> pambase-20150213.ebuild:
+  Fix typo in SRC_URI #540104 by Patrick Lauer.
+
+*pambase-20150213 (14 Feb 2015)
+
+  14 Feb 2015; Mike Frysinger <vapier@gentoo.org> +pambase-20150213.ebuild,
+  metadata.xml:
+  Move pam_gnome_keyring after pam_selinux #511600 by Jason Zaman. Add
+  USE=securetty and USE=nullok options #539508.
+
+  08 May 2014; Mike Frysinger <vapier@gentoo.org> pambase-20140313.ebuild:
+  Drop old elog message as it applies to versions more than 5 years old #440582
+  by poletti.marco.
+
+  13 Mar 2014; Samuli Suominen <ssuominen@gentoo.org>
+  -pambase-20120417-r1.ebuild, -pambase-20120417-r2.ebuild,
+  -pambase-20120417.ebuild:
+  old
+
+*pambase-20140313 (13 Mar 2014)
+
+  13 Mar 2014; Samuli Suominen <ssuominen@gentoo.org> +pambase-20140313.ebuild:
+  Version bump (imported -systemd.patch, -systemd-auth.patch and -lastlog-
+  silent.patch)
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> pambase-20120417-r3.ebuild:
+  Add arm64 love.
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> pambase-20120417-r1.ebuild,
+  pambase-20120417-r3.ebuild, pambase-20120417.ebuild:
+  Mark m68k/s390/sh stable.
+
+  14 Jan 2014; Pacho Ramos <pacho@gentoo.org> pambase-20120417-r3.ebuild:
+  ia64 stable, bug #491034 (thanks to Emeric Maschino for testing)
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pambase-20120417-r3.ebuild:
+  Stable for sparc, wrt bug #491034
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pambase-20120417-r3.ebuild:
+  Stable for ppc, wrt bug #491034
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pambase-20120417-r3.ebuild:
+  Stable for ppc64, wrt bug #491034
+
+  30 Nov 2013; Markus Meier <maekke@gentoo.org> pambase-20120417-r3.ebuild:
+  arm stable, bug #491034
+
+  17 Nov 2013; Matt Turner <mattst88@gentoo.org> pambase-20120417-r3.ebuild:
+  alpha stable, bug 491034.
+
+  16 Nov 2013; Pacho Ramos <pacho@gentoo.org> pambase-20120417-r3.ebuild:
+  amd64/x86 stable, bug #491034
+
+  12 Nov 2013; Jeroen Roovers <jer@gentoo.org> pambase-20120417-r3.ebuild:
+  Stable for HPPA (bug #491034).
+
+*pambase-20120417-r3 (27 Oct 2013)
+
+  27 Oct 2013; Pacho Ramos <pacho@gentoo.org>
+  +files/pambase-20120417-systemd-auth.patch, +pambase-20120417-r3.ebuild:
+  Load pam_systemd from system-auth instead of system-login, bug #485470 by
+  Benjamin Franzke
+
+  05 Sep 2013; Mike Frysinger <vapier@gentoo.org> pambase-20120417-r2.ebuild:
+  Mark m68k/s390/sh stable #454388.
+
+  21 Aug 2013; Samuli Suominen <ssuominen@gentoo.org>
+  pambase-20120417-r2.ebuild:
+  Warn people from enabling weird setup with USE="consolekit systemd" and
+  having 2 session trackers running at the same time wrt #478258
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> pambase-20120417-r2.ebuild:
+  Stable for sparc, wrt bug #454388
+
+  07 Jul 2013; Agostino Sarubbo <ago@gentoo.org> pambase-20120417-r2.ebuild:
+  Stable for ia64, wrt bug #454388
+
+  07 Jul 2013; Agostino Sarubbo <ago@gentoo.org> pambase-20120417-r2.ebuild:
+  Stable for arm, wrt bug #454388
+
+  06 Jul 2013; Agostino Sarubbo <ago@gentoo.org> pambase-20120417-r2.ebuild:
+  Stable for alpha, wrt bug #454388
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> pambase-20120417-r2.ebuild:
+  Stable for ppc64, wrt bug #454388
+
+  01 Jul 2013; Jeroen Roovers <jer@gentoo.org> pambase-20120417-r2.ebuild:
+  Stable for HPPA (bug #454388).
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> pambase-20120417-r2.ebuild:
+  Stable for ppc, wrt bug #454388
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> pambase-20120417-r2.ebuild:
+  Stable for x86, wrt bug #454388
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> pambase-20120417-r2.ebuild:
+  Stable for amd64, wrt bug #454388
+
+  28 Jun 2013; Alexis Ballier <aballier@gentoo.org> pambase-20101024-r2.ebuild,
+  pambase-20120417.ebuild, pambase-20120417-r1.ebuild,
+  pambase-20120417-r2.ebuild:
+  allow openpam for krb5
+
+*pambase-20120417-r2 (15 Jun 2013)
+
+  15 Jun 2013; Johannes Huber <johu@gentoo.org>
+  +files/pambase-20120417-lastlog-silent.patch, +pambase-20120417-r2.ebuild:
+  Revision bump adds patch to make lastlog messages silent by Dennis Schridde
+  <devurandom@gmx.net> wrt bug #468798. Acked by Diego Elio Pettenò
+  <flameeyes@gentoo.org> on irc.
+
+*pambase-20120417-r1 (19 Jun 2012)
+
+  19 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +pambase-20120417-r1.ebuild, +files/pambase-20120417-systemd.patch,
+  metadata.xml:
+  Use `usex` from eutils.eclass for defining "varvalue". Support for
+  pam_systemd.so wrt #372229 by Michał Górny.
+
+  19 May 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  pambase-20101024-r2.ebuild, pambase-20120417.ebuild:
+  Nix-out src_test as there are no tests.
+
+  06 May 2012; Zac Medico <zmedico@gentoo.org> pambase-20120417.ebuild:
+  Add blocker for !<sys-apps/shadow-4.1.5-r1 due to file collisions with
+  /etc/pam.d/{login,passwd,su}.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> pambase-20101024-r2.ebuild:
+  keyword ~amd64-fbsd
+
+  22 Apr 2012; Alexis Ballier <aballier@gentoo.org> pambase-20120417.ebuild:
+  keyword -*-fbsd for bug #413077
+
+*pambase-20120417 (17 Apr 2012)
+
+  17 Apr 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +pambase-20120417.ebuild:
+  Version bump.
+
+  28 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> -pambase-20101024.ebuild,
+  -pambase-20101024-r1.ebuild:
+  old
+
+  28 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  pambase-20101024-r2.ebuild:
+  Stabilize for everyone since this is now same as current stable.
+
+*pambase-20101024-r2 (28 Jan 2012)
+
+  28 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +pambase-20101024-r2.ebuild:
+  Restore "nox11" as pam_ck_connector.so argument because most of the display
+  managers in tree, including XDM and SLIM, has native ConsoleKit support now.
+
+*pambase-20101024-r1 (22 Oct 2011)
+
+  22 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +pambase-20101024-r1.ebuild:
+  Remove nox11 argument from pam_ck_connector.so wrt #342345
+
+  28 Nov 2010; Constanze Hausner <constanze@gentoo.org>
+  pambase-20090620.1-r1.ebuild, pambase-20100310.ebuild,
+  pambase-20100925.ebuild, pambase-20101024.ebuild, metadata.xml:
+  Renamed useflags ssh/kerberos to pam_ssh/pam_krb5 and changed kerberos dep
+  to >=sys-auth/pam_krb5-4.3
+
+  27 Nov 2010; Raúl Porcel <armin76@gentoo.org> pambase-20101024.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable
+
+  03 Nov 2010; Markus Meier <maekke@gentoo.org> pambase-20101024.ebuild:
+  arm stable, bug #343099
+
+  01 Nov 2010; Jeroen Roovers <jer@gentoo.org> pambase-20101024.ebuild:
+  Stable for HPPA PPC (bug #343099).
+
+  01 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  pambase-20101024.ebuild:
+  stable x86, bug 343099
+
+  30 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  pambase-20101024.ebuild:
+  ppc64 stable wrt #343099
+
+  29 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  pambase-20101024.ebuild:
+  Stable on amd64 wrt bug #343099
+
+*pambase-20101024 (23 Oct 2010)
+
+  23 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +pambase-20101024.ebuild:
+  Version bump; add pam_loginuid on Linux-PAM for bug #342345.
+
+  22 Oct 2010; Jeroen Roovers <jer@gentoo.org> pambase-20100925.ebuild:
+  Marked ~hppa (bug #329585).
+
+*pambase-20100925 (25 Sep 2010)
+
+  25 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -pambase-20100819.ebuild, +pambase-20100925.ebuild, metadata.xml:
+  Version bump (and remove old); the new version adds a minimal USE flag.
+
+  04 Sep 2010; Raúl Porcel <armin76@gentoo.org> pambase-20100819.ebuild:
+  Add ~alpha/~ia64 wrt #329585
+
+  03 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  pambase-20090620.1-r1.ebuild, pambase-20100310.ebuild:
+  Change URI to point to dev.gentoo.org rather than my host.
+
+*pambase-20100819 (19 Aug 2010)
+
+  19 Aug 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -pambase-20100724.ebuild, +pambase-20100819.ebuild:
+  Bump pambase to fix bug #333393 reported by Simon Alman.
+
+  02 Aug 2010; Markus Meier <maekke@gentoo.org> pambase-20100724.ebuild:
+  add ~arm, bug #329585
+
+*pambase-20100724 (24 Jul 2010)
+
+  24 Jul 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -pambase-20100723.ebuild, +pambase-20100724.ebuild:
+  Bump to fix pam_krb5 auth login (bug #329599).
+
+  23 Jul 2010; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata description of USE flags.
+
+*pambase-20100723 (23 Jul 2010)
+
+  23 Jul 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +pambase-20100723.ebuild:
+  Add a new version that adds support for Kerberos authentication on system
+  (with Linux-PAM only).
+
+  15 Apr 2010; Brent Baude <ranger@gentoo.org> pambase-20100310.ebuild:
+  Marking pambase-20100310 ppc for bug 308075
+
+  04 Apr 2010; Raúl Porcel <armin76@gentoo.org> pambase-20100310.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #308075
+
+  30 Mar 2010; Jonathan Callen <abcd@gentoo.org> pambase-20100310.ebuild:
+  Bump to EAPI=3, add prefix keywords
+
+  29 Mar 2010; Markus Meier <maekke@gentoo.org> pambase-20100310.ebuild:
+  amd64 stable, bug #308075
+
+  24 Mar 2010; Jeroen Roovers <jer@gentoo.org> pambase-20100310.ebuild:
+  Stable for HPPA (bug #308075).
+
+  18 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  pambase-20100310.ebuild:
+  stable x86, security bug 308075
+
+*pambase-20100310 (10 Mar 2010)
+
+  10 Mar 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -pambase-20081028.ebuild, +pambase-20100310.ebuild:
+  Version bump and remove old version. The new version simply improves on
+  the system-services stack to be usable with fcron.
+
+  21 Nov 2009; Raúl Porcel <armin76@gentoo.org>
+  pambase-20090620.1-r1.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #284088
+
+  09 Oct 2009; Markus Meier <maekke@gentoo.org>
+  pambase-20090620.1-r1.ebuild:
+  arm stable, bug #284088
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> pambase-20090620.1-r1.ebuild:
+  ppc stable #284088
+
+  26 Sep 2009; Romain Perier <mrpouet@gentoo.org>
+  pambase-20090620.1-r1.ebuild:
+  Stable for amd64 per bug #284088.
+
+  22 Sep 2009; Jeroen Roovers <jer@gentoo.org> pambase-20090620.1-r1.ebuild:
+  Stable for HPPA (bug #284088).
+
+  16 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  pambase-20090620.1-r1.ebuild:
+  stable x86, bug 284088
+
+  14 Sep 2009; Tom Gall <tgall@gentoo.org> pambase-20090620.1-r1.ebuild:
+  stable on ppc64, bug #284088
+
+  08 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -pambase-20090515.ebuild:
+  Remove old version.
+
+*pambase-20090620.1-r1 (10 Aug 2009)
+
+  10 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -pambase-20090620.1.ebuild, +pambase-20090620.1-r1.ebuild:
+  Revision bump to add the portage-utils dependency (without this, Linux-PAM
+  version is not properly calculated, and tally2 is not used).
+
+*pambase-20090620.1 (20 Jun 2009)
+
+  20 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -pambase-20090620.ebuild, +pambase-20090620.1.ebuild:
+  Further pam_tally2 fixes.
+
+*pambase-20090620 (20 Jun 2009)
+
+  20 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +pambase-20090620.ebuild:
+  Bump so to enable pam_tall2 properly when building with Linux-PAM-1.1.0.
+
+*pambase-20090515 (15 May 2009)
+
+  15 May 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -pambase-20080318.ebuild, -pambase-20081028-r1.ebuild,
+  -pambase-20090430.ebuild, +pambase-20090515.ebuild:
+  Version bump and cleanup old version. The new version only fixes a minor
+  problem with Gentoo/FreeBSD.
+
+*pambase-20090430 (30 Apr 2009)
+
+  30 Apr 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +pambase-20090430.ebuild:
+  Add a new pambase version, with a stricter dependency on ConsoleKit and
+  support for remote sessions as well as local. Should fix bug #260842 (PAM
+  side).
+
+  21 Mar 2009; Jeroen Roovers <jer@gentoo.org> pambase-20081028.ebuild:
+  Stable for HPPA (bug #261595).
+
+  17 Mar 2009; Raúl Porcel <armin76@gentoo.org> pambase-20081028.ebuild:
+  m68k stable wrt #261595, thanks to kolla for testing
+
+  15 Mar 2009; Brent Baude <ranger@gentoo.org> pambase-20081028.ebuild:
+  stable ppc64, bug 261595
+
+  14 Mar 2009; Raúl Porcel <armin76@gentoo.org> pambase-20081028.ebuild:
+  arm/ia64/s390/sh/sparc stable wrt #261595
+
+  14 Mar 2009; nixnut <nixnut@gentoo.org> pambase-20081028.ebuild:
+  ppc stable #261595
+
+  11 Mar 2009; Tobias Klausmann <klausman@gentoo.org>
+  pambase-20081028.ebuild:
+  Stable on alpha, bug #261595
+
+  08 Mar 2009; Markus Meier <maekke@gentoo.org> pambase-20081028.ebuild:
+  amd64/x86 stable, bug #261595
+
+  07 Mar 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -pambase-20080730.ebuild, -pambase-20080801.ebuild,
+  -pambase-20080801-r1.ebuild:
+  Cleanup old versions.
+
+  09 Nov 2008; Mike Frysinger <vapier@gentoo.org>
+  pambase-20081028-r1.ebuild:
+  Add arm/s390/sh #232691.
+
+*pambase-20081028-r1 (28 Oct 2008)
+*pambase-20081028 (28 Oct 2008)
+
+  28 Oct 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +pambase-20081028.ebuild, +pambase-20081028-r1.ebuild:
+  Version bump to create the new system-services pam.d file.
+
+*pambase-20080801-r1 (29 Sep 2008)
+
+  29 Sep 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +pambase-20080801-r1.ebuild:
+  Add a new revision using EAPI=2.
+
+  22 Aug 2008; Alexis Ballier <aballier@gentoo.org> pambase-20080801.ebuild:
+  keyword ~sparc-fbsd
+
+  10 Aug 2008; Ricardo Mendoza <ricmm@gentoo.org> pambase-20080801.ebuild:
+  Add ~mips, bug #232691
+
+  10 Aug 2008; Raúl Porcel <armin76@gentoo.org> pambase-20080801.ebuild:
+  Add ~ia64 wrt #232691
+
+  10 Aug 2008; Tobias Klausmann <klausman@gentoo.org>
+  pambase-20080801.ebuild:
+  Keyworded on alpha, bug #232691
+
+  02 Aug 2008; Markus Rothe <corsair@gentoo.org> pambase-20080801.ebuild:
+  It was meant to be ~ppc64...
+
+  02 Aug 2008; Markus Rothe <corsair@gentoo.org> pambase-20080801.ebuild:
+  Stable on ppc64; bug #232691
+
+*pambase-20080801 (01 Aug 2008)
+
+  01 Aug 2008; Diego Pettenò <flameeyes@gentoo.org> metadata.xml,
+  +pambase-20080801.ebuild:
+  New pambase with optional support for SHA512-hashed passwords (enabled by
+  default). This will deprecated sys-auth/pam_sha512.
+
+  31 Jul 2008; Vlastimil Babka <caster@gentoo.org> ChangeLog:
+  Fix distfile size and hashes in Manifest, bug #233462.
+
+  31 Jul 2008; Javier Villavicencio <the_paya@gentoo.org>
+  pambase-20080730.ebuild:
+  Keyworded ~x86-fbsd.
+
+*pambase-20080730 (30 Jul 2008)
+
+  30 Jul 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -pambase-20080723.1.ebuild, +pambase-20080730.ebuild:
+  Bump to complete fixes for FreeBSD.
+
+*pambase-20080723.1 (23 Jul 2008)
+
+  23 Jul 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -pambase-20080723.ebuild, +pambase-20080723.1.ebuild:
+  Version bump with two minor fixes for Gentoo/FreeBSD.
+
+  23 Jul 2008; Ferris McCormick <fmccor@gentoo.org> pambase-20080723.ebuild:
+  Rekeyword for ~sparc (allow pam_ssh), Bug #232691.
+
+  23 Jul 2008; Jeroen Roovers <jer@gentoo.org> pambase-20080723.ebuild:
+  Marked ~hppa (bug #232691).
+
+*pambase-20080723 (22 Jul 2008)
+
+  22 Jul 2008; Diego Pettenò <flameeyes@gentoo.org> metadata.xml,
+  +pambase-20080723.ebuild:
+  Add new pambase version, with added support for sys-auth/pam_ssh. Also
+  contains fixes for bug #232669 for Gentoo/FreeBSD 7 systems. See bug
+  #232691 for keywording request.
+
+  04 Jul 2008; <ricmm@gentoo.org> pambase-20080318.ebuild:
+  Add ~mips, bug #230743
+
+  22 Jun 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  pambase-20080318.ebuild:
+  amd64 stable, bug #225901
+
+  14 Jun 2008; nixnut <nixnut@gentoo.org> pambase-20080318.ebuild:
+  Stable on ppc wrt bug 225901
+
+  13 Jun 2008; Brent Baude <ranger@gentoo.org> pambase-20080318.ebuild:
+  Marking pambase-20080318 ppc64 for bug 225901
+
+  13 Jun 2008; Tobias Klausmann <klausman@gentoo.org>
+  pambase-20080318.ebuild:
+  Stable on alpha, bug #225901
+
+  13 Jun 2008; Raúl Porcel <armin76@gentoo.org> pambase-20080318.ebuild:
+  ia64/sparc stable wrt #225901
+
+  13 Jun 2008; Jeroen Roovers <jer@gentoo.org> pambase-20080318.ebuild:
+  Stable for HPPA (bug #225901).
+
+  11 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  pambase-20080318.ebuild:
+  stable x86, bug 225901
+
+  11 Jun 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -pambase-20080305.ebuild:
+  Remove old version.
+
+  10 Jun 2008; Alexis Ballier <aballier@gentoo.org> pambase-20080318.ebuild:
+  keyword ~sparc-fbsd
+
+  08 Jun 2008; Javier Villavicencio <the_paya@gentoo.org>
+  pambase-20080318.ebuild:
+  Keyworded ~x86-fbsd.
+
+  04 Jun 2008; Markus Rothe <corsair@gentoo.org> pambase-20080318.ebuild:
+  Added ~ppc64; bug #224555
+
+  22 Apr 2008; Diego Pettenò <flameeyes@gentoo.org> metadata.xml,
+  -pambase-20080306.1.ebuild, -pambase-20080306.2.ebuild,
+  pambase-20080318.ebuild:
+  Remove old versions and replace gnome USE fag with gnome-keyring. Closes
+  bug #218856.
+
+  12 Apr 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  pambase-20080318.ebuild:
+  Added ~ppc, bug #212437
+
+  24 Mar 2008; Raúl Porcel <armin76@gentoo.org> pambase-20080318.ebuild:
+  Add ~ia64/~sparc wrt #212437
+
+*pambase-20080318 (18 Mar 2008)
+
+  18 Mar 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +pambase-20080318.ebuild:
+  Add new pambase package that should fix the Gnome Keyring problems in bug
+  #213578.
+
+  17 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  pambase-20080306.2.ebuild:
+  Added ~amd64
+
+  15 Mar 2008; Tobias Klausmann <klausman@gentoo.org>
+  pambase-20080306.2.ebuild:
+  Keyworded for (~)alpha, bug 212437
+
+  13 Mar 2008; Jeroen Roovers <jer@gentoo.org> pambase-20080306.2.ebuild:
+  Marked ~hppa (bug #212437).
+
+*pambase-20080306.2 (06 Mar 2008)
+
+  06 Mar 2008; Diego Pettenò <flameeyes@gentoo.org> metadata.xml,
+  +pambase-20080306.2.ebuild:
+  Add a new release with pam_mktemp as a dependency. This means a few more
+  keywords needed, sorry.
+
+  06 Mar 2008; Raúl Porcel <armin76@gentoo.org> pambase-20080306.1.ebuild:
+  Add ~alpha/~ia64
+
+*pambase-20080306.1 (05 Mar 2008)
+
+  05 Mar 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -pambase-20080306.ebuild, +pambase-20080306.1.ebuild:
+  Make it work fine on Linux-PAM too.
+
+  05 Mar 2008; Diego Pettenò <flameeyes@gentoo.org>
+  pambase-20080306.ebuild:
+  Forgot to add to IUSE.
+
+*pambase-20080306 (05 Mar 2008)
+
+  05 Mar 2008; Diego Pettenò <flameeyes@gentoo.org> metadata.xml,
+  +pambase-20080306.ebuild:
+  New version of pambase with a passwdqc USE flag to enable use of pam_passwdqc.
+
+  05 Mar 2008; Ferris McCormick <fmccor@gentoo.org> pambase-20080305.ebuild:
+  Add ~sparc for testing, part of Bug #210770 --- pam still works for me.
+
+*pambase-20080305 (05 Mar 2008)
+
+  05 Mar 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -pambase-20080301.ebuild, +pambase-20080305.ebuild:
+  Bump to avoid calling git during ebuild phases. Closes bug #212395.
+
+  04 Mar 2008; Brent Baude <ranger@gentoo.org> ChangeLog:
+  keyworded ~arch for ppc64, bug 210769
+
+  04 Mar 2008; Brent Baude <ranger@gentoo.org> pambase-20080301.ebuild:
+  keyworded ~arch for ppc64, bug 210770
+
+  04 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  pambase-20080301.ebuild:
+  keyword ~x86 for bug 210770
+
+  03 Mar 2008; Jeroen Roovers <jer@gentoo.org> pambase-20080301.ebuild:
+  Marked ~hppa (bug #210770).
+
+  01 Mar 2008; Diego Pettenò <flameeyes@gentoo.org>
+  pambase-20080301.ebuild:
+  Fix HOMEPAGE. Thanks creidiki.
+
+*pambase-20080301 (01 Mar 2008)
+
+  01 Mar 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -pambase-20080224.ebuild, +pambase-20080301.ebuild:
+  Version bump, should fix su(1) problems under FreeBSD. See bug #211895.
+
+*pambase-20080224 (24 Feb 2008)
+
+  24 Feb 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -pambase-20080221.ebuild, +pambase-20080224.ebuild:
+  Version bump to fix bug #211123.
+
+  21 Feb 2008; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Add long description for gnome and consolekit USE flags.
+
+  21 Feb 2008; Diego Pettenò <flameeyes@gentoo.org>
+  pambase-20080221.ebuild:
+  Forgot to add flags to IUSE.
+
+*pambase-20080221 (21 Feb 2008)
+
+  21 Feb 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -pambase-20080219.1.ebuild, +pambase-20080221.ebuild:
+  Bump pambase, now it supports gnome and consolekit USE flags that allows it
+  to enable by default GNOME keyring (all sessions) and ConsoleKit (local
+  sessions).
+
+  20 Feb 2008; Diego Pettenò <flameeyes@gentoo.org>
+  pambase-20080219.1.ebuild:
+  Explitly set DEPEND to empty.
+
+*pambase-20080219.1 (19 Feb 2008)
+
+  19 Feb 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -pambase-20080219.ebuild, +pambase-20080219.1.ebuild:
+  New pambase that install system-local-login and system-remote-login.
+
+  19 Feb 2008; Diego Pettenò <flameeyes@gentoo.org>
+  pambase-20080219.ebuild:
+  Also accept openpam and freebsd/netbsd-pam-modules, and block older
+  freebsd-pam-modules.
+
+*pambase-20080219 (19 Feb 2008)
+
+  19 Feb 2008; Diego Pettenò <flameeyes@gentoo.org> +metadata.xml,
+  +pambase-20080219.ebuild:
+  Initial import, pambase package provides the basic configuration files for
+  PAM (either Linux-PAM or OpenPAM).

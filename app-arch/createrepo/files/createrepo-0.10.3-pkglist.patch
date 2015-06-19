@@ -1,0 +1,15 @@
+diff --git a/createrepo/__init__.py b/createrepo/__init__.py
+index b1875f6..85f2a3d 100644
+--- a/createrepo/__init__.py
++++ b/createrepo/__init__.py
+@@ -400,7 +400,9 @@ class MetaDataGenerator:
+         if self.conf.update:
+             self._setup_old_metadata_lookup()
+         # rpms we're going to be dealing with
+-        if self.conf.pkglist:
++        if isinstance(self.conf.pkglist, MetaSack):
++            packages = self.conf.pkglist
++        elif self.conf.pkglist:
+             packages = []
+             for pkg in self.conf.pkglist:
+                 if '://' in pkg: # remote

@@ -1,0 +1,447 @@
+# ChangeLog for app-portage/ufed
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/ufed/ChangeLog,v 1.110 2015/04/25 16:25:44 floppym Exp $
+
+  25 Apr 2015; Mike Gilbert <floppym@gentoo.org> ufed-9999.ebuild:
+  Replace links pointing at git.overlays.gentoo.org.
+
+*ufed-0.92 (02 Mar 2015)
+
+  02 Mar 2015; Paul Varner <fuzzyray@gentoo.org> +ufed-0.92.ebuild:
+  Version bump
+
+  02 Nov 2014; Agostino Sarubbo <ago@gentoo.org> ufed-0.91.ebuild:
+  Stable for alpha, wrt bug #524670
+
+  30 Oct 2014; Agostino Sarubbo <ago@gentoo.org> ufed-0.91.ebuild:
+  Stable for x86, wrt bug #524670
+
+  29 Oct 2014; Agostino Sarubbo <ago@gentoo.org> ufed-0.91.ebuild:
+  Stable for sparc, wrt bug #524670
+
+  28 Oct 2014; Agostino Sarubbo <ago@gentoo.org> ufed-0.91.ebuild:
+  Stable for ia64, wrt bug #524670
+
+  19 Oct 2014; Anthony G. Basile <blueness@gentoo.org> ufed-0.91.ebuild:
+  Stable on arm, ppc and ppc64.  Bug #524670
+
+  19 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> ufed-0.91.ebuild:
+  amd64 stable wrt bug #524670
+
+  19 Oct 2014; Jeroen Roovers <jer@gentoo.org> ufed-0.91.ebuild:
+  Stable for HPPA (bug #524670).
+
+*ufed-0.91 (19 Mar 2014)
+
+  19 Mar 2014; Paul Varner <fuzzyray@gentoo.org> +ufed-0.91.ebuild:
+  Version bump for bug fixes and enhancements. See
+  http://git.overlays.gentoo.org/gitweb/?p=proj/ufed.git;a=summary
+  for full list of changes.
+
+*ufed-0.90_rc2-r1 (11 Sep 2013)
+
+  11 Sep 2013; Paul Varner <fuzzyray@gentoo.org> +ufed-0.90_rc2-r1.ebuild,
+  +files/ufed-0.90_rc2-get_portdir_from_portageq.patch:
+  Revision bump to add patch to get PORTDIR from portageq (Bug 478318).
+
+*ufed-0.90_rc2 (12 Apr 2013)
+
+  12 Apr 2013; Paul Varner <fuzzyray@gentoo.org> +ufed-0.90_rc2.ebuild:
+  Version bump to fix bugs 464328 and 464714.
+  See http://git.overlays.gentoo.org/gitweb/?p=proj/ufed.git;a=summary
+  for detailed changes in this release.
+
+  03 Apr 2013; Samuli Suominen <ssuominen@gentoo.org> ufed-9999.ebuild:
+  Pull in virtual/pkgconfig wrt #464328
+
+*ufed-0.90_rc1 (26 Mar 2013)
+
+  26 Mar 2013; Paul Varner <fuzzyray@gentoo.org> +ufed-0.90_rc1.ebuild:
+  Version bump for first release candidate version. See
+  http://git.overlays.gentoo.org/gitweb/?p=proj/ufed.git;a=summary for
+  detailed changes in this release.
+
+  26 Mar 2013; Paul Varner <fuzzyray@gentoo.org> -ufed-0.40-r6.ebuild,
+  -ufed-0.40-r10.ebuild, -ufed-0.40-r11.ebuild, -ufed-0.40.1.ebuild,
+  -ufed-0.40.1-r1.ebuild, -files/ufed-0.40.1-make.globals-path.patch,
+  -ufed-0.40.2.ebuild, -files/ufed-0.40-comments.patch,
+  -files/ufed-0.40-masked.patch, -files/ufed-0.40-multiple-inheritance.patch,
+  -files/ufed-0.40-noremove.patch, -files/ufed-0.40-packageusemask.patch,
+  -files/ufed-0.40-source.patch, -files/ufed-0.40-termsize.patch,
+  -files/ufed-0.40-termsize-2.patch, -files/ufed-0.40-useorder.patch:
+  Remove old unused versions.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  05 Feb 2013; Paul Varner <fuzzyray@gentoo.org> ufed-9999.ebuild:
+  Remove usage of prefix eclass, since ufed makefile now handles it natively.
+
+  02 Feb 2013; Alexey Shvetsov <alexxy@gentoo.org> ufed-0.40-r11.ebuild,
+  ufed-0.40.2-r1.ebuild:
+  [app-portage/ufed] Add prefix keywords
+
+  28 Dec 2012; Paul Varner <fuzzyray@gentoo.org> metadata.xml:
+  Removing tools-portage herd and adding a proxy maintainer.
+
+  16 Dec 2012; Raúl Porcel <armin76@gentoo.org> ufed-0.40.2-r1.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #444792
+
+  27 Nov 2012; Jeroen Roovers <jer@gentoo.org> ufed-0.40.2-r1.ebuild:
+  Stable for HPPA (bug #444792).
+
+  27 Nov 2012; Agostino Sarubbo <ago@gentoo.org> ufed-0.40.2-r1.ebuild:
+  Stable for x86, wrt bug #444792
+
+  27 Nov 2012; Agostino Sarubbo <ago@gentoo.org> ufed-0.40.2-r1.ebuild:
+  Stable for amd64, wrt bug #444792
+
+  27 Nov 2012; Anthony G. Basile <blueness@gentoo.org> ufed-0.40.2-r1.ebuild:
+  stable arm ppc ppc64, bug #444792
+
+*ufed-9999 (20 Nov 2012)
+*ufed-0.40.2-r1 (20 Nov 2012)
+
+  20 Nov 2012; Paul Varner <fuzzyray@gentoo.org> +ufed-0.40.2-r1.ebuild,
+  +files/ufed-0.40.2-manpage-URL.patch, +files/ufed-0.40.2-prefix.patch,
+  +ufed-9999.ebuild:
+  Revision bump to add patches for prefix support.
+  Add live ebuild for testing.
+
+*ufed-0.40.2 (02 Nov 2012)
+
+  02 Nov 2012; Paul Varner <fuzzyray@gentoo.org> +ufed-0.40.2.ebuild:
+  Version bunp to add fixes to support /etc/portage/make.conf and
+  /etc/portage/make.profile. See bug 434672 for details.
+  Thanks to Sven Eden and Martin Väth for the patches.
+
+*ufed-0.40.1-r1 (12 Aug 2012)
+
+  12 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> +ufed-0.40.1-r1.ebuild,
+  +files/ufed-0.40.1-make.globals-path.patch:
+  Use make.globals from /usr/share/portage/config instead of /etc wrt #431064
+  by Holger Hoffstätte
+
+  02 Jun 2012; Zac Medico <zmedico@gentoo.org> ufed-0.40.1.ebuild:
+  inherit multilib for get_libdir
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #81177
+
+  20 Oct 2010; Mart Raudsepp <leio@gentoo.org> ufed-0.40-r6.ebuild:
+  Drop to ~mips
+
+  31 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> ufed-0.40-r11.ebuild:
+  Don't use econf for non-autoconf based ./configure script.
+
+  31 Mar 2010; Christian Ruppert <idl0r@gentoo.org> ufed-0.40-r11.ebuild:
+  Don't run configure twice also use default src_compile since it does the same.
+
+  13 Feb 2010; Raúl Porcel <armin76@gentoo.org> ufed-0.40.1.ebuild:
+  alpha/arm/ia64/m68k/s390/sh stable wrt #300519
+
+  01 Feb 2010; Markos Chandras <hwoarang@gentoo.org> ufed-0.40.1.ebuild:
+  Stable on amd64 wrt bug #300519
+
+  26 Jan 2010; Tiago Cunha <tcunha@gentoo.org> ufed-0.40.1.ebuild:
+  stable sparc, bug 300519
+
+  20 Jan 2010; Brent Baude <ranger@gentoo.org> ufed-0.40.1.ebuild:
+  stable ppc64, bug 300519
+
+  19 Jan 2010; nixnut <nixnut@gentoo.org> ufed-0.40.1.ebuild:
+  ppc stable #300519
+
+  19 Jan 2010; Jeroen Roovers <jer@gentoo.org> ufed-0.40.1.ebuild:
+  Stable for HPPA (bug #300519).
+
+  14 Jan 2010; Christian Faulhammer <fauli@gentoo.org> ufed-0.40.1.ebuild:
+  stable x86, bug 300519
+
+*ufed-0.40.1 (27 Oct 2009)
+
+  27 Oct 2009; Harald van Dĳk <truedfx@gentoo.org> +ufed-0.40.1.ebuild:
+  Don't show profile flags as enabled with USE=-* (bug #290568 by Stefan
+  Oswald); new tarball with all patches to date applied
+
+*ufed-0.40-r11 (18 Jun 2009)
+
+  18 Jun 2009; Harald van Dĳk <truedfx@gentoo.org> +ufed-0.40-r11.ebuild,
+  +files/ufed-0.40-termsize-2.patch:
+  Support flags with too many descriptions to fit on one screen (#273309 by
+  ulm)
+
+  08 Aug 2008; nixnut <nixnut@gentoo.org> ufed-0.40-r10.ebuild:
+  Stable on ppc wrt bug 233644
+
+  04 Aug 2008; Jeroen Roovers <jer@gentoo.org> ufed-0.40-r10.ebuild:
+  Stable for HPPA (bug #233644).
+
+  04 Aug 2008; Santiago M. Mola <coldwind@gentoo.org> ufed-0.40-r10.ebuild:
+  amd64 stable wrt bug #233644, thanks to Chad A. Simmons.
+
+  03 Aug 2008; Raúl Porcel <armin76@gentoo.org> ufed-0.40-r10.ebuild:
+  alpha/ia64/x86 stable wrt #233644
+
+  02 Aug 2008; Markus Rothe <corsair@gentoo.org> ufed-0.40-r10.ebuild:
+  Stable on ppc64; bug #233644
+
+  01 Aug 2008; Ferris McCormick <fmccor@gentoo.org> ufed-0.40-r10.ebuild:
+  Sparc stable --- Bug #233644 --- All looks good.
+
+*ufed-0.40-r10 (26 Jun 2008)
+
+  26 Jun 2008; Harald van Dĳk <truedfx@gentoo.org>
+  files/ufed-0.40-noremove.patch, -ufed-0.40-r8.ebuild,
+  -ufed-0.40-r9.ebuild, +ufed-0.40-r10.ebuild:
+  Don't remove -* from make.conf; reported in bug 229601 by Willie Wong
+
+*ufed-0.40-r9 (10 May 2008)
+
+  10 May 2008; Harald van Dĳk <truedfx@gentoo.org>
+  +files/ufed-0.40-multiple-inheritance.patch, -ufed-0.40-r7.ebuild,
+  +ufed-0.40-r9.ebuild:
+  Handle multiple parent profiles, bug #221151
+
+*ufed-0.40-r8 (28 Apr 2008)
+
+  28 Apr 2008; Harald van Dĳk <truedfx@gentoo.org>
+  +files/ufed-0.40-termsize.patch, +ufed-0.40-r8.ebuild:
+  Bug #219578: Don't try to draw the scroll thumb if the terminal window is
+  large enough to not need one. It caused ufed to abort and is pointless
+  anyway.
+
+*ufed-0.40-r7 (07 Jan 2008)
+
+  07 Jan 2008; Harald van Dĳk <truedfx@gentoo.org>
+  +files/ufed-0.40-noremove.patch, -ufed-0.40-r1.ebuild,
+  +ufed-0.40-r7.ebuild:
+  Don't remove seemingly unnecessary flags in make.conf, as they may be used
+  to override IUSE defaults
+  Remove older version
+
+  11 May 2007; Joshua Kinard <kumba@gentoo.org> ufed-0.40-r6.ebuild:
+  Stable on mips
+
+  06 Jan 2007; Michael Cummings <mcummings@gentoo.org> ufed-0.40-r6.ebuild:
+  Bug 159124, amd64 stable
+
+  04 Jan 2007; Tom Gall <tgall@gentoo.org> ufed-0.40-r6.ebuild:
+  stable on ppc64
+
+  04 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> ufed-0.40-r6.ebuild:
+  Stable on IA64.
+
+  30 Dec 2006; Bryan Østergaard <kloeri@gentoo.org> ufed-0.40-r6.ebuild:
+  Stable on Alpha, bug 159124.
+
+  29 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org> ufed-0.40-r6.ebuild:
+  Stable on ppc wrt bug #159124.
+
+  28 Dec 2006; Jeroen Roovers <jer@gentoo.org> ufed-0.40-r6.ebuild:
+  Stable for HPPA (bug #159124).
+
+  27 Dec 2006; Andrej Kacian <ticho@gentoo.org> ufed-0.40-r6.ebuild:
+  Stable on x86, bug #159124.
+
+  26 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> ufed-0.40-r6.ebuild:
+  Stable on sparc wrt #159124
+
+*ufed-0.40-r6 (09 Dec 2006)
+
+  09 Dec 2006; Harald van Dĳk <truedfx@gentoo.org>
+  files/ufed-0.40-packageusemask.patch, -ufed-0.40-r5.ebuild,
+  +ufed-0.40-r6.ebuild:
+  Make sure flags don't get hidden just because they are masked for one
+  package (#157576)
+
+*ufed-0.40-r5 (26 Nov 2006)
+
+  26 Nov 2006; Harald van Dĳk <truedfx@gentoo.org>
+  +files/ufed-0.40-packageusemask.patch, -ufed-0.40-r4.ebuild,
+  +ufed-0.40-r5.ebuild:
+  Handle package.use.mask (#154628) and read /etc/portage/profile (#156191)
+
+*ufed-0.40-r4 (10 Nov 2006)
+
+  10 Nov 2006; Harald van Dĳk <truedfx@gentoo.org>
+  +files/ufed-0.40-masked.patch, -ufed-0.40-r3.ebuild, +ufed-0.40-r4.ebuild:
+  Try harder at ignoring masked flags (#154628)
+
+  13 Oct 2006; Harald van Dĳk <truedfx@gentoo.org>
+  +files/ufed-0.40-comments.patch, ufed-0.40-r3.ebuild:
+  Treat any unquoted # as starting a comment (#151086)
+
+*ufed-0.40-r3 (02 Jun 2006)
+
+  02 Jun 2006; Harald van Dĳk <truedfx@gentoo.org>
+  files/ufed-0.40-source.patch, -ufed-0.40-r2.ebuild, +ufed-0.40-r3.ebuild:
+  Fix 'source' support
+
+*ufed-0.40-r2 (23 May 2006)
+
+  23 May 2006; Harald van Dĳk <truedfx@gentoo.org>
+  +files/ufed-0.40-source.patch, +ufed-0.40-r2.ebuild:
+  Add support for 'source' in make.conf (#131275)
+
+  04 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> ufed-0.40-r1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  30 Mar 2006; Harald van Dĳk <truedfx@gentoo.org> -ufed-0.36.ebuild,
+  -ufed-0.39.ebuild:
+  Removing older versions
+
+  03 Mar 2006; Jose Luis Rivero <yoswink@gentoo.org> ufed-0.40-r1.ebuild:
+  Stable on alpha wrt bug #123970
+
+  27 Feb 2006; Patrick McLean <chutzpah@gentoo.org> ufed-0.40-r1.ebuild:
+  Stable on amd64 (bug #123970).
+
+  27 Feb 2006; Jason Wever <weeve@gentoo.org> ufed-0.40-r1.ebuild:
+  Stable on SPARC wrt bug #123970.
+
+  25 Feb 2006; Andrej Kacian <ticho@gentoo.org> ufed-0.40-r1.ebuild:
+  Stable on x86, bug #123970.
+
+  25 Feb 2006; Joshua Kinard <kumba@gentoo.org> ufed-0.40-r1.ebuild:
+  Marked stable on mips.
+
+  25 Feb 2006; Jeroen Roovers <jer@gentoo.org> ufed-0.40-r1.ebuild:
+  Stable on hppa (bug #123970).
+
+  24 Feb 2006; <nixnut@gentoo.org> ufed-0.40-r1.ebuild:
+  Stable on ppc. bug 123970
+
+  24 Feb 2006; Markus Rothe <corsair@gentoo.org> ufed-0.40-r1.ebuild:
+  Stable on ppc64; bug #123970
+
+*ufed-0.40-r1 (24 Jan 2006)
+
+  24 Jan 2006; Harald van Dĳk <truedfx@gentoo.org>
+  +files/ufed-0.40-useorder.patch, -ufed-0.40.ebuild, +ufed-0.40-r1.ebuild:
+  Add support for USE_ORDER
+
+*ufed-0.40 (26 Nov 2005)
+
+  26 Nov 2005; Harald van Dĳk <truedfx@gentoo.org>
+  -files/ufed-usedefaults.patch, -ufed-0.40_rc-r1.ebuild, +ufed-0.40.ebuild:
+  Release as 0.40 final
+
+*ufed-0.40_rc-r1 (09 Nov 2005)
+
+  09 Nov 2005; Harald van Dĳk <truedfx@gentoo.org>
+  +files/ufed-usedefaults.patch, -ufed-0.40_rc.ebuild,
+  +ufed-0.40_rc-r1.ebuild:
+  Fix handling of use.defaults (bug #111902)
+
+*ufed-0.40_rc (04 Nov 2005)
+
+  04 Nov 2005; Harald van Dĳk <truedfx@gentoo.org> +ufed-0.40_rc.ebuild:
+  ufed 0.40RC, first non-hardmasked 0.40 prerelease
+
+*ufed-0.39 (01 May 2005)
+
+  01 May 2005; Harald van Dĳk <truedfx@gentoo.org> -ufed-0.38.ebuild,
+  +ufed-0.39.ebuild:
+  version bump
+
+*ufed-0.38 (30 Apr 2005)
+
+  30 Apr 2005; Harald van Dĳk <truedfx@gentoo.org>
+  -files/ufed-0.37-nooverlay.patch, -files/ufed-0.37-profilesymlink.patch,
+  -ufed-0.37-r2.ebuild, +ufed-0.38.ebuild:
+  version bump for speed boost. Was going to wait until I got some other
+  changes done, but that's taking longer than expected
+
+*ufed-0.37-r2 (21 Apr 2005)
+
+  21 Apr 2005; Harald van Dĳk <truedfx@gentoo.org>
+  +files/ufed-0.37-profilesymlink.patch, -ufed-0.37-r1.ebuild,
+  +ufed-0.37-r2.ebuild:
+  don't complain that /etc/make.profile isn't a symlink for no reason when it
+  is (bug #89903)
+
+*ufed-0.37-r1 (20 Apr 2005)
+
+  20 Apr 2005; Harald van Dĳk <truedfx@gentoo.org>
+  +files/ufed-0.37-nooverlay.patch, -files/cascaded-profile-support.patch,
+  -files/disabled-defaults.patch, -files/no-partial-match.patch,
+  -files/quote-escape.patch, -files/too-many-flags.patch,
+  -ufed-0.35-r2.ebuild, -ufed-0.35-r3.ebuild, -ufed-0.37.ebuild,
+  +ufed-0.37-r1.ebuild:
+  remove 0.35 now that 0.36 is stable
+  avoid a warning when PORTDIR_OVERLAY is unset in 0.37 (bug #89871)
+
+  20 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> ufed-0.36.ebuild:
+  Stable on alpha, bug 88396.
+
+*ufed-0.37 (17 Apr 2005)
+
+  17 Apr 2005; Harald van Dĳk <truedfx@gentoo.org> +ufed-0.37.ebuild:
+  Version bump, fixes bug #56534 (undoing changes after the Help screen)
+
+  11 Apr 2005; Harald van Dĳk <truedfx@gentoo.org> ufed-0.36.ebuild:
+  stable on x86
+
+  11 Apr 2005; Joshua Kinard <kumba@gentoo.org> ufed-0.36.ebuild:
+  Marked stable on mips.
+
+  11 Apr 2005; Markus Rothe <corsair@gentoo.org> ufed-0.36.ebuild:
+  Stable on ppc64
+
+  09 Apr 2005; Simon Stelling <blubb@gentoo.org> ufed-0.36.ebuild:
+  stable on amd64 wrt bug 88396
+
+  09 Apr 2005; Simon Stelling <blubb@gentoo.org> ufed-0.36.ebuild:
+  stable on amd64 wrt bug 88396
+
+  09 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> ufed-0.36.ebuild:
+  Stable on sparc wrt #88396
+
+  08 Apr 2005; Lars Weiler <pylon@gentoo.org> ufed-0.36.ebuild:
+  Stable on ppc; bug #88396.
+
+  07 Apr 2005; Harald van Dĳk <truedfx@gentoo.org> ufed-0.36.ebuild:
+  depend on newer dialog version to fix bug #88233
+
+*ufed-0.36 (06 Apr 2005)
+
+  06 Apr 2005; Harald van Dĳk <truedfx@gentoo.org> +ufed-0.36.ebuild:
+  Version bump
+
+*ufed-0.35-r3 (15 Dec 2004)
+
+  15 Dec 2004; Marius Mauch <genone@gentoo.org> -ufed-0.34.ebuild,
+  -ufed-0.35-r1.ebuild, +ufed-0.35-r3.ebuild, -ufed-0.35.ebuild:
+  Another revision carrying a bunch of patches from bugzilla, this will
+  probably be the last release of ufed as it is. Removing old ebuilds.
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> ufed-0.35-r2.ebuild:
+  Stable on alpha.
+
+  08 Dec 2004; Daniel Black <dragonheart@gentoo.org> ufed-0.35-r2.ebuild:
+  ppc stable as per bug #72028
+
+  22 Nov 2004; Markus Rothe <corsair@gentoo.org> ufed-0.35-r2.ebuild:
+  Stable on ppc64; bug #72028
+
+*ufed-0.35-r2 (22 Nov 2004)
+
+  22 Nov 2004; Marius Mauch <genone@gentoo.org>
+  +files/disabled-defaults.patch, +files/no-partial-match.patch,
+  +files/quote-escape.patch, +files/too-many-flags.patch,
+  +ufed-0.35-r2.ebuild:
+  new revision featuring patches for bugs #59004, #68691, #68924 and #70776.
+  Thanks to fn_x@hotmail.com for providing those. Also made the dialog
+  dep more strict.Ideally this should be bumped straight to stable as some of
+  these bugs prevent ufed from working at all, but the new dialog dep isn't yet
+  stable on all archs. ufed-0.35 will probably be the last version of the perl
+  version, it will likely be replaced by a python version soon.
+
+*ufed-0.35-r1 (06 Oct 2004)
+
+  06 Oct 2004; <genone@gentoo.org> +files/cascaded-profile-support.patch,
+  +ufed-0.35-r1.ebuild +ChangeLog.old:
+  adding a patch to support cascading profiles (bug #62261), thanks to lu_zero
+  for providing that patch.
+  Previous entries moved to ChangeLog.old as they aren't echangelog compatible.

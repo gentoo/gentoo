@@ -1,0 +1,53 @@
+# ChangeLog for dev-dotnet/nini
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/nini/ChangeLog,v 1.10 2015/06/09 13:17:20 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  21 Oct 2009; Markus Meier <maekke@gentoo.org> nini-1.1.0-r2.ebuild:
+  amd64/x86 stable, bug #286874
+
+  20 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing compnerd as a maintainer since he was retired.
+
+*nini-1.1.0-r2 (26 Jan 2009)
+
+  26 Jan 2009; Peter Alfredsen <loki_val@gentoo.org> -nini-1.1.0-r1.ebuild,
+  +nini-1.1.0-r2.ebuild:
+  Fix up pkg-config files so they mirror what Debian does.
+
+*nini-1.1.0-r1 (07 Jan 2009)
+
+  07 Jan 2009; Peter Alfredsen <loki_val@gentoo.org>
+  -files/nini-1.0.0.build, -files/nini-1.1.0.build, +files/Nini.snk.uue,
+  -nini-1.0.0.ebuild, -nini-1.0.0-r1.ebuild, -nini-1.1.0.ebuild,
+  +nini-1.1.0-r1.ebuild:
+  Fix dll not being strongnamed and not being installed into the global
+  assembly cache. Use gmcs, drop nant build files.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*nini-1.1.0 (27 Aug 2006)
+
+  27 Aug 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/nini-1.1.0.build, +nini-1.1.0.ebuild:
+  Version bump from upstream (bug #130088)
+
+  01 Feb 2006; Luis Medinas <metalgod@gentoo.org> nini-1.0.0-r1.ebuild:
+  Added ~amd64 keyword. Closes bug #121115.
+
+*nini-1.0.0-r1 (17 Nov 2005)
+
+  17 Nov 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  files/nini-1.0.0.build, +nini-1.0.0-r1.ebuild:
+  Adding debug useflag support with revbump.
+
+*nini-1.0.0 (08 Nov 2005)
+
+  08 Nov 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/nini-1.0.0.build, +files/nini.pc.in, +metadata.xml,
+  +nini-1.0.0.ebuild:
+  Initial import of Nini.  Resolves bug #101676.

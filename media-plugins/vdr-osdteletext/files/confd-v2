@@ -1,0 +1,38 @@
+# /etc/conf.d/vdr.osdteletext
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-osdteletext/files/confd-v2,v 1.3 2013/03/31 12:58:27 hd_brummy Exp $
+
+# ################################################
+#
+# for minimal activity on your Harddisc
+# store the vtx files in a temp filesystem
+#	allowed values: yes no
+#	default: yes
+#OSDTELETEXT_TMPFS=yes
+
+
+# #########  Expert Functions  ###################
+#
+# set the size of the videotext store
+# (when using TMPFS this is taken from RAM)
+# 	allowed values: size in megabyte
+#	default: 20	# used 20 Mb for videotext
+#OSDTELETEXT_SIZE=20
+
+# set the dir of the tmpfs
+#	allowed values: directory names
+#	default: /var/cache/vdr/osdteletext
+#OSDTELETEXT_DIR=/var/cache/vdr/osdteletext
+
+# store top text pages at cache. (unviewable pages)
+#	allowed values: yes no
+#	default: no
+#OSDTELETEXT_STORETOPTEXT=no
+
+# ########  NOTE! ################################
+#
+# User with an old install have an entry like
+#
+# tmpfs          /vtx        tmpfs       size=20M        0 0
+#
+# in the /etc/fstab
+# you can remove the entry, not needed anymore.

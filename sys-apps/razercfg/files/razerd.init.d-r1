@@ -1,0 +1,26 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/razercfg/files/razerd.init.d-r1,v 1.1 2014/01/03 19:14:35 joker Exp $
+
+depend() {
+	use logger
+}
+
+PIDFILE=/run/razerd/razerd.pid
+
+start() {
+	ebegin "Starting razerd"
+	start-stop-daemon --start \
+		--pidfile ${PIDFILE} \
+		--exec /usr/sbin/razerd \
+		-- --background --pidfile ${PIDFILE}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping razerd"
+	start-stop-daemon --stop --pidfile ${PIDFILE}
+	eend $?
+}
+

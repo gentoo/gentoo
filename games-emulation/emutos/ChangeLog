@@ -1,0 +1,105 @@
+# ChangeLog for games-emulation/emutos
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/emutos/ChangeLog,v 1.28 2015/04/19 10:06:55 ago Exp $
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> emutos-0.9.4.ebuild:
+  Stable for x86, wrt bug #546304
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> emutos-0.9.4.ebuild:
+  Stable for amd64, wrt bug #546304
+
+*emutos-0.9.4 (12 Mar 2015)
+
+  12 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> +emutos-0.9.4.ebuild:
+  version bump
+
+  12 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> -emutos-0.8.5.ebuild:
+  old
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> emutos-0.9.3.ebuild:
+  Stable for ppc, wrt bug #539390
+
+  10 Feb 2015; Agostino Sarubbo <ago@gentoo.org> emutos-0.9.3.ebuild:
+  Stable for x86, wrt bug #539390
+
+  09 Feb 2015; Agostino Sarubbo <ago@gentoo.org> emutos-0.9.3.ebuild:
+  Stable for amd64, wrt bug #539390
+
+  15 Jul 2014; Michael Sterrett <mr_bones_@gentoo.org> -emutos-0.8.7.ebuild:
+  old
+
+*emutos-0.9.3 (08 Jul 2014)
+
+  08 Jul 2014; Michael Sterrett <mr_bones_@gentoo.org> +emutos-0.9.3.ebuild:
+  version bump
+
+  04 Feb 2013; Michael Sterrett <mr_bones_@gentoo.org> -emutos-0.8.3.ebuild:
+  old
+
+*emutos-0.8.7 (02 Feb 2013)
+
+  02 Feb 2013; Julian Ospald <hasufell@gentoo.org> +emutos-0.8.7.ebuild:
+  version bump
+
+  12 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> emutos-0.8.5.ebuild:
+  ppc stable wrt #335833
+
+  21 Sep 2010; Markos Chandras <hwoarang@gentoo.org> emutos-0.8.5.ebuild:
+  Stable on amd64 wrt bug #335833
+
+  11 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> emutos-0.8.5.ebuild:
+  x86 stable wrt bug #335833
+
+*emutos-0.8.5 (29 Jul 2010)
+
+  29 Jul 2010; Michael Sterrett <mr_bones_@gentoo.org> +emutos-0.8.5.ebuild:
+  version bump
+
+  31 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> emutos-0.8.4.ebuild:
+  x86 stable wrt bug #319015
+
+  25 May 2010; Pacho Ramos <pacho@gentoo.org> emutos-0.8.4.ebuild:
+  stable amd64, bug 319015
+
+*emutos-0.8.4 (08 Apr 2010)
+
+  08 Apr 2010; Michael Sterrett <mr_bones_@gentoo.org> +emutos-0.8.4.ebuild:
+  version bump (bug #296188)
+
+  24 Jul 2008; Raúl Porcel <armin76@gentoo.org> emutos-0.8.3.ebuild:
+  x86 stable wrt #231876
+
+  18 Jul 2008; Santiago M. Mola <coldwind@gentoo.org> emutos-0.8.3.ebuild:
+  amd64 stable wrt bug #231876
+
+  16 Jul 2008; nixnut <nixnut@gentoo.org> emutos-0.8.3.ebuild:
+  Stable on ppc wrt bug 231876
+
+*emutos-0.8.3 (26 Feb 2008)
+
+  26 Feb 2008; Michael Sterrett <mr_bones_@gentoo.org> +emutos-0.8.3.ebuild:
+  version bump
+
+*emutos-0.8.2 (07 Aug 2007)
+
+  07 Aug 2007; Michael Sterrett <mr_bones_@gentoo.org> +emutos-0.8.2.ebuild:
+  version bump
+
+*emutos-0.8.1 (01 Oct 2006)
+
+  01 Oct 2006; Michael Sterrett <mr_bones_@gentoo.org> -emutos-0.8.ebuild,
+  +emutos-0.8.1.ebuild:
+  version bump
+
+*emutos-0.8 (08 Jul 2005)
+
+  08 Jul 2005; Heinrich Wendel <lanius@gentoo.org> +emutos-0.8.ebuild:
+  version bump; add ~amd64
+
+  21 Sep 2003; David Holm <dholm@gentoo.org> emutos-0.7.ebuild:
+  Added to ~ppc.
+
+*emutos-0.7 (19 Sep 2003)
+
+  19 Sep 2003; Michael Sterrett <msterret@gentoo.org> emutos-0.7.ebuild:
+  initial commit

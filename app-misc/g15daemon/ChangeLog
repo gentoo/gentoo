@@ -1,0 +1,291 @@
+# ChangeLog for app-misc/g15daemon
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/g15daemon/ChangeLog,v 1.54 2015/06/09 11:41:14 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*g15daemon-1.9.5.3-r11 (09 Nov 2014)
+*g15daemon-1.9.5.3-r12 (09 Nov 2014)
+
+  09 Nov 2014; Mikle Kolyada <zlogene@gentoo.org> +g15daemon-1.9.5.3-r11.ebuild,
+  +g15daemon-1.9.5.3-r12.ebuild, -g15daemon-1.9.5.3-r10.ebuild,
+  -g15daemon-1.9.5.3-r9.ebuild, g15daemon-9999.ebuild:
+  Bump to EAPI=5 (bug #527914)
+
+*g15daemon-1.9.5.3-r10 (03 Aug 2014)
+*g15daemon-1.9.5.3-r9 (03 Aug 2014)
+
+  03 Aug 2014; Lars Wendler <polynomial-c@gentoo.org>
+  -g15daemon-1.9.5.3-r5.ebuild, -g15daemon-1.9.5.3-r7.ebuild,
+  -g15daemon-1.9.5.3-r8.ebuild, +g15daemon-1.9.5.3-r9.ebuild,
+  +g15daemon-1.9.5.3-r10.ebuild, -files/g15daemon-1.2.7-r2.initd,
+  files/g15daemon-1.9.5.3.initd:
+  Fixed logic error in init script so that CLIENT_SWITCH_L1=no doesn't prevent
+  the deamon from starting. Added a better way to handle restart situations.
+  Removed old. Moved -r8 ebuild to -r10. Committed -r9 straight to stable.
+
+  03 Nov 2013; Lars Wendler <polynomial-c@gentoo.org> metadata.xml:
+  Added myself as maintainer.
+
+  10 Sep 2013; Ian Delaney <idella4@gentoo.org> -g15daemon-1.9.5.3-r3.ebuild:
+  remove old
+
+  07 Aug 2013; Agostino Sarubbo <ago@gentoo.org> g15daemon-1.9.5.3-r7.ebuild:
+  Stable for x86, wrt bug #470332
+
+  04 Aug 2013; Agostino Sarubbo <ago@gentoo.org> g15daemon-1.9.5.3-r7.ebuild:
+  Stable for ppc64, wrt bug #470332
+
+  28 Jul 2013; Agostino Sarubbo <ago@gentoo.org> g15daemon-1.9.5.3-r7.ebuild:
+  Stable for ppc, wrt bug #470332
+
+  28 Jul 2013; Agostino Sarubbo <ago@gentoo.org> g15daemon-1.9.5.3-r7.ebuild:
+  Stable for amd64, wrt bug #470332
+
+  13 May 2013; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove removed lcd herd from metadata
+
+*g15daemon-1.9.5.3-r8 (18 Mar 2013)
+
+  18 Mar 2013; Lars Wendler <polynomial-c@gentoo.org>
+  -g15daemon-1.9.5.3-r6.ebuild, g15daemon-1.9.5.3-r7.ebuild,
+  +g15daemon-1.9.5.3-r8.ebuild, files/g15daemon-1.9.5.3.initd:
+  Non-maintainer commit. Fixed module loading logic. Moved ebuild with g510
+  support to -r8.
+
+*g15daemon-1.9.5.3-r7 (01 Mar 2013)
+
+  01 Mar 2013; Lars Wendler <polynomial-c@gentoo.org>
+  g15daemon-1.9.5.3-r6.ebuild, +g15daemon-1.9.5.3-r7.ebuild,
+  +files/g15daemon-1.9.5.3.initd, g15daemon-9999.ebuild:
+  Non-maintainer commit. Added rewritten init script to fix bug #451966. Thanks
+  to Manuel Rüger for reporting this. Moved ebuild with g510 support to -r7.
+
+*g15daemon-1.9.5.3-r6 (12 Oct 2012)
+*g15daemon-9999 (12 Oct 2012)
+
+  12 Oct 2012; Robin H. Johnson <robbat2@gentoo.org>
+  +files/g15daemon-1.9.5.3-g510-keys.patch, +g15daemon-1.9.5.3-r6.ebuild,
+  +g15daemon-9999.ebuild:
+  More g510 fun. 1.9.5.3-r6 will give you partial support, 9999 will give you
+  full support.
+
+  08 Mar 2012; Brent Baude <ranger@gentoo.org> g15daemon-1.9.5.3-r5.ebuild:
+  Marking g15daemon-1.9.5.3-r5 ppc64 for bug 399941
+
+  27 Feb 2012; Brent Baude <ranger@gentoo.org> g15daemon-1.9.5.3-r5.ebuild:
+  Marking g15daemon-1.9.5.3-r5 ppc for bug 399941
+
+  19 Feb 2012; Tomáš Chvátal <scarabeus@gentoo.org> g15daemon-1.9.5.3-r5.ebuild:
+  Stable on amd64 and x86.
+
+*g15daemon-1.9.5.3-r5 (09 Sep 2011)
+
+  09 Sep 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -g15daemon-1.9.5.3-r4.ebuild, +g15daemon-1.9.5.3-r5.ebuild:
+  Revbump in order to remove static lib and libtool archive.
+
+*g15daemon-1.9.5.3-r4 (03 Aug 2011)
+
+  03 Aug 2011; Robin H. Johnson <robbat2@gentoo.org> +files/20g15daemon,
+  +g15daemon-1.9.5.3-r4.ebuild, files/g15daemon-hotplug,
+  +files/g15daemon-1.9.5.3-overflow-fix.patch:
+  Bug #354921, #343133: Fix overflow for amd64. Bug #301340: Fix suspend
+  behavior. Bug #366863: Improve udev interaction.
+
+  16 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  g15daemon-1.9.5.3-r3.ebuild:
+  Set SUPPORT_PYTHON_ABIS (bug #363893). Fix dependency on Perl.
+
+  28 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  g15daemon-1.9.5.3-r3.ebuild:
+  Install 99-g15daemon.rules to /lib/udev instead of /etc/udev.
+
+  21 Nov 2010; Sebastian Pipping <sping@gentoo.org>
+  -files/g15daemon-1.2.6a.confd, -files/g15daemon-1.2.6a.initd,
+  -files/g15daemon-1.2.7-r1.initd, -files/g15daemon-1.2.7.initd:
+  Remove unused files (bug #342671)
+
+  09 Mar 2010; Joseph Jezak <josejx@gentoo.org> g15daemon-1.9.5.3-r3.ebuild:
+  Marked ppc stable for bug #284520.
+
+  08 Mar 2010; Markus Meier <maekke@gentoo.org> g15daemon-1.9.5.3-r3.ebuild:
+  amd64 stable, bug #284520
+
+  08 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  g15daemon-1.9.5.3-r3.ebuild:
+  stable x86, security bug 284520
+
+  08 Mar 2010; Brent Baude <ranger@gentoo.org> g15daemon-1.9.5.3-r3.ebuild:
+  Marking g15daemon-1.9.5.3-r3 ppc64 for bug 284520
+
+*g15daemon-1.9.5.3-r3 (06 Mar 2010)
+
+  06 Mar 2010; Robin H. Johnson <robbat2@gentoo.org>
+  +g15daemon-1.9.5.3-r3.ebuild:
+  Bug #300352: Fix perl bindings.
+
+  06 Mar 2010; Robin H. Johnson <robbat2@gentoo.org>
+  g15daemon-1.2.7-r1.ebuild, g15daemon-1.9.5.3-r2.ebuild:
+  Bug #300337: the CONFIG_INPUT_UINPUT needs to be safe when no detection of
+  config options is possible. Just display the warning if we cannot in that
+  case. Also be non-fatal if the option can be tested and is not set.
+
+  06 Mar 2010; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Changing maintainer per emails of Jan 18th.
+
+  16 May 2009; Robin H. Johnson <robbat2@gentoo.org>
+  g15daemon-1.2.7-r1.ebuild, g15daemon-1.9.5.3-r2.ebuild:
+  Migration to virtual/libusb. Verified by testing hardware.
+
+  26 Mar 2009; Tomas Chvatal <scarabeus@gentoo.org>
+  g15daemon-1.9.5.3-r2.ebuild:
+  Make the ebuild actualy work. I dont see how it could be marked stable
+  since it was not able to compile at-all.
+
+  01 Feb 2009; <jokey@gentoo.org> -g15daemon-1.2.7.ebuild,
+  g15daemon-1.2.7-r1.ebuild, -g15daemon-1.9.5.3-r1.ebuild,
+  g15daemon-1.9.5.3-r2.ebuild:
+  Stable on x86 and amd64
+
+*g15daemon-1.9.5.3-r2 (01 Feb 2009)
+
+  01 Feb 2009; <jokey@gentoo.org> +files/g15daemon.conf,
+  +files/g15daemon-1.9.5.3-forgotten-open-mode.patch,
+  -g15daemon-1.2.6a-r1.ebuild, -g15daemon-1.9.0-r1.ebuild,
+  -g15daemon-1.9.1.ebuild, -g15daemon-1.9.2.ebuild, -g15daemon-1.9.3.ebuild,
+  -g15daemon-1.9.5.3.ebuild, +g15daemon-1.9.5.3-r2.ebuild:
+  Add a missing open() permission and install default configuration file
+
+*g15daemon-1.9.5.3-r1 (08 Sep 2008)
+
+  08 Sep 2008; <chainsaw@gentoo.org> +files/99-g15daemon.rules,
+  +files/g15daemon-hotplug, +g15daemon-1.9.5.3-r1.ebuild:
+  Hotplug support by Tais M. Hansen <tais.hansen@osd.dk>, closes bug
+  #236422.
+
+  29 May 2008; Ali Polatel <hawking@gentoo.org> g15daemon-1.2.6a-r1.ebuild,
+  g15daemon-1.2.7.ebuild, g15daemon-1.2.7-r1.ebuild,
+  g15daemon-1.9.0-r1.ebuild, g15daemon-1.9.1.ebuild, g15daemon-1.9.2.ebuild,
+  g15daemon-1.9.3.ebuild, g15daemon-1.9.5.3.ebuild:
+  python_mod_optimize is ROOT aware.
+
+*g15daemon-1.9.5.3 (21 Feb 2008)
+
+  21 Feb 2008; Tony Vroon <chainsaw@gentoo.org> +g15daemon-1.9.5.3.ebuild:
+  Version bump as requested by Efimov Vadim <evadim@evadim.ru>, closes bug
+  #208771.
+
+*g15daemon-1.9.3 (28 Dec 2007)
+
+  28 Dec 2007; Markus Ullmann <jokey@gentoo.org> +g15daemon-1.9.3.ebuild:
+  Version bump, thanks to robbat2 for the notification
+
+*g15daemon-1.9.2 (25 Dec 2007)
+
+  25 Dec 2007; Markus Ullmann <jokey@gentoo.org> +g15daemon-1.9.2.ebuild:
+  Version bump, bugfix release. more info at
+  http://sourceforge.net/forum/forum.php?forum_id=767539
+
+*g15daemon-1.9.1 (19 Dec 2007)
+
+  19 Dec 2007; Tony Vroon <chainsaw@gentoo.org>
+  +files/g15daemon-1.2.7-r2.initd, metadata.xml, +g15daemon-1.9.1.ebuild:
+  Version bump. Prevent "pid X is not a child of this shell" message by
+  shutting down the daemon differently. Took maintainership.
+
+*g15daemon-1.9.0-r1 (04 Oct 2007)
+*g15daemon-1.2.7-r1 (04 Oct 2007)
+
+  04 Oct 2007; Robert Buchholz <rbu@gentoo.org>
+  +files/g15daemon-1.2.7-r1.initd, +g15daemon-1.2.7-r1.ebuild,
+  -g15daemon-1.9.0.ebuild, +g15daemon-1.9.0-r1.ebuild:
+  New POSIX init script by Peter Alfredsen and Roy Marples (bug #194365).
+
+  01 May 2007; Markus Rothe <corsair@gentoo.org> g15daemon-1.2.7.ebuild:
+  Stable on ppc64; bug #175120
+
+  22 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  g15daemon-1.2.7.ebuild:
+  ppc stable, bug #175120
+
+  29 Mar 2007; Markus Ullmann <jokey@gentoo.org> g15daemon-1.2.7.ebuild:
+  AMD64 stable (welp oleee)
+
+  15 Mar 2007; Torsten Veller <tove@gentoo.org> g15daemon-1.2.6a-r1.ebuild:
+  Stable on x86 (#170417)
+
+*g15daemon-1.9.0 (12 Mar 2007)
+
+  12 Mar 2007; Robert Buchholz <rbu@gentoo.org>
+  files/g15daemon-1.2.6a.confd, g15daemon-1.2.6a-r1.ebuild,
+  g15daemon-1.2.7.ebuild, +g15daemon-1.9.0.ebuild:
+  Fixes by tove from bug #170417 and version bump
+
+*g15daemon-1.2.7 (18 Feb 2007)
+
+  18 Feb 2007; Robert Buchholz <rbu@gentoo.org>
+  -files/g15daemon-1.2.5.confd, -files/g15daemon-1.2.5.initd,
+  +files/g15daemon-1.2.7.confd, +files/g15daemon-1.2.7.initd,
+  -g15daemon-1.2.5.ebuild, g15daemon-1.2.6a-r1.ebuild,
+  +g15daemon-1.2.7.ebuild:
+  Version bump, drop old and fix of bug #167240
+
+  27 Jan 2007; Joseph Jezak <josejx@gentoo.org> g15daemon-1.2.5.ebuild,
+  g15daemon-1.2.6a-r1.ebuild:
+  Marked ~ppc for bug #148072.
+
+*g15daemon-1.2.6a-r1 (07 Jan 2007)
+
+  07 Jan 2007; Robert Buchholz <rbu@gentoo.org>
+  -files/g15daemon-1.2.3.initd, +files/g15daemon-1.2.6a.confd,
+  +files/g15daemon-1.2.6a.initd, -g15daemon-1.2.3.ebuild,
+  g15daemon-1.2.5.ebuild, -g15daemon-1.2.6a.ebuild,
+  +g15daemon-1.2.6a-r1.ebuild:
+  revbump as init script changed, cleanin out old
+
+*g15daemon-1.2.6a (06 Dec 2006)
+
+  06 Dec 2006; Markus Ullmann <jokey@gentoo.org> +g15daemon-1.2.6a.ebuild:
+  Version bump
+
+*g15daemon-1.2.5 (13 Nov 2006)
+
+  13 Nov 2006; Markus Ullmann <jokey@gentoo.org>
+  -files/g15daemon-1.2.1.initd, +files/g15daemon-1.2.5.confd,
+  +files/g15daemon-1.2.5.initd, -g15daemon-1.2.1-r2.ebuild,
+  +g15daemon-1.2.5.ebuild:
+  Version bump
+
+*g15daemon-1.2.3 (31 Oct 2006)
+
+  31 Oct 2006; Markus Ullmann <jokey@gentoo.org>
+  +files/g15daemon-1.2.3.initd, +g15daemon-1.2.3.ebuild:
+  Version bump
+
+*g15daemon-1.2.1-r2 (24 Oct 2006)
+
+  24 Oct 2006; Markus Ullmann <jokey@gentoo.org>
+  +files/g15daemon-1.2.1.initd, -files/g15daemon-1.2.1.rc, metadata.xml,
+  -g15daemon-1.2.1-r1.ebuild, +g15daemon-1.2.1-r2.ebuild:
+  Revbump to clean up xmms deps
+
+  18 Oct 2006; Markus Ullmann <jokey@gentoo.org> metadata.xml:
+  Metadata update
+
+  14 Oct 2006; Markus Rothe <corsair@gentoo.org> g15daemon-1.2.1-r1.ebuild:
+  Added ~ppc64; bug #150934
+
+*g15daemon-1.2.1-r1 (10 Oct 2006)
+
+  10 Oct 2006; Markus Ullmann <jokey@gentoo.org> files/g15daemon-1.2.1.rc,
+  -g15daemon-1.2.1.ebuild, +g15daemon-1.2.1-r1.ebuild:
+  Adding bindings
+
+*g15daemon-1.2.1 (04 Oct 2006)
+
+  04 Oct 2006; Markus Ullmann <jokey@gentoo.org> +files/g15daemon-1.2.1.rc,
+  +metadata.xml, +g15daemon-1.2.1.ebuild:
+  Initial import, thanks to Alessio Cassibba in bug #148769 for providing an
+  ebuild

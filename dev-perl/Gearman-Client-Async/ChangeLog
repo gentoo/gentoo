@@ -1,0 +1,46 @@
+# ChangeLog for dev-perl/Gearman-Client-Async
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Gearman-Client-Async/ChangeLog,v 1.9 2014/08/26 17:24:27 axs Exp $
+
+*Gearman-Client-Async-0.940.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Gearman-Client-Async-0.940.0-r1.ebuild, -Gearman-Client-Async-0.940.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  05 Sep 2013; Ian Delaney <idella4@gentoo.org>
+  -Gearman-Client-Async-0.94.ebuild:
+  remove old
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Gearman-Client-Async-0.940.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Gearman-Client-Async-0.940.0.ebuild:
+  Change version scheme
+
+  19 Sep 2010; Torsten Veller <tove@gentoo.org>
+  Gearman-Client-Async-0.94.ebuild:
+  Fix MODULE_AUTHOR again. Thanks to Vincent Pit. EAPI=2
+
+  14 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  Gearman-Client-Async-0.94.ebuild:
+  Package moved.
+
+  01 May 2009; Torsten Veller <tove@gentoo.org>
+  -Gearman-Client-Async-0.93.ebuild:
+  Cleanup
+
+*Gearman-Client-Async-0.94 (24 May 2007)
+
+  24 May 2007; Robin H. Johnson <robbat2@gentoo.org>
+  +Gearman-Client-Async-0.94.ebuild:
+  Version bump.
+
+*Gearman-Client-Async-0.93 (09 May 2007)
+
+  09 May 2007; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +Gearman-Client-Async-0.93.ebuild:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

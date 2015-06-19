@@ -1,0 +1,43 @@
+# ChangeLog for app-i18n/fbiterm
+# Copyright 2000-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/fbiterm/ChangeLog,v 1.11 2012/08/18 15:57:43 naota Exp $
+
+  18 Aug 2012; Naohiro Aota <naota@gentoo.org> +files/fbiterm-0.5-cflags.patch,
+  fbiterm-0.5-r2.ebuild:
+  Respect CFLAGS. #431110
+
+*fbiterm-0.5-r2 (24 Nov 2008)
+
+  24 Nov 2008; MATSUU Takuto <matsuu@gentoo.org>
+  -files/fbiterm-0.5-gentoo.diff, -files/fbiterm-0.5-r1-gentoo.diff,
+  +files/fbiterm-0.5-r2-gentoo.diff, -fbiterm-0.5.ebuild,
+  -fbiterm-0.5-r1.ebuild, +fbiterm-0.5-r2.ebuild:
+  Removed append-ldflags, bug #226869 and #226951. Removed old versions.
+
+*fbiterm-0.5-r1 (17 May 2008)
+
+  17 May 2008; MATSUU Takuto <matsuu@gentoo.org>
+  +files/fbiterm-0.5-r1-gentoo.diff, +fbiterm-0.5-r1.ebuild:
+  Fixed fonts problems, bug #221813.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> fbiterm-0.5.ebuild:
+  Convert to use elog.
+
+  29 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> fbiterm-0.5.ebuild:
+  Port to Modular X. Closes bug #153194.
+
+  25 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> fbiterm-0.5.ebuild:
+  Use bindnow-flags function instead of -Wl,-z,now.
+
+  29 May 2005; Mamoru KOMACHI <usata@gentoo.org> fbiterm-0.5.ebuild:
+  Fixed compilation error with xorg-x11 and fixed einstall; bug #72169.
+
+*fbiterm-0.5 (24 Nov 2003)
+
+  24 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> fbiterm-0.5.ebuild,
+  files/fbiterm-0.5-gentoo.diff:
+  Initial import. Ebuild submitted by Zhen Lin <lowzl@hotmail.com>.
+  See bug #27700.

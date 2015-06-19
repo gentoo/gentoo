@@ -1,0 +1,20 @@
+--- libhb/dvdnav.c	2013-05-05 16:14:10.265388521 +0200
++++ libhb/dvdnav.c.2	2013-05-05 16:14:18.325388471 +0200
+@@ -1225,16 +1225,7 @@
+                 {
+                     for (kk = 0; kk < buttons; kk++)
+                     {
+-                        dvdnav_t *dvdnav_copy;
+-
+-                        result = dvdnav_dup( &dvdnav_copy, d->dvdnav );
+-                        if (result != DVDNAV_STATUS_OK)
+-                        {
+-                            hb_log("dvdnav dup failed: %s", dvdnav_err_to_string(d->dvdnav));
+-                            goto done;
+-                        }
+-                        title = try_button( dvdnav_copy, kk, list_title );
+-                        dvdnav_free_dup( dvdnav_copy );
++                        title = try_button( d->dvdnav, kk, list_title );
+ 
+                         if ( title >= 0 )
+                         {

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>blueness@gentoo.org</email>
+		<name>Anthony G. Basile</name>
+	</maintainer>
+	<use>
+		<flag name="admin">Install web based cherokee conf tool</flag>
+		<flag name="rrdtool">Enable rrdtool support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">cherokee/webserver</remote-id>
+	</upstream>
+</pkgmetadata>

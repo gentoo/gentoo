@@ -1,0 +1,51 @@
+From 6f931cd4535ba3e0d4dda31a0a5ab4a7f33b3221 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Thu, 9 May 2013 00:45:27 +0200
+Subject: [PATCH] Stop unintended re-encoding of author names from UTF-8 to
+ ASCII
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+To see the bug in action, use an author map with umlauts, e.g.
+
+  nickname = Hällo Wörld from UTF-8 <mail@example.org>
+
+and check "git log" after the conversion.
+
+What is happening?
+QByteArray "author" is first decoded as UTF-8 into a QString.
+That QString is passed to QByteArray::append(const QString &)
+which internally encodes the QString to ASCII byte data using
+QString::toAscii().  "git fast-import" expects UTF-8 input
+from us, so the original QByteArray with UTF-8 content is just
+what we need.
+---
+ src/repository.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/repository.cpp b/src/repository.cpp
+index 779dd28..f3b06e8 100644
+--- a/src/repository.cpp
++++ b/src/repository.cpp
+@@ -685,7 +685,7 @@ void Repository::Transaction::commitNote(const QByteArray &noteText, bool append
+     QByteArray s("");
+     s.append("commit refs/notes/commits\n");
+     s.append("mark :" + QByteArray::number(maxMark + 1) + "\n");
+-    s.append("committer " + QString::fromUtf8(author) + " " + QString::number(datetime) + " +0000" + "\n");
++    s.append("committer " + author + " " + QString::number(datetime).toUtf8() + " +0000" + "\n");
+     s.append("data " + QString::number(message.length()) + "\n");
+     s.append(message + "\n");
+     s.append("N inline " + commitRef + "\n");
+@@ -736,7 +736,7 @@ void Repository::Transaction::commit()
+     QByteArray s("");
+     s.append("commit " + branchRef + "\n");
+     s.append("mark :" + QByteArray::number(mark) + "\n");
+-    s.append("committer " + QString::fromUtf8(author) + " " + QString::number(datetime) + " +0000" + "\n");
++    s.append("committer " + author + " " + QString::number(datetime).toUtf8() + " +0000" + "\n");
+     s.append("data " + QString::number(message.length()) + "\n");
+     s.append(message + "\n");
+     repository->fastImport.write(s);
+-- 
+1.8.2.1
+

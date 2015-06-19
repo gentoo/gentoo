@@ -1,0 +1,155 @@
+# ChangeLog for dev-lang/idb
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/idb/ChangeLog,v 1.34 2015/04/07 14:09:13 jlec Exp $
+
+*idb-14.0.3.174 (02 Jun 2014)
+
+  02 Jun 2014; Justin Lecher <jlec@gentoo.org> +idb-14.0.3.174.ebuild:
+  Version Bump
+
+*idb-14.0.2.144 (24 Mar 2014)
+
+  24 Mar 2014; Justin Lecher <jlec@gentoo.org> +idb-14.0.2.144.ebuild:
+  Version Bump
+
+*idb-14.0.1.106 (21 Feb 2014)
+
+  21 Feb 2014; Justin Lecher <jlec@gentoo.org> +idb-14.0.1.106.ebuild:
+  Version Bump, #500386
+
+*idb-14.0.0.080 (10 Oct 2013)
+
+  10 Oct 2013; Justin Lecher <jlec@gentoo.org> -idb-13.0.0.080.ebuild,
+  +idb-14.0.0.080.ebuild:
+  Bump to correct version, thanks Arfrever for pinging me
+
+*idb-13.0.0.080 (02 Oct 2013)
+
+  02 Oct 2013; Justin Lecher <jlec@gentoo.org> +idb-13.0.0.080.ebuild:
+  Version Bump
+
+*idb-13.0.5.192 (14 Jul 2013)
+
+  14 Jul 2013; Justin Lecher <jlec@gentoo.org> +idb-13.0.5.192.ebuild:
+  Version Bump
+
+*idb-13.0.3.163 (02 May 2013)
+
+  02 May 2013; Justin Lecher <jlec@gentoo.org> +idb-13.0.3.163.ebuild:
+  Version Bump
+
+*idb-13.0.2.146 (14 Feb 2013)
+
+  14 Feb 2013; Justin Lecher <jlec@gentoo.org> idb-13.0.1.117-r1.ebuild,
+  +idb-13.0.2.146.ebuild:
+  Version Bump
+
+  14 Feb 2013; Justin Lecher <jlec@gentoo.org> idb-13.0.0.079.ebuild,
+  idb-13.0.1.117-r1.ebuild:
+  Add KEYWORDS, #342185
+
+*idb-13.0.1.117-r1 (10 Dec 2012)
+
+  10 Dec 2012; Justin Lecher <jlec@gentoo.org> -idb-13.0.1.117.ebuild,
+  +idb-13.0.1.117-r1.ebuild:
+  Fix launcher script; add missing dep
+
+  10 Dec 2012; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Clean unused local USE from metadata.xml
+
+  10 Dec 2012; Justin Lecher <jlec@gentoo.org> -idb-10.0.026.ebuild:
+  Drop old
+
+*idb-13.0.1.117 (10 Dec 2012)
+
+  10 Dec 2012; Justin Lecher <jlec@gentoo.org> +idb-13.0.1.117.ebuild,
+  metadata.xml:
+  Version Bump
+
+  14 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  Removing myself from maintainer
+
+*idb-13.0.0.079 (09 Oct 2012)
+
+  09 Oct 2012; Justin Lecher <jlec@gentoo.org> +idb-13.0.0.079.ebuild,
+  metadata.xml:
+  Version Bump
+
+  16 Feb 2012; Sébastien Fabbro <bicatali@gentoo.org> -idb-10.1.017.ebuild,
+  -idb-10.1.018.ebuild, -idb-11.1.056.ebuild:
+  Removed versions conflicting with non-existing icc/ifc
+
+  20 Apr 2010; Sébastien Fabbro <bicatali@gentoo.org> idb-11.1.056.ebuild:
+  Include missing inherit, bug #315187
+
+*idb-11.1.056 (06 Oct 2009)
+
+  06 Oct 2009; Sébastien Fabbro <bicatali@gentoo.org> +idb-11.1.056.ebuild,
+  metadata.xml:
+  Version bump. Completely rewritten. It is no merely a wrapper to what is
+  shipped with either dev-lang/icc or dev-lang/ifc. Added eclipse plugin,
+  thanks to Jacek Szafarkiewicz. 
+
+  05 Oct 2009; Sébastien Fabbro <bicatali@gentoo.org> idb-10.0.026.ebuild,
+  idb-10.1.017.ebuild, idb-10.1.018.ebuild:
+  Fixed unpacking with newer rpm eclass, closing bug #287748, thanks to
+  Martin Kyncl
+
+  22 Aug 2009; William Hubbs <williamh@gentoo.org> idb-10.0.026.ebuild,
+  idb-10.1.017.ebuild, idb-10.1.018.ebuild:
+  updated rdepend for bug 231870.
+
+  13 Oct 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/50idb-gentoo.el, idb-10.1.018.ebuild:
+  Fixed emacs site file installation, thanks to ulm, closing bug #241594.
+
+*idb-10.1.018 (02 Sep 2008)
+
+  02 Sep 2008; Sébastien Fabbro <bicatali@gentoo.org> -idb-10.1.013.ebuild,
+  +idb-10.1.018.ebuild:
+  Version bump
+
+  23 Aug 2008; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Add GLEP 56 USE flag descriptions.
+
+  10 Jul 2008; Sébastien Fabbro <bicatali@gentoo.org> idb-10.1.017.ebuild:
+  Removed slotting, not ready.
+
+*idb-10.1.017 (10 Jul 2008)
+
+  10 Jul 2008; Sébastien Fabbro <bicatali@gentoo.org> -idb-10.1.012.ebuild,
+  idb-10.1.013.ebuild, +idb-10.1.017.ebuild:
+  Version bump
+
+*idb-10.1.012 (28 Feb 2008)
+
+  28 Feb 2008; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml,
+  -idb-10.1.008.ebuild, +idb-10.1.012.ebuild:
+  Version bump
+
+  05 Dec 2007; Raúl Porcel <armin76@gentoo.org> idb-10.0.026.ebuild,
+  idb-10.1.008.ebuild:
+  Drop ia64 keyword because gcc-3.3.2-r7 is missing
+
+*idb-10.1.008 (21 Nov 2007)
+
+  21 Nov 2007; Sébastien Fabbro <bicatali@gentoo.org> +idb-10.1.008.ebuild:
+  Version bump
+
+  14 Nov 2007; Sébastien Fabbro <bicatali@gentoo.org> idb-10.0.026.ebuild:
+  amd64 stable wrt bug #197983, with kingtaco's green light.
+
+  09 Nov 2007; Raúl Porcel <armin76@gentoo.org> idb-10.0.026.ebuild:
+  ia64 stable wrt #197983
+
+  07 Nov 2007; Christian Faulhammer <opfer@gentoo.org> idb-10.0.026.ebuild:
+  stable x86, bug 197983
+
+  06 Nov 2007; Sébastien Fabbro <bicatali@gentoo.org> idb-10.0.026.ebuild:
+  Fix multiple rpm unpacking
+
+*idb-10.0.026 (02 Oct 2007)
+
+  02 Oct 2007; Sébastien Fabbro <bicatali@gentoo.org> +metadata.xml,
+  +idb-10.0.026.ebuild:
+  Intial import, split from dev-lang/icc or dev-lang/ifc

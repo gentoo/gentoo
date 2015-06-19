@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DESCRIPTION=Programmable Completion for bash
+EAPI=5
+HOMEPAGE=http://bash-completion.alioth.debian.org/
+KEYWORDS=~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris
+LICENSE=GPL-2
+PDEPEND=app-shells/gentoo-bashcomp
+RDEPEND=|| ( app-eselect/eselect-bashcomp <app-admin/eselect-1.3.7 ) || ( >=app-shells/bash-3.2 app-shells/zsh ) sys-apps/miscfiles
+SLOT=0
+SRC_URI=http://bash-completion.alioth.debian.org/files/bash-completion-2.1.tar.bz2
+_eclasses_=bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	multilib	62927b3db3a589b0806255f3a002d5d3	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=17a25988af6463a5bd5c0ca94b4e3a6d

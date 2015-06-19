@@ -1,0 +1,166 @@
+# ChangeLog for dev-tex/europecv
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/europecv/ChangeLog,v 1.40 2014/08/10 21:25:30 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  europecv-20060424-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org>
+  europecv-20060424-r1.ebuild:
+  keyword ~amd64-fbsd
+
+  16 Oct 2011; Fabian Groffen <grobian@gentoo.org> europecv-20060424-r1.ebuild:
+  Marked ~x86-macos
+
+  28 Aug 2011; Fabian Groffen <grobian@gentoo.org> europecv-20060424-r1.ebuild:
+  Marked ~x64-macos
+
+  18 Jan 2011; Fabian Groffen <grobian@gentoo.org> europecv-20060424-r1.ebuild:
+  Marked ~ppc-macos, bug #351946
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  europecv-20060424-r1.ebuild:
+  Transfer Prefix keywords
+
+  30 Apr 2009; Alexis Ballier <aballier@gentoo.org>
+  europecv-20060424-r1.ebuild:
+  drop texlive 2007 only deps now that 2008 is stable
+
+  27 Mar 2009; Alexis Ballier <aballier@gentoo.org>
+  -europecv-20040603.ebuild, -europecv-20060424.ebuild:
+  remove old
+
+  18 Mar 2009; Raúl Porcel <armin76@gentoo.org>
+  europecv-20060424-r1.ebuild:
+  arm/s390/sh stable wrt #253551
+
+  11 Mar 2009; Raúl Porcel <armin76@gentoo.org>
+  europecv-20060424-r1.ebuild:
+  Add ~arm/~s390/~sh
+
+  13 Jan 2009; Raúl Porcel <armin76@gentoo.org>
+  europecv-20060424-r1.ebuild:
+  alpha/ia64 stable wrt #254089
+
+  12 Jan 2009; Ferris McCormick <fmccor@gentoo.org>
+  europecv-20060424-r1.ebuild:
+  Sparc stable, Bug #254089.
+
+  12 Jan 2009; Alexis Ballier <aballier@gentoo.org>
+  europecv-20060424-r1.ebuild:
+  Fixup latex-unicode deps: it has been moved to texlive-latexextra for the
+  2008 version.
+
+  08 Jan 2009; Jeroen Roovers <jer@gentoo.org> europecv-20060424-r1.ebuild:
+  Stable for HPPA (bug #254089).
+
+  07 Jan 2009; Brent Baude <ranger@gentoo.org> europecv-20060424-r1.ebuild:
+  stable ppc64, bug 254089
+
+  03 Jan 2009; Friedrich Oslage <bluebird@gentoo.org>
+  europecv-20060424-r1.ebuild:
+  Add ~sparc keyword, bug #237202
+
+  18 Oct 2008; nixnut <nixnut@gentoo.org> europecv-20060424-r1.ebuild:
+  Stable on ppc wrt bug 240646
+
+  09 Oct 2008; Markus Meier <maekke@gentoo.org> europecv-20060424-r1.ebuild:
+  amd64/x86 stable, bug #240646
+
+  06 Oct 2008; Jeroen Roovers <jer@gentoo.org> europecv-20060424-r1.ebuild:
+  Marked ~hppa (bug #237202).
+
+  23 Sep 2008; Raúl Porcel <armin76@gentoo.org>
+  europecv-20060424-r1.ebuild:
+  Add ~alpha/~ia64 wrt #237202
+
+  21 Sep 2008; Brent Baude <ranger@gentoo.org> europecv-20060424-r1.ebuild:
+  Marking europecv-20060424-r1 ~ppc64 for bug 237202
+
+  04 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  europecv-20060424-r1.ebuild:
+  keyword ~x86-fbsd
+
+  04 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  europecv-20060424-r1.ebuild:
+  The ucs package is needed; provided either by latex-unicode or
+  texlive-latexrecommended. Bug #162807.
+
+*europecv-20060424-r1 (03 Sep 2008)
+
+  03 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  +europecv-20060424-r1.ebuild:
+  rev bump to install in texmf-site and add examples useflag
+
+  03 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  europecv-20040603.ebuild, europecv-20060424.ebuild:
+  no need to depend on virtual/tetex, latex-package eclass depends on
+  latex-base already
+
+  03 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  -europecv-20060123-r1.ebuild:
+  remove unused version
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*europecv-20060424 (29 Nov 2006)
+
+  29 Nov 2006; Alexandre Buisse <nattfodd@gentoo.org>
+  -europecv-20050408-r1.ebuild, +europecv-20060424.ebuild:
+  Bump to 20060424 (bug #156571).
+
+  22 Apr 2006; Martin Ehmsen <ehmsen@gentoo.org> -europecv-20060123.ebuild:
+  Removed old version and fixing Manifest error, bug #130769.
+
+*europecv-20060123-r1 (20 Apr 2006)
+
+  20 Apr 2006; Martin Ehmsen <ehmsen@gentoo.org>
+  +europecv-20060123-r1.ebuild:
+  Upstream apparently choose to alter the package without bumping the version,
+  so a new revision with the "new" version, bug #130160.
+
+  08 Apr 2006; Simon Stelling <blubb@gentoo.org> europecv-20040603.ebuild:
+  stable on amd64
+
+  19 Mar 2006; Mark Loeser <halcy0n@gentoo.org> europecv-20060123.ebuild:
+  Add DEPEND on app-arch/unzip
+
+*europecv-20060123 (31 Jan 2006)
+
+  31 Jan 2006; Martin Ehmsen <ehmsen@gentoo.org> +europecv-20060123.ebuild:
+  Version bump, see bug #121030.
+
+*europecv-20050408-r1 (28 Nov 2005)
+
+  28 Nov 2005; Alexandre Buisse <nattfodd@gentoo.org> -europecv-20050408.ebuild,
+  +europecv-20050408-r1.ebuild:
+  Added installation of europasslogo.(eps|pdf), closing bug #109377. Thanks to
+  Sandro Bonazzola for the report and patch.
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  europecv-20040603.ebuild:
+  Stable on ppc.
+
+*europecv-20050408 (22 May 2005)
+
+  22 May 2005; Mamoru KOMACHI <usata@gentoo.org> europecv-20040603.ebuild,
+  +europecv-20050408.ebuild:
+  Version bumped. This closes bug #91150.
+
+  11 Mar 2005; David Holm <dholm@gentoo.org> europecv-20040603.ebuild:
+  Added to ~ppc.
+
+  28 Dec 2004; Dylan Carlson <absinthe@gentoo.org> europecv-20040603.ebuild:
+  Keywords ~amd64.
+
+*europecv-20040603 (10 Nov 2004)
+
+  10 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +europecv-20040603.ebuild:
+  Initial import. Ebuild submitted by Thomas Leitner <thomas_leitner@gmx.at>;
+  bug #67520.

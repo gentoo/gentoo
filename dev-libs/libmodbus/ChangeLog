@@ -1,0 +1,55 @@
+# ChangeLog for dev-libs/libmodbus
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmodbus/ChangeLog,v 1.11 2014/09/07 13:01:20 pacho Exp $
+
+  07 Sep 2014; Pacho Ramos <pacho@gentoo.org> -libmodbus-3.0.3.ebuild,
+  -libmodbus-3.1.0.ebuild:
+  Remove masked for removal versions
+
+*libmodbus-3.1.1 (10 Jul 2014)
+
+  10 Jul 2014; Michael Weber <xmw@gentoo.org> +libmodbus-3.1.1.ebuild,
+  libmodbus-3.0.6.ebuild:
+  Version bump (bug 510314). Update HOMEPAGE
+
+*libmodbus-3.0.6 (10 Jul 2014)
+
+  10 Jul 2014; Michael Weber <xmw@gentoo.org> +libmodbus-3.0.6.ebuild:
+  Add bugfix release of 3.0 series
+
+*libmodbus-3.1.0 (02 Jul 2012)
+
+  02 Jul 2012; Michael Weber <xmw@gentoo.org> +libmodbus-3.1.0.ebuild,
+  -libmodbus-3.0.1.ebuild:
+  Version bump (thanks euscan), drop old
+
+*libmodbus-3.0.3 (11 Jun 2012)
+
+  11 Jun 2012; Michael Weber <xmw@gentoo.org> +libmodbus-3.0.3.ebuild,
+  -libmodbus-2.0.3.ebuild, -libmodbus-2.9.3.ebuild:
+  Version bump (thanks euscan), EAPI-4, drop old.
+
+  20 Feb 2012; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Drop no-herd.
+
+  11 Nov 2011; Michael Weber <xmw@gentoo.org> metadata.xml:
+  Adding myself as maintainer
+
+*libmodbus-3.0.1 (01 Oct 2011)
+
+  01 Oct 2011; Mike Frysinger <vapier@gentoo.org> +libmodbus-3.0.1.ebuild:
+  Version bump #384891 by Martin Gysel.
+
+  13 Apr 2011; Mike Frysinger <vapier@gentoo.org> libmodbus-2.9.3.ebuild:
+  Don't build with -Werror #363477 and enable verbose make output.
+
+*libmodbus-2.9.3 (04 Apr 2011)
+
+  04 Apr 2011; Mike Frysinger <vapier@gentoo.org> +libmodbus-2.9.3.ebuild:
+  Version bump #361797 by Niels Ole Salscheider.
+
+*libmodbus-2.0.3 (05 May 2009)
+
+  05 May 2009; Mike Frysinger <vapier@gentoo.org> +libmodbus-2.0.3.ebuild,
+  +metadata.xml:
+  Initial ebuild by me.

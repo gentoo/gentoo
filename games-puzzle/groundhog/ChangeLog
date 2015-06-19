@@ -1,0 +1,59 @@
+# ChangeLog for games-puzzle/groundhog
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/groundhog/ChangeLog,v 1.19 2015/01/24 08:39:46 mr_bones_ Exp $
+
+  24 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org> groundhog-1.4.ebuild:
+  EAPI=5
+
+  29 Jul 2012; Julian Ospald <hasufell@gentoo.org> groundhog-1.4.ebuild,
+  +files/groundhog-1.4-flags.patch:
+  respect CFLAGS wrt #428538
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> groundhog-1.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Sep 2009; Alfredo Tupone <tupone@gentoo.org> groundhog-1.4.ebuild:
+  Fix build with LINGUAS="sv" Bug #247439 by flameeyes@gentoo.org
+
+  11 Sep 2009; Michael Sterrett <mr_bones_@gentoo.org> groundhog-1.4.ebuild:
+  EAPI=2
+
+  14 Oct 2008; Michael Sterrett <mr_bones_@gentoo.org> groundhog-1.4.ebuild:
+  add dev-util/pkgconfig dep (bug #239709)
+
+  20 Apr 2008; Mike Frysinger <vapier@gentoo.org> groundhog-1.4.ebuild:
+  Switch to the Debian patchset to fix building with gcc-4.3 #218390 by Peter
+  Alfredsen.
+
+  04 Oct 2006; Tristan Heaven <nyhm@gentoo.org> groundhog-1.4.ebuild:
+  Fix nls support
+
+  22 Aug 2006; Michael Sterrett <mr_bones_@gentoo.org> groundhog-1.4.ebuild:
+  fix DESCRIPTION (bug #138134)
+
+  15 Aug 2006; Thomas Cort <tcort@gentoo.org> groundhog-1.4.ebuild:
+  Stable on amd64 wrt Bug #143961.
+
+  07 May 2006; <Tupone@gentoo.org> +files/groundhog-1.4-gcc41.patch,
+  groundhog-1.4.ebuild:
+  Fix for gcc-4.1
+
+  17 Feb 2006; <Tupone@gentoo.org> groundhog-1.4.ebuild:
+  Modular X dependency fix
+
+  29 Dec 2004; Joseph Jezak <josejx@gentoo.org> groundhog-1.4.ebuild:
+  Marked ppc stable.
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> groundhog-1.4.ebuild:
+  Added ~ppc.
+
+  04 Jun 2004; Jason Eric Huebel <jhuebel@gentoo.org> groundhog-1.4.ebuild:
+  gnuconfig_update added, ~amd64
+
+*groundhog-1.4 (07 Mar 2003)
+
+  14 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added a gcc3 patch.
+
+  07 Mar 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Ron <doobedoobedo@quake3world.com> #15654.

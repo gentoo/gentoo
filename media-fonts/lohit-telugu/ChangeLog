@@ -1,0 +1,10 @@
+# ChangeLog for media-fonts/lohit-telugu
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/lohit-telugu/ChangeLog,v 1.1 2015/02/20 18:44:47 yngwin Exp $
+
+*lohit-telugu-2.5.3 (20 Feb 2015)
+
+  20 Feb 2015; Ben de Groot <yngwin@gentoo.org> +lohit-telugu-2.5.3.ebuild,
+  +metadata.xml:
+  Break up lohit-fonts into individual packages, as is done upstream (bug
+  #399181).

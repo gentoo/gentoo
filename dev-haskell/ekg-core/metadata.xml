@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		This library lets you defined and track system metrics.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">tibbe/ekg-core</remote-id>
+	</upstream>
+</pkgmetadata>

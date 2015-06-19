@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/reaim/files/reaim,v 1.2 2004/07/14 23:45:48 agriffis Exp $
+
+depend() {
+	need net iptables
+}
+
+start() {
+	ebegin "Starting reaim"
+	iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 5190 -j REDIRECT --to-ports 5190
+	start-stop-daemon --start --quiet --exec /usr/sbin/reaim
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping reaim"
+	iptables -t nat -D PREROUTING -i eth0 -p tcp --dport 5190 -j REDIRECT --to-ports 5190
+	start-stop-daemon --stop --quiet --exec /usr/sbin/reaim
+	eend $?
+}

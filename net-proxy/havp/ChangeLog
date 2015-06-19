@@ -1,0 +1,210 @@
+# ChangeLog for net-proxy/havp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/havp/ChangeLog,v 1.47 2015/03/21 21:57:42 jlec Exp $
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> havp-0.92a-r1.ebuild:
+  use dosbin instead of exeinto /usr/sbin/ && doexe; bump EAPI
+
+  07 Jan 2015; Pacho Ramos <pacho@gentoo.org> havp-0.92a-r1.ebuild:
+  Newer clamav needed (#530944 by Sandro Littke-Wilcken)
+
+  07 Jan 2015; Pacho Ramos <pacho@gentoo.org> -havp-0.92a.ebuild, metadata.xml:
+  Reassign as and cleanup discussed at https://www.mail-archive.com/gentoo-
+  dev@lists.gentoo.org/msg66357.html
+
+  12 Oct 2013; Tom Wijsman <TomWij@gentoo.org>
+  +files/havp-0.92a-r1-pkg-config-libclamav.patch, havp-0.92a-r1.ebuild:
+  Fix linking with libclamav when cross compiling, patch by Bertrand Jacquin
+  whom reported bug #472782.
+
+  04 Apr 2013; Agostino Sarubbo <ago@gentoo.org> havp-0.92a-r1.ebuild:
+  Stable for x86, wrt bug #464474
+
+  04 Apr 2013; Agostino Sarubbo <ago@gentoo.org> havp-0.92a-r1.ebuild:
+  Stable for amd64, wrt bug #464474
+
+*havp-0.92a-r1 (10 Jan 2013)
+
+  10 Jan 2013; Jeroen Roovers <jer@gentoo.org> +havp-0.92a-r1.ebuild:
+  Respect CXXFLAGS (bug #451186, bug #451188, AR (bug #451184).
+
+  10 Jan 2013; Jeroen Roovers <jer@gentoo.org> -havp-0.90-r1.ebuild,
+  -files/havp-0.90-gcc44.patch:
+  Old.
+
+  10 Jan 2013; Agostino Sarubbo <ago@gentoo.org> havp-0.92a.ebuild:
+  Stable for x86, wrt bug #330475
+
+  10 Jan 2013; Agostino Sarubbo <ago@gentoo.org> havp-0.92a.ebuild:
+  Stable for amd64, wrt bug #330475
+
+  09 Jan 2013; Jeroen Roovers <jer@gentoo.org> havp-0.92a.ebuild,
+  +files/havp-0.92a-run.patch, files/havp.initd:
+  Use checkpath instead of mkdir. Fix paths in havp.config too.
+
+  08 Jan 2013; Jeroen Roovers <jer@gentoo.org> -havp-0.91.ebuild:
+  Old.
+
+  08 Jan 2013; Jeroen Roovers <jer@gentoo.org> havp-0.92a.ebuild:
+  Do not install havp.config.in.
+
+*havp-0.92a (08 Jan 2013)
+
+  08 Jan 2013; Jeroen Roovers <jer@gentoo.org> havp-0.90-r1.ebuild,
+  havp-0.91.ebuild, +havp-0.92a.ebuild, files/havp.initd:
+  Inherit user.eclass. Version bump (bug 330475, bug #449880).
+
+*havp-0.91 (16 Jul 2009)
+
+  16 Jul 2009; Alin Năstac <mrness@gentoo.org> +havp-0.91.ebuild:
+  Version bump (#277908).
+
+*havp-0.90-r1 (05 Jul 2009)
+
+  05 Jul 2009; Alin Năstac <mrness@gentoo.org>
+  +files/havp-0.90-gcc44.patch, -havp-0.89.ebuild, -havp-0.90.ebuild,
+  +havp-0.90-r1.ebuild:
+  Migrate to EAPI 2. Fix gcc-4.4 errors (#275812).
+
+  28 Jun 2009; Markus Meier <maekke@gentoo.org> havp-0.90.ebuild:
+  amd64/x86 stable, bug #274778
+
+*havp-0.90 (08 Apr 2009)
+
+  08 Apr 2009; Alin Năstac <mrness@gentoo.org> -havp-0.88.ebuild,
+  +havp-0.90.ebuild:
+  Version bump that adds clamav-0.95 support (#264440 and #265440).
+
+  15 Aug 2008; Markus Meier <maekke@gentoo.org> havp-0.89.ebuild:
+  amd64/x86 stable, bug #234715
+
+*havp-0.89 (14 Aug 2008)
+
+  14 Aug 2008; Raphael Marichez <falco@gentoo.org> +havp-0.89.ebuild:
+  Version bump, security bug 234715
+
+  13 Jul 2008; Alin Năstac <mrness@gentoo.org> -havp-0.86.ebuild,
+  -havp-0.87.ebuild:
+  Remove obsolete versions.
+
+  25 May 2008; Markus Meier <maekke@gentoo.org> havp-0.88.ebuild:
+  amd64 stable, bug #221659
+
+  20 May 2008; Dawid Węgliński <cla@gentoo.org> havp-0.88.ebuild:
+  Stable on x86 (bug #221659)
+
+*havp-0.88 (20 Apr 2008)
+
+  20 Apr 2008; Alin Năstac <mrness@gentoo.org> +havp-0.88.ebuild:
+  Version bump (#218087). New version supports clamav-0.93 (#218374).
+
+*havp-0.87 (29 Jan 2008)
+
+  29 Jan 2008; Alin Năstac <mrness@gentoo.org> +havp-0.87.ebuild:
+  Version bump (#207870).
+
+  04 Nov 2007; Alin Năstac <mrness@gentoo.org> havp-0.86.ebuild:
+  Remove useless pkg_preinst function.
+
+  18 Aug 2007; Alin Năstac <mrness@gentoo.org>
+  -files/havp-0.85-gentoo.patch, -havp-0.85.ebuild:
+  Remove obsolete version.
+
+  25 Jun 2007; Christian Faulhammer <opfer@gentoo.org> havp-0.86.ebuild:
+  stable x86, bug 182298
+
+  17 Jun 2007; Christoph Mende <angelos@gentoo.org> havp-0.86.ebuild:
+  Stable on amd64 wrt bug 182298
+
+*havp-0.86 (13 May 2007)
+
+  13 May 2007; Alin Năstac <mrness@gentoo.org>
+  -files/havp-0.84-gentoo.patch, -havp-0.84.ebuild, +havp-0.86.ebuild:
+  Version bump (#178010).
+
+  11 Apr 2007; Markus Ullmann <jokey@gentoo.org> havp-0.85.ebuild:
+  Stable on x86 wrt bug #174124
+
+  11 Apr 2007; Alin Năstac <mrness@gentoo.org>
+  -files/havp-0.82-gentoo.patch, -files/havp-0.83-gentoo.patch,
+  -havp-0.82.ebuild, -havp-0.83.ebuild, havp-0.85.ebuild:
+  Remove obsolete versions. Stable on amd64.
+
+*havp-0.85 (10 Mar 2007)
+
+  10 Mar 2007; Alin Năstac <mrness@gentoo.org>
+  +files/havp-0.85-gentoo.patch, +havp-0.85.ebuild:
+  Version bump (#169931).
+
+  27 Feb 2007; Alin Nastac <mrness@gentoo.org>
+  -files/havp-0.84-clamav-0.90.patch, havp-0.84.ebuild:
+  Remove clamav-0.90 patch (#167770).
+
+  27 Feb 2007; Christian Faulhammer <opfer@gentoo.org> havp-0.84.ebuild:
+  stable x86; bug 167770
+
+  25 Feb 2007; Alin Năstac <mrness@gentoo.org>
+  +files/havp-0.84-clamav-0.90.patch, havp-0.84.ebuild:
+  Add clamav-0.90 patch, thanks to Florian Hoppe <flp at gmx dot net>
+  (#167770). Stable on amd64.
+
+*havp-0.84 (31 Jan 2007)
+
+  31 Jan 2007; Alin Năstac <mrness@gentoo.org>
+  +files/havp-0.84-gentoo.patch, +havp-0.84.ebuild:
+  Version bump (bug #163665).
+
+  17 Jan 2007; Alin Năstac <mrness@gentoo.org> havp-0.83.ebuild:
+  Add ~amd64.
+
+*havp-0.83 (08 Nov 2006)
+
+  08 Nov 2006; Alin Nastac <mrness@gentoo.org>
+  +files/havp-0.83-gentoo.patch, +havp-0.83.ebuild:
+  Version bump (#154332).
+
+  20 Sep 2006; Alin Nastac <mrness@gentoo.org>
+  -files/havp-0.81-gentoo.patch, -havp-0.81.ebuild, havp-0.82.ebuild:
+  Remove old version. Stable on x86.
+
+*havp-0.82 (19 Aug 2006)
+
+  19 Aug 2006; Alin Nastac <mrness@gentoo.org>
+  -files/havp-0.79-gentoo.patch, +files/havp-0.82-gentoo.patch,
+  files/havp.initd, -havp-0.79.ebuild, +havp-0.82.ebuild:
+  Remove old version. Version bump (#142767). Demote "need clamd" to "use
+  clamd" (havp can use clamlib instead clamd).
+
+*havp-0.81 (18 Jun 2006)
+
+  18 Jun 2006; Alin Nastac <mrness@gentoo.org>
+  -files/havp-0.77-gentoo.patch, -files/havp-0.78-gentoo.patch,
+  +files/havp-0.81-gentoo.patch, -havp-0.77.ebuild, -havp-0.78.ebuild,
+  +havp-0.81.ebuild:
+  Version bump. Remove obsolete versions.
+
+*havp-0.79 (14 Apr 2006)
+
+  14 Apr 2006; Alin Nastac <mrness@gentoo.org>
+  +files/havp-0.79-gentoo.patch, +havp-0.79.ebuild:
+  Version bump. Make clamav dependency conditioned by clamav USE flag.
+
+*havp-0.78 (29 Mar 2006)
+
+  29 Mar 2006; Alin Nastac <mrness@gentoo.org>
+  -files/havp-0.76-gentoo.patch, +files/havp-0.78-gentoo.patch,
+  files/havp.initd, -havp-0.76.ebuild, +havp-0.78.ebuild:
+  Version bump (#127755). This new version has support for SSL tunnels.
+
+*havp-0.77 (06 Mar 2006)
+
+  06 Mar 2006; Alin Nastac <mrness@gentoo.org>
+  +files/havp-0.77-gentoo.patch, +havp-0.77.ebuild:
+  Version bump.
+
+*havp-0.76 (15 Jan 2006)
+
+  15 Jan 2006; Alin Nastac <mrness@gentoo.org>
+  +files/havp-0.76-gentoo.patch, +files/havp.initd, +metadata.xml,
+  +havp-0.76.ebuild:
+  Initial import from bug #99303.

@@ -1,0 +1,102 @@
+# ChangeLog for x11-misc/trayer
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/trayer/ChangeLog,v 1.29 2012/07/29 17:52:55 jer Exp $
+
+  29 Jul 2012; Jeroen Roovers <jer@gentoo.org> -trayer-1.0.ebuild:
+  Old.
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> trayer-1.0.ebuild,
+  trayer-1.0-r1.ebuild:
+  Drop sparc keywords
+
+  08 May 2012; Brent Baude <ranger@gentoo.org> trayer-1.0-r1.ebuild:
+  Marking trayer-1.0-r1 ppc64 for bug 414305
+
+  05 May 2012; Brent Baude <ranger@gentoo.org> trayer-1.0-r1.ebuild:
+  Marking trayer-1.0-r1 ppc for bug 414305
+
+  05 May 2012; Markos Chandras <hwoarang@gentoo.org> trayer-1.0-r1.ebuild:
+  Stable on amd64 wrt bug #414305
+
+  05 May 2012; Markos Chandras <hwoarang@gentoo.org> trayer-1.0-r1.ebuild:
+  Stable on amd64 wrt bug #414305
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> trayer-1.0.ebuild,
+  trayer-1.0-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 May 2012; Jeroen Roovers <jer@gentoo.org> trayer-1.0.ebuild,
+  trayer-1.0-r1.ebuild:
+  Fix HOMEPAGE by df (bug #414305).
+
+  02 May 2012; Jeff Horelick <jdhore@gentoo.org> trayer-1.0-r1.ebuild:
+  marked x86 per bug 414305
+
+  01 May 2012; Jeroen Roovers <jer@gentoo.org> trayer-1.0-r1.ebuild:
+  Fix underlinking by Diego Elio Pettenò (bug #369591).
+
+  01 May 2012; Jeroen Roovers <jer@gentoo.org> trayer-1.0-r1.ebuild:
+  Add more runtime dependencies. Respect CC. Make sed script more robust and
+  less cryptic, run sed just once. Use do* instead of einstall.
+
+  28 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> trayer-1.0.ebuild,
+  trayer-1.0-r1.ebuild:
+  Fix slot-dep on gtk+
+
+*trayer-1.0-r1 (24 Jun 2010)
+
+  24 Jun 2010; Markos Chandras <hwoarang@gentoo.org> +trayer-1.0-r1.ebuild:
+  Fixed pre-stripped files. Bug #252098. Thanks to Kevin Pyle
+
+  27 Dec 2008; Santiago M. Mola <coldwind@gentoo.org> trayer-1.0.ebuild:
+  Update SRC_URI, fvwm crystal migrated to gna.org.
+
+  10 Sep 2008; Santiago M. Mola <coldwind@gentoo.org> metadata.xml,
+  trayer-1.0.ebuild:
+  desktop-dock takes this as per lucass retirement, quoting fixes.
+
+  15 Jul 2007; Samuli Suominen <drac@gentoo.org> trayer-1.0.ebuild:
+  Update HOMEPAGE, stop installing redudant INSTALL and COPYING files.
+
+  30 Jan 2007; Steve Dibb <beandog@gentoo.org> trayer-1.0.ebuild:
+  amd64 stable, bug 141738
+
+  13 Oct 2006; Lukasz Strzygowski <lucass@gentoo.org> trayer-1.0.ebuild:
+  Added missing pkgconfig dep, bug #150278.
+
+  25 Jul 2006; Lukasz Strzygowski <lucass@gentoo.org> trayer-1.0.ebuild:
+  Fix for as-needed, bug #141707.
+
+  23 May 2006; Markus Rothe <corsair@gentoo.org> trayer-1.0.ebuild:
+  Stable on ppc64
+
+  19 May 2006; Markus Rothe <corsair@gentoo.org> trayer-1.0.ebuild:
+  Added ~ppc64
+
+  27 Jun 2005; Simon Stelling <blubb@gentoo.org> trayer-1.0.ebuild:
+  added ~amd64 keyword
+
+  11 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> trayer-1.0.ebuild:
+  Stable on sparc
+
+  10 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> trayer-1.0.ebuild:
+  Stable on ppc.
+
+  08 Apr 2005; Lukasz Strzygowski <lucass@gentoo.org> trayer-1.0.ebuild:
+  Marked stable on x86.
+
+  13 Mar 2005; Lukasz Strzygowski <lucass@gentoo.org> trayer-1.0.ebuild:
+  Fixed bug #84675 (compilation issue).
+
+  08 Mar 2005; Joseph Jezak <josejx@gentoo.org> trayer-1.0.ebuild:
+  Marked ~ppc for bug #84395.
+
+  07 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> trayer-1.0.ebuild:
+  Keyworded ~sparc wrt #84395
+
+*trayer-1.0 (07 Mar 2005)
+
+  07 Mar 2005; Lukasz Strzygowski <lucass@gentoo.org> +metadata.xml,
+  +trayer-1.0.ebuild:
+  Initial commit.
+

@@ -1,0 +1,24 @@
+From 2ad34532b42cfb791ed25cbf2fb9f6c964a12fcb Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sat, 4 Jan 2014 14:44:51 -0500
+Subject: [PATCH] packaging: Fix srcdir in openrc Makfile
+
+Signed-off-by: Paul Wouters <pwouters@redhat.com>
+---
+ initsystems/openrc/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/initsystems/openrc/Makefile b/initsystems/openrc/Makefile
+index 837ad61..eb5515e 100644
+--- a/initsystems/openrc/Makefile
++++ b/initsystems/openrc/Makefile
+@@ -1,5 +1,5 @@
+ LIBRESWANSRCDIR?=$(shell cd ../..; pwd)
+-srcdir?=${LIBRESWANSRCDIR}/initsystems/sysvinit/
++srcdir?=${LIBRESWANSRCDIR}/initsystems/openrc/
+ 
+ INITDFILE=ipsec.init
+ SUBDIRS=
+-- 
+1.8.5.2
+

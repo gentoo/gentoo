@@ -1,0 +1,89 @@
+# ChangeLog for media-sound/darksnow
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/darksnow/ChangeLog,v 1.23 2013/09/23 07:01:25 polynomial-c Exp $
+
+  23 Sep 2013; Lars Wendler <polynomial-c@gentoo.org>
+  -files/darksnow-0.6.1-Makefile.patch, -files/darksnow-0.6.1-ldflags.patch:
+  Removed old patches as well.
+
+  23 Sep 2013; Lars Wendler <polynomial-c@gentoo.org> -darksnow-0.6.1.ebuild:
+  Removed old.
+
+  06 Sep 2013; Agostino Sarubbo <ago@gentoo.org> darksnow-0.7.1.ebuild:
+  Stable for sparc, wrt bug #477172
+
+  19 Aug 2013; Agostino Sarubbo <ago@gentoo.org> darksnow-0.7.1.ebuild:
+  Stable for ppc, wrt bug #477172
+
+  18 Aug 2013; Agostino Sarubbo <ago@gentoo.org> darksnow-0.7.1.ebuild:
+  Stable for x86, wrt bug #477172
+
+  17 Aug 2013; Agostino Sarubbo <ago@gentoo.org> darksnow-0.7.1.ebuild:
+  Stable for amd64, wrt bug #477172
+
+*darksnow-0.7.1 (16 Jul 2013)
+
+  16 Jul 2013; Lars Wendler <polynomial-c@gentoo.org> +darksnow-0.7.1.ebuild,
+  +files/darksnow-0.7.1-Makefile.patch:
+  Non-maintainer commit: Version bump.
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> darksnow-0.6.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  12 Mar 2011; Tim Harder <radhermit@gentoo.org> darksnow-0.6.1.ebuild:
+  Update to EAPI 2 and add slot dep for gtk+.
+
+  19 Dec 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/darksnow-0.6.1-ldflags.patch, darksnow-0.6.1.ebuild:
+  honour ldflags and fix asneeded build, bug #247832
+
+  31 Jul 2007; Dimitry Bradt <diox@gentoo.org> darksnow-0.6.1.ebuild:
+  x86 stable wrt #186889
+
+  30 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> darksnow-0.6.1.ebuild:
+  Stable on sparc wrt #186889
+
+  28 Jul 2007; Steve Dibb <beandog@gentoo.org> darksnow-0.6.1.ebuild:
+  amd64 stable, bug 186889
+
+  28 Jul 2007; Samuli Suominen <drac@gentoo.org>
+  +files/darksnow-0.6.1-Makefile.patch, darksnow-0.6.1.ebuild:
+  Patch Makefile to respect DESTDIR, fixing also bug 152022. Thanks to Lars
+  for reporting.
+
+*darksnow-0.6.1 (08 Oct 2006)
+
+  08 Oct 2006; MATSUU Takuto <matsuu@gentoo.org> +darksnow-0.6.1.ebuild:
+  Version bumped, bug 126954.
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> darksnow-0.5.ebuild:
+  Added to ~ppc.
+
+  19 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove retired developer from metadata.xml.
+
+*darksnow-0.5 (18 Apr 2005)
+
+  18 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> +darksnow-0.5.ebuild:
+  new upstream version, fixes #65596
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  darksnow-0.4.4.ebuild:
+  Stable amd64, sparc, x86.
+
+  22 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  darksnow-0.4.4.ebuild:
+  Added to ~amd64 and ~sparc.
+
+  19 Oct 2004; Chris White <chriswhite@gentoo.org> darksnow-0.4.4.ebuild:
+  One more QA issue for the road.
+
+  19 Oct 2004; Chris White <chriswhite@gentoo.org> darksnow-0.4.4.ebuild:
+  Fixed some QA issues.
+
+*darksnow-0.4.4 (19 Oct 2004)
+
+  19 Oct 2004; Chris White <chriswhite@gentoo.org> +metadata.xml,
+  +darksnow-0.4.4.ebuild:
+  Initial import to the tree. Closes bug #48057. Thanks to scout@scoutheeten.com
+  ("scout" in the forum) for the ebuild.

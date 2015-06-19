@@ -1,0 +1,44 @@
+From e154fec60a27d5a74e6940941f789e17d7169d54 Mon Sep 17 00:00:00 2001
+From: Christian Ruppert <idl0r@gentoo.org>
+Date: Mon, 4 Jun 2012 01:42:31 +0200
+Subject: [PATCH] Compile fix for >=vdr-1.7.28
+
+---
+ tasks.cpp |   10 ++++++++++
+ 1 files changed, 10 insertions(+), 0 deletions(-)
+
+diff --git a/tasks.cpp b/tasks.cpp
+index 9f20190..2a2b8d5 100644
+--- a/tasks.cpp
++++ b/tasks.cpp
+@@ -60,9 +60,15 @@ void PlayRecordingTask::Action()
+ 
+ 	const char *current = NowReplaying();
+ 	if (!current || (0 != strcmp(current, recording->FileName()))) {
++#if VDRVERSNUM >= 10728
++		cReplayControl::SetRecording( 0 );
++		cControl::Shutdown();
++		cReplayControl::SetRecording( recording->FileName() );
++#else
+ 		cReplayControl::SetRecording( 0, 0 );
+ 		cControl::Shutdown();
+ 		cReplayControl::SetRecording( recording->FileName(), recording->Title() );
++#endif
+ 		cControl::Launch( new cReplayControl );
+ 		cControl::Attach();
+ 	}
+@@ -122,7 +128,11 @@ void StopRecordingTask::Action()
+ 		return;
+ 	}
+ 
++#if VDRVERSNUM >= 10728
++	cReplayControl::SetRecording( 0 );
++#else
+ 	cReplayControl::SetRecording( 0, 0 );
++#endif
+ 	cControl::Shutdown();
+ }
+ 
+-- 
+1.7.3.4
+

@@ -1,0 +1,22 @@
+# ChangeLog for net-im/ayttm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/ayttm/ChangeLog,v 1.21 2015/05/16 10:38:08 pacho Exp $
+
+  16 May 2015; Pacho Ramos <pacho@gentoo.org> ayttm-0.6.3.ebuild:
+  Rename jabber to xmpp USE (#216300)
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> ayttm-0.6.3.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  18 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> ayttm-0.6.3.ebuild:
+  Remove USE="esd" because media-sound/esound isn't in tree anymore.
+
+  15 Dec 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #353461
+
+*ayttm-0.6.3 (21 Feb 2011)
+
+  21 Feb 2011; Kevin McCarthy <signals@gentoo.org> +ayttm-0.6.3.ebuild,
+  +files/ayttm-0.6.3-opt-webcam.patch,
+  +files/ayttm-0.6.3-opt-xscreensaver.patch, +metadata.xml:
+  New ebuild for ayttm. Ebuild written by me. See bug #354085

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>x11</herd>
+  <maintainer>
+    <email>lu_zero@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+ShivaVG is an open-source ANSI C implementation of the Khronos'
+OpenVG specification for hardware-accelerated vector graphics API. It is built
+entirely on top of OpenGL.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">shivavg</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,153 @@
+# ChangeLog for kde-misc/kgtk
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kgtk/ChangeLog,v 1.34 2014/03/20 22:12:11 johu Exp $
+
+  20 Mar 2014; Johannes Huber <johu@gentoo.org> kgtk-0.11.0.ebuild:
+  Bump to EAPI 5.
+
+  26 Feb 2014; Michael Palimaka <kensington@gentoo.org>
+  -files/kgtk-0.10.1-glibc-2.10.patch, -kgtk-0.10.1.ebuild:
+  Remove old.
+
+  26 Feb 2014; Michael Palimaka <kensington@gentoo.org>
+  +files/kgtk-0.11.0-include.patch, kgtk-0.11.0.ebuild:
+  Add patch to solve build failure due to missing include directories, wrt bug
+  #495148.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> kgtk-0.10.1.ebuild,
+  kgtk-0.11.0.ebuild:
+  Move Qt dependencies to the new category
+
+*kgtk-0.11.0 (22 Jan 2012)
+
+  22 Jan 2012; Johannes Huber <johu@gentoo.org> +kgtk-0.11.0.ebuild:
+  Version bump wrt bug #399759.
+
+  29 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> kgtk-0.10.1.ebuild:
+  Declare cmakelists local as they should be.
+
+  29 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> kgtk-0.10.1.ebuild:
+  Fix repoman warnings.
+
+  31 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> kgtk-0.10.1.ebuild:
+  EAPI3, slotmove to 4, use add_kdebase_dep, use array for DOCS and mycmakeargs
+
+  09 Aug 2010; Tomáš Chvátal <scarabeus@gentoo.org> kgtk-0.10.1.ebuild:
+  Drop useless kde_minimal definition.
+
+  22 May 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove genstef from metadata.xml (#66339)
+
+  07 Nov 2009; Samuli Suominen <ssuominen@gentoo.org> kgtk-0.10.1.ebuild:
+  Add support for KDE_LINGUAS. Remove KDE3 support.
+
+  25 Oct 2009; Tomáš Chvátal <scarabeus@gentoo.org> kgtk-0.10.1.ebuild:
+  QA: Remove usage of deprecated kde eclass code.
+
+  12 Oct 2009; Jonathan Callen <abcd@gentoo.org> kgtk-0.10.1.ebuild:
+  QA fix: unquoted variable
+
+  08 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> kgtk-0.10.1.ebuild,
+  +files/kgtk-0.10.1-glibc-2.10.patch:
+  Fix building with GLIBC 2.10+ wrt #276500.
+
+  12 Mar 2009; Tomas Chvatal <scarabeus@gentoo.org>
+  -files/0.10.0-open_mode.patch:
+  Removing unused patch. My deprecated patches search tool faled me :(
+
+*kgtk-0.10.1 (12 Mar 2009)
+
+  12 Mar 2009; Tomas Chvatal <scarabeus@gentoo.org>
+  -files/0.10.0-kde4.patch, -kgtk-0.10.0-r1.ebuild, +kgtk-0.10.1.ebuild:
+  Bump because upstream incorporated our patches. Remove old.
+
+  12 Mar 2009; Tomas Chvatal <scarabeus@gentoo.org> kgtk-0.10.0-r1.ebuild:
+  Fix missing install phase call. Per bug #262220.
+
+*kgtk-0.10.0-r1 (11 Mar 2009)
+
+  11 Mar 2009; Tomas Chvatal <scarabeus@gentoo.org>
+  +files/0.10.0-kde4.patch, +files/0.10.0-open_mode.patch,
+  -kgtk-0.9.1-r1.ebuild, -kgtk-0.9.4.ebuild, -kgtk-0.9.5.ebuild,
+  -kgtk-0.10.0.ebuild, +kgtk-0.10.0-r1.ebuild:
+  Fix FORTIFY_SOURCE=2 issues. Add kde4 support. Use cmake-utils for now.
+  Remove old buggy. Bugs #261276 and #257495.
+
+  23 Aug 2008; Carsten Lohrke <carlo@gentoo.org> kgtk-0.10.0.ebuild:
+  Adjust CMake dependency, bug #233300.
+
+*kgtk-0.10.0 (21 Jul 2008)
+
+  21 Jul 2008; Ioannis Aslanidis <deathwing00@gentoo.org>
+  +kgtk-0.10.0.ebuild:
+  Version bump.
+
+*kgtk-0.9.5 (08 Jun 2008)
+
+  08 Jun 2008; Carsten Lohrke <carlo@gentoo.org> +kgtk-0.9.5.ebuild:
+  Version bump.
+
+  27 May 2008; Mark Loeser <halcy0n@gentoo.org> kgtk-0.9.1-r1.ebuild,
+  kgtk-0.9.4.ebuild:
+  Remove RDEPEND on cmake; bug #220453
+
+  09 Apr 2008; Ingmar Vanhassel <ingmar@gentoo.org> kgtk-0.9.4.ebuild:
+  Make dependencies compatible with split Qt:4.
+
+*kgtk-0.9.4 (19 Dec 2007)
+
+  19 Dec 2007; Stefan Schweizer <genstef@gentoo.org> +kgtk-0.9.4.ebuild:
+  version bump
+
+*kgtk-0.9.1-r1 (13 Oct 2007)
+
+  13 Oct 2007; Stefan Schweizer <genstef@gentoo.org> -kgtk-0.9.1.ebuild,
+  +kgtk-0.9.1-r1.ebuild:
+  Add USE=qt4 thanks to Roberto Castagnola <roberto.castagnola@gmail.com> in
+  bug 194887
+
+  09 Oct 2007; Stefan Schweizer <genstef@gentoo.org>
+  -files/kgtk-no-local.diff, -kgtk-0.7.ebuild, -kgtk-0.8.ebuild,
+  kgtk-0.9.1.ebuild:
+  Fix echo -> elog for zlin and remove old
+
+*kgtk-0.9.1 (03 Oct 2007)
+
+  03 Oct 2007; Stefan Schweizer <genstef@gentoo.org> +kgtk-0.9.1.ebuild:
+  Version bump thanks to Lukasz Lukaszewicz <lukasz@arit.pl> in bug 194641 and
+  philantrop, also fixing bug 193852
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> kgtk-0.7.ebuild,
+  kgtk-0.8.ebuild:
+  Convert to use elog.
+
+  22 Oct 2006; Piotr Jaroszyński <peper@gentoo.org> kgtk-0.8.ebuild:
+  Add ~amd64 keyword. Bug #133414.
+
+*kgtk-0.8 (12 Oct 2006)
+
+  12 Oct 2006; Stefan Schweizer <genstef@gentoo.org> +kgtk-0.8.ebuild:
+  version bump
+
+  01 Sep 2006; Stefan Schweizer <genstef@gentoo.org>
+  +files/kgtk-no-local.diff, kgtk-0.7.ebuild:
+  dont use /usr/local thanks to Hanno Boeck <hanno@gentoo.org> in bug 143500
+
+*kgtk-0.7 (05 Aug 2006)
+
+  05 Aug 2006; Stefan Schweizer <genstef@gentoo.org> -kgtk-0.5.1.ebuild,
+  +kgtk-0.7.ebuild:
+  verson bump thanks to 6thpink <6thpink@terra.es> in bug 142574
+
+*kgtk-0.5.1 (07 May 2006)
+
+  07 May 2006; Stefan Schweizer <genstef@gentoo.org> -kgtk-0.5.ebuild,
+  +kgtk-0.5.1.ebuild:
+  version bump
+
+*kgtk-0.5 (05 May 2006)
+
+  05 May 2006; Stefan Schweizer <genstef@gentoo.org> +metadata.xml,
+  +kgtk-0.5.ebuild:
+  New ebuild thanks to Christoph Mockenhaupt <gentoo@mockies.de> and Tobias
+  Roeser <le.petit.fou@web.de> in bug 131380

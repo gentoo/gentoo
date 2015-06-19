@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=test? ( app-emacs/htmlize ) >=virtual/emacs-23
+DESCRIPTION=Muse-mode is similar to EmacsWikiMode, but more focused on publishing to various formats
+EAPI=4
+HOMEPAGE=http://mwolson.org/projects/EmacsMuse.html
+IUSE=test
+KEYWORDS=amd64 ppc x86 ~x86-fbsd
+LICENSE=GPL-3 FDL-1.2 GPL-2 MIT
+RDEPEND=>=virtual/emacs-23
+RESTRICT=test
+SLOT=0
+SRC_URI=http://download.gna.org/muse-el/muse-3.20.tar.gz
+_eclasses_=elisp	d13b0507622afb8ac9e3f54e91d58614	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d16b4a52810253bd16275fc05cf0393e

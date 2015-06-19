@@ -1,0 +1,27 @@
+ Makefile.am | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 366c582..2edbfe0 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -15,7 +15,7 @@ SUBDIRS = . samples doc
+ bin_SCRIPTS = epix elaps flix laps
+ 
+ pkglib_LIBRARIES = libepix.a
+-pkglib_DATA = epix-lib.sh
++pkgdata_DATA = epix-lib.sh
+ include_HEADERS = epix.h
+ 
+ libepix_a_CXXSOURCES = active_screen.cc affine.cc angle_units.cc \
+@@ -107,8 +107,8 @@ install-data-local:
+ 	$(INSTALL_DATA) $(EPIX_CONFFILES) $(DESTDIR)$(docdir)/config
+ 
+ # This is being installed by install-exec, but should not be executable
+-install-exec-local: install-pkglibDATA
+-	chmod a-x $(DESTDIR)$(pkglibdir)/epix-lib.sh
++install-exec-local: install-pkgdataDATA
++	chmod a-x $(DESTDIR)$(pkgdatadir)/epix-lib.sh
+ 
+ uninstall-local:
+ 	-rm -rf $(DESTDIR)$(docdir)/notes $(DESTDIR)$(docdir)/config

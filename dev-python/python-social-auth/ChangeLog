@@ -1,0 +1,28 @@
+# ChangeLog for dev-python/python-social-auth
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-social-auth/ChangeLog,v 1.6 2015/06/07 15:46:14 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*python-social-auth-0.2.10 (30 May 2015)
+
+  30 May 2015; Maxim Koltsov <maksbotan@gentoo.org>
+  +python-social-auth-0.2.10.ebuild:
+  Bump to 0.2.10
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> python-social-auth-0.1.26.ebuild:
+  amd64 stable, bug 540290
+
+  25 Nov 2014; Pacho Ramos <pacho@gentoo.org> python-social-auth-0.1.26.ebuild:
+  Support python 3.4
+
+  31 Aug 2014; Maxim Koltsov <maksbotan@gentoo.org>
+  python-social-auth-0.1.26.ebuild:
+  Add examples to IUSE
+
+*python-social-auth-0.1.26 (30 Aug 2014)
+
+  30 Aug 2014; Maxim Koltsov <maksbotan@gentoo.org> +metadata.xml,
+  +python-social-auth-0.1.26.ebuild:
+  Add dev-python/python-social-auth

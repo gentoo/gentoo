@@ -1,0 +1,55 @@
+# ChangeLog for www-apache/mod_musicindex
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_musicindex/ChangeLog,v 1.11 2014/12/17 14:24:51 pacho Exp $
+
+  17 Dec 2014; Pacho Ramos <pacho@gentoo.org> mod_musicindex-1.4.1.ebuild:
+  Looking to debian 1.4.x is compatible with apache 2.4
+
+  22 Mar 2014; Michael Palimaka <kensington@gentoo.org>
+  -mod_musicindex-1.3.7.ebuild:
+  Remove old.
+
+*mod_musicindex-1.4.1 (13 Nov 2013)
+
+  13 Nov 2013; Stefan Briesenick <sbriesen@gentoo.org>
+  +mod_musicindex-1.4.1.ebuild, metadata.xml:
+  version bump
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> -mod_musicindex-1.3.5.ebuild,
+  metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  16 Oct 2012; Patrick Lauer <patrick@gentoo.org> mod_musicindex-1.3.5.ebuild,
+  mod_musicindex-1.3.7.ebuild:
+  Restricting to apache 2.2
+
+*mod_musicindex-1.3.7 (06 Oct 2012)
+
+  06 Oct 2012; Stefan Briesenick <sbriesen@gentoo.org>
+  +mod_musicindex-1.3.7.ebuild, metadata.xml:
+  version bump, solves build problem mentioned in bug #424089.
+
+  19 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  mod_musicindex-1.3.5.ebuild:
+  Ensure libmp4v2 headers are present by forcing correct SLOT
+
+  19 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -mod_musicindex-1.2.5.ebuild:
+  old
+
+*mod_musicindex-1.3.5 (14 Oct 2011)
+
+  14 Oct 2011; Steve Dibb <beandog@gentoo.org> +mod_musicindex-1.3.5.ebuild:
+  Version bump, bug 377951
+
+  15 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  mod_musicindex-1.2.5.ebuild:
+  Fix typo in dependencies (bug #324063).
+
+*mod_musicindex-1.2.5 (18 Sep 2009)
+
+  18 Sep 2009; Benedikt Böhm <hollow@gentoo.org>
+  +files/50_mod_musicindex.conf, +mod_musicindex-1.2.5.ebuild,
+  +metadata.xml:
+  initial ebuild wrt #223917

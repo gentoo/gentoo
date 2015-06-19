@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/cvsd/files/cvsd.rc6,v 1.1 2010/06/19 00:30:49 abcd Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting cvsd"
+	start-stop-daemon --start --quiet --background --exec /usr/sbin/cvsd
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping cvsd"
+	start-stop-daemon --stop --quiet --pidfile /var/run/cvsd.pid
+	eend $?
+}

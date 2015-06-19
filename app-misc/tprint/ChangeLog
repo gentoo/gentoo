@@ -1,0 +1,37 @@
+# ChangeLog for app-misc/tprint
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tprint/ChangeLog,v 1.10 2015/06/09 11:51:47 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> metadata.xml,
+  tprint-1.1.0-r1.ebuild:
+  use dobin instead of exeinto /usr/bin/ && doexe
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -tprint-1.1.0.ebuild:
+  Remove old
+
+*tprint-1.1.0-r1 (28 Sep 2010)
+
+  28 Sep 2010; Jeroen Roovers <jer@gentoo.org> +tprint-1.1.0-r1.ebuild:
+  Respect LDFLAGS (bug #337306), more CFLAGS. Do not hard-wire env var
+  values in Makefile.
+
+  30 Dec 2008; Christoph Mende <angelos@gentoo.org> tprint-1.1.0.ebuild:
+  QA: Respect CC (bug 243680)
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove pfeifer from metadata.xml due to retirement.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  31 Aug 2004; David Holm <dholm@gentoo.org> tprint-1.1.0.ebuild:
+  Added to ~ppc.
+
+*tprint-1.1.0 (11 Aug 2004)
+
+  11 Aug 2004; Jay Pfeifer <pfeifer@gentoo.org> : tprint-1.1.0.ebuild
+  Initial import.
+  Provides transparent print support for serial terminals.

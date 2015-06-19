@@ -1,0 +1,41 @@
+# ChangeLog for app-dicts/stardict-mova-smiley
+# Copyright 2000-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/stardict-mova-smiley/ChangeLog,v 1.10 2009/01/23 13:21:02 pva Exp $
+
+  23 Jan 2009; Peter Volkov <pva@gentoo.org>
+  stardict-mova-smiley-2.4.2.ebuild:
+  Drop stardict dependency as it's provided by stardict.eclass.
+
+  27 Mar 2008; Peter Volkov <pva@gentoo.org>
+  -stardict-mova-smiley-2.1.0.ebuild:
+  Cleaned old dictionary as we don't have <stardict-2.4.2 in the tree, bug
+  #163833.
+
+  30 Aug 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing liquidx from metadata due to his retirement (see #171155 for
+  reference).
+
+  01 Feb 2007; Simon Stelling <blubb@gentoo.org>
+  stardict-mova-smiley-2.4.2.ebuild:
+  add ~amd64
+
+  02 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  stardict-mova-smiley-2.4.2.ebuild:
+  To ~sparc
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org>
+  stardict-mova-smiley-2.4.2.ebuild:
+  sync IUSE (missing)
+
+*stardict-mova-smiley-2.4.2 (07 Jan 2004)
+
+  07 Jan 2004; Alastair Tse <liquidx@gentoo.org>
+  stardict-mova-smiley-2.4.2.ebuild:
+  version bumping to new dict format
+
+*stardict-mova-smiley-2.1.0 (04 Jun 2003)
+
+  04 Jun 2003; Alastair Tse <liquidx@gentoo.org>
+  stardict-mova-smiley-2.1.0.ebuild:
+  new stardict dictionary. see app-dict/stardict's ChangeLog for more.
+

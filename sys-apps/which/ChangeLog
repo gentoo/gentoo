@@ -1,0 +1,190 @@
+# ChangeLog for sys-apps/which
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/which/ChangeLog,v 1.59 2015/03/21 12:28:37 polynomial-c Exp $
+
+*which-2.21 (21 Mar 2015)
+
+  21 Mar 2015; Lars Wendler <polynomial-c@gentoo.org> -which-2.19.ebuild,
+  -which-2.20.ebuild, +which-2.21.ebuild,
+  -files/which-2.19-remove-readline.patch, -files/which-gentoo.patch:
+  Version bump. Removed old.
+
+  15 Nov 2014; Mike Frysinger <vapier@gentoo.org> which-2.20-r1.ebuild:
+  Update HOMEPAGE/SRC_URI #515528 by Manfred Knick.
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> which-2.20-r1.ebuild:
+  Stable for sparc, wrt bug #495938
+
+  19 Jan 2014; Agostino Sarubbo <ago@gentoo.org> which-2.20-r1.ebuild:
+  Stable for ppc64, wrt bug #495938
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> which-2.20-r1.ebuild:
+  Add arm64 love.
+
+  17 Jan 2014; Mike Frysinger <vapier@gentoo.org> which-2.20-r1.ebuild:
+  Mark m68k/s390/sh stable.
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> which-2.20-r1.ebuild:
+  Stable for ia64, wrt bug #495938
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> which-2.20-r1.ebuild:
+  Stable for ppc, wrt bug #495938
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> which-2.20-r1.ebuild:
+  Stable for x86, wrt bug #495938
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> which-2.20-r1.ebuild:
+  amd64 stable, bug #495938
+
+  03 Jan 2014; Matt Turner <mattst88@gentoo.org> which-2.20-r1.ebuild:
+  alpha stable, bug 495938.
+
+  31 Dec 2013; Markus Meier <maekke@gentoo.org> which-2.20-r1.ebuild:
+  arm stable, bug #495938
+
+  26 Dec 2013; Jeroen Roovers <jer@gentoo.org> which-2.20-r1.ebuild:
+  Stable for HPPA (bug #495938).
+
+  14 Sep 2013; Patrick Lauer <patrick@gentoo.org> which-2.20-r1.ebuild:
+  Whitespace
+
+  14 Sep 2013; Markos Chandras <hwoarang@gentoo.org> which-2.20-r1.ebuild:
+  Fix my last commit to use tc-export instead
+
+  14 Sep 2013; Markos Chandras <hwoarang@gentoo.org> which-2.20-r1.ebuild:
+  Export AR. Bug #484854
+
+*which-2.20-r1 (23 May 2013)
+
+  23 May 2013; Mike Frysinger <vapier@gentoo.org> +which-2.20-r1.ebuild:
+  Update to EAPI=4 and build against 64bit interfaces #471024.
+
+  17 Feb 2013; Zac Medico <zmedico@gentoo.org> which-2.20.ebuild:
+  Add ~arm-linux keyword.
+
+  07 Jan 2010; Christian Faulhammer <fauli@gentoo.org> which-2.20.ebuild:
+  Transfer Prefix keywords
+
+  05 Oct 2009; Raúl Porcel <armin76@gentoo.org> which-2.20.ebuild:
+  ia64/m68k/s390/sh stable wrt #283975
+
+  02 Oct 2009; Tiago Cunha <tcunha@gentoo.org> which-2.20.ebuild:
+  stable sparc, bug 283975
+
+  29 Sep 2009; Tobias Klausmann <klausman@gentoo.org> which-2.20.ebuild:
+  Stable on alpha, bug #283975
+
+  25 Sep 2009; Brent Baude <ranger@gentoo.org> which-2.20.ebuild:
+  Marking which-2.20 ppc64 for bug 283975
+
+  19 Sep 2009; nixnut <nixnut@gentoo.org> which-2.20.ebuild:
+  ppc stable #283975
+
+  13 Sep 2009; Markus Meier <maekke@gentoo.org> which-2.20.ebuild:
+  arm stable, bug #283975
+
+  11 Sep 2009; Markus Meier <maekke@gentoo.org> which-2.20.ebuild:
+  amd64/x86 stable, bug #283975
+
+  08 Sep 2009; Jeroen Roovers <jer@gentoo.org> which-2.20.ebuild:
+  Stable for HPPA (bug #283975).
+
+*which-2.20 (17 Sep 2008)
+
+  17 Sep 2008; Mike Frysinger <vapier@gentoo.org> +which-2.20.ebuild:
+  Version bump #237155 by Conrad Kostecki.
+
+  29 Mar 2008; Brent Baude <ranger@gentoo.org> which-2.19.ebuild:
+  stable ppc64, bug 215056
+
+  28 Mar 2008; Brent Baude <ranger@gentoo.org> which-2.19.ebuild:
+  stable ppc, bug 215056
+
+  28 Mar 2008; Jeroen Roovers <jer@gentoo.org> which-2.19.ebuild:
+  Stable for HPPA too.
+
+  13 Mar 2008; Doug Goldstein <cardoe@gentoo.org>
+  +files/which-2.19-remove-readline.patch, which-2.19.ebuild:
+  readline is not necessary. bug #207151. patch from Daniel Robbins
+  <drobbins@funtoo.org>
+
+  07 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> which-2.19.ebuild:
+  amd64 stable
+
+  05 Mar 2008; Raúl Porcel <armin76@gentoo.org> which-2.19.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+*which-2.19 (19 Jan 2008)
+
+  19 Jan 2008; Mike Frysinger <vapier@gentoo.org> +which-2.19.ebuild:
+  Verison bump #206627 by Samuli Suominen.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> which-2.14.ebuild,
+  which-2.16.ebuild:
+  virtual/glibc -> virtual/libc
+
+  23 Mar 2004; Martin Holzer <mholzer@gentoo.org> which-2.14.ebuild:
+  fixing depend qa issue. see 45343.
+
+  02 Mar 2004; Brian Jackson <iggy@gentoo.org> which-2.16.ebuild:
+  adding initial s390 support
+
+  15 Jan 2004; Jon Portnoy <avenj@gentoo.org> which-2.16.ebuild :
+  Stable on AMD64.
+
+  09 Jan 2004; Aron Griffis <agriffis@gentoo.org> which-2.16.ebuild:
+  stable on alpha
+
+  28 Dec 2003; Joshua Kinard <kumba@gentoo.org> which-2.16.ebuild:
+  Move to mips stable (~mips -> mips)
+
+  14 Dec 2003; Guy Martin <gmsoft@gentoo.org> which-2.16.ebuild:
+  Marked stable on hppa.
+
+  27 Nov 2003; Christian Birchinger <joker@gentoo.org> which-2.16.ebuild:
+  Added sparc stable keyword
+
+*which-2.16 (15 Sep 2003)
+
+  15 Sep 2003; Daniel Ahlberg <aliz@gentoo.org> which-2.16.ebuild:
+  Version bump
+
+*which-2.15 (12 Sep 2003)
+
+  12 Sep 2003; Seemant Kulleen <seemant@gentoo.org> which-2.15.ebuild:
+  version bump
+
+  20 Feb 2003; Zach Welch <zwelch@gentoo.org> which-2.14 :
+  Added arm to keywords.
+
+  09 Feb 2003; Guy Martin <gmsoft@gentoo.org> which-2.14 :
+  Added hppa to keywords.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*which-2.14 (26 Jul 2002)
+
+  19 Jan 2003; Jan Seidel <tuxus@gentoo.org> :
+  Added mips to keywords
+
+  04 Aug 2002; Calum Selkirk <cselkirk@gentoo.org> which-2.12-r2.ebuild
+  which-2.13.ebuild  which-2.14.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  26 Jul 2002; Maik Schreiber <blizzy@gentoo.org> :
+
+  New version.
+
+*which-2.12-r2.ebuild (14 Jul 2002)
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> which-2.12-r2.ebuild:
+  Added LICENSE, KEYWORDS, SLOT.
+
+*which-2.13 (14 Jul 2002)
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> which-2.13.ebuild:
+  Added LICENSE, KEYWORDS, SLOT.

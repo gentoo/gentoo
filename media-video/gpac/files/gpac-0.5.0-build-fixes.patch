@@ -1,0 +1,113 @@
+diff -ur gpac/configure gpac.new/configure
+--- gpac/configure	2012-05-25 08:05:57.000000000 -0400
++++ gpac.new/configure	2012-10-04 13:59:58.000000000 -0400
+@@ -103,6 +103,7 @@
+ has_openjpeg="no"
+ gprof_build="no"
+ static_build="no"
++static_libs="no"
+ want_pic="no"
+ has_joystick="no"
+ has_xul="no"
+@@ -221,6 +222,7 @@
+   --disable-platinum       disable Platinum UPnP support
+   --disable-alsa           disable Alsa audio
+   --disable-oss-audio      disable OSS audio
++  --disable-sdl            disable SDL support
+   --enable-jack            enable  Jack audio
+   --disable-jack           disable Jack audio
+   --enable-pulseaudio      enable  Pulse audio
+@@ -236,6 +238,7 @@
+   --enable-amr-wb          enable AMR WB library
+   --enable-amr             enable both AMR NB and WB libraries
+   --enable-static-bin      GPAC static build
++  --enable-static-lib      GPAC static libraries build
+   --static-mp4box          configure for static linking of MP4Box.
+   --enable-depth           enables depth handling in the compositor
+ 
+@@ -1607,6 +1610,8 @@
+             ;;
+         --enable-static-bin) static_build="yes";
+             ;;
++        --enable-static-lib) static_libs="yes";
++            ;;
+         --disable-ipv6) has_ipv6="no"
+             ;;
+         --disable-wx) has_wx="no"
+@@ -1615,6 +1620,8 @@
+             ;;
+         --disable-oss-audio) has_oss_audio="no"
+             ;;
++        --disable-sdl) has_sdl="no"
++            ;;
+         --disable-x11-shm) has_x11_shm="no"
+             ;;
+         --disable-x11-xv) has_x11_xv="no"
+@@ -2157,6 +2164,7 @@
+ echo "debug version: $debuginfo"
+ echo "GProf enabled: $gprof_build"
+ echo "Static build enabled: $static_build"
++echo "Static libs build enabled: $static_libs"
+ echo "Memory tracking enabled: $use_memory_tracking"
+ echo "Use standard memory allocator: $use_std_alloc"
+ echo "fixed-point version: $use_fixed_point"
+@@ -2700,6 +2708,7 @@
+ echo "DEBUGBUILD=$debuginfo" >> config.mak
+ echo "GPROFBUILD=$gprof_build" >> config.mak
+ echo "STATICBUILD=$static_build" >> config.mak
++echo "STATICLIBS=$static_libs" >> config.mak
+ 
+ echo "CONFIG_IPV6=$has_ipv6" >> config.mak
+ if test "$has_ipv6" = "yes" ; then
+@@ -2893,8 +2893,6 @@
+     mkdir ./bin/gcc/temp
+ fi
+ 
+-echo '%.opic : %.c' >> config.mak
+-echo '	$(CC) $(CFLAGS) $(PIC_CFLAGS) -c $< -o $@' >> config.mak
+ 
+ #pkg-config
+ echo "prefix=$prefix"				 > gpac.pc
+diff -ur gpac/Makefile gpac.new/Makefile
+--- gpac/Makefile	2012-05-25 08:05:57.000000000 -0400
++++ gpac.new/Makefile	2012-10-04 14:05:08.000000000 -0400
+@@ -119,9 +119,6 @@
+ 	$(INSTALL) $(INSTFLAGS) -m 755 bin/gcc/libgpac.$(DYN_LIB_SUFFIX).$(VERSION_SONAME) $(DESTDIR)$(prefix)/$(libdir)/libgpac.$(DYN_LIB_SUFFIX).$(VERSION_SONAME)
+ 	ln -sf libgpac.$(DYN_LIB_SUFFIX).$(VERSION_SONAME) $(DESTDIR)$(prefix)/$(libdir)/libgpac.so.$(VERSION_MAJOR)
+ 	ln -sf libgpac.$(DYN_LIB_SUFFIX).$(VERSION_SONAME) $(DESTDIR)$(prefix)/$(libdir)/libgpac.so
+-ifeq ($(DESTDIR)$(prefix),$(prefix))
+-	ldconfig || true
+-endif
+ endif
+ endif
+ 
+@@ -138,7 +135,9 @@
+ 	$(INSTALL) $(INSTFLAGS) -m 644 $(SRC_PATH)/include/gpac/enst/*.h "$(DESTDIR)$(prefix)/include/gpac/enst"
+ endif
+ 	mkdir -p "$(DESTDIR)$(prefix)/$(libdir)"
++ifeq ($(STATICLIBS),yes)
+ 	$(INSTALL) $(INSTFLAGS) -m 644 "./bin/gcc/libgpac_static.a" "$(DESTDIR)$(prefix)/$(libdir)"
++endif
+ 	$(MAKE) installdylib
+ 
+ uninstall-lib:
+diff -ur gpac/src/Makefile gpac.new/src/Makefile
+--- gpac/src/Makefile	2012-10-04 14:14:18.000000000 -0400
++++ gpac.new/src/Makefile	2012-10-04 13:59:58.000000000 -0400
+@@ -291,12 +291,16 @@
+ 
+ $(LIB): $(LIBGPAC_UTILS) $(LIBGPAC_IETF) $(LIBGPAC_BIFS) $(LIBGPAC_ODF) $(LIBGPAC_LASER) $(LIBGPAC_ISOM) $(LIBGPAC_SCENEMANAGER) $(LIBGPAC_TERMINAL) compositor scenegraph mediatools mcrypt $(OBJS)
+ ifeq ($(CONFIG_DARWIN),yes)
++ifeq ($(STATICLIBS),yes)
+ 	libtool -s -o ../bin/gcc/libgpac_static.a $(OBJS)
+ 	ranlib ../bin/gcc/libgpac_static.a
++endif
+ 	$(CC) $(SHFLAGS) $(LD_SONAME) $(LDFLAGS) -o ../bin/gcc/$@ $(OBJS) $(EXTRALIBS) 
+ else
++ifeq ($(STATICLIBS),yes)
+ 	ar cr ../bin/gcc/libgpac_static.a $(OBJS)
+ 	ranlib ../bin/gcc/libgpac_static.a
++endif
+ 	$(CC) $(SHFLAGS) $(LD_SONAME) $(LDFLAGS) -o ../bin/gcc/$@ $(OBJS) $(EXTRALIBS)
+ ifeq (,$(findstring yes, $(CONFIG_WIN32)))
+ 	mv ../bin/gcc/$@ ../bin/gcc/$@.$(VERSION_SONAME)

@@ -1,0 +1,11 @@
+--- lib/libsdp/Makefile	2007-06-15 12:04:37 +0200
++++ lib.sdp/libsdp/Makefile	2007-06-15 12:26:14 +0200
+@@ -5,7 +5,7 @@
+ MAN=		sdp.3
+ 
+ WARNS?=		2
+-CFLAGS+=	-I${.CURDIR}
++CFLAGS+=	-I${.CURDIR}  -I${.CURDIR}/../libbluetooth
+ 
+ SHLIB_MAJOR=	2
+ 

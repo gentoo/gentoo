@@ -1,0 +1,24 @@
+Index: fcgi-2.4.0/cgi-fcgi/Makefile.am
+===================================================================
+--- fcgi-2.4.0.orig/cgi-fcgi/Makefile.am
++++ fcgi-2.4.0/cgi-fcgi/Makefile.am
+@@ -11,5 +11,5 @@ INCLUDE_FILES   = $(INCLUDEDIR)/fastcgi.
+ LIBDIR      = ../libfcgi
+ LIBFCGI     = $(LIBDIR)/libfcgi.la
+ 
+-LDADD = $(LIBFCGI)
++LDADD = $(LIBFCGI) -lm
+ cgi_fcgi_SOURCES = $(INCLUDE_FILES) cgi-fcgi.c
+Index: fcgi-2.4.0/examples/Makefile.am
+===================================================================
+--- fcgi-2.4.0.orig/examples/Makefile.am
++++ fcgi-2.4.0/examples/Makefile.am
+@@ -21,7 +21,7 @@ INCLUDE_FILES   = $(INCLUDEDIR)/fastcgi.
+ LIBDIR      = ../libfcgi
+ LIBFCGI     = $(LIBDIR)/libfcgi.la
+ 
+-LDADD = $(LIBFCGI)
++LDADD = $(LIBFCGI) -lm
+ 
+ echo_SOURCES       = $(INCLUDE_FILES) echo.c
+ echo_x_SOURCES     = $(INCLUDE_FILES) echo-x.c

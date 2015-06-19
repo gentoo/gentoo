@@ -1,0 +1,376 @@
+# ChangeLog for net-analyzer/libnasl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/libnasl/ChangeLog,v 1.96 2015/03/16 06:42:41 jer Exp $
+
+  16 Mar 2015; Jeroen Roovers <jer@gentoo.org> libnasl-2.2.9-r1.ebuild,
+  +files/libnasl-2.2.9-bison3.patch:
+  Fix building with sys-devel/bison-3* (bug #485914, patch by Charlie Gehlin).
+
+  12 Oct 2014; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Remove short <longdescription>.
+
+  13 Jul 2014; Jeroen Roovers <jer@gentoo.org> libnasl-2.2.9-r1.ebuild,
+  files/libnasl-2.2.9-gentoo.patch, files/libnasl-2.2.9-openssl-1.patch:
+  sed must die(). Clean up patch.
+
+  04 Jul 2013; Christoph Junghans <ottxor@gentoo.org> libnasl-2.2.9-r1.ebuild:
+  added ~amd64-linux (tested by me)
+
+  12 Sep 2011; Tim Harder <radhermit@gentoo.org> -libnasl-2.2.9.ebuild:
+  Remove old.
+
+  12 Sep 2011; Tim Harder <radhermit@gentoo.org> libnasl-2.2.9-r1.ebuild:
+  Add build dependency on bison (bug #382185 by bay). Conditionally remove
+  unnecessary libtool archives.
+
+  22 Apr 2011; Justin Lecher <jlec@gentoo.org> libnasl-2.2.9-r1.ebuild:
+  Fixed dependency to be fullfilled with any revision, #364471
+
+  20 Apr 2011; Justin Lecher <jlec@gentoo.org> -libnasl-2.3.1.ebuild:
+  Dropped due to pending removal request, #169466
+
+*libnasl-2.2.9-r1 (20 Apr 2011)
+
+  20 Apr 2011; Justin Lecher <jlec@gentoo.org> +libnasl-2.2.9-r1.ebuild,
+  +files/libnasl-2.2.9-gentoo.patch:
+  Respect LDFLAGS, #335967
+
+  06 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> -libnasl-2.2.6.ebuild:
+  Revert back to ~arch wrt #330455.
+
+  11 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> libnasl-2.2.9.ebuild,
+  +files/libnasl-2.2.9-openssl-1.patch:
+  Fix building with OpenSSL >= 1.0.0 wrt #326545.
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org> libnasl-2.3.1.ebuild:
+  Transfer Prefix keywords
+
+  11 Apr 2007; Peter Weller <welp@gentoo.org> libnasl-2.2.9.ebuild:
+  Keyworded ~x86-fbsd wrt bug 172890
+
+*libnasl-2.2.9 (03 Apr 2007)
+
+  03 Apr 2007; Marcelo Goes <vanquirius@gentoo.org> +libnasl-2.2.9.ebuild:
+  2.2.9 version bump for bug 169466. Thanks to Jared Breland <nitro322 at
+  gmail dot com>.
+
+  26 Mar 2007; Fabian Groffen <grobian@gentoo.org> libnasl-2.3.1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  01 Feb 2007; Markus Ullmann <jokey@gentoo.org> -libnasl-2.2.7.ebuild,
+  -libnasl-2.2.8.ebuild:
+  cleanup
+
+*libnasl-2.2.8 (01 Jun 2006)
+
+  01 Jun 2006; Markus Ullmann <jokey@gentoo.org> +libnasl-2.2.8.ebuild:
+  Version bump wrt bug #134036
+
+*libnasl-2.2.7 (09 Mar 2006)
+
+  09 Mar 2006; Marcelo Goes <vanquirius@gentoo.org> +libnasl-2.2.7.ebuild:
+  2.2.7 version bump for bug 125519. Thanks to ChazeFroy <chazefroy at gmail
+  dot com>.
+
+  05 Mar 2006; Markus Ullmann <jokey@gentoo.org> libnasl-2.3.1.ebuild:
+  COPYING cleanup
+
+  19 Feb 2006; Marcelo Goes <vanquirius@gentoo.org> -libnasl-2.2.4.ebuild:
+  Remove 2.2.4 ebuild.
+
+  18 Feb 2006; Fabian Groffen <grobian@gentoo.org> libnasl-2.3.1.ebuild:
+  Marked ~ppc-macos (bug #123308)
+
+  12 Feb 2006; Marcelo Goes <vanquirius@gentoo.org> -libnasl-2.2.5.ebuild:
+  Remove old ebuilds.
+
+  07 Feb 2006; Simon Stelling <blubb@gentoo.org> libnasl-2.2.6.ebuild:
+  stable on amd64
+
+  24 Dec 2005; Michael Hanselmann <hansmi@gentoo.org> libnasl-2.2.6.ebuild:
+  Stable on ppc.
+
+  20 Dec 2005; Bryan Østergaard <kloeri@gentoo.org libnasl-2.2.6.ebuild:
+  Stable on alpha.
+
+  18 Dec 2005; Markus Rothe <corsair@gentoo.org> libnasl-2.2.6.ebuild:
+  Stable on ppc64
+
+  16 Dec 2005; Gustavo Zacarias <gustavoz@gentoo.org> libnasl-2.2.6.ebuild:
+  Stable on sparc
+
+  15 Dec 2005; Marcelo Goes <vanquirius@gentoo.org> libnasl-2.2.6.ebuild:
+  Marking nessus suite 2.2.6 x86 stable.
+
+  04 Dec 2005; Tom Gall <tgall@gentoo.org> libnasl-2.2.5.ebuild:
+  stable on ppc64
+
+*libnasl-2.2.6 (09 Nov 2005)
+
+  09 Nov 2005; Marcelo Goes <vanquirius@gentoo.org> +libnasl-2.2.6.ebuild:
+  2.2.6 version bump. Fixes bug 111973. Thanks to ChazeFroy <chazefroy at
+  gmail dot com>.
+
+  05 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org> libnasl-2.2.5.ebuild:
+  Stable on sparc
+
+  02 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> libnasl-2.2.5.ebuild:
+  Stable on ppc.
+
+  01 Oct 2005; Luis Medinas <metalgod@gentoo.org> libnasl-2.2.5.ebuild:
+  Marked Stable on amd64.
+
+  26 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> libnasl-2.2.5.ebuild:
+  nessus 2.2.5 series x86 stable.
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  04 Aug 2005; Fabian Groffen <grobian@gentoo.org> libnasl-2.2.4.ebuild:
+  Marking ~ppc-macos
+
+*libnasl-2.2.5 (24 Jul 2005)
+
+  24 Jul 2005; Marcelo Goes <vanquirius@gentoo.org> +libnasl-2.2.5.ebuild:
+  Version bump for bug 100024. Thanks to ChazeFroy <chazefroy@gmail.com>.
+
+  19 Jun 2005; Marcelo Goes <vanquirius@gentoo.org> -libnasl-2.0.12.ebuild,
+  -libnasl-2.2.0.ebuild, -libnasl-2.3.0.ebuild:
+  Remove old ebuilds.
+
+  09 Jun 2005; Olivier Crête <tester@gentoo.org> libnasl-2.2.4.ebuild:
+  Marking stable on amd64
+
+  02 Jun 2005; Joseph Jezak <josejx@gentoo.org> libnasl-2.2.4.ebuild:
+  Marked ppc stable.
+
+  22 May 2005; Bryan Østergaard <kloeri@gentoo.org> libnasl-2.2.4.ebuild:
+  Stable on alpha.
+
+*libnasl-2.3.1 (15 May 2005)
+
+  15 May 2005; Aaron Walker <ka0ttic@gentoo.org> +libnasl-2.3.1.ebuild:
+  Version bump for bug 78497
+
+  02 May 2005; Jason Wever <weeve@gentoo.org> libnasl-2.2.4.ebuild:
+  Stable on SPARC.
+
+  24 Apr 2005; Marcelo Goes <vanquirius@gentoo.org> -libnasl-2.2.2a.ebuild,
+  -libnasl-2.2.3.ebuild, libnasl-2.2.4.ebuild:
+  Removing ebuild clutter, marking 2.2.4 x86 stable.
+
+  24 Apr 2005; Marcelo Goes <vanquirius@gentoo.org> libnasl-2.2.2a.ebuild,
+  libnasl-2.2.3.ebuild, libnasl-2.2.4.ebuild, libnasl-2.3.0.ebuild:
+  Use make install instead of emake install.
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> libnasl-2.2.4.ebuild:
+  Stable on ppc64
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> libnasl-2.2.0.ebuild:
+  Stable on ppc.
+
+  31 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> libnasl-2.2.0.ebuild:
+  Stable on alpha.
+
+  27 Mar 2005; Jason Wever <weeve@gentoo.org> libnasl-2.2.0.ebuild:
+  Stable on SPARC.
+
+  24 Mar 2005; Marcelo Goes <vanquirius@gentoo.org> libnasl-2.2.0.ebuild:
+  Marking 2.2.0 x86 stable
+
+*libnasl-2.2.4 (23 Mar 2005)
+
+  23 Mar 2005; Marcelo Goes <vanquirius@gentoo.org> +libnasl-2.2.4.ebuild:
+  Version bump, bug 86392. Thanks to Omkhar Arasaratnam <omkhar@rogers.com> for
+  reporting.
+
+*libnasl-2.2.3 (26 Feb 2005)
+
+  26 Feb 2005; Daniel Black <dragonheart@gentoo.org> +libnasl-2.2.3.ebuild,
+  libnasl-2.3.0.ebuild:
+  Version bump as per bug #81580. Thanks to ChazeFroy <chazefroy@gmail.com>.
+
+  19 Feb 2005; Daniel Black <dragonheart@gentoo.org> libnasl-2.0.12.ebuild,
+  libnasl-2.2.0.ebuild:
+  Fixed broken install routines as per bug #82364. Thanks to mrgoby
+  <mrgoby@gmail.com>
+
+  15 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> libnasl-2.3.0.ebuild:
+  Use virtual/tetex rather than app-text/tetex for bug 82072.
+
+  14 Feb 2005; Daniel Black <dragonheart@gentoo.org> libnasl-2.0.12.ebuild,
+  libnasl-2.3.0.ebuild:
+  Compile fault and doc flag added as per bug #81962 and bug #81975. Thanks to
+  Nguyen Thai Ngoc Duy <pclouds@gentoo.org>
+
+*libnasl-2.2.2a (28 Jan 2005)
+
+  28 Jan 2005; Daniel Black <dragonheart@gentoo.org> libnasl-2.2.0.ebuild,
+  +libnasl-2.2.2a.ebuild, libnasl-2.3.0.ebuild:
+  Add latest stable version (bug #78789). 2.3.0 uses correct CC now. Added
+  missing ppc64 keywords
+
+  13 Jan 2005; Daniel Black <dragonheart@gentoo.org> libnasl-2.3.0.ebuild:
+  Parallel make disabled as per bug #77685
+
+*libnasl-2.3.0 (12 Jan 2005)
+
+  12 Jan 2005; Daniel Black <dragonheart@gentoo.org> +libnasl-2.3.0.ebuild:
+  Version bump as per bug #73780. Thanks to Holger Hoffstätte <holger@wizards.de>
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*libnasl-2.2.0 (28 Oct 2004)
+
+  28 Oct 2004; Eldad Zack <eldad@gentoo.org> -libnasl-2.1.1.ebuild,
+  +libnasl-2.2.0.ebuild:
+  Version bump: new stable series. Removed 2.1.x development series.
+
+  25 Sep 2004; Tom Gall <tgall@gentoo.org> libnasl-2.0.12.ebuild:
+  stable on ppc64, bug #58014
+
+  28 Aug 2004; Eldad Zack <eldad@gentoo.org> libnasl-2.1.1.ebuild:
+  x86 stable
+
+  13 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> libnasl-2.0.12.ebuild:
+  Stable on alpha, bug 58014.
+
+  12 Aug 2004; Eldad Zack <eldad@gentoo.org> libnasl-2.0.10a.ebuild:
+  GLSA 200408-11: masking 2.0.10a for all archs besides alpha until 2.0.12 will
+  be stable on alpha
+
+  12 Aug 2004; Eldad Zack <eldad@gentoo.org>
+  -files/libnasl-2.0.7-gentoo.patch, -files/libnasl-2.0.8a-gentoo.patch,
+  -files/libnasl.patch, -libnasl-2.0.11.ebuild, -libnasl-2.0.7.ebuild,
+  -libnasl-2.0.8a.ebuild, -libnasl-2.0.9.ebuild, -libnasl-2.1.0.ebuild:
+  GLSA 200408-11 (Bug #58014) ebuild purging. ppc64 -> ~ppc64, and moved to
+  2.0.12. wrt bug #57456.
+
+  12 Aug 2004; <SeJo@gentoo.org> libnasl-2.0.12.ebuild:
+  stable masking ppc for bug 58014
+
+  31 Jul 2004; Tom Gall <tgall@gentoo.org> libnasl-2.0.11.ebuild:
+  stable on ppc64, bug #57454
+
+*libnasl-2.1.1 (24 Jul 2004)
+
+  24 Jul 2004; Eldad Zack <eldad@gentoo.org> +libnasl-2.1.1.ebuild:
+  Version bump.
+
+  23 Jul 2004; Jason Wever <weeve@gentoo.org> libnasl-2.0.12.ebuild:
+  Stable on sparc wrt security bug #58014.
+
+*libnasl-2.0.12 (23 Jul 2004)
+
+  23 Jul 2004; Eldad Zack <eldad@gentoo.org> +libnasl-2.0.12.ebuild:
+  Version bump - Security update (x86 stable). Bug 58014.
+
+*libnasl-2.0.11 (21 Jul 2004)
+
+  21 Jul 2004; Eldad Zack <eldad@gentoo.org> +libnasl-2.0.11.ebuild:
+  Version bump.
+
+  19 Jul 2004; Jason Wever <weeve@gentoo.org> libnasl-2.0.10a.ebuild:
+  Stable on sparc.
+
+*libnasl-2.1.0 (16 Jul 2004)
+
+  16 Jul 2004; Eldad Zack <eldad@gentoo.org> +libnasl-2.1.0.ebuild:
+  Added development series 2.1.0 (hard-masked). Closes #56436
+
+  13 Jul 2004; Eldad Zack <eldad@gentoo.org> libnasl-2.0.10a.ebuild:
+  marked x86 stable
+
+*libnasl-2.0.8a (10 Jul 2004)
+
+  10 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
+  libnasl-2.0.10a.ebuild, libnasl-2.0.7.ebuild, libnasl-2.0.8a.ebuild,
+  libnasl-2.0.9.ebuild:
+  Added metadata, missing IUSEs
+
+  05 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> libnasl-2.0.10a.ebuild:
+  Stable on alpha.
+
+*libnasl-2.0.10a (09 Feb 2004)
+
+  09 Feb 2004; Patrick Kursawe <phosphan@gentoo.org> libnasl-2.0.10a.ebuild:
+  Version bump. Patch no longer needed.
+
+*libnasl-2.0.9 (19 Nov 2003)
+
+  19 Nov 2003; Patrick Kursawe <phosphan@gentoo.org> libnasl-2.0.6a.ebuild,
+  libnasl-2.0.9.ebuild, files/libnasl-2.0.4-gentoo.patch,
+  files/libnasl-2.0.6a-gentoo.patch, files/libnasl.patch:
+  Version bump and cleanup.
+
+  15 Sep 2003; Jason Wever <weeve@gentoo.org> libnasl-2.0.7.ebuild:
+  Added ~sparc keyword.
+
+*libnasl-2.0.7 (10 Jul 2003)
+
+  10 Jul 2003; Patrick Kursawe <phosphan@gentoo.org> libnasl-2.0.7.ebuild,
+  files/libnasl-2.0.7-gentoo.patch:
+  Version bump
+
+*libnasl-2.0.6a (23 May 2003)
+
+  23 May 2003; Patrick Kursawe <phosphan@gentoo.org> libnasl-2.0.6a.ebuild,
+  files/libnasl-2.0.6a-gentoo.patch:
+  Version bump, should fix bug 21529
+
+*libnasl-2.0.5 (13 May 2003)
+
+  13 May 2003; Patrick Kursawe <phosphan@gentoo.org> libnasl-2.0.5.ebuild,
+  files/libnasl-2.0.5-gentoo.patch:
+  Version bump, bug #20901.
+
+*libnasl-2.0.4 (23 Apr 2003)
+
+  23 Apr 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump. Found in #18978.
+
+*libnasl-2.0.0 (25 Feb 2003)
+
+  05 Mar 2003; Alastair Tse <liquidx@gentoo.org> libnasl-2.0.0.ebuild :
+  using make instead of emake. resolves #16471.
+
+  25 Feb 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump. Ebuild submitted by Blu3 <david+gentoo.org@blue-labs.org> in #16310.
+
+*libnasl-1.2.7 (04 Jan 2003)
+
+  16 Jan 2003; Nick Hadaway <raker@gentoo.org> libnasl-1.2.7.ebuild :
+  Fixed doc location.  Changed to epatch.  Changed to DEBUGBUILD.
+  Marked stable for x86.
+
+  04 Jan 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump. Found by Raskasi <raskasi@gmx.net>.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*libnasl-1.2.6 (05 Nov 2002)
+
+  12 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> libnasl-1.2.6.ebuild :
+  Fixed #10521.
+
+  05 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
+
+*libnasl-1.2.4 (22 Aug 2002)
+
+  12 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> libnasl-1.2.4.ebuild :
+  Fixed #10521.
+
+  22 Aug 2002; Nick Hadaway <raker@gentoo.org>
+  libnasl-1.2.4.ebuild, files/digest-libnasl-1.2.4 :
+  Version bump.
+
+*libnasl-1.2.3 (26 Jul 2002)
+
+  26 Jul 2002; Nick Hadaway <raker@gentoo.org>
+  libnasl-1.2.3.ebuild, files/digest-libnasl-1.2.3, files/nasl.diff :
+  Split out the "nessus" ebuild to the individual nessues components
+  to allow pieces to build and install properly.  "nessus" is still
+  an installable ebuild, it just pulls in the individual components.
+  libnasl is the second of those components.

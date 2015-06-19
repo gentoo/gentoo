@@ -1,0 +1,125 @@
+# ChangeLog for www-apps/ikiwiki
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/ikiwiki/ChangeLog,v 1.26 2015/06/13 17:20:27 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  ikiwiki-3.20140227.ebuild, ikiwiki-3.20140916.ebuild,
+  ikiwiki-3.20150107.ebuild:
+  The CGI module is no longer part of core Perl and has been moved to dev-perl
+
+*ikiwiki-3.20150107 (08 Feb 2015)
+
+  08 Feb 2015; Alice Ferrazzi <alicef@gentoo.org> +ikiwiki-3.20150107.ebuild:
+  Version bump.
+
+  12 Dec 2014; Alice Ferrazzi <alicef@gentoo.org> metadata.xml:
+  Update email and removed proxy-maintainers herd
+
+*ikiwiki-3.20140916 (08 Oct 2014)
+
+  08 Oct 2014; Manuel Rüger <mrueg@gentoo.org> +ikiwiki-3.20140916.ebuild,
+  -ikiwiki-3.20140125.ebuild:
+  Version bump. Proxy commit for Alice Ferrazzi.
+
+*ikiwiki-3.20140227 (12 Jun 2014)
+
+  12 Jun 2014; Manuel Rüger <mrueg@gentoo.org> +ikiwiki-3.20140227.ebuild:
+  Version bump. Proxy commit for Alice Ferrazzi.
+
+  14 Feb 2014; Manuel Rüger <mrueg@gentoo.org> -ikiwiki-3.20130904.1.ebuild:
+  Cleanup old.
+
+*ikiwiki-3.20140125 (28 Jan 2014)
+
+  28 Jan 2014; Manuel Rüger <mrueg@gentoo.org> +ikiwiki-3.20140125.ebuild,
+  metadata.xml:
+  Version bump. See also #494022. Add missing test dependencies. Fix bug
+  #498444. Proxy commit for Alice Ferrazzi. Add missing proxy-maintainers herd.
+
+  26 Dec 2013; Manuel Rüger <mrueg@gentoo.org> metadata.xml:
+  Add Alice Ferrazzi as maintainer.
+
+  24 Dec 2013; Manuel Rüger <mrueg@gentoo.org> metadata.xml:
+  Add myself to metadata.xml.
+
+  23 Dec 2013; Pacho Ramos <pacho@gentoo.org> ikiwiki-3.20130904.1.ebuild:
+  Add missing dependency, bug #436458 by W. Trevor King
+
+  23 Dec 2013; Pacho Ramos <pacho@gentoo.org> -ikiwiki-3.20120629.ebuild,
+  -ikiwiki-3.20120725.ebuild, -ikiwiki-3.20121212.ebuild, metadata.xml:
+  Cleanup due bug #65652
+
+*ikiwiki-3.20130904.1 (15 Dec 2013)
+
+  15 Dec 2013; Manuel Rüger <mrueg@gentoo.org> +ikiwiki-3.20130904.1.ebuild:
+  NMU: Version bump. Fixes bug #399007
+
+*ikiwiki-3.20121212 (27 Dec 2012)
+
+  27 Dec 2012; Torsten Veller <tove@gentoo.org> +ikiwiki-3.20121212.ebuild:
+  Version bump (#399007)
+
+*ikiwiki-3.20120725 (31 Aug 2012)
+
+  31 Aug 2012; Torsten Veller <tove@gentoo.org> -ikiwiki-3.20120516.ebuild,
+  +ikiwiki-3.20120725.ebuild:
+  Version bump. Cleanup
+
+*ikiwiki-3.20120629 (01 Jul 2012)
+
+  01 Jul 2012; Torsten Veller <tove@gentoo.org> +ikiwiki-3.20120629.ebuild:
+  Version bump
+
+  21 May 2012; Torsten Veller <tove@gentoo.org> -ikiwiki-3.20101201.ebuild,
+  -ikiwiki-3.20110123.ebuild, -ikiwiki-3.20110328.ebuild,
+  -ikiwiki-3.20110608.ebuild:
+  Cleanup
+
+*ikiwiki-3.20120516 (19 May 2012)
+
+  19 May 2012; Torsten Veller <tove@gentoo.org> +ikiwiki-3.20120516.ebuild:
+  Version bump (#416589)
+
+*ikiwiki-3.20110608 (11 Jun 2011)
+
+  11 Jun 2011; Torsten Veller <tove@gentoo.org> +ikiwiki-3.20110608.ebuild:
+  Version bump
+
+*ikiwiki-3.20110328 (29 Mar 2011)
+
+  29 Mar 2011; Torsten Veller <tove@gentoo.org> +ikiwiki-3.20110328.ebuild:
+  Version bump
+
+*ikiwiki-3.20110123 (23 Jan 2011)
+
+  23 Jan 2011; Torsten Veller <tove@gentoo.org> -ikiwiki-3.20101112.ebuild,
+  -ikiwiki-3.20101129.ebuild, -ikiwiki-3.20110122.ebuild,
+  +ikiwiki-3.20110123.ebuild:
+  Version bump. Cleanup
+
+*ikiwiki-3.20110122 (22 Jan 2011)
+
+  22 Jan 2011; Torsten Veller <tove@gentoo.org> +ikiwiki-3.20110122.ebuild:
+  Version bump
+
+*ikiwiki-3.20101201 (03 Dec 2010)
+
+  03 Dec 2010; Torsten Veller <tove@gentoo.org> +ikiwiki-3.20101201.ebuild:
+  Version bump
+
+*ikiwiki-3.20101129 (30 Nov 2010)
+
+  30 Nov 2010; Torsten Veller <tove@gentoo.org> +ikiwiki-3.20101129.ebuild:
+  Version bump
+
+*ikiwiki-3.20101112 (12 Nov 2010)
+
+  12 Nov 2010; Torsten Veller <tove@gentoo.org> -ikiwiki-3.20101023.ebuild,
+  +ikiwiki-3.20101112.ebuild:
+  Version bump. Cleanup
+
+*ikiwiki-3.20101023 (02 Nov 2010)
+
+  02 Nov 2010; Torsten Veller <tove@gentoo.org> +ikiwiki-3.20101023.ebuild,
+  +metadata.xml:
+  Initial commit. Fixes bug #144453

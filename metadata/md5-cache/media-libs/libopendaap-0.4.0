@@ -1,0 +1,9 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=A library which enables applications to discover and connect to iTunes(R) music shares
+HOMEPAGE=http://crazney.net/programs/itunes/libopendaap.html
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+LICENSE=MIT
+SLOT=0
+SRC_URI=http://crazney.net/programs/itunes/files/libopendaap-0.4.0.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=99aeaffe0616f2d2ed18b6fa62dac8b1

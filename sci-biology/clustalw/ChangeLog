@@ -1,0 +1,171 @@
+# ChangeLog for sci-biology/clustalw
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/clustalw/ChangeLog,v 1.37 2014/01/27 07:23:44 jlec Exp $
+
+  27 Jan 2014; Justin Lecher <jlec@gentoo.org> -clustalw-1.83-r2.ebuild:
+  Drop old
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> clustalw-1.83-r3.ebuild:
+  Stable for sparc, wrt bug #497214
+
+  19 Jan 2014; Agostino Sarubbo <ago@gentoo.org> clustalw-1.83-r3.ebuild:
+  Stable for ppc64, wrt bug #497214
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> clustalw-1.83-r3.ebuild:
+  Stable for alpha, wrt bug #497214
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> clustalw-1.83-r3.ebuild:
+  Stable for ppc, wrt bug #497214
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> clustalw-1.83-r3.ebuild:
+  Stable for x86, wrt bug #497214
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> clustalw-1.83-r3.ebuild:
+  amd64 stable, bug #497214
+
+  06 Jan 2014; Justin Lecher <jlec@gentoo.org> +clustalw-1.83-r2.ebuild,
+  +clustalw-1.83-r3.ebuild:
+  Readd SLOT=1 ebuild; punt base.eclass usage; bump to EAPI=5
+
+  06 Jan 2014; Justin Lecher <jlec@gentoo.org> -clustalw-1.83-r2.ebuild,
+  -clustalw-1.83-r3.ebuild, -clustalw-2.0.11.ebuild, -clustalw-2.0.12.ebuild:
+  Drop old and clean base.eclass usage
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+  13 Jun 2012; Johannes Huber <johu@gentoo.org> clustalw-2.1.ebuild:
+  Stable for x86, wrt bug #416891
+
+  04 Jun 2012; Agostino Sarubbo <ago@gentoo.org> clustalw-2.1.ebuild:
+  Stable for amd64, wrt bug #416891
+
+*clustalw-2.1 (22 Apr 2012)
+
+  22 Apr 2012; Kacper Kowalik <xarthisius@gentoo.org> +clustalw-2.1.ebuild:
+  Version bump
+
+  02 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  clustalw-1.83-r3.ebuild:
+  Transfer Prefix keywords
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  clustalw-2.0.12.ebuild:
+  Transfer Prefix keywords
+
+*clustalw-2.0.12 (18 Oct 2009)
+
+  18 Oct 2009; Andrey Kislyuk <weaver@gentoo.org> +clustalw-2.0.12.ebuild:
+  Version bump
+
+  22 Sep 2009; Markus Meier <maekke@gentoo.org> clustalw-2.0.11.ebuild:
+  x86 stable, bug #282109
+
+  06 Sep 2009; Jeremy Olexa <darkside@gentoo.org> clustalw-2.0.11.ebuild:
+  amd64 stable, bug 282109
+
+  18 Aug 2009; Andrey Kislyuk <weaver@gentoo.org> clustalw-1.83-r2.ebuild:
+  Fix Manifest
+
+  18 Aug 2009; Andrey Kislyuk <weaver@gentoo.org> +clustalw-1.83-r2.ebuild:
+  Avoid dropping stable keywords until stablereqs are done
+
+*clustalw-1.83-r3 (18 Aug 2009)
+
+  18 Aug 2009; Andrey Kislyuk <weaver@gentoo.org>
+  +files/1.83-as-needed.patch, -clustalw-1.83-r2.ebuild,
+  +clustalw-1.83-r3.ebuild:
+  Fix bug 281734, thanks to Justin Lecher (jlec)
+
+*clustalw-2.0.11 (28 Apr 2009)
+
+  28 Apr 2009; Andrey Kislyuk <weaver@gentoo.org> -clustalw-2.0.9.ebuild,
+  +clustalw-2.0.11.ebuild:
+  Version bump, remove old, assume maintainership
+
+  24 Mar 2009; Olivier Fisette <ribosome@gentoo.org> metadata.xml:
+  Giving up maintainership of this package.
+
+  09 Sep 2008; Markus Dittrich <markusle@gentoo.org> clustalw-2.0.9.ebuild:
+  Keyworded amd64 since it works just fine.
+
+*clustalw-2.0.9 (28 Aug 2008)
+
+  28 Aug 2008; Olivier Fisette <ribosome@gentoo.org> +clustalw-2.0.9.ebuild:
+  New upstream major version (complete rewrite, removing keywords). Slotted
+  to cohexist with version 1.x.
+
+*clustalw-1.83-r2 (27 Aug 2008)
+
+  27 Aug 2008; Olivier Fisette <ribosome@gentoo.org>
+  -clustalw-1.83-r1.ebuild, +clustalw-1.83-r2.ebuild:
+  Forcing bump to start using slots as ClustalW 2 should coexist with 1.83.
+
+  02 Nov 2006; Fabian Groffen <grobian@gentoo.org> clustalw-1.83-r1.ebuild:
+  Dropped ppc-macos, see you in prefix.
+
+  14 Sep 2006; Olivier Fisette <ribosome@gentoo.org> metadata.xml:
+  Taking over maintainership.
+
+  04 Jan 2006; Olivier Fisette <ribosome@gentoo.org>
+  clustalw-1.83-r1.ebuild:
+  Do not depend on "virtual/libc" (package not in system target).
+
+  11 Oct 2005; Luis Medinas <metalgod@gentoo.org> clustalw-1.83-r1.ebuild:
+  Marked Stable on amd64.
+
+  19 Jun 2005; Markus Rothe <corsair@gentoo.org> clustalw-1.83-r1.ebuild:
+  Stable on ppc64
+
+  02 May 2005; Omkhar Arasaratnam <omkhar@gentoo.org>
+  clustalw-1.83-r1.ebuild:
+  Added ~ppc64
+
+  30 Jan 2005; Olivier Fisette <ribosome@gentoo.org>
+  clustalw-1.83-r1.ebuild:
+  Ebuild cleanup.
+
+  14 Jan 2005; Lina Pezzella <j4rg0n@gentoo.org> clustalw-1.83-r1.ebuild:
+  Stable ppc-macos.
+
+  02 Jan 2005; Olivier Fisette <ribosome@gentoo.org>
+  clustalw-1.83-r1.ebuild:
+  Use the toolchain-funcs rather than the gcc eclass.
+
+*clustalw-1.83-r1 (23 Dec 2004)
+
+  23 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +clustalw-1.83-r1.ebuild:
+  Moved from app-sci/clustalw to sci-biology/clustalw.
+
+  21 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org>
+  clustalw-1.83-r1.ebuild:
+  Added to ~amd64, bug #71865
+
+  14 Oct 2004; Olivier Fisette <ribosome@gentoo.org> clustalw-1.83-r1.ebuild:
+  Fixed gcc with gcc.eclass. gongloo left some mistakes.
+
+  14 Oct 2004; Hasan Khalil <gongloo@gentoo.org> clustalw-1.83-r1.ebuild:
+  Fixed gcc with gcc.eclass. Keyworded ~ppc-macos.
+
+  05 Oct 2004; Olivier Fisette <ribosome@gentoo.org> clustalw-1.83-r1.ebuild:
+  Fixed overly verbose description.
+
+*clustalw-1.83-r1 (29 Sep 2004)
+
+  29 Sep 2004; Olivier Fisette <ribosome@gentoo.org> +clustalw-1.83-r1.ebuild,
+  -clustalw-1.83.ebuild:
+  Fixed bugs pertaining to "CFLAGS" and help files.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> clustalw-1.83.ebuild:
+  virtual/glibc -> virtual/libc
+
+  19 Apr 2004; Patrick Kursawe <phosphan@gentoo.org> clustalw-1.83.ebuild:
+  Bumped to stable, using epatch now
+
+*clustalw-1.83 (04 Apr 2003)
+
+  04 Apr 2003; Michael Imhof <tantive@gentoo.org> :
+  Initial release.
+  This ebuild was submitted by Gontran Zepeda <gontran@gontran.net>.
+  Should close #18679.

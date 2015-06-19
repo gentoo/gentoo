@@ -1,0 +1,9 @@
+# ChangeLog for dev-java/cdi-api
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/cdi-api/ChangeLog,v 1.1 2015/06/08 14:44:46 monsieurp Exp $
+
+*cdi-api-1.2 (08 Jun 2015)
+
+  08 Jun 2015; Patrice Clement <monsieurp@gentoo.org> +cdi-api-1.2.ebuild,
+  +metadata.xml:
+  Initial commit.

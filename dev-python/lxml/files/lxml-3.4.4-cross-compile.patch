@@ -1,0 +1,36 @@
+use pkg-config to find libxml2/libxslt details rather than xxx-config scripts
+
+--- a/setupinfo.py
++++ b/setupinfo.py
+@@ -87,19 +87,6 @@ def ext_modules(static_include_dirs, static_library_dirs,
+         source_extension = ".c"
+         print("Building without Cython.")
+ 
+-    lib_versions = get_library_versions()
+-    versions_ok = True
+-    if lib_versions[0]:
+-        print("Using build configuration of libxml2 %s and libxslt %s" %
+-              lib_versions)
+-        versions_ok = check_min_version(lib_versions[0], (2, 7, 0), 'libxml2')
+-    else:
+-        print("Using build configuration of libxslt %s" %
+-              lib_versions[1])
+-    versions_ok |= check_min_version(lib_versions[1], (1, 1, 23), 'libxslt')
+-    if not versions_ok:
+-        raise RuntimeError("Dependency missing")
+-
+     _include_dirs = include_dirs(static_include_dirs)
+     _library_dirs = library_dirs(static_library_dirs)
+     _cflags = cflags(static_cflags)
+@@ -310,8 +297,9 @@ def get_library_versions():
+ 
+ 
+ def flags(option):
+-    xml2_flags = run_command(find_xml2_config(), "--%s" % option)
+-    xslt_flags = run_command(find_xslt_config(), "--%s" % option)
++    pkg_config = os.environ.get('PKG_CONFIG', 'pkg-config')
++    xml2_flags = run_command(pkg_config, 'libxml-2.0', '--%s' % option)
++    xslt_flags = run_command(pkg_config, 'libxxlt', '--%s' % option)
+ 
+     flag_list = xml2_flags.split()
+     for flag in xslt_flags.split():

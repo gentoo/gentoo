@@ -1,0 +1,131 @@
+# ChangeLog for media-plugins/vdr-weatherng
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-weatherng/ChangeLog,v 1.29 2015/03/05 18:34:53 hd_brummy Exp $
+
+  05 Mar 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-weatherng-0.0.8_pre3-r1.ebuild:
+  fixed typo in sed line, txh to T.Foerster on wrt bug 541892
+
+  08 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-weatherng-0.0.8_pre3.ebuild, vdr-weatherng-0.0.8_pre3-r1.ebuild:
+  cleanup; fixed wrt bug 414183
+
+  30 Oct 2009; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-weatherng-0.0.8_pre3.ebuild, vdr-weatherng-0.0.8_pre3-r1.ebuild:
+  moved to eapi=2
+
+*vdr-weatherng-0.0.8_pre3-r1 (20 Jan 2009)
+
+  20 Jan 2009; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-weatherng-0.0.8_pre3-r1.ebuild:
+  Fix bash script announcing itself as needing /bin/sh
+
+  01 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  15 Jun 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-weatherng-0.0.8_pre3-gcc43.patch,
+  vdr-weatherng-0.0.8_pre3.ebuild:
+  patch to fix gcc-4.3.x compile problems; thanks to M.Brakemeier on bug
+  #227133
+
+  14 May 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  files/vdr-weatherng-0.0.8_pre3-gentoo.diff:
+  fixed download url on weather.com
+
+  28 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-weatherng-0.0.8_pre3.ebuild:
+  Fixed quoting.
+
+  19 Sep 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -files/vdr-weatherng-0.0.5.diff,
+  -files/vdr-weatherng-0.0.8_pre2-gentoo.diff,
+  -files/commands.weatherng.conf, -files/confd, -files/rc-addon.sh,
+  -vdr-weatherng-0.0.5.ebuild, -vdr-weatherng-0.0.8_pre2.ebuild,
+  vdr-weatherng-0.0.8_pre3.ebuild:
+  clean up; fixed Homepage, stabel on x86
+
+  19 Sep 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-weatherng-0.0.8_pre3-i18n-fix.diff,
+  vdr-weatherng-0.0.8_pre3.ebuild:
+  added patch to remove unused i18n translation, this will fix compile probs
+  on vdr-1.5.8
+
+  07 Jul 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  files/vdr-weatherng-0.0.8_pre3-gentoo.diff:
+  Fixed DownLoad URL for german weather preview pics
+
+  12 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-weatherng-0.0.8_pre3.ebuild:
+  Added missing inherit eutils.
+
+  17 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
+  files/rc-addon-0.0.8.sh, files/rc-addon.sh:
+  Removed bash specific stuff.
+
+  05 Apr 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-weatherng-0.0.8_pre3.ebuild:
+  Bug #173267 fixed; Thx to P.Bossy for reporting this
+
+  01 Apr 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-weatherng-0.0.8_pre3.ebuild:
+  added block if needed imlib2 is compiled without jpeg gif support
+
+  05 Jan 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-weatherng-0.0.5.ebuild, vdr-weatherng-0.0.8_pre2.ebuild,
+  vdr-weatherng-0.0.8_pre3.ebuild:
+  einfo converted to elog
+
+*vdr-weatherng-0.0.8_pre3 (07 Nov 2006)
+
+  07 Nov 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-weatherng-0.0.8_pre3-dxr3.diff,
+  +files/vdr-weatherng-0.0.8_pre3-gentoo.diff,
+  +files/vdr-weatherng-0.0.8_pre3-timeout.diff,
+  +vdr-weatherng-0.0.8_pre3.ebuild:
+  version bump
+
+  25 Oct 2006; Joerg Bornkessel <hd_brummy@gentoo.org> files/confd-0.0.8,
+  files/vdr-weatherng-0.0.8_pre2-gentoo.diff:
+  fixed URL to find out regional weather ID, addapted to actuell
+  gentoo-vdr-scripts, fixed DL URL for german weather preview pics
+
+  15 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Assigned to Gentoo VDR Project.
+
+  14 May 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-weatherng-0.0.8_pre2.ebuild:
+  typo fixed
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-vdr-weatherng-0.0.5, files/digest-vdr-weatherng-0.0.8_pre2,
+  Manifest:
+  Fixing SHA256 digest, pass four
+
+  17 Apr 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-weatherng-0.0.8_pre2.ebuild:
+  Marked stable on x86
+
+  21 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-weatherng-0.0.8_pre2.ebuild:
+  depend imlib2 added
+
+  19 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org> files/confd-0.0.8,
+  files/vdr-weatherng-0.0.8_pre2-gentoo.diff:
+  added new diff Version; Changed Info in confd for better useability
+
+*vdr-weatherng-0.0.8_pre2 (18 Mar 2006)
+
+  18 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org> +files/confd-0.0.8,
+  +files/vdr-weatherng-0.0.8_pre2-gentoo.diff, +files/rc-addon-0.0.8.sh,
+  +vdr-weatherng-0.0.8_pre2.ebuild:
+  version bump
+
+*vdr-weatherng-0.0.5 (07 Mar 2006)
+
+  07 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-weatherng-0.0.5.diff, +files/commands.weatherng.conf,
+  +files/confd, +files/rc-addon.sh, +metadata.xml,
+  +vdr-weatherng-0.0.5.ebuild:
+  imported ebuild from gentoo.de CVS
+

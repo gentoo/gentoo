@@ -1,0 +1,64 @@
+# ChangeLog for dev-vcs/git-bz
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git-bz/ChangeLog,v 1.14 2015/04/08 17:53:03 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> git-bz-0.12.12.15.ebuild,
+  git-bz-9999.ebuild:
+  Drop old Python implementations
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> git-bz-0.12.04.26.ebuild,
+  git-bz-0.12.12.15.ebuild, git-bz-9999.ebuild:
+  Replace obsolete mirror://bitbucket with the real URI.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> git-bz-0.12.12.15.ebuild,
+  git-bz-9999.ebuild:
+  Add support for the new PyPy slotting.
+
+  11 Mar 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #239126
+
+  03 Dec 2013; Michał Górny <mgorny@gentoo.org> git-bz-9999.ebuild:
+  Remove my repository from EGIT_REPO_URI since it is not up-to-date.
+
+  15 Oct 2013; Michał Górny <mgorny@gentoo.org> git-bz-9999.ebuild:
+  Switch to git-r3 and python-single-r1. Update to use new configure & Makefile.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> git-bz-0.12.12.15.ebuild,
+  git-bz-9999.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  07 Aug 2013; Michał Górny <mgorny@gentoo.org> git-bz-0.12.12.15.ebuild,
+  git-bz-9999.ebuild:
+  Drop removed Python implementations from PYTHON_COMPAT.
+
+  07 Aug 2013; Michał Górny <mgorny@gentoo.org> git-bz-0.12.12.15.ebuild,
+  git-bz-9999.ebuild:
+  Enable pypy2.0.
+
+  17 Dec 2012; Michał Górny <mgorny@gentoo.org> git-bz-0.12.12.15.ebuild,
+  git-bz-9999.ebuild:
+  Bump to EAPI=5 to make Paludis happy, bug #447524.
+
+*git-bz-0.12.12.15 (15 Dec 2012)
+
+  15 Dec 2012; Michał Górny <mgorny@gentoo.org> +git-bz-0.12.12.15.ebuild,
+  git-bz-9999.ebuild:
+  Add a new snapshot. Migrate to python-r1.
+
+*git-bz-9999 (15 Dec 2012)
+
+  15 Dec 2012; Michał Górny <mgorny@gentoo.org> +git-bz-9999.ebuild:
+  Import the live ebuild.
+
+*git-bz-0.12.04.26 (26 Apr 2012)
+
+  26 Apr 2012; Michał Górny <mgorny@gentoo.org> -git-bz-0_p110920.ebuild,
+  +git-bz-0.12.04.26.ebuild:
+  Bump the snapshot.
+
+*git-bz-0_p110920 (20 Sep 2011)
+
+  20 Sep 2011; Michał Górny <mgorny@gentoo.org> +git-bz-0_p110920.ebuild,
+  +metadata.xml:
+  Introduce an ebuild for git-bz snapshot. git-bz is a Bugzilla integration
+  subcommand for git.

@@ -1,0 +1,47 @@
+# ChangeLog for dev-perl/Net-OpenID-Consumer
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-OpenID-Consumer/ChangeLog,v 1.9 2014/08/26 19:34:33 axs Exp $
+
+*Net-OpenID-Consumer-1.30.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Net-OpenID-Consumer-1.30.0-r1.ebuild, -Net-OpenID-Consumer-1.30.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  09 Oct 2011; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove tove from metadata.xml
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -Net-OpenID-Consumer-1.03.ebuild:
+  Cleanup
+
+*Net-OpenID-Consumer-1.30.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Net-OpenID-Consumer-1.30.0.ebuild:
+  Change version scheme
+
+  30 Dec 2008; Torsten Veller <tove@gentoo.org>
+  -Net-OpenID-Consumer-0.14.ebuild, -Net-OpenID-Consumer-1.02.ebuild:
+  Cleanup
+
+*Net-OpenID-Consumer-1.03 (08 Dec 2008)
+
+  08 Dec 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +Net-OpenID-Consumer-1.03.ebuild:
+  Version bump.
+
+*Net-OpenID-Consumer-1.02 (22 Oct 2008)
+
+  22 Oct 2008; Torsten Veller <tove@gentoo.org>
+  +Net-OpenID-Consumer-1.02.ebuild:
+  Version bump
+
+*Net-OpenID-Consumer-0.14 (02 Aug 2008)
+
+  02 Aug 2008; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +Net-OpenID-Consumer-0.14.ebuild:
+  Initial commit

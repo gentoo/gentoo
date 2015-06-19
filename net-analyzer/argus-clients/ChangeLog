@@ -1,0 +1,378 @@
+# ChangeLog for net-analyzer/argus-clients
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/argus-clients/ChangeLog,v 1.74 2015/05/09 07:41:51 jer Exp $
+
+  09 May 2015; Jeroen Roovers <jer@gentoo.org> -argus-clients-3.0.6.2.ebuild:
+  Old.
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> argus-clients-3.0.8.ebuild:
+  Stable for x86, wrt bug #535520
+
+  17 Jan 2015; Agostino Sarubbo <ago@gentoo.org> argus-clients-3.0.8.ebuild:
+  Stable for ppc, wrt bug #535520
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> argus-clients-3.0.8.ebuild:
+  Stable for amd64, wrt bug #535520
+
+*argus-clients-3.0.8 (12 Oct 2014)
+
+  12 Oct 2014; Jeroen Roovers <jer@gentoo.org> -argus-clients-3.0.8_rc6.ebuild,
+  +argus-clients-3.0.8.ebuild:
+  Version bump.
+
+*argus-clients-3.0.8_rc6 (10 Jul 2014)
+
+  10 Jul 2014; Jeroen Roovers <jer@gentoo.org> -argus-clients-3.0.7.33.ebuild,
+  -argus-clients-3.0.7.34.ebuild, +argus-clients-3.0.8_rc6.ebuild,
+  -files/argus-clients-3.0.7.18-sasl.patch:
+  Version bump.
+
+*argus-clients-3.0.7.34 (14 Jun 2014)
+
+  14 Jun 2014; Jeroen Roovers <jer@gentoo.org> -argus-clients-3.0.7.31.ebuild,
+  +argus-clients-3.0.7.34.ebuild:
+  Version bump.
+
+*argus-clients-3.0.7.33 (12 Jun 2014)
+
+  12 Jun 2014; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.7.33.ebuild,
+  -argus-clients-3.0.7.29.ebuild:
+  Version bump.
+
+*argus-clients-3.0.7.31 (05 Jun 2014)
+
+  05 Jun 2014; Jeroen Roovers <jer@gentoo.org> -argus-clients-3.0.7.28.ebuild,
+  +argus-clients-3.0.7.31.ebuild:
+  Version bump.
+
+*argus-clients-3.0.7.29 (27 May 2014)
+
+  27 May 2014; Jeroen Roovers <jer@gentoo.org> -argus-clients-3.0.7.27.ebuild,
+  +argus-clients-3.0.7.29.ebuild:
+  Version bump.
+
+*argus-clients-3.0.7.28 (21 May 2014)
+
+  21 May 2014; Jeroen Roovers <jer@gentoo.org> -argus-clients-3.0.7.21.ebuild,
+  -argus-clients-3.0.7.26.ebuild, +argus-clients-3.0.7.28.ebuild:
+  Version bump.
+
+*argus-clients-3.0.7.27 (18 May 2014)
+
+  18 May 2014; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.7.27.ebuild:
+  Version bump.
+
+*argus-clients-3.0.7.26 (03 May 2014)
+
+  03 May 2014; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.7.26.ebuild:
+  Version bump.
+
+*argus-clients-3.0.7.21 (05 Mar 2014)
+
+  05 Mar 2014; Jeroen Roovers <jer@gentoo.org> -argus-clients-3.0.7.5.ebuild,
+  -argus-clients-3.0.7.9.ebuild, -argus-clients-3.0.7.10.ebuild,
+  -argus-clients-3.0.7.11.ebuild, -argus-clients-3.0.7.12.ebuild,
+  -argus-clients-3.0.7.18.ebuild, +argus-clients-3.0.7.21.ebuild,
+  -files/argus-clients-3.0.7.4-overflow.patch,
+  +files/argus-clients-3.0.7.21-curses-readline.patch:
+  Version bump.
+
+  07 Dec 2013; Jeroen Roovers <jer@gentoo.org> argus-clients-3.0.7.18.ebuild,
+  +files/argus-clients-3.0.7.18-sasl.patch:
+  Fix building with USE=sasl. Add zlib dep.
+
+*argus-clients-3.0.7.18 (06 Dec 2013)
+
+  06 Dec 2013; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.7.18.ebuild:
+  Version bump.
+
+  17 Aug 2013; Jeroen Roovers <jer@gentoo.org>
+  -files/argus-clients-3.0.7.12-strncasecmp.patch,
+  argus-clients-3.0.7.12.ebuild:
+  Drop bad patch.
+
+*argus-clients-3.0.7.12 (17 Aug 2013)
+
+  17 Aug 2013; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.7.12.ebuild,
+  +files/argus-clients-3.0.7.12-strncasecmp.patch:
+  Version bump.
+
+*argus-clients-3.0.7.11 (11 Jul 2013)
+
+  11 Jul 2013; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.7.11.ebuild:
+  Version bump.
+
+*argus-clients-3.0.7.10 (03 Jul 2013)
+
+  03 Jul 2013; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.7.10.ebuild:
+  Version bump.
+
+*argus-clients-3.0.7.9 (03 Jul 2013)
+
+  03 Jul 2013; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.7.9.ebuild:
+  Version bump.
+
+*argus-clients-3.0.7.5 (20 Feb 2013)
+
+  20 Feb 2013; Jeroen Roovers <jer@gentoo.org>
+  -argus-clients-3.0.7.4-r1.ebuild, +argus-clients-3.0.7.5.ebuild:
+  Version bump.
+
+*argus-clients-3.0.7.4-r1 (03 Jan 2013)
+
+  03 Jan 2013; Jeroen Roovers <jer@gentoo.org> argus-clients-3.0.6.2.ebuild,
+  -argus-clients-3.0.7.3.ebuild, -argus-clients-3.0.7.4.ebuild,
+  +argus-clients-3.0.7.4-r1.ebuild,
+  +files/argus-clients-3.0.7.4-overflow.patch:
+  Fix buffer overflow (bug #449868). Set correct license.
+
+*argus-clients-3.0.7.4 (10 Dec 2012)
+
+  10 Dec 2012; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.7.4.ebuild:
+  Version bump.
+
+*argus-clients-3.0.7.3 (15 Oct 2012)
+
+  15 Oct 2012; Jeroen Roovers <jer@gentoo.org> -argus-clients-3.0.3.8.ebuild,
+  -argus-clients-3.0.4.1-r1.ebuild, -argus-clients-3.0.4.1-r2.ebuild,
+  -argus-clients-3.0.6.ebuild, -argus-clients-3.0.6.1.ebuild,
+  -argus-clients-3.0.7.1.ebuild, +argus-clients-3.0.7.3.ebuild:
+  Version bump.
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  argus-clients-3.0.6.2.ebuild:
+  x86 stable wrt bug #434030
+
+  08 Sep 2012; Agostino Sarubbo <ago@gentoo.org> argus-clients-3.0.6.2.ebuild:
+  Stable for amd64, wrt bug #434030
+
+  07 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  argus-clients-3.0.6.2.ebuild:
+  Stable ppc, bug #434030
+
+*argus-clients-3.0.7.1 (22 Aug 2012)
+
+  22 Aug 2012; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.7.1.ebuild:
+  Version bump.
+
+  04 Jul 2012; Jeff Horelick <jdhore@gentoo.org> argus-clients-3.0.6.1.ebuild:
+  marked x86 per bug 422135
+
+  20 Jun 2012; Agostino Sarubbo <ago@gentoo.org> argus-clients-3.0.6.1.ebuild:
+  Stable for amd64, wrt bug #422135
+
+*argus-clients-3.0.6.2 (19 Jun 2012)
+
+  19 Jun 2012; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.6.2.ebuild:
+  Version bump.
+
+  11 Jun 2012; Michael Weber <xmw@gentoo.org> argus-clients-3.0.4.1-r1.ebuild:
+  ppc stable (bug 369587)
+
+  09 May 2012; Jeroen Roovers <jer@gentoo.org> argus-clients-3.0.6.1.ebuild,
+  metadata.xml:
+  Add missing dependencies. Bring back sasl support. Make flow-tools dependency
+  explicit and optional. Remove RDEPEND on net-analyzer/argus as it is not
+  required at run time (could be a remote server).
+
+  09 May 2012; Jeroen Roovers <jer@gentoo.org> -argus-clients-3.0.5.38.ebuild:
+  Old.
+
+*argus-clients-3.0.6.1 (09 May 2012)
+
+  09 May 2012; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.6.1.ebuild:
+  Version bump.
+
+*argus-clients-3.0.6 (17 Apr 2012)
+
+  17 Apr 2012; Jeroen Roovers <jer@gentoo.org> -argus-clients-3.0.5.34.ebuild,
+  -argus-clients-3.0.5.35.ebuild, +argus-clients-3.0.6.ebuild:
+  Version bump.
+
+*argus-clients-3.0.5.38 (04 Apr 2012)
+
+  04 Apr 2012; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.5.38.ebuild:
+  Version bump.
+
+*argus-clients-3.0.5.35 (13 Mar 2012)
+
+  13 Mar 2012; Jeroen Roovers <jer@gentoo.org> -argus-clients-3.0.5.31.ebuild,
+  -argus-clients-3.0.5.33.ebuild, +argus-clients-3.0.5.35.ebuild:
+  Version bump.
+
+*argus-clients-3.0.5.34 (29 Feb 2012)
+
+  29 Feb 2012; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.5.34.ebuild:
+  Version bump.
+
+*argus-clients-3.0.5.33 (22 Feb 2012)
+
+  22 Feb 2012; Jeroen Roovers <jer@gentoo.org> -argus-clients-3.0.5.27.ebuild,
+  -argus-clients-3.0.5.29.ebuild, +argus-clients-3.0.5.33.ebuild:
+  Version bump.
+
+*argus-clients-3.0.5.31 (07 Feb 2012)
+
+  07 Feb 2012; Jeroen Roovers <jer@gentoo.org> -argus-clients-3.0.5.16.ebuild,
+  -argus-clients-3.0.5.18.ebuild, -argus-clients-3.0.5.19.ebuild,
+  -argus-clients-3.0.5.21.ebuild, -argus-clients-3.0.5.24.ebuild,
+  -argus-clients-3.0.5.26.ebuild, +argus-clients-3.0.5.31.ebuild:
+  Version bump.
+
+*argus-clients-3.0.5.29 (23 Jan 2012)
+
+  23 Jan 2012; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.5.29.ebuild:
+  Version bump.
+
+*argus-clients-3.0.5.27 (11 Jan 2012)
+
+  11 Jan 2012; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.5.27.ebuild:
+  Version bump.
+
+*argus-clients-3.0.5.26 (16 Dec 2011)
+
+  16 Dec 2011; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.5.26.ebuild:
+  Version bump.
+
+*argus-clients-3.0.5.24 (15 Nov 2011)
+
+  15 Nov 2011; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.5.24.ebuild:
+  Version bump.
+
+*argus-clients-3.0.5.21 (10 Oct 2011)
+
+  10 Oct 2011; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.5.21.ebuild:
+  Version bump.
+
+*argus-clients-3.0.5.19 (30 Aug 2011)
+
+  30 Aug 2011; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.5.19.ebuild:
+  Version bump.
+
+*argus-clients-3.0.5.18 (01 Aug 2011)
+
+  01 Aug 2011; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.5.18.ebuild:
+  Version bump.
+
+*argus-clients-3.0.4.1-r2 (06 Jul 2011)
+
+  06 Jul 2011; Jeroen Roovers <jer@gentoo.org>
+  +argus-clients-3.0.4.1-r2.ebuild, -argus-clients-3.0.5.6.ebuild,
+  -argus-clients-3.0.5.11.ebuild, -argus-clients-3.0.5.14.ebuild,
+  argus-clients-3.0.5.16.ebuild:
+  Respect CFLAGS (again, bug #369607).
+
+*argus-clients-3.0.5.16 (06 Jul 2011)
+
+  06 Jul 2011; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.5.16.ebuild:
+  Version bump.
+
+*argus-clients-3.0.5.14 (17 Jun 2011)
+
+  17 Jun 2011; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.5.14.ebuild:
+  Version bump.
+
+  08 Jun 2011; Markos Chandras <hwoarang@gentoo.org>
+  argus-clients-3.0.4.1-r1.ebuild:
+  Stable on amd64 wrt bug #369587
+
+  04 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  argus-clients-3.0.4.1-r1.ebuild:
+  x86 stable wrt bug #369587
+
+  01 Jun 2011; Jeroen Roovers <jer@gentoo.org> argus-clients-3.0.4.1-r1.ebuild,
+  argus-clients-3.0.5.6.ebuild, argus-clients-3.0.5.11.ebuild:
+  Add missing sys-libs/ncurses dependency.
+
+*argus-clients-3.0.5.11 (01 Jun 2011)
+
+  01 Jun 2011; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.5.11.ebuild:
+  Version bump.
+
+*argus-clients-3.0.4.1-r1 (01 Jun 2011)
+
+  01 Jun 2011; Jeroen Roovers <jer@gentoo.org> -argus-clients-3.0.4.1.ebuild,
+  +argus-clients-3.0.4.1-r1.ebuild:
+  Install radium thanks to Martin Buerger (bug #352166).
+
+*argus-clients-3.0.5.6 (19 Apr 2011)
+*argus-clients-3.0.4.1 (19 Apr 2011)
+
+  19 Apr 2011; Jeroen Roovers <jer@gentoo.org> +argus-clients-3.0.4.1.ebuild,
+  +files/argus-clients-3.0.4.1-disable-tcp-wrappers-automagic.patch,
+  +argus-clients-3.0.5.6.ebuild:
+  Version bumps thanks to euscan. Make tcp-wrappers support optional.
+
+  10 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  argus-clients-3.0.3.8.ebuild:
+  Stable on amd64 wrt bug #323577
+
+  10 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  argus-clients-3.0.3.8.ebuild:
+  Remove useless eautomake call. Thanks to Samuli for pointing this out
+
+  10 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  argus-clients-3.0.3.8.ebuild:
+  Respect CFLAGS,LDFLAGS. Bug #331871. Thanks to Diego E. 'Flameeyes'
+  Pettenò <flameeyes@gentoo.org> for reporting
+
+  18 Jul 2010; <nixnut@gentoo.org> argus-clients-3.0.3.8.ebuild:
+  ppc stable #323577
+
+  16 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  argus-clients-3.0.3.8.ebuild:
+  stable x86, bug 323577
+
+  31 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  argus-clients-3.0.2.ebuild:
+  x86 stable wrt bug #318619
+
+*argus-clients-3.0.3.8 (06 May 2010)
+
+  06 May 2010; Peter Volkov <pva@gentoo.org> +argus-clients-3.0.3.8.ebuild:
+  Version bump.
+
+  02 May 2010; Peter Volkov <pva@gentoo.org> +argus-clients-3.0.3.7.ebuild:
+  Version bump.
+
+*argus-clients-3.0.3.7 (02 May 2010)
+
+  02 May 2010; Peter Volkov <pva@gentoo.org> +argus-clients-3.0.3.7.ebuild:
+  Version bump.
+
+*argus-clients-3.0.2 (30 Nov 2009)
+
+  30 Nov 2009; Peter Volkov <pva@gentoo.org> +argus-clients-3.0.2.ebuild:
+  Version bump, fixes bug #247955 thank Diego E. 'Flameeyes' Pettenò for
+  report.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org>
+  argus-clients-2.0.6-r1.ebuild:
+  Remove virtual/libc
+
+  31 Mar 2007; Marcelo Goes <vanquirius@gentoo.org>
+  -argus-clients-2.0.6.ebuild, argus-clients-2.0.6-r1.ebuild:
+  Remove old ebuild, add net-analyzer/rrdtool as a runtime dependency, as it
+  is needed by ragraph.
+
+*argus-clients-2.0.6-r1 (15 Feb 2007)
+
+  15 Feb 2007; Markus Ullmann <jokey@gentoo.org>
+  +files/argus-clients-2.0.6-netmask.patch, +argus-clients-2.0.6-r1.ebuild:
+  Add patch from bug #143290 thanks to Joshua Schmidkofer
+
+  15 Feb 2006; Markus Ullmann <jokey@gentoo.org> argus-clients-2.0.6.ebuild:
+  Removing virtual/libpcap wrt bug #117898
+
+  30 Jan 2006; Simon Stelling <blubb@gentoo.org> argus-clients-2.0.6.ebuild:
+  added ~amd64 keyword
+
+  14 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  argus-clients-2.0.6.ebuild:
+  added to ~ppc, bug #112157
+
+*argus-clients-2.0.6 (08 Jan 2006)
+
+  08 Jan 2006; Marcelo Goes <vanquirius@gentoo.org> +metadata.xml,
+  +argus-clients-2.0.6.ebuild:
+  Initial commit. Fixes bug 112157. Thanks to aqu <aqu3l at go2 dot pl>.

@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/www-servers/skunkweb/files/skunkweb-init,v 1.1 2004/11/07 11:35:06 satya Exp $
+
+DAEMON_CMD=/usr/bin/swmgr
+opts="${opts} configtest"
+
+configtest() {
+	${DAEMON_CMD} configtest
+}
+start() {
+	ebegin "Starting skunkweb"
+	${DAEMON_CMD} start > /dev/null 2>&1
+	eend $?
+}
+stop() {
+	ebegin "Stopping skunkweb"
+	${DAEMON_CMD} stop > /dev/null 2>&1
+	eend $?
+}

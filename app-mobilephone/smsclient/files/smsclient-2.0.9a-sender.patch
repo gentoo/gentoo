@@ -1,0 +1,139 @@
+diff -Nru smsclient-2.0.9a.orig/Changelog smsclient-2.0.9a/Changelog
+--- smsclient-2.0.9a.orig/Changelog	2007-02-03 08:43:40.000000000 +0200
++++ smsclient-2.0.9a/Changelog	2007-02-03 08:43:12.000000000 +0200
+@@ -1,3 +1,7 @@
++2007-02-02 12:00  Andreas Bollhalder <bolle@geodb.org>
++
++	* Added SMS_sender_number to UCP driver
++
+ 2002-03-26 14:00  Koenraad Heijlen <vipie@ulyssis.org>
+ 	
+ 	RELEASED as 2.0.9a
+diff -Nru smsclient-2.0.9a.orig/sms/services/d2 smsclient-2.0.9a/sms/services/d2
+--- smsclient-2.0.9a.orig/sms/services/d2	2002-03-07 00:04:51.000000000 +0200
++++ smsclient-2.0.9a/sms/services/d2	2007-02-03 08:44:55.000000000 +0200
+@@ -14,6 +14,12 @@
+ 	SMS_centre_number = "01722278020"  # D2 SMSC Number
+ 
+ 	# +49 must be added for dialing from outside germany
++
++    # ------------------------------------------------------------
++    # Your sender number.
++    # ------------------------------------------------------------
++
++    # SMS_sender_number = "1234567890"
+ }
+ 
+ # --------------------------------------------------------------------
+diff -Nru smsclient-2.0.9a.orig/sms/services/kpntext smsclient-2.0.9a/sms/services/kpntext
+--- smsclient-2.0.9a.orig/sms/services/kpntext	2007-02-03 08:43:40.000000000 +0200
++++ smsclient-2.0.9a/sms/services/kpntext	2007-02-03 08:43:12.000000000 +0200
+@@ -16,6 +16,12 @@
+ 
+         SMS_centre_number = "0665181802"  # PTT/KPN Telcom service
+                                           # centre number
++
++        # ------------------------------------------------------------
++        # Your sender number.
++        # ------------------------------------------------------------
++
++        # SMS_sender_number = "1234567890"
+ }
+ 
+ # --------------------------------------------------------------------
+diff -Nru smsclient-2.0.9a.orig/sms/services/kpnucp smsclient-2.0.9a/sms/services/kpnucp
+--- smsclient-2.0.9a.orig/sms/services/kpnucp	2007-02-03 08:43:40.000000000 +0200
++++ smsclient-2.0.9a/sms/services/kpnucp	2007-02-03 08:43:12.000000000 +0200
+@@ -16,6 +16,12 @@
+ 
+         SMS_centre_number = "0653141414"  # PTT/KPN Telcom service
+                                           # centre number
++
++        # ------------------------------------------------------------
++        # Your sender number.
++        # ------------------------------------------------------------
++
++        # SMS_sender_number = "1234567890"
+ }
+ 
+ # --------------------------------------------------------------------
+diff -Nru smsclient-2.0.9a.orig/sms/services/swisscom smsclient-2.0.9a/sms/services/swisscom
+--- smsclient-2.0.9a.orig/sms/services/swisscom	2007-02-03 08:43:40.000000000 +0200
++++ smsclient-2.0.9a/sms/services/swisscom	2007-02-03 08:43:12.000000000 +0200
+@@ -13,6 +13,12 @@
+ 
+ 	  SMS_centre_number = "0794998990"  # SWISSCOM SMSC Number (Analog V.34)
+ 	# SMS_centre_number = "0900900941"  # SWISSCOM SMSC Number (ISDN V.120)
++
++    # ------------------------------------------------------------
++    # Your sender number.
++    # ------------------------------------------------------------
++
++    # SMS_sender_number = "1234567890"
+ }
+ 
+ # --------------------------------------------------------------------
+diff -Nru smsclient-2.0.9a.orig/sms/services/telenor smsclient-2.0.9a/sms/services/telenor
+--- smsclient-2.0.9a.orig/sms/services/telenor	2007-02-03 08:43:40.000000000 +0200
++++ smsclient-2.0.9a/sms/services/telenor	2007-02-03 08:43:12.000000000 +0200
+@@ -13,6 +13,12 @@
+ 
+ 	SMS_centre_number =  "90002198"  # TELENOR SMSC Number
+ 	                                 # From Inside Norway
++
++    # ------------------------------------------------------------
++    # Your sender number.
++    # ------------------------------------------------------------
++
++    # SMS_sender_number = "1234567890"
+ }
+ 
+ # --------------------------------------------------------------------
+diff -Nru smsclient-2.0.9a.orig/sms/services/telia smsclient-2.0.9a/sms/services/telia
+--- smsclient-2.0.9a.orig/sms/services/telia	2007-02-03 08:43:40.000000000 +0200
++++ smsclient-2.0.9a/sms/services/telia	2007-02-03 08:43:12.000000000 +0200
+@@ -16,6 +16,12 @@
+ 	# ------------------------------------------------------------
+ 	# +46 must be added for dialing from outside Sweden
+ 	# ------------------------------------------------------------
++
++    # ------------------------------------------------------------
++    # Your sender number.
++    # ------------------------------------------------------------
++
++    # SMS_sender_number = "1234567890"
+ }
+ 
+ #  --------------------------------------------------------------------
+diff -Nru smsclient-2.0.9a.orig/src/driver/ucp.c smsclient-2.0.9a/src/driver/ucp.c
+--- smsclient-2.0.9a.orig/src/driver/ucp.c	2007-02-03 08:43:40.000000000 +0200
++++ smsclient-2.0.9a/src/driver/ucp.c	2007-02-03 08:43:12.000000000 +0200
+@@ -184,6 +184,8 @@
+         /* Place any extended driver    */
+         /* variables here               */
+ 
++        char *szSenderNumber;
++
+ } driver_env;
+ 
+ /* -------------------------------------------------------------------- */
+@@ -197,6 +199,7 @@
+     { RESOURCE_NUMERIC, "SMS_timeout",              0, 0, NULL, 0,  NULL,       10,   &(driver_env.def.timeout)             },
+     { RESOURCE_NUMERIC, "SMS_write_timeout",        0, 0, NULL, 0,  NULL,       10,   &(driver_env.def.write_timeout)       },
+     { RESOURCE_NUMERIC, "SMS_max_deliver",          0, 0, NULL, 0,  NULL,       1,    &(driver_env.def.max_deliver)         },
++    { RESOURCE_STRING,  "SMS_sender_number",        0, 1, NULL, 0,    "",       0,    &(driver_env.szSenderNumber)          },
+     { RESOURCE_NULL,     NULL,                      0, 1, NULL, 0,  NULL,       0,    NULL                                  }
+   };
+ 
+@@ -248,9 +251,9 @@
+ 
+ 
+                             /* data:  AdC/OAdc/OAC/MT/..   */
+-                            /*    ->  recipient///3/...    */
++                            /*    ->  recipient/sender//3/...    */
+ 
+-   nc = sprintf(msgData, "%s///%1.1d/", msisdn, msgType);
++   nc = sprintf(msgData, "%s/%s//%1.1d/", msisdn, driver_env.szSenderNumber, msgType);
+ 
+                             /* ... additional parameters depending on MT */
+                             /* For MT=3 (alphanumeric) this is hex coded */

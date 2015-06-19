@@ -1,0 +1,29 @@
+--- a/content/media/webm/WebMReader.cpp	2014-10-20 21:59:39.000000000 -0400
++++ b/content/media/webm/WebMReader.cpp	2014-10-28 09:06:51.959665416 -0400
+@@ -668,7 +668,15 @@
+           return true;
+         }
+         int32_t keepFrames = frames - skipFrames;
++        if (keepFrames < 0) {
++          NS_WARNING("Int overflow in keepFrames");
++          return false;
++	}
+         int samples = keepFrames * channels;
++	if (samples < 0) {
++          NS_WARNING("Int overflow in samples");
++          return false;
++	}
+         nsAutoArrayPtr<AudioDataValue> trimBuffer(new AudioDataValue[samples]);
+         for (int i = 0; i < samples; i++)
+           trimBuffer[i] = buffer[skipFrames*channels + i];
+@@ -691,6 +699,10 @@
+         int32_t keepFrames = frames - discardFrames.value();
+         if (keepFrames > 0) {
+           int samples = keepFrames * channels;
++          if (samples < 0) {
++            NS_WARNING("Int overflow in samples");
++            return false;
++          }
+           nsAutoArrayPtr<AudioDataValue> trimBuffer(new AudioDataValue[samples]);
+           for (int i = 0; i < samples; i++)
+             trimBuffer[i] = buffer[i];

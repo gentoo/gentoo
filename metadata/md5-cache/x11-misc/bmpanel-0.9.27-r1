@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=>=media-libs/imlib2-1.4.0[X] media-libs/freetype:2 x11-libs/libX11 x11-libs/libXrender x11-libs/libXcomposite x11-libs/libXfixes media-libs/fontconfig libev? ( dev-libs/libev ) libevent? ( dev-libs/libevent ) virtual/pkgconfig
+DESCRIPTION=a lightweight, NETWM compliant panel for X11 Window System
+EAPI=2
+HOMEPAGE=http://nsf.110mb.com/bmpanel
+IUSE=debug libev libevent
+KEYWORDS=amd64 ~ppc ~x86
+LICENSE=ZLIB
+RDEPEND=>=media-libs/imlib2-1.4.0[X] media-libs/freetype:2 x11-libs/libX11 x11-libs/libXrender x11-libs/libXcomposite x11-libs/libXfixes media-libs/fontconfig libev? ( dev-libs/libev ) libevent? ( dev-libs/libevent )
+SLOT=0
+SRC_URI=http://nsf.110mb.com/bmpanel/bmpanel-0.9.27.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=2b909a7c265818bab6c296097234ea6d

@@ -1,0 +1,158 @@
+# ChangeLog for net-voip/yate
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-voip/yate/ChangeLog,v 1.35 2015/02/13 14:30:20 zerochaos Exp $
+
+  13 Feb 2015; Rick Farina <zerochaos@gentoo.org> yate-5.4.0.ebuild,
+  yate-9999.ebuild:
+  update 9999, and add sub slots on version
+
+  28 Jan 2015; Michał Górny <mgorny@gentoo.org> yate-5.4.0.ebuild,
+  yate-9999.ebuild:
+  Switch to CPU_FLAGS_X86.
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org> yate-5.4.0.ebuild,
+  yate-9999.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org> yate-5.4.0.ebuild,
+  yate-9999.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+  27 Jul 2014; Rick Farina <zerochaos@gentoo.org> yate-5.4.0.ebuild,
+  yate-9999.ebuild:
+  adding ~arm
+
+*yate-5.4.0 (25 Jul 2014)
+
+  25 Jul 2014; Rick Farina <zerochaos@gentoo.org> +yate-5.4.0.ebuild,
+  -yate-5.3.0.ebuild:
+  version bump
+
+*yate-5.3.0 (25 Jul 2014)
+
+  25 Jul 2014; Rick Farina <zerochaos@gentoo.org>
+  +files/dont-mess-with-cflags.patch, +yate-5.3.0.ebuild,
+  -files/yate-2.0.0-as-needed.patch, -files/yate-2.0.0-cxxflags.patch,
+  -files/yate-2.0.0-ilbc-alsa-oss.patch, -files/yate-2.0.0-spandsp.patch,
+  -files/yate-4.3.0-ilbc-alsa-oss.patch, yate-9999.ebuild:
+  ebuild cleanup, QA warnings fix, adding stable version
+
+  28 Apr 2014; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove unneeded useflag description from metadata.xml
+
+  28 Apr 2014; Jason A. Donenfeld <zx2c4@gentoo.org> yate-9999.ebuild:
+  We dont need libusb.
+
+  28 Apr 2014; Jason A. Donenfeld <zx2c4@gentoo.org> yate-9999.ebuild:
+  Fix description
+
+*yate-9999 (28 Apr 2014)
+
+  28 Apr 2014; Jason A. Donenfeld <zx2c4@gentoo.org> +yate-9999.ebuild,
+  -yate-4.3.0.1.ebuild, metadata.xml:
+  I'll maintain the live ebuild, but I'm purging old security filled versions.
+
+  15 Dec 2013; Dion Moult <moult@gentoo.org> -yate-2.0.0.ebuild:
+  <=net-voip/yate-2.0.0 removal (pending 11 July 2013), see #290062 and #290063
+  for reference.
+
+  27 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due voip herd removal:
+  http://article.gmane.org/gmane.linux.gentoo.devel/88434
+
+  23 Jul 2013; Michael Palimaka <kensington@gentoo.org> yate-2.0.0.ebuild,
+  yate-4.3.0.1.ebuild:
+  Fix Qt dependencies.
+
+  16 Jul 2013; Patrick Lauer <patrick@gentoo.org> yate-2.0.0.ebuild,
+  yate-4.3.0.1.ebuild:
+  Fixing qtgui deps for qt-4.8.5
+
+  19 Jun 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  yate-4.3.0.1.ebuild:
+  Add comment about parallel compile issue, bug #312407. Remove some unnecessary
+  die calls.
+
+  19 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> yate-4.3.0.1.ebuild:
+  Fix desktop file, wrt bug #463442. Thanks to Andreis Vinogradovs for
+  discovering this issue
+
+*yate-4.3.0.1 (18 Jun 2013)
+
+  18 Jun 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/yate-4.3.0-ilbc-alsa-oss.patch, +yate-4.3.0.1.ebuild, metadata.xml:
+  Version bump, bug 291600.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> yate-2.0.0.ebuild:
+  Move Qt dependencies to the new category
+
+  16 Dec 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due retirement, #260683
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> yate-2.0.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  25 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Set herd as primary maintainer as talked with volkmar.
+
+  02 Mar 2011; Michael Sterrett <mr_bones_@gentoo.org> yate-2.0.0.ebuild,
+  metadata.xml:
+  remove zaptel support since zaptel is gone from the portage tree
+
+  17 Jun 2010; Patrick Lauer <patrick@gentoo.org> yate-2.0.0.ebuild:
+  Migrating away from deprecated postgres virtuals
+
+  23 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> yate-2.0.0.ebuild,
+  metadata.xml:
+  Remove amrnb support wrt #290011.
+
+  02 Nov 2009; Mounir Lamouri <volkmar@gentoo.org>
+  -files/yate-0.9.0-gtk2.diff, -yate-1.2.0.ebuild, -yate-1.3.0.ebuild,
+  -files/yate-1.3.0-makefiles.patch, -files/yate-1.3.0-resolv.patch:
+  Removing old ebuilds and patches.
+
+*yate-2.0.0 (30 Jul 2009)
+
+  30 Jul 2009; Mounir Lamouri <volkmar@gentoo.org>
+  +files/yate-2.0.0-as-needed.patch, +files/yate-2.0.0-cxxflags.patch,
+  +files/yate-2.0.0-ilbc-alsa-oss.patch, +files/yate-2.0.0-spandsp.patch,
+  files/yate.confd, +files/yate.initd, files/yate.rc6, metadata.xml,
+  +yate-2.0.0.ebuild:
+  Version bump to 2.0.0. Fixing bug 272280.
+
+  16 May 2009; Mounir Lamouri <volkmar@gentoo.org> metadata.xml:
+  Use global gsm USE flag instead of local one.
+
+  06 Feb 2009; Timothy Redaelli <drizzt@gentoo.org>
+  files/yate-1.3.0-makefiles.patch, +files/yate-1.3.0-resolv.patch,
+  yate-1.3.0.ebuild:
+  Also fix compilation problem with uclibc #199222
+
+*yate-1.3.0 (06 Feb 2009)
+
+  06 Feb 2009; Timothy Redaelli <drizzt@gentoo.org>
+  +files/yate-1.3.0-makefiles.patch, +yate-1.3.0.ebuild:
+  Bug fixed: #197638, #248190, #198254 (added new speex dep)
+
+  22 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  21 May 2008; Tiziano Müller <dev-zero@gentoo.org> yate-1.2.0.ebuild:
+  Changed dependency for postgresql from dev-db/postgresql to
+  virtual/postgresql-server
+
+*yate-1.2.0 (01 May 2007)
+
+  01 May 2007; Stefan Schweizer <genstef@gentoo.org> -yate-1.1.0.ebuild,
+  +yate-1.2.0.ebuild:
+  version bump
+
+  08 Apr 2007; Stefan Schweizer <genstef@gentoo.org> yate-1.1.0.ebuild:
+  Dont append /usr for gtk thanks to Ivan <bdfy@mail.ru> in bug 173755
+
+*yate-1.1.0 (18 Oct 2006)
+
+  18 Oct 2006; Stefan Schweizer <genstef@gentoo.org>
+  +files/yate-0.9.0-gtk2.diff, +files/yate.confd, +files/yate.rc6,
+  +metadata.xml, +yate-1.1.0.ebuild:
+  version bump, net-misc -> net-voip

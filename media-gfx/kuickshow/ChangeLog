@@ -1,0 +1,58 @@
+# ChangeLog for media-gfx/kuickshow
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/kuickshow/ChangeLog,v 1.17 2015/02/25 17:07:10 johu Exp $
+
+  25 Feb 2015; Johannes Huber <johu@gentoo.org> -kuickshow-0.9.1-r1.ebuild:
+  Remove old.
+
+  25 Feb 2015; Agostino Sarubbo <ago@gentoo.org> kuickshow-0.9.1-r2.ebuild:
+  Stable for x86, wrt bug #538080
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> kuickshow-0.9.1-r2.ebuild:
+  Stable for amd64, wrt bug #538080
+
+*kuickshow-0.9.1-r2 (21 Mar 2014)
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org> +kuickshow-0.9.1-r2.ebuild:
+  Revision bump to EAPI 5.
+
+  11 Jan 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  kuickshow-0.9.1-r1.ebuild:
+  Drop ppc64, unfulfilled dependencies
+
+  14 Nov 2012; Johannes Huber <johu@gentoo.org> -kuickshow-0.9.1.ebuild:
+  Remove old.
+
+  14 Nov 2012; Johannes Huber <johu@gentoo.org> kuickshow-0.9.1-r1.ebuild:
+  Stable for x86, wrt bug #441358
+
+  06 Nov 2012; Agostino Sarubbo <ago@gentoo.org> kuickshow-0.9.1-r1.ebuild:
+  Stable for amd64, wrt bug #441358
+
+*kuickshow-0.9.1-r1 (25 Aug 2012)
+
+  25 Aug 2012; Chris Reffett <creffett@gentoo.org> +kuickshow-0.9.1-r1.ebuild:
+  Revision bump, update to EAPI 4 and fix repoman warning
+
+  06 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  kuickshow-0.9.1.ebuild:
+  stable x86, bug 353127
+
+  27 Feb 2011; Markos Chandras <hwoarang@gentoo.org> kuickshow-0.9.1.ebuild:
+  Stable on amd64 wrt bug #353127
+
+  07 Apr 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  kuickshow-0.9.1.ebuild:
+  Can build with KDE 4.3.
+
+*kuickshow-0.9.1 (21 Feb 2010)
+
+  21 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +kuickshow-0.9.1.ebuild:
+  Version bump (extragear from KDE 4.4.0).
+
+*kuickshow-0.9.1_p20091105 (09 Nov 2009)
+
+  09 Nov 2009; Alex Alexander <wired@gentoo.org>
+  +kuickshow-0.9.1_p20091105.ebuild, +metadata.xml:
+  new ebuild

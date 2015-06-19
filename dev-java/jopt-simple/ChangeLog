@@ -1,0 +1,12 @@
+# ChangeLog for dev-java/jopt-simple
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jopt-simple/ChangeLog,v 1.1 2013/09/13 16:29:43 ercpe Exp $
+
+*jopt-simple-4.4 (13 Sep 2013)
+*jopt-simple-4.5 (13 Sep 2013)
+
+  13 Sep 2013; Johann Schmitz <ercpe@gentoo.org> +jopt-simple-4.4.ebuild,
+  +jopt-simple-4.5.ebuild, +metadata.xml:
+  Added ebuilds for jopt-simple - a Java library for parsing command line
+  options Slot 4.4 is a dependency of spring-core and slot 4.5 is the latest
+  version.

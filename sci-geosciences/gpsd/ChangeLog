@@ -1,0 +1,589 @@
+# ChangeLog for sci-geosciences/gpsd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gpsd/ChangeLog,v 1.129 2015/06/07 17:53:38 vapier Exp $
+
+*gpsd-3.15 (07 Jun 2015)
+
+  07 Jun 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/gpsd-3.15-broken-install.patch, +files/gpsd-3.15-dynamic-libs.patch,
+  +files/gpsd-3.15-libgpsd.patch, +gpsd-3.15.ebuild:
+  Version bump.
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> gpsd-3.10.ebuild,
+  gpsd-3.11.ebuild, gpsd-3.13.ebuild, gpsd-9999.ebuild:
+  Drop old Python implementations
+
+*gpsd-3.13 (27 Feb 2015)
+
+  27 Feb 2015; Mike Frysinger <vapier@gentoo.org> +files/gpsd-3.13-ntpshm.patch,
+  +gpsd-3.13.ebuild, gpsd-9999.ebuild:
+  Version bump.
+
+  18 Feb 2015; Mike Frysinger <vapier@gentoo.org> gpsd-9999.ebuild:
+  Update build to match latest git.
+
+*gpsd-3.11 (30 Oct 2014)
+
+  30 Oct 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/gpsd-3.11-no-ntpshm.patch, +gpsd-3.11.ebuild:
+  Version bump.
+
+  30 Oct 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/gpsd-3.10-nmea-disabled.patch, gpsd-3.10.ebuild:
+  Add fix from upstream for building w/nmea driver disabled #493022 by
+  n1ghtmare.
+
+  30 Oct 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/gpsd-3.11-hotplug-config.patch, files/gpsd.init-2, gpsd-9999.ebuild:
+  Source /etc/conf.d/gpsd in hotplug rules #511584 by Mark Wagner.
+
+  30 Oct 2014; Mike Frysinger <vapier@gentoo.org> +files/gpsd-3.11-rpath.patch,
+  gpsd-9999.ebuild:
+  Update ebuild to match latest git source #527000 by Michal Privoznik.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> gpsd-2.95-r1.ebuild,
+  gpsd-2.96-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  30 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> gpsd-2.95-r1.ebuild,
+  gpsd-2.96-r1.ebuild, gpsd-3.10.ebuild, gpsd-3.6.ebuild, gpsd-3.7.ebuild,
+  gpsd-3.8.ebuild, gpsd-3.9-r1.ebuild, gpsd-3.9.ebuild, gpsd-9999.ebuild:
+  Use shorter get_udevdir() instead of the longer deprecated udev_get_udevdir()
+  version.
+
+  06 Jan 2014; Justin Lecher <jlec@gentoo.org> gpsd-2.95-r1.ebuild,
+  gpsd-2.96-r1.ebuild, metadata.xml:
+  Punt base.eclass
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> gpsd-3.9-r1.ebuild:
+  Stable for ppc64, wrt bug #486298
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> gpsd-3.9-r1.ebuild:
+  Stable for ppc, wrt bug #486298
+
+*gpsd-3.10 (23 Nov 2013)
+
+  23 Nov 2013; Mike Frysinger <vapier@gentoo.org> +files/gpsd-3.10-dbus.patch,
+  +files/gpsd-3.10-rpath.patch, +files/gpsd-3.10-udev-install.patch,
+  +gpsd-3.10.ebuild, gpsd-9999.ebuild:
+  Version bump.
+
+  01 Nov 2013; Agostino Sarubbo <ago@gentoo.org> gpsd-3.9-r1.ebuild:
+  Stable for x86, wrt bug #486298
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> gpsd-3.9-r1.ebuild:
+  amd64 stable, bug #486298
+
+  18 Oct 2013; Markus Meier <maekke@gentoo.org> gpsd-3.9-r1.ebuild:
+  arm stable, bug #486298
+
+*gpsd-3.9-r1 (14 Sep 2013)
+
+  14 Sep 2013; Pacho Ramos <pacho@gentoo.org> +gpsd-3.9-r1.ebuild:
+  Install upstream unit files (#482596)
+
+  27 Aug 2013; Mike Gilbert <floppym@gentoo.org> gpsd-9999.ebuild:
+  Refactor python-stuff in src_prepare into python_prepare_all.
+
+  26 Aug 2013; Agostino Sarubbo <ago@gentoo.org> gpsd-3.9.ebuild:
+  Stable for ppc, wrt bug #468262
+
+  25 Aug 2013; Mike Gilbert <floppym@gentoo.org> gpsd-9999.ebuild:
+  Fix the live ebuild and convert to distutils-r1.
+
+  24 Aug 2013; Agostino Sarubbo <ago@gentoo.org> gpsd-3.9.ebuild:
+  Stable for ppc64, wrt bug #468262
+
+  24 Aug 2013; Markus Meier <maekke@gentoo.org> gpsd-3.9.ebuild:
+  arm stable, bug #468262
+
+  23 Aug 2013; Agostino Sarubbo <ago@gentoo.org> gpsd-3.9.ebuild:
+  Stable for x86, wrt bug #468262
+
+  23 Aug 2013; Agostino Sarubbo <ago@gentoo.org> gpsd-3.9.ebuild:
+  Stable for amd64, wrt bug #468262
+
+*gpsd-3.9 (01 May 2013)
+
+  01 May 2013; Mike Frysinger <vapier@gentoo.org> +gpsd-3.9.ebuild:
+  Version bump.
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> gpsd-3.7.ebuild:
+  Stable for ppc64, wrt bug #463428
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> gpsd-3.7.ebuild:
+  Stable for ppc, wrt bug #463428
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> gpsd-3.7.ebuild:
+  Stable for arm, wrt bug #463428
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> gpsd-3.7.ebuild:
+  Stable for x86, wrt bug #463428
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> gpsd-3.7.ebuild:
+  Stable for amd64, wrt bug #463428
+
+  30 Mar 2013; Mike Frysinger <vapier@gentoo.org>
+  +files/gpsd-3.7-no-export-t.patch, +files/gpsd-3.8-no-export-t.patch,
+  gpsd-3.7.ebuild, gpsd-3.8.ebuild, gpsd-9999.ebuild:
+  Fix building when USE="-dbus -shm -sockets" #463850 by Agostino Sarubbo.
+
+  27 Mar 2013; Mike Frysinger <vapier@gentoo.org>
+  +files/gpsd-3.7-gps_regress.patch, gpsd-3.7.ebuild, gpsd-3.8.ebuild,
+  gpsd-9999.ebuild:
+  Fix build error when USE=-sockets #441760 by Conrad Kostecki.
+
+  27 Mar 2013; Mike Frysinger <vapier@gentoo.org> gpsd-3.8.ebuild,
+  gpsd-9999.ebuild, metadata.xml:
+  Sync gpsd protocol list with current source #461622 by Thomas Witt.
+
+*gpsd-3.8 (11 Mar 2013)
+
+  11 Mar 2013; Mike Frysinger <vapier@gentoo.org> +files/gpsd-3.8-ldflags.patch,
+  +files/gpsd-3.8-libgps.patch, +files/gpsd-3.8-udev.patch, +gpsd-3.8.ebuild,
+  gpsd-9999.ebuild:
+  Version bump.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> gpsd-2.95-r1.ebuild,
+  gpsd-2.96-r1.ebuild, gpsd-3.6.ebuild, gpsd-3.7.ebuild, gpsd-9999.ebuild:
+  Move Qt dependencies to the new category
+
+  11 Dec 2012; Ian Stakenvicius <axs@gentoo.org> gpsd-3.7.ebuild,
+  gpsd-9999.ebuild:
+  virtualize udev by using udev.eclass to determine udevdir
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, #24135.
+
+  12 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> gpsd-2.95-r1.ebuild,
+  gpsd-2.96-r1.ebuild:
+  Inherit user.eclass for function enewuser as noted by repoman.
+
+  12 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> gpsd-3.7.ebuild,
+  gpsd-9999.ebuild:
+  Query udev.pc pkg-config file for udevdir value (in order to install
+  25-gpsd.rules and gpsd.hotplug to correct directory)
+
+*gpsd-3.7 (01 Aug 2012)
+
+  01 Aug 2012; Mike Frysinger <vapier@gentoo.org> +files/gpsd-3.7-rpath.patch,
+  +gpsd-3.7.ebuild, gpsd-9999.ebuild:
+  Version bump.
+
+  26 Jul 2012; Michael Palimaka <kensington@gentoo.org> gpsd-2.95-r1.ebuild,
+  gpsd-2.96-r1.ebuild, gpsd-3.6.ebuild, gpsd-9999.ebuild:
+  Add missing slot dependencies on Qt.
+
+  24 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> -gpsd-3.3-r1.ebuild,
+  -gpsd-3.3.ebuild, -gpsd-3.4.ebuild, -gpsd-3.5.ebuild, gpsd-3.6.ebuild,
+  gpsd-9999.ebuild:
+  Seems to build also with chrony. Fixes bug#406339. Do not keep so much ebuilds
+  around for no reason.
+
+*gpsd-3.6 (23 May 2012)
+
+  23 May 2012; Mike Frysinger <vapier@gentoo.org> +files/gpsd-3.6-debug.patch,
+  +files/gpsd-3.6-rpath.patch, +gpsd-3.6.ebuild:
+  Version bump.
+
+*gpsd-3.5 (21 May 2012)
+
+  21 May 2012; Mike Frysinger <vapier@gentoo.org> +files/gpsd-3.5-clock.patch,
+  +gpsd-3.5.ebuild, gpsd-9999.ebuild:
+  Version bump.
+
+  21 May 2012; Mike Frysinger <vapier@gentoo.org> gpsd-3.4.ebuild,
+  +files/gpsd-3.4-no-man-gen.patch:
+  Do not regen man pages since the tarball includes them.
+
+*gpsd-9999 (09 Feb 2012)
+
+  09 Feb 2012; Mike Frysinger <vapier@gentoo.org> gpsd-3.4.ebuild,
+  +files/gpsd-3.4-always-install-man-pages.patch, +gpsd-9999.ebuild:
+  Do not require xmlto for releases since the tarball includes the man pages
+  already, and add a live git ebuild.
+
+*gpsd-3.4 (13 Jan 2012)
+
+  13 Jan 2012; Mike Frysinger <vapier@gentoo.org> +gpsd-3.4.ebuild,
+  +files/gpsd-3.4-cfgetispeed.patch, +files/gpsd-3.4-chrpath.patch,
+  +files/gpsd-3.4-gpsmon-lm.patch, +files/gpsd-3.4-strptime.patch:
+  Version bump.
+
+  06 Dec 2011; Mike Frysinger <vapier@gentoo.org> gpsd-3.3-r1.ebuild:
+  Fix typos in export options pointed out by Yufeng Shen.
+
+*gpsd-3.3-r1 (06 Dec 2011)
+
+  06 Dec 2011; Mike Frysinger <vapier@gentoo.org> +gpsd-3.3-r1.ebuild,
+  +files/gpsd-3.3-msocks-init.patch, metadata.xml:
+  Add fix from upstream for socket setup, and add USE flags to control shared
+  memory/socket interfaces.
+
+  22 Nov 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/gpsd-3.3-ldflags.patch, gpsd-3.3.ebuild:
+  QA: fix handling of LDFLAGS #391299 by Maciej Piechotka.
+
+  22 Nov 2011; Mike Frysinger <vapier@gentoo.org> gpsd-3.3.ebuild:
+  Replace STAGING_PREFIX with SYSROOT.
+
+  21 Nov 2011; Mike Frysinger <vapier@gentoo.org> gpsd-3.3.ebuild,
+  +files/gpsd-3.3-pkg-config.patch:
+  Respect PKG_CONFIG env var when building.
+
+*gpsd-3.3 (20 Nov 2011)
+
+  20 Nov 2011; Mike Frysinger <vapier@gentoo.org> +gpsd-3.3.ebuild,
+  +files/gpsd-3.3-release-rev.patch, +files/gpsd-3.3-setup.py,
+  +files/gpsd-3.3-udev-install.patch:
+  Version bump #380883 by Andreas K. Hüttel and Ed Wildgoose. Add USE=X
+  support for #369261 by Patrick.
+
+  18 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org> gpsd-2.96-r1.ebuild:
+  Add sys-devel/bc as test dep. Fixes bug #363203.
+
+  17 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/40-usb-serial.rules, -files/99-gpsd-usb.rules, -gpsd-2.32.ebuild,
+  -files/gpsd.conf, -files/gpsd.init:
+  Remove old finaly overshadowed gpsd.
+
+  17 Jun 2011; Kacper Kowalik <xarthisius@gentoo.org> gpsd-2.95-r1.ebuild:
+  ppc64 stable wrt #362981
+
+  17 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Remove unused local usedescs to make repoman happy.
+
+*gpsd-2.96-r1 (17 Jun 2011)
+
+  17 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org> -gpsd-2.96.ebuild,
+  +gpsd-2.96-r1.ebuild:
+  Install udev rules. Fixes bug #369125.
+
+  04 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org> gpsd-2.96.ebuild:
+  Drop unused variable and double definition.
+
+  16 May 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/2.96-pkgconfig.patch, gpsd-2.96.ebuild:
+  Fix pkg-config usage.
+
+*gpsd-2.96 (16 May 2011)
+
+  16 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/2.96-fix-ldflags.patch,
+  -files/gpsd-2.33-duplicate-device-add-hang.patch,
+  -files/gpsd-2.33-hotplug-background-fix.patch, -gpsd-2.38.ebuild,
+  -gpsd-2.39-r1.ebuild, +files/2.96-fix-tests.patch, +gpsd-2.96.ebuild:
+  Version bump to latest. Drop older. Fixes bug #362979.
+
+  10 May 2011; Michael Weber <xmw@gentoo.org> gpsd-2.95-r1.ebuild:
+  arm/ppc stable (bug 362981)
+
+  09 May 2011; Markos Chandras <hwoarang@gentoo.org> gpsd-2.95-r1.ebuild:
+  Stable on amd64 wrt bug #354033
+
+  09 May 2011; Thomas Kahle <tomka@gentoo.org> gpsd-2.95-r1.ebuild:
+  x86 stable per bug 354033
+
+  11 Apr 2011; Michael Weber <xmw@gentoo.org> gpsd-2.95-r1.ebuild:
+  Added ~arm (bug 341695)
+
+  10 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gpsd-2.32.ebuild, gpsd-2.38.ebuild:
+  Fix deprecation warnings.
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> gpsd-2.38.ebuild,
+  gpsd-2.39-r1.ebuild, gpsd-2.95-r1.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  23 Feb 2011; Patrick Lauer <patrick@gentoo.org> gpsd-2.95-r1.ebuild:
+  Adding docbook dep for building, bug #355805
+
+*gpsd-2.95-r1 (21 Feb 2011)
+
+  21 Feb 2011; Steve Arnold <nerdboy@gentoo.org> -gpsd-2.95.ebuild,
+  +gpsd-2.95-r1.ebuild:
+  Update for man pages, working tests, and missing header file.
+
+  25 Jan 2011; Jeroen Roovers <jer@gentoo.org> gpsd-2.38.ebuild,
+  gpsd-2.39-r1.ebuild:
+  Drop HPPA keywording
+
+  21 Nov 2010; Raúl Porcel <armin76@gentoo.org> gpsd-2.32.ebuild,
+  gpsd-2.38.ebuild, gpsd-2.39-r1.ebuild:
+  Drop sparc keywords
+
+  18 Oct 2010; Steve Arnold <nerdboy@gentoo.org> gpsd-2.95.ebuild:
+  Keyworded for ~ppc (tested on G4 ibook).
+
+  18 Oct 2010; Steve Arnold <nerdboy@gentoo.org> gpsd-2.39-r1.ebuild:
+  Updated for new python eclass.
+
+  10 Oct 2010; Ulrich Mueller <ulm@gentoo.org> gpsd-2.32.ebuild:
+  Fix openmotif dependency.
+
+  03 Oct 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/2.95-disable-strip.patch, gpsd-2.95.ebuild,
+  +files/2.95-fix-ldflags.patch:
+  Fix ldflags and strip issues. Bug #339114.
+
+  30 Sep 2010; Sven Wegener <swegener@gentoo.org> files/gpsd.init-2:
+  Change NAME to SVCNAME in init script.
+
+*gpsd-2.95 (26 Sep 2010)
+
+  26 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> +files/gpsd.conf-2,
+  +files/gpsd.init-2, +gpsd-2.95.ebuild:
+  Version bump to latest. This is only basic ebuild and generic tested.
+  Might need enhancement/touchups.
+
+  30 May 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gpsd-2.32.ebuild, gpsd-2.38.ebuild, gpsd-2.39-r1.ebuild:
+  Delete calls to deprecated distutils_python_version().
+
+  13 Feb 2010; Steve Arnold <nerdboy@gentoo.org> files/99-gpsd-usb.rules,
+  gpsd-2.39-r1.ebuild:
+  Updated udev rules for syntax changes (see bug 301887) and restricted 
+  sed to the first 7 lines of the rules file (when USE=pl2303 is enabled).
+
+  24 Jan 2010; Steve Arnold <nerdboy@gentoo.org> gpsd-2.39-r1.ebuild:
+  Updated sed target for new udev rule syntax (oops)...
+
+  19 Jan 2010; Jeroen Roovers <jer@gentoo.org> gpsd-2.38.ebuild:
+  Stable for HPPA too.
+
+  03 Jan 2010; Steve Arnold <nerdboy@gentoo.org> files/99-gpsd-usb.rules:
+  Oh yeah, also updated the udev rules to conform to the new syntax.
+
+*gpsd-2.39-r1 (03 Jan 2010)
+
+  03 Jan 2010; Steve Arnold <nerdboy@gentoo.org> -gpsd-2.39.ebuild,
+  +gpsd-2.39-r1.ebuild, metadata.xml:
+  Updated with specific daemon user for uucp group.  Currently controlled
+  via use flag.
+
+  22 Aug 2009; Steve Arnold <nerdboy@gentoo.org> files/gpsd.conf,
+  files/gpsd.init:
+  Updated init and conf files for bug #281705.  Newer gpsd appears to play
+  much better with start-stop-daemon now (plus the gpsd arguments have
+  changed again).
+
+  01 Aug 2009; Steve Arnold <nerdboy@gentoo.org> gpsd-2.39.ebuild:
+  Made python a hard dependency for this version (upstream changes, see 
+  bug #279586).
+
+  28 Jul 2009; Steve Arnold <nerdboy@gentoo.org> gpsd-2.39.ebuild:
+  Updated build to work around libtool funkiness (see bug #278340).
+
+*gpsd-2.39 (18 Jul 2009)
+
+  18 Jul 2009; Steve Arnold <nerdboy@gentoo.org> metadata.xml,
+  gpsd-2.32.ebuild, -gpsd-2.33-r1.ebuild, -gpsd-2.34-r1.ebuild,
+  -gpsd-2.36.ebuild, -gpsd-2.37.ebuild, +gpsd-2.39.ebuild:
+  Updated to latest stable upstream, cleaned up older unstable versions 
+  (see bug # 276309).
+
+  05 Jun 2009; Steve Arnold <nerdboy@gentoo.org> files/99-gpsd-usb.rules,
+  gpsd-2.38.ebuild:
+  Updated to address several bugs: disabled PL2303 devices, added -j1, and 
+  added warning to rebuild if gpsd link error occurs.  Users of USB GPS
+  devices based on PL2303 serial adapters will need to uncomment the top
+  2 lines in the 99-gpsd-usb.rules file.
+  Bugs addressed: #263645, #263880, and #267936.
+
+  18 Apr 2009; Jeroen Roovers <jer@gentoo.org> gpsd-2.38:
+  Marked ~hppa (bug #260777).
+
+*gpsd-2.38 (23 Mar 2009)
+
+  23 Mar 2009; Steve Arnold <nerdboy@gentoo.org> metadata.xml,
+  +gpsd-2.38.ebuild:
+  Updated new version with less hacky work-arounds and updated USE flags.
+  Everything should be linked and instaleld correctly now (see bugs #250757
+  and #246757).
+
+  21 Dec 2008; Steve Arnold <nerdboy@gentoo.org> gpsd-2.36.ebuild,
+  gpsd-2.37.ebuild:
+  Added -lm to ldflags back to latest two versions (see bug #250757; also
+  patched the python build to add libm as required lib).
+
+  07 Sep 2008; Steve Arnold <nerdboy@gentoo.org> files/99-gpsd-usb.rules,
+  gpsd-2.37.ebuild:
+  Updated motif depend and added udev rule enhancements (see bug 235855).
+  Also fixed some minor QA issues.
+
+  06 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  27 Jun 2008; Ulrich Mueller <ulm@gentoo.org> gpsd-2.32.ebuild,
+  gpsd-2.33-r1.ebuild, gpsd-2.34-r1.ebuild, gpsd-2.36.ebuild,
+  gpsd-2.37.ebuild:
+  Change dependency from virtual/motif to x11-libs/openmotif, bug 224749.
+
+*gpsd-2.37 (02 Jun 2008)
+
+  02 Jun 2008; Hanno Boeck <hanno@gentoo.org> +gpsd-2.37.ebuild:
+  Version bump, removed autotools-calls, not needed when not patching
+  anything, removed flag-o-matic (not called anywhere), re-enable test
+  (works for me).
+
+  17 May 2008; Steve Arnold <nerdboy@gentoo.org> gpsd-2.34-r1.ebuild:
+  Applying updates from bug #211456 due to device breakage in 2.36 (no
+  response on bug).
+
+  01 Mar 2008; Steve Arnold <nerdboy@gentoo.org> gpsd-2.36.ebuild:
+  Cleaned up minimal use logic and updated for bug #211456; updated version
+  of 2.34-r1 waiting for user testing.
+
+*gpsd-2.36 (23 Feb 2008)
+
+  23 Feb 2008; Steve Arnold <nerdboy@gentoo.org> +files/99-gpsd-usb.rules,
+  files/gpsd.conf, +gpsd-2.36.ebuild:
+  Updated to latest version and new udev rules (closes bug #210079). Note
+  the new rules supercede the older ones (but the older ones were not
+  installed by default anyway).  The gpsd script is still installed
+  under /etc/hotplug but it only depends on udev now.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; gpsd-2.32.ebuild,
+  gpsd-2.33-r1.ebuild, gpsd-2.34-r1.ebuild:
+  Drop virtual/x11 references.
+
+*gpsd-2.34-r1 (11 Jun 2007)
+
+  11 Jun 2007; Steve Arnold <nerdboy@gentoo.org> files/40-usb-serial.rules,
+  files/gpsd.init, -gpsd-2.34.ebuild, +gpsd-2.34-r1.ebuild:
+  updated dbus deps and init scripts for bugs 180348 and 181250
+
+  18 Jan 2007; Steve Arnold <nerdboy@gentoo.org> gpsd-2.34.ebuild:
+  Added missing include file (bug 162361) and fixed up einfo.
+
+  14 Jan 2007; Steve Arnold <nerdboy@gentoo.org> files/gpsd.conf,
+  files/gpsd.init:
+  Reverted to strict config setup, since gpsd requires the device parameter
+  when using the init script to start gpsd with an existing device (even a
+  usb device).
+
+*gpsd-2.34 (14 Jan 2007)
+
+  14 Jan 2007; Steve Arnold <nerdboy@gentoo.org> files/gpsd.conf,
+  files/gpsd.init, +gpsd-2.34.ebuild:
+  Version bump with new devices and use flags, plus streamlined config and
+  minimal install option (disable other use flags and enable minimal).
+
+  08 Jan 2007; Danny van Dyk <kugelfang@gentoo.org> -gpsd-2.33.ebuild:
+  QA: Removed unused versions.
+
+  05 Nov 2006; Steve Arnold <nerdboy@gentoo.org> files/gpsd.conf:
+  Corrected path in config file (only affects non-usb usage).
+
+  24 Oct 2006; Steve Arnold <nerdboy@gentoo.org> files/gpsd.init,
+  gpsd-2.33-r1.ebuild:
+  Updated with USE flag for TNT hardware support (it's the only one that's
+  default disabled) and init script change (bugs 144059 and 150141).
+
+  31 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
+  Fixed double-utf8 encoding, see bug #125288.
+
+*gpsd-2.33-r1 (14 Aug 2006)
+
+  14 Aug 2006; Robin H. Johnson <robbat2@gentoo.org>
+  +files/gpsd-2.33-duplicate-device-add-hang.patch,
+  +files/gpsd-2.33-hotplug-background-fix.patch, +gpsd-2.33-r1.ebuild:
+  Fix bug #132288 and also two other hotplug issues that I personally ran
+  into. The patches have been submitted upstream.
+
+  18 Jul 2006; Steve Arnold <nerdboy@gentoo.org> -gpsd-2.31.ebuild,
+  gpsd-2.32.ebuild:
+  Stable bump, removed old version due to broken Garmin driver.
+
+*gpsd-2.33 (08 Jul 2006)
+
+  08 Jul 2006; Steve Arnold <nerdboy@gentoo.org> +gpsd-2.33.ebuild:
+  updated to latest upstream release and added a couple USE flags
+
+  05 Jul 2006; Michael Sterrett <mr_bones_@gentoo.org> -gpsd-2.30-r1.ebuild:
+  clean old dep-broken ebuild
+
+  23 June 2006; Tom Gall <tgall@gentoo.org> gpsd-2.31.ebuild:
+  stable on ppc64
+
+*gpsd-2.32 (27 May 2006)
+
+  27 May 2006; Steve Arnold <nerdboy@gentoo.org> gpsd-2.30-r1.ebuild,
+  gpsd-2.31.ebuild, +gpsd-2.32.ebuild:
+  Stable bump for older versions, added latest version, and reverted 
+  the socket dir change.
+
+  08 May 2006; Steve Arnold <nerdboy@gentoo.org> files/gpsd.conf,
+  files/gpsd.init, gpsd-2.30-r1.ebuild, gpsd-2.31.ebuild:
+  Updated with workaround for bug 132288
+
+  24 Feb 2006; Steve Arnold <nerdboy@gentoo.org> gpsd-2.31.ebuild:
+  updated dbus depend atom
+
+  20 Feb 2006; Steve Arnold <nerdboy@gentoo.org> gpsd-2.30-r1.ebuild,
+  gpsd-2.31.ebuild:
+  updated SRC_URI until berlios fixes their dorked up downloads
+
+*gpsd-2.31 (20 Feb 2006)
+*gpsd-2.30-r1 (20 Feb 2006)
+
+  20 Feb 2006; Steve Arnold <nerdboy@gentoo.org> -gpsd-2.30.ebuild,
+  +gpsd-2.30-r1.ebuild, +gpsd-2.31.ebuild, -gpsd-2.29.ebuild:
+  Updated for modular X and added latest release (2.31 finally uses
+  newer dbus API).  Closes bug #122512.
+
+  15 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org> gpsd-2.29.ebuild,
+  gpsd-2.30.ebuild:
+  Added RESTRICT test as the tests seem to be broken, closes bug 118585.
+
+  16 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> gpsd-2.30.ebuild:
+  Remove --with-gnu-ld option, bug #108386.
+
+*gpsd-2.30 (01 Oct 2005)
+
+  01 Oct 2005; Steve Arnold <nerdboy@gentoo.org>
+  -files/gpsd-2.25-SiRF.patch, -files/gpsd-2.25-y-format.patch,
+  -files/gpsd-2.26-dbus.patch, -files/gpsd-2.26-python.patch,
+  -gpsd-2.25-r1.ebuild, -gpsd-2.26.ebuild, gpsd-2.29.ebuild,
+  +gpsd-2.30.ebuild:
+  version bump, fix for bug #107147, and cleanup of old ebuilds
+
+  20 Sep 2005; Steve Arnold <nerdboy@gentoo.org> gpsd-2.25-r1.ebuild,
+  gpsd-2.26.ebuild, gpsd-2.29.ebuild:
+  added additional LDFLAGS to fix bug #106330 (fix submitted by Morgan
+  Collins <sirmorcant@morcant.org>)
+
+*gpsd-2.29 (06 Sep 2005)
+*gpsd-2.25-r1 (06 Sep 2005)
+
+  06 Sep 2005; Steve Arnold <nerdboy@gentoo.org>
+  +files/gpsd-2.25-SiRF.patch, -gpsd-2.25.ebuild, +gpsd-2.25-r1.ebuild,
+  gpsd-2.26.ebuild, +gpsd-2.29.ebuild:
+  fixed dbus depends and added new version
+
+  20 Aug 2005; Olivier Fisette <ribosome@gentoo.org> gpsd-2.26.ebuild:
+  Depend on dbus version 0.23.4 or later (fixes bug #102049).
+
+*gpsd-2.26 (08 Aug 2005)
+
+  08 Aug 2005; Steve Arnold <nerdboy@gentoo.org>
+  +files/gpsd-2.26-dbus.patch, +files/gpsd-2.26-python.patch,
+  +gpsd-2.26.ebuild:
+  slightly updated, but hotplug still doesn't quite work right
+
+  02 Jun 2005; Olivier Fisette <ribosome@gentoo.org> gpsd-2.25.ebuild:
+  Use "virtual/motif" instead of "x11-libs/openmotif".
+
+*gpsd-2.25 (28 May 2005)
+
+  28 May 2005; Steve Arnold <nerdboy@gentoo.org> +files/40-usb-serial.rules,
+  +files/gpsd-2.25-y-format.patch, +files/gpsd.conf, +files/gpsd.init,
+  +metadata.xml, +gpsd-2.25.ebuild:
+  added esr's patch for Y format messages, updated the einfo, and cleaned
+  up the arch stuff a bit
+
+*gpsd-2.25 (28 May 2005)
+
+  28 May 2005; Steve Arnold <nerdboy@gentoo.org> +files/40-usb-serial.rules,
+  +files/gpsd.conf, +files/gpsd.init, +metadata.xml, +gpsd-2.25.ebuild:
+  adding current version of gpsd (most other gps daemons are dead now)

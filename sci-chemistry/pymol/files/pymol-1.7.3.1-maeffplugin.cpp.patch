@@ -1,0 +1,11 @@
+--- contrib/uiuc/plugins/molfile_plugin/src/maeffplugin_orig.cpp	2014-02-07 19:50:50.132261610 -0800
++++ contrib/uiuc/plugins/molfile_plugin/src/maeffplugin.cpp	2014-02-07 19:52:12.527797099 -0800
+@@ -1983,7 +1983,7 @@
+       }
+     }
+     catch (std::exception &e) {
+-      fprintf(stderr, e.what());
++      fprintf(stderr, "%s", e.what());
+       return MOLFILE_ERROR;
+     }
+     return MOLFILE_SUCCESS;

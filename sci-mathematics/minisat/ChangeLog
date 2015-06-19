@@ -1,0 +1,50 @@
+# ChangeLog for sci-mathematics/minisat
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/minisat/ChangeLog,v 1.8 2014/08/10 20:23:37 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> minisat-2.1.0.ebuild,
+  minisat-2.2.0-r3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, #24135.
+
+*minisat-2.1.0 (17 Apr 2011)
+
+  17 Apr 2011; Steve Arnold <nerdboy@gentoo.org> +minisat-2.1.0.ebuild,
+  minisat-2.2.0-r3.ebuild, +files/minisat-2.2.0-header_fix.patch:
+  Updated and added previous version and missing patch (doh!). The
+  slightly older minisat2 is required for other tools, but is not fully
+  compatible with the 2.2 release.
+
+*minisat-2.2.0-r3 (16 Apr 2011)
+
+  16 Apr 2011; Steve Arnold <nerdboy@gentoo.org> -minisat-2.2.0-r2.ebuild,
+  +minisat-2.2.0-r3.ebuild:
+  Updated to reoroganize headers one last time to fix package collision 
+  and apply cleanup patch.
+
+*minisat-2.2.0-r2 (10 Apr 2011)
+
+  10 Apr 2011; Kacper Kowalik <xarthisius@gentoo.org> -minisat-2.2.0-r1.ebuild,
+  +minisat-2.2.0-r2.ebuild, metadata.xml:
+  Remove IUSE='prof' since it only adds -pg to flags, simplify 'if' logic, fix
+  quotes, respect LDFLAGS, add missing dies, move variables definitions to
+  pkg_setup, use emake instead of gmake, use dodoc for pdf file. Drop old.
+
+  09 Apr 2011; Steve Arnold <nerdboy@gentoo.org> minisat-2.2.0-r1.ebuild:
+  Updated include files to proper directory structure (which other 
+  packages seem to assume).
+
+*minisat-2.2.0-r1 (09 Apr 2011)
+
+  09 Apr 2011; Steve Arnold <nerdboy@gentoo.org> -minisat-2.2.0.ebuild,
+  +minisat-2.2.0-r1.ebuild:
+  Updated to include MTL header files apps that need them.
+
+*minisat-2.2.0 (09 Apr 2011)
+
+  09 Apr 2011; Steve Arnold <nerdboy@gentoo.org> +minisat-2.2.0.ebuild,
+  +metadata.xml:
+  New ebuild for minisat, a small fast SAT solver (a tool for solving 
+  the Boolean Satisfiability Problem used in model checking).

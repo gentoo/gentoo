@@ -1,0 +1,19 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/c-icap/files/c-icap.init.2,v 1.2 2012/10/22 02:42:20 flameeyes Exp $
+
+pidfile=$(awk '$1 == "PidFile" { print $2 }' /etc/c-icap/c-icap.conf)
+
+command="/usr/libexec/c-icap"
+command_arguments="${EXTRA_OPTS}"
+
+depend() {
+    need localmount
+}
+
+start_pre() {
+	cmdsocket=$(awk '$1 == "CommandsSocket" { print $2 }' /etc/c-icap/c-icap.conf)
+
+	checkpath -d "$(dirname "${cmdsocket}")" "$(dirname "${pidfile}")"
+}

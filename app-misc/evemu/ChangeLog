@@ -1,0 +1,45 @@
+# ChangeLog for app-misc/evemu
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/evemu/ChangeLog,v 1.9 2015/04/08 07:30:31 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> evemu-1.2.0-r1.ebuild:
+  Remove old Python implementations
+
+*evemu-2.1.0 (24 Nov 2014)
+
+  24 Nov 2014; Tim Harder <radhermit@gentoo.org> +evemu-2.1.0.ebuild:
+  Version bump.
+
+  24 Jun 2014; Tim Harder <radhermit@gentoo.org> -evemu-1.1.0.ebuild,
+  -evemu-1.2.0.ebuild, -evemu-1.99.1.ebuild:
+  Remove old.
+
+*evemu-2.0.0 (24 Jun 2014)
+
+  24 Jun 2014; Tim Harder <radhermit@gentoo.org> +evemu-2.0.0.ebuild:
+  Version bump.
+
+*evemu-1.99.1 (23 Jun 2014)
+
+  23 Jun 2014; Tim Harder <radhermit@gentoo.org> +evemu-1.99.1.ebuild:
+  Version bump.
+
+*evemu-1.2.0-r1 (18 May 2014)
+
+  18 May 2014; Tim Harder <radhermit@gentoo.org> +evemu-1.2.0-r1.ebuild,
+  +files/evemu-1.2.0-install-man.patch:
+  Install man pages when generation deps aren't installed (bug #510602).
+
+*evemu-1.2.0 (22 Dec 2013)
+
+  22 Dec 2013; Tim Harder <radhermit@gentoo.org> +evemu-1.2.0.ebuild:
+  Version bump.
+
+  29 May 2013; Tim Harder <radhermit@gentoo.org> evemu-1.1.0.ebuild:
+  Add REQUIRED_USE for python-single-r1.
+
+*evemu-1.1.0 (23 May 2013)
+
+  23 May 2013; Tim Harder <radhermit@gentoo.org> +evemu-1.1.0.ebuild,
+  +metadata.xml:
+  Initial import.

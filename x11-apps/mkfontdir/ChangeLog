@@ -1,0 +1,306 @@
+# ChangeLog for x11-apps/mkfontdir
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/mkfontdir/ChangeLog,v 1.84 2015/04/12 10:31:41 mrueg Exp $
+
+  12 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -mkfontdir-1.0.6.ebuild:
+  Remove old.
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> mkfontdir-1.0.7.ebuild:
+  add arm64 support, tested on A53 board
+
+  22 Feb 2013; Zac Medico <zmedico@gentoo.org> mkfontdir-1.0.7.ebuild:
+  Add ~arm-linux keyword.
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> mkfontdir-1.0.7.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #419473
+
+  12 Jul 2012; Brent Baude <ranger@gentoo.org> mkfontdir-1.0.7.ebuild:
+  Marking mkfontdir-1.0.7 ppc stable for bug 419473
+
+  11 Jul 2012; Brent Baude <ranger@gentoo.org> mkfontdir-1.0.7.ebuild:
+  Marking mkfontdir-1.0.7 ppc64 stable for bug 419473
+
+  28 Jun 2012; Jeroen Roovers <jer@gentoo.org> mkfontdir-1.0.7.ebuild:
+  Stable for HPPA (bug #419473).
+
+  27 Jun 2012; Markus Meier <maekke@gentoo.org> mkfontdir-1.0.7.ebuild:
+  arm stable, bug #419473
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> mkfontdir-1.0.7.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> mkfontdir-1.0.7.ebuild:
+  Stable for amd64, wrt bug #419473
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> mkfontdir-1.0.7.ebuild:
+  keyword ~amd64-fbsd
+
+*mkfontdir-1.0.7 (24 Feb 2012)
+
+  24 Feb 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +mkfontdir-1.0.7.ebuild:
+  Version bump.
+
+  14 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org> -mkfontdir-1.0.5.ebuild:
+  old
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  mkfontdir-1.0.6.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> mkfontdir-1.0.6.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #344827
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> mkfontdir-1.0.6.ebuild:
+  Stable for HPPA (bug #344827).
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org> mkfontdir-1.0.6.ebuild:
+  arm stable, bug #344827
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  mkfontdir-1.0.6.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> mkfontdir-1.0.6.ebuild:
+  amd64 stable wrt #344827
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> mkfontdir-1.0.6.ebuild:
+  ppc64 stable wrt #344827
+
+*mkfontdir-1.0.6 (08 Nov 2010)
+
+  08 Nov 2010; Tomáš Chvátal <scarabeus@gentoo.org> +mkfontdir-1.0.6.ebuild:
+  Version bump
+
+  10 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -mkfontdir-1.0.3.ebuild, -mkfontdir-1.0.4.ebuild:
+  rm
+
+  02 Jul 2010; Jeremy Olexa <darkside@gentoo.org> mkfontdir-1.0.5.ebuild:
+  Add ~x64-macos, as tested in bug 323945
+
+  19 Jan 2010; Raúl Porcel <armin76@gentoo.org> mkfontdir-1.0.5.ebuild:
+  s390 stable wrt #294958
+
+  18 Jan 2010; Raúl Porcel <armin76@gentoo.org> mkfontdir-1.0.5.ebuild:
+  alpha/ia64/sh/sparc stable wrt #294958
+
+  14 Jan 2010; Markus Meier <maekke@gentoo.org> mkfontdir-1.0.5.ebuild:
+  arm stable, bug #294958
+
+  14 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  mkfontdir-1.0.5.ebuild:
+  Transfer Prefix keywords
+
+  14 Jan 2010; Jeroen Roovers <jer@gentoo.org> mkfontdir-1.0.5.ebuild:
+  Stable for HPPA (bug #294958).
+
+  27 Dec 2009; Joseph Jezak <josejx@gentoo.org> mkfontdir-1.0.5.ebuild:
+  Marked ppc stable for bug #294958.
+
+  15 Dec 2009; Brent Baude <ranger@gentoo.org> mkfontdir-1.0.5.ebuild:
+  Marking mkfontdir-1.0.5 ppc64 stable for bug 294958
+
+  15 Dec 2009; Raúl Porcel <armin76@gentoo.org> mkfontdir-1.0.4.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #282290
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  mkfontdir-1.0.5.ebuild:
+  x86 stable, bug 294958
+
+  10 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  mkfontdir-1.0.5.ebuild:
+  amd64 stable wrt #294958
+
+*mkfontdir-1.0.5 (12 Oct 2009)
+
+  12 Oct 2009; Rémi Cardona <remi@gentoo.org> +mkfontdir-1.0.5.ebuild:
+  bump to 1.0.5, sync with overlay
+
+  11 Oct 2009; nixnut <nixnut@gentoo.org> ChangeLog:
+  ppc stable #282290
+
+  09 Oct 2009; Markus Meier <maekke@gentoo.org> mkfontdir-1.0.4.ebuild:
+  arm stable, bug #282290
+
+  23 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  mkfontdir-1.0.4.ebuild:
+  Stable on alpha for xorg-server-1.5/xorg-x11-7.4
+
+  05 Jun 2009; Tiago Cunha <tcunha@gentoo.org> mkfontdir-1.0.4.ebuild:
+  stable sparc, bug 268581
+
+  20 May 2009; Brent Baude <ranger@gentoo.org> mkfontdir-1.0.4.ebuild:
+  Marking mkfontdir-1.0.4 ppc64 stable for bug 268581
+
+  20 May 2009; Brent Baude <ranger@gentoo.org> mkfontdir-1.0.4.ebuild:
+  Marking mkfontdir-1.0.4 ppc stable for bug 268581
+
+  05 May 2009; Jeroen Roovers <jer@gentoo.org> mkfontdir-1.0.4.ebuild:
+  Stable for HPPA (bug #268581).
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  mkfontdir-1.0.3.ebuild, mkfontdir-1.0.4.ebuild:
+  add empty IUSE entry to silence repoman
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  mkfontdir-1.0.4.ebuild:
+  stable x86, bug 268581
+
+  05 Apr 2009; Olivier Crête <tester@gentoo.org> mkfontdir-1.0.4.ebuild:
+  amd64 stable
+
+*mkfontdir-1.0.4 (10 Mar 2008)
+
+  10 Mar 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +mkfontdir-1.0.4.ebuild:
+  Bump.
+
+  09 Oct 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  -mkfontdir-1.0.2.ebuild:
+  Drop old ebuilds.
+
+  07 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  mkfontdir-1.0.3.ebuild:
+  Stable on sparc wrt #175465
+
+  03 Jul 2007; Lars Weiler <pylon@gentoo.org> mkfontdir-1.0.3.ebuild:
+  Stable on ppc; bug #175465.
+
+  02 Jul 2007; Raúl Porcel <armin76@gentoo.org> mkfontdir-1.0.3.ebuild:
+  alpha stable wrt #175465
+
+  24 Jun 2007; Joshua Kinard <kumba@gentoo.org> mkfontdir-1.0.3.ebuild:
+  Stable on mips, per #175465.
+
+  20 May 2007; Jeroen Roovers <jer@gentoo.org> mkfontdir-1.0.3.ebuild:
+  Stable for HPPA (bug #175465).
+
+  05 May 2007; Daniel Gryniewicz <dang@gentoo.org> mkfontdir-1.0.3.ebuild:
+  Marked stable on amd64 for bug #175465
+
+  29 Apr 2007; Andrej Kacian <ticho@gentoo.org> mkfontdir-1.0.3.ebuild:
+  Stable on x86, bug #175465.
+
+  25 Apr 2007; Raúl Porcel <armin76@gentoo.org> mkfontdir-1.0.3.ebuild:
+  Stable on ia64 wrt bug #175465
+
+  25 Apr 2007; Markus Rothe <corsair@gentoo.org> mkfontdir-1.0.3.ebuild:
+  Stable on ppc64; bug #175465
+
+*mkfontdir-1.0.3 (31 Mar 2007)
+
+  31 Mar 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  +mkfontdir-1.0.3.ebuild:
+  Version bump.  Fixes manpage locations for some platforms.
+
+  10 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  mkfontdir-1.0.2.ebuild:
+  Update description to be less generic.
+
+  19 Jul 2006; Guy Martin <gmsoft@gentoo.org> mkfontdir-1.0.2.ebuild:
+  Stable on hppa.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> mkfontdir-1.0.2.ebuild:
+  Mark 1.0.2 stable on ia64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  mkfontdir-1.0.2.ebuild:
+  ppc/sparc/mips/alpha/arm/sh stable
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  mkfontdir-1.0.2.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org> mkfontdir-1.0.2.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  mkfontdir-1.0.2.ebuild:
+  x86 stable.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+  08 Apr 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  -mkfontdir-1.0.1.ebuild:
+  Pull old ebuild.
+
+*mkfontdir-1.0.2 (04 Apr 2006)
+
+  04 Apr 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  +mkfontdir-1.0.2.ebuild:
+  Build fix for BSD.
+
+  31 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> mkfontdir-1.0.1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  09 Mar 2006; Aron Griffis <agriffis@gentoo.org> mkfontdir-1.0.1.ebuild:
+  Mark 1.0.1 ~ia64
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> mkfontdir-1.0.1.ebuild:
+  Added ~ppc64
+
+  31 Jan 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  mkfontdir-1.0.1.ebuild:
+  Unstable on hppa.
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -mkfontdir-0.99.2.ebuild, -mkfontdir-1.0.0.ebuild:
+  Pull old versions.
+
+  26 Dec 2005; Stefaan De Roeck <stefaan@gentoo.org> mkfontdir-1.0.1.ebuild:
+  Marked ~alpha
+
+*mkfontdir-1.0.1 (23 Dec 2005)
+
+  23 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +mkfontdir-1.0.1.ebuild:
+  Bump for 7.0.
+
+*mkfontdir-1.0.0 (18 Dec 2005)
+
+  18 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +mkfontdir-1.0.0.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -mkfontdir-0.99.0.ebuild, -mkfontdir-0.99.1.ebuild:
+  Pull old versions.
+
+*mkfontdir-0.99.2 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +mkfontdir-0.99.2.ebuild:
+  Bump for 7.0RC3.
+
+*mkfontdir-0.99.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +mkfontdir-0.99.1.ebuild:
+  Bump for 7.0 RC1.
+
+  19 Oct 2005; Stephen P. Becker <geoman@gentoo.org>
+  mkfontdir-0.99.0.ebuild:
+  added ~mips keyword
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  29 Aug 2005; MATSUU Takuto <matsuu@gentoo.org> mkfontdir-0.99.0.ebuild:
+  Marked ~sh
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> mkfontdir-0.99.0.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> mkfontdir-0.99.0.ebuild:
+  Marked ~amd64.
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> mkfontdir-0.99.0.ebuild:
+  Add ~sparc keyword (Modular X testing).
+
+*mkfontdir-0.99.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +mkfontdir-0.99.0.ebuild:
+  Initial commit for modular X.

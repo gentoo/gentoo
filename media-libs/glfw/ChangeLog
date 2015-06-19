@@ -1,0 +1,115 @@
+# ChangeLog for media-libs/glfw
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/glfw/ChangeLog,v 1.28 2015/05/13 09:29:03 ago Exp $
+
+  13 May 2015; Agostino Sarubbo <ago@gentoo.org> glfw-3.1.1.ebuild:
+  Stable for x86, wrt bug #548604
+
+  12 May 2015; Agostino Sarubbo <ago@gentoo.org> glfw-3.1.1.ebuild:
+  Stable for amd64, wrt bug #548604
+
+  04 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> glfw-3.1.1.ebuild:
+  add missing Xinerama dep (bug #545422)
+
+  26 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/glfw-2.6-dyn.patch, -files/glfw-2.6-ldflags.patch, -glfw-2.6.ebuild,
+  -glfw-3.0.4.ebuild:
+  old
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> glfw-2.7.7.ebuild:
+  Stable for x86, wrt bug #544088
+
+  24 Mar 2015; Agostino Sarubbo <ago@gentoo.org> glfw-2.7.7.ebuild:
+  Stable for amd64, wrt bug #544088
+
+*glfw-3.1.1 (22 Mar 2015)
+
+  22 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> +glfw-3.1.1.ebuild,
+  glfw-3.0.4.ebuild:
+  version bump
+
+  04 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org> -glfw-3.0.3.ebuild:
+  old
+
+*glfw-3.0.4 (29 Aug 2014)
+
+  29 Aug 2014; Michael Sterrett <mr_bones_@gentoo.org> +glfw-3.0.4.ebuild:
+  version bump
+
+  29 Aug 2014; Michael Sterrett <mr_bones_@gentoo.org> glfw-2.6.ebuild,
+  glfw-2.7.7.ebuild, glfw-3.0.3.ebuild:
+  update HOMEPAGE
+
+  23 Jul 2014; Alfredo Tupone <tupone@gentoo.org> glfw-3.0.3.ebuild:
+  Fix dependency. Bug #514554 by Patrick Lauer
+
+*glfw-3.0.3 (05 Nov 2013)
+
+  05 Nov 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +glfw-3.0.3.ebuild, metadata.xml:
+  Version bump, bug #474872.
+
+  04 Feb 2013; Michael Sterrett <mr_bones_@gentoo.org> glfw-2.7.7.ebuild:
+  add static-libs support (bug #442752)
+
+*glfw-2.7.7 (19 Nov 2012)
+
+  19 Nov 2012; Julian Ospald <hasufell@gentoo.org> +glfw-2.7.7.ebuild,
+  +files/glfw-2.7.7-dyn.patch, +files/glfw-2.7.7-pkgconfig.patch:
+  version bump wrt #405555
+
+  14 Nov 2012; Julian Ospald <hasufell@gentoo.org> glfw-2.6.ebuild:
+  respect CFLAGS, CC, AR and whatnot wrt #442740
+
+  18 Oct 2012; Michael Sterrett <mr_bones_@gentoo.org> glfw-2.6.ebuild:
+  add virtual/glu dep (bug #438828)
+
+  13 Sep 2010; Tupone Alfredo <tupone@gentoo.org> glfw-2.6.ebuild,
+  +files/glfw-2.6-ldflags.patch:
+  Respect LDFLAGS. Bug #336991 by flameeyes@gentoo.org
+
+  05 Jan 2010; <hwoarang@gentoo.org> glfw-2.6.ebuild:
+  Stable on amd64 wrt bug #283955
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org> glfw-2.6.ebuild:
+  stable x86, bug 283955
+
+  22 Feb 2009; Michael Sterrett <mr_bones_@gentoo.org> glfw-2.6.ebuild:
+  EAPI=2; call get_libdir; install pkgconfig file; patch submitted by Nathan
+  Brink via bug #259780
+
+*glfw-2.6 (11 Nov 2007)
+
+  11 Nov 2007; Tupone Alfredo <tupone@gentoo.org> +files/glfw-2.6-dyn.patch,
+  +glfw-2.6.ebuild:
+  Version bump. Request bug #195262 by Peter Koeleman
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; glfw-2.5.0.ebuild:
+  Drop virtual/x11 references.
+
+*glfw-2.5.0-r1 (07 Feb 2007)
+
+  07 Feb 2007; <tupone@gentoo.org> +files/glfw-2.5.0-dyn.patch,
+  +glfw-2.5.0-r1.ebuild:
+  Missing shared library. Bug #107459 by Olaf Leidinger
+
+  01 Aug 2006; Patrick McLean <chutzpah@gentoo.org> glfw-2.5.0.ebuild:
+  Add ~amd64 (bug #133282)
+
+  12 Apr 2006; <Tupone@gentoo.org> -glfw-2.4.2.ebuild, glfw-2.5.0.ebuild:
+  Modular X dependency fix.
+  Dropping old version
+
+  23 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org> glfw-2.5.0.ebuild:
+  stable for x86
+
+*glfw-2.5.0 (16 May 2005)
+
+  16 May 2005; Michael Sterrett <mr_bones_@gentoo.org> +glfw-2.5.0.ebuild:
+  version bump (bug #90098)
+
+*glfw-2.4.2 (08 Mar 2005)
+
+  08 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org> +metadata.xml,
+  +glfw-2.4.2.ebuild:
+  initial commit - ebuild submitted by Scott 'me22' McMurray via bug #66532

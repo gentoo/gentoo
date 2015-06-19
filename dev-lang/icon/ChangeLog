@@ -1,0 +1,214 @@
+# ChangeLog for dev-lang/icon
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/icon/ChangeLog,v 1.58 2014/06/19 16:19:18 klausman Exp $
+
+  19 Jun 2014; Tobias Klausmann <klausman@gentoo.org> icon-9.5.0.ebuild:
+  Stable on alpha, bug #470260
+
+  12 Mar 2014; Agostino Sarubbo <ago@gentoo.org> icon-9.5.0.ebuild:
+  Stable for sparc, wrt bug #470260
+
+  06 Mar 2014; Agostino Sarubbo <ago@gentoo.org> icon-9.5.0.ebuild:
+  Stable for ppc64, wrt bug #470260
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> icon-9.5.0.ebuild:
+  Stable for ppc, wrt bug #470260
+
+  01 Mar 2014; Pacho Ramos <pacho@gentoo.org> icon-9.5.0.ebuild:
+  amd64 stable, bug #470260
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> icon-9.5.0.ebuild:
+  x86 stable wrt bug #470260
+
+  11 Feb 2014; Akinori Hattori <hattya@gentoo.org> icon-9.5.0.ebuild:
+  ia64 stable wrt bug #470260
+
+  08 Feb 2014; Jeroen Roovers <jer@gentoo.org> icon-9.5.0.ebuild:
+  Stable for HPPA (bug #470260).
+
+  09 Feb 2013; Fabian Groffen <grobian@gentoo.org> icon-9.5.0.ebuild:
+  Fix install location for Prefix
+
+  02 Dec 2012; Tim Harder <radhermit@gentoo.org> icon-9.4.3-r5.ebuild,
+  icon-9.5.0.ebuild:
+  Fix LICENSE (bug #444980 by ulm).
+
+  02 Dec 2012; Tim Harder <radhermit@gentoo.org> -icon-9.4.2.ebuild,
+  -icon-9.4.3.ebuild, -icon-9.4.3-r1.ebuild, -icon-9.4.3-r2.ebuild,
+  -icon-9.4.3-r3.ebuild:
+  Remove old.
+
+  04 Oct 2012; Christoph Junghans <ottxor@gentoo.org> icon-9.5.0.ebuild:
+  added prefix support (bug #433832)
+
+  19 Sep 2010; Raúl Porcel <armin76@gentoo.org> icon-9.5.0.ebuild:
+  Add ~s390 wrt #316195
+
+  19 May 2010; Raúl Porcel <armin76@gentoo.org> icon-9.4.3-r5.ebuild:
+  alpha/ia64/sparc stable wrt #274174
+
+  13 May 2010; Jeroen Roovers <jer@gentoo.org> icon-9.4.3-r5.ebuild:
+  Stable for HPPA (bug #274174).
+
+  13 May 2010; Markos Chandras <hwoarang@gentoo.org> icon-9.4.3-r5.ebuild:
+  Stable on amd64 wrt bug #274174
+
+  11 May 2010; Joseph Jezak <josejx@gentoo.org> icon-9.4.3-r5.ebuild:
+  Marked ppc/ppc64 stable for bug #274174.
+
+  28 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> icon-9.4.3-r5.ebuild:
+  x86 stable wrt bug #274174
+
+*icon-9.5.0 (18 Apr 2010)
+
+  18 Apr 2010; Harald van Dĳk <truedfx@gentoo.org> +icon-9.5.0.ebuild,
+  +files/icon-9.5.0-flags.patch:
+  Version bump, bug #314949
+
+  14 Apr 2010; Harald van Dĳk <truedfx@gentoo.org>
+  files/icon-9.4.3-flags.patch:
+  Use LDFLAGS when linking
+
+*icon-9.4.3-r5 (03 Jan 2010)
+
+  03 Jan 2010; Harald van Dĳk <truedfx@gentoo.org> -icon-9.4.3-r4.ebuild,
+  +icon-9.4.3-r5.ebuild:
+  Add -fno-strict-aliasing to CFLAGS, bug #299333
+
+*icon-9.4.3-r4 (06 Oct 2008)
+
+  06 Oct 2008; Harald van Dĳk <truedfx@gentoo.org>
+  +files/icon-9.4.3-flags.patch, +icon-9.4.3-r4.ebuild:
+  Use CC/CFLAGS/LDFLAGS variables (#240234 by Diego Pettenò)
+
+  27 Aug 2008; Raúl Porcel <armin76@gentoo.org> icon-9.4.3-r3.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+  25 Aug 2008; Markus Meier <maekke@gentoo.org> icon-9.4.3-r3.ebuild:
+  amd64 stable, bug #234191
+
+*icon-9.4.3-r3 (24 Aug 2008)
+
+  24 Aug 2008; Markus Meier <maekke@gentoo.org> +icon-9.4.3-r3.ebuild:
+  fix multilib-strict (bug #209558) and prestripped files (bug #209560)
+
+  23 Aug 2008; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Add GLEP 56 USE flag descriptions.
+
+  08 Aug 2008; nixnut <nixnut@gentoo.org> icon-9.4.3-r2.ebuild:
+  Stable on ppc wrt bug 234162
+
+  05 Apr 2008; Joseph Jezak <josejx@gentoo.org> icon-9.4.3-r2.ebuild:
+  Marked ~ppc.
+
+  24 Feb 2008; Brent Baude <ranger@gentoo.org> icon-9.4.3-r2.ebuild:
+  Marking icon-9.4.3-r2 ppc64 for bug 209465
+
+  14 Feb 2008; Raúl Porcel <armin76@gentoo.org> icon-9.4.3-r2.ebuild:
+  ia64 stable
+
+  14 Feb 2008; Jeroen Roovers <jer@gentoo.org> icon-9.4.3-r2.ebuild:
+  Stable for HPPA (bug #209465). Fixed quoting issues.
+
+  18 Dec 2007; Jeroen Roovers <jer@gentoo.org> icon-9.4.3-r2.ebuild:
+  Marked ~hppa (bug #195815).
+
+  26 Oct 2007; Raúl Porcel <armin76@gentoo.org> icon-9.4.3-r2.ebuild:
+  Add ~ia64
+
+  22 Jul 2007; Hans de Graaff <graaff@gentoo.org> icon-9.4.2.ebuild,
+  icon-9.4.3.ebuild, icon-9.4.3-r1.ebuild, icon-9.4.3-r2.ebuild:
+  Drop virtual/x11 references. Drop ppc-macos keyword due to missing keyword
+  with X dependencies.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  25 Sep 2006; Markus Rothe <corsair@gentoo.org> icon-9.4.3-r2.ebuild:
+  Added ~ppc64; bug #149013
+
+  15 May 2006; Thomas Cort <tcort@gentoo.org> icon-9.4.3-r2.ebuild:
+  Stable on alpha.
+
+  11 May 2006; Fabian Groffen <grobian@gentoo.org> icon-9.4.3-r2.ebuild:
+  Changed config name to macintosh as upstream seems to have changed it into
+  that, thanks to Cheyenne Wills in bug #131271
+
+  29 Apr 2006; George Shapovalov <george@gentoo.org>
+  -files/icon-9.40-gentoo.diff, -icon-9.40.ebuild:
+  removed old and broken 9.40 version
+
+  29 Apr 2006; Mark Loeser <halcy0n@gentoo.org> icon-9.40.ebuild:
+  Mark -x86; bug #130810
+
+  15 Apr 2006; Ferris McCormick <fmccor@gentoo.org> icon-9.4.3-r2.ebuild:
+  Stable on sparc (Bug #125258).  Still fails one test (general/table),
+  but is a little better than before.
+
+  14 Apr 2006; Mark Loeser <halcy0n@gentoo.org> icon-9.4.3-r2.ebuild:
+  Stable on x86; bug #125258
+
+*icon-9.4.3-r2 (11 Apr 2006)
+
+  11 Apr 2006; George Shapovalov <george@gentoo.org> +files/tests-943.patch,
+  +icon-9.4.3-r2.ebuild:
+  bug #125258 added fixes for the test failures, reenabled experimental
+  features (now fixed). Thanks to Cheyenne Wills for supplying patches
+
+  01 Apr 2006; George Shapovalov <george@gentoo.org> icon-9.40.ebuild:
+  removed sparc and ~amd64 from 9.40, will mask when 9.4.3 is stabilized on x86
+
+*icon-9.4.3-r1 (01 Apr 2006)
+
+  01 Apr 2006; George Shapovalov <george@gentoo.org> +icon-9.4.3-r1.ebuild:
+  falling back to stable CFLAGS, disabled experimental features, as they are
+  causing some tests to fail
+
+  27 Mar 2006; Ferris McCormick <fmccor@gentoo.org> icon-9.4.3.ebuild:
+  Add sparc keyword (Bug #114944).  This seems the least bad of several options:
+  For me, the "stable" version 9.40 flat out won't build; instead, it goes into
+  a '/bin/sh: line 0: cd: gpacks/README: Not a directory' loop.  The requested
+  version --- 9.4.3 --- builds and installs, but a couple of its tests fail with
+  FEATURES=test enabled.  But in this case, I'll mark it stable, just to help
+  get rid of 9.40.  (Note that my system is x11-base/xorg-x11-7.0-r1.)
+
+*icon-9.4.3 (27 Mar 2006)
+
+  27 Mar 2006; George Shapovalov <george@gentoo.org> +icon-9.4.3.ebuild:
+  new version. Install is more FHS and upstream frendly and fixes possible
+  collisions. Updated modular X dependencies. See #125258 for more details.
+  Thanks to Cheyenne Wills for sorting out many issues.
+
+  16 Mar 2006; Caleb Tennis <caleb@gentoo.org> icon-9.4.2.ebuild,
+  icon-9.40.ebuild:
+  Fix X dep to modular X
+
+  03 Nov 2005; Fabian Groffen <grobian@gentoo.org> icon-9.4.2.ebuild:
+  Note: 9.4.2 is newer than 9.40.  Marked 9.4.2 ~ppc-macos (bug #110834)
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> icon-9.40.ebuild:
+  re-added ~amd64
+
+  01 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> icon-9.4.2.ebuild:
+  Added to ~alpha.
+
+*icon-9.4.2 (30 Jul 2004)
+
+  30 Jul 2004; George Shapovalov <george@gentoo.org> icon-9.4.2.ebuild :
+  new version (#56013), thanks to Jens Troeger <jens.troeger@light-speed.de> for the report
+  cleaned up and modernized the ebuild. Changed versioning to match upstream. 
+
+  03 Jun 2004; Aron Griffis <agriffis@gentoo.org> icon-9.40.ebuild:
+  Fix use invocation
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*icon-9.40 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

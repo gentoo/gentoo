@@ -1,0 +1,12 @@
+diff -Naur orig/builds/posix/Makefile.in.firebird builds/posix/Makefile.in.firebird
+--- orig/builds/posix/Makefile.in.firebird	2010-11-09 12:42:45.000000000 -0500
++++ builds/posix/Makefile.in.firebird	2011-03-07 20:26:56.612573632 -0500
+@@ -332,7 +332,7 @@
+ .PHONY: libfbembed inet_server fb_smp_server embed_gfix embed_gbak embed_isql 
+ .PHONY: embed_gpre embed_util
+ 
+-classic_targets: $(PLAT_CLASSIC_PRE_TARGET) libfbembed inet_server fb_smp_server embed_gfix embed_gbak embed_isql \
++classic_targets: $(PLAT_CLASSIC_PRE_TARGET) libfbembed fbserver fb_smp_server embed_gfix embed_gbak embed_isql \
+ 	embed_gpre libfbclient embed_util embed_gdef embed_qli embed_fbudf $(PLAT_CLASSIC_POST_TARGET)
+ 
+ libfbembed:

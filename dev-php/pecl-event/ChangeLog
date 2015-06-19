@@ -1,0 +1,42 @@
+# ChangeLog for dev-php/pecl-event
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-event/ChangeLog,v 1.10 2015/04/14 18:07:35 grknight Exp $
+
+  14 Apr 2015; Brian Evans <grknight@gentoo.org> pecl-event-1.11.1.ebuild,
+  pecl-event-1.8.0.ebuild:
+  Fix repoman warning wrt slot operator
+
+  28 Feb 2015; Agostino Sarubbo <ago@gentoo.org> pecl-event-1.11.1.ebuild:
+  Stable for ia64, wrt bug #535304
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pecl-event-1.11.1.ebuild:
+  Stable for x86, wrt bug #535304
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pecl-event-1.11.1.ebuild:
+  Stable for amd64, wrt bug #535304
+
+*pecl-event-1.11.1 (19 Nov 2014)
+
+  19 Nov 2014; Markos Chandras <hwoarang@gentoo.org> +pecl-event-1.11.1.ebuild:
+  Version bump thanks to Ruslan Osmanov
+
+  18 Jan 2014; Pacho Ramos <pacho@gentoo.org> pecl-event-1.8.0.ebuild:
+  amd64 stable, bug #487120
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> pecl-event-1.8.0.ebuild:
+  Stable for ia64, wrt bug #487120
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pecl-event-1.8.0.ebuild:
+  Stable for x86, wrt bug #487120
+
+*pecl-event-1.8.0 (06 Oct 2013)
+
+  06 Oct 2013; Tom Wijsman <TomWij@gentoo.org> +pecl-event-1.8.0.ebuild:
+  Version bump to 1.8.0, proxied commit for ruslan_osmanov; reported on IRC.
+
+*pecl-event-1.7.8 (22 Sep 2013)
+
+  22 Sep 2013; Markos Chandras <hwoarang@gentoo.org> +metadata.xml,
+  +pecl-event-1.7.8.ebuild:
+  Initial commit. Ebuild by Ruslan Osmanov <rrosmanov@gmail.com>. He will also
+  be the maintainer. Bug #478466

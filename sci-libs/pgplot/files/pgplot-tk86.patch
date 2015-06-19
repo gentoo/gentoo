@@ -1,0 +1,47 @@
+--- drivers/xtk/tkpgplot.c.ORIG	2000-12-13 03:16:28.000000000 +0100
++++ drivers/xtk/tkpgplot.c	2013-01-15 11:02:27.221231471 +0100
+@@ -417,7 +417,7 @@
+ /*
+  * If Tk_Init() hasn't been called, then there won't be a main window
+  * yet. In such cases, Tk_MainWindow() places a suitable error message
+- * in interp->result.
++ * in Tcl_GetStringResult(interp).
+  */
+   if(!main_w)
+     return TCL_ERROR;
+@@ -2136,7 +2136,7 @@
+     tkpg->border = bd;
+     tkpg_draw_3d_border(tkpg);
+   } else {
+-    fprintf(stderr, "Tk_Get3DBorder failed: %s\n", tkpg->interp->result);
++    fprintf(stderr, "Tk_Get3DBorder failed: %s\n", Tcl_GetStringResult(tkpg->interp));
+   };
+ }
+ 
+@@ -2261,7 +2261,7 @@
+  *  argv            char ** The array of 'argc' configuration arguments.
+  * Output:
+  *  return           int    TCL_ERROR and the context of the error
+- *                          is recorded in interp->result.
++ *                          is recorded in Tcl_GetStringResult(result).
+  */
+ static int tkpg_scrollbar_error(TkPgplot *tkpg, Tcl_Interp *interp, 
+ 			       char *widget, char *view, int argc,
+@@ -2586,7 +2586,7 @@
+  * Output:
+  *  return   Tk_Window    The top-level window of the path, or NULL if
+  *                        it doesn't exist. In the latter case an error
+- *                        message will have been appended to interp->result.
++ *                        message will have been appended to Tcl_GetStringResult(interp).
+  */
+ static Tk_Window tkpg_toplevel_of_path(Tcl_Interp *interp, Tk_Window main_w,
+ 				       char *path)
+@@ -2630,7 +2630,7 @@
+   free(first);
+ /*
+  * If the window doesn't exist, Tk_NameToWindow() is documented to place
+- * an error message in interp->result, so just return the error condition.
++ * an error message in Tcl_GetStringResult(interp), so just return the error condition.
+  */
+   if(!w)
+     return NULL;

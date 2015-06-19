@@ -1,0 +1,30 @@
+From 93f4fe97f664c207e769186fe79961bf5a998447 Mon Sep 17 00:00:00 2001
+From: Nicolas Wack <wackou@gmail.com>
+Date: Thu, 25 Apr 2013 16:05:05 +0200
+Subject: [PATCH] Fixed some unicode issues when reading files from disk
+
+---
+ guessit/fileutils.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/guessit/fileutils.py b/guessit/fileutils.py
+index 2fca6b7..dc077e6 100644
+--- a/guessit/fileutils.py
++++ b/guessit/fileutils.py
+@@ -22,6 +22,7 @@
+ from guessit import s, u
+ import os.path
+ import zipfile
++import io
+ 
+ 
+ def split_path(path):
+@@ -84,4 +85,4 @@ def load_file_in_same_dir(ref_file, filename):
+             zfile = zipfile.ZipFile(zfilename)
+             return zfile.read('/'.join(path[i + 1:]))
+ 
+-    return u(open(os.path.join(*path)).read())
++    return u(io.open(os.path.join(*path), encoding='utf-8').read())
+-- 
+1.8.1.6
+

@@ -1,0 +1,19 @@
+--- laptop-mode-tools_1.65.org/etc/rules/99-laptop-mode.rules
++++ laptop-mode-tools_1.65.org/etc/rules/99-laptop-mode.rules
+@@ -1,3 +1,3 @@
+ ACTION=="change", SUBSYSTEM=="power_supply", RUN+="lmt-udev auto"
+ ACTION=="add|remove", SUBSYSTEM=="machinecheck", RUN+="lmt-udev auto force"
+-ACTION=="add|remove", SUBSYSTEM=="usb", RUN+="lmt-udev force modules=usb-autosuspend devices=%k"
++ACTION=="add|remove", SUBSYSTEM=="usb", RUN+="lmt-udev force modules=runtime-pm devices=%k"
+diff -urNp laptop-mode-tools_1.65.org/etc/laptop-mode/conf.d/usb-autosuspend.conf laptop-mode-tools_1.65/etc/laptop-mode/conf.d/usb-autosuspend.conf
+--- laptop-mode-tools_1.65.org/etc/laptop-mode/conf.d/usb-autosuspend.conf	2014-06-18 16:58:58.000000000 +0300
++++ laptop-mode-tools_1.65/etc/laptop-mode/conf.d/usb-autosuspend.conf	2014-08-30 22:00:12.725396259 +0300
+@@ -25,7 +25,7 @@ DEBUG=0
+ 
+ # Enable USB autosuspend feature?
+ # Set to 0 to disable
+-CONTROL_USB_AUTOSUSPEND="auto"
++CONTROL_USB_AUTOSUSPEND="0"
+ 
+ # Set this to use opt-in/whitelist instead of opt-out/blacklist for deciding
+ # which USB devices should be autosuspended.

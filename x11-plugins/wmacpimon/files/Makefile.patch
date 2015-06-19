@@ -1,0 +1,24 @@
+--- Makefile	2010-09-06 11:33:16.000000000 +0200
++++ Makefile.new	2010-09-06 11:36:28.000000000 +0200
+@@ -1,8 +1,5 @@
+-OPT	= -O3 -DACPI
+-
+-CC	= gcc
+-CFLAGS	= $(OPT) -Wall -I/usr/X11R6/include
+-LDFLAGS = $(OPT) -L/usr/X11R6/lib -lX11 -lXpm -lXext
++CFLAGS	+= -DACPI -Wall -I/usr/X11R6/include
++LIBS = -DACPI -L/usr/X11R6/lib -lX11 -lXpm -lXext
+ 
+ SRCS	= wmacpimon.c libacpi.c
+ OBJS	= wmacpimon.o libacpi.o
+@@ -11,8 +8,10 @@
+ all:	wmacpimon wmacpimond
+ 
+ wmacpimon:	$(OBJS)
++	$(CC) $(LDFLAGS) -o wmacpimon $^ $(LIBS)
+ 
+ wmacpimond:	$(OBJZ)
++	$(CC) $(LDFLAGS) -o wmacpimond $^ $(LIBS)
+ 
+ clean:
+ 	rm -f *.o *~ wmacpimon wmacpimond trace *.out *.bb *.bbg

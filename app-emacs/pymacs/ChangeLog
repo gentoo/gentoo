@@ -1,0 +1,248 @@
+# ChangeLog for app-emacs/pymacs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/pymacs/ChangeLog,v 1.69 2015/06/07 07:52:35 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  06 Jun 2015; Ian Delaney <idella4@gentoo.org> pymacs-0.25-r1.ebuild:
+  reset HOMEPAGE wrt bug 503240
+
+  31 Mar 2015; Ian Delaney <idella4@gentoo.org> pymacs-0.25-r1.ebuild:
+  Clean old python impls, add py3.4 support and correction to install phase
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> pymacs-0.25-r1.ebuild:
+  Stable for ia64, wrt bug #490096
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pymacs-0.25-r1.ebuild:
+  Stable for x86, wrt bug #490096
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> pymacs-0.25-r1.ebuild:
+  amd64 stable, bug #490096
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pymacs-0.25-r1.ebuild:
+  Stable for ppc64, wrt bug #490096
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pymacs-0.25-r1.ebuild:
+  Stable for ppc, wrt bug #490096
+
+  29 Nov 2013; Markus Meier <maekke@gentoo.org> pymacs-0.25-r1.ebuild:
+  arm stable, bug #490096
+
+  11 Nov 2013; Jeroen Roovers <jer@gentoo.org> pymacs-0.25-r1.ebuild:
+  Stable for HPPA (bug #490096).
+
+  02 Nov 2013; Ulrich Müller <ulm@gentoo.org> -pymacs-0.24_beta2.ebuild:
+  Remove intermediate version.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> pymacs-0.25-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*pymacs-0.25-r1 (16 Mar 2013)
+
+  16 Mar 2013; Ulrich Müller <ulm@gentoo.org> -pymacs-0.25.ebuild,
+  +pymacs-0.25-r1.ebuild:
+  Further fixes from bug 457942 to work better with python eclasses.
+
+*pymacs-0.25 (17 Feb 2013)
+
+  17 Feb 2013; Ulrich Müller <ulm@gentoo.org> +pymacs-0.25.ebuild:
+  Version bump, bug 457942.
+
+*pymacs-0.24_beta2 (07 Oct 2011)
+
+  07 Oct 2011; Ulrich Mueller <ulm@gentoo.org> +pymacs-0.24_beta2.ebuild:
+  Version bump and support for Python 3, bug 385259.
+
+  05 Oct 2011; Alexis Ballier <aballier@gentoo.org> pymacs-0.23-r1.ebuild:
+  remove ptex dep as it is going away
+
+  13 Jan 2011; Ulrich Mueller <ulm@gentoo.org> -pymacs-0.23.ebuild:
+  Remove old.
+
+  13 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> pymacs-0.23-r1.ebuild:
+  ppc64 stable wrt #330311
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org> pymacs-0.23-r1.ebuild:
+  stable ppc, bug 330311
+
+  10 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pymacs-0.23.ebuild, pymacs-0.23-r1.ebuild:
+  Update EAPI.
+
+  06 Oct 2010; Jeroen Roovers <jer@gentoo.org> pymacs-0.23-r1.ebuild:
+  Stable for HPPA (bug #330311).
+
+  05 Sep 2010; Raúl Porcel <armin76@gentoo.org> pymacs-0.23-r1.ebuild:
+  ia64/s390/sh stable wrt #330311
+
+  21 Aug 2010; Markus Meier <maekke@gentoo.org> pymacs-0.23-r1.ebuild:
+  arm stable, bug #330311
+
+  31 Jul 2010; Markos Chandras <hwoarang@gentoo.org> pymacs-0.23-r1.ebuild:
+  Stable on amd64 wrt bug #330311
+
+  30 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  pymacs-0.23-r1.ebuild:
+  stable x86, bug 330311
+
+*pymacs-0.23-r1 (08 Apr 2010)
+
+  08 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  +pymacs-0.23-r1.ebuild:
+  Fix PYTHON_DEPEND usage and only use Python 2.x, fixes bug 311181
+
+  24 Nov 2009; Christian Faulhammer <fauli@gentoo.org> pymacs-0.23.ebuild:
+  import changes from Prefix overlay
+
+  02 Jul 2009; Jeroen Roovers <jer@gentoo.org> pymacs-0.23.ebuild:
+  Stable for HPPA too.
+
+  30 May 2009; Ulrich Mueller <ulm@gentoo.org> pymacs-0.23.ebuild:
+  Remove app-text/tetex from dependencies, bug 227443.
+
+  29 Jan 2009; Christian Faulhammer <fauli@gentoo.org>
+  -files/0.22-character-encoding-gentoo.patch, -pymacs-0.22-r1.ebuild:
+  clean up
+
+  24 Nov 2008; Ulrich Mueller <ulm@gentoo.org> pymacs-0.23.ebuild:
+  Remove test from IUSE, bug 232497.
+
+  24 Nov 2008; Christian Faulhammer <opfer@gentoo.org> pymacs-0.23.ebuild:
+  Additional USE=test dependency is not needed as the real failure from bug
+  232497 is connected to USE=doc
+
+  20 Nov 2008; Ulrich Mueller <ulm@gentoo.org> pymacs-0.23.ebuild:
+  Additional dependencies with USE=doc for multirow.sty and aeguill.sty,
+  fixes bug 247703.
+
+  27 Oct 2008; Ulrich Mueller <ulm@gentoo.org> pymacs-0.23.ebuild:
+  Replace virtual/tetex dependency by tetex or ptex, bug 222501.
+
+  25 Jul 2008; Ulrich Mueller <ulm@gentoo.org> pymacs-0.23.ebuild:
+  Add virtual/tetex into any-of-many dependency, bug 232497.
+
+  21 Jul 2008; Christian Faulhammer <opfer@gentoo.org> pymacs-0.23.ebuild:
+  add USE=test with dependency on dev-texlive/texlive-langfrench, needed to
+  fix bug 232497, reported by carlo
+
+  09 Jul 2008; Markus Rothe <corsair@gentoo.org> pymacs-0.23.ebuild:
+  Stable on ppc64; bug #212241
+
+  21 May 2008; Ulrich Mueller <ulm@gentoo.org> pymacs-0.23.ebuild:
+  Set VARTEXFONTS, bug 223077.
+
+  23 Mar 2008; Raúl Porcel <armin76@gentoo.org> pymacs-0.23.ebuild:
+  ia64 stable wrt #214246
+
+  22 Mar 2008; nixnut <nixnut@gentoo.org> pymacs-0.23.ebuild:
+  Stable on ppc wrt bug 214246
+
+  22 Mar 2008; Christian Faulhammer <opfer@gentoo.org> pymacs-0.23.ebuild:
+  stable x86/amd64, bug 214246
+
+*pymacs-0.23 (16 Feb 2008)
+
+  16 Feb 2008; Ulrich Mueller <ulm@gentoo.org> -pymacs-0.23_beta7.ebuild,
+  -pymacs-0.23_beta9.ebuild, +pymacs-0.23.ebuild:
+  Version bump.
+
+*pymacs-0.23_beta9 (14 Feb 2008)
+
+  14 Feb 2008; Ulrich Mueller <ulm@gentoo.org> -pymacs-0.23_beta6.ebuild,
+  +pymacs-0.23_beta9.ebuild:
+  New beta version.
+
+*pymacs-0.23_beta7 (11 Feb 2008)
+
+  11 Feb 2008; Ulrich Mueller <ulm@gentoo.org> +pymacs-0.23_beta7.ebuild:
+  New beta version.
+
+*pymacs-0.23_beta6 (09 Feb 2008)
+
+  09 Feb 2008; Ulrich Mueller <ulm@gentoo.org>
+  -files/0.23_beta5-fix-pytest-nonascii.patch, -pymacs-0.23_beta5.ebuild,
+  +pymacs-0.23_beta6.ebuild:
+  New beta version.
+
+*pymacs-0.23_beta5 (08 Feb 2008)
+
+  08 Feb 2008; Ulrich Mueller <ulm@gentoo.org>
+  +files/0.23_beta5-fix-pytest-nonascii.patch, files/50pymacs-gentoo.el,
+  +pymacs-0.23_beta5.ebuild:
+  Version bump. Beta release, doesn't install contribs.
+
+  26 Jul 2007; Markus Rothe <corsair@gentoo.org> pymacs-0.22-r1.ebuild:
+  Added ~ppc64; bug #186188
+
+  09 Jul 2007; Ulrich Mueller <ulm@gentoo.org> pymacs-0.22-r1.ebuild:
+  Fixed SITEFILE handling, bug #184693. Dropped ppc-macos keyword.
+
+  04 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  pymacs-0.22-r1.ebuild:
+  removed virtual/emacs from DEPEND; adjusted DESCRIPTION; added trailing
+  backslash to HOMEPAGE URI; prettied SITEFILE handling
+
+  23 May 2007; Diego Pettenò <flameeyes@gentoo.org> pymacs-0.22-r1.ebuild:
+  Add ~x86-fbsd keyword as per bug #178375 by Joe Peterson.
+
+  07 May 2007; Jeroen Roovers <jer@gentoo.org> pymacs-0.22-r1.ebuild:
+  Marked ~hppa (bug #177495).
+
+  30 Mar 2007; Christian Faulhammer <opfer@gentoo.org> -pymacs-0.22.ebuild:
+  clean up
+
+  27 Mar 2007; Peter Weller <welp@gentoo.org> pymacs-0.22-r1.ebuild:
+  Stable on amd64 wrt bug 167807
+
+  20 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  pymacs-0.22-r1.ebuild:
+  remove some files from dodoc to avoid double installation resulting in
+  user-needed input, reported by Ulrich Mueller <ulm@kph.uni-mainz.de> in bug
+  167280
+
+  07 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> pymacs-0.22-r1.ebuild:
+  Stable on x86.
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  pymacs-0.22-r1.ebuild:
+  ppc stable
+
+  19 Aug 2006; Fabian Groffen <grobian@gentoo.org> pymacs-0.22-r1.ebuild:
+  Marked ppc-macos stable (bug #115186)
+
+*pymacs-0.22-r1 (08 Aug 2006)
+
+  08 Aug 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/0.22-character-encoding-gentoo.patch, +pymacs-0.22-r1.ebuild:
+  Correct character encoding in Python source files; Resolves Bug #97943.
+
+  11 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  files/50pymacs-gentoo.el:
+  Add site-lisp path to load-path; Enables non-Portage Emacs builds to use
+  /usr/share/emacs/site-lisp/
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> pymacs-0.22.ebuild:
+  Stable on ppc.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> pymacs-0.22.ebuild:
+  stable on amd64
+
+  10 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> pymacs-0.22.ebuild:
+  Added to ~ppc.
+
+  10 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> pymacs-0.22.ebuild:
+  Stable on x86.
+
+  08 Dec 2004; Simon Stelling <blubb@gentoo.org> pymacs-0.22.ebuild:
+  added ~amd64
+
+  11 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> pymacs-0.22.ebuild:
+  Added to ~ppc-macos.
+
+*pymacs-0.22 (10 Nov 2004)
+
+  10 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +files/50pymacs-gentoo.el, +pymacs-0.22.ebuild:
+  Initial import. Ebuild submitted by Nick Savchenko <rust@voliacable.com>;
+  bug #69323.

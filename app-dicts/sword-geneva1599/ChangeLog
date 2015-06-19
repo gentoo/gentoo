@@ -1,0 +1,12 @@
+# ChangeLog for app-dicts/sword-geneva1599
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/sword-geneva1599/ChangeLog,v 1.2 2014/01/05 22:56:39 creffett Exp $
+
+  05 Jan 2014; Chris Reffett <creffett@gentoo.org> sword-geneva1599-1.1.ebuild:
+  EAPI bump
+
+*sword-geneva1599-1.1 (14 Mar 2008)
+
+  14 Mar 2008; Steve Dibb <beandog@gentoo.org> +metadata.xml,
+  +sword-geneva1599-1.1.ebuild:
+  Initial commit

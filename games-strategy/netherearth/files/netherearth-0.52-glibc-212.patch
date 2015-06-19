@@ -1,0 +1,23 @@
+http://bugs.gentoo.org/335137
+
+--- sources/mainmenu.cpp
++++ sources/mainmenu.cpp
+@@ -3,6 +3,7 @@
+ #else
+ #include <stddef.h>
+ #include <sys/types.h>
++#include <sys/stat.h>
+ #include <dirent.h>
+ #endif
+ 
+--- sources/nethersave.cpp
++++ sources/nethersave.cpp
+@@ -1,5 +1,8 @@
+ #ifdef _WIN32
+ #include "windows.h"
++#else
++#include <sys/types.h>
++#include <sys/stat.h>
+ #endif
+ 
+ #include "string.h"

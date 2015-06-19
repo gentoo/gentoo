@@ -1,0 +1,37 @@
+diff -ruN sys.orig/conf/kern.post.mk sys/conf/kern.post.mk
+--- sys.orig/conf/kern.post.mk	2007-03-23 18:55:59 -0300
++++ sys/conf/kern.post.mk	2008-06-18 19:51:13 -0300
+@@ -85,7 +85,9 @@
+ ${FULLKERNEL}: ${SYSTEM_DEP} vers.o
+ 	@rm -f ${.TARGET}
+ 	@echo linking ${.TARGET}
+-	${SYSTEM_LD}
++	${SYSTEM_LD} -o ${.TARGET}.tmp
++	@sh $S/tools/gen-ld-u-options ${.TARGET}.tmp > ${.TARGET}.lopt
++	${SYSTEM_LD} "@${.TARGET}.lopt"
+ .if defined(CTFMERGE)
+ 	${SYSTEM_CTFMERGE}
+ .endif
+diff -ruN sys.orig/conf/kmod.mk sys/conf/kmod.mk
+--- sys.orig/conf/kmod.mk	2008-06-18 09:11:53 -0300
++++ sys/conf/kmod.mk	2008-06-18 19:50:01 -0300
+@@ -176,7 +176,8 @@
+ 
+ .if ${MACHINE_ARCH} != amd64
+ ${FULLPROG}: ${KMOD}.kld
+-	${LD} -Bshareable ${LDFLAGS} -o ${.TARGET} ${KMOD}.kld
++	sh ./@/tools/gen-ld-u-options ${KMOD}.kld > ${KMOD}.lopt
++	${LD} -Bshareable ${LDFLAGS} -o ${.TARGET} ${KMOD}.kld "@${KMOD}.lopt"
+ .if !defined(DEBUG_FLAGS)
+ 	${OBJCOPY} --strip-debug ${.TARGET}
+ .endif
+diff -ruN sys.orig/tools/gen-ld-u-options sys/tools/gen-ld-u-options
+--- sys.orig/tools/gen-ld-u-options	1969-12-31 21:00:00 -0300
++++ sys/tools/gen-ld-u-options	2008-06-18 19:47:56 -0300
+@@ -0,0 +1,6 @@
++#!/bin/sh
++
++for i in `objdump -h -w $1 | grep set_ | cut -c5- | cut -f1 -d " "`
++do
++    echo -n " -u __start_$i -u __stop_$i "
++done

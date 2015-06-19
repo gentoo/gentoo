@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sys-apps/attr sys-apps/help2man sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=defragmenter that runs in userspace while the system is used
+EAPI=5
+HOMEPAGE=http://vleu.net/shake/
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-3
+RDEPEND=sys-apps/attr
+SLOT=0
+SRC_URI=http://download.savannah.nongnu.org/releases/shake/shake-0.999.tar.bz2
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=bd039eaee9471c2693ade84469e1b6da

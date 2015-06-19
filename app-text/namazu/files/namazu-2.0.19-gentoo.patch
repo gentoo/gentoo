@@ -1,0 +1,29 @@
+diff -Naur namazu-2.0.19.orig/filter/Makefile.am namazu-2.0.19/filter/Makefile.am
+--- namazu-2.0.19.orig/filter/Makefile.am	2008-05-03 02:07:03.000000000 +0900
++++ namazu-2.0.19/filter/Makefile.am	2009-03-13 01:04:20.000000000 +0900
+@@ -51,9 +51,3 @@
+ 
+ ETAGS_ARGS = $(filter_DATA) --lang=perl
+ TAGS_DEPENDENCIES = $(filter_DATA)
+-
+-# To remove Windows specific files installed by Namazu 2.0 and/or 2.0.1
+-# and old gfilter.pl (Namazu 2.0.7 or earlier).
+-install-data-local:
+-	rm -f $(filterdir)/ole*.pl
+-	rm -f $(filterdir)/gfilter.pl
+diff -Naur namazu-2.0.19.orig/filter/Makefile.in namazu-2.0.19/filter/Makefile.in
+--- namazu-2.0.19.orig/filter/Makefile.in	2009-03-12 23:24:48.000000000 +0900
++++ namazu-2.0.19/filter/Makefile.in	2009-03-13 01:05:08.000000000 +0900
+@@ -455,12 +455,6 @@
+ 	uninstall uninstall-am uninstall-filterDATA uninstall-info-am \
+ 	uninstall-info-recursive uninstall-recursive
+ 
+-
+-# To remove Windows specific files installed by Namazu 2.0 and/or 2.0.1
+-# and old gfilter.pl (Namazu 2.0.7 or earlier).
+-install-data-local:
+-	rm -f $(filterdir)/ole*.pl
+-	rm -f $(filterdir)/gfilter.pl
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:

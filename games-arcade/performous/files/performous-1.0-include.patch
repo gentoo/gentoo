@@ -1,0 +1,10 @@
+--- performous-1.0/game/song.hh.orig	2015-03-31 13:56:13.546360617 -0400
++++ performous-1.0/game/song.hh	2015-03-31 13:56:23.609025021 -0400
+@@ -3,6 +3,7 @@
+ #include "i18n.hh"
+ #include "notes.hh"
+ #include "util.hh"
++#include "fs.hh"
+ #include <boost/foreach.hpp>
+ #include <boost/noncopyable.hpp>
+ #include <stdexcept>

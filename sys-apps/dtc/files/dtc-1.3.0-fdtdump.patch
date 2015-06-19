@@ -1,0 +1,118 @@
+https://bugs.gentoo.org/372895
+
+From 8f459c5d72673e1a3a119ac58a7eee56236fca73 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 25 Oct 2011 17:29:24 -0400
+Subject: [PATCH] fdtdump: rename from ftdump
+
+The freetype package already installs a binary named "ftdump", so the dtc
+package conflicts with that.  So rename the newer dtc tool to "fdtdump".
+This even makes a bit more sense:
+	ftdump: [F]lat device [T]ree [dump]
+	fdtdump: [F]lat [D]evice [T]ree [dump]
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+---
+ .gitignore               |  2 +-
+ Documentation/manual.txt | 10 +++++-----
+ Makefile                 |  6 +++---
+ Makefile.utils           |  6 +++---
+ ftdump.c => fdtdump.c    |  2 +-
+ 5 files changed, 13 insertions(+), 13 deletions(-)
+ rename ftdump.c => fdtdump.c (97%)
+
+diff --git a/Documentation/manual.txt b/Documentation/manual.txt
+index f8a8a7b..14508f3 100644
+--- a/Documentation/manual.txt
++++ b/Documentation/manual.txt
+@@ -21,7 +21,7 @@ III - libfdt
+ 
+ IV - Utility Tools
+     1) convert-dtsv0 -- Conversion to Version 1
+-    1) ftdump
++    1) fdtdump
+ 
+ 
+ I - "dtc", the device tree compiler
+@@ -643,10 +643,10 @@ a new file with a "v1" appended the filename.
+ Comments, empty lines, etc. are preserved.
+ 
+ 
+-2) ftdump -- Flat Tree dumping utility
++2) fdtdump -- Flat Device Tree dumping utility
+ 
+-The ftdump program prints a readable version of a flat device tree file.
++The fdtdump program prints a readable version of a flat device tree file.
+ 
+-The syntax of the ftdump command line is:
++The syntax of the fdtdump command line is:
+ 
+-    ftdump <DTB-file-name>
++    fdtdump <DTB-file-name>
+diff --git a/Makefile b/Makefile
+index b32409b..4582f5d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -109,7 +109,7 @@ include Makefile.utils
+ 
+ BIN += convert-dtsv0
+ BIN += dtc
+-BIN += ftdump
++BIN += fdtdump
+ 
+ SCRIPTS = dtdiff
+ 
+@@ -119,7 +119,7 @@ all: $(BIN) libfdt
+ ifneq ($(DEPTARGETS),)
+ -include $(DTC_OBJS:%.o=%.d)
+ -include $(CONVERT_OBJS:%.o=%.d)
+--include $(FTDUMP_OBJS:%.o=%.d)
++-include $(FDTDUMP_OBJS:%.o=%.d)
+ endif
+ 
+ 
+@@ -178,7 +178,7 @@ convert-dtsv0: $(CONVERT_OBJS)
+ 	@$(VECHO) LD $@
+ 	$(LINK.c) -o $@ $^
+ 
+-ftdump:	$(FTDUMP_OBJS)
++fdtdump:	$(FDTDUMP_OBJS)
+ 
+ 
+ #
+diff --git a/Makefile.utils b/Makefile.utils
+index 0ed9297..fae5b00 100644
+--- a/Makefile.ftdump
++++ b/Makefile.ftdump
+@@ -4,8 +4,8 @@
+ # into other systems of Makefiles.
+ #
+ 
+-FTDUMP_SRCS = \
+-	ftdump.c
++FDTDUMP_SRCS = \
++	fdtdump.c
+ 
+-FTDUMP_GEN_SRCS =
++FDTDUMP_GEN_SRCS =
+ 
+-FTDUMP_OBJS = $(FTDUMP_SRCS:%.c=%.o) $(FTDUMP_GEN_SRCS:%.c=%.o)
++FDTDUMP_OBJS = $(FDTDUMP_SRCS:%.c=%.o) $(FDTDUMP_GEN_SRCS:%.c=%.o)
+diff --git a/ftdump.c b/fdtdump.c
+similarity index 97%
+rename from ftdump.c
+rename to fdtdump.c
+index cc55fe2..207a46d 100644
+--- a/ftdump.c
++++ b/fdtdump.c
+@@ -1,5 +1,5 @@
+ /*
+- * ftdump.c - Contributed by Pantelis Antoniou <pantelis.antoniou AT gmail.com>
++ * fdtdump.c - Contributed by Pantelis Antoniou <pantelis.antoniou AT gmail.com>
+  */
+ 
+ #include <stdint.h>
+-- 
+1.7.12.4
+

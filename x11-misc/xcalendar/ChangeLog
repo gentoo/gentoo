@@ -1,0 +1,108 @@
+# ChangeLog for x11-misc/xcalendar
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xcalendar/ChangeLog,v 1.32 2014/06/29 22:50:12 dilfridge Exp $
+
+  29 Jun 2014; Andreas K. Huettel <dilfridge@gentoo.org> -xcalendar-4.0.ebuild:
+  Remove old
+
+  23 Dec 2012; Ulrich Müller <ulm@gentoo.org> xcalendar-4.0.ebuild,
+  xcalendar-4.0-r1.ebuild:
+  Fix LICENSE, see notices in source files, bug 446768.
+
+  24 Oct 2012; Ulrich Müller <ulm@gentoo.org> xcalendar-4.0.ebuild,
+  xcalendar-4.0-r1.ebuild:
+  Update dependency after package move from x11-libs/openmotif to
+  x11-libs/motif.
+
+  19 Feb 2012; Tobias Klausmann <klausman@gentoo.org> xcalendar-4.0-r1.ebuild:
+  Stable on alpha, bug #391577
+
+  04 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> xcalendar-4.0-r1.ebuild:
+  Change to correct X11 app-defaults directory.
+
+  02 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> xcalendar-4.0-r1.ebuild:
+  ppc64 stable wrt #391577
+
+  04 Jan 2012; Brent Baude <ranger@gentoo.org> xcalendar-4.0-r1.ebuild:
+  Marking xcalendar-4.0-r1 ppc for bug 391577
+
+  11 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> xcalendar-4.0-r1.ebuild:
+  x86 stable wrt bug #391577
+
+  05 Dec 2011; Tony Vroon <chainsaw@gentoo.org> xcalendar-4.0-r1.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo,
+  Tomáš "Mepho" Pružina & Elijah "Armageddon" El Lazkani in bug #391577.
+
+  10 Oct 2010; Ulrich Mueller <ulm@gentoo.org> xcalendar-4.0.ebuild,
+  xcalendar-4.0-r1.ebuild:
+  Fix openmotif dependency.
+
+*xcalendar-4.0-r1 (01 Sep 2010)
+
+  01 Sep 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  +xcalendar-4.0-r1.ebuild, +files/xcalendar-4.0-implicits.patch:
+  Respect CC,CFLAGS,LDFLAGS. Fixes bug 335520. Thanks to Diego for the
+  report. Fix multilib paths and implicit functions declarations. Add
+  missing dependency on x11-misc/gccmakedep
+
+  23 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> xcalendar-4.0.ebuild:
+  amd64 stable
+
+  02 Aug 2007; Roy Marples <uberlord@gentoo.org> xcalendar-4.0.ebuild:
+  Keyworded ~x86-fbsd, #156902 thanks to Marc Kowarsky.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; xcalendar-4.0.ebuild:
+  Drop virtual/x11 references.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  29 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org> xcalendar-4.0.ebuild:
+  Added x11-misc/imake to DEPEND, see bug #140611.
+
+  21 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> xcalendar-4.0.ebuild:
+  Fixed DEPEND for modular X.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> xcalendar-4.0.ebuild:
+  Stable on ppc.
+
+  03 Feb 2005; <avatar@gentoo.org> xcalendar-4.0.ebuild:
+  Added to ~ppc.
+
+  22 Aug 2004; Tom Gall <tgall@gentoo.org> xcalendar-4.0.ebuild:
+  stable on ppc64, bug #58695
+
+  18 Jul 2004; Daniel Ahlberg <aliz@gentoo.org> xcalendar-4.0.ebuild:
+  Added amd64 keyword, closing #57484.
+
+  14 Jun 2004; <pyrania@gentoo.org> xcalendar-4.0.ebuild:
+  Added motif to IUSE.
+
+  01 Jun 2004; Brandon Hale <tseng@gentoo.org> xcalendar-4.0.ebuild:
+  Add IUSE=
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> xcalendar-4.0.ebuild:
+  Add inherit eutils
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> xcalendar-4.0.ebuild:
+  Go epatch!
+
+  05 Feb 2004; Aron Griffis <agriffis@gentoo.org> xcalendar-4.0.ebuild:
+  stable on alpha and x86 for bug 40403.  Thanks to Allan Graves for testing
+
+  11 Jan 2004; Heinrich Wendel <lanius@gentoo.org> xcalendar-4.0.ebuild:
+  fixed motif dep
+
+  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+  26 Sep 2003; Michael Sterrett <msterret@gentoo.org> xcalendar-4.0.ebuild:
+  x11-libs/xaw has gone away; seems to not need it to install; tidy
+
+*xcalendar-4.0 (15 Dec 2002)
+
+  15 Dec 2002; Seemant Kulleen <seemant@gentoo.org> xcalendar-4.0.ebuild
+  files/xcalendar-4.0-motif-gentoo.diff files/digest-xcalendar-4.0 ChangeLog :
+
+  New package which is an interactive calendar/notepad.  Submitted by:
+  scott@lampert.org (Scott Lampert) in bug #11255.

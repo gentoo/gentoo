@@ -1,0 +1,312 @@
+# ChangeLog for sys-apps/tuxonice-userui
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/tuxonice-userui/ChangeLog,v 1.38 2015/05/15 10:45:03 pacho Exp $
+
+  15 May 2015; Pacho Ramos <pacho@gentoo.org>
+  +files/tuxonice-userui-1.1-freetype-2.5.patch, tuxonice-userui-1.1-r2.ebuild:
+  Fix build with freetype-2.5 (#519154)
+
+  30 Dec 2014; Mike Gilbert <floppym@gentoo.org> tuxonice-userui-1.1-r2.ebuild:
+  From Arfrever: Update dependencies (bug #526844).
+
+  29 Dec 2014; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Set maintainer=Arfrever.
+
+  21 Sep 2013; Pacho Ramos <pacho@gentoo.org> -tuxonice-userui-1.0.ebuild,
+  metadata.xml:
+  Drop old version and me as maintainer
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> tuxonice-userui-1.1-r2.ebuild:
+  Stable for x86, wrt bug #454028
+
+  27 Jan 2013; Pacho Ramos <pacho@gentoo.org> tuxonice-userui-1.1-r2.ebuild:
+  Don't append -O3, bug #454304 by Agostino Sarubbo
+
+  27 Jan 2013; Agostino Sarubbo <ago@gentoo.org> tuxonice-userui-1.1-r2.ebuild:
+  Stable for amd64, wrt bug #454028
+
+  16 Dec 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due retirement, #95685
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+  15 Nov 2012; Pacho Ramos <pacho@gentoo.org> -tuxonice-userui-1.1-r1.ebuild,
+  tuxonice-userui-1.1-r2.ebuild:
+  Add missing dep, bug #443280 by Joost Ruis; drop old.
+
+*tuxonice-userui-1.1-r2 (07 Nov 2012)
+
+  07 Nov 2012; Pacho Ramos <pacho@gentoo.org> +tuxonice-userui-1.1-r2.ebuild:
+  FBSPLASH support is always compiled by error, bug #440110 by Sergey Popov.
+
+  28 Oct 2012; Pacho Ramos <pacho@gentoo.org> tuxonice-userui-1.1-r1.ebuild:
+  Rephrase elog information to be a bit more general (#439120#c11 by Robert
+  Cabrera.
+
+*tuxonice-userui-1.1-r1 (28 Oct 2012)
+
+  28 Oct 2012; Pacho Ramos <pacho@gentoo.org> +tuxonice-userui-1.1-r1.ebuild,
+  -tuxonice-userui-1.1.ebuild:
+  Compile fbsplash support properly and add migration information for people
+  upgrading from 1.0, bug #439120 by Sergey Fionov.
+
+*tuxonice-userui-1.1 (20 Oct 2012)
+
+  20 Oct 2012; Pacho Ramos <pacho@gentoo.org> +tuxonice-userui-1.1.ebuild:
+  Version bump.
+
+  16 Oct 2011; Pacho Ramos <pacho@gentoo.org> tuxonice-userui-1.0.ebuild:
+  Fix dependency on bzip2 static for future versions as reported by Arfrever.
+
+  16 Oct 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Co-maintain this also.
+
+  26 Sep 2011; Markos Chandras <hwoarang@gentoo.org>
+  tuxonice-userui-1.0.ebuild, +files/tuxonice-userui-1.0-libpng15.patch:
+  Add libpng-1.5 patch. Thanks to Samuli Suominen <ssuominen@gentoo.org>. Bug
+  #384481
+
+  15 Aug 2011; Krzysztof Pawlik <nelchael@gentoo.org>
+  tuxonice-userui-1.0.ebuild:
+  Require media-libs/freetype with static libraries, see bug #379143.
+
+  05 Aug 2011; Krzysztof Pawlik <nelchael@gentoo.org>
+  tuxonice-userui-1.0.ebuild:
+  Fix linking with static bzip2 (from freetype) when building tuxonice userui
+  with fbsplash enabled, see bug #375243.
+
+  26 Dec 2010; Krzysztof Pawlik <nelchael@gentoo.org>
+  tuxonice-userui-1.0.ebuild:
+  Depend either on new libpng with static-libs USE flag enabled or older which
+  always builds static library, see bug #349662.
+
+  12 Dec 2010; Krzysztof Pawlik <nelchael@gentoo.org>
+  tuxonice-userui-1.0.ebuild:
+  Require lcms static library, see bug #339769.
+
+  29 Mar 2010; Krzysztof Pawlik <nelchael@gentoo.org> metadata.xml:
+  Update my first name.
+
+  04 Jun 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  -tuxonice-userui-0.7.2.ebuild, -tuxonice-userui-0.7.3.ebuild,
+  -files/tuxonice-userui-0.7.3-Makefiles.patch:
+  Remove old/unneeded versions.
+
+  03 Jun 2009; Dawid Węgliński <cla@gentoo.org>
+  tuxonice-userui-1.0.ebuild:
+  Stable on amd64 (bug #267768)
+
+  14 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  tuxonice-userui-1.0.ebuild:
+  stable x86, bug 267768
+
+  05 Apr 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  files/tuxonice-userui-1.0-Makefiles.patch:
+  Update patch for fbsplash compile.
+
+*tuxonice-userui-1.0 (04 Apr 2009)
+
+  04 Apr 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/tuxonice-userui-1.0-Makefiles.patch, +tuxonice-userui-1.0.ebuild:
+  Version bump.
+
+  22 Feb 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  tuxonice-userui-0.7.3.ebuild:
+  Add missing media-libs/libmng to DEPEND, see bug #259800.
+
+  02 Feb 2009; Krzysiek Pawlik <nelchael@gentoo.org> ChangeLog:
+  Fix ChangeLog entries.
+
+  14 Jan 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/tuxonice-userui-0.7.3-Makefiles.patch,
+  tuxonice-userui-0.7.3.ebuild:
+  Restore fbsplash USE flag.
+
+*tuxonice-userui-0.7.3 (08 Jan 2009)
+
+  08 Jan 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  +tuxonice-userui-0.7.3.ebuild:
+  Version bump, dropped fbsplash patch for now.
+
+  23 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  24 Mar 2008; Markus Meier <maekke@gentoo.org>
+  tuxonice-userui-0.7.2.ebuild:
+  amd64 stable, bug #202064
+
+  28 Dec 2007; Markus Meier <maekke@gentoo.org>
+  tuxonice-userui-0.7.2.ebuild:
+  x86 stable, bug #202064
+
+  23 Dec 2007; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml:
+  Change maintainer.
+
+  30 Oct 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  files/digest-tuxonice-userui-0.7.2, Manifest:
+  Fix parallel make issue, bug#197507
+
+*tuxonice-userui-0.7.2 (27 Oct 2007)
+
+  27 Oct 2007; Alon Bar-Lev <alonbl@gentoo.org> +metadata.xml,
+  +tuxonice-userui-0.7.2.ebuild:
+  Version dump, rename to tuxonice
+
+  12 Jun 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  -files/suspend2-userui-0.6.4-glibc.patch,
+  -files/suspend2-userui-0.6.4-remove-debug.patch,
+  -files/suspend2-userui-0.6.4-syscall.patch,
+  -files/suspend2-userui-0.7.0-syscall.patch,
+  -suspend2-userui-0.6.4-r1.ebuild, -suspend2-userui-0.6.4-r2.ebuild,
+  -suspend2-userui-0.7.0.ebuild:
+  Cleanup
+
+  12 Jun 2007; Markus Ullmann <jokey@gentoo.org>
+  suspend2-userui-0.7.1.ebuild:
+  Stable on x86 wrt bug #180646
+
+  03 Jun 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  suspend2-userui-0.7.1.ebuild:
+  Remove x86 keyword
+
+  02 Jun 2007; Markus Ullmann <jokey@gentoo.org>
+  suspend2-userui-0.7.1.ebuild:
+  Stable on x86 wrt bug #180646
+
+*suspend2-userui-0.7.1 (18 May 2007)
+
+  18 May 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  -suspend2-userui-0.7.1_pre1.ebuild, +suspend2-userui-0.7.1.ebuild:
+  Version bump
+
+*suspend2-userui-0.7.1_pre1 (17 May 2007)
+
+  17 May 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +suspend2-userui-0.7.1_pre1.ebuild:
+  Version bump
+
+  26 Apr 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  suspend2-userui-0.6.4-r1.ebuild, suspend2-userui-0.6.4-r2.ebuild,
+  suspend2-userui-0.7.0.ebuild:
+  Modified gz extension to *, bug#175955, thanks to Alexander Skwar
+
+  01 Apr 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  suspend2-userui-0.7.0.ebuild:
+  Removed static USE flag, bug#172946, thanks to Arfrever Frehtes Taifersar
+  Arahesis
+
+  11 Feb 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/suspend2-userui-0.7.0-syscall.patch, suspend2-userui-0.7.0.ebuild:
+  Readd glibc fix to new version bug#166312
+
+*suspend2-userui-0.7.0 (09 Feb 2007)
+
+  09 Feb 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +suspend2-userui-0.7.0.ebuild:
+  Version bump
+
+*suspend2-userui-0.6.4-r2 (22 Jan 2007)
+
+  22 Jan 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/suspend2-userui-0.6.4-syscall.patch,
+  +suspend2-userui-0.6.4-r2.ebuild:
+  Fix for glib-2.5 (again)
+
+  09 Jan 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  -files/suspend2-userui-0.6.3-skewed-image.patch,
+  -files/suspend2-userui-0.6.3-skewed-text.patch,
+  -suspend2-userui-0.6.3-r1.ebuild, -suspend2-userui-0.6.4.ebuild:
+  Cleanup
+
+  09 Jan 2007; Andrej Kacian <ticho@gentoo.org>
+  suspend2-userui-0.6.4-r1.ebuild:
+  Stable on x86, bug #160298.
+
+  05 Jan 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/suspend2-userui-0.6.4-glibc.patch, suspend2-userui-0.6.4-r1.ebuild:
+  glibc-2.5 issue, bug#160278, thanks to Paul Moore
+
+  16 Dec 2006; Alon Bar-Lev <alonbl@gentoo.org> metadata.xml:
+  Modify maintainer
+
+*suspend2-userui-0.6.4-r1 (13 Jun 2006)
+
+  13 Jun 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +suspend2-userui-0.6.4-r1.ebuild:
+  Added 'static' USE flag based on a patch from Alon Bar-Lev. Useful when
+  using the binaries in initramfs/initrd.
+
+*suspend2-userui-0.6.4 (06 Jun 2006)
+
+  06 Jun 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +files/suspend2-userui-0.6.4-remove-debug.patch,
+  +suspend2-userui-0.6.4.ebuild:
+  Version bump.
+
+  28 May 2006; Henrik Brix Andersen <brix@gentoo.org>
+  -suspend2-userui-0.6.3.ebuild:
+  Pruned old ebuilds.
+
+  30 Apr 2006; Henrik Brix Andersen <brix@gentoo.org>
+  suspend2-userui-0.6.3-r1.ebuild:
+  Stable on x86.
+
+  14 Apr 2006; Henrik Brix Andersen <brix@gentoo.org>
+  -suspend2-userui-0.5.1.ebuild, -suspend2-userui-0.6.1.ebuild,
+  -suspend2-userui-0.6.2.ebuild:
+  Pruned old ebuilds.
+
+  12 Apr 2006; Daniel Goller <morfic@gentoo.org>
+  suspend2-userui-0.6.3-r1.ebuild:
+  Adding ~amd64 so x86_64 users get to enjoy the goodness too
+
+*suspend2-userui-0.6.3-r1 (28 Mar 2006)
+
+  28 Mar 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +files/suspend2-userui-0.6.3-skewed-image.patch,
+  +files/suspend2-userui-0.6.3-skewed-text.patch,
+  +suspend2-userui-0.6.3-r1.ebuild:
+  Added patches from upstream, thanks to Alon Bar-Lev.
+
+  01 Feb 2006; Henrik Brix Andersen <brix@gentoo.org>
+  suspend2-userui-0.6.3.ebuild:
+  Stable on x86.
+
+  28 Dec 2005; Henrik Brix Andersen <brix@gentoo.org>
+  suspend2-userui-0.5.1.ebuild, suspend2-userui-0.6.1.ebuild,
+  suspend2-userui-0.6.2.ebuild, suspend2-userui-0.6.3.ebuild:
+  Fix typos, thanks to Pat Double.
+
+*suspend2-userui-0.6.3 (28 Dec 2005)
+
+  28 Dec 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +suspend2-userui-0.6.3.ebuild:
+  Version bump.
+
+*suspend2-userui-0.6.2 (27 Dec 2005)
+
+  27 Dec 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +suspend2-userui-0.6.2.ebuild:
+  Version bump.
+
+  31 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
+  suspend2-userui-0.6.1.ebuild:
+  Stable on x86.
+
+*suspend2-userui-0.6.1 (29 Aug 2005)
+
+  29 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +suspend2-userui-0.6.1.ebuild:
+  Added version for use with >=sys-kernel/suspend2-sources-2.6.13.
+
+  29 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  suspend2-userui-0.5.1.ebuild:
+  Stable on x86.
+
+*suspend2-userui-0.5.1 (06 Jul 2005)
+
+  06 Jul 2005; <brix@gentoo.org> +metadata.xml,
+  +suspend2-userui-0.5.1.ebuild:
+  Initial import in preparation for sys-kernel/suspend2-sources, fixes bug
+  #85334.

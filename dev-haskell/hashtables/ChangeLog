@@ -1,0 +1,110 @@
+# ChangeLog for dev-haskell/hashtables
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hashtables/ChangeLog,v 1.25 2015/06/06 11:10:24 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*hashtables-1.2.0.2 (03 Apr 2015)
+
+  03 Apr 2015; Mark Wright <gienah@gentoo.org> +hashtables-1.2.0.2.ebuild:
+  Bump hashtables to 1.2.0.2
+
+  30 Jan 2015; Michał Górny <mgorny@gentoo.org> hashtables-1.1.2.1.ebuild:
+  Convert to CPU_FLAGS_X86 the old ebuild as well.
+
+  28 Jan 2015; Alexander Vershilov <qnikst@gentoo.org>
+  hashtables-1.2.0.1.ebuild, metadata.xml:
+  update cpu flags
+
+  28 Jan 2015; Alexander Vershilov <qnikst@gentoo.org>
+  -hashtables-1.0.1.2.ebuild, -hashtables-1.0.1.3.ebuild,
+  -hashtables-1.0.1.6.ebuild, -hashtables-1.0.1.8.ebuild,
+  -hashtables-1.1.0.2.ebuild, -hashtables-1.1.2.0.ebuild:
+  drop old
+
+*hashtables-1.2.0.1 (13 Dec 2014)
+
+  13 Dec 2014; Mark Wright <gienah@gentoo.org> +hashtables-1.2.0.1.ebuild,
+  metadata.xml:
+  Bump hashtables to 1.2.0.1
+
+  02 Feb 2014; Agostino Sarubbo <ago@gentoo.org> hashtables-1.1.2.1.ebuild:
+  Stable for sparc, wrt bug #488808
+
+  19 Jan 2014; Agostino Sarubbo <ago@gentoo.org> hashtables-1.1.2.1.ebuild:
+  Stable for ppc64, wrt bug #488808
+
+  19 Jan 2014; Agostino Sarubbo <ago@gentoo.org> hashtables-1.1.2.1.ebuild:
+  Stable for ppc, wrt bug #488808
+
+  07 Dec 2013; Pacho Ramos <pacho@gentoo.org> hashtables-1.1.2.1.ebuild:
+  x86 stable, bug #488808
+
+  24 Nov 2013; Pacho Ramos <pacho@gentoo.org> hashtables-1.1.2.1.ebuild:
+  amd64 stable, bug #488808
+
+*hashtables-1.1.2.1 (19 Oct 2013)
+
+  19 Oct 2013; Mark Wright <gienah@gentoo.org> +hashtables-1.1.2.1.ebuild,
+  metadata.xml:
+  Bump hashtables to 1.1.2.1
+
+*hashtables-1.1.2.0 (03 Oct 2013)
+
+  03 Oct 2013; Mark Wright <gienah@gentoo.org> +hashtables-1.1.2.0.ebuild,
+  metadata.xml:
+  Bump hashtables to 1.1.2.0
+
+*hashtables-1.1.0.2 (02 Apr 2013)
+
+  02 Apr 2013; Mark Wright <gienah@gentoo.org> +hashtables-1.1.0.2.ebuild:
+  Bump hashtables to 1.1.0.2
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> hashtables-1.0.1.8.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> hashtables-1.0.1.8.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> hashtables-1.0.1.8.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> hashtables-1.0.1.8.ebuild:
+  Add ~ppc64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> hashtables-1.0.1.8.ebuild:
+  Add ~ppc, wrt bug #449220
+
+*hashtables-1.0.1.8 (18 Nov 2012)
+
+  18 Nov 2012; Mark Wright <gienah@gentoo.org> +hashtables-1.0.1.8.ebuild:
+  Bump hashtables to 1.0.1.8
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org>
+  hashtables-1.0.1.2.ebuild, hashtables-1.0.1.3.ebuild,
+  hashtables-1.0.1.6.ebuild:
+  move dev-haskell/hashtables/hashtables-1.0.1.3.ebuild ebuild to
+  mirror://hackage
+
+*hashtables-1.0.1.6 (13 May 2012)
+
+  13 May 2012; Sergei Trofimovich <slyfox@gentoo.org>
+  +hashtables-1.0.1.6.ebuild:
+  Version bump (ghc-7.4 support)
+
+*hashtables-1.0.1.3 (14 Apr 2012)
+
+  14 Apr 2012; Mark Wright <gienah@gentoo.org> +hashtables-1.0.1.3.ebuild,
+  hashtables-1.0.1.2.ebuild:
+  Bump hashtables to 1.0.1.3. EAPI=4. [profile?] on haskell libs, part of fix
+  for bug 341795 - dev-haskell/* USE=profile missing dependencies
+
+*hashtables-1.0.1.2 (23 Jan 2012)
+
+  23 Jan 2012; Mark Wright <gienah@gentoo.org> +hashtables-1.0.1.2.ebuild,
+  +metadata.xml:
+  Add hashtables for sci-mathematics/agda-2.3.0.

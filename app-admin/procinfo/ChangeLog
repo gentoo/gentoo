@@ -1,0 +1,103 @@
+# ChangeLog for app-admin/procinfo
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/procinfo/ChangeLog,v 1.33 2014/03/22 18:23:53 kensington Exp $
+
+  22 Mar 2014; Michael Palimaka <kensington@gentoo.org> -procinfo-18-r1.ebuild:
+  Remove old.
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> procinfo-18-r2.ebuild:
+  Stable for alpha, wrt bug #491898
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> procinfo-18-r2.ebuild:
+  Stable for sparc, wrt bug #491898
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> procinfo-18-r2.ebuild:
+  Stable for ppc64, wrt bug #491898
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> procinfo-18-r2.ebuild:
+  Stable for ppc, wrt bug #491898
+
+  08 Dec 2013; Johannes Huber <johu@gentoo.org> procinfo-18-r2.ebuild:
+  x86 stable, bug #491898
+
+  03 Dec 2013; Chema Alonso <nimiux@gentoo.org> procinfo-18-r2.ebuild:
+  Stable for amd64 wrt bug #491898
+
+  30 Nov 2013; Markus Meier <maekke@gentoo.org> procinfo-18-r2.ebuild:
+  arm stable, bug #491898
+
+  23 Nov 2013; Jeroen Roovers <jer@gentoo.org> procinfo-18-r2.ebuild:
+  Stable for HPPA (bug #491898).
+
+*procinfo-18-r2 (24 Jul 2013)
+
+  24 Jul 2013; Jeroen Roovers <jer@gentoo.org> +procinfo-18-r2.ebuild:
+  Fix building against sys-libs/ncurses[tinfo] (bug #461240).
+
+  20 Jan 2010; Dawid Węgliński <cla@gentoo.org> procinfo-18-r1.ebuild,
+  +files/procinfo-18-stat.patch:
+  Don't segfault when /proc/stat exceeds 1024 characters (bug #300611)
+
+  20 May 2008; Raúl Porcel <armin76@gentoo.org> procinfo-18-r1.ebuild:
+  Add ~ia64
+
+  15 Jul 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Assigning app-admin/procinfo to m-needed, as beu is being retired (#66608).
+
+  11 Dec 2006; Elfyn McBratney <beu@gentoo.org> procinfo-18-r1.ebuild:
+  Kill redundant *DEPEND.
+
+  02 Dec 2006; Alec Warner <antarus@gentoo.org> +files/procinfo-flags.patch,
+  procinfo-18-r1.ebuild:
+  fix pre-stripped binaries for QA, thanks to jakub Moc for the patch
+
+  25 Nov 2005; Tom Gall <tgall@gentoo.org> procinfo-18-r1.ebuild:
+  stable on ppc64
+
+  23 Oct 2005; Brent Baude <ranger@gentoo.org> procinfo-18-r1.ebuild:
+  Marking procinfo-18-r1 as ~ppc64 for bug 110150
+
+  24 Sep 2005; Carsten Lohrke <carlo@gentoo.org> -procinfo-18.ebuild,
+  procinfo-18-r1.ebuild:
+  fixed url, #107084
+
+  09 Aug 2005; Olivier Crête <tester@gentoo.org> procinfo-18-r1.ebuild:
+  Stable on amd64, bug #101816
+
+  28 Apr 2005; Simon Stelling <blubb@gentoo.org> procinfo-18-r1.ebuild:
+  added ~amd64
+
+  18 Mar 2005; Sven Wegener <swegener@gentoo.org> procinfo-18-r1.ebuild:
+  Fixed double .patch in epatch line.
+
+*procinfo-18-r1 (18 Mar 2005)
+
+  18 Mar 2005; Carlos Silva <r3pek@gentoo.org> +files/cpu-usage-fix.patch,
+  +files/kernel-2.6.patch, +procinfo-18-r1.ebuild:
+  Fixing bug #79754 thx to Arkadi Shishlov
+
+  06 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  procinfo-18.ebuild:
+  QA - IUSE fix
+
+  18 Jan 2004; Chuck Short <zul@gentoo.org> procinfo-18.ebuild:
+  Added amd64 keyword closes 37548.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*procinfo-18 (1 Feb 2002)
+
+  23 Jun 2003; Guy Martin <gmsoft@gentoo.org> :
+  Added hppa to KEYWORDS.
+
+  15 Jul 2002; Owen Stampflee <owen@gentoo.org> :
+
+  Added KEYWORDS.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

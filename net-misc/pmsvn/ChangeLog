@@ -1,0 +1,54 @@
+# ChangeLog for net-misc/pmsvn
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/pmsvn/ChangeLog,v 1.11 2015/02/23 18:30:11 hwoarang Exp $
+
+*pmsvn-1.0.7 (23 Feb 2015)
+
+  23 Feb 2015; Markos Chandras <hwoarang@gentoo.org> +pmsvn-1.0.7.ebuild:
+  Version bump
+
+  16 Dec 2012; Kacper Kowalik <xarthisius@gentoo.org> metadata.xml:
+  Drop no-herd from metadata.xml
+
+*pmsvn-1.0.6 (15 Dec 2012)
+
+  15 Dec 2012; Markos Chandras <hwoarang@gentoo.org> +pmsvn-1.0.6.ebuild,
+  -pmsvn-1.0.3.ebuild, -pmsvn-1.0.4.ebuild, metadata.xml:
+  Version bump
+
+*pmsvn-1.0.5 (11 Sep 2012)
+
+  11 Sep 2012; Markos Chandras <hwoarang@gentoo.org> +pmsvn-1.0.5.ebuild:
+  Version bump
+
+*pmsvn-1.0.4 (31 Aug 2012)
+
+  31 Aug 2012; Markos Chandras <hwoarang@gentoo.org> +pmsvn-1.0.4.ebuild,
+  -pmsvn-1.0.2.ebuild:
+  Version bump. Remove old
+
+  25 Aug 2012; Markos Chandras <hwoarang@gentoo.org> pmsvn-1.0.2.ebuild,
+  pmsvn-1.0.3.ebuild:
+  net-analyzer/nagios-nrpe -> net-analyzer/nrpe
+
+*pmsvn-1.0.3 (19 Aug 2011)
+
+  19 Aug 2011; Markos Chandras <hwoarang@gentoo.org> +pmsvn-1.0.3.ebuild:
+  Version bump
+
+  29 Apr 2011; Mark Loeser <halcy0n@gentoo.org> metadata.xml:
+  maintainer-needed is not a herd
+
+  23 Oct 2010; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove myself from metadata
+
+  22 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pmsvn-1.0.2.ebuild:
+  dev-util/subversion renamed to dev-vcs/subversion.
+
+*pmsvn-1.0.2 (13 Jun 2010)
+
+  13 Jun 2010; Markos Chandras <hwoarang@gentoo.org> +pmsvn-1.0.2.ebuild,
+  +metadata.xml:
+  Initial commit of pmsvn application. Fixes bug #321797. Thanks to Tomasz
+  Bielaszewski <tbielaszewski@power.com.pl> for the ebuild

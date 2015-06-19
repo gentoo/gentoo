@@ -1,0 +1,28 @@
+From 9e6699ec432b23d56a0728bb25fc2ed1a47a85e6 Mon Sep 17 00:00:00 2001
+From: Kristian Fiskerstrand <kf@sumptuouscapital.com>
+Date: Mon, 2 Feb 2015 20:38:07 +0100
+Subject: [PATCH] ui.py: Make sure to use smtplib namespace
+
+Make sure to properly use the smtplib namespace for SMTPException
+in order to avoid a NameError for undefined exception in global
+scope.
+---
+ monkeysign/ui.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/monkeysign/ui.py b/monkeysign/ui.py
+index c9b6a30..c2308c8 100644
+--- a/monkeysign/ui.py
++++ b/monkeysign/ui.py
+@@ -359,7 +359,7 @@ expects an EmailFactory email, but will not mail if nomail is set"""
+                     self.abort(_('Unexpected SMTP server error while talking to %s, code: %s (%s)') % (self.options.smtpserver, code, srvmsg))
+                 try:
+                     server.starttls()
+-                except SMTPException:
++                except smtplib.SMTPException:
+                     self.warn(_('SMTP server does not support STARTTLS'))
+                     if self.options.smtpuser: self.warn(_('authentication credentials will be sent in clear text'))
+                 if self.options.smtpuser:
+-- 
+2.2.2
+

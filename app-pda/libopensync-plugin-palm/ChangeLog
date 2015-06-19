@@ -1,0 +1,75 @@
+# ChangeLog for app-pda/libopensync-plugin-palm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-pda/libopensync-plugin-palm/ChangeLog,v 1.12 2014/03/09 03:42:41 rhill Exp $
+
+  09 Mar 2014; Ryan Hill <rhill@gentoo.org> metadata.xml:
+  Change my email.
+
+  21 May 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  libopensync-plugin-palm-0.22.ebuild:
+  Add missing inheritance of eutils.eclass
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  libopensync-plugin-palm-0.22.ebuild, libopensync-plugin-palm-9999.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  19 Mar 2011; Ryan Hill <dirtyepic@gentoo.org>
+  libopensync-plugin-palm-0.22.ebuild, -libopensync-plugin-palm-0.36.ebuild,
+  libopensync-plugin-palm-9999.ebuild, metadata.xml:
+  EAPI 3, dependencies, etc. Drop 0.36.
+
+  15 Nov 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -libopensync-plugin-palm-0.21.ebuild,
+  -libopensync-plugin-palm-0.35.ebuild:
+  Clean up old revisions.
+
+*libopensync-plugin-palm-0.36 (27 Jan 2008)
+
+  27 Jan 2008; Piotr Jaroszyński <peper@gentoo.org>
+  +libopensync-plugin-palm-0.36.ebuild:
+  Add 0.36.
+
+*libopensync-plugin-palm-0.35 (21 Dec 2007)
+
+  21 Dec 2007; Piotr Jaroszyński <peper@gentoo.org>
+  +libopensync-plugin-palm-0.35.ebuild:
+  Add 0.35.
+
+*libopensync-plugin-palm-9999 (26 Nov 2007)
+
+  26 Nov 2007; Piotr Jaroszyński <peper@gentoo.org>
+  +libopensync-plugin-palm-9999.ebuild:
+  Add live svn ebuild.
+
+*libopensync-plugin-palm-0.22 (28 Mar 2007)
+
+  28 Mar 2007; Piotr Jaroszyński <peper@gentoo.org>
+  -libopensync-plugin-palm-0.20.ebuild,
+  +libopensync-plugin-palm-0.22.ebuild:
+  Version bump.
+
+*libopensync-plugin-palm-0.21 (12 Feb 2007)
+
+  12 Feb 2007; Piotr Jaroszyński <peper@gentoo.org>
+  -files/libopensync-plugin-palm-0.19-include_pisock.patch,
+  -files/libopensync-plugin-palm-0.20-include_pisock.patch,
+  +files/libopensync-plugin-palm-include_pisock.patch,
+  -libopensync-plugin-palm-0.19.ebuild, libopensync-plugin-palm-0.20.ebuild,
+  +libopensync-plugin-palm-0.21.ebuild:
+  Version bump.
+
+*libopensync-plugin-palm-0.20 (10 Nov 2006)
+
+  10 Nov 2006; Piotr Jaroszyński <peper@gentoo.org>
+  +files/libopensync-plugin-palm-0.20-include_pisock.patch,
+  libopensync-plugin-palm-0.19.ebuild, +libopensync-plugin-palm-0.20.ebuild:
+  Version bump.
+
+*libopensync-plugin-palm-0.19 (25 Oct 2006)
+
+  25 Oct 2006; Piotr Jaroszyński <peper@gentoo.org>
+  +files/libopensync-plugin-palm-0.19-include_pisock.patch, +metadata.xml,
+  +libopensync-plugin-palm-0.19.ebuild:
+  New package. Thanks to Pierre Cassimans <kammicazze@hotmail.com> and Søren
+  F. Nielsen <cthulhu@mail.dk>. Bug #112801.
+

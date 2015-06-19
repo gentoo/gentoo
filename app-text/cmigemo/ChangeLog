@@ -1,0 +1,93 @@
+# ChangeLog for app-text/cmigemo
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/cmigemo/ChangeLog,v 1.23 2012/06/14 09:33:05 jdhore Exp $
+
+  14 Jun 2012; Jeff Horelick <jdhore@gentoo.org> cmigemo-1.3c-r2.ebuild:
+  marked x86 per bug 418641
+
+  14 Jun 2012; Agostino Sarubbo <ago@gentoo.org> cmigemo-1.3c-r2.ebuild:
+  Stable for amd64, wrt bug #418641
+
+  14 Jun 2012; Naohiro Aota <naota@gentoo.org>
+  +files/cmigemo-1.3c-ldflags.patch, cmigemo-1.3c-r2.ebuild:
+  Add patch to handle LDFLAGS properly.
+
+*cmigemo-1.3c-r2 (08 Nov 2009)
+
+  08 Nov 2009; MATSUU Takuto <matsuu@gentoo.org> +cmigemo-1.3c-r2.ebuild,
+  +files/cmigemo-1.3c-gentoo.patch:
+  Fixed documentation installed location, bug #255813. Fixed dependency.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> cmigemo-1.3c.ebuild:
+  Remove virtual/libc
+
+  14 Apr 2009; Raúl Porcel <armin76@gentoo.org> cmigemo-1.3c-r1.ebuild:
+  x86 stable wrt #246953
+
+  14 Apr 2009; Raúl Porcel <armin76@gentoo.org> cmigemo-1.3c-r1.ebuild:
+  x86 stable wrt #246953
+
+  08 Apr 2009; Tobias Klausmann <klausman@gentoo.org>
+  cmigemo-1.3c-r1.ebuild:
+  Stable on alpha, bug #246953
+
+*cmigemo-1.3c-r1 (17 Dec 2008)
+
+  17 Dec 2008; MATSUU Takuto <matsuu@gentoo.org> metadata.xml,
+  -cmigemo-1.2.ebuild, cmigemo-1.3c.ebuild, +cmigemo-1.3c-r1.ebuild:
+  Fixed rpath security issue, bug #246953. Fixed LICENSE. Added ~amd64.
+  Added unicode and vim-syntax USE flags. Clean up.
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing usata from metadata.xml as per #22931. Assigning to maintainer-needed.
+
+  28 Jan 2007; Marius Mauch <genone@gentoo.org> cmigemo-1.2.ebuild,
+  cmigemo-1.3c.ebuild:
+  Replacing einfo with elog
+
+  23 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> cmigemo-1.3c.ebuild:
+  Marked as stable.
+
+*cmigemo-1.3c (07 Sep 2004)
+
+  07 Sep 2004; Mamoru KOMACHI <usata@gentoo.org>
+  -files/cmigemo-1.1.013-migemo-dict.diff, -files/cmigemo-fflush-gentoo.patch,
+  -cmigemo-1.1.013.ebuild, cmigemo-1.2.ebuild, +cmigemo-1.3c.ebuild:
+  Version bumped. Removed old ebuild.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  cmigemo-1.1.013.ebuild, cmigemo-1.2.ebuild:
+  virtual/glibc -> virtual/libc
+
+  26 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> cmigemo-1.1.013.ebuild,
+  cmigemo-1.2.ebuild:
+  Marked stable on x86 and alpha. Don't assign default to S
+
+*cmigemo-1.2 (12 Mar 2004)
+
+  13 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> cmigemo-1.2.ebuild,
+  files/cmigemo-1.2-migemo-dict.diff:
+  Added missing migemo-dict patch.
+
+  12 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> cmigemo-1.2.ebuild:
+  Version bumped. Thanks to NODA Kai <g340299@mail.ecc.u-tokyo.ac.jp> for
+  contributing English translation of LICENSE_j.txt.
+
+*cmigemo-1.1.013 (01 Oct 2003)
+
+  30 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> cmigemo-1.1.013.ebuild:
+  Added -fPIC to CFLAGS
+
+  13 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> cmigemo-1.1.013.ebuild,
+  files/cmigemo-fflush-gentoo.patch:
+  Fixed fflush problem with w3m. Marked as stable for x86. Added
+  ~alpha, ~sparc and ~ppc keywords.
+
+  01 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> cmigemo-1.1.013.ebuild:
+  Specified exact migemo ebuild version supporting cmigemo
+
+  01 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> cmigemo-1.1.013.ebuild,
+  files/cmigemo-1.1.013-migemo-dict.diff:
+  Initial import. Ebuild submitted by Hattya <hattya@inter7.jp>.
+  This closes Bug #30006
+

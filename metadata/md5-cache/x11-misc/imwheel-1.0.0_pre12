@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=x11-libs/libXtst x11-libs/libX11 x11-libs/libXmu x11-libs/libXt x11-libs/libXext x11-proto/inputproto x11-proto/xextproto x11-proto/xproto >=sys-apps/sed-4
+DESCRIPTION=mouse tool for advanced features such as wheels and 3+ buttons
+HOMEPAGE=http://imwheel.sourceforge.net/
+KEYWORDS=alpha amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libXtst x11-libs/libX11 x11-libs/libXmu x11-libs/libXt x11-libs/libXext
+SLOT=0
+SRC_URI=mirror://sourceforge/imwheel/imwheel-1.0.0pre12.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d9e539be247dca59154ed3b033ea2fc5

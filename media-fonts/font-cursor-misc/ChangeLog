@@ -1,0 +1,207 @@
+# ChangeLog for media-fonts/font-cursor-misc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/font-cursor-misc/ChangeLog,v 1.50 2015/03/03 08:15:18 dlan Exp $
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> font-cursor-misc-1.0.3.ebuild:
+  add arm64 support, tested on A53 board
+
+  22 Feb 2013; Zac Medico <zmedico@gentoo.org> font-cursor-misc-1.0.3.ebuild:
+  Add ~arm-linux keyword.
+
+  12 May 2012; Alexis Ballier <aballier@gentoo.org>
+  font-cursor-misc-1.0.3.ebuild:
+  keyword ~amd64-fbsd
+
+  27 Aug 2011; Fabian Groffen <grobian@gentoo.org>
+  font-cursor-misc-1.0.3.ebuild:
+  Marked ~x86-linux, bug #375229
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  font-cursor-misc-1.0.3.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> font-cursor-misc-1.0.3.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #344827
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> font-cursor-misc-1.0.3.ebuild:
+  Stable for HPPA (bug #344827).
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org> font-cursor-misc-1.0.3.ebuild:
+  arm stable, bug #344827
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  font-cursor-misc-1.0.3.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org>
+  font-cursor-misc-1.0.3.ebuild:
+  amd64 stable wrt #344827
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org>
+  font-cursor-misc-1.0.3.ebuild:
+  ppc64 stable wrt #344827
+
+  20 Nov 2010; Michał Górny <mgorny@gentoo.org>
+  -font-cursor-misc-1.0.0.ebuild:
+  Remove redundant version.
+
+*font-cursor-misc-1.0.3 (17 Nov 2010)
+
+  17 Nov 2010; Michał Górny <mgorny@gentoo.org>
+  +font-cursor-misc-1.0.3.ebuild:
+  Version bump.
+
+  21 Oct 2010; Brent Baude <ranger@gentoo.org>
+  font-cursor-misc-1.0.1.ebuild:
+  Marking font-cursor-misc-1.0.1 ppc stable for bug 239063
+
+  19 Sep 2010; Raúl Porcel <armin76@gentoo.org>
+  font-cursor-misc-1.0.1.ebuild:
+  ia64/s390/sh/sparc stable wrt #327777
+
+  12 Sep 2010; Tobias Klausmann <klausman@gentoo.org>
+  font-cursor-misc-1.0.1.ebuild:
+  Stable on alpha, bug #327777
+
+  03 Aug 2010; Samuli Suominen <ssuominen@gentoo.org>
+  font-cursor-misc-1.0.1.ebuild:
+  ppc64 stable wrt #327777
+
+  22 Jul 2010; Markus Meier <maekke@gentoo.org>
+  font-cursor-misc-1.0.1.ebuild:
+  arm stable, bug #327777
+
+  14 Jul 2010; Jeroen Roovers <jer@gentoo.org>
+  font-cursor-misc-1.0.1.ebuild:
+  Stable for HPPA (bug #327777).
+
+  13 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  font-cursor-misc-1.0.1.ebuild:
+  x86 stable, bug 327777
+
+  12 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  font-cursor-misc-1.0.1.ebuild:
+  Stable on amd64 wrt bug #327777
+
+*font-cursor-misc-1.0.1 (15 Mar 2010)
+
+  15 Mar 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +font-cursor-misc-1.0.1.ebuild:
+  Version bump.
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  font-cursor-misc-1.0.0.ebuild:
+  Transfer Prefix keywords
+
+  04 Feb 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  font-cursor-misc-1.0.0.ebuild:
+  Drop mirroring restriction.  Thanks to Zhang Le of bug #163088.
+
+  19 Jul 2006; Guy Martin <gmsoft@gentoo.org> font-cursor-misc-1.0.0.ebuild:
+  Stable on hppa.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  font-cursor-misc-1.0.0.ebuild:
+  Mark 1.0.0 stable on ia64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  font-cursor-misc-1.0.0.ebuild:
+  ppc/sparc/mips/alpha/arm/sh stable
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  font-cursor-misc-1.0.0.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org>
+  font-cursor-misc-1.0.0.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  font-cursor-misc-1.0.0.ebuild:
+  x86 stable.
+
+  06 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  files/digest-font-cursor-misc-1.0.0, Manifest:
+  (#135715) Fix digest.
+
+  04 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  font-cursor-misc-1.0.0.ebuild:
+  (#133980) Add a real description (Max Lorenz).
+
+  28 Apr 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+  31 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  font-cursor-misc-1.0.0.ebuild:
+  Add ~x86-fbsd keyword.
+
+  24 Mar 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  font-cursor-misc-1.0.0.ebuild:
+  (#127306) Digests changed between release candidates and final release for
+  the same tarballs.
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org>
+  font-cursor-misc-1.0.0.ebuild:
+  Added ~ppc64
+
+  31 Jan 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  font-cursor-misc-1.0.0.ebuild:
+  Unstable on hppa.
+
+  26 Dec 2005; Stefaan De Roeck <stefaan@gentoo.org>
+  font-cursor-misc-1.0.0.ebuild:
+  Marked ~alpha
+
+*font-cursor-misc-1.0.0 (18 Dec 2005)
+
+  18 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -font-cursor-misc-0.99.1.ebuild, +font-cursor-misc-1.0.0.ebuild:
+  Bump for 7.0RC4.
+
+  10 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  font-cursor-misc-0.99.1.ebuild:
+  Remove mkfontscale and mkfontdir deps; moved to x-modular.eclass.
+
+  07 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -font-cursor-misc-0.99.0.ebuild:
+  Pull old versions.
+
+*font-cursor-misc-0.99.1 (07 Dec 2005)
+
+  07 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +font-cursor-misc-0.99.1.ebuild:
+  Bump for 7.0RC3.
+
+  19 Oct 2005; Stephen P. Becker <geoman@gentoo.org>
+  font-cursor-misc-0.99.0.ebuild:
+  added ~mips keyword
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org>
+  font-cursor-misc-0.99.0.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org>
+  font-cursor-misc-0.99.0.ebuild:
+  Marked ~amd64.
+
+  14 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  font-cursor-misc-0.99.0.ebuild:
+  Autodiscover fonts instead of specifying them.
+
+  11 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  font-cursor-misc-0.99.0.ebuild:
+  Update to use new x-modular.eclass setup code. See font-misc-misc ChangeLog
+  for more details.
+
+  09 Aug 2005; Ferris McCormick <fmccor@gentoo.org>
+  font-cursor-misc-0.99.0.ebuild:
+  Add ~sparc keyword (modular X testing).
+
+*font-cursor-misc-0.99.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +font-cursor-misc-0.99.0.ebuild:
+  Initial commit for modular X.

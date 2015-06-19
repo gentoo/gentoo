@@ -1,0 +1,64 @@
+# ChangeLog for x11-wm/echinus
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/echinus/ChangeLog,v 1.14 2015/03/20 09:00:26 jlec Exp $
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> files/echinus.desktop:
+  Fix desktop file
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due desktop-wm removal
+
+  11 May 2013; Patrick Lauer <patrick@gentoo.org> echinus-0.4.9.ebuild:
+  Fix inherit
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> echinus-0.4.9.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*echinus-0.4.9 (06 Nov 2011)
+
+  06 Nov 2011; Kacper Kowalik <xarthisius@gentoo.org> -echinus-0.4.3.2.ebuild,
+  -files/echinus-0.4.3.2-gentoo.diff, +echinus-0.4.9.ebuild,
+  +files/echinus-0.4.9-gentoo.diff, metadata.xml:
+  Version bump wrt #382777 by Tim Harder. Make multihead optional, drop old
+
+  11 Jun 2010; Ben de Groot <yngwin@gentoo.org> metadata.xml:
+  Removing myself as proxy
+
+*echinus-0.4.3.2 (07 Jun 2010)
+
+  07 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  +echinus-0.4.3.2.ebuild, +files/echinus-0.4.3.2-gentoo.diff:
+  Version bump wrt bug 313569. Thanks Nico R. Wohlgemuth
+  <nico@lifeisabug.com> for ebuild and report. Fixes bug 314965. Thanks
+  Diego for the report
+
+*echinus-0.4.0 (23 Feb 2010)
+
+  23 Feb 2010; Ben de Groot <yngwin@gentoo.org> +echinus-0.4.0.ebuild:
+  Version bump
+
+*echinus-0.3.6 (07 Oct 2009)
+
+  07 Oct 2009; Ben de Groot <yngwin@gentoo.org> +echinus-0.3.6.ebuild:
+  Version bump
+
+*echinus-0.3.2.1 (23 Feb 2009)
+
+  23 Feb 2009; Ben de Groot <yngwin@gentoo.org> +echinus-0.3.2.1.ebuild:
+  Version bump. Removing patch that has been applied upstream.
+
+  26 Aug 2008; Ben de Groot <yngwin@gentoo.org> echinus-0.3.1.ebuild:
+  Adding pkgconfig dep
+
+  25 Aug 2008; Ben de Groot <yngwin@gentoo.org> metadata.xml:
+  Reassigning to desktop-wm herd
+
+*echinus-0.3.1 (22 Aug 2008)
+
+  22 Aug 2008; Ben de Groot <yngwin@gentoo.org>
+  +files/echinus-0.3.1-modkey.patch, +files/echinus.desktop, +metadata.xml,
+  +echinus-0.3.1.ebuild:
+  Initial commit. Ebuild by Nico Wohlgemuth.

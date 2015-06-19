@@ -1,0 +1,33 @@
+diff -ur qp9.1.orig/src/pile.h qp9.1/src/pile.h
+--- qp9.1.orig/src/pile.h	2011-08-23 01:17:44.000000000 +0200
++++ qp9.1/src/pile.h	2013-01-09 12:07:44.000000000 +0100
+@@ -75,7 +75,7 @@
+ 	//
+ 	// Push a StoredType onto the pile.
+ 	//
+-	void	push(const StoredType s){ pushElement(s); }
++	void	push(const StoredType s){ this->pushElement(s); }
+ 
+ 	//
+ 	// Pop a StoredType off the pile.
+@@ -85,7 +85,7 @@
+ 	//
+ 	// Pop n entries of StoredType off the pile.
+ 	//
+-	void	popNEntries(word32 n)	{ setTopOfStack(this->getTopOfStack() - n); }
++	void	popNEntries(word32 n)	{ this->setTopOfStack(this->getTopOfStack() - n); }
+ 
+ 	//
+ 	// Check whether the pile is empty or not.
+diff -ur qp9.1.orig/src/system_support.cc qp9.1/src/system_support.cc
+--- qp9.1.orig/src/system_support.cc	2011-08-23 01:17:44.000000000 +0200
++++ qp9.1/src/system_support.cc	2013-01-09 12:07:16.000000000 +0100
+@@ -61,6 +61,8 @@
+ #include <iostream>
+ #ifdef WIN32
+ #include <direct.h>
++#else
++#include <unistd.h>
+ #endif //WIN32
+ 
+ using namespace std;

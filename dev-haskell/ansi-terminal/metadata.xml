@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		ANSI terminal support for Haskell: allows cursor movement, screen clearing, color output showing or hiding the cursor, and
+		changing the title. Compatible with Windows and those Unixes with ANSI terminals, but only GHC is supported as a compiler.
+	</longdescription>
+	<use>
+		<flag name="example">Build the example application.</flag>
+	</use>
+</pkgmetadata>

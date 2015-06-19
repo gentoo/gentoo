@@ -1,0 +1,14 @@
+# ChangeLog for sys-block/arcconf
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/arcconf/ChangeLog,v 1.2 2015/02/26 17:46:30 dev-zero Exp $
+
+*arcconf-1.7.21229 (26 Feb 2015)
+
+  26 Feb 2015; Tiziano Müller <dev-zero@gentoo.org> +arcconf-1.7.21229.ebuild:
+  version bump (bug #524632)
+
+*arcconf-1.2.20618 (19 Sep 2013)
+
+  19 Sep 2013; Tiziano Müller <dev-zero@gentoo.org> +arcconf-1.2.20618.ebuild,
+  +metadata.xml:
+  Initial commit

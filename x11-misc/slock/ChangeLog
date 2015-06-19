@@ -1,0 +1,196 @@
+# ChangeLog for x11-misc/slock
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/slock/ChangeLog,v 1.54 2015/02/01 13:48:44 jer Exp $
+
+  01 Feb 2015; Jeroen Roovers <jer@gentoo.org> -slock-1.1-r1.ebuild:
+  Old.
+
+  01 Feb 2015; Agostino Sarubbo <ago@gentoo.org> slock-1.2.ebuild:
+  Stable for x86, wrt bug #537456
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org> slock-1.2.ebuild:
+  Stable for amd64, wrt bug #537456
+
+  23 Jan 2015; Jeroen Roovers <jer@gentoo.org> slock-1.2.ebuild:
+  Stable for HPPA (bug #537456).
+
+*slock-1.2 (22 Dec 2014)
+
+  22 Dec 2014; Jeroen Roovers <jer@gentoo.org> +slock-1.2.ebuild,
+  +files/slock-1.2-dontdieonme.patch:
+  Version bump.
+
+  12 Oct 2014; Jeroen Roovers <jer@gentoo.org> -slock-1.1.ebuild:
+  Old.
+
+  12 Oct 2014; Agostino Sarubbo <ago@gentoo.org> slock-1.1-r1.ebuild:
+  Stable for x86, wrt bug #520638
+
+  06 Sep 2014; Chema Alonso <nimiux@gentoo.org> slock-1.1-r1.ebuild:
+  Stable for amd64 wrt bug #520638
+
+  22 Aug 2014; Jeroen Roovers <jer@gentoo.org> slock-1.1-r1.ebuild:
+  Stable for HPPA (bug #520638).
+
+*slock-1.1-r1 (19 Oct 2013)
+
+  19 Oct 2013; Jeroen Roovers <jer@gentoo.org> +slock-1.1-r1.ebuild:
+  Use fcaps.eclass by Luis Ressel (bug #488530).
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #151880
+
+  03 May 2013; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Add myself as maintainer.
+
+  06 Dec 2012; Jeroen Roovers <jer@gentoo.org> -slock-1.0.ebuild:
+  Old.
+
+  06 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> slock-1.1.ebuild:
+  x86 stable wrt bug #444956
+
+  30 Nov 2012; <ago@gentoo.org> slock-1.1.ebuild:
+  Stable for amd64, wrt bug #444956
+
+  29 Nov 2012; Jeroen Roovers <jer@gentoo.org> slock-1.1.ebuild:
+  Stable for HPPA (bug #444956).
+
+  29 Oct 2012; Jeroen Roovers <jer@gentoo.org> slock-1.1.ebuild:
+  Add savedconfig support for config.mk to set your favourite colours.
+
+*slock-1.1 (29 Oct 2012)
+
+  29 Oct 2012; Jeroen Roovers <jer@gentoo.org> +slock-1.1.ebuild:
+  Version bump. Verbose build output.
+
+  09 Oct 2012;  <naota@gentoo.org> slock-1.0.ebuild:
+  Drop -HHAVE_SHADOW_H on FreeBSD and keyword. #233717
+
+  20 Feb 2012; Jeroen Roovers <jer@gentoo.org> -slock-0.9.ebuild,
+  -slock-0.9-r1.ebuild:
+  Old.
+
+  20 Feb 2012; Agostino Sarubbo <ago@gentoo.org> slock-1.0.ebuild:
+  Stable for AMD64, wrt security bug #401645
+
+  18 Feb 2012; Jeroen Roovers <jer@gentoo.org> slock-1.0.ebuild:
+  Stable for HPPA (bug #401645).
+
+  18 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> slock-1.0.ebuild:
+  x86 stable wrt bug #401645
+
+*slock-1.0 (11 Feb 2012)
+
+  11 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> +slock-1.0.ebuild:
+  Version bump.
+
+  02 Feb 2012; Jeroen Roovers <jer@gentoo.org> slock-0.9.ebuild,
+  slock-0.9-r1.ebuild:
+  Update HOMEPAGE.
+
+  02 Feb 2012; Jeroen Roovers <jer@gentoo.org> slock-0.9-r1.ebuild:
+  Use tc-export instead of tc-getCC.
+
+*slock-0.9-r1 (02 Feb 2012)
+
+  02 Feb 2012; Jeroen Roovers <jer@gentoo.org> +slock-0.9-r1.ebuild:
+  Do not add -Wl,-z,now to LDFLAGS. Do not add -g to {C,LD}FLAGS. Set CC in
+  src_install so that the options output does not confuse. Do not install
+  useless README.
+
+  27 Dec 2008; Santiago M. Mola <coldwind@gentoo.org> -slock-0.8.ebuild:
+  Remove old.
+
+  30 Oct 2008; Thomas Anderson <gentoofan23@gentoo.org> slock-0.9.ebuild:
+  stable amd64, bug 244530
+
+  27 Oct 2008; Torsten Veller <tove@gentoo.org> slock-0.9.ebuild:
+  Stable on x86 (#244530)
+
+  26 Oct 2008; Jeroen Roovers <jer@gentoo.org> slock-0.9.ebuild:
+  Stable for HPPA (bug #244530).
+
+  30 Jul 2008; Cédric Krier <cedk@gentoo.org> -slock-0.7.ebuild:
+  Remove old
+
+*slock-0.9 (30 Jul 2008)
+
+  30 Jul 2008; Cédric Krier <cedk@gentoo.org> +slock-0.9.ebuild:
+  Version bump
+
+  22 Jul 2008; Torsten Veller <tove@gentoo.org> slock-0.8.ebuild:
+  Stable on x86 (#232479)
+
+  21 Jul 2008; Jeroen Roovers <jer@gentoo.org> slock-0.8.ebuild:
+  Stable for HPPA (bug #232479).
+
+  20 Jul 2008; Cédric Krier <cedk@gentoo.org> slock-0.7.ebuild,
+  slock-0.8.ebuild:
+  Fix website
+
+  31 May 2008; Santiago M. Mola <coldwind@gentoo.org> slock-0.8.ebuild:
+  amd64 stable
+
+  06 May 2008; Cédric Krier <cedk@gentoo.org> slock-0.7.ebuild,
+  slock-0.8.ebuild:
+  Fix homepage
+
+  06 May 2008; Cédric Krier <cedk@gentoo.org> -slock-0.6.ebuild:
+  Remove old
+
+*slock-0.8 (16 Mar 2008)
+
+  16 Mar 2008; Cédric Krier <cedk@gentoo.org> +slock-0.8.ebuild:
+  Version bump
+
+  08 Feb 2008; Jeroen Roovers <jer@gentoo.org> slock-0.7.ebuild:
+  Stable for HPPA (bug #209350).
+
+  08 Feb 2008; Dawid Węgliński <cla@gentoo.org> slock-0.7.ebuild:
+  Stable on x86 (bug #209350)
+
+  08 Feb 2008; Santiago M. Mola <coldwind@gentoo.org> slock-0.7.ebuild:
+  amd64 stable wrt bug #209350 and digests removed.
+
+  08 Feb 2008; Cédric Krier <cedk@gentoo.org> metadata.xml:
+  Add desktop-misc as backup herd
+
+  09 Dec 2007; Santiago M. Mola <coldwind@gentoo.org> slock-0.7.ebuild:
+  Keyworded ~amd64
+
+*slock-0.7 (28 Nov 2007)
+
+  28 Nov 2007; Cédric Krier <cedk@gentoo.org> +slock-0.7.ebuild:
+  Version bump
+
+  31 Oct 2007; Jeroen Roovers <jer@gentoo.org> slock-0.6.ebuild:
+  Stable for HPPA too.
+
+  14 Jul 2007; Torsten Veller <tove@gentoo.org> slock-0.6.ebuild:
+  Stable on x86 (#185327)
+
+*slock-0.6 (07 Mar 2007)
+
+  07 Mar 2007; Cedric Krier <cedk@gentoo.org> -slock-0.4.ebuild,
+  -slock-0.5.ebuild, +slock-0.6.ebuild:
+  Version bump
+
+*slock-0.5 (06 Mar 2007)
+
+  06 Mar 2007; Cedric Krier <cedk@gentoo.org> +slock-0.5.ebuild:
+  Version bump
+
+  28 Jan 2007; Cedric Krier <cedk@gentoo.org> -slock-0.3.ebuild,
+  slock-0.4.ebuild:
+  Fix HOMEPAGE and remove old
+
+*slock-0.4 (13 Jan 2007)
+
+  13 Jan 2007; Cedric Krier <cedk@gentoo.org> +slock-0.4.ebuild:
+  Version bump
+
+*slock-0.3 (10 Jan 2007)
+
+  10 Jan 2007; Cedric Krier <cedk@gentoo.org> +metadata.xml,
+  +slock-0.3.ebuild:
+  New ebuild for bug #151039

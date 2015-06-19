@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
+DEPEND=>=sys-libs/zlib-1.1.4 >=sys-libs/ncurses-5.2-r2 nls? ( sys-devel/gettext ) >=sys-devel/gcc-config-1.8-r1 sys-libs/csu !<sys-apps/portage-2.2.14 fortran? ( >=dev-libs/gmp-4.2.1 >=dev-libs/mpfr-2.2.0_p10 ) >=sys-apps/texinfo-4.2-r4 >=sys-devel/bison-1.875 sys-devel/binutils-apple >=dev-libs/mpfr-2.2.0_p10 >=sys-apps/sed-4 sys-devel/gnuconfig sys-libs/zlib nls? ( virtual/libintl ) virtual/libiconv >=sys-devel/bison-1.875 >=sys-devel/flex-2.5.4 nls? ( sys-devel/gettext ) regression-test? ( >=dev-util/dejagnu-1.4.4 >=sys-devel/autogen-5.5.4 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Apple branch of the GNU Compiler Collection, Developer Tools 4.0
+EAPI=3
+HOMEPAGE=http://gcc.gnu.org
+IUSE=fortran nls +openmp objc objc++ +cxx multislot regression-test vanilla +nls +nptl
+KEYWORDS=~ppc-macos ~x64-macos ~x86-macos
+LICENSE=GPL-2 GPL-3
+PDEPEND=>=sys-devel/gcc-config-1.7
+RDEPEND=>=sys-libs/zlib-1.1.4 >=sys-libs/ncurses-5.2-r2 nls? ( sys-devel/gettext ) >=sys-devel/gcc-config-1.8-r1 sys-libs/csu !<sys-apps/portage-2.2.14 fortran? ( >=dev-libs/gmp-4.2.1 >=dev-libs/mpfr-2.2.0_p10 ) sys-libs/zlib nls? ( virtual/libintl ) virtual/libiconv
+RESTRICT=strip
+SLOT=42
+SRC_URI=http://www.opensource.apple.com/darwinsource/tarballs/other/gcc-5666.3.tar.gz http://www.opensource.apple.com/darwinsource/tarballs/other/libstdcxx-16.tar.gz http://www.opensource.apple.com/darwinsource/tarballs/other/libstdcxx-39.tar.gz fortran? ( mirror://gnu/gcc/gcc-4.2.4/gcc-fortran-4.2.4.tar.bz2 )
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	fixheadtails	c6fd1fc49c9dc11924f28a1406f251a0	flag-o-matic	c9602887773166fe300444712fc7ff98	gnuconfig	00a0530e40148c254cebb925df0e87ef	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	prefix	21058c21ca48453d771df15500873ede	toolchain	79b0a1d1153c017995d50b2a739e9164	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=9755a405596c197684c32047de119558

@@ -1,0 +1,26 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/teamviewer/files/teamviewerd9.init,v 1.1 2015/06/18 08:35:17 np-hardass Exp $
+
+description="daemon for TeamViewer"
+
+PIDFILE="/var/run/teamviewerd.pid"
+
+start() {
+	ebegin "Starting Teamviewer Daemon"
+
+	start-stop-daemon \
+		--start \
+		--pidfile "${PIDFILE}" \
+		--background \
+		--exec /opt/teamviewer@TVV@/teamviewerd -- -d
+}
+
+stop() {
+	ebegin "Stopping Teamviewer Daemon"
+
+	start-stop-daemon \
+		--stop \
+		--pidfile "${PIDFILE}"
+}

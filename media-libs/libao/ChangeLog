@@ -1,0 +1,471 @@
+# ChangeLog for media-libs/libao
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libao/ChangeLog,v 1.127 2015/02/28 13:59:25 ago Exp $
+
+  28 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libao-1.2.0.ebuild:
+  Stable for ia64, wrt bug #525760
+
+  02 Jan 2015; Agostino Sarubbo <ago@gentoo.org> libao-1.2.0.ebuild:
+  Stable for sparc, wrt bug #525760
+
+  01 Jan 2015; Agostino Sarubbo <ago@gentoo.org> libao-1.2.0.ebuild:
+  Stable for ppc64, wrt bug #525760
+
+  31 Dec 2014; Agostino Sarubbo <ago@gentoo.org> libao-1.2.0.ebuild:
+  Stable for ppc, wrt bug #525760
+
+  26 Dec 2014; Agostino Sarubbo <ago@gentoo.org> libao-1.2.0.ebuild:
+  Stable for x86, wrt bug #525760
+
+  23 Dec 2014; Agostino Sarubbo <ago@gentoo.org> libao-1.2.0.ebuild:
+  Stable for alpha, wrt bug #525760
+
+  20 Dec 2014; Markus Meier <maekke@gentoo.org> libao-1.2.0.ebuild:
+  arm stable, bug #525760
+
+  13 Dec 2014; Mikle Kolyada <zlogene@gentoo.org> libao-1.2.0.ebuild:
+  amd64 stable wrt bug #525760
+
+  09 Dec 2014; Jeroen Roovers <jer@gentoo.org> libao-1.2.0.ebuild:
+  Stable for HPPA (bug #525760).
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> libao-1.1.0-r2.ebuild,
+  libao-1.2.0.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+*libao-1.2.0 (29 Jan 2014)
+
+  29 Jan 2014; Tim Harder <radhermit@gentoo.org> +libao-1.2.0.ebuild:
+  Version bump.
+
+*libao-1.1.0-r2 (30 Nov 2013)
+
+  30 Nov 2013; Michał Górny <mgorny@gentoo.org> +libao-1.1.0-r2.ebuild:
+  Introduce multilib support.
+
+  18 Sep 2012; Tim Harder <radhermit@gentoo.org> -libao-1.0.0-r1.ebuild,
+  -files/libao-1.0.0-pulseaudio.patch:
+  Remove old.
+
+  08 Sep 2012; Anthony G. Basile <blueness@gentoo.org> libao-1.1.0-r1.ebuild:
+  Stable ppc, bug #423243
+
+  19 Aug 2012; Raúl Porcel <armin76@gentoo.org> libao-1.1.0-r1.ebuild:
+  alpha/ia64/sh/sparc stable wrt #423243
+
+  19 Jul 2012; Markus Meier <maekke@gentoo.org> libao-1.1.0-r1.ebuild:
+  arm stable, bug #423243
+
+  10 Jul 2012; Brent Baude <ranger@gentoo.org> libao-1.1.0-r1.ebuild:
+  Marking libao-1.1.0-r1 ppc64 for bug 423243
+
+  29 Jun 2012; Jeroen Roovers <jer@gentoo.org> libao-1.1.0-r1.ebuild:
+  Stable for HPPA (bug #423243).
+
+  25 Jun 2012; Jeff Horelick <jdhore@gentoo.org> libao-1.1.0-r1.ebuild:
+  marked x86 per bug 423243
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libao-1.1.0-r1.ebuild:
+  Stable for amd64, wrt bug #423243
+
+  24 Jun 2012; Tim Harder <radhermit@gentoo.org> -libao-1.1.0.ebuild:
+  Remove old.
+
+  24 Jun 2012; Tim Harder <radhermit@gentoo.org> libao-1.1.0-r1.ebuild:
+  Remove explicit --disable-dependency-tracking econf option since it is
+  implicitly added for EAPI=4 and use prune_libtool_files.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> libao-1.0.0-r1.ebuild,
+  libao-1.1.0.ebuild, libao-1.1.0-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*libao-1.1.0-r1 (20 Aug 2011)
+
+  20 Aug 2011; Matt Turner <mattst88@gentoo.org> libao-1.0.0-r1.ebuild,
+  libao-1.1.0.ebuild, +libao-1.1.0-r1.ebuild:
+  Fix hardcoded 'lib' in ao.m4. Drop ~mips keywords from older versions.
+
+  15 Mar 2011; Alexis Ballier <aballier@gentoo.org> libao-1.1.0.ebuild:
+  prepend eprefix to docdir, by Nathan Phillip Brink (binki), bug #359009
+
+*libao-1.1.0 (23 Feb 2011)
+
+  23 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> +libao-1.1.0.ebuild:
+  Version bump.
+
+  15 Oct 2010; Brent Baude <ranger@gentoo.org> libao-1.0.0-r1.ebuild:
+  stable ppc, bug 334121
+
+  26 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> libao-1.0.0-r1.ebuild:
+  ppc64 stable wrt #334121
+
+  19 Sep 2010; Raúl Porcel <armin76@gentoo.org> libao-1.0.0-r1.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #334121
+
+  11 Sep 2010; Jeroen Roovers <jer@gentoo.org> libao-1.0.0-r1.ebuild:
+  Stable for HPPA (bug #334121).
+
+  24 Aug 2010; Markos Chandras <hwoarang@gentoo.org> libao-1.0.0-r1.ebuild:
+  Stable on amd64 wrt bug #334121
+
+  24 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  libao-1.0.0-r1.ebuild:
+  x86 stable wrt bug #334121
+
+  23 Aug 2010; Samuli Suominen <ssuominen@gentoo.org> libao-1.0.0-r1.ebuild:
+  Fix HTML directory and punt useless .la files.
+
+  01 Aug 2010; Raúl Porcel <armin76@gentoo.org> libao-1.0.0.ebuild:
+  ia64/sh/sparc stable wrt #324265
+
+*libao-1.0.0-r1 (26 Jul 2010)
+
+  26 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +libao-1.0.0-r1.ebuild, +files/libao-1.0.0-pulseaudio.patch:
+  Fix pulseaudio module wrt #329737 by Reuben Martin. Remove -O20 from
+  upstream default CFLAGS.
+
+  25 Jul 2010; Tobias Klausmann <klausman@gentoo.org> libao-1.0.0.ebuild:
+  Stable on alpha, bug #324265
+
+  23 Jul 2010; Markus Meier <maekke@gentoo.org> libao-1.0.0.ebuild:
+  arm stable, bug #324265
+
+  18 Jul 2010; <nixnut@gentoo.org> libao-1.0.0.ebuild:
+  ppc stable #324265
+
+  13 Jul 2010; Christian Faulhammer <fauli@gentoo.org> libao-1.0.0.ebuild:
+  stable x86, bug 324265
+
+  04 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> libao-1.0.0.ebuild:
+  ppc64 stable wrt #324265
+
+  25 Jun 2010; Jeroen Roovers <jer@gentoo.org> libao-1.0.0.ebuild:
+  Stable for HPPA (bug #324265).
+
+  22 Jun 2010; Markos Chandras <hwoarang@gentoo.org> libao-1.0.0.ebuild:
+  Stable on amd64 wrt bug #324265
+
+  06 Apr 2010; Jonathan Callen <abcd@gentoo.org> libao-1.0.0.ebuild:
+  Add prefix keywords
+
+*libao-1.0.0 (05 Apr 2010)
+
+  05 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> +libao-1.0.0.ebuild:
+  Version bump wrt #313007 by Lars Wendler.
+
+  01 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> libao-0.8.8.ebuild:
+  Remove arts and esound support.
+
+  26 May 2008; Samuli Suominen <drac@gentoo.org> libao-0.8.6-r3.ebuild,
+  libao-0.8.8.ebuild:
+  arm stable, revert back to ~mips (unstable deps)
+
+  31 Jan 2008; nixnut <nixnut@gentoo.org> libao-0.8.8.ebuild:
+  Stable on ppc wrt bug 2067682
+
+  31 Jan 2008; Samuli Suominen <drac@gentoo.org> -libao-0.8.5.ebuild,
+  -libao-0.8.6-r1.ebuild, -libao-0.8.6-r2.ebuild, libao-0.8.8.ebuild:
+  amd64 stable wrt #207682
+
+  30 Jan 2008; Raúl Porcel <armin76@gentoo.org> libao-0.8.8.ebuild:
+  alpha/ia64/sparc stable wrt #207682
+
+  30 Jan 2008; Dawid Węgliński <cla@gentoo.org> libao-0.8.8.ebuild:
+  Stable on x86 (bug #207682)
+
+  28 Jan 2008; Jeroen Roovers <jer@gentoo.org> libao-0.8.8.ebuild:
+  Stable for HPPA (bug #207682).
+
+  27 Jan 2008; Brent Baude <ranger@gentoo.org> libao-0.8.8.ebuild:
+  Marking libao-0.8.8 ppc64 for bug 207682
+
+*libao-0.8.8 (27 Nov 2007)
+
+  27 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  +files/libao-0.8.8-alsa09-buffertime-milliseconds.patch,
+  +libao-0.8.8.ebuild:
+  Version bump wrt #200322, thanks to Rafał Mużyło for reporting.
+
+  07 Nov 2007; Raúl Porcel <armin76@gentoo.org> libao-0.8.6-r3.ebuild:
+  alpha stable
+
+  07 Jul 2007; Raúl Porcel <armin76@gentoo.org> libao-0.8.6-r2.ebuild,
+  libao-0.8.6-r3.ebuild:
+  Add ~alpha wrt #149806 and stabilize -r2 wrt #180310
+
+  02 Jun 2007; Joshua Kinard <kumba@gentoo.org> libao-0.8.6-r3.ebuild:
+  Stable on mips.
+
+  22 Apr 2007; Raúl Porcel <armin76@gentoo.org> libao-0.8.6-r3.ebuild:
+  ia64 stable
+
+  06 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> libao-0.8.6-r3.ebuild:
+  Stable on amd64 wrt bug #161149.
+
+  27 Jan 2007; Joseph Jezak <josejx@gentoo.org> libao-0.8.6-r3.ebuild:
+  Marked ppc stable for bug #161149.
+
+  19 Jan 2007; Jeroen Roovers <jer@gentoo.org> libao-0.8.6-r3.ebuild:
+  Stable for HPPA (bug #149806).
+
+  18 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org> libao-0.8.6-r3.ebuild:
+  Stable on sparc
+
+  18 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  libao-0.8.6-r3.ebuild:
+  stable x86, bug #161149
+
+  14 Jan 2007; Markus Rothe <corsair@gentoo.org> libao-0.8.6-r3.ebuild:
+  Stable on ppc64; bug #161149
+
+  13 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org> libao-0.8.6-r3.ebuild:
+  Keyworded ~sparc wrt #149806
+
+  08 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  libao-0.8.6-r3.ebuild:
+  keyworded ~x86, bug #149806
+
+  16 Oct 2006; Aron Griffis <agriffis@gentoo.org> libao-0.8.6-r3.ebuild:
+  Mark 0.8.6-r3 ~ia64. #149806
+
+  04 Oct 2006; Fabian Groffen <grobian@gentoo.org>
+  -files/libao-0.8.5-ppc-macos.patch, -files/libao-0.8.6-ppc-macos.patch,
+  libao-0.8.5.ebuild, libao-0.8.6-r1.ebuild, libao-0.8.6-r2.ebuild:
+  Dropped ~ppc-macos, see you in prefix.
+
+  02 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> libao-0.8.6-r3.ebuild:
+  Install is not parallel make.
+
+  02 Oct 2006; Markus Rothe <corsair@gentoo.org> libao-0.8.6-r3.ebuild:
+  Added ~ppc64; bug #149806
+
+*libao-0.8.6-r3 (02 Oct 2006)
+
+  02 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> +libao-0.8.6-r3.ebuild:
+  Add new revision, with a patch to fix buffer_time parameter on alsa09
+  driver, thanks to Heikki Orsila in bug #119967, with a doc useflag to
+  install the API documentation, thanks to Nguyen Thai Ngoc Duy (pclouds) in
+  bug #138560, and a pulseaudio useflag to bring in the libao-pulse plugin.
+
+  28 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Re-absorb into sound herd entirely, as Spider is being away for a while now.
+
+  28 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> libao-0.8.6-r1.ebuild,
+  libao-0.8.6-r2.ebuild:
+  Force latest autotools, thanks to Arne Stäcker for reporting bug #149405.
+
+  26 May 2006; Diego Pettenò <flameeyes@gentoo.org> libao-0.8.6-r2.ebuild:
+  Remove redundant autotools dependency, remove forced -j1 (no more needed, it
+  works fine in parallel make and the relative but should have been NEEDINFO),
+  fix quoting.
+
+  12 May 2006; Diego Pettenò <flameeyes@gentoo.org> libao-0.8.6-r2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  06 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> libao-0.8.5.ebuild,
+  libao-0.8.6-r1.ebuild, libao-0.8.6-r2.ebuild:
+  Drop virtual/libc dependency.
+
+*libao-0.8.6-r2 (07 Oct 2005)
+
+  07 Oct 2005; MATSUU Takuto <matsuu@gentoo.org>
+  -files/libao-0.8.3-r1.patch, -files/libao-0.8.4-esd.patch,
+  -files/alsa-1.0.patch, -libao-0.8.3-r1.ebuild, -libao-0.8.4.ebuild,
+  -libao-0.8.4-r1.ebuild, -libao-0.8.6.ebuild, +libao-0.8.6-r2.ebuild:
+  Removed old versions.
+  Added ALSA driver bug fix patch. Bug 98607.
+
+  05 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> libao-0.8.6-r1.ebuild:
+  Use autotools eclass, and call elibtoolize after all is clear.
+
+  02 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> libao-0.8.6-r1.ebuild:
+  Updated patches to fix compilation issues on Darwin/OSX.
+
+  29 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> libao-0.8.6-r1.ebuild:
+  Make sure that all of the autotool toolchain is called as we patch
+  configure.in and Makefile.am.
+
+*libao-0.8.6-r1 (29 Apr 2005)
+
+  29 Apr 2005; Diego Pettenò <flameeyes@gentoo.org> +libao-0.8.6-r1.ebuild:
+  Added a new revision for libao which builds fine on systems where dlopen()
+  is not in libdl.
+
+  25 Mar 2005; Hardave Riar <hardave@gentoo.org> libao-0.8.5.ebuild:
+  Stable on mips.
+
+*libao-0.8.6 (29 Jan 2005)
+
+  29 Jan 2005; Tony Vroon <chainsaw@gentoo.org> +libao-0.8.6.ebuild:
+  Version bump, closes bug #79646
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  12 Nov 2004; Kito <kito@gentoo.org> +files/libao-0.8.5-ppc-macos.patch,
+  libao-0.8.5.ebuild:
+  added ppc-macos patch
+
+  06 Nov 2004; Lars Weiler <pylon@gentoo.org> libao-0.8.5.ebuild:
+  Stable on ppc.
+
+  25 Oct 2004; Alexander Plank <alexander@gentoo.org> libao-0.8.5.ebuild:
+  keyword it ~ppc-macos
+    
+  27 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> libao-0.8.5.ebuild:
+  static USE flag support.
+
+  29 Jul 2004; Tom Gall <tgall@gentoo.org> libao-0.8.5.ebuild:
+  stable on ppc64, bug #55339
+
+  15 Jul 2004; Tom Gall <tgall@gentoo.org> libao-0.8.5.ebuild:
+  added ~ppc64, bug #55427
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libao-0.8.3-r1.ebuild, libao-0.8.4-r1.ebuild, libao-0.8.4.ebuild,
+  libao-0.8.5.ebuild:
+  virtual/glibc -> virtual/libc
+
+  05 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> libao-0.8.5.ebuild:
+  Stable on alpha.
+
+  26 May 2004; Guy Martin <gmsoft@gentoo.org> libao-0.8.5.ebuild:
+  Marked stable on hppa.
+
+  29 Apr 2004; Gustavo Zacarias <gustavoz@gentoo.org> libao-0.8.5.ebuild:
+  Stable on sparc
+
+  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> libao-0.8.5.ebuild :
+  Stable on AMD64.
+
+  26 Apr 2004; Stephen P. Becker <geoman@gentoo.org> libao-0.8.4-r1.ebuild:
+  Marked stable on mips.
+
+  25 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> libao-0.8.5.ebuild:
+  Stable x86.
+
+  21 Apr 2004; Guy Martin <gmsoft@gentoo.org> libao-0.8.4-r1.ebuild:
+  Marked stable on hppa.
+
+  31 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libao-0.8.3-r1.ebuild, libao-0.8.4.ebuild:
+  Removing explicit S=
+
+  29 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org> libao-0.8.4-r1.ebuild:
+  stable on sparc
+
+  26 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libao-0.8.3-r1.ebuild, libao-0.8.4-r1.ebuild, libao-0.8.4.ebuild:
+  0.8.4-r1 in stable x86 for alsa-1 patches.
+
+*libao-0.8.5 (26 Mar 2004)
+
+  26 Mar 2004; <spider@gentoo.org> libao-0.8.5.ebuild:
+  Remove alsa 1.0 and esound patches
+
+  14 Mar 2004; Stephen P. Becker <geoman@gentoo.org> libao-0.8.4-r1.ebuild:
+  Added ~mips keyword.
+
+  15 Feb 2004; Martin Schlemmer <azarah@gentoo.org> libao-0.8.4-r1.ebuild:
+  Remove libtoolize -c -f, as latest libtool-1.5.2-r3 is fixed and rather run
+  elibtoolize.
+
+  12 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libao-0.8.4-r1.ebuild:
+  Added mmap USE flag to toggle the --enable-alsa09-mmap configure option.
+  Closes bug #32201.
+
+  09 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Fix autoconf/libtool issues #40901.
+
+  28 Jan 2004; <spider@gentoo.org> libao-0.8.4-r1.ebuild:
+  moved DEPEND to RDEPEND and made DEPEND add autoconf, closes #39585
+   from appearing again
+  added !mips?() for esound in 0.8.4.  makes repoman happy
+
+  21 Jan 2004; Nick Hadaway <raker@gentoo.org> libao-0.8.4-r1.ebuild;
+  Changed from emake to emake -j1 to address bug #37218 build problems.
+
+  28 Dec 2003; <spider@gentoo.org> libao-0.8.4-r1.ebuild,
+  files/libao-0.8.4-esd.patch:
+  changed HOMEPAGE , added a patch that I missed last (fixes USE="-esd" and
+  closes #36644)
+
+*libao-0.8.4-r1 (28 Dec 2003)
+
+  28 Dec 2003; <spider@gentoo.org> libao-0.8.4-r1.ebuild:
+  Caught a bad case of DEPEND breakage in regression testing. This had silent
+  deps on a lot of stuff, which are now more correctly handled. (getting more
+  solid and working buildchains) 
+
+  Removed mips from KEYWORDS because a lot of the USE flagged depends don't 
+  have mips keywords set. 
+
+  Fixed up USE flags for alsa, arts, nas and made the esound depend actually 
+  work as supposed.
+
+  Keyworded this to the sound herd. Adding myself as maintainer.
+
+  07 Dec 2003; Markus Nigbur <pyrania@gentoo.org> libao-0.8.4.ebuild,
+  files/alsa-1.0.patch:
+  Added patch to make it work with alsa-1.0
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> libao-0.8.3-r1.ebuild:
+  Stable on ia64
+
+*libao-0.8.4 (06 Oct 2003)
+
+  04 Nov 2003; Joshua Kinard <kumba@gentoo.org> libao-0.8.4.ebuild:
+  Added ~mips to KEYWORDS
+
+  28 Oct 2003; Martin Holzer <mholzer@gentoo.org> libao-0.8.3-r1.ebuild,
+  libao-0.8.4.ebuild:
+  updateing docs. Closes #27750.
+
+  06 Oct 2003; Heinrich Wendel <lanius@gentoo.org> libao-0.8.3.ebuild,
+  libao-0.8.4.ebuild:
+  version bump #30451
+
+*libao-0.8.3-r1 (12 Apr 2003)
+
+  04 Jul 2003; Guy Martin <gmsoft@gentoo.org> libao-0.8.3-r1.patch :
+  Added hppa to KEYWORDS.
+
+  13 Apr 2003; Philip Walls <malverian@gentoo.org> libao-0.8.3-r1.patch :
+  Patch now looks for files in non-absolute path: thanks to Heinrich 
+  Wendel in bug #19193 for pointing this out.
+
+  13 Apr 2003; Philip Walls <malverian@gentoo.org> libao-0.8.3.ebuild,
+  libao-0.8.3-r1.ebuild :
+  Cleaned up ebuild (removed invalid whitespace) and told 0.8.3 not to
+  look for patch. Fixed #19193
+
+  12 Apr 2003; jje libao-0.8.3-r1.ebuild, libao-0.8.3.ebuild,
+  files/libao-0.8.3-r1.patch:
+  Added patch to fix 14341. ALSA output now clean.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*libao-0.8.3 (19 Jul 2002)
+
+  02 Mar 2003; Alastair Tse <liquidx@gentoo.org> libao-0.8.3.ebuild :
+  Changed License to GPL-2
+
+  15 Dec 2002; Bjoern Brauel <bjb@gentoo.org> libao-0.8.3.ebuild :
+  Add alpha to KEYWORDS
+
+  19 Jul 2002; Brandon Low <lostlogic@gentoo.org> libao-0.8.3.ebuild:
+
+  Remove old versions, repoman, and add latest version :)
+
+*libao-0.8.2 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

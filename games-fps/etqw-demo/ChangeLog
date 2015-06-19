@@ -1,0 +1,48 @@
+# ChangeLog for games-fps/etqw-demo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/etqw-demo/ChangeLog,v 1.11 2015/06/14 16:59:55 ulm Exp $
+
+  14 Jun 2015; Ulrich Müller <ulm@gentoo.org> etqw-demo-2.0_p1-r1.ebuild:
+  [QA] Remove emul-linux-x86-* from dependencies.
+
+  27 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org> -etqw-demo-2.0_p1.ebuild:
+  old
+
+  07 Jul 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  etqw-demo-2.0_p1-r1.ebuild:
+  bumped dep versions to avoid erroneous gx86-multilib satisfaction by portage
+
+*etqw-demo-2.0_p1-r1 (04 Jul 2014)
+
+  04 Jul 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +etqw-demo-2.0_p1-r1.ebuild:
+  bumped EAPI to 5, adjusted deps for gx86-multilib, unbundled some internal
+  libs, installed docs in standard location
+
+  29 Mar 2013; Julian Ospald <hasufell@gentoo.org> etqw-demo-2.0_p1.ebuild:
+  use unpack_zip from unpacker.eclass instead of unzip
+
+  26 Jan 2013; Tupone Alfredo <tupone@gentoo.org> etqw-demo-2.0_p1.ebuild:
+  Use QA_PREBUILT Bug #432088 by Diego Elio Pettenò
+
+  05 Feb 2012; Mike Frysinger <vapier@gentoo.org> etqw-demo-2.0_p1.ebuild:
+  Use unzip directly to avoid creation of 700MB temp file.
+
+  05 Jun 2008; Chris Gianelloni <wolf31o2@gentoo.org> metadata.xml:
+  Removing myself as maintainer.
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> etqw-demo-1.1_p5.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+*etqw-demo-2.0_p1 (27 Feb 2008)
+
+  27 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  +etqw-demo-2.0_p1.ebuild:
+  Version bump to 2.0_p1 so I can close bug #195999.
+
+*etqw-demo-1.1_p5 (27 Feb 2008)
+
+  27 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +etqw-demo-1.1_p5.ebuild:
+  Initial import. Original ebuild by Paul Bredbury <brebs@sent.com> and
+  modified by me. Closing bug #195999.

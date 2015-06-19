@@ -1,0 +1,40 @@
+Index: libs/lensfun/cpuid.cpp
+===================================================================
+--- libs/lensfun/cpuid.cpp	(revision 380)
++++ libs/lensfun/cpuid.cpp	(working copy)
+@@ -65,16 +65,16 @@
+ #else
+ #if defined (__i386__) || defined (__x86_64__)
+ 
+-#if defined (__i386__)
++#ifdef __x86_64__
++#  define R_AX	"rax"
++#  define R_BX	"rbx"
++#  define R_CX	"rcx"
++#  define R_DX	"rdx"
++#else
+ #  define R_AX	"eax"
+ #  define R_BX	"ebx"
+ #  define R_CX	"ecx"
+ #  define R_DX	"edx"
+-#elif defined (__x86_64__)
+-#  define R_AX	"rax"
+-#  define R_BX	"rbx"
+-#  define R_CX	"rcx"
+-#  define R_DX	"rdx"
+ #endif
+ 
+ // Borrowed from RawStudio
+@@ -88,7 +88,11 @@
+        : "=a" (ax), "=c" (cx),  "=d" (dx) \
+        : "0" (cmd))
+ 
+-    __SIZE_TYPE__ ax, cx, dx, tmp;
++#ifdef __x86_64__
++    guint64 ax, cx, dx, tmp;
++#else
++    guint32 ax, cx, dx, tmp;
++#endif
+     static GStaticMutex lock = G_STATIC_MUTEX_INIT;
+     static guint cpuflags = -1;
+ 

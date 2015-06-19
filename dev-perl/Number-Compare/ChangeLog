@@ -1,0 +1,124 @@
+# ChangeLog for dev-perl/Number-Compare
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Number-Compare/ChangeLog,v 1.34 2014/08/22 18:14:26 axs Exp $
+
+*Number-Compare-0.30.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Number-Compare-0.30.0-r1.ebuild, -Number-Compare-0.30.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  30 Jan 2014; Markus Meier <maekke@gentoo.org> Number-Compare-0.30.0.ebuild:
+  add ~arm, bug #497068
+
+  06 Jan 2014; Naohiro Aota <naota@gentoo.org> Number-Compare-0.30.0.ebuild:
+  Add ~x86-fbsd wrt bug #497068
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org> Number-Compare-0.30.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  21 Apr 2012; Torsten Veller <tove@gentoo.org> -Number-Compare-0.10.0.ebuild,
+  -Number-Compare-0.20.0.ebuild:
+  Cleanup
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> Number-Compare-0.30.0.ebuild:
+  ia64/sparc stable wrt #400193
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Number-Compare-0.30.0.ebuild:
+  x86 stable wrt bug #400193
+
+  03 Mar 2012; Brent Baude <ranger@gentoo.org> Number-Compare-0.30.0.ebuild:
+  Marking Number-Compare-0.30.0 ppc64 for bug 400193
+
+  27 Feb 2012; Brent Baude <ranger@gentoo.org> Number-Compare-0.30.0.ebuild:
+  Marking Number-Compare-0.30.0 ppc for bug 400193
+
+  27 Feb 2012; Jeroen Roovers <jer@gentoo.org> Number-Compare-0.30.0.ebuild:
+  Stable for HPPA (bug #400193).
+
+  25 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  Number-Compare-0.30.0.ebuild:
+  Stable on alpha, bug #400193
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Number-Compare-0.30.0.ebuild:
+  Stable for amd64, wrt bug #400193
+
+*Number-Compare-0.30.0 (24 Sep 2011)
+
+  24 Sep 2011; Torsten Veller <tove@gentoo.org> +Number-Compare-0.30.0.ebuild:
+  Version bump
+
+*Number-Compare-0.20.0 (13 Sep 2011)
+
+  13 Sep 2011; Torsten Veller <tove@gentoo.org> +Number-Compare-0.20.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Number-Compare-0.01.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Number-Compare-0.10.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Number-Compare-0.10.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org> +Number-Compare-0.10.0.ebuild:
+  Change version scheme
+
+  10 Jan 2010; Fabian Groffen <grobian@gentoo.org>
+  Number-Compare-0.01.ebuild:
+  Transfer Prefix keywords
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Number-Compare-0.01.ebuild:
+  Ebuild maintenance
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Number-Compare-0.01.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  27 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  Number-Compare-0.01.ebuild:
+  Stable on ppc.
+
+  18 Jan 2006; Guy Martin <gmsoft@gentoo.org> Number-Compare-0.01.ebuild:
+  Stable on hppa.
+
+  27 Nov 2005; Tom Gall <tgall@gentoo.org Number-Compare-0.01.ebuild:
+  stable on ppc64
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  Number-Compare-0.01.ebuild:
+  Mark 0.01 stable on ia64
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  Number-Compare-0.01.ebuild:
+  add ~ia64
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  Number-Compare-0.01.ebuild:
+  Cleaning for mirror
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  22 Dec 2004; Yuta SATOH <nigoro@gentoo.org> Number-Compare-0.01.ebuild:
+  added ~ppc64
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  Number-Compare-0.01.ebuild:
+  Stable on alpha.
+
+  07 May 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  Number-Compare-0.01.ebuild:
+  Stable on sparc
+
+*Number-Compare-0.01 (03 Jun 2003)
+
+  03 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  Number-Compare-0.01.ebuild:
+  Fills bug 21791

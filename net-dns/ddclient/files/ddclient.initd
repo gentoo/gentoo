@@ -1,0 +1,52 @@
+#!/sbin/runscript
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/ddclient/files/ddclient.initd,v 1.2 2007/08/08 03:17:32 uberlord Exp $
+
+# Default location if not specified in /etc/conf.d/ddclient
+PIDFILE=${PIDFILE:-/var/run/ddclient/ddclient.pid}
+
+depend() {
+	before cron
+	need net
+	use dns logger
+}
+
+checkconfig() {
+	local conf="/etc/ddclient/ddclient.conf"
+
+	if [ -e "${conf}" ] ; then
+		if [ -n "$(find /etc/ddclient -maxdepth 1 -name ddclient.conf -perm +0004)" ] ; then
+			eerror "${conf} must not be world-readable. Run e.g.:"
+			eerror "   chmod 640 ${conf}"
+			eerror "   chown root:ddclient ${conf}"
+			return 1
+		fi
+	else
+		eerror "/etc/ddclient/ddclient.conf is needed to run ddclient"
+		eerror "There is a sample file in /etc/ddclient/"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon \
+		--start \
+		--chuid ddclient \
+		--exec /usr/sbin/ddclient \
+		--name ddclient \
+		--pidfile "${PIDFILE}" \
+		-- -pid="${PIDFILE}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon \
+		--stop \
+		--signal USR1 \
+		--pidfile "${PIDFILE}"
+	eend $?
+}

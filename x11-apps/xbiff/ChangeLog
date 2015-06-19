@@ -1,0 +1,151 @@
+# ChangeLog for x11-apps/xbiff
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xbiff/ChangeLog,v 1.42 2011/03/07 21:17:11 scarabeus Exp $
+
+  07 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> -xbiff-1.0.2.ebuild:
+  old
+
+  05 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> xbiff-1.0.3.ebuild:
+  ppc64 stable wrt #354237
+
+  05 Mar 2011; Raúl Porcel <armin76@gentoo.org> xbiff-1.0.3.ebuild:
+  arm/s390/sh/sparc stable wrt #354237
+
+  23 Feb 2011; Jeroen Roovers <jer@gentoo.org> xbiff-1.0.3.ebuild:
+  Stable for HPPA (bug #354237).
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> xbiff-1.0.3.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Christian Faulhammer <fauli@gentoo.org> xbiff-1.0.3.ebuild:
+  stable x86, bug 354237
+
+  12 Feb 2011; Markos Chandras <hwoarang@gentoo.org> xbiff-1.0.3.ebuild:
+  Stable on amd64 wrt bug #354237
+
+*xbiff-1.0.3 (25 Jan 2011)
+
+  25 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org> +xbiff-1.0.3.ebuild:
+  Version bump
+
+  21 Oct 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xbiff-1.0.1-r1.ebuild:
+  old
+
+  19 Sep 2010; Raúl Porcel <armin76@gentoo.org> xbiff-1.0.2.ebuild:
+  s390/sh/sparc stable wrt #327777
+
+  22 Jul 2010; Markus Meier <maekke@gentoo.org> xbiff-1.0.2.ebuild:
+  arm stable, bug #327777
+
+  15 Feb 2010; Joseph Jezak <josejx@gentoo.org> xbiff-1.0.2.ebuild:
+  Marked ppc/ppc64 stable for bug #302046.
+
+  11 Feb 2010; Jeroen Roovers <jer@gentoo.org> xbiff-1.0.2.ebuild:
+  Stable for HPPA (bug #302046).
+
+  08 Feb 2010; Christian Faulhammer <fauli@gentoo.org> xbiff-1.0.2.ebuild:
+  stable x86, bug 302046
+
+  30 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> xbiff-1.0.2.ebuild:
+  amd64 stable wrt #302046
+
+*xbiff-1.0.2 (19 Dec 2009)
+
+  19 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org> +xbiff-1.0.2.ebuild:
+  Version bump.
+
+  07 Jul 2009; Jeroen Roovers <jer@gentoo.org> xbiff-1.0.1-r1.ebuild:
+  Stable for HPPA too.
+
+  22 Apr 2009; Brent Baude <ranger@gentoo.org> xbiff-1.0.1-r1.ebuild:
+  Marking xbiff-1.0.1-r1 ppc64 stable for bug 264982
+
+  17 Apr 2009; Jeroen Roovers <jer@gentoo.org> xbiff-1.0.1-r1.ebuild:
+  Marked ~hppa too.
+
+  11 Apr 2009; nixnut <nixnut@gentoo.org> xbiff-1.0.1-r1.ebuild:
+  ppc stable #264982
+
+  09 Apr 2009; Raúl Porcel <armin76@gentoo.org> xbiff-1.0.1-r1.ebuild:
+  arm/s390/sh stable wrt #264982
+
+  06 Apr 2009; Friedrich Oslage <bluebird@gentoo.org> xbiff-1.0.1-r1.ebuild:
+  Stable on sparc, bug #264982
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org> xbiff-1.0.1-r1.ebuild:
+  x86 stable, bug #264982
+
+  05 Apr 2009; Olivier Crête <tester@gentoo.org> xbiff-1.0.1-r1.ebuild:
+  Stable on amd64, bug #264982
+
+*xbiff-1.0.1-r1 (27 Feb 2009)
+
+  27 Feb 2009; Rémi Cardona <remi@gentoo.org> +xbiff-1.0.1-r1.ebuild:
+  remove xprint support (see bug #254874)
+
+  10 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>; xbiff-1.0.1.ebuild:
+  Update description to be less generic.
+
+  06 Sep 2006; Luis Medinas <metalgod@gentoo.org> xbiff-1.0.1.ebuild:
+  Stable on amd64.
+
+  17 Aug 2006; Markus Rothe <corsair@gentoo.org> xbiff-1.0.1.ebuild:
+  Stable on ppc64
+
+  18 Jul 2006; Joshua Jackson <tsunam@gentoo.org> xbiff-1.0.1.ebuild:
+  Stable x86; bug #140656
+
+  20 May 2006; Robin H. Johnson <robbat2@gentoo.org> xbiff-1.0.1.ebuild:
+  Added ~ppc after testing.
+
+  22 Mar 2006; Ferris McCormick <fmccor@gentoo.org> xbiff-1.0.1.ebuild:
+  Add ~amd64 keyword.  Builds and runs as expected.
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> xbiff-1.0.1.ebuild:
+  Added ~ppc64
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xbiff-0.99.2.ebuild, -xbiff-1.0.0.ebuild:
+  Pull old versions.
+
+*xbiff-1.0.1 (23 Dec 2005)
+
+  23 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>; +xbiff-1.0.1.ebuild:
+  Bump for 7.0.
+
+*xbiff-1.0.0 (18 Dec 2005)
+
+  18 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xbiff-1.0.0.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>; -xbiff-0.99.0.ebuild,
+  -xbiff-0.99.1.ebuild:
+  Pull old versions.
+
+*xbiff-0.99.2 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xbiff-0.99.2.ebuild:
+  Bump for 7.0RC3.
+
+*xbiff-0.99.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>; +xbiff-0.99.1.ebuild:
+  Bump for 7.0 RC1.
+
+  27 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; xbiff-0.99.0.ebuild:
+  Add note about xprint being optional as of today's CVS.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> xbiff-0.99.0.ebuild:
+  Add ~sparc keyword (Modular X testing).
+
+*xbiff-0.99.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>; +xbiff-0.99.0.ebuild:
+  Initial commit for modular X.
+

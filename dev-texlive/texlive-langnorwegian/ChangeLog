@@ -1,0 +1,264 @@
+# ChangeLog for dev-texlive/texlive-langnorwegian
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-langnorwegian/ChangeLog,v 1.62 2014/11/05 07:46:55 aballier Exp $
+
+  04 Nov 2014; Alexis Ballier <aballier@gentoo.org>
+  -texlive-langnorwegian-2011.ebuild:
+  remove texlive 2011
+
+  25 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  texlive-langnorwegian-2012.ebuild:
+  Stable for sh, wrt bug #449298
+
+  22 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  texlive-langnorwegian-2012.ebuild:
+  Stable for s390, wrt bug #449298
+
+  21 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  texlive-langnorwegian-2012.ebuild:
+  Stable for sparc, wrt bug #449298
+
+  21 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  texlive-langnorwegian-2012.ebuild:
+  Stable for arm, wrt bug #449298
+
+  20 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  texlive-langnorwegian-2012.ebuild:
+  Stable for alpha, wrt bug #449298
+
+  19 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  texlive-langnorwegian-2012.ebuild:
+  Stable for ia64, wrt bug #449298
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  texlive-langnorwegian-2012.ebuild:
+  Stable for ppc64, wrt bug #449298
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  texlive-langnorwegian-2012.ebuild:
+  Stable for ppc, wrt bug #449298
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  texlive-langnorwegian-2012.ebuild:
+  Stable for x86, wrt bug #449298
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  texlive-langnorwegian-2012.ebuild:
+  Stable for amd64, wrt bug #449298
+
+  17 Apr 2013; Jeroen Roovers <jer@gentoo.org>
+  texlive-langnorwegian-2012.ebuild:
+  Stable for HPPA (bug #449298).
+
+*texlive-langnorwegian-2012 (27 Jul 2012)
+
+  27 Jul 2012; Alexis Ballier <aballier@gentoo.org>
+  +texlive-langnorwegian-2012.ebuild:
+  Bump to TeX Live 2012.
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org>
+  texlive-langnorwegian-2011.ebuild:
+  keyword ~amd64-fbsd
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org>
+  -texlive-langnorwegian-2010.ebuild:
+  remove old
+
+  06 May 2012; Raúl Porcel <armin76@gentoo.org>
+  texlive-langnorwegian-2011.ebuild:
+  ia64/s390/sh/sparc stable wrt #395735
+
+  04 Mar 2012; Tobias Klausmann <klausman@gentoo.org>
+  texlive-langnorwegian-2011.ebuild:
+  Stable on alpha, bug #395735
+
+  03 Mar 2012; Brent Baude <ranger@gentoo.org>
+  texlive-langnorwegian-2011.ebuild:
+  Marking texlive-langnorwegian-2011 ppc64 stable for bug 395735
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org>
+  texlive-langnorwegian-2011.ebuild:
+  Marking texlive-langnorwegian-2011 ppc stable for bug 395735
+
+  29 Jan 2012; Markus Meier <maekke@gentoo.org>
+  texlive-langnorwegian-2011.ebuild:
+  arm stable, bug #395735
+
+  17 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  texlive-langnorwegian-2011.ebuild:
+  x86 stable wrt bug #395735
+
+  16 Jan 2012; Agostino Sarubbo <ago@gentoo.org>
+  texlive-langnorwegian-2011.ebuild:
+  Stable for amd64, wrt bug #395735
+
+  28 Dec 2011; Jeroen Roovers <jer@gentoo.org>
+  texlive-langnorwegian-2011.ebuild:
+  Stable for HPPA (bug #395735).
+
+  05 Oct 2011; Alexis Ballier <aballier@gentoo.org>
+  -texlive-langnorwegian-2008.ebuild, -texlive-langnorwegian-2009.ebuild:
+  remove old
+
+  04 Oct 2011; Jeroen Roovers <jer@gentoo.org>
+  texlive-langnorwegian-2010.ebuild:
+  Stable for HPPA (bug #355085).
+
+  18 Sep 2011; Raúl Porcel <armin76@gentoo.org>
+  texlive-langnorwegian-2010.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #355085
+
+  14 Aug 2011; Markus Meier <maekke@gentoo.org>
+  texlive-langnorwegian-2010.ebuild:
+  arm stable, bug #355085
+
+  12 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  texlive-langnorwegian-2010.ebuild:
+  ppc/ppc64 stable wrt #355085
+
+  12 Aug 2011; Thomas Kahle <tomka@gentoo.org>
+  texlive-langnorwegian-2010.ebuild:
+  x86 stable per bug 355085
+
+  09 Aug 2011; Markos Chandras <hwoarang@gentoo.org>
+  texlive-langnorwegian-2010.ebuild:
+  Stable on amd64 wrt bug #355085
+
+*texlive-langnorwegian-2011 (28 Jul 2011)
+
+  28 Jul 2011; Alexis Ballier <aballier@gentoo.org>
+  +texlive-langnorwegian-2011.ebuild:
+  Bump to TeX Live 2011
+
+*texlive-langnorwegian-2010 (24 Oct 2010)
+
+  24 Oct 2010; Alexis Ballier <aballier@gentoo.org>
+  +texlive-langnorwegian-2010.ebuild:
+  Bump to TeX Live 2010
+
+  02 Feb 2010; Jonathan Callen <abcd@gentoo.org>
+  texlive-langnorwegian-2009.ebuild:
+  Add ~amd64-linux/~x86-linux keywords
+
+*texlive-langnorwegian-2009 (11 Jan 2010)
+
+  11 Jan 2010; Alexis Ballier <aballier@gentoo.org>
+  +texlive-langnorwegian-2009.ebuild, metadata.xml:
+  Bump to TeX Live 2009
+
+  10 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org>
+  texlive-langnorwegian-2008.ebuild:
+  Add ~mips love
+
+  15 May 2009; Alexis Ballier <aballier@gentoo.org>
+  -texlive-langnorwegian-2007.ebuild:
+  remove old
+
+  18 Mar 2009; Brent Baude <ranger@gentoo.org>
+  texlive-langnorwegian-2008.ebuild:
+  Marking texlive-langnorwegian-2008 ppc stable for bug 253551
+
+  18 Mar 2009; Raúl Porcel <armin76@gentoo.org>
+  texlive-langnorwegian-2008.ebuild:
+  alpha/arm/ia64/s390/sh stable wrt #253551
+
+  13 Mar 2009; Brent Baude <ranger@gentoo.org>
+  texlive-langnorwegian-2008.ebuild:
+  Marking texlive-langnorwegian-2008 ppc64 stable for bug 235551
+
+  11 Mar 2009; Markus Meier <maekke@gentoo.org>
+  texlive-langnorwegian-2008.ebuild:
+  amd64 stable, bug #253551
+
+  10 Mar 2009; Raúl Porcel <armin76@gentoo.org>
+  texlive-langnorwegian-2008.ebuild:
+  Add ~arm/~s390/~sh
+
+  07 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  texlive-langnorwegian-2008.ebuild:
+  x86 stable, bug 253551
+
+  06 Mar 2009; Jeroen Roovers <jer@gentoo.org>
+  texlive-langnorwegian-2008.ebuild:
+  Stable for HPPA (bug #253551).
+
+  27 Feb 2009; Ferris McCormick <fmccor@gentoo.org>
+  texlive-langnorwegian-2008.ebuild:
+  Sparc stable, part of Bug #253551.
+
+  31 Oct 2008; Alexis Ballier <aballier@gentoo.org>
+  texlive-langnorwegian-2008.ebuild:
+  Use stricter deps for texlive 2008 to require the 2008 version of a
+  package, get rid of TEXLIVE_MODULES_DEPS and use standard DEPEND/RDEPEND
+  fields
+
+  09 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  texlive-langnorwegian-2007.ebuild:
+  Add empty IUSE to please repoman
+
+*texlive-langnorwegian-2008 (09 Sep 2008)
+
+  09 Sep 2008; Alexis Ballier <aballier@gentoo.org> metadata.xml,
+  +texlive-langnorwegian-2008.ebuild:
+  Bump to 2008
+
+  12 May 2008; nixnut <nixnut@gentoo.org> texlive-langnorwegian-2007.ebuild:
+  Stable on ppc wrt bug 220651
+
+  16 Apr 2008; Peter Volkov <pva@gentoo.org>
+  texlive-langnorwegian-2007.ebuild:
+  amd64 stable, bug #215735.
+
+  08 Apr 2008; Raúl Porcel <armin76@gentoo.org>
+  texlive-langnorwegian-2007.ebuild:
+  alpha/ia64/sparc stable wrt #215735
+
+  08 Apr 2008; Jeroen Roovers <jer@gentoo.org>
+  texlive-langnorwegian-2007.ebuild:
+  Stable for HPPA (bug #215735).
+
+  06 Apr 2008; Markus Rothe <corsair@gentoo.org>
+  texlive-langnorwegian-2007.ebuild:
+  Added ~ppc; bug #195815
+
+  06 Apr 2008; Markus Rothe <corsair@gentoo.org>
+  texlive-langnorwegian-2007.ebuild:
+  Stable on ppc64; bug #215735
+
+  01 Apr 2008; Christian Faulhammer <opfer@gentoo.org>
+  texlive-langnorwegian-2007.ebuild:
+  stable x86, bug 215735
+
+  10 Feb 2008; Alexis Ballier <aballier@gentoo.org>
+  texlive-langnorwegian-2007.ebuild:
+  keyword ~x86-fbsd
+
+  18 Dec 2007; Jeroen Roovers <jer@gentoo.org>
+  texlive-langnorwegian-2007.ebuild:
+  Marked ~hppa (bug #195815).
+
+  26 Oct 2007; Ferris McCormick <fmccor@gentoo.org>
+  texlive-langnorwegian-2007.ebuild:
+  Add ~amd64 keyword --- Bug #195815
+
+  25 Oct 2007; Markus Rothe <corsair@gentoo.org>
+  texlive-langnorwegian-2007.ebuild:
+  Added ~ppc64; bug #195815
+
+  25 Oct 2007; Raúl Porcel <armin76@gentoo.org>
+  texlive-langnorwegian-2007.ebuild:
+  Add ~alpha/~ia64 wrt bug #195815
+
+  25 Oct 2007; Ferris McCormick <fmccor@gentoo.org>
+  texlive-langnorwegian-2007.ebuild:
+  Add ~sparc keyword --- Bug #195815
+
+  25 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  texlive-langnorwegian-2007.ebuild:
+  keyworded ~x86, bug 195815
+
+*texlive-langnorwegian-2007 (14 Oct 2007)
+
+  14 Oct 2007; Alexis Ballier <aballier@gentoo.org> +metadata.xml,
+  +texlive-langnorwegian-2007.ebuild:
+  initial import

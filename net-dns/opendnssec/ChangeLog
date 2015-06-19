@@ -1,0 +1,241 @@
+# ChangeLog for net-dns/opendnssec
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/opendnssec/ChangeLog,v 1.42 2014/09/15 20:55:34 mschiff Exp $
+
+*opendnssec-1.3.18 (15 Sep 2014)
+
+  15 Sep 2014; Marc Schiffbauer <mschiff@gentoo.org> +opendnssec-1.3.18.ebuild,
+  -opendnssec-1.3.16.ebuild:
+  Bump 1.3 version. Drop old 1.3.16
+
+*opendnssec-1.4.6 (15 Sep 2014)
+
+  15 Sep 2014; Marc Schiffbauer <mschiff@gentoo.org> +opendnssec-1.4.6.ebuild:
+  Bump 1.4 version.
+
+  20 May 2014; Marc Schiffbauer <mschiff@gentoo.org> opendnssec-1.4.4.ebuild:
+  Do not try to install README anymore.
+
+*opendnssec-1.4.4 (20 May 2014)
+
+  20 May 2014; Marc Schiffbauer <mschiff@gentoo.org> +opendnssec-1.4.4.ebuild,
+  -opendnssec-1.4.3.ebuild:
+  Bump 1.4 branch.
+
+*opendnssec-1.3.17 (20 May 2014)
+
+  20 May 2014; Marc Schiffbauer <mschiff@gentoo.org> +opendnssec-1.3.17.ebuild,
+  files/opendnssec.initd, files/opendnssec-fix-run-dir.patch:
+  Add version 1.3.17. Disabled auditor because it depends on ruby 1.8. Fixed QA
+  warning. Improved init script.
+
+*opendnssec-1.3.16 (03 Feb 2014)
+*opendnssec-1.4.3 (03 Feb 2014)
+
+  03 Feb 2014; Marc Schiffbauer <mschiff@gentoo.org> +opendnssec-1.3.16.ebuild,
+  +opendnssec-1.4.3.ebuild, -opendnssec-1.3.15-r2.ebuild,
+  -opendnssec-1.4.2-r2.ebuild, files/opendnssec.initd,
+  files/opendnssec.initd-1.3.x:
+  Bump 1.4 and 1.3 version. Drop old ebuilds.
+
+*opendnssec-1.3.15-r2 (25 Nov 2013)
+*opendnssec-1.4.2-r2 (25 Nov 2013)
+
+  25 Nov 2013; Marc Schiffbauer <mschiff@gentoo.org>
+  +opendnssec-1.3.15-r2.ebuild, +opendnssec-1.4.2-r2.ebuild,
+  -opendnssec-1.3.15-r1.ebuild, -opendnssec-1.4.2-r1.ebuild,
+  files/opendnssec-fix-run-dir.patch:
+  fix opendnssec-fix-run-dir.patch so that ods will use proper run-dir
+
+*opendnssec-1.4.2-r1 (12 Nov 2013)
+*opendnssec-1.3.15-r1 (12 Nov 2013)
+
+  12 Nov 2013; Marc Schiffbauer <mschiff@gentoo.org> -opendnssec-1.3.15.ebuild,
+  +opendnssec-1.3.15-r1.ebuild, -opendnssec-1.4.2.ebuild,
+  +opendnssec-1.4.2-r1.ebuild, files/opendnssec.initd-1.3.x,
+  files/opendnssec.initd:
+  Revbump: drop superfluous 'need net' from init scripts. See #439092
+
+*opendnssec-1.3.15 (10 Nov 2013)
+
+  10 Nov 2013; Marc Schiffbauer <mschiff@gentoo.org>
+  -opendnssec-1.3.14-r1.ebuild, +opendnssec-1.3.15.ebuild:
+  Bump 1.3 branch version. Drop old 1.3
+
+*opendnssec-1.4.2 (10 Nov 2013)
+
+  10 Nov 2013; Marc Schiffbauer <mschiff@gentoo.org>
+  -opendnssec-1.4.1-r1.ebuild, +opendnssec-1.4.2.ebuild:
+  Bump 1.4 branch version. Drop old 1.4.1
+
+*opendnssec-1.3.14-r1 (24 Jul 2013)
+
+  24 Jul 2013; Marc Schiffbauer <mschiff@gentoo.org> -opendnssec-1.3.14.ebuild,
+  +opendnssec-1.3.14-r1.ebuild, files/opendnssec.initd-1.3.x:
+  Improve initscript with USE=-auditor. Use correct init and conf files.
+
+*opendnssec-1.3.14 (23 Jul 2013)
+
+  23 Jul 2013; Marc Schiffbauer <mschiff@gentoo.org>
+  +files/opendnssec-1.3.14-drop-privileges.patch,
+  +files/opendnssec-1.3.14-use-system-trang.patch,
+  +files/opendnssec.confd-1.3.x, +files/opendnssec.initd-1.3.x,
+  +opendnssec-1.3.14.ebuild, metadata.xml:
+  Restore and bump ebuild for (still maintained) 1.3 branch
+
+*opendnssec-1.4.1-r1 (23 Jul 2013)
+
+  23 Jul 2013; Marc Schiffbauer <mschiff@gentoo.org> -opendnssec-1.4.1.ebuild,
+  +opendnssec-1.4.1-r1.ebuild, -files/opendnssec.confd.14,
+  -files/opendnssec.initd.14:
+  Bump revision, Improve confd and initd file
+
+  08 Jul 2013; Marc Schiffbauer <mschiff@gentoo.org> -opendnssec-1.3.13.ebuild,
+  -opendnssec-1.4.0.ebuild, +opendnssec-1.4.1.ebuild,
+  -files/opendnssec-drop-privileges-1.4.0.patch,
+  -files/opendnssec-use-system-trang-1.4.0.patch,
+  files/opendnssec-drop-privileges.patch,
+  files/opendnssec-use-system-trang.patch, metadata.xml:
+  Drop old ebuild and cleanup patches.
+
+*opendnssec-1.4.1 (08 Jul 2013)
+
+  08 Jul 2013; Marc Schiffbauer <mschiff@gentoo.org> -opendnssec-1.4.0.ebuild,
+  +opendnssec-1.4.1.ebuild:
+  Version bump.
+
+*opendnssec-1.4.0 (12 May 2013)
+
+  12 May 2013; Marc Schiffbauer <mschiff@gentoo.org> -opendnssec-1.3.7.ebuild,
+  -opendnssec-1.3.12.ebuild, +opendnssec-1.4.0.ebuild,
+  +files/opendnssec-drop-privileges-1.4.0.patch,
+  +files/opendnssec-use-system-trang-1.4.0.patch, +files/opendnssec.confd.14,
+  +files/opendnssec.initd.14:
+  Version bump to 1.4.0. Drop old versions. Fixes #469574. Thanks Agostino
+  Sarubbo.
+
+*opendnssec-1.3.13 (04 Mar 2013)
+
+  04 Mar 2013; Marc Schiffbauer <mschiff@gentoo.org> -opendnssec-1.3.11.ebuild,
+  +opendnssec-1.3.13.ebuild:
+  Bump version. Remove old version.
+
+  31 Jan 2013; Marc Schiffbauer <mschiff@gentoo.org> files/opendnssec.confd:
+  Make opendnssec.confd use /run, not /var/run
+
+  31 Jan 2013; Marc Schiffbauer <mschiff@gentoo.org> opendnssec-1.3.12.ebuild,
+  +files/opendnssec-fix-run-dir.patch:
+  Add patch to make it use /run instead of /var/run
+
+*opendnssec-1.3.12 (18 Dec 2012)
+
+  18 Dec 2012; Marc Schiffbauer <mschiff@gentoo.org> -opendnssec-1.3.10.ebuild,
+  +opendnssec-1.3.12.ebuild:
+  Version bump. Drop old version.
+
+*opendnssec-1.3.11 (14 Nov 2012)
+
+  14 Nov 2012; Marc Schiffbauer <mschiff@gentoo.org> +opendnssec-1.3.11.ebuild:
+  Version bump. Fix EPPCLIENT_PIDFILE path.
+
+*opendnssec-1.3.10 (14 Aug 2012)
+
+  14 Aug 2012; Marc Schiffbauer <mschiff@gentoo.org> -opendnssec-1.3.6.ebuild,
+  +opendnssec-1.3.10.ebuild:
+  Version bump. Drop old version.
+
+  11 Jul 2012; Marc Schiffbauer <mschiff@gentoo.org> opendnssec-1.3.6.ebuild,
+  opendnssec-1.3.7.ebuild:
+  Added GPL-2 license for init script
+
+  14 Jun 2012; Zac Medico <zmedico@gentoo.org> opendnssec-1.3.6.ebuild,
+  opendnssec-1.3.7.ebuild:
+  inherit user for enewgroup and enewuser
+
+*opendnssec-1.3.7 (20 Mar 2012)
+
+  20 Mar 2012; Marc Schiffbauer <mschiff@gentoo.org> -opendnssec-1.3.5.ebuild,
+  +opendnssec-1.3.7.ebuild:
+  Version bump. Drop old version.
+
+*opendnssec-1.3.6 (22 Feb 2012)
+
+  22 Feb 2012; Marc Schiffbauer <mschiff@gentoo.org> -opendnssec-1.3.4.ebuild,
+  +opendnssec-1.3.6.ebuild:
+  Version bump to 1.3.6. Drop old version. Thanks to Tom Hendrikx. Fixes bug
+  #405295.
+
+  25 Jan 2012; Marc Schiffbauer <mschiff@gentoo.org> opendnssec-1.3.5.ebuild:
+  Support >=dev-libssofthsm-1.3.1. Thanks to Tom Hendrikx.
+
+*opendnssec-1.3.5 (25 Jan 2012)
+
+  25 Jan 2012; Marc Schiffbauer <mschiff@gentoo.org> -opendnssec-1.3.3.ebuild,
+  +opendnssec-1.3.5.ebuild:
+  Version bump. Drop version 1.3.3. Thanks to Tom Hendrikx. Fixes bug #400653.
+
+*opendnssec-1.3.4 (12 Dec 2011)
+
+  12 Dec 2011; Marc Schiffbauer <mschiff@gentoo.org> -opendnssec-1.3.2.ebuild,
+  +opendnssec-1.3.4.ebuild:
+  Version bump. Drop old version. Thanks to Tom Hendrikx. Fixes bug #394463.
+
+*opendnssec-1.3.3 (27 Nov 2011)
+
+  27 Nov 2011; <mschiff@gentoo.org> +opendnssec-1.3.3.ebuild:
+  Version bump. Updated deps. Thanks to Tom Hendrikx. Fixes bug #391905.
+
+  11 Nov 2011; Marc Schiffbauer <mschiff@gentoo.org> metadata.xml:
+  Added myself as maintainer
+
+  11 Nov 2011; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Drop me from maint.
+
+*opendnssec-1.3.2 (14 Sep 2011)
+
+  14 Sep 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -opendnssec-1.3.0.ebuild, +opendnssec-1.3.2.ebuild:
+  Version bump to the latest. Drop older.
+
+  23 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org> opendnssec-1.3.0.ebuild:
+  Fix tests. Closes bug #376139.
+
+*opendnssec-1.3.0 (14 Jul 2011)
+
+  14 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -opendnssec-1.3.0_rc3.ebuild, +opendnssec-1.3.0.ebuild:
+  Version bump to proper release. Punt the RC. Fixes bug #375207.
+
+*opendnssec-1.3.0_rc3 (01 Jul 2011)
+
+  01 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -opendnssec-1.3.0_rc2-r1.ebuild, +opendnssec-1.3.0_rc3.ebuild,
+  -files/opendnssec-rename-test.patch, files/opendnssec-use-system-trang.patch:
+  Version bump to latest RC. Drop older.
+
+  08 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  opendnssec-1.3.0_rc2-r1.ebuild:
+  Add missing rdeps over softshm and opensc. THanks to Tom Hendrikx for
+  spotting.
+
+*opendnssec-1.3.0_rc2-r1 (06 Jun 2011)
+
+  06 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -opendnssec-1.3.0_rc2.ebuild, +opendnssec-1.3.0_rc2-r1.ebuild,
+  files/opendnssec.confd, files/opendnssec.initd:
+  Improve the initscript to die on certain occasions. Rerun the pkg_pretend
+  phase as the variables are not ensured to be saved.
+
+  02 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  opendnssec-1.3.0_rc2.ebuild:
+  Fix messup with Id header. Move trang to be test only dep.
+
+*opendnssec-1.3.0_rc2 (02 Jun 2011)
+
+  02 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +opendnssec-1.3.0_rc2.ebuild, +files/opendnssec.confd,
+  +files/opendnssec.initd, +files/opendnssec-drop-privileges.patch,
+  +files/opendnssec-fix-localstatedir.patch,
+  +files/opendnssec-rename-test.patch,
+  +files/opendnssec-use-system-trang.patch, +metadata.xml:
+  Initial commit. Fixes bug #304733. Thanks to Tom Hendrikx for initial ebuild.

@@ -1,0 +1,43 @@
+# ChangeLog for media-sound/tk707
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/tk707/ChangeLog,v 1.10 2008/12/19 16:15:58 aballier Exp $
+
+  19 Dec 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/tk707-0.8-asneeded.patch, +files/tk707-0.8-nostrip.patch,
+  tk707-0.8-r1.ebuild:
+  Fix build with forced asneeded, bug #247866, honour ldflags, dont prestrip
+  files
+
+  19 Dec 2008; Alexis Ballier <aballier@gentoo.org> tk707-0.8-r1.ebuild:
+  remove useless configure switches, use emake, drop redundant DEPs
+
+  27 Nov 2006; <malc@gentoo.org> tk707-0.8-r1.ebuild:
+  Add ~amd64 - bug #134049
+
+  17 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> tk707-0.8-r1.ebuild:
+  Use mirror://gentoo/ instead of not giving any url for the files. Close bug
+  #104447.
+
+  07 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> tk707-0.8.ebuild:
+  Fix the same for 0.8 version.
+
+  03 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> tk707-0.8-r1.ebuild:
+  Fix DEPEND/RDEPEND that got reversed. Use autotools eclass insetad of
+  autoreconf.
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> tk707-0.8-r1.ebuild:
+  Added to ~ppc.
+
+  05 Feb 2005; Eric Shattow <jnc@gentoo.org> tk707-0.8-r1.ebuild:
+  Remove unused dependencies.
+
+*tk707-0.8-r1 (05 Feb 2005)
+
+  05 Feb 2005; Eric Shattow <jnc@gentoo.org> +tk707-0.8-r1.ebuild:
+  Ebuild fixes, no more installing twice (oops).
+
+*tk707-0.8 (03 Feb 2005)
+
+  03 Feb 2005; Eric Shattow <jnc@gentoo.org> +tk707-0.8.ebuild:
+  Initial import. Patched to use newer tcl2c.c, fixes build problems.
+

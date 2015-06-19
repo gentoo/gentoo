@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=media-libs/t1lib media-libs/tiff sys-libs/zlib >=x11-libs/motif-2.3:0 x11-libs/xbae fftw? ( sci-libs/fftw:2.1 ) jpeg? ( virtual/jpeg ) netcdf? ( sci-libs/netcdf ) png? ( media-libs/libpng ) fortran? ( virtual/fortran )
+DESCRIPTION=Motif based XY-plotting tool
+EAPI=4
+HOMEPAGE=http://plasma-gate.weizmann.ac.il/Grace/
+IUSE=fortran fftw jpeg netcdf png
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2 LGPL-2
+RDEPEND=media-libs/t1lib media-libs/tiff sys-libs/zlib >=x11-libs/motif-2.3:0 x11-libs/xbae fftw? ( sci-libs/fftw:2.1 ) jpeg? ( virtual/jpeg ) netcdf? ( sci-libs/netcdf ) png? ( media-libs/libpng ) x11-misc/xdg-utils fortran? ( virtual/fortran )
+SLOT=0
+SRC_URI=http://pkgs.fedoraproject.org/cgit/grace.git/plain/grace.png http://dev.gentoo.org/~jlec/distfiles/grace.png.tar ftp://plasma-gate.weizmann.ac.il/pub/grace/src/stable/grace-5.1.22.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=0ecc128f754a9ae5902be31aacc41b78

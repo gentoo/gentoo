@@ -1,0 +1,130 @@
+# ChangeLog for dev-ruby/systemu
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/systemu/ChangeLog,v 1.29 2015/04/19 16:51:19 graaff Exp $
+
+  19 Apr 2015; Hans de Graaff <graaff@gentoo.org> -systemu-2.5.2.ebuild:
+  Cleanup.
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> systemu-2.6.4.ebuild:
+  Stable for x86, wrt bug #546970
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> systemu-2.6.4.ebuild:
+  Stable for amd64, wrt bug #546970
+
+  18 Apr 2015; Hans de Graaff <graaff@gentoo.org> systemu-2.6.4.ebuild:
+  Create stable candidate.
+
+*systemu-2.6.5 (27 Mar 2015)
+
+  27 Mar 2015; Manuel Rüger <mrueg@gentoo.org> +systemu-2.6.5.ebuild:
+  Version bump. Add ruby22.
+
+  24 Apr 2014; Manuel Rüger <mrueg@gentoo.org> -systemu-2.6.0.ebuild:
+  Cleanup old.
+
+  05 Apr 2014; Manuel Rüger <mrueg@gentoo.org> -systemu-2.5.2-r1.ebuild,
+  -systemu-2.6.3.ebuild, systemu-2.5.2.ebuild, systemu-2.6.4.ebuild:
+  Remove ree18 and ruby18 target. Cleanup old.
+
+*systemu-2.6.4 (05 Mar 2014)
+
+  05 Mar 2014; Manuel Rüger <mrueg@gentoo.org> +systemu-2.6.4.ebuild,
+  -systemu-2.6.1.ebuild, -systemu-2.6.2.ebuild:
+  Version bump. Cleanup old.
+
+*systemu-2.6.3 (23 Feb 2014)
+
+  23 Feb 2014; Manuel Rüger <mrueg@gentoo.org> +systemu-2.6.3.ebuild:
+  Version bump.
+
+*systemu-2.6.2 (16 Feb 2014)
+
+  16 Feb 2014; Manuel Rüger <mrueg@gentoo.org> +systemu-2.6.2.ebuild:
+  Version bump.
+
+*systemu-2.6.1 (14 Feb 2014)
+
+  14 Feb 2014; Hans de Graaff <graaff@gentoo.org> +systemu-2.6.1.ebuild:
+  Version bump.
+
+*systemu-2.6.0 (11 Dec 2013)
+
+  11 Dec 2013; Hans de Graaff <graaff@gentoo.org> +systemu-2.6.0.ebuild:
+  Version bump.
+
+*systemu-2.5.2-r1 (09 Oct 2013)
+
+  09 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +systemu-2.5.2-r1.ebuild:
+  Add ruby20 target.
+
+  18 Dec 2012; Agostino Sarubbo <ago@gentoo.org> systemu-2.5.2.ebuild:
+  Stable for x86, wrt bug #2
+
+  18 Dec 2012; Agostino Sarubbo <ago@gentoo.org> systemu-2.5.2.ebuild:
+  Stable for amd64, wrt bug #2
+
+  23 Sep 2012; Hans de Graaff <graaff@gentoo.org> -systemu-2.4.2.ebuild,
+  -systemu-2.5.0.ebuild, -systemu-2.5.1.ebuild:
+  Cleanup.
+
+  14 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata.xml so that it's the same as most other packages.
+
+*systemu-2.5.2 (13 Aug 2012)
+
+  13 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> +systemu-2.5.2.ebuild:
+  Version bump.
+
+*systemu-2.5.1 (10 Jun 2012)
+
+  10 Jun 2012; Hans de Graaff <graaff@gentoo.org> +systemu-2.5.1.ebuild:
+  Version bump.
+
+*systemu-2.5.0 (22 Apr 2012)
+
+  22 Apr 2012; Hans de Graaff <graaff@gentoo.org> +systemu-2.5.0.ebuild:
+  Version bump. Run tests. Add ree18 and ruby19.
+
+  22 Apr 2012; Hans de Graaff <graaff@gentoo.org> -systemu-2.4.0.ebuild,
+  -systemu-2.4.1.ebuild:
+  Remove old versions.
+
+*systemu-2.4.2 (25 Dec 2011)
+
+  25 Dec 2011; Hans de Graaff <graaff@gentoo.org> +systemu-2.4.2.ebuild:
+  Version bump.
+
+  25 Dec 2011; Hans de Graaff <graaff@gentoo.org> -systemu-1.2.0.ebuild,
+  -systemu-1.2.0-r1.ebuild, -systemu-2.2.0.ebuild, -systemu-2.3.0.ebuild:
+  Remove old versions.
+
+*systemu-2.4.1 (07 Dec 2011)
+
+  07 Dec 2011; Hans de Graaff <graaff@gentoo.org> +systemu-2.4.1.ebuild:
+  Version bump.
+
+*systemu-2.4.0 (16 Sep 2011)
+
+  16 Sep 2011; Hans de Graaff <graaff@gentoo.org> +systemu-2.4.0.ebuild:
+  Version bump.
+
+*systemu-2.3.0 (20 Aug 2011)
+
+  20 Aug 2011; Hans de Graaff <graaff@gentoo.org> +systemu-2.3.0.ebuild:
+  Version bump.
+
+*systemu-2.2.0 (15 Apr 2011)
+
+  15 Apr 2011; Hans de Graaff <graaff@gentoo.org> +systemu-2.2.0.ebuild:
+  Version bump.
+
+*systemu-1.2.0-r1 (17 Jul 2010)
+
+  17 Jul 2010; Hans de Graaff <graaff@gentoo.org> +systemu-1.2.0-r1.ebuild:
+  Install documentation and examples.
+
+*systemu-1.2.0 (03 Jul 2010)
+
+  03 Jul 2010; Benedikt Böhm <hollow@gentoo.org> +systemu-1.2.0.ebuild,
+  +metadata.xml:
+  initial ebuild, thanks to Gábor Vészi

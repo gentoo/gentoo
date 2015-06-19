@@ -1,0 +1,584 @@
+ EXAMPLE/Makefile |   68 +++++++++---------
+ FORTRAN/Makefile |   14 ++--
+ Makefile.am      |    4 +
+ SRC/Makefile.am  |  110 +++++++++++++++++++++++++++++
+ ax_blas.m4       |  201 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ configure.ac     |   16 ++++
+ superlu.pc.in    |   13 ++++
+ 7 files changed, 385 insertions(+), 41 deletions(-)
+
+diff --git a/EXAMPLE/Makefile b/EXAMPLE/Makefile
+index c286ded..37950dc 100644
+--- a/EXAMPLE/Makefile
++++ b/EXAMPLE/Makefile
+@@ -1,4 +1,3 @@
+-include ../make.inc
+ 
+ #######################################################################
+ #  This makefile creates the example programs for the linear equation
+@@ -32,7 +31,9 @@ include ../make.inc
+ #
+ #######################################################################
+ 
+-HEADER   = ../SRC
++HEADER = $(shell pkg-config --cflags superlu)
++LIBS   = $(shell pkg-config --libs superlu)
++CDEFS  = -DAdd_
+ 
+ SLINEXM		= slinsol.o
+ SLINEXM1	= slinsol1.o
+@@ -67,7 +68,6 @@ ZLINXEXM2 	= zlinsolx2.o
+ ZITSOL	     	= zitersol.o zfgmr.o
+ ZITSOL1	     	= zitersol1.o zfgmr.o
+ 
+-
+ all:    single double complex complex16
+ 
+ single:    slinsol slinsol1 slinsolx slinsolx1 slinsolx2 sitersol sitersol1
+@@ -77,97 +77,97 @@ complex:   clinsol clinsol1 clinsolx clinsolx1 clinsolx2 citersol citersol1
+ complex16: zlinsol zlinsol1 zlinsolx zlinsolx1 zlinsolx2 zitersol zitersol1
+ 
+ slinsol: $(SLINEXM) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(SLINEXM) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(SLINEXM) $(LIBS) -o $@
+ 
+ slinsol1: $(SLINEXM1) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(SLINEXM1) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(SLINEXM1) $(LIBS) -o $@
+ 
+ slinsolx: $(SLINXEXM) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(SLINXEXM) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(SLINXEXM) $(LIBS) -o $@
+ 
+ slinsolx1: $(SLINXEXM1) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(SLINXEXM1) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(SLINXEXM1) $(LIBS) -o $@
+ 
+ slinsolx2: $(SLINXEXM2) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(SLINXEXM2) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(SLINXEXM2) $(LIBS) -o $@
+ 
+ sitersol: $(SITSOL) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(SITSOL) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(SITSOL) $(LIBS) -o $@
+ 
+ sitersol1: $(SITSOL1) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(SITSOL1) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(SITSOL1) $(LIBS) -o $@
+ 
+ dlinsol: $(DLINEXM) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(DLINEXM) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(DLINEXM) $(LIBS) -o $@
+ 
+ dlinsol1: $(DLINEXM1) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(DLINEXM1) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(DLINEXM1) $(LIBS) -o $@
+ 
+ dlinsolx: $(DLINXEXM) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(DLINXEXM) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(DLINXEXM) $(LIBS) -o $@
+ 
+ dlinsolx1: $(DLINXEXM1) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(DLINXEXM1) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(DLINXEXM1) $(LIBS) -o $@
+ 
+ dlinsolx2: $(DLINXEXM2) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(DLINXEXM2) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(DLINXEXM2) $(LIBS) -o $@
+ 
+ superlu: $(SUPERLUEXM) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(SUPERLUEXM) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(SUPERLUEXM) $(LIBS) -o $@
+ 
+ ditersol: $(DITSOL) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(DITSOL) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(DITSOL) $(LIBS) -o $@
+ 
+ ditersol1: $(DITSOL1) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(DITSOL1) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(DITSOL1) $(LIBS) -o $@
+ 
+ clinsol: $(CLINEXM) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(CLINEXM) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(CLINEXM) $(LIBS) -o $@
+ 
+ clinsol1: $(CLINEXM1) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(CLINEXM1) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(CLINEXM1) $(LIBS) -o $@
+ 
+ clinsolx: $(CLINXEXM) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(CLINXEXM) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(CLINXEXM) $(LIBS) -o $@
+ 
+ clinsolx1: $(CLINXEXM1) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(CLINXEXM1) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(CLINXEXM1) $(LIBS) -o $@
+ 
+ clinsolx2: $(CLINXEXM2) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(CLINXEXM2) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(CLINXEXM2) $(LIBS) -o $@
+ 
+ citersol: $(CITSOL) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(CITSOL) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(CITSOL) $(LIBS)  -o $@
+ 
+ citersol1: $(CITSOL1) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(CITSOL1) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(CITSOL1) $(LIBS)  -o $@
+ 
+ zlinsol: $(ZLINEXM) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(ZLINEXM) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(ZLINEXM) $(LIBS)  -o $@
+ 
+ zlinsol1: $(ZLINEXM1) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(ZLINEXM1) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(ZLINEXM1) $(LIBS)  -o $@
+ 
+ zlinsolx: $(ZLINXEXM) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(ZLINXEXM) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(ZLINXEXM) $(LIBS)  -o $@
+ 
+ zlinsolx1: $(ZLINXEXM1) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(ZLINXEXM1) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(ZLINXEXM1) $(LIBS)  -o $@
+ 
+ zlinsolx2: $(ZLINXEXM2) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(ZLINXEXM2) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(ZLINXEXM2) $(LIBS)  -o $@
+ 
+ zitersol: $(ZITSOL) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(ZITSOL) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAGS) $(ZITSOL) $(LIBS)  -o $@
+ 
+ zitersol1: $(ZITSOL1) $(SUPERLULIB)
+-	$(LOADER) $(LOADOPTS) $(ZITSOL1) $(LIBS) -lm -o $@
++	$(LD) $(LDFLAG) $(ZITSOL1) $(LIBS)  -o $@
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) $(CDEFS) -I$(HEADER) -c $< $(VERBOSE)
++	$(CC) $(CFLAGS) $(CDEFS) $(HEADER) -c $< $(VERBOSE)
+ 
+ .f.o:
+-	$(FORTRAN) $(FFLAGS) -c $< $(VERBOSE)
++	$(FC) $(FFLAGS) -c $< $(VERBOSE)
+ 
+ clean:	
+ 	rm -f *.o *linsol *linsol1 *linsolx *linsolx1 *linsolx2 \
+diff --git a/FORTRAN/Makefile b/FORTRAN/Makefile
+index 23671a7..54da751 100644
+--- a/FORTRAN/Makefile
++++ b/FORTRAN/Makefile
+@@ -1,12 +1,12 @@
+-include ../make.inc
++#include ../make.inc
+ 
+ #######################################################################
+ #  This makefile creates the Fortran example interface to use the
+ #  C routines in SuperLU.
+ #######################################################################
+ 
+-HEADER   = ../SRC
+-LIBS	= $(SUPERLULIB) $(BLASLIB) -lm
++HEADER   = $(shell pkg-config --cflags superlu)
++LIBS	= $(shell pkg-config --libs superlu)
+ 
+ # double real
+ F77EXM	= f77_main.o hbcode1.o c_fortran_dgssv.o
+@@ -17,19 +17,19 @@ ZF77EXM	= z_f77_main.o zhbcode1.o c_fortran_zgssv.o
+ all:	f77exm zf77exm
+ 
+ f77exm: $(F77EXM) $(SUPERLULIB)
+-	$(FORTRAN) $(LOADOPTS) $(F77EXM) $(LIBS) -o $@
++	$(FC) $(LDFLAGS) $(F77EXM) $(LIBS) -o $@
+ 
+ zf77exm: $(ZF77EXM) $(SUPERLULIB)
+ 	$(FORTRAN) $(LOADOPTS) $(ZF77EXM) $(LIBS) -o $@
+ 
+ c_fortran_zgssv.o: c_fortran_zgssv.c
+-	$(CC) $(CFLAGS) $(CDEFS) -I$(HEADER) -c $< $(VERBOSE)
++	$(CC) $(CFLAGS) $(CDEFS) $(HEADER) -c $< $(VERBOSE)
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) $(CDEFS) -I$(HEADER) -c $< $(VERBOSE)
++	$(CC) $(CFLAGS) $(CDEFS) $(HEADER) -c $< $(VERBOSE)
+ 
+ .f.o:
+-	$(FORTRAN) $(FFLAGS) -c $< $(VERBOSE)
++	$(FC) $(FFLAGS) -c $< $(VERBOSE)
+ 
+ clean:	
+ 	rm -f *.o f77exm zf77exm
+diff --git a/Makefile.am b/Makefile.am
+new file mode 100644
+index 0000000..7e51046
+--- /dev/null
++++ b/Makefile.am
+@@ -0,0 +1,4 @@
++SUBDIRS = SRC
++
++pkgconfigdir = $(libdir)/pkgconfig
++pkgconfig_DATA = superlu.pc
+diff --git a/SRC/Makefile.am b/SRC/Makefile.am
+new file mode 100644
+index 0000000..748e5e9
+--- /dev/null
++++ b/SRC/Makefile.am
+@@ -0,0 +1,110 @@
++AM_CPPFLAGS = -DAdd_
++
++### headers
++noinst_HEADERS = \
++	colamd.h \
++	html_mainpage.h
++
++src_includedir = $(includedir)/superlu
++src_include_HEADERS = \
++	slu_cdefs.h \
++	slu_ddefs.h \
++	slu_sdefs.h \
++	slu_zdefs.h \
++	slu_Cnames.h \
++	slu_dcomplex.h \
++	slu_scomplex.h \
++	slu_util.h \
++	superlu_enum_consts.h \
++	supermatrix.h
++
++### LAPACK 
++LAAUX 	= lsame.c xerbla.c
++SLASRC 	= slacon.c 
++DLASRC	= dlacon.c
++CLASRC	= clacon.c scsum1.c icmax1.c
++ZLASRC	= zlacon.c dzsum1.c izmax1.c
++
++
++##################################
++# Do not optimize these routines #
++##################################
++CFLAGS_SAV=@CFLAGS@
++CFLAGS= 
++noinst_LTLIBRARIES = libnoopt.la
++libnoopt_la_SOURCES =  slamch.c dlamch.c superlu_timer.c
++libnoopt_la_CFLAGS = -O0
++
++### SuperLU
++ALLAUX 	= util.c memory.c get_perm_c.c mmd.c \
++	  sp_coletree.c sp_preorder.c sp_ienv.c relax_snode.c \
++	  heap_relax_snode.c colamd.c \
++	  ilu_relax_snode.c ilu_heap_relax_snode.c mark_relax.c \
++	  mc64ad.f qselect.f
++
++SLUSRC = \
++	sgssv.c sgssvx.c \
++	ssp_blas2.c ssp_blas3.c sgscon.c  \
++	slangs.c sgsequ.c slaqgs.c spivotgrowth.c \
++	sgsrfs.c sgstrf.c sgstrs.c scopy_to_ucol.c \
++	ssnode_dfs.c ssnode_bmod.c \
++	spanel_dfs.c spanel_bmod.c sreadhb.c \
++	scolumn_dfs.c scolumn_bmod.c spivotL.c spruneL.c \
++	smemory.c sutil.c smyblas2.c \
++	sgsisx.c sgsitrf.c sldperm.c \
++	ilu_sdrop_row.c ilu_ssnode_dfs.c \
++	ilu_scolumn_dfs.c ilu_spanel_dfs.c ilu_scopy_to_ucol.c \
++	ilu_spivotL.c sdiagonal.c
++
++DLUSRC = \
++	dgssv.c dgssvx.c \
++	dsp_blas2.c dsp_blas3.c dgscon.c \
++	dlangs.c dgsequ.c dlaqgs.c dpivotgrowth.c  \
++	dgsrfs.c dgstrf.c dgstrs.c dcopy_to_ucol.c \
++	dsnode_dfs.c dsnode_bmod.c \
++	dpanel_dfs.c dpanel_bmod.c dreadhb.c \
++	dcolumn_dfs.c dcolumn_bmod.c dpivotL.c dpruneL.c \
++	dmemory.c dutil.c dmyblas2.c \
++	dgsisx.c dgsitrf.c \
++	dldperm.c \
++	ilu_ddrop_row.c ilu_dsnode_dfs.c \
++	ilu_dcolumn_dfs.c ilu_dpanel_dfs.c ilu_dcopy_to_ucol.c \
++	ilu_dpivotL.c ddiagonal.c
++
++CLUSRC = \
++	scomplex.c cgssv.c cgssvx.c csp_blas2.c csp_blas3.c cgscon.c \
++	clangs.c cgsequ.c claqgs.c cpivotgrowth.c  \
++	cgsrfs.c cgstrf.c cgstrs.c ccopy_to_ucol.c \
++	csnode_dfs.c csnode_bmod.c \
++	cpanel_dfs.c cpanel_bmod.c creadhb.c \
++	ccolumn_dfs.c ccolumn_bmod.c cpivotL.c cpruneL.c \
++	cmemory.c cutil.c cmyblas2.c \
++	cgsisx.c cgsitrf.c cldperm.c \
++	ilu_cdrop_row.c ilu_csnode_dfs.c \
++	ilu_ccolumn_dfs.c ilu_cpanel_dfs.c ilu_ccopy_to_ucol.c \
++	ilu_cpivotL.c cdiagonal.c
++
++ZLUSRC = \
++	dcomplex.c zgssv.c zgssvx.c zsp_blas2.c zsp_blas3.c zgscon.c \
++	zlangs.c zgsequ.c zlaqgs.c zpivotgrowth.c  \
++	zgsrfs.c zgstrf.c zgstrs.c zcopy_to_ucol.c \
++	zsnode_dfs.c zsnode_bmod.c \
++	zpanel_dfs.c zpanel_bmod.c zreadhb.c \
++	zcolumn_dfs.c zcolumn_bmod.c zpivotL.c zpruneL.c \
++	zmemory.c zutil.c zmyblas2.c \
++	zgsisx.c zgsitrf.c zldperm.c \
++	ilu_zdrop_row.c ilu_zsnode_dfs.c \
++	ilu_zcolumn_dfs.c ilu_zpanel_dfs.c ilu_zcopy_to_ucol.c \
++	ilu_zpivotL.c zdiagonal.c
++
++lib_LTLIBRARIES = libsuperlu.la
++libsuperlu_la_SOURCES = \
++	$(NOOPTAUX) \
++	$(ALLAUX) $(LAAUX) \
++	$(SLUSRC) $(SLASRC) \
++	$(DLUSRC) $(DLASRC) \
++	$(CLUSRC) $(CLASRC) \
++	$(ZLUSRC) $(ZLASRC)
++libsuperlu_la_CFLAGS = $(CFLAGS_SAV)
++libsuperlu_la_LIBADD = $(BLAS_LIBS) libnoopt.la
++libsuperlu_la_LDFLAGS = -no-undefined -version-info 4:2:0
+diff --git a/ax_blas.m4 b/ax_blas.m4
+new file mode 100644
+index 0000000..e4f96cb
+--- /dev/null
++++ b/ax_blas.m4
+@@ -0,0 +1,201 @@
++# ===========================================================================
++#          http://www.gnu.org/software/autoconf-archive/ax_blas.html
++# ===========================================================================
++#
++# SYNOPSIS
++#
++#   AX_BLAS([ACTION-IF-FOUND[, ACTION-IF-NOT-FOUND]])
++#
++# DESCRIPTION
++#
++#   This macro looks for a library that implements the BLAS linear-algebra
++#   interface (see http://www.netlib.org/blas/). On success, it sets the
++#   BLAS_LIBS output variable to hold the requisite library linkages.
++#
++#   To link with BLAS, you should link with:
++#
++#     $BLAS_LIBS $LIBS $FLIBS
++#
++#   in that order. FLIBS is the output variable of the
++#   AC_F77_LIBRARY_LDFLAGS macro (called if necessary by AX_BLAS), and is
++#   sometimes necessary in order to link with F77 libraries. Users will also
++#   need to use AC_F77_DUMMY_MAIN (see the autoconf manual), for the same
++#   reason.
++#
++#   Many libraries are searched for, from ATLAS to CXML to ESSL. The user
++#   may also use --with-blas=<lib> in order to use some specific BLAS
++#   library <lib>. In order to link successfully, however, be aware that you
++#   will probably need to use the same Fortran compiler (which can be set
++#   via the F77 env. var.) as was used to compile the BLAS library.
++#
++#   ACTION-IF-FOUND is a list of shell commands to run if a BLAS library is
++#   found, and ACTION-IF-NOT-FOUND is a list of commands to run it if it is
++#   not found. If ACTION-IF-FOUND is not specified, the default action will
++#   define HAVE_BLAS.
++#
++# LICENSE
++#
++#   Copyright (c) 2008 Steven G. Johnson <stevenj@alum.mit.edu>
++#
++#   This program is free software: you can redistribute it and/or modify it
++#   under the terms of the GNU General Public License as published by the
++#   Free Software Foundation, either version 3 of the License, or (at your
++#   option) any later version.
++#
++#   This program is distributed in the hope that it will be useful, but
++#   WITHOUT ANY WARRANTY; without even the implied warranty of
++#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
++#   Public License for more details.
++#
++#   You should have received a copy of the GNU General Public License along
++#   with this program. If not, see <http://www.gnu.org/licenses/>.
++#
++#   As a special exception, the respective Autoconf Macro's copyright owner
++#   gives unlimited permission to copy, distribute and modify the configure
++#   scripts that are the output of Autoconf when processing the Macro. You
++#   need not follow the terms of the GNU General Public License when using
++#   or distributing such scripts, even though portions of the text of the
++#   Macro appear in them. The GNU General Public License (GPL) does govern
++#   all other use of the material that constitutes the Autoconf Macro.
++#
++#   This special exception to the GPL applies to versions of the Autoconf
++#   Macro released by the Autoconf Archive. When you make and distribute a
++#   modified version of the Autoconf Macro, you may extend this special
++#   exception to the GPL to apply to your modified version as well.
++
++#serial 11
++
++AU_ALIAS([ACX_BLAS], [AX_BLAS])
++AC_DEFUN([AX_BLAS], [
++AC_PREREQ(2.50)
++AC_REQUIRE([AC_F77_LIBRARY_LDFLAGS])
++ax_blas_ok=no
++
++AC_ARG_WITH(blas,
++	[AS_HELP_STRING([--with-blas=<lib>], [use BLAS library <lib>])])
++case $with_blas in
++	yes | "") ;;
++	no) ax_blas_ok=disable ;;
++	-* | */* | *.a | *.so | *.so.* | *.o) BLAS_LIBS="$with_blas" ;;
++	*) BLAS_LIBS="-l$with_blas" ;;
++esac
++
++# Get fortran linker names of BLAS functions to check for.
++AC_F77_FUNC(sgemm)
++AC_F77_FUNC(dgemm)
++
++ax_blas_save_LIBS="$LIBS"
++LIBS="$LIBS $FLIBS"
++
++# First, check BLAS_LIBS environment variable
++if test $ax_blas_ok = no; then
++if test "x$BLAS_LIBS" != x; then
++	save_LIBS="$LIBS"; LIBS="$BLAS_LIBS $LIBS"
++	AC_MSG_CHECKING([for $sgemm in $BLAS_LIBS])
++	AC_TRY_LINK_FUNC($sgemm, [ax_blas_ok=yes], [BLAS_LIBS=""])
++	AC_MSG_RESULT($ax_blas_ok)
++	LIBS="$save_LIBS"
++fi
++fi
++
++# BLAS linked to by default?  (happens on some supercomputers)
++if test $ax_blas_ok = no; then
++	save_LIBS="$LIBS"; LIBS="$LIBS"
++	AC_MSG_CHECKING([if $sgemm is being linked in already])
++	AC_TRY_LINK_FUNC($sgemm, [ax_blas_ok=yes])
++	AC_MSG_RESULT($ax_blas_ok)
++	LIBS="$save_LIBS"
++fi
++
++# BLAS in ATLAS library? (http://math-atlas.sourceforge.net/)
++if test $ax_blas_ok = no; then
++	AC_CHECK_LIB(atlas, ATL_xerbla,
++		[AC_CHECK_LIB(f77blas, $sgemm,
++		[AC_CHECK_LIB(cblas, cblas_dgemm,
++			[ax_blas_ok=yes
++			 BLAS_LIBS="-lcblas -lf77blas -latlas"],
++			[], [-lf77blas -latlas])],
++			[], [-latlas])])
++fi
++
++# BLAS in PhiPACK libraries? (requires generic BLAS lib, too)
++if test $ax_blas_ok = no; then
++	AC_CHECK_LIB(blas, $sgemm,
++		[AC_CHECK_LIB(dgemm, $dgemm,
++		[AC_CHECK_LIB(sgemm, $sgemm,
++			[ax_blas_ok=yes; BLAS_LIBS="-lsgemm -ldgemm -lblas"],
++			[], [-lblas])],
++			[], [-lblas])])
++fi
++
++# BLAS in Intel MKL library?
++if test $ax_blas_ok = no; then
++	AC_CHECK_LIB(mkl, $sgemm, [ax_blas_ok=yes;BLAS_LIBS="-lmkl"])
++fi
++
++# BLAS in Apple vecLib library?
++if test $ax_blas_ok = no; then
++	save_LIBS="$LIBS"; LIBS="-framework vecLib $LIBS"
++	AC_MSG_CHECKING([for $sgemm in -framework vecLib])
++	AC_TRY_LINK_FUNC($sgemm, [ax_blas_ok=yes;BLAS_LIBS="-framework vecLib"])
++	AC_MSG_RESULT($ax_blas_ok)
++	LIBS="$save_LIBS"
++fi
++
++# BLAS in Alpha CXML library?
++if test $ax_blas_ok = no; then
++	AC_CHECK_LIB(cxml, $sgemm, [ax_blas_ok=yes;BLAS_LIBS="-lcxml"])
++fi
++
++# BLAS in Alpha DXML library? (now called CXML, see above)
++if test $ax_blas_ok = no; then
++	AC_CHECK_LIB(dxml, $sgemm, [ax_blas_ok=yes;BLAS_LIBS="-ldxml"])
++fi
++
++# BLAS in Sun Performance library?
++if test $ax_blas_ok = no; then
++	if test "x$GCC" != xyes; then # only works with Sun CC
++		AC_CHECK_LIB(sunmath, acosp,
++			[AC_CHECK_LIB(sunperf, $sgemm,
++				[BLAS_LIBS="-xlic_lib=sunperf -lsunmath"
++                                 ax_blas_ok=yes],[],[-lsunmath])])
++	fi
++fi
++
++# BLAS in SCSL library?  (SGI/Cray Scientific Library)
++if test $ax_blas_ok = no; then
++	AC_CHECK_LIB(scs, $sgemm, [ax_blas_ok=yes; BLAS_LIBS="-lscs"])
++fi
++
++# BLAS in SGIMATH library?
++if test $ax_blas_ok = no; then
++	AC_CHECK_LIB(complib.sgimath, $sgemm,
++		     [ax_blas_ok=yes; BLAS_LIBS="-lcomplib.sgimath"])
++fi
++
++# BLAS in IBM ESSL library? (requires generic BLAS lib, too)
++if test $ax_blas_ok = no; then
++	AC_CHECK_LIB(blas, $sgemm,
++		[AC_CHECK_LIB(essl, $sgemm,
++			[ax_blas_ok=yes; BLAS_LIBS="-lessl -lblas"],
++			[], [-lblas $FLIBS])])
++fi
++
++# Generic BLAS library?
++if test $ax_blas_ok = no; then
++	AC_CHECK_LIB(blas, $sgemm, [ax_blas_ok=yes; BLAS_LIBS="-lblas"])
++fi
++
++AC_SUBST(BLAS_LIBS)
++
++LIBS="$ax_blas_save_LIBS"
++
++# Finally, execute ACTION-IF-FOUND/ACTION-IF-NOT-FOUND:
++if test x"$ax_blas_ok" = xyes; then
++        ifelse([$1],,AC_DEFINE(HAVE_BLAS,1,[Define if you have a BLAS library.]),[$1])
++        :
++else
++        ax_blas_ok=no
++        $2
++fi
++])dnl AX_BLAS
+diff --git a/configure.ac b/configure.ac
+new file mode 100644
+index 0000000..f6707be
+--- /dev/null
++++ b/configure.ac
+@@ -0,0 +1,16 @@
++# -*- Autoconf -*-
++AC_PREREQ(2.59)
++AC_INIT(superlu, 4.3, xsli@lbl.gov)
++AM_INIT_AUTOMAKE([foreign])
++AC_CONFIG_HEADER([config.h])
++AC_PROG_INSTALL
++AC_PROG_LIBTOOL
++AC_PROG_F77
++sinclude(ax_blas.m4)
++AX_BLAS
++if test x"$BLAS_LIBS" = x; then
++   AC_MSG_ERROR([Cannot find blas libraries])
++fi
++AC_CHECK_LIB([m], [floor])
++AC_CONFIG_FILES([Makefile SRC/Makefile superlu.pc])
++AC_OUTPUT
+diff --git a/superlu.pc.in b/superlu.pc.in
+new file mode 100644
+index 0000000..7bf9942
+--- /dev/null
++++ b/superlu.pc.in
+@@ -0,0 +1,13 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: @PACKAGE_NAME@
++Description: Sparse LU factorization library
++Version: @PACKAGE_VERSION@
++URL: http://crd.lbl.gov/~xiaoye/SuperLU/
++Libs: -L${libdir} -lsuperlu 
++Libs.private: -lm @FLIBS@
++Requires: blas
++Cflags: -I${includedir}/superlu

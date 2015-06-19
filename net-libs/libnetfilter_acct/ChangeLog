@@ -1,0 +1,85 @@
+# ChangeLog for net-libs/libnetfilter_acct
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libnetfilter_acct/ChangeLog,v 1.21 2014/08/13 16:52:29 blueness Exp $
+
+  13 Aug 2014; Anthony G. Basile <blueness@gentoo.org>
+  libnetfilter_acct-1.0.2.ebuild:
+  Keyword ~ppc64, but #450016
+
+  18 Jul 2014; Jeroen Roovers <jer@gentoo.org> -libnetfilter_acct-1.0.0.ebuild,
+  -libnetfilter_acct-1.0.1.ebuild, metadata.xml:
+  Fix <longdescription>.
+
+  18 Jun 2014; Tobias Klausmann <klausman@gentoo.org>
+  libnetfilter_acct-1.0.2.ebuild:
+  Keyworded on alpha, bug #450016
+
+  23 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libnetfilter_acct-1.0.2.ebuild:
+  Stable for ppc, wrt bug #466812
+
+  22 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libnetfilter_acct-1.0.2.ebuild:
+  Stable for x86, wrt bug #466812
+
+  22 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libnetfilter_acct-1.0.2.ebuild:
+  Stable for amd64, wrt bug #466812
+
+  23 Mar 2013; Agostino Sarubbo <ago@gentoo.org> libnetfilter_acct-1.0.2.ebuild:
+  Add ~ia64, wrt bug #450016
+
+*libnetfilter_acct-1.0.2 (07 Mar 2013)
+
+  07 Mar 2013; Sergey Popov <pinkbyte@gentoo.org>
+  +libnetfilter_acct-1.0.2.ebuild:
+  Version bump
+
+  03 Feb 2013; Agostino Sarubbo <ago@gentoo.org> libnetfilter_acct-1.0.1.ebuild:
+  Add ~ppc, wrt bug #450016
+
+  13 Jan 2013; Agostino Sarubbo <ago@gentoo.org> libnetfilter_acct-1.0.1.ebuild:
+  Stable for x86, wrt bug #449216
+
+  03 Jan 2013; Sergey Popov <pinkbyte@gentoo.org>
+  libnetfilter_acct-1.0.1.ebuild:
+  Add ~arm keyword, wrt bug #450016
+
+  29 Dec 2012; Sergey Popov <pinkbyte@gentoo.org>
+  libnetfilter_acct-1.0.1.ebuild:
+  Enable verbose building - bump EAPI to 5, wrt bug #449222
+
+  29 Dec 2012; Sergey Popov <pinkbyte@gentoo.org>
+  libnetfilter_acct-1.0.1.ebuild:
+  Stable on amd64, wrt bug #449216
+
+  29 Dec 2012; Sergey Popov <pinkbyte@gentoo.org>
+  libnetfilter_acct-1.0.1.ebuild:
+  Minor prefix-related changes, add ~amd64-linux keyword
+
+  13 Dec 2012; Sergey Popov <pinkbyte@gentoo.org>
+  libnetfilter_acct-1.0.0.ebuild, libnetfilter_acct-1.0.1.ebuild:
+  Add check for kernel version, wrt bug #447092
+
+  13 Dec 2012; Sergey Popov <pinkbyte@gentoo.org>
+  libnetfilter_acct-1.0.0.ebuild, libnetfilter_acct-1.0.1.ebuild:
+  Add check for NETFILTER_NETLINK_ACCT kernel option, wrt bug #447092
+
+*libnetfilter_acct-1.0.1 (23 Oct 2012)
+
+  23 Oct 2012; Jeroen Roovers <jer@gentoo.org> +libnetfilter_acct-1.0.1.ebuild:
+  Version bump.
+
+  02 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Add package description to metadata
+
+  02 Sep 2012; Sergey Popov <pinkbyte@gentoo.org>
+  libnetfilter_acct-1.0.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  01 Sep 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  libnetfilter_acct-1.0.0.ebuild:
+  Fix dependencies over pkg-config (bug #433667).
+
+*libnetfilter_acct-1.0.0 (31 Aug 2012)
+
+  31 Aug 2012; Sergey Popov <pinkbyte@gentoo.org>
+  +libnetfilter_acct-1.0.0.ebuild, +metadata.xml:
+  New ebuild for libnetfilter_acct, wrt bug #429316

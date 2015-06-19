@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup
+DEPEND=>=dev-python/wxpython-2.8.9.2:2.8 >=dev-python/setuptools-0.6 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+DESCRIPTION=Multi-platform text editor supporting over 50 programming languages
+EAPI=5
+HOMEPAGE=http://editra.org http://pypi.python.org/pypi/Editra
+IUSE=spell
+KEYWORDS=amd64 x86
+LICENSE=wxWinLL-3.1
+RDEPEND=>=dev-python/wxpython-2.8.9.2:2.8 >=dev-python/setuptools-0.6 spell? ( dev-python/pyenchant ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+SLOT=0
+SRC_URI=http://editra.org/uploads/src/Editra-0.7.20.tar.gz
+_eclasses_=distutils	92e738ea29389cb3f34778d7a349ac71	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=613807876ccaed3e15a0f4faf3fd9fd2

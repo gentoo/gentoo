@@ -1,0 +1,95 @@
+# ChangeLog for app-office/openerp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/openerp/ChangeLog,v 1.17 2014/12/28 14:59:12 titanofold Exp $
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  openerp-6.1.1-r1.ebuild, openerp-7.0.20130219-r5.ebuild,
+  openerp-7.0.20140125.ebuild, openerp-8.0.20140125.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  openerp-6.1.1-r1.ebuild, openerp-7.0.20130219-r5.ebuild,
+  openerp-7.0.20140125.ebuild, openerp-8.0.20140125.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+*openerp-8.0.20140125 (25 Jan 2014)
+*openerp-7.0.20140125 (25 Jan 2014)
+
+  25 Jan 2014; Yixun Lan <dlan@gentoo.org> +openerp-7.0.20140125.ebuild,
+  +openerp-8.0.20140125.ebuild, metadata.xml:
+  version bump, stable and development
+
+  11 Apr 2013; Patrick Lauer <patrick@gentoo.org>
+  openerp-7.0.20130219-r5.ebuild:
+  Adding blocker for ancient openerp-web
+
+  11 Mar 2013; Patrick Lauer <patrick@gentoo.org>
+  openerp-7.0.20130219-r5.ebuild:
+  Adding matplotlib dep #460584
+
+  03 Mar 2013; Mike Frysinger <vapier@gentoo.org> openerp-6.1.1-r1.ebuild:
+  Add missing user inherit for enew{user,group}.
+
+*openerp-7.0.20130219-r5 (21 Feb 2013)
+
+  21 Feb 2013; Patrick Lauer <patrick@gentoo.org>
+  +openerp-7.0.20130219-r5.ebuild, -openerp-7.0.20130219-r4.ebuild:
+  Fixing init script hiccup
+
+*openerp-7.0.20130219-r4 (20 Feb 2013)
+
+  20 Feb 2013; Patrick Lauer <patrick@gentoo.org> +files/openerp.cfg.2,
+  +openerp-7.0.20130219-r4.ebuild, -openerp-7.0.20130219-r3.ebuild:
+  Fixing default config
+
+*openerp-6.1.1-r1 (20 Feb 2013)
+
+  20 Feb 2013; Patrick Lauer <patrick@gentoo.org> +openerp-6.1.1-r1.ebuild,
+  -openerp-6.1.1.ebuild:
+  Cleanup of /var/run for 6.1 #458026
+
+  20 Feb 2013; Patrick Lauer <patrick@gentoo.org> -openerp-7.0.20130118.ebuild,
+  -openerp-7.0.20130219-r1.ebuild, -openerp-7.0.20130219.ebuild:
+  Remove obsolete
+
+*openerp-7.0.20130219-r3 (20 Feb 2013)
+
+  20 Feb 2013; Patrick Lauer <patrick@gentoo.org>
+  +openerp-7.0.20130219-r3.ebuild, -openerp-7.0.20130219-r2.ebuild:
+  Add jinja dep
+
+*openerp-7.0.20130219-r2 (20 Feb 2013)
+
+  20 Feb 2013; Patrick Lauer <patrick@gentoo.org>
+  +openerp-7.0.20130219-r2.ebuild:
+  Init script fix
+
+*openerp-7.0.20130219-r1 (19 Feb 2013)
+
+  19 Feb 2013; Patrick Lauer <patrick@gentoo.org> +files/openerp-2,
+  +files/openerp-confd-2, +openerp-7.0.20130219-r1.ebuild:
+  Fixing for /run migration
+
+*openerp-7.0.20130219 (19 Feb 2013)
+
+  19 Feb 2013; Patrick Lauer <patrick@gentoo.org> +openerp-7.0.20130219.ebuild:
+  Bump, first part of fixes for #453424
+
+*openerp-7.0.20130118 (21 Jan 2013)
+
+  21 Jan 2013; Patrick Lauer <patrick@gentoo.org> +openerp-7.0.20130118.ebuild,
+  -openerp-6.2_pre20121029.ebuild:
+  Bump
+
+*openerp-6.2_pre20121029 (30 Oct 2012)
+
+  30 Oct 2012; Patrick Lauer <patrick@gentoo.org>
+  +openerp-6.2_pre20121029.ebuild:
+  Adding 6.2 / 7.0 prerelease snapshot goodness
+
+*openerp-6.1.1 (30 Oct 2012)
+
+  30 Oct 2012; Patrick Lauer <patrick@gentoo.org> +files/openerp,
+  +files/openerp-6.1-setup.py.patch, +files/openerp-confd, +files/openerp.cfg,
+  +files/openerp.logrotate, +metadata.xml, +openerp-6.1.1.ebuild:
+  Initial import, based on ebuild from yarik-overlay

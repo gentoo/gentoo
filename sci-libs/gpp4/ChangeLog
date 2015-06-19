@@ -1,0 +1,22 @@
+# ChangeLog for sci-libs/gpp4
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/gpp4/ChangeLog,v 1.5 2012/10/18 21:44:47 jlec Exp $
+
+  18 Oct 2012; Justin Lecher <jlec@gentoo.org> gpp4-1.3.1.ebuild, metadata.xml:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  14 Oct 2012; Justin Lecher <jlec@gentoo.org> gpp4-1.3.1.ebuild:
+  Prepare for fortran2.eclass update
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> gpp4-1.3.1.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> gpp4-1.3.1.ebuild:
+  Added fortran-2.eclass support
+
+*gpp4-1.3.1 (03 Mar 2011)
+
+  03 Mar 2011; Justin Lecher <jlec@gentoo.org> +gpp4-1.3.1.ebuild,
+  +metadata.xml:
+  New addition, written by me

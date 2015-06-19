@@ -1,0 +1,45 @@
+There is a few variants of configuration:
+1) Via global config file: /etc/cgitrc
+2) Or via local config file, shipped in ./conf dir into webapp_dir. It has to
+   be explicitly specified with CGIT_CONFIG env variable in your web server
+   configuration.
+
+If you would like to update the list of git repositories in cgit automatically,
+you might consider adding something similar to the following as a cronjob:
+
+"${MY_CGIBINDIR}/cgit.cgi --scan-tree=/git/repo-parent-path > /etc/cgit-repos"
+
+Then add "include=/etc/cgit-repos" in /etc/cgitrc. This way it's simpler and
+more convenient. You won't need to update your cgitrc every time you add a new
+repository.
+
+===============================================================================
+                              Apache HowTo
+===============================================================================
+
+With a default apache vhost config you can now access your repository at
+http://<vhostname>/cgi-bin/cgit.cgi/
+
+If you wish to access your repository starting from the root and don't want
+'cgi-bin/cgit.cgi' to be invisible, 2 things are needed.
+
+In your apache vhost configuration file for your domain, add the following
+rewrite rules to your
+<Directory /var/www/<vhostname>/htdocs> section.
+<snip>
+        RewriteEngine On
+        # Redirect all non-existant urls to cgit
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule ^.* /cgi-bin/cgit.cgi/$0 [L,PT]
+
+        # Redirect the empty url to cgit
+        RewriteRule ^$ /cgi-bin/cgit.cgi/ [L,PT]
+<snip>
+
+To make cgit create the correct URL's internally add to /etc/cgitrc (or your
+local config file)
+Enable virtual-root=/
+
+After these rules, you can now access cgit via http://<vhostname>/ to get the
+listing, and http://<vhostname>/repository to go directly to repository.

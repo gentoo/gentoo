@@ -1,0 +1,84 @@
+# ChangeLog for net-voip/homer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-voip/homer/ChangeLog,v 1.18 2015/04/01 11:09:11 idella4 Exp $
+
+  01 Apr 2015; Ian Delaney <idella4@gentoo.org> -homer-0.24.1.ebuild,
+  -homer-0.25.ebuild:
+  rm old by selection of proxy maintainer from Bug #543138
+
+  01 Apr 2015; Ian Delaney <idella4@gentoo.org> homer-0.25-r1.ebuild:
+  substitute broken patch (-ffmpeg-avstream.patch) with a sed statement in place
+  of patch supplied by maintainer in Bug #543138, fixes said bug
+
+  22 Dec 2014; Markos Chandras <hwoarang@gentoo.org>
+  +files/homer-0.25-ffmpeg-avstream.patch, homer-0.25-r1.ebuild:
+  Fix building against latest ffmpeg. Bug #516290. Thanks to Marcel Pennewiß
+  <gentoo@pennewiss.de>
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> homer-0.24.1-r1.ebuild,
+  homer-0.24.1.ebuild, homer-0.25-r1.ebuild, homer-0.25.ebuild,
+  homer-9999.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> homer-0.24.1.ebuild,
+  homer-0.24.1-r1.ebuild, homer-0.25.ebuild, homer-0.25-r1.ebuild,
+  homer-9999.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> homer-0.25-r1.ebuild:
+  Stable for x86, wrt bug #495904
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> homer-0.25-r1.ebuild:
+  amd64 stable, bug #495904
+
+  13 Aug 2013; Markos Chandras <hwoarang@gentoo.org> homer-0.25-r1.ebuild:
+  Fix URL for ffmpeg2 patch thanks to Marcel Pennewiß <marcel@pennewiss.de>
+
+*homer-0.24.1-r1 (12 Aug 2013)
+*homer-0.25-r1 (12 Aug 2013)
+
+  12 Aug 2013; Markos Chandras <hwoarang@gentoo.org> +homer-0.24.1-r1.ebuild,
+  +homer-0.25-r1.ebuild, homer-9999.ebuild:
+  Add patch for ffmpeg2 support. Bug #476536. Also use subslots for x264 dep.
+  Bug #476076. Thanks to Marcel Pennewiß <gentoo@pennewiss.de> for the patches
+
+  11 Aug 2013; Alexis Ballier <aballier@gentoo.org> homer-0.24.1.ebuild,
+  homer-0.25.ebuild, homer-9999.ebuild:
+  depend on ffmpeg:0
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> homer-0.24.1.ebuild,
+  homer-0.25.ebuild, homer-9999.ebuild:
+  Respect CXX. Thanks to Marcel Pennewiß <gentoo@pennewiss.de>. Bug #459846
+
+*homer-0.25 (03 Mar 2013)
+
+  03 Mar 2013; Markos Chandras <hwoarang@gentoo.org> +homer-0.25.ebuild,
+  homer-9999.ebuild:
+  Version bump. #459606. Thanks to Marcel Pennewiß <gentoo@pennewiss.de>
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> homer-0.24.1.ebuild,
+  homer-9999.ebuild:
+  Move Qt dependencies to the new category
+
+  01 Mar 2013; Agostino Sarubbo <ago@gentoo.org> homer-0.24.1.ebuild:
+  Stable for x86, wrt bug #459608
+
+  01 Mar 2013; Agostino Sarubbo <ago@gentoo.org> homer-0.24.1.ebuild:
+  Stable for amd64, wrt bug #459608
+
+  17 Feb 2013; Markos Chandras <hwoarang@gentoo.org> homer-9999.ebuild:
+  Add pulseaudio dependency. Bug #458002
+
+  17 Jan 2013; Markos Chandras <hwoarang@gentoo.org>
+  +files/homer-0.24.1-libav-9.patch, homer-0.24.1.ebuild:
+  Add upstream patch to fix building against libav-9. Bug #448718. Thanks to
+  Marcel Pennewiß <gentoo@pennewiss.de>
+
+*homer-9999 (23 Dec 2012)
+*homer-0.24.1 (23 Dec 2012)
+
+  23 Dec 2012; Markos Chandras <hwoarang@gentoo.org> +homer-0.24.1.ebuild,
+  +homer-9999.ebuild, +metadata.xml:
+  Initial commit of the homer application. Bug #411977. Thanks to Marcel
+  Pennewiß <gentoo@pennewiss.de> who will maintain it

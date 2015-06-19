@@ -1,0 +1,121 @@
+# ChangeLog for app-misc/pysmssend
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/pysmssend/ChangeLog,v 1.29 2014/12/27 16:26:49 mgorny Exp $
+
+*pysmssend-1.48-r1 (27 Dec 2014)
+
+  27 Dec 2014; Michał Górny <mgorny@gentoo.org> +pysmssend-1.48-r1.ebuild:
+  Convert to distutils-r1.
+
+  16 Jun 2014; Michael Palimaka <kensington@gentoo.org> metadata.xml:
+  Remove Qt herd.
+
+  03 Mar 2013; Markos Chandras <hwoarang@gentoo.org> -pysmssend-1.45.ebuild:
+  remove old
+
+  09 Sep 2012; Markos Chandras <hwoarang@gentoo.org> pysmssend-9999.ebuild:
+  Switch from make_desktop_entry to domenu as a .desktop file is provided in the
+  source
+
+  10 Jun 2012; Markos Chandras <hwoarang@gentoo.org> pysmssend-9999.ebuild:
+  Add post_inst() message for the optional dev-python/python-gnupg dependency
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> pysmssend-1.48.ebuild:
+  x86 stable wrt bug #419547
+
+  04 Jun 2012; Agostino Sarubbo <ago@gentoo.org> pysmssend-1.48.ebuild:
+  Stable for amd64, wrt bug #419547
+
+*pysmssend-1.48 (03 Jun 2012)
+
+  03 Jun 2012; Markos Chandras <hwoarang@gentoo.org> +pysmssend-1.48.ebuild:
+  Version bump
+
+  25 Jun 2011; Markos Chandras <hwoarang@gentoo.org> pysmssend-9999.ebuild:
+  migrate to git-2 eclass
+
+  17 May 2011; Markos Chandras <hwoarang@gentoo.org> pysmssend-9999.ebuild:
+  update homepage
+
+  05 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pysmssend-1.45.ebuild, pysmssend-9999.ebuild:
+  Set SUPPORT_PYTHON_ABIS (bug #311535).
+
+*pysmssend-9999 (18 Oct 2010)
+
+  18 Oct 2010; Markos Chandras <hwoarang@gentoo.org> +pysmssend-9999.ebuild:
+  Introduce live ebuild
+
+  17 Jul 2010; Markos Chandras <hwoarang@gentoo.org> -pysmssend-1.40.ebuild,
+  -pysmssend-1.42.ebuild, -pysmssend-1.42-r1.ebuild, -pysmssend-1.44.ebuild:
+  Remove old ebuilds
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  pysmssend-1.45.ebuild:
+  stable x86, bug 327219
+
+  09 Jul 2010; Pacho Ramos <pacho@gentoo.org> pysmssend-1.45.ebuild:
+  stable amd64, bug 327219
+
+  06 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pysmssend-1.40.ebuild, pysmssend-1.42.ebuild:
+  Use PYTHON_DEPEND instead of NEED_PYTHON.
+
+*pysmssend-1.45 (29 May 2010)
+
+  29 May 2010; Markos Chandras <hwoarang@gentoo.org> +pysmssend-1.45.ebuild:
+  Version bump
+
+  08 May 2010; Markos Chandras <hwoarang@gentoo.org> pysmssend-1.40.ebuild,
+  pysmssend-1.42.ebuild, pysmssend-1.42-r1.ebuild:
+  Update SRC_URI locations
+
+*pysmssend-1.44 (06 May 2010)
+
+  06 May 2010; Markos Chandras <hwoarang@gentoo.org> +pysmssend-1.44.ebuild:
+  Version bump
+
+*pysmssend-1.42-r1 (29 Mar 2010)
+
+  29 Mar 2010; Markos Chandras <hwoarang@gentoo.org>
+  -pysmssend-1.40-r1.ebuild, +pysmssend-1.42-r1.ebuild:
+  Various python enhancements. Fixes bug #311535
+
+  09 Mar 2010; Jonathan Callen <abcd@gentoo.org> pysmssend-1.40.ebuild,
+  pysmssend-1.40-r1.ebuild, pysmssend-1.42.ebuild:
+  QA: When not using an absolute path, you MUST NOT use a file extension
+  (.png, .svg, or .xpm) on the icon name for make_desktop_entry
+
+  23 Nov 2009; Alex Alexander <wired@gentoo.org> pysmssend-1.42.ebuild:
+  fixed SRC_URI, bug 294116
+
+*pysmssend-1.42 (16 Oct 2009)
+
+  16 Oct 2009; Markos Chandras <hwoarang@gentoo.org> +pysmssend-1.42.ebuild:
+  Version bump
+
+  07 Jun 2009; Markos Chandras <hwoarang@gentoo.org>
+  pysmssend-1.40-r1.ebuild:
+  Fix PyQt4 dependency
+
+*pysmssend-1.40-r1 (01 Jun 2009)
+
+  01 Jun 2009; Markos Chandras <hwoarang@gentoo.org>
+  +pysmssend-1.40-r1.ebuild:
+  Adjust PyQt4 use deps wrt bug 272136
+
+  14 May 2009; Markus Meier <maekke@gentoo.org> pysmssend-1.40.ebuild:
+  amd64/x86 stable, bug #269316
+
+  08 Mar 2009; Markos Chandras <hwoarang@gentoo.org> -pysmssend-1.39.ebuild:
+  Removing old
+
+*pysmssend-1.40 (17 Feb 2009)
+
+  17 Feb 2009; Markos Chandras <hwoarang@gentoo.org> +pysmssend-1.40.ebuild:
+  version bump
+
+*pysmssend-1.39 (06 Feb 2009)
+
+  06 Feb 2009; Markos Chandras <hwoarang@gentoo.org> +pysmssend-1.39.ebuild:
+  Initial commit for pysmssend program

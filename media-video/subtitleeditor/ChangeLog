@@ -1,0 +1,171 @@
+# ChangeLog for media-video/subtitleeditor
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/subtitleeditor/ChangeLog,v 1.35 2015/03/30 02:30:31 tetromino Exp $
+
+  29 Mar 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -subtitleeditor-0.41.1.ebuild, subtitleeditor-0.41.1-r1.ebuild:
+  Add missing deps (bug #543346, thanks to Nikoli). Fix license. Drop old.
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> subtitleeditor-0.41.1-r1.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> subtitleeditor-0.41.1-r1.ebuild:
+  amd64 stable, bug 534012
+
+*subtitleeditor-0.41.1-r1 (11 Jan 2015)
+
+  11 Jan 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  -subtitleeditor-0.41.0-r1.ebuild, +subtitleeditor-0.41.1-r1.ebuild,
+  -files/subtitleeditor-0.40.0-glib-2.31.patch,
+  +files/subtitleeditor-0.41.0-subtitle-edition.patch:
+  Fix subtitle editing, bug #536246.
+
+  30 Nov 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  subtitleeditor-0.41.0-r1.ebuild, subtitleeditor-0.41.1.ebuild:
+  Pin gstreamermm to 0.10.
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> subtitleeditor-0.41.1.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> subtitleeditor-0.41.1.ebuild:
+  Stable for amd64, wrt bug #512912
+
+*subtitleeditor-0.41.1 (15 Jul 2014)
+
+  15 Jul 2014; Pacho Ramos <pacho@gentoo.org> +subtitleeditor-0.41.1.ebuild,
+  -subtitleeditor-0.41.0.ebuild:
+  Version bump, drop old
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org> subtitleeditor-0.41.0-r1.ebuild:
+  x86 stable, bug 508862
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org> subtitleeditor-0.41.0-r1.ebuild:
+  amd64 stable, bug 508862
+
+*subtitleeditor-0.41.0-r1 (22 Feb 2014)
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org>
+  +files/subtitleeditor-0.41.0-keyframe-generation.patch,
+  +files/subtitleeditor-0.41.0-textoverlay.patch,
+  +subtitleeditor-0.41.0-r1.ebuild, -subtitleeditor-0.40.0.ebuild:
+  Fix compat with latest gstreamermm, also fixing bug #501862 by Mark Purtill,
+  drop old
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> subtitleeditor-0.41.0.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> subtitleeditor-0.41.0.ebuild:
+  amd64 stable, bug #478252
+
+*subtitleeditor-0.41.0 (03 Oct 2013)
+
+  03 Oct 2013; Pacho Ramos <pacho@gentoo.org> +subtitleeditor-0.41.0.ebuild:
+  Version bump
+
+  29 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -subtitleeditor-0.37.1.ebuild:
+  Clean up old revision.
+
+  08 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Drop myself out of metadata.
+
+  04 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  subtitleeditor-0.37.1.ebuild, subtitleeditor-0.40.0.ebuild:
+  Update to virtual/pkgconfig.
+
+  04 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  subtitleeditor-0.40.0.ebuild, +files/subtitleeditor-0.40.0-glib-2.31.patch:
+  Fix build failure with >=glib-2.31 (bug #413843, thanks to Piotr Mitas and
+  Andre Reinke).
+
+  29 Apr 2012; Markus Meier <maekke@gentoo.org> subtitleeditor-0.40.0.ebuild:
+  x86 stable, bug #410611
+
+  18 Apr 2012; Agostino Sarubbo <ago@gentoo.org> subtitleeditor-0.40.0.ebuild:
+  Stable for amd64, wrt bug #410611
+
+*subtitleeditor-0.40.0 (24 Mar 2012)
+
+  24 Mar 2012; Pacho Ramos <pacho@gentoo.org> +subtitleeditor-0.40.0.ebuild,
+  -subtitleeditor-0.38.0.ebuild, -subtitleeditor-0.39.0.ebuild:
+  Version bump, remove old.
+
+  22 Nov 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  subtitleeditor-0.39.0.ebuild:
+  Use EAPI=4, bug #387323.
+
+*subtitleeditor-0.39.0 (21 Nov 2011)
+
+  21 Nov 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  +subtitleeditor-0.39.0.ebuild:
+  Version bump, bug #387323. Thanks to Nikoli <nikoli@lavabit.com> for
+  reporting.
+
+  29 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  subtitleeditor-0.37.1.ebuild, subtitleeditor-0.38.0.ebuild:
+  Fix slot-dep on gnome-mm libs
+
+*subtitleeditor-0.38.0 (27 Feb 2011)
+
+  27 Feb 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  +subtitleeditor-0.38.0.ebuild:
+  Version bump, bug #356647.
+
+  08 Oct 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -subtitleeditor-0.36.0.ebuild, -files/subtitleeditor-0.36.0-r681.patch,
+  -subtitleeditor-0.36.1.ebuild:
+  Clean up old revisions.
+
+*subtitleeditor-0.37.1 (12 Aug 2010)
+
+  12 Aug 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  +subtitleeditor-0.37.1.ebuild:
+  Version bump, closes #331771. Bug fixes and new format support.
+
+  21 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  subtitleeditor-0.36.1.ebuild:
+  keyworded ~arch for x86, bug 313563
+
+*subtitleeditor-0.36.1 (25 Mar 2010)
+
+  25 Mar 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -subtitleeditor-0.31.0.ebuild, -subtitleeditor-0.33.0.ebuild,
+  +subtitleeditor-0.36.1.ebuild:
+  Version bump. Make sure *.la files are deleted. Clean up old revisions.
+
+  11 Mar 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  subtitleeditor-0.36.0.ebuild, +files/subtitleeditor-0.36.0-r681.patch:
+  Add patch from upstream to fix building with OpenGL enabled. Thanks to
+  Nikoli in bug #308937.
+
+*subtitleeditor-0.36.0 (10 Mar 2010)
+
+  10 Mar 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +subtitleeditor-0.36.0.ebuild, metadata.xml:
+  Version bump to 0.36, thanks to all the guys in bug #284556. Add myself as
+  co-maintainer as well.
+
+  09 Jul 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -subtitleeditor-0.30.0.ebuild, subtitleeditor-0.33.0.ebuild:
+  Raise gtkmm dependency to 2.14, bug #275950. Clean up old revision.
+
+*subtitleeditor-0.33.0 (30 Jun 2009)
+
+  30 Jun 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +subtitleeditor-0.33.0.ebuild:
+  Version bump. Add gst-plugins-pango, bug #274830. Better spellchecking
+  integration, bug fixes and translation updates.
+
+*subtitleeditor-0.31.0 (23 May 2009)
+
+  23 May 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +subtitleeditor-0.31.0.ebuild:
+  Bump to 0.31. Fix build with -no-undefined, segfaults and waveform
+  creation.
+
+*subtitleeditor-0.30.0 (01 Feb 2009)
+
+  01 Feb 2009; Gilles Dartiguelongue <eva@gentoo.org> +metadata.xml,
+  +subtitleeditor-0.30.0.ebuild:
+  Initial commit of subtitleeditor, thanks for contributors of bug #125714.
+  Adding gnome as backing herd, maintained by <eva@gentoo.org>.

@@ -1,0 +1,11 @@
+--- modules/acc/Makefile.orig	2007-07-02 01:42:09.000000000 +0200
++++ modules/acc/Makefile	2005-09-07 18:23:00.000000000 +0200
+@@ -13,7 +13,7 @@
+ LIBS=
+ 
+ # uncomment the next line if you wish to enable SQL accounting
+-#DEFS+=-DSQL_ACC
++DEFS+=-DSQL_ACC
+ 
+ # uncomment the next two lines if you wish to enable RADIUS accounting
+ #DEFS+=-DRAD_ACC

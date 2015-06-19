@@ -1,0 +1,41 @@
+# ChangeLog for app-admin/petrovich
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/petrovich/ChangeLog,v 1.15 2015/06/09 08:43:17 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  11 Oct 2009; Mark Loeser <halcy0n@gentoo.org> petrovich-1.0.0.ebuild:
+  QA fixes; unquoted variables
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  11 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  petrovich-1.0.0.ebuild:
+  virtual digest-md5
+
+  24 May 2005; Michael Cummings <mcummings@gentoo.org> petrovich-1.0.0.ebuild:
+  dev-perl/Digest-MD5 => perl-core/Digest-MD5
+
+  06 Jun 2004; Daniel Black <dragonheart@gentoo.org> petrovich-1.0.0.ebuild,
+  +metadata.xml:
+  QA - IUSE fix
+
+  29 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> petrovich-1.0.0.ebuild:
+  inherit eutils for epatch
+
+*petrovich-1.0.0 (1 Feb 2002)
+
+  30 Dec 2002; Martin Holzer <mholzer@gentoo.org> petrovich-1.0.0.ebuild ChangeLog :
+  Change SRC_URI to use mirror://sf
+
+  29 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> petrovich-1.0.0 :
+  Added ppc to KEYWORDS. Added RDEPEND.
+  
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,139 @@
+# ChangeLog for dev-ml/pxp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/pxp/ChangeLog,v 1.39 2015/01/19 10:14:15 aballier Exp $
+
+  19 Jan 2015; Alexis Ballier <aballier@gentoo.org> -pxp-1.2.3.ebuild:
+  remove old
+
+*pxp-1.2.7 (19 Jan 2015)
+
+  19 Jan 2015; Alexis Ballier <aballier@gentoo.org> +pxp-1.2.7.ebuild:
+  version bump
+
+  28 Nov 2014; Alexis Ballier <aballier@gentoo.org> pxp-1.2.4.ebuild:
+  update deps for ocaml 4.02
+
+  18 Jan 2014; Pacho Ramos <pacho@gentoo.org> pxp-1.2.4.ebuild:
+  amd64 stable, bug #492060
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pxp-1.2.4.ebuild:
+  Stable for x86, wrt bug #492060
+
+*pxp-1.2.4 (22 Jul 2013)
+
+  22 Jul 2013; Alexis Ballier <aballier@gentoo.org> +pxp-1.2.4.ebuild:
+  version bump
+
+  06 Mar 2013; Alexis Ballier <aballier@gentoo.org> pxp-1.2.3.ebuild:
+  eapi5: define subslot, use slotdeps, remove useless || die, do not compress
+  examples as they are useless compressed
+
+  06 Mar 2013; Alexis Ballier <aballier@gentoo.org> -pxp-1.2.2.ebuild:
+  remove old
+
+  22 Aug 2012; Johannes Huber <johu@gentoo.org> pxp-1.2.3.ebuild:
+  Stable for x86, wrt bug #428976
+
+  03 Aug 2012; Alexis Ballier <aballier@gentoo.org> pxp-1.2.3.ebuild:
+  license is not as-is but rather MIT
+
+  03 Aug 2012; Alexis Ballier <aballier@gentoo.org> pxp-1.2.3.ebuild:
+  dont try to dodoc inexistant file, reported by ago
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> pxp-1.2.3.ebuild:
+  Stable for amd64, wrt bug #428976
+
+*pxp-1.2.3 (12 Jun 2012)
+
+  12 Jun 2012; Alexis Ballier <aballier@gentoo.org> +pxp-1.2.3.ebuild:
+  version bump
+
+  23 Feb 2012; Alexis Ballier <aballier@gentoo.org> -pxp-1.2.1.ebuild:
+  remove old
+
+  15 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> pxp-1.2.2.ebuild:
+  x86 stable wrt bug #396913
+
+  04 Jan 2012; Agostino Sarubbo <ago@gentoo.org> pxp-1.2.2.ebuild:
+  Stable for AMD64, wrt bug #396913
+
+  04 Jan 2012; Agostino Sarubbo <ago@gentoo.org> pxp-1.2.2.ebuild:
+  Stable for AMD64, wrt bug #396913
+
+*pxp-1.2.2 (22 Jun 2011)
+
+  22 Jun 2011; Alexis Ballier <aballier@gentoo.org> +pxp-1.2.2.ebuild:
+  version bump
+
+  25 Nov 2009; Alexis Ballier <aballier@gentoo.org> -pxp-1.1.6.ebuild:
+  remove old
+
+  25 Nov 2009; Markus Meier <maekke@gentoo.org> pxp-1.2.1.ebuild:
+  amd64 stable, bug #280418
+
+  02 Sep 2009; Christian Faulhammer <fauli@gentoo.org> pxp-1.2.1.ebuild:
+  stable x86, bug 280418
+
+  19 Aug 2009; Alexis Ballier <aballier@gentoo.org> pxp-1.2.1.ebuild:
+  dont try to dodoc non existing doc, spotted by Markus Meier
+
+  04 Feb 2009; Alexis Ballier <aballier@gentoo.org> pxp-1.1.6.ebuild:
+  explicitly set RDEPEND=DEPEND
+
+  04 Feb 2009; Alexis Ballier <aballier@gentoo.org> -pxp-1.2.0_beta2.ebuild:
+  remove old beta
+
+*pxp-1.2.1 (04 Feb 2009)
+
+  04 Feb 2009; Alexis Ballier <aballier@gentoo.org> +pxp-1.2.1.ebuild:
+  version bump
+
+  19 Apr 2008; Alexis Ballier <aballier@gentoo.org> -pxp-1.1.95.ebuild,
+  -pxp-1.1.96.ebuild:
+  remove old
+
+*pxp-1.2.0_beta2 (09 Apr 2008)
+
+  09 Apr 2008; Alexis Ballier <aballier@gentoo.org> +pxp-1.2.0_beta2.ebuild:
+  version bump, allow building without ocamlopt, readd ~amd64
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*pxp-1.1.95 (10 Nov 2005)
+
+  10 Nov 2005; Matthieu Sozeau <mattam@gentoo.org> +pxp-1.1.96.ebuild:
+  Version bump, compatible with ocaml 3.09.
+
+*pxp-1.1.95 (09 Mar 2005)
+
+  09 Mar 2005; Matthieu Sozeau <mattam@gentoo.org> -pxp-1.1.94.2.ebuild,
+  +pxp-1.1.95.ebuild:
+  Really latest dev. version.
+
+*pxp-1.1.94.2 (09 Mar 2005)
+
+  09 Mar 2005; Matthieu Sozeau <mattam@gentoo.org> +pxp-1.1.94.2.ebuild:
+  Latest dev version.
+
+  30 Sep 2004; Matthieu Sozeau <mattam@gentoo.org> pxp-1.1.6.ebuild:
+  Mark stable on amd64, fixes bug #65902
+
+  31 Aug 2004; David Holm <dholm@gentoo.org> pxp-1.1.6.ebuild:
+  Added to ~ppc.
+
+  25 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> -pxp-1.1.5.ebuild,
+  pxp-1.1.6.ebuild:
+  Move to findlib eclass, add doc USE flag.
+
+*pxp-1.1.6 (18 Aug 2004)
+
+  18 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> pxp-1.1.6.ebuild:
+  Version bump
+
+*pxp-1.1.5 (09 Mar 2003)
+
+  09 Mar 2003; George Shapovalov <george@gentoo.org> ChangeLog, pxp-1.1.5.ebuild, files/digest-pxp-1.1.5 :
+  initial release (#15903)
+  PXP is a validating XML parser library for O'Caml
+  ebuild submitted by Bardur Arantsson <bardur-gta@odense.kollegienet.dk>

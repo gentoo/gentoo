@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=media-libs/freetype:2[static-libs?] media-libs/jbig2dec[static-libs?] >=media-libs/openjpeg-1.5:0[static-libs?] virtual/jpeg[static-libs?] X? ( x11-libs/libX11[static-libs?] x11-libs/libXext[static-libs?] ) virtual/pkgconfig static-libs? ( media-libs/freetype:2[static-libs?] media-libs/jbig2dec[static-libs?] >=media-libs/openjpeg-1.5:0[static-libs?] virtual/jpeg[static-libs?] X? ( x11-libs/libX11[static-libs?] x11-libs/libXext[static-libs?] ) ) static? ( app-arch/bzip2[static-libs] x11-libs/libXau[static-libs] x11-libs/libXdmcp[static-libs] x11-libs/libxcb[static-libs] )
+DESCRIPTION=a lightweight PDF viewer and toolkit written in portable C
+EAPI=5
+HOMEPAGE=http://mupdf.com/
+IUSE=X vanilla static static-libs
+KEYWORDS=amd64 arm ~ppc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=AGPL-3
+RDEPEND=media-libs/freetype:2[static-libs?] media-libs/jbig2dec[static-libs?] >=media-libs/openjpeg-1.5:0[static-libs?] virtual/jpeg[static-libs?] X? ( x11-libs/libX11[static-libs?] x11-libs/libXext[static-libs?] )
+SLOT=0/1.2
+SRC_URI=http://mupdf.googlecode.com/files/mupdf-1.2-source.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=139dcfe089e74053bff4ff09c0580bf8

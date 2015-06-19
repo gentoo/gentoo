@@ -1,0 +1,12 @@
+diff --git a/src/lfd/lockdaemon.c b/src/lfd/lockdaemon.c
+index bdb8553..d13c5eb 100644
+--- a/src/lfd/lockdaemon.c
++++ b/src/lfd/lockdaemon.c
+@@ -30,6 +30,7 @@
+ #include <errno.h>
+ #include <signal.h>
+ #include <pwd.h>
++#include <limits.h>
+ 
+ #define FHS
+ #define LOCKFILEPREFIX "LCK.."

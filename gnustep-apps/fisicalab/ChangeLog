@@ -1,0 +1,61 @@
+# ChangeLog for gnustep-apps/fisicalab
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/fisicalab/ChangeLog,v 1.11 2015/06/01 10:01:45 voyageur Exp $
+
+*fisicalab-0.3.5 (01 Jun 2015)
+
+  01 Jun 2015; Bernard Cafarelli <voyageur@gentoo.org> +fisicalab-0.3.5.ebuild:
+  Version bump
+
+  12 May 2014; Michael Palimaka <kensington@gentoo.org> fisicalab-0.3.4.ebuild:
+  Specify protocol in HOMEPAGE.
+
+*fisicalab-0.3.4 (24 Mar 2014)
+
+  24 Mar 2014; Bernard Cafarelli <voyageur@gentoo.org> -fisicalab-0.3.3.ebuild,
+  +fisicalab-0.3.4.ebuild:
+  Bugfix release bump, update homepage and mirror as this is a gnu projet now
+
+*fisicalab-0.3.3 (16 Dec 2013)
+
+  16 Dec 2013; Bernard Cafarelli <voyageur@gentoo.org> +fisicalab-0.3.3.ebuild:
+  Version bump, bugfix release
+
+*fisicalab-0.3.2 (13 Mar 2013)
+
+  13 Mar 2013; Bernard Cafarelli <voyageur@gentoo.org>
+  -files/fisicalab-0.1-as-needed.patch, -fisicalab-0.2.1.ebuild,
+  -fisicalab-0.2.2.ebuild, +fisicalab-0.3.2.ebuild:
+  Version bump
+
+*fisicalab-0.3.0 (11 Oct 2012)
+
+  11 Oct 2012; Bernard Cafarelli <voyageur@gentoo.org> +fisicalab-0.3.0.ebuild:
+  Version bump
+
+*fisicalab-0.2.2 (12 Jul 2012)
+
+  12 Jul 2012; Bernard Cafarelli <voyageur@gentoo.org> -fisicalab-0.2.ebuild,
+  +fisicalab-0.2.2.ebuild:
+  Version bump, mostly bugfixes for newer GNUstep releases. Remove old
+
+*fisicalab-0.2.1 (28 Jun 2011)
+
+  28 Jun 2011; Bernard Cafarelli <voyageur@gentoo.org> +fisicalab-0.2.1.ebuild:
+  Version bump
+
+*fisicalab-0.2 (13 Jul 2010)
+
+  13 Jul 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  -fisicalab-0.1.ebuild, +fisicalab-0.2.ebuild:
+  Version bump, remove previous version
+
+  21 Jul 2009; Bernard Cafarelli <voyageur@gentoo.org> fisicalab-0.1.ebuild,
+  +files/fisicalab-0.1-as-needed.patch:
+  Fix compilation with forced --as-needed, bug #278135
+
+*fisicalab-0.1 (16 Mar 2009)
+
+  16 Mar 2009; Bernard Cafarelli <voyageur@gentoo.org> +metadata.xml,
+  +fisicalab-0.1.ebuild:
+  Initial commit

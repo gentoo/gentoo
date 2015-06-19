@@ -1,0 +1,39 @@
+# ChangeLog for media-plugins/vdr-pilotskin
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-pilotskin/ChangeLog,v 1.8 2014/01/15 00:41:58 hd_brummy Exp $
+
+  15 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-pilotskin-0.0.2.ebuild, vdr-pilotskin-0.0.2-r1.ebuild:
+  cleanup; eapi=5; vdr-plugin-2.eclass; rekeyworded ~x86; removed i18n crap
+
+  12 Mar 2009; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-pilotskin-0.0.2-r1.ebuild:
+  Marked stable on x86.
+
+  28 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-pilotskin-0.0.2-r1.ebuild:
+  Fixed quoting.
+
+*vdr-pilotskin-0.0.2-r1 (08 Jul 2007)
+
+  08 Jul 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-pilotskin-0.0.2-vdr-1.5.diff, +vdr-pilotskin-0.0.2-r1.ebuild:
+  Added patch to disable problematic GetFont call.
+
+  13 Nov 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-pilotskin-0.0.2.ebuild:
+  Marked stable on x86.
+
+  01 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Assigned package to VDR-Project.
+
+  06 May 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-pilotskin-0.0.2.ebuild:
+  Added ~amd64
+
+*vdr-pilotskin-0.0.2 (05 May 2006)
+
+  05 May 2006; Matthias Schwarzott <zzam@gentoo.org> +metadata.xml,
+  +vdr-pilotskin-0.0.2.ebuild:
+  Initial import of ebuild written by me.
+

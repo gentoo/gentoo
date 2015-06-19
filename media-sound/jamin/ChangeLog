@@ -1,0 +1,86 @@
+# ChangeLog for media-sound/jamin
+# Copyright 2000-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/jamin/ChangeLog,v 1.22 2007/07/02 15:14:52 flameeyes Exp $
+
+  02 Jul 2007; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Hand to newly-born proaudio herd.
+
+  09 Mar 2007; Steve Dibb <beandog@gentoo.org> jamin-0.95.0-r2.ebuild:
+  amd64 stable, bug 154460
+
+  26 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  jamin-0.95.0-r2.ebuild:
+  stable x86; bug 154460
+
+  24 Feb 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/jamin-0.95.0-multilib-strict.patch, jamin-0.95.0-r2.ebuild:
+  multilib-strict fix
+
+  03 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*jamin-0.95.0-r2 (14 Jan 2006)
+
+  14 Jan 2006; Frank van de Pol <fvdpol@gentoo.org> +jamin-0.95.0-r2.ebuild:
+  Included fix for proper handling of the osc use flag. Thanks to Mike Stute
+  <mrstute@comcast.net>. Closing bug #114031.
+
+  09 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> jamin-0.9.0-r1.ebuild,
+  jamin-0.95.0.ebuild, jamin-0.95.0-r1.ebuild:
+  Don't install COPYING and INSTALL files.
+
+*jamin-0.95.0-r1 (26 Apr 2005)
+
+  26 Apr 2005; Frank van de Pol <fvdpol@gentoo.org> +jamin-0.95.0-r1.ebuild:
+  Added support of Open Sound Control (USE=osc)
+
+*jamin-0.95.0 (20 Apr 2005)
+
+  20 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> -jamin-0.8.0.ebuild,
+  +jamin-0.95.0.ebuild:
+  new upstream version, fixes #89806
+
+  19 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove retired developer from metadata.xml.
+
+  29 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/jamin-0.9.0-jack99.patch:
+  Stable on amd64 and x86. Added a patch to work with jack-0.99.0. Closes bug
+  #65098 thanks to Reuben Martin <martinr@jbu.edu>.
+
+  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> jamin-0.8.0.ebuild:
+  Stable amd64.
+
+  30 Aug 2004; David Holm <dholm@gentoo.org> jamin-0.9.0-r1.ebuild:
+  Added to ~ppc.
+
+  23 Aug 2004; <frank@gentoo.org> files/jamin-0.9.0-geq.patch:
+  Fixed files/jamin-0.9.0-geq.patch which failed on cvs contained in the file's
+  header. Closes bug #61308.
+
+*jamin-0.9.0-r1 (22 Aug 2004)
+
+  22 Aug 2004; <frank@gentoo.org> +files/jamin-0.9.0-geq.patch,
+  +jamin-0.9.0-r1.ebuild:
+  New release 0.9.0-r1 to fix a problem with spline lenghts of 1024.
+
+*jamin-0.9.0 (18 Aug 2004)
+
+  18 Aug 2004; <frank@gentoo.org> +files/jamin-0.9.0-scenes.patch,
+  +jamin-0.9.0.ebuild:
+  Version bump to 0.9.0.
+
+  06 May 2004; Jeremy Huddleston <eradicator@gentoo.org> jamin-0.8.0.ebuild:
+  Stable x86.
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> jamin-0.8.0.ebuild:
+  Added IUSE.
+
+  18 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> jamin-0.8.0.ebuild:
+  Adding amd64 keyword, closing #48176.
+
+*jamin-0.8.0 (19 Jan 2004)
+
+  19 Jan 2004; <torbenh@gentoo.org> jamin-0.8.0.ebuild, metadata.xml:
+  Initial Import
+

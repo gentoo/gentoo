@@ -1,0 +1,172 @@
+# ChangeLog for dev-python/python-memcached
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-memcached/ChangeLog,v 1.38 2015/04/08 08:04:56 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> python-memcached-1.53-r1.ebuild,
+  python-memcached-1.54.ebuild:
+  Drop old Python implementations
+
+*python-memcached-1.54 (22 Mar 2015)
+
+  22 Mar 2015; Patrick Lauer <patrick@gentoo.org> +python-memcached-1.54.ebuild:
+  Bump
+
+  01 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -python-memcached-1.47.ebuild,
+  -python-memcached-1.48-r1.ebuild, -python-memcached-1.48.ebuild,
+  -python-memcached-1.50.ebuild, -python-memcached-1.51.ebuild,
+  -python-memcached-1.52.ebuild, -python-memcached-1.53.ebuild:
+  Remove old.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> python-memcached-1.48-r1.ebuild,
+  python-memcached-1.53-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org>
+  python-memcached-1.53-r1.ebuild:
+  Stable for ppc, wrt bug #495632
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> python-memcached-1.53-r1.ebuild:
+  amd64 stable, bug #495632
+
+  23 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  python-memcached-1.53-r1.ebuild:
+  x86 stable wrt bug #495632
+
+  22 Oct 2013; Fabian Groffen <grobian@gentoo.org>
+  python-memcached-1.53-r1.ebuild:
+  Marked ~x64-macos, bug #487670
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> python-memcached-1.48-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*python-memcached-1.53-r1 (11 Aug 2013)
+
+  11 Aug 2013; Michał Górny <mgorny@gentoo.org>
+  +python-memcached-1.53-r1.ebuild:
+  Migrate to distutils-r1. Disable broken tests.
+
+*python-memcached-1.53 (08 Jul 2013)
+
+  08 Jul 2013; Patrick Lauer <patrick@gentoo.org> +python-memcached-1.53.ebuild:
+  Bump
+
+*python-memcached-1.52 (19 Jun 2013)
+
+  19 Jun 2013; Patrick Lauer <patrick@gentoo.org> +python-memcached-1.52.ebuild:
+  Bump
+
+*python-memcached-1.51 (28 May 2013)
+
+  28 May 2013; Patrick Lauer <patrick@gentoo.org> +python-memcached-1.51.ebuild:
+  Bump
+
+*python-memcached-1.48-r1 (22 May 2013)
+
+  22 May 2013; Ian Delaney <idella4@gentoo.org>
+  +python-memcached-1.48-r1.ebuild:
+  revbump, migrate -> distutils-r1, closes Bug #469856 by kensington
+
+*python-memcached-1.50 (22 May 2013)
+
+  22 May 2013; Patrick Lauer <patrick@gentoo.org> +python-memcached-1.50.ebuild:
+  Bump
+
+*python-memcached-1.48 (08 Jan 2012)
+
+  08 Jan 2012; Patrick Lauer <patrick@gentoo.org> +python-memcached-1.48.ebuild:
+  Bump for #393621
+
+  27 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -python-memcached-1.45.ebuild:
+  Delete.
+
+  27 Feb 2011; Brent Baude <ranger@gentoo.org> python-memcached-1.47.ebuild:
+  stable ppc, bug 352736
+
+  31 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  python-memcached-1.47.ebuild:
+  x86 stable wrt bug #352736
+
+  26 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  python-memcached-1.47.ebuild:
+  Stable on amd64 wrt bug #352736
+
+*python-memcached-1.47 (23 Dec 2010)
+
+  23 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +python-memcached-1.47.ebuild:
+  Version bump.
+
+  15 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -python-memcached-1.44.ebuild:
+  Delete.
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org> python-memcached-1.45.ebuild:
+  stable ppc, bug 333185
+
+  18 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  python-memcached-1.45.ebuild:
+  Stable on amd64 wrt bug #333185
+
+  18 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  python-memcached-1.45.ebuild:
+  x86 stable wrt bug #333185
+
+*python-memcached-1.45 (06 Jul 2010)
+
+  06 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +python-memcached-1.45.ebuild:
+  Version bump.
+
+  06 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  python-memcached-1.44.ebuild:
+  Use PYTHON_DEPEND instead of NEED_PYTHON.
+
+  26 Mar 2010; Sebastian Pipping <sping@gentoo.org>
+  python-memcached-1.44.ebuild:
+  Fix SRC_URI (bug #311273)
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> python-memcached-1.44.ebuild:
+  ppc stable #287741
+
+  15 Oct 2009; Markus Meier <maekke@gentoo.org>
+  python-memcached-1.44.ebuild:
+  amd64/x86 stable, bug #287741
+
+  11 Oct 2009; Fabian Groffen <grobian@gentoo.org>
+  python-memcached-1.44.ebuild:
+  Merge from Prefix
+
+  04 Sep 2009; Patrick Lauer <patrick@gentoo.org>
+  -python-memcached-1.43.ebuild:
+  Remove old
+
+  08 Aug 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  python-memcached-1.44.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*python-memcached-1.44 (12 Jul 2009)
+
+  12 Jul 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -python-memcached-1.40.ebuild, +python-memcached-1.44.ebuild:
+  Version bump.
+
+*python-memcached-1.43 (31 Mar 2009)
+
+  31 Mar 2009; Patrick Lauer <patrick@gentoo.org>
+  +python-memcached-1.43.ebuild:
+  Bump to 1.43, fixes #263346
+
+  02 Nov 2007; Tiziano Müller <dev-zero@gentoo.org>
+  python-memcached-1.40.ebuild:
+  Replaced dev-lang/python dependency with NEED_PYTHON var
+
+  02 Nov 2007; Robin H. Johnson <robbat2@gentoo.org>
+  python-memcached-1.40.ebuild:
+  Bug #197879, missing dep on setuptools.
+
+*python-memcached-1.40 (24 Oct 2007)
+
+  24 Oct 2007; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +python-memcached-1.40.ebuild:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

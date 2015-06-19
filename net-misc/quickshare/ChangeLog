@@ -1,0 +1,21 @@
+# ChangeLog for net-misc/quickshare
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/quickshare/ChangeLog,v 1.5 2012/05/23 10:49:48 ago Exp $
+
+  23 May 2012; Agostino Sarubbo <ago@gentoo.org> quickshare-1.0.ebuild:
+  Stable for amd64, wrt bug #417151
+
+  22 May 2012; Jeff Horelick <jdhore@gentoo.org> quickshare-1.0.ebuild:
+  marked x86 per bug 417151
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> quickshare-1.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  24 Jan 2012; Jeff Horelick <jdhore@gentoo.org> metadata.xml:
+  Take full maintenance of this package now that I am a developer.
+
+*quickshare-1.0 (17 Sep 2011)
+
+  17 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> +quickshare-1.0.ebuild:
+  Initial commit by Jeff D. Horelick.
+

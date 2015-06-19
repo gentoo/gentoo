@@ -1,0 +1,25 @@
+# ChangeLog for dev-ml/xstr
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/xstr/ChangeLog,v 1.6 2014/08/10 20:43:37 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> xstr-0.2.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  03 Mar 2013; Alexis Ballier <aballier@gentoo.org> xstr-0.2.1.ebuild:
+  eapi5: define subslot and use slot deps.
+
+  14 Dec 2012; Ulrich Müller <ulm@gentoo.org> xstr-0.2.1.ebuild:
+  Fix LICENSE, MIT (Expat) according to LICENSE file, bug 445046. Do not
+  install useless file in docdir.
+
+  09 Nov 2012; Agostino Sarubbo <ago@gentoo.org> xstr-0.2.1.ebuild:
+  Add ~amd64, wrt bug #442118
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*xstr-0.2.1 (09 Mar 2005)
+
+  09 Mar 2005; Matthieu Sozeau <mattam@gentoo.org> +metadata.xml,
+  +xstr-0.2.1.ebuild:
+  xstr is a library for thread safe manipulation of strings.

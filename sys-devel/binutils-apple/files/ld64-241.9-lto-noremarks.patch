@@ -1,0 +1,107 @@
+Shut up ld64 by default when using LTO.
+
+diff -ru ld64-241.9.orig/src/ld/Options.cpp ld64-241.9/src/ld/Options.cpp
+--- ld64-241.9.orig/src/ld/Options.cpp	2015-02-02 22:14:29.000000000 +0100
++++ ld64-241.9/src/ld/Options.cpp	2015-02-02 22:15:41.000000000 +0100
+@@ -183,6 +183,9 @@
+ 	  fDebugInfoStripping(kDebugInfoMinimal), fTraceOutputFile(NULL), 
+ 	  fMacVersionMin(ld::macVersionUnset), fIOSVersionMin(ld::iOSVersionUnset), 
+ 	  fSaveTempFiles(false),
++#ifdef LTO
++	  fVerboseLTORemarks(false),
++#endif
+ #ifdef SUPPORT_SNAPSHOTS
+ 	  fSnapshotRequested(false),
+ #endif
+@@ -3138,6 +3141,11 @@
+ 			else if ( strcmp(arg, "-ignore_optimization_hints") == 0 ) {
+ 				fIgnoreOptimizationHints = true;
+ 			}
++#ifdef LTO
++			else if ( strcmp(arg, "-verbose_lto_remarks") == 0 ) {
++				fVerboseLTORemarks = true;
++			}
++#endif
+ 			else if ( strcmp(arg, "-no_dtrace_dof") == 0 ) {
+ 				fGenerateDtraceDOF = false;
+ 			}
+Only in ld64-241.9/src/ld: Options.cpp~
+diff -ru ld64-241.9.orig/src/ld/Options.h ld64-241.9/src/ld/Options.h
+--- ld64-241.9.orig/src/ld/Options.h	2015-02-02 22:14:29.000000000 +0100
++++ ld64-241.9/src/ld/Options.h	2015-02-02 22:16:36.000000000 +0100
+@@ -381,6 +381,9 @@
+ 	bool						forceWeakNonWildCard(const char* symbolName) const;
+ 	bool						forceNotWeakNonWildcard(const char* symbolName) const;
+ 	bool						forceCoalesce(const char* symbolName) const;
++#ifdef LTO
++	bool						verboseLTORemarks() const { return fVerboseLTORemarks; }
++#endif
+ #ifdef SUPPORT_SNAPSHOTS
+     Snapshot&                   snapshot() const { return fLinkSnapshot; }
+ #endif
+@@ -681,6 +684,9 @@
+ 	std::vector<SymbolsMove>			fSymbolsMovesCode;
+ 	std::vector<SymbolsMove>			fSymbolsMovesZeroFill;
+ 	bool								fSaveTempFiles;
++#ifdef LTO
++	bool								fVerboseLTORemarks;
++#endif
+ #ifdef SUPPORT_SNAPSHOTS
+     mutable Snapshot					fLinkSnapshot;
+     bool								fSnapshotRequested;
+Only in ld64-241.9/src/ld: Options.h~
+diff -ru ld64-241.9.orig/src/ld/Resolver.cpp ld64-241.9/src/ld/Resolver.cpp
+--- ld64-241.9.orig/src/ld/Resolver.cpp	2015-02-02 22:14:29.000000000 +0100
++++ ld64-241.9/src/ld/Resolver.cpp	2015-02-02 22:17:16.000000000 +0100
+@@ -1559,6 +1559,7 @@
+ 	optOpt.mcpu							= _options.mcpuLTO();
+ 	optOpt.llvmOptions					= &_options.llvmOptions();
+ 	optOpt.initialUndefines				= &_options.initialUndefines();
++	optOpt.verboseLTORemarks			= _options.verboseLTORemarks();
+ 	
+ 	std::vector<const ld::Atom*>		newAtoms;
+ 	std::vector<const char*>			additionalUndefines; 
+Only in ld64-241.9/src/ld: Resolver.cpp~
+diff -ru ld64-241.9.orig/src/ld/parsers/lto_file.cpp ld64-241.9/src/ld/parsers/lto_file.cpp
+--- ld64-241.9.orig/src/ld/parsers/lto_file.cpp	2015-02-02 22:14:29.000000000 +0100
++++ ld64-241.9/src/ld/parsers/lto_file.cpp	2015-02-02 22:18:27.000000000 +0100
+@@ -489,13 +489,17 @@
+ 
+ 
+ #if LTO_API_VERSION >= 7
+-void Parser::ltoDiagnosticHandler(lto_codegen_diagnostic_severity_t severity, const char* message, void*) 
++void Parser::ltoDiagnosticHandler(lto_codegen_diagnostic_severity_t severity, const char* message, void* data)
+ {
+ 	switch ( severity ) {
+ #if LTO_API_VERSION >= 10
+ 		case LTO_DS_REMARK:
++		{
++			const OptimizeOptions* options = (const OptimizeOptions*)data;
++			if (options->verboseLTORemarks)
+ 			fprintf(stderr, "ld: LTO remark: %s\n", message);
+ 			break;
++		}
+ #endif
+ 		case LTO_DS_NOTE:
+ 		case LTO_DS_WARNING:
+@@ -530,7 +533,7 @@
+ 	// create optimizer and add each Reader
+ 	lto_code_gen_t generator = ::lto_codegen_create();
+ #if LTO_API_VERSION >= 7
+-	lto_codegen_set_diagnostic_handler(generator, ltoDiagnosticHandler, NULL);
++	lto_codegen_set_diagnostic_handler(generator, ltoDiagnosticHandler, (void*)&options);
+ #endif
+ 
+ 	// <rdar://problem/12379604> The order that files are merged must match command line order
+Only in ld64-241.9/src/ld/parsers: lto_file.cpp~
+diff -ru ld64-241.9.orig/src/ld/parsers/lto_file.h ld64-241.9/src/ld/parsers/lto_file.h
+--- ld64-241.9.orig/src/ld/parsers/lto_file.h	2015-02-02 22:14:29.000000000 +0100
++++ ld64-241.9/src/ld/parsers/lto_file.h	2015-02-02 22:18:57.000000000 +0100
+@@ -61,6 +61,7 @@
+ 	const char*							mcpu;
+ 	const std::vector<const char*>*		llvmOptions;
+ 	const std::vector<const char*>*		initialUndefines;
++	bool								verboseLTORemarks;
+ };
+ 
+ extern bool	optimize(   const std::vector<const ld::Atom*>&	allAtoms,

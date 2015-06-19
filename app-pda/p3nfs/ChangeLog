@@ -1,0 +1,98 @@
+# ChangeLog for app-pda/p3nfs
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-pda/p3nfs/ChangeLog,v 1.23 2014/04/10 02:43:09 patrick Exp $
+
+  10 Apr 2014; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Fix metadata.xml after mobile-phone herd dissolution
+
+*p3nfs-5.19-r3 (09 Apr 2014)
+
+  09 Apr 2014; Sergey Popov <pinkbyte@gentoo.org> +p3nfs-5.19-r3.ebuild:
+  Revision bump: EAPI 5, epatch_user, some cleanups
+
+  09 Apr 2014; Sergey Popov <pinkbyte@gentoo.org> p3nfs-5.19-r2.ebuild,
+  +files/p3nfs-5.19-set-default-tty.patch:
+  Fix building on systems without serial interfaces, wrt bug #314971, fix minor
+  QA issues
+
+*p3nfs-5.19-r2 (12 Dec 2009)
+
+  12 Dec 2009; Alin Năstac <mrness@gentoo.org> -p3nfs-5.19-r1.ebuild,
+  +p3nfs-5.19-r2.ebuild:
+  Install entire documentation in /usr/share/doc/${PF} (#295124).
+
+*p3nfs-5.19-r1 (16 Aug 2009)
+
+  16 Aug 2009; Alin Năstac <mrness@gentoo.org> -p3nfs-5.19.ebuild,
+  +p3nfs-5.19-r1.ebuild:
+  Migrate to EAPI 2. Extend portmap dependency atom (#280931) and move it from
+  DEPEND to RDEPEND.
+
+  21 Jun 2008; Alin Năstac <mrness@gentoo.org> p3nfs-5.19.ebuild:
+  Drop bindnow flags (#226961). Fix type punned QA notices.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> p3nfs-5.19.ebuild:
+  Replacing einfo with elog
+
+  02 Jun 2006; Alin Nastac <mrness@gentoo.org>
+  -files/p3nfs-5.18-fix-defines.patch, -p3nfs-5.18-r1.ebuild:
+  Remove obsolete version.
+
+  05 May 2006; Jon Hood <squinky86@gentoo.org> p3nfs-5.19.ebuild:
+  Add ~amd64, #108311.
+
+  13 Apr 2006; Alin Nastac <mrness@gentoo.org> p3nfs-5.19.ebuild:
+  Stable on x86.
+
+*p3nfs-5.19 (27 Feb 2006)
+
+  27 Feb 2006; Alin Nastac <mrness@gentoo.org> +p3nfs-5.19.ebuild:
+  Version bump.
+
+  25 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> p3nfs-5.18-r1.ebuild:
+  Use bindnow-flags function instead of -Wl,-z,now.
+
+  07 Oct 2005; Michele Noberasco <s4t4n@gentoo.org> p3nfs-5.18-r1.ebuild:
+  Stable for x86.
+  -p3nfs-5.18.ebuild:
+  Wiped out older release.
+
+*p3nfs-5.18-r1 (29 Sep 2005)
+
+  29 Sep 2005; Michele Noberasco <s4t4n@gentoo.org> +p3nfs-5.18-r1.ebuild:
+  Revision bump, with patch to fix bug #89537. Also added some magic
+  to make it honour Gentoo CFLAGS. Assigned to mobile-phone herd.
+
+  08 Jul 2005; <brix@gentoo.org> metadata.xml:
+  Removed myself from metadata.xml as I no longer have a supported Symbian
+  device.
+
+  02 Jul 2005; <brix@gentoo.org> -p3nfs-5.16.ebuild, -p3nfs-5.17a.ebuild:
+  Pruned old ebuilds.
+
+  27 Jun 2005; <brix@gentoo.org> p3nfs-5.18.ebuild:
+  Stable on x86.
+
+  09 Jun 2005; <brix@gentoo.org> p3nfs-5.17a.ebuild:
+  Stable on x86.
+
+*p3nfs-5.18 (01 Jun 2005)
+
+  01 Jun 2005; <brix@gentoo.org> +p3nfs-5.18.ebuild:
+  Version bump, fixes bug #94520.
+
+  15 May 2005; <brix@gentoo.org> p3nfs-5.16.ebuild:
+  Stable on x86.
+
+*p3nfs-5.17a (03 May 2005)
+
+  03 May 2005; <brix@gentoo.org> +p3nfs-5.17a.ebuild:
+  Version bump.
+
+*p3nfs-5.16 (15 Apr 2005)
+
+  15 Apr 2005; <brix@gentoo.org> +metadata.xml, +p3nfs-5.16.ebuild:
+  Initial import. Fixes bug #37010.

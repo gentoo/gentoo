@@ -1,0 +1,22 @@
+# ChangeLog for dev-haskell/readline
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/readline/ChangeLog,v 1.4 2013/04/02 10:10:22 gienah Exp $
+
+*readline-1.0.3.0 (02 Apr 2013)
+
+  02 Apr 2013; Mark Wright <gienah@gentoo.org> +readline-1.0.3.0.ebuild:
+  Bump readline to 1.0.3.0
+
+  15 Sep 2012; Mark Wright <gienah@gentoo.org>
+  +files/readline-1.0.1.0-ghc-7.6.patch, readline-1.0.1.0.ebuild:
+  Patch readline for ghc 7.6.1
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org> readline-1.0.1.0.ebuild:
+  move dev-haskell/readline/readline-1.0.1.0.ebuild ebuild to mirror://hackage
+
+*readline-1.0.1.0 (24 Jul 2010)
+
+  24 Jul 2010; Sergei Trofimovich <slyfox@gentoo.org>
+  +readline-1.0.1.0.ebuild, +metadata.xml:
+  initial commit. The library was shipped with ghc up to 6.10.2 but now it's
+  a separate package.

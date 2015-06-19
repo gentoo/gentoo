@@ -1,0 +1,182 @@
+--- a/CMakeLists.txt	2014-06-22 23:44:17.666047736 +0200
++++ b/CMakeLists.txt	2014-06-22 23:45:13.656347758 +0200
+@@ -41,7 +41,7 @@
+ 
+ 
+ # detect top level projects
+-FIND_PACKAGE( Yajl )
++FIND_PACKAGE( Yajl REQUIRED )
+ IF( HAVE_YAJL )
+   INCLUDE_DIRECTORIES( ${YAJL_INCLUDE_DIRS} )
+   LINK_DIRECTORIES( ${YAJL_LIBRARY_DIRS} )
+@@ -51,72 +51,16 @@
+   IF( NOT HAVE_YAJL_VERSION_H )
+     INCLUDE_DIRECTORIES( ${CMAKE_SOURCE_DIR}/yajl/ )
+   ENDIF( NOT HAVE_YAJL_VERSION_H )
+-ELSE( HAVE_YAJL )
+-  IF(CMAKE_VERSION VERSION_GREATER 2.8.0)
+-    include(ExternalProject)
+-    ExternalProject_Add( yajl
+-    SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/yajl
+-    CONFIGURE_COMMAND cmake ${CMAKE_CURRENT_SOURCE_DIR}/yajl
+-    BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/yajl
+-    BUILD_COMMAND ${MAKE}
+-    # skip installation
+-    INSTALL_COMMAND echo )
+-    INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_SOURCE_DIR}/yajl )
+-    LINK_DIRECTORIES( ${CMAKE_CURRENT_BINARY_DIR}/yajl )
+-    SET( YAJL_LIBRARIES yajl-static )
+-  ENDIF()
+-  
+ ENDIF( HAVE_YAJL )
+ 
+-FIND_PACKAGE( Elektra )
++FIND_PACKAGE( Elektra REQUIRED )
++SET( HAVE_ELEKTRA 1 )
+ IF(HAVE_ELEKTRA)
+   SET( ELEKTRA_SPEC "Requires: elektra
+ BuildRequires: elektra-devel" )
+   INCLUDE_DIRECTORIES( ${ELEKTRA_INCLUDE_DIRS} )
+   LINK_DIRECTORIES( ${ELEKTRA_LIBRARY_DIRS} )
+   STRING(REPLACE ";" " " ELEKTRA_PC_LDFLAGS "${ELEKTRA_STATIC_LDFLAGS}")
+-ELSE(HAVE_ELEKTRA)
+-  SET( ELEKTRA_VERSION elektra-0.7.1 )
+-  MESSAGE( "-- Using internal Elektra: ${ELEKTRA_VERSION}" )
+-  INCLUDE_DIRECTORIES( ${CMAKE_SOURCE_DIR}/${ELEKTRA_VERSION}/src/include
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/include )
+-  SET( ELEKTRA_LIBRARIES_STATIC
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/libelektra/libelektra_a-kdb.o
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/libelektra/libelektra_a-kdbhandle.o
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/libelektra/libelektra_a-key.o
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/libelektra/libelektra_a-keyset.o
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/libelektra/libelektra_a-trie.o
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/libelektra/libelektra_a-kdbhighlevel.o
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/libelektra/libelektra_a-kdbcapability.o
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/libelektra/libelektra_a-keyhelpers.o
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/libelektra/libelektra_a-keymeta.o
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/libelektra/libelektra_a-keyname.o
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/libelektra/libelektra_a-keytest.o
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/libelektra/libelektra_a-keyvalue.o
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/libelektra/libelektra_a-serialize.o
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/libelektra/libelektra_a-split.o
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/libelektra/libelektra_a-exported_symbols.o
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/libloader/libloader_static_a-kdbLibLoader.o
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/libhelper/libhelper_static_a-internal.o
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/libhelper/libhelper_static_a-helper.o
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/backends/filesys/libelektra_filesys_a-filesys.o
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/libelektratools/libelektratools_a-kdbtools.o
+-       ${CMAKE_BINARY_DIR}/${ELEKTRA_VERSION}/src/libelektratools/libelektratools_a-stream.o
+-     )
+-  SET( ELEKTRA_LIBRARIES 
+-       ${LIBXML2_LIBRARIES}
+-     )
+-  IF(CMAKE_VERSION VERSION_GREATER 2.8.0)
+-    include(ExternalProject)
+-    ExternalProject_Add( ${ELEKTRA_VERSION}
+-    SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/${ELEKTRA_VERSION}
+-    # GCC flags (-fPIC) will fail on Windows, without we get relocation R_X86_64_32 errors
+-    CONFIGURE_COMMAND CFLAGS=-fPIC ${CMAKE_CURRENT_SOURCE_DIR}/${ELEKTRA_VERSION}/configure --enable-static --enable-shared=false
+-    BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/${ELEKTRA_VERSION}
+-    BUILD_COMMAND ${MAKE}
+-    # skip installation
+-    INSTALL_COMMAND echo )
+-  ENDIF()
+ ENDIF(HAVE_ELEKTRA)
+ 
+ #now add all directories
+--- a/src/CMakeLists.txt	2013-12-20 00:04:12.319880917 +0100
++++ b/src/CMakeLists.txt	2013-12-20 00:11:33.504365352 +0100
+@@ -100,7 +100,9 @@
+ INCLUDE_DIRECTORIES( ${XCM_INCLUDE_DIRS} )
+ LINK_DIRECTORIES( ${XCM_LIBRARY_DIRS} )
+ 
+-FIND_PACKAGE( X11 )
++IF(WANT_X11)
++FIND_PACKAGE( X11 REQUIRED )
++ENDIF(WANT_X11)
+ IF(X11_FOUND)
+   INCLUDE_DIRECTORIES( ${X11_INCLUDE_DIRS} )
+   LINK_DIRECTORIES( ${X11_LIBRARY_DIRS} )
+@@ -123,27 +125,36 @@
+   LINK_DIRECTORIES( ${XXF86VM_LIBRARY_DIRS} )
+ ENDIF(X11_FOUND)
+ 
+-FIND_PACKAGE( CUPS )
++IF(WANT_CUPS)
++FIND_PACKAGE( Cups REQUIRED )
++SET( HAVE_CUPS 1 )
++ENDIF(WANT_CUPS)
+ IF(HAVE_CUPS)
+   INCLUDE_DIRECTORIES( ${CUPS_INCLUDE_DIR} )
+   LINK_DIRECTORIES( ${CUPS_LIBRARYS} )
+ ENDIF(HAVE_CUPS)
+ 
+-FIND_PACKAGE( Cairo )
++IF(WANT_CAIRO)
++FIND_PACKAGE( Cairo REQUIRED)
++ENDIF(WANT_CAIRO)
+ IF(HAVE_CAIRO)
+   INCLUDE_DIRECTORIES( ${CAIRO_INCLUDE_DIR}/cairo )
+   INCLUDE_DIRECTORIES( ${CAIRO_INCLUDE_DIR} )
+   LINK_DIRECTORIES( ${CAIRO_LIBRARY_DIRS} )
+ ENDIF(HAVE_CAIRO)
+ 
+-FIND_PACKAGE(Qt4 COMPONENTS QtCore QtGui)
++IF(WANT_QT4)
++FIND_PACKAGE(Qt4 COMPONENTS QtCore QtGui REQUIRED)
++ENDIF(WANT_QT4)
+ IF(QT_FOUND)
+   SET( HAVE_QT 1 )
+   INCLUDE_DIRECTORIES( ${QT_INCLUDE_DIRS} )
+   LINK_DIRECTORIES( ${QT_LIBRARY_DIRS} )
+ ENDIF(QT_FOUND)
+ 
+-FIND_PACKAGE( Fltk )
++IF(WANT_FLTK)
++FIND_PACKAGE( FLTK REQUIRED)
++ENDIF(WANT_FLTK)
+ IF(FLTK_FOUND)
+   SET( HAVE_FLTK 1 )
+   INCLUDE_DIRECTORIES( ${FLTK_INCLUDE_DIRS} )
+@@ -159,7 +170,9 @@
+   SET( LIBXML2_LIBRARIES ${LIBXML2_LIBRARIES} PARENT_SCOPE)
+ ENDIF(LIBXML2_FOUND)
+ 
+-FIND_PACKAGE( LibRaw )
++IF(WANT_LIBRAW)
++FIND_PACKAGE( LibRaw REQUIRED )
++ENDIF(WANT_LIBRAW)
+ IF( HAVE_LIBRAW )
+ #  TRY_COMPILE(
+ #    HAVE_LIBRAW_REALLY
+@@ -182,7 +195,9 @@
+   MESSAGE( "HAVE_LIBRAW_PLUGIN: ${HAVE_LIBRAW_PLUGIN}" )
+ ENDIF()
+ 
+-FIND_PACKAGE( Exif2 )
++IF(WANT_EXIV2)
++FIND_PACKAGE( Exif2 REQUIRED )
++ENDIF(WANT_EXIV2)
+ IF(HAVE_EXIV2)
+   INCLUDE_DIRECTORIES( ${EXIV2_INCLUDE_DIRS} )
+   LINK_DIRECTORIES( ${EXIV2_LIBRARY_DIRS} )
+--- a/doc/CMakeLists.txt	2014-03-07 09:43:25.000000000 +0100
++++ b/doc/CMakeLists.txt	2014-06-23 00:22:01.256748956 +0200
+@@ -33,7 +33,9 @@
+ INSTALL( FILES ${MAN1_PAGES} DESTINATION share/man/man1 )
+ INSTALL( FILES ${MAN3_PAGES} DESTINATION share/man/man3 )
+ 
+-FIND_PACKAGE( Doxygen )
++IF(WANT_HTML)
++	FIND_PACKAGE( Doxygen REQUIRED )
++ENDIF(WANT_HTML)
+ IF( DOXYGEN_FOUND )
+ 
+   ADD_CUSTOM_COMMAND( OUTPUT html
+@@ -43,5 +45,5 @@
+   ADD_CUSTOM_TARGET( docu ALL
+                      DEPENDS html )
+ 
+-  INSTALL( DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html DESTINATION share/doc/${PACKAGE_NAME} )
++  INSTALL( DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html DESTINATION share/doc/${PACKAGE_NAME}-${OYRANOS_VERSION} )
+ ENDIF()

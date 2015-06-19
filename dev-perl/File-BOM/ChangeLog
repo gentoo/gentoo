@@ -1,0 +1,33 @@
+# ChangeLog for dev-perl/File-BOM
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-BOM/ChangeLog,v 1.7 2015/06/13 22:45:55 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  File-BOM-0.140.0-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*File-BOM-0.140.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +File-BOM-0.140.0-r1.ebuild, -File-BOM-0.140.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -File-BOM-0.14.ebuild:
+  Cleanup
+
+*File-BOM-0.140.0 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org> +File-BOM-0.140.0.ebuild:
+  Change version scheme
+
+  24 Apr 2011; Fabian Groffen <grobian@gentoo.org> File-BOM-0.14.ebuild:
+  Marked ~x86-solaris, bug #296509
+
+*File-BOM-0.14 (27 Jun 2009)
+
+  27 Jun 2009; Torsten Veller <tove@gentoo.org> +File-BOM-0.14.ebuild,
+  +metadata.xml:
+  Initial commit (#275530)

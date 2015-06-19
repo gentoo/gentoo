@@ -1,0 +1,1866 @@
+ include/cmd_dial.h        |   1 +
+ include/cmd_io.h          |   7 +-
+ include/cmd_struc.h       |   1 +
+ include/curr_dir.h        |   1 +
+ include/data_hand.h       |   6 +
+ src/cip/cmd_tab.h         |   3 +
+ src/cmddial/ExDialColor.c | 314 +++++++++++++++++++++++++++++++-----------
+ src/cmddial/ExDialRes.c   | 340 ++++++++++++++++++++++++++++++++++++++++++++++
+ src/cmddial/Makefile      |   2 +-
+ src/cmdio/ExPdb.c         |  70 +++++++++-
+ src/cmdstruc/ExBuild.c    | 123 +++++++++++++++++
+ src/data/DataHand.c       | 114 +++++++++++++++-
+ src/iodev/IODev.c         |   2 +
+ src/main/MolInit.c        |   5 +-
+ src/main/MolMol.c         |   2 +-
+ src/motif/MotifDial.c     |  32 ++---
+ src/motogl/MotOGLDump.c   |   2 +-
+ src/os/CurrDir.c          |  46 ++-----
+ src/os/ProgDir.c          |  25 +++-
+ src/win/WinDial.c         | 255 +++++++++++++++++-----------------
+ src/winogl/WinOGLDump.c   |   7 +-
+ 21 files changed, 1073 insertions(+), 285 deletions(-)
+
+diff --git a/include/cmd_dial.h b/include/cmd_dial.h
+index f60e918..47fb8f8 100644
+--- a/include/cmd_dial.h
++++ b/include/cmd_dial.h
+@@ -29,6 +29,7 @@ extern ErrCode ExUserInterface(char *);
+ 
+ extern ErrCode ExDialColor(char *);
+ extern ErrCode ExDialMol(char *);
++extern ErrCode ExDialRes(char *);
+ extern ErrCode ExDialMeasure(char *);
+ extern ErrCode ExDialRmsd(char *);
+ extern ErrCode ExDialSelect(char *);
+diff --git a/include/cmd_io.h b/include/cmd_io.h
+index 79b173c..9a7b12c 100644
+--- a/include/cmd_io.h
++++ b/include/cmd_io.h
+@@ -30,15 +30,16 @@ extern ErrCode ExReadAng(char *);
+ extern ErrCode ExReadDg(char *);
+ extern ErrCode ExReadDump(char *);
+ extern ErrCode ExReadLib(char *);
+-extern ErrCode ExReadPdb(char *);
+-extern ErrCode ExReadSeq(char *);
+-extern ErrCode ExReadShift(char *);
+ extern ErrCode ExReadLimit(char *);
+ extern ErrCode ExReadListAng(char *);
+ extern ErrCode ExReadListDg(char *);
+ extern ErrCode ExReadListPdb(char *);
++extern ErrCode ExReadOldPdb(char *);
+ extern ErrCode ExReadOmap(char *);
++extern ErrCode ExReadPdb(char *);
+ extern ErrCode ExReadPot(char *);
++extern ErrCode ExReadSeq(char *);
++extern ErrCode ExReadShift(char *);
+ extern ErrCode ExReadSybyl(char *);
+ extern ErrCode ExReadXyz(char *);
+ extern ErrCode ExWriteAng(char *);
+diff --git a/include/cmd_struc.h b/include/cmd_struc.h
+index e0d729f..f4950b9 100644
+--- a/include/cmd_struc.h
++++ b/include/cmd_struc.h
+@@ -33,6 +33,7 @@ extern ErrCode ExAddDist(char *);
+ extern ErrCode ExAddLimit(char *);
+ extern ErrCode ExAddPseudo(char *);
+ extern ErrCode ExAddRes(char *);
++extern ErrCode ExMakeMolCyclic(char *);
+ extern ErrCode ExChangeRes(char *);
+ extern ErrCode ExFirstMol(char *);
+ extern ErrCode ExFlipAtom(char *);
+diff --git a/include/curr_dir.h b/include/curr_dir.h
+index c7895c4..04e404d 100644
+--- a/include/curr_dir.h
++++ b/include/curr_dir.h
+@@ -26,6 +26,7 @@
+ #ifndef _CURR_DIR_H_
+ #define _CURR_DIR_H_
+ 
++extern void CurrDirSet(char *dir);
+ extern char *CurrDirGet(void);
+ 
+ #endif  /* _CURR_DIR_H_ */
+diff --git a/include/data_hand.h b/include/data_hand.h
+index 4462328..74a716a 100644
+--- a/include/data_hand.h
++++ b/include/data_hand.h
+@@ -112,6 +112,7 @@ extern void DhMolMoveFirst(DhMolP);
+ extern void DhMolDestroy(DhMolP);
+ 
+ extern DhResP DhResNew(DhMolP, DhResDefP, DhSeqPos);
++extern DhResP DhResNewCyclic(DhMolP, DhResDefP, DhSeqPos);
+ extern void DhResMutate(DhResP, DhResDefP, DhMutationKind);
+ extern void DhResSetNeigh(DhResP, DhNeighChoice, DhResP);
+ extern BOOL DhResDestroy(DhResP);
+@@ -287,6 +288,7 @@ extern void DhMolGetTransVect(DhMolP, Vec3);
+ extern MolAttrP DhMolGetAttr(DhMolP);
+ 
+ extern DSTR DhResGetName(DhResP);
++extern DhAtomP DhResGetAtomA(DhResP);
+ extern int DhResGetNumber(DhResP);
+ 
+ extern DSTR DhAtomGetName(DhAtomP);
+@@ -335,6 +337,10 @@ extern void DhResAnglesChanged(DhResP);
+ extern void DhResDockPrev(DhResP);
+ extern void DhResDockNext(DhResP);
+ extern void DhResCalcAtom(DhResP, DSTR);
++extern DhResP DhResPrev(DhResP resP);
++extern DhResP DhResNext(DhResP resP);
++extern DhResP DhResFirst(DhMolP molP);
++extern DhResP DhResLast(DhMolP molP);
+ 
+ /* dump/undump */
+ 
+diff --git a/src/cip/cmd_tab.h b/src/cip/cmd_tab.h
+index 0b73f65..cf7bc2a 100644
+--- a/src/cip/cmd_tab.h
++++ b/src/cip/cmd_tab.h
+@@ -108,6 +108,7 @@ static CmdTabEntry BuiltinCmdTab[] = {
+   {"DialColor", ExDialColor, US_NONE},
+   {"DialMeasure", ExDialMeasure, US_NONE},
+   {"DialMol", ExDialMol, US_NONE},
++  {"DialRes", ExDialRes, US_NONE},
+   {"DialRmsd", ExDialRmsd, US_NONE},
+   {"DialSelect", ExDialSelect, US_NONE},
+   {"DialStyle", ExDialStyle, US_NONE},
+@@ -164,6 +165,7 @@ static CmdTabEntry BuiltinCmdTab[] = {
+   {"ListSelectedDist", ExListSelected, US_NONE},
+   {"ListSelectedMol", ExListSelected, US_NONE},
+   {"ListSelectedRes", ExListSelected, US_NONE},
++  {"MakeMolCyclic", ExMakeMolCyclic, US_ALL},
+   {"MaterialAtom", ExMaterial, US_ALL},
+   {"MaterialBond", ExMaterial, US_ALL},
+   {"MaterialDist", ExMaterial, US_ALL},
+@@ -213,6 +215,7 @@ static CmdTabEntry BuiltinCmdTab[] = {
+   {"ReadListDg", ExReadListDg, US_ALL},
+   {"ReadListPdb", ExReadListPdb, US_ALL},
+   {"ReadLol", ExReadLimit, US_ALL},
++  {"ReadOldPdb", ExReadOldPdb, US_ALL},
+   {"ReadOmap", ExReadOmap, US_ALL},
+   {"ReadPdb", ExReadPdb, US_ALL},
+   {"ReadPot", ExReadPot, US_ALL},
+diff --git a/src/cmddial/ExDialColor.c b/src/cmddial/ExDialColor.c
+index f960e1d..e827c4f 100644
+--- a/src/cmddial/ExDialColor.c
++++ b/src/cmddial/ExDialColor.c
+@@ -43,6 +43,9 @@
+ #define NAME_LEN 100
+ #define NUM_LEN 6
+ #define CMD_NO 7
++#define MAXRGBVALUE 255
++#define ICOLOR(c) (int)   ((float)c * (float)MAXRGBVALUE)
++#define FCOLOR(c) (float) ((float)c / (float)MAXRGBVALUE)
+ 
+ #define EPS ((float) 1.0e-5)
+ 
+@@ -56,8 +59,8 @@ typedef struct {
+ static ColorDesc *ColorList;
+ static int ColorNo = 0;
+ static BOOL DialOn = FALSE;
+-static PuGizmo DialGizmo = NULL, NameGizmo, RGizmo, GGizmo, BGizmo, ColGizmo;
+-static DSTR NameStr = NULL, RStr, GStr, BStr;
++static PuGizmo DialGizmo = NULL, NameGizmo, RGizmo, GGizmo, BGizmo, ColGizmo, rGizmo, gGizmo, bGizmo;
++static DSTR NameStr = NULL, RStr, GStr, BStr, rStr, gStr, bStr;
+ 
+ static char *LabelList[] = {
+   "Back",
+@@ -136,22 +139,50 @@ editCB(PuGizmo g, char *name, void *clientData, void *callData)
+   char *field = clientData;
+   PuTextCBStruc *callP = callData;
+ 
+-  if (field[0] == 'N')
++  if (field[0] == 'N') {
+     DStrAssignStr(NameStr, callP->newText);
+-  else if (field[0] == 'R')
++  }
++  else if (field[0] == 'R') {
+     DStrAssignStr(RStr, callP->newText);
+-  else if (field[0] == 'G')
++  }
++  else if (field[0] == 'G') {
+     DStrAssignStr(GStr, callP->newText);
+-  else
++  }
++  else if (field[0] == 'B') {
+     DStrAssignStr(BStr, callP->newText);
++  }
++  else if (field[0] == 'r') {
++    DStrAssignStr(rStr, callP->newText);
++  }
++  else if (field[0] == 'g') {
++    DStrAssignStr(gStr, callP->newText);
++  }
++  else if (field[0] == 'b') {
++    DStrAssignStr(bStr, callP->newText);
++  }
+ }
+ 
+ static void
+ updateFields(int colorI)
+ {
++  char buf[10];
++  float f;
++
+   PuSetStr(RGizmo, PU_SC_TEXT, ColorList[colorI].r);
+   PuSetStr(GGizmo, PU_SC_TEXT, ColorList[colorI].g);
+   PuSetStr(BGizmo, PU_SC_TEXT, ColorList[colorI].b);
++
++  f = atof(ColorList[colorI].r);
++  (void) sprintf(buf, "%i", ICOLOR(f));
++  PuSetStr(rGizmo, PU_SC_TEXT, buf);
++
++  f = atof(ColorList[colorI].g);
++  (void) sprintf(buf, "%i", ICOLOR(f));
++  PuSetStr(gGizmo, PU_SC_TEXT, buf);
++
++  f = atof(ColorList[colorI].b);
++  (void) sprintf(buf, "%i", ICOLOR(f));
++  PuSetStr(bGizmo, PU_SC_TEXT, buf);
+ }
+ 
+ static void
+@@ -190,17 +221,96 @@ activateCB(PuGizmo g, char *name, void *clientData, void *callData)
+ {
+   char *field = clientData;
+   int i;
++  float f;
++  char buf[10];
+ 
+   if (field[0] == 'N') {
+     for (i = 0; i < ColorNo; i++)
+       if (strcmp(ColorList[i].name, DStrToStr(NameStr)) == 0) {
+-	updateFields(i);
+-	break;
++        updateFields(i);
++        break;
+       }
+   } else {
++    if (field[0] == 'R') {
++      f = atof(DStrToStr(RStr));
++      if (f>1.0) {
++        f=1.0;
++        i=MAXRGBVALUE;
++        sprintf(buf,"%1.3f", FCOLOR(i));
++        DStrAssignStr(RStr, buf);
++        PuSetStr(RGizmo, PU_SC_TEXT, buf);
++      }
++      sprintf(buf,"%i", ICOLOR(f));
++      DStrAssignStr(rStr, buf);
++      PuSetStr(rGizmo, PU_SC_TEXT, buf);
++    }
++    else if (field[0] == 'G') {
++      f = atof(DStrToStr(GStr));
++      if (f>1.0) {
++        f=1.0;
++        i=MAXRGBVALUE;
++        sprintf(buf,"%1.3f", FCOLOR(i));
++        DStrAssignStr(GStr, buf);
++        PuSetStr(GGizmo, PU_SC_TEXT, buf);
++      }
++      sprintf(buf,"%i", ICOLOR(f));
++      DStrAssignStr(gStr, buf);
++      PuSetStr(gGizmo, PU_SC_TEXT, buf);
++    }
++    else if (field[0] == 'B') {
++      f = atof(DStrToStr(BStr));
++      if (f>1.0) {
++        f=1.0;
++        i=MAXRGBVALUE;
++        sprintf(buf,"%1.3f", FCOLOR(i));
++        DStrAssignStr(BStr, buf);
++        PuSetStr(BGizmo, PU_SC_TEXT, buf);
++      }
++      sprintf(buf,"%i", ICOLOR(f));
++      DStrAssignStr(bStr, buf);
++      PuSetStr(bGizmo, PU_SC_TEXT, buf);
++    }
++    else if (field[0] == 'r') {
++      i = atoi(DStrToStr(rStr));
++      if (i>MAXRGBVALUE) {
++        f=1.0;
++        i=MAXRGBVALUE;
++        sprintf(buf,"%i", ICOLOR(f));
++        DStrAssignStr(rStr, buf);
++        PuSetStr(rGizmo, PU_SC_TEXT, buf);
++      }
++      sprintf(buf,"%1.3f", FCOLOR(i));
++      DStrAssignStr(RStr, buf);
++      PuSetStr(RGizmo, PU_SC_TEXT, buf);
++    }
++    else if (field[0] == 'g') {
++      i = atoi(DStrToStr(gStr));
++      if (i>MAXRGBVALUE) {
++        f=1.0;
++        i=MAXRGBVALUE;
++        sprintf(buf,"%i", ICOLOR(f));
++        DStrAssignStr(gStr, buf);
++        PuSetStr(gGizmo, PU_SC_TEXT, buf);
++      }
++      sprintf(buf,"%1.3f", FCOLOR(i));
++      DStrAssignStr(GStr, buf);
++      PuSetStr(GGizmo, PU_SC_TEXT, buf);
++    }
++    else if (field[0] == 'b') {
++      i = atoi(DStrToStr(bStr));
++      if (i>MAXRGBVALUE) {
++        f=1.0;
++        i=MAXRGBVALUE;
++        sprintf(buf,"%i", ICOLOR(f));
++        DStrAssignStr(bStr, buf);
++        PuSetStr(bGizmo, PU_SC_TEXT, buf);
++      }
++      sprintf(buf,"%1.3f", FCOLOR(i));
++      DStrAssignStr(BStr, buf);
++      PuSetStr(BGizmo, PU_SC_TEXT, buf);
++    }
+     showName();
+   }
+-
+   showColor();
+ }
+ 
+@@ -258,13 +368,20 @@ showAttr(AttrP attrP)
+ {
+   char buf[10];
+ 
+-  (void) sprintf(buf, "%5.3f", attrP->colR);
++  (void) sprintf(buf, "%1.3f", attrP->colR);
+   PuSetStr(RGizmo, PU_SC_TEXT, buf);
+-  (void) sprintf(buf, "%5.3f", attrP->colG);
++  (void) sprintf(buf, "%1.3f", attrP->colG);
+   PuSetStr(GGizmo, PU_SC_TEXT, buf);
+-  (void) sprintf(buf, "%5.3f", attrP->colB);
++  (void) sprintf(buf, "%1.3f", attrP->colB);
+   PuSetStr(BGizmo, PU_SC_TEXT, buf);
+ 
++  (void) sprintf(buf, "%i", ICOLOR(attrP->colR));
++  PuSetStr(rGizmo, PU_SC_TEXT, buf);
++  (void) sprintf(buf, "%i", ICOLOR(attrP->colG));
++  PuSetStr(gGizmo, PU_SC_TEXT, buf);
++  (void) sprintf(buf, "%i", ICOLOR(attrP->colB));
++  PuSetStr(bGizmo, PU_SC_TEXT, buf);
++
+   showName();
+   showColor();
+ }
+@@ -315,107 +432,152 @@ buildDial(void)
+   PuGizmo g;
+   PuConstraints con;
+   int i;
+-
+-  DialGizmo = PuCreateDialog("Color Dialog", 7, 5);
+-  PuSetBool(DialGizmo, PU_BC_PLACE_OUTSIDE, TRUE);
+-
+-  con.x = 0;
+-  con.w = 1;
+-  con.h = 1;
+-
+-  g = PuCreateLabel(DialGizmo, "Name");
+-  con.y = 0;
+-  PuSetConstraints(g, con);
+-  PuSwitchGizmo(g, TRUE);
+-
+-  g = PuCreateLabel(DialGizmo, "Red");
+-  con.y = 1;
+-  PuSetConstraints(g, con);
+-  PuSwitchGizmo(g, TRUE);
+-
+-  g = PuCreateLabel(DialGizmo, "Green");
+-  con.y = 2;
+-  PuSetConstraints(g, con);
+-  PuSwitchGizmo(g, TRUE);
+-
+-  g = PuCreateLabel(DialGizmo, "Blue");
+-  con.y = 3;
+-  PuSetConstraints(g, con);
+-  PuSwitchGizmo(g, TRUE);
+-
+-  con.x = 1;
+-  con.w = 2;
+-  con.h = 1;
+-
+   NameStr = DStrNew();
++
+   RStr = DStrNew();
+   GStr = DStrNew();
+   BStr = DStrNew();
++  rStr = DStrNew();
++  gStr = DStrNew();
++  bStr = DStrNew();
++
+   DStrAssignStr(RStr, "0.0");
+   DStrAssignStr(GStr, "0.0");
+   DStrAssignStr(BStr, "0.0");
++  DStrAssignStr(rStr, "0");
++  DStrAssignStr(gStr, "0");
++  DStrAssignStr(bStr, "0");
+ 
++  DialGizmo = PuCreateDialog("Color Dialog", 3, 20);
++  PuSetBool(DialGizmo, PU_BC_PLACE_OUTSIDE, TRUE);
++
++  con.x = 1;
++  con.y = 0;
++  con.w = 2;
++  con.h = 3;
++  ColGizmo = PuCreateColorField(DialGizmo, "Color");
++  PuSetConstraints(ColGizmo, con);
++  PuSetConstraints(ColGizmo, con);
++  showColor();
++  PuSwitchGizmo(ColGizmo, TRUE);
++
++  con.x = 0;
++  con.y = 4;
++  con.w = 1;
++  con.h = 1;
++  g = PuCreateLabel(DialGizmo, "Name");
++  PuSetConstraints(g, con);
++  PuSwitchGizmo(g, TRUE);
++  con.x = 1;
++  con.w = 2;
++  con.h = 1;
+   NameGizmo = PuCreateTextField(DialGizmo, "Name", DStrToStr(NameStr));
+-  con.y = 0;
+   PuSetConstraints(NameGizmo, con);
+-  PuSetInt(NameGizmo, PU_IC_TEXT_WIDTH, 13);
++  PuSetInt(NameGizmo, PU_IC_TEXT_WIDTH, 10);
+   PuAddGizmoCB(NameGizmo, PU_CT_MODIFY, editCB, "N", NULL);
+   PuAddGizmoCB(NameGizmo, PU_CT_ACTIVATE, activateCB, "N", NULL);
+   showName();
+   PuSwitchGizmo(NameGizmo, TRUE);
+ 
+-  RGizmo = PuCreateTextField(DialGizmo, "Red", DStrToStr(RStr));
+-  con.y = 1;
++  con.x = 1;
++  con.y = 5;
++  con.w = 2;
++  con.h = 5;
++  g = PuCreateList(DialGizmo, "Color List");
++  for (i = 0; i < ColorNo; i++)
++    PuAddListEntry(g, ColorList[i].name, FALSE);
++  PuSetConstraints(g, con);
++  PuSetBool(g, PU_BC_AUTO_DESEL, TRUE);
++  PuAddGizmoCB(g, PU_CT_SELECT, selectCB, NULL, NULL);
++  PuSwitchGizmo(g, TRUE);
++
++  con.x = 1;
++  con.y = 11;
++  con.w = 1;
++  con.h = 1;
++  g = PuCreateLabel(DialGizmo, "Float");
++  PuSetConstraints(g, con);
++  PuSwitchGizmo(g, TRUE);
++  con.x = 2;
++  con.y = 11;
++  g = PuCreateLabel(DialGizmo, "RGB");
++  PuSetConstraints(g, con);
++  PuSwitchGizmo(g, TRUE);
++
++  con.x = 0;
++  con.y = 12;
++  con.w = 1;
++  con.h = 1;
++  g = PuCreateLabel(DialGizmo, "Red");
++  PuSetConstraints(g, con);
++  PuSwitchGizmo(g, TRUE);
++  con.x = 1;
++  RGizmo = PuCreateTextField(DialGizmo, "RED", DStrToStr(RStr));
+   PuSetConstraints(RGizmo, con);
+   PuSetInt(RGizmo, PU_IC_TEXT_WIDTH, NUM_LEN);
+   PuAddGizmoCB(RGizmo, PU_CT_MODIFY, editCB, "R", NULL);
+   PuAddGizmoCB(RGizmo, PU_CT_ACTIVATE, activateCB, "R", NULL);
+   PuSwitchGizmo(RGizmo, TRUE);
++  con.x = 2;
++  rGizmo = PuCreateTextField(DialGizmo, "red", DStrToStr(rStr));
++  PuSetConstraints(rGizmo, con);
++  PuSetInt(rGizmo, PU_IC_TEXT_WIDTH, NUM_LEN);
++  PuAddGizmoCB(rGizmo, PU_CT_MODIFY, editCB, "r", NULL);
++  PuAddGizmoCB(rGizmo, PU_CT_ACTIVATE, activateCB, "r", NULL);
++  PuSwitchGizmo(rGizmo, TRUE);
+ 
+-  GGizmo = PuCreateTextField(DialGizmo, "Green", DStrToStr(GStr));
+-  con.y = 2;
++  con.x = 0;
++  con.y = 13;
++  con.w = 1;
++  con.h = 1;
++  g = PuCreateLabel(DialGizmo, "Green");
++  PuSetConstraints(g, con);
++  PuSwitchGizmo(g, TRUE);
++  con.x = 1;
++  GGizmo = PuCreateTextField(DialGizmo, "GREEN", DStrToStr(GStr));
+   PuSetConstraints(GGizmo, con);
+   PuSetInt(GGizmo, PU_IC_TEXT_WIDTH, NUM_LEN);
+   PuAddGizmoCB(GGizmo, PU_CT_MODIFY, editCB, "G", NULL);
+   PuAddGizmoCB(GGizmo, PU_CT_ACTIVATE, activateCB, "G", NULL);
+   PuSwitchGizmo(GGizmo, TRUE);
++  con.x = 2;
++  gGizmo = PuCreateTextField(DialGizmo, "green", DStrToStr(gStr));
++  PuSetConstraints(gGizmo, con);
++  PuSetInt(gGizmo, PU_IC_TEXT_WIDTH, NUM_LEN);
++  PuAddGizmoCB(gGizmo, PU_CT_MODIFY, editCB, "g", NULL);
++  PuAddGizmoCB(gGizmo, PU_CT_ACTIVATE, activateCB, "g", NULL);
++  PuSwitchGizmo(gGizmo, TRUE);
+ 
+-  BGizmo = PuCreateTextField(DialGizmo, "Blue", DStrToStr(BStr));
+-  con.y = 3;
++  con.x = 0;
++  con.y = 14;
++  con.w = 1;
++  con.h = 1;
++  g = PuCreateLabel(DialGizmo, "Blue");
++  PuSetConstraints(g, con);
++  PuSwitchGizmo(g, TRUE);
++  con.x = 1;
++  BGizmo = PuCreateTextField(DialGizmo, "BLUE", DStrToStr(BStr));
+   PuSetConstraints(BGizmo, con);
+   PuSetInt(BGizmo, PU_IC_TEXT_WIDTH, NUM_LEN);
+   PuAddGizmoCB(BGizmo, PU_CT_MODIFY, editCB, "B", NULL);
+   PuAddGizmoCB(BGizmo, PU_CT_ACTIVATE, activateCB, "B", NULL);
+   PuSwitchGizmo(BGizmo, TRUE);
++  con.x = 2;
++  bGizmo = PuCreateTextField(DialGizmo, "blue", DStrToStr(bStr));
++  PuSetConstraints(bGizmo, con);
++  PuSetInt(bGizmo, PU_IC_TEXT_WIDTH, NUM_LEN);
++  PuAddGizmoCB(bGizmo, PU_CT_MODIFY, editCB, "b", NULL);
++  PuAddGizmoCB(bGizmo, PU_CT_ACTIVATE, activateCB, "b", NULL);
++  PuSwitchGizmo(bGizmo, TRUE);
+ 
+-  ColGizmo = PuCreateColorField(DialGizmo, "Color");
+-  con.x = 3;
+-  con.y = 0;
+-  con.w = 2;
+-  con.h = 4;
+-  PuSetConstraints(ColGizmo, con);
+-  showColor();
+-  PuSwitchGizmo(ColGizmo, TRUE);
+-
+-  g = PuCreateList(DialGizmo, "Color List");
+-  for (i = 0; i < ColorNo; i++)
+-    PuAddListEntry(g, ColorList[i].name, FALSE);
+-  con.x = 5;
+-  con.y = 0;
+-  con.w = 2;
+-  con.h = 4;
+-  PuSetConstraints(g, con);
+-  PuSetBool(g, PU_BC_AUTO_DESEL, TRUE);
+-  PuAddGizmoCB(g, PU_CT_SELECT, selectCB, NULL, NULL);
+-  PuSwitchGizmo(g, TRUE);
+-
+-  con.y = 4;
++  con.x = 0;
++  con.y = 15;
+   con.w = 1;
+   con.h = 1;
+-
+   for (i = 0; i < CMD_NO; i++) {
+     g = PuCreateButton(DialGizmo, LabelList[i]);
+-    con.x = i;
++    con.x = i%3;
++	if (i%3 == 0) con.y++;
+     PuSetConstraints(g, con);
+     PuAddGizmoCB(g, PU_CT_ACTIVATE, cmdCB, NULL, NULL);
+     PuSwitchGizmo(g, TRUE);
+diff --git a/src/cmddial/ExDialRes.c b/src/cmddial/ExDialRes.c
+new file mode 100644
+index 0000000..06925ff
+--- /dev/null
++++ b/src/cmddial/ExDialRes.c
+@@ -0,0 +1,340 @@
++/*
++************************************************************************
++*
++*   ExDialMol.c - DialMol command
++*
++*   Copyright (c) 1994-98
++*
++*   ETH Zuerich
++*   Institut fuer Molekularbiologie und Biophysik
++*   ETH-Hoenggerberg
++*   CH-8093 Zuerich
++*
++*   SPECTROSPIN AG
++*   Industriestr. 26
++*   CH-8117 Faellanden
++*
++*   All Rights Reserved
++*
++*   Date of last modification : 98/08/17
++*   Pathname of SCCS file     : /tmp_mnt/net/sn/homeb/rkoradi/molmol-master/src/cmddial/SCCS/s.ExDialMol.c
++*   SCCS identification       : 1.10
++*
++************************************************************************
++*/
++
++#include <cmd_dial.h>
++
++#include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
++
++#include <break.h>
++#include <pu.h>
++#include <arg.h>
++#include <cip.h>
++#include <data_hand.h>
++
++#define PROP_NO 3
++
++typedef struct {
++  char *label;
++  char *propName;
++  char *cmd;
++} PropDesc;
++typedef struct {
++  char *name;
++  BOOL active;
++} Residue;
++
++static BOOL DialOn = FALSE;
++static PuGizmo DialGizmo = NULL, ListGizmo;
++static int CurrProp;
++static PropRefP CurrRefP;
++static int MolNo, MolI;
++static BOOL *MolStateA;
++static BOOL SuppressUpdate = FALSE;
++static PropDesc PropTab[] = {
++  {"sel", PROP_SELECTED, "SelectRes"},
++  {"disp", PROP_DISPLAYED, "DefPropRes 'displayed'"},
++  {"move", PROP_MOVABLE, "DefProRes 'movable'"}
++};
++static Residue ResidueTab[] = {
++	{"ARG", FALSE},
++	{"CYS", FALSE},
++	{"PRO", FALSE},
++	{"ASP", FALSE},
++	{"PHE", FALSE},
++	{"LEU", FALSE}, 
++	{"GLU", FALSE},
++	{"PRO", FALSE},
++	{"TYR", FALSE},
++	{"GLY", FALSE},
++	{"ASN", FALSE},
++	{"ALA", FALSE},
++	{"SER", FALSE},
++	{"THR", FALSE},
++	{"LYS", FALSE},
++	{"ILE", FALSE}  
++};
++
++static void
++countMol(DhResP molP, void *clientData)
++{
++  MolNo++;
++}
++
++
++
++static void
++addMol(DhResP molP, void *clientData)
++{
++  
++  
++  DSTR name;
++  DSTR residue;
++  char buf[10];
++  char buf2[5];
++  BOOL propVal;
++  int j;
++  name = DStrNew();
++  residue = DStrNew();
++
++
++  j= DhResGetNumber(molP);
++  (void) sprintf(buf, "%5d " , j);
++  
++  DStrAssignStr(name, buf);
++  DStrAssignStr(residue, buf2);
++  DStrAppStr(name, " ");
++  
++  DStrAppDStr(residue, DhResGetName(molP));
++  DStrAppDStr(name, DhResGetName(molP));
++  propVal = DhResGetProp(CurrRefP, molP);
++  
++  
++  
++  if (! BreakCheck(10)){
++    PuAddListEntry(ListGizmo, DStrToStr(name), propVal);
++	
++  }
++  
++  
++	
++  MolStateA[MolI] = propVal;
++
++  DStrFree(name);
++  
++  MolI++;
++}
++
++static void
++selectMolCB(PuGizmo g, char *name, void *clientData, void *callData)
++{
++  PuSelectCBStruc *callP = callData;
++  DSTR cmd;
++  BOOL isFirst;
++  char buf[10];
++  int num, startI, i;
++
++  (void) sscanf(name, "%d", &num);
++  MolStateA[num - 1] = callP->onOff;
++
++  if (! callP->last)
++    return;
++
++  cmd = DStrNew();
++  DStrAssignStr(cmd, PropTab[CurrProp].cmd);
++  isFirst = TRUE;
++
++  for (i = 0; i < MolNo; i++) {
++    if (i == 0 || ! MolStateA[i - 1])
++      startI = i;
++    if (MolStateA[i] && (i == MolNo - 1 || ! MolStateA[i + 1])) {
++      if (isFirst)
++        DStrAppStr(cmd, " 'num = ");
++      else
++        DStrAppStr(cmd, ",");
++      (void) sprintf(buf, "%d", startI + 1);
++      DStrAppStr(cmd, buf);
++      if (i > startI) {
++        DStrAppStr(cmd, "..");
++        (void) sprintf(buf, "%d", i + 1);
++        DStrAppStr(cmd, buf);
++      }
++
++      isFirst = FALSE;
++    }
++  }
++
++  if (isFirst)
++    DStrAppStr(cmd, " '0'");
++  else
++    DStrAppStr(cmd, "'");
++
++  SuppressUpdate = TRUE;
++  CipExecCmd(DStrToStr(cmd));
++  SuppressUpdate = FALSE;
++
++  DStrFree(cmd);
++}
++
++static void
++buildList(void)
++{
++  int lineNo;
++
++  MolNo = 0;
++  DhApplyRes(PropGetRef(PROP_ALL, FALSE), countMol, NULL);
++  if (MolNo > 0) {
++    if (MolStateA == NULL)
++      MolStateA = malloc(MolNo * sizeof(*MolStateA));
++    else
++      MolStateA = realloc(MolStateA, MolNo * sizeof(*MolStateA));
++    lineNo = MolNo;
++    if (lineNo > 40)
++      lineNo = 40;
++  } else {
++    lineNo = 1;
++  }
++
++  PuSetInt(ListGizmo, PU_IC_ENTRY_NO, lineNo);
++
++  MolI = 0;
++  BreakActivate(TRUE);
++  DhApplyRes(PropGetRef(PROP_ALL, FALSE), addMol, NULL);
++  BreakActivate(FALSE);
++
++  PuSwitchGizmo(ListGizmo, TRUE);
++}
++
++static void
++updateList(void)
++{
++  if (SuppressUpdate)
++    return;
++
++  PuSwitchGizmo(ListGizmo, FALSE);
++  PuRemoveListEntries(ListGizmo, 0, MolNo);
++  buildList();
++}
++
++static void
++selectPropCB(PuGizmo g, char *name, void *clientData, void *callData)
++{
++  PuSelectCBStruc *callP = callData;
++  PropRefP newPropP;
++  int i;
++
++  if (! callP->onOff)
++    return;
++
++  for (i = 0; i < PROP_NO; i++)
++    if (strcmp(name, PropTab[i].label) == 0)
++      break;
++
++  newPropP = PropGetRef(PropTab[i].propName, FALSE);
++
++  if (newPropP != CurrRefP) {
++    CurrRefP = newPropP;
++    CurrProp = i;
++    updateList();
++  }
++}
++
++static void
++popdownCB(PuGizmo g, char *name, void *clientData, void *callData)
++{
++  PuSwitchGizmo(DialGizmo, FALSE);
++  DialOn = FALSE;
++}
++
++static void
++listCB(void *clientData)
++{
++  updateList();
++}
++
++static void
++helpCB(PuGizmo g, char *name, void *clientData, void *callData)
++{
++  CipShowHelpFile(DialGizmo, "DialMol");
++}
++
++static void
++buildDial(void)
++{
++  
++  PuGizmo g;
++  int i;
++
++  CurrProp = 0;
++  CurrRefP = PropGetRef(PropTab[CurrProp].propName, FALSE);
++
++  DialGizmo = PuCreateDialog("Residue Dialog", 0, 0);
++  PuSetBool(DialGizmo, PU_BC_PLACE_OUTSIDE, TRUE);
++
++  g = PuCreateRadioBox(DialGizmo, "Property");
++  for (i = 0; i < PROP_NO; i++)
++    PuAddToggle(g, PropTab[i].label, i == 0);
++  PuAddGizmoCB(g, PU_CT_SELECT, selectPropCB, NULL, NULL);
++  PuSwitchGizmo(g, TRUE);
++
++  ListGizmo = PuCreateList(DialGizmo, "Molecules");
++  PuAddGizmoCB(ListGizmo, PU_CT_SELECT, selectMolCB, NULL, NULL);
++  PuSetBool(ListGizmo, PU_BC_MULT_SEL, TRUE);
++  buildList();
++
++  PuAddGizmoCB(DialGizmo, PU_CT_CLOSE, popdownCB, NULL, NULL);
++  PuAddGizmoCB(DialGizmo, PU_CT_HELP, helpCB, NULL, NULL);
++  
++}
++
++ErrCode
++ExDialRes(char *cmd)
++{
++  ArgDescr arg;
++  EnumEntryDescr enumEntry[2];
++  ErrCode errCode;
++
++  arg.type = AT_ENUM;
++
++  ArgInit(&arg, 1);
++
++  arg.prompt = "Residue Dialog";
++  arg.u.enumD.entryP = enumEntry;
++  arg.u.enumD.n = 2;
++
++  enumEntry[0].str = "off";
++  enumEntry[1].str = "on";
++
++  enumEntry[0].onOff = DialOn;
++  enumEntry[1].onOff = ! DialOn;
++  if (DialOn)
++    arg.v.intVal = 0;
++  else
++    arg.v.intVal = 1;
++
++  errCode = ArgGet(&arg, 1);
++  if (errCode != EC_OK) {
++    ArgCleanup(&arg, 1);
++    return errCode;
++  }
++
++  DialOn = (arg.v.intVal == 1);
++
++  ArgCleanup(&arg, 1);
++
++  if (DialOn) {
++    if (DialGizmo == NULL) {
++      buildDial();
++      DhAddMolListCB(listCB, NULL);
++    }
++    PuSwitchGizmo(DialGizmo, TRUE);
++  } else {
++    if (DialGizmo != NULL)
++      PuSwitchGizmo(DialGizmo, FALSE);
++  }
++
++  return EC_OK;
++}
+\ No newline at end of file
+diff --git a/src/cmddial/Makefile b/src/cmddial/Makefile
+index d94609d..66fdea9 100644
+--- a/src/cmddial/Makefile
++++ b/src/cmddial/Makefile
+@@ -8,7 +8,7 @@ CPPFLAGS = $(INCLUDES) $(MCPPFLAGS)
+ CFLAGS   = $(CPPFLAGS) $(MCFLAGS)
+ 
+ OBJ = ExDialColor.o ExDialSelect.o ExDialStyle.o ExDialMol.o ExDialMeas.o \
+-      ExDialRmsd.o ExUserInterf.o ExRecordMac.o
++      ExDialRes.o ExDialRmsd.o ExUserInterf.o ExRecordMac.o
+ SRC = $(OBJ:.o=.c)
+ 
+ default: $(LIBDIR)/libcmd.a
+diff --git a/src/cmdio/ExPdb.c b/src/cmdio/ExPdb.c
+index 8447c4c..fde9c73 100644
+--- a/src/cmdio/ExPdb.c
++++ b/src/cmdio/ExPdb.c
+@@ -1,7 +1,7 @@
+ /*
+ ************************************************************************
+ *
+-*   ExPdb.c - ReadPdb, ReadListPdb and WritePdb commands
++*   ExPdb.c - ReadPdb, ReadOldPdb, ReadListPdb and WritePdb commands
+ *
+ *   Copyright (c) 1994-98
+ *
+@@ -105,7 +105,7 @@ compFunc(void *p1, void *p2)
+ }
+ 
+ static void
+-readTransTab(BOOL pdbToIntern)
++readTransTab(BOOL pdbToIntern, BOOL isNewNomenclature)
+ {
+   GFile gf;
+   GFileRes res;
+@@ -114,7 +114,7 @@ readTransTab(BOOL pdbToIntern)
+ 
+   TransTab = TreeOpen(sizeof(TransTabEntry), compFunc);
+   gf = SetupOpen(PN_PDB_ATOMS, "PdbAtoms", FALSE);
+-  if (gf == NULL)
++  if (gf == NULL || isNewNomenclature)
+     return;
+ 
+   if (pdbToIntern) {
+@@ -675,7 +675,7 @@ ExReadPdb(char *cmd)
+     return errCode;
+   }
+ 
+-  readTransTab(TRUE);
++  readTransTab(TRUE, TRUE);
+   UnknownErrInit();
+ 
+   if (replace) {
+@@ -755,7 +755,7 @@ ExReadListPdb(char *cmd)
+ 
+   FileNamePath(fileName);
+ 
+-  readTransTab(TRUE);
++  readTransTab(TRUE,TRUE);
+   UnknownErrInit();
+   inName = DStrNew();
+   pdbName = DStrNew();
+@@ -932,7 +932,7 @@ ExWritePdb(char *cmd)
+   if (gf == NULL)
+     return EC_ERROR;
+ 
+-  readTransTab(FALSE);
++  readTransTab(FALSE,TRUE);
+ 
+   CHECK_RES(GFileWriteStr(gf, "HEADER    Structure from"));
+   CHECK_RES(GFileWriteStr(gf, PROG_NAME));
+@@ -987,3 +987,61 @@ ExWritePdb(char *cmd)
+ 
+   return EC_OK;
+ }
++
++ErrCode
++ExReadOldPdb(char *cmd)
++{
++  BOOL replace;
++  DSTR name;
++  int molNo, readNo;
++  DhMolP *molPA;
++  ErrCode errCode;
++  DSTR errStr;
++
++  replace = (strncmp(cmd, "Replace", 7) == 0);
++
++  name = DStrNew();
++  errCode = ArgGetFilename(name, CurrDirGet(), "*.pdb", TRUE);
++  if (errCode != EC_OK) {
++    DStrFree(name);
++    return errCode;
++  }
++
++  readTransTab(TRUE, FALSE);
++  UnknownErrInit();
++
++  if (replace) {
++    molNo = SelMolGet(NULL, 0);
++    if (molNo > 0) {
++      molPA = malloc(molNo * sizeof(*molPA));
++      (void) SelMolGet(molPA, molNo);
++    }
++  } else {
++    molNo = 0;
++    molPA = NULL;
++  }
++
++  BreakActivate(TRUE);
++  errCode = readFile(molPA, molNo, name, &readNo);
++  BreakActivate(FALSE);
++
++  DStrFree(name);
++  TreeClose(TransTab);
++  if (molNo > 0)
++    free(molPA);
++
++  if (errCode != EC_OK)
++    return EC_ERROR;
++
++  if (replace)
++    GraphMolChanged(PROP_SELECTED);
++
++  errStr = UnknownErrGet();
++  if (errStr != NULL) {
++    CipSetError(DStrToStr(errStr));
++    DStrFree(errStr);
++    return EC_WARNING;
++  }
++
++  return EC_OK;
++}
+diff --git a/src/cmdstruc/ExBuild.c b/src/cmdstruc/ExBuild.c
+index 32bc650..7f003b2 100644
+--- a/src/cmdstruc/ExBuild.c
++++ b/src/cmdstruc/ExBuild.c
+@@ -31,11 +31,16 @@
+ #include <data_hand.h>
+ #include <data_sel.h>
+ #include <graph_draw.h>
++#include <pu.h>
+ 
+ #define ARG_NUM 1
+ 
+ static int CurrPos = 1;
+ static int CurrKind = 0;
++static PuTextWindow TextW;
++static DhMolP LastMolP=NULL;
++static BOOL messageWindowCreated=FALSE;
++static BOOL cyclicResidueFound=FALSE;
+ 
+ ErrCode
+ ExNewMol(char *cmd)
+@@ -206,3 +211,121 @@ ExChangeRes(char *cmd)
+ 
+   return EC_OK;
+ }
++
++static void
++writeInt(int num)
++{
++  char buf[10];
++  (void) sprintf(buf, "%5d ", num);
++  PuWriteStr(TextW, buf);
++}
++
++static void
++checkMolCyclic(DhMolP molP, void *clientData)
++{
++  DhResP resP;
++  DSTR resName = DStrNew();
++  DStrAssignStr(resName, "XXX");
++
++  resP = DhResFirst(molP);
++  while (resP != NULL) {
++    if (DStrCmp(resName, DhResGetName(resP)) == 0) {
++      cyclicResidueFound=TRUE;
++    }
++    resP = DhResNext(resP);
++  }
++
++  if (cyclicResidueFound && !messageWindowCreated) {
++    TextW = PuCreateTextWindow("MakeMolCyclic");
++    PuWriteStr(TextW, "--------------------------------------------------\n");
++    messageWindowCreated=TRUE;
++  }
++  if (cyclicResidueFound) {
++    PuWriteStr(TextW, "Error -");
++    writeInt(DhMolGetNumber(molP) + 1);
++    PuWriteStr(TextW, DStrToStr(DhMolGetName(molP)));
++    PuWriteStr(TextW, " already made cyclic!\n");
++  }
++}
++
++static void
++makeMolCyclic(DhMolP molP, void *clientData)
++{
++  DhResP xResP, yResP;
++  Vec3 firstCoord, lastCoord, midCoord;
++  DhResP firstResP, lastResP;
++  DhAtomP caAtomP;
++  DSTR atomName = DStrNew();
++  DhResDefP resDefP = (DhResDefP) clientData;
++
++  DStrAssignStr(atomName, "CA");
++
++  xResP = DhResNewCyclic(molP, resDefP, SP_FIRST);
++  DhResInit(xResP);
++  yResP = DhResNewCyclic(molP, resDefP, SP_LAST);
++  DhResInit(yResP);
++
++  xResP = DhResFirst(molP);
++
++  firstResP = DhResNext(xResP);
++  caAtomP = NULL;
++  while (caAtomP == NULL && firstResP != NULL) {
++    caAtomP = DhAtomFindName(firstResP, atomName, FALSE);
++    firstResP = DhResNext(firstResP);
++  }
++  if (caAtomP == NULL) {
++    return;
++  }
++  DhAtomGetCoord(caAtomP, firstCoord);
++
++  yResP = DhResLast(molP);
++  lastResP = DhResPrev(yResP);
++  caAtomP = NULL;
++  while (caAtomP == NULL && lastResP != NULL) {
++    caAtomP = DhAtomFindName(lastResP, atomName, FALSE);
++    lastResP = DhResPrev(lastResP);
++  }
++  if (caAtomP == NULL) {
++    return;
++  }
++
++  DhAtomGetCoord(caAtomP, lastCoord);
++
++  midCoord[0] = (firstCoord[0]+lastCoord[0])/2;
++  midCoord[1] = (firstCoord[1]+lastCoord[1])/2;
++  midCoord[2] = (firstCoord[2]+lastCoord[2])/2;
++
++  DhAtomSetCoord(DhResGetAtomA(xResP), midCoord);
++  DhAtomSetCoord(DhResGetAtomA(yResP), midCoord);
++}
++
++ErrCode
++ExMakeMolCyclic(char *cmd)
++{
++  int ind=0;
++  DhResDefP resDefP;
++  DSTR resName = DStrNew();
++
++  messageWindowCreated=FALSE;
++  cyclicResidueFound=FALSE;
++  DhApplyMol(PropGetRef(PROP_SELECTED, FALSE), checkMolCyclic, NULL);
++  if (cyclicResidueFound) {
++    DSTR msg = DStrNew();
++    DStrAssignStr(msg, "Error cyclic molecules selected");
++    PuSetTextField(PU_TF_STATUS, DStrToStr(msg));
++    DStrFree(msg);
++    return EC_OK;
++  }
++
++  DStrAssignStr(resName, "XXX");
++  resDefP = DhResDefGet(resName);
++  if (resDefP == NULL) {
++    CipSetError("error cyclic marker residue 'XXX' not found in residue library");
++    return EC_ERROR;
++  }
++
++  DhApplyMol(PropGetRef(PROP_SELECTED, FALSE), makeMolCyclic, resDefP);
++  GraphMolChanged(PROP_SELECTED);
++  GraphRedrawNeeded();
++  return EC_OK;
++}
+diff --git a/src/data/DataHand.c b/src/data/DataHand.c
+index 368aad3..d020c20 100644
+--- a/src/data/DataHand.c
++++ b/src/data/DataHand.c
+@@ -994,9 +994,11 @@ BOOL
+ DhResDestroy(DhResP resP)
+ {
+   /* can only destroy first or last residue of molecule! */
++  DhMolP molP;
+   if (resP == ListFirst(resP->molP->resL)) {
++    molP = resP->molP;
+     ListRemove(resP->molP->resL, resP);
+-    setEquivI(ListFirst(resP->molP->resL), NULL);
++    setEquivI((DhResP)ListFirst(molP->resL), NULL);
+     return TRUE;
+   } else if (resP == ListLast(resP->molP->resL)) {
+     ListRemove(resP->molP->resL, resP);
+@@ -2842,6 +2844,18 @@ DhResGetName(DhResP resP)
+   return resP->defP->name;
+ }
+ 
++DhAtomP
++DhResGetAtomA(DhResP resP)
++{
++  return resP->atomA;
++}
++
++DhResDefP
++DhResGetDefP(DhResP resP)
++{
++  return resP->defP;
++}
++
+ int
+ DhResGetNumber(DhResP resP)
+ {
+@@ -3313,3 +3327,101 @@ DhAltCoordListGet(void)
+ {
+   return AltCoordList;
+ }
++
++static void
++initResCyclic(DhResP resP)
++{
++  DhResDefP defP;
++  DhResP prevResP, nextResP;
++  DhAtomP atomP, equivAtomP;
++  int i;
++
++  defP = resP->defP;
++
++  resP->neighLeftP = NULL;
++  resP->neighRightP = NULL;
++
++  resP->atomA = malloc(defP->atomNo * sizeof(*resP->atomA));
++  resP->bondA = malloc(defP->bondNo * sizeof(*resP->bondA));
++  resP->angleA = malloc(defP->angleNo * sizeof(*resP->angleA));
++
++  for (i = 0; i < defP->atomNo; i++)
++    initAtom(resP->atomA + i, resP);
++
++  for (i = defP->firstBondI; i <= defP->lastBondI; i++)
++    initBond(resP->bondA + i, resP);
++
++  for (i = 0; i < defP->angleNo; i++) {
++    resP->angleA[i].resP = resP;
++    resP->angleA[i].val = 0.0f;
++    resP->angleA[i].minVal = DH_ANGLE_MIN;
++    resP->angleA[i].maxVal = DH_ANGLE_MAX;
++    resP->angleA[i].changed = FALSE;
++    resP->angleA[i].propTab = PropNewTab(FALSE);
++  }
++
++  resP->propTab = PropNewTab(FALSE);
++
++  for (i = 0; i < EQUIV_NO; i++) {
++    resP->equivI[i] = -1;
++  }
++
++  prevResP = ListPrev(resP->molP->resL, resP);
++  nextResP = ListNext(resP->molP->resL, resP);
++}
++
++DhResP
++DhResNewCyclic(DhMolP molP, DhResDefP defP, DhSeqPos pos)
++{
++  struct DhResS resS;
++  DhResP resP, prevResP, nextResP;
++
++  resS.molP = molP;
++  resS.defP = defP;
++
++  if (pos == SP_FIRST) {
++    nextResP = ListFirst(molP->resL);
++    if (nextResP == NULL)
++      resS.num = 1;
++    else
++      resS.num = nextResP->num - 1;
++
++    resP = ListInsertFirst(molP->resL, &resS);
++  } else {
++    prevResP = ListLast(molP->resL);
++    if (prevResP == NULL)
++      resS.num = 1;
++    else
++      resS.num = prevResP->num + 1;
++
++    resP = ListInsertLast(molP->resL, &resS);
++  }
++
++  initResCyclic(resP);
++
++  return resP;
++}
++
++DhResP
++DhResPrev(DhResP resP)
++{
++  return (DhResP) ListPrev(resP->molP->resL, resP);
++}
++
++DhResP
++DhResNext(DhResP resP)
++{
++  return (DhResP) ListNext(resP->molP->resL, resP);
++}
++
++DhResP
++DhResFirst(DhMolP molP)
++{
++  return (DhResP) ListFirst(molP->resL);
++}
++
++DhResP
++DhResLast(DhMolP molP)
++{
++  return (DhResP) ListLast(molP->resL);
++}
+diff --git a/src/iodev/IODev.c b/src/iodev/IODev.c
+index aa4f9a7..9c04ce8 100644
+--- a/src/iodev/IODev.c
++++ b/src/iodev/IODev.c
+@@ -44,6 +44,7 @@ extern void IOMotifGLDSetDev(void);
+ #endif
+ #ifdef IO_DEV_MOTIF_OGL
+ extern void IOMotifOGLSetDev(void);
++extern void IOMotifOGLDSetDev(void);
+ #endif
+ #ifdef IO_DEV_MOTIF_XGL
+ extern void IOMotifXGLSetDev(void);
+@@ -75,6 +76,7 @@ static DevListEntry DevList[] = {
+ #endif
+ #ifdef IO_DEV_MOTIF_OGL
+   {"Motif/OpenGL", IOMotifOGLSetDev},
++  {"Motif/OpenGLD", IOMotifOGLDSetDev},
+ #endif
+ #ifdef IO_DEV_MOTIF_XGL
+   {"Motif/XGL", IOMotifXGLSetDev},
+diff --git a/src/main/MolInit.c b/src/main/MolInit.c
+index a7c467a..fccccd3 100644
+--- a/src/main/MolInit.c
++++ b/src/main/MolInit.c
+@@ -313,8 +313,9 @@ MolInit(char *defaultDev, int argc, char *argv[], char *macroName)
+ 
+   SgSetDoubleBuffer(TRUE);
+ 
+-  ProgDirSet("MOLMOLHOME", "/usr/molmol");
++  ProgDirSet("MOLMOLHOME", argv[0]);
+   SetupSetDir("setup");
++  CurrDirSet(getenv("HOME"));
+-  UserFileSetDir(CurrDirGet(), "molmol");
++  UserFileSetDir(CurrDirGet(), ".molmol");
+   GFileSetErrorHandler(handleFileError);
+ 
+@@ -326,7 +327,7 @@ MolInit(char *defaultDev, int argc, char *argv[], char *macroName)
+   IOSetErrorHandler(handleIOError);
+ 
+   PuSetTextField(PU_TF_TITLE,
+-      "MOLMOL - MOLecule analysis and MOLecule display");
++      "MOLMOL - MOLecule analysis and MOLecule display - JCU V1.0.8");
+ 
+   gf = UserFileOpenRead("par");
+   if (gf != NULL) {
+diff --git a/src/main/MolMol.c b/src/main/MolMol.c
+index 6f825e8..902b50a 100644
+--- a/src/main/MolMol.c
++++ b/src/main/MolMol.c
+@@ -30,5 +30,5 @@
+ int
+ main(int argc, char *argv[])
+ {
+-  return MolInit("Motif/X11", argc, argv, NULL);
++  return MolInit("Motif/OpenGL", argc, argv, NULL);
+ }
+diff --git a/src/motif/MotifDial.c b/src/motif/MotifDial.c
+index 6e3bfd7..8fe0c5a 100644
+--- a/src/motif/MotifDial.c
++++ b/src/motif/MotifDial.c
+@@ -1115,26 +1115,24 @@ PuMotifSetStr(PuGizmo gizmo, PuStrChoice choice, char *val)
+ void
+ PuMotifSetColor(PuGizmo gizmo, float r, float g, float b)
+ {
+-  Display *dpy;
+-  int screen;
+-  Pixel pix;
+-  XColor col;
++  Display *display;
++  Pixel pixel;
++  XColor color;
++  Colormap colormap;
+ 
+-  dpy = XtDisplay(gizmo);
+-  screen = DefaultScreen(dpy);
+-  XtVaGetValues(gizmo,
+-      XmNbackground, &pix,
+-      NULL);
++  display = XtDisplay(gizmo);
++  XtVaGetValues(gizmo, XmNbackground, &pixel, NULL);
++  colormap = DefaultColormapOfScreen(XtScreen(gizmo));
+ 
+-  if (pix == BlackPixel(dpy, screen))
+-    return;
++  color.pixel = pixel;
++  color.red = FLOAT2SHORT(r);
++  color.green = FLOAT2SHORT(g);
++  color.blue = FLOAT2SHORT(b);
++  color.flags = DoRed | DoGreen | DoBlue;
+ 
+-  col.pixel = pix;
+-  col.red = FLOAT2SHORT(r);
+-  col.green = FLOAT2SHORT(g);
+-  col.blue = FLOAT2SHORT(b);
+-  col.flags = DoRed | DoGreen | DoBlue;
+-  XStoreColor(dpy, DefaultColormap(dpy, screen), &col);
++  XFreeColors(display, colormap, &pixel, 1, 0);
++  XAllocColor(display, colormap, &color);
++  XtVaSetValues(gizmo, XmNbackground, color.pixel, NULL);
+ }
+ 
+ void
+diff --git a/src/motogl/MotOGLDump.c b/src/motogl/MotOGLDump.c
+index 54a4222..3bc25cc 100644
+--- a/src/motogl/MotOGLDump.c
++++ b/src/motogl/MotOGLDump.c
+@@ -302,7 +302,7 @@ writeImg(void)
+     TIFFSetField(tif, TIFFTAG_BITSPERSAMPLE, 8);
+ 
+     if (Quality < 100)
+-      TIFFSetField(tif, TIFFTAG_COMPRESSION, COMPRESSION_PACKBITS);
++      TIFFSetField(tif, TIFFTAG_COMPRESSION, COMPRESSION_LZW);
+     else
+       TIFFSetField(tif, TIFFTAG_COMPRESSION, COMPRESSION_NONE);
+ 
+diff --git a/src/os/CurrDir.c b/src/os/CurrDir.c
+index edee778..7d2b242 100644
+--- a/src/os/CurrDir.c
++++ b/src/os/CurrDir.c
+@@ -26,9 +26,9 @@
+ #include <curr_dir.h>
+ 
+ #include <stdlib.h>
+-#ifdef WIN32
+-#include <direct.h>
+ #include <string.h>
++#ifdef WIN32
++#include <direct.h>
+ #else
+ #include <unistd.h>
+ #include <errno.h>
+@@ -36,43 +36,15 @@
+ 
+ static char *CurrDir = NULL;
+ 
++void
++CurrDirSet(char *dir)
++{
++  CurrDir = malloc(strlen(dir) + 1);
++  (void) strcpy(CurrDir, dir);
++}
++
+ char *
+ CurrDirGet(void)
+ {
+-#ifdef WIN32
+-  int len, i;
+-#else
+-  int size = 10;
+-#endif
+-
+-  if (CurrDir != NULL)
+-    return CurrDir;
+-
+-#ifdef WIN32
+-  CurrDir = _getcwd(NULL, 0);
+-  if (CurrDir != NULL) {
+-    len = strlen(CurrDir);
+-    for (i = 0; i < len; i++)
+-      if (CurrDir[i] == '\\')
+-        CurrDir[i] = '/';
+-    return CurrDir;
+-  }
+-#else
+-  CurrDir = malloc(size);
+-  for (;;) {
+-    if (getcwd(CurrDir, size) != NULL)
+-      return CurrDir;
+-    if (errno != ERANGE)
+-      break;
+-    size *= 2;
+-    CurrDir = realloc(CurrDir, size);
+-  }
+-#endif
+-
+-  /* cannot get current directory, return root directory */
+-  CurrDir = realloc(CurrDir, 2);
+-  CurrDir[0] = '/';
+-  CurrDir[1] = '\0';
+-
+   return CurrDir;
+ }
+diff --git a/src/os/ProgDir.c b/src/os/ProgDir.c
+index 7abb08d..79ede45 100644
+--- a/src/os/ProgDir.c
++++ b/src/os/ProgDir.c
+@@ -45,10 +45,6 @@ ProgDirSet(char *envVar, char *defVal)
+   dir = getenv(envVar);
+   if (dir == NULL) {
+     len = GetModuleFileName(NULL, exePath, sizeof(exePath));
+-    if (len == 0) {
+-      ProgDir = defVal;
+-      return;
+-    }
+     len--;
+     while (len > 0 && exePath[len] != '\\')
+       len--;
+@@ -65,9 +61,24 @@ ProgDirSet(char *envVar, char *defVal)
+     if (ProgDir[i] == '\\')
+       ProgDir[i] = '/';
+ #else
+-  ProgDir = getenv(envVar);
+-  if (ProgDir == NULL)
+-    ProgDir = defVal;
++  char *dir;
++  char *exePath;
++  int len;
++  dir = getenv(envVar);
++  if (dir == NULL) {
++    exePath = defVal;
++    len = strlen(exePath);
++    len--;
++    while (len > 0 && exePath[len] != '/')
++      len--;
++    dir = exePath;
++  } else {
++    len = strlen(dir);
++  }
++
++  ProgDir = malloc(len + 1);
++  (void) strncpy(ProgDir, dir, len);
++
+ #endif
+ }
+ 
+diff --git a/src/win/WinDial.c b/src/win/WinDial.c
+index 61d6432..e880559 100644
+--- a/src/win/WinDial.c
++++ b/src/win/WinDial.c
+@@ -1072,148 +1072,143 @@ dialProc(HWND w, UINT msgKind, WPARAM wParam, LPARAM lParam)
+       childP = (GizmoInfo *) GetWindowLong(childW, GWL_USERDATA);
+ 
+       switch (notifyCode) {
+-	case BN_CLICKED:
+-	  if (childId < infoP->u.dial.childNo) {
++        case BN_CLICKED:
++          if (childId < infoP->u.dial.childNo) {
+             childP = (GizmoInfo *) GetWindowLong(GetFocus(), GWL_USERDATA);
+-	    if (childP->type == GIZMO_TOGGLE) {
+-	      boxP = childP->u.toggle.boxP;
+-	      if (boxP->type == GIZMO_RADIO_BOX) {
+-		for (i = 0; i < infoP->u.dial.childNo; i++) {
+-		  cP = infoP->u.dial.childPA[i];
+-		  if (cP->type != GIZMO_TOGGLE)
+-		    continue;
+-		  if (cP->u.toggle.boxP != boxP)
+-		    continue;
+-	          onOff = SendMessage(cP->w, BM_GETCHECK, 0, 0);
+-		  if (onOff && cP != childP) {
+-		    cP->u.toggle.onOff = FALSE;
+-		    SendMessage(cP->w, BM_SETCHECK, FALSE, 0);
+-	            selectStruc.onOff = FALSE;
+-	            callCB(boxP, PU_CT_SELECT, cP->name, &selectStruc);
+-		    break;
+-		  }
+-		}
+-		if (cP != childP) {
+-		  childP->u.toggle.onOff = TRUE;
+-		  SendMessage(childP->w, BM_SETCHECK, TRUE, 0);
+-	          selectStruc.onOff = TRUE;
+-	          callCB(boxP, PU_CT_SELECT, childP->name, &selectStruc);
+-		}
+-	      } else {
+-	        onOff = ! SendMessage(childP->w, BM_GETCHECK, 0, 0);
+-		childP->u.toggle.onOff = onOff;
+-		SendMessage(childP->w, BM_SETCHECK, onOff, 0);
+-	        selectStruc.onOff = onOff;
+-	        callCB(boxP, PU_CT_SELECT, childP->name, &selectStruc);
+-	      }
+-	    } else {
+-	      callCB(childP, PU_CT_ACTIVATE, childP->name, NULL);
+-	      if (childP->type == GIZMO_TEXT_FIELD &&
+-		  childP->u.text.historySize > 0)
+-		childP->u.text.firstMod = TRUE;
+-	    }
+-	  } else {
+-	    buttonI = childId - infoP->u.dial.childNo;
+-	    callCB(infoP, BUTTON_FIRST + buttonI, ButtonLabelA[buttonI], NULL);
+-	  }
++            if (childP->type == GIZMO_TOGGLE) {
++              boxP = childP->u.toggle.boxP;
++              if (boxP->type == GIZMO_RADIO_BOX) {
++                for (i = 0; i < infoP->u.dial.childNo; i++) {
++                  cP = infoP->u.dial.childPA[i];
++                  if (cP->type != GIZMO_TOGGLE) continue;
++                  if (cP->u.toggle.boxP != boxP)  continue;
++                  onOff = SendMessage(cP->w, BM_GETCHECK, 0, 0);
++                  if (onOff && cP != childP) {
++                    cP->u.toggle.onOff = FALSE;
++                    SendMessage(cP->w, BM_SETCHECK, FALSE, 0);
++                    selectStruc.onOff = FALSE;
++                    callCB(boxP, PU_CT_SELECT, cP->name, &selectStruc);
++                    break;
++                  }
++                }
++                if (cP != childP) {
++                  childP->u.toggle.onOff = TRUE;
++                  SendMessage(childP->w, BM_SETCHECK, TRUE, 0);
++                  selectStruc.onOff = TRUE;
++                  callCB(boxP, PU_CT_SELECT, childP->name, &selectStruc);
++                }
++              } else {
++                onOff = ! SendMessage(childP->w, BM_GETCHECK, 0, 0);
++                childP->u.toggle.onOff = onOff;
++                SendMessage(childP->w, BM_SETCHECK, onOff, 0);
++                selectStruc.onOff = onOff;
++                callCB(boxP, PU_CT_SELECT, childP->name, &selectStruc);
++              }
++            } else {
++              callCB(childP, PU_CT_ACTIVATE, childP->name, NULL);
++              if (childP->type == GIZMO_TEXT_FIELD && childP->u.text.historySize > 0) childP->u.text.firstMod = TRUE;
++            }
++          } else {
++            buttonI = childId - infoP->u.dial.childNo;
++            callCB(infoP, BUTTON_FIRST + buttonI, ButtonLabelA[buttonI], NULL);
++          }
+           return TRUE;
+-	case EN_UPDATE:
+-	  textEdit(childP);
+-	  return TRUE;
+-	case LBN_SELCHANGE:
+-	  for (i = 0; i < childP->u.list.entryNo; i++)
+-	    if (SendMessage(childW, LB_GETSEL, i, 0) !=
+-	        childP->u.list.entryA[i].onOff)
+-	      lastI = i;
+ 
+-	  for (i = 0; i < childP->u.list.entryNo; i++) {
+-	    onOff = SendMessage(childW, LB_GETSEL, i, 0);
+-	    if (onOff != childP->u.list.entryA[i].onOff) {
+-	      if (! childP->u.list.autoDesel)
++        case EN_UPDATE:
++          textEdit(childP);
++          return TRUE;
++
++        case LBN_SELCHANGE:
++          for (i = 0; i < childP->u.list.entryNo; i++)
++            if (SendMessage(childW, LB_GETSEL, i, 0) != childP->u.list.entryA[i].onOff)
++              lastI = i;
++
++          for (i = 0; i < childP->u.list.entryNo; i++) {
++            onOff = SendMessage(childW, LB_GETSEL, i, 0);
++            if (onOff != childP->u.list.entryA[i].onOff) {
++              if (! childP->u.list.autoDesel)
+                 childP->u.list.entryA[i].onOff = onOff;
+-	      selectStruc.onOff = onOff;
+-	      selectStruc.last = (i == lastI);
+-	      callCB(childP, PU_CT_SELECT,
+-		  childP->u.list.entryA[i].str, &selectStruc);
+-	    }
+-	  }
+-
+-	  if (childP->u.list.autoDesel)
+-	    SendMessage(childW, LB_SETCURSEL, -1, 0);
+-
+-	  return TRUE;
++              selectStruc.onOff = onOff;
++              selectStruc.last = (i == lastI);
++              callCB(childP, PU_CT_SELECT,
++              childP->u.list.entryA[i].str, &selectStruc);
++            }
++          }
++        if (childP->u.list.autoDesel)
++          SendMessage(childW, LB_SETCURSEL, -1, 0);
++        return TRUE;
+       }
++    break;
+ 
+-      break;
+-    case WM_VSCROLL:
+-      childW = (HWND) lParam;
+-      childP = (GizmoInfo *) GetWindowLong(childW, GWL_USERDATA);
+-      scrollCode = LOWORD(wParam);
++      case WM_VSCROLL:
++        childW = (HWND) lParam;
++        childP = (GizmoInfo *) GetWindowLong(childW, GWL_USERDATA);
++        scrollCode = LOWORD(wParam);
+ 
+-      if (scrollCode == SB_LINEUP) {
+-	upHistory(childP->u.scroll.textP);
+-      } else if (scrollCode == SB_LINEDOWN) {
+-	downHistory(childP->u.scroll.textP);
+-      } else {
+-	return FALSE;
+-      }
+-      return TRUE;
+-    case WM_HSCROLL:
+-      scrollCode = LOWORD(wParam);
+-      if (scrollCode != SB_THUMBPOSITION && scrollCode != SB_THUMBTRACK)
+-	return FALSE;
++        if (scrollCode == SB_LINEUP) {
++          upHistory(childP->u.scroll.textP);
++        } else if (scrollCode == SB_LINEDOWN) {
++          downHistory(childP->u.scroll.textP);
++        } else {
++          return FALSE;
++        }
++        return TRUE;
++      case WM_HSCROLL:
++        scrollCode = LOWORD(wParam);
++        if (scrollCode != SB_THUMBPOSITION && scrollCode != SB_THUMBTRACK)
++          return FALSE;
+ 
+-      scrollPos = (int)(short)HIWORD(wParam);
+-      childW = (HWND) lParam;
+-      childP = (GizmoInfo *) GetWindowLong(childW, GWL_USERDATA);
++        scrollPos = (int)(short)HIWORD(wParam);
++        childW = (HWND) lParam;
++        childP = (GizmoInfo *) GetWindowLong(childW, GWL_USERDATA);
+ 
+-      floatStruc.oldVal = childP->u.slider.val;
+-      childP->u.slider.val = scrollPos / childP->u.slider.factor;
+-      SetScrollPos(childW, SB_CTL,
+-	  (int) (childP->u.slider.val * childP->u.slider.factor),
+-	  TRUE);
++        floatStruc.oldVal = childP->u.slider.val;
++        childP->u.slider.val = scrollPos / childP->u.slider.factor;
++        SetScrollPos(childW, SB_CTL,
++        (int) (childP->u.slider.val * childP->u.slider.factor), TRUE);
+ 
+-      if (childP->u.slider.valuatorCB == NULL) {
+-	floatStruc.newVal = childP->u.slider.val;
+-	callCB(childP, PU_CT_MODIFY, childP->name, &floatStruc);
+-      } else {
+-        valStruc.act = PU_MA_ACTIVATE;
+-        valStruc.name = childP->name;
+-        valStruc.val = childP->u.slider.val;
+-        childP->u.slider.valuatorCB(childP, childP->u.slider.clientData, &valStruc);
+-      }
++        if (childP->u.slider.valuatorCB == NULL) {
++          floatStruc.newVal = childP->u.slider.val;
++          callCB(childP, PU_CT_MODIFY, childP->name, &floatStruc);
++        } else {
++          valStruc.act = PU_MA_ACTIVATE;
++          valStruc.name = childP->name;
++          valStruc.val = childP->u.slider.val;
++          childP->u.slider.valuatorCB(childP, childP->u.slider.clientData, &valStruc);
++        }
++        return TRUE;
+ 
+-      return TRUE;
+-    case WM_PAINT:
+-      for (childId = 0; childId < infoP->u.dial.childNo; childId++) {
+-        childP = infoP->u.dial.childPA[childId];
+-	if (childP->type == GIZMO_COLOR_FIELD)
+-	  paintColor(childP->w,
+-	      childP->u.color.r, childP->u.color.g, childP->u.color.b);
+-      }
+-      break;
+-    case WM_MOVE:
+-      if (infoP->u.dial.outside) {
+-	WinPlaceChanged(infoP->w);
+-	return TRUE;
+-      }
+-      break;
+-    case WM_CLOSE:
+-      buttonNo = 0;
+-      for (i = 0; i < BUTTON_NO; i++)
+-        if (infoP->u.dial.buttonSwitchA[i])
+-	  buttonNo++;
+-      if (buttonNo == 0)
+-	ShowWindow(infoP->w, SW_HIDE);
+-      return TRUE;
+-    case WM_DESTROY:
+-      WinRemoveDialog(w);
+-      for (childId = 0; childId < infoP->u.dial.childNo; childId++)
+-        freeInfo(infoP->u.dial.childPA[childId]);
+-      freeInfo(infoP);
+-      return TRUE;
+-  }
++      case WM_PAINT:
++        for (childId = 0; childId < infoP->u.dial.childNo; childId++) {
++          childP = infoP->u.dial.childPA[childId];
++          if (childP->type == GIZMO_COLOR_FIELD)
++            paintColor(childP->w,
++            childP->u.color.r, childP->u.color.g, childP->u.color.b);
++        }
++        break;
+ 
++      case WM_MOVE:
++        if (infoP->u.dial.outside) {
++          WinPlaceChanged(infoP->w);
++          return TRUE;
++        }
++        break;
++      case WM_CLOSE:
++        buttonNo = 0;
++        for (i = 0; i < BUTTON_NO; i++) {
++          if (infoP->u.dial.buttonSwitchA[i]) buttonNo++;
++            if (buttonNo == 0) {
++              ShowWindow(infoP->w, SW_HIDE);
++          }
++        }
++        return TRUE;
++      case WM_DESTROY:
++        WinRemoveDialog(w);
++        for (childId = 0; childId < infoP->u.dial.childNo; childId++)
++          freeInfo(infoP->u.dial.childPA[childId]);
++        freeInfo(infoP);
++        return TRUE;
++      }
+   return FALSE;
+ }
+ 
+diff --git a/src/winogl/WinOGLDump.c b/src/winogl/WinOGLDump.c
+index 0a7d61a..a8ce850 100644
+--- a/src/winogl/WinOGLDump.c
++++ b/src/winogl/WinOGLDump.c
+@@ -44,6 +44,7 @@
+ #endif
+ #ifdef PNG_SUPPORT
+ #include <png.h>
++#include <pngpriv.h>
+ #endif
+ 
+ #include "winogl_int.h"
+@@ -251,7 +252,7 @@ static void
+ pngErrHand(png_structp pngStrucP, char *errMsg)
+ {
+   IORaiseError(errMsg);
+-  longjmp(pngStrucP->jmpbuf, 1);
++  longjmp(pngStrucP->longjmp_buffer, 1);
+ }
+ #endif
+ 
+@@ -314,7 +315,7 @@ writeImg(void)
+     TIFFSetField(tif, TIFFTAG_BITSPERSAMPLE, 8);
+ 
+     if (Quality < 100)
+-      TIFFSetField(tif, TIFFTAG_COMPRESSION, COMPRESSION_PACKBITS);
++      TIFFSetField(tif, TIFFTAG_COMPRESSION, COMPRESSION_LZW);
+     else
+       TIFFSetField(tif, TIFFTAG_COMPRESSION, COMPRESSION_NONE);
+ 
+@@ -369,7 +370,7 @@ writeImg(void)
+       return IO_RES_ERR;
+     }
+ 
+-    if (setjmp(pngStrucP->jmpbuf)) {
++    if (setjmp(pngStrucP->longjmp_buffer)) {
+       if (cBuf != NULL)
+ 	free(cBuf);
+       if (fBuf != NULL)

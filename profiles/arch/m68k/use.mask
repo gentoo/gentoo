@@ -1,0 +1,97 @@
+# Unmask the flag which corresponds to ARCH.
+-m68k
+
+hardened
+
+# Paul de Vrieze <pauldv@gentoo.org>
+# There is no java in this profile (if there is it must be available). Without
+# this repoman will fail on apps like sys-libs/db
+java
+
+# see email to gentoo-dev with subject "use.mask and PHP5's crazy IUSE"
+# Dated Sat, 31 Jul 2004 14:49:28 -0700, from robbat2@gentoo.org
+# all of these are binary-only, and not presently available on this
+# architecture.
+php
+djbfft
+qdbm
+mzscheme
+
+emacs
+xemacs
+
+gnome-keyring
+afs
+tcl
+tk
+tcltk
+ldap
+slang
+diet
+gtk
+qt4
+mono
+python
+cairo
+svg
+X
+crypt
+mysql
+samba
+dbus
+xpm
+ruby
+ocaml
+guile
+lua
+djvu
+nss
+chicken
+diet
+emf
+fusion
+pike
+R
+octave
+bluetooth
+autotrace
+lqr
+policykit
+bash-completion
+latex
+nettle
+systemd
+tk
+clang
+
+# USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
+# Bug #184563, 18 Sep 2007 
+# Robin H. Johnson <robbat2@gentoo.org>
+audit
+
+# Masking since dev-db/sqlite is masked
+sqlite
+
+# Masking these globally, since we don't have X
+gnome
+gnome-keyring
+pango
+
+# Masking since net-dns/avahi and net-misc/mDNSResponder are masked
+avahi
+zeroconf
+
+# Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)
+# libdlm and cman are not keyworded
+cman
+clvm
+
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
+# virtual/opencl is not keyworded
+opencl
+
+# Unmask once sys-libs/libunwind gets ported & keyworded.
+unwind
+
+# sys-libs/libseccomp has not been ported to this arch yet #524148
+seccomp

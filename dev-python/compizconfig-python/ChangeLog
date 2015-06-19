@@ -1,0 +1,149 @@
+# ChangeLog for dev-python/compizconfig-python
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/compizconfig-python/ChangeLog,v 1.31 2015/04/08 08:05:02 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org>
+  compizconfig-python-0.8.4-r5.ebuild:
+  Drop old Python implementations
+
+  25 Aug 2013; Sergey Popov <pinkbyte@gentoo.org>
+  -compizconfig-python-0.8.4-r4.ebuild, compizconfig-python-0.8.4-r5.ebuild:
+  Add missing REQUIRED_USE for python-r1 eclass, drop old revision
+
+*compizconfig-python-0.8.4-r5 (07 May 2013)
+
+  07 May 2013; Sergey Popov <pinkbyte@gentoo.org>
+  +compizconfig-python-0.8.4-r5.ebuild:
+  Revision bump: migrate to python-r1
+
+  10 Nov 2012; Sergey Popov <pinkbyte@gentoo.org>
+  compizconfig-python-0.8.4-r4.ebuild:
+  Restrict usage of jython wrt bug #442424. Thanks to Ian Whyman for reporting
+  this issue
+
+  19 Oct 2012; Patrick Lauer <patrick@gentoo.org>
+  compizconfig-python-0.8.4-r4.ebuild:
+  Restricting pypy
+
+  25 Sep 2012; Sergey Popov <pinkbyte@gentoo.org>
+  -compizconfig-python-0.8.4-r3.ebuild:
+  Drop old revision
+
+  30 Aug 2012; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Remove myself and proxy maintainer from maintainers
+
+*compizconfig-python-0.8.4-r4 (30 Aug 2012)
+
+  30 Aug 2012; Sergey Popov <pinkbyte@gentoo.org>
+  -compizconfig-python-0.8.4.ebuild, -compizconfig-python-0.8.4-r1.ebuild,
+  +compizconfig-python-0.8.4-r4.ebuild:
+  Add new EAPI4 revision, drop old
+
+  04 May 2012; Patrick Lauer <patrick@gentoo.org>
+  compizconfig-python-0.8.4-r3.ebuild:
+  Migrating dev-util/pkgconfig -> virtual/pkgconfig
+
+  20 Apr 2012; Naohiro Aota <naota@gentoo.org> metadata.xml:
+  Assign Pinkbyte as maintainer.
+
+*compizconfig-python-0.8.4-r3 (08 Sep 2010)
+
+  08 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -compizconfig-python-0.8.4-r2.ebuild,
+  +compizconfig-python-0.8.4-r3.ebuild:
+  Apply patch from #336491 to build with contrived eclasses.
+
+*compizconfig-python-0.8.4-r2 (04 Sep 2010)
+
+  04 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +compizconfig-python-0.8.4-r2.ebuild:
+  Disable static libraries (they are plugins anyway), remove .la files.
+
+  03 Apr 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  compizconfig-python-0.8.4-r1.ebuild:
+  Whitespace.
+
+  03 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  compizconfig-python-0.8.4-r1.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*compizconfig-python-0.8.4-r1 (03 Apr 2010)
+
+  03 Apr 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +compizconfig-python-0.8.4-r1.ebuild:
+  Replaced compiz ~ deps with >= deps to support the new compiz-0.8.6
+  release and to avoid future dep issues.
+  Did a revbump to avoid issues with installed packages.
+
+  20 Dec 2009; Romain Perier <mrpouet@gentoo.org>
+  -compizconfig-python-0.8.2.ebuild:
+  Clean up old version
+
+*compizconfig-python-0.8.4 (15 Oct 2009)
+
+  15 Oct 2009; Romain Perier <mrpouet@gentoo.org>
+  +compizconfig-python-0.8.4.ebuild:
+  Version bump.
+
+  05 Sep 2009; Patrick Lauer <patrick@gentoo.org>
+  -compizconfig-python-0.6.0.1.ebuild:
+  Remove old
+
+  25 Apr 2009; Brent Baude <ranger@gentoo.org>
+  compizconfig-python-0.8.2.ebuild:
+  Marking compizconfig-python-0.8.2 ~ppc for bug 246804
+
+  25 Apr 2009; Brent Baude <ranger@gentoo.org>
+  compizconfig-python-0.8.2.ebuild:
+  Marking compizconfig-python-0.8.2 ~ppc64 for bug 246804
+
+  11 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  -compizconfig-python-0.7.8.ebuild:
+  Removing old compiz 0.7.8 ebuilds - affected by bug 263678.
+
+*compizconfig-python-0.8.2 (03 Apr 2009)
+
+  03 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml, +compizconfig-python-0.8.2.ebuild:
+  Bumped compiz to the 0.8.2 release.
+
+  15 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  compizconfig-python-0.7.8.ebuild:
+  Removed the mirror restriction that was used for the overlay.
+
+  01 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Whitespace.
+
+  31 Oct 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Fixed the metadata.xml.
+
+  27 Oct 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  compizconfig-python-0.7.8.ebuild:
+  Removed the bug reporting warning that was copied from the desktop-effects
+  overlay by mistake.
+
+*compizconfig-python-0.7.8 (27 Oct 2008)
+
+  27 Oct 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml, +compizconfig-python-0.7.8.ebuild:
+  Added compiz-0.7.8 to the tree
+
+  30 Oct 2007; nixnut <nixnut@gentoo.org>
+  compizconfig-python-0.6.0.1.ebuild:
+  added ~ppc for mr_bones
+
+  25 Oct 2007; Olivier Crête <tester@gentoo.org>
+  compizconfig-python-0.6.0.1.ebuild:
+  Marked ~amd64
+
+  24 Oct 2007; Hanno Boeck <hanno@gentoo.org>
+  compizconfig-python-0.6.0.1.ebuild:
+  QA fixes.
+
+*compizconfig-python-0.6.0.1 (23 Oct 2007)
+
+  23 Oct 2007; Hanno Boeck <hanno@gentoo.org> +metadata.xml,
+  +compizconfig-python-0.6.0.1.ebuild:
+  Initial compiz-fusion commit, ebuild based on xeffects overlay.

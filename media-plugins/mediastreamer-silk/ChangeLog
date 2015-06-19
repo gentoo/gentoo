@@ -1,0 +1,65 @@
+# ChangeLog for media-plugins/mediastreamer-silk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/mediastreamer-silk/ChangeLog,v 1.16 2015/02/27 04:29:18 bircoph Exp $
+
+  27 Feb 2015; Andrew Savchenko <bircoph@gentoo.org>
+  mediastreamer-silk-0.0.1.ebuild:
+  Remove bindist from IUSE as well.
+
+  27 Feb 2015; Andrew Savchenko <bircoph@gentoo.org>
+  mediastreamer-silk-0.0.1.ebuild:
+  Fix bindist implementation, wrt bug 541464.
+
+  12 Nov 2014; Andrew Savchenko <bircoph@gentoo.org> metadata.xml:
+  Package is now directly maintained instead of proxy-maintaining.
+
+  27 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Has a proxy maintainer
+
+  27 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Voip herd is removed: http://article.gmane.org/gmane.linux.gentoo.devel/88434
+
+  10 Oct 2013; Julian Ospald <hasufell@gentoo.org>
+  mediastreamer-silk-0.0.1.ebuild:
+  add subslot deps
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org>
+  mediastreamer-silk-0.0.1.ebuild:
+  Stable for ppc64, wrt bug #464536
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org>
+  mediastreamer-silk-0.0.1.ebuild:
+  Stable for ppc, wrt bug #464536
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org>
+  mediastreamer-silk-0.0.1.ebuild:
+  Stable for amd64, wrt bug #464536
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org>
+  mediastreamer-silk-0.0.1.ebuild:
+  Stable for x86, wrt bug #464536
+
+  22 Jan 2013; Michał Górny <mgorny@gentoo.org> mediastreamer-silk-0.0.1.ebuild:
+  Fix mediastreamer dep wrt bug #453520.
+
+  19 Jan 2013; Ulrich Müller <ulm@gentoo.org> mediastreamer-silk-0.0.1.ebuild:
+  Fix LICENSE, bug 416205.
+
+  17 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  mediastreamer-silk-0.0.1.ebuild:
+  Add ~ppc64, wrt bug #443964
+
+  17 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  mediastreamer-silk-0.0.1.ebuild:
+  Add ~ppc, wrt bug #443964
+
+  16 Dec 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due retirement, #260683
+
+*mediastreamer-silk-0.0.1 (19 Nov 2012)
+
+  19 Nov 2012; Michał Górny <mgorny@gentoo.org>
+  +files/mediastreamer-silk-0.0.1-sdk.patch, +mediastreamer-silk-0.0.1.ebuild,
+  +metadata.xml:
+  Add Silk plugin wrt bug #416205. Thanks to Andrew Savchenko for his effort on
+  linphone ebuilds.

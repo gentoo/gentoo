@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/ipkungfu/files/ipkungfu.init,v 1.4 2006/03/02 02:41:23 morfic Exp $
+
+depend() {
+	need logger net
+}
+
+start () {
+	ebegin "Starting ipkungfu"
+	/usr/sbin/ipkungfu --init
+	eend $? "Failed to start ipkungfu"
+}
+
+stop() {
+	ebegin "Stopping ipkungfu"
+	/usr/sbin/ipkungfu --disable > /dev/null
+	eend $? "Failed to stop ipkungfu"
+}

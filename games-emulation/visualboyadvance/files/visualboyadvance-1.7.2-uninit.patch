@@ -1,0 +1,13 @@
+diff -ru /root/VisualBoyAdvance-1.7.2/src/gtk/window.cpp VisualBoyAdvance-1.7.2/src/gtk/window.cpp
+--- a/VisualBoyAdvance-1.7.2/src/gtk/window.cpp	2004-05-14 00:31:58.000000000 +1000
++++ b/VisualBoyAdvance-1.7.2/src/gtk/window.cpp	2007-03-17 14:57:22.000000000 -0500
+@@ -91,7 +91,8 @@
+   m_iFilterIBMin    (FirstFilterIB),
+   m_iFilterIBMax    (LastFilterIB),
+   m_iJoypadMin      (1),
+-  m_iJoypadMax      (4)
++  m_iJoypadMax      (4),
++  m_poKeymap        (NULL)
+ {
+   m_poXml            = _poXml;
+   m_poFileOpenDialog = NULL;

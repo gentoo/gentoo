@@ -1,0 +1,80 @@
+# ChangeLog for media-gfx/mandelbulber
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/mandelbulber/ChangeLog,v 1.12 2014/02/08 07:20:50 radhermit Exp $
+
+*mandelbulber-1.21.1 (08 Feb 2014)
+
+  08 Feb 2014; Tim Harder <radhermit@gentoo.org> +mandelbulber-1.21.1.ebuild,
+  +files/mandelbulber-1.21.1-qa.patch:
+  Version bump, install desktop file (bug #496042).
+
+  08 Apr 2013; Samuli Suominen <ssuominen@gentoo.org>
+  mandelbulber-1.12.1.ebuild,
+  +files/mandelbulber-1.12.1-memcpy_and_memset.patch:
+  Include string.h where required for memcpy() or memset() since it's no longer
+  implicitly pulled in by libpng since 1.6.0 wrt #464972 by Kacper Kowalik
+
+  22 Dec 2012; Kacper Kowalik <xarthisius@gentoo.org> metadata.xml:
+  Drop myself from metadata.xml
+
+*mandelbulber-1.12.1 (03 Aug 2012)
+
+  03 Aug 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  +mandelbulber-1.12.1.ebuild, -files/mandelbulber-1.10-qa.patch,
+  -mandelbulber-1.10.ebuild:
+  Version bump, drop old
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> mandelbulber-1.10.ebuild,
+  mandelbulber-1.11.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*mandelbulber-1.11 (17 Feb 2012)
+
+  17 Feb 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  +files/mandelbulber-1.11-qa.patch, +mandelbulber-1.11.ebuild,
+  -files/mandelbulber-1.08-qa.patch, -mandelbulber-1.08.ebuild:
+  Version bump, drop old
+
+*mandelbulber-1.10 (14 Jan 2012)
+
+  14 Jan 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  +files/mandelbulber-1.10-qa.patch, +mandelbulber-1.10.ebuild:
+  Version bump
+
+*mandelbulber-1.08 (04 Sep 2011)
+
+  04 Sep 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  -mandelbulber-1.00.ebuild, -files/mandelbulber-1.00-gcc46.patch,
+  -files/mandelbulber-1.00-qa.patch, -mandelbulber-1.05.ebuild,
+  -files/mandelbulber-1.05-overflow.patch, +mandelbulber-1.08.ebuild,
+  +files/mandelbulber-1.08-qa.patch:
+  Version bump wrt #380327 by Tim Harder <radhermit@gentoo.org>, drop old
+
+*mandelbulber-1.05 (16 Jul 2011)
+
+  16 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  +mandelbulber-1.05.ebuild, +files/mandelbulber-1.05-overflow.patch:
+  Version bump wrt #375317
+
+*mandelbulber-1.00 (27 Apr 2011)
+
+  27 Apr 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  -mandelbulber-0.97-r1.ebuild, -files/mandelbulber-0.97-qa.patch,
+  +mandelbulber-1.00.ebuild, +files/mandelbulber-1.00-gcc46.patch,
+  +files/mandelbulber-1.00-qa.patch:
+  Version bump wrt #365063 by Ondrej Filip <chytzkoi@seznam.cz>. Fixes building
+  with gcc 4.6. Drop old.
+
+*mandelbulber-0.97-r1 (30 Jan 2011)
+
+  30 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  -mandelbulber-0.97.ebuild, +mandelbulber-0.97-r1.ebuild, metadata.xml:
+  Skip versionator.eclass since it's not used, add eutils, fix dependencies,
+  remove pointless dodir. Add graphics herd. Thanks to Samuli for pointing all
+  of the above.
+
+*mandelbulber-0.97 (30 Jan 2011)
+
+  30 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  +mandelbulber-0.97.ebuild, +files/mandelbulber-0.97-qa.patch, +metadata.xml:
+  Initial import. Ebuild written by me.

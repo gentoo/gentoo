@@ -1,0 +1,58 @@
+# ChangeLog for dev-scheme/guile-cairo
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-scheme/guile-cairo/ChangeLog,v 1.13 2012/07/26 08:26:57 jlec Exp $
+
+*guile-cairo-1.9.91 (26 Jul 2012)
+
+  26 Jul 2012; Justin Lecher <jlec@gentoo.org> +guile-cairo-1.9.91.ebuild:
+  Version Bump
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> guile-cairo-1.4.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  12 Feb 2012; Justin Lecher <jlec@gentoo.org> -guile-cairo-1.3.90.ebuild:
+  Drop old
+
+  27 Jun 2010; <nixnut@gentoo.org> guile-cairo-1.4.0.ebuild:
+  ppc stable #317159
+
+  23 May 2010; Pacho Ramos <pacho@gentoo.org> guile-cairo-1.4.0.ebuild:
+  stable amd64, bug 314167
+
+  17 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  guile-cairo-1.4.0.ebuild:
+  x86 stable wrt bug #314167
+
+  08 Mar 2010; Sebastian Pipping <sping@gentoo.org>
+  guile-cairo-1.4.0.ebuild:
+  Add missing dependency dev-scheme/guile-lib (bug #305289)
+
+  12 Dec 2009; Ulrich Mueller <ulm@gentoo.org> guile-cairo-1.4.0.ebuild:
+  Disable -Werror and remove unnecessary inherit, bug 260890. Thanks to
+  vadimk and chiiph.
+
+  01 Jun 2009; Ferris McCormick <fmccor@gentoo.org>
+  guile-cairo-1.4.0.ebuild:
+  Add ~sparc for testing, part of Bug #272046.
+
+  04 Oct 2008; Matti Bickel <mabi@gentoo.org> guile-cairo-1.4.0.ebuild:
+  fix bug #206220
+
+  18 Aug 2008; Panagiotis Christopoulos <pchrist@gentoo.org>
+  guile-cairo-1.3.90.ebuild, guile-cairo-1.4.0.ebuild:
+  fix
+
+*guile-cairo-1.4.0 (09 Sep 2007)
+
+  09 Sep 2007; Marijn Schouten <hkBst@gentoo.org> metadata.xml,
+  +guile-cairo-1.4.0.ebuild:
+  bump, bug 191843
+
+*guile-cairo-1.3.90 (06 Jun 2007)
+
+  06 Jun 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/1.3.90-various-fixes-20070601.patch, +metadata.xml,
+  +guile-cairo-1.3.90.ebuild:
+  Add a Guile Scheme wrapper for the Cairo graphics library. Patch includes
+  fixes from upstream bzr.
+

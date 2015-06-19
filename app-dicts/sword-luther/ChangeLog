@@ -1,0 +1,18 @@
+# ChangeLog for app-dicts/sword-luther
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/sword-luther/ChangeLog,v 1.3 2014/01/05 23:34:40 creffett Exp $
+
+  05 Jan 2014; Chris Reffett <creffett@gentoo.org> -sword-luther-1.0.ebuild,
+  sword-luther-1.1.ebuild:
+  Remove old, EAPI bump
+
+*sword-luther-1.1 (16 May 2010)
+
+  16 May 2010; Steve Dibb <beandog@gentoo.org> +sword-luther-1.1.ebuild:
+  Version bump
+
+*sword-luther-1.0 (17 May 2008)
+
+  17 May 2008; Steve Dibb <beandog@gentoo.org> +metadata.xml,
+  +sword-luther-1.0.ebuild:
+  Initial commit

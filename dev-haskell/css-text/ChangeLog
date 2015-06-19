@@ -1,0 +1,27 @@
+# ChangeLog for dev-haskell/css-text
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/css-text/ChangeLog,v 1.6 2015/01/26 09:53:07 ago Exp $
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> css-text-0.1.2.1.ebuild:
+  Stable for x86, wrt bug #534956
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org> css-text-0.1.2.1.ebuild:
+  Stable for amd64, wrt bug #534956
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> css-text-0.1.1.ebuild,
+  css-text-0.1.2.1.ebuild:
+  Drop trailing '.' from description.
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*css-text-0.1.2.1 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org> +css-text-0.1.2.1.ebuild:
+  Bump css-text to 0.1.2.1
+
+*css-text-0.1.1 (20 Jun 2013)
+
+  20 Jun 2013; Alexander Vershilov <qnikst@gentoo.org> +css-text-0.1.1.ebuild,
+  +metadata.xml:
+  add new version due to #473858

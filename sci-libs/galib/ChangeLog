@@ -1,0 +1,59 @@
+# ChangeLog for sci-libs/galib
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/galib/ChangeLog,v 1.11 2012/09/05 19:00:51 jlec Exp $
+
+  05 Sep 2012; Justin Lecher <jlec@gentoo.org> galib-2.4.6.ebuild,
+  galib-2.4.7.ebuild, metadata.xml:
+  Correct license found by hanno and ulm, #434038
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> galib-2.4.7.ebuild,
+  metadata.xml:
+  keyword amd64-linux x86-linux
+
+  26 Jun 2011; Justin Lecher <jlec@gentoo.org> galib-2.4.6.ebuild,
+  galib-2.4.7.ebuild, metadata.xml:
+  Bumped EAPI
+
+*galib-2.4.7 (07 Jul 2008)
+
+  07 Jul 2008; Sébastien Fabbro <bicatali@gentoo.org> +galib-2.4.7.ebuild:
+  Version bumped and added doc, examples flags. Closing bug #230978
+
+  02 Jun 2007; Christoph Mende <angelos@gentoo.org> galib-2.4.6.ebuild:
+  Added ~amd64 for bug 178262
+
+  26 Sep 2006; Markus Dittrich <markusle@gentoo.org>
+  +files/galib-2.4.6-gcc4-gentoo.patch, galib-2.4.6.ebuild:
+  Fixed compile problems with gcc-4.x. Thanks much to Jeno I. Hajdu
+  <jeno.i.hajdu@gmail.com> for his patch. This fixes bug #149191.
+
+  30 Apr 2006; Markus Dittrich <markusle@gentoo.org>
+  +files/galib-2.4.6-makefile.patch, galib-2.4.6.ebuild:
+  Patched makefile to also install crucial std_stream.h header into
+  include directory. Thanks much to dongxu li <butdiene@yahoo.com>
+  for pointing this out. This fixes bug #131629.
+
+  21 Sep 2005; Patrick Kursawe <phosphan@gentoo.org>
+  -files/galib-2.4.5-gcc3.3.patch, -galib-2.4.5.ebuild, galib-2.4.6.ebuild:
+  2.4.6 stable for x86, cleanup
+
+*galib-2.4.6 (25 Apr 2005)
+
+  25 Apr 2005; Patrick Kursawe <phosphan@gentoo.org> +galib-2.4.6.ebuild:
+  Version bump, see bug 87602
+
+*galib-2.4.5 (28 Dec 2004)
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +files/galib-2.4.5-gcc3.3.patch, +galib-2.4.5.ebuild:
+  Moved from dev-libs/galib to sci-libs/galib.
+
+  27 May 2004; Patrick Kursawe <phosphan@gentoo.org> galib-2.4.5.ebuild,
+  files/galib-2.4.5-gcc3.3.patch:
+  Fixing bug #51821 (gcc 3.3 compilation problems)
+
+*galib-2.4.5 (16 Oct 2003)
+
+  16 Oct 2003; Patrick Kursawe <phosphan@gentoo.org> galib-2.4.5.ebuild,
+  metadata.xml:
+  Initial import, suggested in bug 26493

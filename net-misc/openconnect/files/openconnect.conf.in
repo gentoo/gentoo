@@ -1,0 +1,26 @@
+# Variables to configure vpn tunnels where "vpnname" is the name of your vpn tunnel:
+#
+# server_vpnname
+# password_vpnname
+# vpnopts_vpnname
+#
+# The tunnel will need to be started with a symbolic link to openconnect:
+#
+# ln -s /etc/init.d/openconnect /etc/init.d/openconnect.vpnname
+#
+# If you'd like to execute a script on preup, postup, predown and postdown of the vpn tunnel, you
+# need to create executable scripts in a directory with the same name as
+# the vpn tunnel (vpn0 can be replaced with the vpn name):
+#
+# mkdir /etc/openconnect/vpn0
+# cd /etc/openconnect/vpn0"
+# echo '#!/bin/sh' > preup.sh"
+# cp preup.sh predown.sh"
+# cp preup.sh postup.sh"
+# cp preup.sh postdown.sh"
+# chmod 755 /etc/openconnect/vpn0/*"
+
+server_vpn0="vpn.server.tld"
+password_vpn0="YOUR_PASSWORD"
+# Any OPENCONNECT options my go here (see openconnect --help)
+vpnopts_vpn0="-l --passwd-on-stdin --user=YOUR_USERNAME --script=/etc/openconnect/openconnect.sh"

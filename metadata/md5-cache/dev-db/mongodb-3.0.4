@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst preinst prepare pretend setup test
+DEPEND=app-arch/snappy >=dev-cpp/yaml-cpp-0.5.1 >=dev-libs/boost-1.50[threads(+)] >=dev-libs/libpcre-8.30[cxx] dev-libs/snowball-stemmer dev-util/google-perftools[-minimal] net-libs/libpcap sys-libs/zlib mms-agent? ( app-admin/mms-agent ) ssl? ( >=dev-libs/openssl-1.0.1g:= ) >=sys-devel/gcc-4.8.2:* sys-libs/ncurses sys-libs/readline kerberos? ( dev-libs/cyrus-sasl[kerberos] ) >=dev-util/scons-2.3.0 virtual/pkgconfig
+DESCRIPTION=A high-performance, open source, schema-free document-oriented database
+EAPI=5
+HOMEPAGE=http://www.mongodb.org
+IUSE=debug kerberos mms-agent ssl +tools
+KEYWORDS=~amd64 ~x86
+LICENSE=AGPL-3 Apache-2.0
+PDEPEND=tools? ( >=app-admin/mongo-tools-3.0.4 )
+RDEPEND=app-arch/snappy >=dev-cpp/yaml-cpp-0.5.1 >=dev-libs/boost-1.50[threads(+)] >=dev-libs/libpcre-8.30[cxx] dev-libs/snowball-stemmer dev-util/google-perftools[-minimal] net-libs/libpcap sys-libs/zlib mms-agent? ( app-admin/mms-agent ) ssl? ( >=dev-libs/openssl-1.0.1g:= )
+SLOT=0
+SRC_URI=http://downloads.mongodb.org/src/mongodb-src-r3.0.4.tar.gz
+_eclasses_=check-reqs	a7f404bfb16e0a996700c5d3ac4edad3	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	scons-utils	988e24b9e2e4642189b4e97c03e5ae71	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=f582e0fd587647d48896d2c418af2d36

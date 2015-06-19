@@ -1,0 +1,37 @@
+# ChangeLog for app-admin/conkyforecast
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/conkyforecast/ChangeLog,v 1.7 2015/06/09 08:38:38 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  12 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -conkyforecast-2.20.ebuild,
+  -conkyforecast-2.24.ebuild:
+  Remove old.
+
+*conkyforecast-2.24-r1 (14 Dec 2014)
+
+  14 Dec 2014; Michał Górny <mgorny@gentoo.org> +conkyforecast-2.24-r1.ebuild:
+  Convert to distutils-r1.
+
+*conkyforecast-2.24 (05 Jan 2012)
+
+  05 Jan 2012; Michael Weber <xmw@gentoo.org> -conkyforecast-2.12.ebuild,
+  +conkyforecast-2.24.ebuild:
+  Version bump (thanks Jesse, bug 397569), remove old version
+
+*conkyforecast-2.20 (27 Oct 2011)
+
+  27 Oct 2011; Michael Weber <xmw@gentoo.org> +conkyforecast-2.20.ebuild:
+  Version bump (thanks to Jesse for the hint, bug 388177)
+
+  01 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  conkyforecast-2.12.ebuild:
+  Fix deprecation warning. Use Python 2.
+
+*conkyforecast-2.12 (24 Aug 2010)
+
+  24 Aug 2010; Michael Weber (xmw) <xmw@gentoo.org>
+  +conkyforecast-2.12.ebuild, +metadata.xml:
+  Initial commit for conkyforecast. Fixes bug #255948, thanks to Hans Meier
+  for the report and Christopher Robin Elmersson for the initial ebuilds

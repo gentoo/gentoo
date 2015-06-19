@@ -1,0 +1,13 @@
+DEFINED_PHASES=-
+DEPEND=dev-lang/perl
+DESCRIPTION=Detects if the current machine is running in a virtual machine
+EAPI=5
+HOMEPAGE=http://people.redhat.com/~rjones/virt-what/
+IUSE=dmi
+KEYWORDS=amd64 hppa ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=app-shells/bash dmi? ( sys-apps/dmidecode )
+SLOT=0
+SRC_URI=http://people.redhat.com/~rjones/virt-what/files/virt-what-1.12.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=7143dff88efc862a8c3ca322b6a3f4c4

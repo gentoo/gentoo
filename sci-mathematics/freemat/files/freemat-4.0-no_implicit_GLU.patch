@@ -1,0 +1,14 @@
+error: 'gluProject' was not declared in this scope
+
+http://bugs.gentoo.org/402361
+
+--- libs/libGraphics/GLRenderEngine.cpp
++++ libs/libGraphics/GLRenderEngine.cpp
+@@ -20,6 +20,7 @@
+ #include <qimage.h>
+ #include <qpainter.h>
+ #include <QtOpenGL>
++#include <GL/glu.h>
+ #include <math.h>
+ #include "IEEEFP.hpp"
+ 

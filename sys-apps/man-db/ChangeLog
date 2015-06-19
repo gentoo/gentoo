@@ -1,0 +1,310 @@
+# ChangeLog for sys-apps/man-db
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/man-db/ChangeLog,v 1.79 2015/02/16 09:34:44 haubi Exp $
+
+  16 Feb 2015; Michael Haubenwallner <haubi@gentoo.org> man-db-2.7.1.ebuild:
+  Put systemdtmpfilesdir inside EPREFIX, bug#538634.
+
+  13 Jan 2015; Lars Wendler <polynomial-c@gentoo.org> man-db-2.6.6.ebuild,
+  man-db-2.6.7.1.ebuild, man-db-2.7.1.ebuild:
+  Fixed dependency on app-text/po4a as per bug #534224.
+
+*man-db-2.7.1 (22 Dec 2014)
+
+  22 Dec 2014; Lars Wendler <polynomial-c@gentoo.org> -man-db-2.6.0.2.ebuild,
+  -man-db-2.6.1.ebuild, -man-db-2.6.2.ebuild, -man-db-2.6.3.ebuild,
+  -man-db-2.6.3-r1.ebuild, -man-db-2.6.4.ebuild, -man-db-2.6.5.ebuild,
+  +man-db-2.7.1.ebuild, -files/man-db-2.6.0.2-flock.h.patch,
+  -files/man-db-2.6.1-no-gets.patch:
+  Version bump. Removed old.
+
+  02 Nov 2014; Sven Vermeulen <swift@gentoo.org> man-db-2.6.6.ebuild,
+  man-db-2.6.7.1.ebuild:
+  Remove sec-policy/selinux-* dependency from DEPEND but keep in RDEPEND (bug
+  #527698)
+
+  27 Oct 2014; Mike Frysinger <vapier@gentoo.org> man-db-2.6.6.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  11 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> man-db-2.6.6.ebuild:
+  sparc stable wrt bug #502916
+
+  11 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> man-db-2.6.6.ebuild:
+  ppc64 stable wrt bug #502916
+
+  11 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> man-db-2.6.6.ebuild:
+  ppc stable wrt bug #502916
+
+  11 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> man-db-2.6.6.ebuild:
+  alpha stable wrt bug #502916
+
+  11 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> man-db-2.6.6.ebuild:
+  x86 stable wrt bug #502916
+
+  13 May 2014; Akinori Hattori <hattya@gentoo.org> man-db-2.6.6.ebuild:
+  ia64 stable wrt bug #502916
+
+*man-db-2.6.7.1 (15 Apr 2014)
+
+  15 Apr 2014; Tim Harder <radhermit@gentoo.org> +man-db-2.6.7.1.ebuild:
+  Version bump.
+
+  26 Mar 2014; Chema Alonso <nimiux@gentoo.org> man-db-2.6.6.ebuild:
+  Stable for amd64 wrt bug #502916
+
+  16 Mar 2014; Markus Meier <maekke@gentoo.org> man-db-2.6.6.ebuild:
+  arm stable, bug #502916
+
+  13 Mar 2014; Jeroen Roovers <jer@gentoo.org> man-db-2.6.6.ebuild:
+  Stable for HPPA (bug #502916).
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> man-db-2.6.5.ebuild:
+  Stable for sparc, wrt bug #495924
+
+*man-db-2.6.6 (24 Jan 2014)
+
+  24 Jan 2014; Tim Harder <radhermit@gentoo.org> +man-db-2.6.6.ebuild:
+  Version bump.
+
+  20 Jan 2014; Agostino Sarubbo <ago@gentoo.org> man-db-2.6.5.ebuild:
+  Stable for ppc, wrt bug #495924
+
+  19 Jan 2014; Agostino Sarubbo <ago@gentoo.org> man-db-2.6.5.ebuild:
+  Stable for ppc64, wrt bug #495924
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> man-db-2.6.5.ebuild:
+  Stable for alpha, wrt bug #495924
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> man-db-2.6.5.ebuild:
+  Add arm64 love.
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> man-db-2.6.5.ebuild:
+  Add warning when USE flags are ambiguous #496150 by Sergey Popov.
+
+  16 Jan 2014; Mike Frysinger <vapier@gentoo.org> man-db-2.6.5.ebuild:
+  Mark m68k/s390/sh stable.
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> man-db-2.6.5.ebuild:
+  Stable for ia64, wrt bug #495924
+
+  31 Dec 2013; Markus Meier <maekke@gentoo.org> man-db-2.6.5.ebuild:
+  arm stable, bug #495924
+
+  29 Dec 2013; Sven Vermeulen <swift@gentoo.org> man-db-2.6.0.2.ebuild,
+  man-db-2.6.1.ebuild, man-db-2.6.2.ebuild, man-db-2.6.3.ebuild,
+  man-db-2.6.3-r1.ebuild, man-db-2.6.4.ebuild, man-db-2.6.5.ebuild:
+  Adding dependency on selinux-mandb if USE=selinux is set (bug #496158)
+
+  27 Dec 2013; Sergey Popov <pinkbyte@gentoo.org> man-db-2.6.3-r1.ebuild:
+  Drop s390/sh/m68k to unstable
+
+  27 Dec 2013; Sergey Popov <pinkbyte@gentoo.org> man-db-2.6.5.ebuild:
+  Stable on amd64 and x86, wrt bug #495924
+
+  26 Dec 2013; Jeroen Roovers <jer@gentoo.org> man-db-2.6.5.ebuild:
+  Stable for HPPA (bug #495924).
+
+  31 Aug 2013; Naohiro Aota <naota@gentoo.org> man-db-2.6.5.ebuild:
+  Use 0 instead of root group.
+
+*man-db-2.6.5 (09 Jul 2013)
+
+  09 Jul 2013; Tim Harder <radhermit@gentoo.org> +man-db-2.6.5.ebuild:
+  Version bump.
+
+*man-db-2.6.4 (24 Jun 2013)
+
+  24 Jun 2013; Tim Harder <radhermit@gentoo.org> +man-db-2.6.4.ebuild:
+  Version bump, add dep on app-text/po4a if nls is enabled (bug #451622).
+
+  27 Apr 2013; Mike Frysinger <vapier@gentoo.org> man-db-2.6.3-r1.ebuild:
+  Mark m68k stable #455026.
+
+  24 Feb 2013; Agostino Sarubbo <ago@gentoo.org> man-db-2.6.3-r1.ebuild:
+  Stable for sh, wrt bug #455026
+
+  21 Feb 2013; Zac Medico <zmedico@gentoo.org> man-db-2.6.3-r1.ebuild:
+  Add ~arm-linux and ~x86-linux keywords.
+
+  20 Feb 2013; Agostino Sarubbo <ago@gentoo.org> man-db-2.6.3-r1.ebuild:
+  Stable for s390, wrt bug #455026
+
+  10 Feb 2013; Agostino Sarubbo <ago@gentoo.org> man-db-2.6.3-r1.ebuild:
+  Stable for ppc64, wrt bug #455026
+
+  08 Feb 2013; Jeroen Roovers <jer@gentoo.org> man-db-2.6.3-r1.ebuild:
+  Stable for HPPA (bug #455026).
+
+  06 Feb 2013; Agostino Sarubbo <ago@gentoo.org> man-db-2.6.3-r1.ebuild:
+  Stable for sparc, wrt bug #455026
+
+  04 Feb 2013; Agostino Sarubbo <ago@gentoo.org> man-db-2.6.3-r1.ebuild:
+  Stable for alpha, wrt bug #455026
+
+  03 Feb 2013; Agostino Sarubbo <ago@gentoo.org> man-db-2.6.3-r1.ebuild:
+  Stable for ia64, wrt bug #455026
+
+  03 Feb 2013; Agostino Sarubbo <ago@gentoo.org> man-db-2.6.3-r1.ebuild:
+  Stable for arm, wrt bug #455026
+
+  03 Feb 2013; Agostino Sarubbo <ago@gentoo.org> man-db-2.6.3-r1.ebuild:
+  Stable for ppc, wrt bug #455026
+
+  03 Feb 2013; Agostino Sarubbo <ago@gentoo.org> man-db-2.6.3-r1.ebuild:
+  Stable for x86, wrt bug #455026
+
+  03 Feb 2013; Agostino Sarubbo <ago@gentoo.org> man-db-2.6.3-r1.ebuild:
+  Stable for amd64, wrt bug #455026
+
+  13 Jan 2013; Mike Frysinger <vapier@gentoo.org> man-db-2.6.3-r1.ebuild:
+  Reset permissions/owners on /var/cache/man if they are broken (like when
+  migrating from sys-apps/man) #447944 by Viacheslav Prisivko.
+
+*man-db-2.6.3-r1 (28 Oct 2012)
+
+  28 Oct 2012; Mike Frysinger <vapier@gentoo.org> +files/man-db.cron,
+  +man-db-2.6.3-r1.ebuild:
+  Install daily cronjob for building caches #289884 by C W Rose.
+
+*man-db-2.6.3 (19 Sep 2012)
+
+  19 Sep 2012; Tim Harder <radhermit@gentoo.org> +man-db-2.6.3.ebuild:
+  Version bump.
+
+*man-db-2.6.2 (24 Jul 2012)
+
+  24 Jul 2012; Mike Frysinger <vapier@gentoo.org> +man-db-2.6.2.ebuild:
+  Version bump.
+
+  24 Jul 2012; Mike Frysinger <vapier@gentoo.org> man-db-2.6.1.ebuild,
+  +files/man-db-2.6.1-no-gets.patch:
+  Fix building with glibc-2.16+ #427252 by Oschtan.
+
+  24 May 2012; Mike Frysinger <vapier@gentoo.org> man-db-2.6.0.2.ebuild,
+  man-db-2.6.1.ebuild:
+  Inherit user for enewuser/etc...
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> man-db-2.6.0.2.ebuild,
+  man-db-2.6.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Mar 2012; Tim Harder <radhermit@gentoo.org> -man-db-2.5.9.ebuild:
+  Remove old.
+
+*man-db-2.6.1 (23 Mar 2012)
+
+  23 Mar 2012; Tim Harder <radhermit@gentoo.org> +man-db-2.6.1.ebuild:
+  Version bump (bug #404241).
+
+  01 Dec 2011; Mike Frysinger <vapier@gentoo.org> man-db-2.6.0.2.ebuild:
+  Pull in pkg-config for building #392733 by Nikoli.
+
+  27 Nov 2011; Mike Frysinger <vapier@gentoo.org> man-db-2.6.0.2.ebuild:
+  Drop autotools-utils, fix up SRC_URI mirror, add USE=zlib, and touch up
+  style.
+
+  09 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> man-db-2.6.0.2.ebuild:
+  Marked ~ppc64 wrt #371687
+
+  09 Jul 2011; Raúl Porcel <armin76@gentoo.org> man-db-2.6.0.2.ebuild:
+  Add ~alpha/~ia64/~m68k/~s390/~sh/~sparc wrt #372785
+
+  23 Jun 2011; Brent Baude <ranger@gentoo.org> man-db-2.6.0.2.ebuild:
+  Marking man-db-2.6.0.2 ~ppc for bug 371687
+
+  19 Jun 2011; Markus Meier <maekke@gentoo.org> man-db-2.6.0.2.ebuild:
+  add ~arm, bug #371687
+
+  16 Jun 2011; Jeroen Roovers <jer@gentoo.org> man-db-2.6.0.2.ebuild,
+  +files/man-db-2.6.0.2-flock.h.patch:
+  Fix building with USE=-gdbm by Maciej Mrozowski.
+
+  15 Jun 2011; Matt Turner <mattst88@gentoo.org> man-db-2.6.0.2.ebuild:
+  Added ~mips, bug 371687
+
+  15 Jun 2011; Jeroen Roovers <jer@gentoo.org> man-db-2.6.0.2.ebuild:
+  Marked ~hppa (bug #371687).
+
+*man-db-2.6.0.2 (15 Jun 2011)
+
+  15 Jun 2011; Jeroen Roovers <jer@gentoo.org> -man-db-2.5.7-r1.ebuild,
+  -files/man-db-2.5.7-non-gnu-nroff.patch,
+  -files/man-db-2.5.7-uncompressed-non-en.patch, +man-db-2.6.0.2.ebuild:
+  Version bump. Introduce USE=static-libs.
+
+  13 Apr 2011; Ulrich Mueller <ulm@gentoo.org> man-db-2.5.7-r1.ebuild,
+  man-db-2.5.9.ebuild:
+  Don't PROVIDE virtual/man, it is a new-style virtual now. Bug 358839.
+
+*man-db-2.5.9 (22 Dec 2010)
+
+  22 Dec 2010; Mike Frysinger <vapier@gentoo.org> +man-db-2.5.9.ebuild:
+  Version bump #349399 by Rafał Mużyło.
+
+*man-db-2.5.7-r1 (23 Aug 2010)
+
+  23 Aug 2010; Mike Frysinger <vapier@gentoo.org> +man-db-2.5.7-r1.ebuild,
+  +files/man-db-2.5.7-uncompressed-non-en.patch:
+  Add fix from upstream for issues with non-english uncompressed man pages
+  #327347 by Florian.
+
+  29 Mar 2010; Mike Frysinger <vapier@gentoo.org> man-db-2.5.7.ebuild,
+  +files/man-db-2.5.7-non-gnu-nroff.patch:
+  Add fix from upstream for building with non-GNU nroff #309635 by Pun.
+
+*man-db-2.5.7 (07 Mar 2010)
+
+  07 Mar 2010; Mike Frysinger <vapier@gentoo.org> +man-db-2.5.7.ebuild:
+  Version bump #307991 by C W Rose.
+
+  02 Oct 2009; Diego E. Pettenò <flameeyes@gentoo.org> man-db-2.5.6.ebuild:
+  Fix doc installation.
+
+*man-db-2.5.6 (02 Oct 2009)
+
+  02 Oct 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +man-db-2.5.6.ebuild, +files/man-db-2.5.6-fix-no-groff.patch:
+  Version bump, with a patch to work with heirloom-doctools… for the most
+  part. Note that man pages will not look as good as with sys-apps/man at
+  least.
+
+  29 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org> man-db-2.5.3.ebuild,
+  man-db-2.5.5.ebuild:
+  Add groff dependency.
+
+*man-db-2.5.5 (05 Apr 2009)
+
+  05 Apr 2009; Mike Frysinger <vapier@gentoo.org> +man-db-2.5.5.ebuild:
+  Version bump #264993 by Arfrever Frehtes Taifersar Arahesis.
+
+*man-db-2.5.3 (17 Nov 2008)
+
+  17 Nov 2008; Mike Frysinger <vapier@gentoo.org> +man-db-2.5.3.ebuild:
+  Version bump.
+
+*man-db-2.5.2 (25 Oct 2008)
+
+  25 Oct 2008; Mike Frysinger <vapier@gentoo.org> +man-db-2.5.2.ebuild:
+  Version bump.
+
+*man-db-2.5.1 (24 Feb 2008)
+
+  24 Feb 2008; Mike Frysinger <vapier@gentoo.org> +man-db-2.5.1.ebuild:
+  Version bump.
+
+*man-db-2.4.4 (13 Apr 2007)
+
+  13 Apr 2007; Mike Frysinger <vapier@gentoo.org>
+  +files/man-db-2.4.4-sections.patch, +man-db-2.4.4.ebuild:
+  Version bump #173919 by Pierre-Yves Rofes.
+
+*man-db-2.4.3-r1 (06 Oct 2006)
+
+  06 Oct 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/man-db-2.4.3-sections.patch, +man-db-2.4.3-r1.ebuild:
+  Respect more man sections #149857.
+
+*man-db-2.4.3 (21 Feb 2006)
+
+  21 Feb 2006; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

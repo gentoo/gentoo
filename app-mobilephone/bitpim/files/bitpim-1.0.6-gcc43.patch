@@ -1,0 +1,22 @@
+diff -Nru bitpim-1.0.6.orig/src/native/av/bmp2avi/avi_file.cxx bitpim-1.0.6/src/native/av/bmp2avi/avi_file.cxx
+--- bitpim-1.0.6.orig/src/native/av/bmp2avi/avi_file.cxx	2005-02-18 06:55:03.000000000 +0000
++++ bitpim-1.0.6/src/native/av/bmp2avi/avi_file.cxx	2008-11-02 13:54:15.000000000 +0000
+@@ -9,6 +9,7 @@
+ 
+ #include "avi_file.h"
+ #include "byte_order.h"
++#include <cstring>
+ 
+ // endian conversion routines
+ 
+diff -Nru bitpim-1.0.6.orig/src/native/av/bmp2avi/bmp_file.cxx bitpim-1.0.6/src/native/av/bmp2avi/bmp_file.cxx
+--- bitpim-1.0.6.orig/src/native/av/bmp2avi/bmp_file.cxx	2005-02-18 06:55:03.000000000 +0000
++++ bitpim-1.0.6/src/native/av/bmp2avi/bmp_file.cxx	2008-11-02 13:54:15.000000000 +0000
+@@ -11,6 +11,7 @@
+ #include <string>
+ #include "bmp_file.h"
+ #include "byte_order.h"
++#include <cstring>
+ 
+ using namespace std;
+ 

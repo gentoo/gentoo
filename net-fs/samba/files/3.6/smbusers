@@ -1,0 +1,7 @@
+# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/files/3.6/smbusers,v 1.1 2011/06/30 15:50:28 dagger Exp $
+
+# Syntax:
+#   Unix_name = SMB_name1 SMB_name2 ...
+
+root = Administrator admin
+nobody = guest pcguest smbguest

@@ -1,0 +1,47 @@
+ Mk/autoconf.mk.in | 4 ++--
+ src/Makefile.in   | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Mk/autoconf.mk.in b/Mk/autoconf.mk.in
+index fdbbbfc..db04c70 100644
+--- a/Mk/autoconf.mk.in
++++ b/Mk/autoconf.mk.in
+@@ -13,7 +13,7 @@ OBJC_PTHREAD_LIBS	= @OBJC_PTHREAD_LIBS@
+ OBJC_PTHREAD_CFLAGS	= @OBJC_PTHREAD_CFLAGS@
+ 
+ PLUGIN_LD		= @PLUGIN_LD@
+-PLUGIN_LD_FLAGS		= @PLUGIN_LD_FLAGS@
++PLUGIN_LD_FLAGS		= @PLUGIN_LD_FLAGS@ $(LDFLAGS)
+ PLUGIN_CFLAGS		= @PLUGIN_CFLAGS@
+ PLUGIN_SUFFIX		= @PLUGIN_SUFFIX@
+ PLUGIN_FILE		= @PLUGIN_FILE@
+@@ -33,7 +33,7 @@ PTHREAD_CFLAGS		= @PTHREAD_CFLAGS@
+ 
+ OPENVPN_CFLAGS		= @OPENVPN_CFLAGS@
+ 
+-LDFLAGS                 = @LDFLAGS@
++LDFLAGS                 += @LDFLAGS@
+ 
+ AR			= @AR@
+ RANLIB			= @RANLIB@
+diff --git a/src/Makefile.in b/src/Makefile.in
+index b0eac7b..47c467b 100755
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -42,14 +42,14 @@ GEN_SRCS=	TRConfigParser.m \
+ 
+ TEST_OBJS=	testplugin.o
+ 
+-CFLAGS+=	$(LDAP_CFLAGS) $(OPENVPN_CFLAGS)
++CFLAGS+=	$(LDAP_CFLAGS) $(OPENVPN_CFLAGS) -fPIC
+ OBJCFLAGS+=	$(LDAP_CFLAGS) $(OPENVPN_CFLAGS)
+ LIBS+=		-L. -lauth-ldap \
+ 		$(LDAP_LIBS) \
+ 		$(OBJC_LIBS) \
+ 		$(FLEX_LIBS)
+ 
+-INSTALL_LIB=		$(INSTALL) -m 755
++INSTALL_LIB=		$(INSTALL) -m 755 -D
+ PLUGIN_INSTALL_DIR=	$(DESTDIR)$(libdir)
+ 
+ all:: $(PLUGIN_FILE) $(AUTH_LIB) testplugin

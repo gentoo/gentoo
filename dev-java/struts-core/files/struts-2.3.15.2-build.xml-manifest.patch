@@ -1,0 +1,15 @@
+--- a/core/maven-build.xml
++++ b/core/maven-build.xml
+@@ -271,12 +271,8 @@
+     <jar jarfile="${maven.build.dir}/${maven.build.finalName}.jar" 
+          compress="true" 
+          index="false" 
+-         manifest="/var/tmp/portage/dev-java/struts-xwork-2.3.15.2/work/struts-2.3.15.2/src/core/target/classes/META-INF/MANIFEST.MF" 
+          basedir="${maven.build.outputDir}" 
+          excludes="**/package.html">
+-      <manifest>
+-        <attribute name="Main-Class"/>
+-      </manifest>
+     </jar>
+   </target>
+ 

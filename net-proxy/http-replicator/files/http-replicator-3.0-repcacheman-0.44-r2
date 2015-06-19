@@ -1,0 +1,201 @@
+#! /usr/bin/python
+#
+# repcacheman ver 0.44
+#
+# Cache Manager for Http-Replicator
+# deletes duplicate files in PORTDIR.
+# imports authenticated (checksum + listed in portage)
+# files from PORTDIR to replicator's cache directory.
+#
+# Uses portage to perform checksum and database functions.
+# All else, Copyright(C)2004-2007 Tom Poplawski (poplawtm@earthlink.net)
+# Distributed under the terms of the GNU General Public License v2
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+
+import portage.manifest
+import portage.checksum
+import portage.exception
+import portage
+import string
+import os
+import pwd,sys,optparse
+
+if os.getuid():
+	print"Must be root"
+	sys.exit(1)
+
+# Parse Options
+
+parser = optparse.OptionParser()
+parser.add_option('-d', '--dir', type='string', default="/var/cache/http-replicator", help='http-replicators cache DIR')
+parser.add_option('-u','--user', type='string', default="portage", help='http-replicator USER')
+options, args = parser.parse_args() # parse command line
+
+if options.user:
+	try:
+		uid=pwd.getpwnam(options.user)[2]
+		gid=pwd.getpwnam(options.user)[3]
+	except:
+		print "User \'" + options.user + "\' Doesn't exist on system - edit config or add user to system."
+		sys.exit(1)
+else:
+	print "Error\n\tunable to get USER from /etc/http-replicator.conf"
+	sys.exit(1)
+
+# dir is replicator's cache directory
+dir=options.dir+"/"
+
+if os.path.isdir(dir) :
+	newdir=0
+else :
+	print"\n\nBegin Http-Replicator Setup...."
+	try:
+		os.makedirs(dir)
+		print "\tcreated " + dir
+		newdir=1
+	except:
+		print "\tcreate " + dir + " failed"
+		print '\terror:', sys.exc_info()[1]
+		sys.exit(1)
+	try:
+		os.chown(dir,uid,gid)
+		print "\tchanged owner of " + dir + " to " + options.user 
+	except:
+		print "\tchange owner " + dir + " to " + options.user + " failed:"
+		print '\terror:', sys.exc_info()[1]
+
+print "\n\nReplicator's cache directory: " + dir
+
+# Import Portage settings
+
+distdir=portage.settings["DISTDIR"]+"/"
+if distdir:
+	print "Portage's DISTDIR: " + distdir
+else:
+	print"Unable to get Portage's DISTDIR"
+	sys.exit(1)
+
+# Start Work
+
+print "\nComparing directories...."
+
+# Create filecmp object
+import filecmp
+dc=filecmp.dircmp (distdir,dir,['cvs-src','git-src','hg-src','egit-src','.locks'])
+print "Done!"
+
+dupes=dc.common
+deleted=0
+
+if dupes:
+	print "\nDeleting duplicate file(s) in " + distdir
+
+	for s in dupes:
+		print s
+		try:
+			os.remove(distdir + s )
+			deleted +=1
+		except:
+			print "\tdelete " + distdir + s + " failed:"
+			print '\terror:', sys.exc_info()[1]
+
+	print "Done!"
+
+
+newfiles=dc.left_only
+nf=len(dc.left_only)
+
+if nf:
+	print "\nNew files in DISTDIR:"
+	for s in newfiles:
+		print s
+	print"\nChecking authenticity and integrity of new files..."
+	added=0
+	errors=0
+	badsum=0
+
+# search all packages 
+
+	for mycp in portage.db["/"]["porttree"].dbapi.cp_all():
+		manifest = portage.manifest.Manifest("/usr/portage/" + mycp , distdir)
+		if manifest == None:
+			portage.writemsg("Missing manifest: %s\n" % mycpv)
+
+		remove=[]
+		for file in newfiles:
+			if manifest.hasFile("DIST",file):
+				try:
+					myok, myreason = manifest.checkFileHashes("DIST",file)
+					
+					try:
+						os.rename(distdir+file,dir+file)
+						added += 1
+					except:
+						try:
+							import shutil
+							shutil.copyfile(distdir+file,dir+file)
+							added += 1
+							os.remove(distdir+file)
+						except:
+							print "\tmove/copy " + file + " failed:"
+							print '\terror:', sys.exc_info()[1]
+							errors+=1
+							
+					try:
+						os.chown(dir+file,uid,gid)
+					except:
+						print "\tchown " + file + " failed:"
+						print '\terror:', sys.exc_info()[1]
+						errors +=1
+						
+					remove.append( file )
+					
+				except portage.exception.DigestException, e:
+					print("\n!!! Digest verification failed:")
+					print("!!! %s" % e.value[0])
+					print("!!! Reason: %s" % e.value[1])
+					print("!!! Got: %s" % e.value[2])
+					print("!!! Expected: %s" % e.value[3])
+					badsum+=1
+		if remove:
+			for rf in remove:
+				newfiles.remove ( rf )
+
+
+print "\nSUMMARY:"
+print "Found " + str(len(dupes)) + " duplicate file(s)"
+if deleted:
+	print "\tDeleted " + str(deleted) + " dupe(s)"
+
+if nf:
+	print "Found " + str(nf) + " new file(s)"
+	print "\tAdded " + str(added) + " of those file(s) to the cache"
+	
+	print "Rejected " +str(len(newfiles))  + " File(s) - ",
+	print str(badsum) +  " failed checksum(s)"
+	for s in newfiles:
+		print "\t%s" %s
+	if errors:
+		print "Encountered " +str(errors) + " errors"
+#	if badsum:
+#		print str(badsum) + " partial/corrupted file(s)"
+
+if newdir:
+	print"\n\nexecute:\n/etc/init.d/http-replicator start"
+	print"to run http-replicator.\n\nexecute:\nrc-update add http-replicator default"
+	print"to make http-replicator start at boot"
+	print"\n\nexecute:\n/usr/bin/repcacheman\nafter emerge's on the server to delete"
+	print"dup files and add new files to the cache"
+
+print "\n\nHTTP-Replicator requires you delete any partial downloads in " + distdir
+print "run rm -f " + distdir +'*'
+

@@ -1,0 +1,138 @@
+# ChangeLog for sys-process/procenv
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/procenv/ChangeLog,v 1.27 2014/10/08 01:05:01 radhermit Exp $
+
+  08 Oct 2014; Tim Harder <radhermit@gentoo.org> -procenv-0.25.ebuild,
+  -procenv-0.26.ebuild, -procenv-0.27.ebuild, -procenv-0.29.ebuild,
+  -procenv-0.30.ebuild, -procenv-0.32.ebuild, -procenv-0.33.ebuild,
+  -procenv-0.34.ebuild:
+  Remove old.
+
+*procenv-0.36 (08 Oct 2014)
+
+  08 Oct 2014; Tim Harder <radhermit@gentoo.org> +procenv-0.36.ebuild:
+  Version bump.
+
+*procenv-0.35 (18 Jun 2014)
+
+  18 Jun 2014; Tim Harder <radhermit@gentoo.org> +procenv-0.35.ebuild:
+  Version bump.
+
+*procenv-0.34 (27 Mar 2014)
+
+  27 Mar 2014; Tim Harder <radhermit@gentoo.org> +procenv-0.34.ebuild:
+  Version bump.
+
+*procenv-0.33 (15 Mar 2014)
+
+  15 Mar 2014; Tim Harder <radhermit@gentoo.org> +procenv-0.33.ebuild:
+  Version bump.
+
+*procenv-0.32 (01 Feb 2014)
+
+  01 Feb 2014; Tim Harder <radhermit@gentoo.org> +procenv-0.32.ebuild:
+  Version bump.
+
+*procenv-0.30 (23 Jan 2014)
+
+  23 Jan 2014; Tim Harder <radhermit@gentoo.org> +procenv-0.30.ebuild:
+  Version bump.
+
+*procenv-0.29 (14 Jan 2014)
+
+  14 Jan 2014; Tim Harder <radhermit@gentoo.org> +procenv-0.29.ebuild:
+  Version bump.
+
+*procenv-0.27 (15 Oct 2013)
+
+  15 Oct 2013; Tim Harder <radhermit@gentoo.org> +procenv-0.27.ebuild:
+  Version bump.
+
+  28 Aug 2013; Tim Harder <radhermit@gentoo.org> -procenv-0.19.ebuild,
+  -procenv-0.20.ebuild, -procenv-0.21.ebuild, -procenv-0.22.ebuild,
+  -procenv-0.23.ebuild, -procenv-0.24.ebuild:
+  Remove old.
+
+*procenv-0.26 (28 Aug 2013)
+
+  28 Aug 2013; Tim Harder <radhermit@gentoo.org> +procenv-0.26.ebuild:
+  Version bump.
+
+*procenv-0.25 (20 Jul 2013)
+
+  20 Jul 2013; Tim Harder <radhermit@gentoo.org> +procenv-0.25.ebuild:
+  Version bump.
+
+*procenv-0.24 (28 Jun 2013)
+
+  28 Jun 2013; Tim Harder <radhermit@gentoo.org> +procenv-0.24.ebuild:
+  Version bump.
+
+*procenv-0.23 (31 May 2013)
+
+  31 May 2013; Tim Harder <radhermit@gentoo.org> +procenv-0.23.ebuild:
+  Version bump.
+
+*procenv-0.22 (18 May 2013)
+
+  18 May 2013; Tim Harder <radhermit@gentoo.org> +procenv-0.22.ebuild:
+  Version bump.
+
+*procenv-0.21 (08 Apr 2013)
+
+  08 Apr 2013; Tim Harder <radhermit@gentoo.org> +procenv-0.21.ebuild:
+  Version bump.
+
+  17 Jan 2013; Tim Harder <radhermit@gentoo.org> -procenv-0.16.ebuild,
+  -procenv-0.18.ebuild:
+  Remove old.
+
+*procenv-0.20 (17 Jan 2013)
+
+  17 Jan 2013; Tim Harder <radhermit@gentoo.org> +procenv-0.20.ebuild:
+  Version bump.
+
+*procenv-0.19 (18 Dec 2012)
+
+  18 Dec 2012; Tim Harder <radhermit@gentoo.org> +procenv-0.19.ebuild:
+  Version bump.
+
+  08 Dec 2012; Tim Harder <radhermit@gentoo.org> -procenv-0.13.ebuild,
+  -procenv-0.15.ebuild:
+  Remove old.
+
+*procenv-0.18 (08 Dec 2012)
+
+  08 Dec 2012; Tim Harder <radhermit@gentoo.org> +procenv-0.18.ebuild:
+  Version bump.
+
+*procenv-0.16 (03 Dec 2012)
+
+  03 Dec 2012; Tim Harder <radhermit@gentoo.org> +procenv-0.16.ebuild:
+  Version bump.
+
+  29 Nov 2012; Tim Harder <radhermit@gentoo.org> -procenv-0.8.ebuild,
+  -procenv-0.12.ebuild:
+  Remove old.
+
+*procenv-0.15 (29 Nov 2012)
+
+  29 Nov 2012; Tim Harder <radhermit@gentoo.org> +procenv-0.15.ebuild:
+  Version bump.
+
+*procenv-0.13 (27 Nov 2012)
+
+  27 Nov 2012; Tim Harder <radhermit@gentoo.org> +procenv-0.13.ebuild:
+  Version bump.
+
+*procenv-0.12 (23 Nov 2012)
+
+  23 Nov 2012; Tim Harder <radhermit@gentoo.org> +procenv-0.12.ebuild:
+  Version bump.
+
+*procenv-0.8 (17 Nov 2012)
+
+  17 Nov 2012; Tim Harder <radhermit@gentoo.org> +procenv-0.8.ebuild,
+  +metadata.xml:
+  Initial import, ebuild by me.
+

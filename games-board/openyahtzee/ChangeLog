@@ -1,0 +1,90 @@
+# ChangeLog for games-board/openyahtzee
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/openyahtzee/ChangeLog,v 1.22 2014/09/20 06:48:53 mr_bones_ Exp $
+
+  20 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org> openyahtzee-1.9.1.ebuild:
+  EAPI=5; tidy
+
+  30 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/openyahtzee-1.9-gcc45.patch, -files/openyahtzee-1.9-underlink.patch,
+  -openyahtzee-1.9.ebuild:
+  old
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> openyahtzee-1.9.1.ebuild:
+  Stable for x86, wrt bug #451468
+
+  16 Jan 2013; Agostino Sarubbo <ago@gentoo.org> openyahtzee-1.9.1.ebuild:
+  Stable for ppc, wrt bug #451468
+
+  13 Jan 2013; Agostino Sarubbo <ago@gentoo.org> openyahtzee-1.9.1.ebuild:
+  Stable for amd64, wrt bug #451468
+
+  12 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org> openyahtzee-1.9.1.ebuild:
+  boost is needed for building (bug #451518)
+
+  14 Jul 2012; Julian Ospald <hasufell@gentoo.org> openyahtzee-1.9.1.ebuild:
+  drop unused eutils too
+
+  14 Jul 2012; Julian Ospald <hasufell@gentoo.org> openyahtzee-1.9.1.ebuild,
+  -files/openyahtzee-1.9.1-underlink.patch:
+  underlinkg patch not needed anymore (fixes bug 426530), source only compiles
+  on >=sys-devel/gcc-4.6 add check, dropped autotools eclass and eautoreconf
+
+*openyahtzee-1.9.1 (11 Jul 2012)
+
+  11 Jul 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/openyahtzee-1.9.1-underlink.patch, +openyahtzee-1.9.1.ebuild:
+  version bump
+
+  20 Jun 2011; Tupone Alfredo <tupone@gentoo.org> openyahtzee-1.9.ebuild,
+  +files/openyahtzee-1.9-underlink.patch:
+  Fix underlink. Bug #369529 by Diego Elio Pettenò
+
+  18 May 2010; Tupone Alfredo <tupone@gentoo.org> openyahtzee-1.9.ebuild,
+  +files/openyahtzee-1.9-gcc45.patch:
+  Fix build with gcc-4.5. Bug #318601 by flameeyes@gentoo.org
+
+  24 Jan 2010; Brent Baude <ranger@gentoo.org> openyahtzee-1.9.ebuild:
+  keyworded ~arch for ppc, bug 296287
+
+  21 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  openyahtzee-1.9.ebuild:
+  Fix building with -Wl,--as-needed wrt #294177 by Kacper Kowalik.
+
+  19 Sep 2009; Markus Meier <maekke@gentoo.org> openyahtzee-1.9.ebuild:
+  amd64/x86 stable, bug #285383
+
+*openyahtzee-1.9 (17 Aug 2009)
+
+  17 Aug 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +openyahtzee-1.9.ebuild:
+  version bump (bug #281735)
+
+  02 May 2008; Markus Meier <maekke@gentoo.org> openyahtzee-1.8.1.ebuild:
+  amd64/x86 stable, bug #219793
+
+*openyahtzee-1.8.1 (18 Mar 2008)
+
+  18 Mar 2008; Tristan Heaven <nyhm@gentoo.org> +openyahtzee-1.8.1.ebuild:
+  Version bump
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> openyahtzee-1.7.ebuild,
+  openyahtzee-1.8.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+*openyahtzee-1.8 (31 Oct 2007)
+
+  31 Oct 2007; Tupone Alfredo <tupone@gentoo.org> +openyahtzee-1.8.ebuild:
+  Version bump. Bug #195468 by Guy Rutenberg
+
+  28 Sep 2007; Ryan Hill <dirtyepic@gentoo.org> openyahtzee-1.7.ebuild:
+  Lock wxGTK to 2.6.
+
+  22 May 2007; Tristan Heaven <nyhm@gentoo.org> openyahtzee-1.7.ebuild:
+  Add ~x86 keyword
+
+*openyahtzee-1.7 (11 May 2007)
+
+  11 May 2007; Tupone Alfredo <tupone@gentoo.org> +metadata.xml,
+  +openyahtzee-1.7.ebuild:
+  New package, requested wih bug #137555 by Guy Rutenberg

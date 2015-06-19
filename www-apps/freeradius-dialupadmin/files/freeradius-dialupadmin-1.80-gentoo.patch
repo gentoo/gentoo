@@ -1,0 +1,32 @@
+diff -Nru freeradius-server-2.1.1.orig/dialup_admin/Makefile freeradius-server-2.1.1/dialup_admin/Makefile
+--- freeradius-server-2.1.1.orig/dialup_admin/Makefile	2008-10-12 10:13:16.000000000 +0000
++++ freeradius-server-2.1.1/dialup_admin/Makefile	2008-10-12 10:16:16.000000000 +0000
+@@ -4,7 +4,6 @@
+ # Version:	$Id: freeradius-dialupadmin-1.80-gentoo.patch,v 1.1 2008/10/12 10:33:19 mrness Exp $
+ #
+ 
+-include ../Make.inc
+ 
+ DIALUP_PREFIX := /usr/local/dialup_admin
+ DIALUP_DOCDIR := $(DIALUP_PREFIX)/doc
+diff -Nru freeradius-server-2.1.1.orig/dialup_admin/conf/admin.conf freeradius-server-2.1.1/dialup_admin/conf/admin.conf
+--- freeradius-server-2.1.1.orig/dialup_admin/conf/admin.conf	2008-09-25 08:41:26.000000000 +0000
++++ freeradius-server-2.1.1/dialup_admin/conf/admin.conf	2008-10-12 09:14:12.000000000 +0000
+@@ -204,7 +204,7 @@
+ #
+ # Uncomment to enable ldap debug
+ #
+-ldap_debug: true
++#ldap_debug: true
+ #
+ # Allow for defining the ldap filter used when searching for a user
+ # Variables supported:
+@@ -274,7 +274,7 @@
+ #
+ # Uncomment to enable sql debug
+ #
+-sql_debug: true
++#sql_debug: true
+ #
+ # If set to yes then the HTTP credentials (http authentication)
+ # will be used to connect to the sql server instead of sql_username

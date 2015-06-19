@@ -1,0 +1,120 @@
+# ChangeLog for dev-libs/cgilib
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/cgilib/ChangeLog,v 1.35 2014/07/10 18:45:35 jer Exp $
+
+  10 Jul 2014; Jeroen Roovers <jer@gentoo.org> -cgilib-0.5.ebuild,
+  -cgilib-0.6.ebuild, cgilib-0.7.ebuild, -files/cgilib-0.5-cgitest.diff:
+  Old.
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> cgilib-0.7.ebuild:
+  Marking cgilib-0.7 ppc64 for bug 400007
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org> cgilib-0.7.ebuild:
+  Marking cgilib-0.7 ppc for bug 400007
+
+  31 Jan 2012; Jeroen Roovers <jer@gentoo.org> cgilib-0.7.ebuild:
+  Stable for HPPA (bug #400007).
+
+  28 Jan 2012; Raúl Porcel <armin76@gentoo.org> cgilib-0.7.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #400007
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> cgilib-0.7.ebuild:
+  x86 stable wrt bug #400007
+
+  27 Jan 2012; Agostino Sarubbo <ago@gentoo.org> cgilib-0.7.ebuild:
+  Stable for amd64, wrt bug #400007
+
+  28 Nov 2011; Tim Harder <radhermit@gentoo.org> cgilib-0.7.ebuild:
+  Fix autotools-utils usage (bug #392141).
+
+*cgilib-0.7 (06 Jul 2011)
+
+  06 Jul 2011; Jeroen Roovers <jer@gentoo.org> +cgilib-0.7.ebuild:
+  Version bump.
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> cgilib-0.5.ebuild:
+  Drop to ~mips
+
+*cgilib-0.6 (06 Jun 2008)
+
+  06 Jun 2008; Peter Volkov <pva@gentoo.org> +cgilib-0.6.ebuild:
+  Version bump, bug #225055, reported by Alex J. Ivasyuv.
+
+  08 Jan 2008; Markus Ullmann <jokey@gentoo.org> cgilib-0.5.ebuild:
+  Quoting
+
+  27 Jan 2007; Alexander H. Færøy <eroyf@gentoo.org> cgilib-0.5.ebuild:
+  Stable on MIPS.
+
+  07 Feb 2006; Marcelo Goes <vanquirius@gentoo.org> -cgilib-0.5-r1.ebuild:
+  Removing 0.5-r1: test is broken. Nothing depends on it.
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> cgilib-0.5-r1.ebuild:
+  Mark 0.5-r1 stable on alpha
+
+  04 Feb 2006; Markus Rothe <corsair@gentoo.org> cgilib-0.5.ebuild:
+  Bump to stable wrt bug #121470
+
+  03 Feb 2006; Aron Griffis <agriffis@gentoo.org> cgilib-0.5-r1.ebuild:
+  Mark 0.5-r1 stable on ia64
+
+  04 Dec 2005; Tom Gall <tgall@gentoo.org> cgilib-0.5-r1.ebuild:
+  stable on ppc64
+
+  10 Nov 2005; Brent Baude <ranger@gentoo.org> cgilib-0.5-r1.ebuild:
+  Marked cgilib-0.5-r1 ~ppc64 per bug 111849
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> cgilib-0.5.ebuild:
+  stable on amd64
+
+  23 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> cgilib-0.5.ebuild,
+  cgilib-0.5-r1.ebuild:
+  Added ~mips.
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> cgilib-0.5.ebuild:
+  stable on ia64
+
+  26 Jun 2005; Marcelo Goes <vanquirius@gentoo.org> cgilib-0.5-r1.ebuild:
+  Test is possibly broken on other arches, so I am making it x86-only for now.
+
+*cgilib-0.5-r1 (26 Jun 2005)
+
+  26 Jun 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +files/cgilib-0.5-cgitest.diff, +cgilib-0.5-r1.ebuild:
+  Add patch from CVS, compile and install cgilib.test to make testing easier.
+
+  12 Jun 2005; Bryan Østergaard <kloeri@gentoo.org> cgilib-0.5.ebuild:
+  Stable on alpha.
+
+  10 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> cgilib-0.5.ebuild:
+  Stable on sparc
+
+  05 Jun 2005; Rene Nussbaumer <killerfox@gentoo.org> cgilib-0.5.ebuild:
+  Stable on hppa.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> cgilib-0.5.ebuild:
+  Stable on ppc.
+
+  03 Jun 2005; Marcelo Goes <vanquirius@gentoo.org> cgilib-0.5.ebuild:
+  Marked x86 stable. Fixes bug 94960. Thanks to Daniel Webert <rockoo@gmail.com>.
+
+  24 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> cgilib-0.5.ebuild:
+  ~alpha keyword, bug 88697.
+
+  21 Apr 2005; Jason Wever <weeve@gentoo.org> cgilib-0.5.ebuild:
+  Added ~sparc keyword wrt bug #88697.
+
+  14 Apr 2005; Joseph Jezak <josejx@gentoo.org> cgilib-0.5.ebuild:
+  Marked ~ppc for bug #88697.
+
+  13 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> cgilib-0.5.ebuild:
+  sed CFLAGS in Makefile instead of completely overriding them so that -I. is
+  included.
+
+*cgilib-0.5 (12 Apr 2005)
+
+  12 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml,
+  +cgilib-0.5.ebuild:
+  Initial commit (dependency of latest rrdtool release). Thanks to Frederic
+  Mangeant in bug 88697 for the ebuild.
+

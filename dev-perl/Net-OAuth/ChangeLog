@@ -1,0 +1,73 @@
+# ChangeLog for dev-perl/Net-OAuth
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-OAuth/ChangeLog,v 1.16 2015/06/13 22:22:02 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Net-OAuth-0.280.0-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*Net-OAuth-0.280.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Net-OAuth-0.280.0-r1.ebuild, -Net-OAuth-0.280.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org> -Net-OAuth-0.270.0.ebuild:
+  Cleanup
+
+*Net-OAuth-0.280.0 (08 Jan 2012)
+
+  08 Jan 2012; Torsten Veller <tove@gentoo.org> +Net-OAuth-0.280.0.ebuild:
+  Version bump
+
+  24 Sep 2011; Fabian Groffen <grobian@gentoo.org> Net-OAuth-0.270.0.ebuild:
+  Marked ~x64-macos
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Net-OAuth-0.27.ebuild:
+  Cleanup
+
+*Net-OAuth-0.270.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org> +Net-OAuth-0.270.0.ebuild:
+  Change version scheme
+
+  15 Aug 2010; Torsten Veller <tove@gentoo.org> -Net-OAuth-0.25.ebuild:
+  Cleanup
+
+*Net-OAuth-0.27 (22 Jun 2010)
+
+  22 Jun 2010; Torsten Veller <tove@gentoo.org> +Net-OAuth-0.27.ebuild:
+  Version bump
+
+  09 Apr 2010; Torsten Veller <tove@gentoo.org> -Net-OAuth-0.20.ebuild,
+  -Net-OAuth-0.22.ebuild, -Net-OAuth-0.23.ebuild:
+  Cleanup
+
+*Net-OAuth-0.25 (23 Mar 2010)
+
+  23 Mar 2010; Torsten Veller <tove@gentoo.org> +Net-OAuth-0.25.ebuild:
+  Version bump
+
+*Net-OAuth-0.23 (19 Mar 2010)
+
+  19 Mar 2010; Torsten Veller <tove@gentoo.org> +Net-OAuth-0.23.ebuild:
+  Version bump
+
+*Net-OAuth-0.22 (14 Mar 2010)
+
+  14 Mar 2010; Torsten Veller <tove@gentoo.org> +Net-OAuth-0.22.ebuild:
+  Version bump
+
+*Net-OAuth-0.20 (22 Nov 2009)
+
+  22 Nov 2009; Robin H. Johnson <robbat2@gentoo.org> +Net-OAuth-0.20.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*Net-OAuth-0.19 (10 Oct 2009)
+
+  10 Oct 2009; Torsten Veller <tove@gentoo.org> +Net-OAuth-0.19.ebuild,
+  +metadata.xml:
+  Initial commit for Net-Twitter (#288326)

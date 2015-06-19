@@ -1,0 +1,48 @@
+# ChangeLog for net-analyzer/ipband
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ipband/ChangeLog,v 1.11 2014/07/12 17:34:14 jer Exp $
+
+  12 Jul 2014; Jeroen Roovers <jer@gentoo.org> ipband-0.8.1-r1.ebuild,
+  files/ipband-0.8.1-gentoo.patch, +files/ipband-0.8.1-postfix.patch:
+  EAPI bump. Remove readme from pkg_postinst(). Convert sed script into patch.
+
+  17 Jan 2012; Jeroen Roovers <jer@gentoo.org> -ipband-0.8.ebuild:
+  Old.
+
+  15 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> ipband-0.8.1-r1.ebuild:
+  x86 stable wrt bug #397131
+
+*ipband-0.8.1-r1 (19 Oct 2010)
+
+  19 Oct 2010; Jeroen Roovers <jer@gentoo.org> -ipband-0.8.1.ebuild,
+  +ipband-0.8.1-r1.ebuild, files/ipband-0.8.1-gentoo.patch:
+  Respect LDFLAGS (bug #341767). Make sed die. Set RDEPEND.
+
+  15 Jan 2009; Jeroen Roovers <jer@gentoo.org>
+  +files/ipband-0.8.1-gentoo.patch, ipband-0.8.1.ebuild:
+  Do not strip (bug #251978). Use toolchain. Use dobin.
+
+*ipband-0.8.1 (06 Dec 2008)
+
+  06 Dec 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  +ipband-0.8.1.ebuild:
+  Version bump
+
+  01 May 2007; Marius Mauch <genone@gentoo.org> ipband-0.8.ebuild:
+  Replacing einfo with elog
+
+  28 Apr 2007; Torsten Veller <tove@gentoo.org> ipband-0.8.ebuild:
+  Use newinitd
+
+  11 Apr 2007; Peter Weller <welp@gentoo.org> ipband-0.8.ebuild:
+  Keyworded ~amd64 wrt bug 174110
+
+  01 Apr 2007; Marcelo Goes <vanquirius@gentoo.org> ipband-0.8.ebuild:
+  Mark 0.8 x86 stable. Use emake instead of make, minor cosmetic fixes.
+
+*ipband-0.8 (03 Feb 2007)
+
+  03 Feb 2007; Martin Jackson <mjolnir@gentoo.org> +files/ipband-init,
+  +metadata.xml, +ipband-0.8.ebuild:
+  Adding new ebuild for bug #149548.  Thanks to Shane Denovan for reporting.
+

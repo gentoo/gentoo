@@ -1,0 +1,55 @@
+# ChangeLog for x11-misc/cairo-clock
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/cairo-clock/ChangeLog,v 1.13 2014/08/10 20:01:41 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> cairo-clock-0.3.3.ebuild,
+  cairo-clock-0.3.4.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> cairo-clock-0.3.3.ebuild,
+  cairo-clock-0.3.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*cairo-clock-0.3.4 (12 Nov 2011)
+
+  12 Nov 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +cairo-clock-0.3.4.ebuild:
+  Version bump wrt #381733 by Jesse Adelman
+
+  24 Sep 2011; Tony Vroon <chainsaw@gentoo.org> cairo-clock-0.3.3.ebuild,
+  +files/cairo-clock-0.3.3-gcc46.patch:
+  Debian patch scavenged by Pacho Ramos enables building on GCC 4.6; closes bug
+  #362261 by Diego Elio Pettenò.
+
+  02 Mar 2011; Kevin McCarthy <signals@gentoo.org> cairo-clock-0.3.3.ebuild:
+  Reverting previous unnecessary commit
+
+  02 Mar 2011; Kevin McCarthy <signals@gentoo.org> cairo-clock-0.3.3.ebuild:
+  Slot all gnome-related deps.
+
+  02 Mar 2011; Kevin McCarthy <signals@gentoo.org> cairo-clock-0.3.3.ebuild:
+  Changed to gtk+ and glib slot deps. Bump EAPI=2 to support it.
+
+  09 Feb 2008; Santiago M. Mola <coldwind@gentoo.org>
+  -cairo-clock-0.3.2.ebuild:
+  Remove unused versions
+
+  08 Dec 2007; Samuli Suominen <drac@gentoo.org> cairo-clock-0.3.3.ebuild:
+  amd64 stable
+
+*cairo-clock-0.3.3 (10 Sep 2007)
+
+  10 Sep 2007; Samuli Suominen <drac@gentoo.org> +cairo-clock-0.3.3.ebuild:
+  Version bump for bug 191845, thanks to Arfrever Frehtes Taifersar Arahesis
+  for reporting.
+
+  31 Aug 2007; David Shakaryan <omp@gentoo.org> metadata.xml:
+  Remove myself as sole maintainer; still part of desktop-misc herd.
+
+  02 Mar 2007; Roy Marples <uberlord@gentoo.org> cairo-clock-0.3.2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  11 Nov 2006; David Shakaryan <omp@gentoo.org> +cairo-clock-0.3.2.ebuild,
+  +metadata.xml:
+  Add x11-misc/cairo-clock to tree. Loosely based on Samuli Suominen's ebuild.
+  (bug #126181)

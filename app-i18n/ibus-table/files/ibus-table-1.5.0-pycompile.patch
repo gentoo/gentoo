@@ -1,0 +1,13 @@
+diff --git a/engine/Makefile.in b/engine/Makefile.in
+index c9d1a42..4d25a09 100644
+--- a/engine/Makefile.in
++++ b/engine/Makefile.in
+@@ -418,7 +418,7 @@ install-engine_tablePYTHON: $(engine_table_PYTHON)
+ 	  $(INSTALL_DATA) $$files "$(DESTDIR)$(engine_tabledir)" || exit $$?; \
+ 	done || exit $$?; \
+ 	if test -n "$$dlist"; then \
+-	  $(am__py_compile) --destdir "$(DESTDIR)" \
++	  $(py_compile) --destdir "$(DESTDIR)" \
+ 	                    --basedir "$(engine_tabledir)" $$dlist; \
+ 	else :; fi
+ 

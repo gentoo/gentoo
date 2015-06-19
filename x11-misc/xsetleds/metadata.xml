@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>desktop-misc</herd>
+	<herd>proxy-maintainers</herd>
+<maintainer>
+  <email>jss2k2@chello.no</email>
+  <name>Unknown</name>
+  <description>seemant@gentoo.org as a proxy maintainer.  Please refer to jss2k2</description>
+</maintainer>
+</pkgmetadata>

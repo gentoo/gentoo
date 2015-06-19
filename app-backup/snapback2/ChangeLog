@@ -1,0 +1,32 @@
+# ChangeLog for app-backup/snapback2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/snapback2/ChangeLog,v 1.7 2014/12/19 19:08:37 dilfridge Exp $
+
+  19 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Drop perl herd from metadata
+
+*snapback2-1.1.0-r1 (31 Jul 2013)
+
+  31 Jul 2013; Mikle Kolyada <zlogene@gentoo.org> +snapback2-1.1.0-r1.ebuild,
+  -snapback2-0.11.ebuild, -snapback2-0.917.ebuild, -snapback2-1.1.0.ebuild:
+  revbump: EAPI=5; drop old wrt bug #479070
+
+*snapback2-1.1.0 (20 Jan 2013)
+
+  20 Jan 2013; Torsten Veller <tove@gentoo.org> +snapback2-1.1.0.ebuild,
+  metadata.xml:
+  Version bump
+
+  12 Apr 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Fix cpan distribution in metadata.xml
+
+*snapback2-0.917 (30 Aug 2011)
+
+  30 Aug 2011; Patrick Lauer <patrick@gentoo.org> +snapback2-0.917.ebuild:
+  Bump for #380059, adding amd64 keywords
+
+  10 Sep 2010; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Duplicate <maintainer> block of the herd is pointless.
+
+  07 Jun 2006; Lisa Seelye <lisa@gentoo.org> ChangeLog:
+  New package submitted by Kevin, gentoo at thebarters dot com. bug 79476

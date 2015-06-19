@@ -1,0 +1,36 @@
+diff -urN old/src/conky.c new/src/conky.c
+--- old/src/conky.c	2012-05-03 23:22:21.000000000 +0200
++++ new/src/conky.c	2012-08-15 00:06:59.256311301 +0200
+@@ -3065,12 +3065,26 @@
+ 								og = g;
+ 							}
+ 
+-							/* this is mugfugly, but it works */
+-							XDrawLine(display, window.drawable, window.gc,
+-									  cur_x + i + 1,
+-									  specials[special_index].dotgraph ? og : by + h,
+-									  cur_x + i + 1,
+-									  g);
++							if (specials[special_index].dotgraph) {
++								if (og == g) {
++									XDrawPoint(display, window.drawable,
++											   window.gc, cur_x + i + 1, g);
++								} else {
++									XDrawLine(display, window.drawable, window.gc,
++											  cur_x + i + 1,
++											  og,
++											  cur_x + i + 1,
++											  g);
++								}
++							} else {
++								/* this is mugfugly, but it works */
++								XDrawLine(display, window.drawable, window.gc,
++										  cur_x + i + 1,
++										  by + h,
++										  cur_x + i + 1,
++										  g);
++							}
++
+ 							++j;
+ 						}
+ 						if (tmpcolour) free(tmpcolour);

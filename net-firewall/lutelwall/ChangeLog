@@ -1,0 +1,70 @@
+# ChangeLog for net-firewall/lutelwall
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/lutelwall/ChangeLog,v 1.19 2014/07/18 13:03:37 jer Exp $
+
+  18 Jul 2014; Jeroen Roovers <jer@gentoo.org> lutelwall-0.99.ebuild:
+  EAPI bump. Update HOMEPAGE/SRC_URI.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  22 Nov 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #82110
+
+  06 May 2007; Marius Mauch <genone@gentoo.org> lutelwall-0.99.ebuild:
+  Replacing einfo with elog
+
+  28 Apr 2007; Torsten Veller <tove@gentoo.org> lutelwall-0.99.ebuild:
+  Fix *initd, *confd and *envd calls (#173884, #174266)
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  17 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> -lutelwall-0.98.ebuild:
+  Removing old version.
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> lutelwall-0.99.ebuild:
+  Mark 0.99 stable on alpha
+
+  26 Aug 2005; Marcelo Goes <vanquirius@gentoo.org> lutelwall-0.99.ebuild:
+  Stabilizing on Tomasz's request to push iptables version bug fix.
+
+*lutelwall-0.99 (25 Aug 2005)
+
+  25 Aug 2005; Marcelo Goes <vanquirius@gentoo.org> -lutelwall-0.97.ebuild,
+  +lutelwall-0.99.ebuild:
+  Version bump, thanks to Tomasz Lutelmowski <tomek@lutel.pl>.
+
+*lutelwall-0.98 (09 Jun 2005)
+
+  09 Jun 2005; Marcelo Goes <vanquirius@gentoo.org> +lutelwall-0.98.ebuild:
+  Version bump, marking it x86 stable as it fixes a security issue.
+
+  29 Apr 2005; Marcelo Goes <vanquirius@gentoo.org> -lutelwall-0.96.ebuild,
+  lutelwall-0.97.ebuild:
+  Marked 0.97 x86 stable, removing old version.
+
+  07 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> lutelwall-0.97.ebuild:
+  ~alpha keyword, bug 86882.
+
+*lutelwall-0.97 (28 Mar 2005)
+
+  28 Mar 2005; Marcelo Goes <vanquirius@gentoo.org> +lutelwall-0.97.ebuild:
+  Version bump.
+
+  28 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> lutelwall-0.96.ebuild:
+  added ~amd64 to KEYWORDS wrt #86882
+
+  27 Mar 2005; Jason Wever <weeve@gentoo.org> lutelwall-0.96.ebuild:
+  Added ~sparc keyword wrt bug #86882.
+
+  27 Mar 2005; Marcelo Goes <vanquirius@gentoo.org> metadata.xml:
+  Added Tomek Lutelmowski as a third party ebuild maintainer to metadata.xml.
+
+  27 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> lutelwall-0.96.ebuild:
+  Added to ~ppc.
+
+*lutelwall-0.96 (27 Mar 2005)
+
+  27 Mar 2005; Marcelo Goes <vanquirius@gentoo.org> +lutelwall-0.96.ebuild:
+  Initial commit. Fixes bug 73992. Thanks to Tomek Lutelmowski <tomek@lutel.pl>.

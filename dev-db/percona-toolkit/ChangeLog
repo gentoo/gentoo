@@ -1,0 +1,67 @@
+# ChangeLog for dev-db/percona-toolkit
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/percona-toolkit/ChangeLog,v 1.12 2014/12/26 13:17:00 ago Exp $
+
+  26 Dec 2014; Agostino Sarubbo <ago@gentoo.org> percona-toolkit-2.2.7.ebuild:
+  Stable for x86, wrt bug #525850
+
+  24 Dec 2014; Chema Alonso <nimiux@gentoo.org> percona-toolkit-2.2.7.ebuild:
+  Stable for amd64 wrt bug #525850
+
+*percona-toolkit-2.2.11 (19 Oct 2014)
+
+  19 Oct 2014; Christian Ruppert <idl0r@gentoo.org>
+  -percona-toolkit-2.2.6.ebuild, +percona-toolkit-2.2.11.ebuild,
+  -files/percona-toolkit-2.2.6-no-versioncheck.patch:
+  Version bump, bug 524368
+
+*percona-toolkit-2.2.7 (22 May 2014)
+
+  22 May 2014; Christian Ruppert <idl0r@gentoo.org>
+  +percona-toolkit-2.2.7.ebuild,
+  +files/percona-toolkit-2.2.7-no-versioncheck.patch:
+  Version bump, bug 510954. Thanks to Thomas D. <whissi@whissi.de>
+
+*percona-toolkit-2.2.6 (21 Feb 2014)
+
+  21 Feb 2014; Christian Ruppert <idl0r@gentoo.org>
+  -percona-toolkit-2.1.7-r1.ebuild, -percona-toolkit-2.2.4.ebuild,
+  +percona-toolkit-2.2.6.ebuild,
+  +files/percona-toolkit-2.2.6-no-versioncheck.patch:
+  Version bump, also fixes CVE-2014-2029 / bug 501904
+
+  17 Oct 2013; Christian Ruppert <idl0r@gentoo.org> metadata.xml:
+  Add myself as maintainer
+
+*percona-toolkit-2.2.4 (12 Oct 2013)
+
+  12 Oct 2013; Christian Ruppert <idl0r@gentoo.org>
+  +percona-toolkit-2.2.4.ebuild:
+  Bump, bug 464872
+
+*percona-toolkit-2.1.7-r1 (10 Sep 2013)
+
+  10 Sep 2013; Ian Delaney <idella4@gentoo.org>
+  +percona-toolkit-2.1.7-r1.ebuild, -percona-toolkit-2.1.1.ebuild,
+  -percona-toolkit-2.1.7.ebuild:
+  revbump -> EAPI 5, remove old
+
+  18 Aug 2013; Wolfram Schlich <wschlich@gentoo.org> metadata.xml:
+  removed myself from metadata.xml
+
+*percona-toolkit-2.1.7 (06 Jan 2013)
+
+  06 Jan 2013; Robin H. Johnson <robbat2@gentoo.org>
+  +percona-toolkit-2.1.7.ebuild:
+  Bump.
+
+  19 Apr 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop idl0r from maintainers per request.
+
+*percona-toolkit-2.1.1 (19 Apr 2012)
+
+  19 Apr 2012; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +percona-toolkit-2.1.1.ebuild:
+  Initial commit. Based on the maatkit package. The names of all of the binaries
+  have changed, and the FNV/Murmur UDFs are no longer included by upstream. Due
+  to these changes by upstream, this is not being done as a pkgmove.

@@ -1,0 +1,10 @@
+# ChangeLog for app-backup/holland-backup-mysqlhotcopy
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/holland-backup-mysqlhotcopy/ChangeLog,v 1.1 2014/09/21 23:40:08 alunduil Exp $
+
+*holland-backup-mysqlhotcopy-1.0.10 (21 Sep 2014)
+
+  21 Sep 2014; Alex Brandt <alunduil@gentoo.org>
+  +holland-backup-mysqlhotcopy-1.0.10.ebuild, +metadata.xml:
+  new ebuild for holland-backup-mysqlhotcopy written by me
+

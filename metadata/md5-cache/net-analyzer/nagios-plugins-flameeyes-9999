@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=dev-vcs/git
+DESCRIPTION=Flameeyes's custom Nagios/Icinga plugins
+EAPI=5
+HOMEPAGE=https://github.com/Flameeyes/nagios-plugins-flameeyes
+IUSE=smart samba
+LICENSE=MIT
+RDEPEND=dev-perl/Nagios-Plugin sys-apps/portage dev-perl/Time-Duration dev-perl/TimeDate smart? ( sys-apps/smartmontools app-admin/sudo ) samba? ( dev-perl/Filesys-SmbClient )
+SLOT=0
+_eclasses_=git-2	e28f0d8a9b321431b1e699782851b827	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=18735ca8929cd105876c5df9d6170c24

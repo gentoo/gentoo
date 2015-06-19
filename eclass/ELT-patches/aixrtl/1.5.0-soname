@@ -1,0 +1,12 @@
+--- configure
++++ configure
+@@ -14426,7 +14426,8 @@
+       # If using run time linking (on AIX 4.2 or later) use lib<name>.so
+       # instead of lib<name>.a to let people know that these are not
+       # typical AIX shared libraries.
+-      library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
++      library_names_spec='$libname$release$shared_ext$major $libname$shared_ext'
++      [ "${OBJECT_MODE:-32}" = '64' ] && soname_spec='$libname$release$shared_ext$major(shr_64.o)' || soname_spec='$libname$release$shared_ext$major(shr.o)'
+     else
+       # We preserve .a as extension for shared libraries through AIX4.2
+       # and later when we are not doing run time linking.

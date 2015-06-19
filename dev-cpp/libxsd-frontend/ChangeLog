@@ -1,0 +1,96 @@
+# ChangeLog for dev-cpp/libxsd-frontend
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libxsd-frontend/ChangeLog,v 1.19 2014/08/10 19:54:52 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  libxsd-frontend-1.18.0-r3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  24 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -libxsd-frontend-1.18.0-r1.ebuild, -libxsd-frontend-1.18.0.ebuild:
+  Drop old.
+
+  24 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  libxsd-frontend-1.18.0-r3.ebuild:
+  ppc64 stable wrt bug #496784
+
+  24 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  libxsd-frontend-1.18.0-r3.ebuild:
+  straight stable for ppc (bug #496784)
+
+*libxsd-frontend-1.18.0-r3 (24 Feb 2014)
+
+  24 Feb 2014; Sergey Popov <pinkbyte@gentoo.org>
+  -libxsd-frontend-1.18.0-r2.ebuild, +libxsd-frontend-1.18.0-r3.ebuild:
+  Add subslot operator to Boost dependency, revbump, stabilize on amd64 and
+  x86, wrt bug #496784
+
+  24 Feb 2014; Sergey Popov <pinkbyte@gentoo.org>
+  libxsd-frontend-1.18.0-r2.ebuild:
+  Stable on amd64 and x86, wrt bug #496784
+
+*libxsd-frontend-1.18.0-r2 (20 Jan 2014)
+
+  20 Jan 2014; Sergey Popov <pinkbyte@gentoo.org>
+  +libxsd-frontend-1.18.0-r2.ebuild:
+  Revision bump: EAPI 5, fix underlinking wrt bug #481764. Thanks to Sander
+  Sweers <Sander.Sweers AT gmail.com> for discovering this issue and Robert
+  Marmorstein <rmmarm AT sdf.lonestar.org> for suggested patch
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libxsd-frontend-1.18.0.ebuild:
+  Stable for ppc64, wrt bug #462890
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  libxsd-frontend-1.18.0-r1.ebuild:
+  Add ~ppc64, wrt bug #455960
+
+  30 Nov 2012; <ago@gentoo.org> libxsd-frontend-1.18.0.ebuild:
+  Stable for ppc, wrt bug #442394
+
+  23 Nov 2012; Agostino Sarubbo <ago@gentoo.org> libxsd-frontend-1.18.0.ebuild:
+  Stable for x86, wrt bug #442394
+
+  23 Nov 2012; Agostino Sarubbo <ago@gentoo.org> libxsd-frontend-1.18.0.ebuild:
+  Stable for amd64, wrt bug #442394
+
+*libxsd-frontend-1.18.0 (23 Nov 2012)
+
+  23 Nov 2012; Tiziano Müller <dev-zero@gentoo.org>
+  +libxsd-frontend-1.18.0.ebuild:
+  Resurrected 1.18.0 with correct boost-1.49 dep for kde stabilization.
+
+  22 Nov 2012; Tiziano Müller <dev-zero@gentoo.org>
+  -libxsd-frontend-1.17.0.ebuild, -libxsd-frontend-1.18.0.ebuild:
+  Drop old.
+
+*libxsd-frontend-1.18.0-r1 (09 Nov 2012)
+
+  09 Nov 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +libxsd-frontend-1.18.0-r1.ebuild:
+  Add a masked revision bump to leverage the layout changes in boost-1.52.0-r1.
+
+  17 Oct 2012; Markus Meier <maekke@gentoo.org> libxsd-frontend-1.18.0.ebuild:
+  add ~arm, bug #430072
+
+  23 Aug 2012; Tiziano Müller <dev-zero@gentoo.org>
+  +files/1.17.0-boost-filesystem-v2-deprecation.patch,
+  libxsd-frontend-1.17.0.ebuild, libxsd-frontend-1.18.0.ebuild:
+  Fix compatibility with boost >=1.49.0 (filesystem v2 gone), bug #424761.
+
+*libxsd-frontend-1.18.0 (01 Jun 2012)
+
+  01 Jun 2012; Tiziano Müller <dev-zero@gentoo.org>
+  +libxsd-frontend-1.18.0.ebuild:
+  Version and EAPI bump, pass the boost-filesystem-2 definition to build's pp
+  options instead of using append-flags.
+
+  04 Aug 2011; Markos Chandras <hwoarang@gentoo.org>
+  libxsd-frontend-1.17.0.ebuild:
+  Append -DBOOST_FILESYSTEM_VERSION=2 to C{XX}FLAGS. Bug #362911
+
+*libxsd-frontend-1.17.0 (20 Oct 2010)
+
+  20 Oct 2010; Tiziano Müller <dev-zero@gentoo.org>
+  +libxsd-frontend-1.17.0.ebuild, +metadata.xml:
+  Initial commit (ebuild written by me), needed for xsd and the required
+  libraries.

@@ -1,0 +1,118 @@
+From cb71f869bbc8aac3a14f3d4d1f67641e21892bba Mon Sep 17 00:00:00 2001
+From: Gert Steyn <gert@senseware.com>
+Date: Thu, 19 Mar 2015 12:20:42 +0200
+Subject: [PATCH] Changed from django.utils.datastructures.SortedDict
+ (deprecated) to collections.OrderedDict
+
+---
+ django_tables2/columns/base.py                |  6 +++---
+ django_tables2/tables.py                      | 10 +++++-----
+ django_tables2/templatetags/django_tables2.py |  4 ++--
+ 3 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/django_tables2/columns/base.py b/django_tables2/columns/base.py
+index 20b3477..3b377e6 100644
+--- a/django_tables2/columns/base.py
++++ b/django_tables2/columns/base.py
+@@ -1,9 +1,9 @@
+ # coding: utf-8
+ from __future__ import absolute_import, unicode_literals
+ from django.db.models.fields import FieldDoesNotExist
+-from django.utils.datastructures import SortedDict
+ from django_tables2.templatetags.django_tables2 import title
+ from django_tables2.utils import A, AttributeDict, OrderBy, OrderByTuple
++from collections import OrderedDict
+ from itertools import islice
+ import six
+ import warnings
+@@ -498,7 +498,7 @@ class BoundColumns(object):
+     A `BoundColumns` object is a container for holding `BoundColumn` objects.
+     It provides methods that make accessing columns easier than if they were
+     stored in a `list` or `dict`. `Columns` has a similar API to a `dict` (it
+-    actually uses a `~django.utils.datastructures.SortedDict` interally).
++    actually uses a `~collections.OrderedDict` interally).
+ 
+     At the moment you'll only come across this class when you access a
+     `.Table.columns` property.
+@@ -508,7 +508,7 @@ class BoundColumns(object):
+     """
+     def __init__(self, table):
+         self.table = table
+-        self.columns = SortedDict()
++        self.columns = OrderedDict()
+         for name, column in six.iteritems(table.base_columns):
+             self.columns[name] = bc = BoundColumn(table, column, name)
+             bc.render = getattr(table, 'render_' + name, column.render)
+diff --git a/django_tables2/tables.py b/django_tables2/tables.py
+index 01a0671..2f31069 100644
+--- a/django_tables2/tables.py
++++ b/django_tables2/tables.py
+@@ -9,9 +9,9 @@
+ import sys
+ from django.core.paginator       import Paginator
+ from django.db.models.fields     import FieldDoesNotExist
+-from django.utils.datastructures import SortedDict
+ from django.template             import RequestContext
+ from django.template.loader      import get_template
++from collections import OrderedDict
+ import six
+ import warnings
+ 
+@@ -172,10 +172,10 @@ def __new__(mcs, name, bases, attrs):
+             if hasattr(base, "base_columns"):
+                 parent_columns = list(base.base_columns.items()) + parent_columns
+         # Start with the parent columns
+-        attrs["base_columns"] = SortedDict(parent_columns)
++        attrs["base_columns"] = OrderedDict(parent_columns)
+         # Possibly add some generated columns based on a model
+         if opts.model:
+-            extra = SortedDict()
++            extra = OrderedDict()
+             # honor Table.Meta.fields, fallback to model._meta.fields
+             if opts.fields:
+                 # Each item in opts.fields is the name of a model field or a
+@@ -194,7 +194,7 @@ def __new__(mcs, name, bases, attrs):
+             attrs["base_columns"].update(extra)
+ 
+         # Explicit columns override both parent and generated columns
+-        attrs["base_columns"].update(SortedDict(cols))
++        attrs["base_columns"].update(OrderedDict(cols))
+         # Apply any explicit exclude setting
+         for exclusion in opts.exclude:
+             if exclusion in attrs["base_columns"]:
+@@ -204,7 +204,7 @@ def __new__(mcs, name, bases, attrs):
+             opts.sequence.expand(attrs["base_columns"].keys())
+             # Table's sequence defaults to sequence declared in Meta
+             #attrs['_sequence'] = opts.sequence
+-            attrs["base_columns"] = SortedDict(((x, attrs["base_columns"][x]) for x in opts.sequence))
++            attrs["base_columns"] = OrderedDict(((x, attrs["base_columns"][x]) for x in opts.sequence))
+ 
+         # set localize on columns
+         for col_name in attrs["base_columns"].keys():
+diff --git a/django_tables2/templatetags/django_tables2.py b/django_tables2/templatetags/django_tables2.py
+index 1e72d74..1ca91de 100644
+--- a/django_tables2/templatetags/django_tables2.py
++++ b/django_tables2/templatetags/django_tables2.py
+@@ -5,12 +5,12 @@
+ from django.template import TemplateSyntaxError, Variable, Node
+ from django.template.loader import get_template, select_template
+ from django.template.defaultfilters import stringfilter, title as old_title
+-from django.utils.datastructures import SortedDict
+ from django.utils.http import urlencode
+ from django.utils.html import escape
+ from django.utils.safestring import mark_safe
+ import django_tables2 as tables
+ from django_tables2.config import RequestConfig
++from collections import OrderedDict
+ import re
+ import six
+ import tokenize
+@@ -35,7 +35,7 @@ def token_kwargs(bits, parser):
+     """
+     if not bits:
+         return {}
+-    kwargs = SortedDict()
++    kwargs = OrderedDict()
+     while bits:
+         match = kwarg_re.match(bits[0])
+         if not match or not match.group(1):

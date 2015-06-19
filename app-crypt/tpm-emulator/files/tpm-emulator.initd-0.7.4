@@ -1,0 +1,60 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/tpm-emulator/files/tpm-emulator.initd-0.7.4,v 1.2 2012/12/24 17:13:25 alonbl Exp $
+
+STARTUP_MODE='save';
+
+extra_started_commands="clear save deactivated"
+command="/usr/bin/tpmd"
+command_args="-o tss -g tss"
+
+depend() {
+	use logger
+	after coldplug
+}
+
+checkconfig() {
+	lsmod | grep -q "^tpmd_dev\b" \
+		|| modprobe tpmd_dev &>/dev/null \
+		|| eerror "Failed to load module tpmd_dev";
+
+	if [ ! -c /dev/tpm ] && [ ! -c /dev/tpm0 ] ; then
+		eerror "No TPM device found!"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	ebegin "Starting tpm-emulator daemon with mode '$STARTUP_MODE' (tpmd)"
+	checkconfig || eend $?
+	checkpath -d -m 0775 -o tss /var/run/tpm
+	start-stop-daemon --start --exec "${command}" -- ${command_args} $STARTUP_MODE > /dev/null
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping tpm-emulator daemon (tpmd)"
+	start-stop-daemon --stop --exec "${command}" -- ${command_args} > /dev/null
+	eend $?
+}
+
+clear() {
+	STARTUP_MODE='clear';
+	stop
+	start
+}
+
+save() {
+	STARTUP_MODE='save';
+	stop
+	start
+}
+
+deactivated() {
+	STARTUP_MODE='deactivated';
+	stop
+	start
+}
+

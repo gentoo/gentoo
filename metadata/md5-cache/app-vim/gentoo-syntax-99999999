@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm prepare unpack
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 ) dev-vcs/git
+DESCRIPTION=vim plugin: Gentoo and portage related syntax highlighting, filetype, and indent settings
+EAPI=5
+HOMEPAGE=https://github.com/gentoo/gentoo-syntax
+IUSE=ignore-glep31
+LICENSE=vim
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+_eclasses_=git-2	e28f0d8a9b321431b1e699782851b827	vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=f93057ba54055049c4fa1317844accf4

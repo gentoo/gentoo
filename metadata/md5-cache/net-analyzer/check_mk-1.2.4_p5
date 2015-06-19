@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DESCRIPTION=General purpose Nagios/Icinga plugin for retrieving data
+EAPI=5
+HOMEPAGE=http://mathias-kettner.de/check_mk.html
+IUSE=agent-only apache_status dmi_sysinfo livestatus logwatch mysql nfsexports oracle postgres smart wato xinetd zypper
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=( || ( dev-lang/python:2.6 dev-lang/python:2.7 ) ) wato? ( app-admin/sudo ) xinetd? ( sys-apps/xinetd ) !agent-only? ( || ( net-analyzer/nagios-core net-analyzer/icinga ) ) !agent-only? ( www-servers/apache www-apache/mod_python )
+REQUIRED_USE=livestatus? ( !agent-only ) wato? ( !agent-only )
+SLOT=0
+SRC_URI=http://mathias-kettner.de/download/check_mk-1.2.4p5.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=31d2b19687f21f4140822ffa9772d4ea

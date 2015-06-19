@@ -1,0 +1,48 @@
+--- src/gl_intern.h.orig	2003-09-21 16:39:30.247451624 -0400
++++ src/gl_intern.h	2003-09-21 16:39:41.610724144 -0400
+@@ -84,6 +84,6 @@
+ #define min(a,b) ((a)<(b)?(a):(b))
+ #endif
+ 
+-PFNGLCOLORTABLEEXTPROC gld_ColorTableEXT;
++//PFNGLCOLORTABLEEXTPROC gld_ColorTableEXT;
+ 
+ #endif // _GL_INTERN_H
+--- src/gl_main.c.orig	2003-09-21 16:39:55.436622288 -0400
++++ src/gl_main.c	2003-09-21 16:43:00.943420968 -0400
+@@ -285,6 +285,7 @@
+ 
+     if (strcasecmp(extension, "GL_EXT_texture_filter_anisotropic") == 0)
+       gl_texture_filter_anisotropic = true;
++/*
+     else if (strcasecmp(extension, "GL_EXT_paletted_texture") == 0) {
+       if (gl_use_paletted_texture) {
+         gl_paletted_texture = true;
+@@ -304,6 +305,7 @@
+ 	else
+           lprintf(LO_INFO,"using GL_EXT_shared_texture_palette\n",glGetString(GL_VENDOR));
+       }
++*/
+ 
+     extension = p;
+   } while (*extension != '\0');
+@@ -761,7 +763,7 @@
+     pal[transparent_pal_index*4+1]=0;
+     pal[transparent_pal_index*4+2]=0;
+     pal[transparent_pal_index*4+3]=0;
+-    gld_ColorTableEXT(GL_SHARED_TEXTURE_PALETTE_EXT, GL_RGBA, 256, GL_RGBA, GL_UNSIGNED_BYTE, pal);
++//    gld_ColorTableEXT(GL_SHARED_TEXTURE_PALETTE_EXT, GL_RGBA, 256, GL_RGBA, GL_UNSIGNED_BYTE, pal);
+     W_UnlockLumpName("PLAYPAL");
+   } else {
+     if (palette>0)
+--- src/gl_texture.c.orig	2003-09-21 16:43:18.450759448 -0400
++++ src/gl_texture.c	2003-09-21 16:43:39.549551944 -0400
+@@ -178,7 +178,7 @@
+   pal[transparent_pal_index*4+1]=0;
+   pal[transparent_pal_index*4+2]=0;
+   pal[transparent_pal_index*4+3]=0;
+-  gld_ColorTableEXT(target, GL_RGBA, 256, GL_RGBA, GL_UNSIGNED_BYTE, pal);
++//  gld_ColorTableEXT(target, GL_RGBA, 256, GL_RGBA, GL_UNSIGNED_BYTE, pal);
+   W_UnlockLumpName("PLAYPAL");
+ }
+ 

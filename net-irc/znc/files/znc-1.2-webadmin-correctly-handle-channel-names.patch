@@ -1,0 +1,73 @@
+https://bugs.gentoo.org/show_bug.cgi?id=507794
+
+From 5e6e3be32acfeadeaf1fb3bb17bada08aec6432f Mon Sep 17 00:00:00 2001
+From: Uli Schlachter <psychon@znc.in>
+Date: Sun, 13 Apr 2014 20:36:55 +0200
+Subject: [PATCH] webadmin/add channel: Correctly handle channel names
+
+The CChan constructor makes sure that the channel name begins with a valid
+channel prefix. Thus, this could change the name of the resulting channel.
+
+When you edited an irc network which already had a channel "#foo", were
+connected to IRC (so ZNC knows which prefixes are valid) and added a channel
+"foo", this would lead to a problem:
+
+Webadmin checks and sees that there is no channel "foo" yet. Webadmin creates a
+new CChan instance for "foo". The CChan constructor notices that "f" is not a
+valid channel prefix and instead calls itself "#foo". Then,
+CIRCNetwork::AddChan() would see that this channel already exists, delete the
+given channel and return false.
+
+However, webadmin didn't check this result and would continue changing settings
+on an already destroyed CChan instance.
+
+Fix this by checking if the channel exists after CChan had its chance to mess
+with the channel name. Also handle failures from CIRCNetwork::AddChan().
+
+Fixes #528.
+
+Signed-off-by: Uli Schlachter <psychon@znc.in>
+---
+ modules/webadmin.cpp | 16 +++++++++++-----
+ 1 file changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/modules/webadmin.cpp b/modules/webadmin.cpp
+index 40a28d3..90ddfd2 100644
+--- a/modules/webadmin.cpp
++++ b/modules/webadmin.cpp
+@@ -668,13 +668,19 @@ class CWebAdminMod : public CModule {
+ 				return true;
+ 			}
+ 
+-			if (pNetwork->FindChan(sChanName.Token(0))) {
+-				WebSock.PrintErrorPage("Channel [" + sChanName.Token(0) + "] already exists");
++			// This could change the channel name and e.g. add a "#" prefix
++			pChan = new CChan(sChanName, pNetwork, true);
++
++			if (pNetwork->FindChan(pChan->GetName())) {
++				WebSock.PrintErrorPage("Channel [" + pChan->GetName() + "] already exists");
++				delete pChan;
+ 				return true;
+ 			}
+ 
+-			pChan = new CChan(sChanName, pNetwork, true);
+-			pNetwork->AddChan(pChan);
++			if (!pNetwork->AddChan(pChan)) {
++				WebSock.PrintErrorPage("Could not add channel [" + pChan->GetName() + "]");
++				return true;
++			}
+ 		}
+ 
+ 		pChan->SetBufferCount(WebSock.GetParam("buffercount").ToUInt(), spSession->IsAdmin());
+@@ -700,7 +706,7 @@ class CWebAdminMod : public CModule {
+ 
+ 		CTemplate TmplMod;
+ 		TmplMod["User"] = pUser->GetUserName();
+-		TmplMod["ChanName"] = sChanName;
++		TmplMod["ChanName"] = pChan->GetName();
+ 		TmplMod["WebadminAction"] = "change";
+ 		FOR_EACH_MODULE(it, pNetwork) {
+ 			(*it)->OnEmbeddedWebRequest(WebSock, "webadmin/channel", TmplMod);
+-- 
+1.9.1
+

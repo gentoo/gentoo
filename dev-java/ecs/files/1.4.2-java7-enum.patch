@@ -1,0 +1,217 @@
+diff --git a/ecs-1.4.2-src/src/java/org/apache/ecs/ConcreteElement.java b/ecs-1.4.2-src/src/java/org/apache/ecs/ConcreteElement.java
+index 1138b28..85e7c42 100644
+--- a/ecs-1.4.2-src/src/java/org/apache/ecs/ConcreteElement.java
++++ b/ecs-1.4.2-src/src/java/org/apache/ecs/ConcreteElement.java
+@@ -319,11 +319,11 @@ public class ConcreteElement extends ElementAttributes implements Cloneable
+                 if(ce.getTagText() != null)
+                     out.write(ce.getTagText().getBytes(encoding));
+ 
+-                Enumeration enum = ce.registryList.elements();
++                Enumeration enumx = ce.registryList.elements();
+ 
+-                while(enum.hasMoreElements())
++                while(enumx.hasMoreElements())
+                 {
+-                    Object obj = ce.registry.get((String)enum.nextElement());
++                    Object obj = ce.registry.get((String)enumx.nextElement());
+                     if(obj instanceof GenericElement)
+                     {
+                         Element e = (Element)obj;
+@@ -435,10 +435,10 @@ public class ConcreteElement extends ElementAttributes implements Cloneable
+             if(getTagText() != null)
+                 out.write(getTagText());
+ 
+-            Enumeration enum = registryList.elements();
+-			while(enum.hasMoreElements())
++            Enumeration enumx = registryList.elements();
++			while(enumx.hasMoreElements())
+ 			{
+-				Object obj = registry.get((String)enum.nextElement());
++				Object obj = registry.get((String)enumx.nextElement());
+ 				if(obj instanceof GenericElement)
+ 				{
+ 					Element e = (Element)obj;
+diff --git a/ecs-1.4.2-src/src/java/org/apache/ecs/ElementAttributes.java b/ecs-1.4.2-src/src/java/org/apache/ecs/ElementAttributes.java
+index 76eeac0..990e92e 100644
+--- a/ecs-1.4.2-src/src/java/org/apache/ecs/ElementAttributes.java
++++ b/ecs-1.4.2-src/src/java/org/apache/ecs/ElementAttributes.java
+@@ -342,12 +342,12 @@ public abstract class ElementAttributes extends GenericElement implements Attrib
+         }
+         out.append(getElementType());
+ 
+-        Enumeration enum = getElementHashEntry().keys();
++        Enumeration enumx = getElementHashEntry().keys();
+         String value = null; // avoid creating a new string object on each pass through the loop
+ 
+-        while (enum.hasMoreElements())
++        while (enumx.hasMoreElements())
+         {
+-            String attr = (String) enum.nextElement();
++            String attr = (String) enumx.nextElement();
+             if(getAttributeFilterState())
+             {
+                 value = getAttributeFilter().process(getElementHashEntry().get(attr).toString());
+diff --git a/ecs-1.4.2-src/src/java/org/apache/ecs/filter/RegexpFilter.java b/ecs-1.4.2-src/src/java/org/apache/ecs/filter/RegexpFilter.java
+index dcd0db0..effcc0d 100644
+--- a/ecs-1.4.2-src/src/java/org/apache/ecs/filter/RegexpFilter.java
++++ b/ecs-1.4.2-src/src/java/org/apache/ecs/filter/RegexpFilter.java
+@@ -118,10 +118,10 @@ public class RegexpFilter extends Hashtable implements Filter {
+         }
+         
+         String substituteIn = to_process;
+-        Enumeration enum = keys();
++        Enumeration enumx = keys();
+ 
+-        while (enum.hasMoreElements()) {
+-            RE r = (RE)enum.nextElement();
++        while (enumx.hasMoreElements()) {
++            RE r = (RE)enumx.nextElement();
+             String substitution = (String)get(r);
+             substituteIn = r.subst(substituteIn, substitution);
+         }
+diff --git a/ecs-1.4.2-src/src/java/org/apache/ecs/html/A.java b/ecs-1.4.2-src/src/java/org/apache/ecs/html/A.java
+index 2a30d8d..ac87ae9 100644
+--- a/ecs-1.4.2-src/src/java/org/apache/ecs/html/A.java
++++ b/ecs-1.4.2-src/src/java/org/apache/ecs/html/A.java
+@@ -462,13 +462,13 @@ public class A extends MultiPartElement implements Printable, FocusEvents, Mouse
+     */
+     public boolean getNeedLineBreak()
+     {
+-        java.util.Enumeration enum = elements();
++        java.util.Enumeration enumx = elements();
+         int i=0;
+         int j=0;
+-        while(enum.hasMoreElements())
++        while(enumx.hasMoreElements())
+         {
+             j++;
+-            Object obj = enum.nextElement();
++            Object obj = enumx.nextElement();
+             if( obj instanceof IMG )
+                 i++;
+         }
+diff --git a/ecs-1.4.2-src/src/java/org/apache/ecs/html/Select.java b/ecs-1.4.2-src/src/java/org/apache/ecs/html/Select.java
+index f8f71c2..a9c1f4a 100644
+--- a/ecs-1.4.2-src/src/java/org/apache/ecs/html/Select.java
++++ b/ecs-1.4.2-src/src/java/org/apache/ecs/html/Select.java
+@@ -219,10 +219,10 @@ public class Select extends MultiPartElement implements
+ 
+     public Select selectOption(int option)
+     {
+-        Enumeration enum = keys();
+-        for(int x = 0; enum.hasMoreElements(); x++)
++        Enumeration enumx = keys();
++        for(int x = 0; enumx.hasMoreElements(); x++)
+         {
+-            ConcreteElement element = (ConcreteElement)getElement((String)enum.nextElement());
++            ConcreteElement element = (ConcreteElement)getElement((String)enumx.nextElement());
+             if(x == option)
+             {
+                 ((Option)element).setSelected(true);
+diff --git a/ecs-1.4.2-src/src/java/org/apache/ecs/html/TD.java b/ecs-1.4.2-src/src/java/org/apache/ecs/html/TD.java
+index 188d5f0..6737648 100644
+--- a/ecs-1.4.2-src/src/java/org/apache/ecs/html/TD.java
++++ b/ecs-1.4.2-src/src/java/org/apache/ecs/html/TD.java
+@@ -468,13 +468,13 @@ public class TD extends MultiPartElement implements Printable, MouseEvents, KeyE
+     */
+     public boolean getNeedLineBreak()
+     {
+-        java.util.Enumeration enum = elements();
++        java.util.Enumeration enumx = elements();
+         int i=0;
+         int j=0;
+-        while(enum.hasMoreElements())
++        while(enumx.hasMoreElements())
+         {
+             j++;
+-            Object obj = enum.nextElement();
++            Object obj = enumx.nextElement();
+             if( obj instanceof IMG || obj instanceof A )
+                 i++;
+         }
+diff --git a/ecs-1.4.2-src/src/java/org/apache/ecs/vxml/TestBed2.java b/ecs-1.4.2-src/src/java/org/apache/ecs/vxml/TestBed2.java
+index 42d57a7..cd842db 100644
+--- a/ecs-1.4.2-src/src/java/org/apache/ecs/vxml/TestBed2.java
++++ b/ecs-1.4.2-src/src/java/org/apache/ecs/vxml/TestBed2.java
+@@ -158,12 +158,12 @@ public class TestBed2
+ 	
+ 	Menu menu3 = new Menu("true");
+ 	Prompt prompt2 = new Prompt("Welcome Home");
+-	Enumerate enum = new Enumerate();
+-	enum.addElement("For ");
+-	enum.addElement(new Value("_prompt"));
+-	enum.addElement(", press ");
+-	enum.addElement(new Value("_dtmf"));
+-	prompt2.addElement(enum);
++	Enumerate enumx = new Enumerate();
++	enumx.addElement("For ");
++	enumx.addElement(new Value("_prompt"));
++	enumx.addElement(", press ");
++	enumx.addElement(new Value("_dtmf"));
++	prompt2.addElement(enumx);
+ 	menu3.addElement(prompt2);
+ 	Choice choice1 = new Choice("http://www.sports.example/vxml/start.vxml");
+ 	Choice choice2 = new Choice("http://www.weather.example/intro.vxml");
+diff --git a/ecs-1.4.2-src/src/java/org/apache/ecs/xhtml/a.java b/ecs-1.4.2-src/src/java/org/apache/ecs/xhtml/a.java
+index 26add7f..1d0425a 100644
+--- a/ecs-1.4.2-src/src/java/org/apache/ecs/xhtml/a.java
++++ b/ecs-1.4.2-src/src/java/org/apache/ecs/xhtml/a.java
+@@ -472,13 +472,13 @@ public class a extends MultiPartElement implements Printable, FocusEvents, Mouse
+     */
+     public boolean getNeedLineBreak()
+     {
+-        java.util.Enumeration enum = elements();
++        java.util.Enumeration enumx = elements();
+         int i=0;
+         int j=0;
+-        while(enum.hasMoreElements())
++        while(enumx.hasMoreElements())
+         {
+             j++;
+-            Object obj = enum.nextElement();
++            Object obj = enumx.nextElement();
+             if( obj instanceof img )
+                 i++;
+         }
+diff --git a/ecs-1.4.2-src/src/java/org/apache/ecs/xhtml/td.java b/ecs-1.4.2-src/src/java/org/apache/ecs/xhtml/td.java
+index 8d96259..6bd4b45 100644
+--- a/ecs-1.4.2-src/src/java/org/apache/ecs/xhtml/td.java
++++ b/ecs-1.4.2-src/src/java/org/apache/ecs/xhtml/td.java
+@@ -466,13 +466,13 @@ public class td extends MultiPartElement implements Printable, MouseEvents, KeyE
+     */
+     public boolean getNeedLineBreak()
+     {
+-        java.util.Enumeration enum = elements();
++        java.util.Enumeration enumx = elements();
+         int i=0;
+         int j=0;
+-        while(enum.hasMoreElements())
++        while(enumx.hasMoreElements())
+         {
+             j++;
+-            Object obj = enum.nextElement();
++            Object obj = enumx.nextElement();
+             if( obj instanceof img || obj instanceof a )
+                 i++;
+         }
+diff --git a/ecs-1.4.2-src/src/java/org/apache/ecs/xml/XML.java b/ecs-1.4.2-src/src/java/org/apache/ecs/xml/XML.java
+index 1a03349..f6de10c 100644
+--- a/ecs-1.4.2-src/src/java/org/apache/ecs/xml/XML.java
++++ b/ecs-1.4.2-src/src/java/org/apache/ecs/xml/XML.java
+@@ -193,13 +193,13 @@ public class XML extends MultiPartElement implements Printable
+     public boolean getNeedLineBreak() {
+         boolean linebreak = true;
+ 
+-        java.util.Enumeration enum = elements();
++        java.util.Enumeration enumx = elements();
+ 
+         // if this tag has one child, and it's a String, then don't
+         // do any linebreaks to preserve whitespace
+ 
+-        while (enum.hasMoreElements()) {
+-            Object obj = enum.nextElement();
++        while (enumx.hasMoreElements()) {
++            Object obj = enumx.nextElement();
+             if (obj instanceof StringElement) {
+                  linebreak = false;
+                  break;

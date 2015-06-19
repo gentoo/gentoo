@@ -1,0 +1,29 @@
+# ChangeLog for dev-java/openspml2
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/openspml2/ChangeLog,v 1.6 2007/08/16 00:07:26 dertobi123 Exp $
+
+  16 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  openspml2-1.0_rc2.ebuild:
+  ppc stable, bug #186196
+
+  15 Aug 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  openspml2-1.0_rc2.ebuild:
+  amd64 stable, bug #186196.
+
+  11 Aug 2007; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml:
+  Remove myself from <maintainer>.
+
+  24 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  openspml2-1.0_rc2.ebuild:
+  stable x86, bug 186196
+
+  26 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  openspml2-1.0_rc2.ebuild:
+  Fix RDEPEND.
+
+*openspml2-1.0_rc2 (11 Sep 2006)
+
+  11 Sep 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/build.xml-1.0_rc2, +metadata.xml, +openspml2-1.0_rc2.ebuild:
+  Initial import - dependency of dev-java/jldap.
+

@@ -1,0 +1,202 @@
+# ChangeLog for dev-perl/Net-Amazon
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Amazon/ChangeLog,v 1.47 2014/10/19 20:14:34 zlogene Exp $
+
+  19 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> -Net-Amazon-0.610.0.ebuild:
+  Drop old.
+
+  15 May 2013; Agostino Sarubbo <ago@gentoo.org> Net-Amazon-0.620.0.ebuild:
+  Stable for x86, wrt bug #461128
+
+  15 May 2013; Agostino Sarubbo <ago@gentoo.org> Net-Amazon-0.620.0.ebuild:
+  Stable for amd64, wrt bug #461128
+
+*Net-Amazon-0.620.0 (27 Jan 2013)
+
+  27 Jan 2013; Torsten Veller <tove@gentoo.org> +Net-Amazon-0.620.0.ebuild,
+  metadata.xml:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  21 Apr 2012; Torsten Veller <tove@gentoo.org> -Net-Amazon-0.590.0.ebuild,
+  -Net-Amazon-0.600.0.ebuild:
+  Cleanup
+
+  05 Apr 2012; Jeff Horelick <jdhore@gentoo.org> Net-Amazon-0.610.0.ebuild:
+  marked x86 per bug 404683
+
+  28 Mar 2012; Agostino Sarubbo <ago@gentoo.org> Net-Amazon-0.610.0.ebuild:
+  Stable for amd64, wrt bug #404683
+
+*Net-Amazon-0.610.0 (30 Oct 2011)
+
+  30 Oct 2011; Torsten Veller <tove@gentoo.org> +Net-Amazon-0.610.0.ebuild:
+  Version bump
+
+*Net-Amazon-0.600.0 (06 Sep 2011)
+
+  06 Sep 2011; Robin H. Johnson <robbat2@gentoo.org>
+  +Net-Amazon-0.600.0.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Net-Amazon-0.59.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Net-Amazon-0.590.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Net-Amazon-0.590.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org> +Net-Amazon-0.590.0.ebuild:
+  Change version scheme
+
+  11 Jun 2010; Torsten Veller <tove@gentoo.org> -Net-Amazon-0.55.ebuild:
+  Cleanup
+
+  17 Apr 2010; Torsten Veller <tove@gentoo.org> Net-Amazon-0.59.ebuild:
+  Stable on amd64, x86 (#314467)
+
+  24 Dec 2009; Torsten Veller <tove@gentoo.org> -Net-Amazon-0.57.ebuild:
+  Cleanup
+
+*Net-Amazon-0.59 (10 Nov 2009)
+
+  10 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Net-Amazon-0.59.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  12 Oct 2009; Torsten Veller <tove@gentoo.org> -Net-Amazon-0.50.ebuild:
+  Cleanup
+
+  18 Sep 2009; Torsten Veller <tove@gentoo.org> Net-Amazon-0.55.ebuild:
+  Stable on amd64 (#283969)
+
+*Net-Amazon-0.57 (09 Sep 2009)
+
+  09 Sep 2009; Torsten Veller <tove@gentoo.org> +Net-Amazon-0.57.ebuild:
+  Version bump
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org> -Net-Amazon-0.54.ebuild:
+  Cleanup
+
+*Net-Amazon-0.55 (22 Jul 2009)
+
+  22 Jul 2009; Torsten Veller <tove@gentoo.org> +Net-Amazon-0.55.ebuild:
+  Version bump
+
+  16 Jul 2009; Torsten Veller <tove@gentoo.org> -Net-Amazon-0.51.ebuild,
+  -Net-Amazon-0.53.ebuild:
+  Cleanup
+
+*Net-Amazon-0.54 (21 Jun 2009)
+
+  21 Jun 2009; Torsten Veller <tove@gentoo.org> +Net-Amazon-0.54.ebuild:
+  Version bump
+
+*Net-Amazon-0.53 (14 Jun 2009)
+
+  14 Jun 2009; Torsten Veller <tove@gentoo.org> -Net-Amazon-0.52.ebuild,
+  +Net-Amazon-0.53.ebuild:
+  Version bump. Cleanup
+
+*Net-Amazon-0.52 (13 Jun 2009)
+
+  13 Jun 2009; Torsten Veller <tove@gentoo.org> +Net-Amazon-0.52.ebuild:
+  Version bump
+
+*Net-Amazon-0.51 (07 Jun 2009)
+
+  07 Jun 2009; Torsten Veller <tove@gentoo.org> +Net-Amazon-0.51.ebuild:
+  Version bump
+
+  06 May 2009; Torsten Veller <tove@gentoo.org> -Net-Amazon-0.39.ebuild:
+  Cleanup
+
+  03 May 2009; Markus Meier <maekke@gentoo.org> Net-Amazon-0.50.ebuild:
+  amd64 stable, bug #268215
+
+  01 May 2009; Torsten Veller <tove@gentoo.org> -Net-Amazon-0.49.ebuild:
+  Cleanup
+
+*Net-Amazon-0.50 (28 Oct 2008)
+
+  28 Oct 2008; Torsten Veller <tove@gentoo.org> +Net-Amazon-0.50.ebuild:
+  Version bump
+
+  30 Sep 2008; Torsten Veller <tove@gentoo.org> -Net-Amazon-0.40.ebuild,
+  -Net-Amazon-0.43.ebuild:
+  Cleanup
+
+*Net-Amazon-0.49 (30 Apr 2008)
+
+  30 Apr 2008; Torsten Veller <tove@gentoo.org> +Net-Amazon-0.49.ebuild:
+  Version bump
+
+*Net-Amazon-0.43 (25 Jun 2007)
+
+  25 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  +Net-Amazon-0.43.ebuild:
+  Version bump
+
+  05 May 2007; Christian Hartmann <ian@gentoo.org> -Net-Amazon-0.35.ebuild,
+  -Net-Amazon-0.36.ebuild, -Net-Amazon-0.38.ebuild:
+  Cleanup
+
+  09 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Net-Amazon-0.39.ebuild:
+  Marking stable amd64
+
+*Net-Amazon-0.40 (06 Apr 2007)
+
+  06 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  +Net-Amazon-0.40.ebuild:
+  Version bump
+
+*Net-Amazon-0.39 (28 Feb 2007)
+
+  28 Feb 2007; Christian Hartmann <ian@gentoo.org> +Net-Amazon-0.39.ebuild:
+  Version bump
+
+*Net-Amazon-0.38 (05 Feb 2007)
+
+  05 Feb 2007; Michael Cummings <mcummings@gentoo.org>
+  +Net-Amazon-0.38.ebuild:
+  Version bump
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Net-Amazon-0.35.ebuild:
+  Ebuild maintenance
+
+*Net-Amazon-0.36 (14 Jan 2007)
+
+  14 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  +Net-Amazon-0.36.ebuild:
+  Version bump
+
+  11 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Net-Amazon-0.35.ebuild:
+  Marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Net-Amazon-0.35.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  30 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  Net-Amazon-0.35.ebuild:
+  Bug 138436 - keywording ~amd64
+
+  29 Jun 2006; Christian Hartmann <ian@gentoo.org> metadata.xml,
+  Net-Amazon-0.35.ebuild:
+  Fixed RDEPEND; metadata
+
+  29 Jun 2006; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org>
+  Net-Amazon-0.35.ebuild:
+  Updated dependencies from bug #136142 (John <acocaracha@gmail.com>)
+
+*Net-Amazon-0.35 (29 Jun 2006)
+
+  29 Jun 2006; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org> +metadata.xml,
+  +Net-Amazon-0.35.ebuild:
+  Initial version

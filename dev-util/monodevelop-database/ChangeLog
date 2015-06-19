@@ -1,0 +1,148 @@
+# ChangeLog for dev-util/monodevelop-database
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/monodevelop-database/ChangeLog,v 1.29 2013/10/12 12:09:44 pacho Exp $
+
+  12 Oct 2013; Pacho Ramos <pacho@gentoo.org>
+  -monodevelop-database-2.8.5.1.ebuild:
+  Drop old
+
+  07 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  monodevelop-database-3.0.2.ebuild:
+  x86 stable wrt bug #435202
+
+  16 Sep 2012; Agostino Sarubbo <ago@gentoo.org>
+  monodevelop-database-3.0.2.ebuild:
+  Stable for amd64, wrt bug #435202
+
+*monodevelop-database-3.0.2 (16 Jun 2012)
+
+  16 Jun 2012; Pacho Ramos <pacho@gentoo.org>
+  +monodevelop-database-3.0.2.ebuild, -monodevelop-database-2.6.ebuild,
+  -monodevelop-database-2.8.2.ebuild:
+  Version bump, drop old.
+
+  22 May 2012; Agostino Sarubbo <ago@gentoo.org>
+  monodevelop-database-2.8.5.1.ebuild:
+  Stable for amd64, wrt bug #407701
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  monodevelop-database-2.6.ebuild, monodevelop-database-2.8.2.ebuild,
+  monodevelop-database-2.8.5.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  09 Apr 2012; Markus Meier <maekke@gentoo.org>
+  monodevelop-database-2.8.5.1.ebuild:
+  x86 stable, bug #407701
+
+*monodevelop-database-2.8.5.1 (22 Jan 2012)
+
+  22 Jan 2012; Pacho Ramos <pacho@gentoo.org>
+  +monodevelop-database-2.8.5.1.ebuild:
+  Version bump.
+
+*monodevelop-database-2.8.2 (23 Nov 2011)
+
+  23 Nov 2011; Pacho Ramos <pacho@gentoo.org>
+  +monodevelop-database-2.8.2.ebuild, -monodevelop-database-2.4.ebuild:
+  Version bump, remove old.
+
+  05 Nov 2011; Markos Chandras <hwoarang@gentoo.org>
+  monodevelop-database-2.6.ebuild:
+  Stable on amd64 wrt bug #389181
+
+  04 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  monodevelop-database-2.6.ebuild:
+  x86 stable wrt bug #389181
+
+*monodevelop-database-2.6 (12 Sep 2011)
+
+  12 Sep 2011; Pacho Ramos <pacho@gentoo.org>
+  -monodevelop-database-2.5.93.ebuild, +monodevelop-database-2.6.ebuild:
+  Version bump, remove old.
+
+*monodevelop-database-2.5.93 (20 Aug 2011)
+
+  20 Aug 2011; Alistair Bush <ali_bush@gentoo.org>
+  +monodevelop-database-2.5.93.ebuild:
+  Version Bump.
+
+  27 Nov 2010; Peter Alfredsen <loki_val@gentoo.org>
+  monodevelop-database-2.4.ebuild:
+  Fixup for compat with monodevelop-2.4.1
+
+  07 Oct 2010; Pacho Ramos <pacho@gentoo.org>
+  -monodevelop-database-2.0.ebuild, -monodevelop-database-2.1.1.ebuild,
+  -monodevelop-database-2.2.ebuild:
+  Remove old.
+
+  23 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  monodevelop-database-2.4.ebuild:
+  Stable on amd64 wrt bug #336851
+
+  12 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  monodevelop-database-2.4.ebuild:
+  x86 stable wrt bug #336851
+
+*monodevelop-database-2.4 (04 Jul 2010)
+
+  04 Jul 2010; Pacho Ramos <pacho@gentoo.org>
+  +monodevelop-database-2.4.ebuild:
+  Version bump.
+
+*monodevelop-database-2.2 (25 Feb 2010)
+
+  25 Feb 2010; Patrick Lauer <patrick@gentoo.org>
+  +monodevelop-database-2.2.ebuild:
+  Bump
+
+*monodevelop-database-2.1.1 (18 Oct 2009)
+
+  18 Oct 2009; Peter Alfredsen <loki_val@gentoo.org>
+  +monodevelop-database-2.1.1.ebuild:
+  Bump to 2.2 Beta 2
+
+*monodevelop-database-2.0 (30 Mar 2009)
+
+  30 Mar 2009; Peter Alfredsen <loki_val@gentoo.org>
+  -monodevelop-database-1.9.1.ebuild, -monodevelop-database-1.9.2.ebuild,
+  -monodevelop-database-1.9.3.ebuild, +monodevelop-database-2.0.ebuild:
+  Bump to monodevelop-2.0 version. Punt old.
+
+*monodevelop-database-1.9.3 (17 Mar 2009)
+
+  17 Mar 2009; Peter Alfredsen <loki_val@gentoo.org>
+  +monodevelop-database-1.9.3.ebuild:
+  Bump to MD 2 Beta 2
+
+*monodevelop-database-1.9.2 (08 Mar 2009)
+
+  08 Mar 2009; Peter Alfredsen <loki_val@gentoo.org>
+  +monodevelop-database-1.9.2.ebuild:
+  Beta1 of monodevelop-database-2. Bug 259798. Thanks to uzytkownik
+  <uzytkownik2@gmail.com>.
+
+  25 Jan 2009; Peter Alfredsen <loki_val@gentoo.org>
+  -monodevelop-database-0.18.ebuild, -monodevelop-database-1.0.ebuild:
+  Clean up for bug 250135
+
+  10 Dec 2008; Peter Alfredsen <loki_val@gentoo.org>
+  monodevelop-database-1.9.1.ebuild:
+  Add dev-dotnet/gtksourceview-sharp:1 as a dep per bug 250316.
+
+*monodevelop-database-1.9.1 (30 Nov 2008)
+
+  30 Nov 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +monodevelop-database-1.9.1.ebuild:
+  Bump for mono-2
+
+*monodevelop-database-1.0 (01 Jun 2008)
+
+  01 Jun 2008; Jurek Bartuszek <jurek@gentoo.org>
+  +monodevelop-database-1.0.ebuild:
+  Version bump (bug #195925)
+
+*monodevelop-database-0.18 (31 Dec 2007)
+
+  31 Dec 2007; Jurek Bartuszek <jurek@gentoo.org> +metadata.xml,
+  +monodevelop-database-0.18.ebuild:
+  Initial version

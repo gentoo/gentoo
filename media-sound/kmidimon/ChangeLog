@@ -1,0 +1,62 @@
+# ChangeLog for media-sound/kmidimon
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/kmidimon/ChangeLog,v 1.15 2014/12/03 08:05:59 kensington Exp $
+
+  03 Dec 2014; Michael Palimaka <kensington@gentoo.org> kmidimon-0.7.5.ebuild:
+  Restrict media-sound/drumstick dependency.
+
+  17 Oct 2014; Michael Palimaka <kensington@gentoo.org> kmidimon-0.7.5.ebuild:
+  Update HOMEPAGE.
+
+  17 Oct 2014; Michael Palimaka <kensington@gentoo.org> metadata.xml:
+  Add upstream metadata.
+
+  01 Nov 2013; Johannes Huber <johu@gentoo.org> -kmidimon-0.7.4.ebuild:
+  Remove old.
+
+  01 Nov 2013; Agostino Sarubbo <ago@gentoo.org> kmidimon-0.7.5.ebuild:
+  Stable for x86, wrt bug #489410
+
+  26 Oct 2013; Agostino Sarubbo <ago@gentoo.org> kmidimon-0.7.5.ebuild:
+  Stable for amd64, wrt bug #489410
+
+*kmidimon-0.7.5 (14 Aug 2013)
+
+  14 Aug 2013; Michael Palimaka <kensington@gentoo.org> +kmidimon-0.7.5.ebuild:
+  Version bump wrt bug #480486.
+
+  11 Jun 2013; Agostino Sarubbo <ago@gentoo.org> kmidimon-0.7.4.ebuild:
+  Stable for x86, wrt bug #472986
+
+  11 Jun 2013; Agostino Sarubbo <ago@gentoo.org> kmidimon-0.7.4.ebuild:
+  Stable for amd64, wrt bug #472986
+
+  28 Oct 2011; Jonathan Callen <abcd@gentoo.org> kmidimon-0.7.4.ebuild:
+  Bump to EAPI=4
+
+  02 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org> kmidimon-0.7.4.ebuild:
+  EAPI3, use array for DOCS
+
+*kmidimon-0.7.4 (29 Oct 2010)
+
+  29 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +kmidimon-0.7.4.ebuild:
+  Version bump.
+
+*kmidimon-0.7.3 (28 Apr 2010)
+
+  28 Apr 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +kmidimon-0.7.3.ebuild:
+  Version bump.
+
+*kmidimon-0.7.2 (23 Dec 2009)
+
+  23 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +kmidimon-0.7.2.ebuild:
+  Version bump.
+
+*kmidimon-0.7.1 (08 Nov 2009)
+
+  08 Nov 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +kmidimon-0.7.1.ebuild:
+  Initial commit.

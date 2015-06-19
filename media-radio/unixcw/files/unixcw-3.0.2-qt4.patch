@@ -1,0 +1,20 @@
+--- src/xcwcp/Makefile.orig	2012-06-21 07:49:59.000000000 +0200
++++ src/xcwcp/Makefile	2012-06-21 07:56:51.000000000 +0200
+@@ -18,7 +18,7 @@
+ 
+ include ../../Makefile.inc
+ CXX	= $(AC_CXX)
+-CXXFLAGS= $(AC_CXXFLAGS) $(AC_DEFS) -I../libcw -I../cwutils -I$(AC_QT4INC) -I$(AC_QT4INC)/QtCore -I$(AC_QT4INC)/QtGui
++CXXFLAGS= $(AC_CXXFLAGS) $(AC_DEFS) -I../libcw -I../cwutils -I$(AC_QT4INC)
+ GZIP	= $(AC_GZIP)
+ 
+ SHELL	= /bin/sh
+@@ -28,7 +28,7 @@
+           moc_application.o
+ 
+ # Link to the shared libcw.
+-LIBS	=  -L../libcw -lcw -lQtGui -lQtCore
++LIBS	=  $(AC_QT4LIBS) -L../libcw -lcw -lQtGui -lQtCore
+ 
+ default: all
+ 

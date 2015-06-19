@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=app-accessibility/sphinx2 dev-lang/perl:=[-build(-)]
+DESCRIPTION=Interface to Sphinx-II speech recognition
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Speech-Recognizer-SPX/
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=app-accessibility/sphinx2 dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DJ/DJHD/Speech-Recognizer-SPX-0.0801.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=312a223effb66986dc9e3d74e3e9729f

@@ -1,0 +1,13 @@
+https://svn.boost.org/trac/boost/ticket/10122
+
+--- engine/mem.h
++++ engine/mem.h
+@@ -8,6 +8,8 @@
+ #ifndef BJAM_MEM_H
+ #define BJAM_MEM_H
+ 
++#include "jam.h"
++
+ #ifdef OPT_BOEHM_GC
+ 
+     /* Use Boehm GC memory allocator. */

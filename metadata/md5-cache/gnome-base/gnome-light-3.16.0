@@ -1,0 +1,11 @@
+DEFINED_PHASES=pretend
+DESCRIPTION=Meta package for GNOME-Light, merge this package to install
+EAPI=5
+HOMEPAGE=http://www.gnome.org/
+IUSE=cups +gnome-shell
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=metapackage
+PDEPEND=>=gnome-base/gvfs-1.24.0
+RDEPEND=!gnome-base/gnome >=gnome-base/gnome-core-libs-3.16.0[cups?] >=gnome-base/gnome-session-3.16.0 >=gnome-base/gnome-menus-3.10.1:3 >=gnome-base/gnome-settings-daemon-3.16.0[cups?] >=gnome-base/gnome-control-center-3.16.0[cups?] >=gnome-base/nautilus-3.16.0 gnome-shell? ( >=x11-wm/mutter-3.16.0 >=gnome-base/gnome-shell-3.16.0 ) >=x11-themes/adwaita-icon-theme-3.16.0 >=x11-themes/gnome-themes-standard-3.16.0 >=x11-themes/gnome-backgrounds-3.16.0 >=x11-terms/gnome-terminal-3.16.0
+SLOT=2.0
+_md5_=79aba612d11fef36bb281ce4824f3cd4

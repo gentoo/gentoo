@@ -1,0 +1,40 @@
+# ChangeLog for dev-perl/Net-SMTP-TLS
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-SMTP-TLS/ChangeLog,v 1.8 2014/09/12 15:33:44 zlogene Exp $
+
+  12 Sep 2014; Mikle Kolyada <zlogene@gentoo.org> -Net-SMTP-TLS-0.120.0.ebuild:
+  Drop old
+
+*Net-SMTP-TLS-0.120.0-r2 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Net-SMTP-TLS-0.120.0-r2.ebuild, -Net-SMTP-TLS-0.120.0-r1.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Net-SMTP-TLS-0.120.0-r1 (29 May 2012)
+
+  29 May 2012; Tiziano Müller <dev-zero@gentoo.org>
+  +Net-SMTP-TLS-0.120.0-r1.ebuild,
+  +files/0.120.0-multiple-attachments-fix.patch:
+  fix bug corrupting attachments (bug #385245, upstream bug #63538 at
+  rt.cpan.org)
+
+  12 Apr 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Use cpan distribution (not a module) in metadata.xml
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Net-SMTP-TLS-0.12.ebuild:
+  Cleanup
+
+*Net-SMTP-TLS-0.120.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org> +Net-SMTP-TLS-0.120.0.ebuild:
+  Change version scheme
+
+*Net-SMTP-TLS-0.12 (24 Sep 2010)
+
+  24 Sep 2010; Tiziano Müller <dev-zero@gentoo.org>
+  +Net-SMTP-TLS-0.12.ebuild, +metadata.xml:
+  Initial commit (ebuild written by me).

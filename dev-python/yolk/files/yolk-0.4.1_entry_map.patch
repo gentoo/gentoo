@@ -1,0 +1,20 @@
+#Patch by Jesus Rivero <neurogeek@gentoo.org>
+#Sent upstream on 2011-07-20
+diff -uNr yolk-0.4.1.orig/yolk/cli.py yolk-0.4.1/yolk/cli.py
+--- yolk-0.4.1.orig/yolk/cli.py	2008-08-11 10:36:54.000000000 -0400
++++ yolk-0.4.1/yolk/cli.py	2011-07-20 10:53:26.000000000 -0400
+@@ -830,10 +830,12 @@
+         """
+         pprinter = pprint.PrettyPrinter()
+         try:
+-            pprinter.pprint(pkg_resources.get_entry_map(self.options.entry_map))
++            entry_map = pkg_resources.get_entry_map(self.options.show_entry_map)
++            if entry_map:
++                pprinter.pprint(entry_map)
+         except pkg_resources.DistributionNotFound:
+             self.logger.error("Distribution not found: %s" \
+-                    % self.options.entry_map)
++                    % self.options.show_entry_map)
+             return 1
+         return 0
+ 

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Translate TEX into HTML
+EAPI=4
+HOMEPAGE=http://hutchinson.belmont.ma.us/tth/
+KEYWORDS=amd64 ~arm hppa ppc ppc64 x86
+LICENSE=free-noncomm
+RDEPEND=app-text/ghostscript-gpl media-libs/netpbm
+SLOT=0
+SRC_URI=mirror://gentoo/tth-3.77.tgz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=70def81a8850fb8eeaab9aaf201182ea

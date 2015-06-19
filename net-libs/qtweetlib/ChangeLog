@@ -1,0 +1,34 @@
+# ChangeLog for net-libs/qtweetlib
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/qtweetlib/ChangeLog,v 1.6 2014/06/23 05:21:32 kensington Exp $
+
+  23 Jun 2014; Michael Palimaka <kensington@gentoo.org> -qtweetlib-0.4.ebuild,
+  qtweetlib-0.5.ebuild, qtweetlib-9999.ebuild:
+  Add missing dependency wrt bug #514592. Remove old.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> qtweetlib-0.4.ebuild,
+  qtweetlib-0.5.ebuild, qtweetlib-9999.ebuild:
+  Move Qt dependencies to the new category
+
+  15 Jul 2012; Michael Palimaka <kensington@gentoo.org> qtweetlib-0.4.ebuild,
+  qtweetlib-0.5.ebuild, qtweetlib-9999.ebuild:
+  Add missing slot dependencies on Qt.
+
+*qtweetlib-0.5 (12 Mar 2012)
+
+  12 Mar 2012; Johannes Huber <johu@gentoo.org> +qtweetlib-0.5.ebuild,
+  -qtweetlib-0.3.ebuild:
+  Version bump wanted by jefferai. Remove old.
+
+*qtweetlib-0.4 (23 Feb 2012)
+
+  23 Feb 2012; Johannes Huber <johu@gentoo.org> +qtweetlib-0.4.ebuild,
+  qtweetlib-0.3.ebuild, qtweetlib-9999.ebuild:
+  Version bump.
+
+*qtweetlib-9999 (12 Nov 2011)
+*qtweetlib-0.3 (12 Nov 2011)
+
+  12 Nov 2011; Andreas K. Huettel <dilfridge@gentoo.org> +qtweetlib-0.3.ebuild,
+  +qtweetlib-9999.ebuild, +metadata.xml:
+  New library, dependency of media-sound/tomahawk; imported from KDE overlay.

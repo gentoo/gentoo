@@ -1,0 +1,38 @@
+http://svn.savannah.nongnu.org/viewvc?view=rev&root=sysvinit&revision=90
+https://bugs.gentoo.org/326697
+
+--- sysvinit/trunk/src/init.c	2010/05/07 15:16:26	89
++++ sysvinit/trunk/src/init.c	2010/05/17 09:44:34	90
+@@ -54,10 +54,6 @@
+ 
+ #ifdef WITH_SELINUX
+ #  include <selinux/selinux.h>
+-#  include <sys/mount.h>
+-#  ifndef MNT_DETACH /* present in glibc 2.10, missing in 2.7 */
+-#    define MNT_DETACH 2
+-#  endif
+ #endif
+ 
+ #ifdef __i386__
+@@ -2872,11 +2868,9 @@
+ 
+ #ifdef WITH_SELINUX
+ 	if (getenv("SELINUX_INIT") == NULL) {
+-	  const int rc = mount("proc", "/proc", "proc", 0, 0);
+-	  if (is_selinux_enabled() > 0) {
+-	    putenv("SELINUX_INIT=YES");
+-	    if (rc == 0) umount2("/proc", MNT_DETACH);
++         if (is_selinux_enabled() != 1) {
+ 	    if (selinux_init_load_policy(&enforce) == 0) {
++             putenv("SELINUX_INIT=YES");
+ 	      execv(myname, argv);
+ 	    } else {
+ 	      if (enforce > 0) {
+@@ -2887,7 +2881,6 @@
+ 	      }
+ 	    }
+ 	  }
+-	  if (rc == 0) umount2("/proc", MNT_DETACH);
+ 	}
+ #endif  
+ 	/* Start booting. */

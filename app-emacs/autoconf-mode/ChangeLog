@@ -1,0 +1,179 @@
+# ChangeLog for app-emacs/autoconf-mode
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/autoconf-mode/ChangeLog,v 1.50 2013/12/29 12:30:20 ulm Exp $
+
+  29 Dec 2013; Ulrich Müller <ulm@gentoo.org> -autoconf-mode-2.68.ebuild,
+  autoconf-mode-2.69.ebuild:
+  Specify LICENSE more precisely. Drop sparc-fbsd keyword. Drop to unstable
+  keyword on s390 and sh. Remove old.
+
+  02 Jun 2013; Agostino Sarubbo <ago@gentoo.org> autoconf-mode-2.69.ebuild:
+  Stable for sh, wrt bug #441064
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> autoconf-mode-2.69.ebuild:
+  Stable for sparc, wrt bug #441064
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> autoconf-mode-2.69.ebuild:
+  Stable for s390, wrt bug #441064
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> autoconf-mode-2.69.ebuild:
+  Stable for x86, wrt bug #441064
+
+  18 May 2013; Agostino Sarubbo <ago@gentoo.org> autoconf-mode-2.69.ebuild:
+  Stable for alpha, wrt bug #441064
+
+  18 May 2013; Agostino Sarubbo <ago@gentoo.org> autoconf-mode-2.69.ebuild:
+  Stable for ia64, wrt bug #441064
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> autoconf-mode-2.69.ebuild:
+  Stable for arm, wrt bug #441064
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> autoconf-mode-2.69.ebuild:
+  Stable for ppc64, wrt bug #441064
+
+  16 May 2013; Jeroen Roovers <jer@gentoo.org> autoconf-mode-2.69.ebuild:
+  Stable for HPPA (bug #441064).
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> autoconf-mode-2.69.ebuild:
+  Stable for ppc, wrt bug #441064
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> autoconf-mode-2.69.ebuild:
+  Stable for amd64, wrt bug #441064
+
+*autoconf-mode-2.69 (08 Sep 2012)
+
+  08 Sep 2012; Ulrich Müller <ulm@gentoo.org> -autoconf-mode-2.65.ebuild,
+  +autoconf-mode-2.69.ebuild:
+  Version bump. Remove old.
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> autoconf-mode-2.68.ebuild:
+  keyword ~amd64-fbsd
+
+  25 Aug 2011; Jeroen Roovers <jer@gentoo.org> autoconf-mode-2.68.ebuild:
+  Stable for HPPA (bug #375689).
+
+  26 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  autoconf-mode-2.68.ebuild:
+  ppc/ppc64 stable wrt #375689
+
+  24 Jul 2011; Raúl Porcel <armin76@gentoo.org> autoconf-mode-2.68.ebuild:
+  alpha/arm/ia64/s390/sh/sparc/x86 stable wrt #375689
+
+  24 Jul 2011; Markos Chandras <hwoarang@gentoo.org> autoconf-mode-2.68.ebuild:
+  Stable on amd64 wrt bug #375689
+
+*autoconf-mode-2.68 (06 Jan 2011)
+
+  06 Jan 2011; Ulrich Mueller <ulm@gentoo.org> +autoconf-mode-2.68.ebuild:
+  Version bump to follow sys-devel/autoconf. No changes.
+
+  07 Jun 2010; Ulrich Mueller <ulm@gentoo.org> -autoconf-mode-2.63.ebuild,
+  -autoconf-mode-2.64.ebuild:
+  Remove old.
+
+  07 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  autoconf-mode-2.65.ebuild:
+  Stable on amd64 wrt bug #313821
+
+  04 Jun 2010; Jeroen Roovers <jer@gentoo.org> autoconf-mode-2.65.ebuild:
+  Stable for HPPA (bug #313821).
+
+  22 May 2010; Raúl Porcel <armin76@gentoo.org> autoconf-mode-2.65.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #313821
+
+  11 May 2010; Brent Baude <ranger@gentoo.org> autoconf-mode-2.65.ebuild:
+  stable ppc64, bug 313821
+
+  21 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  autoconf-mode-2.65.ebuild:
+  stable x86, bug 313821
+
+  16 Apr 2010; Brent Baude <ranger@gentoo.org> autoconf-mode-2.65.ebuild:
+  stable ppc, bug 313821
+
+*autoconf-mode-2.65 (08 Apr 2010)
+
+  08 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  +autoconf-mode-2.65.ebuild:
+  version bump, change license to GPL-3, no real fixes
+
+  26 Nov 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  autoconf-mode-2.64.ebuild:
+  Use the bz2-compressed file instead of the gz-compressed, this way it
+  shares the same distfile as sys-devel/autoconf.
+
+*autoconf-mode-2.64 (26 Nov 2009)
+
+  26 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  +autoconf-mode-2.64.ebuild:
+  version bump, minimal changes
+
+  24 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  autoconf-mode-2.63.ebuild:
+  import changes from Prefix overlay
+
+  14 Feb 2009; Ulrich Mueller <ulm@gentoo.org> -autoconf-mode-2.61.ebuild,
+  -autoconf-mode-2.62.ebuild, autoconf-mode-2.63.ebuild:
+  All stable, bug 257699. Remove old.
+
+  06 Feb 2009; Raúl Porcel <armin76@gentoo.org> autoconf-mode-2.63.ebuild:
+  alpha/arm/ia64/s390/sh/x86 stable wrt #257699
+
+  06 Feb 2009; Tiago Cunha <tcunha@gentoo.org> autoconf-mode-2.63.ebuild:
+  stable amd64/sparc, bug 257699
+
+  06 Feb 2009; Jeroen Roovers <jer@gentoo.org> autoconf-mode-2.63.ebuild:
+  Stable for HPPA (bug #257699).
+
+*autoconf-mode-2.63 (13 Oct 2008)
+
+  13 Oct 2008; Ulrich Mueller <ulm@gentoo.org> +autoconf-mode-2.63.ebuild:
+  Version bump.
+
+*autoconf-mode-2.62 (04 Aug 2008)
+
+  04 Aug 2008; Ulrich Mueller <ulm@gentoo.org> +autoconf-mode-2.62.ebuild:
+  Version bump.
+
+  22 Sep 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  autoconf-mode-2.61.ebuild:
+  Marked stable on amd64 as per bug 189029.
+
+  08 Sep 2007; Joseph Jezak <josejx@gentoo.org> autoconf-mode-2.61.ebuild:
+  Marked ppc64 stable for bug #189029.
+
+  24 Aug 2007; Raúl Porcel <armin76@gentoo.org> autoconf-mode-2.61.ebuild:
+  alpha/ia64 stable wrt #189029
+
+  23 Aug 2007; Christian Faulhammer <opfer@gentoo.org>
+  autoconf-mode-2.61.ebuild:
+  stable x86, bug 189029
+
+  19 Aug 2007; Jeroen Roovers <jer@gentoo.org> autoconf-mode-2.61.ebuild:
+  Stable for HPPA (bug #189029).
+
+  18 Aug 2007; nixnut <nixnut@gentoo.org> autoconf-mode-2.61.ebuild:
+  Stable on ppc wrt bug 189029
+
+  15 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  autoconf-mode-2.61.ebuild:
+  Stable on sparc wrt #189029
+
+  06 Jul 2007; Ulrich Mueller <ulm@gentoo.org> autoconf-mode-2.61.ebuild:
+  Add ~amd64 ~arm ~hppa ~ppc ~s390 ~sh ~sparc, closes bug #184219.
+
+  06 Jul 2007; Markus Rothe <corsair@gentoo.org> autoconf-mode-2.61.ebuild:
+  Added ~ppc64; bug #184219
+
+  05 Jul 2007; Raúl Porcel <armin76@gentoo.org> autoconf-mode-2.61.ebuild:
+  Add ~alpha/~ia64 wrt #184219
+
+  05 Jul 2007; Roy Marples <uberlord@gentoo.org> autoconf-mode-2.61.ebuild:
+  Re-added ~sparc-fbsd and ~x86-fbsd keywords, #184219.
+
+*autoconf-mode-2.61 (04 Jul 2007)
+
+  04 Jul 2007; Ulrich Mueller <ulm@gentoo.org>
+  +files/50autoconf-mode-gentoo.el, +metadata.xml,
+  +autoconf-mode-2.61.ebuild:
+  Initial import. Split off Emacs support from sys-devel/autoconf, bug #184196.

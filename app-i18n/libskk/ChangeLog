@@ -1,0 +1,42 @@
+# ChangeLog for app-i18n/libskk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/libskk/ChangeLog,v 1.9 2015/06/05 14:22:28 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> libskk-1.0.1.ebuild:
+  Replace obsolete mirror://bitbucket with the real URI.
+
+*libskk-1.0.1 (03 Aug 2013)
+
+  03 Aug 2013; Akinori Hattori <hattya@gentoo.org> +libskk-1.0.1.ebuild:
+  new upstream release
+
+  04 May 2013; Naohiro Aota <naota@gentoo.org> libskk-0.0.11.ebuild,
+  libskk-0.0.12.ebuild, libskk-0.0.9.ebuild:
+  Migrate to vala.eclass #467382
+
+*libskk-0.0.12 (08 Jul 2012)
+
+  08 Jul 2012; Naohiro Aota <naota@gentoo.org> +libskk-0.0.12.ebuild:
+  Version bump to 0.0.12.
+
+  08 Jul 2012; Naohiro Aota <naota@gentoo.org> libskk-0.0.11.ebuild:
+  Run test under virtual X. #421507
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> libskk-0.0.9.ebuild,
+  libskk-0.0.11.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*libskk-0.0.11 (18 Mar 2012)
+
+  18 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> +libskk-0.0.11.ebuild,
+  metadata.xml:
+  Version bump and set VALAC so dev-lang/vala is in fact used.
+
+*libskk-0.0.9 (28 Jan 2012)
+
+  28 Jan 2012; MATSUU Takuto <matsuu@gentoo.org> +libskk-0.0.9.ebuild,
+  +metadata.xml:
+  Initial import.

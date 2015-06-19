@@ -1,0 +1,62 @@
+# ChangeLog for net-analyzer/yersinia
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/yersinia/ChangeLog,v 1.14 2014/07/18 12:14:07 jer Exp $
+
+  18 Jul 2014; Jeroen Roovers <jer@gentoo.org> -yersinia-0.7.1.ebuild:
+  Old.
+
+  03 Jul 2014; Jeroen Roovers <jer@gentoo.org> yersinia-0.7.3.ebuild:
+  Do not call glib-gettext.m4 functions when dev-libs/glib is not installed
+  (bug #514802).
+
+  04 May 2014; Agostino Sarubbo <ago@gentoo.org> yersinia-0.7.3.ebuild:
+  Stable for x86, wrt bug #502866
+
+  30 Apr 2014; Chema Alonso <nimiux@gentoo.org> yersinia-0.7.3.ebuild:
+  Stable for amd64 wrt bug #502866
+
+  28 Dec 2013; Jeroen Roovers <jer@gentoo.org> yersinia-0.7.3.ebuild:
+  Add virtual/pkgconfig dependency.
+
+*yersinia-0.7.3 (28 Dec 2013)
+
+  28 Dec 2013; Jeroen Roovers <jer@gentoo.org> +yersinia-0.7.3.ebuild,
+  files/yersinia-0.7.1-no-ncurses.patch, +files/yersinia-0.7.3-tinfo.patch:
+  Version bump. Fix building against sys-libs/ncurses[tinfo]. Clean up patch.
+
+  01 Jun 2009; Peter Volkov <pva@gentoo.org> -yersinia-0.7.ebuild:
+  Removed old.
+
+  29 May 2009; Steve Dibb <beandog@gentoo.org> yersinia-0.7.1.ebuild:
+  amd64 stable, bug 271107
+
+  27 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  yersinia-0.7.1.ebuild:
+  stable x86, bug 271107
+
+  18 Mar 2009; Robert Buchholz <rbu@gentoo.org> yersinia-0.7.ebuild,
+  yersinia-0.7.1.ebuild:
+  Keyword ~amd64 and explicit RDEPEND
+
+*yersinia-0.7.1 (17 Nov 2008)
+
+  17 Nov 2008; Peter Volkov <pva@gentoo.org>
+  +files/yersinia-0.7.1-no-ncurses.patch, +yersinia-0.7.1.ebuild:
+  Version bump. Fixed >libpcap-1.0.0 build issue, bug #247133, thank Willard
+  Dawson for report.
+
+  08 Apr 2007; Markus Ullmann <jokey@gentoo.org> yersinia-0.7.ebuild:
+  Minor QA, stable on x86
+
+  23 Jul 2006; Marcelo Goes <vanquirius@gentoo.org> yersinia-0.7.ebuild:
+  Do not inherit eutils, not needed.
+
+*yersinia-0.7 (23 Jul 2006)
+
+  23 Jul 2006; Marcelo Goes <vanquirius@gentoo.org> +metadata.xml,
+  +yersinia-0.7.ebuild:
+  Initial commit for bug 87965. Thanks to Michael Zanetta <grimmlin at pentoo
+  dot ch>, Marco Morales <soulse at gmail dot com>, Thorsten Fischer <thorsten
+  at irmplc dot com>, Jacob Lindberg <jni at laps dot dk>, Stefan Schlott
+  <stefan.schlott at informatik.uni-ulm.de>, Taku Murakami <murakami.taku at
+  gmail dot com> and others.

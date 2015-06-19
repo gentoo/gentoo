@@ -1,0 +1,61 @@
+# ChangeLog for sys-apps/fakeroot-ng
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/fakeroot-ng/ChangeLog,v 1.15 2015/04/07 14:45:17 jlec Exp $
+
+*fakeroot-ng-0.18-r1 (30 May 2014)
+
+  30 May 2014; Sven Vermeulen <swift@gentoo.org> +fakeroot-ng-0.18-r1.ebuild,
+  +files/fakeroot-ng-gcc-4.8.2.patch:
+  Fix x86 build failure with gcc 4.8.2, thanks to Martin Väth for the patch and
+  Anthoine Bourgeios as maintainer for the ebuild (bug #492896)
+
+*fakeroot-ng-0.18 (27 Nov 2013)
+
+  27 Nov 2013; Justin Lecher <jlec@gentoo.org> +fakeroot-ng-0.18.ebuild,
+  metadata.xml:
+  Version Bump
+
+  02 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #328951
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  11 Sep 2012; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Drop maintainership
+
+  03 Jul 2012; Samuli Suominen <ssuominen@gentoo.org> -fakeroot-ng-0.14.ebuild,
+  -fakeroot-ng-0.15.ebuild:
+  old
+
+  03 Jul 2012; Samuli Suominen <ssuominen@gentoo.org> fakeroot-ng-0.17.ebuild,
+  -files/fakeroot-ng-0.17-gcc47.patch:
+  Move patch to mirrors because it's 47 KiB
+
+  03 Jul 2012; Samuli Suominen <ssuominen@gentoo.org> fakeroot-ng-0.17.ebuild,
+  +files/fakeroot-ng-0.17-gcc47.patch:
+  Fix building with sys-devel/gcc >= 4.7.0 wrt #422905
+
+  21 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Add proxy maintainership
+
+*fakeroot-ng-0.17 (27 Jul 2009)
+
+  27 Jul 2009; Michał Januszewski <spock@gentoo.org>
+  +fakeroot-ng-0.17.ebuild:
+  Version bump.
+
+*fakeroot-ng-0.15 (27 May 2009)
+
+  27 May 2009; Michał Januszewski <spock@gentoo.org>
+  +fakeroot-ng-0.15.ebuild:
+  Version bump.
+
+*fakeroot-ng-0.14 (06 Oct 2008)
+
+  25 Oct 2008; Pieter Van den Abeele <pvdabeel@gentoo.org> fakeroot-ng-0.14.ebuild:
+  Keyworded ~ppc. Closes bug #243392
+
+  06 Oct 2008; Michał Januszewski <spock@gentoo.org> +metadata.xml,
+  +fakeroot-ng-0.14.ebuild:
+  Initial commit.

@@ -1,0 +1,27 @@
+# ChangeLog for kde-misc/krunner-kopete-contacts
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/krunner-kopete-contacts/ChangeLog,v 1.5 2015/06/04 18:57:32 kensington Exp $
+
+  04 Jun 2015; Michael Palimaka <kensington@gentoo.org>
+  krunner-kopete-contacts-0.4.ebuild:
+  Move various kde-base packages to kde-apps.
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org>
+  krunner-kopete-contacts-0.4.ebuild:
+  Bump to EAPI 5.
+
+  29 Oct 2011; Jonathan Callen <abcd@gentoo.org>
+  krunner-kopete-contacts-0.4.ebuild:
+  Bump to EAPI=4; make DOCS an array
+
+*krunner-kopete-contacts-0.4 (15 Jan 2011)
+
+  15 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  -krunner-kopete-contacts-0.3.ebuild, +krunner-kopete-contacts-0.4.ebuild:
+  Version bump, remove old
+
+*krunner-kopete-contacts-0.3 (09 Nov 2009)
+
+  09 Nov 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +krunner-kopete-contacts-0.3.ebuild:
+  Initial commit wrt #281059, thanks to Heiko Becker for reporting.

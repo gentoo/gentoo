@@ -1,0 +1,26 @@
+diff --git a/haddock.cabal b/haddock.cabal
+index 84d3c2a..9587450 100644
+--- a/haddock.cabal
++++ b/haddock.cabal
+@@ -78,10 +78,6 @@ flag test
+ 
+ executable haddock
+   default-language:     Haskell2010
+-  -- In a GHC tree - in particular, in a source tarball - we don't
+-  -- require alex or happy
+-  if !flag(in-ghc-tree)
+-    build-tools: alex >= 2.3, happy >= 1.18
+   build-depends:
+     base >= 4.3 && < 4.6,
+     filepath,
+@@ -140,10 +136,6 @@ executable haddock
+    
+ library
+   default-language:     Haskell2010
+-  -- In a GHC tree - in particular, in a source tarball - we don't
+-  -- require alex or happy
+-  if !flag(in-ghc-tree)
+-    build-tools: alex >= 2.3, happy >= 1.18
+   build-depends:
+     base >= 4.3 && < 4.6,
+     filepath,

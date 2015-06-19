@@ -1,0 +1,42 @@
+# ChangeLog for app-crypt/shishi
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/shishi/ChangeLog,v 1.9 2014/03/01 22:34:29 mgorny Exp $
+
+  01 Mar 2014; Michał Górny <mgorny@gentoo.org> shishi-1.0.1-r1.ebuild,
+  shishi-1.0.1-r2.ebuild, shishi-1.0.1.ebuild, shishi-1.0.2.ebuild:
+  Update libgcrypt dep to use slot :0.
+
+*shishi-1.0.2 (08 Apr 2013)
+
+  08 Apr 2013; Eray Aslan <eras@gentoo.org>
+  +files/shishi-1.0.2_automake-1.12.patch, +shishi-1.0.2.ebuild:
+  Version bump
+
+*shishi-1.0.1-r2 (20 Feb 2013)
+
+  20 Feb 2013; Eray Aslan <eras@gentoo.org> +shishi-1.0.1-r2.ebuild:
+  Fix building with dev-libs/libtasn1-3 - bug #440322
+
+*shishi-1.0.1-r1 (09 Oct 2012)
+
+  09 Oct 2012; Eray Aslan <eras@gentoo.org> +files/shishi_gets.patch,
+  +shishi-1.0.1-r1.ebuild:
+  Fix building with glibc-2.16.0 - bug #437660
+
+  11 Jul 2012; Eray Aslan <eras@gentoo.org> shishi-1.0.1.ebuild,
+  +files/shishi_automake-1.12.patch:
+  Fix building with automake-1.12. Thanks to Brennan Shacklett.
+  Bug #424095
+
+  24 Apr 2012; Michał Górny <mgorny@gentoo.org> shishi-1.0.1.ebuild:
+  Update to use mirror://.
+
+  15 Mar 2012; Michael Sterrett <mr_bones_@gentoo.org> shishi-1.0.1.ebuild:
+  inherit goes near the top
+
+*shishi-1.0.1 (15 Mar 2012)
+
+  15 Mar 2012; Eray Aslan <eras@gentoo.org> +shishi-1.0.1.ebuild,
+  +files/shishi_resolv.patch, +files/shishid.confd, +files/shishid.init,
+  +metadata.xml:
+  Initial import - bug #255461. Based on ebuild by AD Rutledge

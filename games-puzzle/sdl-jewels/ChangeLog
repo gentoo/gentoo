@@ -1,0 +1,20 @@
+# ChangeLog for games-puzzle/sdl-jewels
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/sdl-jewels/ChangeLog,v 1.4 2015/02/25 12:32:04 tupone Exp $
+
+  25 Feb 2015; Tupone Alfredo <tupone@gentoo.org> sdl-jewels-1.1.1.ebuild:
+  EAPI 5
+
+  15 Jan 2011; Markus Meier <maekke@gentoo.org> sdl-jewels-1.1.1.ebuild:
+  x86 stable, bug #350414
+
+  08 Jan 2011; Markos Chandras <hwoarang@gentoo.org> sdl-jewels-1.1.1.ebuild:
+  Stable on amd64 wrt bug #350414
+
+*sdl-jewels-1.1.1 (18 Nov 2010)
+
+  18 Nov 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdl-jewels-1.1.1.ebuild, +files/sdl-jewels-1.1.1-Makefile.patch,
+  +metadata.xml:
+  Initial commit - ebuild submitted by Gavin Pryke via bug #345971
+

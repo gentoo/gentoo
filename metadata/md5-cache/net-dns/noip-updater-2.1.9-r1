@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile config install postinst prepare
+DEPEND=sys-devel/gcc virtual/pkgconfig
+DESCRIPTION=no-ip.com dynamic DNS updater
+EAPI=5
+HOMEPAGE=http://www.no-ip.com
+KEYWORDS=alpha amd64 ~arm ~hppa ia64 ~mips ~ppc ppc64 sparc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.no-ip.com/client/linux/noip-2.1.9.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8e85261e51e52f8962b7f9f05ec9a0cb

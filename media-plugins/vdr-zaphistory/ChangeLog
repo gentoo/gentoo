@@ -1,0 +1,102 @@
+# ChangeLog for media-plugins/vdr-zaphistory
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-zaphistory/ChangeLog,v 1.19 2014/08/31 11:47:28 hd_brummy Exp $
+
+  31 Aug 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-zaphistory-0.9.5.ebuild,
+  -files/vdr-zaphistory-0.9.4-fix-crash-no-info.diff:
+  cleanup old
+
+  02 Mar 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-zaphistory-0.9.6.ebuild:
+  stable amd64 x86, wrt bug 502850
+
+  23 Feb 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-zaphistory-0.9.5.ebuild:
+  eapi=5; converted to vdr-plugin-2.eclass
+
+*vdr-zaphistory-0.9.6 (15 Sep 2013)
+
+  15 Sep 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-zaphistory-0.9.6.ebuild,
+  +files/vdr-zaphistory-0.9.6-fix-crash-no-info.diff:
+  bump; fixed wrt bug #414179
+
+  28 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-zaphistory-0.9.5.ebuild:
+  Fixed quoting.
+
+  15 Nov 2006; Matthias Schwarzott <zzam@gentoo.org>
+  -vdr-zaphistory-0.9.4-r1.ebuild:
+  Cleanup of old version.
+
+  30 Oct 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-zaphistory-0.9.5.ebuild:
+  Marked stable on x86.
+
+*vdr-zaphistory-0.9.5 (28 Sep 2006)
+
+  28 Sep 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-zaphistory-0.9.5.ebuild:
+  version bump
+
+  08 Sep 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-zaphistory-0.9.4-r1.ebuild:
+  Stable on x86.
+
+  01 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Assigned to VDR-Project.
+
+  01 Aug 2006; Matthias Schwarzott <zzam@gentoo.org>
+  -vdr-zaphistory-0.9.4.ebuild:
+  Removed old buggy version.
+
+*vdr-zaphistory-0.9.4-r1 (17 May 2006)
+
+  17 May 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-zaphistory-0.9.4-fix-crash-no-info.diff,
+  +vdr-zaphistory-0.9.4-r1.ebuild:
+  Added a crashfix.
+
+  17 Apr 2006; Matthias Schwarzott <zzam@gentoo.org>
+  -vdr-zaphistory-0.9.1.ebuild, -vdr-zaphistory-0.9.2.ebuild:
+  Removed older versions
+
+*vdr-zaphistory-0.9.4 (29 Mar 2006)
+
+  29 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-zaphistory-0.9.4.ebuild:
+  Version bumped.
+
+*vdr-zaphistory-0.9.2 (15 Mar 2006)
+
+  15 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
+  -files/vdr-zaphistory-0.0.3-backport.diff, -vdr-zaphistory-0.0.2.ebuild,
+  -vdr-zaphistory-0.0.3.ebuild, -vdr-zaphistory-0.9.0.ebuild,
+  +vdr-zaphistory-0.9.2.ebuild:
+  Version bumped. Removed old versions.
+
+*vdr-zaphistory-0.9.1 (14 Mar 2006)
+
+  14 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-zaphistory-0.9.1.ebuild:
+  Version bumped.
+
+*vdr-zaphistory-0.9.0 (13 Mar 2006)
+
+  13 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-zaphistory-0.9.0.ebuild:
+  Version bumped.
+
+*vdr-zaphistory-0.0.3 (11 Mar 2006)
+
+  11 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-zaphistory-0.0.3-backport.diff, +vdr-zaphistory-0.0.3.ebuild:
+  Version bumped.
+
+*vdr-zaphistory-0.0.2 (09 Mar 2006)
+
+  09 Mar 2006; Matthias Schwarzott <zzam@gentoo.org> +metadata.xml,
+  +vdr-zaphistory-0.0.2.ebuild:
+  Initial import of ebuild written by me
+

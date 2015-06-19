@@ -1,0 +1,18 @@
+# ChangeLog for app-pda/libopensync-plugin-moto
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-pda/libopensync-plugin-moto/ChangeLog,v 1.3 2012/04/01 04:38:26 floppym Exp $
+
+  01 Apr 2012; Mike Gilbert <floppym@gentoo.org>
+  libopensync-plugin-moto-0.22.ebuild:
+  python-dateutil no longer needs a slot dep.
+
+  24 Jan 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  libopensync-plugin-moto-0.22.ebuild:
+  Depend on proper slot of dev-python/python-dateutil
+
+*libopensync-plugin-moto-0.22 (30 Mar 2011)
+
+  30 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +libopensync-plugin-moto-0.22.ebuild:
+  Initial commit wrt #211262 by Matija Šuklje.
+

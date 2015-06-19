@@ -1,0 +1,27 @@
+--- configure.in.orig	2011-07-20 11:23:19.849122541 -0400
++++ configure.in	2011-07-20 11:24:28.169713094 -0400
+@@ -35,9 +35,6 @@
+ AM_CONDITIONAL(APPLE,test "x$TARGET" = xAPPLE)
+ AM_CONDITIONAL(WIN32,test "x$TARGET" = xWIN32)
+ 
+-CFLAGS=""
+-CXXFLAGS=""
+-
+ if test "x$GCC" = xyes; then
+    CFLAGS="$CFLAGS -W -Wall"
+    CXXFLAGS="$CXXFLAGS -W -Wall -fno-exceptions"
+@@ -51,14 +48,6 @@
+         CXXFLAGS="$CXXFLAGS -g"
+ fi
+ 
+-AC_ARG_ENABLE(optimize,
+-[  --enable-optimize=level      Enable optimization [default=2]],
+-        enable_optmize=$enableval, enable_optimize=2)
+-if test "x$enable_optimize" != "xno" ; then
+-        CFLAGS="$CFLAGS -O$enable_optimize"
+-        CXXFLAGS="$CXXFLAGS -O$enable_optimize"
+-fi
+-
+ AC_ARG_ENABLE(dyngl,
+ [  --enable-dyngl               Load GL library dynamically [default=off]],
+         enable_dyngl=$enableval, enable_dyngl=off)

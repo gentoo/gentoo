@@ -1,0 +1,59 @@
+diff --git a/hw/xfree86/common/compiler.h b/hw/xfree86/common/compiler.h
+index 1653574..fe881ee 100644
+--- a/hw/xfree86/common/compiler.h
++++ b/hw/xfree86/common/compiler.h
+@@ -286,6 +286,54 @@ extern _X_EXPORT unsigned int inl(unsigned int port);
+ #include <machine/pio.h>
+ #endif                          /* __NetBSD__ */
+ 
++#elif defined(linux) && defined(__ia64__)
++/* for Linux on ia64, we use the LIBC _inx/_outx routines */
++/* note that the appropriate setup via "ioperm" needs to be done */
++/*  *before* any inx/outx is done. */
++
++extern _X_EXPORT void _outb(unsigned char val, unsigned long port);
++extern _X_EXPORT void _outw(unsigned short val, unsigned long port);
++extern _X_EXPORT void _outl(unsigned int val, unsigned long port);
++extern _X_EXPORT unsigned int _inb(unsigned long port);
++extern _X_EXPORT unsigned int _inw(unsigned long port);
++extern _X_EXPORT unsigned int _inl(unsigned long port);
++
++static __inline__ void
++outb(unsigned long port, unsigned char val)
++{
++    _outb(val, port);
++}
++
++static __inline__ void
++outw(unsigned long port, unsigned short val)
++{
++    _outw(val, port);
++}
++
++static __inline__ void
++outl(unsigned long port, unsigned int val)
++{
++    _outl(val, port);
++}
++
++static __inline__ unsigned int
++inb(unsigned long port)
++{
++    return _inb(port);
++}
++
++static __inline__ unsigned int
++inw(unsigned long port)
++{
++    return _inw(port);
++}
++
++static __inline__ unsigned int
++inl(unsigned long port)
++{
++    return _inl(port);
++}
++
+ #elif defined(__amd64__)
+ 
+ #include <inttypes.h>

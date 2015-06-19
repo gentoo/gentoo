@@ -1,0 +1,78 @@
+# ChangeLog for dev-ruby/unf_ext
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/unf_ext/ChangeLog,v 1.20 2015/06/09 18:29:54 maekke Exp $
+
+  09 Jun 2015; Markus Meier <maekke@gentoo.org> unf_ext-0.0.7.1.ebuild:
+  add ~arm, bug #545592
+
+*unf_ext-0.0.7.1 (18 Apr 2015)
+
+  18 Apr 2015; Manuel Rüger <mrueg@gentoo.org> +unf_ext-0.0.7.1.ebuild:
+  Version bump.
+
+  05 Apr 2015; Hans de Graaff <graaff@gentoo.org> unf_ext-0.0.6-r2.ebuild:
+  Add ruby22.
+
+  18 Mar 2015; Hans de Graaff <graaff@gentoo.org> -unf_ext-0.0.6.ebuild:
+  Cleanup.
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> unf_ext-0.0.6-r1.ebuild:
+  x86 stable wrt bug #495010
+
+*unf_ext-0.0.6-r2 (03 May 2014)
+
+  03 May 2014; Hans de Graaff <graaff@gentoo.org> +unf_ext-0.0.6-r2.ebuild:
+  Add ruby21.
+
+  12 Apr 2014; Manuel Rüger <mrueg@gentoo.org> unf_ext-0.0.6-r1.ebuild,
+  unf_ext-0.0.6.ebuild:
+  Remove ruby18 target.
+
+  19 Jan 2014; Pacho Ramos <pacho@gentoo.org> unf_ext-0.0.6-r1.ebuild:
+  amd64 stable, bug 495010
+
+*unf_ext-0.0.6-r1 (11 Nov 2013)
+
+  11 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +unf_ext-0.0.6-r1.ebuild:
+  Add ruby20 target.
+
+  27 Oct 2013; Hans de Graaff <graaff@gentoo.org> -unf_ext-0.0.5.ebuild:
+  Cleanup.
+
+  15 Sep 2013; Agostino Sarubbo <ago@gentoo.org> unf_ext-0.0.6.ebuild:
+  Stable for x86, wrt bug #483694
+
+  15 Sep 2013; Agostino Sarubbo <ago@gentoo.org> unf_ext-0.0.6.ebuild:
+  Stable for amd64, wrt bug #483694
+
+*unf_ext-0.0.6 (22 Apr 2013)
+
+  22 Apr 2013; Hans de Graaff <graaff@gentoo.org> +unf_ext-0.0.6.ebuild:
+  Version bump.
+
+  25 Nov 2012; Thomas Kahle <tomka@gentoo.org> unf_ext-0.0.5.ebuild:
+  marked ~x86 per bug 432830
+
+  29 Sep 2012; Fabian Groffen <grobian@gentoo.org> unf_ext-0.0.5.ebuild:
+  Added Prefix keywords, bug #432830
+
+  27 Sep 2012; Samuli Suominen <ssuominen@gentoo.org> unf_ext-0.0.5.ebuild:
+  Keyword ~ppc/~ppc64 wrt #432830
+
+  24 Sep 2012; Hans de Graaff <graaff@gentoo.org> -unf_ext-0.0.4.ebuild:
+  Cleanup.
+
+  14 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> unf_ext-0.0.5.ebuild:
+  Disable test task (drops rake dependency for USE=test); use Test::Unit 2 and
+  the ruby-ng helper for tests; respect user-defined CFLAGS and LDFLAGS.
+
+*unf_ext-0.0.5 (10 Jun 2012)
+
+  10 Jun 2012; Hans de Graaff <graaff@gentoo.org> +unf_ext-0.0.5.ebuild:
+  Version bump.
+
+*unf_ext-0.0.4 (09 Apr 2012)
+
+  09 Apr 2012; Hans de Graaff <graaff@gentoo.org> +unf_ext-0.0.4.ebuild,
+  +metadata.xml:
+  Initial import. Implicit dependency for new versions of mechanize.

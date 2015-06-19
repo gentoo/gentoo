@@ -1,0 +1,15 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openntpd/files/openntpd.init.d-20080406-r6,v 1.1 2013/12/02 13:32:12 ottxor Exp $
+
+name="OpenNTPD"
+command="/usr/sbin/ntpd"
+pidfile="/run/ntpd.pid"
+command_args="-p ${pidfile} ${NTPD_OPTS}"
+
+depend() {
+	need net
+	after ntp-client
+	use dns logger
+}

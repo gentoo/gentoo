@@ -1,0 +1,181 @@
+# ChangeLog for dev-lang/tcc
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/tcc/ChangeLog,v 1.42 2014/04/02 23:46:23 ottxor Exp $
+
+*tcc-0.9.26-r2 (02 Apr 2014)
+
+  02 Apr 2014; Christoph Junghans <ottxor@gentoo.org> +tcc-0.9.26-r2.ebuild,
+  tcc-9999.ebuild:
+  added prefix support (bug #499440)
+
+  07 Mar 2014; Tim Harder <radhermit@gentoo.org>
+  -files/tcc-0.9.23-anonunion.patch, -files/tcc-0.9.23-asneeded.patch,
+  -files/tcc-0.9.23-nxbit.patch, -files/tcc-0.9.25-flags.patch:
+  Remove old, unused patches.
+
+*tcc-0.9.26-r1 (13 Oct 2013)
+
+  13 Oct 2013; Patrick Lauer <patrick@gentoo.org> +tcc-0.9.26-r1.ebuild,
+  -tcc-0.9.23-r1.ebuild, -tcc-0.9.24.ebuild, -tcc-0.9.25.ebuild,
+  -tcc-0.9.26.ebuild, -tcc-0.9.26_pre1.ebuild, tcc-9999.ebuild:
+  Backport fixes from -9999 to release, remove old
+
+  13 Oct 2013; Patrick Lauer <patrick@gentoo.org> tcc-9999.ebuild:
+  Remove keywords from live ebuild
+
+  12 Oct 2013; Patrick Lauer <patrick@gentoo.org> tcc-9999.ebuild:
+  Fix libdir so that tcc just magically works
+
+  12 Oct 2013; Patrick Lauer <patrick@gentoo.org> tcc-9999.ebuild:
+  Some cleanups to tcc-9999 configure/make
+
+*tcc-9999 (12 Oct 2013)
+
+  12 Oct 2013; Patrick Lauer <patrick@gentoo.org> +tcc-9999.ebuild:
+  First attempt at a -9999 ebuild
+
+  18 Jul 2013; Patrick Lauer <patrick@gentoo.org> tcc-0.9.26.ebuild:
+  Re-enabling test suite that now actually works
+
+*tcc-0.9.26 (16 Jul 2013)
+
+  16 Jul 2013; Tim Harder <radhermit@gentoo.org> +tcc-0.9.26.ebuild:
+  Version bump (bug #466094).
+
+  16 Apr 2013; Patrick Lauer <patrick@gentoo.org> tcc-0.9.26_pre1.ebuild:
+  Fix for sandbox violation #454874
+
+*tcc-0.9.26_pre1 (29 Jan 2013)
+
+  29 Jan 2013; Patrick Lauer <patrick@gentoo.org> +tcc-0.9.26_pre1.ebuild:
+  Bump to snapshot for #454500
+
+  16 Aug 2010; Harald van Dĳk <truedfx@gentoo.org> tcc-0.9.25.ebuild,
+  +files/tcc-0.9.25-flags.patch:
+  Respect CFLAGS, LDFLAGS (#332599)
+
+  08 Jul 2010; Markos Chandras <hwoarang@gentoo.org> tcc-0.9.25.ebuild:
+  Make it respect CC variable wrt bug #243892
+
+*tcc-0.9.25 (10 Jul 2009)
+
+  10 Jul 2009; Harald van Dĳk <truedfx@gentoo.org> +tcc-0.9.25.ebuild:
+  Version bump, with amd64 support (#276586 by Thomas)
+
+*tcc-0.9.24 (04 Jan 2009)
+
+  04 Jan 2009; Patrick Lauer <patrick@gentoo.org> tcc-0.9.23-r1.ebuild,
+  +tcc-0.9.24.ebuild:
+  Bump to 0.9.24. Homepage and SRC_URI fix. Patches no longer needed.
+
+  04 Jan 2009; Patrick Lauer <patrick@gentoo.org> tcc-0.9.23-r1.ebuild:
+  Homepage fix
+
+  12 May 2007; Harald van Dĳk <truedfx@gentoo.org>
+  -files/tcc-0.9.20-gcc34.patch, +files/tcc-0.9.23-nxbit.patch,
+  -tcc-0.9.19.ebuild, -tcc-0.9.20.ebuild, -tcc-0.9.22.ebuild,
+  tcc-0.9.23-r1.ebuild:
+  Fix crash on nxbit-enabled CPUs (#178168), remove older versions
+
+  27 Apr 2007; Raúl Porcel <armin76@gentoo.org> tcc-0.9.23-r1.ebuild:
+  x86 stable wrt #176070
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  14 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove spider from metadata.xml due to retiring.
+
+  26 Aug 2006; Harald van Dĳk <truedfx@gentoo.org> tcc-0.9.23-r1.ebuild:
+  Block tendra (to avoid a file collision)
+
+*tcc-0.9.23-r1 (24 Aug 2006)
+
+  24 Aug 2006; Harald van Dĳk <truedfx@gentoo.org>
+  +files/tcc-0.9.23-anonunion.patch, +files/tcc-0.9.23-asneeded.patch,
+  -tcc-0.9.23.ebuild, +tcc-0.9.23-r1.ebuild:
+  Make tcc install correctly and work with glibc 2.4 (#132095)
+
+  08 Jan 2006; Mark Loeser <halcy0n@gentoo.org> tcc-0.9.22.ebuild:
+  Stable on x86; bug #116169
+
+*tcc-0.9.23 (08 Jan 2006)
+
+  08 Jan 2006; George Shapovalov <george@gentoo.org> +tcc-0.9.23.ebuild:
+  new version, adjusted src_install to follow new Makefile
+
+  02 Jun 2005; Stephanie Lockwood-Childs <wormo@gentoo.org> tcc-0.9.19.ebuild,
+  tcc-0.9.20.ebuild, tcc-0.9.22.ebuild:
+  keywording all versions -* [~]x86 (was previously marked -sparc and -amd64,
+  no arches other than x86 are supported at this time)
+
+*tcc-0.9.22 (11 Nov 2004)
+
+  11 Nov 2004; <spider@gentoo.org> +tcc-0.9.22.ebuild:
+  Updated ebuild, thanks to Olaf Freyer and Thomas Eckert
+
+  07 Oct 2004; George Shapovalov <george@gentoo.org> tcc-0.9.{19,20}.ebuild  :
+  marked all versions -amd64. tcc apparently does not know about this arch (configure borks)
+  even though theoretically it might be able to digest it
+  Changed herd in metadata to lang-misc, no-herd is against the policy!!!
+  correspondingly I do not need to be noted as a separate maintainer, I am on that herd.
+
+  27 Sep 2004; Karol Wojtaszek <sekretarz@gentoo.org>
+  +files/tcc-0.9.20-gcc34.patch, -tcc-0.9.14.ebuild, -tcc-0.9.16.ebuild,
+  tcc-0.9.20.ebuild, -tcc-0.9.7.ebuild, -tcc-0.9.8.ebuild:
+  Fixed gcc-3.4 compile issues, Bug #65346. Ebuild clean up.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> tcc-0.9.14.ebuild,
+  tcc-0.9.16.ebuild, tcc-0.9.19.ebuild, tcc-0.9.20.ebuild, tcc-0.9.8.ebuild:
+  virtual/glibc -> virtual/libc
+
+  05 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org> tcc-0.9.14.ebuild,
+  tcc-0.9.16.ebuild, tcc-0.9.19.ebuild, tcc-0.9.20.ebuild, tcc-0.9.7.ebuild,
+  tcc-0.9.8.ebuild:
+  marking all -sparc, who marked them sparc / ~sparc ?!?
+
+*tcc-0.9.20 (14 Oct 2003)
+
+  14 Oct 2003; <spider@gentoo.org> :
+  Update version to fix linking error with array not found
+
+  09 Jun 2003; George Shapovalov <george@gentoo.org> tcc-0.9.19.ebuild :
+  changed LICENSE to LGPL-2.1 from GPL-2, seems to have changed recently.
+  Thanks to Brian Olsen <bnolsen@attbi.com> for notification
+
+*tcc-0.9.19 (05 May 2003)
+
+  05 May 2003; George Shapovalov <george@gentoo.org> tcc-0.9.19.ebuild, files/digest-tcc-0.9.19 :
+  new version (#21363)
+  now uses autoconf-based install (albet there were some problems, see the bug for details)
+  thanks to Thomas Eckert <eckert.thomas@gmx.net> for update
+
+*tcc-0.9.16 (06 Jan 2003)
+
+  06 Jan 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump
+
+*tcc-0.9.14 (10 Dec 2002)
+  
+  10 Dec 2002; George Shapovalov <george@gentoo.org> tcc-0.9.14.ebuild, files/digest-tcc-0.9.14 :
+  new version. 
+  Now tcc compiles more packages (e.g. smarteiffel).
+  Thanks to Per Wigren <wigren@home.se> for an update
+
+*tcc-0.9.8 (13 Feb 2003)
+ 
+  11 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*tcc-0.9.7 (19 Jul 2002)
+
+  19 Jul 2002; George Shapovalov <george@gentoo.org> tcc-0.9.7.ebuild :
+
+  initial release
+
+  A very small C compiler for ix86 (64 K). It compiles and execute
+  C source directly without linking or assembly, and does not (yet ?) output elf
+  binary file. You can also use it like in a script with #!/usr/bin/tcc in your C
+  source. Very funny :-).
+
+  ebuild submitted by Julien Herfurth <jherfurth@arafox.com>

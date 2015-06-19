@@ -1,0 +1,40 @@
+# ChangeLog for x11-plugins/hexchat-javascript
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/hexchat-javascript/ChangeLog,v 1.8 2014/10/27 20:26:12 hasufell Exp $
+
+*hexchat-javascript-0.3.2 (27 Oct 2014)
+
+  27 Oct 2014; Julian Ospald <hasufell@gentoo.org>
+  +hexchat-javascript-0.3.2.ebuild:
+  version bump
+
+  09 Mar 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  hexchat-javascript-0.3.1.ebuild:
+  x86 stable wrt bug #502368
+
+  07 Mar 2014; Pacho Ramos <pacho@gentoo.org> hexchat-javascript-0.3.1.ebuild:
+  amd64 stable, bug #502368
+
+  02 Mar 2014; Julian Ospald <hasufell@gentoo.org>
+  -hexchat-javascript-0.3.ebuild:
+  rm old
+
+  25 Feb 2014; Julian Ospald <hasufell@gentoo.org>
+  hexchat-javascript-0.3.1.ebuild:
+  fix dependency on dev-lang/spidermonkey (set SLOT to 0)
+
+*hexchat-javascript-0.3.1 (07 Jan 2014)
+
+  07 Jan 2014; Julian Ospald <hasufell@gentoo.org>
+  +hexchat-javascript-0.3.1.ebuild:
+  version bump
+
+  12 Sep 2013; Julian Ospald <hasufell@gentoo.org>
+  hexchat-javascript-0.3.ebuild:
+  export PKG_CONFIG as well
+
+*hexchat-javascript-0.3 (12 Sep 2013)
+
+  12 Sep 2013; Julian Ospald <hasufell@gentoo.org>
+  +hexchat-javascript-0.3.ebuild, +metadata.xml:
+  initial import

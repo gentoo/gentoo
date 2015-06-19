@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install nofetch postinst prepare
+DEPEND=>=x11-libs/motif-2.3:0
+DESCRIPTION=A genome sequence finishing program
+EAPI=3
+HOMEPAGE=http://bozeman.mbt.washington.edu/consed/consed.html
+KEYWORDS=~amd64 ~x86
+LICENSE=phrap
+RDEPEND=>=x11-libs/motif-2.3:0 >=sci-biology/phred-000925 >=sci-biology/phrap-1.080721
+RESTRICT=fetch
+SLOT=0
+SRC_URI=consed-19-sources.tar.gz consed-19-linux.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=6f8c70cb826c5e76ef0def6b20dfb32c

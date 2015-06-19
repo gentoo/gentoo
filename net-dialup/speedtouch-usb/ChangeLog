@@ -1,0 +1,57 @@
+# ChangeLog for net-dialup/speedtouch-usb
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/speedtouch-usb/ChangeLog,v 1.11 2013/11/06 03:52:16 patrick Exp $
+
+  06 Nov 2013; Patrick Lauer <patrick@gentoo.org>
+  speedtouch-usb-3.0.1.2-r3.ebuild:
+  Shorten description, make repoman happier
+
+  14 Oct 2013; Sergey Popov <pinkbyte@gentoo.org> files/README:
+  Remove stale links on unofficial gentoo wiki, bug #482124
+
+  16 Jun 2012; Pacho Ramos <pacho@gentoo.org> speedtouch-usb-3.0.1.2-r3.ebuild:
+  Update PPPoE instructions.
+
+*speedtouch-usb-3.0.1.2-r3 (23 Aug 2009)
+
+  23 Aug 2009; Alin Năstac <mrness@gentoo.org> files/README,
+  -speedtouch-usb-3.0.1.2-r2.ebuild, +speedtouch-usb-3.0.1.2-r3.ebuild:
+  Migrate to EAPI 2. Cleanup dependencies. Update README with changes occured
+  in baselayout-2.
+
+  23 Sep 2006; Alin Nastac <mrness@gentoo.org> files/README,
+  speedtouch-usb-3.0.1.2-r2.ebuild:
+  Modify PPPoA chapter of the documentation (#144194). Stable on x86.
+
+  16 Aug 2006; Luis Medinas <metalgod@gentoo.org>
+  speedtouch-usb-3.0.1.2-r2.ebuild:
+  Added ~amd64 keyword.
+
+*speedtouch-usb-3.0.1.2-r2 (23 May 2006)
+
+  23 May 2006; Alin Nastac <mrness@gentoo.org> files/README,
+  -speedtouch-usb-3.0.1.2-r1.ebuild, +speedtouch-usb-3.0.1.2-r2.ebuild:
+  Keep up with baselayout-1.12.0 development. Improve post-install messages,
+  based on new features available in linux-info.eclass.
+
+*speedtouch-usb-3.0.1.2-r1 (17 Apr 2006)
+
+  17 Apr 2006; Alin Nastac <mrness@gentoo.org> files/README,
+  -speedtouch-usb-3.0.1.2.ebuild, +speedtouch-usb-3.0.1.2-r1.ebuild:
+  Add noauth to recommended pppd_ppp0 parameters. Fix PPPoE setup documentation.
+  Thanks to Smok <smok.pl@gmail.com>, PPPoE configuration has been tested.
+
+  09 Apr 2006; Alin Nastac <mrness@gentoo.org> files/README:
+  Documentation update (#129232).
+
+  19 Mar 2006; Alin Nastac <mrness@gentoo.org> files/README,
+  -files/speedtch.usermap, speedtouch-usb-3.0.1.2.ebuild:
+  Remove hotplug from dependencies and update the README file,
+  thanks to Paul Bredbury <brebs@sent.com> (#110665).
+
+*speedtouch-usb-3.0.1.2 (18 Mar 2006)
+
+  18 Mar 2006; Alin Nastac <mrness@gentoo.org> +files/README,
+  +files/speedtch.usermap, +metadata.xml, +speedtouch-usb-3.0.1.2.ebuild:
+  Initial import from bug #110665. Credits goes to Paul Bredbury
+  <brebs@sent.com>.

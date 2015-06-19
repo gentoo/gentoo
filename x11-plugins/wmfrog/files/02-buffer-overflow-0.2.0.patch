@@ -1,0 +1,60 @@
+From 5cc2198aebf090b399bd8aaea0e1c8b054bbda58 Mon Sep 17 00:00:00 2001
+From: Jim Ramsay <i.am@jimramsay.com>
+Date: Thu, 6 Aug 2009 12:51:56 -0400
+Subject: [PATCH] Remove buffer overflows
+
+Replaced all 'sprintf' calls with 'snprintf' and fixed all buffers to reasonable
+sizes.
+---
+ Src/wmFrog.c |   11 +++++------
+ 1 files changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/Src/wmFrog.c b/Src/wmFrog.c
+index af4101a..74e8b56 100644
+--- a/Src/wmFrog.c
++++ b/Src/wmFrog.c
+@@ -66,7 +66,7 @@ char* folder;
+ int main(int argc, char *argv[]) {
+ int		n, s, m, i, dt1, dt2, dt3    ;
+ XEvent		event;
+-char		command[1024], Line[512], FileName[10];
++char		command[1024], Line[512], FileName[128];
+ FILE		*fp;
+  char*          Weather = NULL;
+  char*          Clouds = NULL;
+@@ -213,7 +213,7 @@ FILE		*fp;
+ 	    
+ 	    dt2 = 0;
+ 
+-	    sprintf(FileName, "%s/%s", folder, StationID);
++	    snprintf(FileName, 128, "%s/%s", folder, StationID);
+ 		fprintf(stderr,"%s\n\n",FileName);
+     	    if ((fp = fopen(FileName, "r")) != NULL){
+ 	      fscanf(fp, "Hour:%d", &hour);
+@@ -571,7 +571,7 @@ UpToDate = 0;
+ 	    /*
+ 	     *  Execute Perl script to grab the Latest METAR Report
+ 	     */
+-	    sprintf(command, "/usr/lib/wmfrog/weather.pl %s %s &", StationID, folder);
++	    snprintf(command, 1024, "/usr/lib/wmfrog/weather.pl %s %s &", StationID, folder);
+ 	    //printf("Retrieveing data\n");
+ 	    system(command);
+ 	    ForceDownload = 0;
+@@ -844,12 +844,11 @@ char *GetTempDir(char *suffix)
+ {
+ 	uid_t id;
+ 	struct passwd *userEntry;
+-	char * userHome;
++	static char userHome[128];
+ 	
+ 	id=getuid();
+ 	userEntry=getpwuid(id);
+-	userHome=userEntry->pw_dir;
+-	sprintf(userHome,"%s/%s",userHome,suffix);
++	snprintf(userHome, 128, "%s/%s", userEntry->pw_dir, suffix);
+ 	return userHome;
+ }
+ 
+-- 
+1.6.3.3
+

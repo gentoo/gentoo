@@ -1,0 +1,42 @@
+# ChangeLog for perl-core/Dumpvalue
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/perl-core/Dumpvalue/ChangeLog,v 1.11 2014/04/24 17:45:37 zlogene Exp $
+
+  24 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> Dumpvalue-1.170.0.ebuild:
+  Add ~sparc keyword wrt bug #505156
+
+  24 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> Dumpvalue-1.170.0.ebuild:
+  Add ~ppc keyword wrt bug #505156
+
+  24 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> Dumpvalue-1.170.0.ebuild:
+  Add ~ppc64 keyword wrt bug #505156
+
+  24 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> Dumpvalue-1.170.0.ebuild:
+  Add ~mips keyword wrt bug #505156
+
+  07 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> Dumpvalue-1.170.0.ebuild:
+  Add ~ia64 keyword wrt bug #505156
+
+  04 Apr 2014; Matt Turner <mattst88@gentoo.org> Dumpvalue-1.170.0.ebuild:
+  Added ~alpha, bug #505156.
+
+  02 Apr 2014; Markus Meier <maekke@gentoo.org> Dumpvalue-1.170.0.ebuild:
+  add ~arm, bug #505156
+
+  20 Mar 2014; Jeroen Roovers <jer@gentoo.org> Dumpvalue-1.170.0.ebuild:
+  Marked ~hppa (bug #505156).
+
+*Dumpvalue-1.170.0 (12 Mar 2014)
+
+  12 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> +Dumpvalue-1.170.0.ebuild,
+  -Dumpvalue-0.170.0.ebuild:
+  Fix version scheme
+
+  12 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> Dumpvalue-0.170.0.ebuild:
+  Whitespace
+
+*Dumpvalue-0.170.0 (12 Mar 2014)
+
+  12 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> +Dumpvalue-0.170.0.ebuild,
+  +metadata.xml:
+  Initial commit for perl-5.18

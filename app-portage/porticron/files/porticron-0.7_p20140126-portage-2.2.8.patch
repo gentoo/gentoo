@@ -1,0 +1,26 @@
+From 7a7002d5af62d0a4791a386cdc3560330f27f1c0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Rainer=20M=C3=BCller?= <raimue@codingfarm.de>
+Date: Sun, 26 Jan 2014 23:23:03 +0100
+Subject: [PATCH] Avoid the deprecated `portageq portdir'
+
+This implements the fix proposed in hollow/porticron#6.
+---
+ bin/porticron | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bin/porticron b/bin/porticron
+index d168b27..86a1f70 100755
+--- a/bin/porticron
++++ b/bin/porticron
+@@ -117,7 +117,7 @@ FQDN=$(hostname --fqdn)
+ HOST=$(hostname -s)
+ IP=$(dig +short ${FQDN} | tr '\n' ' ')
+ DATE=$(date -R)
+-PORTDIR=$(portageq portdir)
++PORTDIR=$(portageq get_repo_path $(portageq envvar EROOT) gentoo)
+ 
+ # replace variables
+ for var in FQDN HOST IP DATE; do
+-- 
+1.8.5.1
+

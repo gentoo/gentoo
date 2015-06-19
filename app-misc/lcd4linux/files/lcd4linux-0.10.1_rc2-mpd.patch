@@ -1,0 +1,374 @@
+Patch for >=lcd4linux-0.10.1_rc2-r1
+
+Fixes memory and other bugs in plugin_mpd
+
+Accepted upstream
+
+Index: plugin_mpd.c
+===================================================================
+--- plugin_mpd.c	(Revision 801)
++++ plugin_mpd.c	(Arbeitskopie)
+@@ -4,6 +4,7 @@
+  * mpd informations
+  *
+  * Copyright (C) 2006 Stefan Kuhne <sk-privat@gmx.net>
++ * Copyright (C) 2007 Robert Buchholz <rbu@gentoo.org>
+  * Copyright (C) 2006 The LCD4Linux Team <lcd4linux-devel@users.sourceforge.net>
+  *
+  * This file is part of LCD4Linux.
+@@ -81,8 +82,8 @@
+ 
+     iport = strtol(port, &test, 10);
+ 
+-    if (iport < 0 || *test != '\0') {
+-	fprintf(stderr, "MPD_PORT \"%s\" is not a positive integer\n", port);
++    if ((iport < 0) || (*test != '\0')) {
++	error("[MPD] MPD_PORT \"%s\" is not a positive integer\n", port);
+ 	exit(EXIT_FAILURE);
+     }
+ 
+@@ -94,17 +95,16 @@
+     mpd_sendCommandListEnd(mpd.conn);
+ 
+     if ((mpd.status = mpd_getStatus(mpd.conn)) == NULL) {
+-	fprintf(stderr, "%s\n", mpd.conn->errorStr);
++	error("[MPD] error when getting status: %s\n", mpd.conn->errorStr);
+ 	mpd_closeConnection(mpd.conn);
+-    }
+-
+-    if (mpd.status->error) {
+-	printf("error: %s\n", mpd.status->error);
+-    }
+-
+-    if (mpd.conn->error) {
+-	fprintf(stderr, "%s\n", mpd.conn->errorStr);
++	mpd.conn = NULL;
++    } else if (mpd.status->error) {
++	info("[MPD] status error when connecting: %s\n", mpd.status->error);
++    } else if (mpd.conn->error) {
++	error("[MPD] error when connecting: %s\n", mpd.conn->errorStr);
++	mpd_freeStatus(mpd.status);
+ 	mpd_closeConnection(mpd.conn);
++	mpd.conn = NULL;
+     }
+ 
+     return mpd;
+@@ -114,14 +114,15 @@
+ static void disconnect(struct Pointer mpd)
+ {
+     if (mpd.conn->error) {
+-	fprintf(stderr, "%s\n", mpd.conn->errorStr);
++	error("[MPD] error when disconnecting: %s\n", mpd.conn->errorStr);
++	mpd_freeStatus(mpd.status);
+ 	mpd_closeConnection(mpd.conn);
++	return;
+     }
+ 
+     mpd_finishCommand(mpd.conn);
+     if (mpd.conn->error) {
+-	fprintf(stderr, "%s\n", mpd.conn->errorStr);
+-	mpd_closeConnection(mpd.conn);
++	error("[MPD] error when disconnecting: %s\n", mpd.conn->errorStr);
+     }
+ 
+     mpd_freeStatus(mpd.status);
+@@ -132,8 +133,12 @@
+ 
+ static void artist(RESULT * result, RESULT * query)
+ {
+-    char *value = " ";
++    char *value = NULL;
+     struct Pointer mpd = connect();
++    if (mpd.conn == NULL) {
++	SetResult(&result, R_STRING, " ");
++	return;
++    }
+ 
+     mpd_nextListOkCommand(mpd.conn);
+ 
+@@ -145,9 +150,10 @@
+ 	    continue;
+ 	}
+ 
+-	if (song->artist) {
++	if (!value && song->artist) {
++	    /* we found our first song */
+ 	    value = strdup(song->artist);
+-	    //add comment
++	    /* add comment */
+ 	    if (query) {
+ 		char *myarg;
+ 		myarg = strdup(R2S(query));
+@@ -160,8 +166,8 @@
+ 
+     disconnect(mpd);
+ 
+-    /* store result */
+-    SetResult(&result, R_STRING, value);
++    /* store result, value must not be NULL */
++    SetResult(&result, R_STRING, value ? value : " ");
+ 
+     free(value);
+ }
+@@ -169,8 +175,12 @@
+ 
+ static void title(RESULT * result)
+ {
+-    char *value = " ";
++    char *value = NULL;
+     struct Pointer mpd = connect();
++    if (mpd.conn == NULL) {
++	SetResult(&result, R_STRING, " ");
++	return;
++    }
+ 
+     mpd_nextListOkCommand(mpd.conn);
+ 
+@@ -182,7 +192,7 @@
+ 	    continue;
+ 	}
+ 
+-	if (song->title) {
++	if (!value && song->title) {
+ 	    value = strdup(song->title);
+ 	}
+ 	mpd_freeInfoEntity(mpd.entity);
+@@ -190,8 +200,8 @@
+ 
+     disconnect(mpd);
+ 
+-    /* store result */
+-    SetResult(&result, R_STRING, value);
++    /* store result, value must not be NULL  */
++    SetResult(&result, R_STRING, value ? value : " ");
+ 
+     free(value);
+ }
+@@ -199,8 +209,12 @@
+ 
+ static void album(RESULT * result)
+ {
+-    char *value = " ";
++    char *value = NULL;
+     struct Pointer mpd = connect();
++    if (mpd.conn == NULL) {
++	SetResult(&result, R_STRING, " ");
++	return;
++    }
+ 
+     mpd_nextListOkCommand(mpd.conn);
+ 
+@@ -212,7 +226,7 @@
+ 	    continue;
+ 	}
+ 
+-	if (song->album) {
++	if (!value && song->album) {
+ 	    value = strdup(song->album);
+ 	}
+ 	mpd_freeInfoEntity(mpd.entity);
+@@ -220,8 +234,8 @@
+ 
+     disconnect(mpd);
+ 
+-    /* store result */
+-    SetResult(&result, R_STRING, value);
++    /* store result, value must not be NULL */
++    SetResult(&result, R_STRING, value ? value : " ");
+ 
+     free(value);
+ }
+@@ -236,7 +250,7 @@
+ void error_callback( __attribute__ ((unused)) MpdObj * mi, int errorid, char *msg, __attribute__ ((unused))
+ 		    void *userdata)
+ {
+-    printf("Error %i: '%s'\n", errorid, msg);
++    info("[MPD] caught error %i: '%s'\n", errorid, msg);
+ }
+ 
+ static int mpd_get(int function)
+@@ -278,95 +292,89 @@
+ 
+ static void elapsedTime(RESULT * result)
+ {
+-    char *value = " ";
++    char myTime[6] = " ";
+ 
+-    int playTime = mpd_get(_mpd_status_get_elapsed_song_time);
++    const int playTime = mpd_get(_mpd_status_get_elapsed_song_time);
+ 
+-    if (playTime != -1) {
+-	char myTime[6];
+-	memset(myTime, 0, 6);
+-	int minutes = (int) (playTime / 60);
+-	int seconds = (int) (playTime % 60);
++    if ((playTime >= 0) && (playTime < 6000)) {
++	const int minutes = (int) (playTime / 60);
++	const int seconds = (int) (playTime % 60);
+ 	sprintf(myTime, "%02d:%02d", minutes, seconds);
++    } else if (playTime >= 6000) {
++	strcpy(myTime, "LONG");
++    }
+ 
+-	value = strdup(myTime);
+-    }
+-    // store result     
+-    SetResult(&result, R_STRING, value);
++    /* store result */
++    SetResult(&result, R_STRING, myTime);
+ }
+ 
+ static void elapsedTimeSec(RESULT * result)
+ {
+-    int playTime = mpd_get(_mpd_status_get_elapsed_song_time);
++    const int playTime = mpd_get(_mpd_status_get_elapsed_song_time);
+     double d = 0.0;
+ 
+     if (playTime != -1)
+ 	d = playTime;
+ 
+-    // store result     
++    /* store result */
+     SetResult(&result, R_NUMBER, &d);
+ }
+ 
+ static void totalTime(RESULT * result)
+ {
+-    char *value = " ";
++    char myTime[6] = "ERROR";
+ 
+-    int totTime = mpd_get(_mpd_status_get_total_song_time);
+-    if (totTime != -1) {
+-	char myTime[6];
+-	memset(myTime, 0, 6);
+-	int minutes = (int) (totTime / 60);
+-	int seconds = (int) (totTime % 60);
++    const int totTime = mpd_get(_mpd_status_get_total_song_time);
++    if ((totTime >= 0) && (totTime < 6000)) {
++	const int minutes = (int) (totTime / 60);
++	const int seconds = (int) (totTime % 60);
+ 	sprintf(myTime, "%02d:%02d", minutes, seconds);
++    } else if (totTime >= 6000) {
++	strcpy(myTime, "LONG");
++    }
+ 
+-	value = strdup(myTime);
+-    } else
+-	value = strdup("ERROR");
+-    // store result     
+-    SetResult(&result, R_STRING, value);
++    /* store result */
++    SetResult(&result, R_STRING, myTime);
+ }
+ 
+ static void totalTimeSec(RESULT * result)
+ {
+-    int totTime = mpd_get(_mpd_status_get_total_song_time);
++    const int totTime = mpd_get(_mpd_status_get_total_song_time);
+     double d = 0.0;
+ 
+     if (totTime != -1)
+ 	d = totTime;
+ 
+-    // store result     
++    /* store result */
+     SetResult(&result, R_NUMBER, &d);
+ }
+ 
+ static void bitRate(RESULT * result)
+ {
+-    char *value = "";
++    char rateStr[4];
+ 
+-    int rate = mpd_get(_mpd_status_get_bitrate);
++    const int rate = mpd_get(_mpd_status_get_bitrate);
+ 
+-    if (rate != -1) {
+-	char rateStr[4];
+-	memset(rateStr, 0, 4);
++    if ((rate >= 0) && (rate < 1000)) {
+ 	sprintf(rateStr, "%03d", rate);
++    }
+ 
+-	value = strdup(rateStr);
+-    }
+-    // store result     
+-    SetResult(&result, R_STRING, value);
++    /* store result */
++    SetResult(&result, R_STRING, rateStr);
+ }
+ 
+ static void getRepeat(RESULT * result)
+ {
+     char *value = " ";
+ 
+-    int rep = mpd_get(_mpd_player_get_repeat);
++    const int rep = mpd_get(_mpd_player_get_repeat);
+ 
+     if (rep != -1) {
+ 	if (rep)
+-	    value = strdup("REP");
+-	// else value = strdup("   ");          
++	    value = "REP";
++	/* else value = strdup("   "); */
+     }
+-    // store result     
++    /* store result */
+     SetResult(&result, R_STRING, value);
+ }
+ 
+@@ -375,26 +383,26 @@
+ {
+     char *value = " ";
+ 
+-    int ran = mpd_get(_mpd_player_get_random);
++    const int ran = mpd_get(_mpd_player_get_random);
+ 
+     if (ran != -1) {
+ 	if (ran)
+ 	    value = strdup("RND");
+-	// else value = strdup("   ");          
++	/* else value = strdup("   "); */
+     }
+-    // store result     
++    /* store result */
+     SetResult(&result, R_STRING, value);
+ }
+ 
+ static void getRepRand(RESULT * result)
+ {
+-    char *value = " ";
++    char str[9] = " ";
+ 
+-    int ran = mpd_get(_mpd_player_get_random);
+-    int rep = mpd_get(_mpd_player_get_repeat);
++    const int ran = mpd_get(_mpd_player_get_random);
++    const int rep = mpd_get(_mpd_player_get_repeat);
+ 
+     if (ran != -1 && rep != -1) {
+-	char str[9];
++
+ 	if (rep)
+ 	    sprintf(str, "REP/");
+ 	else
+@@ -403,17 +411,16 @@
+ 	    sprintf(str, "%sRND", str);
+ 	else
+ 	    sprintf(str, "%s---", str);
+-	value = strdup(str);
+     }
+-    // store result     
+-    SetResult(&result, R_STRING, value);
++    /* store result */
++    SetResult(&result, R_STRING, str);
+ }
+ 
+ int plugin_init_mpd(void)
+ {
+     /* Check for File */
+     if (mpd_get(_mpd_dummy) != 1) {
+-	error("Error: Cannot connect to MPD! Is MPD started?");
++	error("[MPD] Error: Cannot connect to MPD! Is MPD started?");
+ 	return -1;
+     }
+ 

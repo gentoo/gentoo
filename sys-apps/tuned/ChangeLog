@@ -1,0 +1,15 @@
+# ChangeLog for sys-apps/tuned
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/tuned/ChangeLog,v 1.2 2014/10/19 14:20:17 dlan Exp $
+
+*tuned-2.4.1 (19 Oct 2014)
+
+  19 Oct 2014; Yixun Lan <dlan@gentoo.org> +tuned-2.4.1.ebuild:
+  version bump
+
+*tuned-2.3.0 (29 Aug 2014)
+
+  29 Aug 2014; Yixun Lan <dlan@gentoo.org> +tuned-2.3.0.ebuild,
+  +files/tuned.initd, +metadata.xml:
+  initial version, bug 396131, thanks david, Patrick McMunn, Amir Aupov
+

@@ -1,0 +1,35 @@
+# ChangeLog for dev-python/ropeide
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ropeide/ChangeLog,v 1.7 2015/06/09 17:04:31 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*ropeide-1.5.1-r2 (07 Jan 2015)
+
+  07 Jan 2015; Ian Delaney <idella4@gentoo.org> +ropeide-1.5.1-r2.ebuild,
+  -ropeide-1.5.1-r1.ebuild:
+  revbump; conversion -> distutils-r1, rm old
+
+  22 Feb 2012; Patrick Lauer <patrick@gentoo.org> ropeide-1.5.1-r1.ebuild:
+  Restricting pypy and jython
+
+  01 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  ropeide-1.5.1-r1.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  09 Jun 2010; Patrick Lauer <patrick@gentoo.org> ropeide-1.5.1-r1.ebuild:
+  Adding ~amd64 keyword
+
+*ropeide-1.5.1-r1 (01 Mar 2009)
+
+  01 Mar 2009; Jesus Rivero <neurogeek@gentoo.org> -ropeide-1.5.1.ebuild,
+  +ropeide-1.5.1-r1.ebuild:
+  Revbump. EAPI 2 support for python tk use flag. Removed older version.
+
+*ropeide-1.5.1 (02 Sep 2008)
+
+  02 Sep 2008; Rob Cakebread <pythonhead@gentoo.org> +metadata.xml,
+  +ropeide-1.5.1.ebuild:
+  Initial commit. Bug #202700. Thanks Matsui Tetsushi <VED03370@nifty.ne.jp>
+  for the ebuild.

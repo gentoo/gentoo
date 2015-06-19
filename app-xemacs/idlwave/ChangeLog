@@ -1,0 +1,40 @@
+# ChangeLog for app-xemacs/idlwave
+# Copyright 2002-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/idlwave/ChangeLog,v 1.12 2008/03/19 19:39:54 graaff Exp $
+
+  19 Mar 2008; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  A herd should not be listed as maintainer
+
+  25 Oct 2007; Hans de Graaff <graaff@gentoo.org> -idlwave-1.28.ebuild:
+  Remove old version
+
+  03 Jun 2007; Hans de Graaff <graaff@gentoo.org> idlwave-1.32.ebuild:
+  Stable on amd64, ppc, ppc64, sparc, x86 as per #175560
+
+  29 May 2007; Raúl Porcel <armin76@gentoo.org> idlwave-1.32.ebuild:
+  alpha stable wrt #175560
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*idlwave-1.32 (12 Nov 2006)
+
+  12 Nov 2006; Hans de Graaff <graaff@gentoo.org> +metadata.xml,
+  -idlwave-1.27.ebuild, +idlwave-1.32.ebuild:
+  Version bump; remove old version; add metadata.
+
+  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> idlwave-1.28.ebuild:
+  Stable on alpha
+
+*idlwave-1.28 (22 Feb 2003)
+
+  22 Feb 2003;  <rendhalver@gentoo.org> idlwave-1.27.ebuild idlwave-1.28.ebuild files/digest-idlwave-1.28 :
+  Add ~alpha to KEYWORDS
+
+  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
+  new stable ebuild
+
+*idlwave-1.27 (16 Dec 2002)
+
+  16 Dec 2002; Rendhalver [Peter Brown] <rendhalver@gentoo.org> :
+  Initial import.

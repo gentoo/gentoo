@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <herd>perl</herd>
+    <maintainer>
+        <email>titanofold@gentoo.org</email>
+        <name>Aaron W. Swenson</name>
+    </maintainer>
+    <upstream>
+        <remote-id type="cpan">Data-GUID</remote-id>
+        <remote-id type="cpan-module">Data::GUID</remote-id>
+    </upstream>
+</pkgmetadata>

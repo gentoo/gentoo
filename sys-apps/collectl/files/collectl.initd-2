@@ -1,0 +1,16 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/collectl/files/collectl.initd-2,v 1.1 2014/05/28 09:45:44 polynomial-c Exp $
+
+extra_started_commands="flush"
+
+pidfile="/var/run/collectl.pid"
+command="/usr/bin/collectl"
+command_args="-D"
+
+flush() {
+	einfo "Flushing collectl buffers"
+	start-stop-daemon --signal USR1 --pidfile ${pidfile}
+	eend $?
+}

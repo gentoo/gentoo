@@ -1,0 +1,73 @@
+From 76351672c222f28ea1b681097a9eff58a6791555 Mon Sep 17 00:00:00 2001
+From: Brian Behlendorf <behlendorf1@llnl.gov>
+Date: Thu, 11 Jul 2013 14:11:32 -0700
+Subject: [PATCH] Fix zfsctl_expire_snapshot() deadlock
+
+It is possible for an automounted snapshot which is expiring to
+deadlock with a manual unmount of the snapshot.  This can occur
+because taskq_cancel_id() will block if the task is currently
+executing until it completes.  But it will never complete because
+zfsctl_unmount_snapshot() is holding the zsb->z_ctldir_lock which
+zfsctl_expire_snapshot() must acquire.
+
+---------------------- z_unmount/0:2153 ---------------------
+  mutex_lock                <blocking on zsb->z_ctldir_lock>
+  zfsctl_unmount_snapshot
+  zfsctl_expire_snapshot
+  taskq_thread
+
+------------------------- zfs:10690 -------------------------
+  taskq_wait_id             <waiting for z_unmount to exit>
+  taskq_cancel_id
+  __zfsctl_unmount_snapshot
+  zfsctl_unmount_snapshot   <takes zsb->z_ctldir_lock>
+  zfs_unmount_snap
+  zfs_ioc_destroy_snaps_nvl
+  zfsdev_ioctl
+  do_vfs_ioctl
+
+We resolve the deadlock by dropping the zsb->z_ctldir_lock before
+calling __zfsctl_unmount_snapshot().  The lock is only there to
+prevent concurrent modification to the zsb->z_ctldir_snaps AVL
+tree.  Moreover, we're careful to remove the zfs_snapentry_t from
+the AVL tree before dropping the lock which ensures no other tasks
+can find it.  On failure it's added back to the tree.
+
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Signed-off-by: Chris Dunlap <cdunlap@llnl.gov>
+Closes #1527
+---
+ module/zfs/zfs_ctldir.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/module/zfs/zfs_ctldir.c b/module/zfs/zfs_ctldir.c
+index 4fa530b..168f853 100644
+--- a/module/zfs/zfs_ctldir.c
++++ b/module/zfs/zfs_ctldir.c
+@@ -732,7 +732,11 @@ struct inode *
+ 	sep = avl_find(&zsb->z_ctldir_snaps, &search, NULL);
+ 	if (sep) {
+ 		avl_remove(&zsb->z_ctldir_snaps, sep);
++		mutex_exit(&zsb->z_ctldir_lock);
++
+ 		error = __zfsctl_unmount_snapshot(sep, flags);
++
++		mutex_enter(&zsb->z_ctldir_lock);
+ 		if (error == EBUSY)
+ 			avl_add(&zsb->z_ctldir_snaps, sep);
+ 		else
+@@ -767,7 +771,11 @@ struct inode *
+ 	while (sep != NULL) {
+ 		next = AVL_NEXT(&zsb->z_ctldir_snaps, sep);
+ 		avl_remove(&zsb->z_ctldir_snaps, sep);
++		mutex_exit(&zsb->z_ctldir_lock);
++
+ 		error = __zfsctl_unmount_snapshot(sep, flags);
++
++		mutex_enter(&zsb->z_ctldir_lock);
+ 		if (error == EBUSY) {
+ 			avl_add(&zsb->z_ctldir_snaps, sep);
+ 			(*count)++;
+-- 
+1.8.1.6
+

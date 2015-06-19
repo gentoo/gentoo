@@ -1,0 +1,64 @@
+# ChangeLog for media-sound/potamus
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/potamus/ChangeLog,v 1.14 2014/08/10 21:10:08 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> potamus-0.12.ebuild,
+  potamus-14.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*potamus-14 (17 Jan 2013)
+
+  17 Jan 2013; Alexis Ballier <aballier@gentoo.org> +potamus-14.ebuild:
+  Version bump. This fixes build with latest ffmpeg, bug #443432
+
+  07 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> potamus-0.12.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  21 Apr 2012; Tomáš Chvátal <scarabeus@gentoo.org> -potamus-0.11.ebuild,
+  potamus-0.12.ebuild:
+  Fix building with newer libav api. Fixes bug#390821.
+
+*potamus-0.12 (21 Apr 2011)
+
+  21 Apr 2011; Tim Harder <radhermit@gentoo.org> -potamus-0.10.ebuild,
+  potamus-0.11.ebuild, +potamus-0.12.ebuild:
+  Version bump and remove old. Use virtual/ffmpeg (bug #362113) and simplify
+  gtk+ dependency.
+
+*potamus-0.11 (12 Jun 2010)
+
+  12 Jun 2010; Alexis Ballier <aballier@gentoo.org> +potamus-0.11.ebuild:
+  version bump by UnclePain@gmx.de, bug #321605
+
+*potamus-0.10 (22 May 2009)
+
+  22 May 2009; Samuli Suominen <ssuominen@gentoo.org> -potamus-0.9.ebuild,
+  -files/potamus-0.9-ffmpeg.patch, +potamus-0.10.ebuild:
+  Version bump.
+
+  10 Dec 2008; Samuli Suominen <ssuominen@gentoo.org>
+  +files/potamus-0.9-ffmpeg.patch, potamus-0.9.ebuild:
+  Fix building with recent FFMPEG versions, thanks to loki_val for advice.
+
+*potamus-0.9 (26 Jan 2008)
+
+  26 Jan 2008; Samuli Suominen <ssuominen@gentoo.org>
+  -files/potamus-Makefile.patch, +potamus-0.9.ebuild,
+  -potamus-20040414.ebuild:
+  Version bump and remove old snapshot, closing also #205613.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  15 Jun 2005; <sekretarz@gentoo.org> potamus-20040414.ebuild:
+  Added to ~amd64, bug #96091
+
+*potamus-20040414 (06 Jan 2005)
+
+  06 Jan 2005; Chris White <chriswhite@gentoo.org> +metadata.xml,
+  +files/potamus-Makefile.patch, +potamus-20040414.ebuild:
+  Initial import to the tree. Fixes bug #49149. Thanks to Chris Davies for the
+  ebuild. Patch included to fix the Makefile.

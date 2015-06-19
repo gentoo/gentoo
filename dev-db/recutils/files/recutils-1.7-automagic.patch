@@ -1,0 +1,130 @@
+--- recutils-1.7/configure.ac
++++ recutils-1.7/configure.ac
+@@ -85,17 +85,32 @@
+ fi
+ AC_SUBST([CHECKLIBS])
+ 
++AC_ARG_ENABLE([curl],
++              AS_HELP_STRING([--enable-curl],
++                             [Enable support for remote descriptors using libcurl (default is YES)]),
++              [curl_enabled=$enableval], [curl_enabled=yes])
+ have_curl=no
+-AC_CHECK_LIB([curl],[curl_global_init],[have_curl=yes],)
+-if test "x$have_curl" = "xyes"; then
+-   CURLLIBS=-lcurl
++if test "x$curl_enabled" = "xyes"; then
++   AC_CHECK_LIB([curl],[curl_global_init],[have_curl=yes],)
++   if test "x$have_curl" = "xyes"; then
++       CURLLIBS=-lcurl
++   else
++       AC_MSG_ERROR([curl support enabled but libcurl not found])
++   fi
+ fi
+ AC_SUBST([CURLLIBS])
+ 
++AC_ARG_ENABLE([uuid],
++              AS_HELP_STRING([--enable-uuid],
++                             [Compile recutils with support for uuid types (default is YES)]),
++              [uuid_enabled=$enableval], [uuid_enabled=yes])
++
+ have_uuid=no
+-AC_CHECK_LIB([uuid],[uuid_generate],[have_uuid=yes],)
+-if test "x$have_uuid" = "xyes"; then
+-   UUIDLIBS=-luuid
++if test "x$uuid_enabled" = "xyes"; then
++   AC_CHECK_LIB([uuid],[uuid_generate],[have_uuid=yes],)
++      if test "x$have_uuid" = "xyes"; then
++         UUIDLIBS=-luuid
++      fi
+ fi
+ AC_SUBST([UUIDLIBS])
+ AC_SUBST([have_uuid])
+@@ -119,32 +134,42 @@
+ AM_CONDITIONAL([CRYPT], [test "x$crypt_support" = "xyes"])
+ AC_SUBST([crypt_support])
+ 
+-have_glib=no
+-PKG_CHECK_MODULES([GLIB], [glib-2.0 >= 2.0.0],
+-                  [have_glib=yes], [have_glib=no])
+-
++AC_ARG_ENABLE([mdb],
++              AS_HELP_STRING([--enable-mdb],
++                             [Build the mdb2rec utility (default is YES)]),
++              [mdb_enabled=$enableval], [mdb_enabled=yes])
+ have_mdb=no
+-AC_CHECK_LIB([mdb],[mdb_init],[have_mdb=yes],)
+-if test "x$have_mdb" = "xyes"; then
+-   MDBLIBS=-lmdb
+-
+-   OLD_CFLAGS=$CFLAGS
+-   CFLAGS="$CFLAGS $pkg_cv_GLIB_CFLAGS"
+-   mdb_uses_sdatetime=no
+-   AC_CHECK_DECL([MDB_SDATETIME],[mdb_uses_sdatetime=yes],,[#include <glib.h>
++if test "x$mdb_enabled" = "xyes"; then
++   AC_CHECK_LIB([mdb],[mdb_init],[have_mdb=yes],)
++   if test "x$have_mdb" = "xyes"; then
++       MDBLIBS=-lmdb
++
++       OLD_CFLAGS=$CFLAGS
++       CFLAGS="$CFLAGS $pkg_cv_GLIB_CFLAGS"
++       mdb_uses_sdatetime=no
++       AC_CHECK_DECL([MDB_SDATETIME],[mdb_uses_sdatetime=yes],,[#include <glib.h>
+ #include <mdbtools.h>])
+-   CFLAGS=$OLD_CFLAGS
++       CFLAGS=$OLD_CFLAGS
+ 
+-   if test "x$mdb_uses_sdatetime" = "xyes"; then
+-      MDB_DATETIME="MDB_SDATETIME"
++       if test "x$mdb_uses_sdatetime" = "xyes"; then
++          MDB_DATETIME="MDB_SDATETIME"
++       else
++        MDB_DATETIME="MDB_DATETIME"
++       fi
+    else
+-      MDB_DATETIME="MDB_DATETIME"
++       AC_MSG_ERROR([mdb support enabled but libmdb not found])
+    fi
+ 
+    AC_SUBST([MDB_DATETIME])
+ fi
+ AC_SUBST([MDBLIBS])
+ 
++have_glib=no
++if test "x$mdb_enabled" = "xyes"; then
++    PKG_CHECK_MODULES([GLIB], [glib-2.0 >= 2.0.0],
++                      [have_glib=yes], [have_glib=no])
++fi
++
+ AM_CONDITIONAL([COMPILE_MDB2REC],
+                [test "x$have_glib" = "xyes" && test "x$have_mdb" = "xyes"])
+ AM_CONDITIONAL([REMOTE_DESCRIPTORS], [test "x$have_curl" = "xyes"])
+@@ -233,29 +258,6 @@
+ 
+ dnl Report warnings
+ 
+-if test "x$have_check" = "xno"; then
+-   echo "warning: libcheck was not found in the system."
+-   echo "warning: unit tests wont be compiled and executed upon make check."
+-fi
+-
+-if test "x$have_mdb" = "xno"; then
+-   echo "warning: libmdb was not found in the system."
+-   echo "warning: the mdb2rec utility won't get built."
+-fi
+-
+-if test "x$have_glib" = "xno"; then
+-   echo "warning: glib was not found in the system."
+-   echo "warning: the mdb2rec utility won't get built."
+-fi
+-
+-if test "x$crypt_support" = "xno"; then
+-   echo "warning: building recutils without encryption support."
+-fi
+-
+-if test "x$have_uuid" = "xno"; then
+-   echo "warning: building recutils without support for uuid types."
+-fi
+-
+ if test "x$bash_headers_available" = "xno" || test "x$bash_builtins_enabled" = "xno"; then
+    echo "warning: not building the recutils bash builtins."
+ fi

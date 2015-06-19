@@ -1,0 +1,30 @@
+--- cvsspam.rb.old	2006-12-02 13:36:48.000000000 -0500
++++ cvsspam.rb	2006-12-02 13:38:28.000000000 -0500
+@@ -1386,12 +1386,10 @@
+ $allTags = Hash.new
+ 
+ File.open("#{$logfile}.emailtmp", File::RDWR|File::CREAT|File::TRUNC) do |mail|
++  reader = LogReader.new($stdin)
+ 
+   $diff_output_limiter = OutputSizeLimiter.new(mail, $mail_size_limit)
+ 
+-  File.open($logfile) do |log|
+-    reader = LogReader.new(log)
+-
+     until reader.eof
+       handler = $handlers[reader.currentLineCode]
+       if handler == nil
+@@ -1399,12 +1397,11 @@
+       end
+       handler.handleLines(reader.getLines, $diff_output_limiter)
+     end
+-  end
+ 
+ end
+ 
+ if $subjectPrefix == nil
+-  $subjectPrefix = "[CVS #{Repository.array.join(',')}]"
++  $subjectPrefix = "[SVN #{Repository.array.join(',')}]"
+ end
+ 
+ if $files_in_subject

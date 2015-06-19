@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sci-electronics</herd>
+	<longdescription>
+  The gnetman project has one simple goal: Enabling interoperability between
+  open-source EDA tools. To date, gnetman can read and/or write (in theory)
+  formats used by the following tools :
+    * gschem
+    * iverilog
+    * ltspice, hspice, eldo, gnucap, tclspice
+    * confluence
+  </longdescription>
+</pkgmetadata>

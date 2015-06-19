@@ -1,0 +1,112 @@
+# ChangeLog for dev-python/decoratortools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/decoratortools/ChangeLog,v 1.29 2015/04/08 08:05:10 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> decoratortools-1.8-r1.ebuild:
+  Drop old Python implementations
+
+  27 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -decoratortools-1.8.ebuild:
+  Remove old.
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> decoratortools-1.8-r1.ebuild:
+  x86 stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> decoratortools-1.8-r1.ebuild:
+  ppc stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> decoratortools-1.8-r1.ebuild:
+  amd64 stable, bug 540290
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> decoratortools-1.8-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  22 Oct 2013; Fabian Groffen <grobian@gentoo.org> decoratortools-1.8-r1.ebuild:
+  Marked ~x64-macos, bug #487670
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> decoratortools-1.8-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*decoratortools-1.8-r1 (09 Apr 2013)
+
+  09 Apr 2013; Ian Delaney <idella4@gentoo.org> +decoratortools-1.8-r1.ebuild:
+  migration to distutils-r1 revbump
+
+  05 Sep 2011; Jesus Rivero <neurogeek@gentoo.org> decoratortools-1.8.ebuild:
+  License fix, changed to PSF-2
+
+  18 Jul 2010; <nixnut@gentoo.org> decoratortools-1.8.ebuild:
+  ppc stable #324467
+
+  14 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  decoratortools-1.8.ebuild:
+  stable x86, bug 324467
+
+  24 Jun 2010; Pacho Ramos <pacho@gentoo.org> decoratortools-1.8.ebuild:
+  stable amd64, bug 324467
+
+*decoratortools-1.8 (06 May 2010)
+
+  06 May 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +decoratortools-1.8.ebuild:
+  Version bump.
+
+  10 Jan 2010; nixnut <nixnut@gentoo.org> decoratortools-1.7.ebuild:
+  ppc stable #297680
+
+  02 Jan 2010; Markus Meier <maekke@gentoo.org> decoratortools-1.7.ebuild:
+  amd64/x86 stable, bug #297680
+
+  10 Oct 2009; Fabian Groffen <grobian@gentoo.org>
+  decoratortools-1.7.ebuild:
+  Merge from Prefix
+
+  05 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  decoratortools-1.7.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*decoratortools-1.7 (05 Sep 2009)
+
+  05 Sep 2009; Patrick Lauer <patrick@gentoo.org>
+  -decoratortools-1.5.ebuild, +decoratortools-1.7.ebuild:
+  Bump to 1.7, remove old
+
+*decoratortools-1.6 (04 Jan 2008)
+
+  04 Jan 2008; Ali Polatel <hawking@gentoo.org> +decoratortools-1.6.ebuild:
+  Version bump.
+
+  31 Dec 2007; Joseph Jezak <josejx@gentoo.org> decoratortools-1.5.ebuild:
+  Marked ~ppc.
+
+  24 Oct 2007; Raúl Porcel <armin76@gentoo.org> decoratortools-1.5.ebuild:
+  Add ~ia64 wrt bug #145000
+
+*decoratortools-1.5 (15 Jul 2007)
+
+  15 Jul 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  -decoratortools-1.4.ebuild, +decoratortools-1.5.ebuild:
+  Version bump: added setuptools dep. Dropped old version.
+
+  06 Jul 2007; Ali Polatel <hawking@gentoo.org> decoratortools-1.4.ebuild:
+  Added app-arch/unzip to DEPEND, cosmetics
+
+  05 May 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  decoratortools-1.4.ebuild:
+  Marked ~amd64 (bug #176883).
+
+  03 May 2007; Rob Cakebread <pythonhead@gentoo.org>
+  decoratortools-1.4.ebuild:
+  Added die to src_test
+
+  03 May 2007; Rob Cakebread <pythonhead@gentoo.org>
+  decoratortools-1.4.ebuild:
+  Added src_test
+
+  02 May 2007; Rob Cakebread <pythonhead@gentoo.org> metadata.xml:
+  Updated metadata.
+
+*decoratortools-1.4 (02 May 2007)
+
+  02 May 2007; Rob Cakebread <pythonhead@gentoo.org>
+  +decoratortools-1.4.ebuild:
+  Initial commit.

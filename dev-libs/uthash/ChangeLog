@@ -1,0 +1,57 @@
+# ChangeLog for dev-libs/uthash
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/uthash/ChangeLog,v 1.14 2015/06/07 09:05:40 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  02 Jul 2014; Yixun Lan <dlan@gentoo.org> -uthash-1.9.4.ebuild,
+  -uthash-1.9.5.ebuild, -uthash-1.9.6.ebuild:
+  cleanup, confirmed by Johan Bergström
+
+*uthash-1.9.9 (02 Jul 2014)
+
+  02 Jul 2014; Yixun Lan <dlan@gentoo.org> +uthash-1.9.9.ebuild:
+  bump, fix bug #500490, thanks Johan Bergström
+
+  26 Jun 2013; Anthony G. Basile <blueness@gentoo.org> uthash-1.9.7.ebuild:
+  Keyword ~arm for bfgminer
+
+  26 Jun 2013; Anthony G. Basile <blueness@gentoo.org> uthash-1.9.7.ebuild:
+  Keyword ~ppc64 for bfgminer
+
+  15 Jan 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove myself from metadata
+
+  29 Dec 2012; Agostino Sarubbo <ago@gentoo.org> uthash-1.9.7.ebuild:
+  Stable for sparc, wrt bug #445588
+
+  23 Dec 2012; Jeff Horelick <jdhore@gentoo.org> uthash-1.9.7.ebuild:
+  marked x86 per bug 445588
+
+  22 Dec 2012; Agostino Sarubbo <ago@gentoo.org> uthash-1.9.7.ebuild:
+  Stable for ppc, wrt bug #445588
+
+  22 Dec 2012; Agostino Sarubbo <ago@gentoo.org> uthash-1.9.7.ebuild:
+  Stable for amd64, wrt bug #445588
+
+*uthash-1.9.7 (16 Oct 2012)
+
+  16 Oct 2012; Markos Chandras <hwoarang@gentoo.org> +uthash-1.9.7.ebuild:
+  Version bump. Bug #438514
+
+*uthash-1.9.6 (05 May 2012)
+
+  05 May 2012; Markos Chandras <hwoarang@gentoo.org> +uthash-1.9.6.ebuild:
+  version bump. Bug #414539
+
+*uthash-1.9.5 (26 Nov 2011)
+
+  26 Nov 2011; Markos Chandras <hwoarang@gentoo.org> +uthash-1.9.5.ebuild:
+  version bump. Thanks to Johan Bergström
+
+*uthash-1.9.4 (14 Nov 2011)
+
+  14 Nov 2011; Markos Chandras <hwoarang@gentoo.org> +uthash-1.9.4.ebuild,
+  +metadata.xml:
+  Initial commit. Thanks to Johan Bergström <bugs@bergstroem.nu>. Bug #205911

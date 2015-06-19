@@ -1,0 +1,139 @@
+# ChangeLog for app-misc/klavaro
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/klavaro/ChangeLog,v 1.29 2015/06/09 18:54:10 kensington Exp $
+
+  09 Jun 2015; Michael Palimaka <kensington@gentoo.org>
+  -files/klavaro-1.9.5-gold.patch, -klavaro-1.9.7.ebuild:
+  Remove old.
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  09 Jun 2015; Agostino Sarubbo <ago@gentoo.org> klavaro-3.0.1.ebuild:
+  Stable for x86, wrt bug #551286
+
+  08 Jun 2015; Agostino Sarubbo <ago@gentoo.org> klavaro-3.0.1.ebuild:
+  Stable for amd64, wrt bug #551286
+
+  14 May 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/klavaro-3.0.0-out-of-source.patch, -files/klavaro-3.0.0-static.patch,
+  -klavaro-3.0.0.ebuild:
+  old
+
+*klavaro-3.0.1 (09 Jan 2015)
+
+  09 Jan 2015; Joe Sapp <nixphoeni@gentoo.org> +klavaro-3.0.1.ebuild,
+  +files/klavaro-3.0.1-datadir.patch, +files/klavaro-3.0.1-out-of-source.patch,
+  +files/klavaro-3.0.1-static.patch, +files/klavaro-desktop-keywords.patch:
+  Version bump; fix install directory for .desktop and appdata files; fix
+  license
+
+  26 Sep 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +files/klavaro-3.0.0-static.patch:
+  fixed cvs sticky options on file(s) that should not have cvs keyword expansion
+
+  29 Jan 2014; Michael Palimaka <kensington@gentoo.org> klavaro-3.0.0.ebuild:
+  Raise sys-devel/gettext dependency wrt bug #499686.
+
+*klavaro-3.0.0 (28 Jan 2014)
+
+  28 Jan 2014; Justin Lecher <jlec@gentoo.org>
+  +files/klavaro-3.0.0-out-of-source.patch, +files/klavaro-3.0.0-static.patch,
+  +klavaro-3.0.0.ebuild, -klavaro-1.9.6.ebuild:
+  Version Bump
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> klavaro-1.9.7.ebuild:
+  Stable for x86, wrt bug #495340
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> klavaro-1.9.7.ebuild:
+  amd64 stable, bug #495340
+
+*klavaro-1.9.7 (27 Jun 2013)
+
+  27 Jun 2013; Michael Weber <xmw@gentoo.org> +klavaro-1.9.7.ebuild:
+  Version bump.
+
+*klavaro-1.9.6 (15 Dec 2012)
+
+  15 Dec 2012; Pacho Ramos <pacho@gentoo.org> +klavaro-1.9.6.ebuild,
+  -klavaro-1.9.3.ebuild, -klavaro-1.9.5.ebuild:
+  Version bump, drop old
+
+*klavaro-1.9.5 (08 Aug 2012)
+
+  08 Aug 2012; Justin Lecher <jlec@gentoo.org> +klavaro-1.9.5.ebuild,
+  +files/klavaro-1.9.5-gold.patch:
+  Version Bump, fix for linking with gold
+
+  13 Feb 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  klavaro-1.9.3.ebuild:
+  Update deps for split gtk-builder-convert (bug #402905).
+
+  11 Nov 2011; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Drop me from maint.
+
+*klavaro-1.9.3 (11 Jul 2011)
+
+  11 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org> -klavaro-1.9.2.ebuild,
+  +klavaro-1.9.3.ebuild:
+  Version bump to the latest. Drop older.
+
+*klavaro-1.9.2 (31 May 2011)
+
+  31 May 2011; Tomáš Chvátal <scarabeus@gentoo.org> -klavaro-1.9.1.ebuild,
+  +klavaro-1.9.2.ebuild:
+  Version bump to latest. Drop older.
+
+*klavaro-1.9.1 (20 Apr 2011)
+
+  20 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> -klavaro-1.8.1.ebuild,
+  +klavaro-1.9.1.ebuild:
+  Version bump to latest. Use eapi4.
+
+  07 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> klavaro-1.8.1.ebuild:
+  Fix slot-dep on gtk+
+
+*klavaro-1.8.1 (23 Feb 2011)
+
+  23 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org> -klavaro-1.7.1.ebuild,
+  +klavaro-1.8.1.ebuild:
+  Version bump. Drop old. Per bug #356195.
+
+*klavaro-1.7.1 (31 Aug 2010)
+
+  31 Aug 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -klavaro-1.5.0.ebuild, +klavaro-1.7.1.ebuild:
+  Version bump. Drop older.
+
+*klavaro-1.5.0 (26 May 2010)
+
+  26 May 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -klavaro-1.3.4.ebuild, -klavaro-1.4.1.ebuild, +klavaro-1.5.0.ebuild:
+  Version bump. Drop old.
+
+*klavaro-1.4.1 (08 Jan 2010)
+
+  08 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +klavaro-1.4.1.ebuild:
+  Version bump.
+
+*klavaro-1.3.4 (26 Oct 2009)
+
+  26 Oct 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -klavaro-1.3.0.ebuild, +klavaro-1.3.4.ebuild:
+  Version bump.
+
+*klavaro-1.3.0 (30 Aug 2009)
+
+  30 Aug 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -klavaro-1.2.1.ebuild, +klavaro-1.3.0.ebuild:
+  Version bump. Remove old. Per bug #283130.
+
+  27 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org> klavaro-1.2.1.ebuild:
+  Add ~x86 as it works there. :]
+
+*klavaro-1.2.1 (26 Jun 2009)
+
+  26 Jun 2009; Romain Perier <mrpouet@gentoo.org>
+  +klavaro-1.2.1.ebuild, +metadata.xml:
+  New ebuild, import from scarabeus's overlay

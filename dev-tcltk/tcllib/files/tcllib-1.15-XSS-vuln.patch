@@ -1,0 +1,907 @@
+ modules/html/html.man     | 146 +++++++++++++++++-------------
+ modules/html/html.tcl     |  55 +++++++++---
+ modules/html/html.test    | 224 +++++++++++++++++++++++++++++++++++-----------
+ modules/html/pkgIndex.tcl |   2 +-
+ 4 files changed, 297 insertions(+), 130 deletions(-)
+
+diff --git a/modules/html/html.man b/modules/html/html.man
+index efb41fc..f18cf4b 100644
+--- a/modules/html/html.man
++++ b/modules/html/html.man
+@@ -1,10 +1,19 @@
+ [comment {-*- tcl -*- doctools manpage}]
+-[manpage_begin html n 1.4]
++[vset HTML_VERSION 1.4.4]
++[manpage_begin html n [vset HTML_VERSION]]
++[see_also htmlparse]
++[see_also ncgi]
++[keywords checkbox]
++[keywords checkbutton]
++[keywords form]
++[keywords html]
++[keywords radiobutton]
++[keywords table]
+ [moddesc   {HTML Generation}]
+ [titledesc {Procedures to generate HTML structures}]
+ [category  {CGI programming}]
+ [require Tcl 8.2]
+-[require html [opt 1.4]]
++[require html [opt [vset HTML_VERSION]]]
+ [description]
+ [para]
+ 
+@@ -26,13 +35,11 @@ for HTML tag parameters.
+ define an author for the page.  The author is noted in a comment in
+ the HEAD section.
+ 
+-
+ [call [cmd ::html::bodyTag] [arg args]]
+ 
+ Generate a [term body] tag.  The tag parameters are taken from [arg args] or
+ from the body.* attributes define with [cmd ::html::init].
+ 
+-
+ [call [cmd ::html::cell] [arg {param value}] [opt [arg tag]]]
+ 
+ Generate a [term td] (or [term th]) tag, a value, and a closing
+@@ -41,13 +48,11 @@ tag parameters come from [arg param] or TD.* attributes defined with
+ [cmd ::html::init].  This uses [cmd ::html::font] to insert a standard
+ [term font] tag into the table cell. The [arg tag] argument defaults to "td".
+ 
+-
+ [call [cmd ::html::checkbox] [arg {name value}]]
+ 
+ Generate a [term checkbox] form element with the specified name and value.
+ This uses [cmd ::html::checkValue].
+ 
+-
+ [call [cmd ::html::checkSet] [arg {key sep list}]]
+ 
+ Generate a set of [term checkbox] form elements and associated labels.  The
+@@ -56,21 +61,18 @@ This uses [cmd ::html::checkbox]. All the [term checkbox] buttons share the
+ same [arg key] for their name. The [arg sep] is text used to separate
+ the elements.
+ 
+-
+ [call [cmd ::html::checkValue] [arg name] [opt [arg value]]]
+ 
+-Generate the "name=[arg name] value=[arg value] for a [term checkbox] form
++Generate the "name=[arg name] value=[arg value]" for a [term checkbox] form
+ element.  If the CGI variable [arg name] has the value [arg value],
+ then SELECTED is added to the return value. [arg value] defaults to
+ "1".
+ 
+-
+ [call [cmd ::html::closeTag]]
+ 
+ Pop a tag off the stack created by [cmd ::html::openTag] and generate
+ the corresponding close tag (e.g., </body>).
+ 
+-
+ [call [cmd ::html::default] [arg key] [opt [arg param]]]
+ 
+ This procedure is used by [cmd ::html::tagParam] to generate the name,
+@@ -83,27 +85,23 @@ identified by [arg key].  The [arg key] has the form "tag.parameter"
+ (e.g., body.bgcolor).  Use [cmd ::html::init] to register default
+ values. [arg param] defaults to the empty string.
+ 
+-
+ [call [cmd ::html::description] [arg description]]
+ 
+ [emph {Side effect only}].  Call this before [cmd ::html::head] to
+ define a description [term meta] tag for the page.  This tag is generated
+ later in the call to [cmd ::html::head].
+ 
+-
+ [call [cmd ::html::end]]
+ 
+ Pop all open tags from the stack and generate the corresponding close
+ HTML tags, (e.g., </body></html>).
+ 
+-
+ [call [cmd ::html::eval] [arg arg] [opt [arg args]]]
+ 
+ This procedure is similar to the built-in Tcl [cmd eval] command.  The
+ only difference is that it returns "" so it can be called from an HTML
+ template file without appending unwanted results.
+ 
+-
+ [call [cmd ::html::extractParam] [arg {param key}] [opt [arg varName]]]
+ 
+ This is a parsing procedure that extracts the value of [arg key] from
+@@ -115,13 +113,11 @@ parameter was found in [arg param], otherwise it returns 0.  If the
+ [arg varName] is not specified, then [arg key] is used as the variable
+ name.
+ 
+-
+ [call [cmd ::html::font] [arg args]]
+ 
+ Generate a standard [term font] tag.  The parameters to the tag are taken
+ from [arg args] and the HTML defaults defined with [cmd ::html::init].
+ 
+-
+ [call [cmd ::html::for] [arg {start test next body}]]
+ 
+ This procedure is similar to the built-in Tcl [cmd for] control
+@@ -129,7 +125,6 @@ structure.  Rather than evaluating the body, it returns the subst'ed
+ [arg body]. Each iteration of the loop causes another string to be
+ concatenated to the result value.
+ 
+-
+ [call [cmd ::html::foreach] [arg {varlist1 list1}] [opt [arg {varlist2 list2 ...}]] [arg body]]
+ 
+ This procedure is similar to the built-in Tcl [cmd foreach] control
+@@ -137,7 +132,6 @@ structure.  Rather than evaluating the body, it returns the subst'ed
+ [arg body].  Each iteration of the loop causes another string to be
+ concatenated to the result value.
+ 
+-
+ [call [cmd ::html::formValue] [arg name] [opt [arg defvalue]]]
+ 
+ Return a name and value pair, where the value is initialized from
+@@ -148,20 +142,17 @@ existing CGI data, if any.  The result has this form:
+   name="fred" value="freds value"
+ }]
+ 
+-
+ [call [cmd ::html::getFormInfo] [arg args]]
+ 
+ Generate hidden fields to capture form values.  If [arg args] is
+ empty, then hidden fields are generated for all CGI values.  Otherwise
+ args is a list of string match patterns for form element names.
+ 
+-
+ [call [cmd ::html::getTitle]]
+ 
+ Return the title string, with out the surrounding [term title] tag,
+ set with a previous call to [cmd ::html::title].
+ 
+-
+ [call [cmd ::html::h] [arg {level string}] [opt [arg param]]]
+ 
+ Generate a heading (e.g., [term h[var level]]) tag.  The [arg string] is nested in the
+@@ -191,28 +182,25 @@ Generate an [term h5] tag.  See [cmd ::html::h].
+ 
+ Generate an [term h6] tag.  See [cmd ::html::h].
+ 
+-
+ [call [cmd ::html::hdrRow] [arg args]]
+ 
+ Generate a table row, including [term tr] and [term th] tags.
+ Each value in [arg args] is place into its own table cell.
+ This uses [cmd ::html::cell].
+ 
+-
+ [call [cmd ::html::head] [arg title]]
+ 
+ Generate the [term head] section that includes the page [term title].
+ If previous calls have been made to
+-[cmd ::html::author], 
+-[cmd ::html::keywords], 
+-[cmd ::html::description], 
++[cmd ::html::author],
++[cmd ::html::keywords],
++[cmd ::html::description],
+ or
+ [cmd ::html::meta]
+ then additional tags are inserted into the [term head] section.
+ This leaves an open [term html] tag pushed on the stack with
+ [cmd ::html::openTag].
+ 
+-
+ [call [cmd ::html::headTag] [arg string]]
+ 
+ Save a tag for inclusion in the [term head] section generated by
+@@ -220,13 +208,11 @@ Save a tag for inclusion in the [term head] section generated by
+ [cmd ::html::head].  The [arg string] is everything in the tag except
+ the enclosing angle brackets, < >.
+ 
+-
+ [call [cmd ::html::html_entities] [arg string]]
+ 
+ This command replaces all special characters in the [arg string] with
+ their HTML entities and returns the modified text.
+ 
+-
+ [call [cmd ::html::if] [arg {expr1 body1}] [opt "[const elseif] [arg {expr2 body2 ...}]"] [opt "[const else] [arg bodyN]"]]
+ 
+ This procedure is similar to the built-in Tcl [cmd if] control
+@@ -235,7 +221,6 @@ taken, it returns the subst'ed [arg body].  Note that the syntax is
+ slightly more restrictive than that of the built-in Tcl [cmd if]
+ control structure.
+ 
+-
+ [call [cmd ::html::init] [opt [arg list]]]
+ 
+ [cmd ::html::init] accepts a Tcl-style name-value list that defines
+@@ -243,19 +228,16 @@ values for items with a name of the form "tag.parameter".  For
+ example, a default with key "body.bgcolor" defines the background
+ color for the [term body] tag.
+ 
+-
+ [call [cmd ::html::keywords] [arg args]]
+ 
+ [emph {Side effect only}].  Call this before [cmd ::html::head] to
+ define a keyword [term meta] tag for the page.  The [term meta] tag
+ is included in the result of [cmd ::html::head].
+ 
+-
+ [call [cmd ::html::mailto] [arg email] [opt [arg subject]]]
+ 
+ Generate a hypertext link to a mailto: URL.
+ 
+-
+ [call [cmd ::html::meta] [arg args]]
+ 
+ [emph {Side effect only}].  Call this before [cmd ::html::head] to
+@@ -264,6 +246,50 @@ value list that is used for the name= and value= parameters for the
+ [term meta] tag.  The [term meta] tag is included in the result of
+ [cmd ::html::head].
+ 
++[call [cmd ::html::css] [arg href]]
++
++[emph {Side effect only}].  Call this before [cmd ::html::head] to
++define a [term link] tag for a linked CSS document.  The [arg href] 
++value is a HTTP URL to a CSS document. The [term link] tag is included 
++in the result of [cmd ::html::head].
++
++[para]
++
++Multiple calls of this command are allowed, enabling the use of
++multiple CSS document references. In other words, the arguments
++of multiple calls are accumulated, and do not overwrite each other.
++
++[call [cmd ::html::css-clear]]
++
++[emph {Side effect only}].  Call this before [cmd ::html::head] to
++clear all links to CSS documents.
++[para]
++
++Multiple calls of this command are allowed, doing nothing after the
++first of a sequence with no intervening [cmd ::html::css].
++
++[call [cmd ::html::js] [arg href]]
++
++[emph {Side effect only}].  Call this before [cmd ::html::head] to
++define a [term script] tag for a linked JavaScript document.  The 
++[arg href] is a HTTP URL to a JavaScript document. The [term script]
++tag is included in the result of [cmd ::html::head].
++
++[para]
++
++Multiple calls of this command are allowed, enabling the use of
++multiple JavaScript document references. In other words, the arguments
++of multiple calls are accumulated, and do not overwrite each other.
++
++
++[call [cmd ::html::js-clear]]
++
++[emph {Side effect only}].  Call this before [cmd ::html::head] to
++clear all links to JavaScript documents.
++[para]
++
++Multiple calls of this command are allowed, doing nothing after the
++first of a sequence with no intervening [cmd ::html::js].
+ 
+ [call [cmd ::html::minorList] [arg list] [opt [arg ordered]]]
+ 
+@@ -273,20 +299,17 @@ Tcl-style name, value list of labels and urls for the links.
+ [arg ordered] is a boolean used to choose between an ordered or
+ unordered list. It defaults to [const false].
+ 
+-
+ [call [cmd ::html::minorMenu] [arg list] [opt [arg sep]]]
+ 
+ Generate a series of hypertext links.  The [arg list] is a Tcl-style
+ name, value list of labels and urls for the links.  The [arg sep] is
+ the text to put between each link. It defaults to " | ".
+ 
+-
+ [call [cmd ::html::nl2br] [arg string]]
+ 
+ This command replaces all line-endings in the [arg string] with a
+ [term br] tag and returns the modified text.
+ 
+-
+ [call [cmd ::html::openTag] [arg tag] [opt [arg param]]]
+ 
+ Push [arg tag] onto a stack and generate the opening tag for
+@@ -295,7 +318,6 @@ stack. The second argument provides any tag arguments, as a
+ list whose elements are formatted to be in the form
+ "[var key]=[const value]".
+ 
+-
+ [call [cmd ::html::paramRow] [arg list] [opt [arg rparam]] [opt [arg cparam]]]
+ 
+ Generate a table row, including [term tr] and [term td] tags. Each value in
+@@ -306,25 +328,21 @@ Generate a table row, including [term tr] and [term td] tags. Each value in
+ the [term tr] tag. The value of [arg cparam] is passed to [cmd ::html::cell]
+ as parameter for the [term td] tags.
+ 
+-
+ [call [cmd ::html::passwordInput] [opt [arg name]]]
+ 
+ Generate an [term input] tag of type [term password]. The [arg name] defaults to
+ "password".
+ 
+-
+ [call [cmd ::html::passwordInputRow] [arg label] [opt [arg name]]]
+ 
+ Format a table row containing a label and an [term input] tag of type
+ [term password]. The [arg name] defaults to "password".
+ 
+-
+ [call [cmd ::html::quoteFormValue] [arg value]]
+ 
+ Quote special characters in [arg value] by replacing them with HTML
+ entities for quotes, ampersand, and angle brackets.
+ 
+-
+ [call [cmd ::html::radioSet] [arg {key sep list}]]
+ 
+ Generate a set of [term input] tags of type [term radio] and an associated text
+@@ -332,14 +350,12 @@ label.  All the radio buttons share the same [arg key] for their name.
+ The [arg sep] is text used to separate the elements.  The [arg list]
+ is a Tcl-style label, value list.
+ 
+-
+ [call [cmd ::html::radioValue] [arg {name value}]]
+ 
+-Generate the "name=[arg name] value=[arg value] for a [term radio] form
++Generate the "name=[arg name] value=[arg value]" for a [term radio] form
+ element.  If the CGI variable [arg name] has the value [arg value],
+ then SELECTED is added to the return value.
+ 
+-
+ [call [cmd ::html::refresh] [arg {seconds url}]]
+ 
+ Set up a refresh [term meta] tag. Call this before [cmd ::html::head] and the
+@@ -347,7 +363,6 @@ HEAD section will contain a [term meta] tag that causes the document to
+ refresh in [arg seconds] seconds.  The [arg url] is optional.  If
+ specified, it specifies a new page to load after the refresh interval.
+ 
+-
+ [call [cmd ::html::row] [arg args]]
+ 
+ Generate a table row, including [term tr] and [term td] tags.  Each value in
+@@ -355,14 +370,12 @@ Generate a table row, including [term tr] and [term td] tags.  Each value in
+ [cmd ::html::cell]. Ignores any default information set up via
+ [cmd ::html::init].
+ 
+-
+ [call [cmd ::html::select] [arg {name param choices}] [opt [arg current]]]
+ 
+ Generate a [term select] form element and nested [term option] tags. The [arg name]
+ and [arg param] are used to generate the [term select] tag. The [arg choices]
+ list is a Tcl-style name, value list.
+ 
+-
+ [call [cmd ::html::selectPlain] [arg {name param choices}] [opt [arg current]]]
+ 
+ Like [cmd ::html::select] except that [arg choices] is a Tcl list of
+@@ -376,12 +389,10 @@ main difference is that it returns "" so it can be called from an HTML
+ template file without appending unwanted results.  The other
+ difference is that it must take two arguments.
+ 
+-
+ [call [cmd ::html::submit] [arg label] [opt [arg name]]]
+ 
+ Generate an [term input] tag of type [term submit]. [arg name] defaults to "submit".
+ 
+-
+ [call [cmd ::html::tableFromArray] [arg arrname] [opt [arg param]] [opt [arg pat]]]
+ 
+ Generate a two-column [term table] and nested rows to display a Tcl array. The
+@@ -404,7 +415,6 @@ pre-formatted string.
+ 
+ Generate a [term textarea] tag wrapped around its current values.
+ 
+-
+ [call [cmd ::html::textInput] [arg {name value args}]]
+ 
+ Generate an [term input] form tag with type [term text].  This uses
+@@ -412,7 +422,6 @@ Generate an [term input] form tag with type [term text].  This uses
+ [cmd ::html::formValue].  The args is any additional tag attributes
+ you want to put into the [term input] tag.
+ 
+-
+ [call [cmd ::html::textInputRow] [arg {label name value args}]]
+ 
+ Generate an [term input] form tag with type [term text] formatted into a table row
+@@ -431,7 +440,6 @@ define the [term title] for a page.
+ This returns 1 if the named variable either does not exist or has the
+ empty string for its value.
+ 
+-
+ [call [cmd ::html::while] [arg {test body}]]
+ 
+ This procedure is similar to the built-in Tcl [cmd while] control
+@@ -439,20 +447,30 @@ structure.  Rather than evaluating the body, it returns the subst'ed
+ [arg body].  Each iteration of the loop causes another string to be
+ concatenated to the result value.
+ 
+-[list_end]
+-
+-[section {BUGS, IDEAS, FEEDBACK}]
+-
+-This document, and the package it describes, will undoubtedly contain
+-bugs and other problems.
++[call [cmd ::html::doctype] [arg id]]
+ 
+-Please report such in the category [emph html] of the
+-[uri {http://sourceforge.net/tracker/?group_id=12883} {Tcllib SF Trackers}].
++This procedure can be used to build the standard DOCTYPE
++declaration string. It will return the standard declaration
++string for the id, or throw an error if the id is not known.
++The following id's are defined:
+ 
+-Please also report any ideas for enhancements you may have for either
+-package and/or documentation.
++[list_begin enumerated]
++[enum] HTML32
++[enum] HTML40
++[enum] HTML40T
++[enum] HTML40F
++[enum] HTML401
++[enum] HTML401T
++[enum] HTML401F
++[enum] XHTML10S
++[enum] XHTML10T
++[enum] XHTML10F
++[enum] XHTML11
++[enum] XHTMLB
++[list_end]
+ 
++[list_end]
+ 
+-[see_also ncgi htmlparse]
+-[keywords html form table checkbox radiobutton checkbutton]
++[vset CATEGORY html]
++[include ../doctools2base/include/feedback.inc]
+ [manpage_end]
+diff --git a/modules/html/html.tcl b/modules/html/html.tcl
+index 77e517e..3c0c443 100644
+--- a/modules/html/html.tcl
++++ b/modules/html/html.tcl
+@@ -15,7 +15,7 @@
+ 
+ package require Tcl 8.2
+ package require ncgi
+-package provide html 1.4
++package provide html 1.4.4
+ 
+ namespace eval ::html {
+ 
+@@ -510,7 +510,7 @@ proc ::html::refresh {content {url {}}} {
+     ::if {[string length $url]} {
+ 	append html "; url=$url"
+     }
+-    append html "\">\n"
++    append html "\">"
+     lappend page(meta) $html
+     return ""
+ }
+@@ -912,7 +912,7 @@ proc ::html::selectPlain {name param choices {current {}}} {
+ #	The html fragment
+ 
+ proc ::html::textarea {name {param {}} {current {}}} {
+-    ::set value [ncgi::value $name $current]
++    ::set value [quoteFormValue [ncgi::value $name $current]]
+     return "<[string trimright \
+ 	"textarea name=\"$name\"\
+ 		[tagParam textarea $param]"]>$value</textarea>\n"
+@@ -1405,7 +1405,7 @@ proc ::html::html_entities {s} {
+ #	The text with <br> in place of line-endings.
+ 
+ proc ::html::nl2br {s} {
+-    return [string map [list \n\r <br> \n <br> \r <br>] $s]
++    return [string map [list \n\r <br> \r\n <br> \n <br> \r <br>] $s]
+ }
+ 
+ # ::html::doctype
+@@ -1419,9 +1419,10 @@ proc ::html::nl2br {s} {
+ 
+ proc ::html::doctype {arg} {
+     variable doctypes
+-    set code [string toupper $arg]
+-    if {![info exists doctypes($code)]} {
+-	return -code error "Unknown doctype \"$arg\""
++    ::set code [string toupper $arg]
++    ::if {![info exists doctypes($code)]} {
++	return -code error -errorcode {HTML DOCTYPE BAD} \
++	    "Unknown doctype \"$arg\""
+     }
+     return $doctypes($code)
+ }
+@@ -1451,12 +1452,26 @@ namespace eval ::html {
+ #	href	The location of the css file to include the filename and path
+ #
+ # Results:
+-#	HTML for the  section
++#	None.
+ 
+ proc ::html::css {href} {
+     variable page
+-    set page(css) \
+-	"<link rel=\"stylesheet\" type=\"text/css\" href=\"[quoteFormValue $href]\">\n"
++    lappend page(css) "<link rel=\"stylesheet\" type=\"text/css\" href=\"[quoteFormValue $href]\">"
++    return
++}
++
++# ::html::css-clear
++#	Drop all text/css references.
++#
++# Arguments:
++#	None.
++#
++# Results:
++#	None.
++
++proc ::html::css-clear {} {
++    variable page
++    catch { unset page(css) }
+     return
+ }
+ 
+@@ -1467,11 +1482,25 @@ proc ::html::css {href} {
+ #	href	The location of the javascript file to include the filename and path
+ #
+ # Results:
+-#	HTML for the  section
++#	None.
+ 
+ proc ::html::js {href} {
+     variable page
+-    set page(js) \
+-	"<script language=\"javascript\" type=\"text/javascript\" src=\"[quoteFormValue $href]\"></script>\n"
++    lappend page(js) "<script language=\"javascript\" type=\"text/javascript\" src=\"[quoteFormValue $href]\"></script>"
++    return
++}
++
++# ::html::js-clear
++#	Drop all text/javascript references.
++#
++# Arguments:
++#	None.
++#
++# Results:
++#	None.
++
++proc ::html::js-clear {} {
++    variable page
++    catch { unset page(js) }
+     return
+ }
+diff --git a/modules/html/html.test b/modules/html/html.test
+index 7a03c54..6646fb6 100644
+--- a/modules/html/html.test
++++ b/modules/html/html.test
+@@ -17,8 +17,8 @@ source [file join \
+ 	[file dirname [file dirname [file join [pwd] [info script]]]] \
+ 	devtools testutilities.tcl]
+ 
+-testsNeedTcl     8.2
+-testsNeedTcltest 1.0
++testsNeedTcl     8.4
++testsNeedTcltest 2.0
+ 
+ testing {
+     useLocal html.tcl html
+@@ -26,45 +26,46 @@ testing {
+ 
+ # -------------------------------------------------------------------------
+ 
+-test html-1.1 {html::init} {
++test html-1.1 {html::init} -body {
+     html::init
+-    list [array exists html::defaults] \
+-	[array size html::defaults] \
+-	[info exists html::page]
+-} {1 0 0}
++    list \
++	[array exists html::defaults] \
++	[array size   html::defaults] \
++	[info exists  html::page]
++} -result {1 0 0}
+ 
+-test html-1.2 {html::init} {
++test html-1.2 {html::init} -body {
+     html::init {
+ 	font.face	arial
+ 	body.bgcolor	white
+ 	body.text	black
+     }
+     lsort [array names html::defaults]
+-} {body.bgcolor body.text font.face}
++} -result {body.bgcolor body.text font.face}
+ 
+-test html-1.3 {html::init} {
+-    catch {html::init wrong num args}
+-} 1
++test html-1.3 {html::init, too many args} -body {
++    html::init wrong num args
++} -returnCodes error -result {wrong # args: should be "html::init ?nvlist?"}
+ 
+-test html-1.4 {html::init} {
+-    catch {html::init {wrong num args}}
+-} 1
++test html-1.4 {html::init, bad arg, odd-length list} -body {
++    html::init {wrong num args}
++} -returnCodes error -result {list must have an even number of elements}
+ 
+-test html-2.1 {html::head} {
+-    catch {html::head}
+-} 1
++test html-2.1 {html::head, not enough args} -body {
++    html::head
++} -returnCodes error -result {wrong # args: should be "html::head title"}
+ 
+-test html-2.2 {html::head} {
++test html-2.2 {html::head} -body {
+     html::head "The Title"
+-} "<html><head>\n\t<title>The Title</title>\n</head>\n"
++} -result "<html><head>\n\t<title>The Title</title>\n</head>\n"
+ 
+-test html-2.3 {html::head} {
++test html-2.3 {html::head} -body {
+     html::description "The Description"
+     html::keywords key word
+     html::author "Cathy Coder"
+     html::meta metakey metavalue
+     html::head "The Title"
+-} {<html><head>
++} -result {<html><head>
+ 	<title>The Title</title>
+ 	<!-- Cathy Coder -->
+ 	<meta name="description" content="The Description">
+@@ -73,24 +74,24 @@ test html-2.3 {html::head} {
+ </head>
+ }
+ 
+-test html-3.1 {html::title} {
+-    catch html::title
+-} 1
++test html-3.1 {html::title, not enough args} -body {
++    html::title
++} -returnCodes error -result {wrong # args: should be "html::title title"}
+ 
+-test html-3.2 {html::title} {
++test html-3.2 {html::title} -body {
+     html::title "blah blah"
+-} "<title>blah blah</title>\n"
++} -result "<title>blah blah</title>\n"
+ 
+-test html-4.1 {html::getTitle} {
++test html-4.1 {html::getTitle} -body {
+     html::init
+     html::getTitle
+-} ""
++} -result ""
+ 
+-test html-4.2 {html::getTitle} {
++test html-4.2 {html::getTitle} -body {
+     html::init
+     html::title "blah blah"
+     html::getTitle
+-} {blah blah}
++} -result {blah blah}
+ 
+ test html-5.1 {html::meta} {
+     html::init
+@@ -453,6 +454,18 @@ test html-23.2 {html::textarea} {
+ } {<textarea name="info" cols="50" rows="8">The textarea value.</textarea>
+ }
+ 
++test html-23.3 {html::textarea, dangerous input} {
++    html::init {
++	textarea.cols 50
++	textarea.rows 8
++    }
++    ncgi::reset info=[ncgi::encode "</textarea><script>alert(1)</script>"]
++    ncgi::parse
++    html::textarea info
++} {<textarea name="info" cols="50" rows="8">&lt;/textarea&gt;&lt;script&gt;alert(1)&lt;/script&gt;</textarea>
++}
++
++
+ test html-24.1 {html::submit} {
+     catch {html::submit}
+ } {1}
+@@ -516,7 +529,6 @@ test html-26.4 {html::refresh} {
+ } {<html><head>
+ 	<title>title</title>
+ 	<meta http-equiv="Refresh" content="4">
+-
+ </head>
+ }
+ test html-26.5 {html::refresh} {
+@@ -526,7 +538,6 @@ test html-26.5 {html::refresh} {
+ } {<html><head>
+ 	<title>title</title>
+ 	<meta http-equiv="Refresh" content="9; url=http://www.scriptics.com">
+-
+ </head>
+ }
+ 
+@@ -794,6 +805,7 @@ test html-32.1 {single argument} {
+     set result [html::eval {set x [format 22]}]
+     list $result $x
+ } {{} 22}
++
+ test html-32.2 {multiple arguments} {
+     set a {$b}
+     set b xyzzy
+@@ -801,38 +813,146 @@ test html-32.2 {multiple arguments} {
+     set result [html::eval {set x [eval format $a]}]
+     list $result $x
+ } {{} xyzzy}
++
+ test html-32.3 {single argument} {
+     set x [list]
+     set y 1
+     set result [html::eval lappend x a b c d {$y} e f g]
+     list $result $x
+ } {{} {a b c d 1 e f g}}
+-test html-32.4 {error: not enough arguments} {catch html::eval} 1
+-test html-32.5 {error: not enough arguments} {
+-    catch html::eval msg
+-    set msg
+-} {wrong # args: should be "uplevel ?level? command ?arg ...?"}
+-test html-32.6 {error in eval'ed command} {
+-    catch {html::eval {error "test error"}}
+-} 1
+-test html-32.7 {error in eval'ed command} {
+-    catch {html::eval {error "test error"}} msg
+-    set msg
+-} {test error}
+ 
++test html-32.4 {error: not enough arguments} -body {
++    html::eval
++} -returnCodes error -result {wrong # args: should be "uplevel ?level? command ?arg ...?"}
+ 
+-test html-33.0 {html::font} {
++test html-32.6 {error in eval'ed command} -body {
++    html::eval {error "test error"}
++} -returnCodes error -result {test error}
++
++test html-33.0 {html::font} -body {
+     html::font
+-} {}
++} -result {}
+ 
+-test html-33.1 {html::font} {
++test html-33.1 {html::font} -body {
+     html::font size=18
+-} {<font size=18>}
++} -result {<font size=18>}
+ 
+-
+-test html-34.0 {html::nl2br} {
++test html-34.0 {html::nl2br} -body {
+     html::nl2br "a\n\rb\nc\rd"
+-} {a<br>b<br>c<br>d}
++} -result {a<br>b<br>c<br>d}
+ 
++test html-34.1 {html::nl2br, ticket 1742078} -body {
++    html::nl2br "a\r\nb"
++} -result {a<br>b}
+ 
++# -------------------------------------------------------------------------
++
++test html-tkt3439702-35.0 {html::css, not enough arguments} -body {
++    html::css
++} -returnCodes error -result {wrong # args: should be "html::css href"}
++
++test html-tkt3439702-35.1 {html::css, too many arguments} -body {
++    html::css REF X
++} -returnCodes error -result {wrong # args: should be "html::css href"}
++
++test html-tkt3439702-35.2 {html::css, single ref} -setup {
++    html::css-clear
++} -body {
++    html::css "http://test.css"
++    string trim [html::head T]
++} -cleanup {
++    html::css-clear
++} -result "<html><head>\n\t<title>T</title>\n\t<meta http-equiv=\"Refresh\" content=\"9; url=http://www.scriptics.com\">\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"http://test.css\">\n</head>"
++
++test html-tkt3439702-35.3 {html::css, multiple ref} -setup {
++    html::css-clear
++} -body {
++    html::css "http://test1.css"
++    html::css "http://test2.css"
++    string trim [html::head T]
++} -cleanup {
++    html::css-clear
++} -result {<html><head>
++	<title>T</title>
++	<meta http-equiv="Refresh" content="9; url=http://www.scriptics.com">
++	<link rel="stylesheet" type="text/css" href="http://test1.css">
++	<link rel="stylesheet" type="text/css" href="http://test2.css">
++</head>}
++
++# -------------------------------------------------------------------------
++
++test html-tkt3439702-36.0 {html::js, not enough arguments} -body {
++    html::js
++} -returnCodes error -result {wrong # args: should be "html::js href"}
++
++test html-tkt3439702-36.1 {html::js, too many arguments} -body {
++    html::js REF X
++} -returnCodes error -result {wrong # args: should be "html::js href"}
++
++test html-tkt3439702-36.2 {html::js, single ref} -setup {
++    html::js-clear
++} -body {
++    html::js "http://test.js"
++    string trim [html::head T]
++} -cleanup {
++    html::js-clear
++} -result {<html><head>
++	<title>T</title>
++	<meta http-equiv="Refresh" content="9; url=http://www.scriptics.com">
++	<script language="javascript" type="text/javascript" src="http://test.js"></script>
++</head>}
++
++test html-tkt3439702-36.3 {html::js, multiple ref} -setup {
++    html::js-clear
++} -body {
++    html::js "http://test1.js"
++    html::js "http://test2.js"
++    string trim [html::head T]
++} -cleanup {
++    html::js-clear
++} -result {<html><head>
++	<title>T</title>
++	<meta http-equiv="Refresh" content="9; url=http://www.scriptics.com">
++	<script language="javascript" type="text/javascript" src="http://test1.js"></script>
++	<script language="javascript" type="text/javascript" src="http://test2.js"></script>
++</head>}
++
++test html-tkt3439702-37.0 {html::js, html::css, mixed} -setup {
++    html::css-clear
++    html::js-clear
++} -body {
++    html::css "http://test.css"
++    html::js  "http://test.js"
++    string trim [html::head T]
++} -cleanup {
++    html::js-clear
++    html::css-clear
++} -result {<html><head>
++	<title>T</title>
++	<meta http-equiv="Refresh" content="9; url=http://www.scriptics.com">
++	<link rel="stylesheet" type="text/css" href="http://test.css">
++	<script language="javascript" type="text/javascript" src="http://test.js"></script>
++</head>}
++
++# -------------------------------------------------------------------------
++# TODO: html::css-clear, html::js-clear
++
++
++test html-tktafe4366e2e-38.0 {html::doctype, not enough args} -body {
++    html::doctype
++} -returnCodes error -result {wrong # args: should be "html::doctype arg"}
++
++test html-tktafe4366e2e-38.1 {html::doctype, too many args} -body {
++    html::doctype HTML401T X
++} -returnCodes error -result {wrong # args: should be "html::doctype arg"}
++
++test html-tktafe4366e2e-38.2 {html::doctype, unknown type} -body {
++    html::doctype HTML401TXXX
++} -returnCodes error -result {Unknown doctype "HTML401TXXX"}
++
++test html-tktafe4366e2e-38.3 {html::doctype} -body {
++    html::doctype HTML401T
++} -result {<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">}
++
++# -------------------------------------------------------------------------
+ testsuiteCleanup
+diff --git a/modules/html/pkgIndex.tcl b/modules/html/pkgIndex.tcl
+index 88a71b2..9d91097 100644
+--- a/modules/html/pkgIndex.tcl
++++ b/modules/html/pkgIndex.tcl
+@@ -1,2 +1,2 @@
+ if {![package vsatisfies [package provide Tcl] 8.2]} {return}
+-package ifneeded html 1.4 [list source [file join $dir html.tcl]]
++package ifneeded html 1.4.4 [list source [file join $dir html.tcl]]

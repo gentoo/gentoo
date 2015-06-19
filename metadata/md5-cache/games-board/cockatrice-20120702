@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEPEND=dev-libs/libgcrypt:0 dev-libs/protobuf dev-qt/qtcore:4 dev-qt/qtsql:4 !dedicated? ( dev-qt/qtmultimedia:4 dev-qt/qtsvg:4 dev-qt/qtgui:4 ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) >=sys-apps/sed-4
+DESCRIPTION=An open-source multiplatform software for playing card games over a network
+EAPI=5
+HOMEPAGE=http://cockatrice.de/
+IUSE=dedicated server
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=games-misc/games-envd
+SLOT=0
+SRC_URI=http://cockatrice.de/files/cockatrice_source_20120702.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=f705bf6aeb21651dbc428d6e4cb52440

@@ -1,0 +1,14 @@
+# ChangeLog for dev-java/felix-shell
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/felix-shell/ChangeLog,v 1.2 2013/10/02 22:24:19 tomwij Exp $
+
+  02 Oct 2013; Tom Wijsman <TomWij@gentoo.org> felix-shell-1.4.3.ebuild:
+  Fixed trailing whitespace; maybe I need to make repoman bail out on warnings,
+  missed it twice today.
+
+*felix-shell-1.4.3 (02 Oct 2013)
+
+  02 Oct 2013; Tom Wijsman <TomWij@gentoo.org> +felix-shell-1.4.3.ebuild,
+  +files/felix-shell-1.4.3-build.xml, +metadata.xml:
+  New package for dev-java/felix-shell, Felix Shell. Direct dependency of Struts
+  2.

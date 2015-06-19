@@ -1,0 +1,40 @@
+# ChangeLog for www-apache/mod_auth_tkt
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_auth_tkt/ChangeLog,v 1.7 2015/05/09 08:05:54 pacho Exp $
+
+*mod_auth_tkt-2.1.0-r1 (09 May 2015)
+
+  09 May 2015; Pacho Ramos <pacho@gentoo.org>
+  +files/mod_auth_tkt-2.1.0-apache-2.4.patch, +mod_auth_tkt-2.1.0-r1.ebuild,
+  -mod_auth_tkt-2.1.0.ebuild:
+  Support apache 2.4 (#532800)
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> -mod_auth_tkt-2.0.0_rc2.ebuild,
+  metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+*mod_auth_tkt-2.1.0 (17 Sep 2009)
+
+  17 Sep 2009; Benedikt Böhm <hollow@gentoo.org>
+  mod_auth_tkt-2.0.0_rc2.ebuild, +mod_auth_tkt-2.1.0.ebuild:
+  version bump
+
+  01 Jun 2008; Benedikt Böhm <hollow@gentoo.org>
+  mod_auth_tkt-2.0.0_rc2.ebuild:
+  fix #224129
+
+  31 Jan 2008; Benedikt Böhm <hollow@gentoo.org>
+  mod_auth_tkt-2.0.0_rc2.ebuild:
+  fix depend.apache usage wrt #208033
+
+  27 Jan 2008; Benedikt Böhm <hollow@gentoo.org>
+  files/10_mod_auth_tkt.conf, metadata.xml:
+  update metadata
+
+*mod_auth_tkt-2.0.0_rc2 (30 Dec 2007)
+
+  30 Dec 2007; Benedikt Böhm <hollow@gentoo.org>
+  +files/10_mod_auth_tkt.conf, +metadata.xml,
+  +mod_auth_tkt-2.0.0_rc2.ebuild:
+  initial version, #180822

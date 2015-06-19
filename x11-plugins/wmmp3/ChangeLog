@@ -1,0 +1,52 @@
+# ChangeLog for x11-plugins/wmmp3
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmp3/ChangeLog,v 1.15 2014/09/01 15:26:27 voyageur Exp $
+
+  01 Sep 2014; Bernard Cafarelli <voyageur@gentoo.org> wmmp3-0.12.ebuild:
+  Replace einstall with emake install, bug #521686
+
+  15 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org> wmmp3-0.12.ebuild:
+  Update HOMEPAGE and SRC_URI, thanks Lorenz in bug #394607
+
+  26 May 2011; Michele Noberasco <s4t4n@gentoo.org> wmmp3-0.12.ebuild:
+  Fixed HOMEPAGE and SRC_URI to dockapps.org ones. Closes bug #367177.
+
+  04 Jun 2009; Tiago Cunha <tcunha@gentoo.org> wmmp3-0.12.ebuild:
+  stable sparc, bug 215651
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; wmmp3-0.12.ebuild:
+  Drop virtual/x11 references.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  01 Feb 2006; Krzysiek Pawlik <nelchael@gentoo.org> wmmp3-0.12.ebuild:
+  Fixed DEPEND for modular X.
+
+  11 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmmp3-0.12.ebuild:
+  Remvoed COPYING from dodoc.
+
+  25 Sep 2005; Homer Parker <hparker@gentoo.org> wmmp3-0.12.ebuild:
+  Marked ~amd64.
+
+  24 Aug 2005; Michele Noberasco <s4t4n@gentoo.org> wmmp3-0.12.ebuild:
+  Added patch to make safety checks on X includes and libraries, fixes
+  bug #103531.
+
+  24 Nov 2004; Jason Wever <weeve@gentoo.org> wmmp3-0.12.ebuild:
+  Added ~sparc keyword.
+
+  04 Sep 2004; Michele Noberasco <s4t4n@gentoo.org> wmmp3-0.12.ebuild:
+  Stable for x86. Lower mpg123 dependency to version 0.59s-r2 as revision 3
+  is masked on ppc!
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> wmmp3-0.12.ebuild:
+  Masked wmmp3-0.12.ebuild stable for ppc
+
+  18 Jul 2004; David Holm <dholm@gentoo.org> wmmp3-0.12.ebuild:
+  Added to ~ppc.
+
+*wmmp3-0.12 (17 Jul 2004)
+
+  17 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmmp3-0.12.ebuild:
+  Initial import. Thanks to Susie Edgeworth. Closes #19009.

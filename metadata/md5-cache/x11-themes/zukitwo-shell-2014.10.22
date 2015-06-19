@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Zukitwo theme for GNOME Shell
+EAPI=5
+HOMEPAGE=http://gnome-look.org/content/show.php/Zukitwo?content=140562
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=gnome-base/gnome-shell-3.14 media-fonts/droid !<=x11-themes/zukitwo-2011.12.29
+SLOT=0
+SRC_URI=http://www.hartwork.org/public/zukitwo-2014.10.22.zip
+_md5_=7400c46cfa2f3d36ec20d7590bc23a5e

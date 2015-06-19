@@ -1,0 +1,48 @@
+Index: driver/crt.c
+===================================================================
+--- driver/crt.c	(revision 3197)
++++ driver/crt.c	(working copy)
+@@ -467,7 +467,7 @@
+ noregparm void WIN_FUNC(_win_srand,1)
+ 	(UINT seed)
+ {
+-	net_srandom(seed);
++	prandom_seed(seed);
+ }
+ 
+ noregparm int WIN_FUNC(rand,0)
+Index: driver/ntoskernel.h
+===================================================================
+--- driver/ntoskernel.h	(revision 3197)
++++ driver/ntoskernel.h	(working copy)
+@@ -347,7 +347,7 @@
+ #define netdev_notifier_info_to_dev(x) ((struct net_device *)(x))
+ #endif
+ 
+-#ifdef INIT_COMPLETION
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
+ static inline void reinit_completion(struct completion *x)
+ {
+ 	INIT_COMPLETION(*x);
+@@ -354,6 +354,10 @@
+ }
+ #endif
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,8,0)
++#define prandom_seed(seed) net_srandom(seed)
++#endif
++
+ /* TICK is 100ns */
+ #define TICKSPERSEC		10000000
+ #define TICKSPERMSEC		10000
+@@ -797,9 +801,8 @@
+ #define nt_spin_unlock_irqrestore(lock, flags)				\
+ do {									\
+ 	nt_spin_unlock(lock);						\
+-	preempt_enable_no_resched();					\
++	preempt_enable();						\
+ 	local_irq_restore(flags);					\
+-	preempt_check_resched();					\
+ } while (0)
+ 
+ static inline ULONG SPAN_PAGES(void *ptr, SIZE_T length)

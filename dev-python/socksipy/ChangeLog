@@ -1,0 +1,36 @@
+# ChangeLog for dev-python/socksipy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/socksipy/ChangeLog,v 1.9 2015/06/07 09:25:37 maekke Exp $
+
+  07 Jun 2015; Markus Meier <maekke@gentoo.org> socksipy-1.02.ebuild:
+  arm stable, bug #540290
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> socksipy-1.00.ebuild,
+  socksipy-1.02.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> socksipy-1.02.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> socksipy-1.02.ebuild:
+  amd64 stable, bug 540290
+
+  25 Nov 2014; Pacho Ramos <pacho@gentoo.org> socksipy-1.02.ebuild:
+  Support python 3.4
+
+  24 Feb 2014; Mike Frysinger <vapier@gentoo.org> socksipy-1.02.ebuild:
+  Add arm love for Chromium OS.
+
+*socksipy-1.02 (09 Dec 2013)
+
+  09 Dec 2013; Mike Frysinger <vapier@gentoo.org> +socksipy-1.02.ebuild:
+  Version bump #468080 by Ben Sagal.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> socksipy-1.00.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*socksipy-1.00 (29 Jun 2013)
+
+  29 Jun 2013; Michael Weber <xmw@gentoo.org> +metadata.xml,
+  +socksipy-1.00.ebuild:
+  Initial import adopted from last-hope overlay.

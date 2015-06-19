@@ -1,0 +1,72 @@
+# ChangeLog for games-fps/rtcwmp-demo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/rtcwmp-demo/ChangeLog,v 1.18 2015/06/14 19:53:04 ulm Exp $
+
+  14 Jun 2015; Ulrich Müller <ulm@gentoo.org> rtcwmp-demo-1.1-r1.ebuild:
+  [QA] Remove emul-linux-x86-* from dependencies.
+
+  05 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> -rtcwmp-demo-1.1.ebuild:
+  old
+
+  01 Feb 2015; Mikle Kolyada <zlogene@gentoo.org> rtcwmp-demo-1.1-r1.ebuild:
+  x86 stable wrt bug #535910
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org> rtcwmp-demo-1.1-r1.ebuild:
+  Stable for amd64, wrt bug #535910
+
+*rtcwmp-demo-1.1-r1 (09 Jul 2014)
+
+  09 Jul 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +rtcwmp-demo-1.1-r1.ebuild:
+  Bumped EAPI to 5, adjusted deps for gx86-mulitlib, dropped opengl use flag and
+  made USE=dedicated only install dedicated server as it should; tested fine as-
+  is but did not have any maps to load to test gameplay itself.
+
+  21 Dec 2012; Tupone Alfredo <tupone@gentoo.org> rtcwmp-demo-1.1.ebuild:
+  Use QA_PREBUILT. Bug #429150 by Diego Elio Pettenò
+
+  11 Jul 2012; Michael Sterrett <mr_bones_@gentoo.org> rtcwmp-demo-1.1.ebuild:
+  gpl for init script bug #425946
+
+  08 Feb 2012; Mike Frysinger <vapier@gentoo.org> rtcwmp-demo-1.1.ebuild:
+  Move to new unpacker eclass for unpack_makeself.
+
+  14 Dec 2011; Mike Frysinger <vapier@gentoo.org> rtcwmp-demo-1.1.ebuild:
+  The games.eclass has dropped GAMES_CHECK_LICENSE support (since portage now
+  has ACCEPT_LICENSE), so drop it here too.
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org> rtcwmp-demo-1.1.ebuild:
+  Fix *initd, *confd and *envd calls (#173884, #174266)
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> rtcwmp-demo-1.1.ebuild:
+  Replacing einfo with elog
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  rtcwmp-demo-1.1.ebuild:
+  Removing old virtual/x11 dependency.
+
+  07 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  rtcwmp-demo-1.1.ebuild:
+  Stable on amd64/x86.
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  rtcwmp-demo-1.1.ebuild:
+  Changed nomirror to mirror and nostrip to strip.
+
+  15 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  rtcwmp-demo-1.1.ebuild:
+  Changed to use idsoftware thirdpartymirror.
+
+  24 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  rtcwmp-demo-1.1.ebuild:
+  Added more quoting and second dir entry on dedictated games_make_wrapper.
+
+*rtcwmp-demo-1.1 (24 Jan 2006)
+
+  24 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/rtcwmp-demo-ded.rc, +metadata.xml, +rtcwmp-demo-1.1.ebuild:
+  Initial import. Ebuild by Alexander Nicolaysen Sornes
+  <alex@thehandofagony.com>. Closing bug #115712.

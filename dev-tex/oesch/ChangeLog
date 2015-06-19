@@ -1,0 +1,17 @@
+# ChangeLog for dev-tex/oesch
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/oesch/ChangeLog,v 1.3 2008/07/14 17:04:14 aballier Exp $
+
+  14 Jul 2008; Alexis Ballier <aballier@gentoo.org> oesch-20080712.ebuild:
+  keyword ~x86-fbsd
+
+  14 Jul 2008; Alexis Ballier <aballier@gentoo.org> oesch-20080712.ebuild:
+  set vartexfonts to prevent sandbox violations
+
+*oesch-20080712 (12 Jul 2008)
+
+  12 Jul 2008; Alexis Ballier <aballier@gentoo.org> +metadata.xml,
+  +oesch-20080712.ebuild:
+  Initial import of a bumped version of oesch for people who wants to use it
+  even with its freely distributable but no modify license
+

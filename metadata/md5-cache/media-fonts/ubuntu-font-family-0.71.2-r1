@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prepare setup
+DEPEND=app-arch/unzip X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=A set of matching libre/open fonts funded by Canonical
+EAPI=4
+HOMEPAGE=http://font.ubuntu.com/
+IUSE=X
+KEYWORDS=~amd64 ~x86
+LICENSE=UbuntuFontLicense-1.0
+SLOT=0
+SRC_URI=http://font.ubuntu.com/download/ubuntu-font-family-0.71.2.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	font	b3239d2dc442d1717b9725e2be7cb5d6	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d058efc5dd351e0fa95876c9c76bbe55

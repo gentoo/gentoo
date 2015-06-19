@@ -1,0 +1,80 @@
+# ChangeLog for x11-misc/xsnow
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xsnow/ChangeLog,v 1.28 2012/11/18 14:16:53 xarthisius Exp $
+
+  18 Nov 2012; Kacper Kowalik <xarthisius@gentoo.org> xsnow-1.42-r1.ebuild:
+  Change license from 'as-is' to 'freedist' wrt #441704 by Ulrich Müller
+  <ulm@gentoo.org>
+
+  16 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> -xsnow-1.42.ebuild:
+  Drop old
+
+  16 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> xsnow-1.42-r1.ebuild:
+  ppc64 stable wrt #348568
+
+  10 Jan 2011; Brent Baude <ranger@gentoo.org> xsnow-1.42-r1.ebuild:
+  stable ppc, bug 348568
+
+  28 Dec 2010; Michael Weber <xmw@gentoo.org> xsnow-1.42-r1.ebuild:
+  sparc stable (bug 348568)
+
+  16 Dec 2010; Richard Freeman <rich0@gentoo.org> xsnow-1.42-r1.ebuild:
+  amd64 stable - 348568 - merry christmas!
+
+  13 Dec 2010; Thomas Kahle <tomka@gentoo.org> xsnow-1.42-r1.ebuild:
+  x86 stable per bug 348568
+
+*xsnow-1.42-r1 (13 Dec 2010)
+
+  13 Dec 2010; Michael Weber <xmw@gentoo.org> +xsnow-1.42-r1.ebuild:
+  Fix app-text/rman dependency (bug 348568)
+
+  06 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> xsnow-1.42.ebuild:
+  Respect CC, CFLAGS and LDFLAGS.
+
+  29 Nov 2008; Hans de Graaff <graaff@gentoo.org> xsnow-1.42.ebuild:
+  Update homepage and SRC_URI.
+
+  02 Aug 2007; Roy Marples <uberlord@gentoo.org> xsnow-1.42.ebuild:
+  Keyworded ~x86-fbsd, #156902 thanks to Marc Kowarsky.
+
+  21 Oct 2006; David Shakaryan <omp@gentoo.org> xsnow-1.42.ebuild:
+  Remove monolithic X from dependencies.
+
+  10 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org> xsnow-1.42.ebuild:
+  Added missing gccmakedep to DEPEND. Bug #150575.
+
+  27 Feb 2006; Patrick McLean <chutzpah@gentoo.org> xsnow-1.42.ebuild:
+  Stable on amd64.
+
+  21 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> xsnow-1.42.ebuild:
+  Fixed DEPEND for modular X.
+
+  12 Nov 2004; Simon Stelling <blubb@gentoo.org> xsnow-1.42.ebuild:
+  added ~amd64
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> xsnow-1.42.ebuild:
+  Masked xsnow-1.42.ebuild stable for ppc
+
+  28 Aug 2004; Tom Gall <tgall@gentoo.org> xsnow-1.42.ebuild:
+  stable on ppc64, bug #59389
+
+  14 Jun 2004; <pyrania@gentoo.org> xsnow-1.42.ebuild:
+  Added IUSE.
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> xsnow-1.42.ebuild:
+  Ebuild fixups.
+
+  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*xsnow-1.42 (02 Feb 2002)
+
+	04 Feb 2003; Jon Nall <nall@gentoo.org> xsnow-1.42.ebuild :
+	keyworded ~ppc
+
+	19 Feb 2002; Aron Griffis <agriffis@gentoo.org> xsnow-1.42.ebuild :
+
+	Added ebuild for xsnow

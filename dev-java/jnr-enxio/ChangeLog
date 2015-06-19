@@ -1,0 +1,29 @@
+# ChangeLog for dev-java/jnr-enxio
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jnr-enxio/ChangeLog,v 1.6 2015/06/17 18:38:06 monsieurp Exp $
+
+  17 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
+  -files/jnr-enxio-0.4-build.xml, -jnr-enxio-0.4.ebuild, jnr-enxio-0.7.ebuild:
+  Stable for x86+amd64 through ALLARCHES. Remove old. Fix bug 552362.
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Apr 2015;  <chewi@gentoo.org> jnr-enxio-0.7.ebuild:
+  Fix classpath.
+
+*jnr-enxio-0.7 (21 Mar 2015)
+
+  21 Mar 2015; Patrice Clement <monsieurp@gentoo.org>
+  +files/jnr-enxio-0.7-build.xml, +jnr-enxio-0.7.ebuild:
+  Version bump. Fix bug 525342.
+
+  23 Oct 2013; Tom Wijsman <TomWij@gentoo.org> jnr-enxio-0.4.ebuild:
+  Fix compilation by rewriting the classpath.
+
+*jnr-enxio-0.4 (06 Jun 2013)
+
+  06 Jun 2013; Tom Wijsman <TomWij@gentoo.org> +files/jnr-enxio-0.4-build.xml,
+  +jnr-enxio-0.4.ebuild, +metadata.xml:
+  New ebuild for jnr-enxio, Java Native Runtime Enhanced X-platform I/O.
+  Dependency of dev-java/jnr-unixsocket.

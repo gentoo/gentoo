@@ -1,0 +1,10 @@
+--- pam_mysql-0.7RC1/pam_mysql.c	2006-01-09 11:35:59.000000000 +0100
++++ pam_mysql-0.7RC1-1/pam_mysql.c	2011-10-18 20:26:38.655425994 +0200
+@@ -2338,6 +2338,7 @@
+ 	}
+ 
+ 	mysql_close(ctx->mysql_hdl);
++	mysql_library_end();
+ 
+ 	xfree(ctx->mysql_hdl);
+ 	ctx->mysql_hdl = NULL;

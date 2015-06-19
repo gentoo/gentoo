@@ -1,0 +1,80 @@
+# ChangeLog for media-video/gnome-video-effects
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/gnome-video-effects/ChangeLog,v 1.19 2014/11/13 13:10:29 pacho Exp $
+
+  13 Nov 2014; Pacho Ramos <pacho@gentoo.org> -gnome-video-effects-0.4.0.ebuild:
+  Drop old (#508854)
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org> gnome-video-effects-0.4.1.ebuild:
+  x86 stable, bug 508862
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org> gnome-video-effects-0.4.1.ebuild:
+  amd64 stable, bug 508862
+
+*gnome-video-effects-0.4.1 (16 Mar 2014)
+
+  16 Mar 2014; Pacho Ramos <pacho@gentoo.org> +gnome-video-effects-0.4.1.ebuild:
+  Version bump
+
+  29 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-video-effects-0.3.0.ebuild:
+  Clean up old revision.
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  gnome-video-effects-0.4.0.ebuild:
+  Add ~arm, wrt bug #449220
+
+  28 Oct 2012; Raúl Porcel <armin76@gentoo.org>
+  gnome-video-effects-0.4.0.ebuild:
+  ia64/sparc stable wrt #427544
+
+  17 Oct 2012; Matt Turner <mattst88@gentoo.org>
+  gnome-video-effects-0.4.0.ebuild:
+  Stable on alpha, bug 427544.
+
+  16 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  gnome-video-effects-0.4.0.ebuild:
+  stable ppc, bug #427544
+
+  07 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  gnome-video-effects-0.4.0.ebuild:
+  stable ppc64, bug #427544
+
+  04 Oct 2012; Agostino Sarubbo <ago@gentoo.org>
+  gnome-video-effects-0.4.0.ebuild:
+  Stable for amd64, wrt bug #427544
+
+  03 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gnome-video-effects-0.4.0.ebuild:
+  x86 stable wrt bug #427544
+
+*gnome-video-effects-0.4.0 (14 May 2012)
+
+  14 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +gnome-video-effects-0.4.0.ebuild:
+  Version bump, adds horizontal flip.
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org>
+  gnome-video-effects-0.3.0.ebuild:
+  alpha/ia64/sh/sparc stable wrt #393007
+
+  05 Mar 2012; Brent Baude <ranger@gentoo.org>
+  gnome-video-effects-0.3.0.ebuild:
+  Marking gnome-video-effects-0.3.0 ppc stable for bug 393007
+
+  05 Mar 2012; Brent Baude <ranger@gentoo.org>
+  gnome-video-effects-0.3.0.ebuild:
+  Marking gnome-video-effects-0.3.0 ppc64 stable for bug 393007
+
+  14 Jan 2012; Markus Meier <maekke@gentoo.org>
+  gnome-video-effects-0.3.0.ebuild:
+  x86 stable, bug #393007
+
+  29 Dec 2011; Pacho Ramos <pacho@gentoo.org> gnome-video-effects-0.3.0.ebuild:
+  amd64 stable, bug 393007
+
+*gnome-video-effects-0.3.0 (14 Aug 2011)
+
+  14 Aug 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +gnome-video-effects-0.3.0.ebuild, +metadata.xml:
+  Move from gnome overlay for GNOME 3

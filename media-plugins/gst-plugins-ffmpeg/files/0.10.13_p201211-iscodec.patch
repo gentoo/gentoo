@@ -1,0 +1,24 @@
+Provide replacement for these functions when not available.
+(e.g ffmpeg-0.10)
+
+Index: gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegutils.h
+===================================================================
+--- gst-ffmpeg-0.10.13_p201211.orig/ext/ffmpeg/gstffmpegutils.h
++++ gst-ffmpeg-0.10.13_p201211/ext/ffmpeg/gstffmpegutils.h
+@@ -99,4 +99,16 @@ av_smp_format_depth(enum AVSampleFormat
+ GstBuffer *
+ new_aligned_buffer (gint size, GstCaps * caps);
+ 
++#if (LIBAVCODEC_VERSION_INT < AV_VERSION_INT(54,7,0) || (LIBAVCODEC_VERSION_MICRO >= 100 && LIBAVCODEC_VERSION_INT < AV_VERSION_INT(54,8,0)))
++static inline int av_codec_is_encoder(AVCodec *codec)
++{
++  return codec && (codec->encode || codec->encode2);
++}
++
++static inline int av_codec_is_decoder(AVCodec *codec)
++{
++  return codec && codec->decode;
++}
++#endif
++
+ #endif /* __GST_FFMPEG_UTILS_H__ */

@@ -1,0 +1,60 @@
+ examples/c++/Makefile.examples.in | 3 ---
+ examples/c/Makefile.examples.in   | 2 --
+ examples/f95/Makefile.examples.in | 2 --
+ examples/tk/Makefile.examples.in  | 2 --
+ 4 files changed, 9 deletions(-)
+
+diff --git a/examples/c++/Makefile.examples.in b/examples/c++/Makefile.examples.in
+index bb067e7..176706b 100644
+--- a/examples/c++/Makefile.examples.in
++++ b/examples/c++/Makefile.examples.in
+@@ -25,10 +25,7 @@ SHELL = @SH_EXECUTABLE@
+ CXX = @CXX@
+ EXEEXT = @EXEEXT@
+ 
+-PKG_CONFIG_ENV = @PKG_CONFIG_ENV@
+-RPATHCMD = @RPATHCMD@
+ @qt_gui_true@QT_MOC_EXECUTABLE = @QT_MOC_EXECUTABLE@
+-@qt_gui_true@qt_RPATHCMD = @qt_RPATHCMD@
+ 
+ @wxwidgets_true@PLPLOTWXWIDGETS_EXECUTABLES_list = \
+ @wxwidgets_true@	wxPLplotDemo$(EXEEXT)
+diff --git a/examples/c/Makefile.examples.in b/examples/c/Makefile.examples.in
+index bc47762..56d1f49 100644
+--- a/examples/c/Makefile.examples.in
++++ b/examples/c/Makefile.examples.in
+@@ -25,8 +25,6 @@ SHELL = @SH_EXECUTABLE@
+ CC = @CC@
+ EXEEXT = @EXEEXT@
+ 
+-PKG_CONFIG_ENV = @PKG_CONFIG_ENV@
+-RPATHCMD = @RPATHCMD@
+ 
+ @gcw_true@PLPLOTCANVAS_EXECUTABLES_list = \
+ @gcw_true@		 plplotcanvas_demo$(EXEEXT) \
+diff --git a/examples/f95/Makefile.examples.in b/examples/f95/Makefile.examples.in
+index 29631b7..32823d6 100644
+--- a/examples/f95/Makefile.examples.in
++++ b/examples/f95/Makefile.examples.in
+@@ -25,8 +25,6 @@ SHELL = @SH_EXECUTABLE@
+ F95 = @FC@
+ EXEEXT = @EXEEXT@
+ 
+-PKG_CONFIG_ENV = @PKG_CONFIG_ENV@
+-RPATHCMD = @RPATHCMD@
+ 
+ EXECUTABLES_list = \
+ 		 x00f$(EXEEXT) \
+diff --git a/examples/tk/Makefile.examples.in b/examples/tk/Makefile.examples.in
+index 98407fa..c15c94a 100644
+--- a/examples/tk/Makefile.examples.in
++++ b/examples/tk/Makefile.examples.in
+@@ -24,8 +24,6 @@ SHELL = @SH_EXECUTABLE@
+ CC = @CC@
+ EXEEXT = @EXEEXT@
+ 
+-PKG_CONFIG_ENV = @PKG_CONFIG_ENV@
+-plplottcltk_Main_RPATHCMD = @plplottcltk_Main_RPATHCMD@
+ 
+ EXECUTABLES_list = xtk01$(EXEEXT)
+ # Second and fourth examples depend on itk.

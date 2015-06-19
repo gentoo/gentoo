@@ -1,0 +1,70 @@
+# ChangeLog for net-misc/nstx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/nstx/ChangeLog,v 1.14 2015/04/29 20:15:35 mrueg Exp $
+
+  29 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -nstx-1.1_beta6-r2.ebuild:
+  Remove old.
+
+  10 Mar 2014; Samuli Suominen <ssuominen@gentoo.org> nstx-1.1_beta6-r3.ebuild:
+  Punt virtual/libc dependency.
+
+  07 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  nstx-1.1_beta6-r3.ebuild:
+  Stable on amd64 wrt bug #320439
+
+  05 Jul 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  nstx-1.1_beta6-r3.ebuild, +files/nstx-1.1_beta6_05-respect-ldflags.patch:
+  Respect LDFLAGS wrt bug 323919.
+
+  30 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  nstx-1.1_beta6-r3.ebuild:
+  x86 stable wrt bug #320439
+
+*nstx-1.1_beta6-r3 (06 Dec 2009)
+
+  06 Dec 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +nstx-1.1_beta6-r3.ebuild, +files/nstx-1.1_beta6_00-linux-tuntap.patch,
+  +files/nstx-1.1_beta6_01-bind-interface-name.patch,
+  +files/nstx-1.1_beta6_02-warn-on-frag.patch,
+  +files/nstx-1.1_beta6_03-delete-dwrite.patch,
+  +files/nstx-1.1_beta6_04-delete-werror.patch, +files/nstxcd.conf,
+  +files/nstxcd.init, +files/nstxd.conf, +files/nstxd.init:
+  Bug #262765, #260925, #156491: Submission by Steve Brudenell
+  <steven.brudenell@gmail.com> that fixes outstanding bugs and adds init
+  scripts.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> nstx-1.1_beta6-r2.ebuild:
+  Remove virtual/libc
+
+  23 Aug 2008; Markus Meier <maekke@gentoo.org> nstx-1.1_beta6-r2.ebuild:
+  add ~amd64, bug #209476
+
+  28 Jan 2008; Robin H. Johnson <robbat2@gentoo.org> -nstx-1.1_beta6.ebuild,
+  -nstx-1.1_beta6-r1.ebuild, nstx-1.1_beta6-r2.ebuild:
+  Fix einfo output per bug #207781, and clean up old ebuilds.
+
+  12 Jun 2007; Markus Ullmann <jokey@gentoo.org> nstx-1.1_beta6-r2.ebuild:
+  Stable on x86 wrt bug #181603
+
+  22 Feb 2007; Robin H. Johnson <robbat2@gentoo.org>
+  files/digest-nstx-1.1_beta6, files/digest-nstx-1.1_beta6-r1, Manifest:
+  Manifest cleanup.
+
+*nstx-1.1_beta6-r2 (02 Apr 2006)
+
+  02 Apr 2006; Robin H. Johnson <robbat2@gentoo.org>
+  +nstx-1.1_beta6-r2.ebuild:
+  Use the debian patch to work around some software bugs. Bug #127861.
+
+*nstx-1.1_beta6-r1 (21 Jul 2005)
+
+  21 Jul 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +nstx-1.1_beta6-r1.ebuild:
+  Bug #99503, ethertap stuff is available in proper kernel headers now.
+
+*nstx-1.1_beta6 (08 Jun 2005)
+
+  08 Jun 2005; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +nstx-1.1_beta6.ebuild:
+  Bug #74322. Based on initial submission by Andre Kloth
+  <bugs-gentoo@blubbmon.de>.

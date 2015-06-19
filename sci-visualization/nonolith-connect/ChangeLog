@@ -1,0 +1,34 @@
+# ChangeLog for sci-visualization/nonolith-connect
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/nonolith-connect/ChangeLog,v 1.5 2014/01/06 13:31:37 jlec Exp $
+
+  06 Jan 2014; Justin Lecher <jlec@gentoo.org> -nonolith-connect-1.0.1.ebuild,
+  nonolith-connect-1.1.ebuild:
+  Punt base.eclass
+
+  11 Dec 2012; Samuli Suominen <ssuominen@gentoo.org>
+  nonolith-connect-1.0.1.ebuild, nonolith-connect-1.1.ebuild:
+  Inherit user.eclass for enewuser as reported by repoman.
+
+  11 Dec 2012; Samuli Suominen <ssuominen@gentoo.org>
+  nonolith-connect-1.0.1.ebuild, nonolith-connect-1.1.ebuild:
+  Use virtual/udev instead of sys-fs/udev. Migrate 1.0.1 to udev.eclass for
+  correct rules.d path.
+
+*nonolith-connect-1.1 (22 Mar 2012)
+
+  22 Mar 2012; Tony Vroon <chainsaw@gentoo.org>
+  +files/1.1-cflags-respect.patch, +nonolith-connect-1.1.ebuild:
+  New upstream release which implements a REST API and adds advanced trigger
+  modes for future use. Udev rule has been removed, not needed due to USB
+  initial group on nonolith-connect user.
+
+*nonolith-connect-1.0.1 (21 Feb 2012)
+
+  21 Feb 2012; Tony Vroon <chainsaw@gentoo.org>
+  +files/1.0.1-cflags-respect.patch, +files/60-nonolith-connect.rules,
+  +nonolith-connect-1.0.1.ebuild, +files/nonolith-connect.initd, +metadata.xml:
+  Initial commit. Ebuild by me, build system tamed by Kacper "xarthisius"
+  Kowalik. Please note that you require CEE hardware to use the pixelpulse
+  visualiser. Many thanks to upstream for rolling me a personal tarball.
+

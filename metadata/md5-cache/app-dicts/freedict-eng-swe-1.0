@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=app-text/dictd
+DESCRIPTION=Freedict for language translation from English to Swedish
+HOMEPAGE=http://www.freedict.de
+KEYWORDS=alpha ~amd64 ~hppa ~mips ppc sparc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://freedict.sourceforge.net/download/linux/eng-swe.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	freedict	627b5b69174d5181f843838b320685af	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=dba188925c4dbe7395449e6547b0fa3e

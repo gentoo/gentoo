@@ -1,0 +1,164 @@
+--- audacity-src-1.3.13-beta.orig/src/export/ExportFFmpeg.cpp
++++ audacity-src-1.3.13-beta/src/export/ExportFFmpeg.cpp
+@@ -352,7 +352,7 @@
+    avcodec_get_context_defaults(mEncAudioCodecCtx);
+ 
+    mEncAudioCodecCtx->codec_id = ExportFFmpegOptions::fmts[mSubFormat].codecid;
+-   mEncAudioCodecCtx->codec_type = CODEC_TYPE_AUDIO;
++   mEncAudioCodecCtx->codec_type = AVMEDIA_TYPE_AUDIO;
+    mEncAudioCodecCtx->codec_tag = av_codec_get_tag((const AVCodecTag **)mEncFormatCtx->oformat->codec_tag,mEncAudioCodecCtx->codec_id);
+    mSampleRate = (int)project->GetRate();
+    mEncAudioCodecCtx->global_quality = -99999; //quality mode is off by default;
+@@ -403,7 +403,6 @@
+       mEncAudioCodecCtx->flags2 = 0;
+       if (gPrefs->Read(wxT("/FileFormats/FFmpegBitReservoir"),true)) mEncAudioCodecCtx->flags2 |= CODEC_FLAG2_BIT_RESERVOIR;
+       if (gPrefs->Read(wxT("/FileFormats/FFmpegVariableBlockLen"),true)) mEncAudioCodecCtx->flags2 |= 0x0004; //WMA only?
+-      mEncAudioCodecCtx->use_lpc = gPrefs->Read(wxT("/FileFormats/FFmpegUseLPC"),true);
+       mEncAudioCodecCtx->compression_level = gPrefs->Read(wxT("/FileFormats/FFmpegCompLevel"),-1);
+       mEncAudioCodecCtx->frame_size = gPrefs->Read(wxT("/FileFormats/FFmpegFrameSize"),(long)0);
+       mEncAudioCodecCtx->lpc_coeff_precision = gPrefs->Read(wxT("/FileFormats/FFmpegLPCCoefPrec"),(long)0);
+@@ -569,7 +569,7 @@
+       pkt.stream_index = mEncAudioStream->index;
+       pkt.data = mEncAudioEncodedBuf;
+       pkt.size = nEncodedBytes;
+-      pkt.flags |= PKT_FLAG_KEY;
++      pkt.flags |= AV_PKT_FLAG_KEY;
+ 
+       // Set presentation time of frame (currently in the codec's timebase) in the stream timebase.
+       if(mEncAudioCodecCtx->coded_frame && mEncAudioCodecCtx->coded_frame->pts != int64_t(AV_NOPTS_VALUE))
+@@ -656,7 +656,7 @@
+ 
+       pkt.stream_index = mEncAudioStream->index;
+       pkt.data = mEncAudioEncodedBuf;
+-      pkt.flags |= PKT_FLAG_KEY;
++      pkt.flags |= AV_PKT_FLAG_KEY;
+ 
+       // Write the encoded audio frame to the output file.
+       if ((ret = av_interleaved_write_frame(mEncFormatCtx, &pkt)) != 0)
+--- audacity-src-1.3.13-beta.orig/src/export/ExportFFmpegDialogs.cpp
++++ audacity-src-1.3.13-beta/src/export/ExportFFmpegDialogs.cpp
+@@ -1288,7 +1288,7 @@
+    while ((codec = av_codec_next(codec)))
+    {
+       // We're only interested in audio and only in encoders
+-      if (codec->type == CODEC_TYPE_AUDIO && codec->encode)
++      if (codec->type == AVMEDIA_TYPE_AUDIO && codec->encode)
+       {
+          mCodecNames.Add(wxString::FromUTF8(codec->name));
+          mCodecLongNames.Add(wxString::Format(wxT("%s - %s"),mCodecNames.Last().c_str(),wxString::FromUTF8(codec->long_name).c_str()));
+@@ -1528,7 +1528,7 @@
+          // Find the codec, that is claimed to be compatible
+          AVCodec *codec = avcodec_find_encoder(CompatibilityList[i].codec);
+          // If it exists, is audio and has encoder
+-         if (codec != NULL && (codec->type == CODEC_TYPE_AUDIO) && codec->encode)
++         if (codec != NULL && (codec->type == AVMEDIA_TYPE_AUDIO) && codec->encode)
+          {
+             // If it was selected - remember it's new index
+             if ((id >= 0) && codec->id == id) index = mShownCodecNames.GetCount();
+@@ -1543,7 +1543,7 @@
+       AVCodec *codec = NULL;
+       while ((codec = av_codec_next(codec)))
+       {
+-         if (codec->type == CODEC_TYPE_AUDIO && codec->encode)
++         if (codec->type == AVMEDIA_TYPE_AUDIO && codec->encode)
+          {
+             if (mShownCodecNames.Index(wxString::FromUTF8(codec->name)) < 0)
+             {
+@@ -1563,7 +1563,7 @@
+       if (format != NULL)
+       {
+          AVCodec *codec = avcodec_find_encoder(format->audio_codec);
+-         if (codec != NULL && (codec->type == CODEC_TYPE_AUDIO) && codec->encode)
++         if (codec != NULL && (codec->type == AVMEDIA_TYPE_AUDIO) && codec->encode)
+          {
+             if ((id >= 0) && codec->id == id) index = mShownCodecNames.GetCount();
+             mShownCodecNames.Add(wxString::FromUTF8(codec->name));
+--- audacity-src-1.3.13-beta.orig/src/FFmpeg.cpp
++++ audacity-src-1.3.13-beta/src/FFmpeg.cpp
+@@ -316,7 +316,7 @@
+    pd.buf_size = 0;
+    pd.buf = (unsigned char *) av_malloc(PROBE_BUF_MAX + AVPROBE_PADDING_SIZE);
+    if (pd.buf == NULL) {
+-      err = AVERROR_NOMEM;
++      err = AVERROR(ENOMEM);
+       goto fail;
+    }
+ 
+@@ -381,7 +381,7 @@
+ 
+    // Didn't find a suitable format, so bail
+    if (!fmt) {
+-      err = AVERROR_NOFMT;
++      err = AVERROR(EILSEQ);
+       goto fail;
+    }
+ 
+@@ -855,7 +855,6 @@
+    FFMPEG_INITDYN(codec, avcodec_find_decoder);
+    FFMPEG_INITDYN(codec, avcodec_get_context_defaults);
+    FFMPEG_INITDYN(codec, avcodec_open);
+-   FFMPEG_INITDYN(codec, avcodec_decode_audio2);
+    FFMPEG_INITDYN(codec, avcodec_decode_audio3);
+    FFMPEG_INITDYN(codec, avcodec_encode_audio);
+    FFMPEG_INITDYN(codec, avcodec_close);
+--- audacity-src-1.3.13-beta.orig/src/FFmpeg.h
++++ audacity-src-1.3.13-beta/src/FFmpeg.h
+@@ -559,7 +559,11 @@
+    FFMPEG_FUNCTION_WITH_RETURN(
+       void*,
+       av_fast_realloc,
++#if LIBAVUTIL_VERSION_MAJOR < 51
+       (void *ptr, unsigned int *size, unsigned int min_size),
++#else
++      (void *ptr, unsigned int *size, size_t min_size),
++#endif
+       (ptr, size, min_size)
+    );
+    FFMPEG_FUNCTION_WITH_RETURN(
+@@ -747,7 +751,11 @@
+    FFMPEG_FUNCTION_WITH_RETURN(
+       void*,
+       av_malloc,
++#if LIBAVUTIL_VERSION_MAJOR < 51
+       (unsigned int size),
++#else
++      (size_t size),
++#endif
+       (size)
+    );
+    FFMPEG_FUNCTION_NO_RETURN(
+--- audacity-src-1.3.13-beta.orig/src/import/ImportFFmpeg.cpp
++++ audacity-src-1.3.13-beta/src/import/ImportFFmpeg.cpp
+@@ -416,7 +416,7 @@
+    // Fill the stream contexts
+    for (unsigned int i = 0; i < mFormatContext->nb_streams; i++)
+    {
+-      if (mFormatContext->streams[i]->codec->codec_type == CODEC_TYPE_AUDIO)
++      if (mFormatContext->streams[i]->codec->codec_type == AVMEDIA_TYPE_AUDIO)
+       {
+          //Create a context
+          streamContext *sc = new streamContext;
+--- audacity-src-1.3.13-beta.orig/src/ondemand/ODDecodeFFmpegTask.cpp
++++ audacity-src-1.3.13-beta/src/ondemand/ODDecodeFFmpegTask.cpp
+@@ -156,7 +156,7 @@
+    //test the audio stream(s)
+    for (unsigned int i = 0; i < ic->nb_streams; i++)
+    {
+-      if (ic->streams[i]->codec->codec_type == CODEC_TYPE_AUDIO)
++      if (ic->streams[i]->codec->codec_type == AVMEDIA_TYPE_AUDIO)
+       {  
+          audioStreamExists = true;                 
+          st = ic->streams[i];
+@@ -573,10 +573,10 @@
+       }
+    }
+ 
+-   // avcodec_decode_audio2() expects the size of the output buffer as the 3rd parameter but
++   // avcodec_decode_audio3() expects the size of the output buffer as the 3rd parameter but
+    // also returns the number of bytes it decoded in the same parameter.
+    sc->m_decodedAudioSamplesValidSiz = sc->m_decodedAudioSamplesSiz;
+-   nBytesDecoded = avcodec_decode_audio2(sc->m_codecCtx, 
++   nBytesDecoded = avcodec_decode_audio3(sc->m_codecCtx, 
+       sc->m_decodedAudioSamples,		      // out
+       &sc->m_decodedAudioSamplesValidSiz,	// in/out
+       pDecode, nDecodeSiz);				   // in

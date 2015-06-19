@@ -1,0 +1,23 @@
+# ChangeLog for dev-vcs/git-pimp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/git-pimp/ChangeLog,v 1.4 2015/05/14 22:46:49 yac Exp $
+
+  14 May 2015; Jan Matejka <yac@gentoo.org> -git-pimp-0.7-r1.ebuild:
+  Drop the 0.7 version, it's been taken down by upstream due to accidental
+  overwrite
+
+*git-pimp-0.8 (14 May 2015)
+
+  14 May 2015; Jan Matejka <yac@gentoo.org> +git-pimp-0.8.ebuild:
+  Version bump to 0.8
+
+*git-pimp-0.7-r1 (22 Apr 2015)
+
+  22 Apr 2015; Jan Matejka <yac@gentoo.org> +git-pimp-0.7-r1.ebuild,
+  -git-pimp-0.7.ebuild:
+  Depend on git-mailz in the proper category
+
+*git-pimp-0.7 (22 Apr 2015)
+
+  22 Apr 2015; Jan Matejka <yac@gentoo.org> +git-pimp-0.7.ebuild, +metadata.xml:
+  Add git-pimp, fixes bgo#546590  Thanks Ondřej Súkup for the initial ebuild

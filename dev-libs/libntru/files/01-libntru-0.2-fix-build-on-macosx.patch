@@ -1,0 +1,109 @@
+From 286bbe95e479202d8c8c3cc7bf37eaf206e5f88c Mon Sep 17 00:00:00 2001
+From: Tim Buktu <tbuktu@hotmail.com>
+Date: Tue, 15 Apr 2014 00:39:12 +0200
+Subject: [PATCH] Fix build on Mac OS X (see
+ http://sourceforge.net/p/ntru/feature-requests/2/)
+
+---
+ Makefile     | 14 ++++----------
+ Makefile.osx | 31 +++++++++++++++++++++++++++++++
+ Makefile.win |  7 +++++--
+ 3 files changed, 40 insertions(+), 12 deletions(-)
+ create mode 100644 Makefile.osx
+
+diff --git a/Makefile b/Makefile
+index a349627..eb22b7a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,3 +1,4 @@
++CC?=gcc
+ CFLAGS=-g -Wall -O2
+ LDFLAGS=-lrt
+ SRCDIR=src
+@@ -8,17 +9,9 @@ TEST_OBJS=test_bitstring.o test_hash.o test_idxgen.o test_key.o test_ntru.o test
+ LIB_OBJS_PATHS=$(patsubst %,$(SRCDIR)/%,$(LIB_OBJS))
+ TEST_OBJS_PATHS=$(patsubst %,$(TESTDIR)/%,$(TEST_OBJS))
+ 
+-# Use -install_name on Mac OS, -soname everywhere else
+-UNAME := $(shell uname)
+-ifeq ($(UNAME), Darwin)
+-	SONAME=-install_name
+-else
+-	SONAME=-soname
+-endif
+-
+ .PHONY: lib
+ lib: $(LIB_OBJS_PATHS)
+-	$(CC) $(CFLAGS) -shared -Wl,$(SONAME),libntru.so -o libntru.so $(LIB_OBJS_PATHS) $(LDFLAGS)
++	$(CC) $(CFLAGS) -shared -Wl,-soname,libntru.so -o libntru.so $(LIB_OBJS_PATHS) $(LDFLAGS)
+ 
+ test: lib $(TEST_OBJS_PATHS)
+ 	$(CC) $(CFLAGS) -o test $(TEST_OBJS_PATHS) -L. -lntru -lm
+@@ -35,4 +28,5 @@ tests/%.o: tests/%.c
+ 
+ .PHONY: clean
+ clean:
+-	rm -f $(SRCDIR)/*.o $(TESTDIR)/*.o libntru.so libntru.dll test test.exe bench bench.exe
++	@# also clean files generated on other OSes
++	rm -f $(SRCDIR)/*.o $(TESTDIR)/*.o libntru.so libntru.dylib libntru.dll test test.exe bench bench.exe
+diff --git a/Makefile.osx b/Makefile.osx
+new file mode 100644
+index 0000000..ef20d64
+--- /dev/null
++++ b/Makefile.osx
+@@ -0,0 +1,31 @@
++CC?=gcc
++CFLAGS=-g -Wall -O2
++SRCDIR=src
++TESTDIR=tests
++LIB_OBJS=bitstring.o encparams.o hash.o idxgen.o key.o mgf.o ntru.o poly.o rand.o sha1.o sha2.o
++TEST_OBJS=test_bitstring.o test_hash.o test_idxgen.o test_key.o test_ntru.o test.o test_poly.o test_util.o
++
++LIB_OBJS_PATHS=$(patsubst %,$(SRCDIR)/%,$(LIB_OBJS))
++TEST_OBJS_PATHS=$(patsubst %,$(TESTDIR)/%,$(TEST_OBJS))
++
++.PHONY: lib
++lib: $(LIB_OBJS_PATHS)
++	$(CC) $(CFLAGS) -dylib -dynamiclib -o libntru.dylib $(LIB_OBJS_PATHS) $(LDFLAGS)
++
++test: lib $(TEST_OBJS_PATHS)
++	$(CC) $(CFLAGS) -o test $(TEST_OBJS_PATHS) -L. -lntru -lm
++	DYLD_LIBRARY_PATH=. ./test
++
++bench: lib $(SRCDIR)/bench.o
++	$(CC) $(CFLAGS) -o bench $(SRCDIR)/bench.o -L. -lntru
++
++$(SRCDIR)/%.o: $(SRCDIR)/%.c
++	$(CC) $(CFLAGS) -c -fPIC $< -o $@
++
++tests/%.o: tests/%.c
++	$(CC) $(CFLAGS) -fPIC -I$(SRCDIR) -c $< -o $@
++
++.PHONY: clean
++clean:
++	@# also clean files generated on other OSes
++	rm -f $(SRCDIR)/*.o $(TESTDIR)/*.o libntru.so libntru.dylib libntru.dll test test.exe bench bench.exe
+diff --git a/Makefile.win b/Makefile.win
+index de8619e..8a1c55b 100644
+--- a/Makefile.win
++++ b/Makefile.win
+@@ -1,3 +1,4 @@
++CC?=gcc
+ CFLAGS=-g -Wall -O2
+ SRCDIR=src
+ TESTDIR=tests
+@@ -28,8 +29,10 @@ clean:
+ 	@if exist $(SRCDIR)\*.o del $(SRCDIR)\*.o
+ 	@if exist $(TESTDIR)\*.o del $(TESTDIR)\*.o
+ 	@if exist libntru.dll del libntru.dll
+-	@if exist libntru.so del libntru.so
+ 	@if exist test.exe del test.exe
+-	@if exist test del test
+ 	@if exist bench.exe del bench.exe
++	@rem ***** clean files generated on other OSes *****
++	@if exist libntru.so del libntru.so
++	@if exist libntru.dylib del libntru.dylib
++	@if exist test del test
+ 	@if exist bench del bench
+-- 
+1.9.1

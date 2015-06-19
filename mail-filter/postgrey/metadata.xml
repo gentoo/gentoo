@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>net-mail</herd>
+<herd>proxy-maintainers</herd>
+  <maintainer>
+	 <email>andreis.vinogradovs@gmail.com</email>
+	 <name>Andreis Vinogradovs</name>
+  </maintainer>
+  <maintainer>
+	  <email>qnikst@gentoo.org</email>
+	  <name>Alexander Vershilov</name>
+  </maintainer>
+<longdescription>Postgrey is a Postfix policy server implementing greylisting developed by David Schweikert at the ISG.EE.</longdescription>
+<use>
+	<flag name='targrey'>Enables the targrey patch</flag>
+</use>
+</pkgmetadata>

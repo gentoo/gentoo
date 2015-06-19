@@ -1,0 +1,78 @@
+#!/sbin/runscript
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-usbin/files/syscons.initd,v 1.4 2009/02/24 17:43:07 drizzt Exp $
+
+depend() {
+	need localmount
+}
+
+start() {
+	ebegin "Configuring system console"
+
+	if [ -n "${MODE}" ] ; then
+		einfo "Setting mode to ${MODE}"
+		vidcontrol "${MODE}"
+		eend $?
+	fi
+	
+	# XXX: This should handle serial consoles.
+	
+	# Set the keymap.
+	if [ -n "${KEYMAP}" ]; then
+		einfo "Setting keymap to" "${KEYMAP}"
+		kbdcontrol -l ${KEYMAP} < /dev/console
+	fi
+	
+	if [ -n "${KEYRATE}" ]; then
+		einfo "Setting keyrate to" "${KEYRATE}"
+		kbdcontrol -r ${KEYRATE} < /dev/console
+	fi
+
+	if [ -n "${KEYCHANGE}" ]; then
+		einfo "Changing function keys..."
+		eval set -- "${KEYCHANGE}"
+		eindent
+		while [ $# -gt 0 ] ; do
+			veinfo "F$1 -> \`$2'"
+			kbdcontrol -f "$1" "$2" < /dev/console
+			shift ; shift
+		done
+		eoutdent
+	fi
+	
+	if [ -n "${CURSOR}" ]; then
+		einfo "Setting cursor"
+		vidcontrol -c ${CURSOR}
+	fi
+
+	einfo "Setting custom fonts..."
+	# Nothing to see here, move along...
+	for v in FONT8x16 FONT8x14 FONT8x8; do
+		f=$(eval \$"${v}")
+		if [ -n "${f}" ]; then
+			vidcontrol -f ${v##FONT} ${f}
+		fi
+	done
+
+	if [ -n "${BLANKTIME}" ]; then
+		einfo "Setting blanktime"
+		vidcontrol -t ${BLANKTIME}
+	fi
+
+	if [ -n "${SAVER}" ]; then
+		for i in `kldstat | awk '$5 ~ "^splash_.*$" { print $5 }'`; do
+			kldunload ${i}
+		done
+		kldstat -v | grep -q _saver || kldload ${SAVER}_saver
+	fi
+
+	if [ -n "${KBDFLAGS}" ]; then
+		einfo "Setting keyboard flags for all screens"
+		for ttyv in /dev/ttyv*; do    
+			kbdcontrol ${KBDFLAGS} <${ttyv} >${ttyv} 2>&1
+		done
+	fi
+
+	eend 0
+}

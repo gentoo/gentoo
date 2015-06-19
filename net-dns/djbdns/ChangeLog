@@ -1,0 +1,685 @@
+# ChangeLog for net-dns/djbdns
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/djbdns/ChangeLog,v 1.164 2015/04/13 08:17:21 ago Exp $
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> djbdns-1.05-r30.ebuild:
+  Stable for alpha, wrt bug #544178
+
+  01 Apr 2015; Agostino Sarubbo <ago@gentoo.org> djbdns-1.05-r30.ebuild:
+  Stable for sparc, wrt bug #544178
+
+  31 Mar 2015; Agostino Sarubbo <ago@gentoo.org> djbdns-1.05-r30.ebuild:
+  Stable for ppc64, wrt bug #544178
+
+  30 Mar 2015; Jeroen Roovers <jer@gentoo.org> djbdns-1.05-r30.ebuild:
+  Stable for HPPA (bug #544178).
+
+  28 Mar 2015; Agostino Sarubbo <ago@gentoo.org> djbdns-1.05-r30.ebuild:
+  Stable for ppc, wrt bug #544178
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> djbdns-1.05-r30.ebuild:
+  Stable for x86, wrt bug #544178
+
+  24 Mar 2015; Agostino Sarubbo <ago@gentoo.org> djbdns-1.05-r30.ebuild:
+  Stable for amd64, wrt bug #544178
+
+  29 Oct 2014; Michael Orlitzky <mjo@gentoo.org> djbdns-1.05-r30.ebuild:
+  Remove old upgrade wording from README.gentoo.
+
+*djbdns-1.05-r30 (02 Oct 2014)
+
+  02 Oct 2014; Michael Orlitzky <mjo@gentoo.org> +djbdns-1.05-r30.ebuild,
+  +files/srv_record_support.patch:
+  Revbump to fix bugs #523754 and #523756.
+
+  02 Oct 2014; Michael Orlitzky <mjo@gentoo.org>
+  -files/CVE2008-4392_0001-dnscache-merge-similar-outgoing-queries-ipv6.patch,
+  -files/makefile-parallel.patch:
+  Remove two unused patches.
+
+  05 Sep 2014; Michael Orlitzky <mjo@gentoo.org> -files/djbdns-setup,
+  -files/dnscache-setup, -files/tinydns-setup:
+  Remove unused setup scripts.
+
+  05 Sep 2014; Michael Orlitzky <mjo@gentoo.org> -djbdns-1.05-r26.ebuild,
+  -djbdns-1.05-r27.ebuild, -djbdns-1.05-r28.ebuild:
+  Remove old versions, fixing bug #504414 in the process.
+
+  04 Aug 2014; Raúl Porcel <armin76@gentoo.org> djbdns-1.05-r29.ebuild:
+  sparc stable wrt #511900
+
+  03 Aug 2014; Agostino Sarubbo <ago@gentoo.org> djbdns-1.05-r29.ebuild:
+  Stable for ppc, wrt bug #511900
+
+  02 Aug 2014; Agostino Sarubbo <ago@gentoo.org> djbdns-1.05-r29.ebuild:
+  Stable for ppc64, wrt bug #511900
+
+  26 Jul 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> djbdns-1.05-r29.ebuild:
+  x86 stable wrt bug #511900
+
+  24 Jul 2014; Tobias Klausmann <klausman@gentoo.org> djbdns-1.05-r29.ebuild:
+  Stable on alpha, bug #511900
+
+  21 Jul 2014; Michael Orlitzky <mjo@gentoo.org>
+  +files/makefile-parallel-test25.patch, djbdns-1.05-r29.ebuild:
+  Fix parallel build of clientloc.o, bug #517538. Original report and fix by
+  Mike Williams.
+
+  17 Jul 2014; Chema Alonso <nimiux@gentoo.org> djbdns-1.05-r29.ebuild:
+  Stable for amd64 wrt bug #511900
+
+  04 Jun 2014; Jeroen Roovers <jer@gentoo.org> djbdns-1.05-r29.ebuild:
+  Stable for HPPA (bug #511900).
+
+*djbdns-1.05-r29 (17 Apr 2014)
+
+  17 Apr 2014; Michael Orlitzky <mjo@gentoo.org> +djbdns-1.05-r29.ebuild, +files
+  /CVE2008-4392_0001-dnscache-merge-similar-outgoing-queries-ipv6-test25.patch:
+  Version bump with new ipv6 patch and unconditional man pages (bug #504640).
+
+  04 Dec 2013; Michael Orlitzky <mjo@gentoo.org> metadata.xml:
+  Remove proxy-maintainers herd and use @gentoo.org email address for
+  maintainer.
+
+  14 Aug 2013; Patrick Lauer <patrick@gentoo.org> djbdns-1.05-r28.ebuild:
+  Whitespace
+
+*djbdns-1.05-r28 (08 Jul 2013)
+
+  08 Jul 2013; Michael Weber <xmw@gentoo.org> +djbdns-1.05-r28.ebuild,
+  metadata.xml:
+  replace setup scripts with documentation (bug 428588, thanks Michael
+  Orlitzky), inherit readme.gentoo.
+
+*djbdns-1.05-r27 (23 Jun 2013)
+
+  23 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> +djbdns-1.05-r27.ebuild,
+  files/dnsroots.patch:
+  Revision bump: utilize epatch_user instead of DJBDNS_PATCH_DIR wrt bug
+  #413787, update rootservers patch, wrt bug #474512, thanks to Michael
+  Orlitzky
+
+  23 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> -djbdns-1.05-r23.ebuild,
+  -djbdns-1.05-r24.ebuild, -djbdns-1.05-r25.ebuild, -files/djbdns-setup-r17:
+  Drop old revisions by maintainer's request, bug #474510
+
+  02 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #328951
+
+  06 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Correct maintainer's order, add description, wrt bug #413787
+
+  05 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> djbdns-1.05-r23.ebuild,
+  djbdns-1.05-r24.ebuild, djbdns-1.05-r25.ebuild, djbdns-1.05-r26.ebuild:
+  Correct URL in elog message, wrt bug #413787. Thanks to Olivier Rickmers for
+  discovering this issue
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> djbdns-1.05-r26.ebuild:
+  alpha/sparc stable wrt #419193
+
+  04 Aug 2012; Michael Weber <xmw@gentoo.org> metadata.xml:
+  Fix metadata.xml
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> djbdns-1.05-r26.ebuild:
+  Stable for amd64, wrt bug #419193
+
+  25 Jul 2012; Jeroen Roovers <jer@gentoo.org> djbdns-1.05-r26.ebuild:
+  Stable for HPPA (bug #419193).
+
+  16 Jul 2012; Anthony G. Basile <blueness@gentoo.org> djbdns-1.05-r26.ebuild:
+  Stable ppc ppc64, bug #419193
+
+  16 Jul 2012; Jeff Horelick <jdhore@gentoo.org> djbdns-1.05-r26.ebuild:
+  marked x86 per bug 419193
+
+  14 Jun 2012; Zac Medico <zmedico@gentoo.org> djbdns-1.05-r23.ebuild,
+  djbdns-1.05-r24.ebuild, djbdns-1.05-r25.ebuild, djbdns-1.05-r26.ebuild:
+  inherit user for enewgroup and enewuser
+
+*djbdns-1.05-r26 (02 Jun 2012)
+
+  02 Jun 2012; Michael Weber <xmw@gentoo.org> +djbdns-1.05-r26.ebuild,
+  files/dnsroots.patch:
+  Revbump to install new root servers list (bug 248247)
+
+  01 Apr 2012; Markos Chandras <hwoarang@gentoo.org> files/dnscache-setup,
+  files/tinydns-setup:
+  functions.sh moved elsewhere. Bug #389667. Thanks to Michael Orlitzky
+  <michael@orlitzky.com>
+
+  24 Mar 2012; Markos Chandras <hwoarang@gentoo.org> djbdns-1.05-r23.ebuild,
+  djbdns-1.05-r24.ebuild, djbdns-1.05-r25.ebuild, files/djbdns-setup:
+  Remove unused djbdns-setup. Thanks to Michael Orlitzky <michael@orlitzky.com>.
+  Bug #408351
+
+*djbdns-1.05-r25 (02 Mar 2012)
+
+  02 Mar 2012; Markos Chandras <hwoarang@gentoo.org> +djbdns-1.05-r25.ebuild,
+  metadata.xml:
+  Add missing nofiles group. Bug #388537. Add proxy-maintainers herd
+
+  11 Apr 2011; Dane Smith <c1pher@gentoo.org> djbdns-1.05-r24.ebuild,
+  +files/makefile-parallel.patch:
+  Add patch to fix parallel make issues when USE="ipv6" wrt bug 362771.
+  Thanks
+  Michael for spotting and fixing this.
+
+  04 Apr 2011; Dane Smith <c1pher@gentoo.org> djbdns-1.05-r24.ebuild:
+  Remove parallel compilation workaround. Seems to be fixed upstream.
+
+  04 Apr 2011; Dane Smith <c1pher@gentoo.org> djbdns-1.05-r24.ebuild:
+  Moved enewuser calls to pkg_preinstall wrt bug 361923. Thanks Michael.
+
+*djbdns-1.05-r24 (04 Apr 2011)
+
+  04 Apr 2011; Dane Smith <c1pher@gentoo.org>
+  +files/string_length_255.patch, +djbdns-1.05-r24.ebuild, metadata.xml:
+  Add Michael Orlitzky as proxy maintainer with me as proxy.
+  Revbump to -24 wrt bug 241158.
+  Ebuild cleanup.
+
+  01 Mar 2011; Christian Ruppert <idl0r@gentoo.org> -files/fwdzone-fix.patch:
+  Remove unused patch
+
+  29 Jan 2011; Thilo Bangert <bangert@gentoo.org> djbdns-1.05-r23.ebuild:
+  dep on virtual/daemontools
+
+  20 Jul 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  -djbdns-1.05-r17.ebuild, -djbdns-1.05-r19.ebuild, -djbdns-1.05-r21.ebuild,
+  -djbdns-1.05-r22.ebuild:
+  clean old cruft
+
+  23 Mar 2009; Jeroen Roovers <jer@gentoo.org> djbdns-1.05-r23.ebuild:
+  Stable for HPPA (bug #260975).
+
+  22 Mar 2009; Friedrich Oslage <bluebird@gentoo.org>
+  djbdns-1.05-r23.ebuild:
+  Stable on sparc, bug #260975
+
+  22 Mar 2009; Tobias Klausmann <klausman@gentoo.org>
+  djbdns-1.05-r23.ebuild:
+  Stable on alpha, bug #260975
+
+  20 Mar 2009; Markus Meier <maekke@gentoo.org> djbdns-1.05-r23.ebuild:
+  amd64/x86 stable, bug #260975
+
+  20 Mar 2009; Brent Baude <ranger@gentoo.org> djbdns-1.05-r23.ebuild:
+  Marking djbdns-1.05-r23 ppc64 and ppc for bug 260975
+
+  20 Mar 2009; Gordon Malm <gengor@gentoo.org> djbdns-1.05-r23.ebuild:
+  Avoid applying CVE2009-0858 patch twice.
+
+*djbdns-1.05-r23 (19 Mar 2009)
+
+  19 Mar 2009; Gordon Malm <gengor@gentoo.org>
+  +files/CVE2009-0858_0001-check-response-domain-name-length.patch,
+  +files/CVE2008-4392_0001-dnscache-merge-similar-outgoing-queries-ipv6.patc
+  h, +files/CVE2008-4392_0002-dnscache-cache-soa-records-ipv6.patch,
+  +djbdns-1.05-r23.ebuild:
+  Fix bug #260975. Fix bug #260014 when USE="ipv6".
+
+  18 Mar 2009; Brent Baude <ranger@gentoo.org> djbdns-1.05-r22.ebuild:
+  Marking djbdns-1.05-r22 ppc for bug 260014
+
+  15 Mar 2009; Markus Meier <maekke@gentoo.org> djbdns-1.05-r22.ebuild:
+  amd64/x86 stable, bug #260014
+
+  12 Mar 2009; Jeroen Roovers <jer@gentoo.org> djbdns-1.05-r22.ebuild:
+  Stable for HPPA (bug #260014). Fixed newbin djbdns-setup (bug #260014
+  comment #8).
+
+  11 Mar 2009; Tobias Klausmann <klausman@gentoo.org>
+  djbdns-1.05-r22.ebuild:
+  Stable on alpha, bug #260014
+
+  11 Mar 2009; Brent Baude <ranger@gentoo.org> djbdns-1.05-r22.ebuild:
+  Marking djbdns-1.05-r22 ppc64 for bug 260014
+
+  08 Mar 2009; René Nussbaumer <killerfox@gentoo.org>
+  djbdns-1.05-r22.ebuild:
+  Fix patch order
+
+  08 Mar 2009; Tobias Klausmann <klausman@gentoo.org>
+  djbdns-1.05-r22.ebuild:
+  Broken patch, going back to ~alpha.
+
+  08 Mar 2009; Tobias Klausmann <klausman@gentoo.org>
+  djbdns-1.05-r22.ebuild:
+  Stable on alpha, bug #260014
+
+*djbdns-1.05-r22 (01 Mar 2009)
+
+  01 Mar 2009; René Nussbaumer <killerfox@gentoo.org>
+  +files/CVE2008-4392_0001-dnscache-merge-similar-outgoing-queries.patch,
+  +files/CVE2008-4392_0002-dnscache-cache-soa-records.patch,
+  +djbdns-1.05-r22.ebuild:
+  Fix CVE2008-4392
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/headtail.patch:
+  Fix patch with absolute paths.
+
+  17 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  13 May 2008; Jeroen Roovers <jer@gentoo.org> djbdns-1.05-r21.ebuild:
+  Stable for HPPA (LuckyLuke).
+
+  29 Feb 2008; Raúl Porcel <armin76@gentoo.org> djbdns-1.05-r21.ebuild:
+  sparc stable
+
+  31 Jan 2008; René Nussbaumer <killerfox@gentoo.org> metadata.xml:
+  Taking over maintainership
+
+  31 Jan 2008; Michael Hanselmann <hansmi@gentoo.org> metadata.xml:
+  Remove myself as maintainer.
+
+  04 Jan 2008; Hanno Boeck <hanno@gentoo.org> djbdns-1.05-r17.ebuild,
+  djbdns-1.05-r19.ebuild, djbdns-1.05-r21.ebuild:
+  Change license to public domain (http://cr.yp.to/distributors.html) and fix
+  some unquoted vars.
+
+  15 Oct 2007; Markus Rothe <corsair@gentoo.org> djbdns-1.05-r21.ebuild:
+  Stable on ppc64
+
+  13 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  djbdns-1.05-r21.ebuild:
+  ppc. stable
+
+  26 Jul 2007; Raúl Porcel <armin76@gentoo.org> djbdns-1.05-r21.ebuild:
+  alpha/x86 stable
+
+  06 May 2007; Marius Mauch <genone@gentoo.org> djbdns-1.05-r17.ebuild,
+  djbdns-1.05-r19.ebuild, djbdns-1.05-r21.ebuild:
+  Replacing einfo with elog
+
+  28 Jan 2007; Michael Hanselmann <hansmi@gentoo.org>
+  djbdns-1.05-r21.ebuild:
+  Don't patch non-IPv6 version of unpacked source.
+
+*djbdns-1.05-r21 (23 Jan 2007)
+
+  23 Jan 2007; Michael Hanselmann <hansmi@gentoo.org>
+  -djbdns-1.05-r20.ebuild, +djbdns-1.05-r21.ebuild:
+  Fix bug #163398.
+
+*djbdns-1.05-r20 (16 Jan 2007)
+
+  16 Jan 2007; Michael Hanselmann <hansmi@gentoo.org>
+  +djbdns-1.05-r20.ebuild:
+  Drop several patches patches, DJBDNS_PATCH_DIR can be used instead. General
+  cleanup.
+
+  03 Dec 2006; Markus Rothe <corsair@gentoo.org> djbdns-1.05-r19.ebuild:
+  Stable on ppc64
+
+  19 Nov 2006; Michael Hanselmann <hansmi@gentoo.org>
+  djbdns-1.05-r19.ebuild:
+  Stable on hppa, ppc, sparc, x86.
+
+  13 Oct 2006; Michael Hanselmann <hansmi@gentoo.org>
+  -djbdns-1.05-r18.ebuild:
+  Remove old ebuild
+
+*djbdns-1.05-r19 (30 Sep 2006)
+
+  29 Sep 2006; Michael Hanselmann <hansmi@gentoo.org>
+  +djbdns-1.05-r19.ebuild:
+  Add fwdonly patch (bug 148326) and fix user creation (bug 148225).
+
+*djbdns-1.05-r18 (30 Aug 2006)
+
+  30 Aug 2006; Michael Hanselmann <hansmi@gentoo.org>
+  +djbdns-1.05-r18.ebuild:
+  Add quoting to variables, add support for DJBDNS_PATCH_DIR.
+
+  30 Jun 2006; Robin H. Johnson <robbat2@gentoo.org> djbdns-1.05-r17.ebuild:
+  Clean up unpack/patch process.
+
+  30 Apr 2006; Michael Hanselmann <hansmi@gentoo.org>
+  -djbdns-1.05-r14.ebuild, -djbdns-1.05-r16.ebuild:
+  Removed old ebuilds.
+
+  29 Apr 2006; <tcort@gentoo.org> djbdns-1.05-r17.ebuild:
+  Stable on alpha and amd64 wrt Bug #131487.
+
+  29 Apr 2006; Michael Hanselmann <hansmi@gentoo.org>
+  djbdns-1.05-r17.ebuild:
+  Stable on mips.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+  27 Apr 2006; Brent Baude <ranger@gentoo.org> djbdns-1.05-r17.ebuild:
+  Marking djbdns-1.05-r17 ppc64 stable per hansmi and bug 131487
+
+  27 Apr 2006; Michael Hanselmann <hansmi@gentoo.org>
+  djbdns-1.05-r17.ebuild:
+  Stable on hppa, ppc, sparc, x86.
+
+  26 Apr 2006; Michael Hanselmann <hansmi@gentoo.org>
+  +files/dnstracesort.patch, djbdns-1.05-r17.ebuild:
+  Minor patch to fix the call syntax of "sort", bug 131355.
+
+  30 Mar 2006; Michael Hanselmann <hansmi@gentoo.org>
+  -djbdns-1.05-r15.ebuild:
+  Removed old ebuild.
+
+  25 Mar 2006; Sven Wegener <swegener@gentoo.org> djbdns-1.05-r17.ebuild:
+  Don't modify MAKEOPTS, pass -j1 directly.
+
+  12 Mar 2006; Michael Hanselmann <hansmi@gentoo.org>
+  djbdns-1.05-r17.ebuild:
+  Fixed LDFLAGS, gcc settings and more. See bug 125925.
+
+  20 Feb 2006; Markus Rothe <corsair@gentoo.org> djbdns-1.05-r16.ebuild:
+  Stable on ppc64
+
+  06 Feb 2006; Aron Griffis <agriffis@gentoo.org> djbdns-1.05-r16.ebuild:
+  Mark 1.05-r16 stable on alpha
+
+*djbdns-1.05-r17 (21 Jan 2006)
+
+  21 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  +files/djbdns-setup-r17, metadata.xml, djbdns-1.05-r16.ebuild,
+  +djbdns-1.05-r17.ebuild:
+  Added patches for multiple data files (multidata, datadir), replaced useq
+  with use, updated djbdns-setup (bug 118371). Stable on hppa, mips, ppc,
+  sparc. Put myself as maintainer.
+
+  31 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> djbdns-1.05-r14.ebuild:
+  Change /bin/false to -1 in enewuser call.
+
+  05 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Give up maintainership of this, I don't use it anymore.
+
+*djbdns-1.05-r16 (09 Sep 2005)
+
+  09 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +djbdns-1.05-r16.ebuild:
+  Updated ipv6 patch to test23.
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  djbdns-1.05-r14.ebuild:
+  Stable on ppc.
+
+  28 Jul 2005; Seemant Kulleen <seemant@gentoo.org> -djbdns-1.05-r3.ebuild,
+  -djbdns-1.05-r7.ebuild, -djbdns-1.05-r8.ebuild, -djbdns-1.05-r9.ebuild,
+  -djbdns-1.05-r10.ebuild, -djbdns-1.05-r11.ebuild, -djbdns-1.05-r12.ebuild,
+  -djbdns-1.05-r13.ebuild:
+  remove cruft ebuilds
+
+*djbdns-1.05-r15 (21 Jun 2005)
+
+  21 Jun 2005; Diego Pettenò <flameeyes@gentoo.org> metadata.xml,
+  +djbdns-1.05-r15.ebuild:
+  Updated to patch test22 from fefe for IPv6 support, thanks to Kalin
+  Kozhuharov in bug #96660.
+
+  18 Jun 2005; Jason Wever <weeve@gentoo.org> djbdns-1.05-r14.ebuild:
+  Stable on SPARC.
+
+  17 May 2005; Jan Brinkmann <luckyduck@gentoo.org> djbdns-1.05-r14.ebuild:
+  stable on amd64
+
+  13 May 2005; Bryan Østergaard <kloeri@gentoo.org> djbdns-1.05-r14.ebuild:
+  Stable on alpha.
+
+  11 May 2005; Aaron Walker <ka0ttic@gentoo.org> djbdns-1.05-r14.ebuild:
+  Stable on x86 for bug 90782.
+
+  06 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  djbdns-1.05-r14.ebuild:
+  Added to ~ppc.
+
+  13 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> djbdns-1.05-r14.ebuild:
+  Use enewuser instead of useradd. Thanks to Diego in bug 84689.
+
+  20 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
+  djbdns-1.05-r14.ebuild:
+  Added to ~hppa.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> djbdns-1.05-r14.ebuild:
+  Dependency update: sys-apps/daemontools -> sys-process/daemontools.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> djbdns-1.05-r9.ebuild:
+  Dependency update: sys-apps/daemontools -> sys-process/daemontools.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> djbdns-1.05-r11.ebuild:
+  Dependency update: sys-apps/daemontools -> sys-process/daemontools.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> djbdns-1.05-r12.ebuild:
+  Dependency update: sys-apps/daemontools -> sys-process/daemontools.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> djbdns-1.05-r13.ebuild:
+  Dependency update: sys-apps/daemontools -> sys-process/daemontools.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> djbdns-1.05-r10.ebuild:
+  Dependency update: sys-apps/daemontools -> sys-process/daemontools.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> djbdns-1.05-r8.ebuild:
+  Dependency update: sys-apps/daemontools -> sys-process/daemontools.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> djbdns-1.05-r7.ebuild:
+  Dependency update: sys-apps/daemontools -> sys-process/daemontools.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> djbdns-1.05-r3.ebuild:
+  Dependency update: sys-apps/daemontools -> sys-process/daemontools.
+
+  06 Feb 2005; Joshua Kinard <kumba@gentoo.org> djbdns-1.05-r14.ebuild:
+  Marked stable on mips.
+
+  26 Jan 2005; petre rodan <kaiowas@gentoo.org> djbdns-1.05-r10.ebuild,
+  djbdns-1.05-r11.ebuild, djbdns-1.05-r12.ebuild, djbdns-1.05-r13.ebuild,
+  djbdns-1.05-r14.ebuild, djbdns-1.05-r3.ebuild, djbdns-1.05-r7.ebuild,
+  djbdns-1.05-r8.ebuild, djbdns-1.05-r9.ebuild:
+  added selinux RDEPEND
+
+  09 Jan 2005; Sven Wegener <swegener@gentoo.org> djbdns-1.05-r3.ebuild:
+  Added missing parentheses in SRC_URI/*DEPEND/LICENSE.
+
+  24 Nov 2004; Sven Wegener <swegener@gentoo.org> :
+  Added a lot of missing digest entries.
+
+*djbdns-1.05-r14 (01 Nov 2004)
+
+  01 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> djbdns-1.05-r14.ebuild:
+  ~alpha keyword.
+
+  07 Oct 2004; Jared Hudson <jhhudso@gentoo.org> : In reponse to bug #66645,
+  I have updated the patch for dnsroots to include the 2nd root server IP
+  change that ICANN has made since djbdns-1.05's original release.
+	
+  05 Oct 2004; Jason Wever <weeve@gentoo.org> djbdns-1.05-r13.ebuild:
+  Added ~sparc keyword.
+
+  18 Sep 2004; Jason Wever <weeve@gentoo.org> djbdns-1.05-r12.ebuild:
+  Stable on sparc.
+
+  04 Sep 2004; Michael Hanselmann <hansmi@gentoo.org> :
+  Fixed digests for 1.05-r12 and 1.05-r13.
+
+  29 Aug 2004; Tom Gall <tgall@gentoo.org> djbdns-1.05-r13.ebuild:
+  stable on ppc64, bug #61744
+
+  23 Aug 2003; Jared Hudson <jhhudso@gentoo.org> : Fixed adduser bug in
+  tinydns-setup (was adding dnscache user when it should have beeb adding
+  tinydns user) Thanks to Ng, Wey-Han <weyhann@yahoo.com> under bug #57214
+  for the tip.
+	
+  22 Aug 2004; Jason Wever <weeve@gentoo.org> djbdns-1.05-r12.ebuild:
+  Added ~sparc keyword.
+
+  12 Aug 2004; Tom Martin <slarti@gentoo.org> djbdns-1.05-r13.ebuild:
+  Marked ~amd64, resolves bug 58273. Thanks to Rupert Eve
+  <rupert.a.eve@accenture.com> for reporting.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  djbdns-1.05-r3.ebuild:
+  virtual/glibc -> virtual/libc
+
+*djbdns-1.05-r13 (23 Jun 2004)
+
+  23 Jun 2004; Jared Hudson <jhhudso@gentoo.org> djbdns-1.05-r12.ebuild,
+  +djbdns-1.05-r13.ebuild:
+  Bumped ipv6 patch which now included ipv6arpa support. I also marked -r12 as
+  stable now. Thanks goes to Georgi Georgiev <chutz@gg3.net> under bug #53948
+  for the bump.
+
+  09 Jun 2004; Aron Griffis <agriffis@gentoo.org> djbdns-1.05-r10.ebuild,
+  djbdns-1.05-r11.ebuild, djbdns-1.05-r3.ebuild, djbdns-1.05-r7.ebuild,
+  djbdns-1.05-r8.ebuild, djbdns-1.05-r9.ebuild:
+  Fix use invocation
+
+*djbdns-1.05-r12 (06 Jun 2004)
+
+  06 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> djbdns-1.05-r12.ebuild:
+  Marked ~amd64.
+
+*djbdns-1.05-12 (23 May 2004)
+
+  23 May 2004; Jared Hudson <jhhudso@gentoo.org> : Added 4 new use flags: doc
+  (adds dependency for djbdns-man), aliaschain (enables a patch to change the
+  CNAME handling behavior of tinydns and axfrdns), semanticfix (enables a
+  patch to increase the semantic handling of tinydns-data), and cnamefix
+  (enables a patch to change the way dnscache handles CNAME records). For more
+  information on the latter 3 patches please visit:
+  http://homepages.tesco.net./~J.deBoynePollard/FGA/djbdns-problems.html
+  In addition, if you include ipv6 support via the ipv6 use flag dnstrace
+  will be compiled without ipv6 support now, since it was broken with it
+  before. Also, a new setup script has been added, called djbdns-setup. This
+  script can be used instead of dnscache-setup and tinydns-setup. This script
+  was added by Kalin KOZHUHAROV <kalin@ThinRope.net> under bug #50795.
+  Also, tinydns-setup is patched if the fwdzone useflag/patch is added
+  because this patch changes the behavior of tinydns and the old tinydns-setup
+  did not work properly with it. Other fixes and patch suggestions come from
+  bug #19375, 20880, 34446, and 49578. Thanks goes to Nick Palmer
+  <nicholas@slackers.net>, Thilo Bangert <fizzelpark-lists@gmx.net>,
+  Hannes Just <Hannes.Just@fh-stralsund.de>, and Georgi Georgiev
+  <chutz@gg3.net>
+	
+*djbdns-1.05-r11 (02 May 2004)
+
+  02 May 2004; Jared Hudson <jhhudso@gentoo.org> :
+  Added a patch and useflag to allow djbdns bind to multiple IPs per bug #48750
+  thanks to der Ritter <gentoo@candlefire.org>
+
+*djbdns-1.05-r10 (02 May 2004)
+
+  02 May 2004; Jared Hudson <jhhudso@gentoo.org> :
+  Added ipv6arpa use flag and patch to enable ipv6 arpa support per bug
+  #49581 thanks to Georgi Georgiev <chutz@gg3.net>.
+
+*djbdns-1.05-r9 (09 Apr 2004)
+
+  09 Apr 2004; Joshua Kinard <kumba@gentoo.org> djbdns-1.05-r9.ebuild:
+  Marked stable on mips.
+
+  27 Mar 2004; Jared Hudson <jhhudso@gentoo.org> :
+  fwdzone and roundrobin local use flags added to enable their respective
+  patches. ipv6 will not work with roundrobin and fwdzone currently because the
+  only patch we have for that combines all three. The problem with this is that
+  fwdzone and roundrobin do not work together according to bug #31238. Due to this
+  we are now using the original ipv6 patch when applicable.
+
+  16 Nov 2003; Markus Nigbur <pyrania@gentoo.org> djbdns-1.05-r8.ebuild,
+  files/headtail.patch:
+  Coreutils Fix. Thanks to Marc in #33625.
+
+  07 Nov 2003; Ciaran McCreesh <ciaranm@gentoo.org> djbdns-1.05-r8.ebuild:
+  Moved to stable on sparc as -r3 has compile issues on sparc (thanks to
+  aCrackOtter in #gentoo-sparc)
+
+  16 Aug 2003; Tavis Ormandy <taviso@gentoo.org> djbdns-1.05-r8.ebuild:
+  Stable on alpha
+
+  24 May 2003; Jared Hudson <jhhudso@gentoo.org> : Added MAKEOPTS="-j1" to
+  all djbdns ebuilds due to SMP compile problems when -j set higher than 1
+  Bug ID: #18291
+	
+*djbdns-1.05-r8 (9 May 2003)
+
+  09 May 2003; Guy Martin <gmsoft@gentoo.org> :
+  Added installation of dnsip6 and dnsip6q. Fix #20690.
+
+*djbdns-1.05-r7 (26 Feb 2003)
+
+  26 Feb 2003; Mike Frysinger <vapier@gentoo.org> :
+  errno fix for #16396 (#16267).
+
+*djbdns-1.05-r6 (12 Feb 2003)
+
+  18 Feb 2003;  <seemant@gentoo.org> djbdns-1.05-r6.ebuild files/digest-djbdns-1.05-r6 :
+  regenerated the ipv6 patch, thanks to Azarah in bug #15613
+
+  13 Feb 2003; Seemant Kulleen <seemant@gentoo.org> djbdns-1.05-r6.ebuild files/digest-djbdns-1.05-r6 :
+  changed ipv6 patch to actually apply and also using eutils to perform the patch action
+
+  12 Feb 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Added the round-robin patch for dnscache.
+	
+*djbdns-1.05-r5 (17 Nov 2002)
+
+  04 Feb 2003; Joachim Blaabjerg <styx@gentoo.org> djbdns-1.05-r5.ebuild :
+
+  Bumped to stable x86, as it fixes ipv6. Fixes bug #8236 for stable users.
+
+  02 Jan 2002; Martin Holzer <mholzer@gentoo.org> files/dnscache-setup :
+  Changed Line 130 FOWARDONLY into FORWARDONLY. Closes #13108.
+
+  17 Nov 2002; Jared Hudson <jhhudso@gentoo.org> files/ipv6-fix.diff,
+  files/djbdns-1.05-fwd-ipv6.diff : Fixed Bug #8236 & 8236. Added static
+  keyword to ebuild and changed ipv6 patch to work with the forwarding patch
+  added in -r4.
+	
+  20 Oct 2002; Maik Schreiber <blizzy@gentoo.org> djbdns-1.05-r3.ebuild,
+  djbdns-1.05-r4.ebuild: Cleaned up ebuilds. Also removed removal of
+  djbdns users, since this can break your djbdns setup when updating.
+
+  19 Oct 2002; Jared Hudson <jhhudso@gentoo.org> djbdns-1.05-r4.ebuild:
+  changed KEYWORDS to use ~arch for all supported architectures. This is to
+  last until after the freeze.
+	
+*djbdns-1.05-r4 (18 Oct 2002)
+
+  18 Oct 2002; Jared Hudson <jhhudso@gentoo.org>: Added a patch to enable
+  using dnscache to perform resolution or forwarding according to the query
+  zone. This was in response to bug #9154. Credit goes to Stefano Scipioni.
+	
+  10 Sep 2002; Daniel Robbins <drobbins@gentoo.org>: djbdns-1.05-r3: fixed unpack()
+  and made the ipv6 patch dependent upon the setting of the ipv6 USE variable. No
+  rev bump. This closes bug #7236.
+
+*djbdns-1.05-r3 (12 Jul 2002)
+
+  12 Jul 2002; Grant Goodyear <g2boojum@gentoo.org> ChangeLog  : Added ipv6
+  patch if ipv6 in USE; thanks to Sascha Silbe for pointing out this patch
+
+*djbdns-1.05-r2 (13 May 2002)
+
+  12 May 2002; Thilo Bangert <bangert@gentoo.org> .ebuild :
+
+  added LICENSE, added setup scripts (by banger@gentoo.org and gontran@gontran.net)
+  removed old setup scripts
+
+  7 May 2002; Thilo Bangert <bangert@gentoo.org> .ebuild :
+ 
+  added automatic creation of users
+
+
+*djbdns-1.05-r1 (1 Mar 2002)
+
+  1 Mar 2002; Grant Goodyear <g2boojum@gentoo.org> ChangeLog :
+
+  Made ebuild a bit more modern and ditched init script since that's
+  what daemontools is for.
+  
+*djbdns-1.05 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,21 @@
+--- a/mozilla-release/js/src/configure.in
++++ b/mozilla-release/js/src/configure.in
+@@ -958,7 +958,7 @@
+     CPU_ARCH=s390x
+     ;;
+ 
+-hppa* | parisc)
++hppa* | parisc*)
+     CPU_ARCH=hppa
+     ;;
+ 
+@@ -2009,6 +2009,9 @@
+     AC_DEFINE(JS_CPU_MIPS)
+     AC_DEFINE(JS_NUNBOX32)
+     ;;
++hppa*)
++    AC_DEFINE(JS_NUNBOX32)
++    ;;
+ esac
+ 
+ MOZ_ARG_DISABLE_BOOL(ion,

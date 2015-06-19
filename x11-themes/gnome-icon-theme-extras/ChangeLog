@@ -1,0 +1,135 @@
+# ChangeLog for x11-themes/gnome-icon-theme-extras
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gnome-icon-theme-extras/ChangeLog,v 1.29 2014/12/24 17:20:29 pacho Exp $
+
+  24 Dec 2014; Pacho Ramos <pacho@gentoo.org>
+  gnome-icon-theme-extras-3.12.0.ebuild:
+  Was wrongly moved to testing
+
+  23 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-icon-theme-extras-3.12.0.ebuild:
+  Version bump for Gnome 3.14.
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-extras-3.12.0.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-extras-3.12.0.ebuild:
+  Stable for amd64, wrt bug #512912
+
+*gnome-icon-theme-extras-3.12.0 (27 Apr 2014)
+
+  27 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-icon-theme-extras-3.12.0.ebuild:
+  Version bump for Gnome 3.12.
+
+  27 Apr 2014; Pacho Ramos <pacho@gentoo.org>
+  -gnome-icon-theme-extras-2.30.1.ebuild:
+  drop old
+
+  30 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-icon-theme-extras-3.4.0.ebuild:
+  Clean up old revision.
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-extras-3.6.2.ebuild:
+  Stable for x86, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-extras-3.6.2.ebuild:
+  Stable for amd64, wrt bug #458984
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org>
+  gnome-icon-theme-extras-2.30.1.ebuild, gnome-icon-theme-extras-3.4.0.ebuild,
+  gnome-icon-theme-extras-3.6.2.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-extras-3.6.2.ebuild:
+  Add ~arm, wrt bug #449220
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-extras-3.6.2.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-extras-3.6.2.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-extras-3.6.2.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-extras-3.6.2.ebuild:
+  Add ~ppc64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-extras-3.6.2.ebuild:
+  Add ~ppc, wrt bug #449220
+
+*gnome-icon-theme-extras-3.6.2 (16 Dec 2012)
+
+  16 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-icon-theme-extras-3.0.0.ebuild, +gnome-icon-theme-extras-3.6.2.ebuild,
+  metadata.xml:
+  Version bump for Gnome 3.6. Drop old revision.
+
+  04 Oct 2012; Agostino Sarubbo <ago@gentoo.org>
+  gnome-icon-theme-extras-3.4.0.ebuild:
+  Stable for amd64, wrt bug #427544
+
+  03 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gnome-icon-theme-extras-3.4.0.ebuild:
+  x86 stable wrt bug #427544
+
+  05 Jul 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gnome-icon-theme-extras-2.30.1.ebuild, gnome-icon-theme-extras-3.0.0.ebuild,
+  gnome-icon-theme-extras-3.4.0.ebuild:
+  Update description.
+
+*gnome-icon-theme-extras-3.4.0 (14 May 2012)
+
+  14 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +gnome-icon-theme-extras-3.4.0.ebuild:
+  Version bump, adds colorhug colorimeter icon.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  gnome-icon-theme-extras-2.30.1.ebuild, gnome-icon-theme-extras-3.0.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  21 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gnome-icon-theme-extras-3.0.0.ebuild:
+  x86 stable wrt bug #385699
+
+  14 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gnome-icon-theme-extras-3.0.0.ebuild:
+  amd64 stable wrt #385699
+
+*gnome-icon-theme-extras-3.0.0 (06 Apr 2011)
+
+  06 Apr 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  -gnome-icon-theme-extras-2.90.7.ebuild,
+  +gnome-icon-theme-extras-3.0.0.ebuild:
+  Bump to 3.0.0, remove old
+
+  24 Feb 2011; Thomas Kahle <tomka@gentoo.org>
+  gnome-icon-theme-extras-2.30.1.ebuild:
+  x86 stable per bug 353436
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org>
+  gnome-icon-theme-extras-2.30.1.ebuild:
+  Stable on amd64 wrt bug #353436
+
+*gnome-icon-theme-extras-2.90.7 (21 Feb 2011)
+
+  21 Feb 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +gnome-icon-theme-extras-2.90.7.ebuild:
+  Bump to 2.90.7: five new icons
+
+*gnome-icon-theme-extras-2.30.1 (22 Jan 2011)
+
+  22 Jan 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +gnome-icon-theme-extras-2.30.1.ebuild, +metadata.xml:
+  Add new package with icon theme extras

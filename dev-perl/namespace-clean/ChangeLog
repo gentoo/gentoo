@@ -1,0 +1,167 @@
+# ChangeLog for dev-perl/namespace-clean
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/namespace-clean/ChangeLog,v 1.36 2015/05/20 04:51:38 mattst88 Exp $
+
+  20 May 2015; Matt Turner <mattst88@gentoo.org>
+  namespace-clean-0.240.0-r1.ebuild:
+  Added ~alpha, bug 548352.
+
+  03 May 2015; Jeroen Roovers <jer@gentoo.org>
+  namespace-clean-0.240.0-r1.ebuild:
+  Mark ~ppc64 (bug #548352).
+
+  29 Mar 2015; Jeroen Roovers <jer@gentoo.org>
+  namespace-clean-0.240.0-r1.ebuild:
+  Marked ~hppa (bug #544064).
+
+*namespace-clean-0.240.0-r1 (24 Aug 2014)
+*namespace-clean-0.210.0-r1 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +namespace-clean-0.210.0-r1.ebuild, +namespace-clean-0.240.0-r1.ebuild,
+  -namespace-clean-0.210.0.ebuild, -namespace-clean-0.240.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  21 Jul 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -namespace-clean-0.220.0.ebuild, -namespace-clean-0.230.0.ebuild:
+  Drop old
+
+  29 Sep 2013; Fabian Groffen <grobian@gentoo.org>
+  namespace-clean-0.240.0.ebuild:
+  Marked ~ppc-aix, ~x64-macos, bug #446444
+
+  13 Jan 2013; Markus Meier <maekke@gentoo.org> namespace-clean-0.240.0.ebuild:
+  add ~arm, bug #449762
+
+  10 Dec 2012; Agostino Sarubbo <ago@gentoo.org> namespace-clean-0.240.0.ebuild:
+  Add ~ppc, wrt bug #446444
+
+*namespace-clean-0.240.0 (08 Dec 2012)
+
+  08 Dec 2012; Torsten Veller <tove@gentoo.org>
+  +namespace-clean-0.240.0.ebuild:
+  Version bump
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org>
+  namespace-clean-0.230.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*namespace-clean-0.230.0 (07 May 2012)
+
+  07 May 2012; Torsten Veller <tove@gentoo.org>
+  +namespace-clean-0.230.0.ebuild:
+  Version bump
+
+  21 Apr 2012; Torsten Veller <tove@gentoo.org> -namespace-clean-0.200.ebuild:
+  Cleanup
+
+  16 Apr 2012; Brent Baude <ranger@gentoo.org> namespace-clean-0.210.0.ebuild:
+  Marking namespace-clean-0.210.0 ppc for bug 400307
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  namespace-clean-0.210.0.ebuild:
+  x86 stable wrt bug #400307
+
+  07 Mar 2012; Brent Baude <ranger@gentoo.org> namespace-clean-0.210.0.ebuild:
+  Marking namespace-clean-0.210.0 ~ppc for bug 400307
+
+  01 Mar 2012; Torsten Veller <tove@gentoo.org> namespace-clean-0.220.0.ebuild:
+  Depend on Sub-Name and Sub-Identify
+
+*namespace-clean-0.220.0 (29 Feb 2012)
+
+  29 Feb 2012; Robin H. Johnson <robbat2@gentoo.org>
+  +namespace-clean-0.220.0.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  namespace-clean-0.210.0.ebuild:
+  Stable for amd64, wrt bug #400307
+
+  24 Sep 2011; Fabian Groffen <grobian@gentoo.org>
+  namespace-clean-0.210.0.ebuild:
+  Marked ~x64-macos
+
+  13 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  namespace-clean-0.200.ebuild:
+  ppc stable wrt #350853
+
+*namespace-clean-0.210.0 (05 Aug 2011)
+
+  05 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +namespace-clean-0.210.0.ebuild:
+  Version bump
+
+  02 Apr 2011; Torsten Veller <tove@gentoo.org> -namespace-clean-0.18.ebuild:
+  Cleanup
+
+  27 Mar 2011; Torsten Veller <tove@gentoo.org> namespace-clean-0.200.ebuild:
+  Stable on x86 (#350853)
+
+  11 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  namespace-clean-0.200.ebuild:
+  Stable on amd64 wrt bug #350853
+
+*namespace-clean-0.200 (13 Jan 2011)
+
+  13 Jan 2011; Torsten Veller <tove@gentoo.org> +namespace-clean-0.200.ebuild:
+  Version bump
+
+  13 Aug 2010; Torsten Veller <tove@gentoo.org>
+  -namespace-clean-0.13.ebuild, -namespace-clean-0.14.ebuild,
+  -namespace-clean-0.17.ebuild:
+  Cleanup
+
+*namespace-clean-0.18 (16 Jun 2010)
+
+  16 Jun 2010; Torsten Veller <tove@gentoo.org>
+  +namespace-clean-0.18.ebuild:
+  Version bump
+
+*namespace-clean-0.17 (06 Jun 2010)
+
+  06 Jun 2010; Torsten Veller <tove@gentoo.org>
+  +namespace-clean-0.17.ebuild:
+  Version bump
+
+*namespace-clean-0.14 (19 Mar 2010)
+
+  19 Mar 2010; Torsten Veller <tove@gentoo.org>
+  +namespace-clean-0.14.ebuild:
+  Version bump
+
+  17 Mar 2010; Torsten Veller <tove@gentoo.org>
+  -namespace-clean-0.11.ebuild:
+  Cleanup
+
+*namespace-clean-0.13 (17 Jan 2010)
+
+  17 Jan 2010; Torsten Veller <tove@gentoo.org>
+  +namespace-clean-0.13.ebuild:
+  Version bump
+
+  13 Mar 2009; Torsten Veller <tove@gentoo.org>
+  -namespace-clean-0.09.ebuild, -namespace-clean-0.10.ebuild:
+  Cleanup
+
+*namespace-clean-0.11 (05 Mar 2009)
+
+  05 Mar 2009; Torsten Veller <tove@gentoo.org>
+  +namespace-clean-0.11.ebuild:
+  Version bump
+
+*namespace-clean-0.10 (20 Feb 2009)
+
+  20 Feb 2009; Torsten Veller <tove@gentoo.org>
+  +namespace-clean-0.10.ebuild:
+  Version bump
+
+*namespace-clean-0.09 (15 Jan 2009)
+
+  15 Jan 2009; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +namespace-clean-0.09.ebuild:
+  Initial import from the perl overlay

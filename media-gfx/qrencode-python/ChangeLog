@@ -1,0 +1,31 @@
+# ChangeLog for media-gfx/qrencode-python
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/qrencode-python/ChangeLog,v 1.6 2015/04/08 17:58:14 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> qrencode-python-1.01-r1.ebuild:
+  Drop old Python implementations
+
+*qrencode-python-1.02_pre140921 (21 Sep 2014)
+
+  21 Sep 2014; Justin Lecher <jlec@gentoo.org>
+  +qrencode-python-1.02_pre140921.ebuild:
+  Add support for python3, thanks Michael Weber for the patch, #523324
+
+  10 Jun 2014; Mike Gilbert <floppym@gentoo.org> -qrencode-python-1.01.ebuild:
+  Remove old.
+
+*qrencode-python-1.01-r1 (10 Jun 2013)
+
+  10 Jun 2013; Justin Lecher <jlec@gentoo.org> +qrencode-python-1.01-r1.ebuild,
+  +files/qrencode-python-1.01-PIL.patch, metadata.xml:
+  Move to new distutils eclass; add fix for PILimports, #472772
+
+  12 Dec 2011; Justin Lecher <jlec@gentoo.org> qrencode-python-1.01.ebuild,
+  metadata.xml:
+  Added missing runtime dep on dev-python/imaging, #375289
+
+*qrencode-python-1.01 (08 May 2011)
+
+  08 May 2011; Justin Lecher <jlec@gentoo.org> +qrencode-python-1.01.ebuild,
+  +metadata.xml:
+  New addition

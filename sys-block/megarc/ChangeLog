@@ -1,0 +1,35 @@
+# ChangeLog for sys-block/megarc
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/megarc/ChangeLog,v 1.9 2013/03/03 16:42:27 wschlich Exp $
+
+  03 Mar 2013; Wolfram Schlich <wschlich@gentoo.org> metadata.xml:
+  removed myself from metadata.xml
+
+  07 Jul 2011; Christian Ruppert <idl0r@gentoo.org> megarc-1.11-r1.ebuild:
+  Use "use" instead of "useq". Define RDEPEND.
+
+*megarc-1.11-r1 (07 Jul 2011)
+
+  07 Jul 2011; Christian Ruppert <idl0r@gentoo.org> -megarc-1.11.ebuild,
+  +megarc-1.11-r1.ebuild:
+  Don't install pre-built binaries into /usr.
+
+  07 Jul 2011; Christian Ruppert <idl0r@gentoo.org> megarc-1.11.ebuild,
+  -files/megarc, metadata.xml:
+  Fix SRC_URI. Remove "useless" restricts and instead use QA_PRESTRIPPED. Get a
+  rid of the wrapper, udev should always be able to handle the device nodes.
+
+  03 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> megarc-1.11.ebuild:
+  Fix SRC_URI wrt #250426, thanks to Christophe LEFEBVRE for reporting.
+
+  11 Jul 2008; Wolfram Schlich <wschlich@gentoo.org> megarc-1.11.ebuild:
+  add multilib check
+
+  24 Apr 2008; Wolfram Schlich <wschlich@gentoo.org> files/megarc:
+  fix wrapper script
+
+*megarc-1.11 (23 Apr 2008)
+
+  23 Apr 2008; Wolfram Schlich <wschlich@gentoo.org> +files/megarc,
+  +metadata.xml, +megarc-1.11.ebuild:
+  initial import

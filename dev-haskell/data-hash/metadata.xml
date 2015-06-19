@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Combinators for building fast hashing functions. Includes
+		hashing functions for all basic Haskell98 types.
+	</longdescription>
+</pkgmetadata>

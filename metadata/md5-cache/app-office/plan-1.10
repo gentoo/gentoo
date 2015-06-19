@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=x11-libs/libXpm >=x11-libs/motif-2.3:0
+DESCRIPTION=Motif based schedule planner
+EAPI=5
+HOMEPAGE=http://www.bitrot.de/plan.html
+KEYWORDS=~amd64 ~hppa ~ppc ~sparc ~x86
+LICENSE=GPL-2+
+RDEPEND=x11-libs/libXpm >=x11-libs/motif-2.3:0
+SLOT=0
+SRC_URI=ftp://ftp.fu-berlin.de/unix/X11/apps/plan/plan-1.10.tar.gz mirror://gentoo/plan-1.10-gentoo.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9993d40c8c1434a23a3d2f85f0c8ef07

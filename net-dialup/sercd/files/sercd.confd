@@ -1,0 +1,23 @@
+# sercd service configuration file
+
+# Run daemon as this user:group
+SERCD_USER=uucp:uucp
+
+# Serial port
+SERCD_DEVFILE=/dev/modem
+
+# Lock file
+SERCD_LOCKFILE=/run/lock/LCK..modem
+
+# Address on which this daemon listens on
+SERCD_ADDR=0.0.0.0
+SERCD_PORT=7000
+
+# Log level; available values are from 0 (LOG_EMERG) to 7 (LOG_DEBUG).
+SERCD_LOGLEVEL=5
+
+# Uncomment this if you want compatibility with Cisco IOS
+# SERCD_OPTS="-i"
+
+# Poll interval is in milliseconds. 0 means no polling
+SERCD_POLLINTERV=100

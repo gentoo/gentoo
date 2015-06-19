@@ -1,0 +1,26 @@
+diff --git a/combine_wave.c b/combine_wave.c
+index 5bfa4aa..391db25 100644
+--- a/combine_wave.c
++++ b/combine_wave.c
+@@ -601,9 +601,9 @@ for(i = 0; i < header_size; i++)
+ 	*ptr = 0;
+ 	ptr++;
+ 	}
+-strcpy(out_header -> main_chunk, "RIFF");
+-strcpy(out_header -> chunk_type, "WAVE"); 
+-strcpy(out_header -> sub_chunk, "fmt ");
++memcpy(out_header -> main_chunk, "RIFF", 4);
++memcpy(out_header -> chunk_type, "WAVE", 4);
++memcpy(out_header -> sub_chunk, "fmt ", 4);
+ out_header -> length_chunk = 16; //always 16
+ out_header -> format = 1; //PCM
+ 
+@@ -622,7 +622,7 @@ else
+ 
+ out_header -> sample_fq = left_header -> sample_fq;
+ out_header -> bit_p_spl = 16; // left_header -> bit_p_spl;
+-strcpy(out_header -> data_chunk, "data");
++memcpy(out_header -> data_chunk, "data", 4);
+ 
+ if(right_header -> data_length > left_header -> data_length) 
+ 	{

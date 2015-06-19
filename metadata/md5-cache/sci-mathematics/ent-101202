@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DEPEND=app-arch/unzip
+DESCRIPTION=Pseudorandom number sequence test
+EAPI=3
+HOMEPAGE=http://www.fourmilab.ch/random/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=public-domain
+SLOT=0
+SRC_URI=mirror://gentoo/random-101202.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=3894859396f4efe3e1d47df694cef207

@@ -1,0 +1,41 @@
+# ChangeLog for sys-apps/aix-miscutils
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/aix-miscutils/ChangeLog,v 1.2 2010/02/26 12:51:40 haubi Exp $
+
+*aix-miscutils-0.1.1671 (26 Feb 2010)
+
+  26 Feb 2010; Michael Haubenwallner <haubi@gentoo.org>
+  -aix-miscutils-0.1.1634.ebuild, +aix-miscutils-0.1.1671.ebuild:
+  bumped for off-by-one bug parsing very long lines (runpath)
+
+*aix-miscutils-0.1.1634 (09 Jul 2008)
+
+  09 Jul 2008; Michael Haubenwallner <haubi@gentoo.org>
+  -aix-miscutils-0.1.1629.ebuild, +aix-miscutils-0.1.1634.ebuild:
+  bumped to aix-miscutils-0.1.1634. Also, manifest for 0.1.1629 was broken.
+
+*aix-miscutils-0.1.1629 (06 May 2008)
+
+  06 May 2008; Michael Haubenwallner <haubi@gentoo.org>
+  -aix-miscutils-0.1.1619.ebuild, -aix-miscutils-0.1.1628.ebuild,
+  +aix-miscutils-0.1.1629.ebuild:
+  bumped to aix-miscutils-0.1.1629, dropped old ones.
+
+*aix-miscutils-0.1.1628 (06 May 2008)
+
+  06 May 2008; Michael Haubenwallner <haubi@gentoo.org>
+  +aix-miscutils-0.1.1628.ebuild:
+  bumped to aix-miscutils-0.1.1628 for ldd c++-rewrite
+
+*aix-miscutils-0.1.1619 (14 Apr 2008)
+
+  14 Apr 2008; Michael Haubenwallner <haubi@gentoo.org>
+  -aix-miscutils-0.1.1618.ebuild, +aix-miscutils-0.1.1619.ebuild:
+  bumped to aix-miscutils-0.1.1619 for recursive lookups
+
+*aix-miscutils-0.1.1618 (14 Apr 2008)
+
+  14 Apr 2008; Michael Haubenwallner <haubi@gentoo.org> +.,
+  +aix-miscutils-0.1.1618.ebuild:
+  added aix-miscutils-0.1.1618
+

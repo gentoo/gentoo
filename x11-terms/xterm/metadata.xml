@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>dickey@invisible-island.net</email>
+    <name>Thomas Dickey</name>
+  </maintainer>
+  <herd>x11</herd>
+  <herd>proxy-maintainers</herd>
+  <use>
+    <flag name="openpty">Use openpty() in preference to posix_openpt()</flag>
+    <flag name="toolbar">Enable the xterm toolbar to be built</flag>
+  </use>
+</pkgmetadata>

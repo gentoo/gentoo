@@ -1,0 +1,24 @@
+# ChangeLog for sci-geosciences/mapnik-world-boundaries
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/mapnik-world-boundaries/ChangeLog,v 1.5 2014/03/10 17:11:53 johu Exp $
+
+  10 Mar 2014; Johannes Huber <johu@gentoo.org>
+  mapnik-world-boundaries-20090514.ebuild:
+  x86 stable, bug #279046
+
+  07 Mar 2014; Pacho Ramos <pacho@gentoo.org>
+  mapnik-world-boundaries-20090514.ebuild:
+  amd64 stable, bug #279046
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org>
+  mapnik-world-boundaries-20090514.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  27 Feb 2012; Tupone Alfredo <tupone@gentoo.org> metadata.xml:
+  Removing me as a maintainer
+
+*mapnik-world-boundaries-20090514 (23 Jun 2009)
+
+  23 Jun 2009; Alfredo Tupone <tupone@gentoo.org>
+  +mapnik-world-boundaries-20090514.ebuild:
+  World Boundaries data for mapnik

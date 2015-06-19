@@ -1,0 +1,42 @@
+# ChangeLog for dev-util/checkbashisms
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/checkbashisms/ChangeLog,v 1.7 2014/08/14 02:49:22 patrick Exp $
+
+*checkbashisms-2.0.0.2-r2 (14 Aug 2014)
+
+  14 Aug 2014; Patrick Lauer <patrick@gentoo.org>
+  +checkbashisms-2.0.0.2-r2.ebuild, -checkbashisms-2.0.0.2-r1.ebuild:
+  Move patching to src_prepare for extra repoman happy
+
+*checkbashisms-2.0.0.2-r1 (13 Aug 2014)
+
+  13 Aug 2014; Mike Frysinger <vapier@gentoo.org>
+  +checkbashisms-2.0.0.2-r1.ebuild, +files/checkbashisms-2.0.0.2-export.patch,
+  +files/checkbashisms-2.0.0.2-kill.patch,
+  +files/checkbashisms-2.0.0.2-version.patch:
+  Fix kill/export false positives #458392 by Julian Ospald.
+
+  13 Aug 2014; Mike Frysinger <vapier@gentoo.org> -checkbashisms-2.0.0.5.ebuild,
+  checkbashisms-2.0.0.2.ebuild:
+  There is no 2.0.0.5 release; our copy is the same as the 2.0.0.2 release.
+
+  13 Mar 2013; Stanislav Ochotnicky <sochotnicky@gentoo.org>
+  checkbashisms-2.0.0.5.ebuild:
+  Add soft block for <dev-util/rpmdevtools-8.3-r1 to fix #426828
+
+*checkbashisms-2.0.0.5 (21 Feb 2012)
+
+  21 Feb 2012; Robin H. Johnson <robbat2@gentoo.org>
+  +checkbashisms-2.0.0.5.ebuild:
+  Version bump.
+
+  10 Jan 2012; Robin H. Johnson <robbat2@gentoo.org>
+  checkbashisms-2.0.0.2.ebuild:
+  Add clarification that checkbaskisms is not a typo, and fix homepage.
+
+*checkbashisms-2.0.0.2 (10 Jan 2012)
+
+  10 Jan 2012; Robin H. Johnson <robbat2@gentoo.org>
+  +checkbashisms-2.0.0.2.ebuild, +metadata.xml:
+  Initial commit. Bug #398275, ebuild submitted by Michael
+  <gentoo@scribeofthenile.com>.

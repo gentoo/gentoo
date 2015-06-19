@@ -1,0 +1,66 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/polipo/files/polipo.initd-2,v 1.1 2015/01/09 00:13:32 bircoph Exp $
+
+CONFFILE="/etc/polipo/config${SVCNAME#polipo}"
+PIDFILE="/var/run/${SVCNAME}.pid"
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	{ polipo -v -c "${CONFFILE}" || return 1 ; } | {
+		local retvalue=0
+		local name type value desc
+		while read name type value desc ; do
+			case ${name} in
+			configFile)
+				if [ "${value}" = "(none)" ] ; then
+					eerror "Unable to read configuration file /etc/polipo/config"
+					retvalue=1
+				fi
+				;;
+			daemonise)
+				if [ "${value}" != "false" ] ; then
+					eerror "Configuration option not supported by this init script: ${name}=${value}"
+					retvalue=1
+				fi
+				;;
+			pidFile)
+				if [ "${value}" != "(none)" ] ; then
+					eerror "Configuration option not supported by this init script: ${name}=${value}"
+					retvalue=1
+				fi
+				;;
+			diskCacheRoot)
+				if [ "${value}" != "(none)" ] ; then
+					# Ensure that cache directory exists and have proper permissions
+					if ! [[ -d "{value}" ]]; then
+						mkdir -p -m 0750 "${value}"
+						chown polipo:polipo "${value}"
+					fi
+				fi
+				;;
+			esac
+		done
+		return ${retvalue}
+	}
+}
+
+start() {
+	checkconfig || return 1
+
+	ebegin "Starting Polipo HTTP proxy"
+	start-stop-daemon --start --user polipo \
+		--background --pidfile "${PIDFILE}" --make-pidfile \
+		--exec /usr/bin/polipo -- -c "${CONFFILE}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Polipo HTTP proxy"
+	start-stop-daemon --stop --pidfile "${PIDFILE}"
+	eend $?
+}

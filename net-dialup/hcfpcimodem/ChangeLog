@@ -1,0 +1,250 @@
+# ChangeLog for net-dialup/hcfpcimodem
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/hcfpcimodem/ChangeLog,v 1.47 2013/02/28 20:13:39 pinkbyte Exp $
+
+  28 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> -hcfpcimodem-1.19.ebuild,
+  -files/hcfpcimodem-1.19-gentoo.patch:
+  Drop old version
+
+*hcfpcimodem-1.21 (28 Feb 2013)
+
+  28 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> +hcfpcimodem-1.21.ebuild:
+  Version bump, wrt bug #336501. Respect compiler
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> hcfpcimodem-1.20.ebuild:
+  Stable for x86, wrt bug #441436
+
+*hcfpcimodem-1.20 (29 Nov 2009)
+
+  29 Nov 2009; Alin Năstac <mrness@gentoo.org> +hcfpcimodem-1.20.ebuild,
+  +files/hcfpcimodem-1.20-gentoo.patch:
+  Version bump.
+
+  22 Sep 2009; Alin Năstac <mrness@gentoo.org> -hcfpcimodem-1.14-r1.ebuild,
+  -files/hcfpcimodem-1.14-implicit-declarations.patch,
+  -hcfpcimodem-1.15.ebuild, -hcfpcimodem-1.16.ebuild,
+  -hcfpcimodem-1.17.ebuild, -hcfpcimodem-1.17-r1.ebuild,
+  -files/hcfpcimodem-1.17-gentoo.patch, -hcfpcimodem-1.18.ebuild,
+  -files/hcfpcimodem-1.18-gentoo.patch:
+  Remove obsolete versions.
+
+  22 Sep 2009; Markus Meier <maekke@gentoo.org> hcfpcimodem-1.19.ebuild:
+  x86 stable, bug #282168
+
+*hcfpcimodem-1.19 (19 Aug 2009)
+
+  19 Aug 2009; Alin Năstac <mrness@gentoo.org>
+  +files/hcfpcimodem-1.19-gentoo.patch, +hcfpcimodem-1.19.ebuild:
+  Version bump.
+
+*hcfpcimodem-1.18 (12 Jan 2009)
+
+  12 Jan 2009; Alin Năstac <mrness@gentoo.org>
+  +files/hcfpcimodem-1.18-gentoo.patch, +hcfpcimodem-1.18.ebuild:
+  Version bump.
+
+*hcfpcimodem-1.17-r1 (18 Oct 2008)
+
+  18 Oct 2008; Alin Năstac <mrness@gentoo.org>
+  +files/hcfpcimodem-1.17-gentoo.patch, +hcfpcimodem-1.17-r1.ebuild:
+  Build hcfpcidiag with user specified CFLAGS/LDFLAGS (#240874).
+
+*hcfpcimodem-1.17 (25 Sep 2008)
+
+  25 Sep 2008; Alin Năstac <mrness@gentoo.org> +hcfpcimodem-1.17.ebuild:
+  Version bump.
+
+*hcfpcimodem-1.16 (30 Jul 2008)
+
+  30 Jul 2008; Alin Năstac <mrness@gentoo.org> +hcfpcimodem-1.16.ebuild:
+  Version bump.
+
+*hcfpcimodem-1.15 (13 Apr 2008)
+
+  13 Apr 2008; Alin Năstac <mrness@gentoo.org>
+  -files/hcfpcimodem-1.12-implicit-declarations.patch,
+  -files/hcfpcimodem-1.13-implicit-declarations.patch,
+  -files/hcfpcimodem-1.13-unset-locale.patch, -hcfpcimodem-1.12-r1.ebuild,
+  -hcfpcimodem-1.13-r1.ebuild, +hcfpcimodem-1.15.ebuild:
+  Version bump.
+
+*hcfpcimodem-1.14-r1 (09 Jan 2008)
+
+  09 Jan 2008; Alin Năstac <mrness@gentoo.org> -hcfpcimodem-1.14.ebuild,
+  +hcfpcimodem-1.14-r1.ebuild:
+  Run hcfpciconfig --remove in pkg_prerm (#205071).
+
+  08 Jan 2008; Markus Meier <maekke@gentoo.org> hcfpcimodem-1.14.ebuild:
+  x86 stable, bug #204178
+
+*hcfpcimodem-1.14 (05 Nov 2007)
+
+  05 Nov 2007; Alin Năstac <mrness@gentoo.org>
+  +files/hcfpcimodem-1.14-implicit-declarations.patch,
+  +hcfpcimodem-1.14.ebuild:
+  Version bump.
+
+*hcfpcimodem-1.13-r1 (28 Aug 2007)
+
+  28 Aug 2007; Alin Năstac <mrness@gentoo.org>
+  +files/hcfpcimodem-1.13-unset-locale.patch, -hcfpcimodem-1.13.ebuild,
+  +hcfpcimodem-1.13-r1.ebuild:
+  Unset locale environment vars (#185193).
+
+*hcfpcimodem-1.13 (14 Jul 2007)
+
+  14 Jul 2007; Alin Năstac <mrness@gentoo.org>
+  -files/hcfpcimodem-1.10-suspend2.patch,
+  +files/hcfpcimodem-1.13-implicit-declarations.patch,
+  -hcfpcimodem-1.10-r2.ebuild, -hcfpcimodem-1.11.ebuild,
+  -hcfpcimodem-1.12.ebuild, +hcfpcimodem-1.13.ebuild:
+  Remove obsolete versions. Version bump.
+
+  02 May 2007; Marius Mauch <genone@gentoo.org> hcfpcimodem-1.10-r2.ebuild,
+  hcfpcimodem-1.11.ebuild, hcfpcimodem-1.12.ebuild,
+  hcfpcimodem-1.12-r1.ebuild:
+  Replacing einfo with elog
+
+*hcfpcimodem-1.12-r1 (10 Apr 2007)
+
+  10 Apr 2007; Alin Năstac <mrness@gentoo.org>
+  +files/hcfpcimodem-1.12-implicit-declarations.patch,
+  +hcfpcimodem-1.12-r1.ebuild:
+  Fix implicit declaration compiler warnings. Force executable permission on
+  kernelcompiler.sh (#173414). Stable on x86 (#173561).
+
+*hcfpcimodem-1.12 (13 Mar 2007)
+
+  13 Mar 2007; Alin Năstac <mrness@gentoo.org> +hcfpcimodem-1.12.ebuild:
+  Version bump.
+
+*hcfpcimodem-1.11 (10 Feb 2007)
+
+  10 Feb 2007; Alin Năstac <mrness@gentoo.org> +hcfpcimodem-1.11.ebuild:
+  Version bump.
+
+  22 Sep 2006; Alin Nastac <mrness@gentoo.org>
+  -files/hcfpcimodem-1.08-upstream-20051215.patch, -hcfpcimodem-1.08.ebuild,
+  hcfpcimodem-1.10-r2.ebuild:
+  Remove obsolete version. Deactivate exec stack QA warning.
+
+  14 May 2006; Alin Nastac <mrness@gentoo.org> -hcfpcimodem-1.06-r1.ebuild,
+  hcfpcimodem-1.10-r2.ebuild:
+  Remove old version. Stable on x86.
+
+*hcfpcimodem-1.10-r2 (15 Mar 2006)
+
+  15 Mar 2006; Alin Nastac <mrness@gentoo.org> -hcfpcimodem-1.10-r1.ebuild,
+  +hcfpcimodem-1.10-r2.ebuild:
+  Apply suspend2 patch only if the active kernel is
+  sys-kernel/suspend2-sources (#126140).
+
+*hcfpcimodem-1.10-r1 (10 Mar 2006)
+
+  10 Mar 2006; Alin Nastac <mrness@gentoo.org>
+  +files/hcfpcimodem-1.10-suspend2.patch, -hcfpcimodem-1.10.ebuild,
+  +hcfpcimodem-1.10-r1.ebuild:
+  Add upstream fix for suspend2 kernel patch.
+
+*hcfpcimodem-1.10 (21 Feb 2006)
+
+  21 Feb 2006; Alin Nastac <mrness@gentoo.org> -hcfpcimodem-1.06.ebuild,
+  hcfpcimodem-1.08.ebuild, +hcfpcimodem-1.10.ebuild:
+  Remove old version. Stable on x86. Version bump (#123580).
+
+*hcfpcimodem-1.08 (14 Dec 2005)
+
+  14 Dec 2005; Alin Nastac <mrness@gentoo.org>
+  +files/hcfpcimodem-1.08-upstream-20051215.patch,
+  hcfpcimodem-1.06-r1.ebuild, +hcfpcimodem-1.08.ebuild:
+  Stable on x86. Version bump (#115582).
+
+*hcfpcimodem-1.06-r1 (17 Sep 2005)
+
+  17 Sep 2005; Alin Nastac <mrness@gentoo.org>
+  -files/hcfpcimodem-1.05-nvminstall.patch,
+  +files/hcfpcimodem-1.06-simple_class.patch, -hcfpcimodem-1.05-r1.ebuild,
+  +hcfpcimodem-1.06-r1.ebuild:
+  Add upstream fix for kernel versions >= 2.6.13 (#106103).
+  Remove obsolete version.
+
+  29 Aug 2005; Alin Nastac <mrness@gentoo.org> hcfpcimodem-1.06.ebuild:
+  Stable on x86.
+
+*hcfpcimodem-1.06 (24 Jun 2005)
+
+  24 Jun 2005; Alin Nastac <mrness@gentoo.org> +hcfpcimodem-1.06.ebuild:
+  Version bump. Optionally install modem documentation, selected by doc useflag.
+
+  14 Apr 2005; Alin Nastac <mrness@gentoo.org> -hcfpcimodem-1.03.ebuild,
+  hcfpcimodem-1.05-r1.ebuild:
+  Stable on x86. Remove obsolete version.
+
+*hcfpcimodem-1.05-r1 (17 Mar 2005)
+
+  17 Mar 2005; Alin Nastac <mrness@gentoo.org>
+  +files/hcfpcimodem-1.05-nvminstall.patch, +hcfpcimodem-1.05-r1.ebuild,
+  -hcfpcimodem-1.05.ebuild:
+  Fix missing region files (#84927). Remove /etc/hcfpcimodem/nvm before packet
+  installation.
+
+*hcfpcimodem-1.05 (06 Mar 2005)
+
+  06 Mar 2005; Alin Nastac <mrness@gentoo.org> +hcfpcimodem-1.05.ebuild:
+  Version bump.
+
+  06 Feb 2005; Alin Nastac <mrness@gentoo.org>
+  -hcfpcimodem-1.01.04111200.ebuild, hcfpcimodem-1.03.ebuild:
+  Mark stable on x86 and remove old ebuild.
+
+*hcfpcimodem-1.03 (04 Jan 2005)
+
+  04 Jan 2005; Alin Nastac <mrness@gentoo.org>
+  -hcfpcimodem-0.99.02123100.ebuild, -hcfpcimodem-0.99.03042700.ebuild,
+  -hcfpcimodem-1.01.04082400.ebuild, hcfpcimodem-1.01.04111200.ebuild,
+  +hcfpcimodem-1.03.ebuild:
+  Version bumped, marked 1.01 as stable on x86 and cleaned up old ebuilds.
+
+*hcfpcimodem-1.01.04111200 (16 Nov 2004)
+
+  16 Nov 2004; Alin Nastac <mrness@gentoo.org>
+  +hcfpcimodem-1.01.04111200.ebuild:
+  Version bump.
+
+*hcfpcimodem-1.01.04082400 (07 Nov 2004)
+
+  07 Nov 2004; Alin Nastac <mrness@gentoo.org>
+  +hcfpcimodem-1.01.04082400.ebuild:
+  version bump to latest full version
+  beta version no longer available on home page (bug #52096)
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  hcfpcimodem-0.99.02123100.ebuild, hcfpcimodem-0.99.03042700.ebuild:
+  virtual/glibc -> virtual/libc
+
+  19 Nov 2003; Heinrich Wendel <lanius@gentoo.org> metadata.xml:
+  metadata
+
+*hcfpcimodem-0.99.03042700 (27 Oct 2003)
+
+  27 Oct 2003; Hanno Boeck <hanno@gentoo.org>
+  hcfpcimodem-0.99.03042700.ebuild:
+  Update with a bunch of fixes from Bel Zebute in bug #26583.
+
+  12 Jun 2003; <msterret@gentoo.org> hcfpcimodem-0.99.02123100.ebuild:
+  fix Header
+
+*hcfpcimodem-0.99.02123100 (22 May 2003)
+
+  22 May 2003; Chuck Brewer <killian@gentoo.org>:
+  Added manifest.
+
+*hcfpcimodem-0.99mbsibeta02123100 (02 Feb 2003)
+
+  02 Feb 2003; Joshua Brindle <method@gentoo.org> : hcfpcimodem-0.99.02123100.ebuild
+  Initial import.  
+  Note that the "changed_file" listing is optional if you are simply bumping
+  the rev of the ebuild and are only making changes to the .ebuild file
+  itself.  Also note that we now have a single unified paragraph rather than
+  having the first line separated from the rest by a newline.  Everything
+  should be in one block like this. (note by drobbins, 16 Jul 2002)

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>rafaelmartins@gentoo.org</email>
+		<name>Rafael G. Martins</name>
+	</maintainer>
+	<longdescription lang="en">
+		PiKdev is a simple graphic IDE for the development of PIC-based applications.
+		It currently supports assembly language. C language is also supported for PIC
+		18 devices. PiKdev is developed in C++ under Linux.
+	</longdescription>
+</pkgmetadata>

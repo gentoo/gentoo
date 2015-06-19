@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=Smart console frontend for virtual/cdrtools and dvd+rw-tools
+HOMEPAGE=http://burn-cd.sourceforge.net
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2
+RDEPEND=dev-lang/python virtual/cdrtools app-cdr/dvd+rw-tools
+SLOT=0
+SRC_URI=mirror://sourceforge/burn-cd/burn-cd-1.8.0.gz
+_md5_=3652a1561b47531c64974a4d4de438fc

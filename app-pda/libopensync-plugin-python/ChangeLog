@@ -1,0 +1,78 @@
+# ChangeLog for app-pda/libopensync-plugin-python
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-pda/libopensync-plugin-python/ChangeLog,v 1.14 2012/05/03 20:21:00 jdhore Exp $
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  libopensync-plugin-python-0.22.ebuild, libopensync-plugin-python-9999.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  19 Mar 2011; Ryan Hill <dirtyepic@gentoo.org>
+  -libopensync-plugin-python-0.36.ebuild:
+  Drop 0.36.
+
+  24 Feb 2011; Ryan Hill <dirtyepic@gentoo.org>
+  libopensync-plugin-python-0.22.ebuild, libopensync-plugin-python-0.36.ebuild,
+  libopensync-plugin-python-9999.ebuild:
+  Revert last commit.
+
+  24 Feb 2011; Ryan Hill <dirtyepic@gentoo.org>
+  libopensync-plugin-python-0.22.ebuild, libopensync-plugin-python-0.36.ebuild,
+  libopensync-plugin-python-9999.ebuild:
+  Move pkgconfig to DEPEND.
+
+  20 Feb 2011; Ryan Hill <dirtyepic@gentoo.org>
+  libopensync-plugin-python-0.22.ebuild, libopensync-plugin-python-0.36.ebuild,
+  libopensync-plugin-python-9999.ebuild:
+  Fix dependencies, port to python eclass (bug #311765) and EAPI 3. Fix
+  building against new python versions (bug #276220).
+
+  15 Nov 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -libopensync-plugin-python-0.21.ebuild,
+  -libopensync-plugin-python-0.35.ebuild:
+  Clean up old revisions.
+
+*libopensync-plugin-python-0.36 (27 Jan 2008)
+
+  27 Jan 2008; Piotr Jaroszyński <peper@gentoo.org>
+  +libopensync-plugin-python-0.36.ebuild:
+  Add 0.36.
+
+*libopensync-plugin-python-0.35 (21 Dec 2007)
+
+  21 Dec 2007; Piotr Jaroszyński <peper@gentoo.org>
+  +libopensync-plugin-python-0.35.ebuild:
+  Add 0.35.
+
+*libopensync-plugin-python-9999 (26 Nov 2007)
+
+  26 Nov 2007; Piotr Jaroszyński <peper@gentoo.org>
+  +libopensync-plugin-python-9999.ebuild:
+  Add live svn ebuild.
+
+*libopensync-plugin-python-0.22 (28 Mar 2007)
+
+  28 Mar 2007; Piotr Jaroszyński <peper@gentoo.org>
+  -libopensync-plugin-python-0.20.ebuild,
+  +libopensync-plugin-python-0.22.ebuild:
+  Version bump.
+
+*libopensync-plugin-python-0.21 (12 Feb 2007)
+
+  12 Feb 2007; Piotr Jaroszyński <peper@gentoo.org>
+  -libopensync-plugin-python-0.19.ebuild,
+  +libopensync-plugin-python-0.21.ebuild:
+  Version bump.
+
+*libopensync-plugin-python-0.20 (10 Nov 2006)
+
+  10 Nov 2006; Piotr Jaroszyński <peper@gentoo.org>
+  libopensync-plugin-python-0.19.ebuild,
+  +libopensync-plugin-python-0.20.ebuild:
+  Version bump.
+
+*libopensync-plugin-python-0.19 (23 Oct 2006)
+
+  23 Oct 2006; Piotr Jaroszyński <peper@gentoo.org> +metadata.xml,
+  +libopensync-plugin-python-0.19.ebuild:
+  New package.
+

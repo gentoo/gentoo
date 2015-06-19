@@ -1,0 +1,60 @@
+# ChangeLog for dev-python/python-virtkey
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-virtkey/ChangeLog,v 1.9 2015/06/09 16:53:50 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  15 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -python-virtkey-0.60.0.ebuild:
+  Remove old.
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> python-virtkey-0.60.0-r1.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> python-virtkey-0.60.0-r1.ebuild:
+  amd64 stable, bug 534012
+
+*python-virtkey-0.60.0-r1 (18 Feb 2015)
+
+  18 Feb 2015; Ian Delaney <idella4@gentoo.org>
+  +python-virtkey-0.60.0-r1.ebuild:
+  revbump; convert -> distutils-r1
+
+  04 May 2012; Patrick Lauer <patrick@gentoo.org> python-virtkey-0.60.0.ebuild:
+  Migrating dev-util/pkgconfig -> virtual/pkgconfig
+
+  24 Feb 2012; Patrick Lauer <patrick@gentoo.org> python-virtkey-0.60.0.ebuild:
+  Restricting jython
+
+  16 Nov 2011; Tony Vroon <chainsaw@gentoo.org> python-virtkey-0.60.0.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Michael "n0idx80" Harrison in bug #390265.
+
+  21 Apr 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  python-virtkey-0.60.0.ebuild:
+  Fix dependencies. Raise EAPI to 3.
+
+  01 Dec 2010; Alexander van der Mey <alexvandermey@gmail.com>
+  python-virtkey-0.60.0.ebuild:
+  Fixed broken SRC_URI due to website address change
+
+*python-virtkey-0.60.0 (25 Aug 2010)
+
+  25 Aug 2010; Michał Górny (sedzimir) <gentoo@mgorny.alt.pl>
+  -python-virtkey-0.50-r1.ebuild, +python-virtkey-0.60.0.ebuild:
+  Version bump.
+
+*python-virtkey-0.50-r1 (14 Jul 2010)
+
+  14 Jul 2010; Michał Górny (sedzimir) <mgorny.3ehbo@mailnull.com>
+  -python-virtkey-0.50.ebuild, +python-virtkey-0.50-r1.ebuild:
+  Add Python ABI support.
+
+  04 Feb 2010; Michał Górny (sedzimir) <gentoo@mgorny.alt.pl>
+  python-virtkey-0.50.ebuild:
+  Tested on x86.
+
+  31 Jul 2009; Michał Górny (sedzimir) <gentoo@mgorny.alt.pl>
+  +python-virtkey-0.50.ebuild, +metadata.xml:
+  New ebuild for python-virtkey (bug #248256). Thanks to Denilson for
+  suggestions.

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=sys-libs/ncurses =sci-biology/emboss-6.0.1* !<sci-biology/emboss-6.0.1 X? ( x11-libs/libX11 ) png? ( sys-libs/zlib media-libs/libpng >=media-libs/gd-1.8 )
+DESCRIPTION=EMBOSS Menu is Not UNIX - Simple menu of EMBOSS applications
+HOMEPAGE=http://emboss.sourceforge.net/
+IUSE=X png
+KEYWORDS=amd64 ~ppc x86
+LICENSE=LGPL-2 GPL-2
+RDEPEND=sys-libs/ncurses
+SLOT=0
+SRC_URI=ftp://emboss.open-bio.org/pub/EMBOSS/old/6.0.1/EMBOSS-6.0.1.tar.gz mirror://gentoo/embassy-6.0.1-emnu-1.05.tar.gz
+_eclasses_=embassy	2325894d6b264e7c960a3abd7666a104	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8712ed8917338f5c91644976e302c4ea

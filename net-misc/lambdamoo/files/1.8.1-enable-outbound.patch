@@ -1,0 +1,13 @@
+diff -ur MOO-1.8.1.orig/options.h MOO-1.8.1/options.h
+--- MOO-1.8.1.orig/options.h	2003-04-17 15:25:25.000000000 -0500
++++ MOO-1.8.1/options.h	2003-04-17 15:27:33.000000000 -0500
+@@ -155,7 +155,7 @@
+  *	 NP_SINGLE or NP_LOCAL.
+  */
+ 
+-/* #define OUTBOUND_NETWORK */
++#define OUTBOUND_NETWORK
+ 
+ /******************************************************************************
+  * The following constants define certain aspects of the server's network
+

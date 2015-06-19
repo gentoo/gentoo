@@ -1,0 +1,69 @@
+# ChangeLog for games-puzzle/mindless
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/mindless/ChangeLog,v 1.16 2015/02/22 20:30:04 tupone Exp $
+
+  22 Feb 2015; Tupone Alfredo <tupone@gentoo.org> mindless-1.6.ebuild:
+  EAPI 5
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> mindless-1.6.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  31 Dec 2009; Michael Sterrett <mr_bones_@gentoo.org> mindless-1.6.ebuild:
+  EAPI=2; honor CC and CFLAGS
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> mindless-1.6.ebuild:
+  Replacing einfo with elog
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> mindless-1.6.ebuild:
+  Remove old virtual/x11 dependency.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-mindless-1.6,
+  Manifest:
+  Fixing SHA256 digest, pass four
+
+  26 Mar 2006; Michael Sterrett <mr_bones_@gentoo.org> mindless-1.6.ebuild:
+  fix deps for modular X (bug #127621)
+
+  31 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org> -files/mindless,
+  -mindless-1.5-r1.ebuild:
+  clean old version
+
+*mindless-1.6 (08 Jul 2005)
+
+  08 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org> +mindless-1.6.ebuild:
+  version bump
+
+*mindless-1.5-r1 (10 Dec 2004)
+
+  10 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> -mindless-1.4.ebuild,
+  +mindless-1.5-r1.ebuild, -mindless-1.5.ebuild:
+  use new text file based database; fix bug #65448; clean out older ebuilds
+
+*mindless-1.5 (24 Jul 2004)
+
+  24 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> +mindless-1.5.ebuild:
+  version bump (bug #58231)
+  nomirror since I don't like the datafile name
+
+*mindless-1.4 (28 Feb 2004)
+
+  28 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump and remove playmindless crap #43192 by Alexander Jenisch.
+
+*mindless-1.3 (05 Aug 2003)
+
+  05 Aug 2003; Michael Sterrett <msterret@gentoo.org> mindless-1.3.ebuild:
+  version bump
+
+*mindless-1.2 (31 Dec 2002)
+
+  31 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*mindless-1.1 (08 Dec 2002)
+
+  08 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by moonlite@linux.nu.

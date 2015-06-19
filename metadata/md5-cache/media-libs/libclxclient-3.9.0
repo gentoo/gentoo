@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=x11-libs/libX11 x11-libs/libXft media-libs/freetype:2 >=media-libs/libclthreads-2.4.0
+DESCRIPTION=An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
+EAPI=5
+HOMEPAGE=http://kokkinizita.linuxaudio.org/linuxaudio/index.html
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=x11-libs/libX11 x11-libs/libXft media-libs/freetype:2 >=media-libs/libclthreads-2.4.0
+SLOT=0
+SRC_URI=http://kokkinizita.linuxaudio.org/linuxaudio/downloads/clxclient-3.9.0.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=1479e9ae6e18a5b3c62ceae2ff712c65

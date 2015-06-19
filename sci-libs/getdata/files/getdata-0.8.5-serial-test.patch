@@ -1,0 +1,42 @@
+ bindings/Makefile.am             | 6 +-----
+ bindings/python/test/Makefile.am | 3 +--
+ 2 files changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/bindings/Makefile.am b/bindings/Makefile.am
+index df53b0f..ec33316 100644
+--- a/bindings/Makefile.am
++++ b/bindings/Makefile.am
+@@ -38,10 +38,6 @@ if MAKE_MATLABBINDINGS
+ MATLAB_SUBDIR=matlab
+ endif
+ 
+-if MAKE_PYBINDINGS
+-PY_SUBDIR=python
+-endif
+-
+ if MAKE_PERLBINDINGS
+ PERL_SUBDIR=perl
+ endif
+@@ -52,7 +48,7 @@ make_parameters_SOURCES = make_parameters.c
+ nodist_make_parameters_SOURCES = ../src/getdata.h ../src/gd_config.h
+ 
+ SUBDIRS = . ${F77_SUBDIR} ${CXX_SUBDIR} ${IDL_SUBDIR} ${MATLAB_SUBDIR} \
+-					${PY_SUBDIR} ${PERL_SUBDIR}
++					${PERL_SUBDIR}
+ 
+ make_parameters$(EXEEXT): $(make_parameters_SOURCES) \
+ 				    $(nodist_make_parameters_SOURCES)
+diff --git a/bindings/python/test/Makefile.am b/bindings/python/test/Makefile.am
+index d159cad..b793b02 100644
+--- a/bindings/python/test/Makefile.am
++++ b/bindings/python/test/Makefile.am
+@@ -18,8 +18,7 @@
+ # along with GetData; if not, write to the Free Software Foundation, Inc.,
+ # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ #
+-AUTOMAKE_OPTIONS = foreign
+-
++AUTOMAKE_OPTIONS = foreign serial-tests
+ if TEST_PYTHON
+ TESTS_ENVIRONMENT=${DL_LIBRARY_PATH}=${${DL_LIBRARY_PATH}}:../../../src/.libs PYTHONPATH=../.libs/ ${PYTHON}
+ pyTESTS=callback.py big_test.py

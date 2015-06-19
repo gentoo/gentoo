@@ -1,0 +1,105 @@
+# ChangeLog for dev-libs/pslib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/pslib/ChangeLog,v 1.26 2015/06/09 14:48:36 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pslib-0.4.1-r2.ebuild,
+  pslib-0.4.5.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  27 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org> pslib-0.4.5.ebuild:
+  Keyword amd64-linux and x86-linux
+
+  03 Jun 2013; Patrick Lauer <patrick@gentoo.org> pslib-0.4.5.ebuild:
+  Fix for underlinking bug #436314
+
+*pslib-0.4.5 (10 Sep 2012)
+
+  10 Sep 2012; Tomáš Chvátal <scarabeus@gentoo.org> +pslib-0.4.5.ebuild:
+  Version bump to latest.
+
+  26 May 2012; Andreas K. Huettel <dilfridge@gentoo.org> pslib-0.4.1-r2.ebuild:
+  Remove de localization if not wanted, bug 408875
+
+  25 Feb 2011; Kevin McCarthy <signals@gentoo.org> pslib-0.4.1-r2.ebuild:
+  Update depends from media-libs/jpeg to virtual/jpeg
+
+  08 Jan 2011; Brent Baude <ranger@gentoo.org> pslib-0.4.1-r2.ebuild:
+  Marking pslib-0.4.1-r2 ppc for bug 349659
+
+  25 May 2010; Pacho Ramos <pacho@gentoo.org> pslib-0.4.1-r2.ebuild:
+  stable amd64, bug 320049
+
+*pslib-0.4.1-r2 (16 May 2010)
+
+  16 May 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +pslib-0.4.1-r2.ebuild:
+  Fix implicit declaration of function png_set_gray_1_2_4_to_8 with
+  libpng14.
+
+  21 Nov 2009; Markus Meier <maekke@gentoo.org> pslib-0.4.1-r1.ebuild:
+  amd64 stable, bug #289340
+
+  03 Aug 2009; Alexis Ballier <aballier@gentoo.org> pslib-0.4.1-r1.ebuild,
+  +files/pslib-getline.patch:
+  Add patch to build with glibc 2.10, by Viktor S <bugzilla@marinmo.org>,
+  bug #277425
+
+  28 Feb 2009; Alexis Ballier <aballier@gentoo.org> pslib-0.4.1-r1.ebuild:
+  build depend on glib and intltool for bug #258273
+
+*pslib-0.4.1-r1 (08 Feb 2009)
+
+  08 Feb 2009; Alexis Ballier <aballier@gentoo.org> +files/pslib-lm.patch,
+  +pslib-0.4.1-r1.ebuild:
+  Fix forced as-needed by linking to libm by Kevin Pyle, bug #249359
+
+*pslib-0.4.1 (19 Jan 2008)
+
+  19 Jan 2008; Alexis Ballier <aballier@gentoo.org> +pslib-0.4.1.ebuild:
+  version bump, thanks to Ernst Herzberg <earny@net4u.de> for the notice, bug
+  #206534
+
+  13 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  09 Nov 2006; Sven Wegener <swegener@gentoo.org> pslib-0.2.4.ebuild,
+  pslib-0.2.6.ebuild:
+  Properly set *DEPEND.
+
+  19 Nov 2005; Markus Rothe <corsair@gentoo.org> pslib-0.2.4.ebuild,
+  pslib-0.2.6.ebuild:
+  Added ~ppc64 keyword; bug #102649
+
+  16 Sep 2005; Luis Medinas <metalgod@gentoo.org> pslib-0.2.6.ebuild:
+  Added a missing dependency. Fixes bug #105467.
+
+  14 Sep 2005; Joseph Jezak <josejx@gentoo.org> pslib-0.2.4.ebuild,
+  pslib-0.2.6.ebuild:
+  Marked ~ppc for bug #105673.
+
+  20 Aug 2005; Jason Wever <weeve@gentoo.org> pslib-0.2.6.ebuild:
+  Added ~sparc keyword.
+
+  16 Aug 2005; Luis Medinas <metalgod@gentoo.org> pslib-0.2.4.ebuild:
+  Marked Stable on AMD64. Fix Headers.
+
+*pslib-0.2.6 (16 Aug 2005)
+
+  16 Aug 2005; Luis Medinas <metalgod@gentoo.org> +pslib-0.2.6.ebuild:
+  Version Bump. Fix Headers
+
+  12 Nov 2004; Simon Stelling <blubb@gentoo.org> pslib-0.2.4.ebuild:
+  added ~amd64
+
+*pslib-0.2.4 (01 Nov 2004)
+
+  01 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +pslib-0.2.4.ebuild:
+  Initial import. Ebuild submitted by Panard <panard@inzenet.org>,
+  closing bug #56527.

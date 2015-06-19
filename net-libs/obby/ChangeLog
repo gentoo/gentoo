@@ -1,0 +1,177 @@
+# ChangeLog for net-libs/obby
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/obby/ChangeLog,v 1.42 2015/03/29 04:11:38 mrueg Exp $
+
+  29 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -obby-0.4.6-r1.ebuild:
+  Remove old.
+
+  08 Feb 2015; Michał Górny <mgorny@gentoo.org> obby-0.4.8.ebuild:
+  Depend on avahi[dbus] for libavahi-client, bug #473740 by Michael Mair-
+  Keimberger.
+
+  22 Jun 2014; Markus Meier <maekke@gentoo.org> obby-0.4.8.ebuild:
+  add ~arm, bug #511566
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> obby-0.4.8.ebuild:
+  x86 stable wrt bug #404827
+
+  23 Feb 2012; Brent Baude <ranger@gentoo.org> obby-0.4.8.ebuild:
+  Marking obby-0.4.8 ppc for bug 404827
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> obby-0.4.8.ebuild:
+  Stable for amd64, wrt bug #404827
+
+  21 Feb 2012; Kacper Kowalik <xarthisius@gentoo.org> obby-0.4.8.ebuild:
+  Introduce static-libs use flag, remove unneeded .la files
+
+*obby-0.4.8 (06 Nov 2011)
+
+  06 Nov 2011; Kacper Kowalik <xarthisius@gentoo.org> -obby-0.4.7.ebuild,
+  +obby-0.4.8.ebuild:
+  Version bump, drop old
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org> obby-0.4.6-r1.ebuild,
+  obby-0.4.7.ebuild:
+  Drop HPPA keywording (bug #324511).
+
+  13 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org> metadata.xml:
+  Add dev-zero and myself as maintainers
+
+  22 May 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove humpback from metadata.xml (#34793)
+
+  28 Oct 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  humpback is AWOL (#34793). Adding maintainer-needed
+
+  02 Jul 2009; Jeroen Roovers <jer@gentoo.org> obby-0.4.6-r1.ebuild:
+  Stable for HPPA too.
+
+*obby-0.4.7 (08 Apr 2009)
+
+  08 Apr 2009; Tiziano Müller <dev-zero@gentoo.org> -obby-0.4.4.ebuild,
+  -obby-0.4.5.ebuild, +obby-0.4.7.ebuild:
+  Version bump. Dropped old.
+
+  08 Mar 2009; Markus Meier <maekke@gentoo.org> obby-0.4.6-r1.ebuild:
+  amd64/x86 stable, bug #225519
+
+  07 Mar 2009; Joseph Jezak <josejx@gentoo.org> obby-0.4.6-r1.ebuild:
+  Marked ppc stable for bug #225519.
+
+*obby-0.4.6-r1 (07 Nov 2008)
+
+  07 Nov 2008; Gustavo Felisberto <humpback@gentoo.org> -obby-0.4.6.ebuild,
+  +obby-0.4.6-r1.ebuild:
+  Added nls use flag. Credit goes to Daniel Pielmeier in bug #243442.
+
+*obby-0.4.6 (07 Nov 2008)
+
+  07 Nov 2008; Gustavo Felisberto <humpback@gentoo.org> +obby-0.4.6.ebuild:
+  Bump.
+
+*obby-0.4.5 (27 Jul 2008)
+
+  27 Jul 2008; Peter Alfredsen <loki_val@gentoo.org> +obby-0.4.5.ebuild:
+  Bump wrt bug #222845
+
+  19 May 2008; Jeroen Roovers <jer@gentoo.org> obby-0.4.4.ebuild:
+  Marked ~hppa.
+
+  05 Nov 2007; Gustavo Felisberto <humpback@gentoo.org>
+  -files/dual_subscribe.patch, -obby-0.3.0-r1.ebuild:
+  Removing older version that is blocking bug #183776
+
+  04 Nov 2007; Lars Weiler <pylon@gentoo.org> obby-0.4.4.ebuild:
+  stable ppc, bug #197438
+
+  18 Oct 2007; Christoph Mende <angelos@gentoo.org> obby-0.4.4.ebuild:
+  Stable on amd64 wrt bug #196034
+
+  16 Oct 2007; Dawid Węgliński <cla@gentoo.org> obby-0.4.4.ebuild:
+  Stable on x86 (bug #196034)
+
+*obby-0.4.4 (18 Aug 2007)
+
+  18 Aug 2007; Tiziano Müller <dev-zero@gentoo.org> -obby-0.4.1.ebuild,
+  +obby-0.4.4.ebuild:
+  Version bump (bug #171089), dropped old versions.
+
+  28 Oct 2006; Matti Bickel <mabi@gentoo.org> obby-0.3.0-r1.ebuild:
+  Stable on ppc (bug #115113)
+
+*obby-0.4.1 (29 Aug 2006)
+
+  29 Aug 2006; Gustavo Felisberto <humpback@gentoo.org>; -obby-0.2.0.ebuild,
+  -obby-0.2.1.ebuild, -obby-0.3.0.ebuild, -obby-0.4.0_rc4.ebuild,
+  +obby-0.4.1.ebuild:
+  Removed old version and added new version that will be announced tomorow.
+
+*obby-0.4.0_rc4 (29 Aug 2006)
+
+  29 Aug 2006; Gustavo Felisberto <humpback@gentoo.org>;
+  -obby-0.4.0_rc2.ebuild, +obby-0.4.0_rc4.ebuild:
+  Bumped to rc4 that will be used by gobby-0.4.0rc4
+
+*obby-0.4.0_rc2 (12 Jun 2006)
+
+  12 Jun 2006; Gustavo Felisberto <humpback@gentoo.org>;
+  +obby-0.4.0_rc2.ebuild:
+  Added masked 0.4.0_rc2 that is needed by gobby 0.4.0_rc2. This packge will
+  not unmasked and should only be used by people wanting to help upstream
+  developers.
+
+*obby-0.3.0-r1 (12 Mar 2006)
+
+  12 Mar 2006; Gustavo Felisberto <humpback@gentoo.org>;
+  +files/dual_subscribe.patch, +obby-0.3.0-r1.ebuild:
+  Added masked version with a very ugly patch to the dual subscribe problem.
+  If you use it and have problems please report to me.
+
+  23 Jan 2006; Simon Stelling <blubb@gentoo.org> obby-0.3.0.ebuild:
+  stable on amd64
+
+  22 Jan 2006; Joshua Jackson <tsunam@gentoo.org> obby-0.3.0.ebuild:
+  Stable on x86 for bug #115113
+
+*obby-0.3.0 (09 Dec 2005)
+
+  09 Dec 2005; Gustavo Felisberto <humpback@gentoo.org>;
+  -obby-0.3.0_rc3.ebuild, +obby-0.3.0.ebuild:
+  Version bump and removed the rc version. This marks the release of gobby 0.3.0.
+
+*obby-0.3.0_rc3 (25 Nov 2005)
+
+  25 Nov 2005; Gustavo Felisberto <humpback@gentoo.org>;
+  -obby-0.3.0_rc1.ebuild, +obby-0.3.0_rc3.ebuild:
+  Another bump in the road to obby/gobby 0.3.0
+
+*obby-0.3.0_rc1 (16 Nov 2005)
+
+  16 Nov 2005; Gustavo Felisberto <humpback@gentoo.org>;
+  +obby-0.3.0_rc1.ebuild:
+  Bump to version 0.3.0_rc1. Arch teams please do not mark stable, I'll open a
+  bug when i think it is ready.
+
+*obby-0.2.1 (17 Sep 2005)
+
+  17 Sep 2005; Gustavo Felisberto <humpback@gentoo.org>; -obby-0.1.0.ebuild,
+  obby-0.2.0.ebuild, +obby-0.2.1.ebuild:
+  Removed older version. Bump 0.2.0 to stable on x86 and amd64 and added new
+  0.2.1
+
+*obby-0.2.0 (14 Aug 2005)
+
+  14 Aug 2005; Gustavo Felisberto <humpback@gentoo.org>; +obby-0.2.0.ebuild:
+  Version bump.
+
+  15 Jul 2005; Gustavo Felisberto <humpback@gentoo.org>; obby-0.1.0.ebuild:
+  Keywording ~amd64
+
+  12 Jun 2005; David Holm <dholm@gentoo.org> obby-0.1.0.ebuild:
+  Added to ~ppc.
+
+*obby-0.1.0 (11 Jun 2005)
+
+  11 Jun 2005; Gustavo Felisberto <humpback@gentoo.org>; +metadata.xml,
+  +obby-0.1.0.ebuild:
+  Initial import. Ebuild done by upstream developers. Dep for gobby.

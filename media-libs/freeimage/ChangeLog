@@ -1,0 +1,152 @@
+# ChangeLog for media-libs/freeimage
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/freeimage/ChangeLog,v 1.35 2015/04/02 16:51:03 aballier Exp $
+
+  02 Apr 2015; Alexis Ballier <aballier@gentoo.org> freeimage-3.15.4.ebuild:
+  keyword ~arm
+
+  28 Aug 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/freeimage-3.15.3-r1-unbundling.patch,
+  -files/freeimage-3.15.3-r2-unbundling.patch,
+  -files/freeimage-3.15.3-unbundling.patch, -freeimage-3.15.3-r2.ebuild,
+  -freeimage-3.15.3.ebuild:
+  old
+
+  09 Aug 2014; Andreas Schuerch <nativemad@gentoo.org> freeimage-3.15.4.ebuild:
+  x86 stable, see bug 479136
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> freeimage-3.15.4.ebuild:
+  amd64 stable, bug #479136
+
+  08 Sep 2013; Mark Wright <gienah@gentoo.org>
+  -files/freeimage-3.15.4-libjpeg-turbo.patch.gz, freeimage-3.15.4.ebuild:
+  Thanks to radhermit for advising I need to move the patch to dev.gentoo.org/~
+
+  08 Sep 2013; Mark Wright <gienah@gentoo.org>
+  files/freeimage-3.15.4-libjpeg-turbo.patch.gz, freeimage-3.15.4.ebuild:
+  The fix for libjpeg-turbo is only applied when libjpeg-turbo is installed.
+
+  08 Sep 2013; Mark Wright <gienah@gentoo.org>
+  +files/freeimage-3.15.4-libjpeg-turbo.patch.gz, freeimage-3.15.4.ebuild:
+  Thanks to Christian Heimes for porting freeimage to use libjpeg-turbo,
+  freeimage-3.15.4-libjpeg-turbo.patch.gz is from Christian's fork at
+  https://bitbucket.org/tiran/freeimageturbo. Fixes bug 479476. Thanks to
+  Aleksander for reporting, Samuli Suominen, SpanKY for comments on how it
+  should be fixed.
+
+  13 Jun 2013; Michael Weber <xmw@gentoo.org> freeimage-3.15.3-r2.ebuild,
+  freeimage-3.15.3.ebuild, freeimage-3.15.4.ebuild:
+  Depend on SLOT=0 of media-libs/openjpeg (bug 440086)
+
+  28 May 2013; Julian Ospald <hasufell@gentoo.org> freeimage-3.15.4.ebuild,
+  +files/freeimage-3.15.4-raw.patch:
+  fix building with raw useflag enabled wrt #458516
+
+  21 Mar 2013; Sébastien Fabbro <bicatali@gentoo.org> freeimage-3.15.4.ebuild:
+  Keyword amd64-linux and x86-linux
+
+*freeimage-3.15.4 (19 Feb 2013)
+
+  19 Feb 2013; Mike Frysinger <vapier@gentoo.org>
+  +files/freeimage-3.15.4-unbundling.patch, +freeimage-3.15.4.ebuild:
+  Version bump.
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> freeimage-3.15.3-r2.ebuild:
+  Stable for x86, wrt bug #457120
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> freeimage-3.15.3-r2.ebuild:
+  Stable for amd64, wrt bug #457120
+
+  22 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -freeimage-3.15.3-r1.ebuild:
+  old
+
+*freeimage-3.15.3-r2 (10 Jan 2013)
+
+  10 Jan 2013; Mike Frysinger <vapier@gentoo.org>
+  +files/freeimage-3.15.3-r2-unbundling.patch, +freeimage-3.15.3-r2.ebuild:
+  Make all the graphics libs optional via USE flags.
+
+*freeimage-3.15.3-r1 (09 Jan 2013)
+
+  09 Jan 2013; Mike Frysinger <vapier@gentoo.org>
+  +files/freeimage-3.15.3-r1-unbundling.patch, +freeimage-3.15.3-r1.ebuild:
+  Update to EAPI=4.  Add IUSE=static-libs support.  Respect $PKG_CONFIG.  Use
+  $CXX to link rather than $CC -lstdc++ since that does not work for everything.
+  Respect $CXXFLAGS when linking.
+
+  24 Jul 2012; Tupone Alfredo <tupone@gentoo.org> freeimage-3.15.3.ebuild:
+  Add depend on pkgconfig. Bug #427676 by Julian Ospald
+
+  08 Jun 2012; Zac Medico <zmedico@gentoo.org> freeimage-3.15.3.ebuild:
+  inherit multilib for get_libdir
+
+  22 Apr 2012; Markus Meier <maekke@gentoo.org> freeimage-3.15.3.ebuild:
+  x86 stable, bug #412673
+
+  21 Apr 2012; Agostino Sarubbo <ago@gentoo.org> freeimage-3.15.3.ebuild:
+  Stable for amd64, wrt bug #412673
+
+  13 Apr 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/freeimage-3.15.2-unbundling.patch, -freeimage-3.15.1.ebuild,
+  -freeimage-3.15.2.ebuild:
+  old
+
+*freeimage-3.15.3 (18 Mar 2012)
+
+  18 Mar 2012; Tupone Alfredo <tupone@gentoo.org> +freeimage-3.15.3.ebuild,
+  +files/freeimage-3.15.3-unbundling.patch:
+  Version bump to 3.15.3
+
+*freeimage-3.15.2 (06 Mar 2012)
+
+  06 Mar 2012; Tupone Alfredo <tupone@gentoo.org> +freeimage-3.15.2.ebuild,
+  +files/freeimage-3.15.2-unbundling.patch:
+  Version bump to 3.15.2
+
+*freeimage-3.15.1 (12 Feb 2012)
+
+  12 Feb 2012; Tupone Alfredo <tupone@gentoo.org> +freeimage-3.15.1.ebuild,
+  +metadata.xml:
+  Reviving package with version 3.15.1
+
+  24 May 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  freeimage-3.11.0.ebuild:
+  Use append-cflags from flag-o-matic
+
+  12 May 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  freeimage-3.11.0.ebuild:
+  EAPI=2; Skip calling ldconfig during install (bug #269493); silence gcc warnings
+
+  02 Apr 2009; Tristan Heaven <nyhm@gentoo.org> freeimage-3.11.0.ebuild:
+  Build with -fPIC, bug #252766
+
+  01 Apr 2009; Joseph Jezak <josejx@gentoo.org> freeimage-3.11.0.ebuild:
+  Marked ppc stable for bug #252766.
+
+  25 Nov 2008; Tristan Heaven <nyhm@gentoo.org> freeimage-3.11.0.ebuild:
+  Add cxx USE flag, bug #242888
+
+*freeimage-3.11.0 (02 Sep 2008)
+
+  02 Sep 2008; Tristan Heaven <nyhm@gentoo.org> +freeimage-3.11.0.ebuild:
+  Version bump, bug #213969
+
+  04 May 2007; Matti Bickel <mabi@gentoo.org> freeimage-3.9.3-r1.ebuild:
+  keyworded ~ppc (bug #174055)
+
+*freeimage-3.9.3-r1 (22 Apr 2007)
+
+  22 Apr 2007; Tristan Heaven <nyhm@gentoo.org>
+  +files/freeimage-3.9.3-sys-headers.patch, +freeimage-3.9.3-r1.ebuild:
+  Fix jpeg image loading, bug #175467
+
+  10 Apr 2007; Peter Weller <welp@gentoo.org> freeimage-3.9.3.ebuild:
+  Keyworded amd64 wrt bug 174055
+
+*freeimage-3.9.3 (31 Mar 2007)
+
+  31 Mar 2007; Tristan Heaven <nyhm@gentoo.org>
+  +files/freeimage-3.9.3-build.patch, +metadata.xml,
+  +freeimage-3.9.3.ebuild:
+  Initial commit, bug #165938

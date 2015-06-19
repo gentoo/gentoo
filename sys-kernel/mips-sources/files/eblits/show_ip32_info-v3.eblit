@@ -1,0 +1,42 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/mips-sources/files/eblits/show_ip32_info-v3.eblit,v 1.1 2011/09/04 11:18:13 kumba Exp $
+
+# Eblit with information/warnings for IP32 (O2) users.
+#
+# If you need to add whitespace for formatting in 'einfo', 'ewarn', or 'eerror', use
+# \040 for a space instead of the standard space.  These functions will strip
+# redundant white space.
+
+show_ip32_info() {
+	echo -e ""
+	einfo "IP32 systems function well, however there are some notes:"
+	einfo "\t- A sound driver now exists for IP32.  Celebrate!"
+	einfo "\t- Framebuffer console is limited to 4MB.  Anything greater"
+	einfo "\t\040\040specified when building the kernel will likely oops"
+	einfo "\t\040\040or panic the kernel."
+	einfo "\t- A new RTC driver is included that uses the RTC class"
+	einfo "\t\040\040framework to interface with the O2's Dallas/Maxim 1687-5"
+	einfo "\t\040\040RTC chip.  Please report any bugs to the MIPS Team."
+	einfo "\t- X support is limited to the generic fbdev driver.  No X"
+	einfo "\t\040\040gbefb driver exists for O2 yet.  Feel free to submit"
+	einfo "\t\040\040patches!"
+	echo -e ""
+
+	if use ip32r10k; then
+		eerror "The R10K patch for IP32 is now updated and will apply to 3.0.x kernels."
+		eerror "When it did apply and booted, it was flaky at best, and didn't stay online"
+		eerror "for long before locking up.  Don't attempt to play with this unless you"
+		eerror "are seriously interested in kernel hacking."
+		echo -e ""
+		eerror "We're interesting in finding anyone with knowledge of the R10000"
+		eerror "workaround for speculative execution listed in the R10000 Processor"
+		eerror "manual, or those who are familiar with the IP32 chipset and the feature"
+		eerror "called \"Juice\"."
+		echo -e ""
+	fi
+
+	einfo "To Build 64bit kernels for SGI O2 (IP32) or SGI Indy/Indigo2 R4x00 (IP22)"
+	einfo "systems, you need to use the ${GOOD}vmlinux.32${NORMAL} make target."
+	einfo "Once done, boot the ${GOOD}vmlinux.32${NORMAL} file (NOT vmlinux)."
+}

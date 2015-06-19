@@ -1,0 +1,13 @@
+[Unit]
+Description=Software RAID monitoring and management
+ConditionPathExists=/etc/mdadm.conf
+
+[Service]
+Type=forking
+PIDFile=/run/mdadm/mdadm.pid
+EnvironmentFile=/etc/conf.d/mdadm
+ExecStart=/sbin/mdadm --monitor --scan -f --pid-file=/run/mdadm/mdadm.pid $MDADM_OPTS
+
+[Install]
+WantedBy=multi-user.target
+

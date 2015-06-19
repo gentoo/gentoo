@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>cjk</herd>
+  <longdescription>
+    Japanese translation of portage/gentoolkit man pages are contributed by
+    Gentoo Linux User Group Japan and maintained by that mailing list
+    (gentoojp-docs@ml.gentoo.gr.jp). All questions and comments should be
+    posted to that list with regard to man pages translation for
+    portage/gentoolkit.
+  </longdescription>
+</pkgmetadata>

@@ -1,0 +1,75 @@
+# ChangeLog for sys-apps/raidutils
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/raidutils/ChangeLog,v 1.17 2014/08/10 20:24:47 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> raidutils-0.0.6-r2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  21 Jan 2014; Chris Reffett <creffett@gentoo.org> raidutils-0.0.6-r2.ebuild:
+  EAPI bump
+
+  31 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  raidutils-0.0.6-r2.ebuild:
+  Stable on amd64 wrt bug #328983
+
+  20 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  raidutils-0.0.6-r2.ebuild:
+  stable x86, bug 328983
+
+*raidutils-0.0.6-r2 (06 Jun 2010)
+
+  06 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +raidutils-0.0.6-r2.ebuild, +files/raidutils-0.0.6-gcc45.patch:
+  Import Fedora patchset. Fix building with _FORTIFY_SOURCE=2 wrt #274308.
+  Fix building with GCC 4.5+.
+
+  02 Jun 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove xmerlin from metadata.xml (#69210)
+
+  22 Jan 2010; Ulrich Mueller <ulm@gentoo.org> raidutils-0.0.6-r1.ebuild:
+  Fix LICENSE, bug 301123.
+
+  13 Jan 2008; Christian Zoffoli <xmerlin@gentoo.org>
+  raidutils-0.0.6-r1.ebuild:
+  Removed old header, fixed compilation.
+
+*raidutils-0.0.6-r1 (28 Feb 2007)
+
+  28 Feb 2007; Christian Zoffoli <xmerlin@gentoo.org>
+  -files/raidutils-0.0.5-i2octl-fixpath.patch,
+  -files/raidutils-0.0.6-gcc41x-compilefix.patch,
+  +files/raidutils-0.0.6-misc-fixes.patch, -raidutils-0.0.5.ebuild,
+  -raidutils-0.0.6.ebuild, +raidutils-0.0.6-r1.ebuild:
+  Ebuild cleanup, fixed compilation.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  16 Sep 2006; Christian Zoffoli <xmerlin@gentoo.org>
+  +files/raidutils-0.0.6-gcc41x-compilefix.patch, raidutils-0.0.6.ebuild:
+  Fixed bug #146105.
+
+  01 Jun 2005; Christian Zoffoli <xmerlin@gentoo.org> raidutils-0.0.5.ebuild,
+  raidutils-0.0.6.ebuild:
+  fixed bug #89550.
+
+  20 Apr 2005; Christian Zoffoli <xmerlin@gentoo.org> raidutils-0.0.6.ebuild:
+  Stable x86.
+
+*raidutils-0.0.6 (26 Feb 2005)
+
+  26 Feb 2005; Christian Zoffoli <xmerlin@gentoo.org> raidutils-0.0.5.ebuild,
+  +raidutils-0.0.6.ebuild:
+  raidutils-0.0.6 added to portage
+
+  26 Feb 2005; Christian Zoffoli <xmerlin@gentoo.org> raidutils-0.0.5.ebuild:
+  raidutils-0.0.5 marked stable on x86
+
+  12 Jan 2005; John Mylchreest <johnm@gentoo.org> raidutils-0.0.5.ebuild:
+  fixing linux-headers DEPEND for 2005.0. can we get away with a virtual?
+
+*raidutils-0.0.5 (10 Jan 2005)
+
+  10 Jan 2005; Christian Zoffoli <xmerlin@gentoo.org> +metadata.xml,
+  +raidutils-0.0.5.ebuild, raidutils-0.0.5-i2octl-fixpath.patch:
+  added to portage, fixed i2octl path /dev/i2o/ctl -> /dev/i2octl

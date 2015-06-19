@@ -1,0 +1,34 @@
+--- alevt-1.6.2/Makefile.orig	2007-12-03 06:19:54.000000000 +0100
++++ alevt-1.6.2/Makefile	2009-05-14 10:17:39.000000000 +0200
+@@ -1,5 +1,4 @@
+ VER=1.6.2
+-OPT=-O2 -s -w
+ #OPT=-O -g
+ DEFS=-DWITH_PNG
+ FONT=vtxt
+@@ -11,7 +10,7 @@
+ # a smaller and thinner font
+ #FONT=neep9
+ 
+-CFLAGS=$(OPT) -DVERSION=\"$(VER)\" $(DEFS) -I$(USR_X11R6)/include
++CFLAGS += -DVERSION=\"$(VER)\" $(DEFS) -I$(USR_X11R6)/include
+ 
+ EXPOBJS=export.o exp-txt.o exp-html.o exp-gfx.o font.o
+ OBJS=main.o ui.o xio.o fdset.o vbi.o cache.o help.o edline.o search.o edit.o misc.o hamm.o lang.o $(EXPOBJS)
+@@ -25,13 +24,13 @@
+ all: alevt alevt-date alevt-cap alevt.1x alevt-date.1 alevt-cap.1
+ 
+ alevt: $(OBJS)
+-	$(CC) $(OPT) $(OBJS) -o alevt -L$(USR_X11R6)/lib -L$(USR_X11R6)/lib64 -lX11 $(EXPLIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o alevt -L$(USR_X11R6)/lib -L$(USR_X11R6)/lib64 -lX11 $(EXPLIBS)
+ 
+ alevt-date: $(TOBJS)
+-	$(CC) $(OPT) $(TOBJS) -o alevt-date
++	$(CC) $(CFLAGS) $(LDFLAGS) $(TOBJS) -o alevt-date
+ 
+ alevt-cap: $(COBJS)
+-	$(CC) $(OPT) $(COBJS) -o alevt-cap $(EXPLIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(COBJS) -o alevt-cap $(EXPLIBS)
+ 
+ font.o: font1.xbm font2.xbm
+ fontsize.h: font1.xbm font2.xbm

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>maintainer-needed@gentoo.org</email>
+		<name>Default assignee for orphaned packages</name>
+	</maintainer>
+	<longdescription lang="en">
+		Regina is a Rexx interpreter. Rexx is a programming language that was
+		designed to be easy to use for inexperienced programmers yet powerful
+		enough for experienced users. It is also a language ideally suited as a
+		macro language for other applications.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">regina-rexx</remote-id>
+		<bugs-to>http://sourceforge.net/tracker/?group_id=28102</bugs-to>
+	</upstream>
+</pkgmetadata>

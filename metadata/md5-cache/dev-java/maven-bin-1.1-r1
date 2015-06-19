@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DEPEND=>=virtual/jdk-1.5
+DESCRIPTION=Project Management and Comprehension Tool for Java
+HOMEPAGE=http://maven.apache.org/
+KEYWORDS=amd64 ppc x86
+LICENSE=Apache-2.0
+RDEPEND=>=virtual/jdk-1.5
+SLOT=1.1
+SRC_URI=mirror://apache/maven/maven-1/1.1/binaries/maven-1.1.tar.gz
+_md5_=d1fbd75383d19a117f54fc529f7b68ff

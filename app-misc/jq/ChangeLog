@@ -1,0 +1,69 @@
+# ChangeLog for app-misc/jq
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/jq/ChangeLog,v 1.16 2015/04/07 04:10:41 vapier Exp $
+
+*jq-1.4-r1 (07 Apr 2015)
+
+  07 Apr 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/jq-1.4-dynamic-link.patch, +jq-1.4-r1.ebuild:
+  Add USE=static-libs and fix linking of jq against the dynamic lib; fixes from
+  Chromium OS.
+
+  11 Dec 2014; Tim Harder <radhermit@gentoo.org> -jq-1.3.ebuild,
+  -files/jq-1.3-automake-1.14.patch:
+  Remove old.
+
+  11 Dec 2014; Tim Harder <radhermit@gentoo.org> jq-1.4.ebuild:
+  Stabilize for amd64 and x86.
+
+*jq-1.4 (11 Jul 2014)
+
+  11 Jul 2014; Patrick McLean <chutzpah@gentoo.org> +jq-1.4.ebuild:
+  Version bump (bug #516018).
+
+  10 Dec 2013; Tim Harder <radhermit@gentoo.org> -jq-1.2.ebuild,
+  -files/jq-1.2-makefile.patch:
+  Remove old.
+
+  10 Dec 2013; Tim Harder <radhermit@gentoo.org> jq-1.3.ebuild,
+  +files/jq-1.3-automake-1.14.patch:
+  Fix build with automake-1.14 (bug #493804).
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> jq-1.3.ebuild:
+  Stable for x86, wrt bug #474936
+
+  28 Jun 2013; Agostino Sarubbo <ago@gentoo.org> jq-1.3.ebuild:
+  Stable for amd64, wrt bug #474936
+
+  27 May 2013; Tim Harder <radhermit@gentoo.org> jq-1.3.ebuild:
+  Don't try to rebuild docs (bug #471370).
+
+*jq-1.3 (23 May 2013)
+
+  23 May 2013; Tim Harder <radhermit@gentoo.org> +jq-1.3.ebuild:
+  Version bump.
+
+  01 May 2013; Tim Harder <radhermit@gentoo.org> -jq-1.1.ebuild,
+  -files/jq-1.1-makefile.patch:
+  Remove old.
+
+  01 May 2013; Agostino Sarubbo <ago@gentoo.org> jq-1.2.ebuild:
+  Stable for x86, wrt bug #468074
+
+  01 May 2013; Agostino Sarubbo <ago@gentoo.org> jq-1.2.ebuild:
+  Stable for amd64, wrt bug #468074
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> jq-1.1.ebuild, jq-1.2.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+*jq-1.2 (04 Jan 2013)
+
+  04 Jan 2013; Tim Harder <radhermit@gentoo.org> +jq-1.2.ebuild,
+  +files/jq-1.2-makefile.patch:
+  Version bump.
+
+*jq-1.1 (23 Oct 2012)
+
+  23 Oct 2012; Tim Harder <radhermit@gentoo.org> +jq-1.1.ebuild,
+  +files/jq-1.1-makefile.patch, +metadata.xml:
+  Initial import, ebuild by me.

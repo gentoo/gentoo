@@ -1,0 +1,25 @@
+Using tt_srpt->title[].nr_of_ptts from the VMG IFO as a reference to the
+chapter count is often wrong, and noted as such in the source code.  Use
+the program chain instead.
+
+--- lsdvd-0.16/lsdvd.c.orig	2014-08-22 21:47:06.009490680 -0600
++++ lsdvd-0.16/lsdvd.c	2014-08-22 21:47:30.947257942 -0600
+@@ -347,6 +347,7 @@
+ 		}
+ 
+ 		dvd_info.titles[j].chapter_count_reported = ifo_zero->tt_srpt->title[j].nr_of_ptts;
++		dvd_info.titles[j].chapter_count = pgc->nr_of_programs;
+ 		dvd_info.titles[j].cell_count = pgc->nr_of_cells;
+ 		dvd_info.titles[j].audiostream_count = vtsi_mat->nr_of_vts_audio_streams;
+ 		dvd_info.titles[j].subtitle_count = vtsi_mat->nr_of_vts_subp_streams;  
+--- lsdvd-0.16/ohuman.c.orig	2014-08-22 21:47:00.993538145 -0600
++++ lsdvd-0.16/ohuman.c	2014-08-22 21:47:45.533121749 -0600
+@@ -20,7 +20,7 @@
+ //				(int)(dvd_info->titles[j].general.length / 60) % 60,
+ //				(float)((int)(dvd_info->titles[j].general.length * 1000) % 6000) / 1000); //,
+ //				dvd_info->titles[j].general.length);
+-		printf("Chapters: %02d, Cells: %02d, ", dvd_info->titles[j].chapter_count_reported, dvd_info->titles[j].cell_count);
++		printf("Chapters: %02d, Cells: %02d, ", dvd_info->titles[j].chapter_count, dvd_info->titles[j].cell_count);
+ 		printf("Audio streams: %02d, Subpictures: %02d", dvd_info->titles[j].audiostream_count, dvd_info->titles[j].subtitle_count);
+ 		printf("\n"); 
+ 		

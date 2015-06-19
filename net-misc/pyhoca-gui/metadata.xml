@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>nx</herd>
+	<longdescription>
+PyHoca-GUI is a client implementation for X2Go using the project's Python X2Go client API (a Python module). PyHoca-GUI uses wxPython for rendering graphical desktop elements (menus, dialog boxes etc.).
+
+PyHoca-GUI is designed as a very minimal GUI that behaves very similar to GNOME's network manager applet (nm-applet). It appears as a small Phoca icon (a little seal) that docks to your systray panel (also called notification area) and allows you to manage multiple X2go sessions simultaneously.
+	</longdescription>
+</pkgmetadata>

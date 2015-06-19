@@ -1,0 +1,15 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/salt/files/api-initd-4,v 1.1 2015/05/06 22:27:59 chutzpah Exp $
+
+command="/usr/bin/salt-api"
+command_args="${SALT_OPTS}"
+command_background="1"
+pidfile="/var/run/salt-api.pid"
+name="SALT API daemon"
+retry="20"
+
+depend() {
+	use net logger
+}

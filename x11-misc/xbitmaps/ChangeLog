@@ -1,0 +1,169 @@
+# ChangeLog for x11-misc/xbitmaps
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xbitmaps/ChangeLog,v 1.48 2015/03/03 12:11:36 dlan Exp $
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> xbitmaps-1.1.1.ebuild:
+  add arm64 support, tested on A53 board
+
+  21 Oct 2013; Fabian Groffen <grobian@gentoo.org> xbitmaps-1.1.1.ebuild:
+  Marked ~x64-macos, bug #486818
+
+  21 Feb 2013; Zac Medico <zmedico@gentoo.org> xbitmaps-1.1.1.ebuild:
+  Add ~arm-linux keyword.
+
+  06 May 2012; Alexis Ballier <aballier@gentoo.org> xbitmaps-1.1.1.ebuild:
+  keyword ~amd64-fbsd
+
+  05 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> xbitmaps-1.1.1.ebuild:
+  ppc64 stable wrt #354237
+
+  05 Mar 2011; Raúl Porcel <armin76@gentoo.org> xbitmaps-1.1.1.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #354237
+
+  28 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org> xbitmaps-1.1.1.ebuild:
+  Fix to work with new eclass module parsing.
+
+  23 Feb 2011; Jeroen Roovers <jer@gentoo.org> xbitmaps-1.1.1.ebuild:
+  Stable for HPPA (bug #354237).
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> xbitmaps-1.1.1.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Christian Faulhammer <fauli@gentoo.org>
+  xbitmaps-1.1.1.ebuild:
+  stable x86, bug 354237
+
+  12 Feb 2011; Markos Chandras <hwoarang@gentoo.org> xbitmaps-1.1.1.ebuild:
+  Stable on amd64 wrt bug #354237
+
+*xbitmaps-1.1.1 (10 Dec 2010)
+
+  10 Dec 2010; Tomáš Chvátal <scarabeus@gentoo.org> +xbitmaps-1.1.1.ebuild:
+  Version bump
+
+  17 Oct 2010; Mart Raudsepp <leio@gentoo.org> -xbitmaps-1.0.1.ebuild:
+  Remove old
+
+  19 Jan 2010; Raúl Porcel <armin76@gentoo.org> xbitmaps-1.1.0.ebuild:
+  s390 stable wrt #294958
+
+  18 Jan 2010; Raúl Porcel <armin76@gentoo.org> xbitmaps-1.1.0.ebuild:
+  alpha/ia64/sh/sparc stable wrt #294958
+
+  14 Jan 2010; Markus Meier <maekke@gentoo.org> xbitmaps-1.1.0.ebuild:
+  arm stable, bug #294958
+
+  14 Jan 2010; Jeroen Roovers <jer@gentoo.org> xbitmaps-1.1.0.ebuild:
+  Stable for HPPA (bug #294958).
+
+  10 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  xbitmaps-1.1.0.ebuild:
+  Transfer Prefix keywords
+
+  27 Dec 2009; Joseph Jezak <josejx@gentoo.org> xbitmaps-1.1.0.ebuild:
+  Marked ppc stable for bug #294958.
+
+  15 Dec 2009; Brent Baude <ranger@gentoo.org> xbitmaps-1.1.0.ebuild:
+  Marking xbitmaps-1.1.0 ppc64 stable for bug 294958
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  xbitmaps-1.1.0.ebuild:
+  x86 stable, bug 294958
+
+  10 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> xbitmaps-1.1.0.ebuild:
+  amd64 stable wrt #294958
+
+*xbitmaps-1.1.0 (15 Oct 2009)
+
+  15 Oct 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  +xbitmaps-1.1.0.ebuild:
+  Version bump.
+
+  28 May 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  xbitmaps-1.0.1.ebuild:
+  Manually specify module to download from, so we can simplify the eclass.
+
+  19 Jul 2006; Guy Martin <gmsoft@gentoo.org> xbitmaps-1.0.1.ebuild:
+  Stable on hppa.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> xbitmaps-1.0.1.ebuild:
+  Mark 1.0.1 stable on ia64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  xbitmaps-1.0.1.ebuild:
+  ppc/sparc/mips/alpha/arm/sh stable
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> xbitmaps-1.0.1.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org> xbitmaps-1.0.1.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  xbitmaps-1.0.1.ebuild:
+  x86 stable.
+
+  31 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> xbitmaps-1.0.1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  09 Mar 2006; Aron Griffis <agriffis@gentoo.org> xbitmaps-1.0.1.ebuild:
+  Mark 1.0.1 ~ia64
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> xbitmaps-1.0.1.ebuild:
+  Added ~ppc64
+
+  31 Jan 2006; Rene Nussbaumer <killerfox@gentoo.org> xbitmaps-1.0.1.ebuild:
+  Unstable on hppa.
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xbitmaps-0.99.1.ebuild, -xbitmaps-1.0.0.ebuild:
+  Pull old versions.
+
+  26 Dec 2005; Stefaan De Roeck <stefaan@gentoo.org> xbitmaps-1.0.1.ebuild:
+  Marked ~alpha
+
+*xbitmaps-1.0.1 (23 Dec 2005)
+
+  23 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +xbitmaps-1.0.1.ebuild:
+  Bump for 7.0.
+
+*xbitmaps-1.0.0 (18 Dec 2005)
+
+  18 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xbitmaps-1.0.0.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -xbitmaps-0.99.0.ebuild:
+  Pull old versions.
+
+*xbitmaps-0.99.1 (20 Oct 2005)
+
+  20 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xbitmaps-0.99.1.ebuild:
+  Bump for 7.0 RC1.
+
+  19 Oct 2005; Stephen P. Becker <geoman@gentoo.org> xbitmaps-0.99.0.ebuild:
+  added ~mips keyword
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  04 Sep 2005; MATSUU Takuto <matsuu@gentoo.org> xbitmaps-0.99.0.ebuild:
+  Added ~sh
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> xbitmaps-0.99.0.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> xbitmaps-0.99.0.ebuild:
+  Marked ~amd64.
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> xbitmaps-0.99.0.ebuild:
+  Add ~sparc keyword (X Modular testing).
+
+*xbitmaps-0.99.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +xbitmaps-0.99.0.ebuild:
+  Initial commit for modular X.

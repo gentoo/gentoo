@@ -1,0 +1,90 @@
+# ChangeLog for dev-perl/class-loader
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/class-loader/ChangeLog,v 1.24 2014/08/22 14:40:04 axs Exp $
+
+*class-loader-2.30.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +class-loader-2.30.0-r1.ebuild, -class-loader-2.30.0.ebuild:
+  bumped current stable ebuild(s) EAPI to 5; committed directly to stable as no
+  other changes present and revbump helps stable systems to keep from dieing on
+  perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -class-loader-2.03.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> class-loader-2.30.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*class-loader-2.30.0 (27 Aug 2011)
+
+  27 Aug 2011; Torsten Veller <tove@gentoo.org> +class-loader-2.30.0.ebuild:
+  Change version scheme
+
+  24 Apr 2011; Fabian Groffen <grobian@gentoo.org> class-loader-2.03.ebuild:
+  Marked ~x86-solaris, bug #296509
+
+  09 Jan 2010; Fabian Groffen <grobian@gentoo.org> class-loader-2.03.ebuild:
+  Transfer Prefix keywords
+
+  15 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -class-loader-2.02.ebuild, class-loader-2.03.ebuild:
+  Ebuild maintenance
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  class-loader-2.02.ebuild, class-loader-2.03.ebuild:
+  Adding perl dep; fixed header; fixed DEPEND
+
+  06 Feb 2006; Simon Stelling <blubb@gentoo.org> class-loader-2.03.ebuild:
+  stable on amd64
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> class-loader-2.03.ebuild:
+  Mark 2.03 stable on ia64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> class-loader-2.03.ebuild:
+  Mark 2.03 stable on alpha
+
+  16 Jan 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  class-loader-2.03.ebuild:
+  Stable on hppa.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  class-loader-2.03.ebuild:
+  marking stable sparc x86
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> class-loader-2.03.ebuild:
+  add ~ia64
+
+*class-loader-2.03 (17 Jul 2005)
+
+  17 Jul 2005; Michael Cummings <mcummings@gentoo.org>
+  +class-loader-2.03.ebuild:
+  Version bump upstream
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  class-loader-2.02.ebuild:
+  Cleaning for mirror
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> class-loader-2.02.ebuild:
+  stable on amd64
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  28 May 2004; Bryan Østergaard <kloeri@gentoo.org> class-loader-2.02.ebuild:
+  Stable on alpha.
+
+  25 Feb 2004; Joshua Kinard <kumba@gentoo.org> class-loader-2.02.ebuild:
+  Added ~mips to KEYWORDS to satisfy repoman deps.
+
+  27 Oct 2003; Brad House <brad_mssw@gentoo.org> class-loader-2.02.ebuild:
+  add ~amd64 flag
+
+*class-loader-2.02 (23 Jun 2003)
+
+  23 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  class-loader-2.02.ebuild:
+  dep for crypt-random

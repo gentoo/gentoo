@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>java</herd>
+<maintainer>
+  <email>fordfrog@gentoo.org</email>
+  <name>Miroslav Šulc</name>
+</maintainer>
+<use>
+  <flag name="keychain">Automatically starts keychain on netbeans start and loads
+  specified keys so Netbeans can use them.</flag>
+</use>
+</pkgmetadata>

@@ -1,0 +1,35 @@
+# ChangeLog for games-fps/quake3-ruinhunters
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-ruinhunters/ChangeLog,v 1.9 2015/03/27 02:59:13 mr_bones_ Exp $
+
+  27 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  quake3-ruinhunters-1.0a-r1.ebuild:
+  update SRC_URI
+
+  10 Oct 2009; Tristan Heaven <nyhm@gentoo.org>
+  quake3-ruinhunters-1.0a-r1.ebuild:
+  Stable on amd64/x86
+
+  07 Oct 2009; Tristan Heaven <nyhm@gentoo.org>
+  quake3-ruinhunters-1.0a-r1.ebuild:
+  EAPI=2; fix unpack order
+
+*quake3-ruinhunters-1.0a-r1 (24 Oct 2006)
+
+  24 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +quake3-ruinhunters-1.0a-r1.ebuild:
+  Added new revision for testing which uses the brand-spankin-new
+  games-mods.eclass to reduce ebuild code.
+
+*quake3-ruinhunters-1.0a (20 Mar 2003)
+
+  16 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added games-q3mod.eclass support #23871.
+
+  04 Apr 2003; Philip Walls <malverian@gentoo.org>
+  quake3-ruinhunters-1.0a.ebuild :
+  Make sure it unpacks the full package and patch in the correct order
+
+  20 Mar 2003; Philip Walls <malverian@gentoo.org>
+  quake3-ruinhunters-1.0a.ebuild files/digest-quake3-ruinhunters-1.0a :
+  Initial import.

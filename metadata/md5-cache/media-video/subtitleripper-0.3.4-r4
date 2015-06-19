@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=media-libs/netpbm-10.41.0 media-libs/libpng sys-libs/zlib >=app-text/gocr-0.39
+DESCRIPTION=DVD Subtitle Ripper for Linux
+HOMEPAGE=http://subtitleripper.sourceforge.net/
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/netpbm-10.41.0 media-libs/libpng sys-libs/zlib >=app-text/gocr-0.39
+SLOT=0
+SRC_URI=mirror://sourceforge/subtitleripper/subtitleripper-0.3-4.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=20f42cdbe1a014413c69a97b36ee0675

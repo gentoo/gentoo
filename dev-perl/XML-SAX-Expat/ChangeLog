@@ -1,0 +1,53 @@
+# ChangeLog for dev-perl/XML-SAX-Expat
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-SAX-Expat/ChangeLog,v 1.11 2014/12/07 13:08:18 zlogene Exp $
+
+  07 Dec 2014; Mikle Kolyada <zlogene@gentoo.org> XML-SAX-Expat-0.400.0.ebuild,
+  XML-SAX-Expat-0.500.0.ebuild, XML-SAX-Expat-0.510.0.ebuild:
+  Drop dev-lang/perl dependency
+
+  28 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  XML-SAX-Expat-0.400.0.ebuild, XML-SAX-Expat-0.500.0.ebuild,
+  XML-SAX-Expat-0.510.0.ebuild:
+  Remove call to perl-module_pkg_postinst, does not do anything outside
+  perl-core
+
+  22 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  XML-SAX-Expat-0.400.0.ebuild, XML-SAX-Expat-0.500.0.ebuild,
+  XML-SAX-Expat-0.510.0.ebuild:
+  Remove call to perl-module_pkg_postrm, does not do anything outside perl-core
+  category
+
+  04 Sep 2014; Mikle Kolyada <zlogene@gentoo.org> XML-SAX-Expat-0.400.0.ebuild,
+  XML-SAX-Expat-0.500.0.ebuild:
+  Bump to EAPI=5
+
+*XML-SAX-Expat-0.510.0 (15 Feb 2014)
+
+  15 Feb 2014; Tim Harder <radhermit@gentoo.org> +XML-SAX-Expat-0.510.0.ebuild:
+  Version bump.
+
+*XML-SAX-Expat-0.500.0 (26 Aug 2013)
+
+  26 Aug 2013; Patrick Lauer <patrick@gentoo.org> +XML-SAX-Expat-0.500.0.ebuild:
+  Bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -XML-SAX-Expat-0.40.ebuild:
+  Cleanup
+
+*XML-SAX-Expat-0.400.0 (27 Aug 2011)
+
+  27 Aug 2011; Torsten Veller <tove@gentoo.org> +XML-SAX-Expat-0.400.0.ebuild:
+  Change version scheme
+
+  17 Dec 2008; Torsten Veller <tove@gentoo.org> XML-SAX-Expat-0.40.ebuild:
+  Add ~amd64 (#250770)
+
+*XML-SAX-Expat-0.40 (23 Aug 2008)
+
+  23 Aug 2008; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +XML-SAX-Expat-0.40.ebuild:
+  Initial commit for (#168994,#230710). Thanks to Martin von Gagern

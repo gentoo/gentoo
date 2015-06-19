@@ -1,0 +1,28 @@
+# ChangeLog for media-video/pgmfindclip
+# Copyright 2000-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/pgmfindclip/ChangeLog,v 1.7 2007/11/27 12:09:18 zzam Exp $
+
+  27 Nov 2007; Matthias Schwarzott <zzam@gentoo.org>
+  pgmfindclip-1.13.ebuild:
+  Fixed quoting.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  07 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> metadata.xml,
+  pgmfindclip-1.13.ebuild:
+  Drop virtual/libc dependency. Respect CC, CFLAGS and LDFLAGS.
+
+  28 Jul 2005; David Holm <dholm@gentoo.org> pgmfindclip-1.13.ebuild:
+  Added to ~ppc.
+
+  06 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  pgmfindclip-1.13.ebuild:
+  Added to ~amd64.  Fixed LICENSE.
+
+*pgmfindclip-1.13 (06 Oct 2004)
+
+  06 Oct 2004; Christian Parpart <trapni@gentoo.org>:
+  Initial import. Ebuild submitted (#64512) 
+  by henning <henning@wh9.tu-dresden.de>.
+  Adapted to meet gentoo policies.

@@ -1,0 +1,28 @@
+By default the mkioctl program that generates code for kdump does look for
+ioctls in the whole /usr/include tree, but this does break when xorg is merged.
+This patch allows to look for include files only in the source tree.
+
+Index: fbsd-6/usr.bin/kdump/Makefile
+===================================================================
+--- fbsd-6.orig/usr.bin/kdump/Makefile
++++ fbsd-6/usr.bin/kdump/Makefile
+@@ -10,6 +10,6 @@ CFLAGS+=	-I${.CURDIR}/../ktrace -I${.CUR
+ CLEANFILES=	ioctl.c
+ 
+ ioctl.c: mkioctls
+-	sh ${.CURDIR}/mkioctls ${DESTDIR}/usr/include > ${.TARGET}
++	sh ${.CURDIR}/mkioctls ${.CURDIR}/../../include > ${.TARGET}
+ 
+ .include <bsd.prog.mk>
+Index: fbsd-6/usr.bin/truss/Makefile
+===================================================================
+--- fbsd-6.orig/usr.bin/truss/Makefile
++++ fbsd-6/usr.bin/truss/Makefile
+@@ -29,6 +29,6 @@ syscalls.h:	syscalls.master
+ 		${.CURDIR}/i386.conf
+ 
+ ioctl.c: ${.CURDIR}/../kdump/mkioctls
+-	sh ${.CURDIR}/../kdump/mkioctls ${DESTDIR}/usr/include > ${.TARGET}
++	sh ${.CURDIR}/../kdump/mkioctls ${.CURDIR}/../../include > ${.TARGET}
+ 
+ .include <bsd.prog.mk>

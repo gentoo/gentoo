@@ -1,0 +1,22 @@
+# ChangeLog for media-gfx/hp2xx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/hp2xx/ChangeLog,v 1.4 2015/03/29 13:37:30 idella4 Exp $
+
+*hp2xx-3.4.4-r1 (29 Mar 2015)
+
+  29 Mar 2015; Ian Delaney <idella4@gentoo.org>
+  +files/hp2xx-3.4.4-docbuild.patch, +hp2xx-3.4.4-r1.ebuild:
+  revbump; add patch and ebuild prepared by maintainer with assist from
+  package's author, all found in bug #529800, fixes said bug
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  24 Apr 2012; Michał Górny <mgorny@gentoo.org> hp2xx-3.4.4.ebuild:
+  Update to use mirror://.
+
+*hp2xx-3.4.4 (07 Feb 2012)
+
+  07 Feb 2012; Andreas K. Huettel <dilfridge@gentoo.org> +hp2xx-3.4.4.ebuild,
+  +files/hp2xx-3.4.4-r1.patch, +metadata.xml:
+  New package, bug 58091. Thanks to Konstantin Münning for ebuild and patch.

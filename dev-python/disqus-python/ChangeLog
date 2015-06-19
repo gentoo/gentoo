@@ -1,0 +1,22 @@
+# ChangeLog for dev-python/disqus-python
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/disqus-python/ChangeLog,v 1.5 2015/06/03 15:08:16 jlec Exp $
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> disqus-python-0.4.2.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> disqus-python-0.4.2.ebuild:
+  amd64 stable, bug 540290
+
+  04 Jul 2014; Ian Delaney <idella4@gentoo.org> disqus-python-0.4.2.ebuild:
+  drop py2.6, add missing dep nose, fixes Bug #514540
+
+*disqus-python-0.4.2 (31 Aug 2013)
+
+  31 Aug 2013; Johann Schmitz <ercpe@gentoo.org> +disqus-python-0.4.2.ebuild,
+  +metadata.xml:
+  Added ebuild for disqus-python (Python client library for accessing the
+  disqus.com API)

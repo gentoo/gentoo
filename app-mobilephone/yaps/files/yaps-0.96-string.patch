@@ -1,0 +1,10 @@
+--- a/scr.c
++++ b/scr.c
+@@ -2,6 +2,7 @@
+ # include	"config.h"
+ # include	<stdio.h>
+ # include	<stdlib.h>
++# include	<string.h>
+ # include	"pager.h"
+ # include	"script.h"
+ 

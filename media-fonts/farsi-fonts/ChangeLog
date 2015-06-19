@@ -1,0 +1,46 @@
+# ChangeLog for media-fonts/farsi-fonts
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/farsi-fonts/ChangeLog,v 1.13 2011/06/14 17:33:56 grobian Exp $
+
+  14 Jun 2011; Fabian Groffen <grobian@gentoo.org> farsi-fonts-0.4.ebuild:
+  Marked ~x86-macos (#369547) and ~ppc-macos
+
+  25 May 2011; Diego E. Pettenò <flameeyes@gentoo.org> farsi-fonts-0.4.ebuild:
+  QA: avoid runtime dependency on app-arch/unzip.
+
+  06 Jul 2009; Jeroen Roovers <jer@gentoo.org> farsi-fonts-0.4.ebuild:
+  Stable for HPPA too.
+
+  18 May 2008; Ryan Hill <dirtyepic@gentoo.org> farsi-fonts-0.4.ebuild:
+  Update DESCRIPTION, SRC_URI, HOMEPAGE.
+
+  29 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  farsi-fonts-0.4.ebuild:
+  amd64 stable
+
+  24 Feb 2008; Raúl Porcel <armin76@gentoo.org> farsi-fonts-0.4.ebuild:
+  alpha/sparc stable
+
+  23 Jan 2008; Raúl Porcel <armin76@gentoo.org> farsi-fonts-0.4.ebuild:
+  Add ~alpha/~sparc, x86 stable
+
+  26 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> farsi-fonts-0.4.ebuild:
+  Add ~x86-fbsd keyword.
+
+  11 Jul 2006; Aron Griffis <agriffis@gentoo.org> farsi-fonts-0.4.ebuild:
+  Mark 0.4 stable on ia64
+
+  10 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  farsi-fonts-0.4.ebuild:
+  Added to ~hppa, ~ppc.
+
+  26 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> farsi-fonts-0.4.ebuild:
+  Added to ~amd64.
+
+*farsi-fonts-0.4 (17 Oct 2004)
+
+  17 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +farsi-fonts-0.4.ebuild:
+  Initial import. Ebuild submitted by Michael Mauch <michael.mauch@gmx.de>,
+  closing bug #66170.
+

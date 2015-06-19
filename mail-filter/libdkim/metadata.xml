@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>andreis.vinogradovs@gmail.com</email>
+    <name>Andreis Vinogradovs</name>
+  </maintainer>
+  <maintainer>
+    <email>qnikst@gentoo.org</email>
+    <name>Alexander Vershilov</name>
+  </maintainer>
+  <longdescription>DomainKeys Identified Mail library from Alt-N Inc.</longdescription>
+  <use>
+</use>
+  <upstream>
+    <remote-id type="sourceforge">libdkim</remote-id>
+  </upstream>
+</pkgmetadata>

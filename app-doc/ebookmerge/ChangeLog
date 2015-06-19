@@ -1,0 +1,82 @@
+# ChangeLog for app-doc/ebookmerge
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-doc/ebookmerge/ChangeLog,v 1.17 2013/01/27 22:30:08 radhermit Exp $
+
+  27 Jan 2013; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  26 Jun 2012; Ryan Hill <dirtyepic@gentoo.org> metadata.xml:
+  Maintainer -> app-doc.
+
+  08 Apr 2012; Ryan Hill <dirtyepic@gentoo.org> metadata.xml:
+  Add myself as maintainer.
+
+*ebookmerge-0.9.3-r1 (20 Mar 2012)
+
+  20 Mar 2012; Pacho Ramos <pacho@gentoo.org> +ebookmerge-0.9.3-r1.ebuild,
+  +files/ebookmerge-0.9.3-updates.patch:
+  Update to use new upstream, bug #388927 by Steve Arnold.
+
+  18 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #391429.
+
+  23 Jan 2007; Marius Mauch <genone@gentoo.org> ebookmerge-0.9.3.ebuild:
+  Replacing einfo with elog
+
+  22 Oct 2006; Markus Rothe <corsair@gentoo.org> ebookmerge-0.9.3.ebuild:
+  Added ~ppc64; bug #152195
+
+  21 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  ebookmerge-0.9.3.ebuild:
+  Forgot ~ia64 keyword, bug 152195.
+
+  21 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  ebookmerge-0.9.3.ebuild:
+  Add ~alpha keyword, bug 152195.
+
+  21 Oct 2006; Simon Stelling <blubb@gentoo.org> ebookmerge-0.9.3.ebuild:
+  added ~amd64
+
+*ebookmerge-0.9.3 (13 Oct 2006)
+
+  13 Oct 2006; J. Alberto Suárez López <bass@gentoo.org>
+  -ebookmerge-0.9.ebuild, -ebookmerge-0.9.1.ebuild,
+  -ebookmerge-0.9.2.ebuild, +ebookmerge-0.9.3.ebuild:
+  Removed lidn support and updated support for berlios. #136183
+
+*ebookmerge-0.9.2 (13 Jul 2006)
+
+  13 Jul 2006; J. Alberto Suárez López <bass@gentoo.org>
+  +ebookmerge-0.9.2.ebuild:
+  Fix #119813
+
+  10 Apr 2006; J. Alberto Suárez López <bass@gentoo.org>
+  +ebookmerge-0.9.1.ebuild:
+  Added -m option to use a mirror.
+
+*ebookmerge-0.9.1 (10 Apr 2006)
+
+  10 Apr 2006; J. Alberto Suárez López <bass@gentoo.org>
+  +ebookmerge-0.9.1.ebuild:
+  Added -m option to use a mirror.
+
+*ebookmerge-0.9 (27 Nov 2005)
+
+  27 Nov 2005; josé Alberto Suárez López <bass@gentoo.org>
+  -ebookmerge-0.6.ebuild, +ebookmerge-0.9.ebuild:
+  bump version
+
+*ebookmerge-0.6 (04 Jul 2005)
+
+  11 Jul 2005; josé Alberto Suárez López <bass@gentoo.org>
+  ebookmerge-0.6.ebuild:
+  masked again to follow the policy
+
+  11 Jul 2005; josé Alberto Suárez López <bass@gentoo.org>
+  ebookmerge-0.6.ebuild:
+  Added keyword "x86"
+
+  04 Jul 2005; josé Alberto Suárez López <bass@gentoo.org> +metadata.xml,
+  +ebookmerge-0.6.ebuild:
+  First release.
+

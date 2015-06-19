@@ -1,0 +1,32 @@
+From 0dc126ba76d32a66c73daa5c2a93980efbc1264e Mon Sep 17 00:00:00 2001
+From: Stefano Karapetsas <stefano@karapetsas.com>
+Date: Sat, 25 Jan 2014 12:29:44 +0100
+Subject: [PATCH] Update POTFILES.skip
+
+---
+ po/POTFILES.skip | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/po/POTFILES.skip b/po/POTFILES.skip
+index a6a3e9f..d54118d 100644
+--- a/po/POTFILES.skip
++++ b/po/POTFILES.skip
+@@ -6,11 +6,11 @@ interfaces/services.glade
+ interfaces/shares.glade
+ interfaces/time.glade
+ interfaces/users.glade
+-src/network/network.desktop.in
+-src/services/services.desktop.in
+-src/shares/shares.desktop.in
+-src/time/time.desktop.in
+-src/users/users.desktop.in
++src/network/mate-network.desktop.in
++src/services/mate-services.desktop.in
++src/shares/mate-shares.desktop.in
++src/time/mate-time.desktop.in
++src/users/mate-users.desktop.in
+ interfaces/disks.glade.in
+ src/disks/callbacks.c
+ src/disks/disks-cdrom-disc.c
+-- 
+1.8.5.5

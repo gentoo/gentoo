@@ -1,0 +1,47 @@
+# ChangeLog for dev-haskell/hinotify
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hinotify/ChangeLog,v 1.10 2015/06/06 11:26:22 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*hinotify-0.3.7 (10 May 2014)
+
+  10 May 2014; Sergei Trofimovich <slyfox@gentoo.org> +hinotify-0.3.7.ebuild,
+  -hinotify-0.3.2.ebuild, -hinotify-0.3.5.ebuild:
+  Version bump.
+
+*hinotify-0.3.6 (21 Feb 2014)
+
+  21 Feb 2014; Sergei Trofimovich <slyfox@gentoo.org> +hinotify-0.3.6.ebuild:
+  Version bump.
+
+*hinotify-0.3.5 (23 Dec 2012)
+
+  23 Dec 2012; Sergei Trofimovich <slyfox@gentoo.org> +hinotify-0.3.5.ebuild:
+  Version bump.
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org> hinotify-0.3.2.ebuild:
+  move dev-haskell/hinotify/hinotify-0.3.2.ebuild ebuild to mirror://hackage
+
+  31 Aug 2011; Sergei Trofimovich <slyfox@gentoo.org> -hinotify-0.3.1.ebuild:
+  Removed old.
+
+*hinotify-0.3.2 (31 Aug 2011)
+
+  31 Aug 2011; Sergei Trofimovich <slyfox@gentoo.org> +hinotify-0.3.2.ebuild:
+  Version bump. Among other changes fixes build failure reported by Hans-Peter
+  Deifel in bug #380967
+
+  02 Aug 2011; Sergei Trofimovich <slyfox@gentoo.org> -hinotify-0.3.ebuild:
+  Removed old.
+
+*hinotify-0.3.1 (15 Dec 2009)
+
+  15 Dec 2009; <kolmodin@gentoo.org> +hinotify-0.3.1.ebuild:
+  Version bump.
+
+*hinotify-0.3 (26 Nov 2009)
+
+  26 Nov 2009; <kolmodin@gentoo.org> +hinotify-0.3.ebuild, +metadata.xml:
+  Initial import.

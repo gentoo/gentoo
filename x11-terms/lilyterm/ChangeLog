@@ -1,0 +1,13 @@
+# ChangeLog for x11-terms/lilyterm
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/lilyterm/ChangeLog,v 1.2 2013/07/23 15:11:39 jer Exp $
+
+  23 Jul 2013; Jeroen Roovers <jer@gentoo.org> lilyterm-0.9.9.4.ebuild:
+  Remove broken USE=nls.
+
+*lilyterm-0.9.9.4 (23 Jul 2013)
+
+  23 Jul 2013; Jeroen Roovers <jer@gentoo.org> +lilyterm-0.9.9.4.ebuild,
+  +metadata.xml:
+  Initial commit (bug #334689).
+

@@ -1,0 +1,88 @@
+https://bugs.gentoo.org/show_bug.cgi?id=544296
+https://savannah.gnu.org/bugs/?44607
+
+From 14a9c8aa0b124dc580c4805e848e6ff0880b43bd Mon Sep 17 00:00:00 2001
+From: Benno Schulenberg <bensberg@justemail.net>
+Date: Fri, 27 Mar 2015 16:55:49 +0000
+Subject: [PATCH] Treating the formatter like a speller, to fix compilation
+ with --disable-speller. This fixes Savannah bug #44607.
+
+git-svn-id: svn://svn.savannah.gnu.org/nano/trunk/nano@5168 35c25a1d-7b9e-4130-9fde-d3aeb78583b8
+---
+ ChangeLog    |  2 ++
+ src/global.c | 10 ++++++++--
+ src/text.c   |  3 ++-
+ 3 files changed, 12 insertions(+), 3 deletions(-)
+
+ChangeLog
+	* src/global.c, src/text.c: Treat the formatter like a speller,	to fix
+	compilation with --disable-speller.  Fixes Savannah bug #44607.
+
+diff --git a/src/global.c b/src/global.c
+index 4643af2..27ff938 100644
+--- a/src/global.c
++++ b/src/global.c
+@@ -639,8 +639,10 @@ void shortcut_init(void)
+     const char *nano_lint_msg = N_("Invoke the linter, if available");
+     const char *nano_prevlint_msg = N_("Go to previous linter msg");
+     const char *nano_nextlint_msg = N_("Go to next linter msg");
++#ifndef DISABLE_SPELLER
+     const char *nano_formatter_msg = N_("Invoke formatter, if available");
+ #endif
++#endif
+ #endif /* !DISABLE_HELP */
+ 
+ #ifndef DISABLE_HELP
+@@ -736,9 +738,11 @@ void shortcut_init(void)
+ #ifndef DISABLE_COLOR
+     add_to_funcs(do_linter, MMAIN,
+ 	N_("To Linter"), IFSCHELP(nano_lint_msg), TOGETHER, NOVIEW);
++#ifndef DISABLE_SPELLER
+     add_to_funcs(do_formatter, MMAIN,
+ 	N_("Formatter"), IFSCHELP(nano_formatter_msg), BLANKAFTER, NOVIEW);
+ #endif
++#endif
+ 
+ #ifndef NANO_TINY
+     add_to_funcs(case_sens_void, MWHEREIS|MREPLACE,
+@@ -1006,12 +1010,14 @@ void shortcut_init(void)
+ #ifndef DISABLE_SPELLER
+     add_to_sclist(MMAIN, "^T", do_spell, 0);
+     add_to_sclist(MMAIN, "F12", do_spell, 0);
++#ifndef DISABLE_COLOR
++    add_to_sclist(MMAIN, "^T", do_formatter, 0);
++    add_to_sclist(MMAIN, "F12", do_formatter, 0);
++#endif
+ #else
+ #ifndef DISABLE_COLOR
+     add_to_sclist(MMAIN, "^T", do_linter, 0);
+     add_to_sclist(MMAIN, "F12", do_linter, 0);
+-    add_to_sclist(MMAIN, "^T", do_formatter, 0);
+-    add_to_sclist(MMAIN, "F12", do_formatter, 0);
+ #endif
+ #endif
+     add_to_sclist(MMAIN, "^C", do_cursorpos_void, 0);
+diff --git a/src/text.c b/src/text.c
+index 8814b49..98b2f80 100644
+--- a/src/text.c
++++ b/src/text.c
+@@ -3223,6 +3223,7 @@ free_lints_and_return:
+     lint_cleanup();
+ }
+ 
++#ifndef DISABLE_SPELLER
+ /* Run a formatter for the given syntax.
+  * Expects the formatter to be non-interactive and
+  * operate on a file in-place, which we'll pass it
+@@ -3370,7 +3371,7 @@ void do_formatter(void)
+ 
+     statusbar(finalstatus);
+ }
+-
++#endif /* !DISABLE_SPELLER */
+ #endif /* !DISABLE_COLOR */
+ 
+ #ifndef NANO_TINY
+-- 
+2.3.3
+

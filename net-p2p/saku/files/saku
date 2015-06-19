@@ -1,0 +1,26 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/saku/files/saku,v 1.2 2013/01/12 04:56:54 naota Exp $
+
+PID_DIR=/var/run/saku
+
+depend() {
+	use dns
+	need net
+}
+
+start() {
+	mkdir -p $PID_DIR
+	rm -f ${PID_DIR}/pid.txt
+	ebegin "Starting p2p bbs: saku"
+	start-stop-daemon --start -u saku -g saku --quiet -b \
+	    -p ${PID_DIR}/pid.txt --exec /usr/bin/saku
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping p2p bbs: saku"
+	start-stop-daemon --stop --quiet -p ${PID_DIR}/pid.txt
+	eend $?
+}

@@ -1,0 +1,27 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/audio-entropyd/files/audio-entropyd.init-2,v 1.2 2014/03/22 15:11:35 angelos Exp $
+
+depend() {
+	need modules
+	use alsasound
+	provide entropy
+}
+
+start() {
+	local params=""
+	[ -n "$DEVICE" ] && params="$params -d $DEVICE"
+	[ -n "$SAMPLERATE" ] && params="$params -N $SAMPLERATE"
+
+	ebegin "Starting audio entropy gathering daemon"
+	start-stop-daemon --start --quiet --pidfile /var/run/audio-entropyd.pid \
+		--exec /usr/sbin/audio-entropyd -- ${params}
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping audio entropy gathering daemon"
+	start-stop-daemon --stop --quiet --pidfile /var/run/audio-entropyd.pid
+	eend ${?}
+}

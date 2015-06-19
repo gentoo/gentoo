@@ -1,0 +1,280 @@
+# ChangeLog for dev-ruby/i18n
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/i18n/ChangeLog,v 1.72 2015/06/07 18:01:08 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  12 Mar 2015; Hans de Graaff <graaff@gentoo.org> -i18n-0.6.9.ebuild:
+  Cleanup.
+
+  31 Dec 2014; Hans de Graaff <graaff@gentoo.org> i18n-0.6.9.ebuild,
+  i18n-0.6.9-r1.ebuild, i18n-0.6.11.ebuild:
+  Remove jruby.
+
+*i18n-0.7.0 (31 Dec 2014)
+
+  31 Dec 2014; Hans de Graaff <graaff@gentoo.org> +i18n-0.7.0.ebuild:
+  Version bump for Rails 4.2.
+
+  17 Aug 2014; Anthony G. Basile <blueness@gentoo.org> i18n-0.6.11.ebuild:
+  Keyword on ~ppc and ~ppc64, request by mrueg
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> i18n-0.6.11.ebuild,
+  i18n-0.6.9-r1.ebuild, i18n-0.6.9.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  22 Jul 2014; Tobias Klausmann <klausman@gentoo.org> i18n-0.6.11.ebuild:
+  Keyworded on alpha, bug #501152
+
+*i18n-0.6.11 (10 Jul 2014)
+
+  10 Jul 2014; Hans de Graaff <graaff@gentoo.org> +i18n-0.6.11.ebuild:
+  Version bump. Drop ppc,ppc64,x86 keywords, bug 501152.
+
+  21 May 2014; Manuel Rüger <mrueg@gentoo.org> i18n-0.6.9.ebuild:
+  Remove ruby18 target.
+
+  20 Apr 2014; Hans de Graaff <graaff@gentoo.org> i18n-0.6.9-r1.ebuild:
+  Add back keywords to ruby20, ruby21 revision now that activesupport:3.2 is
+  also marked for these targets.
+
+  18 Apr 2014; Hans de Graaff <graaff@gentoo.org> i18n-0.6.9-r1.ebuild:
+  Add ruby21. Update test dependencies to make this work with all ruby targets.
+
+  11 Mar 2014; Johannes Huber <johu@gentoo.org> i18n-0.6.9-r1.ebuild:
+  ~x86 added, bug #487206
+
+  11 Feb 2014; Manuel Rüger <mrueg@gentoo.org> -i18n-0.6.5.ebuild:
+  Cleanup old.
+
+  18 Jan 2014; Hans de Graaff <graaff@gentoo.org> -i18n-0.4.2.ebuild:
+  Remove masked version.
+
+*i18n-0.6.9-r1 (25 Dec 2013)
+
+  25 Dec 2013; Hans de Graaff <graaff@gentoo.org> +i18n-0.6.9-r1.ebuild:
+  Add a new revision for ruby20 with Rails 4.
+
+*i18n-0.6.9 (04 Dec 2013)
+
+  04 Dec 2013; Hans de Graaff <graaff@gentoo.org> +i18n-0.6.9.ebuild:
+  Version bump.
+
+  05 Nov 2013; Hans de Graaff <graaff@gentoo.org> -i18n-0.6.4.ebuild:
+  Cleanup.
+
+*i18n-0.6.5 (14 Aug 2013)
+
+  14 Aug 2013; Manuel Rüger <mrueg@gentoo.org> +i18n-0.6.5.ebuild:
+  Version bump
+
+  20 Jul 2013; Hans de Graaff <graaff@gentoo.org> -i18n-0.6.0-r1.ebuild,
+  -i18n-0.6.1.ebuild:
+  Cleanup.
+
+  27 Mar 2013; Dion Moult <moult@gentoo.org> -i18n-0.5.0-r1.ebuild:
+  Remove dev-ruby/i18n:0.5 due to lack of upstream support
+
+*i18n-0.6.4 (10 Mar 2013)
+
+  10 Mar 2013; Hans de Graaff <graaff@gentoo.org> +i18n-0.6.4.ebuild:
+  Version bump.
+
+  16 Jan 2013; Rick Farina <zerochaos@gentoo.org> i18n-0.4.2.ebuild,
+  i18n-0.5.0-r1.ebuild, i18n-0.6.0-r1.ebuild, i18n-0.6.1.ebuild:
+  adding ~arm keywords to net-analyzer/metasploit rdeps
+
+*i18n-0.6.1 (24 Nov 2012)
+
+  24 Nov 2012; Hans de Graaff <graaff@gentoo.org> +i18n-0.6.1.ebuild:
+  Version bump. Ebuild from ruby overlay by Michel Boaventura.
+
+  16 Sep 2012; Pacho Ramos <pacho@gentoo.org> -files/i18n-0.3.7-gentoo.patch,
+  -i18n-0.1.3.ebuild, -i18n-0.3.7.ebuild:
+  Drop masked versions.
+
+  16 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> i18n-0.3.7.ebuild,
+  i18n-0.4.2.ebuild, i18n-0.5.0-r1.ebuild, i18n-0.6.0-r1.ebuild:
+  Update after Ruby packages move.
+
+  26 Jul 2012; Hans de Graaff <graaff@gentoo.org> -i18n-0.5.0.ebuild,
+  -i18n-0.6.0.ebuild:
+  Cleanup.
+
+  01 May 2012; Raúl Porcel <armin76@gentoo.org> i18n-0.1.3.ebuild,
+  i18n-0.3.7.ebuild, i18n-0.4.2.ebuild, i18n-0.5.0.ebuild,
+  i18n-0.5.0-r1.ebuild, i18n-0.6.0.ebuild:
+  Drop ia64/sparc keywords
+
+  04 Apr 2012; Hans de Graaff <graaff@gentoo.org> i18n-0.6.0-r1.ebuild:
+  Add ~ppc keyword for 0.6 slot which was most likely the intention when
+  keywording activesupport 3.1.x.
+
+  04 Apr 2012; Hans de Graaff <graaff@gentoo.org> i18n-0.6.0-r1.ebuild:
+  Drop ia64,sparc keywords from the ruby19-specific version to fix the
+  dependency chain. This is already covered by bug 396043.
+
+  11 Mar 2012; Brent Baude <ranger@gentoo.org> i18n-0.6.0-r1.ebuild:
+  Marking i18n-0.6.0-r1 ~ppc64 for bug 396547
+
+  11 Mar 2012; Brent Baude <ranger@gentoo.org> i18n-0.6.0.ebuild:
+  Marking i18n-0.6.0 ~ppc64 for bug 396547
+
+  31 Dec 2011; Fabian Groffen <grobian@gentoo.org> i18n-0.6.0-r1.ebuild:
+  Add Prefix keywords, bug #396547
+
+*i18n-0.6.0-r1 (04 Dec 2011)
+
+  04 Dec 2011; Hans de Graaff <graaff@gentoo.org> +i18n-0.6.0-r1.ebuild:
+  Use RUBY_S. Add ruby19.
+
+  09 Sep 2011; Fabian Groffen <grobian@gentoo.org> i18n-0.6.0.ebuild:
+  Marked ~sparc-solaris
+
+  24 Jul 2011; Raúl Porcel <armin76@gentoo.org> i18n-0.4.2.ebuild:
+  ia64/sparc stable wrt #372391
+
+  24 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> i18n-0.5.0-r1.ebuild:
+  Marked ~ppc/~ppc64 wrt #351835
+
+  23 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> i18n-0.4.2.ebuild:
+  ppc/ppc64 stable wrt #372391
+
+  13 Jul 2011; Markus Meier <maekke@gentoo.org> i18n-0.4.2.ebuild:
+  x86 stable, bug #372391
+
+  07 Jul 2011; Markos Chandras <hwoarang@gentoo.org> i18n-0.4.2.ebuild:
+  Stable on amd64 wrt bug #372391
+
+*i18n-0.6.0 (17 Jun 2011)
+
+  17 Jun 2011; Hans de Graaff <graaff@gentoo.org> +i18n-0.6.0.ebuild:
+  Version bump.
+
+  26 Feb 2011; Raúl Porcel <armin76@gentoo.org> i18n-0.5.0-r1.ebuild:
+  Add ~ia64/~sparc/~x86 wrt #355697
+
+  25 Feb 2011; Jeroen Roovers <jer@gentoo.org> i18n-0.5.0-r1.ebuild:
+  Marked ~hppa (bug #355697).
+
+*i18n-0.5.0-r1 (20 Feb 2011)
+
+  20 Feb 2011; Hans de Graaff <graaff@gentoo.org> +i18n-0.5.0-r1.ebuild:
+  Enable tests now that test_declarative is in the tree. Drop keywords due
+  to new dependency, bug 355697.
+
+  23 Jan 2011; Hans de Graaff <graaff@gentoo.org> i18n-0.4.2.ebuild:
+  Remove broken blocker on test-unit:2 since this no longer appears to be a
+  problem.
+
+  22 Jan 2011; Hans de Graaff <graaff@gentoo.org> -i18n-0.3.3.ebuild,
+  -i18n-0.4.1.ebuild:
+  Remove old versions.
+
+  10 Jan 2011; Hans de Graaff <graaff@gentoo.org> i18n-0.4.2.ebuild:
+  Keyword ~x86-macos.
+
+  07 Jan 2011; Hans de Graaff <graaff@gentoo.org> i18n-0.4.1.ebuild,
+  i18n-0.4.2.ebuild:
+  Move forward ppc and ppc64 keywords that got missed on a version bump.
+
+*i18n-0.4.2 (24 Dec 2010)
+
+  24 Dec 2010; Hans de Graaff <graaff@gentoo.org> +i18n-0.4.2.ebuild:
+  Version bump. Fixes bug 349546, thanks to matsuu for providing patches.
+
+  04 Dec 2010; Fabian Groffen <grobian@gentoo.org> i18n-0.5.0.ebuild:
+  Added Prefix keywords
+
+*i18n-0.5.0 (04 Dec 2010)
+
+  04 Dec 2010; Hans de Graaff <graaff@gentoo.org> +i18n-0.5.0.ebuild:
+  Version bump.
+
+  25 Oct 2010; Jeroen Roovers <jer@gentoo.org> i18n-0.3.7.ebuild,
+  i18n-0.4.1.ebuild:
+  Marked ~hppa (bug #322175).
+
+  29 Sep 2010; Brent Baude <ranger@gentoo.org> i18n-0.3.7.ebuild:
+  Marking i18n-0.3.7 ~ppc64 for bug 321283
+
+  28 Sep 2010; Brent Baude <ranger@gentoo.org> i18n-0.3.7.ebuild:
+  Marking i18n-0.3.7 ~ppc for bug 321283
+
+  28 Sep 2010; Brent Baude <ranger@gentoo.org> i18n-0.1.3.ebuild:
+  Marking i18n-0.1.3 ~ppc for bug 319241
+
+  05 Sep 2010; Hans de Graaff <graaff@gentoo.org> i18n-0.4.1.ebuild:
+  Don't run tests on jruby, the sqlite3 dependency is not optional at the
+  moment.
+
+*i18n-0.4.1 (31 Aug 2010)
+
+  31 Aug 2010; Alex Legler <a3li@gentoo.org> +i18n-0.4.1.ebuild:
+  Version bump. Tests run fine on ruby18 and ree18 without the gentoo patch
+  now.
+
+  29 Jul 2010; Diego E. Pettenò <flameeyes@gentoo.org> i18n-0.1.3.ebuild,
+  i18n-0.3.3.ebuild, i18n-0.3.7.ebuild:
+  Fix $HOME permissions (bug #299367).
+
+  30 May 2010; Raúl Porcel <armin76@gentoo.org> i18n-0.1.3.ebuild,
+  i18n-0.3.3.ebuild, i18n-0.3.7.ebuild:
+  Add ~ia64/~sparc/~x86 wrt #321283
+
+*i18n-0.3.7 (23 May 2010)
+
+  23 May 2010; Diego E. Pettenò <flameeyes@gentoo.org> i18n-0.3.3.ebuild,
+  +i18n-0.3.7.ebuild, +files/i18n-0.3.7-gentoo.patch:
+  Update i18n to 0.3.7, add (realistic) REE18 and JRuby support.
+
+  23 May 2010; Alex Legler <a3li@gentoo.org> i18n-0.1.3.ebuild:
+  Add REE18 support
+
+  23 May 2010; Alex Legler <a3li@gentoo.org> i18n-0.3.3.ebuild:
+  Add REE18 support
+
+  01 May 2010; Diego E. Pettenò <flameeyes@gentoo.org> i18n-0.1.3.ebuild:
+  Restore original SRC_URI.
+
+  30 Apr 2010; Hans de Graaff <graaff@gentoo.org> i18n-0.1.3.ebuild:
+  Deal with github changing their tarball generation.
+
+  19 Feb 2010; Fabian Groffen <grobian@gentoo.org> i18n-0.1.3.ebuild:
+  Marked ~x86-solaris
+
+  18 Feb 2010; Fabian Groffen <grobian@gentoo.org> i18n-0.3.3.ebuild:
+  Marked ~x86-solaris
+
+  01 Feb 2010; Diego E. Pettenò <flameeyes@gentoo.org> i18n-0.1.3.ebuild:
+  Add support for JRuby.
+
+  18 Jan 2010; Brent Baude <ranger@gentoo.org> i18n-0.3.3.ebuild:
+  Marking i18n-0.3.3 ~ppc for bug 301007
+
+*i18n-0.1.3 (18 Jan 2010)
+
+  18 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org> +i18n-0.1.3.ebuild,
+  i18n-0.3.3.ebuild:
+  Remove blocker over activesupport, and add a 0.1 slot for activesupport
+  2.3.5 to work properly.
+
+  18 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org> -i18n-0.3.2.ebuild,
+  i18n-0.3.3.ebuild:
+  Slot 0.3.3 ebuild as 0.3, remove 0.3.2 ebuild.
+
+  15 Jan 2010; Fabian Groffen <grobian@gentoo.org> i18n-0.3.3.ebuild:
+  Marked ~x64-solaris and ~ppc-macos
+
+*i18n-0.3.3 (14 Jan 2010)
+
+  14 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org> +i18n-0.3.3.ebuild:
+  Version bump.
+
+*i18n-0.3.2 (02 Jan 2010)
+
+  02 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org> +i18n-0.3.2.ebuild,
+  +metadata.xml:
+  Initial import of i18n support for Rails. USE=doc is missing because of
+  missing jeweler.

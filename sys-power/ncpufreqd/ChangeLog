@@ -1,0 +1,111 @@
+# ChangeLog for sys-power/ncpufreqd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-power/ncpufreqd/ChangeLog,v 1.27 2015/02/21 15:58:14 mgorny Exp $
+
+  21 Feb 2015; Michał Górny <mgorny@gentoo.org> ncpufreqd-2.4.ebuild:
+  Update HOMEPAGE & SRC_URI, https://github.com/gentoo/gentoo-portage-rsync-
+  mirror/pull/18 by Michael Mair-Keimberger.
+
+  11 Mar 2013; Chris Reffett <creffett@gentoo.org> ncpufreqd-2.4.ebuild:
+  Bump EAPI wrt bug 460572
+
+  16 Dec 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due retirement, #95685
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+  05 Apr 2009; Krzysiek Pawlik <nelchael@gentoo.org> -ncpufreqd-2.3.ebuild:
+  Remove old version.
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org> ncpufreqd-2.4.ebuild:
+  amd64/x86 stable, bug #263313
+
+  21 Mar 2009; Krzysiek Pawlik <nelchael@gentoo.org> ncpufreqd-2.4.ebuild:
+  Fix QA warnings.
+
+  15 Nov 2007; Krzysiek Pawlik <nelchael@gentoo.org> -ncpufreqd-2.0.ebuild:
+  Remove old version.
+
+  14 Nov 2007; Steve Dibb <beandog@gentoo.org> ncpufreqd-2.3.ebuild:
+  amd64 stable, bug 194798
+
+  12 Nov 2007; Krzysiek Pawlik <nelchael@gentoo.org> ncpufreqd-2.4.ebuild:
+  Remove unneeded cd for updated cmake-utils.eclass.
+
+  04 Nov 2007; Krzysiek Pawlik <nelchael@gentoo.org> ncpufreqd-2.4.ebuild:
+  Use cmake-utils eclass.
+
+*ncpufreqd-2.4 (29 Oct 2007)
+
+  29 Oct 2007; Krzysiek Pawlik <nelchael@gentoo.org> -ncpufreqd-2.1.ebuild,
+  +ncpufreqd-2.4.ebuild:
+  Version bump, removed old 2.1.
+
+  05 Oct 2007; Christian Faulhammer <opfer@gentoo.org> ncpufreqd-2.3.ebuild:
+  stable x86, bug 194798
+
+  05 Oct 2007; Krzysiek Pawlik <nelchael@gentoo.org> ncpufreqd-2.0.ebuild,
+  ncpufreqd-2.1.ebuild, ncpufreqd-2.3.ebuild:
+  Fix HOMEPAGE and SRC_URI.
+
+  28 Apr 2007; Torsten Veller <tove@gentoo.org> ncpufreqd-2.0.ebuild,
+  ncpufreqd-2.1.ebuild, ncpufreqd-2.3.ebuild:
+  Fix *initd, *confd and *envd calls (#173884, #174266)
+
+*ncpufreqd-2.3 (22 Feb 2007)
+
+  22 Feb 2007; Krzysiek Pawlik <nelchael@gentoo.org> -ncpufreqd-2.2.ebuild,
+  +ncpufreqd-2.3.ebuild:
+  Version bump, removed 2.2.
+
+*ncpufreqd-2.2 (23 Nov 2006)
+
+  23 Nov 2006; Krzysiek Pawlik <nelchael@gentoo.org> +ncpufreqd-2.2.ebuild:
+  Version bump.
+
+  11 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org> ncpufreqd-2.0.ebuild,
+  ncpufreqd-2.1.ebuild:
+  Update SRC_URI, stable on x86.
+
+  12 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org> ncpufreqd-2.0.ebuild,
+  ncpufreqd-2.1.ebuild:
+  Updated HOMEPAGE and SRC_URI.
+
+*ncpufreqd-2.1 (28 Jun 2006)
+
+  28 Jun 2006; Krzysiek Pawlik <nelchael@gentoo.org> +ncpufreqd-2.1.ebuild:
+  Version bump.
+
+  30 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org> -ncpufreqd-1.8.ebuild:
+  Removed old 1.8.
+
+  30 Oct 2005; Luis Medinas <metalgod@gentoo.org> ncpufreqd-2.0.ebuild:
+  Marked Stable on amd64.
+
+  28 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org> -ncpufreqd-1.9.ebuild,
+  ncpufreqd-2.0.ebuild:
+  Stable on x86. Removed old ebuild.
+
+*ncpufreqd-2.0 (01 Oct 2005)
+
+  01 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml,
+  +ncpufreqd-2.0.ebuild:
+  Version bump, changed maintainer.
+
+*ncpufreqd-1.9 (13 Jun 2005)
+
+  13 Jun 2005; <sekretarz@gentoo.org> -ncpufreqd-1.7.ebuild,
+  ncpufreqd-1.8.ebuild, +ncpufreqd-1.9.ebuild:
+  Version bump
+
+*ncpufreqd-1.8 (12 May 2005)
+
+  12 May 2005; Karol Wojtaszek <sekretarz@gentoo.org> +ncpufreqd-1.8.ebuild:
+  Version bump
+
+*ncpufreqd-1.7 (07 May 2005)
+
+  07 May 2005; Karol Wojtaszek <sekretarz@gentoo.org> +metadata.xml,
+  +ncpufreqd-1.7.ebuild:
+  Initial add, thanks to nelchael for app and ebuild, bug #68953

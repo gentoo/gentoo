@@ -1,0 +1,27 @@
+# ChangeLog for sci-geosciences/congen
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/congen/ChangeLog,v 1.7 2014/08/10 20:27:32 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> congen-1.6.1_p2.ebuild,
+  congen-1.6.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  02 Sep 2013; Agostino Sarubbo <ago@gentoo.org> congen-1.6.2.ebuild:
+  Stable for x86, wrt bug #482886
+
+  26 Jun 2013; Chema Alonso <nimiux@gentoo.org> congen-1.6.2.ebuild:
+  Stable for amd64 wrt bug #474414
+
+*congen-1.6.2 (17 Feb 2013)
+
+  17 Feb 2013; Julian Ospald <hasufell@gentoo.org> +congen-1.6.2.ebuild:
+  version bump, fixes bug #457992
+
+  17 Feb 2013; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  set correct maintainer
+
+*congen-1.6.1_p2 (10 Feb 2013)
+
+  10 Feb 2013; Julian Ospald <hasufell@gentoo.org> +congen-1.6.1_p2.ebuild,
+  +metadata.xml:
+  initial import wrt #235537 based on Tim Ceras work

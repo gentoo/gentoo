@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>proxy-maintainers</herd>
+<maintainer>
+  <email>wizzleby@gmail.com</email>
+  <name>Locke Shinseiko</name>
+</maintainer>
+<maintainer>
+  <email>jcallen@gentoo.org</email>
+  <name>Jonathan Callen</name>
+  <description>Proxy maintainer (CC bugs)</description>
+</maintainer>
+</pkgmetadata>

@@ -1,0 +1,130 @@
+# ChangeLog for app-admin/ec2-api-tools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/ec2-api-tools/ChangeLog,v 1.23 2015/03/21 08:07:43 jlec Exp $
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> -ec2-api-tools-1.5.6.1.ebuild,
+  -ec2-api-tools-1.6.0.0.ebuild, -ec2-api-tools-1.6.0.1-r1.ebuild,
+  -ec2-api-tools-1.6.7.2.ebuild, ec2-api-tools-1.6.7.2-r4.ebuild:
+  Drop old; use dobin instead of exeinto /usr/bin/ && doexe
+
+  14 Nov 2014; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Maintainer needed.
+
+*ec2-api-tools-1.6.7.2-r4 (15 Aug 2013)
+
+  15 Aug 2013; Tom Wijsman <TomWij@gentoo.org> +ec2-api-tools-1.6.7.2-r4.ebuild,
+  -ec2-api-tools-1.6.7.2-r3.ebuild:
+  Revision bump. Slotted bcprov dependency. Dropped old / broken revision.
+
+*ec2-api-tools-1.6.7.2-r3 (01 Jun 2013)
+
+  01 Jun 2013; Tom Wijsman <TomWij@gentoo.org> +ec2-api-tools-1.6.7.2-r3.ebuild,
+  -ec2-api-tools-1.6.7.2-r2.ebuild:
+  Revision bump, keyworded again and removed broken revision. Library symlinks
+  were accidentally installed to /, also corrected a remaining EC2_HOME related
+  error...
+
+*ec2-api-tools-1.6.7.2-r2 (31 May 2013)
+
+  31 May 2013; Tom Wijsman <TomWij@gentoo.org> +ec2-api-tools-1.6.7.2-r2.ebuild:
+  Unbundled half of the libraries, the other hal half is missing, committed as
+  unkeyworded since this is a work in progress and breaks a lot of things;
+  reported by robbat2 on IRC, tracked in bug #471942.
+
+*ec2-api-tools-1.6.7.2 (26 Apr 2013)
+
+  26 Apr 2013; Tom Wijsman <TomWij@gentoo.org> +ec2-api-tools-1.6.7.2.ebuild:
+  Version bump to 1.6.7.2. Reported by Cleveland Flowe. Fixes bug #467398.
+
+*ec2-api-tools-1.6.0.1-r1 (03 Apr 2013)
+
+  03 Apr 2013; Tom Wijsman <TomWij@gentoo.org> +ec2-api-tools-1.6.0.1-r1.ebuild,
+  -ec2-api-tools-1.6.0.1.ebuild, metadata.xml:
+  Taking maintainership. Extensively tested, all commands run without giving an
+  immediate error. Replaced src_unpack phase by a EAPI 5 compliant src_prepare
+  phase. Revision bump as we now install to / instead of /opt, dropped ROOT and
+  ROOTPATH environment variables since the binaries are already accessible
+  through their defaults.
+
+*ec2-api-tools-1.6.0.1 (13 Mar 2013)
+
+  13 Mar 2013; Tom Wijsman <TomWij@gentoo.org> +ec2-api-tools-1.6.0.1.ebuild:
+  Non-maintainer commit, version bump to 1.6.0.1.
+
+*ec2-api-tools-1.6.0.0 (29 Jul 2012)
+
+  29 Jul 2012; Fabio Erculiani <lxnay@gentoo.org>
+  +ec2-api-tools-1.6.0.0.ebuild:
+  version bump to 1.6.0.0
+
+  29 Jul 2012; Fabio Erculiani <lxnay@gentoo.org>
+  -ec2-api-tools-1.5.0.1.ebuild:
+  drop old
+
+*ec2-api-tools-1.5.6.1 (29 Jul 2012)
+
+  29 Jul 2012; Fabio Erculiani <lxnay@gentoo.org>
+  +ec2-api-tools-1.5.6.1.ebuild:
+  version bump
+
+  22 Jul 2012; Pacho Ramos <pacho@gentoo.org> -ec2-api-tools-1.3.36506.ebuild,
+  -ec2-api-tools-1.3.57419.ebuild:
+  Drop old, even stable as requested in bug #339813
+
+  08 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Re-assign to maintainer-needed.
+
+*ec2-api-tools-1.5.0.1 (14 Dec 2011)
+
+  14 Dec 2011; Fabio Erculiani <lxnay@gentoo.org>
+  +ec2-api-tools-1.5.0.1.ebuild:
+  version bump
+
+  18 Nov 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  ec2-api-tools-1.3.57419.ebuild:
+  Add EC2 tools' directory to root's path as well.
+
+  16 Nov 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -ec2-api-tools-1.3.51254.ebuild:
+  Remove old version.
+
+*ec2-api-tools-1.3.57419 (05 Oct 2010)
+
+  05 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +ec2-api-tools-1.3.57419.ebuild:
+  Version bump.
+
+*ec2-api-tools-1.3.51254 (03 Jun 2010)
+
+  03 Jun 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -ec2-api-tools-1.3.42584.ebuild, -ec2-api-tools-1.3.46266.ebuild,
+  +ec2-api-tools-1.3.51254.ebuild, metadata.xml:
+  Takeover, remove old versions (but the stable one), bump to latest.
+
+  02 Jun 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove caleb from metadata.xml (#317071)
+
+*ec2-api-tools-1.3.46266 (28 Jan 2010)
+
+  28 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +ec2-api-tools-1.3.46266.ebuild:
+  Version bump, also don't use version for the install path and don't use
+  symlinks to /usr/bin. This means that you won't need to re-source the
+  profile at each upgrade, but just after the first install. And it won't
+  pollute your inode space.
+
+  27 Sep 2009; Markus Meier <maekke@gentoo.org>
+  ec2-api-tools-1.3.36506.ebuild:
+  amd64/x86 stable, bug #286554
+
+*ec2-api-tools-1.3.42584 (26 Sep 2009)
+
+  26 Sep 2009; Caleb Tennis <caleb@gentoo.org>
+  +ec2-api-tools-1.3.42584.ebuild:
+  Version bump
+
+*ec2-api-tools-1.3.36506 (02 Jun 2009)
+
+  02 Jun 2009; Caleb Tennis <caleb@gentoo.org>
+  +ec2-api-tools-1.3.36506.ebuild, +metadata.xml:
+  initial import (thanks to #213003)

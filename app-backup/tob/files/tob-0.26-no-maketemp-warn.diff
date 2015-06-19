@@ -1,0 +1,12 @@
+diff -u tob-0.26/tob tob-0.26.new/tob
+--- tob-0.26/tob	2003-12-22 01:25:17.000000000 +0100
++++ tob-0.26.new/tob	2004-03-20 10:30:09.916597016 +0100
+@@ -61,7 +61,7 @@
+ ## 16 May 1998
+ ##
+ ## Smartened up by Stephen van Egmond <svanegmond@tinyplanet.ca> 2003/10/30
+-MKTEMP=`which maketemp`;
++MKTEMP=`which maketemp 2> /dev/null`;
+ if [ ! -x "$MKTEMP" ]; then
+ 	MKTEMP=`which mktemp`;
+ fi

@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Fortune database of #gentoo-dev quotes
+HOMEPAGE=http://dev.gentoo.org/~avenj
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=games-misc/fortune-mod
+SLOT=0
+SRC_URI=http://ircd.oppresses.us/~avenj/files/gentoo-dev-20061115.gz
+_md5_=a0fc8a3a30e7582f708979ff5dd3ad91

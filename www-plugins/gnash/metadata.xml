@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+	  <email>chithanh@gentoo.org</email>
+	  <name>Chí-Thanh Christopher Nguyễn</name>
+	</maintainer>
+	<use>
+	  <flag name='agg'>Rendering based on the Anti-Grain Geometry Rendering Engine library</flag>
+	  <flag name='cygnal'>Enable building of the cygnal server</flag>
+	  <flag name='dump'>Enable dump output module for creating video from SWF</flag>
+	  <flag name='egl'>Enable EGL support for the OpenVG, OpenGL and X11 renderers</flag>
+	  <flag name='gconf'>Enable GConf configuration backend</flag>
+	  <flag name='harden'>Enable upstream recommended hardening build flags (may conflict with system ones)</flag>
+	  <flag name='jemalloc'>Use dev-libs/jemalloc for allocations</flag>
+	  <flag name='openvg'>Rendering based on the OpenVG graphics acceleration API</flag>
+	  <flag name='sdl-sound'>Enable SDL audio output for the standalone player</flag>
+	  <flag name='ssh'>Enable using SSH for network authentication in libnet</flag>
+	  <flag name='ssl'>Enable directly using OpenSSL in libnet (not needed for nsplugin ssl support)</flag>
+	</use>
+</pkgmetadata>

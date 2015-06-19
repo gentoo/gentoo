@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=test? ( ruby_targets_ruby19? ( >=dev-ruby/actionpack-4.0.0[ruby_targets_ruby19] ) ruby_targets_ruby20? ( >=dev-ruby/actionpack-4.0.0[ruby_targets_ruby20] ) ruby_targets_ruby21? ( >=dev-ruby/actionpack-4.0.0[ruby_targets_ruby21] ) ) ruby_targets_ruby19? ( test? ( >=dev-ruby/activesupport-4.0.0[ruby_targets_ruby19] ) ) ruby_targets_ruby20? ( test? ( >=dev-ruby/activesupport-4.0.0[ruby_targets_ruby20] ) ) ruby_targets_ruby21? ( test? ( >=dev-ruby/activesupport-4.0.0[ruby_targets_ruby21] ) ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby19? ( test? ( dev-ruby/rake[ruby_targets_ruby19] ) ) ruby_targets_ruby20? ( test? ( dev-ruby/rake[ruby_targets_ruby20] ) ) ruby_targets_ruby21? ( test? ( dev-ruby/rake[ruby_targets_ruby21] ) ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_ruby20? ( virtual/rubygems[ruby_targets_ruby20] ) ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] ) test? ( ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_ruby20? ( virtual/rubygems[ruby_targets_ruby20] ) ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] ) )
+DESCRIPTION=XML parameters parser for Action Pack (removed from core in Rails 4.0)
+EAPI=5
+HOMEPAGE=https://github.com/rails/actionpack-xml_parser
+IUSE=test elibc_FreeBSD ruby_targets_ruby19 ruby_targets_ruby20 ruby_targets_ruby21 test test
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=ruby_targets_ruby19? ( >=dev-ruby/actionpack-4.0.0[ruby_targets_ruby19] ) ruby_targets_ruby20? ( >=dev-ruby/actionpack-4.0.0[ruby_targets_ruby20] ) ruby_targets_ruby21? ( >=dev-ruby/actionpack-4.0.0[ruby_targets_ruby21] ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby21? ( dev-lang/ruby:2.1 ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_ruby20? ( virtual/rubygems[ruby_targets_ruby20] ) ruby_targets_ruby21? ( virtual/rubygems[ruby_targets_ruby21] )
+REQUIRED_USE=|| ( ruby_targets_ruby19 ruby_targets_ruby20 ruby_targets_ruby21 )
+SLOT=0
+SRC_URI=https://github.com/rails/actionpack-xml_parser/archive/v1.0.2.tar.gz -> actionpack-xml_parser-1.0.2.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-utils-2	6627198e505d021534cb20f89279c509	multilib	62927b3db3a589b0806255f3a002d5d3	ruby-fakegem	d4f8591e9b20b106327e9d143eb13da5	ruby-ng	a23e4bd47d827c96336af5ad0fe254cf	ruby-utils	a74e21a353442acf697b6c82e7df6df8	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=40ac6625b456180c21ded303a4398c7c

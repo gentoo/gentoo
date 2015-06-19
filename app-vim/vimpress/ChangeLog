@@ -1,0 +1,40 @@
+# ChangeLog for app-vim/vimpress
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/vimpress/ChangeLog,v 1.10 2015/02/19 20:15:35 radhermit Exp $
+
+  19 Feb 2015; Tim Harder <radhermit@gentoo.org> vimpress-3.2.0.ebuild:
+  Bump to EAPI 5.
+
+  06 Jan 2015; Michał Górny <mgorny@gentoo.org> vimpress-3.2.0.ebuild:
+  Convert to python-single-r1, enforce a match on Python version used by vim.
+
+  04 Dec 2012; <ago@gentoo.org> vimpress-3.2.0.ebuild:
+  Stable for x86, wrt bug #441132
+
+  03 Dec 2012; <ago@gentoo.org> vimpress-3.2.0.ebuild:
+  Stable for amd64, wrt bug #441132
+
+  04 Aug 2012; Johannes Huber <johu@gentoo.org> vimpress-2.1.5.ebuild:
+  Stable for x86, wrt bug #415239
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> vimpress-2.1.5.ebuild:
+  Stable for amd64, wrt bug #415239
+
+  03 Aug 2012; Tim Harder <radhermit@gentoo.org> -vimpress-2.1.0.ebuild:
+  Remove old.
+
+*vimpress-3.2.0 (03 Aug 2012)
+
+  03 Aug 2012; Tim Harder <radhermit@gentoo.org> +vimpress-3.2.0.ebuild:
+  Version bump.
+
+*vimpress-2.1.5 (09 Sep 2011)
+
+  09 Sep 2011; Tim Harder <radhermit@gentoo.org> +vimpress-2.1.5.ebuild:
+  Version bump. Use github mirror.
+
+*vimpress-2.1.0 (10 Jun 2011)
+
+  10 Jun 2011; Tim Harder <radhermit@gentoo.org> +vimpress-2.1.0.ebuild,
+  +metadata.xml:
+  Initial import.

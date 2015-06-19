@@ -1,0 +1,28 @@
+#!/sbin/runscript
+
+PIDFILE=/var/run/gmond.pid
+
+depend() {
+	need net
+	after ntp-client ntpd
+}
+
+start() {
+	ebegin "Starting GANGLIA gmond: "
+	start-stop-daemon \
+		--start --quiet \
+		--exec /usr/sbin/gmond \
+		--pidfile ${PIDFILE} \
+		-- \
+		--pid-file=${PIDFILE}
+	eend $? "Failed to start gmond"
+}
+
+stop() {
+	ebegin "Shutting down GANGLIA gmond: "
+	start-stop-daemon \
+		--stop --quiet \
+		--pidfile ${PIDFILE} \
+		--exec /usr/sbin/gmond
+	eend $? "Failed to stop gmond"
+}

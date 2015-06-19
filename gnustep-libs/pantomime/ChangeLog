@@ -1,0 +1,205 @@
+# ChangeLog for gnustep-libs/pantomime
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-libs/pantomime/ChangeLog,v 1.34 2015/02/21 12:15:45 ago Exp $
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> pantomime-1.2.2.ebuild:
+  Stable for ppc, wrt bug #535424
+
+  10 Feb 2015; Agostino Sarubbo <ago@gentoo.org> pantomime-1.2.2.ebuild:
+  Stable for x86, wrt bug #535424
+
+  01 Feb 2015; Agostino Sarubbo <ago@gentoo.org> pantomime-1.2.2.ebuild:
+  Stable for amd64, wrt bug #535424
+
+*pantomime-1.2.2 (20 Oct 2014)
+
+  20 Oct 2014; Bernard Cafarelli <voyageur@gentoo.org>
+  -pantomime-1.2.0_pre3.ebuild, -pantomime-1.2.0_pre3-r1.ebuild,
+  +pantomime-1.2.2.ebuild, -files/pantomime-1.2.0_pre3-gscategories.patch:
+  Version bump, mostly portability and bug fixes
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pantomime-1.2.0.ebuild,
+  pantomime-1.2.0_pre3-r1.ebuild, pantomime-1.2.0_pre3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  07 Jun 2012; Michael Weber <xmw@gentoo.org> pantomime-1.2.0.ebuild:
+  ppc stable (bug 404769)
+
+  09 Apr 2012; Markus Meier <maekke@gentoo.org> pantomime-1.2.0.ebuild:
+  x86 stable, bug #404769
+
+  28 Mar 2012; Agostino Sarubbo <ago@gentoo.org> pantomime-1.2.0.ebuild:
+  Stable for amd64, wrt bug #404769
+
+*pantomime-1.2.0 (14 Nov 2011)
+
+  14 Nov 2011; Bernard Cafarelli <voyageur@gentoo.org> +pantomime-1.2.0.ebuild:
+  Maintenance release bump, ebuild cleanup
+
+  07 Jul 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  pantomime-1.2.0_pre3-r1.ebuild,
+  +files/pantomime-1.2.0_pre3-gscategories.patch:
+  Drop unused include (removed from recent gnustep base), fix bug #327357
+
+*pantomime-1.2.0_pre3-r1 (07 Jul 2009)
+
+  07 Jul 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  +pantomime-1.2.0_pre3-r1.ebuild:
+  Fix compilation with forced --as-needed, bug #276885
+
+  08 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  pantomime-1.2.0_pre3.ebuild:
+  amd64 stable wrt bug #207381
+
+  30 Jan 2008; Brent Baude <ranger@gentoo.org> pantomime-1.2.0_pre3.ebuild:
+  Marking pantomime-1.2.0_pre3 ppc for bug 207381
+
+  25 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  pantomime-1.2.0_pre3.ebuild:
+  quote variable
+
+  25 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  pantomime-1.2.0_pre3.ebuild:
+  stable x86, bug 207381
+
+*pantomime-1.2.0_pre3 (10 Sep 2007)
+
+  10 Sep 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  +pantomime-1.2.0_pre3.ebuild, -pantomime-1.2.0.20050606.ebuild,
+  -pantomime-1.2.0.20060424.ebuild, -pantomime-1.2.0.20060925.ebuild:
+  Version bump from the GNUstep overlay
+  Remove old versions
+
+  22 Aug 2007; Roy Marples <uberlord@gentoo.org>
+  pantomime-1.2.0.20060925.ebuild:
+  Keyworded ~x86-fbsd, #183467 thanks to Nathan Smith.
+
+*pantomime-1.2.0.20060925 (11 Oct 2006)
+
+  11 Oct 2006; Fabian Groffen <grobian@gentoo.org>
+  +pantomime-1.2.0.20060925.ebuild:
+  Bump to pre2, thanks to Dmitry S. Kulyabov in bug #149288
+
+*pantomime-1.2.0.20060424 (25 Mar 2006)
+
+  25 Mar 2006; Fabian Groffen <grobian@gentoo.org>
+  -pantomime-1.2.0_pre20050414.ebuild, +pantomime-1.2.0.20060424.ebuild:
+  Removed CVS ebuilds, version bump (manual CVS snapshot)
+
+*pantomime-1.2.0.20050606 (10 Jun 2005)
+
+  10 Jun 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -pantomime-1.2.0_pre20050312.ebuild, +pantomime-1.2.0.20050606.ebuild:
+  updates (and stabilization of Addresses.app) of GNUMail related GNUstep ebuilds
+
+*pantomime-1.2.0_pre20050414 (15 Apr 2005)
+
+  15 Apr 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -pantomime-1.2.0_pre20050106.ebuild, +pantomime-1.2.0_pre20050414.ebuild:
+  General GNUMail related ebuild version bumps
+
+*pantomime-1.2.0_pre20050312 (17 Mar 2005)
+
+  17 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -pantomime-1.2.0_pre20041203.ebuild, +pantomime-1.2.0_pre20050312.ebuild:
+  ebuild updates for GNUstep base, libs, and apps across the board; proper
+  versions (to be stabilized, in due time) added where apropos, cvs-pull
+  versions updated where needed
+
+*pantomime-1.2.0_pre20050106 (10 Jan 2005)
+
+  10 Jan 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -pantomime-1.2.0_pre20041030.ebuild, -pantomime-1.2.0_pre20041108.ebuild,
+  +pantomime-1.2.0_pre20050106.ebuild:
+  cvs snapshot version bumps; cleaned out old cvs versioned ebuilds; fixed
+  date spec on ebuild headers as repoman was complaining
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*pantomime-1.2.0_pre20041203 (03 Dec 2004)
+
+  03 Dec 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +pantomime-1.2.0_pre20041203.ebuild:
+  General version bump
+
+*pantomime-1.2.0_pre20041108 (11 Nov 2004)
+
+  11 Nov 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  -files/pantomime-1.1.0_pre2-compilation-fix.diff, -pantomime-1.1.0.ebuild,
+  -pantomime-1.1.0_pre2.ebuild, -pantomime-1.2.0_pre20040916.ebuild,
+  -pantomime-1.2.0_pre20040927.ebuild, pantomime-1.2.0_pre20041030.ebuild,
+  +pantomime-1.2.0_pre20041108.ebuild:
+  Mass Update: gnustep.eclass revamped to allow configurable root install;
+  gnustep-base/libs/apps updated to utilize new gnustep.eclass (only versions
+  bumped where files would change); some KEYWORDS were accidentally dropped
+  between version bumps of packages -- this has been resolved; windowmaker
+  correctly supports gnustep now
+
+*pantomime-1.2.0_pre20041030 (31 Oct 2004)
+
+  31 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +pantomime-1.2.0_pre20041030.ebuild:
+  Version bump; keyworded for ~ppc
+
+  17 Oct 2004; David Holm <dholm@gentoo.org>
+  pantomime-1.2.0_pre20040927.ebuild:
+  Added to ~ppc.
+
+*pantomime-1.2.0_pre20040927 (28 Sep 2004)
+
+  28 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +pantomime-1.2.0_pre20040927.ebuild:
+  Verison bump; pre-release is a date specd live cvs pull.
+
+*pantomime-1.2.0_pre20040907 (10 Sep 2004)
+
+  10 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org> metadata.xml,
+  +pantomime-1.2.0_pre20040907.ebuild:
+  Version bump; keyworded for ~x86
+
+*pantomime-1.1.0 (23 Jul 2004)
+
+  25 Jul 2004; Lina Pezzella <j4rg0n@gentoo.org>
+  Fixed Manifest.
+
+  23 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org> +metadata.xml,
+  +files/pantomime-1.1.0_pre2-compilation-fix.diff, +pantomime-1.1.0.ebuild,
+  +pantomime-1.1.0_pre2.ebuild:
+  Moved from app-gnustep/pantomime to gnustep-libs/pantomime.
+
+  22 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  pantomime-1.1.0.ebuild, pantomime-1.1.0_pre2.ebuild:
+  Changing the eclass to gnustep-old
+
+  01 Jun 2004; Aron Griffis <agriffis@gentoo.org> pantomime-1.1.0.ebuild:
+  Fix use invocation
+
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> pantomime-1.1.0.ebuild,
+  pantomime-1.1.0_pre2.ebuild:
+  Stable on alpha.
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> pantomime-1.1.0_pre2.ebuild:
+  Added IUSE=
+
+  29 Jan 2004; Aron Griffis <agriffis@gentoo.org> pantomime-1.1.0.ebuild:
+  add ~alpha
+
+*pantomime-1.1.0 (21 Aug 2003)
+
+  21 Aug 2003; Nick Hadaway <raker@gentoo.org> pantomime-1.1.0.ebuild:
+  Version bump.  New stable revision.
+
+*pantomime-1.1.0_pre2 (15 Jul 2003)
+
+  17 Jul 2003; Michele Balistreri <brain@gentoo.org> pantomime-1.1.0_pre2.ebuild:
+  Fixing compilation problems
+
+  16 Jul 2003; Michele Balistreri <brain@gentoo.org> pantomime-1.1.0_pre2.ebuild:
+  Changing license information as they were invalid
+  
+  15 Jul 2003; Nick Hadaway <raker@gentoo.org> pantomime-1.1.0_pre2.ebuild:
+  New ebuild.

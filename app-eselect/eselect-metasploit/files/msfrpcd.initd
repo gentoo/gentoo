@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-metasploit/files/msfrpcd.initd,v 1.1 2015/03/31 16:51:15 ulm Exp $
+
+VERSION=
+PIDFILE=/var/run/msfrpcd${VERSION}.pid
+
+start() {
+	ebegin "Starting msfrpcd"
+	start-stop-daemon --start --quiet --background \
+		--exec /usr/bin/msfrpcd \
+		--pidfile ${PIDFILE} \
+		--make-pidfile -- -f ${MSF_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping msfrpcd"
+	start-stop-daemon --stop --quiet -s 9 --pidfile ${PIDFILE}
+	eend $?
+}

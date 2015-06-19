@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Modular widget library for x11-wm/awesome
+EAPI=5
+HOMEPAGE=http://awesome.naquadah.org/wiki/Vicious
+IUSE=contrib
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=x11-wm/awesome
+SLOT=0
+SRC_URI=http://git.sysphere.org/vicious/snapshot/vicious-2.1.0.tar.xz
+_md5_=06c75dacd8d766a48b6073cde70c3b61

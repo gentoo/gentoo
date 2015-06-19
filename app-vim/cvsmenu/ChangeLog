@@ -1,0 +1,61 @@
+# ChangeLog for app-vim/cvsmenu
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/cvsmenu/ChangeLog,v 1.19 2012/02/01 21:02:02 ranger Exp $
+
+  01 Feb 2012; Brent Baude <ranger@gentoo.org> cvsmenu-1.147.ebuild:
+  Marking cvsmenu-1.147 ppc for bug 393967
+
+  14 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> cvsmenu-1.147.ebuild:
+  x86 stable wrt bug #393967
+
+  12 Dec 2011; Agostino Sarubbo <ago@gentoo.org> cvsmenu-1.147.ebuild:
+  Stable for AMD64, wrt bug 393967
+
+  11 Dec 2011; Raúl Porcel <armin76@gentoo.org> cvsmenu-1.80.ebuild,
+  cvsmenu-1.147.ebuild:
+  Drop alpha/ia64/sparc keywords
+
+  19 Jun 2010; Jonathan Callen <abcd@gentoo.org> cvsmenu-1.147.ebuild:
+  Moving dev-util/cvs* to dev-vcs/cvs*
+
+*cvsmenu-1.147 (20 Sep 2008)
+
+  20 Sep 2008; Ali Polatel <hawking@gentoo.org> -cvsmenu-1.125.ebuild,
+  +cvsmenu-1.147.ebuild:
+  Version bump. Drop old.
+
+*cvsmenu-1.125 (08 Sep 2006)
+
+  08 Sep 2006; <pioto@gentoo.org> +cvsmenu-1.125.ebuild:
+  Bump to version 1.125, maintained by a new person upstream. Updated HOMEPAGE
+  to reflect. Thanks to Henrique Ferreiro (Bug #131154).
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> cvsmenu-1.80.ebuild:
+  Stable on ppc.
+
+  18 Feb 2005; Tom Martin <slarti@gentoo.org> cvsmenu-1.80.ebuild:
+  amd64 stable.
+
+  26 Oct 2004; Tom Martin <slarti@gentoo.org> cvsmenu-1.80.ebuild:
+  Marked ~amd64.
+
+  03 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> cvsmenu-1.80.ebuild:
+  Help text, bug #62559
+
+  16 Mar 2004; David Holm <dholm@gentoo.org> cvsmenu-1.80.ebuild:
+  Added to ~ppc.
+
+  23 Jan 2004; Aron Griffis <agriffis@gentoo.org> cvsmenu-1.80.ebuild:
+  stable on alpha and ia64
+
+  03 Dec 2003; Ciaran McCreesh <ciaranm@gentoo.org> cvsmenu-1.80.ebuild:
+  Moved to stable on x86 and sparc
+
+  15 Nov 2003; Aron Griffis <agriffis@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+*cvsmenu-1.80 (02 Nov 2003)
+
+  02 Nov 2003; Aron Griffis <agriffis@gentoo.org> cvsmenu-1.80.ebuild:
+  Add cvsmenu plugin.  Thanks to Bret Towe in bug 32498 for the ebuild
+

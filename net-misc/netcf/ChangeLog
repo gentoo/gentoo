@@ -1,0 +1,19 @@
+# ChangeLog for net-misc/netcf
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netcf/ChangeLog,v 1.3 2012/06/28 05:32:21 cardoe Exp $
+
+*netcf-0.1.9 (28 Jun 2012)
+
+  28 Jun 2012; Doug Goldstein <cardoe@gentoo.org> -netcf-0.1.6.ebuild,
+  +netcf-0.1.9.ebuild:
+  Version bump
+
+  27 Oct 2011; Jeroen Roovers <jer@gentoo.org> netcf-0.1.6.ebuild:
+  Fix libnl dependency (bug #342461).
+
+*netcf-0.1.6 (07 Jul 2010)
+
+  07 Jul 2010; Doug Goldstein <cardoe@gentoo.org> +netcf-0.1.6.ebuild,
+  +metadata.xml:
+  Add netcf to the tree but it doesn't actually support Gentoo yet
+

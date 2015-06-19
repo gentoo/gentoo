@@ -1,0 +1,30 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/tntnet/files/tntnet.initd,v 1.1 2011/01/21 00:01:06 idl0r Exp $
+
+PIDFILE="/var/run/tntnet.pid"
+
+depend() {
+	use net
+}
+
+start() {
+	ebegin "Starting tntnet"
+	start-stop-daemon --start --quiet --pidfile $PIDFILE --exec /usr/bin/tntnet
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping tntnet"
+	start-stop-daemon --stop --pidfile $PIDFILE --exec /usr/bin/tntnet
+	eend $?
+}
+
+reload() {
+	# FIXME: Remove --stop and --oknodo as soon as baselayout-1 has been removed...
+	# finally...
+	ebegin "Reloading tntnet configuration"
+	start-stop-daemon --stop --oknodo --pidfile $PIDFILE --signal HUP --exec /usr/bin/tntnet
+	eend $?
+}

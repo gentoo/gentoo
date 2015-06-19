@@ -1,0 +1,113 @@
+# ChangeLog for net-misc/ssvnc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ssvnc/ChangeLog,v 1.27 2015/04/26 22:52:26 mrueg Exp $
+
+  26 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -files/ssvnc-1.0.26-build.patch,
+  -ssvnc-1.0.26.ebuild, -ssvnc-1.0.27.ebuild:
+  Remove old.
+
+  25 Feb 2013; Zac Medico <zmedico@gentoo.org> ssvnc-1.0.29.ebuild:
+  Add ~arm-linux keyword.
+
+  14 Apr 2012; Zac Medico <zmedico@gentoo.org> ssvnc-1.0.29.ebuild:
+  Add ~amd64-linux keyword.
+
+  14 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> ssvnc-1.0.28.ebuild:
+  x86 stable wrt bug #393735
+
+  12 Dec 2011; Agostino Sarubbo <ago@gentoo.org> ssvnc-1.0.28.ebuild:
+  Stable for AMD64, wrt bug #393735
+
+*ssvnc-1.0.29 (09 Dec 2011)
+
+  09 Dec 2011; Mike Frysinger <vapier@gentoo.org> +ssvnc-1.0.29.ebuild,
+  +files/ssvnc-1.0.29-build.patch:
+  Version bump.
+
+  29 Jul 2011; Zac Medico <zmedico@gentoo.org> ssvnc-1.0.28.ebuild:
+  Add ~x86-linux keyword.
+
+  27 Jul 2011; Zac Medico <zmedico@gentoo.org> ssvnc-1.0.28.ebuild:
+  Bump to EAPI 3 and fix for prefix.
+
+  26 Feb 2011; Kevin McCarthy <signals@gentoo.org> ssvnc-1.0.26.ebuild,
+  ssvnc-1.0.27.ebuild, ssvnc-1.0.28.ebuild:
+  Updated depends from media-libs/jpeg to virtual/jpeg
+
+  02 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> ssvnc-1.0.27.ebuild:
+  x86 stable wrt bug #349974
+
+  01 Jan 2011; Markos Chandras <hwoarang@gentoo.org> ssvnc-1.0.27.ebuild:
+  Stable on amd64 wrt bug #349974
+
+*ssvnc-1.0.28 (28 Dec 2010)
+
+  28 Dec 2010; Mike Frysinger <vapier@gentoo.org> +ssvnc-1.0.28.ebuild:
+  Version bump.
+
+*ssvnc-1.0.27 (19 Jul 2010)
+
+  19 Jul 2010; Mike Frysinger <vapier@gentoo.org> +ssvnc-1.0.27.ebuild,
+  +files/ssvnc-1.0.27-build.patch:
+  Version bump.
+
+  19 Jul 2010; Mike Frysinger <vapier@gentoo.org> ssvnc-1.0.26.ebuild:
+  Stabilize for amd64/x86.
+
+  19 Jul 2010; Mike Frysinger <vapier@gentoo.org> ssvnc-1.0.26.ebuild:
+  Require xterm since ssvnc uses it indirectly #327511 by Nikita S.
+  Kipriyanov.
+
+  19 Apr 2010; Mike Frysinger <vapier@gentoo.org> +ssvnc-1.0.26.ebuild,
+  +files/ssvnc-1.0.26-build.patch:
+  Version bump.
+
+*ssvnc-1.0.26 (19 Apr 2010)
+
+  19 Apr 2010; Mike Frysinger <vapier@gentoo.org> +ssvnc-1.0.26.ebuild,
+  +files/ssvnc-1.0.26-build.patch:
+  Version bump.
+
+  19 Apr 2010; Mike Frysinger <vapier@gentoo.org> ssvnc-1.0.25.ebuild:
+  Mark amd64/x86 stable.
+
+  10 Jan 2010; Mike Frysinger <vapier@gentoo.org> files/Makefile.vncviewer:
+  Add more build flags from old imake #299890 by Marcel Pennewiß.
+
+  07 Jan 2010; Mike Frysinger <vapier@gentoo.org> ssvnc-1.0.22.ebuild,
+  ssvnc-1.0.24.ebuild, ssvnc-1.0.25.ebuild:
+  Fix by Marcel Pennewiß for sed error when USE=-java #299888.
+
+*ssvnc-1.0.25 (05 Jan 2010)
+
+  05 Jan 2010; Mike Frysinger <vapier@gentoo.org> +ssvnc-1.0.25.ebuild,
+  +files/ssvnc-1.0.25-build.patch:
+  Version bump #299721 by Marcel Pennewiß.
+
+  05 Jan 2010; Mike Frysinger <vapier@gentoo.org> ssvnc-1.0.24.ebuild:
+  Mark amd64/x86 stable.
+
+*ssvnc-1.0.24 (04 Dec 2009)
+
+  04 Dec 2009; Mike Frysinger <vapier@gentoo.org> +ssvnc-1.0.24.ebuild,
+  +files/ssvnc-1.0.24-build.patch, +files/ssvnc-1.0.24-optional-java.patch,
+  +files/Makefile.libvncauth, +files/Makefile.vncviewer:
+  Version bump and avoid imake #289407 by Dmitri Pogosian.
+
+  29 Jun 2009; Markus Meier <maekke@gentoo.org> ssvnc-1.0.22.ebuild:
+  amd64/x86 stable, bug #274986
+
+*ssvnc-1.0.23 (21 Jun 2009)
+
+  21 Jun 2009; Mike Frysinger <vapier@gentoo.org> +ssvnc-1.0.23.ebuild:
+  Version bump.
+
+  10 Mar 2009; Mike Frysinger <vapier@gentoo.org> ssvnc-1.0.22.ebuild:
+  Require tk as we use wish #261876 by RB.
+
+*ssvnc-1.0.22 (03 Feb 2009)
+
+  03 Feb 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/ssvnc-1.0.22-build.patch, +files/ssvnc-1.0.22-optional-java.patch,
+  +metadata.xml, +ssvnc-1.0.22.ebuild:
+  Initial package by me.

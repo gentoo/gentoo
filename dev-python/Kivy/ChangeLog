@@ -1,0 +1,44 @@
+# ChangeLog for dev-python/Kivy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/Kivy/ChangeLog,v 1.11 2015/06/03 20:04:07 jlec Exp $
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> Kivy-1.8.0.ebuild,
+  Kivy-1.9.0.ebuild:
+  Fix eclass usage
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> Kivy-1.8.0.ebuild,
+  Kivy-1.9.0.ebuild:
+  Add missing eutils.eclass
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+*Kivy-1.9.0 (10 Apr 2015)
+
+  10 Apr 2015; Sławek Lis <slis@gentoo.org> +Kivy-1.9.0.ebuild:
+  version bump
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> Kivy-1.8.0.ebuild:
+  Drop old Python implementations
+
+  19 Feb 2015; Sławek Lis <slis@gentoo.org> +files/cython-0.22.patch,
+  Kivy-1.8.0.ebuild:
+  Attempt to fix problem with cython-0.22 (#540402)
+
+  01 Jan 2015; Sławek Lis <slis@gentoo.org> +files/cython-fixes.patch,
+  Kivy-1.8.0.ebuild:
+  Fixed #534114
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> Kivy-1.8.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  06 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org> Kivy-1.8.0.ebuild:
+  Pin gst-python to 0.10 slot
+
+  02 Apr 2014; Sławek Lis <slis@gentoo.org> Kivy-1.8.0.ebuild, metadata.xml:
+  change use flag name (gst to gstreamer)
+
+*Kivy-1.8.0 (02 Apr 2014)
+
+  02 Apr 2014; Sławek Lis <slis@gentoo.org> +Kivy-1.8.0.ebuild, +metadata.xml:
+  Added Kivy package

@@ -1,0 +1,39 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/motion/files/motion.initd-r2,v 1.1 2011/10/02 18:48:35 ssuominen Exp $
+
+extra_started_commands="reload"
+
+_create_motion_run_dir() {
+	local dir="/var/run/motion"
+	if ! [ -d "$dir" ]; then
+		mkdir -p -m750 "$dir"
+		chown ${MOTION_USER}:${MOTION_GROUP} "$dir"
+	fi
+}
+
+depend() {
+	need modules
+	after mysql
+}
+
+start() {
+	_create_motion_run_dir
+
+	ebegin "Starting motion detection"
+	start-stop-daemon --start -u ${MOTION_USER} -g ${MOTION_GROUP} --quiet --exec /usr/bin/motion
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping motion detection"
+	start-stop-daemon --stop --quiet --exec /usr/bin/motion
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading motion detection configuration"
+	start-stop-daemon --stop --signal HUP --exec /usr/bin/motion
+	eend $?
+}

@@ -1,0 +1,13 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id: pinentry.eselect-0.4,v 1.1 2015/03/31 16:54:08 ulm Exp $
+
+DESCRIPTION="Manage /usr/bin/pinentry implementation"
+MAINTAINER="ssuominen@gentoo.org"
+VERSION="0.4"
+
+SYMLINK_PATH=/usr/bin/pinentry
+SYMLINK_TARGETS=( pinentry-qt pinentry-gtk-2 pinentry-qt4 pinentry-curses )
+SYMLINK_DESCRIPTION='pinentry binary'
+
+inherit bin-symlink

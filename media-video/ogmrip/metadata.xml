@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>video</herd>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>billl@users.sf.net</email>
+    <name>Olivier Rolland</name>
+  </maintainer>
+  <longdescription lang="en">
+</longdescription>
+  <use>
+    <flag name="ogm">Support for OGM container format</flag>
+    <flag name="srt">Support for SRT subtitle format</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">ogmrip</remote-id>
+  </upstream>
+</pkgmetadata>

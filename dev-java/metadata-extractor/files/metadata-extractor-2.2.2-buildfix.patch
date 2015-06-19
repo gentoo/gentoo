@@ -1,0 +1,46 @@
+--- metadata-extractor.build	2009-01-31 15:22:58.000000000 +0200
++++ metadata-extractor.build.fixed	2009-01-31 15:37:02.000000000 +0200
+@@ -24,25 +24,38 @@
+             srcdir="${src}"
+             destdir="${build}"
+             debug="${debug}"
+-            verbose="${verbose}"/>
++            verbose="${verbose}">
++            <exclude name="**/test/*.java"/>
++        </javac>
++    </target>
++    
++    <target name="compile-test" description="compile the source">
++        <javac classpath="${classpath}"
++            srcdir="${src}"
++            destdir="${build}"
++            debug="${debug}"
++            verbose="${verbose}">
++            <include name="**/test/*.java"/>
++        </javac>
+     </target>
+ 
+-    <target name="dist-binaries" depends="clean, compile, test" description="generate binary distribution">
++    <target name="dist-binaries" depends="clean, compile" description="generate binary distribution">
+         <jar destfile="${dist}/metadata-extractor-${version}.jar" update="false" basedir="${build}">
+             <manifest>
+                 <attribute name="Main-Class" value="com.drew.imaging.jpeg.JpegMetadataReader"/>
+-            </manifest>
++            </manifest>
++            <exclude name="**/test/*.class"/>
+         </jar>
+     </target>
+ 
+-    <target name="dist-source" depends="clean, compile, test" description="generate source distribution">
++    <target name="dist-source" depends="clean, compile" description="generate source distribution">
+         <jar destfile="${dist}/metadata-extractor-${version}-src.jar" update="false">
+             <fileset dir="."
+                 includes="${src}/**/*.java, ${src}/**/*.jpg, ${lib}/junit.jar, metadata-extractor.build, ReleaseNotes.txt"/>
+         </jar>
+     </target>
+ 
+-    <target name="test" depends="compile" description="run all junit tests">
++    <target name="test" depends="compile-test" description="run all junit tests">
+         <junit printsummary="yes" fork="yes" haltonfailure="yes">
+             <classpath>
+                 <pathelement location="${build}"/>

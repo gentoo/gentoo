@@ -1,0 +1,116 @@
+--- hexcalc.c	1989-11-22 22:29:06.000000000 +0100
++++ hexcalc.c.new	2006-11-27 11:38:07.000000000 +0100
+@@ -208,46 +208,73 @@
+ };
+ 
+ static	String		defaultTranslations	=
+-	":<Key>(:		DoKey(\"(\")\n\
+-	 :<Key>&:		DoKey(&)\n\
+-	 :<Key>^:		DoKey(^)\n\
+-	 :<Key>):		DoKey(\")\")\n\
+-	 Ctrl<Key>c:		DoKey(off)\n\
+-	 :<Key>H:		DoKey(hex)\n\
+-	 :<Key>O:		DoKey(oct)\n\
+-	 :<Key>D:		DoKey(dec)\n\
+-	 :<Key>B:		DoKey(bin)\n\
+-	 :<Key>R:		DoKey(Rcl)\n\
+-	 :<Key>S:		DoKey(Sto)\n\
+-	 :<Key>s:		DoKey(16)\n\
+-	 :<Key>l:		DoKey(32)\n\
+-	 :<Key>+:		DoKey(+)\n\
+-	 :<Key>-:		DoKey(-)\n\
+-	 :<Key>*:		DoKey(*)\n\
+-	 :<Key>/:		DoKey(/)\n\
+-	 :<Key>%:		DoKey(%)\n\
+-	 :<Key>>:		DoKey(>>)\n\
+-	 :<Key><:		DoKey(<<)\n\
+-	 :<Key>0:		DoKey(0)\n\
+-	 :<Key>1:		DoKey(1)\n\
+-	 :<Key>2:		DoKey(2)\n\
+-	 :<Key>3:		DoKey(3)\n\
+-	 :<Key>4:		DoKey(4)\n\
+-	 :<Key>5:		DoKey(5)\n\
+-	 :<Key>6:		DoKey(6)\n\
+-	 :<Key>7:		DoKey(7)\n\
+-	 :<Key>8:		DoKey(8)\n\
+-	 :<Key>9:		DoKey(9)\n\
+-	 :<Key>a:		DoKey(a)\n\
+-	 :<Key>b:		DoKey(b)\n\
+-	 :<Key>c:		DoKey(c)\n\
+-	 :<Key>d:		DoKey(d)\n\
+-	 :<Key>e:		DoKey(e)\n\
+-	 :<Key>f:		DoKey(f)\n\
+-	 Ctrl<Key>h:		Delete()\n\
+-	 <Key>Delete:		Delete()\n\
+-	 :<Key>=:		DoKey(=)\n\
+-	 :<Key>Return:		DoKey(=)"
++	":<Key>(:               DoKey(\"(\")\n\
++	 :<Key>&:               DoKey(&)\n\
++	 :<Key>^:               DoKey(^)\n\
++	 :<Key>):               DoKey(\")\")\n\
++	 Ctrl<Key>c:            DoKey(off)\n\
++	 :<Key>H:               DoKey(hex)\n\
++	 :<Key>O:               DoKey(oct)\n\
++	 :<Key>D:               DoKey(dec)\n\
++	 :<Key>B:               DoKey(bin)\n\
++	 :<Key>R:               DoKey(Rcl)\n\
++	 :<Key>S:               DoKey(Sto)\n\
++	 :<Key>s:               DoKey(16)\n\
++	 :<Key>l:               DoKey(32)\n\
++	 :<Key>+:               DoKey(+)\n\
++	 :<Key>KP_Add:          DoKey(+)\n\
++	 :<Key>-:               DoKey(-)\n\
++	 :<Key>KP_Subtract:     DoKey(-)\n\
++	 :<Key>*:               DoKey(*)\n\
++	 :<Key>KP_Multiply:     DoKey(*)\n\
++	 :<Key>/:               DoKey(/)\n\
++	 :<Key>KP_Divide:       DoKey(/)\n\
++	 :<Key>%:               DoKey(%)\n\
++	 :<Key>>:               DoKey(>>)\n\
++	 :<Key><:               DoKey(<<)\n\
++	 :<Key>0:               DoKey(0)\n\
++	 :<Key>KP_0:            DoKey(0)\n\
++	 :<Key>KP_Insert:       DoKey(0)\n\
++	 :<Key>1:               DoKey(1)\n\
++	 :<Key>KP_1:            DoKey(1)\n\
++	 :<Key>KP_End:          DoKey(1)\n\
++	 :<Key>2:               DoKey(2)\n\
++	 :<Key>KP_2:            DoKey(2)\n\
++	 :<Key>KP_Down:         DoKey(2)\n\
++	 :<Key>3:               DoKey(3)\n\
++	 :<Key>KP_3:            DoKey(3)\n\
++	 :<Key>KP_Next:         DoKey(3)\n\
++	 :<Key>4:               DoKey(4)\n\
++	 :<Key>KP_4:            DoKey(4)\n\
++	 :<Key>KP_Left:         DoKey(4)\n\
++	 :<Key>5:               DoKey(5)\n\
++	 :<Key>KP_5:            DoKey(5)\n\
++	 :<Key>KP_Begin:        DoKey(5)\n\
++	 :<Key>6:               DoKey(6)\n\
++	 :<Key>KP_6:            DoKey(6)\n\
++	 :<Key>KP_Right:        DoKey(6)\n\
++	 :<Key>7:               DoKey(7)\n\
++	 :<Key>KP_7:            DoKey(7)\n\
++	 :<Key>KP_Home:         DoKey(7)\n\
++	 :<Key>8:               DoKey(8)\n\
++	 :<Key>KP_8:            DoKey(8)\n\
++	 :<Key>KP_Up:           DoKey(8)\n\
++	 :<Key>9:               DoKey(9)\n\
++	 :<Key>KP_9:            DoKey(9)\n\
++	 :<Key>KP_Prior:        DoKey(9)\n\
++	 :<Key>a:               DoKey(a)\n\
++	 :<Key>b:               DoKey(b)\n\
++	 :<Key>c:               DoKey(c)\n\
++	 :<Key>d:               DoKey(d)\n\
++	 :<Key>e:               DoKey(e)\n\
++	 :<Key>f:               DoKey(f)\n\
++	 Ctrl<Key>h:            Delete()\n\
++	 <Key>Delete:           Delete()\n\
++	 <Key>KP_Delete:        Delete()\n\
++	 <Key>KP_Decimal:       Delete()\n\
++	 :<Key>=:               DoKey(=)\n\
++	 :<Key>KP_Enter:        DoKey(=)\n\
++	 :<Key>Return:          DoKey(=)"
+ ;
+ 
+ 

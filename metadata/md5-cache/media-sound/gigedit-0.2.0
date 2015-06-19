@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-cpp/gtkmm:2.4 >=media-libs/libgig-3.3.0 >=media-libs/libsndfile-1.0.2 >=media-sound/linuxsampler-0.5.1 sys-devel/gettext >=dev-util/intltool-0.35.0 virtual/pkgconfig
+DESCRIPTION=An instrument editor for gig files
+EAPI=3
+HOMEPAGE=http://www.linuxsampler.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-cpp/gtkmm:2.4 >=media-libs/libgig-3.3.0 >=media-libs/libsndfile-1.0.2 >=media-sound/linuxsampler-0.5.1
+SLOT=0
+SRC_URI=http://download.linuxsampler.org/packages/gigedit-0.2.0.tar.gz
+_md5_=c0496b2751fcc9ee737c722a7c231a20

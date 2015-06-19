@@ -1,0 +1,79 @@
+# ChangeLog for media-sound/mcdp
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mcdp/ChangeLog,v 1.24 2012/03/19 19:05:17 armin76 Exp $
+
+  19 Mar 2012; Raúl Porcel <armin76@gentoo.org> mcdp-0.4a.ebuild,
+  mcdp-0.4b.ebuild:
+  Drop sparc keywords
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> mcdp-0.4b.ebuild:
+  x86 stable wrt bug #400401
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> mcdp-0.4b.ebuild:
+  Stable for amd64, wrt bug #400401
+
+*mcdp-0.4b (22 Aug 2011)
+
+  22 Aug 2011; Tim Harder <radhermit@gentoo.org> +mcdp-0.4b.ebuild:
+  Version bump.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  09 Sep 2006; Thomas Cort <tcort@gentoo.org> mcdp-0.4a.ebuild:
+  Stable on amd64 wrt Bug #145885.
+
+  08 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org> mcdp-0.4a.ebuild:
+  Stable on sparc
+
+  08 Sep 2006; Joshua Jackson <tsunam@gentoo.org> mcdp-0.4a.ebuild:
+  Stable x86; bug #145885
+
+  07 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/mcdp-0.4a-makefile.patch, mcdp-0.4a.ebuild:
+  Drop virtual/libc dependency. Respect LDFLAGS. Don't strip.
+
+*mcdp-0.4a (04 Mar 2006)
+
+  04 Mar 2006; MATSUU Takuto <matsuu@gentoo.org>
+  +files/mcdp-0.4a-dietlibc-fix.patch, +mcdp-0.4a.ebuild:
+  Version bumped, Bug 106064.
+
+  10 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> mcdp-0.3j.ebuild:
+  Don't install INSTALL file.
+
+  28 Aug 2005; Mike Frysinger <vapier@gentoo.org> mcdp-0.3j.ebuild:
+  Punt USE=diet.
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> mcdp-0.3j.ebuild:
+  Added to ~ppc.
+
+  03 Feb 2005; Robin H. Johnson <robbat2@gentoo.org> mcdp-0.3j.ebuild,
+  +files/mcdp-0.3j-dietlibc-fix.patch:
+  Fix bug #50447 properly. It's not hard dammit.
+
+  30 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> mcdp-0.3j.ebuild:
+  toolchain love for bug #69011.
+
+  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> mcdp-0.3j.ebuild:
+  Stable amd64, sparc.
+
+  19 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> mcdp-0.3j.ebuild:
+  Made dietlibc optional.  Added to ~sparc.
+
+  19 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> mcdp-0.3j.ebuild:
+  Added to ~amd64
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> mcdp-0.3j.ebuild:
+  Added IUSE.
+
+  31 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> mcdp-0.3j.ebuild:
+  Stable x86.  Ebuild cleanup.
+
+*mcdp-0.3j (11 Jul 2003)
+
+  11 Jul 2003; jje <jje@gentoo.org> mcdp-0.3j.ebuild:
+  Initial revision.
+  
+  Submitted by: Freyr Gunnar Ólafsson <gnarlin@utopia.is>
+

@@ -1,0 +1,122 @@
+# ChangeLog for app-text/zathura-djvu
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/zathura-djvu/ChangeLog,v 1.28 2014/10/24 18:31:19 ssuominen Exp $
+
+*zathura-djvu-0.2.4 (24 Oct 2014)
+
+  24 Oct 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +zathura-djvu-0.2.4.ebuild, zathura-djvu-9999.ebuild:
+  Version bump.
+
+  05 Jun 2014; Samuli Suominen <ssuominen@gentoo.org> zathura-djvu-0.2.3.ebuild:
+  amd64/arm/x86 stable
+
+  04 Apr 2014; Samuli Suominen <ssuominen@gentoo.org> metadata.xml,
+  zathura-djvu-0.2.3.ebuild, zathura-djvu-9999.ebuild:
+  Synchronize 0.2.3 with 9999 and punt ref.s to USE="deprecated" since zathura
+  >= 0.2.7 removed support for gtk+-2.
+
+  30 Mar 2014; Samuli Suominen <ssuominen@gentoo.org> zathura-djvu-0.2.3.ebuild:
+  Revert back to ~arch because arch stabilization can't be trusted due to the
+  bogus 30 days timeout wrt #502714
+
+  30 Mar 2014; Samuli Suominen <ssuominen@gentoo.org>
+  -zathura-djvu-0.2.1.ebuild, -zathura-djvu-0.2.2.ebuild:
+  old
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org> zathura-djvu-0.2.3.ebuild:
+  amd64 stable, bug #491960
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  zathura-djvu-0.2.3.ebuild:
+  x86 stable wrt bug #491960
+
+*zathura-djvu-9999 (23 Jun 2013)
+
+  23 Jun 2013; Michael Weber <xmw@gentoo.org> +zathura-djvu-9999.ebuild,
+  metadata.xml:
+  Add USE=+deprecated for gtk2 dependency, add live ebuild for gtk3 development.
+
+  19 Jun 2013; Alex Alexander <wired@gentoo.org> metadata.xml:
+  removed myself from maintainer list
+
+  19 Jun 2013; Michael Weber <xmw@gentoo.org> zathura-djvu-0.2.3.ebuild:
+  Make cairo non-optional again.
+
+*zathura-djvu-0.2.3 (13 Jun 2013)
+
+  13 Jun 2013; Michael Weber <xmw@gentoo.org> +zathura-djvu-0.2.3.ebuild,
+  metadata.xml:
+  Version bump, adding myself as maint.
+
+*zathura-djvu-0.2.2 (27 Jan 2013)
+
+  27 Jan 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +zathura-djvu-0.2.2.ebuild:
+  Version bump.
+
+  11 Jan 2013; Samuli Suominen <ssuominen@gentoo.org>
+  zathura-djvu-0.2.1.ebuild:
+  Keyword ~arm wrt #368757 (tested with cortex-a8, hardfloat)
+
+  11 Jan 2013; Samuli Suominen <ssuominen@gentoo.org>
+  -zathura-djvu-0.2.0.ebuild:
+  old
+
+  11 Jan 2013; Agostino Sarubbo <ago@gentoo.org> zathura-djvu-0.2.1.ebuild:
+  Stable for x86, wrt bug #450750
+
+  11 Jan 2013; Agostino Sarubbo <ago@gentoo.org> zathura-djvu-0.2.1.ebuild:
+  Stable for amd64, wrt bug #450750
+
+*zathura-djvu-0.2.1 (03 Sep 2012)
+
+  03 Sep 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +zathura-djvu-0.2.1.ebuild:
+  Version bump wrt #433718 by Simon Kohlmeyer
+
+  11 Jul 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -zathura-djvu-0.1.1.ebuild:
+  old
+
+  11 Jul 2012; Jeff Horelick <jdhore@gentoo.org> zathura-djvu-0.2.0.ebuild:
+  marked x86 per bug 425674
+
+  10 Jul 2012; Agostino Sarubbo <ago@gentoo.org> zathura-djvu-0.2.0.ebuild:
+  Stable for amd64, wrt bug #425674
+
+*zathura-djvu-0.2.0 (15 Jun 2012)
+
+  15 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +zathura-djvu-0.2.0.ebuild:
+  Version bump.
+
+  15 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -zathura-djvu-0.1.0.ebuild:
+  old
+
+  22 May 2012; Jeff Horelick <jdhore@gentoo.org> zathura-djvu-0.1.1.ebuild:
+  marked x86 per bug 414985
+
+  07 May 2012; Agostino Sarubbo <ago@gentoo.org> zathura-djvu-0.1.1.ebuild:
+  Stable for amd64, wrt bug #414985
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> zathura-djvu-0.1.0.ebuild,
+  zathura-djvu-0.1.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*zathura-djvu-0.1.1 (30 Mar 2012)
+
+  30 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +zathura-djvu-0.1.1.ebuild:
+  Version bump.
+
+  13 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  zathura-djvu-0.1.0.ebuild:
+  Force -r1 of app-text/djvu for sanitized headers wrt #407989
+
+*zathura-djvu-0.1.0 (11 Mar 2012)
+
+  11 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +zathura-djvu-0.1.0.ebuild:
+  Initial commit.

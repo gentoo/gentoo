@@ -1,0 +1,19 @@
+--- p7zip_9.04/CPP/7zip/Bundles/Format7zFree/makefile.orig	2010-01-04 13:58:54.527887746 +0100
++++ p7zip_9.04/CPP/7zip/Bundles/Format7zFree/makefile	2010-01-04 13:59:10.290868343 +0100
+@@ -247,8 +247,6 @@
+   MyAes.o \
+   Pbkdf2HmacSha1.o \
+   RandGen.o \
+-  Rar20Crypto.o \
+-  RarAes.o \
+   Sha1.o \
+   WzAes.o \
+   ZipCrypto.o \
+@@ -298,7 +296,6 @@
+   $(HFS_OBJS) \
+   $(ISO_OBJS) \
+   $(NSIS_OBJS) \
+-  $(RAR_OBJS) \
+   $(TAR_OBJS) \
+   $(UDF_OBJS) \
+   $(WIM_OBJS) \

@@ -1,0 +1,60 @@
+# ChangeLog for games-emulation/kigb
+# Copyright 2000-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/kigb/ChangeLog,v 1.15 2015/03/30 18:52:44 mr_bones_ Exp $
+
+  30 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> kigb-2.02.ebuild:
+  EAPI=5
+
+  17 Apr 2014; Ulrich Müller <ulm@gentoo.org> kigb-2.02.ebuild:
+  Fix LICENSE, add mirror and bindist restrictions, bug 505624.
+
+  25 Nov 2008; Michael Sterrett <mr_bones_@gentoo.org> kigb-2.02.ebuild:
+  add virtual/libstdc++ dep (bug #248660)
+
+  07 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org> files/kigb:
+  Change all instances of [ to [[.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> kigb-1.68.ebuild,
+  kigb-2.02.ebuild:
+  Removing old virtual/x11 dependency.
+
+  19 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org> kigb-1.68.ebuild,
+  kigb-2.02.ebuild:
+  Adding strip to RESTRICT for bug #137819.
+
+*kigb-2.02 (13 Mar 2006)
+
+  13 Mar 2006; Michael Sterrett <mr_bones_@gentoo.org> +kigb-2.02.ebuild:
+  version bump
+
+  08 Feb 2006; Michael Sterrett <mr_bones_@gentoo.org> kigb-1.68.ebuild:
+  modular X deps - patch from Tupone Alfredo via bug #121644
+
+*kigb-1.68 (31 Aug 2004)
+
+  31 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> files/kigb,
+  -kigb-1.5.6.ebuild, -kigb-1.60.ebuild, +kigb-1.68.ebuild:
+  version bump; use GAMES_PREFIX_OPT in wrapper script; tidy old versions
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> kigb-1.5.6.ebuild,
+  kigb-1.60.ebuild:
+  virtual/glibc -> virtual/libc
+
+*kigb-1.60 (29 May 2004)
+
+  29 May 2004; Michael Sterrett <mr_bones_@gentoo.org> kigb-1.60.ebuild,
+  files/kigb:
+  version bump; make install more gentoo-like and cleaner
+
+*kigb-1.5.6 (07 Feb 2004)
+
+  07 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #40431 by Chris Aniszczyk.
+
+*kigb-1.5.4 (09 Jan 2004)
+
+  09 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Chris Aniszczyk #37448.

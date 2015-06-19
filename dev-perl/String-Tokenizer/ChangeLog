@@ -1,0 +1,34 @@
+# ChangeLog for dev-perl/String-Tokenizer
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/String-Tokenizer/ChangeLog,v 1.7 2014/08/26 14:53:34 axs Exp $
+
+*String-Tokenizer-0.50.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +String-Tokenizer-0.50.0-r1.ebuild, -String-Tokenizer-0.50.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop duplication of myself as a maintainer where there is a herd.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -String-Tokenizer-0.05.ebuild:
+  Cleanup
+
+*String-Tokenizer-0.50.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +String-Tokenizer-0.50.0.ebuild:
+  Change version scheme
+
+  17 Jan 2009; Robin H. Johnson <robbat2@gentoo.org>
+  String-Tokenizer-0.05.ebuild:
+  Emerge on an empty system (without perl) failed due to lack of perl dep.
+
+*String-Tokenizer-0.05 (02 Jan 2009)
+
+  02 Jan 2009; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +String-Tokenizer-0.05.ebuild:
+  Initial commit. Dep for EverGreen ILS (via CQL-Parser).

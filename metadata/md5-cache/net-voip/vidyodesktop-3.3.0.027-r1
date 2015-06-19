@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Enterprise video conferencing platform
+EAPI=5
+HOMEPAGE=http://www.vidyo.com/
+KEYWORDS=~amd64 ~x86
+LICENSE=Vidyo-EULA
+RDEPEND=app-arch/bzip2 dev-libs/expat dev-libs/glib dev-libs/libffi media-libs/alsa-lib media-libs/fontconfig media-libs/freetype media-libs/glu media-libs/libpng media-libs/mesa net-dns/libidn sys-libs/zlib x11-libs/libdrm x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXdamage x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXrandr x11-libs/libXrender x11-libs/libXScrnSaver x11-libs/libXv x11-libs/libXxf86vm
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=amd64? ( https://demo.vidyo.com/upload/VidyoDesktopInstaller-ubuntu64-TAG_VD_3_3_0_027.deb ) x86? ( https://demo.vidyo.com/upload/VidyoDesktopInstaller-ubuntu-TAG_VD_3_3_0_027.deb )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=c803bbcba815184bc801c933b04bbc79

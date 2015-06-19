@@ -1,0 +1,64 @@
+diff -uNr gonvert-0.2.23.ORIG//gonvert gonvert-0.2.23/gonvert
+--- gonvert-0.2.23.ORIG//gonvert	2010-05-02 15:56:46.807041971 +0100
++++ gonvert-0.2.23/gonvert	2010-05-02 15:57:06.840166944 +0100
+@@ -739,9 +739,9 @@
+ if os.path.exists('gonvert.glade'):
+ 	homepath=''
+ 	pixmapspath='pixmaps/'
+-elif os.path.exists('/usr/local/share/gonvert/gonvert.glade'):
+-	homepath='/usr/local/share/gonvert/'
+-	pixmapspath='/usr/local/share/pixmaps/'
++elif os.path.exists('/usr/share/gonvert/gonvert.glade'):
++	homepath='/usr/share/gonvert/'
++	pixmapspath='/usr/share/pixmaps/'
+ else:
+ 	#look for it in the installed directory
+ 	homepath=sys.path[0] + '/../share/gonvert/'
+diff -uNr gonvert-0.2.23.ORIG//Makefile gonvert-0.2.23/Makefile
+--- gonvert-0.2.23.ORIG//Makefile	2010-05-02 15:56:46.808041940 +0100
++++ gonvert-0.2.23/Makefile	2010-05-02 15:57:06.840166944 +0100
+@@ -4,7 +4,7 @@
+ VERSION=$(shell head -3 $(NAME) | grep version | cut -d\" -f2)
+ 
+ #DESTDIR can be defined when calling make ie. make install DESTDIR=$RPM_BUILD_ROOT
+-prefix  = /usr/local
++prefix  = /usr
+ bindir  = $(prefix)/bin
+ datadir = $(prefix)/share
+ docdir  = $(datadir)/doc
+@@ -18,7 +18,7 @@
+ 	install -D -m0644 gonvert.glade $(DESTDIR)$(datadir)/gonvert/gonvert.glade
+ 	install -d -m0755 $(DESTDIR)$(datadir)/pixmaps/
+ 	install -m0644 pixmaps/*.png $(DESTDIR)$(datadir)/pixmaps/
+-	install -D -m0644 gonvert.desktop $(DESTDIR)$(datadir)/gnome/apps/Utilities/gonvert.desktop
++	install -D -m0644 gonvert.desktop $(DESTDIR)$(datadir)/applications/gonvert.desktop
+ 	install -d -m0755 $(DESTDIR)$(docdir)/gonvert/
+ 	install -m0644 doc/* $(DESTDIR)$(docdir)/gonvert/
+ 
+@@ -27,7 +27,7 @@
+ 	install -D -m0644 gonvert.glade $(DESTDIR)$(datadir)/gonvert/gonvert.glade
+ 	install -d -m0755 $(DESTDIR)$(datadir)/pixmaps/
+ 	install -m0644 pixmaps/*.png $(DESTDIR)$(datadir)/pixmaps/
+-	install -D -m0644 gonvert.desktop $(DESTDIR)$(datadir)/gnome/apps/Utilities/gonvert.desktop
++	install -D -m0644 gonvert.desktop $(DESTDIR)$(datadir)/applications/gonvert.desktop
+ 	install -d -m0755 $(DESTDIR)$(docdir)/gonvert/
+ 	install -m0644 doc/* $(DESTDIR)$(docdir)/gonvert/
+ 	install -m0644 i18n/pl_messages.gmo /usr/share/locale/pl/LC_MESSAGES/gonvert.mo
+@@ -37,7 +37,7 @@
+ 	rm -f  $(bindir)/gonvert
+ 	rm -rf $(datadir)/gonvert*
+ 	rm -rf $(docdir)/gonvert*
+-	rm -f /usr/share/gnome/apps/Utilities/$(NAME).desktop
++	rm -f /usr/share/applications/$(NAME).desktop
+ 	rm -f /usr/share/pixmaps/$(NAME).png
+ 
+ uninstall_pl:
+@@ -45,7 +45,7 @@
+ 	rm -f  $(bindir)/gonvert
+ 	rm -rf $(datadir)/gonvert*
+ 	rm -rf $(docdir)/gonvert*
+-	rm -f /usr/share/gnome/apps/Utilities/$(NAME).desktop
++	rm -f /usr/share/applications/$(NAME).desktop
+ 	rm -f /usr/share/pixmaps/$(NAME).png
+ 	rm -f /usr/share/locale/pl/LC_MESSAGES/gonvert.mo
+ 

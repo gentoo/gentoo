@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		Tag-stream is a library for parsing HTML//XML to a token stream.
+		It can parse unstructured and malformed HTML from the web.
+		It also provides an Enumeratee which can parse streamline html, which means it consumes constant memory.
+		You can start from the `tests/Tests.hs` module to see what it can do.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">yihuang/tagstream-conduit</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,81 @@
+# ChangeLog for dev-perl/boolean
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/boolean/ChangeLog,v 1.17 2015/03/14 14:07:49 dilfridge Exp $
+
+*boolean-0.450.0 (14 Mar 2015)
+
+  14 Mar 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +boolean-0.450.0.ebuild:
+  Version bump, bug 543208
+
+*boolean-0.420.0 (14 Dec 2014)
+
+  14 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -boolean-0.320.0.ebuild, +boolean-0.420.0.ebuild:
+  Version bump, fixes also bug 527272
+
+  29 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> -boolean-0.280.0.ebuild,
+  -boolean-0.300.0.ebuild:
+  Drop old.
+
+*boolean-0.320.0 (19 Feb 2014)
+
+  19 Feb 2014; Tim Harder <radhermit@gentoo.org> +boolean-0.320.0.ebuild:
+  Version bump.
+
+*boolean-0.300.0 (25 Aug 2013)
+
+  25 Aug 2013; Patrick Lauer <patrick@gentoo.org> +boolean-0.300.0.ebuild:
+  Bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org> -boolean-0.270.0.ebuild:
+  Cleanup
+
+*boolean-0.280.0 (13 Sep 2011)
+
+  13 Sep 2011; Torsten Veller <tove@gentoo.org> +boolean-0.280.0.ebuild:
+  Version bump
+
+  29 Jul 2011; Torsten Veller <tove@gentoo.org> -boolean-0.260.ebuild:
+  Cleanup
+
+*boolean-0.270.0 (06 Jul 2011)
+
+  06 Jul 2011; Torsten Veller <tove@gentoo.org> +boolean-0.270.0.ebuild:
+  Version bump
+
+  02 Apr 2011; Torsten Veller <tove@gentoo.org> -boolean-0.23.ebuild,
+  -boolean-0.240.ebuild, -boolean-0.250.ebuild:
+  Cleanup
+
+*boolean-0.260 (21 Jan 2011)
+
+  21 Jan 2011; Torsten Veller <tove@gentoo.org> +boolean-0.260.ebuild:
+  Version bump
+
+*boolean-0.250 (16 Jan 2011)
+
+  16 Jan 2011; Torsten Veller <tove@gentoo.org> +boolean-0.250.ebuild:
+  Version bump
+
+*boolean-0.240 (15 Jan 2011)
+
+  15 Jan 2011; Torsten Veller <tove@gentoo.org> +boolean-0.240.ebuild:
+  Version bump
+
+  20 Oct 2010; Torsten Veller <tove@gentoo.org> -boolean-0.20.ebuild:
+  Cleanup
+
+*boolean-0.23 (17 Sep 2010)
+
+  17 Sep 2010; Torsten Veller <tove@gentoo.org> +boolean-0.23.ebuild:
+  Version bump
+
+*boolean-0.20 (09 Jun 2009)
+
+  09 Jun 2009; Torsten Veller <tove@gentoo.org> +boolean-0.20.ebuild,
+  +metadata.xml:
+  Initial import from perl-experimental

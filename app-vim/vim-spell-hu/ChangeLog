@@ -1,0 +1,25 @@
+# ChangeLog for app-vim/vim-spell-hu
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/vim-spell-hu/ChangeLog,v 1.6 2012/10/07 10:26:08 pacho Exp $
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, #274113
+
+  03 Jun 2010; Dror Levin <spatz@gentoo.org> vim-spell-hu-20100312.ebuild:
+  Stable on amd64, bug 314855.
+
+  26 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  vim-spell-hu-20100312.ebuild:
+  x86 stable wrt bug #314855
+
+  12 Mar 2010; Dror Levin <spatz@gentoo.org> vim-spell-hu-20100312.ebuild:
+  Remove untested keywords.
+
+  12 Mar 2010; Dror Levin <spatz@gentoo.org> metadata.xml:
+  List correct encoding in longdescription.
+
+*vim-spell-hu-20100312 (11 Mar 2010)
+
+  11 Mar 2010; Dror Levin <spatz@gentoo.org> +vim-spell-hu-20100312.ebuild,
+  +metadata.xml:
+  Initial import, bug 167214.

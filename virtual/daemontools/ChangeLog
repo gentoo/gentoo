@@ -1,0 +1,19 @@
+# ChangeLog for virtual/daemontools
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/daemontools/ChangeLog,v 1.4 2011/07/20 17:36:48 pacho Exp $
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #118937
+
+  11 Jul 2011; Alexis Ballier <aballier@gentoo.org> daemontools-0.ebuild:
+  keyword ~x86-fbsd
+
+  29 Jan 2011; Thilo Bangert <bangert@gentoo.org> daemontools-0.ebuild:
+  add missing ppc64 stable keyword
+
+*daemontools-0 (29 Jan 2011)
+
+  29 Jan 2011; Thilo Bangert <bangert@gentoo.org> +daemontools-0.ebuild,
+  +metadata.xml:
+  introduce virtual for daemontools
+

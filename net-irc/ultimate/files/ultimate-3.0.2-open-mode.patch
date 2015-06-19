@@ -1,0 +1,63 @@
+From: Nathan Phillip Brink <ohnobinki@ohnopublishing.net>
+Subject: Provide the required third argument to open() when O_CREAT is
+	in the second argument.
+Date: 2011/04/28
+
+--- a/src/s_serv.c
++++ b/src/s_serv.c
+@@ -4603,7 +4603,7 @@
+ 
+ #else /*  LOCKFILE - MDP */
+ 
+-  if ((out = open (filename, O_RDWR | O_APPEND | O_CREAT)) == -1)
++  if ((out = open (filename, O_RDWR | O_APPEND | O_CREAT, 0600)) == -1)
+   {
+     sendto_one (source_p, ":%s NOTICE %s :Problem opening %s ",
+                 me.name, parv[0], filename);
+@@ -7397,7 +7397,7 @@
+     syslog (LOG_INFO, "ADDCNLINE from %s for [%s] - Opening %s\n",
+             get_client_name (source_p, FALSE), parv[3], configfile);
+ #endif
+-    if ((out = open (configfile, O_RDWR | O_APPEND | O_CREAT)) == -1)
++    if ((out = open (configfile, O_RDWR | O_APPEND | O_CREAT, 0600)) == -1)
+     {
+       sendto_one (source_p, ":%s NOTICE %s :Problem opening %s ",
+                   me.name, parv[0], configfile);
+@@ -7770,7 +7770,7 @@
+     syslog (LOG_INFO, "ADDOPER from %s for [%s] - Opening %s\n",
+             get_client_name (source_p, FALSE), parv[3], configfile);
+ #endif
+-    if ((out = open (configfile, O_RDWR | O_APPEND | O_CREAT)) == -1)
++    if ((out = open (configfile, O_RDWR | O_APPEND | O_CREAT, 0600)) == -1)
+     {
+       sendto_one (source_p, ":%s NOTICE %s :Problem opening %s ",
+                   me.name, parv[0], configfile);
+@@ -8090,7 +8090,7 @@
+     syslog (LOG_INFO, "ADDQLINE from %s for [%s] - Opening %s\n",
+             get_client_name (source_p, FALSE), parv[1], configfile);
+ #endif
+-    if ((out = open (configfile, O_RDWR | O_APPEND | O_CREAT)) == -1)
++    if ((out = open (configfile, O_RDWR | O_APPEND | O_CREAT, 0600)) == -1)
+     {
+       sendto_one (source_p, ":%s NOTICE %s :Problem opening %s ",
+                   me.name, parv[0], configfile);
+@@ -8379,7 +8379,7 @@
+     syslog (LOG_INFO, "ADDHLINE from %s for [%s] - Opening %s\n",
+             get_client_name (source_p, FALSE), parv[1], configfile);
+ #endif
+-    if ((out = open (configfile, O_RDWR | O_APPEND | O_CREAT)) == -1)
++    if ((out = open (configfile, O_RDWR | O_APPEND | O_CREAT, 0600)) == -1)
+     {
+       sendto_one (source_p, ":%s NOTICE %s :Problem opening %s ",
+                   me.name, parv[0], configfile);
+@@ -8663,7 +8663,7 @@
+     syslog (LOG_INFO, "ADDULINE from %s for [%s] - Opening %s\n",
+             get_client_name (source_p, FALSE), parv[1], configfile);
+ #endif
+-    if ((out = open (configfile, O_RDWR | O_APPEND | O_CREAT)) == -1)
++    if ((out = open (configfile, O_RDWR | O_APPEND | O_CREAT, 0600)) == -1)
+     {
+       sendto_one (source_p, ":%s NOTICE %s :Problem opening %s ",
+                   me.name, parv[0], configfile);
+
+Diff finished.  Thu Apr 28 00:15:19 2011

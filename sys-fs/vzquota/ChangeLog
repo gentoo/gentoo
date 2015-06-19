@@ -1,0 +1,141 @@
+# ChangeLog for sys-fs/vzquota
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/vzquota/ChangeLog,v 1.35 2013/10/23 10:56:45 pva Exp $
+
+  23 Oct 2013; Peter Volkov <pva@gentoo.org> metadata.xml:
+  Took maintaining.
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due vserver removal
+
+  04 Sep 2013; Alexander Vershilov <qnikst@gentoo.org> -vzquota-3.0.11.ebuild,
+  -vzquota-3.0.12.ebuild:
+  removed old versions: they doesn't work with in tree kernels (thanks to
+  slepnoga)
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> vzquota-3.1.ebuild:
+  Stable for x86, wrt bug #469964
+
+  17 May 2013; Agostino Sarubbo <ago@gentoo.org> vzquota-3.1.ebuild:
+  Stable for amd64, wrt bug #469964
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #96436
+
+*vzquota-3.1 (13 Dec 2012)
+
+  13 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> +vzquota-3.1.ebuild:
+  Version bump wrt bug #437690
+
+  07 Jul 2009; Peter Volkov <pva@gentoo.org> vzquota-3.0.12.ebuild:
+  x86/amd64 stable, bug #199738. Remove old.
+
+  27 May 2009; Peter Volkov <pva@gentoo.org> vzquota-3.0.12.ebuild:
+  Don't use -Werror during build, bug #260939, thank Diego E. 'Flameeyes'
+  Pettenò for report.
+
+  11 Nov 2008; Peter Volkov <pva@gentoo.org> vzquota-3.0.12.ebuild:
+  Parallel install works.
+
+*vzquota-3.0.12 (11 Nov 2008)
+
+  11 Nov 2008; Peter Volkov <pva@gentoo.org> +vzquota-3.0.12.ebuild:
+  Version bump.
+
+  14 Mar 2008; Benedikt Böhm <hollow@gentoo.org> metadata.xml:
+  fix metadata
+
+  24 Dec 2007; <pva@gentoo.org> -vzquota-3.0.9.ebuild,
+  vzquota-3.0.11.ebuild:
+  3.0.11 - x86/amd64 stable, bug 199738. Remove old from the tree.
+
+  20 Nov 2007; <pva@gentoo.org> metadata.xml:
+  Added myself into metadata.
+
+  20 Oct 2007; Benedikt Böhm <hollow@gentoo.org> vzquota-3.0.11.ebuild:
+  fix #189622
+
+*vzquota-3.0.11 (16 Aug 2007)
+
+  16 Aug 2007; Christian Heim <phreak@gentoo.org> +vzquota-3.0.11.ebuild:
+  Version bump, thanks to Kir Kolyshkin <kir at openvz.org> for notifying us.
+
+  18 Jan 2007; Christian Heim <phreak@gentoo.org> vzquota-3.0.9.ebuild:
+  Adding ~ia64 to the KEYWORDS.
+
+  21 Dec 2006; Christian Heim <phreak@gentoo.org>
+  -vzquota-3.0.0.2-r1.ebuild:
+  Cleaning up old version.
+
+  03 Dec 2006; Benedikt Böhm <hollow@gentoo.org> vzquota-3.0.9.ebuild:
+  3.0.9 stable on amd64 and x86; add ~ppc64 and ~sparc
+
+*vzquota-3.0.9 (12 Oct 2006)
+
+  12 Oct 2006; Christian Heim <phreak@gentoo.org> -vzquota-3.0.0.6.ebuild,
+  -vzquota-3.0.0.7.ebuild, -vzquota-3.0.8.ebuild, +vzquota-3.0.9.ebuild:
+  Version bump (fixing #150897); cleaning older version(s).
+
+*vzquota-3.0.8 (14 Jun 2006)
+
+  14 Jun 2006; Christian Heim <phreak@gentoo.org> +vzquota-3.0.8.ebuild:
+  Version bump, the OpenVZ finally decided to use a sane version scheme,
+  reworked the ebuild (no inherit calls needed anymore). For a detailed
+  ChangeLog see http://openvz.org/news/updates/vzquota-3.0.8-1!
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+*vzquota-3.0.0.7 (24 Apr 2006)
+
+  24 Apr 2006; Christian Heim <phreak@gentoo.org> +vzquota-3.0.0.7.ebuild:
+  Version bump, see http://openvz.org/news/updates/vzquota-3.0.0-7 for a
+  detailed ChangeLog
+
+  21 Apr 2006; Christian Heim <phreak@gentoo.org> vzquota-3.0.0.6.ebuild:
+  Ripping of the CONFIG_CHECK's and the VZKERNEL_HEADERS
+
+*vzquota-3.0.0.6 (20 Apr 2006)
+
+  20 Apr 2006; Christian Heim <phreak@gentoo.org> +vzquota-3.0.0.6.ebuild:
+  Adding vzquota 3.0.0-6, vzquota is now licensed under GPL-2!
+
+  11 Apr 2006; Christian Heim <phreak@gentoo.org> -vzquota-2.7.0.7.ebuild,
+  -vzquota-3.0.0.2.ebuild:
+  Removing old ebuilds
+
+  10 Apr 2006; Christian Heim <phreak@gentoo.org> vzquota-2.7.0.7.ebuild,
+  vzquota-3.0.0.2.ebuild, vzquota-3.0.0.2-r1.ebuild:
+  Fixing IUSE, vzquota-3.0.0.2-r1 stable on amd64/x86
+
+  21 Feb 2006; Christian Heim <phreak@gentoo.org> vzquota-3.0.0.2-r1.ebuild:
+  Bad, more comments I forgot about, my bad; Thanks kir for spotting that
+
+*vzquota-3.0.0.2-r1 (20 Feb 2006)
+
+  20 Feb 2006; Christian Heim <phreak@gentoo.org>
+  +vzquota-3.0.0.2-r1.ebuild:
+  revision bump, fixing the version number reported by vzquota -V
+
+  20 Feb 2006; Christian Heim <phreak@gentoo.org> vzquota-3.0.0.2.ebuild:
+  Fixing the ebuild, I had commented out the original inherit / CONFIG_CHECK
+
+*vzquota-3.0.0.2 (14 Feb 2006)
+
+  14 Feb 2006; Christian Heim <phreak@gentoo.org> +vzquota-3.0.0.2.ebuild:
+  New upstream version
+
+  26 Dec 2005; Benedikt Boehm <hollow@gentoo.org> vzquota-2.7.0.7.ebuild:
+  marked stable amd64
+
+  01 Dec 2005; Benedikt Boehm <hollow@gentoo.org> vzquota-2.7.0.7.ebuild:
+  2.7.0.7 marked x86, ~amd64
+
+  26 Nov 2005; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fixing metadata.xml to include the maintainer email
+
+*vzquota-2.7.0.7 (23 Sep 2005)
+
+  23 Sep 2005; Benedikt Boehm <hollow@gentoo.org> +metadata.xml,
+  +vzquota-2.7.0.7.ebuild:
+  initial ebuild, thx to kir

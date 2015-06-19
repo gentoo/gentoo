@@ -1,0 +1,23 @@
+# ChangeLog for sci-biology/pals
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/pals/ChangeLog,v 1.4 2013/03/11 16:35:33 jlec Exp $
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+  22 Sep 2009; Markus Meier <maekke@gentoo.org> pals-1.0.ebuild:
+  x86 stable, bug #283681
+
+  06 Sep 2009; Jeremy Olexa <darkside@gentoo.org> pals-1.0.ebuild:
+  amd64 stable, bug 283681. As requested, compile tested only due to
+  complexity
+
+*pals-1.0 (25 Jul 2009)
+
+  25 Jul 2009; Andrey Kislyuk <weaver@gentoo.org> +metadata.xml,
+  +pals-1.0.ebuild:
+  Import from Science overlay
+
+  18 Feb 2009; weaver <weaver@gentoo.org> ChangeLog:
+  New package sci-biology/pals, ebuild written by me
+

@@ -1,0 +1,266 @@
+# ChangeLog for app-text/zathura
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/zathura/ChangeLog,v 1.65 2015/06/01 12:59:10 xmw Exp $
+
+*zathura-0.3.3 (01 Jun 2015)
+
+  01 Jun 2015; Michael Weber <xmw@gentoo.org> +zathura-0.3.3.ebuild:
+  Version bump (thanks Jan-Willem Liebezeit, bug 549874).
+
+*zathura-0.3.2 (26 Feb 2015)
+
+  26 Feb 2015; Michael Weber <xmw@gentoo.org>
+  +files/zathura-0.3.2-no-sqlite.patch, +zathura-0.3.2.ebuild:
+  Version bump (bug 532576, thanks Chris Torske). Add a patch for USE=-sqlite
+  with installed sqlite:3.
+
+*zathura-0.3.1 (24 Oct 2014)
+
+  24 Oct 2014; Samuli Suominen <ssuominen@gentoo.org> +zathura-0.3.1.ebuild,
+  zathura-9999.ebuild:
+  Version bump.
+
+  26 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> -zathura-0.2.7.ebuild:
+  old
+
+  26 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> zathura-0.2.9.ebuild:
+  amd64/arm/x86 stable
+
+*zathura-0.2.9 (13 Jul 2014)
+
+  13 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> +zathura-0.2.9.ebuild,
+  zathura-9999.ebuild:
+  Version bump.
+
+  05 Jun 2014; Samuli Suominen <ssuominen@gentoo.org> zathura-0.2.7.ebuild:
+  amd64/arm/x86 stable
+
+  07 May 2014; Samuli Suominen <ssuominen@gentoo.org> zathura-9999.ebuild:
+  Raise dev-libs/girara dependency to 0.2.1 which isn't released yet (but we
+  have 9999 git ebuild of it) wrt #509150 by "tharvik"
+
+  04 Apr 2014; Samuli Suominen <ssuominen@gentoo.org> -zathura-0.2.6.ebuild,
+  metadata.xml:
+  old
+
+*zathura-0.2.7 (04 Apr 2014)
+
+  04 Apr 2014; Samuli Suominen <ssuominen@gentoo.org> +zathura-0.2.7.ebuild,
+  zathura-9999.ebuild:
+  Version bump.
+
+  30 Mar 2014; Samuli Suominen <ssuominen@gentoo.org> -zathura-0.2.1.ebuild,
+  -zathura-0.2.2.ebuild, -zathura-0.2.3.ebuild:
+  old
+
+*zathura-0.2.6 (27 Nov 2013)
+
+  27 Nov 2013; Samuli Suominen <ssuominen@gentoo.org> +zathura-0.2.6.ebuild,
+  zathura-9999.ebuild, metadata.xml:
+  Version bump wrt #483268 by Petr Pisar
+
+*zathura-9999 (22 Jun 2013)
+
+  22 Jun 2013; Michael Weber <xmw@gentoo.org> +zathura-9999.ebuild,
+  metadata.xml:
+  Add USE=+deprecated for gtk2 dependency, add live ebuild for gtk3 development.
+
+  19 Jun 2013; Alex Alexander <wired@gentoo.org> metadata.xml:
+  removed myself from maintainer list
+
+*zathura-0.2.3 (13 Jun 2013)
+
+  13 Jun 2013; Michael Weber <xmw@gentoo.org> +zathura-0.2.3.ebuild,
+  metadata.xml, zathura-0.2.2.ebuild:
+  Version bump, adding myself as maint.
+
+  12 Mar 2013; Samuli Suominen <ssuominen@gentoo.org> zathura-0.2.2.ebuild:
+  Include content of myzathuraconf also for testsuite wrt #454666 by Diego Elio
+  Pettenò
+
+*zathura-0.2.2 (27 Jan 2013)
+
+  27 Jan 2013; Samuli Suominen <ssuominen@gentoo.org> +zathura-0.2.2.ebuild:
+  Version bump. Still using GTK+ 2.x because of -pdf-poppler plug-in
+  compability.
+
+  11 Jan 2013; Samuli Suominen <ssuominen@gentoo.org> zathura-0.2.1.ebuild:
+  Keyword ~arm wrt #368757 (tested with cortex-a8, hardfloat)
+
+  11 Jan 2013; Samuli Suominen <ssuominen@gentoo.org> -zathura-0.2.0.ebuild:
+  old
+
+  11 Jan 2013; Samuli Suominen <ssuominen@gentoo.org> zathura-0.2.1.ebuild:
+  Fix testsuite; missing dev-libs/check dependency and virtualx usage for dummy
+  $DISPLAY wrt #426234 by Patrick Lauer
+
+  11 Jan 2013; Agostino Sarubbo <ago@gentoo.org> zathura-0.2.1.ebuild:
+  Stable for x86, wrt bug #450750
+
+  11 Jan 2013; Agostino Sarubbo <ago@gentoo.org> zathura-0.2.1.ebuild:
+  Stable for amd64, wrt bug #450750
+
+  11 Jan 2013; Samuli Suominen <ssuominen@gentoo.org> zathura-0.2.1.ebuild:
+  Run fdo-mime_desktop_database_update from fdo-mime.eclass for MimeType= line
+  of zathura.desktop.
+
+  21 Sep 2012; Benda Xu <heroxbd@gentoo.org> zathura-0.2.1.ebuild:
+  keyword ~amd64-linux ~x86-linux
+
+  21 Sep 2012; Benda Xu <heroxbd@gentoo.org> zathura-0.2.1.ebuild:
+  add trivial prefix support
+
+  06 Sep 2012; Samuli Suominen <ssuominen@gentoo.org> zathura-0.2.1.ebuild:
+  Remove 0 byte manpages in src_prepare() for rst2man.py to generate them again
+  wrt #434140 by José Romildo Malaquias
+
+*zathura-0.2.1 (03 Sep 2012)
+
+  03 Sep 2012; Samuli Suominen <ssuominen@gentoo.org> +zathura-0.2.1.ebuild:
+  Version bump wrt #433718 by Simon Kohlmeyer
+
+  11 Jul 2012; Samuli Suominen <ssuominen@gentoo.org> -zathura-0.1.2.ebuild:
+  old
+
+  11 Jul 2012; Jeff Horelick <jdhore@gentoo.org> zathura-0.2.0.ebuild:
+  marked x86 per bug 425674
+
+  10 Jul 2012; Agostino Sarubbo <ago@gentoo.org> zathura-0.2.0.ebuild:
+  Stable for amd64, wrt bug #425674
+
+*zathura-0.2.0 (15 Jun 2012)
+
+  15 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> +zathura-0.2.0.ebuild:
+  Version bump. Put rst2man.py (dev-python/docutils) behind USE="doc" because
+  the tarball has prebuilt manpages wrt #420693 by "Cedric".
+
+  15 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> -zathura-0.0.8.5.ebuild,
+  -zathura-0.1.1.ebuild:
+  old
+
+  22 May 2012; Jeff Horelick <jdhore@gentoo.org> zathura-0.1.2.ebuild:
+  marked x86 per bug 414985
+
+  07 May 2012; Agostino Sarubbo <ago@gentoo.org> zathura-0.1.2.ebuild:
+  Stable for amd64, wrt bug #414985
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> zathura-0.0.8.5.ebuild,
+  zathura-0.1.1.ebuild, zathura-0.1.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*zathura-0.1.2 (30 Mar 2012)
+
+  30 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> +zathura-0.1.2.ebuild:
+  Version bump.
+
+  11 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> -zathura-0.0.8.4.ebuild,
+  -zathura-0.1.0.ebuild:
+  old
+
+*zathura-0.1.1 (11 Mar 2012)
+
+  11 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> +zathura-0.1.1.ebuild:
+  Version bump.
+
+  09 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> zathura-0.1.0.ebuild:
+  pkg_postinst() message about the separate app-text/zathura-pdf-poppler
+  plug-in wrt #405289, Comment #5 by Ben Kohler
+
+  08 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> zathura-0.1.0.ebuild:
+  Use GTK+-2 for now because zathura-pdf-poppler plug-in is still GTK+-2.
+
+*zathura-0.1.0 (08 Mar 2012)
+
+  08 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> +zathura-0.1.0.ebuild:
+  Version bump wrt #405289 by Paweł Rumian
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> zathura-0.0.8.5.ebuild:
+  x86 stable wrt bug #404623
+
+  25 Feb 2012; Agostino Sarubbo <ago@gentoo.org> zathura-0.0.8.5.ebuild:
+  Stable for amd64, wrt bug #404623
+
+*zathura-0.0.8.5 (05 Dec 2011)
+
+  05 Dec 2011; Alex Alexander <wired@gentoo.org> +zathura-0.0.8.5.ebuild:
+  version bump
+
+  18 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> -zathura-0.0.8.1.ebuild,
+  -zathura-0.0.8.3.ebuild:
+  old
+
+  18 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> zathura-0.0.8.4.ebuild:
+  amd64/x86 stable wrt #387531
+
+*zathura-0.0.8.4 (09 Sep 2011)
+
+  09 Sep 2011; Alex Alexander <wired@gentoo.org> +zathura-0.0.8.4.ebuild:
+  version bump, bug #379215
+
+  26 May 2011; Michael Weber <xmw@gentoo.org> zathura-0.0.8.3.ebuild:
+  added ~arm keyword (bug 368757)
+
+*zathura-0.0.8.3 (02 May 2011)
+
+  02 May 2011; Samuli Suominen <ssuominen@gentoo.org> +zathura-0.0.8.3.ebuild:
+  Version bump wrt #363373 by Hans-Peter Deifel and Arseny Solokha
+
+  30 Dec 2010; Alex Alexander <wired@gentoo.org> zathura-0.0.8.2.ebuild,
+  +files/zathura-poppler-0.16.patch:
+  added patch for poppler-0.16, bug #349941
+
+  30 Dec 2010; Alex Alexander <wired@gentoo.org> zathura-0.0.7.ebuild,
+  zathura-0.0.8.ebuild, zathura-0.0.8.1.ebuild, zathura-0.0.8.2.ebuild:
+  restricted poppler dep, 0.16 not supported yet, bug #349941
+
+*zathura-0.0.8.2 (22 Nov 2010)
+
+  22 Nov 2010; Alex Alexander <wired@gentoo.org> +zathura-0.0.8.2.ebuild:
+  version bump
+
+  25 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  zathura-0.0.8.1.ebuild:
+  stable x86, bug 341777
+
+  20 Oct 2010; Markos Chandras <hwoarang@gentoo.org> zathura-0.0.8.1.ebuild:
+  Stable on amd64 wrt bug #341777
+
+*zathura-0.0.8.1 (06 Aug 2010)
+
+  06 Aug 2010; Alex Alexander <wired@gentoo.org> +zathura-0.0.8.1.ebuild:
+  version bump, bug #331425
+
+  31 Jul 2010; Markos Chandras <hwoarang@gentoo.org> zathura-0.0.7.ebuild:
+  Stable on amd64 wrt bug #330383
+
+  30 Jul 2010; Christian Faulhammer <fauli@gentoo.org> zathura-0.0.7.ebuild:
+  stable x86, bug 330383
+
+  29 Jul 2010; Alex Alexander <wired@gentoo.org> metadata.xml:
+  grabbed this ;)
+
+*zathura-0.0.8 (29 Jul 2010)
+
+  29 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> +zathura-0.0.8.ebuild:
+  Version bump.
+
+*zathura-0.0.7 (21 Jun 2010)
+
+  21 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> +zathura-0.0.7.ebuild:
+  Version bump.
+
+*zathura-0.0.6 (09 Jun 2010)
+
+  09 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> +zathura-0.0.6.ebuild:
+  Version bump wrt #323261 by Nick White.
+
+*zathura-0.0.3 (17 Apr 2010)
+
+  17 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> +zathura-0.0.3.ebuild:
+  Version bump.
+
+*zathura-0.0.2 (05 Mar 2010)
+
+  05 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> +zathura-0.0.2.ebuild,
+  +files/zathura-0.0.2-build.patch:
+  Initial commit.

@@ -1,0 +1,22 @@
+Darwin8 has no backtrace functionalities yet
+
+--- src/sphinxutils.cpp
++++ src/sphinxutils.cpp
+@@ -1364,6 +1364,9 @@
+ 	}
+ 	sphSafeInfo ( iFD, "Stack bottom = 0x%p, thread stack size = 0x%x", pMyStack, iStackSize );
+ 
++#ifndef SIGRETURN_FRAME_OFFSET
++	sphLogFatal ( "Cannot get stack frame pointer on this architecture" );
++#else
+ 	while ( pMyStack && !bSafe )
+ 	{
+ 		sphSafeInfo ( iFD, "begin of manual backtrace:" );
+@@ -1421,6 +1424,7 @@
+ 
+ 		break;
+ 	}
++#endif
+ 
+ #if HAVE_BACKTRACE
+ 	sphSafeInfo ( iFD, "begin of system backtrace:" );

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>php</herd>
+<longdescription>
+This is a quick and efficient BBCode Parsing Library.It provides various tag types,
+high speed one pass parsing, callback system, tag position restriction.
+It will force closing BBCode tags in the good order, and closing terminating tags 
+at the end of the string this is in order to ensure HTML Validity in all cases.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,23 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/sparc-utils/files/audioctl.init,v 1.2 2004/07/15 00:52:09 agriffis Exp $
+
+checkconfig() {
+	if [ -z "${PARAMS}" ]
+	then
+		eerror "Please make sure that /etc/conf.d/audioctl has \$PARAMS set"
+		return 1
+	fi
+}
+start() {
+	checkconfig || return 1
+
+	ebegin "Starting audioctl"
+	if [ -n "${DEVICE}" ]; then
+		/usr/bin/audioctl -f ${DEVICE} -nw ${PARAMS}
+	else
+		/usr/bin/audioctl -nw ${PARAMS}
+	fi
+	eend $?
+}

@@ -1,0 +1,24 @@
+--- src/config.cpp.orig	2004-09-27 11:35:48.000000000 +0200
++++ src/config.cpp	2006-02-13 00:00:01.000000000 +0100
+@@ -78,6 +78,7 @@
+ // makefile.
+ char *get_config_location(bool write) {
+ #ifdef LINUX
++	static char *config_path = NULL;
+ 	// Get the path to the config file
+ 	string tmp = get_tomatoes_dir() + "config.cfg";
+ 
+@@ -90,8 +91,11 @@
+ 		}
+ 		fclose(ftest);
+ 	}
+-
+-	return (char*)tmp.c_str();
++       if (!config_path) {
++		config_path = new char[tmp.length()+1];
++		strcpy(config_path,tmp.c_str());
++	}
++	return config_path;
+ #endif
+ 
+ 	// Return the CONFIG_DIR

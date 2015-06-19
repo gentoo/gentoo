@@ -1,0 +1,57 @@
+# ChangeLog for media-video/tcmplex-panteltje
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/tcmplex-panteltje/ChangeLog,v 1.12 2011/03/20 14:19:39 hd_brummy Exp $
+
+  20 Mar 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  tcmplex-panteltje-0.4.7.ebuild:
+  LDFLAGS again, bug 335182
+
+  23 Feb 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -tcmplex-panteltje-0.3.ebuild, -files/tcmplex-panteltje-0.3.patch,
+  tcmplex-panteltje-0.4.7.ebuild:
+  clean up; eapi=3; respect LDFLAGS now bug #335182
+
+  27 Nov 2007; Matthias Schwarzott <zzam@gentoo.org>
+  tcmplex-panteltje-0.3.ebuild, tcmplex-panteltje-0.4.7.ebuild:
+  Fixed quoting. No longer install LICENSE file.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  03 Jul 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -files/tcmplex-panteltje-0.4.7_breakIfBrokenPatch.diff,
+  -tcmplex-panteltje-0.4.7-r1.ebuild:
+  -r1 removed; broken patch give seg faults
+
+*tcmplex-panteltje-0.4.7-r1 (28 Jun 2006)
+
+  28 Jun 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/tcmplex-panteltje-0.4.7_breakIfBrokenPatch.diff, metadata.xml,
+  +tcmplex-panteltje-0.4.7-r1.ebuild:
+  added diff, will break if is converted filesize not correct; ad myself as
+  2nd maintainer
+
+  03 Jan 2006; Luis Medinas <metalgod@gentoo.org>
+  tcmplex-panteltje-0.4.7.ebuild:
+  Added ~amd64 keywords. Closes bug #116107.
+
+  19 Dec 2005; Joerg Bornkessel <hd_brummy@gentoo.org>
+  tcmplex-panteltje-0.4.7.ebuild:
+  clean up code, for better workin Makefile
+
+*tcmplex-panteltje-0.4.7 (14 Dec 2005)
+
+  14 Dec 2005; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +tcmplex-panteltje-0.4.7.ebuild:
+  version bump, bug #96805, thx to Michael Mauch <michael.mauch@gmx.de>
+
+  10 Jun 2004; David Holm <dholm@gentoo.org> tcmplex-panteltje-0.3.ebuild:
+  Added to ~ppc.
+
+*tcmplex-panteltje-0.3 (09 Jun 2004)
+
+  09 Jun 2004; Thomas Raschbacher <lordvan@gentoo.org> +metadata.xml,
+  +files/tcmplex-panteltje-0.3.patch, +tcmplex-panteltje-0.3.ebuild:
+  initial import
+  bug #52411, thanks to Stefan Briesenick <sbriesen@gmx.de>
+

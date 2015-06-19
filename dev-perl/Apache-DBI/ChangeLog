@@ -1,0 +1,295 @@
+# ChangeLog for dev-perl/Apache-DBI
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Apache-DBI/ChangeLog,v 1.78 2014/10/12 15:27:44 zlogene Exp $
+
+  12 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> -Apache-DBI-1.110.0.ebuild:
+  Drop old.
+
+*Apache-DBI-1.120.0-r1 (23 Aug 2014)
+
+  23 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Apache-DBI-1.120.0-r1.ebuild, -Apache-DBI-1.120.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  29 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> Apache-DBI-1.120.0.ebuild:
+  ppc stable wrt bug #492070
+
+  29 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> Apache-DBI-1.120.0.ebuild:
+  ppc64 stable wrt bug #492070
+
+  29 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> Apache-DBI-1.120.0.ebuild:
+  x86 stable wrt bug #492070
+
+  29 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> Apache-DBI-1.120.0.ebuild:
+  amd64 stable wrt bug #492070
+
+  29 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> Apache-DBI-1.120.0.ebuild:
+  alpha stable wrt bug #492070
+
+*Apache-DBI-1.120.0 (25 Aug 2013)
+
+  25 Aug 2013; Patrick Lauer <patrick@gentoo.org> +Apache-DBI-1.120.0.ebuild:
+  Bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -Apache-DBI-1.06.ebuild,
+  -Apache-DBI-1.100.0.ebuild:
+  Cleanup
+
+  19 Mar 2012; Raúl Porcel <armin76@gentoo.org> Apache-DBI-1.06.ebuild,
+  Apache-DBI-1.100.0.ebuild, Apache-DBI-1.110.0.ebuild:
+  Drop ia64/sparc keywords
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Apache-DBI-1.110.0.ebuild:
+  x86 stable wrt bug #400027
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> Apache-DBI-1.110.0.ebuild:
+  Marking Apache-DBI-1.110.0 ppc64 for bug 400027
+
+  25 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  Apache-DBI-1.110.0.ebuild:
+  Stable on alpha, bug #400027
+
+  24 Feb 2012; Brent Baude <ranger@gentoo.org> Apache-DBI-1.110.0.ebuild:
+  Marking Apache-DBI-1.110.0 ppc for bug 400027
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Apache-DBI-1.110.0.ebuild:
+  Stable for amd64, wrt bug #400027
+
+*Apache-DBI-1.110.0 (22 Oct 2011)
+
+  22 Oct 2011; Torsten Veller <tove@gentoo.org> +Apache-DBI-1.110.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Apache-DBI-1.100.ebuild:
+  Cleanup
+
+*Apache-DBI-1.100.0 (01 Sep 2011)
+
+  01 Sep 2011; Torsten Veller <tove@gentoo.org> +Apache-DBI-1.100.0.ebuild:
+  Change version scheme
+
+  03 Apr 2011; Torsten Veller <tove@gentoo.org> -Apache-DBI-1.09.ebuild:
+  Cleanup
+
+*Apache-DBI-1.100 (04 Feb 2011)
+
+  04 Feb 2011; Torsten Veller <tove@gentoo.org> +Apache-DBI-1.100.ebuild:
+  Version bump
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -Apache-DBI-1.07.ebuild,
+  -Apache-DBI-1.08.ebuild:
+  Cleanup
+
+*Apache-DBI-1.09 (28 Nov 2010)
+
+  28 Nov 2010; Torsten Veller <tove@gentoo.org> +Apache-DBI-1.09.ebuild:
+  Version bump
+
+*Apache-DBI-1.08 (04 Feb 2010)
+
+  04 Feb 2010; Torsten Veller <tove@gentoo.org> +Apache-DBI-1.08.ebuild:
+  Version bump
+
+*Apache-DBI-1.07 (23 Jul 2008)
+
+  23 Jul 2008; Torsten Veller <tove@gentoo.org> +Apache-DBI-1.07.ebuild:
+  Version bump (#224975)
+
+  04 Dec 2007; Markus Rothe <corsair@gentoo.org> Apache-DBI-1.06.ebuild:
+  Stable on ppc64; bug #198075
+
+  27 May 2007; Brent Baude <ranger@gentoo.org> Apache-DBI-1.06.ebuild:
+  Marking Apache-DBI-1.06 ~ppc64 as a dep to bug 165190
+
+  17 Apr 2007; Christian Hartmann <ian@gentoo.org> -Apache-DBI-0.94.ebuild,
+  -Apache-DBI-1.03.ebuild, -Apache-DBI-1.05.ebuild:
+  Cleanup vulnerable versions; see bug #172293
+
+  06 Apr 2007; Peter Weller <welp@gentoo.org> Apache-DBI-1.06.ebuild:
+  Stable on amd64 wrt bug 172293
+
+  04 Apr 2007; Fernando J. Pereda <ferdy@gentoo.org> Apache-DBI-1.06.ebuild:
+  Stable on Alpha as per security bug #172293
+
+  04 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Apache-DBI-1.06.ebuild:
+  ppc stable, bug #172293
+
+  04 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  Apache-DBI-1.06.ebuild:
+  Stable on sparc wrt security #172293
+
+  04 Apr 2007; Raúl Porcel <armin76@gentoo.org> Apache-DBI-1.06.ebuild:
+  x86 stable wrt security bug 172293
+
+  04 Apr 2007; Raúl Porcel <armin76@gentoo.org> Apache-DBI-1.06.ebuild:
+  ia64 stable wrt security bug 172293
+
+*Apache-DBI-1.06 (30 Mar 2007)
+
+  30 Mar 2007; Michael Cummings <mcummings@gentoo.org>
+  +Apache-DBI-1.06.ebuild:
+  Bug 172293, version bump
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> Apache-DBI-1.05.ebuild:
+  Stable on x86, bug #169152.
+
+  22 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> Apache-DBI-1.05.ebuild:
+  Stable on Alpha + IA64.
+
+  07 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Apache-DBI-1.05.ebuild:
+  Marking sparc stable
+
+  07 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Apache-DBI-0.94.ebuild, -Apache-DBI-0.99.01.ebuild,
+  -Apache-DBI-1.01.ebuild, -Apache-DBI-1.02.ebuild, Apache-DBI-1.03.ebuild,
+  Apache-DBI-1.05.ebuild:
+  Marking amd64 stable
+
+*Apache-DBI-1.05 (05 Nov 2006)
+
+  05 Nov 2006; Michael Cummings <mcummings@gentoo.org>
+  +Apache-DBI-1.05.ebuild:
+  Version bump
+
+  21 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Apache-DBI-1.03.ebuild:
+  ppc stable
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> Apache-DBI-1.03.ebuild:
+  Stable on Alpha.
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> Apache-DBI-1.03.ebuild:
+  Stable on ia64.
+
+  08 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Apache-DBI-1.03.ebuild:
+  Marking amd64, sparc stable
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Apache-DBI-1.01.ebuild:
+  ppc stable
+
+*Apache-DBI-1.03 (04 Sep 2006)
+
+  04 Sep 2006; Yuval Yaari <yuval@gentoo.org> +Apache-DBI-1.03.ebuild:
+  Version bump
+
+*Apache-DBI-1.02 (20 Aug 2006)
+
+  20 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  +Apache-DBI-1.02.ebuild:
+  Version bump
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Apache-DBI-1.01.ebuild:
+  Marking stable adm64, sparc - 43 days, no bugs
+
+  04 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Apache-DBI-0.94.ebuild, Apache-DBI-0.99.01.ebuild, Apache-DBI-1.01.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> Apache-DBI-0.99.01.ebuild:
+  Mark 0.99.01 stable on ia64
+
+  03 Jul 2006; Christian Hartmann <ian@gentoo.org> Apache-DBI-0.94.ebuild,
+  Apache-DBI-0.99.01.ebuild, Apache-DBI-1.01.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed DEPEND
+
+*Apache-DBI-1.01 (24 Jun 2006)
+
+  24 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  +Apache-DBI-1.01.ebuild:
+  Version bump
+
+  09 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  Apache-DBI-0.99.01.ebuild:
+  Marking stable sparc
+
+*Apache-DBI-0.99.01 (05 Mar 2006)
+
+  05 Mar 2006; Michael Cummings <mcummings@gentoo.org>
+  +Apache-DBI-0.99.01.ebuild:
+  Version bump upstream
+
+  13 Feb 2006; <mcumming@gentoo.org> Apache-DBI-0.94.ebuild:
+  Virtual for perl-core dep
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> Apache-DBI-0.94.ebuild:
+  Mark 0.94 stable on ia64
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> Apache-DBI-0.94.ebuild:
+  add ~ia64
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> Apache-DBI-0.94.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  24 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Apache-DBI-0.89.ebuild, -Apache-DBI-0.91.ebuild, -Apache-DBI-0.92.ebuild:
+  Cleaning up. Nothing deps the older ones specifically, and they are gone
+  upstream
+
+  21 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Apache-DBI-0.94.ebuild:
+  Stable on ppc.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> Apache-DBI-0.94.ebuild:
+  Stable on amd64.
+
+  06 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> Apache-DBI-0.94.ebuild:
+  Stable on alpha.
+
+  27 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> Apache-DBI-0.94.ebuild:
+  Stable on sparc
+
+  27 Sep 2004; Michael Cummings <mcummings@gentoo.org> Apache-DBI-0.94.ebuild:
+  No bugs in 115 days, marking stable on x86
+
+  25 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> Apache-DBI-0.92.ebuild:
+  Marked stable on amd64.
+
+*Apache-DBI-0.94 (04 Jun 2004)
+
+  04 Jun 2004; Michael Cummings <mcummings@gentoo.org> Apache-DBI-0.94.ebuild:
+  New version on cpan
+
+  24 May 2004; Bryan Østergaard <kloeri@gentoo.org> Apache-DBI-0.92.ebuild:
+  Stable on alpha.
+
+  22 Mar 2004; Jason Wever <weeve@gentoo.org> Apache-DBI-0.92.ebuild:
+  Marked stable on sparc.
+
+  27 Feb 2004; Michael Cummings <mcummings@gentoo.org> Apache-DBI-0.92.ebuild:
+  Unmasking after 193 days
+
+  25 Jan 2004; <gustavoz@gentoo.org> Apache-DBI-0.91.ebuild:
+  stable on sprac
+
+*Apache-DBI-0.92 (18 Aug 2003)
+
+  18 Aug 2003; Michael Cummings <mcummings@gentoo.org> Apache-DBI-0.92.ebuild:
+  CPAN Version bump; minor bug fix
+
+*Apache-DBI-0.91 (05 Jun 2003)
+
+  05 Jun 2003; Michael Cummings <mcummings@gentoo.org> Apache-DBI-0.91.ebuild:
+  Version bump from CPAN
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*Apache-DBI-0.89 (15 Nov 2002)
+
+  15 Nov 2002; Matthew Kennedy <mkennedy@gentoo.org>
+  Apache-DBI-0.89.ebuild, ChangeLog,
+  files/digest-Apache-DBI-0.89 :
+
+  Initial import.

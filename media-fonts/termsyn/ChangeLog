@@ -1,0 +1,12 @@
+# ChangeLog for media-fonts/termsyn
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/termsyn/ChangeLog,v 1.2 2013/09/10 13:06:33 xmw Exp $
+
+  10 Sep 2013; Michael Weber <xmw@gentoo.org> termsyn-1.8.7.ebuild:
+  Adding ~arm keyword.
+
+*termsyn-1.8.7 (18 May 2013)
+
+  18 May 2013; Michael Weber <xmw@gentoo.org> +metadata.xml,
+  +termsyn-1.8.7.ebuild:
+  Initial import

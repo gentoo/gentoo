@@ -1,0 +1,19 @@
+# HG changeset patch
+# User Nathan Phillip Brink <ohnobinki@ohnopublishing.net>
+# Date 1314847280 0
+# Node ID 0646c94f7b47befbd5acc814ef1219b09f03fa71
+# Parent  368b57a9e1f890c4521d92c8d8c0e7abba7cfccc
+Fix -Werror (by removing it and letting the user specify CFLAGS).
+
+diff -r 368b57a9e1f8 -r 0646c94f7b47 common-CMakeLists.txt
+--- a/common-CMakeLists.txt	Thu Sep 01 03:20:54 2011 +0000
++++ b/common-CMakeLists.txt	Thu Sep 01 03:21:20 2011 +0000
+@@ -128,8 +128,6 @@
+ # TODO but gcc on the Mac is at version 4.0 and this
+ # TODO option was added in some later version.
+ 
+-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wdeclaration-after-statement -Werror -Wstrict-prototypes")
+-
+ # the apple_unicode code violates the strict-aliasing rules
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fno-strict-aliasing")
+ 

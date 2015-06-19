@@ -1,0 +1,19 @@
+Description: iperf die on bind fail
+ When iperf encounters a fatal error when binding to a port, such as
+ the port being already in use or lacking permission, it fails to give
+ fatal error, but instead pretends to continue to listen on the port.
+Author: Deny IP Any Any <denyipanyany@gmail.com>
+Bug-Debian: http://bugs.debian.org/517239
+Forwarded: https://sourceforge.net/tracker/?func=detail&aid=3140400&group_id=128336&atid=711371
+
+--- a/src/Listener.cpp
++++ b/src/Listener.cpp
+@@ -333,7 +333,7 @@
+ #endif
+     {
+         rc = bind( mSettings->mSock, (sockaddr*) &mSettings->local, mSettings->size_local );
+-        WARN_errno( rc == SOCKET_ERROR, "bind" );
++        FAIL_errno( rc == SOCKET_ERROR, "bind", mSettings );
+     }
+     // listen for connections (TCP only).
+     // default backlog traditionally 5

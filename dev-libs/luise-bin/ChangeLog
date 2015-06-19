@@ -1,0 +1,35 @@
+# ChangeLog for dev-libs/luise-bin
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/luise-bin/ChangeLog,v 1.10 2013/05/13 03:24:05 patrick Exp $
+
+  13 May 2013; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Removing removed lcd herd from metadata
+
+  06 May 2013; Ulrich Müller <ulm@gentoo.org> luise-bin-0.1.1.ebuild:
+  Fix LICENSE, bug 447390.
+
+  25 May 2012; Samuli Suominen <ssuominen@gentoo.org> luise-bin-0.1.1.ebuild:
+  Restrict virtual/libusb to SLOT="0" because this precompiled package is
+  linked against libusb-0.1.so.4.
+
+  22 May 2012; Samuli Suominen <ssuominen@gentoo.org> luise-bin-0.1.1.ebuild:
+  Use virtual/libusb instead of dev-libs/libusb.
+
+  06 May 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  lcd herd is empty.
+
+  24 Nov 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #158470
+
+  11 Aug 2007; Steve Dibb <beandog@gentoo.org> luise-bin-0.1.1.ebuild:
+  amd64 stable, bug 185693
+
+  23 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  luise-bin-0.1.1.ebuild:
+  stable x86, bug 185693
+
+*luise-bin-0.1.1 (02 Jun 2007)
+
+  02 Jun 2007; Robert Buchholz <rbu@gentoo.org> +metadata.xml,
+  +luise-bin-0.1.1.ebuild:
+  Initial version

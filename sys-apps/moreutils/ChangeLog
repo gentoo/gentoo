@@ -1,0 +1,293 @@
+# ChangeLog for sys-apps/moreutils
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/moreutils/ChangeLog,v 1.70 2015/06/17 21:21:27 radhermit Exp $
+
+*moreutils-0.56 (17 Jun 2015)
+
+  17 Jun 2015; Tim Harder <radhermit@gentoo.org> +moreutils-0.56.ebuild:
+  Version bump.
+
+*moreutils-0.55 (29 Jan 2015)
+
+  29 Jan 2015; Tim Harder <radhermit@gentoo.org> +moreutils-0.55.ebuild:
+  Version bump.
+
+*moreutils-0.54 (11 Dec 2014)
+
+  11 Dec 2014; Tim Harder <radhermit@gentoo.org> +moreutils-0.54.ebuild:
+  Version bump.
+
+*moreutils-0.53 (24 Nov 2014)
+
+  24 Nov 2014; Tim Harder <radhermit@gentoo.org> +moreutils-0.53.ebuild:
+  Version bump.
+
+*moreutils-0.52 (08 Oct 2014)
+
+  08 Oct 2014; Tim Harder <radhermit@gentoo.org> +moreutils-0.52.ebuild:
+  Version bump.
+
+  09 Jun 2014; Tobias Klausmann <klausman@gentoo.org> moreutils-0.51.ebuild:
+  Keyword moreutils-0.51 on alpha
+
+  01 Mar 2014; Tim Harder <radhermit@gentoo.org> -moreutils-0.47.ebuild,
+  -moreutils-0.48.ebuild, -moreutils-0.49.ebuild,
+  -files/moreutils-doc-build.patch:
+  Remove old.
+
+*moreutils-0.51 (01 Mar 2014)
+
+  01 Mar 2014; Tim Harder <radhermit@gentoo.org> +moreutils-0.51.ebuild:
+  Version bump.
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> moreutils-0.50.ebuild:
+  Stable for x86, wrt bug #495930
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> moreutils-0.50.ebuild:
+  amd64 stable, bug #495930
+
+  26 Dec 2013; Jeroen Roovers <jer@gentoo.org> moreutils-0.50.ebuild:
+  Stable for HPPA (bug #495930).
+
+*moreutils-0.50 (07 Sep 2013)
+
+  07 Sep 2013; Tim Harder <radhermit@gentoo.org> +moreutils-0.50.ebuild:
+  Version bump.
+
+*moreutils-0.49 (21 Jul 2013)
+
+  21 Jul 2013; Tim Harder <radhermit@gentoo.org> +moreutils-0.49.ebuild:
+  Version bump.
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> moreutils-0.48.ebuild:
+  Stable for x86, wrt bug #472736
+
+  11 Jun 2013; Chema Alonso <nimiux@gentoo.org> moreutils-0.48.ebuild:
+  Stable for amd64 wrt bug #472736
+
+  09 Jun 2013; Jeroen Roovers <jer@gentoo.org> moreutils-0.48.ebuild:
+  Stable for HPPA (bug #472736).
+
+*moreutils-0.48 (06 May 2013)
+
+  06 May 2013; Tim Harder <radhermit@gentoo.org> +moreutils-0.48.ebuild:
+  Version bump.
+
+  06 Mar 2013; Tim Harder <radhermit@gentoo.org> moreutils-0.47.ebuild,
+  +files/moreutils-doc-build.patch:
+  Fix doc build with LC_ALL=C (bug #454854).
+
+  13 Dec 2012; Tim Harder <radhermit@gentoo.org> -moreutils-0.45-r1.ebuild,
+  -files/moreutils-0.45-dtd-path.patch, -moreutils-0.46.ebuild:
+  Remove old.
+
+  12 Sep 2012; Jeroen Roovers <jer@gentoo.org> moreutils-0.47.ebuild:
+  Stable for HPPA (bug #429200).
+
+  08 Sep 2012; Johannes Huber <johu@gentoo.org> moreutils-0.47.ebuild:
+  Stable for x86, wrt bug #429200
+
+  06 Sep 2012; Agostino Sarubbo <ago@gentoo.org> moreutils-0.47.ebuild:
+  Stable for amd64, wrt bug #429200
+
+  25 Aug 2012; Mike Frysinger <vapier@gentoo.org> moreutils-0.45-r1.ebuild,
+  moreutils-0.46.ebuild, moreutils-0.47.ebuild:
+  Drop useless -vf args to mv #432632 by Joshua B. Kahlenberg.
+
+  08 Jul 2012; Jeroen Roovers <jer@gentoo.org> moreutils-0.45-r1.ebuild,
+  moreutils-0.46.ebuild, moreutils-0.47.ebuild:
+  Update HOMEPAGE.
+
+  03 Jul 2012; Jeroen Roovers <jer@gentoo.org> moreutils-0.46.ebuild:
+  Stable for HPPA (bug #422185).
+
+  30 Jun 2012; Jeff Horelick <jdhore@gentoo.org> moreutils-0.46.ebuild:
+  marked x86 per bug 422185
+
+  30 Jun 2012; Agostino Sarubbo <ago@gentoo.org> moreutils-0.46.ebuild:
+  Stable for amd64, wrt bug #422185
+
+*moreutils-0.47 (30 Jun 2012)
+
+  30 Jun 2012; Tim Harder <radhermit@gentoo.org> +moreutils-0.47.ebuild,
+  +files/moreutils-0.47-dtd-path.patch:
+  Version bump.
+
+*moreutils-0.46 (15 Apr 2012)
+
+  15 Apr 2012; Tim Harder <radhermit@gentoo.org> +moreutils-0.46.ebuild:
+  Version bump.
+
+  07 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> -moreutils-0.45.ebuild:
+  old
+
+  07 Apr 2012; Markus Meier <maekke@gentoo.org> moreutils-0.45-r1.ebuild:
+  x86 stable, bug #403737
+
+  06 Mar 2012; Markos Chandras <hwoarang@gentoo.org> moreutils-0.45-r1.ebuild:
+  Fix build failure when using -doc. Bug #400675. Restore stable amd64 keywords
+
+  06 Mar 2012; Markos Chandras <hwoarang@gentoo.org> moreutils-0.45-r1.ebuild:
+  Revert stable amd64 keywords because of bug #400675
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> moreutils-0.45-r1.ebuild:
+  Stable for amd64, wrt bug #403737
+
+  16 Feb 2012; Jeroen Roovers <jer@gentoo.org> moreutils-0.45-r1.ebuild:
+  Stable for HPPA and sed must die() (bug #403737).
+
+  15 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> moreutils-0.45-r1.ebuild:
+  Keyword ~arch for ppc and ppc64
+
+*moreutils-0.45-r1 (23 Jan 2012)
+
+  23 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +moreutils-0.45-r1.ebuild:
+  Rename parallel command to moreutils_parallel because the one from
+  sys-process/parallel is more advanced wrt #349225 by Helmut Jarausch
+
+  05 Sep 2011; Tim Harder <radhermit@gentoo.org>
+  -files/moreutils-0.30-dtd-path.patch, -moreutils-0.39.ebuild,
+  -files/moreutils-0.42-dtd-path.patch, -moreutils-0.43.ebuild,
+  -moreutils-0.44.ebuild:
+  Remove old.
+
+  04 Sep 2011; Tony Vroon <chainsaw@gentoo.org> moreutils-0.45.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Tomáš "Mepho" Pružina in bug #381639 filed by Tim "radhermit" Harder.
+
+  04 Sep 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> moreutils-0.45.ebuild:
+  x86 stable wrt bug #381639
+
+  03 Sep 2011; Jeroen Roovers <jer@gentoo.org> moreutils-0.45.ebuild:
+  Stable for HPPA (bug #381639).
+
+  26 Aug 2011; Fabian Groffen <grobian@gentoo.org> moreutils-0.45.ebuild,
+  +files/moreutils-0.45-dtd-path.patch:
+  Fixed for Prefix, marked ~x86-linux, thanks Dan Wallis in bug #376541
+
+  22 Jul 2011; Jeroen Roovers <jer@gentoo.org> moreutils-0.43.ebuild:
+  Stable for HPPA (bug #372773).
+
+  15 Jul 2011; Markus Meier <maekke@gentoo.org> moreutils-0.43.ebuild:
+  x86 stable, bug #372773
+
+  26 Jun 2011; Markos Chandras <hwoarang@gentoo.org> moreutils-0.43.ebuild:
+  Stable on amd64 wrt bug #372773
+
+*moreutils-0.45 (22 Jun 2011)
+
+  22 Jun 2011; Tim Harder <radhermit@gentoo.org> +moreutils-0.45.ebuild:
+  Version bump.
+
+  01 Apr 2011; Tim Harder <radhermit@gentoo.org> moreutils-0.43.ebuild,
+  moreutils-0.44.ebuild:
+  Remove unnecessary perl dependencies from DEPEND (bug #361329 by Jeroen
+  Roovers).
+
+  30 Mar 2011; Jeroen Roovers <jer@gentoo.org> moreutils-0.43.ebuild,
+  moreutils-0.44.ebuild:
+  Marked ~hppa (bug #361155).
+
+*moreutils-0.44 (29 Mar 2011)
+
+  29 Mar 2011; Tim Harder <radhermit@gentoo.org> -moreutils-0.40.ebuild,
+  -moreutils-0.42.ebuild, moreutils-0.43.ebuild, +moreutils-0.44.ebuild:
+  Version bump and remove old. Add dependency on dev-perl/IPC-Run (bug #358751
+  by Siim Ainsaar) and temporarily drop ~hppa keyword.
+
+*moreutils-0.43 (10 Mar 2011)
+
+  10 Mar 2011; Tim Harder <radhermit@gentoo.org> +moreutils-0.43.ebuild,
+  metadata.xml:
+  Version bump (bug #351043). Update to EAPI 4, add doc and perl USE flags (bug
+  #333977 thanks to Diego Pettenò and Kevin Pyle), and add myself as a
+  maintainer.
+
+*moreutils-0.42 (22 Oct 2010)
+
+  22 Oct 2010; Tim Harder <radhermit@gentoo.org> +moreutils-0.42.ebuild,
+  +files/moreutils-0.42-dtd-path.patch:
+  Version bump and update patch.
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org> moreutils-0.39.ebuild:
+  Stable for HPPA (bug #328831).
+
+  19 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  moreutils-0.39.ebuild:
+  stable x86, bug 328831
+
+  18 Jul 2010; Thomas Anderson <tanderson@gentoo.org> moreutils-0.39.ebuild:
+  stable amd64, bug 328831
+
+*moreutils-0.40 (18 Jul 2010)
+
+  18 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +moreutils-0.40.ebuild:
+  Version bump.
+
+*moreutils-0.39 (26 Mar 2010)
+
+  26 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +moreutils-0.39.ebuild:
+  Version bump.
+
+  12 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  moreutils-0.37.ebuild:
+  stable x86, bug 299956
+
+  07 Jan 2010; Steve Dibb <beandog@gentoo.org> moreutils-0.37.ebuild:
+  amd64 stable, bug 299956
+
+  07 Jan 2010; Jeroen Roovers <jer@gentoo.org> moreutils-0.37.ebuild:
+  Stable for HPPA (bug #299956).
+
+  10 Aug 2009; Jeroen Roovers <jer@gentoo.org> moreutils-0.34.ebuild:
+  Stable for HPPA (bug #276013).
+
+  02 Aug 2009; Markus Meier <maekke@gentoo.org> moreutils-0.34.ebuild:
+  x86 stable, bug #276013
+
+  29 Jul 2009; <chainsaw@gentoo.org> moreutils-0.34.ebuild:
+  Marked stable on AMD64 as requested by Gordon Malm <gengor@gentoo.org> in
+  bug #276013. Tested on a dual-hex Opteron 2435.
+
+*moreutils-0.37 (29 Jul 2009)
+
+  29 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +moreutils-0.37.ebuild:
+  Version bump wrt #279605, thanks to Dror Levin for reporting.
+
+*moreutils-0.34 (23 Apr 2009)
+
+  23 Apr 2009; Patrick Lauer <patrick@gentoo.org> +moreutils-0.34.ebuild:
+  Bump to 0.34, fixes #244894. Thanks to Tim Harder for the modified ebuild.
+
+  17 Sep 2008; Jeroen Roovers <jer@gentoo.org> moreutils-0.30-r1.ebuild:
+  Marked ~hppa too.
+
+*moreutils-0.30-r1 (31 May 2008)
+
+  31 May 2008; Santiago M. Mola <coldwind@gentoo.org>
+  +files/moreutils-0.30-dtd-path.patch, +moreutils-0.30-r1.ebuild:
+  Fix docbook-xml-dtd dep and handling (#222209) and pre-striping (#222283)
+  thanks to Tristan Heaven <nyhm@gentoo.org>.
+
+  31 May 2008; Santiago M. Mola <coldwind@gentoo.org> moreutils-0.30.ebuild:
+  Depend on new docbook2X, fixes #223971. Use S and remove redundant
+  src_unpack.
+
+*moreutils-0.30 (15 May 2008)
+
+  15 May 2008; Greg Kroah-Hartman <gregkh@gentoo.org>
+  +moreutils-0.30.ebuild:
+  0.30 bump
+
+  12 May 2008; Greg Kroah-Hartman <gregkh@gentoo.org> +metadata.xml:
+  add forgotten metadata.xml file
+
+*moreutils-0.29 (10 May 2008)
+
+  10 May 2008; Greg Kroah-Hartman <gregkh@gentoo.org>
+  +files/docbook-makefile.patch, +moreutils-0.29.ebuild:
+  initial addition of the moreutils package

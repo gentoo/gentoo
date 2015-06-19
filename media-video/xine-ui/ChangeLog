@@ -1,0 +1,845 @@
+# ChangeLog for media-video/xine-ui
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/xine-ui/ChangeLog,v 1.194 2015/06/11 14:23:07 ago Exp $
+
+  11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> xine-ui-0.99.9.ebuild:
+  Stable for ppc, wrt bug #550046
+
+  05 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> xine-ui-0.99.9.ebuild:
+  amd64 stable wrt bug #550046
+
+  29 May 2015; Jeroen Roovers <jer@gentoo.org> xine-ui-0.99.9.ebuild:
+  Stable for PPC64 (bug #550046).
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> xine-ui-0.99.9.ebuild:
+  Stable for x86, wrt bug #550046
+
+  27 May 2015; Jeroen Roovers <jer@gentoo.org> xine-ui-0.99.9.ebuild:
+  Stable for HPPA (bug #550046).
+
+  23 May 2015; Richard Freeman <rich0@gentoo.org> xine-ui-0.99.8.ebuild:
+  amd64 stable - 550046
+
+  01 Sep 2014; Michał Górny <mgorny@gentoo.org> xine-ui-0.99.8.ebuild,
+  xine-ui-0.99.9.ebuild:
+  Remove := subslot operator from || () block since it is meaningless and
+  broken.
+
+*xine-ui-0.99.9 (22 Aug 2014)
+
+  22 Aug 2014; Samuli Suominen <ssuominen@gentoo.org> +xine-ui-0.99.9.ebuild:
+  Version bump.
+
+  25 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> xine-ui-0.99.7.ebuild:
+  Restrict old ebuild to working sys-libs/readline version.
+
+*xine-ui-0.99.8 (25 Jul 2014)
+
+  25 Jul 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +files/xine-ui-0.99.8-readline-6.3.patch, +xine-ui-0.99.8.ebuild:
+  Version bump with sys-libs/readline >= 6.3 compability patch wrt #504208 by
+  Dmitry Derevyanko. Import yet another "prevent crash on exit" fix from Debian
+  patchset.
+
+  22 Jun 2014; Samuli Suominen <ssuominen@gentoo.org>
+  -files/xine-ui-0.99.6-curl-headers.patch,
+  -files/xine-ui-0.99.6-libpng15.patch, -xine-ui-0.99.6.ebuild:
+  old
+
+  22 Jun 2014; Samuli Suominen <ssuominen@gentoo.org> xine-ui-0.99.7.ebuild:
+  ppc stable wrt #451350
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> xine-ui-0.99.7.ebuild:
+  Stable for ppc64, wrt bug #451350
+
+  28 Sep 2013; Jeroen Roovers <jer@gentoo.org> xine-ui-0.99.7.ebuild:
+  Stable for HPPA too.
+
+  18 Jan 2013; Agostino Sarubbo <ago@gentoo.org> xine-ui-0.99.7.ebuild:
+  Stable for x86, wrt bug #451350
+
+  18 Jan 2013; Agostino Sarubbo <ago@gentoo.org> xine-ui-0.99.7.ebuild:
+  Stable for amd64, wrt bug #451350
+
+*xine-ui-0.99.7 (16 Jun 2012)
+
+  16 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> +xine-ui-0.99.7.ebuild:
+  Version bump.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> xine-ui-0.99.6.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  17 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> xine-ui-0.99.6.ebuild:
+  Remove alpha/sparc keywording wrt #397531
+
+  25 Jul 2011; Christoph Mende <angelos@gentoo.org> xine-ui-0.99.6.ebuild,
+  +files/xine-ui-0.99.6-curl-headers.patch:
+  Fix compilation against curl-7.21.7 (bug #376109)
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> xine-ui-0.99.6.ebuild,
+  +files/xine-ui-0.99.6-libpng15.patch:
+  fix build with libpng 1.5
+
+  30 May 2010; Raúl Porcel <armin76@gentoo.org> xine-ui-0.99.6.ebuild:
+  alpha/sparc stable wrt #317143
+
+  24 May 2010; Pacho Ramos <pacho@gentoo.org> xine-ui-0.99.6.ebuild:
+  stable amd64, bug 317143
+
+  23 May 2010; <nixnut@gentoo.org> xine-ui-0.99.6.ebuild:
+  ppc stable #317143
+
+  16 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  xine-ui-0.99.6.ebuild:
+  x86 stable wrt bug #317143
+
+  11 May 2010; Brent Baude <ranger@gentoo.org> xine-ui-0.99.6.ebuild:
+  stable ppc64, bug 317143
+
+  02 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> xine-ui-0.99.6.ebuild:
+  Fix building with lirc wrt #312599 by Martin von Gagern.
+
+*xine-ui-0.99.6 (01 Apr 2010)
+
+  01 Apr 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +xine-ui-0.99.6.ebuild:
+  Version bump wrt #309841 by Daniel Pielmeier.
+
+  15 Feb 2010; Hanno Boeck <hanno@gentoo.org> xine-ui-0.99.5-r2.ebuild,
+  +files/xine-ui-0.99.5-libpng14.patch:
+  Fix for libpng 1.4.
+
+  15 Oct 2008; Diego Pettenò <flameeyes@gentoo.org>
+  xine-ui-0.99.5-r2.ebuild:
+  Actually save the modified ebuild file.
+
+*xine-ui-0.99.5-r2 (15 Oct 2008)
+
+  15 Oct 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-ui-0.99.5-r2.ebuild:
+  Add an EAPI=2 revision with USE deps on xine-lib support for aalib and
+  libcaca.
+
+  17 Aug 2008; Alexis Ballier <aballier@gentoo.org> -xine-ui-0.99.5.ebuild:
+  remove old
+
+  10 Aug 2008; Tobias Klausmann <klausman@gentoo.org>
+  xine-ui-0.99.5-r1.ebuild:
+  Stable on alpha, bug #234040
+
+  09 Aug 2008; Friedrich Oslage <bluebird@gentoo.org>
+  xine-ui-0.99.5-r1.ebuild:
+  Stable on sparc, bug #234040
+
+  08 Aug 2008; Markus Rothe <corsair@gentoo.org> xine-ui-0.99.5-r1.ebuild:
+  Stable on ppc64; bug #234040
+
+  08 Aug 2008; nixnut <nixnut@gentoo.org> xine-ui-0.99.5-r1.ebuild:
+  Stable on ppc wrt bug 234040
+
+  07 Aug 2008; Markus Meier <maekke@gentoo.org> xine-ui-0.99.5-r1.ebuild:
+  amd64/x86 stable, bug #234040
+
+*xine-ui-0.99.5-r1 (29 Jan 2008)
+
+  29 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/xine-ui-0.99.5-new_libcaca_api.patch, +xine-ui-0.99.5-r1.ebuild:
+  add a patch to build with latest libcaca, bug #208057
+
+  13 Jan 2008; Alexis Ballier <aballier@gentoo.org> xine-ui-0.99.5.ebuild:
+  add missing inputproto dep, bug #205548
+
+  08 Jan 2008; Alexis Ballier <aballier@gentoo.org> xine-ui-0.99.5.ebuild:
+  fix automagic on libcaca, thanks to Michael Donaghy
+  <gentoo@sdonag.plus.com>, bug #204904
+
+  02 Jan 2008; Diego Pettenò <flameeyes@gentoo.org> xine-ui-0.99.5.ebuild:
+  Make sure to check for the proper video backend in xine-lib when enabling
+  aalib or libcaca frontends.
+
+  30 Dec 2007; Samuli Suominen <drac@gentoo.org>
+  -xine-ui-0.99.5_pre20070303.ebuild, xine-ui-0.99.5.ebuild:
+  Force ncurses check disabled, it doesn't do anything. Remove old version.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  xine-ui-0.99.5_pre20070303.ebuild:
+  Drop virtual/x11 references.
+
+  11 May 2007; Steve Dibb <beandog@gentoo.org> xine-ui-0.99.5.ebuild:
+  amd64 stable, bug 177008
+
+  11 May 2007; Jose Luis Rivero <yoswink@gentoo.org> xine-ui-0.99.5.ebuild:
+  Stable on alpha wrt security #177008. Sorry about the first commit. 0.99.5
+  is *really* the version we need
+
+  10 May 2007; Samuli Suominen <drac@gentoo.org> -xine-ui-0.99.4-r5.ebuild,
+  -xine-ui-0.99.4-r6.ebuild, -xine-ui-0.99.5_pre20060716.ebuild,
+  xine-ui-0.99.5_pre20070303.ebuild:
+  Clean old versions. Adjust keywords for security bug 177008.
+
+  10 May 2007; Jose Luis Rivero <yoswink@gentoo.org>
+  xine-ui-0.99.5_pre20070303.ebuild:
+  Stable on alpha wrt security #177008
+
+  07 May 2007; Gustavo Zacarias <gustavoz@gentoo.org> xine-ui-0.99.5.ebuild:
+  Stable on sparc wrt security #177008
+
+  05 May 2007; Markus Rothe <corsair@gentoo.org> xine-ui-0.99.5.ebuild:
+  Stable on ppc64; bug #177008
+
+  05 May 2007; Raúl Porcel <armin76@gentoo.org> xine-ui-0.99.5.ebuild:
+  x86 stable wrt security bug 177008
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  xine-ui-0.99.5.ebuild:
+  ppc stable, bug #177008
+
+*xine-ui-0.99.5 (04 May 2007)
+
+  04 May 2007; Samuli Suominen <drac@gentoo.org> +xine-ui-0.99.5.ebuild:
+  Version bump.
+
+  18 Apr 2007; Raúl Porcel <armin76@gentoo.org>
+  xine-ui-0.99.5_pre20070303.ebuild:
+  x86 stable
+
+  18 Apr 2007; Steve Dibb <beandog@gentoo.org>
+  xine-ui-0.99.5_pre20070303.ebuild:
+  amd64 stable, bug 173952
+
+*xine-ui-0.99.5_pre20070303 (03 Mar 2007)
+
+  03 Mar 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +xine-ui-0.99.5_pre20070303.ebuild:
+  Commiting new snapshot for flameeyes, this should solve some nasty issues.
+
+  16 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  xine-ui-0.99.5_pre20060716.ebuild:
+  Stable on Alpha, bug 161558.
+
+  11 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  xine-ui-0.99.5_pre20060716.ebuild:
+  stable x86, security bug #161558
+
+  11 Jan 2007; <malc@gentoo.org> xine-ui-0.99.5_pre20060716.ebuild:
+  Stable on amd64 wrt bug #161558
+
+  11 Jan 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  xine-ui-0.99.5_pre20060716.ebuild:
+  Stable on ppc wrt bug #161558.
+
+  11 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  xine-ui-0.99.5_pre20060716.ebuild:
+  Stable on sparc wrt security #161558
+
+  11 Jan 2007; Markus Rothe <corsair@gentoo.org>
+  xine-ui-0.99.5_pre20060716.ebuild:
+  Stable on ppc64; bug #161558
+
+  01 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-ui-0.99.4-r5.ebuild, xine-ui-0.99.4-r6.ebuild,
+  xine-ui-0.99.5_pre20060716.ebuild:
+  Remove build-time dependency on xproto and/or xextproto.
+
+  24 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-ui-0.99.4-r5.ebuild, xine-ui-0.99.4-r6.ebuild,
+  xine-ui-0.99.5_pre20060716.ebuild:
+  Fix the autotools version dependencies.
+
+*xine-ui-0.99.5_pre20060716 (16 Jul 2006)
+
+  16 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-ui-0.99.5_pre20060701.ebuild, +xine-ui-0.99.5_pre20060716.ebuild:
+  Replace the snapshot with a new copy, that fixes a few crashes and should be
+  safer with respect to buffer overflows.
+
+  09 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-ui-0.99.4-r5.ebuild, xine-ui-0.99.4-r6.ebuild,
+  xine-ui-0.99.5_pre20060701.ebuild:
+  Remove xorg-server fake depend, was an artefact produced by the first dep
+  checking scripts.
+
+  09 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-ui-0.99.4-r5.ebuild, xine-ui-0.99.4-r6.ebuild,
+  xine-ui-0.99.5_pre20060701.ebuild:
+  Pinpoint virtual/x11 version to less than 7.
+
+  06 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-ui-0.99.5_pre20060701.ebuild:
+  Remove keyword from broken snapshot.
+
+*xine-ui-0.99.5_pre20060701 (01 Jul 2006)
+
+  01 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-ui-0.99.5_pre20060701.ebuild:
+  Add prerelease snapshot of xine-ui, with a few more fixes.
+
+  30 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-ui-0.99.4-r5.ebuild, xine-ui-0.99.4-r6.ebuild:
+  Don't make xinerama optional as the configure does not support
+  --disable-xinerama (yet).
+
+*xine-ui-0.99.4-r6 (07 Jun 2006)
+
+  07 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-ui-0.99.4-r6.ebuild:
+  New revision with a new patchset and italian translation update.
+
+  28 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-ui-0.99.4-r5.ebuild:
+  Add -fvisibility=hidden while using GCC 4.1.
+
+  25 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xine-ui-0.99.4-r5.ebuild:
+  Add ~x86-fbsd keyword.
+
+  03 May 2006; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata to list media-video@gentoo.org as maintainer.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+  25 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-ui-0.99.4-r3.ebuild:
+  Drop old version.
+
+  24 Apr 2006; Mark Loeser <halcy0n@gentoo.org> xine-ui-0.99.4-r5.ebuild:
+  Stable on x86; bug #130801
+
+  24 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-ui-0.99.4-r4.ebuild:
+  Remove old version.
+
+  23 Apr 2006; Jason Wever <weeve@gentoo.org> xine-ui-0.99.4-r5.ebuild:
+  Stable on SPARC wrt security bug #130801.
+
+  22 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  xine-ui-0.99.4-r5.ebuild:
+  ppc stable, bug #130801
+
+  22 Apr 2006; Thomas Cort <tcort@gentoo.org> xine-ui-0.99.4-r5.ebuild:
+  Stable on amd64 wrt security Bug #130801.
+
+  22 Apr 2006; Thomas Cort <tcort@gentoo.org> xine-ui-0.99.4-r5.ebuild:
+  Stable on alpha wrt security Bug #130801.
+
+  22 Apr 2006; Markus Rothe <corsair@gentoo.org> xine-ui-0.99.4-r5.ebuild:
+  Stable on ppc64; bug #130801
+
+*xine-ui-0.99.4-r5 (22 Apr 2006)
+
+  22 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-ui-0.99.4-r5.ebuild:
+  Bump patchset to fix another format string.
+
+*xine-ui-0.99.4-r4 (01 Mar 2006)
+
+  01 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-ui-0.99.4-r4.ebuild:
+  Update patchset to disable scroll lock keypresses to avoid scrensaver,
+  closes bug #102884.
+
+  18 Feb 2006; Joerg Bornkessel <hd_brummy@gentoo.org> xine-ui-0.99.4-r3.ebuild:
+  enable vdr support by use-flag
+
+  08 Feb 2006; Aron Griffis <agriffis@gentoo.org> xine-ui-0.99.4-r3.ebuild:
+  Mark 0.99.4-r3 stable on alpha
+
+  29 Jan 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-ui-0.99.3-r1.ebuild:
+  Drop old version.
+
+  28 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  xine-ui-0.99.4-r3.ebuild:
+  Stable on ppc, bug #120397
+
+  27 Jan 2006; Chris White <chriswhite@gentoo.org> xine-ui-0.99.4-r3.ebuild:
+  x86 stable for bug #120397.
+
+  27 Jan 2006; Simon Stelling <blubb@gentoo.org> xine-ui-0.99.4-r3.ebuild:
+  stable on amd64
+
+  26 Jan 2006; Markus Rothe <corsair@gentoo.org> xine-ui-0.99.4-r3.ebuild:
+  Stable on ppc64; bug #120397
+
+  26 Jan 2006; Diego Pettenò <flameeyes@gentoo.org> -xine-ui-0.99.3.ebuild:
+  Drop old version of xine-ui (drop mips keyword as per bug #111561).
+
+  20 Dec 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  xine-ui-0.99.4-r3.ebuild:
+  Stable on sparc
+
+  22 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> xine-ui-0.99.3.ebuild,
+  xine-ui-0.99.3-r1.ebuild, xine-ui-0.99.4-r3.ebuild:
+  Use mirror://gentoo/ for patchsets.
+
+  05 Nov 2005; Mark Loeser <halcy0n@gentoo.org> xine-ui-0.99.3-r1.ebuild:
+  Stable on x86; bug #111563
+
+*xine-ui-0.99.4-r3 (14 Sep 2005)
+
+  14 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-ui-0.99.4-r1.ebuild, -xine-ui-0.99.4-r2.ebuild,
+  +xine-ui-0.99.4-r3.ebuild:
+  Added patch to disable xinerama (and xinerama useflag), removed old versions.
+
+  14 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-ui-0.99.4-r2.ebuild:
+  Fix dependencies for modular Xorg.
+
+  14 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-ui-0.99.4-r2.ebuild:
+  Use autotools eclass.
+
+  10 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> xine-ui-0.99.3.ebuild,
+  xine-ui-0.99.3-r1.ebuild, xine-ui-0.99.4-r1.ebuild,
+  xine-ui-0.99.4-r2.ebuild:
+  Don't install INSTALL file.
+
+  05 Sep 2005; Markus Rothe <corsair@gentoo.org> xine-ui-0.99.3-r1.ebuild:
+  Stable on ppc64
+
+  02 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -xine-ui-0.9.23-r2.ebuild:
+  Remove old 0.9.23 version, as alpha keyworded a newer version.
+
+  30 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  xine-ui-0.99.4-r2.ebuild:
+  Marked ~alpha. Test requested by Flameeyes
+
+  30 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> -xine-ui-0.99.2.ebuild:
+  Remove 0.99.2 as sparc marked a newer version stable.
+
+  24 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  xine-ui-0.99.3-r1.ebuild:
+  Stable on sparc wrt #98805 and others
+
+*xine-ui-0.99.4-r2 (19 Aug 2005)
+
+  19 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-ui-0.99.4-r2.ebuild:
+  Added three patches from freshrpms, little fix to UI and replaces sprintf()
+  calls with strcat().
+
+*xine-ui-0.99.4-r1 (01 Aug 2005)
+
+  01 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> -xine-ui-0.99.4.ebuild,
+  +xine-ui-0.99.4-r1.ebuild:
+  Apply patch to avoid non-literal printf() calls.
+
+  31 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-ui-0.99.3-r1.ebuild:
+  Stable on amd64.
+
+  30 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  xine-ui-0.99.3-r1.ebuild:
+  ppc stable
+
+  30 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -files/xine-ui-desktop-fixes.patch, -xine-ui-0.99.1.ebuild,
+  -xine-ui-0.99.3_pre20041022.ebuild, -xine-ui-0.99.3_pre20041022-r1.ebuild,
+  -xine-ui-0.99.3-r2.ebuild:
+  Removed old versions. 0.99.3-r2 was a fix for GCC4, just use 0.99.4 that is
+  already fixed.
+
+  30 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> xine-ui-0.99.4.ebuild:
+  Added patches to build on Gentoo/FreeBSD.
+
+*xine-ui-0.99.4 (27 Jul 2005)
+
+  27 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> +xine-ui-0.99.4.ebuild:
+  Updated to latest xine-ui version upstream. Install xpm file in
+  /usr/share/pixmaps for *box compatibility.
+
+*xine-ui-0.99.3-r2 (20 Jul 2005)
+
+  20 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +xine-ui-0.99.3-r2.ebuild:
+  Added patch for crashes when right clicking, thanks to Michael Lothian to
+  letting us know. Patch from RpmForge.
+
+  31 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xine-ui-0.99.3-r1.ebuild:
+  Added patch to test for execinfo.h before using it and not depending on just
+  Linux for that (GLIBC on other systems for example). Closes #94572.
+
+  11 May 2005; Jason Wever <weeve@gentoo.org> xine-ui-0.99.2.ebuild:
+  Stable on SPARC wrt bug #91092.
+
+  07 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  xine-ui-0.99.3-r1.ebuild:
+  Added to ~hppa.
+
+  03 May 2005; Jan Brinkmann <luckyduck@gentoo.org> xine-ui-0.99.3.ebuild:
+  stable on amd64 and x86
+
+  02 May 2005; David Holm <dholm@gentoo.org> xine-ui-0.99.3-r1.ebuild:
+  Added to ~ppc.
+
+  01 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -files/preserve-CFLAGS-0.9.23.diff, -files/preserve-CFLAGS-0.99.1.diff,
+  -files/preserve-CFLAGS-0.99.2.diff, -files/implicit-config.patch,
+  -files/preserve-CFLAGS.diff, -files/symlink-bug.patch,
+  -files/true-false.patch, -files/xine.desktop,
+  -files/xine-ui-configure.patch, -files/xine-ui-configure-checks.patch,
+  -files/xine-ui-gcc4.patch, -files/xine-ui-gentoo.diff,
+  -xine-ui-0.9.21-r1.ebuild, -xine-ui-0.9.22-r1.ebuild,
+  -xine-ui-0.9.22-r2.ebuild, -xine-ui-0.9.23-r1.ebuild,
+  xine-ui-0.9.23-r2.ebuild, xine-ui-0.99.1.ebuild, xine-ui-0.99.2.ebuild,
+  xine-ui-0.99.3_pre20041022.ebuild, xine-ui-0.99.3_pre20041022-r1.ebuild,
+  xine-ui-0.99.3.ebuild, xine-ui-0.99.3-r1.ebuild:
+  Removed old versions and orphan files. Moved all the patches into patch
+  tarballs.
+
+  22 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/xine-ui-gcc4.patch, xine-ui-0.99.3-r1.ebuild:
+  Added patch to compile on gcc4, fixes #89936.
+
+  16 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> xine-ui-0.99.3-r1.ebuild:
+  modified autotool usage, fixes #88750
+
+*xine-ui-0.99.3-r1 (11 Apr 2005)
+
+  11 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> metadata.xml,
+  +xine-ui-0.99.3-r1.ebuild:
+  Applied the cleanup patch from Diego Pettenò <dgp85@users.sourceforge.net> to
+  0.99.3, fixes #87439. updated maintainer information, chriswhite is retired.
+  :(
+
+*xine-ui-0.99.3_pre20041022-r1 (29 Mar 2005)
+
+  29 Mar 2005; Chris White <chriswhite@gentoo.org>
+  +files/xine-ui-configure-checks.patch, +files/xine-ui-desktop-fixes.patch,
+  +xine-ui-0.99.3_pre20041022-r1.ebuild:
+  Fixed bug #58157 (xine-ui desktop / depend fixes). Thanks to Diego for the
+  ebuild.
+
+  29 Mar 2005; Chris White <chriswhite@gentoo.org> xine-ui-0.9.23-r2.ebuild,
+  xine-ui-0.99.3_pre20041022.ebuild:
+  Fixed bug #54273 with bad aalib DEPEND atom.
+
+  27 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/xine.desktop, xine-ui-0.99.3.ebuild:
+  Fix menu item in gnome2.
+
+  17 Feb 2005; Markus Rothe <corsair@gentoo.org> xine-ui-0.99.3.ebuild:
+  Stable on ppc64
+
+  04 Jan 2005; Hardave Riar <hardave@gentoo.org> xine-ui-0.99.3.ebuild:
+  Added ~mips keyword.
+
+*xine-ui-0.99.3 (27 Dec 2004)
+
+  27 Dec 2004; Chris White <chriswhite@gentoo.org> +xine-ui-0.99.3.ebuild:
+  Bump to version 0.99.3. This closes bug #75359. Thanks to James Stockton for
+  the ebuild submission.
+
+*xine-ui-0.99.3_pre20041022 (23 Oct 2004)
+
+  23 Oct 2004; Chris White <chriswhite@gentoo.org>
+  +xine-ui-0.99.3_pre20041022.ebuild:
+  Created a cvs snapshot ebuild as per bug #64693. This should help fix a few
+  bugs hanging around xine-ui until 0.99.3 gets out.
+
+  05 Oct 2004; Jason Wever <weeve@gentoo.org> xine-ui-0.99.2.ebuild:
+  Added ~sparc keyword.
+
+  01 Oct 2004; Patrick Kursawe <phosphan@gentoo.org>
+  -xine-ui-0.9.13-r1.ebuild:
+  Removing because xline-lib-0.9.13 is outdated.
+
+  28 Jul 2004; Tom Gall <tgall@gentoo.org> xine-ui-0.99.2.ebuild:
+  stable (ish) on ppc64, bug #55076
+
+  15 Jul 2004; Chris White <chriswhite@gentoo.org> :
+  Version bump to 0.99.2.  Added Diego Pettenò's updated CFLAGS preserve patch.
+
+  15 Jul 2004; Chris White <chriswhite@gentoo.org> metadata.xml:
+  Changing herd to media-video.  Added myself as mantainer.
+
+  29 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> xine-ui-0.99.1.ebuild:
+  Marked ~amd64.
+
+*xine-ui-0.99.1 (07 Jun 2004)
+
+  07 Jun 2004; Patrick Kursawe <phosphan@gentoo.org> xine-ui-0.99.1.ebuild,
+  files/preserve-CFLAGS-0.99.1.diff:
+  Version bump, had to adjust the preserve-cflags patch and remove the
+  implicit-config and symlink-bug patches (should be included upstream).
+
+  07 May 2004; Josh Grebe <squash@gentoo.org> xine-ui-0.9.23-r2.ebuild:
+  Stable on sparc
+
+  26 Apr 2004; Brandon Hale <tseng@gentoo.org> xine-ui-0.9.23-r2.ebuild:
+  Stable on x86.
+
+  26 Apr 2004; David Holm <dholm@gentoo.org> xine-ui-0.9.23-r2.ebuild:
+  Stable on ppc.
+
+  19 Apr 2004; Travis Tilley <lv@gentoo.org> xine-ui-0.9.23-r2.ebuild:
+  marked stable on amd64
+
+*xine-ui-0.9.23-r2 (19 Apr 2004)
+
+  19 Apr 2004; Patrick Kursawe <phosphan@gentoo.org> xine-ui-0.9.23-r2.ebuild,
+  files/implicit-config.patch:
+  Adding the security patch from bug #48108 and making the aalib dependency
+  optional (bug #38979).
+
+  14 Apr 2004; Scott W Taylor <swtaylor@gentoo.org> xine-ui-0.9.23-r1.ebuild:
+  purging xine-bugreport from .23 as well
+
+*xine-ui-0.9.22-r2 (14 Apr 2004)
+
+  14 Apr 2004; Scott W Taylor <swtaylor@gentoo.org> +xine-ui-0.9.22-r2.ebuild:
+  More fixes for that same bug, the original file was distributed with bogus
+  timestamps and included a file that should not have been in there as it gets
+  created via symlink in the build process.
+
+  14 Apr 2004; Scott W Taylor <swtaylor@gentoo.org> files/symlink-bug.patch:
+  Bug 45448 - symlink-bug.patch tried to patch a file as well as the symlink to
+  itself
+
+  13 Apr 2004; Martin Holzer <mholzer@gentoo.org> xine-ui-0.9.13-r1.ebuild,
+  xine-ui-0.9.21-r1.ebuild, xine-ui-0.9.23-r1.ebuild, files/symlink-bug.patch:
+  now it should install correctly.
+
+  13 Apr 2004; <tester@gentoo.org> xine-ui-0.9.22-r1.ebuild:
+  Fixed net-misc/curl dependency
+
+*xine-ui-0.9.23-r1 (13 Apr 2004)
+*xine-ui-0.9.21-r1 (13 Apr 2004)
+
+  13 Apr 2004; Patrick Kursawe <phosphan@gentoo.org> xine-ui-0.9.13-r1.ebuild,
+  xine-ui-0.9.13.ebuild, xine-ui-0.9.21-r1.ebuild, xine-ui-0.9.21.ebuild,
+  xine-ui-0.9.22-r1.ebuild, xine-ui-0.9.22.ebuild, xine-ui-0.9.23-r1.ebuild,
+  xine-ui-0.9.23.ebuild, files/symlink-bug.patch:
+  Adding the patch for bug #45448 to every version in portage (symlink/tmpfile
+  bug). Bumped revisions, removed unpatched versions.
+
+  07 Apr 2004; Aron Griffis <agriffis@gentoo.org> xine-ui-0.9.23.ebuild:
+  Add ~alpha per bug 46903
+
+  08 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Add true/false patch #40809 by Sven Wegener.
+
+  14 Jan 2004; Martin Holzer <mholzer@gentoo.org> xine-ui-0.9.23.ebuild:
+  need xine-lib-1_rc3
+
+  29 Dec 2003; Jason Wever <weeve@gentoo.org> xine-ui-0.9.23.ebuild:
+  So I was sitting there one day, when a ~sparc keyword fell out of the sky and
+  into my ebuild.
+
+*xine-ui-0.9.23 (29 Dec 2003)
+
+  29 Dec 2003; Martin Holzer <mholzer@gentoo.org> xine-ui-0.9.23.ebuild,
+  files/preserve-CFLAGS-0.9.23.diff:
+  Version bumped.
+
+  26 Nov 2003; Martin Holzer <mholzer@gentoo.org> xine-ui-0.9.22.ebuild:
+  marking x86 stable
+
+  01 Nov 2003; Daniel Robbins <drobbins@gentoo.org> xine-ui-0.9.22.ebuild:
+  Added fix to preserve CFLAGS set by user on x86, rather than force (somewhat
+  outdated/non-optimal) hard-coded CFLAGS.
+  
+  31 Oct 2003; Martin Holzer <mholzer@gentoo.org> xine-ui-0.9.21.ebuild,
+  xine-ui-0.9.22.ebuild: doesn't work without aalib.
+
+  22 Oct 2003; Martin Holzer <mholzer@gentoo.org> xine-ui-0.9.13.ebuild,
+  xine-ui-0.9.21.ebuild, xine-ui-0.9.22.ebuild:
+  added RESTRICT="nomirror"
+
+  11 Aug 2003; Jason Wever <weeve@gentoo.org> xine-ui-0.9.21.ebuild:
+  Added ~sparc to keywords.
+
+  29 Jun 2003; Luca Barbato <lu_zero@gentoo.org> xine-ui-0.9.21.ebuild:
+  unmasked in order to follow xine-ui
+  
+  29 Apr 2003; Brandon Low <lostlogic@gentoo.org> xine-ui-0.9.10-r1.ebuild,
+  xine-ui-0.9.10-r1.ebuild, xine-ui-0.9.12-r1.ebuild,
+  xine-ui-0.9.12-r1.ebuild:
+  Remove unneeded cruft
+
+*xine-ui-0.9.22 (07 Aug 2003)
+
+  07 Aug 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Version bump.
+
+*xine-ui-0.9.21 (18 May 2003)
+
+  18 May 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Version bump.
+
+*xine-ui-0.9.20 (25 Mar 2003)
+
+  15 Apr 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Marking stable on x86.
+
+  25 Mar 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Version bump.
+
+*xine-ui-0.9.19 (09 Mar 2003)
+
+  12 Mar 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Making use of the new "lirc" USE flag.
+
+  09 Mar 2003; Arcady Genkin <agenkin@gentoo.org> :
+  New version.
+
+*xine-ui-0.9.18 (30 Jan 2003)
+
+  12 Mar 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Making use of the new "lirc" USE flag.
+
+  30 Jan 2003; Arcady Genkin <agenkin@gentoo.org> :
+  New version.
+
+*xine-ui-0.9.17 (03 Jan 2003)
+
+  12 Mar 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Making use of the new "lirc" USE flag.
+
+  03 Jan 2003; Arcady Genkin <agenkin@gentoo.org> :
+  New version.
+  Added app-misc/lirc to dependencies.
+
+*xine-ui-0.9.16 (24 Dec 2002)
+
+  24 Dec 2002; Arcady Genkin <agenkin@gentoo.org> :
+  New version.
+
+*xine-ui-0.9.15 (28 Nov 2002)
+
+  28 Nov 2002; Arcady Genkin <agenkin@gentoo.org> xine-ui-0.9.15.ebuild :
+  New version.
+	
+*xine-ui-0.9.10-r1 (06 Aug 2002)
+
+  06 Aug 2002; Seemant Kulleen <seemant@gentoo.org> xine-ui-0.9.10-r1.ebuild:
+
+  Resurrected because it is the only ppc compatible version atm.
+
+*xine-ui-0.9.13 (06 Aug 2002)
+
+  17 Dec 2002; Arcady Genkin <agenkin@gentoo.org> xine-ui-0.9.13.ebuild :
+  Dependency fixed for xine-lib-0.9.13.
+
+  01 Dec 2002; Martin Holzer <mholzer@gentoo.org> xine-ui-0.9.13.ebuild :
+  Updated SRC_URI to pull from SF mirrors. 
+
+  12 Aug 2002; mark Guertin <gerk@gentoo.org> xine-ui-0.9.13.ebuild :
+  Added ppc to keywords
+
+  06 Aug 2002; Brandon Low <lostlogic@gentoo.org> xine-ui-0.9.13.ebuild:
+
+  New xine version, enjoy.
+
+*xine-ui-0.9.12-r1 (31 Jul 2002)
+
+  31 Jul 2002; Brandon Low <lostlogic@gentoo.org> xine-ui-0.9.12-r1.ebuild:
+
+  Remove the configure script mangling of -march and -mcpu.
+
+*xine-ui-0.9.12 (23 Jun 2002)
+
+  23 Jun 2002; Brandon Low <lostlogic@gentoo.org> xine-ui-0.9.12.ebuild:
+
+  Another new release from our friendly release crazy xine people.
+  According to the xine people here is the changelog, enjoy:
+
+  * demux_ts fixes for ATSC streams
+  * configurable size of avi subtitles
+  * fixed bug in libsputext that caused subtitle flashing
+  * update win32 codec loading code
+  * use directshow filter to decode msmpeg4 v1/v2
+  * fixed logo file name extension
+  * fixed german i18n files
+
+*xine-ui-0.9.11 (21 Jun 2002)
+
+  21 Jun 2002; Seemant Kulleen <seemant@gentoo.org> xine-ui-0.9.11.ebuild :
+
+  Added aalib as an optional dependency -- no revision bump.
+
+*xine-ui-0.9.11 (20 Jun 2002)
+
+  20 Jun 2002; Arcady Genkin <agenkin@thpoon.com> xine-ui-0.9.11.ebuld :
+
+  Update to version 0.9.11.
+
+*xine-ui-0.9.10-r1 (16 Jun 2002)
+
+  16 Jun 2002; Brandon Low <lostlogic@gentoo.org> xine-ui-0.9.10-r1.ebuild
+
+  Added gcc-3.1 support, ensure that DirectFB really gets diabled, again,
+  gcc-3.1 users will not be able to use DirectFB.
+
+*xine-ui-0.9.9-r2 (16 Jun 2002)
+
+  16 Jun 2002; Brandon Low <lostlogic@gentoo.org> xine-ui-0.9.9-r2.ebuild
+
+  Turn off directfb for real if it isn't in use, and also patch this
+  punk a little bit so that it works with gcc-3.1 (LDFLAGS issue)
+
+  gcc-3.1 users at this time will not be able to use directfb with xine, 
+  hopefully this will be resolved in the near future...
+
+*xine-ui-0.9.9-r1 (31 May 2002)
+
+  31 May 2002; Seemant Kulleen <seemant@gentoo.org>
+  xine-ui-gentoo-extra.tar.bz2 (distfiles) :
+
+  Updated the directfb stuff from xine's cvs, so it will now compile with
+  DirectFB-0.9.10
+
+*xine-ui-0.9.10 (26 May 2002)
+
+  26 May 2002; Arcady Genkin <agenkin@thpoon.com> xine-ui-0.9.10.ebuld :
+
+  Update to version 0.9.10.
+
+*xine-ui-0.9.9-r1 (1 May 2002)
+
+  1 May 2002; Seemant Kulleen <seemant@gentoo.org> xine-ui-0.9.9-r1.ebuild
+  files/digest-xine-ui-0.9.9-r1 xine-ui-gentoo-extra.tar.bz2 (distfiles) :
+
+  For some reason, upstream forgot to package all the necessary files for
+  DirectFB support.  This would have been one thing if we could have 
+  configured to disable that support, but DirectFB is autodetected.  So, the
+  tarball on the ibiblio mirror contains those files as grabbed from xine-ui's
+  cvs repository (where they have not been altered in months).
+
+*xine-ui-0.9.9 (29 Apr 2002)
+
+*xine-ui-0.9.7-r3 (12 Apr 2002)
+
+  12 Apr 2002; Seemant Kulleen <seemant@gentoo.org> xine-ui-0.9.7-r3.ebuild :
+  
+  Compile against latest libpng
+
+
+*xine-ui-0.9.7-r2 (12 Mar 2002)
+  
+  12 Mar 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog :
+	
+  Added checking of nls in USE toggles.  Also added checking of gnome in 
+  USE toggles to have xine-ui use ORBit.  However, I had initially done
+  use gnome || enable ORBit instead of &&.  Found it thanks to supox.
+  OK no this still does not work.  ORBit support in xine seems questionable, at
+  best.  I am commenting that stuff out in the ebuild until I can find some
+  answers about it.
+
+  19 Feb 2002; M.Schlemmer <azarah@gentoo.org> xine-ui-0.9.8-r1.ebuild :
+
+  Fix docs not installing in /usr/share/doc/${PF}.
+
+*xine-ui-0.9.7 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

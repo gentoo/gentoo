@@ -1,0 +1,18 @@
+# ChangeLog for app-dicts/sword-rnkjv
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/sword-rnkjv/ChangeLog,v 1.3 2014/01/05 23:49:21 creffett Exp $
+
+  05 Jan 2014; Chris Reffett <creffett@gentoo.org> -sword-rnkjv-1.2.ebuild,
+  sword-rnkjv-1.5.ebuild:
+  EAPI bump
+
+*sword-rnkjv-1.5 (16 May 2010)
+
+  16 May 2010; Steve Dibb <beandog@gentoo.org> +sword-rnkjv-1.5.ebuild:
+  Version bump
+
+*sword-rnkjv-1.2 (14 Mar 2008)
+
+  14 Mar 2008; Steve Dibb <beandog@gentoo.org> +metadata.xml,
+  +sword-rnkjv-1.2.ebuild:
+  Initial commit

@@ -1,0 +1,19 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/features/64bit-native/package.use.mask,v 1.11 2014/11/13 08:53:44 scarabeus Exp $
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (04 Jul 2012)
+# Disable 32-bit parts of wine, bug #351436
+app-emulation/wine mono win32
+
+# Apr 28, 2008 Sébastien Fabbro <bicatali@gentoo.org>
+# ifc masked
+sci-libs/acml ifc
+
+# Alexis Ballier <aballier@gentoo.org> (13 Aug 2009)
+# Requires wine
+media-sound/lmms vst
+
+# Tomas Chvatal <scarabeus@gentoo.org> (13 Nov 2014)
+# The apulse is 32b used there only
+net-im/skype apulse

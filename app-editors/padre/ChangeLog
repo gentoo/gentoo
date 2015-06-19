@@ -1,0 +1,261 @@
+# ChangeLog for app-editors/padre
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/padre/ChangeLog,v 1.27 2015/04/12 17:59:16 dilfridge Exp $
+
+*padre-1.0.0 (12 Apr 2015)
+
+  12 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org> +padre-1.0.0.ebuild:
+  Version bump
+
+  19 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org> -padre-0.920.0.ebuild,
+  -padre-0.940.0.ebuild, -padre-0.960.0.ebuild:
+  Remove old
+
+*padre-0.980.0-r1 (29 Aug 2014)
+
+  29 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +padre-0.980.0-r1.ebuild, -padre-0.980.0.ebuild:
+  bumped EAPI to 5 to support dev-lang/perl upgrades
+
+*padre-0.980.0 (29 Oct 2013)
+
+  29 Oct 2013; Patrick Lauer <patrick@gentoo.org> +padre-0.980.0.ebuild:
+  Bump
+
+*padre-0.960.0 (25 Apr 2012)
+
+  25 Apr 2012; Torsten Veller <tove@gentoo.org> +padre-0.960.0.ebuild:
+  Version bump
+
+  26 Jan 2012; Torsten Veller <tove@gentoo.org> -padre-0.840.0.ebuild,
+  -padre-0.860.0.ebuild, -padre-0.880.0.ebuild, -padre-0.900.0.ebuild,
+  padre-0.940.0.ebuild:
+  Drop File-Slurp dependency. Thanks to Sergiy Borodych. Cleanup
+
+*padre-0.940.0 (24 Jan 2012)
+
+  24 Jan 2012; Torsten Veller <tove@gentoo.org> +padre-0.940.0.ebuild:
+  Version bump
+
+*padre-0.920.0 (02 Dec 2011)
+
+  02 Dec 2011; Torsten Veller <tove@gentoo.org> +padre-0.920.0.ebuild:
+  Version bump (#391847)
+
+*padre-0.900.0 (21 Aug 2011)
+
+  21 Aug 2011; Torsten Veller <tove@gentoo.org> +padre-0.900.0.ebuild:
+  Version bump
+
+  11 Aug 2011; Torsten Veller <tove@gentoo.org> padre-0.880.0.ebuild:
+  Add missing dependency: dev-perl/Capture-Tiny (#378739). Thanks to Sergiy
+  Borodych
+
+*padre-0.880.0 (09 Aug 2011)
+
+  09 Aug 2011; Torsten Veller <tove@gentoo.org> +padre-0.880.0.ebuild:
+  Version bump
+
+*padre-0.860.0 (23 Jun 2011)
+
+  23 Jun 2011; Torsten Veller <tove@gentoo.org> +padre-0.860.0.ebuild:
+  Version bump
+
+  20 Mar 2011; Torsten Veller <tove@gentoo.org> -padre-0.74.ebuild,
+  -padre-0.76.ebuild, -padre-0.780.ebuild, -padre-0.800.ebuild,
+  -padre-0.820.0.ebuild:
+  Cleanup
+
+*padre-0.840.0 (16 Mar 2011)
+
+  16 Mar 2011; Torsten Veller <tove@gentoo.org> +padre-0.840.0.ebuild:
+  Version bump
+
+*padre-0.820.0 (27 Feb 2011)
+
+  27 Feb 2011; Torsten Veller <tove@gentoo.org> +padre-0.820.0.ebuild:
+  Version bump
+
+*padre-0.800 (31 Jan 2011)
+
+  31 Jan 2011; Torsten Veller <tove@gentoo.org> +padre-0.800.ebuild:
+  Version bump
+
+*padre-0.780 (15 Jan 2011)
+
+  15 Jan 2011; Torsten Veller <tove@gentoo.org> +padre-0.780.ebuild:
+  Version bump
+
+*padre-0.76 (13 Dec 2010)
+
+  13 Dec 2010; Torsten Veller <tove@gentoo.org> -padre-0.60.ebuild,
+  -padre-0.61.ebuild, -padre-0.62.ebuild, -padre-0.63.ebuild,
+  -padre-0.70.ebuild, -padre-0.72.ebuild, +padre-0.76.ebuild:
+  Version bump. Cleanup
+
+*padre-0.74 (15 Nov 2010)
+
+  15 Nov 2010; Torsten Veller <tove@gentoo.org> +padre-0.74.ebuild:
+  Version bump
+
+*padre-0.72 (11 Oct 2010)
+
+  11 Oct 2010; Torsten Veller <tove@gentoo.org> +padre-0.72.ebuild:
+  Version bump
+
+*padre-0.70 (14 Sep 2010)
+
+  14 Sep 2010; Torsten Veller <tove@gentoo.org> +padre-0.70.ebuild,
+  metadata.xml:
+  Version bump. Add remote-id upstream tag
+
+*padre-0.63 (02 Jun 2010)
+
+  02 Jun 2010; Torsten Veller <tove@gentoo.org> +padre-0.63.ebuild:
+  Version bump
+
+*padre-0.62 (28 May 2010)
+
+  28 May 2010; Torsten Veller <tove@gentoo.org> +padre-0.62.ebuild:
+  Version bump
+
+*padre-0.61 (12 May 2010)
+
+  12 May 2010; Torsten Veller <tove@gentoo.org> -padre-0.56.ebuild,
+  +padre-0.61.ebuild:
+  Version bump. Cleanup
+
+*padre-0.60 (20 Apr 2010)
+
+  20 Apr 2010; Torsten Veller <tove@gentoo.org> +padre-0.60.ebuild:
+  Version bump
+
+  20 Feb 2010; Torsten Veller <tove@gentoo.org> padre-0.56.ebuild:
+  Unset DISPLAY
+
+  15 Feb 2010; Torsten Veller <tove@gentoo.org> +padre-0.56.ebuild,
+  +metadata.xml:
+  Import to gentoo from perl-experimental
+
+*padre-0.56 (01 Feb 2010)
+
+  01 Feb 2010; Torsten Veller <tove@gentoo.org> +padre-0.56.ebuild:
+  Version bump
+
+*padre-0.55 (21 Jan 2010)
+
+  21 Jan 2010; Torsten Veller <tove@gentoo.org> -padre-0.53.ebuild,
+  +padre-0.55.ebuild:
+  Version bump. Cleanup
+
+*padre-0.54 (11 Jan 2010)
+
+  11 Jan 2010; Torsten Veller <tove@gentoo.org> -padre-0.52.ebuild,
+  +padre-0.54.ebuild:
+  Version bump. Cleanup
+
+*padre-0.53 (31 Dec 2009)
+
+  31 Dec 2009; Torsten Veller <tove@gentoo.org> +padre-0.53.ebuild:
+  Version bump
+
+*padre-0.52 (14 Dec 2009)
+
+  14 Dec 2009; Torsten Veller <tove@gentoo.org> -padre-0.50.ebuild,
+  -padre-0.51.ebuild, +padre-0.52.ebuild:
+  Version bump
+
+*padre-0.51 (06 Dec 2009)
+
+  06 Dec 2009; Torsten Veller <tove@gentoo.org> +padre-0.51.ebuild:
+  Version bump
+
+  23 Nov 2009; Torsten Veller <tove@gentoo.org> padre-0.50.ebuild:
+  Depend on >=dev-perl/Class-XSAccessor-1.05 cause Class-XSAccessor-Array
+  was merge in
+
+*padre-0.50 (10 Nov 2009)
+
+  10 Nov 2009; Torsten Veller <tove@gentoo.org> -padre-0.48.ebuild,
+  -padre-0.49.ebuild, +padre-0.50.ebuild:
+  Version bump. Cleanup
+
+*padre-0.49 (03 Nov 2009)
+
+  03 Nov 2009; Torsten Veller <tove@gentoo.org> +padre-0.49.ebuild:
+  Version bump
+
+*padre-0.48 (24 Oct 2009)
+
+  24 Oct 2009; Torsten Veller <tove@gentoo.org> -padre-0.42.ebuild,
+  -padre-0.44.ebuild, -padre-0.45.ebuild, -padre-0.46.ebuild,
+  -padre-0.47.ebuild, +padre-0.48.ebuild:
+  Version bump. Cleanup
+
+*padre-0.47 (11 Oct 2009)
+
+  11 Oct 2009; Kent Fredric <kentfredric@gmail.com> +padre-0.47.ebuild:
+  Bumped
+
+*padre-0.46 (14 Sep 2009)
+
+  14 Sep 2009; Kent Fredric <kentfredric@gmail.com> +padre-0.46.ebuild:
+  Bumped
+
+*padre-0.45 (02 Sep 2009)
+
+  02 Sep 2009; Kent Fredric <kentfredric@gmail.com> +padre-0.45.ebuild:
+  Bumped
+
+  26 Aug 2009; Kent Fredric <kentfredric@gmail.com> padre-0.44.ebuild:
+  Managed to add tests and get them to run properly regardless of your X
+  settings. If you don't have 'xset' installed ( which is used to test if X
+  works or not ), then tests that need X won't run. 
+
+*padre-0.44 (25 Aug 2009)
+
+  25 Aug 2009; Kent Fredric <kentfredric@gmail.com> +padre-0.44.ebuild:
+  Bumped
+
+*padre-0.42 (02 Aug 2009)
+
+  02 Aug 2009; Torsten Veller <tove@gentoo.org> -padre-0.41.ebuild,
+  +padre-0.42.ebuild:
+  Version bump. Cleanup
+
+*padre-0.41 (23 Jul 2009)
+
+  23 Jul 2009; Torsten Veller <tove@gentoo.org> -padre-0.39.ebuild,
+  +padre-0.41.ebuild:
+  Version bump. Cleanup
+
+*padre-0.39 (10 Jul 2009)
+
+  10 Jul 2009; Torsten Veller <tove@gentoo.org> -padre-0.38.ebuild,
+  +padre-0.39.ebuild:
+  Version bump
+
+  27 Jun 2009; Torsten Veller <tove@gentoo.org> -padre-0.35.ebuild,
+  -padre-0.36.ebuild, -padre-0.37.ebuild:
+  Cleanup
+
+*padre-0.38 (27 Jun 2009)
+
+  27 Jun 2009; Torsten Veller <tove@gentoo.org> +padre-0.38.ebuild:
+  Version bump
+
+*padre-0.37 (26 Jun 2009)
+
+  26 Jun 2009; Torsten Veller <tove@gentoo.org> +padre-0.37.ebuild:
+  Version bump
+
+*padre-0.36 (30 May 2009)
+
+  30 May 2009; Torsten Veller <tove@gentoo.org> +padre-0.36.ebuild:
+  Version bump
+
+*padre-0.35 (28 May 2009)
+
+  28 May 2009; Torsten Veller <tove@gentoo.org> +padre-0.35.ebuild,
+  +metadata.xml:
+  Initial commit

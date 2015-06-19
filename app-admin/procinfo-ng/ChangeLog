@@ -1,0 +1,49 @@
+# ChangeLog for app-admin/procinfo-ng
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/procinfo-ng/ChangeLog,v 1.12 2015/06/09 08:43:34 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  26 Jan 2015; Justin Lecher <jlec@gentoo.org> -procinfo-ng-2.0.304.ebuild:
+  Drop old
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> procinfo-ng-2.0.304-r1.ebuild:
+  Stable for x86, wrt bug #534804
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> procinfo-ng-2.0.304-r1.ebuild:
+  Stable for amd64, wrt bug #534804
+
+  08 Jan 2015; Jeroen Roovers <jer@gentoo.org> procinfo-ng-2.0.304-r1.ebuild:
+  Stable for HPPA (bug #534804).
+
+*procinfo-ng-2.0.304-r1 (06 Nov 2014)
+
+  06 Nov 2014; Justin Lecher <jlec@gentoo.org> +procinfo-ng-2.0.304-r1.ebuild,
+  +files/procinfo-ng-2.0.304-man.patch, metadata.xml:
+  Fix for ncurses[tinfo], #528352; Bump to EAPI=5; import man page fix from
+  fedora
+
+  10 Aug 2014; Patrick Lauer <patrick@gentoo.org> procinfo-ng-2.0.304.ebuild:
+  Fix description for more repoman happy
+
+  12 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  procinfo-ng-2.0.304.ebuild:
+  stable x86, bug 325229
+
+  28 Jun 2010; Jeroen Roovers <jer@gentoo.org> procinfo-ng-2.0.304.ebuild:
+  Stable for HPPA too.
+
+  24 Jun 2010; Pacho Ramos <pacho@gentoo.org> procinfo-ng-2.0.304.ebuild:
+  stable amd64, bug 325229
+
+  24 Jun 2010; Jeroen Roovers <jer@gentoo.org> procinfo-ng-2.0.304.ebuild:
+  Marked ~hppa too.
+
+*procinfo-ng-2.0.304 (13 Feb 2010)
+
+  13 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +procinfo-ng-2.0.304.ebuild, +files/procinfo-ng-2.0.304-as-needed.patch,
+  +metadata.xml:
+  Imported from sunrise, bug 235494, thanks Lars Wendler (Polynomial-C) for
+  initial ebuild

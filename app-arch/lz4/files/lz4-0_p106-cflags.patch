@@ -1,0 +1,22 @@
+--- a/cmake/pack/CMakeLists.txt
++++ b/cmake/pack/CMakeLists.txt
+@@ -36,7 +36,7 @@
+ ADD_DEFINITIONS("-Wundef")
+ ADD_DEFINITIONS("-Wcast-align")
+ ADD_DEFINITIONS("-Wno-implicit-function-declaration")
+-ADD_DEFINITIONS("-O3 -march=native -std=c99")
++ADD_DEFINITIONS("-std=c99")
+ INCLUDE_DIRECTORIES (${SRC_DIR})
+ 
+ 
+--- a/cmake/CMakeLists.txt
++++ b/cmake/CMakeLists.txt
+@@ -99,7 +99,7 @@
+ ADD_DEFINITIONS("-Wundef")
+ ADD_DEFINITIONS("-Wcast-align")
+ ADD_DEFINITIONS("-Wno-implicit-function-declaration")
+-ADD_DEFINITIONS("-Os -march=native -std=c99")
++ADD_DEFINITIONS("-std=c99")
+ INCLUDE_DIRECTORIES (${SRC_DIR})
+ 
+ 

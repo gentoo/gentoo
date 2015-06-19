@@ -1,0 +1,38 @@
+# ChangeLog for dev-libs/gom
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/gom/ChangeLog,v 1.9 2015/05/14 21:38:31 eva Exp $
+
+*gom-0.3.1 (14 May 2015)
+
+  14 May 2015; Gilles Dartiguelongue <eva@gentoo.org> +gom-0.3.1.ebuild:
+  Version bump.
+
+  11 Apr 2015; Pacho Ramos <pacho@gentoo.org> -gom-0.2.1.ebuild,
+  gom-0.3.0.ebuild:
+  gdk-pixbuf is needed for glibtest (#546216 by Toralf Förster), drop old
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> gom-0.3.0.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> gom-0.3.0.ebuild:
+  amd64 stable, bug 534012
+
+  23 Feb 2015; Pacho Ramos <pacho@gentoo.org> gom-0.2.1.ebuild,
+  gom-0.3.0.ebuild:
+  ppc/ppc64 keyword, bug #521972
+
+*gom-0.3.0 (18 Feb 2015)
+
+  18 Feb 2015; Pacho Ramos <pacho@gentoo.org> +gom-0.3.0.ebuild:
+  Version bump
+
+  19 Dec 2014; Pacho Ramos <pacho@gentoo.org> gom-0.2.1.ebuild:
+  amd64 stable, bug 529964
+
+  18 Dec 2014; Pacho Ramos <pacho@gentoo.org> gom-0.2.1.ebuild:
+  x86 stable, bug 529964
+
+*gom-0.2.1 (02 Sep 2014)
+
+  02 Sep 2014; Pacho Ramos <pacho@gentoo.org> +gom-0.2.1.ebuild, +metadata.xml:
+  New package needed for grilo-plugins

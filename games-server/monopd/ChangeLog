@@ -1,0 +1,137 @@
+# ChangeLog for games-server/monopd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-server/monopd/ChangeLog,v 1.30 2015/05/10 18:52:41 nimiux Exp $
+
+  10 May 2015; Chema Alonso <nimiux@gentoo.org> monopd-0.9.8.ebuild:
+  Stable for amd64 wrt bug #547530
+
+  26 Apr 2015; Pacho Ramos <pacho@gentoo.org> monopd-0.9.8.ebuild:
+  x86 stable wrt bug #547530
+
+*monopd-0.9.8 (24 Mar 2015)
+
+  24 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> +monopd-0.9.8.ebuild:
+  version bump (bug #544322)
+
+  26 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org> -files/monopd,
+  -files/monopd-0.9.3-dosfix.patch, -files/monopd-0.9.3-gcc43.patch,
+  -monopd-0.9.3-r1.ebuild:
+  old
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> monopd-0.9.7.ebuild:
+  Stable for x86, wrt bug #534574
+
+  17 Jan 2015; Agostino Sarubbo <ago@gentoo.org> monopd-0.9.7.ebuild:
+  Stable for ppc, wrt bug #534574
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> monopd-0.9.7.ebuild:
+  Stable for amd64, wrt bug #534574
+
+*monopd-0.9.7 (16 Dec 2014)
+
+  16 Dec 2014; Michael Sterrett <mr_bones_@gentoo.org> +files/monopd.in,
+  +monopd-0.9.7.ebuild:
+  version bump
+
+  15 Dec 2011; Michael Sterrett <mr_bones_@gentoo.org> monopd-0.9.3-r1.ebuild:
+  EAPI=2; tidy
+
+  15 Dec 2011; Agostino Sarubbo <ago@gentoo.org> monopd-0.9.3-r1.ebuild:
+  Add ~amd64, wrt bug #249476
+
+  10 May 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/monopd-0.9.3-gcc43.patch, monopd-0.9.3-r1.ebuild:
+  Add fix from Debian for building with gcc-4.3 #218833 by Peter Alfredsen.
+
+  09 Feb 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  files/monopd-0.9.3-dosfix.patch:
+  upstream updated the patch (bug #209409)
+
+  24 Jan 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  monopd-0.9.3-r1.ebuild:
+  make the example config better (bug #206740)
+
+*monopd-0.9.3-r1 (03 Mar 2006)
+
+  03 Mar 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  +monopd-0.9.3-r1.ebuild:
+  rev bump to push out security patch
+
+  03 Mar 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/monopd-0.9.3-dosfix.patch, monopd-0.9.3.ebuild:
+  add patch from upstream to address security bug #124829
+
+  14 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org> monopd-0.9.3.ebuild:
+  use doinitd as suggested by Nikolas Garofil via bug #98751
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  12 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> -monopd-0.9.0.ebuild:
+  clean older ebuild
+
+  08 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> monopd-0.9.3.ebuild:
+  stable on x86
+
+  31 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> -monopd-0.9.2.ebuild:
+  clean older version
+
+*monopd-0.9.3 (31 Aug 2004)
+
+  31 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> +monopd-0.9.3.ebuild:
+  version bump
+
+  14 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> monopd-0.8.2-r1.ebuild,
+  monopd-0.8.3.ebuild:
+  clean out 0.8
+
+*monopd-0.9.2 (14 Jun 2004)
+
+  14 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> monopd-0.9.2.ebuild,
+  files/monopd:
+  version bump
+
+  19 Apr 2004; David Holm <dholm@gentoo.org> monopd-0.9.0.ebuild:
+  Added to ~ppc.
+
+*monopd-0.9.0 (18 Apr 2004)
+
+  18 Apr 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #39339 by Rob Kaper.
+
+*monopd-0.8.3 (14 Nov 2003)
+
+  14 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> monopd-0.8.2.ebuild:
+  roll off old ebuild
+
+  14 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> monopd-0.8.3.ebuild:
+  version bump
+
+*monopd-0.8.2-r1 (25 Aug 2003)
+
+  25 Aug 2003; Michael Sterrett <msterret@gentoo.org> monopd-0.8.2-r1.ebuild,
+  files/monopd:
+  Added a monopd file for /etc/init.d supplied by Nikolas Garofil via bug 27322
+
+  21 Aug 2003; Michael Sterrett <msterret@gentoo.org> monopd-0.8.2.ebuild:
+  add error message for make install
+
+*monopd-0.8.2 (19 Jul 2003)
+
+  19 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #24819 + games.eclass support.
+
+*monopd-0.7.0 (06 Jan 2003)
+
+  06 Jan 2003; Hannes Mehnert <hannes@gentoo.org> monopd-0.7.0.ebuild:
+  version bump, thanks to cap@capsi.com (Rob Kaper) (bug #9872)
+
+*monopd-0.4.3-r1 (1 Oct 2002)
+
+  01 Oct 2002; Mike Frysinger <vapier@gentoo.org> monopd-0.4.3-r1.ebuild :
+  Old version installed some parts into ${D}/${D}/ ... fixed that
+
+*monopd-0.4.3 (1 Aug 2002)
+
+  1 Aug 2002; J. Alberto Suárez López <bass@gentoo.org> monopd-0.4.3.ebuild
+  First relase 

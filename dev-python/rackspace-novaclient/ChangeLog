@@ -1,0 +1,47 @@
+# ChangeLog for dev-python/rackspace-novaclient
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/rackspace-novaclient/ChangeLog,v 1.9 2015/06/07 15:50:41 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  12 May 2014; Matthew Thode <prometheanfire@gentoo.org>
+  -rackspace-novaclient-1.2-r1.ebuild, -rackspace-novaclient-1.2.ebuild,
+  -rackspace-novaclient-9999.ebuild:
+  removing old badness
+
+*rackspace-novaclient-1.4 (12 May 2014)
+
+  12 May 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +rackspace-novaclient-1.4.ebuild:
+  upgrade, much needed
+
+*rackspace-novaclient-1.2-r1 (14 Apr 2014)
+
+  14 Apr 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +rackspace-novaclient-1.2-r1.ebuild, rackspace-novaclient-9999.ebuild:
+  no more 2.6
+
+  03 May 2013; Matthew Thode <prometheanfire@gentoo.org>
+  rackspace-novaclient-1.2.ebuild, rackspace-novaclient-9999.ebuild:
+  getting rid of 2.5 support (python-novaclient doesn't support it)
+
+  03 May 2013; Matthew Thode <prometheanfire@gentoo.org>
+  rackspace-novaclient-1.2.ebuild, rackspace-novaclient-9999.ebuild:
+  rackspace-novaclient was moved from the rackspace github org to the rackerlabs
+  one
+
+  02 May 2013; Mike Gilbert <floppym@gentoo.org>
+  rackspace-novaclient-1.2.ebuild, rackspace-novaclient-9999.ebuild:
+  Create BUILD_DIR in python_prepare since setup.py build does nothing.
+
+*rackspace-novaclient-9999 (04 Mar 2013)
+*rackspace-novaclient-1.2 (04 Mar 2013)
+
+  04 Mar 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +rackspace-novaclient-1.2.ebuild, +rackspace-novaclient-9999.ebuild,
+  +metadata.xml:
+  initial add of rackspace-novaclient

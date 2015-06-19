@@ -1,0 +1,223 @@
+# ChangeLog for dev-perl/Audio-Wav
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Audio-Wav/ChangeLog,v 1.64 2015/04/12 19:06:05 dilfridge Exp $
+
+*Audio-Wav-0.140.0 (12 Apr 2015)
+
+  12 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Audio-Wav-0.140.0.ebuild:
+  Version bump
+
+*Audio-Wav-0.130.0-r1 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Audio-Wav-0.130.0-r1.ebuild, -Audio-Wav-0.130.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  04 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> Audio-Wav-0.130.0.ebuild:
+  Fix DESCRIPTION
+
+  08 Jan 2013; Torsten Veller <tove@gentoo.org> -Audio-Wav-0.120.0.ebuild:
+  Cleanup
+
+  30 Sep 2012; Raúl Porcel <armin76@gentoo.org> Audio-Wav-0.120.0.ebuild,
+  Audio-Wav-0.130.0.ebuild:
+  Drop alpha keywords
+
+  09 Aug 2012; Brent Baude <ranger@gentoo.org> Audio-Wav-0.130.0.ebuild:
+  Marking Audio-Wav-0.130.0 ppc for bug 418785
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> Audio-Wav-0.130.0.ebuild:
+  Stable for amd64, wrt bug #418785
+
+  02 Aug 2012; Jeff Horelick <jdhore@gentoo.org> Audio-Wav-0.130.0.ebuild:
+  marked x86 per bug 418785
+
+  02 Aug 2012; Jeroen Roovers <jer@gentoo.org> Audio-Wav-0.130.0.ebuild:
+  Stable for HPPA (bug #418785).
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Audio-Wav-0.130.0 (31 Mar 2012)
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> +Audio-Wav-0.130.0.ebuild:
+  Version bump
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -Audio-Wav-0.11.ebuild:
+  Cleanup
+
+  19 Mar 2012; Raúl Porcel <armin76@gentoo.org> Audio-Wav-0.11.ebuild,
+  Audio-Wav-0.120.0.ebuild:
+  Drop ia64/sparc keywords
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Audio-Wav-0.120.0.ebuild:
+  x86 stable wrt bug #400037
+
+  27 Feb 2012; Brent Baude <ranger@gentoo.org> Audio-Wav-0.120.0.ebuild:
+  Marking Audio-Wav-0.120.0 ppc for bug 400037
+
+  27 Feb 2012; Jeroen Roovers <jer@gentoo.org> Audio-Wav-0.120.0.ebuild:
+  Stable for HPPA (bug #400037).
+
+  25 Feb 2012; Tobias Klausmann <klausman@gentoo.org> Audio-Wav-0.120.0.ebuild:
+  Stable on alpha, bug #400037
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Audio-Wav-0.120.0.ebuild:
+  Stable for amd64, wrt bug #400037
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Audio-Wav-0.12.ebuild:
+  Cleanup
+
+*Audio-Wav-0.120.0 (01 Sep 2011)
+
+  01 Sep 2011; Torsten Veller <tove@gentoo.org> +Audio-Wav-0.120.0.ebuild:
+  Change version scheme
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -Audio-Wav-0.06.ebuild:
+  Cleanup
+
+  27 Jun 2010; <nixnut@gentoo.org> Audio-Wav-0.11.ebuild:
+  ppc stable #323529
+
+*Audio-Wav-0.12 (31 May 2010)
+
+  31 May 2010; Torsten Veller <tove@gentoo.org> +Audio-Wav-0.12.ebuild:
+  Version bump
+
+  08 May 2010; Raúl Porcel <armin76@gentoo.org> Audio-Wav-0.11.ebuild:
+  alpha/ia64/sparc stable wrt #314467
+
+  05 May 2010; Jeroen Roovers <jer@gentoo.org> Audio-Wav-0.11.ebuild:
+  Stable for HPPA (bug #314467).
+
+  17 Apr 2010; Torsten Veller <tove@gentoo.org> Audio-Wav-0.11.ebuild:
+  Stable on amd64, x86 (#314467)
+
+  09 Apr 2010; Torsten Veller <tove@gentoo.org> -Audio-Wav-0.08.ebuild,
+  -Audio-Wav-0.09.ebuild, -Audio-Wav-0.10.ebuild:
+  Cleanup
+
+*Audio-Wav-0.11 (15 Mar 2010)
+
+  15 Mar 2010; Torsten Veller <tove@gentoo.org> +Audio-Wav-0.11.ebuild:
+  Version bump
+
+*Audio-Wav-0.10 (14 Feb 2010)
+
+  14 Feb 2010; Torsten Veller <tove@gentoo.org> +Audio-Wav-0.10.ebuild:
+  Version bump
+
+*Audio-Wav-0.09 (11 Feb 2010)
+
+  11 Feb 2010; Torsten Veller <tove@gentoo.org> +Audio-Wav-0.09.ebuild:
+  Version bump
+
+*Audio-Wav-0.08 (09 Feb 2010)
+
+  09 Feb 2010; Torsten Veller <tove@gentoo.org> +Audio-Wav-0.08.ebuild:
+  Version bump
+
+  28 Jan 2010; Torsten Veller <tove@gentoo.org> Audio-Wav-0.06.ebuild:
+  Fix LICENSE: same terms as perl (#301969)
+
+  02 May 2009; Torsten Veller <tove@gentoo.org> -Audio-Wav-0.04.ebuild:
+  Cleanup
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> Audio-Wav-0.06.ebuild:
+  Stable on x86, bug #169152.
+
+  14 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Audio-Wav-0.04.ebuild, Audio-Wav-0.06.ebuild:
+  Ebuild maintenance
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> Audio-Wav-0.06.ebuild:
+  Stable on Alpha.
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> Audio-Wav-0.06.ebuild:
+  Stable on ia64.
+
+  28 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org> Audio-Wav-0.06.ebuild:
+  Stable on hppa
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Audio-Wav-0.06.ebuild:
+  ppc stable
+
+  07 Sep 2006; Michael Cummings <mcummings@gentoo.org>
+  -Audio-Wav-0.02.ebuild:
+  Removing old ebuild
+
+  05 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org> Audio-Wav-0.06.ebuild:
+  Stable on sparc
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Audio-Wav-0.06.ebuild:
+  Marking amd64 stable
+
+  04 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Audio-Wav-0.02.ebuild, Audio-Wav-0.04.ebuild, Audio-Wav-0.06.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  03 Jul 2006; Christian Hartmann <ian@gentoo.org> Audio-Wav-0.02.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed header
+
+*Audio-Wav-0.06 (24 Apr 2006)
+
+  24 Apr 2006; <mcummings@gentoo.org> +Audio-Wav-0.06.ebuild:
+  Version bump of Audio-Wav
+
+  06 Feb 2006; Simon Stelling <blubb@gentoo.org> Audio-Wav-0.04.ebuild:
+  stable on amd64
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> Audio-Wav-0.04.ebuild:
+  Mark 0.04 stable on ia64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> Audio-Wav-0.04.ebuild:
+  Mark 0.04 stable on alpha
+
+  16 Jan 2006; Rene Nussbaumer <killerfox@gentoo.org> Audio-Wav-0.04.ebuild:
+  Stable on hppa.
+
+  16 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org> Audio-Wav-0.04.ebuild:
+  Stable on sparc
+
+  15 Jan 2006; Michael Hanselmann <hansmi@gentoo.org> Audio-Wav-0.04.ebuild:
+  Stable on ppc.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Audio-Wav-0.04.ebuild:
+  Marking stable x86
+
+  24 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  Audio-Wav-0.02.ebuild:
+  mirror syntax
+
+*Audio-Wav-0.04 (23 Mar 2005)
+
+  23 Mar 2005; Michael Cummings <mcummings@gentoo.org> +Audio-Wav-0.04.ebuild:
+  new version on cpan
+
+  23 Nov 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed digest.
+
+  25 Feb 2004; Sven Blumenstein <bazik@gentoo.org> Audio-Wav-0.02.ebuild:
+  Stable on sparc.
+
+  28 Jan 2004; Aron Griffis <agriffis@gentoo.org> Audio-Wav-0.02.ebuild:
+  stable on alpha and ia64
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*Audio-Wav-0.02 (30 Oct 2002)
+
+  11 Jul 2003; Guy Martin <gmsoft@gentoo.org> Audio-Wav-0.02.ebuild :
+  Added hppa to KEYWORDS.
+
+  07 Apr 2003; Zach Welch <zwelch@gentoo.org> Audio-Wav-0.02.ebuild:
+  mark ppc stable
+
+  30 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Initial import.

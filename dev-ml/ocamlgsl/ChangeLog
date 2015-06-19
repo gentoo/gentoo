@@ -1,0 +1,32 @@
+# ChangeLog for dev-ml/ocamlgsl
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocamlgsl/ChangeLog,v 1.6 2013/08/19 13:51:29 aballier Exp $
+
+  19 Aug 2013; Alexis Ballier <aballier@gentoo.org> ocamlgsl-0.6.0.ebuild:
+  eapi5, define subslot and add := dep on ocaml packages
+
+  12 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> ocamlgsl-0.6.0.ebuild:
+  Marked ~ppc wrt #322673
+
+  28 Nov 2010; Markos Chandras <hwoarang@gentoo.org> ocamlgsl-0.6.0.ebuild:
+  Stable on amd64 wrt bug #344435
+
+  15 Nov 2010; Thomas Kahle <tomka@gentoo.org> ocamlgsl-0.6.0.ebuild:
+  x86 stable per bug #344435
+
+  11 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org> ocamlgsl-0.6.0.ebuild:
+  Adding dev-ml/fort to dependencies. Fixes bug 323543. Thanks Diego for the
+  report.
+
+*ocamlgsl-0.6.0 (03 Jun 2010)
+
+  03 Jun 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +ocamlgsl-0.6.0.ebuild, +files/ocamlgsl-0.6.0-ocaml311.patch,
+  +metadata.xml:
+  Initial import in the main tree from the sunrise overlay. Thanks Guillaume
+  Horel for his work
+
+  17 Aug 2009; Guillaume Horel (thrasibule) <guillaume.horel@gmail.com>
+  +ocamlgsl-0.6.0.ebuild, +files/ocaml-3.11.patch, +metadata.xml:
+  New Ebuild for dev-ml/ocamlgsl (bug #280939)
+

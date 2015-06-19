@@ -1,0 +1,168 @@
+# ChangeLog for sys-apps/razercfg
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/razercfg/ChangeLog,v 1.35 2015/05/22 08:39:18 joker Exp $
+
+*razercfg-0.32 (22 May 2015)
+
+  22 May 2015; Christian Birchinger <joker@gentoo.org> +razercfg-0.32.ebuild:
+  Version bump.
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> razercfg-0.23.ebuild,
+  razercfg-0.24.ebuild, razercfg-0.25.ebuild, razercfg-0.26.ebuild,
+  razercfg-0.29.ebuild, razercfg-0.30.ebuild, razercfg-0.31.ebuild:
+  Drop old Python implementations
+
+  15 Mar 2015; Christian Birchinger <joker@gentoo.org>
+  -razercfg-0.19_p20121013.ebuild, -razercfg-0.20.ebuild, -razercfg-0.21.ebuild,
+  -razercfg-0.22-r1.ebuild:
+  Remove old versions
+
+*razercfg-0.31 (14 Jan 2015)
+
+  14 Jan 2015; Christian Birchinger <joker@gentoo.org> +razercfg-0.31.ebuild:
+  Version bump
+
+  28 Nov 2014; Pacho Ramos <pacho@gentoo.org> razercfg-0.30.ebuild:
+  Support python 3.4
+
+  23 Oct 2014; Christian Birchinger <joker@gentoo.org> razercfg-0.30.ebuild:
+  Add missing dev-libs/libusb dependency
+
+*razercfg-0.30 (09 Oct 2014)
+
+  09 Oct 2014; Christian Birchinger <joker@gentoo.org> +razercfg-0.30.ebuild:
+  Version bump
+
+  14 Aug 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> razercfg-0.23.ebuild:
+  x86 stable wrt bug #513744
+
+*razercfg-0.29 (07 Aug 2014)
+
+  07 Aug 2014; Christian Birchinger <joker@gentoo.org> +razercfg-0.29.ebuild:
+  Version bump
+
+  20 Jun 2014; Christian Birchinger <joker@gentoo.org> razercfg-0.26.ebuild:
+  Change the Python interpreter detection.
+
+*razercfg-0.26 (20 Jun 2014)
+
+  20 Jun 2014; Christian Birchinger <joker@gentoo.org> +razercfg-0.26.ebuild,
+  +files/razerd.init.d-r2, metadata.xml:
+  Version bump. Frontends switched to Python 3.x only
+
+*razercfg-0.25 (20 Apr 2014)
+
+  20 Apr 2014; Christian Birchinger <joker@gentoo.org> +razercfg-0.25.ebuild:
+  Version bump
+
+*razercfg-0.24 (01 Apr 2014)
+
+  01 Apr 2014; Christian Birchinger <joker@gentoo.org> +razercfg-0.24.ebuild:
+  Version bump. Systemd unit file path fixed.
+
+  23 Feb 2014; Christian Birchinger <joker@gentoo.org> -razercfg-0.22.ebuild:
+  Remove old version
+
+*razercfg-0.23 (23 Feb 2014)
+
+  23 Feb 2014; Christian Birchinger <joker@gentoo.org> +razercfg-0.23.ebuild:
+  Version bump
+
+  10 Jan 2014; Christian Birchinger <joker@gentoo.org> -razercfg-0.18.ebuild,
+  -razercfg-0.19.ebuild:
+  Remove old versions
+
+*razercfg-0.22-r1 (08 Jan 2014)
+
+  08 Jan 2014; Christian Birchinger <joker@gentoo.org>
+  +razercfg-0.22-r1.ebuild:
+  Force Python 2.x because the included scripts don't support Python 3.x
+
+*razercfg-0.22 (03 Jan 2014)
+
+  03 Jan 2014; Christian Birchinger <joker@gentoo.org> +razercfg-0.22.ebuild,
+  +files/razerd.init.d-r1:
+  Version bump. New version installs the systemd unit file by default.
+
+*razercfg-0.21 (31 Jul 2013)
+
+  31 Jul 2013; Christian Birchinger <joker@gentoo.org> +razercfg-0.21.ebuild:
+  Version bump
+
+*razercfg-0.20 (04 May 2013)
+
+  04 May 2013; Christian Birchinger <joker@gentoo.org> +razercfg-0.20.ebuild:
+  Version bump
+
+  20 Mar 2013; Christian Birchinger <joker@gentoo.org>
+  -files/razercfg-0.16-pidlogfix.patch, -razercfg-0.17.ebuild,
+  -razercfg-0.17_p20111028.ebuild:
+  Remove old versions and patches
+
+  05 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  razercfg-0.19_p20121013.ebuild:
+  Stop using $(get_libdir) for installing udev rules since /lib/udev is the
+  correct udevdir as defined by udev.eclass
+
+  06 Jan 2013; Zac Medico <zmedico@gentoo.org> razercfg-0.19_p20121013.ebuild:
+  Use snapshot from upstream gitweb, since the current one is unfetchable (bug
+  #445228).
+
+*razercfg-0.19_p20121013 (27 Nov 2012)
+
+  27 Nov 2012; Christian Birchinger <joker@gentoo.org>
+  +razercfg-0.19_p20121013.ebuild:
+  Version bump with git snapshot that supports more mice such as the Imperator
+
+  14 Oct 2012; Christian Birchinger <joker@gentoo.org> -razercfg-0.16.ebuild,
+  -razercfg-0.16-r1.ebuild:
+  Remove old versions
+
+*razercfg-0.19 (14 Oct 2012)
+
+  14 Oct 2012; Christian Birchinger <joker@gentoo.org> +razercfg-0.19.ebuild:
+  Version bump
+
+*razercfg-0.18 (25 Aug 2012)
+
+  25 Aug 2012; Christian Birchinger <joker@gentoo.org> +razercfg-0.18.ebuild:
+  Version bump
+
+  26 Jul 2012; Johannes Huber <johu@gentoo.org> razercfg-0.16-r1.ebuild,
+  razercfg-0.16.ebuild:
+  Add missing slot dependencies on Qt.
+
+  12 Jul 2012; Christian Birchinger <joker@gentoo.org> razercfg-0.16.ebuild,
+  razercfg-0.16-r1.ebuild, razercfg-0.17.ebuild:
+  Update SRC_URI to new domain
+
+*razercfg-0.17_p20111028 (18 May 2012)
+
+  18 May 2012; Christian Birchinger <joker@gentoo.org>
+  +razercfg-0.17_p20111028.ebuild:
+  Version bump using the most recent git version
+
+  30 Apr 2012; Christian Birchinger <joker@gentoo.org> razercfg-0.16.ebuild,
+  razercfg-0.16-r1.ebuild, razercfg-0.17.ebuild:
+  Update homepage
+
+  20 Feb 2012; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Drop no-herd.
+
+*razercfg-0.17 (05 Oct 2011)
+
+  05 Oct 2011; Christian Birchinger <joker@gentoo.org> +razercfg-0.17.ebuild,
+  metadata.xml:
+  Version bump with pm-utils support
+
+*razercfg-0.16-r1 (26 Sep 2011)
+
+  26 Sep 2011; Christian Birchinger <joker@gentoo.org>
+  +razercfg-0.16-r1.ebuild:
+  Create desktop entry for the qrazercfg frontend
+
+*razercfg-0.16 (17 Aug 2011)
+
+  17 Aug 2011; Christian Birchinger <joker@gentoo.org> +razercfg-0.16.ebuild,
+  +files/razercfg-0.16-pidlogfix.patch, +files/razerd.init.d, +metadata.xml:
+  Initial release

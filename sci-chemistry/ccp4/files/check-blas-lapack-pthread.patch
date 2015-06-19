@@ -1,0 +1,103 @@
+--- ccp4-5.99.5.orig/configure	2006-01-17 00:35:36.000000000 -0800
++++ ccp4-5.99.5/configure	2006-01-17 10:44:39.000000000 -0800
+@@ -2410,12 +2410,12 @@
+       end
+ EOF
+           #firslty test without -lblas
+-          test_compile="$FC $FOPTIM $XFFLAGS -o testlink testlink.f -llapack"
++          test_compile="$FC $FOPTIM $XFFLAGS -o testlink testlink.f -llapack -lpthread"
+           echo $test_compile
+           if { (eval $test_compile >& /dev/null ) 2>&1; } && test -s testlink ; then
+             # Compilation was okay
+-            echo "... only -llapack needed"
+-            XLAPACK_LIB="-llapack"
++            echo "... only -llapack -lpthread needed"
++            XLAPACK_LIB="-llapack -lpthread"
+             # Set the next two variables so that configure
+             # doesn't try to build netlib libraries
+             LAPACKLIB="lapack"
+@@ -2424,12 +2424,12 @@
+             tryblas=
+           else
+ 	    echo "more than just -llapack needed...."
+-            test_compile="$FC $FOPTIM $XFFLAGS -o testlink testlink.f -llapack -lblas"
++            test_compile="$FC $FOPTIM $XFFLAGS -o testlink testlink.f -llapack -lblas -lpthread"
+             echo $test_compile
+             if { (eval $test_compile ) 2>&1; } && test -s testlink ; then
+               # Compilation was okay
+-              echo "...-llapack and -lblas were needed"
+-              XLAPACK_LIB="-llapack -lblas"
++              echo "...-llapack, -lpthread and -lblas were needed"
++              XLAPACK_LIB="-llapack -lpthread -lblas"
+               # Set the next two variables so that configure
+               # doesn't try to build netlib libraries
+               LAPACKLIB="lapack blas"
+@@ -2720,8 +2720,8 @@
+       STOP
+       END
+ EOF
+-                test_compile="$FC $FOPTIM $XFFLAGS -o testlink testlink.f -L$testdir -l$testlib"
+-                test_ccompile="$FC $FOPTIM $XFFLAGS -o testlink testlink.f -L$testdir -l$testlib $XLDFLAGS"
++                test_compile="$FC $FOPTIM $XFFLAGS -o testlink testlink.f -L$testdir -l$testlib -lpthread"
++                test_ccompile="$FC $FOPTIM $XFFLAGS -o testlink testlink.f -L$testdir -l$testlib $XLDFLAGS -lpthread"
+                 echo $test_compile
+                 if { (eval $test_compile ) 2>&1; } && test -s testlink ; then
+                   have_lapack=yes
+@@ -2738,7 +2738,7 @@
+                   LAPACKDIR="$testdir"
+                   echo "Link ok - using lib$LAPACKLIB from $LAPACKDIR"
+ 		  #
+-		  XLAPACK_LIB="-L$LAPACKDIR -l$LAPACKLIB"
++		  XLAPACK_LIB="-L$LAPACKDIR -l$LAPACKLIB -lpthread"
+                   #
+                   # Test to see if we need BLAS too
+                   # Do this by trying to compile a test program
+@@ -2750,8 +2750,8 @@
+                   if test -f testlsame ; then
+                     rm -f testsame testlsame.o
+                   fi
+-                  test_compile="$FC $FOPTIM $XFFLAGS -o testlsame lsametst.f -L$LAPACKDIR -l$LAPACKLIB"
+-                  test_ccompile="$FC $FOPTIM $XFFLAGS -o testlsame lsametst.f -L$LAPACKDIR -l$LAPACKLIB $XLDFLAGS"
++                  test_compile="$FC $FOPTIM $XFFLAGS -o testlsame lsametst.f -L$LAPACKDIR -l$LAPACKLIB -lpthread"
++                  test_ccompile="$FC $FOPTIM $XFFLAGS -o testlsame lsametst.f -L$LAPACKDIR -l$LAPACKLIB $XLDFLAGS -lpthread"
+                   echo $test_compile
+                   if { ( eval $test_compile) 2>&1;} && test -s testlsame ; then
+                     have_blas=yes
+@@ -2830,8 +2830,8 @@
+       STOP
+       END
+ EOF
+-                  test_compile="$FC $FOPTIM $XFFLAGS -o testlink testlink.f -L$testdir -l$testlib"
+-                  test_ccompile="$FC $FOPTIM $XFFLAGS -o testlink testlink.f -L$testdir -l$testlib $XLDFLAGS"
++                  test_compile="$FC $FOPTIM $XFFLAGS -o testlink testlink.f -L$testdir -l$testlib -lpthread"
++                  test_ccompile="$FC $FOPTIM $XFFLAGS -o testlink testlink.f -L$testdir -l$testlib $XLDFLAGS -lpthread"
+                   echo $test_compile
+                   if { ( eval $test_compile) 2>&1;} && test -s testlink ; then
+                     have_blas=yes
+@@ -3033,7 +3033,7 @@
+         if test -f testlsame ; then
+           rm -f testsame testlsame.o
+         fi
+-        test_compile="$FC $FOPTIM $XFFLAGS -o testlsame lsametst.f -L$BLASDIR -l$BLASLIB"
++        test_compile="$FC $FOPTIM $XFFLAGS -o testlsame lsametst.f -L$BLASDIR -l$BLASLIB -lpthread"
+         echo $test_compile
+         if { ( eval $test_compile) 2>&1;} && test -s testlsame ; then
+           echo "Found LSAME in lib$BLASLIB"
+@@ -3046,7 +3046,7 @@
+         if test -f testxerbla ; then
+           rm -f testxerbla testxerbla.o
+         fi
+-        test_compile="$FC $FOPTIM $XFFLAGS -o testxerbla xerblatst.f -L$BLASDIR -l$BLASLIB"
++        test_compile="$FC $FOPTIM $XFFLAGS -o testxerbla xerblatst.f -L$BLASDIR -l$BLASLIB -lpthread"
+         echo $test_compile
+         if { ( eval $test_compile) 2>&1;} && test -s testxerbla ; then
+           # Found lsame
+@@ -3080,7 +3080,7 @@
+     cd ../..
+     #
+     lapackdir=lib/lapack
+-    XLAPACK_LIB="-L$srcdir/lib/lapack -llapack -L$BLASDIR -l$BLASLIB"
++    XLAPACK_LIB="-L$srcdir/lib/lapack -llapack -L$BLASDIR -l$BLASLIB -lpthread"
+ # netlib lapack is in fortran, so we may need the fortran libraries when
+ # we are linking using the C or C++ compilers
+     case $system in 

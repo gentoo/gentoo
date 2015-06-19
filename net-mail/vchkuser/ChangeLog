@@ -1,0 +1,32 @@
+# ChangeLog for net-mail/vchkuser
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/vchkuser/ChangeLog,v 1.6 2015/02/12 14:19:15 vapier Exp $
+
+  12 Feb 2015; Mike Frysinger <vapier@gentoo.org> vchkuser-0.4.ebuild:
+  Stabilize for all.
+
+  20 Jun 2013; Benedikt Böhm <hollow@gentoo.org> metadata.xml:
+  remove myself from maintainers
+
+*vchkuser-0.4 (04 Oct 2010)
+
+  04 Oct 2010; Benedikt Böhm <hollow@gentoo.org> -vchkuser-0.3.2.ebuild,
+  vchkuser-0.3.3.ebuild, +vchkuser-0.4.ebuild:
+  version bump
+
+*vchkuser-0.3.3 (10 Apr 2010)
+
+  10 Apr 2010; Benedikt Böhm <hollow@gentoo.org> -vchkuser-0.3.1.ebuild,
+  +vchkuser-0.3.3.ebuild:
+  version bump
+
+*vchkuser-0.3.2 (23 May 2009)
+
+  23 May 2009; Benedikt Böhm <hollow@gentoo.org> +vchkuser-0.3.2.ebuild:
+  version bump
+
+*vchkuser-0.3.1 (14 Feb 2009)
+
+  14 Feb 2009; Benedikt Böhm <hollow@gentoo.org> +metadata.xml,
+  +vchkuser-0.3.1.ebuild:
+  initial ebuild

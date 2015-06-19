@@ -1,0 +1,78 @@
+# ChangeLog for dev-util/dirdiff
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/dirdiff/ChangeLog,v 1.19 2015/03/25 13:26:08 jlec Exp $
+
+  25 Mar 2015; Justin Lecher <jlec@gentoo.org> dirdiff-2.1-r2.ebuild:
+  Fix tcl/tk slotting
+
+  10 Jun 2013; Markos Chandras <hwoarang@gentoo.org> dirdiff-2.1-r2.ebuild:
+  Add ~mips
+
+  14 Mar 2013; Michael Palimaka <kensington@gentoo.org> -dirdiff-2.1-r1.ebuild,
+  -dirdiff-2.1.ebuild:
+  Remove old.
+
+  12 Mar 2013; Agostino Sarubbo <ago@gentoo.org> dirdiff-2.1-r2.ebuild:
+  Stable for ppc, wrt bug #461174
+
+  10 Mar 2013; Agostino Sarubbo <ago@gentoo.org> dirdiff-2.1-r2.ebuild:
+  Stable for x86, wrt bug #461174
+
+  10 Mar 2013; Agostino Sarubbo <ago@gentoo.org> dirdiff-2.1-r2.ebuild:
+  Stable for amd64, wrt bug #461174
+
+*dirdiff-2.1-r2 (01 Feb 2013)
+
+  01 Feb 2013; Justin Lecher <jlec@gentoo.org> +dirdiff-2.1-r2.ebuild,
+  +files/dirdiff-2.1-build.patch, +files/dirdiff-2.1-funky-chars.patch,
+  +files/dirdiff-2.1-tcl8.6.patch, +files/dirdiff-2.1-vcs.patch, metadata.xml:
+  Add fix for tcl-8.6, #455032; get some fixes from debian
+
+  29 May 2012; Brent Baude <ranger@gentoo.org> dirdiff-2.1-r1.ebuild:
+  Marking dirdiff-2.1-r1 ppc for bug 391617
+
+  28 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> dirdiff-2.1-r1.ebuild:
+  x86 stable wrt bug #391617
+
+  25 Nov 2011; Markos Chandras <hwoarang@gentoo.org> dirdiff-2.1-r1.ebuild:
+  Stable on amd64 wrt bug #391617
+
+*dirdiff-2.1-r1 (31 Dec 2010)
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> +dirdiff-2.1-r1.ebuild,
+  +files/dirdiff-2.1-include.patch:
+  Respect LDFLAGS (bug #335171), CC. Build PIC. Set SONAME (bug #214536). Set
+  RDEPEND. Fix missing includes.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*dirdiff-2.1 (09 Jun 2005)
+
+  09 Jun 2005; <sekretarz@gentoo.org> +dirdiff-2.1.ebuild:
+  Version bump, bug #85381
+
+  09 Jun 2005; <sekretarz@gentoo.org> dirdiff-1.6.ebuild:
+  dirdiff respects user CFLAGS now, some clean up in ebuild, bug #66869
+
+  14 Aug 2004; Sven Wegener <swegener@gentoo.org> metadata.xml:
+  Corrected metadata.xml to match DTD.
+
+  18 Jul 2004; Tom Gall <tgall@gentoo.org> +metadata.xml:
+  added maintainer information
+
+*metadata.xml
+
+  11 May 2004; Tom Gall <tgall@gentoo.org> +dirdiff-1.6.ebuild:
+  Initial version, stable on ppc, x86 (and very likely other architectures
+  as well)
+
+*dirdiff-1.6 (11 May 2004)
+
+  11 May 2004; Tom Gall <tgall@gentoo.org> ChangeLog :
+
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

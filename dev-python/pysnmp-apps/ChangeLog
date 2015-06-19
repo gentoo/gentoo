@@ -1,0 +1,78 @@
+# ChangeLog for dev-python/pysnmp-apps
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pysnmp-apps/ChangeLog,v 1.14 2015/06/06 05:16:11 jer Exp $
+
+*pysnmp-apps-0.3.4 (06 Jun 2015)
+
+  06 Jun 2015; Jeroen Roovers <jer@gentoo.org> +pysnmp-apps-0.3.4.ebuild:
+  Version bump.
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+*pysnmp-apps-0.3.2-r1 (05 Jan 2015)
+
+  05 Jan 2015; Ian Delaney <idella4@gentoo.org> +pysnmp-apps-0.3.2-r1.ebuild,
+  -pysnmp-apps-0.2.11a.ebuild, -pysnmp-apps-0.3.1.ebuild,
+  -pysnmp-apps-0.3.2.ebuild:
+  revbump; conversion -> distutils-r1, rm old
+
+*pysnmp-apps-0.3.2 (18 May 2012)
+
+  18 May 2012; Patrick Lauer <patrick@gentoo.org> +pysnmp-apps-0.3.2.ebuild:
+  Bump for #416385
+
+*pysnmp-apps-0.3.1 (25 Dec 2011)
+
+  25 Dec 2011; Patrick Lauer <patrick@gentoo.org> +pysnmp-apps-0.3.1.ebuild:
+  Bump for #393623
+
+*pysnmp-apps-0.2.11a (23 Dec 2010)
+
+  23 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pysnmp-apps-0.2.9a.ebuild, +pysnmp-apps-0.2.11a.ebuild:
+  Version bump.
+
+*pysnmp-apps-0.2.9a (21 Feb 2010)
+
+  21 Feb 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pysnmp-apps-0.2.9a.ebuild:
+  Version bump.
+
+*pysnmp-apps-0.2.8a (28 Nov 2009)
+
+  28 Nov 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pysnmp-apps-0.2.8a.ebuild:
+  Version bump. Set SUPPORT_PYTHON_ABIS.
+
+*pysnmp-apps-0.2.7a (23 Jun 2008)
+
+  23 Jun 2008; Tiziano Müller <dev-zero@gentoo.org>
+  -pysnmp-apps-0.2.6a.ebuild, +pysnmp-apps-0.2.7a.ebuild:
+  Version bump, added CHANGES to DOCS, added missing PYTHON_MODNAME
+
+  18 Aug 2007; Martin Jackson <mjolnir@gentoo.org>
+  -pysnmp-apps-0.2.5a.ebuild:
+  Remove old version
+
+*pysnmp-apps-0.2.6a (15 Aug 2007)
+
+  15 Aug 2007; Martin Jackson <mjolnir@gentoo.org>
+  +pysnmp-apps-0.2.6a.ebuild:
+  Version bump
+
+  24 Feb 2007; Martin Jackson <mjolnir@gentoo.org>
+  -pysnmp-apps-0.2.4a.ebuild:
+  Remove cruft
+
+*pysnmp-apps-0.2.5a (24 Feb 2007)
+
+  24 Feb 2007; Martin Jackson <mjolnir@gentoo.org>
+  +pysnmp-apps-0.2.5a.ebuild:
+  Version bump
+
+*pysnmp-apps-0.2.4a (02 Feb 2007)
+
+  02 Feb 2007; Martin Jackson <mjolnir@gentoo.org> +metadata.xml,
+  +pysnmp-apps-0.2.4a.ebuild:
+  Adding dev-python/pysnmp-apps for #159436

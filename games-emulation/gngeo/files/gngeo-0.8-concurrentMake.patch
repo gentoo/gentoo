@@ -1,0 +1,16 @@
+--- src/generator68k/Makefile.am.orig	2015-01-23 18:37:37.998723294 -0500
++++ src/generator68k/Makefile.am	2015-01-23 18:38:39.995391133 -0500
+@@ -71,9 +71,12 @@
+ 
+ #def68k : def68k.c
+ #	gcc def68k.c tab68k.c -o def68k -I .. -I ../.. -I . `sdl-config --cflags`
+-def68k.o gen68k.o tab68k2.o : %.o : %.c
++def68k.o tab68k2.o : %.o : %.c
+ 	$(gcc_build_verbose)$(CC_FOR_BUILD) -c $< -o $@ -I .. -I ../.. -I . `sdl-config --cflags`
+ 
++gen68k.o: gen68k.c def68k-iibs.h
++	$(CC_FOR_BUILD) -c $< -o $@ -I .. -I ../.. -I . `sdl-config --cflags`
++
+ def68k : def68k.o tab68k2.o
+ 	$(gcc_build_verbose)$(CC_FOR_BUILD) def68k.o tab68k2.o -o $@ 
+ 

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-db/postgresql-7:* dev-haskell/convertible:=[profile?] >=dev-haskell/hdbc-2.2.0:2=[profile?] dev-haskell/mtl:=[profile?] dev-haskell/old-locale:=[profile?] dev-haskell/old-time:=[profile?] dev-haskell/parsec:=[profile?] dev-haskell/utf8-string:=[profile?] >=dev-lang/ghc-6.12.1:= >=dev-haskell/cabal-1.8.0.2 test? ( >=dev-haskell/hdbc-2.2.6:=[profile?] dev-haskell/hunit:=[profile?] dev-haskell/quickcheck:2=[profile?] dev-haskell/testpack:=[profile?] ) doc? ( dev-haskell/haddock ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=PostgreSQL driver for HDBC
+EAPI=5
+HOMEPAGE=http://github.com/hdbc/hdbc-postgresql
+IUSE=test doc hscolour profile
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-db/postgresql-7:* dev-haskell/convertible:=[profile?] >=dev-haskell/hdbc-2.2.0:2=[profile?] dev-haskell/mtl:=[profile?] dev-haskell/old-locale:=[profile?] dev-haskell/old-time:=[profile?] dev-haskell/parsec:=[profile?] dev-haskell/utf8-string:=[profile?] >=dev-lang/ghc-6.12.1:=
+RESTRICT=test
+SLOT=2/2.3.2.3
+SRC_URI=mirror://hackage/packages/archive/HDBC-postgresql/2.3.2.3/HDBC-postgresql-2.3.2.3.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	ghc-package	48ae4e0fd75e1c8047c4b7f507d5debc	haskell-cabal	eee03ecca8dca7a927272dcea2ca53f4	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=e22d0a6d952b089c3f4b60e3a9c9dc98

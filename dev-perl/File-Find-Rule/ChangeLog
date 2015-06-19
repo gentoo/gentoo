@@ -1,0 +1,284 @@
+# ChangeLog for dev-perl/File-Find-Rule
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-Find-Rule/ChangeLog,v 1.73 2014/08/23 22:15:23 axs Exp $
+
+*File-Find-Rule-0.330.0-r1 (23 Aug 2014)
+
+  23 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +File-Find-Rule-0.330.0-r1.ebuild, -File-Find-Rule-0.330.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  19 Aug 2014; Raúl Porcel <armin76@gentoo.org> File-Find-Rule-0.330.0.ebuild:
+  Add ~sparc wrt #497068
+
+  04 Jul 2014; Tobias Klausmann <klausman@gentoo.org>
+  File-Find-Rule-0.330.0.ebuild:
+  Keyworded on alpha, bug #497068
+
+  30 Jan 2014; Markus Meier <maekke@gentoo.org> File-Find-Rule-0.330.0.ebuild:
+  add ~arm, bug #497068
+
+  27 Jan 2014; Akinori Hattori <hattya@gentoo.org>
+  File-Find-Rule-0.330.0.ebuild:
+  keyword ~ia64 wrt bug #497068
+
+  06 Jan 2014; Naohiro Aota <naota@gentoo.org> File-Find-Rule-0.330.0.ebuild:
+  Add ~x86-fbsd wrt bug #497068
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org> -File-Find-Rule-0.320.0.ebuild:
+  Cleanup
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org>
+  File-Find-Rule-0.330.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  27 Aug 2012; Raúl Porcel <armin76@gentoo.org> File-Find-Rule-0.320.0.ebuild,
+  File-Find-Rule-0.330.0.ebuild:
+  Drop alpha/ia64/sparc keywords
+
+  09 Aug 2012; Brent Baude <ranger@gentoo.org> File-Find-Rule-0.330.0.ebuild:
+  Marking File-Find-Rule-0.330.0 ppc for bug 418811
+
+  07 Aug 2012; Brent Baude <ranger@gentoo.org> File-Find-Rule-0.330.0.ebuild:
+  Marking File-Find-Rule-0.330.0 ppc64 for bug 418811
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> File-Find-Rule-0.330.0.ebuild:
+  Stable for amd64, wrt bug #418811
+
+  02 Aug 2012; Jeroen Roovers <jer@gentoo.org> File-Find-Rule-0.330.0.ebuild:
+  Stable for HPPA (bug #418811).
+
+  31 Jul 2012; Johannes Huber <johu@gentoo.org> File-Find-Rule-0.330.0.ebuild:
+  Stable for x86, wrt bug #418811
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*File-Find-Rule-0.330.0 (19 Sep 2011)
+
+  19 Sep 2011; Torsten Veller <tove@gentoo.org> +File-Find-Rule-0.330.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -File-Find-Rule-0.32.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> File-Find-Rule-0.320.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*File-Find-Rule-0.320.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org> +File-Find-Rule-0.320.0.ebuild:
+  Change version scheme
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -File-Find-Rule-0.30.ebuild:
+  Cleanup
+
+  05 Nov 2010; Samuli Suominen <ssuominen@gentoo.org>
+  File-Find-Rule-0.32.ebuild:
+  ppc64 stable wrt #341865
+
+  27 Jun 2010; <nixnut@gentoo.org> File-Find-Rule-0.32.ebuild:
+  ppc stable #323529
+
+  08 May 2010; Raúl Porcel <armin76@gentoo.org> File-Find-Rule-0.32.ebuild:
+  alpha/ia64/sparc stable wrt #314467
+
+  05 May 2010; Jeroen Roovers <jer@gentoo.org> File-Find-Rule-0.32.ebuild:
+  Stable for HPPA (bug #314467).
+
+  17 Apr 2010; Torsten Veller <tove@gentoo.org> File-Find-Rule-0.32.ebuild:
+  Stable on amd64, x86 (#314467)
+
+  09 Jan 2010; Fabian Groffen <grobian@gentoo.org>
+  File-Find-Rule-0.32.ebuild:
+  Transfer Prefix keywords
+
+  24 Dec 2009; Torsten Veller <tove@gentoo.org> -File-Find-Rule-0.31.ebuild:
+  Cleanup
+
+*File-Find-Rule-0.32 (28 Nov 2009)
+
+  28 Nov 2009; Torsten Veller <tove@gentoo.org> +File-Find-Rule-0.32.ebuild:
+  Version bump
+
+*File-Find-Rule-0.31 (28 Nov 2009)
+
+  28 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +File-Find-Rule-0.31.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org> File-Find-Rule-0.30.ebuild:
+  New virtuals: module-build
+
+  05 May 2007; Christian Hartmann <ian@gentoo.org>
+  -File-Find-Rule-0.28.ebuild, -File-Find-Rule-0.29.ebuild:
+  Cleanup
+
+  15 Apr 2007; Markus Rothe <corsair@gentoo.org> File-Find-Rule-0.30.ebuild:
+  Stable on ppc64
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> File-Find-Rule-0.30.ebuild:
+  Stable on x86, bug #169152.
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  File-Find-Rule-0.30.ebuild:
+  Stable on Alpha.
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  File-Find-Rule-0.30.ebuild:
+  Stable on ia64.
+
+  09 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  -File-Find-Rule-0.26.ebuild, File-Find-Rule-0.28.ebuild,
+  File-Find-Rule-0.29.ebuild, File-Find-Rule-0.30.ebuild:
+  Cleaning up stale ebuilds
+
+  28 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  File-Find-Rule-0.30.ebuild:
+  Stable on hppa
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  File-Find-Rule-0.30.ebuild:
+  ppc stable
+
+  07 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  File-Find-Rule-0.30.ebuild:
+  Marking amd64, sparc stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  File-Find-Rule-0.26.ebuild, File-Find-Rule-0.28.ebuild,
+  File-Find-Rule-0.29.ebuild, File-Find-Rule-0.30.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  18 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  File-Find-Rule-0.26.ebuild, File-Find-Rule-0.28.ebuild,
+  File-Find-Rule-0.29.ebuild, File-Find-Rule-0.30.ebuild:
+  Forcing mb version
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  File-Find-Rule-0.26.ebuild, File-Find-Rule-0.28.ebuild,
+  File-Find-Rule-0.29.ebuild, File-Find-Rule-0.30.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+*File-Find-Rule-0.30 (23 Jun 2006)
+
+  23 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  +File-Find-Rule-0.30.ebuild:
+  Version bump upstream
+
+*File-Find-Rule-0.29 (22 May 2006)
+
+  22 May 2006; <mcummings@gentoo.org> +File-Find-Rule-0.29.ebuild:
+  Version bump
+
+  22 Mar 2006; Chris White <chriswhite@gentoo.org>
+  File-Find-Rule-0.28.ebuild:
+  Marked 0.28 amd64 stable.
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  File-Find-Rule-0.26.ebuild, File-Find-Rule-0.28.ebuild:
+  Virtuals for perl-core
+
+  27 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  File-Find-Rule-0.28.ebuild:
+  Stable on ppc.
+
+  27 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  File-Find-Rule-0.26.ebuild:
+  Stable on hppa, ppc.
+
+  18 Jan 2006; Guy Martin <gmsoft@gentoo.org> File-Find-Rule-0.28.ebuild:
+  Stable on hppa.
+
+  28 Nov 2005; Tom Gall <tgall@gentoo.org> File-Find-Rule-0.28.ebuild:
+  stable on ppc64
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  File-Find-Rule-0.28.ebuild:
+  Mark 0.28 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  File-Find-Rule-0.28.ebuild:
+  add ~ia64
+
+  03 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  File-Find-Rule-0.28.ebuild:
+  Stable on alpha.
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  File-Find-Rule-0.28.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  File-Find-Rule-0.26.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  File-Find-Rule-0.28.ebuild:
+  dev-perl/File-Spec => perl-core/File-Spec migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  File-Find-Rule-0.26.ebuild:
+  dev-perl/File-Spec => perl-core/File-Spec migration
+
+  17 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  File-Find-Rule-0.28.ebuild:
+  Stable on sparc
+
+  17 May 2005; Michael Cummings <mcummings@gentoo.org>
+  File-Find-Rule-0.26.ebuild:
+  Pushing 0.26 to mirrors until archs bump - gone upstream
+
+  17 May 2005; Michael Cummings <mcummings@gentoo.org>
+  File-Find-Rule-0.28.ebuild:
+  Unmasking for x86
+
+  16 Mar 2005; Michael Cummings <mcummings@gentoo.org>
+  File-Find-Rule-0.26.ebuild, File-Find-Rule-0.28.ebuild:
+  style cleanup
+
+  12 Jan 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  File-Find-Rule-0.28.ebuild:
+  Added to ~amd64
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  22 Dec 2004; Yuta SATOH <nigoro@gentoo.org> File-Find-Rule-0.28.ebuild:
+  added ~ppc64
+
+*File-Find-Rule-0.28 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  File-Find-Rule-0.28.ebuild:
+  new version on cpan
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  File-Find-Rule-0.26.ebuild:
+  Stable on alpha.
+
+  07 May 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  File-Find-Rule-0.26.ebuild:
+  Stable on sparc
+
+  29 Mar 2004; Michael Cummings <mcummings@gentoo.org>
+  File-Find-Rule-0.26.ebuild:
+  This ebuild should be using the "builder" style class for perl modules.
+  Corrected.
+
+  25 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
+  File-Find-Rule-0.10.ebuild:
+  No longer available from source
+
+*File-Find-Rule-0.26 (25 Dec 2003)
+
+  25 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
+  File-Find-Rule-0.26.ebuild:
+  Current version on CPAN
+
+*File-Find-Rule-0.10 (03 Jun 2003)
+
+  03 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  File-Find-Rule-0.10.ebuild:
+  Fills bug 21791

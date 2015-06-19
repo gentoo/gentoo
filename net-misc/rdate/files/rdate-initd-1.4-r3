@@ -1,0 +1,27 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/rdate/files/rdate-initd-1.4-r3,v 1.1 2007/04/10 09:57:25 robbat2 Exp $
+
+depend() {
+	before cron
+	need net
+	use dns
+}
+
+checkconfig() {
+	if [ -z "${RDATE_SERVER}" ] ; then
+		eerror "Please edit /etc/conf.d/rdate"
+		eerror "I need to know what server to use!"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	checkconfig || return $?
+
+	ebegin "Setting clock via rdate"
+	/usr/bin/rdate -s ${RDATE_OPTS} -t ${RDATE_TIMEOUT} ${RDATE_SERVER} > /dev/null
+	eend $? "Failed to set clock"
+}

@@ -1,0 +1,53 @@
+# ChangeLog for dev-perl/HTML-RewriteAttributes
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-RewriteAttributes/ChangeLog,v 1.10 2014/08/26 17:27:40 axs Exp $
+
+*HTML-RewriteAttributes-0.50.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +HTML-RewriteAttributes-0.50.0-r1.ebuild,
+  -HTML-RewriteAttributes-0.50.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org>
+  -HTML-RewriteAttributes-0.40.0.ebuild:
+  Cleanup
+
+*HTML-RewriteAttributes-0.50.0 (04 Nov 2012)
+
+  04 Nov 2012; Torsten Veller <tove@gentoo.org>
+  +HTML-RewriteAttributes-0.50.0.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -HTML-RewriteAttributes-0.04.ebuild:
+  Cleanup
+
+*HTML-RewriteAttributes-0.40.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +HTML-RewriteAttributes-0.40.0.ebuild:
+  Change version scheme
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org>
+  -HTML-RewriteAttributes-0.03.ebuild:
+  Cleanup
+
+*HTML-RewriteAttributes-0.04 (22 Nov 2010)
+
+  22 Nov 2010; Torsten Veller <tove@gentoo.org>
+  +HTML-RewriteAttributes-0.04.ebuild:
+  Version bump
+
+  01 Mar 2009; Patrick Lauer <patrick@gentoo.org>
+  HTML-RewriteAttributes-0.03.ebuild:
+  Adding ~amd64 keyword
+
+*HTML-RewriteAttributes-0.03 (08 Sep 2008)
+
+  08 Sep 2008; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +HTML-RewriteAttributes-0.03.ebuild:
+  Initial commit (#235891). Thanks to Nick Prater for the ebuild.

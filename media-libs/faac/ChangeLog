@@ -1,0 +1,391 @@
+# ChangeLog for media-libs/faac
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/faac/ChangeLog,v 1.109 2014/01/26 12:13:59 ago Exp $
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> faac-1.28-r4.ebuild:
+  Stable for sparc, wrt bug #495712
+
+  19 Jan 2014; Agostino Sarubbo <ago@gentoo.org> faac-1.28-r4.ebuild:
+  Stable for ppc64, wrt bug #495712
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> faac-1.28-r4.ebuild:
+  Stable for alpha, wrt bug #495712
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> faac-1.28-r4.ebuild:
+  Stable for ia64, wrt bug #495712
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> faac-1.28-r4.ebuild:
+  Stable for ppc, wrt bug #495712
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> faac-1.28-r4.ebuild:
+  Stable for x86, wrt bug #495712
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> faac-1.28-r4.ebuild:
+  amd64 stable, bug #495712
+
+  05 Jan 2014; Markus Meier <maekke@gentoo.org> faac-1.28-r4.ebuild:
+  arm stable, bug #495712
+
+  01 Jan 2014; Jeroen Roovers <jer@gentoo.org> faac-1.28-r4.ebuild:
+  Stable for HPPA (bug #495712).
+
+  13 Oct 2013; Michał Górny <mgorny@gentoo.org> faac-1.28-r4.ebuild:
+  Explicitly call einstalldocs in multilib_src_install_all() to accomodate bug
+  #483304.
+
+*faac-1.28-r4 (27 Jun 2013)
+
+  27 Jun 2013; Alexis Ballier <aballier@gentoo.org> +faac-1.28-r4.ebuild:
+  go multilib
+
+  26 Apr 2013; Samuli Suominen <ssuominen@gentoo.org> faac-1.28-r3.ebuild:
+  Use AC_CONFIG_HEADERS instead of AM_CONFIG_HEADER for automake-1.13
+  compability wrt #466984 by Alphat-PC
+
+  16 Sep 2012; Samuli Suominen <ssuominen@gentoo.org> -faac-1.28-r1.ebuild:
+  old
+
+  08 Jul 2012; Raúl Porcel <armin76@gentoo.org> faac-1.28-r3.ebuild:
+  alpha/ia64/sh/sparc stable wrt #419077
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> faac-1.28-r3.ebuild:
+  Marking faac-1.28-r3 ppc for bug 419077
+
+  06 Jun 2012; Markus Meier <maekke@gentoo.org> faac-1.28-r3.ebuild:
+  arm stable, bug #419077
+
+  06 Jun 2012; Jeroen Roovers <jer@gentoo.org> faac-1.28-r3.ebuild:
+  Stable for HPPA (bug #419077).
+
+  06 Jun 2012; Jeff Horelick <jdhore@gentoo.org> faac-1.28-r3.ebuild:
+  marked x86 per bug 419077
+
+  05 Jun 2012; Brent Baude <ranger@gentoo.org> faac-1.28-r3.ebuild:
+  Marking faac-1.28-r3 ppc64 for bug 419077
+
+  02 Jun 2012; Agostino Sarubbo <ago@gentoo.org> faac-1.28-r3.ebuild:
+  Stable for amd64, wrt bug #419077
+
+  19 May 2012; Samuli Suominen <ssuominen@gentoo.org> faac-1.28-r1.ebuild,
+  faac-1.28-r3.ebuild:
+  Ensure libmp4v2 headers are present by forcing correct SLOT wrt #415935 by
+  Robert Cabrera
+
+  15 May 2012; Alexis Ballier <aballier@gentoo.org> faac-1.28-r3.ebuild:
+  keyword ~amd64-fbsd
+
+  29 Apr 2012; Fabian Groffen <grobian@gentoo.org>
+  +files/faac-1.28-inttypes.patch, faac-1.28-r3.ebuild:
+  Add inttypes patch for Solaris, added Prefix keywords, bug #413591
+
+  21 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> faac-1.28-r1.ebuild:
+  Change libmp4v2 depend to more strict variant because this is not compatible
+  with 1.9.1_p479.
+
+  23 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> -faac-1.28-r2.ebuild:
+  old
+
+*faac-1.28-r3 (23 Feb 2012)
+
+  23 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> +faac-1.28-r3.ebuild,
+  files/faac-1.28-libmp4v2_r479_compat.patch:
+  Replace compability patch with upstream version.
+
+*faac-1.28-r2 (20 Jan 2012)
+
+  20 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> +faac-1.28-r2.ebuild,
+  +files/faac-1.28-libmp4v2_r479_compat.patch:
+  Initial attempt at supporting libmp4v2 revision r479 wrt #397575 by Jaakko
+  Perttilä
+
+  07 Jan 2012; Ulrich Mueller <ulm@gentoo.org> faac-1.28-r1.ebuild:
+  Add MPEG-4 to LICENSE and change LGPL-2 to LGPL-2.1, bug 357779.
+
+  06 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> faac-1.28-r1.ebuild,
+  +files/faac-1.28-altivec.patch:
+  Add workaround for altivec wrt #306881. Thanks to Andrew John Hughes
+  <gnu_andrew@member.fsf.org> for report and thorough analysis.
+
+  16 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> faac-1.28-r1.ebuild:
+  USE="static-libs" and punt .la files.
+
+  10 Oct 2009; Raúl Porcel <armin76@gentoo.org> faac-1.28-r1.ebuild:
+  ia64/sh/sparc stable wrt #280791
+
+  21 Sep 2009; Markus Meier <maekke@gentoo.org> faac-1.28-r1.ebuild:
+  arm stable, bug #280791
+
+  31 Aug 2009; Brent Baude <ranger@gentoo.org> faac-1.28-r1.ebuild:
+  stable ppc64, bug 280791
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> faac-1.28-r1.ebuild:
+  ppc stable #280791
+
+  29 Aug 2009; Tobias Klausmann <klausman@gentoo.org> faac-1.28-r1.ebuild:
+  Stable on alpha, bug #280791
+
+  25 Aug 2009; Jeroen Roovers <jer@gentoo.org> faac-1.28-r1.ebuild:
+  Stable for HPPA (bug #280791).
+
+  15 Aug 2009; Markus Meier <maekke@gentoo.org> faac-1.28-r1.ebuild:
+  amd64/x86 stable, bug #280791
+
+  01 Aug 2009; Jeroen Roovers <jer@gentoo.org> faac-1.28.ebuild:
+  Stable for HPPA (bug #278485).
+
+  22 Jul 2009; Christian Faulhammer <fauli@gentoo.org> faac-1.28.ebuild:
+  stable x86, bug 278485
+
+  21 Jul 2009; Steve Dibb <beandog@gentoo.org> faac-1.28.ebuild:
+  amd64 stable, bug 278485
+
+*faac-1.28-r1 (10 Jul 2009)
+
+  10 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> +faac-1.28-r1.ebuild,
+  +files/faac-1.28-external-libmp4v2.patch:
+  Revision bump for >= libmp4v2 1.9.0.
+
+*faac-1.28 (19 Feb 2009)
+
+  19 Feb 2009; Alexis Ballier <aballier@gentoo.org> +faac-1.28.ebuild:
+  version bump
+
+  18 Dec 2008; Joshua Kinard <kumba@gentoo.org> faac-1.26-r1.ebuild:
+  Added ~mips to KEYWORDS, per #141975
+
+  26 Nov 2007; Jeroen Roovers <jer@gentoo.org> faac-1.26-r1.ebuild:
+  Stable for HPPA (bug #199973).
+
+  23 Nov 2007; Markus Rothe <corsair@gentoo.org> faac-1.26-r1.ebuild:
+  Stable on ppc64; bug #199973
+
+  23 Nov 2007; Raúl Porcel <armin76@gentoo.org> faac-1.26-r1.ebuild:
+  alpha/ia64/sparc stable wrt #199973
+
+  22 Nov 2007; nixnut <nixnut@gentoo.org> faac-1.26-r1.ebuild:
+  Stable on ppc wrt bug 199973
+
+  22 Nov 2007; Dawid Węgliński <cla@gentoo.org> faac-1.26-r1.ebuild:
+  Stable on x86 (bug #199973)
+
+  22 Nov 2007; Samuli Suominen <drac@gentoo.org> faac-1.26-r1.ebuild:
+  amd64 stable wrt #199973
+
+*faac-1.26-r1 (25 Oct 2007)
+
+  25 Oct 2007; Steve Dibb <beandog@gentoo.org> +faac-1.26-r1.ebuild:
+  Drop unnecessary rdepend of libsndfile
+
+  15 Oct 2007; Tom Gall <tgall@gentoo.org> faac-1.24.ebuild:
+  stable on ppc64
+
+  12 Oct 2007; Alexis Ballier <aballier@gentoo.org> faac-1.24.ebuild,
+  faac-1.24-r2.ebuild:
+  quote some variables
+
+*faac-1.26 (12 Oct 2007)
+
+  12 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/faac-1.26-external-libmp4v2.patch, +faac-1.26.ebuild:
+  version bump
+
+  13 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org> faac-1.25.ebuild:
+  ppc. stable
+
+  25 Jul 2007; Raúl Porcel <armin76@gentoo.org> faac-1.25.ebuild:
+  alpha/ia64/x86 stable
+
+  16 Jun 2007; Diego Pettenò <flameeyes@gentoo.org> faac-1.25.ebuild:
+  Filter out -ftree-vectorize, it crashes mencoder. Reported by drizzt.
+
+  22 Apr 2007; Raúl Porcel <armin76@gentoo.org> faac-1.24-r3.ebuild:
+  ia64 stable
+
+  16 Apr 2007; Markus Rothe <corsair@gentoo.org> faac-1.24-r3.ebuild:
+  Stable on ppc64
+
+  25 Mar 2007; Samuli Suominen <drac@gentoo.org> faac-1.25.ebuild:
+  Replace recode with sed for bug 171373, thanks to Arfrever Frehtes Taifersar
+  Arahesis.
+
+*faac-1.25 (17 Mar 2007)
+
+  17 Mar 2007; Steve Dibb <beandog@gentoo.org>
+  +files/faac-1.25-external-libmp4v2.patch, +faac-1.25.ebuild:
+  version bump, bug 152718, thanks to Tim Harder, Christian Shcmidt and
+  stephan for ebuilds and patches
+
+  17 Mar 2007; Steve Dibb <beandog@gentoo.org> faac-1.24-r3.ebuild:
+  amd64 stable
+
+*faac-1.24-r4 (12 Mar 2007)
+
+  12 Mar 2007; Ryan Hill <dirtyepic@gentoo.org>
+  +files/faac-1.24-fixnoise-hang.patch, +faac-1.24-r4.ebuild:
+  Added patch to fix infinite loop when converting MS encoded WAV files.
+  Thanks to Heitzso for bug #103444.
+
+  10 Mar 2007; Matti Bickel <mabi@gentoo.org> faac-1.24-r3.ebuild:
+  ppc stable (bug #166539)
+
+  09 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org> faac-1.24-r3.ebuild:
+  Stable on sparc
+
+  28 Feb 2007; Simon Stelling <blubb@gentoo.org> faac-1.24-r2.ebuild:
+  stable on amd64; bug 166539
+
+  17 Feb 2007; Fabian Groffen <grobian@gentoo.org> faac-1.24.ebuild,
+  faac-1.24-r2.ebuild, faac-1.24-r3.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  13 Feb 2007; Christian Faulhammer <opfer@gentoo.org> faac-1.24-r3.ebuild:
+  stable x86; bug 166539
+
+  24 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> faac-1.24.ebuild,
+  faac-1.24-r2.ebuild, faac-1.24-r3.ebuild:
+  Fix the autotools version dependencies.
+
+  28 Jul 2006; Fabian Groffen <grobian@gentoo.org> faac-1.24-r3.ebuild:
+  Marked ~ppc-macos (bug #141975)
+
+*faac-1.24-r3 (28 Jul 2006)
+
+  28 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> +faac-1.24-r3.ebuild:
+  Revision bump restoring libmp4v2 support, see bug #116173. Thanks to Oliver
+  Crete for the bug and the patience.
+
+  28 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> -faac-1.24-r1.ebuild:
+  Remove old version.
+
+  25 May 2006; Diego Pettenò <flameeyes@gentoo.org> faac-1.24-r2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  20 Apr 2006; Hanno Boeck <hanno@gentoo.org>
+  +files/faac-1.24-as-needed.patch, faac-1.24-r2.ebuild:
+  Add patch to compile with --as-needed.
+
+*faac-1.24-r2 (18 Apr 2006)
+
+  18 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/faac-1.24-tracknumber.patch, +faac-1.24-r2.ebuild:
+  Add patch to fix mishandling of track numbers 07 and 08, thanks to Jose A.
+  Hernandez in bug #80690.
+
+  15 Jan 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/libsndfile-1.0.diff, -files/fix-linefeeds.sh, -faac-1.23.5.ebuild:
+  Drop old version.
+
+*faac-1.24-r1 (19 Dec 2005)
+
+  19 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/faac-1.24-faad.patch, +faac-1.24-r1.ebuild:
+  New revision, dropping the automagic dependency on libmp4v2.
+
+  16 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> faac-1.24.ebuild:
+  Use autotools eclass and eautoreconf instead of faac's bootstrap script,
+  should fix bug #95825.
+
+  09 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> faac-1.23.5.ebuild,
+  faac-1.24.ebuild:
+  Don't install COPYING and INSTALL files.
+
+  19 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> faac-1.24.ebuild:
+  Stable on alpha.
+
+  12 Jun 2005; Bryan Østergaard <kloeri@gentoo.org> faac-1.24.ebuild:
+  Add ~alpha keyword.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> :
+  Stable on hppa.
+
+  21 Apr 2005; Olivier Crête <tester@gentoo.org> faac-1.24.ebuild:
+  Changed >=faad2-2.0-r3 to !<faad2-2.0-r3 because its not really a dep, it
+  just breaks if old versions are installed
+
+  21 Mar 2005; Lina Pezzella <j4rg0n@gentoo.org> faac-1.24.ebuild:
+  Stable ppc-macos
+
+  23 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> faac-1.24.ebuild:
+  added faad2 dependency to fix #62866.
+
+  21 Jan 2005; Lars Weiler <pylon@gentoo.org> faac-1.24.ebuild:
+  Stable on ppc.
+
+  11 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org> faac-1.23.5.ebuild,
+  faac-1.24.ebuild:
+  epunt_cxx closes bug #76744.
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> faac-1.24.ebuild:
+  Stable on ppc64
+
+  12 Nov 2004; Kito <kito@gentoo.org> faac-1.24.ebuild:
+  added ~ppc-macos
+
+  09 Nov 2004; Markus Rothe <corsair@gentoo.org> faac-1.24.ebuild:
+  Marked ~ppc64
+
+  27 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> -faac-1.23.1.ebuild:
+  Updated HOMEPAGE.  Removed old version.
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> faac-1.24.ebuild:
+  Stable sparc.
+
+  01 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> faac-1.24.ebuild:
+  Stable amd64, x86.
+
+  26 Jul 2004; Chris White <chriswhite@gentoo.org> faac-1.24.ebuild:
+  Fixes circular blocks on mpeg4ip by removing faad2 deps (faad2 is not required
+  as a runtime lib, or a build lib).
+
+*faac-1.24 (10 Jul 2004)
+
+  10 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> metadata.xml,
+  +faac-1.24.ebuild:
+  Version bump closes bug #55769.
+
+  07 May 2004; Jeremy Huddleston <eradicator@gentoo.org> faac-1.23.5.ebuild:
+  Stable x86.
+
+  21 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> faac-1.23.5.ebuild,
+  metadata.xml:
+  IUSE added.
+
+  09 Apr 2004; David Holm <dholm@gentoo.org> faac-1.23.5.ebuild:
+  Added to ~ppc.
+
+*faac-1.23.5 (07 Apr 2004)
+
+  07 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> faac-1.23.1.ebuild,
+  faac-1.23.5.ebuild:
+  DEPEND fix.  Version bump to close bug #46855.
+
+  04 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> faac-1.23.1.ebuild:
+  Explicitly state which automake/autoconf version to use.  Closes bug #46761.
+
+  06 Dec 2003; Heinrich Wendel <lanius@gentoo.org> faac-26102001-r1.ebuild,
+  faac-26102001.ebuild:
+  removed old version, they confuse portage ;)
+
+*faac-1.23.1 (22 Nov 2003)
+
+  22 Nov 2003; Olivier Crete <tester@gentoo.org> faac-1.23.1.ebuild,
+  faac-26102001-r1.ebuild:
+  Major version bump
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*faac-26102001-r1 (05 Nov 2002)
+
+  05 Nov 2002; Nick Hadaway <raker@gentoo.org> faac-26102001-r1.ebuild,
+  files/digest-faac-26102001-r1, files/libsndfile-1.0.diff :
+  Updated ebuild to support the libsndfile-1.x series.  Only minor
+  changes were needed to support the new api.
+
+*faac-26102001 (18 Jun 2002)
+
+  18 Jun 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

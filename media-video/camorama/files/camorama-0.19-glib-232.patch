@@ -1,0 +1,24 @@
+diff -Nu a/src/camorama-stock-items.h b/src/camorama-stock-items.h
+--- a/src/camorama-stock-items.h	2007-06-14 16:05:33.000000000 +0200
++++ b/src/camorama-stock-items.h	2012-05-02 22:40:21.000000000 +0200
+@@ -1,7 +1,7 @@
+ #ifndef CAMORAMA_STOCK_ITEMS_H
+ #define CAMORAMA_STOCK_ITEMS_H
+ 
+-#include <glib/gmacros.h>
++#include <glib.h>
+ 
+ G_BEGIN_DECLS
+ 
+diff -Nu a/src/glib-helpers.h b/src/glib-helpers.h
+--- a/src/glib-helpers.h	2007-06-14 16:05:33.000000000 +0200
++++ b/src/glib-helpers.h	2012-05-02 22:46:06.000000000 +0200
+@@ -24,7 +24,7 @@
+ #ifndef GLIB_HELPERS_H
+ #define GLIB_HELPERS_H
+ 
+-#include <glib/gmacros.h>
++#include <glib.h>
+ 
+ G_BEGIN_DECLS
+ 

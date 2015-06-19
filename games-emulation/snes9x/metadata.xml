@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>games</herd>
+	<use>
+		<flag name="netplay">Enable playing ROMs over the network (not recommended)</flag>
+		<flag name="xrandr">Enable support for the X xrandr extension</flag>
+	</use>
+	<upstream>
+		<remote-id type="google-code">snes9x-gtk</remote-id>
+	</upstream>
+</pkgmetadata>

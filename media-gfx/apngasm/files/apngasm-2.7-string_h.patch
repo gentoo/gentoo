@@ -1,0 +1,16 @@
+http://bugs.gentoo.org/465780
+
+Same for all of memcpy(), memset(), strlen() and strcpy():
+
+apngasm.c:141:11: warning: incompatible implicit declaration of built-in function ‘memcpy’ [enabled by default]
+
+--- apngasm.c
++++ apngasm.c
+@@ -29,6 +29,7 @@
+  */
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include "png.h"     /* original (unpatched) libpng is ok */
+ #include "zlib.h"
+ 

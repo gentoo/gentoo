@@ -1,0 +1,86 @@
+# ChangeLog for dev-libs/libx86
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libx86/ChangeLog,v 1.22 2013/03/26 11:44:11 ago Exp $
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> libx86-1.1-r3.ebuild:
+  Stable for x86, wrt bug #463036
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> libx86-1.1-r3.ebuild:
+  Stable for amd64, wrt bug #463036
+
+  11 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Assign myself as maintainer
+
+*libx86-1.1-r3 (11 Feb 2013)
+
+  11 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> +libx86-1.1-r3.ebuild,
+  +files/libx86-1.1-makefile.patch:
+  Revision bump: install static libs optionally, wrt bug #456648
+
+  10 Feb 2013; Michael Palimaka <kensington@gentoo.org> -libx86-1.1-r1.ebuild:
+  Remove old.
+
+  10 Feb 2013; Agostino Sarubbo <ago@gentoo.org> libx86-1.1-r2.ebuild:
+  Stable for amd64, wrt bug #456546
+
+  10 Feb 2013; Agostino Sarubbo <ago@gentoo.org> libx86-1.1-r2.ebuild:
+  Stable for x86, wrt bug #456546
+
+*libx86-1.1-r2 (20 Nov 2012)
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> +libx86-1.1-r2.ebuild:
+  eapi5, respect AR
+
+  27 Jun 2012; Michael Palimaka <kensington@gentoo.org>
+  -files/libx86-0.99-build.patch, -libx86-0.99.ebuild, -libx86-1.1.ebuild:
+  Remove old.
+
+  01 Jul 2009; Markus Meier <maekke@gentoo.org> libx86-1.1-r1.ebuild:
+  amd64 stable, bug #267719
+
+  30 Jun 2009; Christian Faulhammer <fauli@gentoo.org> libx86-1.1-r1.ebuild:
+  stable x86, bug 267719
+
+  15 Sep 2008; Peter Volkov <pva@gentoo.org> libx86-1.1-r1.ebuild:
+  Use correct compiler, bug #237383, thank Jeroen Roovers for notice.
+
+*libx86-1.1-r1 (10 Sep 2008)
+
+  10 Sep 2008; Peter Volkov <pva@gentoo.org> +libx86-1.1-r1.ebuild:
+  Respect LDFLAGS, bug #236888, thank Olivier Huber for report and fix.
+
+  06 Sep 2008; Ulrich Mueller <ulm@gentoo.org>
+  +files/libx86-0.99-ifmask.patch, libx86-0.99.ebuild, libx86-1.1.ebuild:
+  Fix compile failure with linux-headers-2.6.26, bug 235599. Thanks to
+  junki.gnu@gmail.com for the patch.
+
+*libx86-1.1 (06 Sep 2008)
+
+  06 Sep 2008; Thomas Anderson <gentoofan23@gentoo.org> +libx86-1.1.ebuild:
+  Version bump. This new version is vaccinated of the bug from bug #235599
+
+  07 Aug 2008; Markus Meier <maekke@gentoo.org> libx86-0.99.ebuild:
+  amd64/x86 stable, bug #231739
+
+  28 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Alon Bar-Lev (alonbl) from metadata.xml (as per #147110). Assigning
+  to maintainer-needed.
+
+  07 Feb 2008; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Fix metadata typo.
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org> libx86-0.99.ebuild:
+  Keyword ~amd64 wrt #197687.
+
+  10 Oct 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  files/libx86-0.99-build.patch, libx86-0.99.ebuild:
+  Fix lib dir, bug#192814, thanks for Pacho Ramos for reporting
+
+  18 Sep 2007; Alon Bar-Lev <alonbl@gentoo.org> libx86-0.99.ebuild:
+  Add die thanks to vapier
+
+*libx86-0.99 (17 Sep 2007)
+
+  17 Sep 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/libx86-0.99-build.patch, +metadata.xml, +libx86-0.99.ebuild:
+  Initial add, bug#156431

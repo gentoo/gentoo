@@ -1,0 +1,26 @@
+> Hmm, a better patch for this seems to be:
+
+I installed this patch a while back:
+
+*** ../bash-3.0-patched/lib/readline/display.c	Wed Sep  8 11:07:51 2004
+--- lib/readline/display.c	Fri Nov 12 13:31:42 2004
+***************
+*** 336,340 ****
+  
+    local_prompt = local_prompt_prefix = (char *)0;
+!   prompt_last_invisible = prompt_visible_length = 0;
+  
+    if (prompt == 0 || *prompt == 0)
+--- 341,346 ----
+  
+    local_prompt = local_prompt_prefix = (char *)0;
+!   prompt_last_invisible = prompt_invis_chars_first_line = 0;
+!   prompt_visible_length = prompt_physical_chars = 0;
+  
+    if (prompt == 0 || *prompt == 0)
+
+-- 
+``The lyf so short, the craft so long to lerne.'' - Chaucer
+( ``Discere est Dolere'' -- chet )
+						Live...Laugh...Love
+Chet Ramey, ITS, CWRU    chet@po.cwru.edu    http://tiswww.tis.cwru.edu/~chet/

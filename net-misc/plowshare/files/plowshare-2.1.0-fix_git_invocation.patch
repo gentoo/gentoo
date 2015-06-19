@@ -1,0 +1,56 @@
+diff --git a/src/core.sh b/src/core.sh
+index bccdafc..0f38473 100644
+--- a/src/core.sh
++++ b/src/core.sh
+@@ -2883,7 +2883,7 @@ process_configfile_module_options() {
+ # $1: absolute path to plowshare's libdir
+ log_report_info() {
+     local -r LIBDIR1=$1
+-    local G GIT_DIR LIBDIR2
++    local G LIBDIR2
+ 
+     if test $VERBOSE -ge 4; then
+         log_report '=== SYSTEM INFO BEGIN ==='
+@@ -2908,10 +2908,9 @@ log_report_info() {
+             fi
+         done
+ 
+-        GIT_DIR=$(git --work-tree "$LIBDIR" rev-parse --quiet --git-dir) || true
+-        if [ -d "$GIT_DIR" ]; then
+-            local -r GIT_BRANCH=$(git --git-dir=$GIT_DIR rev-parse --quiet --abbrev-ref HEAD)
+-            local -r GIT_REV=$(git --git-dir=$GIT_DIR describe --tags --always 2>/dev/null)
++        if git -C "$LIBDIR" rev-parse --is-inside-work-tree &>/dev/null; then
++            local -r GIT_BRANCH=$(git -C "$LIBDIR" rev-parse --quiet --abbrev-ref HEAD)
++            local -r GIT_REV=$(git -C "$LIBDIR" describe --tags --always 2>/dev/null)
+             log_report "[git ] $GIT_REV ($GIT_BRANCH branch)"
+         fi
+ 
+diff --git a/src/mod.sh b/src/mod.sh
+index 42795a8..b4c6475 100755
+--- a/src/mod.sh
++++ b/src/mod.sh
+@@ -98,10 +98,9 @@ mod_install() {
+     log_notice "- installing new directory: $L"
+ 
+     if [ -d "$L" -a -n "$HAVE_GIT" ]; then
+-        GIT_DIR=$(git --work-tree "$L" rev-parse --quiet --git-dir) || true
+-        if [ -d "$GIT_DIR" ]; then
++        if git -C "$L" rev-parse --is-inside-work-tree &>/dev/null; then
+             log_notice 'WARNING: directory already exists! Do a git pull.'
+-            git pull --quiet
++            git -C "$L" pull --quiet
+         else
+             log_error 'ERROR: directory exists but it does not appear to be a git repository, abort'
+             RET=$ERR_FATAL
+@@ -124,9 +123,8 @@ mod_update() {
+ 
+     if [ -d "$L" ]; then
+         if [ -n "$HAVE_GIT" ]; then
+-            GIT_DIR=$(git --work-tree "$L" rev-parse --quiet --git-dir) || true
+-            if [ -d "$GIT_DIR" ]; then
+-                git pull --quiet
++            if git -C "$L" rev-parse --is-inside-work-tree &>/dev/null; then
++                git -C "$L" pull --quiet
+             else
+                 log_error 'ERROR: directory exists but it does not appear to be a git repository, abort!'
+                 RET=$ERR_FATAL

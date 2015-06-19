@@ -1,0 +1,44 @@
+Index: alcd-1.5.1/Makefile
+===================================================================
+--- alcd-1.5.1.orig/Makefile
++++ alcd-1.5.1/Makefile
+@@ -23,8 +23,8 @@ VDRINC = $(VDRDIR)/include
+ LIBDIR = ../../lib
+ TMPDIR = /tmp
+ 
+-CXX      = g++
+-CXXFLAGS = -O2 -Wall -Woverloaded-virtual -D_GNU_SOURCE
++CXX      ?= g++
++CXXFLAGS ?= -fPIC -O2 -Wall -Woverloaded-virtual
+ 
+ -include $(VDRDIR)/Make.config
+ 
+@@ -41,6 +41,8 @@ PACKAGE = vdr-$(ARCHIVE)
+ 
+ INCLUDES = -I$(VDRDIR)/include
+ 
++DEFINES += -D_GNU_SOURCE
++
+ ### Allow user defined options to overwrite defaults:
+ 
+ DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
+@@ -53,6 +55,10 @@ endif
+ 
+ OBJS = $(PLUGIN).o lcd.o thread.o setup.o
+ 
++### The main target:
++
++all: libvdr-$(PLUGIN).so i18n
++
+ ### Target directory for afp-tool binary
+ 
+ PREFIX = /usr
+@@ -100,8 +106,6 @@ i18n: $(I18Nmsgs)
+ 
+ ### Targets:
+ 
+-all: libvdr-$(PLUGIN).so i18n
+-
+ libvdr-$(PLUGIN).so: $(OBJS)
+ 	$(CXX) $(CXXFLAGS) -shared $(OBJS) -o $@
+ 	@cp $@ $(LIBDIR)/$@.$(APIVERSION)

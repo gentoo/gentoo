@@ -1,0 +1,65 @@
+# ChangeLog for dev-ruby/paint
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/paint/ChangeLog,v 1.15 2015/06/07 18:57:33 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*paint-1.0.0 (04 Apr 2015)
+
+  04 Apr 2015; Hans de Graaff <graaff@gentoo.org> +paint-1.0.0.ebuild:
+  Version bump.
+
+  04 Apr 2015; Hans de Graaff <graaff@gentoo.org> -paint-0.8.7.ebuild:
+  Cleanup.
+
+  24 Mar 2015; Hans de Graaff <graaff@gentoo.org> paint-0.9.0.ebuild:
+  Add ruby22.
+
+  24 Nov 2014; Manuel Rüger <mrueg@gentoo.org> metadata.xml:
+  Drop hasufell from metadata as requested.
+
+*paint-0.9.0 (20 Nov 2014)
+
+  20 Nov 2014; Manuel Rüger <mrueg@gentoo.org> +paint-0.9.0.ebuild:
+  Version bump.
+
+  03 Nov 2014; Manuel Rüger <mrueg@gentoo.org> paint-0.8.7.ebuild:
+  Drop jruby.
+
+  06 Aug 2014; Manuel Rüger <mrueg@gentoo.org> paint-0.8.7.ebuild:
+  Add ruby21 target.
+
+  21 May 2014; Manuel Rüger <mrueg@gentoo.org> -paint-0.8.6-r1.ebuild,
+  paint-0.8.7.ebuild:
+  Remove ruby18 target. Cleanup old.
+
+*paint-0.8.7 (21 Jan 2014)
+
+  21 Jan 2014; Manuel Rüger <mrueg@gentoo.org> +paint-0.8.7.ebuild:
+  Version bump.
+
+  11 Nov 2013; Manuel Rüger <mrueg@gentoo.org> -paint-0.8.5.ebuild,
+  -paint-0.8.6.ebuild:
+  Cleanup old.
+
+*paint-0.8.6-r1 (30 Oct 2013)
+
+  30 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +paint-0.8.6-r1.ebuild:
+  Add ruby20 target.
+
+*paint-0.8.6 (25 Apr 2013)
+
+  25 Apr 2013; Julian Ospald <hasufell@gentoo.org> +paint-0.8.6.ebuild:
+  version bump
+
+  25 Sep 2012; Hans de Graaff <graaff@gentoo.org> paint-0.8.5.ebuild,
+  metadata.xml:
+  Add tests. Build documentation. Install all available readme files. Fix QA
+  warnings. Add ruby herd.
+
+*paint-0.8.5 (24 Sep 2012)
+
+  24 Sep 2012; Julian Ospald <hasufell@gentoo.org> +paint-0.8.5.ebuild,
+  +metadata.xml:
+  initial import

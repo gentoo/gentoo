@@ -1,0 +1,92 @@
+# ChangeLog for media-gfx/freepv
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/freepv/ChangeLog,v 1.19 2015/04/02 15:51:39 kensington Exp $
+
+  02 Apr 2015; Michael Palimaka <kensington@gentoo.org> -freepv-0.3.0-r3.ebuild:
+  Remove old.
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> freepv-0.3.0-r4.ebuild:
+  x86 stable wrt bug #504466
+
+  26 Apr 2014; Chema Alonso <nimiux@gentoo.org> freepv-0.3.0-r4.ebuild:
+  Stable for amd64 wrt bug #504466
+
+  11 Apr 2013; Bernard Cafarelli <voyageur@gentoo.org> freepv-0.3.0-r4.ebuild,
+  +files/freepv-0.3.0-stringh.patch:
+  Add missing string.h include revealed by libpng-1.6 bump, thanks Helmut
+  Jarausch <jarausch@igpm.rwth-aachen.de> in bug #465476
+
+*freepv-0.3.0-r4 (10 Apr 2013)
+
+  10 Apr 2013; Bernard Cafarelli <voyageur@gentoo.org> +freepv-0.3.0-r4.ebuild:
+  EAPI bump and libpng slot dependency
+
+  16 Jun 2011; Bernard Cafarelli <voyageur@gentoo.org> freepv-0.3.0-r3.ebuild,
+  +files/freepv-0.3.0-gcc46.patch:
+  Fix compilation with GCC 4.6, reported by Piotr Szymaniak in bug #371239
+
+  08 Nov 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  freepv-0.3.0-r3.ebuild:
+  Move to virtual/jpeg
+
+  16 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  freepv-0.3.0-r3.ebuild:
+  virtual/glut -> media-libs/glut
+
+  26 Apr 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  -freepv-0.3.0-r1.ebuild, -files/freepv-0.3.0-xulrunner-1.9.1.patch:
+  Drop version that does not compile
+
+  26 Apr 2010; Markus Meier <maekke@gentoo.org> freepv-0.3.0-r3.ebuild:
+  amd64/x86 stable, bug #315503
+
+*freepv-0.3.0-r3 (15 Mar 2010)
+
+  15 Mar 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  -freepv-0.3.0-r2.ebuild, +freepv-0.3.0-r3.ebuild:
+  Disable static archive installation, bug #308997
+
+  11 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  freepv-0.3.0-r2.ebuild, +files/freepv-0.3.0-libpng14.patch:
+  Fix building with libpng14.
+
+*freepv-0.3.0-r2 (11 Mar 2010)
+
+  11 Mar 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  freepv-0.3.0-r1.ebuild, +freepv-0.3.0-r2.ebuild,
+  files/freepv-0.3.0-gcc44.patch, +files/freepv-0.3.0-noplugin.patch:
+  gcc 4.4 updated with glibc 2.10 support, limit xulrunner support in -r1 to
+  1.9.1, revision bump that drops the mozilla plugin, bug #308825
+
+  18 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  freepv-0.3.0-r1.ebuild:
+  Fix building with jpeg-8 by renaming jpeg_mem_src to freepv_jpeg_mem_src
+  since jpeg has it's own.
+
+  29 Sep 2009; Markus Meier <maekke@gentoo.org> freepv-0.3.0-r1.ebuild:
+  amd64/x86 stable, bug #286347
+
+*freepv-0.3.0-r1 (15 Jul 2009)
+
+  15 Jul 2009; Bernard Cafarelli <voyageur@gentoo.org> -freepv-0.3.0.ebuild,
+  +freepv-0.3.0-r1.ebuild, files/freepv-0.3.0-gcc44.patch,
+  +files/freepv-0.3.0-xulrunner-1.9.1.patch:
+  Make it work with xulrunner-1.9, update gcc 4.4 patch (use upstream
+  commit)
+
+  13 Jun 2009; Bernard Cafarelli <voyageur@gentoo.org> freepv-0.3.0.ebuild,
+  +files/freepv-0.3.0-gcc44.patch:
+  GCC 4.4 love, bug #274041
+
+*freepv-0.3.0 (02 May 2009)
+
+  02 May 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  -freepv-0.3.0_beta1.ebuild, +freepv-0.3.0.ebuild:
+  Release version bump, identical to beta1 except it can use glut instead of
+  freeglut
+
+*freepv-0.3.0_beta1 (26 Feb 2009)
+
+  26 Feb 2009; Bernard Cafarelli <voyageur@gentoo.org> +metadata.xml,
+  +freepv-0.3.0_beta1.ebuild:
+  Initial commit

@@ -1,0 +1,19 @@
+# ChangeLog for app-emacs/visual-basic-mode
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/visual-basic-mode/ChangeLog,v 1.3 2014/05/04 08:32:29 ago Exp $
+
+  04 May 2014; Agostino Sarubbo <ago@gentoo.org>
+  visual-basic-mode-1.4.12.ebuild:
+  Stable for x86, wrt bug #506866
+
+  24 Apr 2014; Chema Alonso <nimiux@gentoo.org>
+  visual-basic-mode-1.4.12.ebuild:
+  Stable for amd64 wrt bug #506866
+
+*visual-basic-mode-1.4.12 (07 Dec 2013)
+
+  07 Dec 2013; Ulrich Müller <ulm@gentoo.org>
+  +visual-basic-mode-1.4.12.ebuild, +files/50visual-basic-mode-gentoo.el,
+  +metadata.xml:
+  Initial import. Ebuild and site-init file contributed by Michael Orlitzky
+  <mjo@gentoo.org> in bug 445370.

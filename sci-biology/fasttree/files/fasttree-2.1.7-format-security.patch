@@ -1,0 +1,25 @@
+ FastTreeUPGMA-2.1.7.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/FastTreeUPGMA-2.1.7.c b/FastTreeUPGMA-2.1.7.c
+index af76cb1..4065f42 100644
+--- a/FastTreeUPGMA-2.1.7.c
++++ b/FastTreeUPGMA-2.1.7.c
+@@ -535,7 +535,7 @@ int main(int argc, char **argv) {
+       break;
+   }
+   if(iArg < argc-1) {
+-    fprintf(stderr, usage);
++    fprintf(stderr, "%s", usage);
+     exit(1);
+   }
+ 
+@@ -953,7 +953,7 @@ void PrintUPGMA(FILE *fp, UPGMA_t *UPGMA, char **names,
+       assert(first >= 0);
+       /* Print the name, or the subtree of duplicate names */
+       if (nameNext[first] == -1) {
+-	fprintf(fp, names[uniqueFirst[node]]);
++	fprintf(fp, "%s", names[uniqueFirst[node]]);
+       } else {
+ 	fprintf(fp,"(%s:0.0",names[first]);
+ 	int iName = nameNext[first];

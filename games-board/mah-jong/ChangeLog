@@ -1,0 +1,102 @@
+# ChangeLog for games-board/mah-jong
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/mah-jong/ChangeLog,v 1.28 2014/10/27 19:26:52 mr_bones_ Exp $
+
+  27 Oct 2014; Michael Sterrett <mr_bones_@gentoo.org> -mah-jong-1.12.1.ebuild:
+  old
+
+  18 Oct 2014; Agostino Sarubbo <ago@gentoo.org> mah-jong-1.14.ebuild:
+  Stable for ppc, wrt bug #522560
+
+  12 Oct 2014; Agostino Sarubbo <ago@gentoo.org> mah-jong-1.14.ebuild:
+  Stable for x86, wrt bug #522560
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> mah-jong-1.14.ebuild:
+  Stable for amd64, wrt bug #522560
+
+*mah-jong-1.14 (20 May 2014)
+
+  20 May 2014; Michael Sterrett <mr_bones_@gentoo.org> +mah-jong-1.14.ebuild:
+  version bump (bug #496956)
+
+  16 May 2014; Michael Sterrett <mr_bones_@gentoo.org> mah-jong-1.12.1.ebuild:
+  EAPI=5; tidy; dirty -lm fix
+
+  24 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org> -mah-jong-1.10.ebuild:
+  old
+
+  17 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> mah-jong-1.12.1.ebuild:
+  x86 stable wrt bug #435714
+
+  11 Oct 2012; Anthony G. Basile <blueness@gentoo.org> mah-jong-1.12.1.ebuild:
+  stable ppc, bug #433287
+
+  24 Sep 2012; Agostino Sarubbo <ago@gentoo.org> mah-jong-1.12.1.ebuild:
+  Stable for amd64, wrt bug #435714
+
+*mah-jong-1.12.1 (29 Jul 2012)
+
+  29 Jul 2012; Denis Dupeyron <calchan@gentoo.org> +mah-jong-1.12.1.ebuild:
+  Version bump.
+
+  27 Feb 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> mah-jong-1.10.ebuild:
+  x86 stable wrt bug #303835
+
+  10 Feb 2010; Joseph Jezak <josejx@gentoo.org> mah-jong-1.10.ebuild:
+  Marked ppc stable for bug #303835.
+
+*mah-jong-1.10 (07 Jan 2010)
+
+  07 Jan 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +mah-jong-1.10.ebuild:
+  version bump
+
+  25 Jun 2008; nixnut <nixnut@gentoo.org> mah-jong-1.8.ebuild:
+  Stable on ppc wrt bug 229171
+
+  24 Jun 2008; Kenneth Prugh <ken69267@gentoo.org> mah-jong-1.8.ebuild:
+  amd64 stable, bug #229171
+
+  24 Jun 2008; Christian Faulhammer <opfer@gentoo.org> mah-jong-1.8.ebuild:
+  stable x86, bug 229171
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> mah-jong-1.7.ebuild,
+  mah-jong-1.8.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+*mah-jong-1.8 (30 Oct 2007)
+
+  30 Oct 2007; Tupone Alfredo <tupone@gentoo.org> +mah-jong-1.8.ebuild:
+  Version bump
+
+  28 Dec 2006; Tristan Heaven <nyhm@gentoo.org> mah-jong-1.7.ebuild:
+  Install desktop entry, bug #159205
+
+*mah-jong-1.7 (23 Apr 2006)
+
+  23 Apr 2006; Michael Sterrett <mr_bones_@gentoo.org> +mah-jong-1.7.ebuild:
+  version bump
+
+  29 Jan 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  mah-jong-1.6.3.ebuild:
+  Drop x11 dependency since build explicitly uses gtk-config for libraries.
+
+  11 Nov 2004; Joseph Jezak <josejx@gentoo.org> mah-jong-1.6.3.ebuild:
+  Marked ppc stable.
+
+  10 May 2004; David Holm <dholm@gentoo.org> mah-jong-1.6.3.ebuild:
+  Added to ~ppc.
+
+*mah-jong-1.6.3 (09 May 2004)
+
+  09 May 2004; Michael Sterrett <mr_bones_@gentoo.org> mah-jong-1.6.3.ebuild:
+  version bump
+
+  18 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> mah-jong-1.6.ebuild:
+  mark amd64 for bug #44639
+
+*mah-jong-1.6 (05 Nov 2003)
+
+  05 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> mah-jong-1.6.ebuild,
+  metadata.xml:
+  initial commit to address bug 32738

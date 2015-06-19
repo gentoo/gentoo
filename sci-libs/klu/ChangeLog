@@ -1,0 +1,47 @@
+# ChangeLog for sci-libs/klu
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/klu/ChangeLog,v 1.9 2013/06/24 23:55:38 bicatali Exp $
+
+  24 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/klu-1.0.1-autotools.patch, -klu-1.1.1.ebuild, -klu-1.1.2.ebuild,
+  -klu-1.1.3.ebuild, klu-1.2.1.ebuild, metadata.xml:
+  Switch to EAPI5 and new tar ball
+
+*klu-1.2.1 (12 Nov 2012)
+
+  12 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> +klu-1.2.1.ebuild:
+  Version bump
+
+*klu-1.1.3 (20 Jan 2012)
+
+  20 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org> +klu-1.1.3.ebuild:
+  Version bump
+
+*klu-1.1.2 (07 Aug 2011)
+
+  07 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> -klu-1.0.1.ebuild,
+  -klu-1.1.0.ebuild, +klu-1.1.2.ebuild:
+  Version bump
+
+  26 Jun 2011; Justin Lecher <jlec@gentoo.org> klu-1.0.1.ebuild,
+  klu-1.1.0.ebuild, klu-1.1.1.ebuild, metadata.xml:
+  Defined RDEPEND, bumped EAPI
+
+*klu-1.1.1 (23 Feb 2011)
+
+  23 Feb 2011; Sébastien Fabbro <bicatali@gentoo.org> +klu-1.1.1.ebuild:
+  Bump
+
+  25 Dec 2010; Sébastien Fabbro <bicatali@gentoo.org> klu-1.1.0.ebuild:
+  Added static-libs flag
+
+*klu-1.1.0 (21 Nov 2009)
+
+  21 Nov 2009; Sébastien Fabbro <bicatali@gentoo.org> +klu-1.1.0.ebuild:
+  Version bump
+
+*klu-1.0.1 (05 Feb 2008)
+
+  05 Feb 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/klu-1.0.1-autotools.patch, +metadata.xml, +klu-1.0.1.ebuild:
+  Initial import, part of the suitesparse

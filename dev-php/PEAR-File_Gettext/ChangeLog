@@ -1,0 +1,159 @@
+# ChangeLog for dev-php/PEAR-File_Gettext
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-File_Gettext/ChangeLog,v 1.40 2014/10/11 17:25:35 grknight Exp $
+
+  11 Oct 2014; Brian Evans <grknight@gentoo.org>
+  -PEAR-File_Gettext-0.4.1-r1.ebuild:
+  Drop old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-File_Gettext-0.4.1-r1.ebuild, PEAR-File_Gettext-0.4.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  07 Aug 2013; Agostino Sarubbo <ago@gentoo.org> PEAR-File_Gettext-0.4.2.ebuild:
+  Stable for x86, wrt bug #470426
+
+  04 Aug 2013; Agostino Sarubbo <ago@gentoo.org> PEAR-File_Gettext-0.4.2.ebuild:
+  Stable for ppc64, wrt bug #470426
+
+  04 Aug 2013; Agostino Sarubbo <ago@gentoo.org> PEAR-File_Gettext-0.4.2.ebuild:
+  Stable for ia64, wrt bug #470426
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> PEAR-File_Gettext-0.4.2.ebuild:
+  Stable for sparc, wrt bug #470426
+
+  31 Jul 2013; Jeroen Roovers <jer@gentoo.org> PEAR-File_Gettext-0.4.2.ebuild:
+  Stable for HPPA (bug #470426).
+
+  30 Jul 2013; Agostino Sarubbo <ago@gentoo.org> PEAR-File_Gettext-0.4.2.ebuild:
+  Stable for alpha, wrt bug #470426
+
+  28 Jul 2013; Agostino Sarubbo <ago@gentoo.org> PEAR-File_Gettext-0.4.2.ebuild:
+  Stable for ppc, wrt bug #470426
+
+  28 Jul 2013; Agostino Sarubbo <ago@gentoo.org> PEAR-File_Gettext-0.4.2.ebuild:
+  Stable for amd64, wrt bug #470426
+
+*PEAR-File_Gettext-0.4.2 (24 Mar 2013)
+
+  24 Mar 2013; Matti Bickel <mabi@gentoo.org> +PEAR-File_Gettext-0.4.2.ebuild:
+  version bump
+
+  09 Jun 2012; Matti Bickel <mabi@gentoo.org> -PEAR-File_Gettext-0.4.1.ebuild:
+  remove old
+
+  29 Jan 2012; Raúl Porcel <armin76@gentoo.org>
+  PEAR-File_Gettext-0.4.1-r1.ebuild:
+  alpha/ia64/sparc stable
+
+  18 Jan 2012; Matti Bickel <mabi@gentoo.org> -PEAR-File_Gettext-0.4.0.ebuild:
+  remove old
+
+  10 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  PEAR-File_Gettext-0.4.1-r1.ebuild:
+  ppc64/ppc stable wrt #294256, #349318, #350908
+
+  05 Nov 2010; Jeroen Roovers <jer@gentoo.org>
+  PEAR-File_Gettext-0.4.1-r1.ebuild:
+  Stable for HPPA (bug #336869).
+
+  20 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  PEAR-File_Gettext-0.4.1-r1.ebuild:
+  Stable on amd64 wrt bug #336869
+
+  14 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  PEAR-File_Gettext-0.4.1-r1.ebuild:
+  x86 stable, bug 336869
+
+*PEAR-File_Gettext-0.4.1-r1 (11 Jun 2010)
+
+  11 Jun 2010; <mabi@gentoo.org> +PEAR-File_Gettext-0.4.1-r1.ebuild:
+  EAPI bump, php-5.3 update
+
+  28 Mar 2008; Markus Meier <maekke@gentoo.org>
+  PEAR-File_Gettext-0.4.1.ebuild:
+  amd64 stable, bug #208313
+
+  10 Feb 2008; Raúl Porcel <armin76@gentoo.org>
+  PEAR-File_Gettext-0.4.1.ebuild:
+  alpha/ia64/sparc stable wrt #208313
+
+  10 Feb 2008; nixnut <nixnut@gentoo.org> PEAR-File_Gettext-0.4.1.ebuild:
+  stable on ppc wrt bug #208313
+
+  03 Feb 2008; Markus Meier <maekke@gentoo.org>
+  PEAR-File_Gettext-0.4.1.ebuild:
+  x86 stable, bug #208313
+
+  01 Feb 2008; Brent Baude <ranger@gentoo.org>
+  PEAR-File_Gettext-0.4.1.ebuild:
+  Marking PEAR-File_Gettext-0.4.1 ppc64 for bug 208313
+
+  31 Jan 2008; Jeroen Roovers <jer@gentoo.org>
+  PEAR-File_Gettext-0.4.1.ebuild:
+  Stable for HPPA (bug #208313).
+
+*PEAR-File_Gettext-0.4.1 (06 Dec 2007)
+
+  06 Dec 2007; Markus Ullmann <jokey@gentoo.org>
+  PEAR-File_Gettext-0.4.0.ebuild, +PEAR-File_Gettext-0.4.1.ebuild:
+  LICENSE fix from project overlay
+
+  02 Dec 2007; Jakub Moc <jakub@gentoo.org> +PEAR-File_Gettext-0.4.1.ebuild:
+  Version bump
+
+  02 Dec 2007; Jakub Moc <jakub@gentoo.org>
+  PEAR-File_Gettext-0.4.0.ebuild:
+  Fix LICENSE
+
+  22 Oct 2007; Raúl Porcel <armin76@gentoo.org>
+  PEAR-File_Gettext-0.4.0.ebuild:
+  ia64 stable wrt #192247
+
+  05 Oct 2007; Raúl Porcel <armin76@gentoo.org>
+  PEAR-File_Gettext-0.4.0.ebuild:
+  alpha/sparc stable wrt #192247
+
+  28 Sep 2007; Christoph Mende <angelos@gentoo.org>
+  PEAR-File_Gettext-0.4.0.ebuild:
+  Stable on amd64 wrt bug #192247
+
+  26 Sep 2007; Brent Baude <ranger@gentoo.org>
+  PEAR-File_Gettext-0.4.0.ebuild:
+  Marking PEAR-File_Gettext-0.4.0 ppc64 stable for bug 192247
+
+  24 Sep 2007; Lars Weiler <pylon@gentoo.org>
+  PEAR-File_Gettext-0.4.0.ebuild:
+  stable ppc, bug #192247
+
+  21 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  PEAR-File_Gettext-0.4.0.ebuild:
+  x86 stable, bug 192247
+
+  16 Sep 2007; Jeroen Roovers <jer@gentoo.org>
+  PEAR-File_Gettext-0.4.0.ebuild:
+  Stable for HPPA (bug #192247).
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  25 Nov 2006; Bryan Østergaard <kloeri@gentoo.org>
+  PEAR-File_Gettext-0.4.0.ebuild:
+  Add ~alpha + ~ia64 keywords, bug 134270.
+
+  27 May 2006; Luca Longinotti <chtekk@gentoo.org>
+  PEAR-File_Gettext-0.4.0.ebuild:
+  Added to ~amd64. See bug #134270.
+
+  25 May 2006; Michael Hanselmann <hansmi@gentoo.org>
+  PEAR-File_Gettext-0.4.0.ebuild:
+  Added to ~hppa, ~ppc64, ~sparc. See bug #134270.
+
+  25 May 2006; <nixnut@gentoo.org> PEAR-File_Gettext-0.4.0.ebuild:
+  Added ~ppc. bug #134270
+
+*PEAR-File_Gettext-0.4.0 (28 Feb 2006)
+
+  28 Feb 2006; Sebastian Bergmann <sebastian@gentoo.org> +metadata.xml,
+  +PEAR-File_Gettext-0.4.0.ebuild:
+  Initial ebuild.

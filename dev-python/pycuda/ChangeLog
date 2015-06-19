@@ -1,0 +1,118 @@
+# ChangeLog for dev-python/pycuda
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pycuda/ChangeLog,v 1.25 2015/04/08 08:05:18 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pycuda-2012.1.ebuild,
+  pycuda-2013.1.1.ebuild:
+  Drop old Python implementations
+
+*pycuda-2014.1 (02 Dec 2014)
+
+  02 Dec 2014; Justin Lecher <jlec@gentoo.org> +pycuda-2014.1.ebuild,
+  pycuda-9999.ebuild:
+  Version Bump; add py3.4 support, #531138
+
+  23 Nov 2013; Justin Lecher <jlec@gentoo.org> pycuda-2013.1.1.ebuild,
+  pycuda-9999.ebuild:
+  Fix py3 support, #484262
+
+*pycuda-2013.1.1 (07 Jul 2013)
+
+  07 Jul 2013; Justin Lecher <jlec@gentoo.org> pycuda-2012.1.ebuild,
+  +pycuda-2013.1.1.ebuild, pycuda-9999.ebuild, metadata.xml:
+  Version Bump; fix usage of python r1 eclasses
+
+  02 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Assign to new maintainers per http://gentoo.2317880.n4.nabble.com/Packages-up-
+  for-grabs-due-spock-retirement-td256327.html
+
+  20 Jan 2013; Pacho Ramos <pacho@gentoo.org> -pycuda-2011.2.2-r1.ebuild,
+  metadata.xml:
+  Cleanup fue retirement, bug #35242
+
+*pycuda-2012.1 (15 Jan 2013)
+
+  15 Jan 2013; Justin Lecher <jlec@gentoo.org> +pycuda-2012.1.ebuild,
+  metadata.xml:
+  Version Bump; bump to EAPI=5 and distutils-r1.eclass; depend on libcuda.so,
+  #403729
+
+  08 Nov 2012; Diego E. Pettenò <flameeyes@gentoo.org> -pycuda-2011.2.2.ebuild:
+  Remove old version depending on older boost.
+
+  25 Feb 2012; Patrick Lauer <patrick@gentoo.org> pycuda-2011.2.2-r1.ebuild,
+  pycuda-2011.2.2.ebuild, pycuda-9999.ebuild:
+  Fixing accidental double asterisk
+
+  20 Feb 2012; Patrick Lauer <patrick@gentoo.org> pycuda-2011.2.2-r1.ebuild,
+  pycuda-2011.2.2.ebuild, pycuda-9999.ebuild:
+  Fixing pypy restricts to actually work
+
+*pycuda-2011.2.2-r1 (28 Jan 2012)
+
+  28 Jan 2012; Mike Gilbert <floppym@gentoo.org> +pycuda-2011.2.2-r1.ebuild,
+  pycuda-2011.2.2.ebuild, pycuda-9999.ebuild:
+  Prepare for PYTHON_ABI-versioned Boost Python libraries in Boost 1.48. Patch
+  by Arfrever.
+
+*pycuda-2011.2.2 (10 Jan 2012)
+
+  10 Jan 2012; Justin Lecher <jlec@gentoo.org> -pycuda-0.94.2.ebuild,
+  -pycuda-2011.1.2.ebuild, +pycuda-2011.2.2.ebuild, pycuda-9999.ebuild,
+  metadata.xml:
+  Version Bump, Dropped old, fixes python.eclass related issues, do not link
+  against bundled boost, fix finding of system cuda related libs, use git
+  submodules, #345517, #383041 and #384211; thanks JTRiley for the many fixes
+
+  21 Sep 2011; Michał Górny <mgorny@gentoo.org> pycuda-9999.ebuild:
+  Migrate to git-2.
+
+*pycuda-2011.1.2 (05 Sep 2011)
+
+  05 Sep 2011; Michał Januszewski <spock@gentoo.org> +pycuda-2011.1.2.ebuild:
+  Version bump.
+
+  01 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pycuda-0.94.2.ebuild, pycuda-9999.ebuild:
+  Fix deprecation warnings.
+
+  01 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pycuda-0.92.ebuild, -pycuda-0.93.ebuild,
+  -files/pycuda-0.93-fix-include-path.patch:
+  Delete.
+
+  12 Dec 2010; Michał Januszewski <spock@gentoo.org> pycuda-0.94.2.ebuild,
+  pycuda-9999.ebuild:
+  Add PYTHON_DEPEND.
+
+*pycuda-0.94.2 (28 Nov 2010)
+
+  28 Nov 2010; Michał Januszewski <spock@gentoo.org> +pycuda-0.94.2.ebuild:
+  Version bump (bug #341531).
+
+  08 Feb 2010; Michał Januszewski <spock@gentoo.org> pycuda-0.93.ebuild,
+  pycuda-9999.ebuild:
+  Add the 'opengl' USE flag.
+
+  08 Feb 2010; Michał Januszewski <spock@gentoo.org> pycuda-9999.ebuild:
+  Depend on boost[python] instead of boost.
+
+*pycuda-0.93 (24 Dec 2009)
+
+  24 Dec 2009; Michał Januszewski <spock@gentoo.org> +pycuda-0.93.ebuild,
+  +files/pycuda-0.93-fix-include-path.patch:
+  Version bump (bug #281255).
+
+  14 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org> pycuda-9999.ebuild:
+  Drop kewords on live package. Fix QA issues on it.
+
+*pycuda-9999 (09 Aug 2009)
+
+  09 Aug 2009; Michał Januszewski <spock@gentoo.org> +pycuda-9999.ebuild:
+  Add a live git ebuild. Ebuild submitted by Justin T. Riley in bug #280576.
+
+*pycuda-0.92 (06 Jun 2009)
+
+  06 Jun 2009; Michał Januszewski <spock@gentoo.org> +pycuda-0.92.ebuild,
+  +metadata.xml:
+  Initial commit.

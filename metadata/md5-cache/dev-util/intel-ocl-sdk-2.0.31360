@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prepare unpack
+DEPEND=>=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=Intel's implementation of the OpenCL standard optimized for Intel processors
+EAPI=4
+HOMEPAGE=http://software.intel.com/en-us/articles/opencl-sdk/
+IUSE=tools
+KEYWORDS=amd64 -x86
+LICENSE=Intel-SDP
+RDEPEND=app-eselect/eselect-opencl dev-cpp/tbb sys-process/numactl tools? ( sys-devel/llvm >=virtual/jre-1.6 )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=http://registrationcenter.intel.com/irc_nas/2563/intel_sdk_for_ocl_applications_2012_x64.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	rpm	b94b54b44f14d6bee3e966c8f5c86fba	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b1dbfa6b359d9c6e098cfd79c4d1bdc7

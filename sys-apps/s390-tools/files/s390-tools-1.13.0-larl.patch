@@ -1,0 +1,67 @@
+https://bugs.gentoo.org/391433
+
+You reported a zipl build problem for 31 bit:
+http://marc.info/?l=linux-s390&m=132307473025493&w=2
+
+The following patch (for s390-tools-1.15.0) should fix this problem:
+---
+From: Michael Holzheu <holzheu@linux.vnet.ibm.com>
+Subject: zipl: Do not use larl for 31 bit code
+
+The larl instruction is not available for pre z900 machines in 31 bit mode.
+In order to be able to compile zipl also for that machines, with this
+patch the larl instruction is replaced by instructions that work on
+older machines.
+
+Signed-off-by: Michael Holzheu <holzheu@linux.vnet.ibm.com>
+---
+ zipl/boot/dumpcommon.S |    6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+--- a/zipl/boot/dumpcommon.S
++++ b/zipl/boot/dumpcommon.S
+@@ -1005,7 +1005,7 @@ _count_mem_32:
+         mr    %r2,%r1                   # mem size in bytes in %r3
+ 
+         st    %r3,.Ldh_real_mem_size+4-0b(%r13)
+-        larl  %r7,.Lmem_upper_limit+4
++        l     %r7,.Lmem_upper_limit_addr-0b(%r13)
+         l     %r6,0(%r7)                     # check if we have an upper limit
+         clr   %r3,%r6
+         bl    .Lsavemem-0b(%r13)
+@@ -1018,13 +1018,15 @@ _count_mem_32:
+ 
+         clr   %r6,%r3
+         bne   .Lexit-0b(%r13)
+-        larl  %r2,.Lmsg_mem_limit_set          # print mem limit warning
++        la    %r2,.Lmsg_mem_limit_set-0b(%r13) # print mem limit warning
+         bras  %r14,_sclp_print
+ .Lexit:
+         lm    %r6,%r15,120(%r15)
+         br    %r14
+ .Lonemb:
+         .int 0x100000
++.Lmem_upper_limit_addr:
++	.long	.Lmem_upper_limit+4
+ 
+ 
+ # expand Macros
+
+> it fixes most of them, but seems there's still one left :)
+
+Ok, try this one:
+---
+ zipl/boot/tapedump.S |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/zipl/boot/tapedump.S
++++ b/zipl/boot/tapedump.S
+@@ -532,7 +532,7 @@ _dump_mem_32:
+         # Cartridge full
+ 
+         la    %r2,EMEM
+-        larl  %r14,_panik_32
++        l     %r14,.Lpanik_32-0b(%r13)
+         basr  %r14,%r14
+ 
+ 1:      # All memory written

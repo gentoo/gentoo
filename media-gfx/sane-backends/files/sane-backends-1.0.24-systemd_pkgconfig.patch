@@ -1,0 +1,37 @@
+diff --git a/configure.in b/configure.in
+index 7413646..66828fc 100644
+--- a/configure.in
++++ b/configure.in
+@@ -347,21 +347,18 @@ dnl fi
+ AC_ARG_WITH(systemd,
+ 	AC_HELP_STRING([--with-systemd], [enable systemd support @<:@default=yes@:>@]))
+ if test "x$with_systemd" != xno ; then
+-    dnl added by llagendijk 12/7/2012 to detect systemd for saned
+-    $as_echo_n "Checking for systemd..."
+-    if test -e /usr/include/systemd/sd-daemon.h ; then
+-	AC_DEFINE(HAVE_SYSTEMD, 1, [Is /usr/include/systemd/sd-daemon.h available?])
+-	have_systemd="yes"
+-	SYSTEMD_LIBS=" -lsystemd-daemon"
+-	AC_SUBST(SYSTEMD_LIBS)
+-	$as_echo "yes"
+-    else
+-	have_systemd="no"
+-	$as_echo "no"
+-	if test "x$with_systemd" = xyes; then
+-	    AC_MSG_ERROR([Systemd support was requested but systemd was not found])
+-	fi
++  PKG_CHECK_MODULES(SYSTEMD, [libsystemd], have_systemd=yes, have_systemd=no)
++  if test "x$have_systemd" = xno; then
++    PKG_CHECK_MODULES(SYSTEMD, [libsystemd-daemon], have_systemd=yes, have_systemd=no)
++  fi
++  if test "x$have_systemd" = xyes; then
++    AC_DEFINE(HAVE_SYSTEMD, 1, [Is /usr/include/systemd/sd-daemon.h available?])
++    AC_SUBST(SYSTEMD_LIBS)
++  else
++    if test "x$with_systemd" = xyes; then
++      AC_MSG_ERROR([Systemd support was requested but systemd was not found])
+     fi
++  fi
+ fi
+ 
+ dnl ***********

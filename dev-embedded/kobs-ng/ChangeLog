@@ -1,0 +1,12 @@
+# ChangeLog for dev-embedded/kobs-ng
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/kobs-ng/ChangeLog,v 1.1 2014/11/18 04:07:28 vapier Exp $
+
+*kobs-ng-3.0.35.4.1.0 (18 Nov 2014)
+
+  18 Nov 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/kobs-ng-fix-array-violation.patch,
+  +files/kobs-ng-fix-mtd-defines.patch,
+  +files/kobs-ng-fix-open-without-mode.patch, +kobs-ng-3.0.35.4.1.0.ebuild,
+  +metadata.xml:
+  Initial ebuild by Nam Nguyen.

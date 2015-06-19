@@ -1,0 +1,10 @@
+--- Makefile~	2005-09-05 19:50:31.000000000 +0100
++++ Makefile	2006-02-17 17:08:31.000000000 +0000
+@@ -85,6 +85,7 @@
+ 	${PATCH} <${ZIPS}/noweb.modules.c.patch ; \
+ 	cd ${OBJ}/noweb/src ; \
+ 	${PATCH} <${ZIPS}/noweb.src.Makefile.patch ; \
++	${PATCH} -p0 <${ZIPS}/noweb-2.9-insecure-tmp-file.patch ; \
+ 	./awkname ${AWK} ; \
+ 	${ENV} ${MAKE} BIN=${MNT}/${SYS}/bin/lib LIB=${MNT}/${SYS}/bin/lib \
+                 MAN=${MNT}/${SYS}/bin/man \

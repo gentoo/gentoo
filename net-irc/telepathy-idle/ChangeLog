@@ -1,0 +1,269 @@
+# ChangeLog for net-irc/telepathy-idle
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/telepathy-idle/ChangeLog,v 1.68 2015/04/08 18:01:55 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> telepathy-idle-0.2.0.ebuild:
+  Drop old Python implementations
+
+  13 Nov 2014; Pacho Ramos <pacho@gentoo.org> -telepathy-idle-0.1.16.ebuild:
+  Drop old (#508854)
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org> telepathy-idle-0.2.0.ebuild:
+  x86 stable, bug 508862
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org> telepathy-idle-0.2.0.ebuild:
+  amd64 stable, bug 508862
+
+  02 May 2014; Pacho Ramos <pacho@gentoo.org> telepathy-idle-0.1.16.ebuild,
+  telepathy-idle-0.2.0.ebuild:
+  Set PYTHON_REQUIRED_USE (#509316 by Maciej Piechotka)
+
+*telepathy-idle-0.2.0 (25 Apr 2014)
+
+  25 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +telepathy-idle-0.2.0.ebuild:
+  Version bump. Recommended for >=Gnome 3.10.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> telepathy-idle-0.1.16.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  29 Aug 2013; Pacho Ramos <pacho@gentoo.org> -telepathy-idle-0.1.14.ebuild,
+  -telepathy-idle-0.1.15.ebuild:
+  Drop old
+
+  07 May 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-idle-0.1.16.ebuild:
+  Stable for sparc, wrt bug #467934
+
+  07 May 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-idle-0.1.16.ebuild:
+  Stable for ia64, wrt bug #467934
+
+  05 May 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-idle-0.1.16.ebuild:
+  Stable for alpha, wrt bug #467934
+
+  05 May 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-idle-0.1.16.ebuild:
+  Stable for arm, wrt bug #467934
+
+  03 May 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-idle-0.1.16.ebuild:
+  Stable for ppc, wrt bug #467934
+
+  02 May 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-idle-0.1.16.ebuild:
+  Stable for x86, wrt bug #467934
+
+  02 May 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-idle-0.1.16.ebuild:
+  Stable for amd64, wrt bug #467934
+
+*telepathy-idle-0.1.16 (01 May 2013)
+
+  01 May 2013; Pacho Ramos <pacho@gentoo.org> +telepathy-idle-0.1.16.ebuild:
+  Version bump
+
+*telepathy-idle-0.1.15 (24 Apr 2013)
+
+  24 Apr 2013; Pacho Ramos <pacho@gentoo.org> +telepathy-idle-0.1.15.ebuild,
+  -files/telepathy-idle-0.1.12-parallel-make.patch,
+  -telepathy-idle-0.1.11.ebuild, -telepathy-idle-0.1.12.ebuild:
+  Version bump, drop old
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-idle-0.1.14.ebuild:
+  Stable for sparc, wrt bug #458984
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-idle-0.1.14.ebuild:
+  Stable for alpha, wrt bug #458984
+
+  29 Mar 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-idle-0.1.14.ebuild:
+  Stable for ia64, wrt bug #458984
+
+  28 Mar 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-idle-0.1.14.ebuild:
+  Stable for arm, wrt bug #458984
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-idle-0.1.14.ebuild:
+  Stable for ppc, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-idle-0.1.14.ebuild:
+  Stable for x86, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> telepathy-idle-0.1.14.ebuild:
+  Stable for amd64, wrt bug #458984
+
+*telepathy-idle-0.1.14 (17 Nov 2012)
+
+  17 Nov 2012; Pacho Ramos <pacho@gentoo.org> +telepathy-idle-0.1.14.ebuild:
+  Version bump
+
+  22 Sep 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/telepathy-idle-0.1.12-parallel-make.patch,
+  telepathy-idle-0.1.12.ebuild:
+  Fix parallel make issue, bug #435524 by Attila Tóth.
+
+*telepathy-idle-0.1.12 (15 Sep 2012)
+
+  15 Sep 2012; Pacho Ramos <pacho@gentoo.org> +telepathy-idle-0.1.12.ebuild,
+  -telepathy-idle-0.1.10.ebuild:
+  Version bump, drop old.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> telepathy-idle-0.1.10.ebuild,
+  telepathy-idle-0.1.11.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> telepathy-idle-0.1.11.ebuild:
+  alpha/ia64/sparc stable wrt #393007
+
+  05 Mar 2012; Brent Baude <ranger@gentoo.org> telepathy-idle-0.1.11.ebuild:
+  Marking telepathy-idle-0.1.11 ppc stable for bug 393007
+
+  18 Jan 2012; Markus Meier <maekke@gentoo.org> telepathy-idle-0.1.11.ebuild:
+  arm stable, bug #393007
+
+  14 Jan 2012; Markus Meier <maekke@gentoo.org> telepathy-idle-0.1.11.ebuild:
+  x86 stable, bug #393007
+
+  29 Dec 2011; Pacho Ramos <pacho@gentoo.org> telepathy-idle-0.1.11.ebuild:
+  amd64 stable, bug 393007
+
+*telepathy-idle-0.1.11 (01 Nov 2011)
+
+  01 Nov 2011; Pacho Ramos <pacho@gentoo.org> +telepathy-idle-0.1.11.ebuild,
+  -telepathy-idle-0.1.7.ebuild, -telepathy-idle-0.1.9.ebuild:
+  Version bump, remove old.
+
+  05 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  telepathy-idle-0.1.10.ebuild:
+  ppc stable wrt #369909
+
+  13 Aug 2011; Raúl Porcel <armin76@gentoo.org> telepathy-idle-0.1.10.ebuild:
+  alpha/ia64/sparc stable wrt #369909
+
+  06 Aug 2011; Zac Medico <zmedico@gentoo.org> telepathy-idle-0.1.10.ebuild:
+  Add ~x86-linux keyword.
+
+  17 Jul 2011; Markus Meier <maekke@gentoo.org> telepathy-idle-0.1.10.ebuild:
+  arm stable, bug #369909
+
+  14 Jul 2011; Thomas Kahle <tomka@gentoo.org> telepathy-idle-0.1.10.ebuild:
+  x86 stable per bug 369909
+
+  01 Jul 2011; Markos Chandras <hwoarang@gentoo.org>
+  telepathy-idle-0.1.10.ebuild:
+  Stable on amd64 wrt bug #278255
+
+*telepathy-idle-0.1.10 (03 Jun 2011)
+
+  03 Jun 2011; Pacho Ramos <pacho@gentoo.org> -telepathy-idle-0.1.8.ebuild,
+  +telepathy-idle-0.1.10.ebuild:
+  Version bump, remove old.
+
+*telepathy-idle-0.1.9 (15 Apr 2011)
+
+  15 Apr 2011; Pacho Ramos <pacho@gentoo.org> +telepathy-idle-0.1.9.ebuild:
+  Version bump with bugfixes.
+
+*telepathy-idle-0.1.8 (02 Apr 2011)
+
+  02 Apr 2011; Pacho Ramos <pacho@gentoo.org> -telepathy-idle-0.1.5.ebuild,
+  -telepathy-idle-0.1.6.ebuild, +telepathy-idle-0.1.8.ebuild:
+  Version bump: Implements SASL channel, properly advertise that text channels
+  implement Messages. Remove old.
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org> telepathy-idle-0.1.7.ebuild:
+  Marking telepathy-idle-0.1.7 ppc stable for bug 353436
+
+  12 Mar 2011; Raúl Porcel <armin76@gentoo.org> telepathy-idle-0.1.7.ebuild:
+  alpha/arm/ia64/sparc stable wrt #353436
+
+  24 Feb 2011; Thomas Kahle <tomka@gentoo.org> telepathy-idle-0.1.7.ebuild:
+  x86 stable per bug 353436
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org>
+  telepathy-idle-0.1.7.ebuild:
+  Stable on amd64 wrt bug #353436
+
+*telepathy-idle-0.1.7 (07 Feb 2011)
+
+  07 Feb 2011; Pacho Ramos <pacho@gentoo.org> +telepathy-idle-0.1.7.ebuild:
+  Version bump with bugfixes, improve python handling and add gnome to metadata
+  as talked between us since empathy relies on this.
+
+*telepathy-idle-0.1.6 (29 Sep 2010)
+
+  29 Sep 2010; Pacho Ramos <pacho@gentoo.org> +telepathy-idle-0.1.6.ebuild:
+  Version bump with some fixes.
+
+  11 Sep 2010; <nixnut@gentoo.org> telepathy-idle-0.1.5.ebuild:
+  ppc stable #321591
+
+  07 Aug 2010; Raúl Porcel <armin76@gentoo.org>
+  telepathy-idle-0.1.5.ebuild:
+  ia64/sparc stable wrt #321591
+
+  25 Jul 2010; Tobias Klausmann <klausman@gentoo.org>
+  telepathy-idle-0.1.5.ebuild:
+  Stable on alpha, bug #321591
+
+  09 Jan 2010; Pacho Ramos <pacho@gentoo.org> telepathy-idle-0.1.5.ebuild:
+  amd64 stable, bug 286877
+
+  09 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  telepathy-idle-0.1.5.ebuild:
+  stable x86, bug 286877
+
+  06 Jan 2010; Brent Baude <ranger@gentoo.org> telepathy-idle-0.1.5.ebuild:
+  Marking telepathy-idle-0.1.5 ~ppc64 for bug 245949
+
+  05 Jan 2010; Joseph Jezak <josejx@gentoo.org> telepathy-idle-0.1.5.ebuild:
+  Marked ~ppc for bug #245949.
+
+  25 Oct 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove coldwind from metadata.xml (#181764)
+
+*telepathy-idle-0.1.5 (27 Sep 2009)
+
+  27 Sep 2009; Olivier Crête <tester@gentoo.org>
+  -telepathy-idle-0.1.1.ebuild, -telepathy-idle-0.1.2.ebuild,
+  -files/telepathy-idle-0.1.2-glibc-2.10.patch,
+  -telepathy-idle-0.1.4.ebuild, +telepathy-idle-0.1.5.ebuild:
+  Version bump
+
+  12 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  telepathy-idle-0.1.4.ebuild:
+  Fix regression from 0.1.2 and include GLIBC 2.10+ patch again wrt #281117.
+
+*telepathy-idle-0.1.4 (08 Aug 2009)
+
+  08 Aug 2009; Olivier Crête <tester@gentoo.org>
+  +telepathy-idle-0.1.4.ebuild, metadata.xml:
+  Version bump, enable tests
+
+  07 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  telepathy-idle-0.1.2.ebuild, +files/telepathy-idle-0.1.2-glibc-2.10.patch:
+  Fix building with GLIBC 2.10+ wrt #271640.
+
+  29 Mar 2009; <solar@gentoo.org> telepathy-idle-0.1.2.ebuild:
+  - keyword ~arm
+
+  07 Jan 2009; Raúl Porcel <armin76@gentoo.org>
+  telepathy-idle-0.1.2.ebuild:
+  Add ~alpha/~ia64 wrt #245949
+
+  24 Dec 2008; Friedrich Oslage <bluebird@gentoo.org>
+  telepathy-idle-0.1.2.ebuild:
+  Add ~sparc keyword, bug #245949
+
+  12 Jan 2008; Santiago M. Mola <coldwind@gentoo.org>
+  telepathy-idle-0.1.1.ebuild, telepathy-idle-0.1.2.ebuild:
+  Add pkgconfig to DEPEND, #205475.
+
+*telepathy-idle-0.1.2 (28 Sep 2007)
+
+  28 Sep 2007; Santiago M. Mola <coldwind@gentoo.org>
+  +telepathy-idle-0.1.2.ebuild:
+  Bump to 0.1.2.
+
+  13 Aug 2007; Daniel Gryniewicz <dang@gentoo.org>
+  telepathy-idle-0.1.1.ebuild:
+  Marked ~amd64
+
+*telepathy-idle-0.1.1 (28 Jun 2007)
+
+  28 Jun 2007; Santiago M. Mola <coldwind@gentoo.org> +metadata.xml,
+  +telepathy-idle-0.1.1.ebuild:
+  Import from voip overlay.

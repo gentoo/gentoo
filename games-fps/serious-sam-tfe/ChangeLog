@@ -1,0 +1,20 @@
+# ChangeLog for games-fps/serious-sam-tfe
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/serious-sam-tfe/ChangeLog,v 1.4 2015/06/14 17:21:19 ulm Exp $
+
+  14 Jun 2015; Ulrich Müller <ulm@gentoo.org> serious-sam-tfe-1_beta3.ebuild:
+  [QA] Remove emul-linux-x86-* from dependencies.
+
+  15 Oct 2014; Pacho Ramos <pacho@gentoo.org> serious-sam-tfe-1_beta3.ebuild:
+  Support multilib providers for deps. Bump to EAPI=5.
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> serious-sam-tfe-1_beta3.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+*serious-sam-tfe-1_beta3 (22 Sep 2012)
+
+  22 Sep 2012; Sergey Popov <pinkbyte@gentoo.org>
+  +serious-sam-tfe-1_beta3.ebuild, +metadata.xml:
+  Initial commit wrt bug #71436. Thanks to all those people who helps writing
+  this ebuild

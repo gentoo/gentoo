@@ -1,0 +1,72 @@
+# ChangeLog for x11-libs/libkscreen
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libkscreen/ChangeLog,v 1.18 2014/12/11 16:07:56 ago Exp $
+
+  11 Dec 2014; Agostino Sarubbo <ago@gentoo.org> libkscreen-1.0.5.ebuild:
+  Add ~ppc64, wrt bug #525558
+
+  11 Dec 2014; Agostino Sarubbo <ago@gentoo.org> libkscreen-1.0.5.ebuild:
+  Add ~ppc, wrt bug #525558
+
+  11 Nov 2014; Markus Meier <maekke@gentoo.org> libkscreen-1.0.5.ebuild:
+  add ~arm, bug #525558
+
+  10 Oct 2014; Manuel Rüger <mrueg@gentoo.org> -libkscreen-1.0.2.ebuild,
+  -libkscreen-1.0.4.ebuild:
+  Cleanup old.
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> libkscreen-1.0.5.ebuild:
+  Stable for x86, wrt bug #524288
+
+  09 Oct 2014; Agostino Sarubbo <ago@gentoo.org> libkscreen-1.0.5.ebuild:
+  Stable for amd64, wrt bug #524288
+
+*libkscreen-1.0.5 (03 Aug 2014)
+
+  03 Aug 2014; Manuel Rüger <mrueg@gentoo.org> +libkscreen-1.0.5.ebuild:
+  Version bump
+
+  12 May 2014; Johannes Huber <johu@gentoo.org> libkscreen-1.0.4.ebuild:
+  Unrestrict tests.
+
+*libkscreen-1.0.4 (12 May 2014)
+
+  12 May 2014; Johannes Huber <johu@gentoo.org> +libkscreen-1.0.4.ebuild,
+  -libkscreen-1.0.3.ebuild:
+  Version bump, remove old.
+
+*libkscreen-1.0.3 (06 May 2014)
+
+  06 May 2014; Manuel Rüger <mrueg@gentoo.org> +libkscreen-1.0.3.ebuild:
+  Version bump.
+
+  10 Mar 2014; Johannes Huber <johu@gentoo.org> libkscreen-1.0.2.ebuild:
+  amd64/x86 stable, bug #502500
+
+  14 Dec 2013; Johannes Huber <johu@gentoo.org> libkscreen-1.0.2.ebuild:
+  Update HOMEPAGE.
+
+  23 Nov 2013; Johannes Huber <johu@gentoo.org> -libkscreen-1.0.1.ebuild:
+  Remove old.
+
+*libkscreen-1.0.2 (21 Nov 2013)
+
+  21 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +libkscreen-1.0.2.ebuild:
+  Version bump. Tests are working now, remove restriction.
+
+  04 Nov 2013; Johannes Huber <johu@gentoo.org> -libkscreen-1.0.ebuild,
+  libkscreen-1.0.1.ebuild:
+  Update HOMEPAGE by Elias Probst <mail@eliasprobst.eu>. Remove old.
+
+*libkscreen-1.0.1 (02 Aug 2013)
+
+  02 Aug 2013; Manuel Rüger <mrueg@gentoo.org> +libkscreen-1.0.1.ebuild:
+  Version bump
+
+*libkscreen-1.0 (23 Jun 2013)
+
+  23 Jun 2013; Johannes Huber <johu@gentoo.org> +libkscreen-1.0.ebuild,
+  +metadata.xml:
+  New package. Import from kde overlay. Initial ebuild by Elias Probst
+  <mail@eliasprobst.eu>. Changes by Manuel Rüger <gentoo@rueg.eu> and me.
+  Needed for bug #474106.

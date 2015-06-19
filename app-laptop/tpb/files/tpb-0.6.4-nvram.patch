@@ -1,0 +1,34 @@
+diff -Naur tpb-0.6.4-org/src/tpb.c tpb-0.6.4/src/tpb.c
+--- tpb-0.6.4-org/src/tpb.c	2005-07-18 16:15:59.000000000 +0200
++++ tpb-0.6.4/src/tpb.c	2008-05-13 15:15:34.000000000 +0200
+@@ -523,10 +523,10 @@
+     /* determine the state of the brightness buttons {{{ */
+     if(thinkpad_state.brightness_level != last_thinkpad_state.brightness_level) {
+       if(cfg.verbose == STATE_ON) {
+-	printf(_("Brightness changed: Level %d\n"), thinkpad_state.brightness_level * 100 / 7);
++	printf(_("Brightness changed: Level %d\n"), thinkpad_state.brightness_level * 100 / 15);
+       }
+       if(cfg.callback != NULL) {
+-	snprintf(callback_cmd, sizeof(callback_cmd), "%s brightness %d", cfg.callback, thinkpad_state.brightness_level * 100 / 7);
++	snprintf(callback_cmd, sizeof(callback_cmd), "%s brightness %d", cfg.callback, thinkpad_state.brightness_level * 100 / 15);
+ 	if(fork_app(callback_cmd) != 0) {
+ 	  _exit(0);
+ 	}
+@@ -537,7 +537,7 @@
+       if(osd_ptr != NULL &&
+ 	 ((cfg.osd == STATE_OFF && cfg.osdbrightness == STATE_ON) || (cfg.osd == STATE_ON && cfg.osdbrightness != STATE_OFF))) {
+ 	xosd_display(osd_ptr, 0, XOSD_string, _("Brightness"));
+-	xosd_display(osd_ptr, 1, XOSD_percentage, thinkpad_state.brightness_level * 100 / 7);
++	xosd_display(osd_ptr, 1, XOSD_percentage, thinkpad_state.brightness_level * 100 / 15);
+       }
+     }
+ #endif /* HAVE_LIBXOSD */ /* }}} */
+@@ -1031,7 +1031,7 @@
+   thinkpad_state->hibernate_toggle  = (thinkpad_state->hibernate_toggle  & ~0x01) | (( buffer[0x58] & 0x01)     );
+   thinkpad_state->display_state     =                                               (( buffer[0x59] & 0x03)     );
+   thinkpad_state->expand_toggle     = (thinkpad_state->expand_toggle     & ~0x01) | (( buffer[0x59] & 0x10) >> 4);
+-  thinkpad_state->brightness_level  =                                               (( buffer[0x5E] & 0x07)     );
++  thinkpad_state->brightness_level  =                                               (( buffer[0x5E] & 0x0F)     );
+   thinkpad_state->brightness_toggle = (thinkpad_state->brightness_toggle & ~0x01) | (( buffer[0x5E] & 0x20) >> 5);
+   thinkpad_state->volume_level      =                                               (( buffer[0x60] & 0x0f)     );
+   thinkpad_state->volume_toggle     = (thinkpad_state->volume_toggle     & ~0x01) | (( buffer[0x60] & 0x80) >> 7);

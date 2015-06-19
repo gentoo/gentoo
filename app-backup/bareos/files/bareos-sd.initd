@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/bareos/files/bareos-sd.initd,v 1.4 2014/05/04 17:03:59 mschiff Exp $
+
+depend() {
+	use dns
+}
+
+start() {
+	ebegin "Starting bareos storage daemon"
+	checkpath -d -m 0750 -o bareos:bareos /run/bareos
+	start-stop-daemon --start --quiet --exec /usr/sbin/bareos-sd \
+		-- ${SD_OPTIONS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping bareos storage daemon"
+	start-stop-daemon --stop --quiet --pidfile /run/bareos/bareos-sd.*.pid 
+	eend $?
+}

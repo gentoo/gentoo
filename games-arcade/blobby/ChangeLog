@@ -1,0 +1,33 @@
+# ChangeLog for games-arcade/blobby
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/blobby/ChangeLog,v 1.8 2015/01/03 14:57:41 tupone Exp $
+
+  03 Jan 2015; Tupone Alfredo <tupone@gentoo.org> blobby-0.9c.ebuild:
+  EAPI 4
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> blobby-0.9c.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  21 Jun 2012; Tupone Alfredo <tupone@gentoo.org> blobby-0.9c.ebuild,
+  +files/blobby-0.9c-gcc47.patch:
+  Compile on gcc-4.7 Bug #421967 by flameeyes@gentoo.org
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> blobby-0.9c.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> blobby-0.9c.ebuild:
+  Missing app-arch/zip DEPEND wrt #406667 by Piotr Szymaniak
+
+  04 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> blobby-0.9c.ebuild:
+  x86 stable wrt bug #395449
+
+  21 Dec 2011; Agostino Sarubbo <ago@gentoo.org> blobby-0.9c.ebuild:
+  Stable for AMD64, wrt bug #395449
+
+*blobby-0.9c (18 Nov 2011)
+
+  18 Nov 2011; Michael Sterrett <mr_bones_@gentoo.org> +blobby-0.9c.ebuild,
+  +metadata.xml:
+  Initial commit - ebuild by ssuominen with style changes
+

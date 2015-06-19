@@ -1,0 +1,14 @@
+We prefer to install doc files manually through ebuild
+
+--- setup.py.orig	2013-02-12 00:35:31.387656978 +0400
++++ setup.py	2013-02-12 00:35:38.418657537 +0400
+@@ -22,9 +22,6 @@
+ 
+ data_files = [
+     (os.path.join("share", "applications"), ["arista.desktop"]),
+-    (os.path.join("share", "doc", "arista"), [
+-        "README.md", "LICENSE", "AUTHORS"
+-    ]),
+     (os.path.join("share", "nautilus-python", "extensions"), ["arista-nautilus.py"]),
+ ]
+ 

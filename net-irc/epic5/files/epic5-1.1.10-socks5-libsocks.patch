@@ -1,0 +1,37 @@
+From: Nathan Phillip Brink <binki@gentoo.org>
+Subject: Use -lsocks instead of -lsocks5 for `./configure --with-socks5`.
+
+Index: configure.in
+===================================================================
+RCS file: /home/cvs/repository/epic5/configure.in,v
+retrieving revision 1.101
+diff -u -b -B -u -r1.101 configure.in
+--- configure.in	9 Apr 2014 17:51:06 -0000	1.101
++++ configure.in	4 Sep 2014 00:18:00 -0000
+@@ -861,7 +861,7 @@
+ 
+ AC_MSG_CHECKING(whether to support SOCKS)
+ AC_ARG_WITH(socks,
+-[  --with-socks[=PATH]     Compile with SOCKS firewall traversal support.],
++[  --with-socks[=PATH]     Compile with SOCKS (libsocks without socks.h) firewall traversal support.],
+ [ case "$withval" in
+   no)
+ 	AC_MSG_RESULT(no)
+@@ -887,7 +887,7 @@
+ 
+ AC_MSG_CHECKING(whether to support SOCKS5)
+ AC_ARG_WITH(socks5,
+-[  --with-socks5[=PATH]    Compile with SOCKS5 firewall traversal support.],
++[  --with-socks5[=PATH]    Compile with SOCKS5 (libsocks with socks.h) firewall traversal support.],
+ [ case "$withval" in
+   no)
+ 	AC_MSG_RESULT(no)
+@@ -899,7 +899,7 @@
+ 	fi
+ 
+ 	AC_MSG_RESULT(yes)
+-	LIBS="$LIBS -lsocks5"
++	LIBS="$LIBS -lsocks"
+ 	AC_DEFINE(SOCKS)
+ 	AC_DEFINE(USE_SOCKS5)
+ 	;;

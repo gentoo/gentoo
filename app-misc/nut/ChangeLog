@@ -1,0 +1,346 @@
+# ChangeLog for app-misc/nut
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/nut/ChangeLog,v 1.83 2015/06/09 11:48:57 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  29 Jan 2015; Michael Palimaka <kensington@gentoo.org> -nut-19.1.ebuild,
+  -nut-19.2.ebuild, -nut-20.0.ebuild:
+  Remove old.
+
+  28 Jan 2015; Agostino Sarubbo <ago@gentoo.org> nut-20.1.ebuild:
+  Stable for ppc, wrt bug #534878
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> nut-20.1.ebuild:
+  Stable for x86, wrt bug #534878
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org> nut-20.1.ebuild:
+  Stable for amd64, wrt bug #534878
+
+  19 Jan 2015; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Drop myself from metadata.
+
+*nut-20.1 (21 Sep 2014)
+
+  21 Sep 2014; Jeroen Roovers <jer@gentoo.org> +nut-20.1.ebuild:
+  Version bump.
+
+*nut-20.0 (04 Sep 2014)
+
+  04 Sep 2014; Jeroen Roovers <jer@gentoo.org> +nut-20.0.ebuild:
+  Version bump.
+
+*nut-19.2 (16 Jun 2014)
+
+  16 Jun 2014; Tim Harder <radhermit@gentoo.org> +nut-19.2.ebuild:
+  Version bump.
+
+  07 Jun 2014; Jeroen Roovers <jer@gentoo.org> -nut-18.10.ebuild,
+  -nut-18.8.ebuild, -nut-18.9.ebuild, -nut-19.0.ebuild:
+  Old.
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> nut-19.1.ebuild:
+  Stable for ppc, wrt bug #491928
+
+  02 Mar 2014; Agostino Sarubbo <ago@gentoo.org> nut-19.1.ebuild:
+  Stable for x86, wrt bug #491928
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> nut-19.1.ebuild:
+  amd64 stable, bug #491928
+
+*nut-19.1 (01 Jan 2014)
+
+  01 Jan 2014; Tim Harder <radhermit@gentoo.org> +nut-19.1.ebuild:
+  Version bump.
+
+  02 Sep 2013; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Add myself as maintainer.
+
+*nut-19.0 (02 Sep 2013)
+
+  02 Sep 2013; Tim Harder <radhermit@gentoo.org> +nut-19.0.ebuild:
+  Version bump.
+
+*nut-18.10 (30 Jul 2013)
+
+  30 Jul 2013; Tim Harder <radhermit@gentoo.org> +nut-18.10.ebuild:
+  Version bump.
+
+  22 Jun 2013; Jeroen Roovers <jer@gentoo.org> nut-18.9.ebuild:
+  Since we are not installing Nut (FLTK) anyway, do not attempt to build it
+  (happens to fix bug #470246).
+
+  20 May 2013; Jeroen Roovers <jer@gentoo.org> -files/nut-17.12-makefile.patch,
+  -files/nut-18.7-fltk-linking.patch, -nut-18.5.ebuild, -nut-18.7.ebuild:
+  Old.
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> nut-18.8.ebuild:
+  Stable for ppc, wrt bug #470088
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> nut-18.8.ebuild:
+  Stable for x86, wrt bug #470088
+
+  19 May 2013; Agostino Sarubbo <ago@gentoo.org> nut-18.8.ebuild:
+  Stable for amd64, wrt bug #470088
+
+*nut-18.9 (16 May 2013)
+
+  16 May 2013; Tim Harder <radhermit@gentoo.org> +nut-18.9.ebuild:
+  Version bump.
+
+*nut-18.8 (19 Apr 2013)
+
+  19 Apr 2013; Tim Harder <radhermit@gentoo.org> +nut-18.8.ebuild:
+  Version bump.
+
+*nut-18.7 (09 Apr 2013)
+
+  09 Apr 2013; Tim Harder <radhermit@gentoo.org> -nut-18.6.ebuild,
+  +nut-18.7.ebuild, +files/nut-18.7-fltk-linking.patch:
+  Version bump, fix fltk linking, respect CXX, and remove old.
+
+*nut-18.6 (07 Apr 2013)
+
+  07 Apr 2013; Tim Harder <radhermit@gentoo.org> +nut-18.6.ebuild:
+  Version bump.
+
+  10 Feb 2013; Michael Palimaka <kensington@gentoo.org> -nut-18.0.ebuild,
+  -nut-18.4.ebuild:
+  Remove old.
+
+  10 Feb 2013; Agostino Sarubbo <ago@gentoo.org> nut-18.5.ebuild:
+  Stable for ppc, wrt bug #456324
+
+  09 Feb 2013; Agostino Sarubbo <ago@gentoo.org> nut-18.5.ebuild:
+  Stable for x86, wrt bug #456324
+
+  09 Feb 2013; Agostino Sarubbo <ago@gentoo.org> nut-18.5.ebuild:
+  Stable for amd64, wrt bug #456324
+
+*nut-18.5 (30 Jan 2013)
+
+  30 Jan 2013; Patrick Lauer <patrick@gentoo.org> +nut-18.5.ebuild:
+  Bump
+
+  21 Nov 2012; Michael Palimaka <kensington@gentoo.org>
+  -files/nut-17.7-makefile.patch, -nut-17.12.ebuild, -nut-17.7.ebuild:
+  Remove old.
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> nut-18.0.ebuild:
+  Stable for x86, wrt bug #441088
+
+*nut-18.4 (19 Nov 2012)
+
+  19 Nov 2012; Jeroen Roovers <jer@gentoo.org> +nut-18.4.ebuild:
+  Version bump.
+
+  04 Nov 2012; Agostino Sarubbo <ago@gentoo.org> nut-18.0.ebuild:
+  Stable for amd64, wrt bug #441088
+
+  04 Nov 2012; Anthony G. Basile <blueness@gentoo.org> nut-18.0.ebuild:
+  stable ppc, bug #441088
+
+*nut-18.0 (29 Sep 2012)
+
+  29 Sep 2012; Tim Harder <radhermit@gentoo.org> +nut-18.0.ebuild:
+  Version bump.
+
+*nut-17.12 (05 Sep 2012)
+
+  05 Sep 2012; Jeroen Roovers <jer@gentoo.org> -files/nut-16.12-makefile.patch,
+  -nut-17.5.ebuild, -files/nut-17.5-makefile.patch, +nut-17.12.ebuild,
+  +files/nut-17.12-makefile.patch:
+  Version bump.
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> nut-17.7.ebuild:
+  Marking nut-17.7 ppc for bug 418609
+
+  07 Jun 2012; Johannes Huber <johu@gentoo.org> nut-17.7.ebuild:
+  Stable for x86, wrt bug #418609
+
+  01 Jun 2012; Agostino Sarubbo <ago@gentoo.org> nut-17.7.ebuild:
+  Stable for amd64, wrt bug #418609
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -nut-17.4-r1.ebuild,
+  -nut-17.4.ebuild:
+  Remove old
+
+  05 May 2012; Brent Baude <ranger@gentoo.org> nut-17.5.ebuild:
+  Marking nut-17.5 ppc for bug 413557
+
+  27 Apr 2012; Jeff Horelick <jdhore@gentoo.org> nut-17.5.ebuild:
+  marked x86 per bug 413557
+
+  26 Apr 2012; Agostino Sarubbo <ago@gentoo.org> nut-17.5.ebuild:
+  Stable for amd64, wrt bug #413557
+
+  25 Apr 2012; Jeroen Roovers <jer@gentoo.org> files/nut-17.7-makefile.patch:
+  Clean up patch.
+
+*nut-17.7 (25 Apr 2012)
+
+  25 Apr 2012; Jeroen Roovers <jer@gentoo.org> +nut-17.7.ebuild,
+  +files/nut-17.7-makefile.patch:
+  Version bump.
+
+*nut-17.5 (13 Mar 2012)
+
+  13 Mar 2012; Jeroen Roovers <jer@gentoo.org> +nut-17.5.ebuild,
+  +files/nut-17.5-makefile.patch:
+  Version bump.
+
+*nut-17.4-r1 (27 Feb 2012)
+
+  27 Feb 2012; Jeroen Roovers <jer@gentoo.org> files/nut-16.12-makefile.patch,
+  nut-17.4.ebuild, +nut-17.4-r1.ebuild:
+  Add missing dependency. Fix building with x11-libs/fltk[-static-libs] by
+  Attila Stehr (bug #405819). Clean up patch.
+
+  24 Feb 2012; Tim Harder <radhermit@gentoo.org>
+  -files/nut-16.5-build-fixes.patch, -nut-16.9.ebuild:
+  Remove old.
+
+  24 Feb 2012; Brent Baude <ranger@gentoo.org> nut-17.4.ebuild:
+  Marking nut-17.4 ppc for bug 404611
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> nut-17.4.ebuild:
+  x86 stable wrt bug #404611
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> nut-17.4.ebuild:
+  Stable for amd64, wrt bug #404611
+
+  07 Feb 2012; Tim Harder <radhermit@gentoo.org> -nut-14.1.ebuild,
+  -files/nut-14.1-build-fixes.patch, -nut-16.5.ebuild,
+  -files/nut-16.5-int.patch, -nut-16.11.ebuild, -nut-16.12.ebuild,
+  -nut-16.13.ebuild, -nut-17.3.ebuild:
+  Remove old.
+
+  04 Feb 2012; Brent Baude <ranger@gentoo.org> nut-16.9.ebuild:
+  Marking nut-16.9 ppc for bug 368271
+
+*nut-17.4 (07 Nov 2011)
+
+  07 Nov 2011; Tim Harder <radhermit@gentoo.org> +nut-17.4.ebuild:
+  Version bump.
+
+*nut-17.3 (31 Oct 2011)
+
+  31 Oct 2011; Tim Harder <radhermit@gentoo.org> -nut-17.2.ebuild,
+  +nut-17.3.ebuild:
+  Version bump and remove old.
+
+*nut-17.2 (21 Oct 2011)
+
+  21 Oct 2011; Tim Harder <radhermit@gentoo.org> +nut-17.2.ebuild:
+  Version bump.
+
+*nut-16.13 (15 Jul 2011)
+
+  15 Jul 2011; Jeroen Roovers <jer@gentoo.org> +nut-16.13.ebuild:
+  Version bump.
+
+*nut-16.12 (06 Jun 2011)
+
+  06 Jun 2011; Tim Harder <radhermit@gentoo.org> +nut-16.12.ebuild,
+  +files/nut-16.12-makefile.patch:
+  Version bump. Update to EAPI 4 and conditionally install desktop file.
+
+  31 May 2011; Markus Meier <maekke@gentoo.org> nut-16.9.ebuild:
+  x86 stable, bug #368271
+
+  23 May 2011; Michael Weber <xmw@gentoo.org> nut-16.5.ebuild:
+  ppc stable (bug 368271)
+
+  23 May 2011; Jeroen Roovers <jer@gentoo.org> nut-16.5.ebuild,
+  nut-16.9.ebuild, nut-16.11.ebuild:
+  Change x11-libs/fltk dependency thanks to Michael Weber (bug #368271).
+
+  21 May 2011; Jeroen Roovers <jer@gentoo.org> -nut-10.15.ebuild,
+  nut-14.1.ebuild, nut-16.5.ebuild, nut-16.9.ebuild, nut-16.11.ebuild:
+  Clean up KEYWORDS.
+
+*nut-16.11 (21 May 2011)
+
+  21 May 2011; Jeroen Roovers <jer@gentoo.org> +nut-16.11.ebuild:
+  Version bump.
+
+*nut-16.9 (05 Apr 2011)
+
+  05 Apr 2011; Jeroen Roovers <jer@gentoo.org> nut-16.5.ebuild,
+  +nut-16.9.ebuild:
+  Version bump. Fix DEPEND.
+
+  20 Mar 2011; Justin Lecher <jlec@gentoo.org> nut-16.5.ebuild:
+  x11-libs/fltk SLOTMOVE 1.1 -> 1, corrected ebuild accordingly
+
+  22 Jan 2011; Christian Faulhammer <fauli@gentoo.org> nut-14.1.ebuild:
+  stable x86, bug 351547
+
+  14 Jan 2011; Justin Lecher <jlec@gentoo.org> nut-16.5.ebuild,
+  files/nut-16.5-build-fixes.patch, +files/nut-16.5-int.patch:
+  X support included
+
+*nut-16.5 (13 Jan 2011)
+
+  13 Jan 2011; Justin Lecher <jlec@gentoo.org> nut-10.15.ebuild,
+  -nut-12.2.ebuild, -nut-12.7.ebuild, nut-14.1.ebuild, +nut-16.5.ebuild,
+  +files/nut-16.5-build-fixes.patch:
+  Version Bump
+
+  13 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> nut-14.1.ebuild:
+  ppc stable wrt #351547
+
+  13 Jan 2011; Markos Chandras <hwoarang@gentoo.org> nut-14.1.ebuild:
+  Stable on amd64 wrt bug #351547
+
+*nut-14.1 (22 Nov 2008)
+
+  22 Nov 2008; Santiago M. Mola <coldwind@gentoo.org>
+  +files/nut-14.1-build-fixes.patch, +nut-14.1.ebuild:
+  Version bump, use EAPI 2, honor LDFLAGS, fix --as-needed (bug #246904).
+
+  11 May 2008; <solar@gentoo.org> nut-12.7.ebuild:
+  - Keyworded ~arm/~amd64 and cross-compile love
+
+*nut-12.7 (09 Sep 2007)
+
+  09 Sep 2007; Santiago M. Mola <coldwind@gentoo.org> nut-10.15.ebuild,
+  nut-12.2.ebuild, +nut-12.7.ebuild:
+  Bump to 12.7, bug #187179
+  Homepage updated.
+
+  29 Aug 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing agriffis from metadata due to his retirement (see #182294 for
+  reference).
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*nut-12.2 (22 Jan 2007)
+
+  22 Jan 2007; Charlie Shepherd <masterdriverz@gentoo.org> -nut-11.0.ebuild,
+  +nut-12.2.ebuild:
+  Bump to nut-12.2, bug 123755. Thanks to Michael Vogt for the ebuild
+
+*nut-11.0 (04 Oct 2005)
+
+  04 Oct 2005; Aron Griffis <agriffis@gentoo.org> -nut-10.7.ebuild,
+  nut-10.15.ebuild, +nut-11.0.ebuild:
+  Bump to 11.0 (from 10.15), adding ~alpha and ~amd64 in the process.
+  Mark 10.15 stable on x86.  Remove 10.7
+
+  10 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org> nut-10.15.ebuild:
+  mark ~ppc
+
+*nut-10.15 (18 Feb 2005)
+
+  18 Feb 2005; Aron Griffis <agriffis@gentoo.org> +nut-10.15.ebuild,
+  nut-10.7.ebuild:
+  Stabilize 10.7 and update to 10.15 #82397
+
+*nut-10.7 (29 Oct 2004)
+
+  29 Oct 2004; Aron Griffis <agriffis@gentoo.org> +nut-10.7.ebuild:
+  Add ebuild for Jim Jozwiak's nutrition program. Thanks to Chris Houser
+  (Chouser) for the ebuild

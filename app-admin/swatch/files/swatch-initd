@@ -1,0 +1,52 @@
+#!/sbin/runscript
+# This script is based on the one created by Phil (bug #255329).
+
+depend() {
+	need logger
+}
+
+SWATCH_BINARY=${SWATCH_BINARY:-/usr/bin/swatch}
+SWATCHRC=${SWATCHRC:-/etc/swatchrc}
+SWATCH_TAILFILE=${SWATCH_TAILFILE:-/var/log/syslog}
+SWATCH_LOGFILE=${SWATCH_LOGFILE:-/var/log/swatch.log}
+SWATCH_ERRFILE=${SWATCH_ERRFILE:-/var/log/swatch-err.log}
+SWATCH_SCRIPT=${SWATCH_SCRIPT:-/var/run/swatch/swatch_script.pl}
+
+gen_script() {
+	local tailargs=""
+	if [ "${SWATCH_TAILARGS}" ]; then
+		tailargs="--tail-args=\"${SWATCH_TAILARGS}\""
+	fi
+	ebegin "Generating swatch script from config"
+	${SWATCH_BINARY} --dump-script="${SWATCH_SCRIPT}" \
+		--use-cpan-file-tail ${tailargs} \
+		--config-file "${SWATCHRC}" $1 "${SWATCH_TAILFILE}"
+	eend $?
+}
+
+parse_full() {
+	gen_script --examine
+	ebegin "Parsing complete file once"
+	/usr/bin/perl ${SWATCH_SCRIPT} 1>/dev/null
+	eend $?
+}
+
+start() {
+	if [ "${PARSE_FULL}" == "YES" ]; then
+		parse_full
+	fi
+	gen_script --tail-file
+	ebegin "Starting swatch"
+	start-stop-daemon --start --quiet --background \
+		--make-pidfile --pidfile /var/run/swatch/swatch.pid \
+		--stdout ${SWATCH_LOGFILE} --stderr ${SWATCH_ERRFILE} \
+		--exec /usr/bin/perl -- ${SWATCH_SCRIPT}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping swatch"
+	start-stop-daemon --stop --exec /usr/bin/perl \
+		--pidfile /var/run/swatch/swatch.pid --quiet
+	eend $?
+}

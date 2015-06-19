@@ -1,0 +1,69 @@
+# ChangeLog for media-libs/phat
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/phat/ChangeLog,v 1.19 2014/08/10 21:11:26 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> phat-0.4.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> phat-0.4.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 May 2008; Samuli Suominen <drac@gentoo.org> phat-0.4.1.ebuild:
+  Use berlios mirrors://
+
+  21 Nov 2007; nixnut <nixnut@gentoo.org> phat-0.4.1.ebuild:
+  Stable on ppc wrt bug 199447
+
+  17 Nov 2007; Dawid Węgliński <cla@gentoo.org> phat-0.4.1.ebuild:
+  Stable on x86 (bug #199447)
+
+  17 Nov 2007; Samuli Suominen <drac@gentoo.org> phat-0.4.1.ebuild:
+  Use prebuilt documentation instead of building it again.
+
+  17 Nov 2007; Samuli Suominen <drac@gentoo.org> phat-0.4.1.ebuild:
+  amd64 stable wrt #199447
+
+  07 Nov 2007; Raúl Porcel <armin76@gentoo.org> phat-0.4.1.ebuild:
+  sparc stable
+
+*phat-0.4.1 (15 Sep 2007)
+
+  15 Sep 2007; Samuli Suominen <drac@gentoo.org> +phat-0.4.1.ebuild:
+  Version bump.
+
+  14 Sep 2007; Christian Faulhammer <opfer@gentoo.org> phat-0.4.0.ebuild:
+  stable x86, bug 159465
+
+  28 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> phat-0.2.3.ebuild,
+  phat-0.4.0.ebuild:
+  Add missing pkgconfig dependency, thanks to Patrick Lauer in bug #153063.
+
+*phat-0.4.0 (06 Aug 2006)
+
+  06 Aug 2006; MATSUU Takuto <matsuu@gentoo.org> +phat-0.4.0.ebuild:
+  Version bumped, bug 137011.
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> phat-0.2.3.ebuild:
+  Stable on ppc.
+
+  12 Jun 2005; Sven Wegener <swegener@gentoo.org> phat-0.2.3.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  19 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove retired developer from metadata.xml.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org> phat-0.2.3.ebuild:
+  Stable amd64, sparc, x86.
+
+  21 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org> phat-0.2.3.ebuild:
+  Added to ~amd64 and ~sparc
+
+  16 Oct 2004; Michael Hanselmann <hansmi@gentoo.org> phat-0.2.3.ebuild:
+  Added to ~ppc.
+
+*phat-0.2.3 (16 Oct 2004)
+
+  16 Oct 2004; Chris White <chriswhite@gentoo.org> +metadata.xml,
+  +phat-0.2.3.ebuild:
+  Intial import to the tree.  Thanks to mikael soderholm 
+  <gnarlie@ihku.org> for the intial ebuild.  This closes bug #66879.

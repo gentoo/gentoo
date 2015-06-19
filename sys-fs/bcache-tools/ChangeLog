@@ -1,0 +1,42 @@
+# ChangeLog for sys-fs/bcache-tools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/bcache-tools/ChangeLog,v 1.8 2015/04/07 14:47:06 jlec Exp $
+
+  17 Feb 2015; Justin Lecher <jlec@gentoo.org>
+  bcache-tools-0_pre20130627-r1.ebuild, bcache-tools-1.0.4.ebuild,
+  bcache-tools-1.0.5.ebuild, bcache-tools-9999.ebuild:
+  Fix typo, szarpaj for the patch https://github.com/gentoo/gentoo-portage-
+  rsync-mirror/pull/19
+
+*bcache-tools-1.0.5 (20 Jan 2014)
+
+  20 Jan 2014; Justin Lecher <jlec@gentoo.org> +bcache-tools-1.0.5.ebuild:
+  Version Bump
+
+*bcache-tools-1.0.4 (22 Nov 2013)
+
+  22 Nov 2013; Justin Lecher <jlec@gentoo.org> +bcache-tools-1.0.4.ebuild,
+  bcache-tools-9999.ebuild:
+  Version Bump, #492292
+
+  28 Oct 2013; Justin Lecher <jlec@gentoo.org>
+  bcache-tools-0_pre20130627-r1.ebuild, bcache-tools-9999.ebuild:
+  Always reload running udev
+
+  25 Oct 2013; Justin Lecher <jlec@gentoo.org>
+  bcache-tools-0_pre20130627-r1.ebuild, bcache-tools-9999.ebuild:
+  Fix for current HEAD
+
+*bcache-tools-0_pre20130627-r1 (10 Jul 2013)
+
+  10 Jul 2013; Justin Lecher <jlec@gentoo.org>
+  -bcache-tools-0_pre20130627.ebuild, +bcache-tools-0_pre20130627-r1.ebuild,
+  bcache-tools-9999.ebuild:
+  Follow upstreams install paths, #475892
+
+*bcache-tools-9999 (04 Jul 2013)
+*bcache-tools-0_pre20130627 (04 Jul 2013)
+
+  04 Jul 2013; Justin Lecher <jlec@gentoo.org>
+  +bcache-tools-0_pre20130627.ebuild, +bcache-tools-9999.ebuild, +metadata.xml:
+  New addition written by me

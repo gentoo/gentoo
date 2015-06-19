@@ -1,0 +1,12 @@
+# ChangeLog for sys-apps/msr-tools
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/msr-tools/ChangeLog,v 1.2 2013/08/24 16:00:56 maekke Exp $
+
+  24 Aug 2013; Markus Meier <maekke@gentoo.org> msr-tools-1.2.ebuild:
+  add ~x86, bug #481958
+
+*msr-tools-1.2 (11 Dec 2012)
+
+  11 Dec 2012; Michael Palimaka <kensington@gentoo.org> +metadata.xml,
+  +msr-tools-1.2.ebuild:
+  New package wrt bug #401061, based on work by haarp <liquitsnake@gmx.net>.

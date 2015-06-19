@@ -1,0 +1,171 @@
+# ChangeLog for games-mud/gnome-mud
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-mud/gnome-mud/ChangeLog,v 1.33 2015/02/14 02:45:03 mr_bones_ Exp $
+
+  14 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> gnome-mud-0.11.2.ebuild:
+  use app-text/rarian instead of app-text/scrollkeeper
+
+  02 Dec 2014; Michael Sterrett <mr_bones_@gentoo.org> gnome-mud-0.11.2.ebuild:
+  restore previous style
+
+  02 Dec 2014; Pacho Ramos <pacho@gentoo.org> gnome-mud-0.11.2.ebuild:
+  Update homepage, drop some unneeded stuff, bump eapi, stable on amd64
+
+  07 Nov 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gnome-mud-0.11.2.ebuild:
+  Slot gstreamer dependencies in preparation for gstreamer-1.0.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> gnome-mud-0.11.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  10 Jun 2011; Michael Sterrett <mr_bones_@gentoo.org> gnome-mud-0.11.2.ebuild:
+  Add gconf dep (bug #371041)
+
+  23 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> gnome-mud-0.11.2.ebuild:
+  Use SLOT dependencies for x11-libs/vte.
+
+  21 Nov 2009; Markus Meier <maekke@gentoo.org> gnome-mud-0.11.2.ebuild:
+  x86 stable, bug #288920
+
+  27 Jun 2009; Alexis Ballier <aballier@gentoo.org> gnome-mud-0.11.2.ebuild:
+  keyword ~x86-fbsd thanks to Davide Italiano <dav_it@gentoo.org>, bug
+  #233617
+
+*gnome-mud-0.11.2 (28 Feb 2009)
+
+  28 Feb 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +gnome-mud-0.11.2.ebuild:
+  version bump
+
+*gnome-mud-0.11.1 (17 Feb 2009)
+
+  17 Feb 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +gnome-mud-0.11.1.ebuild:
+  version bump
+
+*gnome-mud-0.11 (26 Jul 2008)
+
+  26 Jul 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +gnome-mud-0.11.ebuild:
+  version bump
+
+  22 Mar 2008; Rémi Cardona <remi@gentoo.org> gnome-mud-0.10.7.ebuild:
+  update ebuild to new gnome2 eclass (see bug #155993)
+
+  10 Oct 2006; Tristan Heaven <nyhm@gentoo.org> gnome-mud-0.10.7.ebuild:
+  Fix gettext dependency
+
+  20 Aug 2005; Luis Medinas <metalgod@gentoo.org> gnome-mud-0.10.7.ebuild:
+  Added ~amd64 keywords.
+
+  06 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  -gnome-mud-0.10.5.ebuild, -gnome-mud-0.10.6.ebuild:
+  clean old
+
+*gnome-mud-0.10.7 (17 May 2005)
+
+  17 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +gnome-mud-0.10.7.ebuild:
+  bugfix version bump
+
+*gnome-mud-0.10.6 (12 May 2005)
+
+  12 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +gnome-mud-0.10.6.ebuild:
+  version bump
+
+  23 Jan 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  gnome-mud-0.10.5.ebuild:
+  HOMEPAGE fix (bug #75571)
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> gnome-mud-0.10.5.ebuild:
+  Added ~ppc.
+
+*gnome-mud-0.10.5 (12 Feb 2004)
+
+  12 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  gnome-mud-0.10.5.ebuild:
+  version bump
+
+  02 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  gnome-mud-0.10.4a.ebuild:
+  add dev-perl/XML-Parser to RDEPEND
+
+*gnome-mud-0.10.4a (02 Jan 2004)
+
+  02 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  gnome-mud-0.10.4a.ebuild:
+  version bump
+
+  09 Dec 2003; Michael Sterrett <mr_bones_@gentoo.org>
+  gnome-mud-0.10.3.ebuild:
+  use gnome2_pkg_postinst instead of individual functions
+
+  09 Dec 2003; Michael Sterrett <mr_bones_@gentoo.org>
+  gnome-mud-0.10.3.ebuild:
+  use keepdir instead of dodir for /usr/share/gnome-mud; call
+  gnome2_gconf_install in pkg_postinst to register gconf stuff
+
+  18 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org>
+  gnome-mud-0.10.1.ebuild, gnome-mud-0.10.2.ebuild:
+  clean old non-working versions of the ebuild
+
+  12 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org>
+  gnome-mud-0.10.3.ebuild:
+  update HOMEPAGE and SRC_URI since gnome-mud has moved. (bug 33314)
+
+*gnome-mud-0.10.3 (11 Nov 2003)
+
+  11 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org>
+  gnome-mud-0.10.3.ebuild:
+  version bump
+
+*gnome-mud-0.10.2-r1 (28 Sep 2003)
+
+  28 Sep 2003; Michael Sterrett <mr_bones_@gentoo.org>
+  gnome-mud-0.10.2-r1.ebuild:
+  re-written ebuild from foser which was then mangled by me.  Any issues are
+  my fault.  Changes from previous...use gnome2 eclass, optional python support,
+  optional zlib support; tidy (in response to bug 25930)
+
+*gnome-mud-0.10.2 (20 Aug 2003)
+
+  20 Aug 2003; Michael Sterrett <msterret@gentoo.org> gnome-mud-0.10.2.ebuild:
+  version bump (bug 26982)
+
+*gnome-mud-0.10.1 (27 Jun 2003)
+
+  27 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Updated DEPEND and nls usage.  Also version bumped.
+
+*gnome-mud-0.9.1 (04 Jul 2002)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> gnome-mud-0.9.1.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  04 Jul 2002; Gabriele Giorgetti <stroke@gentoo.org> gnome-mud-0.9.1.ebuild:
+  new version and dependencies update.
+
+*gnome-mud-0.8-r1 (7 May 2002)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> gnome-mud-0.8-r1.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> gnome-mud-0.8.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  7 May 2002; Spider <spider@gentoo.org> gnome-mud-0.8-r1.ebuild gnome-mud-0.8.ebuild :
+  fix sourceforge mirroring.
+      
+*gnome-mud-0.8-r1 (10 Mar 2002)
+
+  10 Mar 2002; Bruce A. Locke <blocke@shivan.org> gnome-mud-0.8-r1.ebuild :
+  NLS fixes submitted by seemant@rocketmail.com (Seemant Kulleen)
+
+*gnome-mud-0.8 (19 Feb 2002)
+
+  19 Feb 2002; Aron Griffis <agriffis@gentoo.org> gnome-mud-0.8.ebuild :
+  Added ebuild for gnome-mud

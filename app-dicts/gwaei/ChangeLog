@@ -1,0 +1,173 @@
+# ChangeLog for app-dicts/gwaei
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/gwaei/ChangeLog,v 1.33 2015/06/09 09:38:12 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  05 Jul 2014; Naohiro Aota <naota@gentoo.org> gwaei-3.6.2.ebuild, metadata.xml:
+  Drop automagick dependency. #514284
+
+  15 May 2014; Naohiro Aota <naota@gentoo.org> -gwaei-1.0.ebuild,
+  -gwaei-1.1.ebuild:
+  Drop old version #510318
+
+  14 May 2014; Tom Wijsman <TomWij@gentoo.org> gwaei-1.0.ebuild,
+  gwaei-1.1.ebuild:
+  [QA] EAPI 1 -> 5. Filed bug #510318.
+
+*gwaei-3.6.2 (05 Jun 2013)
+
+  05 Jun 2013; Naohiro Aota <naota@gentoo.org> +gwaei-3.6.2.ebuild,
+  metadata.xml:
+  version bump wrt #472146
+
+*gwaei-3.2.0 (08 Jul 2012)
+
+  08 Jul 2012; Naohiro Aota <naota@gentoo.org> +gwaei-3.2.0.ebuild:
+  Bump to 3.2.0
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> gwaei-3.0.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> gwaei-1.0.ebuild,
+  gwaei-1.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  19 Mar 2012; Naohiro Aota <naota@gentoo.org> gwaei-3.0.2.ebuild:
+  Add missing dependency: dev-util/intltool and app-text/rarian. #399343
+
+  08 Mar 2012; Alexandre Rostovtsev <tetromino@gentoo.org> gwaei-3.0.2.ebuild:
+  Non-maintainer commit: do not use gnome2_schemas_update --uninstall (bug
+  #394731).
+
+*gwaei-3.0.2 (30 Aug 2011)
+
+  30 Aug 2011; Diego E. Pettenò <flameeyes@gentoo.org> +gwaei-3.0.2.ebuild,
+  +files/gwaei-3.0.2-no-ncurses.patch, metadata.xml:
+  Version bump to 3.0.2 (uses Gtk+ 3); add ncurses USE flag; remove static
+  libraries and .la files. Closes bug #349270.
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> gwaei-1.0.ebuild,
+  gwaei-1.1.ebuild:
+  Fix slot-dep on gtk+
+
+*gwaei-1.1 (11 Nov 2009)
+
+  11 Nov 2009; MATSUU Takuto <matsuu@gentoo.org> +gwaei-1.1.ebuild:
+  Version bumped.
+
+*gwaei-1.0 (14 Jun 2009)
+
+  14 Jun 2009; MATSUU Takuto <matsuu@gentoo.org> -gwaei-1.0_beta2.ebuild,
+  -gwaei-1.0_beta3.ebuild, +gwaei-1.0.ebuild,
+  -files/gwaei-1.0_beta2-gentoo.patch:
+  Version bumped. Removed old versions.
+
+  27 May 2009; MATSUU Takuto <matsuu@gentoo.org> gwaei-1.0_beta3.ebuild:
+  Fixed dependency.
+
+  26 May 2009; MATSUU Takuto <matsuu@gentoo.org> gwaei-1.0_beta3.ebuild:
+  Added app-text/gnome-doc-utils to DEPEND.
+
+*gwaei-1.0_beta3 (23 May 2009)
+
+  23 May 2009; MATSUU Takuto <matsuu@gentoo.org> +gwaei-1.0_beta3.ebuild:
+  Version bumped. Added gtk USE flag.
+
+*gwaei-1.0_beta2 (03 May 2009)
+
+  03 May 2009; MATSUU Takuto <matsuu@gentoo.org> +gwaei-1.0_beta2.ebuild,
+  +files/gwaei-1.0_beta2-gentoo.patch:
+  Version bumped.
+
+*gwaei-0.15.4 (30 Mar 2009)
+
+  30 Mar 2009; MATSUU Takuto <matsuu@gentoo.org>
+  -files/gwaei-0.15.1-parallel-install.patch, -gwaei-0.15.1-r2.ebuild,
+  -gwaei-0.15.2.ebuild, +gwaei-0.15.4.ebuild:
+  Version bumped. Removed old versions.
+
+*gwaei-0.15.3 (15 Mar 2009)
+
+  15 Mar 2009; MATSUU Takuto <matsuu@gentoo.org> +gwaei-0.15.3.ebuild:
+  Version bumped.
+
+  13 Mar 2009; MATSUU Takuto <matsuu@gentoo.org>
+  -files/gwaei-0.15.1-glib.patch, -gwaei-0.14.0-r1.ebuild,
+  -gwaei-0.15.1.ebuild, -gwaei-0.15.1-r1.ebuild, +gwaei-0.15.2.ebuild:
+  Version bumped. Removed old versions.
+
+*gwaei-0.15.2 (13 Mar 2009)
+
+  13 Mar 2009; MATSUU Takuto <matsuu@gentoo.org>
+  -files/gwaei-0.15.1-glib.patch, -gwaei-0.14.0-r1.ebuild,
+  -gwaei-0.15.1.ebuild, -gwaei-0.15.1-r1.ebuild, +gwaei-0.15.2.ebuild:
+  Version bumped. Removed old versions.
+
+*gwaei-0.15.1-r2 (03 Mar 2009)
+
+  03 Mar 2009; MATSUU Takuto <matsuu@gentoo.org> +gwaei-0.15.1-r2.ebuild:
+  Removed --disable-gconf.
+
+*gwaei-0.15.1-r1 (02 Mar 2009)
+
+  02 Mar 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +files/gwaei-0.15.1-glib.patch, +gwaei-0.15.1-r1.ebuild:
+  Fixed to compile without gnome USE flag.
+
+*gwaei-0.15.1 (02 Mar 2009)
+
+  02 Mar 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +files/gwaei-0.15.1-parallel-install.patch, -gwaei-0.13.2.ebuild,
+  -gwaei-0.14.0.ebuild, +gwaei-0.15.1.ebuild:
+  Version bumped. Added gnome USE flag. Removed old versions.
+
+*gwaei-0.14.0-r1 (13 Feb 2009)
+
+  13 Feb 2009; MATSUU Takuto <matsuu@gentoo.org> metadata.xml,
+  +gwaei-0.14.0-r1.ebuild:
+  Added gwaei local USE flag.
+
+*gwaei-0.14.0 (27 Jan 2009)
+
+  27 Jan 2009; MATSUU Takuto <matsuu@gentoo.org> -gwaei-0.13.0.ebuild,
+  -gwaei-0.13.1.ebuild, +gwaei-0.14.0.ebuild:
+  Version bumped. Removed old versions.
+
+*gwaei-0.13.2 (19 Jan 2009)
+
+  19 Jan 2009; MATSUU Takuto <matsuu@gentoo.org> +gwaei-0.13.2.ebuild:
+  Version bumped.
+
+*gwaei-0.13.1 (17 Jan 2009)
+
+  17 Jan 2009; MATSUU Takuto <matsuu@gentoo.org> -gwaei-0.12.0-r1.ebuild,
+  +gwaei-0.13.1.ebuild:
+  Version bumped. Removed old version.
+
+*gwaei-0.13.0 (13 Jan 2009)
+
+  13 Jan 2009; MATSUU Takuto <matsuu@gentoo.org> -gwaei-0.12.0.ebuild,
+  +gwaei-0.13.0.ebuild:
+  Version bumped. Removed old versions.
+
+*gwaei-0.12.0-r1 (12 Jan 2009)
+
+  12 Jan 2009; MATSUU Takuto <matsuu@gentoo.org> -gwaei-0.11.0.ebuild,
+  +gwaei-0.12.0-r1.ebuild:
+  Added --disable-schemas-install, bug #254481.
+
+*gwaei-0.12.0 (10 Jan 2009)
+
+  10 Jan 2009; MATSUU Takuto <matsuu@gentoo.org> +gwaei-0.12.0.ebuild:
+  Version bumped.
+
+  09 Jan 2009; MATSUU Takuto <matsuu@gentoo.org> gwaei-0.11.0.ebuild:
+  Fixed dependency.
+
+*gwaei-0.11.0 (09 Jan 2009)
+
+  09 Jan 2009; MATSUU Takuto <matsuu@gentoo.org> +metadata.xml,
+  +gwaei-0.11.0.ebuild:
+  Initial import.

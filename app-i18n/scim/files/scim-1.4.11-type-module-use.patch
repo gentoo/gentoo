@@ -1,0 +1,10 @@
+--- a/extras/gtk2_immodule/gtkimcontextscim.cpp	2011-11-09 17:08:21.000000000 -0800
++++ b/extras/gtk2_immodule/gtkimcontextscim.cpp	2011-11-09 17:07:51.000000000 -0800
+@@ -447,6 +447,7 @@
+                                      "GtkIMContextSCIM",
+                                      &im_context_scim_info,
+                                      (GTypeFlags) 0);
++	    g_type_module_use (type_module);
+     }
+ }
+ 

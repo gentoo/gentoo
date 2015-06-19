@@ -1,0 +1,37 @@
+# ChangeLog for dev-haskell/findbin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/findbin/ChangeLog,v 1.10 2015/06/06 11:06:41 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> findbin-0.0.5-r1.ebuild:
+  Stable for alpha, wrt bug #485656
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> findbin-0.0.5-r1.ebuild:
+  Stable for ia64, wrt bug #485656
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> findbin-0.0.5-r1.ebuild:
+  Stable for ppc, wrt bug #485656
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> findbin-0.0.5-r1.ebuild:
+  Stable for ppc64, wrt bug #485656
+
+  30 Sep 2013; Agostino Sarubbo <ago@gentoo.org> findbin-0.0.5-r1.ebuild:
+  Stable for x86, wrt bug #485656
+
+  23 Sep 2013; Agostino Sarubbo <ago@gentoo.org> findbin-0.0.5-r1.ebuild:
+  Stable for sparc, wrt bug #485656
+
+  22 Sep 2013; Agostino Sarubbo <ago@gentoo.org> findbin-0.0.5-r1.ebuild:
+  Stable for amd64, wrt bug #485656
+
+*findbin-0.0.5-r1 (09 Feb 2013)
+
+  09 Feb 2013; Sergei Trofimovich <slyfox@gentoo.org> +findbin-0.0.5-r1.ebuild,
+  +metadata.xml:
+  A haskell library to 'Locate directory of original program'. A darcs-2.8.4+
+  depend.

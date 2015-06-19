@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/http-replicator/files/http-replicator-4.0_alpha2-r3.init,v 1.1 2013/06/10 14:01:47 tomwij Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting HTTP Replicator"
+	start-stop-daemon --start --pidfile /var/run/http-replicator.pid \
+		--name http-replicator --exec /usr/bin/http-replicator -- --static \
+		--flat --daemon $LOG_FILE $DAEMON_OPTS --pid /var/run/http-replicator.pid
+	eend $? "Failed to start HTTP Replicator"
+}
+
+stop() {
+	ebegin "Stopping HTTP Replicator"
+	start-stop-daemon --stop --pidfile /var/run/http-replicator.pid --name http-replicator --signal 2
+	eend $? "Failed to stop HTTP Replicator"
+}

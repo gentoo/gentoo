@@ -1,0 +1,31 @@
+# ChangeLog for virtual/texi2dvi
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/texi2dvi/ChangeLog,v 1.8 2014/03/31 20:34:06 ulm Exp $
+
+  31 Mar 2014; Ulrich Müller <ulm@gentoo.org> texi2dvi-0.ebuild:
+  Update to EAPI 5. Remove empty variable assignments.
+
+  25 Jun 2013; Alexis Ballier <aballier@gentoo.org> texi2dvi-0.ebuild:
+  texlive-texinfo is merged into texlive-plainextra starting from texlive 2013
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> texi2dvi-0.ebuild:
+  keyword ~amd64-fbsd
+
+  05 Oct 2011; Alexis Ballier <aballier@gentoo.org> texi2dvi-0.ebuild:
+  remove ptex dep, its going away
+
+  28 Aug 2011; Fabian Groffen <grobian@gentoo.org> texi2dvi-0.ebuild:
+  Marked ~x64-macos
+
+  15 Dec 2009; Jonathan Callen <abcd@gentoo.org> texi2dvi-0.ebuild:
+  QA: Add prefix keywords
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org> texi2dvi-0.ebuild:
+  remove app-text/tetex as a provider
+
+*texi2dvi-0 (07 Jul 2008)
+
+  07 Jul 2008; Ulrich Mueller <ulm@gentoo.org> +metadata.xml,
+  +texi2dvi-0.ebuild:
+  Initial import, bug 230473.
+

@@ -1,0 +1,47 @@
+# ChangeLog for dev-perl/Module-Util
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Module-Util/ChangeLog,v 1.10 2015/06/13 22:27:53 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Module-Util-1.90.0.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+  05 Sep 2014; Mikle Kolyada <zlogene@gentoo.org> -Module-Util-1.80.0.ebuild:
+  Drop old.
+
+*Module-Util-1.90.0 (16 Jan 2013)
+
+  16 Jan 2013; Torsten Veller <tove@gentoo.org> +Module-Util-1.90.0.ebuild:
+  Version bump
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org> -Module-Util-1.70.0.ebuild:
+  Cleanup
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Module-Util-1.80.0 (31 May 2012)
+
+  31 May 2012; Torsten Veller <tove@gentoo.org> +Module-Util-1.80.0.ebuild:
+  Version bump
+
+  01 Mar 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Add missing cpan remote-id tags in metadata.xml (#406287)
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Module-Util-1.70.ebuild:
+  Cleanup
+
+*Module-Util-1.70.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org> +Module-Util-1.70.0.ebuild:
+  Change version scheme
+
+  15 Jan 2011; Torsten Veller <tove@gentoo.org> +Module-Util-1.70.ebuild,
+  +metadata.xml:
+  Import from perl-experimental for DateTime-Format-Natural
+
+*Module-Util-1.70 (05 May 2009)
+
+  05 May 2009; Torsten Veller <tove@gentoo.org> +Module-Util-1.70.ebuild,
+  +metadata.xml:
+  Initial commit

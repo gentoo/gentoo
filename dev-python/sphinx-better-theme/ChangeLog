@@ -1,0 +1,66 @@
+# ChangeLog for dev-python/sphinx-better-theme
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sphinx-better-theme/ChangeLog,v 1.16 2015/06/07 16:10:02 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org>
+  sphinx-better-theme-0.1.5.ebuild:
+  Drop old Python implementations
+
+  25 Nov 2014; Pacho Ramos <pacho@gentoo.org> sphinx-better-theme-0.1.5.ebuild:
+  Support python 3.4
+
+  14 May 2014; Agostino Sarubbo <ago@gentoo.org>
+  sphinx-better-theme-0.1.5.ebuild:
+  Stable for sparc, wrt bug #507982
+
+  13 May 2014; Agostino Sarubbo <ago@gentoo.org>
+  sphinx-better-theme-0.1.5.ebuild:
+  Stable for ia64, wrt bug #507982
+
+  12 May 2014; Ian Delaney <idella4@gentoo.org>
+  sphinx-better-theme-0.1.5.ebuild:
+  add pypy support
+
+  11 May 2014; Agostino Sarubbo <ago@gentoo.org>
+  sphinx-better-theme-0.1.5.ebuild:
+  Stable for ppc64, wrt bug #507982
+
+  10 May 2014; Agostino Sarubbo <ago@gentoo.org>
+  sphinx-better-theme-0.1.5.ebuild:
+  Stable for ppc, wrt bug #507982
+
+  22 Apr 2014; Agostino Sarubbo <ago@gentoo.org>
+  sphinx-better-theme-0.1.5.ebuild:
+  Stable for arm, wrt bug #507982
+
+  21 Apr 2014; Agostino Sarubbo <ago@gentoo.org>
+  sphinx-better-theme-0.1.5.ebuild:
+  Stable for alpha, wrt bug #507982
+
+  19 Apr 2014; Jeroen Roovers <jer@gentoo.org>
+  sphinx-better-theme-0.1.5.ebuild:
+  Stable for HPPA (bug #507982).
+
+  19 Apr 2014; Agostino Sarubbo <ago@gentoo.org>
+  sphinx-better-theme-0.1.5.ebuild:
+  Stable for x86, wrt bug #507982
+
+  19 Apr 2014; Agostino Sarubbo <ago@gentoo.org>
+  sphinx-better-theme-0.1.5.ebuild:
+  Stable for amd64, wrt bug #507982
+
+  12 Feb 2014; Ian Delaney <idella4@gentoo.org>
+  sphinx-better-theme-0.1.5.ebuild:
+  update license thanks to Arfrever for reporting
+
+*sphinx-better-theme-0.1.5 (25 Jan 2014)
+
+  25 Jan 2014; Mike Gilbert <floppym@gentoo.org> +metadata.xml,
+  +sphinx-better-theme-0.1.5.ebuild:
+  New package required by dev-python/pillow.

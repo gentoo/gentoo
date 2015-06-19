@@ -1,0 +1,66 @@
+# ChangeLog for sci-chemistry/wxmacmolplt
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/wxmacmolplt/ChangeLog,v 1.13 2015/04/07 14:39:56 jlec Exp $
+
+*wxmacmolplt-7.5 (06 Jan 2014)
+
+  06 Jan 2014; Justin Lecher <jlec@gentoo.org> +wxmacmolplt-7.5.ebuild,
+  +files/wxmacmolplt-7.5-glew.patch:
+  Version Bump, #439438; thanks Reinis Danne <rei4dan@gmail.com> for the ebuild
+
+  06 Jan 2014; Justin Lecher <jlec@gentoo.org> wxmacmolplt-7.4.2.ebuild,
+  metadata.xml:
+  Bump to EAPI=5; punt base.eclass
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> wxmacmolplt-7.4.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*wxmacmolplt-7.4.2 (06 Dec 2010)
+
+  06 Dec 2010; Alexey Shvetsov <alexxy@gentoo.org> -wxmacmolplt-7.4-r1.ebuild,
+  +wxmacmolplt-7.4.2.ebuild, +files/wxmacmolplt-7.4.2-glew.patch,
+  -files/wxmacmolplt-7.4-flash.patch, -files/wxmacmolplt-7.4-glew.patch:
+  Version bump
+
+  25 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  wxmacmolplt-7.4-r1.ebuild:
+  Correct dependency on media-libs/ming
+
+*wxmacmolplt-7.4-r1 (25 Jun 2010)
+
+  25 Jun 2010; Justin Lecher <jlec@gentoo.org> -wxmacmolplt-7.3.ebuild,
+  -wxmacmolplt-7.3-r1.ebuild, -wxmacmolplt-7.4.ebuild,
+  +wxmacmolplt-7.4-r1.ebuild, +files/wxmacmolplt-7.4-flash.patch,
+  +files/wxmacmolplt-7.4-glew.patch:
+  Removed old, fixes for gl handling and flash support
+
+  25 Jun 2010; Justin Lecher <jlec@gentoo.org> wxmacmolplt-7.4.ebuild:
+  Restrict ming to <0.4
+
+  09 Mar 2010; Jonathan Callen <abcd@gentoo.org> wxmacmolplt-7.3.ebuild,
+  wxmacmolplt-7.3-r1.ebuild, wxmacmolplt-7.4.ebuild:
+  QA: When not using an absolute path, you MUST NOT use a file extension
+  (.png, .svg, or .xpm) on the icon name for make_desktop_entry
+
+  18 Feb 2010; Ryan Hill <dirtyepic@gentoo.org> wxmacmolplt-7.3.ebuild,
+  wxmacmolplt-7.3-r1.ebuild, wxmacmolplt-7.4.ebuild:
+  Use wxwidgets.eclass
+
+*wxmacmolplt-7.4 (24 Jan 2010)
+
+  24 Jan 2010; Alexey Shvetsov <alexxy@gentoo.org> +wxmacmolplt-7.4.ebuild:
+  Version bump per bug #292977
+
+*wxmacmolplt-7.3-r1 (22 Jan 2010)
+
+  22 Jan 2010; Markus Dittrich <markusle@gentoo.org>
+  +wxmacmolplt-7.3-r1.ebuild:
+  New revision does not install docs any more since they only consisted
+  of the license file. This fixes also bug #300977.
+
+*wxmacmolplt-7.3 (01 Nov 2009)
+
+  01 Nov 2009; Alexey Shvetsov <alexxy@gentoo.org> +wxmacmolplt-7.3.ebuild,
+  +metadata.xml:
+  Initial import. Thanks to Reinis Danne
+

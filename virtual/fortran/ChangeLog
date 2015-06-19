@@ -1,0 +1,38 @@
+# ChangeLog for virtual/fortran
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/fortran/ChangeLog,v 1.10 2014/01/17 05:47:46 vapier Exp $
+
+  17 Jan 2014; Mike Frysinger <vapier@gentoo.org> fortran-0.ebuild:
+  Mark m68k stable.
+
+  12 Dec 2012; Justin Lecher <jlec@gentoo.org> fortran-0.ebuild, metadata.xml:
+  Shorten dependency declaration suggested by Arfrever
+
+  12 May 2012; Alexis Ballier <aballier@gentoo.org> fortran-0.ebuild:
+  keyword ~amd64-fbsd
+
+  17 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org> fortran-0.ebuild:
+  List dev-lang/ifc as a last compiler in order to prevent people randomly
+  hitting bug #332657
+
+  24 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> fortran-0.ebuild:
+  Fix ekopath PN, add path64
+
+  17 Aug 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  fortran-0.ebuild:
+  keyword ~sparc-solaris
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> fortran-0.ebuild:
+  Added openmp support
+
+  28 May 2011; Justin Lecher <jlec@gentoo.org> fortran-0.ebuild:
+  Compiler is needed at build and runtime
+
+  15 Apr 2011; Fabian Groffen <grobian@gentoo.org> fortran-0.ebuild:
+  Allow gcc-apple[fortran] to satisfy this virtual as well
+
+*fortran-0 (15 Apr 2011)
+
+  15 Apr 2011; Justin Lecher <jlec@gentoo.org> +fortran-0.ebuild,
+  +metadata.xml:
+  Added a virtual on fortran compilers

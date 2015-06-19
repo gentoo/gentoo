@@ -1,0 +1,35 @@
+# ChangeLog for games-puzzle/torrent
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/torrent/ChangeLog,v 1.9 2015/02/25 21:54:45 tupone Exp $
+
+  25 Feb 2015; Tupone Alfredo <tupone@gentoo.org> torrent-0.8.2.ebuild:
+  EAPI 5
+
+  10 Aug 2009; Michael Sterrett <mr_bones_@gentoo.org> torrent-0.8.2.ebuild:
+  EAPI=2; build with gcc43
+
+  15 Aug 2006; Thomas Cort <tcort@gentoo.org> torrent-0.8.2.ebuild:
+  Stable on amd64 wrt Bug #143961
+
+  23 Nov 2004; Joseph Jezak <josejx@gentoo.org> torrent-0.8.2.ebuild:
+  Marked ppc stable.
+
+*torrent-0.8.2 (05 May 2004)
+
+  05 May 2004; Michael Sterrett <mr_bones_@gentoo.org> torrent-0.8.2.ebuild:
+  version bump
+
+  30 Apr 2004; David Holm <dholm@gentoo.org> torrent-0.8.1.ebuild:
+  Added to ~ppc.
+
+*torrent-0.8.1 (29 Apr 2004)
+
+  29 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> torrent-0.8.1.ebuild:
+  version bump
+
+*torrent-0.8 (05 Mar 2004)
+
+  05 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> metadata.xml,
+  torrent-0.8.ebuild:
+  initial commit
+

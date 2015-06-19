@@ -1,0 +1,11 @@
+# ChangeLog for dev-perl/tkispell
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/tkispell/ChangeLog,v 1.1 2014/10/11 08:48:22 dilfridge Exp $
+
+*tkispell-0.180.0 (11 Oct 2014)
+
+  11 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +tkispell-0.180.0.ebuild, +files/tkispell-0.180.0-aspell.patch,
+  +metadata.xml:
+  New package for bug 323619
+

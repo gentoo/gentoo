@@ -1,0 +1,394 @@
+# ChangeLog for media-libs/libgpod
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libgpod/ChangeLog,v 1.105 2014/07/27 13:10:14 ssuominen Exp $
+
+  27 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> -libgpod-0.8.2.ebuild:
+  old
+
+  07 Apr 2014; Samuli Suominen <ssuominen@gentoo.org> libgpod-0.8.3.ebuild:
+  Move PYTHON_REQUIRED_USE behind USE python.
+
+  07 Apr 2014; Samuli Suominen <ssuominen@gentoo.org> libgpod-0.8.3.ebuild:
+  Use PYTHON_REQUIRED_USE.
+
+  01 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> libgpod-0.8.3.ebuild:
+  x86 stable wrt bug #500240
+
+  30 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> libgpod-0.8.3.ebuild:
+  amd64 stable wrt bug #500240
+
+  04 Feb 2014; Samuli Suominen <ssuominen@gentoo.org> libgpod-0.8.3.ebuild:
+  Use mono-env.eclass instead of mono.eclass as per repoman.
+
+*libgpod-0.8.3 (04 Feb 2014)
+
+  04 Feb 2014; Samuli Suominen <ssuominen@gentoo.org> +libgpod-0.8.3.ebuild:
+  Version bump wrt #498284 by "Nikoli"
+
+  11 May 2013; Samuli Suominen <ssuominen@gentoo.org> libgpod-0.8.2.ebuild:
+  Use subslot operator for the libplist and libimobiledevice dependencies.
+
+  03 Feb 2013; Samuli Suominen <ssuominen@gentoo.org> libgpod-0.8.2.ebuild:
+  Pull in sys-devel/gettext too which was implicit from dev-util/intltool
+  before wrt #372153
+
+  03 Feb 2013; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Maintained in the pda@ herd.
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> -libgpod-0.8.0.ebuild,
+  metadata.xml:
+  Cleanup due #453094
+
+  11 Dec 2012; Ian Stakenvicius <axs@gentoo.org> libgpod-0.8.0.ebuild,
+  libgpod-0.8.2.ebuild:
+  virtualized the udev dependency
+
+  16 Aug 2012; Johannes Huber <johu@gentoo.org> libgpod-0.8.2.ebuild:
+  Stable for x86, wrt bug #423155
+
+  11 Aug 2012; Agostino Sarubbo <ago@gentoo.org> libgpod-0.8.2.ebuild:
+  Stable for amd64, wrt bug #423155
+
+  08 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> libgpod-0.8.2.ebuild:
+  Query udev.pc pkg-config file for udevdir value to be compatible with
+  sys-fs/udev >= 187.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> libgpod-0.8.0.ebuild,
+  libgpod-0.8.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*libgpod-0.8.2 (16 Mar 2012)
+
+  16 Mar 2012; Robin H. Johnson <robbat2@gentoo.org> +libgpod-0.8.2.ebuild:
+  Verbump.
+
+  14 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> libgpod-0.8.0.ebuild:
+  Remove now obsolete alternative <x11-libs/gtk+-2.22:2 depend for USE="gtk"
+
+  14 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> libgpod-0.8.0.ebuild:
+  Empty the py-compile script instead of symlinking it for compability with
+  automake-1.11.2.
+
+  24 Oct 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  libgpod-0.8.0.ebuild:
+  Depend on correct slot of pygobject.
+
+  29 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  "ios" is now global USE flag.
+
+  28 Mar 2011; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Make ios USE description understandable without using google
+
+  27 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> libgpod-0.8.0.ebuild,
+  metadata.xml:
+  Rename USE="iphone" to USE="ios" wrt #344763.
+
+  05 Nov 2010; Samuli Suominen <ssuominen@gentoo.org> libgpod-0.8.0.ebuild:
+  amd64 stable wrt #343697
+
+  04 Nov 2010; Christian Faulhammer <fauli@gentoo.org> libgpod-0.8.0.ebuild:
+  stable x86, bug 343697
+
+  31 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> libgpod-0.7.2.ebuild:
+  Remove hppa/ppc/ppc64 keywording wrt #313691.
+
+*libgpod-0.8.0 (31 Oct 2010)
+
+  31 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> +libgpod-0.8.0.ebuild:
+  Version bump.
+
+  30 Sep 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  -libgpod-0.7.93.ebuild:
+  Clean up older version
+
+*libgpod-0.7.95 (30 Sep 2010)
+
+  30 Sep 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  +libgpod-0.7.95.ebuild:
+  Bump to 0.7.95. Some features, bug fixes and Mono bindings updates.
+
+  07 Sep 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  libgpod-0.7.94.ebuild:
+  Inherit mono to avoid sandbox violations.
+
+*libgpod-0.7.94 (05 Sep 2010)
+
+  05 Sep 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  +libgpod-0.7.94.ebuild:
+  Bump to 0.7.94. Lots of fixes, and adds C# bindings (enabled with
+  USE=mono).
+
+  30 Aug 2010; Fabio Erculiani <lxnay@gentoo.org> libgpod-0.7.93.ebuild:
+  fix libimobiledevice dependency, it's also a RDEPEND
+
+  28 May 2010; Markus Meier <maekke@gentoo.org> libgpod-0.7.93.ebuild:
+  add ~x86, bug #313691
+
+  09 May 2010; Raúl Porcel <armin76@gentoo.org> libgpod-0.7.2.ebuild:
+  Drop ia64/sparc keyword
+
+  07 Apr 2010; Olivier Crête <tester@gentoo.org> libgpod-0.7.93.ebuild:
+  Remove useless dep on taglib
+
+*libgpod-0.7.93 (07 Apr 2010)
+
+  07 Apr 2010; Olivier Crête <tester@gentoo.org> +libgpod-0.7.93.ebuild,
+  metadata.xml:
+  Version bump, bug #311093
+
+  08 Dec 2009; Jeroen Roovers <jer@gentoo.org> libgpod-0.7.2.ebuild:
+  Stable for HPPA (bug #289703).
+
+  27 Sep 2009; Brent Baude <ranger@gentoo.org> libgpod-0.7.2.ebuild:
+  stable ppc64, bug 271496
+
+  01 Jul 2009; Jeroen Roovers <jer@gentoo.org> libgpod-0.7.2.ebuild:
+  Marked ~hppa (bug #274984).
+
+  02 Jun 2009; Raúl Porcel <armin76@gentoo.org> libgpod-0.7.2.ebuild:
+  sparc stable wrt #271496
+
+  01 Jun 2009; Markus Meier <maekke@gentoo.org> libgpod-0.7.2.ebuild:
+  x86 stable, bug #271496
+
+  31 May 2009; Brent Baude <ranger@gentoo.org> libgpod-0.7.0.ebuild:
+  stable ppc64, bug 271496
+
+  31 May 2009; nixnut <nixnut@gentoo.org> libgpod-0.7.2.ebuild:
+  ppc stable #271496
+
+  29 May 2009; Olivier Crête <tester@gentoo.org> libgpod-0.7.2.ebuild:
+  amd64 stable
+
+  29 May 2009; Olivier Crête <tester@gentoo.org> libgpod-0.7.2.ebuild:
+  amd64 stable
+
+  25 May 2009; Christian Faulhammer <fauli@gentoo.org> libgpod-0.7.0.ebuild:
+  stable x86, bug 271218
+
+  28 Apr 2009; Olivier Crête <tester@gentoo.org>
+  -files/libgpod-0.5.2-no-gdk.patch,
+  +files/libgpod-0.7.2-compile-without-hal.patch, -libgpod-0.5.2.ebuild,
+  libgpod-0.7.2.ebuild:
+  Re-make hal optional, bug #267759
+
+  26 Apr 2009; Olivier Crête <tester@gentoo.org> libgpod-0.7.2.ebuild:
+  Add undocumented build-time dep on xsltproc
+
+*libgpod-0.7.2 (26 Apr 2009)
+
+  26 Apr 2009; Olivier Crête <tester@gentoo.org> metadata.xml,
+  +libgpod-0.7.2.ebuild:
+  Version bump, always require hal (it does not build without it), recommend
+  GTK+ (for artwork support)
+
+  29 Mar 2009; Olivier Crête <tester@gentoo.org> libgpod-0.7.0.ebuild:
+  Always require pygobject if python bindings are required, really fixes bug
+  #261915
+
+  10 Mar 2009; Olivier Crête <tester@gentoo.org> libgpod-0.6.0.ebuild,
+  libgpod-0.7.0.ebuild:
+  Use python use flag for pygobject, bug #261915
+
+*libgpod-0.7.0 (19 Jan 2009)
+
+  19 Jan 2009; Olivier Crête <tester@gentoo.org> +libgpod-0.7.0.ebuild:
+  Version bump
+
+  30 Nov 2008; Friedrich Oslage <bluebird@gentoo.org> libgpod-0.6.0.ebuild:
+  Stable on sparc, bug #231573
+
+  01 Nov 2008; Olivier Crête <tester@gentoo.org> libgpod-0.6.0.ebuild:
+  Make hal optional, bug #204820
+
+  17 Aug 2008; Markus Meier <maekke@gentoo.org> libgpod-0.6.0.ebuild:
+  x86 stable, bug #231573
+
+  06 Aug 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  libgpod-0.6.0.ebuild:
+  stable amd64, bug 231573
+
+  13 Jul 2008; Joseph Jezak <josejx@gentoo.org> libgpod-0.6.0.ebuild:
+  Marked ppc/ppc64 stable.
+
+  24 Apr 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libgpod-0.6.0+gcc-4.3.patch, libgpod-0.6.0.ebuild:
+  Add patch to build with GCC 4.3. thanks to ape in bug #217017.
+
+  09 Apr 2008; Olivier Crête <tester@gentoo.org>
+  -files/libgpod-0.4.0-test-nogdk.patch, -libgpod-0.4.0.ebuild,
+  -libgpod-0.4.2.ebuild, libgpod-0.6.0.ebuild:
+  swig is a compile-time dep only, cleanup old versions
+
+  28 Jan 2008; <tester@gentoo.org> libgpod-0.4.0.ebuild,
+  libgpod-0.4.2.ebuild, libgpod-0.6.0.ebuild:
+  Don't specify compression in documentation filename (bug #207776), fix
+  unquoted vars
+
+  08 Jan 2008; Raúl Porcel <armin76@gentoo.org> libgpod-0.5.2.ebuild:
+  sparc stable
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing joem from metadata.xml as per #69387.
+
+  20 Nov 2007; Markus Rothe <corsair@gentoo.org> libgpod-0.6.0.ebuild:
+  Added ~ppc64; bug #199372
+
+  20 Nov 2007; Raúl Porcel <armin76@gentoo.org> libgpod-0.6.0.ebuild:
+  Re-add ~ia64 wrt #199372
+
+  16 Nov 2007; Michael Sterrett <mr_bones_@gentoo.org> libgpod-0.6.0.ebuild:
+  add missing test to IUSE
+
+*libgpod-0.6.0 (16 Nov 2007)
+
+  16 Nov 2007; Olivier Crête <tester@gentoo.org> +libgpod-0.6.0.ebuild:
+  Version bump
+
+  05 Nov 2007; Markus Meier <maekke@gentoo.org> libgpod-0.5.2.ebuild:
+  x86 stable, bug 197716 and add quotes
+
+  05 Nov 2007; Joseph Jezak <josejx@gentoo.org> libgpod-0.5.2.ebuild:
+  Marked ppc/ppc64 stable for bug #197716.
+
+  01 Nov 2007; Steve Dibb <beandog@gentoo.org> libgpod-0.5.2.ebuild:
+  amd64 stable, bug 197716
+
+  28 Jun 2007; <tester@gentoo.org> libgpod-0.5.2.ebuild:
+  Force gdk-pixbuf on if python bindings are built
+
+  28 Jun 2007; <tester@gentoo.org> +files/libgpod-0.5.2-no-gdk.patch,
+  libgpod-0.5.2.ebuild:
+  Add patch to make it build without GDK
+
+  28 Jun 2007; Raúl Porcel <armin76@gentoo.org> libgpod-0.5.2.ebuild:
+  Re-add ~ia64 wrt #183481
+
+*libgpod-0.5.2 (28 Jun 2007)
+
+  28 Jun 2007; Olivier Crête <tester@gentoo.org> +libgpod-0.5.2.ebuild:
+  Version bump
+
+  24 Feb 2007; Markus Rothe <corsair@gentoo.org> libgpod-0.4.2.ebuild:
+  Stable on ppc64; bug #166901
+
+  21 Feb 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  libgpod-0.4.2.ebuild:
+  Stable on ppc wrt bug #166901.
+
+  19 Feb 2007; <malc@gentoo.org> libgpod-0.4.2.ebuild:
+  Stable on amd64 wrt security bug #166901
+
+  15 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org> libgpod-0.4.2.ebuild:
+  Stable on sparc wrt security #166901
+
+  15 Feb 2007; Christian Faulhammer <opfer@gentoo.org> libgpod-0.4.2.ebuild:
+  stable x86; security bug 166901
+
+*libgpod-0.4.2 (18 Jan 2007)
+
+  18 Jan 2007; Olivier Crête <tester@gentoo.org> +libgpod-0.4.2.ebuild:
+  New version
+
+  15 Jan 2007; Olivier Crête <tester@gentoo.org> libgpod-0.4.0.ebuild:
+  The gtk-doc dep isn't optional
+
+  13 Jan 2007; Olivier Crête <tester@gentoo.org>
+  -files/libgpod-0.3.0-config-enables.diff, -libgpod-0.3.0.ebuild,
+  -libgpod-0.3.2-r1.ebuild, libgpod-0.4.0.ebuild:
+  Cleanup old versions, fix autotools eclass usage, add gtk-doc dep
+
+  01 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> libgpod-0.4.0.ebuild:
+  Stable on sparc wrt #155992
+
+  24 Nov 2006; Markus Rothe <corsair@gentoo.org> libgpod-0.4.0.ebuild:
+  Stable on ppc64; bug #155992
+
+  21 Nov 2006; Christian Faulhammer <opfer@gentoo.org> libgpod-0.4.0.ebuild:
+  stable x86, bug #154832
+
+  18 Nov 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libgpod-0.4.0.ebuild:
+  ppc stable, bug #154832
+
+  11 Nov 2006; Olivier Crête <tester@gentoo.org> -libgpod-0.3.2.ebuild,
+  libgpod-0.4.0.ebuild:
+  Stable on amd64
+
+  17 Oct 2006; Olivier Crête <tester@gentoo.org> libgpod-0.3.0.ebuild,
+  libgpod-0.3.2.ebuild, libgpod-0.3.2-r1.ebuild, libgpod-0.4.0.ebuild:
+  Add DEP on pkgconfig and automake
+
+  16 Oct 2006; Olivier Crête <tester@gentoo.org>
+  +files/libgpod-0.4.0-test-nogdk.patch, metadata.xml, libgpod-0.4.0.ebuild:
+  Fix compilation without gtk, bug #149018
+
+  15 Oct 2006; Aron Griffis <agriffis@gentoo.org> libgpod-0.4.0.ebuild:
+  Mark 0.4.0 ~ia64
+
+  24 Sep 2006; Markus Rothe <corsair@gentoo.org> libgpod-0.4.0.ebuild:
+  Added ~ppc64; bug #148977
+
+*libgpod-0.4.0 (24 Sep 2006)
+
+  24 Sep 2006; Olivier Crête <tester@gentoo.org> +libgpod-0.4.0.ebuild:
+  Version bump
+
+  08 Jul 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  libgpod-0.3.2-r1.ebuild:
+  stable on ppc (Bug #139095)
+
+  06 Jul 2006; Jason Wever <weeve@gentoo.org> libgpod-0.3.0.ebuild:
+  Stable on SPARC to make amarok happy.
+
+  01 Jun 2006; Olivier Crête <tester@gentoo.org> libgpod-0.3.2-r1.ebuild:
+  Fixed multilibness for python module, bug #135162
+
+  23 May 2006; Markus Rothe <corsair@gentoo.org> libgpod-0.3.2-r1.ebuild:
+  Stable on ppc64
+
+  17 Apr 2006; Markus Rothe <corsair@gentoo.org> libgpod-0.3.2-r1.ebuild:
+  Added ~ppc64; bug #129409
+
+*libgpod-0.3.2-r1 (08 Apr 2006)
+
+  08 Apr 2006; Olivier Crête <tester@gentoo.org> libgpod-0.3.2.ebuild,
+  +libgpod-0.3.2-r1.ebuild:
+  Stable on amd64 and new version which installs the python bindings
+
+*libgpod-0.3.2 (05 Mar 2006)
+
+  05 Mar 2006; Olivier Crête <tester@gentoo.org> -libgpod-0.2.0.ebuild,
+  +libgpod-0.3.2.ebuild:
+  Version bump
+
+  23 Jan 2006; Olivier Crête <tester@gentoo.org> libgpod-0.3.0.ebuild:
+  Stable on x86 and amd64
+
+  08 Jan 2006; Joseph Jezak <josejx@gentoo.org> libgpod-0.3.0.ebuild:
+  Marked ~ppc for bug #115265.
+
+  01 Jan 2006; Olivier Crête <tester@gentoo.org>
+  +files/libgpod-0.3.0-config-enables.diff, libgpod-0.3.0.ebuild:
+  Add patch to disable/enable hal/gdk-pixbuf forcefully instead of auto-detecting
+
+*libgpod-0.3.0 (12 Dec 2005)
+
+  12 Dec 2005; Joe McCann <joem@gentoo.org> libgpod-0.2.0.ebuild,
+  +libgpod-0.3.0.ebuild:
+  version bump
+
+  29 Nov 2005; Luis Medinas <metalgod@gentoo.org> libgpod-0.2.0.ebuild:
+  Added ~amd64 keyword.
+
+  29 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org> libgpod-0.2.0.ebuild:
+  Keyworded ~sparc wrt #113875
+
+  29 Nov 2005; Joe McCann <joem@gentoo.org> libgpod-0.2.0.ebuild:
+  Add sys-apps/eject app thanks to Spider
+
+*libgpod-0.2.0 (29 Nov 2005)
+
+  29 Nov 2005; Joe McCann <joem@gentoo.org> +metadata.xml,
+  +libgpod-0.2.0.ebuild:
+  New library that gives you access to contents of an ipod

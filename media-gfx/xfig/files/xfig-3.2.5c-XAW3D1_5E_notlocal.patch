@@ -1,0 +1,70 @@
+From be8cf541743060921f629d5bfe990d985ecf1813 Mon Sep 17 00:00:00 2001
+From: Vladislav Zavjalov <slazav@altlinux.org>
+Origin: http://git.altlinux.org/people/slazav/packages/?p=xfig.git;a=patch;h=be8cf541743060921f629d5bfe990d985ecf1813
+Date: Wed, 29 May 2013 02:18:13 +0400
+Subject: [PATCH] Don't use local SimpleMenu.c with XAW3D1_5E
+Bug-Debian: http://bugs.debian.org/296703
+
+---
+ xfig/SmeCascade.h  |    5 +++++
+ xfig/SmeCascadeP.h |    5 +++++
+ xfig/w_menuentry.h |    4 ++++
+ xfig/w_util.c      |    2 ++
+ 4 files changed, 16 insertions(+), 0 deletions(-)
+
+--- a/SmeCascade.h
++++ b/SmeCascade.h
+@@ -27,7 +27,12 @@
+ #else
+ #include <X11/Xaw/Sme.h>
+ #endif
++
++#ifdef XAW3D1_5E
++#include <X11/Xaw3d/SmeBSB.h>
++#else
+ #include "SmeBSB.h"
++#endif
+ 
+ /****************************************************************
+  *
+--- a/SmeCascadeP.h
++++ b/SmeCascadeP.h
+@@ -32,8 +32,12 @@
+ #include <X11/Xaw/SmeP.h>
+ #endif
+ 
++#ifdef XAW3D1_5E
++#include <X11/Xaw3d/SmeBSBP.h>
++#else
+ #include "SmeBSBP.h"
+ #include "SmeCascade.h"
++#endif
+ 
+ /************************************************************
+  *
+--- a/w_menuentry.h
++++ b/w_menuentry.h
+@@ -30,7 +30,11 @@
+ #include <X11/Xaw/Sme.h>
+ #endif
+ 
++#ifdef XAW3D1_5E
++#include <X11/Xaw3d/SmeBSB.h>
++#else
+ #include "SmeBSB.h"
++#endif
+ 
+ /****************************************************************
+  *
+--- a/w_util.c
++++ b/w_util.c
+@@ -351,7 +351,9 @@
+  * (use -1 if no line desired)
+  */
+ 
++#ifndef XAW3D1_5E
+ #include "SmeCascade.h"
++#endif /* XAW3D1_5E */
+ 
+ #include "d_text.h"
+ #include "e_placelib.h"

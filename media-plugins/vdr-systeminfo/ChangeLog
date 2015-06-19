@@ -1,0 +1,15 @@
+# ChangeLog for media-plugins/vdr-systeminfo
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-systeminfo/ChangeLog,v 1.2 2014/02/23 21:22:54 hd_brummy Exp $
+
+  23 Feb 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-systeminfo-0.1.1.ebuild:
+  eapi=5; converted to vdr-plugin-2.eclass
+
+*vdr-systeminfo-0.1.1 (17 Nov 2008)
+
+  17 Nov 2008; Joerg Bornkessel <hd_brummy@gentoo.org> +files/confd,
+  +files/rc-addon.sh, +files/systeminfo.sh, +metadata.xml,
+  +vdr-systeminfo-0.1.1.ebuild:
+  initial ebuild
+

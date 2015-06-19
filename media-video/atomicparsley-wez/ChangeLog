@@ -1,0 +1,10 @@
+# ChangeLog for media-video/atomicparsley-wez
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/atomicparsley-wez/ChangeLog,v 1.1 2014/03/11 19:07:43 ssuominen Exp $
+
+*atomicparsley-wez-0.9.6 (11 Mar 2014)
+
+  11 Mar 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +atomicparsley-wez-0.9.6.ebuild:
+  Initial commit wrt #504232 by Paolo Pedroni
+

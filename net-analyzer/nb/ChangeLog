@@ -1,0 +1,114 @@
+# ChangeLog for net-analyzer/nb
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nb/ChangeLog,v 1.24 2014/12/19 14:54:23 jer Exp $
+
+  19 Dec 2014; Jeroen Roovers <jer@gentoo.org> -nb-0.8.17.ebuild,
+  nb-0.9.03.ebuild:
+  Remove fdl.texi sed script and parallel make restriction, by Ed Trettevik.
+
+*nb-0.9.03 (17 Dec 2014)
+
+  17 Dec 2014; Jeroen Roovers <jer@gentoo.org> -nb-0.8.16.ebuild,
+  +nb-0.9.03.ebuild, metadata.xml:
+  Version bump.
+
+  15 Aug 2014; Jeroen Roovers <jer@gentoo.org> nb-0.8.17.ebuild,
+  nb-0.9.02.ebuild:
+  Update LICENSE (bug #519972).
+
+*nb-0.9.02 (15 Aug 2014)
+*nb-0.8.17 (15 Aug 2014)
+
+  15 Aug 2014; Jeroen Roovers <jer@gentoo.org> +nb-0.8.17.ebuild,
+  +nb-0.9.02.ebuild:
+  Version bump.
+
+  14 Jul 2014; Jeroen Roovers <jer@gentoo.org> -nb-0.8.14.ebuild,
+  -files/nb-0.8.14-configure.patch:
+  Old.
+
+*nb-0.8.16 (03 May 2014)
+
+  03 May 2014; Jeroen Roovers <jer@gentoo.org> -nb-0.6.5-r1.ebuild,
+  nb-0.8.14.ebuild, +nb-0.8.16.ebuild, -files/nb-0.6.5-CFLAGS-as-needed.patch:
+  Version bump.
+
+  09 Mar 2013; Jeroen Roovers <jer@gentoo.org> nb-0.8.14.ebuild:
+  Remove testing cruft.
+
+*nb-0.8.14 (09 Mar 2013)
+
+  09 Mar 2013; Jeroen Roovers <jer@gentoo.org> -nb-0.8.3.ebuild,
+  -files/nb-0.8.3-configure.patch, +nb-0.8.14.ebuild,
+  +files/nb-0.8.14-configure.patch, +files/nb-0.8.14-include.patch:
+  Version bump.
+
+  18 Nov 2012; Agostino Sarubbo <ago@gentoo.org> nb-0.8.3.ebuild:
+  Add ~amd64
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> nb-0.8.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  28 Nov 2011; Tim Harder <radhermit@gentoo.org> nb-0.8.3.ebuild:
+  Remove autotools-utils eclass usage (fixes bug #392105).
+
+  27 Nov 2011; Tim Harder <radhermit@gentoo.org> nb-0.8.3.ebuild:
+  Build in the source tree.
+
+  18 Nov 2011; Jeroen Roovers <jer@gentoo.org> nb-0.8.3.ebuild:
+  Add missing pkgconfig dependency.
+
+  18 Nov 2011; Jeroen Roovers <jer@gentoo.org> nb-0.8.3.ebuild,
+  +files/nb-0.8.3-configure.patch:
+  Respect CFLAGS/LDFLAGS. Fix underlinking issue by using pkg-config to obtain
+  a list of libraries (bug #371893). Build nbTutorial.info without including
+  fdl.texi.
+
+  27 Oct 2011; Jeroen Roovers <jer@gentoo.org> nb-0.6.5-r1.ebuild,
+  nb-0.8.3.ebuild:
+  Block www-apps/nanoblogger by Diego Elio Pettenò (bug #295842).
+
+*nb-0.8.3 (06 Jun 2011)
+
+  06 Jun 2011; Jeroen Roovers <jer@gentoo.org> +nb-0.8.3.ebuild:
+  Version bump. Introduce USE=static-libs. Block parallel make since it does
+  not work due to crappy AM files.
+
+  11 Feb 2010; Jeroen Roovers <jer@gentoo.org> nb-0.6.5-r1.ebuild:
+  Block sys-boot/netboot (bug #304561).
+
+*nb-0.6.5-r1 (16 Nov 2008)
+
+  16 Nov 2008; Peter Volkov <pva@gentoo.org>
+  +files/nb-0.6.5-CFLAGS-as-needed.patch, -nb-0.6.5.ebuild,
+  +nb-0.6.5-r1.ebuild:
+  Fixed wrong installation path for man pages (bug #246661) and not
+  respecting C{,XX}FLAGS (bug #240858), thank Diego Pettenò for both.
+  General ebuild cleanup, fixed build with --as-needed and now we respect
+  LDFLAGS.
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org> -nb-0.6.2.ebuild:
+  Cleanup
+
+  08 Oct 2006; Markus Ullmann <jokey@gentoo.org> nb-0.6.5.ebuild:
+  Adding samples and docs
+
+*nb-0.6.5 (08 Oct 2006)
+
+  08 Oct 2006; Markus Ullmann <jokey@gentoo.org> -nb-0.6.1.ebuild,
+  nb-0.6.2.ebuild, +nb-0.6.5.ebuild:
+  Version bump wrt bug #131995
+
+*nb-0.6.2 (30 Jul 2005)
+
+  30 Jul 2005; Marcelo Goes <vanquirius@gentoo.org> +nb-0.6.2.ebuild:
+  Version bump.
+
+  19 Jul 2005; David Holm <dholm@gentoo.org> nb-0.6.1.ebuild:
+  Added to ~ppc.
+
+*nb-0.6.1 (14 Mar 2005)
+
+  14 Mar 2005; Eldad Zack <eldad@gentoo.org> +metadata.xml, +nb-0.6.1.ebuild:
+  Initial ebuild. based on ebuild submitted by Luc Stepniewski
+  <lstep@adelux.fr>. Closes #83145.

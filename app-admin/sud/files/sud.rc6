@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/sud/files/sud.rc6,v 1.2 2011/12/31 18:19:38 idl0r Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting sud"
+	start-stop-daemon --start --quiet --pidfile /var/run/sud.pid \
+		--exec /usr/sbin/sud
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping sud"
+	start-stop-daemon --stop --quiet --pidfile /var/run/sud.pid
+	eend $?
+}

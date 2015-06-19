@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>alex_y_xu@yahoo.ca</email>
+    <name>Alex Xu</name>
+    <description>Proxied maintainer</description>
+  </maintainer>
+  <herd>proxy-maintainers</herd>
+  <longdescription>Compression library programmed in C to perform very good, but slow, deflate or zlib compression.</longdescription>
+  <upstream>
+    <remote-id type="github">Hello71/zopfli</remote-id>
+  </upstream>
+</pkgmetadata>

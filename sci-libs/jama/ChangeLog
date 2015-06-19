@@ -1,0 +1,20 @@
+# ChangeLog for sci-libs/jama
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/jama/ChangeLog,v 1.2 2012/08/03 19:28:50 bicatali Exp $
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> jama-1.2.5.ebuild:
+  Keyword amd64-linux x86-linux
+
+*jama-1.2.5 (25 Feb 2010)
+
+  25 Feb 2010; Sébastien Fabbro <bicatali@gentoo.org> +jama-1.2.5.ebuild,
+  +metadata.xml:
+  Import to the main tree
+
+  02 Sep 2008; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml,
+  jama-1.2.5.ebuild:
+  Fixed for versionator and cleaning
+
+  17 Dec 2007; Sébastien Fabbro <bicatali@gentoo.org> +metadata.xml,
+  +jama-1.2.5.ebuild:
+  Initial import

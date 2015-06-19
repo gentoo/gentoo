@@ -1,0 +1,22 @@
+--- a/setup.py
++++ b/setup.py
+@@ -35,7 +35,7 @@ management tasks, including:
+ """
+ 
+ requires = [
+-    'boto==2.30.0',
++    'boto>=2.30.0',
+     'crcmod>=1.7',
+     'gcs-oauth2-boto-plugin>=1.7',
+     'google-api-python-client>=1.1',
+@@ -43,9 +43,7 @@ requires = [
+     'pyOpenSSL>=0.13',
+     'python-gflags>=2.0',
+     'retry_decorator>=1.0.0',
+-    # Not using 1.02 because of:
+-    #   https://code.google.com/p/socksipy-branch/issues/detail?id=3
+-    'SocksiPy-branch==1.01',
++    'SocksiPy-branch>=1.01',
+ ]
+ 
+ dependency_links = [

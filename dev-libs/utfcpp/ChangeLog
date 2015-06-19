@@ -1,0 +1,11 @@
+# ChangeLog for dev-libs/utfcpp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/utfcpp/ChangeLog,v 1.2 2015/06/09 14:54:38 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*utfcpp-2.3.4 (13 Jan 2015)
+
+  13 Jan 2015; Jan Matejka <yac@gentoo.org> +metadata.xml, +utfcpp-2.3.4.ebuild:
+  Add utfcpp package (dependency of ledger 3.x)

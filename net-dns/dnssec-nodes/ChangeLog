@@ -1,0 +1,43 @@
+# ChangeLog for net-dns/dnssec-nodes
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/dnssec-nodes/ChangeLog,v 1.8 2014/11/06 20:08:05 xmw Exp $
+
+  06 Nov 2014; Michael Weber <xmw@gentoo.org> dnssec-nodes-2.1.ebuild:
+  Add qtcore as dependency (thanks Patrick Lauer, bug 514404)
+
+*dnssec-nodes-2.1 (06 Nov 2014)
+
+  06 Nov 2014; Michael Weber <xmw@gentoo.org> +dnssec-nodes-2.1.ebuild:
+  Version bump
+
+*dnssec-nodes-2.0 (13 Mar 2013)
+
+  13 Mar 2013; Michael Weber <xmw@gentoo.org> dnssec-nodes-1.14.ebuild,
+  +dnssec-nodes-2.0.ebuild:
+  Version bump
+
+*dnssec-nodes-1.14 (15 Oct 2012)
+
+  15 Oct 2012; Michael Weber <xmw@gentoo.org> +dnssec-nodes-1.14.ebuild:
+  Version bump (euscan)
+
+  09 Jul 2012; Michael Weber <xmw@gentoo.org> -dnssec-nodes-1.12-r1.ebuild:
+  Drop old
+
+*dnssec-nodes-1.13 (23 Jun 2012)
+
+  23 Jun 2012; Michael Weber <xmw@gentoo.org> +dnssec-nodes-1.13.ebuild:
+  Version bump
+
+*dnssec-nodes-1.12-r1 (23 Jun 2012)
+
+  23 Jun 2012; Michael Weber <xmw@gentoo.org> -dnssec-nodes-1.12.ebuild,
+  +dnssec-nodes-1.12-r1.ebuild:
+  Fix dependency net-dns/dnssec-tools[threads] (bug 423019, thanks Diego Elio
+  Pettenò)
+
+*dnssec-nodes-1.12 (22 May 2012)
+
+  22 May 2012; Michael Weber <xmw@gentoo.org> +dnssec-nodes-1.12.ebuild,
+  +metadata.xml:
+  Initial import

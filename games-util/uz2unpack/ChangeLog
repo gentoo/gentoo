@@ -1,0 +1,24 @@
+# ChangeLog for games-util/uz2unpack
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-util/uz2unpack/ChangeLog,v 1.7 2014/03/26 09:51:50 ulm Exp $
+
+  26 Mar 2014; Ulrich Müller <ulm@gentoo.org> uz2unpack-0.1.ebuild:
+  Fix LICENSE, bug 505782. Update to EAPI 5.
+
+  03 Nov 2009; Tristan Heaven <nyhm@gentoo.org> uz2unpack-0.1.ebuild:
+  Respect LDFLAGS
+
+  08 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  19 Jul 2005; David Holm <dholm@gentoo.org> uz2unpack-0.1.ebuild:
+  Added to ~ppc.
+
+  29 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org> uz2unpack-0.1.ebuild:
+  Moved sources to new SRC_URI.
+
+*uz2unpack-0.1 (26 Jun 2004)
+
+  26 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org> +uz2unpack-0.1.ebuild:
+  Initial import.  Ebuild by me.
+

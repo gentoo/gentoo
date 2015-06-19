@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=~mail-client/claws-mail-3.9.0 >=x11-libs/gtk+-2.10:2 libnotify? ( x11-libs/libnotify ) virtual/pkgconfig
+DESCRIPTION=Plugin providing various ways to notify user of new and unread mail
+EAPI=4
+HOMEPAGE=http://www.claws-mail.org/
+IUSE=libnotify
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-3
+RDEPEND=~mail-client/claws-mail-3.9.0 >=x11-libs/gtk+-2.10:2 libnotify? ( x11-libs/libnotify )
+SLOT=0
+SRC_URI=http://www.claws-mail.org/downloads/plugins/notification_plugin-0.31.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ed7eb5b61c5799f6ed0410f2a95a15d4

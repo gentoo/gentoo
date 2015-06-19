@@ -1,0 +1,668 @@
+# ChangeLog for media-video/dvdrip
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/dvdrip/ChangeLog,v 1.145 2014/11/18 23:39:33 dilfridge Exp $
+
+  18 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  dvdrip-0.98.11-r2.ebuild:
+  Replace perl-module_pkg_setup with perl_set_version
+
+  01 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  dvdrip-0.98.11-r2.ebuild:
+  Require new enough podlators, fixes bug 442492
+
+*dvdrip-0.98.11-r2 (27 Aug 2014)
+
+  27 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +dvdrip-0.98.11-r2.ebuild, -dvdrip-0.98.11-r1.ebuild:
+  bumped EAPI to 5 ; committed directly to stable as no other changes and the
+  EAPI bump helps stable users when upgrading to dev-lang/perl-5.18
+
+  27 Mar 2014; Samuli Suominen <ssuominen@gentoo.org> dvdrip-0.98.11-r1.ebuild:
+  Fix default path to the optical device w/ current udev wrt #224559 by DEMAINE
+  Benoît-Pierre
+
+  24 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> dvdrip-0.98.11-r1.ebuild,
+  +files/dvdrip-0.98.11-fix_parallel_make.patch, -files/parallelmakefix.diff:
+  EAPI=4, rename patch, bug # numbers and more
+
+  24 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> -dvdrip-0.98.11.ebuild:
+  old
+
+  24 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> dvdrip-0.98.11-r1.ebuild:
+  ppc/ppc64 stable and drop sparc wrt #398667
+
+  21 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  dvdrip-0.98.11-r1.ebuild:
+  x86 stable wrt bug #398667
+
+  16 Jan 2012; Agostino Sarubbo <ago@gentoo.org> dvdrip-0.98.11-r1.ebuild:
+  Stable for AMD64, wrt bug #398667
+
+  08 Jul 2011; Samuli Suominen <ssuominen@gentoo.org> dvdrip-0.98.11.ebuild,
+  dvdrip-0.98.11-r1.ebuild:
+  Use virtual/ffmpeg wrt #362127 by Tomáš Chvátal
+
+*dvdrip-0.98.11-r1 (19 May 2011)
+
+  19 May 2011; Dane Smith <c1pher@gentoo.org> +dvdrip-0.98.11-r1.ebuild,
+  +files/parallelmakefix.diff:
+  Non-maintainer commit: Revbump. Add new patch to address parallel make issues
+  wrt bug 266739. Also address issues with respect to the toolchain.
+
+  17 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> dvdrip-0.98.11.ebuild:
+  Fix USE="jpeg" depend for x11-libs/gdk-pixbuf:2 split wrt #354279.
+
+  12 Oct 2010; Raúl Porcel <armin76@gentoo.org> dvdrip-0.98.11.ebuild:
+  sparc stable wrt #338997
+
+  05 Oct 2010; Markus Meier <maekke@gentoo.org> dvdrip-0.98.11.ebuild:
+  x86 stable, bug #338997
+
+  03 Oct 2010; Markos Chandras <hwoarang@gentoo.org> dvdrip-0.98.11.ebuild:
+  Stable on amd64 wrt bug #338997
+
+  28 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> dvdrip-0.98.11.ebuild:
+  ppc64 stable wrt #338997
+
+  28 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> dvdrip-0.98.11.ebuild:
+  Fix src/Makefile to use environment LDFLAGS wrt #333739 by Diego E.
+  Pettenò. Fix imagemagick vs. graphicsmagick depend wrt #314333 by
+  Wojciech Porczyk. Remove USE="hal" wrt #313389.
+
+  16 May 2010; Samuli Suominen <ssuominen@gentoo.org> dvdrip-0.98.11.ebuild:
+  Export SKIP_UNPACK_REQUIRED_MODULES to environment wrt #255269, thanks to
+  Helmut Robben, Bernd Butscheidt and others.
+
+*dvdrip-0.98.11 (02 May 2010)
+
+  02 May 2010; Lars Wendler <polynomial-c@gentoo.org>
+  +dvdrip-0.98.11.ebuild:
+  non maintainer commit: version bump (bug #311551).
+
+  30 Jan 2010; Raúl Porcel <armin76@gentoo.org> dvdrip-0.98.10-r2.ebuild:
+  sparc stable wrt #297897
+
+  26 Jan 2010; Dror Levin <spatz@gentoo.org> dvdrip-0.98.8.ebuild,
+  dvdrip-0.98.9-r1.ebuild, dvdrip-0.98.10-r2.ebuild:
+  Fix license, bug 302223.
+
+  09 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  dvdrip-0.98.10-r2.ebuild:
+  stable x86, bug 297897
+
+  07 Jan 2010; Brent Baude <ranger@gentoo.org> dvdrip-0.98.10-r2.ebuild:
+  Marking dvdrip-0.98.10-r2 ppc for bug 297897
+
+  06 Jan 2010; Brent Baude <ranger@gentoo.org> dvdrip-0.98.10-r2.ebuild:
+  Marking dvdrip-0.98.10-r2 ppc64 for bug 297897
+
+  22 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  dvdrip-0.98.10-r2.ebuild:
+  amd64 stable wrt #297897
+
+  11 Mar 2009; Tiziano Müller <dev-zero@gentoo.org>
+  dvdrip-0.98.10-r2.ebuild:
+  Reverting my change. Transcode got it's USE flags changed without a
+  revision bump, thus confusing certain PM's.
+
+  11 Mar 2009; Tiziano Müller <dev-zero@gentoo.org>
+  dvdrip-0.98.10-r2.ebuild:
+  replaced dvd USE flag with dvdread for transcode-1.1
+
+  10 Mar 2009; Steve Dibb <beandog@gentoo.org> dvdrip-0.98.8.ebuild,
+  dvdrip-0.98.9-r1.ebuild, dvdrip-0.98.10-r2.ebuild:
+  Change transcode check for dvdread flag to dvd flag
+
+*dvdrip-0.98.10-r2 (10 Mar 2009)
+
+  10 Mar 2009; Steve Dibb <beandog@gentoo.org> -dvdrip-0.98.10-r1.ebuild,
+  +dvdrip-0.98.10-r2.ebuild:
+  Fix transcode-1.1.0 use flag deps, bug 261889
+
+*dvdrip-0.98.10-r1 (09 Mar 2009)
+*dvdrip-0.98.9-r1 (09 Mar 2009)
+
+  09 Mar 2009; Steve Dibb <beandog@gentoo.org> -dvdrip-0.98.9.ebuild,
+  +dvdrip-0.98.9-r1.ebuild, -dvdrip-0.98.10.ebuild,
+  +dvdrip-0.98.10-r1.ebuild:
+  Add jpeg,mp3,mpeg,ogg,vorbis to transcode use flag dep since dvd::rip
+  assumes they are supported, bug 261889
+
+*dvdrip-0.98.10 (07 Mar 2009)
+
+  07 Mar 2009; Patrick Lauer <patrick@gentoo.org> +dvdrip-0.98.10.ebuild:
+  Bump to 0.98.10, fixes #261540. Dep on transcode adapted, thanks to
+  Polynomial-C for pointing it out.
+
+*dvdrip-0.98.9 (30 Oct 2008)
+
+  30 Oct 2008; Alexis Ballier <aballier@gentoo.org> +dvdrip-0.98.9.ebuild:
+  Version bump, thanks to Triffid Hunter <triffid_hunter@funkmunch.net> for
+  the notice, bug #239989.
+
+*dvdrip-0.98.8-r3 (15 Oct 2008)
+
+  15 Oct 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +dvdrip-0.98.8-r3.ebuild:
+  Add an EAPI=2 revision with USE deps on transcode and gtk+.
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> dvdrip-0.98.2-r1.ebuild,
+  dvdrip-0.98.6.ebuild, dvdrip-0.98.7.ebuild, dvdrip-0.98.8.ebuild,
+  dvdrip-0.98.8-r1.ebuild, dvdrip-0.98.8-r2.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+*dvdrip-0.98.8-r2 (14 Feb 2008)
+
+  14 Feb 2008; Steve Dibb <beandog@gentoo.org> +dvdrip-0.98.8-r2.ebuild:
+  Drop extrafilters check on transcode, bug 201025
+
+  27 Nov 2007; Matthias Schwarzott <zzam@gentoo.org>
+  dvdrip-0.98.2-r1.ebuild, dvdrip-0.98.6.ebuild, dvdrip-0.98.7.ebuild:
+  Fixed quoting.
+
+  21 Nov 2007; Ferris McCormick <fmccor@gentoo.org> dvdrip-0.98.8.ebuild:
+  Sparc stable --- Bug #196651 --- works fine for my DVD.
+
+  19 Nov 2007; Samuli Suominen <drac@gentoo.org> dvdrip-0.98.8.ebuild:
+  amd64 stable wrt #196651
+
+  28 Oct 2007; nixnut <nixnut@gentoo.org> dvdrip-0.98.8.ebuild:
+  Stable on ppc wrt bug 196651
+
+  28 Oct 2007; Markus Rothe <corsair@gentoo.org> dvdrip-0.98.8.ebuild:
+  Stable on ppc64; bug #196651
+
+  23 Oct 2007; Dawid Węgliński <cla@gentoo.org> dvdrip-0.98.8.ebuild:
+  Stable on x86 (bug #196651)
+
+*dvdrip-0.98.8-r1 (17 Oct 2007)
+
+  17 Oct 2007; Steve Dibb <beandog@gentoo.org> +dvdrip-0.98.8-r1.ebuild:
+  Add fping ewarn, bug 173924
+
+*dvdrip-0.98.8 (02 Sep 2007)
+*dvdrip-0.98.7 (02 Sep 2007)
+
+  02 Sep 2007; Steve Dibb <beandog@gentoo.org> +dvdrip-0.98.7.ebuild,
+  +dvdrip-0.98.8.ebuild:
+  Version bump
+
+  12 Aug 2007; Steve Dibb <beandog@gentoo.org> dvdrip-0.98.6.ebuild:
+  vcd useflag requires transcode + mjpeg use flag, bug 178417
+
+*dvdrip-0.98.6 (20 Apr 2007)
+
+  20 Apr 2007; Steve Dibb <beandog@gentoo.org> +dvdrip-0.98.6.ebuild:
+  Version bump, bug 174980
+
+*dvdrip-0.98.4 (24 Mar 2007)
+
+  24 Mar 2007; Steve Dibb <beandog@gentoo.org> -dvdrip-0.98.1-r1.ebuild,
+  -dvdrip-0.98.3-r1.ebuild, +dvdrip-0.98.4.ebuild:
+  Version bump
+
+*dvdrip-0.98.3-r1 (16 Mar 2007)
+*dvdrip-0.98.2-r1 (16 Mar 2007)
+*dvdrip-0.98.1-r1 (16 Mar 2007)
+
+  16 Mar 2007; Steve Dibb <beandog@gentoo.org> -dvdrip-0.98.1.ebuild,
+  +dvdrip-0.98.1-r1.ebuild, -dvdrip-0.98.2.ebuild, +dvdrip-0.98.2-r1.ebuild,
+  -dvdrip-0.98.3.ebuild, +dvdrip-0.98.3-r1.ebuild:
+  Fix transcode dependency to <1.1.0
+
+*dvdrip-0.98.3 (10 Mar 2007)
+
+  10 Mar 2007; Steve Dibb <beandog@gentoo.org> +dvdrip-0.98.3.ebuild:
+  Version bump
+
+  13 Feb 2007; Markus Rothe <corsair@gentoo.org> dvdrip-0.98.2.ebuild:
+  Stable on ppc64; bug #165383
+
+  10 Feb 2007; Simon Stelling <blubb@gentoo.org> dvdrip-0.98.2.ebuild:
+  stable on amd64; bug 165383
+
+  06 Feb 2007; Christian Faulhammer <opfer@gentoo.org> dvdrip-0.98.2.ebuild:
+  stable x86; bug #165383
+
+  06 Feb 2007; Joseph Jezak <josejx@gentoo.org> dvdrip-0.98.2.ebuild:
+  Marked ppc stable for bug #165383.
+
+  05 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org> dvdrip-0.98.2.ebuild:
+  Stable on sparc wrt #165383
+
+  30 Nov 2006; Markus Rothe <corsair@gentoo.org> dvdrip-0.98.1.ebuild:
+  Stable on ppc64
+
+*dvdrip-0.98.2 (26 Nov 2006)
+
+  26 Nov 2006; Steve Dibb <beandog@gentoo.org> +dvdrip-0.98.2.ebuild:
+  Version bump
+
+  21 Nov 2006; Steve Dibb <beandog@gentoo.org> -dvdrip-0.52.7-r1.ebuild:
+  Remove gtk1 port of dvdrip
+
+  31 Oct 2006; Steve Dibb <beandog@gentoo.org> -dvdrip-0.52.0.ebuild,
+  -dvdrip-0.52.7.ebuild:
+  Remove deprecated versions
+
+  23 Oct 2006; Steve Dibb <beandog@gentoo.org> -files/nptl-amd64.patch,
+  dvdrip-0.52.7.ebuild, dvdrip-0.52.7-r1.ebuild, dvdrip-0.98.1.ebuild:
+  Update USE flag deps error messages wrt bug 151024, remove nptl patch
+
+  23 Oct 2006; Steve Dibb <beandog@gentoo.org> dvdrip-0.52.7.ebuild,
+  dvdrip-0.52.7-r1.ebuild:
+  Fix Storable perl dep, wrt bug #151207
+
+  06 Oct 2006; Joseph Jezak <josejx@gentoo.org> dvdrip-0.98.1.ebuild:
+  Marked ppc stable for bug #149344.
+
+  05 Oct 2006; Daniel Gryniewicz <dang@gentoo.org> dvdrip-0.98.1.ebuild:
+  Marked stable on amd64 for bug #149344
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> dvdrip-0.98.1.ebuild:
+  Stable on sparc wrt #149344
+
+  27 Sep 2006; Steve Dibb <beandog@gentoo.org> metadata.xml:
+  Update metadata
+
+*dvdrip-0.98.1 (26 Aug 2006)
+
+  26 Aug 2006; Steve Dibb <beandog@gentoo.org> -dvdrip-0.98.0-r1.ebuild,
+  +dvdrip-0.98.0-r2.ebuild, +dvdrip-0.98.1.ebuild:
+  Version bump
+
+*dvdrip-0.98.0-r2 (26 Aug 2006)
+
+  26 Aug 2006; Steve Dibb <beandog@gentoo.org> -dvdrip-0.98.0-r1.ebuild,
+  +dvdrip-0.98.0-r2.ebuild:
+  vcd use flag fix, add vorbis use flag
+
+*dvdrip-0.98.0-r1 (21 Aug 2006)
+
+  21 Aug 2006; Steve Dibb <beandog@gentoo.org> +dvdrip-0.98.0-r1.ebuild:
+  Fix perl deps
+
+*dvdrip-0.98.0 (21 Aug 2006)
+
+  21 Aug 2006; beandog +dvdrip-0.98.0.ebuild:
+  Version bump
+
+  29 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  +files/nptl-amd64.patch, dvdrip-0.97.10.ebuild:
+  Patch for amd64 - the nptl *fix* was breaking it.
+  http://lists.debian.org/debian-amd64/2005/05/msg00867.html
+
+  07 May 2006; Daniel Goller <morfic@gentoo.org> dvdrip-0.97.10.ebuild:
+  Warning user of incompatible profiles on upgrade
+
+  29 Apr 2006; Daniel Goller <morfic@gentoo.org> ChangeLog:
+  Touched it due to portage being old, recommitting
+
+*dvdrip-0.97.10 (29 Apr 2006)
+
+  29 Apr 2006; Daniel Goller <morfic@gentoo.org> +dvdrip-0.97.10.ebuild:
+  Bump to 0.97.10 (small bugfixes)
+
+*dvdrip-0.97.9 (24 Apr 2006)
+
+  24 Apr 2006; Daniel Goller <morfic@gentoo.org> dvdrip-0.52.7-r1.ebuild,
+  +dvdrip-0.97.9.ebuild:
+  Bumping to 0.97.9 fixes several bugs, dvdrip-master not starting is fixed in
+  this release
+
+  23 Apr 2006; Daniel Goller <morfic@gentoo.org> dvdrip-0.52.7-r1.ebuild:
+  Stable on amd64 and ppc
+
+  20 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  dvdrip-0.52.7-r1.ebuild:
+  Stable on x86 wrt bug #127495.
+
+  11 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org> dvdrip-0.97.8.ebuild:
+  Keyworded ~sparc
+
+*dvdrip-0.97.8 (11 Apr 2006)
+
+  11 Apr 2006; Daniel Goller <morfic@gentoo.org> -dvdrip-0.97.7.ebuild,
+  +dvdrip-0.97.8.ebuild:
+  Bump to 0.97.8 bugfix release
+
+  09 Apr 2006; Daniel Goller <morfic@gentoo.org> dvdrip-0.52.7-r1.ebuild,
+  dvdrip-0.97.7.ebuild:
+  Moving to AudioVideo in .desktop file
+
+  08 Apr 2006; Daniel Goller <morfic@gentoo.org>
+  -files/dvdrip-fix_nptl_workaround.patch, -dvdrip-0.97.6-r1.ebuild,
+  dvdrip-0.97.7.ebuild:
+  Remove superceeded version, cleanup 0.97.7
+
+*dvdrip-0.97.7 (06 Apr 2006)
+
+  06 Apr 2006; Daniel Goller <morfic@gentoo.org> +dvdrip-0.97.7.ebuild:
+  Bump to 0.97.7
+
+*dvdrip-0.97.6-r1 (25 Mar 2006)
+*dvdrip-0.52.7-r1 (25 Mar 2006)
+
+  25 Mar 2006; Daniel Goller <morfic@gentoo.org>
+  -files/dvdrip-0.97.5-fix_nptl_workaround.patch,
+  -files/dvdrip-0.97.6-fix_nptl_workaround.patch,
+  +files/dvdrip-fix_nptl_workaround.patch, -dvdrip-0.52.3.ebuild,
+  -dvdrip-0.52.3-r1.ebuild, -dvdrip-0.52.5.ebuild, -dvdrip-0.52.6.ebuild,
+  +dvdrip-0.52.7-r1.ebuild, -dvdrip-0.97.6.ebuild, +dvdrip-0.97.6-r1.ebuild:
+  Cleanup old ebuilds, add 0.52.7-r1 and 0.97.6-r1 to always include fping
+
+  25 Mar 2006; Daniel Goller <morfic@gentoo.org> dvdrip-0.52.7.ebuild:
+  Stable on ppc and amd64
+
+  25 Mar 2006; Daniel Goller <morfic@gentoo.org> dvdrip-0.52.7.ebuild:
+  Stable on ppc and amd64
+
+*dvdrip-0.52.7 (25 Mar 2006)
+
+  25 Mar 2006; Daniel Goller <morfic@gentoo.org> dvdrip-0.52.6.ebuild,
+  +dvdrip-0.52.7.ebuild, dvdrip-0.97.6.ebuild:
+  Bump to 0.52.7 and take the stupid out of the logic
+
+  25 Mar 2006; Daniel Goller <morfic@gentoo.org> dvdrip-0.52.6.ebuild,
+  dvdrip-0.97.6.ebuild:
+  we shouldn't install dvdrip-master if we do not ask for fping
+
+  15 Mar 2006; Markus Rothe <corsair@gentoo.org> dvdrip-0.97.6.ebuild:
+  Added ~ppc64; bug #126189
+
+  15 Feb 2006; Daniel Goller <morfic@gentoo.org> dvdrip-0.52.6.ebuild,
+  dvdrip-0.97.6.ebuild:
+  remove post install einfo re: bug#81858
+
+  15 Feb 2006; Daniel Goller <morfic@gentoo.org> dvdrip-0.52.6.ebuild,
+  dvdrip-0.97.6.ebuild:
+  filtering -ftracer due to bug #119541
+
+  15 Feb 2006; Daniel Goller <morfic@gentoo.org> +dvdrip-0.52.6.ebuild,
+  dvdrip-0.97.6.ebuild:
+  Adding lsdvd >=0.15 as RDEPEND for 0.97.6
+
+*dvdrip-0.52.6 (15 Feb 2006)
+
+  15 Feb 2006; Daniel Goller <morfic@gentoo.org> +dvdrip-0.52.6.ebuild:
+  Bump to 0.52.6
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org> dvdrip-0.52.0.ebuild,
+  dvdrip-0.52.3.ebuild, dvdrip-0.52.3-r1.ebuild, dvdrip-0.52.5.ebuild,
+  dvdrip-0.97.6.ebuild:
+  Virtuals for perl-core
+
+*dvdrip-0.97.6 (30 Jan 2006)
+
+  30 Jan 2006; Daniel Goller <morfic@gentoo.org>
+  +files/dvdrip-0.97.6-fix_nptl_workaround.patch, -dvdrip-0.97.2.ebuild,
+  -dvdrip-0.97.5.ebuild, +dvdrip-0.97.6.ebuild:
+  remove 0.97.2 because it's old, and 0.97.5 because it breaks cluster mode,
+  adding 0.97.6 to replace the other two
+
+  12 Jan 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  dvdrip-0.52.3.ebuild, dvdrip-0.52.3-r1.ebuild, dvdrip-0.52.5.ebuild,
+  dvdrip-0.97.2.ebuild, dvdrip-0.97.5.ebuild:
+  pkgmove gnome-extra/libgtkhtml gnome-extra/gtkhtml
+
+  12 Jan 2006; <dang@gentoo.org> dvdrip-0.52.0.ebuild:
+  Change gtkhtml dep prior to libgtkhmtl->gtkhtml
+
+*dvdrip-0.97.5 (31 Dec 2005)
+
+  31 Dec 2005; Daniel Goller <morfic@gentoo.org>
+  +files/dvdrip-0.97.5-fix_nptl_workaround.patch, +dvdrip-0.97.5.ebuild:
+  Adding 0.97.5 with nptl patch
+  Thanks to everyone in the community who helps with dvdrip
+  Namely Chandler Carruth, Triffid Hunter, and everyone contributing testing 
+  and providing feedback on bug# 100586
+
+  17 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Moving maintainership of dvdrip to morfic.
+
+*dvdrip-0.97.2 (10 Oct 2005)
+
+  10 Oct 2005; Daniel Goller <morfic@gentoo.org> +dvdrip-0.97.2.ebuild:
+  Bump to 0.97.2 thanks to Chandler Carruth
+
+  08 Jul 2005; Gustavo Felisberto <humpback@gentoo.org>;
+  dvdrip-0.52.5.ebuild:
+  Added warning to AMD64 users.
+
+  28 May 2005; Diego Pettenò <flameeyes@gentoo.org> dvdrip-0.52.5.ebuild:
+  Changed dependency of latest dvdrip to virtual/eject.
+
+  27 May 2005; Jan Brinkmann <luckyduck@gentoo.org> dvdrip-0.52.5.ebuild:
+  install a .desktop file and an icon for dvdrip, fixes #93898
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  dvdrip-0.52.3-r1.ebuild:
+  dev-perl/Storable => perl-core/Storable migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> dvdrip-0.52.3.ebuild:
+  dev-perl/Storable => perl-core/Storable migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> dvdrip-0.52.0.ebuild:
+  dev-perl/Storable => perl-core/Storable migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> dvdrip-0.52.5.ebuild:
+  dev-perl/Storable => perl-core/Storable migration
+
+*dvdrip-0.52.5 (19 May 2005)
+
+  19 May 2005; Jan Brinkmann <luckyduck@gentoo.org> -dvdrip-0.52.4.ebuild,
+  +dvdrip-0.52.5.ebuild:
+  new upstream version
+
+  17 May 2005; Jan Brinkmann <luckyduck@gentoo.org> dvdrip-0.52.4.ebuild:
+  cosmetic changes
+
+*dvdrip-0.52.4 (17 May 2005)
+
+  17 May 2005; Jan Brinkmann <luckyduck@gentoo.org> +dvdrip-0.52.4.ebuild:
+  new upstream version
+
+  15 May 2005; Joseph Jezak <josejx@gentoo.org> dvdrip-0.52.3-r1.ebuild:
+  Marked ~ppc for bug #90101.
+
+  12 May 2005; Jan Brinkmann <luckyduck@gentoo.org> -dvdrip-0.50.16.ebuild,
+  -dvdrip-0.50.16-r1.ebuild, -dvdrip-0.50.17.ebuild, -dvdrip-0.50.18.ebuild,
+  dvdrip-0.52.0.ebuild:
+  0.52.0 stable on amd64 and x86, fixes #92360 . did some cleanup.
+
+  25 Apr 2005; Diego Pettenò <flameeyes@gentoo.org> dvdrip-0.50.18.ebuild:
+  Added check for at least transcode 0.6.14 before checking if it was built
+  with dvdread useflag. Fixes #89371.
+
+*dvdrip-0.52.3-r1 (25 Apr 2005)
+
+  25 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +dvdrip-0.52.3-r1.ebuild:
+  Added subtitles useflag which adds runtime dependency on subtitleripper
+  which provides subtitle2pgm. Fixes #90101.
+
+  23 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> dvdrip-0.52.3.ebuild:
+  Added to ~ppc.
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> dvdrip-0.52.3.ebuild:
+  changed gnome-extra/gtkhtml dependency to gnome-extra/libgtkhtml. fixes #67987
+
+  28 Mar 2005; Chris White <chriswhite@gentoo.org> dvdrip-0.50.18.ebuild,
+  dvdrip-0.52.3.ebuild:
+  Adjusted some hard depends per bug #48548. Added a built_with_use check for
+  transcode dvd support.
+
+*dvdrip-0.52.3 (16 Mar 2005)
+
+  16 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> +dvdrip-0.52.3.ebuild:
+  new upstream version, fixes #85537
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  dvdrip-0.50.16-r1.ebuild, dvdrip-0.50.16.ebuild, dvdrip-0.50.17.ebuild,
+  dvdrip-0.50.18.ebuild, dvdrip-0.52.0.ebuild:
+  Move sys-apps/procps -> sys-process/procps
+
+  15 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> dvdrip-0.50.16-r1.ebuild,
+  dvdrip-0.50.16.ebuild, dvdrip-0.50.17.ebuild, dvdrip-0.50.18.ebuild,
+  dvdrip-0.52.0.ebuild:
+  changed app-cdr/cdrtools dependency to virtual/cdrtools. fixes bug #76556.
+  also see bug #77817.
+
+*dvdrip-0.52.0 (09 Jan 2005)
+
+  09 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> +dvdrip-0.52.0.ebuild:
+  new upstream version. fixes #76827.
+
+  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org> dvdrip-0.50.18.ebuild:
+  stable on amd64
+
+*dvdrip-0.50.18 (19 Apr 2004)
+
+  19 Apr 2004; Martin Holzer <mholzer@gentoo.org> dvdrip-0.50.18.ebuild:
+  Version bumped.
+
+*dvdrip-0.50.17 (10 Apr 2004)
+
+  10 Apr 2004; Martin Holzer <mholzer@gentoo.org> dvdrip-0.50.17.ebuild:
+  Version bumped.
+
+*dvdrip-0.50.16-r1 (17 Mar 2004)
+
+  17 Mar 2004; Patrick Kursawe <phosphan@gentoo.org> dvdrip-0.50.15.ebuild,
+  dvdrip-0.50.16-r1.ebuild:
+  Adding build dependencies to runtime dependencies.
+
+  18 Feb 2004; Martin Holzer <mholzer@gentoo.org> dvdrip-0.50.16.ebuild:
+  x86 stable.
+
+*dvdrip-0.50.16 (26 Oct 2003)
+
+  26 Oct 2003; Martin Holzer <mholzer@gentoo.org> dvdrip-0.50.16.ebuild:
+  Version bumped.
+
+  31 Aug 2003; Luca Barbato <lu_zero@gentoo.org> ddvdrip-0.50.14.ebuild,
+  dvdrip-0.50.15.ebuild:
+  Marked ~ppc
+
+*dvdrip-0.50.15 (25 Aug 2003)
+
+  25 Aug 2003; Martin Holzer <mholzer@gentoo.org> dvdrip-0.50.15.ebuild:
+  Version bumped.
+
+*dvdrip-0.50.14 (29 Jun 2003)
+
+  29 Jun 2003; Martin Holzer <mholzer@gentoo.org> dvdrip-0.50.14.ebuild:
+  Version bumped. Closes #23688
+
+*dvdrip-0.50.13 (25 May 2003)
+
+  25 May 2003; Martin Holzer <mholzer@gentoo.org> dvdrip-0.50.10.ebuild,
+  dvdrip-0.50.12.ebuild, dvdrip-0.50.13.ebuild, dvdrip-0.50.4.ebuild:
+  Version bumped & Cleanup. Closes #21652
+
+*dvdrip-0.50.12 (17 May 2003)
+
+  17 May 2003; Martin Holzer <mholzer@gentoo.org> dvdrip-0.50.12.ebuild:
+  Version bumped. Closes #20269
+
+  10 May 2003; <jrray@gentoo.org> dvdrip-0.50.10.ebuild:
+  Adding runtime dependency on sys-apps/eject.
+
+*dvdrip-0.50.10 (17 Apr 2003)
+
+  17 Apr 2003; Martin Holzer <mholzer@gentoo.org> Manifest, dvdrip-0.46.ebuild,
+  dvdrip-0.46.ebuild, dvdrip-0.48.5.ebuild, dvdrip-0.48.5.ebuild,
+  dvdrip-0.48.8.ebuild, dvdrip-0.48.8.ebuild, dvdrip-0.50.10.ebuild:
+  Version bumped. Cleanup. Closes #17619.
+
+*dvdrip-0.50.7 (05 Mar 2003)
+
+  05 Mar 2003; phoen][x <phoenix@gentoo.org> dvdrip-0.50.7.ebuild,
+  files/digest-dvdrip-0.50.7 ChangeLog:
+  Version bumped. Thanks to Fridtjof Busse <fridtjof@fbunet.de> for
+  the contribution. This closes bug #16764.
+
+*dvdrip-0.50.4 (24 Feb 2003)
+
+  05 Mar 2003; phoen][x <phoenix@gentoo.org> dvdrip-0.50.4.ebuild :
+  Marked this ebuild stable ('x86').
+
+  24 Feb 2003; phoen][x <phoenix@gentoo.org> dvdrip-0.50.4.ebuild,
+  files/digest-dvdrip-0.50.4 ChangeLog:
+  Version bumped. Thanks to Fridtjof Busse <fridtjof@fbunet.de> for
+  the contribution. This closes bug #15640.
+
+*dvdrip-0.50.1 (13 Feb 2003)
+
+  05 Mar 2003; phoen][x <phoenix@gentoo.org> dvdrip-0.50.1.ebuild :
+  Marked this ebuild stable ('x86').
+
+  14 Feb 2003; Martin Holzer <mholzer@gentoo.org> dvdrip-0.50.1.ebuild :
+  Fixed DEPEND.
+
+  13 Feb 2003; Martin Holzer <mholzer@gentoo.org> dvdrip-0.50.1.ebuild,
+  files/digest-dvdrip-0.50.1 ChangeLog:
+  Version bumped submitted by fridtjof@fbunet.de in #15554. 
+
+*dvdrip-0.48.8 (12 Feb 2003)
+
+  13 Feb 2003; Martin Holzer <mholzer@gentoo.org> dvdrip-0.48.8.ebuild
+  Marked as stable.
+
+  12 Feb 2003; Martin Holzer <mholzer@gentoo.org> dvdrip-0.48.8.ebuild,
+  files/digest-dvdrip-0.48.8 ChangeLog:
+  Version bump submitted by fridtjof@fbunet.de in #14835.
+
+*dvdrip-0.48.5 (16 Nov 2002) 
+
+  10 Feb 2003; Seemant Kulleen <seemant@gentoo.org> *.ebuild :
+  removed crusty old ebuilds and added/updated IUSE, per bug #7981 and
+  Michiel de Bruijne <M.deBruijne@HCCNet.nl>
+
+  12 Dec 2002; phoen][x <phoenix@gentoo.org> dvdrip-0.48.5.ebuild,
+  files/digest-dvdrip-0.48.5:
+  Version bump submitted by Tobias Sager <moixa@gmx.ch>. This closes bug
+  11958. 
+
+*dvdrip-0.47_12 (16 Nov 2002) 
+
+  6 Dec 2002; Michael Cummings <mcummings@gentoo.org>; dvdrip deps
+  There are deps that are not needed by dvdrip for gnome. Returned those
+  to an optional status instead of a mandatory. See bug 5887, thanks to
+  Dylan Carlson for point this out.
+   
+  16 Nov 2002; phoen][x <phoenix@gentoo.org>; dvdrip-0.47_12.ebuild,
+  files/digest-dvdrip-0.47_12 :
+  Version bump submitted by David Nielsen <lovechild@foolclan.com>. This version 
+  adds support for Ogg Vorbis - thats why it optionally depends on media-audio/ogmtools. 
+
+*dvdrip-0.46 (08 Oct 2002)
+
+  08 Oct 2002; Mike Frysinger <vapier@gentoo.org> :
+  Version bump
+
+*dvdrip-0.44 (28 Jun 2002)
+
+  28 Jun 2002; Martin Schlemmer <azarah@gentoo.org> :
+  Fixed the fping dependancy to reside in the new catagory.
+
+*dvdrip-0.41_pre03 (2 Jun 2002)
+*dvdrip-0.40 (2 Jun 2002)
+
+  2 Jun 2002; Martin Schlemmer <azarah@gentoo.org> dvdrip-0.4{0,1_pre03}.ebuild :
+
+  Version bump ... added the pre as it seems stable ... converted a dvd ;)
+
+*dvdrip-0.39 (21 Apr 2002)
+
+  1 May 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  dvdrip-0.39.ebuild, files/digest-dvdrip-0.39 :
+
+  Version bump.
+
+*dvdrip-0.38 (21 Apr 2002)
+
+  21 Apr 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  dvdrip-0.38.ebuild, files/digest-dvdrip-0.38 :
+  
+  New ebuild. Resolves bug #908.

@@ -1,0 +1,26 @@
+diff -Naurp lrmi-0.10-orig/Makefile lrmi-0.10/Makefile
+--- lrmi-0.10-orig/Makefile	2010-08-20 15:03:17.093144820 +0200
++++ lrmi-0.10/Makefile	2010-08-20 15:03:47.761144267 +0200
+@@ -2,6 +2,7 @@ LIBDIR ?= /usr/local/lib
+ INCDIR ?= /usr/local/include
+ 
+ CFLAGS = -g -Wall
++LDFLAGS = 
+ 
+ sources = lrmi.c
+ objects = lrmi.o
+@@ -26,12 +27,12 @@ liblrmi.a: $(objects)
+ 
+ liblrmi.so: $(pic_objects)
+ #	$(CC) $(CPPFLAGS) $(CFLAGS) -fPIC -shared -o $@ $^
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -Wl,-soname,$(LIBNAME).so.$(MAJOR) -fPIC -shared -o $(LIBNAME).so.$(VERSION) $^
++	$(CC) $(CPPFLAGS) $(CFLAGS) -Wl,-soname,$(LIBNAME).so.$(MAJOR) $(LDFLAGS) -fPIC -shared -o $(LIBNAME).so.$(VERSION) $^
+ 	ln -sf $(LIBNAME).so.$(VERSION) $(LIBNAME).so.$(MAJOR)
+ 	ln -sf $(LIBNAME).so.$(MAJOR) $(LIBNAME).so
+ 
+ vbetest: vbetest.c liblrmi.a
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $^
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ install:
+ 	mkdir -p $(LIBDIR)

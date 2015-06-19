@@ -1,0 +1,427 @@
+# ChangeLog for dev-python/pygame
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pygame/ChangeLog,v 1.106 2015/04/08 08:05:12 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org>
+  pygame-1.9.2_pre20120101-r2.ebuild:
+  Drop old Python implementations
+
+  31 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  pygame-1.9.2_pre20120101-r2.ebuild:
+  alpha, ia64, and sparc are unstable
+
+  28 Feb 2015; Pacho Ramos <pacho@gentoo.org>
+  +files/pygame-1.9.2_pre20120101-import-bdist.patch,
+  -pygame-1.9.2_pre20120101-r1.ebuild, pygame-1.9.2_pre20120101-r2.ebuild:
+  Workaround bug #516434 until a better fix is found (thanks to Markus Oehme),
+  drop old.
+
+  24 Nov 2014; Pacho Ramos <pacho@gentoo.org>
+  pygame-1.9.2_pre20120101-r2.ebuild:
+  Support python 3.4
+
+  27 Mar 2014; Ian Delaney <idella4@gentoo.org> -pygame-1.9.2_pre3082.ebuild,
+  -pygame-1.9.2_pre3203.ebuild, pygame-1.9.2_pre20120101-r2.ebuild:
+  update install phase, fix based on patch by C. Mayo wrt to bug #497720 by C.
+  Myao, rm old ebuilds
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org>
+  pygame-1.9.2_pre20120101-r2.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org>
+  pygame-1.9.2_pre20120101-r2.ebuild:
+  Stable for sparc, wrt bug #469732
+
+  18 May 2013; Agostino Sarubbo <ago@gentoo.org>
+  pygame-1.9.2_pre20120101-r2.ebuild:
+  Stable for alpha, wrt bug #469732
+
+  18 May 2013; Agostino Sarubbo <ago@gentoo.org>
+  pygame-1.9.2_pre20120101-r2.ebuild:
+  Stable for ia64, wrt bug #469732
+
+  17 May 2013; Jeroen Roovers <jer@gentoo.org>
+  pygame-1.9.2_pre20120101-r2.ebuild:
+  Stable for HPPA (bug #469732).
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org>
+  pygame-1.9.2_pre20120101-r2.ebuild:
+  Stable for ppc, wrt bug #469732
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org>
+  pygame-1.9.2_pre20120101-r2.ebuild:
+  Stable for x86, wrt bug #469732
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org>
+  pygame-1.9.2_pre20120101-r2.ebuild:
+  Stable for amd64, wrt bug #469732
+
+*pygame-1.9.2_pre20120101-r2 (26 Feb 2013)
+
+  26 Feb 2013; Julian Ospald <hasufell@gentoo.org>
+  +pygame-1.9.2_pre20120101-r2.ebuild:
+  convert to distutils-r1
+
+  01 Jan 2013; Julian Ospald <hasufell@gentoo.org>
+  pygame-1.9.2_pre20120101-r1.ebuild:
+  fix dependencies wrt #431022
+
+  22 Aug 2012; Michael Weber <xmw@gentoo.org>
+  pygame-1.9.2_pre20120101-r1.ebuild:
+  ppc stable (bug 418283).
+
+  03 Jul 2012; Jeroen Roovers <jer@gentoo.org>
+  pygame-1.9.2_pre20120101-r1.ebuild:
+  Stable for HPPA (bug #418283).
+
+  01 Jul 2012; Raúl Porcel <armin76@gentoo.org>
+  pygame-1.9.2_pre20120101-r1.ebuild:
+  alpha/ia64/sparc stable wrt #418283
+
+  31 May 2012; Agostino Sarubbo <ago@gentoo.org>
+  pygame-1.9.2_pre20120101-r1.ebuild:
+  Stable for amd64, wrt bug #418283
+
+  31 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  pygame-1.9.2_pre20120101-r1.ebuild:
+  marked x86 per bug 418283
+
+*pygame-1.9.2_pre20120101-r1 (30 May 2012)
+
+  30 May 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  +pygame-1.9.2_pre20120101-r1.ebuild, -pygame-1.9.2_pre20120101.ebuild:
+  Apply fix for invalid import with python3 by Arfrever Frehtes Taifersar
+  Arahesis <arfrever.fta@gmail.com>. Fixes bug #415593 by Eric Mercier
+  <mercier.eric@gmail.com>. Drop old
+
+  20 Feb 2012; Patrick Lauer <patrick@gentoo.org>
+  pygame-1.9.2_pre20120101.ebuild, pygame-1.9.2_pre3082.ebuild,
+  pygame-1.9.2_pre3203.ebuild:
+  Fixing pypy restricts to actually work
+
+*pygame-1.9.2_pre20120101 (08 Jan 2012)
+
+  08 Jan 2012; Markos Chandras <hwoarang@gentoo.org>
+  +pygame-1.9.2_pre20120101.ebuild:
+  Version bump. Ebuild by Arfrever. Backported from Progress Overlay.
+
+  21 Sep 2011; Mike Gilbert <floppym@gentoo.org> pygame-1.9.2_pre3203.ebuild:
+  Fix broken automagic dep with portmidi, bug 383927 by sping.
+
+*pygame-1.9.2_pre3203 (20 Sep 2011)
+
+  20 Sep 2011; Mike Gilbert <floppym@gentoo.org> +pygame-1.9.2_pre3203.ebuild:
+  Version bump. Ebuild by Arfrever. Backported from Progress Overlay.
+
+  07 Jul 2011; Markos Chandras <hwoarang@gentoo.org>
+  -files/pygame-1.9.1-linux-headers-2.6.38.patch, -files/config.patch:
+  Remove unneeded files. Requested by Arfrever
+
+  01 Jul 2011; Markos Chandras <hwoarang@gentoo.org> -pygame-1.9.1.ebuild,
+  -pygame-1.9.1-r1.ebuild:
+  Remove old ebuilds. Requested by Arfrever
+
+  27 Jun 2011; Brent Baude <ranger@gentoo.org> pygame-1.9.2_pre3082.ebuild:
+  Marking pygame-1.9.2_pre3082 ppc for bug 370509
+
+  24 Jun 2011; Raúl Porcel <armin76@gentoo.org> pygame-1.9.2_pre3082.ebuild:
+  alpha/ia64/sparc stable wrt #370509
+
+  15 Jun 2011; Jeroen Roovers <jer@gentoo.org> pygame-1.9.2_pre3082.ebuild:
+  Stable for HPPA (bug #370509).
+
+  14 Jun 2011; Markus Meier <maekke@gentoo.org> pygame-1.9.2_pre3082.ebuild:
+  x86 stable, bug #370509
+
+  08 Jun 2011; Markos Chandras <hwoarang@gentoo.org>
+  pygame-1.9.2_pre3082.ebuild:
+  Stable on amd64 wrt bug #370509
+
+*pygame-1.9.2_pre3082 (29 Apr 2011)
+
+  29 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pygame-1.9.2_pre3082.ebuild:
+  Version bump. Fixed building with Python 3.2 (bug #293909).
+
+*pygame-1.9.1-r1 (31 Mar 2011)
+
+  31 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> +pygame-1.9.1-r1.ebuild,
+  +files/pygame-1.9.1-linux-headers-2.6.38.patch:
+  Fix building with linux-headers-2.6.38 by removing support for V4L v1 wrt #359745
+  by Billy DeVincentis and Martijn Schmidt.
+
+  10 Aug 2010; Jeroen Roovers <jer@gentoo.org> pygame-1.9.1.ebuild:
+  Remove HPPA workaround (bug #289326).
+
+  19 May 2010; Jeroen Roovers <jer@gentoo.org> pygame-1.9.1.ebuild:
+  Stable for HPPA (bug #287438).
+
+  09 Jan 2010; Raúl Porcel <armin76@gentoo.org> pygame-1.8.1.ebuild,
+  pygame-1.9.1.ebuild:
+  Add ~arm
+
+  21 Nov 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pygame-1.9.1.ebuild:
+  Install examples only with USE="examples" (bug #287990).
+
+  13 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org> -pygame-1.7.1.ebuild,
+  -pygame-1.8.0.ebuild, -pygame-1.8.1-r1.ebuild,
+  -files/pygame-1.8.1_icon_path.patch:
+  clean out old ebuilds
+
+  08 Oct 2009; Raúl Porcel <armin76@gentoo.org> pygame-1.9.1.ebuild:
+  alpha/ia64/sparc stable wrt #287438
+
+  07 Oct 2009; nixnut <nixnut@gentoo.org> pygame-1.9.1.ebuild:
+  ppc stable #287438
+
+  05 Oct 2009; Markus Meier <maekke@gentoo.org> pygame-1.9.1.ebuild:
+  amd64/x86 stable, bug #287438
+
+  04 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pygame-1.9.1.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*pygame-1.9.1 (03 Sep 2009)
+
+  03 Sep 2009; Patrick Lauer <patrick@gentoo.org> +pygame-1.9.1.ebuild,
+  +files/config.patch:
+  Bump to 1.9.1. Small patch by Lorenz Quack. Fixes #280445
+
+  15 Jul 2009; Jesus Rivero <neurogeek@gentoo.org>
+  +files/pygame-1.8.1_icon_path.patch, pygame-1.8.1-r1.ebuild:
+  Fixed some tests that failed. Closes Bug #223055.
+
+*pygame-1.8.1-r1 (09 Apr 2009)
+
+  09 Apr 2009; Patrick Lauer <patrick@gentoo.org> +pygame-1.8.1-r1.ebuild:
+  EAPI2ification
+
+  16 Dec 2008; Raúl Porcel <armin76@gentoo.org> pygame-1.8.1.ebuild:
+  ia64 stable wrt #238774
+
+  11 Dec 2008; Tobias Klausmann <klausman@gentoo.org> pygame-1.8.1.ebuild:
+  Stable on alpha, bug #238774
+
+  28 Oct 2008; Ferris McCormick <fmccor@gentoo.org> pygame-1.8.1.ebuild:
+  Reverting to ~sparc for the moment --- see Bug #238774.
+
+  28 Oct 2008; Jeroen Roovers <jer@gentoo.org> pygame-1.8.1.ebuild:
+  Stable for HPPA (bug #238774).
+
+  27 Oct 2008; Markus Meier <maekke@gentoo.org> pygame-1.8.1.ebuild:
+  amd64/x86 stable, bug #238774
+
+  25 Oct 2008; Ferris McCormick <fmccor@gentoo.org> pygame-1.8.1.ebuild:
+  Sparc stable, Bug #238774.
+
+  25 Oct 2008; nixnut <nixnut@gentoo.org> pygame-1.8.1.ebuild:
+  Stable on ppc wrt bug 238774
+
+  06 Oct 2008; Diego Pettenò <flameeyes@gentoo.org> pygame-1.8.1.ebuild:
+  Fix build-time dependencies.
+
+*pygame-1.8.1 (19 Aug 2008)
+
+  19 Aug 2008; Ali Polatel <hawking@gentoo.org> +pygame-1.8.1.ebuild:
+  Version bump.
+
+  14 Jul 2008; Santiago M. Mola <coldwind@gentoo.org>
+  -files/pygame-1.7.1-python2.5.patch, -pygame-1.7.1-r1.ebuild:
+  Punting 1.7.1-r1 wrt bug #231250.
+
+  08 Jul 2008; Santiago M. Mola <coldwind@gentoo.org>
+  pygame-1.7.1-r1.ebuild:
+  amd64 stable
+
+  26 Jun 2008; Rob Cakebread <pythonhead@gentoo.org> pygame-1.7.1.ebuild,
+  pygame-1.7.1-r1.ebuild, pygame-1.8.0.ebuild:
+  Add check for USE='jpeg png' in sdl-image. Closes #227705
+
+*pygame-1.7.1-r1 (20 Jun 2008)
+
+  20 Jun 2008; Santiago M. Mola <coldwind@gentoo.org>
+  +files/pygame-1.7.1-python2.5.patch, +pygame-1.7.1-r1.ebuild,
+  -pygame-1.8.0_rc4.ebuild:
+  Fix bug with python 2.5 and amd64, bug #194932. Remove old rc.
+
+*pygame-1.8.0 (09 Apr 2008)
+
+  09 Apr 2008; Olivier Crête <tester@gentoo.org> +pygame-1.8.0.ebuild:
+  Version bump
+
+  03 Mar 2008; Tiziano Müller <dev-zero@gentoo.org>
+  pygame-1.8.0_rc4.ebuild:
+  Fixed various QA issues. Added check that libSDL is compiled with X support
+  (bug #150329). And it now supports unicode (bug #154012 is therefore solved
+  as well).
+
+*pygame-1.8.0_rc4 (03 Mar 2008)
+
+  03 Mar 2008; Tiziano Müller <dev-zero@gentoo.org>
+  +pygame-1.8.0_rc4.ebuild:
+  Version bump (bug #212179).
+
+  07 Jul 2007; Lukasz Strzygowski <lucass@gentoo.org> -pygame-1.6.2.ebuild:
+  Dropped old version.
+
+  07 Jul 2007; Raúl Porcel <armin76@gentoo.org> pygame-1.7.1.ebuild:
+  alpha stable wrt #175532
+
+  04 Jul 2007; Ali Polatel <hawking@gentoo.org> pygame-1.6.2.ebuild,
+  pygame-1.7.1.ebuild:
+  use DOCS, mydoc is deprecated
+
+  26 Jun 2007; Christian Faulhammer <opfer@gentoo.org> pygame-1.7.1.ebuild:
+  stable x86, bug 175532
+
+  25 Jun 2007; Lukasz Strzygowski <lucass@gentoo.org> -pygame-1.5.3.ebuild,
+  -pygame-1.5.5.ebuild, -pygame-1.5.6.ebuild, -pygame-1.6.ebuild:
+  Dropped old versions.
+
+  25 Jun 2007; Joseph Jezak <josejx@gentoo.org> pygame-1.7.1.ebuild:
+  Marked ppc stable for bug #175532.
+
+  22 Jun 2007; Jeroen Roovers <jer@gentoo.org> pygame-1.7.1.ebuild:
+  Stable for HPPA (bug #175532).
+
+  21 Jun 2007; Christoph Mende <angelos@gentoo.org> pygame-1.7.1.ebuild:
+  Stable on amd64 wrt bug 175532
+
+  21 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org> pygame-1.7.1.ebuild:
+  Stable on sparc wrt #175532
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  19 Aug 2006; Herbie Hopkins <herbs@gentoo.org> pygame-1.6.2.ebuild:
+  Stable on amd64.
+
+  19 Aug 2006; Herbie Hopkins <herbs@gentoo.org> pygame-1.6.2.ebuild,
+  pygame-1.7.1.ebuild:
+  Multilib fixes
+
+  28 Jul 2006; Javier Villavicencio <the_paya@gentoo.org>
+  pygame-1.7.1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> pygame-1.7.1.ebuild:
+  add ~ia64
+
+*pygame-1.7.1 (21 Aug 2005)
+
+  21 Aug 2005; Fernando Serboncini <fserb@gentoo.org>
+  -files/mixer.c-pause.patch, -files/music.c-pause.patch,
+  +pygame-1.7.1.ebuild:
+  Version bump
+
+  15 Jul 2005; Rene Nussbaumer <killerfox@gentoo.org> pygame-1.6.2.ebuild:
+  Stable on hppa.
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> pygame-1.6.2.ebuild:
+  Stable on alpha.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> pygame-1.6.2.ebuild:
+  Stable on ppc.
+
+  16 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> pygame-1.6.2.ebuild:
+  Stable on sparc
+
+  15 Jun 2005; Rob Cakebread <pythonhead@gentoo.org> pygame-1.6.2.ebuild:
+  Marked x86
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> pygame-1.5.3.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+*pygame-1.6.2 (14 Apr 2005)
+
+  14 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> +pygame-1.6.2.ebuild:
+  Version bump.
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  02 Jun 2004; David Holm <dholm@gentoo.org> pygame-1.6.ebuild:
+  Added to ~ppc, again.
+
+  07 May 2004; Bryan Østergaard <kloeri@gentoo.org> pygame-1.5.3.ebuild,
+  pygame-1.6.ebuild:
+  Add missing IUSE, remove default S.
+
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> pygame-1.5.5.ebuild:
+  Remove default S.
+
+  30 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> pygame-1.6.ebuild:
+  Adding amd64 keyword, closing #46025.
+
+  26 Feb 2004; Sven Blumenstein <bazik@gentoo.org> pygame-1.6.ebuild:
+  Stable on sparc.
+
+*pygame-1.6 (13 Dec 2003)
+
+  13 Dec 2003; Bryan Østergaard,,, <kloeri@gentoo.org> pygame-1.6.ebuild:
+  Bumped version.
+
+  02 Sep 2003; Alastair Tse <liquidx@gentoo.org> pygame-1.5.3.ebuild,
+  pygame-1.5.5.ebuild, pygame-1.5.6.ebuild:
+  moved dev-python/Numeric to dev-python/numeric
+
+*pygame-1.5.6 (11 Jun 2003)
+
+  11 Jun 2003; Graham Forest <vladimir@gentoo.org> Manifest,
+  pygame-1.5.6.ebuild:
+  Version bump
+
+*pygame-1.5.5 (04 Mar 2003)
+
+  26 Mar 2003; Alastair Tse <liquidx@gentoo.org> pygame-1.5.5.ebuild:
+  bump to stable
+
+  04 Mar 2003; Alastair Tse <liquidx@gentoo.org> pygame-1.5.5.ebuild files/digest-pygame-1.5.5 :
+  version bump. resolves #13415.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*pygame-1.5.3 (4 Sep 2002)
+  
+  4 Sep 2002; Jon Nelson <jnelson@gentoo.org> pygame-1.5.3.ebuild, ChangeLog
+  New upstream fixes some licensing issues and closes some bugs
+  
+*pygame-1.5 (30 May 2002)
+
+  29 Jul 2002; George Shapovalov <george@gentoo.org> pygame-1.2.ebuild, pygame-1.4.ebuild, pygame-1.4.9.ebuild, pygame-1.5.ebuild :
+
+  Added KEYWORDS,SLOT,LICENSE
+
+  30 May 2002; Jon Nelson <jnelson@gentoo.org> ChangeLog pygame-1.5.ebuild:
+  
+  New upstream
+  
+*pygame-1.4.9 (25 May 2002)
+
+  25 May 2002; Jon Nelson <jnelson@gentoo.org> ChangeLog pygame-1.4.9.ebuild
+  
+  New upstream
+  Closes bug #2855
+  Took headers out of ebuild and placed here:
+  Original Author: David Creswick <davidc@sat.net>
+
+*pygame-1.4 (28 Apr 2002)
+
+  28 Apr 2002; Jon Nelson <jnelson@gentoo.org> ChangeLog pygame-1.4.ebuild
+  
+  New upstream
+  ebuild should build properly - next version won't need the patches,
+    CVS pygame already has them fixed.
+  Closes bug 1865  
+
+*pygame-1.2 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

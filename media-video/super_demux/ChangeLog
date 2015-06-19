@@ -1,0 +1,14 @@
+# ChangeLog for media-video/super_demux
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/super_demux/ChangeLog,v 1.2 2010/07/29 07:59:31 sbriesen Exp $
+
+  29 Jul 2010; Stefan Briesenick <sbriesen@gentoo.org>
+  super_demux-0.3.ebuild:
+  added amd64 keyword
+
+*super_demux-0.3 (06 Oct 2007)
+
+  06 Oct 2007; Stefan Briesenick <sbriesen@gentoo.org>
+  +files/super_demux-0.3.diff, +metadata.xml, +super_demux-0.3.ebuild:
+  initial commit.
+

@@ -1,0 +1,10 @@
+# ChangeLog for net-analyzer/apinger
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/apinger/ChangeLog,v 1.1 2015/01/19 19:26:14 jer Exp $
+
+*apinger-0.4.1 (19 Jan 2015)
+
+  19 Jan 2015; Jeroen Roovers <jer@gentoo.org> +apinger-0.4.1.ebuild,
+  +metadata.xml:
+  Initial commit.
+

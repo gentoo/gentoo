@@ -1,0 +1,92 @@
+# ChangeLog for app-accessibility/SphinxTrain
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/SphinxTrain/ChangeLog,v 1.22 2015/06/09 08:36:40 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  27 Jun 2013; Agostino Sarubbo <ago@gentoo.org> SphinxTrain-1.0.8.ebuild:
+  Stable for x86, wrt bug #474436
+
+  27 Jun 2013; Agostino Sarubbo <ago@gentoo.org> SphinxTrain-1.0.8.ebuild:
+  Stable for amd64, wrt bug #474436
+
+*SphinxTrain-1.0.8 (31 Mar 2013)
+
+  31 Mar 2013; Julian Ospald <hasufell@gentoo.org> +SphinxTrain-1.0.8.ebuild:
+  version bump
+
+  28 Dec 2012; Ulrich Müller <ulm@gentoo.org> SphinxTrain-0.9.1-r1.ebuild:
+  Fix LICENSE, see COPYING file, bug 447268.
+
+  17 Oct 2012; Agostino Sarubbo <ago@gentoo.org> SphinxTrain-0.9.1-r1.ebuild:
+  EAPI 4, respect CC/AR/RANLIB, ~amd64 keyword, wrt to bug #438632
+
+  29 Apr 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  SphinxTrain-0.9.1-r1.ebuild:
+  Fix documentation install.
+
+  26 Sep 2009; William Hubbs <williamh@gentoo.org>
+  SphinxTrain-0.9.1-r1.ebuild:
+  migrated to eapi 2.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org>
+  SphinxTrain-0.9.1-r1.ebuild:
+  Removing virtual/libc depends
+
+  26 Dec 2007; Christian Heim <phreak@gentoo.org>
+  SphinxTrain-0.9.1-r1.ebuild:
+  Fix the quotation.
+
+  23 Jan 2007; Marius Mauch <genone@gentoo.org> SphinxTrain-0.9.1-r1.ebuild:
+  Replacing einfo with elog
+
+  10 Oct 2005; Chris White <chriswhite@gentoo.org> metadata.xml,
+  SphinxTrain-0.9.1-r1.ebuild:
+  Updated homepage, provided English and Japanese metadata.xml tranlsations.
+
+  20 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org> +files/gcc34.patch,
+  SphinxTrain-0.9.1-r1.ebuild:
+  gcc-3.4 and installation fix thanks to laughingplant
+  <hsggebhardt@ucdavis.edu> in bug #73586.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  SphinxTrain-0.9.1-r1.ebuild:
+  Masked SphinxTrain-0.9.1-r1.ebuild stable for ppc
+
+  24 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  SphinxTrain-0.9.1-r1.ebuild:
+  inherit eutils
+
+  17 Mar 2004; David Holm <dholm@gentoo.org> SphinxTrain-0.9.1-r1.ebuild:
+  Added to ~ppc.
+
+  16 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  SphinxTrain-0.9.1-r1.ebuild metadata.xml, files/gcc.patch:
+  Moved from media-sound/SphinxTrain to app-accessibility/SphinxTrain.
+
+  16 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  SphinxTrain-0.9.1-r1.ebuild, SphinxTrain-0.9.1.ebuild:
+  sphinx2 and festival are in app-accessibility now
+
+  16 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  SphinxTrain-0.9.1.ebuild:
+  sphinx2 and festival are in app-accessibility now
+
+*SphinxTrain-0.9.1-r1 (28 Sep 2003)
+
+  28 Sep 2003; jje <jje@gentoo.org> SphinxTrain-0.9.1-r1.ebuild,
+  files/gcc.patch:
+  Patched for gcc3.3. Closes #29461.
+
+  12 Jun 2003; <msterret@gentoo.org> SphinxTrain-0.9.1.ebuild:
+  fix Header
+
+*SphinxTrain-0.9.1 (5 Nov 2002)
+  
+  5 Nov 2002; Matt Keadle <mkeadle@gentoo.org> SphinxTrain-0.9.1.ebuild
+  ChangeLog files/digest-SphinxTrain-0.9.1 :
+
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. Many, many thanks to Rigo Ketelings for creating this
+  ebuild.

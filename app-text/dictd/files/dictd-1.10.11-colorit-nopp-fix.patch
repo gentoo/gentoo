@@ -1,0 +1,13 @@
+=== modified file 'colorit.in'
+--- colorit.in	2009-03-02 08:52:14 +0000
++++ colorit.in	2009-03-02 08:52:48 +0000
+@@ -167,7 +167,7 @@
+ 
+     function process_config (){
+ 	if (pp == ""){
+-	    while (0 < (ret = (pipe | getline))){
++	    while (0 < (ret = (getline < config_file))){
+ 		process_config_line()
+ 	    }
+ 	}else{
+

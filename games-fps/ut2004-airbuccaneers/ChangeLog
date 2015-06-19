@@ -1,0 +1,46 @@
+# ChangeLog for games-fps/ut2004-airbuccaneers
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-airbuccaneers/ChangeLog,v 1.8 2009/10/10 17:31:28 nyhm Exp $
+
+  10 Oct 2009; Tristan Heaven <nyhm@gentoo.org>
+  ut2004-airbuccaneers-1.6-r2.ebuild:
+  Stable on amd64/x86
+
+*ut2004-airbuccaneers-1.6-r2 (05 Oct 2009)
+
+  05 Oct 2009; Tristan Heaven <nyhm@gentoo.org>
+  +ut2004-airbuccaneers-1.6-r2.ebuild:
+  Use original zip file instead of third party installer; fix USE=dedicated
+  file collision, bug #275616
+
+  28 Jul 2008; Chris Gianelloni <wolf31o2@gentoo.org> metadata.xml:
+  Removing myself from metadata.xml since I am retiring from the project.
+
+  10 Jan 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  -ut2004-airbuccaneers-1.6.ebuild, ut2004-airbuccaneers-1.6-r1.ebuild:
+  Stable on amd64/x86 and removing older versions.
+
+*ut2004-airbuccaneers-1.6-r1 (02 Nov 2006)
+
+  02 Nov 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +ut2004-airbuccaneers-1.6-r1.ebuild:
+  Added new revision for testing which uses the brand-spankin-new
+  games-mods.eclass to reduce ebuild code.
+
+  28 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-airbuccaneers-1.6.ebuild:
+  Change to use the new liflg thirdpartymirror.
+
+*ut2004-airbuccaneers-1.6 (12 Jul 2005)
+
+  12 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -ut2004-airbuccaneers-1.5.ebuild, +ut2004-airbuccaneers-1.6.ebuild:
+  Version bumped and closing bug #97964.
+
+*ut2004-airbuccaneers-1.5 (25 Apr 2005)
+
+  25 Apr 2005; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +ut2004-airbuccaneers-1.5.ebuild:
+  Initial import. Ebuild by Radek Podgorny <radek@podgorny.cz>. Closing bug
+  #88207.
+

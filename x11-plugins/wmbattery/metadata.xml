@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-dock</herd>
+<longdescription>
+Wmbattery displays the status of your laptop's battery in a small icon. This 
+includes if it is plugged in, if the battery is charging, how many minutes of 
+battery life remain, battery life remaining (with both a percentage and a 
+graph), and battery status (high - green, low - yellow, or critical - red).
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,61 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/snort/files/snort.rc12,v 1.1 2013/04/10 18:33:19 chainsaw Exp $
+
+extra_commands="checkconfig"
+extra_started_commands="reload"
+
+depend() {
+	need net
+	after mysql
+	after postgresql
+}
+
+checkconfig() {
+	if [ ! -e ${SNORT_CONF} ] ; then
+		eerror "You need a configuration file to run snort"
+		eerror "There is an example config in /etc/snort/snort.conf.distrib"
+		return 1
+	fi
+	if [ ! -d "/var/run/snort" ] ; then
+		checkpath -d /var/run/snort
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting snort"
+	start-stop-daemon --start --quiet --exec /usr/bin/snort \
+		-- --nolock-pidfile --pid-path /var/run/snort -D -i ${SNORT_IFACE} \
+		 -c ${SNORT_CONF} >/dev/null 2>&1
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping snort"
+	start-stop-daemon --stop --quiet --pidfile /var/run/snort/snort_${SNORT_IFACE}.pid
+	# Snort needs a few seconds to fully shutdown
+	sleep 15
+	eend $?
+}
+
+reload() {
+
+	local SNORT_PID="`cat /var/run/snort/snort_${SNORT_IFACE}.pid`"
+	local SNORT_USER="`ps -p ${SNORT_PID} --no-headers -o user`"
+
+        if [ ! -f /var/run/snort/snort_${SNORT_IFACE}.pid ]; then
+        	eerror "Snort isn't running"
+                return 1
+	elif [ ${SNORT_USER} != root ]; then
+		eerror "Snort must be running as root for reload to work!"
+		return 1
+	else
+		checkconfig || return 1
+		ebegin "Reloading Snort"
+		start-stop-daemon --signal HUP --pidfile /var/run/snort/snort_${SNORT_IFACE}.pid
+        fi
+}
+
+

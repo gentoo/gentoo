@@ -1,0 +1,417 @@
+# ChangeLog for sys-freebsd/freebsd-libexec
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-libexec/ChangeLog,v 1.65 2015/06/05 16:43:55 mgorny Exp $
+
+  05 Jun 2015; Michał Górny <mgorny@gentoo.org> freebsd-libexec-10.1.ebuild:
+  Bump to EAPI=5. Use upstream tarballs.
+
+  24 May 2015; Michał Górny <mgorny@gentoo.org> -freebsd-libexec-9.2.ebuild,
+  -freebsd-libexec-9.2_rc1.ebuild, -freebsd-libexec-9.2_rc2.ebuild,
+  -freebsd-libexec-9.2_rc3.ebuild:
+  Remove 9.2. Part of https://github.com/gentoo/gentoo-portage-rsync-
+  mirror/pull/126 by nigoro.
+
+*freebsd-libexec-10.1 (08 Mar 2015)
+
+  08 Mar 2015; Michał Górny <mgorny@gentoo.org>
+  +files/freebsd-libexec-10.0-atf-check.patch, +freebsd-libexec-10.1.ebuild:
+  Add FreeBSD 10.1 ebuilds, https://github.com/gentoo/gentoo-portage-rsync-
+  mirror/pull/46 by nigoro.
+
+*freebsd-libexec-9.2 (09 Nov 2013)
+
+  09 Nov 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-libexec-9.2.ebuild:
+  bump to 9.2
+
+  26 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  freebsd-libexec-9.2_rc3.ebuild, +files/freebsd-libexec-9.2-no_ld32.patch:
+  Use LD_* variables for 32bits too instead of the FreeBSD invention LD_32_*.
+  We use LD_* everywhere on Gentoo and things like libtool wrappers have no
+  clue
+  about LD_32_* and thus fail to run from the build directory.
+
+
+*freebsd-libexec-9.2_rc3 (26 Aug 2013)
+
+  26 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-libexec-9.2_rc3.ebuild:
+  bump to rc3
+
+*freebsd-libexec-9.2_rc2 (22 Aug 2013)
+
+  22 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-libexec-9.2_rc2.ebuild:
+  bump to rc2
+
+*freebsd-libexec-9.2_rc1 (09 Aug 2013)
+
+  09 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-libexec-9.2_rc1.ebuild:
+  Version bump, based on work of Yuta SATOH in bug #476646
+
+  09 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-libexec-9.0.ebuild, -freebsd-libexec-9.1.ebuild,
+  -freebsd-libexec-9.1-r1.ebuild:
+  remove old
+
+*freebsd-libexec-9.1-r2 (09 Aug 2013)
+
+  09 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-libexec-9.1-r2.ebuild:
+  migrate to multilib-build
+
+  18 Jun 2013; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-libexec-7.2-r2.ebuild, -freebsd-libexec-8.0.ebuild,
+  -files/freebsd-libexec-7.0-libfallback.patch,
+  -files/freebsd-libexec-7.2-rtld7.patch,
+  -files/freebsd-libexec-7.2-rtldnoload.patch,
+  -files/freebsd-libexec-nossp.patch, -files/freebsd-libexec-setXid.patch:
+  remove old
+
+*freebsd-libexec-9.1-r1 (18 Jun 2013)
+
+  18 Jun 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-libexec-9.1-r1.ebuild:
+  Build and install ld-elf32.so.1 with USE=multilib so that we can run 32bits
+  programs.
+
+  27 Jan 2013; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-libexec-9.1_rc1.ebuild, -freebsd-libexec-9.1_rc2.ebuild,
+  -freebsd-libexec-9.1_rc3.ebuild:
+  remove rc versions
+
+*freebsd-libexec-9.1 (27 Jan 2013)
+
+  27 Jan 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-libexec-9.1.ebuild:
+  Bump to 9.1
+
+*freebsd-libexec-9.1_rc3 (06 Nov 2012)
+
+  06 Nov 2012; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-libexec-9.1_rc3.ebuild:
+  bump to rc3
+
+*freebsd-libexec-9.1_rc2 (14 Oct 2012)
+
+  14 Oct 2012; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-libexec-9.1_rc2.ebuild:
+  bump to 9.1_rc2
+
+*freebsd-libexec-9.1_rc1 (11 Sep 2012)
+
+  11 Sep 2012; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-libexec-9.1_rc1.ebuild:
+  bump to 9.1_rc1 from bsd overlay by Yuta SATOH, bug #426838
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> freebsd-libexec-9.0.ebuild:
+  keyword ~amd64-fbsd
+
+  30 Mar 2012; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-libexec-9.0_rc1.ebuild, -freebsd-libexec-9.0_rc2.ebuild,
+  -freebsd-libexec-9.0_rc3.ebuild:
+  remove old
+
+*freebsd-libexec-8.2-r1 (08 Mar 2012)
+
+  08 Mar 2012; Naohiro Aota <naota@gentoo.org>
+  +files/freebsd-libexec-8.2-rtld.patch, +freebsd-libexec-8.2-r1.ebuild:
+  Add upstream patch to init TLS for shared object. #390425
+
+*freebsd-libexec-9.0 (16 Jan 2012)
+
+  16 Jan 2012; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-libexec-9.0.ebuild:
+  bump to 9.0
+
+*freebsd-libexec-9.0_rc3 (09 Dec 2011)
+
+  09 Dec 2011; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-libexec-9.0_rc3.ebuild:
+  bump to 9.0_rc3
+
+*freebsd-libexec-9.0_rc2 (07 Dec 2011)
+
+  07 Dec 2011; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-libexec-9.0_rc2.ebuild:
+  bump to rc2
+
+*freebsd-libexec-9.0_rc1 (07 Nov 2011)
+
+  07 Nov 2011; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-libexec-9.0_rc1.ebuild:
+  bump to 9.0_rc1
+
+*freebsd-libexec-8.2 (06 Jul 2011)
+
+  06 Jul 2011; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-libexec-8.2.ebuild:
+  bump to 8.2
+
+  01 May 2010; Alexis Ballier <aballier@gentoo.org>
+  freebsd-libexec-8.0.ebuild:
+  readd the pic vs PIC patch from 7.2; its still needed on sparc
+
+*freebsd-libexec-8.0 (19 Mar 2010)
+
+  19 Mar 2010; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-libexec-8.0.ebuild:
+  bump to 8.0 from the bsd overlay
+
+  11 Mar 2010; Alexis Ballier <aballier@gentoo.org>
+  -files/freebsd-libexec-6.1-libfallback.patch,
+  -freebsd-libexec-6.2-r2.ebuild,
+  -files/freebsd-libexec-6.2-dl_iterate_phdr.patch,
+  -freebsd-libexec-7.1-r1.ebuild:
+  remove old
+
+  11 Mar 2010; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-libexec-7.2.ebuild, -freebsd-libexec-7.2-r1.ebuild:
+  remove old
+
+*freebsd-libexec-7.2-r2 (10 Jan 2010)
+
+  10 Jan 2010; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-libexec-7.2-r2.ebuild,
+  +files/freebsd-libexec-7.2-rtldnoload.patch:
+  backport RTLD_NOLOAD support from 8.0; code part
+
+  09 Jan 2010; Alexis Ballier <aballier@gentoo.org>
+  freebsd-libexec-7.2-r1.ebuild, +files/freebsd-libexec-7.2-pic.patch:
+  Fix build on sparc
+
+*freebsd-libexec-7.2-r1 (05 Dec 2009)
+
+  05 Dec 2009; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-libexec-7.2-r1.ebuild, +files/freebsd-libexec-7.2-rtld7.patch:
+  Add a patch for latest FreeBSD security advisory
+
+  04 Dec 2009; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-libexec-7.1.ebuild:
+  remove old
+
+  07 Oct 2009; Alexis Ballier <aballier@gentoo.org>
+  freebsd-libexec-7.1-r1.ebuild, freebsd-libexec-7.2.ebuild:
+  remove usedep on freebsd-lib[nis], its now always built
+
+  22 May 2009; Alexis Ballier <aballier@gentoo.org>
+  freebsd-libexec-7.2.ebuild:
+  make PATCHES a bash array
+
+*freebsd-libexec-7.2 (22 May 2009)
+
+  22 May 2009; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-libexec-7.2.ebuild:
+  bump to 7.2
+
+*freebsd-libexec-7.1-r1 (18 May 2009)
+
+  18 May 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +freebsd-libexec-7.1-r1.ebuild:
+  Use the current WITHOUT_ switches, update USE flags and use EAPI=2 to
+  depend on the proper features from the freebsd-lib package.
+
+*freebsd-libexec-7.1 (22 Jan 2009)
+
+  22 Jan 2009; Javier Villavicencio <the_paya@gentoo.org>
+  +files/freebsd-libexec-7.0-libfallback.patch, files/bootpd.confd,
+  files/bootpd.initd, files/ftpd.pamd, +files/rquotad.xinetd,
+  +files/rstatd.xinetd, +files/rusersd.xinetd, +files/sprayd.xinetd,
+  +files/walld.xinetd, +freebsd-libexec-7.1.ebuild:
+  Import 7.1 ebuilds from gentoo-bsd overlay.
+
+  16 Oct 2007; Roy Marples <uberlord@gentoo.org>
+  -files/freebsd-libexec-6.2-sparc64.patch, freebsd-libexec-6.2-r2.ebuild:
+  gcc-4 now defines __sparc64__ for us
+
+*freebsd-libexec-6.2-r2 (12 Sep 2007)
+
+  12 Sep 2007; Roy Marples <uberlord@gentoo.org>
+  +files/freebsd-libexec-6.2-dl_iterate_phdr.patch,
+  +freebsd-libexec-6.2-r2.ebuild:
+  Backport dl_iterate_phdr from FreeBSD-7 so that future gcc's don't pull in
+  libgcc_s.so.1
+
+*freebsd-libexec-6.2-r1 (06 Apr 2007)
+
+  06 Apr 2007; Roy Marples <uberlord@gentoo.org> files/bootpd.initd,
+  +freebsd-libexec-6.2-r1.ebuild:
+  Bump for non bash init script.
+
+*freebsd-libexec-6.2 (15 Jan 2007)
+
+  15 Jan 2007; Timothy Redaelli <drizzt@gentoo.org>
+  files/freebsd-libexec-6.1-libfallback.patch,
+  -freebsd-libexec-6.2_rc2.ebuild, +freebsd-libexec-6.2.ebuild:
+  Bump to 6.2 and remove old version.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-libexec-6.1.ebuild:
+  Remove 6.1 ebuild.
+
+*freebsd-libexec-6.2_rc2 (29 Dec 2006)
+
+  29 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/freebsd-libexec-5.3_rc1-ypxfr-makefile.patch,
+  -freebsd-libexec-6.2_rc1.ebuild, +freebsd-libexec-6.2_rc2.ebuild:
+  Bump to rc2 and remove older versions.
+
+  22 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-libexec-6.2_beta3.ebuild, freebsd-libexec-6.2_rc1.ebuild:
+  Remove the old ypxfr patch, symlink /usr/include and be done with it.
+
+  20 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> +files/bootpd.confd,
+  +files/bootpd.initd, freebsd-libexec-6.2_rc1.ebuild:
+  Add init script for bootp.
+
+*freebsd-libexec-6.2_rc1 (19 Nov 2006)
+
+  19 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-libexec-6.2_rc1.ebuild:
+  Version bump to 6.2-RC1.
+
+  18 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-libexec-6.2_beta2.ebuild:
+  Remove 6.2_beta2.
+
+*freebsd-libexec-6.2_beta3 (01 Nov 2006)
+
+  01 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-libexec-6.2_beta3.ebuild:
+  Bump to 6.2_beta3.
+
+  19 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Remove 6.2_beta1 ebuild.
+
+  19 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-libexec-6.2_beta1.ebuild:
+  Remove 6.2_beta1 ebuild.
+
+  17 Oct 2006; Roy Marples <uberlord@gentoo.org>
+  +files/freebsd-libexec-6.2-sparc64.patch,
+  freebsd-libexec-6.2_beta2.ebuild:
+  Added ~sparc-fbsd keyword.
+
+*freebsd-libexec-6.2_beta2 (05 Oct 2006)
+
+  05 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-libexec-6.2_beta2.ebuild:
+  Version 6.2_beta2.
+
+  22 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-libexec-6.2_beta1.ebuild:
+  Fix naming of libfallback patch.
+
+*freebsd-libexec-6.2_beta1 (21 Sep 2006)
+
+  21 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-libexec-6.2_beta1.ebuild:
+  Add 6.2_beta1 ebuilds.
+
+  27 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-libexec-6.0.ebuild:
+  Remove 6.0 version.
+
+  18 Jul 2006; Javier Villavicencio <the_paya@gentoo.org>
+  files/freebsd-libexec-nossp.patch, freebsd-libexec-6.1.ebuild:
+  Fixes compilation with gcc-4.1.1.
+
+*freebsd-libexec-6.1 (09 May 2006)
+
+  09 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/freebsd-libexec-6.1-libfallback.patch,
+  -freebsd-libexec-6.1_rc2.ebuild, +freebsd-libexec-6.1.ebuild:
+  Update to 6.1-RELEASE and patch to skip unloadable libraries.
+
+*freebsd-libexec-6.1_rc2 (02 May 2006)
+
+  02 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-libexec-6.1_rc1.ebuild, -freebsd-libexec-6.1_rc1-r1.ebuild,
+  +freebsd-libexec-6.1_rc2.ebuild:
+  Update to 6.1_rc2.
+
+*freebsd-libexec-6.1_rc1-r1 (01 May 2006)
+
+  01 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-libexec-6.1_rc1-r1.ebuild:
+  Drop ftpd and lukemftpd, there are other daemons available. If someone
+  really needed lukeftpd-like server, tnftpd can be added to portage.
+
+*freebsd-libexec-6.1_rc1 (30 Apr 2006)
+
+  30 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/freebsd-libexec-nossp.patch, freebsd-libexec-6.0.ebuild,
+  +freebsd-libexec-6.1_rc1.ebuild:
+  Update to 6.1_rc1 and disable ssp on the ld-elf.so loader to avoid breaking it.
+
+  20 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-libexec-6.0.ebuild:
+  Drop dependency on freebsd-headers.
+
+  09 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-libexec-6.0.ebuild:
+  Drop lukemftpd flag as 6.0 builds it by default.
+
+*freebsd-libexec-6.0 (01 Apr 2006)
+
+  01 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/freebsd-libexec-5.3_rc1-ypxfr-makefile.patch,
+  +files/freebsd-libexec-setXid.patch, +files/ftpd.pamd, +metadata.xml,
+  +freebsd-libexec-6.0.ebuild:
+  Import into portage.
+
+  20 Feb 2006; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Fix deprecated stuff to use NO_* syntax.
+
+  13 Feb 2006; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Add gettytab file here instead than in baselayout.
+
+  01 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Remove pf support, as freebsd-pf will provide it.
+
+  27 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-libexec-5.4-r1.ebuild:
+  Fixed missing sys-freebsd change.
+
+  25 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/freebsd-libexec-5.3_rc1-ypxfr-makefile.patch,
+  +files/freebsd-libexec-setXid.patch, +files/ftpd.pamd,
+  +freebsd-libexec-5.4-r1.ebuild:
+  Moved to sys-freebsd.
+
+  18 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-libexec-5.4-r1.ebuild:
+  Updated to reflect bsdmk/freebsd eclasses changes.
+
+  29 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-libexec-5.4-r1.ebuild:
+  Adapt to recent bsdmk changes.
+
+  20 Jun 2005; Diego Pettenò <flameeyes@gentoo.org> -files/rexecd.pamd,
+  -files/rsh.pamd, -files/telnetd.pamd, freebsd-libexec-5.3.ebuild,
+  freebsd-libexec-5.3.20050301.ebuild, freebsd-libexec-5.4-r1.ebuild:
+  Use new bsdmk eclass, removed rshd rexecd rlogind and related pamd files.
+
+  16 Jun 2005; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-libexec-5.4-r1.ebuild:
+  Remove building of sendmail and tcp-wrapper stuff.
+
+*freebsd-libexec-5.4-r1 (23 May 2005)
+
+  23 May 2005; Diego Pettenò <flameeyes@gentoo.org> +files/ftpd.pamd,
+  +files/rexecd.pamd, +files/telnetd.pamd, -freebsd-libexec-5.4.ebuild,
+  +freebsd-libexec-5.4-r1.ebuild:
+  Moved here pamd files. Added dependency over virtual/pam. Using
+  mirror://gentoo/.
+
+*freebsd-libexec-5.3.20050301 (06 Apr 2005)
+
+  06 Apr 2005; Otavio R. Piske <angusyoung@gentoo.org>
+  freebsd-libexec-5.3.20050301.ebuild:
+  New ebuild for updated sources and support for new use flags (patch provided
+  by Diego Petteno).
+
+  14 Oct 2004; Otavio R. Piske <angusyoung@gentoo.org>
+  freebsd-libexec-5.2.1.ebuild:
+  Corrected SRC_URI pointing to a wrong site

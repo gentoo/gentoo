@@ -1,0 +1,100 @@
+# ChangeLog for games-arcade/penguin-command
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/penguin-command/ChangeLog,v 1.20 2015/01/05 16:35:00 tupone Exp $
+
+  05 Jan 2015; Tupone Alfredo <tupone@gentoo.org>
+  penguin-command-1.6.11.ebuild:
+  EAPI 5
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> penguin-command-1.6.11.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  05 Sep 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  penguin-command-1.6.11.ebuild:
+  any mod support will do
+
+  07 Aug 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  penguin-command-1.6.11.ebuild:
+  EAPI=2; add use deps
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org>
+  penguin-command-1.6.11.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+*penguin-command-1.6.11 (23 Apr 2007)
+
+  23 Apr 2007; Tristan Heaven <nyhm@gentoo.org>
+  +penguin-command-1.6.11.ebuild:
+  Version bump
+
+*penguin-command-1.6.10 (24 Apr 2006)
+
+  24 Apr 2006; <Tupone@gentoo.org> +penguin-command-1.6.10.ebuild:
+  Version bump
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -penguin-command-1.6.6.ebuild:
+  Removing old version.
+
+  02 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  penguin-command-1.6.9.ebuild:
+  fix deps (bug #91133)
+
+*penguin-command-1.6.9 (29 Apr 2005)
+
+  29 Apr 2005; Mike Frysinger <vapier@gentoo.org>
+  +penguin-command-1.6.9.ebuild:
+  Add back in sound support since changelog says they fixed some things.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  12 Oct 2004; Simon Stelling <blubb@gentoo.org>
+  penguin-command-1.6.6.ebuild:
+  added ~amd64
+
+  19 Jun 2004; Jason Eric Huebel <jhuebel@gentoo.org>
+  penguin-command-1.6.6.ebuild:
+  gnuconfig_update, ~amd64
+
+  03 Jun 2004; Aron Griffis <agriffis@gentoo.org>
+  penguin-command-1.6.6.ebuild:
+  Fix use invocation
+
+  30 May 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  penguin-command-1.6.6.ebuild:
+  Stable on sparc
+
+  07 May 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  penguin-command-1.6.6.ebuild:
+  Added ~sparc, #50396
+
+*penguin-command-1.6.6 (19 Sep 2003)
+
+  19 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump + games.eclass support.
+
+*penguin-command-1.6.5-r1 (28 Jul 2002)
+
+  12 Jul 2003; Michael Sterrett <msterret@gentoo.org>
+  penguin-command-1.6.5-r1.ebuild:
+  fix DESCRIPTION; tidy; error messages
+
+  01 Nov 2002; Jon Nall <nall@gentoo.org> penguin-command-1.6.5-r1.ebuild :
+  added ppc to KEYWORDS
+
+  18 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> penguin-command-1.6.5-r1.ebuild :
+  Updated to mirror://sourceforge in SRC_URI.
+
+  28 jul 2002; Gabriele Giorgetti <stroke@gentoo.org> penguin-command-1.6.5-r1.ebuild :
+  Added version number to deps. (Also fixes bug #5668)
+
+*penguin-command-1.6.5,  (23 May 2002)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> penguin-command-1.6.5.ebuild :
+  Added KEYWORDS, SLOT.
+
+  23 May 2002; George Shapovalov <george@gentoo.org> Changelog :
+
+  Initial release

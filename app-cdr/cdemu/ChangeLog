@@ -1,0 +1,231 @@
+# ChangeLog for app-cdr/cdemu
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdemu/ChangeLog,v 1.52 2015/04/08 07:30:32 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> cdemu-2.1.1.ebuild:
+  Remove old Python implementations
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> cdemu-3.0.0.ebuild:
+  Stable for x86, wrt bug #544156
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> cdemu-3.0.0.ebuild:
+  Stable for amd64, wrt bug #544156
+
+*cdemu-3.0.0 (21 Feb 2015)
+
+  21 Feb 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -cdemu-2.1.0-r2.ebuild, cdemu-2.1.1.ebuild, +cdemu-3.0.0.ebuild,
+  +files/cdemu-3.0.0-bash-completion-dir.patch:
+  Version bump, adds image writing (bug #518590, thanks to Rafał Mużyło).
+  Add REQUIRED_USE (bug #521834, thanks to Karl Lindén). Drop old.
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> cdemu-2.1.1.ebuild:
+  Stable for x86, wrt bug #494802
+
+  19 Jan 2014; Pacho Ramos <pacho@gentoo.org> cdemu-2.1.1.ebuild:
+  amd64 stable, bug 494802
+
+*cdemu-2.1.1 (08 Oct 2013)
+
+  08 Oct 2013; Alexandre Rostovtsev <tetromino@gentoo.org> -cdemu-2.0.0.ebuild,
+  -cdemu-2.1.0.ebuild, +cdemu-2.1.1.ebuild,
+  -files/cdemu-2.0.0-bash-completion-dir.patch:
+  Version bump. Remove old.
+
+  08 Oct 2013; Alexandre Rostovtsev <tetromino@gentoo.org> -cdemu-2.0.0.ebuild,
+  -cdemu-2.1.0.ebuild, -files/cdemu-2.0.0-bash-completion-dir.patch:
+  Remove old.
+
+  20 Jul 2013; Agostino Sarubbo <ago@gentoo.org> cdemu-2.1.0-r2.ebuild:
+  Stable for x86, wrt bug #477004
+
+  20 Jul 2013; Agostino Sarubbo <ago@gentoo.org> cdemu-2.1.0-r2.ebuild:
+  Stable for amd64, wrt bug #477004
+
+*cdemu-2.1.0-r2 (19 Jul 2013)
+
+  19 Jul 2013; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +cdemu-2.1.0-r2.ebuild, -cdemu-2.1.0-r1.ebuild,
+  files/cdemu-2.1.0-bash-completion-dir.patch:
+  Fix completion filename for bash-completion-2.1-r1 (bug #477378, thanks to
+  Alexander Tsoy).
+
+*cdemu-2.1.0-r1 (19 Jul 2013)
+
+  19 Jul 2013; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +cdemu-2.1.0-r1.ebuild, +files/cdemu-2.1.0-bash-completion-dir.patch:
+  Do not use a hard-coded completion directory to fix compatibility with
+  bash-completion-2.1-r1 (bug #477378, thanks to Michał Górny).
+
+  29 Jun 2013; Alexandre Rostovtsev <tetromino@gentoo.org> -cdemu-1.5.0.ebuild,
+  -files/cdemu-1.5.0-man-paragraph.patch:
+  Remove old.
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> cdemu-2.0.0.ebuild:
+  Stable for amd64, wrt bug #473538
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> cdemu-2.0.0.ebuild:
+  Stable for x86, wrt bug #473538
+
+*cdemu-2.1.0 (17 Jun 2013)
+
+  17 Jun 2013; Alexandre Rostovtsev <tetromino@gentoo.org> +cdemu-2.1.0.ebuild:
+  Version bump (bug #472784, thanks to Henrik Stokseth and Rafał Mużyło).
+
+*cdemu-2.0.0 (28 Jan 2013)
+
+  28 Jan 2013; Alexandre Rostovtsev <tetromino@gentoo.org> -cdemu-1.4.0.ebuild,
+  cdemu-1.5.0.ebuild, +cdemu-2.0.0.ebuild,
+  +files/cdemu-2.0.0-bash-completion-dir.patch, metadata.xml:
+  Version bump (bug #451746, thanks to Agostino Sarubbo); cdemud was renamed to
+  cdemu-daemon. Update to python-single-r1.eclass and EAPI5. Update license.
+  Drop old.
+
+  20 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> -cdemu-1.2.0.ebuild:
+  old
+
+  09 Apr 2012; Markus Meier <maekke@gentoo.org> cdemu-1.5.0.ebuild:
+  x86 stable, bug #406941
+
+  20 Mar 2012; Agostino Sarubbo <ago@gentoo.org> cdemu-1.5.0.ebuild:
+  Stable for amd64, wrt bug #406941
+
+  22 Feb 2012; Jeroen Roovers <jer@gentoo.org> cdemu-1.5.0.ebuild:
+  Marked ~hppa (bug #300331).
+
+  22 Jan 2012; Alexandre Rostovtsev <tetromino@gentoo.org> cdemu-1.5.0.ebuild:
+  Add missing upstream bug url.
+
+*cdemu-1.5.0 (22 Jan 2012)
+
+  22 Jan 2012; Alexandre Rostovtsev <tetromino@gentoo.org> -cdemu-1.3.0.ebuild,
+  +cdemu-1.5.0.ebuild:
+  Bump, now with color, bash completion, and raw CSS-encrypted DVD image
+  support (see man page). Drop old.
+
+  18 Jan 2012; Agostino Sarubbo <ago@gentoo.org> cdemu-1.4.0.ebuild:
+  Stable for amd64, wrt bug #397709
+
+  31 Dec 2011; Alexandre Rostovtsev <tetromino@gentoo.org> cdemu-1.2.0.ebuild,
+  cdemu-1.3.0.ebuild:
+  Fix py-compile idiom for automake-1.11.2 compatibility (bug #396585).
+
+*cdemu-1.4.0 (23 Nov 2011)
+
+  23 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org> cdemu-1.2.0.ebuild,
+  cdemu-1.3.0.ebuild, +cdemu-1.4.0.ebuild:
+  Bump, port to EAPI4, update description. The cdemu client is now a one-file
+  script, simplifying the ebuild considerably. (bug #384335)
+
+  22 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org> metadata.xml:
+  Add myself as maintainer.
+
+  22 Nov 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #82110
+
+  25 Oct 2010; Peter Volkov <pva@gentoo.org> cdemu-1.3.0.ebuild,
+  metadata.xml:
+  Rename nocdemud USE flag into cdemud per -dev discussion.
+
+*cdemu-1.3.0 (19 Oct 2010)
+
+  19 Oct 2010; Peter Volkov <pva@gentoo.org> +cdemu-1.3.0.ebuild,
+  metadata.xml:
+  Version bump, #334945, thank Ragas for report. Added nocdemud USE flag to
+  avoid cdemud dependency #315491 wrt Michał Górny.
+
+  06 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  cdemu-1.2.0.ebuild:
+  Use Python 2 (bug #308321).
+
+  01 Feb 2010; Peter Volkov <pva@gentoo.org> -cdemu-0.8.ebuild,
+  -cdemu-1.1.0.ebuild, -cdemu-1.1.0-r1.ebuild, cdemu-1.2.0.ebuild:
+  amd64 stable, bug #296868. Dropped old.
+
+  16 Jan 2010; Christian Faulhammer <fauli@gentoo.org> cdemu-1.2.0.ebuild:
+  stable x86, bug 296868
+
+*cdemu-1.2.0 (23 Oct 2009)
+
+  23 Oct 2009; Peter Volkov <pva@gentoo.org> +cdemu-1.2.0.ebuild:
+  Version bump, bug #279908, thank Fabio Cavallo for report.
+
+  12 Mar 2009; Tiziano Müller <dev-zero@gentoo.org> cdemu-1.1.0-r1.ebuild:
+  ... fixed bug #255400 as well by changing cdemud-dep to ~cdemud-${PV}
+
+*cdemu-1.1.0-r1 (12 Mar 2009)
+
+  12 Mar 2009; Tiziano Müller <dev-zero@gentoo.org> +cdemu-1.1.0-r1.ebuild:
+  Cleanup of the ebuild (including EAPI=2 usage, adding usage of python
+  eclass)
+
+  22 Aug 2008; Markus Meier <maekke@gentoo.org> cdemu-1.0.0.ebuild:
+  amd64 stable, bug #232566
+
+*cdemu-1.1.0 (03 Aug 2008)
+
+  03 Aug 2008; Marcelo Goes <vanquirius@gentoo.org> +cdemu-1.1.0.ebuild:
+  1.1.0 version bump for bug 232996. Thanks to Yaroslav Isakov
+  <yaroslav.isakov at gmail dot com>.
+
+  26 Jun 2008; Santiago M. Mola <coldwind@gentoo.org> cdemu-1.0.0.ebuild:
+  Add ~amd64 keyword wrt bug #198672
+
+  15 Jun 2008; Samuli Suominen <drac@gentoo.org> cdemu-1.0.0.ebuild:
+  Move intltool to DEPEND.
+
+  06 Jun 2008; Christian Faulhammer <opfer@gentoo.org> cdemu-1.0.0.ebuild:
+  stable x86, bug 224825
+
+*cdemu-1.0.0 (19 May 2008)
+
+  19 May 2008; Marcelo Goes <vanquirius@gentoo.org> metadata.xml,
+  +cdemu-1.0.0.ebuild:
+  1.0.0 version bump for bug 198672 - userspace cdemu. Thanks to Daniel Lin
+  <ephemient at gmail dot com>, Daniel Fullmer <cgibreak at gmail dot com>,
+  Sebastian Stammler <stammler at stud.tu-darmstadt.de>, Rafal Muzylo
+  <galtgendo at o2 dot pl>, Jan Bessai <Jan.Bessai at gmx dot de>, Pham Ngoc
+  Hai <pngochai at yahoo dot com>, Petr Sykora <petr.sykora at gmail dot com>,
+  Dirk Best <fatplumber at gmx dot de>, Marcel Schmedes <sm at kleinreich dot
+  de>, Vladi <vladimir.elisseev at gmail dot com>, Ambroz BIzjak <ambro at
+  b4ever dot net> and anyone I missed. Replacing vapier in metadata with his
+  permission.
+
+*cdemu-0.8 (14 Dec 2006)
+
+  14 Dec 2006; Mike Frysinger <vapier@gentoo.org> +cdemu-0.8.ebuild:
+  Version bump #143749.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> cdemu-0.7.ebuild:
+  stable on amd64
+
+  05 Dec 2004; Mike Doty <kingtaco@gentoo.org> cdemu-0.7.ebuild:
+  ~amd64 keyword added
+
+*cdemu-0.7 (22 Nov 2004)
+
+  22 Nov 2004; Mike Frysinger <vapier@gentoo.org> -cdemu-0.6_beta.ebuild,
+  +cdemu-0.7.ebuild:
+  Version bump.
+
+  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  cdemu-0.5.3.ebuild, cdemu-0.6_beta.ebuild:
+  QA - IUSE fix
+
+*cdemu-0.6_beta (10 Mar 2004)
+
+  10 Mar 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #39163.
+
+*cdemu-0.5.3 (18 Sep 2003)
+
+  24 Jan 2004; Alastair Tse <liquidx@gentoo.org> cdemu-0.5.3.ebuild:
+  fix hardcoded python2.2 paths (#39284)
+
+  18 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bumpage #25279.
+
+*virtualcd-0.4 (29 Apr 2003)
+
+  29 Apr 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

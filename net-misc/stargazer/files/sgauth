@@ -1,0 +1,27 @@
+#!/sbin/runscript
+
+DAEMON=/usr/sbin/sgauth
+SGAUTH_OPTS="/etc/stargazer/sgauth.conf"
+PIDFILE="/run/sgauth.pid"
+
+depend() {
+	need net
+	provide sgauth
+}
+
+start() {
+	ebegin "Starting sgauth"
+	start-stop-daemon --start --quiet --pidfile ${PIDFILE} --exec ${DAEMON} -- ${SGAUTH_OPTS}
+	eend $?
+}
+
+start_post() {
+	pgrep -n $RC_SVCNAME > ${PIDFILE}
+}
+
+stop() {
+	ebegin "Stopping sgauth"
+	start-stop-daemon --stop --quiet --pidfile ${PIDFILE}
+	rm -f ${PIDFILE}
+	eend $?
+}

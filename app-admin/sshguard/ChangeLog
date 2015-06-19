@@ -1,0 +1,96 @@
+# ChangeLog for app-admin/sshguard
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/sshguard/ChangeLog,v 1.22 2015/06/09 08:44:57 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*sshguard-1.5-r3 (05 Aug 2014)
+
+  05 Aug 2014; Jeroen Roovers <jer@gentoo.org> +sshguard-1.5-r3.ebuild,
+  +files/sshguard-1.5-day-starts-with-0.patch:
+  Fix parsing metalog entries with days starting with 0 by Amyas (bug #518988).
+
+  31 Jan 2013; Jeroen Roovers <jer@gentoo.org> files/sshguard.confd:
+  Fix case in man page reference, by Marckus J. (bug #454788).
+
+  17 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> sshguard-1.5-r2.ebuild:
+  Replace append-flags with append-cppflags
+
+*sshguard-1.5-r2 (17 Jan 2013)
+
+  17 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> +sshguard-1.5-r2.ebuild:
+  Revision bump: EAPI 5, add output about selected firewall backend through
+  einfo
+
+  17 Jan 2012; Jeroen Roovers <jer@gentoo.org> -sshguard-1.0.ebuild,
+  -sshguard-1.1.ebuild, -sshguard-1.3.ebuild, -sshguard-1.4.ebuild:
+  Old.
+
+  15 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> sshguard-1.5-r1.ebuild:
+  x86 stable wrt bug #396757
+
+  07 Jan 2012; Agostino Sarubbo <ago@gentoo.org> sshguard-1.5-r1.ebuild:
+  Stable for AMD64, wrt bug #396757
+
+*sshguard-1.5-r1 (25 Apr 2011)
+
+  25 Apr 2011; Jeroen Roovers <jer@gentoo.org> -sshguard-1.5.ebuild,
+  +sshguard-1.5-r1.ebuild, files/sshguard.initd:
+  Use the correct init.d file, and RDEPEND on openrc, by Johan Bergström (bug
+  #351665).
+
+  23 Apr 2011; Jeroen Roovers <jer@gentoo.org> files/sshguard.confd,
+  files/sshguard.initd:
+  Add --wait option to s-s-d to measure success or failure better.
+
+*sshguard-1.5 (23 Apr 2011)
+
+  23 Apr 2011; Jeroen Roovers <jer@gentoo.org> +sshguard-1.5.ebuild,
+  +files/sshguard.confd, +files/sshguard.initd:
+  Version bump thanks to Johan Bergström and Roland Hopferwieser (bug
+  #351665).
+
+*sshguard-1.4 (12 Nov 2009)
+
+  12 Nov 2009; Peter Volkov <pva@gentoo.org> +sshguard-1.4.ebuild:
+  Version bump, bug #292645, thank Stefan Nilsson for report.
+
+  22 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing hawking as a maintainer since he was retired.
+
+*sshguard-1.3 (22 Dec 2008)
+
+  22 Dec 2008; Marcelo Goes <vanquirius@gentoo.org> +sshguard-1.3.ebuild:
+  1.3 version bump for bug 246823. Thanks to Priit Laes
+  <amd at store20 dot com>.
+
+*sshguard-1.1 (31 Aug 2008)
+
+  31 Aug 2008; Ali Polatel <hawking@gentoo.org> +sshguard-1.1.ebuild:
+  Version bump.
+
+  18 Jul 2008; Dawid Węgliński <cla@gentoo.org> sshguard-1.0.ebuild:
+  amd64 stable (bug #225235)
+
+  17 Jul 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  14 Jun 2008; Raúl Porcel <armin76@gentoo.org> sshguard-1.0.ebuild:
+  x86 stable wrt #225235
+
+  15 Aug 2007; Steve Dibb <beandog@gentoo.org> sshguard-1.0.ebuild:
+  add ~amd64, bug 188693
+
+  08 Jul 2007; Ali Polatel <hawking@gentoo.org> sshguard-1.0.ebuild:
+  Added support for g/fbsd (bug #182926 thanks to Pierre Guinoiseau)
+
+  22 Jun 2007; Ali Polatel <hawking@gentoo.org> sshguard-1.0.ebuild:
+  Added virtual/logger to RDEPEND
+
+*sshguard-1.0 (21 Jun 2007)
+
+  21 Jun 2007; Ali Polatel (hawking) <polatel@gmail.com>
+  +sshguard-1.0.ebuild:
+  Import from gentoo-sunrise, bug #169754 (thanks to Brandon Captain)

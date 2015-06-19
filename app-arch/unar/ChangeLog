@@ -1,0 +1,54 @@
+# ChangeLog for app-arch/unar
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/unar/ChangeLog,v 1.9 2014/12/25 13:02:05 hanno Exp $
+
+*unar-1.8.1 (25 Dec 2014)
+
+  25 Dec 2014; <hanno@gentoo.org> +unar-1.8.1.ebuild:
+  Bump, respect CFLAGS.
+
+  30 Aug 2014; Chema Alonso <nimiux@gentoo.org> unar-1.6.ebuild:
+  Stable for amd64 wrt bug #513742
+
+  10 Aug 2014; Patrick Lauer <patrick@gentoo.org> unar-1.1.ebuild,
+  unar-1.2.ebuild:
+  Fix description for more repoman happy
+
+  02 Mar 2014; Andreas K. Huettel <dilfridge@gentoo.org> unar-1.6.ebuild:
+  Add subslot dependency on dev-libs/icu
+
+*unar-1.6 (19 Jun 2013)
+
+  19 Jun 2013; Patrick Lauer <patrick@gentoo.org> +unar-1.6.ebuild:
+  Bump
+
+  05 May 2013; Mike Frysinger <vapier@gentoo.org> unar-1.5.ebuild:
+  Respect AR/CXX/CPPFLAGS, and use CXX when linking #464042 by Patrick Lauer.
+
+*unar-1.5 (10 Jan 2013)
+
+  10 Jan 2013; Hanno Boeck <hanno@gentoo.org> +unar-1.5.ebuild:
+  Version bump.
+
+*unar-1.2 (17 Sep 2012)
+
+  17 Sep 2012; Hanno Boeck <hanno@gentoo.org> +unar-1.2.ebuild:
+  Version bump.
+
+*unar-1.1 (03 Sep 2012)
+
+  03 Sep 2012; Hanno Boeck <hanno@gentoo.org> +unar-1.1.ebuild, +metadata.xml:
+  Bump, move to upstream-preferred name and versioning scheme.
+
+  09 Oct 2011; Hanno Boeck <hanno@gentoo.org> TheUnarchiver-2.7.1.ebuild:
+  Add missing dep to icu.
+
+  09 Oct 2011; Hanno Boeck <hanno@gentoo.org> TheUnarchiver-2.7.1.ebuild:
+  Raise dependency for gnustep-make, versions before 2.6.0 use incompatible
+  paths.
+
+*TheUnarchiver-2.7.1 (08 Oct 2011)
+
+  08 Oct 2011; Hanno Boeck <hanno@gentoo.org> +TheUnarchiver-2.7.1.ebuild,
+  +metadata.xml:
+  Initial commit, unpacker for various archiving formats including rar v3.

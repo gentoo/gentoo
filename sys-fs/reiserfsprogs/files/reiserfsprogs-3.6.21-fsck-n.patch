@@ -1,0 +1,14 @@
+--- fsck/main.c
++++ fsck/main.c
+@@ -421,8 +421,9 @@
+ 	(data->log == stdout) ? "stdout" : 
+ 	(data->log_file_name ? data->log_file_name : "fsck.run"));
+     
+-    if (!(data->options & OPT_YES) && !user_confirmed (warn_to, "\nDo you want to "
+-	"run this program?[N/Yes] (note need to type Yes if you do):", "Yes\n"))
++    if (!(data->options & OPT_YES) && !(data->options & OPT_SILENT) &&
++	!user_confirmed (warn_to, "\nDo you want to run this program?[N/Yes] "
++	"(note need to type Yes if you do):", "Yes\n"))
+ 	exit (EXIT_USER);
+ }
+ 

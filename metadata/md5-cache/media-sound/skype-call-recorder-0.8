@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=media-libs/id3lib >=media-libs/libogg-1.2.0 >=media-libs/libvorbis-1.2.0 media-sound/lame >=dev-qt/qtcore-4.4:4 >=dev-qt/qtdbus-4.4:4 >=dev-qt/qtgui-4.4:4 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Records Skype calls to MP3/Ogg/WAV files
+EAPI=4
+HOMEPAGE=http://atdot.ch/scr/
+IUSE=debug
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( GPL-2 GPL-3 )
+RDEPEND=media-libs/id3lib >=media-libs/libogg-1.2.0 >=media-libs/libvorbis-1.2.0 media-sound/lame >=dev-qt/qtcore-4.4:4 >=dev-qt/qtdbus-4.4:4 >=dev-qt/qtgui-4.4:4 net-im/skype[-qt-static(-)]
+SLOT=0
+SRC_URI=http://atdot.ch/scr/files/0.8/skype-call-recorder-0.8.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=5673483a37ce8df2b3b7ceab1324decf

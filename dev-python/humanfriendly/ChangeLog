@@ -1,0 +1,20 @@
+# ChangeLog for dev-python/humanfriendly
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/humanfriendly/ChangeLog,v 1.3 2015/06/04 07:09:37 jlec Exp $
+
+*humanfriendly-1.27 (04 Jun 2015)
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> +humanfriendly-1.27.ebuild:
+  Version Bump
+
+*humanfriendly-1.26 (03 Jun 2015)
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> +humanfriendly-1.26.ebuild,
+  metadata.xml:
+  Version Bump
+
+*humanfriendly-1.25 (29 May 2015)
+
+  29 May 2015; Justin Lecher <jlec@gentoo.org> +humanfriendly-1.25.ebuild,
+  +metadata.xml:
+  New package, ebuild written by me

@@ -1,0 +1,84 @@
+# ChangeLog for dev-libs/ding-libs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/ding-libs/ChangeLog,v 1.21 2015/04/10 00:10:17 blueness Exp $
+
+  10 Apr 2015; Anthony G. Basile <blueness@gentoo.org> ding-libs-0.4.0.ebuild:
+  Keyword ~ppc, ~ppc64.  Bug #540540.
+
+  06 Mar 2015; Jeroen Roovers <jer@gentoo.org> ding-libs-0.4.0.ebuild:
+  Marked ~hppa (bug #540540).
+
+  03 Mar 2015; Markus Meier <maekke@gentoo.org> ding-libs-0.4.0.ebuild:
+  add ~arm, bug #540540
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -ding-libs-0.1.3.ebuild,
+  -ding-libs-0.2.91.ebuild, -ding-libs-0.3.0.1.ebuild:
+  Remove old.
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> ding-libs-0.4.0.ebuild:
+  Stable for x86, wrt bug #535106
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> ding-libs-0.4.0.ebuild:
+  Stable for amd64, wrt bug #535106
+
+*ding-libs-0.4.0 (27 Jun 2014)
+
+  27 Jun 2014; Maxim Koltsov <maksbotan@gentoo.org> +ding-libs-0.4.0.ebuild:
+  Bump to 0.4.0, thanks to slepnoga
+
+  01 Dec 2013; Markos Chandras <hwoarang@gentoo.org> ding-libs-0.1.3.ebuild,
+  ding-libs-0.2.91.ebuild, ding-libs-0.3.0.1.ebuild:
+  Do not override src_install function. Fixes installation failures
+
+  14 Jul 2013; Agostino Sarubbo <ago@gentoo.org> ding-libs-0.3.0.1.ebuild:
+  Stable for x86, wrt bug #476792
+
+  14 Jul 2013; Agostino Sarubbo <ago@gentoo.org> ding-libs-0.3.0.1.ebuild:
+  Stable for amd64, wrt bug #476792
+
+*ding-libs-0.3.0.1 (07 Apr 2013)
+
+  07 Apr 2013; Maxim Koltsov <maksbotan@gentoo.org> +ding-libs-0.3.0.1.ebuild:
+  Bump to 0.3.0.1, thanks to slepnoga
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  03 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Correct metadata, requested by Andreis Vinogradovs
+
+*ding-libs-0.2.91 (06 Aug 2012)
+
+  06 Aug 2012; Maxim Koltsov <maksbotan@gentoo.org> +ding-libs-0.2.91.ebuild:
+  Bump to 0.2.91, thanks to slepnoga
+
+  02 Jun 2012; Maxim Koltsov <maksbotan@gentoo.org> -ding-libs-0.1.2-r1.ebuild:
+  Remove old 0.1.2-r1
+
+  21 May 2012; Jeff Horelick <jdhore@gentoo.org> ding-libs-0.1.3.ebuild:
+  marked x86 per bug 415505
+
+  02 Mar 2012; Agostino Sarubbo <ago@gentoo.org> ding-libs-0.1.3.ebuild:
+  Stable for amd64, wrt bug #406291
+
+  04 Feb 2012; Maxim Koltsov <maksbotan@gentoo.org> metadata.xml:
+  Fix maintainer's email in metadata
+
+*ding-libs-0.1.3 (08 Oct 2011)
+
+  08 Oct 2011; Maxim Koltsov <maksbotan@gentoo.org> +ding-libs-0.1.3.ebuild:
+  Bump to 0.1.3, by slepnoga.
+
+*ding-libs-0.1.2-r1 (15 Sep 2011)
+
+  15 Sep 2011; Maxim Koltsov <maksbotan@gentoo.org>
+  +ding-libs-0.1.2-r1.ebuild, -ding-libs-0.1.2.ebuild:
+  (ChangeLog by Andreis Vinogradovs <spamslepnoga@inbox.ru>)
+  Disable install useless .la files  #382715; 
+  Thanks Samuli Suominen <ssuominen@gentoo.org> for report
+
+*ding-libs-0.1.2 (11 Aug 2011)
+
+  11 Aug 2011; Maxim Koltsov <maksbotan@gentoo.org> +ding-libs-0.1.2.ebuild,
+  +metadata.xml:
+  Add initial ebuild from rion-overlay, thanks to slepnoga

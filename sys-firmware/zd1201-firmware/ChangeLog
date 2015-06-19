@@ -1,0 +1,56 @@
+# ChangeLog for sys-firmware/zd1201-firmware
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-firmware/zd1201-firmware/ChangeLog,v 1.1 2013/02/11 14:12:05 ssuominen Exp $
+
+  11 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +zd1201-firmware-0.14.ebuild, +metadata.xml:
+  Move from net-wireless category.
+
+  10 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  zd1201-firmware-0.14.ebuild:
+  Update GPL-2 to GPL-3 as per upstream homepage linking to GPL-3 license.
+
+  08 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  zd1201-firmware-0.14.ebuild:
+  Remove virtual/udev dependency wrt #432504
+
+  21 Jan 2013; Samuli Suominen <ssuominen@gentoo.org>
+  zd1201-firmware-0.14.ebuild:
+  Remove sys-apps/hotplug dependency from || () in favour of virtual/udev wrt
+  #145809
+
+  11 Dec 2012; Ian Stakenvicius <axs@gentoo.org> zd1201-firmware-0.14.ebuild:
+  virtualize udev dependency
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+  28 Sep 2012; Tony Vroon <chainsaw@gentoo.org> zd1201-firmware-0.14.ebuild:
+  Incorrect license value now adjusted as per Ulrich Müller in bug #436064;
+  this relies on research by Alexandre "tetromino" Rostovtsev.
+
+  25 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  zd1201-firmware-0.14.ebuild:
+  Stable on amd64/ppc64 for bug #208452.
+
+  05 Feb 2007; Doug Goldstein <cardoe@gentoo.org>
+  zd1201-firmware-0.14.ebuild:
+  Fixing udev/hotplug depend
+
+  14 Jan 2007; Markus Rothe <corsair@gentoo.org>
+  zd1201-firmware-0.14.ebuild:
+  Added ~ppc64; bug #161890
+
+  17 Sep 2006; Jason Huebel <jhuebel@gentoo.org>
+  zd1201-firmware-0.14.ebuild:
+  ~amd64, bug #104709
+
+  20 Jun 2005; Stefan Schweizer <genstef@gentoo.org>
+  zd1201-firmware-0.14.ebuild:
+  x86 stable
+
+*zd1201-firmware-0.14 (16 Apr 2005)
+
+  16 Apr 2005; Stefan Schweizer <genstef@gentoo.org> +metadata.xml,
+  +zd1201-firmware-0.14.ebuild:
+  New ebuild thanks to Ajay Gautam <ajaygautam@yahoo.com> in bug 89183

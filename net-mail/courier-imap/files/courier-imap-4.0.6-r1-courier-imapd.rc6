@@ -1,0 +1,36 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/courier-imap/files/courier-imap-4.0.6-r1-courier-imapd.rc6,v 1.4 2014/11/20 10:25:15 mrueg Exp $
+
+depend() {
+	need net courier-authlib
+	use famd
+}
+
+source /etc/courier-imap/imapd
+
+checkconfig() {
+	if [[ ! -e /etc/courier-imap/imapd ]] ; then
+		eerror "You need an /etc/courier-imap/imapd file to run courier-imapd"
+		return 1
+	fi
+	source /etc/courier-imap/imapd || {
+		eerror "There are syntax errors in /etc/courier-imap/imapd"
+		eerror "Please correct them before trying to start courier-imapd"
+		return 2
+	}
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting courier-imapd"
+	/usr/bin/env - /usr/GENTOO_LIBDIR/courier-imap/gentoo-imapd.rc --pid=${PIDFILE}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping courier-imapd"
+	start-stop-daemon --quiet --stop --pid=${PIDFILE}
+	eend $?
+}

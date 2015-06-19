@@ -1,0 +1,54 @@
+# ChangeLog for app-vim/surround
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/surround/ChangeLog,v 1.14 2015/02/08 23:53:57 radhermit Exp $
+
+*surround-2.1 (08 Feb 2015)
+
+  08 Feb 2015; Tim Harder <radhermit@gentoo.org> +surround-2.1.ebuild:
+  Version bump.
+
+  28 May 2013; Tim Harder <radhermit@gentoo.org> -surround-1.90.ebuild:
+  Remove old.
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> surround-2.0.ebuild:
+  Stable for x86, wrt bug #457258
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> surround-2.0.ebuild:
+  Stable for amd64, wrt bug #457258
+
+*surround-2.0 (13 Jan 2013)
+
+  13 Jan 2013; Tim Harder <radhermit@gentoo.org> +surround-2.0.ebuild:
+  Version bump.
+
+  27 Nov 2012; Ulrich Müller <ulm@gentoo.org> surround-1.90.ebuild:
+  Fix LICENSE, distributed under the same terms as Vim itself, bug 444968.
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, #274113
+
+  17 Nov 2010; Tim Harder <radhermit@gentoo.org> -surround-1.34.ebuild:
+  Remove old version.
+
+  16 Nov 2010; Christian Faulhammer <fauli@gentoo.org> surround-1.90.ebuild:
+  stable x86, bug 345359
+
+  14 Nov 2010; Markos Chandras <hwoarang@gentoo.org> surround-1.90.ebuild:
+  Stable on amd64 wrt bug #345359
+
+  23 May 2010; Pacho Ramos <pacho@gentoo.org> surround-1.34.ebuild:
+  stable amd64, bug 307839
+
+*surround-1.90 (25 Mar 2010)
+
+  25 Mar 2010; Dror Levin <spatz@gentoo.org> +surround-1.90.ebuild:
+  Version bump.
+
+  12 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> surround-1.34.ebuild:
+  x86 stable wrt bug #307839
+
+*surround-1.34 (19 Jan 2010)
+
+  19 Jan 2010; Dror Levin <spatz@gentoo.org> +surround-1.34.ebuild,
+  +metadata.xml:
+  Initial import.

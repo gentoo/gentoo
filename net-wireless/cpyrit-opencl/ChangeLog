@@ -1,0 +1,27 @@
+# ChangeLog for net-wireless/cpyrit-opencl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/cpyrit-opencl/ChangeLog,v 1.6 2015/03/28 07:37:15 patrick Exp $
+
+  28 Mar 2015; Patrick Lauer <patrick@gentoo.org> cpyrit-opencl-0.4.0-r1.ebuild:
+  Whitespace
+
+*cpyrit-opencl-0.4.0-r1 (27 Mar 2015)
+
+  27 Mar 2015; Ian Delaney <idella4@gentoo.org> +cpyrit-opencl-0.4.0-r1.ebuild:
+  revbump; conversion -> distutils-r1
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml and add missing attribute
+
+  30 Mar 2012; Maxim Koltsov <maksbotan@gentoo.org> cpyrit-opencl-0.4.0.ebuild:
+  Fix RESTRICT_PYTHON_ABIS to be 3.*
+
+  29 Mar 2012; Maxim Koltsov <maksbotan@gentoo.org> cpyrit-opencl-0.4.0.ebuild:
+  Fix error in DESCRIPTION, add PDEPEND to pyrit
+
+*cpyrit-opencl-0.4.0 (29 Mar 2012)
+
+  29 Mar 2012; Maxim Koltsov <maksbotan@gentoo.org> +cpyrit-opencl-0.4.0.ebuild,
+  +metadata.xml:
+  Add pyrit with opencl and cuda plugins, thanks to Oleg Kravchenko
+  <oleg@kaa.org.ua>. Bugs 309815, 309817, 309813.

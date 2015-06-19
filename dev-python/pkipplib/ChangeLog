@@ -1,0 +1,20 @@
+# ChangeLog for dev-python/pkipplib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pkipplib/ChangeLog,v 1.4 2015/02/01 21:23:43 mrueg Exp $
+
+  01 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -pkipplib-0.07.ebuild:
+  Remove old.
+
+*pkipplib-0.07-r1 (25 Dec 2014)
+
+  25 Dec 2014; Michał Górny <mgorny@gentoo.org> +pkipplib-0.07-r1.ebuild:
+  Convert to distutils-r1.
+
+  24 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pkipplib-0.07.ebuild:
+  Fix dependencies. Set SUPPORT_PYTHON_ABIS.
+
+*pkipplib-0.07 (08 Apr 2007)
+
+  08 Apr 2007; Bryan Østergaard <kloeri@gentoo.org> +pkipplib-0.07.ebuild:
+  Initial commit, ebuild by gentoofan23 from bug 161442. Also marked it ~x86.

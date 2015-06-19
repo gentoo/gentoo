@@ -1,0 +1,42 @@
+# ChangeLog for app-emulation/libguestfs-appliance
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libguestfs-appliance/ChangeLog,v 1.6 2015/05/27 20:04:41 maksbotan Exp $
+
+*libguestfs-appliance-1.28.1-r1 (27 May 2015)
+
+  27 May 2015; Maxim Koltsov <maksbotan@gentoo.org>
+  +libguestfs-appliance-1.28.1-r1.ebuild:
+  Keep README.fixed in /usr/share/guestfs/appliance, see RedHat bug
+  https://bugzilla.redhat.com/show_bug.cgi?id=1183780. Thanks to lk4d4 for
+  report.
+
+  05 Dec 2014; Maxim Koltsov <maksbotan@gentoo.org>
+  -libguestfs-appliance-1.20.0.ebuild, -libguestfs-appliance-1.24.8.ebuild,
+  -libguestfs-appliance-1.26.0.ebuild:
+  Clean old, thanks to slepnoga
+
+*libguestfs-appliance-1.28.1 (23 Nov 2014)
+
+  23 Nov 2014; Maxim Koltsov <maksbotan@gentoo.org>
+  +libguestfs-appliance-1.28.1.ebuild:
+  Bump to 1.28.1 for the new libguestfs version
+
+*libguestfs-appliance-1.26.0-r1 (08 Nov 2014)
+
+  08 Nov 2014; Mike Frysinger <vapier@gentoo.org>
+  +libguestfs-appliance-1.26.0-r1.ebuild:
+  Unpack directly into $D to speed the install up.  Add a blocker against older
+  libguestfs versions #501588 by Ernest CHIARELLO.
+
+*libguestfs-appliance-1.24.8 (01 May 2014)
+*libguestfs-appliance-1.26.0 (01 May 2014)
+
+  01 May 2014; Maxim Koltsov <maksbotan@gentoo.org>
+  +libguestfs-appliance-1.24.8.ebuild, +libguestfs-appliance-1.26.0.ebuild:
+  Bump to 1.24.8 and 1.26.0
+
+*libguestfs-appliance-1.20.0 (25 Mar 2013)
+
+  25 Mar 2013; Maxim Koltsov <maksbotan@gentoo.org> +files/env.file,
+  +libguestfs-appliance-1.20.0.ebuild, +metadata.xml:
+  Add app-emulation/libguestfs-appliance, thanks to slepnoga

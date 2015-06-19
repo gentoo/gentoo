@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prepare setup
+DEPEND=app-crypt/gnupg app-misc/lockfile-progs dev-perl/Crypt-OpenSSL-RSA dev-perl/Digest-SHA1 || ( net-analyzer/netcat net-misc/socat ) test? ( net-misc/socat )
+DESCRIPTION=Leverage the OpenPGP web of trust for OpenSSH and Web authentication
+EAPI=5
+HOMEPAGE=http://web.monkeysphere.info/
+IUSE=test
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-3
+RDEPEND=app-crypt/gnupg app-misc/lockfile-progs dev-perl/Crypt-OpenSSL-RSA dev-perl/Digest-SHA1 || ( net-analyzer/netcat net-misc/socat )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://archive.monkeysphere.info/debian/pool/monkeysphere/m/monkeysphere/monkeysphere_0.36.orig.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=b0ad40b4ea6b3003c6117df2e590fdd9

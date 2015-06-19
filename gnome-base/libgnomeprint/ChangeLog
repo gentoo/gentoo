@@ -1,0 +1,816 @@
+# ChangeLog for gnome-base/libgnomeprint
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/libgnomeprint/ChangeLog,v 1.208 2014/11/21 09:18:40 pacho Exp $
+
+  21 Nov 2014; Pacho Ramos <pacho@gentoo.org> -libgnomeprint-2.18.8.ebuild:
+  Drop old
+
+  11 Oct 2014; Markus Meier <maekke@gentoo.org> libgnomeprint-2.18.8-r1.ebuild:
+  arm stable, bug #512012
+
+  15 Sep 2014; Agostino Sarubbo <ago@gentoo.org> libgnomeprint-2.18.8-r1.ebuild:
+  Stable for sparc, wrt bug #512012
+
+  25 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libgnomeprint-2.18.8-r1.ebuild:
+  Stable for alpha, wrt bug #512012
+
+  23 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libgnomeprint-2.18.8-r1.ebuild:
+  Stable for ia64, wrt bug #512012
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libgnomeprint-2.18.8-r1.ebuild:
+  Stable for ppc64, wrt bug #512012
+
+  28 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libgnomeprint-2.18.8-r1.ebuild:
+  Stable for ppc, wrt bug #512012
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libgnomeprint-2.18.8-r1.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libgnomeprint-2.18.8-r1.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  07 Jul 2014; Michał Górny <mgorny@gentoo.org>
+  files/libgnomeprint-2.18.8-cups-config.patch:
+  Fix incomplete substitution of cups-config, bug #516566.
+
+*libgnomeprint-2.18.8-r1 (29 Jun 2014)
+
+  29 Jun 2014; Michał Górny <mgorny@gentoo.org>
+  +files/libgnomeprint-2.18.8-cups-config.patch,
+  +libgnomeprint-2.18.8-r1.ebuild:
+  Enable multilib support, required for gnome-base/libgnomeprintui. Bug #515652.
+
+  29 Apr 2014; Lars Wendler <polynomial-c@gentoo.org>
+  libgnomeprint-2.18.8.ebuild, +files/libgnomeprint-2.18.8-bison3.patch:
+  Fix compilation with >=sys-devel/bison-3.0 (bug #486408) with kind permission
+  from gnome team.
+
+  17 Mar 2014; Alexandre Rostovtsev <tetromino@gentoo.org>
+  libgnomeprint-2.18.8.ebuild, files/libgnomeprint-2.18.8-freetype-2.5.1.patch:
+  Fix patch to work with both freetype-2.4.11 and >=2.5.1 (bug #504850, thanks
+  to Fabio Rossi).
+
+  17 Mar 2014; Alexandre Rostovtsev <tetromino@gentoo.org>
+  libgnomeprint-2.18.8.ebuild,
+  +files/libgnomeprint-2.18.8-freetype-2.5.1.patch:
+  Fix building with >=freetype-2.5.1 (bug #504850, thanks to Harris
+  Landgarten).
+
+  29 May 2012; Alexis Ballier <aballier@gentoo.org>
+  libgnomeprint-2.18.8.ebuild:
+  keyword ~amd64-fbsd
+
+  21 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  libgnomeprint-2.18.8.ebuild:
+  Need eutils for epatch.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> libgnomeprint-2.18.8.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  03 Feb 2012; Justin Lecher <jlec@gentoo.org> libgnomeprint-2.18.8.ebuild,
+  +files/libgnomeprint-2.18.8-stdio-include.patch:
+  Include missing header patch, thanks Rolf S. Arvidson for the patch, #383243
+
+  02 Oct 2011; Pacho Ramos <pacho@gentoo.org> -libgnomeprint-2.18.7.ebuild,
+  libgnomeprint-2.18.8.ebuild:
+  Drop DEPRECATED flags, bug #384807; remove old.
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org> libgnomeprint-2.18.8.ebuild:
+  Marking libgnomeprint-2.18.8 ppc stable for bug 353436
+
+  21 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  libgnomeprint-2.18.8.ebuild:
+  ppc64 stable wrt #353436
+
+  30 Jan 2011; Raúl Porcel <armin76@gentoo.org> libgnomeprint-2.18.8.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #348987
+
+  19 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  libgnomeprint-2.18.8.ebuild:
+  Stable on amd64 wrt bug #348987
+
+  18 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  libgnomeprint-2.18.8.ebuild:
+  x86 stable, bug 348987
+
+  09 Oct 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -libgnomeprint-2.18.6.ebuild:
+  Clean up old revision.
+
+  08 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  libgnomeprint-2.18.7.ebuild:
+  ppc64 stable wrt #324077
+
+*libgnomeprint-2.18.8 (28 Sep 2010)
+
+  28 Sep 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  +libgnomeprint-2.18.8.ebuild:
+  Version bump. Translation updates.
+
+  11 Sep 2010; Joseph Jezak <josejx@gentoo.org> libgnomeprint-2.18.7.ebuild:
+  Marked ppc for bug #324077.
+
+  18 Aug 2010; Markus Meier <maekke@gentoo.org> libgnomeprint-2.18.7.ebuild:
+  arm stable, bug #314899
+
+  14 Aug 2010; Raúl Porcel <armin76@gentoo.org>
+  libgnomeprint-2.18.7.ebuild:
+  alpha/ia64/sh/sparc stable wrt #314899
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org> libgnomeprint-2.18.6.ebuild,
+  libgnomeprint-2.18.7.ebuild:
+  Drop HPPA keywording (bug #324511).
+
+  04 Jun 2010; Markus Meier <maekke@gentoo.org> libgnomeprint-2.18.7.ebuild:
+  x86 stable, bug #314899
+
+  03 May 2010; Olivier Crête <tester@gentoo.org>
+  libgnomeprint-2.18.7.ebuild:
+  amd64 stable, bug #314899
+
+  12 Apr 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -libgnomeprint-2.18.4.ebuild, -libgnomeprint-2.18.5.ebuild:
+  Clean up old revisions.
+
+*libgnomeprint-2.18.7 (30 Mar 2010)
+
+  30 Mar 2010; Pacho Ramos <pacho@gentoo.org> +libgnomeprint-2.18.7.ebuild:
+  Version bump with mostly translation updates.
+
+  17 Jan 2010; Jeroen Roovers <jer@gentoo.org> libgnomeprint-2.18.6.ebuild:
+  Stable for HPPA (bug #281427).
+
+  16 Jan 2010; Raúl Porcel <armin76@gentoo.org>
+  libgnomeprint-2.18.6.ebuild:
+  sh stable
+
+  10 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  libgnomeprint-2.18.6.ebuild:
+  Transfer Prefix keywords
+
+  03 Dec 2009; Brent Baude <ranger@gentoo.org> libgnomeprint-2.18.6.ebuild:
+  Marking libgnomeprint-2.18.6 ppc64 stable for bug 281427
+
+  28 Nov 2009; Raúl Porcel <armin76@gentoo.org>
+  libgnomeprint-2.18.6.ebuild:
+  alpha/ia64/sparc stable wrt #281427
+
+  05 Nov 2009; Markus Meier <maekke@gentoo.org> libgnomeprint-2.18.6.ebuild:
+  arm stable, bug #281427
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> libgnomeprint-2.18.6.ebuild:
+  ppc stable #281427
+
+  16 Oct 2009; Markus Meier <maekke@gentoo.org> libgnomeprint-2.18.6.ebuild:
+  x86 stable, bug #281427
+
+  08 Oct 2009; Olivier Crête <tester@gentoo.org>
+  libgnomeprint-2.18.6.ebuild:
+  Stable on amd64, bug #281427
+
+  27 Apr 2009; Jeroen Roovers <jer@gentoo.org> libgnomeprint-2.18.5:
+  Stable for HPPA (bug #260063).
+
+  12 Apr 2009; Friedrich Oslage <bluebird@gentoo.org>
+  libgnomeprint-2.18.5.ebuild:
+  Stable on sparc, bug #260063
+
+  18 Mar 2009; Raúl Porcel <armin76@gentoo.org>
+  libgnomeprint-2.18.5.ebuild:
+  alpha/ia64 stable wrt #260063
+
+  15 Mar 2009; Markus Meier <maekke@gentoo.org> libgnomeprint-2.18.5.ebuild:
+  x86 stable, bug #260063
+
+  11 Mar 2009; Daniel Gryniewicz <dang@gentoo.org>
+  libgnomeprint-2.18.5.ebuild:
+  Marked stable on amd64
+
+*libgnomeprint-2.18.6 (08 Mar 2009)
+
+  08 Mar 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +libgnomeprint-2.18.6.ebuild:
+  Bump to 2.18.6. Build fixes and translation updates.
+
+  06 Mar 2009; Brent Baude <ranger@gentoo.org> libgnomeprint-2.18.5.ebuild:
+  Marking libgnomeprint-2.18.5 ppc stable for bug 260063
+
+  05 Mar 2009; Brent Baude <ranger@gentoo.org> libgnomeprint-2.18.5.ebuild:
+  Marking libgnomeprint-2.18.5 ppc64 stable for bug 260063
+
+*libgnomeprint-2.18.5 (27 Sep 2008)
+
+  27 Sep 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +libgnomeprint-2.18.5.ebuild:
+  bump to 2.18.5. Updated translations.
+
+  28 Aug 2008; Diego Pettenò <flameeyes@gentoo.org>
+  libgnomeprint-2.18.4.ebuild:
+  Explicitly disable papi backend or it will automagically use it.
+
+  14 May 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  -libgnomeprint-2.18.0.ebuild, -libgnomeprint-2.18.3.ebuild:
+  clean up old revisions.
+
+  22 Mar 2008; Daniel Gryniewicz <dang@gentoo.org>
+  libgnomeprint-2.18.4.ebuild:
+  Marked stable on amd64 for bug #212986
+
+  17 Mar 2008; Jeroen Roovers <jer@gentoo.org> libgnomeprint-2.18.4.ebuild:
+  Stable for HPPA (bug #212986).
+
+  15 Mar 2008; Brent Baude <ranger@gentoo.org> libgnomeprint-2.18.4.ebuild:
+  Marking libgnomeprint-2.18.4 ppc64 for bug 212986
+
+  15 Mar 2008; nixnut <nixnut@gentoo.org> libgnomeprint-2.18.4.ebuild:
+  Stable on ppc wrt bug 212986
+
+  14 Mar 2008; Raúl Porcel <armin76@gentoo.org>
+  libgnomeprint-2.18.4.ebuild:
+  alpha/ia64/sparc stable wrt #212986
+
+  12 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  libgnomeprint-2.18.4.ebuild:
+  stable x86, bug 212986
+
+*libgnomeprint-2.18.4 (15 Feb 2008)
+
+  15 Feb 2008; Mart Raudsepp <leio@gentoo.org> +libgnomeprint-2.18.4.ebuild:
+  Version bump
+
+  04 Feb 2008; Jeroen Roovers <jer@gentoo.org> libgnomeprint-2.18.3.ebuild:
+  Stable for HPPA (bug #208366).
+
+  03 Feb 2008; Raúl Porcel <armin76@gentoo.org>
+  libgnomeprint-2.18.3.ebuild:
+  alpha/ia64/sparc stable wrt #208366
+
+  02 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  libgnomeprint-2.18.3.ebuild:
+  Stable on amd64 wrt bug #208366.
+
+  01 Feb 2008; Brent Baude <ranger@gentoo.org> libgnomeprint-2.18.3.ebuild:
+  Marking libgnomeprint-2.18.3 ppc64 and ppc stable for bug 208366
+
+  01 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  libgnomeprint-2.18.3.ebuild:
+  stable x86, bug 208366
+
+*libgnomeprint-2.18.3 (30 Jan 2008)
+
+  30 Jan 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +libgnomeprint-2.18.3.ebuild:
+  bump to 2.18.3
+   * Fix use of uninitialized variable (Coverity)
+   * Fix some dead code (Coverity)
+   * Remove more popt usage
+
+  27 Nov 2007; Jeroen Roovers <jer@gentoo.org> libgnomeprint-2.18.2.ebuild:
+  Stable for HPPA (bug #199322).
+
+  20 Nov 2007; Markus Rothe <corsair@gentoo.org>
+  libgnomeprint-2.18.2.ebuild:
+  Stable on ppc64; bug #199322
+
+  17 Nov 2007; Raúl Porcel <armin76@gentoo.org>
+  libgnomeprint-2.18.2.ebuild:
+  alpha/ia64/sparc stable wrt #199322
+
+  17 Nov 2007; nixnut <nixnut@gentoo.org> libgnomeprint-2.18.2.ebuild:
+  Stable on ppc wrt bug 199322
+
+  17 Nov 2007; Dawid Węgliński <cla@gentoo.org>
+  libgnomeprint-2.18.2.ebuild:
+  Stable on x86 (bug #199322)
+
+  16 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  libgnomeprint-2.18.2.ebuild:
+  amd64 stable wrt #199322
+
+  06 Nov 2007; Raúl Porcel <armin76@gentoo.org>
+  libgnomeprint-2.18.1.ebuild:
+  sparc stable wrt #193339
+
+  27 Sep 2007; Raúl Porcel <armin76@gentoo.org>
+  libgnomeprint-2.18.1.ebuild:
+  alpha/ia64 stable wrt #193339
+
+  25 Sep 2007; Jeroen Roovers <jer@gentoo.org> libgnomeprint-2.18.1.ebuild:
+  Stable for HPPA (bug #193339).
+
+  23 Sep 2007; Tom Gall <tgall@gentoo.org>
+  libgnomeprint-2.18.1.ebuild:
+  stable on ppc64
+
+  22 Sep 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  libgnomeprint-2.18.1.ebuild:
+  ppc stable, bug #193339
+
+  21 Sep 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  libgnomeprint-2.18.1.ebuild:
+  Stable on amd64 wrt bug #193339.
+
+  21 Sep 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  libgnomeprint-2.18.1.ebuild:
+  Stable on x86 wrt bug #193339.
+
+*libgnomeprint-2.18.2 (17 Sep 2007)
+
+  17 Sep 2007; Gilles Dartiguelongue <eva@gentoo.org>
+  +libgnomeprint-2.18.2.ebuild:
+  bump to 2.18.2, updated arabic translation
+
+  28 Aug 2007; Jeroen Roovers <jer@gentoo.org> libgnomeprint-2.18.0.ebuild:
+  Stable for HPPA (bug #185823).
+
+  11 Aug 2007; Andrej Kacian <ticho@gentoo.org> libgnomeprint-2.18.0.ebuild:
+  Stable on x86, bug #185823.
+
+*libgnomeprint-2.18.1 (10 Aug 2007)
+
+  10 Aug 2007; Gilles Dartiguelongue <eva@gentoo.org>
+  +libgnomeprint-2.18.1.ebuild:
+  bump to 2.18.1
+   * Fix a crash in Gedit caused by a typo. (Jeremy Messenger, Joe Marcus Clarke)
+   * Fix compiler warnings (Damien Carberry, Michael Wolf)
+   * Updated translations [fi] [ga] [si] [ta] [vi]
+
+  10 Aug 2007; Christoph Mende <angelos@gentoo.org>
+  libgnomeprint-2.18.0.ebuild:
+  Stable on amd64 wrt bug #185823
+
+  08 Aug 2007; Raúl Porcel <armin76@gentoo.org>
+  libgnomeprint-2.18.0.ebuild:
+  alpha/ia64 stable wrt #185823
+
+  07 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  libgnomeprint-2.18.0.ebuild:
+  Stable on ppc wrt bug #185823.
+
+  07 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  libgnomeprint-2.18.0.ebuild:
+  Stable on sparc wrt #185823
+
+*libgnomeprint-2.18.0 (27 Mar 2007)
+
+  27 Mar 2007; Daniel Gryniewicz <dang@gentoo.org>
+  +libgnomeprint-2.18.0.ebuild:
+  gnome 2.18.0
+
+  09 Feb 2007; Roy Marples <uberlord@gentoo.org>
+  libgnomeprint-2.12.1.ebuild:
+  Added ~x86-fbsd keyword.
+
+  09 Feb 2007; Roy Marples <uberlord@gentoo.org>
+  libgnomeprint-2.12.1.ebuild:
+  Added ~x86-fbsd keyword.
+
+  20 Nov 2006; Mart Raudsepp <leio@gentoo.org>
+  -libgnomeprint-1.116.0.ebuild, -libgnomeprint-1.116.1.ebuild,
+  -libgnomeprint-2.10.0.ebuild, -libgnomeprint-2.10.3.ebuild:
+  Remove old versions
+
+  05 Sep 2006; Joshua Kinard <kumba@gentoo.org>
+  libgnomeprint-1.116.0.ebuild, libgnomeprint-1.116.1.ebuild,
+  libgnomeprint-2.10.0.ebuild, libgnomeprint-2.10.3.ebuild,
+  libgnomeprint-2.12.1.ebuild:
+  Removing mips keywords as gnome is no longer supported on mips.
+
+  17 Jul 2006; Daniel Gryniewicz <dang@gentoo.org> ChangeLog:
+  Marked stable on amd64 for bug #139612
+
+  03 Feb 2006; Guy Martin <gmsoft@gentoo.org> libgnomeprint-2.12.1.ebuild:
+  Stable on hppa.
+
+  02 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  libgnomeprint-2.12.1.ebuild:
+  Mark 2.12.1 stable on alpha
+
+  02 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  libgnomeprint-2.12.1.ebuild:
+  Mark 2.12.1 stable on ia64
+
+  22 Jan 2006; Markus Rothe <corsair@gentoo.org>
+  libgnomeprint-2.12.1.ebuild:
+  Stable on ppc64
+
+  22 Jan 2006; <dang@gentoo.org> libgnomeprint-2.12.1.ebuild:
+  Marked stable on amd64 per bug #119634
+
+  22 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libgnomeprint-2.12.1.ebuild:
+  Marked ppc stable for bug #119634; Stabilize Gnome-2.12.2
+
+  22 Jan 2006; Joshua Jackson <tsunam@gentoo.org>
+  libgnomeprint-2.12.1.ebuild:
+  Stable on x86 for bug #119634; Stabilize Gnome-2.12.2
+
+  20 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  libgnomeprint-2.12.1.ebuild:
+  Stable on sparc wrt #119634
+
+  10 Oct 2005; Hardave Riar <hardave@gentoo.org>
+  libgnomeprint-2.10.3.ebuild:
+  Stable on mips.
+
+*libgnomeprint-2.12.1 (27 Sep 2005)
+
+  27 Sep 2005; Leonardo Boshell <leonardop@gentoo.org>
+  -libgnomeprint-2.12.0.ebuild, +libgnomeprint-2.12.1.ebuild:
+  New version.
+
+*libgnomeprint-2.12.0 (14 Sep 2005)
+
+  14 Sep 2005; Leonardo Boshell <leonardop@gentoo.org>
+  -libgnomeprint-2.11.0.ebuild, +libgnomeprint-2.12.0.ebuild:
+  New version.
+
+  11 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  libgnomeprint-2.10.3.ebuild:
+  Mark 2.10.3 stable on alpha
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  libgnomeprint-2.10.3.ebuild:
+  stable on ia64
+
+*libgnomeprint-2.11.0 (16 Aug 2005)
+
+  16 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  +libgnomeprint-2.11.0.ebuild:
+  New version. Added 'static' USE flag.
+
+  08 Aug 2005; Markus Rothe <corsair@gentoo.org>
+  libgnomeprint-2.10.3.ebuild:
+  Stable on ppc64
+
+  02 Aug 2005; Simon Stelling <blubb@gentoo.org>
+  libgnomeprint-2.10.3.ebuild:
+  stable on amd64
+
+  31 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  libgnomeprint-2.10.3.ebuild:
+  ppc stable
+
+  27 Jul 2005; Guy Martin <gmsoft@gentoo.org> libgnomeprint-2.10.3.ebuild:
+  Stable on hppa.
+
+  26 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  libgnomeprint-2.10.3.ebuild:
+  Stable on sparc
+
+  26 Jul 2005; Leonardo Boshell <leonardop@gentoo.org>
+  libgnomeprint-2.10.3.ebuild:
+  Stable on x86.
+
+  12 Jul 2005; Stephen P. Becker <geoman@gentoo.org>
+  libgnomeprint-2.10.0.ebuild:
+  stable on mips
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  libgnomeprint-2.10.0.ebuild:
+  Stable on alpha.
+
+  23 Jun 2005; Guy Martin <gmsoft@gentoo.org> libgnomeprint-2.10.0.ebuild:
+  Stable on hppa.
+
+  12 Jun 2005; Olivier Crête <tester@gentoo.org>
+  libgnomeprint-2.10.0.ebuild:
+  Stable on amd64
+
+  12 Jun 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  libgnomeprint-2.10.0.ebuild:
+  Stable on ppc.
+
+  09 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  libgnomeprint-2.10.0.ebuild:
+  Stable on sparc
+
+  09 Jun 2005; Markus Rothe <corsair@gentoo.org>
+  libgnomeprint-2.10.0.ebuild:
+  Stable on ppc64
+
+*libgnomeprint-2.10.3 (12 Apr 2005)
+
+  12 Apr 2005; Joe McCann <joem@gentoo.org> -libgnomeprint-2.10.2.ebuild,
+  +libgnomeprint-2.10.3.ebuild:
+  ok finally getting it right
+
+*libgnomeprint-2.10.2 (12 Apr 2005)
+
+  12 Apr 2005; Joe McCann <joem@gentoo.org> -libgnomeprint-2.10.1.ebuild,
+  +libgnomeprint-2.10.2.ebuild:
+  proper version
+
+*libgnomeprint-2.10.1 (12 Apr 2005)
+
+  12 Apr 2005; Joe McCann <joem@gentoo.org> +libgnomeprint-2.10.1.ebuild,
+  -libgnomeprint-2.4.2.ebuild, -libgnomeprint-2.6.0.ebuild,
+  -libgnomeprint-2.6.1.ebuild:
+  bugfix release, remove old ebuilds
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> libgnomeprint-2.8.2.ebuild:
+  stable on amd64
+
+  02 Apr 2005; Stephen P. Becker <geoman@gentoo.org>
+  libgnomeprint-2.8.2.ebuild:
+  stable on mips
+
+  20 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  libgnomeprint-2.8.2.ebuild:
+  Stable on alpha.
+
+  09 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  libgnomeprint-2.8.2.ebuild:
+  Stable on sparc
+
+*libgnomeprint-2.10.0 (09 Mar 2005)
+
+  09 Mar 2005; Joe McCann <joem@gentoo.org> +libgnomeprint-2.10.0.ebuild:
+  gnome-2.10 release
+
+  09 Mar 2005; Mike Gardiner <obz@gentoo.org> libgnomeprint-2.8.2.ebuild:
+  Keyworded x86 ppc
+
+  08 Jan 2005; Tom Martin <slarti@gentoo.org> libgnomeprint-2.8.1.ebuild:
+  Stable on amd64.
+
+*libgnomeprint-2.8.2 (29 Dec 2004)
+
+  29 Dec 2004; Mike Gardiner <obz@gentoo.org> +libgnomeprint-2.8.2.ebuild:
+  New version, use DESTDIR (#75036)
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  24 Dec 2004; Bryan Østergaard <kloeri@gentoo.org>
+  libgnomeprint-2.8.1.ebuild:
+  Stable on alpha.
+
+  23 Dec 2004; Guy Martin <gmsoft@gentoo.org> libgnomeprint-2.8.1.ebuild:
+  Stable on hppa.
+
+  21 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  libgnomeprint-2.8.1.ebuild:
+  Stable on sparc
+
+  19 Dec 2004; Mike Gardiner <obz@gentoo.org> libgnomeprint-2.8.1.ebuild:
+  Keyworded x86 and ppc for GNOME 2.8.1
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org>
+  libgnomeprint-2.8.0.ebuild:
+  Stable on alpha.
+
+*libgnomeprint-2.8.1 (29 Nov 2004)
+
+  29 Nov 2004; Mike Gardiner <obz@gentoo.org> -libgnomeprint-2.8.0.1.ebuild,
+  +libgnomeprint-2.8.1.ebuild:
+  New version
+
+*libgnomeprint-2.8.0.1 (25 Nov 2004)
+
+  25 Nov 2004; Mike Gardiner <obz@gentoo.org> -libgnomeprint-2.4.0.ebuild,
+  +libgnomeprint-2.8.0.1.ebuild:
+  New version, removed obsolete version 2.4.0
+
+  12 Nov 2004; Mike Gardiner <obz@gentoo.org> libgnomeprint-2.8.0.ebuild:
+  Keyworded ppc for GNOME 2.8
+
+  11 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  libgnomeprint-2.8.0.ebuild:
+  Stable on sparc
+
+  27 Oct 2004; Aron Griffis <agriffis@gentoo.org> libgnomeprint-2.6.2.ebuild:
+  stable ia64
+
+  01 Oct 2004; Stephen P. Becker <geoman@gentoo.org>
+  libgnomeprint-2.6.2.ebuild:
+  stable on mips
+
+*libgnomeprint-2.8.0 (19 Sep 2004)
+
+  19 Sep 2004; foser <foser@gentoo.org> libgnomeprint-2.8.0.ebuild :
+  Gnome 2.8 release, dep fixes
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org>
+  libgnomeprint-2.6.2.ebuild:
+  Stable on alpha.
+
+  07 Aug 2004; Travis Tilley <lv@gentoo.org> libgnomeprint-2.6.2.ebuild:
+  stable on amd64
+
+  05 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  libgnomeprint-2.6.2.ebuild:
+  Stable on sparc
+
+  05 Aug 2004; Guy Martin <gmsoft@gentoo.org> libgnomeprint-2.6.2.ebuild:
+  Stable on hppa.
+
+  31 Jul 2004; <spider@gentoo.org> libgnomeprint-2.6.2.ebuild:
+  stable on x86 for gnome 2.6.2
+
+  28 Jul 2004; Tom Gall <tgall@gentoo.org> libgnomeprint-2.6.2.ebuild:
+  stable on ppc64, bug #58191
+
+*libgnomeprint-2.6.2 (11 Jul 2004)
+
+  11 Jul 2004; <spider@gentoo.org> +libgnomeprint-2.6.2.ebuild:
+  versionbump
+
+  03 Jul 2004; Bryan Østergaard <kloeri@gentoo.org>
+  libgnomeprint-2.6.0.ebuild:
+  Stable on alpha.
+
+  03 Jun 2004; Stephen P. Becker <geoman@gentoo.org>
+  libgnomeprint-2.6.0.ebuild:
+  Stable on mips.
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  libgnomeprint-2.6.0.ebuild:
+  Masked libgnomeprint-2.6.0.ebuild stable for ppc
+
+  24 May 2004; L. Boshell <leonardop@gentoo.org> libgnomeprint-2.6.1.ebuild:
+  Add docbook-sgml-dtd dependency when `doc' is enabled. Resolves bug
+  #50980.
+  
+  24 May 2004; Guy Martin <gmsoft@gentoo.org> libgnomeprint-2.6.0.ebuild:
+  Marked stable on hppa.
+
+  13 May 2004; Stephen P. Becker <geoman@gentoo.org>
+  libgnomeprint-2.4.2.ebuild:
+  Stable on mips.
+
+  23 Apr 2004; L. Boshell <leonardop@gentoo.org>
+  libgnomeprint-2.4.2.ebuild, files/libgnomeprint-2.4.2-gtkdoc_fixes.patch:
+  Added patch to resolve API documentation problems. Resolves bug #45332.
+
+*libgnomeprint-2.6.1 (21 Apr 2004)
+
+  21 Apr 2004; <khai@gentoo.org> +libgnomeprint-2.6.1.ebuild:
+  Version bump.
+
+*libgnomeprint-2.6.0 (23 Mar 2004)
+
+  23 Mar 2004; foser <foser@gentoo.org> libgnomeprint-2.6.0.ebuild :
+  Gnome 2.6 final
+
+*libgnomeprint-2.5.4 (21 Mar 2004)
+
+  21 Mar 2004; foser <foser@gentoo.org> libgnomeprint-2.5.4.ebuild :
+  Gnome 2.6 commit
+
+  15 Mar 2004; Stephen P. Becker <geoman@gentoo.org>
+  libgnomeprint-2.4.2.ebuild:
+  Added ~mips keyword.
+
+  28 Jan 2004; Aron Griffis <agriffis@gentoo.org> libgnomeprint-2.4.2.ebuild:
+  stable on alpha and ia64
+
+  17 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> :
+  manifest fix
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org>
+  libgnomeprint-1.116.1.ebuild, libgnomeprint-2.4.2.ebuild:
+  set ppc in keywords
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org>
+  libgnomeprint-1.116.1.ebuild:
+  set ppc in keywords
+
+  13 Jan 2004; <gustavoz@gentoo.org> libgnomeprint-2.4.2.ebuild:
+  stable on hppa and sparc
+
+  13 Dec 2003; Brad House <brad_mssw@gentoo.org> libgnomeprint-2.4.2.ebuild:
+  mark stable on amd64
+
+*libgnomeprint-2.4.2 (27 Nov 2003)
+
+  27 Nov 2003; foser <foser@gentoo.org> libgnomeprint-2.4.2.ebuild :
+  New release
+
+*libgnomeprint-2.4.1.1 (25 Nov 2003)
+
+  25 Nov 2003; foser <foser@gentoo.org> libgnomeprint-2.4.1.1.ebuild :
+  New release, added zlib & popt dep for completeness sake
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> libgnomeprint-2.4.0.ebuild:
+  Stable on ia64
+
+  08 Nov 2003; Todd Sunderlin <todd@gentoo.org> libgnomeprint-2.4.0.ebuild:
+  set sparc keyword
+
+  22 Oct 2003; Bartosch Pixa <darkspecter@gentoo.org>
+  libgnomeprint-2.4.0.ebuild:
+  set ppc in keywords
+
+  16 Oct 2003; Aron Griffis <agriffis@gentoo.org> libgnomeprint-2.4.0.ebuild:
+  Stable on alpha
+
+  05 Oct 2003; Mike Gardiner <obz@gentoo.org> libgnomeprint-2.4.0.ebuild:
+  Marked stable on x86
+
+*libgnomeprint-2.4.0 (26 Sep 2003)
+
+  13 Dec 2003; Guy Martin <gmsoft@gentoo.org> libgnomeprint-2.4.0.ebuild :
+  Marked stable on hppa.
+
+  26 Sep 2003; foser <foser@gentoo.org> libgnomeprint-2.4.0.ebuild :
+  New version
+
+  23 Sep 2003; Bartosch Pixa <darkspecter@gentoo.org>
+  libgnomeprint-2.2.1.3.ebuild:
+  set ppc in keywords
+
+  25 Aug 2003; Mike Gardiner <obz@gentoo.org> libgnomeprint-2.2.1.3.ebuild:
+  Moved to stable on x86
+
+*libgnomeprint-2.2.1.3 (25 Jun 2003)
+
+  01 Jul 2003; Guy Martin <gmsoft@gentoo.org> libgnomeprint-2.2.1.3.ebuild :
+  Added ~hppa to KEYWORDS.
+
+  25 Jun 2003; foser <foser@gentoo.org> libgnomeprint-2.2.1.3.ebuild :
+  New version
+
+  30 May 2003; Luca Barbato <lu_zero@gentoo.org> libgnomeprint-2.2.1.{2.1}.ebuild:
+  Changed ~ppc keyword to ppc
+
+  02 May 2003; Jason Wever <weeve@gentoo.org> libgnomeprint-2.2.1.2.ebuild:
+  Changed ~sparc keyword to sparc to fix broken balsa dependencies.
+
+*libgnomeprint-2.2.1.2 (12 Mar 2003)
+
+  01 Jul 2003; Guy Martin <gmsoft@gentoo.org> libgnomeprint-2.2.1.2.ebuild :
+  Added hppa to KEYWORDS.
+
+  19 Mar 2003; Aron Griffis <agriffis@gentoo.org>
+  libgnomeprint-2.2.1.2.ebuild:
+  Mark stable on alpha
+
+  12 Mar 2003; foser <foser@gentoo.org> libgnomeprint-2.2.1.2.ebuild :
+  New version, added cups USE
+
+  07 Feb 2003; Aron Griffis <agriffis@gentoo.org> libgnomeprint-2.2.1.1.ebuild :
+  Add ~alpha to KEYWORDS
+
+*libgnomeprint-2.2.1.1 (04 Feb 2003)
+
+  01 Mar 2003; Jason Wever <weeve@gentoo.org> libgnomeprint-2.2.1.1.ebuild:
+  Added ~sparc to keywords.
+
+  21 Feb 2003; Aron Griffis <agriffis@gentoo.org> libgnomeprint-2.2.1.1.ebuild :
+  Mark stable on Alpha
+  
+  04 Feb 2003; Spider <spider@gentoo.org> libgnomeprint-2.2.1.1.ebuild :
+  bump the version
+
+*libgnomeprint-2.2.1 (30 Jan 2003)
+
+  30 Jan 2003; foser <foser@gentoo.org> libgnomeprint-*.ebuild :
+  GNOME 2.2 rc1 commit
+  fixed SLOT
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*libgnomeprint-2.1.1 (12 Nov 2002)
+
+  03 Dec 2002; Jon Nall <nall@gentoo.org> libgnomeprint-2.1.1.ebuild :
+  keyworded ~ppc
+
+  12 Nov 2002; foser <foser@gentoo.org> libgnomeprint-2.1.1.ebuild :
+  GNOME 2.1.2 release
+
+*libgnomeprint-1.116.1 (24 Oct 2002)
+
+  11 Nov 2002; Spider <spider@gentoo.org> libgnomeprint-1.116.1.ebuild : marked
+  as stable
+  
+  24 Oct 2002; Spider <spider@gentoo.org> libgnomeprint-1.116.1.ebuild :
+  new version, minor update and using gnome.org eclass now
+  
+*libgnomeprint-1.116.0 (05 Aug 2002)
+  05 Aug 2002; Spider <spider@gentoo.org> libgnomeprint-1.116.0.ebuild :
+  experimented with gnome2.eclass but it failed with sandbox errors.
+  now using libtool, experimental build this, beware. masked.
+  
+*libgnomeprint-1.115.0-r2 (7 jun 2002)
+  02 Aug 2002; Mark Guertin <gerk@gentoo.org>:
+  Added ppc to keywords
+
+  07 Jun 2002; Spider <spider@gentoo.org> libgnomeprint-1.115.0-r2.ebuild :
+  I was wrong and try again
+    
+*libgnomeprint-1.115.0-r1 (7 jun 2002)
+  07 Jun 2002; Spider <spider@gentoo.org> libgnomeprint-1.115.0-r1.ebuild :
+  seems this one may solve a sandbox error 
+
+*libgnomeprint-1.115.0 (7 jun 2002)
+  07 Jun 2002; Spider <spider@gentoo.org> libgnomeprint-1.115.0.ebuild:
+  gnome2 eclass, new version
+  
+*libgnomeprint-1.114.0 (27 May 2002)
+  27 May 2002; Spider <spider@gentoo.org> libgnomeprint-1.114.0.ebuild:
+  new version
+ 
+*libgnomeprint-1.113.0 (22 May 2002)
+  22 May 2002; Spider <spider@gentoo.org>  libgnomeprint-1.113.0.ebuild:
+  addition from the gnome2 tree

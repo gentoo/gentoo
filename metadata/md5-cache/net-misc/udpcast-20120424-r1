@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-lang/perl
+DESCRIPTION=Multicast file transfer tool
+EAPI=5
+HOMEPAGE=http://www.udpcast.linux.lu/
+IUSE=hardened
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 BSD
+SLOT=0
+SRC_URI=http://www.udpcast.linux.lu/download/udpcast-20120424.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=51198615ae02f66e8c0c3d9786d11e62

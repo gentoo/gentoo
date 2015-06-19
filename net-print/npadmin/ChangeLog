@@ -1,0 +1,26 @@
+# ChangeLog for net-print/npadmin
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-print/npadmin/ChangeLog,v 1.6 2009/09/23 19:47:18 patrick Exp $
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> npadmin-0.8.7.ebuild:
+  Remove virtual/libc
+
+  21 Feb 2008; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Hand over to printing herd per previous email to -dev.
+
+  14 Jan 2008; Robin H. Johnson <robbat2@gentoo.org> npadmin-0.8.7.ebuild:
+  Builds on amd64+ppc.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  26 Sep 2005; Robin H. Johnson <robbat2@gentoo.org> npadmin-0.8.7.ebuild:
+  Stable on x86, 212 days in ~x86.
+
+*npadmin-0.8.7 (26 Feb 2005)
+
+  26 Feb 2005; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +files/npadmin-0.8.7-stdlib.patch, +npadmin-0.8.7.ebuild:
+  Initial version. Based on ebuild submitted by Andre Kloth
+  <bugs-gentoo@blubbmon.de>. Bug #82956.
+

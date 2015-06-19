@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>qt</herd>
+	<use>
+		<flag name="plugins">Build and install additional plugins</flag>
+	</use>
+	<upstream>
+		<remote-id type="google-code">monkeystudio</remote-id>
+	</upstream>
+</pkgmetadata>

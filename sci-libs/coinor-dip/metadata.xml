@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci</herd>
+<longdescription lang="en">
+  DIP (Decomposition for Integer Programming) is an open-source
+  extensible software framework for implementing decomposition-based
+  bounding algorithms for use in solving large-scale discrete
+  optimization problems. The framework provides a simple API for
+  experimenting with various decomposition-based algorithms, such as
+  Dantzig-Wolfe decomposition, Lagrangian relaxation, and various
+  cutting plane methods.
+</longdescription>
+</pkgmetadata>

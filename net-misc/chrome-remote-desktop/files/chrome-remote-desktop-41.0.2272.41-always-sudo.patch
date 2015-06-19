@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/541708
+
+just use `sudo` for everything
+
+--- a/opt/google/chrome-remote-desktop/chrome-remote-desktop
++++ b/opt/google/chrome-remote-desktop/chrome-remote-desktop
+@@ -1092,10 +1092,7 @@
+     except KeyError:
+       logging.info("Group '%s' not found." % CHROME_REMOTING_GROUP_NAME)
+ 
+-    if os.getenv("DISPLAY"):
+-      sudo_command = "gksudo --description \"Chrome Remote Desktop\""
+-    else:
+-      sudo_command = "sudo"
++    sudo_command = "sudo"
+     command = ("sudo -k && exec %(sudo)s -- sh -c "
+                "\"groupadd -f %(group)s && gpasswd --add %(user)s %(group)s\"" %
+                { 'group': CHROME_REMOTING_GROUP_NAME,

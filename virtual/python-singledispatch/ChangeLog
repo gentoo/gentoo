@@ -1,0 +1,19 @@
+# ChangeLog for virtual/python-singledispatch
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/python-singledispatch/ChangeLog,v 1.4 2015/04/19 09:43:26 ago Exp $
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> python-singledispatch-0.ebuild:
+  Stable for x86, wrt bug #544994
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> python-singledispatch-0.ebuild:
+  Stable for amd64, wrt bug #544994
+
+  02 Apr 2015; Ian Delaney <idella4@gentoo.org> python-singledispatch-0.ebuild:
+  drop old impl
+
+*python-singledispatch-0 (15 Nov 2014)
+
+  15 Nov 2014; Ian Delaney <idella4@gentoo.org> +metadata.xml,
+  +python-singledispatch-0.ebuild:
+  new ebuild to support dev-python/singledispatch, ebuild by proxy maintainers
+  listed in metadata, closes Bug #521928

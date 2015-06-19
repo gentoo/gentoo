@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup unpack
+DEPEND==sys-freebsd/freebsd-lib-8.2*[usb?,bluetooth?] ssl? ( dev-libs/openssl ) kerberos? ( virtual/krb5 ) ar? ( app-arch/libarchive ) virtual/pam sys-libs/zlib >=sys-libs/ncurses-5.9 !dev-util/csup sys-devel/flex !build? ( =sys-freebsd/freebsd-sources-8.2* ) =sys-freebsd/freebsd-mk-defs-8.2* virtual/pmake virtual/pmake
+DESCRIPTION=FreeBSD's base system source for /usr/bin
+EAPI=2
+HOMEPAGE=http://www.freebsd.org/
+IUSE=ar atm audit bluetooth ipv6 kerberos netware nis ssl usb build zfs profile
+KEYWORDS=~sparc-fbsd ~x86-fbsd
+LICENSE=BSD zfs? ( CDDL )
+RDEPEND==sys-freebsd/freebsd-lib-8.2*[usb?,bluetooth?] ssl? ( dev-libs/openssl ) kerberos? ( virtual/krb5 ) ar? ( app-arch/libarchive ) virtual/pam sys-libs/zlib >=sys-libs/ncurses-5.9 !dev-util/csup >=sys-auth/pambase-20080219.1 sys-process/cronbase
+SLOT=0
+SRC_URI=mirror://gentoo/freebsd-ubin-8.2.tar.bz2 mirror://gentoo/freebsd-contrib-8.2.tar.bz2 mirror://gentoo/freebsd-lib-8.2.tar.bz2 mirror://gentoo/freebsd-etc-8.2.tar.bz2 mirror://gentoo/freebsd-bin-8.2.tar.bz2 mirror://gentoo/freebsd-include-8.2.tar.bz2 zfs? ( mirror://gentoo/freebsd-cddl-8.2.tar.bz2 ) build? ( mirror://gentoo/freebsd-sys-8.2.tar.bz2 )
+_eclasses_=bsdmk	a5323161d86b178920afb5e31a9e5d3f	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	freebsd	35f498d509155233569460a87c40fdda	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	portability	a45c088f246ef5091e029f6285d7ce42	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=cf7079cfc645c1dc91738e8a9083d5ec

@@ -1,0 +1,126 @@
+# ChangeLog for app-i18n/atokx3
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/atokx3/ChangeLog,v 1.26 2015/06/14 16:24:39 ulm Exp $
+
+  14 Jun 2015; Ulrich Müller <ulm@gentoo.org> atokx3-3.0.0-r11.ebuild:
+  [QA] Remove emul-linux-x86-* from dependencies.
+
+*atokx3-3.0.0-r11 (12 Nov 2014)
+
+  12 Nov 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +atokx3-3.0.0-r11.ebuild, -atokx3-3.0.0-r10.ebuild:
+  bumped EAPI to 5, adjusted multilib dependencies
+
+  25 Jun 2014; Michał Górny <mgorny@gentoo.org> atokx3-3.0.0-r10.ebuild:
+  Lower dev-libs/glib dep to first known EAPI=5 version, requested by Funtoo for
+  GNOME 3.6.
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> atokx3-3.0.0-r10.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  31 May 2014; Michał Górny <mgorny@gentoo.org> atokx3-3.0.0-r10.ebuild:
+  Fix baselibs dep, bug #510386. Add multilib deps for other packages.
+
+  15 May 2014; Naohiro Aota <naota@gentoo.org> -atokx3-3.0.0-r6.ebuild,
+  -atokx3-3.0.0-r7.ebuild, -atokx3-3.0.0-r8.ebuild, -atokx3-3.0.0-r9.ebuild:
+  Drop old unfetchable ebuilds. #487370
+
+  14 May 2014; Tom Wijsman <TomWij@gentoo.org> atokx3-3.0.0-r6.ebuild:
+  [QA] EAPI 1 -> EAPI 5. Noticed missing distfiles, commented on bug #487370.
+
+*atokx3-3.0.0-r10 (28 Apr 2014)
+
+  28 Apr 2014; Naohiro Aota <naota@gentoo.org> +atokx3-3.0.0-r10.ebuild:
+  version bump wrt #508616
+
+  29 Oct 2013; Patrick Lauer <patrick@gentoo.org> atokx3-3.0.0-r9.ebuild:
+  Removing keywords from the -r9 ebuild as dependencies are broken #487370
+
+*atokx3-3.0.0-r9 (25 Apr 2013)
+
+  25 Apr 2013; MATSUU Takuto <matsuu@gentoo.org> +atokx3-3.0.0-r9.ebuild:
+  Support multilib packages aside emul-linux. The patch was submitted by
+  Michał Górny. Fixed dependency. Fixed initial install issue.
+
+  21 Apr 2013; Fabio Erculiani <lxnay@gentoo.org> atokx3-3.0.0-r6.ebuild,
+  atokx3-3.0.0-r7.ebuild, atokx3-3.0.0-r8.ebuild:
+  override mantainer due to bug inactivity after 1 year, standardize to
+  gnome2_query_immodules_gtk2, fix bug #413497
+
+*atokx3-3.0.0-r8 (12 Feb 2013)
+
+  12 Feb 2013; MATSUU Takuto <matsuu@gentoo.org> +atokx3-3.0.0-r8.ebuild:
+  Replaced zipcode tarball. Fixed dependency. Fixed gtk.immodules, bug 366889.
+
+  26 Jan 2012; Ulrich Müller <ulm@gentoo.org> atokx3-3.0.0-r6.ebuild,
+  atokx3-3.0.0-r7.ebuild:
+  Migrate to cdrom.eclass, bug 398809.
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  atokx3-3.0.0-r6.ebuild, atokx3-3.0.0-r7.ebuild:
+  Fix slot-deps on gnome libs
+
+*atokx3-3.0.0-r7 (12 Jan 2011)
+
+  12 Jan 2011; MATSUU Takuto <matsuu@gentoo.org> -atokx3-3.0.0-r2.ebuild,
+  -atokx3-3.0.0-r3.ebuild, -atokx3-3.0.0-r4.ebuild, -atokx3-3.0.0-r5.ebuild,
+  +atokx3-3.0.0-r7.ebuild, +files/xinput-iiimf:
+  zipcode version bumped. Removed old symlink, bug #343325. imsettings support.
+  EAPI=3. better multilib handling. Removed old versions.
+
+*atokx3-3.0.0-r6 (26 Oct 2010)
+
+  26 Oct 2010; MATSUU Takuto <matsuu@gentoo.org> +atokx3-3.0.0-r6.ebuild:
+  Updated zipcode. Clean up ebuild.
+
+  11 Feb 2010; Ulrich Mueller <ulm@gentoo.org> atokx3-3.0.0-r2.ebuild,
+  atokx3-3.0.0-r3.ebuild, atokx3-3.0.0-r4.ebuild, atokx3-3.0.0-r5.ebuild:
+  Replace license X11 by MIT, bug 298556.
+
+*atokx3-3.0.0-r5 (03 Jan 2010)
+
+  03 Jan 2010; MATSUU Takuto <matsuu@gentoo.org> +atokx3-3.0.0-r5.ebuild:
+  Fixed dependency for libwrap, bug #202356.
+
+*atokx3-3.0.0-r4 (24 Nov 2009)
+
+  24 Nov 2009; MATSUU Takuto <matsuu@gentoo.org> +atokx3-3.0.0-r4.ebuild:
+  Fixed installation issue on amd64. Added new postal code dictionaries.
+
+*atokx3-3.0.0-r3 (04 Jun 2009)
+
+  04 Jun 2009; MATSUU Takuto <matsuu@gentoo.org> -atokx3-1.0.0.ebuild,
+  -atokx3-2.0.0.ebuild, -atokx3-3.0.0.ebuild, -atokx3-3.0.0-r1.ebuild,
+  +atokx3-3.0.0-r3.ebuild:
+  Added update module for GTK+-2.16. Removed old versions.
+
+*atokx3-3.0.0-r2 (09 Mar 2009)
+
+  09 Mar 2009; MATSUU Takuto <matsuu@gentoo.org> +atokx3-3.0.0-r2.ebuild:
+  Fixed dependency, bug #261250.
+
+*atokx3-3.0.0-r1 (04 Mar 2009)
+
+  04 Mar 2009; MATSUU Takuto <matsuu@gentoo.org> +atokx3-3.0.0-r1.ebuild:
+  Fixed dependency.
+
+*atokx3-3.0.0 (04 Mar 2009)
+
+  04 Mar 2009; MATSUU Takuto <matsuu@gentoo.org> +atokx3-3.0.0.ebuild:
+  Version bumped. Added ~amd64.
+
+  22 Nov 2008; MATSUU Takuto <matsuu@gentoo.org> atokx3-1.0.0.ebuild,
+  atokx3-2.0.0.ebuild:
+  Added PROPERTIES="interactive", bug #151113.
+
+*atokx3-2.0.0 (21 Mar 2008)
+
+  21 Mar 2008; MATSUU Takuto <matsuu@gentoo.org> +atokx3-2.0.0.ebuild:
+  Version bumped.
+
+*atokx3-1.0.0 (31 Dec 2007)
+
+  31 Dec 2007; MATSUU Takuto <matsuu@gentoo.org> +metadata.xml,
+  +atokx3-1.0.0.ebuild:
+  Initial import.

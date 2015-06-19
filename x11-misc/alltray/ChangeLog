@@ -1,0 +1,205 @@
+# ChangeLog for x11-misc/alltray
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/alltray/ChangeLog,v 1.49 2014/03/11 19:48:50 pacho Exp $
+
+  11 Mar 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #53266
+
+  12 May 2013; Pacho Ramos <pacho@gentoo.org> -alltray-0.7.4.ebuild,
+  alltray-0.7.5.1.ebuild:
+  Use vala.eclass (#467404), drop old.
+
+  08 Sep 2012; Nirbheek Chauhan <nirbheek@gentoo.org> alltray-0.7.5.1.ebuild:
+  Revert previous changes. The brokenness is only for mixed stable/unstable
+  systems.
+
+  08 Sep 2012; Nirbheek Chauhan <nirbheek@gentoo.org> alltray-0.7.5.1.ebuild:
+  Use either vala-0.14, or vala-0.18
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> alltray-0.7.4.ebuild,
+  alltray-0.7.5.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  16 Apr 2012; Brent Baude <ranger@gentoo.org> alltray-0.7.5.1.ebuild:
+  Marking alltray-0.7.5.1 ppc for bug 404885
+
+  04 Apr 2012; Jeff Horelick <jdhore@gentoo.org> alltray-0.7.5.1.ebuild:
+  marked x86 per bug 404885
+
+  28 Mar 2012; Agostino Sarubbo <ago@gentoo.org> alltray-0.7.5.1.ebuild:
+  Stable for amd64, wrt bug #404885
+
+*alltray-0.7.4 (20 Nov 2011)
+
+  20 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> +alltray-0.7.4.ebuild,
+  -alltray-0.74.ebuild:
+  Rename 0.74 as 0.7.4 to match upstream versioning scheme.
+
+*alltray-0.7.5.1 (20 Nov 2011)
+
+  20 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> +alltray-0.7.5.1.ebuild:
+  Version bump wrt #390801 by "teidakankan"
+
+  20 Nov 2011; Pacho Ramos <pacho@gentoo.org> alltray-0.74.ebuild:
+  Drop DEPRECATED flags, bug #391101
+
+  25 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> alltray-0.74.ebuild:
+  ppc stable wrt #329417
+
+  21 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> alltray-0.69.ebuild,
+  alltray-0.69-r1.ebuild, alltray-0.74.ebuild:
+  Fix slot-deps on gnome libs
+
+  29 Jul 2010; Markos Chandras <hwoarang@gentoo.org> alltray-0.74.ebuild:
+  Stable on amd64 wrt bug #329417
+
+  22 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> alltray-0.74.ebuild:
+  x86 stable wrt bug #329417
+
+*alltray-0.74 (06 Nov 2009)
+
+  06 Nov 2009; Sven Wegener <swegener@gentoo.org>
+  +files/alltray-0.7.4-include-fixes.patch, +alltray-0.74.ebuild:
+  Version bump, bug #291998 by Jason Wigg.
+
+*alltray-0.69-r1 (07 Jun 2008)
+
+  07 Jun 2008; Sven Wegener <swegener@gentoo.org>
+  +files/alltray-0.69-compiz.patch, +alltray-0.69-r1.ebuild:
+  Add support for compiz, bug #217266.
+
+  04 Nov 2006; Sven Wegener <swegener@gentoo.org> -alltray-0.65.ebuild:
+  Cleanup.
+
+  04 Nov 2006; Christian Faulhammer <opfer@gentoo.org> alltray-0.69.ebuild:
+  stabled x86, bug #153598
+
+  02 Nov 2006; nixnut <nixnut@gentoo.org> alltray-0.69.ebuild:
+  Stable on ppc wrt bug 153598
+
+  02 Nov 2006; Olivier Crête <tester@gentoo.org> alltray-0.69.ebuild:
+  Stable on amd64, bug #153598
+
+  27 Oct 2006; Sven Wegener <swegener@gentoo.org> -files/0.65-fPIC.patch,
+  -alltray-0.65-r1.ebuild, -alltray-0.66.ebuild:
+  Cleanup.
+
+*alltray-0.69 (29 Jul 2006)
+
+  29 Jul 2006; Sven Wegener <swegener@gentoo.org> +alltray-0.69.ebuild:
+  Version bump.
+
+*alltray-0.66 (29 Apr 2006)
+
+  29 Apr 2006; Sven Wegener <swegener@gentoo.org> +alltray-0.66.ebuild:
+  Version bump.
+
+*alltray-0.65-r1 (16 Apr 2006)
+
+  16 Apr 2006; Sven Wegener <swegener@gentoo.org> +files/0.65-fPIC.patch,
+  +alltray-0.65-r1.ebuild:
+  Revision bump, should fix bug #130087.
+
+  09 Apr 2006; Sven Wegener <swegener@gentoo.org> -alltray-0.60.ebuild:
+  Remove old ebuild.
+
+  08 Apr 2006; Simon Stelling <blubb@gentoo.org> alltray-0.65.ebuild:
+  stable on amd64
+
+  31 Mar 2006; Michael Hanselmann <hansmi@gentoo.org> alltray-0.65.ebuild:
+  Stable on ppc.
+
+  30 Mar 2006; Joshua Jackson <tsunam@gentoo.org> alltray-0.65.ebuild:
+  Stable on x86; bug #127555
+
+*alltray-0.65 (10 Dec 2005)
+
+  10 Dec 2005; Sven Wegener <swegener@gentoo.org> -alltray-0.61.ebuild,
+  -alltray-0.62.ebuild, +alltray-0.65.ebuild:
+  Version bump.
+
+  24 Sep 2005; Sven Wegener <swegener@gentoo.org> alltray-0.62.ebuild:
+  Remove LIBDIR workaround, it has been fixed upstream.
+
+*alltray-0.62 (24 Sep 2005)
+
+  24 Sep 2005; Sven Wegener <swegener@gentoo.org> +alltray-0.62.ebuild:
+  Version bump.
+
+*alltray-0.61 (08 Sep 2005)
+
+  08 Sep 2005; Sven Wegener <swegener@gentoo.org> +alltray-0.61.ebuild:
+  Version bump.
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> alltray-0.60.ebuild:
+  Stable on ppc.
+
+  03 Aug 2005; Sven Wegener <swegener@gentoo.org> -alltray-0.5.1.ebuild,
+  alltray-0.60.ebuild:
+  Stable on x86.
+
+  07 Jul 2005; Sven Wegener <swegener@gentoo.org> -alltray-0.54.ebuild,
+  -alltray-0.55.ebuild:
+  Removed old ebuilds.
+
+*alltray-0.60 (06 Jul 2005)
+
+  06 Jul 2005; Sven Wegener <swegener@gentoo.org> +alltray-0.60.ebuild:
+  Version bump.
+
+*alltray-0.55 (04 Jul 2005)
+
+  04 Jul 2005; Sven Wegener <swegener@gentoo.org> +alltray-0.55.ebuild:
+  Version bump.
+
+  15 Jun 2005; Sven Wegener <swegener@gentoo.org> alltray-0.54.ebuild:
+  Added a fix, so that we have a sane LIBDIR if the binreloc detection fails.
+
+  13 Jun 2005; David Holm <dholm@gentoo.org> alltray-0.54.ebuild:
+  Added to ~ppc.
+
+*alltray-0.54 (12 Jun 2005)
+
+  12 Jun 2005; Sven Wegener <swegener@gentoo.org> alltray-0.5.1.ebuild,
+  +alltray-0.54.ebuild:
+  Version bump.
+
+  16 May 2005; Sven Wegener <swegener@gentoo.org> -alltray-0.4.0.ebuild,
+  -alltray-0.4.2.ebuild, -alltray-0.4.3.ebuild, alltray-0.5.1.ebuild:
+  Marked stable on x86. Removed old ebuilds.
+
+*alltray-0.5.1 (19 Apr 2005)
+
+  19 Apr 2005; Sven Wegener <swegener@gentoo.org> +alltray-0.5.1.ebuild:
+  Version bump.
+
+*alltray-0.4.3 (05 Apr 2005)
+
+  05 Apr 2005; Sven Wegener <swegener@gentoo.org> +alltray-0.4.3.ebuild:
+  Version bump.
+
+*alltray-0.4.2 (18 Mar 2005)
+
+  18 Mar 2005; Sven Wegener <swegener@gentoo.org> -alltray-0.3.ebuild,
+  -alltray-0.3.5.ebuild, alltray-0.4.0.ebuild, +alltray-0.4.2.ebuild:
+  Version bump. Marked 0.4.0 stable on x86. Removed old ebuilds.
+
+*alltray-0.4.0 (24 Feb 2005)
+
+  24 Feb 2005; Sven Wegener <swegener@gentoo.org> +alltray-0.4.0.ebuild:
+  Version bump.
+
+  30 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> alltray-0.3.5.ebuild:
+  added ~amd64 to KEYWORDS. fixes #79873
+
+*alltray-0.3.5 (28 Jan 2005)
+
+  28 Jan 2005; Sven Wegener <swegener@gentoo.org> +alltray-0.3.5.ebuild:
+  Version bump.
+
+*alltray-0.3 (11 Jan 2005)
+
+  11 Jan 2005; Sven Wegener <swegener@gentoo.org> +metadata.xml,
+  +alltray-0.3.ebuild:
+  Initial commit, ebuild written by me. Requested by Christian Lemke
+  <christian.lemke@stud.tu-ilmenau.de> in bug #77483.

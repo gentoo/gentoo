@@ -1,0 +1,23 @@
+This patch allows to build jack-rack with ALSA support disabled.
+See bug #135966.
+
+Index: jack-rack-1.4.6/src/plugin_slot_callbacks.c
+===================================================================
+--- jack-rack-1.4.6.orig/src/plugin_slot_callbacks.c
++++ jack-rack-1.4.6/src/plugin_slot_callbacks.c
+@@ -99,6 +99,7 @@ slot_ablise_cb (GtkWidget * button, GdkE
+ 	    
+ 	      return TRUE;
+ 	    }
++#ifdef HAVE_ALSA
+ 	  case 3:
+ 	    {
+ 	      ui_t * ui;
+@@ -119,6 +120,7 @@ slot_ablise_cb (GtkWidget * button, GdkE
+ 	    
+ 	      return TRUE;
+ 	    }
++#endif
+       }
+     }
+   

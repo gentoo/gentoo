@@ -1,0 +1,34 @@
+http://bugs.gentoo.org/333715
+
+--- data/Makefile.am
++++ data/Makefile.am
+@@ -20,11 +20,11 @@
+ 
+ install-data-local: $(schema_DATA)
+ if GCONF_SCHEMAS_INSTALL
+-        if test -z "$(DESTDIR)" ; then \
+-        for p in $^ ; do \
+-                GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $$p 2>&1 > /dev/null; \
+-        done \
+-        fi
++	if test -z "$(DESTDIR)" ; then \
++	for p in $^ ; do \
++		GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $$p 2>&1 > /dev/null; \
++	done \
++	fi
+ endif
+ 
+ EXTRA_DIST = \
+@@ -34,8 +34,8 @@
+ 	raw-thumbnailer.xml 
+ 
+ CLEANFILES = \
+-        $(generated_schema_in_files)    \
+-        $(schema_DATA)                  \
+-        raw-thumbnailer.schemas.in      \
+-        update-gconf.sh
++	$(generated_schema_in_files)    \
++	$(schema_DATA)                  \
++	raw-thumbnailer.schemas.in      \
++	update-gconf.sh
+ 

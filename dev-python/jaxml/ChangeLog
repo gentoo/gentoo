@@ -1,0 +1,90 @@
+# ChangeLog for dev-python/jaxml
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/jaxml/ChangeLog,v 1.26 2015/04/08 08:05:06 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> jaxml-3.02-r1.ebuild:
+  Drop old Python implementations
+
+  01 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -jaxml-3.02.ebuild:
+  Remove old.
+
+  28 Apr 2014; Sébastien Fabbro <bicatali@gentoo.org> jaxml-3.02-r1.ebuild:
+  Keyword ~amd64-linux ~x86-linux
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> jaxml-3.02-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  18 Mar 2014; Agostino Sarubbo <ago@gentoo.org> jaxml-3.02-r1.ebuild:
+  Stable for ia64, wrt bug #502784
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> jaxml-3.02-r1.ebuild:
+  Stable for ppc, wrt bug #502784
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> jaxml-3.02-r1.ebuild:
+  Stable for x86, wrt bug #502784
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> jaxml-3.02-r1.ebuild:
+  amd64 stable, bug #502784
+
+  01 Mar 2014; Jeroen Roovers <jer@gentoo.org> jaxml-3.02-r1.ebuild:
+  Stable for HPPA (bug #502784).
+
+*jaxml-3.02-r1 (20 Jan 2014)
+
+  20 Jan 2014; Mike Gilbert <floppym@gentoo.org> +jaxml-3.02-r1.ebuild:
+  Convert to distutils-r1.
+
+  25 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -jaxml-3.01.ebuild:
+  Delete.
+
+  25 Oct 2010; Jeroen Roovers <jer@gentoo.org> jaxml-3.02.ebuild:
+  Stable for HPPA (bug #341345).
+
+  24 Oct 2010; Brent Baude <ranger@gentoo.org> jaxml-3.02.ebuild:
+  stable ppc, bug 341345
+
+  24 Oct 2010; Raúl Porcel <armin76@gentoo.org> jaxml-3.02.ebuild:
+  ia64 stable wrt #341345
+
+  21 Oct 2010; Christian Faulhammer <fauli@gentoo.org> jaxml-3.02.ebuild:
+  stable x86, bug 341345
+
+  18 Oct 2010; Markos Chandras <hwoarang@gentoo.org> jaxml-3.02.ebuild:
+  Stable on amd64 wrt bug #341345
+
+*jaxml-3.02 (15 Sep 2010)
+
+  15 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +jaxml-3.02.ebuild:
+  Version bump. Fixed building with Python 2.7 (bug #314513).
+
+  10 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  jaxml-3.01.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  16 Oct 2007; Jeroen Roovers <jer@gentoo.org> jaxml-3.01.ebuild:
+  Stable for HPPA too.
+
+  12 Jul 2006; Aron Griffis <agriffis@gentoo.org> jaxml-3.01.ebuild:
+  Mark 3.01 stable on ia64
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> jaxml-3.01.ebuild:
+  Mark 3.01 ~ia64
+
+  29 Dec 2004; Joseph Jezak <josejx@gentoo.org> jaxml-3.01.ebuild:
+  Marked ppc stable.
+
+  20 Oct 2004; Rob Cakebread <pythonhead@gentoo.org> jaxml-3.01.ebuild:
+  Marked stable x86
+
+  05 Oct 2004; Dylan Carlson <absinthe@gentoo.org> jaxml-3.01.ebuild:
+  KEYWORDS ~amd64
+
+*jaxml-3.01 (03 Sep 2004)
+
+  03 Sep 2004; David Holm <dholm@gentoo.org> jaxml-3.01.ebuild:
+  Added to ~ppc.
+
+  22 Aug 2004; Rob Cakebread <pythonhead@gentoo.org> :
+  Initial commit

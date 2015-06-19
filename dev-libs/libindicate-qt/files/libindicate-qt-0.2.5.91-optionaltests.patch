@@ -1,0 +1,24 @@
+https://code.launchpad.net/~ballogy/libindicate-qt/make-examples-and-tests-optional/+merge/82829
+=== modified file 'CMakeLists.txt'
+--- CMakeLists.txt	2010-03-08 09:02:19 +0000
++++ CMakeLists.txt	2011-11-20 20:28:23 +0000
+@@ -36,8 +36,16 @@
+     DESTINATION lib${LIB_SUFFIX}/pkgconfig)
+ 
+ add_subdirectory(src)
+-add_subdirectory(examples)
+-add_subdirectory(tests)
++
++option( BUILD_EXAMPLES "build examples" ON )
++if (BUILD_EXAMPLES)
++    add_subdirectory(examples)
++endif (BUILD_EXAMPLES)
++
++option( BUILD_TESTS "build tests" ON )
++if (BUILD_TESTS)
++    add_subdirectory(tests)
++endif (BUILD_TESTS)
+ 
+ # Packaging
+ set(ARCHIVE_NAME libindicate-qt-${indicate_qt_VERSION})
+

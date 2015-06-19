@@ -1,0 +1,165 @@
+# ChangeLog for net-misc/arm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/arm/ChangeLog,v 1.38 2015/01/26 11:02:01 mrueg Exp $
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -arm-1.4.5.0-r1.ebuild,
+  -arm-1.4.5.0.ebuild:
+  Remove old.
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> arm-1.4.5.0-r2.ebuild:
+  Stable for x86, wrt bug #531970
+
+  02 Jan 2015; Manuel Rüger <mrueg@gentoo.org> arm-1.4.5.0-r2.ebuild:
+  Relax dep on sys-apps/man to virtual/man.
+
+  28 Dec 2014; Chema Alonso <nimiux@gentoo.org> arm-1.4.5.0-r2.ebuild:
+  Stable for amd64 wrt bug #531970
+
+*arm-1.4.5.0-r2 (08 Dec 2014)
+
+  08 Dec 2014; Michał Górny <mgorny@gentoo.org> +arm-1.4.5.0-r2.ebuild:
+  Backport the distutils-r1 conversion to the stable branch. Respect the Python
+  interpreter.
+
+  15 Nov 2014; Anthony G. Basile <blueness@gentoo.org>
+  arm-1.4.5.0_p20140714-r2.ebuild:
+  Keyword ~x86, bug #517838
+
+*arm-1.4.5.0-r1 (09 Oct 2014)
+
+  09 Oct 2014; Anthony G. Basile <blueness@gentoo.org> +arm-1.4.5.0-r1.ebuild:
+  Fix RDEPENDS, bug #523538
+
+  24 Jul 2014; Naohiro Aota <naota@gentoo.org> arm-1.4.5.0_p20140714-r2.ebuild:
+  Add ~x86-fbsd. #517838
+
+  23 Jul 2014; Anthony G. Basile <blueness@gentoo.org>
+  arm-1.4.5.0_p20140714-r2.ebuild:
+  Keyword ~arm and ~mips, bug #517838
+
+  23 Jul 2014; Anthony G. Basile <blueness@gentoo.org>
+  arm-1.4.5.0_p20140714-r2.ebuild:
+  Keyword ~ppc and ~ppc64, bug #517838
+
+*arm-1.4.5.0_p20140714-r2 (23 Jul 2014)
+
+  23 Jul 2014; Manuel Rüger <mrueg@gentoo.org> +arm-1.4.5.0_p20140714-r2.ebuild,
+  -arm-1.4.5.0_p20140714-r1.ebuild:
+  Fix unicode error.
+
+*arm-1.4.5.0_p20140714-r1 (23 Jul 2014)
+
+  23 Jul 2014; Manuel Rüger <mrueg@gentoo.org> +arm-1.4.5.0_p20140714-r1.ebuild,
+  -arm-1.4.5.0_p20140714.ebuild:
+  Install missing config files. Apply fix for bug #432206.
+
+*arm-1.4.5.0_p20140714 (23 Jul 2014)
+
+  23 Jul 2014; Manuel Rüger <mrueg@gentoo.org> +arm-1.4.5.0_p20140714.ebuild:
+  Add new snapshot. Depends on net-libs/stem now. Migrate to distutils-r1. Fixes
+  bug #432206.
+
+  22 Jul 2014; Manuel Rüger <mrueg@gentoo.org> -arm-1.4.3.0.ebuild,
+  -arm-1.4.4.1.ebuild:
+  Cleanup old.
+
+  22 Jul 2014; Manuel Rüger <mrueg@gentoo.org> metadata.xml:
+  Add myself as a maintainer.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> arm-1.4.5.0.ebuild:
+  x86 stable wrt bug #419295
+
+  02 Jun 2012; Agostino Sarubbo <ago@gentoo.org> arm-1.4.5.0.ebuild:
+  Stable for amd64, wrt bug #419295
+
+  29 Apr 2012; Anthony G. Basile <blueness@gentoo.org> -arm-1.4.0.2-r1.ebuild,
+  -arm-1.4.1.3.ebuild, -arm-1.4.2.3.ebuild, -arm-1.4.4.0.ebuild:
+  Remove older unstable versions
+
+*arm-1.4.5.0 (29 Apr 2012)
+
+  29 Apr 2012; Anthony G. Basile <blueness@gentoo.org> +arm-1.4.5.0.ebuild:
+  Version bump
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> arm-1.4.4.1.ebuild:
+  x86 stable wrt bug #404833
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> arm-1.4.4.1.ebuild:
+  Stable for amd64, wrt bug #404833
+
+  08 Nov 2011; Naohiro Aota <naota@gentoo.org> arm-1.4.4.1.ebuild:
+  Add ~x86-fbsd
+
+*arm-1.4.4.1 (29 Sep 2011)
+
+  29 Sep 2011; Anthony G. Basile <blueness@gentoo.org> +arm-1.4.4.1.ebuild:
+  Minor version bump
+
+*arm-1.4.4.0 (26 Sep 2011)
+
+  26 Sep 2011; Anthony G. Basile <blueness@gentoo.org> +arm-1.4.4.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Markus Meier <maekke@gentoo.org> arm-1.4.3.0.ebuild:
+  x86 stable, bug #380075
+
+  22 Aug 2011; Tony Vroon <chainsaw@gentoo.org> arm-1.4.3.0.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo & Ian
+  "idella4" Delaney in bug #380075.
+
+*arm-1.4.3.0 (17 Jul 2011)
+
+  17 Jul 2011; Anthony G. Basile <blueness@gentoo.org> +arm-1.4.3.0.ebuild:
+  Version bump
+
+  15 May 2011; Anthony G. Basile <blueness@gentoo.org> -arm-1.4.2.2.ebuild:
+  Removed older version
+
+*arm-1.4.2.3 (15 May 2011)
+
+  15 May 2011; Anthony G. Basile <blueness@gentoo.org> +arm-1.4.2.3.ebuild:
+  Version Bump
+
+*arm-1.4.2.2 (09 Apr 2011)
+
+  09 Apr 2011; Anthony G. Basile <blueness@gentoo.org> +arm-1.4.2.2.ebuild:
+  Version bump
+
+  09 Apr 2011; Anthony G. Basile <blueness@gentoo.org> -arm-1.4.0.2.ebuild,
+  -arm-1.4.1.0.ebuild, metadata.xml:
+  Removed deprecated versions
+
+*arm-1.4.1.3 (16 Jan 2011)
+
+  16 Jan 2011; Anthony G. Basile <blueness@gentoo.org> +arm-1.4.1.3.ebuild:
+  Hotfix version bump with --docPath fix
+
+*arm-1.4.1.0 (09 Jan 2011)
+
+  09 Jan 2011; Anthony G. Basile <blueness@gentoo.org> +arm-1.4.1.0.ebuild:
+  Version bump
+
+*arm-1.4.0.2-r1 (09 Jan 2011)
+
+  09 Jan 2011; Anthony G. Basile <blueness@gentoo.org>
+  +arm-1.4.0.2-r1.ebuild:
+  Fix bug #349792
+
+  06 Jan 2011; Anthony G. Basile <blueness@gentoo.org> metadata.xml:
+  Removed fauli and added myself as maintainer
+
+*arm-1.4.0.2 (06 Dec 2010)
+
+  06 Dec 2010; Christian Faulhammer <fauli@gentoo.org> -arm-1.4.0.ebuild,
+  +arm-1.4.0.2.ebuild:
+  Use versionator.eclass to distinguish hotfix versions
+
+*arm-1.4.0 (03 Dec 2010)
+
+  03 Dec 2010; Christian Faulhammer <fauli@gentoo.org> +arm-1.4.0.ebuild,
+  +metadata.xml:
+  Initial commit for bug 341731, ebuild by Jesse Adelman <jesse AT
+  boldandbusted DOT com>, reviewed by me

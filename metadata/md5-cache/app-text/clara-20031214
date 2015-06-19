@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=x11-libs/libX11
+DESCRIPTION=An OCR (Optical Character Recognition) program
+HOMEPAGE=http://www.claraocr.org/
+KEYWORDS=amd64 ppc x86 ~ppc-macos ~sparc-solaris
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://gentoo/clara-20031214.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=24181bbc20f6ecabc3d526dfb822cc43

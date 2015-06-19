@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>qt</herd>
+	<use>
+		<flag name="designer">Build plugin for <pkg>dev-qt/designer</pkg></flag>
+		<flag name="webkit">Build the WebView import for QtQuick1 (requires QtWebKit)</flag>
+		<flag name="xml">Build the XmlListModel import for QtQuick1 (requires QtXmlPatterns)</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<doc>http://doc.qt.io/</doc>
+	</upstream>
+</pkgmetadata>

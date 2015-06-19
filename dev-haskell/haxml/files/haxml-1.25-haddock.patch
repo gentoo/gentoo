@@ -1,0 +1,26 @@
+--- HaXml-1.25-orig/src/Text/XML/HaXml/Schema/TypeConversion.hs	2014-10-29 02:53:24.000000000 +1100
++++ HaXml-1.25/src/Text/XML/HaXml/Schema/TypeConversion.hs	2014-12-08 13:32:58.799433615 +1100
+@@ -38,7 +38,7 @@
+                                                   Just (Right
+                                                     (ComplexType
+                                                        {complex_name=Just t'}))
+-                                                  {-| t==t'-}
++                                                  {-  | t==t' -}
+                                                     -> (e:)
+                                                   _ -> id
+                   _                          -> id
+@@ -75,10 +75,10 @@
+     renameSimple n s@UnionOf{}    = s{ simple_name  = Just n }
+ 
+ 
+--- * For now, rather than walk the tree, giving typenames to nodes that were
+---   previously locally-typed, we will instead assume in the pretty-printer
+---   that it can always replace a missing typename with the element name, and
+---   have it resolve to something sensible.
++    -- * For now, rather than walk the tree, giving typenames to nodes that were
++    --   previously locally-typed, we will instead assume in the pretty-printer
++    --   that it can always replace a missing typename with the element name, and
++    --   have it resolve to something sensible.
+     renameLocals :: SchemaItem -> SchemaItem
+     renameLocals s = s
+ --  renameLocals (SchemaElement e)

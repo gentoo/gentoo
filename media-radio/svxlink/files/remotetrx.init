@@ -1,0 +1,43 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-radio/svxlink/files/remotetrx.init,v 1.1 2012/01/29 06:54:02 tomjbe Exp $
+
+PNAME=remotetrx
+NAME="RemoteTrx Server"
+DAEMON=/usr/bin/$PNAME
+
+POPTS="--daemon \
+	${RUNASUSER:+--runasuser=$RUNASUSER} \
+	${PIDFILE:+--pidfile=$PIDFILE} \
+	${LOGFILE:+--logfile=$LOGFILE} \
+	${CFGFILE:+--config=$CFGFILE}"
+
+create_logfile()
+{
+  touch $LOGFILE
+  if [ -n "$RUNASUSER" ]; then
+    chown $RUNASUSER.$RUNASUSER $LOGFILE
+  fi
+}
+
+
+depend() {
+  need localmount
+  use net
+  after bootmisc
+}
+
+start() {
+  ebegin "Starting $NAME"
+  create_logfile
+  export $ENV
+  start-stop-daemon --start --pidfile $PIDFILE --exec $DAEMON -- $POPTS
+  eend $?
+}
+
+stop() {
+  ebegin "Stopping $NAME"
+  start-stop-daemon --stop --pidfile $PIDFILE --exec $DAEMON
+  eend $?
+}

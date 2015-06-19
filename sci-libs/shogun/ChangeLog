@@ -1,0 +1,49 @@
+# ChangeLog for sci-libs/shogun
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/shogun/ChangeLog,v 1.10 2015/01/27 14:41:32 jlec Exp $
+
+  27 Jan 2015; Justin Lecher <jlec@gentoo.org> shogun-3.2.0.ebuild:
+  Fix typo in PYTHON_COMPAT, #537980
+
+  25 Jan 2015; Justin Lecher <jlec@gentoo.org> shogun-3.2.0.ebuild,
+  +files/shogun-3.2.0-atlas.patch, metadata.xml:
+  Fix buildproblems with atlas detection, #507304; be multilib friendly,
+  #531034; do not fetch gmock for tests, #528566
+
+*shogun-3.2.0 (06 Apr 2014)
+
+  06 Apr 2014; Sébastien Fabbro <bicatali@gentoo.org> +shogun-3.2.0.ebuild:
+  Version bump
+
+  04 Mar 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  files/shogun-1.1.0-respect-ldflags.patch, shogun-2.0.0.ebuild:
+  Force linking with threads in every case
+
+*shogun-2.0.0 (03 Mar 2013)
+
+  03 Mar 2013; Sébastien Fabbro <bicatali@gentoo.org> +shogun-2.0.0.ebuild,
+  metadata.xml:
+  Version bump
+
+  21 Feb 2013; Justin Lecher <jlec@gentoo.org> shogun-1.1.0.ebuild,
+  metadata.xml:
+  Use tc-getPKG_CONFIG from toolchain-funcs.eclass instead of plain pkg-config
+
+  04 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/shogun-1.1.0-as-needed.patch, shogun-1.1.0.ebuild:
+  Fixed for R as-needed and for prefix
+
+  24 Jul 2012; Justin Lecher <jlec@gentoo.org> shogun-1.1.0.ebuild,
+  metadata.xml:
+  Fix broken sed, #427884; add missing die
+
+  25 Jun 2012; Sébastien Fabbro <bicatali@gentoo.org> shogun-1.1.0.ebuild:
+  newins is not recursive, bug #421293, thanks Eric Garioud
+
+*shogun-1.1.0 (14 Jun 2012)
+
+  14 Jun 2012; Sébastien Fabbro <bicatali@gentoo.org> +shogun-1.1.0.ebuild,
+  +files/shogun-1.1.0-respect-ldflags.patch,
+  +files/shogun-1.1.0-test-readline.patch,
+  +files/shogun-1.1.0-test-snappy.patch, +metadata.xml:
+  Initial import

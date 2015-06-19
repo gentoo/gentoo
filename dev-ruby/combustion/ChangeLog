@@ -1,0 +1,26 @@
+# ChangeLog for dev-ruby/combustion
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/combustion/ChangeLog,v 1.5 2015/06/07 17:30:58 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  10 Mar 2015; Hans de Graaff <graaff@gentoo.org> -combustion-0.5.1.ebuild,
+  -combustion-0.5.2.ebuild:
+  Cleanup.
+
+*combustion-0.5.3 (03 Mar 2015)
+
+  03 Mar 2015; Manuel Rüger <mrueg@gentoo.org> +combustion-0.5.3.ebuild:
+  Version bump.
+
+*combustion-0.5.2 (18 Jul 2014)
+
+  18 Jul 2014; Hans de Graaff <graaff@gentoo.org> +combustion-0.5.2.ebuild:
+  Version bump.
+
+*combustion-0.5.1 (02 Apr 2014)
+
+  02 Apr 2014; Manuel Rüger <mrueg@gentoo.org> +combustion-0.5.1.ebuild,
+  +metadata.xml:
+  Initial version. Original ebuild by Hans de Graaff.

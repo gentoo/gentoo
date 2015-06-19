@@ -1,0 +1,58 @@
+# ChangeLog for app-misc/terminal-colors
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/terminal-colors/ChangeLog,v 1.14 2015/04/08 07:30:33 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> terminal-colors-2.0.ebuild,
+  terminal-colors-2.1.ebuild:
+  Remove old Python implementations
+
+  24 Nov 2014; Tim Harder <radhermit@gentoo.org> terminal-colors-2.2.ebuild:
+  Drop python2_6 and python_3_2 support and add python3_4 (bug #530356).
+
+  20 Oct 2013; Fabian Groffen <grobian@gentoo.org> terminal-colors-2.2.ebuild:
+  Marked ~x64-macos, bug #486818
+
+*terminal-colors-2.2 (15 Aug 2013)
+
+  15 Aug 2013; Tim Harder <radhermit@gentoo.org> +terminal-colors-2.2.ebuild:
+  Version bump.
+
+  08 Aug 2013; Tim Harder <radhermit@gentoo.org> -terminal-colors-1.5.ebuild:
+  Remove old.
+
+*terminal-colors-2.1 (08 Aug 2013)
+
+  08 Aug 2013; Tim Harder <radhermit@gentoo.org> terminal-colors-2.0.ebuild,
+  +terminal-colors-2.1.ebuild:
+  Version bump and support installing for multiple python implementations.
+
+*terminal-colors-2.0 (05 Aug 2013)
+
+  05 Aug 2013; Tim Harder <radhermit@gentoo.org> +terminal-colors-2.0.ebuild:
+  Version bump.
+
+  28 Jul 2013; Jonathan Callen <jcallen@gentoo.org> terminal-colors-1.5.ebuild:
+  Fix dependencies
+
+  30 May 2013; Tim Harder <radhermit@gentoo.org> -terminal-colors-1.4.ebuild:
+  Remove old.
+
+  30 May 2013; Tim Harder <radhermit@gentoo.org> terminal-colors-1.5.ebuild:
+  Add PYTHON_REQUIRED_USE for python-single-r1.
+
+*terminal-colors-1.5 (09 Apr 2013)
+
+  09 Apr 2013; Tim Harder <radhermit@gentoo.org> +terminal-colors-1.5.ebuild:
+  Version bump, migrate to python-single-r1.
+
+  13 Dec 2012; Tim Harder <radhermit@gentoo.org> terminal-colors-1.4.ebuild:
+  Fix LICENSE.
+
+  29 Feb 2012; Tim Harder <radhermit@gentoo.org> terminal-colors-1.4.ebuild:
+  Minor description change.
+
+*terminal-colors-1.4 (29 Feb 2012)
+
+  29 Feb 2012; Tim Harder <radhermit@gentoo.org> +terminal-colors-1.4.ebuild,
+  +metadata.xml:
+  Initial import. Ebuild by me.

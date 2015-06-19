@@ -1,0 +1,16 @@
+--- check_kernel.c.orig	2004-02-06 16:41:32.000000000 -0500
++++ check_kernel.c	2004-02-06 16:41:55.000000000 -0500
+@@ -6,13 +6,8 @@
+ 
+ extern char *modules_devfs;
+ 
+-/* copied over from module-init-tools backward_compat.c */
+-#ifndef __ia64 /* breaks ia64. */
+-static _syscall2(long, create_module, const char *, name, size_t, size);
+-#else
+ #define create_module(name, size) \
+         syscall(__NR_create_module, (name), (size))
+-#endif
+ 
+ /* returns true if we have a 2.5.48+ kernel */
+ int check_kernel_version (int verbose)

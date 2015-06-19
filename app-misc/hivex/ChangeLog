@@ -1,0 +1,190 @@
+# ChangeLog for app-misc/hivex
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/hivex/ChangeLog,v 1.33 2015/03/26 20:28:10 zerochaos Exp $
+
+  26 Mar 2015; Rick Farina <zerochaos@gentoo.org> hivex-1.3.11-r1.ebuild,
+  hivex-1.3.11.ebuild:
+  remember to dep on rubygems
+
+*hivex-1.3.11-r1 (16 Mar 2015)
+
+  16 Mar 2015; Rick Farina <zerochaos@gentoo.org> +hivex-1.3.11-r1.ebuild,
+  hivex-1.3.11.ebuild:
+  ebuild is still pretty bad, but at least it builds again
+
+  19 Feb 2015; Sergey Popov <pinkbyte@gentoo.org> -hivex-1.3.2-r2.ebuild,
+  -hivex-1.3.7-r1.ebuild, -files/autoconf_fix-1.3.2.patch,
+  -files/python-test-fix-1.3.2.patch, -files/ruby_runpath_fix-1.3.2.patch,
+  -files/1.3.3/0001-Fixed-gnulib-integration-for-hivexml.patch,
+  -files/1.3.3/0002-automake.patch,
+  -files/1.3.3/0003_autoconf_fix_automagic-1.3.3.patch,
+  -files/1.3.3/0004-ruby_runpath_fix-1.3.3.patch,
+  -files/1.3.5/0001-add_ocaml_triplet_in_configure.ac.patch,
+  -files/1.3.5/0002-add_per_triplet_in_configure.ac.patch,
+  -files/1.3.5/0003-fix_python_defenition_configure.ac.patch,
+  -files/1.3.5/0004-ruby_runpath_fix-1.3.5.patch,
+  -files/1.3.6/0001-add_ocaml_triplet_in_configure.ac.patch,
+  -files/1.3.6/0002-add_per_triplet_in_configure.ac.patch,
+  -files/1.3.6/0003-fix_python_defenition_configure.ac.patch,
+  -files/1.3.6/0004-ruby_runpath_fix-1.3.5.patch,
+  -files/1.3.6-r1/disable_automagic_cumulative_patch.patch,
+  -files/1.3.6-r1/fix_python_linking.patch,
+  -files/1.3.7/0004-ruby_runpath_fix-1.3.5.patch,
+  -files/1.3.7/ruby1.9_fix_deprection.patch:
+  Security cleanup, wrt bug #490990
+
+  19 Feb 2015; Sergey Popov <pinkbyte@gentoo.org> hivex-1.3.11.ebuild:
+  QA: drop base eclass, drop redundant inherit on autotools eclass
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> hivex-1.3.11.ebuild:
+  Stable for x86, wrt bug #490990
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> hivex-1.3.11.ebuild:
+  Stable for amd64, wrt bug #490990
+
+  05 Jan 2015; Hans de Graaff <graaff@gentoo.org> hivex-1.3.7-r1.ebuild,
+  hivex-1.3.11.ebuild:
+  Depend on dev-ruby/rdoc since virtual/ruby-rdoc is a noop these days.
+
+*hivex-1.3.11 (05 Dec 2014)
+
+  05 Dec 2014; Maxim Koltsov <maksbotan@gentoo.org> +hivex-1.3.11.ebuild:
+  Bump to 1.3.11, fixes security bug #490990. Thanks to slepnoga.
+
+  18 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org> hivex-1.3.7-r1.ebuild:
+  Replace perl-module_pkg_setup with perl_set_version
+
+  16 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org> hivex-1.3.2-r2.ebuild,
+  hivex-1.3.7-r1.ebuild:
+  Replace fixlocalpod with perl_delete_localpod
+
+  14 Jul 2013; Alexander Vershilov <qnikst@gentoo.org> -hivex-1.3.5-r1.ebuild,
+  -hivex-1.3.6-r1.ebuild, -hivex-1.3.6-r2.ebuild, -hivex-1.3.6.ebuild,
+  -hivex-1.3.7.ebuild:
+  remove old unstable versions (thanks to slepnoga)
+
+*hivex-1.3.7-r1 (31 Mar 2013)
+
+  31 Mar 2013; Maxim Koltsov <maksbotan@gentoo.org>
+  +files/1.3.7/0004-ruby_runpath_fix-1.3.5.patch,
+  +files/1.3.7/ruby1.9_fix_deprection.patch, +hivex-1.3.7-r1.ebuild,
+  -hivex-1.3.3-r1.ebuild, hivex-1.3.2-r2.ebuild:
+  Fix issue with glibc 2.16, bug #463894. Fix error with ruby 19, bug #444808.
+  Thanks to slepnoga.
+
+*hivex-1.3.7 (21 Oct 2012)
+
+  21 Oct 2012; Maxim Koltsov <maksbotan@gentoo.org> +hivex-1.3.7.ebuild:
+  Bump to 1.3.7, thanks to slepnoga
+
+*hivex-1.3.6-r2 (17 Sep 2012)
+
+  17 Sep 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +files/1.3.6-r1/fix_python_linking.patch, +hivex-1.3.6-r2.ebuild:
+  Add support for multiple python ABIs
+
+  16 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Add name field to first maintainer in metadata
+
+*hivex-1.3.6-r1 (16 Sep 2012)
+
+  16 Sep 2012; Sergey Popov <pinkbyte@gentoo.org>
+  +files/1.3.6-r1/disable_automagic_cumulative_patch.patch,
+  +hivex-1.3.6-r1.ebuild:
+  New revision, fixes bugs #433467 and #430168. Thanks to slepnoga
+
+*hivex-1.3.6 (21 Jun 2012)
+
+  21 Jun 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +files/1.3.6/0001-add_ocaml_triplet_in_configure.ac.patch,
+  +files/1.3.6/0002-add_per_triplet_in_configure.ac.patch,
+  +files/1.3.6/0003-fix_python_defenition_configure.ac.patch,
+  +files/1.3.6/0004-ruby_runpath_fix-1.3.5.patch, +hivex-1.3.6.ebuild:
+  Bump to 1.3.6, thanks to slepnoga
+
+  02 Jun 2012; Maxim Koltsov <maksbotan@gentoo.org> -hivex-1.3.1.ebuild:
+  Remove old 1.3.1
+
+  03 May 2012; Maxim Koltsov <maksbotan@gentoo.org> hivex-1.3.2-r2.ebuild:
+  Stable for amd64, bug 410323. Permission by Agostino Sarubbo <ago@gentoo.org>
+
+*hivex-1.3.5-r1 (02 May 2012)
+*hivex-1.3.2-r2 (02 May 2012)
+*hivex-1.3.3-r1 (02 May 2012)
+
+  02 May 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +files/1.3.3/0004-ruby_runpath_fix-1.3.3.patch,
+  +files/1.3.5/0004-ruby_runpath_fix-1.3.5.patch,
+  +files/ruby_runpath_fix-1.3.2.patch, +hivex-1.3.2-r2.ebuild,
+  +hivex-1.3.3-r1.ebuild, +hivex-1.3.5-r1.ebuild,
+  -files/autoconf_fix-1.3.1.patch, -hivex-1.3.2-r1.ebuild, -hivex-1.3.2.ebuild,
+  -hivex-1.3.3.ebuild, -hivex-1.3.5.ebuild:
+  Fix runpath and ldflags in ruby bindings, bug 412099
+
+*hivex-1.3.5 (25 Mar 2012)
+
+  25 Mar 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +files/1.3.5/0001-add_ocaml_triplet_in_configure.ac.patch,
+  +files/1.3.5/0002-add_per_triplet_in_configure.ac.patch,
+  +files/1.3.5/0003-fix_python_defenition_configure.ac.patch,
+  +hivex-1.3.5.ebuild, hivex-1.3.2-r1.ebuild:
+  Bump to 1.3.5, fix autoreconf invocation in 1.3.2-r1. Thanks to slepnoga
+
+*hivex-1.3.3 (26 Feb 2012)
+
+  26 Feb 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +files/1.3.3/0001-Fixed-gnulib-integration-for-hivexml.patch,
+  +files/1.3.3/0002-automake.patch,
+  +files/1.3.3/0003_autoconf_fix_automagic-1.3.3.patch, +hivex-1.3.3.ebuild,
+  metadata.xml:
+  Bump to 1.3.3, fix metadata. Thanks to slepnoga
+
+*hivex-1.3.2-r1 (01 Dec 2011)
+
+  01 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org> +hivex-1.3.2-r1.ebuild:
+  Fix usage of autotools-utils.eclass, bug 392087. Thanks to mgorny and
+  slepnoga
+
+  10 Nov 2011; Maxim Koltsov <maksbotan@gentoo.org> hivex-1.3.2.ebuild:
+  Fix pkg_setup to call python_pkg_setup, bug #389691. Thanks to Arfrever.
+
+  06 Nov 2011; Maxim Koltsov <maksbotan@gentoo.org> hivex-1.3.2.ebuild:
+  Replace pkg_config with pkg_setup, thanks to Arfrever, Bug #389691.
+
+  06 Nov 2011; Maxim Koltsov <maksbotan@gentoo.org> hivex-1.3.2.ebuild,
+  +files/python-test-fix-1.3.2.patch:
+  Add patch for python tests and make python_need_rebuild use-conditional. Bug
+  #389691
+
+  06 Nov 2011; Maxim Koltsov <maksbotan@gentoo.org> hivex-1.3.2.ebuild:
+  Fix ebuild syntax, bug #389691.
+
+  30 Oct 2011; Maxim Koltsov <maksbotan@gentoo.org> metadata.xml:
+  Fix mantainer email
+
+*hivex-1.3.2 (28 Oct 2011)
+
+  28 Oct 2011; Maxim Koltsov <maksbotan@gentoo.org> +hivex-1.3.2.ebuild,
+  +files/autoconf_fix-1.3.2.patch:
+  Bump to 1.3.2, thanks to slepnoga
+
+  18 Sep 2011; Maxim Koltsov <maksbotan@gentoo.org> metadata.xml:
+  Fix herd to be proxy-maintainers
+
+  17 Sep 2011; Maxim Koltsov <maksbotan@gentoo.org> hivex-1.3.1.ebuild:
+  Remove unneeded part of LINGUAS-handling code. Thanks to Andreis Vinogradovs
+  <spamslepnoga@inbox.ru>
+
+  13 Sep 2011; Maxim Koltsov <maksbotan@gentoo.org>
+  -files/autoconf_fix-1.3.0.patch, hivex-1.3.1.ebuild,
+  +files/autoconf_fix-1.3.1.patch, -files/incorrect_format.patch:
+  Remove useless incorrect_format.patch, rename autoconf_fix path to apropriate
+  ${PV}. Thanks to James Cloos <cloos@jhcloos.com> for reporting issue, thanks
+  to Andreis Vinogradovs <spamslepnoga@inbox.ru> for providing way to fix.
+
+*hivex-1.3.1 (06 Sep 2011)
+
+  06 Sep 2011; Maxim Koltsov <maksbotan@gentoo.org>
+  +files/autoconf_fix-1.3.0.patch, +hivex-1.3.1.ebuild,
+  +files/incorrect_format.patch, +metadata.xml:
+  Copy app-misc/hivex from rion-overlay, thanks to slepnoga. Bug #342217

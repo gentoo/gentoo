@@ -1,0 +1,121 @@
+# ChangeLog for dev-ruby/erubis
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/erubis/ChangeLog,v 1.33 2015/04/19 18:21:12 graaff Exp $
+
+  19 Apr 2015; Hans de Graaff <graaff@gentoo.org> erubis-2.7.0-r1.ebuild:
+  Drop jruby.
+
+  20 Mar 2015; Hans de Graaff <graaff@gentoo.org> erubis-2.7.0-r2.ebuild:
+  Drop jruby. Add ruby22. Restrict tests since they fail with Psych as YAML
+  provider.
+
+  14 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -erubis-2.7.0.ebuild:
+  Cleanup old.
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> erubis-2.7.0-r1.ebuild:
+  x86 stable wrt bug #504312
+
+  08 Jun 2014; Chema Alonso <nimiux@gentoo.org> erubis-2.7.0-r1.ebuild:
+  Stable for amd64 wrt bug #504312
+
+*erubis-2.7.0-r2 (19 Apr 2014)
+
+  19 Apr 2014; Hans de Graaff <graaff@gentoo.org> +erubis-2.7.0-r2.ebuild:
+  Add ruby21.
+
+  05 Apr 2014; Manuel Rüger <mrueg@gentoo.org> erubis-2.7.0-r1.ebuild,
+  erubis-2.7.0.ebuild:
+  Remove ree18 and ruby18 target. Remove virtual/ruby-test-unit.
+
+  12 Mar 2014; Manuel Rüger <mrueg@gentoo.org> erubis-2.7.0-r1.ebuild:
+  Fix info output for tests.
+
+*erubis-2.7.0-r1 (17 Nov 2013)
+
+  17 Nov 2013; Hans de Graaff <graaff@gentoo.org> +erubis-2.7.0-r1.ebuild:
+  Add ruby20. Work around even more brokenness in the tests with more recent
+  jruby and ruby:1.8 versions.
+
+  27 Jul 2013; Agostino Sarubbo <ago@gentoo.org> erubis-2.7.0.ebuild:
+  Stable for x86, wrt bug #477454
+
+  21 Jul 2013; Agostino Sarubbo <ago@gentoo.org> erubis-2.7.0.ebuild:
+  Stable for amd64, wrt bug #477454
+
+  20 Jul 2013; Hans de Graaff <graaff@gentoo.org> -erubis-2.6.6-r1.ebuild:
+  Cleanup.
+
+  15 Jan 2013; Rick Farina <zerochaos@gentoo.org> erubis-2.6.6-r1.ebuild,
+  erubis-2.7.0.ebuild:
+  adding ~arm keywords to net-analyzer/metasploit rdeps
+
+  14 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata.xml so that it's the same as most other packages.
+
+  05 Aug 2012; Hans de Graaff <graaff@gentoo.org> -erubis-2.6.6.ebuild:
+  Cleanup.
+
+  01 May 2012; Raúl Porcel <armin76@gentoo.org> erubis-2.7.0.ebuild:
+  Drop ia64/sparc keywords
+
+  31 Dec 2011; Fabian Groffen <grobian@gentoo.org> erubis-2.7.0.ebuild:
+  Add Prefix keywords, bug #396547
+
+  31 Dec 2011; Fabian Groffen <grobian@gentoo.org> erubis-2.7.0.ebuild:
+  Marked ~sparc64-solaris
+
+  31 Dec 2011; Fabian Groffen <grobian@gentoo.org> erubis-2.7.0.ebuild:
+  Add Prefix keywords, bug #396547
+
+  29 Dec 2011; Hans de Graaff <graaff@gentoo.org> erubis-2.7.0.ebuild:
+  Don't run tests for ruby 1.9.3 since its default Psych module can't handle
+  the YAML used.
+
+  09 Sep 2011; Fabian Groffen <grobian@gentoo.org> erubis-2.7.0.ebuild:
+  Marked ~sparc-solaris
+
+  07 Aug 2011; Raúl Porcel <armin76@gentoo.org> erubis-2.7.0.ebuild:
+  Add ~ia64/~sparc wrt #351835
+
+  29 Jun 2011; Fabian Groffen <grobian@gentoo.org> erubis-2.7.0.ebuild:
+  Marked ~x86-solaris
+
+*erubis-2.7.0 (09 Apr 2011)
+
+  09 Apr 2011; Hans de Graaff <graaff@gentoo.org> +erubis-2.7.0.ebuild:
+  Version bump.
+
+  31 Dec 2010; Hans de Graaff <graaff@gentoo.org> -erubis-2.6.5.ebuild:
+  Remove old version.
+
+  31 Dec 2010; Hans de Graaff <graaff@gentoo.org> erubis-2.6.6.ebuild,
+  erubis-2.6.6-r1.ebuild:
+  Add ppc/ppc64 keywords also to newer versions.
+
+  29 Sep 2010; Brent Baude <ranger@gentoo.org> erubis-2.6.5.ebuild:
+  Marking erubis-2.6.5 ~ppc64 for bug 326353
+
+  28 Sep 2010; Brent Baude <ranger@gentoo.org> erubis-2.6.5.ebuild:
+  Marking erubis-2.6.5 ~ppc for bug 326353
+
+*erubis-2.6.6-r1 (10 Sep 2010)
+
+  10 Sep 2010; Hans de Graaff <graaff@gentoo.org> +erubis-2.6.6-r1.ebuild:
+  Add ree18 and jruby support.
+
+*erubis-2.6.6 (19 Jul 2010)
+
+  19 Jul 2010; Hans de Graaff <graaff@gentoo.org> +erubis-2.6.6.ebuild:
+  Version bump with a bug fix.
+
+  30 Jun 2010; Christian Faulhammer <fauli@gentoo.org> erubis-2.6.5.ebuild:
+  keyworded ~x86, bug 312971
+
+  22 May 2010; Diego E. Pettenò <flameeyes@gentoo.org> erubis-2.6.5.ebuild:
+  Various cleanups.
+
+*erubis-2.6.5 (28 Mar 2010)
+
+  28 Mar 2010; Hans de Graaff <graaff@gentoo.org> +erubis-2.6.5.ebuild,
+  +metadata.xml:
+  Initial import, new test dependency for dev-ruby/sinatra.

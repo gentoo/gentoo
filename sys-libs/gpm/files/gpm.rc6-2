@@ -1,0 +1,29 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/gpm/files/gpm.rc6-2,v 1.2 2012/10/28 11:35:56 vapier Exp $
+
+#NB: Config is in /etc/conf.d/gpm
+
+command=/usr/sbin/gpm
+command_args="
+	-m ${MOUSEDEV}
+	-t ${MOUSE}
+	${RESPONSIVENESS:+ -r ${RESPONSIVENESS}}
+	${REPEAT_TYPE:+ -R${REPEAT_TYPE}}
+	${APPEND}
+"
+
+pidfile=/var/run/gpm.pid
+
+depend() {
+	need localmount
+	use hotplug logger
+}
+
+start_pre() {
+	if [ -z "${MOUSEDEV}" ] || [ -z "${MOUSE}" ] ; then
+		eerror "You need to setup MOUSEDEV and MOUSE in /etc/conf.d/gpm first"
+		return 1
+	fi
+}

@@ -1,0 +1,30 @@
+Gentoo bug: 423869
+Thanks to hanno
+
+--- pecl/crack/trunk/crack.c	2008/07/17 10:02:47	262854
++++ pecl/crack/trunk/crack.c	2012/06/07 16:13:34	326013
+@@ -38,7 +38,7 @@
+ 
+ /* {{{ crack_functions[]
+  */
+-function_entry crack_functions[] = {
++zend_function_entry crack_functions[] = {
+ 	PHP_FE(crack_opendict,			NULL)
+ 	PHP_FE(crack_closedict,			NULL)
+ 	PHP_FE(crack_check,				NULL)
+@@ -94,6 +94,7 @@
+ 	int filename_len;
+ 	int result = SUCCESS;
+ 	
++#if PHP_VERSION_ID < 50400
+ 	if (PG(safe_mode)) {
+ 		filename_len = strlen(path) + 10;
+ 		filename = (char *) emalloc(filename_len);
+@@ -125,6 +126,7 @@
+ 			return FAILURE;
+ 		}
+ 	}
++#endif
+ 	
+ 	if (php_check_open_basedir(path TSRMLS_CC)) {
+ 		return FAILURE;

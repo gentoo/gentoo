@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=sys-devel/flex-2.5.33-r3 >=sys-apps/sed-4.1.5
+DESCRIPTION=vov (Vov's Obsessive Von-Neumann) is a tool that emulates the behavior of a Von-Neumann machine
+HOMEPAGE=http://home.gna.org/vov/
+IUSE=debug gprof
+KEYWORDS=x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://download.gna.org/vov/vov-2.0.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=53668333a38de650d2a15f9742eb9c19

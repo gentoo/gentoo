@@ -1,0 +1,171 @@
+# ChangeLog for mail-client/claws-mail-python
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail-python/ChangeLog,v 1.40 2013/05/08 04:02:52 fauli Exp $
+
+  08 May 2013; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-python-0.11.ebuild:
+  prepare plugin for mail-client/claws-mail-3.9.1
+
+  04 Jan 2013; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-python-0.10.ebuild:
+  clean up
+
+  03 Jan 2013; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-python-0.11.ebuild:
+  reintroduce deletion of .a and .la files
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org> claws-mail-python-0.11.ebuild:
+  Stable for x86, wrt bug #448968
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org> claws-mail-python-0.11.ebuild:
+  Stable for amd64, wrt bug #448968
+
+*claws-mail-python-0.11 (20 Nov 2012)
+
+  20 Nov 2012; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-python-0.11.ebuild:
+  version bump
+
+  20 Nov 2012; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-python-0.9.ebuild:
+  clean up
+
+  31 Oct 2012; Andreas Schuerch <nativemad@gentoo.org>
+  claws-mail-python-0.10.ebuild:
+  x86 stable, see bug 437814
+
+  24 Oct 2012; Agostino Sarubbo <ago@gentoo.org> claws-mail-python-0.10.ebuild:
+  Stable for amd64, wrt bug #437814
+
+*claws-mail-python-0.10 (30 Jun 2012)
+
+  30 Jun 2012; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-python-0.10.ebuild:
+  Version bump, mainly bug fixes
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> claws-mail-python-0.9.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  11 Apr 2012; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-python-0.8.ebuild:
+  clean up
+
+  07 Apr 2012; Markus Meier <maekke@gentoo.org> claws-mail-python-0.9.ebuild:
+  x86 stable, bug #387547
+
+  04 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #206112
+
+  25 Feb 2012; Agostino Sarubbo <ago@gentoo.org> claws-mail-python-0.9.ebuild:
+  Stable for amd64, wrt bug #387547
+
+*claws-mail-python-0.9 (26 Dec 2011)
+
+  26 Dec 2011; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-python-0.9.ebuild:
+  version bump for bug 395381 by Justin
+
+  26 Dec 2011; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-python-0.7.ebuild:
+  clean up
+
+  29 Oct 2011; Markos Chandras <hwoarang@gentoo.org>
+  claws-mail-python-0.8.ebuild:
+  Stable on amd64 wrt bug #387547
+
+  24 Oct 2011; Markus Meier <maekke@gentoo.org> claws-mail-python-0.8.ebuild:
+  x86 stable, bug #387547
+
+*claws-mail-python-0.8 (30 Aug 2011)
+
+  30 Aug 2011; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-python-0.8.ebuild:
+  version bump
+
+  31 Jul 2011; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-python-0.6.ebuild:
+  clean up
+
+  16 Jul 2011; Markos Chandras <hwoarang@gentoo.org>
+  claws-mail-python-0.7.ebuild:
+  Stable on amd64 wrt bug #372957
+
+  29 Jun 2011; Markus Meier <maekke@gentoo.org> claws-mail-python-0.7.ebuild:
+  x86 stable, bug #372957
+
+*claws-mail-python-0.7 (10 Apr 2011)
+
+  10 Apr 2011; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-python-0.7.ebuild:
+  version bump
+
+  22 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-python-0.3.ebuild, -claws-mail-python-0.4.ebuild,
+  -claws-mail-python-0.5.ebuild:
+  clean up
+
+  15 Jan 2011; Markus Meier <maekke@gentoo.org> claws-mail-python-0.6.ebuild:
+  x86 stable, bug #350513
+
+  04 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  claws-mail-python-0.6.ebuild:
+  Stable on amd64 wrt bug #350513
+
+  30 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-python-0.3.ebuild, claws-mail-python-0.4.ebuild,
+  claws-mail-python-0.5.ebuild, claws-mail-python-0.6.ebuild:
+  Add dev-python/pygtk dependency as found by hwoarang in bug 331395
+
+*claws-mail-python-0.6 (06 Dec 2010)
+
+  06 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-python-0.6.ebuild:
+  version bump
+
+  23 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-python-0.3.ebuild, claws-mail-python-0.4.ebuild,
+  claws-mail-python-0.5.ebuild:
+  add a die after emake
+
+*claws-mail-python-0.5 (22 Nov 2010)
+
+  22 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-python-0.5.ebuild:
+  version bump
+
+  22 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-python-0.4.ebuild:
+  stable x86, bug 331395
+
+*claws-mail-python-0.4 (12 Jun 2010)
+
+  12 Jun 2010; Christian Faulhammer <fauli@gentoo.org> +claws-mail-python-0.4.ebuild:
+  version bump, bug 319161
+
+  07 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-python-0.2.ebuild:
+  clean up
+
+  11 Mar 2010; Markus Meier <maekke@gentoo.org>
+  claws-mail-python-0.3.ebuild:
+  amd64 stable, bug #304353
+
+  11 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-python-0.3.ebuild:
+  stable x86, bug 304353
+
+*claws-mail-python-0.3 (08 Jan 2010)
+
+  08 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-python-0.3.ebuild:
+  version bump
+
+  01 Dec 2009; Markus Meier <maekke@gentoo.org>
+  claws-mail-python-0.2.ebuild:
+  add ~amd64, bug #276760
+
+*claws-mail-python-0.2 (18 Oct 2009)
+
+  18 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-python-0.2.ebuild, +metadata.xml:
+  initial ebuild

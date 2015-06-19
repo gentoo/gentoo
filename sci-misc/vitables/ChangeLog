@@ -1,0 +1,38 @@
+# ChangeLog for sci-misc/vitables
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/vitables/ChangeLog,v 1.9 2012/08/04 19:07:00 bicatali Exp $
+
+  04 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/vitables-2.1-no-docs.patch, -files/vitables-2.0-doc-examples.patch,
+  metadata.xml, vitables-2.1.ebuild:
+  Fixed when sphinx not installed, build docs, keyword amd64-linux, x86-linux,
+  removed old
+
+  22 Apr 2012; Kacper Kowalik <xarthisius@gentoo.org> -vitables-2.0.ebuild,
+  vitables-2.1.ebuild:
+  Update SRC_URI and HOMEPAGE wrt #412689 by <rnelsonchem@gmail.com>
+
+*vitables-2.1 (29 Jul 2011)
+
+  29 Jul 2011; Sébastien Fabbro <bicatali@gentoo.org> +vitables-2.1.ebuild,
+  metadata.xml:
+  Version bump
+
+  18 Jun 2011; Michał Januszewski <spock@gentoo.org> metadata.xml:
+  Reassigning to maintainer-needed.
+
+  21 May 2010; Justin Lecher <jlec@gentoo.org> vitables-2.0.ebuild:
+  Fixes for PYTHON ABI, #316243
+
+  29 Sep 2009; Michał Januszewski <spock@gentoo.org> vitables-2.0.ebuild:
+  Fix installation of icon and .desktop file.
+
+  25 Jun 2009; Ben de Groot <yngwin@gentoo.org> vitables-2.0.ebuild:
+  Drop illegal qt meta ebuild dependency (see 217161#c11). Add use dep for
+  PyQt4 (check for more, bug 272136). Whitespace.
+
+*vitables-2.0 (11 Jun 2009)
+
+  11 Jun 2009; Michał Januszewski <spock@gentoo.org> +vitables-2.0.ebuild,
+  +files/vitables-2.0-doc-examples.patch, +metadata.xml:
+  Initial commit (bug #268149).

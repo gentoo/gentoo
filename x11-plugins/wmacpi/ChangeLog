@@ -1,0 +1,103 @@
+# ChangeLog for x11-plugins/wmacpi
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmacpi/ChangeLog,v 1.27 2015/01/12 10:34:11 voyageur Exp $
+
+*wmacpi-2.3 (12 Jan 2015)
+
+  12 Jan 2015; Bernard Cafarelli <voyageur@gentoo.org> -wmacpi-2.2.ebuild,
+  +wmacpi-2.3.ebuild, -files/wmacpi-2.2-makefile.patch,
+  +files/wmacpi-2.3-makefile.patch:
+  Version bump, mostly packaging cleanup over previous version
+
+  05 Nov 2014; Bernard Cafarelli <voyageur@gentoo.org> wmacpi-2.2.ebuild:
+  Host tarball on my devspace, bug #527610
+
+*wmacpi-2.2 (10 Oct 2014)
+
+  10 Oct 2014; Bernard Cafarelli <voyageur@gentoo.org> +wmacpi-2.2.ebuild,
+  +files/wmacpi-2.2-makefile.patch:
+  Version bump with new homepage, update makefile patch
+
+  28 Jun 2008; Markus Meier <maekke@gentoo.org> wmacpi-2.2_rc1.ebuild:
+  x86 stable, bug #229545
+
+  27 Jun 2008; Santiago M. Mola <coldwind@gentoo.org> wmacpi-2.2_rc1.ebuild:
+  amd64 stable wrt bug #229545
+
+*wmacpi-2.2_rc1 (01 Feb 2008)
+
+  01 Feb 2008; Michele Noberasco <s4t4n@gentoo.org> wmacpi-2.2_rc1.ebuild:
+  Version bump, plus fixes for crosscompile, LDFLAGS, etc. Closes bug #207916.
+  wmacpi-1.99_p7.ebuild:
+  Wiped out older version.
+
+  04 Mar 2007; Piotr Jaroszyński <peper@gentoo.org> wmacpi-1.99_p7.ebuild,
+  wmacpi-2.1_rc1.ebuild:
+  Fix incomplete sys-apps/acpi -> sys-power/acpi move.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  07 Feb 2006; Simon Stelling <blubb@gentoo.org> wmacpi-2.1_rc1.ebuild:
+  stable on amd64
+
+  15 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> wmacpi-1.34.ebuild,
+  wmacpi-1.99_p7.ebuild, wmacpi-2.1_rc1.ebuild:
+  Fixed DEPEND for modular X, see bug #118297.
+
+  29 Aug 2005; Michele Noberasco <s4t4n@gentoo.org> wmacpi-2.1_rc1.ebuild:
+  Stable for x86.
+
+*wmacpi-2.1_rc1 (25 Jan 2005)
+
+  25 Jan 2005; Michele Noberasco <s4t4n@gentoo.org> wmacpi-2.1_rc1.ebuild:
+  Version bump, plus patch that adds support for windowed mode.
+  Closes #76885, submitted (and patches provided) by Jochen Eisinger
+  <jochen.eisinger@gmx.de>
+  wmacpi-1.34.ebuild, wmacpi-1.99_p7.ebuild:
+  Update copyright headers...
+
+  01 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> wmacpi-1.34.ebuild,
+  wmacpi-1.99_p7.ebuild:
+  Keyworded -sparc... no ACPI, move along
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> wmacpi-1.99_p7.ebuild:
+  Stable on amd64.
+
+*wmacpi-1.99_p7 (20 Aug 2004)
+
+  20 Aug 2004; Michele Noberasco <s4t4n@gentoo.org> wmacpi-1.99_p7.ebuild:
+  Version bump. Add DEPEND on x11-libs/libdockapp, change acpi and acpi.1
+  names to acpi-batt-status and acpi-batt-status.1 to fix #60685.
+  Marking it stable for x86.
+  wmacpi-1.99_p6.ebuild, files/digest-wmacpi-1.99_p6:
+  Remove older version...
+
+  04 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>:
+  No more apm support, therefore -ppc
+
+*wmacpi-1.99_p6 (13 Aug 2004)
+
+  13 Aug 2004; Michele Noberasco <s4t4n@gentoo.org> wmacpi-1.99_p6.ebuild:
+  Version bump. This version only supports acpi, so all apm related
+  stuff was removed from ebuild... Closes #60237.
+
+  23 Jun 2004; Aron Griffis <agriffis@gentoo.org> wmacpi-1.34.ebuild:
+  QA - fix use invocation
+
+*wmacpi-1.34 (23 Feb 2003)
+
+  04 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added patches to remove apm/acpi parts ... this way only support for
+  one is include at a time #27685.
+
+  25 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Unmasked because older version is broke with newer kernels #22973.
+
+  23 Feb 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump for #15967.
+
+*wmacpi-1.21 (22 Nov 2002)
+
+  22 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by David Spreen <netzwurm@debian.org>.

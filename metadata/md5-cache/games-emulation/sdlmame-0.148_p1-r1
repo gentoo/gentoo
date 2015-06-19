@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=dev-libs/expat media-libs/fontconfig media-libs/flac >=media-libs/libsdl-1.2.10[X,sound,joystick,opengl?,video] media-libs/sdl-ttf sys-libs/zlib virtual/jpeg alsa? ( media-libs/alsa-lib ) X? ( gnome-base/gconf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXinerama ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) app-arch/unzip media-libs/alsa-lib virtual/pkgconfig X? ( x11-proto/xineramaproto )
+DESCRIPTION=Multiple Arcade Machine Emulator (SDL)
+EAPI=5
+HOMEPAGE=http://mamedev.org/
+IUSE=X alsa debug opengl
+KEYWORDS=amd64 ~ppc x86
+LICENSE=XMAME
+RDEPEND=dev-libs/expat media-libs/fontconfig media-libs/flac >=media-libs/libsdl-1.2.10[X,sound,joystick,opengl?,video] media-libs/sdl-ttf sys-libs/zlib virtual/jpeg alsa? ( media-libs/alsa-lib ) X? ( gnome-base/gconf x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXinerama ) games-misc/games-envd
+REQUIRED_USE=debug? ( X )
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~hasufell/distfiles/sdlmame0148u1_diff.zip http://dev.gentoo.org/~hasufell/distfiles/mame0148s.zip http://www.netswarm.net/misc/sdlmame-ui.bdf.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=ad6df91208d9fc80c50c6dfe8c63ba74

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=nls? ( sys-devel/gettext )
+DESCRIPTION=A text menu based utility for configuring ppp
+HOMEPAGE=http://packages.qa.debian.org/p/pppconfig.html
+IUSE=nls linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_es linguas_eu linguas_fi linguas_fr linguas_gl linguas_he linguas_id linguas_it linguas_ja linguas_ko linguas_lt linguas_nb linguas_nl linguas_nn linguas_pt_BR linguas_pt linguas_ro linguas_ru linguas_sk linguas_sv linguas_tl linguas_tr linguas_vi linguas_zh_CN linguas_zh_TW
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=net-dialup/ppp dev-util/dialog dev-lang/perl
+SLOT=0
+SRC_URI=mirror://debian/pool/main/p/pppconfig/pppconfig_2.3.17.tar.gz
+_md5_=5ce9f24924084953703f38e1748e94e3

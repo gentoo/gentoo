@@ -1,0 +1,628 @@
+# ChangeLog for dev-libs/libusb
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libusb/ChangeLog,v 1.174 2015/06/09 14:43:24 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  10 May 2015; Mike Gilbert <floppym@gentoo.org> libusb-1.0.18.ebuild,
+  libusb-1.0.19.ebuild:
+  Update HOMEPAGE.
+
+  15 Jan 2015; Raúl Porcel <armin76@gentoo.org> libusb-1.0.19.ebuild:
+  arm64/ia64/m68k/s390/sparc stable wrt #528834
+
+  23 Nov 2014; Mikle Kolyada <zlogene@gentoo.org> libusb-1.0.19.ebuild:
+  alpha stable wrt bug #528834
+
+  12 Nov 2014; Samuli Suominen <ssuominen@gentoo.org> libusb-1.0.19.ebuild:
+  amd64/arm/ppc/ppc64/x86 stable wrt #528834
+
+  11 Nov 2014; Jeroen Roovers <jer@gentoo.org> libusb-1.0.19.ebuild:
+  Stable for HPPA (bug #528834).
+
+  26 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> libusb-1.0.18.ebuild,
+  libusb-1.0.19.ebuild:
+  Use virtual/libudev instead of virtual/udev.
+
+*libusb-1.0.19 (19 Jun 2014)
+
+  19 Jun 2014; Samuli Suominen <ssuominen@gentoo.org> +libusb-1.0.19.ebuild:
+  Version bump.
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> libusb-1.0.18.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  09 Jun 2014; Mike Frysinger <vapier@gentoo.org> libusb-1.0.18.ebuild,
+  libusb-1.0.9-r2.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  24 Mar 2014; Samuli Suominen <ssuominen@gentoo.org> libusb-1.0.18.ebuild,
+  libusb-1.0.9-r2.ebuild:
+  Punt ref. to now non-existing dev-libs/libusbx.
+
+  24 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libusb-1.0.18.ebuild:
+  Stable for ppc, wrt bug #503404
+
+  19 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libusb-1.0.18.ebuild:
+  Stable for alpha, wrt bug #503404
+
+  18 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libusb-1.0.18.ebuild:
+  Stable for ia64, wrt bug #503404
+
+  15 Mar 2014; Samuli Suominen <ssuominen@gentoo.org> -libusb-1.0.9-r1.ebuild,
+  -libusb-1.0.9.ebuild:
+  old
+
+  15 Mar 2014; Samuli Suominen <ssuominen@gentoo.org> libusb-1.0.9-r2.ebuild:
+  Stabilize latest legacy 1.0.9 ebuild revision for everyone.
+
+  14 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libusb-1.0.18.ebuild:
+  Stable for ppc64, wrt bug #503404
+
+  12 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libusb-1.0.18.ebuild:
+  Stable for sparc, wrt bug #503404
+
+  09 Mar 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> libusb-1.0.18.ebuild:
+  x86 stable wrt bug #503404
+
+  09 Mar 2014; Markus Meier <maekke@gentoo.org> libusb-1.0.18.ebuild:
+  arm stable, bug #503404
+
+  07 Mar 2014; Pacho Ramos <pacho@gentoo.org> libusb-1.0.18.ebuild:
+  amd64 stable, bug #503404
+
+  05 Mar 2014; Jeroen Roovers <jer@gentoo.org> libusb-1.0.18.ebuild:
+  Stable for HPPA (bug #503404).
+
+*libusb-1.0.18 (31 Jan 2014)
+
+  31 Jan 2014; Samuli Suominen <ssuominen@gentoo.org> +libusb-1.0.18.ebuild:
+  Version bump.
+
+  08 Aug 2013; Samuli Suominen <ssuominen@gentoo.org> libusb-1.0.9-r2.ebuild:
+  Block revision of emul-linux-x86-baselibs that dropped the colliding files.
+
+*libusb-1.0.9-r2 (07 Aug 2013)
+
+  07 Aug 2013; Samuli Suominen <ssuominen@gentoo.org> +libusb-1.0.9-r2.ebuild:
+  Conversion to multilib-minimal.eclass.
+
+  01 Aug 2013; Samuli Suominen <ssuominen@gentoo.org> -files/0.1.12-fbsd.patch,
+  -files/libusb-0.1-ansi.patch, -files/libusb-0.1.12-no-infinite-bulk.patch,
+  -files/libusb-0.1.12-nocpp.patch, -libusb-0.1.12-r7.ebuild:
+  old
+
+*libusb-1.0.9-r1 (01 Aug 2013)
+
+  01 Aug 2013; Samuli Suominen <ssuominen@gentoo.org> +libusb-1.0.9-r1.ebuild:
+  Move the shared library to / for hid2hci binary from net-wireless/bluez wrt
+  #478878 by Alexis Ballier
+
+  05 Jun 2013; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Peter Stuge from libusb upstream is sharing ebuild maintenance by his own
+  request.
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop duplication of myself as a maintainer where there is a herd.
+
+  09 Nov 2012; Richard Yao <ryao@gentoo.org> libusb-1.0.9.ebuild:
+  keyword -x86-amd64 for now, its not supported
+
+  23 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> -libusb-1.0.9_rc3.ebuild:
+  old
+
+  17 Jun 2012; Raúl Porcel <armin76@gentoo.org> libusb-1.0.9.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #416333
+
+  28 May 2012; Markus Meier <maekke@gentoo.org> libusb-1.0.9.ebuild:
+  arm stable, bug #417135
+
+  24 May 2012; Samuli Suominen <ssuominen@gentoo.org> libusb-1.0.9.ebuild:
+  ppc/ppc64 stable wrt #417135
+
+  24 May 2012; Jeroen Roovers <jer@gentoo.org> libusb-1.0.9.ebuild:
+  Stable for HPPA (bug #417135).
+
+  22 May 2012; Jeff Horelick <jdhore@gentoo.org> libusb-1.0.9.ebuild:
+  marked x86 per bug 417135
+
+  22 May 2012; Agostino Sarubbo <ago@gentoo.org> libusb-1.0.9.ebuild:
+  Stable for amd64, wrt bug #417135
+
+  22 May 2012; Samuli Suominen <ssuominen@gentoo.org> libusb-1.0.9_rc3.ebuild,
+  libusb-1.0.9.ebuild, metadata.xml:
+  Block dev-libs/libusbx:1 and include base-system@ in metadata.xml
+
+  20 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> -libusb-1.0.8.ebuild:
+  old
+
+*libusb-1.0.9 (20 Apr 2012)
+
+  20 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> +libusb-1.0.9.ebuild:
+  Version bump wrt #412745 by Peter Stuge
+
+  25 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> libusb-1.0.9_rc3.ebuild:
+  ppc64 stable wrt #399713
+
+  12 Feb 2012; Raúl Porcel <armin76@gentoo.org> libusb-1.0.9_rc3.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #399713
+
+  07 Feb 2012; Jeroen Roovers <jer@gentoo.org> libusb-1.0.9_rc3.ebuild:
+  Stable for HPPA (bug #399713).
+
+  05 Feb 2012; Markus Meier <maekke@gentoo.org> libusb-1.0.9_rc3.ebuild:
+  arm stable, bug #399713
+
+  01 Feb 2012; Brent Baude <ranger@gentoo.org> libusb-1.0.9_rc3.ebuild:
+  Marking libusb-1.0.9_rc3 ppc for bug 399713
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> libusb-1.0.9_rc3.ebuild:
+  x86 stable wrt bug #399713
+
+  23 Jan 2012; Agostino Sarubbo <ago@gentoo.org> libusb-1.0.9_rc3.ebuild:
+  Stable for amd64, wrt bug #399713
+
+*libusb-1.0.9_rc3 (09 Jan 2012)
+
+  09 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> +libusb-1.0.9_rc3.ebuild:
+  Version bump to release candidate wrt #391677 by Luis Medinas. This is
+  required for compability with usbredir.
+
+  09 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> -libusb-0.1.12-r5.ebuild,
+  -libusb-0.1.12-r6.ebuild:
+  old
+
+  09 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> libusb-0.1.12-r7.ebuild:
+  ppc/ppc64 stable wrt #390441
+
+  01 Jan 2012; Fabian Groffen <grobian@gentoo.org> libusb-1.0.8.ebuild:
+  Fix bashism in configure script causing build-failure when using non-bash
+  CONFIG_SHELL.
+
+  06 Dec 2011; Robin H. Johnson <robbat2@gentoo.org> libusb-0.1.12-r5.ebuild,
+  libusb-0.1.12-r6.ebuild, libusb-0.1.12-r7.ebuild:
+  Drop the DTD reference mangling. I introduced it myself in 0.1.12-r1, in
+  April 2007, when the SGML catalog was in much worse shape. Fixes bug #390509
+  that was causing network access for fetching the DTD otherwise.
+
+  03 Dec 2011; Raúl Porcel <armin76@gentoo.org> libusb-0.1.12-r7.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #390441
+
+  23 Nov 2011; Markus Meier <maekke@gentoo.org> libusb-0.1.12-r7.ebuild:
+  arm stable, bug #390441
+
+  17 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> libusb-0.1.12-r7.ebuild:
+  x86 stable wrt bug #390441
+
+  15 Nov 2011; Markos Chandras <hwoarang@gentoo.org> libusb-0.1.12-r7.ebuild:
+  Stable on amd64 wrt bug #390441
+
+  15 Nov 2011; Jeroen Roovers <jer@gentoo.org> libusb-0.1.12-r7.ebuild:
+  Stable for HPPA (bug #390441).
+
+  13 Nov 2011; Mike Frysinger <vapier@gentoo.org> libusb-0.1.12-r7.ebuild:
+  Use URL to find dockbook dtd rather than filesystem path.
+
+  13 Nov 2011; Mike Frysinger <vapier@gentoo.org> libusb-0.1.12-r7.ebuild:
+  Convert USE=nocxx to USE=cxx.
+
+  13 Nov 2011; Mike Frysinger <vapier@gentoo.org> -libusb-0.1.11.ebuild,
+  -libusb-0.1.12.ebuild, -libusb-0.1.12-r1.ebuild, -libusb-0.1.12-r2.ebuild,
+  -libusb-0.1.12-r3.ebuild, -libusb-0.1.12-r4.ebuild, -libusb-1.0.1.ebuild,
+  -libusb-1.0.2.ebuild, -libusb-1.0.3.ebuild, -libusb-1.0.4.ebuild,
+  -libusb-1.0.5.ebuild, -libusb-1.0.6.ebuild, -libusb-1.0.7.ebuild:
+  Punt old ebuilds.
+
+  28 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> libusb-0.1.12-r7.ebuild,
+  libusb-1.0.8.ebuild:
+  USE="static-libs" and remove useless libtool files.
+
+  27 Sep 2011; Fabian Groffen <grobian@gentoo.org> libusb-0.1.12-r7.ebuild,
+  libusb-1.0.8.ebuild:
+  Marked ~x64-macos
+
+  12 Oct 2010; Raúl Porcel <armin76@gentoo.org> libusb-1.0.8.ebuild:
+  sparc stable wrt #304149
+
+  09 Oct 2010; Mike Frysinger <vapier@gentoo.org> libusb-1.0.8.ebuild:
+  Mark ia64/s390/sh stable #304149.
+
+  29 Sep 2010; Jeroen Roovers <jer@gentoo.org> libusb-1.0.8.ebuild:
+  Stable for HPPA (bug #304149).
+
+  10 Sep 2010; Tobias Klausmann <klausman@gentoo.org> libusb-1.0.8.ebuild:
+  Stable on alpha, bug #304149
+
+  21 Aug 2010; Markus Meier <maekke@gentoo.org> libusb-1.0.8.ebuild:
+  arm stable, bug #304149
+
+  11 Aug 2010; Joseph Jezak <josejx@gentoo.org> libusb-1.0.8.ebuild:
+  Marked ppc/ppc64 stable for bug #304149.
+
+  31 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> libusb-1.0.8.ebuild:
+  x86 stable wrt bug #304149
+
+  31 Jul 2010; Pacho Ramos <pacho@gentoo.org> libusb-1.0.8.ebuild:
+  amd64 stable, bug 304149
+
+*libusb-1.0.8 (17 Jun 2010)
+
+  17 Jun 2010; Robin H. Johnson <robbat2@gentoo.org> +libusb-1.0.8.ebuild:
+  Bug #320151: Version bump.
+
+*libusb-1.0.7 (02 May 2010)
+
+  02 May 2010; Robin H. Johnson <robbat2@gentoo.org> +libusb-1.0.7.ebuild:
+  Bug #317209: Version bump.
+
+*libusb-0.1.12-r7 (21 Feb 2010)
+
+  21 Feb 2010; Jonathan Callen <abcd@gentoo.org> +libusb-0.1.12-r7.ebuild,
+  libusb-1.0.6.ebuild:
+  Revbump for EAPI bump, add prefix keywords
+
+*libusb-1.0.6 (26 Dec 2009)
+
+  26 Dec 2009; Robin H. Johnson <robbat2@gentoo.org> +libusb-1.0.6.ebuild:
+  Bug #296408 version bump.
+
+*libusb-1.0.5 (16 Nov 2009)
+
+  16 Nov 2009; Robin H. Johnson <robbat2@gentoo.org> +libusb-1.0.5.ebuild:
+  Bug #293293: version bump.
+
+*libusb-0.1.12-r6 (11 Nov 2009)
+
+  11 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +libusb-0.1.12-r6.ebuild, +files/libusb-0.1-ansi.patch:
+  Bug #273752: ANSI compat patch from Debian, rediffed.
+
+*libusb-1.0.4 (11 Nov 2009)
+
+  11 Nov 2009; Robin H. Johnson <robbat2@gentoo.org> +libusb-1.0.4.ebuild:
+  Bug #292658: version bump.
+
+*libusb-1.0.3 (30 Aug 2009)
+
+  30 Aug 2009; Robin H. Johnson <robbat2@gentoo.org> +libusb-1.0.3.ebuild:
+  Version bump, bug #283252.
+
+*libusb-1.0.2 (27 Aug 2009)
+
+  27 Aug 2009; Robin H. Johnson <robbat2@gentoo.org> +libusb-1.0.2.ebuild:
+  Bug #282156: version bump, has endian fixes.
+
+  31 May 2009; Brent Baude <ranger@gentoo.org> libusb-0.1.12-r5.ebuild:
+  Marking libusb-0.1.12-r5 ppc64 for bug 270023
+
+  24 May 2009; Robin H. Johnson <robbat2@gentoo.org> libusb-0.1.11.ebuild,
+  libusb-0.1.12.ebuild, libusb-0.1.12-r1.ebuild:
+  mips notes they are dropping the stable keyword.
+
+  24 May 2009; Markus Meier <maekke@gentoo.org> libusb-0.1.12-r5.ebuild:
+  amd64/x86 stable, bug #270023
+
+  21 May 2009; Raúl Porcel <armin76@gentoo.org> libusb-0.1.12-r5.ebuild:
+  arm/ia64/m68k/s390/sh/sparc stable wrt #270023
+
+  17 May 2009; Alexis Ballier <aballier@gentoo.org> libusb-1.0.1.ebuild:
+  keyword -x86-fbsd for now, its not supported
+
+  16 May 2009; nixnut <nixnut@gentoo.org> libusb-0.1.12-r5.ebuild:
+  ppc stable #270023
+
+  16 May 2009; Jeroen Roovers <jer@gentoo.org> libusb-0.1.12-r5.ebuild:
+  Stable for HPPA (bug #270023).
+
+  16 May 2009; Tobias Klausmann <klausman@gentoo.org>
+  libusb-0.1.12-r5.ebuild:
+  Stable on alpha, bug #270023
+
+  15 May 2009; Robin H. Johnson <robbat2@gentoo.org> libusb-0.1.11.ebuild,
+  libusb-0.1.12.ebuild, libusb-0.1.12-r1.ebuild, libusb-0.1.12-r2.ebuild,
+  libusb-0.1.12-r3.ebuild, libusb-0.1.12-r4.ebuild, libusb-0.1.12-r5.ebuild:
+  Bug #247687 comment #21: We need to block libusb-compat in the libusb:0
+  ebuilds.
+
+*libusb-1.0.1 (14 May 2009)
+
+  14 May 2009; Robin H. Johnson <robbat2@gentoo.org> +libusb-1.0.1.ebuild:
+  Bug #247687: version bump to v1 series. Be sure to see the new libusb
+  virtuals. Ebuild by Tiziano Müller <dev-zero@gentoo.org>.
+
+  28 Mar 2009; Mike Frysinger <vapier@gentoo.org> libusb-0.1.12-r5.ebuild:
+  Dont move the C++ lib to /lib #245645 by DarkNRG.
+
+*libusb-0.1.12-r5 (28 Mar 2009)
+
+  28 Mar 2009; Mike Frysinger <vapier@gentoo.org> +libusb-0.1.12-r5.ebuild:
+  Use gen_usr_ldscript -a to relocate shared libs to the root dir.
+
+*libusb-0.1.12-r4 (25 Jun 2008)
+
+  25 Jun 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +files/libusb-0.1.12-no-infinite-bulk.patch, +libusb-0.1.12-r4.ebuild:
+  Bug #225879, fix infinite looping during usb_bulk operations.
+
+*libusb-0.1.12-r3 (07 Jun 2008)
+
+  07 Jun 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +libusb-0.1.12-r3.ebuild:
+  Make the CXX support optional, but not removed by default, per bug
+  #175117.
+
+*libusb-0.1.12-r2 (11 May 2008)
+
+  11 May 2008; <solar@gentoo.org> +files/libusb-0.1.12-nocpp.patch,
+  +libusb-0.1.12-r2.ebuild:
+  - snag cross compile fix from buildroot
+
+  20 Apr 2008; Mike Frysinger <vapier@gentoo.org> libusb-0.1.12-r1.ebuild:
+  Fixup autotools #213800 by Alessandro Guido.
+
+  06 Oct 2007; Tom Gall <tgall@gentoo.org> libusb-0.1.12-r1.ebuild:
+  stable on ppc64 bug #193891
+
+  03 Oct 2007; Christoph Mende <angelos@gentoo.org> libusb-0.1.12-r1.ebuild:
+  Stable on amd64 wrt bug #193891
+
+  28 Sep 2007; nixnut <nixnut@gentoo.org> libusb-0.1.12-r1.ebuild:
+  Stable on ppc wrt bug 193891
+
+  28 Sep 2007; Joshua Kinard <kumba@gentoo.org> libusb-0.1.12-r1.ebuild:
+  Stable on mips, per #193891.
+
+  27 Sep 2007; Jeroen Roovers <jer@gentoo.org> libusb-0.1.12-r1.ebuild:
+  Stable for HPPA (bug #193891).
+
+  27 Sep 2007; Raúl Porcel <armin76@gentoo.org> libusb-0.1.12-r1.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #193891
+
+  30 Aug 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing liquidx from metadata due to his retirement (see #171155 for
+  reference).
+
+  12 May 2007; Joshua Kinard <kumba@gentoo.org> libusb-0.1.12.ebuild:
+  Stable on mips.
+
+  11 Apr 2007; Robin H. Johnson <robbat2@gentoo.org> metadata.xml,
+  libusb-0.1.12.ebuild, libusb-0.1.12-r1.ebuild:
+  Fix documentation build process. Add myself to metadata.xml
+
+  10 Apr 2007; Robin H. Johnson <robbat2@gentoo.org>
+  -files/0.1.10a-fbsd.patch, -files/libusb-0.1.8-amd64-fPIC.patch,
+  -libusb-0.1.8.ebuild, -libusb-0.1.10a.ebuild:
+  Clean up old versions and patches.
+
+*libusb-0.1.12-r1 (10 Apr 2007)
+
+  10 Apr 2007; Robin H. Johnson <robbat2@gentoo.org>
+  +libusb-0.1.12-r1.ebuild:
+  Bug #103132 - move libusb to /lib for usage with UPS and other system
+  devices when /usr is a seperate partition.
+
+  28 Mar 2007; Jeroen Roovers <jer@gentoo.org> :
+  Stable for HPPA too.
+
+  01 Mar 2007; <genstef@gentoo.org> libusb-0.1.8.ebuild,
+  libusb-0.1.10a.ebuild, libusb-0.1.11.ebuild, libusb-0.1.12.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  06 Feb 2007; Simon Stelling <blubb@gentoo.org> libusb-0.1.12.ebuild:
+  stable on amd64 as 0.1.11 doesn't compile with gcc4
+
+  01 Feb 2007; Timothy Redaelli <drizzt@gentoo.org> libusb-0.1.12.ebuild:
+  Add -j1 to emake install wrt bug #157611
+
+  15 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libusb-0.1.11.ebuild:
+  hppa stable, bug #137414
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> libusb-0.1.12.ebuild:
+  Stable on ia64.
+
+  14 Oct 2006; Tim Yamin <plasmaroo@gentoo.org> libusb-0.1.11.ebuild:
+  Stable on IA64; bug #137414.
+
+  09 Oct 2006; Luca Barbato <lu_zero@gentoo.org> libusb-0.1.12.ebuild:
+  Marked ppc
+
+  05 Oct 2006; Daniel Gryniewicz <dang@gentoo.org> libusb-0.1.12.ebuild:
+  Marked ~amd64 bug #131756
+
+  03 Oct 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  libusb-0.1.12.ebuild:
+  back to ~ppc for now -- libusb non-root scanning problems (Bug #131756)
+
+  30 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> libusb-0.1.12.ebuild:
+  Marked stable on amd64
+
+  28 Sep 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  libusb-0.1.12.ebuild:
+  stable on ppc (needed for Bug #148013)
+
+  28 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org> libusb-0.1.12.ebuild:
+  Stable on sparc
+
+  28 Sep 2006; Brent Baude <ranger@gentoo.org> libusb-0.1.12.ebuild:
+  Marking libusb-0.1.12 ppc64 stable to support bug 148013
+
+  28 Sep 2006; Fernando J. Pereda <ferdy@gentoo.org> libusb-0.1.12.ebuild:
+  Stable on alpha
+
+  06 Sep 2006; Luis Medinas <metalgod@gentoo.org> libusb-0.1.11.ebuild:
+  Stable on amd64.
+
+  03 Sep 2006; Joshua Kinard <kumba@gentoo.org> libusb-0.1.11.ebuild:
+  Marked stable on mips.
+
+  03 Sep 2006; Michael Hanselmann <hansmi@gentoo.org> libusb-0.1.11.ebuild:
+  Stable on ppc.
+
+  03 Sep 2006; Jason Wever <weeve@gentoo.org> libusb-0.1.11.ebuild:
+  Stable on SPARC wrt bug #137414.
+
+  02 Sep 2006; Markus Rothe <corsair@gentoo.org> libusb-0.1.11.ebuild:
+  Stable on ppc64; bug #137414
+
+  02 Sep 2006; Alastair Tse <liquidx@gentoo.org> libusb-0.1.11.ebuild:
+  stable for x86
+
+  02 Sep 2006; Alastair Tse <liquidx@gentoo.org> libusb-0.1.8.ebuild,
+  libusb-0.1.10a.ebuild, libusb-0.1.11.ebuild, libusb-0.1.12.ebuild:
+  fix longstanding doc building issues (#139657).
+
+*libusb-0.1.12 (24 Apr 2006)
+
+  24 Apr 2006; Alastair Tse <liquidx@gentoo.org> +files/0.1.12-fbsd.patch,
+  +libusb-0.1.12.ebuild:
+  added freebsd patches (#128937) and possible solution to doc generation bug
+  (#66172)
+
+  04 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> libusb-0.1.11.ebuild:
+  Add ~x86-fbsd keyword.
+
+  26 Feb 2006; Joshua Kinard <kumba@gentoo.org> libusb-0.1.10a.ebuild:
+  Marked stable on mips.
+
+  06 Feb 2006; Alastair Tse <liquidx@gentoo.org> -libusb-0.1.7-r1.ebuild,
+  libusb-0.1.10a.ebuild, libusb-0.1.11.ebuild:
+  Stripping -Werror to prevent problems with strict CFLAGS
+
+*libusb-0.1.11 (06 Feb 2006)
+
+  06 Feb 2006; Alastair Tse <liquidx@gentoo.org> +libusb-0.1.11.ebuild:
+  version bump, removed freebsd patch from latest version (#120083)
+
+  03 Nov 2005; Alastair Tse <liquidx@gentoo.org> +files/0.1.10a-fbsd.patch,
+  libusb-0.1.10a.ebuild:
+  added freebsd patch (#100881)
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> libusb-0.1.10a.ebuild:
+  Stable on alpha.
+
+  06 Jun 2005; Marcus D. Hanwell <marcus@gentoo.org> libusb-0.1.10a.ebuild:
+  Stable on amd64.
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> libusb-0.1.10a.ebuild:
+  Stable on ppc64
+
+  03 Jun 2005; Joseph Jezak <josejx@gentoo.org> libusb-0.1.10a.ebuild:
+  Marked ppc stable.
+
+  02 Jun 2005; Rene Nussbaumer <killerfox@gentoo.org> libusb-0.1.10a.ebuild:
+  Stable on hppa.
+
+  01 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> libusb-0.1.10a.ebuild:
+  Stable on sparc
+
+  17 May 2005; Alastair Tse <liquidx@gentoo.org> libusb-0.1.8.ebuild,
+  libusb-0.1.10a.ebuild:
+  modified elibtoolize calling, --force doesn't work with elibtoolize
+
+  18 Apr 2005; Alastair Tse <liquidx@gentoo.org> libusb-0.1.10a.ebuild:
+  don't need libtool for runtime dep (#61150)
+
+  23 Mar 2005; Alastair Tse <liquidx@gentoo.org> libusb-0.1.10a.ebuild:
+  disable make test (#86363)
+
+  23 Mar 2005; Alastair Tse <liquidx@gentoo.org> libusb-0.1.10a.ebuild:
+  fix compile error for ppc (#86023)
+
+*libusb-0.1.10a (18 Mar 2005)
+
+  18 Mar 2005; Alastair Tse <liquidx@gentoo.org> +libusb-0.1.10a.ebuild:
+  version bump (#81727)
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  19 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> libusb-0.1.7-r1.ebuild,
+  libusb-0.1.7.ebuild, libusb-0.1.8.ebuild:
+  Fixed missing dependencies; bug #68021.
+
+  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org> libusb-0.1.8.ebuild:
+  stable on amd64.
+
+  10 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> libusb-0.1.8.ebuild:
+  Stable on alpha.
+
+  03 Oct 2004; Jason Wever <weeve@gentoo.org> libusb-0.1.8.ebuild:
+  Stable on sparc.
+
+  05 Aug 2004; Alastair Tse <liquidx@gentoo.org> libusb-0.1.8.ebuild:
+  adding macos. adding macos specific changes like glibtoolize
+
+  18 Jul 2004; Tom Gall <tgall@gentoo.org> libusb-0.1.8.ebuild: 
+  stable on ppc64, bug #57128
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libusb-0.1.7-r1.ebuild, libusb-0.1.7.ebuild:
+  virtual/glibc -> virtual/libc
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> libusb-0.1.8.ebuild:
+  Add inherit eutils
+
+*libusb-0.1.8 (29 Feb 2004)
+
+  29 Feb 2004; Alastair Tse <liquidx@gentoo.org> libusb-0.1.8.ebuild:
+  version bump. workaround missing .so extensions with libtool version (#42955)
+
+  30 Jan 2004; Aron Griffis <agriffis@gentoo.org> libusb-0.1.7-r1.ebuild:
+  Add some more error-checking to this ebuild
+
+  28 Jan 2004; Aron Griffis <agriffis@gentoo.org> libusb-0.1.7-r1.ebuild:
+  stable on ia64
+
+  26 Oct 2003; Brad House <brad_mssw@gentoo.org> libusb-0.1.7-r1.ebuild:
+  add amd64 flag
+
+*libusb-0.1.7-r1 (03 Sep 2003)
+
+  03 Sep 2003; Alastair Tse <liquidx@gentoo.org> libusb-0.1.7-r1.ebuild:
+  force new revision to make sure it owns libusb.so (#25571)
+
+  19 Jun 2003; Will Woods <wwoods@gentoo.org> libusb-0.1.7.ebuild:
+  Added alpha to KEYWORDS
+
+  17 Jan 2003; Matthew Turk <satai@gentoo.org> libusb-0.1.7.ebuild :
+  Specified docbook-sgml-dtd-r1.
+
+*libusb-0.1.7 (23 Dec 2002)
+
+  15 Jan 2003; Nick Hadaway <raker@gentoo.org> libusb-0.1.7.ebuild :
+  Added a dependancy on =app-text/docbook-sgml-dtd-3.1*.  Closes
+  bug #11512.
+
+  02 Jan 2002; Nick Hadaway <raker@gentoo.org> libusb-0.1.7.ebuild :
+  Marked stable.
+
+  23 Dec 2002; Nick Hadaway <raker@gentoo.org> libusb-0.1.7.ebuild,
+  files/digest-libusb-0.1.7 :
+  Version bump.  Added DEBUGBUILD and doc use variable related code.
+  Please comment on bug #11512.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*libusb-0.1.6a (23 Oct 2002)
+ 
+  23 Oct 2002; Spider <spider@gentoo.org> libusb-0.1.6a.ebuild :
+  New version by Robert Davis <rdavis@uniformcompany.com> 
+  
+*libusb-0.1.5 (11 March 2002)
+
+  19 Oct 2002; Calum Selkirk <cselkirk@gentoo.org> libusb-0.1.5.ebuild :
+
+  Added ppc to KEYWORDS.
+
+*libusb-0.1.3b (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,49 @@
+# ChangeLog for x11-wm/matchbox-desktop
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/matchbox-desktop/ChangeLog,v 1.12 2015/06/09 19:43:10 grknight Exp $
+
+  09 Jun 2015; Brian Evans <grknight@gentoo.org>
+  +files/matchbox-desktop-0.9.1-dlopen.patch, matchbox-desktop-0.9.1.ebuild:
+  Non-maintainer commit: Fix build missing link to dlopen; Patch by me; wrt bug
+  512476
+
+  04 Jun 2012; Michael Weber <xmw@gentoo.org> matchbox-desktop-0.9.1.ebuild:
+  ppc stable (bug 309407)
+
+  05 Mar 2012; Thomas Kahle <tomka@gentoo.org> matchbox-desktop-0.9.1.ebuild:
+  marked x86 per bug 309407
+
+  04 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #112268
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> matchbox-desktop-0.9.1.ebuild:
+  Stable for amd64, wrt bug #309407
+
+  14 Mar 2009; <solar@gentoo.org> matchbox-desktop-0.9.1.ebuild:
+  keyword ~amd64
+
+  13 Jul 2008; Joseph Jezak <josejx@gentoo.org>
+  matchbox-desktop-0.9.1.ebuild:
+  Marked ~ppc for bug #211803.
+
+  27 Feb 2008; Yuri Vasilevski <yvasilev@gentoo.org>
+  matchbox-desktop-0.9.1.ebuild:
+  Updated HOMEPAGE and SRC_URI to it's new location
+  http://matchbox-project.org/ (Bug #211244).
+
+  26 Sep 2007; Jeroen Roovers <jer@gentoo.org>
+  matchbox-desktop-0.9.1.ebuild:
+  Marked ~hppa too.
+
+  07 Aug 2006; <yvasilev@gentoo.org> matchbox-desktop-0.9.1.ebuild:
+  Added ~arm keyword.
+
+  28 Apr 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+*matchbox-desktop-0.9.1 (12 Mar 2006)
+
+  12 Mar 2006; <yvasilev@gentoo.org> +metadata.xml,
+  +matchbox-desktop-0.9.1.ebuild:
+  - Initial import. Original ebuild by Priit Laes, modifications by Björn
+  Ruberg and Yuri Vasilevski.

@@ -1,0 +1,33 @@
+# ChangeLog for dev-haskell/shakespeare-text
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/shakespeare-text/ChangeLog,v 1.6 2014/07/25 08:59:38 slyfox Exp $
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*shakespeare-text-1.1.0 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org> +shakespeare-text-1.1.0.ebuild:
+  Bump shakespeare-text to 1.1.0
+
+*shakespeare-text-1.0.2 (09 Mar 2014)
+
+  09 Mar 2014; Mark Wright <gienah@gentoo.org> +shakespeare-text-1.0.2.ebuild:
+  Bump shakespeare-text to 1.0.2
+
+*shakespeare-text-1.0.0.10 (10 Dec 2013)
+
+  10 Dec 2013; Mark Wright <gienah@gentoo.org>
+  +shakespeare-text-1.0.0.10.ebuild:
+  Bump shakespeare-text to 1.0.0.10
+
+*shakespeare-text-1.0.0.7 (13 Sep 2013)
+
+  13 Sep 2013; Mark Wright <gienah@gentoo.org> +shakespeare-text-1.0.0.7.ebuild:
+  Bump shakespeare-text to 1.0.0.7
+
+*shakespeare-text-1.0.0.6 (26 Aug 2013)
+
+  26 Aug 2013; Alexander Vershilov <qnikst@gentoo.org> +metadata.xml,
+  +shakespeare-text-1.0.0.6.ebuild:
+  dev-haskell/shakespeare-text: initial layout

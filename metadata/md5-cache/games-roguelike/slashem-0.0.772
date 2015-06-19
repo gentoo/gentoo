@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst preinst setup unpack
+DEPEND=>=sys-libs/ncurses-5.2-r5 X? ( x11-libs/libXaw x11-libs/libXmu x11-libs/libXext x11-libs/libXt x11-libs/libXpm x11-libs/libX11 x11-libs/libSM x11-libs/libICE x11-libs/libXau x11-libs/libXdmcp ) opengl? ( virtual/opengl media-libs/libsdl ) sdl? ( media-libs/libsdl ) dev-util/yacc
+DESCRIPTION=Super Lotsa Added Stuff Hack - Extended Magic. A Nethack Variant
+HOMEPAGE=http://www.slashem.org/
+IUSE=X sdl opengl
+KEYWORDS=amd64 ppc x86
+LICENSE=nethack
+RDEPEND=>=sys-libs/ncurses-5.2-r5 X? ( x11-libs/libXaw x11-libs/libXmu x11-libs/libXext x11-libs/libXt x11-libs/libXpm x11-libs/libX11 x11-libs/libSM x11-libs/libICE x11-libs/libXau x11-libs/libXdmcp ) opengl? ( virtual/opengl media-libs/libsdl ) sdl? ( media-libs/libsdl ) games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://sourceforge/slashem/se007e7f2.tar.gz http://www.juiblex.co.uk/nethack/config/conf12s.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=b6b93eecb1ff015d1491d031f01c03cd

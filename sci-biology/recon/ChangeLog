@@ -1,0 +1,25 @@
+# ChangeLog for sci-biology/recon
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/recon/ChangeLog,v 1.4 2013/03/11 16:52:42 jlec Exp $
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+*recon-1.06-r2 (26 Aug 2012)
+
+  26 Aug 2012; Justin Lecher <jlec@gentoo.org> +recon-1.06-r2.ebuild,
+  +files/recon-1.06-respect.patch:
+  Respect CFLAGS and CC, #432660
+
+*recon-1.06-r1 (10 Mar 2011)
+
+  10 Mar 2011; Justin Lecher <jlec@gentoo.org>
+  +files/1.06-buffer-overflow.patch, -recon-1.06.ebuild, +recon-1.06-r1.ebuild:
+  Fixes for buffer overflow, #358195, USE=examples added
+
+*recon-1.06 (03 Feb 2011)
+
+  03 Feb 2011; Andrey Kislyuk <weaver@gentoo.org> +recon-1.06.ebuild,
+  +metadata.xml:
+  New package, dependency of sci-biology/repeatmodeler. Ebuild written by me
+

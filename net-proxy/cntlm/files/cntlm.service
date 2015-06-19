@@ -1,0 +1,9 @@
+[Unit]
+Description=CNTLM HTTP Accelerator For NTLM Secured Proxies Authenticator
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/cntlm -f -U cntlm -c /etc/cntlm.conf
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,22 @@
+From 78dc3af68ed0e1aafe54c176b28dadee66eb306c Mon Sep 17 00:00:00 2001
+From: Behdad Esfahbod <behdad@behdad.org>
+Date: Thu, 06 Dec 2012 17:17:53 +0000
+Subject: Fix theoretically possible overflow
+
+https://bugzilla.redhat.com/show_bug.cgi?id=884000
+---
+diff --git a/bin/fribidi-main.c b/bin/fribidi-main.c
+index ac9e2ff..dd27f0d 100644
+--- a/bin/fribidi-main.c
++++ b/bin/fribidi-main.c
+@@ -519,7 +519,7 @@ main (
+ 				  idx++;
+ 				}
+ #endif /* !FRIBIDI_MAIN_USE_ICONV_H */
+-			    if (wid < 0 && idx > st + 1)
++			    if (wid < 0 && idx - st > 1)
+ 			      idx--;
+ 			    inlen = idx - st;
+ 
+--
+cgit v0.9.0.2-2-gbebe

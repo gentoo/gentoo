@@ -1,0 +1,510 @@
+# ChangeLog for x11-drivers/xf86-input-joystick
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-joystick/ChangeLog,v 1.115 2013/10/08 05:05:18 ago Exp $
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-input-joystick-1.6.2.ebuild:
+  Stable for x86, wrt bug #475480
+
+  07 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-input-joystick-1.6.2.ebuild:
+  Stable for sparc, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-input-joystick-1.6.2.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  05 Oct 2013; Markus Meier <maekke@gentoo.org>
+  xf86-input-joystick-1.6.2.ebuild:
+  arm stable, bug #475480
+
+  05 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-input-joystick-1.6.2.ebuild:
+  Stable for alpha, wrt bug #475480
+
+  04 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-input-joystick-1.6.2.ebuild:
+  Stable for ppc64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-input-joystick-1.6.2.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  02 Oct 2013; Jeroen Roovers <jer@gentoo.org>
+  xf86-input-joystick-1.6.2.ebuild:
+  Stable for HPPA (bug #475480).
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-input-joystick-1.6.2.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*xf86-input-joystick-1.6.2 (20 Jan 2013)
+
+  20 Jan 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-input-joystick-1.6.2.ebuild, -xf86-input-joystick-1.5.0.ebuild,
+  -xf86-input-joystick-1.6.0.ebuild, -xf86-input-joystick-1.6.1-r1.ebuild:
+  Version bump. Remove old.
+
+*xf86-input-joystick-1.6.1-r1 (02 Jan 2013)
+
+  02 Jan 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-input-joystick-1.6.1-r1.ebuild:
+  Install configuration snippet to xorg.conf.d/, bug #403003.
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org>
+  xf86-input-joystick-1.6.1.ebuild:
+  alpha/ia64/sh/sparc stable wrt #419473
+
+  12 Jul 2012; Brent Baude <ranger@gentoo.org>
+  xf86-input-joystick-1.6.1.ebuild:
+  Marking xf86-input-joystick-1.6.1 ppc stable for bug 419473
+
+  11 Jul 2012; Brent Baude <ranger@gentoo.org>
+  xf86-input-joystick-1.6.1.ebuild:
+  Marking xf86-input-joystick-1.6.1 ppc64 stable for bug 419473
+
+  29 Jun 2012; Markus Meier <maekke@gentoo.org>
+  xf86-input-joystick-1.6.1.ebuild:
+  arm stable, bug #419473
+
+  28 Jun 2012; Jeroen Roovers <jer@gentoo.org>
+  xf86-input-joystick-1.6.1.ebuild:
+  Stable for HPPA (bug #419473).
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-input-joystick-1.6.1.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-input-joystick-1.6.1.ebuild:
+  Stable for amd64, wrt bug #419473
+
+  16 May 2012; Alexis Ballier <aballier@gentoo.org>
+  xf86-input-joystick-1.6.1.ebuild:
+  keyword ~amd64-fbsd (compile tested only)
+
+*xf86-input-joystick-1.6.1 (11 Mar 2012)
+
+  11 Mar 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-input-joystick-1.6.1.ebuild:
+  Version bump.
+
+  20 Aug 2011; Jeroen Roovers <jer@gentoo.org>
+  xf86-input-joystick-1.6.0.ebuild:
+  Stable for HPPA (bug #371857).
+
+  30 Jul 2011; Raúl Porcel <armin76@gentoo.org>
+  xf86-input-joystick-1.6.0.ebuild:
+  alpha/ia64/sh/sparc stable wrt #371857
+
+  29 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  xf86-input-joystick-1.6.0.ebuild:
+  ppc64 stable wrt #371857
+
+  13 Jul 2011; Markus Meier <maekke@gentoo.org>
+  xf86-input-joystick-1.6.0.ebuild:
+  x86 stable, bug #371857
+
+  30 Jun 2011; Markos Chandras <hwoarang@gentoo.org>
+  xf86-input-joystick-1.6.0.ebuild:
+  Stable on amd64 wrt bug #371857
+
+  28 Jun 2011; Brent Baude <ranger@gentoo.org>
+  xf86-input-joystick-1.6.0.ebuild:
+  Marking xf86-input-joystick-1.6.0 ppc stable for bug 371857
+
+  26 Jun 2011; Markus Meier <maekke@gentoo.org>
+  xf86-input-joystick-1.6.0.ebuild:
+  arm stable, bug #371857
+
+*xf86-input-joystick-1.6.0 (20 Apr 2011)
+
+  20 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86-input-joystick-1.5.99.901.ebuild, +xf86-input-joystick-1.6.0.ebuild:
+  Bump to latest release. This supports xorg-server-1.10.
+
+  17 Apr 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  xf86-input-joystick-1.5.99.901.ebuild:
+  Warn about crashing bugs, upstream #26900, #35391.
+
+*xf86-input-joystick-1.5.99.901 (06 Apr 2011)
+
+  06 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +xf86-input-joystick-1.5.99.901.ebuild:
+  Version bump. This driver supports 1.10 xorg-server, but crashes it when
+  unplugging the device (You have been warned so do not open bugs).
+
+  24 Feb 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86-input-joystick-1.4.0.ebuild, -xf86-input-joystick-1.4.1.ebuild:
+  Drop old.
+
+  11 Feb 2010; Jeroen Roovers <jer@gentoo.org>
+  xf86-input-joystick-1.5.0.ebuild:
+  Stable for HPPA (bug #302046).
+
+  18 Jan 2010; Raúl Porcel <armin76@gentoo.org>
+  xf86-input-joystick-1.5.0.ebuild:
+  alpha/ia64/sh/sparc stable wrt #294958
+
+  14 Jan 2010; Markus Meier <maekke@gentoo.org>
+  xf86-input-joystick-1.5.0.ebuild:
+  arm stable, bug #294958
+
+  27 Dec 2009; Joseph Jezak <josejx@gentoo.org>
+  xf86-input-joystick-1.5.0.ebuild:
+  Marked ppc stable for bug #294958.
+
+  15 Dec 2009; Brent Baude <ranger@gentoo.org>
+  xf86-input-joystick-1.5.0.ebuild:
+  Marking xf86-input-joystick-1.5.0 ppc64 stable for bug 294958
+
+  15 Dec 2009; Raúl Porcel <armin76@gentoo.org>
+  xf86-input-joystick-1.4.1.ebuild:
+  alpha/ia64/sh/sparc stable wrt #282290
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  xf86-input-joystick-1.5.0.ebuild:
+  x86 stable, bug 294958
+
+  10 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  xf86-input-joystick-1.5.0.ebuild:
+  amd64 stable wrt #294958
+
+*xf86-input-joystick-1.5.0 (01 Nov 2009)
+
+  01 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86-input-joystick-1.4.99.2.ebuild, +xf86-input-joystick-1.5.0.ebuild:
+  Version bump. Drop snapshot.
+
+  26 Oct 2009; Jeroen Roovers <jer@gentoo.org>
+  xf86-input-joystick-1.4.1.ebuild:
+  Stable for HPPA (bug #282290).
+
+*xf86-input-joystick-1.4.99.2 (18 Oct 2009)
+
+  18 Oct 2009; Rémi Cardona <remi@gentoo.org>
+  +xf86-input-joystick-1.4.99.2.ebuild:
+  bump to 1.4.99.2, sync with overlay
+
+  11 Oct 2009; nixnut <nixnut@gentoo.org> xf86-input-joystick-1.4.1.ebuild:
+  ppc stable #282290
+
+  09 Oct 2009; Markus Meier <maekke@gentoo.org>
+  xf86-input-joystick-1.4.1.ebuild:
+  arm stable, bug #282290
+
+  05 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  xf86-input-joystick-1.4.1.ebuild:
+  x86 stable, bug 282290
+
+  30 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  xf86-input-joystick-1.4.1.ebuild:
+  amd64 stable wrt #282290
+
+  03 Aug 2009; Rémi Cardona <remi@gentoo.org>
+  -xf86-input-joystick-1.2.2.ebuild, -xf86-input-joystick-1.3.1.ebuild,
+  -xf86-input-joystick-1.3.2.ebuild, -xf86-input-joystick-1.3.3.ebuild:
+  drop old ebuilds
+
+*xf86-input-joystick-1.4.1 (03 Aug 2009)
+
+  03 Aug 2009; Rémi Cardona <remi@gentoo.org>
+  +xf86-input-joystick-1.4.1.ebuild:
+  bump to 1.4.1
+
+  23 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  xf86-input-joystick-1.4.0.ebuild:
+  Stable on alpha for xorg-server-1.5/xorg-x11-7.4
+
+  15 May 2009; Raúl Porcel <armin76@gentoo.org>
+  xf86-input-joystick-1.4.0.ebuild:
+  arm stable
+
+  16 Apr 2009; Jeroen Roovers <jer@gentoo.org>
+  xf86-input-joystick-1.4.0.ebuild:
+  Stable for HPPA (bug #251832).
+
+  15 Apr 2009; Raúl Porcel <armin76@gentoo.org>
+  xf86-input-joystick-1.4.0.ebuild:
+  ia64/sh stable wrt #251832
+
+  06 Apr 2009; Friedrich Oslage <bluebird@gentoo.org>
+  xf86-input-joystick-1.4.0.ebuild:
+  Stable on sparc, bug #251832
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org>
+  xf86-input-joystick-1.4.0.ebuild:
+  x86 stable, bug #251832
+
+  05 Apr 2009; Olivier Crête <tester@gentoo.org>
+  xf86-input-joystick-1.4.0.ebuild:
+  Stable on amd64, bug #251832
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking xf86-input-joystick-1.4.0 ppc64 stable for bug 251832
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking xf86-input-joystick-1.4.0 ppc stable for bug 251832
+
+*xf86-input-joystick-1.4.0 (13 Jan 2009)
+
+  13 Jan 2009; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-input-joystick-1.4.0.ebuild:
+  Bump. Adds support for some device properties for dynamic reconfiguration.
+  Works with Multi-Pointer X.
+
+*xf86-input-joystick-1.3.3 (24 Sep 2008)
+
+  24 Sep 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-input-joystick-1.3.3.ebuild:
+  Bump. Bugfixes and better examples of how to configure with HAL FDI files.
+
+*xf86-input-joystick-1.3.2 (09 May 2008)
+
+  09 May 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-input-joystick-1.3.2.ebuild:
+  Bump.
+
+  24 Feb 2008; Donnie Berkholz <dberkholz@gentoo.org>; ChangeLog:
+  Update my email.
+
+  31 Jan 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-input-joystick-1.1.0.ebuild, -xf86-input-joystick-1.1.1.ebuild,
+  -xf86-input-joystick-1.2.0.ebuild, -xf86-input-joystick-1.2.1.ebuild,
+  -xf86-input-joystick-1.2.3.ebuild, -xf86-input-joystick-1.3.0.ebuild:
+  Clean up.
+
+*xf86-input-joystick-1.3.1 (10 Jan 2008)
+
+  10 Jan 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-input-joystick-1.3.1.ebuild:
+  (#204901) Bump.
+
+  08 Nov 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-input-joystick-1.2.3.ebuild:
+  1.2 series does not require xorg-server-1.4 (Jakub Moc).
+
+  07 Nov 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-input-joystick-1.2.3.ebuild, xf86-input-joystick-1.3.0.ebuild:
+  (#198383) Require xorg-server 1.4 or newer.
+
+*xf86-input-joystick-1.3.0 (07 Nov 2007)
+
+  07 Nov 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-input-joystick-1.3.0.ebuild:
+  Bump.
+
+  29 Sep 2007; Raúl Porcel <armin76@gentoo.org>
+  xf86-input-joystick-1.2.2.ebuild:
+  sparc stable wrt #191615
+
+  10 Sep 2007; Jeroen Roovers <jer@gentoo.org>
+  xf86-input-joystick-1.2.2.ebuild:
+  Stable for HPPA (bug #191615).
+
+  09 Sep 2007; Raúl Porcel <armin76@gentoo.org>
+  xf86-input-joystick-1.2.2.ebuild:
+  alpha/ia64 stable wrt #191615
+
+  08 Sep 2007; Joseph Jezak <josejx@gentoo.org>
+  xf86-input-joystick-1.2.2.ebuild:
+  Marked ppc/ppc64 stable for bug #191615.
+
+*xf86-input-joystick-1.2.3 (08 Sep 2007)
+
+  08 Sep 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-input-joystick-1.2.3.ebuild:
+  Bump for 7.3.
+
+  07 Sep 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  xf86-input-joystick-1.2.2.ebuild:
+  Stable on x86 wrt bug #191615.
+
+  07 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  xf86-input-joystick-1.2.1.ebuild:
+  Stable on sparc wrt #175465
+
+*xf86-input-joystick-1.2.2 (14 Jul 2007)
+
+  14 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-input-joystick-1.2.2.ebuild:
+  Bump. Changes include: Additional valuator per axis reporting unmodified
+  physical value to X; Reporting correct amount of exported buttons to X;
+  Button event is only generated when button actually changed.
+
+  03 Jul 2007; Lars Weiler <pylon@gentoo.org>
+  xf86-input-joystick-1.1.1.ebuild:
+  Stable on ppc; bug #175465.
+
+  02 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  xf86-input-joystick-1.1.1.ebuild:
+  alpha stable wrt #175465
+
+  20 May 2007; Jeroen Roovers <jer@gentoo.org>
+  xf86-input-joystick-1.1.1.ebuild:
+  Stable for HPPA (bug #175465).
+
+  05 May 2007; Daniel Gryniewicz <dang@gentoo.org>
+  xf86-input-joystick-1.1.1.ebuild:
+  Marked stable on amd64 for bug #175465
+
+  29 Apr 2007; Andrej Kacian <ticho@gentoo.org>
+  xf86-input-joystick-1.1.1.ebuild:
+  Stable on x86, bug #175465.
+
+  25 Apr 2007; Raúl Porcel <armin76@gentoo.org>
+  xf86-input-joystick-1.1.1.ebuild:
+  Stable on ia64 wrt bug #175465
+
+  25 Apr 2007; Markus Rothe <corsair@gentoo.org>
+  xf86-input-joystick-1.1.1.ebuild:
+  Stable on ppc64; bug #175465
+
+*xf86-input-joystick-1.2.1 (21 Apr 2007)
+
+  21 Apr 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-input-joystick-1.2.1.ebuild:
+  Version bump.  Fixes several bugs, including some crashers.
+
+*xf86-input-joystick-1.2.0 (01 Apr 2007)
+
+  01 Apr 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-input-joystick-1.2.0.ebuild:
+  Version bump.  Most of the code is re-written, and lots of extra features and
+  configuration options have been added.
+
+*xf86-input-joystick-1.1.1 (20 Mar 2007)
+
+  20 Mar 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-input-joystick-1.1.1.ebuild:
+  Version bump from upstream.  Bugfixes only.
+
+  24 Jan 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-input-joystick-1.0.0.5.ebuild:
+  Stop supporting Xorg 7.0.
+
+  13 Oct 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  xf86-input-joystick-1.1.0.ebuild:
+  AMD64/x86 stable for bug #144549 (X7.1).
+
+  12 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  xf86-input-joystick-1.1.0.ebuild:
+  Stable on hppa
+
+  19 Jul 2006; Guy Martin <gmsoft@gentoo.org>
+  xf86-input-joystick-1.0.0.5.ebuild:
+  Stable on hppa.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  xf86-input-joystick-1.1.0.ebuild:
+  Mark 1.1.0 stable on ia64
+
+  01 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-input-joystick-1.1.0.ebuild:
+  ppc/sparc/alpha/arm/sh stable
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org>
+  xf86-input-joystick-1.1.0.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  xf86-input-joystick-1.0.0.5.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org>
+  xf86-input-joystick-1.0.0.5.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-input-joystick-1.0.0.5.ebuild:
+  x86 stable.
+
+  05 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xf86-input-joystick-1.1.0.ebuild:
+  Add ~x86-fbsd keyword.
+
+  16 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xf86-input-joystick-1.0.0.5.ebuild:
+  Add ~x86-fbsd keyword.
+
+*xf86-input-joystick-1.1.0 (14 Apr 2006)
+
+  14 Apr 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-input-joystick-1.1.0.ebuild:
+  Bump for 7.1 RC1.
+
+  11 Mar 2006; Guy Martin <gmsoft@gentoo.org>
+  xf86-input-joystick-1.0.0.5.ebuild:
+  Added ~hppa to KEYWORDS.
+
+  05 Mar 2006; Stefaan De Roeck <stefaan@gentoo.org>
+  xf86-input-joystick-1.0.0.5.ebuild:
+  Marked ~alpha (bug #122726)
+
+  03 Mar 2006; Ferris McCormick <fmccor@gentoo.org>
+  xf86-input-joystick-1.0.0.5.ebuild:
+  Add ~sparc keyword.  Believed to work on sparc.
+
+  15 Feb 2006; Markus Rothe <corsair@gentoo.org>
+  xf86-input-joystick-1.0.0.5.ebuild:
+  Added ~ppc64
+
+  05 Feb 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-input-joystick-1.0.0.5.ebuild:
+  Keyword needed drivers ~ppc.
+
+  02 Feb 2006; Luis Medinas <metalgod@gentoo.org>
+  xf86-input-joystick-1.0.0.5.ebuild:
+  Added ~amd64 keyword.
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xf86-input-joystick-1.0.0.3.ebuild, -xf86-input-joystick-1.0.0.4.ebuild:
+  Pull old versions.
+
+*xf86-input-joystick-1.0.0.5 (23 Dec 2005)
+
+  23 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-input-joystick-1.0.0.5.ebuild:
+  Bump for 7.0.
+
+*xf86-input-joystick-1.0.0.4 (17 Dec 2005)
+
+  17 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-input-joystick-1.0.0.4.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  files/digest-xf86-input-joystick-1.0.0.3, Manifest:
+  Update digest to match patch introduced by x-modular.eclass changes.
+
+  09 Dec 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-input-joystick-1.0.0.ebuild, -xf86-input-joystick-1.0.0.1.ebuild,
+  -xf86-input-joystick-1.0.0.2.ebuild:
+  Pull old versions.
+
+*xf86-input-joystick-1.0.0.3 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-input-joystick-1.0.0.3.ebuild:
+  Bump for 7.0RC3.
+
+*xf86-input-joystick-1.0.0.2 (11 Nov 2005)
+
+  11 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-input-joystick-1.0.0.2.ebuild:
+  Bump for 7.0RC2.
+
+*xf86-input-joystick-1.0.0.1 (20 Oct 2005)
+
+  20 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-input-joystick-1.0.0.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <dberkholz@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+*xf86-input-joystick-1.0.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-input-joystick-1.0.0.ebuild:
+  Initial commit for modular X.

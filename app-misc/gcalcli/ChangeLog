@@ -1,0 +1,37 @@
+# ChangeLog for app-misc/gcalcli
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/gcalcli/ChangeLog,v 1.9 2015/06/05 14:49:06 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> gcalcli-3.2.ebuild:
+  Remove old Python implementations
+
+*gcalcli-3.2 (11 Jan 2015)
+
+  11 Jan 2015; Robin H. Johnson <robbat2@gentoo.org> -gcalcli-2.4.2.ebuild,
+  +gcalcli-3.2.ebuild:
+  Version bump; also remove the old version as GCal no longer offers the old
+  API it uses, making it useless.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> gcalcli-2.4.2.ebuild:
+  Add support for the new PyPy slotting.
+
+  29 Nov 2013; Robin H. Johnson <robbat2@gentoo.org> gcalcli-2.4.2.ebuild:
+  Missing dep.
+
+  10 Sep 2013; Patrick Lauer <patrick@gentoo.org> gcalcli-2.4.2.ebuild:
+  Whitespace
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> gcalcli-2.4.2.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  27 Jun 2013; Robin H. Johnson <robbat2@gentoo.org> gcalcli-2.4.2.ebuild:
+  Missing optional dep.
+
+*gcalcli-2.4.2 (27 Jun 2013)
+
+  27 Jun 2013; Robin H. Johnson <robbat2@gentoo.org> +gcalcli-2.4.2.ebuild,
+  +metadata.xml:
+  Initial commit.

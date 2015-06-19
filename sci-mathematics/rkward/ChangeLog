@@ -1,0 +1,191 @@
+# ChangeLog for sci-mathematics/rkward
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/rkward/ChangeLog,v 1.41 2014/03/04 20:32:14 bicatali Exp $
+
+  04 Mar 2014; Sébastien Fabbro <bicatali@gentoo.org> -rkward-0.5.7.ebuild,
+  -rkward-0.6.0-r1.ebuild:
+  Removed old, fixing bug #501584
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> rkward-0.6.1.ebuild:
+  Stable for x86, wrt bug #502416
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> rkward-0.6.1.ebuild:
+  amd64 stable, bug #502416
+
+*rkward-0.6.1 (19 Apr 2013)
+
+  19 Apr 2013; Justin Lecher <jlec@gentoo.org> +rkward-0.6.1.ebuild:
+  Version bump, #465682
+
+  12 Apr 2013; Justin Lecher <jlec@gentoo.org> -rkward-0.5.4.ebuild,
+  metadata.xml:
+  Drop old
+
+  11 Apr 2013; Agostino Sarubbo <ago@gentoo.org> rkward-0.5.7.ebuild:
+  Stable for amd64, wrt bug #459302
+
+  11 Apr 2013; Agostino Sarubbo <ago@gentoo.org> rkward-0.5.7.ebuild:
+  Stable for x86, wrt bug #459302
+
+*rkward-0.6.0-r1 (14 Feb 2013)
+
+  14 Feb 2013; Sébastien Fabbro <bicatali@gentoo.org> +rkward-0.6.0-r1.ebuild,
+  -rkward-0.6.0.ebuild:
+  Fixed for wrong R_HOME variable (bug #457502) and removing a file which wasn't
+  there (bug #457500). Simplified depedencies
+
+*rkward-0.6.0 (13 Feb 2013)
+
+  13 Feb 2013; Sébastien Fabbro <bicatali@gentoo.org> +rkward-0.6.0.ebuild,
+  -files/rkward-0.5.6-focus.patch, -rkward-0.5.5.ebuild,
+  -rkward-0.5.6-r1.ebuild, -rkward-0.5.6.ebuild:
+  Version bump
+
+*rkward-0.5.7 (25 Nov 2011)
+
+  25 Nov 2011; Sébastien Fabbro <bicatali@gentoo.org> +rkward-0.5.7.ebuild:
+  Version bump
+
+  03 Sep 2011; Andreas K. Huettel <dilfridge@gentoo.org> rkward-0.5.4.ebuild,
+  rkward-0.5.5.ebuild, rkward-0.5.6.ebuild, rkward-0.5.6-r1.ebuild:
+  Needs katepart for >=kde-4.7, bug 380761
+
+*rkward-0.5.6-r1 (11 Aug 2011)
+
+  11 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +rkward-0.5.6-r1.ebuild, +files/rkward-0.5.6-focus.patch:
+  Added upstream patch to work around kdelibs focus stealing, bug 375829
+
+*rkward-0.5.6 (26 Jul 2011)
+
+  26 Jul 2011; Sébastien Fabbro <bicatali@gentoo.org> +rkward-0.5.6.ebuild:
+  Version bump
+
+*rkward-0.5.5 (21 Mar 2011)
+
+  21 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> +rkward-0.5.5.ebuild:
+  Version bump to latest. Set properly handbook and linguas.
+
+  23 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org> rkward-0.5.4.ebuild:
+  cleanup, slotmove to 4
+
+  14 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org> -rkward-0.5.1.ebuild,
+  -rkward-0.5.2.ebuild, rkward-0.5.4.ebuild:
+  Stabilise latest drop older.
+
+*rkward-0.5.4 (22 Dec 2010)
+
+  22 Dec 2010; Sébastien Fabbro <bicatali@gentoo.org> -rkward-0.5.3.ebuild,
+  +rkward-0.5.4.ebuild:
+  Bump
+
+  09 Aug 2010; Tomáš Chvátal <scarabeus@gentoo.org> rkward-0.5.1.ebuild,
+  rkward-0.5.2.ebuild:
+  Drop useless kde_minimal definition.
+
+  01 Jul 2010; Markos Chandras <hwoarang@gentoo.org> rkward-0.5.3.ebuild:
+  Stable on amd64 wrt bug #326047
+
+  01 Jul 2010; Christian Faulhammer <fauli@gentoo.org> rkward-0.5.3.ebuild:
+  stable x86, bug 326047
+
+*rkward-0.5.3 (04 May 2010)
+
+  04 May 2010; Sébastien Fabbro <bicatali@gentoo.org> +rkward-0.5.3.ebuild:
+  Version bump
+
+*rkward-0.5.2 (04 Nov 2009)
+
+  04 Nov 2009; Sébastien Fabbro <bicatali@gentoo.org> +rkward-0.5.2.ebuild:
+  Version bump
+
+  30 Oct 2009; Markus Meier <maekke@gentoo.org> rkward-0.5.1.ebuild:
+  amd64/x86 stable, bug #290804
+
+*rkward-0.5.1 (07 Aug 2009)
+
+  07 Aug 2009; Sébastien Fabbro <bicatali@gentoo.org> +rkward-0.5.1.ebuild:
+  Version bump
+
+*rkward-0.5.0d (18 Jun 2009)
+*rkward-0.4.9b (18 Jun 2009)
+
+  18 Jun 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  +rkward-0.4.9b.ebuild, -rkward-0.5.0c.ebuild, +rkward-0.5.0d.ebuild:
+  Version bumps and fixes, thanks to Michel Lang, bug #269940.
+
+*rkward-0.5.0c (01 Apr 2009)
+
+  01 Apr 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  -rkward-0.5.0b.ebuild, +rkward-0.5.0c.ebuild:
+  Version bump and set all to SLOT=0  with blockers because of collisions.
+  Thanks Michel Lang for his work, closing bug #264334.
+
+  29 Jan 2009; Tomas Chvatal <scarabeus@gentoo.org> rkward-0.5.0b.ebuild:
+  Update deps correctly (dont be so strict).
+
+  15 Jan 2009; Sébastien Fabbro <bicatali@gentoo.org> rkward-0.5.0b.ebuild:
+  Fixed a missing header, thanks to Markos Chandras, closing bug #252580
+
+*rkward-0.5.0b (21 Oct 2008)
+
+  21 Oct 2008; Sébastien Fabbro <bicatali@gentoo.org> -rkward-0.4.9.ebuild,
+  +rkward-0.5.0b.ebuild:
+  Version bump, thanks Michel Lang for his ebuild, bug #209331
+
+  06 Sep 2008; Raúl Porcel <armin76@gentoo.org> rkward-0.4.9a.ebuild:
+  x86 stable wrt #236566
+
+  04 Sep 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  rkward-0.4.9a.ebuild:
+  stable amd64, bug 236566
+
+*rkward-0.4.9a (23 Apr 2008)
+
+  23 Apr 2008; Markus Dittrich <markusle@gentoo.org> +rkward-0.4.9a.ebuild:
+  Version bump (fixes bug #199672).
+
+  24 Mar 2008; Sébastien Fabbro <bicatali@gentoo.org> rkward-0.4.9.ebuild:
+  stable amd64, bug #211873
+
+  01 Mar 2008; Christian Faulhammer <opfer@gentoo.org> rkward-0.4.9.ebuild:
+  stable x86, bug 211873
+
+*rkward-0.4.9 (16 Jan 2008)
+
+  16 Jan 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  -rkward-0.4.7a.ebuild, -rkward-0.4.8.ebuild, +rkward-0.4.9.ebuild:
+  Version bump. Re-closing bug #199672
+
+*rkward-0.4.8a (20 Nov 2007)
+
+  20 Nov 2007; Markus Dittrich <markusle@gentoo.org> +rkward-0.4.8a.ebuild:
+  Version bump (see bug #199672).
+
+*rkward-0.4.8 (17 Oct 2007)
+
+  17 Oct 2007; Markus Dittrich <markusle@gentoo.org> rkward-0.4.7a.ebuild,
+  -rkward-0.4.7.ebuild, +rkward-0.4.8.ebuild:
+  Version bump and removed old versions (fixes bug #196114).
+
+*rkward-0.4.7a (01 Jun 2007)
+
+  01 Jun 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  +rkward-0.4.7a.ebuild:
+  Version bump+small fix for R 2.5. 
+  Thanks Skander Morgenthaler <smorg@gmx.de> for reporting.
+
+  27 Apr 2007; Sébastien Fabbro <bicatali@gentoo.org> rkward-0.4.7.ebuild:
+  added a need-kde to bring kdelibs deps, thanks for Andre
+  <andre.muller@web.de> for testing. Closing bug #176175.
+	
+  27 Apr 2007; Sébastien Fabbro <bicatali@gentoo.org> rkward-0.4.7.ebuild:
+  fixed for multilib, thanks to carlo for pointing that out.
+
+*rkward-0.4.7 (23 Apr 2007)
+
+  23 Apr 2007; Sébastien Fabbro <bicatali@gentoo.org> +metadata.xml,
+  +rkward-0.4.7.ebuild:
+  Initial import. Closing bug #65547. Thanks to masterdriverz,
+  adsmith@math.duke.edu, and others in the bug report and the gentooscience
+  overlay.

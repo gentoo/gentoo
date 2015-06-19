@@ -1,0 +1,35 @@
+--- scmail-1.3.orig/scbayes.in
++++ scmail-1.3/scbayes.in
+@@ -16,6 +16,7 @@
+ 
+ (use gauche.parseopt)
+ (use gauche.parameter)
++(use gauche.version)
+ (use dbm)
+ (use dbm.gdbm) ;; should be customizable
+ (use util.digest)
+@@ -130,12 +131,18 @@
+      (sys-rename (temporary-table-file) (table-file))
+      (sys-rename (temporary-digest-file) (digest-file)))))
+ 
+-(define (lock)
+-  (unless (eq? (create-directory* (lock-file)) #t)
+-     (scmail-wformat "~a is now being updated" (table-file))
+-     (scmail-wformat "or perhaps ~a is staled." (lock-file))
+-     (scmail-eformat "(Please remove the lock file if it is staled.)"))
+-  )
++(if (version<? (gauche-version) "0.9")
++    (define (lock)
++      (unless (eq? (create-directory* (lock-file)) #t)
++        (scmail-wformat "~a is now being updated" (table-file))
++        (scmail-wformat "or perhaps ~a is staled." (lock-file))
++        (scmail-eformat "(Please remove the lock file if it is staled.)")))
++    (define (lock)
++      (guard (e (else
++                 (scmail-wformat "~a is now being updated" (table-file))
++                 (scmail-wformat "or perhaps ~a is staled." (lock-file))
++                 (scmail-eformat "(Please remove the lock file if it is staled.)")))
++        (create-directory* (lock-file)))))
+ 
+ (define force-learn? (make-parameter #f))
+ 

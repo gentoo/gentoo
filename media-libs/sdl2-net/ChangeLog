@@ -1,0 +1,24 @@
+# ChangeLog for media-libs/sdl2-net
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/sdl2-net/ChangeLog,v 1.5 2015/03/22 06:16:42 mr_bones_ Exp $
+
+  22 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> sdl2-net-2.0.0-r1.ebuild:
+  mark stable
+
+  22 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org> -sdl2-net-2.0.0.ebuild:
+  old
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> sdl2-net-2.0.0-r1.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+*sdl2-net-2.0.0-r1 (18 Apr 2014)
+
+  18 Apr 2014; Julian Ospald <hasufell@gentoo.org> +sdl2-net-2.0.0-r1.ebuild:
+  add multilib support
+
+*sdl2-net-2.0.0 (28 Aug 2013)
+
+  28 Aug 2013; Julian Ospald <hasufell@gentoo.org> +sdl2-net-2.0.0.ebuild,
+  +metadata.xml:
+  initial import wrt #481794

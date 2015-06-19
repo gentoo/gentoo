@@ -1,0 +1,33 @@
+ installer/build_files.sh |    6 +++---
+ 1 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/installer/build_files.sh b/installer/build_files.sh
+index 8d469b0..bc653cf 100755
+--- a/installer/build_files.sh
++++ b/installer/build_files.sh
+@@ -27,7 +27,7 @@ compile_file() {
+   # Compile.
+   echo Compiling: $FILE...
+   set -x
+-  g++ -fPIC $CFLAGS -c $FILE -o $OBJECTFILE
++  g++ -fPIC $CFLAGS $CXXFLAGS -c $FILE -o $OBJECTFILE
+   ERR="$?"
+   set +x
+   if [ "$ERR" -ne "0" ]; then
+@@ -122,14 +122,14 @@ fi
+ if [ "$SHARED" = "" ]; then
+   # Link as an executable.
+   set -x
+-  g++ $CFLAGS -o $OUTFILE $OBJECTFILES $LFLAGS
++  g++ $CFLAGS $CXXFLAGS $LDFLAGS -o $OUTFILE $OBJECTFILES $LFLAGS
+   ERR="$?"
+   set +x
+ else
+   # Link as a shared library.
+   SHAREDNAME=`echo $OUTFILE | sed 's/\..*//'`
+   set -x
+-  g++ -shared -Wl,-soname,$SHAREDNAME $CFLAGS -o $OUTFILE $OBJECTFILES $LFLAGS
++  g++ -shared -Wl,-soname,$SHAREDNAME $CFLAGS $CXXFLAGS $LDFLAGS -o $OUTFILE $OBJECTFILES $LFLAGS
+   ERR="$?"
+   set +x
+ fi

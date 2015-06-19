@@ -1,0 +1,21 @@
+# ChangeLog for dev-ruby/climate_control
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/climate_control/ChangeLog,v 1.5 2015/06/07 17:26:31 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  25 Jul 2014; Manuel Rüger <mrueg@gentoo.org> climate_control-0.0.3.ebuild:
+  Add ruby21 target.
+
+  28 Dec 2013; Hans de Graaff <graaff@gentoo.org> climate_control-0.0.3.ebuild:
+  Add ruby20. Fix dependency issues.
+
+  03 Mar 2013; Hans de Graaff <graaff@gentoo.org> climate_control-0.0.3.ebuild:
+  Add missing dependency.
+
+*climate_control-0.0.3 (03 Mar 2013)
+
+  03 Mar 2013; Hans de Graaff <graaff@gentoo.org>
+  +climate_control-0.0.3.ebuild, +metadata.xml:
+  Initial import. New dependency for cocaine.

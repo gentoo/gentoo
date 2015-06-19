@@ -1,0 +1,7 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for FLIM (library for message representation in Emacs)
+EAPI=4
+KEYWORDS=alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+RDEPEND=|| ( app-emacs/flim app-emacs/limit )
+SLOT=0
+_md5_=e9c143ef592fad45383c43b10828f3df

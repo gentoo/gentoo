@@ -1,0 +1,15 @@
+# ChangeLog for media-libs/libggigcp
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libggigcp/ChangeLog,v 1.3 2009/09/14 21:26:33 maekke Exp $
+
+  14 Sep 2009; Markus Meier <maekke@gentoo.org> libggigcp-1.0.2.ebuild:
+  add ~x86, bug #284381
+
+  14 Sep 2009; Markus Meier <maekke@gentoo.org> libggigcp-1.0.2.ebuild:
+  amd64 stable, bug #284381
+
+*libggigcp-1.0.2 (10 Jan 2008)
+
+  10 Jan 2008; Samuli Suominen <drac@gentoo.org> +libggigcp-1.0.2.ebuild:
+  Initial commit wrt #126400, thanks to Kimura Masaru.
+

@@ -1,0 +1,48 @@
+# ChangeLog for app-misc/dvorak7min
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/dvorak7min/ChangeLog,v 1.15 2012/07/01 09:49:58 jlec Exp $
+
+  01 Jul 2012; Justin Lecher <jlec@gentoo.org> dvorak7min-1.6.1.ebuild:
+  Respect LDFLAGS, #337846; bumped to EAPI=4
+
+  24 Nov 2009; Jeremy Olexa <darkside@gentoo.org> dvorak7min-1.6.1.ebuild:
+  Add prefix keywords, as tested in prefix overlay
+
+  30 Dec 2008; Christoph Mende <angelos@gentoo.org> dvorak7min-1.6.1.ebuild:
+  QA: Respect CC (bug 243634) and CFLAGS (bug 240069)
+
+  03 Feb 2008; Fabian Groffen <grobian@gentoo.org> dvorak7min-1.6.1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  13 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> dvorak7min-1.6.1.ebuild:
+  stable on amd64
+
+  09 Mar 2005; Lina Pezzella <j4rg0n@gentoo.org> dvorak7min-1.6.1.ebuild:
+  Stable ppc-macos
+
+  09 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> dvorak7min-1.6.1.ebuild:
+  Unstable ppc-macos
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  dvorak7min-1.6.1.ebuild:
+  Masked dvorak7min-1.6.1.ebuild stable for ppc
+
+  29 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> dvorak7min-1.6.1.ebuild:
+  Marked ~amd64.
+
+  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  dvorak7min-1.6.1.ebuild:
+  QA - IUSE fix
+
+  08 Oct 2003; Joel Hill <hillster@gentoo.org> dvorak7min-1.6.1.ebuild:
+  marking stable.
+
+*dvorak7min-1.6.1 (27 Aug 2003)
+
+  27 Aug 2003; Lars Weiler <pylon@gentoo.org> dvorak7min-1.6.1.ebuild:
+  Initial import.
+  Creation done by Wolfram Schlich <wolfram@schlich.org>
+

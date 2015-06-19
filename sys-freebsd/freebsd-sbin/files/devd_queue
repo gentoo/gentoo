@@ -1,0 +1,50 @@
+#!/bin/sh
+
+# Notify the rc system that we're in the background
+export IN_BACKGROUND=true
+
+arg1="$1"
+if [ -z "$arg1" ] ; then
+	echo "Command required" > /dev/stderr
+	exit 1
+fi
+shift
+
+case "$arg1" in
+	add)
+		if [ -z "$1" ] ; then
+			echo "Command missing!" > /dev/stderr
+			exit 1
+		fi
+
+		# If we don't have a queue then just run
+		if [ ! -d /var/run/devd ] ; then
+			"$@"
+			exit $?
+		fi
+
+		cmd="$1"
+		args="$*"
+		if [ "$cmd" = "env" ] ; then
+			shift
+			while echo "$1" | grep -q "="; do
+				shift
+				[ "$1" = "--" ] && shift && break
+			done
+			cmd="$1"
+		fi
+		echo "$args" > /var/run/devd/$(basename "$cmd")
+		;;
+	flush)
+		while ! rmdir /var/run/devd 2>/dev/null ; do
+			for cmd in $(cd /var/run/devd; ls) ; do
+				args=$(cat /var/run/devd/$cmd)
+				rm -f /var/run/devd/$cmd
+				$args
+			done
+		done
+		;;
+	*)
+		echo "Unknown command $arg1"
+		;;
+esac

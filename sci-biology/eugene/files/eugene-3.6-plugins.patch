@@ -1,0 +1,43 @@
+http://bugs.gentoo.org/show_bug.cgi?id=297536
+
+--- eugene-3.6/src/Makefile.am
++++ eugene-3.6/src/Makefile.am
+@@ -20,7 +20,7 @@
+ 
+ SUBDIRS = Parametrization GDIF . SensorPlugins
+ 
+-AM_CXXFLAGS = $(eugene_cxxflags) -DDEFAULT_EUGENE_DIR=\"${pkgdatadir}\"
++AM_CXXFLAGS = $(eugene_cxxflags) -DDEFAULT_EUGENE_DIR=\"${pkgdatadir}\" -DLIB_DIR=\"${libdir}\"
+ AM_CFLAGS = 
+ 
+ bin_PROGRAMS = eugene
+--- eugene-3.6/src/MSensor.cc
++++ eugene-3.6/src/MSensor.cc
+@@ -97,7 +97,7 @@
+   std::string use_name;
+ 
+   if (!IsInitialized) {
+-    PluginsDir = (std::string)PAR.getC("eugene_dir")+"/"+PLUGINS_DIR+"/";
++    PluginsDir = (std::string)LIB_DIR+"/eugene/"+PLUGINS_DIR+"/";
+ 
+     // On récupère les couples nom de sensor/priorité du .par
+     PAR.ResetIter();
+--- eugene-3.6/Makefile.am
++++ eugene-3.6/Makefile.am
+@@ -125,7 +125,7 @@
+ 	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/web/Style
+ 	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/web/Javascripts
+ 	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/web/Images
+-	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/plugins
++	$(INSTALL) -d $(DESTDIR)/$(libdir)/eugene/plugins
+ 	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/cfg
+ 	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/models
+ 	$(INSTALL) -d $(DESTDIR)/$(pkgdatadir)/models/WAM
+@@ -144,6 +144,6 @@
+ 	$(INSTALL) -m 644 $(srcdir)/web/Images/*jpg $(DESTDIR)/$(pkgdatadir)/web/Images
+ 	$(INSTALL) -m 644 $(srcdir)/cfg/*.obo $(DESTDIR)/$(pkgdatadir)/cfg
+ 	$(INSTALL) -m 644 $(srcdir)/cfg/*.par $(DESTDIR)/$(pkgdatadir)/cfg
+-	$(INSTALL) src/SensorPlugins/*/*.so  $(DESTDIR)/$(pkgdatadir)/plugins
++	$(INSTALL) src/SensorPlugins/*/*.so  $(DESTDIR)/$(libdir)/eugene/plugins
+ 	$(INSTALL) $(srcdir)/Procedures/Eval/egn_* $(DESTDIR)/$(pkgdatadir)/Procedures/Eval
+ 	$(INSTALL) $(srcdir)/Procedures/Get/egn_* $(DESTDIR)/$(pkgdatadir)/Procedures/Get

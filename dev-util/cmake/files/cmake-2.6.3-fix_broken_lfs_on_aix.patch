@@ -1,0 +1,39 @@
+http://public.kitware.com/Bug/view.php?id=7933
+
+diff -ur cmake-2.6.2/Source/kwsys/kwsysPlatformTestsCXX.cxx cmake-2.6.2-p/Source/kwsys/kwsysPlatformTestsCXX.cxx
+--- cmake-2.6.2/Source/kwsys/kwsysPlatformTestsCXX.cxx	Wed Sep 24 20:34:37 2008
++++ cmake-2.6.2-p/Source/kwsys/kwsysPlatformTestsCXX.cxx	Tue Nov  4 11:18:32 2008
+@@ -38,6 +38,13 @@
+ int main() { return 0; }
+ #endif
+ 
++#ifdef TEST_KWSYS_LFS_SUPPORT
++#define _LARGE_FILES
++#include <iostream>
++int main() { return 0; }
++#endif
++
++
+ #ifdef TEST_KWSYS_IOS_HAVE_STD
+ #include <iosfwd>
+ void f(std ::ostream*) {}
+diff -ur cmake-2.6.2/bootstrap cmake-2.6.2-p/bootstrap
+--- cmake-2.6.2/bootstrap	Wed Sep 24 20:34:33 2008
++++ cmake-2.6.2-p/bootstrap	Tue Nov  4 11:17:11 2008
+@@ -1005,6 +1005,16 @@
+   echo "${cmake_cxx_compiler} does not have stl iterator_traits"
+ fi
+ 
++if cmake_try_run "${cmake_cxx_compiler}" \
++  "${cmake_cxx_flags} -DTEST_KWSYS_LFS_SUPPORT" \
++  "${cmake_source_dir}/Source/kwsys/kwsysPlatformTestsCXX.cxx" >> cmake_bootstrap.log 2>&1; then
++  KWSYS_LFS_AVAILABLE=1
++  echo "LFS support available"
++else
++  KWSYS_LFS_AVAILABLE=0
++  echo "LFS support unavailable, disabled"
++fi
++
+ if [ "x${KWSYS_STL_HAS_ITERATOR_TRAITS}" = "x0" ]; then
+   if cmake_try_run "${cmake_cxx_compiler}" \
+     "${cmake_cxx_flags} -DTEST_KWSYS_STL_HAS_ITERATOR_CATEGORY -DKWSYS_STL_HAVE_STD=${KWSYS_STL_HAVE_STD}" \

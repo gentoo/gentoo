@@ -1,0 +1,27 @@
+# ChangeLog for sci-libs/qfits
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/qfits/ChangeLog,v 1.6 2012/08/03 20:02:20 bicatali Exp $
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> qfits-6.2.0.ebuild:
+  Switched to autotools-utils, EAPI 4
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> qfits-6.2.0.ebuild:
+  keyword amd64-linux x86-linux
+
+  04 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  Switched herd to sci-astronomy
+
+  01 Mar 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/qfits-6.2.0-open.patch, qfits-6.2.0.ebuild:
+  Added fix for _FORTIFY_SOURCE=2, thank loki_val to point to a patch from
+  Fedora folks
+
+  18 May 2007; Sébastien Fabbro <bicatali@gentoo.org> qfits-6.2.0.ebuild:
+  installs html doc properly
+
+*qfits-6.2.0 (23 Feb 2007)
+
+  23 Feb 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/qfits-6.2.0-ttest.patch, +metadata.xml, +qfits-6.2.0.ebuild:
+  Initial import. qfits is a low-level not-bloated FITS i/o library, 
+  developped at ESO.

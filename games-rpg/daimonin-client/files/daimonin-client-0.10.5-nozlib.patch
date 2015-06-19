@@ -1,0 +1,40 @@
+--- Makefile.am.old	2010-12-01 14:39:11.605648458 -0500
++++ Makefile.am	2010-12-01 14:41:59.875915880 -0500
+@@ -2,23 +2,18 @@
+ daimonin_PROGRAMS = daimonin daimonin-updater
+ 
+ daimonin_SOURCES =  \
+-	../../src/adler32.c \
+ 	../../src/anim.c \
+ 	../../src/book.c \
+ 	../../src/buddy.c \
+ 	../../src/chatfilter.c \
+ 	../../src/client.c \
+ 	../../src/commands.c \
+-	../../src/crc32.c \
+ 	../../src/dialog.c \
+ 	../../src/event.c \
+ 	../../src/filewrap.c \
+ 	../../src/font.c \
+ 	../../src/group.c \
+ 	../../src/ignore.c \
+-	../../src/inffast.c \
+-	../../src/inflate.c \
+-	../../src/inftrees.c \
+ 	../../src/interface.c \
+ 	../../src/inventory.c \
+ 	../../src/item.c \
+@@ -35,11 +30,9 @@
+ 	../../src/sprite.c \
+ 	../../src/textwin.c \
+ 	../../src/tile_stretcher.c \
+-	../../src/uncompr.c \
+ 	../../src/wrapper.c \
+-	../../src/widget.c \
+-	../../src/zutil.c
+-daimonin_LDADD = -lSDL_mixer -lSDL_image @SDL_LIBS@ @EXTRA_LIBS@ @PHYSFS_LIBS@
++	../../src/widget.c
++daimonin_LDADD = -lSDL_mixer -lSDL_image @SDL_LIBS@ @EXTRA_LIBS@ @PHYSFS_LIBS@ -lz
+ daimonin_OBJDIR = objs
+ 
+ daimonin_updater_SOURCES = \

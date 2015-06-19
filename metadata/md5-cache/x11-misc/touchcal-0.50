@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=sys-libs/ncurses
+DESCRIPTION=Touchscreen calibration utility
+EAPI=4
+HOMEPAGE=http://touchcal.sourceforge.net/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses
+SLOT=0
+SRC_URI=mirror://sourceforge/touchcal/touchcal-0.50.tar.gz
+_md5_=21e8d334d9d1abc539132b4edd4e139b

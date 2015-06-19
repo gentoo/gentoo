@@ -1,0 +1,38 @@
+--- setup.py.orig	2010-02-17 22:51:13.762123843 +0200
++++ setup.py	2010-02-17 22:53:26.538622241 +0200
+@@ -310,7 +310,7 @@
+ nss_error_extension = \
+     Extension('nss.error',
+               sources            = ['src/py_nspr_error.c'],
+-              include_dirs       = ['/usr/include/nss3', '/usr/include/nspr4'],
++              include_dirs       = ['/usr/include/nss', '/usr/include/nspr'],
+               libraries          = ['nspr4'],
+               extra_compile_args = extra_compile_args,
+               )
+@@ -318,7 +318,7 @@
+ nss_io_extension = \
+     Extension('nss.io',
+               sources            = ['src/py_nspr_io.c'],
+-              include_dirs       = ['/usr/include/nss3', '/usr/include/nspr4'],
++              include_dirs       = ['/usr/include/nss', '/usr/include/nspr'],
+               libraries          = ['nspr4'],
+               extra_compile_args = extra_compile_args,
+               )
+@@ -326,7 +326,7 @@
+ nss_nss_extension = \
+     Extension('nss.nss',
+               sources            = ['src/py_nss.c'],
+-              include_dirs       = ['src', '/usr/include/nss3', '/usr/include/nspr4'],
++              include_dirs       = ['src', '/usr/include/nss', '/usr/include/nspr'],
+               libraries          = ['nspr4', 'ssl3'],
+               extra_compile_args = extra_compile_args,
+               )
+@@ -334,7 +334,7 @@
+ nss_ssl_extension = \
+     Extension('nss.ssl',
+               sources            = ['src/py_ssl.c'],
+-              include_dirs       = ['src', '/usr/include/nss3', '/usr/include/nspr4'],
++              include_dirs       = ['src', '/usr/include/nss', '/usr/include/nspr'],
+               libraries          = ['nspr4', 'ssl3'],
+               extra_compile_args = extra_compile_args,
+               )

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install preinst prepare unpack
+DEPEND=pci? ( sys-apps/pciutils ) app-arch/xz-utils || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DESCRIPTION=util to detect Super I/O chips and functionality
+EAPI=4
+HOMEPAGE=http://www.coreboot.org/Superiotool
+IUSE=pci
+LICENSE=GPL-2
+RDEPEND=pci? ( sys-apps/pciutils )
+SLOT=0
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=db398bbc4ae6e8b40c6d9ca09e3b41fe

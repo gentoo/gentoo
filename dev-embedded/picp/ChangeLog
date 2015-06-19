@@ -1,0 +1,53 @@
+# ChangeLog for dev-embedded/picp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/picp/ChangeLog,v 1.12 2014/08/10 20:03:55 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> picp-0.6.8.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  08 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  17 Feb 2012; Tim Harder <radhermit@gentoo.org> picp-0.6.8.ebuild:
+  Remove unnecessary empty DEPEND.
+
+  17 Feb 2012; Tim Harder <radhermit@gentoo.org> -picp-0.6.4.ebuild:
+  Remove old.
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> picp-0.6.8.ebuild:
+  x86 stable wrt bug #396865
+
+*picp-0.6.8 (07 May 2011)
+
+  07 May 2011; Tim Harder <radhermit@gentoo.org> -picp-0.6.5.ebuild,
+  -picp-0.6.7.ebuild, +picp-0.6.8.ebuild, +files/picp-0.6.8-errno.patch:
+  Version bump and remove old. Update to EAPI 4, add ~amd64 keyword, don't
+  pre-strip files (bug #240161), and respect LDFLAGS (bug #335542).
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> picp-0.6.4.ebuild,
+  picp-0.6.5.ebuild, picp-0.6.7.ebuild:
+  Remove virtual/libc
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*picp-0.6.7 (20 Aug 2005)
+
+  20 Aug 2005; Daniel Black <dragonheart@gentoo.org> +picp-0.6.7.ebuild:
+  version bump as per bug #90155. Thanks to Laurence Withers
+
+*picp-0.6.5 (13 Jan 2005)
+
+  13 Jan 2005; Daniel Black <dragonheart@gentoo.org> +picp-0.6.5.ebuild:
+  Version bump as per bug #77811. Thanks to Laurence Withers
+  <lwithers@users.sf.net>
+
+*picp-0.6.4 (04 Dec 2004)
+
+  04 Dec 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  +picp-0.6.4.ebuild:
+  Initial import - ebuild thanks to Laurence Withers <lwithers@users.sf.net> in
+  bug #69448

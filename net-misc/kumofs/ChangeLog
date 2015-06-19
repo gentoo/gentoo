@@ -1,0 +1,34 @@
+# ChangeLog for net-misc/kumofs
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/kumofs/ChangeLog,v 1.6 2013/02/03 12:36:07 pacho Exp $
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> -kumofs-0.3.1.ebuild,
+  -kumofs-0.3.2.ebuild, -kumofs-0.3.6.ebuild, metadata.xml:
+  Cleanup due #22900
+
+  23 Apr 2012; Michał Górny <mgorny@gentoo.org> kumofs-0.3.1.ebuild,
+  kumofs-0.3.2.ebuild, kumofs-0.3.6.ebuild, kumofs-0.4.13.ebuild:
+  Use mirror:// in SRC_URI.
+
+*kumofs-0.4.13 (11 May 2011)
+
+  11 May 2011; MATSUU Takuto <matsuu@gentoo.org> +kumofs-0.4.13.ebuild:
+  Version bumped.
+
+*kumofs-0.3.6 (11 May 2010)
+
+  11 May 2010; MATSUU Takuto <matsuu@gentoo.org> +kumofs-0.3.6.ebuild:
+  Version bumped.
+
+*kumofs-0.3.2 (19 Mar 2010)
+
+  19 Mar 2010; MATSUU Takuto <matsuu@gentoo.org> +kumofs-0.3.2.ebuild:
+  Version bumped.
+
+*kumofs-0.3.1 (02 Mar 2010)
+
+  02 Mar 2010; MATSUU Takuto <matsuu@gentoo.org> +kumofs-0.3.1.ebuild,
+  +files/kumo-gateway.confd, +files/kumo-gateway.initd,
+  +files/kumo-manager.confd, +files/kumo-manager.initd,
+  +files/kumo-server.confd, +files/kumo-server.initd, +metadata.xml:
+  Initial import.

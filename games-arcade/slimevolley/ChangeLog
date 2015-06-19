@@ -1,0 +1,53 @@
+# ChangeLog for games-arcade/slimevolley
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/slimevolley/ChangeLog,v 1.12 2015/01/05 17:49:02 tupone Exp $
+
+  05 Jan 2015; Tupone Alfredo <tupone@gentoo.org> slimevolley-2.4.2.ebuild:
+  EAPI 5
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> slimevolley-2.4.2.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  20 Jun 2011; Tupone Alfredo <tupone@gentoo.org> slimevolley-2.4.2.ebuild,
+  +files/slimevolley-2.4.2-underlink.patch:
+  Fix underlink. Bug #369589 by Diego Elio Pettenò
+
+  15 Jan 2011; Markus Meier <maekke@gentoo.org> slimevolley-2.4.2.ebuild:
+  x86 stable, bug #350447
+
+  05 Jan 2011; Markos Chandras <hwoarang@gentoo.org> slimevolley-2.4.2.ebuild:
+  Stable on amd64 wrt bug #350447
+
+*slimevolley-2.4.2 (30 Nov 2010)
+
+  30 Nov 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +slimevolley-2.4.2.ebuild, +files/slimevolley-2.4.2-nodatalocal.patch:
+  version bump
+
+  21 Jun 2010; Markus Meier <maekke@gentoo.org> slimevolley-2.4.1-r1.ebuild:
+  amd64/x86 stable, bug #322807
+
+  26 May 2010; Pacho Ramos <pacho@gentoo.org> slimevolley-2.4.1.ebuild:
+  stable amd64, bug 316123
+
+  05 May 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  slimevolley-2.4.1-r1.ebuild, +files/slimevolley-2.4.1-nodatalocal.patch:
+  Don't try to look in pwd for a "data" directory (bug #318005)
+
+*slimevolley-2.4.1-r1 (01 May 2010)
+
+  01 May 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +slimevolley-2.4.1-r1.ebuild, metadata.xml:
+  rev bump to make network support optional
+
+  27 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  slimevolley-2.4.1.ebuild:
+  x86 stable wrt bug #316123
+
+*slimevolley-2.4.1 (19 Mar 2010)
+
+  19 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +slimevolley-2.4.1.ebuild:
+  Initial commit wrt #277520 by Sergei Danilov.
+

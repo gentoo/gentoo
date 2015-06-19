@@ -1,0 +1,34 @@
+# ChangeLog for sys-fs/cramfs
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/cramfs/ChangeLog,v 1.6 2005/09/16 11:24:51 agriffis Exp $
+
+  16 Sep 2005; Aron Griffis <agriffis@gentoo.org> cramfs-1.1.ebuild:
+  Mark 1.1 stable on alpha
+
+  11 Aug 2005; Jose Luis Rivero <yoswink@gentoo.org> cramfs-1.1.ebuild:
+  Keyworded ~alpha wrt #92055
+
+  23 Jan 2005; <solar@gentoo.org> cramfs-1.1.ebuild:
+  - stable on x86
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> cramfs-1.1.ebuild:
+  Masked cramfs-1.1.ebuild stable for ppc
+
+*cramfs-1.1 (15 Sep 2003)
+
+  15 Sep 2003; Seemant Kulleen <seemant@gentoo.org> cramfs-1.1.ebuild:
+  moved to sys-fs
+
+*cramfs-1.1 (19 Jul 2002)
+  16 Jan 2003; Rodney Rees <manson@gentoo.org> added ~sparc keyword to
+  cramfs-1.1.ebuild and updated ChangeLog
+
+  30 Dec 2002; Martin Holzer <mholzer@gentoo.org> cramfs-1.1.ebuild ChangeLog :
+  Change SRC_URI to use mirror://sf
+
+  25 Oct 2002; Zach Welch <zwelch@gentoo.org> :
+  Update ebuild and commit package
+
+  19 Jul 2002; Sean Summers <ebuild@generalprotectionfault.com> cramfs-1.1.ebuild :
+  Initial package
+

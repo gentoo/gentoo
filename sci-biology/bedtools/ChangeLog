@@ -1,0 +1,37 @@
+# ChangeLog for sci-biology/bedtools
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/bedtools/ChangeLog,v 1.7 2014/05/30 20:16:25 swift Exp $
+
+*bedtools-2.20.1 (30 May 2014)
+
+  30 May 2014; Sven Vermeulen <swift@gentoo.org> +bedtools-2.20.1.ebuild:
+  Add bedtools 2.20.1 thanks to Martin Mokrejs (bug #505538)
+
+  24 Mar 2014; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  New e-mail address.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+*bedtools-2.16.2 (29 May 2012)
+
+  29 May 2012; Andrey Kislyuk <weaver@gentoo.org> +bedtools-2.16.2.ebuild,
+  -bedtools-2.13.3.ebuild, -bedtools-2.15.0.ebuild:
+  version bump
+
+*bedtools-2.15.0 (02 Jan 2012)
+
+  02 Jan 2012; Andrey Kislyuk <weaver@gentoo.org> +bedtools-2.15.0.ebuild:
+  Version bump
+
+*bedtools-2.13.3 (09 Oct 2011)
+
+  09 Oct 2011; Andrey Kislyuk <weaver@gentoo.org> +bedtools-2.13.3.ebuild,
+  +metadata.xml:
+  Import from Science overlay and rewrite
+
+  24 Jun 2011; Justin Lecher <jlec@gentoo.org> bedtools-2.10.1.ebuild:
+  SOme ebuild cleaning

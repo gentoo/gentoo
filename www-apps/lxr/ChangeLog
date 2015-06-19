@@ -1,0 +1,127 @@
+# ChangeLog for www-apps/lxr
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/lxr/ChangeLog,v 1.25 2014/11/09 22:09:37 dilfridge Exp $
+
+  09 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org> lxr-0.9.8-r1.ebuild:
+  Replace perlinfo with perl_set_version
+
+  25 Aug 2014; Patrick Lauer <patrick@gentoo.org> lxr-0.9.8-r1.ebuild,
+  metadata.xml:
+  QA: Surgical removal of swish-e dependency that is being treecleaned
+
+  26 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> -lxr-0.9.8.ebuild,
+  lxr-0.9.8-r1.ebuild:
+  Merge stable keyword; Drop old.
+
+*lxr-0.9.8-r1 (26 Jul 2014)
+
+  26 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> +lxr-0.9.8-r1.ebuild:
+  Revision bump: EAPI=5
+
+*lxr-0.9.8 (12 Sep 2013)
+
+  12 Sep 2013; Chris Reffett <creffett@gentoo.org>
+  +files/lxr-0.9.8-initdb-mysql.patch, +lxr-0.9.8.ebuild,
+  -files/initdb-mysql.patch, -lxr-0.9.5.ebuild:
+  Security bump wrt bug 325575.
+
+  18 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  05 Mar 2010; Ulrich Mueller <ulm@gentoo.org> lxr-0.9.5.ebuild:
+  Update dev-vcs/rcs dependency after package move, bug 56967.
+
+  23 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  08 Feb 2008; Benedikt Böhm <hollow@gentoo.org> -lxr-0.3.1.ebuild:
+  remove broken version
+
+  08 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org> lxr-0.9.5.ebuild:
+  ppc stable, bug #208821
+
+  03 Feb 2008; Benedikt Böhm <hollow@gentoo.org> lxr-0.9.5.ebuild:
+  merge from webapps overlay wrt #208584
+
+  02 Feb 2008; Jakub Moc <jakub@gentoo.org> lxr-0.9.5.ebuild:
+  Fix apache dependency wrt Bug 208584. Remove incorrect dependency on
+  dev-db/postgresql. Set WEBAPP_MANUAL_SLOT since otherwise this will
+  obviously collide on the perl modules stuff. Call webapp eclass
+  functions explicitely so that this does not get messed up by
+  perl-module exported functions.
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org> lxr-0.9.5.ebuild:
+  Fixing the DEPEND/RDEPEND for the move of net-www/apache to
+  www-servers/apache (#78622).
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> lxr-0.3.1.ebuild:
+  (QA) RESTRICT clean up.
+
+  02 Jan 2007; Renat Lumpau <rl03@gentoo.org> -lxr-0.9.4-r1.ebuild,
+  lxr-0.9.5.ebuild:
+  Drop mysql dep wrt bug #159781
+
+  23 Nov 2006; Francesco Riosa <vivo@gentoo.org> lxr-0.9.4-r1.ebuild,
+  lxr-0.9.5.ebuild:
+  dev-db/mysql => virtual/mysql
+
+*lxr-0.9.5 (15 Jun 2006)
+
+  15 Jun 2006; Mike Frysinger <vapier@gentoo.org> files/postinstall-en.txt,
+  files/reconfig, +lxr-0.9.5.ebuild:
+  Version bump and webapp-config cleanups.
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org> lxr-0.3.1.ebuild:
+  Virtuals for perl-core
+
+*lxr-0.9.4-r1 (26 Jan 2006)
+
+  26 Jan 2006; Renat Lumpau <rl03@gentoo.org> +files/initdb-mysql.patch,
+  -lxr-0.9.4.ebuild, +lxr-0.9.4-r1.ebuild:
+  Fixes for bug #108924.
+
+  15 Jan 2006; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt:
+  Minor fix in postinstall instructions
+
+*lxr-0.9.4 (10 Jan 2006)
+
+  10 Jan 2006; Renat Lumpau <rl03@gentoo.org> +files/postinstall-en.txt,
+  +files/reconfig, +lxr-0.9.4.ebuild:
+  Version bump wrt bug #108924.
+
+  24 May 2005; Michael Cummings <mcummings@gentoo.org> lxr-0.3.1.ebuild:
+  dev-perl/DB_File => perl-core/DB_File
+
+  08 Sep 2004; Renat Lumpau <rl03@gentoo.org> metadata.xml:
+  Fixed herd name
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> lxr-0.3.1.ebuild:
+  Masked lxr-0.3.1.ebuild stable for ppc
+
+*lxr-0.3.1 (15 Aug 2004)
+
+  15 Aug 2004; Stuart Herbert <stuart@gentoo.org> +metadata.xml,
+  +lxr-0.3.1.ebuild:
+  Moved from net-www/lxr to www-apps/lxr.
+
+  31 Jul 2004; Josh Glover <jmglov@gentoo.org> lxr-0.3.1.ebuild:
+  added >=dev-perl/DB_File-1.807 to RDEPEND; submitted by Robert Zaleski in bug
+  #58894
+
+  25 Apr 2004; David Holm <dholm@gentoo.org> lxr-0.3.1.ebuild:
+  Added to ~ppc.
+
+  23 Apr 2004; Stuart Herbert <stuart@gentoo.org> lxr-0.3.1.ebuild:
+  Updated to be compatible with webapp-config-1.4
+
+  23 Apr 2004; Stuart Herbert <stuart@gentoo.org> lxr-0.3.1.ebuild:
+  Removed unneeded SLOT; that's handled by the webapp eclass
+
+*lxr-0.3.1 (23 Apr 2004)
+
+  23 Apr 2004; Stuart Herbert <stuart@gentoo.org> lxr-0.3.1.ebuild,
+  metadata.xml:
+  Initial import; thanks to Josh Glover <gentoo@jmglov.net>; see bug #48459

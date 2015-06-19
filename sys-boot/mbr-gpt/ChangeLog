@@ -1,0 +1,13 @@
+# ChangeLog for sys-boot/mbr-gpt
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/mbr-gpt/ChangeLog,v 1.2 2014/08/10 20:21:10 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> mbr-gpt-0.0.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*mbr-gpt-0.0.1 (25 Mar 2008)
+
+  25 Mar 2008; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +mbr-gpt-0.0.1.ebuild:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>. This is
+  useful for testing crazy GPT setups.

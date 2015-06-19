@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <longdescription lang="en">
+  scikits.learn is a python library for machine learning. It aims to
+  implement classic machine learning algorithms while remaining simple
+  and efficient.
+</longdescription>
+  <upstream>
+    <remote-id type="pypi">scikit-learn</remote-id>
+  </upstream>
+</pkgmetadata>

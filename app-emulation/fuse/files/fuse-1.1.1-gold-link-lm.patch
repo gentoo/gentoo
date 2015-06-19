@@ -1,0 +1,10 @@
+diff -uNr fuse-1.1.1.orig/sound/Makefile.am fuse-1.1.1/sound/Makefile.am
+--- fuse-1.1.1.orig/sound/Makefile.am	2014-06-04 17:32:46.540000001 -0400
++++ fuse-1.1.1/sound/Makefile.am	2014-06-04 19:04:23.190000001 -0400
+@@ -46,5 +46,6 @@
+ 
+ libsound_a_LIBADD = $(SOUND_LIBADD)
+ libsound_a_DEPENDENCIES = $(SOUND_LIBADD)
++libsound_a_LDFLAGS = -lm
+ 
+ noinst_HEADERS = sfifo.h blipbuffer.h

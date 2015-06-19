@@ -1,0 +1,76 @@
+--- bustle-0.4.0-orig/bustle.cabal	2013-04-03 15:59:57.193656822 +1100
++++ bustle-0.4.0/bustle.cabal	2013-04-03 15:09:21.825572157 +1100
+@@ -86,16 +86,17 @@
+     Build-Depends: base >= 4 && < 5
+                  , binary
+                  , bytestring
+-                 , cairo
++                 , cairo < 0.13
+                  , containers
+                  , dbus-core == 0.9.*
+                  , directory
+                  , filepath
+-                 , glade
+-                 , glib
+-                 , gtk > 0.11
++                 , glade < 0.13
++                 , glib < 0.13
++                 , gtk > 0.11 && < 0.13
++                 , haskell98
+                  , mtl
+-                 , pango
++                 , pango < 0.13
+                  , parsec
+                  , pcap
+                  , process
+@@ -105,16 +106,17 @@
+     Build-Depends: base >= 4 && < 5
+                  , binary
+                  , bytestring
+-                 , cairo
++                 , cairo < 0.13
+                  , containers
+                  , dbus-core == 0.9.*
+                  , directory
+                  , filepath
+-                 , glade
+-                 , glib
++                 , glade < 0.13
++                 , glib < 0.13
+                  , gtk > 0.10 && < 0.11
++                 , haskell98
+                  , mtl
+-                 , pango
++                 , pango < 0.13
+                  , parsec
+                  , pcap
+                  , process
+@@ -133,8 +135,8 @@
+   C-sources: c-sources/pcap-monitor.c
+   pkgconfig-depends: glib-2.0
+   Build-Depends: base >= 4 && < 5
+-               , gtk > 0.11
+-               , glib
++               , gtk > 0.11 && < 0.13
++               , glib < 0.13
+ 
+ Executable dump-messages
+   if flag(InteractiveTests) && flag(PostCabalizedGtk2HS)
+@@ -177,14 +179,14 @@
+     main-is: Test/Renderer.hs
+     other-modules: Bustle.Renderer
+     Build-Depends: base
+-                 , cairo
++                 , cairo < 0.13
+                  , containers
+                  , dbus-core
+                  , directory
+                  , filepath
+-                 , gtk
++                 , gtk < 0.13
+                  , mtl
+-                 , pango
++                 , pango < 0.13
+                  , test-framework
+                  , test-framework-hunit
+                  , HUnit

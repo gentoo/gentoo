@@ -1,0 +1,44 @@
+# ChangeLog for sci-libs/taucs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/taucs/ChangeLog,v 1.12 2015/03/29 16:54:59 vapier Exp $
+
+  29 Mar 2015; Mike Frysinger <vapier@gentoo.org> metadata.xml:
+  Fix typo.
+
+  21 Feb 2013; Justin Lecher <jlec@gentoo.org> taucs-2.2.ebuild, metadata.xml:
+  Use tc-getPKG_CONFIG from toolchain-funcs.eclass instead of plain pkg-config
+
+  16 Oct 2012; Justin Lecher <jlec@gentoo.org> taucs-2.2.ebuild:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> taucs-2.2.ebuild:
+  link with fortran compiler, keyword amd64-linux x86-linux
+
+  06 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/taucs-2.2-no-test-cilk.patch, taucs-2.2.ebuild:
+  Remove buggy cilk from tests and cleanup shared library building
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> taucs-2.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  26 Jun 2011; Justin Lecher <jlec@gentoo.org> taucs-2.2.ebuild, metadata.xml:
+  Corrected quoting, bumped EAPI
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> taucs-2.2.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> taucs-2.2.ebuild:
+  Added fortran-2.eclass support
+
+  02 Jun 2011; Justin Lecher <jlec@gentoo.org> taucs-2.2.ebuild:
+  Make it gold ready, #369755
+
+  15 Mar 2010; Sébastien Fabbro <bicatali@gentoo.org> taucs-2.2.ebuild:
+  Forced metis (bug #309271), and changed flag static to static-libs
+
+*taucs-2.2 (27 Oct 2008)
+
+  27 Oct 2008; Sébastien Fabbro <bicatali@gentoo.org> +metadata.xml,
+  +taucs-2.2.ebuild:
+  Initial import

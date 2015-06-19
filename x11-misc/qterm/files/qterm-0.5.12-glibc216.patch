@@ -1,0 +1,12 @@
+diff --git a/src/main.cpp b/src/main.cpp
+index 6c39d4a..859de70 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -41,6 +41,7 @@ AUTHOR:        kingson fiasco
+ #include <fcntl.h>
+ #include <execinfo.h>
+ #include <signal.h>
++#include <unistd.h>
+ 
+ #define QTERM_SIG_MAX_RETS 50
+ #define QTERM_SIG_LOG_DIR "/var/tmp"

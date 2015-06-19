@@ -1,0 +1,27 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/c-icap/files/c-icap.init.3,v 1.1 2012/12/28 12:42:46 flameeyes Exp $
+
+: ${configfile:=/etc/c-icap/c-icap.conf}
+
+get_config() {
+    local value=$(awk '$1 == "'$1'" { print $2 }' ${configfile})
+    echo ${value:-$2}
+}
+
+command="/usr/libexec/c-icap"
+command_arguments="${EXTRA_OPTS} -f ${configfile}"
+pidfile=$(get_config PidFile /var/run/c-icap/c-icap.pid)
+
+depend() {
+	need localmount
+	config ${configfile}
+	[ "$(get_config Logger file_logger)" = "sys_logger" ] && use logger
+}
+
+start_pre() {
+	local cmdsocket=$(get_config CommandsSocket /var/run/c-icap/c-icap.ctl)
+
+	checkpath -d "$(dirname "${cmdsocket}")" "$(dirname "${pidfile}")"
+}

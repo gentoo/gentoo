@@ -1,0 +1,63 @@
+# ChangeLog for x11-libs/libxdl_view
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libxdl_view/ChangeLog,v 1.15 2012/08/26 13:43:57 jlec Exp $
+
+  26 Aug 2012; Justin Lecher <jlec@gentoo.org> -libxdl_view-4.2-r1.ebuild:
+  Drop old
+
+  21 Aug 2012; Johannes Huber <johu@gentoo.org> libxdl_view-4.2-r2.ebuild:
+  Stable for x86, wrt bug #429232
+
+  04 Aug 2012; Anthony G. Basile <blueness@gentoo.org>
+  libxdl_view-4.2-r2.ebuild:
+  Stable ppc, bug #429232
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> libxdl_view-4.2-r2.ebuild:
+  Stable for amd64, wrt bug #429232
+
+*libxdl_view-4.2-r2 (30 May 2012)
+
+  30 May 2012; Justin Lecher <jlec@gentoo.org> files/4.2-as-needed.patch,
+  +libxdl_view-4.2-r2.ebuild:
+  Fix underlinking
+
+  30 Apr 2012; Justin Lecher <jlec@gentoo.org> libxdl_view-4.2-r1.ebuild,
+  metadata.xml:
+  Handle static libs
+
+  21 Nov 2011; Justin Lecher <jlec@gentoo.org> libxdl_view-4.2-r1.ebuild:
+  keyworded for ~x86-macos ~x64-macos, tested by Johan Hattne #390123
+
+  28 Jun 2011; Brent Baude <ranger@gentoo.org> libxdl_view-4.2-r1.ebuild:
+  Marking libxdl_view-4.2-r1 ppc for bug 352117
+
+  01 Feb 2011; Thomas Kahle <tomka@gentoo.org> libxdl_view-4.2-r1.ebuild:
+  x86 stable per bug 352117
+
+  20 Jan 2011; Markos Chandras <hwoarang@gentoo.org> libxdl_view-4.2-r1.ebuild:
+  Stable on amd64 wrt bug #352117
+
+  19 Jan 2011; Justin Lecher <jlec@gentoo.org> files/4.2-as-needed.patch,
+  files/4.2-impl-dec.patch:
+  Parallel compilation fix, 352119
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  libxdl_view-4.2-r1.ebuild:
+  marked ~ppc wrt #303931
+
+*libxdl_view-4.2-r1 (11 Nov 2010)
+
+  11 Nov 2010; Justin Lecher <jlec@gentoo.org> files/4.2-as-needed.patch,
+  -libxdl_view-4.2.ebuild, +files/4.2-impl-dec.patch,
+  +libxdl_view-4.2-r1.ebuild:
+  Fix for implict declarations and underlinking
+
+  29 Mar 2010; Justin Lecher <jlec@gentoo.org> libxdl_view-4.2.ebuild:
+  Keyworded for ~x86-linux ~amd64-linux
+
+*libxdl_view-4.2 (02 Feb 2010)
+
+  02 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +files/4.2-as-needed.patch, +libxdl_view-4.2.ebuild, +metadata.xml:
+  Xlib for ccp4
+

@@ -1,0 +1,8 @@
+#!/bin/sh
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-rwho/files/netkit-rwho-0.17-cron,v 1.1 2005/12/07 20:47:26 strerror Exp $
+#
+# Clean up stale rwho entries after one month
+find /var/spool/rwho -mindepth 1 -maxdepth 1 -type f ! -name .keep \
+    ! -ctime -30 -print0 | xargs -r0 rm -f

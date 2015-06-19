@@ -1,0 +1,14 @@
+#Patch by Jesus Rivero <neurogeek@gentoo.org>
+#Submitted to upstream Ago 26, 2011
+diff -uNr async-0.6.1.orig/setup.py async-0.6.1/setup.py
+--- async-0.6.1.orig/setup.py	2010-11-21 07:03:47.000000000 -0500
++++ async-0.6.1/setup.py	2011-08-26 16:51:57.000000000 -0400
+@@ -77,7 +77,7 @@
+       packages = ('async', 'async.mod', 'async.test', 'async.test.mod'),
+       package_data={'async' : ['AUTHORS', 'README']},
+       package_dir = {'async':''},
+-      ext_modules=[Extension('async.mod.zlib', ['mod/zlibmodule.c'])],
++      ext_modules=[Extension('async.mod.zlib', ['mod/zlibmodule.c'], libraries=['z'])],
+       license = "BSD License",
+       zip_safe=False,
+       long_description = """Async is a framework to process interdependent tasks in a pool of workers"""

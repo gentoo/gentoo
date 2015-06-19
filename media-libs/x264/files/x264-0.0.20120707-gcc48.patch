@@ -1,0 +1,138 @@
+From 6129dbe86484393a2ea520be94ef9b550b0bd113 Mon Sep 17 00:00:00 2001
+From: Jason Garrett-Glaser <jason@x264.com>
+Date: Wed, 27 Feb 2013 13:30:22 -0800
+Subject: [PATCH] Fix array overreads that caused miscompilation in gcc 4.8
+
+---
+ common/common.h  |  1 +
+ common/set.c     | 78 +++++++++++++++++++++++++++++++-------------------------
+ tools/checkasm.c |  2 +-
+ 3 files changed, 45 insertions(+), 36 deletions(-)
+
+diff --git a/common/common.h b/common/common.h
+index 39ad5cb..0da1d43 100644
+--- a/common/common.h
++++ b/common/common.h
+@@ -40,6 +40,7 @@
+ #define IS_DISPOSABLE(type) ( type == X264_TYPE_B )
+ #define FIX8(f) ((int)(f*(1<<8)+.5))
+ #define ALIGN(x,a) (((x)+((a)-1))&~((a)-1))
++#define ARRAY_ELEMS(a) ((sizeof(a))/(sizeof(a[0])))  
+ 
+ #define CHECKED_MALLOC( var, size )\
+ do {\
+diff --git a/common/set.c b/common/set.c
+index 4c72125..fa8b158 100644
+--- a/common/set.c
++++ b/common/set.c
+@@ -85,44 +85,49 @@ int x264_cqm_init( x264_t *h )
+     int max_qp_err = -1;
+     int max_chroma_qp_err = -1;
+     int min_qp_err = QP_MAX+1;
+-    int num_8x8_lists = h->sps->i_chroma_format_idc == CHROMA_444 ? 4 : 2; /* Checkasm may segfault if optimized out by --chroma-format */
++    int num_8x8_lists = h->sps->i_chroma_format_idc == CHROMA_444 ? 4
++                      : h->param.analyse.b_transform_8x8 ? 2 : 0; /* Checkasm may segfault if optimized out by --chroma-format */
+ 
+-    for( int i = 0; i < 4 + num_8x8_lists; i++ )
+-    {
+-        int size = i<4 ? 16 : 64;
+-        int j;
+-        for( j = (i<4 ? 0 : 4); j < i; j++ )
+-            if( !memcmp( h->pps->scaling_list[i], h->pps->scaling_list[j], size*sizeof(uint8_t) ) )
+-                break;
+-        if( j < i )
+-        {
+-            h->  quant4_mf[i] = h->  quant4_mf[j];
+-            h->dequant4_mf[i] = h->dequant4_mf[j];
+-            h->unquant4_mf[i] = h->unquant4_mf[j];
+-        }
+-        else
+-        {
+-            CHECKED_MALLOC( h->  quant4_mf[i], (QP_MAX+1)*size*sizeof(udctcoef) );
+-            CHECKED_MALLOC( h->dequant4_mf[i],  6*size*sizeof(int) );
+-            CHECKED_MALLOC( h->unquant4_mf[i], (QP_MAX+1)*size*sizeof(int) );
+-        }
+-
+-        for( j = (i<4 ? 0 : 4); j < i; j++ )
+-            if( deadzone[j&3] == deadzone[i&3] &&
+-                !memcmp( h->pps->scaling_list[i], h->pps->scaling_list[j], size*sizeof(uint8_t) ) )
+-                break;
+-        if( j < i )
+-        {
+-            h->quant4_bias[i] = h->quant4_bias[j];
+-            h->quant4_bias0[i] = h->quant4_bias0[j];
+-        }
+-        else
+-        {
+-            CHECKED_MALLOC( h->quant4_bias[i], (QP_MAX+1)*size*sizeof(udctcoef) );
+-            CHECKED_MALLOC( h->quant4_bias0[i], (QP_MAX+1)*size*sizeof(udctcoef) );
+-        }
++#define CQM_ALLOC( w, count )\
++    for( int i = 0; i < count; i++ )\
++    {\
++        int size = w*w;\
++        int start = w == 8 ? 4 : 0;\
++        int j;\
++        for( j = 0; j < i; j++ )\
++            if( !memcmp( h->pps->scaling_list[i+start], h->pps->scaling_list[j+start], size*sizeof(uint8_t) ) )\
++                break;\
++        if( j < i )\
++        {\
++            h->  quant##w##_mf[i] = h->  quant##w##_mf[j];\
++            h->dequant##w##_mf[i] = h->dequant##w##_mf[j];\
++            h->unquant##w##_mf[i] = h->unquant##w##_mf[j];\
++        }\
++        else\
++        {\
++            CHECKED_MALLOC( h->  quant##w##_mf[i], (QP_MAX+1)*size*sizeof(udctcoef) );\
++            CHECKED_MALLOC( h->dequant##w##_mf[i],  6*size*sizeof(int) );\
++            CHECKED_MALLOC( h->unquant##w##_mf[i], (QP_MAX+1)*size*sizeof(int) );\
++        }\
++        for( j = 0; j < i; j++ )\
++            if( deadzone[j] == deadzone[i] &&\
++                !memcmp( h->pps->scaling_list[i+start], h->pps->scaling_list[j+start], size*sizeof(uint8_t) ) )\
++                break;\
++        if( j < i )\
++        {\
++            h->quant##w##_bias[i] = h->quant##w##_bias[j];\
++            h->quant##w##_bias0[i] = h->quant##w##_bias0[j];\
++        }\
++        else\
++        {\
++            CHECKED_MALLOC( h->quant##w##_bias[i], (QP_MAX+1)*size*sizeof(udctcoef) );\
++            CHECKED_MALLOC( h->quant##w##_bias0[i], (QP_MAX+1)*size*sizeof(udctcoef) );\
++        }\
+     }
+ 
++    CQM_ALLOC( 4, 4 )
++    CQM_ALLOC( 8, num_8x8_lists )
++
+     for( int q = 0; q < 6; q++ )
+     {
+         for( int i = 0; i < 16; i++ )
+@@ -204,6 +209,9 @@ int x264_cqm_init( x264_t *h )
+         for( int cat = 0; cat < 3 + CHROMA444; cat++ )
+         {
+             int dct8x8 = cat&1;
++            if( !h->param.analyse.b_transform_8x8 && dct8x8 )
++                continue;
++
+             int size = dct8x8 ? 64 : 16;
+             udctcoef *nr_offset = h->nr_offset_emergency[q][cat];
+             /* Denoise chroma first (due to h264's chroma QP offset), then luma, then DC. */
+diff --git a/tools/checkasm.c b/tools/checkasm.c
+index 9135b70..441687b 100644
+--- a/tools/checkasm.c
++++ b/tools/checkasm.c
+@@ -309,7 +309,7 @@ static int check_pixel( int cpu_ref, int cpu_new )
+ 
+ #define TEST_PIXEL( name, align ) \
+     ok = 1, used_asm = 0; \
+-    for( int i = 0; i < 8; i++ ) \
++    for( int i = 0; i < ARRAY_ELEMS(pixel_c.name); i++ ) \
+     { \
+         int res_c, res_asm; \
+         if( pixel_asm.name[i] != pixel_ref.name[i] ) \
+-- 
+1.8.1.5
+

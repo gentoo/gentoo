@@ -1,0 +1,122 @@
+# ChangeLog for dev-python/restkit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/restkit/ChangeLog,v 1.29 2015/06/07 16:02:16 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  31 May 2015; Markus Meier <maekke@gentoo.org> restkit-4.2.2.ebuild:
+  arm stable, bug #530622
+
+  10 May 2015; Justin Lecher <jlec@gentoo.org>
+  -files/restkit-exclude-tests.patch, -restkit-4.2.1-r1.ebuild, metadata.xml:
+  Clean old
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> restkit-4.2.1-r1.ebuild:
+  Drop old Python implementations
+
+  09 Mar 2015; Pacho Ramos <pacho@gentoo.org> restkit-4.2.2.ebuild:
+  x86 stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> restkit-4.2.2.ebuild:
+  ppc stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> restkit-4.2.2.ebuild:
+  ppc64 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> restkit-4.2.2.ebuild:
+  amd64 stable, bug 540290
+
+*restkit-4.2.1-r1 (17 Jan 2015)
+
+  17 Jan 2015; Ian Delaney <idella4@gentoo.org>
+  +files/restkit-exclude-tests.patch, +restkit-4.2.1-r1.ebuild:
+  re-add for arch ppc
+
+  16 Jan 2015; Ian Delaney <idella4@gentoo.org> +files/setup.patch,
+  -files/restkit-exclude-tests.patch, -restkit-4.2.1-r1.ebuild,
+  restkit-4.2.2.ebuild:
+  clean old impl, tidy deps, remove disused patch, add patch to prevent
+  duplicate install of data files, rm old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> restkit-4.2.1-r1.ebuild,
+  restkit-4.2.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  31 May 2014; Ian Delaney <idella4@gentoo.org> restkit-4.2.2.ebuild:
+  correction to deps noted by Arfrever
+
+*restkit-4.2.2 (23 Apr 2014)
+
+  23 Apr 2014; Ian Delaney <idella4@gentoo.org> +restkit-4.2.2.ebuild,
+  -restkit-2.1.4.ebuild, -restkit-2.2.3.ebuild, -restkit-2.3.3.ebuild,
+  -restkit-3.0.2.ebuild, restkit-4.2.1-r1.ebuild:
+  bump; pypy2_0 dropped, keywords ppc ppc64 dropped (to appease ipython),
+  general upgrade
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> restkit-4.2.1-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> restkit-4.2.1-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  11 Jul 2013; Vicente Olivert Riera <vincent@gentoo.org>
+  restkit-4.2.1-r1.ebuild:
+  ppc, ppc64 keywords added, bug 452764
+
+  10 May 2013; Markus Meier <maekke@gentoo.org> restkit-4.2.1-r1.ebuild:
+  add ~arm, bug #452764
+
+  20 Mar 2013; Patrick Lauer <patrick@gentoo.org> restkit-4.2.1-r1.ebuild:
+  Keywording for ~x86 too
+
+*restkit-4.2.1-r1 (26 Feb 2013)
+
+  26 Feb 2013; Mike Gilbert <floppym@gentoo.org>
+  +files/restkit-exclude-tests.patch, +restkit-4.2.1-r1.ebuild,
+  -restkit-4.2.0.ebuild, -restkit-4.2.1.ebuild:
+  Exclude tests the right way.
+
+*restkit-4.2.1 (10 Feb 2013)
+
+  10 Feb 2013; Ian Delaney <idella4@gentoo.org> +restkit-4.2.1.ebuild:
+  bump
+
+  15 Jan 2013; Ian Delaney <idella4@gentoo.org> restkit-4.2.0.ebuild:
+  tests folder removed to avoid file collisions, fixes Bug #451968
+
+  15 Jan 2013; Ian Delaney <idella4@gentoo.org> restkit-4.2.0.ebuild:
+  Remove unrequired 'leftover' eutils from inherit, thanks for noticing Arfrever
+
+*restkit-4.2.0 (13 Jan 2013)
+
+  13 Jan 2013; Ian Delaney <idella4@gentoo.org> +restkit-4.2.0.ebuild:
+  bump; DEPEND & RDEPEND updraded,migrated to distutils-r1, closes Bug #416651
+
+  29 Nov 2011; Mike Gilbert <floppym@gentoo.org> restkit-3.0.2.ebuild:
+  Restrict python 2.4, fixes bug 366357.
+
+*restkit-3.0.2 (04 Feb 2011)
+
+  04 Feb 2011; Tiziano Müller <dev-zero@gentoo.org> +restkit-3.0.2.ebuild:
+  Version bump.
+
+*restkit-2.3.3 (11 Jan 2011)
+
+  11 Jan 2011; Tiziano Müller <dev-zero@gentoo.org> +restkit-2.3.3.ebuild:
+  Version bump (bug #348311).
+
+*restkit-2.2.3 (15 Nov 2010)
+
+  15 Nov 2010; Tiziano Müller <dev-zero@gentoo.org> +restkit-2.2.3.ebuild:
+  Version bump (bug #341533), re-enabled tests, fixed failure when
+  generating docs.
+
+*restkit-2.1.4 (27 Aug 2010)
+
+  27 Aug 2010; Tiziano Müller <dev-zero@gentoo.org> +restkit-2.1.4.ebuild,
+  +metadata.xml:
+  Initial commit.

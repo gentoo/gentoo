@@ -1,0 +1,11 @@
+--- tvision/include/tv/inputln.h
++++ tvision/include/tv/inputln.h
+@@ -201,7 +201,7 @@
+      { return name; }
+ 
+ protected:
+- TInputLine::TInputLine(StreamableInit) :
++ TInputLine(StreamableInit) :
+    TInputLineBaseT<char,TDrawBuffer>(streamableInit) {}
+ 
+ public:

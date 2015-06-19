@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/show_bug.cgi?id=395615
+
+Explicitly add the required -m32/m64 to *FLAGS; this overrides any 
+arch-specific -m* flags that may have been appended by multilib-portage.
+
+Even though -m32/m64 is now added to *FLAGS, -m32/m64 still has to be
+explicitly added to CC and CXX due to wine's build system. For example,
+winegcc saves the build-time value of CC and uses it at runtime.
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -133,12 +133,18 @@
+     then
+       CC="$CC -m64"
+       CXX="$CXX -m64"
++      CFLAGS="$CFLAGS -m64"
++      LDFLAGS="$LDFLAGS -m64"
++      CXXFLAGS="$CXXFLAGS -m64"
+       host_cpu="x86_64"
+       notice_platform="64-bit "
+       AC_SUBST(TARGETFLAGS,"-m64")
+     else
+       CC="$CC -m32"
+       CXX="$CXX -m32"
++      CFLAGS="$CFLAGS -m32"
++      LDFLAGS="$LDFLAGS -m32"
++      CXXFLAGS="$CXXFLAGS -m32"
+       host_cpu="i386"
+       notice_platform="32-bit "
+       AC_SUBST(TARGETFLAGS,"-m32")
+@@ -150,6 +156,9 @@
+     then
+       CC="$CC -m32"
+       CXX="$CXX -m32"
++      CFLAGS="$CFLAGS -m32"
++      LDFLAGS="$LDFLAGS -m32"
++      CXXFLAGS="$CXXFLAGS -m32"
+       AC_MSG_CHECKING([whether $CC works])
+       AC_LINK_IFELSE([AC_LANG_PROGRAM()],AC_MSG_RESULT([yes]),
+                      [AC_MSG_RESULT([no])

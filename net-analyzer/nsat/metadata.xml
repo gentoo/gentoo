@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>netmon</herd>
+	<longdescription>Network Security Analysis Tool, an application-level network security scanner</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">nsat</remote-id>
+	</upstream>
+</pkgmetadata>

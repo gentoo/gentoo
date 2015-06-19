@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=Imaxima enables graphical output in Maxima sessions with emacs
+EAPI=5
+HOMEPAGE=http://sites.google.com/site/imaximaimath/
+IUSE=examples
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=GPL-2+
+RDEPEND=virtual/latex-base app-text/ghostscript-gpl >=dev-texlive/texlive-latexrecommended-2012 >=sci-mathematics/maxima-5.29 >=virtual/emacs-23
+SLOT=0
+SRC_URI=https://sites.google.com/site/imaximaimath/download-and-install/imaxima-imath-1.0.tar.gz
+_eclasses_=elisp	d13b0507622afb8ac9e3f54e91d58614	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=573af6569f69bd2a6c3cd3998928eca5

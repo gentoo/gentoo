@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=pci? ( sys-apps/pciutils ) app-arch/xz-utils
+DESCRIPTION=util to detect Super I/O chips and functionality
+EAPI=4
+HOMEPAGE=http://www.coreboot.org/Superiotool
+IUSE=pci
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=pci? ( sys-apps/pciutils )
+SLOT=0
+SRC_URI=mirror://gentoo/superiotool-6637.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ea7907c6a177322781d4496a11a9b1c3

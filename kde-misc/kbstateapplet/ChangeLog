@@ -1,0 +1,18 @@
+# ChangeLog for kde-misc/kbstateapplet
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kbstateapplet/ChangeLog,v 1.4 2014/03/20 22:01:36 johu Exp $
+
+  20 Mar 2014; Johannes Huber <johu@gentoo.org> kbstateapplet-0_p1268845.ebuild:
+  Bump to EAPI 5.
+
+  16 Jul 2012; Johannes Huber <johu@gentoo.org> kbstateapplet-0_p1268845.ebuild:
+  Add missing dep. Move from SLOT 0 to 4.
+
+  22 Jan 2012; Johannes Huber <johu@gentoo.org> kbstateapplet-0_p1268845.ebuild:
+  Update HOMEPAGE fixes bug #399761.
+
+*kbstateapplet-0_p1268845 (15 Dec 2011)
+
+  15 Dec 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +kbstateapplet-0_p1268845.ebuild, +metadata.xml:
+  New plasmoid, bug 375033

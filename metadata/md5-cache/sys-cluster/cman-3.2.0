@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install setup
+DEPEND=dev-libs/libxml2 dev-libs/libxslt dbus? ( sys-apps/dbus ) ldap? ( net-nds/openldap ) sys-cluster/corosync sys-cluster/openais ~sys-cluster/libccs-3.2.0 ~sys-cluster/libfence-3.2.0 ~sys-cluster/libcman-3.2.0 ~sys-cluster/libdlm-3.2.0 ~sys-cluster/liblogthread-3.2.0 !sys-cluster/dlm >=sys-kernel/linux-headers-2.6.24
+DESCRIPTION=Cluster Manager
+EAPI=4
+HOMEPAGE=https://fedorahosted.org/cluster/wiki/HomePage
+IUSE=dbus ldap
+KEYWORDS=~amd64 ~hppa ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libxml2 dev-libs/libxslt dbus? ( sys-apps/dbus ) ldap? ( net-nds/openldap ) sys-cluster/corosync sys-cluster/openais ~sys-cluster/libccs-3.2.0 ~sys-cluster/libfence-3.2.0 ~sys-cluster/libcman-3.2.0 ~sys-cluster/libdlm-3.2.0 ~sys-cluster/liblogthread-3.2.0 !sys-cluster/dlm
+SLOT=0
+SRC_URI=https://fedorahosted.org/releases/c/l/cluster/cluster-3.2.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=7911b7275ccb1cf77afbcdc4e6c8a679

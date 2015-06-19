@@ -1,0 +1,20 @@
+# ChangeLog for dev-haskell/comonad-transformers
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/comonad-transformers/ChangeLog,v 1.4 2015/06/06 10:42:20 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*comonad-transformers-4.0 (19 Oct 2013)
+
+  19 Oct 2013; Mark Wright <gienah@gentoo.org> +comonad-transformers-4.0.ebuild:
+  Bump comonad-transformers to 4.0
+
+*comonad-transformers-3.1 (26 Aug 2013)
+
+  26 Aug 2013; Alexander Vershilov <qnikst@gentoo.org>
+  +comonad-transformers-3.1.ebuild, +metadata.xml:
+  dev-haskell/comonad-transformers: initial layout

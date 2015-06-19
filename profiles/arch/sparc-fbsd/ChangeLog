@@ -1,0 +1,26 @@
+# ChangeLog for Gentoo/sparc-fbsd profile directory
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/sparc-fbsd/ChangeLog,v 1.7 2014/03/19 00:19:32 dilfridge Exp $
+
+  19 Mar 2014; Andreas K. Huettel <dilfridge@gentoo.org> +eapi:
+  Increase EAPI to 5
+
+  20 Jan 2013; Michał Górny <mgorny@gentoo.org> use.mask:
+  Remove duplicate pypy/jython masks (masked in base profile now).
+
+  24 Nov 2012; Mike Gilbert <floppym@gentoo.org> use.mask:
+  Mask python_single_target values not supported on this arch.
+
+  31 Oct 2012; Michał Górny <mgorny@gentoo.org> use.mask:
+  Add a PYTHON_TARGETS mask based on keywords.
+
+  21 Nov 2010; Ryan Hill <dirtyepic@gentoo.org> use.mask:
+  Mask lpsol USE flag, needs sci-mathematics/glpk.
+
+  19 Oct 2009; Alexis Ballier <aballier@gentoo.org> use.mask:
+  mask avahi useflag on sparc fbsd
+
+  16 May 2009; Alexis Ballier <aballier@gentoo.org> +make.defaults,
+  +package.use.mask, +parent, +use.force, +use.mask:
+  add sparc-fbsd arch profiles
+

@@ -1,0 +1,126 @@
+# ChangeLog for games-fps/avp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/avp/ChangeLog,v 1.21 2015/04/20 19:29:06 mr_bones_ Exp $
+
+  20 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> -avp-20070130-r1.ebuild,
+  -files/avp-20070130-gcc42.patch, -files/avp-20070130-glibc2.10.patch:
+  old
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> avp-20150214.ebuild:
+  Stable for x86, wrt bug #544628
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> avp-20150214.ebuild:
+  Stable for amd64, wrt bug #544628
+
+  14 Mar 2015; Michał Górny <mgorny@gentoo.org> avp-20070130-r1.ebuild:
+  Drop ~amd64 keyword from old version since it required emul-linux-x86
+  packages.
+
+  24 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> -avp-20070130-r2.ebuild:
+  old
+
+*avp-20150214 (24 Feb 2015)
+
+  24 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> +avp-20150214.ebuild:
+  version bump
+
+  03 Jul 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org> avp-20070130-r2.ebuild:
+  fixed dependency versions
+
+*avp-20070130-r2 (03 Jul 2014)
+
+  03 Jul 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +avp-20070130-r2.ebuild:
+  bumped EAPI to 5; converted deps to gx86-multilib
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> avp-20070130-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  13 Jun 2009; Tristan Heaven <nyhm@gentoo.org> avp-20070130-r1.ebuild,
+  +files/avp-20070130-glibc2.10.patch:
+  Fix building with glibc-2.10, bug #273588
+
+  19 Jan 2008; Tristan Heaven <nyhm@gentoo.org> avp-20070130-r1.ebuild:
+  Fix deps for amd64, bug #206380
+
+  10 Sep 2007; Tupone Alfredo <tupone@gentoo.org> avp-20070130-r1.ebuild:
+  Adding ~amd64 keyword. Bug #192005 by Dizzy
+
+  07 Sep 2007; <tupone@gentoo.org> +files/avp-20070130-gcc42.patch,
+  +avp-20070130-r1.ebuild:
+  Fixing gcc-4.2 compilation problem. Bug #184423 by Tristan Heaven
+
+*avp-20070130-r1 (07 Sep 2007)
+
+  07 Sep 2007;  <>  avp-20070130-r1.ebuild files/digest-avp-20070130-r1
+  # INSERT ENTRY HERE
+
+*avp-20070130 (30 Jan 2007)
+
+  30 Jan 2007; Tristan Heaven <nyhm@gentoo.org> +avp-20070130.ebuild:
+  New snapshot
+
+  13 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/avp-20031110-cleanup.patch, +files/avp-20031110-gentoo.patch:
+  Added patches from Tristan Heaven <nyhm@gentoo.org> and Mike Frysinger
+  <vapier@gentoo.org> and closing bug #132389.
+
+  05 Oct 2006; Tristan Heaven <nyhm@gentoo.org> avp-20031110.ebuild:
+  Remove nvidia-glx version check
+
+  09 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org> avp-20031110.ebuild:
+  Added patch from Tristan Heaven <tristanheaven@gmail.com> and closing bug
+  #133497.
+
+  08 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> avp-20031110.ebuild:
+  Changed to use normal unpack. Thanks to Tristan Heaven
+  <tristanheaven@gmail.com> for pointing this out.
+
+  06 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> avp-20031110.ebuild:
+  Commented inherit line to remove cvs and added a new inherit line without
+  cvs. This should keep QA off our back, even though we weren't actually using
+  the cvs portions currently.
+
+*avp-20031110 (06 Jun 2006)
+
+  06 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/avp-20031110-gcc34.patch, +metadata.xml, +avp-20031110.ebuild:
+  Moved from games-fps/avp-cvs to games-fps/avp.
+
+  13 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  avp-cvs-20031110.ebuild:
+  Moved games_pkg_setup to the beginning of pkg_setup.
+
+  09 Mar 2006; <Tupone@gentoo.org> +files/avp-cvs-20031110-gcc34.patch,
+  avp-cvs-20031110.ebuild:
+  Modular X dependency fix
+  Fix gcc-3.4 bug (#99756), thanks Triffid Hunter for report.
+
+  21 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  avp-cvs-20031110.ebuild:
+  use default src_compile; tidy
+
+  03 Apr 2004; Donnie Berkholz <spyderous@gentoo.org>;
+  avp-cvs-20031110.ebuild:
+  Change XFree86 references to X11.
+
+  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  avp-cvs-20031110.ebuild:
+  use emake; don't RDEPEND on sed; virtual/x11
+
+  29 Dec 2003; Michael Sterrett <mr_bones_@gentoo.org>
+  avp-cvs-20031110.ebuild:
+  sed in unpack; make it easier to use live cvs; more error checking/messages
+
+*avp-cvs-20031110 (10 Nov 2003)
+
+  10 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  CVS snapshot so we dont keep overloading cvs server.
+
+*avp-cvs-20030314 (11 Jul 2003)
+
+  03 Sep 2003; Michael Sterrett <msterret@gentoo.org> avp-cvs-20030314.ebuild:
+  use sed >= 4; tidy
+
+  11 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Dirk-Jan Heijs <heijs@phys.rug.nl> #17529.

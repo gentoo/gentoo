@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm prepare setup
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: automated tag file generation and syntax highlighting
+EAPI=5
+HOMEPAGE=http://peterodding.com/code/vim/easytags/
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=app-vim/vim-misc-1.17.6 dev-util/ctags || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=https://github.com/xolox/vim-easytags/archive/3.10.1.tar.gz -> easytags-3.10.1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	7a178335dbd6ea7f50ed4e3e1c13c1e4	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=a1f59c7c85b3c1114fea19b8cac48335

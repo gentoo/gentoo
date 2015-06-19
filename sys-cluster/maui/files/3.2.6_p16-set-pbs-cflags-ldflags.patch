@@ -1,0 +1,26 @@
+--- maui-3.2.6p16.orig/configure.ac	2006-09-25 16:08:33.000000000 -0700
++++ maui-3.2.6p16/configure.ac	2006-09-25 21:29:17.000000000 -0700
+@@ -149,13 +149,19 @@
+ 	else
+ 		AC_MSG_ERROR([Only one Resource Manager can be specified (PBS, $RMTYPE)])
+ 	fi
+-	if test "$OS" = "OSF"; then
+-		PBSLIBS="$PBSTARGETDIR/ilib/libnet.a -lpbs"
++	if pbs-config --cflags 1>/dev/null 2>&1;then
++		PBSCFLAGS=`pbs-config --cflags`
+ 	else
+-		PBSLIBS="-lnet -lpbs"
++		PBSCFLAGS=-I$PBSTARGETDIR/include
+ 	fi
++	if pbs-config --libs 1>/dev/null 2>&1;then
++		PBSLDFLAGS=`pbs-config --libs`
++	else
++		PBSLDFLAGS="-L$PBSTARGETDIR/lib -lnet -lpbs"
++	fi
++	AC_SUBST(PBSCFLAGS)
++	AC_SUBST(PBSLDFLAGS)
+ 	AC_SUBST(PBSTARGETDIR)
+-	AC_SUBST(PBSLIBS)
+ 	AC_SUBST_FILE(pbs_definitions)
+ 	pbs_definitions=include/Makefile.inc.pbs
+ fi

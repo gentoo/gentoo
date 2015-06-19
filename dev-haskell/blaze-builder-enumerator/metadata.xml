@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		This package integrates the builders from the blaze-builder package with
+		the enumerator package. It provides infrastructure and enumeratees for
+		incrementally executing builders and pass the filled chunks to a bytestring
+		iteratee.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">meiersi/blaze-builder-enumerator</remote-id>
+	</upstream>
+</pkgmetadata>

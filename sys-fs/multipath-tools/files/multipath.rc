@@ -1,0 +1,27 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/multipath-tools/files/multipath.rc,v 1.1 2011/06/03 21:34:59 vapier Exp $
+
+depend() {
+	before checkfs fsck multipathd lvm
+	after modules device-mapper
+}
+
+start() {
+	if ! grep -qs device-mapper /proc/devices /proc/misc ; then
+		[ -e /proc/modules ] && modprobe -q dm-mod
+	fi
+
+	ebegin "Activating Multipath devices"
+	multipath -v0 >/dev/null
+	eend $?
+}
+
+stop() {
+	ebegin "Shutting down Multipath devices"
+	multipath -v0 -F >/dev/null
+	eend $?
+}
+
+# vim:ts=4

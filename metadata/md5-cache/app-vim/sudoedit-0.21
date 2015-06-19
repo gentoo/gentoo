@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prepare
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: edit files using sudo or su
+EAPI=5
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=2709 https://github.com/chrisbra/SudoEdit.vim
+KEYWORDS=~amd64 ~x86
+LICENSE=vim
+RDEPEND=|| ( app-admin/sudo sys-apps/shadow ) || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/sudoedit-0.21.tar.bz2 http://dev.gentoo.org/~radhermit/vim/sudoedit-0.21.tar.bz2
+_eclasses_=vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=4f03da9799276ef4ba2fb5d5d43d6a1d

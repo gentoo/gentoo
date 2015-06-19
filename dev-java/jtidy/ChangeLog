@@ -1,0 +1,80 @@
+# ChangeLog for dev-java/jtidy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jtidy/ChangeLog,v 1.20 2015/06/09 13:52:00 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  jtidy-0_pre20010801-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  07 Feb 2014; Tom Wijsman <TomWij@gentoo.org> jtidy-0_pre20010801-r1.ebuild:
+  Make PATCHES an array to fix repoman warning.
+
+  31 Dec 2011; Ralph Sennhauser <sera@gentoo.org>
+  jtidy-0_pre20010801-r1.ebuild:
+  Drop ia64 support #345433
+
+  08 Feb 2011; Vlastimil Babka <caster@gentoo.org>
+  jtidy-0_pre20010801-r1.ebuild:
+  Fix license, bug #353997.
+
+  17 May 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  jtidy-0_pre20010801-r1.ebuild:
+  Use JAVA_PKG_IUSE instead of IUSE to get correct dependencies.
+
+  17 Nov 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -jtidy-0_pre20010801.ebuild:
+  Delete generation 1 ebuild.
+
+  14 Nov 2007; Steve Dibb <beandog@gentoo.org>
+  jtidy-0_pre20010801-r1.ebuild:
+  amd64 stable, bug 198013
+
+  10 Nov 2007; nixnut <nixnut@gentoo.org> jtidy-0_pre20010801-r1.ebuild:
+  Stable on ppc wrt bug 198013
+
+  05 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  jtidy-0_pre20010801-r1.ebuild:
+  stable x86, bug 198013
+
+  23 May 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Add ~x86-fbsd keyword. Bug #176906.
+
+  21 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  jtidy-0_pre20010801-r1.ebuild:
+  Add ~x86-fbsd keyword (see the various bugs for netbeans 5.5-r2).
+
+*jtidy-0_pre20010801-r1 (25 Dec 2006)
+
+  25 Dec 2006; Petteri Räty <betelgeuse@gentoo.org>
+  +jtidy-0_pre20010801-r1.ebuild:
+  Migrated to gen 2 and added the source use flag.
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  +files/jtidy-source-1.4.patch, jtidy-0_pre20010801.ebuild:
+  Add patch to allow compilation with java-1.5.  Add ~ia64
+
+  15 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  jtidy-0_pre20010801.ebuild:
+  stable on amd64, ppc and x86. introduced support for the jikes useflag.
+
+  03 Nov 2004; Thomas Matthijs <axxo@gentoo.org> jtidy-0_pre20010801.ebuild:
+  depend on app-arch/unzip
+
+  22 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  jtidy-0_pre20010801.ebuild:
+  Keywords ~amd64.
+
+  17 Oct 2004; David Holm <dholm@gentoo.org> jtidy-0_pre20010801.ebuild:
+  Added to ~ppc.
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> jtidy-0_pre20010801.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+*jtidy-0_pre20010801 (12 Sep 2004)
+
+  12 Sep 2004; Thomas Matthijs <axxo@gentoo.org> +jtidy-0_pre20010801.ebuild:
+  new ebuild, added as dependency of dev-java/jmeter, created by me

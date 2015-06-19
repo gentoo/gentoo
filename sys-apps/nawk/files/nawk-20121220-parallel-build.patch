@@ -1,0 +1,61 @@
+--- makefile.orig	2013-02-06 10:26:36.452829647 -0700
++++ makefile	2013-02-07 09:12:13.293898947 -0700
+@@ -44,7 +44,7 @@
+ LISTING = awk.h proto.h awkgram.y lex.c b.c main.c maketab.c parse.c \
+ 	lib.c run.c tran.c 
+ 
+-SHIP = README FIXES $(SOURCE) ytab[ch].bak makefile  \
++SHIP = README FIXES $(SOURCE) makefile  \
+ 	 awk.1
+ 
+ a.out:	ytab.o $(OFILES)
+@@ -52,11 +52,15 @@
+ 
+ $(OFILES):	awk.h ytab.h proto.h
+ 
+-ytab.o:	awk.h proto.h awkgram.y
++#Clear dependency for parallel build: (make -j)
++#YACC generated y.tab.c and y.tab.h at the same time
++#this needs to be a static pattern rules otherwise multiple target
++#are mapped onto multiple executions of yacc, which overwrite 
++#each others outputs.
++y%.c y%.h:	awk.h proto.h awkgram.y
+ 	$(YACC) $(YFLAGS) awkgram.y
+-	mv y.tab.c ytab.c
+-	mv y.tab.h ytab.h
+-	$(CC) $(CFLAGS) -c ytab.c
++	mv y.$*.c y$*.c
++	mv y.$*.h y$*.h
+ 
+ proctab.c:	maketab
+ 	./maketab >proctab.c
+@@ -64,23 +68,23 @@
+ maketab:	ytab.h maketab.c
+ 	$(CC) $(CFLAGS) maketab.c -o maketab
+ 
+-bundle:
++bundle: $(SHIP)
+ 	@cp ytab.h ytabh.bak
+ 	@cp ytab.c ytabc.bak
+-	@bundle $(SHIP)
++	@bundle $(SHIP) ytabh.bak ytabc.bak
+ 
+-tar:
++tar: $(SHIP)
+ 	@cp ytab.h ytabh.bak
+ 	@cp ytab.c ytabc.bak
+ 	@bundle $(SHIP) >awk.shar
+-	@tar cf awk.tar $(SHIP)
++	@tar cf awk.tar $(SHIP) ytabh.bak ytabc.bak
+ 	gzip awk.tar
+ 	ls -l awk.tar.gz
+-	@zip awk.zip $(SHIP)
++	@zip awk.zip $(SHIP) ytabh.bak ytabc.bak
+ 	ls -l awk.zip
+ 
+ names:
+ 	@echo $(LISTING)
+ 
+ clean:
+-	rm -f a.out *.o *.obj maketab maketab.exe *.bb *.bbg *.da *.gcov *.gcno *.gcda # proctab.c
++	rm -f a.out *.o *.obj maketab maketab.exe *.bb *.bbg *.da *.gcov *.gcno *.gcda ytab.c ytab.h # proctab.c

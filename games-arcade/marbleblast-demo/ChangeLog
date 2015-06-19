@@ -1,0 +1,47 @@
+# ChangeLog for games-arcade/marbleblast-demo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/marbleblast-demo/ChangeLog,v 1.9 2015/01/05 12:55:15 tupone Exp $
+
+  05 Jan 2015; Tupone Alfredo <tupone@gentoo.org> marbleblast-demo-1.3.ebuild:
+  EAPI 5
+
+  31 Jan 2013; Tupone Alfredo <tupone@gentoo.org> marbleblast-demo-1.3.ebuild:
+  Use QA_PREBUILT. Bug #453444 by Diego Elio Pettenò
+
+  05 Feb 2012; Mike Frysinger <vapier@gentoo.org> marbleblast-demo-1.3.ebuild:
+  Move to new unpacker eclass for unpack_makeself.
+
+  14 Dec 2011; Mike Frysinger <vapier@gentoo.org> marbleblast-demo-1.3.ebuild:
+  The games.eclass has dropped GAMES_CHECK_LICENSE support (since portage now
+  has ACCEPT_LICENSE), so drop it here too.
+
+  01 Feb 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  marbleblast-demo-1.3.ebuild:
+  quote variables
+
+  19 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  marbleblast-demo-1.3.ebuild:
+  Adding strip to RESTRICT for bug #137819.
+
+  13 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  marbleblast-demo-1.3.ebuild:
+  Fixed marbleblastdemo/marbleblast-demo thanks to stupid epkgmove.
+
+*marbleblast-demo-1.3 (13 Apr 2006)
+
+  13 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +marbleblast-demo-1.3.ebuild:
+  Moved from games-arcade/marbleblastdemo to games-arcade/marbleblast-demo.
+
+  21 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  marbleblastdemo-1.3.ebuild:
+  Changed check_license to explicitly list license to check.
+
+  11 Aug 2005; Olivier Crête <tester@gentoo.org>
+  marbleblastdemo-1.3.ebuild:
+  Marked ~amd64, closes bug #102167, thanks to meetra for testing
+
+*marbleblastdemo-1.3 (07 Oct 2003)
+
+  07 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

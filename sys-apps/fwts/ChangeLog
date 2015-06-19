@@ -1,0 +1,80 @@
+# ChangeLog for sys-apps/fwts
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/fwts/ChangeLog,v 1.14 2015/04/20 14:24:15 mrueg Exp $
+
+*fwts-15.03.01 (20 Apr 2015)
+
+  20 Apr 2015; Manuel Rüger <mrueg@gentoo.org> +fwts-15.03.01.ebuild:
+  Version bump.
+
+  21 Dec 2014; Manuel Rüger <mrueg@gentoo.org> -fwts-14.11.00.ebuild:
+  Forgot to drop the actual ebuild in the last commit.
+
+  21 Dec 2014; Manuel Rüger <mrueg@gentoo.org> fwts-14.12.00.ebuild:
+  Add missed dependency on glib. Fixes bug #533102. Thanks to Toralf Förster.
+  Cleanup old.
+
+*fwts-14.12.00 (20 Dec 2014)
+
+  20 Dec 2014; Manuel Rüger <mrueg@gentoo.org> +fwts-14.12.00.ebuild,
+  -fwts-14.09.00.ebuild:
+  Version bump. Remove old.
+
+*fwts-14.11.00 (24 Nov 2014)
+
+  24 Nov 2014; Manuel Rüger <mrueg@gentoo.org> +fwts-14.11.00.ebuild,
+  -fwts-14.06.00.ebuild:
+  Version bump. Cleanup old.
+
+*fwts-14.09.00 (25 Sep 2014)
+
+  25 Sep 2014; Manuel Rüger <mrueg@gentoo.org> +fwts-14.09.00.ebuild,
+  -fwts-14.05.00.ebuild:
+  Version bump.
+
+*fwts-14.06.00 (16 Jul 2014)
+
+  16 Jul 2014; Manuel Rüger <mrueg@gentoo.org> +fwts-14.06.00.ebuild,
+  -fwts-14.03.01.ebuild:
+  Version bump. Cleanup old.
+
+*fwts-14.05.00 (07 May 2014)
+
+  07 May 2014; Manuel Rüger <mrueg@gentoo.org> +fwts-14.05.00.ebuild,
+  -fwts-14.01.01.ebuild:
+  Version bump. Cleanup old.
+
+*fwts-14.03.01 (28 Mar 2014)
+
+  28 Mar 2014; Manuel Rüger <mrueg@gentoo.org> +fwts-14.03.01.ebuild,
+  -fwts-13.12.00.ebuild:
+  Version bump. Cleanup old.
+
+*fwts-14.01.01 (30 Jan 2014)
+
+  30 Jan 2014; Manuel Rüger <mrueg@gentoo.org> +fwts-14.01.01.ebuild,
+  -fwts-13.11.00.ebuild:
+  Version bump. Cleanup old.
+
+*fwts-13.12.00 (18 Dec 2013)
+
+  18 Dec 2013; Manuel Rüger <mrueg@gentoo.org> +fwts-13.12.00.ebuild:
+  Version bump.
+
+*fwts-13.11.00 (27 Nov 2013)
+
+  27 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +fwts-13.11.00.ebuild,
+  -fwts-13.09.01.ebuild:
+  Version bump. Fix also bug #491136.
+
+*fwts-13.09.01 (23 Sep 2013)
+
+  23 Sep 2013; Manuel Rüger <mrueg@gentoo.org> +fwts-13.09.01.ebuild,
+  -fwts-13.09.00.ebuild:
+  Version bump. Cleanup old.
+
+*fwts-13.09.00 (11 Sep 2013)
+
+  11 Sep 2013; Manuel Rüger <mrueg@gentoo.org> +fwts-13.09.00.ebuild,
+  +metadata.xml:
+  Initial version. Fixes bug #410595.

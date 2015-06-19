@@ -1,0 +1,13 @@
+diff --git a/Source/QtDialog/CMake.desktop b/Source/QtDialog/CMake.desktop
+index 645eb76..7be495f 100644
+--- a/Source/QtDialog/CMake.desktop
++++ b/Source/QtDialog/CMake.desktop
+@@ -3,7 +3,7 @@ Version=1.0
+ Name=CMake
+ Comment=Cross-platform buildsystem
+ Exec=cmake-gui %f
+-Icon=CMakeSetup32.png
++Icon=CMakeSetup32
+ Terminal=false
+ X-MultipleArgs=false
+ Type=Application

@@ -1,0 +1,28 @@
+https://github.com/vpython/visual/issues/3
+
+--- dependencies/threadpool/include/threadpool/task_adaptors.hpp
++++ dependencies/threadpool/include/threadpool/task_adaptors.hpp
+@@ -135,7 +135,11 @@
+         if(m_break_s > 0 || m_break_ns > 0)
+         { // Sleep some time before first execution
+           xtime xt;
++#if BOOST_VERSION >= 105000
++          xtime_get(&xt, TIME_UTC_);
++#else
+           xtime_get(&xt, TIME_UTC);
++#endif
+           xt.nsec += m_break_ns;
+           xt.sec += m_break_s;
+           thread::sleep(xt); 
+@@ -146,7 +150,11 @@
+           if(m_break_s > 0 || m_break_ns > 0)
+           {
+             xtime xt;
++#if BOOST_VERSION >= 105000
++            xtime_get(&xt, TIME_UTC_);
++#else
+             xtime_get(&xt, TIME_UTC);
++#endif
+             xt.nsec += m_break_ns;
+             xt.sec += m_break_s;
+             thread::sleep(xt); 

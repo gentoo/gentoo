@@ -1,0 +1,42 @@
+# ChangeLog for dev-perl/Exception-Died
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Exception-Died/ChangeLog,v 1.10 2015/06/13 22:44:56 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Exception-Died-0.60.0-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*Exception-Died-0.60.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Exception-Died-0.60.0-r1.ebuild, -Exception-Died-0.60.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop duplication of myself as a maintainer where there is a herd.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Exception-Died-0.06.ebuild:
+  Cleanup
+
+*Exception-Died-0.60.0 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org> +Exception-Died-0.60.0.ebuild:
+  Change version scheme
+
+  03 Feb 2010; Torsten Veller <tove@gentoo.org> Exception-Died-0.06.ebuild:
+  Depend on Module-Build. Remove test dependencies
+
+  22 Oct 2009; Torsten Veller <tove@gentoo.org> Exception-Died-0.06.ebuild:
+  Fix dependency
+
+  10 Aug 2009; Torsten Veller <tove@gentoo.org> Exception-Died-0.06.ebuild:
+  New virtual: dev-perl/parent to virtual
+
+*Exception-Died-0.06 (23 Jun 2009)
+
+  23 Jun 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Exception-Died-0.06.ebuild, +metadata.xml:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

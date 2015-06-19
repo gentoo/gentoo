@@ -1,0 +1,19 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -1499,6 +1499,8 @@
+     AC_MSG_WARN(Unable to do tests when cross-compiling)
+ fi
+ 
++disable_pcap_findalldevs=no
++
+ dnl Allows user to choose which nic to use for testing purposes
+ AC_ARG_WITH(testnic,
+     AC_HELP_STRING([--with-testnic=NIC], [Select which network card to use for testing]),
+@@ -1509,7 +1511,6 @@
+ 
+ dnl There's a bug in OS X which causes pcap_findalldevs() to make the wifi NIC to disassociate
+ dnl so under OSX we disable the interface list feature
+-disable_pcap_findalldevs=no
+ 
+ osx_frameworks=no
+ dnl these need to be dynamic based on OS

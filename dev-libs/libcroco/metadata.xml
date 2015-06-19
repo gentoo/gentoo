@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gnome</herd>
+<longdescription>
+The Libcroco project is an effort to build a generic Cascading Style Sheet (CSS) parsing and manipulation toolkit that can be used by GNOME applications in need of CSS support.
+
+provided is :
+A parser module with : A SAC like api and A CSSOM like api.
+A CSS2 selection engine
+An XML/CSS layout/rendering engine
+</longdescription>
+</pkgmetadata>

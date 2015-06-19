@@ -1,0 +1,30 @@
+# It's not recommended to modify this file in-place, because it will be
+# overwritten during package upgrades. If you want to customize, the
+# best way is to create file
+# "/etc/systemd/system/primecoind.service.d/*.conf"
+# containing your changes
+
+# For example, if you want to change some daemon and/or unit options,
+# create a file named
+# "/etc/systemd/system/primecoind.service.d/myopts.conf"
+# containing:
+#       [Service]
+#       Environment="PRIMECOIN_OPTS=-debug -logtimestamps"
+#       Nice=10
+# This will override the setting appearing below.
+
+# Note that almost all daemon options could be specified in
+# /etc/primecoin/primecoin.conf
+
+[Unit]
+Description=Primecoin Daemon
+After=network.target
+
+[Service]
+User=primecoin
+Environment=PRIMECOIN_OPTS=
+ExecStart=/usr/bin/primecoind -daemon=0 $PRIMECOIN_OPTS
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

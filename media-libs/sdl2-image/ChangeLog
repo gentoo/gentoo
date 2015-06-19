@@ -1,0 +1,31 @@
+# ChangeLog for media-libs/sdl2-image
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/sdl2-image/ChangeLog,v 1.7 2015/06/01 22:32:19 mr_bones_ Exp $
+
+  01 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  sdl2-image-2.0.0-r1.ebuild:
+  add some slot deps for repoman
+
+  19 Apr 2015; Pacho Ramos <pacho@gentoo.org> sdl2-image-2.0.0-r1.ebuild:
+  x86 stable wrt bug #537328
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> sdl2-image-2.0.0-r1.ebuild:
+  Stable for amd64, wrt bug #537328
+
+  22 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org> -sdl2-image-2.0.0.ebuild:
+  old
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> sdl2-image-2.0.0-r1.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+*sdl2-image-2.0.0-r1 (18 Apr 2014)
+
+  18 Apr 2014; Julian Ospald <hasufell@gentoo.org> +sdl2-image-2.0.0-r1.ebuild:
+  add multilib support
+
+*sdl2-image-2.0.0 (28 Aug 2013)
+
+  28 Aug 2013; Julian Ospald <hasufell@gentoo.org> +sdl2-image-2.0.0.ebuild,
+  +metadata.xml:
+  initial import wrt #481798

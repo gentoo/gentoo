@@ -1,0 +1,15 @@
+# ChangeLog for games-puzzle/ksokoban
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/ksokoban/ChangeLog,v 1.2 2015/01/10 04:15:32 bircoph Exp $
+
+  10 Jan 2015; Andrew Savchenko <bircoph@gentoo.org>
+  ksokoban-0.5.0_pre20120725.ebuild, ksokoban-9999.ebuild:
+  Remove stray whitespace
+
+*ksokoban-9999 (10 Jan 2015)
+*ksokoban-0.5.0_pre20120725 (10 Jan 2015)
+
+  10 Jan 2015; Andrew Savchenko <bircoph@gentoo.org>
+  +ksokoban-0.5.0_pre20120725.ebuild, +ksokoban-9999.ebuild, +metadata.xml:
+  Initial version. Good old ksokoban is ported to KDE4 and back again!
+

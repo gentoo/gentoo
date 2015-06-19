@@ -1,0 +1,39 @@
+# ChangeLog for sys-fs/fuseiso
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/fuseiso/ChangeLog,v 1.9 2014/09/09 05:08:04 dlan Exp $
+
+  09 Sep 2014; Yixun Lan <dlan@gentoo.org> -fuseiso-20070708.ebuild:
+  drop old
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> fuseiso-20070708-r1.ebuild:
+  Stable for x86, wrt bug #495952
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> fuseiso-20070708-r1.ebuild:
+  amd64 stable, bug #495952
+
+*fuseiso-20070708-r1 (23 Aug 2013)
+
+  23 Aug 2013; Sergey Popov <pinkbyte@gentoo.org> +fuseiso-20070708-r1.ebuild,
+  +files/fuseiso-20070708-fix-typo.patch:
+  Revision bump: EAPI 5, epatch_user, fix typo in help message, wrt bug
+  #482078. Thanks to <zhaoxiaoqiang007 AT gmail.com> for discovering this issue
+  and for provided patch
+
+  22 Aug 2013; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Package will be maintained through proxy maintainers
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> fuseiso-20070708.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  24 May 2010; Pacho Ramos <pacho@gentoo.org> fuseiso-20070708.ebuild:
+  stable amd64, bug 318327
+
+  17 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  fuseiso-20070708.ebuild:
+  x86 stable wrt bug #318327
+
+*fuseiso-20070708 (25 Oct 2009)
+
+  25 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +fuseiso-20070708.ebuild, +files/fuseiso-20070708-largeiso.patch:
+  Initial commit wrt #143307, thanks to Thomas Fischer for reporting.

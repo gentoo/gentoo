@@ -1,0 +1,61 @@
+# ChangeLog for app-crypt/aesutil
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/aesutil/ChangeLog,v 1.11 2013/06/02 10:53:31 pacho Exp $
+
+  02 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #328951
+
+  29 Mar 2011; Dane Smith <c1pher@gentoo.org> aesutil-1.0.7.ebuild,
+  metadata.xml:
+  Ebuild cleanup. Add myself as maintainer and add package to the crypto
+  herd.
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org> aesutil-1.0.7.ebuild:
+  Transfer Prefix keywords
+
+  03 Jan 2009; Christoph Mende <angelos@gentoo.org> aesutil-1.0.7.ebuild:
+  QA: Respect LDFLAGS
+
+  30 Dec 2008; Mike Pagano <mpagano@gentoo.org> aesutil-1.0.7.ebuild:
+  Fixed hardcoded CC as per bug #243534
+
+  04 Feb 2008; Fabian Groffen <grobian@gentoo.org> aesutil-1.0.7.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  02 Jul 2007; Petteri Räty <betelgeuse@gentoo.org> aesutil-1.0.7.ebuild:
+  Don't depend on virtual/libc as it's pointless.
+
+  13 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add herd
+
+  22 Apr 2007; Markus Rothe <corsair@gentoo.org> aesutil-1.0.7.ebuild:
+  Added ~ppc64
+
+*aesutil-1.0.7 (20 Apr 2007)
+
+  20 Apr 2007; Alon Bar-Lev <alonbl@gentoo.org> +metadata.xml,
+  +aesutil-1.0.7.ebuild:
+  Rename app-crypt/aes-crypt->app-crypt/aesutil, bug#175214
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  10 Aug 2005; Kito <kito@gentoo.org> aes-crypt-1.0.7.ebuild:
+  ~ppc-macos keyword.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> aes-crypt-1.0.7.ebuild:
+  stable on amd64
+
+  13 Aug 2004; Danny van Dyk <kugelfang@gentoo.org> aes-crypt-1.0.7.ebuild:
+  Marked ~amd64.
+
+  08 Aug 2004; Michael Cummings <mcummings@gentoo.org> aes-crypt-1.0.7.ebuild:
+  typo in description fixed per bug 59402
+
+*aes-crypt-1.0.7 (18 Jun 2003)
+
+  18 Jun 2003; Dylan Carlson <absinthe@gentoo.org> aes-crypt-1.0.7.ebuild:
+  Initial import.
+
+  Note:  The size of the file you can encrypt is purely limited by the size
+  of your available RAM, so bear this in mind...

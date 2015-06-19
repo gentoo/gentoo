@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=dev-lisp/asdf-2.33-r3:= !dev-lisp/openmcl
+DESCRIPTION=Common Lisp implementation, derived from Digitool's MCL product
+EAPI=5
+HOMEPAGE=http://ccl.clozure.com/
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=LLGPL-2.1
+RDEPEND=>=dev-lisp/asdf-2.33-r3:=
+SLOT=0
+SRC_URI=x86? ( ftp://ftp.clozure.com/pub/release/1.10/ccl-1.10-linuxx86.tar.gz ) amd64? ( ftp://ftp.clozure.com/pub/release/1.10/ccl-1.10-linuxx86.tar.gz )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=75b925710bd976aab92bf079938582f8

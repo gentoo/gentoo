@@ -1,0 +1,110 @@
+diff -ur xcin-2.5.2.99.pre2+cvs20030224.orig/doc/En/internal/module.En xcin-2.5.2.99.pre2+cvs20030224/doc/En/internal/module.En
+--- xcin-2.5.2.99.pre2+cvs20030224.orig/doc/En/internal/module.En	2000-12-13 18:55:41.000000000 +0200
++++ xcin-2.5.2.99.pre2+cvs20030224/doc/En/internal/module.En	2009-12-29 18:09:20.000000000 +0200
+@@ -481,13 +481,13 @@
+             char *lc_ctype;             /* LC_CTYPE locale category name */
+             char *lc_messages;          /* LC_MESSAGES locale category name */
+             char *encoding;             /* encoding name */
+-        } locale_t;
++        } xcin_locale_t;
+ 
+         typedef struct {
+             char *rcfile;               /* rcfile name. */
+             char *default_dir;          /* Default module directory. */
+             char *user_dir;             /* User data directory. */
+-            locale_t locale;            /* Locale name. */
++            xcin_locale_t locale;            /* Locale name. */
+         } xcin_rc_t;
+ 
+       The return value of this function is True when excuting successfully,
+diff -ur xcin-2.5.2.99.pre2+cvs20030224.orig/doc/internal/module xcin-2.5.2.99.pre2+cvs20030224/doc/internal/module
+--- xcin-2.5.2.99.pre2+cvs20030224.orig/doc/internal/module	2002-10-29 13:53:42.000000000 +0200
++++ xcin-2.5.2.99.pre2+cvs20030224/doc/internal/module	2009-12-29 18:09:24.000000000 +0200
+@@ -423,13 +423,13 @@
+ 	    char *lc_ctype;		/* LC_CTYPE locale category name */
+ 	    char *lc_messages;		/* LC_MESSAGES locale category name */
+ 	    char *encoding;		/* encoding name */
+-	} locale_t;
++	} xcin_locale_t;
+ 
+ 	typedef struct {
+ 	    char *rcfile;               /* rcfile name. */
+ 	    char *default_dir;          /* Default module directory. */
+ 	    char *user_dir;             /* User data directory. */
+-	    locale_t locale;            /* Locale name. */
++	    xcin_locale_t locale;            /* Locale name. */
+ 	} xcin_rc_t;
+ 
+       本函式若成功傳回 True, 失敗傳回 False。
+diff -ur xcin-2.5.2.99.pre2+cvs20030224.orig/src/include/xcintool.h xcin-2.5.2.99.pre2+cvs20030224/src/include/xcintool.h
+--- xcin-2.5.2.99.pre2+cvs20030224.orig/src/include/xcintool.h	2002-10-29 13:53:42.000000000 +0200
++++ xcin-2.5.2.99.pre2+cvs20030224/src/include/xcintool.h	2009-12-29 18:09:01.000000000 +0200
+@@ -202,12 +202,12 @@
+     char *lc_messages;
+     char *encoding;
+     int encid, locid;
+-} locale_t;
++} xcin_locale_t;
+ 
+ typedef struct {
+     int argc;			/* Command line arguement list */
+     char **argv;
+-    locale_t locale;            /* Locale name. */
++    xcin_locale_t locale;            /* Locale name. */
+     char *usrhome;		/* User home directory. */
+     char *default_dir;          /* Default module directory. */
+     char *user_dir;             /* User data directory. */
+diff -ur xcin-2.5.2.99.pre2+cvs20030224.orig/src/util/cin2tab/cin2tab.c xcin-2.5.2.99.pre2+cvs20030224/src/util/cin2tab/cin2tab.c
+--- xcin-2.5.2.99.pre2+cvs20030224.orig/src/util/cin2tab/cin2tab.c	2009-12-29 18:07:44.000000000 +0200
++++ xcin-2.5.2.99.pre2+cvs20030224/src/util/cin2tab/cin2tab.c	2009-12-29 18:09:12.000000000 +0200
+@@ -233,7 +233,7 @@
+ }
+ 
+ static void
+-cin2tab_setlocale(locale_t *locale)
++cin2tab_setlocale(xcin_locale_t *locale)
+ {
+     char loc_return[128], enc_return[128];
+     int ret;
+diff -ur xcin-2.5.2.99.pre2+cvs20030224.orig/src/xcin_main.c xcin-2.5.2.99.pre2+cvs20030224/src/xcin_main.c
+--- xcin-2.5.2.99.pre2+cvs20030224.orig/src/xcin_main.c	2003-01-20 19:50:05.000000000 +0200
++++ xcin-2.5.2.99.pre2+cvs20030224/src/xcin_main.c	2009-12-29 18:09:06.000000000 +0200
+@@ -56,7 +56,7 @@
+ static void
+ xcin_setlocale(void)
+ {
+-    locale_t *locale = &(xcin_core.xcin_rc.locale);
++    xcin_locale_t *locale = &(xcin_core.xcin_rc.locale);
+     char loc_return[128], enc_return[128];
+ 
+     set_perr("xcin");
+@@ -332,7 +332,7 @@
+     char *cmd[2], value[256], *s, loc_buf[64], *loc_name=NULL;
+     char *fmt = N_("%s:\n\tlocale section \"%s\": %s: value not specified.\n");
+     xcin_rc_t *xrc = &(xcin_core.xcin_rc);
+-    locale_t *locale = &(xcin_core.xcin_rc.locale);
++    xcin_locale_t *locale = &(xcin_core.xcin_rc.locale);
+ /*
+  *  Determine the true locale setting name.
+  */
+@@ -409,7 +409,7 @@
+     char *cmd[2], value[256], *s, *s1, objname[100], objenc[100];
+     char *fmt = N_("%s:\n\tIM section \"%s\": %s: %s.\n");
+     xcin_rc_t *xrc = &(xcin_core.xcin_rc);
+-    locale_t *locale = &(xcin_core.xcin_rc.locale);
++    xcin_locale_t *locale = &(xcin_core.xcin_rc.locale);
+     int setkey;
+ /*
+  *  Go to each CINPUT sub-node and read important keywords.
+diff -ur xcin-2.5.2.99.pre2+cvs20030224.orig/src/xim.c xcin-2.5.2.99.pre2+cvs20030224/src/xim.c
+--- xcin-2.5.2.99.pre2+cvs20030224.orig/src/xim.c	2009-12-29 18:07:44.000000000 +0200
++++ xcin-2.5.2.99.pre2+cvs20030224/src/xim.c	2009-12-29 18:09:06.000000000 +0200
+@@ -1032,7 +1032,7 @@
+     XIMTriggerKeys on_keys;
+     XIMEncodings encodings;
+     Window mainwin;
+-    locale_t *locale;
++    xcin_locale_t *locale;
+     char* imlocale = NULL;
+     int i;
+ 

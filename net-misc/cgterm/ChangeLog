@@ -1,0 +1,27 @@
+# ChangeLog for net-misc/cgterm
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/cgterm/ChangeLog,v 1.6 2009/09/11 17:41:46 patrick Exp $
+
+  11 Sep 2009; Patrick Lauer <patrick@gentoo.org> cgterm-1.6.ebuild:
+  Add ~amd64 keyword, fixes #281187
+
+  07 Sep 2009; Víctor Ostorga <vostorga@gentoo.org> cgterm-1.6.ebuild,
+  +files/cgterm-1.6-QA.patch:
+  Respecting LDFLAGS, fixing pre-stripped files bug #252009, fixing RDEPEND,
+  fixing parallel build bug #239776
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  31 May 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove myself as I'm retiring.
+
+  10 May 2005; David Holm <dholm@gentoo.org> cgterm-1.6.ebuild:
+  Added to ~ppc.
+
+*cgterm-1.6 (11 Dec 2004)
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> +cgterm-1.6.ebuild:
+  Initial import, ebuild by Gerry <trick@icculus.org>
+

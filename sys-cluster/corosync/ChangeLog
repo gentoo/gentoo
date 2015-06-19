@@ -1,0 +1,183 @@
+# ChangeLog for sys-cluster/corosync
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/corosync/ChangeLog,v 1.35 2015/01/13 04:49:06 xarthisius Exp $
+
+*corosync-2.3.4-r1 (13 Jan 2015)
+
+  13 Jan 2015; Kacper Kowalik <xarthisius@gentoo.org> +corosync-2.3.4-r1.ebuild,
+  -corosync-2.3.4.ebuild:
+  Remove .la files, fixes #534084 by RAPHEAD <raphead@gmx.net>
+
+  30 Dec 2014; Ultrabug <ultrabug@gentoo.org> files/corosync.initd:
+  fix typo in initd thx to Florian Tham
+
+  02 Dec 2014; Ultrabug <ultrabug@gentoo.org> files/corosync.initd:
+  add config detection to init script fix #488736
+
+*corosync-2.3.4 (02 Dec 2014)
+
+  02 Dec 2014; Ultrabug <ultrabug@gentoo.org> -corosync-1.4.5.ebuild,
+  +corosync-2.3.4.ebuild, +files/corosync-2.3.4-docs.patch:
+  version bump, drop old
+
+*corosync-2.3.3 (12 Aug 2014)
+*corosync-1.4.7 (12 Aug 2014)
+
+  12 Aug 2014; Ultrabug <ultrabug@gentoo.org> -corosync-1.3.3-r1.ebuild,
+  -corosync-1.4.3-r1.ebuild, -corosync-1.4.4.ebuild, +corosync-1.4.7.ebuild,
+  -corosync-2.3.1.ebuild, -corosync-2.3.2.ebuild, +corosync-2.3.3.ebuild:
+  version bump, drop old ebuilds
+
+*corosync-2.3.2 (17 Oct 2013)
+
+  17 Oct 2013; Ultrabug <ultrabug@gentoo.org> +corosync-2.3.2.ebuild:
+  version bump
+
+*corosync-2.3.1 (29 Aug 2013)
+
+  29 Aug 2013; Ultrabug <ultrabug@gentoo.org> -corosync-2.3.0-r1.ebuild,
+  +corosync-2.3.1.ebuild:
+  version bump, drop old
+
+*corosync-2.3.0-r1 (17 May 2013)
+
+  17 May 2013; Ultrabug <ultrabug@gentoo.org> -corosync-2.3.0.ebuild,
+  +corosync-2.3.0-r1.ebuild:
+  fix libqb dep #468982 thx to Walter
+
+  01 Feb 2013; Agostino Sarubbo <ago@gentoo.org> -corosync-2.1.0.ebuild:
+  Remove old
+
+*corosync-2.3.0 (18 Jan 2013)
+*corosync-1.4.5 (18 Jan 2013)
+
+  18 Jan 2013; Ultrabug <ultrabug@gentoo.org> corosync-1.4.4.ebuild,
+  +corosync-1.4.5.ebuild, +corosync-2.3.0.ebuild:
+  Version bump, fix #451182
+
+*corosync-1.4.4 (29 Oct 2012)
+
+  29 Oct 2012; Ultrabug <ultrabug@gentoo.org> +corosync-1.4.4.ebuild:
+  Version bump of corosync-1 series
+
+*corosync-2.1.0 (29 Oct 2012)
+
+  29 Oct 2012; Ultrabug <ultrabug@gentoo.org> -corosync-2.0.0.ebuild,
+  files/corosync-2.0.0-docs.patch, -files/corosync-2.0.0-rpath.patch,
+  +corosync-2.1.0.ebuild:
+  Bump corosync-2 series for testing, drop the old one
+
+*corosync-1.4.3-r1 (11 Jul 2012)
+
+  11 Jul 2012; Ultrabug <ultrabug@gentoo.org> -corosync-1.4.3.ebuild,
+  +corosync-1.4.3-r1.ebuild:
+  Remove non-Gentoo init script, fix #425718.
+
+*corosync-2.0.0 (16 May 2012)
+
+  16 May 2012; Ultrabug <ultrabug@gentoo.org> +corosync-2.0.0.ebuild,
+  +files/corosync-2.0.0-docs.patch, +files/corosync-2.0.0-rpath.patch:
+  Bump to corosync-2 branch, ebuild masked in profiles/package.mask for testing
+
+*corosync-1.4.3 (16 May 2012)
+*corosync-1.3.5 (16 May 2012)
+
+  16 May 2012; Ultrabug <ultrabug@gentoo.org> -corosync-1.3.1.ebuild,
+  -corosync-1.3.3.ebuild, +corosync-1.3.5.ebuild, +corosync-1.4.3.ebuild:
+  Version bump, drop old, fix #412787.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> corosync-1.3.0.ebuild,
+  corosync-1.3.1.ebuild, corosync-1.3.3.ebuild, corosync-1.3.3-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*corosync-1.3.3-r1 (12 Aug 2011)
+
+  12 Aug 2011; Ultrabug <ultrabug@gentoo.org> +corosync-1.3.3-r1.ebuild:
+  Add static-libs to IUSE, fix #378771.
+
+  04 Aug 2011; Naohiro Aota <naota@gentoo.org> corosync-1.3.3.ebuild:
+  Add ~x86-fbsd keyword
+
+*corosync-1.3.3 (03 Aug 2011)
+
+  03 Aug 2011; Ultrabug <ultrabug@gentoo.org> +corosync-1.3.3.ebuild:
+  Version bump.
+
+  10 May 2011; Tomáš Chvátal <scarabeus@gentoo.org> corosync-1.3.1.ebuild:
+  Cleanup and use eapi4.
+
+*corosync-1.3.1 (29 Apr 2011)
+
+  29 Apr 2011; Ultrabug <ultrabug@gentoo.org> +corosync-1.3.1.ebuild:
+  Version bump, wrt #364999.
+
+  21 Feb 2011; Jeroen Roovers <jer@gentoo.org> corosync-1.3.0.ebuild:
+  Stable for HPPA (bug #354461).
+
+  21 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  corosync-1.3.0.ebuild:
+  x86 stable wrt bug #354461
+
+  11 Feb 2011; Markos Chandras <hwoarang@gentoo.org> corosync-1.3.0.ebuild:
+  Stable on amd64 wrt bug #354461
+
+*corosync-1.3.0 (07 Jan 2011)
+
+  07 Jan 2011; Ultrabug <ultrabug@gentoo.org> -corosync-1.2.8-r2.ebuild,
+  +corosync-1.3.0.ebuild, -files/corosync-ldflags.patch:
+  Version bump. Remove old.
+
+*corosync-1.2.8-r2 (17 Nov 2010)
+
+  17 Nov 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  -corosync-1.2.8-r1.ebuild, +corosync-1.2.8-r2.ebuild,
+  files/corosync.initd:
+  Use logger instead of syslog wrt #345781. Thanks to Laurento Frittella
+  (mrfree) for the report.
+
+*corosync-1.2.8-r1 (03 Oct 2010)
+
+  03 Oct 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  -corosync-1.2.8.ebuild, +corosync-1.2.8-r1.ebuild,
+  +files/corosync.logrotate:
+  Add logrotate script wrt bug 336848. Drop old.
+
+*corosync-1.2.8 (02 Sep 2010)
+
+  02 Sep 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  -corosync-1.2.7.ebuild, +corosync-1.2.8.ebuild:
+  Version bump. Thanks to Ultrabug for testing. Drop old.
+
+*corosync-1.2.7 (02 Aug 2010)
+
+  02 Aug 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  -corosync-1.2.5.ebuild, -corosync-1.2.6.ebuild, +corosync-1.2.7.ebuild:
+  Version bump. Remove old.
+
+*corosync-1.2.6 (17 Jul 2010)
+
+  17 Jul 2010; Doug Goldstein <cardoe@gentoo.org> +corosync-1.2.6.ebuild:
+  version bump
+
+  29 Jun 2010; Guy Martin <gmsoft@gentoo.org> corosync-1.2.5.ebuild:
+  Added ~hppa to KEYWORDS.
+
+  28 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Drop unused useflag desc.
+
+  28 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -corosync-1.2.0.ebuild:
+  Drop old broken version.
+
+*corosync-1.2.5 (26 Jun 2010)
+
+  26 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  +corosync-1.2.5.ebuild, +files/corosync-docs.patch,
+  +files/corosync-ldflags.patch:
+  Version bump. Moved from scarabeus' overlay. Fixing several QA issues
+
+*corosync-1.2.0 (23 Mar 2010)
+
+  23 Mar 2010; Doug Goldstein <cardoe@gentoo.org> +corosync-1.2.0.ebuild,
+  +files/corosync.initd, +metadata.xml:
+  add initial version of corosync for testing with clvm

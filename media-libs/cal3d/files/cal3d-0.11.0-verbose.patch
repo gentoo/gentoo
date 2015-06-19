@@ -1,0 +1,11 @@
+--- tests/run.in.old	2012-06-29 13:27:55.413765822 +0200
++++ tests/run.in	2012-06-29 13:29:02.092084095 +0200
+@@ -43,7 +43,7 @@
+                 exit 1
+                 ;;
+         esac
+-        $VERBOSE cal3d_converter ${srcdir}/cal3d_converter/base.x$ext
++        : cal3d_converter ${srcdir}/cal3d_converter/base.x$ext
+         ../src/cal3d_converter ${srcdir}/cal3d_converter/base.x$ext base.c$ext
+         ../src/cal3d_converter base.c$ext 01.x$ext
+         ../src/cal3d_converter 01.x$ext 01.c$ext

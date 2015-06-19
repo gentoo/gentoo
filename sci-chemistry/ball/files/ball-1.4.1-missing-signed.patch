@@ -1,0 +1,26 @@
+Index: ball/include/BALL/DATATYPE/hashGrid.h
+===================================================================
+--- ball.orig/include/BALL/DATATYPE/hashGrid.h	2011-12-09 13:49:26.000000000 +0100
++++ ball/include/BALL/DATATYPE/hashGrid.h	2011-12-09 13:51:09.000000000 +0100
+@@ -37,7 +37,7 @@
+ {
+ 	namespace __private
+ 	{
+-		extern const char BALL_EXPORT neighbour_table_[27][3];
++		extern const signed char BALL_EXPORT neighbour_table_[27][3];
+ 	}
+ 
+ 	template <typename Item> class HashGrid3;
+Index: ball/source/DATATYPE/hashGrid.C
+===================================================================
+--- ball.orig/source/DATATYPE/hashGrid.C	2011-12-09 13:49:26.000000000 +0100
++++ ball/source/DATATYPE/hashGrid.C	2011-12-09 13:50:49.000000000 +0100
+@@ -9,7 +9,7 @@
+ {
+ 	namespace __private
+ 	{
+-		const char neighbour_table_[27][3] =
++		const signed char neighbour_table_[27][3] =
+ 		{
+ 			{ 0,  0,  0 }, { 0,  0, -1 }, { 0,  0,  1 },
+ 			{ 0, -1, -1 }, { 0, -1,  0 }, { 0, -1,  1 },

@@ -1,0 +1,28 @@
+#!/sbin/runscript
+
+depend() {
+	use logger
+	need net
+}
+
+checkconfig() {
+	if [ ! -d ${TFTPD_ROOT} ]
+	then
+		eerror "You need a tftp root directory"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting tftpd"
+	start-stop-daemon --start --quiet --exec /usr/sbin/in.tftpd \
+		-- ${TFTPD_OPTS} ${TFTPD_ROOT}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping tftpd"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/in.tftpd
+	eend $?
+}

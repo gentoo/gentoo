@@ -1,0 +1,21 @@
+Skip addressless interfaces.
+
+Caught by api-tests as:
+> 99%: Checks: 197, Failures: 0, Errors: 1
+> api/netaddr.c:146:E:base:netaddr_get_addr2_test:0: (after this point) Received signal 11 (Segmentation fault)
+diff --git a/src/netaddr.c b/src/netaddr.c
+index 2657ca7..0029c7e 100644
+--- a/src/netaddr.c
++++ b/src/netaddr.c
+@@ -761,7 +761,10 @@ static pr_netaddr_t *get_addr_by_device(pool *p, const char *name,
+     int found_device = FALSE;
+ 
+     for (ifa = ifaddr; ifa != NULL; ifa = ifa->ifa_next) {
+-
++      if (ifa->ifa_addr == NULL) {
++        /* returns NULL for uninitialized 'tun0' for example. */
++        continue;
++      }
+       /* We're only looking for addresses, not stats. */
+       if (ifa->ifa_addr->sa_family != AF_INET
+ #ifdef PR_USE_IPV6

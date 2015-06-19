@@ -1,0 +1,22 @@
+# ChangeLog for dev-java/invokebinder
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/invokebinder/ChangeLog,v 1.4 2015/06/06 18:39:44 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> invokebinder-1.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  24 Dec 2013; Tom Wijsman <TomWij@gentoo.org> invokebinder-1.2.ebuild:
+  java.lang.invoke is available since Java 1.7 according to
+  http://docs.oracle.com/javase/7/docs/api/java/lang/invoke/package-summary.html
+  and thus the JDK/JRE dependencies have been restricted; fixes bug #495018,
+  reported by Hans de Graaff (graaff). Also fixed an unquoted variable.
+
+*invokebinder-1.2 (04 Jun 2013)
+
+  04 Jun 2013; Tom Wijsman <TomWij@gentoo.org>
+  +files/invokebinder-1.2-build.xml, +invokebinder-1.2.ebuild, +metadata.xml:
+  New ebuild for invokebinder, a friendly DSL for binding method handles; new
+  dependency of jruby. Fixes bug #472222.

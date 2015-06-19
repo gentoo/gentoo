@@ -1,0 +1,28 @@
+# ChangeLog for net-irc/redirbot
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/redirbot/ChangeLog,v 1.6 2015/06/04 10:39:32 jlec Exp $
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> redirbot-0.0.5.ebuild:
+  Drop old Python implementations
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> redirbot-0.0.5.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+  03 Aug 2013; Michał Górny <mgorny@gentoo.org> redirbot-0.0.5.ebuild:
+  Move dev-python/twisted to dev-python/twisted-core.
+
+*redirbot-0.0.5 (23 Jul 2013)
+
+  23 Jul 2013; Jan Matejka <yac@gentoo.org> +redirbot-0.0.5.ebuild,
+  -redirbot-0.0.4.ebuild:
+  bump
+
+*redirbot-0.0.4 (25 Jun 2013)
+
+  25 Jun 2013; Jan Matejka <yac@gentoo.org> +metadata.xml,
+  +redirbot-0.0.4.ebuild:
+  + net-irc/redirbot

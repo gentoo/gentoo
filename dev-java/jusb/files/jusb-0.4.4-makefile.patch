@@ -1,0 +1,15 @@
+--- Makefile.old	2005-04-17 21:50:21.384681513 +0300
++++ Makefile	2005-04-17 21:51:26.854632179 +0300
+@@ -292,11 +292,7 @@
+ # Native compiles
+ #
+ 
+-# using nonstandard kernel?
+-KERNEL_INC ?=	/home/src/linux/include
+-INCLUDES =	-I$(KERNEL_INC)
+-
+-CFLAGS =	-g -O $(INCLUDES) $(RPM_OPT_FLAGS)
++CFLAGS += -g -O $(RPM_OPT_FLAGS)
+ 
+ 
+ native: $(NATIVE)

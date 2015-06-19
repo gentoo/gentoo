@@ -1,0 +1,42 @@
+# ChangeLog for games-rpg/nwmovies
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/nwmovies/ChangeLog,v 1.9 2014/04/06 14:51:32 ulm Exp $
+
+  06 Apr 2014; Ulrich Müller <ulm@gentoo.org> nwmovies-20090223.080954.ebuild:
+  Fix LICENSE, see nwmovies.README.txt and libdis/LICENSE.original, bug 506806.
+
+  24 Sep 2012; Mike Frysinger <vapier@gentoo.org>
+  nwmovies-20090223.080954.ebuild:
+  QA_DT_HASH (old/deprecated) -> QA_FLAGS_IGNORED (new hotness).
+
+  28 Jun 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  nwmovies-20090223.080954.ebuild:
+  stable for x86 and amd64 (bug #307367)
+
+*nwmovies-20090223.080954 (25 Jan 2010)
+
+  25 Jan 2010; Denis Dupeyron <calchan@gentoo.org>
+  +nwmovies-20090223.080954.ebuild:
+  Version bump, bug #267396.
+
+  09 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org> nwmovies-0.2.ebuild:
+  EAPI=2; add use-based dep for games-rpg/nwn-data
+
+*nwmovies-0.2 (02 Aug 2008)
+
+  02 Aug 2008; Denis Dupeyron <calchan@gentoo.org> nwmovies-0.1.ebuild,
+  +nwmovies-0.2.ebuild:
+  Version bump. Switched to using upstream's precompiled and tested
+  binaries.
+
+  29 May 2008; Christian Faulhammer <opfer@gentoo.org> nwmovies-0.1.ebuild:
+  stable x86, bug 222519
+
+  20 Feb 2008; Denis Dupeyron <calchan@gentoo.org> nwmovies-0.1.ebuild:
+  Fixed bug #210562, thanks to Anton Romanov.
+
+*nwmovies-0.1 (16 Feb 2008)
+
+  16 Feb 2008; Denis Dupeyron <calchan@gentoo.org> +metadata.xml,
+  +nwmovies-0.1.ebuild:
+  Initial commit.

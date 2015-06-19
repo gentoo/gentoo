@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] sci-chemistry/ambertools
+DESCRIPTION=AnteChamber PYthon Parser interfacE
+EAPI=5
+HOMEPAGE=http://code.google.com/p/acpype/
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~x86 ~amd64-linux
+LICENSE=GPL-3
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] sci-chemistry/ambertools
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~jlec/distfiles/acpype-389.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	python-r1	6d3a3cb5705b9fff1aeb7cfa4e3336fe	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b0f94945c669ea58f5b8da30748e5c0c

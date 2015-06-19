@@ -1,0 +1,75 @@
+# ChangeLog for lxde-base/lxpolkit
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/lxde-base/lxpolkit/ChangeLog,v 1.18 2014/02/28 14:15:50 ssuominen Exp $
+
+*lxpolkit-0.1.0-r2 (28 Feb 2014)
+
+  28 Feb 2014; Samuli Suominen <ssuominen@gentoo.org> +lxpolkit-0.1.0-r2.ebuild:
+  Insert MATE to NotShowIn= in the xdg autostart .desktop file since they have
+  their own mate-polkit with a pkg-config file, library and headers -- and a
+  .desktop file with OnlyShowIn= set to MATE
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> lxpolkit-0.1.0-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  07 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> -lxpolkit-0.1.0.ebuild:
+  old
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  lxpolkit-0.1.0-r1.ebuild:
+  x86 stable wrt bug #398891
+
+  17 Jan 2012; Agostino Sarubbo <ago@gentoo.org> lxpolkit-0.1.0-r1.ebuild:
+  Stable for amd64, wrt bug #398891
+
+*lxpolkit-0.1.0-r1 (18 Oct 2011)
+
+  18 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +lxpolkit-0.1.0-r1.ebuild:
+  Use x11-libs/gtk+:3 instead of :2. Fix autostart desktop entry to include
+  "AutostartCondition" like in polkit-gnome.
+
+  18 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -lxpolkit-0_p20110329.ebuild:
+  old
+
+  07 Oct 2011; Markos Chandras <hwoarang@gentoo.org> lxpolkit-0.1.0.ebuild:
+  Stable on amd64 wrt bug #385189
+
+  05 Oct 2011; Andreas Schuerch <nativemad@gentoo.org> lxpolkit-0.1.0.ebuild:
+  x86 stable, bug 385189
+
+*lxpolkit-0.1.0 (26 Jul 2011)
+
+  26 Jul 2011; Markos Chandras <hwoarang@gentoo.org> +lxpolkit-0.1.0.ebuild:
+  Version bump
+
+  15 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  lxpolkit-0_p20110329.ebuild:
+  x86 stable wrt bug #365541
+
+  05 May 2011; Markos Chandras <hwoarang@gentoo.org>
+  lxpolkit-0_p20110329.ebuild:
+  Stable on amd64 wrt bug #365541
+
+*lxpolkit-0_p20110329 (29 Mar 2011)
+
+  29 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +lxpolkit-0_p20110329.ebuild:
+  New snapshot.
+
+  26 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  lxpolkit-0_p20110122.ebuild:
+  Fix tests. Bug #352716
+
+*lxpolkit-0_p20110122 (22 Jan 2011)
+
+  22 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  +lxpolkit-0_p20110122.ebuild:
+  New snapshot
+
+*lxpolkit-0_p20101225 (25 Dec 2010)
+
+  25 Dec 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +lxpolkit-0_p20101225.ebuild:
+  Initial commit.

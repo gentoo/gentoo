@@ -1,0 +1,26 @@
+# HG changeset patch
+# User Nikolaus Rath <Nikolaus@rath.org>
+# Date 1407732767 25200
+# Node ID 1cfd473db8736251291e106ce6cd488011626276
+# Parent  cd7ad81f4eea24e530db152edd6d8831dc5bd7bc
+Make extract_links.py Python 3.3 compatible again.
+
+Fixes issue #15.
+
+diff --git a/examples/extract_links.py b/examples/extract_links.py
+--- a/examples/extract_links.py
++++ b/examples/extract_links.py
+@@ -30,7 +30,11 @@
+ 
+ class LinkExtractor(HTMLParser):
+     def __init__(self):
+-        super().__init__(convert_charrefs=True)
++        if sys.version_info < (3,4):
++            # Python 3.3 doesn't know about convert_charrefs
++            super().__init__()
++        else:
++            super().__init__(convert_charrefs=True)
+         self.links = []
+ 
+     def handle_starttag(self, tag, attrs):
+

@@ -1,0 +1,88 @@
+# ChangeLog for dev-perl/UNIVERSAL-isa
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/UNIVERSAL-isa/ChangeLog,v 1.15 2014/08/22 21:13:50 axs Exp $
+
+*UNIVERSAL-isa-1.201.207.260-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +UNIVERSAL-isa-1.201.207.260-r1.ebuild, -UNIVERSAL-isa-1.201.207.260.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  11 Jun 2013; Markus Meier <maekke@gentoo.org>
+  UNIVERSAL-isa-1.201.207.260.ebuild:
+  add ~arm, bug #446958
+
+  22 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  UNIVERSAL-isa-1.201.207.260.ebuild:
+  Stable for ppc, wrt bug #462316
+
+  22 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  UNIVERSAL-isa-1.201.207.260.ebuild:
+  Stable for x86, wrt bug #462316
+
+  22 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  UNIVERSAL-isa-1.201.207.260.ebuild:
+  Stable for amd64, wrt bug #462316
+
+  22 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  UNIVERSAL-isa-1.201.207.260.ebuild:
+  Add ~ppc, wrt bug #446958
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org>
+  UNIVERSAL-isa-1.201.207.260.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  29 Jul 2012; Torsten Veller <tove@gentoo.org>
+  -UNIVERSAL-isa-1.201.106.140.ebuild, -UNIVERSAL-isa-1.201.204.180.ebuild:
+  Cleanup
+
+*UNIVERSAL-isa-1.201.207.260 (27 Jul 2012)
+
+  27 Jul 2012; Torsten Veller <tove@gentoo.org>
+  +UNIVERSAL-isa-1.201.207.260.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*UNIVERSAL-isa-1.201.204.180 (19 Apr 2012)
+
+  19 Apr 2012; Torsten Veller <tove@gentoo.org>
+  +UNIVERSAL-isa-1.201.204.180.ebuild:
+  Version bump
+
+  29 Jul 2011; Torsten Veller <tove@gentoo.org> -UNIVERSAL-isa-1.03.ebuild:
+  Cleanup
+
+*UNIVERSAL-isa-1.201.106.140 (17 Jun 2011)
+
+  17 Jun 2011; Torsten Veller <tove@gentoo.org>
+  -UNIVERSAL-isa-1.201.106.130.ebuild, +UNIVERSAL-isa-1.201.106.140.ebuild:
+  Version bump. Cleanup
+
+*UNIVERSAL-isa-1.201.106.130 (14 Jun 2011)
+
+  14 Jun 2011; Torsten Veller <tove@gentoo.org>
+  +UNIVERSAL-isa-1.201.106.130.ebuild:
+  Version bump
+
+  10 Oct 2009; Torsten Veller <tove@gentoo.org> +UNIVERSAL-isa-1.03.ebuild,
+  +metadata.xml:
+  Import from perl-experimental
+
+  26 Jun 2009; Kent Fredric <kentfredric@gmail.com>
+  -UNIVERSAL-isa-0.06-r1.ebuild, -UNIVERSAL-isa-0.06.ebuild,
+  -UNIVERSAL-isa-1.01.ebuild:
+  Removing ebuilds no longer installable ( mirror cleaned )
+
+*UNIVERSAL-isa-1.03 (26 Jun 2009)
+
+  26 Jun 2009; Kent Fredric <kentfredric@gmail.com>
+  +UNIVERSAL-isa-1.03.ebuild:
+  Bumped
+
+*UNIVERSAL-isa-1.02 (04 Jun 2009)
+
+  04 Jun 2009; Torsten Veller <tove@gentoo.org> +UNIVERSAL-isa-1.02.ebuild:
+  Version bump

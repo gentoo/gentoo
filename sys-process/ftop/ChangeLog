@@ -1,0 +1,27 @@
+# ChangeLog for sys-process/ftop
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/ftop/ChangeLog,v 1.6 2014/12/07 08:57:53 jlec Exp $
+
+  07 Dec 2014; Justin Lecher <jlec@gentoo.org> ftop-1.0.ebuild:
+  Keywording for x86, tested by bircoph, #531850
+
+  14 Nov 2014; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Took package
+
+  14 Nov 2014; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Maintainer needed.
+
+  13 Nov 2014; Jeroen Roovers <jer@gentoo.org> ftop-1.0.ebuild:
+  Marked ~hppa too.
+
+  10 Nov 2014; Jeroen Roovers <jer@gentoo.org> +files/ftop-1.0-tinfo.patch,
+  ftop-1.0.ebuild:
+  Fix building against sys-libs/ncurses[tinfo] (bug #528578).
+
+*ftop-1.0 (30 Jan 2014)
+
+  30 Jan 2014; Tom Wijsman <TomWij@gentoo.org> +files/ftop-1.0-overflow.patch,
+  +ftop-1.0.ebuild, +metadata.xml:
+  New package for sys-process/ftop, monitors open files and filesystems; tested
+  and adapted the ebuild and patch provided by Jeroen Roovers (rej), fixes bug
+  #483772 reported by Jesse Adelman.

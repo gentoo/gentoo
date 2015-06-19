@@ -1,0 +1,25 @@
+--- src/decl.cpp 2004/09/26 22:40:411.144
++++ src/decl.cpp 2004/10/09 18:04:501.145
+@@ -2596,7 +2596,9 @@
+     //
+     if (control.option.deprecation &&
+         hidden_method -> IsDeprecated() &&
+-        ! method -> containing_type -> file_symbol -> IsClassOnly())
++        ! method -> containing_type -> file_symbol -> IsClassOnly() &&
++        ! method -> IsDeprecated() &&
++        ! InDeprecatedContext())
+     {
+         ReportSemError(SemanticError::DEPRECATED_METHOD_OVERRIDE,
+                        left_tok, right_tok, method -> Header(),
+
+diff -u -r1.159 -r1.160
+--- src/error.cpp 2004/09/26 22:40:411.159
++++ src/error.cpp 2004/10/10 02:59:401.160
+@@ -513,6 +513,7 @@
+     warning[DEPRECATED_FIELD] = WEAK_WARNING;
+     warning[DEPRECATED_METHOD] = WEAK_WARNING;
+     warning[DEPRECATED_CONSTRUCTOR] = WEAK_WARNING;
++    warning[DEPRECATED_METHOD_OVERRIDE] = WEAK_WARNING;
+ 
+     warning[UNNECESSARY_TYPE_IMPORT] = WEAK_WARNING;
+     warning[MULTIPLE_PUBLIC_TYPES] = WEAK_WARNING;

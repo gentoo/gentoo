@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=app-text/rman sys-libs/ncurses x11-libs/libXmu x11-libs/libXpm x11-libs/libxkbfile x11-libs/libXaw x11-libs/libXp Xaw3d? ( x11-libs/libXaw3d ) x11-misc/gccmakedep x11-misc/imake
+DESCRIPTION=Japanese Kanji X Terminal
+EAPI=4
+HOMEPAGE=http://www.asahi-net.or.jp/~hc3j-tkg/kterm/
+IUSE=Xaw3d
+KEYWORDS=-alpha amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=MIT HPND XC
+RDEPEND=app-text/rman sys-libs/ncurses x11-libs/libXmu x11-libs/libXpm x11-libs/libxkbfile x11-libs/libXaw x11-libs/libXp Xaw3d? ( x11-libs/libXaw3d )
+SLOT=0
+SRC_URI=ftp://ftp.x.org/contrib/applications/kterm-6.2.0.tar.gz http://www.asahi-net.or.jp/~hc3j-tkg/kterm/kterm-6.2.0-wpi.patch.gz http://www.st.rim.or.jp/~hanataka/kterm-6.2.0.ext02.patch.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9f46926fc84f2b0dde7deb8219be100e

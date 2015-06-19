@@ -1,0 +1,56 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/mips-sources/files/eblits/show_ip30_info-v3.eblit,v 1.1 2015/01/18 07:44:14 kumba Exp $
+
+# Eblit with information/warnings for IP30 (Octane) users.
+#
+# If you need to add whitespace for formatting in 'einfo', 'ewarn', or 'eerror', use
+# \040 for a space instead of the standard space.  These functions will strip
+# redundant white space.
+
+show_ip30_info() {
+	echo -e ""
+	einfo "Octane boots again as-of 3.14!  Celebrate!"
+	echo -e ""
+	eerror "Things that DON'T work:"
+	eerror "\t- SMP SUPPORT IS CURRENTLY BROKEN!  I require help in getting CPU1 to"
+	eerror "\t\040\040'tick' properly, as it hangs up in the generic MIPS SMP code."
+	eerror "\t- R14000 ONLY: Do NOT use CONFIG_TRANSPARENT_HUGEPAGE on an Octane with"
+	eerror "\t\040\040an R14000 CPU, otherwise, when the machine starts to boot into"
+	eerror "\t\040\040userland, it will trigger Instruction Bus Errors (IBEs), which"
+	eerror "\t\040\040requires a complete powerdown of the machine for about 15 seconds"
+	eerror "\t\040\040to clear."
+	eerror "\t- Do not use CONFIG_SLUB, otherwise, you'll get errors when booting"
+	eerror "\t\040\040regarding duplicate /sys/kernel/slab/* entries in"
+	eerror "\t\040\040sysfs."
+	eerror "\t- Do not use OHCI-based USB cards in Octane.  They're broke on this machine."
+	eerror "\t\040\040Patches are welcome to fix the issue."
+	echo -e ""
+	ewarn "Things that might work, but have problems, or are unknown:"
+	ewarn "\t- Serial support on the Octane uses a very basic UART driver that drives"
+	ewarn "\t\040\040the 16550A chip on the IOC3 directly.  It does not use interrupts,"
+	ewarn "\t\040\040only a polling routine on a timer, which makes it slow and CPU-"
+	ewarn "\t\040\040intensive.  The baud rate is limited to no more than 38.4kbps on"
+	ewarn "\t\040\040this driver.  Patches for getting the Altix IOC3 serial driver to"
+	ewarn "\t\040\040work (which uses DMA and supports faster baud rates) are welcome."
+	ewarn "\t- UHCI Cards are known to have issues, but should still have some functionality."
+	ewarn "\t\040\040This issue primarily manifests itself when using pl2303 USB->Serial"
+	ewarn "\t\040\040adapters."
+	ewarn "\t- MENET boards appear to have the four ethernet ports detected, however"
+	ewarn "\t\040\040the six serial ports didn't appear to get picked up by the IOC3"
+	ewarn "\t\040\040UART driver.  The NIC part number is also not read correctly"
+	ewarn "\t\040\040from the four Number-In-a-Cans.  Additional testing would be"
+	ewarn "\t\040\040appreciated and patches welcome."
+	ewarn "\t- Other XIO-based devices, like various Impact addons, remain untested"
+	ewarn "\t\040\040and are not guaranteed to work.  This applies to various digital"
+	ewarn "\t\040\040video conversion boards as well."
+	echo -e ""
+	einfo "Things that DO work:"
+	einfo "\t- Impact (MGRAS) console and X driver, please report any bugs."
+	einfo "\t- VPro (Odyssey) console, but no X driver exists yet."
+	einfo "\t- PCI Card Cages should work for many devices, except certain types like"
+	einfo "\t\040\040PCI-to-PCI bridges (USB hubs, USB flash card readers for example)."
+	einfo "\t- SCSI, RTC, basic PCI, IOC3 Ethernet, keyboard, and mouse.  Please"
+	einfo "\t\040\040 report any problems with these devices."
+	echo -e ""
+}

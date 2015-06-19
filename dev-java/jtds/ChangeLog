@@ -1,0 +1,146 @@
+# ChangeLog for dev-java/jtds
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jtds/ChangeLog,v 1.35 2015/06/09 13:51:37 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  17 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -files/1.2.4-buildxml.patch,
+  -jtds-1.2.4.ebuild, -jtds-1.2.5.ebuild:
+  NM: Cleanup superseded ebuilds.
+
+  26 Dec 2012; Jeff Horelick <jdhore@gentoo.org> jtds-1.2.5-r1.ebuild:
+  marked x86 per bug 440314
+
+  12 Dec 2012; Agostino Sarubbo <ago@gentoo.org> jtds-1.2.5-r1.ebuild:
+  Stable for amd64, wrt bug #440314
+
+*jtds-1.3.0 (30 Oct 2012)
+*jtds-1.2.5-r1 (30 Oct 2012)
+
+  30 Oct 2012; Ralph Sennhauser <sera@gentoo.org> +jtds-1.2.5-r1.ebuild,
+  +files/jtds-1.2.5-build.xml.patch, +jtds-1.3.0.ebuild,
+  +files/jtds-1.3.0-build.xml.patch:
+  Revbump to restrict to java 6. #440010
+  Version bump for java 7.
+
+  07 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> jtds-1.2.4.ebuild,
+  jtds-1.2.5.ebuild:
+  Dropped ppc/ppc64 wrt #326091
+
+  06 Nov 2010; Mark Loeser <halcy0n@gentoo.org> jtds-1.2.4.ebuild:
+  No stable consumers in the tree, revert to ~ppc64; bug #326091
+
+  19 Jul 2010; Christian Faulhammer <fauli@gentoo.org> jtds-1.2.5.ebuild:
+  stable x86, bug 326091
+
+  29 Jun 2010; Christoph Mende <angelos@gentoo.org> jtds-1.2.5.ebuild:
+  Stable on amd64 wrt bug #326091
+
+*jtds-1.2.5 (29 May 2010)
+
+  29 May 2010; Petteri Räty <betelgeuse@gentoo.org> +jtds-1.2.5.ebuild:
+  Version bump. Doesn't need junit to build any more. Fixes bug #321795.
+
+  05 Apr 2010; Vlastimil Babka <caster@gentoo.org>
+  -files/1.0.3-buildxml.patch, -jtds-1.2-r2.ebuild,
+  -files/1.2-com.sun.patch:
+  Remove old.
+
+  09 Feb 2010; Joseph Jezak <josejx@gentoo.org> jtds-1.2.4.ebuild:
+  Marked ppc stable for bug #296053.
+
+  14 Dec 2009; Brent Baude <ranger@gentoo.org> jtds-1.2.4.ebuild:
+  stable ppc64, bug 296053
+
+  09 Dec 2009; Markus Meier <maekke@gentoo.org> jtds-1.2.4.ebuild:
+  amd64/x86 stable, bug #296053
+
+*jtds-1.2.4 (07 Nov 2009)
+
+  07 Nov 2009; Vlastimil Babka <caster@gentoo.org>
+  -files/1.0.2-buildxml.patch, +jtds-1.2.4.ebuild,
+  +files/1.2.4-buildxml.patch, -files/buildxml-gentoo.patch:
+  Version bump. Now needs java 1.6.
+
+  22 Mar 2008; Petteri Räty <betelgeuse@gentoo.org> jtds-1.2-r2.ebuild:
+  RESTRICT test for the upcoming generic src_test as they need a running server.
+
+  20 Jan 2008; Petteri Räty <betelgeuse@gentoo.org> jtds-1.2-r2.ebuild:
+  Use EAPI=1 to match only slot 0 of junit.
+
+  15 Jul 2007; Petteri Räty <betelgeuse@gentoo.org> -jtds-0.9.1.ebuild,
+  -jtds-1.0.3.ebuild:
+  Removing old versions as nothing uses them any more.
+
+  15 Jul 2007; nixnut <nixnut@gentoo.org> jtds-1.2-r2.ebuild:
+  Stable on ppc wrt bug 182176
+
+  17 Jun 2007; Christoph Mende <angelos@gentoo.org> jtds-1.2-r2.ebuild:
+  Stable on amd64 wrt bug 182176
+
+  17 Jun 2007; Christian Faulhammer <opfer@gentoo.org> jtds-1.2-r2.ebuild:
+  stable x86, bug 182176
+
+  16 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org> jtds-1.2-r2.ebuild:
+  Added ~ppc, bug #175994
+
+  09 Jun 2007; Petteri Räty <betelgeuse@gentoo.org> -jtds-1.2.ebuild,
+  -jtds-1.2-r1.ebuild:
+  Removed unused revisions.
+
+  06 Jun 2007; Markus Rothe <corsair@gentoo.org> jtds-1.2-r2.ebuild:
+  Added ~ppc64; bug #175994
+
+*jtds-1.2-r2 (07 May 2007)
+
+  07 May 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +files/1.2-com.sun.patch, +jtds-1.2-r2.ebuild:
+  Use javax.net.ssl instead of com.sun.net.ssl. Now compiles with
+  ibm-jdk-bin-1.5. Bug #175994.
+
+*jtds-1.2-r1 (25 Apr 2007)
+
+  25 Apr 2007; Petteri Räty <betelgeuse@gentoo.org> jtds-0.9.1.ebuild,
+  jtds-1.0.3.ebuild, jtds-1.2.ebuild, +jtds-1.2-r1.ebuild:
+  Migrate 1.2 to generation 2 and relax dev-java/jcifs dependency for 1.2.13
+  version bump.
+
+  18 Feb 2007; nixnut <nixnut@gentoo.org> jtds-0.9.1.ebuild:
+  Stable on ppc wrt bug 160569
+
+  20 Jan 2007; Markus Rothe <corsair@gentoo.org> jtds-0.9.1.ebuild:
+  Added ~ppc64 (dep from dev-db/jxtray)
+
+  04 Jan 2006; Petteri Räty <betelgeuse@gentoo.org> -jtds-1.0.2.ebuild:
+  Removed old version.
+
+*jtds-1.2 (03 Jan 2006)
+
+  03 Jan 2006; Petteri Räty <betelgeuse@gentoo.org> +jtds-1.2.ebuild:
+  Version bump. Fixes bugs #98106 and #114867. Put the new ebuild in
+  SLOT 1.2 because japitools weren't happy about API compatibility.
+
+  14 May 2005; Jan Brinkmann <luckyduck@gentoo.org> jtds-0.9.1.ebuild:
+  added ~ppc to KEYWORDS
+
+*jtds-1.0.3 (24 Apr 2005)
+
+  24 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +files/1.0.3-buildxml.patch, +jtds-1.0.3.ebuild:
+  new upstream version, fixes #90172
+
+  16 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> jtds-1.0.2.ebuild:
+  jtds now makes use of java-pkg_dosrc
+
+*jtds-1.0.2 (18 Feb 2005)
+
+  18 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +files/1.0.2-buildxml.patch, jtds-0.9.1.ebuild, +jtds-1.0.2.ebuild:
+  marked old version stable, added new upstream release. fixes #82373
+
+*jtds-0.9.1 (23 Dec 2004)
+
+  23 Dec 2004; Karl Trygve Kalleberg <karltk@gentoo.org> jtds-0.9.1.ebuild:
+  Initial import. Ebuild submitted by the erupting ebuild vulcano Jan "Vesuvius" 
+  Brinkmann <lucky@the-luckyduck.de>. Fixes #75228.

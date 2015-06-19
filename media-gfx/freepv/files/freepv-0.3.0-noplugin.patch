@@ -1,0 +1,30 @@
+diff -Naur freepv-0.3.0.orig//CMakeLists.txt freepv-0.3.0/CMakeLists.txt
+--- freepv-0.3.0.orig//CMakeLists.txt	2010-03-11 16:05:09.000000000 +0100
++++ freepv-0.3.0/CMakeLists.txt	2010-03-11 16:05:18.000000000 +0100
+@@ -89,7 +89,6 @@
+ find_package(FREEGLUT REQUIRED)
+ find_package(OpenGL REQUIRED)
+ find_package(X11 REQUIRED)
+-find_package(GECKO REQUIRED)
+ find_package(LibXml2 REQUIRED)
+ find_package(PNG REQUIRED)
+ find_package(XF86VM REQUIRED)
+@@ -107,7 +106,6 @@
+                     ${OPENGL_INCLUDE_DIR}
+                     ${FREEGLUT_INCLUDE_DIR}
+ 		    ${X11_INCLUDE_DIR}
+-	            ${GECKO_INCLUDE_DIR}
+ 		    ${LIBXML2_INCLUDE_DIR}
+ 		    ${PNG_INCLUDE_DIR}
+ 		    ${XF86VM_INCLUDE_DIR})
+diff -Naur freepv-0.3.0.orig//src/CMakeLists.txt freepv-0.3.0/src/CMakeLists.txt
+--- freepv-0.3.0.orig//src/CMakeLists.txt	2010-03-11 16:05:09.000000000 +0100
++++ freepv-0.3.0/src/CMakeLists.txt	2010-03-11 16:05:28.000000000 +0100
+@@ -5,7 +5,6 @@
+ add_subdirectory (freepv-glut)
+ add_subdirectory (utils)
+ if(UNIX)
+-	add_subdirectory (freepv-mozilla)
+ 	add_subdirectory (freepv-glx)
+ endif(UNIX)
+ 

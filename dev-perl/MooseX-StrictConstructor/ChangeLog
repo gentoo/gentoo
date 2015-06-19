@@ -1,0 +1,107 @@
+# ChangeLog for dev-perl/MooseX-StrictConstructor
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/MooseX-StrictConstructor/ChangeLog,v 1.20 2014/10/11 20:44:11 zlogene Exp $
+
+  11 Oct 2014; Mikle Kolyada <zlogene@gentoo.org>
+  MooseX-StrictConstructor-0.190.0.ebuild:
+  Bump to EAPI=5
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org>
+  -MooseX-StrictConstructor-0.160.0.ebuild,
+  -MooseX-StrictConstructor-0.170.0.ebuild:
+  Cleanup
+
+*MooseX-StrictConstructor-0.190.0 (24 Jan 2012)
+
+  24 Jan 2012; Torsten Veller <tove@gentoo.org>
+  +MooseX-StrictConstructor-0.190.0.ebuild:
+  Version bump
+
+*MooseX-StrictConstructor-0.170.0 (08 Jan 2012)
+
+  08 Jan 2012; Torsten Veller <tove@gentoo.org>
+  +MooseX-StrictConstructor-0.170.0.ebuild:
+  Version bump
+
+  29 Jul 2011; Torsten Veller <tove@gentoo.org>
+  -MooseX-StrictConstructor-0.130.ebuild,
+  -MooseX-StrictConstructor-0.150.0.ebuild:
+  Cleanup
+
+*MooseX-StrictConstructor-0.160.0 (23 Apr 2011)
+
+  23 Apr 2011; Torsten Veller <tove@gentoo.org>
+  +MooseX-StrictConstructor-0.160.0.ebuild:
+  Version bump
+
+*MooseX-StrictConstructor-0.150.0 (14 Apr 2011)
+
+  14 Apr 2011; Torsten Veller <tove@gentoo.org>
+  +MooseX-StrictConstructor-0.150.0.ebuild:
+  Version bump
+
+  02 Apr 2011; Torsten Veller <tove@gentoo.org>
+  -MooseX-StrictConstructor-0.12.ebuild:
+  Cleanup
+
+*MooseX-StrictConstructor-0.130 (23 Feb 2011)
+
+  23 Feb 2011; Torsten Veller <tove@gentoo.org>
+  +MooseX-StrictConstructor-0.130.ebuild:
+  Version bump
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org>
+  -MooseX-StrictConstructor-0.10.ebuild, -MooseX-StrictConstructor-0.11.ebuild:
+  Cleanup
+
+*MooseX-StrictConstructor-0.12 (31 Oct 2010)
+
+  31 Oct 2010; Torsten Veller <tove@gentoo.org>
+  +MooseX-StrictConstructor-0.12.ebuild:
+  Version bump
+
+*MooseX-StrictConstructor-0.11 (10 Sep 2010)
+
+  10 Sep 2010; Torsten Veller <tove@gentoo.org>
+  +MooseX-StrictConstructor-0.11.ebuild:
+  Version bump
+
+  15 Aug 2010; Torsten Veller <tove@gentoo.org>
+  -MooseX-StrictConstructor-0.08.ebuild,
+  -MooseX-StrictConstructor-0.09.ebuild:
+  Cleanup
+
+*MooseX-StrictConstructor-0.10 (22 Jul 2010)
+
+  22 Jul 2010; Torsten Veller <tove@gentoo.org>
+  +MooseX-StrictConstructor-0.10.ebuild:
+  Version bump
+
+*MooseX-StrictConstructor-0.09 (16 Jul 2010)
+
+  16 Jul 2010; Torsten Veller <tove@gentoo.org>
+  +MooseX-StrictConstructor-0.09.ebuild:
+  Version bump
+
+  01 May 2009; Torsten Veller <tove@gentoo.org>
+  -MooseX-StrictConstructor-0.07.ebuild:
+  Cleanup
+
+*MooseX-StrictConstructor-0.08 (10 Apr 2009)
+
+  10 Apr 2009; Torsten Veller <tove@gentoo.org>
+  +MooseX-StrictConstructor-0.08.ebuild:
+  Version bump
+
+  03 Apr 2009; Torsten Veller <tove@gentoo.org>
+  MooseX-StrictConstructor-0.07.ebuild:
+  Add ~amd64
+
+*MooseX-StrictConstructor-0.07 (14 Jan 2009)
+
+  14 Jan 2009; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +MooseX-StrictConstructor-0.07.ebuild:
+  Initial commit

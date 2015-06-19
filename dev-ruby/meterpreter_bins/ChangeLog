@@ -1,0 +1,26 @@
+# ChangeLog for dev-ruby/meterpreter_bins
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/meterpreter_bins/ChangeLog,v 1.5 2015/06/07 18:34:15 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  11 Apr 2015; Hans de Graaff <graaff@gentoo.org>
+  meterpreter_bins-0.0.10.ebuild:
+  Add ruby22.
+
+  22 Mar 2015; Hans de Graaff <graaff@gentoo.org>
+  meterpreter_bins-0.0.10.ebuild:
+  Add ruby21.
+
+*meterpreter_bins-0.0.10 (19 Oct 2014)
+
+  19 Oct 2014; Rick Farina <zerochaos@gentoo.org>
+  +meterpreter_bins-0.0.10.ebuild:
+  version bump
+
+*meterpreter_bins-0.0.6 (17 Jul 2014)
+
+  17 Jul 2014; Rick Farina <zerochaos@gentoo.org> +metadata.xml,
+  +meterpreter_bins-0.0.6.ebuild:
+  initial commit of meterpreter_bins, split out from metasploit by upstream

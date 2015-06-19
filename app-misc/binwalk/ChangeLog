@@ -1,0 +1,182 @@
+# ChangeLog for app-misc/binwalk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/binwalk/ChangeLog,v 1.37 2015/06/05 14:38:21 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  11 Dec 2014; Tim Harder <radhermit@gentoo.org> -binwalk-1.2.1.ebuild,
+  -binwalk-1.2.2_p1.ebuild, -files/binwalk-1.2-no-deps-check.patch:
+  Remove old.
+
+  21 Nov 2014; Tim Harder <radhermit@gentoo.org> binwalk-2.0.1.ebuild:
+  Drop old, unused MY_P variable.
+
+  20 Nov 2014; Tim Harder <radhermit@gentoo.org> binwalk-2.0.1.ebuild:
+  Fix sys-apps/file python use flag deps.
+
+*binwalk-2.0.1 (20 Nov 2014)
+
+  20 Nov 2014; Tim Harder <radhermit@gentoo.org> +binwalk-2.0.1.ebuild,
+  +files/binwalk-2.0.1-libs.patch, +files/binwalk-2.0.1-makefile.patch:
+  Version bump.
+
+*binwalk-1.2.2_p1 (06 Nov 2013)
+
+  06 Nov 2013; Tim Harder <radhermit@gentoo.org> +binwalk-1.2.2_p1.ebuild:
+  Version bump.
+
+  13 Oct 2013; Markos Chandras <hwoarang@gentoo.org> binwalk-1.2.1.ebuild:
+  Add ~mips
+
+  26 Jul 2013; Tim Harder <radhermit@gentoo.org> -binwalk-1.0.ebuild,
+  -binwalk-1.1.ebuild, -binwalk-1.2.ebuild:
+  Remove old.
+
+*binwalk-1.2.1 (08 May 2013)
+
+  08 May 2013; Tim Harder <radhermit@gentoo.org> +binwalk-1.2.1.ebuild:
+  Version bump.
+
+  07 Apr 2013; Tim Harder <radhermit@gentoo.org> binwalk-1.2.ebuild,
+  +files/binwalk-1.2-no-deps-check.patch:
+  Don't do dependency checking during build.
+
+*binwalk-1.2 (05 Apr 2013)
+
+  05 Apr 2013; Tim Harder <radhermit@gentoo.org> +binwalk-1.2.ebuild,
+  metadata.xml:
+  Version bump. Add graph use flag for enabling entropy graphing support.
+
+  23 Mar 2013; Tim Harder <radhermit@gentoo.org> -binwalk-0.4.5.ebuild,
+  -binwalk-0.5.0.ebuild, -files/binwalk-0.5.0-destdir.patch:
+  Remove old.
+
+*binwalk-1.1 (23 Mar 2013)
+
+  23 Mar 2013; Tim Harder <radhermit@gentoo.org> +binwalk-1.1.ebuild:
+  Version bump.
+
+*binwalk-1.0 (11 Feb 2013)
+
+  11 Feb 2013; Tim Harder <radhermit@gentoo.org> +binwalk-1.0.ebuild:
+  Version bump.
+
+  02 Jan 2013; Tim Harder <radhermit@gentoo.org> -binwalk-0.4.3.ebuild,
+  -binwalk-0.4.4.ebuild:
+  Remove old.
+
+*binwalk-0.5.0 (02 Jan 2013)
+
+  02 Jan 2013; Tim Harder <radhermit@gentoo.org> +binwalk-0.5.0.ebuild,
+  +files/binwalk-0.5.0-destdir.patch:
+  Version bump.
+
+*binwalk-0.4.5 (07 Sep 2012)
+
+  07 Sep 2012; Tim Harder <radhermit@gentoo.org> +binwalk-0.4.5.ebuild:
+  Version bump.
+
+*binwalk-0.4.4 (07 Aug 2012)
+
+  07 Aug 2012; Tim Harder <radhermit@gentoo.org> +binwalk-0.4.4.ebuild:
+  Version bump.
+
+  25 Jun 2012; Tim Harder <radhermit@gentoo.org> -binwalk-0.4.1.ebuild,
+  -binwalk-0.4.2.ebuild:
+  Remove old.
+
+*binwalk-0.4.3 (21 Mar 2012)
+
+  21 Mar 2012; Tim Harder <radhermit@gentoo.org> +binwalk-0.4.3.ebuild:
+  Version bump.
+
+  20 Feb 2012; Tim Harder <radhermit@gentoo.org> -binwalk-0.4.0.ebuild:
+  Remove old.
+
+*binwalk-0.4.2 (20 Feb 2012)
+
+  20 Feb 2012; Tim Harder <radhermit@gentoo.org> +binwalk-0.4.2.ebuild:
+  Version bump.
+
+*binwalk-0.4.1 (06 Dec 2011)
+
+  06 Dec 2011; Tim Harder <radhermit@gentoo.org> +binwalk-0.4.1.ebuild:
+  Version bump.
+
+  08 Nov 2011; Tim Harder <radhermit@gentoo.org> -binwalk-0.3.8.ebuild,
+  -files/binwalk-0.3.8-system-magic.patch, -binwalk-0.3.9.ebuild,
+  -files/binwalk-0.3.9-system-magic.patch, -binwalk-0.3.10.ebuild:
+  Remove old.
+
+*binwalk-0.4.0 (08 Nov 2011)
+
+  08 Nov 2011; Tim Harder <radhermit@gentoo.org> +binwalk-0.4.0.ebuild:
+  Version bump.
+
+*binwalk-0.3.10 (15 Oct 2011)
+
+  15 Oct 2011; Tim Harder <radhermit@gentoo.org> +binwalk-0.3.10.ebuild:
+  Version bump.
+
+  10 Sep 2011; Tim Harder <radhermit@gentoo.org> -binwalk-0.3.6.ebuild,
+  -binwalk-0.3.7.ebuild, -files/binwalk-0.3.7-system-magic.patch:
+  Remove old.
+
+*binwalk-0.3.9 (10 Sep 2011)
+
+  10 Sep 2011; Tim Harder <radhermit@gentoo.org> +binwalk-0.3.9.ebuild,
+  +files/binwalk-0.3.9-system-magic.patch:
+  Version bump.
+
+*binwalk-0.3.8 (21 Aug 2011)
+
+  21 Aug 2011; Tim Harder <radhermit@gentoo.org> +binwalk-0.3.8.ebuild,
+  +files/binwalk-0.3.8-system-magic.patch:
+  Version bump
+
+*binwalk-0.3.7 (20 Jul 2011)
+
+  20 Jul 2011; Tim Harder <radhermit@gentoo.org> -binwalk-0.3.2.ebuild,
+  -binwalk-0.3.3.ebuild, -binwalk-0.3.5.ebuild, +binwalk-0.3.7.ebuild,
+  +files/binwalk-0.3.7-system-magic.patch:
+  Version bump (bug #374723 by Anthony Basile) and remove old.
+
+*binwalk-0.3.6 (04 Jul 2011)
+
+  04 Jul 2011; Tim Harder <radhermit@gentoo.org> +binwalk-0.3.6.ebuild:
+  Version bump.
+
+*binwalk-0.3.5 (29 Jun 2011)
+
+  29 Jun 2011; Tim Harder <radhermit@gentoo.org> +binwalk-0.3.5.ebuild:
+  Version bump.
+
+*binwalk-0.3.3 (23 Jun 2011)
+
+  23 Jun 2011; Tim Harder <radhermit@gentoo.org> +binwalk-0.3.3.ebuild:
+  Version bump.
+
+*binwalk-0.3.2 (07 Jun 2011)
+
+  07 Jun 2011; Tim Harder <radhermit@gentoo.org> -binwalk-0.3.1.ebuild,
+  -files/binwalk-0.3.1-destdir.patch, -files/binwalk-0.3.1-ldflags.patch,
+  +binwalk-0.3.2.ebuild:
+  Version bump and remove old.
+
+  03 Jun 2011; Tim Harder <radhermit@gentoo.org> binwalk-0.3.1.ebuild,
+  +files/binwalk-0.3.1-ldflags.patch:
+  Respect LDFLAGS.
+
+*binwalk-0.3.1 (03 Jun 2011)
+
+  03 Jun 2011; Tim Harder <radhermit@gentoo.org> -binwalk-0.3.0.ebuild,
+  -files/binwalk-0.3.0-makefile.patch, +binwalk-0.3.1.ebuild,
+  +files/binwalk-0.3.1-destdir.patch:
+  Version bump and remove old.
+
+*binwalk-0.3.0 (30 May 2011)
+
+  30 May 2011; Tim Harder <radhermit@gentoo.org> +binwalk-0.3.0.ebuild,
+  +files/binwalk-0.3.0-makefile.patch, +metadata.xml:
+  Initial import.

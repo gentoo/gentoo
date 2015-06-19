@@ -1,0 +1,40 @@
+# /etc/conf.d/distccd: config file for /etc/init.d/distccd
+
+DISTCCD_OPTS=""
+
+# this is the distccd executable 
+DISTCCD_EXEC="/usr/bin/distccd"
+
+# this is where distccd will store its pid file
+DISTCCD_PIDFILE="/var/run/distccd/distccd.pid"
+
+# set this option to run distccd with extra parameters
+# Default port is 3632.  For most people the default is okay.
+DISTCCD_OPTS="${DISTCCD_OPTS} --port 3632"
+
+# Logging
+# You can change some logging options here:
+# --log-file FILE
+# --log-level LEVEL  [critical,error,warning, notice, info, debug]
+#
+# Leaving --log-file blank will log to syslog
+# example: --log-file /dev/null --log-level warning
+# example: --log-level critical
+
+DISTCCD_OPTS="${DISTCCD_OPTS} --log-level critical"
+
+# SECURITY NOTICE:
+# It is HIGHLY recomended that you use the --listen option
+# for increased security. You can specify an IP to permit connections 
+# from or a CIDR mask
+# --listen accepts only a single IP
+# --allow is now mandatory as of distcc-2.18.
+# example:  --allow 192.168.0.0/24
+# example:  --allow 192.168.0.5 --allow 192.168.0.150
+# example:  --listen 192.168.0.2
+DISTCCD_OPTS="${DISTCCD_OPTS} --allow 192.168.0.0/24"
+#DISTCCD_OPTS="${DISTCCD_OPTS} --listen 192.168.0.2"
+
+# set this for niceness
+# Default is 15
+DISTCCD_NICE="15"

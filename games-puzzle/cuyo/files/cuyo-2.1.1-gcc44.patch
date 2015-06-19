@@ -1,0 +1,11 @@
+--- cuyo-2.~-1.1.orig/src/stringzeug.h
++++ cuyo-2.~-1.1/src/stringzeug.h
+@@ -20,7 +20,7 @@
+ 
+ #include <config.h>
+ #include <string>
+-
++#include <stdio.h>
+ 
+ 
+ 

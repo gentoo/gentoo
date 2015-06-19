@@ -1,0 +1,49 @@
+# ChangeLog for dev-util/httpup
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/httpup/ChangeLog,v 1.12 2012/08/08 10:35:42 ssuominen Exp $
+
+  08 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> httpup-0.4.0k.ebuild:
+  Set missing RDEPEND for net-misc/curl (regression from last commit)
+
+  08 Aug 2012; Justin Lecher <jlec@gentoo.org> httpup-0.4.0k.ebuild,
+  +files/httpup-0.4.0k-gcc-4.7.patch, metadata.xml:
+  Fix for compilation with gcc-4.7, #430338
+
+  22 May 2010; Fabian Groffen <grobian@gentoo.org> httpup-0.4.0k.ebuild:
+  Fix ebuild for Prefix, bump to EAPI=3
+
+*httpup-0.4.0k (21 May 2010)
+
+  21 May 2010; Samuli Suominen <ssuominen@gentoo.org> +httpup-0.4.0k.ebuild,
+  +files/httpup-0.4.0k-Makefile.patch:
+  Version bump.
+
+  07 Apr 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/httpup-0.3.2-gcc43.patch:
+  Unbreak package after darwin patch broke it.
+
+  21 Feb 2010; Jonathan Callen <abcd@gentoo.org> httpup-0.3.2.ebuild,
+  +files/httpup-0.3.2-darwin.patch:
+  Transfer prefix keywords, add patch for Darwin
+
+  25 Aug 2009; Víctor Ostorga <vostorga@gentoo.org> httpup-0.3.2.ebuild,
+  +files/httpup-0.3.2-gcc44.patch:
+  Fixing build against gcc 4.4 #282676 , Respecting CXX variable
+
+  20 Jun 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/httpup-0.3.2-gcc43.patch, httpup-0.3.2.ebuild:
+  GCC-4.3 build fix (missing headers). Bug 227879.
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  07 May 2005; David Holm <dholm@gentoo.org> httpup-0.3.2.ebuild:
+  Added to ~ppc.
+
+*httpup-0.3.2 (19 Feb 2004)
+
+  19 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

@@ -1,0 +1,40 @@
+# ChangeLog for kde-misc/nightmode
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/nightmode/ChangeLog,v 1.9 2014/04/24 15:13:55 johu Exp $
+
+  24 Apr 2014; Johannes Huber <johu@gentoo.org> -nightmode-0.3.ebuild,
+  nightmode-0.3-r1.ebuild:
+  amd64/x86 stable, remove old.
+
+*nightmode-0.3-r1 (21 Mar 2014)
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org> +nightmode-0.3-r1.ebuild:
+  Revision bump to EAPI 5.
+
+  08 Sep 2013; Michael Palimaka <kensington@gentoo.org>
+  +files/nightmode-0.3-kde-4.10.patch, nightmode-0.3.ebuild:
+  Add patch to fix build with KDE 4.10, wrt bug #484102.
+
+  19 Apr 2012; Johannes Huber <johu@gentoo.org> -nightmode-0.2.ebuild:
+  Remove old.
+
+  19 Apr 2012; Markus Meier <maekke@gentoo.org> nightmode-0.3.ebuild:
+  x86 stable, bug #409403
+
+  04 Apr 2012; Agostino Sarubbo <ago@gentoo.org> nightmode-0.3.ebuild:
+  Stable for amd64, wrt bug #409403
+
+*nightmode-0.3 (22 Feb 2012)
+
+  22 Feb 2012; Johannes Huber <johu@gentoo.org> +nightmode-0.3.ebuild:
+  Version bump fixes build with KDE 4.8, bug #400891.
+
+  22 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org> nightmode-0.2.ebuild:
+  Add missing dependency on kwin per bug #356045.
+
+*nightmode-0.2 (20 Jan 2011)
+
+  20 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +nightmode-0.2.ebuild, +metadata.xml:
+  New plugin, fixes bug 317291. Thanks to Ciprian Ciubotariu for the initial
+  ebuild.

@@ -1,0 +1,45 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-cddl/files/zvol.initd-9.0,v 1.1 2012/05/12 07:57:13 naota Exp $
+
+depend() {
+	need hostid
+	before fsck
+}
+
+start() {
+	einfo "Starting zfs volumes..."
+	eend $?
+	# Enable swap on ZVOLs that have org.freebsd:swap=on.
+	zfs list -H -o org.freebsd:swap,name -t volume | \
+	while read state name; do
+		case "${state}" in
+		[oO][nN])
+			einfo "Enabling swap on zvol ${name}"
+			swapon /dev/zvol/${name} 
+			eend $?
+			;;
+		esac
+	done
+}
+
+stop() {
+	# Disable what we had enabled before.
+	zfs list -H -o org.freebsd:swap,name -t volume | \
+	while read state name; do
+		case "${state}" in
+		[oO][nN])
+			einfo "Disabling swap on zvol ${name}"
+			swapoff /dev/zvol/${name}
+			eend $?
+			;;
+		esac
+	done
+	einfo "Stopping zfs volumes..."
+	eend $?
+}
+
+restart() {
+	:
+}

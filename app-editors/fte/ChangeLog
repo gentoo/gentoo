@@ -1,0 +1,258 @@
+# ChangeLog for app-editors/fte
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/fte/ChangeLog,v 1.60 2015/06/09 09:49:28 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> fte-20051115-r3.ebuild,
+  fte-20110708.ebuild, metadata.xml:
+  Use ecvs_clean and modernize ebuild style
+
+  03 Apr 2013; Tom Wijsman <TomWij@gentoo.org> fte-20110708.ebuild:
+  Extensively tested. Changed HOMEPAGE according to the dev manual.
+
+*fte-20110708 (13 Mar 2013)
+
+  13 Mar 2013; Tom Wijsman <TomWij@gentoo.org> +fte-20110708.ebuild:
+  Non-maintainer commit, version bump to 20110708.
+
+  21 Nov 2012; Michael Palimaka <kensington@gentoo.org> -fte-20051115-r1.ebuild:
+  Remove old.
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org> fte-20051115-r3.ebuild:
+  Stable for x86, wrt bug #441028
+
+  05 Nov 2012; Anthony G. Basile <blueness@gentoo.org> fte-20051115-r3.ebuild:
+  stable ppc, bug #441028
+
+  05 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> fte-20051115-r3.ebuild:
+  Stable on amd64 wrt bug #441028
+
+  05 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> fte-20051115-r1.ebuild,
+  fte-20051115-r3.ebuild:
+  Correct package license, remove reduntant Artistic license file installation
+  from 'dodoc'
+
+*fte-20051115-r3 (05 Aug 2012)
+
+  05 Aug 2012; Christoph Junghans <ottxor@gentoo.org> +files/fte-interix.patch,
+  +fte-20051115-r3.ebuild, -fte-20051115-r2.ebuild:
+  EAPI bumped to 4, add prefix changes
+
+  10 Jan 2011; Jeroen Roovers <jer@gentoo.org> fte-20051115-r2.ebuild:
+  Fix obvious typo thanks to Paul Hartman and Rafał Mużyło (bug #350701).
+
+*fte-20051115-r2 (30 Dec 2010)
+
+  30 Dec 2010; Jeroen Roovers <jer@gentoo.org> +fte-20051115-r2.ebuild:
+  Respect LDFLAGS (bug #337413), CFLAGS (bug #239928), CXX. Add x11-libs/libXpm
+  dependency (bug #216444 by Evil Compile Person). Split off configure and
+  prepare from unpack. Replace cat | grep with sed. Die on sed/dobin.
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/fte-slang.patch:
+  Fix patch to apply.
+
+  10 Mar 2008; Samuli Suominen <drac@gentoo.org> -fte-20051115.ebuild,
+  fte-20051115-r1.ebuild:
+  amd64 stable wrt #211990
+
+  09 Mar 2008; nixnut <nixnut@gentoo.org> fte-20051115-r1.ebuild:
+  Stable on ppc wrt bug 211990
+
+  09 Mar 2008; Markus Meier <maekke@gentoo.org> fte-20051115-r1.ebuild:
+  x86 stable, bug #211990
+
+*fte-20051115-r1 (16 Feb 2008)
+
+  16 Feb 2008; Samuli Suominen <drac@gentoo.org> -files/configpath.patch,
+  -fte-20020324-r2.ebuild, -fte-20050108-r3.ebuild, fte-20051115.ebuild,
+  +fte-20051115-r1.ebuild:
+  Move -slang.patch to -r1, and remove unused versions.
+
+  09 Feb 2008; Samuli Suominen <drac@gentoo.org> +files/fte-slang.patch,
+  fte-20051115.ebuild:
+  Fix fte to work with slang 2.1.3.
+
+  22 Jul 2007; David Shakaryan <omp@gentoo.org> fte-20020324-r2.ebuild,
+  fte-20050108-r3.ebuild, fte-20051115.ebuild:
+  Remove virtual/x11 from dependencies.
+
+  25 May 2007; Christian Faulhammer <opfer@gentoo.org> ChangeLog:
+  corrected ChangeLog, so it conforms to our standards
+
+  13 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add herd
+
+  01 Nov 2006; Matti Bickel <mabi@gentoo.org> fte-20051115.ebuild:
+  Stable on ppc (bug #142835)
+
+  27 Oct 2006; Christian Faulhammer <opfer@gentoo.org>
+  fte-20051115.ebuild:
+  x86 stable due to bug #142835
+
+  25 Oct 2006; Konstantin V. Arkhipov <voxus@gentoo.org>
+  fte-20051115.ebuild:
+  20051115 goes stable on amd64, closing bug #142835.
+
+  17 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  fte-20020324-r2.ebuild, fte-20050108-r3.ebuild, fte-20051115.ebuild:
+  Going -sparc wrt #75250
+
+  27 Aug 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  fte-20020324-r2.ebuild:
+  modX deps from fte-20051115
+
+  03 Apr 2006; Thomas Cort <tcort@gentoo.org> fte-20051115.ebuild:
+  Added ~alpha keyword.
+
+*fte-20051115 (26 Mar 2006)
+
+  26 Mar 2006; Konstantin Arkhipov <voxus@gentoo.org> +fte-20051115.ebuild:
+  Version bump, also closing bug #125509.
+
+  18 Jan 2006; Hanno Boeck <hanno@gentoo.org> fte-20050108-r3.ebuild:
+  Modular X deps.
+
+  23 Jun 2005; Konstantin Arkhipov <voxus@gentoo.org> fte-20050108-r3.ebuild,
+  -fte-20020324.ebuild, -fte-20020324-r1.ebuild:
+  Marked stable 20050108 on amd64 and x86. Cleaned out old ebuilds.
+
+  05 Jun 2005; Joseph Jezak <josejx@gentoo.org> fte-20050108-r3.ebuild:
+  Marked ppc stable as this is the only version that builds on ppc.
+
+*fte-20050108-r3 (14 May 2005)
+
+  14 May 2005; Konstantin Arkhipov <voxus@gentoo.org> ChangeLog,
+  -fte-20050108.ebuild, -fte-20050108-r1.ebuild, -fte-20050108-r2.ebuild,
+  +fte-20050108-r3.ebuild:
+  Taking this one over. Fixed changeLog's formatting and bug #75250.
+  Cleaned out old ebuilds.
+  Fixed metadata.
+
+*fte-20050108-r2 (30 Jan 2005)
+
+  30 Jan 2005; Konstantin Arkhipov <voxus@gentoo.org>
+  +fte-20050108-r2.ebuild,
+  +files/fte-new_keyword.patch:
+  Added patch to workaround 'new keyword' problem on amd64.
+  Added ~amd64 keyword.  
+
+*fte-20050108-r1 (30 Jan 2005)
+
+  30 Jan 2005; Konstantin Arkhipov <voxus@gentoo.org> +fte-20050108-r1.ebuild:
+  Added ability to compile fte on systems without gpm.
+  Tested on ~x86 and ~amd64, but ~amd64 is awaiting 'new keyword' fix for
+  linux26-headers, so don't adding it now.
+
+*fte-20050108 (12 Jan 2005)
+
+  12 Jan 2005; Hanno Boeck <hanno@gentoo.org> +files/fte-gcc34,
+  +fte-20050108.ebuild:
+  Version bump and gcc 3.4-fix.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  fte-20020324-r1.ebuild, fte-20020324-r2.ebuild:
+  Masked fte-20020324-r2.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  fte-20020324-r1.ebuild:
+  Masked fte-20020324-r1.ebuild stable for ppc
+
+  15 Jun 2004; Jason Wever <weeve@gentoo.org> fte-20020324-r2.ebuild:
+  Stable on sparc.
+
+  07 Jun 2004; Daniel Black <dragonheart@gentoo.org>
+  -files/fte-20010819-gentoo.diff:
+  remove old patch
+
+  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  -fte-20010819-r2.ebuild, -fte-20010819-r3.ebuild, fte-20020324-r2.ebuild:
+  x86 stable. cleanout old version
+
+*fte-20020324-r2 (17 Mar 2004)
+
+  17 Mar 2004; Patrick Kursawe <phosphan@gentoo.org> fte-20020324-r2.ebuild,
+  files/configpath.patch:
+  Fixing bug #21352
+
+  13 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> fte-20010819-r2.ebuild,
+  fte-20010819-r3.ebuild, fte-20020324-r1.ebuild, fte-20020324.ebuild:
+  Don't assign default to S; header fix
+
+  11 Jan 2004; Jason Wever <weeve@gentoo.org> fte-20020324-r1.ebuild:
+  Marked stable on sparc.
+
+*fte-20020324-r1 (24 Jul 2003)
+
+  24 Jul 2003; Hanno Boeck <hanno@gentoo.org> fte-20020324-r1.ebuild,
+  files/fte:
+  Added fte executable script (from Debian package).
+
+  25 Jul 2003; Martin Holzer <mholzer@gentoo.org> fte-20010819-r2.ebuild,
+  fte-20010819-r3.ebuild, fte-20020324.ebuild:
+  Added slang to DEPEND. Closes #25128.
+
+*fte-20020324 (17 May 2002)
+
+  10 Feb 2003; Seemant Kulleen <seemant@gentoo.org> *.ebuild :
+  Removed redundant patches in files/.  Also, inherit eutils to use epatch
+  in the two older versions.  And change from cat | sed to just sed.  And
+  finally change sed expression delimiters from / to :, closing bug #15006
+  by Blu3 <david+gentoo.org@blue-labs.org>
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  18 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> fte-20020324.ebuild :
+  Updated to mirror://sourceforge in SRC_URI.
+
+  06 Aug 2002; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
+
+  17 May 2002; M.Thibaut <murphy@gentoo.org> fte-20020324.ebuild :
+  New version of FTE released - Resolves bug #2587. Also some changes in 
+  the ebuild that should make future releases easier. qfte has been disabled
+  because it doesn't compile.
+
+*fte-20010819-r3 (7 May 2002)
+
+  7 May 2002; Spider <spider@gentoo.org> fte-20010819-r3.ebuild fte-20010819-r2.ebuild :
+  fix sourceforge mirroring.
+
+*fte-20010819-r3 (27 Apr 2002)
+
+  27 Apr 2002; Seemant Kulleen <seemant@gentoo.org> fte-20010819-r3.ebuild
+  files/diges-fte-20010819-r3 :
+
+  Added USE based dependency on virtual/x11. Thanks to bug #2154 by
+  sascha-gentoo-bugzilla@silbe.org (Sascha Silbe)
+
+*fte-20010819-r2 (24 Apr 2002)
+
+  24 Apr 2002; Spider <spider@gentoo.org> ChangeLog fte-20010819-r2.ebuild : 
+
+  Seems my logic was flawed yesterday. this program needs gpm to compile
+at all. Blah
+
+*fte-20010819-r1 (23 Apr 2002)
+
+  23 Apr 2002; Spider <spider@gentoo.org> ChangeLog fte-20010819-r2.ebuild : 
+  Add missing patch in -r1 
+  (Wrong name)
+  Update with -r2 that adds gpm? ( ) dependency and ncurses dependency
+  closes bug #2004
+
+  30 Mar 2002; Dan Armak <danarmak@gentoo.org> changelog:
+
+  Added missnig unzip dep. (Sources are in a zip file.) Fixes #1403.
+
+*fte-20010819-r1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

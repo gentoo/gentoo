@@ -1,0 +1,60 @@
+# ChangeLog for games-misc/qlife
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/qlife/ChangeLog,v 1.16 2015/02/06 21:45:24 tupone Exp $
+
+  06 Feb 2015; Tupone Alfredo <tupone@gentoo.org> qlife-1.1.ebuild:
+  EAPI 5
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> qlife-1.1.ebuild:
+  Move Qt dependencies to the new category
+
+  31 May 2010; Joseph Jezak <josejx@gentoo.org> qlife-1.1.ebuild:
+  Marked ppc stable for bug #312849.
+
+  23 May 2010; Pacho Ramos <pacho@gentoo.org> qlife-1.1.ebuild:
+  stable amd64, bug 312849
+
+  08 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> qlife-1.1.ebuild:
+  x86 stable wrt bug #312849
+
+*qlife-1.1 (02 Mar 2010)
+
+  02 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> +qlife-1.1.ebuild:
+  Version bump wrt #264711, thanks to Markos Chandras for reporting.
+
+  14 Aug 2008; nixnut <nixnut@gentoo.org> qlife-0.9.ebuild:
+  Stable on ppc wrt bug 234453
+
+  12 Aug 2008; Raúl Porcel <armin76@gentoo.org> qlife-0.9.ebuild:
+  x86 stable wrt #234453
+
+  12 Aug 2008; Thomas Anderson <gentoofan23@gentoo.org> qlife-0.9.ebuild:
+  stable amd64, bug 234453
+
+  30 Jun 2008; Tristan Heaven <nyhm@gentoo.org> qlife-0.9.ebuild:
+  Add split qt-4 dependencies, bug #217170
+
+  10 Jun 2008; Michael Sterrett <mr_bones_@gentoo.org> qlife-0.9.ebuild:
+  use slotted deps for qt for bug #217170
+
+*qlife-0.9 (12 Oct 2006)
+
+  12 Oct 2006; Tristan Heaven <nyhm@gentoo.org> +qlife-0.9.ebuild:
+  Version bump
+
+  01 Jul 2005; Caleb Tennis <caleb@gentoo.org> qlife-0.7.ebuild,
+  qlife-0.8.ebuild:
+  Fix qmake dir per bug #97535
+
+*qlife-0.8 (02 Jun 2005)
+
+  02 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org> +qlife-0.8.ebuild:
+  version bump
+
+  17 Oct 2004; David Holm <dholm@gentoo.org> qlife-0.7.ebuild:
+  Added to ~ppc.
+
+*qlife-0.7 (12 Sep 2004)
+
+  12 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> +qlife-0.7.ebuild:
+  initial commit - ebuild submittedy by Adrian Fruehwirth via bug #63025

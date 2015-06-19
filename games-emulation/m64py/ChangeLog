@@ -1,0 +1,32 @@
+# ChangeLog for games-emulation/m64py
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/m64py/ChangeLog,v 1.5 2014/08/15 10:22:03 mgorny Exp $
+
+*m64py-0.2.1-r1 (15 Aug 2014)
+
+  15 Aug 2014; Michał Górny <mgorny@gentoo.org> +m64py-0.2.1-r1.ebuild,
+  -m64py-0.1.8.ebuild, -m64py-0.2.0.ebuild, metadata.xml:
+  Remove games team maintainership following the Council decision. Use standard
+  install layout. Drop old.
+
+*m64py-0.2.1 (08 May 2014)
+
+  08 May 2014; Michał Górny <mgorny@gentoo.org> +m64py-0.2.1.ebuild:
+  Version bump.
+
+*m64py-0.2.0 (22 Feb 2014)
+
+  22 Feb 2014; Michał Górny <mgorny@gentoo.org> +m64py-0.2.0.ebuild,
+  -m64py-0.1.6.ebuild:
+  Version bump.
+
+*m64py-0.1.8 (11 Jan 2014)
+
+  11 Jan 2014; Michał Górny <mgorny@gentoo.org> +m64py-0.1.8.ebuild:
+  Version bump.
+
+*m64py-0.1.6 (15 Dec 2013)
+
+  15 Dec 2013; Michał Górny <mgorny@gentoo.org> +m64py-0.1.6.ebuild,
+  +metadata.xml:
+  Introduce the PyQt4 UI for mupen64plus-2.0.

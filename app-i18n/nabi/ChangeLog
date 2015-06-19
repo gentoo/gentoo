@@ -1,0 +1,138 @@
+# ChangeLog for app-i18n/nabi
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/nabi/ChangeLog,v 1.34 2014/05/14 15:31:03 tomwij Exp $
+
+  14 May 2014; Tom Wijsman <TomWij@gentoo.org> nabi-0.99.10.ebuild,
+  nabi-0.99.11.ebuild, nabi-0.99.3.ebuild, nabi-0.99.8.ebuild:
+  [QA] EAPI 1 -> 5. Added missing dependencies based on ELF's NEEDED entries.
+
+*nabi-0.99.11 (02 May 2013)
+
+  02 May 2013; Naohiro Aota <naota@gentoo.org> +nabi-0.99.11.ebuild:
+  Version bump wrt #448658
+
+  10 Mar 2013; Naohiro Aota <naota@gentoo.org> nabi-0.15.ebuild,
+  nabi-0.17.ebuild, nabi-0.99.10.ebuild, nabi-0.99.3.ebuild, nabi-0.99.8.ebuild:
+  Update HOMEPAGE. #460684
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> nabi-0.15.ebuild,
+  nabi-0.17.ebuild, nabi-0.99.3.ebuild, nabi-0.99.8.ebuild,
+  nabi-0.99.10.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*nabi-0.99.10 (01 Dec 2011)
+
+  01 Dec 2011; Naohiro Aota <naota@gentoo.org> +nabi-0.99.10.ebuild:
+  Version bump. Updated by MyeongCheol Kim
+
+  30 Sep 2011; Naohiro Aota <naota@gentoo.org> nabi-0.15.ebuild,
+  +files/nabi-0.15-asneeded.patch, nabi-0.17.ebuild:
+  Fix --as-needed failure. Bug #384697
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> nabi-0.15.ebuild,
+  nabi-0.17.ebuild, nabi-0.99.3.ebuild:
+  Fix slot-dep on gtk+
+
+*nabi-0.99.8 (30 Jan 2011)
+
+  30 Jan 2011; MATSUU Takuto <matsuu@gentoo.org> -nabi-0.13.ebuild,
+  -nabi-0.14.ebuild, +nabi-0.99.8.ebuild, +files/xinput-nabi:
+  Version bumped, bug #352702. Added imsettings related file. Removed old
+  versions.
+
+*nabi-0.99.3 (02 Jun 2009)
+
+  02 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> +nabi-0.99.3.ebuild,
+  +files/nabi-0.99.3-asneeded.patch:
+  Version bump and add a patch to fix build with --as-needed (closes bug
+  #246898).
+
+  21 Jun 2008; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  nabi-0.17.ebuild:
+  mark ~ppc (bug #211730)
+
+  27 Mar 2008; nixnut <nixnut@gentoo.org> nabi-0.15.ebuild:
+  Stable on ppc wrt bug 108065
+
+  22 Mar 2008; Christian Faulhammer <opfer@gentoo.org> nabi-0.15.ebuild:
+  stable x86, bug 108065
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*nabi-0.17 (15 Jan 2007)
+
+  15 Jan 2007; MATSUU Takuto <matsuu@gentoo.org> +nabi-0.17.ebuild:
+  Version bumped, bug #160385.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> nabi-0.13.ebuild,
+  nabi-0.14.ebuild, nabi-0.15.ebuild:
+  Convert to use elog.
+
+  14 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> nabi-0.13.ebuild,
+  nabi-0.14.ebuild, nabi-0.15.ebuild:
+  Add missing pkgconfig dependencies, thanks to Patrick Lauer in bug #151278.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> nabi-0.14.ebuild:
+  Stable on ppc.
+
+*nabi-0.15 (09 May 2005)
+
+  09 May 2005; Mamoru KOMACHI <usata@gentoo.org> metadata.xml,
+  nabi-0.14.ebuild, +nabi-0.15.ebuild:
+  Version bumped. Requested by Choe Hwanjin ;) This closes bug #91844.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> nabi-0.13.ebuild:
+  Stable on ppc.
+
+  12 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> nabi-0.13.ebuild,
+  nabi-0.14.ebuild:
+  added ~amd64 to KEYWORDS, fixes #76981. also removed default src_compile and
+  COPYING doesnt get installed any longer.
+
+*nabi-0.14 (31 Aug 2004)
+
+  31 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> -nabi-0.10.ebuild,
+  -nabi-0.12.ebuild, +nabi-0.14.ebuild, -nabi-0.9.ebuild:
+  Version bumped. This closes bug #62075. Cleaned old versions.
+
+  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  nabi-0.10.ebuild, nabi-0.12.ebuild, nabi-0.13.ebuild, nabi-0.9.ebuild:
+  QA - IUSE fix
+
+  29 Apr 2004; David Holm <dholm@gentoo.org> nabi-0.13.ebuild:
+  Added to ~ppc.
+
+*nabi-0.13 (29 Apr 2004)
+
+  29 Apr 2004; Jay Kwak <jayskwak@gentoo.org> nabi-0.13.ebuild,
+  version update
+
+  13 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> nabi-0.10.ebuild,
+  nabi-0.12.ebuild, nabi-0.9.ebuild:
+  Don't assign default to S; header fix
+
+*nabi-0.12 (26 Feb 2004)
+  26 Feb 2004: Jay Kwak <jayskwak@gentoo.org> nabi-0.12.ebuild:
+  ChangeLog : changed KEYWORDS to x86
+
+*nabi-0.10 (25 Jan 2004)
+  25 Jan 2004: Jay Kwak <jayskwak@gentoo.org> nabi-0.10.ebuild:
+  ChangeLog : changed to x86
+
+*nabi-0.12 (25 Jan 2004)
+  25 Jan 2004: Jay Kwak <jayskwak@gentoo.org> nabi-0.12.ebuild:
+  version update
+
+*nabi-0.10 (17 Nov 2003)
+  17 Nov 2003: Jay Kwak <jayskwak@gentoo.org> nabi-0.10.ebuild:
+  version update
+
+*nabi-0.9 (17 Nov 2003)
+  17 Nov 2003: Jay Kwak <jayskwak@gentoo.org> nabi-0.9.ebuild:
+  ChangeLog : changed to x86
+
+*nabi-0.9 (26 Oct 2003)
+
+  26 Oct 2003: Jay Kwak <jayskwak@gentoo.org> nabi-0.9.ebuild:
+  New release

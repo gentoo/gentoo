@@ -1,0 +1,58 @@
+# ChangeLog for dev-php/PHP_Timer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PHP_Timer/ChangeLog,v 1.8 2015/05/06 16:29:37 grknight Exp $
+
+  06 May 2015; Brian Evans <grknight@gentoo.org> -PHP_Timer-1.0.2.ebuild:
+  Drop old
+
+  25 Feb 2015; Agostino Sarubbo <ago@gentoo.org> PHP_Timer-1.0.5.ebuild:
+  Stable for x86, wrt bug #535302
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org> PHP_Timer-1.0.5.ebuild:
+  Stable for amd64, wrt bug #535302
+
+  14 Feb 2015; Jeroen Roovers <jer@gentoo.org> PHP_Timer-1.0.5.ebuild:
+  Stable for HPPA (bug #535302).
+
+*PHP_Timer-1.0.5 (07 Nov 2014)
+
+  07 Nov 2014; Brian Evans <grknight@gentoo.org> +PHP_Timer-1.0.5.ebuild:
+  Version bump
+
+  23 Jun 2013; Jeroen Roovers <jer@gentoo.org> PHP_Timer-1.0.2.ebuild:
+  Stable for HPPA too.
+
+  22 Jun 2012; Matti Bickel <mabi@gentoo.org> -PHP_Timer-1.0.0.ebuild:
+  remove old
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> php-timer-1.0.2.ebuild:
+  x86 stable wrt bug #404709
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> php-timer-1.0.2.ebuild:
+  Stable for amd64, wrt bug #404709
+
+  29 Dec 2011; Ole Markus With <olemarkus@gentoo.org> php-timer-1.0.0.ebuild,
+  php-timer-1.0.2.ebuild:
+  Fixed HOMEPAGE (bug 396373)
+
+*php-timer-1.0.2 (03 Nov 2011)
+
+  03 Nov 2011; Ole Markus With <olemarkus@gentoo.org> +php-timer-1.0.2.ebuild:
+  Version bump
+
+  25 Jul 2011; Ole Markus With <olemarkus@gentoo.org> +files/channel.xml:
+  Added missing channel.xml file
+
+  24 May 2011; Markos Chandras <hwoarang@gentoo.org>
+  PEAR-PHP_Timer-1.0.0.ebuild:
+  Stable on amd64 wrt bug #368293
+
+  23 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  PEAR-PHP_Timer-1.0.0.ebuild:
+  x86 stable wrt bug #368293
+
+*PEAR-PHP_Timer-1.0.0 (04 Oct 2010)
+
+  04 Oct 2010; Markus Ullmann <jokey@gentoo.org>
+  +PEAR-PHP_Timer-1.0.0.ebuild, +metadata.xml:
+  Initial import for phpunit-3.5

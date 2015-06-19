@@ -1,0 +1,57 @@
+--- build.xml.orig	2009-01-25 18:14:28.000000000 -0700
++++ build.xml	2014-02-20 11:22:45.000000000 -0700
+@@ -164,14 +164,18 @@
+ 
+         <mkdir dir="tools"/>
+         <!--download the BND library for creating entries in the manifest.mf file which make it a compliant OSGi bundle. See http://www.osgi.org/ -->
++        <!--
+         <java classname="ca.odell.glazedlists.impl.HttpClient">
+             <classpath path="${classes.dir}"/>
+             <arg value="https://glazedlists.dev.java.net/files/documents/1073/110958/bnd.jar"/>
+             <arg value="tools/bnd.jar"/>
+         </java>
++        -->
+ 
+         <!-- prepare the bnd task which generates OSGi bundle JARs -->
++        <!--
+         <taskdef resource="aQute/bnd/ant/taskdef.properties" classpath="tools/bnd.jar"/>
++        -->
+ 
+         <!-- create a normal jar file -->
+         <jar destfile="${target.dir}/${jar.file}" update="true" index="true">
+@@ -184,13 +188,19 @@
+         </jar>
+ 
+         <!-- use the BND tool to generate an OSGi jar from scratch, using the original JAR file as input -->
++        <!--
+         <bnd classpath="${target.dir}/${jar.file}" output="${target.dir}/${jar.file}.osgi" exceptions="true" files="glazedlists.bnd"/>
++        -->
+ 
+         <!-- delete the original jar file -->
++        <!--
+         <delete file="${target.dir}/${jar.file}"/>
++        -->
+ 
+         <!-- rename the OSGi Bundle to the orignal jar file's name -->
++        <!--
+         <move file="${target.dir}/${jar.file}.osgi" toFile="${target.dir}/${jar.file}"/>
++        -->
+     </target>
+ 
+ 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@@ -201,7 +211,7 @@
+ 		description="Compile the default components of the source.">
+ 	</target>
+ 
+-	<target name="compileall" depends="core,migrationkit,swing,io,calculation,swt,ktable,issuesbrowser,swinglabs,hibernate,icu4j"
++	<target name="compileall" depends="core,migrationkit,swing,io"
+ 		description="Compile all components of the source.">
+ 	</target>
+ 
+@@ -1032,4 +1042,4 @@
+         </delete>
+     </target>
+ 
+-</project>
+\ No newline at end of file
++</project>

@@ -1,0 +1,530 @@
+# ChangeLog for dev-perl/POE
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/POE/ChangeLog,v 1.135 2015/01/31 13:28:41 zlogene Exp $
+
+  31 Jan 2015; Mikle Kolyada <zlogene@gentoo.org> -POE-1.350.0-r1.ebuild,
+  -POE-1.354.0-r1.ebuild, POE-1.356-r1.ebuild:
+  Mark stable. Drop old.
+
+*POE-1.350.0-r1 (24 Aug 2014)
+*POE-1.354.0-r1 (24 Aug 2014)
+*POE-1.356-r1 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org> +POE-1.350.0-r1.ebuild,
+  +POE-1.354.0-r1.ebuild, +POE-1.356-r1.ebuild, -POE-1.350.0.ebuild,
+  -POE-1.354.0.ebuild, -POE-1.356.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  07 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org> POE-1.350.0.ebuild,
+  POE-1.354.0.ebuild, POE-1.356.ebuild:
+  Depend on dev-perl/Filter instead of virtual/perl-Filter
+
+*POE-1.356 (18 Sep 2013)
+
+  18 Sep 2013; Patrick Lauer <patrick@gentoo.org> +POE-1.356.ebuild:
+  Bump
+
+  29 Jul 2012; Torsten Veller <tove@gentoo.org> -POE-1.289.ebuild,
+  -POE-1.312.0.ebuild, -POE-1.351.0.ebuild, -POE-1.353.0.ebuild:
+  Cleanup
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> POE-1.289.ebuild,
+  POE-1.312.0.ebuild, POE-1.350.0.ebuild, POE-1.351.0.ebuild,
+  POE-1.353.0.ebuild, POE-1.354.0.ebuild:
+  Drop sparc keywords
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*POE-1.354.0 (18 May 2012)
+
+  18 May 2012; Torsten Veller <tove@gentoo.org> +POE-1.354.0.ebuild:
+  Version bump
+
+*POE-1.353.0 (08 May 2012)
+
+  08 May 2012; Torsten Veller <tove@gentoo.org> +POE-1.353.0.ebuild:
+  Version bump
+
+  16 Apr 2012; Brent Baude <ranger@gentoo.org> POE-1.350.0.ebuild:
+  Marking POE-1.350.0 ppc for bug 410937
+
+  07 Apr 2012; Jeff Horelick <jdhore@gentoo.org> POE-1.350.0.ebuild:
+  marked x86 per bug 410937
+
+  06 Apr 2012; Agostino Sarubbo <ago@gentoo.org> POE-1.350.0.ebuild:
+  Stable for amd64, wrt bug #410937
+
+*POE-1.351.0 (13 Mar 2012)
+
+  13 Mar 2012; Torsten Veller <tove@gentoo.org> +POE-1.351.0.ebuild:
+  Version bump
+
+*POE-1.350.0 (19 Dec 2011)
+
+  19 Dec 2011; Torsten Veller <tove@gentoo.org> +POE-1.350.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -POE-1.311.0.ebuild:
+  Cleanup
+
+*POE-1.312.0 (05 Aug 2011)
+
+  05 Aug 2011; Torsten Veller <tove@gentoo.org> +POE-1.312.0.ebuild:
+  Version bump
+
+  29 Jul 2011; Torsten Veller <tove@gentoo.org> -POE-1.294.ebuild,
+  -POE-1.299.ebuild, -POE-1.310.0.ebuild:
+  Cleanup
+
+*POE-1.311.0 (13 May 2011)
+
+  13 May 2011; Torsten Veller <tove@gentoo.org> +POE-1.311.0.ebuild:
+  Version bump
+
+*POE-1.310.0 (20 Apr 2011)
+
+  20 Apr 2011; Torsten Veller <tove@gentoo.org> +POE-1.310.0.ebuild:
+  Version bump
+
+*POE-1.299 (04 Feb 2011)
+
+  04 Feb 2011; Torsten Veller <tove@gentoo.org> +POE-1.299.ebuild:
+  Version bump
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -POE-1.292.ebuild,
+  -POE-1.293.ebuild:
+  Cleanup
+
+*POE-1.294 (22 Nov 2010)
+
+  22 Nov 2010; Torsten Veller <tove@gentoo.org> +POE-1.294.ebuild:
+  Version bump
+
+*POE-1.293 (09 Sep 2010)
+
+  09 Sep 2010; Torsten Veller <tove@gentoo.org> +POE-1.293.ebuild:
+  Version bump
+
+  15 Aug 2010; Torsten Veller <tove@gentoo.org> -POE-1.003-r1.ebuild,
+  -POE-1.287.ebuild, -POE-1.291.ebuild:
+  Cleanup
+
+*POE-1.292 (04 Aug 2010)
+
+  04 Aug 2010; Torsten Veller <tove@gentoo.org> +POE-1.292.ebuild:
+  Version bump
+
+*POE-1.291 (29 Jul 2010)
+
+  29 Jul 2010; Torsten Veller <tove@gentoo.org> +POE-1.291.ebuild:
+  Version bump
+
+  27 Jun 2010; <nixnut@gentoo.org> POE-1.289.ebuild:
+  ppc stable #323529
+
+  21 Jun 2010; Raúl Porcel <armin76@gentoo.org> POE-1.289.ebuild:
+  sparc stable wrt #323529
+
+  15 Jun 2010; Torsten Veller <tove@gentoo.org> POE-1.289.ebuild:
+  Stable on amd64 and x86 (#323529)
+
+  18 Apr 2010; Torsten Veller <tove@gentoo.org> -POE-1.280.ebuild,
+  -POE-1.283.ebuild, -POE-1.284.ebuild, -POE-1.286.ebuild:
+  Cleanup
+
+*POE-1.289 (07 Apr 2010)
+
+  07 Apr 2010; Torsten Veller <tove@gentoo.org> +POE-1.289.ebuild:
+  Version bump
+
+*POE-1.287 (19 Feb 2010)
+
+  19 Feb 2010; Torsten Veller <tove@gentoo.org> +POE-1.287.ebuild:
+  Version bump
+
+*POE-1.286 (15 Feb 2010)
+
+  15 Feb 2010; Torsten Veller <tove@gentoo.org> +POE-1.286.ebuild:
+  Version bump
+
+*POE-1.284 (17 Jan 2010)
+
+  17 Jan 2010; Torsten Veller <tove@gentoo.org> +POE-1.284.ebuild:
+  Version bump
+
+*POE-1.283 (09 Jan 2010)
+
+  09 Jan 2010; Torsten Veller <tove@gentoo.org> +POE-1.283.ebuild:
+  Version bump
+
+  24 Dec 2009; Torsten Veller <tove@gentoo.org> -POE-1.269.ebuild:
+  Cleanup
+
+  21 Dec 2009; Raúl Porcel <armin76@gentoo.org> POE-1.280.ebuild:
+  Add ~sparc wrt #284740
+
+  27 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> POE-1.280.ebuild:
+  Re-Keywording for ppc, bug 289468
+
+*POE-1.280 (17 Oct 2009)
+
+  17 Oct 2009; Torsten Veller <tove@gentoo.org> +POE-1.280.ebuild:
+  Version bump
+
+  12 Oct 2009; Torsten Veller <tove@gentoo.org> -POE-1.005.ebuild,
+  -POE-1.006.ebuild, -POE-1.007.ebuild, -POE-1.020.ebuild,
+  -POE-1.266.ebuild, -POE-1.267.ebuild, -POE-1.268.ebuild:
+  Cleanup
+
+*POE-1.269 (24 Sep 2009)
+
+  24 Sep 2009; Torsten Veller <tove@gentoo.org> +POE-1.269.ebuild:
+  Version bump
+
+*POE-1.268 (17 Sep 2009)
+
+  17 Sep 2009; Torsten Veller <tove@gentoo.org> +POE-1.268.ebuild:
+  Version bump
+
+*POE-1.267 (08 Sep 2009)
+
+  08 Sep 2009; Torsten Veller <tove@gentoo.org> +POE-1.267.ebuild:
+  Version bump
+
+*POE-1.266 (30 Aug 2009)
+
+  30 Aug 2009; Torsten Veller <tove@gentoo.org> +POE-1.266.ebuild:
+  Version bump
+
+*POE-1.020 (28 Aug 2009)
+
+  28 Aug 2009; Torsten Veller <tove@gentoo.org> +POE-1.020.ebuild:
+  Version bump
+
+*POE-1.007 (25 Aug 2009)
+
+  25 Aug 2009; Robin H. Johnson <robbat2@gentoo.org> +POE-1.007.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  10 Aug 2009; Torsten Veller <tove@gentoo.org> POE-1.003-r1.ebuild,
+  POE-1.005.ebuild, POE-1.006.ebuild:
+  perl-core/Filter -> virtual/perl-Filter
+
+  19 Jul 2009; Torsten Veller <tove@gentoo.org> POE-1.003-r1.ebuild,
+  POE-1.005.ebuild, POE-1.006.ebuild:
+  IO-Compress replaces Compress-Zlib
+
+*POE-1.006 (31 May 2009)
+
+  31 May 2009; Torsten Veller <tove@gentoo.org> +POE-1.006.ebuild:
+  Version bump
+
+  01 May 2009; Torsten Veller <tove@gentoo.org> -POE-0.99.89.ebuild,
+  -POE-1.003.ebuild, -POE-1.004.ebuild:
+  Cleanup
+
+*POE-1.005 (21 Apr 2009)
+
+  21 Apr 2009; Torsten Veller <tove@gentoo.org> +POE-1.005.ebuild:
+  Version bump
+
+*POE-1.004 (03 Apr 2009)
+
+  03 Apr 2009; Torsten Veller <tove@gentoo.org> +POE-1.004.ebuild:
+  Version bump
+
+  18 Mar 2009; Joseph Jezak <josejx@gentoo.org> POE-1.003-r1.ebuild:
+  Marked ppc stable for bug #261750.
+
+  09 Mar 2009; Ferris McCormick <fmccor@gentoo.org> POE-1.003-r1.ebuild:
+  Sparc stable, Bug #261750.
+
+  09 Mar 2009; Markus Meier <maekke@gentoo.org> POE-1.003-r1.ebuild:
+  amd64/x86 stable, bug #261750
+
+*POE-1.003-r1 (07 Mar 2009)
+
+  07 Mar 2009; Patrick Lauer <patrick@gentoo.org> +POE-1.003-r1.ebuild:
+  Trivial fix to the ebuild to fix #261609
+
+  09 Jan 2009; Joseph Jezak <josejx@gentoo.org> POE-1.003.ebuild:
+  Marked ~ppc for bug #251655.
+
+*POE-1.003 (19 Dec 2008)
+
+  19 Dec 2008; Torsten Veller <tove@gentoo.org> +POE-1.003.ebuild:
+  Version bump
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org> POE-0.99.89.ebuild:
+  New virtuals: Compress-Zlib
+
+  15 Sep 2008; Torsten Veller <tove@gentoo.org> -POE-0.26.ebuild,
+  -POE-0.32.02.ebuild, -POE-0.38.ebuild, -POE-0.95.00.ebuild,
+  -POE-0.99.17.ebuild:
+  Cleanup
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org> POE-0.99.89.ebuild:
+  Stable on ppc.
+
+  13 Jul 2007; Raúl Porcel <armin76@gentoo.org> POE-0.26.ebuild,
+  POE-0.99.89.ebuild:
+  x86 stable and drop alpha keyword
+
+  21 Jun 2007; Michael Cummings <mcummings@gentoo.org> POE-0.99.89.ebuild:
+  Marking sparc stable
+
+  15 Jun 2007; Michael Cummings <mcummings@gentoo.org> POE-0.99.89.ebuild:
+  Marking amd64 stable
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org> POE-0.99.17.ebuild:
+  ppc stable
+
+  18 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> POE-0.99.17.ebuild:
+  Stable on sparc
+
+  09 Apr 2007; Michael Cummings <mcummings@gentoo.org> POE-0.99.17.ebuild:
+  Marking stable amd64
+
+*POE-0.99.89 (06 Apr 2007)
+
+  06 Apr 2007; Michael Cummings <mcummings@gentoo.org> +POE-0.99.89.ebuild:
+  Version bump
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> POE-0.95.00.ebuild:
+  Stable on x86, bug #169152.
+
+  08 Jan 2007; Michael Cummings <mcummings@gentoo.org> POE-0.26.ebuild,
+  POE-0.32.02.ebuild, POE-0.38.ebuild, POE-0.95.00.ebuild:
+  Marking sparc stable
+
+  08 Jan 2007; Michael Cummings <mcummings@gentoo.org> -POE-0.35.02.ebuild,
+  -POE-0.37.ebuild, POE-0.95.00.ebuild:
+  Marking amd64 stable
+
+*POE-0.99.17 (05 Jan 2007)
+
+  05 Jan 2007; Michael Cummings <mcummings@gentoo.org> +POE-0.99.17.ebuild:
+  Version bump
+
+  24 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org> POE-0.38.ebuild:
+  Stable on ppc.
+
+  24 Nov 2006; Michael Cummings <mcummings@gentoo.org> POE-0.38.ebuild:
+  sparc stable
+
+  24 Nov 2006; Michael Cummings <mcummings@gentoo.org> POE-0.38.ebuild:
+  amd64 stable
+
+  18 Nov 2006; Saleem Abdulrasool <compnerd@gentoo.org> POE-0.26.ebuild,
+  POE-0.32.02.ebuild, POE-0.35.02.ebuild, POE-0.37.ebuild, POE-0.38.ebuild,
+  POE-0.95.00.ebuild:
+  Dropping gtk useflag for gnome-1.x
+
+*POE-0.95.00 (10 Nov 2006)
+
+  10 Nov 2006; Michael Cummings <mcummings@gentoo.org> +POE-0.95.00.ebuild:
+  Version bump; confirmed with upstream it really made a huge version number
+  leap.
+
+  24 Oct 2006; Michael Cummings <mcummings@gentoo.org> POE-0.26.ebuild,
+  POE-0.32.02.ebuild, POE-0.35.02.ebuild, POE-0.37.ebuild, POE-0.38.ebuild:
+  Bug 17808, switching from tcltk to tk USE flag
+
+*POE-0.38 (25 Sep 2006)
+
+  25 Sep 2006; Michael Cummings <mcummings@gentoo.org> -POE-0.23.ebuild,
+  -POE-0.23-r1.ebuild, -POE-0.30.09.ebuild, -POE-0.31.01.ebuild,
+  -POE-0.33.ebuild, -POE-0.34.01.ebuild, -POE-0.36.01.ebuild,
+  +POE-0.38.ebuild:
+  Version bump; cleaning
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org> POE-0.35.02.ebuild:
+  ppc stable
+
+*POE-0.37 (10 Sep 2006)
+
+  10 Sep 2006; Yuval Yaari <yuval@gentoo.org> +POE-0.37.ebuild:
+  Version bump
+
+  28 Aug 2006; Michael Cummings <mcummings@gentoo.org> POE-0.35.02.ebuild:
+  Marking amd64, sparc stable
+
+*POE-0.36.01 (20 Aug 2006)
+
+  20 Aug 2006; Michael Cummings <mcummings@gentoo.org> +POE-0.36.01.ebuild:
+  Version bump
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org> POE-0.23.ebuild,
+  POE-0.23-r1.ebuild, POE-0.26.ebuild, POE-0.30.09.ebuild,
+  POE-0.31.01.ebuild, POE-0.32.02.ebuild, POE-0.33.ebuild,
+  POE-0.34.01.ebuild, POE-0.35.02.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  06 Jul 2006; Michael Cummings <mcummings@gentoo.org> POE-0.32.02.ebuild:
+  Resetting to ~amd64 - bug 126003
+
+  02 Jul 2006; Michael Cummings <mcummings@gentoo.org> POE-0.32.02.ebuild:
+  Marking stable amd64
+
+*POE-0.35.02 (23 Jun 2006)
+
+  23 Jun 2006; Michael Cummings <mcummings@gentoo.org> +POE-0.35.02.ebuild:
+  Version bump upstream
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org> POE-0.33.ebuild,
+  POE-0.34.01.ebuild:
+  Marking sparc stable
+
+*POE-0.34.01 (01 May 2006)
+
+  01 May 2006; <mcumming@gentoo.org> +POE-0.34.01.ebuild:
+  Version bump
+
+  26 Mar 2006; Aron Griffis <agriffis@gentoo.org> POE-0.26.ebuild:
+  Remove ~ia64 since gtk-perl is no longer supported on Gentoo/ia64
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org> POE-0.23.ebuild,
+  POE-0.23-r1.ebuild, POE-0.26.ebuild, POE-0.30.09.ebuild,
+  POE-0.31.01.ebuild, POE-0.32.02.ebuild, POE-0.33.ebuild:
+  Virtuals for some perl-core deps
+
+  15 Jan 2006; Michael Hanselmann <hansmi@gentoo.org> POE-0.32.02.ebuild:
+  Stable on ppc.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org> POE-0.32.02.ebuild:
+  marking sparc x86 stable
+
+*POE-0.33 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org> +POE-0.33.ebuild:
+  Version bump upstream
+
+  30 Dec 2005; <mcumming@gentoo.org> POE-0.32.02.ebuild:
+  Updated dep on Term-Cap. Term-Cap appears to only be distributed with perl
+  installs now (not seperately).
+
+  29 Dec 2005; <mcumming@gentoo.org> POE-0.23-r1.ebuild, POE-0.23.ebuild,
+  POE-0.26.ebuild, POE-0.30.09.ebuild, POE-0.31.01.ebuild, POE-0.32.02.ebuild:
+  Updating dep to perl-core/Filter
+
+  20 Nov 2005; Joseph Jezak <josejx@gentoo.org> POE-0.32.02.ebuild:
+  Marked ~ppc for bug #112988.
+
+*POE-0.32.02 (19 Nov 2005)
+
+  19 Nov 2005; <mcumming@gentoo.org> +POE-0.32.02.ebuild:
+  Version bump
+
+  08 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> POE-0.31.01.ebuild:
+  Stable on ppc.
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> POE-0.26.ebuild:
+  add ~ia64
+
+  19 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> POE-0.31.01.ebuild:
+  Added to ~ppc.
+
+  02 Jun 2005; Michael Cummings <mcummings@gentoo.org> POE-0.30.09.ebuild,
+  POE-0.31.01.ebuild:
+  Bug 94741
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> POE-0.31.01.ebuild:
+  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> POE-0.30.09.ebuild:
+  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> POE-0.26.ebuild:
+  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> POE-0.23.ebuild:
+  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> POE-0.23-r1.ebuild:
+  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> POE-0.31.01.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> POE-0.30.09.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> POE-0.31.01.ebuild:
+  dev-perl/Test-Harness => perl-core/Test-Harness migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> POE-0.31.01.ebuild:
+  dev-perl/Storable => perl-core/Storable migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> POE-0.30.09.ebuild:
+  dev-perl/Storable => perl-core/Storable migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> POE-0.26.ebuild:
+  dev-perl/Storable => perl-core/Storable migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> POE-0.23.ebuild:
+  dev-perl/Storable => perl-core/Storable migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> POE-0.23-r1.ebuild:
+  dev-perl/Storable => perl-core/Storable migration
+
+*POE-0.31.01 (23 May 2005)
+
+  23 May 2005; Michael Cummings <mcummings@gentoo.org> +POE-0.31.01.ebuild:
+  Version bump upstream
+
+  22 May 2005; Michael Cummings <mcummings@gentoo.org> POE-0.30.09.ebuild:
+  Unmasking for sparc
+
+  22 May 2005; Michael Cummings <mcummings@gentoo.org> POE-0.30.09.ebuild:
+  unmasking x86
+
+  07 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> POE-0.26.ebuild:
+  Stable on ppc.
+
+*POE-0.30.09 (06 Mar 2005)
+
+  06 Mar 2005; Michael Cummings <mcummings@gentoo.org> +POE-0.30.09.ebuild:
+  New version of POE
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org> POE-0.26.ebuild:
+  Stable on alpha.
+
+  25 Feb 2004; Sven Blumenstein <bazik@gentoo.org> POE-0.26.ebuild:
+  Stable on sparc, thanks to Josh Grebe <josh@brokedown.net> for testing!
+
+*POE-0.26 (31 May 2003)
+
+  31 May 2003; Michael Cummings <mcummings@gentoo.org> POE-0.26.ebuild:
+  New version of POE, corrected missing DEPENDS
+
+*POE-0.23-r1 (25 Mar 2003)
+
+  25 Mar 2003; Seemant Kulleen <seemant@gentoo.org> POE-0.23-r1.ebuild,
+  POE-0.23.ebuild:
+  changed curses to ncurses -- who comes up with this crap??
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*POE-0.23 (25 Oct 2002)
+
+  25 Oct 2002; <mcummings@gentoo.org> POE-0.23.ebuild :
+  New version contains additional features and support, resolves some
+  bugs with earlier example code.
+
+*POE-0.19 (11 May 2002)
+
+  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> POE-0.19.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  11 May 2002; Arcady Genkin <agenkin@thpoon.com> POE-0.19.ebuild :
+
+  Initial version.

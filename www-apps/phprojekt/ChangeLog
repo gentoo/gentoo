@@ -1,0 +1,184 @@
+# ChangeLog for www-apps/phprojekt
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/phprojekt/ChangeLog,v 1.34 2012/12/23 13:35:16 mabi Exp $
+
+  23 Dec 2012; Matti Bickel <mabi@gentoo.org> -phprojekt-5.2.2.ebuild:
+  remove old
+
+  18 Oct 2012; Anthony G. Basile <blueness@gentoo.org> phprojekt-6.1.2.ebuild:
+  stable ppc, bug #429226
+
+  17 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> phprojekt-6.1.2.ebuild:
+  x86 stable wrt bug #429226
+
+  18 Sep 2012; Tim Harder <radhermit@gentoo.org> phprojekt-5.2.2.ebuild:
+  Fix quoting.
+
+  18 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+*phprojekt-6.1.2 (25 Jun 2012)
+
+  25 Jun 2012; Matti Bickel <mabi@gentoo.org> +files/postinstall-6-en.txt,
+  +phprojekt-6.1.2.ebuild:
+  version bump. note that version 6 is a rewrite, but can import your version 5
+  configuration/data at the end of setup.
+
+  03 Jun 2007; Renat Lumpau <rl03@gentoo.org>
+  -files/phprojekt-4.2.3-fix-chat-vuln.diff, -phprojekt-4.2.3.ebuild:
+  Clean out old version
+
+  02 Jun 2007; nixnut <nixnut@gentoo.org> phprojekt-5.2.2.ebuild:
+  Stable on ppc wrt bug 170905
+
+  31 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  phprojekt-5.2.2.ebuild:
+  stable x86, security bug 170905
+
+*phprojekt-5.2.2 (28 May 2007)
+
+  28 May 2007; Renat Lumpau <rl03@gentoo.org> -phprojekt-5.2.ebuild,
+  +phprojekt-5.2.2.ebuild:
+  Version bump, bug #170905
+
+*phprojekt-5.2 (03 Jan 2007)
+
+  03 Jan 2007; Renat Lumpau <rl03@gentoo.org> phprojekt-4.2.3.ebuild,
+  -phprojekt-5.1.2.ebuild, +phprojekt-5.2.ebuild:
+  Version bump
+
+  23 Nov 2006; Francesco Riosa <vivo@gentoo.org> phprojekt-4.2.3.ebuild,
+  phprojekt-5.1.2.ebuild:
+  dev-db/mysql => virtual/mysql
+
+*phprojekt-5.1.2 (04 Oct 2006)
+
+  04 Oct 2006; Renat Lumpau <rl03@gentoo.org> -phprojekt-5.1.1.ebuild,
+  +phprojekt-5.1.2.ebuild:
+  Version bump, security bug #149672.
+
+*phprojekt-5.1.1 (03 Sep 2006)
+
+  03 Sep 2006; Renat Lumpau <rl03@gentoo.org> -phprojekt-5.0.1.ebuild,
+  +phprojekt-5.1.1.ebuild:
+  Version bump
+
+  09 Jul 2006; Renat Lumpau <rl03@gentoo.org> phprojekt-4.2.3.ebuild,
+  phprojekt-5.0.1.ebuild:
+  einfo->elog
+
+  31 Oct 2005; Renat Lumpau <rl03@gentoo.org> phprojekt-5.0.1.ebuild:
+  Fixed SRC_URI
+
+  25 Oct 2005; Renat Lumpau <rl03@gentoo.org> phprojekt-5.0.1.ebuild:
+  Fixed bug #110415.
+
+*phprojekt-5.0.1 (23 Oct 2005)
+
+  23 Oct 2005; Renat Lumpau <rl03@gentoo.org> -phprojekt-5.0.ebuild,
+  +phprojekt-5.0.1.ebuild:
+  Version bump.
+
+*phprojekt-5.0 (22 Aug 2005)
+
+  22 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
+  +phprojekt-5.0.ebuild:
+  Housekeeping
+
+  22 Aug 2005; Renat Lumpau <rl03@gentoo.org> -phprojekt-3.2a.ebuild,
+  -phprojekt-4.0-r1.ebuild, -phprojekt-4.1.ebuild, -phprojekt-4.2.ebuild,
+  -phprojekt-4.2-r1.ebuild, -phprojekt-4.2-r2.ebuild:
+  Cleaning old versions
+
+  30 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  phprojekt-4.2.3.ebuild:
+  Stable on ppc.
+
+*phprojekt-4.2.3 (29 May 2005)
+
+  29 May 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/phprojekt-4.2.3-fix-chat-vuln.diff, +phprojekt-4.2.3.ebuild:
+  Version bump; added patch to fix chat script insertion vuln for sec bug 89950.
+
+  17 Feb 2005; Robin H. Johnson <robbat2@gentoo.org>
+  phprojekt-4.2-r1.ebuild, phprojekt-4.2-r2.ebuild:
+  Bug #69831: Ensure unzip is in DEPEND.
+
+  29 Dec 2004; Stuart Herbert <stuart@gentoo.org> :
+  Security fix; see bug #75858
+
+  08 Dec 2004; Olivier Crete <tester@gentoo.org> phprojekt-4.2-r1.ebuild:
+  Stable on x86 wrt security bug 73021
+
+  08 Dec 2004; <SeJo@gentoo.org> phprojekt-4.2-r1.ebuild:
+  stable on ppc gsla: 73021
+
+*phprojekt-4.2-r1 (07 Dec 2004)
+
+  07 Dec 2004; Stuart Herbert <stuart@gentoo.org> +phprojekt-4.2-r1.ebuild:
+  Added replacement setup.php; fixes bug #73021
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  phprojekt-4.0-r1.ebuild, phprojekt-4.1.ebuild, phprojekt-4.2.ebuild:
+  Masked phprojekt-4.2.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  phprojekt-4.0-r1.ebuild, phprojekt-4.1.ebuild:
+  Masked phprojekt-4.1.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  phprojekt-4.0-r1.ebuild:
+  Masked phprojekt-4.0-r1.ebuild stable for ppc
+
+  30 Aug 2004; Renat Lumpau <rl03@gentoo.org> phprojekt-4.2.ebuild:
+  Fixed DEPEND/RDEPEND, removed unneeded src_compile
+
+  25 Aug 2004; Renat Lumpau <rl03@gentoo.org> phprojekt-4.2.ebuild:
+  Fixed sleep and pkg_compile insanity.
+
+*phprojekt-4.2 (19 Aug 2004)
+
+  19 Aug 2004; Renat Lumpau <rl03@gentoo.org> +files/postinstall-en.txt,
+  +phprojekt-4.2.ebuild:
+  Version bump (bug #56134). Updated for webapp.eclass (bug #52131).
+
+*phprojekt-3.2a (19 Aug 2004)
+
+  19 Aug 2004; Renat Lumpau <rl03@gentoo.org> +metadata.xml,
+  +phprojekt-3.2a.ebuild, +phprojekt-4.0-r1.ebuild, +phprojekt-4.1.ebuild:
+  Moved from app-office/phprojekt to www-apps/phprojekt.
+
+  21 Apr 2004; Martin Holzer <mholzer@gentoo.org> phprojekt-4.0-r1.ebuild,
+  phprojekt-4.1.ebuild:
+  moving webapp-detect into pkg_setup. closes 44780 and 48380.
+
+*phprojekt-4.1 (30 Dec 2003)
+
+  30 Dec 2003; Martin Holzer <mholzer@gentoo.org> phprojekt-4.0-r1.ebuild,
+  phprojekt-4.1.ebuild:
+  adding webapps-apache
+
+*phprojekt-4.0-r1 (08 May 2003)
+
+  08 May 2003; Todd Heim <heim@gentoo.org> phprojekt-4.0-r1.ebuild:
+  checks for server root/user/group when using apache2 (bug 20373)
+
+*phprojekt-4.0 (19 Apr 2003)
+
+*phprojekt-3.2a (02 Aug 2002)
+
+  19 Apr 2003; Todd Heim <heim@gentoo.org> :
+  New version.
+  Replaced hardcoding of apache user/group.
+
+  14 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Replaced hardcoding of /home/httpd/htdocs with a grep of /etc/apache/conf/apache.conf
+
+  06 Aug 2002; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
+
+  02 Aug 2002; Maik Schreiber <blizzy@gentoo.org> : Initial import.
+  (I wrote the ebuild myself.)

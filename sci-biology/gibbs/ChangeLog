@@ -1,0 +1,49 @@
+# ChangeLog for sci-biology/gibbs
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/gibbs/ChangeLog,v 1.9 2012/04/26 16:17:09 jlec Exp $
+
+  26 Apr 2012; Justin Lecher <jlec@gentoo.org> gibbs-3.1.ebuild,
+  -gibbs-1995.9.ebuild:
+  Move to EAPI=4, drop old
+
+  28 Dec 2009; Markus Meier <maekke@gentoo.org> gibbs-3.1.ebuild:
+  x86 stable, bug #290933
+
+  24 Dec 2009; Pacho Ramos <pacho@gentoo.org> gibbs-3.1.ebuild:
+  amd64 stable, bug 290933
+
+  30 Sep 2009; Andrey Kislyuk <weaver@gentoo.org> gibbs-1995.9.ebuild:
+  Drop keyword for old version. Versions 3.1 and 1995.9 are different
+  packages. I will keep 1995.9 in tree without keywords for hysterical
+  raisins.
+
+*gibbs-3.1 (29 Sep 2009)
+
+  29 Sep 2009; Andrey Kislyuk <weaver@gentoo.org> +gibbs-3.1.ebuild:
+  Version bump, rewrite ebuild (package rewritten)
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  04 Jan 2006; Olivier Fisette <ribosome@gentoo.org> gibbs-1995.9.ebuild:
+  Do not depend on "virtual/libc" (package not in system target).
+
+*gibbs-1995.9 (23 Dec 2004)
+
+  23 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +files/gibbs-demo, +gibbs-1995.9.ebuild:
+  Moved from app-sci/gibbs to sci-biology/gibbs.
+
+  31 Oct 2004; Olivier Fisette <ribosome@gentoo.org> gibbs-1995.9.ebuild:
+  Added to x86.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> gibbs-1995.9.ebuild:
+  virtual/glibc -> virtual/libc
+
+*gibbs-1995.9 (27 May 2004)
+
+  27 May 2004; Patrick Kursawe <phosphan@gentoo.org> gibbs-1995.9.ebuild,
+  metadata.xml, files/gibbs-demo:
+  Initial import, ebuild by Frank Vernaillen <fr_ve@hotmail.com> and
+  olivier.fisette@sympatico.ca in bug #28808
+

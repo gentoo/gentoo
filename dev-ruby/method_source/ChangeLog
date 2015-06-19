@@ -1,0 +1,115 @@
+# ChangeLog for dev-ruby/method_source
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/method_source/ChangeLog,v 1.26 2015/06/07 18:35:15 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  08 Feb 2015; Hans de Graaff <graaff@gentoo.org>
+  method_source-0.8.2-r3.ebuild:
+  Add ruby22.
+
+  03 Nov 2014; Manuel Rüger <mrueg@gentoo.org> method_source-0.8.2-r2.ebuild,
+  method_source-0.8.2-r3.ebuild:
+  Drop jruby.
+
+*method_source-0.8.2-r3 (25 Jul 2014)
+
+  25 Jul 2014; Manuel Rüger <mrueg@gentoo.org> +method_source-0.8.2-r3.ebuild:
+  Add ruby21 target. Thanks to longlene.
+
+  21 May 2014; Manuel Rüger <mrueg@gentoo.org> -method_source-0.8.2-r1.ebuild,
+  method_source-0.8.2-r2.ebuild:
+  Remove ruby18 target. Cleanup old.
+
+*method_source-0.8.2-r2 (17 Nov 2013)
+
+  17 Nov 2013; Hans de Graaff <graaff@gentoo.org>
+  +method_source-0.8.2-r2.ebuild:
+  Don't use the provided gemspec file since its version number is incorrect.
+
+  03 Nov 2013; Manuel Rüger <mrueg@gentoo.org> -method_source-0.8.2.ebuild:
+  Cleanup old.
+
+*method_source-0.8.2-r1 (09 Oct 2013)
+
+  09 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +method_source-0.8.2-r1.ebuild:
+  Add ruby20 target. Original commit by Peter Wilmott in ruby-overlay.
+
+  04 Sep 2013; Manuel Rüger <mrueg@gentoo.org> -method_source-0.8.1.ebuild,
+  -method_source-0.8.ebuild:
+  Cleanup old.
+
+*method_source-0.8.2 (28 Jul 2013)
+
+  28 Jul 2013; Manuel Rüger <mrueg@gentoo.org> +method_source-0.8.2.ebuild:
+  Version bump
+
+*method_source-0.8.1 (24 Dec 2012)
+
+  24 Dec 2012; Hans de Graaff <graaff@gentoo.org> +method_source-0.8.1.ebuild:
+  Version bump.
+
+  14 Nov 2012; Hans de Graaff <graaff@gentoo.org> -method_source-0.6.7.ebuild:
+  Remove this version again since the compatibility issues where elsewhere.
+
+  14 Nov 2012; Hans de Graaff <graaff@gentoo.org> +method_source-0.6.7.ebuild:
+  Add back 0.6.7 in a separate slot to satisfy dev-ruby/pry dependency.
+
+  26 Aug 2012; Hans de Graaff <graaff@gentoo.org>
+  -method_source-0.7.1-r1.ebuild:
+  Cleanup.
+
+  14 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata.xml so that it's the same as most other packages.
+
+*method_source-0.8 (06 Jul 2012)
+
+  06 Jul 2012; Hans de Graaff <graaff@gentoo.org> +method_source-0.8.ebuild:
+  Version bump.
+
+  06 Jul 2012; Hans de Graaff <graaff@gentoo.org> -method_source-0.6.7.ebuild,
+  -method_source-0.7.0.ebuild:
+  Remove old versions.
+
+*method_source-0.7.1-r1 (30 Apr 2012)
+
+  30 Apr 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +method_source-0.7.1-r1.ebuild, -method_source-0.7.1.ebuild:
+  Fix gemspec to report the correct version.
+
+  29 Apr 2012; Thomas Kahle <tomka@gentoo.org> method_source-0.7.1.ebuild:
+  marked ~x86 per bug 391073
+
+*method_source-0.7.1 (09 Apr 2012)
+
+  09 Apr 2012; Hans de Graaff <graaff@gentoo.org> +method_source-0.7.1.ebuild:
+  Version bump.
+
+  11 Mar 2012; Brent Baude <ranger@gentoo.org> method_source-0.7.0.ebuild:
+  Marking method_source-0.7.0 ~ppc64 for bug 388357
+
+*method_source-0.7.0 (15 Jan 2012)
+
+  15 Jan 2012; Hans de Graaff <graaff@gentoo.org> +method_source-0.7.0.ebuild:
+  Version bump. No longer depends on ruby_parser.
+
+  28 Dec 2011; Hans de Graaff <graaff@gentoo.org> -method_source-0.6.5.ebuild,
+  -method_source-0.6.6.ebuild:
+  Remove old versions.
+
+*method_source-0.6.7 (18 Dec 2011)
+
+  18 Dec 2011; Hans de Graaff <graaff@gentoo.org> +method_source-0.6.7.ebuild:
+  Version bump.
+
+*method_source-0.6.6 (16 Oct 2011)
+
+  16 Oct 2011; Hans de Graaff <graaff@gentoo.org> +method_source-0.6.6.ebuild:
+  Version bump.
+
+*method_source-0.6.5 (10 Sep 2011)
+
+  10 Sep 2011; Hans de Graaff <graaff@gentoo.org> +method_source-0.6.5.ebuild,
+  +metadata.xml:
+  Initial import. Dependency for forthcoming dev-ruby/pry.

@@ -1,0 +1,373 @@
+# ChangeLog for app-arch/rpm2targz
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/rpm2targz/ChangeLog,v 1.100 2014/01/18 01:18:10 vapier Exp $
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> rpm2targz-9.0.0.5g.ebuild:
+  Add arm64 love.
+
+  05 Jul 2013; Tomáš Chvátal <scarabeus@gentoo.org> -rpm2targz-9.0.0.3g.ebuild,
+  -rpm2targz-9.0.0.4g.ebuild:
+  There is no reason to keep versions from 2009 and older.
+
+  18 Feb 2013; Zac Medico <zmedico@gentoo.org> rpm2targz-9.0.0.5g.ebuild:
+  Add ~arm-linux keyword.
+
+  20 Oct 2012; Jeroen Roovers <jer@gentoo.org> rpm2targz-9.0.0.5g.ebuild:
+  Stable for HPPA (bug #433183).
+
+  14 Oct 2012; Raúl Porcel <armin76@gentoo.org> rpm2targz-9.0.0.5g.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc/x86 stable wrt #433183
+
+  11 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  rpm2targz-9.0.0.5g.ebuild:
+  stable ppc64, bug #433183
+
+  11 Oct 2012; Markus Meier <maekke@gentoo.org> rpm2targz-9.0.0.5g.ebuild:
+  arm stable, bug #433183
+
+  10 Oct 2012; Brent Baude <ranger@gentoo.org> rpm2targz-9.0.0.5g.ebuild:
+  Marking rpm2targz-9.0.0.5g ppc for bug 433183
+
+  08 Oct 2012; Agostino Sarubbo <ago@gentoo.org> rpm2targz-9.0.0.5g.ebuild:
+  Stable for amd64, wrt bug #433183
+
+  30 Sep 2012; Ulrich Müller <ulm@gentoo.org> rpm2targz-9.0.0.3g.ebuild,
+  rpm2targz-9.0.0.4g.ebuild, rpm2targz-9.0.0.5g.ebuild:
+  Specify LICENSE more precisely.
+
+  03 Sep 2012; Christoph Junghans <ottxor@gentoo.org> rpm2targz-9.0.0.5g.ebuild:
+  added prefix keywords (fix bug #433810)
+
+  20 Aug 2012; Mike Frysinger <vapier@gentoo.org> rpm2targz-9.0.0.5g.ebuild:
+  Need to specify DESTDIR=$ED manually #397835 by Christoph Junghans.
+
+*rpm2targz-9.0.0.5g (17 May 2012)
+
+  17 May 2012; Mike Frysinger <vapier@gentoo.org> +rpm2targz-9.0.0.5g.ebuild:
+  Version bump.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> rpm2targz-9.0.0.4g.ebuild:
+  keyword ~amd64-fbsd
+
+  01 Mar 2011; Brent Baude <ranger@gentoo.org> rpm2targz-9.0.0.4g.ebuild:
+  stable ppc64, bug 354959
+
+  27 Feb 2011; Brent Baude <ranger@gentoo.org> rpm2targz-9.0.0.4g.ebuild:
+  stable ppc, bug 354959
+
+  26 Feb 2011; Raúl Porcel <armin76@gentoo.org> rpm2targz-9.0.0.4g.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #354959
+
+  21 Feb 2011; Jeroen Roovers <jer@gentoo.org> rpm2targz-9.0.0.4g.ebuild:
+  Stable for HPPA (bug #354959).
+
+  20 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  rpm2targz-9.0.0.4g.ebuild:
+  x86 stable wrt bug #354959
+
+  16 Feb 2011; Markos Chandras <hwoarang@gentoo.org> rpm2targz-9.0.0.4g.ebuild:
+  Stable on amd64 wrt bug #354959
+
+*rpm2targz-9.0.0.4g (06 Nov 2009)
+
+  06 Nov 2009; Mike Frysinger <vapier@gentoo.org>
+  +rpm2targz-9.0.0.4g.ebuild:
+  Support xz rpms #292057 by Rafał Mużyło and always use rpmoffset
+  #249769 by Michael Haubenwallner.
+
+  18 Oct 2009; Alexis Ballier <aballier@gentoo.org>
+  rpm2targz-9.0.0.3g.ebuild:
+  keyword ~sparc-fbsd
+
+  10 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  rpm2targz-9.0.0.0g.ebuild, rpm2targz-9.0.0.2g.ebuild,
+  rpm2targz-9.0.0.3g.ebuild:
+  Fix xz-utils vs. lzma-utils deps.
+
+  29 Apr 2009; Jeroen Roovers <jer@gentoo.org> rpm2targz-9.0.0.3g.ebuild:
+  Stable for HPPA (bug #264429).
+
+  06 Apr 2009; Raúl Porcel <armin76@gentoo.org> rpm2targz-9.0.0.3g.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #264429
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org> rpm2targz-9.0.0.3g.ebuild:
+  amd64/x86 stable, bug #264429
+
+  31 Mar 2009; Joseph Jezak <josejx@gentoo.org> rpm2targz-9.0.0.3g.ebuild:
+  Marked ppc/ppc64 stable for bug #264429.
+
+  25 Oct 2008; Mike Frysinger <vapier@gentoo.org> rpm2targz-9.0.0.3g.ebuild:
+  Respect CC env var #243506.
+
+  18 Sep 2008; Mike Frysinger <vapier@gentoo.org> -rpm2targz-9.0-r6.ebuild,
+  +rpm2targz-9.0-r7.ebuild:
+  Punt the right version #237936.
+
+*rpm2targz-9.0.0.3g (17 Sep 2008)
+
+  17 Sep 2008; Mike Frysinger <vapier@gentoo.org>
+  +rpm2targz-9.0.0.3g.ebuild:
+  Fixup rpmoffset a little more #237308 by Dmitry Karasik.
+
+*rpm2targz-9.0.0.2g (29 Aug 2008)
+
+  29 Aug 2008; Mike Frysinger <vapier@gentoo.org>
+  +rpm2targz-9.0.0.2g.ebuild:
+  Fixup rpmoffset #235290.
+
+*rpm2targz-9.0.0.1g (19 Aug 2008)
+
+  19 Aug 2008; Mike Frysinger <vapier@gentoo.org>
+  +rpm2targz-9.0.0.1g.ebuild:
+  Version bump.
+
+  04 Jun 2008; Markus Rothe <corsair@gentoo.org> rpm2targz-9.0-r7.ebuild:
+  Stable on ppc64; bug #224221
+
+  02 Jun 2008; Kenneth Prugh <ken69267@gentoo.org> rpm2targz-9.0-r7.ebuild:
+  amd64 stable, bug #224221
+
+  02 Jun 2008; Raúl Porcel <armin76@gentoo.org> rpm2targz-9.0-r7.ebuild:
+  alpha/ia64/sparc stable wrt #224221
+
+  02 Jun 2008; Jeroen Roovers <jer@gentoo.org> rpm2targz-9.0-r7.ebuild:
+  Stable for HPPA (bug #224221).
+
+  01 Jun 2008; nixnut <nixnut@gentoo.org> rpm2targz-9.0-r7.ebuild:
+  Stable on ppc wrt bug 224221
+
+*rpm2targz-9.0.0.0g (31 May 2008)
+
+  31 May 2008; Mike Frysinger <vapier@gentoo.org>
+  +rpm2targz-9.0.0.0g.ebuild:
+  Move to git repo and apply fix by Cyberjun #219711.
+
+  31 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  rpm2targz-9.0-r7.ebuild:
+  stable x86, bug 224221
+
+*rpm2targz-9.0-r7 (29 Apr 2008)
+
+  29 Apr 2008; Peter Volkov <pva@gentoo.org>
+  +files/rpm2targz-9.0-increase-RPMBUFSIZ.patch, +rpm2targz-9.0-r7.ebuild:
+  Increased RPMBUFSIZ to allow rpm2targz unpack Nessus binaries, thank
+  Cyberjun, bug #187219.
+
+  28 Sep 2007; Christoph Mende <angelos@gentoo.org> rpm2targz-9.0-r6.ebuild:
+  Stable on amd64 wrt bug #193886
+
+  27 Sep 2007; Joseph Jezak <josejx@gentoo.org> rpm2targz-9.0-r6.ebuild:
+  Marked ppc/ppc64 stable for bug #193886.
+
+  27 Sep 2007; Joshua Kinard <kumba@gentoo.org> rpm2targz-9.0-r6.ebuild:
+  Stable on mips, per #193886.
+
+  27 Sep 2007; Jeroen Roovers <jer@gentoo.org> rpm2targz-9.0-r6.ebuild:
+  Stable for HPPA (bug #193886).
+
+  26 Sep 2007; Raúl Porcel <armin76@gentoo.org> rpm2targz-9.0-r6.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+  30 Aug 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing liquidx from metadata due to his retirement (see #171155 for
+  reference).
+
+*rpm2targz-9.0-r6 (18 Jun 2007)
+
+  18 Jun 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +files/rpm2targz-9.0-sh.patch, +files/rpm2targz-9.0-warnings.patch,
+  +rpm2targz-9.0-r6.ebuild:
+  Revision bump to make rpm2targz compatible with non-bash shells. See bug
+  #168253 by Emanuele Bagnaschi; thanks to Emanuele Giaquinta (exg) for the
+  suggestions too. As I'm here, I've also removed the warnings during build
+  and the QA notice about poor programming practices.
+
+  21 Jan 2007; Alexander H. Færøy <eroyf@gentoo.org>
+  rpm2targz-9.0-r5.ebuild:
+  Stable on MIPS; bug #154738
+
+  21 Jan 2007; Alexander H. Færøy <eroyf@gentoo.org>
+  rpm2targz-9.0-r5.ebuild:
+  Stable on Alpha; bug #154738
+
+  15 Nov 2006; Markus Rothe <corsair@gentoo.org> rpm2targz-9.0-r5.ebuild:
+  Stable on ppc64; bug #154738
+
+  15 Nov 2006; Jeroen Roovers <jer@gentoo.org> rpm2targz-9.0-r5.ebuild:
+  Stable for HPPA (bug #154738).
+
+  13 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  rpm2targz-9.0-r5.ebuild:
+  Stable on sparc wrt #154738
+
+  12 Nov 2006; Luis Medinas <metalgod@gentoo.org> rpm2targz-9.0-r5.ebuild:
+  Stable on amd64. Bug #154738.
+
+  11 Nov 2006; nixnut <nixnut@gentoo.org> rpm2targz-9.0-r5.ebuild:
+  Stable on ppc wrt bug 154738
+
+  11 Nov 2006; Andrej Kacian <ticho@gentoo.org> rpm2targz-9.0-r5.ebuild:
+  Stable on x86, bug #154738.
+
+  08 Oct 2006; Fabian Groffen <grobian@gentoo.org> rpm2targz-9.0-r5.ebuild:
+  Dropped ~ppc-macos, see you in prefix.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-rpm2targz-9.0-r2, files/digest-rpm2targz-9.0-r3,
+  files/digest-rpm2targz-9.0-r4, files/digest-rpm2targz-9.0-r5, Manifest:
+  Fixing SHA256 digest for real, pass three...
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-rpm2targz-9.0-r2, files/digest-rpm2targz-9.0-r3,
+  files/digest-rpm2targz-9.0-r4, files/digest-rpm2targz-9.0-r5, Manifest:
+  Fixing SHA256 digest, pass two.
+
+  25 Apr 2006; Fabian Groffen <grobian@gentoo.org> rpm2targz-9.0-r5.ebuild:
+  Marked ~ppc-macos
+
+*rpm2targz-9.0-r5 (24 Apr 2006)
+
+  24 Apr 2006; Alastair Tse <liquidx@gentoo.org>
+  +files/rpm2targz-9.0-portability.patch,
+  files/rpm2targz-9.0-secure_temp_handling.patch, +rpm2targz-9.0-r5.ebuild:
+  version bump with darwin fixes (thanks to exg@gentoo.org)
+
+  31 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  rpm2targz-9.0-r4.ebuild:
+  Add ~x86-fbsd keyword.
+
+  20 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  rpm2targz-9.0-r4.ebuild:
+  Depend on util-linux and which just on GNU userland.
+
+*rpm2targz-9.0-r4 (22 Aug 2005)
+
+  22 Aug 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/rpm2targz-9.0-rpm2tar.patch, +rpm2targz-9.0-r4.ebuild:
+  Add support for dumping rpms to a tar file and skipping the slow gzip stage.
+
+  10 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> rpm2targz-9.0-r3.ebuild:
+  Stable on mips.
+
+  10 Aug 2005; Simon Stelling <blubb@gentoo.org> rpm2targz-9.0-r3.ebuild:
+  stable on amd64
+
+  03 Aug 2005; Bryan Østergaard <kloeri@gentoo.org>
+  rpm2targz-9.0-r3.ebuild:
+  Stable on alpha.
+
+  22 Jul 2005; MATSUU Takuto <matsuu@gentoo.org> rpm2targz-9.0-r3.ebuild:
+  Stable on sh.
+
+  12 Jul 2005; Markus Rothe <corsair@gentoo.org> rpm2targz-9.0-r3.ebuild:
+  Stable on ppc64
+
+  09 Jul 2005; Joseph Jezak <josejx@gentoo.org> rpm2targz-9.0-r3.ebuild:
+  Marked ppc stable.
+
+  06 Jul 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  rpm2targz-9.0-r3.ebuild:
+  Stable on hppa.
+
+  06 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  rpm2targz-9.0-r3.ebuild:
+  Stable on sparc
+
+*rpm2targz-9.0-r3 (25 Jun 2005)
+
+  25 Jun 2005; Alastair Tse <liquidx@gentoo.org>
+  +files/rpm2targz-9.0-secure_temp_handling.patch, +rpm2targz-9.0-r3.ebuild:
+  added patch to secure temp file handling thanks to solar@gentoo.org (#96192)
+
+  17 May 2005; Alastair Tse <liquidx@gentoo.org> -rpm2targz-8.0.ebuild,
+  -rpm2targz-9.0.ebuild, -rpm2targz-9.0-r1.ebuild, rpm2targz-9.0-r2.ebuild:
+  gcc.eclass -> toolchain-funcs.eclass
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  rpm2targz-9.0.ebuild:
+  Masked rpm2targz-9.0.ebuild stable for ppc
+
+  03 Mar 2004; Tom Gall <tgall@gentoo.org> rpm2targz-9.0-r2.ebuild:
+  mark ppc64 stable
+
+  14 Apr 2004; Michael McCabe <randy@gentoo.org> rpm2targz-9.0-r2.ebuild:
+  adding s390 to keywords
+
+  13 Apr 2004; Joshua Kinard <kumba@gentoo.org> rpm2targz-9.0-r2.ebuild:
+  Marked stable on mips.
+
+*rpm2targz-9.0-r2 (15 Oct 2003)
+
+  15 Oct 2003; Alastair Tse <liquidx@gentoo.org> rpm2targz-9.0-r2.ebuild,
+  files/rpm2targz-9.0-bzip2_rpm2targz.patch:
+  patch for bzip2 support for rpm2targz contributed by phceac@yahoo.com (#31164)
+
+*rpm2targz-9.0-r1 (26 Jun 2003)
+
+  30 Sep 2003; Joshua Kinard <kumba@gentoo.org> rpm2targz-9.0-r1.ebuild:
+  Added ~mips to KEYWORDS
+
+  18 Sep 2003; Daniel Robbins <drobbins@gentoo.org> rpm2targz-9.0-r1.ebuild:
+  stable on ia64 and added some runtime dependencies that don't really need
+  to be there but come in handy when porting.
+  
+  31 Aug 2003; Tavis Ormandy <taviso@gentoo.org> rpm2targz-9.0-r1.ebuild:
+  stable on alpha
+
+  31 Aug 2003; Luca Barbato <lu_zero@gentoo.org> rpm2targz-9.0-r1.ebuild:
+  Marked stable for ppc to fix bug #27628.
+
+  31 Aug 2003; Jason Wever <weeve@gentoo.org> rpm2targz-9.0-r1.ebuild:
+  Marked stable for sparc to fix bug #27628.
+
+  16 Jul 2003; Alastair Tse <liquidx@gentoo.org> rpm2targz-9.0-r1.ebuild,
+  rpm2targz-9.0.ebuild:
+  marking stable for x86
+
+  23 Jul 2003; Guy Martin <gmsoft@gentoo.org> rpm2targz-9.0-r1.ebuild :
+  Marked stable on hppa.
+
+  26 Jun 2003; Alastair Tse <liquidx@gentoo.org> rpm2targz-9.0-r1.ebuild,
+  files/rpm2targz-9.0-bzip2.patch:
+  added patch to detect bzip2 files, thanks to Garen <garen@garen.net> in
+  #23249.
+
+  21 Jun 2003; Alastair Tse <liquidx@gentoo.org> rpm2targz-9.0.ebuild,
+  files/rpm2targz-9.0-gentoo.patch:
+  patch to make src.rpm extraction backwards compatible with rpm2targz-8.0's
+  behaviour
+
+*rpm2targz-9.0 (21 Jun 2003)
+
+  21 Jun 2003; Alastair Tse <liquidx@gentoo.org> rpm2targz-9.0.ebuild:
+  version bump to slackware-9.0's rpm2targz. made our own tarball for
+  versioning purposes. otherwise digests/mirror will break.
+  this version uses rpm2cpio (from app-arch/rpm) if available, which
+  solves the flakey-ness of rpmoffset for certain binary rpms.
+  
+
+  21 May 2003; Tavis Ormandy <taviso@gentoo.org> rpm2targz-8.0.ebuild:
+  removing gcc hardcode.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*rpm2targz-8.0 (1 Feb 2002)
+
+  28 Mar 2003; Guy Martin <gmsoft@gentoo.org> rpm2targz-8.0.ebuild :
+  Added hppa to KEYWORDS.
+
+  05 Sept 2002; Calum Selkirk <cselkirk@gentoo.org> rpm2targz-8.0.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.
+
+  16 Dec 2002; Jon Portnoy <avenj@gentoo.org> rpm2targz-8.0.ebuild :
+  
+  Fixed dependencies to include sys-apps/cpio.

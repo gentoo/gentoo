@@ -1,0 +1,139 @@
+# ChangeLog for virtual/linuxtv-dvb-headers
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/linuxtv-dvb-headers/ChangeLog,v 1.7 2014/03/04 20:44:57 vincent Exp $
+
+  04 Mar 2014; Vicente Olivert Riera <vincent@gentoo.org>
+  linuxtv-dvb-headers-5.8.ebuild:
+  Add ~mips keyword.
+
+  11 May 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  linuxtv-dvb-headers-5.8.ebuild:
+  stable amd64 arm ppc ppc64 x86, similar to rdepen
+  sys-kernel/linux-headers-3.7
+
+*linuxtv-dvb-headers-5.8 (06 Jan 2013)
+
+  06 Jan 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +linuxtv-dvb-headers-5.8.ebuild:
+  bump for dvb api 5.8
+
+  14 Jul 2012; Ulrich Müller <ulm@gentoo.org> linuxtv-dvb-headers-5.3.ebuild:
+  QA: Define mandatory ebuild variables, bug 425848.
+
+  25 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -linuxtv-dvb-headers-5.ebuild:
+  old
+
+  24 Feb 2012; Samuli Suominen <ssuominen@gentoo.org>
+  linuxtv-dvb-headers-5.3.ebuild:
+  arm/ppc/ppc64 stable wrt #399161
+
+  15 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +linuxtv-dvb-headers-5.ebuild, +linuxtv-dvb-headers-5.3.ebuild,
+  +metadata.xml:
+  moved from media-tv/linuxtv-dvb-headers, #bug 403929
+
+  31 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  linuxtv-dvb-headers-5.3.ebuild:
+  amd64/x86 stable wrt #399161
+
+  19 Jan 2012; Jeroen Roovers <jer@gentoo.org> linuxtv-dvb-headers-5.ebuild,
+  linuxtv-dvb-headers-5.3.ebuild:
+  Drop HPPA keywording.
+
+  17 Jan 2012; Christian Ruppert <idl0r@gentoo.org>
+  -linuxtv-dvb-headers-3.1.ebuild, linuxtv-dvb-headers-5.ebuild:
+  Remove 3.1. Adjust sys-kernel/linux-headers dependency. Remove useless eutils
+  inherit.
+
+*linuxtv-dvb-headers-5.3 (16 Jan 2012)
+
+  16 Jan 2012; Christian Ruppert <idl0r@gentoo.org>
+  +linuxtv-dvb-headers-5.3.ebuild:
+  Version bump
+
+  22 Oct 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  linuxtv-dvb-headers-5.ebuild:
+  keyworded ~arm
+
+  20 Mar 2011; Raúl Porcel <armin76@gentoo.org>
+  linuxtv-dvb-headers-3.1.ebuild, linuxtv-dvb-headers-5.ebuild:
+  Drop alpha/arm/ia64 keywords
+
+  06 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  linuxtv-dvb-headers-5.ebuild:
+  ppc64 stable wrt #343977
+
+  04 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  linuxtv-dvb-headers-5.ebuild:
+  marked stabel amd64, x86; latest stable linux-headers-2.6.30-r1 in portage
+
+  27 Aug 2010; Raúl Porcel <armin76@gentoo.org>
+  linuxtv-dvb-headers-3.1.ebuild, linuxtv-dvb-headers-5.ebuild:
+  Add ~arm
+
+  01 Jul 2009; Matthias Schwarzott <zzam@gentoo.org>
+  linuxtv-dvb-headers-5.ebuild:
+  Change dependency to require linux-headers-2.6.29 as s2api got extended
+  with some new flags
+
+*linuxtv-dvb-headers-5 (12 Jun 2009)
+
+  12 Jun 2009; Matthias Schwarzott <zzam@gentoo.org>
+  +linuxtv-dvb-headers-5.ebuild:
+  Add virtual ebuild for dvb-api version 5.
+
+  18 May 2007; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Make it media-tv herd assigned only.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  03 Mar 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  linuxtv-dvb-headers-3.1.ebuild:
+  Stable on hppa. See bug #115760.
+
+  22 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  linuxtv-dvb-headers-3.1.ebuild:
+  Mark 3.1 stable on ia64
+
+  07 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  linuxtv-dvb-headers-3.1.ebuild:
+  Mark 3.1 stable on alpha
+
+  11 Dec 2005; Aron Griffis <agriffis@gentoo.org>
+  linuxtv-dvb-headers-3.1.ebuild:
+  Mark 3.1 ~alpha/~ia64
+
+  10 Dec 2005; Michael Hanselmann <hansmi@gentoo.org>
+  linuxtv-dvb-headers-3.1.ebuild:
+  Stable on ppc.
+
+  10 Dec 2005; Luis Medinas <metalgod@gentoo.org>
+  linuxtv-dvb-headers-3.1.ebuild:
+  Stable on amd64. See bug #113398.
+
+  09 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
+  linuxtv-dvb-headers-3.1.ebuild:
+  Marked stable on x86
+
+  15 Oct 2005; Matthias Schwarzott <zzam@gentoo.org>
+  linuxtv-dvb-headers-3.1.ebuild:
+  changed it to be a virtual package with RDEPEND only
+
+  14 Aug 2005; Matthias Schwarzott <zzam@gentoo.org>
+  linuxtv-dvb-headers-3.1.ebuild:
+  corrected typo in url-mirror-syntax
+
+  08 Jul 2005; Matthias Schwarzott <zzam@gentoo.org>
+  linuxtv-dvb-headers-3.1.ebuild:
+  Added ~amd64
+
+  23 Jun 2005; David Holm <dholm@gentoo.org> linuxtv-dvb-headers-3.1.ebuild:
+  Added to ~ppc.
+
+*linuxtv-dvb-headers-3.1 (22 Jun 2005)
+
+  22 Jun 2005; Matthias Schwarzott <zzam@gentoo.org> +metadata.xml,
+  +linuxtv-dvb-headers-3.1.ebuild:
+  initial import of package for dvb-headers

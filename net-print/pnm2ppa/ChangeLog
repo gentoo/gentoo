@@ -1,0 +1,115 @@
+# ChangeLog for net-print/pnm2ppa
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-print/pnm2ppa/ChangeLog,v 1.22 2014/01/05 23:09:48 dilfridge Exp $
+
+  05 Jan 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  pnm2ppa-1.13-r1.ebuild:
+  Fix foomatic dependency
+
+  27 Dec 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  pnm2ppa-1.13-r1.ebuild:
+  foomatic-filters is being integrated into cups-filters by upstream
+
+  09 Aug 2013; Manuel Rüger <mrueg@gentoo.org> -pnm2ppa-1.12.ebuild:
+  Cleanup old
+
+*pnm2ppa-1.13-r1 (03 Jul 2012)
+
+  03 Jul 2012; Tomáš Chvátal <scarabeus@gentoo.org> +pnm2ppa-1.13-r1.ebuild,
+  -pnm2ppa-1.13.ebuild:
+  Revision bump to install documentation. Thx to dilfridge.
+
+*pnm2ppa-1.13 (02 Jul 2012)
+
+  02 Jul 2012; Tomáš Chvátal <scarabeus@gentoo.org> +pnm2ppa-1.13.ebuild:
+  Try to bump to latest release.
+
+  18 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> pnm2ppa-1.12.ebuild,
+  files/pnm2ppa-1.12-gentoo.diff:
+  Respect environment flags wrt #248171.
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/pnm2ppa-1.11.2-gentoo.diff:
+  Fix patch with absolute paths.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  08 Aug 2004; Tom Martin <slarti@gentoo.org> pnm2ppa-1.12.ebuild:
+  Typo in DESCRIPTION: queueing -> queuing. Bug 59717.
+
+  07 May 2004; Heinrich Wendel <lanius@gentoo.org> pnm2ppa-1.0.91-r3.ebuild,
+  pnm2ppa-1.11.2.ebuild, pnm2ppa-1.12.ebuild:
+  remove old versions; add IUSE=""
+
+  13 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> pnm2ppa-1.12.ebuild:
+  marked ~amd64
+
+*pnm2ppa-1.12 (12 Dec 2002)
+
+  12 Dec 2002; Jon Portnoy <avenj@gentoo.org> pnm2ppa-1.12.ebuild :
+  Version bump. Ebuild contributed by Dylan Carlson (absinthe@pobox.com).
+
+*
+  05 Dec 2002; Dan Armak <danarmak@gentoo.org> pnm2ppa-1.0.91.ebuild,
+  pnm2ppa-1.0.91-r1.ebuild, pnm2ppa-1.0.91-r2.ebuild :
+
+  Remove obsolete dep on ld.so.
+
+*pnm2ppa-1.11.2 (13 Feb 2003)
+ 
+  13 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*pnm2ppa-1.11pre2 (29 Oct 2002)
+
+  29 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump. Original ebuild for version 1.10 contributed by 
+  Christopher Hurler <chris@horler.demon.co.uk> in #5644.
+
+*pnm2ppa-1.0.91-r3 (17 Apr 2002)
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> pnm2ppa-1.0.91.ebuild :
+  Added KEYWORDS, SLOT.
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> pnm2ppa-1.0.91-r3.ebuild :
+  Added KEYWORDS, SLOT.
+
+  17 Apr 2002; Seemant Kulleen <seemant@gentoo.org> pnm2ppa-1.0.91-r3.ebuild
+  files/digest-pnm2ppa--1.0.91-r2 files/pnm2ppa-1.0.91-r3-gentoo.diff :
+
+  Paul de Vrieze in bug #1802 submitted a patch to his original patch for the
+  upstream memory allocation issue.
+
+*pnm2ppa-1.0.91-r2 (14 Apr 2002)
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> pnm2ppa-1.0.91-r2.ebuild :
+  Added KEYWORDS, SLOT.
+
+  14 Apr 2002; Seemant Kulleen <seemant@gentoo.org> pnm2ppa-1.0.91-r2.ebuild
+  files/digest-pnm2ppa-1.0.91-r2 files/pnm2ppa-1.0.91-r2-gentoo.diff
+
+  gentoo-bugs@devrieze.net (Paul de Vrieze) in bug #1775 submitted a patch
+  for an upstream issue with memory allocation.
+
+*pnm2ppa-1.0.91-r1 (11 Apr 2002)
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> pnm2ppa-1.0.91-r1.ebuild :
+  Added KEYWORDS, SLOT.
+
+  11 Apr 2002; Seemant Kulleen <seemant@gentoo.org> pnm2ppa-1.0.91-r1.ebuild
+  files/digest-pnm2ppa-1.0.91-r1 files/pnm2ppa-1.0.91.-r1-gentoo.diff
+
+  Updated ebuild to make it compile a little more cleanly with optional
+  dependencies.   Additionally, got rid of sandbox violation errors.
+  
+
+*pnm2ppa-1.0.91 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

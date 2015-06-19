@@ -1,0 +1,11 @@
+--- src/Makefile.am.old	2011-06-17 08:41:40.882481147 +0200
++++ src/Makefile.am	2011-06-17 08:41:58.497602372 +0200
+@@ -2,7 +2,7 @@
+ 
+ bin_PROGRAMS = luola
+ 
+-luola_LDADD = @SDL_LIBS@
++luola_LDADD = @SDL_LIBS@ -lm
+ 
+ luola_SOURCES = \
+ 	defines.h \

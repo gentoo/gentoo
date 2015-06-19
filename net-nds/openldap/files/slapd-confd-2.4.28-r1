@@ -1,0 +1,26 @@
+# conf.d file for openldap
+#
+# To enable both the standard unciphered server and the ssl encrypted
+# one uncomment this line or set any other server starting options
+# you may desire.
+
+# If you have multiple slapd instances per #376699, this will provide a default config
+INSTANCE="openldap${SVCNAME#slapd}"
+
+# If you use the classical configuration file:
+OPTS_CONF="-f /etc/${INSTANCE}/slapd.conf"
+# Uncomment this instead to use the new slapd.d configuration directory for openldap 2.3
+#OPTS_CONF="-F /etc/${INSTANCE}/slapd.d"
+# (the OPTS_CONF variable is also passed to slaptest during startup)
+
+OPTS="${OPTS_CONF} -h 'ldaps:// ldap:// ldapi://%2fvar%2frun%2fopenldap%2fslapd.sock'"
+# Optional connectionless LDAP:
+#OPTS="${OPTS_CONF} -h 'ldaps:// ldap:// ldapi://%2fvar%2frun%2fopenldap%2fslapd.sock cldap://'"
+
+# If you change the above listen statement to bind on a specific IP for
+# listening, you should ensure that interface is up here (change eth0 as
+# needed).
+#rc_need="net.eth0"
+
+# Specify the kerberos keytab file
+#KRB5_KTNAME=/etc/openldap/krb5-ldap.keytab

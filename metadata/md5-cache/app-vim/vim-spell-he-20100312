@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DEPEND=|| ( >=app-editors/vim-7_alpha >=app-editors/gvim-7_alpha )
+DESCRIPTION=vim spell files: Hebrew (he)
+HOMEPAGE=http://www.vim.org/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=|| ( >=app-editors/vim-7_alpha >=app-editors/gvim-7_alpha )
+SLOT=0
+SRC_URI=mirror://gentoo/vim-spell-he-20100312.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vim-spell	931d44d9a5a1e08c9a8a1e3a1f9155e7
+_md5_=538b8759e0449867b398988e9b8dc1ca

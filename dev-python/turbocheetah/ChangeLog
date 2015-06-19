@@ -1,0 +1,37 @@
+# ChangeLog for dev-python/turbocheetah
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/turbocheetah/ChangeLog,v 1.8 2015/01/10 07:46:39 idella4 Exp $
+
+*turbocheetah-1.0-r1 (10 Jan 2015)
+
+  10 Jan 2015; Ian Delaney <idella4@gentoo.org> +turbocheetah-1.0-r1.ebuild,
+  -turbocheetah-1.0.ebuild:
+  revbump; conversion -> distutils-r1, rm old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> turbocheetah-1.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  03 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  turbocheetah-1.0.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  09 Jan 2009; Patrick Lauer <patrick@gentoo.org>
+  -turbocheetah-0.9.5.ebuild:
+  Really remove old
+
+  09 Jan 2009; Patrick Lauer <patrick@gentoo.org> Manifest:
+  Remove old
+
+*turbocheetah-1.0 (02 Jul 2008)
+
+  02 Jul 2008; Rob Cakebread <pythonhead@gentoo.org>
+  +turbocheetah-1.0.ebuild:
+  Version bump.
+
+  04 Jul 2007; Rob Cakebread <pythonhead@gentoo.org>
+  turbocheetah-0.9.5.ebuild:
+  Removed setuptools sed. bug# 184039
+
+  05 Feb 2007; Tiziano Müller <dev-zero@gentoo.org>
+  turbocheetah-0.9.5.ebuild, +metadata.xml:
+  Initial ebuild

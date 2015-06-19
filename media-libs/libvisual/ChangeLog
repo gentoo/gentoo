@@ -1,0 +1,235 @@
+# ChangeLog for media-libs/libvisual
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libvisual/ChangeLog,v 1.60 2015/05/06 09:53:08 mrueg Exp $
+
+  06 May 2015; Manuel Rüger <mrueg@gentoo.org> -libvisual-0.4.0-r1.ebuild,
+  -libvisual-0.4.0-r2.ebuild:
+  Remove old.
+
+  11 Oct 2014; Markus Meier <maekke@gentoo.org> libvisual-0.4.0-r3.ebuild:
+  arm stable, bug #512012
+
+  15 Sep 2014; Agostino Sarubbo <ago@gentoo.org> libvisual-0.4.0-r3.ebuild:
+  Stable for sparc, wrt bug #512012
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libvisual-0.4.0-r3.ebuild:
+  Stable for ppc64, wrt bug #512012
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> libvisual-0.4.0-r1.ebuild,
+  libvisual-0.4.0-r2.ebuild, libvisual-0.4.0-r3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  07 Aug 2014; Jeroen Roovers <jer@gentoo.org> libvisual-0.4.0-r3.ebuild:
+  Stable for HPPA (bug #512012).
+
+  28 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libvisual-0.4.0-r3.ebuild:
+  Stable for ppc, wrt bug #512012
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libvisual-0.4.0-r3.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libvisual-0.4.0-r3.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libvisual-0.4.0-r2.ebuild:
+  Stable for sparc, wrt bug #497180
+
+  11 Aug 2013; Alexis Ballier <aballier@gentoo.org> libvisual-0.4.0-r3.ebuild,
+  +files/libvisual-0.4.0-cond.patch, +files/libvisual-0.4.0-conditions.patch,
+  +files/libvisual-0.4.0-detect_amd64.patch:
+  Fix broken cpp check, bug #431066. Fix amd64 detection. Fix broken threads
+  AC_ARG_ENABLE.
+
+*libvisual-0.4.0-r3 (10 Aug 2013)
+
+  10 Aug 2013; Alexis Ballier <aballier@gentoo.org> +libvisual-0.4.0-r3.ebuild:
+  Convert to multilib. Stack it for medialibs r10. Remove unneeded glib
+  dependency: It uses pthreads by default and gthreads is only a fallback.
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> libvisual-0.4.0-r2.ebuild:
+  Add ~arm, wrt bug #449220
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> libvisual-0.4.0-r2.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> libvisual-0.4.0-r2.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> libvisual-0.4.0-r2.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org> libvisual-0.4.0-r2.ebuild:
+  elibtoolize it for freebsd
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org> libvisual-0.4.0-r2.ebuild:
+  keyword ~amd64-fbsd
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> libvisual-0.4.0-r1.ebuild,
+  libvisual-0.4.0-r2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  16 Apr 2012; Jeroen Roovers <jer@gentoo.org> libvisual-0.4.0-r2.ebuild:
+  Stable for HPPA (bug #412113).
+
+  17 Mar 2012; Raúl Porcel <armin76@gentoo.org> libvisual-0.4.0-r1.ebuild,
+  libvisual-0.4.0-r2.ebuild:
+  Drop sparc keywords
+
+  08 Feb 2012; Jeroen Roovers <jer@gentoo.org> libvisual-0.4.0-r2.ebuild:
+  Marked ~hppa (bug #401469).
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  libvisual-0.4.0-r2.ebuild:
+  x86 stable wrt bug #400385
+
+  27 Jan 2012; Agostino Sarubbo <ago@gentoo.org> libvisual-0.4.0-r2.ebuild:
+  Stable for amd64, wrt bug #400385
+
+  25 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  libvisual-0.4.0-r2.ebuild:
+  Fast stable on ppc/ppc64 wrt #358675
+
+*libvisual-0.4.0-r2 (25 Jul 2011)
+
+  25 Jul 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +libvisual-0.4.0-r2.ebuild,
+  +files/libvisual-0.4.0-better-altivec-detection.patch,
+  +files/libvisual-0.4.0-inlinedefineconflict.patch:
+  Revision bump with Fedora patchset for PowerPC. USE="static-libs" and remove
+  useless libtool archive.
+
+  29 Jun 2008; Alexis Ballier <aballier@gentoo.org> -libvisual-0.4.0.ebuild:
+  remove old
+
+  14 Jun 2008; Christoph Mende <angelos@gentoo.org>
+  libvisual-0.4.0-r1.ebuild:
+  Stable on amd64, bug #224377
+
+  08 Jun 2008; Friedrich Oslage <bluebird@gentoo.org>
+  libvisual-0.4.0-r1.ebuild:
+  stable on sparc, bug #224377
+
+  05 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  libvisual-0.4.0-r1.ebuild:
+  stable x86, bug 224377
+
+  04 Jun 2008; Markus Rothe <corsair@gentoo.org> libvisual-0.4.0-r1.ebuild:
+  Stable on ppc64; bug #224377
+
+  01 Jun 2008; nixnut <nixnut@gentoo.org> libvisual-0.4.0-r1.ebuild:
+  Stable on ppc wrt bug 224377
+
+*libvisual-0.4.0-r1 (04 Oct 2007)
+
+  04 Oct 2007; Samuli Suominen <drac@gentoo.org> +libvisual-0.4.0-r1.ebuild:
+  Add USE flags nls, threads and debug wrt #194566 and matching deps for them.
+  Use emake instead of make in src_install.
+
+  07 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> libvisual-0.2.0.ebuild:
+  Remove static useflag, thanks to Jakub Moc in bug #165766.
+
+  10 Dec 2006; Christian Faulhammer <opfer@gentoo.org>
+  libvisual-0.2.0.ebuild:
+  force MMX on x86, to fix bug #146335
+
+  31 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> libvisual-0.4.0.ebuild:
+  Add ~x86-fbsd keyword.
+
+  20 Oct 2006; Simon Stelling <blubb@gentoo.org> libvisual-0.4.0.ebuild:
+  stable on amd64
+
+  18 Oct 2006; Joshua Jackson <tsunam@gentoo.org> libvisual-0.4.0.ebuild:
+  Stable x86; for amarok
+
+  14 Oct 2006; <nixnut@gentoo.org> libvisual-0.4.0.ebuild:
+  Stable on ppc wrt bug 150988
+
+  14 Oct 2006; Markus Rothe <corsair@gentoo.org> libvisual-0.4.0.ebuild:
+  Stable on ppc64; bug #150988
+
+  14 Oct 2006; Jason Wever <weeve@gentoo.org> libvisual-0.4.0.ebuild:
+  Stable on SPARC wrt bug #150988.
+
+*libvisual-0.4.0 (28 May 2006)
+
+  28 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/libvisual-0.1.6-destdir.patch, -files/libvisual-0.1.6-libdir.patch,
+  -libvisual-0.1.6.ebuild, -libvisual-0.1.7.ebuild, +libvisual-0.4.0.ebuild:
+  Version bump to latest version upstream, slotted as this is incompatible
+  with 0.2 series. Thanks to Alejandro Nova and Gleb Litvjak in bug #131733.
+
+  24 Feb 2006; Stephen P. Becker <spbecker@gentoo.org>
+  libvisual-0.2.0.ebuild:
+  added ~mips keyword
+
+  11 Feb 2006; Markus Rothe <corsair@gentoo.org> libvisual-0.2.0.ebuild:
+  Stable on ppc64
+
+  23 Dec 2005; Markus Rothe <corsair@gentoo.org> libvisual-0.2.0.ebuild:
+  Added ~ppc64
+
+  05 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  libvisual-0.2.0.ebuild:
+  Stable on sparc
+
+  17 Jun 2005; Joseph Jezak <josejx@gentoo.org> libvisual-0.2.0.ebuild:
+  Marked ppc stable.
+
+  21 May 2005; Heinrich Wendel <lanius@gentoo.org> libvisual-0.2.0.ebuild:
+  stable on x86 and amd64
+
+  12 May 2005; Eldad Zack <eldad@gentoo.org>
+  +files/libvisual-0.2.0-movd.patch, libvisual-0.2.0.ebuild:
+  Fixed assembler movd misuse. Patch provided by Nickolay Kolchin-Semyonov
+  <nbkolchin@yandex.ru>. Closes Bug 86859.
+
+  15 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> libvisual-0.1.6.ebuild:
+  dont make use of the pic useflag any longer
+
+  06 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> +files/0.2.0-ppc.patch,
+  libvisual-0.2.0.ebuild:
+  added patch to fix compilation on ppc, fixes bug #86533
+
+*libvisual-0.2.0 (02 Mar 2005)
+
+  02 Mar 2005; Gregorio Guidi <greg_g@gentoo.org> +libvisual-0.2.0.ebuild:
+  New version (#81432).
+
+*libvisual-0.1.7 (20 Oct 2004)
+
+  20 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +libvisual-0.1.7.ebuild:
+  Version bump.
+
+  03 Oct 2004; David Holm <dholm@gentoo.org> libvisual-0.1.6.ebuild:
+  Added to ~ppc.
+
+  28 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libvisual-0.1.6.ebuild:
+  Added to ~sparc.
+
+  22 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libvisual-0.1.6.ebuild:
+  Fixed ebuild to use mirror://
+
+  16 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/libvisual-0.1.6-destdir.patch:
+  Fix DESTDIR problems (sandbox violation).  Closes bug #64204.
+
+*libvisual-0.1.6 (15 Sep 2004)
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -files/libvisual-0.1.3-libdir.patch, +files/libvisual-0.1.6-libdir.patch,
+  -libvisual-0.1.3.ebuild, +libvisual-0.1.6.ebuild:
+  Version bump.
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  files/libvisual-0.1.3-libdir.patch:
+  Fixed libdir patch to properly support multilib.
+
+*libvisual-0.1.3 (15 Sep 2004)
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> +metadata.xml,
+  +libvisual-0.1.3.ebuild:
+  Ebuild submitted in bug #52476 by Gustavo Sverzut Barbieri
+  <gsbarbieri@yahoo.com.br>

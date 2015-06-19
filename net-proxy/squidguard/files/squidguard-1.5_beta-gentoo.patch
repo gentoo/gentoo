@@ -1,0 +1,50 @@
+diff -Nru squidGuard-1.4.orig/Makefile.in squidGuard-1.4/Makefile.in
+--- squidGuard-1.4.orig/Makefile.in	2008-05-17 18:36:44.000000000 +0000
++++ squidGuard-1.4/Makefile.in	2009-01-10 13:02:14.000000000 +0000
+@@ -43,7 +43,7 @@
+ # Dependencies for installing
+ #	
+ 
+-install:	install-build install-conf
++install:	install-build
+ 
+ install-conf:
+ 	@echo Installing configuration file  ;
+@@ -85,10 +85,10 @@
+ 
+ install-build:
+ 	@echo Installing squidGuard 
+-	@if [ ! -d $(bindir) ]; then \
+-		$(MKINSTALLDIRS) $(bindir) ; \
++	@if [ ! -d "$(INSTDIR)"/$(bindir) ]; then \
++		$(MKINSTALLDIRS) "$(INSTDIR)"/$(bindir) ; \
+ 	fi ; \
+-	cp src/squidGuard $(bindir) || exit 1 ;  \
++	cp src/squidGuard "$(INSTDIR)"/$(bindir) || exit 1 ;  \
+ 	echo Done. ;
+ 
+ clean::
+diff -Nru squidGuard-1.4.orig/src/Makefile.in squidGuard-1.4/src/Makefile.in
+--- squidGuard-1.4.orig/src/Makefile.in	2009-01-03 20:05:39.000000000 +0000
++++ squidGuard-1.4/src/Makefile.in	2009-01-10 13:02:14.000000000 +0000
+@@ -110,6 +110,8 @@
+ 	mv -f y.tab.c y.tab.c.bison
+ 	mv -f y.tab.h y.tab.h.bison
+ 
++sg.y sg.l:
++
+ #
+ # Dependencies for installing
+ #
+@@ -122,8 +124,8 @@
+ 
+ install.bin:: squidGuard
+ 	@echo making $@ in `basename \`pwd\``
+-	@$(MKDIR) $(bindir) $(logdir) $(cfgdir)
+-	$(INSTALL_PROGRAM) squidGuard $(bindir)/squidGuard
++	@$(MKDIR) "$(INSTDIR)"/$(bindir) "$(INSTDIR)"/$(logdir) "$(INSTDIR)"/$(cfgdir)
++	$(INSTALL_PROGRAM) squidGuard "$(INSTDIR)"/$(bindir)/squidGuard
+ 
+ uninstall.bin::
+ 	@echo making $@ in `basename \`pwd\``
+diff -Nru squidGuard-1.4.orig/src/sgDb.c squidGuard-1.4/src/sgDb.c

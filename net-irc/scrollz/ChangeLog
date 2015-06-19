@@ -1,0 +1,164 @@
+# ChangeLog for net-irc/scrollz
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/scrollz/ChangeLog,v 1.43 2012/08/23 14:37:38 xmw Exp $
+
+  23 Aug 2012; Michael Weber <xmw@gentoo.org> scrollz-2.2.1.ebuild:
+  ppc stable (bug 419251).
+
+  11 Aug 2012; Markus Meier <maekke@gentoo.org> scrollz-2.2.1.ebuild:
+  x86 stable, bug #419251
+
+  03 Aug 2012; Markos Chandras <hwoarang@gentoo.org> scrollz-2.2.1.ebuild:
+  Stable on amd64 wrt bug #419251
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> scrollz-2.1.ebuild,
+  scrollz-2.2.ebuild, scrollz-2.2.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org> scrollz-2.2.ebuild:
+  Marking scrollz-2.2 ppc for bug 397155
+
+  22 Jan 2012; Raúl Porcel <armin76@gentoo.org> scrollz-2.1.ebuild,
+  scrollz-2.2.ebuild, scrollz-2.2.1.ebuild:
+  Drop ia64 keywords
+
+  15 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> scrollz-2.2.ebuild:
+  x86 stable wrt bug #397155
+
+  06 Jan 2012; Agostino Sarubbo <ago@gentoo.org> scrollz-2.2.ebuild:
+  Stable for AMD64, wrt bug #397155
+
+*scrollz-2.2.1 (03 Jan 2012)
+
+  03 Jan 2012; Nathan Phillip Brink <binki@gentoo.org> +scrollz-2.2.1.ebuild:
+  Bump to scrollz-2.2.1.
+
+  03 Jan 2012; Nathan Phillip Brink <binki@gentoo.org> scrollz-2.2.ebuild,
+  +files/scrollz-2.2-cppflags.patch, +files/scrollz-2.2-make-install.patch:
+  Use ${CHOST}-gcc instead of gcc when compiling (fixes bug #397441 by ago).
+  Don't use einstall() (fixes bug #397445 by ago). Add patches for parallel
+  make install and respecting CPPFLAGS.
+
+*scrollz-2.2 (30 Jun 2011)
+
+  30 Jun 2011; Nathan Phillip Brink <binki@gentoo.org> scrollz-2.1.ebuild,
+  +scrollz-2.2.ebuild:
+  Bump to scrollz-2.2 with support for gentoo-prefix.
+
+  25 Jun 2010; Raúl Porcel <armin76@gentoo.org> scrollz-2.1.ebuild:
+  ia64/x86 stable wrt #324813
+
+  24 Jun 2010; Markos Chandras <hwoarang@gentoo.org> scrollz-2.1.ebuild:
+  Stable on amd64 wrt bug #324813
+
+*scrollz-2.1 (20 Jun 2010)
+
+  20 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> +scrollz-2.1.ebuild:
+  Version bump wrt #305045 by "Shark".
+
+  16 Jan 2008; Fabian Groffen <grobian@gentoo.org> scrollz-1.9.99.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  14 Apr 2007; Raúl Porcel <armin76@gentoo.org>
+  -files/scrollz-1.9.5-gcc4.patch, -scrollz-1.9.5.ebuild:
+  old
+
+  14 Apr 2007; <welp@gentoo.org> scrollz-1.9.99.ebuild:
+  Stable on amd64 wrt armin76
+
+  14 Apr 2007; Raúl Porcel <armin76@gentoo.org> scrollz-1.9.99.ebuild:
+  ia64 + x86 stable
+
+*scrollz-1.9.99 (13 Mar 2007)
+
+  13 Mar 2007; Raúl Porcel <armin76@gentoo.org> -scrollz-1.9.98.1.ebuild,
+  +scrollz-1.9.99.ebuild:
+  Version bump, drop old
+
+*scrollz-1.9.98.1 (26 Oct 2006)
+
+  26 Oct 2006; Markus Ullmann <jokey@gentoo.org> scrollz-1.9.5.ebuild,
+  +scrollz-1.9.98.1.ebuild:
+  Version bump wrt bug #114923
+
+  02 Sep 2005; Fabian Groffen <grobian@gentoo.org>
+  +files/scrollz-1.9.5-gcc4.patch, scrollz-1.9.5.ebuild:
+  Adding a GCC4 compilation patch and marking ~ppc-macos (bug #90165)
+
+  27 Aug 2005; Sven Wegener <swegener@gentoo.org> -scrollz-1.9.ebuild:
+  Remmove old ebuild.
+
+  24 Aug 2005; Aron Griffis <agriffis@gentoo.org> scrollz-1.9.5.ebuild:
+  stable on ia64
+
+  18 Aug 2005; Sven Wegener <swegener@gentoo.org> -scrollz-1.9.3.ebuild,
+  -scrollz-1.9.4-r1.ebuild:
+  Removed old ebuilds.
+
+  15 Aug 2005; Luis Medinas <metalgod@gentoo.org> scrollz-1.9.5.ebuild:
+  Marked Stable on AMD64.
+
+  05 Jul 2005; Sven Wegener <swegener@gentoo.org> scrollz-1.9.5.ebuild:
+  Marked stable on x86.
+
+*scrollz-1.9.5 (14 May 2005)
+
+  14 May 2005; Sven Wegener <swegener@gentoo.org> +scrollz-1.9.5.ebuild:
+  Version bump, bug #92618.
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> scrollz-1.9.4-r1.ebuild:
+  stable on amd64
+
+  17 Feb 2005; Sven Wegener <swegener@gentoo.org> scrollz-1.9.4-r1.ebuild:
+  Marked stable on x86.
+
+*scrollz-1.9.4-r1 (01 Jan 2005)
+
+  01 Jan 2005; Sven Wegener <swegener@gentoo.org> +scrollz-1.9.4-r1.ebuild,
+  -scrollz-1.9.4.ebuild:
+  Revision bump. The old 1.9.4 was a beta release, this -r1 is the real 1.9.4
+  release.
+
+*scrollz-1.9.4 (13 Nov 2004)
+
+  13 Nov 2004; Sven Wegener <swegener@gentoo.org> +scrollz-1.9.4.ebuild:
+  Version bump.
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> scrollz-1.9.3.ebuild:
+  Stable on amd64.
+
+  17 Jul 2004; Sven Wegener <swegener@gentoo.org> scrollz-1.9.3.ebuild:
+  Marked stable on x86.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> scrollz-1.9.3.ebuild,
+  scrollz-1.9.ebuild:
+  virtual/glibc -> virtual/libc
+
+*scrollz-1.9.3 (20 Jun 2004)
+
+  20 Jun 2004; Sven Wegener <swegener@gentoo.org> +scrollz-1.9.3.ebuild:
+  Version bump.
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> scrollz-1.9.ebuild:
+  Masked scrollz-1.9.ebuild testing for ppc
+
+  16 Dec 2003; Chuck Short <zul@gentoo.org> scrollz-1.9.ebuild:
+  Marked stable for amd64 and ia64.
+
+  18 Oct 2003; Chuck Short <zul@gentoo.org> scrollz-1.9.ebuild:
+  Added ~amd64 to keywords.
+
+  05 Oct 2003; Chuck Short <zul@gentoo.org> scrollz-1.9.ebuild:
+  Added ~ia64 to keywords.
+
+*scrollz-1.9 (29 Jun 2003)
+
+  29 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump for Manel Miravalls Joan <manelmiravalls@hotmail.com>.
+
+*scrollz-1.8m (11 Dec 2002)
+
+  11 Dec 2002; phoen][x <phoenix@gentoo.org> scrollz-1.8m.ebuild, 
+  files/digest-scrollz-1.8m:
+  Initial import.  Ebuild submitted by Cory Visi <cory@visi.name>.
+  Thanks for the contribution. This closes bug 9808.

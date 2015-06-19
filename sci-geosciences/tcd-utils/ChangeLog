@@ -1,0 +1,18 @@
+# ChangeLog for sci-geosciences/tcd-utils
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/tcd-utils/ChangeLog,v 1.5 2013/09/02 08:14:31 ago Exp $
+
+  02 Sep 2013; Agostino Sarubbo <ago@gentoo.org> tcd-utils-20120115.ebuild:
+  Stable for x86, wrt bug #482886
+
+  26 Jun 2013; Chema Alonso <nimiux@gentoo.org> tcd-utils-20120115.ebuild:
+  Stable for amd64 wrt bug #474414
+
+  17 Feb 2013; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  set correct maintainer
+
+*tcd-utils-20120115 (10 Feb 2013)
+
+  10 Feb 2013; Julian Ospald <hasufell@gentoo.org> +tcd-utils-20120115.ebuild,
+  +metadata.xml:
+  initial import wrt #214875 based on Tim Ceras work

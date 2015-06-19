@@ -1,0 +1,102 @@
+# ChangeLog for games-action/teeworlds
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/teeworlds/ChangeLog,v 1.19 2015/03/25 13:46:37 ago Exp $
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> teeworlds-0.6.3.ebuild:
+  Stable for x86, wrt bug #542506
+
+  09 Mar 2015; Agostino Sarubbo <ago@gentoo.org> teeworlds-0.6.3.ebuild:
+  Stable for amd64, wrt bug #542506
+
+  09 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/0.6.1/01-use-system-wavpack.patch,
+  -files/0.6.1/02-fixed-wavpack-sound-loading.patch,
+  -files/0.6.1/03-use-system-pnglite.patch,
+  -files/0.6.2/01-use-system-wavpack.patch,
+  -files/0.6.2/02-fixed-wavpack-sound-loading.patch,
+  -files/0.6.2/03-use-system-pnglite.patch, -files/0.6.2/04-dedicated.patch,
+  -files/0.6.2/05-cc-cflags.patch:
+  old
+
+*teeworlds-0.6.3 (06 Jan 2015)
+
+  06 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/0.6.3/01-use-system-wavpack.patch,
+  +files/0.6.3/02-fixed-wavpack-sound-loading.patch,
+  +files/0.6.3/03-use-system-pnglite.patch, +files/0.6.3/04-dedicated.patch,
+  +files/0.6.3/05-cc-cflags.patch, +teeworlds-0.6.3.ebuild,
+  -teeworlds-0.6.2-r1.ebuild:
+  version bump
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> teeworlds-0.6.2-r1.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  18 Mar 2014; Michael Sterrett <mr_bones_@gentoo.org> -teeworlds-0.6.1.ebuild:
+  old
+
+*teeworlds-0.6.2-r1 (08 Sep 2013)
+
+  08 Sep 2013; Julian Ospald <hasufell@gentoo.org>
+  +files/0.6.2/04-dedicated.patch, +files/0.6.2/05-cc-cflags.patch,
+  -teeworlds-0.6.2.ebuild, +teeworlds-0.6.2-r1.ebuild:
+  respect CC/CXX, respect GAMES paths, make build log verbose,
+  fix dedicated useflag wrt #477658
+
+*teeworlds-0.6.2 (05 Sep 2013)
+
+  05 Sep 2013; Julian Ospald <hasufell@gentoo.org>
+  +files/0.6.2/01-use-system-wavpack.patch,
+  +files/0.6.2/02-fixed-wavpack-sound-loading.patch,
+  +files/0.6.2/03-use-system-pnglite.patch, +teeworlds-0.6.2.ebuild:
+  version bump wrt #477670
+
+  16 Dec 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due retirement, #260683
+
+  18 Jun 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/teeworlds-0.5.2-gcc46.patch, -files/teeworlds-0.5.2-system-libs.patch,
+  -files/teeworlds-0.5.2-wavpack.patch, -teeworlds-0.5.2.ebuild,
+  teeworlds-0.6.1.ebuild:
+  old
+
+  15 Jun 2012; Michael Sterrett <mr_bones_@gentoo.org> teeworlds-0.6.1.ebuild:
+  use makeopts_jobs (bug #421173)
+
+  18 Apr 2012; Michael Sterrett <mr_bones_@gentoo.org> teeworlds-0.6.1.ebuild:
+  add parallel-build patch from Alec Moskvin (bug #335148)
+
+*teeworlds-0.6.1 (27 Mar 2012)
+
+  27 Mar 2012; Tupone Alfredo <tupone@gentoo.org>
+  +files/0.6.1/01-use-system-wavpack.patch,
+  +files/0.6.1/02-fixed-wavpack-sound-loading.patch,
+  +files/0.6.1/03-use-system-pnglite.patch, +teeworlds-0.6.1.ebuild,
+  +files/teeworlds-init.d, +files/teeworlds_srv.cfg:
+  Version bump to 0.6.1 Bug #363395 by Bruno 'brubru' Tarquini
+
+  26 Mar 2012; Tupone Alfredo <tupone@gentoo.org> teeworlds-0.5.2.ebuild,
+  +files/teeworlds-0.5.2-gcc46.patch:
+  Fix build with gcc-4.6 Bug #374939 by Diego Elio Petten
+
+  25 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Set herd as primary maintainer as told with volkmar.
+
+  09 Apr 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  teeworlds-0.5.2.ebuild, files/teeworlds-0.5.2-wavpack.patch, metadata.xml:
+  switch to Debian patch for wavpack support (bug #351952); always build server
+
+  04 Apr 2010; Markos Chandras <hwoarang@gentoo.org> teeworlds-0.5.2.ebuild:
+  ~amd64 added wrt bug #311593
+
+  26 Mar 2010; Mounir Lamouri <volkmar@gentoo.org> +teeworlds-0.5.2.ebuild,
+  +files/teeworlds-0.5.2-system-libs.patch,
+  +files/teeworlds-0.5.2-wavpack.patch, +files/teeworlds.xpm, +metadata.xml:
+  Moving teeworlds from games-arcade to games-action.
+
+*teeworlds-0.5.2 (25 Mar 2010)
+
+  25 Mar 2010; Mounir Lamouri <volkmar@gentoo.org> +teeworlds-0.5.2.ebuild,
+  +files/teeworlds-0.5.2-system-libs.patch,
+  +files/teeworlds-0.5.2-wavpack.patch, +files/teeworlds.xpm, +metadata.xml:
+  Initial commit. Fix bug 206287

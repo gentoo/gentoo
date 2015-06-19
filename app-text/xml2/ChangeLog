@@ -1,0 +1,54 @@
+# ChangeLog for app-text/xml2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/xml2/ChangeLog,v 1.13 2014/08/10 18:37:48 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> xml2-0.5.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> -xml2-0.4.ebuild, metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/sgml-herd-has-no-maintainers-
+  again-td259655.html
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> xml2-0.4.ebuild,
+  xml2-0.5.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*xml2-0.5 (21 Jan 2012)
+
+  21 Jan 2012; Tim Harder <radhermit@gentoo.org> +xml2-0.5.ebuild:
+  Version bump.
+
+  02 Jan 2010; Christian Faulhammer <fauli@gentoo.org> xml2-0.4.ebuild:
+  Transfer Prefix keywords
+
+*xml2-0.4 (14 May 2008)
+
+  14 May 2008; Samuli Suominen <drac@gentoo.org>
+  -files/xml2-0.3-libxml2.patch, +files/xml2-0.4-libxml2.patch,
+  -xml2-0.3-r1.ebuild, +xml2-0.4.ebuild:
+  Version bump.
+
+  19 Jan 2008; Fabian Groffen <grobian@gentoo.org> xml2-0.3-r1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  13 Mar 2007; Leonardo Boshell <leonardop@gentoo.org> metadata.xml:
+  Replacing text-markup herd with the new sgml herd.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  30 Apr 2006; Fabian Groffen <grobian@gentoo.org> xml2-0.3-r1.ebuild:
+  Marked ~ppc-macos (bug #109442)
+
+*xml2-0.3-r1 (09 Apr 2006)
+
+  09 Apr 2006; Leonardo Boshell <leonardop@gentoo.org> -xml2-0.3.ebuild,
+  +xml2-0.3-r1.ebuild:
+  Dropped 'xml2' USE flag (bug #116346). Use libxml2 by default.
+
+*xml2-0.3 (07 Nov 2004)
+
+  07 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +files/xml2-0.3-libxml2.patch, +xml2-0.3.ebuild:
+  Initial import. Ebuild submitted by James Rowe <jnrowe@ukfsn.org>;
+  bug #64494.

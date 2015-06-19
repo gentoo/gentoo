@@ -1,0 +1,17 @@
+# ChangeLog for app-dicts/stardict-quick-ru-en
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/stardict-quick-ru-en/ChangeLog,v 1.3 2014/01/05 11:31:34 pacho Exp $
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  30 Oct 2009; Markus Meier <maekke@gentoo.org>
+  stardict-quick-ru-en-2.4.2.ebuild:
+  amd64/x86 stable, bug #289473
+
+*stardict-quick-ru-en-2.4.2 (16 Dec 2008)
+
+  16 Dec 2008; Peter Volkov <pva@gentoo.org> +metadata.xml,
+  +stardict-quick-ru-en-2.4.2.ebuild:
+  Initial import.

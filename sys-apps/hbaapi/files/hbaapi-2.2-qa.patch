@@ -1,0 +1,37 @@
+--- hbaapi_src_2.2.orig/HBAAPILIB.c
++++ hbaapi_src_2.2/HBAAPILIB.c
+@@ -30,7 +30,6 @@
+ 
+ #ifdef WIN32
+ #include <windows.h>
+-#include <string.h>
+ /*
+  * Next define forces entry points in the dll to be exported
+  * See hbaapi.h to see what it does.
+@@ -40,6 +39,7 @@
+ #include <dlfcn.h>
+ #include <strings.h>
+ #endif
++#include <string.h>
+ #include <stdio.h>
+ #include <time.h>
+ #include "hbaapi.h"
+@@ -395,7 +395,7 @@
+     GRAB_MUTEX(&_hbaapi_APSE_mutex);
+     GRAB_MUTEX(&_hbaapi_TE_mutex);
+     GRAB_MUTEX(&_hbaapi_LE_mutex);
+-    for(listp = cb_lists_array, found = 0; found == 0, *listp != NULL; listp++) {
++    for(listp = cb_lists_array, found = 0; found == 0 && *listp != NULL; listp++) {
+ 	lastp = *listp;
+ 	for(cbp=**listp; cbp != NULL; cbp = cbp->next) {
+ 	    if(cbhandle != (HBA_CALLBACKHANDLE)cbp) {
+--- hbaapi_src_2.2.orig/hbaapitest.c
++++ hbaapi_src_2.2/hbaapitest.c
+@@ -28,6 +28,7 @@
+ 
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #ifndef WIN32
+ #include <dlfcn.h> /* Dynamic library support for Solaris */
+ #include <time.h>

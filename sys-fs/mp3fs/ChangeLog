@@ -1,0 +1,83 @@
+# ChangeLog for sys-fs/mp3fs
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/mp3fs/ChangeLog,v 1.25 2014/12/28 10:10:45 ago Exp $
+
+  28 Dec 2014; Agostino Sarubbo <ago@gentoo.org> mp3fs-0.91.ebuild:
+  Stable for x86, wrt bug #532452
+
+  27 Dec 2014; Agostino Sarubbo <ago@gentoo.org> mp3fs-0.91.ebuild:
+  Stable for amd64, wrt bug #532452
+
+*mp3fs-0.91 (13 Oct 2014)
+
+  13 Oct 2014; Matthias Maier <tamiko@gentoo.org> +mp3fs-0.91.ebuild,
+  -files/mp3fs-0.13-automake-ldadd.patch:
+  version bump; remove obsolete files
+
+  13 Oct 2014; Matthias Maier <tamiko@gentoo.org> -mp3fs-0.30.ebuild,
+  -mp3fs-0.31.ebuild, metadata.xml, mp3fs-0.32.ebuild:
+  take over maintainership; drop old; fix SRC_URI
+
+  14 Aug 2012; Johannes Huber <johu@gentoo.org> mp3fs-0.32.ebuild:
+  Stable for x86, wrt bug #429216
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> mp3fs-0.32.ebuild:
+  Stable for amd64, wrt bug #429216
+
+  20 Jun 2012; Jeff Horelick <jdhore@gentoo.org> mp3fs-0.31.ebuild:
+  marked x86 per bug 422215
+
+  19 Jun 2012; Agostino Sarubbo <ago@gentoo.org> mp3fs-0.31.ebuild:
+  Stable for amd64, wrt bug #422215
+
+*mp3fs-0.32 (19 Jun 2012)
+
+  19 Jun 2012; Michael Weber <xmw@gentoo.org> +mp3fs-0.32.ebuild:
+  Version bump
+
+  06 Apr 2012; Michael Weber <xmw@gentoo.org> metadata.xml:
+  Grabing package, remove old version.
+
+*mp3fs-0.31 (20 Mar 2012)
+
+  20 Mar 2012; Sebastian Pipping <sping@gentoo.org> +mp3fs-0.31.ebuild:
+  Bump to 0.31, looks trivial
+
+  15 Dec 2011; Agostino Sarubbo <ago@gentoo.org> mp3fs-0.30.ebuild:
+  Stable for AMD64, wrt bug #392781
+
+  11 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> mp3fs-0.30.ebuild:
+  x86 stable wrt bug #392781
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> -mp3fs-0.13.ebuild, metadata.xml:
+  Drop maintainer due retirement, bug #34534; remove old.
+
+  12 Feb 2011; Markos Chandras <hwoarang@gentoo.org> mp3fs-0.21.ebuild:
+  Stable on amd64 wrt bug #353561
+
+  09 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> mp3fs-0.21.ebuild:
+  x86 stable wrt bug #353561
+
+*mp3fs-0.30 (05 Feb 2011)
+
+  05 Feb 2011; Mike Frysinger <vapier@gentoo.org> +mp3fs-0.30.ebuild:
+  Version bump.
+
+*mp3fs-0.21 (05 Sep 2010)
+
+  05 Sep 2010; Daniel Black <dragonheart@gentoo.org> -mp3fs-0.11.ebuild,
+  -mp3fs-0.12.ebuild, +mp3fs-0.21.ebuild:
+  version bump
+
+*mp3fs-0.13 (03 Jan 2009)
+
+  03 Jan 2009; Daniel Black <dragonheart@gentoo.org>
+  +files/mp3fs-0.13-automake-ldadd.patch, mp3fs-0.12.ebuild,
+  +mp3fs-0.13.ebuild:
+  version bump and fix dependencies as per bug #253432 thanks to Tomas Eriksson
+
+*mp3fs-0.12 (01 Apr 2008)
+
+  01 Apr 2008; Daniel Black <dragonheart@gentoo.org> -mp3fs-0.10.ebuild,
+  +mp3fs-0.12.ebuild:
+  version bump

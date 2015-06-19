@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DEPEND=flac? ( media-libs/flac ) mac? ( media-sound/mac ) sox? ( media-sound/sox ) alac? ( media-sound/alac_decoder ) shorten? ( media-sound/shorten ) wavpack? ( media-sound/wavpack )
+DESCRIPTION=A multi-purpose WAVE data processing and reporting utility
+EAPI=4
+HOMEPAGE=http://www.etree.org/shnutils/shntool/
+IUSE=alac flac mac shorten sox wavpack
+KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
+LICENSE=GPL-2
+RDEPEND=flac? ( media-libs/flac ) mac? ( media-sound/mac ) sox? ( media-sound/sox ) alac? ( media-sound/alac_decoder ) shorten? ( media-sound/shorten ) wavpack? ( media-sound/wavpack )
+SLOT=0
+SRC_URI=http://www.etree.org/shnutils/shntool/dist/src/shntool-3.0.10.tar.gz
+_md5_=ebb263290ecc6fc04d5e6cf39a6c9911

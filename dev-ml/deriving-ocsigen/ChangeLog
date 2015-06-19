@@ -1,0 +1,19 @@
+# ChangeLog for dev-ml/deriving-ocsigen
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/deriving-ocsigen/ChangeLog,v 1.3 2014/11/28 17:37:27 aballier Exp $
+
+  28 Nov 2014; Alexis Ballier <aballier@gentoo.org>
+  deriving-ocsigen-0.3c.ebuild:
+  update deps for ocaml 4.02
+
+  23 Jul 2013; Alexis Ballier <aballier@gentoo.org>
+  deriving-ocsigen-0.3c.ebuild:
+  eapi5, define subslot and add slot deps
+
+*deriving-ocsigen-0.3c (03 Aug 2012)
+
+  03 Aug 2012; Alexis Ballier <aballier@gentoo.org>
+  +deriving-ocsigen-0.3c.ebuild, +metadata.xml:
+  Initial import, ebuild by Jacques-Pascal Deplaix and Guillaume Horel, bug
+  #406653
+

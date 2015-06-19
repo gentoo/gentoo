@@ -1,0 +1,13 @@
+diff --git a/config_api.c b/config_api.c
+index b62e41c..2b6a6cf 100644
+--- a/config_api.c
++++ b/config_api.c
+@@ -41,7 +41,7 @@ static void on_change(config_t *conf)
+ int config_open(config_t *conf, const char *filename, int flag)
+ {
+ 	struct stat st;
+-	char mode[2];
++	char mode[3];
+ 	
+ 	/* set fopen() mode or return if flag is not valid */
+ 	if (flag == C_WRITE) {

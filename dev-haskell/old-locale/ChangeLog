@@ -1,0 +1,9 @@
+# ChangeLog for dev-haskell/old-locale
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/old-locale/ChangeLog,v 1.1 2015/04/03 22:39:11 gienah Exp $
+
+*old-locale-1.0.0.7 (03 Apr 2015)
+
+  03 Apr 2015; Mark Wright <gienah@gentoo.org> +metadata.xml,
+  +old-locale-1.0.0.7.ebuild:
+  Add old-locale

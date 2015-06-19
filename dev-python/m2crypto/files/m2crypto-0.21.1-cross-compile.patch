@@ -1,0 +1,29 @@
+https://bugzilla.osafoundation.org/show_bug.cgi?id=13116
+
+--- a/setup.py
++++ b/setup.py
+@@ -52,14 +52,12 @@ class _M2CryptoBuildExt(build_ext.build_ext):
+         opensslIncludeDir = os.path.join(self.openssl, 'include')
+         opensslLibraryDir = os.path.join(self.openssl, 'lib')
+         
+-        self.swig_opts = ['-I%s' % i for i in self.include_dirs + \
+-                          [opensslIncludeDir]]
++        self.swig_opts = ['-I%s' % i for i in self.include_dirs]
+         self.swig_opts.append('-includeall')
+         #self.swig_opts.append('-D__i386__') # Uncomment for early OpenSSL 0.9.7 versions, or on Fedora Core if build fails
+         #self.swig_opts.append('-DOPENSSL_NO_EC') # Try uncommenting if you can't build with EC disabled
+         
+-        self.include_dirs += [os.path.join(self.openssl, opensslIncludeDir),
+-                              os.path.join(os.getcwd(), 'SWIG')]        
++        self.include_dirs += [os.path.join(os.getcwd(), 'SWIG')]
+             
+         if sys.platform == 'cygwin':
+             # Cygwin SHOULD work (there's code in distutils), but
+@@ -69,7 +67,6 @@ class _M2CryptoBuildExt(build_ext.build_ext):
+             # Someday distutils will be fixed and this won't be needed.
+             self.library_dirs += [os.path.join(self.openssl, 'bin')]
+                
+-        self.library_dirs += [os.path.join(self.openssl, opensslLibraryDir)]
+ 
+ 
+ if sys.version_info < (2,4):

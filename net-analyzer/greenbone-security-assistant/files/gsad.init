@@ -1,0 +1,14 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/greenbone-security-assistant/files/gsad.init,v 1.2 2014/10/01 11:13:53 jlec Exp $ 
+
+name="Greenbone Security Assistant Daemon"
+command="/usr/sbin/gsad"
+command_args="${ASSISTANT_LISTEN} ${ASSISTANT_PORT} ${MANAGER_LISTEN} ${MANAGER_PORT} ${ASSISTANT_EXTRA_ARGS}"
+pidfile="/run/gsad.pid"
+
+depend() {
+	after bootmisc
+	need localmount net openvasmd
+}

@@ -1,0 +1,428 @@
+# ChangeLog for dev-perl/dbix-searchbuilder
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/dbix-searchbuilder/ChangeLog,v 1.95 2015/05/03 10:50:33 dilfridge Exp $
+
+  03 May 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  dbix-searchbuilder-1.630.0.ebuild, dbix-searchbuilder-1.650.0.ebuild,
+  dbix-searchbuilder-1.660.0.ebuild:
+  dev-perl/class-returnvalue just became dev-perl/Class-ReturnValue
+
+  18 Jan 2015; Mikle Kolyada <zlogene@gentoo.org>
+  dbix-searchbuilder-1.660.0.ebuild:
+  amd64/x86 stable wrt bug #535258
+
+  13 Jan 2015; Jeroen Roovers <jer@gentoo.org>
+  dbix-searchbuilder-1.660.0.ebuild:
+  Stable for HPPA (bug #535258).
+
+*dbix-searchbuilder-1.660.0 (16 Nov 2014)
+
+  16 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  +dbix-searchbuilder-1.660.0.ebuild:
+  Version bump.
+
+  31 Aug 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -dbix-searchbuilder-1.620.0.ebuild:
+  Drop old.
+
+  17 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  dbix-searchbuilder-1.650.0.ebuild:
+  amd64/x86 stable wrt bug #495534
+
+  11 Feb 2014; Jeroen Roovers <jer@gentoo.org>
+  dbix-searchbuilder-1.650.0.ebuild:
+  Stable for HPPA (bug #495534).
+
+*dbix-searchbuilder-1.650.0 (17 Aug 2013)
+
+  17 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +dbix-searchbuilder-1.650.0.ebuild:
+  Bump
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org>
+  dbix-searchbuilder-1.630.0.ebuild:
+  Stable for hppa, wrt bug #461144
+
+  15 May 2013; Agostino Sarubbo <ago@gentoo.org>
+  dbix-searchbuilder-1.630.0.ebuild:
+  Stable for x86, wrt bug #461144
+
+  15 May 2013; Agostino Sarubbo <ago@gentoo.org>
+  dbix-searchbuilder-1.630.0.ebuild:
+  Stable for amd64, wrt bug #461144
+
+*dbix-searchbuilder-1.630.0 (19 Jan 2013)
+
+  19 Jan 2013; Torsten Veller <tove@gentoo.org>
+  +dbix-searchbuilder-1.630.0.ebuild:
+  Version bump
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org>
+  -dbix-searchbuilder-1.610.0.ebuild:
+  Cleanup
+
+  27 Aug 2012; Raúl Porcel <armin76@gentoo.org>
+  dbix-searchbuilder-1.610.0.ebuild, dbix-searchbuilder-1.620.0.ebuild:
+  Drop alpha keywords
+
+  11 Aug 2012; Markus Meier <maekke@gentoo.org>
+  dbix-searchbuilder-1.620.0.ebuild:
+  x86 stable, bug #418875
+
+  04 Aug 2012; Jeroen Roovers <jer@gentoo.org>
+  dbix-searchbuilder-1.620.0.ebuild:
+  Stable for HPPA (bug #418875).
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org>
+  dbix-searchbuilder-1.620.0.ebuild:
+  Stable for amd64, wrt bug #418875
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org>
+  -dbix-searchbuilder-1.56.ebuild, -dbix-searchbuilder-1.590.0.ebuild:
+  Cleanup
+
+*dbix-searchbuilder-1.620.0 (30 Mar 2012)
+
+  30 Mar 2012; Torsten Veller <tove@gentoo.org>
+  +dbix-searchbuilder-1.620.0.ebuild:
+  Version bump
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org>
+  dbix-searchbuilder-1.56.ebuild, dbix-searchbuilder-1.590.0.ebuild,
+  dbix-searchbuilder-1.610.0.ebuild:
+  alpha stable and drop ia64/sparc wrt #400281
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  dbix-searchbuilder-1.610.0.ebuild:
+  x86 stable wrt bug #400281
+
+  24 Feb 2012; Jeroen Roovers <jer@gentoo.org>
+  dbix-searchbuilder-1.610.0.ebuild:
+  Stable for HPPA (bug #400281).
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  dbix-searchbuilder-1.610.0.ebuild:
+  Stable for amd64, wrt bug #400281
+
+*dbix-searchbuilder-1.610.0 (19 Sep 2011)
+
+  19 Sep 2011; Robin H. Johnson <robbat2@gentoo.org>
+  +dbix-searchbuilder-1.610.0.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -dbix-searchbuilder-1.59.ebuild:
+  Cleanup
+
+*dbix-searchbuilder-1.590.0 (27 Aug 2011)
+
+  27 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +dbix-searchbuilder-1.590.0.ebuild:
+  Change version scheme
+
+  29 Jul 2011; Torsten Veller <tove@gentoo.org>
+  -dbix-searchbuilder-1.58.ebuild:
+  Cleanup
+
+*dbix-searchbuilder-1.59 (27 Nov 2010)
+
+  27 Nov 2010; Torsten Veller <tove@gentoo.org>
+  +dbix-searchbuilder-1.59.ebuild:
+  Version bump
+
+*dbix-searchbuilder-1.58 (20 Oct 2010)
+
+  20 Oct 2010; Torsten Veller <tove@gentoo.org>
+  +dbix-searchbuilder-1.58.ebuild:
+  Version bump
+
+  24 Dec 2009; Torsten Veller <tove@gentoo.org>
+  -dbix-searchbuilder-1.48.ebuild:
+  Cleanup
+
+  28 Oct 2009; Raúl Porcel <armin76@gentoo.org>
+  dbix-searchbuilder-1.56.ebuild:
+  ia64 stable
+
+  18 Oct 2009; Tobias Klausmann <klausman@gentoo.org>
+  dbix-searchbuilder-1.56.ebuild:
+  Stable on alpha, bug #283969
+
+  07 Oct 2009; Tiago Cunha <tcunha@gentoo.org>
+  dbix-searchbuilder-1.56.ebuild:
+  stable sparc, bug 283969
+
+  18 Sep 2009; Torsten Veller <tove@gentoo.org>
+  dbix-searchbuilder-1.56.ebuild:
+  Stable on amd64 (#283969)
+
+  17 Sep 2009; Jeroen Roovers <jer@gentoo.org>
+  dbix-searchbuilder-1.56.ebuild:
+  Stable for HPPA (bug #283969).
+
+  10 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  dbix-searchbuilder-1.56.ebuild:
+  x86 stable, bug 283969
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org>
+  -dbix-searchbuilder-1.54.ebuild:
+  Cleanup
+
+*dbix-searchbuilder-1.56 (17 Jul 2009)
+
+  17 Jul 2009; Torsten Veller <tove@gentoo.org>
+  +dbix-searchbuilder-1.56.ebuild:
+  Version bump
+
+  15 Sep 2008; Torsten Veller <tove@gentoo.org>
+  -dbix-searchbuilder-1.38.ebuild, -dbix-searchbuilder-1.43.ebuild,
+  -dbix-searchbuilder-1.45.ebuild, -dbix-searchbuilder-1.51.ebuild,
+  -dbix-searchbuilder-1.53.ebuild:
+  Cleanup
+
+*dbix-searchbuilder-1.54 (24 Aug 2008)
+
+  24 Aug 2008; Torsten Veller <tove@gentoo.org>
+  +dbix-searchbuilder-1.54.ebuild:
+  Version bump (#235565)
+
+*dbix-searchbuilder-1.53 (01 Jul 2008)
+
+  01 Jul 2008; wrobel@gentoo.org +dbix-searchbuilder-1.53.ebuild:
+  Added dbix-searchbuilder-1.53 required for rt-3.6.7 (sec issue #230007).
+
+  28 Mar 2008; Jeroen Roovers <jer@gentoo.org>
+  dbix-searchbuilder-1.48.ebuild:
+  Stable for HPPA too.
+
+*dbix-searchbuilder-1.51 (07 Mar 2008)
+
+  07 Mar 2008; Benedikt Böhm <hollow@gentoo.org>
+  +dbix-searchbuilder-1.51.ebuild:
+  version bump wrt #195351
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  dbix-searchbuilder-1.48.ebuild:
+  amd64 stable
+
+  05 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  dbix-searchbuilder-1.48.ebuild:
+  alpha/ia64/x86 stable
+
+  21 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  dbix-searchbuilder-1.48.ebuild:
+  Marking sparc stable
+
+*dbix-searchbuilder-1.48 (13 Mar 2007)
+
+  13 Mar 2007; Michael Cummings <mcummings@gentoo.org>
+  -dbix-searchbuilder-1.47.ebuild, +dbix-searchbuilder-1.48.ebuild:
+  Version bump
+
+*dbix-searchbuilder-1.47 (10 Mar 2007)
+
+  10 Mar 2007; Michael Cummings <mcummings@gentoo.org>
+  +dbix-searchbuilder-1.47.ebuild:
+  Version bump
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org>
+  dbix-searchbuilder-1.45.ebuild:
+  Stable on x86, bug #169152.
+
+  22 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  dbix-searchbuilder-1.45.ebuild:
+  Stable on Alpha + IA64.
+
+  24 Nov 2006; Michael Cummings <mcummings@gentoo.org>
+  dbix-searchbuilder-1.45.ebuild:
+  sparc stable
+
+  24 Nov 2006; Michael Cummings <mcummings@gentoo.org>
+  dbix-searchbuilder-1.45.ebuild:
+  amd64 stable
+
+  23 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  dbix-searchbuilder-1.43.ebuild:
+  Stable on hppa
+
+  20 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  -dbix-searchbuilder-0.95.ebuild, -dbix-searchbuilder-1.01.ebuild,
+  -dbix-searchbuilder-1.27.ebuild, -dbix-searchbuilder-1.35.ebuild,
+  dbix-searchbuilder-1.38.ebuild, dbix-searchbuilder-1.43.ebuild,
+  dbix-searchbuilder-1.45.ebuild:
+  Marking amd64 stable; cleaning up old ebuilds
+
+*dbix-searchbuilder-1.45 (30 Sep 2006)
+
+  30 Sep 2006; Michael Cummings <mcummings@gentoo.org>
+  +dbix-searchbuilder-1.45.ebuild:
+  Version bump
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  dbix-searchbuilder-0.95.ebuild, dbix-searchbuilder-1.01.ebuild,
+  dbix-searchbuilder-1.27.ebuild, dbix-searchbuilder-1.35.ebuild,
+  dbix-searchbuilder-1.38.ebuild, dbix-searchbuilder-1.43.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  dbix-searchbuilder-1.43.ebuild:
+  Mark 1.43 stable on ia64
+
+  05 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  dbix-searchbuilder-0.95.ebuild, dbix-searchbuilder-1.01.ebuild,
+  dbix-searchbuilder-1.27.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed DEPEND
+
+  02 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  dbix-searchbuilder-1.43.ebuild:
+  Marking amd64 stable
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  dbix-searchbuilder-1.43.ebuild:
+  Marking stable sparc
+
+  20 May 2006; Thomas Cort <tcort@gentoo.org>
+  dbix-searchbuilder-1.38.ebuild:
+  Stable on alpha.
+
+*dbix-searchbuilder-1.43 (25 Apr 2006)
+
+  25 Apr 2006; <mcummings@gentoo.org> +dbix-searchbuilder-1.43.ebuild:
+  Version bump
+
+  21 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  dbix-searchbuilder-1.38.ebuild:
+  Stable on hppa
+
+  20 Apr 2006; Thomas Cort <tcort@gentoo.org>
+  dbix-searchbuilder-1.38.ebuild:
+  Added ~alpha keyword wrt Bug #112414.
+
+  20 Apr 2006; Thomas Cort <tcort@gentoo.org>
+  dbix-searchbuilder-1.38.ebuild:
+  Added ~amd64 keyword wrt Bug #112414.
+
+  26 Mar 2006; Michael Cummings <mcummings@gentoo.org>
+  dbix-searchbuilder-1.38.ebuild:
+  60+ days, marking stable sparc x86
+
+  13 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  dbix-searchbuilder-1.35.ebuild, dbix-searchbuilder-1.38.ebuild:
+  Keyworded ~hppa wrt #112414
+
+  10 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  dbix-searchbuilder-1.38.ebuild:
+  Mark 1.38 ~ia64
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  dbix-searchbuilder-1.35.ebuild, dbix-searchbuilder-1.38.ebuild:
+  Virtuals for perl-core
+
+  07 Feb 2006; <mcumming@gentoo.org> dbix-searchbuilder-1.38.ebuild:
+  bug 121736, bad rdep for dbi
+
+  15 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  dbix-searchbuilder-0.95.ebuild:
+  Fixing mirror syntax in 0.95
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  dbix-searchbuilder-1.35.ebuild:
+  marking stable sparc x86
+
+  13 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  dbix-searchbuilder-1.38.ebuild:
+  Added to ~ppc, bug #112414
+
+*dbix-searchbuilder-1.38 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  +dbix-searchbuilder-1.38.ebuild:
+  Version bump
+
+  17 Nov 2005; <mcumming@gentoo.org> dbix-searchbuilder-1.35.ebuild:
+  Missing deps, thanks tigger :)
+
+*dbix-searchbuilder-1.35 (13 Nov 2005)
+
+  13 Nov 2005; Michael Cummings <mcummings@gentoo.org>
+  +dbix-searchbuilder-1.35.ebuild:
+  Version bump upstream
+
+  08 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  dbix-searchbuilder-1.01.ebuild:
+  Mark 1.01 stable on alpha
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  dbix-searchbuilder-1.27.ebuild:
+  add ~ia64
+
+*dbix-searchbuilder-1.27 (12 Jun 2005)
+
+  12 Jun 2005; Renat Lumpau <rl03@gentoo.org>
+  +dbix-searchbuilder-1.27.ebuild:
+  New CPAN version.
+
+  01 May 2005; Tom Martin <slarti@gentoo.org>
+  dbix-searchbuilder-1.01.ebuild:
+  Stable on amd64.
+
+  28 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -dbix-searchbuilder-0.97.ebuild, -dbix-searchbuilder-0.99.ebuild,
+  dbix-searchbuilder-1.01.ebuild:
+  Cleaning
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  dbix-searchbuilder-0.95.ebuild:
+  stable on amd64
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*dbix-searchbuilder-1.01 (30 Jul 2004)
+
+  30 Jul 2004; Michael Cummings <mcummings@gentoo.org>
+  +dbix-searchbuilder-1.01.ebuild:
+  New version on CPAN
+
+*dbix-searchbuilder-0.99 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  dbix-searchbuilder-0.99.ebuild:
+  new version on cpan
+
+  30 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  dbix-searchbuilder-0.97.ebuild:
+  Stable on alpha.
+
+*dbix-searchbuilder-0.97 (01 May 2004)
+
+  01 May 2004; Eric Sammer <esammer@gentoo.org>
+  +dbix-searchbuilder-0.97.ebuild:
+  Bumped version - closes bug #49334.
+
+  30 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
+  dbix-searchbuilder-0.95.ebuild:
+  Tested on sparc and x86; no bugs reported
+
+  29 Dec 2003; Jason Wever <weeve@gentoo.org> :
+  removed stray digest file.
+
+  24 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
+  dbix-searchbuilder-0.88.ebuild:
+  Version no longer exists
+
+*dbix-searchbuilder-0.95 (24 Dec 2003)
+
+  24 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
+  dbix-searchbuilder-0.95.ebuild:
+  New version on CPAN
+
+*dbix-searchbuilder-0.88 (29 Jul 2003)
+
+  29 Jul 2003; Michael Cummings <mcummings@gentoo.org>
+  dbix-searchbuilder-0.88.ebuild:
+  Bug 23857 for Request Tracker - Celestial Wizard
+  <gentoo@dev.celestialwizard.org>

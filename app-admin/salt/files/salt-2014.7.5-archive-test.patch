@@ -1,0 +1,15 @@
+diff --git a/tests/unit/states/archive_test.py b/tests/unit/states/archive_test.py
+index a7f3005..bb0bc45 100644
+--- a/tests/unit/states/archive_test.py
++++ b/tests/unit/states/archive_test.py
+@@ -78,9 +78,7 @@ class ArchiveTest(TestCase):
+                         running_as = 'root'
+                     filename = os.path.join(
+                         tmp_dir,
+-                        'files/test/_tmp{0}_test_archive.tar'.format(
+-                            '' if running_as == 'root' else '_{0}'.format(running_as)
+-                        )
++                        'files/test/_tmp_test_archive.tar'
+                     )
+                     for test_opts, ret_opts in zip(test_tar_opts, ret_tar_opts):
+                         ret = archive.extracted(tmp_dir,

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>pinkbyte@gentoo.org</email>
+		<name>Sergey Popov</name>
+	</maintainer>
+	<longdescription lang="en">
+		bgpq3 allows to generate different config entries with prefix lists, useful for Cisco/Juniper routers and their software analogs, such as Quagga.
+		This program is a successor of bgpq from same author, main difference - it supports IPv6.
+	</longdescription>
+	<longdescription lang="ru">
+		bgpq3 позволяет создавать различные чaсти конфигурационных файлов со списком сетей для маршрутизаторов Cisco/Juniper и их программных аналогов,
+		таких как Quagga.
+		Данная программа - идейный наследник bgpq от того же автора, основное отличие - поддержка IPv6.
+	</longdescription>
+	<upstream>
+		<maintainer>
+			<email>snar@snar.spb.ru</email>
+			<name>Alexandre Snarskii</name>
+		</maintainer>
+		<remote-id type="github">snar/bgpq3</remote-id>
+		<bugs-to>https://github.com/snar/bgpq3/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

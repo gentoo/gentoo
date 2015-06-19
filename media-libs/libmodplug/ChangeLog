@@ -1,0 +1,352 @@
+# ChangeLog for media-libs/libmodplug
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libmodplug/ChangeLog,v 1.93 2015/03/03 08:45:33 dlan Exp $
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> libmodplug-0.8.8.5.ebuild:
+  add arm64 support, tested on A53 board
+
+  13 Aug 2014; Tony Vroon <chainsaw@gentoo.org> -libmodplug-0.8.8.2.ebuild,
+  -libmodplug-0.8.8.4.ebuild, -libmodplug-0.8.8.4-r1.ebuild:
+  Remove vulnerable ebuilds for security bug #480388.
+
+  13 Aug 2014; Markus Meier <maekke@gentoo.org> libmodplug-0.8.8.5.ebuild:
+  arm stable, bug #480388
+
+  10 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libmodplug-0.8.8.5.ebuild:
+  Stable for sparc, wrt bug #480388
+
+  10 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libmodplug-0.8.8.5.ebuild:
+  Stable for ia64, wrt bug #480388
+
+  09 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libmodplug-0.8.8.5.ebuild:
+  Stable for amd64, wrt bug #480388
+
+  09 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libmodplug-0.8.8.5.ebuild:
+  Stable for ppc64, wrt bug #480388
+
+  08 Aug 2014; Agostino Sarubbo <ago@gentoo.org> libmodplug-0.8.8.5.ebuild:
+  Stable for ppc, wrt bug #480388
+
+  08 Aug 2014; Tobias Klausmann <klausman@gentoo.org>
+  libmodplug-0.8.8.5.ebuild:
+  Stable on alpha, bug 480388
+
+  07 Aug 2014; <mad@gentoo.org> libmodplug-0.8.8.5.ebuild:
+  x86 stable, see bug 480388
+
+  06 Aug 2014; Jeroen Roovers <jer@gentoo.org> libmodplug-0.8.8.5.ebuild:
+  Stable for HPPA (bug #480388).
+
+*libmodplug-0.8.8.5 (04 Aug 2014)
+
+  04 Aug 2014; Tony Vroon <chainsaw@gentoo.org> +libmodplug-0.8.8.5.ebuild,
+  +files/libmodplug-0.8.8.5-no-fast-math.patch,
+  +files/libmodplug-0.8.8.5-psm-omf2097-fixes.patch, metadata.xml:
+  Version bump, as requested by Tom Wijsman in bug #516926. Handle OMF2097 PSM
+  files correctly, filed upstream on Github as pull request 19.
+
+  31 Jul 2014; Tobias Klausmann <klausman@gentoo.org>
+  libmodplug-0.8.8.4-r1.ebuild:
+  Stable on alpha, bug #515234
+
+  28 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libmodplug-0.8.8.4-r1.ebuild:
+  Stable for ppc, wrt bug #512012
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libmodplug-0.8.8.4-r1.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> libmodplug-0.8.8.4-r1.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  26 Jun 2013; Alexis Ballier <aballier@gentoo.org>
+  libmodplug-0.8.8.4-r1.ebuild:
+  update emul-linux-x86-soundlibs blocker
+
+*libmodplug-0.8.8.4-r1 (07 May 2013)
+
+  07 May 2013; Michał Górny <mgorny@gentoo.org> +libmodplug-0.8.8.4-r1.ebuild:
+  Convert to multilib wrt bug #468312.
+
+  15 May 2012; Alexis Ballier <aballier@gentoo.org> libmodplug-0.8.8.4.ebuild:
+  keyword ~amd64-fbsd
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> libmodplug-0.8.8.2.ebuild,
+  libmodplug-0.8.8.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  27 Aug 2011; Raúl Porcel <armin76@gentoo.org> libmodplug-0.8.8.4.ebuild:
+  alpha/ia64/sh/sparc stable wrt #379557
+
+  24 Aug 2011; Markus Meier <maekke@gentoo.org> libmodplug-0.8.8.4.ebuild:
+  arm stable, bug #379557
+
+  21 Aug 2011; Jeroen Roovers <jer@gentoo.org> libmodplug-0.8.8.4.ebuild:
+  Stable for HPPA (bug #379557).
+
+  20 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  libmodplug-0.8.8.4.ebuild:
+  x86 stable wrt security bug #379557
+
+  18 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  libmodplug-0.8.8.4.ebuild:
+  ppc/ppc64 stable wrt #379557
+
+  17 Aug 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  libmodplug-0.8.8.4.ebuild:
+  keyword ~sparc-solaris
+
+  17 Aug 2011; Tony Vroon <chainsaw@gentoo.org> libmodplug-0.8.8.4.ebuild:
+  Mark stable on AMD64 and remove stray die statement as per arch testing by
+  Agostino "ago" Sarubbo in bug #379557.
+
+*libmodplug-0.8.8.4 (17 Aug 2011)
+
+  17 Aug 2011; Tony Vroon <chainsaw@gentoo.org> -libmodplug-0.8.8.1.ebuild,
+  -libmodplug-0.8.8.3.ebuild, +libmodplug-0.8.8.4.ebuild,
+  +files/libmodplug-0.8.8.4-no-fast-math.patch:
+  Version bump for security bug #379557 by Agostino "ago" Sarubbo. Port to
+  EAPI=4 and use a patch instead of relying on sed. Remove all ebuilds but this
+  and current stable.
+
+*libmodplug-0.8.8.3 (10 May 2011)
+
+  10 May 2011; Alexis Ballier <aballier@gentoo.org> +libmodplug-0.8.8.3.ebuild:
+  version bump
+
+  16 Apr 2011; Raúl Porcel <armin76@gentoo.org> libmodplug-0.8.8.2.ebuild:
+  sh/sparc stable wrt #362503
+
+  13 Apr 2011; Jeroen Roovers <jer@gentoo.org> libmodplug-0.8.8.2.ebuild:
+  Stable for HPPA (bug #362503).
+
+  11 Apr 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  libmodplug-0.8.8.2.ebuild:
+  ia64/ppc64/ppc stable wrt #362503
+
+  10 Apr 2011; Tobias Klausmann <klausman@gentoo.org>
+  libmodplug-0.8.8.2.ebuild:
+  Stable on alpha, bug #362503
+
+  09 Apr 2011; Christoph Mende <angelos@gentoo.org> libmodplug-0.8.8.2.ebuild:
+  Stable on amd64 wrt bug #362503
+
+  09 Apr 2011; Markus Meier <maekke@gentoo.org> libmodplug-0.8.8.2.ebuild:
+  arm stable, bug #362503
+
+  08 Apr 2011; Thomas Kahle <tomka@gentoo.org> libmodplug-0.8.8.2.ebuild:
+  x86 stable per bug 362503
+
+*libmodplug-0.8.8.2 (03 Apr 2011)
+
+  03 Apr 2011; Alexis Ballier <aballier@gentoo.org> +libmodplug-0.8.8.2.ebuild:
+  version bump
+
+  03 Oct 2010; Raúl Porcel <armin76@gentoo.org> libmodplug-0.8.8.1.ebuild:
+  alpha/ia64/sh stable wrt #333431
+
+  13 Sep 2010; Tobias Klausmann <klausman@gentoo.org>
+  libmodplug-0.8.8.1.ebuild:
+  Stable on alpha, bug #332361
+
+  25 Aug 2010; Jeroen Roovers <jer@gentoo.org> libmodplug-0.8.8.1.ebuild:
+  Stable for PPC (bug #333431).
+
+  23 Aug 2010; Markus Meier <maekke@gentoo.org> libmodplug-0.8.8.1.ebuild:
+  arm stable, bug #333431
+
+  23 Aug 2010; Jeroen Roovers <jer@gentoo.org> libmodplug-0.8.8.1.ebuild:
+  Stable for HPPA (bug #333431).
+
+  22 Aug 2010; Markus Meier <maekke@gentoo.org> libmodplug-0.8.8.1.ebuild:
+  x86 stable, bug #333431
+
+  20 Aug 2010; Samuli Suominen <ssuominen@gentoo.org>
+  libmodplug-0.8.8.1.ebuild:
+  amd64/ppc64 stable wrt #333431
+
+*libmodplug-0.8.8.1 (17 Jul 2010)
+
+  17 Jul 2010; Alexis Ballier <aballier@gentoo.org>
+  +libmodplug-0.8.8.1.ebuild:
+  version bump
+
+*libmodplug-0.8.8 (06 Apr 2010)
+
+  06 Apr 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +libmodplug-0.8.8.ebuild:
+  Version bump.
+
+  03 Feb 2010; Fabian Groffen <grobian@gentoo.org> libmodplug-0.8.7.ebuild:
+  Transferred Prefix keywords
+
+  04 May 2009; Raúl Porcel <armin76@gentoo.org> libmodplug-0.8.7.ebuild:
+  arm/ia64/sh stable wrt #266913
+
+  03 May 2009; Brent Baude <ranger@gentoo.org> libmodplug-0.8.7.ebuild:
+  Marking libmodplug-0.8.7 ppc64 and ppc for bug 266913
+
+  03 May 2009; Tobias Klausmann <klausman@gentoo.org>
+  libmodplug-0.8.7.ebuild:
+  Stable on alpha, bug #266913
+
+  01 May 2009; Markus Meier <maekke@gentoo.org> libmodplug-0.8.7.ebuild:
+  x86 stable, bug #266913
+
+  01 May 2009; Olivier Crête <tester@gentoo.org> libmodplug-0.8.7.ebuild:
+  Stable on amd64, security bug #266913
+
+  29 Apr 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking libmodplug-0.7 ppc64 for bug 266913
+
+  29 Apr 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking libmodplug-0.7 ppc for bug 266913
+
+  29 Apr 2009; Jeroen Roovers <jer@gentoo.org> libmodplug-0.8.7.ebuild:
+  Stable for HPPA (bug #266913).
+
+*libmodplug-0.8.7 (29 Apr 2009)
+
+  29 Apr 2009; Alexis Ballier <aballier@gentoo.org>
+  +libmodplug-0.8.7.ebuild:
+  version bump, bug #266913
+
+*libmodplug-0.8.4-r3 (14 Apr 2008)
+
+  14 Apr 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +libmodplug-0.8.4-r3.ebuild:
+  Don't install .la files for the library.
+
+  01 Nov 2007; Raúl Porcel <armin76@gentoo.org> libmodplug-0.8.4-r2.ebuild:
+  Revert last change, doesn't work on sparc
+
+  01 Nov 2007; Raúl Porcel <armin76@gentoo.org> libmodplug-0.8.4-r2.ebuild:
+  sparc stable
+
+  24 Oct 2007; Jeroen Roovers <jer@gentoo.org> libmodplug-0.8.4-r2.ebuild:
+  Stable for HPPA (bug #196819).
+
+  26 Jul 2007; Raúl Porcel <armin76@gentoo.org> libmodplug-0.8.4-r2.ebuild:
+  alpha/ia64/x86 stable
+
+  18 Mar 2007; Steve Dibb <beandog@gentoo.org> libmodplug-0.8.4-r2.ebuild:
+  amd64 stable
+
+  10 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> -libmodplug-0.8.ebuild,
+  -libmodplug-0.8.4.ebuild:
+  Cleanup.
+
+  30 Dec 2006; Tony Vroon <chainsaw@gentoo.org> -libmodplug-0.8.4-r1.ebuild,
+  libmodplug-0.8.4-r2.ebuild:
+  Stable on PPC(32) & PPC64 because only this version has functional PSM
+  playback. PPC64 also being stabled because no other version will work
+  properly on 64UL. PPC32 ack'ed by rangerpb, nixnut. PPC64 ack'ed by
+  rangerpb, tgall.
+
+*libmodplug-0.8.4-r2 (24 Dec 2006)
+
+  24 Dec 2006; Michael Hanselmann <hansmi@gentoo.org>
+  +files/libmodplug-0.8.4-endian.patch, +libmodplug-0.8.4-r2.ebuild:
+  Fix endianness bug in load_psm.cpp, ported from audacious.
+
+*libmodplug-0.8.4-r1 (23 Dec 2006)
+
+  23 Dec 2006; Tony Vroon <chainsaw@gentoo.org>
+  +files/libmodplug-0.8.4-ppc64-64ul.patch, metadata.xml,
+  +libmodplug-0.8.4-r1.ebuild:
+  Portability fix for PPC64/64UL.
+
+  02 Dec 2006; <blubb@gentoo.org> libmodplug-0.8-r1.ebuild:
+  stable on amd64
+
+  28 Nov 2006; Jeroen Roovers <jer@gentoo.org> libmodplug-0.8-r1.ebuild:
+  Stable for HPPA (bug #143404).
+
+  27 Nov 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libmodplug-0.8-r1.ebuild:
+  ppc stable, bug #143404
+
+  25 Nov 2006; Bryan Østergaard <kloeri@gentoo.org>
+  libmodplug-0.8-r1.ebuild:
+  Stable on Alpha + ia64, bug 143404.
+
+  25 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  libmodplug-0.8-r1.ebuild:
+  stable x86, security bug #143404
+
+  24 Nov 2006; Markus Rothe <corsair@gentoo.org> libmodplug-0.8-r1.ebuild:
+  Stable on ppc64; bug #143404
+
+*libmodplug-0.8.4 (24 Nov 2006)
+
+  24 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libmodplug-0.8.4-timidity-patches.patch, +libmodplug-0.8.4.ebuild:
+  Version bump, but even if this version supposedly played MIDI files, it's
+  too broken to actually work.
+
+*libmodplug-0.8-r1 (24 Nov 2006)
+
+  24 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libmodplug-0.8-CVE-2006-4192.patch, libmodplug-0.8.ebuild,
+  +libmodplug-0.8-r1.ebuild:
+  Add patch for security bug #143404.
+
+  28 Aug 2006; Joshua Kinard <kumba@gentoo.org> libmodplug-0.7.ebuild:
+  Marked stable on mips.
+
+  25 May 2006; Diego Pettenò <flameeyes@gentoo.org> libmodplug-0.8.ebuild:
+  Add ~x86-fbsd keyword.
+
+  25 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  files/libmodplug-0.7-amd64.patch, libmodplug-0.8.ebuild:
+  Rice it down, don't append -ffast-math unconditionally. Also simplify
+  applying of patches.
+
+  21 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org> libmodplug-0.7.ebuild:
+  Stable on hppa wrt #130123
+
+  17 Apr 2006; Markus Rothe <corsair@gentoo.org> libmodplug-0.7.ebuild:
+  Stable on ppc64; bug #130123
+
+  16 Apr 2006; Thomas Cort <tcort@gentoo.org> libmodplug-0.7.ebuild:
+  Stable on alpha.
+
+*libmodplug-0.8 (25 Mar 2006)
+
+  25 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> +libmodplug-0.8.ebuild:
+  Version bump.
+
+  14 Mar 2006; Michael Hanselmann <hansmi@gentoo.org> libmodplug-0.7.ebuild:
+  Added to ~hppa.
+
+  28 Feb 2006; Fernando J. Pereda <ferdy@gentoo.org> libmodplug-0.7.ebuild:
+  Added ~alpha, bug #124450. Tested by Thomas Cort <tcort@cs.ubishops.ca>
+
+  25 Feb 2006; Stephen P. Becker <spbecker@gentoo.org>
+  libmodplug-0.7.ebuild:
+  added ~mips keyword
+
+  06 Feb 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libmodplug-0.7-asneeded.patch, libmodplug-0.7.ebuild:
+  Add patch to allow building with --as-needed in LDFLAGS (missing libm linking).
+
+  22 Jan 2006; Joseph Jezak <josejx@gentoo.org> libmodplug-0.7.ebuild:
+  Marked ppc stable.
+
+  12 Jan 2006; Markus Rothe <corsair@gentoo.org> libmodplug-0.7.ebuild:
+  Added ~ppc64
+
+  11 Mar 2005; David Holm <dholm@gentoo.org> libmodplug-0.7.ebuild:
+  Added to ~ppc.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libmodplug-0.7.ebuild:
+  Stable amd64, x86.
+
+  11 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libmodplug-0.7.ebuild:
+  -sparc.
+
+*libmodplug-0.7 (10 Nov 2004)
+
+  10 Nov 2004; Tony Vroon <chainsaw@gentoo.org> +libmodplug-0.7.ebuild:
+  Initial import, ebuild submitted by Bruce Guenter <bruceg@em.ca> in bug #70470.

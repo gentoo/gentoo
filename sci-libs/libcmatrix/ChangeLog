@@ -1,0 +1,70 @@
+# ChangeLog for sci-libs/libcmatrix
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/libcmatrix/ChangeLog,v 1.16 2015/01/29 21:31:07 mgorny Exp $
+
+  29 Jan 2015; Michał Górny <mgorny@gentoo.org> libcmatrix-3.11.0.ebuild:
+  Switch to CPU_FLAGS_X86.
+
+  20 May 2013; Justin Lecher <jlec@gentoo.org> libcmatrix-3.11.0.ebuild:
+  Change license to a-r-r and RESTRICT=mirror, #465594
+
+  27 Dec 2012; Justin Lecher <jlec@gentoo.org> libcmatrix-3.11.0.ebuild:
+  Moved to EAPI=5 and autotools-utils.eclass
+
+  27 Dec 2012; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop local USE
+
+  27 Dec 2012; Justin Lecher <jlec@gentoo.org> libcmatrix-3.11.0.ebuild:
+  Force usage of atlas
+
+  27 Dec 2012; Justin Lecher <jlec@gentoo.org> libcmatrix-3.11.0.ebuild:
+  Force ignoring atlas at all, #448832
+
+  20 Dec 2012; Justin Lecher <jlec@gentoo.org> -libcmatrix-3.2.1.ebuild,
+  -libcmatrix-3.9.0.ebuild, libcmatrix-3.11.0.ebuild, metadata.xml:
+  Drop old and drop atlas support
+
+  23 Jul 2012; Justin Lecher <jlec@gentoo.org> libcmatrix-3.2.1.ebuild,
+  libcmatrix-3.11.0.ebuild:
+  Patch all versions for gcc-4.7, #427494
+
+  24 Jun 2012; Justin Lecher <jlec@gentoo.org> +files/3.2.1-gcc4.7.patch,
+  libcmatrix-3.9.0.ebuild:
+  Fix compilation with gcc-4.7, #423181
+
+*libcmatrix-3.11.0 (21 May 2012)
+
+  21 May 2012; Justin Lecher <jlec@gentoo.org> +files/3.11.0-shared.patch,
+  +libcmatrix-3.11.0.ebuild:
+  Version Bump
+
+  04 May 2012; Justin Lecher <jlec@gentoo.org> libcmatrix-3.9.0.ebuild:
+  Prefer atlas over blas-atlas
+
+  31 Aug 2011; Justin Lecher <jlec@gentoo.org> +files/3.9.0-atlas.patch,
+  +libcmatrix-3.9.0.ebuild, metadata.xml:
+  Version bump
+
+*libcmatrix-3.9.0 (31 Aug 2011)
+
+  31 Aug 2011; Justin Lecher <jlec@gentoo.org> +files/3.9.0-atlas.patch,
+  +libcmatrix-3.9.0.ebuild, metadata.xml:
+  Version bump
+
+  21 Apr 2011; Justin Lecher <jlec@gentoo.org> +files/3.2.1-atlas.patch,
+  files/3.2.1-shared.patch, libcmatrix-3.2.1.ebuild:
+  Correct linking against bicatalis new atlas version
+
+  12 Apr 2011; Justin Lecher <jlec@gentoo.org> +files/3.2.1-gcc4.6.patch,
+  libcmatrix-3.2.1.ebuild:
+  Fix for compilation with gcc-4.6 (-fpermissive), #363161
+
+  03 Nov 2010; Justin Lecher <jlec@gentoo.org> libcmatrix-3.2.1.ebuild:
+  Keyworded for ~-linux prefix
+
+*libcmatrix-3.2.1 (03 Nov 2010)
+
+  03 Nov 2010; Justin Lecher <jlec@gentoo.org> +files/3.2.1-gcc4.4.patch,
+  +libcmatrix-3.2.1.ebuild, +files/3.2.1-minuit2.patch,
+  +files/3.2.1-shared.patch, +metadata.xml:
+  New Addition, imported from sci overlay

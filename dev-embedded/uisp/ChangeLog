@@ -1,0 +1,66 @@
+# ChangeLog for dev-embedded/uisp
+# Copyright 2000-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/uisp/ChangeLog,v 1.17 2013/07/21 11:10:07 ago Exp $
+
+  21 Jul 2013; Agostino Sarubbo <ago@gentoo.org> uisp-20050207-r1.ebuild:
+  Stable for amd64, wrt bug #477284
+
+  05 Feb 2013; Mike Frysinger <vapier@gentoo.org> uisp-20050207-r1.ebuild:
+  Update to EAPI=4 and drop useless depends #455726 by Christoph Junghans.
+
+  20 Oct 2007; Denis Dupeyron <calchan@gentoo.org> -files/uisp-gcc34.patch,
+  -uisp-20040311.ebuild, uisp-20050207-r1.ebuild:
+  Fixed bug #196483. Fixed compilation failing on warnings due to -Werror in
+  CXXFLAGS. Removed old ebuild.
+
+  19 Sep 2007; Denis Dupeyron <calchan@gentoo.org> -uisp-20050103.ebuild:
+  Removed useless uisp-20050103 which fixes bug #193017.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  13 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  uisp-20050207-r1.ebuild:
+  Stable on x86
+
+*uisp-20050207-r1 (28 Jun 2005)
+
+  28 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  +files/mega-48-88-168.patch, -uisp-20050207.ebuild,
+  +uisp-20050207-r1.ebuild:
+  Bump with fixed and new device support
+
+*uisp-20050207 (10 Jun 2005)
+
+  10 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> +uisp-20050207.ebuild:
+  New upstream version
+
+  03 May 2005; David Holm <dholm@gentoo.org> uisp-20050103.ebuild:
+  Added to ~ppc.
+
+*uisp-20050103 (03 Jan 2005)
+
+  03 Jan 2005; Daniel Black <dragonheart@gentoo.org> +files/uisp-gcc34.patch,
+  -uisp-20030618.ebuild, uisp-20040311.ebuild, +uisp-20050103.ebuild:
+  Removed 2003 version. Patched 2004 version as per bug #74216 with patch by Ian
+  Hubbertz <gentoo2@hubbertz.de>. Version bump commited
+
+  18 Jul 2004; Robin H. Johnson <robbat2@gentoo.org> uisp-20040311.ebuild:
+  stable on x86.
+
+  24 Mar 2004; Daniel Black <dragonheart@gentoo.org> uisp-20030618.ebuild:
+  Removed surperflous S assignment
+
+*uisp-20040311 (23 Mar 2004)
+
+  23 Mar 2004; Daniel Black <dragonheart@gentoo.org> uisp-20040311.ebuild:
+  version bump thanks to Wolf Goetze <wolf@goetze.co.uk> bug #45370
+
+  05 Mar 2004; Daniel Black <dragonheart@gentoo.org> uisp-20030618.ebuild:
+  Marked stable on x86
+
+*uisp-20030618 (28 Oct 2003)
+
+  28 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> metadata.xml,
+  uisp-20030618.ebuild:
+  initial commit, bug #23651 submitted by Wolf Goetze <wolf@goetze.co.uk>

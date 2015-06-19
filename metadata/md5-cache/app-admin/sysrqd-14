@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install postinst unpack
+DESCRIPTION=daemon providing access to the kernel sysrq functions via network
+HOMEPAGE=http://julien.danjou.info/projects/sysrqd
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~wschlich/src/app-admin/sysrqd/sysrqd-14.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9cebdec6fc37be9ecfd8016f43d36e98

@@ -1,0 +1,77 @@
+# ChangeLog for x11-plugins/gkrellmoon
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellmoon/ChangeLog,v 1.22 2015/05/06 20:59:31 mrueg Exp $
+
+  06 May 2015; Manuel Rüger <mrueg@gentoo.org> -gkrellmoon-0.6.ebuild:
+  Remove old.
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #144305
+
+  25 Jun 2009; Raúl Porcel <armin76@gentoo.org> gkrellmoon-0.6-r1.ebuild:
+  sparc stable wrt #271463
+
+  04 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  gkrellmoon-0.6-r1.ebuild:
+  Stable on alpha, bug #271463
+
+  31 May 2009; Markus Meier <maekke@gentoo.org> gkrellmoon-0.6-r1.ebuild:
+  amd64/x86 stable, bug #271463
+
+  31 May 2009; nixnut <nixnut@gentoo.org> gkrellmoon-0.6-r1.ebuild:
+  ppc stable #271463
+
+*gkrellmoon-0.6-r1 (11 Apr 2008)
+
+  11 Apr 2008; Jim Ramsay <lack@gentoo.org> +gkrellmoon-0.6-r1.ebuild:
+  gkrellmoon can use imlib2 instead of the older imlib, so use that instead
+  (Bug 216879)
+
+  12 Mar 2007; Jim Ramsay <lack@gentoo.org> gkrellmoon-0.6.ebuild:
+  Updated to use new gkrellm-plugin eclass
+
+  22 Feb 2007; Jim Ramsay <lack@gentoo.org> metadata.xml:
+  Accepting maintainership
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org> gkrellmoon-0.6.ebuild:
+  multilib fixes
+
+  16 Mar 2004; <augustus@gentoo.org> gkrellmoon-0.6.ebuild:
+  Marked for AMD64.
+
+  04 Sep 2003; Aron Griffis <agriffis@gentoo.org> gkrellmoon-0.6.ebuild:
+  stable on alpha
+
+*gkrellmoon-0.6 (14 Dec 2002)
+
+  14 Dec 2002; Seemant Kulleen <seemant@gentoo.org> gkrellmoon-0.6.ebuild
+  files/digest-gkrellmoon-0.6 :
+
+  Cosmetic upstream fixes.   Nothing major, so bumping to stable.
+
+*gkrellmoon-0.5 (10 Nov 2002)
+ 
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  10 Nov 2002; Seemant Kulleen <seemant@gentoo.org> gkrellmoon-0.5.ebuild
+  files/digest-gkrellmoon-0.5.ebuild :
+
+  New version for GkrellM2. Thanks to: absinthe@pobox.com (Dylan Carlson) in
+  bug #10528
+
+*gkrellmoon-0.3 (19 Feb 2002)
+
+  11 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
+
+  29 Aug 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
+  Relocated to x11-plugins
+
+  19 Feb 2002; Aron Griffis <agriffis@gentoo.org> gkrellmoon-0.3.ebuild:
+
+  Added gkrellmoon plugin for gkrellm.  Thanks to Seemant Kulleen for the
+  ebuild.

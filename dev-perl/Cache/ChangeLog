@@ -1,0 +1,49 @@
+# ChangeLog for dev-perl/Cache
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Cache/ChangeLog,v 1.12 2014/08/23 21:31:53 axs Exp $
+
+*Cache-2.40.0-r1 (23 Aug 2014)
+
+  23 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Cache-2.40.0-r1.ebuild, -Cache-2.40.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  01 Mar 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Add missing cpan remote-id tags in metadata.xml (#406287)
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Cache-2.04.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Cache-2.40.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Cache-2.40.0 (01 Sep 2011)
+
+  01 Sep 2011; Torsten Veller <tove@gentoo.org> +Cache-2.40.0.ebuild:
+  Change version scheme
+
+  27 Dec 2007; Andrej Kacian <ticho@gentoo.org> Cache-2.04.ebuild:
+  Stable on x86.
+
+  14 Jul 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Assigning dev-perl/Cache to perl-herd, as chriswhite has been retired (#56211).
+
+  20 Oct 2006; Michael Cummings <mcummings@gentoo.org> Cache-2.04.ebuild:
+  Marking amd64 stable
+
+  10 Sep 2006; Michael Cummings <mcummings@gentoo.org> Cache-2.04.ebuild:
+  Keywording ~amd64
+
+  04 Aug 2006; Michael Cummings <mcummings@gentoo.org> Cache-2.04.ebuild:
+  Adding perl dep; fixed DEPEND
+
+*Cache-2.04 (17 Apr 2006)
+
+  17 Apr 2006; Chris White <chriswhite@gentoo.org> +metadata.xml,
+  +Cache-2.04.ebuild:
+  Initial import into the tree. Depend of bug #118928. Thanks to distances and
+  Adam Penser for the ebuilds.

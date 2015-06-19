@@ -1,0 +1,44 @@
+# ChangeLog for media-gfx/fim
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/fim/ChangeLog,v 1.7 2015/05/18 19:18:16 dilfridge Exp $
+
+*fim-0.4_rc3-r1 (18 May 2015)
+
+  18 May 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -fim-0.4_rc1-r1.ebuild, -fim-0.4_rc3.ebuild, +fim-0.4_rc3-r1.ebuild,
+  +files/fim-0.4_rc3-poppler031.patch:
+  Fix build with poppler-0.31 and later
+
+*fim-0.4_rc3 (04 Mar 2015)
+
+  04 Mar 2015; Michael Weber <xmw@gentoo.org> +fim-0.4_rc3.ebuild,
+  -fim-0.4_pre.ebuild, -fim-0.4_rc1.ebuild, fim-0.4_rc1-r1.ebuild:
+  Version bump for new release candidate, adjust poppler dep and drop old.
+
+*fim-0.4_rc1-r1 (27 May 2014)
+*fim-0.4_rc1_p1 (27 May 2014)
+
+  27 May 2014; Michael Weber <xmw@gentoo.org>
+  +files/fim-0.4_rc1-giflib-4.2.patch, +fim-0.4_rc1-r1.ebuild,
+  +fim-0.4_rc1_p1.ebuild:
+  Fix compilation against giflib-4.2 (bug 504772)
+
+*fim-0.4_rc1 (11 Jan 2014)
+
+  11 Jan 2014; Michael Weber <xmw@gentoo.org> +files/fim-0.4_rc1-nosvn.patch,
+  +fim-0.4_rc1.ebuild:
+  Version bump 492666
+
+  11 Jan 2014; Michael Weber <xmw@gentoo.org> fim-0.4_pre.ebuild:
+  need old giflib version
+
+  23 Aug 2013; Michael Weber <xmw@gentoo.org> +files/fim-0.4_pre-nosvn.patch,
+  fim-0.4_pre.ebuild:
+  Remove call to svnversion from configure.ac.
+
+*fim-0.4_pre (23 Aug 2013)
+
+  23 Aug 2013; Michael Weber <xmw@gentoo.org>
+  +files/fim-0.4_pre-automake-1.12.patch,
+  +files/fim-0.4_pre-graphicsmagick.patch, +fim-0.4_pre.ebuild, +metadata.xml:
+  Initial import (bug 188217)

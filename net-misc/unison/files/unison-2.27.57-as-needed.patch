@@ -1,0 +1,11 @@
+--- unison-2.17.1/Makefile.OCaml
++++ unison-2.17.1/Makefile.OCaml
+@@ -330,7 +330,7 @@
+ 
+ $(NAME)$(EXEC_EXT): $(CAMLOBJS) $(COBJS)
+ 	@echo Linking $@
+-	$(CAMLC) -verbose $(CAMLFLAGS) -o $@ $(CFLAGS) $(CAMLLIBS) $(CLIBS) $^
++	$(CAMLC) -verbose $(CAMLFLAGS) -o $@ $(CFLAGS) $(CAMLLIBS) $^ $(CLIBS)
+ 
+ # Unfortunately -output-obj does not put .o files into the output, only .cmx
+ # files, so we have to use $(LD) to take care of COBJS.

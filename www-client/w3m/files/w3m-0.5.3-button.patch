@@ -1,0 +1,439 @@
+Description: Support the button element as defined in HTML 4.01
+Origin: upstream, http://www.sic.med.tohoku.ac.jp/~satodai/w3m-dev/201009.month/4411.html
+Bug-Debian: http://bugs.debian.org/136810
+
+Index: file.c
+===================================================================
+RCS file: /cvsroot/w3m/w3m/file.c,v
+retrieving revision 1.264
+diff -u -r1.264 file.c
+--- w3m.orig/file.c	3 Aug 2010 10:02:16 -0000	1.264
++++ w3m/file.c	17 Sep 2010 12:18:55 -0000
+@@ -2467,6 +2467,7 @@
+     bcopy((void *)&obuf->anchor, (void *)&obuf->bp.anchor,
+ 	  sizeof(obuf->anchor));
+     obuf->bp.img_alt = obuf->img_alt;
++    obuf->bp.input_alt = obuf->input_alt;
+     obuf->bp.in_bold = obuf->in_bold;
+     obuf->bp.in_italic = obuf->in_italic;
+     obuf->bp.in_under = obuf->in_under;
+@@ -2484,6 +2485,7 @@
+     bcopy((void *)&obuf->bp.anchor, (void *)&obuf->anchor,
+ 	  sizeof(obuf->anchor));
+     obuf->img_alt = obuf->bp.img_alt;
++    obuf->input_alt = obuf->bp.input_alt;
+     obuf->in_bold = obuf->bp.in_bold;
+     obuf->in_italic = obuf->bp.in_italic;
+     obuf->in_under = obuf->bp.in_under;
+@@ -2727,7 +2729,7 @@
+     Str line = obuf->line, pass = NULL;
+     char *hidden_anchor = NULL, *hidden_img = NULL, *hidden_bold = NULL,
+ 	*hidden_under = NULL, *hidden_italic = NULL, *hidden_strike = NULL,
+-	*hidden_ins = NULL, *hidden = NULL;
++	*hidden_ins = NULL, *hidden_input, *hidden = NULL;
+ 
+ #ifdef DEBUG
+     if (w3m_debug) {
+@@ -2759,6 +2761,12 @@
+ 		hidden = hidden_img;
+ 	}
+     }
++    if (obuf->input_alt.in) {
++	if ((hidden_input = has_hidden_link(obuf, HTML_INPUT_ALT)) != NULL) {
++	    if (!hidden || hidden_input < hidden)
++		hidden = hidden_input;
++	}
++    }
+     if (obuf->in_bold) {
+ 	if ((hidden_bold = has_hidden_link(obuf, HTML_B)) != NULL) {
+ 	    if (!hidden || hidden_bold < hidden)
+@@ -2810,6 +2818,8 @@
+ 	Strcat_charp(line, "</a>");
+     if (obuf->img_alt && !hidden_img)
+ 	Strcat_charp(line, "</img_alt>");
++    if (obuf->input_alt.in && !hidden_input)
++	Strcat_charp(line, "</input_alt>");
+     if (obuf->in_bold && !hidden_bold)
+ 	Strcat_charp(line, "</b>");
+     if (obuf->in_italic && !hidden_italic)
+@@ -3020,6 +3030,18 @@
+ 	Strcat_charp(tmp, "\">");
+ 	push_tag(obuf, tmp->ptr, HTML_IMG_ALT);
+     }
++    if (!hidden_input && obuf->input_alt.in) {
++	Str tmp;
++	if (obuf->input_alt.hseq > 0)
++	    obuf->input_alt.hseq = - obuf->input_alt.hseq;
++	tmp = Sprintf("<INPUT_ALT hseq=\"%d\" fid=\"%d\" name=\"%s\" type=\"%s\" value=\"%s\">",
++		     obuf->input_alt.hseq,
++		     obuf->input_alt.fid,
++		     obuf->input_alt.name->ptr,
++		     obuf->input_alt.type->ptr,
++		     obuf->input_alt.value->ptr);
++	push_tag(obuf, tmp->ptr, HTML_INPUT_ALT);
++    }
+     if (!hidden_bold && obuf->in_bold)
+ 	push_tag(obuf, "<B>", HTML_B);
+     if (!hidden_italic && obuf->in_italic)
+@@ -3730,6 +3752,63 @@
+ }
+ 
+ Str
++process_button(struct parsed_tag *tag)
++{
++    Str tmp = NULL;
++    char *p, *q, *r, *qq = NULL;
++    int qlen, v;
++
++    if (cur_form_id < 0) {
++       char *s = "<form_int method=internal action=none>";
++       tmp = process_form(parse_tag(&s, TRUE));
++    }
++    if (tmp == NULL)
++       tmp = Strnew();
++
++    p = "submit";
++    parsedtag_get_value(tag, ATTR_TYPE, &p);
++    q = NULL;
++    parsedtag_get_value(tag, ATTR_VALUE, &q);
++    r = "";
++    parsedtag_get_value(tag, ATTR_NAME, &r);
++
++    v = formtype(p);
++    if (v == FORM_UNKNOWN)
++       return NULL;
++
++    if (!q) {
++       switch (v) {
++       case FORM_INPUT_SUBMIT:
++       case FORM_INPUT_BUTTON:
++           q = "SUBMIT";
++           break;
++       case FORM_INPUT_RESET:
++           q = "RESET";
++           break;
++       }
++    }
++    if (q) {
++       qq = html_quote(q);
++       qlen = strlen(q);
++    }
++
++    //    Strcat_charp(tmp, "<pre_int>");
++    Strcat(tmp, Sprintf("<input_alt hseq=\"%d\" fid=\"%d\" type=%s "
++                       "name=\"%s\" value=\"%s\">",
++                       cur_hseq++, cur_form_id, p, html_quote(r), qq));
++    return tmp;
++}
++
++Str
++process_n_button(void)
++{
++    Str tmp = Strnew();
++    Strcat_charp(tmp, "</input_alt>");
++    //    Strcat_charp(tmp, "</pre_int>");
++    return tmp;
++}
++
++Str
+ process_select(struct parsed_tag *tag)
+ {
+     Str tmp = NULL;
+@@ -4859,7 +4938,35 @@
+ 	    if (i > obuf->bottom_margin)
+ 		obuf->bottom_margin = i;
+ 	}
++	if (parsedtag_get_value(tag, ATTR_HSEQ, &hseq)) {
++	    obuf->input_alt.hseq = hseq;
++	}
++	if (parsedtag_get_value(tag, ATTR_FID, &i)) {
++	    obuf->input_alt.fid = i;
++	}
++	if (parsedtag_get_value(tag, ATTR_TYPE, &p)) {
++	    obuf->input_alt.type = Strnew_charp(p);
++	}
++	if (parsedtag_get_value(tag, ATTR_VALUE, &p)) {
++	    obuf->input_alt.value = Strnew_charp(p);
++	}
++	if (parsedtag_get_value(tag, ATTR_NAME, &p)) {
++	    obuf->input_alt.name = Strnew_charp(p);
++	}
++	obuf->input_alt.in = 1;
+ 	return 0;
++    case HTML_N_INPUT_ALT:
++	if (obuf->input_alt.in) {
++	    if (!close_effect0(obuf, HTML_INPUT_ALT))
++		push_tag(obuf, "</input_alt>", HTML_N_INPUT_ALT);
++	    obuf->input_alt.hseq = 0;
++	    obuf->input_alt.fid = -1;
++	    obuf->input_alt.in = 0;
++	    obuf->input_alt.type = NULL;
++	    obuf->input_alt.name = NULL;
++	    obuf->input_alt.value = NULL;
++	}
++	return 1;
+     case HTML_TABLE:
+ 	close_anchor(h_env, obuf);
+ 	obuf->table_level++;
+@@ -4968,6 +5075,16 @@
+     case HTML_INPUT:
+ 	close_anchor(h_env, obuf);
+ 	tmp = process_input(tag);
++       if (tmp)
++           HTMLlineproc1(tmp->ptr, h_env);
++       return 1;
++    case HTML_BUTTON:
++       tmp = process_button(tag);
++       if (tmp)
++           HTMLlineproc1(tmp->ptr, h_env);
++       return 1;
++    case HTML_N_BUTTON:
++       tmp = process_n_button();
+ 	if (tmp)
+ 	    HTMLlineproc1(tmp->ptr, h_env);
+ 	return 1;
+@@ -5680,6 +5797,21 @@
+ 				putHmarker(buf->hmarklist, currentLn(buf),
+ 					   hpos, hseq - 1);
+ 			}
++			else if (hseq < 0) {
++			    int h = -hseq - 1;
++			    int hpos = pos;
++			    if (*str == '[')
++				hpos++;
++			    if (buf->hmarklist &&
++				h < buf->hmarklist->nmark &&
++				buf->hmarklist->marks[h].invalid) {
++				buf->hmarklist->marks[h].pos = hpos;
++				buf->hmarklist->marks[h].line = currentLn(buf);
++				buf->hmarklist->marks[h].invalid = 0;
++				hseq = -hseq;
++			    }
++			}
++
+ 			if (!form->target)
+ 			    form->target = buf->baseTarget;
+ 			if (a_textarea &&
+@@ -6747,6 +6879,12 @@
+     obuf->nobr_level = 0;
+     bzero((void *)&obuf->anchor, sizeof(obuf->anchor));
+     obuf->img_alt = 0;
++    obuf->input_alt.hseq = 0;
++    obuf->input_alt.fid = -1;
++    obuf->input_alt.in = 0;
++    obuf->input_alt.type = NULL;
++    obuf->input_alt.name = NULL;
++    obuf->input_alt.value = NULL;
+     obuf->in_bold = 0;
+     obuf->in_italic = 0;
+     obuf->in_under = 0;
+@@ -6782,6 +6920,15 @@
+ 	push_tag(obuf, "</img_alt>", HTML_N_IMG_ALT);
+ 	obuf->img_alt = NULL;
+     }
++    if (obuf->input_alt.in) {
++	push_tag(obuf, "</input_alt>", HTML_N_INPUT_ALT);
++	obuf->input_alt.hseq = 0;
++	obuf->input_alt.fid = -1;
++	obuf->input_alt.in = 0;
++	obuf->input_alt.type = NULL;
++	obuf->input_alt.name = NULL;
++	obuf->input_alt.value = NULL;
++    }
+     if (obuf->in_bold) {
+ 	push_tag(obuf, "</b>", HTML_N_B);
+ 	obuf->in_bold = 0;
+Index: fm.h
+===================================================================
+RCS file: /cvsroot/w3m/w3m/fm.h,v
+retrieving revision 1.149
+diff -u -r1.149 fm.h
+--- w3m.orig/fm.h	20 Aug 2010 09:47:09 -0000	1.149
++++ w3m/fm.h	17 Sep 2010 12:18:55 -0000
+@@ -562,6 +562,13 @@
+ #define INIT_BUFFER_WIDTH ((_INIT_BUFFER_WIDTH > 0) ? _INIT_BUFFER_WIDTH : 0)
+ #define FOLD_BUFFER_WIDTH (FoldLine ? (INIT_BUFFER_WIDTH + 1) : -1)
+ 
++struct input_alt_attr {
++  int hseq;
++  int fid;
++  int in;
++  Str type, name, value;
++};
++
+ typedef struct {
+     int pos;
+     int len;
+@@ -569,6 +576,7 @@
+     long flag;
+     Anchor anchor;
+     Str img_alt;
++    struct input_alt_attr input_alt;
+     char fontstat[FONTSTAT_SIZE];
+     short nobr_level;
+     Lineprop prev_ctype;
+@@ -591,6 +599,7 @@
+     short nobr_level;
+     Anchor anchor;
+     Str img_alt;
++    struct input_alt_attr input_alt;
+     char fontstat[FONTSTAT_SIZE];
+     char fontstat_stack[FONT_STACK_SIZE][FONTSTAT_SIZE];
+     int fontstat_sp;
+Index: html.c
+===================================================================
+RCS file: /cvsroot/w3m/w3m/html.c,v
+retrieving revision 1.32
+diff -u -r1.32 html.c
+--- w3m.orig/html.c	14 Aug 2010 01:29:40 -0000	1.32
++++ w3m/html.c	17 Sep 2010 12:18:55 -0000
+@@ -56,6 +56,9 @@
+     ATTR_CORE
+ };
+ #define MAXA_INPUT      MAXA_CORE + 12
++unsigned char ALST_BUTTON[] =
++    { ATTR_TYPE, ATTR_VALUE, ATTR_NAME, ATTR_CORE };
++#define MAXA_BUTTON	MAXA_CORE + 3
+ unsigned char ALST_TEXTAREA[] =
+     { ATTR_COLS, ATTR_ROWS, ATTR_NAME, ATTR_READONLY, ATTR_CORE };
+ #define MAXA_TEXTAREA   MAXA_CORE + 4
+@@ -247,24 +250,24 @@
+     {"/bdo", NULL, 0, TFLG_END},	/* 121 HTML_N_BDO */
+     {"big", ALST_NOP, MAXA_NOP, 0},		/* 122 HTML_BIG */
+     {"/big", NULL, 0, TFLG_END},	/* 123 HTML_N_BIG */
+-    {"button", ALST_NOP, MAXA_NOP, 0},		/* 124 HTML_BUTTON */
+-    {"fieldset", ALST_NOP, MAXA_NOP, 0},	        /* 125 HTML_FIELDSET */
+-    {"/fieldset", NULL, 0, TFLG_END},	/* 126 HTML_N_FIELDSET */
+-    {"iframe", ALST_NOP, MAXA_NOP, 0},		/* 127 HTML_IFRAME */
+-    {"label", ALST_NOP, MAXA_NOP, 0}, 		/* 128 HTML_LABEL */
+-    {"/label", NULL, 0, TFLG_END},	/* 129 HTML_N_LABEL */
+-    {"legend", ALST_NOP, MAXA_NOP, 0},		/* 130 HTML_LEGEND */
+-    {"/legend", NULL, 0, TFLG_END},	/* 131 HTML_N_LEGEND */
+-    {"noscript", ALST_NOP, MAXA_NOP, 0},	        /* 132 HTML_NOSCRIPT */
+-    {"/noscript", NULL, 0, TFLG_END},	/* 133 HTML_N_NOSCRIPT */
+-    {"object", ALST_NOP, MAXA_NOP, 0},		/* 134 HTML_OBJECT */
+-    {"optgroup", ALST_NOP, MAXA_NOP, 0},	        /* 135 HTML_OPTGROUP */
+-    {"/optgroup", NULL, 0, TFLG_END},	/* 136 HTML_N_OPTGROUP */
+-    {"param", ALST_NOP, MAXA_NOP, 0},		/* 137 HTML_PARAM */
+-    {"small", ALST_NOP, MAXA_NOP, 0}, 		/* 138 HTML_SMALL */
+-    {"/small", NULL, 0, TFLG_END},	/* 139 HTML_N_SMALL */
++    {"button", ALST_BUTTON, MAXA_BUTTON, 0},	/* 124 HTML_BUTTON */
++    {"/button", NULL, 0, TFLG_END},	/* 125 HTML_N_BUTTON */
++    {"fieldset", ALST_NOP, MAXA_NOP, 0},	/* 126 HTML_FIELDSET */
++    {"/fieldset", NULL, 0, TFLG_END},	/* 127 HTML_N_FIELDSET */
++    {"iframe", ALST_NOP, MAXA_NOP, 0},		/* 128 HTML_IFRAME */
++    {"label", ALST_NOP, MAXA_NOP, 0}, 		/* 129 HTML_LABEL */
++    {"/label", NULL, 0, TFLG_END},	/* 130 HTML_N_LABEL */
++    {"legend", ALST_NOP, MAXA_NOP, 0},		/* 131 HTML_LEGEND */
++    {"/legend", NULL, 0, TFLG_END},	/* 132 HTML_N_LEGEND */
++    {"noscript", ALST_NOP, MAXA_NOP, 0},	        /* 133 HTML_NOSCRIPT */
++    {"/noscript", NULL, 0, TFLG_END},	/* 134 HTML_N_NOSCRIPT */
++    {"object", ALST_NOP, MAXA_NOP, 0},		/* 135 HTML_OBJECT */
++    {"optgroup", ALST_NOP, MAXA_NOP, 0},	        /* 136 HTML_OPTGROUP */
++    {"/optgroup", NULL, 0, TFLG_END},	/* 137 HTML_N_OPTGROUP */
++    {"param", ALST_NOP, MAXA_NOP, 0},		/* 138 HTML_PARAM */
++    {"small", ALST_NOP, MAXA_NOP, 0}, 		/* 139 HTML_SMALL */
++    {"/small", NULL, 0, TFLG_END},	/* 140 HTML_N_SMALL */
+ 
+-    {NULL, NULL, 0, 0},		/* 140 Undefined */
+     {NULL, NULL, 0, 0},		/* 141 Undefined */
+     {NULL, NULL, 0, 0},		/* 142 Undefined */
+     {NULL, NULL, 0, 0},		/* 143 Undefined */
+Index: html.h
+===================================================================
+RCS file: /cvsroot/w3m/w3m/html.h,v
+retrieving revision 1.31
+diff -u -r1.31 html.h
+--- w3m.orig/html.h	14 Aug 2010 01:29:40 -0000	1.31
++++ w3m/html.h	17 Sep 2010 12:18:55 -0000
+@@ -214,21 +214,22 @@
+ #define HTML_BIG        122
+ #define HTML_N_BIG      123
+ #define HTML_BUTTON     124
+-#define HTML_FIELDSET   125
+-#define HTML_N_FIELDSET 126
+-#define HTML_IFRAME     127
+-#define HTML_LABEL      128
+-#define HTML_N_LABEL    129
+-#define HTML_LEGEND     130
+-#define HTML_N_LEGEND   131
+-#define HTML_NOSCRIPT   132
+-#define HTML_N_NOSCRIPT 133
+-#define HTML_OBJECT     134
+-#define HTML_OPTGROUP   135
+-#define HTML_N_OPTGROUP 136
+-#define HTML_PARAM      137
+-#define HTML_SMALL      138
+-#define HTML_N_SMALL    139
++#define HTML_N_BUTTON   125
++#define HTML_FIELDSET   126
++#define HTML_N_FIELDSET 127
++#define HTML_IFRAME     128
++#define HTML_LABEL      129
++#define HTML_N_LABEL    130
++#define HTML_LEGEND     131
++#define HTML_N_LEGEND   132
++#define HTML_NOSCRIPT   133
++#define HTML_N_NOSCRIPT 134
++#define HTML_OBJECT     135
++#define HTML_OPTGROUP   136
++#define HTML_N_OPTGROUP 137
++#define HTML_PARAM      138
++#define HTML_SMALL      139
++#define HTML_N_SMALL    140
+ 
+    /* pseudo tag */
+ #define HTML_SELECT_INT     160
+Index: proto.h
+===================================================================
+RCS file: /cvsroot/w3m/w3m/proto.h,v
+retrieving revision 1.104
+diff -u -r1.104 proto.h
+--- w3m.orig/proto.h	25 Jul 2010 09:55:05 -0000	1.104
++++ w3m/proto.h	17 Sep 2010 12:18:55 -0000
+@@ -207,6 +207,8 @@
+ extern Str process_img(struct parsed_tag *tag, int width);
+ extern Str process_anchor(struct parsed_tag *tag, char *tagbuf);
+ extern Str process_input(struct parsed_tag *tag);
++extern Str process_button(struct parsed_tag *tag);
++extern Str process_n_button(void);
+ extern Str process_select(struct parsed_tag *tag);
+ extern Str process_n_select(void);
+ extern void feed_select(char *str);
+Index: table.c
+===================================================================
+RCS file: /cvsroot/w3m/w3m/table.c,v
+retrieving revision 1.58
+diff -u -r1.58 table.c
+--- w3m.orig/table.c	9 Aug 2010 11:59:19 -0000	1.58
++++ w3m/table.c	17 Sep 2010 12:18:55 -0000
+@@ -2878,6 +2878,14 @@
+ 	tmp = process_input(tag);
+ 	feed_table1(tbl, tmp, mode, width);
+ 	break;
++    case HTML_BUTTON:
++       tmp = process_button(tag);
++       feed_table1(tbl, tmp, mode, width);
++       break;
++    case HTML_N_BUTTON:
++       tmp = process_n_button();
++       feed_table1(tbl, tmp, mode, width);
++       break;
+     case HTML_SELECT:
+ 	tmp = process_select(tag);
+ 	if (tmp)
+Index: tagtable.tab
+===================================================================
+RCS file: /cvsroot/w3m/w3m/tagtable.tab,v
+retrieving revision 1.14
+diff -u -r1.14 tagtable.tab
+--- w3m.orig/tagtable.tab	14 Aug 2010 01:29:40 -0000	1.14
++++ w3m/tagtable.tab	17 Sep 2010 12:18:55 -0000
+@@ -176,6 +176,7 @@
+ big		HTML_BIG
+ /big		HTML_N_BIG
+ button		HTML_BUTTON
++/button		HTML_N_BUTTON
+ fieldset	HTML_FIELDSET
+ /fieldset	HTML_N_FIELDSET
+ iframe		HTML_IFRAME

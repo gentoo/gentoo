@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# Uncomment the following if you want to
+# clean up your news spool regularly.
+# 
+#
+# This is part of the leafnode package.
+#
+
+#/usr/sbin/texpire

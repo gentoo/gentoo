@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=app-arch/bzip2 app-arch/xz-utils net-misc/curl sys-libs/zlib auth? ( mysql? ( virtual/mysql ) sqlite? ( dev-db/sqlite:3 ) !mysql? ( ( !sqlite? ( virtual/mysql ) ) ) ) readline? ( sys-libs/readline:0 ) dedicated? ( aimodules? ( dev-libs/libltdl:0 ) ) !dedicated? ( media-libs/libpng:0 gtk? ( x11-libs/gtk+:2 ) mapimg? ( media-gfx/imagemagick ) modpack? ( x11-libs/gtk+:2 ) nls? ( virtual/libintl ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) sdl? ( media-libs/libsdl[video] media-libs/sdl-gfx media-libs/sdl-image[png] media-libs/sdl-ttf ) server? ( aimodules? ( sys-devel/libtool:2 ) ) sound? ( media-libs/libsdl[sound] media-libs/sdl-mixer[vorbis] ) !sdl? ( !gtk? ( x11-libs/gtk+:2 ) ) ) system-lua? ( >=dev-lang/lua-5.2 ) virtual/pkgconfig !dedicated? ( x11-proto/xextproto nls? ( sys-devel/gettext ) ) >=sys-apps/sed-4
+DESCRIPTION=multiplayer strategy game (Civilization Clone)
+EAPI=5
+HOMEPAGE=http://www.freeciv.org/
+IUSE=auth aimodules dedicated +gtk ipv6 mapimg modpack mysql nls qt5 readline sdl +server +sound sqlite system-lua
+KEYWORDS=amd64 ~ppc ~ppc64 x86
+LICENSE=GPL-2
+RDEPEND=app-arch/bzip2 app-arch/xz-utils net-misc/curl sys-libs/zlib auth? ( mysql? ( virtual/mysql ) sqlite? ( dev-db/sqlite:3 ) !mysql? ( ( !sqlite? ( virtual/mysql ) ) ) ) readline? ( sys-libs/readline:0 ) dedicated? ( aimodules? ( dev-libs/libltdl:0 ) ) !dedicated? ( media-libs/libpng:0 gtk? ( x11-libs/gtk+:2 ) mapimg? ( media-gfx/imagemagick ) modpack? ( x11-libs/gtk+:2 ) nls? ( virtual/libintl ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) sdl? ( media-libs/libsdl[video] media-libs/sdl-gfx media-libs/sdl-image[png] media-libs/sdl-ttf ) server? ( aimodules? ( sys-devel/libtool:2 ) ) sound? ( media-libs/libsdl[sound] media-libs/sdl-mixer[vorbis] ) !sdl? ( !gtk? ( x11-libs/gtk+:2 ) ) ) system-lua? ( >=dev-lang/lua-5.2 ) games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://sourceforge/freeciv/freeciv-2.5.0.tar.bz2
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=7697efb8c822b4675d11ef13eff003c9

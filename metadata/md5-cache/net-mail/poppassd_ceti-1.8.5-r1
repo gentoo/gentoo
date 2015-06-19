@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=virtual/pam
+DESCRIPTION=Password change daemon with PAM support
+HOMEPAGE=http://echelon.pl/pubs/poppassd.html
+IUSE=cracklib
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=virtual/pam sys-apps/xinetd cracklib? ( sys-libs/cracklib )
+SLOT=0
+SRC_URI=http://echelon.pl/pubs/poppassd-1.8.5.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	portability	a45c088f246ef5091e029f6285d7ce42	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8b8e7d7595afa8c2bc814887d3aa928f

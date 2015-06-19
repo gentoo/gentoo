@@ -1,0 +1,13 @@
+DEFINED_PHASES=install setup
+DEPEND=dev-lang/php >=dev-php/pear-1.8.1
+DESCRIPTION=Provides functionality to send HTTP downloads
+EAPI=4
+HOMEPAGE=http://pear.php.net/HTTP_Download
+IUSE=minimal postgres
+KEYWORDS=amd64 x86
+LICENSE=BSD-2
+RDEPEND=dev-lang/php[postgres?] dev-php/PEAR-HTTP_Header !minimal? ( dev-php/PEAR-MIME_Type dev-php/PEAR-Archive_Tar ) dev-lang/php >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=http://pear.php.net/get/HTTP_Download-1.1.4.tgz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	php-pear-r1	6199074ba0005674c2291a5a8d0274e2	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c547dfc70edf9ca297e654be8b58ab3f

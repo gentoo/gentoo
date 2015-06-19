@@ -1,0 +1,16 @@
+--- scripts/Makefile.nml.old	2013-05-09 20:09:52.992038666 +0200
++++ scripts/Makefile.nml	2013-05-09 20:10:36.942970903 +0200
+@@ -14,11 +14,11 @@
+ 
+ %.src.dep: $(SRC_DIR)/%.pnml
+ 	$(_E) "[DEP] $@"
+-	$(_V) $(CC) -C -M -MF $@ -E -MT $(patsubst %.src.dep,%.nml,$@) - < $<
++	$(_V) $(CC) -P -C -M -MF $@ -E -MT $(patsubst %.src.dep,%.nml,$@) - < $<
+ 
+ %.nml: $(SRC_DIR)/%.pnml $(TAG_FILENAME)
+ 	$(_E) "[CPP] $@"
+-	$(_V) $(CC) -D REPO_REVISION=$(REPO_REVISION) $(CC_FLAGS) $< > $@
++	$(_V) $(CC) -P -D REPO_REVISION=$(REPO_REVISION) $(CC_FLAGS) $< > $@
+ 
+ %.gfx.dep: %.nml
+ 	$(_E) "[DEP] $@"

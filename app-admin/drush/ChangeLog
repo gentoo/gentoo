@@ -1,0 +1,71 @@
+# ChangeLog for app-admin/drush
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/drush/ChangeLog,v 1.14 2015/06/05 11:38:04 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  28 Dec 2014; Agostino Sarubbo <ago@gentoo.org> drush-6.5.0.ebuild:
+  Stable for x86, wrt bug #533608
+
+  26 Dec 2014; Agostino Sarubbo <ago@gentoo.org> drush-6.5.0.ebuild:
+  Stable for amd64, wrt bug #533608
+
+*drush-6.5.0 (22 Nov 2014)
+
+  22 Nov 2014; Michael Orlitzky <mjo@gentoo.org> +drush-6.5.0.ebuild,
+  -drush-6.2.0.ebuild, -drush-6.4.0.ebuild:
+  Version bump, remove older 6.x versions.
+
+*drush-6.4.0 (24 Oct 2014)
+
+  24 Oct 2014; Michael Orlitzky <mjo@gentoo.org> +drush-6.4.0.ebuild,
+  +files/update-bash-completion-script-for-2.1.patch, metadata.xml:
+  Version bump to fix bug #526222, take over as maintainer.
+
+*drush-6.2.0 (20 Mar 2014)
+
+  20 Mar 2014; Michael Orlitzky <mjo@gentoo.org> +drush-6.2.0.ebuild:
+  Version bump.
+
+  23 Dec 2013; Pacho Ramos <pacho@gentoo.org> drush-5.8.ebuild:
+  Add missing dependency, bug #482382 by Michael Orlitzky
+
+  23 Dec 2013; Pacho Ramos <pacho@gentoo.org> -drush-4.5-r1.ebuild,
+  -drush-4.6.ebuild, -drush-5.1.ebuild, metadata.xml:
+  Cleanup due bug #66351
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> drush-5.8.ebuild:
+  Stable for x86, wrt bug #457212
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> drush-5.8.ebuild:
+  Stable for amd64, wrt bug #457212
+
+*drush-5.8 (25 Dec 2012)
+*drush-4.6 (25 Dec 2012)
+
+  25 Dec 2012; Lance Albertson <ramereth@gentoo.org> -drush-4.4.ebuild,
+  -drush-4.5.ebuild, drush-4.5-r1.ebuild, +drush-4.6.ebuild, drush-5.1.ebuild,
+  +drush-5.8.ebuild:
+  Version bump, cleanup, mark stable (resolves #432786)
+
+*drush-5.1 (13 May 2012)
+*drush-4.5-r1 (13 May 2012)
+
+  13 May 2012; Lance Albertson <ramereth@gentoo.org> +drush-4.5-r1.ebuild,
+  +drush-5.1.ebuild:
+  Version bump, fix #371919 & #405539
+
+*drush-4.5 (09 Mar 2012)
+
+  09 Mar 2012; Lance Albertson <ramereth@gentoo.org> +drush-4.5.ebuild:
+  Version bump
+
+*drush-4.4 (26 May 2011)
+
+  26 May 2011; Lance Albertson <ramereth@gentoo.org> +drush-4.4.ebuild,
+  +metadata.xml:
+  Initial ebuild, resolves #313869
+
+  Thanks to Claes <letharion@gmail.com> and several others on the same ticket
+  for contributing to the original ebuild.

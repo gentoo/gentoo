@@ -1,0 +1,82 @@
+# ChangeLog for games-puzzle/jag
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/jag/ChangeLog,v 1.22 2015/02/22 09:20:25 tupone Exp $
+
+  22 Feb 2015; Tupone Alfredo <tupone@gentoo.org> jag-0.3.2.ebuild:
+  EAPI 5
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> jag-0.3.2.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> jag-0.3.2.ebuild:
+  Move Qt dependencies to the new category
+
+  01 Feb 2013; Michael Sterrett <mr_bones_@gentoo.org> metadata.xml:
+  metadata cleanup
+
+  02 Jul 2012; Michael Sterrett <mr_bones_@gentoo.org> -jag-0.3.1.ebuild:
+  old
+
+  03 Jun 2012; Michael Weber <xmw@gentoo.org> jag-0.3.2.ebuild:
+  ppc stable (bug 412667)
+
+  26 Apr 2012; Agostino Sarubbo <ago@gentoo.org> jag-0.3.2.ebuild:
+  Stable for amd64, wrt bug #412667
+
+  22 Apr 2012; Michael Sterrett <mr_bones_@gentoo.org> jag-0.3.2.ebuild:
+  quote WORKDIR
+
+  22 Apr 2012; Markus Meier <maekke@gentoo.org> jag-0.3.2.ebuild:
+  x86 stable, bug #412667
+
+*jag-0.3.2 (13 Mar 2012)
+
+  13 Mar 2012; Michael Sterrett <mr_bones_@gentoo.org> +jag-0.3.2.ebuild:
+  version bump (bug #408053) with ebuild submission from yury fedorchenko
+
+  18 Jun 2011; Tupone Alfredo <tupone@gentoo.org> jag-0.3.1.ebuild:
+  Fix underlink. Bug #369311 by Diego Elio Pettenò
+
+  15 Jan 2011; Markus Meier <maekke@gentoo.org> jag-0.3.1.ebuild:
+  x86 stable, bug #350779
+
+*jag-0.3.1 (21 Nov 2010)
+
+  21 Nov 2010; Tupone Alfredo <tupone@gentoo.org> +jag-0.3.1.ebuild:
+  Version bump to 0.3.1 Bug #339376 by Ines Willenbrock
+
+  23 Feb 2010; Christian Faulhammer <fauli@gentoo.org> jag-0.3.0.ebuild:
+  stable x86, bug 302846
+
+  24 Jan 2010; Brent Baude <ranger@gentoo.org> jag-0.2.6.ebuild:
+  keyworded ~arch for ppc, bug 295275
+
+*jag-0.3.0 (30 Dec 2009)
+
+  30 Dec 2009; Michael Sterrett <mr_bones_@gentoo.org> +jag-0.3.0.ebuild:
+  version bump
+
+  19 Dec 2009; Pacho Ramos <pacho@gentoo.org> jag-0.2.6.ebuild:
+  amd64 stable, bug 295703
+
+  09 Dec 2009; Christian Faulhammer <fauli@gentoo.org> jag-0.2.6.ebuild:
+  stable x86, bug 295703
+
+  21 Nov 2009; Markus Meier <maekke@gentoo.org> jag-0.2.5.ebuild:
+  x86 stable, bug #288813
+
+*jag-0.2.6 (04 Nov 2009)
+
+  04 Nov 2009; Michael Sterrett <mr_bones_@gentoo.org> +jag-0.2.6.ebuild:
+  version bump
+
+  16 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> jag-0.2.5.ebuild:
+  amd64 stable wrt #288813
+
+*jag-0.2.5 (11 Sep 2009)
+
+  11 Sep 2009; Michael Sterrett <mr_bones_@gentoo.org> +jag-0.2.5.ebuild,
+  +metadata.xml:
+  initial commit - ebuilds submitted by Samuli Suominen and Azamat H.
+  Hackimov via bug #283224

@@ -1,0 +1,128 @@
+# ChangeLog for net-im/psimedia
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/psimedia/ChangeLog,v 1.34 2014/08/05 18:34:17 mrueg Exp $
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> psimedia-1.0.3-r3.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  13 Oct 2013; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Updated Nikoli's e-mail address for easier automatic assignment.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> psimedia-1.0.3-r3.ebuild:
+  Move Qt dependencies to the new category
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #96436
+
+  02 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org> psimedia-1.0.3-r3.ebuild:
+  Pin gstreamer dependencies.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> psimedia-1.0.3-r3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  19 Apr 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/psimedia-1.0.3-glib2.32.patch, psimedia-1.0.3-r3.ebuild:
+  Fix glib-2.32 compilation, bug #412055 by Paul Volkov.
+
+  28 Mar 2012; Davide Pesavento <pesa@gentoo.org> -psimedia-1.0.3-r1.ebuild,
+  -psimedia-1.0.3-r2.ebuild, -psimedia-1.0.3.ebuild:
+  Remove old versions inheriting deprecated qt4.eclass. ACK'ed by Nikoli (proxy
+  maintainer).
+
+  11 Jul 2011; Mark Loeser <halcy0n@gentoo.org> psimedia-1.0.3-r3.ebuild:
+  Stable for ppc/ppc64; bug #361419
+
+  06 May 2011; Thomas Kahle <tomka@gentoo.org> psimedia-1.0.3-r3.ebuild:
+  x86 stable per bug 361419
+
+  29 Apr 2011; Peter Volkov <pva@gentoo.org> psimedia-1.0.3-r3.ebuild:
+  Added net-im/psi into RDEPEND, bug 361419 wrt andreas schürch
+
+  22 Apr 2011; Jeroen Roovers <jer@gentoo.org> psimedia-1.0.3-r3.ebuild:
+  Stable for HPPA (bug #361419).
+
+  09 Apr 2011; Christoph Mende <angelos@gentoo.org> psimedia-1.0.3-r3.ebuild:
+  Stable on amd64 wrt bug #361419
+
+*psimedia-1.0.3-r3 (08 Apr 2011)
+
+  08 Apr 2011; Peter Volkov <pva@gentoo.org> +psimedia-1.0.3-r3.ebuild,
+  +files/psimedia-1.0.3-drop-v4lsrc-gst-plugin.patch:
+  Fixed crash due to dropped gst-plugins-v4l, bug 361419 thank Thomas Petersen
+  for report and fix.
+
+  04 Apr 2011; Jeroen Roovers <jer@gentoo.org> psimedia-1.0.3-r2.ebuild:
+  Stable for HPPA (bug #361419).
+
+  02 Apr 2011; Christoph Mende <angelos@gentoo.org> psimedia-1.0.3-r2.ebuild:
+  Stable on amd64 wrt bug #361419
+
+*psimedia-1.0.3-r2 (01 Apr 2011)
+
+  01 Apr 2011; Peter Volkov <pva@gentoo.org> +psimedia-1.0.3-r2.ebuild:
+  Fixed CFLAGS pollution (-g), bug #361449 thank Agostino Sarubbo (amd64 AT)
+  for report.
+
+  31 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> psimedia-1.0.3-r1.ebuild,
+  +files/psimedia-1.0.3-linux-headers-2.6.38.patch:
+  Remove support for V4L v1 because linux-headers-2.6.38 stopped shipping
+  linux/videodev.h.
+
+*psimedia-1.0.3-r1 (01 Feb 2011)
+
+  01 Feb 2011; Peter Volkov <pva@gentoo.org> +psimedia-1.0.3-r1.ebuild:
+  Respect LDFLAGS, #335716 thank Diego Elio Pettenò for report. Add missing
+  dep, #352950,thank Nikoli for report and all this job.
+
+  06 Nov 2010; Mark Loeser <halcy0n@gentoo.org> psimedia-1.0.3.ebuild:
+  Stable for ppc64; bug #322353
+
+  18 Jan 2010; Raúl Porcel <armin76@gentoo.org> psimedia-1.0.3.ebuild:
+  Add ~arm
+
+  06 Jan 2010; Brent Baude <ranger@gentoo.org> psimedia-1.0.3.ebuild:
+  Marking psimedia-1.0.3 ~ppc64 for bug 279676
+
+  24 Nov 2009; Jeroen Roovers <jer@gentoo.org> psimedia-1.0.3.ebuild:
+  Stable for HPPA (bug #293281).
+
+  23 Nov 2009; Markus Meier <maekke@gentoo.org> psimedia-1.0.3.ebuild:
+  x86 stable, bug #293281
+
+  21 Nov 2009; nixnut <nixnut@gentoo.org> psimedia-1.0.3.ebuild:
+  ppc stable #293281
+
+  16 Nov 2009; Dawid Węgliński <cla@gentoo.org> psimedia-1.0.3.ebuild:
+  Stable on amd64 (bug #293281)
+
+  24 Sep 2009; Mounir Lamouri <volkmar@gentoo.org> psimedia-1.0.3.ebuild:
+  Keywording for ppc. Bug 279676
+
+  02 Aug 2009; Jeroen Roovers <jer@gentoo.org> psimedia-1.0.3.ebuild:
+  Marked ~hppa (bug #279676).
+
+  29 Jul 2009; Peter Volkov <pva@gentoo.org> metadata.xml:
+  Add required herd tag, bug #279206, thank Thilo Bangert for report.
+
+*psimedia-1.0.3 (25 Jun 2009)
+
+  25 Jun 2009; Peter Volkov <pva@gentoo.org> -psimedia-1.0.2.ebuild,
+  +psimedia-1.0.3.ebuild:
+  Version bump, thank Rion for report.
+
+  02 Jun 2009; Peter Volkov <pva@gentoo.org> psimedia-1.0.2.ebuild:
+  Update glib dependency, thank Leonid Evdokimov and Dennis Schridde for
+  report in bug #271091.
+
+  01 Jun 2009; Peter Volkov <pva@gentoo.org> psimedia-1.0.2.ebuild:
+  Added blocker with older versions of psi, since psimedia works only with
+  >=psi-0.13_rc1.
+
+*psimedia-1.0.2 (29 May 2009)
+
+  29 May 2009; Peter Volkov <pva@gentoo.org> +psimedia-1.0.2.ebuild,
+  +metadata.xml:
+  Initial import. Thank Vadim Efimov for ebuild.

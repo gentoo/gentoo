@@ -1,0 +1,10 @@
+--- SConstruct.orig	2014-07-02 01:37:25.546536553 -0400
++++ SConstruct	2014-07-02 01:39:26.564324558 -0400
+@@ -220,7 +220,6 @@
+ 			env.Append(CPPFLAGS = ['-g'])
+ 		else:
+ 			env.Append(CPPDEFINES = ['NDEBUG', 'RELEASE'])
+-			env.Append(CPPFLAGS = ['-O2'])
+ 
+ 		# profiler?
+ 		if (self.user_settings.profiler == 1):

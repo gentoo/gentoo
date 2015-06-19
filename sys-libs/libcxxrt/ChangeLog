@@ -1,0 +1,137 @@
+# ChangeLog for sys-libs/libcxxrt
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libcxxrt/ChangeLog,v 1.27 2015/04/23 08:43:26 aballier Exp $
+
+  23 Apr 2015; Alexis Ballier <aballier@gentoo.org>
+  libcxxrt-0.0_p20150423.ebuild, libcxxrt-9999.ebuild:
+  enable static-libs by default
+
+*libcxxrt-0.0_p20150423 (23 Apr 2015)
+
+  23 Apr 2015; Alexis Ballier <aballier@gentoo.org>
+  +libcxxrt-0.0_p20150423.ebuild:
+  bump a new snapshot
+
+  23 Apr 2015; Alexis Ballier <aballier@gentoo.org>
+  -libcxxrt-0.0_p20130725.ebuild, -libcxxrt-0.0_p20131222.ebuild:
+  remove old
+
+  17 Jan 2015; Anthony G. Basile <blueness@gentoo.org>
+  libcxxrt-0.0_p20130725.ebuild, libcxxrt-0.0_p20131222.ebuild,
+  libcxxrt-0.0_p20140322.ebuild, libcxxrt-9999.ebuild:
+  Keyword ~mips, bug #536692
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  libcxxrt-0.0_p20130725.ebuild, libcxxrt-0.0_p20131222.ebuild,
+  libcxxrt-0.0_p20140322.ebuild, libcxxrt-9999.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*libcxxrt-0.0_p20140322 (22 Mar 2014)
+
+  22 Mar 2014; Alexis Ballier <aballier@gentoo.org>
+  +libcxxrt-0.0_p20140322.ebuild:
+  bump a new snapshot
+
+  05 Jan 2014; Naohiro Aota <naota@gentoo.org> libcxxrt-0.0_p20131222.ebuild:
+  Add ~x86-fbsd. #482820
+
+*libcxxrt-0.0_p20131222 (22 Dec 2013)
+
+  22 Dec 2013; Alexis Ballier <aballier@gentoo.org>
+  +libcxxrt-0.0_p20131222.ebuild:
+  bump a new snapshot
+
+  22 Dec 2013; Alexis Ballier <aballier@gentoo.org> libcxxrt-9999.ebuild:
+  fix link of tests with latest trunk
+
+  14 Oct 2013; Michał Górny <mgorny@gentoo.org> libcxxrt-0.0_p20130725.ebuild,
+  libcxxrt-9999.ebuild:
+  Explicitly call einstalldocs in multilib_src_install_all() to accomodate bug
+  #483304.
+
+  26 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  -libcxxrt-0.0_p20130218.ebuild, -libcxxrt-0.0_p20130531.ebuild,
+  -files/unwind.h:
+  remove old
+
+  26 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  libcxxrt-0.0_p20130725.ebuild, libcxxrt-9999.ebuild:
+  drop LD_32_LIBRARY_PATH hacks for FreeBSD. These should not be needed
+  anymore.
+
+*libcxxrt-0.0_p20130725 (26 Jul 2013)
+
+  26 Jul 2013; Alexis Ballier <aballier@gentoo.org>
+  +libcxxrt-0.0_p20130725.ebuild:
+  bump a new snapshot with multilib support.
+
+  03 Jul 2013; Alexis Ballier <aballier@gentoo.org> libcxxrt-9999.ebuild:
+  Go multilib, based on a patch by Yuta SATOH in bug #475294
+
+  01 Jun 2013; Alexis Ballier <aballier@gentoo.org>
+  libcxxrt-0.0_p20130531.ebuild:
+  Make libunwind optional in the current snapshot too
+
+  01 Jun 2013; Alexis Ballier <aballier@gentoo.org> libcxxrt-9999.ebuild,
+  metadata.xml:
+  Make libunwind usage optional: clang is setup to use libgcc_s so there is no
+  serious point for now in trying to avoid using libgcc_s.
+
+*libcxxrt-0.0_p20130531 (31 May 2013)
+
+  31 May 2013; Alexis Ballier <aballier@gentoo.org>
+  +libcxxrt-0.0_p20130531.ebuild:
+  bump a new snapshot
+
+  30 May 2013; Alexis Ballier <aballier@gentoo.org> libcxxrt-9999.ebuild:
+  stop hacking around unwind headers and install them protected under libcxxrt
+  directory as that is what libcxx build system expects
+
+  30 May 2013; Alexis Ballier <aballier@gentoo.org> libcxxrt-9999.ebuild:
+  propagate static-libs use dep to libunwind
+
+  30 May 2013; Alexis Ballier <aballier@gentoo.org>
+  -libcxxrt-0.0_p20120911.ebuild:
+  remove old
+
+*libcxxrt-0.0_p20130218 (18 Feb 2013)
+
+  18 Feb 2013; Alexis Ballier <aballier@gentoo.org>
+  +libcxxrt-0.0_p20130218.ebuild:
+  bump a new snapshot
+
+  31 Jan 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  libcxxrt-0.0_p20120911.ebuild, libcxxrt-9999.ebuild:
+  Keyworded x86 amd64-linux and x86-linux
+
+  01 Nov 2012; Alexis Ballier <aballier@gentoo.org>
+  -files/0001-Link-to-libdl-where-needed-for-dladdr-exception.cc.patch,
+  -libcxxrt-0.0_p20120528.ebuild:
+  remove old
+
+  11 Sep 2012; Alexis Ballier <aballier@gentoo.org>
+  libcxxrt-0.0_p20120911.ebuild, libcxxrt-9999.ebuild:
+  keyword ~amd64-fbsd
+
+*libcxxrt-0.0_p20120911 (11 Sep 2012)
+
+  11 Sep 2012; Alexis Ballier <aballier@gentoo.org>
+  +libcxxrt-0.0_p20120911.ebuild:
+  bump a new snapshot with the accumulated improvements from -9999
+
+  31 May 2012; Alexis Ballier <aballier@gentoo.org> libcxxrt-9999.ebuild,
+  +files/Makefile, +files/Makefile.test, +files/unwind.h:
+  Use our own makefiles, its so simple that we do not need to rely on cmake for
+  this. Build it on top of libunwind instead of using libgcc_s for unwinding.
+  Remove their libunwind bundled headers and ship a reduced one with only the
+  added macros libcxxrt needs. Build with -nodefaultlibs to ensure we do not
+  link to gcc libs. Add static-libs useflag. Give it a src_test.
+
+*libcxxrt-9999 (28 May 2012)
+*libcxxrt-0.0_p20120528 (28 May 2012)
+
+  28 May 2012; Alexis Ballier <aballier@gentoo.org>
+  +files/0001-Link-to-libdl-where-needed-for-dladdr-exception.cc.patch,
+  +libcxxrt-0.0_p20120528.ebuild, +libcxxrt-9999.ebuild,
+  +files/prepare_snapshot.sh, +metadata.xml:
+  Initial import, ebuild by me

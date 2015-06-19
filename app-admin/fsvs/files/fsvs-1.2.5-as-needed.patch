@@ -1,0 +1,31 @@
+Fixes --as-needed support(bug #294834)
+Verbose build
+Fixes underlinking(bug #463684) - patch went upstream
+
+--- src/Makefile.in.orig	2011-11-11 22:19:12.000000000 +0400
++++ src/Makefile.in	2013-08-19 13:30:16.186082295 +0400
+@@ -18,7 +18,7 @@
+ CFLAGS	:= @CFLAGS@ @NEED_FNESTED_FUNCTIONS@
+ CFLAGS	+= -Wall -funsigned-char -Os -DFSVS_VERSION='"$(VERSION)"'
+ LDFLAGS	:= @LDFLAGS@
+-FSVS_LDFLAGS = $(LDFLAGS) -lsvn_subr-1 -lsvn_delta-1 -lsvn_ra-1 -lpcre -lgdbm 
++FSVS_LIBS = -lsvn_subr-1 -lsvn_delta-1 -lsvn_ra-1 -lpcre -lgdbm -ldl
+ EXTRALIBS	:= @EXTRALIBS@
+ WAA_CHARS?= @WAA_WC_MD5_CHARS@
+ 
+@@ -146,13 +146,13 @@
+ ################################ Rules ######################################
+ %.o:	%.c
+ 	@echo "     CC $<"
+-	@$(CC) $(CFLAGS) -c -o $@ $<
++	$(CC) $(CFLAGS) -c -o $@ $<
+ 
+ # if the Makefile has changed, the output will (at least sometimes)
+ # change, too.
+ $(DEST): $(C_FILES:%.c=%.o)
+ 	@echo "     Link $@"
+-	@$(CC) $(FSVS_LDFLAGS) $(LDLIBS) $(LIBS) $(EXTRALIBS) -o $@ $^
++	$(CC) -o $@ $^ $(LDFLAGS) $(LDLIBS) $(LIBS) $(FSVS_LIBS) $(EXTRALIBS)
+ ifeq (@ENABLE_RELEASE@, 1)
+ 	-strip $@
+ endif

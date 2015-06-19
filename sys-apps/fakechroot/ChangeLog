@@ -1,0 +1,112 @@
+# ChangeLog for sys-apps/fakechroot
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/fakechroot/ChangeLog,v 1.25 2015/04/26 23:26:29 mrueg Exp $
+
+  26 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -fakechroot-2.11.ebuild,
+  -fakechroot-2.12.ebuild, -fakechroot-2.14.ebuild, -fakechroot-2.15.ebuild,
+  -fakechroot-2.16.ebuild, -fakechroot-2.9.ebuild,
+  -files/fakechroot-2.14-fix_chk_fail.patch,
+  -files/fakechroot-2.15-fix_chk_fail.patch,
+  -files/fakechroot-2.9-glibc-2.10-compat.patch:
+  Remove old.
+
+  21 Apr 2015; Pacho Ramos <pacho@gentoo.org> fakechroot-2.17.2.ebuild:
+  x86 stable wrt bug #517676
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> fakechroot-2.17.2.ebuild:
+  Stable for amd64, wrt bug #517676
+
+*fakechroot-2.17.2 (30 May 2014)
+
+  30 May 2014; Sven Vermeulen <swift@gentoo.org> +fakechroot-2.17.2.ebuild:
+  Bump fakechroot to 2.17.2, thanks to Anthoine Bourgeois (bug #506118)
+
+  02 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #328951
+
+  11 Sep 2012; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Drop maintainership
+
+*fakechroot-2.16 (03 Feb 2012)
+
+  03 Feb 2012; Markos Chandras <hwoarang@gentoo.org> +fakechroot-2.16.ebuild:
+  version bump. Thanks to Michael (kensington) <gentoo@scribeofthenile.com>. Bug
+  #400867
+
+  19 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org>
+  +files/fakechroot-2.15-fix_chk_fail.patch:
+  Bump patch too
+
+*fakechroot-2.15 (18 Dec 2011)
+
+  18 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org> +fakechroot-2.15.ebuild,
+  metadata.xml:
+  Add proxy-maintainers herd, bump to 2.15. Bug 394247
+
+*fakechroot-2.14 (14 Jul 2011)
+
+  14 Jul 2011; Dane Smith <c1pher@gentoo.org> +fakechroot-2.14.ebuild,
+  +files/fakechroot-2.14-fix_chk_fail.patch:
+  Version bump. Add patch to fix chk_fail. Thanks Anthony Bourgeois.
+
+  21 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Add proxy maintainership
+
+  18 Jun 2011; Michał Januszewski <spock@gentoo.org> metadata.xml:
+  Reassigning to maintainer-needed.
+
+  17 Nov 2010; Markus Meier <maekke@gentoo.org> fakechroot-2.11.ebuild:
+  x86 stable, bug #345367
+
+  15 Nov 2010; Markos Chandras <hwoarang@gentoo.org> fakechroot-2.11.ebuild:
+  Stable on amd64 wrt bug #345367
+
+*fakechroot-2.12 (14 Nov 2010)
+
+  14 Nov 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +fakechroot-2.12.ebuild:
+  Version bump.
+
+*fakechroot-2.11 (24 Sep 2010)
+
+  24 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +fakechroot-2.11.ebuild:
+  Version bump.
+
+  03 May 2010; Samuli Suominen <ssuominen@gentoo.org> fakechroot-2.9.ebuild:
+  amd64 stable wrt #309033
+
+  01 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  fakechroot-2.9.ebuild:
+  x86 stable wrt bug #309033
+
+  22 Jun 2009; Michał Januszewski <spock@gentoo.org> fakechroot-2.9.ebuild,
+  +files/fakechroot-2.9-glibc-2.10-compat.patch:
+  Make fakechroot compatible with glibc 2.10 (bug #274077).
+
+*fakechroot-2.9 (09 Apr 2009)
+
+  09 Apr 2009; Michał Januszewski <spock@gentoo.org>
+  +fakechroot-2.9.ebuild:
+  Version bump.
+
+  24 Oct 2008; Markus Meier <maekke@gentoo.org> fakechroot-2.8.ebuild:
+  x86 stable, bug #242602
+
+  23 Oct 2008; Jeremy Olexa <darkside@gentoo.org> fakechroot-2.8.ebuild:
+  amd64 stable, bug 242602
+
+  20 Oct 2008; Michał Januszewski <spock@gentoo.org> fakechroot-2.8.ebuild:
+  Disable the test phase since the test provided by the package is broken.
+
+*fakechroot-2.8 (07 Sep 2008)
+
+  07 Sep 2008; Michał Januszewski <spock@gentoo.org>
+  +fakechroot-2.8.ebuild:
+  Version bump.
+
+*fakechroot-2.6 (10 Jun 2008)
+
+  10 Jun 2008; Michał Januszewski <spock@gentoo.org>
+  +files/fakechroot-2.6.patch, +metadata.xml, +fakechroot-2.6.ebuild:
+  Initial commit.

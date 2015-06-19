@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst unpack
+DEPEND=!sys-infiniband/openib !sys-infiniband/openib-files sys-infiniband/libibcm:3.5 sys-infiniband/libibmad:3.5 sys-infiniband/libibumad:3.5 sys-infiniband/librdmacm:3.5 compat-dapl? ( sys-infiniband/compat-dapl:3.5 ) dapl? ( sys-infiniband/dapl:3.5 ) diags? ( sys-infiniband/infiniband-diags:3.5 ) ibacm? ( sys-infiniband/ibacm:3.5 ) mstflint? ( sys-infiniband/mstflint:3.5 ) opensm? ( sys-infiniband/opensm:3.5 ) perftest? ( sys-infiniband/perftest:3.5 ) srp? ( sys-infiniband/srptools:3.5 ) ofed_drivers_cxgb3? ( sys-infiniband/libcxgb3:3.5 ) ofed_drivers_cxgb4? ( sys-infiniband/libcxgb4:3.5 ) ofed_drivers_ehca? ( sys-infiniband/libehca:3.5 ) ofed_drivers_ipath? ( sys-infiniband/libipathverbs:3.5 ) ofed_drivers_mlx4? ( sys-infiniband/libmlx4:3.5 ) ofed_drivers_mthca? ( sys-infiniband/libmthca:3.5 ) ofed_drivers_nes? ( sys-infiniband/libnes:3.5 ) ofed_drivers_psm? ( sys-infiniband/infinipath-psm:3.5 ) virtual/pkgconfig >=app-arch/rpm2targz-9.0.0.3g virtual/pkgconfig
+DESCRIPTION=OpenIB system files
+EAPI=4
+HOMEPAGE=http://www.openfabrics.org/
+IUSE=compat-dapl dapl +diags ibacm mstflint +opensm perftest rds sdp srp ofed_drivers_cxgb3 ofed_drivers_cxgb4 ofed_drivers_ehca ofed_drivers_ipath ofed_drivers_mlx4 ofed_drivers_mthca ofed_drivers_nes ofed_drivers_psm
+KEYWORDS=~amd64 ~x86 ~amd64-linux
+LICENSE=|| ( GPL-2 BSD-2 )
+RDEPEND=!sys-infiniband/openib !sys-infiniband/openib-files sys-infiniband/libibcm:3.5 sys-infiniband/libibmad:3.5 sys-infiniband/libibumad:3.5 sys-infiniband/librdmacm:3.5 compat-dapl? ( sys-infiniband/compat-dapl:3.5 ) dapl? ( sys-infiniband/dapl:3.5 ) diags? ( sys-infiniband/infiniband-diags:3.5 ) ibacm? ( sys-infiniband/ibacm:3.5 ) mstflint? ( sys-infiniband/mstflint:3.5 ) opensm? ( sys-infiniband/opensm:3.5 ) perftest? ( sys-infiniband/perftest:3.5 ) srp? ( sys-infiniband/srptools:3.5 ) ofed_drivers_cxgb3? ( sys-infiniband/libcxgb3:3.5 ) ofed_drivers_cxgb4? ( sys-infiniband/libcxgb4:3.5 ) ofed_drivers_ehca? ( sys-infiniband/libehca:3.5 ) ofed_drivers_ipath? ( sys-infiniband/libipathverbs:3.5 ) ofed_drivers_mlx4? ( sys-infiniband/libmlx4:3.5 ) ofed_drivers_mthca? ( sys-infiniband/libmthca:3.5 ) ofed_drivers_nes? ( sys-infiniband/libnes:3.5 ) ofed_drivers_psm? ( sys-infiniband/infinipath-psm:3.5 )
+SLOT=3.5
+SRC_URI=https://www.openfabrics.org/downloads/OFED/ofed-3.5/OFED-3.5-rc2.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	openib	09f16a9d8ca153287935ad12ef033629	rpm	b94b54b44f14d6bee3e966c8f5c86fba	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=958dc2787238b6dc2dd4cd9c12b48d39

@@ -1,0 +1,49 @@
+# ChangeLog for games-util/catcodec
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-util/catcodec/ChangeLog,v 1.12 2015/03/14 22:35:43 mr_bones_ Exp $
+
+  14 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> catcodec-1.0.3.ebuild:
+  EAPI=5
+
+  22 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org> -catcodec-1.0.0.ebuild,
+  -files/catcodec-1.0.0-build.patch:
+  old
+
+  19 May 2012; Michael Sterrett <mr_bones_@gentoo.org> catcodec-1.0.3.ebuild,
+  +files/catcodec-1.0.3-gcc47.patch:
+  build with gcc47 with patch from Nicolas Schlumberger via bug #413861
+
+  23 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> catcodec-1.0.3.ebuild:
+  ppc/ppc64 stable wrt #375389
+
+  19 Jul 2011; Markus Meier <maekke@gentoo.org> catcodec-1.0.3.ebuild:
+  x86 stable, bug #375389
+
+  16 Jul 2011; Markos Chandras <hwoarang@gentoo.org> catcodec-1.0.3.ebuild:
+  Stable on amd64 wrt bug #375389
+
+*catcodec-1.0.3 (04 May 2011)
+
+  04 May 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  +catcodec-1.0.3.ebuild:
+  version bump
+
+  15 Oct 2010; Markus Meier <maekke@gentoo.org> catcodec-1.0.0.ebuild:
+  add ~arm, bug #316003
+
+  28 May 2010; Joseph Jezak <josejx@gentoo.org> catcodec-1.0.0.ebuild:
+  Marked ppc/ppc64 stable for bug #320501.
+
+  25 May 2010; Pacho Ramos <pacho@gentoo.org> catcodec-1.0.0.ebuild:
+  stable amd64, bug 320499
+
+  25 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  catcodec-1.0.0.ebuild:
+  x86 stable wrt bug #320499
+
+*catcodec-1.0.0 (07 Apr 2010)
+
+  07 Apr 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +catcodec-1.0.0.ebuild, +files/catcodec-1.0.0-build.patch:
+  initial commit - ebuild submitted by Locke 'Wizzleby' Shinseiko via bug
+  #308355

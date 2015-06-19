@@ -1,0 +1,10 @@
+# ChangeLog for net-analyzer/openvas-tools
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/openvas-tools/ChangeLog,v 1.1 2014/10/01 11:24:01 jlec Exp $
+
+*openvas-tools-0_pre20512 (01 Oct 2014)
+
+  01 Oct 2014; Justin Lecher <jlec@gentoo.org>
+  +openvas-tools-0_pre20512.ebuild, +metadata.xml:
+  New package written by me
+

@@ -1,0 +1,16 @@
+#!/sbin/runscript
+
+depend() {
+	need logger iprinit
+}
+
+start() {
+	ebegin "Starting the ipr dump daemon"
+	start-stop-daemon --start  --quiet --exec /usr/sbin/iprdump -- --daemon
+
+}
+
+stop() {
+	ebegin "Stopping the ipr dump daemon"
+	start-stop-daemon --stop --name iprdump
+}

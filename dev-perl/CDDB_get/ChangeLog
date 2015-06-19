@@ -1,0 +1,183 @@
+# ChangeLog for dev-perl/CDDB_get
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/CDDB_get/ChangeLog,v 1.49 2015/01/08 21:59:50 zlogene Exp $
+
+  08 Jan 2015; Mikle Kolyada <zlogene@gentoo.org> CDDB_get-2.280.0-r1.ebuild:
+  Mark stable
+
+*CDDB_get-2.270.0-r1 (22 Aug 2014)
+*CDDB_get-2.280.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +CDDB_get-2.270.0-r1.ebuild, +CDDB_get-2.280.0-r1.ebuild,
+  -CDDB_get-2.270.0.ebuild, -CDDB_get-2.280.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*CDDB_get-2.280.0 (09 Apr 2012)
+
+  09 Apr 2012; Torsten Veller <tove@gentoo.org> +CDDB_get-2.280.0.ebuild:
+  Version bump
+
+  01 Mar 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Add missing cpan remote-id tags in metadata.xml (#406287)
+
+  27 Dec 2011; Torsten Veller <tove@gentoo.org> -CDDB_get-2.27.ebuild:
+  Cleanup
+
+  19 Nov 2011; Torsten Veller <tove@gentoo.org> CDDB_get-2.270.0.ebuild:
+  Merge KEYWORDS from 2.27
+
+*CDDB_get-2.270.0 (04 Sep 2011)
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> +CDDB_get-2.270.0.ebuild:
+  Maintenance. Use CPAN mirrors. Change version scheme
+
+  14 Jan 2007; Michael Cummings <mcummings@gentoo.org> CDDB_get-2.27.ebuild:
+  Ebuild maintenance
+
+  07 Sep 2006; Michael Cummings <mcummings@gentoo.org> -CDDB_get-2.2.ebuild,
+  -CDDB_get-2.10-r2.ebuild, -CDDB_get-2.23.ebuild, -CDDB_get-2.25.ebuild:
+  Cleaning out old ebuilds
+
+  04 Aug 2006; Michael Cummings <mcummings@gentoo.org> CDDB_get-2.2.ebuild,
+  CDDB_get-2.10-r2.ebuild, CDDB_get-2.23.ebuild, CDDB_get-2.25.ebuild,
+  CDDB_get-2.27.ebuild:
+  Adding perl dep; fixed header; fixed DEPEND
+
+  02 Jul 2006; Michael Cummings <mcummings@gentoo.org> CDDB_get-2.27.ebuild:
+  Marking stable amd64
+
+  27 May 2006; Bryan Østergaard <kloeri@gentoo.org> CDDB_get-2.27.ebuild:
+  Stable on alpha.
+
+  28 Mar 2006; Aron Griffis <agriffis@gentoo.org> CDDB_get-2.27.ebuild:
+  Mark 2.27 stable on ia64
+
+  27 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> CDDB_get-2.27.ebuild:
+  Stable on sparc
+
+  27 Mar 2006; Markus Rothe <corsair@gentoo.org> CDDB_get-2.27.ebuild:
+  Stable on ppc64
+
+  23 Mar 2006; Michael Hanselmann <hansmi@gentoo.org> CDDB_get-2.27.ebuild:
+  Stable on ppc.
+
+  22 Mar 2006; Michael Cummings <mcummings@gentoo.org> CDDB_get-2.27.ebuild:
+  Marking stable x86
+
+  06 Feb 2006; Simon Stelling <blubb@gentoo.org> CDDB_get-2.25.ebuild:
+  stable on amd64
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> CDDB_get-2.25.ebuild:
+  Mark 2.25 stable on ia64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> CDDB_get-2.25.ebuild:
+  Mark 2.25 stable on alpha
+
+  21 Jan 2006; Markus Rothe <corsair@gentoo.org> CDDB_get-2.25.ebuild:
+  Stable on ppc64
+
+  21 Jan 2006; Michael Hanselmann <hansmi@gentoo.org> CDDB_get-2.25.ebuild:
+  Stable on ppc.
+
+  16 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org> CDDB_get-2.25.ebuild:
+  Stable on sparc
+
+  15 Jan 2006; Michael Cummings <mcummings@gentoo.org> CDDB_get-2.25.ebuild:
+  marking x86 stable
+
+*CDDB_get-2.27 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  +CDDB_get-2.27.ebuild:
+  Version bump upstream
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> CDDB_get-2.25.ebuild:
+  add ~ia64
+
+*CDDB_get-2.25 (17 Jul 2005)
+
+  17 Jul 2005; Michael Cummings <mcummings@gentoo.org>
+  +CDDB_get-2.25.ebuild:
+  Version bump upstream
+
+  06 Apr 2005; Joseph Jezak <josejx@gentoo.org> CDDB_get-2.23.ebuild:
+  Marked ppc stable.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> CDDB_get-2.23.ebuild:
+  Stable on ppc64
+
+  04 Nov 2004; Markus Rothe <corsair@gentoo.org> CDDB_get-2.23.ebuild:
+  Marked ~ppc64; bug #70048
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> CDDB_get-2.23.ebuild:
+  Stable on amd64.
+
+  27 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> CDDB_get-2.23.ebuild:
+  Stable on sparc
+
+  27 Sep 2004; Michael Cummings <mcummings@gentoo.org> CDDB_get-2.23.ebuild:
+  No bugs in 268 days, marking stable on x86
+
+  24 May 2004; Bryan Østergaard <kloeri@gentoo.org> CDDB_get-2.23.ebuild:
+  Stable on alpha.
+
+  07 May 2004; Gustavo Zacarias <gustavoz@gentoo.org> CDDB_get-2.2.ebuild:
+  Stable on sparc
+
+*CDDB_get-2.23 (03 Jan 2004)
+
+  03 Jan 2004; Martin Holzer <mholzer@gentoo.org> CDDB_get-2.23.ebuild:
+  Version bumped. Closes 36518
+
+  07 Jun 2003; <rac@gentoo.org> CDDB_get-2.10-r2.ebuild:
+  Add IUSE
+
+*CDDB_get-2.2 (31 May 2003)
+
+  31 May 2003; Michael Cummings <mcummings@gentoo.org> CDDB_get-2.2.ebuild:
+  Version bump from CPAN
+
+*CDDB_get-2.10-r2 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*CDDB_get-1.66-r2 (31 May 2003)
+
+  31 May 2003; <rac@gentoo.org> CDDB_get-1.66-r1.ebuild,
+  CDDB_get-1.66-r2.ebuild, CDDB_get-2.10-r1.ebuild, CDDB_get-2.10-r2.ebuild:
+  Clean old versions, as 2.10-r2 is marked stable on every arch mentioned in any
+  older ebuild versions. Also eliminating duplicate SLOT definition. Thanks to
+  mcummings for finding this.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+
+*CDDB_get-1.66-r1, CDDB_get-2.10-r1 (5 May 2002)
+
+  30 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> CDDB_get-2.10-r1.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  5 May 2002; Seemant Kulleen <seemant@gentoo.org>
+  CDDB_get-{1.66,2.10}-r1.ebuild files/digest-CDDB_get-{1.66,2,10}-r1 :
+
+  Converted to using the perl-module.eclass
+
+*CDDB_get-1.66,2.10 (7 Apr 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

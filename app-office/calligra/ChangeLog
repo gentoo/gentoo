@@ -1,0 +1,574 @@
+# ChangeLog for app-office/calligra
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/calligra/ChangeLog,v 1.123 2015/06/04 19:00:44 kensington Exp $
+
+  04 Jun 2015; Michael Palimaka <kensington@gentoo.org> calligra-2.8.5.ebuild,
+  calligra-2.8.7.ebuild, calligra-9999.ebuild, metadata.xml:
+  Move various kde-base packages to kde-apps.
+
+  15 Feb 2015; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Make repoman a bit happier
+
+  14 Feb 2015; Johannes Huber <johu@gentoo.org> -calligra-2.7.5.ebuild:
+  Remove old.
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org> calligra-2.8.5.ebuild:
+  Stable for x86, wrt bug #517344
+
+  28 Jan 2015; Johannes Huber <johu@gentoo.org> -calligra-2.8.6.ebuild,
+  calligra-2.7.5.ebuild, calligra-2.8.5.ebuild, calligra-2.8.7.ebuild,
+  calligra-9999.ebuild:
+  Adjust use dependencies to handle >=app-crypt/qca-2.1.
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org> calligra-2.7.5.ebuild,
+  calligra-2.8.5.ebuild, calligra-2.8.6.ebuild, calligra-2.8.7.ebuild,
+  calligra-9999.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  21 Dec 2014; Michael Palimaka <kensington@gentoo.org> calligra-2.8.5.ebuild,
+  calligra-2.8.6.ebuild, calligra-2.8.7.ebuild, calligra-9999.ebuild:
+  Enforce dev-qt/qtcore[exceptions] dependency wrt bug #532762.
+
+  12 Dec 2014; Mikle Kolyada <zlogene@gentoo.org> calligra-2.8.5.ebuild:
+  amd64 stable wrt bug #517344
+
+*calligra-2.8.7 (04 Dec 2014)
+
+  04 Dec 2014; Michael Palimaka <kensington@gentoo.org> +calligra-2.8.7.ebuild:
+  Version bump wrt bug #531652.
+
+*calligra-2.8.6 (27 Nov 2014)
+
+  27 Nov 2014; Michael Palimaka <kensington@gentoo.org> +calligra-2.8.6.ebuild,
+  -calligra-2.8.3.ebuild:
+  Version bump wrt bug #523694. Remove old.
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org> calligra-2.7.5.ebuild,
+  calligra-2.8.3.ebuild, calligra-2.8.5.ebuild, calligra-9999.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+*calligra-2.8.5 (25 Jul 2014)
+
+  25 Jul 2014; Johannes Huber <johu@gentoo.org> +calligra-2.8.5.ebuild,
+  -calligra-2.8.2.ebuild:
+  Version bump, remove old, bug #516694.
+
+*calligra-2.8.3 (16 Jun 2014)
+
+  16 Jun 2014; Michael Palimaka <kensington@gentoo.org> +calligra-2.8.3.ebuild,
+  calligra-9999.ebuild:
+  Version bump, fixing issue where kexi was not built wrt bug #512890.
+
+  24 May 2014; Johannes Huber <johu@gentoo.org> calligra-2.8.2.ebuild,
+  calligra-9999.ebuild:
+  Enable USE kdepim by default, bug #510384.
+
+*calligra-2.8.2 (13 May 2014)
+
+  13 May 2014; Johannes Huber <johu@gentoo.org> +calligra-2.8.2.ebuild,
+  calligra-9999.ebuild, metadata.xml:
+  Version bump wrt bug #503544. Check required disk space for build, bug
+  #505374. Adapt USE flag changes made in KDE SC 4.13.1, bug #2345990.
+
+  09 Feb 2014; Michael Palimaka <kensington@gentoo.org> calligra-2.7.5.ebuild,
+  calligra-9999.ebuild:
+  dev-libs/libattica[qt4] is going away.
+
+  31 Jan 2014; Johannes Huber <johu@gentoo.org> -calligra-2.6.4.ebuild:
+  Remove old.
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> calligra-2.7.5.ebuild:
+  Stable for x86, wrt bug #492678
+
+  20 Jan 2014; Michael Palimaka <kensington@gentoo.org> calligra-2.6.4.ebuild,
+  calligra-2.7.5.ebuild, calligra-9999.ebuild:
+  Requires libattica built against Qt4.
+
+  19 Jan 2014; Pacho Ramos <pacho@gentoo.org> calligra-2.7.5.ebuild:
+  amd64 stable, bug 492678
+
+  31 Dec 2013; Markus Meier <maekke@gentoo.org> calligra-2.7.5.ebuild:
+  add ~arm, bug #490374
+
+  20 Dec 2013; Johannes Huber <johu@gentoo.org> -calligra-2.7.4.ebuild:
+  Remove old.
+
+  20 Dec 2013; Johannes Huber <johu@gentoo.org> calligra-2.7.4.ebuild,
+  calligra-2.7.5.ebuild, calligra-9999.ebuild:
+  Use subslot for media-gfx/exiv2.
+
+*calligra-2.7.5 (30 Nov 2013)
+
+  30 Nov 2013; Johannes Huber <johu@gentoo.org> +calligra-2.7.5.ebuild:
+  Version bump wrt bug #492726.
+
+  19 Oct 2013; Johannes Huber <johu@gentoo.org> metadata.xml:
+  Fix typo reported by buscher on irc.
+
+*calligra-2.7.4 (18 Oct 2013)
+
+  18 Oct 2013; Johannes Huber <johu@gentoo.org> +calligra-2.7.4.ebuild,
+  -calligra-2.7.3.ebuild, calligra-9999.ebuild:
+  Version bump wrt bug #488424.
+
+*calligra-2.7.3 (17 Sep 2013)
+
+  17 Sep 2013; Johannes Huber <johu@gentoo.org> +calligra-2.7.3.ebuild,
+  -calligra-2.7.2.ebuild:
+  Version bump wrt bug #485072. Remove old.
+
+*calligra-2.7.2 (14 Sep 2013)
+
+  14 Sep 2013; Johannes Huber <johu@gentoo.org> +calligra-2.7.2.ebuild,
+  metadata.xml:
+  Version bump wrt bug #479530. New build option for dev-libs/vc SIMD
+  vectorization helper / abstraction library, bug #475280.
+
+  28 Aug 2013; Mike Gilbert <floppym@gentoo.org> calligra-2.6.4.ebuild,
+  calligra-9999.ebuild:
+  sqlite is dropping the extensions use flag.
+
+  06 Aug 2013; Michael Palimaka <kensington@gentoo.org> calligra-2.6.4.ebuild,
+  calligra-9999.ebuild:
+  Pin virtual/jpeg SLOT to 0.
+
+  13 Jul 2013; Johannes Huber <johu@gentoo.org> -calligra-2.6.3.ebuild:
+  Remove old.
+
+  13 Jul 2013; Agostino Sarubbo <ago@gentoo.org> calligra-2.6.4.ebuild:
+  Stable for x86, wrt bug #476384
+
+  12 Jul 2013; Agostino Sarubbo <ago@gentoo.org> calligra-2.6.4.ebuild:
+  Stable for amd64, wrt bug #476384
+
+  13 Jun 2013; Michael Weber <xmw@gentoo.org> calligra-2.6.3.ebuild,
+  calligra-2.6.4.ebuild, calligra-9999.ebuild:
+  Depend on SLOT=0 of media-libs/openjpeg (bug 440086)
+
+*calligra-2.6.4 (06 Jun 2013)
+
+  06 Jun 2013; Johannes Huber <johu@gentoo.org> +calligra-2.6.4.ebuild:
+  Version bump.
+
+  05 Jun 2013; Johannes Huber <johu@gentoo.org> -calligra-2.5.3.ebuild,
+  -files/calligra-2.4.2-marble.patch,
+  -files/calligra-2.4.3-security-fix-buffer-overflow.patch,
+  -files/calligra-2.5.0-kexi-automagic.patch,
+  -files/calligra-2.5.2-lcms24.patch:
+  Remove old.
+
+  05 Jun 2013; Agostino Sarubbo <ago@gentoo.org> calligra-2.6.3.ebuild:
+  Stable for x86, wrt bug #471392
+
+  04 Jun 2013; Agostino Sarubbo <ago@gentoo.org> calligra-2.6.3.ebuild:
+  Stable for amd64, wrt bug #471392
+
+  30 May 2013; Michael Palimaka <kensington@gentoo.org> calligra-2.5.3.ebuild,
+  calligra-2.6.3.ebuild, calligra-9999.ebuild:
+  Add USE dependency default in preparation for the removal of the semantic-
+  desktop USE flag. Remove semantic-desktop USE flag from testing versions.
+
+  27 Apr 2013; Tomáš Chvátal <scarabeus@gentoo.org> calligra-2.6.3.ebuild,
+  calligra-9999.ebuild:
+  Add author to the list of applications.
+
+  27 Apr 2013; Tomáš Chvátal <scarabeus@gentoo.org>
+  -calligra-2.5.49.9999.ebuild, -calligra-2.5.5.ebuild, calligra-2.6.3.ebuild:
+  Reduce versions to keep only one testing around.
+
+*calligra-2.6.3 (27 Apr 2013)
+
+  27 Apr 2013; Chris Reffett <creffett@gentoo.org> +calligra-2.6.3.ebuild:
+  Bump to 2.6.3 wrt bug 448686
+
+  17 Mar 2013; Andreas K. Huettel <dilfridge@gentoo.org> calligra-2.5.5.ebuild,
+  calligra-2.5.49.9999.ebuild, calligra-9999.ebuild:
+  poppler subslot dependencies
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> calligra-2.5.3.ebuild,
+  calligra-2.5.49.9999.ebuild, calligra-2.5.5.ebuild, calligra-9999.ebuild:
+  Move Qt dependencies to the new category
+
+  20 Feb 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  calligra-2.5.49.9999.ebuild, calligra-2.5.5.ebuild, calligra-9999.ebuild:
+  Keyword ~arm
+
+  08 Feb 2013; Michael Palimaka <kensington@gentoo.org>
+  calligra-2.5.49.9999.ebuild, calligra-2.5.5.ebuild, calligra-9999.ebuild:
+  Migrate to EAPI 5 and add dev-libs/icu subslot dependency.
+
+*calligra-2.5.5 (25 Jan 2013)
+
+  25 Jan 2013; Patrick Lauer <patrick@gentoo.org> +calligra-2.5.5.ebuild:
+  Bump
+
+  16 Nov 2012; Agostino Sarubbo <ago@gentoo.org> calligra-2.5.3.ebuild:
+  workaround for bug 399061
+
+  04 Nov 2012; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Shutup repoman on the local useflags.
+
+*calligra-2.5.3 (04 Nov 2012)
+
+  04 Nov 2012; Tomáš Chvátal <scarabeus@gentoo.org> +calligra-2.5.3.ebuild,
+  -calligra-2.4.3-r1.ebuild, -calligra-2.5.2.ebuild:
+  Version bump to latest, only few bugfixes straight to stable, remove older.
+
+  21 Sep 2012; Johannes Huber <johu@gentoo.org> calligra-2.5.2.ebuild,
+  calligra-2.5.49.9999.ebuild, calligra-9999.ebuild:
+  Add virtual/glu wrt bug #435108.
+
+  18 Sep 2012; Johannes Huber <johu@gentoo.org>
+  +files/calligra-2.5.2-lcms24.patch, calligra-2.5.2.ebuild:
+  Add patch to fix build with media-libs/lcms-2.4 by Franz Fellner
+  <alpine.art.de@googlemail.com> wrt bug #435392.
+
+  13 Sep 2012; Tomáš Chvátal <scarabeus@gentoo.org> calligra-2.5.2.ebuild,
+  calligra-2.5.49.9999.ebuild, calligra-9999.ebuild:
+  Use proper name on the build passing. Does not affect anything but is at least
+  correct.
+
+  13 Sep 2012; Tomáš Chvátal <scarabeus@gentoo.org> calligra-2.5.2.ebuild:
+  Fix the ebuild to base of live where in cvs i accidentaly copied from 2.5.1.
+
+*calligra-2.5.2 (13 Sep 2012)
+
+  13 Sep 2012; Tomáš Chvátal <scarabeus@gentoo.org> +calligra-2.5.2.ebuild,
+  -calligra-2.5.0.ebuild, -calligra-2.5.1.ebuild:
+  Version bump to latest.
+
+  11 Sep 2012; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Drop maintainership
+
+*calligra-2.5.49.9999 (30 Aug 2012)
+
+  30 Aug 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  -calligra-2.4.49.9999.ebuild, +calligra-2.5.49.9999.ebuild,
+  calligra-9999.ebuild:
+  Clean up and sync live ebuilds
+
+*calligra-2.5.1 (30 Aug 2012)
+
+  30 Aug 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  +files/calligra-2.5.0-kexi-automagic.patch, +calligra-2.5.1.ebuild:
+  Version bump, fixes also bug 431680
+
+  21 Aug 2012; Andreas K. Huettel <dilfridge@gentoo.org> calligra-2.5.0.ebuild,
+  calligra-9999.ebuild, metadata.xml:
+  Add support for the 3Dconnexion spacenav input device, bug 432132
+
+  20 Aug 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  calligra-2.4.3-r1.ebuild, calligra-2.4.49.9999.ebuild, calligra-2.5.0.ebuild,
+  calligra-9999.ebuild:
+  Force on iconv use, fixes bug 430570
+
+  19 Aug 2012; Andreas K. Huettel <dilfridge@gentoo.org> calligra-2.5.0.ebuild,
+  calligra-9999.ebuild:
+  Remove mso useflag, makes no sense; this fixes bug 431390
+
+*calligra-2.5.0 (13 Aug 2012)
+
+  13 Aug 2012; Tomáš Chvátal <scarabeus@gentoo.org> +calligra-2.5.0.ebuild,
+  -calligra-2.4.91.ebuild, -calligra-2.4.92.ebuild:
+  Version bump to release. Drop older.
+
+  09 Aug 2012; Johannes Huber <johu@gentoo.org> -calligra-2.4.2.ebuild:
+  Remove old wrt bug #428890.
+
+  09 Aug 2012; Agostino Sarubbo <ago@gentoo.org> calligra-2.4.3-r1.ebuild:
+  stable for amd64 - #428890
+
+  09 Aug 2012; Andreas Schuerch <nativemad@gentoo.org>
+  calligra-2.4.3-r1.ebuild:
+  x86 stable, see bug 428890
+
+*calligra-2.4.3-r1 (04 Aug 2012)
+
+  04 Aug 2012; Johannes Huber <johu@gentoo.org> +calligra-2.4.3-r1.ebuild,
+  +files/calligra-2.4.3-security-fix-buffer-overflow.patch,
+  -calligra-2.4.3.ebuild:
+  Revision bump adds a upstream security patch which fixes a buffer overflow.
+
+*calligra-2.4.92 (20 Jul 2012)
+
+  20 Jul 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  +calligra-2.4.92.ebuild:
+  Version bump
+
+  19 Jul 2012; Michael Palimaka <kensington@gentoo.org> calligra-2.4.2.ebuild,
+  calligra-2.4.3.ebuild, calligra-2.4.49.9999.ebuild, calligra-2.4.91.ebuild,
+  calligra-9999.ebuild:
+  Add missing slot dependencies on Qt.
+
+*calligra-2.4.3 (28 Jun 2012)
+
+  28 Jun 2012; Tomáš Chvátal <scarabeus@gentoo.org> +calligra-2.4.3.ebuild:
+  Add 2.4.3 release.
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> -calligra-2.4.1.ebuild:
+  Remove old
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> calligra-2.4.2.ebuild:
+  stable for amd64/x86 , wrt to bug #423307
+
+  24 Jun 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  calligra-2.4.91.ebuild, calligra-9999.ebuild, metadata.xml:
+  Rename useflag openctl to opengtl in 2.5
+
+  24 Jun 2012; Andreas K. Huettel <dilfridge@gentoo.org> Manifest:
+  Remanifest, the .91 tarball was changed before release
+
+  23 Jun 2012; Andreas K. Huettel <dilfridge@gentoo.org> calligra-2.4.2.ebuild,
+  +files/calligra-2.4.2-marble.patch, calligra-2.4.49.9999.ebuild,
+  -calligra-2.4.90.ebuild:
+  Fix build with marble shape, remove old
+
+*calligra-2.4.91 (16 Jun 2012)
+
+  16 Jun 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  +calligra-2.4.91.ebuild:
+  New beta
+
+  06 Jun 2012; Tomáš Chvátal <scarabeus@gentoo.org> calligra-2.4.1.ebuild,
+  calligra-2.4.2.ebuild, calligra-2.4.49.9999.ebuild, calligra-2.4.90.ebuild,
+  calligra-9999.ebuild:
+  Really depend on the l10n. Again wrt bug#417987.
+
+  01 Jun 2012; Tomáš Chvátal <scarabeus@gentoo.org> calligra-2.4.1.ebuild,
+  calligra-2.4.2.ebuild, calligra-2.4.49.9999.ebuild, calligra-2.4.90.ebuild,
+  calligra-9999.ebuild:
+  Depend on calligra-l10n. Fixes bug#417987.
+
+  27 May 2012; Andreas K. Huettel <dilfridge@gentoo.org> calligra-2.4.1.ebuild,
+  calligra-2.4.2.ebuild, calligra-2.4.49.9999.ebuild, calligra-2.4.90.ebuild,
+  calligra-9999.ebuild:
+  The kdepim useflag needs kdepimlibs[semantic-desktop], otherwise build fails
+
+*calligra-2.4.49.9999 (27 May 2012)
+
+  27 May 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  +calligra-2.4.49.9999.ebuild, -calligra-2.4.9999.ebuild:
+  Enforce version ordering
+
+*calligra-2.4.90 (27 May 2012)
+*calligra-2.4.2 (27 May 2012)
+
+  27 May 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  -files/calligra-2.4.0-rdf.patch, +calligra-2.4.2.ebuild,
+  +calligra-2.4.90.ebuild, calligra-2.4.9999.ebuild, calligra-9999.ebuild:
+  Add next stable version and beta for 2.5; remove unused patch; better SRC_URI
+  logic in 9999
+
+  27 May 2012; Agostino Sarubbo <ago@gentoo.org> calligra-2.4.1.ebuild:
+  Stable for x86, wrt to bug #415749
+
+  27 May 2012; Agostino Sarubbo <ago@gentoo.org> -calligra-2.4.0-r1.ebuild:
+  Remove old
+
+  27 May 2012; Agostino Sarubbo <ago@gentoo.org> calligra-2.4.1.ebuild:
+  Stable for amd64, wrt to bug #415749
+
+  02 May 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  calligra-2.4.0-r1.ebuild, calligra-2.4.1.ebuild, calligra-2.4.9999.ebuild,
+  calligra-9999.ebuild:
+  Relax libpqxx version dependency since it seems to work fine with 4.0, bug
+  414277
+
+*calligra-2.4.1 (26 Apr 2012)
+
+  26 Apr 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  +calligra-2.4.1.ebuild:
+  Version bump
+
+  13 Apr 2012; Ulrich Müller <ulm@gentoo.org> calligra-2.4.0-r1.ebuild,
+  calligra-2.4.9999.ebuild:
+  Move EAPI assignment to top of ebuild, bug 411875.
+
+  12 Apr 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  -calligra-2.3.92-r1.ebuild, -files/calligra-2.3.92-language.patch,
+  -files/calligra-2.3.92-table.patch, calligra-2.4.0-r1.ebuild,
+  calligra-2.4.9999.ebuild, calligra-9999.ebuild:
+  No need for useflag wmf as support is purely internal, bug 387559; remove old
+
+  11 Apr 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  calligra-2.3.92-r1.ebuild, calligra-2.4.0-r1.ebuild,
+  calligra-2.4.9999.ebuild, calligra-9999.ebuild:
+  Improve HOMEPAGE
+
+*calligra-2.4.0-r1 (11 Apr 2012)
+
+  11 Apr 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  -calligra-2.3.92.ebuild, -calligra-2.4.0.ebuild, +calligra-2.4.0-r1.ebuild,
+  calligra-2.4.9999.ebuild, calligra-9999.ebuild:
+  calligra-2.4.0 needs additional confirmation that qt has been patched, bug
+  411629; remove old
+
+*calligra-2.3.92-r1 (08 Apr 2012)
+
+  08 Apr 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  +calligra-2.3.92-r1.ebuild, +files/calligra-2.3.92-language.patch,
+  +files/calligra-2.3.92-table.patch:
+  Add several crash fixes, thanks to Franz Fellner, bug 410109 and bug 410187
+
+  08 Apr 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  calligra-2.3.92.ebuild, calligra-2.4.0.ebuild,
+  +files/calligra-2.4.0-rdf.patch, calligra-2.4.9999.ebuild:
+  Fix build with -semantic-desktop, bug 409515
+
+  08 Apr 2012; Andreas K. Huettel <dilfridge@gentoo.org> calligra-2.4.0.ebuild,
+  calligra-2.4.9999.ebuild:
+  Disable Active, bug 411021
+
+*calligra-2.4.9999 (06 Apr 2012)
+
+  06 Apr 2012; Andreas K. Huettel <dilfridge@gentoo.org> calligra-2.4.0.ebuild,
+  +calligra-2.4.9999.ebuild, calligra-9999.ebuild:
+  Add bugfix branch live ebuild
+
+  06 Apr 2012; Andreas K. Huettel <dilfridge@gentoo.org> calligra-2.4.0.ebuild,
+  calligra-9999.ebuild:
+  URI will be stable, not unstable
+
+*calligra-2.4.0 (06 Apr 2012)
+
+  06 Apr 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  +calligra-2.4.0.ebuild, calligra-9999.ebuild:
+  Version bump
+
+  06 Apr 2012; Tomáš Chvátal <scarabeus@gentoo.org> -calligra-2.3.87.ebuild,
+  -files/calligra-2.3.87-koabstr.patch, -files/calligra-2.3.87-marble.patch:
+  Drop old.
+
+  25 Mar 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  calligra-2.3.92.ebuild, calligra-9999.ebuild:
+  tables has been renamed to sheets, bug 409547
+
+*calligra-2.3.92 (22 Mar 2012)
+
+  22 Mar 2012; Tomáš Chvátal <scarabeus@gentoo.org> +calligra-2.3.92.ebuild:
+  Add rc2 release.
+
+  20 Mar 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  calligra-2.3.87.ebuild, calligra-9999.ebuild:
+  Require semantic-desktop for plan, bug 405939
+
+  18 Mar 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/calligra-2.3.85-asneeded.patch:
+  Remove unused patch.
+
+  24 Feb 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  calligra-2.3.87.ebuild, calligra-9999.ebuild:
+  Add requirement that words needs tables, bug 403001
+
+  24 Feb 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  calligra-2.3.87.ebuild, +files/calligra-2.3.87-koabstr.patch:
+  Build koabstraction only if possible, bug 402655
+
+  24 Feb 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  -calligra-2.3.86.ebuild, calligra-2.3.87.ebuild, calligra-9999.ebuild:
+  Remove old; block also krita, bug 405275
+
+*calligra-2.3.87 (07 Feb 2012)
+
+  07 Feb 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  +calligra-2.3.87.ebuild, +files/calligra-2.3.87-marble.patch:
+  Version bump
+
+  22 Jan 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  -calligra-2.3.85.ebuild, calligra-2.3.86.ebuild, calligra-9999.ebuild:
+  Remove old; restrict tests, bug 394273
+
+*calligra-2.3.86 (07 Jan 2012)
+
+  07 Jan 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  -calligra-2.3.84.ebuild, +calligra-2.3.86.ebuild, calligra-9999.ebuild,
+  metadata.xml:
+  Version bump
+
+  22 Dec 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -calligra-2.3.83.ebuild:
+  Remove old
+
+  11 Dec 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  calligra-2.3.85.ebuild, +files/calligra-2.3.85-asneeded.patch:
+  Fix build with tests enabled
+
+*calligra-2.3.85 (10 Dec 2011)
+
+  10 Dec 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +calligra-2.3.85.ebuild, calligra-9999.ebuild:
+  Version bump
+
+*calligra-2.3.84 (20 Nov 2011)
+
+  20 Nov 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +calligra-2.3.84.ebuild:
+  Version bump
+
+*calligra-2.3.83 (29 Oct 2011)
+
+  29 Oct 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -calligra-2.3.82.ebuild, +calligra-2.3.83.ebuild, calligra-9999.ebuild:
+  Version bump; remove old
+
+  17 Oct 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/calligra-2.3.74-jpeglcms-2.patch, calligra-2.3.82.ebuild,
+  calligra-9999.ebuild:
+  Drop redundant patch.
+
+*calligra-2.3.82 (17 Oct 2011)
+
+  17 Oct 2011; Tomáš Chvátal <scarabeus@gentoo.org> -calligra-2.3.81.ebuild,
+  +calligra-2.3.82.ebuild:
+  Version bump to latest beta.
+
+  16 Sep 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  calligra-2.3.81.ebuild:
+  Add missing qtwebkit dependency
+
+*calligra-2.3.81 (15 Sep 2011)
+
+  15 Sep 2011; Tomáš Chvátal <scarabeus@gentoo.org> -calligra-2.3.74.ebuild,
+  -files/calligra-2.3.74-jpeglcms.patch,
+  files/calligra-2.3.74-jpeglcms-2.patch, +calligra-2.3.81.ebuild,
+  calligra-9999.ebuild:
+  Version bump to the latest beta. Drop alpha.
+
+*calligra-9999 (26 Aug 2011)
+
+  26 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org> +calligra-9999.ebuild:
+  Move live ebuild to main tree; it makes no sense to keep it alone in the kde
+  overlay
+
+  26 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  calligra-2.3.74.ebuild:
+  Build cstester only if tests are requested; then, require karbon; bug 380293
+
+  26 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  calligra-2.3.74.ebuild:
+  Add explicit blockers for all koffice apps, bug 380613
+
+  22 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  calligra-2.3.74.ebuild:
+  Require tables if we build kexi, bug 380227
+
+  22 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  calligra-2.3.74.ebuild:
+  The component active belongs to Calligra Mobile, which we dont support here
+
+*calligra-2.3.74 (19 Aug 2011)
+
+  19 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -calligra-2.3.73.ebuild, +calligra-2.3.74.ebuild,
+  +files/calligra-2.3.74-jpeglcms.patch,
+  +files/calligra-2.3.74-jpeglcms-2.patch, metadata.xml:
+  Version bump
+
+  04 Aug 2011; Tomáš Chvátal <scarabeus@gentoo.org> calligra-2.3.73.ebuild:
+  media-libs/libwpg to app-text/libwpg
+
+*calligra-2.3.73 (22 Jul 2011)
+
+  22 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +calligra-2.3.73.ebuild, +metadata.xml:
+  New application

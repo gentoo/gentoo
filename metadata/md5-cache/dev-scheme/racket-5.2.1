@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=X? ( x11-libs/cairo[X] ) virtual/libffi !dev-tex/slatex
+DESCRIPTION=Racket is a general-purpose programming language with strong support for domain-specific languages
+EAPI=4
+HOMEPAGE=http://racket-lang.org/
+IUSE=backtrace cairo doc futures jit places plot threads X
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=X? ( x11-libs/cairo[X] ) virtual/libffi
+SLOT=0
+SRC_URI=http://download.racket-lang.org/installers/5.2.1/racket/racket-5.2.1-src-unix.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=7797955e43dc9765677e0c3a185c65e0

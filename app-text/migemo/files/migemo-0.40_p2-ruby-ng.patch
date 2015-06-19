@@ -1,0 +1,96 @@
+diff --git a/Makefile.am b/Makefile.am
+index 7548ae0..1f9213a 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -15,17 +15,17 @@ migemo.el: migemo.el.in
+ 	sed -e 's!@pkgdatadir@!$(pkgdatadir)!g' migemo.el.in > $@
+ 
+ migemo-dict: # SKK-JISYO.L
+-	ruby -I. migemo-convert.rb SKK-JISYO.L > $@
++	${RUBY} -Eeuc-jp -I. migemo-convert.rb SKK-JISYO.L > $@
+ 
+ migemo-dict.idx: migemo-dict
+-	ruby -I. migemo-index.rb migemo-dict > migemo-dict.idx
++	${RUBY} -Eeuc-jp -I. migemo-index.rb migemo-dict > migemo-dict.idx
+ 
+ migemo-dict.cache: frequent-chars migemo-dict migemo-dict.idx
+-	sort frequent-chars | ruby -I. migemo-cache.rb migemo-dict
++	sort frequent-chars | ${RUBY} -Eeuc-jp -I. migemo-cache.rb migemo-dict
+ 
+ frequent-chars: genchars.sh migemo-dict
+ 	sh genchars.sh > tmp.list1
+-	cat tmp.list1 | ruby -rromkan -ne 'puts $$_.to_kunrei' > tmp.list2
++	cat tmp.list1 | ${RUBY} -Eeuc-jp -rromkan -ne 'puts $$_.to_kunrei' > tmp.list2
+ 	cat tmp.list1 tmp.list2 | sort | uniq > frequent-chars
+ 
+ clean-local:
+diff --git a/acinclude.m4 b/acinclude.m4
+index f74e70e..50ca46c 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -123,7 +123,7 @@ AC_DEFUN(AM_PATH_RUBYDIR,
+   AC_MSG_CHECKING([where .rb files should go])
+   if test "x$rubydir" = x; then
+     changequote(<<, >>)
+-    rubydir=`ruby -rrbconfig -e 'puts RbConfig::CONFIG["sitedir"]'`
++    rubydir=`${RUBY} -Eeuc-jp -rrbconfig -e 'puts RbConfig::CONFIG["sitedir"]'`
+     changequote([, ])
+   fi
+   AC_MSG_RESULT($rubydir)
+diff --git a/configure.in b/configure.in
+index 2948e25..7ee3afc 100644
+--- a/configure.in
++++ b/configure.in
+@@ -10,7 +10,7 @@ AM_PATH_LISPDIR
+ AM_PATH_RUBYDIR
+ 
+ echo -n "checking Ruby/Bsearch... "
+-if ruby -rbsearch -e 'exit(if Bsearch::VERSION >= "1.2" then 0 else 1 end)'; then
++if $RUBY -rbsearch -e 'exit(if Bsearch::VERSION::STRING >= "1.2" then 0 else 1 end)'; then
+    echo found
+ else
+    echo not found
+@@ -19,7 +19,7 @@ else
+ fi
+ 
+ echo -n "checking Ruby/Romkan... "
+-if ruby -rromkan -e 'exit(if Romkan::VERSION >= "0.3" then 0 else 1 end)'; then
++if $RUBY -rromkan -e 'exit(if Romkan::VERSION >= "0.3" then 0 else 1 end)'; then
+    echo found
+ else
+    echo not found
+diff --git a/genchars.sh b/genchars.sh
+index 8e186d1..9a23483 100644
+--- a/genchars.sh
++++ b/genchars.sh
+@@ -1,6 +1,7 @@
+ #! /bin/sh
+ 
+-ruby -rromkan -nle 'head = $_.split[0]; if /^\w+$/ =~ head then puts head else roma = head.to_roma; puts roma, roma.to_kunrei end' migemo-dict |uniq> tmp.ascii.words
++RUBY=${RUBY:-ruby}
++${RUBY} -rromkan -nle 'head = $_.split[0]; if /^\w+$/ =~ head then puts head else roma = head.to_roma; puts roma, roma.to_kunrei end' migemo-dict |uniq> tmp.ascii.words
+ 
+ # Get the top 500 frequent ngrams.
+ for i in 1 2 3 4 5 6 7 8; do
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index b19bdb1..76f1638 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -5,13 +5,13 @@ noinst_DATA = 	test-dict.idx test-dict.cache
+ 
+ 
+ test-dict.idx: test-dict ../migemo-index.rb
+-	ruby -I.. ../migemo-index.rb test-dict > test-dict.idx
++	${RUBY} -Eeuc-jp -I.. ../migemo-index.rb test-dict > test-dict.idx
+ 
+ test-dict.cache: test-dict test-dict.idx ../migemo-cache.rb
+-	ruby -rromkan -ne 'puts $$1.to_roma if /^(.+?)	/' test-dict |\
++	${RUBY} -Eeuc-jp -rromkan -ne 'puts $$1.to_roma if /^(.+?)	/' test-dict |\
+ 	while read line; do\
+-	    echo $$line | ruby -ne '$$_.chomp!;1.upto($$_.length) do |x| puts $$_[0,x] end';\
+-	done | ruby -I.. ../migemo-cache.rb test-dict
++	    echo $$line | ${RUBY} -Eeuc-jp -ne '$$_.chomp!;1.upto($$_.length) do |x| puts $$_[0,x] end';\
++	done | ${RUBY} -Eeuc-jp -I.. ../migemo-cache.rb test-dict
+ 
+ clean-local:
+ 	rm -f tmp.*

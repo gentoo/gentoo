@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=virtual/perl-Carp >=dev-perl/Email-Abstract-3.6.0 dev-perl/Email-Address >=dev-perl/Email-Simple-1.998.0 >=virtual/perl-File-Path-2.60.0 virtual/perl-File-Spec virtual/perl-IO dev-perl/List-MoreUtils dev-perl/Module-Runtime >=dev-perl/Moo-1.0.8 >=dev-perl/MooX-Types-MooseLike-0.150.0 virtual/perl-libnet dev-perl/Net-SMTP-SSL virtual/perl-Scalar-List-Utils dev-perl/Sub-Exporter >=dev-perl/Throwable-0.200.3 dev-perl/Try-Tiny virtual/perl-ExtUtils-MakeMaker test? ( >=dev-perl/Capture-Tiny-0.08 virtual/perl-Exporter virtual/perl-File-Temp >=virtual/perl-Test-Simple-0.960.0 ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=A library for sending email
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Email-Sender/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp >=dev-perl/Email-Abstract-3.6.0 dev-perl/Email-Address >=dev-perl/Email-Simple-1.998.0 >=virtual/perl-File-Path-2.60.0 virtual/perl-File-Spec virtual/perl-IO dev-perl/List-MoreUtils dev-perl/Module-Runtime >=dev-perl/Moo-1.0.8 >=dev-perl/MooX-Types-MooseLike-0.150.0 virtual/perl-libnet dev-perl/Net-SMTP-SSL virtual/perl-Scalar-List-Utils dev-perl/Sub-Exporter >=dev-perl/Throwable-0.200.3 dev-perl/Try-Tiny dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Email-Sender-1.300016.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=8df6b408af1bdd3fbd9bc097fc986e7d

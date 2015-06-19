@@ -1,0 +1,54 @@
+diff -ru softgun-0.19.orig/config.mk softgun-0.19/config.mk
+--- softgun-0.19.orig/config.mk	2010-11-12 15:13:47.000000000 +0100
++++ softgun-0.19/config.mk	2010-11-12 15:14:39.000000000 +0100
+@@ -16,10 +16,10 @@
+ SHAREDCFLAGS=-fPIC -nostdlib  -D_SHARED_
+ SHAREDLDFLAGS=-nostdlib -shared
+ ifeq ($(shell uname),Linux)
+-LDFLAGS=-rdynamic -lpthread -ldl -lrt -lm -lz -lasound 
++LIBS=-rdynamic -lpthread -ldl -lrt -lm -lz -lasound 
+ else
+  ifeq ($(shell uname),FreeBSD)
+- LDFLAGS=-rdynamic -lpthread -lm -lz -lSDL
++ LIBS=-rdynamic -lpthread -lm -lz -lSDL
+  else
+  $(error Unknown architecture)
+  endif
+diff -ru softgun-0.19.orig/Makefile softgun-0.19/Makefile
+--- softgun-0.19.orig/Makefile	2010-11-12 15:13:47.000000000 +0100
++++ softgun-0.19/Makefile	2010-11-12 15:14:27.000000000 +0100
+@@ -116,10 +116,10 @@
+ 
+ 
+ wgew: $(OBJS) 
+-	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
++	$(CC) $(LDFLAGS) $^ -o $@ $(LIBS)
+ 
+ softgun_be: $(OBJS_BE) 
+-	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
++	$(CC) $(LDFLAGS) $^ -o $@ $(LIBS)
+ 
+ boards/libboards.a:
+ 	$(MAKE) -C boards libboards.a
+diff -ru softgun-0.19.orig/printer/module.mk softgun-0.19/printer/module.mk
+--- softgun-0.19.orig/printer/module.mk	2010-11-12 15:13:47.000000000 +0100
++++ softgun-0.19/printer/module.mk	2010-11-12 15:14:59.000000000 +0100
+@@ -5,5 +5,5 @@
+ INSTALL_BINS += pcl3gui2png
+ 
+ pcl3gui2png: $(PRINTER_OBJS) printer/pcl3gui2png.c 
+-	$(CC) -o $@ $(PRINTER_OBJS) printer/pcl3gui2png.c
++	$(CC) $(LDFLAGS) -o $@ $(PRINTER_OBJS) printer/pcl3gui2png.c
+ 
+diff -ru softgun-0.19.orig/tools/Makefile softgun-0.19/tools/Makefile
+--- softgun-0.19.orig/tools/Makefile	2010-11-12 15:13:47.000000000 +0100
++++ softgun-0.19/tools/Makefile	2010-11-12 15:15:19.000000000 +0100
+@@ -1,7 +1,7 @@
+ include ../config.mk
+ 
+ sg_tunctl: tunctl.c
+-	$(CC) $(CFLAGS) tunctl.c -o sg_tunctl
++	$(CC) $(CFLAGS) $(LDFLAGS) tunctl.c -o sg_tunctl
+ 
+ install:
+ 	install -m 0755 sg_tunctl $(bindir)	

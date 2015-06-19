@@ -1,0 +1,61 @@
+# ChangeLog for media-plugins/vdr-pin
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-pin/ChangeLog,v 1.11 2014/02/23 20:37:11 hd_brummy Exp $
+
+  23 Feb 2014; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-pin-0.1.9.ebuild:
+  eapi=5; converted to vdr-plugin-2.eclass
+
+*vdr-pin-0.1.14 (05 Jun 2013)
+
+  05 Jun 2013; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-pin-0.1.14.ebuild,
+  +files/reccmds.pin.conf:
+  bump, need vdr-2.0.2-r1 with adapted extpatchng
+
+  02 Dec 2010; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-pin-0.0.20.ebuild, vdr-pin-0.1.9.ebuild, files/vdr-pin-0.1.9.diff:
+  clean up; moved to EAPI=2, fixed bug #339250
+
+*vdr-pin-0.1.9 (02 Dec 2007)
+
+  02 Dec 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-pin-0.1.9.diff, +vdr-pin-0.1.9.ebuild:
+  version bump
+
+  05 Jan 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-pin-0.0.20.ebuild:
+  einfo converted to elog
+
+  02 Nov 2006; Matthias Schwarzott <zzam@gentoo.org>
+  -files/rc-addon-0.0.12.sh, -files/reccmds.pin.conf,
+  -vdr-pin-0.0.12.ebuild, -vdr-pin-0.0.16.ebuild:
+  Removed older versions.
+
+  15 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Assigned to Gentoo VDR Project.
+
+*vdr-pin-0.0.20 (12 Jun 2006)
+
+  12 Jun 2006; Matthias Schwarzott <zzam@gentoo.org> +vdr-pin-0.0.20.ebuild:
+  Version bumped.
+
+*vdr-pin-0.0.16 (05 May 2006)
+
+  05 May 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/rc-addon-0.0.12.sh, +files/reccmds.pin.conf-0.0.16,
+  -files/rc-addon.sh, -vdr-pin-0.0.15.ebuild, +vdr-pin-0.0.16.ebuild:
+  version bump; old version removed
+
+*vdr-pin-0.0.15 (01 May 2006)
+
+  01 May 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-pin-0.0.15.ebuild:
+  version bump
+
+*vdr-pin-0.0.12 (12 Apr 2006)
+
+  12 Apr 2006; Joerg Bornkessel <hd_brummy@gentoo.org> +files/rc-addon.sh,
+  +files/reccmds.pin.conf, +files/vdr-pin.sh, +metadata.xml,
+  +vdr-pin-0.0.12.ebuild:
+  initial ebuild; thx to D.Edinger on http://bugs.gentoo.de/view.php?id=409
+  vor this ebuild and most work on this
+

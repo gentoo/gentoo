@@ -1,0 +1,23 @@
+http://bugs.gentoo.org/269305
+
+--- cscope-15.7a-orig/contrib/ocs	2004-06-21 20:13:22.000000000 +0200
++++ cscope-15.7a/contrib/ocs	2009-05-11 22:33:51.000000000 +0200
+@@ -75,17 +75,10 @@
+ 
+ #set the default value for SYSDIR 
+ if [ -z "${SYSDIR}" ]; then
+-   SYSDIR=/usr/local/lib/cs
++   SYSDIR=/var/lib/cs
+    echo setting default sysdir
+ fi
+ 
+-#check that SYSDIR exists
+-if [ ! -d ${SYSDIR} ]; then
+-   echo -n $SYSDIR does not exist. 
+-   echo Please create the directory and set SYSDIR appropriately
+-   exit 
+-fi
+-
+ # Check that cscope is in PATH
+ type cscope 1>/dev/null 2>&1
+ 

@@ -1,0 +1,91 @@
+# ChangeLog for app-text/xhtml1
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/xhtml1/ChangeLog,v 1.24 2013/07/21 10:10:56 pacho Exp $
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/sgml-herd-has-no-maintainers-
+  again-td259655.html
+
+  05 Mar 2011; Joseph Jezak <josejx@gentoo.org> -xhtml1-20020801-r3.ebuild,
+  xhtml1-20020801-r4.ebuild:
+  Marked ppc stable for bug #276400. Removed old version.
+
+  14 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  xhtml1-20020801-r4.ebuild:
+  Stable on amd64 wrt bug #276400
+
+  09 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  xhtml1-20020801-r4.ebuild:
+  stable x86, bug 276400
+
+  30 Sep 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  xhtml1-20020801-r4.ebuild:
+  Minor improvements
+
+  20 Feb 2010; Jonathan Callen <abcd@gentoo.org> xhtml1-20020801-r4.ebuild:
+  Transfer prefix keywords, bump EAPI
+
+  19 Jan 2008; Fabian Groffen <grobian@gentoo.org>
+  xhtml1-20020801-r3.ebuild, xhtml1-20020801-r4.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  13 Mar 2007; Leonardo Boshell <leonardop@gentoo.org> metadata.xml:
+  Replacing text-markup herd with the new sgml herd.
+
+*xhtml1-20020801-r4 (11 Jan 2007)
+
+  11 Jan 2007; Leonardo Boshell <leonardop@gentoo.org>
+  +xhtml1-20020801-r4.ebuild:
+  Install xhtml1 entries in the global XML catalog (bug #159122).
+
+  15 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org>
+  xhtml1-20020801-r3.ebuild:
+  Marked ~amd64, closes bug 117753.
+
+  29 Oct 2005; Fabian Groffen <grobian@gentoo.org>
+  xhtml1-20020801-r3.ebuild:
+  Marked ~ppc-macos (bug #109440)
+
+*xhtml1-20020801-r3 (21 Jun 2005)
+
+  21 Jun 2005; Leonardo Boshell <leonardop@gentoo.org>
+  xhtml1-20020801-r3.ebuild, files/xhtml1-catalog.patch:
+  New revision, with a corrected patch, the SGMLDECL keyword should be
+  removed now that we use DTDDECL. Resolves bug #92020, thanks to Peter
+  Simons. Doesn't block gtk-doc anymore (bug #33843). Marked stable on x86
+  since it fixes critical problems with openjade and the global catalogs
+  system.
+
+  31 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  xhtml1-20020801-r2.ebuild:
+  mark ~ppc
+
+*xhtml1-20020801-r2 (06 Nov 2004)
+
+  06 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> +files/xhtml1-dtddecl.diff,
+  +xhtml1-20020801-r2.ebuild, -xhtml1-20020801.ebuild:
+  Added DTDDECL to xhtml1.soc. Thanks to Peter Simons <simons@cryp.to>;
+  bug #33517.
+
+  20 Nov 2003; Mike Gardiner <obz@gentoo.org> metadata.xml,
+  xhtml1-20020801-r1.ebuild, xhtml1-20020801.ebuild:
+  Blocking gtk-doc. xhtml1 and gtk-doc cause all sorts of problems together,
+  they dont agree much. Check bug #33843 and links
+
+*xhtml1-20020801-r1 (13 Feb 2003)
+ 
+  11 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+  08 Jan 2003; Matthew Turk <satai@gentoo.org> :
+  Marked as stable.
+
+*xhtml1-20020801 (30 Dec 02)
+
+  30 Dec 2002; Matthew Turk <satai@gentoo.org> : 
+  changed to inherit sgml-catalog and better deal with catalogs. 
+
+*xhtml1-20020801 (16 Nov 02)
+
+  16 Nov 2002; Matthew Turk <satai@gentoo.org> :
+  Initial import.  Ebuild submitted by Ryan Shaw <ryan.shaw@stanfordalumni.org>

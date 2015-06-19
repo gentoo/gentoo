@@ -1,0 +1,86 @@
+# ChangeLog for app-text/ding
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/ding/ChangeLog,v 1.26 2012/05/10 15:23:08 ago Exp $
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -ding-1.6.ebuild:
+  Remove old
+
+  27 Dec 2011; Michael Weber <xmw@gentoo.org> ding-1.7.ebuild:
+  ppc stable (bug 359121)
+
+  09 Oct 2011; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove tove from metadata.xml
+
+  28 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> ding-1.7.ebuild:
+  x86 stable wrt bug #359121
+
+  21 Mar 2011; Markos Chandras <hwoarang@gentoo.org> ding-1.7.ebuild:
+  Stable on amd64 wrt bug #359121
+
+*ding-1.7 (09 Jan 2011)
+
+  09 Jan 2011; Torsten Veller <tove@gentoo.org> +ding-1.7.ebuild:
+  Version bump (#351184). Thanks to Stephan Litterst.
+
+  29 Sep 2009; Torsten Veller <tove@gentoo.org> -ding-1.4.ebuild,
+  -ding-1.5.ebuild, ding-1.6.ebuild:
+  Stable on amd64 (#277482). Cleanup
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> ding-1.6.ebuild:
+  ppc stable #277482
+
+  15 Jul 2009; Christian Faulhammer <fauli@gentoo.org> ding-1.6.ebuild:
+  stable x86, bug 277482
+
+*ding-1.6 (06 May 2009)
+
+  06 May 2009; Torsten Veller <tove@gentoo.org> +ding-1.6.ebuild:
+  Version bump. Thanks to Sebastian Mingramm and Samuli Suominen (#268813)
+
+*ding-1.5 (17 Apr 2007)
+
+  17 Apr 2007; Torsten Veller <tove@gentoo.org> metadata.xml,
+  +ding-1.5.ebuild:
+  Versio bump
+
+  10 Feb 2007; Torsten Veller <tove@gentoo.org> files/digest-ding-1.4,
+  Manifest:
+  ...and now Manifest/digest also matches the source.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  27 Nov 2005; Torsten Veller <tove@gentoo.org> -ding-1.2.ebuild,
+  -ding-1.3.ebuild, ding-1.4.ebuild:
+  Removed old ebuilds and COPYING from dodoc.
+
+  16 Jul 2005; Joseph Jezak <josejx@gentoo.org> ding-1.4.ebuild:
+  Marked ppc stable for bug #99212.
+
+  12 Jul 2005; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  ding-1.4.ebuild:
+  Stable on x86.
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> ding-1.2.ebuild,
+  ding-1.3.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+*ding-1.4 (05 May 2005)
+
+  05 May 2005; Torsten Veller <tove@gentoo.org> +ding-1.4.ebuild:
+  New release.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> ding-1.2.ebuild:
+  Stable on ppc.
+
+*ding-1.3 (25 Apr 2004)
+
+  25 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump. Found by Daniel Webert <daniel_webert@web.de> in #46543.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+*ding-1.2 (04 Nov 2002)
+
+  04 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Initial import. Ebuild contributed by Mathias Menzel-Nielsen <spam@matzsoft.de> in #8061.

@@ -1,0 +1,36 @@
+# ChangeLog for dev-ruby/fast-stemmer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/fast-stemmer/ChangeLog,v 1.8 2015/06/07 17:46:00 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  05 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -fast-stemmer-1.0.2-r1.ebuild,
+  fast-stemmer-1.0.2-r2.ebuild:
+  Add ruby22 support. Remove old.
+
+  21 May 2014; Manuel Rüger <mrueg@gentoo.org> fast-stemmer-1.0.2-r1.ebuild,
+  fast-stemmer-1.0.2-r2.ebuild:
+  Remove ruby18 target.
+
+*fast-stemmer-1.0.2-r2 (27 Dec 2013)
+
+  27 Dec 2013; Manuel Rüger <mrueg@gentoo.org> +fast-stemmer-1.0.2-r2.ebuild:
+  Add ruby21 target.
+
+  11 Nov 2013; Manuel Rüger <mrueg@gentoo.org> -fast-stemmer-1.0.2.ebuild:
+  Cleanup old.
+
+*fast-stemmer-1.0.2-r1 (04 Oct 2013)
+
+  04 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +fast-stemmer-1.0.2-r1.ebuild:
+  Add ruby20 target.
+
+  22 Aug 2013; Manuel Rüger <mrueg@gentoo.org> fast-stemmer-1.0.2.ebuild:
+  Verbose build.
+
+*fast-stemmer-1.0.2 (20 Aug 2013)
+
+  20 Aug 2013; Manuel Rüger <mrueg@gentoo.org> +fast-stemmer-1.0.2.ebuild,
+  +metadata.xml:
+  Initial version.

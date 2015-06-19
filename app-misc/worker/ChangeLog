@@ -1,0 +1,263 @@
+# ChangeLog for app-misc/worker
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/worker/ChangeLog,v 1.110 2013/04/25 19:15:53 pinkbyte Exp $
+
+  25 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> worker-2.19.6.ebuild:
+  Add ~arm keyword
+
+  25 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> -worker-2.18.1.ebuild,
+  worker-2.19.6.ebuild:
+  Respect AR, wrt bug #467222. Thanks to Agostino Sarubbo for discovering this
+  issue. Drop old version
+
+  15 Apr 2013; Agostino Sarubbo <ago@gentoo.org> worker-2.19.6.ebuild:
+  Stable for x86, wrt bug #465910
+
+  15 Apr 2013; Agostino Sarubbo <ago@gentoo.org> worker-2.19.6.ebuild:
+  Stable for amd64, wrt bug #465910
+
+  15 Apr 2013; Agostino Sarubbo <ago@gentoo.org> worker-2.19.6.ebuild:
+  Stable for ppc, wrt bug #465910
+
+  14 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> worker-2.18.1.ebuild,
+  worker-2.19.6.ebuild:
+  Fix HOMEPAGE and SRC_URI
+
+*worker-2.19.6 (14 Mar 2013)
+
+  14 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> +worker-2.19.6.ebuild,
+  metadata.xml:
+  Version bump, wrt bug #461572. EAPI 5, epatch_user support, add more USE
+  flags to control optional dependencies, generic ebuild cleanup
+
+  08 Oct 2012; Michael Palimaka <kensington@gentoo.org> -worker-2.17.8.ebuild:
+  Remove old.
+
+  30 Sep 2012; Raúl Porcel <armin76@gentoo.org> worker-2.17.8.ebuild,
+  worker-2.18.1.ebuild:
+  Drop alpha keywords
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> worker-2.18.1.ebuild:
+  x86 stable wrt bug #399945
+
+  15 Feb 2012; Brent Baude <ranger@gentoo.org> worker-2.18.1.ebuild:
+  Marking worker-2.18.1 ppc for bug 399945
+
+  12 Feb 2012; Agostino Sarubbo <ago@gentoo.org> worker-2.18.1.ebuild:
+  Stable for amd64, wrt bug #399945
+
+  09 Feb 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #85926
+
+*worker-2.18.1 (01 Oct 2011)
+
+  01 Oct 2011; Tobias Scherbaum <dertobi123@gentoo.org> -worker-2.18.0.ebuild,
+  +worker-2.18.1.ebuild:
+  Version bump
+
+*worker-2.18.0 (28 Aug 2011)
+
+  28 Aug 2011; Tobias Scherbaum <dertobi123@gentoo.org> -worker-2.17.11.ebuild,
+  +worker-2.18.0.ebuild:
+  Version bump (#377619)
+
+*worker-2.17.11 (17 Mar 2011)
+
+  17 Mar 2011; Tobias Scherbaum <dertobi123@gentoo.org> -worker-2.17.10.ebuild,
+  +worker-2.17.11.ebuild:
+  Version bump
+
+*worker-2.17.10 (16 Mar 2011)
+
+  16 Mar 2011; Tobias Scherbaum <dertobi123@gentoo.org> -worker-2.17.6.ebuild,
+  +worker-2.17.10.ebuild:
+  Version bump, #347357
+
+  28 Dec 2010; Brent Baude <ranger@gentoo.org> worker-2.17.8.ebuild:
+  keyworded ~arch for ppc64, bug 330541
+
+  05 Dec 2010; Raúl Porcel <armin76@gentoo.org> worker-2.17.6.ebuild,
+  worker-2.17.8.ebuild:
+  Drop ia64/sparc keywords
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org> worker-2.17.8.ebuild:
+  stable ppc, bug 330541
+
+  28 Aug 2010; Raúl Porcel <armin76@gentoo.org> worker-2.17.8.ebuild:
+  alpha/ia64/sparc stable wrt #330541
+
+  31 Jul 2010; Markos Chandras <hwoarang@gentoo.org> worker-2.17.8.ebuild:
+  Stable on amd64 wrt bug #330541
+
+  31 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> worker-2.17.8.ebuild:
+  x86 stable wrt bug #330541
+
+  30 Jul 2010; Tobias Scherbaum <dertobi123@gentoo.org>
+  -worker-2.17.3.ebuild, worker-2.17.8.ebuild:
+  Remove hal depend (#325467)
+
+  11 Jul 2010; Raúl Porcel <armin76@gentoo.org> worker-2.17.6.ebuild:
+  alpha/ia64/sparc stable wrt #324373
+
+  07 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> worker-2.17.6.ebuild:
+  x86 stable wrt bug #324373
+
+  27 Jun 2010; <nixnut@gentoo.org> worker-2.17.6.ebuild:
+  ppc stable #324373
+
+  24 Jun 2010; Pacho Ramos <pacho@gentoo.org> worker-2.17.6.ebuild:
+  stable amd64, bug 324373
+
+*worker-2.17.8 (24 Jun 2010)
+
+  24 Jun 2010; Tobias Scherbaum <dertobi123@gentoo.org>
+  -worker-2.17.7.ebuild, +worker-2.17.8.ebuild:
+  Version bump
+
+*worker-2.17.7 (16 Jun 2010)
+
+  16 Jun 2010; Tobias Scherbaum <dertobi123@gentoo.org>
+  -worker-2.17.4-r1.ebuild, +worker-2.17.7.ebuild:
+  Version bump
+
+*worker-2.17.6 (01 May 2010)
+
+  01 May 2010; Tobias Scherbaum <dertobi123@gentoo.org>
+  +worker-2.17.6.ebuild:
+  Version bump
+
+*worker-2.17.4-r1 (30 Jul 2009)
+
+  30 Jul 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  -worker-2.17.1.ebuild, -worker-2.17.4.ebuild, +worker-2.17.4-r1.ebuild:
+  Revbump, fix .desktop file, #275721
+
+  11 Jun 2009; Raúl Porcel <armin76@gentoo.org> worker-2.17.3.ebuild:
+  ia64/sparc stable wrt #272486
+
+  07 Jun 2009; Tobias Klausmann <klausman@gentoo.org> worker-2.17.3.ebuild:
+  Stable on alpha, bug #272486
+
+  07 Jun 2009; Markus Meier <maekke@gentoo.org> worker-2.17.3.ebuild:
+  amd64/x86 stable, bug #272486
+
+  06 Jun 2009; nixnut <nixnut@gentoo.org> worker-2.17.3.ebuild:
+  ppc stable #272486
+
+*worker-2.17.4 (03 Jun 2009)
+
+  03 Jun 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  +worker-2.17.4.ebuild:
+  Version bump
+
+*worker-2.17.3 (13 Mar 2009)
+
+  13 Mar 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  -files/worker-2.17.2-gcc43.patch, -worker-2.17.2.ebuild,
+  +worker-2.17.3.ebuild:
+  Version bump, #262047
+
+  11 Mar 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  +files/worker-2.17.2-gcc43.patch, worker-2.17.2.ebuild:
+  Fix build error w/ gcc-4.3 as per #262047
+
+*worker-2.17.2 (06 Mar 2009)
+
+  06 Mar 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  +worker-2.17.2.ebuild:
+  Version bump
+
+  04 Feb 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  -worker-2.17.0.ebuild:
+  Cleanup
+
+  04 Feb 2009; Raúl Porcel <armin76@gentoo.org> worker-2.17.1.ebuild:
+  ia64 stable wrt #255520
+
+  25 Jan 2009; Tobias Klausmann <klausman@gentoo.org> worker-2.17.1.ebuild:
+  Stable on alpha, bug #255520
+
+  23 Jan 2009; Markus Meier <maekke@gentoo.org> worker-2.17.1.ebuild:
+  amd64/x86 stable, bug #255520
+
+  19 Jan 2009; Ferris McCormick <fmccor@gentoo.org> worker-2.17.1.ebuild:
+  Sparc stable, Bug #255520.
+
+  19 Jan 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  -worker-2.16.2.ebuild, worker-2.17.1.ebuild:
+  ppc stable, bug #255520
+
+  22 Dec 2008; Raúl Porcel <armin76@gentoo.org> worker-2.17.0.ebuild:
+  alpha/ia64 stable wrt #251656
+
+  20 Dec 2008; Markus Meier <maekke@gentoo.org> worker-2.17.0.ebuild:
+  x86 stable, bug #251656
+
+  20 Dec 2008; nixnut <nixnut@gentoo.org> worker-2.17.0.ebuild:
+  Stable on ppc wrt bug 251656
+
+  20 Dec 2008; Kenneth Prugh <ken69267@gentoo.org> worker-2.17.0.ebuild:
+  amd64 stable, bug #251656
+
+  19 Dec 2008; Ferris McCormick <fmccor@gentoo.org> worker-2.17.0.ebuild:
+  Sparc stable, Bug #251656.
+
+*worker-2.17.1 (19 Dec 2008)
+
+  19 Dec 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  +worker-2.17.1.ebuild:
+  Version bump
+
+*worker-2.17.0 (15 Nov 2008)
+
+  15 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  -worker-2.16.5.ebuild, +worker-2.17.0.ebuild:
+  Version bump
+
+  31 Jul 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+*worker-2.16.5 (05 Jul 2008)
+
+  05 Jul 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  -worker-2.11.1.ebuild, -worker-2.16.4.ebuild, +worker-2.16.5.ebuild:
+  Version bump & Cleanup
+
+  05 Jul 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  worker-2.16.2.ebuild:
+  ppc stable, bug #230531
+
+  04 Jul 2008; Raúl Porcel <armin76@gentoo.org> worker-2.16.2.ebuild:
+  alpha/ia64/x86 stable wrt #230531
+
+  02 Jul 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  worker-2.16.2.ebuild:
+  stable amd64, bug 230531
+
+  02 Jul 2008; Ferris McCormick <fmccor@gentoo.org> worker-2.16.2.ebuild:
+  Sparc stable, Bug #230531.  Seems to work fine.
+
+*worker-2.16.4 (02 Jul 2008)
+
+  02 Jul 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  +worker-2.16.4.ebuild:
+  Version bump
+
+*worker-2.16.2 (08 Mar 2008)
+
+  08 Mar 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  -worker-2.16.1.ebuild, +worker-2.16.2.ebuild:
+  Version bump
+
+*worker-2.16.1 (04 Dec 2007)
+
+  04 Dec 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  -worker-2.14.0.ebuild, -worker-2.15.0.ebuild, +worker-2.16.1.ebuild:
+  Version bump, fix desktop file (bug #197970 thanks to Dominique Michel)
+
+*worker-2.15.0 (26 Aug 2007)
+
+  26 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  -worker-2.13.1.ebuild, -worker-2.14.0-r1.ebuild, -worker-2.14.4.ebuild,
+  +worker-2.15.0.ebuild:
+  Purge old versions,  version bump

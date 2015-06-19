@@ -1,0 +1,21 @@
+# ChangeLog for sci-biology/blossoc
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/blossoc/ChangeLog,v 1.5 2013/03/11 14:53:22 jlec Exp $
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+  20 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org> blossoc-1.4.0.ebuild,
+  +files/blossoc-1.4.0-gcc43.patch:
+  Fixing build with gcc-4.3. Thanks Sebastian Luther
+  <SebastianLuther@gmx.de> for report and patch
+
+  25 May 2009; Markus Meier <maekke@gentoo.org> blossoc-1.4.0.ebuild:
+  amd64/x86 stable, bug #269969
+
+  24 May 2009; Andrey Kislyuk <weaver@gentoo.org> blossoc-1.4.0.ebuild:
+  Disabled one of the tests per bug 269969
+
+  07 Feb 2009; weaver <weaver@gentoo.org> ChangeLog:
+  New package, ebuild written by me
+

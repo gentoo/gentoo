@@ -1,0 +1,220 @@
+# ChangeLog for sci-calculators/calculator
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-calculators/calculator/ChangeLog,v 1.50 2015/06/11 14:16:36 ago Exp $
+
+  11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> calculator-1.7.49.ebuild:
+  Stable for ppc, wrt bug #535832
+
+  09 Jun 2015; Agostino Sarubbo <ago@gentoo.org> calculator-1.7.49.ebuild:
+  Stable for x86, wrt bug #535832
+
+  20 Feb 2015; Justin Lecher <jlec@gentoo.org> -calculator-1.7.45.ebuild,
+  -calculator-1.7.47.ebuild, metadata.xml:
+  Drop old
+
+  20 Feb 2015; Mikle Kolyada <zlogene@gentoo.org> -calculator-1.6.36.ebuild,
+  calculator-1.6.43.ebuild:
+  ppc/ppc64 stable wrt bug #518162
+
+  15 Jan 2015; Raúl Porcel <armin76@gentoo.org> calculator-1.6.43.ebuild:
+  sparc/x86 stable wrt #518162
+
+*calculator-1.7.49 (11 Nov 2014)
+
+  11 Nov 2014; Matti Bickel <mabi@gentoo.org> +calculator-1.7.49.ebuild:
+  version bump in lockstep with fox
+
+  11 Nov 2014; Jeroen Roovers <jer@gentoo.org> calculator-1.6.43.ebuild:
+  Stable for HPPA (bug #518162).
+
+*calculator-1.7.47 (04 Jul 2014)
+
+  04 Jul 2014; Matti Bickel <mabi@gentoo.org> +calculator-1.7.47.ebuild,
+  -calculator-1.7.44.ebuild:
+  need libICE and libSM for proper linking (fixes #514768)
+
+*calculator-1.7.45 (10 Jan 2014)
+
+  10 Jan 2014; Matti Bickel <mabi@gentoo.org> +calculator-1.7.45.ebuild,
+  -calculator-1.7.42.ebuild, -calculator-1.7.43.ebuild:
+  version bump, cleanup
+
+*calculator-1.7.44 (13 Dec 2013)
+
+  13 Dec 2013; Matti Bickel <mabi@gentoo.org> +calculator-1.7.44.ebuild:
+  version bump
+
+*calculator-1.7.43 (13 Nov 2013)
+
+  13 Nov 2013; Matti Bickel <mabi@gentoo.org> +calculator-1.7.43.ebuild,
+  -calculator-1.7.40.ebuild, -calculator-1.7.41.ebuild:
+  version bump; remove old
+
+*calculator-1.7.42 (05 Oct 2013)
+
+  05 Oct 2013; Matti Bickel <mabi@gentoo.org> +calculator-1.7.42.ebuild:
+  version bump
+
+*calculator-1.7.41 (13 Sep 2013)
+
+  13 Sep 2013; Matti Bickel <mabi@gentoo.org> +calculator-1.7.41.ebuild,
+  -calculator-1.7.37.ebuild, -calculator-1.7.39.ebuild:
+  version bump
+
+*calculator-1.7.40 (26 Aug 2013)
+
+  26 Aug 2013; Patrick Lauer <patrick@gentoo.org> +calculator-1.7.40.ebuild:
+  Bump
+
+*calculator-1.7.39 (03 Jul 2013)
+
+  03 Jul 2013; Matti Bickel <mabi@gentoo.org> +calculator-1.7.39.ebuild,
+  -calculator-1.7.32.ebuild, -calculator-1.7.33.ebuild:
+  version bump dev builds
+
+*calculator-1.7.37 (22 Dec 2012)
+
+  22 Dec 2012; Matti Bickel <mabi@gentoo.org> +calculator-1.7.37.ebuild:
+  version bump
+
+*calculator-1.7.33 (04 Jul 2012)
+
+  04 Jul 2012; Matti Bickel <mabi@gentoo.org> +calculator-1.7.33.ebuild:
+  version bump
+
+*calculator-1.7.32 (02 Mar 2012)
+
+  02 Mar 2012; Matti Bickel <mabi@gentoo.org> +calculator-1.7.32.ebuild:
+  version bump
+
+*calculator-1.6.43 (06 Aug 2011)
+
+  06 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  +calculator-1.6.43.ebuild, metadata.xml:
+  Bump and verbosed metadata
+
+  29 Sep 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  -calculator-1.6.34.ebuild, -calculator-1.6.35.ebuild:
+  clean old, dep-broken versions
+
+  27 Jul 2010; Jeroen Roovers <jer@gentoo.org> calculator-1.6.36.ebuild:
+  Stable for HPPA (bug #309199).
+
+  15 Mar 2010; nixnut <nixnut@gentoo.org> calculator-1.6.36.ebuild:
+  ppc stable #309199
+
+  20 Jan 2010; Brent Baude <ranger@gentoo.org> calculator-1.6.36.ebuild:
+  Marking calculator-1.6.36 ppc64 for bug 276854
+
+  10 Apr 2009; Raúl Porcel <armin76@gentoo.org> calculator-1.6.34.ebuild,
+  calculator-1.6.35.ebuild, calculator-1.6.36.ebuild:
+  sparc/x86 stable wrt #263795
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> calculator-1.6.35.ebuild:
+  Marking calculator-1.6.35 ppc64 stable for bug 263795
+
+  31 Mar 2009; Jeroen Roovers <jer@gentoo.org> calculator-1.6.35.ebuild:
+  Stable for HPPA (bug #263795).
+
+  30 Mar 2009; Brent Baude <ranger@gentoo.org> calculator-1.6.35.ebuild:
+  Marking calculator-1.6.35 ppc for bug 263795
+
+*calculator-1.6.36 (21 Mar 2009)
+
+  21 Mar 2009; Matti Bickel <mabi@gentoo.org> +calculator-1.6.36.ebuild:
+  now REALLY use slot deps
+
+*calculator-1.6.35 (01 Mar 2009)
+
+  01 Mar 2009; Matti Bickel <mabi@gentoo.org> -calculator-1.6.30.ebuild,
+  -calculator-1.6.31.ebuild, +calculator-1.6.35.ebuild:
+  removed old builds, added new version using EAPI 1 slot deps, to avoid
+  bumping when nothing really changed in the fox stable api. This will be the
+  last bump for calculator-1.6
+
+  05 Dec 2008; Raúl Porcel <armin76@gentoo.org> calculator-1.6.34.ebuild:
+  sparc stable wrt #249286
+
+  02 Dec 2008; Jeroen Roovers <jer@gentoo.org> calculator-1.6.34.ebuild:
+  Stable for HPPA (bug #249286).
+
+*calculator-1.6.34 (03 Oct 2008)
+
+  03 Oct 2008; Matti Bickel <mabi@gentoo.org> +calculator-1.6.34.ebuild:
+  version bump
+
+  21 Feb 2008; Matti Bickel <mabi@gentoo.org> -calculator-1.6.25.ebuild:
+  remove stale version
+
+  19 Feb 2008; Ferris McCormick <fmccor@gentoo.org>
+  calculator-1.6.30.ebuild:
+  Sparc stable, Bug 210538.
+
+*calculator-1.6.31 (18 Feb 2008)
+
+  18 Feb 2008; Matti Bickel <mabi@gentoo.org> -calculator-1.6.27.ebuild,
+  -calculator-1.6.29.ebuild, +calculator-1.6.31.ebuild:
+  version bump. cleanups
+
+  21 Nov 2007; Jeroen Roovers <jer@gentoo.org> calculator-1.6.30.ebuild:
+  Stable for HPPA (bug #199853).
+
+*calculator-1.6.30 (20 Nov 2007)
+
+  20 Nov 2007; Matti Bickel <mabi@gentoo.org> metadata.xml,
+  +calculator-1.6.30.ebuild:
+  version bump, added myself as maintainer
+
+  09 Oct 2007; Jeroen Roovers <jer@gentoo.org> calculator-1.6.27.ebuild:
+  Stable for HPPA (bug #194813).
+
+*calculator-1.6.27 (09 Oct 2007)
+
+  09 Oct 2007; Jeroen Roovers <jer@gentoo.org> +calculator-1.6.27.ebuild:
+  Version bump so that calculator can keep pace with fox.
+
+*calculator-1.6.29 (01 Oct 2007)
+
+  01 Oct 2007; Matti Bickel <mabi@gentoo.org> -calculator-1.6.19.ebuild,
+  +calculator-1.6.29.ebuild:
+  version bump. cleanup
+
+  06 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  calculator-1.6.25.ebuild:
+  Stable on sparc wrt #181017
+
+  06 Jun 2007; Jeroen Roovers <jer@gentoo.org> calculator-1.6.25.ebuild:
+  Stable for HPPA (bug #181017).
+
+*calculator-1.6.25 (28 Mar 2007)
+
+  28 Mar 2007; Matti Bickel <mabi@gentoo.org> +calculator-1.6.25.ebuild:
+  Version bump
+
+  15 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  calculator-1.6.19.ebuild:
+  Stable on sparc
+
+  15 Jan 2007; Jeroen Roovers <jer@gentoo.org> calculator-1.6.19.ebuild:
+  Stable for HPPA.
+
+  06 Jan 2007; Danny van Dyk <kugelfang@gentoo.org>
+  -calculator-1.5.4.ebuild:
+  QA: Removed unused versions.
+
+*calculator-1.6.19 (20 Dec 2006)
+
+  20 Dec 2006; Matti Bickel <mabi@gentoo.org> +calculator-1.6.19.ebuild:
+  revbump to latest fox
+
+  23 Aug 2006; Olivier Fisette <ribosome@gentoo.org>
+  -calculator-1.0.53.ebuild, calculator-1.5.4.ebuild:
+  Back to ~x86 with the new fox layout unmasked. Pruned old ebuild.
+
+  23 Jun 2005; Olivier Fisette <ribosome@gentoo.org>
+  -calculator-1.2.15.ebuild, -calculator-1.4.12.ebuild,
+  calculator-1.5.4.ebuild:
+  Added to x86. Removed obsolete versions.
+
+  20 May 2005; Sven Wegener <swegener@gentoo.org> :
+  Added missing ChangeLog.

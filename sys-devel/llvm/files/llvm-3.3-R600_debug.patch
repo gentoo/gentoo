@@ -1,0 +1,22 @@
+Fixes compilation of llvm-3.3 on gcc-4.6 and 4.7 when VIDEO_CARDS=radeon
+
+This issue is caused because although Q is a multiset the original code tries to get
+a set iterator which can't be converted in a multiset one.
+
+The fix is as simple as just using a multiset iterator.
+
+Patch by Francisco Blas Izquierdo Riera (klondike)
+Consider the changes in the Public Domain
+https://bugs.gentoo.org/show_bug.cgi?id=474096
+
+--- lib/Target/R600/R600MachineScheduler.cpp
++++ lib/Target/R600/R600MachineScheduler.cpp
+@@ -290,7 +290,7 @@
+ SUnit *R600SchedStrategy::PopInst(std::multiset<SUnit *, CompareSUnit> &Q) {
+   if (Q.empty())
+     return NULL;
+-  for (std::set<SUnit *, CompareSUnit>::iterator It = Q.begin(), E = Q.end();
++  for (std::multiset<SUnit *, CompareSUnit>::iterator It = Q.begin(), E = Q.end();
+       It != E; ++It) {
+     SUnit *SU = *It;
+     InstructionsGroupCandidate.push_back(SU->getInstr());

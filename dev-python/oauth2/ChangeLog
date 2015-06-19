@@ -1,0 +1,54 @@
+# ChangeLog for dev-python/oauth2
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/oauth2/ChangeLog,v 1.12 2015/03/08 23:54:28 pacho Exp $
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> oauth2-1.5.211-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> oauth2-1.5.211-r1.ebuild:
+  amd64 stable, bug 540290
+
+  30 Sep 2014; Ian Delaney <idella4@gentoo.org> oauth2-1.5.211-r1.ebuild:
+  drop py2.6 add pypy support, correct deps setup
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> oauth2-1.5.211-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*oauth2-1.5.211-r1 (09 May 2013)
+
+  09 May 2013; Mike Gilbert <floppym@gentoo.org>
+  +files/oauth2-exclude-tests.patch, +oauth2-1.5.211-r1.ebuild,
+  -oauth2-1.5.170.ebuild, -oauth2-1.5.211.ebuild:
+  Convert to distutils-r1. Remove old.
+
+*oauth2-1.5.211 (29 Jan 2012)
+
+  29 Jan 2012; Andrey Kislyuk <weaver@gentoo.org> +oauth2-1.5.211.ebuild:
+  Version bump
+
+  24 Sep 2011; Fabian Groffen <grobian@gentoo.org> oauth2-1.5.170.ebuild:
+  Marked ~x64-macos
+
+  06 May 2011; Dirkjan Ochtman <djc@gentoo.org> -oauth2-1.2.1.ebuild,
+  -oauth2-1.5.169.ebuild:
+  Remove old versions.
+
+*oauth2-1.5.170 (05 May 2011)
+
+  05 May 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +oauth2-1.5.170.ebuild:
+  Version bump.
+
+*oauth2-1.5.169 (04 May 2011)
+
+  04 May 2011; Dirkjan Ochtman <djc@gentoo.org> +oauth2-1.5.169.ebuild:
+  Version bump to 1.5.169 (bug 365339).
+
+  29 Oct 2010; Dirkjan Ochtman <djc@gentoo.org> oauth2-1.2.1.ebuild:
+  Add forgotten httplib2 dependency for bug 343135.
+
+*oauth2-1.2.1 (28 Sep 2010)
+
+  28 Sep 2010; Dirkjan Ochtman <djc@gentoo.org> +oauth2-1.2.1.ebuild,
+  +metadata.xml:
+  Initial version.

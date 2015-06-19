@@ -1,0 +1,21 @@
+# ChangeLog for gnome-extra/connman-gnome
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/connman-gnome/ChangeLog,v 1.5 2013/02/18 12:23:55 scarabeus Exp $
+
+*connman-gnome-0.7 (18 Feb 2013)
+
+  18 Feb 2013; Tomáš Chvátal <scarabeus@gentoo.org> +connman-gnome-0.7.ebuild,
+  -connman-gnome-0.5.ebuild:
+  Version bump to 0.7 fixing bug#412771 and bug#431134.
+
+  05 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #260981 after talking with him
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org> connman-gnome-0.5.ebuild:
+  Fixed slot deps
+
+*connman-gnome-0.5 (13 Aug 2009)
+
+  13 Aug 2009; Robert Piasek <dagger@gentoo.org> +connman-gnome-0.5.ebuild,
+  +metadata.xml:
+  Initial ebuild of connman-gnome

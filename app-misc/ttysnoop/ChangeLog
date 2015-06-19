@@ -1,0 +1,28 @@
+# ChangeLog for app-misc/ttysnoop
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/ttysnoop/ChangeLog,v 1.6 2012/10/29 09:01:44 pinkbyte Exp $
+
+  29 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> ttysnoop-0.12d.ebuild:
+  Create directory for socket files in src_install, keyword ~amd64
+
+  29 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> ttysnoop-0.12d.ebuild,
+  files/ttysnoop-makefile.patch:
+  Fix makefile patch, cosmetic fixes in ebuild
+
+  21 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Assign myself as a maintainer, remove previous maintainer by his request
+
+  18 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> ttysnoop-0.12d.ebuild:
+  Add MY_P variable and use it in SRC_URI and source directory for building
+
+  07 Sep 2012; Kacper Kowalik <xarthisius@gentoo.org> metadata.xml,
+  ttysnoop-0.12d.ebuild:
+  Remove no-herd from metadata
+
+*ttysnoop-0.12d (21 Jul 2011)
+
+  21 Jul 2011; Maxim Koltsov (maksbotan) <maksbotan@gentoo.org>
+  +ttysnoop-0.12d.ebuild, +files/pinkbyte_masking.patch,
+  +files/ttysnoop-makefile.patch, +metadata.xml:
+  Add ttysnoop-0.12d, #62397. Fixed some error from original ebuild and patched
+  Makefile

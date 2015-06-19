@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst preinst prepare test
+DEPEND=dev-libs/openssl:0 acl? ( virtual/acl ) bzip2? ( app-arch/bzip2 ) expat? ( dev-libs/expat ) !expat? ( dev-libs/libxml2 ) iconv? ( virtual/libiconv ) kernel_linux? ( xattr? ( sys-apps/attr ) ) lzma? ( app-arch/xz-utils ) lzo? ( >=dev-libs/lzo-2 ) nettle? ( dev-libs/nettle ) zlib? ( sys-libs/zlib ) kernel_linux? ( virtual/os-headers e2fsprogs? ( sys-fs/e2fsprogs ) )
+DESCRIPTION=BSD tar command
+EAPI=5
+HOMEPAGE=http://www.libarchive.org/
+IUSE=acl +bzip2 +e2fsprogs expat +iconv kernel_linux +lzma lzo nettle static-libs xattr +zlib
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=BSD BSD-2 BSD-4 public-domain
+RDEPEND=dev-libs/openssl:0 acl? ( virtual/acl ) bzip2? ( app-arch/bzip2 ) expat? ( dev-libs/expat ) !expat? ( dev-libs/libxml2 ) iconv? ( virtual/libiconv ) kernel_linux? ( xattr? ( sys-apps/attr ) ) lzma? ( app-arch/xz-utils ) lzo? ( >=dev-libs/lzo-2 ) nettle? ( dev-libs/nettle ) zlib? ( sys-libs/zlib )
+SLOT=0/13
+SRC_URI=http://www.libarchive.org/downloads/libarchive-3.1.2.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=5ee967fdf2b91204fbe495d852abe6bc

@@ -1,0 +1,43 @@
+# ChangeLog for dev-lang/c-intercal
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/c-intercal/ChangeLog,v 1.6 2012/02/03 09:05:59 ulm Exp $
+
+  03 Feb 2012; Ulrich Müller <ulm@gentoo.org>
+  -files/c-intercal-28.0-fix-64bit.patch,
+  -files/c-intercal-28.0-fix-install-info.patch,
+  -files/c-intercal-28.0-parallel-make.patch,
+  -c-intercal-28.65535.65534.0.ebuild:
+  Remove old.
+
+*c-intercal-29.0 (26 Jun 2011)
+
+  26 Jun 2011; Ulrich Mueller <ulm@gentoo.org> -c-intercal-28.0-r1.ebuild,
+  c-intercal-28.65535.65534.0.ebuild, +c-intercal-29.0.ebuild:
+  Version bump. Don't use versionator.eclass. Remove old.
+
+*c-intercal-28.65535.65534.0 (11 Sep 2010)
+
+  11 Sep 2010; Ulrich Mueller <ulm@gentoo.org>
+  +c-intercal-28.65535.65534.0.ebuild:
+  Version bump, fixes build problem with gcc-4.4.
+
+  18 Mar 2009; Ulrich Mueller <ulm@gentoo.org> c-intercal-28.0-r1.ebuild:
+  Add pkg_postinst and pkg_postrm functions.
+
+*c-intercal-28.0-r1 (15 Dec 2008)
+
+  15 Dec 2008; Ulrich Mueller <ulm@gentoo.org>
+  +files/50c-intercal-gentoo.el, -c-intercal-28.0.ebuild,
+  +c-intercal-28.0-r1.ebuild:
+  Add site-init file for Emacs.
+
+*c-intercal-28.0 (08 Oct 2008)
+
+  08 Oct 2008; Ulrich Mueller <ulm@gentoo.org>
+  +files/c-intercal-28.0-fix-64bit.patch,
+  +files/c-intercal-28.0-fix-install-info.patch,
+  +files/c-intercal-28.0-parallel-make.patch, +metadata.xml,
+  +c-intercal-28.0.ebuild:
+  Initial import, ebuild contributed by Arvid Norlander <anmaster@tele2.se>
+  in bug 228563. Fixed parallel make; added emacs and examples USE flags.
+

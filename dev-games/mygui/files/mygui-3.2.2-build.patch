@@ -1,0 +1,61 @@
+diff -ru mygui-MyGUI3.2.2.orig/CMake/ConfigureBuild.cmake mygui-MyGUI3.2.2/CMake/ConfigureBuild.cmake
+--- mygui-MyGUI3.2.2.orig/CMake/ConfigureBuild.cmake	2015-01-26 10:32:35.000000000 -0500
++++ mygui-MyGUI3.2.2/CMake/ConfigureBuild.cmake	2015-03-14 01:09:40.743621643 -0400
+@@ -4,6 +4,8 @@
+ # also prepare package files for pkg-config and CMake.
+ #######################################################################
+ 
++include(GNUInstallDirs)
++
+ # should we build static libs?
+ if (MYGUI_STATIC)
+   set(MYGUI_LIB_TYPE STATIC)
+@@ -47,7 +49,7 @@
+   else ()
+     configure_file(${MYGUI_TEMPLATES_DIR}/MYGUI.pc.in ${MYGUI_BINARY_DIR}/pkgconfig/MYGUI${MYGUI_LIB_SUFFIX}.pc @ONLY)
+   endif ()
+-  install(FILES ${MYGUI_BINARY_DIR}/pkgconfig/MYGUI${MYGUI_LIB_SUFFIX}.pc DESTINATION lib/pkgconfig)
++  install(FILES ${MYGUI_BINARY_DIR}/pkgconfig/MYGUI${MYGUI_LIB_SUFFIX}.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ 
+   # configure additional packages
+   
+diff -ru mygui-MyGUI3.2.2.orig/CMake/Utils/MyGUIConfigTargets.cmake mygui-MyGUI3.2.2/CMake/Utils/MyGUIConfigTargets.cmake
+--- mygui-MyGUI3.2.2.orig/CMake/Utils/MyGUIConfigTargets.cmake	2015-01-26 10:32:35.000000000 -0500
++++ mygui-MyGUI3.2.2/CMake/Utils/MyGUIConfigTargets.cmake	2015-03-14 01:08:44.905791784 -0400
+@@ -1,6 +1,8 @@
+ # Configure settings and install targets
+ # FIXME: Copypasted from Ogre and need lots of changes
+ 
++include(GNUInstallDirs)
++
+ if (WIN32)
+ 	set(MYGUI_RELEASE_PATH "/Release")
+ 	set(MYGUI_RELWDBG_PATH "/RelWithDebInfo")
+@@ -60,6 +62,12 @@
+ # install targets according to current build type
+ function(mygui_install_target TARGETNAME SUFFIX)
+ 	install(TARGETS ${TARGETNAME}
++		RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}" CONFIGURATIONS Gentoo ""
++		LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}" CONFIGURATIONS Gentoo ""
++		ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}" CONFIGURATIONS Gentoo ""
++		FRAMEWORK DESTINATION "${MYGUI_FRAMEWORK_PATH}" CONFIGURATIONS Gentoo ""
++	)
++	install(TARGETS ${TARGETNAME}
+ 		RUNTIME DESTINATION "bin${MYGUI_RELEASE_PATH}" CONFIGURATIONS Release None ""
+ 		LIBRARY DESTINATION "lib${MYGUI_LIB_RELEASE_PATH}${SUFFIX}" CONFIGURATIONS Release None ""
+ 		ARCHIVE DESTINATION "lib${MYGUI_LIB_RELEASE_PATH}${SUFFIX}" CONFIGURATIONS Release None ""
+@@ -171,7 +179,13 @@
+ 		endif ()
+ 		add_executable(${PROJECTNAME} ${MYGUI_EXEC_TYPE} ${HEADER_FILES} ${SOURCE_FILES})
+ 	endif ()
+-	set_target_properties(${PROJECTNAME} PROPERTIES FOLDER ${SOLUTIONFOLDER})
++
++	# rename demo target^M
++	if (${SOLUTIONFOLDER} STREQUAL "Demos")
++		set_target_properties(${PROJECTNAME} PROPERTIES FOLDER ${SOLUTIONFOLDER} OUTPUT_NAME MYGUI-${PROJECTNAME})
++	else()
++		set_target_properties(${PROJECTNAME} PROPERTIES FOLDER ${SOLUTIONFOLDER})
++	endif()
+ 	
+ 	add_dependencies(${PROJECTNAME} MyGUIEngine Common)
+ 

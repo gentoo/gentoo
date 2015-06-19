@@ -1,0 +1,118 @@
+# ChangeLog for sci-libs/clapack
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/clapack/ChangeLog,v 1.25 2014/12/03 08:14:34 jlec Exp $
+
+*clapack-3.2.1-r8 (03 Dec 2014)
+
+  03 Dec 2014; Justin Lecher <jlec@gentoo.org> +clapack-3.2.1-r8.ebuild:
+  Use system f2c.h instead of bundled one, #531442
+
+  06 Jan 2014; Justin Lecher <jlec@gentoo.org> clapack-3.2.1-r6.ebuild,
+  clapack-3.2.1-r7.ebuild:
+  Punt base.eclass
+
+  12 May 2013; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Fix metadata.xml encoding
+
+*clapack-3.2.1-r7 (12 Dec 2012)
+
+  12 Dec 2012; Justin Lecher <jlec@gentoo.org> +clapack-3.2.1-r7.ebuild,
+  +files/clapack-3.2.1-findblas-r7.patch, metadata.xml:
+  Add libdir path to linker flags, #446930; don't build testsuite with fPIC
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> clapack-3.2.1-r6.ebuild:
+  keyword x86-linux
+
+  12 Apr 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  -clapack-3.2.1-r4.ebuild, clapack-3.2.1-r6.ebuild:
+  Remove old; filter -ftree-vectorize as it causes an internal compiler error
+  on gcc-4.6.2
+
+  07 Dec 2011; Markos Chandras <hwoarang@gentoo.org> clapack-3.2.1-r6.ebuild:
+  Stable on amd64 wrt bug #388279
+
+  07 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> clapack-3.2.1-r6.ebuild:
+  x86 stable wrt bug #388279
+
+  02 Aug 2011; Alexey Shvetsov <alexxy@gentoo.org> clapack-3.2.1-r6.ebuild:
+  Add ~amd64-linux keyword
+
+  20 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  files/clapack-3.2.1-hang.patch:
+  Actually make the compiler optimization patch work...
+
+*clapack-3.2.1-r6 (19 Jun 2011)
+
+  19 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -clapack-3.2.1-r5.ebuild, +clapack-3.2.1-r6.ebuild,
+  +files/clapack-3.2.1-findblas-r6.patch, +files/clapack-3.2.1-hang.patch:
+  Fix hang from KDE bug 274940; find blas using PkgConfig
+
+*clapack-3.2.1-r5 (17 Jun 2011)
+
+  17 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +clapack-3.2.1-r5.ebuild, +files/clapack-3.2.1-findblas.patch:
+  Don't hardwire blas, but let cmake find it, bug 370721
+
+  09 May 2011; Markos Chandras <hwoarang@gentoo.org> clapack-3.2.1-r4.ebuild:
+  Stable on amd64 wrt bug #354033
+
+  09 May 2011; Thomas Kahle <tomka@gentoo.org> clapack-3.2.1-r4.ebuild:
+  x86 stable per bug 354033
+
+*clapack-3.2.1-r4 (30 Apr 2011)
+
+  30 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/3.2.1-solib.patch, -clapack-3.2.1-r2.ebuild, -clapack-3.2.1-r3.ebuild,
+  +clapack-3.2.1-r4.ebuild, +files/clapack-3.2.1-fix_include_file.patch,
+  files/clapack-3.2.1-noblasf2c.patch:
+  Revision bump to make this work with cpp. Add missing include line.
+
+  11 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  clapack-3.2.1-r3.ebuild:
+  Marked ~ppc wrt #309421. Thanks to Massimo Burcheri
+  <massimo.burcheri@gmx.de> for testing.
+
+  18 Sep 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  clapack-3.2.1-r3.ebuild:
+  QA cleanups in ebuild
+
+  17 Sep 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  clapack-3.2.1-r3.ebuild:
+  Bump libf2c version dependency so we dont get the missing MAIN__ link
+  problems. Should fix bug 337759.
+
+  15 Sep 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  clapack-3.2.1-r3.ebuild:
+  Added missing dependency on virtual/blas
+
+*clapack-3.2.1-r3 (29 Aug 2010)
+
+  29 Aug 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +clapack-3.2.1-r3.ebuild, +files/clapack-3.2.1-noblasf2c.patch,
+  metadata.xml:
+  Now uses cmake tar ball. Added a patch from dilfridge that adds a shared
+  library, an install target, builds test on request, and provides a
+  clapack-config.cmake. So far, no more static libraries is being built.
+
+*clapack-3.2.1-r2 (25 Apr 2010)
+
+  25 Apr 2010; Justin Lecher <jlec@gentoo.org> -clapack-3.2.1.ebuild,
+  -clapack-3.2.1-r1.ebuild, +clapack-3.2.1-r2.ebuild:
+  header move, #316769
+
+  31 Mar 2010; Justin Lecher <jlec@gentoo.org> clapack-3.2.1.ebuild,
+  clapack-3.2.1-r1.ebuild:
+  [static] -> [statis-libs], as consequence of #312465
+
+*clapack-3.2.1-r1 (18 Mar 2010)
+
+  18 Mar 2010; Justin Lecher <jlec@gentoo.org>
+  +files/3.2.1-solib.patch, clapack-3.2.1.ebuild, +clapack-3.2.1-r1.ebuild:
+  We are linking shared libs now
+
+*clapack-3.2.1 (04 Mar 2010)
+
+  04 Mar 2010; Justin Lecher <jlec@gentoo.org>
+  +clapack-3.2.1.ebuild, +metadata.xml:
+  New ebuild, imported from sci on request 206934

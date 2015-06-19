@@ -1,0 +1,61 @@
+# Bazaar merge directive format 2 (Bazaar 0.90)
+# revision_id: abo-DBsUyxBEGcoyHQ1ptcDwU6trohdlbqPIoKRdnAj6d+WDsCgFy4VtynJYGxeQrm1n@public.gmane.org
+# target_branch: bzr://research.operationaldynamics.com/bzr/java-\
+#   gnome/mainline/
+# testament_sha1: d216bed6ef1b2623531fd1fe8d974e6e80f801f4
+# timestamp: 2011-12-15 22:15:31 +0100
+# base_revision_id: andrew-2KHxOkysSnqmy7d5DmSz6aFmO0nFMD88kjLrS2kiXIfrYvW/6KLgWA@public.gmane.org\
+#   dhkqq211ktceucsl
+# 
+# Begin patch
+=== modified file 'src/bindings/org/gnome/glib/Plumbing.java'
+--- src/bindings/org/gnome/glib/Plumbing.java	2011-06-19 04:33:24 +0000
++++ src/bindings/org/gnome/glib/Plumbing.java	2011-12-15 21:09:40 +0000
+@@ -153,7 +153,7 @@
+      * Retrieve an array of appropriate Java Boxeds for the given array of
+      * pointers.
+      */
+-    protected static Boxed[] boxedArrayFor(final Class<?> type, final long[] pointers, Boxed[] boxeds) {
++    protected static Boxed[] boxedArrayFor(final Class<? extends Boxed> type, final long[] pointers, Boxed[] boxeds) {
+         if (pointers == null) {
+             return null;
+         }
+@@ -170,7 +170,7 @@
+      * @throw ClassCastException if the GType pointed by given pointer is not
+      *        a GBoxed.
+      */
+-    protected static Boxed boxedFor(Class<?> type, final long pointer) {
++    protected static Boxed boxedFor(Class<? extends Boxed> type, final long pointer) {
+         Boxed proxy;
+ 
+         if (pointer == 0L) {
+@@ -202,7 +202,7 @@
+      * 
+      * @see #boxedFor(Class, long)
+      */
+-    protected static void fillBoxedArray(Class<?> type, Boxed[] boxeds, long[] pointers) {
++    protected static void fillBoxedArray(Class<? extends Boxed> type, Boxed[] boxeds, long[] pointers) {
+         if (pointers == null) {
+             return;
+         }
+
+# Begin bundle
+IyBCYXphYXIgcmV2aXNpb24gYnVuZGxlIHY0CiMKQlpoOTFBWSZTWaBByfIAAa/fjEAQUGf/9/sA
+UAq////4AQAIAFAEGSaqmPQLWu4EkUJqn5MSeKe1GieQUbJiaI000DT1ASUk8JqHlNoKDEAANADQ
+NAEkQEaEaapmk0eoeTSA0aaaPU0GgOYBMAJgABMAATAAEkqej0JNR6j1DEaaB6h6mgMgA0yHWW3+
+Ju/ZoNpsRz1ywEaVrSsoyeGCB1LL2zZmDv7UeEZ2csNaA7xhD6/e+/wT7Tl2fNjiu6Ejl4wjdWbd
+Mub2pqi9qhzImIR0YKvUu2714RaW5DsKHYY5M8TFKaY+2oIxcVt3LRdrWmwV9blGOYKS9DJTpW0T
+R3QJAHy5Zijz+9TYRObAaUiRzUol0zhEWhJOozeqWpYIqyZbvhqyVV2tcLgZdcViIYXRGU1EWamP
+fTK5S0q+z3lYTFEWq5cF5tuYW2k7WvMGDlqQqx/yLnF+VNBiFDBOMqdO1Zar8QvCNzzpC7eSyknC
+VZnG4qPUcRRtV8C8NzGZlHI5goVGVbsKUpN5XIqNh132rlrcaFCrpxPrT6DHMK/xUi8wtxK7JEE+
+LghEkZweOJ2UkPaseTKLkUzA0XRipOKNF+aIy2J01IY42ndTy4Fwr3ip3jVzgoEgIEOAryVNTToR
+IIs9o+SLTo5F002iUCdG4rd8Tq2mWvBjh3Opei6h5JbZDLkZk33pFBl6jSZOWupp41zP2iy2ZHb0
+iOqcIZ9O687Bs1+PSrDHGvmFqXjrTouj5VB40o1rimaVSh1THOg52eFfn4rlQjMlvK2G4ioWMkp8
+DzsCErteFWAHTbgMwt0r4eWNZeNK7aUk1NCqQeJvxHzV65eiwOMqWyQofWjJwZdotRKlJM2WnhFu
+itOE08953PNQFU8iywcHQtyUJflM0d3TfT8Ww9HJaUxyTKETQe8IOPq0H8aCmAtlW9ScDbTB1gYx
+xaTEzHL40HkxhM53kRYMjw3IfhErFBXhCbKnpQx3UaCJPRoB+/f1TZJyAOWp19ApvRMoZ65LAnCz
+YFcdsFxFCzYnuDivTFYKoKAofaJk/unkDYZBm9+ZHdJ0xUaq1lo2zMF4riTTRQTzYXaAZablBybq
+kQyYI/YJxBkaKUGYGGrmaJSIpkzJlx9XUlkvNnv5lyB1DVHoJhd3EpAawbYbYWYxlX0UL2xpSTWJ
+QFaMmVs+pmTmkJUaF7dJVVjN/V2LAWevoEeGvMODBbgBzgSom6MN1hnByeecE2VKFodt5FRRGSJj
+OIOVNY/sSzFGSwBkFGKglaolFEKpVNfvtS3qMORqDoUYTT0UFPFixc1qVZZ4DhLAKrkk7tN1nIMB
+a7Lhii6yuUgqwb8kuxQxgJOLkKFWGwDMN0NZSy/1f+LuSKcKEhQIOT5A

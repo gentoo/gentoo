@@ -1,0 +1,32 @@
+# ChangeLog for net-irc/limnoria
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/limnoria/ChangeLog,v 1.5 2015/05/19 05:28:10 idella4 Exp $
+
+  19 May 2015; Ian Delaney <idella4@gentoo.org> -limnoria-20150318.ebuild,
+  limnoria-20150429.ebuild, limnoria-99999999.ebuild:
+  Clean up partial version bump, drop old, resolves bug
+
+  18 May 2015; Patrick Lauer <patrick@gentoo.org> limnoria-20150429.ebuild:
+  Whitespace
+
+*limnoria-20150429 (18 May 2015)
+
+  18 May 2015; Ian Delaney <idella4@gentoo.org> +limnoria-20150429.ebuild:
+  bump
+
+*limnoria-20150318 (30 Mar 2015)
+
+  30 Mar 2015; Ian Delaney <idella4@gentoo.org> +limnoria-20150318.ebuild,
+  -limnoria-20150208.ebuild:
+  bump; add ssl support, temporarily set mock to be built for all python_targets
+  until upstream fixes mock import, rm old by maintainer's discretion
+
+*limnoria-20150208 (04 Mar 2015)
+*limnoria-99999999 (04 Mar 2015)
+
+  04 Mar 2015; Ian Delaney <idella4@gentoo.org> +limnoria-20150208.ebuild,
+  +limnoria-99999999.ebuild, +metadata.xml:
+  new package, a fork of supybot which has ceased active development. ebuild
+  base on the old supybot ebuild, re-written by proxy maintainer, ebuilds
+  extensively developed and tested with submissions upstream which is currently
+  active. No corresponding bug for this

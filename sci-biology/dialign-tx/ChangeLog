@@ -1,0 +1,73 @@
+# ChangeLog for sci-biology/dialign-tx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/dialign-tx/ChangeLog,v 1.8 2015/04/20 20:24:44 jlec Exp $
+
+  20 Apr 2015; Justin Lecher <jlec@gentoo.org> -dialign-tx-1.0.2.ebuild,
+  dialign-tx-1.0.2-r1.ebuild:
+  Drop old
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> dialign-tx-1.0.2-r1.ebuild:
+  Stable for x86, wrt bug #544948
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> dialign-tx-1.0.2-r1.ebuild:
+  Stable for amd64, wrt bug #544948
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+*dialign-tx-1.0.2-r1 (09 Sep 2010)
+
+  09 Sep 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  +dialign-tx-1.0.2-r1.ebuild, +files/dialign-tx-1.0.2-implicits.patch:
+  Respect LDFLAGS wrt bug 336533. Thanks to Diego for the report. Fix
+  implicit function declarations.
+
+  09 Feb 2010; Pacho Ramos <pacho@gentoo.org> dialign-tx-1.0.2.ebuild:
+  amd64 stable, bug 298774
+
+  29 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  dialign-tx-1.0.2.ebuild:
+  stable x86, bug 298774
+
+*dialign-tx-1.0.2 (06 Nov 2009)
+
+  06 Nov 2009; Andrey Kislyuk <weaver@gentoo.org> +metadata.xml,
+  +dialign-tx-1.0.2.ebuild:
+  Version bump and move to dialign-tx, take ownership
+
+  17 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  dialign-t-0.2.2.ebuild:
+  stable amd64, bug 207109
+
+  17 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  dialign-t-0.2.2.ebuild:
+  quote variables
+
+  17 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  dialign-t-0.2.2.ebuild:
+  stable x86, bug 207109
+
+*dialign-t-0.2.2 (12 Jul 2007)
+
+  12 Jul 2007; Jeff Gardner <je_fro@gentoo.org> +dialign-t-0.2.2.ebuild:
+  New version, add amd64.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  01 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Remove myself as maintainer so it goes to all of the sci-biology team.
+
+  09 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  dialign-t-0.2.1.ebuild:
+  x86 stable.
+
+  07 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Update to my new email address.
+
+*dialign-t-0.2.1 (21 Feb 2006)
+
+  21 Feb 2006; Donnie Berkholz <dberkholz@gentoo.org>; +metadata.xml,
+  +dialign-t-0.2.1.ebuild:
+  New multiple sequence alignment package. Perhaps the most accurate and
+  fastest local aligner.

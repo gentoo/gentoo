@@ -1,0 +1,58 @@
+# ChangeLog for net-fs/smbnetfs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-fs/smbnetfs/ChangeLog,v 1.10 2015/05/16 10:22:38 slyfox Exp $
+
+*smbnetfs-0.6.0-r1 (16 May 2015)
+
+  16 May 2015; Sergei Trofimovich <slyfox@gentoo.org> +smbnetfs-0.6.0-r1.ebuild:
+  Fix USE depends to allow latest samba-4 (bug #549350 and fix by barthess).
+
+*smbnetfs-0.6.0 (11 Jan 2015)
+
+  11 Jan 2015; Sergei Trofimovich <slyfox@gentoo.org> +smbnetfs-0.6.0.ebuild,
+  -smbnetfs-0.5.3a.ebuild:
+  Version bump.
+
+  24 Dec 2013; Sergei Trofimovich <slyfox@gentoo.org> -files/smbnetfs-0.5.3-0001
+  -configure.in-allow-user-to-explicitly-enable-disable.patch,
+  -smbnetfs-0.5.3.ebuild:
+  Drop old.
+
+*smbnetfs-0.5.3b (24 Dec 2013)
+
+  24 Dec 2013; Sergei Trofimovich <slyfox@gentoo.org> +smbnetfs-0.5.3b.ebuild:
+  Version bump.
+
+*smbnetfs-0.5.3a (27 Sep 2013)
+
+  27 Sep 2013; Sergei Trofimovich <slyfox@gentoo.org> +smbnetfs-0.5.3a.ebuild,
+  -smbnetfs-0.5.2.ebuild:
+  Version bump and switch to EAPI=5
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  26 Feb 2013; Zac Medico <zmedico@gentoo.org> smbnetfs-0.5.3.ebuild:
+  Add ~arm-linux and ~x86-linux keywords.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> smbnetfs-0.5.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*smbnetfs-0.5.3 (02 Sep 2010)
+
+  02 Sep 2010; Sergei Trofimovich <slyfox@gentoo.org>
+  +smbnetfs-0.5.3.ebuild,
+  +files/smbnetfs-0.5.3-0001-configure.in-allow-user-to-explicitly-enable-di
+  sable.patch, metadata.xml:
+  Version bump. Added USE=gnome flag for integration with gnome-keyring.
+
+*smbnetfs-0.5.2 (26 Jun 2010)
+
+  26 Jun 2010; Sergei Trofimovich <slyfox@gentoo.org>
+  +smbnetfs-0.5.2.ebuild, +metadata.xml:
+  New ebuild. Thanks to Dmitri Vorobyev <vdmitri@fromru.com>, Dmitry S.
+  Kulyabov <yamadharma@gmail.com>, Daniel Lin <ephemient@gmail.com>, Arthur
+  Demchenkov <spinal.by@mail.ru> to resolve bug #96328. Special thanks to
+  Mikhail S. Pobolovets <styx.mp@gmail.com> for help to track down stability
+  issues on amd64. And thanks to Mikhail Kshevetskiy
+  <mikhail.kshevetskiy@gmail.com> for making such a great tool!

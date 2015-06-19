@@ -1,0 +1,36 @@
+# ChangeLog for dev-haskell/hostname
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hostname/ChangeLog,v 1.10 2014/07/25 08:58:53 slyfox Exp $
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+  10 Dec 2012; Sergei Trofimovich <slyfox@gentoo.org> hostname-1.0.ebuild:
+  stable on alpha/ia64/sparc (bug #421351)
+
+  07 Dec 2012; Agostino Sarubbo <ago@gentoo.org> hostname-1.0.ebuild:
+  Stable for ppc64, wrt bug #421351
+
+  07 Dec 2012; Agostino Sarubbo <ago@gentoo.org> hostname-1.0.ebuild:
+  Stable for ppc, wrt bug #421351
+
+  25 Sep 2012; Andreas Schuerch <nativemad@gentoo.org> hostname-1.0.ebuild:
+  x86 stable, see bug 421351
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org> hostname-1.0.ebuild:
+  move dev-haskell/hostname/hostname-1.0.ebuild ebuild to mirror://hackage
+
+  07 Sep 2012; Agostino Sarubbo <ago@gentoo.org> hostname-1.0.ebuild:
+  Stable for amd64, wrt bug #421351
+
+  18 Mar 2012; Sergei Trofimovich <slyfox@gentoo.org> hostname-1.0.ebuild:
+  ~alpha/~ia64/~ppc/~sparc/~x86-fbsd keyworded (test-framework-0.5 rekeywording)
+
+  04 Mar 2012; Mark Wright <gienah@gentoo.org> hostname-1.0.ebuild:
+  Add ~ppc64 keyword, EAPI=4
+
+*hostname-1.0 (22 Jan 2012)
+
+  22 Jan 2012; Mark Wright <gienah@gentoo.org> +hostname-1.0.ebuild,
+  +metadata.xml:
+  Add dev-haskell/hostname, required by sci-mathematics/agda-2.3.0

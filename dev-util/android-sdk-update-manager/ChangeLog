@@ -1,0 +1,376 @@
+# ChangeLog for dev-util/android-sdk-update-manager
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/android-sdk-update-manager/ChangeLog,v 1.65 2015/06/14 16:34:38 ulm Exp $
+
+  14 Jun 2015; Ulrich Müller <ulm@gentoo.org>
+  android-sdk-update-manager-21.ebuild, android-sdk-update-manager-21.1.ebuild,
+  android-sdk-update-manager-22.ebuild,
+  android-sdk-update-manager-22.0.1.ebuild,
+  android-sdk-update-manager-22.0.1-r1.ebuild,
+  android-sdk-update-manager-22.0.4.ebuild,
+  android-sdk-update-manager-22.0.5.ebuild,
+  android-sdk-update-manager-22.0.5-r1.ebuild,
+  android-sdk-update-manager-22.2.1.ebuild,
+  android-sdk-update-manager-22.3.ebuild,
+  android-sdk-update-manager-22.6.ebuild,
+  android-sdk-update-manager-22.6.1.ebuild,
+  android-sdk-update-manager-23.ebuild:
+  [QA] Remove emul-linux-x86-* from dependencies.
+
+  01 Apr 2015; Richard Freeman <rich0@gentoo.org>
+  android-sdk-update-manager-23.ebuild:
+  Fix 531358 - thanks to Daniel Solano Gómez and Denis Sokolovsky.
+
+  15 Oct 2014; Pacho Ramos <pacho@gentoo.org>
+  android-sdk-update-manager-21.1.ebuild, android-sdk-update-manager-21.ebuild,
+  android-sdk-update-manager-22.0.1-r1.ebuild,
+  android-sdk-update-manager-22.0.1.ebuild,
+  android-sdk-update-manager-22.0.4.ebuild,
+  android-sdk-update-manager-22.0.5-r1.ebuild,
+  android-sdk-update-manager-22.0.5.ebuild,
+  android-sdk-update-manager-22.2.1.ebuild,
+  android-sdk-update-manager-22.3.ebuild,
+  android-sdk-update-manager-22.6.1.ebuild,
+  android-sdk-update-manager-22.6.ebuild, android-sdk-update-manager-22.ebuild,
+  android-sdk-update-manager-23.ebuild:
+  Support multilib providers for deps. Bump to EAPI=5.
+
+*android-sdk-update-manager-23 (07 Jul 2014)
+
+  07 Jul 2014; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-23.ebuild:
+  bump - 511180
+
+  25 Jun 2014; Michał Górny <mgorny@gentoo.org>
+  android-sdk-update-manager-22.6.1.ebuild:
+  Support multilib dependencies aside to emul-linux-x86.
+
+*android-sdk-update-manager-22.6.1 (19 Mar 2014)
+
+  19 Mar 2014; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-22.6.1.ebuild:
+  bump
+
+*android-sdk-update-manager-22.6 (19 Mar 2014)
+
+  19 Mar 2014; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-22.6.ebuild:
+  bump
+
+  20 Nov 2013; Richard Freeman <rich0@gentoo.org> +files/80-android.rules,
+  android-sdk-update-manager-22.3.ebuild,
+  +files/android-sdk-update-manager.desktop:
+  Add desktop entry and udev rule. Thanks to C.J. Wijtmans. 491508
+
+*android-sdk-update-manager-22.3 (02 Nov 2013)
+
+  02 Nov 2013; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-22.3.ebuild:
+  Bump
+
+*android-sdk-update-manager-22.2.1 (25 Sep 2013)
+
+  25 Sep 2013; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-22.2.1.ebuild:
+  Bump - 485958
+
+*android-sdk-update-manager-22.0.5-r1 (16 Sep 2013)
+
+  16 Sep 2013; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-22.0.5-r1.ebuild:
+  Set ANDROID_HOME - bug 484976 - thanks to Florian Schmaus.
+
+*android-sdk-update-manager-22.0.5 (14 Aug 2013)
+
+  14 Aug 2013; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-22.0.5.ebuild:
+  bump - 480954
+
+*android-sdk-update-manager-22.0.4 (24 Jul 2013)
+
+  24 Jul 2013; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-22.0.4.ebuild:
+  Bump - 477946.
+
+  13 Jun 2013; Richard Freeman <rich0@gentoo.org>
+  android-sdk-update-manager-22.0.1-r1.ebuild:
+  Permissions fix, 473198 - thanks to Nikita Kozlov for patch.
+
+  11 Jun 2013; Richard Freeman <rich0@gentoo.org>
+  android-sdk-update-manager-22.0.1-r1.ebuild:
+  Fix SWT version-detection logic to ignore 4.2.
+
+  10 Jun 2013; Richard Freeman <rich0@gentoo.org>
+  android-sdk-update-manager-22.0.1-r1.ebuild:
+  Fix issue with rebuild loop.
+
+*android-sdk-update-manager-22.0.1-r1 (10 Jun 2013)
+
+  10 Jun 2013; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-22.0.1-r1.ebuild:
+  Fix SWT dep - 470840.
+
+*android-sdk-update-manager-22.0.1 (01 Jun 2013)
+
+  01 Jun 2013; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-22.0.1.ebuild:
+  Bump - 471944
+
+  29 May 2013; Richard Freeman <rich0@gentoo.org>
+  android-sdk-update-manager-22.ebuild:
+  Additional permissions fix - 471654
+
+*android-sdk-update-manager-22 (20 May 2013)
+
+  20 May 2013; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-22.ebuild:
+  Bump, permissions fix - 470668,463446.
+
+*android-sdk-update-manager-21.1 (03 Mar 2013)
+
+  03 Mar 2013; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-21.1.ebuild:
+  bump - 460076
+
+  20 Jan 2013; Richard Freeman <rich0@gentoo.org>
+  -android-sdk-update-manager-17.ebuild, -android-sdk-update-manager-20.ebuild,
+  -android-sdk-update-manager-20.0.3.ebuild:
+  remove outdated versions
+
+  20 Jan 2013; Richard Freeman <rich0@gentoo.org>
+  android-sdk-update-manager-21.ebuild:
+  add QA_PREBUILT
+
+*android-sdk-update-manager-21 (14 Nov 2012)
+
+  14 Nov 2012; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-21.ebuild:
+  bump and fix 442722
+
+  24 Sep 2012; Mike Frysinger <vapier@gentoo.org>
+  android-sdk-update-manager-17.ebuild,
+  android-sdk-update-manager-20.0.3.ebuild,
+  android-sdk-update-manager-20.ebuild:
+  QA_DT_HASH (old/deprecated) -> QA_FLAGS_IGNORED (new hotness).
+
+  20 Aug 2012; Richard Freeman <rich0@gentoo.org>
+  android-sdk-update-manager-20.0.3.ebuild:
+  Fix for breakage with swt-4.2.
+
+*android-sdk-update-manager-20.0.3 (14 Aug 2012)
+
+  14 Aug 2012; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-20.0.3.ebuild:
+  bump - 431288
+
+  29 Jun 2012; Richard Freeman <rich0@gentoo.org>
+  -android-sdk-update-manager-16.ebuild:
+  clean out older version
+
+*android-sdk-update-manager-20 (29 Jun 2012)
+
+  29 Jun 2012; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-20.ebuild:
+  bump - 413163
+
+  07 Jun 2012; Zac Medico <zmedico@gentoo.org>
+  android-sdk-update-manager-16.ebuild, android-sdk-update-manager-17.ebuild:
+  inherit user for enewgroup
+
+  23 Apr 2012; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Empty tag.
+
+  24 Mar 2012; Richard Freeman <rich0@gentoo.org>
+  -android-sdk-update-manager-13.ebuild, -android-sdk-update-manager-14.ebuild,
+  -android-sdk-update-manager-15.ebuild:
+  Clean up old versions.
+
+*android-sdk-update-manager-17 (24 Mar 2012)
+
+  24 Mar 2012; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-17.ebuild:
+  bump - 409249
+
+*android-sdk-update-manager-16 (26 Dec 2011)
+
+  26 Dec 2011; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-16.ebuild:
+  bump - 395921
+
+*android-sdk-update-manager-15 (29 Nov 2011)
+
+  29 Nov 2011; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-15.ebuild:
+  Version bump and add Tony Murray's SWT patch.
+
+  29 Nov 2011; Richard Freeman <rich0@gentoo.org>
+  -android-sdk-update-manager-10.ebuild,
+  -android-sdk-update-manager-10-r1.ebuild,
+  -android-sdk-update-manager-12.ebuild:
+  Clean up old versions
+
+  02 Nov 2011; Mike Frysinger <vapier@gentoo.org>
+  android-sdk-update-manager-10.ebuild,
+  android-sdk-update-manager-10-r1.ebuild,
+  android-sdk-update-manager-12.ebuild, android-sdk-update-manager-13.ebuild,
+  android-sdk-update-manager-14.ebuild:
+  Drop "die" from enew{user,group} since these have always taken care of
+  calling it when necessary.
+
+*android-sdk-update-manager-14 (19 Oct 2011)
+
+  19 Oct 2011; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-14.ebuild:
+  bump for ice cream
+
+*android-sdk-update-manager-13 (30 Sep 2011)
+
+  30 Sep 2011; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-13.ebuild:
+  Bump - 385077
+
+*android-sdk-update-manager-12 (29 Jul 2011)
+
+  29 Jul 2011; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-12.ebuild:
+  Version bump - 376097
+
+  09 Jul 2011; Richard Freeman <rich0@gentoo.org>
+  -android-sdk-update-manager-8-r2.ebuild,
+  -android-sdk-update-manager-9.ebuild:
+  clean out obsolete versions
+
+*android-sdk-update-manager-10-r1 (04 Jun 2011)
+
+  04 Jun 2011; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-10-r1.ebuild:
+  Fix tools permissions - 369509
+
+  24 May 2011; Richard Freeman <rich0@gentoo.org>
+  android-sdk-update-manager-10.ebuild:
+  Clarified instructions for downloading the SDK - 368361
+
+  01 May 2011; Mark Loeser <halcy0n@gentoo.org>
+  android-sdk-update-manager-8-r2.ebuild, android-sdk-update-manager-9.ebuild,
+  android-sdk-update-manager-10.ebuild:
+  insinto already has EPREFIX prepended
+
+  23 Feb 2011; Richard Freeman <rich0@gentoo.org>
+  -android-sdk-update-manager-6-r2.ebuild,
+  -files/android-sdk-update-manager-6-swt.patch,
+  -android-sdk-update-manager-8.ebuild,
+  -android-sdk-update-manager-8-r1.ebuild,
+  -files/android-sdk-update-manager-8-swt.patch:
+  Remove most older versions.
+
+*android-sdk-update-manager-10 (23 Feb 2011)
+
+  23 Feb 2011; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-10.ebuild:
+  New revision - thanks to Rajat Vig for the notice and update.
+
+  12 Feb 2011; Richard Freeman <rich0@gentoo.org>
+  android-sdk-update-manager-9.ebuild:
+  Added elog about sourcing /etc/profile if you get SWT errors - not bumping
+  for this.
+
+  12 Feb 2011; Richard Freeman <rich0@gentoo.org>
+  android-sdk-update-manager-9.ebuild:
+  Quick fix to 348740 - almost missed that one
+
+*android-sdk-update-manager-9 (12 Feb 2011)
+
+  12 Feb 2011; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-9.ebuild:
+  Revision bump - thanks to ProTech for the update
+
+  06 Feb 2011; Krzysztof Pawlik <nelchael@gentoo.org> metadata.xml:
+  Remove myself from list of maintainers.
+
+*android-sdk-update-manager-8-r2 (14 Jan 2011)
+
+  14 Jan 2011; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-8-r2.ebuild:
+  Fix for revdep-rebuild - 348740
+
+*android-sdk-update-manager-8-r1 (31 Dec 2010)
+
+  31 Dec 2010; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-8-r1.ebuild:
+  Fix for SWT paths - 349542.
+
+  09 Dec 2010; Richard Freeman <rich0@gentoo.org>
+  -android-sdk-update-manager-3.ebuild,
+  -android-sdk-update-manager-3-r1.ebuild,
+  -android-sdk-update-manager-4.ebuild,
+  -android-sdk-update-manager-5.ebuild,
+  -android-sdk-update-manager-6.ebuild,
+  -android-sdk-update-manager-6-r1.ebuild:
+  Cleanout old versions
+
+*android-sdk-update-manager-8 (09 Dec 2010)
+
+  09 Dec 2010; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-8.ebuild,
+  +files/android-sdk-update-manager-8-swt.patch:
+  Update for latest sdk - thanks to Rajat and Matsuu for contributions.
+
+  15 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  android-sdk-update-manager-6-r2.ebuild:
+  stable x86, bug 340743
+
+  14 Oct 2010; Richard Freeman <rich0@gentoo.org>
+  android-sdk-update-manager-6-r2.ebuild:
+  amd64 stable - 340743
+
+*android-sdk-update-manager-6-r2 (27 Aug 2010)
+
+  27 Aug 2010; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-6-r2.ebuild,
+  files/android-sdk-update-manager-6-swt.patch:
+  bump to fix ddms swt error - thanks to Frédéric
+
+*android-sdk-update-manager-6-r1 (17 Aug 2010)
+
+  17 Aug 2010; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-6-r1.ebuild,
+  +files/android-sdk-update-manager-6-swt.patch:
+  use system swt - bug 320407
+
+  13 Jul 2010; Krzysztof Pawlik <nelchael@gentoo.org>
+  android-sdk-update-manager-3.ebuild,
+  android-sdk-update-manager-3-r1.ebuild,
+  android-sdk-update-manager-4.ebuild, android-sdk-update-manager-5.ebuild,
+  android-sdk-update-manager-6.ebuild:
+  Fix description (bug #325495) and correct URL for adding components (bug
+  #325985).
+
+*android-sdk-update-manager-6 (26 May 2010)
+
+  26 May 2010; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-6.ebuild:
+  bump to v6
+
+*android-sdk-update-manager-5 (17 Apr 2010)
+
+  17 Apr 2010; Krzysztof Pawlik <nelchael@gentoo.org>
+  +android-sdk-update-manager-5.ebuild:
+  Version bump.
+
+*android-sdk-update-manager-4 (23 Jan 2010)
+
+  23 Jan 2010; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-4.ebuild:
+  new version - 297799 - thanks to matsuu for the assist
+
+*android-sdk-update-manager-3-r1 (18 Nov 2009)
+
+  18 Nov 2009; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-3-r1.ebuild:
+  fixes for 293505, 293559, 293558
+
+*android-sdk-update-manager-3 (17 Nov 2009)
+
+  17 Nov 2009; Richard Freeman <rich0@gentoo.org>
+  +android-sdk-update-manager-3.ebuild, +metadata.xml:
+  moved from android-sdk, thanks to Frederic Barthelery for the ebuild

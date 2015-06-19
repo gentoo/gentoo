@@ -1,0 +1,17 @@
+--- libview.pc.in
++++ libview.pc.in
+@@ -1,9 +1,11 @@
+-prefix=${prefix}
++prefix=@prefix@
++exec_prefix=${prefix}
+ libdir=${exec_prefix}/lib
+ includedir=${prefix}/include
+ 
+ Name: libview
+ Description: VMware's Incredibly Exciting Widgets for GTK+
+ Version: @VERSION@
+-Libs: -L${libdir} -lview @PACKAGE_LIBS@
+-Cflags: -I${includedir} @PACKAGE_CFLAGS@
++Libs: -L${libdir} -lview
++Libs.private: @VIEW_LIBS@
++Cflags: -I${includedir} @VIEW_CFLAGS@

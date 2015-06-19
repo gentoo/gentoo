@@ -1,0 +1,38 @@
+# ChangeLog for net-analyzer/dhcpdump
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/dhcpdump/ChangeLog,v 1.8 2014/06/24 18:46:44 jer Exp $
+
+  24 Jun 2014; Jeroen Roovers <jer@gentoo.org> dhcpdump-1.8.ebuild,
+  files/dhcpdump-1.8-Makefile.patch, files/dhcpdump-1.8-debian.patch,
+  files/dhcpdump-1.8-endianness.patch:
+  Bump deprecated EAPI. Clean up patches. Set *DEPEND straight.
+
+  01 Jul 2013; Jason A. Donenfeld <zx2c4@gentoo.org>
+  +files/dhcpdump-1.8-endianness.patch, dhcpdump-1.8.ebuild:
+  Fix endianness issues and keyword for mips.
+
+  21 Jul 2011; Jeroen Roovers <jer@gentoo.org> dhcpdump-1.8.ebuild:
+  Add pod2man dependency.
+
+  20 Jul 2011; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Add netmon herd.
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> -dhcpdump-1.7.ebuild,
+  metadata.xml:
+  Drop maintainer due retirement, bug #118937; remove old.
+
+*dhcpdump-1.8 (04 Nov 2008)
+
+  04 Nov 2008; Thilo Bangert <bangert@gentoo.org>
+  +files/dhcpdump-1.8-Makefile.patch, +files/dhcpdump-1.8-debian.patch,
+  +dhcpdump-1.8.ebuild:
+  version bump and warning fixes by Jeroen Roovers - bug #244388
+
+  11 Jun 2008; Thilo Bangert <bangert@gentoo.org> dhcpdump-1.7.ebuild:
+  add amd64 keyword - bug #225787
+
+*dhcpdump-1.7 (26 Aug 2007)
+
+  26 Aug 2007; Thilo Bangert <bangert@gentoo.org> +metadata.xml,
+  +dhcpdump-1.7.ebuild:
+  initial import - thanks Adam Carheden - bug #121895

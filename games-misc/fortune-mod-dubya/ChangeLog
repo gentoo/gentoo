@@ -1,0 +1,100 @@
+# ChangeLog for games-misc/fortune-mod-dubya
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-dubya/ChangeLog,v 1.19 2015/02/04 21:16:56 tupone Exp $
+
+  04 Feb 2015; Tupone Alfredo <tupone@gentoo.org>
+  fortune-mod-dubya-20050118.ebuild:
+  EAPI 5
+
+  12 Jan 2013; Ulrich Müller <ulm@gentoo.org>
+  fortune-mod-dubya-20050118.ebuild:
+  Update LICENSE, bug 450450.
+
+  12 Dec 2010; Fabian Groffen <grobian@gentoo.org>
+  fortune-mod-dubya-20050118.ebuild:
+  Drop ~ia64-linux, add ~x86-interix, ~x86-solaris
+
+  08 Oct 2010; Mart Raudsepp <leio@gentoo.org>
+  fortune-mod-dubya-20050118.ebuild:
+  Drop to ~mips
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  fortune-mod-dubya-20050118.ebuild:
+  Transfer Prefix keywords
+
+  19 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  fortune-mod-dubya-20050118.ebuild:
+  Add ~x86-fbsd keyword
+
+  27 Aug 2005; Markus Rothe <corsair@gentoo.org>
+  fortune-mod-dubya-20050118.ebuild:
+  Stable on ppc64
+
+  31 Jul 2005; Markus Rothe <corsair@gentoo.org>
+  fortune-mod-dubya-20050118.ebuild:
+  Added ~ppc64 (bug #100217)
+
+*fortune-mod-dubya-20050118 (18 Jan 2005)
+
+  18 Jan 2005; Don Seiler <rizzo@gentoo.org>
+  +fortune-mod-dubya-20050118.ebuild:
+  Version bump
+
+*fortune-mod-dubya-20041007 (07 Oct 2004)
+
+  07 Oct 2004; Don Seiler <rizzo@gentoo.org>
+  +fortune-mod-dubya-20041007.ebuild:
+  Version bump
+
+*fortune-mod-dubya-20040818 (18 Aug 2004)
+
+  18 Aug 2004; Don Seiler <rizzo@gentoo.org>
+  -fortune-mod-dubya-20040506.ebuild, -fortune-mod-dubya-20040527.ebuild,
+  +fortune-mod-dubya-20040818.ebuild:
+  Version bump and pruning
+
+*fortune-mod-dubya-20040527 (27 May 2004)
+
+  27 May 2004; Don Seiler <rizzo@gentoo.org>;
+  +fortune-mod-dubya-20040527.ebuild:
+  Version bump
+
+*fortune-mod-dubya-20040506 (06 May 2004)
+
+  06 May 2004; Don Seiler <rizzo@gentoo.org>;
+  -fortune-mod-dubya-20031006.ebuild, -fortune-mod-dubya-20031112.ebuild,
+  -fortune-mod-dubya-20031125.ebuild, +fortune-mod-dubya-20040506.ebuild:
+  Version bump and pruning oldies
+
+*fortune-mod-dubya-20031125 (25 Nov 2003)
+
+  25 Nov 2003; Don Seiler <rizzo@gentoo.org>;
+  fortune-mod-dubya-20031125.ebuild:
+  Version bump
+
+*fortune-mod-dubya-20031112 (12 Nov 2003)
+
+  12 Nov 2003; Don Seiler <rizzo@gentoo.org>;
+  fortune-mod-dubya-20031112.ebuild:
+  Version bump
+
+*fortune-mod-dubya-20031006 (13 Oct 2003)
+
+  13 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bumpage #30776.
+
+*fortune-mod-dubya-20030829 (29 Aug 2003)
+
+  29 Aug 2003; Don Seiler <rizzo@gentoo.org>;
+  fortune-mod-dubya-20030829.ebuild:
+  Version bump.  Many more quotes added.
+
+*fortune-mod-dubya-20030825 (25 Aug 2003)
+
+  26 Aug 2003; Joshua kinard <kumba@gentoo.org> fortune-mod-dubya-20030825.ebuild:
+  Added ~mips & ~sparc to KEYWORDS
+
+  25 Aug 2003; Don Seiler <rizzo@gentoo.org>;
+  fortune-mod-dubya-20030825.ebuild:
+  Initial import.
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>wschlich@gentoo.org</email>
+	<name>Wolfram Schlich</name>
+	<description>Primary maintainer</description>
+</maintainer>
+<longdescription>
+sysrqd is a small daemon intended to manage Linux Sysrq over network.
+Its philosophy is to be very responsive under heavy load and try to
+be somehow reliable. Authentication is made by clear password.
+</longdescription>
+</pkgmetadata>

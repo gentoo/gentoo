@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=dev-lang/perl[-build(-)]
+DESCRIPTION=qpsmtpd is a flexible smtpd daemon written in Perl
+EAPI=5
+HOMEPAGE=http://smtpd.develooper.com
+IUSE=postfix ipv6 syslog
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>=dev-lang/perl-5.8.0 >=dev-perl/Net-DNS-0.690.0 virtual/perl-MIME-Base64 dev-perl/MailTools dev-perl/IPC-Shareable dev-perl/Socket6 dev-perl/Danga-Socket dev-perl/ParaDNS ipv6? ( dev-perl/IO-Socket-INET6 ) syslog? ( virtual/perl-Sys-Syslog ) virtual/inetd dev-lang/perl[-build(-)]
+SLOT=0
+SRC_URI=http://smtpd.develooper.com/files/qpsmtpd-0.84.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-app	8886390eb1ac390b27350184fd3eb32f	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=3e5f21a18110fd31bb0edc9bc71021a7

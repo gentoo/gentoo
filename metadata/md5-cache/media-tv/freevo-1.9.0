@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup
+DEPEND=|| ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) || ( =dev-lang/python-2.7*[xml] =dev-lang/python-2.6*[xml] =dev-lang/python-2.5*[xml] )
+DESCRIPTION=Digital video jukebox (PVR, DVR)
+EAPI=3
+HOMEPAGE=http://www.freevo.org/
+IUSE=cdparanoia doc dvd encode fbcon flac gphoto2 jpeg lame lirc matrox mixer nls tv vorbis xine X
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-python/beautifulsoup:python-2 virtual/python-imaging dev-python/pygame >=dev-python/twisted-core-2.5 >=dev-python/twisted-web-0.6 dev-python/zope-interface >=dev-python/kaa-base-0.6.0 >=dev-python/kaa-metadata-0.7.3 >=dev-python/kaa-imlib2-0.2.3 dev-python/kaa-display media-video/mplayer[fbcon?] >=media-libs/libsdl-1.2.5[fbcon?] media-libs/sdl-image[jpeg,png] x11-apps/xset cdparanoia? ( media-sound/cdparanoia ) dvd? ( >=media-video/lsdvd-0.10 fbcon? ( media-libs/xine-lib[fbcon] ) encode? ( media-video/dvdbackup ) ) flac? ( media-libs/flac ) gphoto2? ( media-libs/libgphoto2 ) jpeg? ( virtual/jpeg ) lame? ( media-sound/lame ) lirc? ( app-misc/lirc >=dev-python/pylirc-0.0.3 ) matrox? ( >=media-video/matroxset-0.3 ) mixer? ( media-sound/aumix ) tv? ( media-tv/xmltv ) xine? ( media-video/xine-ui ) vorbis? ( media-sound/vorbis-tools ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) || ( =dev-lang/python-2.7*[xml] =dev-lang/python-2.6*[xml] =dev-lang/python-2.5*[xml] )
+SLOT=0
+SRC_URI=mirror://sourceforge/freevo/freevo-1.9.0.tar.gz
+_eclasses_=distutils	92e738ea29389cb3f34778d7a349ac71	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=14dfde1a1850e25afc88787f4798660f

@@ -1,0 +1,109 @@
+# ChangeLog for www-apps/horde-pear
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/horde-pear/ChangeLog,v 1.18 2014/08/10 20:13:24 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> horde-pear-1.3-r3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  22 Dec 2012; Ulrich Müller <ulm@gentoo.org> horde-pear-1.3-r3.ebuild:
+  Fix LICENSE, metapackage that doesn't install any files, bug 446630.
+
+  24 May 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove wrobel from metadata.xml (#111816)
+
+  07 Aug 2008; wrobel@gentoo.org metadata.xml:
+  Updated maintainer.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  18 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  horde-pear-1.3-r3.ebuild:
+  Stable on ppc.
+
+  06 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  horde-pear-1.3-r3.ebuild:
+  Stable on sparc wrt #84525
+
+  11 Apr 2005; Roy Marples <uberlord@gentoo.org> horde-pear-1.3-r3.ebuild:
+  RDEPEND on dev-php/PEAR-Mail - fixes #87362
+
+  06 Apr 2005; Markus Rothe <corsair@gentoo.org> horde-pear-1.3-r3.ebuild:
+  Stable on ppc64
+
+  27 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  horde-pear-1.3-r3.ebuild:
+  Stable on alpha.
+
+  20 Mar 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  horde-pear-1.3-r3.ebuild:
+  Reduced the RDEPENDencies to the PEAR packages that are listed in
+  http://cvs.horde.org/co.php/horde/docs/INSTALL.
+
+  12 Mar 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  horde-pear-1.3-r3.ebuild:
+  Stable on x86 and amd64, see bug 84525.
+
+  09 Mar 2005; Markus Rothe <corsair@gentoo.org> horde-pear-1.3-r3.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #84525
+
+  09 Mar 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  horde-pear-1.3-r3.ebuild:
+  Mark unstable for ARCHes that www-apps/horde-pear-r2 is marked stable for.
+
+*horde-pear-1.3-r3 (19 Feb 2005)
+
+  19 Feb 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  +horde-pear-1.3-r3.ebuild:
+  Make this a meta-ebuild that RDEPENDS on the required PEAR packages, see bug
+  82100.
+
+*horde-pear-1.3-r2 (15 Feb 2005)
+
+  15 Feb 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  +horde-pear-1.3-r2.ebuild:
+  Fix bug 79684.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+*horde-pear-1.3-r1 (15 Aug 2004)
+
+  15 Aug 2004; Stuart Herbert <stuart@gentoo.org> +metadata.xml,
+  +horde-pear-1.3-r1.ebuild:
+  Moved from net-www/horde-pear to www-apps/horde-pear.
+
+  01 Apr 2004; Chris Aniszczyk <zx@gentoo.org> horde-pear-1.3-r1.ebuild:
+  Marking ~hppa
+
+*horde-pear-1.3-r1 (18 Mar 2004)
+
+  18 Mar 2004; Mike Frysinger <vapier@gentoo.org> :
+  Fix pear include paths #45068 by burzmali.
+
+*horde-pear-1.3 (26 Feb 2004)
+
+  26 Feb 2004; Martin Holzer <mholzer@gentoo.org> horde-pear-1.1.ebuild,
+  horde-pear-1.3.ebuild:
+  Version bumped.
+
+*horde-pear-1.1 (12 Sep 2003)
+
+  12 Sep 2003; Martin Holzer <mholzer@gentoo.org> horde-pear-1.0.1.1.ebuild,
+  horde-pear-1.0.1.ebuild, horde-pear-1.1.ebuild:
+  Version bumped.
+
+  07 Jul 2003; Patrick Kursawe <phosphan@gentoo.org>
+  horde-pear-1.0.1.1.ebuild, horde-pear-1.0.1.ebuild:
+  Updated download locations
+
+*horde-pear-1.0.1.1 (11 May 2003)
+
+ 11 May 2003; Dean Bailey <alron@netoptex.com> horde-pear-1.0.1.1 :
+ Version bump to 1.0.1.1.
+
+*horde-pear-1.0.1 (08 Apr 2003)
+
+  08 Apr 2003; Dean Bailey <alron@netoptex.com> horde-pear-1.0.1 :
+  Initial import, submitted by me. This ebuild is the php-pear files
+  needed to run horde properly.

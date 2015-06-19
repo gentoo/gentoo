@@ -1,0 +1,30 @@
+# ChangeLog for media-fonts/mgopen
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/mgopen/ChangeLog,v 1.6 2012/05/27 12:08:45 yngwin Exp $
+
+  27 May 2012; Ben de Groot <yngwin@gentoo.org> mgopen-1.1.ebuild:
+  Mark stable, bug #286225
+
+  27 May 2012; Ben de Groot <yngwin@gentoo.org> -mgopen-1.0.ebuild,
+  mgopen-1.1.ebuild:
+  Update homepage. Remove old.
+
+  29 Sep 2009; Ryan Hill <dirtyepic@gentoo.org> mgopen-1.0.ebuild,
+  mgopen-1.1.ebuild:
+  Fix homepage, bug #286823 by Arseny Solokha.
+
+*mgopen-1.1 (28 Sep 2009)
+
+  28 Sep 2009; Mounir Lamouri <volkmar@gentoo.org> +mgopen-1.1.ebuild:
+  Version bump, HOMEPAGE fix.
+  non-maintainer commit blessed by yngwin
+
+  28 Sep 2009; Mounir Lamouri <volkmar@gentoo.org> mgopen-1.0.ebuild:
+  Keywording for ppc.
+
+*mgopen-1.0 (19 May 2008)
+
+  19 May 2008; Ryan Hill <dirtyepic@gentoo.org> +metadata.xml,
+  +mgopen-1.0.ebuild:
+  Initial import, bug #93548.
+

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=media-libs/libpng x11-libs/libX11 x11-libs/libXt motif? ( >=x11-libs/motif-2.3:0 ) tk? ( dev-lang/tk ) doc? ( virtual/latex-base ) virtual/fortran
+DESCRIPTION=FORTRAN/C device-independent scientific graphic library
+EAPI=4
+HOMEPAGE=http://www.astro.caltech.edu/~tjp/pgplot/
+IUSE=doc motif static-libs tk
+KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=free-noncomm
+RDEPEND=media-libs/libpng x11-libs/libX11 x11-libs/libXt motif? ( >=x11-libs/motif-2.3:0 ) tk? ( dev-lang/tk ) virtual/fortran
+SLOT=0
+SRC_URI=ftp://ftp.astro.caltech.edu/pub/pgplot/pgplot522.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c37fbe7e5e77a6f9cda4532becb7a1fe

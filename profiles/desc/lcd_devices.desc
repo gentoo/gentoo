@@ -1,0 +1,75 @@
+# Copyright 2007-2012 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/desc/lcd_devices.desc,v 1.9 2012/05/07 09:43:35 pacho Exp $
+
+# This file contains descriptions of LCD_DEVICES USE_EXPAND flags.
+
+# Keep it sorted.
+bayrad - Add support for BayRAD LCD modules by EMAC
+beckmannegle - Add support for Beckmann+Egle "Mini Terminals" and "Compact Terminals"
+bwct - Add support for BWCT USB LCD displays
+cfontz633 - Add support for CrystalFontz 633 chipset displays
+cfontz - Add support for CrystalFontz displays
+cfontzpacket - Add support for CrystalFontz chipsets CFA-631, CFA-633 and CFA-635 
+cwlinux - Add support for serial / USB displays CW12232 and CW1602 by CwLinux
+ea232 - Add support for the Electronic Assembly RS232 graphic driver
+ea65 - Add support for the VFD in the AOpen XC Cube-AV EA65 media barebone
+eyeboxone - Add support for the displays on Rightvision's EyeboxOne server
+g15 - Add support for Logitech G15 Keyboard LCDs
+glk - Add support for MatrixOrbital GLK chipset
+graphlcd - Meta-driver to support drivers via app-misc/graphlcd-base
+hd44780 - Add support for Hitachi HD44780 and compatible displays
+hd44780i2c - Enable hd44780 via i2c instead of parallel port driver
+i2500vfd - Add support for the Intra2net Intranator 2500 VFD display
+icpa106 - Add support for ICP A106 alarm/LCD boards for 19" racks
+imon - Add support for Soundgraph/Ahanix/Silverstone/Uneed/Accent iMON IR/VFD modules (Antec Fusion)
+imonlcd - Add support for Soundgraph iMON LCD modules (Antec Fusion)
+iowarrior - Add support for IO-Warrior displays
+irtrans - Add support for the 16x2 IRTrans VFD device
+lb216 - Add support for RTN's LB216 display
+lcd2usb - Add support for the open lcd2usb connector to hd44780 displays
+lcdlinux - Add support for HD44780 displays via the LCD-Linux kernel driver
+lcdm001 - Add support for the Kernelconcepts LCDM001 display
+lcdterm - Add support for LCDTerm serial-to-HD44780 adapter boards
+lcterm - Add support for Neumark's LCTerm serial LCD
+ledmatrix - Add support for SLM1606/8 LED Matrix displays
+lis - Add support for the VLSystem L.I.S MCE 2005 VFD
+lph7508 - Add support for the Pollin LPH7508
+luise - Add support for the Wallbraun Electronics LCD-USB-Interface to Hitachi SP14Q002
+m50530 - Add support for M50530 and compatible displays
+md8800 - Add support for the VFD of the Medion MD8800 PC
+mdm166a - Add support for the Futaba / Targa USB Graphic Vacuum Fluorescent Display
+milfordbpk - Add support for Milford Instruments BPK serial interface board for HD44780
+ms6931 - Add support for MSI-6931 displays in MSI rack servers
+mtcs16209x - Add support for MTC_S16209x displays
+mtxorb - Add support for Matrix Orbital LCD* LKD* VFD* and VKD* displays
+ncurses - Add support for emulated LCD display on terminal using ncurses
+noritake - Add support for the Noritake GU128x32-311 graphical display.
+noritakevfd - Add support for the Noritake VFD Device CU20045SCPB-T28A
+null - Add support for a NULL driver (for testing)
+picolcd - Add support for Mini-Box's picoLCD
+png - Add support for PNG output
+ppm - Add support for PNG output
+pyramid - Add support for the Pyramid LCD device
+routerboard - Add support for the Router Board LCD port
+SureElec - Add support drivers from the 'SURE electronics' shop
+sed1330 - Add support for Seiko Epson SED1330/1335 graphical displays (S1D13300/S1D13305)
+sed1520 - Add support for the Seiko Epson SED1520 Controller
+serdisplib - Meta-driver to support drivers via dev-libs/serdisplib
+serialpos - Add support for character displays in serial point of sale ("POS") devices
+serialvfd - Add support for most NEC, Futaba and Noritake VFDs
+shuttlevfd - Add support for several Shuttle VFDs such as M1000, M2000, G5 3300m and SG33G5M
+simplelcd - Add support for a simple serial terminal display
+sli - Add support for a Wirz SLI display
+stv5730 - Add support for STV5730A on-screen display chips
+svga - Add support for output via media-libs/svgalib
+t6963 - Add support for Toshiba T6963 based LCD displays
+text - Add support for TextMode displaying
+trefon - Add support for Trefon USB LCD displays
+tyan - Add support for LCDs of the Barebone GS series
+ula200 - Add support for ULA200 USB devices that allow USB connection of HD44780s
+usbhub - Add support for USBHUB displays
+usblcd - Add support for USBLCD displays
+wincor - Add support for the WincorNixdorf serial cashier displays BA63 and BA66
+X - Add support for X11 displaying
+xosd - Add support for xosdlib

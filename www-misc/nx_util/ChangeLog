@@ -1,0 +1,28 @@
+# ChangeLog for www-misc/nx_util
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-misc/nx_util/ChangeLog,v 1.5 2014/08/10 20:10:26 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> nx_util-0.52.1.ebuild,
+  nx_util-0.53.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*nx_util-0.53.1 (21 Nov 2013)
+
+  21 Nov 2013; Tiziano Müller <dev-zero@gentoo.org> +nx_util-0.53.1.ebuild,
+  -nx_util-0.3.ebuild:
+  Version bump.
+
+*nx_util-0.52.1 (27 Sep 2013)
+
+  27 Sep 2013; Tiziano Müller <dev-zero@gentoo.org>
+  +files/0.52.1-fix-install-paths.patch, +nx_util-0.52.1.ebuild:
+  Version bump
+
+  14 May 2013; Tiziano Müller <dev-zero@gentoo.org> nx_util-0.3.ebuild:
+  Fix licenses (thanks to jbergstroem).
+
+*nx_util-0.3 (14 May 2013)
+
+  14 May 2013; Tiziano Müller <dev-zero@gentoo.org>
+  +files/0.3-fix-install-paths.patch, +metadata.xml, +nx_util-0.3.ebuild:
+  Initial commit, ebuild written by me.

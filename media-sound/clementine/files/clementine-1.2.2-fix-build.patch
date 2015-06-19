@@ -1,0 +1,25 @@
+From 3df3a5b645737603af6bda844db04c431b9c8064 Mon Sep 17 00:00:00 2001
+From: John Maguire <john.maguire@gmail.com>
+Date: Thu, 6 Feb 2014 19:03:10 +0100
+Subject: [PATCH] Add missing header for syscall().
+
+This is cunningly not defined in syscall.h
+---
+ src/core/utilities.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/core/utilities.cpp b/src/core/utilities.cpp
+index 6fce753..cb9a94d 100644
+--- a/src/core/utilities.cpp
++++ b/src/core/utilities.cpp
+@@ -52,6 +52,7 @@
+ #endif
+ 
+ #ifdef Q_OS_LINUX
++#  include <unistd.h>
+ #  include <sys/syscall.h>
+ #endif
+ #ifdef Q_OS_DARWIN
+-- 
+1.8.5.5
+

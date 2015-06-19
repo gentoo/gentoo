@@ -1,0 +1,272 @@
+# ChangeLog for net-news/blam
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-news/blam/ChangeLog,v 1.63 2014/10/31 08:46:24 pacho Exp $
+
+  31 Oct 2014; Pacho Ramos <pacho@gentoo.org> blam-1.8.9.ebuild:
+  Move to ~ppc due bug #525258
+
+*blam-1.8.12 (21 Jun 2013)
+
+  21 Jun 2013; Pacho Ramos <pacho@gentoo.org> +blam-1.8.12.ebuild,
+  -blam-1.8.6.ebuild:
+  Version bump, drop old.
+
+  18 Aug 2012; Michael Weber <xmw@gentoo.org> blam-1.8.9.ebuild:
+  ppc stable (bug 407701)
+
+  22 May 2012; Agostino Sarubbo <ago@gentoo.org> blam-1.8.9.ebuild:
+  Stable for amd64, wrt bug #407701
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> blam-1.8.6.ebuild,
+  blam-1.8.9.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  09 Apr 2012; Markus Meier <maekke@gentoo.org> blam-1.8.9.ebuild:
+  x86 stable, bug #407701
+
+*blam-1.8.9 (22 Jan 2012)
+
+  22 Jan 2012; Pacho Ramos <pacho@gentoo.org> +blam-1.8.9.ebuild,
+  +files/blam-1.8.9-use-elif.patch:
+  Version bump.
+
+  07 Oct 2010; Pacho Ramos <pacho@gentoo.org> -blam-1.8.4.ebuild,
+  -files/blam-1.8.4_pre2-gtk-sharp-2.10-compat.diff,
+  -files/blam-1.8.4_pre2-remove-funky-non-printable.diff:
+  Remove old.
+
+  27 Dec 2009; Joseph Jezak <josejx@gentoo.org> blam-1.8.6.ebuild:
+  Marked ppc stable for bug #273251.
+
+  07 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> blam-1.8.6.ebuild:
+  Re-Keywording for ppc, bug 273251
+
+  08 Jul 2009; Markus Meier <maekke@gentoo.org> blam-1.8.6.ebuild:
+  amd64 stable, bug #273251
+
+  08 Jul 2009; Christian Faulhammer <fauli@gentoo.org> blam-1.8.6.ebuild:
+  stable x86, bug 273251
+
+  08 Jul 2009; Christian Faulhammer <fauli@gentoo.org> blam-1.8.6.ebuild:
+  fix test suite
+
+  05 Jan 2009; Peter Alfredsen <loki_val@gentoo.org> blam-1.8.4.ebuild,
+  blam-1.8.6.ebuild:
+  Fix for new gtk-sharp-module eclass
+
+  26 Nov 2008; Peter Alfredsen <loki_val@gentoo.org>
+  -blam-1.8.4_pre2.ebuild:
+  Punt old
+
+*blam-1.8.6 (26 Nov 2008)
+
+  26 Nov 2008; Peter Alfredsen <loki_val@gentoo.org> +blam-1.8.6.ebuild:
+  Bump for mono-2 masked.
+
+  25 Nov 2008; Peter Alfredsen <loki_val@gentoo.org> blam-1.8.4.ebuild:
+  Adjust 1.8.4 deps for gtk-sharp-2.12.6
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Peter Johanson (latexer, #206688) from metadata.xml.
+
+  11 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org> blam-1.8.4.ebuild:
+  ppc stable, bug #199841
+
+  11 Jan 2008; Peter Weller <welp@gentoo.org> blam-1.8.4.ebuild:
+  Stable on amd64; bug 199841
+
+  08 Jan 2008; Christian Faulhammer <opfer@gentoo.org> blam-1.8.4.ebuild:
+  stable x86, security bug 199841
+
+*blam-1.8.4 (08 Jan 2008)
+
+  08 Jan 2008; Robert Buchholz <rbu@gentoo.org>
+  -files/blam-1.6.0-gecko-fix.diff,
+  -files/blam-1.6.1-mono-1.1.7-compat.diff,
+  -files/blam-1.6.1-mono-1.1.7-compat-v2.diff,
+  -files/blam-1.8.2-64-bit-int.diff, -files/blam-1.8.2-mono-1.1.17-fix.diff,
+  -files/blam-1.8.2-seamonkey.patch, +blam-1.8.4.ebuild:
+  Version bump by security for untrusted search path vulnerability
+  (CVE-2005-4790, bug #199841). Cleaning up old patches.
+
+  27 Jan 2007; Raúl Porcel <armin76@gentoo.org> -blam-1.6.1-r2.ebuild,
+  -blam-1.8.0.ebuild, -blam-1.8.2-r2.ebuild:
+  Removing old versions depending in removed gecko-sharp
+
+  27 Jan 2007; Olivier Crête <tester@gentoo.org> blam-1.8.4_pre2.ebuild:
+  Stable on amd64 to fix bug #153308
+
+  23 Jan 2007; nixnut <nixnut@gentoo.org> blam-1.8.4_pre2.ebuild:
+  Stable on ppc wrt bug 153308
+
+  18 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  blam-1.8.4_pre2.ebuild:
+  stable x86, bug #153308; fixed deps for dev-dotnet/gconf-sharp
+
+  19 Dec 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  blam-1.8.4_pre2.ebuild:
+  Fix up deps, and update the mono dep as per bug #158353
+
+*blam-1.8.4_pre2 (15 Dec 2006)
+
+  15 Dec 2006; Peter Johanson <latexer@gentoo.org>
+  +files/blam-1.8.4_pre2-gtk-sharp-2.10-compat.diff,
+  +files/blam-1.8.4_pre2-remove-funky-non-printable.diff,
+  -blam-1.8.2.ebuild, -blam-1.8.2-r1.ebuild, +blam-1.8.4_pre2.ebuild:
+  Bump to new release that uses gtk# 2, and do some cleanup.
+
+  28 Nov 2006; Christian Faulhammer <opfer@gentoo.org> blam-1.8.2-r2.ebuild:
+  stable x86, bug #153308
+
+  01 Nov 2006; Steve Dibb <beandog@gentoo.org> blam-1.8.2-r2.ebuild:
+  amd64 stable, wrt bug 153308
+
+  31 Oct 2006; nixnut <nixnut@gentoo.org> blam-1.8.2-r2.ebuild:
+  Stable on ppc wrt bug 153308
+
+*blam-1.8.2-r2 (28 Oct 2006)
+
+  28 Oct 2006; Peter Johanson <latexer@gentoo.org>
+  +files/blam-1.8.2-mono-1.1.17-fix.diff, +blam-1.8.2-r2.ebuild:
+  Revision bump with fixes for newer mono versions. See bug #149971.
+
+  15 Aug 2006; Daniel Drake <dsd@gentoo.org> blam-1.8.2-r1.ebuild:
+  Need to run autotools for seamonkey patch to take effect
+
+  24 Jul 2006; Daniel Drake <dsd@gentoo.org>
+  +files/blam-1.8.2-seamonkey.patch, blam-1.8.2-r1.ebuild:
+  Allow compilation/operation against seamonkey rather than mozilla
+
+*blam-1.8.2-r1 (05 Dec 2005)
+
+  05 Dec 2005; Herbie Hopkins <herbs@gentoo.org>
+  +files/blam-1.8.2-64-bit-int.diff, +blam-1.8.2-r1.ebuild:
+  Add patch to fix bug 94524.
+
+  05 Dec 2005; Herbie Hopkins <herbs@gentoo.org> blam-1.8.2.ebuild:
+  Update multilib fix.
+
+*blam-1.8.2 (08 Nov 2005)
+
+  08 Nov 2005; Peter Johanson <latexer@gentoo.org> -blam-1.6.0-r1.ebuild,
+  -blam-1.6.1.ebuild, -blam-1.6.1-r1.ebuild, blam-1.6.1-r2.ebuild,
+  blam-1.8.0.ebuild, +blam-1.8.2.ebuild:
+  Bump, remove some older versions, and mark 1.8.0 stable on x86.
+
+  06 Jun 2005; David Holm <dholm@gentoo.org> blam-1.8.0.ebuild:
+  Added to ~ppc.
+
+  30 May 2005; Herbie Hopkins <herbs@gentoo.org> blam-1.8.0.ebuild:
+  multilib fixes
+
+  19 May 2005; David Holm <dholm@gentoo.org> blam-1.8.0.ebuild:
+  Masked on ppc since Mono 1.1.x is broken
+
+  16 May 2005; Tom Martin <slarti@gentoo.org> blam-1.8.0.ebuild:
+  Marked ~amd64.
+
+*blam-1.8.0 (08 May 2005)
+
+  08 May 2005; Peter Johanson <latexer@gentoo.org> +blam-1.8.0.ebuild:
+  Bump. New version depends on mono-1.1.x.
+
+*blam-1.6.1-r2 (07 May 2005)
+
+  07 May 2005; Peter Johanson <latexer@gentoo.org>
+  +files/blam-1.6.1-mono-1.1.7-compat-v2.diff, +blam-1.6.1-r2.ebuild:
+  Yet another bump, to fix 1.1.7 issues.
+
+  06 May 2005; Peter Johanson <latexer@gentoo.org> blam-1.6.1-r1.ebuild:
+  Meant to be ~x86
+
+*blam-1.6.1-r1 (06 May 2005)
+
+  06 May 2005; Peter Johanson <latexer@gentoo.org>
+  +files/blam-1.6.1-mono-1.1.7-compat.diff, +blam-1.6.1-r1.ebuild:
+  Revision bump with fix for mono-1.1.7.
+
+  21 Apr 2005; Peter Johanson <latexer@gentoo.org> blam-1.6.0-r1.ebuild,
+  blam-1.6.1.ebuild:
+  Fix the gecko-sharp dep so it gets the right SLOT.
+
+  14 Mar 2005; Peter Johanson <latexer@gentoo.org> blam-1.6.0-r1.ebuild,
+  -blam-1.6.0.ebuild, blam-1.6.1.ebuild:
+  Mark stable on x86, make deps a little clearer (needed for future 2.0 SLOT
+  issues), and remove one older ebuild.
+
+  10 Mar 2005; Peter Johanson <latexer@gentoo.org> blam-1.6.0-r1.ebuild,
+  blam-1.6.0.ebuild, blam-1.6.1.ebuild:
+  mono moved from dev-dotnet -> dev-lang
+
+*blam-1.6.1 (12 Jan 2005)
+
+  12 Jan 2005; Peter Johanson <latexer@gentoo.org> -blam-1.4.0.ebuild,
+  -blam-1.4.1.ebuild, +blam-1.6.1.ebuild:
+  Bump, and remove some older versions.
+
+*blam-1.6.0-r1 (01 Dec 2004)
+
+  01 Dec 2004; Peter Johanson <latexer@gentoo.org> +blam-1.6.0-r1.ebuild:
+  Revision bump with new split up gtk-sharp deps.
+
+  29 Oct 2004; Peter Johanson <latexer@gentoo.org>
+  +files/blam-1.6.0-gecko-fix.diff:
+  Whoops. Add the gecko patch. Thanks r2d2.
+
+*blam-1.6.0 (28 Oct 2004)
+
+  28 Oct 2004; Peter Johanson <latexer@gentoo.org> +blam-1.6.0.ebuild:
+  Bump. Now with gecko-sharp lovin'
+
+  26 Oct 2004; Peter Johanson <latexer@gentoo.org> blam-1.4.0.ebuild,
+  blam-1.4.1.ebuild:
+  Move gtk-sharp dep from x11-libs -> dev-dotnet
+
+*blam-1.4.1 (23 Sep 2004)
+
+  23 Sep 2004; Peter Johanson <latexer@gentoo.org> -blam-1.2.0.ebuild,
+  -blam-1.2.1.ebuild, -blam-1.2.3.ebuild, -blam-1.2.4.ebuild,
+  +blam-1.4.1.ebuild:
+  Bump, and remove a bunch of older versions.
+
+  10 Sep 2004; Brandon Hale <tseng@gentoo.org> blam-1.4.0.ebuild:
+  Fix SRC_URI, thanks jorm for catching this quick.
+
+*blam-1.4.0 (09 Sep 2004)
+
+  09 Sep 2004; Brandon Hale <tseng@gentoo.org> +blam-1.4.0.ebuild:
+  Version bump.
+
+*blam-1.2.4 (19 Aug 2004)
+
+  19 Aug 2004; Peter Johanson <latexer@gentoo.org> +blam-1.2.4.ebuild:
+  Bump. Some small fixes in this release, and new translations.
+
+*blam-1.2.3 (08 Aug 2004)
+
+  08 Aug 2004; Peter Johanson <latexer@gentoo.org> -blam-1.0.54.ebuild,
+  +blam-1.2.3.ebuild:
+  Bump, and remove and older version.
+
+*blam-1.2.1 (04 Aug 2004)
+
+  04 Aug 2004; Peter Johanson <latexer@gentoo.org> +blam-1.2.1.ebuild:
+  Bump. Includes a few small bugfixes.
+
+  04 Aug 2004; David Holm <dholm@gentoo.org> blam-1.2.0.ebuild:
+  Added to ~ppc.
+
+*blam-1.2.0 (03 Aug 2004)
+
+  03 Aug 2004; Peter Johanson <latexer@gentoo.org> +blam-1.2.0.ebuild:
+  Bumpity Bump. Now inherit gnome2, as we need to do some schema file foo.
+
+  02 Aug 2004; Peter Johanson <latexer@gentoo.org> blam-1.0.54.ebuild:
+  On second though, we really should make sure gtkhtml-sharp had been built by
+  the gtk-sharp package.
+
+*blam-1.0.54 (02 Aug 2004)
+
+  02 Aug 2004; Peter Johanson <latexer@gentoo.org> +metadata.xml,
+  +blam-1.0.54.ebuild:
+  Initial commit. Ebuild by yours truly.

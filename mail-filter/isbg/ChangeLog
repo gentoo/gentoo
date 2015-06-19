@@ -1,0 +1,21 @@
+# ChangeLog for mail-filter/isbg
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/isbg/ChangeLog,v 1.4 2013/07/13 07:48:50 ago Exp $
+
+  13 Jul 2013; Agostino Sarubbo <ago@gentoo.org> isbg-0.99-r1.ebuild:
+  Stable for x86, wrt bug #476114
+
+  12 Jul 2013; Agostino Sarubbo <ago@gentoo.org> isbg-0.99-r1.ebuild:
+  Stable for amd64, wrt bug #476114
+
+*isbg-0.99-r1 (03 May 2010)
+
+  03 May 2010; Alex Alexander <wired@gentoo.org> -isbg-0.99.ebuild,
+  +isbg-0.99-r1.ebuild:
+  fixed bug #313477
+
+*isbg-0.99 (12 Mar 2010)
+
+  12 Mar 2010; Alex Alexander <wired@gentoo.org> +isbg-0.99.ebuild,
+  +metadata.xml:
+  new ebuild

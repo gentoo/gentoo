@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare
+DEPEND=>=sys-fs/e2fsprogs-1.42.6 >=sys-libs/e2fsprogs-libs-1.42.6
+DESCRIPTION=A utility to undelete files from an ext3 or ext4 partition
+EAPI=5
+HOMEPAGE=http://extundelete.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-fs/e2fsprogs-1.42.6 >=sys-libs/e2fsprogs-libs-1.42.6
+SLOT=0
+SRC_URI=mirror://sourceforge/extundelete/extundelete-0.2.0.tar.bz2 mirror://debian/pool/main/e/extundelete/extundelete_0.2.0-2.1.debian.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=05f41dd8d8ff53ace9ff668c1de4665f

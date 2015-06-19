@@ -1,0 +1,50 @@
+--- bindings/setup.py	2010-12-13 04:51:58.000000000 -0500
++++ setup.py.new	2011-01-19 08:41:40.000000000 -0500
+@@ -15,7 +15,7 @@
+     ext = Extension("cryptlib_py",
+                     sources=["bindings/python.c"],
+-                    library_dirs=['..'],
++                    library_dirs=['.'],
+-                    libraries=['cl'])
++                    libraries=['cl','resolv'])
+ 
+ setup(name="cryptlib_py", ext_modules=[ext])
+
+--- bindings/python.c	2010-11-30 18:35:52.000000000 -0500
++++ python.c.new	2011-01-19 09:05:43.000000000 -0500
+@@ -358,6 +358,7 @@
+ 	return(processStatus(status));
+ }
+ 
++/*
+ static PyObject* python_cryptGenerateKeyAsync(PyObject* self, PyObject* args)
+ {
+ 	int status = 0;
+@@ -396,6 +397,7 @@
+ 	
+ 	return(processStatus(status));
+ }
++*/
+ 
+ static PyObject* python_cryptEncrypt(PyObject* self, PyObject* args)
+ {
+@@ -1429,9 +1431,9 @@
+ 	{ "cryptDestroyContext", python_cryptDestroyContext, METH_VARARGS }, 
+ 	{ "cryptDestroyObject", python_cryptDestroyObject, METH_VARARGS }, 
+ 	{ "cryptGenerateKey", python_cryptGenerateKey, METH_VARARGS }, 
+-	{ "cryptGenerateKeyAsync", python_cryptGenerateKeyAsync, METH_VARARGS }, 
+-	{ "cryptAsyncQuery", python_cryptAsyncQuery, METH_VARARGS }, 
+-	{ "cryptAsyncCancel", python_cryptAsyncCancel, METH_VARARGS }, 
++//	{ "cryptGenerateKeyAsync", python_cryptGenerateKeyAsync, METH_VARARGS }, 
++//	{ "cryptAsyncQuery", python_cryptAsyncQuery, METH_VARARGS }, 
++//	{ "cryptAsyncCancel", python_cryptAsyncCancel, METH_VARARGS }, 
+ 	{ "cryptEncrypt", python_cryptEncrypt, METH_VARARGS }, 
+ 	{ "cryptDecrypt", python_cryptDecrypt, METH_VARARGS }, 
+ 	{ "cryptSetAttribute", python_cryptSetAttribute, METH_VARARGS }, 
+@@ -4892,4 +4894,4 @@
+     v = Py_BuildValue("i", -50);
+     PyDict_SetItemString(moduleDict, "CRYPT_ENVELOPE_RESOURCE", v);
+     Py_DECREF(v); /* Need resource to proceed */
+-}
+\ No newline at end of file
++}

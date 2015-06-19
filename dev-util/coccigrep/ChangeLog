@@ -1,0 +1,83 @@
+# ChangeLog for dev-util/coccigrep
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/coccigrep/ChangeLog,v 1.18 2015/04/08 17:54:03 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> coccigrep-1.12.ebuild,
+  coccigrep-1.13.ebuild:
+  Drop old Python implementations
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> coccigrep-1.10.ebuild,
+  coccigrep-1.11.ebuild, coccigrep-1.12.ebuild, coccigrep-1.13.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+*coccigrep-1.13 (11 Feb 2014)
+
+  11 Feb 2014; Tim Harder <radhermit@gentoo.org> +coccigrep-1.13.ebuild:
+  Version bump.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> coccigrep-1.12.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*coccigrep-1.12 (23 Dec 2012)
+
+  23 Dec 2012; Tim Harder <radhermit@gentoo.org> +coccigrep-1.12.ebuild:
+  Version bump. Migrate to distutils-r1.
+
+  13 Dec 2012; Tim Harder <radhermit@gentoo.org> -coccigrep-1.8.ebuild,
+  -coccigrep-1.9.ebuild:
+  Remove old.
+
+  29 Oct 2012; Michał Górny <mgorny@gentoo.org> coccigrep-1.10.ebuild,
+  coccigrep-1.11.ebuild, coccigrep-1.8.ebuild, coccigrep-1.9.ebuild:
+  Use virtual for argparse.
+
+*coccigrep-1.11 (11 Sep 2012)
+
+  11 Sep 2012; Tim Harder <radhermit@gentoo.org> +coccigrep-1.11.ebuild:
+  Version bump.
+
+*coccigrep-1.10 (01 Sep 2012)
+
+  01 Sep 2012; Tim Harder <radhermit@gentoo.org> +coccigrep-1.10.ebuild:
+  Version bump.
+
+*coccigrep-1.9 (01 Aug 2012)
+
+  01 Aug 2012; Tim Harder <radhermit@gentoo.org> +coccigrep-1.9.ebuild:
+  Version bump.
+
+  24 Mar 2012; Tim Harder <radhermit@gentoo.org> -coccigrep-1.6.ebuild:
+  Remove old.
+
+  24 Mar 2012; Tim Harder <radhermit@gentoo.org> coccigrep-1.8.ebuild:
+  Use correct variable name.
+
+*coccigrep-1.8 (05 Mar 2012)
+
+  05 Mar 2012; Tim Harder <radhermit@gentoo.org> -coccigrep-1.7.ebuild,
+  +coccigrep-1.8.ebuild:
+  Version bump and remove old.
+
+*coccigrep-1.7 (05 Mar 2012)
+
+  05 Mar 2012; Tim Harder <radhermit@gentoo.org> +files/50coccigrep-gentoo.el,
+  -files/50-coccigrep-gentoo.el, +coccigrep-1.7.ebuild:
+  Version bump. Fix emacs site-init filename.
+
+  28 Feb 2012; Tim Harder <radhermit@gentoo.org> -coccigrep-1.5.ebuild:
+  Remove old.
+
+  28 Feb 2012; Tim Harder <radhermit@gentoo.org> coccigrep-1.6.ebuild:
+  Use correct directory name (bug #406145).
+
+*coccigrep-1.6 (07 Nov 2011)
+
+  07 Nov 2011; Tim Harder <radhermit@gentoo.org> +coccigrep-1.6.ebuild:
+  Version bump.
+
+*coccigrep-1.5 (04 Nov 2011)
+
+  04 Nov 2011; Tim Harder <radhermit@gentoo.org> +files/50-coccigrep-gentoo.el,
+  +coccigrep-1.5.ebuild, +metadata.xml:
+  Initial import.

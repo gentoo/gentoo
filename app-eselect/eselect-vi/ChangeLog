@@ -1,0 +1,199 @@
+# ChangeLog for app-eselect/eselect-vi
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-vi/ChangeLog,v 1.1 2015/03/31 16:58:01 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> +eselect-vi-1.1.7-r1.ebuild,
+  +eselect-vi-1.1.8.ebuild, +eselect-vi-1.1.9.ebuild,
+  +files/eselect-vi-1.1.7-prefix.patch, +metadata.xml:
+  Move package from app-admin to app-eselect category.
+
+*eselect-vi-1.1.9 (26 Feb 2015)
+
+  26 Feb 2015; Ben de Groot <yngwin@gentoo.org> +eselect-vi-1.1.9.ebuild:
+  version bump, offering neovim as option
+
+  22 Nov 2014; Ben de Groot <yngwin@gentoo.org> eselect-vi-1.1.8.ebuild:
+  fix SRC_URI (bug #530104)
+
+*eselect-vi-1.1.8 (22 Nov 2014)
+
+  22 Nov 2014; Ben de Groot <yngwin@gentoo.org> +eselect-vi-1.1.8.ebuild,
+  -eselect-vi-1.1.4.ebuild, -eselect-vi-1.1.5.ebuild, -eselect-vi-1.1.6.ebuild,
+  -eselect-vi-1.1.7.ebuild:
+  Version bump, including patch from 1.1.7-r1 and adding qvim as option (bug
+  #529528). Remove old.
+
+  06 Jun 2014; Mike Frysinger <vapier@gentoo.org> eselect-vi-1.1.7-r1.ebuild:
+  Add arm64 love.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> eselect-vi-1.1.7-r1.ebuild:
+  keyword ~amd64-fbsd
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> eselect-vi-1.1.4.ebuild:
+  Drop to ~mips
+
+  29 Oct 2010; Mark Loeser <halcy0n@gentoo.org> eselect-vi-1.1.7-r1.ebuild:
+  Stable for ppc64; bug #251659
+
+  12 Oct 2010; Raúl Porcel <armin76@gentoo.org> eselect-vi-1.1.7-r1.ebuild:
+  ia64/m68k/s390/sh/sparc stable wrt #251659
+
+  11 Oct 2010; Jeroen Roovers <jer@gentoo.org> eselect-vi-1.1.7-r1.ebuild:
+  Stable for HPPA (bug #251659).
+
+  10 Oct 2010; Markus Meier <maekke@gentoo.org> eselect-vi-1.1.7-r1.ebuild:
+  arm stable, bug #251659
+
+  10 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  eselect-vi-1.1.7-r1.ebuild:
+  Stable on amd64 wrt bug #251659
+
+  09 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  eselect-vi-1.1.7-r1.ebuild:
+  stable x86, bug 251659
+
+  08 Oct 2010; Brent Baude <ranger@gentoo.org> eselect-vi-1.1.7-r1.ebuild:
+  stable ppc, bug 251659
+
+  03 Oct 2010; Tobias Klausmann <klausman@gentoo.org>
+  eselect-vi-1.1.7-r1.ebuild:
+  Stable on alpha, bug #251659
+
+  29 Apr 2010; Fabian Groffen <grobian@gentoo.org>
+  eselect-vi-1.1.7-r1.ebuild:
+  Transfer Prefix keywords
+
+*eselect-vi-1.1.7-r1 (26 Apr 2010)
+
+  26 Apr 2010; Jim Ramsay <lack@gentoo.org> +eselect-vi-1.1.7-r1.ebuild,
+  +files/eselect-vi-1.1.7-prefix.patch:
+  Patch for prefix support
+
+*eselect-vi-1.1.7 (23 Apr 2010)
+
+  23 Apr 2010; Jim Ramsay <lack@gentoo.org> +eselect-vi-1.1.7.ebuild:
+  Fix for bugs #260593 #292899 #315613
+
+*eselect-vi-1.1.6 (06 Oct 2008)
+
+  06 Oct 2008; Ali Polatel <hawking@gentoo.org> +eselect-vi-1.1.6.ebuild:
+  Version bump. Add busybox to the list of possible targets, #240156.
+
+  05 Feb 2008; Markus Rothe <corsair@gentoo.org> eselect-vi-1.1.5.ebuild:
+  Stable on ppc64
+
+  17 Jan 2008; Jeroen Roovers <jer@gentoo.org> eselect-vi-1.1.5.ebuild:
+  Stable for HPPA too.
+
+  14 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  eselect-vi-1.1.5.ebuild:
+  ppc. stable
+
+  26 Dec 2007; Doug Klima <cardoe@gentoo.org> eselect-vi-1.1.5.ebuild:
+  amd64 stable
+
+  19 Dec 2007; Raúl Porcel <armin76@gentoo.org> eselect-vi-1.1.5.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+  31 May 2007; Mike Kelly <pioto@gentoo.org> metadata.xml:
+  Remove myself from metadata.xml. Just let the vim herd get the mails.
+
+*eselect-vi-1.1.5 (07 May 2007)
+
+  07 May 2007; Mike Kelly <pioto@gentoo.org> +eselect-vi-1.1.5.ebuild:
+  Version bump. Makes missing manpages really not be an issue. Fixes
+  Bug #176874.
+
+  21 Feb 2007; Alexander H. Færøy <eroyf@gentoo.org>
+  eselect-vi-1.1.4.ebuild:
+  Stable on MIPS; bug #166501
+
+  13 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  eselect-vi-1.1.4.ebuild:
+  Stable on alpha wrt bug #166501.
+
+  13 Feb 2007; Markus Rothe <corsair@gentoo.org> eselect-vi-1.1.4.ebuild:
+  Stable on ppc64; bug #166501
+
+  13 Feb 2007; Joseph Jezak <josejx@gentoo.org> eselect-vi-1.1.4.ebuild:
+  Marked ppc stable for bug #166501.
+
+  12 Feb 2007; Simon Stelling <blubb@gentoo.org> eselect-vi-1.1.4.ebuild:
+  stable on amd64; bug 166501
+
+  12 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  eselect-vi-1.1.4.ebuild:
+  stable x86; bug 166501
+
+  12 Feb 2007; Jeroen Roovers <jer@gentoo.org> eselect-vi-1.1.4.ebuild:
+  Stable for HPPA (bug #166501).
+
+  12 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  eselect-vi-1.1.4.ebuild:
+  Stable on sparc wrt #166501
+
+  06 Dec 2006; Alexander H. Færøy <eroyf@gentoo.org>
+  eselect-vi-1.1.4.ebuild:
+  Marked ~mips.
+
+*eselect-vi-1.1.4 (26 Oct 2006)
+
+  26 Oct 2006; Mike Kelly <pioto@gentoo.org> -eselect-vi-1.1.3.ebuild,
+  +eselect-vi-1.1.4.ebuild:
+  Version bump. Missing man pages are no longer fatal (we just skip making the
+  symlinks). Also, keyword ~ia64, ~s390, ~sh, and ~arm, by authority of vapier.
+
+  25 Oct 2006; Emanuele Giaquinta <exg@gentoo.org> eselect-vi-1.1.3.ebuild:
+  Add to ~ppc.
+
+  25 Oct 2006; Steve Dibb <beandog@gentoo.org> eselect-vi-1.1.3.ebuild:
+  Added ~amd64 (bug #152620)
+
+  24 Oct 2006; Stephen Bennett <spb@gentoo.org> eselect-vi-1.1.3.ebuild:
+  Added ~alpha
+
+  24 Oct 2006; Jeroen Roovers <jer@gentoo.org> eselect-vi-1.1.3.ebuild:
+  Marked ~hpp (bug #152620).
+
+  24 Oct 2006; Markus Rothe <corsair@gentoo.org> eselect-vi-1.1.3.ebuild:
+  Added ~ppc64; bug #152620
+
+  24 Oct 2006; Jason Wever <weeve@gentoo.org> eselect-vi-1.1.3.ebuild:
+  Added ~sparc keyword to fix the broken dependencies of app-editors/vim-core.
+
+  24 Oct 2006; Roy Marples <uberlord@gentoo.org> eselect-vi-1.1.3.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  24 Oct 2006; Timothy Redaelli <drizzt@gentoo.org> eselect-vi-1.1.3.ebuild:
+  Added ~x86-fbsd keyword, bug 152620
+
+*eselect-vi-1.1.3 (22 Oct 2006)
+
+  22 Oct 2006; Mike Kelly <pioto@gentoo.org> -eselect-vi-1.1.1.ebuild,
+  +eselect-vi-1.1.3.ebuild:
+  Version bump. Now properly errors only when it couldn't remove old symlinks
+  due to access errors, etc. Also, now intelligently will make symlinks to
+  non-gzip'd manpages (bzip2 or no compression).
+
+  05 Oct 2006; Mike Kelly <pioto@gentoo.org> metadata.xml,
+  -eselect-vi-1.0.ebuild, -eselect-vi-1.1.ebuild:
+  Drop old ebuilds. Add vim herd to metadata.xml
+
+*eselect-vi-1.1.1 (02 Oct 2006)
+
+  02 Oct 2006; Mike Kelly <pioto@gentoo.org> +eselect-vi-1.1.1.ebuild:
+  Bugfix bump, fixes some typos and such, thanks to bug #147857, comment 14.
+
+*eselect-vi-1.1 (24 Sep 2006)
+
+  24 Sep 2006; Mike Kelly <pioto@gentoo.org> +eselect-vi-1.1.ebuild:
+  Version bump, now supports symlinks for ex, view, and man pages.
+
+  19 Sep 2006; Mike Kelly <pioto@gentoo.org> eselect-vi-1.0.ebuild:
+  RDEPEND upon eselect-1.0.6.
+
+*eselect-vi-1.0 (19 Sep 2006)
+
+  19 Sep 2006; Mike Kelly <pioto@gentoo.org> +metadata.xml,
+  +eselect-vi-1.0.ebuild:
+  Initial ebuild.

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=>=dev-games/etrophy-0.5.1 dev-libs/e_dbus dev-libs/efl x11-wm/enlightenment:0.17= virtual/pkgconfig doc? ( app-doc/doxygen )
+DESCRIPTION=Show enlightenment echievements
+EAPI=5
+HOMEPAGE=http://www.enlightenment.org/
+IUSE=nls doc
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=>=dev-games/etrophy-0.5.1 dev-libs/e_dbus dev-libs/efl x11-wm/enlightenment:0.17= nls? ( sys-devel/gettext )
+SLOT=0
+SRC_URI=http://download.enlightenment.org/releases/echievements-2.tar.bz2
+_eclasses_=enlightenment	98392d364f7f4c6cde8a516cbc298472	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a9ca059d3e67c9e6fdb68d6483c8df8b

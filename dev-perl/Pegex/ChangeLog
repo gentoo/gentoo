@@ -1,0 +1,9 @@
+# ChangeLog for dev-perl/Pegex
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Pegex/ChangeLog,v 1.1 2015/02/25 22:36:22 dilfridge Exp $
+
+*Pegex-0.600.0 (25 Feb 2015)
+
+  25 Feb 2015; Andreas K. Huettel <dilfridge@gentoo.org> +Pegex-0.600.0.ebuild,
+  +metadata.xml:
+  New package, dependency of dev-perl/Inline-C

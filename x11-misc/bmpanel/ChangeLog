@@ -1,0 +1,32 @@
+# ChangeLog for x11-misc/bmpanel
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/bmpanel/ChangeLog,v 1.8 2015/04/23 21:06:06 hwoarang Exp $
+
+  23 Apr 2015; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Drop myself as maintainer
+
+  20 Dec 2014; Markos Chandras <hwoarang@gentoo.org> bmpanel-0.9.27-r1.ebuild:
+  Update imlib dependency. Bug #533034
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> bmpanel-0.9.27-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  17 Dec 2012; Markos Chandras <hwoarang@gentoo.org> bmpanel-0.9.27-r1.ebuild:
+  Set license to ZLIB. Bug #446758
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> bmpanel-0.9.27-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  06 Oct 2010; Markus Meier <maekke@gentoo.org> bmpanel-0.9.27-r1.ebuild:
+  add ~x86, bug #338941
+
+  30 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  bmpanel-0.9.27-r1.ebuild:
+  Stable on amd64 wrt bug #338941
+
+*bmpanel-0.9.27-r1 (29 Aug 2010)
+
+  29 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  +bmpanel-0.9.27-r1.ebuild, +files/Makefile.patch, +metadata.xml:
+  Moved from sunrise overlay. Bug #242830. Thanks to Christian Ruppert
+  (idl0r) for the ebuild

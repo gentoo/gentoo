@@ -1,0 +1,20 @@
+diff -ur txt2regex-0.8/Makefile txt2regex-0.8.nonls/Makefile
+--- txt2regex-0.8/Makefile	2004-09-28 16:04:55 -0500
++++ txt2regex-0.8.nonls/Makefile	2005-05-14 15:28:38 -0500
+@@ -80,15 +80,8 @@
+ 	rm -rf $(DISTDIR)
+ 
+ #TODO install man page and README
+-install: mo
+-	@[ -d $(LOCALEDIR) ] || mkdir -p $(LOCALEDIR); \
++install:
+ 	[ -d $(BINDIR) ] || mkdir -p $(BINDIR); \
+-	for pot in `cd $(PODIR) && ls *.mo`; do \
+-		poti=`echo $$pot | sed 's/\.mo$$//'`; \
+-		modir=$(LOCALEDIR)/$$poti/LC_MESSAGES; \
+-		[ -d $$modir ] || mkdir -p $$modir; \
+-		install -m644 $(PODIR)/$$pot $$modir/$(NAME).mo; \
+-	done; \
+ 	sed -e '/^TEXTDOMAINDIR=/s,=.*,=$(LOCALEDIR),' \
+ 	    -e '/^VERSION=/s/=.*/=$(VERSION)/' $(SHSKEL) > $(BINDIR)/$(NAME) && \
+ 	chmod +x $(BINDIR)/$(NAME) && \

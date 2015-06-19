@@ -1,0 +1,340 @@
+# ChangeLog for x11-drivers/xf86-video-trident
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-trident/ChangeLog,v 1.74 2015/03/30 17:19:57 mattst88 Exp $
+
+  30 Mar 2015; Matt Turner <mattst88@gentoo.org>
+  -files/xf86-video-trident-1.3.6-no-xaa.patch,
+  -files/xf86-video-trident-1.3.6-remove-mibstore_h.patch,
+  -xf86-video-trident-1.3.5.ebuild, -xf86-video-trident-1.3.6-r1.ebuild,
+  -xf86-video-trident-1.3.6-r2.ebuild:
+  Drop old.
+
+*xf86-video-trident-1.3.7 (30 Mar 2015)
+
+  30 Mar 2015; Matt Turner <mattst88@gentoo.org>
+  +xf86-video-trident-1.3.7.ebuild:
+  Version bump to 1.3.7, straight to stable. Fixes bug 449112.
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-trident-1.3.6-r2.ebuild:
+  Stable for x86, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-trident-1.3.6-r2.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-trident-1.3.6-r2.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-trident-1.3.6-r2.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*xf86-video-trident-1.3.6-r2 (12 Mar 2013)
+
+  12 Mar 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/xf86-video-trident-1.3.6-remove-mibstore_h.patch,
+  +xf86-video-trident-1.3.6-r2.ebuild, -xf86-video-trident-1.3.4.ebuild,
+  -xf86-video-trident-1.3.6.ebuild:
+  Fix building against xorg-server-1.14
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-trident-1.3.6-r1.ebuild:
+  Stable for ppc, wrt bug #448562
+
+  30 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-trident-1.3.6-r1.ebuild:
+  Stable for x86, wrt bug #448562
+
+  30 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-trident-1.3.6-r1.ebuild:
+  Stable for amd64, wrt bug #448562
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-trident-1.3.6-r1.ebuild:
+  Stable for ia64, wrt bug #440872
+
+*xf86-video-trident-1.3.6-r1 (25 Dec 2012)
+
+  25 Dec 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/xf86-video-trident-1.3.6-no-xaa.patch,
+  +xf86-video-trident-1.3.6-r1.ebuild:
+  Fix module load with xorg-server-1.13, bug #444406.
+
+  28 Nov 2012; Brent Baude <ranger@gentoo.org> xf86-video-trident-1.3.6.ebuild:
+  Marking xf86-video-trident-1.3.6 ppc stable for bug 440872
+
+  18 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-trident-1.3.6.ebuild:
+  Stable for x86, wrt bug #440872
+
+  16 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-trident-1.3.6.ebuild:
+  Stable for amd64, wrt bug #440872
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-trident-1.3.5.ebuild:
+  ia64 stable wrt #419473
+
+*xf86-video-trident-1.3.6 (21 Jul 2012)
+
+  21 Jul 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-trident-1.3.6.ebuild:
+  Version bump.
+
+  12 Jul 2012; Brent Baude <ranger@gentoo.org> xf86-video-trident-1.3.5.ebuild:
+  Marking xf86-video-trident-1.3.5 ppc stable for bug 419473
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-trident-1.3.5.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-trident-1.3.5.ebuild:
+  Stable for amd64, wrt bug #419473
+
+  16 May 2012; Alexis Ballier <aballier@gentoo.org>
+  xf86-video-trident-1.3.5.ebuild:
+  keyword ~amd64-fbsd (compile tested only)
+
+*xf86-video-trident-1.3.5 (24 Mar 2012)
+
+  24 Mar 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-trident-1.3.5.ebuild:
+  Version bump.
+
+  13 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86-video-trident-1.3.3.ebuild:
+  old
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-trident-1.3.4.ebuild:
+  ia64 stable wrt #344827
+
+  21 Oct 2010; Brent Baude <ranger@gentoo.org>
+  xf86-video-trident-1.3.4.ebuild:
+  Marking xf86-video-trident-1.3.4 ppc stable for bug 239063
+
+  13 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  xf86-video-trident-1.3.4.ebuild:
+  x86 stable, bug 327777
+
+  12 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  xf86-video-trident-1.3.4.ebuild:
+  Stable on amd64 wrt bug #327777
+
+*xf86-video-trident-1.3.4 (05 Jul 2010)
+
+  05 Jul 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +xf86-video-trident-1.3.4.ebuild, -files/trident.xinf:
+  Version bump. Drop useless file.
+
+  23 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86-video-trident-1.3.1.ebuild:
+  rm
+
+  15 Dec 2009; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-trident-1.3.3.ebuild:
+  ia64 stable wrt #282290
+
+  11 Oct 2009; nixnut <nixnut@gentoo.org> xf86-video-trident-1.3.3.ebuild:
+  ppc stable #282290
+
+  05 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  xf86-video-trident-1.3.3.ebuild:
+  x86 stable, bug 282290
+
+  30 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  xf86-video-trident-1.3.3.ebuild:
+  amd64 stable wrt #282290
+
+  06 Aug 2009; Rémi Cardona <remi@gentoo.org>
+  -xf86-video-trident-1.2.3.ebuild, -xf86-video-trident-1.3.0.ebuild:
+  drop old ebuilds
+
+*xf86-video-trident-1.3.3 (06 Aug 2009)
+
+  06 Aug 2009; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-trident-1.3.3.ebuild:
+  bump to 1.3.3
+
+  15 Apr 2009; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-trident-1.3.1.ebuild:
+  ia64 stable wrt #251832
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org>
+  xf86-video-trident-1.3.1.ebuild:
+  x86 stable, bug #251832
+
+  05 Apr 2009; Olivier Crête <tester@gentoo.org>
+  xf86-video-trident-1.3.1.ebuild:
+  Stable on amd64, bug #251832
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org>
+  xf86-video-trident-1.3.1.ebuild:
+  Marking xf86-video-trident-1.3.1 ppc stable for bug 251832
+
+  13 Mar 2009; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-trident-1.2.3.ebuild, xf86-video-trident-1.3.0.ebuild,
+  xf86-video-trident-1.3.1.ebuild:
+  Drop ~arm/~sh, its not available there
+
+*xf86-video-trident-1.3.1 (13 Jan 2009)
+
+  13 Jan 2009; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-video-trident-1.3.1.ebuild:
+  Version bump.
+
+*xf86-video-trident-1.3.0 (10 Jun 2008)
+
+  10 Jun 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-video-trident-1.3.0.ebuild:
+  Bump to latest. Should all be compatible with xorg-server-1.5.
+
+  24 Feb 2008; Donnie Berkholz <dberkholz@gentoo.org>; ChangeLog:
+  Update my email.
+
+  31 Jan 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-video-trident-1.2.1.ebuild, -xf86-video-trident-1.2.2.ebuild:
+  Clean up.
+
+  03 Jul 2007; Lars Weiler <pylon@gentoo.org>
+  xf86-video-trident-1.2.3.ebuild:
+  Stable on ppc; bug #175465.
+
+  05 May 2007; Daniel Gryniewicz <dang@gentoo.org>
+  xf86-video-trident-1.2.3.ebuild:
+  Marked stable on amd64 for bug #175465
+
+  29 Apr 2007; Andrej Kacian <ticho@gentoo.org>
+  xf86-video-trident-1.2.3.ebuild:
+  Stable on x86, bug #175465.
+
+  25 Apr 2007; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-trident-1.2.3.ebuild:
+  Stable on ia64 wrt bug #175465
+
+  24 Jan 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-video-trident-1.0.1.3.ebuild:
+  Stop supporting Xorg 7.0.
+
+*xf86-video-trident-1.2.3 (04 Nov 2006)
+
+  04 Nov 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-trident-1.2.3.ebuild:
+  Version bump.  Fixes blits on XP4 and XP5.
+
+*xf86-video-trident-1.2.2 (21 Oct 2006)
+
+  21 Oct 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-trident-1.2.2.ebuild:
+  Version bump.
+
+  13 Oct 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  xf86-video-trident-1.2.1.ebuild:
+  AMD64/x86 stable for bug #144549 (X7.1).
+
+  11 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-trident-1.0.1.3.ebuild, xf86-video-trident-1.2.1.ebuild:
+  Update description to be less generic.
+
+  05 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>; +files/trident.xinf:
+  Add hwdata files for system-config-display.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  xf86-video-trident-1.2.1.ebuild:
+  Mark 1.2.1 stable on ia64
+
+  01 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-trident-1.2.1.ebuild:
+  stable on ppc arm sh
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  xf86-video-trident-1.0.1.3.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-trident-1.0.1.3.ebuild:
+  x86 stable.
+
+  05 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xf86-video-trident-1.2.1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  16 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xf86-video-trident-1.0.1.3.ebuild:
+  Add ~x86-fbsd keyword.
+
+*xf86-video-trident-1.2.1 (14 Apr 2006)
+
+  14 Apr 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-trident-1.2.1.ebuild:
+  Bump for 7.1 RC1.
+
+*xf86-video-trident-1.0.1.3 (15 Feb 2006)
+
+  15 Feb 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-video-trident-1.0.1.2.ebuild, +xf86-video-trident-1.0.1.3.ebuild:
+  Bump. Add support for the Trident-chip XGI Volari's, and fix detection of
+  1400x1050 panels.
+
+  05 Feb 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-trident-1.0.1.2.ebuild:
+  Keyword needed drivers ~ppc.
+
+  02 Feb 2006; Luis Medinas <metalgod@gentoo.org>
+  xf86-video-trident-1.0.1.2.ebuild:
+  Added ~amd64 keyword.
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xf86-video-trident-1.0.1.ebuild, -xf86-video-trident-1.0.1.1.ebuild:
+  Pull old versions.
+
+*xf86-video-trident-1.0.1.2 (23 Dec 2005)
+
+  23 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-trident-1.0.1.2.ebuild:
+  Bump for 7.0.
+
+*xf86-video-trident-1.0.1.1 (18 Dec 2005)
+
+  18 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-trident-1.0.1.1.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  files/digest-xf86-video-trident-1.0.1, Manifest:
+  Update digest to match patch introduced by x-modular.eclass changes.
+
+  09 Dec 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-video-trident-1.0.0.ebuild, -xf86-video-trident-1.0.0.1.ebuild,
+  -xf86-video-trident-1.0.0.2.ebuild:
+  Pull old versions.
+
+*xf86-video-trident-1.0.1 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-trident-1.0.1.ebuild:
+  Bump for 7.0RC3.
+
+*xf86-video-trident-1.0.0.2 (11 Nov 2005)
+
+  11 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-trident-1.0.0.2.ebuild:
+  Bump for 7.0RC2.
+
+*xf86-video-trident-1.0.0.1 (20 Oct 2005)
+
+  20 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-trident-1.0.0.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <dberkholz@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+*xf86-video-trident-1.0.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-video-trident-1.0.0.ebuild:
+  Initial commit for modular X.

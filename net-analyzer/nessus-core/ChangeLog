@@ -1,0 +1,520 @@
+# ChangeLog for net-analyzer/nessus-core
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nessus-core/ChangeLog,v 1.119 2013/07/04 21:32:09 ottxor Exp $
+
+  04 Jul 2013; Christoph Junghans <ottxor@gentoo.org>
+  nessus-core-2.2.9-r1.ebuild:
+  added prefix keywords
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> nessus-core-2.2.9-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  12 Sep 2011; Tim Harder <radhermit@gentoo.org> -files/2.2.9-asneeded.patch,
+  -nessus-core-2.2.9.ebuild, nessus-core-2.2.9-r1.ebuild,
+  +files/nessus-core-2.2.9-open.patch, -files/nessus-core-2.3.1-gcc4.diff,
+  -files/nessusd-r8:
+  Respect CFLAGS, add pkgconfig build dependency, remove unnecessary patch, and
+  fix call to open. Remove old.
+
+  22 Apr 2011; Justin Lecher <jlec@gentoo.org> +files/2.2.9-asneeded.patch,
+  nessus-core-2.2.9-r1.ebuild:
+  As-needed fixes, #364397
+
+  20 Apr 2011; Justin Lecher <jlec@gentoo.org> -nessus-core-2.3.1.ebuild:
+  Dropped due to pending removal request, #169466
+
+*nessus-core-2.2.9-r1 (20 Apr 2011)
+
+  20 Apr 2011; Justin Lecher <jlec@gentoo.org> +files/2.2.9-crash.patch,
+  +files/2.2.9-gentoo.patch, +nessus-core-2.2.9-r1.ebuild:
+  Respect LDFLAGS, #343337; Added crash patch when updateing feeds, #190912
+  thanks Marcin Deranek for the patch
+
+  06 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  -nessus-core-2.2.6.ebuild:
+  Revert back to ~arch wrt #330455.
+
+  28 Apr 2007; Torsten Veller <tove@gentoo.org> nessus-core-2.2.6.ebuild,
+  nessus-core-2.2.9.ebuild:
+  Fix *initd, *confd and *envd calls (#173884, #174266)
+
+  11 Apr 2007; Peter Weller <welp@gentoo.org> nessus-core-2.2.9.ebuild:
+  Keyworded ~x86-fbsd wrt bug 172890
+
+*nessus-core-2.2.9 (03 Apr 2007)
+
+  03 Apr 2007; Marcelo Goes <vanquirius@gentoo.org>
+  +nessus-core-2.2.9.ebuild:
+  2.2.9 version bump for bug 169466. Thanks to Jared Breland <nitro322 at
+  gmail dot com>.
+
+  26 Mar 2007; Fabian Groffen <grobian@gentoo.org> nessus-core-2.3.1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  01 Feb 2007; Markus Ullmann <jokey@gentoo.org>
+  -files/nessus-core-2.0.7.patch, -files/patch_1.nessus-core.2.0.7,
+  -files/nessusd-r6, -nessus-core-2.2.7.ebuild, -nessus-core-2.2.8.ebuild:
+  cleanup
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  nessus-core-2.2.6.ebuild, nessus-core-2.2.7.ebuild,
+  nessus-core-2.2.8.ebuild:
+  Remove gnuconfig_update usage, leave it to econf.
+
+*nessus-core-2.2.8 (01 Jun 2006)
+
+  01 Jun 2006; Markus Ullmann <jokey@gentoo.org> +nessus-core-2.2.8.ebuild:
+  Version bump wrt bug #134036
+
+*nessus-core-2.2.7 (09 Mar 2006)
+
+  09 Mar 2006; Marcelo Goes <vanquirius@gentoo.org>
+  +nessus-core-2.2.7.ebuild:
+  2.2.7 version bump for bug 125519. Thanks to ChazeFroy <chazefroy at gmail
+  dot com>.
+
+  18 Feb 2006; Fabian Groffen <grobian@gentoo.org> nessus-core-2.3.1.ebuild:
+  Marked ~ppc-macos (bug #123308)
+
+  12 Feb 2006; Marcelo Goes <vanquirius@gentoo.org>
+  -nessus-core-2.2.4-r1.ebuild, -nessus-core-2.2.5.ebuild:
+  Remove old ebuilds.
+
+  07 Feb 2006; Simon Stelling <blubb@gentoo.org> nessus-core-2.2.6.ebuild:
+  stable on amd64
+
+  04 Feb 2006; Marcelo Goes <vanquirius@gentoo.org> +files/nessusd-r8,
+  nessus-core-2.3.1.ebuild:
+  Add --quiet to initscript for bug 117728. Thanks to Toralf Forster <toralf
+  dot foerster at gmx dot de>.
+
+  04 Feb 2006; Marcelo Goes <vanquirius@gentoo.org>
+  nessus-core-2.2.4-r1.ebuild, nessus-core-2.2.5.ebuild,
+  nessus-core-2.2.6.ebuild, nessus-core-2.3.1.ebuild:
+  Block net-analyzer/nessus-client.
+
+  25 Dec 2005; Marcelo Goes <vanquirius@gentoo.org>
+  nessus-core-2.2.4-r1.ebuild, nessus-core-2.2.5.ebuild,
+  nessus-core-2.2.6.ebuild:
+  Make rest of nessus-core's ebuilds modular X friendly.
+
+  24 Dec 2005; Michael Hanselmann <hansmi@gentoo.org>
+  nessus-core-2.2.6.ebuild:
+  Stable on ppc.
+
+  20 Dec 2005; Bryan Østergaard <kloeri@gentoo.org
+  nessus-core-2.2.6.ebuild:
+  Stable on alpha.
+
+  18 Dec 2005; Markus Rothe <corsair@gentoo.org> nessus-core-2.2.6.ebuild:
+  Stable on ppc64
+
+  16 Dec 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  nessus-core-2.2.6.ebuild:
+  Stable on sparc
+
+  15 Dec 2005; Marcelo Goes <vanquirius@gentoo.org>
+  nessus-core-2.2.6.ebuild:
+  Marking nessus suite 2.2.6 x86 stable.
+
+  12 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  nessus-core-2.3.1.ebuild:
+  Update dependencies for modular X.
+
+  04 Dec 2005; Tom Gall <tgall@gentoo.org> 
+  nessus-core-2.2.5.ebuild:
+  stable on ppc64
+
+*nessus-core-2.2.6 (09 Nov 2005)
+
+  09 Nov 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +nessus-core-2.2.6.ebuild:
+  2.2.6 version bump. Fixes bug 111973. Thanks to ChazeFroy <chazefroy at
+  gmail dot com>.
+
+  05 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  nessus-core-2.2.5.ebuild:
+  Stable on sparc
+
+  02 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  nessus-core-2.2.5.ebuild:
+  Stable on ppc.
+
+  01 Oct 2005; Luis Medinas <metalgod@gentoo.org> nessus-core-2.2.5.ebuild:
+  Marked Stable on amd64.
+
+  26 Sep 2005; Marcelo Goes <vanquirius@gentoo.org>
+  -nessus-core-2.2.4.ebuild, nessus-core-2.2.5.ebuild:
+  nessus 2.2.5 series x86 stable.
+
+  19 Sep 2005; Marcelo Goes <vanquirius@gentoo.org>
+  nessus-core-2.2.4.ebuild, nessus-core-2.2.4-r1.ebuild,
+  nessus-core-2.2.5.ebuild, nessus-core-2.3.1.ebuild:
+  Kill gtk2 USE flag for bug 106560.
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  14 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  nessus-core-2.2.4-r1.ebuild:
+  Stable on ppc.
+
+  28 Jul 2005; Marcelo Goes <vanquirius@gentoo.org>
+  nessus-core-2.2.4.ebuild, nessus-core-2.2.4-r1.ebuild,
+  nessus-core-2.3.1.ebuild:
+  Propagate -j1 through other ebuilds for bug 100193. Thanks to Jakub Moc
+  <jakub@gentoo.org> for pointing it out.
+
+  25 Jul 2005; Marcelo Goes <vanquirius@gentoo.org>
+  nessus-core-2.2.5.ebuild:
+  Add -j1 to emake since parallel compilation fails. Fixes bug 100193. Thanks
+  to Triffid Hunter <triffid_hunter@funkmunch.net>.
+
+*nessus-core-2.2.5 (24 Jul 2005)
+
+  24 Jul 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +nessus-core-2.2.5.ebuild:
+  Version bump for bug 100024. Thanks to ChazeFroy <chazefroy@gmail.com>.
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  nessus-core-2.2.4-r1.ebuild:
+  Stable on alpha.
+
+  21 Jun 2005; Markus Rothe <corsair@gentoo.org>
+  nessus-core-2.2.4-r1.ebuild:
+  Stable on ppc64
+
+  19 Jun 2005; Marcelo Goes <vanquirius@gentoo.org>
+  nessus-core-2.2.4.ebuild, nessus-core-2.2.4-r1.ebuild:
+  Fix file conflict with includes from nessus-libraries.
+
+  19 Jun 2005; Marcelo Goes <vanquirius@gentoo.org>
+  -nessus-core-2.0.12.ebuild, -nessus-core-2.2.0.ebuild,
+  nessus-core-2.2.4-r1.ebuild, -nessus-core-2.3.0.ebuild:
+  Remove old ebuilds, mark 2.2.4-r1 x86 stable.
+
+  10 Jun 2005; Jason Wever <weeve@gentoo.org> nessus-core-2.2.4-r1.ebuild:
+  Marked stable on SPARC wrt bug #94827.
+
+  09 Jun 2005; Olivier Crête <tester@gentoo.org>
+  nessus-core-2.2.4-r1.ebuild:
+  Marking stable on amd64
+
+  07 Jun 2005; <omkhar@gentoo.org> -files/nessus-core-conf.patch,
+  nessus-core-2.2.4-r1.ebuild:
+  Got rid of the big ugly conf patch and used the eclass
+
+*nessus-core-2.2.4-r1 (02 Jun 2005)
+
+  02 Jun 2005; Omkhar Arasaratnam <omkhar@gentoo.org>
+  +files/nessus-core-conf.patch, +nessus-core-2.2.4-r1.ebuild:
+  updated some configs to allow clean compile on ppc64. Added ~ARCH to 
+  ensure no breakage on other archs.
+
+  02 Jun 2005; Joseph Jezak <josejx@gentoo.org> nessus-core-2.2.4.ebuild:
+  Marked ppc stable.
+
+  22 May 2005; Bryan Østergaard <kloeri@gentoo.org>
+  nessus-core-2.2.4.ebuild:
+  Stable on alpha.
+
+*nessus-core-2.3.1 (15 May 2005)
+
+  15 May 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/nessus-core-2.3.1-gcc4.diff, +nessus-core-2.3.1.ebuild:
+  Version bump.
+
+  02 May 2005; Jason Wever <weeve@gentoo.org> nessus-core-2.2.4.ebuild:
+  Stable on SPARC.
+
+  24 Apr 2005; Marcelo Goes <vanquirius@gentoo.org>
+  -nessus-core-2.2.2a.ebuild, -nessus-core-2.2.3.ebuild,
+  nessus-core-2.2.4.ebuild:
+  Removing ebuild clutter, marking 2.2.4 x86 stable.
+
+  24 Apr 2005; Marcelo Goes <vanquirius@gentoo.org> nessus-core-2.2.2a.ebuild,
+  nessus-core-2.2.3.ebuild, nessus-core-2.2.4.ebuild:
+  Use make install instead of emake install.
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> nessus-core-2.2.4.ebuild:
+  Stable on ppc64
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  nessus-core-2.2.0.ebuild:
+  Stable on ppc.
+
+  31 Mar 2005; Marcelo Goes <vanquirius@gentoo.org> files/nessusd-r6:
+  Init script fix, bug 86664. Thanks to Eric Brown <bigwhitecow@hotmail.com> and
+  Marco Morales <soulse@gmail.com>.
+
+  31 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  nessus-core-2.2.0.ebuild:
+  Stable on alpha.
+
+  27 Mar 2005; Jason Wever <weeve@gentoo.org> nessus-core-2.2.0.ebuild:
+  Stable on SPARC.
+
+  24 Mar 2005; Marcelo Goes <vanquirius@gentoo.org> nessus-core-2.2.0.ebuild:
+  Marking 2.2.0 x86 stable
+
+*nessus-core-2.2.4 (23 Mar 2005)
+
+  23 Mar 2005; Marcelo Goes <vanquirius@gentoo.org> +nessus-core-2.2.4.ebuild:
+  Version bump, bug 86392. Thanks to Omkhar Arasaratnam <omkhar@rogers.com> for
+  reporting.
+
+  21 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> nessus-core-2.3.0.ebuild:
+  Fix X/gtk USE flag stuff for bug 84885; also, don't install
+  /usr/include/nessus/includes.h since it is provided by nessus-libraries.
+
+*nessus-core-2.2.3 (26 Feb 2005)
+
+  26 Feb 2005; Daniel Black <dragonheart@gentoo.org>
+  +nessus-core-2.2.3.ebuild:
+  Version bump as per bug #81580. Thanks to ChazeFroy <chazefroy@gmail.com>.
+
+  20 Feb 2005; Daniel Black <dragonheart@gentoo.org>
+  nessus-core-2.0.12.ebuild, nessus-core-2.2.0.ebuild:
+  Fixed broken install as per bug #82573. Thanks to Daniel Herzog
+  <expose@luftgetrock.net>
+
+*nessus-core-2.2.2a (28 Jan 2005)
+
+  28 Jan 2005; Daniel Black <dragonheart@gentoo.org> nessus-core-2.2.0.ebuild,
+  +nessus-core-2.2.2a.ebuild, nessus-core-2.3.0.ebuild:
+  Add latest stable version (bug #78789). 2.3.0 uses correct CC now. Added
+  dropped ~ppc64 keywords
+
+  26 Jan 2005; Otavio R. Piske <angusyoung@gentoo.org> +files/nessusd-r7,
+  nessus-core-2.3.0.ebuild:
+  Added a new init script for nessus that should solve bug #77735 by checking
+  whether the process is running before finishing the shutdown.
+
+  13 Jan 2005; Daniel Black <dragonheart@gentoo.org> nessus-core-2.3.0.ebuild:
+  Prelude patch disabled as per bug #77710. Thanks to Tuan Van
+  <langthang@gentoo.org>
+
+*nessus-core-2.3.0 (12 Jan 2005)
+
+  12 Jan 2005; Daniel Black <dragonheart@gentoo.org>
+  +nessus-core-2.3.0.ebuild:
+  Version bump as per bug #73780. Thanks to Holger Hoffstätte <holger@wizards.de>
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  29 Oct 2004; Eldad Zack <eldad@gentoo.org> nessus-core-2.2.0.ebuild:
+  Parallel build problem, fixed to emake -j1. Closes #69386.
+
+*nessus-core-2.2.0 (28 Oct 2004)
+
+  28 Oct 2004; Eldad Zack <eldad@gentoo.org> -nessus-core-2.1.1.ebuild,
+  +nessus-core-2.2.0.ebuild:
+  Version bump: new stable series. Removed 2.1.x development series.
+
+  25 Sep 2004; Tom Gall <tgall@gentoo.org> nessus-core-2.0.12.ebuild:
+  stable on ppc64, bug #58014
+
+  01 Sep 2004; Eldad Zack <eldad@gentoo.org> nessus-core-2.0.12.ebuild,
+  nessus-core-2.1.1.ebuild:
+  nessus-core depends on nessus-libraries. Closes #62462. Thanks to Nathan
+  Sullivan <nathan@nightsys.net>
+
+  28 Aug 2004; Eldad Zack <eldad@gentoo.org> nessus-core-2.1.1.ebuild:
+  x86 stable
+
+  13 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> nessus-core-2.0.12.ebuild:
+  Stable on alpha, bug 58014.
+
+  12 Aug 2004; Eldad Zack <eldad@gentoo.org> nessus-core-2.0.10a.ebuild:
+  GLSA 200408-11: masking 2.0.10a for all archs besides alpha until 2.0.12 will
+  be stable on alpha
+
+  12 Aug 2004; Eldad Zack <eldad@gentoo.org> -nessus-core-2.0.11.ebuild,
+  nessus-core-2.0.12.ebuild, -nessus-core-2.0.7-r1.ebuild:
+  GLSA 200408-11 (Bug #58014) ebuild purging. ppc64 -> ~ppc64, and moved to
+  2.0.12. wrt bug #57456.
+
+  12 Aug 2004; <SeJo@gentoo.org> nessus-core-2.0.12.ebuild:
+  stable masking ppc for bug 58014
+
+  01 Aug 2004; Tom Gall <tgall@gentoo.org> nessus-core-2.0.11.ebuild:
+  stable on ppc64, bug #57456
+
+*nessus-core-2.1.1 (24 Jul 2004)
+
+  24 Jul 2004; Eldad Zack <eldad@gentoo.org> +nessus-core-2.1.1.ebuild:
+  Version bump.
+
+  23 Jul 2004; Jason Wever <weeve@gentoo.org> nessus-core-2.0.12.ebuild:
+  Stable on sparc wrt security bug #58014.
+
+*nessus-core-2.0.12 (23 Jul 2004)
+
+  23 Jul 2004; Eldad Zack <eldad@gentoo.org> +nessus-core-2.0.12.ebuild:
+  Version bump - Security update (x86 stable). Bug 58014.
+
+*nessus-core-2.0.11 (21 Jul 2004)
+
+  21 Jul 2004; Eldad Zack <eldad@gentoo.org> +nessus-core-2.0.11.ebuild:
+  Version bump
+
+  19 Jul 2004; Jason Wever <weeve@gentoo.org> nessus-core-2.0.10a.ebuild:
+  Stable on sparc.
+
+*nessus-core-2.1.0 (16 Jul 2004)
+
+  16 Jul 2004; Eldad Zack <eldad@gentoo.org> +nessus-core-2.1.0.ebuild:
+  Added development series 2.1.0 (hard-masked). Closes #56436
+
+  13 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
+  nessus-core-2.0.10a.ebuild:
+  marked x86 stable
+
+  09 Jun 2004; Aron Griffis <agriffis@gentoo.org> nessus-core-2.0.10a.ebuild,
+  nessus-core-2.0.7-r1.ebuild, nessus-core-2.0.7.ebuild,
+  nessus-core-2.0.8a.ebuild, nessus-core-2.0.9.ebuild:
+  Fix use invocation and don't run epatch in a subshell because then it can't die
+
+  05 Jun 2004; Bryan Østergaard <kloeri@gentoo.org>
+  nessus-core-2.0.10a.ebuild:
+  Stable on alpha.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> nessus-core-2.0.10a.ebuild,
+  nessus-core-2.0.7-r1.ebuild, nessus-core-2.0.7.ebuild,
+  nessus-core-2.0.8a.ebuild, nessus-core-2.0.9.ebuild:
+  Add inherit eutils
+
+*nessus-core-2.0.10a (09 Feb 2004)
+
+  09 Feb 2004; Patrick Kursawe <phosphan@gentoo.org>
+  nessus-core-2.0.10a.ebuild:
+  Version bump.
+
+  09 Dec 2003; Patrick Kursawe <phosphan@gentoo.org>
+  nessus-core-2.0.8a.ebuild:
+  Backporting new dependencies from 2.0.9
+
+  01 Dec 2003; Patrick Kursawe <phosphan@gentoo.org> nessus-core-2.0.9.ebuild:
+  Making USE="+-X" work again, the last comment is wrong.
+
+  24 Nov 2003; Patrick Kursawe <phosphan@gentoo.org> nessus-core-2.0.9.ebuild:
+  While fixing a gtk/gtk2 problem I noticed that the GUI is not optional.
+
+*nessus-core-2.0.9 (19 Nov 2003)
+
+  19 Nov 2003; Patrick Kursawe <phosphan@gentoo.org>
+  nessus-core-2.0.6a-r1.ebuild, nessus-core-2.0.9.ebuild,
+  files/nessus-core-2.0.6a.patch, files/nessus-core-2.0.8a.patch:
+  Version bump, cleanup
+
+  22 Oct 2003; Patrick Kursawe <phosphan@gentoo.org>
+  nessus-core-2.0.8a.ebuild:
+  Fixing bug 31670, tcpd was not disabled correctly when not in USE
+
+*nessus-core-2.0.8a (13 Oct 2003)
+
+  13 Oct 2003; Patrick Kursawe <phosphan@gentoo.org>
+  nessus-core-2.0.8a.ebuild, files/nessus-core-2.0.8a.patch:
+  Version bump. The prelude patches seem to apply cleanly with this version.
+
+  15 Sep 2003; Jason Wever <weeve@gentoo.org> nessus-core-2.0.7-r1.ebuild:
+  Added ~sparc keyword.
+
+*nessus-core-2.0.7-r1 (26 Aug 2003)
+
+  26 Aug 2003; Patrick Kursawe <phosphan@gentoo.org>
+  nessus-core-2.0.7-r1.ebuild, files/patch_1.nessus-core.2.0.7:
+  Included prelude patch from bug 19673 with minor changes.
+
+*nessus-core-2.0.6a-r1 (17 Jul 2003)
+
+  17 Jul 2003; Patrick Kursawe <phosphan@gentoo.org>
+  nessus-core-2.0.6a-r1.ebuild:
+  Fixing bug 23106
+
+  17 Jul 2003; Patrick Kursawe <phosphan@gentoo.org>
+  nessus-core-2.0.6a.ebuild:
+  Did always --enable-tcpwrappers, fixed that. Closes bug #23667.
+
+  09 Jul 2003; Martin Holzer <mholzer@gentoo.org> nessus-core-1.2.7.ebuild,
+  nessus-core-2.0.0.ebuild, nessus-core-2.0.4.ebuild,
+  nessus-core-2.0.5.ebuild, nessus-core-2.0.6a.ebuild:
+  Fixing typo. Closes #24161
+
+*nessus-core-2.0.7 (10 Jul 2003)
+
+  10 Jul 2003; Patrick Kursawe <phosphan@gentoo.org> nessus-core-2.0.7.ebuild,
+  files/nessus-core-2.0.7.patch:
+  Version bump. Changed tcpd use flag handling (see bug 24055) and added a fix
+  for http://bugs.nessus.org/show_bug.cgi?id=464 - should be able to remove the
+  patch in the next release.
+
+*nessus-core-2.0.6a (23 May 2003)
+
+  23 May 2003; Patrick Kursawe <phosphan@gentoo.org>
+  nessus-core-2.0.6a.ebuild:
+  Version bump, should fix bug 21529
+
+*nessus-core-2.0.5 (13 May 2003)
+
+  13 May 2003; Patrick Kursawe <phosphan@gentoo.org> nessus-core-2.0.5.ebuild:
+  Version bump, bug #20901.
+
+*nessus-core-2.0.4 (23 Apr 2003)
+
+  23 Apr 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump. Found in #18978.
+
+*nessus-core-2.0.0 (25 Feb 2003)
+
+  25 Feb 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump. Ebuild submitted by Blu3 <david+gentoo.org@blue-labs.org> in #16310.
+
+*nessus-core-1.2.7 (04 Jan 2003)
+
+  16 Jan 2003; Nick Hadaway <raker@gentoo.org> nessus-core-1.2.7.ebuild :
+  Added support for tcpd and gtk2 use variables.  gtk takes precedence
+  over gtk2 has the latter is unstable.  Properly disables the gtk
+  portion if neither gtk nor gtk2 is specified in use.  Marked stable
+  for x86.
+
+  04 Jan 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump. Found by Raskasi <raskasi@gmx.net>.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*nessus-core-1.2.6 (05 Nov 2002)
+
+  15 Dec 2002; Bjoern Brauel <bjb@gentoo.org> nessus-core-1.2.6.ebuild :
+  Add ~alpha to KEYWORDS
+
+  05 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
+
+*nessus-core-1.2.4 (22 Aug 2002)
+
+  15 Dec 2002; Bjoern Brauel <bjb@gentoo.org> nessus-core-1.2.4.ebuild :
+  Add alpha to KEYWORDS
+
+  23 Sep 2002; Mike Frysinger <vapier@gentoo.org> :
+  Set dependencies to require libraries of version 1.2.4
+
+  26 Aug 2002; Nick Hadaway <raker@gentoo.org> nessus-core-1.2.4.ebuild :
+  fixed SRC_URI path to nessus-${PV} for future upgrade ease.
+
+  24 Aug 2002; Bruce A. Locke <blocke@shivan.org> nessus-core-1.2.4.ebuild:
+  Nessus needs /var/lib/nessus/users and /var/lib/nessus/logs
+  
+  22 Aug 2002; Nick Hadaway <raker@gentoo.org> nessus-core-1.2.4.ebuild, files/digest-nessus-core-1.2.4 :
+  Version bump.
+
+*nessus-core-1.2.3 (26 Jul 2002)
+
+  26 Jul 2002; Nick Hadaway <raker@gentoo.org>
+  nessus-core-1.2.3.ebuild, files/digest-nessus-core-1.2.3 :
+
+  Split out the "nessus" ebuild to the individual nessues components
+  to allow pieces to build and install properly.  "nessus" is still
+  an installable ebuild, it just pulls in the individual components.
+  nessus-core is the third of those components.

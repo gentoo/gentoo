@@ -1,0 +1,27 @@
+# ChangeLog for dev-python/tvdb_api
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/tvdb_api/ChangeLog,v 1.5 2015/06/07 16:24:38 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  08 Jan 2015; Mike Frysinger <vapier@gentoo.org> tvdb_api-1.9.ebuild:
+  Mark amd64/x86 stable.
+
+*tvdb_api-1.9 (05 Jul 2014)
+
+  05 Jul 2014; Ian Whyman <thev00d00@gentoo.org> +tvdb_api-1.9.ebuild,
+  -tvdb_api-1.8.2.ebuild:
+  Version bump
+
+*tvdb_api-1.8.2 (10 Jan 2013)
+
+  10 Jan 2013; Ian Whyman <thev00d00@gentoo.org> +tvdb_api-1.8.2.ebuild,
+  -tvdb_api-1.8.1.ebuild:
+  Bump as per #451222
+
+*tvdb_api-1.8.1 (23 Oct 2012)
+
+  23 Oct 2012; Ian Whyman <thev00d00@gentoo.org> +tvdb_api-1.8.1.ebuild,
+  +metadata.xml:
+  Inital commit

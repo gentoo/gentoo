@@ -1,0 +1,71 @@
+diff --git a/Makefile b/Makefile
+index daa54d7..1163a8d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -9,6 +9,7 @@ STRIP=strip
+ # External image lib to use: imagemagick, graphicsmagick, imlib2 or none
+ IMAGELIB = imagemagick
+ 
++#
+ 
+ # DO NOT EDIT BELOW THIS LINE UNLESS YOU KNOW WHAT YOU'RE DOING
+ # -------------------------------------------------------------
+@@ -29,13 +30,18 @@ VERSION = $(shell grep 'const char \*cText2SkinPlugin::VERSION *=' $(PLUGIN).c |
+ ### The C++ compiler and options:
+ 
+ CXX      ?= g++
+-CXXFLAGS ?= -fPIC -Wall -Woverloaded-virtual
++ifdef DEBUG
++CXXFLAGS ?= -Wall -Woverloaded-virtual
++else
++CXXFLAGS ?= -Wall -Woverloaded-virtual -O3
++endif
++CXXFLAGS += -fPIC
+ 
+ ### The directory environment:
+ 
+-VDRDIR = ../../..
+-LIBDIR = ../../lib
+-TMPDIR = /tmp
++VDRDIR ?= ../../..
++LIBDIR ?= ../../lib
++TMPDIR ?= /tmp
+ 
+ ### Make sure that necessary options are included (VDR >= 1.7.13):
+ 
+@@ -88,8 +94,7 @@ endif
+ ifdef DEBUG
+ 	CXXFLAGS += -g -fno-inline
+ 	DEFINES += -DDEBUG
+-else
+-	CXXFLAGS += -O3
++	STRIP=
+ ifdef BENCH
+ 	DEFINES += -DBENCH
+ endif
+@@ -118,7 +123,7 @@ $(DEPFILE): Makefile
+ -include $(DEPFILE)
+ 
+ ### Internationalization (I18N):
+-
++#
+ PODIR     = po
+ LOCALEDIR = $(VDRDIR)/locale
+ I18Npo    = $(notdir $(wildcard $(PODIR)/*.po))
+@@ -134,6 +139,7 @@ $(I18Npot): $(wildcard *.c)
+ $(LOCALEDIR)/%/LC_MESSAGES/vdr-$(PLUGIN).mo: $(PODIR)/%.po
+ 	@mkdir -p $(dir $@)
+ 	msgfmt -c -o $@ $<
++#
+ 
+ .PHONY: i18n
+ i18n: $(I18Npo:%.po=$(LOCALEDIR)/%/LC_MESSAGES/vdr-$(PLUGIN).mo)
+@@ -143,7 +149,7 @@ i18n: $(I18Npo:%.po=$(LOCALEDIR)/%/LC_MESSAGES/vdr-$(PLUGIN).mo)
+ libvdr-$(PLUGIN).so: $(OBJS)
+ 	$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared $(OBJS) $(LIBS) -o $@
+ 	@cp --remove-destination $@ $(LIBDIR)/$@.$(APIVERSION)
+-ifndef DEBUG
++ifdef STRIP
+ 	$(STRIP) $(LIBDIR)/$@.$(APIVERSION)
+ endif
+ 

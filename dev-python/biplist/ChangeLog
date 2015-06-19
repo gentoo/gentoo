@@ -1,0 +1,52 @@
+# ChangeLog for dev-python/biplist
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/biplist/ChangeLog,v 1.11 2015/06/07 06:48:19 idella4 Exp $
+
+*biplist-0.9 (07 Jun 2015)
+
+  07 Jun 2015; Ian Delaney <idella4@gentoo.org> +biplist-0.9.ebuild:
+  bump
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> biplist-0.8.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> biplist-0.8.ebuild:
+  amd64 stable, bug 540290
+
+*biplist-0.8 (08 Oct 2014)
+
+  08 Oct 2014; Ian Delaney <idella4@gentoo.org> +biplist-0.8.ebuild,
+  -biplist-0.6.ebuild:
+  bump; clean old python impls, update test phase, remove 0.6 ebuild
+
+*biplist-0.6 (01 Apr 2014)
+
+  01 Apr 2014; Ian Delaney <idella4@gentoo.org> +biplist-0.6.ebuild,
+  -biplist-0.5-r1.ebuild:
+  bump; Add pypy support, tidy deps, update test phase, rm old
+
+*biplist-0.5-r1 (29 May 2013)
+
+  29 May 2013; Ian Delaney <idella4@gentoo.org> +biplist-0.5-r1.ebuild,
+  -biplist-0.4.ebuild:
+  revbump, migrate -> distutils-r1, remove old ebuilds
+
+  14 Nov 2012; Ian Delaney <idella4@gentoo.org> metadata.xml:
+  Updating maintainer, metadata.xml
+
+*biplist-0.5 (28 Jun 2012)
+
+  28 Jun 2012; Patrick Lauer <patrick@gentoo.org> +biplist-0.5.ebuild:
+  Bump
+
+*biplist-0.4 (25 Apr 2012)
+
+  25 Apr 2012; Theo Chatzimichos <tampakrap@gentoo.org> +biplist-0.4.ebuild,
+  +metadata.xml:
+  Initial commit, ebuild by idella4

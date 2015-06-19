@@ -1,0 +1,484 @@
+# ChangeLog for dev-python/imaging
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/imaging/ChangeLog,v 1.107 2015/06/08 12:03:57 mrueg Exp $
+
+  08 Jun 2015; Manuel Rüger <mrueg@gentoo.org> -imaging-1.1.7-r1.ebuild,
+  -imaging-1.1.7-r2.ebuild:
+  Remove old.
+
+  07 Jun 2015; Markus Meier <maekke@gentoo.org> imaging-1.1.7-r5.ebuild:
+  arm stable, bug #540290
+
+  02 Jun 2015; Jack Morgan <jmorgan@gentoo.org> imaging-1.1.7-r5.ebuild:
+  sparc stable wrt bug #540290
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> imaging-1.1.7-r5.ebuild:
+  Stable for ia64, wrt bug #540290
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> imaging-1.1.7-r5.ebuild:
+  Stable for alpha, wrt bug #540290
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> imaging-1.1.7-r2.ebuild,
+  imaging-1.1.7-r5.ebuild:
+  Drop old Python implementations
+
+  21 Mar 2015; Jeroen Roovers <jer@gentoo.org> imaging-1.1.7-r5.ebuild:
+  Stable for HPPA (bug #540290).
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> imaging-1.1.7-r5.ebuild:
+  x86 stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> imaging-1.1.7-r5.ebuild:
+  ppc stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> imaging-1.1.7-r5.ebuild:
+  ppc64 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> imaging-1.1.7-r5.ebuild:
+  amd64 stable, bug #540290
+
+  20 Feb 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/imaging-1.1.7-no-host-paths.patch, imaging-1.1.7-r5.ebuild:
+  Fix from Chromium OS for cross-compiling.
+
+  30 Dec 2014; Mike Gilbert <floppym@gentoo.org> -imaging-1.1.7-r4.ebuild,
+  imaging-1.1.7-r1.ebuild, imaging-1.1.7-r2.ebuild, imaging-1.1.7-r5.ebuild:
+  Drop lcms support, bug 526808.
+
+  18 Dec 2014; Patrice Clement <monsieurp@gentoo.org> imaging-1.1.7-r4.ebuild:
+  Added fix to -r4 file accidentally. Removing it.
+
+*imaging-1.1.7-r5 (18 Dec 2014)
+
+  18 Dec 2014; Patrice Clement <monsieurp@gentoo.org>
+  +files/imaging-1.1.7-dont-run-multiple-viewers.patch,
+  +imaging-1.1.7-r5.ebuild, imaging-1.1.7-r4.ebuild:
+  Add patch to avoid launching multiple image viewers. Fix bug 353153.
+
+  30 Jul 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/imaging-1.1.7-ft-header-include.patch, imaging-1.1.7-r4.ebuild:
+  Fix from Chromium OS for building w/freetype-2.5.3 #508748 by Stefan Kalis.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> imaging-1.1.7-r2.ebuild,
+  imaging-1.1.7-r4.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  31 May 2013; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Drop unused useflag description
+
+  28 May 2013; Mike Gilbert <floppym@gentoo.org>
+  -files/imaging-2.0.0-delete_hardcoded_paths.patch,
+  -files/imaging-2.0.0-libm_linking.patch, -imaging-2.0.0.ebuild,
+  imaging-1.1.7-r1.ebuild, imaging-1.1.7-r2.ebuild, imaging-1.1.7-r4.ebuild:
+  Remove imaging-2.0.0, add blocker for dev-python/pillow.
+
+  28 May 2013; Mike Gilbert <floppym@gentoo.org> imaging-2.0.0.ebuild:
+  Depend on unzip.
+
+  28 May 2013; Mike Gilbert <floppym@gentoo.org>
+  -files/imaging-2.0.0-GifImagePlugin.patch,
+  -files/imaging-2.0.0-gif_transparency.patch, imaging-2.0.0.ebuild:
+  Drop GIF transparency patches.
+
+*imaging-2.0.0 (27 May 2013)
+
+  27 May 2013; Mike Gilbert <floppym@gentoo.org>
+  +files/imaging-2.0.0-GifImagePlugin.patch,
+  +files/imaging-2.0.0-delete_hardcoded_paths.patch,
+  +files/imaging-2.0.0-gif_transparency.patch,
+  +files/imaging-2.0.0-libm_linking.patch, +imaging-2.0.0.ebuild, metadata.xml:
+  Copy dev-python/pillow-2.0.0 to dev-python/imaging-2.0.0 in preparation for a
+  pkgmove. Apply rebased patches from Arfrever's Progress overlay. Enable
+  python3 support. Bug 401009.
+
+*imaging-1.1.7-r4 (07 May 2013)
+
+  07 May 2013; Mike Gilbert <floppym@gentoo.org> +imaging-1.1.7-r4.ebuild,
+  -imaging-1.1.7-r3.ebuild:
+  Revbump for previous change.
+
+  07 May 2013; Mike Gilbert <floppym@gentoo.org> imaging-1.1.7-r3.ebuild:
+  Fix installation path for sane demos, bug 468960 by Erik Zeek.
+
+  24 Apr 2013; Mike Gilbert <floppym@gentoo.org> imaging-1.1.7-r3.ebuild:
+  Fix typo in HTML_DOCS, bug 466764 by Martin von Gagern.
+
+*imaging-1.1.7-r3 (21 Apr 2013)
+
+  21 Apr 2013; Michał Górny <mgorny@gentoo.org> +imaging-1.1.7-r3.ebuild:
+  Backport the ebuild improvements from dev-python/pillow. Remove unnecessary
+  inherits. Add a fine-grained control over features, and a simpler feature
+  switch mechanism. Remove unused USE=X, add shebangs to all Python scripts. Use
+  the new python_doinclude function and EXAMPLES support.
+
+  24 Feb 2013; Agostino Sarubbo <ago@gentoo.org> imaging-1.1.7-r2.ebuild:
+  Stable for x86, wrt bug #447470
+
+  24 Feb 2013; Agostino Sarubbo <ago@gentoo.org> imaging-1.1.7-r2.ebuild:
+  Stable for amd64, wrt bug #447470
+
+  24 Jan 2013; Michał Górny <mgorny@gentoo.org> imaging-1.1.7-r2.ebuild:
+  Fix use of includedir on Prefix.
+
+*imaging-1.1.7-r2 (16 Jan 2013)
+
+  16 Jan 2013; Michał Górny <mgorny@gentoo.org> +imaging-1.1.7-r2.ebuild:
+  Migrate to distutils-r1.
+
+  01 Dec 2012; Tim Harder <radhermit@gentoo.org> -imaging-1.1.7.ebuild:
+  Remove old.
+
+  01 Dec 2012; Tim Harder <radhermit@gentoo.org> imaging-1.1.7.ebuild,
+  imaging-1.1.7-r1.ebuild:
+  Fix LICENSE (bug #445416 by ulm).
+
+  28 May 2012; Raúl Porcel <armin76@gentoo.org> imaging-1.1.7-r1.ebuild:
+  alpha/ia64/sparc stable wrt #410075
+
+  17 Apr 2012; Brent Baude <ranger@gentoo.org> imaging-1.1.7-r1.ebuild:
+  Marking imaging-1.1.7-r1 ppc64 for bug 410075
+
+  17 Apr 2012; Brent Baude <ranger@gentoo.org> imaging-1.1.7-r1.ebuild:
+  Marking imaging-1.1.7-r1 ppc for bug 410075
+
+  04 Apr 2012; Jeff Horelick <jdhore@gentoo.org> imaging-1.1.7-r1.ebuild:
+  marked x86 per bug 410075
+
+  03 Apr 2012; Jeroen Roovers <jer@gentoo.org> imaging-1.1.7-r1.ebuild:
+  Stable for HPPA (bug #410075).
+
+  31 Mar 2012; Markus Meier <maekke@gentoo.org> imaging-1.1.7-r1.ebuild:
+  arm stable, bug #410075
+
+  29 Mar 2012; Agostino Sarubbo <ago@gentoo.org> imaging-1.1.7-r1.ebuild:
+  Stable for amd64, wrt bug #410075
+
+  20 Feb 2012; Patrick Lauer <patrick@gentoo.org> imaging-1.1.7-r1.ebuild,
+  imaging-1.1.7.ebuild:
+  Restricting pypy #403783
+
+  01 Feb 2012; Mike Gilbert <floppym@gentoo.org> imaging-1.1.7-r1.ebuild,
+  imaging-1.1.7.ebuild:
+  Inherit multilib.
+
+  06 Jan 2012; Markos Chandras <hwoarang@gentoo.org> imaging-1.1.7-r1.ebuild:
+  Fix dependencies (bug #381689). Patch by Arfrever.
+
+*imaging-1.1.7-r1 (21 Dec 2011)
+
+  21 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org> +imaging-1.1.7-r1.ebuild,
+  +files/imaging-1.1.7-nolcms.patch:
+  Revision bump, add lcms depend and use flag, bug 381689. Thanks to Chris Mayo
+
+  07 Jul 2011; Jesus Rivero <neurogeek@gentoo.org> imaging-1.1.7.ebuild:
+  Fixed shebang in Scripts/pilfont.py wrt bug #371117
+
+  25 Feb 2011; Fabian Groffen <grobian@gentoo.org> imaging-1.1.7.ebuild:
+  Marked ~x64-macos, bug #356447
+
+  31 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  imaging-1.1.7.ebuild:
+  Restrict Jython ABIs.
+
+  07 Nov 2010; Jory A. Pratt <anarchy@gentoo.org> imaging-1.1.7.ebuild:
+  Convert media-libs/jpeg to virtual/jpeg
+
+  30 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  imaging-1.1.7.ebuild:
+  Update EAPI. Fix dependencies. Fix PYTHON_MODNAME.
+
+  30 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -imaging-1.1.6-r1.ebuild, -files/imaging-1.1.6-giftrans.patch,
+  -files/imaging-1.1.6-missing-math.patch, -files/imaging-1.1.6-no-xv.patch,
+  -files/imaging-1.1.6-sane.patch, -files/imaging-1.1.6-tiffendian.patch:
+  Delete.
+
+  07 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> imaging-1.1.7.ebuild:
+  amd64 stable wrt #298979
+
+  17 Jan 2010; Raúl Porcel <armin76@gentoo.org> imaging-1.1.7.ebuild:
+  alpha/arm/ia64/sparc stable wrt #298979
+
+  12 Jan 2010; nixnut <nixnut@gentoo.org> imaging-1.1.7.ebuild:
+  ppc stable #298979
+
+  10 Jan 2010; Brent Baude <ranger@gentoo.org> imaging-1.1.7.ebuild:
+  stable ppc64, bug 298979
+
+  05 Jan 2010; Jeroen Roovers <jer@gentoo.org> imaging-1.1.7.ebuild:
+  Stable for HPPA (bug #298979).
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org> imaging-1.1.7.ebuild:
+  stable x86, bug 298979
+
+*imaging-1.1.7 (30 Nov 2009)
+
+  30 Nov 2009; Dirkjan Ochtman <djc@gentoo.org> +imaging-1.1.7.ebuild,
+  +files/imaging-1.1.7-giftrans.patch,
+  +files/imaging-1.1.7-missing-math.patch, +files/imaging-1.1.7-no-xv.patch,
+  +files/imaging-1.1.7-sane.patch:
+  Version bump to 1.1.7. TIFF endianness seems to be included.
+
+  14 Nov 2009; Raúl Porcel <armin76@gentoo.org> imaging-1.1.6-r1.ebuild:
+  ia64/sparc stable wrt #287560
+
+  11 Nov 2009; Brent Baude <ranger@gentoo.org> imaging-1.1.6-r1.ebuild:
+  Marking imaging-1.1.6-r1 ppc64 for bug 287560
+
+  07 Nov 2009; Tobias Klausmann <klausman@gentoo.org>
+  imaging-1.1.6-r1.ebuild:
+  Stable on alpha, bug #287560
+
+  16 Oct 2009; Jeroen Roovers <jer@gentoo.org> imaging-1.1.6-r1.ebuild:
+  Stable for HPPA (bug #287560).
+
+  10 Oct 2009; Fabian Groffen <grobian@gentoo.org> imaging-1.1.6-r1.ebuild:
+  Merge from Prefix
+
+  09 Oct 2009; Markus Meier <maekke@gentoo.org> imaging-1.1.6-r1.ebuild:
+  amd64/x86 stable, bug #287560
+
+  07 Oct 2009; nixnut <nixnut@gentoo.org> imaging-1.1.6-r1.ebuild:
+  ppc stable #287560
+
+  22 Sep 2009; Markus Meier <maekke@gentoo.org> imaging-1.1.6-r1.ebuild:
+  add ~arm
+
+  01 Aug 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  imaging-1.1.6-r1.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  15 Jul 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  files/imaging-1.1.6-tiffendian.patch:
+  Fixed tiff patch for proper tiff handling also with higher resolution
+  (from Debian). Closing bug #277208
+
+  03 Jul 2009; Christian Ruppert <idl0r@gentoo.org> imaging-1.1.6-r1.ebuild,
+  +files/imaging-1.1.6-missing-math.patch:
+  Add missing -lm links.
+
+  01 May 2009; Patrick Lauer <patrick@gentoo.org> imaging-1.1.6-r1.ebuild:
+  Small fix for tests. Fixes #268126, thanks to Oliver Huber
+
+*imaging-1.1.6-r1 (20 Mar 2009)
+
+  20 Mar 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/imaging-1.1.4-fPIC.patch, -files/imaging-1.1.4-ft-2.1.9.patch,
+  -files/imaging-1.1.4-setup.py.patch, +files/imaging-1.1.6-giftrans.patch,
+  +files/imaging-1.1.6-no-xv.patch, +files/imaging-1.1.6-sane.patch,
+  +files/imaging-1.1.6-tiffendian.patch, -imaging-1.1.5.ebuild,
+  imaging-1.1.6.ebuild, +imaging-1.1.6-r1.ebuild:
+  Added patches for GIF transparency, replace image viewer from xv to
+  desktop default one with xdg-open, support for TIFF 16 bit endian images
+  (bug #180549, thanks Tamas Haraszti). Also added unit test. Cleaned old
+  packages
+
+  07 Mar 2009; Joseph Jezak <josejx@gentoo.org> imaging-1.1.6.ebuild:
+  Marked ppc stable for bug #182425.
+
+  06 Mar 2009; Jeroen Roovers <jer@gentoo.org> imaging-1.1.6.ebuild:
+  Stable for HPPA (bug #182454).
+
+  27 Feb 2009; Brent Baude <ranger@gentoo.org> imaging-1.1.6.ebuild:
+  stable ppc64, bug 182454
+
+  26 Feb 2009; Raúl Porcel <armin76@gentoo.org> imaging-1.1.6.ebuild:
+  alpha/ia64/sparc stable wrt #182454
+
+  25 Feb 2009; Markus Meier <maekke@gentoo.org> imaging-1.1.6.ebuild:
+  amd64/x86 stable, bug #182454
+
+  04 Jul 2007; Ali Polatel <hawking@gentoo.org> imaging-1.1.5.ebuild:
+  use DOCS, mydoc is deprecated
+
+  24 Jun 2007; Tiziano Müller <dev-zero@gentoo.org> imaging-1.1.5.ebuild:
+  Fixed $ROOT abuse (bug #167271)
+
+  02 Apr 2007; Peter Weller <welp@gentoo.org> imaging-1.1.6.ebuild:
+  Keyworded ~x86-fbsd
+
+  05 Feb 2007; Jeroen Roovers <jer@gentoo.org> imaging-1.1.5.ebuild:
+  Stable for HPPA (inkscape).
+
+*imaging-1.1.6 (09 Jan 2007)
+
+  09 Jan 2007; Tiziano Müller <dev-zero@gentoo.org>
+  -imaging-1.1.4-r1.ebuild, +imaging-1.1.6.ebuild:
+  Version bump (bug #160875). Dropped old version.
+
+  21 Sep 2006; Doug Goldstein <cardoe@gentoo.org> imaging-1.1.4-r1.ebuild,
+  imaging-1.1.5.ebuild:
+  tcltk -> tcl / tk as per bug #17808
+
+  27 Jun 2006; Jeroen Roovers <jer@gentoo.org> imaging-1.1.5.ebuild:
+  Marked ~hppa (for inkscape).
+
+  20 Feb 2006; Markus Rothe <corsair@gentoo.org> imaging-1.1.5.ebuild:
+  Stable on ppc64
+
+  09 Feb 2006; Luca Barbato <lu_zero@gentoo.org> imaging-1.1.5.ebuild:
+  Marked ppc
+
+  08 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org> imaging-1.1.5.ebuild:
+  Stable on sparc
+
+  07 Feb 2006; Simon Stelling <blubb@gentoo.org> imaging-1.1.5.ebuild:
+  stable on amd64
+
+  06 Feb 2006; Alastair Tse <liquidx@gentoo.org> -imaging-1.1.2-r2.ebuild,
+  -imaging-1.1.3.ebuild, -imaging-1.1.3-r1.ebuild, -imaging-1.1.3-r2.ebuild,
+  -imaging-1.1.4.ebuild, imaging-1.1.5.ebuild:
+  stable x86 bump and cleanup
+
+  06 Feb 2006; Aron Griffis <agriffis@gentoo.org> imaging-1.1.5.ebuild:
+  Mark 1.1.5 stable on alpha
+
+  02 Feb 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fix rmd160 digests.
+
+  01 Feb 2006; Aron Griffis <agriffis@gentoo.org> imaging-1.1.5.ebuild:
+  Mark 1.1.5 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> imaging-1.1.5.ebuild:
+  add ~ia64
+
+  13 Jul 2005; Herbie Hopkins <herbs@gentoo.org> imaging-1.1.5.ebuild:
+  Multilib fix.
+
+*imaging-1.1.5 (11 Jun 2005)
+
+  11 Jun 2005; Fernando Serboncini <fserb@gentoo.org> +imaging-1.1.5.ebuild:
+  Version bump.
+  Added sane support.
+
+  05 Jun 2005; Markus Rothe <corsair@gentoo.org> imaging-1.1.4-r1.ebuild:
+  Stable on ppc64; dependency for bug #92995
+
+  21 May 2005; Markus Rothe <corsair@gentoo.org> imaging-1.1.4-r1.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  21 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  imaging-1.1.4-r1.ebuild:
+  Stable on ppc.
+
+  01 Apr 2005; Simon Stelling <blubb@gentoo.org> imaging-1.1.4-r1.ebuild:
+  stable on amd64
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  29 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> imaging-1.1.4.ebuild:
+  stable on amd64 again since media-sound/albumart needs it and xv had been
+  keyworded.
+
+  22 Nov 2004; Rob Cakebread <pythonhead@gentoo.org> imaging-1.1.4.ebuild:
+  Marked ~amd64 as xv is
+
+*imaging-1.1.4-r1 (22 Nov 2004)
+
+  22 Nov 2004; Rob Cakebread <pythonhead@gentoo.org>
+  imaging-1.1.2-r2.ebuild, imaging-1.1.3-r1.ebuild, imaging-1.1.3-r2.ebuild,
+  imaging-1.1.3.ebuild, imaging-1.1.4-r1.ebuild, imaging-1.1.4.ebuild:
+  Added X to IUSE. Closes bug# 72094
+
+  21 Nov 2004; Chris Bainbridge <chrb@gentoo.org> :
+  xv is required by Image.show(). marked ~amd64 as xv is.
+
+  01 Nov 2004; Joseph Jezak <josejx@gentoo.org> imaging-1.1.3-r2.ebuild:
+  Marked ppc stable.
+
+  04 Oct 2004; Bryan Østergaard <kloeri@gentoo.org>
+  +files/imaging-1.1.4-ft-2.1.9.patch, imaging-1.1.4.ebuild:
+  Fix bug 66040.
+
+  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> imaging-1.1.4.ebuild:
+  Stable amd64
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  20 Aug 2004; Rob Cakebread <pythonhead@gentoo.org> imaging-1.1.2-r2.ebuild,
+  imaging-1.1.3-r1.ebuild, imaging-1.1.3-r2.ebuild, imaging-1.1.3.ebuild,
+  imaging-1.1.4.ebuild:
+  Added DEPEND on media-libs/freetype
+
+*imaging-1.1.4 (19 Jul 2004)
+
+  19 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> +metadata.xml,
+  +files/imaging-1.1.4-fPIC.patch, +files/imaging-1.1.4-setup.py.patch,
+  +imaging-1.1.2-r2.ebuild, +imaging-1.1.3-r1.ebuild,
+  +imaging-1.1.3-r2.ebuild, +imaging-1.1.3.ebuild, +imaging-1.1.4.ebuild:
+  Renamed dev-python/Imaging to dev-python/imaging.
+
+  31 May 2004; Bryan Østergaard <kloeri@gentoo.org> Imaging-1.1.4.ebuild:
+  Stable on alpha.
+
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> Imaging-1.1.2-r2.ebuild,
+  Imaging-1.1.3.ebuild:
+  Remove default S.
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> Imaging-1.1.3-r1.ebuild,
+  Imaging-1.1.3-r2.ebuild, Imaging-1.1.4.ebuild:
+  Add die following econf for bug 48950
+
+  18 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> Imaging-1.1.4.ebuild:
+  Created -fPIC patch instead of adding fPIC to CFLAGS.
+
+  28 Mar 2004; Bryan Østergaard <kloeri@gentoo.org> Imaging-1.1.2-r2.ebuild,
+  Imaging-1.1.3-r1.ebuild, Imaging-1.1.3-r2.ebuild, Imaging-1.1.3.ebuild:
+  Update SRC_URI.
+
+  14 Mar 2004; Jon Portnoy <avenj@gentoo.org> Imaging-1.1.4.ebuild :
+  AMD64 keywords.
+
+  26 Feb 2004; Sven Blumenstein <bazik@gentoo.org> Imaging-1.1.4.ebuild:
+  Stable on sparc.
+
+  15 Jul 2003; Alastair Tse <liquidx@gentoo.org> Imaging-1.1.4.ebuild,
+  files/Imaging-1.1.4-setup.py.patch:
+  add patch to fix installations with tkinter (#24351)
+
+*Imaging-1.1.4 (02 Jun 2003)
+
+  02 Jun 2003; Alastair Tse <liquidx@gentoo.org> Imaging-1.1.4.ebuild:
+  removing tk-8.4 workaround because it is fixed in 1.1.4. version bumping and
+  various ebuild cleanups.
+
+*Imaging-1.1.3-r2 (16 May 2003)
+
+  16 May 2003; Alastair Tse <liquidx@gentoo.org> Imaging-1.1.3-r2.ebuild:
+  workaround for new tk-8.4.x. thanks to Hyriand <hyriand@thegraveyard.org>
+  (#21013)
+
+*Imaging-1.1.3-r1 (05 Mar 2003)
+
+  25 Mar 2003; Alastair Tse <liquidx@gentoo.org> Imaging-1.1.3-r1.ebuild:
+  bumping to stable
+
+  05 Mar 2003; Jason Shoemaker <kutsuya@gentoo.org> Imaging-1.1.3-r1.ebuild:
+  Modified to take advantage of distutils.eclass. Removed all but ~x86 arch,
+  because of the major revision.
+
+*Imaging-1.1.3 (3 Nov 2002)
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+  
+  3 Nov 2002; Nicholas Henke <roughneck@gentoo.org> Imaging-1.1.3.ebuild :
+  Bumped version to 1.1.3.
+
+*Imaging-1.1.2-r2 (1 Feb 2002)
+  
+  20 Oct 2002; Calum Selkirk <cselkirk@gentoo.org> Imaging-1.1.2-r2.euild :
+
+  Added ppc to KEYWORDS.
+
+  26 Jul 2002; George Shapovalov <george@gentoo.org> Imaging-1.1.2-r2.euild :
+  added KEYWORDS,SLOT,LICENSE
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

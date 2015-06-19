@@ -1,0 +1,122 @@
+# ChangeLog for www-apache/mod_layout
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_layout/ChangeLog,v 1.13 2014/08/10 20:16:10 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> mod_layout-5.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  09 Dec 2012; Ulrich Müller <ulm@gentoo.org> mod_layout-5.1.ebuild:
+  Fix LICENSE, 3-clause BSD license according to LICENSE file.
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> -mod_layout-5.0.ebuild,
+  metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> mod_layout-5.1.ebuild:
+  ppc stable #285446
+
+  18 Sep 2009; Benedikt Böhm <hollow@gentoo.org> mod_layout-5.1.ebuild:
+  stable on amd64 & x86
+
+  31 Jan 2008; Benedikt Böhm <hollow@gentoo.org> metadata.xml:
+  update metadata
+
+*mod_layout-5.1 (27 Jan 2008)
+
+  27 Jan 2008; Benedikt Böhm <hollow@gentoo.org> files/15_mod_layout.conf,
+  -mod_layout-4.0.1a-r1.ebuild, -mod_layout-4.1.ebuild,
+  +mod_layout-5.1.ebuild:
+  version bump; cleanup
+
+  25 Jan 2008; Samuli Suominen <drac@gentoo.org> mod_layout-5.0.ebuild:
+  amd64 stable wrt #205517
+
+  13 Jan 2008; nixnut <nixnut@gentoo.org> mod_layout-5.0.ebuild:
+  Stable on ppc wrt bug 205517
+
+  13 Jan 2008; Dawid Węgliński <cla@gentoo.org> mod_layout-5.0.ebuild:
+  Stable on x86 (bug #205517)
+
+*mod_layout-5.0 (08 Sep 2007)
+*mod_layout-4.1 (08 Sep 2007)
+
+  08 Sep 2007; Benedikt Böhm <hollow@gentoo.org>
+  mod_layout-4.0.1a-r1.ebuild, +mod_layout-4.1.ebuild,
+  +mod_layout-5.0.ebuild:
+  version bumps
+
+*mod_layout-4.0.1a-r1 (29 Jul 2007)
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org> +files/15_mod_layout.conf,
+  +metadata.xml, +mod_layout-4.0.1a-r1.ebuild:
+  Moving net-www/mod_layout to www-apache/mod_layout (#81244).
+
+  13 Jun 2007; Luca Longinotti <chtekk@gentoo.org>
+  -mod_layout-3.2.1-r1.ebuild:
+  Remove Apache1.
+
+  14 Jan 2007; Luca Longinotti <chtekk@gentoo.org>
+  -files/15_mod_layout_ap1.conf, mod_layout-3.2.1-r1.ebuild:
+  Config files are the same.
+
+  14 Jan 2007; Luca Longinotti <chtekk@gentoo.org> files/15_mod_layout.conf,
+  +files/15_mod_layout_ap1.conf, -files/15_mod_layout321.conf,
+  -files/3.2.1-r1/15_mod_layout.conf,
+  -files/mod_layout-4.0.1a-register.patch,
+  -files/4.0.1a-r1/15_mod_layout.conf, mod_layout-3.2.1-r1.ebuild,
+  mod_layout-4.0.1a-r1.ebuild:
+  Cleanup.
+
+  25 Nov 2006; <blubb@gentoo.org> mod_layout-3.2.1-r1.ebuild:
+  added ~amd64
+
+  24 Nov 2006; Steve Dibb <beandog@gentoo.org> mod_layout-4.0.1a-r1.ebuild:
+  Add ~amd64, 108403
+
+  04 Jun 2006; Michael Stewart <vericgar@gentoo.org>
+  -mod_layout-3.2.1.ebuild, -mod_layout-4.0.1a.ebuild:
+  Remove old-style ebuilds
+
+  01 Nov 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  mod_layout-4.0.1a-r1.ebuild:
+  Marked ppc stable, bug #106427
+
+  18 Sep 2005; Michael Stewart <vericgar@gentoo.org>
+  mod_layout-3.2.1-r1.ebuild, mod_layout-4.0.1a-r1.ebuild:
+  Stable on x86
+
+  17 Feb 2005; Benedikt Boehm <hollow@gentoo.org>
+  mod_layout-3.2.1-r1.ebuild, mod_layout-4.0.1a-r1.ebuild:
+  cleanup
+
+*mod_layout-3.2.1-r1 (07 Jan 2005)
+
+  07 Jan 2005; Michael Stewart <vericgar@gentoo.org>
+  +mod_layout-3.2.1-r1.ebuild, +mod_layout-4.0.1a-r1.ebuild:
+  Package Refresh
+
+  04 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  mod_layout-4.0.1a.ebuild:
+  Masked mod_layout-4.0.1a.ebuild stable for ppc
+
+  20 Jun 2004; Chuck Short <zul@gentoo.org> mod_layout-3.2.1.ebuild:
+  Stable on x86. Changed category to net-www.
+
+*mod_layout-3.2.1 (08 May 2004)
+
+  08 May 2004; Chuck Short <zul@gentoo.org> mod_layout-3.2.1.ebuild,
+  files/15_mod_layout321.conf:
+  Added apache1 version for mod_layout. Helps close #48559.
+
+  04 Apr 2004; Chuck Short <zul@gentoo.org> metadata.xml,
+  mod_layout-4.0.1a.ebuild:
+  Updated header, added metadata.xml.
+
+  12 Jul 2003; Donny Davies <woodchip@gentoo.org> mod_layout-4.0.1a.ebuild:
+  Marked x86 stable.
+
+*mod_layout-4.0.1a (28 Nov 2002)
+
+  28 Nov 2002; Donny Davies <woodchip@gentoo.org> :
+  Initial import; created by me.

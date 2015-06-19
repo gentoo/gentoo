@@ -1,0 +1,260 @@
+maybe this is correct, maybe it's not.  spidermonkey's documentation blows, so
+who is to say!
+
+https://bugs.gentoo.org/423991
+
+--- a/src/scripting/dvd_image_import_script.cc
++++ b/src/scripting/dvd_image_import_script.cc
+@@ -232,8 +232,6 @@ DVDImportScript::DVDImportScript(Ref<Runtime> runtime) : Script(runtime)
+ 
+         String scriptPath = ConfigManager::getInstance()->getOption(CFG_IMPORT_SCRIPTING_DVD_SCRIPT); 
+         load(scriptPath);
+-        root = JS_NewScriptObject(cx, script);
+-        JS_AddNamedRoot(cx, &root, "DVDImportScript");
+         log_info("Loaded %s\n", scriptPath.c_str());
+ 
+          Ref<Dictionary> mappings =
+@@ -296,21 +294,4 @@ void DVDImportScript::processDVDObject(Ref<CdsObject> obj)
+ #endif
+ }
+ 
+-DVDImportScript::~DVDImportScript()
+-{
+-#ifdef JS_THREADSAFE
+-    JS_SetContextThread(cx);
+-    JS_BeginRequest(cx);
+-#endif
+-    
+-    if (root)
+-        JS_RemoveRoot(cx, &root);
+-
+-#ifdef JS_THREADSAFE
+-    JS_EndRequest(cx);
+-    JS_ClearContextThread(cx);
+-#endif
+-
+-}
+-
+ #endif // HAVE_JS
+--- a/src/scripting/dvd_image_import_script.h
++++ b/src/scripting/dvd_image_import_script.h
+@@ -41,7 +41,6 @@ class DVDImportScript : public Script
+ {
+ public:
+     DVDImportScript(zmm::Ref<Runtime> runtime);
+-    ~DVDImportScript();
+     /// \brief Adds a DVD object to the database
+     /// 
+     /// \param title DVD title number
+--- a/src/scripting/import_script.cc
++++ b/src/scripting/import_script.cc
+@@ -53,8 +53,6 @@ ImportScript::ImportScript(Ref<Runtime> runtime) : Script(runtime)
+     try 
+     {
+         load(scriptPath);
+-        root = JS_NewObject(cx, NULL, script, NULL);
+-        JS_AddNamedObjectRoot(cx, &root, "ImportScript");
+     }
+     catch (Exception ex)
+     {
+@@ -109,21 +107,4 @@ void ImportScript::processCdsObject(Ref<CdsObject> obj, String rootpath)
+ #endif
+ }
+ 
+-ImportScript::~ImportScript()
+-{
+-#ifdef JS_THREADSAFE
+-    JS_SetContextThread(cx);
+-    JS_BeginRequest(cx);
+-#endif
+-    
+-    if (root)
+-        JS_RemoveObjectRoot(cx, &root);
+-
+-#ifdef JS_THREADSAFE
+-    JS_EndRequest(cx);
+-    JS_ClearContextThread(cx);
+-#endif
+-
+-}
+-
+ #endif // HAVE_JS
+--- a/src/scripting/import_script.h
++++ b/src/scripting/import_script.h
+@@ -41,11 +41,8 @@ class ImportScript : public Script
+ {
+ public:
+     ImportScript(zmm::Ref<Runtime> runtime);
+-    ~ImportScript();
+     void processCdsObject(zmm::Ref<CdsObject> obj, zmm::String rootpath);
+     virtual script_class_t whoami() { return S_IMPORT; }
+-private:
+-    JSObject *root;
+ };
+ 
+ #endif // __SCRIPTING_IMPORT_SCRIPT_H__
+--- a/src/scripting/playlist_parser_script.cc
++++ b/src/scripting/playlist_parser_script.cc
+@@ -93,8 +93,6 @@ PlaylistParserScript::PlaylistParserScript(Ref<Runtime> runtime) : Script(runtim
+ 
+         String scriptPath = ConfigManager::getInstance()->getOption(CFG_IMPORT_SCRIPTING_PLAYLIST_SCRIPT); 
+         load(scriptPath);
+-        root = JS_NewObject(cx, NULL, script, NULL);
+-        JS_AddNamedObjectRoot(cx, &root, "PlaylistScript");
+     }
+     catch (Exception ex)
+     {
+@@ -236,21 +234,4 @@ void PlaylistParserScript::processPlaylistObject(zmm::Ref<CdsObject> obj, Ref<Ge
+ 
+ }
+ 
+-
+-PlaylistParserScript::~PlaylistParserScript()
+-{
+-#ifdef JS_THREADSAFE
+-    JS_SetContextThread(cx);
+-    JS_BeginRequest(cx);
+-#endif
+-
+-    if (root)
+-        JS_RemoveObjectRoot(cx, &root);
+-
+-#ifdef JS_THREADSAFE
+-    JS_EndRequest(cx);
+-    JS_ClearContextThread(cx);
+-#endif
+-
+-}
+ #endif // HAVE_JS
+--- a/src/scripting/playlist_parser_script.h
++++ b/src/scripting/playlist_parser_script.h
+@@ -42,7 +42,6 @@ class PlaylistParserScript : public Script
+ {
+ public:
+     PlaylistParserScript(zmm::Ref<Runtime> runtime);
+-    ~PlaylistParserScript();
+     zmm::String readln();
+     void processPlaylistObject(zmm::Ref<CdsObject> obj, zmm::Ref<GenericTask> task);
+     virtual script_class_t whoami() { return S_PLAYLIST; }
+@@ -52,7 +51,6 @@ private:
+     int currentObjectID;
+     char *currentLine;
+     zmm::Ref<GenericTask> currentTask;
+-    JSObject *root;
+ };
+ 
+ #endif // __SCRIPTING_PLAYLIST_PARSER_SCRIPT_H__
+--- a/src/scripting/script.cc
++++ b/src/scripting/script.cc
+@@ -427,15 +427,10 @@ static JSFunctionSpec js_global_functions[] = {
+         try
+         {
+             common_script = _load(common_scr_path);
+-            common_root = JS_NewObject(cx, NULL, common_script, NULL);
+-            JS_AddNamedObjectRoot(cx, &common_root, "common-script");
+             _execute(common_script);
+         }
+         catch (Exception e)
+         {
+-            if (common_root)
+-                JS_RemoveObjectRoot(cx, &common_root);
+-
+             log_js("Unable to load %s: %s\n", common_scr_path.c_str(), 
+                     e.getMessage().c_str());
+         }
+@@ -459,8 +454,6 @@ Script::~Script()
+     JS_SetContextThread(cx);
+     JS_BeginRequest(cx);
+ #endif
+-    if (common_root)
+-        JS_RemoveObjectRoot(cx, &common_root);
+ 
+ /*
+  * scripts are unrooted and will be cleaned up by GC
+@@ -532,12 +532,12 @@ void Script::defineFunctions(JSFunctionSpec *functions)
+         throw _Exception(_("Scripting: JS_DefineFunctions failed"));
+ }
+ 
+-JSObject *Script::_load(zmm::String scriptPath)
++JSScript *Script::_load(zmm::String scriptPath)
+ {
+     if (glob == NULL)
+         initGlobalObject();
+ 
+-    JSObject *scr;
++    JSScript *scr;
+ 
+     String scriptText = read_text_file(scriptPath);
+ 
+@@ -568,7 +568,7 @@ void Script::load(zmm::String scriptPath)
+ }
+ 
+ 
+-void Script::_execute(JSObject *scr)
++void Script::_execute(JSScript *scr)
+ {
+     jsval ret_val;
+ 
+--- a/src/scripting/script.h
++++ b/src/scripting/script.h
+@@ -66,8 +66,8 @@ public:
+     JSRuntime *rt;
+     JSContext *cx;
+     JSObject  *glob;
+-    JSObject  *script;
+-    JSObject  *common_script;
++    JSScript  *script;
++    JSScript  *common_script;
+     
+ public:
+     Script(zmm::Ref<Runtime> runtime);
+@@ -112,11 +112,9 @@ protected:
+     zmm::Ref<CdsObject> processed;
+     
+ private:
+-    JSObject *common_root;
+-
+     void initGlobalObject();
+-    JSObject *_load(zmm::String scriptPath);
+-    void _execute(JSObject *scr);
++    JSScript *_load(zmm::String scriptPath);
++    void _execute(JSScript *scr);
+     zmm::Ref<StringConverter> _p2i;
+     zmm::Ref<StringConverter> _j2i;
+     zmm::Ref<StringConverter> _f2i;
+--- a/configure.ac
++++ b/configure.ac
+@@ -1036,13 +1036,13 @@
+                 ],
+                 [
+                     unset ac_cv_lib_smjs_JS_NewObject
+-                    AC_CHECK_LIB(mozjs185, JS_NewObject,
++                    AC_CHECK_LIB(mozjs187, JS_NewObject,
+                         [
+-                            MOZLIB=mozjs185
+-                            JS_LIBS="-lmozjs185"
++                            MOZLIB=mozjs187
++                            JS_LIBS="-lmozjs187"
+                         ],
+                         [
+-                    unset ac_cv_lib_mozjs185_JS_NewObject
++                    unset ac_cv_lib_mozjs187_JS_NewObject
+                     AC_CHECK_LIB(mozjs, JS_NewObject,
+                         [
+                             MOZLIB=mozjs
+@@ -1064,11 +1064,11 @@
+                                             MOZLIB=smjs
+                                         ],
+                                         [
+-                                    unset ac_cv_lib_mozjs185_JS_NewObject
+-                                    AC_CHECK_LIB(mozjs185, JS_NewObject,
++                                    unset ac_cv_lib_mozjs187_JS_NewObject
++                                    AC_CHECK_LIB(mozjs187, JS_NewObject,
+                                         [
+-                                            JS_LIBS="-L$SEARCH_DIR_LIBS -lmozjs185"
+-                                            MOZLIB=mozjs185
++                                            JS_LIBS="-L$SEARCH_DIR_LIBS -lmozjs187"
++                                            MOZLIB=mozjs187
+                                         ],
+                                         [
+                                             LDFLAGS="-L$SEARCH_DIR_LIBS $LDFLAGS_SAVE -lmozjs"

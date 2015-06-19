@@ -1,0 +1,98 @@
+# ChangeLog for games-arcade/commandergenius
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/commandergenius/ChangeLog,v 1.18 2015/05/13 09:30:12 ago Exp $
+
+  13 May 2015; Agostino Sarubbo <ago@gentoo.org> commandergenius-1.8.0.0.ebuild:
+  Stable for x86, wrt bug #548956
+
+  12 May 2015; Agostino Sarubbo <ago@gentoo.org> commandergenius-1.8.0.0.ebuild:
+  Stable for amd64, wrt bug #548956
+
+  09 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -commandergenius-1.7.4.0.ebuild, -files/commandergenius-1.7.4.0-build.patch,
+  -files/commandergenius-1.7.4.0-install.patch:
+  old
+
+*commandergenius-1.8.0.0 (06 Feb 2015)
+
+  06 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +commandergenius-1.8.0.0.ebuild, +files/commandergenius-1.8.0.0-install.patch:
+  version bump
+
+  27 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -commandergenius-1.7.2.0.ebuild, -commandergenius-1.7.3.0.ebuild:
+  old
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  22 Sep 2014; Julian Ospald <hasufell@gentoo.org>
+  files/commandergenius-1.7.4.0-build.patch:
+  rm bogus linkage wrt #523396
+
+  01 Jul 2014; Julian Ospald <hasufell@gentoo.org>
+  commandergenius-1.7.4.0.ebuild, +files/commandergenius-1.7.4.0-build.patch:
+  fix build wrt #515188
+
+*commandergenius-1.7.4.0 (01 Jun 2014)
+
+  01 Jun 2014; Julian Ospald <hasufell@gentoo.org>
+  +commandergenius-1.7.4.0.ebuild,
+  +files/commandergenius-1.7.4.0-install.patch:
+  version bump
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> commandergenius-1.7.2.0.ebuild,
+  commandergenius-1.7.3.0.ebuild:
+  QA: Fix USE dependency on media-libs/libsdl2, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  23 Apr 2014; Julian Ospald <hasufell@gentoo.org>
+  -commandergenius-1.4.2.ebuild, -commandergenius-1.6.1.ebuild,
+  -commandergenius-1.6.5.3.ebuild, -commandergenius-1.6.5.5.ebuild,
+  -files/commandergenius-1.4.2-build.patch,
+  -files/commandergenius-1.6.1-build.patch:
+  remove old
+
+*commandergenius-1.7.3.0 (23 Apr 2014)
+
+  23 Apr 2014; Julian Ospald <hasufell@gentoo.org>
+  +commandergenius-1.7.3.0.ebuild:
+  version bump
+
+*commandergenius-1.7.2.0 (03 Apr 2014)
+
+  03 Apr 2014; Julian Ospald <hasufell@gentoo.org>
+  +commandergenius-1.7.2.0.ebuild:
+  version bump
+
+*commandergenius-1.6.5.5 (26 Jan 2014)
+
+  26 Jan 2014; Julian Ospald <hasufell@gentoo.org>
+  +commandergenius-1.6.5.5.ebuild:
+  version bump
+
+*commandergenius-1.6.5.3 (30 Dec 2013)
+
+  30 Dec 2013; Julian Ospald <hasufell@gentoo.org>
+  +commandergenius-1.6.5.3.ebuild:
+  version bump
+
+*commandergenius-1.6.1 (20 Aug 2013)
+
+  20 Aug 2013; Julian Ospald <hasufell@gentoo.org>
+  -commandergenius-1.6.0.ebuild, -files/commandergenius-1.6.0-build.patch,
+  +commandergenius-1.6.1.ebuild, +files/commandergenius-1.6.1-build.patch:
+  version bump, remove old
+
+*commandergenius-1.6.0 (16 Aug 2013)
+
+  16 Aug 2013; Julian Ospald <hasufell@gentoo.org>
+  +commandergenius-1.6.0.ebuild, +files/commandergenius-1.6.0-build.patch:
+  version bump
+
+*commandergenius-1.4.2 (09 May 2013)
+
+  09 May 2013; Julian Ospald <hasufell@gentoo.org>
+  +commandergenius-1.4.2.ebuild, +files/commandergenius-1.4.2-build.patch,
+  +files/commandergenius-wrapper, +metadata.xml:
+  initial import wrt #411385

@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/htpdate/files/htpdate.init-r1,v 1.1 2013/08/12 07:43:25 pinkbyte Exp $
+
+description="Synchronizes local system with time offered by remote webservers over HTTP"
+pidfile="/run/htpdate.pid"
+command="/usr/sbin/htpdate"
+command_args="${HTPDATE_OPTS} ${PROXY} ${SERVERS}"
+
+depend() {
+	need net
+	use dns logger
+}
+
+start_pre() {
+	if [ -z "${SERVERS}" ] ; then
+		eerror "You need to set at least one http server to use in /etc/conf.d/htpdate"
+		return 1
+	fi
+}

@@ -1,0 +1,20 @@
+--- a/src/app.c
++++ b/src/app.c
+@@ -1338,8 +1338,15 @@
+   self->priv->statusbar      = rubrica_statusbar_new();
+   
+   self->priv->cutted         = NULL;
+-  self->priv->notify         = notify_notification_new("Rubrica Addressbook",
+-						      NULL, "info", NULL);
++#ifdef NOTIFY_CHECK_VERSION
++#if NOTIFY_CHECK_VERSION (0, 7, 0)
++  self->priv->notify         = notify_notification_new("Rubrica Addressbook", NULL, "info");
++#else
++  self->priv->notify         = notify_notification_new("Rubrica Addressbook", NULL, "info", NULL);
++#endif
++#else
++  self->priv->notify         = notify_notification_new("Rubrica Addressbook", NULL, "info", NULL);
++#endif
+   self->priv->active_plugin  = g_strdup("autodetect");
+   self->priv->manager        = r_lib_get_manager();
+   self->priv->print_settings = NULL;

@@ -1,0 +1,34 @@
+# ChangeLog for kde-misc/plasma-network-status
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/plasma-network-status/ChangeLog,v 1.8 2015/02/11 12:46:09 kensington Exp $
+
+  11 Feb 2015; Michael Palimaka <kensington@gentoo.org> metadata.xml:
+  Remove proxy-maintainers herd.
+
+  10 Feb 2015; Pavlos Ratis <dastergon@gentoo.org> metadata.xml:
+  Drop myself from metadata
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org>
+  plasma-network-status-0.1.1.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org>
+  plasma-network-status-0.1.1.ebuild:
+  Bump to EAPI 5.
+
+  26 Dec 2013; Pavlos Ratis <dastergon@gentoo.org> metadata.xml:
+  change my old email to gentoo email address
+
+  27 May 2013; Michael Palimaka <kensington@gentoo.org>
+  plasma-network-status-0.1.1.ebuild:
+  Use mirror:// in SRC_URI.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*plasma-network-status-0.1.1 (16 Mar 2012)
+
+  16 Mar 2012; Johannes Huber <johu@gentoo.org> +metadata.xml,
+  +plasma-network-status-0.1.1.ebuild:
+  New ebuild wrt bug #407203. Imported from kde overlay and written by Pavlos
+  Ratis <dastergon@gmail.com>.

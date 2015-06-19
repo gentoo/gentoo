@@ -1,0 +1,34 @@
+# ChangeLog for dev-util/icmake
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/icmake/ChangeLog,v 1.6 2015/06/13 20:17:04 radhermit Exp $
+
+*icmake-7.22.01 (13 Jun 2015)
+
+  13 Jun 2015; Tim Harder <radhermit@gentoo.org> +icmake-7.22.01.ebuild:
+  Version bump.
+
+*icmake-7.22.00 (24 Jan 2015)
+
+  24 Jan 2015; Tim Harder <radhermit@gentoo.org> +icmake-7.22.00.ebuild:
+  Version bump.
+
+  17 Oct 2014; Tim Harder <radhermit@gentoo.org> -icmake-7.20.00.ebuild,
+  -icmake-7.21.00.ebuild:
+  Remove old.
+
+*icmake-7.21.01 (23 Jan 2014)
+
+  23 Jan 2014; Tim Harder <radhermit@gentoo.org> +icmake-7.21.01.ebuild:
+  Version bump.
+
+*icmake-7.21.00 (07 Sep 2013)
+
+  07 Sep 2013; Tim Harder <radhermit@gentoo.org> +icmake-7.21.00.ebuild:
+  Version bump.
+
+*icmake-7.20.00 (09 Jun 2013)
+
+  09 Jun 2013; Tim Harder <radhermit@gentoo.org> +icmake-7.20.00.ebuild,
+  +files/icmake-7.20.00-ar.patch, +metadata.xml:
+  Initial import.
+

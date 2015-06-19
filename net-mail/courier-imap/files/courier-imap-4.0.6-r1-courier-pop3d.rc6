@@ -1,0 +1,36 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/courier-imap/files/courier-imap-4.0.6-r1-courier-pop3d.rc6,v 1.4 2014/11/20 10:25:15 mrueg Exp $
+
+depend() {
+	need net courier-authlib
+	use famd
+}
+
+source /etc/courier-imap/pop3d
+
+checkconfig() {
+	if [[ ! -e /etc/courier-imap/pop3d ]] ; then
+		eerror "You need an /etc/courier-imap/pop3d file to run courier-pop3d"
+		return 1
+	fi
+	source /etc/courier-imap/pop3d || {
+		eerror "There are syntax errors in /etc/courier-imap/pop3d"
+		eerror "Please correct them before trying to start courier-pop3d"
+		return 2
+	}
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting courier-pop3d"
+	/usr/bin/env - /usr/GENTOO_LIBDIR/courier-imap/gentoo-pop3d.rc --pidfile ${PIDFILE}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping courier-pop3d"
+	start-stop-daemon --quiet --stop --pidfile ${PIDFILE}
+	eend $?
+}

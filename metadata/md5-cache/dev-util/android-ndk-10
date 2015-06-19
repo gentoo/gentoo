@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install
+DESCRIPTION=Open Handset Alliance's Android NDK (Native Dev Kit)
+EAPI=5
+HOMEPAGE=http://developer.android.com/sdk/ndk/
+IUSE=+target-32 target-64
+KEYWORDS=~amd64 ~x86
+LICENSE=android
+RDEPEND=>=dev-util/android-sdk-update-manager-10 >=sys-devel/make-3.81
+RESTRICT=mirror strip installsources test
+SLOT=0
+SRC_URI=x86? ( target-32? ( http://dl.google.com/android/ndk/android-ndk32-r10-linux-x86.tar.bz2 ) target-64? ( http://dl.google.com/android/ndk/android-ndk64-r10-linux-x86.tar.bz2 ) ) amd64? ( target-32? ( http://dl.google.com/android/ndk/android-ndk32-r10-linux-x86_64.tar.bz2 ) target-64? ( http://dl.google.com/android/ndk/android-ndk64-r10-linux-x86_64.tar.bz2 ) )
+_md5_=f7224e00fa147ca51ce0f79312570700

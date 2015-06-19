@@ -1,0 +1,36 @@
+# ChangeLog for media-libs/liblingoteach
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/liblingoteach/ChangeLog,v 1.8 2014/08/10 21:09:03 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  liblingoteach-0.2.3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> liblingoteach-0.2.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  30 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  liblingoteach-0.2.3.ebuild:
+  add ~x86, bug 284424
+
+  12 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  liblingoteach-0.2.3.ebuild:
+  amd64 stable wrt #284424
+
+*liblingoteach-0.2.3 (24 Apr 2008)
+
+  24 Apr 2008; Samuli Suominen <drac@gentoo.org>
+  -liblingoteach-0.2.1.ebuild, +liblingoteach-0.2.3.ebuild:
+  Version bump.
+
+  03 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  19 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove retired developer from metadata.xml.
+
+*liblingoteach-0.2.1 (30 Dec 2004)
+
+  30 Dec 2004; Chris White <chriswhite@gentoo.org> +metadata.xml,
+  +liblingoteach-0.2.1.ebuild:
+  Initial import as per bug #30583.

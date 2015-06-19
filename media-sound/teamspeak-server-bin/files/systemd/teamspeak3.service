@@ -1,0 +1,21 @@
+[Unit]
+Description=TeamSpeak 3 Server
+After=network.target
+
+[Service]
+Type=simple
+Environment=LD_LIBRARY_PATH=/opt/teamspeak3-server
+WorkingDirectory=/opt/teamspeak3-server
+ExecStartPre=/bin/rm -f /dev/shm/7gbhujb54g8z9hu43jre8
+ExecStart=/opt/teamspeak3-server/ts3server-bin inifile=/etc/teamspeak3-server/server.conf
+ExecStop=/bin/kill -15 $MAINPID
+StandardOutput=syslog
+StandardError=syslog
+User=teamspeak3
+Group=teamspeak3
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+# vim:syntax=dosini

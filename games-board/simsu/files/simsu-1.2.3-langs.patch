@@ -1,0 +1,11 @@
+diff -ru simsu-1.2.3.orig/src/locale_dialog.cpp simsu-1.2.3/src/locale_dialog.cpp
+--- simsu-1.2.3.orig/src/locale_dialog.cpp	2013-02-14 13:17:54.000000000 -0500
++++ simsu-1.2.3/src/locale_dialog.cpp	2013-09-09 16:00:09.449992139 -0400
+@@ -85,6 +85,7 @@
+ 	if (paths.isEmpty()) {
+ 		QString appdir = QCoreApplication::applicationDirPath();
+ 		paths.append(appdir);
++		paths.append("GENTOODATADIR");
+ 		paths.append(appdir + "/../share/" + QCoreApplication::applicationName().toLower());
+ 		paths.append(appdir + "/../Resources");
+ 	}

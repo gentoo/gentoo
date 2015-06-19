@@ -1,0 +1,75 @@
+# ChangeLog for games-fps/eduke32
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/eduke32/ChangeLog,v 1.13 2015/01/26 22:18:49 mr_bones_ Exp $
+
+  26 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -eduke32-20130317.3572-r1.ebuild, -eduke32-20130627.3905.ebuild,
+  -files/eduke32-20130317.3572-QA.patch,
+  -files/eduke32-20130317.3572-libpng-1.6.patch,
+  -files/eduke32-20130627.3905-QA.patch:
+  old
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  01 Jun 2014; Julian Ospald <hasufell@gentoo.org>
+  eduke32-20131119.4169.ebuild:
+  stable
+
+  04 May 2014; Julian Ospald <hasufell@gentoo.org>
+  eduke32-20131119.4169.ebuild:
+  fix build with clang
+
+*eduke32-20131119.4169 (22 Nov 2013)
+
+  22 Nov 2013; Julian Ospald <hasufell@gentoo.org>
+  -eduke32-20130207.3467.ebuild, -files/eduke32-20130207.3467-QA.patch,
+  -eduke32-20130317.3572.ebuild, +eduke32-20131119.4169.ebuild,
+  +files/eduke32-20131119.4169-QA.patch, metadata.xml:
+  version bump, remove old
+
+*eduke32-20130627.3905 (28 Jun 2013)
+
+  28 Jun 2013; Julian Ospald <hasufell@gentoo.org>
+  +eduke32-20130627.3905.ebuild, +files/eduke32-20130627.3905-QA.patch:
+  version bump
+
+  11 Apr 2013; Julian Ospald <hasufell@gentoo.org>
+  eduke32-20130317.3572-r1.ebuild,
+  +files/eduke32-20130317.3572-libpng-1.6.patch:
+  fix build with libpng-1.6
+
+  11 Apr 2013; Julian Ospald <hasufell@gentoo.org>
+  eduke32-20130317.3572-r1.ebuild:
+  fix x86 build wrt #465442
+
+*eduke32-20130317.3572-r1 (20 Mar 2013)
+
+  20 Mar 2013; Julian Ospald <hasufell@gentoo.org>
+  +eduke32-20130317.3572-r1.ebuild, metadata.xml:
+  add offensive, opl-musicpack, sc55-musicpack, textures useflags wrt #172183
+
+*eduke32-20130317.3572 (17 Mar 2013)
+
+  17 Mar 2013; Julian Ospald <hasufell@gentoo.org>
+  -eduke32-20130201.3453.ebuild, -files/eduke32-20130201.3453-QA.patch,
+  eduke32-20130207.3467.ebuild, +eduke32-20130317.3572.ebuild,
+  +files/eduke32-20130317.3572-QA.patch:
+  version bump, add gtk+ useflag
+
+*eduke32-20130207.3467 (09 Feb 2013)
+
+  09 Feb 2013; Julian Ospald <hasufell@gentoo.org>
+  +eduke32-20130207.3467.ebuild, +files/eduke32-20130207.3467-QA.patch:
+  version bump
+
+  09 Feb 2013; Julian Ospald <hasufell@gentoo.org>
+  files/eduke32-20130201.3453-QA.patch:
+  fix build on clang
+
+*eduke32-20130201.3453 (02 Feb 2013)
+
+  02 Feb 2013; Julian Ospald <hasufell@gentoo.org>
+  +eduke32-20130201.3453.ebuild, +files/eduke32-20130201.3453-QA.patch,
+  +metadata.xml:
+  initial import wrt #172183

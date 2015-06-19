@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>net-im</herd>
+	<maintainer>
+		<email>slyfox@gentoo.org</email>
+		<name>Sergei Trofimovich</name>
+	</maintainer>
+	<longdescription>
+		Openfire is a Java implementation of a complete Jabber
+		server.  It includes a web based administration interface, conference
+		support and a web/client support system.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,45 @@
+# ChangeLog for media-plugins/vdr-dvbhddevice
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-dvbhddevice/ChangeLog,v 1.7 2015/02/20 12:46:49 hd_brummy Exp $
+
+*vdr-dvbhddevice-2.1.6_p20141116-r1 (20 Feb 2015)
+
+  20 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-dvbhddevice-2.1.6_p20141116-r1.ebuild:
+  new snapshot 2014/11/16
+
+*vdr-dvbhddevice-2.1.3_p20140115-r1 (11 Feb 2015)
+
+  11 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-dvbhddevice-2.1.3_p20140115-r1.ebuild:
+  compilefix >=vdr-2.1.10
+
+  03 Jan 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-dvbhddevice-2.1.3_p20140115.ebuild:
+  stable amd64 x86
+
+*vdr-dvbhddevice-2.1.3_p20140115 (20 Jan 2014)
+
+  20 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-dvbhddevice-0.2.3_p20140115.ebuild,
+  +vdr-dvbhddevice-2.1.3_p20140115.ebuild:
+  fixed wrong commit, thx to M.Dummer for the hint
+
+*vdr-dvbhddevice-0.2.3_p20140115 (19 Jan 2014)
+
+  19 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-dvbhddevice-0.2.3_p20140115.ebuild:
+  bump
+
+*vdr-dvbhddevice-0.0.9_p20130409 (14 Apr 2013)
+
+  14 Apr 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-dvbhddevice-0.0.9_p20130409.ebuild:
+  new snapshot
+
+*vdr-dvbhddevice-0.0.8_p20130302 (31 Mar 2013)
+
+  31 Mar 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-dvbhddevice-0.0.8_p20130302.ebuild, +metadata.xml:
+  new package
+

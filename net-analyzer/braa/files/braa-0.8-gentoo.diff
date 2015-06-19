@@ -1,0 +1,24 @@
+--- a/Makefile
++++ b/Makefile
+@@ -4,8 +4,6 @@
+ ###################################################################
+ 
+ # Linux, FreeBSD, OpenBSD
+-CFLAGS = 
+-LDFLAGS = 
+ 
+ # Solaris / SPARC
+ # CFLAGS = -DSOLARIS_SPARC
+@@ -24,9 +22,8 @@
+ LIBS = 
+ 
+ all: ${OBJECTS}
+-	cc $(OBJECTS) -o $(OUT) $(LDFLAGS) $(LIBS)
+-	strip $(OUT)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJECTS) -o $(OUT) $(LIBS)
+ 
+ clean:
+ 	rm -rf $(OBJECTS) $(OUT)
+-	
+\ No newline at end of file
++	

@@ -1,0 +1,91 @@
+# ChangeLog for net-analyzer/bwping
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/bwping/ChangeLog,v 1.20 2015/01/11 11:42:41 hwoarang Exp $
+
+  11 Jan 2015; Markos Chandras <hwoarang@gentoo.org> bwping-1.7-r1.ebuild,
+  files/bwping-1.7-buildsystem-configurable-ipv6.patch:
+  Revert latest commit for bug #530420. We shouldn't care if we can't support
+  the ipv6 case. We only need know whether we can build the support for it. So
+  replace RUN with LINK. This may also fix bug #536184
+
+  20 Dec 2014; Markos Chandras <hwoarang@gentoo.org> bwping-1.7-r1.ebuild:
+  Make sure IPV6 is enabled in the kernel if the ipv6 useflag is set. Bug
+  #530420
+
+  10 Jul 2014; Jeroen Roovers <jer@gentoo.org> -bwping-1.4.ebuild,
+  -bwping-1.7.ebuild, files/bwping-1.7-buildsystem-configurable-ipv6.patch:
+  Clean up patch.
+
+  22 Feb 2014; Agostino Sarubbo <ago@gentoo.org> bwping-1.7-r1.ebuild:
+  Stable for x86, wrt bug #495828
+
+  09 Feb 2014; Chema Alonso <nimiux@gentoo.org> bwping-1.7-r1.ebuild:
+  Stable for amd64 wrt bug #495828
+
+  16 Jul 2013; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Add package to netmon herd, add upstream maintainer info
+
+*bwping-1.7-r1 (16 Jul 2013)
+
+  16 Jul 2013; Sergey Popov <pinkbyte@gentoo.org> +bwping-1.7-r1.ebuild,
+  +files/bwping-1.7-buildsystem-configurable-ipv6.patch:
+  Revision bump: migrate to autotools-utils eclass, support for ipv6 with
+  apropriate patch for buildsystem, wrt bug #454256
+
+  19 Feb 2013; Markos Chandras <hwoarang@gentoo.org> -bwping-1.5.ebuild,
+  -bwping-1.6.ebuild:
+  Remove old
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> bwping-1.7.ebuild:
+  Stable for x86, wrt bug #454000
+
+  27 Jan 2013; Agostino Sarubbo <ago@gentoo.org> bwping-1.7.ebuild:
+  Stable for amd64, wrt bug #454000
+
+*bwping-1.7 (08 Dec 2012)
+
+  08 Dec 2012; Markos Chandras <hwoarang@gentoo.org> +bwping-1.7.ebuild:
+  Version bump
+
+*bwping-1.6 (14 Oct 2012)
+
+  14 Oct 2012; Markos Chandras <hwoarang@gentoo.org> +bwping-1.6.ebuild,
+  -bwping-1.2.ebuild:
+  Version bump
+
+*bwping-1.5 (27 Sep 2012)
+
+  27 Sep 2012; Markos Chandras <hwoarang@gentoo.org> +bwping-1.5.ebuild:
+  Version bump
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> bwping-1.4.ebuild:
+  x86 stable wrt bug #400419
+
+  26 Jan 2012; Markos Chandras <hwoarang@gentoo.org> bwping-1.4.ebuild:
+  Stable on amd64 wrt bug #400419
+
+*bwping-1.4 (26 Aug 2011)
+
+  26 Aug 2011; Markos Chandras <hwoarang@gentoo.org> +bwping-1.4.ebuild:
+  Version bump
+
+  17 Jul 2010; Markos Chandras <hwoarang@gentoo.org> bwping-1.2.ebuild:
+  Stable on amd64 wrt bug #328265
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org> bwping-1.2.ebuild:
+  stable x86, bug 328265
+
+*bwping-1.2 (05 Jun 2010)
+
+  05 Jun 2010; Markos Chandras <hwoarang@gentoo.org> +bwping-1.2.ebuild,
+  +metadata.xml:
+  Moved from sunrise overlay. Fixes bug #236231. Thanks to Oleg Derevenetz
+  (OlegD) <oleg@vsi.ru> for the sunrise ebuild
+
+  02 Sep 2008; Peter Volkov <pva@gentoo.org> metadata.xml:
+  Fixing metadata.xml to follow sunrise specifications: herd should be
+  maintainer-wanted and no maintainer required.
+
+  02 Sep 2008; Oleg Derevenetz (OlegD) <oleg@vsi.ru> +bwping-1.0.ebuild,
+  +metadata.xml:
+  New Ebuild for bug 236231 thanks to Peter Volkov

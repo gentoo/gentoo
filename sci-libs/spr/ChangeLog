@@ -1,0 +1,17 @@
+# ChangeLog for sci-libs/spr
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/spr/ChangeLog,v 1.2 2012/08/03 22:37:37 bicatali Exp $
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> spr-3.3.2.ebuild:
+  keyword amd64-linux x86-linux
+
+*spr-3.3.2 (04 May 2011)
+
+  04 May 2011; Sébastien Fabbro <bicatali@gentoo.org> +spr-3.3.2.ebuild,
+  +files/spr-3.3.2-autotools.patch, +files/spr-3.3.2-gcc46.patch,
+  +metadata.xml:
+  Version bump and import to the main tree
+
+  12 Dec 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/spr-3.3.1-autotools.patch, +metadata.xml, +spr-3.3.1.ebuild:
+  Initial import

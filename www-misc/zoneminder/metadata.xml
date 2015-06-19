@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>dilfridge@gentoo.org</email>
+		<name>Andreas K. Huettel</name>
+	</maintainer>
+	<use>
+		<flag name="curl">Enable using net-misc/curl for streaming from cameras</flag>
+		<flag name="gcrypt">...</flag>
+		<flag name="vlc">Enable using media-libs/vlc for streaming from cameras</flag>
+		<flag name="openssl">...</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ZoneMinder/ZoneMinder</remote-id>
+	</upstream>
+</pkgmetadata>

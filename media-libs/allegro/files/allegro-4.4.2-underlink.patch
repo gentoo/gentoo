@@ -1,0 +1,11 @@
+--- CMakeLists.txt.old	2011-06-06 23:46:06.057320691 +0200
++++ CMakeLists.txt	2011-06-06 23:46:21.900313261 +0200
+@@ -392,7 +392,7 @@
+         message(FATAL_ERROR "Unix port requires pthreads support.")
+     endif()
+     set(ALLEGRO_HAVE_LIBPTHREAD 1)
+-    list(APPEND PLATFORM_LIBS m ${CMAKE_THREAD_LIBS_INIT})
++    list(APPEND PLATFORM_LIBS dl m ${CMAKE_THREAD_LIBS_INIT})
+     list(APPEND PLATFORM_SOURCES ${ALLEGRO_SRC_UNIX_FILES})
+ 
+     if(WANT_OSS)

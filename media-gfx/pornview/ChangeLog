@@ -1,0 +1,204 @@
+# ChangeLog for media-gfx/pornview
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/pornview/ChangeLog,v 1.54 2012/12/21 00:51:54 hasufell Exp $
+
+  21 Dec 2012; Julian Ospald <hasufell@gentoo.org>
+  -pornview-0.2.0_pre1-r2.ebuild, -files/pornview-0.2.0_pre1-4.diff,
+  -files/pornview-0.2.0_pre1-autoconf.patch,
+  -files/pornview-0.2.0_pre1-desktop-entry.patch,
+  -files/pornview-0.2.0_pre1-fix-array-boundaries.patch,
+  -files/pornview-0.2.0_pre1-fix-segfault-comment.patch,
+  -files/pornview-0.2.0_pre1-libpng15.patch,
+  -files/pornview-0.2.0_pre1-new-gtk-object-system.diff,
+  -files/pornview-0.2.0_pre1-underlinking.patch, -files/traypatch.diff:
+  remove old
+
+  21 Dec 2012; Julian Ospald <hasufell@gentoo.org> pornview-0.2.2.ebuild:
+  ppc stable wrt #445089
+
+  16 Dec 2012; Julian Ospald <hasufell@gentoo.org> pornview-0.2.2.ebuild:
+  x86 stable wrt #445089
+
+  01 Dec 2012; <ago@gentoo.org> pornview-0.2.2.ebuild:
+  Stable for amd64, wrt bug #445089
+
+*pornview-0.2.2 (30 Nov 2012)
+
+  30 Nov 2012; Julian Ospald <hasufell@gentoo.org> -pornview-0.2.1.ebuild,
+  +pornview-0.2.2.ebuild:
+  version bump, remove old
+
+*pornview-0.2.1 (31 Oct 2012)
+
+  31 Oct 2012; Julian Ospald <hasufell@gentoo.org> +pornview-0.2.1.ebuild:
+  version bump, fixes bug 440358
+
+  28 Oct 2012; Julian Ospald <hasufell@gentoo.org>
+  pornview-0.2.0_pre1-r2.ebuild, +files/pornview-0.2.0_pre1-autoconf.patch,
+  +files/pornview-0.2.0_pre1-underlinking.patch, metadata.xml:
+  adopt package, fix underlinking wrt #403031
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> pornview-0.2.0_pre1-r2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  18 Jan 2012; Jeroen Roovers <jer@gentoo.org> pornview-0.2.0_pre1-r2.ebuild:
+  Link to libm too (bug #369649).
+
+  23 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -pornview-0.2.0_pre1-r1.ebuild:
+  old
+
+  15 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  pornview-0.2.0_pre1-r2.ebuild:
+  ppc stable wrt #385209
+
+  04 Oct 2011; Andreas Schuerch <nativemad@gentoo.org>
+  pornview-0.2.0_pre1-r2.ebuild:
+  x86 stable, bug 385209
+
+  04 Oct 2011; Tony Vroon <chainsaw@gentoo.org> pornview-0.2.0_pre1-r2.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo,
+  Elijah "Armageddon" El Lazkani & Tomáš "Mepho" Pružina in bug #385209.
+
+  08 Aug 2011; Samuli Suominen <ssuominen@gentoo.org>
+  pornview-0.2.0_pre1-r2.ebuild, +files/pornview-0.2.0_pre1-libpng15.patch:
+  Fix building with libpng15 wrt #378173 by Diego Elio Pettenò. Make
+  compatible with the gold linker.
+
+  28 Mar 2011; Christoph Mende <angelos@gentoo.org>
+  pornview-0.2.0_pre1-r1.ebuild, pornview-0.2.0_pre1-r2.ebuild:
+  Fixed gtk+ dep
+
+*pornview-0.2.0_pre1-r2 (25 Feb 2011)
+
+  25 Feb 2011; Kevin McCarthy <signals@gentoo.org>
+  +pornview-0.2.0_pre1-r2.ebuild:
+  Disable gcc optimization in comment.c to fix #325879. Revbump for
+  runtime fix. Drop mplayer use flag.
+
+  25 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  pornview-0.2.0_pre1-r1.ebuild:
+  EAPI=4 in stable... perkele...
+
+  25 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  pornview-0.2.0_pre1-r1.ebuild,
+  +files/pornview-0.2.0_pre1-fix-array-boundaries.patch,
+  +files/pornview-0.2.0_pre1-fix-segfault-comment.patch:
+  Fix segmentation fault in comments and qa array boundaries warning.
+
+  09 Jul 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update metadata.xml. antarus is staffer now (#119161)
+
+  28 Sep 2009; Víctor Ostorga <vostorga@gentoo.org>
+  pornview-0.2.0_pre1-r1.ebuild,
+  +files/pornview-0.2.0_pre1-new-gtk-object-system.diff:
+  Fixing object system definitions, patch thanks to
+  <tbartdev@gmx-topmail.de> bug 247733
+
+  27 Apr 2008; Jeroen Roovers <jer@gentoo.org>
+  pornview-0.2.0_pre1-r1.ebuild:
+  Not ported to HPPA.
+
+  21 Apr 2008; Samuli Suominen <drac@gentoo.org>
+  +files/pornview-0.2.0_pre1-desktop-entry.patch, -files/gtkxine.diff,
+  pornview-0.2.0_pre1-r1.ebuild:
+  Insert missing Categories entry.
+
+  21 Apr 2008; Samuli Suominen <drac@gentoo.org>
+  -pornview-0.2.0_pre1.ebuild, pornview-0.2.0_pre1-r1.ebuild:
+  Remove invalid USE static. Move pkgconfig to DEPEND from RDEPEND. Install
+  .desktop file to correct directory.
+
+  13 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  fix herd
+
+  19 Jan 2007; Charlie Shepherd <masterdriverz@gentoo.org>
+  pornview-0.2.0_pre1.ebuild, pornview-0.2.0_pre1-r1.ebuild:
+  QA: remove invalid RESTRICT="mirror"
+
+  27 Oct 2006; <antarus@gentoo.org> metadata.xml,
+  pornview-0.2.0_pre1.ebuild, pornview-0.2.0_pre1-r1.ebuild:
+  add pkgconfig dep for bug #153067
+
+*pornview-0.2.0_pre1-r1 (19 Sep 2006)
+
+  19 Sep 2006; <antarus@gentoo.org> files/pornview-0.2.0_pre1-4.diff,
+  +files/traypatch.diff, +metadata.xml, +pornview-0.2.0_pre1-r1.ebuild:
+  Pushing in some fixes thanks to Ben Hodgetts and bug # 141588
+
+  19 Nov 2005; John N. Laliberte <allanonjl@gentoo.org>
+  pornview-0.2.0_pre1.ebuild:
+  remove gtk2 useflag.
+
+  07 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  pornview-0.2.0_pre1.ebuild:
+  Don't assume ld is GNU ld.
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  01 Aug 2005; <sekretarz@gentoo.org> +files/gtkxine.diff,
+  pornview-0.2.0_pre1.ebuild:
+  Fixed problems with libxine and gtk, thanks Roland Bär <roland@pinguin.tv> 
+  in bug #81179
+
+  07 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  pornview-0.2.0_pre1.ebuild:
+  Added to ~hppa.
+
+  16 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
+  pornview-0.2.0_pre1.ebuild:
+  Added to ~sparc.
+
+  04 Oct 2004; Patrick Kursawe <phosphan@gentoo.org> -pornview-0.1.5.ebuild:
+  Removing ancient version which depended on no-longer existing xine-lib.
+
+  06 Sep 2004; Lars Weiler <pylon@gentoo.org> pornview-0.2.0_pre1.ebuild:
+  Stable on ppc.
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org> pornview-0.2.0_pre1.ebuild:
+  Fix use invocation
+
+  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> pornview-0.2.0_pre1.ebuild :
+  Stable on AMD64.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> pornview-0.2.0_pre1.ebuild:
+  Add inherit eutils
+
+  28 Mar 2004; Jon Portnoy <avenj@gentoo.org> pornview-0.2.0_pre1.ebuild :
+  AMD64 keywords.
+
+  06 Dec 2003; <spider@gentoo.org> pornview-0.2.0_pre1.ebuild:
+  Fixed gtk2 deps
+
+  16 Nov 2003; Martin Holzer <mholzer@gentoo.org> pornview-0.2.0_pre1.ebuild,
+  files/pornview-0.2.0_pre1-4.diff:
+  Adding thumbnails patch. Closes #32074
+
+  19 Oct 2003; Martin Holzer <mholzer@gentoo.org> pornview-0.2.0_pre1.ebuild:
+  x86 stable.
+
+*pornview-0.2.0_pre1 (25 Jul 2003)
+
+  25 Jul 2003; Nick Hadaway <raker@gentoo.org> pornview-0.2.0_pre1.ebuild:
+  This build now includes the previously missing/old mplayer/xine 
+  support.  Added gtk2, nls, static, and jpeg USE flags.  As mplayer
+  and xine support cannot be installed at the same time, xine takes
+  preference over mplayer.
+
+*pornview-0.1.5 (29 Dec 2002)
+
+  01 Feb 2003; Mark Guertin <gerk@gentoo.org> pornview-0.1.5.ebuild :
+  Set ppc stable in keywords.
+
+  29 Dec 2002; Martin Holzer <mholzer@gentoo.org> pornview-0.1.5.ebuild files/digest-pornview-0.1.5 ChangeLog :
+  Version pumped. Sorry still no mplayer support
+
+*pornview-0.1.4 (15 Dec 2002)
+
+  18 Dec 2002; Martin Holzer <mholzer@gentoo.org> pornview-0.1.4.ebuild :
+  Fixed Dependeny (#12366) doesn't work with xine-lib >=0.9.13) i've added a bug on sf for this
+
+  15 Dec 2002; Martin Holzer <mholzer@gentoo.org> pornview-0.1.4.ebuild files/digest-pornview-0.1.4 Changelog :
+  Added nev Version. Sorry mplayer support is broken by pornview itself. So it's disabled
+

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>mips</herd>
+	<longdescription>
+		ARCLoad - SGI Multi-bootloader.  Able to bootload many different SGI Systems.
+	</longdescription>
+</pkgmetadata>
+

@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/guacamole-server/files/guacd,v 1.1 2015/06/13 09:15:22 nativemad Exp $
+
+DAEMON="/usr/sbin/guacd"
+PIDFILE="/run/guacd/guacd"
+
+depend() {
+    use net
+}
+
+start() {
+    checkpath -q -d -m 0755 -o guacd:guacd /run/guacd/
+    ebegin "Starting guacd"
+    start-stop-daemon --start --user guacd:guacd --exec "${DAEMON}" -- -p "${PIDFILE}"
+    eend $? "Failed to start guacd"
+}
+
+stop() {
+    ebegin "Stopping guacd"
+    start-stop-daemon --stop --pidfile "${PIDFILE}"
+    eend $? "Failed to stop guacd"
+}

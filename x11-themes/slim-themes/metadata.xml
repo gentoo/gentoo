@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>desktop-misc</herd>
+	<maintainer>
+		<email>axs@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">slim.berlios</remote-id>
+	</upstream>
+</pkgmetadata>

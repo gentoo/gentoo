@@ -1,0 +1,43 @@
+# ChangeLog for games-rpg/arx-fatalis-data
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/arx-fatalis-data/ChangeLog,v 1.8 2014/09/22 23:05:00 hasufell Exp $
+
+  22 Sep 2014; Julian Ospald <hasufell@gentoo.org>
+  arx-fatalis-data-1.21-r2.ebuild:
+  update license to more generic GOG-EULA
+
+  06 Jul 2013; Julian Ospald <hasufell@gentoo.org>
+  arx-fatalis-data-1.21-r2.ebuild:
+  stable amd64, x86 wrt #474384
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*arx-fatalis-data-1.21-r2 (14 Mar 2013)
+
+  14 Mar 2013; Julian Ospald <hasufell@gentoo.org>
+  +arx-fatalis-data-1.21-r2.ebuild:
+  revbump: bump EAPI, rework linguas logic, add gog useflag
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  arx-fatalis-data-1.21-r1.ebuild:
+  Stable for x86, wrt bug #428222
+
+  11 Aug 2012; Agostino Sarubbo <ago@gentoo.org>
+  arx-fatalis-data-1.21-r1.ebuild:
+  Stable for amd64, wrt bug #428222
+
+*arx-fatalis-data-1.21-r1 (30 Jun 2012)
+
+  30 Jun 2012; Julian Ospald <hasufell@gentoo.org>
+  -arx-fatalis-data-1.21.ebuild, +arx-fatalis-data-1.21-r1.ebuild,
+  metadata.xml:
+  add proxy-maintainer, fix installation for custom PORTAGE_TMPDIR, don't
+  assume any case for .pak files, support languages for the patch so we get
+  updated loc.pak
+
+*arx-fatalis-data-1.21 (29 Jun 2012)
+
+  29 Jun 2012; Julian Ospald <hasufell@gentoo.org>
+  +arx-fatalis-data-1.21.ebuild, +metadata.xml:
+  initial import

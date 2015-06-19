@@ -1,0 +1,13 @@
+# ChangeLog for app-admin/logstash-bin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/logstash-bin/ChangeLog,v 1.1 2015/04/14 11:21:06 idella4 Exp $
+
+*logstash-bin-1.4.2 (14 Apr 2015)
+
+  14 Apr 2015; Ian Delaney <idella4@gentoo.org> +files/agent.conf.sample,
+  +files/logstash.confd, +files/logstash.initd, +files/logstash.logrotate,
+  +logstash-bin-1.4.2.ebuild, +metadata.xml:
+  new ebuild to complete the ELK set (elasticsearch logstash kibabana), a binary
+  style ebuild written by Tomas Mozes, run tested and checked by myself, entered
+  under proxy-maint herd, cannot close bug 447192 since that requires a full
+  source build with deps

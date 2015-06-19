@@ -1,0 +1,18 @@
+# ChangeLog for net-wireless/mfoc
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/mfoc/ChangeLog,v 1.3 2013/12/20 01:13:43 mrueg Exp $
+
+*mfoc-0.10.7 (20 Dec 2013)
+
+  20 Dec 2013; Manuel Rüger <mrueg@gentoo.org> +mfoc-0.10.7.ebuild,
+  -mfoc-0.10.6.ebuild:
+  Version bump. Cleanup old.
+
+  24 Sep 2013; Manuel Rüger <mrueg@gentoo.org> mfoc-0.10.6.ebuild:
+  Fix HOMEPAGE. Thanks to Nikoli for reporting.
+
+*mfoc-0.10.6 (24 Sep 2013)
+
+  24 Sep 2013; Manuel Rüger <mrueg@gentoo.org> +metadata.xml,
+  +mfoc-0.10.6.ebuild:
+  Initial version. Original ebuild from pentoo-overlay.

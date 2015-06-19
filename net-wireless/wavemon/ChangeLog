@@ -1,0 +1,229 @@
+# ChangeLog for net-wireless/wavemon
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/wavemon/ChangeLog,v 1.61 2014/08/02 18:30:54 armin76 Exp $
+
+  02 Aug 2014; Raúl Porcel <armin76@gentoo.org> wavemon-0.7.6.ebuild:
+  sparc stable wrt #516690
+
+  19 Jul 2014; Jeroen Roovers <jer@gentoo.org> wavemon-0.7.6.ebuild,
+  files/wavemon-0.6.7-dont-override-CFLAGS.patch,
+  files/wavemon-0.7.5-ncurses-tinfo.patch,
+  files/wavemon-0.7.6-ncurses-tinfo.patch:
+  Stable for HPPA (bug #516690).
+
+  15 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> wavemon-0.7.6.ebuild:
+  ppc stable wrt bug #516690
+
+  15 Jul 2014; Sergey Popov <pinkbyte@gentoo.org> wavemon-0.7.6.ebuild:
+  Stable on amd64/arm/x86, wrt bug #516690
+
+*wavemon-0.7.6 (16 May 2014)
+
+  16 May 2014; Sergey Popov <pinkbyte@gentoo.org> +wavemon-0.7.6.ebuild,
+  +files/wavemon-0.7.6-ncurses-tinfo.patch:
+  Version bump
+
+  06 Mar 2014; Sergey Popov <pinkbyte@gentoo.org> wavemon-0.7.5.ebuild,
+  +files/wavemon-0.7.5-ncurses-tinfo.patch:
+  Bump EAPI to 5, fix building with sys-libs/ncurses[tinfo], wrt bug #503494,
+  thanks to Stefan Huber <shuber-bgo AT sthu.org>
+
+  19 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> wavemon-0.7.5.ebuild:
+  Stable on arm, wrt bug #448406
+
+  17 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Assign myself as maintainer
+
+  30 Dec 2012; Michael Palimaka <kensington@gentoo.org>
+  -files/wavemon-0.6.7-as-needed.diff, -wavemon-0.7.1.ebuild,
+  -wavemon-0.7.2.ebuild:
+  Remove old.
+
+  30 Dec 2012; Agostino Sarubbo <ago@gentoo.org> wavemon-0.7.5.ebuild:
+  Stable for sparc, wrt bug #448406
+
+  29 Dec 2012; Jeroen Roovers <jer@gentoo.org> wavemon-0.7.5.ebuild:
+  Stable for HPPA (bug #448406).
+
+  27 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> wavemon-0.7.5.ebuild:
+  Add ~arm keyword
+
+  25 Dec 2012; Anthony G. Basile <blueness@gentoo.org> wavemon-0.7.5.ebuild:
+  stable ppc, bug #448406, thanks peratu
+
+  25 Dec 2012; Agostino Sarubbo <ago@gentoo.org> wavemon-0.7.5.ebuild:
+  Stable for amd64, wrt bug #448406
+
+  25 Dec 2012; Jeff Horelick <jdhore@gentoo.org> wavemon-0.7.5.ebuild:
+  marked x86 per bug 448406
+
+  24 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> wavemon-0.7.1.ebuild,
+  wavemon-0.7.2.ebuild, wavemon-0.7.5.ebuild:
+  Fix automagic dependency on sys-libs/libcap, add USE-flag 'caps'. Thanks to
+  Vicente Olivert Riera for discovering this issue
+
+  20 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> wavemon-0.7.5.ebuild:
+  Remove reduntant inherit of eutils eclass
+
+  20 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> wavemon-0.7.5.ebuild:
+  Install missing man files wrt bug #397807. Thanks to Nikoli for discovering
+  this issue
+
+*wavemon-0.7.5 (20 Nov 2012)
+
+  20 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> +wavemon-0.7.5.ebuild:
+  Version bump wrt bug #397807
+
+  20 Nov 2012; Sergey Popov <pinkbyte@gentoo.org>
+  +files/wavemon-0.6.7-dont-override-CFLAGS.patch:
+  Restore mistakenly dropped patch file
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org>
+  -files/wavemon-0.4.0b-asneeded.patch, -files/wavemon-0.4.0b-includes.patch,
+  -files/wavemon-0.6.7-dont-override-CFLAGS.patch,
+  -files/wavemon-gcc-fixes.patch, -wavemon-0.4.0b-r2.ebuild,
+  -wavemon-0.4.0b.ebuild, -wavemon-0.6.7.ebuild, metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+  21 May 2012; Kacper Kowalik <xarthisius@gentoo.org> wavemon-0.6.7.ebuild,
+  wavemon-0.7.1.ebuild, wavemon-0.7.2.ebuild:
+  Add missing inheritance of eutils.eclass
+
+  05 Apr 2011; Jeroen Roovers <jer@gentoo.org> wavemon-0.7.1.ebuild:
+  Stable for HPPA (bug #352805).
+
+  01 Apr 2011; Michael Weber <xmw@gentoo.org> wavemon-0.7.1.ebuild:
+  ppc stable (bug 352805)
+
+  31 Mar 2011; Michael Weber <xmw@gentoo.org> wavemon-0.7.1.ebuild:
+  sparc stable (bug 352805)
+
+*wavemon-0.7.2 (31 Mar 2011)
+
+  31 Mar 2011; Michael Weber <xmw@gentoo.org> +wavemon-0.7.2.ebuild:
+  Version bump (bug 361435), thanks to betelgeuse and bangert for permission
+
+  31 Mar 2011; Michael Weber <xmw@gentoo.org> wavemon-0.6.7.ebuild:
+  ppc/sparc stable (bug 352810)
+
+  18 Mar 2011; Thomas Kahle <tomka@gentoo.org> wavemon-0.6.7.ebuild,
+  wavemon-0.7.1.ebuild:
+  x86 stable per bug 352810
+
+  18 Mar 2011; Thomas Kahle <tomka@gentoo.org> wavemon-0.6.7.ebuild:
+  x86 stable per bug 352810
+
+  02 Feb 2011; Jeroen Roovers <jer@gentoo.org> wavemon-0.6.7.ebuild:
+  Stable for HPPA (bug #352810).
+
+  26 Jan 2011; Markos Chandras <hwoarang@gentoo.org> wavemon-0.7.1.ebuild:
+  Stable on amd64 wrt bug #352810
+
+  26 Jan 2011; Thilo Bangert <bangert@gentoo.org> wavemon-0.6.7.ebuild,
+  +files/wavemon-0.6.7-dont-override-CFLAGS.patch, wavemon-0.7.1.ebuild:
+  Respect CFLAGS for real (#241096)
+
+  26 Jan 2011; Thilo Bangert <bangert@gentoo.org> -wavemon-0.3.3.ebuild,
+  -wavemon-0.4.0b-r1.ebuild:
+  cleanup old versions
+
+*wavemon-0.7.1 (26 Jan 2011)
+
+  26 Jan 2011; Thilo Bangert <bangert@gentoo.org> +wavemon-0.7.1.ebuild:
+  version bump (#327813), EAPI=3, license changed to GPL-3
+
+  17 Oct 2009; Hanno Boeck <hanno@gentoo.org> wavemon-0.6.7.ebuild,
+  +files/wavemon-0.6.7-as-needed.diff:
+  Fix for --as-needed.
+
+*wavemon-0.6.7 (16 Oct 2009)
+
+  16 Oct 2009; Thilo Bangert <bangert@gentoo.org> +wavemon-0.6.7.ebuild:
+  version bump
+
+  02 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  wavemon-0.4.0b-r2.ebuild, +files/wavemon-0.4.0b-asneeded.patch:
+  Add patch to build with --as-needed by Kevin Pyle, closes bug #248197.
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Peter Johanson (latexer, #206688) from metadata.xml.
+
+  26 Dec 2007; Guy Martin <gmsoft@gentoo.org> wavemon-0.4.0b-r2.ebuild:
+  Added hppa to KEYWORDS.
+
+  17 Mar 2007; nixnut <nixnut@gentoo.org> wavemon-0.4.0b-r2.ebuild:
+  Stable on ppc wrt bug 171052
+
+  15 Mar 2007; Simon Stelling <blubb@gentoo.org> wavemon-0.4.0b-r2.ebuild:
+  stable on amd64; bug 171052
+
+  15 Mar 2007; Raúl Porcel <armin76@gentoo.org> wavemon-0.4.0b-r2.ebuild:
+  x86 stable wrt bug 171052
+
+*wavemon-0.4.0b-r2 (10 Feb 2007)
+
+  10 Feb 2007; Christian Heim <phreak@gentoo.org>
+  +files/wavemon-0.4.0b-includes.patch, +wavemon-0.4.0b-r2.ebuild:
+  Fixing compilation with kernel >= 2.6.19, thanks to Paul Healy <lmiphay at
+  gmail.com> in #164743.
+
+  28 Jun 2006; Daniel Gryniewicz <dang@gentoo.org> wavemon-0.4.0b-r1.ebuild:
+  Marked stable on amd64 per bug# 137977
+
+  25 Jun 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  wavemon-0.4.0b-r1.ebuild:
+  ppc stable
+
+  07 Jun 2006; Henrik Brix Andersen <brix@gentoo.org>
+  wavemon-0.4.0b-r1.ebuild:
+  Stable on x86.
+
+*wavemon-0.4.0b-r1 (14 Jan 2006)
+
+  14 Jan 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +wavemon-0.4.0b-r1.ebuild:
+  Compile against kernel sources, bug #114535. Various minor fixes.
+
+  09 Jul 2005; Mark Loeser <halcy0n@gentoo.org>
+  +files/wavemon-gcc-fixes.patch, -files/wavemon_gcc33_fix,
+  -files/wavemon_gcc34_fix.gz, wavemon-0.4.0b.ebuild:
+  Consolidate gcc fixes into one patch.  Fix compilation with gcc-4.
+
+  10 Sep 2004; Henrik Brix Andersen <brix@gentoo.org> wavemon-0.3.3.ebuild:
+  Added missing IUSE="".
+
+  10 Sep 2004; Henrik Brix Andersen <brix@gentoo.org> wavemon-0.4.0b.ebuild:
+  S=${WORKDIR}/${P} fix.
+
+  05 Sep 2004; Malcolm Lashley <malc@gentoo.org> wavemon-0.4.0b.ebuild:
+  ~amd64 closes bug #60425
+
+  13 Jun 2004; Hanno Boeck <hanno@gentoo.org> +files/wavemon_gcc34_fix.gz,
+  wavemon-0.4.0b.ebuild:
+  Fixes for gcc 3.4.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> wavemon-0.4.0b.ebuild:
+  Add inherit eutils
+
+  18 Dec 2003; Peter Johanson <latexer@gentoo.org> metadata.xml,
+  wavemon-0.3.3.ebuild, wavemon-0.4.0b.ebuild:
+  Added metadata.xml and fixed the HOMEPAGE variable
+
+  24 Jul 2003; Hanno Boeck <hanno@gentoo.org> wavemon-0.4.0b.ebuild:
+  Compilation fix for gcc 3.3.
+
+*wavemon-0.4.0b (07 Jan 2003)
+
+  07 Jan 2003; J Robert Ray <jrray@gentoo.org> : Version bump to 0.4.0b.
+  Upstream tarball is named wavemon-current, so manually placed a tarball with
+  the version in the filename onto ibiblio, to avoid future problems and a
+  collision with the 0.3.3 ebuild.  Global CFLAGS are now respected.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  31 Oct 2002; Hannes Mehnert <hannes@gentoo.org>:
+  moved to net-wireless
+
+*wavemon-0.3.3 ( 28 May 2002 )
+	28 May 2002  (Ben Lutgens <lamer@gentoo.org>: Wavemon is an ncurses tool
+	for monitoring you wavelan wireless cards

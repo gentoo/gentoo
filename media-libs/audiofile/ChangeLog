@@ -1,0 +1,534 @@
+# ChangeLog for media-libs/audiofile
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/audiofile/ChangeLog,v 1.150 2015/03/03 08:21:44 dlan Exp $
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> audiofile-0.3.6-r1.ebuild:
+  add arm64 support, tested on A53 board
+
+  20 Jun 2014; Agostino Sarubbo <ago@gentoo.org> audiofile-0.3.6-r1.ebuild:
+  Stable for arm, wrt bug #508862
+
+  17 May 2014; Agostino Sarubbo <ago@gentoo.org> audiofile-0.3.6-r1.ebuild:
+  Stable for alpha, wrt bug #508862
+
+  14 May 2014; Agostino Sarubbo <ago@gentoo.org> audiofile-0.3.6-r1.ebuild:
+  Stable for sparc, wrt bug #508862
+
+  13 May 2014; Agostino Sarubbo <ago@gentoo.org> audiofile-0.3.6-r1.ebuild:
+  Stable for ia64, wrt bug #508862
+
+  11 May 2014; Agostino Sarubbo <ago@gentoo.org> audiofile-0.3.6-r1.ebuild:
+  Stable for ppc64, wrt bug #508862
+
+  10 May 2014; Agostino Sarubbo <ago@gentoo.org> audiofile-0.3.6-r1.ebuild:
+  Stable for ppc, wrt bug #508862
+
+  27 Apr 2014; Pacho Ramos <pacho@gentoo.org> -audiofile-0.3.4.ebuild,
+  -audiofile-0.3.6.ebuild:
+  drop old
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> audiofile-0.3.6-r1.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> audiofile-0.3.6-r1.ebuild:
+  arch stable, bug 888
+
+  22 Dec 2013; Jeroen Roovers <jer@gentoo.org> audiofile-0.3.6-r1.ebuild:
+  Stable for HPPA (bug #478252).
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> audiofile-0.3.6-r1.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> audiofile-0.3.6-r1.ebuild:
+  amd64 stable, bug #478252
+
+  26 Jun 2013; Alexis Ballier <aballier@gentoo.org> audiofile-0.3.6-r1.ebuild:
+  update emul-linux blocker
+
+*audiofile-0.3.6-r1 (02 May 2013)
+
+  02 May 2013; Michał Górny <mgorny@gentoo.org> +audiofile-0.3.6-r1.ebuild:
+  Introduce multilib support wrt bug #464704.
+
+  10 Apr 2013; Agostino Sarubbo <ago@gentoo.org> audiofile-0.3.5.ebuild:
+  Stable for hppa, wrt bug #458984
+
+  09 Apr 2013; Agostino Sarubbo <ago@gentoo.org> audiofile-0.3.5.ebuild:
+  Stable for sh, wrt bug #458984
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> audiofile-0.3.5.ebuild:
+  Stable for sparc, wrt bug #458984
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> audiofile-0.3.5.ebuild:
+  Stable for alpha, wrt bug #458984
+
+  29 Mar 2013; Agostino Sarubbo <ago@gentoo.org> audiofile-0.3.5.ebuild:
+  Stable for ia64, wrt bug #458984
+
+  28 Mar 2013; Agostino Sarubbo <ago@gentoo.org> audiofile-0.3.5.ebuild:
+  Stable for arm, wrt bug #458984
+
+  27 Mar 2013; Agostino Sarubbo <ago@gentoo.org> audiofile-0.3.5.ebuild:
+  Stable for ppc64, wrt bug #458984
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> audiofile-0.3.5.ebuild:
+  Stable for ppc, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> audiofile-0.3.5.ebuild:
+  Stable for x86, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> audiofile-0.3.5.ebuild:
+  Stable for amd64, wrt bug #458984
+
+  07 Mar 2013; Tim Harder <radhermit@gentoo.org> audiofile-0.3.6.ebuild:
+  Fix LGPL license version.
+
+*audiofile-0.3.6 (07 Mar 2013)
+
+  07 Mar 2013; Tim Harder <radhermit@gentoo.org> +audiofile-0.3.6.ebuild,
+  +files/audiofile-0.3.6-system-gtest.patch:
+  Version bump, add flac use flag.
+
+  24 Feb 2013; Samuli Suominen <ssuominen@gentoo.org> audiofile-0.3.5.ebuild:
+  Set missing empty RDEPEND.
+
+  07 Feb 2013; Samuli Suominen <ssuominen@gentoo.org> audiofile-0.3.5.ebuild:
+  Fix sed line from SRC_SUBDIRS to SUBDIRS for 0.3.5 release wrt #455978 by
+  Tomas Mozes
+
+*audiofile-0.3.5 (07 Feb 2013)
+
+  07 Feb 2013; Tim Harder <radhermit@gentoo.org> +audiofile-0.3.5.ebuild,
+  +files/audiofile-0.3.5-system-gtest.patch:
+  Version bump. Update to EAPI 5, add subslot, and use system gtest for tests.
+
+  26 Nov 2012; Tim Harder <radhermit@gentoo.org> audiofile-0.3.4.ebuild:
+  Use prune_libtool_files.
+
+  26 Nov 2012; Tim Harder <radhermit@gentoo.org> -audiofile-0.3.3.ebuild:
+  Remove old.
+
+  03 Oct 2012; Brent Baude <ranger@gentoo.org> audiofile-0.3.4.ebuild:
+  Marking audiofile-0.3.4 ppc for bug 434304
+
+  29 Sep 2012; Raúl Porcel <armin76@gentoo.org> audiofile-0.3.4.ebuild:
+  alpha/ia64/sh/sparc stable wrt #434304
+
+  20 Sep 2012; Anthony G. Basile <blueness@gentoo.org> audiofile-0.3.4.ebuild:
+  stable ppc ppc64, bug #434304
+
+  18 Sep 2012; Jeroen Roovers <jer@gentoo.org> audiofile-0.3.4.ebuild:
+  Stable for HPPA (bug #434304).
+
+  18 Sep 2012; Johannes Huber <johu@gentoo.org> audiofile-0.3.4.ebuild:
+  Stable for x86, wrt bug #434304
+
+  16 Sep 2012; Markus Meier <maekke@gentoo.org> audiofile-0.3.4.ebuild:
+  arm stable, bug #434304
+
+  09 Sep 2012; Agostino Sarubbo <ago@gentoo.org> audiofile-0.3.4.ebuild:
+  Stable for amd64, wrt bug #434304
+
+  08 Sep 2012; Tim Harder <radhermit@gentoo.org> -audiofile-0.3.1.ebuild,
+  -audiofile-0.3.2.ebuild, -files/audiofile-0.3.2-gold.patch:
+  Remove old.
+
+  15 Jul 2012; Raúl Porcel <armin76@gentoo.org> audiofile-0.3.3.ebuild:
+  alpha/ia64/sh/sparc stable wrt #410611
+
+  24 May 2012; Samuli Suominen <ssuominen@gentoo.org> audiofile-0.3.3.ebuild:
+  ppc stable wrt #410611
+
+  16 May 2012; Jeroen Roovers <jer@gentoo.org> audiofile-0.3.3.ebuild:
+  Stable for HPPA (bug #410611).
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> audiofile-0.3.4.ebuild:
+  keyword ~amd64-fbsd
+
+*audiofile-0.3.4 (01 May 2012)
+
+  01 May 2012; Tim Harder <radhermit@gentoo.org> +audiofile-0.3.4.ebuild:
+  Version bump.
+
+  29 Apr 2012; Markus Meier <maekke@gentoo.org> audiofile-0.3.3.ebuild:
+  x86 stable, bug #410611
+
+  25 Apr 2012; Markus Meier <maekke@gentoo.org> audiofile-0.3.3.ebuild:
+  arm stable, bug #410611
+
+  19 Apr 2012; Brent Baude <ranger@gentoo.org> audiofile-0.3.3.ebuild:
+  Marking audiofile-0.3.3 ppc64 stable for bug 410611
+
+  18 Apr 2012; Agostino Sarubbo <ago@gentoo.org> audiofile-0.3.3.ebuild:
+  Stable for amd64, wrt bug #410611
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> audiofile-0.3.2.ebuild:
+  alpha/ia64/sh/sparc stable wrt #393007
+
+  05 Mar 2012; Brent Baude <ranger@gentoo.org> audiofile-0.3.2.ebuild:
+  Marking audiofile-0.3.2 ppc stable for bug 393007
+
+  05 Mar 2012; Brent Baude <ranger@gentoo.org> audiofile-0.3.2.ebuild:
+  Marking audiofile-0.3.2 ppc64 stable for bug 393007
+
+  18 Jan 2012; Markus Meier <maekke@gentoo.org> audiofile-0.3.2.ebuild:
+  arm stable, bug #393007
+
+*audiofile-0.3.3 (18 Jan 2012)
+
+  18 Jan 2012; Tim Harder <radhermit@gentoo.org> +audiofile-0.3.3.ebuild:
+  Version bump.
+
+  14 Jan 2012; Markus Meier <maekke@gentoo.org> audiofile-0.3.2.ebuild:
+  x86 stable, bug #393007
+
+  11 Jan 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  audiofile-0.3.2.ebuild:
+  Forgot to inherit eutils.
+
+  11 Jan 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  audiofile-0.3.2.ebuild, +files/audiofile-0.3.2-gold.patch:
+  Fix underlinking in tests (bug #398369, thanks to Michael (kensington) for
+  the patch).
+
+  29 Dec 2011; Pacho Ramos <pacho@gentoo.org> audiofile-0.3.2.ebuild:
+  amd64 stable, bug 393007
+
+  20 Dec 2011; Jeroen Roovers <jer@gentoo.org> audiofile-0.3.2.ebuild:
+  Stable for HPPA (bug #393007).
+
+*audiofile-0.3.2 (30 Nov 2011)
+
+  30 Nov 2011; Pacho Ramos <pacho@gentoo.org> +audiofile-0.3.2.ebuild,
+  -audiofile-0.2.7.ebuild, -files/audiofile-largefile.patch:
+  Version bump, remove old.
+
+  30 Oct 2011; Raúl Porcel <armin76@gentoo.org> audiofile-0.3.1.ebuild:
+  alpha/ia64/sh/sparc stable wrt #385699
+
+  28 Oct 2011; Markus Meier <maekke@gentoo.org> audiofile-0.3.1.ebuild:
+  arm stable, bug #385699
+
+  21 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> audiofile-0.3.1.ebuild:
+  x86 stable wrt bug #385699
+
+  18 Oct 2011; Jeroen Roovers <jer@gentoo.org> audiofile-0.3.1.ebuild:
+  Stable for HPPA (bug #385699).
+
+  16 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org> audiofile-0.3.1.ebuild:
+  ppc/ppc64 stable wrt #385699
+
+  14 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> audiofile-0.3.1.ebuild:
+  amd64 stable wrt #385699
+
+*audiofile-0.3.1 (19 Sep 2011)
+
+  19 Sep 2011; Tim Harder <radhermit@gentoo.org> -audiofile-0.3.0.ebuild,
+  +audiofile-0.3.1.ebuild:
+  Version bump and remove old.
+
+  16 Sep 2011; Tim Harder <radhermit@gentoo.org> audiofile-0.3.0.ebuild:
+  Don't build examples (fixes bug #383115).
+
+*audiofile-0.3.0 (15 Sep 2011)
+
+  15 Sep 2011; Tim Harder <radhermit@gentoo.org> +audiofile-0.3.0.ebuild:
+  Version bump.
+
+  26 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> audiofile-0.2.7.ebuild:
+  Introduce possibility to disable static library.
+
+  03 Oct 2010; Raúl Porcel <armin76@gentoo.org> audiofile-0.2.7.ebuild:
+  ia64/sh/sparc stable wrt #327611
+
+  12 Sep 2010; Tobias Klausmann <klausman@gentoo.org>
+  audiofile-0.2.7.ebuild:
+  Stable on alpha, bug #327611
+
+  11 Sep 2010; <nixnut@gentoo.org> audiofile-0.2.7.ebuild:
+  ppc stable #327611
+
+  02 Aug 2010; Markus Meier <maekke@gentoo.org> audiofile-0.2.7.ebuild:
+  arm stable, bug #327611
+
+  26 Jul 2010; Jeroen Roovers <jer@gentoo.org> audiofile-0.2.7.ebuild:
+  Stable for HPPA (bug #327611).
+
+  12 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  audiofile-0.2.7.ebuild:
+  stable x86, bug 327611
+
+  10 Jul 2010; Markos Chandras <hwoarang@gentoo.org> audiofile-0.2.7.ebuild:
+  Stable on amd64 wrt bug #327611
+
+  09 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  audiofile-0.2.7.ebuild:
+  ppc64 stable wrt #327611
+
+*audiofile-0.2.7 (28 Apr 2010)
+
+  28 Apr 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +audiofile-0.2.7.ebuild:
+  Version bump.
+
+  21 Feb 2010; Jonathan Callen <abcd@gentoo.org> audiofile-0.2.6-r4.ebuild:
+  Transfer prefix keywords (no other changes)
+
+  06 Jul 2009; Jeroen Roovers <jer@gentoo.org> audiofile-0.2.6-r4.ebuild:
+  Stable for HPPA too.
+
+  12 Apr 2009; Friedrich Oslage <bluebird@gentoo.org> ChangeLog:
+  Stable on sparc, bug #260063
+
+  29 Mar 2009; Raúl Porcel <armin76@gentoo.org> audiofile-0.2.6-r4.ebuild:
+  arm/sh/sparc stable
+
+  18 Mar 2009; Raúl Porcel <armin76@gentoo.org> audiofile-0.2.6-r4.ebuild:
+  alpha/ia64 stable wrt #260063
+
+  15 Mar 2009; Markus Meier <maekke@gentoo.org> audiofile-0.2.6-r4.ebuild:
+  x86 stable, bug #260063
+
+  11 Mar 2009; Daniel Gryniewicz <dang@gentoo.org>
+  audiofile-0.2.6-r4.ebuild:
+  Marked stable on amd64
+
+  06 Mar 2009; Brent Baude <ranger@gentoo.org> audiofile-0.2.6-r4.ebuild:
+  Marking audiofile-0.2.6-r4 ppc stable for bug 260063
+
+  05 Mar 2009; Brent Baude <ranger@gentoo.org> audiofile-0.2.6-r4.ebuild:
+  Marking audiofile-0.2.6-r4 ppc64 stable for bug 260063
+
+  27 Oct 2008; Mike Frysinger <vapier@gentoo.org>
+  files/audiofile-largefile.patch:
+  Fix by Nathan Brink to pull in stdint.h for uint64_t types #237600.
+
+*audiofile-0.2.6-r4 (16 Jun 2008)
+
+  16 Jun 2008; Diego Pettenò <flameeyes@gentoo.org>
+  files/sfconvert-eradicator.patch, +audiofile-0.2.6-r4.ebuild:
+  Don't build tests during compile, just during check (bug #226277). Also
+  extend the constantise patch and load it on mirrors (it almost doubled its
+  size).
+
+  21 Sep 2007; Tom Gall <tgall@gentoo.org> audiofile-0.2.6-r3.ebuild:
+  stable on ppc64
+
+  07 Sep 2007; Jeroen Roovers <jer@gentoo.org> audiofile-0.2.6-r3.ebuild:
+  Stable for HPPA too.
+
+  10 Aug 2007; Christoph Mende <angelos@gentoo.org>
+  audiofile-0.2.6-r3.ebuild:
+  Stable on amd64 wrt bug #185823
+
+  07 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  audiofile-0.2.6-r3.ebuild:
+  Stable on ppc wrt bug #185823.
+
+  28 Jul 2007; Samuli Suominen <drac@gentoo.org>
+  +files/audiofile-0.2.6-fmod.patch, audiofile-0.2.6-r3.ebuild:
+  Apply patch from bug 175710 by Dustin Surawicz, implicit declaration of fmod.
+
+  25 Jul 2007; Raúl Porcel <armin76@gentoo.org> audiofile-0.2.6-r3.ebuild:
+  alpha stable
+
+  25 Apr 2007; Alexander Færøy <eroyf@gentoo.org>
+  audiofile-0.2.6-r3.ebuild:
+  Stable on MIPS.
+
+  24 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  audiofile-0.2.6-r3.ebuild:
+  Stable on sparc
+
+  23 Apr 2007; Raúl Porcel <armin76@gentoo.org> audiofile-0.2.6-r3.ebuild:
+  ia64 + x86 stable
+
+  16 Apr 2007; Markus Rothe <corsair@gentoo.org> audiofile-0.2.6-r2.ebuild:
+  Stable on ppc64
+
+  19 Mar 2007; Fabian Groffen <grobian@gentoo.org>
+  audiofile-0.2.6-r1.ebuild, audiofile-0.2.6-r2.ebuild,
+  audiofile-0.2.6-r3.ebuild:
+  Dropped ppc-macos, see you in prefix
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org> audiofile-0.2.6-r2.ebuild:
+  x86 stable
+
+*audiofile-0.2.6-r3 (21 Feb 2007)
+
+  21 Feb 2007; Joseph Jezak <josejx@gentoo.org>
+  +files/audiofile-largefile.patch, +audiofile-0.2.6-r3.ebuild:
+  Added largefile support patch for bug #118600.
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  audiofile-0.2.6-r2.ebuild:
+  Stable on Alpha.
+
+  17 Jul 2006; Daniel Gryniewicz <dang@gentoo.org>
+  audiofile-0.2.6-r2.ebuild:
+  Marked stable on amd64 for bug #139612
+
+  16 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  audiofile-0.2.6-r2.ebuild:
+  hppa stable, bug #139612
+
+  14 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  audiofile-0.2.6-r2.ebuild:
+  ppc stable, bug #139612
+
+  13 Jul 2006; Aron Griffis <agriffis@gentoo.org> audiofile-0.2.6-r2.ebuild:
+  Mark 0.2.6-r2 stable on ia64
+
+  10 Jul 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  audiofile-0.2.6-r2.ebuild:
+  Stable on sparc wrt #139612
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-audiofile-0.2.6-r1, Manifest:
+  Fixing SHA256 digest, pass four
+
+  05 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  audiofile-0.2.6-r2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  23 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -audiofile-0.2.3-r1.ebuild, -audiofile-0.2.4.ebuild,
+  -audiofile-0.2.5.ebuild, -audiofile-0.2.6.ebuild:
+  Drop old versions.
+
+*audiofile-0.2.6-r2 (23 Mar 2006)
+
+  23 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/audiofile-0.2.6-constantise.patch, +audiofile-0.2.6-r2.ebuild:
+  Add patch from Jason Allen to reduce the memory usage.
+
+  06 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  audiofile-0.2.3-r1.ebuild, audiofile-0.2.4.ebuild, audiofile-0.2.5.ebuild,
+  audiofile-0.2.6.ebuild, audiofile-0.2.6-r1.ebuild:
+  Drop virtual/libc dependency.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  07 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> audiofile-0.2.6-r1.ebuild:
+  Stable on alpha.
+
+  25 Jul 2004; Lina Pezzella <burgundy@gentoo.org> :
+  Fixed Manifest.
+
+  23 Jul 2004; Lina Pezzella <burgundy@gentoo.org> :
+  audiofile-0.2.6-r1.ebuild:
+  Stable macos.
+
+  03 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  audiofile-0.2.6-r1.ebuild:
+  Stable sparc.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  audiofile-0.2.3-r1.ebuild, audiofile-0.2.4.ebuild, audiofile-0.2.5.ebuild,
+  audiofile-0.2.6-r1.ebuild, audiofile-0.2.6.ebuild:
+  virtual/glibc -> virtual/libc
+
+  20 Jun 2004; Tom Gall <tgall@gentoo.org> audiofile-0.2.6-r1:
+  stable on ppc64, bug #54143
+
+  14 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  audiofile-0.2.6-r1.ebuild:
+  Stable x86 and amd64.
+
+  28 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  audiofile-0.2.6-r1.ebuild:
+  Added IUSE.
+
+  21 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  audiofile-0.2.5.ebuild, audiofile-0.2.6.ebuild:
+  IUSE added.
+
+  17 Apr 2004; Travis Tilley <lv@gentoo.org> audiofile-0.2.5.ebuild,
+  audiofile-0.2.6.ebuild:
+  marked stable on amd64
+
+  14 Apr 2004; Stephen P. Becker <geoman@gentoo.org> audiofile-0.2.6.ebuild:
+  Marked stable on mips.
+
+*audiofile-0.2.6-r1 (05 Apr 2004)
+
+  05 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  audiofile-0.2.6-r1.ebuild, files/sfconvert-eradicator.patch:
+  Added functionality to sfconvert.  Patch sent upstream.
+
+  09 Mar 2004; <agriffis@gentoo.org> audiofile-0.2.5.ebuild:
+  stable on alpha and ia64
+
+*audiofile-0.2.6 (07 Mar 2004)
+
+  07 Mar 2004; foser <foser@gentoo.org> audiofile-0.2.6.ebuild :
+  New release
+
+  18 Feb 2004; Aron Griffis <agriffis@gentoo.org> audiofile-0.2.5.ebuild:
+  add ~ia64
+
+  10 Feb 2004; <gustavoz@gentoo.org> audiofile-0.2.5.ebuild:
+  stable on hppa and sparc
+
+  10 Feb 2004; Bartosch Pixa <darkspecter@gentoo.org> audiofile-0.2.5.ebuild:
+  set ppc in keywords
+
+  08 Feb 2004; <spider@gentoo.org> audiofile-0.2.5.ebuild:
+  stable x86
+
+  28 Jan 2004; Aron Griffis <agriffis@gentoo.org> audiofile-0.2.4.ebuild:
+  stable on alpha and ia64
+
+  18 Jan 2004; <gustavoz@gentoo.org> audiofile-0.2.4.ebuild:
+  stable on hppa and sparc
+
+  14 Jan 2004; Mike Gardiner <obz@gentoo.org> audiofile-0.2.4.ebuild:
+  Stable on x86 as part of GNOME-2.4.1
+
+*audiofile-0.2.5 (04 Jan 2004)
+
+  04 Jan 2004; jje <jje@gentoo.org> audiofile-0.2.5.ebuild:
+  Version bump.
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> audiofile-0.2.3-r1.ebuild:
+  Stable on ia64
+
+  01 Nov 2003; Seemant Kulleen <seemant@gentoo.org> audiofile-0.2.3-r1.ebuild:
+  SRC_URI and HOMEPAGE fix, thanks to: Stony Yakovac <stonyy@tek.com> in bug
+  #32425
+
+*audiofile-0.2.4 (14 Oct 2003)
+
+  14 Oct 2003; Martin Holzer <mholzer@gentoo.org> audiofile-0.2.4.ebuild:
+  Version bumped. Closes #30068
+
+*audiofile-0.2.3-r1 (21 March 2002)
+
+  18 Aug 2003; Joshua Kinard <kumba@gentoo.org> audiofile-0.2.3-r1.ebuild:
+  Added gnuconfig_update if 'use mips' returns true so configure can detect mipslinux 
+  systems.
+
+  18 Aug 2003; Joshua Kinard <kumba@gentoo.org> audiofile-0.2.3-r1.ebuild:
+  Added ~mips to KEYWORDS
+  Cleaned up Changelog
+
+  01 Jul 2003; Guy Martin <gmsoft@gentoo.org> audiofile-0.2.3-r1.ebuild :
+  Added hppa to KEYWORDS.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  03 April 2002; M.Schlemmer <azarah@gentoo.org> : audiofile-0.2.3-r1.ebuild
+  Remove unneeded auto* tools.
+
+  21 March 2002; M.Schlemmer <azarah@gentoo.org> :
+  Libtoolize to fix the "relink bug".
+
+*audiofile-0.2.3 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

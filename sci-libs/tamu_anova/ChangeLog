@@ -1,0 +1,24 @@
+# ChangeLog for sci-libs/tamu_anova
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/tamu_anova/ChangeLog,v 1.5 2013/04/17 07:52:13 jlec Exp $
+
+  17 Apr 2013; Justin Lecher <jlec@gentoo.org> tamu_anova-0.2.1.ebuild,
+  +files/tamu_anova-0.2.1-texinfo5.1.patch, metadata.xml:
+  Add compatibility patch with sys-apps/texinfo-5.1, #464516
+
+  19 May 2012; Agostino Sarubbo <ago@gentoo.org> tamu_anova-0.2.1.ebuild:
+  Stable for x86, wrt bug #414355
+
+  02 May 2012; Agostino Sarubbo <ago@gentoo.org> tamu_anova-0.2.1.ebuild:
+  Stable for amd64, wrt bug #414367
+
+  02 May 2012; Justin Lecher <jlec@gentoo.org> tamu_anova-0.2.1.ebuild,
+  metadata.xml:
+  Handle static libs
+
+*tamu_anova-0.2.1 (19 Feb 2011)
+
+  19 Feb 2011; Justin Lecher <jlec@gentoo.org> +files/0.2.1-gentoo.patch,
+  +tamu_anova-0.2.1.ebuild, +metadata.xml:
+  new addition, written by me
+

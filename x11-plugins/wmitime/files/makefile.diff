@@ -1,0 +1,26 @@
+diff -urN wmitime/wmitime/Makefile wmitime-modified/wmitime/Makefile
+--- wmitime/wmitime/Makefile	1999-03-28 21:51:39.000000000 -0600
++++ wmitime-modified/wmitime/Makefile	2002-10-04 10:35:16.000000000 -0500
+@@ -1,7 +1,6 @@
+-#LANG = fr
+ LIBDIR = -L/usr/X11R6/lib
+ LIBS   = -lXpm -lXext -lX11 -lm
+-FLAGS = -O2
++FLAGS = $(CFLAGS)
+ OBJS =	wmitime.o \
+ 		../wmgeneral/wmgeneral.o \
+ 		../wmgeneral/misc.o \
+@@ -9,11 +8,10 @@
+ 
+ 
+ .c.o:
+-	cc -I/usr/X11R6/share/include $(FLAGS) -D$(LANG) -c -Wall $< -o $*.o
++	gcc -I/usr/X11R6/share/include $(FLAGS) -c -Wall $< -o $*.o
+ 
+ wmtime: $(OBJS)
+-	cc $(FLAGS) -D$(LANG) -o wmitime $^ -lXext $(LIBDIR) $(LIBS)
+-
++	gcc $(FLAGS) $(LDFLAGS) -o wmitime $^ -lXext $(LIBDIR) $(LIBS) 
+ all:: wmtime
+ 
+ clean::

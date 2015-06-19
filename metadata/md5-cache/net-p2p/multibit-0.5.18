@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare unpack
+DEPEND=>=virtual/jre-1.6
+DESCRIPTION=Secure, lightweight, international Bitcoin wallet written in Java
+EAPI=5
+HOMEPAGE=https://multibit.org/
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=>=virtual/jre-1.6
+SLOT=0
+SRC_URI=https://multibit.org/releases/multibit-0.5.18/multibit-0.5.18-linux.jar
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=56aa4a063e119742c3e7909cb4b0e25a

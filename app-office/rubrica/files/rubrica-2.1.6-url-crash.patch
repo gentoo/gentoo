@@ -1,0 +1,40 @@
+--- a/po/de.po
++++ b/po/de.po
+@@ -4,7 +4,7 @@
+ "Project-Id-Version: Rubrica 2.0rc1\n"
+ "Report-Msgid-Bugs-To: \n"
+ "POT-Creation-Date: 2008-02-09 00:46+0100\n"
+-"PO-Revision-Date: 2008-09-04 01:51+0200\n"
++"PO-Revision-Date: 2008-10-17 20:10+0200\n"
+ "Last-Translator:  Christian Faulhammer <christian@faulhammer.org>\n"
+ "Language-Team: Italian <tp@lists.linux.it>\n"
+ "MIME-Version: 1.0\n"
+@@ -131,7 +131,7 @@
+ #: ../src/app.c:736 ../src/app.c:738
+ #, c-format
+ msgid "Launching %s. Please wait..."
+-msgstr "Lade %s %s.  Bitte warten..."
++msgstr "Lade %s.  Bitte warten..."
+ 
+ #: ../src/app.c:742 ../rubrica2.desktop.in.h:2
+ msgid "Rubrica Addressbook"
+--- a/po/fr.po
++++ b/po/fr.po
+@@ -4,7 +4,7 @@
+ "Project-Id-Version: Rubrica 2.0.1\n"
+ "Report-Msgid-Bugs-To: \n"
+ "POT-Creation-Date: 2008-02-09 00:46+0100\n"
+-"PO-Revision-Date: 2008-09-04 12:32+0200\n"
++"PO-Revision-Date: 2008-10-17 20:11+0200\n"
+ "Last-Translator: Julien LESOUEF <julien.lesouef@free.fr>\n"
+ "Language-Team: French <julien.lesouef@free.fr>\n"
+ "MIME-Version: 1.0\n"
+@@ -131,7 +131,7 @@
+ #: ../src/app.c:736 ../src/app.c:738
+ #, c-format
+ msgid "Launching %s. Please wait..."
+-msgstr "Lance %s %s. Patientez s'il vous plaît..."
++msgstr "Lance %s. Patientez s'il vous plaît..."
+ 
+ #: ../src/app.c:742 ../rubrica2.desktop.in.h:2
+ msgid "Rubrica Addressbook"

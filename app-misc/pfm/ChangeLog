@@ -1,0 +1,23 @@
+# ChangeLog for app-misc/pfm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/pfm/ChangeLog,v 1.5 2015/06/09 11:49:29 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  20 May 2015; Patrice Clement <monsieurp@gentoo.org> metadata.xml:
+  Add myself to the maintainers list.
+
+  02 Nov 2014; Tim Harder <radhermit@gentoo.org> -pfm-2.12.0.ebuild:
+  Remove old.
+
+*pfm-2.12.3 (11 Apr 2014)
+
+  11 Apr 2014; Tim Harder <radhermit@gentoo.org> +pfm-2.12.3.ebuild:
+  Version bump.
+
+*pfm-2.12.0 (18 Nov 2011)
+
+  18 Nov 2011; Tim Harder <radhermit@gentoo.org> +pfm-2.12.0.ebuild,
+  +metadata.xml:
+  Initial import.

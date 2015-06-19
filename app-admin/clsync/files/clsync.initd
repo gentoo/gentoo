@@ -1,0 +1,18 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/clsync/files/clsync.initd,v 1.1 2015/02/11 03:39:24 bircoph Exp $
+
+[[ -n "${CLSYNC_CONF}" ]] && conffile="--config-file ${CLSYNC_CONF}"
+[[ -n "${CLSYNC_NICE}" ]] && cmd_nice="--nice ${CLSYNC_NICE}"
+[[ -n "${CLSYNC_IONICE}" ]] && cmd_ionice="--ionice ${CLSYNC_IONICE}"
+
+command="/usr/bin/clsync"
+pidfile="/var/run/${SVCNAME}.pid"
+command_args="--background --output=syslog --pid-file=${pidfile} \
+${conffile} ${CLSYNC_OPTS}"
+start_stop_daemon_args="${cmd_nice} ${cmd_ionice}"
+
+depend() {
+    use net
+}

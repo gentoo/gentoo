@@ -1,0 +1,22 @@
+--- librtas_src/syscall_rmo.bak	2010-02-01 10:38:01.000000000 -0500
++++ librtas-1.3.3/librtas_src/syscall_rmo.c	2010-02-01 10:38:25.000000000 -0500
+@@ -117,7 +117,7 @@
+ 
+ 	/* Lazily open lock file */
+ 	if (wa_config.lockfile_fd < 0) {
+-		wa_config.lockfile_fd = open(lockfile_path, O_CREAT | O_RDWR);
++		wa_config.lockfile_fd = open(lockfile_path, O_CREAT | O_RDWR, 644);
+ 		if (wa_config.lockfile_fd < 0) {
+ 			dbg1("could not open lockfile %s\n", lockfile_path);
+ 			return RTAS_IO_ASSERT;
+--- librtas_src/common.bak	2010-02-01 10:37:34.000000000 -0500
++++ librtas-1.3.3/librtas_src/common.c	2010-02-01 10:37:50.000000000 -0500
+@@ -65,7 +65,7 @@
+ 	npaths = sizeof(proc_rtas_paths) / sizeof(char *);
+ 	for (i = 0; i < npaths; i++) {
+ 		sprintf(full_name, "%s/%s", proc_rtas_paths[i], name);
+-		fd = open(full_name, mode);
++		fd = open(full_name, mode, 644);
+ 		if (fd >= 0)
+ 			break;
+ 	}

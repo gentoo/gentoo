@@ -1,0 +1,56 @@
+# ChangeLog for dev-lua/lua-zlib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lua/lua-zlib/ChangeLog,v 1.15 2015/06/06 19:41:11 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> lua-zlib-0.3.ebuild,
+  lua-zlib-0.4.ebuild:
+  Add SLOT operators
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*lua-zlib-0.4 (03 Jan 2015)
+
+  03 Jan 2015; Manuel Rüger <mrueg@gentoo.org> +lua-zlib-0.4.ebuild:
+  Version bump.
+
+  28 Dec 2014; Manuel Rüger <mrueg@gentoo.org> -lua-zlib-0.2.ebuild:
+  Remove old.
+
+  28 Dec 2014; Agostino Sarubbo <ago@gentoo.org> lua-zlib-0.3.ebuild:
+  Stable for x86, wrt bug #533446
+
+  26 Dec 2014; Agostino Sarubbo <ago@gentoo.org> lua-zlib-0.3.ebuild:
+  Stable for amd64, wrt bug #533446
+
+  14 Nov 2014; Markus Meier <maekke@gentoo.org> lua-zlib-0.3.ebuild:
+  arm stable, bug #511532
+
+*lua-zlib-0.3 (19 Oct 2014)
+
+  19 Oct 2014; Manuel Rüger <mrueg@gentoo.org> +lua-zlib-0.3.ebuild:
+  Version bump.
+
+  08 Aug 2013; Markus Meier <maekke@gentoo.org> lua-zlib-0.2.ebuild:
+  add ~arm, bug #476264
+
+  22 Jul 2013; Manuel Rüger <mrueg@gentoo.org> metadata.xml:
+  Taking up maintainership
+
+  31 Dec 2012; Dirkjan Ochtman <djc@gentoo.org> metadata.xml:
+  Remove myself as a maintainer.
+
+  28 Sep 2012; Johannes Huber <johu@gentoo.org> lua-zlib-0.2.ebuild:
+  Stable for x86, wrt bug #429602
+
+  28 Sep 2012; Agostino Sarubbo <ago@gentoo.org> lua-zlib-0.2.ebuild:
+  Stable for amd64, wrt bug #429602
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> lua-zlib-0.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*lua-zlib-0.2 (02 May 2011)
+
+  02 May 2011; Dirkjan Ochtman <djc@gentoo.org> +lua-zlib-0.2.ebuild,
+  +metadata.xml:
+  Initial version of lua-zlib: 0.2 (bug 360679).

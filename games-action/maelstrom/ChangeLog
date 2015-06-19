@@ -1,0 +1,116 @@
+# ChangeLog for games-action/maelstrom
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/maelstrom/ChangeLog,v 1.29 2015/03/31 16:16:57 mr_bones_ Exp $
+
+  31 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  maelstrom-3.0.6-r2.ebuild:
+  alpha is unstable
+
+  02 Jan 2015; Tupone Alfredo <tupone@gentoo.org> maelstrom-3.0.6-r2.ebuild:
+  Fix build with new automake. Bug #514566 by Patrick Lauer
+
+  25 Aug 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  -maelstrom-3.0.6-r1.ebuild:
+  old
+
+  18 Jul 2014; Tobias Klausmann <klausman@gentoo.org>
+  maelstrom-3.0.6-r2.ebuild:
+  Stable on alpha, bug #505002
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> maelstrom-3.0.6-r1.ebuild,
+  maelstrom-3.0.6-r2.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  13 Apr 2014; Agostino Sarubbo <ago@gentoo.org> maelstrom-3.0.6-r2.ebuild:
+  Stable for ppc, wrt bug #505002
+
+  05 Apr 2014; Agostino Sarubbo <ago@gentoo.org> maelstrom-3.0.6-r2.ebuild:
+  Stable for x86, wrt bug #505002
+
+  01 Apr 2014; Chema Alonso <nimiux@gentoo.org> maelstrom-3.0.6-r2.ebuild:
+  Stable for amd64 wrt bug #505002
+
+*maelstrom-3.0.6-r2 (18 Mar 2014)
+
+  18 Mar 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/maelstrom-3.0.6-gcc34.patch, +files/maelstrom-3.0.6-security.patch,
+  +files/maelstrom-3.0.6-warnings.patch, +maelstrom-3.0.6-r2.ebuild:
+  EAPI=5; update HOMEPAGE (bug #499700); warnings patch
+
+  31 Mar 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  maelstrom-3.0.6-r1.ebuild:
+  EAPI=2; add use-deps for libsdl (bug #312505)
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> maelstrom-3.0.6-r1.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  25 Oct 2006; <tupone@gentoo.org> +files/maelstrom-3.0.6-64bits.patch,
+  maelstrom-3.0.6-r1.ebuild:
+  Fix for fail to compile on a 64 bits CPU. Bug #146153 by Randall Nortman
+
+  15 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  maelstrom-3.0.6-r1.ebuild:
+  tidy; use DESTDIR; quoting
+
+  15 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  maelstrom-3.0.6-r1.ebuild:
+  Fixed epatch line and closing bug #102618.
+
+  09 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/maelstrom-3.0.6-security.patch, -maelstrom-3.0.5.ebuild,
+  -maelstrom-3.0.6.ebuild:
+  clean old versions
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  31 Aug 2004; Karol Wojtaszek <sekretarz@gentoo.org>
+  maelstrom-3.0.6-r1.ebuild:
+  Fixed gcc-3.4 compile problems. Thanks to Mark Loeser <halcyon@whiterapid.com>
+  in bug #61831
+
+  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> maelstrom-3.0.5.ebuild,
+  maelstrom-3.0.6-r1.ebuild, maelstrom-3.0.6.ebuild:
+  Added IUSE.
+
+  12 Dec 2003; Jon Portnoy <avenj@gentoo.org> maelstrom-3.0.6-r1.ebuild :
+  AMD64 keywords.
+
+*maelstrom-3.0.6-r1 (24 Oct 2003)
+
+  24 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org>
+  maelstrom-3.0.6-r1.ebuild, files/maelstrom-3.0.6-r1-security.patch:
+  move high score file to ${GAMES_STATEDIR}; move data to $(datadir); more error
+  checking; use sed-4; clean doc install; remove Makefile cruft in Images/; more
+  games eclass usage
+
+  19 Oct 2003; Chris Gianelloni <wolf31o2@gentoo.org> maelstrom-3.0.6.ebuild:
+  Closing bug #30852, again.
+
+  17 Oct 2003; Chris Gianelloni <wolf31o2@gentoo.org> maelstrom-3.0.6.ebuild:
+  Closed bug #30852.
+
+  09 Oct 2003; Chris Gianelloni <wolf31o2@gentoo.org> maelstrom-3.0.6.ebuild:
+  Added menu entry.  Closing bug #30618
+
+  06 Oct 2003; Aron Griffis <agriffis@gentoo.org> maelstrom-3.0.6.ebuild:
+  Stable on alpha
+
+*maelstrom-3.0.6 (22 May 2003)
+
+  22 May 2003; Daniel Ahlberg <aliz@gentoo.org> maelstrom-3.0.6.ebuild :
+  Security update.
+
+*maelstrom-3.0.5 (26 Apr 2002)
+
+  05 Mar 2003; Bartosch Pixa <darkspecter@gentoo.org> maelstrom-3.0.5.ebuild:
+  set ~ppc in keywords
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> maelstrom-3.0.5.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  26 Apr 2002; Seemant Kulleen <seemant@gentoo.org> maelstrom-3.0.5.ebuild
+  files/digest-maelstrom-3.0.5 :
+
+  New game.

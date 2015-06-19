@@ -1,0 +1,100 @@
+# ChangeLog for dev-db/barman
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/barman/ChangeLog,v 1.19 2015/05/11 04:06:22 patrick Exp $
+
+*barman-1.4.1 (11 May 2015)
+
+  11 May 2015; Patrick Lauer <patrick@gentoo.org> +barman-1.4.1.ebuild,
+  -barman-1.3.0.ebuild, -barman-1.3.1.ebuild, -barman-1.3.2.ebuild,
+  -barman-1.3.3.ebuild:
+  Bump
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> barman-1.3.0.ebuild,
+  barman-1.3.1.ebuild, barman-1.3.2.ebuild, barman-1.3.3.ebuild,
+  barman-1.4.0.ebuild:
+  Drop old Python implementations
+
+*barman-1.4.0 (28 Jan 2015)
+
+  28 Jan 2015; Patrick Lauer <patrick@gentoo.org> +barman-1.4.0.ebuild:
+  Bump
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org> barman-1.3.0.ebuild,
+  barman-1.3.1.ebuild, barman-1.3.2.ebuild, barman-1.3.3.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org> barman-1.3.0.ebuild,
+  barman-1.3.1.ebuild, barman-1.3.2.ebuild, barman-1.3.3.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+*barman-1.3.3 (21 Aug 2014)
+
+  21 Aug 2014; Patrick Lauer <patrick@gentoo.org> +barman-1.3.3.ebuild:
+  Bump
+
+*barman-1.3.2 (20 May 2014)
+
+  20 May 2014; Patrick Lauer <patrick@gentoo.org> +barman-1.3.2.ebuild:
+  Bump
+
+*barman-1.3.1 (06 May 2014)
+
+  06 May 2014; Patrick Lauer <patrick@gentoo.org> +barman-1.3.1.ebuild,
+  -barman-1.2.1.ebuild, -barman-1.2.2.ebuild, -barman-1.2.3.ebuild:
+  Bump, clean out old
+
+*barman-1.3.0 (03 May 2014)
+
+  03 May 2014; Patrick Lauer <patrick@gentoo.org> +barman-1.3.0.ebuild:
+  Bump
+
+*barman-1.2.3 (22 Nov 2013)
+
+  22 Nov 2013; Patrick Lauer <patrick@gentoo.org> +barman-1.2.3.ebuild:
+  Bump
+
+*barman-1.2.2 (21 Oct 2013)
+
+  21 Oct 2013; Patrick Lauer <patrick@gentoo.org> +barman-1.2.2.ebuild:
+  Bump
+
+*barman-1.2.1 (20 Jun 2013)
+
+  20 Jun 2013; Patrick Lauer <patrick@gentoo.org> +barman-1.2.1.ebuild,
+  -barman-1.0.0.ebuild, -barman-1.1.0.ebuild, -barman-1.1.1.ebuild,
+  -barman-1.1.2.ebuild, -barman-1.2.0-r1.ebuild, -barman-1.2.0.ebuild:
+  Bump, migrate to new eclasses, prune now broken old versions
+
+*barman-1.2.0-r1 (24 May 2013)
+
+  24 May 2013; Patrick Lauer <patrick@gentoo.org> +barman-1.2.0-r1.ebuild:
+  Fix python use #471134 a bit nicer
+
+  24 May 2013; Patrick Lauer <patrick@gentoo.org> barman-1.2.0.ebuild:
+  Fix python use #471134
+
+*barman-1.2.0 (06 Feb 2013)
+
+  06 Feb 2013; Patrick Lauer <patrick@gentoo.org> +barman-1.2.0.ebuild:
+  Bump
+
+*barman-1.1.2 (18 Dec 2012)
+
+  18 Dec 2012; Patrick Lauer <patrick@gentoo.org> +barman-1.1.2.ebuild:
+  Bump
+
+*barman-1.1.1 (29 Oct 2012)
+
+  29 Oct 2012; Patrick Lauer <patrick@gentoo.org> +barman-1.1.1.ebuild:
+  Bump
+
+*barman-1.1.0 (17 Oct 2012)
+
+  17 Oct 2012; Patrick Lauer <patrick@gentoo.org> +barman-1.1.0.ebuild:
+  Bump
+
+*barman-1.0.0 (27 Aug 2012)
+
+  27 Aug 2012; Patrick Lauer <patrick@gentoo.org> +barman-1.0.0.ebuild,
+  +metadata.xml:
+  Initial import; ebuild by me

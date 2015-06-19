@@ -1,0 +1,250 @@
+# ChangeLog for x11-proto/xf86dgaproto
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-proto/xf86dgaproto/ChangeLog,v 1.72 2015/04/08 17:42:01 mrueg Exp $
+
+  08 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -xf86dgaproto-2.1-r1.ebuild,
+  -xf86dgaproto-2.1.ebuild:
+  Remove old.
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> xf86dgaproto-2.1-r2.ebuild:
+  add arm64 support, tested on A53 board
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xf86dgaproto-2.1-r2.ebuild:
+  Stable for x86, wrt bug #475480
+
+  07 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xf86dgaproto-2.1-r2.ebuild:
+  Stable for sparc, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xf86dgaproto-2.1-r2.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  05 Oct 2013; Markus Meier <maekke@gentoo.org> xf86dgaproto-2.1-r2.ebuild:
+  arm stable, bug #475480
+
+  05 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xf86dgaproto-2.1-r2.ebuild:
+  Stable for alpha, wrt bug #475480
+
+  04 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xf86dgaproto-2.1-r2.ebuild:
+  Stable for ppc64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xf86dgaproto-2.1-r2.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  02 Oct 2013; Jeroen Roovers <jer@gentoo.org> xf86dgaproto-2.1-r2.ebuild:
+  Stable for HPPA (bug #475480).
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org> xf86dgaproto-2.1-r2.ebuild:
+  Stable for amd64, wrt bug #475480
+
+  27 Feb 2013; Zac Medico <zmedico@gentoo.org> xf86dgaproto-2.1-r2.ebuild:
+  Add ~arm-linux keyword.
+
+*xf86dgaproto-2.1-r2 (25 Feb 2013)
+
+  25 Feb 2013; Michał Górny <mgorny@gentoo.org> +xf86dgaproto-2.1-r2.ebuild:
+  Enable multilib.
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> xf86dgaproto-2.1-r1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #419473
+
+  12 Jul 2012; Brent Baude <ranger@gentoo.org> xf86dgaproto-2.1-r1.ebuild:
+  Marking xf86dgaproto-2.1-r1 ppc stable for bug 419473
+
+  11 Jul 2012; Brent Baude <ranger@gentoo.org> xf86dgaproto-2.1-r1.ebuild:
+  Marking xf86dgaproto-2.1-r1 ppc64 stable for bug 419473
+
+  29 Jun 2012; Markus Meier <maekke@gentoo.org> xf86dgaproto-2.1-r1.ebuild:
+  arm stable, bug #419473
+
+  28 Jun 2012; Jeroen Roovers <jer@gentoo.org> xf86dgaproto-2.1-r1.ebuild:
+  Stable for HPPA (bug #419473).
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> xf86dgaproto-2.1-r1.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> xf86dgaproto-2.1-r1.ebuild:
+  Stable for amd64, wrt bug #419473
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> xf86dgaproto-2.1-r1.ebuild:
+  keyword ~amd64-fbsd
+
+*xf86dgaproto-2.1-r1 (14 Apr 2012)
+
+  14 Apr 2012; Michał Górny <mgorny@gentoo.org> +xf86dgaproto-2.1-r1.ebuild:
+  Update to use xorg-2 eclass.
+
+  10 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86dgaproto-2.0.3.ebuild:
+  rm
+
+  02 Aug 2010; Raúl Porcel <armin76@gentoo.org> xf86dgaproto-2.1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #308521
+
+  31 May 2010; Guy Martin <gmsoft@gentoo.org> xf86dgaproto-2.1.ebuild:
+  hppa stable, #308521
+
+  12 May 2010; Brent Baude <ranger@gentoo.org> xf86dgaproto-2.1.ebuild:
+  Marking xf86dgaproto-2.1 ppc64 stable for bug 308521
+
+  18 Apr 2010; Markus Meier <maekke@gentoo.org> xf86dgaproto-2.1.ebuild:
+  arm stable, bug #308521
+
+  18 Apr 2010; <nixnut@gentoo.org> xf86dgaproto-2.1.ebuild:
+  ppc stable #308521
+
+  16 Apr 2010; Pacho Ramos <pacho@gentoo.org> xf86dgaproto-2.1.ebuild:
+  amd64 stable, bug 308521
+
+  09 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  xf86dgaproto-2.1.ebuild:
+  stable x86, bug 308521
+
+  14 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  xf86dgaproto-2.1.ebuild:
+  Transfer Prefix keywords
+
+  26 Oct 2009; Rémi Cardona <remi@gentoo.org> xf86dgaproto-2.1.ebuild:
+  sync with overlay, add blocker, fixes bug #288619
+
+*xf86dgaproto-2.1 (02 Oct 2009)
+
+  02 Oct 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86dgaproto-2.0.99.1.ebuild, +xf86dgaproto-2.1.ebuild:
+  Bump packages for xorg-server-1.7.
+
+*xf86dgaproto-2.0.99.1 (19 Sep 2009)
+
+  19 Sep 2009; Rémi Cardona <remi@gentoo.org>
+  +xf86dgaproto-2.0.99.1.ebuild:
+  bump to 2.0.99.1
+
+  19 Jun 2009; Rémi Cardona <remi@gentoo.org> -xf86dgaproto-2.0.2.ebuild:
+  drop old ebuilds
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  xf86dgaproto-2.0.2.ebuild, xf86dgaproto-2.0.3.ebuild:
+  fix repoman warnings
+
+  16 Apr 2009; Jeroen Roovers <jer@gentoo.org> xf86dgaproto-2.0.3.ebuild:
+  Stable for HPPA (bug #251832).
+
+  15 Apr 2009; Raúl Porcel <armin76@gentoo.org> ChangeLog:
+  ia64/sh stable wrt #251832
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> xf86dgaproto-2.0.3.ebuild:
+  Marking xf86dgaproto-2.0.3 ppc stable for bug 251832
+
+  05 Feb 2008; Markus Rothe <corsair@gentoo.org> xf86dgaproto-2.0.3.ebuild:
+  Stable on ppc64
+
+  27 Jan 2008; Raúl Porcel <armin76@gentoo.org> xf86dgaproto-2.0.3.ebuild:
+  alpha/ia64/sparc stable
+
+  21 Jan 2008; Samuli Suominen <drac@gentoo.org> xf86dgaproto-2.0.3.ebuild:
+  amd64 stable.
+
+  19 Dec 2007; Dawid Węgliński <cla@gentoo.org> xf86dgaproto-2.0.3.ebuild:
+  Stable on x86 (bug #202087)
+
+*xf86dgaproto-2.0.3 (08 Sep 2007)
+
+  08 Sep 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86dgaproto-2.0.3.ebuild:
+  Bump for 7.3.
+
+  04 Feb 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  xf86dgaproto-2.0.2.ebuild:
+  Drop mirroring restriction.  Thanks to Zhang Le of bug #163088.
+
+  19 Jul 2006; Guy Martin <gmsoft@gentoo.org> xf86dgaproto-2.0.2.ebuild:
+  Stable on hppa.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> xf86dgaproto-2.0.2.ebuild:
+  Mark 2.0.2 stable on ia64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  xf86dgaproto-2.0.2.ebuild:
+  arm/sh stable
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  xf86dgaproto-2.0.2.ebuild:
+  ppc/sparc/mips/alpha stable
+
+  30 Jun 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-xf86dgaproto-2.0.2, Manifest:
+  Fix digest.
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  xf86dgaproto-2.0.2.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org> xf86dgaproto-2.0.2.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  xf86dgaproto-2.0.2.ebuild:
+  x86 stable.
+
+  14 May 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  xf86dgaproto-2.0.2.ebuild:
+  Digests got broken again; add RESTRICT=mirror and use upstream tarballs.
+  Reported by Ciaran McCreesh.
+
+  31 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xf86dgaproto-2.0.2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  09 Mar 2006; Aron Griffis <agriffis@gentoo.org> xf86dgaproto-2.0.2.ebuild:
+  Mark 2.0.2 ~ia64
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> xf86dgaproto-2.0.2.ebuild:
+  Added ~ppc64
+
+  31 Jan 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  xf86dgaproto-2.0.2.ebuild:
+  Unstable on hppa.
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xf86dgaproto-2.0.1.ebuild:
+  Pull old versions.
+
+  26 Dec 2005; Stefaan De Roeck <stefaan@gentoo.org>
+  xf86dgaproto-2.0.2.ebuild:
+  Marked ~alpha
+
+*xf86dgaproto-2.0.2 (17 Dec 2005)
+
+  17 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86dgaproto-2.0.2.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -xf86dgaproto-2.0.ebuild:
+  Pull old versions.
+
+*xf86dgaproto-2.0.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +xf86dgaproto-2.0.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  28 Aug 2005; MATSUU Takuto <matsuu@gentoo.org> xf86dgaproto-2.0.ebuild:
+  Marked ~sh
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> xf86dgaproto-2.0.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> xf86dgaproto-2.0.ebuild:
+  Marked ~amd64
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> xf86dgaproto-2.0.ebuild:
+  Add ~sparc keyword (modular X testing on sparc).
+
+*xf86dgaproto-2.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +xf86dgaproto-2.0.ebuild:
+  Initial commit for modular X

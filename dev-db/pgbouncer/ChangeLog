@@ -1,0 +1,77 @@
+# ChangeLog for dev-db/pgbouncer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/pgbouncer/ChangeLog,v 1.15 2015/04/16 07:14:56 mgorny Exp $
+
+*pgbouncer-1.5.5 (16 Apr 2015)
+
+  16 Apr 2015; Michał Górny <mgorny@gentoo.org> +pgbouncer-1.5.5.ebuild:
+  Version bump with DoS bugfix. Update HOMEPAGE & SRC_URI.
+  https://github.com/gentoo/gentoo-portage-rsync-mirror/pull/98 by jbergstroem.
+
+  30 Sep 2013; Agostino Sarubbo <ago@gentoo.org> pgbouncer-1.5.4-r1.ebuild:
+  Stable for x86, wrt bug #485972
+
+  28 Sep 2013; Agostino Sarubbo <ago@gentoo.org> pgbouncer-1.5.4-r1.ebuild:
+  Stable for amd64, wrt bug #485972
+
+*pgbouncer-1.5.4-r1 (18 Aug 2013)
+
+  18 Aug 2013; Aaron W. Swenson <titanofold@gentoo.org>
+  +pgbouncer-1.5.4-r1.ebuild, files/pgbouncer.initd:
+  Fix bugs 478142, 478240, and 477350.
+
+  19 Jul 2013; Aaron W. Swenson <titanofold@gentoo.org> pgbouncer-1.5.4.ebuild:
+  Fix dependencies.
+
+*pgbouncer-1.5.4 (19 Jul 2013)
+
+  19 Jul 2013; Aaron W. Swenson <titanofold@gentoo.org>
+  -pgbouncer-1.4.2.ebuild, -pgbouncer-1.5.ebuild, -pgbouncer-1.5.1.ebuild,
+  -pgbouncer-1.5.2.ebuild, -pgbouncer-1.5.3.ebuild, -pgbouncer-1.5.3-r1.ebuild,
+  +pgbouncer-1.5.4.ebuild, +files/logrotate, +files/pgbouncer.confd,
+  +files/pgbouncer-dirs.patch, files/pgbouncer.initd, metadata.xml:
+  Clean out old and insecure versions. Version bump. Fixes bugs 425480, 460310,
+  477062, and 425034.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*pgbouncer-1.5.3-r1 (14 Jan 2013)
+
+  14 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> +pgbouncer-1.5.3-r1.ebuild:
+  Revision bump for reflect latest change
+
+  14 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> files/pgbouncer.initd:
+  Update initscript, fix bugs #410645 and #410647, thanks to Johan Bergström
+
+*pgbouncer-1.5.3 (13 Nov 2012)
+
+  13 Nov 2012; <titan@gentoo.org> +pgbouncer-1.5.3.ebuild:
+  Version bump. Fixes bugs 419171 and 440940.
+
+*pgbouncer-1.5.2 (18 Jun 2012)
+
+  18 Jun 2012; Patrick Lauer <patrick@gentoo.org> +pgbouncer-1.5.2.ebuild:
+  Bump
+
+  04 Jun 2012; Zac Medico <zmedico@gentoo.org> pgbouncer-1.4.2.ebuild,
+  pgbouncer-1.5.1.ebuild, pgbouncer-1.5.ebuild:
+  inherit user for enewgroup and enewuser
+
+*pgbouncer-1.5.1 (18 Apr 2012)
+
+  18 Apr 2012; Aaron W. Swenson <titanofold@gentoo.org>
+  +pgbouncer-1.5.1.ebuild:
+  Version Bump
+
+*pgbouncer-1.5 (29 Mar 2012)
+
+  29 Mar 2012; Aaron W. Swenson <titanofold@gentoo.org> +pgbouncer-1.5.ebuild:
+  Version bump. Fixes bug 405225.
+
+*pgbouncer-1.4.2 (16 Nov 2011)
+
+  16 Nov 2011; Aaron W. Swenson <titanofold@gentoo.org>
+  +pgbouncer-1.4.2.ebuild, +files/pgbouncer.initd, +metadata.xml:
+  Initial commit. Ebuild written by Johan Bergström <bugs@bergstroem.nu>.
+  Fixes bug 243232.

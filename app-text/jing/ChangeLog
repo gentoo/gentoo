@@ -1,0 +1,117 @@
+# ChangeLog for app-text/jing
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/jing/ChangeLog,v 1.30 2015/04/05 20:58:05 monsieurp Exp $
+
+  05 Apr 2015; Patrice Clement <monsieurp@gentoo.org> jing-20091111-r2.ebuild:
+  JDK 1.6 should be a bare minimum here.
+
+*jing-20091111-r2 (05 Apr 2015)
+
+  05 Apr 2015; Patrice Clement <monsieurp@gentoo.org> +jing-20091111-r2.ebuild:
+  EAPI 5 bump wrt bug 543906.
+
+  03 Aug 2014; Ralph Sennhauser <sera@gentoo.org> -jing-20030619-r3.ebuild:
+  Remove old
+
+  17 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> jing-20091111-r1.ebuild:
+  x86 stable wrt bug #433199
+
+  10 Oct 2012; Agostino Sarubbo <ago@gentoo.org> jing-20091111-r1.ebuild:
+  Stable for amd64, wrt bug #433199
+
+*jing-20091111-r1 (25 Jul 2012)
+
+  25 Jul 2012; Ralph Sennhauser <sera@gentoo.org> -jing-20091111.ebuild,
+  +jing-20091111-r1.ebuild:
+  Avoid bogous QA warning. #423103
+  Fix saxon slot for classpath.
+
+*jing-20091111 (24 May 2012)
+
+  24 May 2012; Ralph Sennhauser <sera@gentoo.org> +jing-20091111.ebuild:
+  Version bump.
+
+  06 Nov 2010; Petteri Räty <betelgeuse@gentoo.org> -files/build.xml,
+  -files/manifest.mf:
+  Remove unused files from FILESDIR. Fixes bug #344419.
+
+  02 Jul 2007; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Remove emacs herd from metadata.
+
+  30 Mar 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -jing-20030619-r1.ebuild:
+  Remove -r1 so that we can get saxon-bin package masked.
+
+  30 Mar 2007; Petteri Räty <betelgeuse@gentoo.org>
+  jing-20030619-r3.ebuild:
+  Marked stable on amd64 for bug #166862.
+
+  14 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  jing-20030619-r3.ebuild:
+  stable x86; bug 166862
+
+  14 Feb 2007; Petteri Räty <betelgeuse@gentoo.org>
+  jing-20030619-r3.ebuild:
+  Added xalan to dependencies as it was missing there.
+
+  14 Feb 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -jing-20030619-r2.ebuild:
+  Removed unused revision.
+
+*jing-20030619-r3 (20 Jan 2007)
+
+  20 Jan 2007; Petteri Räty <betelgeuse@gentoo.org> +files/build-r1.xml,
+  +jing-20030619-r3.ebuild:
+  Fixed bug #122038, made this compile with jdks >=1.5, cleaned the ebuild and
+  added the source use flag.
+
+*jing-20030619-r2 (03 Dec 2006)
+
+  03 Dec 2006; Joshua Nichols <nichoj@gentoo.org> files/build.xml,
+  +jing-20030619-r2.ebuild:
+  Revision bump to support new Java system. No longer uses bundled source from
+  relaxng-datatype.
+
+  22 Jan 2006; Joshua Nichols <nichoj@gentoo.org>
+  +files/jing-20030619-xerces.patch, jing-20030619-r1.ebuild:
+  Added patch to fix compilation with xerces-2.7 to fix bug #119366.
+
+  12 Jul 2005; Thomas Matthijs <axxo@gentoo.org> jing-20030619-r1.ebuild:
+  Style/Dep fixes
+
+  12 May 2005; Jan Brinkmann <luckyduck@gentoo.org> jing-20030619-r1.ebuild:
+  stable on amd64, added ~ppc to KEYWORDS
+
+  17 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> jing-20030619-r1.ebuild:
+  fixed dependency problem. fixes bug #78312.
+
+  14 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> jing-20030619-r1.ebuild,
+  -jing-20030619.ebuild:
+  marked -r1 stable on x86 and removed the old version which uses packed jars.
+
+  14 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> jing-20030619.ebuild:
+  correct java-config calls in the startup script. fixes bug #77912.
+
+*jing-20030619-r1 (14 Nov 2004)
+
+  14 Nov 2004; Thomas Matthijs <axxo@gentoo.org> +files/build-patch.diff,
+  +files/build.xml, +files/manifest.mf, +jing-20030619-r1.ebuild:
+  build from source 63240, submitted by Jan Brinkmann <lucky@the-luckyduck.de>
+
+  03 Nov 2004; Thomas Matthijs <axxo@gentoo.org> jing-20030619.ebuild:
+  depend on app-arch/unzip
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> jing-20030619.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  23 Aug 2004; Chris Aniszczyk <zx@gentoo.org> jing-20030619.ebuild:
+  Marking stable on x86
+
+  01 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> jing-20030619.ebuild:
+  dev-java/saxon -> dev-java/saxon-bin
+
+*jing-20030619 (13 May 2004)
+
+  13 May 2004; <mkennedy@gentoo.org> +metadata.xml, +jing-20030619.ebuild:
+  Initial port.  Ebuild contributed by Matthew Kennedy <mkennedy@gentoo.org>

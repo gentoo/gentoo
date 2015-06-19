@@ -1,0 +1,49 @@
+# ChangeLog for app-xemacs/xemacs-ispell
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/xemacs-ispell/ChangeLog,v 1.16 2014/08/10 19:47:55 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> xemacs-ispell-1.32.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  19 Mar 2008; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  A herd should not be listed as maintainer
+
+  25 Oct 2007; Hans de Graaff <graaff@gentoo.org>
+  -xemacs-ispell-1.24.ebuild:
+  Remove old version
+
+  15 Oct 2007; Jeroen Roovers <jer@gentoo.org> xemacs-ispell-1.32.ebuild:
+  Stable for HPPA (bug #189672).
+
+  20 Sep 2007; Jeroen Roovers <jer@gentoo.org> xemacs-ispell-1.32.ebuild:
+  Marked ~hppa (bug #193144).
+
+  03 Jun 2007; Hans de Graaff <graaff@gentoo.org> xemacs-ispell-1.32.ebuild:
+  Stable on amd64, ppc, ppc64, sparc, x86 as per #175560
+
+  30 May 2007; Raúl Porcel <armin76@gentoo.org> xemacs-ispell-1.32.ebuild:
+  alpha stable wrt #175560
+
+  14 Nov 2006; Hans de Graaff <graaff@gentoo.org> xemacs-ispell-1.32.ebuild:
+  Update download location.
+
+*xemacs-ispell-1.32 (12 Nov 2006)
+
+  12 Nov 2006; Hans de Graaff <graaff@gentoo.org> +metadata.xml,
+  +xemacs-ispell-1.32.ebuild:
+  Version bump; add metadata.
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  xemacs-ispell-1.24.ebuild:
+  Stable on ppc.
+
+  09 Aug 2004; Tom Gall <tgall@gentoo.org> xemacs-ispell-1.24.ebuild:
+  stable on ppc64, bug #57174
+
+  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> xemacs-ispell-1.24.ebuild:
+  Stable on alpha
+
+*xemacs-ispell-1.24 (20 Feb 2003)
+
+  20 Feb 2003; Rendhalver [Peter Brown] <rendhalver@gentoo.org> :
+  renamed from app-xemacs/ispell due to naming clash with ispell

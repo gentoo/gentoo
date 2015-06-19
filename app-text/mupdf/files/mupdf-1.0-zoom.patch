@@ -1,0 +1,18 @@
+--- mupdf-9999/apps/pdfapp.c
++++ mupdf-9999/apps/pdfapp.c
+@@ -858,6 +858,7 @@
+ 		break;
+ 
+ 	case 'b':
++	case '\b': //backspace
+ 		panto = DONT_PAN;
+ 		if (app->numberlen > 0)
+ 			app->pageno -= atoi(app->number);
+@@ -866,6 +867,7 @@
+ 		break;
+ 
+ 	case ' ':
++	case 'F':
+ 		panto = DONT_PAN;
+ 		if (app->numberlen > 0)
+ 			app->pageno += atoi(app->number);

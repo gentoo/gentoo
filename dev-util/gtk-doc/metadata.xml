@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gnome</herd>
+<use>
+	<flag name="highlight">Enable source code highlighting</flag>
+	<flag name="vim">Enable source code highlighting through
+	<pkg>app-editors/vim</pkg></flag>
+</use>
+<longdescription lang="en">
+	GTK-Doc is used to document C code.
+	It is typically used to document the public API of libraries,
+	such as the GTK+ and GNOME libraries, but it can also be used
+	to document application code.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,55 @@
+# ChangeLog for app-misc/esekeyd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/esekeyd/ChangeLog,v 1.14 2015/06/09 11:40:02 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  17 Jan 2014; Chris Reffett <creffett@gentoo.org> -esekeyd-1.2.6.ebuild:
+  Drop old
+
+  05 Jan 2014; Agostino Sarubbo <ago@gentoo.org> esekeyd-1.2.7.ebuild:
+  Stable for x86, wrt bug #495260
+
+  03 Jan 2014; Chema Alonso <nimiux@gentoo.org> esekeyd-1.2.7.ebuild:
+  Stable for amd64 wrt bug #495260
+
+*esekeyd-1.2.7 (10 Apr 2013)
+
+  10 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> +esekeyd-1.2.7.ebuild:
+  Version bump, wrt bug #363415
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> -esekeyd-1.2.1.ebuild,
+  metadata.xml:
+  Cleanup due #453094
+
+  02 Aug 2011; Markos Chandras <hwoarang@gentoo.org> esekeyd-1.2.6.ebuild:
+  Stable on amd64 wrt bug #360591
+
+  11 Jun 2011; Markus Meier <maekke@gentoo.org> esekeyd-1.2.6.ebuild:
+  add ~arm, bug #363127
+
+*esekeyd-1.2.6 (14 May 2010)
+
+  14 May 2010; Samuli Suominen <ssuominen@gentoo.org> +esekeyd-1.2.6.ebuild:
+  Version bump wrt #319387 by Kacper Kowalik.
+
+  05 Nov 2006; Christian Faulhammer <opfer@gentoo.org> esekeyd-1.2.1.ebuild:
+  keyworded ~x86, bug #154091
+
+  21 Jul 2005; David Holm <dholm@gentoo.org> esekeyd-1.2.1.ebuild:
+  Added to ~ppc.
+
+  19 Jul 2005; Olivier Crête <tester@gentoo.org> esekeyd-1.2.1.ebuild:
+  Stable on amd64
+
+  30 May 2005; Olivier Crête <tester@gentoo.org>
+  +files/digest-esekeyd-1.2.1:
+  Moved to app-misc.. not a x11 app.. should not be in the rsync tree yet, so
+  no updates file ...
+
+*esekeyd-1.2.1 (30 May 2005)
+
+  30 May 2005; Olivier Crête <tester@gentoo.org> +metadata.xml,
+  +esekeyd-1.2.1.ebuild:
+  New package, thanks to kandian for the tip

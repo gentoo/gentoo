@@ -1,0 +1,13 @@
+diff -uNr sbin/ifconfig.old/regdomain.c sbin/ifconfig/regdomain.c
+--- sbin/ifconfig.old/regdomain.c	2010-12-21 17:09:25.000000000 +0000
++++ sbin/ifconfig/regdomain.c	2011-07-10 15:56:27.000000000 +0000
+@@ -39,7 +39,7 @@
+ #include <err.h>
+ #include <unistd.h>
+ 
+-#include <bsdxml.h>
++#include <expat.h>
+ 
+ #include "regdomain.h"
+ 
+Los ficheros binarios sbin/ifconfig.old/regdomain.o y sbin/ifconfig/regdomain.o son distintos

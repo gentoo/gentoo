@@ -1,0 +1,22 @@
+Index: alcd-1.5.1/thread.c
+===================================================================
+--- alcd-1.5.1.orig/thread.c
++++ alcd-1.5.1/thread.c
+@@ -104,7 +104,7 @@ void cLCD::SetText( const char *szText )
+    // only proceed, if valid data
+    if( szText != NULL && strlen( szText ) > 0 ) {
+       // set channel name
+-      char *delim = strchr( szText, '|' );
++      const char *delim = strchr( szText, '|' );
+       if( delim ) {
+          char buffer[ BUFSIZE ];
+          int sLen = ( delim - szText ) >= BUFSIZE ? BUFSIZE : ( delim - szText );
+@@ -420,7 +420,7 @@ void cLCD::Replaying( const cControl *co
+                if( szFileName[i] == ')' )
+                   strncpy( (char *)szReplayMode, szFileName + 8, i - 8 );
+             }
+-            char *p = strstr( szFileName + i, " : " );
++            const char *p = strstr( szFileName + i, " : " );
+             if( p )
+                strncpy( szTemp, p + 3, sizeof(szTemp ));
+             else

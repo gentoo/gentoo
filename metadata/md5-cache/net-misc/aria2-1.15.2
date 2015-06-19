@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=sys-libs/zlib ssl? ( gnutls? ( >=net-libs/gnutls-1.2.9 ) !gnutls? ( dev-libs/openssl ) ) adns? ( >=net-dns/c-ares-1.5.0 ) bittorrent? ( ssl? ( gnutls? ( nettle? ( >=dev-libs/nettle-2.4[gmp] >=dev-libs/gmp-5 ) !nettle? ( >=dev-libs/libgcrypt-1.2.2:0 ) ) ) !ssl? ( nettle? ( >=dev-libs/nettle-2.4[gmp] >=dev-libs/gmp-5 ) !nettle? ( >=dev-libs/libgcrypt-1.2.2:0 ) ) ) metalink? ( libxml2? ( >=dev-libs/libxml2-2.6.26 ) !libxml2? ( dev-libs/expat ) ) sqlite? ( dev-db/sqlite:3 ) xmlrpc? ( libxml2? ( >=dev-libs/libxml2-2.6.26 ) !libxml2? ( dev-libs/expat ) ) virtual/pkgconfig nls? ( sys-devel/gettext ) test? ( >=dev-util/cppunit-1.12.0 )
+DESCRIPTION=A download utility with segmented downloading with BitTorrent support
+EAPI=4
+HOMEPAGE=http://aria2.sourceforge.net/
+IUSE=adns bittorrent +gnutls +libxml2 metalink +nettle nls sqlite scripts ssl test xmlrpc
+KEYWORDS=amd64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib ssl? ( gnutls? ( >=net-libs/gnutls-1.2.9 ) !gnutls? ( dev-libs/openssl ) ) adns? ( >=net-dns/c-ares-1.5.0 ) bittorrent? ( ssl? ( gnutls? ( nettle? ( >=dev-libs/nettle-2.4[gmp] >=dev-libs/gmp-5 ) !nettle? ( >=dev-libs/libgcrypt-1.2.2:0 ) ) ) !ssl? ( nettle? ( >=dev-libs/nettle-2.4[gmp] >=dev-libs/gmp-5 ) !nettle? ( >=dev-libs/libgcrypt-1.2.2:0 ) ) ) metalink? ( libxml2? ( >=dev-libs/libxml2-2.6.26 ) !libxml2? ( dev-libs/expat ) ) sqlite? ( dev-db/sqlite:3 ) xmlrpc? ( libxml2? ( >=dev-libs/libxml2-2.6.26 ) !libxml2? ( dev-libs/expat ) ) nls? ( virtual/libiconv virtual/libintl ) scripts? ( dev-lang/ruby )
+SLOT=0
+SRC_URI=mirror://sourceforge/aria2/aria2-1.15.2.tar.bz2
+_eclasses_=bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=1ea95dcc01d337d1dbcc9a7d9d6438c7

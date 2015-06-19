@@ -1,0 +1,41 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/tinyproxy/files/tinyproxy-1.8.3-r2.initd,v 1.1 2013/05/30 16:44:03 tomwij Exp $
+
+get_config() {
+    res=$(awk '$1 == "'$1'" { s=$2 } END { print s }' "$CONFFILE")
+
+    if [ "x$res" = "x" ]; then
+	echo "$2"
+    else
+	eval echo "$res"
+    fi
+}
+
+: ${CONFFILE:="/etc/${SVCNAME}.conf"}
+
+command=/usr/sbin/tinyproxy
+command_args="-c ${CONFFILE}"
+pidfile=$(get_config PidFile /run/tinyproxy/${SVCNAME}.pid)
+
+depend() {
+	config "$CONFFILE"
+
+	use dns
+
+	[ "$(get_config Syslog Off)" = "On" ] && \
+	    use logger
+}
+
+start_pre() {
+    piddir=$(dirname ${pidfile})
+
+    if [ "${piddir}" = "/run" ]; then
+	eerror "Please change your PidFile settings to be within the"
+	eerror "/run/tinyproxy directory"
+	eend 1
+    else
+	checkpath -d -o $(get_config User tinyproxy):$(get_config Group tinyproxy) ${piddir}
+    fi
+}

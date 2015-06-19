@@ -1,0 +1,317 @@
+# ChangeLog for sys-devel/patch
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/patch/ChangeLog,v 1.91 2015/05/20 00:36:19 mattst88 Exp $
+
+  20 May 2015; Matt Turner <mattst88@gentoo.org> patch-2.7.5.ebuild:
+  alpha stable, bug 548120.
+
+  15 May 2015; Mikle Kolyada <zlogene@gentoo.org> patch-2.7.5.ebuild:
+  arm stable wrt bug #548120
+
+  15 May 2015; Pacho Ramos <pacho@gentoo.org> patch-2.7.5.ebuild:
+  ppc stable wrt bug #548120
+
+  13 May 2015; Jack Morgan <jmorgan@gentoo.org> patch-2.7.5.ebuild:
+  ia64 stable wrt bug #548120
+
+  11 May 2015; Mikle Kolyada <zlogene@gentoo.org> patch-2.7.5.ebuild:
+  sparc stable wrt bug #548120
+
+  01 May 2015; Mikle Kolyada <zlogene@gentoo.org> patch-2.7.5.ebuild:
+  x86 stable wrt bug #548120
+
+  01 May 2015; Mikle Kolyada <zlogene@gentoo.org> patch-2.7.5.ebuild:
+  amd64 stable wrt bug #548120
+
+  01 May 2015; Jeroen Roovers <jer@gentoo.org> patch-2.7.5.ebuild:
+  Stable for HPPA PPC64 (bug #548120).
+
+  21 Mar 2015; Mike Frysinger <vapier@gentoo.org> patch-2.7.3.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  16 Mar 2015; Lars Wendler <polynomial-c@gentoo.org> -patch-2.6.1.ebuild,
+  -files/gnulib_strnlen.c:
+  Removed vulnerable version.
+
+*patch-2.7.5 (08 Mar 2015)
+
+  08 Mar 2015; Lars Wendler <polynomial-c@gentoo.org> +patch-2.7.5.ebuild:
+  Version bump.
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> patch-2.7.3.ebuild:
+  Stable for alpha, wrt bug #536614
+
+  23 Feb 2015; Agostino Sarubbo <ago@gentoo.org> patch-2.7.3.ebuild:
+  Stable for ia64, wrt bug #536614
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org> patch-2.7.3.ebuild:
+  Stable for ppc64, wrt bug #536614
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org> patch-2.7.3.ebuild:
+  Stable for sparc, wrt bug #536614
+
+  15 Feb 2015; Agostino Sarubbo <ago@gentoo.org> patch-2.7.3.ebuild:
+  Stable for x86, wrt bug #536614
+
+  01 Feb 2015; Markus Meier <maekke@gentoo.org> patch-2.7.3.ebuild:
+  arm stable, bug #536614
+
+*patch-2.7.4 (01 Feb 2015)
+
+  01 Feb 2015; Lars Wendler <polynomial-c@gentoo.org> -patch-2.7.1-r3.ebuild,
+  -patch-2.7.2.ebuild, +patch-2.7.4.ebuild,
+  -files/patch-2.7.1-Fix-removing-empty-directories.patch,
+  -files/patch-2.7.1-dry-run-mode-create-temp-files-in-temp-dir.patch,
+  -files/patch-2.7.1-initialize_data_structures_early_enough.patch,
+  -files/patch-2.7.1-prevent_depend_on_autotools.patch:
+  Version bump (bug #538426). Removed old.
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org> patch-2.7.3.ebuild:
+  Stable for ppc, wrt bug #536614
+
+  28 Jan 2015; Agostino Sarubbo <ago@gentoo.org> patch-2.7.3.ebuild:
+  Stable for amd64, wrt bug #536614
+
+  27 Jan 2015; Jeroen Roovers <jer@gentoo.org> patch-2.7.3.ebuild:
+  Stable for HPPA (bug #536614).
+
+  23 Jan 2015; Lars Wendler <polynomial-c@gentoo.org>
+  -files/patch-2.7.2-fix_for_CVE-2015-1196_fix.patch,
+  -files/patch-2.7.2-valid_filenames_on_renames_and_copies.patch:
+  Removed unused patches.
+
+*patch-2.7.3 (23 Jan 2015)
+
+  23 Jan 2015; Lars Wendler <polynomial-c@gentoo.org> -patch-2.7.2-r1.ebuild,
+  +patch-2.7.3.ebuild:
+  Rather use latest release than patch the previous one (d'oh!)
+
+*patch-2.7.2-r1 (23 Jan 2015)
+
+  23 Jan 2015; Lars Wendler <polynomial-c@gentoo.org> +patch-2.7.2-r1.ebuild,
+  +files/patch-2.7.2-fix_for_CVE-2015-1196_fix.patch,
+  +files/patch-2.7.2-valid_filenames_on_renames_and_copies.patch:
+  Revbump to add two upstream fixes.
+
+*patch-2.7.2 (21 Jan 2015)
+
+  21 Jan 2015; Lars Wendler <polynomial-c@gentoo.org> -patch-2.5.9.ebuild,
+  -patch-2.5.9-r1.ebuild, -patch-2.7.1-r2.ebuild, +patch-2.7.2.ebuild,
+  -files/patch-2.5.9-cr-stripping.patch,
+  -files/patch-2.7.1-Fix-removing-empty-directories-automake.patch:
+  Security bump (bug #536614). Removed old.
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> patch-2.6.1.ebuild,
+  patch-2.7.1-r2.ebuild, patch-2.7.1-r3.ebuild:
+  Add arm64 love.
+
+*patch-2.7.1-r3 (15 Oct 2013)
+
+  15 Oct 2013; Lars Wendler <polynomial-c@gentoo.org> -patch-2.7.1.ebuild,
+  -patch-2.7.1-r1.ebuild, patch-2.7.1-r2.ebuild, +patch-2.7.1-r3.ebuild,
+  +files/patch-2.7.1-initialize_data_structures_early_enough.patch,
+  +files/patch-2.7.1-prevent_depend_on_autotools.patch:
+  Revbump to fix segfault on nonexisting dir. Thanks to Martin von Gagern for
+  reporting this in bug #485182. Removed old versions.
+
+*patch-2.7.1-r2 (02 Aug 2013)
+
+  02 Aug 2013; Doug Goldstein <cardoe@gentoo.org>
+  +files/patch-2.7.1-Fix-removing-empty-directories-automake.patch,
+  +files/patch-2.7.1-Fix-removing-empty-directories.patch,
+  +files/patch-2.7.1-dry-run-mode-create-temp-files-in-temp-dir.patch,
+  +patch-2.7.1-r2.ebuild:
+  Fixes to prevent leaving empty directories around when the wrong patch level
+  is used or if --dry-run is specified. bug #478548
+
+  21 May 2013; Mike Frysinger <vapier@gentoo.org> patch-2.7.1-r1.ebuild:
+  Do not let $ED from the EAPI mess up the search for `ed` #470210 by Roman
+  Žilka.
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org> patch-2.7.1-r1.ebuild:
+  Add ~arm-linux keyword.
+
+  13 Nov 2012; Fabian Groffen <grobian@gentoo.org> patch-2.7.1-r1.ebuild:
+  Drop useless condition, Prefix always has USERLAND=GNU
+
+*patch-2.7.1-r1 (13 Nov 2012)
+
+  13 Nov 2012; Christoph Junghans <ottxor@gentoo.org> +patch-2.7.1-r1.ebuild:
+  added prefix support (bug #442928)
+
+*patch-2.7.1 (28 Sep 2012)
+
+  28 Sep 2012; Mike Frysinger <vapier@gentoo.org> +patch-2.7.1.ebuild,
+  -patch-2.7.ebuild:
+  Version bump which should fix #435384 by Ben Kohler and #435862 by Andrey
+  Volkov.
+
+  19 Sep 2012; Alexis Ballier <aballier@gentoo.org> patch-2.7.ebuild:
+  restore bsd keywords, xattr useflag is now masked, bug #435474
+
+  19 Sep 2012; Mike Frysinger <vapier@gentoo.org> patch-2.7.ebuild:
+  Add USE=xattr flag #435384 by Ben Kohler.
+
+*patch-2.7 (13 Sep 2012)
+
+  13 Sep 2012; Mike Frysinger <vapier@gentoo.org> +patch-2.7.ebuild:
+  Version bump.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> patch-2.6.1.ebuild:
+  keyword ~amd64-fbsd
+
+  25 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> patch-2.6.1.ebuild:
+  tidy
+
+  25 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> patch-2.6.1.ebuild:
+  ppc64 stable wrt #387471
+
+  04 Jan 2012; Brent Baude <ranger@gentoo.org> patch-2.6.1.ebuild:
+  Marking patch-2.6.1 ppc for bug 387471
+
+  18 Dec 2011; Raúl Porcel <armin76@gentoo.org> patch-2.6.1.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #387471
+
+  03 Dec 2011; Markus Meier <maekke@gentoo.org> patch-2.6.1.ebuild:
+  arm stable, bug #387471
+
+  02 Dec 2011; Steve Dibb <beandog@gentoo.org> patch-2.6.1.ebuild:
+  amd64 stable, bug 387471
+
+  28 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> patch-2.6.1.ebuild:
+  x86 stable wrt bug #387471
+
+  22 Nov 2011; Jeroen Roovers <jer@gentoo.org> patch-2.6.1.ebuild:
+  Stable for HPPA (bug #387471).
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> patch-2.5.9.ebuild:
+  Drop to ~mips
+
+  22 Jan 2010; Jeremy Olexa <darkside@gentoo.org> patch-2.6.1.ebuild,
+  +files/gnulib_strnlen.c:
+  Add missing strnlen implementation that upstream apparently forgot to
+  include, bug #300845
+
+  02 Jan 2010; Mike Frysinger <vapier@gentoo.org> patch-2.6.1.ebuild:
+  Pull in ed for tests #299270 by Patrick Lauer.
+
+*patch-2.6.1 (01 Jan 2010)
+
+  01 Jan 2010; Mike Frysinger <vapier@gentoo.org> +patch-2.6.1.ebuild:
+  Version bump.
+
+*patch-2.6 (14 Nov 2009)
+
+  14 Nov 2009; Mike Frysinger <vapier@gentoo.org> +patch-2.6.ebuild:
+  Version bump.
+
+  18 Mar 2008; Mike Frysinger <vapier@gentoo.org> patch-2.5.9.ebuild,
+  patch-2.5.9-r1.ebuild:
+  Drop frivolous USE=build.
+
+  24 Jun 2007; Mike Frysinger <vapier@gentoo.org> patch-2.5.9-r1.ebuild:
+  Dont stabilize version 2.5.9-r1.
+
+  17 Oct 2006; Roy Marples <uberlord@gentoo.org> patch-2.5.9.ebuild,
+  patch-2.5.9-r1.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  30 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> patch-2.5.9-r1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  07 May 2005; Mike Frysinger <vapier@gentoo.org> patch-2.5.9-r1.ebuild:
+  Install as gpatch on non-GNU systems #91560.
+
+*patch-2.5.9-r1 (16 Nov 2004)
+
+  16 Nov 2004; Mike Frysinger <vapier@gentoo.org> +files/2.5.9-deb-cr.patch,
+  +patch-2.5.9-r1.ebuild:
+  Version bump with debian patch #49823 by JoWilly.
+
+  02 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  patch-2.5.4-r5.ebuild, patch-2.5.9.ebuild:
+  virtual/glibc -> virtual/libc
+
+  24 Jun 2004; Aron Griffis <agriffis@gentoo.org> patch-2.5.4-r5.ebuild,
+  patch-2.5.9.ebuild:
+  QA - fix use invocation. This also fixes an ebuild error due in part to the
+  less readable use syntax. It was written [ "is-ldflags -pie" ] when it should
+  have been [ "`is-ldflags -pie`" ]. The way it was written would have always
+  evaluated to true.
+
+  22 Jun 2004; <solar@gentoo.org> patch-2.5.9.ebuild:
+  Fixed unary operator problem because LDFLAGS_PIE does not exist in most of the
+  cases. Fixed overwrite of LDFLAGS=
+
+  08 May 2004; Danny van Dyk <kugelfang@gentoo.org> patch-2.5.9.ebuild:
+  Filtering "-pie" from LDFLAGS and appending manually to the Makefile for amd64.
+
+  29 Mar 2004; Jon Portnoy <avenj@gentoo.org> patch-2.5.9.ebuild :
+  Added strip-flags, bug #42698.
+
+  21 Oct 2003; Martin Holzer <mholzer@gentoo.org> patch-2.5.9.ebuild:
+  Adding gentoo mirrors. Closes #30106 .
+
+  17 Sep 2003; Jon Portnoy <avenj@gentoo.org> patch-2.5.9.ebuild :
+  ia64 keywords.
+
+  03 Aug 2003; Martin Schlemmer <azarah@gentoo.org> patch-2.5.9.ebuild:
+  Bump to stable.
+
+*patch-2.5.9 (17 Jun 2003)
+
+  06 Jul 2003; Joshua Kinard <kumba@gentoo.org> patch-2.5.9.ebuild:
+  Changed ~mips to mips in KEYWORDS
+
+  01 Jul 2003; Todd Sunderlin <todd@gentoo.org> patch-2.5.9.ebulid:
+  set stable on sparc
+
+  17 Jun 2003; Seemant Kulleen <seemant@gentoo.org> patch-2.5.4-r4.ebuild,
+  patch-2.5.4-r5.ebuild, patch-2.5.9.ebuild:
+  bumped -r5 to stable, and put 2.5.9 into ~arch testing. Thanks to Rach for
+  informing about this new version.
+
+  30 May 2003; <msterret@gentoo.org> patch-2.5.4-r5.ebuild:
+  Added static to IUSE
+
+  01 May 2003; <msterret@gentoo.org> patch-2.5.4-r5.ebuild:
+  added IUSE
+  some suggested changes from agriffis:
+  	don't export CFLAGS; that's done automatically
+  	use emake
+  	use einstall
+  other small cleanups
+
+*patch-2.5.4-r5 (01 May 2003)
+
+  13 May 2003; <msterret@gentoo.org> patch-2.5.4-r5.ebuild:
+  new patch ebuild that doesn't use try, but uses || die instead
+
+  18 Feb 2003; Zach Welch <zwelch@gentoo.org> patch-2.5.4-r4.ebuild :
+  Added hppa to keywords.
+
+  07 Feb 2003; Guy Martin <gmsoft@gentoo.org> patch-2.5.4-r4.ebuild :
+  Added hppa to keywords.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+*patch-2.5.4-r4 (15 Feb 2002)
+
+  18 Jan 2003; Jan Seidel <tuxus@gentoo.org> :
+  Added mips to keywords
+
+  15 Feb 2002; M.Thibaut <murphy@gentoo.org> ChangeLog :
+
+  Added configuration flags that ensure correct compilation of the program
+  on all Linux platforms (more notably 64-bit ones). Fixes bug 1726
+  "fseek: invalid argument" on sparc64 machines with sparc32 userland.
+
+*patch-2.5.4-r3 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,60 @@
+ makefile | 21 +++++++++++----------
+ 1 file changed, 11 insertions(+), 10 deletions(-)
+
+diff --git a/makefile b/makefile
+index d6f335e..68736c6 100644
+--- a/makefile
++++ b/makefile
+@@ -25,22 +25,23 @@ BOOST_LIBS			= thread filesystem program_options iostreams system
+ LIBS				= $(BOOST_LIBS:%=boost_%$(BOOST_LIB_SUFFIX)) z bz2
+ 
+ DEFINES				= USE_COMPRESSION LINUX VERSION='"$(VERSION)"'
+-CXX					= g++
++CXX					?= g++
+ 
+-CFLAGS				+= $(INC_DIR:%=-I%) -iquote src -g -Wall -Wno-multichar -pthread
+-LDOPTS				+= $(LIB_DIR:%=-L%) $(LIBS:%=-l%) -g -pthread
++CPPFLAGS				+= $(INC_DIR:%=-I%) -iquote src
++CXXFLAGS				+= -Wall -Wno-multichar -pthread
++LDOPTS				+= $(LIB_DIR:%=-L%) $(LIBS:%=-l%) -pthread
+ 
+ OBJ_DIR				= obj
+ 
+ ifeq ($(DEBUG),1)
+ OBJ_DIR				:= $(OBJ_DIR).dbg
+-CFLAGS				+= -g3
++CFLAGS				+=
+ else
+ DEFINES				+= NDEBUG
+-CFLAGS				+= -O3
++CFLAGS				+=
+ endif
+ 
+-CFLAGS				+= $(DEFINES:%=-D%)
++CPPFLAGS				+= $(DEFINES:%=-D%)
+ 
+ DIST_NAME			= dssp-$(VERSION)
+ 
+@@ -50,18 +51,18 @@ OBJECTS = $(OBJ_DIR)/mkdssp.o $(OBJ_DIR)/dssp.o $(OBJ_DIR)/primitives-3d.o $(OBJ
+ 
+ mkdssp: $(OBJECTS)
+ 	@ echo linking $@
+-	@ $(CXX) -static -o $@ $^ $(LDOPTS)
++	$(CXX) $(LDFLAGS) -o $@ $^ $(LDOPTS)
+ 
+ include $(OBJECTS:%.o=%.d)
+ 
+ $(OBJECTS:.o=.d):
+ 
+-$(OBJ_DIR):
++OBJ_DIR:
+ 	@ mkdir -p $(OBJ_DIR)
+ 
+-$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
++$(OBJ_DIR)/%.o: %.cpp OBJ_DIR
+ 	@ echo compiling $@
+-	@ $(CXX) -MD -c -o $@ $< $(CFLAGS)
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -MD -c -o $@ $<
+ 
+ clean:
+ 	install -d $(BIN_DIR) $(MAN_DIR)

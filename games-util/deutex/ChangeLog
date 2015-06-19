@@ -1,0 +1,38 @@
+# ChangeLog for games-util/deutex
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-util/deutex/ChangeLog,v 1.10 2015/03/15 04:20:14 mr_bones_ Exp $
+
+  15 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> deutex-4.4.0.ebuild:
+  EAPI=5
+
+  11 Dec 2012; Ulrich Müller <ulm@gentoo.org> deutex-4.4.0.ebuild:
+  Update LICENSE, see README and LICENSE files in tarball.
+
+  12 Jan 2011; Michael Sterrett <mr_bones_@gentoo.org> deutex-4.4.0.ebuild:
+  no need to inherit games. use toolchain-funcs instead
+
+  27 Oct 2010; Tupone Alfredo <tupone@gentoo.org> deutex-4.4.0.ebuild,
+  +files/deutex-4.4.0-ovflfix.patch:
+  Fix overflow. Bug #340829 by flameeyes@gentoo.org
+
+  15 Oct 2010; Brent Baude <ranger@gentoo.org> deutex-4.4.0.ebuild:
+  stable ppc, bug 315049
+
+  10 Jul 2010; Raúl Porcel <armin76@gentoo.org> deutex-4.4.0.ebuild:
+  This was never tested on sparc
+
+  24 Jun 2010; Christoph Mende <angelos@gentoo.org> deutex-4.4.0.ebuild:
+  Stable on amd64 wrt bug #315049
+
+  08 Jun 2010; Michael Sterrett <mr_bones_@gentoo.org> deutex-4.4.0.ebuild,
+  +files/deutex-4.4.0-64bit.patch:
+  patch for 64bit support (bug #321219) from Christoph Mende
+
+  26 Apr 2010; Christian Faulhammer <fauli@gentoo.org> deutex-4.4.0.ebuild:
+  stable x86, bug 315049
+
+*deutex-4.4.0 (10 Mar 2010)
+
+  10 Mar 2010; Michael Sterrett <mr_bones_@gentoo.org> +deutex-4.4.0.ebuild,
+  +files/deutex-4.4.0-makefile.patch, +metadata.xml:
+  Initial commit - ebuild submitted by Marcel Schmedes via bug #275323

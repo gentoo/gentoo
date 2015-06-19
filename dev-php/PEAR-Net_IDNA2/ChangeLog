@@ -1,0 +1,37 @@
+# ChangeLog for dev-php/PEAR-Net_IDNA2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Net_IDNA2/ChangeLog,v 1.9 2014/08/10 20:52:16 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-Net_IDNA2-0.1.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  02 Jul 2012; Jeroen Roovers <jer@gentoo.org> PEAR-Net_IDNA2-0.1.1.ebuild:
+  Marked ~hppa too.
+
+  03 Mar 2012; Markus Meier <maekke@gentoo.org> PEAR-Net_IDNA2-0.1.1.ebuild:
+  arm stable, bug #403711
+
+  05 Feb 2012; Raúl Porcel <armin76@gentoo.org> PEAR-Net_IDNA2-0.1.1.ebuild:
+  Add ~sparc wrt #385255
+
+  08 Dec 2011; Markus Meier <maekke@gentoo.org> PEAR-Net_IDNA2-0.1.1.ebuild:
+  add ~arm, bug #385255
+
+  25 Nov 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  PEAR-Net_IDNA2-0.1.1.ebuild:
+  Straight to ppc/ppc64 wrt #388613
+
+  04 Nov 2011; Andreas Schuerch <nativemad@gentoo.org>
+  PEAR-Net_IDNA2-0.1.1.ebuild:
+  x86 stable, see bug 388763
+
+  03 Nov 2011; Tony Vroon <chainsaw@gentoo.org> PEAR-Net_IDNA2-0.1.1.ebuild:
+  Marked stable on AMD64 based on arch testing by Ian "idella4" Delaney &
+  Agostino "ago" Sarubbo in bug #388763.
+
+*PEAR-Net_IDNA2-0.1.1 (01 Oct 2011)
+
+  01 Oct 2011; Peter Volkov <pva@gentoo.org> +PEAR-Net_IDNA2-0.1.1.ebuild,
+  +metadata.xml:
+  Initial import. Dependency of mail-client/roundcube.

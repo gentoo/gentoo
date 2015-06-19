@@ -1,0 +1,6 @@
+# Copyright 1999-2012 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License, v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/releases/freebsd-8.2/package.use.mask,v 1.1 2012/07/06 23:11:51 naota Exp $
+
+# Not built due to lacking of O_CLOEXEC, bug #390387
+media-libs/mesa egl

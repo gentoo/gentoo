@@ -1,0 +1,45 @@
+# ChangeLog for dev-perl/Sphinx-Config
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Sphinx-Config/ChangeLog,v 1.9 2013/09/14 13:20:44 idella4 Exp $
+
+*Sphinx-Config-0.90.0-r1 (14 Sep 2013)
+
+  14 Sep 2013; Ian Delaney <idella4@gentoo.org> +Sphinx-Config-0.90.0-r1.ebuild,
+  -Sphinx-Config-0.90.0.ebuild:
+  revbump -> EAPI 5, remove old
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop duplication of myself as a maintainer where there is a herd.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Sphinx-Config-0.01.ebuild,
+  -Sphinx-Config-0.05.ebuild, -Sphinx-Config-0.80.ebuild:
+  Cleanup
+
+*Sphinx-Config-0.90.0 (24 Mar 2011)
+
+  24 Mar 2011; Torsten Veller <tove@gentoo.org> +Sphinx-Config-0.90.0.ebuild:
+  Version bump
+
+*Sphinx-Config-0.80 (17 Jan 2011)
+
+  17 Jan 2011; Torsten Veller <tove@gentoo.org> +Sphinx-Config-0.80.ebuild:
+  Version bump
+
+*Sphinx-Config-0.05 (25 Aug 2009)
+
+  25 Aug 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Sphinx-Config-0.05.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  30 Sep 2008; Robin H. Johnson <robbat2@gentoo.org>
+  Sphinx-Config-0.01.ebuild:
+  Fix headers.
+
+*Sphinx-Config-0.01 (19 Apr 2008)
+
+  19 Apr 2008; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +Sphinx-Config-0.01.ebuild:
+  Initial commit.

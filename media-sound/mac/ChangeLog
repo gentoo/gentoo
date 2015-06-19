@@ -1,0 +1,105 @@
+# ChangeLog for media-sound/mac
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mac/ChangeLog,v 1.31 2015/01/29 18:54:47 mgorny Exp $
+
+  29 Jan 2015; Michał Górny <mgorny@gentoo.org> mac-3.99.4.5.7-r1.ebuild:
+  Switch to CPU_FLAGS_X86.
+
+  10 Jun 2014; Daniel Pielmeier <billie@gentoo.org> mac-3.99.4.5.7-r1.ebuild:
+  Use prune_libtool_files from eutils.
+
+  04 Mar 2013; Daniel Pielmeier <billie@gentoo.org> mac-3.99.4.5.7-r1.ebuild:
+  Switch to EAPI 5.
+
+  01 Oct 2012; Daniel Pielmeier <billie@gentoo.org> -mac-3.99.4.5.7.ebuild:
+  Remove old.
+
+  30 Sep 2012; Raúl Porcel <armin76@gentoo.org> mac-3.99.4.5.7-r1.ebuild:
+  alpha stable wrt #397617
+
+  10 Jul 2012; Brent Baude <ranger@gentoo.org> mac-3.99.4.5.7-r1.ebuild:
+  Marking mac-3.99.4.5.7-r1 ppc for bug 425228
+
+  09 Jul 2012; Agostino Sarubbo <ago@gentoo.org> mac-3.99.4.5.7-r1.ebuild:
+  Stable for amd64, wrt bug #425228
+
+  08 Jul 2012; Jeff Horelick <jdhore@gentoo.org> mac-3.99.4.5.7-r1.ebuild:
+  marked x86 per bug 425228
+
+*mac-3.99.4.5.7-r1 (27 Mar 2012)
+
+  27 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +mac-3.99.4.5.7-r1.ebuild:
+  Install missing headers wrt #409435 by Yanhui Shen
+
+  07 Aug 2011; Daniel Pielmeier <billie@gentoo.org> mac-3.99.4.5.7.ebuild:
+  Switch to EAPI 4. Add static libs USE flag. Using --enable/disable-mmx is
+  enough.
+
+  09 Jun 2011; Daniel Pielmeier <billie@gentoo.org> -mac-3.99.4.5.6.ebuild:
+  Remove old.
+
+  06 Mar 2011; Tobias Klausmann <klausman@gentoo.org> mac-3.99.4.5.7.ebuild:
+  Stable on alpha, bug #354061
+
+  26 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  mac-3.99.4.5.7.ebuild:
+  x86 stable wrt bug #355089
+
+  25 Feb 2011; Brent Baude <ranger@gentoo.org> mac-3.99.4.5.7.ebuild:
+  Marking mac-3.99.4.5.7 ppc for bug 354061
+
+  16 Feb 2011; Markos Chandras <hwoarang@gentoo.org> mac-3.99.4.5.7.ebuild:
+  Stable on amd64 wrt bug #355089
+
+  12 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> mac-3.99.4.5.7.ebuild:
+  Marked ~ppc wrt #326767
+
+  10 Oct 2010; Tobias Klausmann <klausman@gentoo.org> mac-3.99.4.5.7.ebuild:
+  Keyworded on alpha, bug #326767
+
+*mac-3.99.4.5.7 (02 Aug 2010)
+
+  02 Aug 2010; Daniel Pielmeier <billie@gentoo.org> +mac-3.99.4.5.7.ebuild:
+  Version bump.
+
+  18 Jul 2010; Daniel Pielmeier <billie@gentoo.org>
+  -files/mac-3.99.4.5-gcc44.patch, -files/mac-3.99.4.5.4-gcc44.patch:
+  Remove unused patches.
+
+  22 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> mac-3.99.4.5.6.ebuild:
+  amd64 stable wrt #307655
+
+  19 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  mac-3.99.4.5.6.ebuild:
+  x86 stable wrt bug #307655
+
+*mac-3.99.4.5.6 (03 Mar 2010)
+
+  03 Mar 2010; Daniel Pielmeier <billie@gentoo.org> -mac-3.99.4.5.ebuild,
+  +mac-3.99.4.5.6.ebuild, metadata.xml:
+  Version bump. Fixes bug #304299. Remove old. Add myself to maintainers
+
+  21 Dec 2009; Daniel Pielmeier <billie@gentoo.org> mac-3.99.4.5.4.ebuild,
+  +files/mac-3.99.4.5.4-gcc44.patch:
+  Update gcc-4.4 patch. Thanks to Yu Yuwei in bug #297721.
+
+  20 Dec 2009; Daniel Pielmeier <billie@gentoo.org> mac-3.99.4.5.4.ebuild:
+  Fix epatch.
+
+*mac-3.99.4.5.4 (20 Dec 2009)
+
+  20 Dec 2009; Daniel Pielmeier <billie@gentoo.org> +mac-3.99.4.5.4.ebuild:
+  Add a newer patched version of mac. This one is recommended by the
+  developers of aqualung, an application which uses mac for decoding of
+  Monkey's Audio files.
+
+  06 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> mac-3.99.4.5.ebuild:
+  RESTRICT="mirror" because the license doesn't explicitely grant permission
+  to redistribute, only to use.
+
+*mac-3.99.4.5 (06 Oct 2009)
+
+  06 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> +mac-3.99.4.5.ebuild,
+  +files/mac-3.99.4.5-gcc44.patch:
+  Initial commit wrt #94477, thanks to Thomas Kuther and others.

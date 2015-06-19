@@ -1,0 +1,162 @@
+# ChangeLog for dev-perl/Class-MakeMethods
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-MakeMethods/ChangeLog,v 1.38 2014/08/21 14:18:48 axs Exp $
+
+*Class-MakeMethods-1.10.0-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Class-MakeMethods-1.10.0-r1.ebuild, -Class-MakeMethods-1.10.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org>
+  Class-MakeMethods-1.10.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Class-MakeMethods-1.01.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org>
+  Class-MakeMethods-1.10.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Class-MakeMethods-1.10.0 (01 Sep 2011)
+
+  01 Sep 2011; Torsten Veller <tove@gentoo.org>
+  +Class-MakeMethods-1.10.0.ebuild:
+  Change version scheme
+
+  24 Apr 2011; Fabian Groffen <grobian@gentoo.org>
+  Class-MakeMethods-1.01.ebuild:
+  Marked ~x86-solaris, bug #296509
+
+  27 Oct 2008; Torsten Veller <tove@gentoo.org>
+  -Class-MakeMethods-1.009.ebuild:
+  Cleanup
+
+  05 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  Class-MakeMethods-1.01.ebuild:
+  alpha stable
+
+  15 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Class-MakeMethods-1.01.ebuild, Class-MakeMethods-1.009.ebuild:
+  Ebuild maintenance
+
+  04 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-MakeMethods-1.01.ebuild, Class-MakeMethods-1.009.ebuild:
+  Adding perl dep; fixed header; fixed DEPEND
+
+  06 Feb 2006; Simon Stelling <blubb@gentoo.org>
+  Class-MakeMethods-1.01.ebuild:
+  stable on amd64
+
+  15 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  Class-MakeMethods-1.01.ebuild:
+  Stable on ppc.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-MakeMethods-1.01.ebuild:
+  Marking stable sparc x86
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  Class-MakeMethods-1.009.ebuild:
+  Mark 1.009 stable on ia64
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  Class-MakeMethods-1.009.ebuild:
+  add ~ia64
+
+  24 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Class-MakeMethods-1.005.ebuild, -Class-MakeMethods-1.005-r1.ebuild,
+  -Class-MakeMethods-1.006.ebuild, -Class-MakeMethods-1.008.ebuild:
+  cleaning
+
+  21 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Class-MakeMethods-1.009.ebuild:
+  Stable on ppc.
+
+  19 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  Class-MakeMethods-1.01.ebuild:
+  added ~amd64 to KEYWORDS
+
+*Class-MakeMethods-1.01 (19 Apr 2005)
+
+  19 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  +Class-MakeMethods-1.01.ebuild:
+  Version bump; dep for mplay in bug 74394
+
+  01 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  Class-MakeMethods-1.009.ebuild:
+  stable on amd64
+
+  22 Jan 2005; Bryan Østergaard <kloeri@gentoo.org>
+  Class-MakeMethods-1.009.ebuild:
+  Stable on alpha.
+
+  21 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Class-MakeMethods-1.009.ebuild:
+  Stable on sparc
+
+  21 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  Class-MakeMethods-1.009.ebuild:
+  Unmasking for x86
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  26 Jun 2004; Danny van Dyk <kugelfang@gentoo.org>
+  Class-MakeMethods-1.008.ebuild:
+  Marked stable on amd64.
+
+*Class-MakeMethods-1.009 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  Class-MakeMethods-1.009.ebuild:
+  new version on cpan
+
+  24 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  Class-MakeMethods-1.008.ebuild:
+  Stable on alpha.
+
+  31 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
+  Class-MakeMethods-1.008.ebuild:
+  Tested on sparc and x86; no bugs
+
+*Class-MakeMethods-1.008 (08 Sep 2003)
+
+  08 Sep 2003; Michael Cummings <mcummings@gentoo.org>
+  Class-MakeMethods-1.008.ebuild:
+  CPAN udpate; new layout for code, test
+
+*Class-MakeMethods-1.006 (07 Jun 2003)
+
+  07 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  Class-MakeMethods-1.006.ebuild:
+  CPAN update
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*Class-MakeMethods-1.005-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*Class-MakeMethods-1.005 (28 Jun 2002)
+
+  30 Jul 2002; Calum Selkirk <cselkirk@gentoo.org>
+  Class-MakeMethods-1.005.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  28 Jun 2002; Seemant Kulleen <seemant@gentoo.org>
+  Class-MakeMethods-1.005.ebuild files/digest-Class-MakeMethods-1.005 :
+
+  New package courtesy of: rac@intrigue.com (Robert Coie) in bug #4131
+
+*Class-MakeMethods-Template-1.004-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.

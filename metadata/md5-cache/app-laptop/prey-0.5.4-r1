@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare setup
+DESCRIPTION=Tracking software for asset recovery
+EAPI=4
+HOMEPAGE=http://preyproject.com/
+IUSE=gtk userpriv linguas_en linguas_it linguas_sv linguas_es +alarm +alert +geo lock +network secure +session webcam
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=app-shells/bash virtual/cron || ( net-misc/curl net-misc/wget ) dev-perl/IO-Socket-SSL dev-perl/Net-SSLeay sys-apps/net-tools alarm? ( media-sound/mpg123 media-sound/pulseaudio ) alert? ( || ( ( gnome-extra/zenity ) ( kde-apps/kdialog ) ) ) gtk? ( dev-python/pygtk ) lock? ( dev-python/pygtk ) network? ( net-analyzer/traceroute ) session? ( sys-apps/iproute2 || ( media-gfx/scrot media-gfx/imagemagick ) ) webcam? ( || ( ( media-video/mplayer[encode,jpeg,v4l] ) ( media-tv/xawtv ) ) )
+SLOT=0
+SRC_URI=http://preyproject.com/releases/0.5.4/prey-0.5.4-linux.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=a15b3c9b8bf3abd2c264fea97d546788

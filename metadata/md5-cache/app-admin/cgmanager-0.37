@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=sys-libs/libnih[dbus] sys-apps/dbus
+DESCRIPTION=Control Group manager daemon
+EAPI=5
+HOMEPAGE=https://linuxcontainers.org/cgmanager/introduction/
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=LGPL-2.1
+RDEPEND=sys-libs/libnih[dbus] sys-apps/dbus
+SLOT=0
+SRC_URI=https://linuxcontainers.org/downloads/cgmanager/cgmanager-0.37.tar.gz
+_md5_=4a229a2093eb0e3c30d9bb20a37d194c

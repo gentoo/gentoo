@@ -1,0 +1,244 @@
+# ChangeLog for dev-java/commons-validator
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-validator/ChangeLog,v 1.56 2014/06/18 18:19:35 mrueg Exp $
+
+  18 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -commons-validator-1.3.1.ebuild:
+  NM: Cleanup superseded ebuilds.
+
+  20 Apr 2014; Agostino Sarubbo <ago@gentoo.org> commons-validator-1.4.0.ebuild:
+  Stable for ppc64, wrt bug #492004
+
+  13 Apr 2014; Agostino Sarubbo <ago@gentoo.org> commons-validator-1.4.0.ebuild:
+  Stable for ppc, wrt bug #492004
+
+  07 Mar 2014; Pacho Ramos <pacho@gentoo.org> commons-validator-1.4.0.ebuild:
+  amd64 stable, bug #492004
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  commons-validator-1.4.0.ebuild:
+  x86 stable wrt bug #492004
+
+*commons-validator-1.4.0 (16 Jul 2013)
+
+  16 Jul 2013; Tom Wijsman <TomWij@gentoo.org> +commons-validator-1.4.0.ebuild,
+  +files/validator-1.4.build.xml.patch:
+  Version bump to 1.4.0.
+
+  18 May 2010; Petteri Räty <betelgeuse@gentoo.org>
+  commons-validator-1.3.1.ebuild:
+  Update src_test use to the same 1.7 slot as building the package. Fixes
+  bug #320355.
+
+  20 Mar 2010; Petteri Räty <betelgeuse@gentoo.org>
+  commons-validator-1.3.1.ebuild:
+  Add ~x86-fbsd.
+
+  20 Mar 2010; Petteri Räty <betelgeuse@gentoo.org>
+  -commons-validator-1.1.4-r1.ebuild:
+  Remove old version.
+
+  27 Oct 2008; Brent Baude <ranger@gentoo.org>
+  commons-validator-1.3.1.ebuild:
+  stable ppc64, bug 243120
+
+  25 Oct 2008; nixnut <nixnut@gentoo.org> commons-validator-1.3.1.ebuild:
+  Stable on ppc wrt bug 243120
+
+  23 Oct 2008; Markus Meier <maekke@gentoo.org>
+  commons-validator-1.3.1.ebuild:
+  add empty IUSE to make repoman happy
+
+  23 Oct 2008; Markus Meier <maekke@gentoo.org>
+  commons-validator-1.3.1.ebuild:
+  amd64/x86 stable, bug #243120
+
+  30 Apr 2008; nixnut <nixnut@gentoo.org> commons-validator-1.1.4-r1.ebuild:
+  Stable on ppc wrt bug 217638
+
+*commons-validator-1.3.1 (05 Apr 2008)
+
+  05 Apr 2008; Petteri Räty <betelgeuse@gentoo.org>
+  +files/validator-1.3.build.xml.patch, commons-validator-1.1.4-r1.ebuild,
+  +commons-validator-1.3.1.ebuild:
+  Version bump. Fixes bug #152269.
+
+  23 May 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Add ~x86-fbsd keyword. Bug #176906.
+
+  17 May 2007; Petteri Räty <betelgeuse@gentoo.org>
+  commons-validator-1.1.4-r1.ebuild:
+  Make ebuild work when commons-collections installs more than one jar.
+
+  07 May 2007; Vlastimil Babka <caster@gentoo.org>
+  commons-validator-1.1.4-r1.ebuild:
+  Fix the deps, improve style, add examples USE flag.
+
+  13 Mar 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -commons-validator-1.1.3-r1.ebuild:
+  Remove old version.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  09 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  commons-validator-1.1.4-r1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  03 Dec 2006; Markus Rothe <corsair@gentoo.org>
+  commons-validator-1.1.4-r1.ebuild:
+  Stable on ppc64
+
+  30 Nov 2006; Vlastimil Babka <caster@gentoo.org>
+  commons-validator-1.1.3-r1.ebuild:
+  Update xerces dep for upcoming 2.6 slotmove.
+
+  28 Nov 2006; Joshua Nichols <nichoj@gentoo.org>
+  -commons-validator-1.0.2-r5.ebuild, -commons-validator-1.1.4.ebuild:
+  Dropped earlier revisions with equivalent keywords.
+
+  28 Nov 2006; Joshua Nichols <nichoj@gentoo.org>
+  commons-validator-1.1.4-r1.ebuild:
+  Stabilized on amd64 (see bug #155622).
+
+  23 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  commons-validator-1.1.4-r1.ebuild:
+  stable x86, bug #155622
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  commons-validator-1.0.2-r5.ebuild, commons-validator-1.1.3-r1.ebuild,
+  commons-validator-1.1.4.ebuild, commons-validator-1.1.4-r1.ebuild:
+  Dropping sparc keywords, see #96229
+
+*commons-validator-1.1.4-r1 (22 Jul 2006)
+
+  22 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +commons-validator-1.1.4-r1.ebuild:
+  Migrated to Generation 2.
+
+*commons-validator-1.1.4 (26 Nov 2005)
+
+  26 Nov 2005; Petteri Räty <betelgeuse@gentoo.org>
+  +commons-validator-1.1.4.ebuild:
+  Version bump. Corrected license to Apache-2.0, removed unneeded dependency
+  on xerces and the installation of LICENSE.txt.
+
+  10 Jul 2005; Thomas Matthijs <axxo@gentoo.org>
+  commons-validator-1.0.2-r5.ebuild, commons-validator-1.1.3-r1.ebuild:
+  dep fixes, cleanup
+
+  29 May 2005; Markus Rothe <corsair@gentoo.org>
+  commons-validator-1.1.3-r1.ebuild:
+  Stable on ppc64
+
+*commons-validator-1.1.3-r1 (14 May 2005)
+*commons-validator-1.0.2-r5 (14 May 2005)
+
+  14 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  -commons-validator-1.0.2-r4.ebuild, +commons-validator-1.0.2-r5.ebuild,
+  -commons-validator-1.1.3.ebuild, +commons-validator-1.1.3-r1.ebuild:
+  updated commons-beanutils dependency to reflect new slotting. see #71952
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  commons-validator-1.0.2-r4.ebuild:
+  stable on amd64
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org>
+  commons-validator-1.1.3.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  02 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  -commons-validator-1.0.2-r3.ebuild, commons-validator-1.0.2-r4.ebuild:
+  cleanup, removed old revision with a dependency to oro.
+
+*commons-validator-1.0.2-r4 (29 Mar 2005)
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +commons-validator-1.0.2-r4.ebuild, commons-validator-1.1.3.ebuild:
+  moved from dev-java/oro to dev-java/jakarta-oro dependency. see #71337.
+  introduced support for the examples and the source useflag.
+
+  23 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  commons-validator-1.0.2-r3.ebuild, commons-validator-1.1.3.ebuild:
+  removed junit support to fix #82219
+
+  30 Nov 2004; Sven Wegener <swegener@gentoo.org>
+  commons-validator-1.0.2-r3.ebuild, commons-validator-1.1.3.ebuild:
+  Fixed invalid atoms in *DEPEND.
+
+  29 Oct 2004; Thomas Matthijs <axxo@gentoo.org>
+  commons-validator-1.0.2-r3.ebuild, commons-validator-1.1.3.ebuild:
+  removed nomirror
+
+  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  commons-validator-1.0.2-r3.ebuild, commons-validator-1.1.3.ebuild:
+  keywords ~amd64; closes #67319.
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org>
+  commons-validator-1.0.2-r3.ebuild, commons-validator-1.1.3.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+*commons-validator-1.1.3 (10 Sep 2004)
+
+  10 Sep 2004; Thomas Matthijs <axxo@gentoo.org>
+  commons-validator-1.0.2-r3.ebuild, +commons-validator-1.1.3.ebuild:
+  version bump
+
+  08 Sep 2004; Thomas Matthijs <axxo@gentoo.org>
+  commons-validator-1.0.2-r3.ebuild:
+  xerces -> xerces-2
+
+  24 Aug 2004; Chris Aniszczyk <zx@gentoo.org>
+  -commons-validator-1.0.2-r1.ebuild, -commons-validator-1.0.2-r2.ebuild,
+  commons-validator-1.0.2-r3.ebuild:
+  Cleanup & Stable on x86
+
+*commons-validator-1.0.2-r3 (21 Jun 2004)
+
+  21 Jun 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  commons-validator-1.0.2-r3.ebuild: Changed to more suitable runtime
+  and buildtime dependencies, fixes #46205.
+
+*commons-validator-1.0.2-r2 (20 Jun 2004)
+
+  20 Jun 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  commons-validator-1.0.2-r2.ebuild: Added proper dep for zip, using
+  patch by  Thomas Matthijs <axxo@keanu.be>, fixes #53620.
+
+  04 Apr 2004; Chris Aniszczyk <zx@gentoo.org>
+  commons-validator-1.0.2-r1.ebuild:
+  Clean up. Fixes #46205
+
+*commons-validator-1.0.2-r1 (17 Mar 2004)
+
+  17 Mar 2004; Chris Aniszczyk <zx@gentoo.org>
+  commons-validator-1.0.1-r1.ebuild, commons-validator-1.0.2-r1.ebuild,
+  commons-validator-1.0.2.ebuild:
+  Clean up like crazy. Removed jakarta-commons.eclass stuff because it's broken.
+
+*commons-validator-1.0.2 (22 Apr 2003)
+
+  26 Apr 2003; Adrian Almenar <strider@gentoo.org> commons-validator-1.0.1.ebuild:
+  Updated SRC_URI so this ebuild uses apache mirrors.
+
+  22 Apr 2003; Dylan Carlson <absinthe@gentoo.org>
+  commons-validator-1.0.2.ebuild:
+  Version bump.
+
+*commons-validator-1.0.1-r1 (06 Apr 2003)
+
+  06 Apr 2003; Dylan Carlson <absinthe@gentoo.org>
+  commons-validator-1.0.1-r1.ebuild, commons-validator-1.0.1.ebuild,
+  commons-validator-1.0.1.ebuild, commons-validator-1.0.ebuild,
+  commons-validator-1.0.ebuild:
+  moved x86 ppc sparc to stable.
+
+*commons-validator-1.0.1 (26 Dec 2002)
+
+  26 Dec 2002; Adrian Almenar <strider@gentoo.org> ChangeLog commons-validator-1.0.1.ebuild files/digest-commons-validator-1.0.1:
+  New Version.
+
+*commons-validator-1.0 (03 Dec 2002)
+
+  03 Dec 2002; Adrian Almenar <strider@gentoo.org> ChangeLog commons-validator-1.0.ebuild files/digest-commons-validator-1.0:
+  Initial import.

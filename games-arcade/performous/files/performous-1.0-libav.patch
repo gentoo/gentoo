@@ -1,0 +1,19 @@
+diff -urN Performous-0.6.1-Source.old/cmake/Modules/FindAVUtil.cmake Performous-0.6.1-Source/cmake/Modules/FindAVUtil.cmake
+--- Performous-0.6.1-Source.old/cmake/Modules/FindAVUtil.cmake	2012-05-16 13:44:26.112930173 +0200
++++ Performous-0.6.1-Source/cmake/Modules/FindAVUtil.cmake	2012-05-16 13:56:10.229914635 +0200
+@@ -25,9 +25,15 @@
+       if(EXISTS "${AVUtil_INCLUDE_DIR}/${suffix}avutil.h")
+         set(AVUtil_INCLUDE "${suffix}avutil.h")
+       endif(EXISTS "${AVUtil_INCLUDE_DIR}/${suffix}avutil.h")
++      if(EXISTS "${AVUtil_INCLUDE_DIR}/${suffix}mathematics.h")
++        set(AVUtilMath_INCLUDE "${suffix}mathematics.h")
++      endif(EXISTS "${AVUtil_INCLUDE_DIR}/${suffix}mathematics.h")
+     endif(NOT AVUtil_INCLUDE)
+   endforeach(suffix)
+ 
++  if(NOT AVUtilMath_INCLUDE)
++    message(FATAL_ERROR "Found mathematics.h include dir, but not the header file. Perhaps you need to clear CMake cache?")
++  endif(NOT AVUtilMath_INCLUDE) 
+   if(NOT AVUtil_INCLUDE)
+     message(FATAL_ERROR "Found avutil.h include dir, but not the header file. Perhaps you need to clear CMake cache?")
+   endif(NOT AVUtil_INCLUDE)

@@ -1,0 +1,43 @@
+--- evemu-1.2.0/configure.ac
++++ evemu-1.2.0/configure.ac
+@@ -39,9 +39,6 @@
+ AC_ARG_VAR([ASCIIDOC], [Path to asciidoc command])
+ AC_PATH_PROG([ASCIIDOC], [asciidoc])
+ AM_CONDITIONAL([HAVE_DOCTOOLS], [test "x$XMLTO" != "x" && test "x$ASCIIDOC" != "x"])
+-if test "x$XMLTO" = "x" || test "x$ASCIIDOC" = "x"; then
+-	AC_MSG_WARN([xmlto or asciidoc not found - cannot create man pages without it])
+-fi
+ 
+ AC_SUBST(AM_CFLAGS,
+          "-Wall -Wextra -pedantic")
+--- evemu-1.2.0/tools/Makefile.am
++++ evemu-1.2.0/tools/Makefile.am
+@@ -15,8 +15,6 @@
+ evemu_describe_SOURCES = evemu-record.c find_event_devices.c find_event_devices.h
+ evemu_record_SOURCES = evemu-record.c find_event_devices.c find_event_devices.h
+ 
+-# man page generation
+-if HAVE_DOCTOOLS
+ # actual man pages
+ man_pages_sources = evemu-describe.txt evemu-device.txt
+ # shadow man pages
+@@ -24,6 +22,8 @@
+ 
+ man_pages = $(man_pages_sources:.txt=.1) $(man_pages_shadows)
+ 
++# man page generation
++if HAVE_DOCTOOLS
+ $(man_pages_shadows): $(man_pages_sources:.txt=.1)
+ 
+ SUFFIXES = .1 .txt .xml
+@@ -33,9 +33,9 @@
+ 
+ .txt.xml:
+ 	$(AM_V_GEN)$(ASCIIDOC) -b docbook -d manpage -o $@ $<
++endif
+ 
+ EXTRA_DIST = $(man_pages_sources)
+ dist_man_MANS = $(man_pages)
+ CLEANFILES = $(dist_man_MANS)
+ MAINTAINERCLEANFILES = $(man_pages) *.xml
+-endif

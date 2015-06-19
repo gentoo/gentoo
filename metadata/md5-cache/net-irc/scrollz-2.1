@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=sys-libs/ncurses gmp? ( dev-libs/gmp ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl ) ) virtual/pkgconfig
+DESCRIPTION=Advanced IRC client based on ircII
+EAPI=4
+HOMEPAGE=http://packages.qa.debian.org/s/scrollz.html
+IUSE=gmp gnutls ipv6 socks5 ssl
+KEYWORDS=amd64 ~ppc x86
+LICENSE=BSD
+RDEPEND=sys-libs/ncurses gmp? ( dev-libs/gmp ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( dev-libs/openssl ) )
+REQUIRED_USE=gnutls? ( ssl )
+SLOT=0
+SRC_URI=mirror://debian/pool/main/s/scrollz/scrollz_2.1.orig.tar.gz
+_md5_=46a8d8f5403699f8221e49c7640a028a

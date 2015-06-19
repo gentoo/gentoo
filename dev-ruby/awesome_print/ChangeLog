@@ -1,0 +1,109 @@
+# ChangeLog for dev-ruby/awesome_print
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/awesome_print/ChangeLog,v 1.25 2015/06/07 16:49:08 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*awesome_print-1.6.1 (08 Mar 2015)
+
+  08 Mar 2015; Hans de Graaff <graaff@gentoo.org> +awesome_print-1.6.1.ebuild:
+  Version bump.
+
+  29 Oct 2014; Manuel Rüger <mrueg@gentoo.org> -awesome_print-1.2.0-r1.ebuild,
+  awesome_print-1.2.0-r2.ebuild:
+  Drop jruby target. Cleanup old.
+
+  13 Aug 2014; Raúl Porcel <armin76@gentoo.org> awesome_print-1.2.0-r2.ebuild:
+  Add ~sparc wrt #468536
+
+*awesome_print-1.2.0-r2 (02 Aug 2014)
+
+  02 Aug 2014; Manuel Rüger <mrueg@gentoo.org> +awesome_print-1.2.0-r2.ebuild:
+  Add ruby21 target. Drop sparc keyword. Rekeywording in bug #465948
+
+  21 May 2014; Manuel Rüger <mrueg@gentoo.org> awesome_print-1.2.0-r1.ebuild:
+  Remove ruby18 target.
+
+  11 Nov 2013; Manuel Rüger <mrueg@gentoo.org> -awesome_print-1.0.2.ebuild,
+  -awesome_print-1.1.0.ebuild, -awesome_print-1.2.0.ebuild:
+  Cleanup old.
+
+*awesome_print-1.2.0-r1 (09 Oct 2013)
+
+  09 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +awesome_print-1.2.0-r1.ebuild:
+  Add ruby20 target.
+
+*awesome_print-1.2.0 (26 Sep 2013)
+
+  26 Sep 2013; Hans de Graaff <graaff@gentoo.org> +awesome_print-1.2.0.ebuild:
+  Version bump.
+
+  10 Sep 2013; Manuel Rüger <mrueg@gentoo.org> -awesome_print-1.0.1.ebuild:
+  Cleanup old.
+
+  28 Oct 2012; Raúl Porcel <armin76@gentoo.org> awesome_print-1.0.1.ebuild,
+  awesome_print-1.0.2.ebuild, awesome_print-1.1.0.ebuild:
+  Add ~alpha/~ia64/~sparc
+
+*awesome_print-1.1.0 (03 Oct 2012)
+
+  03 Oct 2012; Hans de Graaff <graaff@gentoo.org> +awesome_print-1.1.0.ebuild:
+  Version bump.
+
+  19 Aug 2012; Anthony G. Basile <blueness@gentoo.org>
+  awesome_print-1.0.2.ebuild:
+  Keyword ~ppc ~ppc64, bug #417573
+
+*awesome_print-1.0.2 (30 Jul 2012)
+
+  30 Jul 2012; Hans de Graaff <graaff@gentoo.org> +awesome_print-1.0.2.ebuild:
+  Version bump.
+
+  08 Jul 2012; Jeroen Roovers <jer@gentoo.org> awesome_print-1.0.1.ebuild:
+  Marked ~hppa (bug #417573).
+
+  04 Jul 2012; Hans de Graaff <graaff@gentoo.org> awesome_print-1.0.1.ebuild:
+  Avoid a test failure due to hash ordering differences, fixing bug 424667.
+
+  08 Mar 2012; Naohiro Aota <naota@gentoo.org> awesome_print-1.0.1.ebuild:
+  Add ~x86-fbsd.
+
+  14 Jan 2012; Hans de Graaff <graaff@gentoo.org> -awesome_print-0.3.2.ebuild,
+  -awesome_print-0.4.0.ebuild:
+  Remove old versions.
+
+*awesome_print-1.0.1 (10 Dec 2011)
+
+  10 Dec 2011; Hans de Graaff <graaff@gentoo.org> +awesome_print-1.0.1.ebuild:
+  Version bump.
+
+  28 Jun 2011; MATSUU Takuto <matsuu@gentoo.org> awesome_print-0.4.0.ebuild:
+  Added ruby19 to USE_RUBY. Added ~x86 to KEYWORDS.
+
+*awesome_print-0.4.0 (23 May 2011)
+
+  23 May 2011; Hans de Graaff <graaff@gentoo.org> +awesome_print-0.4.0.ebuild:
+  Version bump.
+
+  12 Apr 2011; Hans de Graaff <graaff@gentoo.org>
+  -awesome_print-0.3.1.ebuild:
+  Remove old version.
+
+*awesome_print-0.3.2 (11 Feb 2011)
+
+  11 Feb 2011; Hans de Graaff <graaff@gentoo.org>
+  -awesome_print-0.2.1.ebuild, +awesome_print-0.3.2.ebuild:
+  Version bump.
+
+*awesome_print-0.3.1 (26 Nov 2010)
+
+  26 Nov 2010; Hans de Graaff <graaff@gentoo.org>
+  +awesome_print-0.3.1.ebuild:
+  Version bump.
+
+*awesome_print-0.2.1 (24 Sep 2010)
+
+  24 Sep 2010; Hans de Graaff <graaff@gentoo.org>
+  +awesome_print-0.2.1.ebuild, +metadata.xml:
+  Initial import. New test dependency of dev-ruby/gherkin.

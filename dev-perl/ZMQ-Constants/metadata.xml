@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>perl</herd>
+	<upstream>
+		<remote-id type="cpan">ZMQ-Constants</remote-id>
+		<remote-id type="cpan-module">ZMQ::Constants</remote-id>
+		<remote-id type="cpan-module">ZMQ::Constants::V2_1_11</remote-id>
+		<remote-id type="cpan-module">ZMQ::Constants::V3_1_1</remote-id>
+		<remote-id type="cpan-module">ZMQ::Constants::V3_1_2</remote-id>
+	</upstream>
+</pkgmetadata>

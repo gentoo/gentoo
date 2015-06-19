@@ -1,0 +1,165 @@
+diff --git a/CUPS.xs b/CUPS.xs
+index 2da9558..109f73f 100644
+--- a/CUPS.xs
++++ b/CUPS.xs
+@@ -5,9 +5,17 @@
+ #include "ppport.h"
+ 
+ #include <cups/cups.h>
++#if (CUPS_VERSION_MAJOR > 1) || (CUPS_VERSION_MINOR > 5)
++#define HAVE_CUPS_1_6 1
++#endif
++
+ /*#include <cups/backend.h>*/
+ #include <cups/http.h>
+-#include <cups/image.h>
++#ifdef HAVE_CUPS_1_6
++ #include <cupsfilters/image.h>
++#else
++ #include <cups/image.h>
++#endif
+ #include <cups/ipp.h>
+ #include <cups/ppd.h>
+ #include <cups/file.h>
+@@ -19,6 +27,17 @@
+ #include "const-c.inc"
+ #include "packer.c"
+ 
++#ifndef HAVE_CUPS_1_6
++#define ippGetGroupTag(attr)  attr->group_tag
++#define ippGetName(attr)      attr->name
++#define ippGetValueTag(attr)  attr->value_tag
++#define ippGetInteger(attr, element) attr->values[element].integer
++#define ippGetString(attr, element, language) attr->values[element].string.text
++#define ippGetStatusCode(ipp)  ipp->request.status.status_code
++#define ippFirstAttribute(ipp) ipp->current = ipp->attrs
++#define ippNextAttribute(ipp)  ipp->current = ipp->current->next
++#endif
++
+ static SV *password_cb = (SV*) NULL;
+ 
+ const char *
+@@ -200,7 +219,7 @@ NETCUPS_getPPDMakes()
+ 		if (response != NULL) {
+ 			attr = ippFindAttribute(response, "ppd-make", IPP_TAG_TEXT); 
+ 			rv = sv_newmortal();
+-			sv_setpv(rv, attr->values[0].string.text);
++			sv_setpv(rv, ippGetString(attr, 0, NULL));
+ 			XPUSHs(rv);
+ 			count++;
+ 
+@@ -211,7 +230,7 @@ NETCUPS_getPPDMakes()
+ 				}
+ 
+ 				rv = sv_newmortal();
+-				sv_setpv(rv, attr->values[0].string.text);
++				sv_setpv(rv, ippGetString(attr, 0, NULL));
+ 				XPUSHs(rv);
+ 				count++;
+ 			}			
+@@ -252,7 +271,7 @@ NETCUPS_getAllPPDs ()
+ 									"ppd-make-and-model", 
+ 									IPP_TAG_TEXT); 
+ 			rv = sv_newmortal();
+-			sv_setpv(rv, attr->values[0].string.text);
++			sv_setpv(rv, ippGetString(attr, 0, NULL));
+ 			XPUSHs(rv);
+ 			count++;
+ 			while (attr != NULL) {
+@@ -263,7 +282,7 @@ NETCUPS_getAllPPDs ()
+ 					break;
+ 				}
+ 				rv = sv_newmortal();
+-				sv_setpv(rv, attr->values[0].string.text);
++				sv_setpv(rv, ippGetString(attr, 0, NULL));
+ 				XPUSHs(rv);
+ 				count++;
+ 			}			
+@@ -356,14 +375,14 @@ NETCUPS_getPPDFileName(ppdfilename);
+ 		if (response != NULL) {
+ 			attr = ippFindAttribute(response, "ppd-name", IPP_TAG_NAME );
+ 			while ((attr != NULL) && (i < 1)) {
+-				tmpppd = attr->values[0].string.text;	
++				tmpppd = ippGetString(attr, 0, NULL);	
+ 				attr = ippFindNextAttribute(response, 
+ 											"ppd-make", 
+ 											IPP_TAG_TEXT);
+ 				attr = ippFindNextAttribute(response, 
+ 											"ppd-make-and-model", 
+ 											IPP_TAG_TEXT);
+-				if (strcmp(attr->values[0].string.text, ppdfilename) == 0 ) {
++				if (strcmp(ippGetString(attr, 0, NULL), ppdfilename) == 0 ) {
+ 					/* return tmpppd; */
+ 					strcpy(test, tmpppd);	
+ 					break;	
+@@ -410,12 +429,12 @@ NETCUPS_getDeviceAttribute( device, attribute, attribute_type )
+ 			attr = ippFindNextAttribute(response, "printer-name", IPP_TAG_NAME);
+ 
+ 			while (attr != NULL) {
+-				if (strcmp(attr->values[0].string.text, device) == 0) { 
++				if (strcmp(ippGetString(attr, 0, NULL), device) == 0) { 
+ 					attr = ippFindNextAttribute( response, 
+ 												 attribute, 
+ 												 attribute_type);
+ 					rv = sv_newmortal();  
+-					sv_setpv( rv, attr->values[0].string.text); 
++					sv_setpv( rv, ippGetString(attr, 0, NULL)); 
+ 					XPUSHs( rv );
+ 					break;	
+ 				}					
+@@ -858,15 +877,15 @@ NETCUPS_getAttributes( ipp )
+ 		SV* rv = NULL;
+ 		int count = 0;
+ 		ipp_attribute_t* attr = NULL;
+-		for (attr = ipp->attrs; attr != NULL; attr = attr->next)
++		for (attr = ippFirstAttribute(ipp); attr != NULL; attr = ippNextAttribute(ipp))
+ 		{
+-			while (attr != NULL && attr->group_tag != IPP_TAG_JOB)
+- 		       attr = attr->next;
++			while (attr != NULL && ippGetGroupTag(attr) != IPP_TAG_JOB)
++ 		       attr = ippNextAttribute(ipp);
+ 
+ 			if (attr == NULL)
+ 				break;
+ 			rv = sv_newmortal();
+-			sv_setpv( rv, attr->name );
++			sv_setpv( rv, ippGetName(attr) );
+ 			XPUSHs( rv );
+ 			count++;
+ 		}
+@@ -880,27 +899,27 @@ NETCUPS_getAttributeValue( ipp, name )
+ 		SV* rv = NULL;
+ 		int count = 0;
+ 		ipp_attribute_t* attr = NULL;
+-		for (attr = ipp->attrs; attr != NULL; attr = attr->next)
++		for (attr = ippFirstAttribute(ipp); attr != NULL; attr = ippNextAttribute(ipp))
+ 		{
+-			while (attr != NULL && attr->group_tag != IPP_TAG_JOB)
+- 		       attr = attr->next;
++			while (attr != NULL && ippGetGroupTag(attr) != IPP_TAG_JOB)
++ 		       attr = ippNextAttribute(ipp);
+ 
+ 			if (attr == NULL)
+ 				break;
+ 
+-			if( !strcmp( attr->name, name ) )
++			if( !strcmp( ippGetName(attr), name ) )
+ 			{
+ 				rv = sv_newmortal();
+-				if( ( attr->value_tag == IPP_TAG_INTEGER ) ||
+-					( attr->value_tag == IPP_TAG_ENUM ) )
++				if( ( ippGetValueTag(attr) == IPP_TAG_INTEGER ) ||
++					( ippGetValueTag(attr) == IPP_TAG_ENUM ) )
+ 				{
+ 					/* We have a number with any luck ... */
+-					sv_setiv( rv, attr->values[0].integer );
++					sv_setiv( rv, ippGetInteger(attr, 0) );
+ 				}
+ 				else
+ 				{
+ 					/* We have a string ... maybe ... try to set it. */
+-					sv_setpv( rv, attr->values[0].string.text );
++					sv_setpv( rv, ippGetString(attr, 0, NULL) );
+ 				}
+ 
+ 				XPUSHs( rv );

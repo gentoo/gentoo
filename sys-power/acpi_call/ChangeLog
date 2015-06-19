@@ -1,0 +1,41 @@
+# ChangeLog for sys-power/acpi_call
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-power/acpi_call/ChangeLog,v 1.8 2014/12/19 03:06:53 ottxor Exp $
+
+*acpi_call-1.1.0-r1 (19 Dec 2014)
+
+  19 Dec 2014; Christoph Junghans <ottxor@gentoo.org>
+  +acpi_call-1.1.0-r1.ebuild, +files/acpi_call-1.1.0-linux-3.17.patch:
+  fixed build with linux-3.17 (bug #524614)
+
+*acpi_call-1.1.0 (18 Jul 2013)
+
+  18 Jul 2013; Christoph Junghans <ottxor@gentoo.org> +acpi_call-1.1.0.ebuild,
+  -acpi_call-1.0.0.ebuild, acpi_call-9999.ebuild:
+  version bump (bug #475392)
+
+  11 Jan 2013; Christoph Junghans <ottxor@gentoo.org> acpi_call-1.0.0.ebuild,
+  acpi_call-9999.ebuild, metadata.xml:
+  updated SRC_URI
+
+  20 Dec 2012; Christoph Junghans <ottxor@gentoo.org> metadata.xml:
+  updated metadata.xml
+
+*acpi_call-1.0.0 (20 Dec 2012)
+
+  20 Dec 2012; Christoph Junghans <ottxor@gentoo.org> +acpi_call-1.0.0.ebuild,
+  acpi_call-9999.ebuild:
+  added release version
+
+  09 Dec 2012; Christoph Junghans <ottxor@gentoo.org> acpi_call-9999.ebuild:
+  clean breaks sandbox (bug #436086)
+
+  25 Jun 2011; Maxim Koltsov (maksbotan) <maksbotan@gentoo.org>
+  acpi_call-9999.ebuild:
+  Migrate to git-2.eclass
+
+*acpi_call-9999 (10 Jun 2011)
+
+  10 Jun 2011; Maxim Koltsov (maksbotan) <maksbotan@gentoo.org>
+  +acpi_call-9999.ebuild, +metadata.xml:
+  Added ebuild for acpi_call-9999, bug #356605

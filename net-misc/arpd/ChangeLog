@@ -1,0 +1,72 @@
+# ChangeLog for net-misc/arpd
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/arpd/ChangeLog,v 1.22 2014/03/13 08:19:27 nimiux Exp $
+
+  13 Mar 2014; Chema Alonso <nimiux@gentoo.org> arpd-0.2-r1.ebuild:
+  Stable for amd64 wrt bug #385265
+
+  20 Jul 2012; Anthony G. Basile <blueness@gentoo.org> arpd-0.2-r1.ebuild:
+  Keyword ~ppc64
+
+  13 Jun 2012; Michael Weber <xmw@gentoo.org> -arpd-0.2.ebuild:
+  drop old
+
+  19 Dec 2011; Michael Weber <xmw@gentoo.org> arpd-0.2-r1.ebuild:
+  ppc stable (bug 385265)
+
+  18 Dec 2011; Raúl Porcel <armin76@gentoo.org> arpd-0.2-r1.ebuild:
+  sparc stable wrt #385265
+
+  15 Oct 2011; Markus Meier <maekke@gentoo.org> arpd-0.2-r1.ebuild:
+  x86 stable, bug #385265
+
+  11 Oct 2011; Jeroen Roovers <jer@gentoo.org> arpd-0.2-r1.ebuild:
+  Stable for HPPA (bug #385265).
+
+  16 Sep 2010; Michael Weber <xmw@gentoo.org> arpd-0.2-r1.ebuild,
+  +files/arpd-0.2-buildsystem-libevent-test.patch, metadata.xml:
+  Taking maintainership. Fix libevent test in configure.in (bug #337481).
+
+*arpd-0.2-r1 (16 Feb 2010)
+
+  16 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org> +arpd-0.2-r1.ebuild,
+  +files/arpd-0.2-libevent.patch:
+  Fix for compilation against new libevent per bug 295746
+  Thanks Kacper Kowalik (Xarthisius) for providing the patch
+
+  27 Nov 2008; Mike Frysinger <vapier@gentoo.org> arpd-0.2.ebuild:
+  Add a blocker on iproute2 #248092 by Diego E. Pettenò.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  20 Feb 2006; Markus Ullmann <jokey@gentoo.org> arpd-0.2.ebuild:
+  Removing virtual/libpcap wrt bug #117898
+
+  25 Dec 2005; Jason Wever <weeve@gentoo.org> arpd-0.2.ebuild:
+  Stable on SPARC.
+
+  18 May 2005; Sven Wegener <swegener@gentoo.org> arpd-0.2.ebuild:
+  Moved inherit to the top to stop eclasses from overwriting the DESCRIPTION.
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org> arpd-0.2.ebuild:
+  Stable on ppc.
+
+  27 Apr 2005; Brian Jackson <iggy@gentoo.org> +files/arpd.c.patch,
+  arpd-0.2.ebuild:
+  patch from bug #76833, thanks to those guys, also works on amd64
+
+  30 Jan 2005; Daniel Black <dragonheart@gentoo.org> arpd-0.2.ebuild:
+  Transition dependancy from net-libs/libpcap to virtual/libpcap
+
+*arpd-0.2 (14 Sep 2003)
+
+  14 Sep 2003; <iggy@gentoo.org> arpd-0.2.ebuild:
+  version bump thanks to hillster
+
+  07 Jan 2003; J Robert Ray <jrray@gentoo.org> : Unmasked for x86.
+
+*arpd-0.1 (20 Dec 2002)
+
+  20 Dec 2002; J Robert Ray <jrray@gentoo.org> : Initial ebuild, contributed by
+  Daniel Mannarino <thesnark@operamail.com>.

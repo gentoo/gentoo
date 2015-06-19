@@ -1,0 +1,226 @@
+# ChangeLog for media-sound/spotify
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/spotify/ChangeLog,v 1.40 2015/06/03 21:21:05 prometheanfire Exp $
+
+  03 Jun 2015; Matthew Thode <prometheanfire@gentoo.org>
+  -spotify-0.9.4.183-r9.ebuild:
+  removed x86 version because source file was removed
+
+*spotify-0.9.17.1-r1 (03 Apr 2015)
+
+  03 Apr 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.9.17.1-r1.ebuild, -spotify-0.9.17.1.ebuild:
+  removing the qt3support useflag, doesn't seem to be needed bug 545068
+
+*spotify-0.9.17.1 (27 Mar 2015)
+
+  27 Mar 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.9.17.1.ebuild, -spotify-0.9.11.27-r2.ebuild:
+  updating spotify for new release bug 544522
+
+*spotify-0.9.4.183-r9 (12 Dec 2014)
+*spotify-0.9.11.27-r2 (12 Dec 2014)
+
+  12 Dec 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.9.11.27-r2.ebuild, +spotify-0.9.4.183-r9.ebuild,
+  -spotify-0.9.11.27-r1.ebuild, -spotify-0.9.4.183-r8.ebuild:
+  fixing libpng dep
+
+*spotify-0.9.11.27-r1 (08 Oct 2014)
+
+  08 Oct 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.9.11.27-r1.ebuild, -spotify-0.9.11.27.ebuild:
+  fixing missing use dep on glib for qt stuffs, fixes bug 524478
+
+*spotify-0.9.11.27 (25 Jul 2014)
+
+  25 Jul 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.9.11.27.ebuild, -spotify-0.9.11.26-r1.ebuild:
+  upating amd64 version of spotify for bug 518054
+
+*spotify-0.9.11.26-r1 (14 Jul 2014)
+*spotify-0.9.4.183-r8 (14 Jul 2014)
+
+  14 Jul 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.9.11.26-r1.ebuild, +spotify-0.9.4.183-r8.ebuild,
+  -spotify-0.9.11.26.ebuild, -spotify-0.9.4.183-r7.ebuild:
+  fixing bug 516740
+
+*spotify-0.9.11.26 (03 Jul 2014)
+
+  03 Jul 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.9.11.26.ebuild, -spotify-0.9.10.17-r1.ebuild:
+  bup
+
+*spotify-0.9.4.183-r7 (12 Jun 2014)
+
+  12 Jun 2014; Mike Gilbert <floppym@gentoo.org> +spotify-0.9.4.183-r7.ebuild,
+  -spotify-0.9.4.183-r4.ebuild, -spotify-0.9.4.183-r5.ebuild,
+  -spotify-0.9.4.183-r6.ebuild:
+  Depend on either libgcrypt:11/11 or libgcrypt:0/11. Drop ~amd64 keyword.
+  Remove old.
+
+*spotify-0.9.10.17-r1 (12 Jun 2014)
+
+  12 Jun 2014; Mike Gilbert <floppym@gentoo.org> +spotify-0.9.10.17-r1.ebuild,
+  -spotify-0.9.10.17.ebuild:
+  Depend on either libgcrypt:11/11 or libgcrypt:0/11.
+
+*spotify-0.9.10.17 (20 May 2014)
+
+  20 May 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.9.10.17.ebuild:
+  fixes bug 510854
+
+*spotify-0.9.4.183-r6 (24 Apr 2014)
+
+  24 Apr 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.9.4.183-r6.ebuild:
+  fixing r6 for bug 499144
+
+  28 Jan 2014; Matthew Thode <prometheanfire@gentoo.org>
+  spotify-0.9.4.183-r5.ebuild:
+  now with a better fix for bug 498272
+
+*spotify-0.9.4.183-r5 (28 Jan 2014)
+
+  28 Jan 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.9.4.183-r5.ebuild:
+  update cleaning some stuff up and fixing bug 498272
+
+  25 Jan 2014; Matthew Thode <prometheanfire@gentoo.org>
+  -spotify-0.9.4.183-r3.ebuild:
+  removing r3 for bug 499144
+
+*spotify-0.9.4.183-r4 (15 Jan 2014)
+
+  15 Jan 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.9.4.183-r4.ebuild:
+  add gcrypt dep for bug 498054
+
+*spotify-0.9.4.183-r3 (11 Dec 2013)
+
+  11 Dec 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.9.4.183-r3.ebuild:
+  fixing bug 443418 and bug 492928
+
+*spotify-0.9.4.183-r2 (28 Nov 2013)
+
+  28 Nov 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.9.4.183-r2.ebuild, -spotify-0.9.4.183-r1.ebuild:
+  turns out we need qt3support
+
+*spotify-0.9.4.183-r1 (29 Oct 2013)
+
+  29 Oct 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.9.4.183-r1.ebuild, -spotify-0.9.4.183.ebuild:
+  fix for bug 488812
+
+*spotify-0.9.4.183 (13 Oct 2013)
+
+  13 Oct 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.9.4.183.ebuild, -spotify-0.9.1.55.ebuild:
+  finally updating spotify, should be better now...
+
+  01 Oct 2013; Matthew Thode <prometheanfire@gentoo.org>
+  spotify-0.9.1.55.ebuild:
+  fix for bug 486094
+
+*spotify-0.9.1.55 (21 Jul 2013)
+
+  21 Jul 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.9.1.55.ebuild, -spotify-0.9.0.133-r1.ebuild,
+  -spotify-0.9.0.133.ebuild:
+  bumping spotify for bug 474010, wish upstream were not slow
+
+*spotify-0.9.0.133-r1 (10 Jun 2013)
+
+  10 Jun 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.9.0.133-r1.ebuild:
+  updating spotify to give it icon/desktop support for bug 472840
+
+  06 May 2013; Matthew Thode <prometheanfire@gentoo.org>
+  -spotify-0.8.8.323-r1.ebuild, -spotify-0.8.8.323-r2.ebuild:
+  removed old (unavailable) versions of spotify
+
+*spotify-0.9.0.133 (03 May 2013)
+
+  03 May 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.9.0.133.ebuild:
+  updating spotify for new release
+
+  23 Mar 2013; Mike Frysinger <vapier@gentoo.org> spotify-0.8.8.323-r1.ebuild,
+  spotify-0.8.8.323-r2.ebuild:
+  Convert to unpacker eclass for .deb unpacking.
+
+*spotify-0.8.8.323-r2 (14 Mar 2013)
+
+  14 Mar 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.8.8.323-r2.ebuild:
+  upgrading to spotify-0.8.8.323-r2 for bug 461616
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org>
+  spotify-0.8.8.323-r1.ebuild:
+  Move Qt dependencies to the new category
+
+  28 Feb 2013; Matthew Thode <prometheanfire@gentoo.org>
+  -spotify-0.8.8.323.ebuild, spotify-0.8.8.323-r1.ebuild:
+  fixed qa_prebuilt paths for spotify
+
+  10 Jan 2013; Matthew Thode <prometheanfire@gentoo.org>
+  spotify-0.8.8.323-r1.ebuild:
+  another small update for bug 450520
+
+  10 Jan 2013; Matthew Thode <prometheanfire@gentoo.org>
+  spotify-0.8.8.323-r1.ebuild:
+  updated r1 for bug 451090
+
+  09 Jan 2013; Matthew Thode <prometheanfire@gentoo.org>
+  spotify-0.8.8.323-r1.ebuild:
+  another update for spotify-0.8.8.323-r1 bug 450520
+
+*spotify-0.8.8.323-r1 (09 Jan 2013)
+
+  09 Jan 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.8.8.323-r1.ebuild:
+  r1 for removing the script used by spotify to register desktop and icon files
+
+  09 Jan 2013; Matthew Thode <prometheanfire@gentoo.org>
+  spotify-0.8.8.323.ebuild:
+  spelling fix for spotify
+
+  08 Jan 2013; Matthew Thode <prometheanfire@gentoo.org>
+  spotify-0.8.8.323.ebuild:
+  adding QA_REBUILT for bug 450832
+
+*spotify-0.8.8.323 (08 Jan 2013)
+
+  08 Jan 2013; Matthew Thode <prometheanfire@gentoo.org>
+  -spotify-0.8.4.103-r2.ebuild, -spotify-0.8.4.103-r3.ebuild,
+  +spotify-0.8.8.323.ebuild:
+  removing now-unavailable versions and updating ebuild, bug 450520
+
+*spotify-0.8.4.103-r3 (17 Dec 2012)
+
+  17 Dec 2012; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.8.4.103-r3.ebuild, -spotify-0.8.4.103-r1.ebuild,
+  -spotify-0.8.4.103.ebuild:
+  add the cups rdep to spotify, becuse, whynot
+
+*spotify-0.8.4.103-r2 (16 Nov 2012)
+
+  16 Nov 2012; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.8.4.103-r2.ebuild:
+  removing kde badness bug #442682
+
+*spotify-0.8.4.103-r1 (11 Nov 2012)
+
+  11 Nov 2012; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.8.4.103-r1.ebuild:
+  spotify-0.8.4.103-r1 for bug 442682
+
+*spotify-0.8.4.103 (07 Nov 2012)
+
+  07 Nov 2012; Matthew Thode <prometheanfire@gentoo.org>
+  +spotify-0.8.4.103.ebuild:
+  adding spotify-0.8.4.103 for bug 373093

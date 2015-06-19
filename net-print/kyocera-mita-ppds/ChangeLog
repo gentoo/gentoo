@@ -1,0 +1,11 @@
+# ChangeLog for net-print/kyocera-mita-ppds
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-print/kyocera-mita-ppds/ChangeLog,v 1.1 2011/01/26 12:43:18 flameeyes Exp $
+
+*kyocera-mita-ppds-8.4 (26 Jan 2011)
+
+  26 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +kyocera-mita-ppds-8.4.ebuild, +metadata.xml:
+  Initial import of PPD files for Kyocera Mita printers (from the Italian
+  website).
+

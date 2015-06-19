@@ -1,0 +1,11 @@
+# ChangeLog for games-fps/aaut
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/aaut/ChangeLog,v 1.4 2004/07/01 11:16:30 eradicator Exp $
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> aaut-1.ebuild:
+  virtual/glibc -> virtual/libc
+
+*aaut-1 (03 Aug 2003)
+
+  03 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

@@ -1,0 +1,2389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE herds SYSTEM "http://www.gentoo.org/dtd/herds.dtd">
+<?xml-stylesheet href="/xsl/herds.xsl" type="text/xsl" ?>
+<?xml-stylesheet href="/xsl/guide.xsl" type="text/xsl" ?>
+<!--
+
+   The herds dtd file is the authoritive source of all herds and their maintainers.
+   Every herd is described in its own <herd> tag. A herd tag consists of a name,
+   possibly an email address, a description and then a number of maintainers. In that order.
+
+   The email subtag of the herds file can be used to specify the contact
+   address for the herd.
+
+   In most cases herds need to have at least one maintainer, preferably
+   more. The necessary information about a maintainer is his/her email
+   address. Further a name tag and description tags are allowed. The
+   name tag is deprecated as the developer database will be used.
+
+   Description tags can have lang attributes, in which case there must be
+   always a description without a lang attribute. Also there are no overlapping
+   descriptions allowed (multiple description tags with the same language)
+
+   $Header: /var/cvsroot/gentoo/xml/htdocs/proj/en/metastructure/herds/herds.xml,v 1.1145 2015/04/07 00:21:57 vapier Exp $
+
+-->
+<herds>
+  <herd>
+    <name>app-doc</name>
+    <email>app-doc@gentoo.org</email>
+    <description>Maintainers of app-doc/*</description>
+    <maintainer>
+        <email>rhill@gentoo.org</email>
+        <name>Ryan Hill</name>
+    </maintainer>
+    <maintainer>
+        <email>vapier@gentoo.org</email>
+    </maintainer>
+  </herd>
+  <herd>
+    <name>ayatana</name>
+    <email>ayatana-bugs@gentoo.org</email>
+    <description>Maintain packages related to Ayatana project</description>
+  <maintainer>
+    <email>ssuominen@gentoo.org</email>
+    <name>Samuli Suominen</name>
+  </maintainer>
+  <maintainer>
+    <email>chithanh@gentoo.org</email>
+    <name>Chí-Thanh Christopher Nguyễn</name>
+  </maintainer>
+  </herd>
+  <herd>
+  <name>bazaar</name>
+  <email>bazaar@gentoo.org</email>
+  <description>Bazaar distributed version control system and related packages</description>
+  <maintainer>
+    <email>fauli@gentoo.org</email>
+    <name>Christian Faulhammer</name>
+  </maintainer>
+  <maintainer>
+    <email>marienz@gentoo.org</email>
+  </maintainer>
+</herd>
+<herd>
+  <name>bsd</name>
+  <email>bsd@gentoo.org</email>
+  <description>Support for *BSD system packages, and *BSD derived packages.</description>
+  <maintainingproject>/proj/en/gentoo-alt/bsd/index.xml</maintainingproject>
+</herd>
+<herd>
+  <name>chromium</name>
+  <email>chromium@gentoo.org</email>
+  <description>Chromium (the open source browser project) and related packages</description>
+  <maintainingproject>/proj/en/desktop/chromium/index.xml</maintainingproject>
+</herd>
+<herd>
+  <name>cjk</name>
+  <email>cjk@gentoo.org</email>
+  <description>Chinese/Japanese/Korean support packages</description>
+  <maintainer>
+    <email>hattya@gentoo.org</email>
+    <name>Akinori Hattori</name>
+    <role>Japanese Support</role>
+  </maintainer>
+  <maintainer>
+    <email>naota@gentoo.org</email>
+    <name>Naohiro Aota</name>
+    <role>Japanese Support</role>
+  </maintainer>
+  <maintainer>
+    <email>alicef@gentoo.org</email>
+    <name>Alice Ferrazzi</name>
+    <role>Japanese Support</role>
+  </maintainer>
+  <maintainer>
+    <email>jmorgan@gentoo.org</email>
+    <name>Jack Morgan</name>
+  </maintainer>
+  <maintainer>
+      <email>yngwin@gentoo.org</email>
+      <name>Ben de Groot</name>
+  </maintainer>
+  <maintainer>
+      <email>dlan@gentoo.org</email>
+      <name>Yixun Lan</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>forensics</name>
+  <email>forensics@gentoo.org</email>
+  <description>This will contain all applications that aid the investigation of intrusions and general stuff that would be used by system adminstrators and law enforcement agencies. By the dual purpose nature of the applications some disaster recover mechanism tools may also fall under our maintence</description>
+  <maintainer>
+    <email>patrick@gentoo.org</email>
+    <name>Patrick Lauer</name>
+  </maintainer>
+  <maintainer>
+    <email>radhermit@gentoo.org</email>
+    <name>Tim Harder</name>
+  </maintainer>
+  <maintainer>
+    <email>zerochaos@gentoo.org</email>
+    <name>Rick Farina</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>cron</name>
+  <email>cron-bugs@gentoo.org</email>
+  <description>Cron and similar packages</description>
+  <maintainer>
+    <email>vapier@gentoo.org</email>
+    <role>dcron</role>
+  </maintainer>
+</herd>
+<herd>
+  <name>crypto</name>
+  <email>crypto@gentoo.org</email>
+  <description>Cryptography related packages</description>
+  <maintainer>
+    <email>robbat2@gentoo.org</email>
+      <name>Robin H. Johnson</name>
+  </maintainer>
+  <maintainer>
+    <email>radhermit@gentoo.org</email>
+    <name>Tim Harder</name>
+  </maintainer>
+  <maintainer>
+    <email>flameeyes@gentoo.org</email>
+    <name>Diego Elio Pettenò</name>
+  </maintainer>
+  <maintainer>
+    <email>zerochaos@gentoo.org</email>
+    <name>Rick Farina</name>
+  </maintainer>
+  <maintainer>
+    <email>alonbl@gentoo.org</email>
+    <name>Alon Bar-Lev</name>
+  </maintainer>
+  <maintainer>
+    <email>k_f@gentoo.org</email>
+    <name>Kristian Fiskerstrand</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>deb-tools</name>
+  <email>deb-tools@gentoo.org</email>
+  <description>Tools used to build Debian like distributions and related packages</description>
+  <maintainer>
+    <email>jer@gentoo.org</email>
+    <name>Jeroen Roovers</name>
+   </maintainer>
+</herd>
+<herd>
+  <name>dev-tools</name>
+  <email>dev-tools@gentoo.org</email>
+  <description>Language-agnostic software development and code analysis tools</description>
+  <maintainer>
+  	<email>hwoarang@gentoo.org</email>
+	<name>Markos Chandras</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>enlightenment</name>
+  <email>enlightenment@gentoo.org</email>
+  <description>efl and e17 related packages</description>
+  <maintainer>
+    <email>tommy@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>vapier@gentoo.org</email>
+  </maintainer>
+</herd>
+<herd>
+  <name>dotnet</name>
+  <email>dotnet@gentoo.org</email>
+  <description>DotNet-related packages</description>
+  <maintainer>
+    <email>angelos@gentoo.org</email>
+    <name>Christoph Mende</name>
+  </maintainer>
+  <maintainer>
+    <email>cynede@gentoo.org</email>
+    <name>Heather Cynede</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>freedesktop</name>
+  <email>freedesktop-bugs@gentoo.org</email>
+  <description>Freedesktop standards related packages and shared desktop components.</description>
+  <maintainer>
+    <email>gnome@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>kde@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>xfce@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>lxde@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>lxqt@gentoo.org</email>
+  </maintainer>
+</herd>
+<herd>
+  <name>gnome</name>
+  <email>gnome@gentoo.org</email>
+  <description>GNOME Desktop and related packages</description>
+  <maintainer>
+    <email>leio@gentoo.org</email>
+    <name>Mart Raudsepp</name>
+  </maintainer>
+  <maintainer>
+    <email>eva@gentoo.org</email>
+    <name>Gilles Dartiguelongue</name>
+  </maintainer>
+  <maintainer>
+    <email>nirbheek@gentoo.org</email>
+    <name>Nirbheek Chauhan</name>
+  </maintainer>
+  <maintainer>
+  	<email>pacho@gentoo.org</email>
+  	<name>Pacho Ramos</name>
+  </maintainer>
+  <maintainer>
+    <email>tetromino@gentoo.org</email>
+    <name>Alexandre Rostovtsev</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>gnome-accessibility</name>
+  <email>gnome-accessibility@gentoo.org</email>
+  <description>GNOME accessibility packages</description>
+  <maintainer>
+    <email>leio@gentoo.org</email>
+    <name>Mart Raudsepp</name>
+  </maintainer>
+  <maintainer>
+    <email>pacho@gentoo.org</email>
+    <name>Pacho Ramos</name>
+  </maintainer>
+  <maintainer>
+    <email>tetromino@gentoo.org</email>
+    <name>Alexandre Rostovtsev</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>gnome-mm</name>
+  <email>gnome-mm@gentoo.org</email>
+  <description>GNOME C++ Bindings</description>
+  <maintainer>
+    <email>leio@gentoo.org</email>
+    <name>Mart Raudsepp</name>
+  </maintainer>
+  <maintainer>
+    <email>pacho@gentoo.org</email>
+    <name>Pacho Ramos</name>
+  </maintainer>
+  <maintainer>
+    <email>tetromino@gentoo.org</email>
+    <name>Alexandre Rostovtsev</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>gnome-office</name>
+  <email>gnome-office@gentoo.org</email>
+  <description>GNOME Office packages</description>
+  <maintainer>
+    <email>eva@gentoo.org</email>
+    <name>Gilles Dartiguelongue</name>
+  </maintainer>
+  <maintainer>
+    <email>leio@gentoo.org</email>
+    <name>Mart Raudsepp</name>
+  </maintainer>
+  <maintainer>
+    <email>nirbheek@gentoo.org</email>
+    <name>Nirbheek Chauhan</name>
+  </maintainer>
+  <maintainer>
+    <email>pacho@gentoo.org</email>
+    <name>Pacho Ramos</name>
+  </maintainer>
+  <maintainer>
+    <email>tetromino@gentoo.org</email>
+    <name>Alexandre Rostovtsev</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>gpe</name>
+  <email>gpe@gentoo.org</email>
+  <description>GPE Desktop and related packages</description>
+  <maintainer>
+    <email>miknix@gentoo.org</email>
+    <name>Angelo Arrifano</name>
+  </maintainer>
+ </herd>
+<herd>
+  <name>accessibility</name>
+  <email>accessibility@gentoo.org</email>
+  <description>accessibility related packages</description>
+  <maintainer>
+    <email>WilliamH@gentoo.org</email>
+    <name>William Hubbs</name>
+    <role>Team Lead, LiveCD testing</role>
+  </maintainer>
+  <maintainer>
+    <email>neurogeek@gentoo.org</email>
+    <name>Jesus Rivero</name>
+    <role>ebuild maintainer</role>
+  </maintainer>
+</herd>
+<herd>
+  <name>3dprint</name>
+  <email>3dprint@gentoo.org</email>
+  <description>Packages related to 3D printers</description>
+  <maintainer>
+    <email>amynka@gentoo.org</email>
+    <name>Amy Winston</name>
+    <role>Team Lead, packages maintainer</role>
+  </maintainer>
+</herd>
+<herd>
+  <name>java</name>
+  <email>java@gentoo.org</email>
+  <description>Java-related packages</description>
+  <maintainingproject>/proj/en/java/index.xml</maintainingproject>
+</herd>
+<herd>
+  <name>kde</name>
+  <email>kde@gentoo.org</email>
+  <description>KDE and related packages</description>
+  <maintainingproject>/proj/en/desktop/kde/index.xml</maintainingproject>
+</herd>
+<herd>
+  <name>openstack</name>
+  <email>openstack@gentoo.org</email>
+  <description>Openstack-related packages</description>
+  <maintainingproject>/proj/en/virtualization/openstack/index.xml</maintainingproject>
+</herd>
+<herd>
+  <name>qt</name>
+  <email>qt@gentoo.org</email>
+  <description>Qt and related packages</description>
+  <maintainingproject>/proj/en/desktop/qt/index.xml</maintainingproject>
+</herd>
+<herd>
+  <name>lxde</name>
+  <email>lxde@gentoo.org</email>
+  <description>LXDE and related packages</description>
+  <maintainer>
+    <email>vostorga@gentoo.org</email>
+    <name>Víctor Ostorga</name>
+  </maintainer>
+  <maintainer>
+     <email>hwoarang@gentoo.org</email>
+	 <name>Markos Chandras</name>
+  </maintainer>
+  <maintainer>
+    <email>nullishzero@gentoo</email>
+    <name>Pavel Kazakov</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>perl</name>
+  <email>perl@gentoo.org</email>
+  <description>Perl-related packages</description>
+  <maintainer>
+    <email>axs@gentoo.org</email>
+    <name>Ian Stakenvicius</name>
+  </maintainer>
+  <maintainer>
+    <email>civil@gentoo.org</email>
+    <name>Vladimir Smirnow</name>
+  </maintainer>
+  <maintainer>
+    <email>dilfridge@gentoo.org</email>
+    <name>Andreas K. Hüttel</name>
+  </maintainer>
+  <maintainer>
+    <email>monsieurp@gentoo.org</email>
+    <name>Patrice Clement</name>
+  </maintainer>
+  <maintainer>
+    <email>zlogene@gentoo.org</email>
+    <name>Mikle Kolyada</name>
+  </maintainer>
+    <maintainer>
+    <email>titanofold@gentoo.org</email>
+    <name>Aaron W. Swenson</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>prefix</name>
+  <email>prefix@gentoo.org</email>
+  <description>Prefix-related packages</description>
+  <maintainer>
+    <email>grobian@gentoo.org</email>
+    <name>Fabian Groffen</name>
+  </maintainer>
+  <maintainer>
+    <email>darkside@gentoo.org</email>
+    <name>Jeremy Olexa</name>
+  </maintainer>
+  <maintainer>
+    <email>haubi@gentoo.org</email>
+    <name>Michael Haubenwallner</name>
+  </maintainer>
+  <maintainer>
+    <email>jcallen@gentoo.org</email>
+    <name>Jonathan Callen</name>
+  </maintainer>
+  <maintainer>
+    <email>heroxbd@gentoo.org</email>
+    <name>Benda XU</name>
+  </maintainer>
+  <maintainer>
+    <email>redlizard@gentoo.org</email>
+    <name>Ruud Koolen</name>
+  </maintainer>
+  <maintainer>
+    <email>amadio@gentoo.org</email>
+    <name>Guilherme Amadio</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>python</name>
+  <email>python@gentoo.org</email>
+  <description>Python-related packages</description>
+  <maintainer>
+    <email>djc@gentoo.org</email>
+    <name>Dirkjan Ochtman</name>
+  </maintainer>
+  <maintainer>
+    <email>floppym@gentoo.org</email>
+    <name>Mike Gilbert</name>
+  </maintainer>
+  <maintainer>
+    <email>idella4@gentoo.org</email>
+    <name>Ian Delaney</name>
+  </maintainer>
+  <maintainer>
+    <email>lordvan@gentoo.org</email>
+    <name>Thomas Raschbacher</name>
+  </maintainer>
+  <maintainer>
+    <email>marienz@gentoo.org</email>
+    <name>Marien Zwart</name>
+  </maintainer>
+  <maintainer>
+    <email>nelchael@gentoo.org</email>
+    <name>Krzysztof Pawlik</name>
+  </maintainer>
+  <maintainer>
+    <email>patrick@gentoo.org</email>
+    <name>Patrick Lauer</name>
+  </maintainer>
+  <maintainer>
+    <email>radhermit@gentoo.org</email>
+    <name>Tim Harder</name>
+  </maintainer>
+  <maintainer>
+    <email>rafaelmartins@gentoo.org</email>
+    <name>Rafael Martins</name>
+  </maintainer>
+  <maintainer>
+    <email>sping@gentoo.org</email>
+    <name>Sebastian Pipping</name>
+  </maintainer>
+  <maintainer>
+    <email>dev-zero@gentoo.org</email>
+    <name></name>
+  </maintainer>
+  <maintainer>
+    <email>chutzpah@gentoo.org</email>
+    <name>Patrick McLean</name>
+  </maintainer>
+  <maintainer>
+    <email>maksbotan@gentoo.org</email>
+    <name>Maxim Koltsov</name>
+  </maintainer>
+  <maintainer>
+    <email>xarthisius@gentoo.org</email>
+    <name>Kacper Kowalik</name>
+  </maintainer>
+  <maintainer>
+    <email>mgorny@gentoo.org</email>
+    <name></name>
+  </maintainer>
+  <maintainer>
+    <email>prometheanfire@gentoo.org</email>
+    <name>Matt Thode</name>
+  </maintainer>
+  <maintainer>
+    <email>yac@gentoo.org</email>
+    <name>Jan Matejka</name>
+  </maintainer>
+  <maintainer>
+    <email>sdamashek@gentoo.org</email>
+    <name>Samuel Damashek</name>
+  </maintainer>
+  <maintainer>
+    <email>ultrabug@gentoo.org</email>
+    <name>Alexys Jacob</name>
+  </maintainer>
+  <maintainer>
+    <email>alunduil@gentoo.org</email>
+    <name>Alex Brandt</name>
+  </maintainer>
+  <maintainer>
+    <email>alicef@gentoo.org</email>
+    <name>Alice Ferrazzi</name>
+  </maintainer>
+  <maintainer>
+    <email>mrueg@gentoo.org</email>
+    <name>Manuel Rüger</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>x11</name>
+  <email>x11@gentoo.org</email>
+  <description>X11 implementations and related packages</description>
+  <maintainingproject>/proj/en/desktop/x/x11/index.xml</maintainingproject>
+</herd>
+<herd>
+  <name>x11-drivers</name>
+  <email>x11-drivers@gentoo.org</email>
+  <description>X11 external drivers packages</description>
+  <maintainingproject>/proj/en/desktop/x/x11-drivers/index.xml</maintainingproject>
+</herd>
+<herd>
+  <name>sound</name>
+  <email>sound@gentoo.org</email>
+  <description>media-sound and related packages</description>
+  <maintainingproject>/proj/en/desktop/sound/index.xml</maintainingproject>
+</herd>
+<herd>
+  <name>alsa</name>
+  <email>alsa-bugs@gentoo.org</email>
+  <description>Advanced Linux Sound Architecture packages</description>
+  <maintainer>
+    <email>chainsaw@gentoo.org</email>
+    <name>Tony Vroon</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>proaudio</name>
+  <email>proaudio@gentoo.org</email>
+  <description>Professional audio applications and libraries</description>
+  <maintainer>
+    <email>aballier@gentoo.org</email>
+    <name>Alexis Ballier</name>
+  </maintainer>
+  <maintainer>
+    <email>radhermit@gentoo.org</email>
+    <name>Tim Harder</name>
+  </maintainer>
+  <maintainer>
+    <email>nativemad@gentoo.org</email>
+    <name>Andreas Schuerch</name>
+  </maintainer>
+
+</herd>
+<herd>
+  <name>base-system</name>
+  <email>base-system@gentoo.org</email>
+  <description>Core system utilities and libraries.</description>
+  <maintainer>
+    <email>vapier@gentoo.org</email>
+    <role>Miscellaneous leet stuff</role>
+  </maintainer>
+  <maintainer>
+    <email>chainsaw@gentoo.org</email>
+    <name>Tony Vroon</name>
+    <role>LILO</role>
+  </maintainer>
+  <maintainer>
+    <email>robbat2@gentoo.org</email>
+    <name>Robin H. Johnson</name>
+    <role>Specialized block devices and lots of other miscellaneous stuff</role>
+  </maintainer>
+  <maintainer>
+    <email>cardoe@gentoo.org</email>
+    <name>Doug Goldstein</name>
+    <role>Misc stuff that needs to get done</role>
+  </maintainer>
+  <maintainer>
+    <email>ssuominen@gentoo.org</email>
+    <name>Samuli Suominen</name>
+    <role>Misc stuff that needs to get done</role>
+  </maintainer>
+  <maintainer>
+    <email>williamh@gentoo.org</email>
+    <name>William Hubbs</name>
+    <role>Misc stuff that needs to get done</role>
+  </maintainer>
+  <maintainer>
+    <email>radhermit@gentoo.org</email>
+    <name>Tim Harder</name>
+    <role>Misc stuff that needs to get done</role>
+  </maintainer>
+  <maintainer>
+    <email>flameeyes@gentoo.org</email>
+    <name>Diego Elio Pettenò</name>
+  </maintainer>
+  <maintainer>
+    <email>hwoarang@gentoo.org</email>
+    <name>Markos Chandras</name>
+  </maintainer>
+  <maintainer>
+    <email>polynomial-c@gentoo.org</email>
+    <name>Lars Wendler</name>
+    <role>Version bumps and security stabilisations</role>
+  </maintainer>
+</herd>
+<herd>
+  <name>hardened</name>
+  <email>hardened@gentoo.org</email>
+  <description>Hardened Gentoo project packages and policy</description>
+  <maintainer>
+    <email>gengor@gentoo.org</email>
+    <name>Gordon Malm</name>
+    <role>hardened-sources</role>
+  </maintainer>
+  <maintainer>
+    <email>chainsaw@gentoo.org</email>
+    <name>Tony Vroon</name>
+    <role>AMD64 arch team liaison</role>
+  </maintainer>
+  <maintainer>
+    <email>zorry@gentoo.org</email>
+    <name>Magnus Granberg</name>
+    <role>hardened-toolchain</role>
+  </maintainer>
+  <maintainer>
+    <email>blueness@gentoo.org</email>
+    <name>Anthony G. Basile</name>
+    <role>hardened-sources</role>
+  </maintainer>
+  <maintainer>
+    <email>klondike@gentoo.org</email>
+    <role>Documentation and bug-wrangling</role>
+  </maintainer>
+  <maintainer>
+    <email>swift@gentoo.org</email>
+    <name>Sven Vermeulen</name>
+    <role>SELinux project lead; utilies and policy, documentation</role>
+  </maintainer>
+  <maintainer>
+     <email>prometheanfire@gentoo.org</email>
+     <name>Matt Thode</name>
+     <role>SELinux and hardened development</role>
+  </maintainer>
+  <maintainer>
+  	<email>lejonet@gentoo.org</email>
+  	<name>Daniel Kuehn</name>
+  	<role>Hardened development</role>
+  </maintainer>
+  <maintainer>
+     <email>perfinion@gentoo.org</email>
+     <name>Jason Zaman</name>
+     <role>SELinux and hardened development</role>
+  </maintainer>
+</herd>
+<herd>
+  <name>ppc</name>
+  <email>ppc@gentoo.org</email>
+  <description>PowerPC porters</description>
+  <maintainingproject>/proj/en/base/ppc/index.xml</maintainingproject>
+  <!-- Removed old list, using <maintainingproject> -->
+</herd>
+<herd>
+  <name>ppc64</name>
+  <email>ppc64@gentoo.org</email>
+  <description>Gentoo/PPC64 Team</description>
+  <maintainer>
+    <email>josejx@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>blueness@gentoo.org</email>
+    <name>Anthony G. Basile</name>
+  </maintainer>
+  <maintainer>
+    <email>ago@gentoo.org</email>
+    <name>Agostino Sarubbo</name>
+  </maintainer>
+  <maintainer>
+    <email>jmorgan@gentoo.org</email>
+    <name>Jack Morgan</name>
+  </maintainer>
+  <maintainer>
+    <email>pinkbyte@gentoo.org</email>
+    <name>Sergey Popov</name>
+  </maintainer>
+  <maintainer>
+    <email>zlogene@gentoo.org</email>
+    <name>Mikle Kolyada</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>games</name>
+  <email>games@gentoo.org</email>
+  <description>Gentoo Games Team</description>
+  <maintainingproject>/proj/en/desktop/games/index.xml</maintainingproject>
+</herd>
+<herd>
+  <name>php</name>
+  <email>php-bugs@gentoo.org</email>
+  <description>PHP and related packages</description>
+  <maintainer>
+    <email>mabi@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>olemarkus@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>grknight@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+</herd>
+<herd>
+  <name>qmail</name>
+  <email>qmail-bugs@gentoo.org</email>
+  <description>Everything to do with Qmail, and related packages.</description>
+  <maintainer>
+      <email>vapier@gentoo.org</email>
+      <role>mini-qmail</role>
+  </maintainer>
+</herd>
+<herd>
+  <name>app-backup</name>
+  <email>app-backup@gentoo.org</email>
+  <description>Any applications that handle system backup and restore.</description>
+  <maintainer>
+      <email>robbat2@gentoo.org</email>
+      <role>Team leader</role>
+      <name>Robin H. Johnson</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>net-mail</name>
+  <email>net-mail@gentoo.org</email>
+  <description>Email servers, clients, and related packages</description>
+  <maintainer>
+    <email>robbat2@gentoo.org</email>
+    <name>Robin H. Johnson</name>
+  </maintainer>
+  <maintainer>
+    <email>hattya@gentoo.org</email>
+    <name>Akinori Hattori</name>
+    <role>Sylpheed</role>
+  </maintainer>
+  <maintainer>
+    <email>radhermit@gentoo.org</email>
+    <name>Tim Harder</name>
+  </maintainer>
+  <maintainer>
+    <email>eras@gentoo.org</email>
+    <name>Eray Aslan</name>
+  </maintainer>
+  <maintainer>
+    <email>mschiff@gentoo.org</email>
+    <name>Marc Schiffbauer</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>wxwidgets</name>
+  <email>wxwidgets@gentoo.org</email>
+  <description>wxGTK and wxPython related packages and applications</description>
+  <maintainer>
+    <email>leio@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>rhill@gentoo.org</email>
+  </maintainer>
+</herd>
+<herd>
+  <name>vim</name>
+  <email>vim@gentoo.org</email>
+  <description>vim-core, vim, gvim and app-vim plugins</description>
+  <maintainer>
+    <email>radhermit@gentoo.org</email>
+    <name>Tim Harder</name>
+  </maintainer>
+  <maintainer>
+    <email>yngwin@gentoo.org</email>
+    <name>Ben de Groot</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>sci</name>
+  <email>sci@gentoo.org</email>
+  <description>scientific applications and libraries</description>
+  <maintainer>
+    <email>george@gentoo.org</email>
+    <name>George Shapovalov</name>
+  </maintainer>
+  <maintainer>
+  <email>je_fro@gentoo.org</email>
+  <name>Jeff Gardner</name>
+  </maintainer>
+  <maintainer>
+    <email>bicatali@gentoo.org</email>
+    <name>Sébastien Fabbro</name>
+  </maintainer>
+  <maintainer>
+    <email>jsbronder@gentoo.org</email>
+    <name>Justin Bronder</name>
+  </maintainer>
+  <maintainer>
+    <email>grozin@gentoo.org</email>
+    <name>Andrey Grozin</name>
+  </maintainer>
+  <maintainer>
+    <email>jlec@gentoo.org</email>
+    <name>Justin Lecher</name>
+    <role>X-ray, NMR and protein visualization stuff</role>
+  </maintainer>
+  <maintainer>
+    <email>xarthisius@gentoo.org</email>
+    <name>Kacper Kowalik</name>
+  </maintainer>
+  <maintainer>
+    <email>ryao@gentoo.org</email>
+    <name>Richard Yao</name>
+  </maintainer>
+  <maintainer>
+    <email>jauhien@gentoo.org</email>
+    <name>Jauhien Piatlicki</name>
+  </maintainer>
+  <maintainer>
+    <email>tamiko@gentoo.org</email>
+    <name>Matthias Maier</name>
+  </maintainer>
+  <maintainer>
+    <email>bircoph@gentoo.org</email>
+    <name>Andrew Savchenko</name>
+  </maintainer>
+  <maintainer>
+    <email>amadio@gentoo.org</email>
+    <name>Guilherme Amadio</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>sci-astronomy</name>
+  <email>sci-astronomy@gentoo.org</email>
+  <description>Astronomy related packages</description>
+  <maintainer>
+    <email>bicatali@gentoo.org</email>
+    <name>Sébastien Fabbro</name>
+  </maintainer>
+  <maintainer>
+    <email>xarthisius@gentoo.org</email>
+    <name>Kacper Kowalik</name>
+  </maintainer>
+  <maintainer>
+    <email>bircoph@gentoo.org</email>
+    <name>Andrew Savchenko</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>sci-biology</name>
+  <email>sci-biology@gentoo.org</email>
+  <description>Packages related to biological sciences</description>
+  <maintainer>
+  <email>je_fro@gentoo.org</email>
+  <name>Jeff Gardner</name>
+  </maintainer>
+  <maintainer>
+    <email>jlec@gentoo.org</email>
+    <name>Justin Lecher</name>
+    <role>X-ray, NMR and protein visualization stuff</role>
+  </maintainer>
+</herd>
+<herd>
+  <name>sci-chemistry</name>
+  <email>sci-chemistry@gentoo.org</email>
+  <description>Packages related to chemistry</description>
+  <maintainer>
+    <email>dberkholz@gentoo.org</email>
+    <name>Donnie Berkholz</name>
+  </maintainer>
+  <maintainer>
+    <email>je_fro@gentoo.org</email>
+    <name>Jeff Gardner</name>
+  </maintainer>
+  <maintainer>
+	  <email>alexxy@gentoo.org</email>
+	  <name>Alexey Shvetsov</name>
+  </maintainer>
+  <maintainer>
+    <email>jlec@gentoo.org</email>
+    <name>Justin Lecher</name>
+    <role>X-ray, NMR and protein visualization stuff</role>
+  </maintainer>
+</herd>
+<herd>
+  <name>sci-electronics</name>
+  <email>sci-electronics@gentoo.org</email>
+  <description>Electronics related packages</description>
+  <maintainer>
+    <email>calchan@gentoo.org</email>
+    <name>Denis Dupeyron</name>
+  </maintainer>
+  <maintainer>
+      <email>tomjbe@gentoo.org</email>
+      <name>Thomas Beierlein</name>
+  </maintainer>
+  <maintainer>
+    <email>rafaelmartins@gentoo.org</email>
+    <name>Rafael G. Martins</name>
+  </maintainer>
+  <maintainer>
+    <email>xmw@gentoo.org</email>
+    <name>Michael Weber</name>
+  </maintainer>
+  <maintainer>
+    <email>perfinion@gentoo.org</email>
+    <name>Jason Zaman</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>sci-mathematics</name>
+  <email>sci-mathematics@gentoo.org</email>
+  <description>Mathematics related packages</description>
+  <maintainer>
+    <email>bicatali@gentoo.org</email>
+    <name>Sébastien Fabbro</name>
+  </maintainer>
+  <maintainer>
+    <email>grozin@gentoo.org</email>
+    <name>Andrey Grozin</name>
+  </maintainer>
+  <maintainer>
+    <email>rafaelmartins@gentoo.org</email>
+    <name>Rafael G. Martins</name>
+  </maintainer>
+  <maintainer>
+    <email>gienah@gentoo.org</email>
+    <name>Mark Wright</name>
+  </maintainer>
+  <maintainer>
+    <email>jauhien@gentoo.org</email>
+    <name>Jauhien Piatlicki</name>
+  </maintainer>
+  <maintainer>
+    <email>tamiko@gentoo.org</email>
+    <name>Matthias Maier</name>
+  </maintainer>
+  <maintainer>
+    <email>bircoph@gentoo.org</email>
+    <name>Andrew Savchenko</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>sci-physics</name>
+  <email>sci-physics@gentoo.org</email>
+  <description>Physics related packages</description>
+  <maintainer>
+    <email>bicatali@gentoo.org</email>
+    <name>Sébastien Fabbro</name>
+  </maintainer>
+  <maintainer>
+    <email>heroxbd@gentoo.org</email>
+    <name>Benda Xu</name>
+  </maintainer>
+  <maintainer>
+    <email>jauhien@gentoo.org</email>
+    <name>Jauhien Piatlicki</name>
+  </maintainer>
+  <maintainer>
+    <email>bircoph@gentoo.org</email>
+    <name>Andrew Savchenko</name>
+    <role>HEP related packages</role>
+  </maintainer>
+  <maintainer>
+    <email>amadio@gentoo.org</email>
+    <name>Guilherme Amadio</name>
+    <role>HEP related packages</role>
+  </maintainer>
+</herd>
+<herd>
+  <name>sci-geosciences</name>
+  <email>sci-geosciences@gentoo.org</email>
+  <description>Geosciences related packages</description>
+</herd>
+<herd>
+  <name>haskell</name>
+  <email>haskell@gentoo.org</email>
+  <description>Compilers, libraries and apps related to the programming language Haskell</description>
+  <maintainer>
+    <email>gienah@gentoo.org</email>
+    <name>Mark Wright</name>
+  </maintainer>
+  <maintainer>
+    <email>qnikst@gentoo.org</email>
+    <name>Alexander Vershilov</name>
+  </maintainer>
+  <maintainer>
+    <email>cynede@gentoo.org</email>
+    <name>Heather Cynede</name>
+  </maintainer>
+  <maintainer>
+    <email>slyfox@gentoo.org</email>
+    <name>Sergei Trofimovich</name>
+    <role>Team Lead</role>
+  </maintainer>
+  <maintainer>
+    <email>vikraman@gentoo.org</email>
+    <name>Vikraman Choudhury</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>ml</name>
+  <email>ml@gentoo.org</email>
+  <description>compilers, libraries and apps related to Caml</description>
+  <maintainer>
+    <email>aballier@gentoo.org</email>
+    <name>Alexis Ballier</name>
+  </maintainer>
+  <maintainer><email>hkBst@gentoo.org</email></maintainer>
+  <maintainer>
+    <email>heroxbd@gentoo.org</email>
+    <name>Benda XU</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>common-lisp</name>
+  <email>common-lisp@gentoo.org</email>
+  <description>Common Lisp compilers, libraries and applications and controller</description>
+  <maintainer><email>hkBst@gentoo.org</email></maintainer>
+  <maintainer>
+    <email>pchrist@gentoo.org</email>
+    <name>Panagiotis Christopoulos</name>
+  </maintainer>
+  <maintainer>
+    <email>neurogeek@gentoo.org</email>
+    <name>Jesus Rivero</name>
+  </maintainer>
+  <maintainer>
+    <email>nimiux@gentoo.org</email>
+    <name>Chema Alonso</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>emacs</name>
+  <email>emacs@gentoo.org</email>
+  <description>GNU Emacs applications and Emacs Lisp add-ons</description>
+  <maintainer>
+    <email>fauli@gentoo.org</email>
+    <name>Christian Faulhammer</name>
+  </maintainer>
+  <maintainer>
+    <email>graaff@gentoo.org</email>
+    <name>Hans de Graaff</name>
+  </maintainer>
+  <maintainer>
+    <email>ulm@gentoo.org</email>
+    <name>Ulrich Müller</name>
+  </maintainer>
+  <maintainer>
+    <email>gienah@gentoo.org</email>
+    <name>Mark Wright</name>
+  </maintainer>
+  <maintainer>
+    <email>jauhien@gentoo.org</email>
+    <name>Jauhien Piatlicki</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>mozilla</name>
+  <email>mozilla@gentoo.org</email>
+  <description>Mozilla and related applications</description>
+  <maintainer>
+    <email>anarchy@gentoo.org</email>
+    <name>Jory A. Pratt</name>
+    <role>Lead</role>
+  </maintainer>
+  <maintainer>
+    <email>nirbheek@gentoo.org</email>
+    <name>Nirbheek Chauhan</name>
+  </maintainer>
+  <maintainer>
+    <email>polynomial-c@gentoo.org</email>
+    <name>Lars Wendler</name>
+  </maintainer>
+  <maintainer>
+    <email>axs@gentoo.org</email>
+    <name>Ian Stakenvicius</name>
+  </maintainer>
+  <maintainer>
+    <email>jdhore@gentoo.org</email>
+    <name>Jeff Horelick</name>
+  </maintainer>
+  <maintainer>
+    <email>zerochaos@gentoo.org</email>
+    <name>Rick Farina</name>
+  </maintainer>
+  <maintainer>
+    <email>twitch153@gentoo.org</email>
+    <name>Devan Franchini</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>leechcraft</name>
+  <email>leechcraft@gentoo.org</email>
+  <description>LeechCraft and related libs and tools</description>
+  <maintainer>
+    <email>maksbotan@gentoo.org</email>
+    <name>Maxim Koltsov</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>ruby</name>
+  <email>ruby@gentoo.org</email>
+  <description>The Ruby programming language</description>
+  <maintainer>
+    <email>graaff@gentoo.org</email>
+    <name>Hans de Graaff</name>
+  </maintainer>
+  <maintainer>
+    <email>robbat2@gentoo.org</email>
+    <name>Robin H. Johnson</name>
+  </maintainer>
+  <maintainer>
+    <email>a3li@gentoo.org</email>
+    <name>Alex Legler</name>
+  </maintainer>
+  <maintainer>
+    <email>gengor@gentoo.org</email>
+    <name>Gordon Malm</name>
+  </maintainer>
+  <maintainer>
+    <email>flameeyes@gentoo.org</email>
+    <name>Diego Elio Pettenò</name>
+  </maintainer>
+  <maintainer>
+    <email>naota@gentoo.org</email>
+    <name>Naohiro Aota</name>
+  </maintainer>
+  <maintainer>
+    <email>mrueg@gentoo.org</email>
+    <name>Manuel Rüger</name>
+  </maintainer>
+  <maintainer>
+    <email>p8952@gentoo.org</email>
+    <name>Peter Wilmott</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>wine</name>
+  <email>wine@gentoo.org</email>
+  <description>
+    Wine - System for running windows apps under Linux.
+  </description>
+  <maintainer>
+    <email>ryao@gentoo.org</email>
+    <name>Richard Yao</name>
+  </maintainer>
+  <maintainer>
+    <email>tetromino@gentoo.org</email>
+    <name>Alexandre Rostovtsev</name>
+  </maintainer>
+  <maintainer>
+    <email>vapier@gentoo.org</email>
+  </maintainer>
+</herd>
+<herd>
+  <name>ada</name>
+  <email>ada@gentoo.org</email>
+  <description>
+    compilers, libs and other packages related to ada. Covers dev-ada
+    category (+ some extra stuff).
+  </description>
+  <maintainer>
+    <email>george@gentoo.org</email>
+    <name>George Shapovalov</name>
+  </maintainer>
+  <maintainer>
+    <email>nerdboy@gentoo.org</email>
+    <name>Steve Arnold</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>printing</name>
+  <email>printing@gentoo.org</email>
+  <description>
+    Printing related stuff, net-print category (+ some extra stuff).
+  </description>
+  <maintainer>
+    <email>tgurr@gentoo.org</email>
+    <name>Timo Gurr</name>
+  </maintainer>
+  <maintainer>
+    <email>dilfridge@gentoo.org</email>
+    <name>Andreas K. Huettel</name>
+  </maintainer>
+  <maintainer>
+    <email>mrueg@gentoo.org</email>
+    <name>Manuel Rüger</name>
+  </maintainer>
+  <maintainer>
+    <email>tamiko@gentoo.org</email>
+    <name>Matthias Maier</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>gnustep</name>
+  <email>gnustep@gentoo.org</email>
+  <description>GNUstep enviroment and related</description>
+  <maintainer>
+    <email>grobian@gentoo.org</email>
+    <name>Fabian Groffen</name>
+  </maintainer>
+  <maintainer>
+    <email>voyageur@gentoo.org</email>
+    <name>Bernard Cafarelli</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>cluster</name>
+  <email>cluster@gentoo.org</email>
+  <description>Gentoo Cluster Team</description>
+  <maintainer>
+    <email>alexxy@gentoo.org</email>
+    <name>Alexey Shvetsov</name>
+  </maintainer>
+  <maintainer>
+    <email>jsbronder@gentoo.org</email>
+    <name>Justin Bronder</name>
+  </maintainer>
+  <maintainer>
+    <email>pchrist@gentoo.org</email>
+    <name>Panagiotis Christopoulos</name>
+  </maintainer>
+  <maintainer>
+    <email>xarthisius@gentoo.org</email>
+    <name>Kacper Kowalik</name>
+  </maintainer>
+  <maintainer>
+    <email>ultrabug@gentoo.org</email>
+    <name>Alexys Jacob</name>
+  </maintainer>
+  <maintainer>
+    <email>bicatali@gentoo.org</email>
+    <name>Sebastien Fabbro</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>postgresql</name>
+  <email>pgsql-bugs@gentoo.org</email>
+  <description>PostgreSQL and related packages</description>
+  <maintainer>
+    <email>titanofold@gentoo.org</email>
+    <name>Aaron W. Swenson</name>
+    <role>Lead</role>
+  </maintainer>
+  <maintainer>
+    <email>patrick@gentoo.org</email>
+    <name>Patrick Lauer</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>net-im</name>
+  <email>net-im@gentoo.org</email>
+  <description>Instant messaging clients and servers</description>
+  <maintainer>
+    <email>chainsaw@gentoo.org</email>
+    <name>Tony Vroon</name>
+    <role>ejabberd and jabber-base</role>
+  </maintainer>
+  <maintainer>
+    <email>mrueg@gentoo.org</email>
+    <name>Manuel Rüger</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>sparc</name>
+  <email>sparc@gentoo.org</email>
+  <description>Gentoo/SPARC Team</description>
+  <maintainer>
+    <email>jer@gentoo.org</email>
+    <name>Jeroen Roovers</name>
+  </maintainer>
+  <maintainer>
+    <email>armin76@gentoo.org</email>
+    <name>Raúl Porcel</name>
+  </maintainer>
+  <maintainer>
+    <email>xmw@gentoo.org</email>
+    <name>Michael Weber</name>
+  </maintainer>
+  <maintainer>
+    <email>ago@gentoo.org</email>
+    <name>Agostino Sarubbo</name>
+  </maintainer>
+  <maintainer>
+    <email>zlogene@gentoo.org</email>
+    <name>Mikle Kolyada</name>
+  </maintainer>
+  <maintainer>
+    <email>jmorgan@gentoo.org</email>
+    <name>Jack Morgan</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>mips</name>
+  <email>mips@gentoo.org</email>
+  <description>Gentoo/MIPS Team</description>
+  <maintainer>
+  	<email>hwoarang@gentoo.org</email>
+	<name>Markos Chandras</name>
+  </maintainer>
+  <maintainer>
+    <email>blueness@gentoo.org</email>
+    <name>Anthony G. Basile</name>
+  </maintainer>
+  <maintainer>
+    <email>kumba@gentoo.org</email>
+    <name>Joshua Kinard</name>
+  </maintainer>
+  <maintainer>
+    <email>leio@gentoo.org</email>
+    <name>Mart Raudsepp</name>
+  </maintainer>
+  <maintainer>
+    <email>mattst88@gentoo.org</email>
+    <name>Matt Turner</name>
+  </maintainer>
+  <maintainer>
+    <email>pinkbyte@gentoo.org</email>
+    <name>Sergey Popov</name>
+  </maintainer>
+  <maintainer>
+     <email>zlogene@gentoo.org</email>
+     <name>Mikle Kolyada</name>
+  </maintainer>
+  </herd>
+<herd>
+  <name>web-apps</name>
+  <email>web-apps@gentoo.org</email>
+  <description>Web based applications and their configuration</description>
+  <maintainer>
+    <email>radhermit@gentoo.org</email>
+    <name>Tim Harder</name>
+  </maintainer>
+  <maintainer>
+    <email>blueness@gentoo.org</email>
+    <name>Anthony G. Basile</name>
+  </maintainer>
+  <maintainer>
+    <email>twitch153@gentoo.org</email>
+    <name>Devan Franchini</name>
+  </maintainer>
+  <maintainer>
+    <email>jmbsvicetto@gentoo.org</email>
+    <name>Jorge Manuel B. S. Vicetto</name>
+  </maintainer>
+  <maintainer>
+    <email>sdamashek@gentoo.org</email>
+    <name>Samuel Damashek</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>pda</name>
+  <email>pda@gentoo.org</email>
+  <description>PDA Related Applications and Libraries</description>
+  <maintainer>
+    <email>ssuominen@gentoo.org</email>
+    <name>Samuli Suominen</name>
+  </maintainer>
+  <maintainer>
+    <email>zlogene@gentoo.org</email>
+    <name>Mikle Kolyada</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>video</name>
+  <email>media-video@gentoo.org</email>
+  <description>Video related programs that don't fit into media-tv</description>
+  <maintainer>
+    <email>lu_zero@gentoo.org</email>
+    <name>Luca Barbato</name>
+  </maintainer>
+  <maintainer>
+    <email>lordvan@gentoo.org</email>
+    <name>Thomas Raschbacher</name>
+    <role>Mainly DVB related stuff.</role>
+  </maintainer>
+  <maintainer>
+    <email>zzam@gentoo.org</email>
+    <name>Matthias Schwarzott</name>
+  </maintainer>
+  <maintainer>
+    <email>chutzpah@gentoo.org</email>
+    <name>Patrick McLean</name>
+  </maintainer>
+  <maintainer>
+    <email>hd_brummy@gentoo.org</email>
+    <name>Joerg Bornkessel</name>
+    <role>vdr and related things</role>
+  </maintainer>
+  <maintainer>
+    <email>aballier@gentoo.org</email>
+    <name>Alexis Ballier</name>
+  </maintainer>
+  <maintainer>
+    <email>radhermit@gentoo.org</email>
+    <name>Tim Harder</name>
+  </maintainer>
+  <maintainer>
+    <email>ssuominen@gentoo.org</email>
+    <name>Samuli Suominen</name>
+  </maintainer>
+  <maintainer>
+    <email>yngwin@gentoo.org</email>
+    <name>Ben de Groot</name>
+    <role>SMPlayer (and dependencies)</role>
+  </maintainer>
+</herd>
+<herd>
+  <name>media-tv</name>
+  <email>media-tv@gentoo.org</email>
+  <description>TV related applications and modules</description>
+  <maintainer>
+    <email>zzam@gentoo.org</email>
+    <name>Matthias Schwarzott</name>
+    <role>vdr and related things</role>
+  </maintainer>
+  <maintainer>
+  <email>hd_brummy@gentoo.org</email>
+  <name>Joerg Bornkessel</name>
+  <role>vdr and related things</role>
+  </maintainer>
+  <maintainer>
+      <email>idl0r@gentoo.org</email>
+      <name>Christian Ruppert</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>antivirus</name>
+  <email>antivirus@gentoo.org</email>
+  <description>
+    Antivirus related stuff like e-mail-scanning, on-access
+    scanning or generic/daemon av-scanners
+  </description>
+  <maintainer>
+    <email>lordvan@gentoo.org</email>
+    <name>Thomas Raschbacher</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>pam</name>
+  <email>pam-bugs@gentoo.org</email>
+  <description>PAM related packages</description>
+  <maintainer>
+	<email>flameeyes@gentoo.org</email>
+	<name>Diego Elio Pettenò</name>
+	<role>Linux-PAM, OpenPAM, and generic scapegoat</role>
+  </maintainer>
+  <maintainer>
+    <email>robbat2@gentoo.org</email>
+    <name>Robin H. Johnson</name>
+    <role>pam_ldap, nss_ldap, nss-db.</role>
+  </maintainer>
+</herd>
+<herd>
+  <name>kernel</name>
+  <email>kernel@gentoo.org</email>
+  <description>Core kernels stuff</description>
+  <maintainer>
+    <email>gregkh@gentoo.org</email>
+    <name>Greg Kroah-Hartman</name>
+  </maintainer>
+  <maintainer>
+    <email>chainsaw@gentoo.org</email>
+    <name>Tony Vroon</name>
+  </maintainer>
+  <maintainer>
+    <email>mpagano@gentoo.org</email>
+    <name>Mike Pagano</name>
+    <role>gentoo-sources</role>
+  </maintainer>
+  <maintainer>
+    <email>psomas@gentoo.org</email>
+    <name>Stratos Psomadakis</name>
+    <role>gentoo-sources</role>
+  </maintainer>
+  <maintainer>
+    <email>caster@gentoo.org</email>
+    <name>Vlastimil Babka</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>kernel-misc</name>
+  <email>kernel-misc@gentoo.org</email>
+  <description>Kernel related packages</description>
+  <maintainer>
+    <email>robbat2@gentoo.org</email>
+    <name>Robin H. Johnson</name>
+  </maintainer>
+  <maintainer>
+    <email>ssuominen@gentoo.org</email>
+    <name>Samuli Suominen</name>
+  </maintainer>
+  <maintainer>
+    <email>caster@gentoo.org</email>
+    <name>Vlastimil Babka</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>openoffice</name>
+  <email>openoffice@gentoo.org</email>
+  <description>Openoffice related packages</description>
+  <maintainingproject>/proj/en/desktop/office/index.xml</maintainingproject>
+</herd>
+<herd>
+  <name>net-p2p</name>
+  <email>net-p2p@gentoo.org</email>
+  <description>Peer to Peer network related packages</description>
+  <maintainer>
+    <email>sochotnicky@gentoo.org</email>
+    <name>Stanislav Ochotnický</name>
+  </maintainer>
+  <maintainer>
+    <email>ssuominen@gentoo.org</email>
+    <name>Samuli Suominen</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>dev-embedded</name>
+  <email>dev-embedded@gentoo.org</email>
+  <description>Development tools for embedded systems and micro-controllers</description>
+  <maintainer>
+    <email>radhermit@gentoo.org</email>
+    <name>Tim Harder</name>
+  </maintainer>
+  <maintainer>
+  	<email>robbat2@gentoo.org</email>
+	<name>Robin H. Johnson</name>
+  </maintainer>
+  <maintainer>
+  	<email>vapier@gentoo.org</email>
+	<name>Mike Frysinger</name>
+  </maintainer>
+  <maintainer>
+  	<email>hwoarang@gentoo.org</email>
+	<name>Markos Chandras</name>
+  </maintainer>
+  <maintainer>
+        <email>zlogene@gentoo.org</email>
+        <name>Mikle Kolyada</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>desktop-effects</name>
+  <email>desktop-effects@gentoo.org</email>
+  <description>Compiz and other 3D Window Managers</description>
+  <maintainer>
+  	<email>pinkbyte@gentoo.org</email>
+	<name>Sergey Popov</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>desktop-misc</name>
+  <email>desktop-misc@gentoo.org</email>
+  <description>Various small utilities for X11 that do not fit any other category</description>
+  <maintainer>
+    <email>xarthisius@gentoo.org</email>
+    <name>Kacper Kowalik</name>
+  </maintainer>
+  <maintainer>
+    <email>ssuominen@gentoo.org</email>
+    <name>Samuli Suominen</name>
+  </maintainer>
+  <maintainer>
+    <email>hwoarang@gentoo.org</email>
+    <name>Markos Chandras</name>
+  </maintainer>
+  <maintainer>
+    <email>jer@gentoo.org</email>
+    <name>Jeroen Roovers</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>xfce</name>
+  <email>xfce@gentoo.org</email>
+  <description>The XFCE Desktop Environment</description>
+  <maintainer>
+    <email>angelos@gentoo.org</email>
+    <name>Christoph Mende</name>
+  </maintainer>
+  <maintainer>
+    <email>ssuominen@gentoo.org</email>
+    <name>Samuli Suominen</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>graphics</name>
+  <email>graphics@gentoo.org</email>
+  <description>media-gfx and related packages</description>
+  <maintainer>
+    <email>lu_zero@gentoo.org</email>
+    <name>Luca Barbato</name>
+  </maintainer>
+  <maintainer>
+    <email>maekke@gentoo.org</email>
+    <name>Markus Meier</name>
+  </maintainer>
+  <maintainer>
+    <email>radhermit@gentoo.org</email>
+    <name>Tim Harder</name>
+  </maintainer>
+  <maintainer>
+    <email>ssuominen@gentoo.org</email>
+    <name>Samuli Suominen</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>tools-portage</name>
+  <email>tools-portage@gentoo.org</email>
+  <description>Portage-related utilities</description>
+  <maintainer>
+    <email>fuzzyray@gentoo.org</email>
+    <name>Paul Varner</name>
+  </maintainer>
+  <maintainer>
+    <email>zmedico@gentoo.org</email>
+    <name>Zac Medico</name>
+  </maintainer>
+  <maintainer>
+    <email>idl0r@gentoo.org</email>
+    <name>Christian Ruppert</name>
+  </maintainer>
+  <maintainer>
+    <email>dolsen@gentoo.org</email>
+    <name>Brian Dolbec</name>
+  </maintainer>
+  <maintainer>
+    <email>twitch153@gentoo.org</email>
+    <name>Devan Franchini</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>net-dialup</name>
+  <email>net-dialup@gentoo.org</email>
+  <description>Dialup connection tools</description>
+  <maintainer>
+    <email>pinkbyte@gentoo.org</email>
+    <name>Sergey Popov</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>embedded</name>
+  <email>embedded@gentoo.org</email>
+  <description>Embedded systems packages</description>
+  <!-- Either maintainers or a maintaining project is allowed, not both -->
+  <maintainer>
+    <email>blueness@gentoo.org</email>
+    <name>Anthony G. Basile</name>
+  </maintainer>
+  <maintainer>
+    <email>kumba@gentoo.org</email>
+    <name>Joshua Kinard</name>
+    <role>Crossdev</role>
+  </maintainer>
+  <maintainer>
+    <email>radhermit@gentoo.org</email>
+    <name>Tim Harder</name>
+  </maintainer>
+  <maintainer>
+  	<email>hwoarang@gentoo.org</email>
+	<name>Markos Chandras</name>
+  </maintainer>
+  <maintainer>
+	<email>zlogene@gentoo.org</email>
+     	<name>Mikle Kolyada</name>
+  </maintainer>
+  <!-- Do not enable it until the file does not give 500 errors anymore
+  <maintainingproject>/proj/en/base/embedded/index.xml</maintainingproject>
+  -->  </herd>
+<herd>
+  <name>hppa</name>
+  <email>hppa@gentoo.org</email>
+  <description>HPPA specific packages</description>
+  <maintainer>
+    <email>gmsoft@gentoo.org</email>
+    <name>Guy Martin</name>
+  </maintainer>
+  <maintainer>
+    <email>vapier@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>jer@gentoo.org</email>
+    <name>Jeroen Roovers</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>arm</name>
+  <email>arm@gentoo.org</email>
+  <description>ARM architecture specific packages</description>
+  <maintainer>
+    <email>vapier@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>armin76@gentoo.org</email>
+    <name>Raúl Porcel</name>
+  </maintainer>
+  <maintainer>
+    <email>maekke@gentoo.org</email>
+    <name>Markus Meier</name>
+  </maintainer>
+  <maintainer>
+    <email>xmw@gentoo.org</email>
+    <name>Michael Weber</name>
+  </maintainer>
+  <maintainer>
+    <email>miknix@gentoo.org</email>
+    <name>Angelo Arrifano</name>
+  </maintainer>
+  <maintainer>
+    <email>blueness@gentoo.org</email>
+    <name>Anthony G. Basile</name>
+  </maintainer>
+  <maintainer>
+    <email>ssuominen@gentoo.org</email>
+    <name>Samuli Suominen</name>
+  </maintainer>
+  <maintainer>
+    <email>ago@gentoo.org</email>
+    <name>Agostino Sarubbo</name>
+  </maintainer>
+  <maintainer>
+    <email>pinkbyte@gentoo.org</email>
+    <name>Sergey Popov</name>
+  </maintainer>
+  <maintainer>
+    <email>dlan@gentoo.org</email>
+    <name>Yixun Lan</name>
+  </maintainer>
+  <maintainer>
+    <email>mrueg@gentoo.org</email>
+    <name>Manuel Rüger</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>desktop-dock</name>
+  <email>desktop-dock@gentoo.org</email>
+  <description>WindowMaker/Blackbox Dockapps</description>
+  <maintainer>
+    <email>voyageur@gentoo.org</email>
+    <name>Bernard Cafarelli</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>net-fs</name>
+  <email>net-fs@gentoo.org</email>
+  <description>network based filesystems and support</description>
+  <maintainer>
+    <email>vapier@gentoo.org</email>
+    <role>help with portmap/nfs-utils/etc...</role>
+  </maintainer>
+</herd>
+<herd>
+  <name>prolog</name>
+  <email>prolog@gentoo.org</email>
+  <description>Prolog related stuff. Compilers/interpreters, etc</description>
+  <maintainer>
+    <email>george@gentoo.org</email>
+    <name>George Shapovalov</name>
+  </maintainer>
+  <maintainer>
+    <email>keri@gentoo.org</email>
+    <name>Keri Harris</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>scheme</name>
+  <email>scheme@gentoo.org</email>
+  <description>Scheme compilers, interpreters and libraries.</description>
+  <maintainer><email>hkBst@gentoo.org</email></maintainer>
+  <maintainer>
+    <email>pchrist@gentoo.org</email>
+    <name>Panagiotis Christopoulos</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>fonts</name>
+  <email>fonts@gentoo.org</email>
+  <description>Fonts packages</description>
+  <maintainingproject>/proj/en/desktop/x/fonts/index.xml</maintainingproject>
+</herd>
+<herd>
+  <name>alpha</name>
+  <email>alpha@gentoo.org</email>
+  <description>Alpha specific packages</description>
+  <maintainer>
+    <email>armin76@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>klausman@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>mattst88@gentoo.org</email>
+    <name>Matt Turner</name>
+  </maintainer>
+  <maintainer>
+    <email>ago@gentoo.org</email>
+    <name>Agostino Sarubbo</name>
+  </maintainer>
+  <maintainer>
+     <email>zlogene@gentoo.org</email>
+     <name>Mikle Kolyada</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>ia64</name>
+  <email>ia64@gentoo.org</email>
+  <description>IA-64 specific packages</description>
+  <maintainer>
+    <email>vapier@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+  <email>armin76@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>ago@gentoo.org</email>
+    <name>Agostino Sarubbo</name>
+  </maintainer>
+  <maintainer>
+    <email>zlogene@gentoo.org</email>
+    <name>Mikle Kolyada</name>
+  </maintainer>
+  <maintainer>
+    <email>jmorgan@gentoo.org</email>
+    <name>Jack Morgan</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>lang-misc</name>
+  <email>lang-misc@gentoo.org</email>
+  <description>Programming language related packages (mostly under dev-lang) that do not easily fall under individual category</description>
+  <maintainer>
+    <email>george@gentoo.org</email>
+    <name>George Shapovalov</name>
+    <role>initiator of the herd, maintain some of the packages (see individual metadata)</role>
+  </maintainer>
+</herd>
+<herd>
+  <name>netmon</name>
+  <email>netmon@gentoo.org</email>
+  <description>Network monitoring software and tools</description>
+  <maintainer>
+    <email>vapier@gentoo.org</email>
+    <role>netcat and a small handful of packages</role>
+  </maintainer>
+  <maintainer>
+    <email>jer@gentoo.org</email>
+    <name>Jeroen Roovers</name>
+  </maintainer>
+  <maintainer>
+    <email>zerochaos@gentoo.org</email>
+    <name>Rick Farina</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>net-irc</name>
+  <email>net-irc@gentoo.org</email>
+  <description>IRC and related ebuilds</description>
+  <maintainer>
+    <email>gurligebis@gentoo.org</email>
+    <name>Bjarke Istrup Pedersen</name>
+  </maintainer>
+  <maintainer>
+	<email>binki@gentoo.org</email>
+	<name>Nathan Phillip Brink</name>
+  </maintainer>
+  <maintainer>
+    <email>jdhore@gentoo.org</email>
+    <name>Jeff Horelick</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>s390</name>
+  <email>s390@gentoo.org</email>
+  <description>s390/s390x architecture specific packages</description>
+  <maintainer>
+    <email>vapier@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>armin76@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>ago@gentoo.org</email>
+    <name>Agostino Sarubbo</name>
+  </maintainer>
+  <maintainer>
+    <email>pinkbyte@gentoo.org</email>
+    <name>Sergey Popov</name>
+  </maintainer>
+  <maintainer>
+    <email>zlogene@gentoo.org</email>
+  </maintainer>
+</herd>
+<herd>
+  <name>sh</name>
+  <email>sh@gentoo.org</email>
+  <description>SuperH architecture specific packages</description>
+  <maintainer>
+    <email>vapier@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>armin76@gentoo.org</email>
+    <name>Raúl Porcel</name>
+  </maintainer>
+  <maintainer>
+    <email>ago@gentoo.org</email>
+    <name>Agostino Sarubbo</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>shell-tools</name>
+  <email>shell-tools@gentoo.org</email>
+  <description>Tools used from within a shell environment</description>
+  <maintainer>
+    <email>darkside@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>jlec@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>heroxbd@gentoo.org</email>
+    <name>Benda Xu</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>sysadmin</name>
+  <email>sysadmin@gentoo.org</email>
+  <description>System Administration packages</description>
+  <maintainer>
+    <email>dev-zero@gentoo.org</email>
+    <name>Tiziano Müller</name>
+  </maintainer>
+  <maintainer>
+    <email>chutzpah@gentoo.org</email>
+    <name>Patrick McLean</name>
+  </maintainer>
+  <maintainer>
+	<email>flameeyes@gentoo.org</email>
+	<name>Diego Elio Pettenò</name>
+  </maintainer>
+  <maintainer>
+    <email>robbat2@gentoo.org</email>
+    <name>Robin H. Johnson</name>
+  </maintainer>
+  <maintainer>
+    <email>tampakrap@gentoo.org</email>
+    <name>Theo Chatzimichos</name>
+  </maintainer>
+  <maintainer>
+    <email>idl0r@gentoo.org</email>
+    <name>Christian Ruppert</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>livecd</name>
+  <email>livecd@gentoo.org</email>
+  <description>Gentoo LiveCD Team</description>
+  <maintainer>
+    <email>blackace@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>jer@gentoo.org</email>
+  </maintainer>
+</herd>
+<herd>
+  <name>toolchain</name>
+  <email>toolchain@gentoo.org</email>
+  <description>Manages gcc/binutils/glibc and other toolchain-related packages</description>
+  <maintainer>
+    <email>rhill@gentoo.org</email>
+    <name>Ryan Hill</name>
+  </maintainer>
+  <maintainer>
+    <email>kumba@gentoo.org</email>
+    <name>Joshua Kinard</name>
+  </maintainer>
+  <maintainer>
+    <email>lu_zero@gentoo.org</email>
+    <name>Luca Barbato</name>
+  </maintainer>
+  <maintainer>
+    <email>vapier@gentoo.org</email>
+  </maintainer>
+</herd>
+<herd>
+  <name>gcc-porting</name>
+  <email>gcc-porting</email>
+  <description>Handles porting of packages to newer toolchain versions</description>
+  <maintainer>
+    <email>lu_zero@gentoo.org</email>
+    <name>Luca Barbato</name>
+  </maintainer>
+  <maintainer>
+    <email>vapier@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>rhill@gentoo.org</email>
+    <name>Ryan Hill</name>
+  </maintainer>
+  <maintainer>
+    <email>xarthisius@gentoo.org</email>
+    <name>Kacper Kowalik</name>
+  </maintainer>
+  <maintainer>
+    <email>ssuominen@gentoo.org</email>
+    <name>Samuli Suominen</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>net-news</name>
+  <email>net-news@gentoo.org</email>
+  <description>Herd for NNTP related packages in net-news</description>
+</herd>
+<herd>
+  <name>benchmarks</name>
+  <email>benchmarks@gentoo.org</email>
+  <description>Herd for app-benchmarks</description>
+  <maintainer>
+    <email>patrick@gentoo.org</email>
+    <name>Patrick Lauer</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>amd64</name>
+  <email>amd64@gentoo.org</email>
+  <description>x86_64-specific packages</description>
+  <maintainingproject>/proj/en/base/amd64/index.xml</maintainingproject>
+</herd>
+<herd>
+  <name>tcltk</name>
+  <email>tcltk@gentoo.org</email>
+  <description>TCL / TK Packages</description>
+  <maintainer>
+    <email>jlec@gentoo.org</email>
+    <name>Justin Lecher</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>media-optical</name>
+  <email>media-optical@gentoo.org</email>
+  <description>Tools for handling optical media, especially CD and DVD burning
+    software</description>
+  <maintainer>
+    <email>ssuominen@gentoo.org</email>
+    <name>Samuli Suominen</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>gstreamer</name>
+  <email>gstreamer@gentoo.org</email>
+  <description>Handles all gstreamer related packages</description>
+  <maintainer>
+     <email>leio@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>eva@gentoo.org</email>
+    <name>Gilles Dartiguelongue</name>
+  </maintainer>
+  <maintainer>
+    <email>pacho@gentoo.org</email>
+    <name>Pacho Ramos</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>samba</name>
+  <email>samba@gentoo.org</email>
+  <description>Handles all issues related to Samba in Gentoo</description>
+  <maintainer>
+    <email>dev-zero@gentoo.org</email>
+    <name>Tiziano Müller</name>
+  </maintainer>
+  <maintainer>
+    <email>patrick@gentoo.org</email>
+    <name>Patrick Lauer</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>vmware</name>
+  <email>vmware@gentoo.org</email>
+  <description>Handles all issues with VMware and VMware-related ebuilds in Gentoo</description>
+    <maintainingproject>/proj/en/virtualization/vmware/index.xml</maintainingproject>
+</herd>
+<herd>
+  <name>nx</name>
+  <email>nx@gentoo.org</email>
+  <description>NoMachine's NX Server and GPL'd clones</description>
+  <maintainer>
+    <email>voyageur@gentoo.org</email>
+    <name>Bernard Cafarelli</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>kerberos</name>
+  <email>kerberos@gentoo.org</email>
+  <description>Kerberos implementations</description>
+  <maintainer>
+    <email>eras@gentoo.org</email>
+    <name>Eray Aslan</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>cvs-utils</name>
+  <email>cvs-utils@gentoo.org</email>
+  <description>cvs and utilities</description>
+  <maintainer>
+    <email>robbat2@gentoo.org</email>
+    <name>Robin H. Johnson</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>mysql</name>
+  <email>mysql-bugs@gentoo.org</email>
+  <description>MySQL and related packages</description>
+  <maintainer>
+    <email>robbat2@gentoo.org</email>
+    <name>Robin H. Johnson</name>
+  </maintainer>
+  <maintainer>
+    <email>jmbsvicetto@gentoo.org</email>
+    <name>Jorge Manuel B. S. Vicetto</name>
+  </maintainer>
+  <maintainer>
+    <email>grknight@gentoo.org</email>
+    <name>Brian Evans</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>net-ftp</name>
+  <email>net-ftp@gentoo.org</email>
+  <description>FTP (File Transfer Protocol) related applications</description>
+  <maintainer>
+    <email>voyageur@gentoo.org</email>
+    <name>Bernard Cafarelli</name>
+  </maintainer>
+  <maintainer>
+    <email>polynomial-c@gentoo.org</email>
+    <name>Lars Wendler</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>cpp</name>
+  <email>cpp@gentoo.org</email>
+  <description>miscellaneous C++ libraries and utilities</description>
+    <maintainer>
+      <email>dev-zero@gentoo.org</email>
+      <name>Tiziano Müller</name>
+    </maintainer>
+    <maintainer>
+      <email>pinkbyte@gentoo.org</email>
+      <name>Sergey Popov</name>
+    </maintainer>
+    <maintainer>
+      <email>jauhien@gentoo.org</email>
+      <name>Jauhien Piatlicki</name>
+    </maintainer>
+</herd>
+<herd>
+  <name>ldap</name>
+  <email>ldap-bugs@gentoo.org</email>
+  <description>LDAP related things</description>
+  <maintainer>
+    <email>robbat2@gentoo.org</email>
+    <name>Robin H. Johnson</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>x86</name>
+  <email>x86@gentoo.org</email>
+  <description>Gentoo/x86 team</description>
+  <maintainingproject>/proj/en/base/x86/index.xml</maintainingproject>
+</herd>
+<herd>
+  <name>xemacs</name>
+    <email>xemacs@gentoo.org</email>
+    <description>XEmacs editor and the associated xemacs lisp packages</description>
+    <maintainer>
+      <email>graaff@gentoo.org</email>
+    </maintainer>
+</herd>
+<herd>
+  <name>xen</name>
+    <email>xen@gentoo.org</email>
+    <description>Xen virtualization software and related packages</description>
+    <maintainingproject>/proj/en/virtualization/xen/index.xml</maintainingproject>
+</herd>
+<herd>
+  <name>xbox</name>
+  <email>xbox@gentoo.org</email>
+  <description>Software for running Gentoo on the Xbox</description>
+  <maintainer>
+    <email>vapier@gentoo.org</email>
+  </maintainer>
+</herd>
+<herd>
+    <name>tex</name>
+    <email>tex@gentoo.org</email>
+    <description>Tex, pdf and text utilities (split of text-markup)</description>
+    <maintainer>
+        <email>aballier@gentoo.org</email>
+        <name>Alexis Ballier</name>
+    </maintainer>
+</herd>
+<herd>
+    <name>theology</name>
+    <email>theology@gentoo.org</email>
+    <description>Religious, genealogy, humanities-related packages</description>
+    <maintainer>
+    	<email>creffett@gentoo.org</email>
+	<name>Chris Reffett</name>
+    </maintainer>
+</herd>
+<herd>
+    <name>mythtv</name>
+    <email>mythtv@gentoo.org</email>
+    <description>MythTV related packages</description>
+    <maintainer>
+        <email>cardoe@gentoo.org</email>
+	    <name>Doug Goldstein</name>
+    </maintainer>
+    <maintainer>
+        <email>rich0@gentoo.org</email>
+        <name>Richard Freeman</name>
+    </maintainer>
+</herd>
+<herd>
+    <name>virtualization</name>
+    <email>virtualization@gentoo.org</email>
+    <description>Gentoo Virtualization Project</description>
+    <maintainingproject>/proj/en/virtualization/index.xml</maintainingproject>
+</herd>
+<herd>
+    <name>qemu</name>
+    <email>qemu@gentoo.org</email>
+    <description>Gentoo QEMU Project</description>
+    <maintainingproject>/proj/en/virtualization/qemu/index.xml</maintainingproject>
+</herd>
+<herd>
+    <name>openrc</name>
+    <email>openrc@gentoo.org</email>
+    <description>Openrc is Gentoo's initialization scripts system</description>
+    <maintainer>
+	<email>anarchy@gentoo.org</email>
+	<name>Jory Pratt</name>
+    </maintainer>
+    <maintainer>
+        <email>blueness@gentoo.org</email>
+        <name>Anthony G. Basile</name>
+    </maintainer>
+    <maintainer>
+        <email>williamh@gentoo.org</email>
+        <name>William Hubbs</name>
+    </maintainer>
+    <maintainer>
+        <email>patrick@gentoo.org</email>
+        <name>Patrick Lauer</name>
+    </maintainer>
+    <maintainer>
+        <email>dabbott@gentoo.org</email>
+        <name>David Abbott</name>
+    </maintainer>
+</herd>
+<herd>
+    <name>selinux</name>
+    <email>selinux@gentoo.org</email>
+    <description>Gentoo's Security-Enhanced Linux (SELinux) packages</description>
+    <maintainer>
+        <email>blueness@gentoo.org</email>
+        <name>Anthony G. Basile</name>
+    </maintainer>
+    <maintainer>
+        <email>swift@gentoo.org</email>
+        <name>Sven Vermeulen</name>
+    </maintainer>
+    <maintainer>
+        <email>prometheanfire@gentoo.org</email>
+        <name>Matt Thode</name>
+    </maintainer>
+    <maintainer>
+        <email>perfinion@gentoo.org</email>
+        <name>Jason Zaman</name>
+    </maintainer>
+</herd>
+<herd>
+    <name>proxy-maintainers</name>
+    <email>proxy-maint@gentoo.org</email>
+    <description>Orphaned packages maintained by Gentoo's proxy-maintainers team</description>
+    <maintainingproject>/proj/en/qa/proxy-maintainers/index.xml</maintainingproject>
+</herd>
+<herd>
+    <name>radio</name>
+    <email>radio@gentoo.org</email>
+    <description>Packages related to sending and receiving radio transmissions</description>
+    <maintainer>
+        <email>chithanh@gentoo.org</email>
+        <name>Chí-Thanh Christopher Nguyễn</name>
+    </maintainer>
+    <maintainer>
+        <email>zerochaos@gentoo.org</email>
+        <name>Rick Farina</name>
+    </maintainer>
+    <maintainer>
+        <email>creffett@gentoo.org</email>
+        <name>Chris Reffett</name>
+    </maintainer>
+    <maintainer>
+      <email>xmw@gentoo.org</email>
+      <name>Michael Weber</name>
+    </maintainer>
+    <maintainer>
+      <email>zx2c4@gentoo.org</email>
+      <name>Jason A. Donenfeld</name>
+    </maintainer>
+</herd>
+<herd>
+  <name>suse</name>
+  <email>suse@gentoo.org</email>
+  <description>SUSE related products and packages</description>
+  <maintainingproject>/proj/en/suse/index.xml</maintainingproject>
+</herd>
+<herd>
+  <name>lxqt</name>
+  <email>lxqt@gentoo.org</email>
+  <description>LXQt and related packages</description>
+  <maintainer>
+    <email>jauhien@gentoo.org</email>
+    <name>Jauhien Piatlicki</name>
+  </maintainer>
+  <maintainer>
+    <email>kensington@gentoo.org</email>
+    <name>Michael Palimaka</name>
+  </maintainer>
+  <maintainer>
+    <email>mrueg@gentoo.org</email>
+    <name>Manuel Rüger</name>
+  </maintainer>
+  <maintainer>
+    <email>yngwin@gentoo.org</email>
+    <name>Ben de Groot</name>
+  </maintainer>
+</herd>
+<herd>
+  <name>eselect</name>
+  <email>eselect@gentoo.org</email>
+  <description>Gentoo eselect project</description>
+  <maintainingproject>/proj/en/eselect/index.xml</maintainingproject>
+</herd>
+</herds>
+
+<!--
+Local Variables:
+tab-width: 4
+sgml-indent-step: 4
+End:
+
+vim:ai:et:ts=4:nowrap
+-->

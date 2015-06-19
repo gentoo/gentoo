@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>desktop-misc</herd>
+	<maintainer>
+		<email>xarthisius@gentoo.org</email>
+		<name>Kacper Kowalik</name>
+	</maintainer>
+	<longdescription>
+		i3status is a small program (about 1500 SLOC) for generating a status bar for
+		dzen2, xmobar or similar programs. It is designed to be very efficient by
+		issuing a very small number of system calls, as one generally wants to update
+		such a status line every second. This ensures that even under high load, your
+		status bar is updated correctly. Also, it saves a bit of energy by not hogging
+		your CPU as much as spawning the corresponding amount of shell commands would.
+	</longdescription>
+	<use>
+		<flag name="filecaps">Linux capabilities library is required for i3status to be able to read net bandwith</flag>
+	</use>
+</pkgmetadata>

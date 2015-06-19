@@ -1,0 +1,10 @@
+# We replace the makefile since the upstream one is not suitable for
+# us :(
+
+OBJS := $(patsubst %.c,%.o,$(wildcard *.c))
+
+CFLAGS += -DMAGICISO_IS_SHIT
+
+LDLIBS = -lz
+
+uif2iso: $(OBJS)

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>nils@nils-andresen.de</email>
+		<name>Nils Andresen</name>
+	</maintainer>
+	<maintainer>
+		<email>fauli@gentoo.org</email>
+		<name>Christian Faulhammer</name>
+	</maintainer>
+	<use>
+		<flag name="twitgin">Enable graphical plugin for Gtk+ interface of Pidgin.</flag>
+	</use>
+	<upstream>
+		<remote-id type="google-code">microblog-purple</remote-id>
+	</upstream>
+</pkgmetadata>

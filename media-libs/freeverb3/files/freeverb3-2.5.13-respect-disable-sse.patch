@@ -1,0 +1,24 @@
+--- configure.in_BACKUP	2010-12-10 09:49:30.204907020 +0100
++++ configure.in	2010-12-10 09:50:59.063128511 +0100
+@@ -137,9 +137,18 @@
+   [cv_avx="$enable_avx"], [cv_avx="no"])
+ 
+ case "${target_cpu}" in
+-  x86_64*) cv_sse=yes cv_sse2=yes;;
+-  amd64*)  cv_sse=yes cv_sse2=yes;;
+-  *) ;;
++  amd64*|x86_64*)
++    if test "x$cv_sse" = "x"; then
++      AC_MSG_NOTICE([Auto-enabling SSE codes])
++      cv_sse=yes
++    fi
++    if test "x$cv_sse2" = "x"; then
++      AC_MSG_NOTICE([Auto-enabling SSE2 codes])
++      cv_sse2=yes
++    fi
++    ;;
++  *)
++    ;;
+ esac
+ 
+ dnl option checks

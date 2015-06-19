@@ -1,0 +1,59 @@
+# ChangeLog for games-mud/crystal
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-mud/crystal/ChangeLog,v 1.15 2015/01/04 05:56:51 mr_bones_ Exp $
+
+  04 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org> crystal-0.2.4.ebuild:
+  EAPI=5
+
+  16 Jun 2013; Tristan Heaven <tristan@gentoo.org> crystal-0.2.4.ebuild,
+  +files/crystal-0.2.4-build.patch:
+  Fix building with ncurses[tinfo], bug #459764
+
+  24 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org> -crystal-0.2.2.ebuild,
+  -files/crystal-0.2.2-64bit.patch, -files/crystal-0.2.2-gcc43.patch,
+  -files/crystal-0.2.2-glibc2.10.patch:
+  old
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> crystal-0.2.4.ebuild:
+  Marking crystal-0.2.4 ppc for bug 398609
+
+  21 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> crystal-0.2.4.ebuild:
+  x86 stable wrt bug #398609
+
+  17 Jan 2012; Agostino Sarubbo <ago@gentoo.org> crystal-0.2.4.ebuild:
+  Stable for amd64, wrt bug #398609
+
+*crystal-0.2.4 (10 Dec 2011)
+
+  10 Dec 2011; Michael Sterrett <mr_bones_@gentoo.org> +crystal-0.2.4.ebuild,
+  +files/crystal-0.2.4-gcc43.patch:
+  version bump with patching from Michael (kensington) (bug #394129)
+
+  13 Aug 2009; Michael Sterrett <mr_bones_@gentoo.org> crystal-0.2.2.ebuild:
+  avoid colliding with xscreensaver (bug #281191)
+
+  14 Jun 2009; Tristan Heaven <nyhm@gentoo.org> crystal-0.2.2.ebuild,
+  +files/crystal-0.2.2-glibc2.10.patch:
+  Fix building with glibc-2.10, bug #273498
+
+  01 May 2008; Tristan Heaven <nyhm@gentoo.org>
+  +files/crystal-0.2.2-64bit.patch, +files/crystal-0.2.2-gcc43.patch,
+  crystal-0.2.2.ebuild:
+  Fix building with gcc-4.3
+
+*crystal-0.2.2 (10 Jul 2005)
+
+  10 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +crystal-0.2.2.ebuild:
+  version bump (bug #68423)
+
+  28 Aug 2004; David Holm <dholm@gentoo.org> crystal-0.2.1.ebuild:
+  Added to ~ppc.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> crystal-0.2.1.ebuild:
+  virtual/glibc -> virtual/libc
+
+*crystal-0.2.1 (17 Feb 2004)
+
+  17 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> crystal-0.2.1.ebuild:
+  initial commit; ebuild submitted by Owen Cliffe via bug #41923

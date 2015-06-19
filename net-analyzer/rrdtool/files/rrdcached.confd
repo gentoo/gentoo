@@ -1,0 +1,8 @@
+RRCACHE_ARGS="-l unix:/var/run/rrdcached.sock -j /var/lib/rrdcached/journal/ -F  -b /var/lib/rrdcached/db/ -B"
+
+USER=""
+GROUP=""
+
+MODE=""
+
+MAXWAIT=30

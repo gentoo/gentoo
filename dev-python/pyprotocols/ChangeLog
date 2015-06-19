@@ -1,0 +1,148 @@
+# ChangeLog for dev-python/pyprotocols
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyprotocols/ChangeLog,v 1.36 2015/04/08 08:05:24 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org>
+  pyprotocols-1.0_pre2306-r1.ebuild:
+  Drop old Python implementations
+
+  15 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -pyprotocols-1.0_pre2306.ebuild:
+  Remove old.
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> pyprotocols-1.0_pre2306-r1.ebuild:
+  x86 stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> pyprotocols-1.0_pre2306-r1.ebuild:
+  ppc stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> pyprotocols-1.0_pre2306-r1.ebuild:
+  amd64 stable, bug 540290
+
+  06 Nov 2013; Patrick Lauer <patrick@gentoo.org>
+  pyprotocols-1.0_pre2306.ebuild:
+  Shorten description, make repoman happier
+
+  22 Oct 2013; Fabian Groffen <grobian@gentoo.org>
+  pyprotocols-1.0_pre2306-r1.ebuild:
+  Marked ~x64-macos, bug #487670
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org>
+  pyprotocols-1.0_pre2306-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  10 May 2013; Patrick Lauer <patrick@gentoo.org>
+  pyprotocols-1.0_pre2306-r1.ebuild:
+  Fix inherit
+
+*pyprotocols-1.0_pre2306-r1 (10 Apr 2013)
+
+  10 Apr 2013; Ian Delaney <idella4@gentoo.org> +files/SkipTests.patch,
+  +pyprotocols-1.0_pre2306-r1.ebuild:
+  migration to distutils-r1, exclusion of rogue tests from testsuite
+
+  22 Feb 2012; Patrick Lauer <patrick@gentoo.org>
+  pyprotocols-1.0_pre2306.ebuild:
+  Restricting jython
+
+  21 Feb 2012; Patrick Lauer <patrick@gentoo.org>
+  pyprotocols-1.0_pre2306.ebuild:
+  Restricting pypy
+
+  31 Oct 2011; Markos Chandras <hwoarang@gentoo.org>
+  pyprotocols-1.0_pre2306.ebuild:
+  Update LICENSE. Fix dependencies (bug #376623). Patch by Arfrever
+
+  29 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pyprotocols-1.0_pre2306.ebuild:
+  Set PYTHON_DEPEND. Simplify src_test(). Use -fno-strict-aliasing.
+
+  10 Jan 2010; nixnut <nixnut@gentoo.org> pyprotocols-1.0_pre2306.ebuild:
+  ppc stable #297680
+
+  02 Jan 2010; Markus Meier <maekke@gentoo.org>
+  pyprotocols-1.0_pre2306.ebuild:
+  amd64/x86 stable, bug #297680
+
+  20 Dec 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pyprotocols-1.0_pre2306.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  11 Oct 2009; Fabian Groffen <grobian@gentoo.org>
+  pyprotocols-1.0_pre2306.ebuild:
+  Merge from Prefix
+
+  31 Dec 2007; Joseph Jezak <josejx@gentoo.org> pyprotocols-0.9.3.ebuild,
+  pyprotocols-1.0_pre2306.ebuild:
+  Marked 0.9.3 ppc stable for bug #145000 and marked 1.0_pre2306 ~ppc.
+
+  16 Nov 2007; Samuli Suominen <drac@gentoo.org> pyprotocols-0.9.3.ebuild:
+  amd64 stable wrt #145000, fix test suite.
+
+  24 Oct 2007; Raúl Porcel <armin76@gentoo.org>
+  pyprotocols-1.0_pre2306.ebuild:
+  Add ~ia64 wrt bug #145000
+
+  21 Oct 2007; Markus Meier <maekke@gentoo.org> pyprotocols-0.9.3.ebuild:
+  x86 stable, bug #145000
+
+  04 Jul 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  -pyprotocols-1.0_pre2082.ebuild:
+  Dropped old version.
+
+  04 Jul 2007; Rob Cakebread <pythonhead@gentoo.org>
+  pyprotocols-1.0_pre2082.ebuild:
+  Removed setuptools sed. bug# 184039
+
+  05 May 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  pyprotocols-1.0_pre2306.ebuild:
+  Marked ~amd64 (bug #176885). Added src_test.
+
+  05 May 2007; Rob Cakebread <pythonhead@gentoo.org>
+  pyprotocols-1.0_pre2306.ebuild:
+  Fixed setuptools dependency. bug #177203
+
+*pyprotocols-1.0_pre2306 (03 May 2007)
+
+  03 May 2007; Rob Cakebread <pythonhead@gentoo.org>
+  +pyprotocols-1.0_pre2306.ebuild:
+  Version bump snapshot required for turbogears-1.0.2.2. Dropped amd64 keyword
+  because of new dep on decoratortools.
+
+*pyprotocols-1.0_pre2082 (28 Feb 2007)
+
+  28 Feb 2007; Tiziano Müller <dev-zero@gentoo.org>
+  +pyprotocols-1.0_pre2082.ebuild:
+  Version bump for ruledispatch dependency
+
+  19 Jan 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  -pyprotocols-0.9.2.ebuild:
+  Actually removed old version.
+
+  19 Jan 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  pyprotocols-0.9.3.ebuild:
+  Cleanup, fixed src_test, added ~amd64 keyword, removed old version.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-pyprotocols-0.9.2, files/digest-pyprotocols-0.9.3, Manifest:
+  Fixing SHA256 digest, pass four
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> pyprotocols-0.9.3.ebuild:
+  Mark 0.9.3 ~ia64
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*pyprotocols-0.9.3 (05 Dec 2004)
+
+  05 Dec 2004; Bryan Østergaard <kloeri@gentoo.org>
+  +pyprotocols-0.9.3.ebuild:
+  Version bump.
+
+  17 Jul 2004; David Holm <dholm@gentoo.org> pyprotocols-0.9.2.ebuild:
+  Added to ~ppc.
+
+*pyprotocols-0.9.2 (16 Jul 2004)
+
+  16 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> +metadata.xml,
+  +pyprotocols-0.9.2.ebuild:
+  Initial import, ebuild courtesy of Sourav Mandal <sourav@sourav.net>.

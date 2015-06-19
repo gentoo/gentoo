@@ -1,0 +1,193 @@
+# ChangeLog for www-apps/postfixadmin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/postfixadmin/ChangeLog,v 1.38 2015/04/06 19:54:09 dilfridge Exp $
+
+  06 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  postfixadmin-2.3.7.ebuild:
+  log-dispatch was moved to Log-Dispatch
+
+  25 Feb 2015; Aaron W. Swenson <titanofold@gentoo.org>
+  files/postinstall-en-2.3.txt:
+  Abstracted post-install instructions so that they are database agnostic.
+  Fixes bug 387773.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> postfixadmin-2.3.7.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  22 Mar 2014; Samuel Damashek <sdamashek@gentoo.org>
+  -postfixadmin-2.3.6.ebuild:
+  Cleanup vulnerable versions wrt bug #502270
+
+  22 Mar 2014; Agostino Sarubbo <ago@gentoo.org> postfixadmin-2.3.7.ebuild:
+  Stable for x86, wrt bug #502270
+
+  22 Mar 2014; Agostino Sarubbo <ago@gentoo.org> postfixadmin-2.3.7.ebuild:
+  Stable for amd64, wrt bug #502270
+
+*postfixadmin-2.3.7 (22 Mar 2014)
+
+  22 Mar 2014; Samuel Damashek <sdamashek@gentoo.org>
+  +postfixadmin-2.3.7.ebuild, -postfixadmin-2.3.2.ebuild,
+  -postfixadmin-2.3.5.ebuild, -postfixadmin-2.3.6.ebuild,
+  postfixadmin-2.3.6.ebuild:
+  Remove 2.3.5, version bump to 2.3.7 wrt bug 502270
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org> postfixadmin-2.3.6.ebuild:
+  amd64 stable, bug #482760
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  postfixadmin-2.3.6.ebuild:
+  x86 stable wrt bug #482760
+
+*postfixadmin-2.3.6 (16 Feb 2013)
+
+  16 Feb 2013; Anthony G. Basile <blueness@gentoo.org>
+  +postfixadmin-2.3.6.ebuild:
+  Version bump, bug #450178
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #96436
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> postfixadmin-2.3.5.ebuild:
+  Add ~ppc, wrt bug #369695
+
+  06 Jul 2012; Jeff Horelick <jdhore@gentoo.org> postfixadmin-2.3.5.ebuild:
+  marked x86 per bug 400971
+
+  26 Jun 2012; Agostino Sarubbo <ago@gentoo.org> postfixadmin-2.3.5.ebuild:
+  Stable for amd64, wrt bug #400971
+
+*postfixadmin-2.3.5 (26 Jun 2012)
+
+  26 Jun 2012; Matti Bickel <mabi@gentoo.org> +postfixadmin-2.3.5.ebuild,
+  -postfixadmin-2.2.1.1.ebuild, -postfixadmin-2.3.3.ebuild,
+  -postfixadmin-2.3.4.ebuild, -postfixadmin-2.3.ebuild, metadata.xml,
+  postfixadmin-2.3.2.ebuild:
+  version bump. this is a security release (bug #400971). also take advantage of
+  EAPI4. remove older ebuilds. commit with approval from sec-team.
+
+*postfixadmin-2.3.4 (19 Oct 2011)
+
+  19 Oct 2011; Peter Volkov <pva@gentoo.org> +postfixadmin-2.3.4.ebuild:
+  Version bump, bug #387037 wrt Per Pomsel
+
+*postfixadmin-2.3.3 (30 Apr 2011)
+
+  30 Apr 2011; Peter Volkov <pva@gentoo.org> +postfixadmin-2.3.3.ebuild:
+  Version bump, bug #363041, thank Per Pomsel for report.
+
+  02 Jan 2011; Markos Chandras <hwoarang@gentoo.org> postfixadmin-2.3.2.ebuild:
+  Stable on amd64 wrt bug #349266
+
+  31 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  postfixadmin-2.3.2.ebuild:
+  stable x86, bug 349266
+
+*postfixadmin-2.3.2 (15 Nov 2010)
+
+  15 Nov 2010; Peter Volkov <pva@gentoo.org> +postfixadmin-2.3.2.ebuild,
+  metadata.xml:
+  Version bump, #336036, thank Andreis_Vinogradovs (slepnoga) for report.
+  Fixes dependencies for vacation, bug #332553 thank Kent Fredric for
+  report.
+
+  24 May 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove wrobel from metadata.xml (#111816)
+
+  22 Mar 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  postfixadmin-2.2.1.1.ebuild, postfixadmin-2.3.ebuild:
+  HOMEPAGE corrected, #310303
+
+*postfixadmin-2.3 (16 Mar 2010)
+
+  16 Mar 2010; Patrick Lauer <patrick@gentoo.org> +postfixadmin-2.3.ebuild,
+  +files/postinstall-en-2.3.txt, metadata.xml:
+  Bump, fixes #291248. Improvements by Allen Brooker and Andreis
+  Vinogradovs.
+
+  11 Oct 2009; Benedikt Böhm <hollow@gentoo.org>
+  -postfixadmin-2.1.0-r1.ebuild, -postfixadmin-2.2.0.ebuild,
+  postfixadmin-2.2.1.1.ebuild, -files/config-hook.sh,
+  -files/postinstall-en.txt, -files/postinstall-en-mysql.txt,
+  -files/postinstall-en-postgres.txt:
+  fix #278410; remove old ebuilds
+
+  08 Jun 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  postfixadmin-2.1.0-r1.ebuild, postfixadmin-2.2.0.ebuild,
+  postfixadmin-2.2.1.1.ebuild:
+  Remove dep on mail-mta/postfix as it works with other mta too, #257624
+
+*postfixadmin-2.2.1.1 (10 Sep 2008)
+
+  10 Sep 2008; wrobel@gentoo.org +postfixadmin-2.2.1.1.ebuild:
+  Added postfixadmin-2.2.1.1 (#233388).
+
+*postfixadmin-2.2.0 (01 Jun 2008)
+
+  01 Jun 2008; wrobel@gentoo.org +files/postinstall-en-2.2.0.txt,
+  -postfixadmin-2.1.0.ebuild, postfixadmin-2.1.0-r1.ebuild,
+  +postfixadmin-2.2.0.ebuild:
+  Added postfixadmin-2.2.0 (#220141) and fixed #223387.
+
+  22 Feb 2008; Benedikt Böhm <hollow@gentoo.org>
+  postfixadmin-2.1.0-r1.ebuild:
+  add need_httpd_cgi wrt #208584
+
+*postfixadmin-2.1.0-r1 (20 Feb 2008)
+
+  20 Feb 2008; Benedikt Böhm <hollow@gentoo.org>
+  +files/postinstall-en-mysql.txt, +files/postinstall-en-postgres.txt,
+  metadata.xml, +postfixadmin-2.1.0-r1.ebuild:
+  merge from webapp overlay wrt #172138; cleanup wrt #208584
+
+  05 Feb 2008; Jakub Moc <jakub@gentoo.org>
+  postfixadmin-2.1.0-r1.ebuild:
+  Add postgres support. Nuke nonsensical RDEPEND on grep, sed and findutils,
+  fix enewuser/enewgroup usage. Quoting, clean up tons of redundant comments.
+
+  05 Feb 2008; Benedikt Böhm <hollow@gentoo.org> postfixadmin-2.1.0.ebuild:
+  fix depend.apache usage wrt #208584
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org> postfixadmin-2.1.0.ebuild:
+  Fixing SRC_URI since the old one is redirecting to sourceforge. Fixing the
+  DEPEND/RDEPEND for the move of net-www/apache to www-servers/apache
+  (#78622).
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  postfixadmin-2.1.0.ebuild:
+  (QA) RESTRICT clean up.
+
+  12 May 2007; Luca Longinotti <chtekk@gentoo.org>
+  postfixadmin-2.1.0.ebuild:
+  Apache 1.X masking (fix ebuilds to not require apache-1*).
+
+  04 Jan 2007; <wrobel@gentoo.org> postfixadmin-2.1.0.ebuild:
+  Fixed source URL and removed mysql dependency (bugs #157940 and #159781)
+
+  23 Nov 2006; <blubb@gentoo.org> postfixadmin-2.1.0.ebuild:
+  added ~amd64
+
+  23 Nov 2006; Francesco Riosa <vivo@gentoo.org> postfixadmin-2.1.0.ebuild:
+  dev-db/mysql => virtual/mysql
+
+  12 Feb 2006; <wrobel@gentoo.org> postfixadmin-2.1.0.ebuild:
+  Removed postgres support from postfixadmin. See #122148. Ebuild with
+  postgres support can be found in our overlay:
+  http://svn.gnqs.org/projects/gentoo-webapps-overlay/browser/experimental/www
+  -apps/postfixadmin
+
+*postfixadmin-2.1.0 (02 Feb 2006)
+
+  02 Feb 2006; <wrobel@gentoo.org> +files/config-hook.sh,
+  +files/postinstall-en.txt, +metadata.xml, +postfixadmin-2.1.0.ebuild:
+  Fixed the use of enewuser. Moved ebuild to portage
+
+  03 Jan 2006; <wrobel@gentoo.org> ChangeLog:
+  Repoman fixes.
+
+  28 Dec 2005; Gunnar Wrobel <php@gunnarwrobel.de> ChangeLog:
+  Minor cleanup for postfixadmin. Seems to work with php5.
+
+  14 Dec 2005; <php@gunnarwrobel.de> ChangeLog:
+  Initial ebuild import into the overlay. Original ebuild from SteveB
+  <tp22a@softhome.net>. See bug #50035

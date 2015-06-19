@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=>=sys-devel/crossdev-0.9.1
+DESCRIPTION=C library for Atmel AVR microcontrollers
+EAPI=2
+HOMEPAGE=http://www.nongnu.org/avr-libc/
+IUSE=doc crosscompile_opts_headers-only
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=http://savannah.nongnu.org/download/avr-libc/avr-libc-1.7.0.tar.bz2 http://savannah.nongnu.org/download/avr-libc/avr-libc-manpages-1.7.0.tar.bz2 doc? ( http://savannah.nongnu.org/download/avr-libc/avr-libc-user-manual-1.7.0.tar.bz2 )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8181f7222a39e283d222652c0d9471ee

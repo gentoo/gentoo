@@ -1,0 +1,840 @@
+# ChangeLog for app-emulation/vmware-player
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/vmware-player/ChangeLog,v 1.124 2014/10/16 21:58:49 dilfridge Exp $
+
+*vmware-player-6.0.3.1895310 (16 Oct 2014)
+
+  16 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +vmware-player-6.0.3.1895310.ebuild:
+  Version bump, bug 516044
+
+*vmware-player-6.0.2.1744117 (19 Apr 2014)
+
+  19 Apr 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -vmware-player-6.0.0.1295980.ebuild, +vmware-player-6.0.2.1744117.ebuild:
+  Version bump; remove old
+
+*vmware-player-6.0.1.1379776 (12 Apr 2014)
+
+  12 Apr 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +vmware-player-6.0.1.1379776.ebuild:
+  Version bump, bug 494960
+
+*vmware-player-5.0.3.1410761 (12 Apr 2014)
+
+  12 Apr 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +vmware-player-5.0.3.1410761.ebuild, -vmware-player-5.0.2.1031769.ebuild:
+  Version bump, bug 497816; remove old
+
+  12 Apr 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -vmware-player-4.0.5.893925.ebuild:
+  Drop old
+
+  06 Nov 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  vmware-player-6.0.0.1295980.ebuild:
+  Re-add keywords
+
+  21 Oct 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  -vmware-player-3.1.6.744570.ebuild:
+  Remove old
+
+  19 Oct 2013; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Remove Matt Whitlock from metadata
+
+*vmware-player-6.0.0.1295980 (19 Oct 2013)
+
+  19 Oct 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +vmware-player-6.0.0.1295980.ebuild:
+  Version bump without keywords for testing, bug 484084
+
+  23 Jun 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  -vmware-player-4.0.4.744019-r1.ebuild:
+  Drop old
+
+  22 Jun 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  vmware-player-3.1.6.744570.ebuild, vmware-player-4.0.4.744019-r1.ebuild,
+  vmware-player-4.0.5.893925.ebuild, vmware-player-5.0.2.1031769.ebuild:
+  Add init script license, bug 425898
+
+  16 Jun 2013; Vadim Kuznetsov vadimk@gentoo.org metadata.xml:
+  dropped myself as a maintainer. maintainer needed
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*vmware-player-5.0.2.1031769 (10 Mar 2013)
+
+  10 Mar 2013; Vadim Kuznetsov vadimk@gentoo.org
+  +vmware-player-5.0.2.1031769.ebuild, -vmware-player-5.0.1.894247.ebuild:
+  vmware desktop 9.0.2 version bump. Bugs 459566, 458228, 460908.
+
+  07 Jan 2013; Vadim Kuznetsov vadimk@gentoo.org
+  vmware-player-5.0.1.894247.ebuild:
+  binchecks should not be restricted
+
+*vmware-player-4.0.5.893925 (07 Jan 2013)
+
+  07 Jan 2013; Vadim Kuznetsov vadimk@gentoo.org
+  +vmware-player-4.0.5.893925.ebuild:
+  vmware desktop 8.0.5 version bump
+
+*vmware-player-5.0.1.894247 (09 Dec 2012)
+
+  09 Dec 2012; Vadim Kuznetsov vadimk@gentoo.org
+  +vmware-player-5.0.1.894247.ebuild:
+  vmware desktop 9.0.1 version bump. bugs 432918, 443022
+
+  29 Oct 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  vmware-player-3.1.6.744570.ebuild, vmware-player-4.0.4.744019-r1.ebuild:
+  QA: binchecks should not be restricted.
+
+*vmware-player-3.1.6.744570 (17 Jun 2012)
+*vmware-player-4.0.4.744019-r1 (17 Jun 2012)
+
+  17 Jun 2012; Vadim Kuznetsov vadimk@gentoo.org
+  +vmware-player-3.1.6.744570.ebuild, +vmware-player-4.0.4.744019-r1.ebuild,
+  -vmware-player-3.1.5.491717.ebuild, -vmware-player-4.0.3.703057.ebuild:
+  bump vmware desktop. bug 421269
+
+*vmware-player-4.0.3.703057 (05 May 2012)
+
+  05 May 2012; Vadim Kuznetsov vadimk@gentoo.org
+  +vmware-player-4.0.3.703057.ebuild, -vmware-player-4.0.2.591240.ebuild:
+  VMware desktop build 703057
+
+  24 Mar 2012; Vadim Kuznetsov <vadimk@gentoo.org>
+  -vmware-player-4.0.1.528992-r2.ebuild:
+  cleanup
+
+*vmware-player-4.0.2.591240 (10 Mar 2012)
+
+  10 Mar 2012; Vadim Kuznetsov <vadimk@gentoo.org>
+  +vmware-player-4.0.2.591240.ebuild:
+  vmware desktop version bump
+
+  11 Dec 2011; Vadim Kuznetsov <vadimk@gentoo.org> -files/90vmware-player,
+  -files/vmware-player.xml:
+  removed old files
+
+*vmware-player-4.0.1.528992-r2 (07 Dec 2011)
+
+  07 Dec 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -vmware-player-4.0.1.528992-r1.ebuild, +vmware-player-4.0.1.528992-r2.ebuild:
+  fixed fperms star issue. Bug 393225
+
+  05 Dec 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -vmware-player-2.5.5.328052.ebuild,
+  -files/2.5.5.328052/vmware-player.py.patch,
+  -files/2.5.5.328052/vmware-player-extras.py.patch,
+  -files/vmware-player-2.5.5.328052-installer.patch,
+  -files/vmware-player-2.5.rc, -files/helpers/module_patcher.sh,
+  -files/helpers/unbundler.sh, -files/helpers/vmware-config.sh:
+  removed old version. bug 385727.
+
+*vmware-player-4.0.1.528992-r1 (03 Dec 2011)
+
+  03 Dec 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  +vmware-player-4.0.1.528992-r1.ebuild:
+  vmware desktop version bump
+
+  22 Nov 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  vmware-player-2.5.5.328052.ebuild, vmware-player-3.1.5.491717.ebuild,
+  metadata.xml:
+  updated co-maintainer email. removed unknown dependency.
+
+  17 Oct 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -vmware-player-3.1.4.385536.ebuild:
+  removed old 
+
+*vmware-player-3.1.5.491717 (08 Oct 2011)
+
+  08 Oct 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  +vmware-player-3.1.5.491717.ebuild:
+  version bump. Bug 385727.
+
+  10 Aug 2011; Vadim Kuznetsov <vadimk@gentoo.org> metadata.xml:
+  changed a co-maintainer
+
+  16 Jul 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -vmware-player-3.1.3.324285.ebuild:
+  bug 374599
+
+*vmware-player-3.1.4.385536 (15 Apr 2011)
+
+  15 Apr 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  +vmware-player-3.1.4.385536.ebuild, -files/vmware-player.rc:
+  version bump
+
+  29 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  vmware-player-3.1.3.324285.ebuild:
+  Fix slot-deps on gnome libs
+
+*vmware-player-3.1.3.324285 (27 Mar 2011)
+
+  27 Mar 2011; Vadim Kuznetsov <vadimk@gentoo.org> +files/config-3.0,
+  +files/vmware-3.0.rc, +vmware-player-3.1.3.324285.ebuild,
+  +files/list-bundle-components.xsl, +files/list-component-files.xsl:
+  Bug 290831. Version bump. Thanks Matt Whitlock and all, all, et al.
+
+  16 Mar 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -files/1.0.9.126128/000_all_initd-location.patch,
+  -files/1.0.9.126128/001_all_fix-permissions.patch,
+  -files/1.0.9.126128/002_all_pagebreak-detection-fix.patch,
+  -files/1.0.9.126128/004_all_do-not-build-modules.patch,
+  -files/1.0.9.126128/007_all_use-modprobe-over-insmod.patch,
+  -files/1.0.9.126128/009_all_init.d-modules-warning.patch,
+  -vmware-player-1.0.9.126128.ebuild:
+  Bug 354383
+
+  26 Feb 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -files/vmware-player-2.5.4.246459-installer.patch,
+  -files/2.5.4.246459/vmware-player.py.patch,
+  -files/2.5.4.246459/vmware-player-extras.py.patch,
+  -vmware-player-2.5.4.246459.ebuild:
+  removed old version
+
+  17 Feb 2011; Thomas Kahle <tomka@gentoo.org>
+  vmware-player-2.5.5.328052.ebuild:
+  x86 stable per bug 352421
+
+  25 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  vmware-player-2.5.5.328052.ebuild:
+  Stable on amd64 wrt bug #352421
+
+*vmware-player-2.5.5.328052 (29 Dec 2010)
+
+  29 Dec 2010; Vadim Kuznetsov <vadimk@gentoo.org>
+  +files/vmware-player-2.5.5.328052-installer.patch,
+  +files/2.5.5.328052/vmware-player.py.patch,
+  +files/2.5.5.328052/vmware-player-extras.py.patch,
+  +vmware-player-2.5.5.328052.ebuild:
+  Version bump. Bug 350072
+
+  30 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  vmware-player-2.5.4.246459.ebuild:
+  stable x86, bug 319999
+
+  25 May 2010; Pacho Ramos <pacho@gentoo.org>
+  vmware-player-2.5.4.246459.ebuild:
+  stable amd64, bug 319999
+
+  11 May 2010; Vadim Kuznetsov <vadimk@gentoo.org>
+  -vmware-player-2.5.3.185404.ebuild,
+  -files/vmware-player-2.5.3.185404-installer.patch,
+  -files/2.5.3.185404/vmware-player.py.patch,
+  -files/2.5.3.185404/vmware-player-extras.py.patch,
+  -vmware-player-2.5.3.185404-r1.ebuild:
+  removing old versions
+
+*vmware-player-2.5.4.246459 (18 Apr 2010)
+
+  18 Apr 2010; Vadim Kuznetsov <vadimk@gentoo.org>
+  +files/vmware-player-2.5.4.246459-installer.patch,
+  +files/2.5.4.246459/vmware-player.py.patch,
+  +files/2.5.4.246459/vmware-player-extras.py.patch,
+  +vmware-player-2.5.4.246459.ebuild:
+  Version bump.
+  http://www.vmware.com/support/player25/doc/releasenotes_player254.html
+
+*vmware-player-2.5.3.185404-r1 (09 Apr 2010)
+
+  09 Apr 2010; Vadim Kuznetsov <vadimk@gentoo.org>
+  +vmware-player-2.5.3.185404-r1.ebuild:
+  Bug 311435
+
+  09 Mar 2010; Jonathan Callen <abcd@gentoo.org>
+  vmware-player-1.0.9.126128.ebuild:
+  QA: When not using an absolute path, you MUST NOT use a file extension
+  (.png, .svg, or .xpm) on the icon name for make_desktop_entry
+
+  25 Sep 2009; Markus Meier <maekke@gentoo.org>
+  vmware-player-2.5.3.185404.ebuild:
+  amd64 stable, bug #282213
+
+  25 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  vmware-player-2.5.3.185404.ebuild:
+  stable x86, security bug 282213
+
+  22 Aug 2009; Vadim Kuznetsov vadimk@gentoo.org
+  vmware-player-2.5.3.185404.ebuild:
+  Added pkg_prerm for safe unmerge
+
+*vmware-player-2.5.3.185404 (22 Aug 2009)
+
+  22 Aug 2009; Vadim Kuznetsov vadimk@gentoo.org
+  +files/vmware-player-2.5.3.185404-installer.patch,
+  +files/2.5.3.185404/vmware-player.py.patch,
+  +files/2.5.3.185404/vmware-player-extras.py.patch,
+  +vmware-player-2.5.3.185404.ebuild:
+  Version bump. Bug 282213.
+
+  30 Jul 2009; Markus Meier <maekke@gentoo.org>
+  vmware-player-2.5.2.156735.ebuild:
+  amd64 stable, bug #265139
+
+*vmware-player-2.5.2.156735-r1 (14 Jun 2009)
+
+  14 Jun 2009; Vadim Kuznetsov vadimk@gentoo.org
+  +vmware-player-2.5.2.156735-r1.ebuild, metadata.xml:
+  Bugs 268695, 273750.
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  vmware-player-2.5.2.156735.ebuild:
+  stable x86, bug 265139
+
+*vmware-player-2.5.2.156735 (06 Apr 2009)
+
+  06 Apr 2009; Mike Auty <ikelos@gentoo.org>
+  +files/2.5.2.156735/vmware-player.py.patch,
+  +files/vmware-player-2.5.2.156735-installer.patch,
+  +files/2.5.2.156735/vmware-player-extras.py.patch,
+  +vmware-player-2.5.2.156735.ebuild:
+  Version bump vmware-player-2.5.2-156735.
+
+  25 Mar 2009; Mike Auty <ikelos@gentoo.org>
+  vmware-player-2.5.1.126130.ebuild:
+  gtkmm's accessibility is now always enabled (see bug #247249)
+
+  12 Mar 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  vmware-player-2.5.1.126130.ebuild:
+  Remove binchecks restriction (package installs binaries!).
+
+  22 Feb 2009; Mike Auty <ikelos@gentoo.org>
+  -files/2.5.0.118166/vmware-player.py.patch,
+  -files/2.5.0.118166/vmware-player-extras.py.patch,
+  -files/vmware-player-2.5.0.118166-installer.patch,
+  -files/1.0.7.91707/000_all_initd-location.patch,
+  -files/1.0.7.91707/001_all_fix-permissions.patch,
+  -files/1.0.7.91707/002_all_pagebreak-detection-fix.patch,
+  -files/1.0.7.91707/004_all_do-not-build-modules.patch,
+  -files/1.0.7.91707/007_all_use-modprobe-over-insmod.patch,
+  -files/1.0.7.91707/009_all_init.d-modules-warning.patch,
+  -files/1.0.8.108000/000_all_initd-location.patch,
+  -files/1.0.8.108000/001_all_fix-permissions.patch,
+  -files/1.0.8.108000/002_all_pagebreak-detection-fix.patch,
+  -files/1.0.8.108000/004_all_do-not-build-modules.patch,
+  -files/1.0.8.108000/007_all_use-modprobe-over-insmod.patch,
+  -files/1.0.8.108000/009_all_init.d-modules-warning.patch,
+  -files/2.0.4.93057/000_all_initd-location.patch,
+  -files/2.0.4.93057/001_all_fix-permissions.patch,
+  -files/2.0.4.93057/002_all_pagebreak-detection-fix.patch,
+  -files/2.0.4.93057/004_all_do-not-build-modules.patch,
+  -files/2.0.4.93057/007_all_use-modprobe-over-insmod.patch,
+  -files/2.0.4.93057/009_all_init.d-modules-warning.patch,
+  -files/2.0.4.93057/011_all_legit-modules-only.patch,
+  -files/2.0.5.109488/000_all_initd-location.patch,
+  -files/2.0.5.109488/001_all_fix-permissions.patch,
+  -files/2.0.5.109488/002_all_pagebreak-detection-fix.patch,
+  -files/2.0.5.109488/004_all_do-not-build-modules.patch,
+  -files/2.0.5.109488/007_all_use-modprobe-over-insmod.patch,
+  -files/2.0.5.109488/009_all_init.d-modules-warning.patch,
+  -files/2.0.5.109488/011_all_legit-modules-only.patch,
+  -vmware-player-1.0.7.91707.ebuild, -vmware-player-1.0.8.108000.ebuild,
+  -vmware-player-2.0.4.93057.ebuild, -vmware-player-2.0.5.109488.ebuild,
+  -vmware-player-2.5.0.118166.ebuild:
+  Clear out old insecure versions of vmware-player (bug 245941).
+
+  12 Jan 2009; Markus Meier <maekke@gentoo.org>
+  vmware-player-1.0.9.126128.ebuild, vmware-player-2.5.1.126130.ebuild:
+  amd64/x86 stable, bug #245941
+
+  11 Jan 2009; Markus Meier <maekke@gentoo.org>
+  vmware-player-1.0.8.108000.ebuild:
+  amd64/x86 stable, bug #236167
+
+  05 Jan 2009; Rémi Cardona <remi@gentoo.org>
+  vmware-player-2.5.1.126130.ebuild:
+  Change virtual/xft dependency to x11-libs/libXft, bug 253771.
+
+  04 Jan 2009; Ulrich Mueller <ulm@gentoo.org>
+  vmware-player-1.0.7.91707.ebuild, vmware-player-1.0.8.108000.ebuild,
+  vmware-player-1.0.9.126128.ebuild, vmware-player-2.0.4.93057.ebuild,
+  vmware-player-2.0.5.109488.ebuild, vmware-player-2.5.0.118166.ebuild:
+  Change virtual/xft dependency to x11-libs/libXft, bug 253771.
+
+  31 Dec 2008; Mike Auty <ikelos@gentoo.org>
+  vmware-player-2.5.0.118166.ebuild, vmware-player-2.5.1.126130.ebuild:
+  Depend on >=libview-0.6.2, fixes bug 247138.
+
+*vmware-player-2.5.1.126130 (31 Dec 2008)
+
+  31 Dec 2008; Mike Auty <ikelos@gentoo.org>
+  +files/2.5.1.126130/vmware-player.py.patch,
+  +files/vmware-player-2.5.1.126130-installer.patch,
+  +files/2.5.1.126130/vmware-player-extras.py.patch,
+  +vmware-player-2.5.1.126130.ebuild:
+  Version bump vmware-player to 2.5.1.
+
+  27 Nov 2008; Mike Auty <ikelos@gentoo.org> files/helpers/vmware-config.sh:
+  Fix up vmware-config.sh helper (bug 246854).
+
+  17 Nov 2008; Mike Auty <ikelos@gentoo.org>
+  vmware-player-2.5.0.118166.ebuild:
+  Fix up missing ncurses USE dep, and clarify not-in-screen message.
+
+  10 Nov 2008; Mike Auty <ikelos@gentoo.org>
+  vmware-player-2.5.0.118166.ebuild:
+  Ensure it dies properly and put in a better check for screen.
+
+  10 Nov 2008; Mike Auty <ikelos@gentoo.org>
+  +files/2.5.0.118166/vmware-player.py.patch,
+  +files/2.5.0.118166/vmware-player-extras.py.patch:
+  Make sure the patches are in place (bug 246252).
+
+*vmware-player-2.5.0.118166 (09 Nov 2008)
+*vmware-player-1.0.9.126128 (09 Nov 2008)
+
+  09 Nov 2008; Mike Auty <ikelos@gentoo.org>
+  +files/1.0.9.126128/000_all_initd-location.patch,
+  +files/1.0.9.126128/007_all_use-modprobe-over-insmod.patch,
+  +files/1.0.9.126128/001_all_fix-permissions.patch,
+  +files/1.0.9.126128/009_all_init.d-modules-warning.patch,
+  +files/vmware-player-2.5.0.118166-installer.patch,
+  +files/1.0.9.126128/002_all_pagebreak-detection-fix.patch,
+  +files/2.5.0.118166/vmware-player.py.patch, +files/vmware-player-2.5.rc,
+  +files/1.0.9.126128/004_all_do-not-build-modules.patch,
+  +files/2.5.0.118166/vmware-player-extras.py.patch,
+  +files/helpers/module_patcher.sh, +files/helpers/unbundler.sh,
+  +files/helpers/vmware-config.sh, +vmware-player-1.0.9.126128.ebuild,
+  +vmware-player-2.5.0.118166.ebuild:
+  Bump to 1.0.9 and introduce 2.5.0 for bug 245941.
+
+*vmware-player-2.0.5.109488 (30 Sep 2008)
+*vmware-player-1.0.8.108000 (30 Sep 2008)
+
+  30 Sep 2008; Mike Auty <ikelos@gentoo.org>
+  -files/1.0.6.80404/000_all_initd-location.patch,
+  -files/1.0.6.80404/001_all_fix-permissions.patch,
+  -files/1.0.6.80404/002_all_pagebreak-detection-fix.patch,
+  -files/1.0.6.80404/004_all_do-not-build-modules.patch,
+  -files/1.0.6.80404/007_all_use-modprobe-over-insmod.patch,
+  -files/1.0.6.80404/009_all_init.d-modules-warning.patch,
+  +files/1.0.8.108000/000_all_initd-location.patch,
+  +files/1.0.8.108000/001_all_fix-permissions.patch,
+  +files/1.0.8.108000/002_all_pagebreak-detection-fix.patch,
+  +files/1.0.8.108000/004_all_do-not-build-modules.patch,
+  +files/1.0.8.108000/007_all_use-modprobe-over-insmod.patch,
+  +files/1.0.8.108000/009_all_init.d-modules-warning.patch,
+  -files/2.0.3.80004/000_all_initd-location.patch,
+  -files/2.0.3.80004/001_all_fix-permissions.patch,
+  -files/2.0.3.80004/002_all_pagebreak-detection-fix.patch,
+  -files/2.0.3.80004/004_all_do-not-build-modules.patch,
+  -files/2.0.3.80004/007_all_use-modprobe-over-insmod.patch,
+  -files/2.0.3.80004/009_all_init.d-modules-warning.patch,
+  -files/2.0.3.80004/011_all_legit-modules-only.patch,
+  +files/2.0.5.109488/000_all_initd-location.patch,
+  +files/2.0.5.109488/001_all_fix-permissions.patch,
+  +files/2.0.5.109488/002_all_pagebreak-detection-fix.patch,
+  +files/2.0.5.109488/004_all_do-not-build-modules.patch,
+  +files/2.0.5.109488/007_all_use-modprobe-over-insmod.patch,
+  +files/2.0.5.109488/009_all_init.d-modules-warning.patch,
+  +files/2.0.5.109488/011_all_legit-modules-only.patch,
+  -vmware-player-1.0.6.80404.ebuild, +vmware-player-1.0.8.108000.ebuild,
+  -vmware-player-2.0.3.80004.ebuild, +vmware-player-2.0.5.109488.ebuild:
+  Version bump 1.0.8 and 2.0.5.
+
+  03 Jul 2008; Christian Faulhammer <opfer@gentoo.org>
+  vmware-player-1.0.7.91707.ebuild:
+  stable x86, security bug 224637
+
+  22 Jun 2008; Markus Meier <maekke@gentoo.org>
+  vmware-player-1.0.7.91707.ebuild:
+  amd64 stable, bug #224637
+
+  16 Jun 2008; Christian Faulhammer <opfer@gentoo.org> ChangeLog:
+  app-emulation/vmware-workstation-5.5.7.91707 stable, bug #x86
+
+*vmware-player-2.0.4.93057 (14 Jun 2008)
+*vmware-player-1.0.7.91707 (14 Jun 2008)
+
+  14 Jun 2008; Mike Auty <ikelos@gentoo.org>
+  -files/1.0.5.56455/000_all_initd-location.patch,
+  -files/1.0.5.56455/001_all_fix-permissions.patch,
+  -files/1.0.5.56455/002_all_pagebreak-detection-fix.patch,
+  -files/1.0.5.56455/004_all_do-not-build-modules.patch,
+  -files/1.0.5.56455/007_all_use-modprobe-over-insmod.patch,
+  -files/1.0.5.56455/009_all_init.d-modules-warning.patch,
+  +files/1.0.7.91707/000_all_initd-location.patch,
+  +files/1.0.7.91707/001_all_fix-permissions.patch,
+  +files/1.0.7.91707/002_all_pagebreak-detection-fix.patch,
+  +files/1.0.7.91707/004_all_do-not-build-modules.patch,
+  +files/1.0.7.91707/007_all_use-modprobe-over-insmod.patch,
+  +files/1.0.7.91707/009_all_init.d-modules-warning.patch,
+  -files/2.0.1.55017/000_all_initd-location.patch,
+  -files/2.0.1.55017/001_all_fix-permissions.patch,
+  -files/2.0.1.55017/002_all_pagebreak-detection-fix.patch,
+  -files/2.0.1.55017/004_all_do-not-build-modules.patch,
+  -files/2.0.1.55017/007_all_use-modprobe-over-insmod.patch,
+  -files/2.0.1.55017/009_all_init.d-modules-warning.patch,
+  -files/2.0.1.55017/011_all_legit-modules-only.patch,
+  -files/2.0.2.59824/000_all_initd-location.patch,
+  -files/2.0.2.59824/001_all_fix-permissions.patch,
+  -files/2.0.2.59824/002_all_pagebreak-detection-fix.patch,
+  -files/2.0.2.59824/004_all_do-not-build-modules.patch,
+  -files/2.0.2.59824/007_all_use-modprobe-over-insmod.patch,
+  -files/2.0.2.59824/009_all_init.d-modules-warning.patch,
+  -files/2.0.2.59824/011_all_legit-modules-only.patch,
+  +files/2.0.4.93057/000_all_initd-location.patch,
+  +files/2.0.4.93057/001_all_fix-permissions.patch,
+  +files/2.0.4.93057/002_all_pagebreak-detection-fix.patch,
+  +files/2.0.4.93057/004_all_do-not-build-modules.patch,
+  +files/2.0.4.93057/007_all_use-modprobe-over-insmod.patch,
+  +files/2.0.4.93057/009_all_init.d-modules-warning.patch,
+  +files/2.0.4.93057/011_all_legit-modules-only.patch,
+  -vmware-player-1.0.5.56455.ebuild, +vmware-player-1.0.7.91707.ebuild,
+  -vmware-player-2.0.1.55017.ebuild, -vmware-player-2.0.2.59824.ebuild,
+  +vmware-player-2.0.4.93057.ebuild:
+  Version bump for bug 224637. Also clear out old versions.
+
+  12 May 2008; Markus Meier <maekke@gentoo.org>
+  vmware-player-1.0.6.80404.ebuild:
+  amd64 stable, bug #213548
+
+  07 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  vmware-player-1.0.6.80404.ebuild:
+  stable x86, bug 213548
+
+  26 Apr 2008; Mike Auty <ikelos@gentoo.org> files/vmware-player.rc:
+  Add hald to the init use requirements (bug 206468).
+
+  26 Apr 2008; Mike Auty <ikelos@gentoo.org>
+  vmware-player-2.0.3.80004.ebuild:
+  Merge dependencies for vmware-player-2.0.3 x86 and amd64 arches.
+
+*vmware-player-2.0.3.80004 (22 Mar 2008)
+*vmware-player-1.0.6.80404 (22 Mar 2008)
+
+  22 Mar 2008; Mike Auty <ikelos@gentoo.org>
+  +files/1.0.6.80404/000_all_initd-location.patch,
+  +files/1.0.6.80404/002_all_pagebreak-detection-fix.patch,
+  +files/2.0.3.80004/000_all_initd-location.patch,
+  +files/1.0.6.80404/001_all_fix-permissions.patch,
+  +files/1.0.6.80404/004_all_do-not-build-modules.patch,
+  +files/1.0.6.80404/007_all_use-modprobe-over-insmod.patch,
+  +files/1.0.6.80404/009_all_init.d-modules-warning.patch,
+  +files/2.0.3.80004/001_all_fix-permissions.patch,
+  +files/2.0.3.80004/002_all_pagebreak-detection-fix.patch,
+  +files/2.0.3.80004/004_all_do-not-build-modules.patch,
+  +files/2.0.3.80004/007_all_use-modprobe-over-insmod.patch,
+  +files/2.0.3.80004/009_all_init.d-modules-warning.patch,
+  +files/2.0.3.80004/011_all_legit-modules-only.patch,
+  +vmware-player-1.0.6.80404.ebuild, +vmware-player-2.0.3.80004.ebuild:
+  Version bump 1.0.6 and 2.0.3, to fix bug 213548.
+
+  31 Jan 2008; Mike Auty <ikelos@gentoo.org> ChangeLog:
+  Re-sign digestless manifest.
+
+  26 Jan 2008; Mike Auty <ikelos@gentoo.org>
+  files/digest-vmware-player-1.0.5.56455,
+  files/digest-vmware-player-2.0.1.55017,
+  files/digest-vmware-player-2.0.2.59824, Manifest:
+  Redigest for any-any-update115.
+
+*vmware-player-2.0.2.59824 (25 Nov 2007)
+
+  25 Nov 2007; Mike Auty <ikelos@gentoo.org>
+  +files/2.0.2.59824/000_all_initd-location.patch,
+  +files/2.0.2.59824/001_all_fix-permissions.patch,
+  +files/2.0.2.59824/002_all_pagebreak-detection-fix.patch,
+  +files/2.0.2.59824/004_all_do-not-build-modules.patch,
+  +files/2.0.2.59824/007_all_use-modprobe-over-insmod.patch,
+  +files/2.0.2.59824/009_all_init.d-modules-warning.patch,
+  +files/2.0.2.59824/011_all_legit-modules-only.patch,
+  files/vmware-player.rc, +vmware-player-2.0.2.59824.ebuild:
+  Version bump to 2.0.2, and update to vmware-any-any-update114.
+
+  06 Nov 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/1.0.2.29634/000_all_initd-location.patch,
+  -files/1.0.2.29634/001_all_fix-permissions.patch,
+  -files/1.0.2.29634/002_all_pagebreak-detection-fix.patch,
+  -files/1.0.2.29634/004_all_do-not-build-modules.patch,
+  -files/1.0.2.29634/007_all_use-modprobe-over-insmod.patch,
+  -files/1.0.2.29634/009_all_init.d-modules-warning.patch,
+  -files/1.0.3.34682/000_all_initd-location.patch,
+  -files/1.0.3.34682/001_all_fix-permissions.patch,
+  -files/1.0.3.34682/002_all_pagebreak-detection-fix.patch,
+  -files/1.0.3.34682/004_all_do-not-build-modules.patch,
+  -files/1.0.3.34682/007_all_use-modprobe-over-insmod.patch,
+  -files/1.0.3.34682/009_all_init.d-modules-warning.patch,
+  -files/2.0.0.45731/000_all_initd-location.patch,
+  -files/2.0.0.45731/001_all_fix-permissions.patch,
+  -files/2.0.0.45731/002_all_pagebreak-detection-fix.patch,
+  -files/2.0.0.45731/004_all_do-not-build-modules.patch,
+  -files/2.0.0.45731/007_all_use-modprobe-over-insmod.patch,
+  -files/2.0.0.45731/009_all_init.d-modules-warning.patch,
+  -vmware-player-1.0.2.29634.ebuild, -vmware-player-1.0.3.34682-r1.ebuild,
+  -vmware-player-2.0.0.45731.ebuild:
+  Cleaning up older versions.
+
+  06 Nov 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-player-1.0.5.56455.ebuild:
+  Stable on amd64 wrt bug #193196.
+
+*vmware-player-2.0.1.55017 (14 Oct 2007)
+
+  14 Oct 2007; Mike Auty <ikelos@gentoo.org>
+  +files/2.0.1.55017/000_all_initd-location.patch,
+  +files/2.0.1.55017/001_all_fix-permissions.patch,
+  +files/2.0.1.55017/002_all_pagebreak-detection-fix.patch,
+  +files/2.0.1.55017/004_all_do-not-build-modules.patch,
+  +files/2.0.1.55017/007_all_use-modprobe-over-insmod.patch,
+  +files/2.0.1.55017/009_all_init.d-modules-warning.patch,
+  +files/2.0.1.55017/011_all_legit-modules-only.patch,
+  +vmware-player-2.0.1.55017.ebuild:
+  Version bump to vmware-player-2.0.1, fixes some security bugs.
+
+  23 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  vmware-player-1.0.5.56455.ebuild:
+  stable x86, security bug 193196
+
+*vmware-player-1.0.5.56455 (21 Sep 2007)
+
+  21 Sep 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/1.0.5.56455/000_all_initd-location.patch,
+  +files/1.0.5.56455/001_all_fix-permissions.patch,
+  +files/1.0.5.56455/002_all_pagebreak-detection-fix.patch,
+  +files/1.0.5.56455/004_all_do-not-build-modules.patch,
+  +files/1.0.5.56455/007_all_use-modprobe-over-insmod.patch,
+  +files/1.0.5.56455/009_all_init.d-modules-warning.patch,
+  +vmware-player-1.0.5.56455.ebuild:
+  Version bump for bug #193196.
+
+  28 Jul 2007; Mike Auty <ikelos@gentoo.org>
+  files/digest-vmware-player-1.0.2.29634,
+  files/digest-vmware-player-1.0.3.34682-r1,
+  files/digest-vmware-player-2.0.0.45731, Manifest:
+  Redigest for vmware-any-any-update112.
+
+  13 Jul 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-player-1.0.2.29634.ebuild, vmware-player-1.0.3.34682-r1.ebuild,
+  vmware-player-2.0.0.45731.ebuild:
+  Added another mirror for the vmware-any-any-update patchset.
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  vmware-player-1.0.2.29634.ebuild:
+  (QA) RESTRICT clean up.
+
+*vmware-player-2.0.0.45731 (24 Jun 2007)
+
+  24 Jun 2007; Mike Auty <ikelos@gentoo.org>
+  +files/2.0.0.45731/000_all_initd-location.patch,
+  +files/2.0.0.45731/001_all_fix-permissions.patch,
+  +files/2.0.0.45731/002_all_pagebreak-detection-fix.patch,
+  +files/2.0.0.45731/004_all_do-not-build-modules.patch,
+  +files/2.0.0.45731/007_all_use-modprobe-over-insmod.patch,
+  +files/2.0.0.45731/009_all_init.d-modules-warning.patch,
+  +vmware-player-2.0.0.45731.ebuild:
+  Version bump, new version supports 64-bit natively and USB 2.0.
+
+*vmware-player-1.0.3.34682-r1 (16 Jun 2007)
+
+  16 Jun 2007; Mike Auty <ikelos@gentoo.org>
+  -files/1.0.1.19317/000_all_initd-location.patch,
+  -files/1.0.1.19317/002_all_pagebreak-detection-fix.patch,
+  +files/1.0.3.34682/000_all_initd-location.patch,
+  -files/1.0.1.19317/001_all_fix-permissions.patch,
+  -files/1.0.1.19317/004_all_do-not-build-modules.patch,
+  -files/1.0.1.19317/007_all_use-modprobe-over-insmod.patch,
+  -files/1.0.1.19317/009_all_init.d-modules-warning.patch,
+  +files/1.0.3.34682/001_all_fix-permissions.patch,
+  +files/1.0.3.34682/002_all_pagebreak-detection-fix.patch,
+  +files/1.0.3.34682/004_all_do-not-build-modules.patch,
+  +files/1.0.3.34682/007_all_use-modprobe-over-insmod.patch,
+  +files/1.0.3.34682/009_all_init.d-modules-warning.patch,
+  -vmware-player-1.0.3.34682.ebuild, +vmware-player-1.0.3.34682-r1.ebuild:
+  Version bump to fix missing patchset, bug 175778.
+
+  28 Apr 2007; Mike Auty <ikelos@gentoo.org> files/vmware-player.rc:
+  Redigest for vmware-any-any109, and fix rc file for baselayout-2.
+
+  07 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  files/vmware-player.rc:
+  Change all instances of [ to [[.
+
+  04 Mar 2007; Mike Auty <ikelos@gentoo.org>
+  files/digest-vmware-player-1.0.2.29634,
+  files/digest-vmware-player-1.0.3.34682, Manifest:
+  Bump vmware-any-any to 108.
+
+  05 Feb 2007; Mike Auty <ikelos@gentoo.org>
+  files/digest-vmware-player-1.0.2.29634,
+  files/digest-vmware-player-1.0.3.34682, Manifest:
+  Vmware-any-any bump.
+
+*vmware-player-1.0.3.34682 (14 Dec 2006)
+
+  14 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +vmware-player-1.0.3.34682.ebuild:
+  Version bump and closing bug #158101.
+
+  14 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-player-1.0.2.29634.ebuild:
+  Fixed typo for bug #158134.
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -vmware-player-1.0.1.19317-r4.ebuild,
+  -vmware-player-1.0.1.19317-r6.ebuild,
+  -vmware-player-1.0.1.19317-r7.ebuild, vmware-player-1.0.2.29634.ebuild:
+  Updated digest for vmware-any-any-update105, removed older ebuilds, and
+  marked 1.0.2 stable on amd64/x86.
+
+  24 Oct 2006; Simon Stelling <blubb@gentoo.org>
+  vmware-player-1.0.1.19317-r7.ebuild:
+  stable on amd64 wrt bug 148682
+
+  20 Oct 2006; Joshua Jackson <tsunam@gentoo.org>
+  vmware-player-1.0.1.19317-r7.ebuild:
+  Stable x86; bug #148682
+
+*vmware-player-1.0.1.19317-r7 (03 Oct 2006)
+
+  03 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +vmware-player-1.0.1.19317-r7.ebuild, vmware-player-1.0.2.29634.ebuild:
+  New revision ebuilds to hopefully finally fix bug #148682.
+
+*vmware-player-1.0.1.19317-r6 (02 Oct 2006)
+
+  02 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -vmware-player-1.0.1.19317-r5.ebuild,
+  +vmware-player-1.0.1.19317-r6.ebuild, vmware-player-1.0.2.29634.ebuild:
+  Alright, we are revision-bumping again so that we pull in my pre-compiled
+  libssl.so.0.9.7 for bug #148862.
+
+*vmware-player-1.0.2.29634 (28 Sep 2006)
+
+  28 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/1.0.2.29634/000_all_initd-location.patch,
+  +files/1.0.2.29634/001_all_fix-permissions.patch,
+  +files/1.0.2.29634/002_all_pagebreak-detection-fix.patch,
+  +files/1.0.2.29634/004_all_do-not-build-modules.patch,
+  +files/1.0.2.29634/007_all_use-modprobe-over-insmod.patch,
+  +files/1.0.2.29634/009_all_init.d-modules-warning.patch,
+  +vmware-player-1.0.2.29634.ebuild:
+  Version bump to 1.0.2, which I am leaving masked for the time being because
+  I hate the idea of forcing more than 100MB on people that they don't need. I
+  will unmask this once I come up with a better solution.
+
+*vmware-player-1.0.1.19317-r5 (27 Sep 2006)
+
+  27 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +vmware-player-1.0.1.19317-r5.ebuild:
+  Revision bump to force an upgrade due to bug #148682.
+
+  25 Aug 2006; Mike Auty <ikelos@gentoo.org>
+  files/digest-vmware-player-1.0.1.19317-r4, Manifest:
+  Redigested for vmware-any-any-update104.
+
+  22 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/vmware-player-1.0.1.19317-config.patch,
+  -files/vmware-player-1.0.1.19317-config2.patch,
+  -files/vmware-player-1.0.1.19317-config3.patch, -files/vmware.rc,
+  -files/vmware.xml, -vmware-player-1.0.1.19317-r3.ebuild,
+  vmware-player-1.0.1.19317-r4.ebuild:
+  Stable on amd64 and x86. Removing older revisions in preparation for 1.0.2
+  coming to the tree.
+
+*vmware-player-1.0.1.19317-r4 (09 Aug 2006)
+
+  09 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/1.0.1.19317/000_all_initd-location.patch,
+  +files/1.0.1.19317/001_all_fix-permissions.patch,
+  +files/1.0.1.19317/002_all_pagebreak-detection-fix.patch,
+  +files/1.0.1.19317/004_all_do-not-build-modules.patch,
+  +files/1.0.1.19317/007_all_use-modprobe-over-insmod.patch,
+  +files/1.0.1.19317/009_all_init.d-modules-warning.patch,
+  +files/vmware-player.rc, +files/vmware-player.xml,
+  +vmware-player-1.0.1.19317-r4.ebuild:
+  Moved vmware.eclass enabled version into the tree.
+
+  08 Aug 2006; Mike Auty <ikelos@gentoo.org> ChangeLog:
+  New digests to work with vmware-any-any103, which fixes some problems with
+  the 2.6.18 kernel.
+
+  27 Jul 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-player-1.0.1.19317-r3.ebuild:
+  Changed to use mirror://vmware instead of the individual sites.
+
+  23 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-player-1.0.1.19317-r3.ebuild:
+  Marking stable on amd64 and x86.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-vmware-player-1.0.1.19317-r3, Manifest:
+  Fixing SHA256 digest for real, pass three...
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-vmware-player-1.0.1.19317-r3, Manifest:
+  Fixing SHA256 digest, pass two.
+
+*vmware-player-1.0.1.19317-r3 (17 Apr 2006)
+
+  17 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -vmware-player-1.0.1.19317-r2.ebuild,
+  +vmware-player-1.0.1.19317-r3.ebuild:
+  Revision bump to pull in update101.
+
+  30 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -vmware-player-1.0.1.19317.ebuild, -vmware-player-1.0.1.19317-r1.ebuild:
+  Removing older ebuilds as they are no longer needed.
+
+*vmware-player-1.0.1.19317-r2 (30 Mar 2006)
+
+  30 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/vmware-player-1.0.1.19317-config3.patch,
+  +vmware-player-1.0.1.19317-r2.ebuild:
+  Added patch for vmware-config.pl to allow for 2G/2G from 2.6.16 and closing
+  bug #127661 and bug #127023.
+
+*vmware-player-1.0.1.19317-r1 (20 Mar 2006)
+
+  20 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +vmware-player-1.0.1.19317-r1.ebuild:
+  Added a new revision with vmware-any-any-update98 that should also resolve
+  bug #117696.
+
+  22 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-player-1.0.1.19317.ebuild:
+  Changed vmplayer->vmware for the init script name and closing bug #119871.
+
+  06 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-player-1.0.1.19317.ebuild:
+  Added modular X dependencies and closing bug #117987.
+
+  04 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/vmware-player-1.0.0.18587-config.patch,
+  -vmware-player-1.0.0.18587.ebuild:
+  Cleaning up older ebuilds.
+
+*vmware-player-1.0.1.19317 (04 Jan 2006)
+
+  04 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/vmware-player-1.0.1.19317-config.patch,
+  +files/vmware-player-1.0.1.19317-config2.patch,
+  +vmware-player-1.0.1.19317.ebuild:
+  Version bumped to 1.0.1.19317 and closing bug #116846.
+
+  21 Dec 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-player-1.0.0.18587.ebuild:
+  Added dependency on newer baselayout so people will quit filing bugs over
+  and over again for the same thing.
+
+  21 Dec 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/vmware-player-1.0.0.18007-config.patch,
+  +files/vmware-player-1.0.0.18587-config.patch:
+  Renamed patch and fixing bug #115465 (again).
+
+*vmware-player-1.0.0.18587 (19 Dec 2005)
+
+  19 Dec 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -vmware-player-1.0.0.18007.ebuild, +vmware-player-1.0.0.18587.ebuild:
+  Version bumped to 18587 and closing bug #115465.
+
+*vmware-player-1.0.0.18007 (29 Nov 2005)
+
+  29 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/90vmware-player, +files/vmware-player-1.0.0.18007-config.patch,
+  +files/vmware.rc, +files/vmware.xml, +metadata.xml,
+  +vmware-player-1.0.0.18007.ebuild:
+  Initial import. Original ebuild by Eric Edgar <rocket@gentoo.org> and
+  modified by Derick Swanepoel <derick@up.ac.za> and myself. Closing bug
+  #110027.

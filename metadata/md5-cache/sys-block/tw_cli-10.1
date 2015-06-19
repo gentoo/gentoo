@@ -1,0 +1,10 @@
+DEFINED_PHASES=install nofetch setup unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=3ware SATA+PATA RAID controller Command Line Interface tool
+HOMEPAGE=https://www.3ware.com/3warekb/article.aspx?id=14847
+KEYWORDS=-* ~amd64 ~x86 ~x86-fbsd
+LICENSE=3ware
+RESTRICT=strip fetch
+SLOT=0
+SRC_URI=kernel_linux? ( http://www.lsi.com/DistributionSystem/AssetDocument/cli_linux_10.1.zip ) kernel_FreeBSD? ( http://www.lsi.com/DistributionSystem/AssetDocument/cli_freebsd_10.1.zip )
+_md5_=674778a410b3a06a181913c9ffdc7c88

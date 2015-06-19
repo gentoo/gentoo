@@ -1,0 +1,43 @@
+# ChangeLog for www-apps/drraw
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/drraw/ChangeLog,v 1.10 2015/06/13 17:19:47 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org> drraw-2.0.1.ebuild,
+  drraw-2.1.3.ebuild:
+  The CGI module is no longer part of core Perl and has been moved to dev-perl
+
+  22 Feb 2008; Benedikt Böhm <hollow@gentoo.org> drraw-2.0.1.ebuild,
+  drraw-2.1.3.ebuild:
+  ebuild cleanup wrt #208584
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  03 Jan 2007; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
+  drraw-2.1.3.ebuild:
+  Bug #159188
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org> drraw-2.1.3.ebuild:
+  Virtuals for some perl-core deps
+
+*drraw-2.1.3 (21 Aug 2005)
+
+  21 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
+  +drraw-2.1.3.ebuild:
+  Version bump
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> drraw-2.0.1.ebuild:
+  Masked drraw-2.0.1.ebuild stable for ppc
+
+  03 Sep 2004; David Holm <dholm@gentoo.org> drraw-2.0.1.ebuild:
+  Added to ~ppc.
+
+  30 Aug 2004; Renat Lumpau <rl03@gentoo.org> drraw-2.0.1.ebuild:
+  Fixed DEPEND/RDEPEND
+
+*drraw-2.0.1 (29 Aug 2004)
+
+  29 Aug 2004; Renat Lumpau <rl03@gentoo.org> +metadata.xml,
+  +files/postinstall-en.txt, +drraw-2.0.1.ebuild:
+  Inital ebuild, requested in #60998.
+

@@ -1,0 +1,57 @@
+# ChangeLog for games-fps/doom3-chextrek
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/doom3-chextrek/ChangeLog,v 1.12 2013/04/29 16:16:41 ulm Exp $
+
+  29 Apr 2013; Ulrich Müller <ulm@gentoo.org> doom3-chextrek-0.52.ebuild:
+  Fix LICENSE, bug 467512.
+
+  07 Oct 2009; Tristan Heaven <nyhm@gentoo.org> doom3-chextrek-0.52.ebuild:
+  EAPI=2
+
+  01 Oct 2009; Tristan Heaven <nyhm@gentoo.org> doom3-chextrek-0.52.ebuild:
+  Stable on amd64/x86
+
+*doom3-chextrek-0.52 (26 Jul 2009)
+
+  26 Jul 2009; Tristan Heaven <nyhm@gentoo.org> +doom3-chextrek-0.52.ebuild:
+  Version bump by Paul Bredbury, bug #190745
+
+  15 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  -doom3-chextrek-0.5_beta.ebuild, doom3-chextrek-0.5_beta-r1.ebuild:
+  Marking stable on amd64/x86 as there's no code differences, just ebuild
+  differences, and this has been in the tree for a long time with no bugs
+  filed.
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org>
+  doom3-chextrek-0.5_beta.ebuild, doom3-chextrek-0.5_beta-r1.ebuild:
+  Replacing einfo with elog
+
+*doom3-chextrek-0.5_beta-r1 (30 Oct 2006)
+
+  30 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +doom3-chextrek-0.5_beta-r1.ebuild:
+  Added new revision for testing which uses the brand-spankin-new
+  games-mods.eclass to reduce ebuild code.
+
+  29 Apr 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fix SHA256 digest.
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  doom3-chextrek-0.5_beta.ebuild:
+  Moved dependency on games-fps/doom3 to RDEPEND.
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  doom3-chextrek-0.5_beta.ebuild:
+  Changed nostrip to strip and nomirror to mirror.
+
+  24 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  doom3-chextrek-0.5_beta.ebuild:
+  Moved games_pkg_postinst to beginning of pkg_postinst.
+
+*doom3-chextrek-0.5_beta (22 Mar 2006)
+
+  22 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +doom3-chextrek-0.5_beta.ebuild:
+  Initial import. Ebuild by Paul Bredbury <brebs@sent.com>. Closing bug
+  #121719.
+

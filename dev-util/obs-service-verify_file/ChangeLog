@@ -1,0 +1,31 @@
+# ChangeLog for dev-util/obs-service-verify_file
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/obs-service-verify_file/ChangeLog,v 1.5 2013/11/02 09:38:00 scarabeus Exp $
+
+*obs-service-verify_file-20130403 (02 Nov 2013)
+
+  02 Nov 2013; Tomáš Chvátal <scarabeus@gentoo.org>
+  +obs-service-verify_file-20130403.ebuild,
+  -obs-service-verify_file-20130318.ebuild:
+  Version bump to version that use sha1sum. And fix license.
+
+  18 Mar 2013; Michal Hrusecky <miska@gentoo.org>
+  -obs-service-verify_file-20120622.ebuild,
+  obs-service-verify_file-20130318.ebuild:
+  Fast stabilization to minimize broken stable
+
+*obs-service-verify_file-20130318 (18 Mar 2013)
+
+  18 Mar 2013; Michal Hrusecky <miska@gentoo.org>
+  +obs-service-verify_file-20130318.ebuild:
+  Version bump to force reinstall with new paths (bug#446074)
+
+  15 Nov 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  obs-service-verify_file-20120622.ebuild:
+  Stable on amd64 and x86 as we just copy two files around.
+
+*obs-service-verify_file-20120622 (15 Nov 2012)
+
+  15 Nov 2012; Tomáš Chvátal <scarabeus@gentoo.org> +metadata.xml,
+  +obs-service-verify_file-20120622.ebuild:
+  Initial commit of file verification setting service.

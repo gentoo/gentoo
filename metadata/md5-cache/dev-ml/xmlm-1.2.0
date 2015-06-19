@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/findlib dev-ml/opam
+DESCRIPTION=Ocaml XML manipulation module
+EAPI=5
+HOMEPAGE=http://erratique.ch/software/xmlm
+IUSE=doc +ocamlopt
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?]
+SLOT=0/1.2.0
+SRC_URI=http://erratique.ch/software/xmlm/releases/xmlm-1.2.0.tbz
+_md5_=d8da1c97a21de2500a265c2fc6aa8169

@@ -1,0 +1,159 @@
+# ChangeLog for games-fps/ut2004-demo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-demo/ChangeLog,v 1.51 2015/06/14 18:17:51 ulm Exp $
+
+  14 Jun 2015; Ulrich Müller <ulm@gentoo.org> ut2004-demo-3334.ebuild:
+  [QA] Remove emul-linux-x86-* from dependencies.
+
+  26 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> ut2004-demo-3334.ebuild:
+  remove unused empty dodir (bug #534584)
+
+  15 Oct 2014; Pacho Ramos <pacho@gentoo.org> ut2004-demo-3334.ebuild:
+  Support multilib providers for deps. Bump to EAPI=5.
+
+  07 May 2014; Ulrich Müller <ulm@gentoo.org> ut2004-demo-3334.ebuild:
+  Fix LICENSE, bug 506968.
+
+  12 Jan 2013; Tupone Alfredo <tupone@gentoo.org> ut2004-demo-3334.ebuild:
+  Use QA_PREBUILD Bug #451436 by Diego Elio Pettenò
+
+  05 Feb 2012; Mike Frysinger <vapier@gentoo.org> ut2004-demo-3334.ebuild:
+  Move to new unpacker eclass for unpack_makeself.
+
+  26 Mar 2009; Alfredo Tupone <tupone@gentoo.org> ut2004-demo-3334.ebuild:
+  Mirroring file to fix bug #263361 by Thilo Bangert
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> ut2004-demo-3334.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  21 Jun 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3334.ebuild:
+  Revert the last change, since this demo is 64-bit native and we broke it on
+  amd64 machines. Closing bug #182731.
+
+  16 May 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3334.ebuild:
+  Move the virtual/libstdc++ inside the x86 check as we don't need it on
+  amd64. Thanks to Cardoe for finding this.
+
+  03 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3334.ebuild:
+  Changing the description to match games-fps/ut2004.
+
+  02 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3334.ebuild:
+  Some minor code cleanups and changing the text on the desktop icon.
+
+  19 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3334.ebuild:
+  Adding strip to RESTRICT for bug #137819.
+
+  22 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3334.ebuild:
+  Demo->(Demo) for bug #133836.
+
+  24 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3334.ebuild:
+  Moved games_pkg_postinst to beginning of pkg_postinst.
+
+  10 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3334.ebuild:
+  Added modular X dependencies and changed to use virtual/libstdc++ instead of
+  listing the separate dependencies.
+
+  12 Dec 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3334.ebuild:
+  Making libstdc++-v3 dependency no longer amd64-only and making it also met
+  by gcc 3.3, which is a more proper solution.
+
+  13 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3334.ebuild:
+  Added libstdc++-v3 to RDEPEND and closing bug #112371.
+
+  21 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3334.ebuild:
+  Added addition dir variable to games_make_wrapper for bug #109793.
+
+  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3334.ebuild:
+  Making games last on inherit line.
+
+  30 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3334.ebuild:
+  Changed to match new 3dgamers mirrors structure in thirdpartymirrors.
+
+  17 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3334.ebuild:
+  Removed unused dedicated USE check in DEPEND.
+
+  16 Oct 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3334.ebuild:
+  Updated icon image.
+
+*ut2004-demo-3334 (07 Oct 2004)
+
+  07 Oct 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  -ut2004-demo-3120-r4.ebuild, +ut2004-demo-3334.ebuild:
+  Version bumped to 3334 and closing bug #65232.
+
+  19 Jul 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3120-r4.ebuild:
+  Added libsdl and openal to DEPEND and closing bug #57627.
+
+*ut2004-demo-3120-r4 (08 Jul 2004)
+
+  08 Jul 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  -ut2004-demo-3120-r2.ebuild, -ut2004-demo-3120-r3.ebuild,
+  +ut2004-demo-3120-r4.ebuild:
+  Updated to close bug #54726.
+
+  01 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  ut2004-demo-3120-r2.ebuild, ut2004-demo-3120-r3.ebuild:
+  fix use
+
+  01 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3120-r2.ebuild, ut2004-demo-3120-r3.ebuild:
+  QA cleanup
+
+  18 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  -ut2004-demo-3120-r1.ebuild, ut2004-demo-3120-r2.ebuild:
+  Removing -r1 and marking -r2 stable on x86 and amd64.
+
+  12 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3120-r1.ebuild, ut2004-demo-3120-r2.ebuild,
+  ut2004-demo-3120-r3.ebuild:
+  Adding IUSE to -r1 and removing redundant inherit eutils. Marking -r3 stable
+  for x86.
+
+  16 Mar 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3120-r3.ebuild:
+  Changed amd64 patch to pingpatch2.  Closing bug #44681.
+
+  15 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  ut2004-demo-3120-r3.ebuild:
+  fix from bug #43108 again
+
+  16 Mar 2004; <augustus@gentoo.org> ut2004-demo-3120-r3.ebuild:
+  Masked -r3 for amd64. There was no change that should have affected amd64. In
+  fact, you missed some -r2 changes and broke it for amd64.
+
+  13 Mar 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3120-r3.ebuild:
+  Removed extra DISTDIR line.  Closing bug #44611.
+
+*ut2004-demo-3120-r3 (03 Mar 2004)
+
+  03 Mar 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-demo-3120-r3.ebuild, ut2004-demo-3120.ebuild:
+  Revision bump to test new openal/libsdl from icculus.
+
+*ut2004-demo-3120-r2 (24 Feb 2004)
+*ut2004-demo-3120-r1 (20 Feb 2004)
+
+  15 Feb 2004; Brad House <brad_mssw@gentoo.org> ut2004-demo-3120.ebuild:
+  amd64 version has been released, should be on mirrors soon
+
+*ut2004-demo-3120 (13 Feb 2004)
+
+  13 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

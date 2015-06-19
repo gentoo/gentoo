@@ -1,0 +1,71 @@
+# ChangeLog for dev-python/colander
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/colander/ChangeLog,v 1.16 2015/03/08 23:42:10 pacho Exp $
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> colander-1.0.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> colander-1.0.ebuild:
+  amd64 stable, bug 540290
+
+*colander-1.0 (07 Dec 2014)
+
+  07 Dec 2014; Ian Delaney <idella4@gentoo.org> +colander-1.0.ebuild,
+  -colander-1.0_alpha1-r1.ebuild, -colander-1.0_alpha1.ebuild,
+  -colander-1.0_beta1.ebuild, -colander-0.9.7.ebuild, -colander-0.9.8.ebuild,
+  -colander-0.9.9.ebuild:
+  clean old impl, add pypy3, add new dep for tests, rm old
+
+*colander-1.0_beta1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Delaney <idella4@gentoo.org> +colander-1.0_beta1.ebuild:
+  bump; drop py2.6 pypy2_0 add py3.4, tidy
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> colander-1.0_alpha1-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+*colander-1.0_alpha1-r1 (26 Aug 2013)
+
+  26 Aug 2013; Michał Górny <mgorny@gentoo.org> +colander-1.0_alpha1-r1.ebuild:
+  Convert to distutils-r1.
+
+*colander-1.0_alpha1 (22 Jan 2013)
+
+  22 Jan 2013; Patrick Lauer <patrick@gentoo.org> +colander-1.0_alpha1.ebuild:
+  Bump
+
+*colander-0.9.9 (09 Oct 2012)
+
+  09 Oct 2012; Patrick Lauer <patrick@gentoo.org> +colander-0.9.9.ebuild:
+  Bump
+
+  08 May 2012; Kacper Kowalik <xarthisius@gentoo.org> colander-0.9.8.ebuild:
+  Don't install sphinx's cache
+
+*colander-0.9.8 (08 May 2012)
+
+  08 May 2012; Kacper Kowalik <xarthisius@gentoo.org> +colander-0.9.8.ebuild,
+  -colander-0.9.3.ebuild, -colander-0.9.4.ebuild, -colander-0.9.6.ebuild:
+  Version bump, fixes #415113. Thanks to Ian Delaney <johneed@hotmail.com> for
+  report and testing. Drop old
+
+*colander-0.9.7 (08 Apr 2012)
+
+  08 Apr 2012; Mike Gilbert <floppym@gentoo.org> +colander-0.9.7.ebuild:
+  Version bump, #411049 by Ian Delaney.
+
+*colander-0.9.6 (22 Feb 2012)
+
+  22 Feb 2012; Marien Zwart <marienz@gentoo.org> +colander-0.9.6.ebuild:
+  Version bump, fixes bug #404171. Add Python 3 support.
+
+*colander-0.9.4 (07 Feb 2012)
+
+  07 Feb 2012; Patrick Lauer <patrick@gentoo.org> +colander-0.9.4.ebuild:
+  Bump for #402445
+
+*colander-0.9.3 (30 Jul 2011)
+
+  30 Jul 2011; Rafael G. Martins <rafaelmartins@gentoo.org>
+  +colander-0.9.3.ebuild, +metadata.xml:
+  Initial version. Based on ebuild by Jan Matějka (bug #368019).

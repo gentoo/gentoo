@@ -1,0 +1,35 @@
+# ChangeLog for sys-firmware/iwl6000-ucode
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-firmware/iwl6000-ucode/ChangeLog,v 1.2 2012/10/03 19:34:02 vapier Exp $
+
+  03 Oct 2012; Mike Frysinger <vapier@gentoo.org>
+  iwl6000-ucode-9.221.4.1.ebuild:
+  Drop useless DEPEND strings -- these work fine w/out udev or hotplug.
+
+  15 Aug 2012; Johannes Huber <johu@gentoo.org> iwl6000-ucode-9.221.4.1.ebuild:
+  Stable for x86, wrt bug #430770
+
+  10 Aug 2012; Agostino Sarubbo <ago@gentoo.org>
+  iwl6000-ucode-9.221.4.1.ebuild:
+  Stable for amd64, wrt bug #430770
+
+  15 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  iwl6000-ucode-9.221.4.1.ebuild:
+  Fix description. Thanks to Christian Samsel in bug #421233.
+
+  20 Jul 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -iwl6000-ucode-9.193.4.1.ebuild, iwl6000-ucode-9.221.4.1.ebuild:
+  Remove old version and update description as noted by Tim Harder in bug
+  #329161.
+
+*iwl6000-ucode-9.221.4.1 (25 Jun 2010)
+
+  25 Jun 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +iwl6000-ucode-9.221.4.1.ebuild:
+  Version bump.
+
+*iwl6000-ucode-9.193.4.1 (10 Jun 2010)
+
+  10 Jun 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +iwl6000-ucode-9.193.4.1.ebuild, +metadata.xml:
+  Initial import of ucode for IWL 6000 series cards.

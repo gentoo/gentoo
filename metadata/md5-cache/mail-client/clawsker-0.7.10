@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Applet to edit Claws Mail's hidden preferences
+HOMEPAGE=http://www.claws-mail.org/clawsker/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=dev-lang/perl-5.8.0 >=dev-perl/gtk2-perl-1.200 >=dev-perl/Locale-gettext-1.05 >=mail-client/claws-mail-3.5.0
+SLOT=0
+SRC_URI=http://www.claws-mail.org/tools/clawsker-0.7.10.tar.gz
+_md5_=8d597cb759f0ae562c3323654776c7f1

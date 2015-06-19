@@ -1,0 +1,12 @@
+diff -Naur epic4-1.1.14.orig/include/config.h epic4-1.1.14/include/config.h
+--- epic4-1.1.14.orig/include/config.h	2003-10-28 05:53:57.000000000 +0000
++++ epic4-1.1.14/include/config.h	2004-01-03 13:49:53.083473288 +0000
+@@ -42,7 +42,7 @@
+  *  the client will NOT compile and work properly!  Use the default here if
+  *  you dont have other servers to use.
+  */
+-#define DEFAULT_SERVER "localhost irc.efnet.net irc.undernet.org irc.dal.net"
++#define DEFAULT_SERVER "localhost irc.freenode.net irc.efnet.net irc.undernet.org irc.dal.net"
+ 
+ /*
+  * The left and right brace characters ('{', '}') are special characters in

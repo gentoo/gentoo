@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>andrzej.pauli@gmail.com</email>
+		<name>Andrzej Pauli</name>
+		<description>Maintainer.  Assign bugs to him.</description>
+	</maintainer>
+	<maintainer>
+		<email>aidecoe@gentoo.org</email>
+		<name>Amadeusz Żołnowski</name>
+		<description>Proxy maintainer.  CC him on bugs.</description>
+	</maintainer>
+	<longdescription lang="en">
+		MJPG-streamer takes JPGs from Linux-UVC compatible webcams, filesystem or
+		other input plugins and streams them as M-JPEG via HTTP to webbrowsers,
+		VLC and other software.  It is the successor of uvc-streamer, a Linux-UVC
+		streaming application with Pan/Tilt
+	</longdescription>
+	<use>
+		<flag name='input_testpicture'>Plugin for sending compiled in, test
+			pictures</flag>
+		<flag name='input_control'>Plugin giving ability to control camera
+			movement (only specific cameras)</flag>
+		<flag name='input_file'>Plugin that watches given directory and send
+			it's content</flag>
+		<flag name='input_uvc'>Plugin that sends video stream from UVC
+			compatible camera</flag>
+		<flag name='output_file'>Plugin that saves received content under given
+			location</flag>
+		<flag name='output_udp'>Plugin receiving content over UDP and storing to
+			a directory</flag>
+		<flag name='output_http'>Small HTTP server plugin which sends WWW
+			directory content and streams image content</flag>
+		<flag name='output_autofocus'>Auto focusing plugin</flag>
+		<flag name='output_rtsp'>Plugin which provides a mechanism to take
+			snapshots with a trigger from a UDP packet</flag>
+		<flag name='www'>Installs WWW content</flag>
+		<flag name='v4l'>Uses <pkg>media-libs/libv4l</pkg> function mapping for
+			input_uvc plugin</flag>
+	</use>
+</pkgmetadata>

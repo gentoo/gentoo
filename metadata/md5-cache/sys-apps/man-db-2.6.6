@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install preinst setup
+DEPEND=dev-libs/libpipeline berkdb? ( sys-libs/db ) gdbm? ( sys-libs/gdbm ) !berkdb? ( !gdbm? ( sys-libs/gdbm ) ) sys-apps/groff zlib? ( sys-libs/zlib ) !sys-apps/man app-arch/xz-utils virtual/pkgconfig nls? ( >=app-text/po4a-0.45 sys-devel/gettext )
+DESCRIPTION=a man replacement that utilizes berkdb instead of flat files
+EAPI=4
+HOMEPAGE=http://www.nongnu.org/man-db/
+IUSE=berkdb +gdbm nls selinux static-libs zlib
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~arm-linux ~x86-linux
+LICENSE=GPL-3
+RDEPEND=dev-libs/libpipeline berkdb? ( sys-libs/db ) gdbm? ( sys-libs/gdbm ) !berkdb? ( !gdbm? ( sys-libs/gdbm ) ) sys-apps/groff zlib? ( sys-libs/zlib ) !sys-apps/man selinux? ( sec-policy/selinux-mandb )
+SLOT=0
+SRC_URI=mirror://nongnu/man-db/man-db-2.6.6.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=ed5f7d839cffc2460ab391f29c40a230

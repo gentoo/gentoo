@@ -1,0 +1,27 @@
+--- ImageSlideShow/__init__.py.orig	2008-01-15 16:36:23.000000000 +0100
++++ ImageSlideShow/__init__.py	2009-05-10 16:57:27.000000000 +0200
+@@ -45,11 +45,10 @@
+ 		self.__previous_width = 300
+ 		
+ 		#Cache folder
+-		#folder = os.path.expanduser("~") + "/" + ".cache2/imageslideshow"
+-		folder = "/tmp/imageslideshow"
++		folder = os.path.expanduser("~") + "/" + ".thumbnails/imageslideshow"
+ 		debugger("cache folder is:" + folder)
+ 		if not os.path.isdir(folder):
+-			os.mkdir(folder)
++			os.makedirs(folder)
+ 			
+ 		self.__thumbnail_folder=folder
+ 		
+--- ImageSlideShow/directorywalk.py.orig	2009-05-02 20:42:41.000000000 +0200
++++ ImageSlideShow/directorywalk.py	2009-05-28 18:57:51.000000000 +0200
+@@ -10,7 +10,7 @@
+ 			st = os.lstat(os.path.join(top, name))
+ 		except os.error:
+ 			continue
+-		if stat.S_ISDIR(st.st_mode):
++		if stat.S_ISDIR(st.st_mode) or stat.S_ISLNK(st.st_mode):
+ 			for (newtop, children) in walktree (os.path.join(top, name), depthfirst):
+ 				yield newtop, children
+ 	if depthfirst:

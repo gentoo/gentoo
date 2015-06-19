@@ -1,0 +1,79 @@
+# ChangeLog for dev-python/PyFoam
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/PyFoam/ChangeLog,v 1.14 2015/03/08 23:38:06 pacho Exp $
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> PyFoam-0.5.4-r2.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> PyFoam-0.5.4-r2.ebuild:
+  amd64 stable, bug 540290
+
+*PyFoam-0.5.4-r2 (29 Dec 2014)
+
+  29 Dec 2014; Ian Delaney <idella4@gentoo.org> +PyFoam-0.5.4-r2.ebuild,
+  -PyFoam-0.5.4-r1.ebuild:
+  revbump; convert -> distutils-r1, rm old
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  30 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  PyFoam-0.5.4-r1.ebuild:
+  Fix dependencies. Set SUPPORT_PYTHON_ABIS.
+
+  30 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -PyFoam-0.5.2.ebuild:
+  Delete.
+
+*PyFoam-0.5.4-r1 (17 Oct 2010)
+
+  17 Oct 2010; Patrick Lauer <patrick@gentoo.org> -PyFoam-0.5.4.ebuild,
+  +PyFoam-0.5.4-r1.ebuild, metadata.xml:
+  Adding extra optional deps
+
+*PyFoam-0.5.4 (17 Oct 2010)
+
+  17 Oct 2010; Patrick Lauer <patrick@gentoo.org> +PyFoam-0.5.4.ebuild:
+  Bump for #340171
+
+  22 Mar 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Fixed herd.
+
+  06 Sep 2009; Christian Ruppert <idl0r@gentoo.org>
+  -files/PyFoam-py26.patch:
+  Remove unused patch.
+
+  30 Apr 2009; Patrick Lauer <patrick@gentoo.org> -PyFoam-0.5.1.ebuild:
+  Remove old
+
+  26 Apr 2009; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Adding Oliver Borm to metadata
+
+*PyFoam-0.5.2 (26 Apr 2009)
+
+  26 Apr 2009; Patrick Lauer <patrick@gentoo.org> +PyFoam-0.5.2.ebuild:
+  Bump to 0.5.2, fixes py2.6 issues and other bits, closes #267520
+
+*PyFoam-0.5.1 (25 Apr 2009)
+
+  25 Apr 2009; Patrick Lauer <patrick@gentoo.org> +files/PyFoam-py26.patch,
+  +metadata.xml, +PyFoam-0.5.1.ebuild:
+  Initial import from sunrise. Thanks to Oliver Borm for the ebuild and the
+  sunrise people for massaging it into shape. Small python-2.6 fix as
+  upstream tried to use with as a variable name.
+
+  13 Feb 2009; Oliver Borm (boroli) <oli.borm@web.de> -PyFoam-0.5.0.ebuild,
+  +PyFoam-0.5.1.ebuild:
+  Version bump.
+
+  22 Sep 2008; Oliver Borm (boroli) <oli.borm@web.de> -PyFoam-0.4.3.ebuild,
+  +PyFoam-0.5.0.ebuild:
+  Version bump, added dependency
+
+  24 Jun 2008; Oliver Borm (boroli) <oli.borm@web.de> PyFoam-0.4.3.ebuild:
+  Added dependencies, thanks to gentoofan23
+
+  24 Jun 2008; Oliver Borm (boroli) <oli.borm@web.de> +PyFoam-0.4.3.ebuild,
+  +metadata.xml:
+  New ebuild for bug 229245

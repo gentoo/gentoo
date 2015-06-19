@@ -1,0 +1,270 @@
+# ChangeLog for net-analyzer/ngrep
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ngrep/ChangeLog,v 1.75 2014/07/14 23:44:08 jer Exp $
+
+  14 Jul 2014; Jeroen Roovers <jer@gentoo.org> ngrep-1.45-r3.ebuild,
+  -files/ngrep-1.45-Makefile.in.patch, files/ngrep-1.45-build-fixes.patch,
+  files/ngrep-1.45-prefix.patch, files/ngrep-1.45-setlocale.patch,
+  -files/ngrep-1.45.patch:
+  EAPI bump. Set --disable-pcap-restart to avoid more rude e-mails from libpcap
+  upstream. Force --enable-pcre instead of long obsolete shipped GNU regex.
+  Clean up patches.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  16 Jan 2013; Ulrich Müller <ulm@gentoo.org> ngrep-1.45-r3.ebuild:
+  Fix LICENSE, see LICENSE.txt, bug 452012.
+
+  12 Jun 2012; Zac Medico <zmedico@gentoo.org> ngrep-1.45-r3.ebuild:
+  inherit user for enewgroup and enewuser
+
+  20 Aug 2011; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Remove useless maintainer and longdescription tag.
+
+  10 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> ngrep-1.45-r3.ebuild:
+  ppc64 stable wrt #299040
+
+  29 Dec 2010; Markos Chandras <hwoarang@gentoo.org> ngrep-1.45-r3.ebuild:
+  Stable on amd64 wrt bug #299040
+
+  13 Dec 2010; Jeroen Roovers <jer@gentoo.org> ngrep-1.45-r3.ebuild:
+  Set RDEPEND.
+
+  13 Dec 2010; Jeroen Roovers <jer@gentoo.org> ngrep-1.45-r3.ebuild:
+  Stable for HPPA PPC (bug #299040).
+
+  12 Dec 2010; Raúl Porcel <armin76@gentoo.org> ngrep-1.45-r3.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #299040
+
+  12 Dec 2010; Thomas Kahle <tomka@gentoo.org> ngrep-1.45-r3.ebuild:
+  x86 stable per bug 299040
+
+*ngrep-1.45-r3 (10 Dec 2010)
+
+  10 Dec 2010; Jeroen Roovers <jer@gentoo.org> +ngrep-1.45-r3.ebuild:
+  Correct libpcap include directory (bug #299040 by Hartmut Figge).
+
+  26 May 2010; Jonathan Callen <abcd@gentoo.org> ngrep-1.45-r2.ebuild,
+  +files/ngrep-1.45-prefix.patch:
+  Bump to EAPI=3, add prefix keywords, add patch to not search everywhere
+  for includes
+
+  01 Jun 2009; Peter Volkov <pva@gentoo.org> -ngrep-1.45.ebuild,
+  -ngrep-1.45-r1.ebuild:
+  Remove old.
+
+  31 May 2009; Brent Baude <ranger@gentoo.org> ngrep-1.45-r2.ebuild:
+  stable ppc64, bug 271105
+
+  30 May 2009; nixnut <nixnut@gentoo.org> ngrep-1.45-r2.ebuild:
+  ppc stable #271105
+
+  29 May 2009; Steve Dibb <beandog@gentoo.org> ngrep-1.45-r2.ebuild:
+  amd64 stable, bug 271105
+
+  28 May 2009; Raúl Porcel <armin76@gentoo.org> ngrep-1.45-r2.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #271105
+
+  27 May 2009; Christian Faulhammer <fauli@gentoo.org> ngrep-1.45-r2.ebuild:
+  stable x86, bug 271105
+
+  24 May 2009; Jeroen Roovers <jer@gentoo.org> ngrep-1.45-r2.ebuild:
+  Stable for HPPA (bug #271105).
+
+*ngrep-1.45-r2 (17 Nov 2008)
+
+  17 Nov 2008; Peter Volkov <pva@gentoo.org>
+  +files/ngrep-1.45-build-fixes.patch, +files/ngrep-1.45-setlocale.patch,
+  +ngrep-1.45-r2.ebuild:
+  Fixed build issue with libpcap-1.0.0, bug #247128, thank Matthias Liebig
+  for report and fix. Changed a bit patches so everything respect CC, CFLAGS
+  and etc... Added patch from debian to make regexps respect locale.
+
+  10 Sep 2008; Peter Volkov <pva@gentoo.org> ngrep-1.45-r1.ebuild:
+  enewuser/enewgroup die on their own, no need to || die
+
+  15 Jul 2008; Jeroen Roovers <jer@gentoo.org> ngrep-1.45-r1.ebuild:
+  Stable for HPPA (bug #229843).
+
+  30 Jun 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  ngrep-1.45-r1.ebuild:
+  stable amd64, bug 229843
+
+  30 Jun 2008; Raúl Porcel <armin76@gentoo.org> ngrep-1.45-r1.ebuild:
+  alpha/ia64/x86 stable wrt #229843
+
+  29 Jun 2008; Markus Rothe <corsair@gentoo.org> ngrep-1.45-r1.ebuild:
+  Stable on ppc64; bug #229843
+
+  29 Jun 2008; Friedrich Oslage <bluebird@gentoo.org> ngrep-1.45-r1.ebuild:
+  Stable on sparc, bug #229843
+
+  29 Jun 2008; nixnut <nixnut@gentoo.org> ngrep-1.45-r1.ebuild:
+  Stable on ppc wrt bug 229843
+
+  27 Jun 2008; Raúl Porcel <armin76@gentoo.org>
+  -files/ngrep-1.42-libpcap-include.patch, -ngrep-1.42.ebuild,
+  -ngrep-1.43.ebuild, -ngrep-1.44.ebuild:
+  Remove old
+
+  18 Mar 2008; Jeroen Roovers <jer@gentoo.org>
+  +files/ngrep-1.45-Makefile.in.patch, ngrep-1.45-r1.ebuild:
+  Don't add MAKEFLAGS to submakes (bug #178684).
+
+  16 Jan 2008; Fabian Groffen <grobian@gentoo.org> ngrep-1.42.ebuild,
+  ngrep-1.43.ebuild, ngrep-1.44.ebuild, ngrep-1.45.ebuild,
+  ngrep-1.45-r1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+*ngrep-1.45-r1 (23 Dec 2007)
+
+  23 Dec 2007; Cédric Krier <cedk@gentoo.org> +ngrep-1.45-r1.ebuild:
+  Add user ngrep for bug #199270
+
+  09 Jul 2007; Raúl Porcel <armin76@gentoo.org> ngrep-1.45.ebuild:
+  alpha stable
+
+  13 May 2007; Steve Dibb <beandog@gentoo.org> ngrep-1.45.ebuild:
+  amd64 stable
+
+  24 Apr 2007; Jeroen Roovers <jer@gentoo.org> ngrep-1.45.ebuild:
+  Stable for HPPA too.
+
+  22 Apr 2007; Raúl Porcel <armin76@gentoo.org> ngrep-1.45.ebuild:
+  ia64 stable
+
+  16 Apr 2007; Markus Rothe <corsair@gentoo.org> ngrep-1.45.ebuild:
+  Stable on ppc64
+
+  07 Apr 2007; Javier Villavicencio <the_paya@gentoo.org> ngrep-1.45.ebuild:
+  Add ~x86-fbsd keyword.
+
+  01 Apr 2007; Michael Hanselmann <hansmi@gentoo.org> ngrep-1.45.ebuild:
+  Stable on ppc.
+
+  22 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org> ngrep-1.45.ebuild:
+  Stable on sparc
+
+  20 Mar 2007; Raúl Porcel <armin76@gentoo.org> ngrep-1.45.ebuild:
+  x86 stable
+
+  20 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+*ngrep-1.45 (23 Dec 2006)
+
+  23 Dec 2006; Cedric Krier <cedk@gentoo.org> +files/ngrep-1.45.patch,
+  +ngrep-1.45.ebuild:
+  Version bump for bug #158845
+
+  15 Feb 2006; Markus Ullmann <jokey@gentoo.org> ngrep-1.42.ebuild,
+  ngrep-1.43.ebuild, ngrep-1.44.ebuild:
+  Removing virtual/libpcap wrt bug #117898
+
+*ngrep-1.44 (05 Jul 2005)
+
+  05 Jul 2005; Daniel Black <dragonheart@gentoo.org> +ngrep-1.44.ebuild:
+  version bump
+
+*ngrep-1.43 (26 Feb 2005)
+
+  26 Feb 2005; Daniel Black <dragonheart@gentoo.org> metadata.xml,
+  -files/ngrep-1.41-fix-HAVE_DUMB_UDPHDR-test.patch,
+  -files/ngrep-1.41-libpcap-include.patch, -ngrep-1.40.ebuild,
+  -ngrep-1.41.ebuild, +ngrep-1.43.ebuild:
+  Version bump as per bug #67671 thanks to author Jordan Ritter and reporter
+  gentoo@ma3s.de. Old version cleanout
+
+  20 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> ngrep-1.42.ebuild:
+  Fix docs that are installed; Thanks to vanquirius in bug 82719.
+
+  31 Jan 2005; Daniel Black <dragonheart@gentoo.org> ngrep-1.40.ebuild,
+  ngrep-1.41.ebuild, ngrep-1.42.ebuild:
+  virtual/libpcap transition
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  27 Oct 2004; Eldad Zack <eldad@gentoo.org> -files/ngrep-1.38-r2-gentoo.diff,
+  ngrep-1.42.ebuild:
+  Tidy.
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> ngrep-1.42.ebuild:
+  Stable on amd64.
+
+  26 Aug 2004; Tom Gall <tgall@gentoo.org> ngrep-1.42.ebuild:
+  stable on ppc64, bug #58532
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> ngrep-1.42.ebuild:
+  Stable on alpha.
+
+  19 Aug 2004; Jason Wever <weeve@gentoo.org> ngrep-1.42.ebuild:
+  Stable on sparc.
+
+  16 Aug 2004; Eldad Zack <eldad@gentoo.org> ngrep-1.42.ebuild:
+  x86 stable
+
+  26 Jul 2004; Lina Pezzella <j4rg0n@gentoo.org> ngrep-1.42.ebuild:
+  Stable macos.
+
+  09 Jul 2004; Eldad Zack <eldad@gentoo.org> ngrep-1.41.ebuild:
+  Tidy up.
+
+*ngrep-1.42 (05 Jul 2004)
+
+  05 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
+  +files/ngrep-1.42-libpcap-include.patch, +ngrep-1.42.ebuild:
+  Version bump. Patch to autoconf contributed by lo0ol@eyou.com. Closes #52000.
+  added metadata.
+
+  02 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> ngrep-1.41.ebuild:
+  Stable amd64.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> ngrep-1.40.ebuild,
+  ngrep-1.41.ebuild:
+  change virtual/glibc to virtual/libc, add IUSE
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> ngrep-1.41.ebuild:
+  Add inherit eutils
+
+  06 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> ngrep-1.41.ebuild,
+  files/ngrep-1.41-fix-HAVE_DUMB_UDPHDR-test.patch,
+  files/ngrep-1.41-libpcap-include.patch:
+  Fix compilation aginst the new libpcap include files.
+
+*ngrep-1.41 (01 Feb 2004)
+
+  01 Feb 2004; Martin Schlemmer <azarah@gentoo.org> ngrep-1.41.ebuild:
+  Mark stable, bug #32535.
+
+  24 Nov 2003; Martin Holzer <mholzer@gentoo.org> ngrep-1.40.ebuild,
+  ngrep-1.41.ebuild:
+  adding RESTRICT="nomirror"
+
+  03 Nov 2003; Martin Schlemmer <azarah@gentoo.org> ngrep-1.41.ebuild,
+  files/ngrep-1.41-fix-HAVE_DUMB_UDPHDR-test.patch:
+  Fix test for HAVE_DUMB_UDPHDR to be in proper C format, closing bug #32535.
+
+*ngrep-1.41 (10 Aug 2003)
+
+  10 Aug 2003; Jon Portnoy <avenj@gentoo.org> ngrep-1.41.ebuild :
+  Version bump.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*ngrep-1.40 (1 Feb 2002)
+
+  10 Feb 2003; Peter Johanson <latexer@gentoo.org> ngrep-1.40.ebuild :
+  Added ~alpha to KEYWORDS
+
+  30 Nov 2002; Pieter Van den Abeele <pvdabeel@gentoo.org> ngrep-1.40:
+  Added ppc keyword
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

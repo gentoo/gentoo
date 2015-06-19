@@ -1,0 +1,6 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/games-util/xboxdrv/files/xboxdrv.confd,v 1.1 2013/05/14 19:11:14 swegener Exp $
+
+XBOXDRV_OPTS=""
+#XBOXDRV_OPTS="${XBOXDRV_OPTS} --next-controller --config /etc/xboxdrv/controller.ini"

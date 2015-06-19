@@ -1,0 +1,12 @@
+# ChangeLog for app-forensics/volatility
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/volatility/ChangeLog,v 1.2 2014/11/30 16:49:47 mgorny Exp $
+
+  30 Nov 2014; Michał Górny <mgorny@gentoo.org> volatility-2.4.1.ebuild:
+  Add missing PYTHON_USEDEPs.
+
+*volatility-2.4.1 (29 Nov 2014)
+
+  29 Nov 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> +metadata.xml,
+  +volatility-2.4.1.ebuild:
+  Initial commit. Based in part on ebuild from Pentoo.

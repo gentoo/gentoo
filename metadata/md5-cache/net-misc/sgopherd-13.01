@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst prepare
+DESCRIPTION=Small Gopher Server written in GNU Bash
+EAPI=5
+HOMEPAGE=https://github.com/vain/sgopherd
+KEYWORDS=~amd64 ~x86
+LICENSE=PIZZA-WARE
+RDEPEND=app-shells/bash sys-apps/sed sys-apps/xinetd
+SLOT=0
+SRC_URI=https://github.com/vain/sgopherd/archive/v13.01.tar.gz -> sgopherd-13.01.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=73a052b184887d68e9c69be9341f5fd7

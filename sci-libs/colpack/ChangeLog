@@ -1,0 +1,30 @@
+# ChangeLog for sci-libs/colpack
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/colpack/ChangeLog,v 1.6 2014/11/09 13:53:09 jlec Exp $
+
+  09 Nov 2014; Justin Lecher <jlec@gentoo.org> colpack-1.0.9.ebuild,
+  +files/colpack-1.0.9-fix_gcc49_omp.patch, metadata.xml:
+  Fix compilation with gcc-4.9, #514534
+
+*colpack-1.0.9 (05 Apr 2014)
+
+  05 Apr 2014; Sébastien Fabbro <bicatali@gentoo.org> +colpack-1.0.9.ebuild:
+  Version bump
+
+  17 Sep 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/colpack-1.0.8-no-bin.patch, colpack-1.0.8.ebuild:
+  Avoid installing a development executable on a non-standard directory
+
+*colpack-1.0.8 (06 Sep 2012)
+
+  06 Sep 2012; Sébastien Fabbro <bicatali@gentoo.org> +colpack-1.0.8.ebuild:
+  Version bump
+
+  28 Jun 2012; Sebastien Fabbro <fabbros@gentoo.org> colpack-1.0.6.ebuild:
+  keyword amd64-linux and x86-linux. cleaned up openmp check
+
+*colpack-1.0.6 (13 Apr 2012)
+
+  13 Apr 2012; Sébastien Fabbro <bicatali@gentoo.org> +colpack-1.0.6.ebuild,
+  +files/colpack-1.0.6-flags.patch, +metadata.xml:
+  Initial import

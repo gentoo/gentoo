@@ -1,0 +1,111 @@
+# ChangeLog for dev-util/mingw64-runtime
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/mingw64-runtime/ChangeLog,v 1.20 2015/05/05 11:39:40 alonbl Exp $
+
+*mingw64-runtime-4.0.1 (05 May 2015)
+
+  05 May 2015; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/mingw64-runtime-4.0.1-build.patch,
+  +files/mingw64-runtime-4.0.1-winpthreads.patch, +mingw64-runtime-4.0.1.ebuild,
+  metadata.xml:
+  Version bump, bug#543954
+
+  27 Feb 2015; Mike Frysinger <vapier@gentoo.org> mingw64-runtime-2.0.8.ebuild,
+  mingw64-runtime-3.0.0.ebuild, mingw64-runtime-3.1.0.ebuild,
+  mingw64-runtime-3.2.0-r1.ebuild:
+  Use more readable CTARGET setup logic.
+
+  09 Sep 2014; Alon Bar-Lev <alonbl@gentoo.org> -mingw64-runtime-2.0.1.ebuild,
+  -mingw64-runtime-2.0.7.ebuild:
+  Cleanup old
+
+*mingw64-runtime-3.2.0-r1 (09 Sep 2014)
+
+  09 Sep 2014; Alon Bar-Lev <alonbl@gentoo.org>
+  +mingw64-runtime-3.2.0-r1.ebuild, -mingw64-runtime-3.2.0.ebuild:
+  upstream tarball reenroll, bug#522066
+
+*mingw64-runtime-3.2.0 (03 Sep 2014)
+
+  03 Sep 2014; Alon Bar-Lev <alonbl@gentoo.org> +mingw64-runtime-3.2.0.ebuild:
+  Version bump, bug#521876
+
+*mingw64-runtime-3.1.0 (10 Jan 2014)
+
+  10 Jan 2014; Alon Bar-Lev <alonbl@gentoo.org> +mingw64-runtime-3.1.0.ebuild:
+  Version bump
+
+  13 Oct 2013; Alon Bar-Lev <alonbl@gentoo.org> metadata.xml,
+  mingw64-runtime-3.0.0.ebuild:
+  remove tools USE, bug#487032
+
+*mingw64-runtime-3.0.0 (30 Sep 2013)
+
+  30 Sep 2013; Alon Bar-Lev <alonbl@gentoo.org> +mingw64-runtime-3.0.0.ebuild,
+  metadata.xml:
+  Version bump
+
+*mingw64-runtime-2.0.8 (20 Jun 2013)
+
+  20 Jun 2013; Luca Barbato <lu_zero@gentoo.org> +mingw64-runtime-2.0.8.ebuild:
+  Version bump.
+
+*mingw64-runtime-2.0.7 (18 Feb 2013)
+
+  18 Feb 2013; Mike Frysinger <vapier@gentoo.org> +mingw64-runtime-2.0.7.ebuild:
+  Version bump #457684 by Dennis Schridde.
+
+  06 Jun 2012; Mike Frysinger <vapier@gentoo.org> mingw64-runtime-2.0.1.ebuild:
+  Always provide mingw symlink in sysroot for gcc #419601 by Alon Bar-Lev.
+
+*mingw64-runtime-2.0.1 (12 Mar 2012)
+
+  12 Mar 2012; Mike Frysinger <vapier@gentoo.org>
+  +mingw64-runtime-2.0.1.ebuild, -mingw64-runtime-20100730.ebuild,
+  -mingw64-runtime-20101003.ebuild, -mingw64-runtime-20110523.ebuild:
+  Version bump #388263 by Sven & Alon Bar-Lev.
+
+*mingw64-runtime-20110523 (14 Jul 2011)
+
+  14 Jul 2011; Mike Frysinger <vapier@gentoo.org>
+  +mingw64-runtime-20110523.ebuild:
+  Version bump.
+
+*mingw64-runtime-20101003 (19 Nov 2010)
+
+  19 Nov 2010; Mike Frysinger <vapier@gentoo.org>
+  +mingw64-runtime-20101003.ebuild:
+  Version bump.
+
+*mingw64-runtime-20100730 (14 Aug 2010)
+
+  14 Aug 2010; Mike Frysinger <vapier@gentoo.org>
+  +mingw64-runtime-20100730.ebuild:
+  Version bump #332053 by Alon Bar-Lev.
+
+*mingw64-runtime-20100604 (22 Jun 2010)
+
+  22 Jun 2010; Mike Frysinger <vapier@gentoo.org>
+  +mingw64-runtime-20100604.ebuild:
+  Version bump #323583 by Alon Bar-Lev.
+
+  12 Jan 2010; Mike Frysinger <vapier@gentoo.org>
+  mingw64-runtime-20091222.ebuild:
+  Drop dir changing to fix patch application #300719 by Thomas Axelsson.
+
+  24 Dec 2009; Mike Frysinger <vapier@gentoo.org>
+  mingw64-runtime-20091222.ebuild,
+  +files/mingw64-runtime-20091222-mm_shuffle_ps-x86.patch:
+  Add fix from upstream for 32bit toolchains #298087 by Alon Bar-Lev.
+
+*mingw64-runtime-20091222 (22 Dec 2009)
+
+  22 Dec 2009; Mike Frysinger <vapier@gentoo.org>
+  +mingw64-runtime-20091222.ebuild:
+  Version bump #297819 by Alon Bar-Lev.
+
+*mingw64-runtime-20090419 (09 Dec 2009)
+
+  09 Dec 2009; Mike Frysinger <vapier@gentoo.org>
+  +mingw64-runtime-20090419.ebuild, +metadata.xml:
+  Initial ebuild based on mingw-runtime by Suertreus #271197.

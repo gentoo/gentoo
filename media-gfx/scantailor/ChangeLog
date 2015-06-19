@@ -1,0 +1,56 @@
+# ChangeLog for media-gfx/scantailor
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/scantailor/ChangeLog,v 1.13 2015/04/18 15:54:10 pacho Exp $
+
+  18 Apr 2015; Pacho Ramos <pacho@gentoo.org> scantailor-0.9.11.1.ebuild:
+  x86 stable wrt bug #521814
+
+  19 Oct 2014; Chema Alonso <nimiux@gentoo.org> scantailor-0.9.11.1.ebuild:
+  Stable for amd64 wrt bug #521814
+
+  12 Oct 2014; Tim Harder <radhermit@gentoo.org> scantailor-0.9.11.1.ebuild:
+  Respect CXX (bug #525088).
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> scantailor-0.9.10.ebuild,
+  scantailor-0.9.11.1.ebuild:
+  Move Qt dependencies to the new category
+
+*scantailor-0.9.11.1 (26 Mar 2012)
+
+  26 Mar 2012; Tim Harder <radhermit@gentoo.org> +scantailor-0.9.11.1.ebuild:
+  Version bump.
+
+  07 Dec 2011; Tim Harder <radhermit@gentoo.org> scantailor-0.9.10.ebuild:
+  Remove extra whitespace.
+
+  07 Dec 2011; Tim Harder <radhermit@gentoo.org> scantailor-0.9.10.ebuild:
+  Use virtualx eclass for tests requiring X.
+
+  06 Dec 2011; Tim Harder <radhermit@gentoo.org> -scantailor-0.9.9.ebuild,
+  -scantailor-0.9.9.2.ebuild, metadata.xml:
+  Remove old.
+
+  06 Dec 2011; Tim Harder <radhermit@gentoo.org> +files/scantailor-gcc46.patch,
+  scantailor-0.9.10.ebuild:
+  Fix build issue with gcc-4.6 and newer boost versions (bug #391427 by
+  Oschtan) and skip tests requiring X (bug #325813).
+
+*scantailor-0.9.10 (31 Jul 2011)
+
+  31 Jul 2011; Tim Harder <radhermit@gentoo.org> +scantailor-0.9.10.ebuild:
+  Version bump. Drop dewarping use flag since it's now a core feature.
+
+*scantailor-0.9.9.2 (21 Jul 2011)
+
+  21 Jul 2011; Tim Harder <radhermit@gentoo.org> +scantailor-0.9.9.2.ebuild:
+  Version bump (bug #375849).
+
+  08 Nov 2010; Markus Meier <maekke@gentoo.org> scantailor-0.9.9.ebuild:
+  change jpeg dep to virtual/jpeg
+
+*scantailor-0.9.9 (22 Jun 2010)
+
+  22 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +scantailor-0.9.9.ebuild, +files/scantailor-0.9.9-environment_flags.patch:
+  Initial commit wrt #265584 by Vladimir Berezhnoy, Alexey Charkov and
+  Aleksandr Yakimov.

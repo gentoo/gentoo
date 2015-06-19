@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>web-apps</herd>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>harold@alum.mit.edu</email>
+    <name>Harold Naparst</name>
+    <description>Primary Maintainer, Assign bugs</description>
+  </maintainer>
+  <maintainer>
+    <email>oli.huber@gmail.com</email>
+    <name>Olivier Huber</name>
+    <description>Co Maintainer, CC bugs</description>
+  </maintainer>
+  <maintainer>
+    <email>fauli@gentoo.org</email>
+    <name>Christian Faulhammer</name>
+  </maintainer>
+  <longdescription lang="en">
+    Joomla is an award-winning content management system (CMS), which enables you to build Web sites and powerful online applications.
+  </longdescription>
+  <upstream>
+    <doc lang="en">http://docs.joomla.org</doc>
+    <remote-id type="github">joomla/joomla-cms</remote-id>
+  </upstream>
+</pkgmetadata>

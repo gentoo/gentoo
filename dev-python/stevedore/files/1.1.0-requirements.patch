@@ -1,0 +1,13 @@
+pbr is used only at build time
+argparse is in the standard library
+six is used only in examples
+https://bugs.gentoo.org/show_bug.cgi?id=546776
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -2,6 +2,3 @@
+ # of appearance. Changing the order has an impact on the overall integration
+ # process, which may cause wedges in the gate later.
+ 
+-pbr>=0.6,!=0.7,<1.0
+-argparse
+-six>=1.7.0

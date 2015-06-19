@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm preinst prepare unpack
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=Spotify is a social music platform
+EAPI=5
+HOMEPAGE=https://www.spotify.com/ch-de/download/previews/
+IUSE=gnome pax_kernel pulseaudio
+KEYWORDS=~amd64
+LICENSE=Spotify
+RDEPEND=x11-libs/libxcb x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libXext x11-libs/libXinerama x11-libs/libXdmcp x11-libs/libXScrnSaver x11-libs/libXrandr x11-libs/libXrender dev-qt/qtcore:4[glib] dev-qt/qtdbus:4 dev-qt/qtgui:4[glib] dev-qt/qtwebkit:4 x11-misc/xdg-utils media-libs/alsa-lib media-libs/fontconfig media-libs/freetype dev-libs/openssl:0 dev-libs/glib:2 || ( dev-libs/libgcrypt:11/11 dev-libs/libgcrypt:0/11 ) media-libs/libpng:0 dev-db/sqlite:3 sys-libs/zlib app-arch/bzip2 sys-apps/dbus[X] x11-libs/pango[X] sys-apps/util-linux dev-libs/expat >=dev-libs/nspr-4.9 gnome-base/gconf:2 x11-libs/gtk+:2 dev-libs/nss dev-libs/glib:2 net-print/cups virtual/udev pulseaudio? ( >=media-sound/pulseaudio-0.9.21 ) gnome? ( gnome-extra/gnome-integration-spotify )
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=amd64? ( http://repository.spotify.com/pool/non-free/s/spotify/spotify-client_0.9.17.1.g9b85d43.7-1_amd64.deb )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=92434afd6b09e119fc4fffba14d72d10

@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=sys-fs/mtools dev-perl/Crypt-PasswdMD5 dev-perl/Digest-SHA1 dev-lang/nasm virtual/os-headers
+DESCRIPTION=SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
+HOMEPAGE=http://syslinux.zytor.com/
+IUSE=custom-cflags
+KEYWORDS=-* amd64 x86
+LICENSE=GPL-2
+RDEPEND=sys-fs/mtools dev-perl/Crypt-PasswdMD5 dev-perl/Digest-SHA1
+SLOT=0
+SRC_URI=mirror://kernel/linux/utils/boot/syslinux/4.xx/syslinux-4.07.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=be17aacf01304a8a6b3526ae35a50357

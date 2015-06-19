@@ -1,0 +1,9 @@
+# Config file for /etc/init.d/datacoind
+
+# owner of datacoind process (don't change, must be existing)
+DATACOIN_USER="datacoin-hp"
+
+DATACOIN_OPTS="${DATACOIN_OPTS}"
+
+# nice level
+NICELEVEL="19"

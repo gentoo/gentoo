@@ -1,0 +1,72 @@
+# ChangeLog for sys-apps/proot
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/proot/ChangeLog,v 1.12 2015/01/15 18:15:54 pinkbyte Exp $
+
+  15 Jan 2015; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Adjust upstream maintainer e-mail address
+
+*proot-5.1.0 (15 Jan 2015)
+*proot-5.0.0 (15 Jan 2015)
+*proot-4.0.3 (15 Jan 2015)
+
+  15 Jan 2015; Sergey Popov <pinkbyte@gentoo.org> +proot-4.0.3.ebuild,
+  +proot-5.0.0.ebuild, +proot-5.1.0.ebuild:
+  Version bump, wrt bug #530926, thanks to Joakim Tjernlund <Joakim.Tjernlund
+  AT transmode.se>
+
+*proot-4.0.1 (02 Sep 2014)
+
+  02 Sep 2014; Sergey Popov <pinkbyte@gentoo.org> -proot-4.0.0.ebuild,
+  +proot-4.0.1.ebuild, +files/proot-4.0.1-argv.patch:
+  Version bump, wrt bug #520050 with fix for bug #517496. Thanks to Joakim
+  Tjernlund <Joakim.Tjernlund AT transmode.se> for discovering this issues.
+  Drop old version
+
+*proot-4.0.0 (23 Jul 2014)
+
+  23 Jul 2014; Sergey Popov <pinkbyte@gentoo.org> +proot-4.0.0.ebuild:
+  Version bump, wrt bug #517412
+
+  26 Apr 2014; Sergey Popov <pinkbyte@gentoo.org> proot-3.2.2-r1.ebuild:
+  Stable on amd64 and x86, wrt bug #508394
+
+  16 Mar 2014; Sergey Popov <pinkbyte@gentoo.org> -proot-3.2.2.ebuild,
+  metadata.xml:
+  Add upstream information to metadata, drop old revision
+
+*proot-3.2.2-r1 (11 Mar 2014)
+
+  11 Mar 2014; Sergey Popov <pinkbyte@gentoo.org> -proot-3.2.1.ebuild,
+  -proot-3.2.1-r1.ebuild, +proot-3.2.2-r1.ebuild,
+  +files/proot-3.2.2-build-care.patch, metadata.xml:
+  Revision bump: add support for optional building of CARE binary, wrt bug
+  #502388, thanks to Patrick Lauer. Drop old
+
+*proot-3.2.2 (25 Feb 2014)
+
+  25 Feb 2014; Patrick Lauer <patrick@gentoo.org> +proot-3.2.2.ebuild:
+  Bump
+
+*proot-3.2.1-r1 (23 Dec 2013)
+
+  23 Dec 2013; Sergey Popov <pinkbyte@gentoo.org> +proot-3.2.1-r1.ebuild:
+  Revision bump: add support for hardened systems, wrt bug #493416
+
+  23 Dec 2013; Sergey Popov <pinkbyte@gentoo.org> -proot-2.3.1.ebuild,
+  -files/proot-2.3.1-gnu-define-fix.patch, -files/proot-2.3.1-makefile.patch:
+  Drop old
+
+*proot-3.2.1 (06 Dec 2013)
+
+  06 Dec 2013; Sergey Popov <pinkbyte@gentoo.org> +proot-3.2.1.ebuild,
+  +files/proot-3.2.1-makefile.patch:
+  Version bump, wrt bug #490840. Thanks to Tim Harder for discovering this
+  issue
+
+*proot-2.3.1 (24 Jan 2013)
+
+  24 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> +proot-2.3.1.ebuild,
+  +files/proot-2.3.1-gnu-define-fix.patch,
+  +files/proot-2.3.1-lib-paths-fix.patch, +files/proot-2.3.1-makefile.patch,
+  +metadata.xml:
+  Initial commit, wrt bug #439324, thanks to James Le Cuirot

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Manages Maven symlinks
+EAPI=5
+HOMEPAGE=http://www.gentoo.org/
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=GPL-2
+PDEPEND=|| ( dev-java/maven-bin:3.0 dev-java/maven-bin:2.2 dev-java/maven-bin:2.0 )
+RDEPEND=>=app-admin/eselect-1.2.8 !<dev-java/maven-bin-2.0.10-r1:2.1 !app-eselect/eselect-java
+SLOT=0
+_md5_=eaff2d750d5b8b477183f2d948c3f929

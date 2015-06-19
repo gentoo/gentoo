@@ -1,0 +1,18 @@
+# ChangeLog for sys-fs/scan-ffs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/scan-ffs/ChangeLog,v 1.4 2015/01/28 07:29:43 naota Exp $
+
+  28 Jan 2015; Naohiro Aota <naota@gentoo.org> scan-ffs-1.2.ebuild:
+  Update HOMEPAGE and SRC_URI. #532456
+
+  22 Feb 2007; Timothy Redaelli <drizzt@gentoo.org> metadata.xml:
+  Add long description
+
+  22 Feb 2007; Timothy Redaelli <drizzt@gentoo.org> scan-ffs-1.2.ebuild:
+  Fix HOMEPAGE
+
+*scan-ffs-1.2 (04 Nov 2006)
+
+  04 Nov 2006; Timothy Redaelli <drizzt@gentoo.org> +metadata.xml,
+  +scan-ffs-1.2.ebuild:
+  New ebuild.

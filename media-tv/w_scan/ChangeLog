@@ -1,0 +1,196 @@
+# ChangeLog for media-tv/w_scan
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-tv/w_scan/ChangeLog,v 1.40 2014/12/07 23:50:41 hd_brummy Exp $
+
+*w_scan-20141122 (07 Dec 2014)
+
+  07 Dec 2014; Joerg Bornkessel <hd_brummy@gentoo.org> +w_scan-20141122.ebuild:
+  bump, thx to BT on wrt bug 531722
+
+*w_scan-20140727 (27 Sep 2014)
+
+  27 Sep 2014; Joerg Bornkessel <hd_brummy@gentoo.org> +w_scan-20140727.ebuild:
+  bump, thx to BT on wrt bug 523272
+
+  30 Apr 2014; Joerg Bornkessel <hd_brummy@gentoo.org> -w_scan-20120415.ebuild,
+  -w_scan-20120525.ebuild, w_scan-20130331.ebuild:
+  cleanup old
+
+  27 Apr 2014; Joerg Bornkessel <hd_brummy@gentoo.org> w_scan-20121111.ebuild,
+  w_scan-20130331.ebuild, w_scan-20140118.ebuild:
+  stable amd64 x86, wrt bug 465158
+
+*w_scan-20140118 (31 Mar 2014)
+
+  31 Mar 2014; Joerg Bornkessel <hd_brummy@gentoo.org> +w_scan-20140118.ebuild:
+  bump, wrt bug 465486
+
+*w_scan-20130331 (15 Jun 2013)
+
+  15 Jun 2013; Joerg Bornkessel <hd_brummy@gentoo.org> +w_scan-20130331.ebuild:
+  bump; droped support for < vdr-1.7.3
+
+*w_scan-20121111 (06 Jan 2013)
+
+  06 Jan 2013; Joerg Bornkessel <hd_brummy@gentoo.org> +w_scan-20121111.ebuild:
+  bump, fixed compile with dvb api 5.8
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> w_scan-20120525.ebuild:
+  x86 stable wrt bug #429140
+
+  13 Sep 2012; Agostino Sarubbo <ago@gentoo.org> w_scan-20120525.ebuild:
+  Stable for amd64, wrt bug #429140
+
+*w_scan-20120525 (04 Jun 2012)
+
+  04 Jun 2012; Christian Ruppert <idl0r@gentoo.org> -w_scan-20120128.ebuild,
+  +w_scan-20120525.ebuild:
+  Version bump. Remove old version.
+
+  28 May 2012; Johannes Huber <johu@gentoo.org> w_scan-20120415.ebuild:
+  Stable for x86, wrt bug #417583
+
+  26 May 2012; Agostino Sarubbo <ago@gentoo.org> w_scan-20120415.ebuild:
+  Stable for amd64, wrt bug #417583
+
+  25 May 2012; Samuli Suominen <ssuominen@gentoo.org> -w_scan-20110702.ebuild:
+  old
+
+*w_scan-20120415 (30 Apr 2012)
+
+  30 Apr 2012; Christian Ruppert <idl0r@gentoo.org> -w_scan-20120112.ebuild,
+  +w_scan-20120415.ebuild:
+  Version bump
+
+  15 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org> w_scan-20110702.ebuild,
+  w_scan-20120112.ebuild, w_scan-20120128.ebuild:
+  move media-tv to virtual/linuxtv-dvb-headers, bug #403929
+
+*w_scan-20120128 (10 Feb 2012)
+
+  10 Feb 2012; Christian Ruppert <idl0r@gentoo.org> -w_scan-20111203.ebuild,
+  +w_scan-20120128.ebuild:
+  Version bump.
+
+  16 Jan 2012; Christian Ruppert <idl0r@gentoo.org> w_scan-20120112.ebuild:
+  Fix media-tv/linuxtv-dvb-headers dependency
+
+*w_scan-20120112 (14 Jan 2012)
+
+  14 Jan 2012; Christian Ruppert <idl0r@gentoo.org> +w_scan-20120112.ebuild:
+  Version bump.
+
+  29 Dec 2011; Christian Ruppert <idl0r@gentoo.org> -w_scan-20090918.ebuild,
+  -w_scan-20101204.ebuild:
+  Remove old ebuilds
+
+*w_scan-20111203 (26 Dec 2011)
+
+  26 Dec 2011; Christian Ruppert <idl0r@gentoo.org> +w_scan-20111203.ebuild:
+  Version bump.
+
+  08 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> w_scan-20110702.ebuild:
+  x86 stable wrt bug #385379
+
+  04 Oct 2011; Tony Vroon <chainsaw@gentoo.org> w_scan-20110702.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo & Ian
+  "idella4" Delaney in bug #373499.
+
+*w_scan-20110702 (05 Sep 2011)
+
+  05 Sep 2011; Christian Ruppert <idl0r@gentoo.org> +w_scan-20110702.ebuild,
+  -files/w_scan-20081106-build-and-path-fixes.patch,
+  -files/w_scan-20090516-build-and-path-fixes.patch, metadata.xml:
+  Version bump to 20110702. Remove old patches. Fixes bug 322987 and bug
+  363505.
+
+  27 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -w_scan-20081106.ebuild, -w_scan-20090516.ebuild, w_scan-20101204.ebuild:
+  stable x86, amd64
+
+  04 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  w_scan-20090918.ebuild:
+  marked stable amd64, x86
+
+  02 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  w_scan-20090516.ebuild, w_scan-20090918.ebuild, w_scan-20101204.ebuild:
+  typo in Description fixed, thanks to T.Foerster
+
+*w_scan-20101204 (20 Dec 2010)
+
+  20 Dec 2010; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +w_scan-20101204.ebuild:
+  version bump
+
+*w_scan-20090918 (27 Oct 2009)
+
+  27 Oct 2009; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +w_scan-20090918.ebuild:
+  version bump, #281021
+
+  01 Jul 2009; Matthias Schwarzott <zzam@gentoo.org> w_scan-20081106.ebuild,
+  w_scan-20090516.ebuild:
+  Fix dependencies to get up to date dvb-headers with s2api.
+
+*w_scan-20090516 (16 May 2009)
+
+  16 May 2009; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -w_scan-20090502.ebuild,
+  -files/w_scan-20090502-build-and-path-fixes.patch,
+  +w_scan-20090516.ebuild,
+  +files/w_scan-20090516-build-and-path-fixes.patch:
+  cleanup, version bump
+
+*w_scan-20090502 (02 May 2009)
+
+  02 May 2009; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +w_scan-20090502.ebuild,
+  +files/w_scan-20090502-build-and-path-fixes.patch:
+  new developer branch
+
+  02 May 2009; Joerg Bornkessel <hd_brummy@gentoo.org>
+  w_scan-20081106.ebuild, metadata.xml:
+  fixed HOMEPAGE; stable amd64; pickup maintainance
+
+  13 Feb 2009; Santiago M. Mola <coldwind@gentoo.org>
+  -files/w_scan-20060903-paths.patch,
+  -files/w_scan-20080105-build-and-path-fixes.patch, metadata.xml,
+  -w_scan-20060903.ebuild, -w_scan-20080105.ebuild:
+  Remove old ebuilds and assign to maintainer-needed.
+
+  18 Jan 2009; Markus Meier <maekke@gentoo.org> w_scan-20081106.ebuild:
+  x86 stable, bug #254888
+
+*w_scan-20081106 (20 Nov 2008)
+
+  20 Nov 2008; Santiago M. Mola <coldwind@gentoo.org>
+  +files/w_scan-20081106-build-and-path-fixes.patch,
+  +w_scan-20081106.ebuild:
+  Version bump (bug #246787). Thanks to Richard Li <richardpku at gmail dot
+  com>.
+
+*w_scan-20080105 (02 Apr 2008)
+
+  02 Apr 2008; Santiago M. Mola <coldwind@gentoo.org>
+  +files/w_scan-20080105-build-and-path-fixes.patch, metadata.xml,
+  +w_scan-20080105.ebuild:
+  Version bump wrt bug #215761, fixed paths and honour CFLAGS, LDFLAGS and
+  CC.
+
+  13 Mar 2007; Matthias Schwarzott <zzam@gentoo.org> w_scan-20060903.ebuild:
+  Marked stable on x86.
+
+  29 Jan 2007; Sven Wegener <swegener@gentoo.org> w_scan-20060903.ebuild:
+  Add ~amd64 keyword.
+
+  19 Sep 2006; Matthias Schwarzott <zzam@gentoo.org> +metadata.xml,
+  w_scan-20060903.ebuild:
+  Added missing metadata.
+
+*w_scan-20060903 (16 Sep 2006)
+
+  16 Sep 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/w_scan-20060903-paths.patch, +w_scan-20060903.ebuild:
+  Initial import of ebuild, provided by E. Scaglione <erm67@yahoo.it>, see Bug
+  #146987.
+

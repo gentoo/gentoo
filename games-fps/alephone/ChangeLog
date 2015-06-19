@@ -1,0 +1,190 @@
+# ChangeLog for games-fps/alephone
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/alephone/ChangeLog,v 1.42 2013/02/18 20:40:12 hasufell Exp $
+
+*alephone-20120514 (18 Feb 2013)
+
+  18 Feb 2013; Julian Ospald <hasufell@gentoo.org> +alephone-20120514.ebuild,
+  +files/alephone-20120514-gcc47.patch, +files/alephone-20120514-png15.patch:
+  version bump
+
+  15 Oct 2012; Tupone Alfredo <tupone@gentoo.org> alephone-20100424.ebuild,
+  +files/alephone-20100424-gcc47.patch:
+  Fix build with gcc-4.7 Bug #423037 by Samuli Suominen
+  Moved to EAPI 4
+
+  23 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> alephone-20100424.ebuild:
+  Fix building with sys-devel/automake >= 1.12 wrt #422557
+
+  13 Sep 2011; Tupone Alfredo <tupone@gentoo.org> alephone-20100424.ebuild,
+  +files/alephone-20100424-png15.patch:
+  Build with media-libs/libpng-1.5 Bug #380765 by Diego Elio Pettenò
+
+  20 Jan 2011; Tupone Alfredo <tupone@gentoo.org> alephone-20100424.ebuild,
+  +files/alephone-20100424-boost_145.patch:
+  Fix build with boost-1.45. Bug #352123 by flameeyes@gentoo.org
+
+  19 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  alephone-20100424.ebuild:
+  x86 stable wrt bug #333061
+
+  18 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  alephone-20100424.ebuild:
+  Stable on amd64 wrt bug #333061
+
+*alephone-20100424 (17 Jul 2010)
+
+  17 Jul 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +alephone-20100424.ebuild:
+  version bump
+
+  12 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  alephone-20100218.ebuild:
+  stable x86, bug 318515
+
+  25 May 2010; Pacho Ramos <pacho@gentoo.org> alephone-20100218.ebuild:
+  stable amd64, bug 318515
+
+  04 Apr 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  alephone-20100218.ebuild:
+  add use dep for libsdl
+
+  05 Mar 2010; Tupone Alfredo <tupone@gentoo.org> alephone-20100218.ebuild:
+  Adding dev-libs/zzlib dependency. Bug #307581 by j.habenicht
+
+  21 Feb 2010; Tupone Alfredo <tupone@gentoo.org> alephone-20100218.ebuild:
+  Removing opengl use flag. Fix Bug #298104 by flameeyes@gentoo.org
+
+*alephone-20100218 (21 Feb 2010)
+
+  21 Feb 2010; Tupone Alfredo <tupone@gentoo.org> +alephone-20100218.ebuild:
+  Version bump to 20100218. Bug #306085 by hitachi
+
+  07 Nov 2009; Mounir Lamouri <volkmar@gentoo.org> alephone-20091015.ebuild:
+  Keywording for ppc, bug 275131
+
+*alephone-20091015 (02 Nov 2009)
+
+  02 Nov 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +alephone-20091015.ebuild:
+  version bump
+
+*alephone-20081226 (04 Mar 2009)
+
+  04 Mar 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +alephone-20081226.ebuild:
+  version bump
+
+  05 Dec 2008; Raúl Porcel <armin76@gentoo.org> alephone-20080721.ebuild:
+  x86 stable wrt #239738
+
+  09 Oct 2008; Jeremy Olexa <darkside@gentoo.org> alephone-20080721.ebuild:
+  amd64 stable, bug #239738
+
+*alephone-20080721 (04 Sep 2008)
+
+  04 Sep 2008; Tristan Heaven <nyhm@gentoo.org> +alephone-20080721.ebuild:
+  Version bump, bug #229667
+
+  24 Jun 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/alephone-20071103-speex.patch, alephone-20071103.ebuild:
+  add upstream patch to fix building with newer speex (bug #209199)
+
+*alephone-20071103 (04 Feb 2008)
+
+  04 Feb 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +alephone-20071103.ebuild:
+  version bump
+
+*alephone-20070819 (31 Aug 2007)
+
+  31 Aug 2007; <tupone@gentoo.org> +files/alephone-20070819-configure.patch,
+  +alephone-20070819.ebuild:
+  Version bump to 20070819 (0.18.1). Bug #182528 by Kai
+
+  05 Jul 2007; Markus Rothe <corsair@gentoo.org> alephone-20061228.ebuild:
+  Added ~ppc64; bug #183570
+
+  21 Feb 2007; Tristan Heaven <nyhm@gentoo.org>
+  files/alephone-20061228-configure.patch:
+  Fix USE=speex, bug #167724
+
+  14 Feb 2007; Simon Stelling <blubb@gentoo.org> alephone-20061228.ebuild:
+  stable on amd64; security bug 162092
+
+  14 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  alephone-20061228.ebuild:
+  stable x86; security bug 162092
+
+*alephone-20061228 (13 Feb 2007)
+
+  13 Feb 2007; Tristan Heaven <nyhm@gentoo.org>
+  +files/alephone-20061228-configure.patch, +alephone-20061228.ebuild:
+  Version bump, bug #159132
+
+*alephone-20060701 (08 Oct 2006)
+
+  08 Oct 2006; <tupone@gentoo.org> -files/alephone-20051119-gcc41.patch,
+  +alephone-20060701.ebuild:
+  Version bumped to 20060701. Bug #145321 by Pawel Suchanecki
+
+  19 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -alephone-20050118.ebuild, -alephone-20051119.ebuild,
+  alephone-20060506-r1.ebuild:
+  Stable on amd64/x86 and cleaning up older versions.
+
+  04 Jun 2006; <Tupone@gentoo.org> -alephone-20060506.ebuild:
+  Removing obsoleted ebuild
+
+*alephone-20060506-r1 (03 Jun 2006)
+
+  03 Jun 2006; <Tupone@gentoo.org> +files/alephone.sh,
+  +alephone-20060506-r1.ebuild:
+  Wrapper rewritten, bug #135428 by Ben Urban
+
+*alephone-20060506 (02 Jun 2006)
+
+  02 Jun 2006; <Tupone@gentoo.org> +alephone-20060506.ebuild:
+  Version bump, bug #135237 by Kai
+  Turning off ARTS, bug #114673 by Ben Urban
+
+  05 May 2006; <Tupone@gentoo.org> +files/alephone-20051119-gcc41.patch,
+  alephone-20051119.ebuild:
+  Fix for gcc-4.1, bug #131689 by Charlie Shepherd
+  Patch by Mark Loeser
+
+  30 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/20040417-gcc34.patch, -alephone-20040417.ebuild:
+  Cleaned out some older ebuilds.
+
+  20 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  alephone-20051119.ebuild:
+  Removed COPYING.
+
+*alephone-20051119 (06 Dec 2005)
+
+  06 Dec 2005; Chris Gianelloni <wolf31o2@gentoo.org> +files/alephone.png,
+  +alephone-20051119.ebuild:
+  Version bumped to 20051119 and closing bug #113947.
+
+  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  alephone-20040417.ebuild:
+  Making games last on inherit line.
+
+  23 Aug 2005; Homer Parker <hparker@gentoo.org> alephone-20040417.ebuild:
+  Marked ~amd64.
+
+  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  alephone-20050118.ebuild:
+  Removed INSTALL.Unix file.
+
+*alephone-20050118 (23 Feb 2005)
+
+  23 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +alephone-20050118.ebuild:
+  version bump (bug #82906) - patch from David Bailey
+
+*alephone-20040417 (02 Jan 2004)
+
+  02 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Will McQueen / James Le Cuirot #43303.

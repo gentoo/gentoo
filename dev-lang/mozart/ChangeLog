@@ -1,0 +1,190 @@
+# ChangeLog for dev-lang/mozart
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/mozart/ChangeLog,v 1.42 2015/05/15 12:03:51 pacho Exp $
+
+  15 May 2015; Pacho Ramos <pacho@gentoo.org> mozart-1.4.0-r3.ebuild:
+  ppc stable wrt bug #548688
+
+*mozart-1.4.0-r3 (25 Mar 2015)
+
+  25 Mar 2015; Justin Lecher <jlec@gentoo.org> +mozart-1.4.0-r3.ebuild,
+  mozart-1.4.0-r2.ebuild:
+  Fix tcl/tk slotting; bump to EAPI=5
+
+  27 Aug 2012; <keri@gentoo.org> -files/mozart-1.3.2-const-cast.patch,
+  -files/mozart-1.3.2-contrib.patch, -files/mozart-1.3.2-emubin.patch,
+  -files/mozart-1.3.2-gcc4.patch, -files/mozart-1.3.2-nostrip.patch,
+  -files/mozart-1.3.2-ozplatform.patch, -files/mozart-1.3.2-portage.patch,
+  -files/mozart-1.3.2-ri-fpe.patch:
+  Remove old patch files
+
+  26 Aug 2012; <keri@gentoo.org> -mozart-1.3.2.ebuild, -mozart-1.3.2-r1.ebuild,
+  -mozart-1.4.0.ebuild, -mozart-1.4.0-r1.ebuild:
+  Remove old versions
+
+  22 Aug 2012; Michael Weber <xmw@gentoo.org> mozart-1.4.0-r2.ebuild:
+  ppc stable (bug 396885).
+
+  15 Jun 2012; <keri@gentoo.org> mozart-1.4.0-r2.ebuild:
+  Support building mozart on PPC with 3.x kernels. Reported and investigated by
+  Michael Weber. Closes #421055
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> mozart-1.3.2.ebuild,
+  mozart-1.3.2-r1.ebuild, mozart-1.4.0.ebuild, mozart-1.4.0-r1.ebuild,
+  mozart-1.4.0-r2.ebuild:
+  Drop sparc keywords
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> mozart-1.4.0-r2.ebuild:
+  x86 stable wrt bug #396885
+
+  02 Dec 2010; <keri@gentoo.org> mozart-1.4.0-r2.ebuild:
+  Respect CFLAGS in dss
+
+*mozart-1.4.0-r2 (21 Nov 2010)
+
+  21 Nov 2010; <keri@gentoo.org> +mozart-1.4.0-r2.ebuild:
+  Add examples to IUSE; install demo+examples to /usr/share/doc; install DSS
+  library with platform libs
+
+*mozart-1.4.0-r1 (19 Nov 2010)
+
+  19 Nov 2010; <keri@gentoo.org> +mozart-1.4.0-r1.ebuild:
+  Revbump - only install oz when USE="emacs"; gcc4 fixes for DSS
+
+  19 Nov 2010; <keri@gentoo.org> mozart-1.4.0.ebuild:
+  Enable DP tests to load DSS library. See #298155.
+
+  19 Nov 2010; <keri@gentoo.org> mozart-1.4.0.ebuild:
+  QA - remove die from econf call; add die to do... function calls
+
+  18 Nov 2010; <keri@gentoo.org> mozart-1.4.0.ebuild,
+  -files/mozart-1.4.0-const-cast.patch, -files/mozart-1.4.0-contrib.patch,
+  -files/mozart-1.4.0-cstdio.patch, -files/mozart-1.4.0-dss-ldflags.patch,
+  -files/mozart-1.4.0-dss-libpath.patch, -files/mozart-1.4.0-dss-pic.patch,
+  -files/mozart-1.4.0-dss-prefix.patch,
+  -files/mozart-1.4.0-mkinstalldirs.patch,
+  -files/mozart-1.4.0-nostrip.patch,
+  -files/mozart-1.4.0-ozbison-string.patch,
+  -files/mozart-1.4.0-ozhome.patch,
+  -files/mozart-1.4.0-ozplatform-amd64.patch,
+  -files/mozart-1.4.0-ozplatform-sparc.patch,
+  -files/mozart-1.4.0-parallel-make.patch:
+  Bundle patches into distfiles tarball
+
+  26 Aug 2010; <keri@gentoo.org> mozart-1.4.0.ebuild,
+  +files/mozart-1.4.0-ozbison-string.patch:
+  Mozart ozbison QA tidyups; mention Mozart tests can only be run
+  single-threaded
+
+  25 Aug 2010; <keri@gentoo.org> mozart-1.4.0.ebuild,
+  +files/mozart-1.4.0-dss-ldflags.patch:
+  Respect LDFLAGS
+
+  25 Aug 2010; <keri@gentoo.org> mozart-1.4.0.ebuild,
+  +files/mozart-1.4.0-mkinstalldirs.patch:
+  Add threadsafe mkinstalldirs patch
+
+  11 Aug 2009; <keri@gentoo.org> mozart-1.3.2.ebuild,
+  mozart-1.3.2-r1.ebuild, +files/mozart-1.3.2-const-cast.patch,
+  files/mozart-1.3.2-ozplatform.patch:
+  glibc2.10 fixes; amd64 chroot fixes
+
+  10 Aug 2009; <keri@gentoo.org> mozart-1.4.0.ebuild,
+  +files/mozart-1.4.0-const-cast.patch,
+  +files/mozart-1.4.0-ozplatform-amd64.patch:
+  glibc2.10 fixes; amd64 chroot fixes
+
+  27 Nov 2008; <keri@gentoo.org> mozart-1.3.2.ebuild,
+  mozart-1.3.2-r1.ebuild, mozart-1.4.0.ebuild:
+  Add -amd64 -ppc64 to KEYWORDS. Bug #248276.
+
+  29 Oct 2008; Diego Pettenò <flameeyes@gentoo.org> mozart-1.4.0.ebuild:
+  Force -j1 during install, see bug #244872.
+
+  26 Aug 2008; <keri@gentoo.org> +files/mozart-1.4.0-dss-libpath.patch,
+  mozart-1.4.0.ebuild:
+  Ensure compiled libdss is used during src_test
+
+  23 Aug 2008; <keri@gentoo.org> +files/mozart-1.4.0-cstdio.patch,
+  mozart-1.4.0.ebuild:
+  Add upstream cstdio fixes
+
+*mozart-1.4.0 (06 Jul 2008)
+
+  06 Jul 2008; keri <keri@gentoo.org> +files/mozart-1.4.0-contrib.patch,
+  +files/mozart-1.4.0-dss-pic.patch, +files/mozart-1.4.0-dss-prefix.patch,
+  +files/mozart-1.4.0-nostrip.patch, +files/mozart-1.4.0-ozhome.patch,
+  +files/mozart-1.4.0-ozplatform-sparc.patch,
+  +files/mozart-1.4.0-parallel-make.patch, +mozart-1.4.0.ebuild:
+  Version bump.
+
+  01 Jun 2008; keri <keri@gentoo.org> files/mozart-1.3.2-portage.patch:
+  Make Unnester.ozf depend on Builtins.ozf. Closes #212558.
+
+  11 May 2008; keri <keri@gentoo.org> mozart-1.3.2.ebuild,
+  mozart-1.3.2-r1.ebuild:
+  Move flex and bison to RDEPEND. Closes #221321 and #221589.
+
+  24 Feb 2008; keri <keri@gentoo.org> files/mozart-1.3.2-portage.patch,
+  mozart-1.3.2-r1.ebuild:
+  Parallelize emake in src_compile and src_install.
+
+  23 Feb 2008; keri <keri@gentoo.org> mozart-1.3.2.ebuild,
+  mozart-1.3.2-r1.ebuild:
+  QA: update DESCRIPTION.
+
+*mozart-1.3.2-r1 (22 Feb 2008)
+
+  22 Feb 2008; keri <keri@gentoo.org> +mozart-1.3.2-r1.ebuild:
+  Install binaries into Mozart bin dir. Closes #210987 reported by Andrés
+  Becerra Sandoval.
+
+  16 Nov 2007; nixnut <nixnut@gentoo.org> mozart-1.3.2.ebuild:
+  Stable on ppc wrt bug 199091
+
+  15 Nov 2007; Christian Faulhammer <opfer@gentoo.org> mozart-1.3.2.ebuild:
+  stable x86, bug 199019
+
+  14 Nov 2007; Ferris McCormick <fmccor@gentoo.org> mozart-1.3.2.ebuild:
+  Sparc stable --- Bug #199019 --- all tests good.
+
+  14 Nov 2007; keri <keri@gentoo.org> mozart-1.3.2.ebuild:
+  Run bootstrapping checks in src_test()
+
+  04 Oct 2007; keri <keri@gentoo.org> +files/50mozart-gentoo.el,
+  mozart-1.3.2.ebuild:
+  Add proper support for emacs. Reported and fixed by Ulrich Mueller in bug
+  #194604
+
+  29 Sep 2007; keri <keri@gentoo.org> +files/mozart-1.3.2-ri-fpe.patch,
+  mozart-1.3.2.ebuild:
+  Handle fpe in ri contrib package. Closes bug #193683 reported by kaouete
+
+  17 Feb 2007; keri <keri@gentoo.org> files/mozart-1.3.2-contrib.patch,
+  files/mozart-1.3.2-portage.patch, mozart-1.3.2.ebuild:
+  Parallelize compile
+
+  17 Feb 2007; keri <keri@gentoo.org> files/mozart-1.3.2-ozplatform.patch,
+  mozart-1.3.2.ebuild:
+  Add ~sparc to KEYWORDS.
+
+  17 Feb 2007; keri <keri@gentoo.org> mozart-1.3.2.ebuild:
+  Add ~ppc to KEYWORDS
+
+  17 Feb 2007; keri <keri@gentoo.org> files/mozart-1.3.2-gcc4.patch:
+  Include stdlib in ri contrib package.
+
+  16 Feb 2007; keri <keri@gentoo.org> files/mozart-1.3.2-ozplatform.patch:
+  Set OZHOME in oz script.
+
+  16 Feb 2007; keri <keri@gentoo.org> +files/mozart-1.3.2-emubin.patch,
+  mozart-1.3.2.ebuild:
+  Respect platform emulator directory in src_install.
+
+*mozart-1.3.2 (14 Feb 2007)
+
+  14 Feb 2007; keri <keri@gentoo.org> +files/mozart-1.3.2-contrib.patch,
+  +files/mozart-1.3.2-gcc4.patch, +files/mozart-1.3.2-nostrip.patch,
+  +files/mozart-1.3.2-ozplatform.patch, +files/mozart-1.3.2-portage.patch,
+  +metadata.xml, +mozart-1.3.2.ebuild:
+  Initial import.

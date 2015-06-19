@@ -1,0 +1,37 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/www-servers/resin/files/4.0.22/resin.init,v 1.1 2011/09/06 16:46:05 nelchael Exp $
+
+depend() {
+	need net
+	use dns logger mysql postgresql
+}
+
+runResin() {
+	JAVA_HOME=$(java-config -O)
+	[ -n "${GENTOO_VM}" ] && JAVA_HOME=$(java-config --select-vm="${GENTOO_VM}" -O)
+	export JAVA_HOME
+
+	local extraArgs=
+	if [ "${VERBOSE}" = "yes" ]; then
+		extraArgs="-verbose"
+	fi
+
+	local msg="${1}"
+	shift
+
+	local cmdline="${JAVA_HOME}/bin/java -jar /usr/share/resin/lib/resin.jar -conf /etc/resin/resin.xml -server \"${SERVER_ID}\" -resin-home __RESIN_HOME__ -root-directory __RESIN_HOME__ ${extraArgs} ${@}"
+
+	ebegin "${msg}"
+	su - resin -c "${cmdline}"
+	eend $?
+}
+
+start()	{
+	runResin "Starting Resin" "start"
+}
+
+stop()	{
+	runResin "Stopping Resin" "shutdown"
+}

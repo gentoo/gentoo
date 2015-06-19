@@ -1,0 +1,56 @@
+# ChangeLog for app-vim/vim-spell-de
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/vim-spell-de/ChangeLog,v 1.13 2011/10/24 13:38:25 darkside Exp $
+
+  24 Oct 2011; Jeremy Olexa <darkside@gentoo.org> vim-spell-de-20080213.ebuild:
+  add ~x64-macos, bug 388333
+
+  17 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  vim-spell-de-20051008.ebuild, vim-spell-de-20080213.ebuild:
+  QA: add prefix keywords
+
+*vim-spell-de-20080213 (17 Sep 2008)
+
+  17 Sep 2008; Ali Polatel <hawking@gentoo.org>
+  +vim-spell-de-20080213.ebuild:
+  Version bump. Thanks to Daniel Pielmeier, bug 237764.
+
+  26 Oct 2007; nixnut <nixnut@gentoo.org> vim-spell-de-20051008.ebuild:
+  Stable on ppc wrt bug 180064
+
+  17 Sep 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing citizen428 from metadata.xml (see #56803 for reference).
+
+  02 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  vim-spell-de-20051008.ebuild:
+  Stable on sparc
+
+  31 May 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  vim-spell-de-20051008.ebuild:
+  Keyworded ~sparc
+
+  27 Mar 2007; Peter Weller <welp@gentoo.org> vim-spell-de-20051008.ebuild:
+  Stable on amd64 wrt bug 169999
+
+  27 Oct 2006; Lars Weiler <pylon@gentoo.org> vim-spell-de-20051008.ebuild:
+  vimspell dictionaries also work on PowerPC.  Added ~pcc.
+
+  04 Sep 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  vim-spell-de-20051008.ebuild:
+  stable on x86 (bug #145694)
+
+  29 Oct 2005; Tom Martin <slarti@gentoo.org> vim-spell-de-20051008.ebuild:
+  Marked ~amd64.
+
+*vim-spell-de-20051008 (08 Oct 2005)
+
+  08 Oct 2005; Michael Kohl <citizen428@gentoo.org>
+  -vim-spell-de-20050925.ebuild, +vim-spell-de-20051008.ebuild:
+  Version bump. Removed previous version.
+
+*vim-spell-de-20050925 (28 Sep 2005)
+
+  28 Sep 2005; Michael Kohl <citizen428@gentoo.org> +metadata.xml,
+  +vim-spell-de-20050925.ebuild:
+  New package.
+

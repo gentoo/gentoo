@@ -1,0 +1,42 @@
+--- config.orig/autoconf/nspr.m4	2009-10-06 11:21:10.898930843 +0300
++++ config/autoconf/nspr.m4	2009-10-06 11:27:43.638925618 +0300
+@@ -86,39 +86,6 @@
+ 
+ ])
+ 
+-dnl AM_PATH_INTREE_NSPR([ROOTPATH, [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]]])
+-dnl Test for in-tree NSPR, and define NSPR_CFLAGS and NSPR_LIBS
+-dnl First look for path/*.OBJ/include, then look for path/include
+-dnl Use the cut in case there is more than one path that matches *.OBJ - just
+-dnl take the first one
+-AC_DEFUN(AM_PATH_INTREE_NSPR,
+-[
+-    AC_MSG_CHECKING(checking for in-tree NSPR from $1)
+-    for nsprpath in "$1" "$1"/*.OBJ ; do    
+-        savedir=`pwd`
+-        cd $nsprpath
+-        abs_nsprpath=`pwd`
+-        cd $savedir
+-        if test -f "$abs_nsprpath/include/nspr/nspr.h" ; then
+-            NSPR_CFLAGS="-I$abs_nsprpath/include/nspr"
+-        elif test -f "$abs_nsprpath/include/nspr.h" ; then
+-            NSPR_CFLAGS="-I$abs_nsprpath/include"
+-        fi
+-        if test -d "$abs_nsprpath/lib" ; then
+-            NSPR_LIBS="-L$abs_nsprpath/lib"
+-        fi
+-        if test -n "$NSPR_CFLAGS" -a -n "$NSPR_LIBS" ; then
+-            break
+-        fi
+-    done
+-    if test -n "$NSPR_CFLAGS" -a -n "$NSPR_LIBS" ; then
+-	    AC_SUBST(NSPR_CFLAGS)
+-	    AC_SUBST(NSPR_LIBS)
+-		AC_MSG_RESULT(yes)
+-    else
+-		AC_MSG_RESULT(no)
+-    fi    
+-])
+ 
+ dnl AM_PATH_GIVEN_NSPR(no args)
+ dnl Test for --with-nspr=path, --with-nspr-inc=path, and --with-nspr-lib=path

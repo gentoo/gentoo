@@ -1,0 +1,22 @@
+# ChangeLog for games-strategy/spaz
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/spaz/ChangeLog,v 1.5 2015/06/14 17:19:45 ulm Exp $
+
+  14 Jun 2015; Ulrich Müller <ulm@gentoo.org> spaz-1.605.ebuild:
+  [QA] Remove emul-linux-x86-* from dependencies.
+
+  25 Jun 2014; Michał Górny <mgorny@gentoo.org> spaz-1.605.ebuild:
+  Update multilib dependencies to use the lowest known EAPI 5 or multilib
+  versions.
+
+  25 Jun 2014; Michał Górny <mgorny@gentoo.org> spaz-1.605.ebuild:
+  Support multilib dependencies aside to emul-linux-x86.
+
+  29 Mar 2013; Julian Ospald <hasufell@gentoo.org> spaz-1.605.ebuild:
+  use unpack_zip from unpacker.eclass instead of unzip
+
+*spaz-1.605 (27 Sep 2012)
+
+  27 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> +spaz-1.605.ebuild,
+  +metadata.xml:
+  Initial commit

@@ -1,0 +1,31 @@
+# ChangeLog for media-plugins/vdr-zappilot
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-zappilot/ChangeLog,v 1.6 2014/08/31 11:48:36 hd_brummy Exp $
+
+  31 Aug 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-zappilot-0.0.4.ebuild:
+  cleanup old
+
+  02 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-zappilot-0.0.5.ebuild:
+  stable amd64 x86, wrt bug 495786
+
+*vdr-zappilot-0.0.5 (31 Mar 2013)
+
+  31 Mar 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-zappilot-0.0.5.ebuild:
+  bump
+
+  30 Apr 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-zappilot-0.0.4.ebuild:
+  eapi=4; vdr-plugin-2.eclass; stable amd64 x86
+
+  24 Apr 2012; Michał Górny <mgorny@gentoo.org> vdr-zappilot-0.0.4.ebuild:
+  Update to use mirror://.
+
+*vdr-zappilot-0.0.4 (30 Jan 2011)
+
+  30 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-zappilot-0.0.4.ebuild, +metadata.xml:
+  initial ebuild
+

@@ -1,0 +1,31 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/amd64/package.use.mask,v 1.25 2013/09/24 08:19:29 mgorny Exp $
+
+# When you add an entry to the top of this file, add your name, the date, and
+# an explanation of why something is getting masked. Please be extremely
+# careful not to commit atoms that are not valid, as it can cause large-scale
+# breakage, especially if it ends up in the daily snapshot.
+#
+## Example:
+##
+## # Dev E. Loper <developer@gentoo.org> (28 Jun 2012)
+## # Masking foo USE flag until we can get the
+## # foo stuff to work properly again (bug 12345)
+## =media-video/mplayer-0.90_pre5 foo
+## =media-video/mplayer-0.90_pre5-r1 foo
+
+# Kacper Kowalik <xarthisius@gentoo.org> (29 Jul 2011)
+# mask assembler as it currently doesn't work
+dev-lang/path64 assembler
+
+# Magnus Granberg <zorry@gentoo.org> (20 Nov 2012)
+# mask X for we still mis the docs for revdep-pax
+# else hell will rule. (RWX in the libs)
+# Bug 433121
+# also mask tools as it requires X -zerochaos
+x11-drivers/nvidia-drivers X tools
+
+# Magnus Granberg <zorry@gentoo.org> (29 Nov 2012)
+# Bug #444786 disable nvidia on app-admin/conky
+app-admin/conky nvidia

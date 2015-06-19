@@ -1,0 +1,42 @@
+# ChangeLog for games-misc/fortune-mod-homer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-homer/ChangeLog,v 1.11 2015/02/04 21:51:34 tupone Exp $
+
+  04 Feb 2015; Tupone Alfredo <tupone@gentoo.org> fortune-mod-homer-0.1.ebuild:
+  EAPI 5
+
+  12 Dec 2010; Fabian Groffen <grobian@gentoo.org>
+  fortune-mod-homer-0.1.ebuild:
+  Added Prefix keywords
+
+  08 Oct 2010; Mart Raudsepp <leio@gentoo.org> fortune-mod-homer-0.1.ebuild:
+  Drop to ~mips
+
+  19 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  fortune-mod-homer-0.1.ebuild:
+  Add ~x86-fbsd keyword
+
+  27 Aug 2005; Markus Rothe <corsair@gentoo.org>
+  fortune-mod-homer-0.1.ebuild:
+  Stable on ppc64
+
+  31 Jul 2005; Markus Rothe <corsair@gentoo.org>
+  fortune-mod-homer-0.1.ebuild:
+  Added ~ppc64 (bug #100217)
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*fortune-mod-homer-0.1 (12 Aug 2002)
+
+  26 Aug 2003; Joshua Kinard <kumba@gentoo.org> fortune-mod-homer-0.1.ebuild:
+  Added ~mips & ~sparc to KEYWORDS
+
+  03 Nov 2002; Jon Nall <nall@gentoo.org> fortune-mod-homer-0.1.ebuild :
+  changed PPC to ppc in keywords
+
+  13 Aug 2002; J. Alberto Suárez López <bass@gentoo.org> fortune-mod-homer-0.1.ebuild :
+  Fix dir problems in install.
+
+  12 Aug 2002; J. Alberto Suárez López <bass@gentoo.org> fortune-mod-homer-0.1.ebuild :
+  First relase.

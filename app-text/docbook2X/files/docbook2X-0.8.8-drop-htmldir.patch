@@ -1,0 +1,14 @@
+Put HTML documentation in proper directory.
+Patch by Chris Mayo, https://bugs.gentoo.org/show_bug.cgi?id=296112
+
+--- doc/Makefile.am.orig
++++ doc/Makefile.am
+@@ -182,8 +182,6 @@
+ # Install (automake)
+ #
+ 
+-htmldir = $(datadir)/doc/docbook2X
+-
+ man_MANS = $(MAN_FILES)
+ html_DATA = $(HTML_FILES)
+ info_TEXINFOS = docbook2X.texi

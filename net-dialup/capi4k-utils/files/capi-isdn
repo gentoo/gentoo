@@ -1,0 +1,18 @@
+#
+# ISDN connection using CAPI interface
+#
+plugin capiplugin.so
+sync
+protocol hdlc
+/dev/null
+
+# Plugin passwordfd enables us to pipe the password to pppd, thus we
+# don't have to put it into pap-secrets and chap-secrets.
+#
+plugin passwordfd.so
+
+noauth
+
+# this is recommended
+noccp
+noipx

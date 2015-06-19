@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">Mail-IMAPClient</remote-id>
+    <remote-id type="cpan-module">Mail::IMAPClient</remote-id>
+    <remote-id type="cpan-module">Mail::IMAPClient::BodyStructure</remote-id>
+    <remote-id type="cpan-module">Mail::IMAPClient::BodyStructure::Address</remote-id>
+    <remote-id type="cpan-module">Mail::IMAPClient::BodyStructure::Envelope</remote-id>
+    <remote-id type="cpan-module">Mail::IMAPClient::BodyStructure::Parse</remote-id>
+    <remote-id type="cpan-module">Mail::IMAPClient::BodyStructure::Part</remote-id>
+    <remote-id type="cpan-module">Mail::IMAPClient::MessageSet</remote-id>
+    <remote-id type="cpan-module">Mail::IMAPClient::Thread</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent::Mail::IMAPClient::BodyStructure::Parse</remote-id>
+    <remote-id type="cpan-module">Parse::RecDescent::Mail::IMAPClient::Thread</remote-id>
+  </upstream>
+</pkgmetadata>

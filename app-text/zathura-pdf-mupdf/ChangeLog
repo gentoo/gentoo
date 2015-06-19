@@ -1,0 +1,94 @@
+# ChangeLog for app-text/zathura-pdf-mupdf
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/zathura-pdf-mupdf/ChangeLog,v 1.19 2015/06/01 13:07:09 xmw Exp $
+
+*zathura-pdf-mupdf-0.2.8 (01 Jun 2015)
+
+  01 Jun 2015; Michael Weber <xmw@gentoo.org> +zathura-pdf-mupdf-0.2.8.ebuild:
+  Version bump (thanks Jan-Willem Liebezeit, bug 549874).
+
+  17 Apr 2015; Michael Weber <xmw@gentoo.org> zathura-pdf-mupdf-0.2.7.ebuild:
+  Adjust mupdf dependency
+
+*zathura-pdf-mupdf-0.2.7 (24 Oct 2014)
+
+  24 Oct 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +zathura-pdf-mupdf-0.2.7.ebuild, zathura-pdf-mupdf-9999.ebuild:
+  Version bump.
+
+  05 Jun 2014; Michael Weber <xmw@gentoo.org> zathura-pdf-mupdf-9999.ebuild:
+  upstream branch mupdf-git no longer exists, switch to branch develop
+
+  05 Apr 2014; Samuli Suominen <ssuominen@gentoo.org>
+  zathura-pdf-mupdf-0.2.6.ebuild, zathura-pdf-mupdf-9999.ebuild:
+  Use OPENSSL_INC for grabbing --cflags from mupdf.pc since config.mk doesn't
+  have MUPDF_INC to override.
+
+  05 Apr 2014; Samuli Suominen <ssuominen@gentoo.org>
+  zathura-pdf-mupdf-0.2.6.ebuild, zathura-pdf-mupdf-9999.ebuild:
+  Set empty OPENSSL_INC and OPENSSL_LIB to drop unused -lcrypto linking.
+
+  05 Apr 2014; Samuli Suominen <ssuominen@gentoo.org>
+  zathura-pdf-mupdf-0.2.6.ebuild, zathura-pdf-mupdf-9999.ebuild:
+  Use pkg-config for determining mupdf libs wrt #506802
+
+  04 Apr 2014; Samuli Suominen <ssuominen@gentoo.org>
+  -files/zathura-pdf-mupdf-9999-fz_drop_display_list.patch,
+  -files/zathura-pdf-mupdf-9999-mupdf-fz_new_text_page.patch,
+  -files/zathura-pdf-mupdf-9999-mupdf-pkgconfig.patch,
+  -files/zathura-pdf-mupdf-9999-mupdf-split-headers.patch,
+  -zathura-pdf-mupdf-0.2.4.ebuild, metadata.xml:
+  old
+
+*zathura-pdf-mupdf-0.2.6 (04 Apr 2014)
+
+  04 Apr 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +zathura-pdf-mupdf-0.2.6.ebuild, zathura-pdf-mupdf-9999.ebuild:
+  Version bump.
+
+  30 Mar 2014; Samuli Suominen <ssuominen@gentoo.org>
+  -zathura-pdf-mupdf-0.2.3.ebuild:
+  old
+
+  23 Jun 2013; Michael Weber <xmw@gentoo.org>
+  +files/zathura-pdf-mupdf-9999-fz_drop_display_list.patch, metadata.xml,
+  zathura-pdf-mupdf-9999.ebuild:
+  Add USE=+deprecated for gtk2 dependency, add live ebuild for gtk3 development.
+
+  20 Jun 2013; Michael Weber <xmw@gentoo.org>
+  +files/zathura-pdf-mupdf-9999-mupdf-fz_new_text_page.patch,
+  +files/zathura-pdf-mupdf-9999-mupdf-pkgconfig.patch,
+  +files/zathura-pdf-mupdf-9999-mupdf-split-headers.patch,
+  zathura-pdf-mupdf-9999.ebuild:
+  Adapt for mupdf split header files, use mupdf pkg-config file.
+
+*zathura-pdf-mupdf-0.2.4 (20 Jun 2013)
+
+  20 Jun 2013; Michael Weber <xmw@gentoo.org> +zathura-pdf-mupdf-0.2.4.ebuild:
+  Version bump
+
+  19 Jun 2013; Alex Alexander <wired@gentoo.org> metadata.xml:
+  removed myself from maintainer list
+
+  19 Jun 2013; Michael Weber <xmw@gentoo.org> zathura-pdf-mupdf-0.2.3.ebuild,
+  zathura-pdf-mupdf-9999.ebuild:
+  Make cairo non-optional again
+
+  13 Jun 2013; Michael Weber <xmw@gentoo.org> metadata.xml,
+  zathura-pdf-mupdf-0.2.3.ebuild:
+  Fix Depends, enrich metadata.xml
+
+  13 Jun 2013; Michael Weber <xmw@gentoo.org> zathura-pdf-mupdf-9999.ebuild:
+  Depend on SLOT=0 of media-libs/openjpeg (bug 440086)
+
+*zathura-pdf-mupdf-9999 (08 Jun 2013)
+
+  08 Jun 2013; Michael Weber <xmw@gentoo.org> +zathura-pdf-mupdf-9999.ebuild,
+  zathura-pdf-mupdf-0.2.3.ebuild:
+  Add live version for mupdf live version
+
+*zathura-pdf-mupdf-0.2.3 (08 Jun 2013)
+
+  08 Jun 2013; Michael Weber <xmw@gentoo.org> +metadata.xml,
+  +zathura-pdf-mupdf-0.2.3.ebuild:
+  Initial import (bug 407805), ebuild by Samuli Suominen.

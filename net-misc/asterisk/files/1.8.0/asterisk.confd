@@ -1,0 +1,95 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk/files/1.8.0/asterisk.confd,v 1.1 2011/09/01 14:09:56 chainsaw Exp $
+
+#
+# Additional options for asterisk
+#
+# see "asterisk -h" for a list of options
+#
+ASTERISK_OPTS=""
+
+#
+# User and group to run asterisk as
+#
+# Value: double-colon separated list of user and group, or empty to run as root:
+#
+#
+# "asterisk:asterisk" to run as user "asterisk" and group "asterisk"
+#
+#          "asterisk" to run as user "asterisk" and all groups that user "asterisk" is a member of
+#
+#         ":asterisk" to run as user "root" and group "asterisk"
+#
+#                  "" to run as user "root" and group "root"
+#
+ASTERISK_USER="asterisk"
+
+#
+# Nicelevel
+#
+# Set the priority of the asterisk process
+#
+# Value: (highest) -20..19 (lowest)
+#
+#ASTERISK_NICE="19"
+
+# Send crash notifications emails to this address
+# (needs a working mail service and /usr/sbin/sendmail to do so (e.g. ssmtp))
+#
+# Value: Email address or empty to disable
+#
+#ASTERISK_NOTIFY_EMAIL="root"
+
+#
+# Send asterisk's output to this terminal
+#
+# Value: Full path to device node or a number
+#
+#ASTERISK_TTY="/dev/tty9"
+
+#
+# Start an asterisk console on the terminal specified by ASTERISK_TTY
+#
+# Warning! Use only for debugging, this is a potential security issue!
+#
+# Value: yes or no/empty
+#
+ASTERISK_CONSOLE="no"
+
+#
+# Maximum size of core files. 
+#
+# Value: Size in bytes, unlimited for no limit or empty to disable.
+# 
+ASTERISK_CORE_SIZE="unlimited"
+
+#
+# ASTERISK_CORE_DIR
+#
+# Value: Directory (will be created if non-existant), default is /tmp
+#
+ASTERISK_CORE_DIR="/var/lib/asterisk/coredump"
+
+#
+# Max number of filedescriptors
+#
+# Value: Number of descriptors
+#
+ASTERISK_MAX_FD="4096"
+
+#
+# Delay time before restarting asterisk after a crash.
+#
+# Value: Number of seconds to sleep after a crash before restarting.
+#
+ASTERISK_RESTART_DELAY=5
+
+#
+# Kill these tasks after asterisk crashed
+#
+# Warning! This will kill _ALL_ tasks with the specified names!
+#
+# Value: Space separated list of names in double quotes (e.g. "mpg123 mad")
+#
+#ASTERISK_CLEANUP_ON_CRASH="mpg123 asterisk-mpg123 mad"

@@ -1,0 +1,41 @@
+# ChangeLog for dev-lua/luadoc
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lua/luadoc/ChangeLog,v 1.4 2013/03/14 07:15:00 ago Exp $
+
+  14 Mar 2013; Agostino Sarubbo <ago@gentoo.org> luadoc-3.0.1.ebuild:
+  Stable for arm, wrt bug #461538
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #22900
+
+  11 Jun 2011; Markus Meier <maekke@gentoo.org> luadoc-3.0.1.ebuild:
+  add ~arm, bug #359137
+
+  05 Nov 2010; Rafael G. Martins <rafaelmartins@gentoo.org>
+  +luadoc-3.0.1.ebuild, +metadata.xml:
+  Moved from dev-util to dev-lua. Fixed luafilesystem dependency.
+  Added myself to metadata.xml.
+
+  20 Dec 2008; nixnut <nixnut@gentoo.org> luadoc-3.0.1.ebuild:
+  Stable on ppc wrt bug 250796
+
+  17 Dec 2008; Markus Meier <maekke@gentoo.org> luadoc-3.0.1.ebuild:
+  amd64/x86 stable, bug #250796
+
+  16 Dec 2008; Brent Baude <ranger@gentoo.org> luadoc-3.0.1.ebuild:
+  stable ppc64, bug 250796
+
+  23 Sep 2008; Markus Rothe <corsair@gentoo.org> luadoc-3.0.1.ebuild:
+  Added ~ppc
+
+  24 Aug 2008; Markus Rothe <corsair@gentoo.org> luadoc-3.0.1.ebuild:
+  Added ~ppc64; bug #234421
+
+  14 Aug 2008; Alexis Ballier <aballier@gentoo.org> luadoc-3.0.1.ebuild:
+  keyword ~x86-fbsd
+
+*luadoc-3.0.1 (08 Aug 2008)
+
+  08 Aug 2008; MATSUU Takuto <matsuu@gentoo.org> +metadata.xml,
+  +luadoc-3.0.1.ebuild:
+  Initial import.

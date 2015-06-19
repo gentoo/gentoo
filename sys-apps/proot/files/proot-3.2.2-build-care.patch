@@ -1,0 +1,20 @@
+Skip check for building care, patch by Patrick Lauer <patrick AT gentoo.org>
+
+--- src/GNUmakefile   2014-02-25 16:42:04.336863622 +0800
++++ src/GNUmakefile.new       2014-02-25 16:42:26.063050467 +0800
+@@ -54,15 +54,6 @@
+ all: proot
+ 
+ ######################################################################
+-# Sanity checks
+-
+-ifneq (,$(findstring care,$(MAKECMDGOALS)))
+-ifneq ($(CARE_BUILD_ENV),ok)
+-$(error care is supposed to be built with: http://build.reproducible.io)
+-endif
+-endif
+-
+-######################################################################
+ # Beautified output
+ 
+ quiet_GEN = @echo "  GEN       $@"; $(GEN)

@@ -1,0 +1,121 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/files/eblits/src_unpack.eblit,v 1.27 2014/09/10 05:59:03 vapier Exp $
+
+[[ ${EAPI:-0} == [01] ]] && source "${FILESDIR}/eblits/src_prepare.eblit"
+
+int_to_KV() {
+	local version=$1 major minor micro
+	major=$((version / 65536))
+	minor=$(((version % 65536) / 256))
+	micro=$((version % 256))
+	echo ${major}.${minor}.${micro}
+}
+
+eend_KV() {
+	[[ $(KV_to_int $1) -ge $(KV_to_int $2) ]]
+	eend $?
+}
+
+get_kheader_version() {
+	printf '#include <linux/version.h>\nLINUX_VERSION_CODE\n' | \
+	$(tc-getCPP ${CTARGET}) -I "${EPREFIX}/$(alt_build_headers)" - | \
+	tail -n 1
+}
+
+check_nptl_support() {
+	# don't care about the compiler here as we arent using it
+	just_headers && return
+
+	local run_kv build_kv want_kv
+	run_kv=$(int_to_KV $(get_KV))
+	build_kv=$(int_to_KV $(get_kheader_version))
+	want_kv=${NPTL_KERN_VER}
+
+	ebegin "Checking gcc for __thread support"
+	if ! eend $(want__thread ; echo $?) ; then
+		echo
+		eerror "Could not find a gcc that supports the __thread directive!"
+		eerror "Please update your binutils/gcc and try again."
+		die "No __thread support in gcc!"
+	fi
+
+	if ! is_crosscompile && ! tc-is-cross-compiler ; then
+		# Building fails on an non-supporting kernel
+		ebegin "Checking kernel version (${run_kv} >= ${want_kv})"
+		if ! eend_KV ${run_kv} ${want_kv} ; then
+			echo
+			eerror "You need a kernel of at least ${want_kv} for NPTL support!"
+			die "Kernel version too low!"
+		fi
+	fi
+
+	ebegin "Checking linux-headers version (${build_kv} >= ${want_kv})"
+	if ! eend_KV ${build_kv} ${want_kv} ; then
+		echo
+		eerror "You need linux-headers of at least ${want_kv} for NPTL support!"
+		die "linux-headers version too low!"
+	fi
+}
+
+unpack_pkg() {
+	local a=${PN}
+	[[ -n ${SNAP_VER} ]] && a="${a}-${RELEASE_VER}"
+	[[ -n $1 ]] && a="${a}-$1"
+	if [[ -n ${SNAP_VER} ]] ; then
+		a="${a}-${SNAP_VER}"
+	else
+		if [[ -n $2 ]] ; then
+			a="${a}-$2"
+		else
+			a="${a}-${RELEASE_VER}"
+		fi
+	fi
+	if has ${a}.tar.xz ${A} ; then
+		unpacker ${a}.tar.xz
+	else
+		unpack ${a}.tar.bz2
+	fi
+	[[ -n $1 ]] && { mv ${a} $1 || die ; }
+}
+
+toolchain-glibc_src_unpack() {
+	# Check NPTL support _before_ we unpack things to save some time
+	want_nptl && check_nptl_support
+
+	if [[ -n ${EGIT_REPO_URIS} ]] ; then
+		local i d
+		for ((i=0; i<${#EGIT_REPO_URIS[@]}; ++i)) ; do
+			EGIT_REPO_URI=${EGIT_REPO_URIS[$i]}
+			EGIT_SOURCEDIR=${EGIT_SOURCEDIRS[$i]}
+			git-2_src_unpack
+		done
+	else
+		unpack_pkg
+	fi
+
+	cd "${S}"
+	touch locale/C-translit.h #185476 #218003
+	[[ -n ${LT_VER}     ]] && unpack_pkg linuxthreads ${LT_VER}
+	[[ -n ${PORTS_VER}  ]] && unpack_pkg ports ${PORTS_VER}
+	[[ -n ${LIBIDN_VER} ]] && unpack_pkg libidn
+
+	if [[ -n ${PATCH_VER} ]] ; then
+		cd "${WORKDIR}"
+		unpack glibc-${RELEASE_VER}-patches-${PATCH_VER}.tar.bz2
+		# pull out all the addons
+		local d
+		for d in extra/*/configure ; do
+			d=${d%/configure}
+			[[ -d ${S}/${d} ]] && die "${d} already exists in \${S}"
+			mv "${d}" "${S}" || die "moving ${d} failed"
+		done
+	fi
+}
+
+eblit-glibc-src_unpack() {
+	setup_env
+
+	toolchain-glibc_src_unpack
+	[[ ${EAPI:-0} == [01] ]] && cd "${S}" && eblit-glibc-src_prepare
+}

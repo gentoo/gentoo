@@ -1,0 +1,312 @@
+# ChangeLog for dev-util/nvidia-cuda-sdk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/nvidia-cuda-sdk/ChangeLog,v 1.63 2015/05/12 11:06:56 jlec Exp $
+
+*nvidia-cuda-sdk-7.0.28 (12 May 2015)
+
+  12 May 2015; Justin Lecher <jlec@gentoo.org> +nvidia-cuda-sdk-7.0.28.ebuild:
+  Version Bump; thanks Marius Brehler for the work https://github.com/gentoo
+  /gentoo-portage-rsync-mirror/pull/1119
+
+  08 Feb 2015; Justin Lecher <jlec@gentoo.org> +nvidia-cuda-sdk-5.5.22.ebuild:
+  Readd old version on user request
+
+  26 Jan 2015; Justin Lecher <jlec@gentoo.org> nvidia-cuda-sdk-6.5.14.ebuild,
+  nvidia-cuda-sdk-6.5.19.ebuild:
+  Restrict nvidia-drivers dependency for x86 to <346.35 because of missing uvm
+  support, #534156
+
+  26 Dec 2014; Justin Lecher <jlec@gentoo.org> -nvidia-cuda-sdk-5.5.22.ebuild,
+  -nvidia-cuda-sdk-6.0.37.ebuild, nvidia-cuda-sdk-6.5.14.ebuild:
+  Stable for amd64, #525226; drop old
+
+  26 Dec 2014; Agostino Sarubbo <ago@gentoo.org> nvidia-cuda-sdk-6.5.14.ebuild:
+  Stable for x86, wrt bug #525226
+
+  18 Nov 2014; Justin Lecher <jlec@gentoo.org> nvidia-cuda-sdk-6.5.14.ebuild,
+  nvidia-cuda-sdk-6.5.19.ebuild:
+  Readd x86; thanks mabre for the notice
+
+  17 Nov 2014; Justin Lecher <jlec@gentoo.org> nvidia-cuda-sdk-6.5.19.ebuild:
+  Readd dropped keywords
+
+*nvidia-cuda-sdk-6.5.19 (17 Nov 2014)
+
+  17 Nov 2014; Justin Lecher <jlec@gentoo.org> +nvidia-cuda-sdk-6.5.19.ebuild:
+  Import Version Bump from sci overlay, thanks Marius Brehler for the work; Add
+  warning for reduced 32bit support, #529320
+
+  19 Sep 2014; Justin Lecher <jlec@gentoo.org> nvidia-cuda-sdk-6.5.14.ebuild:
+  Fix double definition of c++ compiler, #523142
+
+  17 Sep 2014; Justin Lecher <jlec@gentoo.org> nvidia-cuda-sdk-6.5.14.ebuild:
+  Fix nvidia drivers dep version, thanks Marius Brehler noticing the typo
+
+  15 Sep 2014; Justin Lecher <jlec@gentoo.org> nvidia-cuda-sdk-6.5.14.ebuild:
+  Fix min nvidia-drivers version, thanks Marius Brehler for reporting, #521480
+
+  21 Aug 2014; Justin Lecher <jlec@gentoo.org> nvidia-cuda-sdk-6.5.14.ebuild:
+  Fix doc installation, thanks mabre telling me that
+
+*nvidia-cuda-sdk-6.5.14 (21 Aug 2014)
+
+  21 Aug 2014; Justin Lecher <jlec@gentoo.org> +nvidia-cuda-sdk-6.5.14.ebuild:
+  Version Bump, #520302
+
+  14 Aug 2014; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop unused local USE-description: 'emulation'
+
+  14 Aug 2014; Justin Lecher <jlec@gentoo.org>
+  -nvidia-cuda-sdk-2.02.0807.1535.ebuild, -nvidia-cuda-sdk-4.2.9-r2.ebuild:
+  Drop old
+
+  13 Aug 2014; Andreas Schuerch <nativemad@gentoo.org>
+  nvidia-cuda-sdk-5.5.22.ebuild:
+  x86 stable, see bug 497686
+
+  02 Jul 2014; Justin Lecher <jlec@gentoo.org> nvidia-cuda-sdk-6.0.37.ebuild,
+  -files/nvidia-cuda-sdk-6.0.37-simpleMPI.patch:
+  Drop arch specific patch; #516020
+
+*nvidia-cuda-sdk-6.0.37 (28 May 2014)
+
+  28 May 2014; Justin Lecher <jlec@gentoo.org> +nvidia-cuda-sdk-6.0.37.ebuild,
+  +files/nvidia-cuda-sdk-6.0.37-asneeded.patch,
+  +files/nvidia-cuda-sdk-6.0.37-simpleMPI.patch:
+  Version Bump, #507804
+
+  28 Jan 2014; Patrick Lauer <patrick@gentoo.org>
+  -nvidia-cuda-sdk-5.0.35-r1.ebuild:
+  Remove old as dev-util/nvidia-cuda-toolkit was cleaned up
+
+  14 Jan 2014; Justin Lecher <jlec@gentoo.org>
+  nvidia-cuda-sdk-5.0.35-r1.ebuild, nvidia-cuda-sdk-5.5.22.ebuild:
+  Depend on equal version of toolkit, #497500
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> nvidia-cuda-sdk-5.5.22.ebuild:
+  amd64 stable, bug #497686
+
+*nvidia-cuda-sdk-5.5.22 (11 Aug 2013)
+
+  11 Aug 2013; Justin Lecher <jlec@gentoo.org> +nvidia-cuda-sdk-5.5.22.ebuild:
+  Version Bump, #479374
+
+  26 Jun 2013; Kacper Kowalik <xarthisius@gentoo.org>
+  -nvidia-cuda-sdk-2.2-r1.ebuild, -nvidia-cuda-sdk-4.2.9-r1.ebuild,
+  -nvidia-cuda-sdk-4.2.ebuild, -nvidia-cuda-sdk-5.0.35.ebuild,
+  nvidia-cuda-sdk-5.0.35-r1.ebuild:
+  Workaround bug #462602, drop old
+
+*nvidia-cuda-sdk-5.0.35-r1 (09 Mar 2013)
+
+  09 Mar 2013; Justin Lecher <jlec@gentoo.org>
+  +nvidia-cuda-sdk-5.0.35-r1.ebuild:
+  Install Makefile with examples, #460740
+
+*nvidia-cuda-sdk-4.2.9-r2 (23 Jan 2013)
+
+  23 Jan 2013; Justin Lecher <jlec@gentoo.org>
+  +nvidia-cuda-sdk-4.2.9-r2.ebuild:
+  Correct installatoion path of cuda in common.mk, #413137
+
+  23 Jan 2013; Justin Lecher <jlec@gentoo.org> nvidia-cuda-sdk-5.0.35.ebuild:
+  Fix last bit of bad deletion practise
+
+  21 Jan 2013; Justin Lecher <jlec@gentoo.org> nvidia-cuda-sdk-5.0.35.ebuild,
+  metadata.xml:
+  Be more sensitive for presents of files when cleaning, #452944
+
+  16 Jan 2013; Justin Lecher <jlec@gentoo.org> nvidia-cuda-sdk-5.0.35.ebuild:
+  Add missing dep on virtual/mpi with USE=examples, #452040
+
+  14 Jan 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Take package
+
+*nvidia-cuda-sdk-5.0.35 (14 Jan 2013)
+*nvidia-cuda-sdk-4.2.9-r1 (14 Jan 2013)
+
+  14 Jan 2013; Justin Lecher <jlec@gentoo.org>
+  -nvidia-cuda-sdk-2.1.1215.2015.ebuild, -nvidia-cuda-sdk-2.2.ebuild,
+  -nvidia-cuda-sdk-2.3.ebuild, -nvidia-cuda-sdk-3.0_beta1.ebuild,
+  -nvidia-cuda-sdk-3.0.ebuild, -nvidia-cuda-sdk-3.1.ebuild,
+  -nvidia-cuda-sdk-3.2.ebuild, -nvidia-cuda-sdk-4.0.ebuild,
+  -nvidia-cuda-sdk-4.1.ebuild, +nvidia-cuda-sdk-4.2.9-r1.ebuild,
+  +files/nvidia-cuda-sdk-4.2.9-asneeded.patch, +nvidia-cuda-sdk-5.0.35.ebuild,
+  metadata.xml:
+  Version Bump; drop old
+
+  02 Aug 2012; Rick Farina <zerochaos@gentoo.org> nvidia-cuda-sdk-4.2.ebuild:
+  fix stupidity recognized in bug #429370
+
+*nvidia-cuda-sdk-4.2 (31 Jul 2012)
+
+  31 Jul 2012; Rick Farina <zerochaos@gentoo.org> +nvidia-cuda-sdk-4.2.ebuild,
+  nvidia-cuda-sdk-2.02.0807.1535.ebuild:
+  bump to 4.2 with a few style improvements ;-)
+
+  05 Feb 2012; Michał Januszewski <spock@gentoo.org>
+  nvidia-cuda-sdk-4.1.ebuild:
+  Add a check for gcc-4.5+ (bug #401407).
+
+  05 Feb 2012; Mike Frysinger <vapier@gentoo.org>
+  nvidia-cuda-sdk-2.02.0807.1535.ebuild,
+  nvidia-cuda-sdk-2.1.1215.2015.ebuild, nvidia-cuda-sdk-2.2.ebuild,
+  nvidia-cuda-sdk-2.2-r1.ebuild, nvidia-cuda-sdk-2.3.ebuild,
+  nvidia-cuda-sdk-3.0_beta1.ebuild, nvidia-cuda-sdk-3.0.ebuild,
+  nvidia-cuda-sdk-3.1.ebuild, nvidia-cuda-sdk-3.2.ebuild,
+  nvidia-cuda-sdk-4.0.ebuild, nvidia-cuda-sdk-4.1.ebuild:
+  Move to new unpacker eclass for unpack_makeself.
+
+*nvidia-cuda-sdk-4.1 (29 Jan 2012)
+
+  29 Jan 2012; Michał Januszewski <spock@gentoo.org>
+  +nvidia-cuda-sdk-4.1.ebuild:
+  Version bump.
+
+*nvidia-cuda-sdk-4.0 (29 May 2011)
+
+  29 May 2011; Michał Januszewski <spock@gentoo.org>
+  +nvidia-cuda-sdk-4.0.ebuild:
+  Add NVIDIA CUDA SDK v4.0.
+
+  12 Dec 2010; Michał Januszewski <spock@gentoo.org>
+  nvidia-cuda-sdk-3.2.ebuild:
+  Add a check for GCC 4.4, which is necessary to compile the examples (bug
+  #347497).
+
+*nvidia-cuda-sdk-3.2 (01 Dec 2010)
+
+  01 Dec 2010; Michał Januszewski <spock@gentoo.org>
+  +nvidia-cuda-sdk-3.2.ebuild:
+  Version bump.
+
+  28 Nov 2010; Michał Januszewski <spock@gentoo.org>
+  nvidia-cuda-sdk-3.1.ebuild:
+  Do not try to install directories with doins.
+
+  30 Sep 2010; Michał Januszewski <spock@gentoo.org>
+  nvidia-cuda-sdk-2.1.1215.2015.ebuild, nvidia-cuda-sdk-2.2.ebuild,
+  nvidia-cuda-sdk-2.2-r1.ebuild, nvidia-cuda-sdk-2.3.ebuild,
+  nvidia-cuda-sdk-3.0_beta1.ebuild, nvidia-cuda-sdk-3.0.ebuild:
+  Add a dependency on <gcc-4.4 (bug #339106).
+
+  16 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  nvidia-cuda-sdk-2.1.1215.2015.ebuild, nvidia-cuda-sdk-2.2.ebuild,
+  nvidia-cuda-sdk-2.2-r1.ebuild, nvidia-cuda-sdk-2.02.0807.1535.ebuild,
+  nvidia-cuda-sdk-2.3.ebuild, nvidia-cuda-sdk-3.0_beta1.ebuild,
+  nvidia-cuda-sdk-3.0.ebuild, nvidia-cuda-sdk-3.1.ebuild:
+  virtual/glut -> media-libs/glut
+
+*nvidia-cuda-sdk-3.1 (03 Jul 2010)
+
+  03 Jul 2010; Michał Januszewski <spock@gentoo.org>
+  +nvidia-cuda-sdk-3.1.ebuild:
+  Version bump (bug #325833). Thanks to Clemens Rabe for the updated ebuild.
+
+*nvidia-cuda-sdk-3.0 (21 Mar 2010)
+
+  21 Mar 2010; Michał Januszewski <spock@gentoo.org>
+  +nvidia-cuda-sdk-3.0.ebuild:
+  Version bump.
+
+*nvidia-cuda-sdk-3.0_beta1 (08 Feb 2010)
+
+  08 Feb 2010; Michał Januszewski <spock@gentoo.org>
+  +nvidia-cuda-sdk-3.0_beta1.ebuild, metadata.xml:
+  Add the 3.0 beta SDK.
+
+  01 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  nvidia-cuda-sdk-2.2-r1.ebuild:
+  stable x86, bug 293641
+
+  07 Aug 2009; <chainsaw@gentoo.org> nvidia-cuda-sdk-2.02.0807.1535.ebuild:
+  Marked stable as requested by Michal "Spock" Januszewski
+  <spock@gentoo.org> in bug #276538. Arch-tested by Víctor "VQuicksilver"
+  Enríquez using K3d.
+
+  07 Aug 2009; <chainsaw@gentoo.org> nvidia-cuda-sdk-2.02.0807.1535.ebuild:
+  Marked stable as requested by Michal "Spock" Januszewski
+  <spock@gentoo.org> in bug #276538. Arch-tested by Víctor "VQuicksilver"
+  Enríquez using K3d & cuda-profiler.
+
+*nvidia-cuda-sdk-2.3 (29 Jul 2009)
+
+  29 Jul 2009; Michał Januszewski <spock@gentoo.org>
+  +nvidia-cuda-sdk-2.3.ebuild:
+  Version bump.
+
+  18 Jul 2009; Michał Januszewski <spock@gentoo.org>
+  nvidia-cuda-sdk-2.1.1215.2015.ebuild, nvidia-cuda-sdk-2.2.ebuild,
+  nvidia-cuda-sdk-2.2-r1.ebuild, nvidia-cuda-sdk-2.02.0807.1535.ebuild:
+  Add info about this package requiring <=gcc-4.3 to build (bug #278137).
+
+  08 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  nvidia-cuda-sdk-2.02.0807.1535.ebuild:
+  stable x86, bug 276538
+
+  03 Jul 2009; Michał Januszewski <spock@gentoo.org>
+  nvidia-cuda-sdk-2.1.1215.2015.ebuild, nvidia-cuda-sdk-2.2.ebuild,
+  nvidia-cuda-sdk-2.02.0807.1535.ebuild:
+  Do not perform any binary checks as this package uses upstream binaries
+  (bug #274557).
+
+*nvidia-cuda-sdk-2.2-r1 (03 Jul 2009)
+
+  03 Jul 2009; Michał Januszewski <spock@gentoo.org>
+  +nvidia-cuda-sdk-2.2-r1.ebuild:
+  New, more configurable ebuild. It is not possible not to install the code
+  examples and documentation by disabling the 'examples' and 'doc' USE
+  flags.
+
+  16 May 2009; Michał Januszewski <spock@gentoo.org>
+  nvidia-cuda-sdk-2.1.1215.2015.ebuild, nvidia-cuda-sdk-2.2.ebuild,
+  nvidia-cuda-sdk-2.02.0807.1535.ebuild:
+  Ignore executable stacks in an upstream binary.
+
+  16 May 2009; Michał Januszewski <spock@gentoo.org>
+  nvidia-cuda-sdk-2.1.1215.2015.ebuild:
+  Force serial make (bug #266069, comment #25).
+
+*nvidia-cuda-sdk-2.2 (16 May 2009)
+
+  16 May 2009; Michał Januszewski <spock@gentoo.org>
+  +nvidia-cuda-sdk-2.2.ebuild:
+  Version bump (bug #269893).
+
+*nvidia-cuda-sdk-2.1.1215.2015 (16 May 2009)
+
+  16 May 2009; Michał Januszewski <spock@gentoo.org>
+  +nvidia-cuda-sdk-2.1.1215.2015.ebuild,
+  -nvidia-cuda-sdk-2.10.1215.2015.ebuild:
+  As NVIDIA changed the versioning scheme of their files, change the latest
+  version of the package so that it is not identified as newer than 2.2.
+
+  22 Mar 2009; Michał Januszewski <spock@gentoo.org>
+  +files/nvidia-cuda-sdk-2.10.1215.2015-vararg_inline_fix.patch,
+  nvidia-cuda-sdk-2.10.1215.2015.ebuild:
+  Fix bug #260744 (compilation problems with GCC 4.3.3+).
+
+*nvidia-cuda-sdk-2.10.1215.2015 (21 Jan 2009)
+
+  21 Jan 2009; Michał Januszewski <spock@gentoo.org>
+  +nvidia-cuda-sdk-2.10.1215.2015.ebuild:
+  Version bump.
+
+  13 Nov 2008; Michał Januszewski <spock@gentoo.org>
+  nvidia-cuda-sdk-2.02.0807.1535.ebuild:
+  Change the default CUDA path to /opt/cuda (bug #245621).
+
+  29 Oct 2008; Michał Januszewski <spock@gentoo.org>
+  nvidia-cuda-sdk-2.02.0807.1535.ebuild:
+  Add missing dependency on GLUT (bug #244182).
+
+  18 Oct 2008; Michał Januszewski <spock@gentoo.org>
+  nvidia-cuda-sdk-2.02.0807.1535.ebuild:
+  Fix the DESCRIPTION field in the ebuild. Remove a spurious RESTRICT.
+
+*nvidia-cuda-sdk-2.02.0807.1535 (18 Oct 2008)
+
+  18 Oct 2008; Michał Januszewski <spock@gentoo.org>
+  +files/nvidia-cuda-sdk-2.02.0807.1535-make_cpp_fix.patch, +metadata.xml,
+  +nvidia-cuda-sdk-2.02.0807.1535.ebuild:
+  Initial commit.

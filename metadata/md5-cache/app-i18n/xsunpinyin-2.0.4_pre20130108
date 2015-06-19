@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst unpack
+DEPEND=~app-i18n/sunpinyin-2.0.4_pre20130108:= x11-libs/gtk+:2 x11-libs/libX11 dev-util/scons
+DESCRIPTION=The SunPinyin IMEngine Wrapper for XIM Framework
+EAPI=5
+HOMEPAGE=https://sunpinyin.googlecode.com/
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1 CDDL
+RDEPEND=~app-i18n/sunpinyin-2.0.4_pre20130108:= x11-libs/gtk+:2 x11-libs/libX11
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~yngwin/distfiles/sunpinyin-2.0.4_pre20130108.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	scons-utils	988e24b9e2e4642189b4e97c03e5ae71	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=6aead451cba51745e4f006fcdeaa1756

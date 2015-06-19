@@ -1,0 +1,44 @@
+# ChangeLog for sys-auth/libyubikey
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/libyubikey/ChangeLog,v 1.8 2015/04/14 07:36:29 jlec Exp $
+
+*libyubikey-1.13 (14 Apr 2015)
+
+  14 Apr 2015; Justin Lecher <jlec@gentoo.org> +libyubikey-1.13.ebuild,
+  -libyubikey-1.10.ebuild, -libyubikey-1.9.ebuild, metadata.xml:
+  Version Bump; drop old
+
+*libyubikey-1.12 (19 Aug 2014)
+
+  19 Aug 2014; Rick Farina <zerochaos@gentoo.org> +libyubikey-1.12.ebuild:
+  version bump, bug 513944
+
+  22 Apr 2013; Rick Farina <zerochaos@gentoo.org> libyubikey-1.10.ebuild:
+  tested on ~x86
+
+*libyubikey-1.10 (24 Mar 2013)
+
+  24 Mar 2013; Diego E. Pettenò <flameeyes@gentoo.org> +libyubikey-1.10.ebuild:
+  Version bump; use autotools-utils.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*libyubikey-1.9 (24 Jun 2012)
+
+  24 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org> +libyubikey-1.9.ebuild,
+  -files/libyubikey-1.6-rpath.patch, -libyubikey-1.6.ebuild:
+  Version bump yubikey-related packages. Close bugs #394565, #394563, #423289,
+  #371345, #394567. Remove old and old patch.
+
+  24 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> libyubikey-1.6.ebuild:
+  USE="static-libs" and convert to prune_libtool_files() function. Remove
+  -Werror from AM_INIT_AUTOMAKE for compability with sys-devel/automake >= 1.12
+  wrt #423255 by Diego Elio Pettenò.
+
+*libyubikey-1.6 (23 Oct 2010)
+
+  23 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +libyubikey-1.6.ebuild, +files/libyubikey-1.6-rpath.patch, +metadata.xml:
+  Add libyubikey, proxy-maintained by Brant Gurganus. Ebuild and patch from
+  bug #342103, updated for style and repoman.

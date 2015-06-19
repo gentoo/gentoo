@@ -1,0 +1,284 @@
+# ChangeLog for dev-python/pyside
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyside/ChangeLog,v 1.69 2015/06/15 15:20:24 pesa Exp $
+
+  15 Jun 2015; Davide Pesavento <pesa@gentoo.org> pyside-1.2.2-r1.ebuild:
+  Mark stable on all arches to fix build on stable systems, see bug 530764.
+
+*pyside-1.2.2-r1 (22 Mar 2015)
+
+  22 Mar 2015; Ben de Groot <yngwin@gentoo.org> +files/qgtkstyle-1.2.2.patch,
+  +pyside-1.2.2-r1.ebuild:
+  Patch out QGtkStyle support to make pyside compile with Qt 4.8.6. Users who
+  need QGtkStyle support should stay with Qt 4.8.5 and mask this ebuild, until
+  bug #530764 has a proper fix.
+
+  16 Feb 2015; Davide Pesavento <pesa@gentoo.org> -pyside-1.1.2-r1.ebuild,
+  -pyside-1.2.1-r1.ebuild, metadata.xml:
+  Remove old
+
+  16 Feb 2015; Pacho Ramos <pacho@gentoo.org> pyside-1.2.2.ebuild:
+  ppc stable, bug #530760
+
+  16 Feb 2015; Pacho Ramos <pacho@gentoo.org> pyside-1.2.2.ebuild:
+  amd64/x86 stable, bug #530760
+
+  25 Jan 2015; Markus Meier <maekke@gentoo.org> pyside-1.2.2.ebuild:
+  arm stable, bug #530538
+
+  21 Sep 2014; Davide Pesavento <pesa@gentoo.org> pyside-1.2.2.ebuild:
+  Add missing PYTHON_DEPS and PYTHON_REQUIRED_USE. Drop deprecated python
+  targets.
+
+  27 Aug 2014; Anthony G. Basile <blueness@gentoo.org> pyside-1.1.2-r1.ebuild,
+  pyside-1.2.1-r1.ebuild, pyside-1.2.2.ebuild:
+  Keyword ~ppc ~ppc64, bug #495116
+
+  21 Jun 2014; Ian Delaney <idella4@gentoo.org> pyside-1.2.2.ebuild:
+  add py3.4 support
+
+*pyside-1.2.2 (23 May 2014)
+
+  23 May 2014; Davide Pesavento <pesa@gentoo.org> +pyside-1.2.2.ebuild:
+  Version bump.
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> pyside-1.2.1-r1.ebuild:
+  x86 stable wrt bug #499408
+
+*pyside-1.2.1-r1 (25 Dec 2013)
+
+  25 Dec 2013; Davide Pesavento <pesa@gentoo.org> +pyside-1.2.1-r1.ebuild,
+  -pyside-1.2.1.ebuild:
+  Add python 3.3 support. Fix detection of media-libs/phonon, thanks to
+  Gianluigi Tiesi <sherpya@gmail.com> in bug 475786.
+
+  25 Dec 2013; Davide Pesavento <pesa@gentoo.org> -pyside-1.2.0.ebuild:
+  old
+
+*pyside-1.2.1 (14 Nov 2013)
+
+  14 Nov 2013; Davide Pesavento <pesa@gentoo.org> +pyside-1.2.1.ebuild:
+  Version bump.
+
+  04 Oct 2013; Mike Frysinger <vapier@gentoo.org> pyside-1.1.2-r1.ebuild:
+  Mark arm stable #460234.
+
+*pyside-1.2.0 (15 Aug 2013)
+
+  15 Aug 2013; Davide Pesavento <pesa@gentoo.org> +pyside-1.2.0.ebuild,
+  metadata.xml:
+  Version bump (bug 477844); add designer USE flag.
+
+  08 Mar 2013; Davide Pesavento <pesa@gentoo.org> -pyside-1.1.2.ebuild:
+  old
+
+  07 Mar 2013; Agostino Sarubbo <ago@gentoo.org> pyside-1.1.2-r1.ebuild:
+  Stable for x86, wrt bug #460234
+
+  07 Mar 2013; Agostino Sarubbo <ago@gentoo.org> pyside-1.1.2-r1.ebuild:
+  Stable for amd64, wrt bug #460234
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> pyside-1.1.2-r1.ebuild,
+  pyside-1.1.2.ebuild:
+  Move Qt dependencies to the new category
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> pyside-1.1.2-r1.ebuild,
+  pyside-1.1.2.ebuild:
+  Move Qt dependencies to the new category
+
+*pyside-1.1.2-r1 (04 Feb 2013)
+
+  04 Feb 2013; Michał Górny <mgorny@gentoo.org> +pyside-1.1.2-r1.ebuild:
+  Migrate to python-r1 (requested in bug #455378).
+
+  26 Dec 2012; Davide Pesavento <pesa@gentoo.org> pyside-1.1.2.ebuild:
+  Cosmetics.
+
+  12 Dec 2012; Davide Pesavento <pesa@gentoo.org> -pyside-1.1.1.ebuild:
+  Remove old.
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org> pyside-1.1.2.ebuild:
+  Stable for x86, wrt bug #438390
+
+  17 Oct 2012; Agostino Sarubbo <ago@gentoo.org> pyside-1.1.2.ebuild:
+  Stable for amd64, wrt bug #438390
+
+  17 Oct 2012; Michael Palimaka <kensington@gentoo.org> pyside-1.1.1.ebuild,
+  pyside-1.1.2.ebuild:
+  Restrict python-3.3, wrt bug #438586.
+
+*pyside-1.1.2 (08 Sep 2012)
+
+  08 Sep 2012; Davide Pesavento <pesa@gentoo.org> +pyside-1.1.2.ebuild:
+  Version bump.
+
+  27 Jul 2012; Steev Klimaszewski <steev@gentoo.org> pyside-1.1.1.ebuild:
+  Add ~arm keyword. Tested on i.MX6 (armv7)
+
+  27 Jul 2012; Michael Palimaka <kensington@gentoo.org> pyside-1.1.1.ebuild:
+  Add missing dependency, thanks to steev.
+
+  12 Jun 2012; Davide Pesavento <pesa@gentoo.org> -pyside-1.1.0-r1.ebuild:
+  Remove old.
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> pyside-1.1.1.ebuild:
+  x86 stable wrt bug #418421
+
+  03 Jun 2012; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove myself as maintainer. Qt team will take care of that
+
+  03 Jun 2012; Davide Pesavento <pesa@gentoo.org> pyside-1.1.1.ebuild:
+  Fix QtGui_pyside_reload_test, bug 415553 comment 5.
+
+  02 Jun 2012; Markos Chandras <hwoarang@gentoo.org> pyside-1.1.1.ebuild:
+  Stable on amd64 wrt bug #418421
+
+  30 May 2012; Justin Lecher <jlec@gentoo.org> pyside-1.1.1.ebuild,
+  +files/rpath.cmake:
+  Add fix for prefix, missing rpath for qt4 installation
+
+  29 May 2012; Justin Lecher <jlec@gentoo.org> pyside-1.1.1.ebuild:
+  Added ~-linux keywords, tested by me
+
+  13 May 2012; Davide Pesavento <pesa@gentoo.org> metadata.xml:
+  Fix kde USE flag description (media-libs/phonon vs. media-sound/phonon).
+
+*pyside-1.1.1 (28 Apr 2012)
+
+  28 Apr 2012; Davide Pesavento <pesa@gentoo.org> +pyside-1.1.1.ebuild:
+  Version bump. Switch to out-of-source build.
+
+  22 Apr 2012; Markus Meier <maekke@gentoo.org> pyside-1.1.0-r1.ebuild:
+  x86 stable, bug #401789
+
+  14 Apr 2012; Agostino Sarubbo <ago@gentoo.org> pyside-1.1.0-r1.ebuild:
+  Stable for amd64, wrt bug #401789
+
+  10 Apr 2012; Davide Pesavento <pesa@gentoo.org> -pyside-1.1.0.ebuild,
+  metadata.xml:
+  Remove old.
+
+  07 Mar 2012; Davide Pesavento <pesa@gentoo.org>
+  -files/pyside-find-kde-phonon.patch, -pyside-1.0.6.ebuild,
+  -pyside-1.0.9.ebuild:
+  Remove obsolete versions that are never going to be stabilized.
+
+*pyside-1.1.0-r1 (06 Mar 2012)
+
+  06 Mar 2012; Davide Pesavento <pesa@gentoo.org> +pyside-1.1.0-r1.ebuild,
+  metadata.xml:
+  Revbump: ebuild rewritten to support multiple python ABIs (bug #401549 by
+  Rafał Mużyło), thanks to Ian Delaney for initial testing.
+
+  23 Feb 2012; Markos Chandras <hwoarang@gentoo.org> pyside-1.1.0.ebuild:
+  Fix tests. Thanks to Ian Delaney <johneed@hotmail.com>. Bug #403061
+
+  17 Jan 2012; Markos Chandras <hwoarang@gentoo.org> pyside-1.1.0.ebuild:
+  drop obsolete help useflag
+
+*pyside-1.1.0 (15 Jan 2012)
+
+  15 Jan 2012; Markos Chandras <hwoarang@gentoo.org> +pyside-1.1.0.ebuild,
+  metadata.xml:
+  version bump. Add one useflag per module. Bug #369127. Add use dependency to
+  accessebility Qt useflag. Bug #385051
+
+*pyside-1.0.9 (27 Dec 2011)
+
+  27 Dec 2011; Patrick Lauer <patrick@gentoo.org> +pyside-1.0.9.ebuild:
+  Bump for #385053
+
+  13 Sep 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #278944
+
+*pyside-1.0.6 (06 Sep 2011)
+
+  06 Sep 2011; Tomáš Chvátal <scarabeus@gentoo.org> -pyside-0.4.2.ebuild,
+  -pyside-1.0.0.ebuild, -pyside-1.0.3.ebuild, +pyside-1.0.6.ebuild,
+  -files/pyside-cmake-namespace.patch:
+  Version bump to latest release. Cleanup ebuild. Remove older.
+
+*pyside-1.0.3 (27 May 2011)
+
+  27 May 2011; Tomas Touceda <chiiph@gentoo.org> +pyside-1.0.3.ebuild:
+  Version bump
+
+  07 Apr 2011; Dominik Kapusta <ayoy@gentoo.org> pyside-0.4.2.ebuild,
+  pyside-1.0.0.ebuild:
+  Removing unneeded dependency on dev-libs/boost
+
+  26 Mar 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  pyside-0.4.2.ebuild, pyside-1.0.0.ebuild:
+  Adapt phonon dependency for package move
+
+*pyside-1.0.0 (20 Mar 2011)
+
+  20 Mar 2011; Tomas Touceda <chiiph@gentoo.org> +pyside-1.0.0.ebuild:
+  Version bump
+
+  29 Dec 2010; Dominik Kapusta <ayoy@gentoo.org> pyside-0.4.2.ebuild:
+  Specifying correct dependency on Python (bug #345531).
+
+  23 Dec 2010; Dominik Kapusta <ayoy@gentoo.org> pyside-0.4.2.ebuild,
+  +files/pyside-cmake-namespace.patch:
+  Add patch to fix namespace issue in cmake files (bug #348632). Thanks to
+  tarek for the patch.
+
+*pyside-0.4.2 (25 Nov 2010)
+
+  25 Nov 2010; Tomas Touceda <chiiph@gentoo.org> -pyside-0.3.2.ebuild,
+  -pyside-0.4.0-r1.ebuild, +pyside-0.4.2.ebuild:
+  Version bump, remove old and restrict tests wrt bug 338485
+
+*pyside-0.4.0-r1 (25 Aug 2010)
+
+  25 Aug 2010; Dominik Kapusta <ayoy@gentoo.org> -pyside-0.4.0.ebuild,
+  +pyside-0.4.0-r1.ebuild, +files/pyside-find-kde-phonon.patch,
+  -files/pyside-qtscripttools.patch:
+  Adding patch to find KDE phonon, removing obsolete qtscripttools patch.
+
+  24 Aug 2010; Dominik Kapusta <ayoy@gentoo.org> -pyside-0.2.2.ebuild,
+  -pyside-0.2.3-r1.ebuild:
+  Removing old versions
+
+*pyside-0.4.0 (24 Aug 2010)
+
+  24 Aug 2010; Dominik Kapusta <ayoy@gentoo.org> +pyside-0.4.0.ebuild:
+  Version bump
+
+  23 Jun 2010; Markos Chandras <hwoarang@gentoo.org> pyside-0.3.2.ebuild:
+  Introduce kde use flag to handle the phonon dependencies wrt bug #324429
+
+*pyside-0.3.2 (16 Jun 2010)
+
+  16 Jun 2010; Dominik Kapusta <ayoy@gentoo.org> +pyside-0.3.2.ebuild:
+  Version bump
+
+*pyside-0.2.3-r1 (01 Feb 2010)
+
+  01 Feb 2010; Dominik Kapusta <ayoy@gentoo.org> -pyside-0.2.3.ebuild,
+  +pyside-0.2.3-r1.ebuild:
+  Fix cmake module install path (bug #302411)
+
+  26 Jan 2010; Dominik Kapusta <ayoy@gentoo.org> pyside-0.2.3.ebuild:
+  Update Boost deps in CMakeLists.txt and perform better check for
+  QtMultimedia module (bug #301747).
+
+*pyside-0.2.3 (20 Jan 2010)
+
+  20 Jan 2010; Dominik Kapusta <ayoy@gentoo.org> pyside-0.2.2.ebuild,
+  +pyside-0.2.3.ebuild:
+  Version bump
+
+  20 Dec 2009; Dominik Kapusta <ayoy@gentoo.org> pyside-0.2.2.ebuild:
+  Removing 'tools' USE flag, it was a mistake.
+
+  20 Dec 2009; Dominik Kapusta <ayoy@gentoo.org> pyside-0.2.2.ebuild,
+  metadata.xml:
+  Add 'tools' useflag, to optionally pull in pyside-tools
+
+*pyside-0.2.2 (20 Dec 2009)
+
+  20 Dec 2009; Dominik Kapusta <ayoy@gentoo.org> +pyside-0.2.2.ebuild,
+  +files/pyside-qtscripttools.patch, +metadata.xml:
+  Initial commit for pyside (bug #282138)

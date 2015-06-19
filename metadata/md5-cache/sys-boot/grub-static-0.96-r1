@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=!<sys-boot/grub-2
+DESCRIPTION=Static GNU GRUB boot loader
+HOMEPAGE=http://www.gnu.org/software/grub/
+KEYWORDS=-* amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!<sys-boot/grub-2
+SLOT=0
+SRC_URI=mirror://gentoo/grub-static-0.96.tar.bz2
+_md5_=b7a64c01bf5ef7718b227dc2e96d758d

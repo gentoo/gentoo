@@ -1,0 +1,58 @@
+# ChangeLog for app-vim/closetag
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/closetag/ChangeLog,v 1.18 2010/11/14 05:57:36 radhermit Exp $
+
+  14 Nov 2010; Tim Harder <radhermit@gentoo.org> -closetag-0.9.ebuild:
+  Drop old version.
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org> closetag-0.9.1.ebuild:
+  Drop to ~mips
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  12 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> closetag-0.9.1.ebuild:
+  Stable on ppc.
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> closetag-0.9.1.ebuild:
+  Mark 0.9.1 stable on alpha
+
+  09 Sep 2005; Luis Medinas <metalgod@gentoo.org> closetag-0.9.1.ebuild:
+  Marked Stable on AMD64.
+
+  07 Sep 2005; Aron Griffis <agriffis@gentoo.org> closetag-0.9.1.ebuild:
+  Mark 0.9.1 stable on ia64
+
+  07 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> closetag-0.9.1.ebuild:
+  x86 sparc mips stable
+
+*closetag-0.9.1 (01 Aug 2005)
+
+  01 Aug 2005; Aron Griffis <agriffis@gentoo.org> +closetag-0.9.1.ebuild:
+  Bump to 0.9.1 which changes function names to be script-local to avoid
+  conflicts with other scripts' stack implementations
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> closetag-0.9.ebuild:
+  Stable on ppc.
+
+  03 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> closetag-0.9.ebuild:
+  Help text, bug #62559
+
+  05 Dec 2003; Ciaran McCreesh <ciaranm@gentoo.org> closetag-0.9.ebuild:
+  Added amd64 keyword
+
+  05 Dec 2003; Ciaran McCreesh <ciaranm@gentoo.org> closetag-0.9.ebuild:
+  Added ~ppc to keywords
+
+  15 Nov 2003; Aron Griffis <agriffis@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> closetag-0.9.ebuild:
+  Stable on ia64
+
+*closetag-0.9 (06 Sep 2003)
+
+  06 Sep 2003; Aron Griffis <agriffis@gentoo.org> closetag-0.9.ebuild:
+  Initial import of closetag vim plugin, submitted by Ciaran McCreesh in bug
+  27998
+

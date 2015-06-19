@@ -1,0 +1,92 @@
+diff -urNp star-1.5.1-orig/include/schily/schily.h star-1.5.1/include/schily/schily.h
+--- star-1.5.1-orig/include/schily/schily.h	2009-10-22 23:18:55.000000000 +0200
++++ star-1.5.1/include/schily/schily.h	2010-01-13 13:17:10.000000000 +0100
+@@ -174,7 +174,7 @@ extern	int	fexecle __PR((const char *, F
+ 		/* 6th arg not const, fexecv forces av[ac] = NULL */
+ extern	int	fexecv __PR((const char *, FILE *, FILE *, FILE *, int,
+ 							char **));
+-extern	int	fexecve __PR((const char *, FILE *, FILE *, FILE *,
++extern	int	sch_fexecve __PR((const char *, FILE *, FILE *, FILE *,
+ 					char * const *, char * const *));
+ extern	int	fspawnv __PR((FILE *, FILE *, FILE *, int, char * const *));
+ extern	int	fspawnl __PR((FILE *, FILE *, FILE *, const char *, ...));
+@@ -311,7 +311,7 @@ extern	char	*findbytes __PR((const void 
+ extern	char	*findinpath __PR((char *__name, int __mode, BOOL __plain_file));
+ extern	int	findline __PR((const char *, char, const char *,
+ 							int, char **, int));
+-extern	int	getline __PR((char *, int));
++extern	int	sch_getline __PR((char *, int));
+ extern	int	getstr __PR((char *, int));
+ extern	int	breakline __PR((char *, char, char **, int));
+ extern	int	getallargs __PR((int *, char * const**, const char *, ...));
+diff -urNp star-1.5.1-orig/lib/fexec.c star-1.5.1/lib/fexec.c
+--- star-1.5.1-orig/lib/fexec.c	2009-11-15 15:14:28.000000000 +0100
++++ star-1.5.1/lib/fexec.c	2010-01-13 13:17:10.000000000 +0100
+@@ -198,7 +198,7 @@ const	char	**pav;
+ 	} while (p != NULL);
+ 	va_end(args);
+ 
+-	ret = fexecve(name, in, out, err, av, env);
++	ret = sch_fexecve(name, in, out, err, av, env);
+ 	if (av != xav)
+ 		free(av);
+ 	return (ret);
+@@ -212,11 +212,11 @@ fexecv(name, in, out, err, ac, av)
+ 	char *av[];
+ {
+ 	av[ac] = NULL;			/*  force list to be null terminated */
+-	return (fexecve(name, in, out, err, av, environ));
++	return (sch_fexecve(name, in, out, err, av, environ));
+ }
+ 
+ EXPORT int
+-fexecve(name, in, out, err, av, env)
++sch_fexecve(name, in, out, err, av, env)
+ 	const char *name;
+ 	FILE *in, *out, *err;
+ 	char * const av[], * const env[];
+diff -urNp star-1.5.1-orig/lib/libschily-mapvers star-1.5.1/lib/libschily-mapvers
+--- star-1.5.1-orig/lib/libschily-mapvers	2007-10-06 15:21:55.000000000 +0200
++++ star-1.5.1/lib/libschily-mapvers	2010-01-13 13:17:10.000000000 +0100
+@@ -77,7 +77,7 @@ global:
+ 	fexecl;
+ 	fexecle;
+ 	fexecv;
+-	fexecve;
++	sch_fexecve;
+ 	ffileread;
+ 	ffilewrite;
+ 	fgetline;
+@@ -123,7 +123,7 @@ global:
+ 	geterrno;
+ 	getfiles;
+ 	getfp;
+-	getline;
++	sch_getline;
+ 	getmainfp;
+ 	#getstr;
+ 	#handlecond;
+diff -urNp star-1.5.1-orig/lib/stdio/fgetline.c star-1.5.1/lib/stdio/fgetline.c
+--- star-1.5.1-orig/lib/stdio/fgetline.c	2004-09-25 14:23:36.000000000 +0200
++++ star-1.5.1/lib/stdio/fgetline.c	2010-01-13 13:17:10.000000000 +0100
+@@ -61,7 +61,7 @@ fgetline(f, buf, len)
+ }
+ 
+ EXPORT int
+-getline(buf, len)
++sch_getline(buf, len)
+ 	char	*buf;
+ 	int	len;
+ {
+diff -urNp star-1.5.1-orig/libfind/find.c star-1.5.1/libfind/find.c
+--- star-1.5.1-orig/libfind/find.c	2009-11-15 16:25:02.000000000 +0100
++++ star-1.5.1/libfind/find.c	2010-01-13 13:17:10.000000000 +0100
+@@ -1747,7 +1747,7 @@ doexec(f, ac, av, state)
+ #endif
+ 		av[ac] = NULL;	/* -exec {} \; is not NULL terminated */
+ 
+-		fexecve(av[0], state->std[0], state->std[1], state->std[2],
++		sch_fexecve(av[0], state->std[0], state->std[1], state->std[2],
+ 							av, state->env);
+ 		err = geterrno();
+ #ifdef	PLUS_DEBUG

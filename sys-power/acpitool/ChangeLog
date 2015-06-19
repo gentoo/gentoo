@@ -1,0 +1,144 @@
+# ChangeLog for sys-power/acpitool
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-power/acpitool/ChangeLog,v 1.20 2014/06/05 09:57:01 ssuominen Exp $
+
+  05 Jun 2014; Samuli Suominen <ssuominen@gentoo.org> acpitool-0.5.1-r1.ebuild:
+  Update from eapi4 to eapi5
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> -acpitool-0.5.1.ebuild,
+  metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+  13 Aug 2012; Johannes Huber <johu@gentoo.org> acpitool-0.5.1-r1.ebuild:
+  Stable for x86, wrt bug #422235
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> acpitool-0.5.1-r1.ebuild:
+  Stable for amd64, wrt bug #422235
+
+*acpitool-0.5.1-r1 (30 Jan 2012)
+
+  30 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +acpitool-0.5.1-r1.ebuild, +files/acpitool-0.5.1-ac_adapter.patch,
+  +files/acpitool-0.5.1-battery.patch, +files/acpitool-0.5.1-kernel3.patch,
+  +files/acpitool-0.5.1-wakeup.patch:
+  Fix compability with Linux 3.x wrt #377355 by Damien Thébault. Fix reading
+  of values from ac_adapters and batteries. Rewrite part of the wakeup code.
+  This will also close #337565 (overflow revealed by _FORTIFY_SOURCE) by Diego
+  Elio Pettenò.
+
+  24 May 2010; Pacho Ramos <pacho@gentoo.org> acpitool-0.5.1.ebuild:
+  stable amd64, bug 317629
+
+  20 May 2010; Jeremy Olexa <darkside@gentoo.org> acpitool-0.5.1.ebuild:
+  QA: Fix SRC_URI
+
+  10 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  acpitool-0.5.1.ebuild:
+  x86 stable wrt bug #317629
+
+*acpitool-0.5.1 (16 Oct 2009)
+
+  16 Oct 2009; Thilo Bangert <bangert@gentoo.org> +acpitool-0.5.1.ebuild:
+  version bump (bug #250535)
+
+  20 Apr 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/acpitool-0.4.7-gcc43.patch, acpitool-0.4.7-r1.ebuild:
+  Fix from Fedora for building with gcc-4.3 #214171 by Peter Alfredsen.
+
+  14 Mar 2008; Christian Heim <phreak@gentoo.org> acpitool-0.4.7-r1.ebuild:
+  Fixing some minor syntax errors.
+
+  14 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Karol Wojtaszek (sekretarz, #56912) from metadata.xml.
+
+  13 May 2007; Raúl Porcel <armin76@gentoo.org> acpitool-0.4.7-r1.ebuild:
+  x86 stable wrt bug 173946
+
+  12 May 2007; Daniel Gryniewicz <dang@gentoo.org> acpitool-0.4.7-r1.ebuild:
+  Marked stable on amd64 for bug #173946
+
+*acpitool-0.4.7-r1 (09 May 2007)
+
+  09 May 2007; Stefan Schweizer <genstef@gentoo.org>
+  files/acpitool-0.4.7-proc_acpi_info_move.patch, -acpitool-0.4.7.ebuild,
+  +acpitool-0.4.7-r1.ebuild:
+  Change patch to work for Phillip Berndt <phillip.berndt@googlemail.com> in
+  bug 176457 too
+
+*acpitool-0.4.7 (12 Feb 2007)
+
+  12 Feb 2007; Robin H. Johnson <robbat2@gentoo.org>
+  +files/acpitool-0.4.7-proc_acpi_info_move.patch, +acpitool-0.4.7.ebuild:
+  Version bump, with patch for new kernels since the /proc/acpi/info file is
+  not present anymore.
+
+  27 Oct 2006; Piotr Jaroszyński <peper@gentoo.org> -acpitool-0.2.5.ebuild:
+  Remove old version.
+
+  26 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org> acpitool-0.4.6.ebuild:
+  Stable on amd64/x86 wrt bug #152887.
+
+  26 Oct 2006; Piotr Jaroszyński <peper@gentoo.org> +metadata.xml,
+  +acpitool-0.2.5.ebuild, +acpitool-0.4.6.ebuild:
+  Moved from app-laptop/acpitool to sys-power/acpitool.
+
+*acpitool-0.4.6 (26 Oct 2006)
+
+  26 Oct 2006; Piotr Jaroszyński <peper@gentoo.org> -acpitool-0.4.5.ebuild,
+  +acpitool-0.4.6.ebuild:
+  Version bump.
+
+*acpitool-0.4.5 (05 Jun 2006)
+
+  05 Jun 2006; Stefan Schweizer <genstef@gentoo.org>
+  -files/acpitool-0.2.6-gentoo.patch, -files/acpitool-0.2.7-gentoo.patch,
+  -acpitool-0.2.6.ebuild, -acpitool-0.2.7.ebuild, -acpitool-0.4.2.ebuild,
+  -acpitool-0.4.4.ebuild, +acpitool-0.4.5.ebuild:
+  version bump thanks to Luca Scarsini <liukone@libero.it> in bug 134543
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-acpitool-0.2.5, files/digest-acpitool-0.2.6,
+  files/digest-acpitool-0.2.7, files/digest-acpitool-0.4.2, Manifest:
+  Fixing SHA256 digest for real, pass three...
+
+*acpitool-0.4.4 (16 Feb 2006)
+
+  16 Feb 2006; Karol Wojtaszek <sekretarz@gentoo.org>
+  +acpitool-0.4.4.ebuild:
+  Version bump, bug #122094 by Wolfram Schlich
+
+*acpitool-0.4.2 (25 Jan 2006)
+
+  25 Jan 2006; Karol Wojtaszek <sekretarz@gentoo.org>
+  +acpitool-0.4.2.ebuild:
+  Version bump, bug #120207
+
+*acpitool-0.2.7 (31 Jul 2005)
+
+  31 Jul 2005; <sekretarz@gentoo.org> +files/acpitool-0.2.7-gentoo.patch,
+  +acpitool-0.2.7.ebuild:
+  Version bump, bug #99633
+
+  07 May 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  +files/acpitool-0.2.6-gentoo.patch, acpitool-0.2.6.ebuild:
+  amd64 keyworded. Sets CFLAGS rather than AM_CFLAGS, so user CFLAGS are
+  ignored, bug #90723
+
+*acpitool-0.2.6 (08 Dec 2004)
+
+  08 Dec 2004; Karol Wojtaszek <sekretarz@gentoo.org>
+  +acpitool-0.2.6.ebuild:
+  Version bump, bug #73614. Now using make install instead of einstall, bug
+  #72178
+
+  18 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org> :
+  Added proper digest
+
+  18 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org> acpitool-0.2.5.ebuild:
+  Fixed fetching problems, bug #69623
+
+*acpitool-0.2.5 (27 Sep 2004)
+
+  27 Sep 2004; Karol Wojtaszek <sekretarz@gentoo.org> +metadata.xml,
+  +acpitool-0.2.5.ebuild:
+  Initial add

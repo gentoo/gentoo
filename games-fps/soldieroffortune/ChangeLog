@@ -1,0 +1,142 @@
+# ChangeLog for games-fps/soldieroffortune
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/soldieroffortune/ChangeLog,v 1.35 2015/06/14 19:55:37 ulm Exp $
+
+  14 Jun 2015; Ulrich Müller <ulm@gentoo.org>
+  soldieroffortune-1.06a-r1.ebuild:
+  [QA] Remove emul-linux-x86-* from dependencies.
+
+  08 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  soldieroffortune-1.06a-r1.ebuild:
+  fix unpacking and sed with patch from Robert Cernansky (bug #539200)
+
+  05 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -soldieroffortune-1.06a.ebuild, soldieroffortune-1.06a-r1.ebuild:
+  use check-reqs in pkg_pretend; clean old
+
+  01 Feb 2015; Mikle Kolyada <zlogene@gentoo.org>
+  soldieroffortune-1.06a-r1.ebuild:
+  x86 stable wrt bug #535912
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org>
+  soldieroffortune-1.06a-r1.ebuild:
+  Stable for amd64, wrt bug #535912
+
+*soldieroffortune-1.06a-r1 (11 Jul 2014)
+
+  11 Jul 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +soldieroffortune-1.06a-r1.ebuild:
+  Bumped EAPI to 5, adjusted deps for gx86-multilib; synchronized changes here
+  with those made on soldieroffortune-demo as the original ebuilds matched --
+  however, this ebuild needs the CD for eveyrthing so there is no way for me to
+  confirm accuracy of changes
+
+  19 Sep 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  fix sed typo noticed by Jared B (bug #435476)
+
+  05 Feb 2012; Mike Frysinger <vapier@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Move to new unpacker eclass for unpack_makeself.
+
+  16 Jan 2012; Ulrich Müller <ulm@gentoo.org> soldieroffortune-1.06a.ebuild:
+  Migrate to cdrom.eclass, bug 398809.
+
+  14 Dec 2011; Mike Frysinger <vapier@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  The games.eclass has dropped GAMES_CHECK_LICENSE support (since portage now
+  has ACCEPT_LICENSE), so drop it here too.
+
+  12 Jul 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  work around opengl issue with sed patch from Jared (bug #371209)
+
+  28 Jul 2008; Chris Gianelloni <wolf31o2@gentoo.org> metadata.xml:
+  Removing myself from metadata.xml since I am retiring from the project.
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  15 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Fix quoting.
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Replacing einfo with elog
+
+  09 Jan 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Added export _POSIX2_VERSION=199209 and closing bug #155538.
+
+  05 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Removing old virtual/x11 dependency.
+
+  24 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Moved cdrom_get_cds to src_unpack since binary packages don't require the
+  original media to install.
+
+  07 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Stable on amd64.
+
+  28 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Unpack CD data to T instead of D.  Closing bug #131102.
+
+  15 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Added an extra dodir and closing bug #131102.
+
+  13 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Added initial amd64 support.
+
+  13 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Moved games_pkg_setup to the beginning of pkg_setup.
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Changed nostrip to strip.
+
+  21 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Added addition dir variable to games_make_wrapper for bug #109793.
+
+  06 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Updated to use lokigames mirrors.
+
+  04 May 2005; Chris Gianelloni <wolf31o2@gentoo.org> -files/sof,
+  soldieroffortune-1.06a.ebuild:
+  Removing sof script and changing to use games_make_wrapper. Added loki_patch
+  dependency. General code cleanup.
+
+  07 Mar 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Changed hardcoded /opt/soldieroffortune to dir variable and closing bug #84361.
+
+  07 Aug 2004; Tom Martin <slarti@gentoo.org> soldieroffortune-1.06a.ebuild:
+  Typo in DESCRIPTION: mercinary -> mercenary. Bug 59717.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  virtual/glibc -> virtual/libc
+
+  12 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Removing redundant inherit eutils and adding IUSE.
+
+  27 Feb 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Updating to new cdrom interface and cleaning up ebuild.
+
+*soldieroffortune-1.06a (27 Jul 2003)
+
+  27 Jul 2003; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild, files/sof:
+  Initial import.  Ebuild by me.

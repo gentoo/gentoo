@@ -1,0 +1,10 @@
+# ChangeLog for net-analyzer/check_mk
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/check_mk/ChangeLog,v 1.1 2014/07/17 23:10:12 dlan Exp $
+
+*check_mk-1.2.4_p5 (17 Jul 2014)
+
+  17 Jul 2014; Yixun Lan <dlan@gentoo.org> +check_mk-1.2.4_p5.ebuild,
+  +files/check_mk-1.2.4p3-setup.sh.patch, +metadata.xml:
+  bug 447920, initial version added, proxy for @Timo Eissler
+

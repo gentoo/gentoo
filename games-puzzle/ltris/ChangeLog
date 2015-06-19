@@ -1,0 +1,230 @@
+# ChangeLog for games-puzzle/ltris
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/ltris/ChangeLog,v 1.59 2015/03/12 18:23:02 mr_bones_ Exp $
+
+  12 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/ltris-1.0.18-gentoo.patch, -ltris-1.0.18.ebuild:
+  old
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> ltris-1.0.19.ebuild:
+  Stable for ppc, wrt bug #539026
+
+  10 Feb 2015; Agostino Sarubbo <ago@gentoo.org> ltris-1.0.19.ebuild:
+  Stable for x86, wrt bug #539026
+
+  06 Feb 2015; Agostino Sarubbo <ago@gentoo.org> ltris-1.0.19.ebuild:
+  Stable for amd64, wrt bug #539026
+
+  06 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> ltris-1.0.19.ebuild:
+  remove unnecessary icon stuff
+
+  06 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> ltris-1.0.19.ebuild:
+  tidy src_install
+
+*ltris-1.0.19 (30 Oct 2013)
+
+  30 Oct 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/ltris-1.0.19-gentoo.patch, +ltris-1.0.19.ebuild:
+  version bump
+
+  22 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/ltris-1.0.16-gentoo.patch, -files/ltris-1.0.17-gentoo.patch,
+  -ltris-1.0.16.ebuild, -ltris-1.0.17.ebuild:
+  old
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> ltris-1.0.18.ebuild:
+  Marking ltris-1.0.18 ppc for bug 400859
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> ltris-1.0.18.ebuild:
+  x86 stable wrt bug #400859
+
+  26 Jan 2012; Agostino Sarubbo <ago@gentoo.org> ltris-1.0.18.ebuild:
+  Stable for amd64, wrt bug #400859
+
+  10 Jan 2012; Brent Baude <ranger@gentoo.org> ltris-1.0.17.ebuild:
+  Marking ltris-1.0.17 ppc for bug 385905
+
+*ltris-1.0.18 (21 Dec 2011)
+
+  21 Dec 2011; Michael Sterrett <mr_bones_@gentoo.org> -ltris-1.0.15.ebuild,
+  -files/ltris-1.0.15-gentoo.patch, +ltris-1.0.18.ebuild,
+  +files/ltris-1.0.18-gentoo.patch:
+  version bump (bug #395565)
+
+  09 Oct 2011; Markos Chandras <hwoarang@gentoo.org> ltris-1.0.17.ebuild:
+  Stable on amd64 wrt bug #385905
+
+  08 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> ltris-1.0.17.ebuild:
+  x86 stable wrt bug #385905
+
+*ltris-1.0.17 (31 Aug 2011)
+
+  31 Aug 2011; Michael Sterrett <mr_bones_@gentoo.org> +ltris-1.0.17.ebuild,
+  +files/ltris-1.0.17-gentoo.patch:
+  version bump
+
+  24 Jun 2011; Brent Baude <ranger@gentoo.org> ltris-1.0.16.ebuild:
+  Marking ltris-1.0.16 ppc for bug 362221
+
+  10 Apr 2011; Thomas Kahle <tomka@gentoo.org> ltris-1.0.16.ebuild:
+  x86 stable per bug 362221
+
+  09 Apr 2011; Christoph Mende <angelos@gentoo.org> ltris-1.0.16.ebuild:
+  Stable on amd64 wrt bug #362221
+
+*ltris-1.0.16 (06 Mar 2011)
+
+  06 Mar 2011; Michael Sterrett <mr_bones_@gentoo.org> +ltris-1.0.16.ebuild,
+  +files/ltris-1.0.16-gentoo.patch:
+  version bump
+
+  04 Mar 2011; Brent Baude <ranger@gentoo.org> ltris-1.0.15.ebuild:
+  stable ppc, bug 342083
+
+  14 Nov 2010; Raúl Porcel <armin76@gentoo.org> ltris-1.0.14.ebuild,
+  ltris-1.0.15.ebuild:
+  Drop sparc keywords
+
+  27 Oct 2010; Christian Faulhammer <fauli@gentoo.org> ltris-1.0.15.ebuild:
+  stable x86, bug 342083
+
+  23 Oct 2010; Markos Chandras <hwoarang@gentoo.org> ltris-1.0.15.ebuild:
+  Stable on amd64 wrt bug #342083
+
+*ltris-1.0.15 (21 Sep 2010)
+
+  21 Sep 2010; Michael Sterrett <mr_bones_@gentoo.org> +ltris-1.0.15.ebuild,
+  +files/ltris-1.0.15-gentoo.patch:
+  version bump
+
+  22 May 2010; Pacho Ramos <pacho@gentoo.org> ltris-1.0.14.ebuild:
+  stable amd64, bug 302848
+
+  20 Mar 2010; Raúl Porcel <armin76@gentoo.org> ltris-1.0.14.ebuild:
+  sparc stable wrt #302848
+
+  23 Feb 2010; Christian Faulhammer <fauli@gentoo.org> ltris-1.0.14.ebuild:
+  stable x86, bug 302848
+
+  10 Feb 2010; Joseph Jezak <josejx@gentoo.org> ltris-1.0.14.ebuild:
+  Marked ppc stable for bug #302848.
+
+  23 Jan 2010; Brent Baude <ranger@gentoo.org> ltris-1.0.13.ebuild:
+  stable ppc, bug 296121
+
+*ltris-1.0.14 (30 Dec 2009)
+
+  30 Dec 2009; Michael Sterrett <mr_bones_@gentoo.org> +ltris-1.0.14.ebuild,
+  +files/ltris-1.0.14-gentoo.patch:
+  version bump
+
+  30 Dec 2009; Raúl Porcel <armin76@gentoo.org> ltris-1.0.13.ebuild:
+  sparc stable wrt #296121
+
+  19 Dec 2009; Pacho Ramos <pacho@gentoo.org> ltris-1.0.13.ebuild:
+  amd64 stable, bug 296121
+
+  09 Dec 2009; Christian Faulhammer <fauli@gentoo.org> ltris-1.0.13.ebuild:
+  stable x86, bug 296121
+
+*ltris-1.0.13 (07 Nov 2009)
+
+  07 Nov 2009; Michael Sterrett <mr_bones_@gentoo.org> +ltris-1.0.13.ebuild:
+  version bump
+
+  25 Jun 2008; nixnut <nixnut@gentoo.org> ltris-1.0.12.ebuild:
+  Stable on ppc wrt bug 229231
+
+  24 Jun 2008; Christian Faulhammer <opfer@gentoo.org> ltris-1.0.12.ebuild:
+  stable x86, bug 229231
+
+  24 Jun 2008; Ferris McCormick <fmccor@gentoo.org> ltris-1.0.12.ebuild:
+  Sparc stable, Bug #229231, works as expected.  Pretty.
+
+  24 Jun 2008; Thomas Anderson <gentoofan23@gentoo.org> ltris-1.0.12.ebuild:
+  amd64 stable, bug #229231
+
+*ltris-1.0.12 (31 Mar 2008)
+
+  31 Mar 2008; Michael Sterrett <mr_bones_@gentoo.org> +ltris-1.0.12.ebuild:
+  version bump
+
+  07 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org> ltris-1.0.11.ebuild:
+  QA cleanup: Fix quoting.
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> ltris-1.0.11.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  04 Oct 2006; Tristan Heaven <nyhm@gentoo.org> ltris-1.0.11.ebuild:
+  Use autotools eclass, bug #149960
+
+  10 Dec 2005; Simon Stelling <blubb@gentoo.org> ltris-1.0.11.ebuild:
+  stable on amd64
+
+  14 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org> ltris-1.0.11.ebuild:
+  Stable on sparc
+
+  13 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> ltris-1.0.11.ebuild:
+  Stable on ppc.
+
+  12 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org> ltris-1.0.11.ebuild:
+  stable for x86
+
+*ltris-1.0.11 (09 Oct 2005)
+
+  09 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org> +ltris-1.0.11.ebuild:
+  version bump
+
+*ltris-1.0.10 (18 Mar 2005)
+
+  18 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org> -ltris-1.0.5-r1.ebuild,
+  -ltris-1.0.6.ebuild, -ltris-1.0.7.ebuild, +ltris-1.0.10.ebuild:
+  security version bump (bug #85770); clean out old versions
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*ltris-1.0.7 (06 Oct 2004)
+
+  06 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org> +ltris-1.0.7.ebuild:
+  version bump (bug #65687)
+
+*ltris-1.0.6 (03 Jun 2004)
+
+  03 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> ltris-1.0.6.ebuild:
+  version bump (bug #52564)
+
+  25 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> ltris-1.0.4.ebuild,
+  ltris-1.0.5.ebuild:
+  tidy older versions of ebuild
+
+*ltris-1.0.5-r1 (25 Oct 2003)
+
+  25 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> ltris-1.0.5-r1.ebuild,
+  metadata.xml:
+  put highscore in GAMES_STATEDIR; more error checking/messages; tidy
+  add metadata.xml
+
+*ltris-1.0.5 (05 Oct 2003)
+
+  05 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump + games.eclass support.
+
+*ltris-1.0.4 (06 Jun 2003)
+
+  06 Jun 2003; Martin Holzer <mholzer@gentoo.org> ltris-1.0.4.ebuild:
+  Version bumped. Closes #20249.
+
+  01 May 2003; Jason Wever <weeve@gentoo.org> ltris-1.0.1.ebuild:
+  Added ~sparc to keywords.
+
+*ltris-1.0.1 (19 Feb 2002)
+
+  18 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> ltris-1.0.1.ebuild :
+  Updated to mirror://sourceforge in SRC_URI.
+
+  17 Jul 2002; José Alberto Suárez López <bass@gentoo.org> ltris-1.0.1.ebuild :
+  Added LICENSE, KEYWORDS.
+
+  19 Feb 2002; Aron Griffis <agriffis@gentoo.org> ltris-1.0.1.ebuild:
+  Added ebuild for ltris

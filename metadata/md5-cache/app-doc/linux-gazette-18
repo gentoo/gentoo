@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Sharing ideas and discoveries and Making Linux just a little more fun
+EAPI=5
+HOMEPAGE=http://linuxgazette.net/
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
+LICENSE=OPL
+RDEPEND=>=app-doc/linux-gazette-base-18
+SLOT=18
+SRC_URI=http://linuxgazette.net/ftpfiles/lg-issue18.tar.gz
+_md5_=387729664774d40696ad968e3af7038e

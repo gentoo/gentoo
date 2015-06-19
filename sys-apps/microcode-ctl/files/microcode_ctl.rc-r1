@@ -1,0 +1,25 @@
+#!/sbin/runscript
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/microcode-ctl/files/microcode_ctl.rc-r1,v 1.1 2009/05/02 12:54:14 armin76 Exp $
+
+depend() {
+	need localmount
+}
+
+start() {
+	local ret
+
+	# Make sure the kernel supports the microcode device ...
+	# if it doesnt, try to modprobe the kernel module
+	grep -qs ' microcode$' /proc/misc || modprobe -q microcode
+
+	ebegin "Updating microcode"
+	microcode_ctl -qu -f /lib/firmware/microcode.dat -d ${MICROCODE_DEV}
+	ret=$?
+	eend ${ret} "Failed to update microcode via '${MICROCODE_DEV}'"
+
+	[ "${MICROCODE_UNLOAD}" = "yes" ] && rmmod microcode >/dev/null 2>&1
+
+	return ${ret}
+}

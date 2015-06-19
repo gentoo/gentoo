@@ -1,0 +1,36 @@
+--- atop-2.1/Makefile
++++ atop-2.1/Makefile
+@@ -17,7 +17,7 @@
+ PMPATH1  = /usr/lib/pm-utils/sleep.d
+ PMPATH2  = /usr/lib64/pm-utils/sleep.d
+ 
+-CFLAGS  += -O2 -I. -Wall 	 # -DHTTPSTATS
++CFLAGS  += -I. -Wall 	 # -DHTTPSTATS
+ OBJMOD0  = version.o
+ OBJMOD1  = various.o  deviate.o   procdbase.o
+ OBJMOD2  = acctproc.o photoproc.o photosyst.o  rawlog.o ifprop.o parseable.o
+@@ -30,13 +30,13 @@
+ all: 		atop atopsar atopacctd
+ 
+ atop:		atop.o    $(ALLMODS) Makefile
+-		$(CC) atop.o $(ALLMODS) -o atop -lncurses -lz -lm -lrt $(LDFLAGS)
++		$(CC) $(CFLAGS) $(LDFLAGS) atop.o $(ALLMODS) -o atop $(shell ${PKG_CONFIG} --libs ncurses) -lz -lm -lrt
+ 
+ atopsar:	atop
+ 		ln -sf atop atopsar
+ 
+ atopacctd:	atopacctd.o netlink.o
+-		$(CC) atopacctd.o netlink.o -o atopacctd $(LDFLAGS)
++		$(CC) $(CFLAGS) $(LDFLAGS) atopacctd.o netlink.o -o atopacctd
+ 
+ netlink.o:	netlink.c
+ 		$(CC) -I. -Wall -c netlink.c
+@@ -49,6 +49,8 @@
+ 			then mkdir -p $(DESTDIR)$(LOGPATH); fi
+ 		if [ ! -d $(DESTDIR)$(BINPATH) ]; 	\
+ 			then mkdir -p $(DESTDIR)$(BINPATH); fi
++		if [ ! -d $(DESTDIR)$(SBINPATH) ]; 	\
++			then mkdir -p $(DESTDIR)$(SBINPATH); fi
+ 		if [ ! -d $(DESTDIR)$(SCRPATH) ]; 	\
+ 			then mkdir -p $(DESTDIR)$(SCRPATH); fi
+ 		if [ ! -d $(DESTDIR)$(MAN1PATH) ]; 	\

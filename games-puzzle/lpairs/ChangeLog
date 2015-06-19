@@ -1,0 +1,69 @@
+# ChangeLog for games-puzzle/lpairs
+# Copyright 2000-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/lpairs/ChangeLog,v 1.21 2015/02/22 20:09:50 tupone Exp $
+
+  22 Feb 2015; Tupone Alfredo <tupone@gentoo.org> lpairs-1.0.4.ebuild:
+  EAPI 5
+
+  14 Apr 2009; Raúl Porcel <armin76@gentoo.org> lpairs-1.0.4.ebuild:
+  x86 stable wrt #264700
+
+  03 Apr 2009; Tiago Cunha <tcunha@gentoo.org> lpairs-1.0.4.ebuild:
+  stable amd64, bug 264700
+
+  03 Apr 2009; Joseph Jezak <josejx@gentoo.org> lpairs-1.0.4.ebuild:
+  Marked ppc stable for bug #264700.
+
+  02 Apr 2009; Michael Sterrett <mr_bones_@gentoo.org> lpairs-1.0.4.ebuild:
+  EAPI=2
+
+*lpairs-1.0.4 (07 Sep 2008)
+
+  07 Sep 2008; Michael Sterrett <mr_bones_@gentoo.org> +lpairs-1.0.4.ebuild:
+  version bump
+
+  03 Sep 2008; Raúl Porcel <armin76@gentoo.org> lpairs-1.0.3.ebuild:
+  x86 stable wrt #235730
+
+  30 Aug 2008; Brent Baude <ranger@gentoo.org> lpairs-1.0.3.ebuild:
+  stable ppc, bug 235730
+
+  27 Aug 2008; Thomas Anderson <gentoofan23@gentoo.org> lpairs-1.0.3.ebuild:
+  stable amd64, bug 235730
+
+  01 Jan 2008; Tristan Heaven <nyhm@gentoo.org> lpairs-1.0.3.ebuild:
+  Add gettext dependencies
+
+*lpairs-1.0.3 (27 Nov 2007)
+
+  27 Nov 2007; Michael Sterrett <mr_bones_@gentoo.org> +lpairs-1.0.3.ebuild:
+  version bump
+
+*lpairs-1.0.2 (05 Nov 2007)
+
+  05 Nov 2007; Tupone Alfredo <tupone@gentoo.org> +lpairs-1.0.2.ebuild:
+  Version bump
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  22 Aug 2006; Michael Sterrett <mr_bones_@gentoo.org> lpairs-1.0.1.ebuild:
+  fix DESCRIPTION (bug #138134)
+
+  17 Feb 2006; <Tupone@gentoo.org> lpairs-1.0.1.ebuild:
+  Modular X dependency fix
+
+  22 Nov 2004; Joseph Jezak <josejx@gentoo.org> lpairs-1.0.1.ebuild:
+  Marked ppc stable.
+
+  08 Oct 2004; Tom Martin <slarti@gentoo.org> lpairs-1.0.1.ebuild:
+  Stable on amd64, thanks to Erik Nelson <erik_lee_nelson@yahoo.com> for
+  reporting in bug #66698.
+
+  29 May 2004; David Holm <dholm@gentoo.org> lpairs-1.0.1.ebuild:
+  Added to ~ppc.
+
+*lpairs-1.0.1 (08 Mar 2003)
+
+  08 Mar 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Chris Ripp <chris@ripp.net> #15749.

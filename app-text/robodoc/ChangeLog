@@ -1,0 +1,29 @@
+# ChangeLog for app-text/robodoc
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/robodoc/ChangeLog,v 1.6 2014/01/17 18:50:28 creffett Exp $
+
+  17 Jan 2014; Chris Reffett <creffett@gentoo.org> robodoc-4.99.36.ebuild:
+  EAPI bump, remove prepalldocs call
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/sgml-herd-has-no-maintainers-
+  again-td259655.html
+
+*robodoc-4.99.36 (09 Jun 2009)
+
+  09 Jun 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +robodoc-4.99.36.ebuild:
+  Version bump.
+
+  12 Mar 2007; Leonardo Boshell <leonardop@gentoo.org> metadata.xml:
+  Replacing text-markup herd with the new sgml herd.
+
+  05 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*robodoc-4.99.8 (29 May 2005)
+
+  29 May 2005; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +robodoc-4.99.8.ebuild:
+  Initial import. Ebuild submitted by jochen <jochen.eisinger@gmx.de>;
+  bug #69253.

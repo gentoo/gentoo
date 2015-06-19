@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+          <email>jdhore@gentoo.org</email>
+          <name>Jeff Horelick</name>
+  </maintainer>
+  <maintainer>
+    <email>binki@gentoo.org</email>
+    <name>Nathan Phillip Brink</name>
+    <description>Co-maintainer</description>
+  </maintainer>
+  <longdescription></longdescription>
+</pkgmetadata>

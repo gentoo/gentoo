@@ -1,0 +1,16 @@
+# ChangeLog for dev-ruby/pcaprub
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/pcaprub/ChangeLog,v 1.3 2015/03/24 16:29:37 graaff Exp $
+
+  24 Mar 2015; Hans de Graaff <graaff@gentoo.org> pcaprub-0.11.3-r1.ebuild:
+  Add ruby22.
+
+  14 Jan 2014; Hans de Graaff <graaff@gentoo.org> pcaprub-0.11.3-r1.ebuild:
+  Fix broken USE=doc and install additional documentation files. Make build
+  output verbose. Fix dependencies. Add ruby20, ruby21.
+
+*pcaprub-0.11.3-r1 (15 Dec 2013)
+
+  15 Dec 2013; Rick Farina <zerochaos@gentoo.org> +metadata.xml,
+  +pcaprub-0.11.3-r1.ebuild:
+  importing pcaprub from pentoo overlay for use with metasploit

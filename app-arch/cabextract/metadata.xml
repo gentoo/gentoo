@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>fonts</herd>
+  <use>
+    <flag name="extras">Install experimental extra tools: wince_info and
+      wince_rename for examining and processing Windows CE installation cabinet
+      header files; cabinfo for examining the structure of a cab file.
+    </flag>
+  </use>
+</pkgmetadata>

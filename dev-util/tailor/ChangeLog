@@ -1,0 +1,73 @@
+# ChangeLog for dev-util/tailor
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/tailor/ChangeLog,v 1.15 2015/02/22 05:59:53 idella4 Exp $
+
+*tailor-0.9.35-r1 (22 Feb 2015)
+
+  22 Feb 2015; Ian Delaney <idella4@gentoo.org> +tailor-0.9.35-r1.ebuild,
+  -tailor-0.9.35.ebuild:
+  revbump; convert -> distutils-r1, rm old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> tailor-0.9.35.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  16 Feb 2012; Dirkjan Ochtman <djc@gentoo.org> tailor-0.9.35.ebuild:
+  Extract HTML docs, bug 251422. Patch by Martin von Gagern.
+
+  29 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  tailor-0.9.35.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org> tailor-0.9.35.ebuild:
+  Transfer Prefix keywords
+
+*tailor-0.9.35 (22 Mar 2009)
+
+  22 Mar 2009; Krzysiek Pawlik <nelchael@gentoo.org> +tailor-0.9.35.ebuild:
+  Version bump.
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Marien Zwart (marienz, #107204) from metadata.xml.
+
+*tailor-0.9.30 (14 Nov 2007)
+
+  14 Nov 2007; Robin H. Johnson <robbat2@gentoo.org> +tailor-0.9.30.ebuild:
+  Version bump.
+
+*tailor-0.9.29-r1 (28 Oct 2007)
+
+  28 Oct 2007; Ali Polatel <hawking@gentoo.org>
+  +files/tailor-0.9.29-compare_trees.patch, -tailor-0.9.28.ebuild,
+  -tailor-0.9.29.ebuild, +tailor-0.9.29-r1.ebuild:
+  revbump. added patch to fix breakage with >=bzr-0.9 (bug 196547). drop old
+
+*tailor-0.9.29 (17 Sep 2007)
+
+  17 Sep 2007; Markus Ullmann <jokey@gentoo.org> +tailor-0.9.29.ebuild:
+  Version bump which fixes mercurical bug #186445
+
+*tailor-0.9.28 (18 Jun 2007)
+
+  18 Jun 2007; Tiziano Müller <dev-zero@gentoo.org> -tailor-0.9.22.ebuild,
+  -tailor-0.9.23.ebuild, -tailor-0.9.26.ebuild, +tailor-0.9.28.ebuild:
+  Version bump and corrected homepage (bug #182433)
+
+*tailor-0.9.26 (23 Sep 2006)
+
+  23 Sep 2006; Marien Zwart <marienz@gentoo.org> +tailor-0.9.26.ebuild:
+  Version bump, closes bug #148518.
+
+*tailor-0.9.23 (26 Jun 2006)
+
+  26 Jun 2006; Marien Zwart <marienz@gentoo.org> +tailor-0.9.23.ebuild:
+  Version bump, thanks to Brian Harring for reporting (bug #137903).
+
+  14 May 2006; Diego Pettenò <flameeyes@gentoo.org> tailor-0.9.22.ebuild:
+  Add ~amd64 and ~x86-fbsd keywords.
+
+*tailor-0.9.22 (14 May 2006)
+
+  14 May 2006; Marien Zwart <marienz@gentoo.org> +metadata.xml,
+  +tailor-0.9.22.ebuild:
+  New ebuild based on the one by Dmitry S. Kulyabov <dharma@mx.pfu.edu.ru> in
+  bug #119409.

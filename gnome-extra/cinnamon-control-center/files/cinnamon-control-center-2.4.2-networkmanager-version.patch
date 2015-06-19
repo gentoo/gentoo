@@ -1,0 +1,46 @@
+--- panels/network/cc-network-panel.c.old	2015-01-17 16:35:04.395520484 +0100
++++ panels/network/cc-network-panel.c	2015-01-17 16:36:11.706685966 +0100
+@@ -1311,30 +1311,18 @@
+ panel_check_network_manager_version (CcNetworkPanel *panel)
+ {
+         const gchar *version;
+-        gchar **split = NULL;
+-        guint major = 0;
+-        guint micro = 0;
+-        guint minor = 0;
+         gboolean ret = TRUE;
+ 
+         /* parse running version */
+         version = nm_client_get_version (panel->priv->client);
+-        if (version != NULL) {
+-                split = g_strsplit (version, ".", -1);
+-                major = atoi (split[0]);
+-                minor = atoi (split[1]);
+-                micro = atoi (split[2]);
+-        }
+ 
+-        /* is it too new or old */
+-        if (major > 0 || minor > 9 || (minor <= 8 && micro < 992)) {
++        if (version == NULL) {
+                 ret = FALSE;
+ 
+                 /* do modal dialog in idle so we don't block startup */
+                 panel->priv->nm_warning_idle = g_idle_add ((GSourceFunc)display_version_warning_idle, panel);
+         }
+ 
+-        g_strfreev (split);
+         return ret;
+ }
+ 
+@@ -1381,8 +1369,9 @@
+ {
+         gboolean ret;
+ 
+-        /* is the user compiling against a new version, but running an
+-         * old daemon version? */
++        /* is the user compiling against a new version, but not running
++         * the daemon? */
++
+         ret = panel_check_network_manager_version (panel);
+         if (ret) {
+                 manager_running (panel->priv->client, NULL, panel);

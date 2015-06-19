@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare
+DEPEND=media-libs/libdvdread >=media-gfx/imagemagick-5.5.7.14 >=dev-libs/libxml2-2.6.0 media-libs/freetype dev-libs/fribidi media-libs/libpng virtual/pkgconfig
+DESCRIPTION=Tools for generating DVD files to be played on standalone DVD players
+EAPI=4
+HOMEPAGE=http://dvdauthor.sourceforge.net/
+KEYWORDS=amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libdvdread >=media-gfx/imagemagick-5.5.7.14 >=dev-libs/libxml2-2.6.0 media-libs/freetype dev-libs/fribidi media-libs/libpng
+SLOT=0
+SRC_URI=mirror://sourceforge/dvdauthor/dvdauthor-0.6.18.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=41e0e8335d0d337935d86e66b92a6daa

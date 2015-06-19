@@ -1,0 +1,63 @@
+# ChangeLog for app-emulation/ganeti-instance-image
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/ganeti-instance-image/ChangeLog,v 1.13 2014/03/22 18:32:37 kensington Exp $
+
+  22 Mar 2014; Michael Palimaka <kensington@gentoo.org>
+  -ganeti-instance-image-0.5.1.ebuild:
+  Remove old.
+
+  18 Jan 2014; Pacho Ramos <pacho@gentoo.org> ganeti-instance-image-0.6.ebuild:
+  amd64 stable, bug #491916
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org>
+  ganeti-instance-image-0.6.ebuild:
+  Stable for x86, wrt bug #491916
+
+  23 Dec 2013; Pacho Ramos <pacho@gentoo.org> -ganeti-instance-image-0.5.ebuild,
+  metadata.xml:
+  Cleanup due bug #66351
+
+*ganeti-instance-image-0.6 (08 Jul 2013)
+
+  08 Jul 2013; Lance Albertson <ramereth@gentoo.org>
+  +ganeti-instance-image-0.6.ebuild:
+  Version bump
+
+  09 Oct 2012; Doug Goldstein <cardoe@gentoo.org>
+  ganeti-instance-image-0.5.ebuild, ganeti-instance-image-0.5.1.ebuild:
+  Update to reflect app-emulation/qemu-kvm -> app-emulation/qemu move.
+
+  17 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ganeti-instance-image-0.5.1.ebuild:
+  x86 stable wrt bug #396799
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  ganeti-instance-image-0.5.1.ebuild:
+  Stable for amd64, wrt bug #396799
+
+*ganeti-instance-image-0.5.1 (26 May 2011)
+
+  26 May 2011; Lance Albertson <ramereth@gentoo.org>
+  -ganeti-instance-image-0.4.ebuild, ganeti-instance-image-0.5.ebuild,
+  +ganeti-instance-image-0.5.1.ebuild:
+  Version bump, fix qemu dep #367565), cleanup
+
+*ganeti-instance-image-0.5 (26 Mar 2011)
+
+  26 Mar 2011; Lance Albertson <ramereth@gentoo.org>
+  +ganeti-instance-image-0.5.ebuild:
+  Version bump
+
+  22 Jan 2011; Lance Albertson <ramereth@gentoo.org>
+  ganeti-instance-image-0.4.ebuild:
+  Stable
+
+  13 Jul 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Fix herd tag in metadata.xml
+
+*ganeti-instance-image-0.4 (07 Jun 2010)
+
+  07 Jun 2010; Lance Albertson <ramereth@gentoo.org>
+  +ganeti-instance-image-0.4.ebuild, +metadata.xml:
+  Initial ebuild pulled from the OSUOSL overlay

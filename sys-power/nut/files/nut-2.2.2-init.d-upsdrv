@@ -1,0 +1,44 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-power/nut/files/nut-2.2.2-init.d-upsdrv,v 1.2 2011/12/04 10:43:19 swegener Exp $
+
+extra_commands="stopall startall"
+
+UPSNAME=${SVCNAME#*.}
+msgtext="drivers"
+[ "${UPSNAME}" == "${SVCNAME}" ] && UPSNAME=''
+[ -n "$UPSNAME" ] && msgtext="driver for $UPSNAME"
+
+depend() {
+	before upsd
+	[ "${UPSNAME}" != '' ] && provide upsdrv
+}
+
+start() {
+	_dostart "$UPSNAME" "$msgtext"
+}
+stop() {
+	_dostop "$UPSNAME" "$msgtext"
+}
+
+startall() {
+	_dostart "" "$msgtext"
+}
+stopall() {
+	_dostop "" "$msgtext"
+}
+
+_dostart() {
+	ebegin "Starting UPS $msgtext"
+	/usr/sbin/upsdrvctl start $UPSNAME
+	eend $? "Failed to start UPS $msgtext!"
+}
+
+_dostop() {
+	# The pidfile names depend on the actual UPS name
+	# Not in our control at all
+	ebegin "Stopping UPS $msgtext"
+	/usr/sbin/upsdrvctl stop $UPSNAME
+	eend $? "Failed to stop UPS $msgtext!"
+}

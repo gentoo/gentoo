@@ -1,0 +1,74 @@
+# ChangeLog for kde-misc/kcm-grub2
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kcm-grub2/ChangeLog,v 1.18 2015/06/04 18:57:32 kensington Exp $
+
+  04 Jun 2015; Michael Palimaka <kensington@gentoo.org>
+  kcm-grub2-0.6.4-r1.ebuild:
+  Move various kde-base packages to kde-apps.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> kcm-grub2-0.6.4-r1.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  29 Jul 2014; Johannes Huber <johu@gentoo.org> -kcm-grub2-0.6.4.ebuild:
+  Remove old.
+
+  29 Jul 2014; Sergey Popov <pinkbyte@gentoo.org> kcm-grub2-0.6.4-r1.ebuild:
+  Stable on amd64 and x86, wrt bug #517404
+
+*kcm-grub2-0.6.4-r1 (03 May 2014)
+
+  03 May 2014; Ian Whyman <thev00d00@gentoo.org> +kcm-grub2-0.6.4-r1.ebuild,
+  metadata.xml:
+  Correctly set paths for Gentoo's Grub2, thanks to Fitzcarraldo in #508462
+
+  18 Jan 2014; Pacho Ramos <pacho@gentoo.org> kcm-grub2-0.6.4.ebuild:
+  amd64 stable, bug #491040
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> kcm-grub2-0.6.4.ebuild:
+  Stable for x86, wrt bug #491040
+
+  11 Nov 2013; Johannes Huber <johu@gentoo.org> -kcm-grub2-0.5.8.ebuild:
+  Remove old.
+
+*kcm-grub2-0.6.4 (12 Oct 2013)
+
+  12 Oct 2013; Johannes Huber <johu@gentoo.org> +kcm-grub2-0.6.4.ebuild:
+  Version bump.
+
+  22 Apr 2013; Agostino Sarubbo <ago@gentoo.org> metadata.xml:
+  change Ian's address and remove proxy-maint
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*kcm-grub2-0.5.8 (18 Jun 2012)
+
+  18 Jun 2012; Tomáš Chvátal <scarabeus@gentoo.org> +kcm-grub2-0.5.8.ebuild,
+  -files/kcm-grub2-use-gentoo-grub-commands.patch, -kcm-grub2-0.5.5.ebuild:
+  Version bump to latest.
+
+  15 Jun 2012; Tomáš Chvátal <scarabeus@gentoo.org> -kcm-grub2-0.5.0.ebuild:
+  Remove old.
+
+  14 Feb 2012; Johannes Huber <johu@gentoo.org> kcm-grub2-0.5.0.ebuild,
+  kcm-grub2-0.5.5.ebuild, metadata.xml:
+  Add kde herd as fallback. Fix header wrt bug #403699.
+
+  10 Jan 2012; Johannes Huber <johu@gentoo.org> kcm-grub2-0.5.5.ebuild:
+  Add missing linguas.
+
+  10 Jan 2012; Johannes Huber <johu@gentoo.org> kcm-grub2-0.5.0.ebuild,
+  kcm-grub2-0.5.5.ebuild:
+  Move slot from 0 to 4.
+
+*kcm-grub2-0.5.5 (10 Jan 2012)
+
+  10 Jan 2012; Johannes Huber <johu@gentoo.org> +kcm-grub2-0.5.5.ebuild:
+  Version bump.
+
+*kcm-grub2-0.5.0 (28 Aug 2011)
+
+  28 Aug 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/kcm-grub2-use-gentoo-grub-commands.patch, +kcm-grub2-0.5.0.ebuild,
+  +metadata.xml:
+  Add grub2 kcm module for in-kde configuration.

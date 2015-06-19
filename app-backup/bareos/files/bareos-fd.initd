@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/bareos/files/bareos-fd.initd,v 1.5 2014/05/20 23:18:41 mschiff Exp $
+
+depend() {
+	use dns
+}
+
+start() {
+	ebegin "Starting bareos file daemon"
+	checkpath -d -m 0750 /run/bareos
+	start-stop-daemon --start --quiet --exec /usr/sbin/bareos-fd \
+		-- ${FD_OPTIONS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping bareos file daemon"
+	start-stop-daemon --stop --quiet --pidfile /run/bareos/bareos-fd.*.pid
+	eend $?
+}

@@ -1,0 +1,104 @@
+# ChangeLog for dev-libs/serdisplib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/serdisplib/ChangeLog,v 1.22 2015/06/09 14:50:56 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  07 Mar 2014; Chris Reffett <creffett@gentoo.org> -serdisplib-1.97.6.ebuild:
+  Remove old
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> serdisplib-1.97.9.ebuild:
+  Stable for ppc, wrt bug #500644
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> serdisplib-1.97.9.ebuild:
+  amd64 stable, bug #500644
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  serdisplib-1.97.9.ebuild:
+  x86 stable wrt bug #500644
+
+  11 Feb 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  -serdisplib-1.97.5.ebuild:
+  old
+
+  13 May 2013; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Removing removed lcd herd from metadata
+
+  25 May 2012; Samuli Suominen <ssuominen@gentoo.org> serdisplib-1.97.5.ebuild,
+  serdisplib-1.97.6.ebuild, serdisplib-1.97.9.ebuild:
+  Restrict to SLOT="0" of virtual/libusb because the package has no support for
+  libusb-1.
+
+  22 May 2012; Samuli Suominen <ssuominen@gentoo.org> serdisplib-1.97.5.ebuild,
+  serdisplib-1.97.6.ebuild, serdisplib-1.97.9.ebuild:
+  Use virtual/libusb instead of dev-libs/libusb.
+
+*serdisplib-1.97.9 (06 May 2012)
+
+  06 May 2012; Pacho Ramos <pacho@gentoo.org> +serdisplib-1.97.9.ebuild,
+  -serdisplib-1.97.7.ebuild:
+  Version bump, remove old.
+
+  06 May 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  lcd herd is empty
+
+  24 Nov 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #158470
+
+*serdisplib-1.97.7 (16 Oct 2007)
+
+  16 Oct 2007; Robert Buchholz <rbu@gentoo.org> serdisplib-1.97.5.ebuild,
+  serdisplib-1.97.6.ebuild, +serdisplib-1.97.7.ebuild:
+  Version bump, introducing new devices and some bugfixes.
+  Also fixed a quoting issue.
+
+  29 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  serdisplib-1.97.6.ebuild:
+  ppc stable, bug #185693
+
+  11 Aug 2007; Steve Dibb <beandog@gentoo.org> serdisplib-1.97.5.ebuild,
+  serdisplib-1.97.6.ebuild:
+  amd64 stable, bug 185693
+
+*serdisplib-1.97.6 (09 Aug 2007)
+
+  09 Aug 2007; Robert Buchholz <rbu@gentoo.org> +serdisplib-1.97.6.ebuild:
+  Version bump, introducing:
+    * Fixed linking bugs (upstream)
+    * New Nokia drivers (nokcol, PCD8544)
+    * New Osram Pictiva drivers
+
+  23 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  serdisplib-1.97.5.ebuild:
+  stable x86, bug 185693
+
+  03 Jun 2007; Robert Buchholz <rbu@gentoo.org> serdisplib-1.97.5.ebuild:
+  Added ~ppc
+
+  30 Apr 2007; Robert Buchholz <rbu@gentoo.org> metadata.xml,
+  -serdisplib-1.97.4.ebuild, serdisplib-1.97.5.ebuild:
+  gd needs to be built with USE="jpeg png" for serdisp to compile, drop old
+  version
+
+*serdisplib-1.97.5 (11 Mar 2007)
+
+  11 Mar 2007; Robert Buchholz <rbu@gentoo.org> +serdisplib-1.97.5.ebuild:
+  Version bump
+
+*serdisplib-1.97.4 (24 Feb 2007)
+
+  24 Feb 2007; Robert Buchholz <rbu@gentoo.org> metadata.xml,
+  -serdisplib-1.97.2.ebuild, +serdisplib-1.97.4.ebuild:
+  Version bump and amd64 keywords
+
+*serdisplib-1.97.2 (18 Dec 2006)
+
+  18 Dec 2006; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +serdisplib-1.97.2.ebuild:
+  Import from dev overlay
+
+  11 Dec 2006; Robert Buchholz (rbu) <rob@thetruth.de>
+  +serdisplib-1.97.2.ebuild, +metadata.xml:
+  Initial version of serdisplib. Thanks to Erik Wasser for providing the first
+  ebuild in bug #130712

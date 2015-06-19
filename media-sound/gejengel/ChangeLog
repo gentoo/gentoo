@@ -1,0 +1,115 @@
+# ChangeLog for media-sound/gejengel
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gejengel/ChangeLog,v 1.30 2015/04/18 07:25:47 mr_bones_ Exp $
+
+  18 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> -gejengel-0.1.4.ebuild:
+  old
+
+  06 Feb 2015; Alexis Ballier <aballier@gentoo.org> gejengel-0.1.4-r1.ebuild,
+  +files/gejengel-0.1.4-ffmpeg2.patch:
+  add patch to build with ffmpeg2, bug #536626
+
+  31 Jan 2015; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Drop to maintainer-needed
+
+  22 Jun 2013; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/gejengel-0.1.4-libav9.patch, gejengel-0.1.4-r1.ebuild:
+  Fix build with libav9. Fixes bug#443220 and bug#473618.
+
+  24 Jan 2013; Alexis Ballier <aballier@gentoo.org> gejengel-0.1.4-r1.ebuild,
+  +files/gejengel-0.1.4-ffmpeg-1.patch:
+  Fix build with ffmpeg-1, part of bug #443220
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> gejengel-0.1.4-r1.ebuild:
+  Stable for x86, wrt bug #441396
+
+  06 Nov 2012; Agostino Sarubbo <ago@gentoo.org> gejengel-0.1.4-r1.ebuild:
+  Stable for amd64, wrt bug #441396
+
+  04 Nov 2012; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  s/sound/proxy-maintainers/
+
+*gejengel-0.1.4-r1 (27 Aug 2012)
+
+  27 Aug 2012; Markos Chandras <hwoarang@gentoo.org> +gejengel-0.1.4-r1.ebuild:
+  Respect CXXFLAGS. Bug #429950. Fix deprecation warnings for the desktop file.
+
+  21 Dec 2011; Alexis Ballier <aballier@gentoo.org> gejengel-0.1.4.ebuild,
+  +files/gejengel-0.1.4-ffmpeg.patch:
+  fix build with latest ffmpeg, bug #377991
+
+  11 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> gejengel-0.1.4.ebuild:
+  Remove libsexymm from dependencies wrt #381205
+
+  03 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> gejengel-0.1.4.ebuild:
+  Use virtual/ffmpeg instead of media-video/ffmpeg.
+
+  28 Mar 2011; Christoph Mende <angelos@gentoo.org> gejengel-0.1.4.ebuild:
+  Fixed slot deps
+
+  05 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> gejengel-0.1.4.ebuild,
+  +files/gejengel-0.1.4-libnotify-0.7.patch:
+  Fix building with x11-libs/libnotify >= 0.7.
+
+  03 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  -files/gejengel-0.1.2-plugin.patch, -files/gejengel-0.1.2_64bit_fix.patch,
+  -files/gejengel-0.1.3-gcc45.patch:
+  Remove obsolete files
+
+  31 Aug 2010; Markos Chandras <hwoarang@gentoo.org> -gejengel-0.1.2.ebuild,
+  -gejengel-0.1.3.ebuild, gejengel-0.1.4.ebuild:
+  Stable on amd64. Bug #334879. Remove old ebuilds
+
+  30 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gejengel-0.1.4.ebuild:
+  x86 stable wrt bug #334879
+
+*gejengel-0.1.4 (16 Jun 2010)
+
+  16 Jun 2010; Markos Chandras <hwoarang@gentoo.org> +gejengel-0.1.4.ebuild:
+  Version bump. Fixes ffmpeg-0.6 build failures wrt bug #324281
+
+  27 May 2010; Markus Meier <maekke@gentoo.org> gejengel-0.1.2.ebuild,
+  gejengel-0.1.3.ebuild:
+  media-gfx/imagemagick[nocxx] is gone
+
+  14 May 2010; Markos Chandras <hwoarang@gentoo.org> gejengel-0.1.3.ebuild,
+  +files/gejengel-0.1.3-gcc45.patch:
+  Add gcc-4.5 patch wrt bug #319363. Adjust imagemagick dependencies wrt bug
+  #314321
+
+*gejengel-0.1.3 (14 Apr 2010)
+
+  14 Apr 2010; Markos Chandras <hwoarang@gentoo.org> gejengel-0.1.2.ebuild,
+  +files/gejengel-0.1.2-plugin.patch, +gejengel-0.1.3.ebuild:
+  Patch which fixes bug #301133. Bumped to 0.1.3
+
+  31 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> gejengel-0.1.2.ebuild:
+  Fix imagemagick deps to allow both "cxx" and "-nocxx".
+
+  23 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> gejengel-0.1.2.ebuild:
+  Fix lastfmlib to at least 0.4.0 per configure.ac.
+
+*gejengel-0.1.2 (15 Jan 2010)
+
+  15 Jan 2010; <hwoarang@gentoo.org> gejengel-0.1.0.ebuild,
+  +gejengel-0.1.2.ebuild, +files/gejengel-0.1.2_64bit_fix.patch:
+  Version bump. Fixes bug #299349 as well
+
+  02 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> gejengel-0.1.0.ebuild:
+  Don't install .a and .la files #281385.
+
+  13 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> gejengel-0.1.0.ebuild:
+  Raise gtkmm depend to >= 2.16 wrt #279025.
+
+  11 Aug 2009; Markos Chandras <hwoarang@gentoo.org> gejengel-0.1.0.ebuild:
+  Enable ffmpeg by default ( fixes bug 279091 ). Sort use flags
+
+*gejengel-0.1.0 (23 Jul 2009)
+
+  23 Jul 2009; Markos Chandras <hwoarang@gentoo.org> +gejengel-0.1.0.ebuild,
+  +metadata.xml:
+  Initial commit for gejengel music player ( bug 275927 ). Thanks to Dirk
+  Vanden
+  Boer ( upstream developer )<dirk.vdb@gmail.com> for the initial ebuild. He
+  will be proxy maintainer.

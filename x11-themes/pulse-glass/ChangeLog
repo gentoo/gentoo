@@ -1,0 +1,15 @@
+# ChangeLog for x11-themes/pulse-glass
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/pulse-glass/ChangeLog,v 1.3 2012/10/07 10:31:41 pacho Exp $
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, #274113
+
+  17 Jun 2010; Dror Levin <spatz@gentoo.org> pulse-glass-20100616.ebuild:
+  Fix SRC_URI.
+
+*pulse-glass-20100616 (16 Jun 2010)
+
+  16 Jun 2010; Dror Levin <spatz@gentoo.org> +pulse-glass-20100616.ebuild,
+  +metadata.xml:
+  Initial import, thanks to Vicente Olivert for ebuild on bug 324289.

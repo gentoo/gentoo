@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm setup
+DEPEND=app-arch/unzip X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=Sans-serif font designed for literacy use
+EAPI=5
+HOMEPAGE=http://scripts.sil.org/Andika
+IUSE=X
+KEYWORDS=amd64 arm ~arm64 x86
+LICENSE=OFL-1.1
+SLOT=0
+SRC_URI=http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=Andika-5.000.zip&filename=Andika-5.000.zip -> andika-5.000.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	font	b3239d2dc442d1717b9725e2be7cb5d6	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=3b656448735abcf22ae610329d3a018d

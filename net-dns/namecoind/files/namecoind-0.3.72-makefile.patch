@@ -1,0 +1,52 @@
+diff -Naur namecoinq-vQ.3.72.orig/src/Makefile namecoinq-vQ.3.72/src/Makefile
+--- namecoinq-vQ.3.72.orig/src/Makefile	2013-10-29 09:38:10.000000000 -0400
++++ namecoinq-vQ.3.72/src/Makefile	2013-11-30 18:43:25.016028725 -0500
+@@ -1,6 +1,6 @@
+-CXX=g++
++CXX?=g++
+ 
+-DEFS=-D_MT -DNOPCH -DFOURWAYSSE2 -DUSE_SSL 
++DEFS=-D_MT -DNOPCH -DFOURWAYSSE2 -DUSE_SSL
+ 
+ # Detect MinGW
+ MINGW=$(shell uname -s|grep -i mingw32)
+@@ -8,20 +8,10 @@
+ # Link boost statically
+ DEFS += -DBOOST_THREAD_USE_LIB
+ 
+-INCLUDEPATHS= \
+-	-I../libs/openssl-1.0.1e/include \
+-	-I../libs/db-4.7.25.NC/build_unix \
+-	-I../libs/boost_1_50_0
+-
+-LIBPATHS= \
+-	-L../libs/openssl-1.0.1e \
+-	-L../libs/db-4.7.25.NC/build_unix \
+-	-L../libs/boost_1_50_0/stage/lib
+-
+ LIBBOOST_SUFFIX=
+ 
+ LIBS= \
+- -Wl,-Bstatic \
++ -Wl,-Bdynamic \
+    -l boost_system$(LIBBOOST_SUFFIX) \
+    -l boost_filesystem$(LIBBOOST_SUFFIX) \
+    -l boost_program_options$(LIBBOOST_SUFFIX) \
+@@ -70,7 +60,7 @@
+ 			-l pthread
+ 	endif
+ 
+-CXXFLAGS=-O2 -Wno-invalid-offsetof -Wformat $(DEFS) $(INCLUDEPATHS)
++#CXXFLAGS=-O2 -Wno-invalid-offsetof -Wformat $(DEFS) $(INCLUDEPATHS)
+ HEADERS=headers.h strlcpy.h serialize.h uint256.h util.h key.h bignum.h base58.h \
+     script.h allocators.h db.h walletdb.h crypter.h net.h irc.h keystore.h main.h wallet.h bitcoinrpc.h uibase.h ui.h noui.h init.h auxpow.h
+ 
+@@ -110,7 +100,7 @@
+ obj/nogui/namecoin.o: namecoin.h
+ 
+ namecoind: $(OBJS:obj/%=obj/nogui/%) obj/nogui/namecoin.o
+-	$(CXX) $(CXXFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
++	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS) $(LIBS)
+ 
+ clean:
+ 	-rm -f namecoin namecoind

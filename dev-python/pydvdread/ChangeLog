@@ -1,0 +1,23 @@
+# ChangeLog for dev-python/pydvdread
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pydvdread/ChangeLog,v 1.4 2015/06/09 16:05:46 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  01 Jan 2015; Michał Górny <mgorny@gentoo.org> pydvdread-1.0-r1.ebuild:
+  Fix python_test() to reference PYTHON properly. Remove redundant swig call.
+
+*pydvdread-1.0-r1 (02 Jul 2014)
+
+  02 Jul 2014; Ian Delaney <idella4@gentoo.org> +pydvdread-1.0-r1.ebuild,
+  -pydvdread-1.0.ebuild:
+  revbump, drop old, add missing dep, conversion -> distutils-r1, rm code re
+  tests since test restricted (see comment), fixes Bug #514354
+
+*pydvdread-1.0 (31 Dec 2012)
+
+  31 Dec 2012; Mike Frysinger <vapier@gentoo.org>
+  +files/pydvdread-1.0-api-update.patch, +files/pydvdread-1.0-py3k.patch,
+  +metadata.xml, +pydvdread-1.0.ebuild:
+  Initial ebuild by me.

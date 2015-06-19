@@ -1,0 +1,18 @@
+# ChangeLog for kde-misc/akonadi-social-utils
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/akonadi-social-utils/ChangeLog,v 1.3 2014/03/20 21:47:24 johu Exp $
+
+  20 Mar 2014; Johannes Huber <johu@gentoo.org>
+  akonadi-social-utils-0_p20120827.ebuild:
+  Bump to EAPI 5.
+
+  30 May 2013; Michael Palimaka <kensington@gentoo.org>
+  akonadi-social-utils-0_p20120827.ebuild:
+  Add USE dependency default in preparation for the removal of the semantic-
+  desktop USE flag.
+
+*akonadi-social-utils-0_p20120827 (27 Aug 2012)
+
+  27 Aug 2012; Johannes Huber <johu@gentoo.org>
+  +akonadi-social-utils-0_p20120827.ebuild, +metadata.xml:
+  New package. Initial commit. Ebuild by me. Needed for bug #432906.

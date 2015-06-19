@@ -1,0 +1,46 @@
+# ChangeLog for dev-python/graphcanvas
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/graphcanvas/ChangeLog,v 1.10 2015/03/08 23:49:34 pacho Exp $
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> graphcanvas-4.0.2-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> graphcanvas-4.0.2-r1.ebuild:
+  amd64 stable, bug 540290
+
+  19 Dec 2014; Ian Delaney <idella4@gentoo.org> -graphcanvas-4.0.2.ebuild,
+  graphcanvas-4.0.2-r1.ebuild:
+  rm version of old EAPI, tidy dep
+
+*graphcanvas-4.0.2-r1 (16 Apr 2013)
+
+  16 Apr 2013; Ian Delaney <idella4@gentoo.org> +graphcanvas-4.0.2-r1.ebuild,
+  -graphcanvas-3.0.0.ebuild, -graphcanvas-4.0.0.ebuild:
+  drop old, migration -> distutils-r1
+
+*graphcanvas-4.0.2 (08 Apr 2013)
+
+  08 Apr 2013; Patrick Lauer <patrick@gentoo.org> +graphcanvas-4.0.2.ebuild:
+  Bump
+
+  06 Dec 2012; Sébastien Fabbro <bicatali@gentoo.org> graphcanvas-4.0.0.ebuild:
+  Keyword amd64-linux and x86-linux
+
+  27 Feb 2012; Patrick Lauer <patrick@gentoo.org> graphcanvas-4.0.0.ebuild:
+  Restricting py2.5
+
+  17 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  graphcanvas-4.0.0.ebuild:
+  Ebuild clean and EAPI bump
+
+*graphcanvas-4.0.0 (03 Aug 2011)
+
+  03 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  +graphcanvas-4.0.0.ebuild:
+  Version bump. Possible API break.
+
+*graphcanvas-3.0.0 (01 Feb 2011)
+
+  01 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +graphcanvas-3.0.0.ebuild, +metadata.xml:
+  Initial addition. Ebuild written by me.

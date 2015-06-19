@@ -1,0 +1,55 @@
+# ChangeLog for app-i18n/im-chooser
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/im-chooser/ChangeLog,v 1.11 2014/12/30 12:31:20 pacho Exp $
+
+  30 Dec 2014; Pacho Ramos <pacho@gentoo.org> -im-chooser-1.4.1.ebuild,
+  -im-chooser-1.4.2.ebuild, -im-chooser-1.5.1.ebuild,
+  -im-chooser-1.5.2.1.ebuild, -im-chooser-1.5.2.ebuild:
+  Drop old (#530242)
+
+*im-chooser-1.6.2 (04 May 2013)
+
+  04 May 2013; Naohiro Aota <naota@gentoo.org> +im-chooser-1.6.2.ebuild:
+  version bump
+
+  18 Jul 2012; Naohiro Aota <naota@gentoo.org> im-chooser-1.4.1.ebuild,
+  im-chooser-1.4.2.ebuild, im-chooser-1.5.1.ebuild, im-chooser-1.5.2.1.ebuild,
+  im-chooser-1.5.2.ebuild:
+  Fix gnome2 function name typo. #426784
+
+  10 Jun 2012; Jeff Horelick <jdhore@gentoo.org> im-chooser-1.5.2.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*im-chooser-1.5.2.1 (31 May 2012)
+
+  31 May 2012; Naohiro Aota <naota@gentoo.org> +im-chooser-1.5.2.1.ebuild:
+  Version bump. #411235
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> im-chooser-1.4.1.ebuild,
+  im-chooser-1.4.2.ebuild, im-chooser-1.5.1.ebuild, im-chooser-1.5.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  18 Dec 2011; Naohiro Aota <naota@gentoo.org> im-chooser-1.5.2.ebuild:
+  Re-apply imchooserui.patch
+
+*im-chooser-1.5.2 (28 Nov 2011)
+
+  28 Nov 2011; Naohiro Aota <naota@gentoo.org> +im-chooser-1.5.2.ebuild:
+  Version bumped. Bug #391801
+
+*im-chooser-1.5.1 (22 Oct 2011)
+
+  22 Oct 2011; Naohiro Aota <naota@gentoo.org> +im-chooser-1.5.1.ebuild,
+  +files/im-chooser-1.5.1-imchooserui.patch:
+  Version bump.
+
+*im-chooser-1.4.2 (06 Apr 2011)
+
+  06 Apr 2011; MATSUU Takuto <matsuu@gentoo.org> +im-chooser-1.4.2.ebuild:
+  Version bumped.
+
+*im-chooser-1.4.1 (14 Jan 2011)
+
+  14 Jan 2011; MATSUU Takuto <matsuu@gentoo.org> +im-chooser-1.4.1.ebuild,
+  +metadata.xml:
+  Initial import.

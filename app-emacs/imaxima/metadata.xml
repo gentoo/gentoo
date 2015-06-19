@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci-mathematics</herd>
+<herd>emacs</herd>
+<longdescription lang="en">
+  Imaxima provides support for interacting with the computer algebra system
+  Maxima in an Emacs buffer. Imaxima processes the output from Maxima with TeX
+  and inserts the resulting image in the buffer. The command imaxima provides
+  a simple comint derived CLI mode. The command imaxima-latex prepares a LaTeX
+  version of the Maxima buffer. Imaxima can also be hooked in to the Emacs
+  mode included with Maxima, which provides more key bindings and other
+  conveniences.
+</longdescription>
+</pkgmetadata>

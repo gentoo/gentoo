@@ -1,0 +1,117 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.\" First parameter, NAME, should be all caps
+.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+.\" other parameters are allowed: see man(7), man(1)
+.TH WMCALC 1 "September 20, 2001"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.SH NAME
+wmcalc \- dockable calculator application
+.SH SYNOPSIS
+.B wmcalc
+[-g \fIgeometry\fP] [-d \fIdisplay\fP] [-v] [-f \fIconfigfile\fP] [-h]
+
+.SH DESCRIPTION
+This manual page documents briefly the
+.B wmcalc
+command.
+This manual page was written for the Gentoo Linux distribution
+because the original program does not have a manual page.
+.PP
+.\" TeX users may be more comfortable with the \fB<whatever>\fP and
+.\" \fI<whatever>\fP escape sequences to invode bold face and italics, 
+.\" respectively.
+\fBwmcalc\fP is a program designed to act as a simple calculator offering basic operations like addition, subtraction, multiplication, division, square and squareroot.  It is different from other calculator programs, however in that it is designed to take up very little desktop space.  As such, it can be left running on the desktop at all times.  It is intended to placed in the WindowMaker dock, or in Wharf under Afterstep, though it should run as well under any window manager. 
+
+
+Buttons are defined as:
+.nf
+ ____________________  
+|       x00          |  x = 1 for Left Mouse Button
+| 0 1 2 3 4 5 6 7 8 9|  x = 2 for Middle Mouse Button
+|--------------------|  x = 3 for Right Mouse Button 
+|x01 x02 x03 x04 x05 |                
+|x06 x07 x08 x09 x10 |  Note: the numbers 0..9 are the
+|x11 x12 x13 x14 x15 |         indicators for memory cells  
+|x16 x17 x18 x19 x20 |         0..9 respectively
+ -------------------- 
+.fi
+.TP
+Button Functions:
+.TP
+.B 100
+Reinitialize the calculator. (100 = Left Mouse Button on Display)
+.TP
+.B 200
+Clear all the memory registers (0..10)
+.TP
+.B 300
+Clear the current number being entered only
+.TP
+.B x11
+Start a program defined by CalcStart variable in config file
+.TP
+.B 1yy
+Perform function shown on button
+.TP
+.B 2yy
+Recall number from memory location [0-9] to display for calculation if yy = 2,3,4, 7,8,9, 12, 13, 14, 17 otherwise, can run a user-defined function (not implemented)
+.TP
+.B 3yy
+Store Displayed number in memory location [0-9] if yy = 2,3,4, 7,8,9, 12,13,14, 17 otherwise, can run a user-defined function (not implemented)
+.TP
+.B 1xx
+Hopefully the other functions are obvious from their button graphics.
+
+
+.SH OPTIONS
+.TP
+.B \-g <geometry>
+Window Geometry - ie: 64x64+10+10
+.TP
+.B \-d  <display>
+Display -  ie: 127.0.0.1:0.0
+.TP
+.B \-f  <filename>
+Full path to configuration file.
+.TP
+.B \-v
+Verbose Mode. 
+.TP
+.B \-h
+Help.
+.SH FILES
+.TP
+.I /etc/wmbutton.conf
+system wide wmbutton configuration file which will be used for all users who start wmcalc the first time.
+.TP
+.I ~/.wmcalc
+The configuration file (.wmcalc) is written by wmcalc whenever the user requests to store a number to memory. This file is automatically created the first time a user launches wmcalc with /etc/wmcalc.conf as template. As a part of this process, a file is written to /tmp. If /tmp is not accessible, it tries in the user's home directory, as defined by the environment variable HOME. This file is erased as soon as it is written over the main configuration file.
+.SH CONFIGURATION
+.TP
+The configuration file is case sensitive. A # starts a comment, and lines consisting entirely of whitespace are ignored. The syntax is simply:
+.TP
+.B <variable> <content>
+Where <variable> and <content> need to be seperated by a Tab \\t and \fBnot\fP spaces.
+.TP
+\fBmem0 - mem9\fP Calculator Memory Locations. These must all exist, though they may be in any order.
+.TP
+\fBCalcStart\fP The CalcStart variable is intended to allow the user to start a larger calculator for more complicated needs.  Everything after the tab '\\t' character is sent unmodified in a system() call, so anything you can type at the command prompt may be put here.
+.TP
+\fBImagChar\fP The ImagChar variable allows the user to choose between 'i' and 'j' to represent the sqrt(-1).
+
+.SH AUTHOR
+wmcalc was written by Edward H. Flora <ehflora@access1.net>, and is licensed under the terms of the GNU  General Public License.
+.TP
+This manual page was written by Gordon Fraser <gordon@freakzone.net>, for the Debian GNU/Linux system (but may be used by others).
+

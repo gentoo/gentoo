@@ -1,0 +1,668 @@
+# ChangeLog for app-accessibility/brltty
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/brltty/ChangeLog,v 1.173 2015/05/13 13:55:30 williamh Exp $
+
+  13 May 2015; William Hubbs <williamh@gentoo.org> -brltty-5.0-r3.ebuild,
+  -files/brltty-5.0-fix-ldflags.patch, -files/brltty-5.0-respect-AR.patch,
+  -files/brltty-5.0-udev.patch:
+  remove old
+
+  12 Apr 2015; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due to bug #353756
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> brltty-5.0-r3.ebuild,
+  brltty-5.2.ebuild:
+  Remove old Python implementations
+
+  19 Mar 2015; Justin Lecher <jlec@gentoo.org> brltty-5.0-r3.ebuild,
+  brltty-5.2.ebuild:
+  Fix tcl/tk slotting
+
+  28 Feb 2015; Agostino Sarubbo <ago@gentoo.org> brltty-5.2.ebuild:
+  Stable for ia64, wrt bug #534800
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> brltty-5.2.ebuild:
+  Stable for alpha, wrt bug #534800
+
+  27 Jan 2015; Christopher Brannon <teiresias@gentoo.org>
+  -brltty-4.5-r3.ebuild, -brltty-5.0-r2.ebuild, -brltty-5.1.ebuild,
+  -files/brltty-4.5-fix-ldflags.patch,
+  -files/brltty-4.5-fix-mk4build-cross.patch,
+  -files/brltty-4.5-range-checking-and-array-bounds.patch,
+  -files/brltty-4.5-respect-AR.patch, -files/brltty-4.5-udev.patch,
+  -files/brltty-5.1-fix-ldflags.patch, -files/brltty-5.1-respect-AR.patch,
+  -files/brltty-5.1-udev.patch, metadata.xml:
+  Remove old versions.
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> brltty-5.2.ebuild:
+  Stable for x86, wrt bug #534800
+
+  18 Jan 2015; Agostino Sarubbo <ago@gentoo.org> brltty-5.2.ebuild:
+  Stable for ppc64, wrt bug #534800
+
+  17 Jan 2015; Agostino Sarubbo <ago@gentoo.org> brltty-5.2.ebuild:
+  Stable for ppc, wrt bug #534800
+
+  13 Jan 2015; Jeroen Roovers <jer@gentoo.org> brltty-5.2.ebuild:
+  Stable for HPPA (bug #534800).
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> brltty-5.2.ebuild:
+  Stable for amd64, wrt bug #534800
+
+  30 Dec 2014; Agostino Sarubbo <ago@gentoo.org> brltty-5.0-r3.ebuild:
+  Stable for ia64, wrt bug #518990
+
+  28 Dec 2014; Agostino Sarubbo <ago@gentoo.org> brltty-5.0-r3.ebuild:
+  Stable for ppc64, wrt bug #518990
+
+  28 Dec 2014; Agostino Sarubbo <ago@gentoo.org> brltty-5.0-r3.ebuild:
+  Stable for ppc, wrt bug #518990
+
+  15 Dec 2014; Pacho Ramos <pacho@gentoo.org> brltty-5.0-r3.ebuild:
+  x86 stable, bug #518990
+
+*brltty-5.2 (04 Dec 2014)
+
+  04 Dec 2014; Christopher Brannon <teiresias@gentoo.org> +brltty-5.2.ebuild,
+  +files/brltty-5.2-fix-ldflags.patch, +files/brltty-5.2-respect-AR.patch,
+  +files/brltty-5.2-udev.patch:
+  New upstream version.
+
+  27 Nov 2014; Pacho Ramos <pacho@gentoo.org> brltty-5.0-r3.ebuild,
+  brltty-5.1.ebuild:
+  Support python 3.4
+
+  29 Oct 2014; Tobias Klausmann <klausman@gentoo.org> brltty-5.0-r3.ebuild:
+  Stable on alpha, bug 518990
+
+  22 Sep 2014; Chema Alonso <nimiux@gentoo.org> brltty-5.0-r3.ebuild:
+  Stable for amd64 wrt bug #518990
+
+*brltty-5.1 (23 Aug 2014)
+
+  23 Aug 2014; Christopher Brannon <teiresias@gentoo.org> +brltty-5.1.ebuild,
+  +files/brltty-5.1-fix-ldflags.patch, +files/brltty-5.1-respect-AR.patch,
+  +files/brltty-5.1-udev.patch:
+  New upstream version.
+
+  13 Aug 2014; Christopher Brannon <teiresias@gentoo.org> brltty-5.0-r3.ebuild:
+  Fix building with +java USE flag.
+
+  I broke it when I converted the ebuild to use python-r1.
+
+  06 Aug 2014; Jeroen Roovers <jer@gentoo.org> brltty-5.0-r3.ebuild:
+  Stable for HPPA (bug #518990).
+
+*brltty-5.0-r3 (06 Jun 2014)
+
+  06 Jun 2014; Christopher Brannon <teiresias@gentoo.org>
+  +brltty-5.0-r3.ebuild:
+  Use python-r1 eclass and support multiple versions of Python.
+
+  Closes bug #511950.
+
+  07 Apr 2014; Mike Frysinger <vapier@gentoo.org> brltty-4.5-r3.ebuild,
+  brltty-5.0-r2.ebuild:
+  Do not use `pkg-config` all the time.
+
+  22 Feb 2014; Christopher Brannon <teiresias@gentoo.org> -brltty-4.2.ebuild,
+  -brltty-4.2-r1.ebuild, -files/brltty-4.2-fix-a2.patch,
+  -files/brltty-4.2-fix-ldflags.patch,
+  -files/brltty-4.2-fix-ocaml-install.patch,
+  -files/brltty-4.2-fix-svnversion.patch, -files/brltty-4.2-glibc-212.patch:
+  Remove old versions.
+
+*brltty-5.0-r2 (22 Feb 2014)
+
+  22 Feb 2014; Christopher Brannon <teiresias@gentoo.org>
+  -brltty-5.0-r1.ebuild, +brltty-5.0-r2.ebuild, files/brltty.tmpfiles.conf:
+  Fix an incorrect path in tmpfiles listing.
+
+*brltty-5.0-r1 (20 Feb 2014)
+
+  20 Feb 2014; Christopher Brannon <teiresias@gentoo.org> -brltty-5.0.ebuild,
+  +brltty-5.0-r1.ebuild, +files/brltty.tmpfiles.conf:
+  * Fixed installation of locale messages.
+  * Fixed some configure switches broken by 4.5 to 5.0 transition.
+  * Use /run/brltty for the writable directory, not /var/runn/brltty.
+
+  This gets rid of the annoying post-installation message about the
+
+  old /var/run symlink.
+
+*brltty-5.0 (09 Feb 2014)
+
+  09 Feb 2014; Christopher Brannon <teiresias@gentoo.org> +brltty-5.0.ebuild,
+  +files/brltty-5.0-fix-ldflags.patch, +files/brltty-5.0-respect-AR.patch,
+  +files/brltty-5.0-udev.patch:
+  New upstream version.
+
+  19 Jan 2014; Agostino Sarubbo <ago@gentoo.org> brltty-4.5-r3.ebuild:
+  Stable for ppc64, wrt bug #495312
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> brltty-4.5-r3.ebuild:
+  Stable for alpha, wrt bug #495312
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> brltty-4.5-r3.ebuild:
+  Stable for ia64, wrt bug #495312
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> brltty-4.5-r3.ebuild:
+  Stable for ppc, wrt bug #495312
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> brltty-4.5-r3.ebuild:
+  Stable for x86, wrt bug #495312
+
+  07 Jan 2014; Chema Alonso <nimiux@gentoo.org> brltty-4.5-r3.ebuild:
+  Stable for amd64 wrt bug #495312
+
+  27 Dec 2013; Jeroen Roovers <jer@gentoo.org> brltty-4.5-r3.ebuild:
+  Stable for HPPA (bug #495312).
+
+*brltty-4.5-r3 (16 Nov 2013)
+
+  16 Nov 2013; Christopher Brannon <teiresias@gentoo.org>
+  -brltty-4.5-r2.ebuild, +brltty-4.5-r3.ebuild:
+  Use subslots for icu dependency. See bug #455900.
+
+  23 Sep 2013; Christopher Brannon <teiresias@gentoo.org> brltty-4.5-r2.ebuild,
+  +files/brltty-4.5-respect-AR.patch:
+  Respect $AR and $LD.
+  Closes bug #483738 and bug #483752.
+
+*brltty-4.5-r2 (23 Aug 2013)
+
+  23 Aug 2013; Christopher Brannon <teiresias@gentoo.org>
+  -brltty-4.5-r1.ebuild, +brltty-4.5-r2.ebuild,
+  +files/brltty-4.5-range-checking-and-array-bounds.patch:
+  Add a patch to fix range-checking and array out-of-bounds access issues.
+  The patch comes from upstream's svn repository, so it can go away on the
+  next release. Fixes bug #481802.
+
+  21 Aug 2013; William Hubbs <williamh@gentoo.org> metadata.xml:
+  Assign maintainership to Chris.
+
+  20 Aug 2013; Mike Frysinger <vapier@gentoo.org>
+  +files/brltty-4.5-fix-mk4build-cross.patch, brltty-4.5-r1.ebuild:
+  Fix path var collisions when cross-compiling.
+
+*brltty-4.5-r1 (20 Aug 2013)
+
+  20 Aug 2013; Christopher Brannon <teiresias@gentoo.org> -brltty-4.5.ebuild,
+  +brltty-4.5-r1.ebuild, +files/brltty-4.5-udev.patch:
+  Fix bug #478658. Two of brltty's udev rules were conflicting with
+  rules for USB-to-serial converters. These are now commented out, per
+  the suggestion on the brltty mailing list.
+
+  20 Aug 2013; Mike Frysinger <vapier@gentoo.org> files/brltty.rc:
+  Fix excessive indent.
+
+  07 Aug 2013; Christopher Brannon <teiresias@gentoo.org> brltty-4.5.ebuild:
+  brltty 4.5 builds with parallel make.
+  We can remove the -j1 and close bug #340903.
+
+  22 Jun 2013; William Hubbs <williamh@gentoo.org> brltty-4.5.ebuild,
+  files/brltty.rc:
+  uncomment keywords, migrate to eapi 5, update init script and fix python
+  dependency (brltty 4.5 uses cython instead of pyrex).
+
+*brltty-4.5 (21 Jun 2013)
+
+  21 Jun 2013; Mike Frysinger <vapier@gentoo.org> +brltty-4.5.ebuild,
+  +files/brltty-4.5-fix-ldflags.patch:
+  Version bump.
+
+  18 Jun 2013; Mike Frysinger <vapier@gentoo.org> brltty-4.2-r1.ebuild:
+  Add arm love.
+
+  11 Dec 2012; Samuli Suominen <ssuominen@gentoo.org> brltty-4.2.ebuild,
+  brltty-4.2-r1.ebuild:
+  Use udev_newrules function to install udev rules into correct path.
+
+  11 Dec 2012; Ian Stakenvicius <axs@gentoo.org> brltty-4.2-r1.ebuild:
+  virtualized references to sys-fs/udev
+
+*brltty-4.2-r1 (11 Aug 2012)
+
+  11 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> +brltty-4.2-r1.ebuild:
+  Install rules to udevdir value from udev.pc pkg-config file instead of
+  /etc/udev which is reserved for user defined rules.
+
+  29 Aug 2011; William Hubbs <williamh@gentoo.org> metadata.xml:
+  repoman fix -- remove pm local use flag
+
+  12 May 2011; William Hubbs <williamh@gentoo.org> -brltty-4.1.ebuild:
+  remove old version
+
+  12 May 2011; Jeroen Roovers <jer@gentoo.org> brltty-4.2.ebuild:
+  Stable for HPPA (bug #358503).
+
+  16 Apr 2011; Raúl Porcel <armin76@gentoo.org> brltty-4.2.ebuild:
+  ia64 stable wrt #358503
+
+  11 Apr 2011; William Hubbs <williamh@gentoo.org> brltty-4.2.ebuild,
+  +files/brltty-4.2-fix-a2.patch:
+  apply patch from upstream for #362857.
+
+  10 Apr 2011; Tobias Klausmann <klausman@gentoo.org> brltty-4.2.ebuild:
+  Stable on alpha, bug #358503
+
+  02 Apr 2011; Christoph Mende <angelos@gentoo.org> brltty-4.2.ebuild:
+  Stable on amd64 wrt bug #358503
+
+  01 Apr 2011; William Hubbs <williamh@gentoo.org> brltty-4.2.ebuild,
+  +files/brltty-4.2-fix-svnversion.patch:
+  apply patch from upstream to fix the "svnversion: command not found"
+  error. This closes bug #361327.
+
+  31 Mar 2011; William Hubbs <williamh@gentoo.org> brltty-4.2.ebuild:
+  x86 stable wrt #358503.
+
+  31 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> brltty-4.2.ebuild:
+  ppc/ppc64 stable wrt #358503
+
+  30 Mar 2011; William Hubbs <williamh@gentoo.org> brltty-4.2.ebuild:
+  finish conversion to eapi4 and fix java build failure, thanks to serkan
+  and cbrannon this closes bug #361341.
+
+  30 Mar 2011; William Hubbs <williamh@gentoo.org> brltty-4.2.ebuild:
+  Migrate to eapi 4, remove the static use flag, and fix #361327.
+
+  29 Mar 2011; William Hubbs <williamh@gentoo.org> brltty-4.2.ebuild:
+  work around parallel build failure, bug #340903.
+
+  29 Mar 2011; William Hubbs <williamh@gentoo.org> brltty-4.2.ebuild:
+  run eautoconf instead of eautoreconf in src_prepare.
+
+  28 Mar 2011; William Hubbs <williamh@gentoo.org> brltty-4.2.ebuild,
+  +files/brltty-4.2-fix-ldflags.patch:
+  add patch to respect ldflags for bug #338161, thanks to Chris Brannon.
+
+  24 Mar 2011; William Hubbs <williamh@gentoo.org> brltty-4.2.ebuild,
+  +files/brltty-4.2-fix-ocaml-install.patch:
+  Fix ocaml bindings install failure, bug #344425.
+
+  05 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> brltty-4.2.ebuild,
+  +files/brltty-4.2-glibc-212.patch:
+  Fix building with recent glibc wrt #339846 by Diego E. Pettenò.
+
+*brltty-4.2 (16 Jul 2010)
+
+  16 Jul 2010; William Hubbs <williamh@gentoo.org> +brltty-4.2.ebuild:
+  version bump for bug #325341
+
+  11 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> brltty-4.1.ebuild:
+  Drop bluez-libs support wrt #301630.
+
+  13 Feb 2010; William Hubbs <williamh@gentoo.org>
+  -files/brltty-3.9-autoconf.patch, -files/brltty-3.9-gnusource.patch,
+  -files/brltty-3.9-parallel.patch, -brltty-3.10.ebuild,
+  -files/brltty-3.10-api-socket-dir.patch, -brltty-4.0.ebuild,
+  -files/brltty-4.0-api-socket-dir.patch:
+  removed old versions
+
+  13 Feb 2010; Raúl Porcel <armin76@gentoo.org> brltty-4.1.ebuild:
+  alpha/ia64 stable wrt #303049
+
+  10 Feb 2010; Joseph Jezak <josejx@gentoo.org> brltty-4.1.ebuild:
+  Marked ppc stable for bug #303049.
+
+  09 Feb 2010; Jeroen Roovers <jer@gentoo.org> brltty-4.1.ebuild:
+  Stable for HPPA (bug #303049).
+
+  01 Feb 2010; Brent Baude <ranger@gentoo.org> brltty-4.1.ebuild:
+  stable ppc64, bug 303049
+
+  01 Feb 2010; William Hubbs <williamh@gentoo.org> brltty-4.1.ebuild:
+  amd64/x86 stable for bug #303049.
+
+*brltty-4.1 (08 Oct 2009)
+
+  08 Oct 2009; William Hubbs <williamh@gentoo.org> +brltty-4.1.ebuild,
+  metadata.xml:
+  version bump
+
+  15 Sep 2009; Jeroen Roovers <jer@gentoo.org> brltty-4.0.ebuild:
+  Stable for HPPA (bug #281126).
+
+  06 Sep 2009; Markus Meier <maekke@gentoo.org> brltty-4.0.ebuild:
+  amd64 stable, bug #281126
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> brltty-4.0.ebuild:
+  ppc stable #281126
+
+  26 Aug 2009; Raúl Porcel <armin76@gentoo.org> brltty-4.0.ebuild:
+  alpha/ia64 stable wrt #281126
+
+  11 Aug 2009; William Hubbs <williamh@gentoo.org> brltty-4.0.ebuild:
+  stable on x86
+
+  11 Jun 2009; William Hubbs <williamh@gentoo.org> brltty-3.10.ebuild,
+  brltty-4.0.ebuild:
+  Fixed bluetooth dependency for bug #272735.
+
+*brltty-4.0 (18 May 2009)
+
+  18 May 2009; William Hubbs <williamh@gentoo.org> +brltty-4.0.ebuild,
+  +files/brltty-4.0-api-socket-dir.patch:
+  Version bump.
+
+  17 May 2009; Robin H. Johnson <robbat2@gentoo.org> brltty-3.10.ebuild:
+  libusb-compat will work fine with brltty, code inspection plus upstream
+  says so.
+
+  15 May 2009; Robin H. Johnson <robbat2@gentoo.org> brltty-3.10.ebuild:
+  libusb-compat is untested, force dev-libs/libusb slot 0 for now.
+
+  01 Apr 2009; William Hubbs <williamh@gentoo.org> -brltty-3.9.ebuild:
+  Removed old version.
+
+  06 Feb 2009; Jeroen Roovers <jer@gentoo.org> brltty-3.10.ebuild:
+  Stable for HPPA (bug #253927).
+
+  23 Jan 2009; Raúl Porcel <armin76@gentoo.org> brltty-3.10.ebuild:
+  ia64 stable wrt #253927
+
+  10 Jan 2009; Tobias Klausmann <klausman@gentoo.org> brltty-3.10.ebuild:
+  Stable on alpha, bug #253927
+
+  10 Jan 2009; Markus Meier <maekke@gentoo.org> brltty-3.10.ebuild:
+  amd64/x86 stable, bug #253927
+
+  09 Jan 2009; Brent Baude <ranger@gentoo.org> brltty-3.10.ebuild:
+  stable ppc, bug 253927
+
+  07 Jan 2009; Brent Baude <ranger@gentoo.org> brltty-3.10.ebuild:
+  stable ppc64, bug 253927
+
+  05 Jan 2009; Markus Meier <maekke@gentoo.org> metadata.xml:
+  drop local icu USE-flag description, as it's global now
+
+  25 Sep 2008; Ryan Hill <dirtyepic@gentoo.org>
+  +files/brltty-3.9-autoconf.patch, +files/brltty-3.9-gnusource.patch,
+  +files/brltty-3.9-parallel.patch, +files/brltty-3.10-api-socket-dir.patch,
+  brltty-3.10.ebuild:
+  Various build fixes - gcc 4.3, autoconf-2.62, parallel build. Patches from
+  Fedora. Fix X and bluetooth USE flags.
+
+*brltty-3.10 (06 Sep 2008)
+
+  06 Sep 2008; William Hubbs <williamh@gentoo.org> metadata.xml,
+  +brltty-3.10.ebuild:
+  version bump
+
+  08 Feb 2008; William Hubbs <williamh@gentoo.org> -brltty-3.8.ebuild:
+  Removed old version.
+
+  08 Feb 2008; Santiago M. Mola <coldwind@gentoo.org> brltty-3.9.ebuild:
+  amd64 stable wrt #208536
+
+  06 Feb 2008; nixnut <nixnut@gentoo.org> brltty-3.9.ebuild:
+  stable on ppc wrt bug #208536
+
+  04 Feb 2008; Jeroen Roovers <jer@gentoo.org> brltty-3.9.ebuild:
+  Stable for HPPA (bug #208536).
+
+  03 Feb 2008; Raúl Porcel <armin76@gentoo.org> brltty-3.9.ebuild:
+  alpha/ia64 stable wrt #208536
+
+  02 Feb 2008; William Hubbs <williamh@gentoo.org> brltty-3.9.ebuild:
+  Bug #208538 -- fixed java and ocaml support, thanks to Betelgeuse and Caster
+
+  02 Feb 2008; Brent Baude <ranger@gentoo.org> brltty-3.9.ebuild:
+  Marking brltty-3.9 ppc64 for bug 208536
+
+  02 Feb 2008; Christian Faulhammer <opfer@gentoo.org> brltty-3.9.ebuild:
+  x86 stable, bug #208536
+
+  11 Jan 2008; William Hubbs <williamh@gentoo.org> brltty-3.9.ebuild:
+  Fixed building with the ocaml use flag -- bug #204789.
+
+*brltty-3.9 (05 Jan 2008)
+
+  05 Jan 2008; William Hubbs <williamh@gentoo.org> files/brltty.rc,
+  +brltty-3.9.ebuild:
+  Version bump.  Also, I reworked the startup script so that brltty will start
+  early in the boot process.
+
+  01 Jan 2008; William Hubbs <williamh@gentoo.org>
+  -files/brltty-3.7.2-linux-compiler-h.patch,
+  -files/brltty-3.7.2-nostrip.patch, -brltty-3.7.2.ebuild,
+  -brltty-3.7.2-r1.ebuild:
+  Removed old versions.
+
+  26 Dec 2007; Christian Heim <phreak@gentoo.org> brltty-3.7.2.ebuild,
+  brltty-3.7.2-r1.ebuild, brltty-3.8.ebuild:
+  Fix the quotation.
+
+  22 Sep 2007; Wulf C. Krueger <philantrop@gentoo.org> brltty-3.8.ebuild:
+  Marked stable on amd64 as per bug 186958.
+
+  07 Sep 2007; Jeroen Roovers <jer@gentoo.org> brltty-3.8.ebuild:
+  Stable for HPPA (bug #186958).
+
+  05 Aug 2007; nixnut <nixnut@gentoo.org> brltty-3.8.ebuild:
+  Stable on ppc wrt bug 186958
+
+  31 Jul 2007; William Hubbs <williamh@gentoo.org> brltty-3.7.2.ebuild,
+  brltty-3.7.2-r1.ebuild, brltty-3.8.ebuild:
+  Dropped sparc keywords wrt #186958.
+
+  30 Jul 2007; Raúl Porcel <armin76@gentoo.org> brltty-3.8.ebuild:
+  alpha/ia64 stable wrt #186958
+
+  30 Jul 2007; Markus Rothe <corsair@gentoo.org> brltty-3.8.ebuild:
+  Stable on ppc64; bug #186958
+
+  29 Jul 2007; William Hubbs <williamh@gentoo.org> brltty-3.8.ebuild:
+  Stable x86 #186958.
+
+  22 Jul 2007; William Hubbs <williamh@gentoo.org> -brltty-3.6.1-r1.ebuild:
+  Removed another old version.
+
+  22 Jul 2007; William Hubbs <williamh@gentoo.org> -brltty-3.5.ebuild,
+  -brltty-3.6.ebuild, brltty-3.7.2.ebuild, brltty-3.7.2-r1.ebuild,
+  brltty-3.8.ebuild:
+  Cleaned up the ebuilds and removed old versions.
+
+*brltty-3.8 (12 Jun 2007)
+
+  12 Jun 2007; William Hubbs <williamh@gentoo.org> metadata.xml,
+  +brltty-3.8.ebuild:
+  Version bump.
+
+  01 Jun 2007; William Hubbs <williamh@gentoo.org>
+  +files/brltty-3.7.2-linux-compiler-h.patch, brltty-3.7.2-r1.ebuild:
+  Added the patch from fedora to fix bug #155887.
+  Also cleaned up the dependencies.
+
+  29 Mar 2007; William Hubbs <williamh@gentoo.org> brltty-3.7.2-r1.ebuild:
+  Fixed a typo that prevented installing the startup script.
+
+*brltty-3.7.2-r1 (28 Mar 2007)
+
+  28 Mar 2007; William Hubbs <williamh@gentoo.org> +files/brltty.rc,
+  +brltty-3.7.2-r1.ebuild:
+  Add a startup script (closes #171591).
+
+  22 Feb 2007; Doug Goldstein <cardoe@gentoo.org> ChangeLog, Manifest:
+  Manifest2 fix
+
+  22 Feb 2007; Doug Goldstein <cardoe@gentoo.org> ChangeLog:
+  Manifest2 fix
+
+  21 Feb 2007; <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  19 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> brltty-3.7.2.ebuild:
+  Stable on Alpha + ia64.
+
+  01 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org> brltty-3.7.2.ebuild:
+  hppa stable, bug #142935
+
+  28 Sep 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  brltty-3.7.2.ebuild:
+  stable on ppc (Bug #142935)
+
+  25 Sep 2006; Jason Wever <weeve@gentoo.org> brltty-3.7.2.ebuild:
+  Stable on SPARC wrt bug #142935.
+
+  25 Sep 2006; <blubb@gentoo.org> brltty-3.7.2.ebuild:
+  stable on amd64
+
+  24 Sep 2006; Markus Rothe <corsair@gentoo.org> brltty-3.7.2.ebuild:
+  Stable on ppc64; bug #142935
+
+  24 Sep 2006; William Hubbs <williamh@gentoo.org> brltty-3.7.2.ebuild:
+  Stable on x86.
+
+  20 Sep 2006; William Hubbs <williamh@gentoo.org>
+  +files/brltty-3.7.2-nostrip.patch, brltty-3.7.2.ebuild:
+  Resolved QA issues in Bug #142934.
+  Thanks, Solar, for the patches.
+
+  02 Feb 2006; William Hubbs <williamh@gentoo.org> brltty-3.6.ebuild,
+  brltty-3.6.1-r1.ebuild:
+  Ported to modular X.
+
+  02 Feb 2006; William Hubbs <williamh@gentoo.org> brltty-3.6.1-r1.ebuild:
+  Ported to modular X.
+
+*brltty-3.7.2 (26 Jan 2006)
+
+  26 Jan 2006; William Hubbs <williamh@gentoo.org> metadata.xml,
+  +brltty-3.7.2.ebuild:
+  Version bump.
+  this version has been ported to modular X, thanks to
+  Donnie Berkholz <spyderous@gentoo.org>.
+  Also, it now installs the documentation, and optionally with the
+  'doc' use flag, the API documentation.
+
+  19 Nov 2005; Chris White <chriswhite@gentoo.org> ChangeLog:
+  repoman commiting this to verify manifest doesn't go weird.
+
+  10 Oct 2005; Chris White <chriswhite@gentoo.org> metadata.xml:
+  Initial longdescription.
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> brltty-3.6.1-r1.ebuild:
+  stable on ia64
+
+  13 Jul 2005; Stephen P. Becker <geoman@gentoo.org> brltty-3.5.ebuild,
+  brltty-3.6.ebuild, brltty-3.6.1-r1.ebuild:
+  removing mips keywords, as accessibility is masked for us, and I can not
+  test this
+
+*brltty-3.6.1-r1 (03 Jul 2005)
+
+  03 Jul 2005; <plasmaroo@gentoo.org> +brltty-3.6.1-r1.ebuild,
+  -brltty-3.6.1.ebuild:
+  Bump for #85373.
+
+  03 Jul 2005; <plasmaroo@gentoo.org> brltty-3.6.1.ebuild:
+  Fix #85373. This is boot critical so we do need to be in /bin, not /usr/bin.
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> brltty-3.6.1.ebuild:
+  Stable on alpha.
+
+  12 Jun 2005; Olivier Crête <tester@gentoo.org> brltty-3.6.1.ebuild:
+  Stable on amd64
+
+  09 Jun 2005; Markus Rothe <corsair@gentoo.org> brltty-3.6.1.ebuild:
+  Stable on ppc64
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> brltty-3.6.1.ebuild:
+  Stable on ppc.
+
+  19 May 2005; Guy Martin <gmsoft@gentoo.org> brltty-3.6.1.ebuild:
+  Stable on hppa.
+
+  16 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> brltty-3.6.1.ebuild:
+  Stable on sparc
+
+  16 May 2004; Leonardo Boshell <leonardop@gentoo.org> brltty-3.6.1.ebuild:
+  Stable on x86.
+
+  16 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> brltty-3.6.ebuild:
+  Stable on sparc
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*brltty-3.6.1 (24 Dec 2004)
+
+  24 Dec 2004; <spider@gentoo.org> +brltty-3.6.1.ebuild:
+  A version bump on request of dmwaters:
+  http://bugs.gentoo.org/show_bug.cgi?id=75497
+  functionally untested, but runs.
+
+*brltty-3.6 (13 Oct 2004)
+
+  13 Oct 2004; Jon Hood <squinky86@gentoo.org> +brltty-3.6.ebuild,
+  -brltty-3.6_pre1.ebuild, -brltty-3.6_pre3.ebuild:
+  Version bump. Remove prereleases.
+
+  13 Oct 2004; Travis Tilley <lv@gentoo.org> brltty-3.5.ebuild:
+  stable on amd64
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> brltty-3.5.ebuild:
+  Masked brltty-3.5.ebuild stable for ppc
+
+  04 Oct 2004; Guy Martin <gmsoft@gentoo.org> brltty-3.5.ebuild:
+  Stable on hppa.
+
+  01 Oct 2004; Stephen P. Becker <geoman@gentoo.org> brltty-3.5.ebuild:
+  stable on mips
+
+  22 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> brltty-3.5.ebuild:
+  Stable on sparc
+
+*brltty-3.6_pre3 (17 Sep 2004)
+
+  17 Sep 2004; Jon Hood <squinky86@gentoo.org> +brltty-3.6_pre3.ebuild:
+  Version bump.
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> brltty-3.5.ebuild:
+  Stable on alpha.
+
+  18 Aug 2004; Jon Hood <squinky86@gentoo.org> brltty-3.5.ebuild:
+  Stable on x86.
+
+*brltty-3.6_pre1 (16 Aug 2004)
+
+  16 Aug 2004; Jon Hood <squinky86@gentoo.org> -brltty-3.5.0_pre3.ebuild,
+  +brltty-3.6_pre1.ebuild:
+  Version bump, remove old version
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> brltty-3.4.1.ebuild:
+  add sed-4 dep
+
+  15 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> brltty-3.4.1.ebuild:
+  Stable on alpha.
+
+*brltty-3.5 (14 Jun 2004)
+
+  14 Jun 2004; Jon Hood <squinky86@gentoo.org> +brltty-3.5.ebuild:
+  version bump
+
+*brltty-3.5.0_pre3 (11 May 2004)
+
+  11 May 2004; Jon Hood <squinky86@gentoo.org> +brltty-3.5.0_pre3.ebuild:
+  version bump
+
+  28 Apr 2004; Gustavo Zacarias <gustavoz@gentoo.org> brltty-3.4.1.ebuild:
+  Stable on sparc
+
+  12 Apr 2004; Chris Aniszczyk <zx@gentoo.org> brltty-3.4.1.ebuild:
+  Marking stable on hppa
+
+  04 Apr 2004; Deedra Waters,,, <dmwaters@gentoo.org> brltty-3.4.1.ebuild:
+  Marking stable on x86 also changed the email in metadata.xml
+
+  15 Mar 2004; <dmwaters@gentoo.org> brltty-3.4.1.ebuild:
+  Fixed a typeo in the homepage url, thanks to cybersystem for noticing that.
+
+*brltty-3.4.1 (07 Mar 2004)
+
+  07 Mar 2004; Seemant Kulleen <seemant@gentoo.org> brltty-3.4.1.ebuild:
+  New package to enable Braille tty's. Package was requested in bug #22895 by
+  Sabahattin Gucukoglu <mail@sabahattin-gucukoglu.com>, and the ebuild submitted
+  in bug #40334 by Diego Garcia <diego@envigo.net>

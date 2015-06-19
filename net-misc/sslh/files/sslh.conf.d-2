@@ -1,0 +1,8 @@
+# /etc/conf.d/sslh
+
+# Options to sslh itself.  See the sslh(1) man page.
+#OPTIONS=""
+
+# Multiplexing example
+# Port 44 can be used for ssh, http, and https. Drop privileges after starting.
+#OPTIONS="-p localhost:44 --ssh 127.0.0.1:22 --http 127.0.0.1:80 --ssl 127.0.0.1:443 --user nobody"

@@ -1,0 +1,122 @@
+# ChangeLog for sci-biology/meme
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/meme/ChangeLog,v 1.28 2014/10/19 03:59:15 patrick Exp $
+
+  19 Oct 2014; Patrick Lauer <patrick@gentoo.org> meme-4.8.1-r2.ebuild:
+  Fix header
+
+  19 Mar 2013; Justin Lecher <jlec@gentoo.org> meme-4.8.1-r2.ebuild:
+  Fix renaming procedure, #460372
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+  08 Mar 2013; Justin Lecher <jlec@gentoo.org> meme-4.8.1-r2.ebuild:
+  Fix missing command, #460372
+
+*meme-4.8.1-r2 (01 Mar 2013)
+
+  01 Mar 2013; Justin Lecher <jlec@gentoo.org> -meme-4.8.1.ebuild,
+  -meme-4.8.1-r1.ebuild, +meme-4.8.1-r2.ebuild:
+  Rename all binaries to meme-*; should fix all collisions in future, #458208;
+  drop old
+
+*meme-4.8.1-r1 (01 Feb 2013)
+
+  01 Feb 2013; Justin Lecher <jlec@gentoo.org> meme-4.8.1.ebuild,
+  +meme-4.8.1-r1.ebuild:
+  Resolve file collision with app-text and sci-biology/readseq, #455010
+
+  31 Jan 2013; Justin Lecher <jlec@gentoo.org> -meme-4.3.0.ebuild,
+  meme-4.8.1.ebuild:
+  Drop old, fixes bug 297070 & bug 454662
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> meme-4.8.1.ebuild:
+  Stable for x86, wrt bug #454698
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> meme-4.8.1.ebuild:
+  Stable for amd64, wrt bug #454698
+
+  30 Jan 2013; Justin Lecher <jlec@gentoo.org> -meme-4.3.0-r1.ebuild,
+  -meme-4.4.0.ebuild, meme-4.8.1.ebuild, metadata.xml:
+  Drop old; add examples handling
+
+*meme-4.8.1 (26 Aug 2012)
+
+  26 Aug 2012; Justin Lecher <jlec@gentoo.org> +meme-4.8.1.ebuild,
+  +files/meme-4.8.1-Makefile.am.patch:
+  Version Bump; respect CFLAGS, #430774
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> meme-4.3.0.ebuild,
+  meme-4.3.0-r1.ebuild, meme-4.4.0.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  17 Jun 2010; Justin Bronder <jsbronder@gentoo.org> -meme-3.5.4-r1.ebuild,
+  -meme-3.5.7.ebuild:
+  Removing outdated meme-3.5.x
+
+*meme-4.4.0 (07 May 2010)
+
+  07 May 2010; Andrey Kislyuk <weaver@gentoo.org> -meme-4.2.0.ebuild,
+  +meme-4.4.0.ebuild:
+  Version bump
+
+*meme-4.3.0-r1 (07 Mar 2010)
+
+  07 Mar 2010; Justin Lecher (jlec) <jlec@gentoo.org> +meme-4.3.0-r1.ebuild:
+  Moved to EAPI=3 for PREFIX support, imported prefix patches from overlay,
+  keyworded as in overlay
+
+  03 Jan 2010; Pacho Ramos <pacho@gentoo.org> meme-4.3.0.ebuild:
+  amd64 stable, bug 298760
+
+  29 Dec 2009; Christian Faulhammer <fauli@gentoo.org> meme-4.3.0.ebuild:
+  stable x86, bug 298760
+
+  15 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> meme-4.3.0.ebuild:
+  Add -j1 to tests as per bug #297070.
+
+*meme-4.3.0 (13 Nov 2009)
+
+  13 Nov 2009; Andrey Kislyuk <weaver@gentoo.org> +meme-4.3.0.ebuild:
+  Version bump
+
+*meme-4.2.0 (18 Sep 2009)
+
+  18 Sep 2009; Andrey Kislyuk <weaver@gentoo.org>
+  +files/meme-4.0.0-Makefile.am.patch, metadata.xml, +meme-4.2.0.ebuild:
+  Version bump and cleanup, disable group creation, webapp still needs work
+
+*meme-3.5.7 (12 Sep 2008)
+
+  12 Sep 2008; Markus Dittrich <markusle@gentoo.org> +meme-3.5.7.ebuild:
+  Version bump.
+
+  14 Jun 2008; Markus Dittrich <markusle@gentoo.org> -meme-3.5.4.ebuild:
+  Removed old ebuild with bad autotools usage (fixes bug #226609).
+
+  31 Dec 2007; Jeff Gardner <je_fro@gentoo.org> ChangeLog, Manifest:
+  Fixing my email addy.
+
+  17 Sep 2007; <je_fro@gentoo.org> Manifest:
+  Used cvs manually to add patches without mangling.
+
+*meme-3.5.4-r1 (17 Sep 2007)
+
+  17 Sep 2007; <je_fro@gentoo.org> files/meme-3.5.4-patch1.patch,
+  files/meme-3.5.4-patch2.patch, +meme-3.5.4-r1.ebuild:
+  Once again, remove parallel install for amd64 boxes, and add upstream patches.
+
+  17 Sep 2007; <je_fro@gentoo.org> -meme-3.5.4-r1.ebuild:
+  Whoa...this version worked in my overlay. Pulling until I figure out what
+  went wrong.
+
+  17 Sep 2007; <je_fro@gentoo.org> +files/meme-3.5.4-patch1.patch,
+  +files/meme-3.5.4-patch2.patch, meme-3.5.4.ebuild:
+  Remove parallel install for amd64 boxes, and add upstream patches.
+
+*meme-3.5.4 (24 Apr 2007)
+
+  24 Apr 2007; Olivier Fisette <ribosome@gentoo.org>
+  +files/meme-3.5.4-Makefile.am.patch, +metadata.xml, +meme-3.5.4.ebuild:
+  Initial import.

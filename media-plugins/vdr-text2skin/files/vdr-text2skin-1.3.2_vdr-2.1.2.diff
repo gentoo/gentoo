@@ -1,0 +1,15 @@
+diff -Naur text2skin-1.3.2.orig/render.c text2skin-1.3.2/render.c
+--- text2skin-1.3.2.orig/render.c	2013-10-26 22:29:16.000000000 +0200
++++ text2skin-1.3.2/render.c	2013-10-26 22:33:19.000000000 +0200
+@@ -813,7 +813,11 @@
+ 	switch (Token.Type) {
+ 	case tFreeDiskSpace: {
+ 			int FreeMB;
++#if APIVERSNUM > 20101
++			cVideoDirectory::VideoDiskSpace(&FreeMB);
++#else
+ 			VideoDiskSpace(&FreeMB);
++#endif
+ 			Dprintf("FreeMB: %d, attrib type is %d\n", FreeMB,Token.Attrib.Type);
+ 			return Token.Attrib.Type == aString && Token.Attrib.Text.length() > 0
+ 			       ? (cxType)DurationType(FreeMB * 60 / MB_PER_MINUTE,

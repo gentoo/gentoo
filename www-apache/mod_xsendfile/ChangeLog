@@ -1,0 +1,60 @@
+# ChangeLog for www-apache/mod_xsendfile
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_xsendfile/ChangeLog,v 1.14 2015/01/02 12:22:38 pacho Exp $
+
+  02 Jan 2015; Pacho Ramos <pacho@gentoo.org> -mod_xsendfile-0.12.ebuild,
+  -mod_xsendfile-0.9.ebuild:
+  Drop old
+
+  02 Jan 2015; Agostino Sarubbo <ago@gentoo.org> mod_xsendfile-1.0_beta1.ebuild:
+  Stable for sparc, wrt bug #523010
+
+  28 Dec 2014; Agostino Sarubbo <ago@gentoo.org> mod_xsendfile-1.0_beta1.ebuild:
+  Stable for x86, wrt bug #523010
+
+  27 Dec 2014; Agostino Sarubbo <ago@gentoo.org> mod_xsendfile-1.0_beta1.ebuild:
+  Stable for amd64, wrt bug #523010
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  08 Sep 2012; Alexander Vershilov <qnikst@gentoo.org>
+  mod_xsendfile-1.0_beta1.ebuild:
+  mod_xsendfile workdir fixed #434260
+
+*mod_xsendfile-1.0_beta1 (06 Sep 2012)
+
+  06 Sep 2012; Alexander Vershilov <qnikst@gentoo.org>
+  +mod_xsendfile-1.0_beta1.ebuild, metadata.xml:
+  www-apache/mod_xsendfile version bump, thanks to slepnoga
+
+  05 Apr 2012; Agostino Sarubbo <ago@gentoo.org> mod_xsendfile-0.12.ebuild:
+  Stable for amd64, wrt bug #368265
+
+  02 Apr 2012; Andreas Schuerch <nativemad@gentoo.org>
+  mod_xsendfile-0.12.ebuild:
+  x86 stable, see bug 368265
+
+  04 Feb 2012; Maxim Koltsov <maksbotan@gentoo.org> metadata.xml:
+  Fix maintainer's email in metadata
+
+*mod_xsendfile-0.12 (05 Dec 2011)
+
+  05 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org>
+  files/50_mod_xsendfile.conf, +mod_xsendfile-0.12.ebuild, metadata.xml:
+  Bump to 0.12, bug 348775. Move maintainership to proxy-maintainers, thanks to
+  slepnoga
+
+  21 May 2010; Pacho Ramos <pacho@gentoo.org> mod_xsendfile-0.9.ebuild:
+  stable amd64, bug 302052
+
+  01 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  mod_xsendfile-0.9.ebuild:
+  stable x86, bug 302052
+
+*mod_xsendfile-0.9 (05 Jul 2009)
+
+  05 Jul 2009; Benedikt Böhm <hollow@gentoo.org>
+  +files/50_mod_xsendfile.conf, +metadata.xml, +mod_xsendfile-0.9.ebuild:
+  initial ebuild, #244669

@@ -1,0 +1,53 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/accel-ppp/files/accel-ppp.initd,v 1.1 2013/01/03 21:32:07 pinkbyte Exp $
+
+extra_started_commands="reload"
+
+depend() {
+	need net
+}
+
+check_dir() {
+# Check for directory existance, try to create it(if it's not exist yet)
+# and throw error if it can not be done.
+# Parameters:
+# $1 - directory to check
+# $2 - error message
+	if [[ ! -d $1 ]]; then
+		mkdir "$1" 2>/dev/null
+		if [[ $? != 0 ]]; then
+			eerror "$2"
+			exit 1
+		fi
+	fi
+}
+
+start() {
+	# Create directory for PID file
+	local piddir=$(dirname ${PID})
+	check_dir "${piddir}" "Can not create directory $piddir for PID file"
+	# Create default directory for radius attributes
+	check_dir "${RADATTR_DIR}" "Can not create directory ${RADATTR_DIR} for radius attributes"
+
+	ebegin "Starting accel-pppd"
+	start-stop-daemon --start --quiet --exec /usr/sbin/accel-pppd -- ${ACCEL_PPPD_OPTS} -p ${PID}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping accel-pppd"
+	start-stop-daemon --stop --quiet --pidfile ${PID}
+	eend $?
+}
+
+reload() {
+	if [ ! -f ${PID} ]; then
+		eerror "accel-pppd isn't running"
+		return 1
+	fi
+	ebegin "Reloading configuration"
+	start-stop-daemon --signal USR1 --pidfile ${PID}
+	eend $?
+}

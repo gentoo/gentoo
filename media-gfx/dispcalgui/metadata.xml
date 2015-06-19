@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>opensource@andmarios.com</email>
+    <name>Marios Andreopoulos</name>
+    <description>Maintainer.</description>
+  </maintainer>
+  <maintainer>
+    <email>hwoarang@gentoo.org</email>
+    <name>Markos Chandras</name>
+    <description>Proxy maintainer.</description>
+  </maintainer>
+  <longdescription lang="en">
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">dispcalgui</remote-id>
+  </upstream>
+</pkgmetadata>

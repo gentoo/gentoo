@@ -1,0 +1,69 @@
+# ChangeLog for x11-plugins/wmSMPmon
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmSMPmon/ChangeLog,v 1.19 2008/06/28 07:16:24 maekke Exp $
+
+  28 Jun 2008; Markus Meier <maekke@gentoo.org> wmSMPmon-3.1-r1.ebuild:
+  x86 stable, bug #229591
+
+  26 Jun 2008; Santiago M. Mola <coldwind@gentoo.org>
+  wmSMPmon-3.1-r1.ebuild:
+  amd64 stable wrt bug #229591
+
+*wmSMPmon-3.1-r1 (12 Feb 2008)
+
+  12 Feb 2008; Michele Noberasco <s4t4n@gentoo.org> +wmSMPmon-3.1-r1.ebuild:
+  Revision bump, see bug #207804.
+  -wmSMPmon-2.3.ebuild:
+  Wiped out older version.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; wmSMPmon-2.3.ebuild,
+  wmSMPmon-3.1.ebuild:
+  Drop virtual/x11 references.
+
+  29 Jun 2007; Christoph Mende <angelos@gentoo.org> wmSMPmon-3.1.ebuild:
+  Stable on amd64 wrt bug #183655
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  05 Jun 2006; Michele Noberasco <s4t4n@gentoo.org> wmSMPmon-3.1.ebuild:
+  Stable for x86.
+
+*wmSMPmon-3.1 (14 Apr 2006)
+
+  14 Apr 2006; Krzysiek Pawlik <nelchael@gentoo.org> +wmSMPmon-3.1.ebuild:
+  Version bump, see bug #129186.
+
+  22 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> wmSMPmon-2.3.ebuild:
+  Fixed DEPEND for modular X.
+
+  08 Apr 2005; Michele Noberasco <s4t4n@gentoo.org> wmSMPmon-2.2.ebuild:
+  Wiped out older version...
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> wmSMPmon-2.3.ebuild:
+  stable on amd64
+
+  08 Feb 2005; Michele Noberasco <s4t4n@gentoo.org> wmSMPmon-2.3.ebuild:
+  Stable for x86. Fix copyright headers.
+  wmSMPmon-2.3.ebuild:
+  Fix copyright headers.
+  metadata.xml:
+  Assigned to desktop-dock herd.
+
+*wmSMPmon-2.3 (11 Aug 2004)
+
+  11 Aug 2004; Michele Noberasco <s4t4n@gentoo.org> wmSMPmon-2.3.ebuild:
+  Version bump.
+  wmSMPmon-2.2.ebuild:
+  Update ebuild, correct S variable. It always segfaults on me but I assume
+  this is because I don't have SMP capable hardware (and thus an SMP enabled
+  kernel), so I'll leave it unmasked.
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> wmSMPmon-2.2.ebuild:
+  glibc -> libc, add sed-4 dep
+
+*wmSMPmon-2.2 (04 Oct 2002)
+
+  04 Oct 2002; Nick Hadaway <raker@gentoo.org> wmSMPmon-2.2.ebuild,
+  files/digest-wmSMPmon-2.2 :
+  Initial add of ebuild to portage.

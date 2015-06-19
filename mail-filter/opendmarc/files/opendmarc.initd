@@ -1,0 +1,51 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/opendmarc/files/opendmarc.initd,v 1.1 2014/04/17 07:56:57 grobian Exp $
+
+CONFFILE="/etc/opendmarc/${SVCNAME}.conf"
+
+depend() {
+	use dns logger net
+	before mta
+}
+
+check_cfg() {
+	if [ ! -f "${CONFFILE}" ] ; then
+		eerror "Configuration file ${CONFFILE} is missing"
+		return 1
+	fi
+	PIDFILE=$(sed -ne 's/^[[:space:]]*PidFile[[:space:]]\+//p' "${CONFFILE}")
+	local PIDDIR="${PIDFILE%/*}"
+	if [ ! -d  "${PIDDIR}" ] ; then
+		checkpath -q -d -o ${OPENDMARC_USER}:${OPENDMARC_GROUP} -m 0755 "${PIDDIR}" || return 1
+	fi
+	if [ -z "${PIDFILE}" ] ; then
+		eerror "Configuration file needs PidFile setting - recommend adding 'PidFile /var/run/opendmarc/${SVCNAME}.pid' to ${CONFFILE}"
+		return 1
+	fi
+	if egrep -q '^[[:space:]]*Background[[:space:]]+false' "${CONFFILE}" ; then
+		eerror "${SVCNAME} service cannot run with Background key set to false!"
+		return 1
+	fi
+
+	ebegin "Checking your configfile (${CONFFILE})"
+	opendmarc -c "${CONFFILE}" -n
+	eend $? "Configuration error. Please fix your configfile (${CONFFILE})"
+}
+
+start() {
+	check_cfg || return 1
+	
+	ebegin "Starting OpenDMARC"
+	start-stop-daemon --start --pidfile "${PIDFILE}" \
+		--exec /usr/sbin/opendmarc -- -c "${CONFFILE}"
+	eend $?
+}
+
+stop() {
+	check_cfg || return 1
+	ebegin "Stopping OpenDMARC"
+	start-stop-daemon --stop --pidfile "${PIDFILE}"
+	eend $?
+}

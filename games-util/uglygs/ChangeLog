@@ -1,0 +1,53 @@
+# ChangeLog for games-util/uglygs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-util/uglygs/ChangeLog,v 1.11 2015/03/12 20:35:51 mr_bones_ Exp $
+
+  12 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> uglygs-0_rc11.ebuild:
+  EAPI=5
+
+  15 Jul 2014; Jeroen Roovers <jer@gentoo.org> uglygs-0_rc11.ebuild:
+  Set USE=graph dependency on net-analyzer/rrdtool (bug #509682).
+
+  28 May 2010; Tupone Alfredo <tupone@gentoo.org> uglygs-0_rc11.ebuild:
+  Fix installing. Bug #315597 by flameeyes@gentoo.org
+
+  08 Jul 2009; Michael Sterrett <mr_bones_@gentoo.org> uglygs-0_rc11.ebuild:
+  EAPI=2; work around glib210 with sed patch from Arttu Valo (bug #273511)
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> uglygs-0_rc11.ebuild:
+  Replacing einfo with elog
+
+  06 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> uglygs-0_rc11.ebuild:
+  Removed sed-4 from *DEPEND.
+
+  27 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> uglygs-0_rc11.ebuild:
+  Moved games_pkg_postinst to beginning of pkg_postinst.
+
+  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org> uglygs-0_rc11.ebuild:
+  Removed INSTALL file.
+
+*uglygs-0_rc11 (08 Sep 2003)
+
+  08 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*uglygs-0_rc10 (30 Jun 2003)
+
+  30 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump + move sed's to paches + games.eclass support.
+
+*uglygs-0_rc7 (17 Dec 2002)
+
+  29 Jun 2003; <msterret@gentoo.org> uglygs-0_rc7.ebuild:
+  use sed -i, emake, fix up things in unpack instead of compile
+
+  17 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
+  Version bump
+
+*uglygs-0rc5 (23 Oct 2002)
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> :
+  changed sparc ~sparc keywords
+
+  23 Oct 2002; Mike Frysinger <vapier@gentoo.org> :
+  Initial import. Ebuild submitted by me.

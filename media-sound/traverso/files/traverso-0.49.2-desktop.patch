@@ -1,0 +1,16 @@
+--- resources/traverso.desktop
++++ resources/traverso.desktop
+@@ -1,12 +1,10 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+-MimeType=text/plain
++MimeType=text/plain;
+ GenericName=Multitrack Recorder
+ GenericName[de]=Multitrack Recorder
+ GenericName[ru]=Многодорожечная запись и сведение
+ Exec=traverso
+ Icon=traverso
+-Path=
+ Type=Application
+ Terminal=false
+ Name=Traverso

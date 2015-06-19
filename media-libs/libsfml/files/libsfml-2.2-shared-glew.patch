@@ -1,0 +1,12 @@
+--- SFML-2.2/src/SFML/Graphics/CMakeLists.txt
++++ SFML-2.2/src/SFML/Graphics/CMakeLists.txt
+@@ -150,9 +150,6 @@
+ list(APPEND GRAPHICS_EXT_LIBS ${FREETYPE_LIBRARY} ${JPEG_LIBRARY})
+ 
+ # add preprocessor symbols
+-if(NOT SFML_OPENGL_ES)
+-    add_definitions(-DGLEW_STATIC)
+-endif()
+ add_definitions(-DSTBI_FAILURE_USERMSG)
+ 
+ # ImageLoader.cpp must be compiled with the -fno-strict-aliasing

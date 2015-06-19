@@ -1,0 +1,565 @@
+# ChangeLog for perl-core/version
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/perl-core/version/ChangeLog,v 1.79 2015/06/13 10:33:09 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -version-0.990.200.ebuild, version-0.990.800.ebuild:
+  Drop keywords
+
+  08 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -version-0.990.100-r1.ebuild:
+  Remove old
+
+*version-0.990.100-r1 (26 Jul 2014)
+
+  26 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +version-0.990.100-r1.ebuild, -version-0.990.100.ebuild:
+  EAPI bump
+
+  17 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -version-0.990.300.ebuild, -version-0.990.400.ebuild:
+  Remove old
+
+  06 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> -version-0.82.ebuild,
+  -version-0.880.0.ebuild, -version-0.890.0.ebuild, -version-0.900.0.ebuild,
+  -version-0.910.0.ebuild, -version-0.930.0.ebuild, -version-0.940.0.ebuild,
+  -version-0.950.0.ebuild, -version-0.960.0.ebuild, -version-0.970.0.ebuild,
+  -version-0.980.0.ebuild, -version-0.990.0.ebuild:
+  Drop old.
+
+*version-0.990.800 (25 Mar 2014)
+
+  25 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> +version-0.990.800.ebuild:
+  Version bump wrt bug #505524
+
+  19 Jan 2014; Mike Frysinger <vapier@gentoo.org> version-0.990.100.ebuild,
+  version-0.990.200.ebuild, version-0.990.300.ebuild, version-0.990.400.ebuild:
+  Add arm64 love.
+
+  17 Jan 2014; Mike Frysinger <vapier@gentoo.org> version-0.940.0.ebuild,
+  version-0.990.100.ebuild:
+  Mark m68k stable.
+
+*version-0.990.400 (18 Sep 2013)
+
+  18 Sep 2013; Patrick Lauer <patrick@gentoo.org> +version-0.990.400.ebuild:
+  Bump
+
+*version-0.990.300 (24 Aug 2013)
+
+  24 Aug 2013; Patrick Lauer <patrick@gentoo.org> +version-0.990.300.ebuild:
+  Bump
+
+*version-0.990.200 (13 Mar 2013)
+
+  13 Mar 2013; Torsten Veller <tove@gentoo.org> +version-0.990.200.ebuild:
+  Version bump
+
+  02 Mar 2013; Agostino Sarubbo <ago@gentoo.org> version-0.990.100.ebuild:
+  Stable for sh, wrt bug #458122
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org> version-0.990.100.ebuild:
+  Stable for sparc, wrt bug #458122
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org> version-0.990.100.ebuild:
+  Stable for ia64, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> version-0.990.100.ebuild:
+  Stable for arm, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> version-0.990.100.ebuild:
+  Stable for s390, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> version-0.990.100.ebuild:
+  Stable for alpha, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> version-0.990.100.ebuild:
+  Stable for hppa, wrt bug #458122
+
+  18 Feb 2013; Zac Medico <zmedico@gentoo.org> version-0.990.100.ebuild:
+  Add ~arm-linux keyword.
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> version-0.990.100.ebuild:
+  Stable for ppc, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> version-0.990.100.ebuild:
+  Stable for ppc64, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> version-0.990.100.ebuild:
+  Stable for x86, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> version-0.990.100.ebuild:
+  Stable for amd64, wrt bug #458122
+
+*version-0.990.100 (13 Sep 2012)
+
+  13 Sep 2012; Torsten Veller <tove@gentoo.org> +version-0.990.100.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  15 May 2012; Mark Loeser <halcy0n@gentoo.org> version-0.940.0.ebuild:
+  Stable for ppc64; bug #393397
+
+*version-0.990.0 (28 Apr 2012)
+
+  28 Apr 2012; Torsten Veller <tove@gentoo.org> +version-0.990.0.ebuild:
+  Version bump
+
+  28 Apr 2012; Alexis Ballier <aballier@gentoo.org> version-0.980.0.ebuild:
+  keyword ~amd64-fbsd
+
+*version-0.980.0 (26 Apr 2012)
+
+  26 Apr 2012; Torsten Veller <tove@gentoo.org> +version-0.980.0.ebuild:
+  Version bump
+
+*version-0.970.0 (30 Mar 2012)
+
+  30 Mar 2012; Torsten Veller <tove@gentoo.org> +version-0.970.0.ebuild:
+  Version bump
+
+*version-0.960.0 (07 Feb 2012)
+
+  07 Feb 2012; Torsten Veller <tove@gentoo.org> +version-0.960.0.ebuild:
+  Version bump
+
+  02 Feb 2012; Brent Baude <ranger@gentoo.org> version-0.940.0.ebuild:
+  Marking version-0.940.0 ppc stable for bug 393397
+
+  15 Jan 2012; Raúl Porcel <armin76@gentoo.org> version-0.940.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #393397
+
+  22 Dec 2011; Markus Meier <maekke@gentoo.org> version-0.940.0.ebuild:
+  x86 stable, bug #393397
+
+  20 Dec 2011; Agostino Sarubbo <ago@gentoo.org> version-0.940.0.ebuild:
+  Stable for AMD64, wrt bug #393397
+
+  14 Dec 2011; Markus Meier <maekke@gentoo.org> version-0.950.0.ebuild:
+  arm stable, bug #393397
+
+  07 Dec 2011; Jeroen Roovers <jer@gentoo.org> version-0.940.0.ebuild:
+  Stable for HPPA (bug #393397).
+
+*version-0.950.0 (30 Nov 2011)
+
+  30 Nov 2011; Torsten Veller <tove@gentoo.org> +version-0.950.0.ebuild:
+  Version bump
+
+*version-0.940.0 (24 Aug 2011)
+
+  24 Aug 2011; Torsten Veller <tove@gentoo.org> +version-0.940.0.ebuild:
+  Version bump
+
+*version-0.930.0 (06 Aug 2011)
+
+  06 Aug 2011; Torsten Veller <tove@gentoo.org> +version-0.930.0.ebuild:
+  Version bump
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org> version-0.82.ebuild,
+  version-0.880.0.ebuild, version-0.890.0.ebuild, version-0.900.0.ebuild,
+  version-0.910.0.ebuild:
+  Drop ~sparc-fbsd KEYWORD
+
+*version-0.910.0 (06 Jun 2011)
+
+  06 Jun 2011; Torsten Veller <tove@gentoo.org> +version-0.910.0.ebuild:
+  Version bump
+
+*version-0.900.0 (02 Jun 2011)
+
+  02 Jun 2011; Torsten Veller <tove@gentoo.org> +version-0.900.0.ebuild:
+  Version bump
+
+*version-0.890.0 (31 May 2011)
+
+  31 May 2011; Torsten Veller <tove@gentoo.org> +version-0.890.0.ebuild:
+  Version bump
+
+*version-0.880.0 (17 May 2011)
+
+  17 May 2011; Torsten Veller <tove@gentoo.org> -version-0.880.ebuild,
+  +version-0.880.0.ebuild:
+  Change version scheme
+
+  02 May 2011; Fabian Groffen <grobian@gentoo.org> version-0.880.ebuild:
+  Marked ~x64-freebsd
+
+  27 Feb 2011; Fabian Groffen <grobian@gentoo.org> version-0.880.ebuild:
+  Add Prefix keywords, bug #351526
+
+  17 Jan 2011; Torsten Veller <tove@gentoo.org> -files/0.79-assert.patch,
+  -version-0.77.02.ebuild, -version-0.79-r1.ebuild, -version-0.80.ebuild,
+  -version-0.83.ebuild, -version-0.85.ebuild, -version-0.86.ebuild:
+  Cleanup
+
+*version-0.880 (13 Jan 2011)
+
+  13 Jan 2011; Torsten Veller <tove@gentoo.org> +version-0.880.ebuild:
+  Version bump
+
+*version-0.86 (27 Nov 2010)
+
+  27 Nov 2010; Torsten Veller <tove@gentoo.org> +version-0.86.ebuild:
+  Version bump
+
+*version-0.85 (27 Oct 2010)
+
+  27 Oct 2010; Torsten Veller <tove@gentoo.org> +version-0.85.ebuild:
+  Version bump
+
+  22 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> version-0.82.ebuild:
+  ppc64 stable wrt #333421
+
+  22 Oct 2010; Jeroen Roovers <jer@gentoo.org> version-0.82.ebuild:
+  Stable for HPPA (bug #333421).
+
+*version-0.83 (18 Oct 2010)
+
+  18 Oct 2010; Torsten Veller <tove@gentoo.org> +version-0.83.ebuild:
+  Version bump
+
+  12 Sep 2010; Raúl Porcel <armin76@gentoo.org> version-0.82.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #333421
+
+  23 Aug 2010; Markus Meier <maekke@gentoo.org> version-0.82.ebuild:
+  arm stable, bug #333421
+
+  20 Aug 2010; Christian Faulhammer <fauli@gentoo.org> version-0.82.ebuild:
+  stable x86, bug 333421
+
+  19 Aug 2010; Markos Chandras <hwoarang@gentoo.org> version-0.82.ebuild:
+  Stable on amd64 wrt bug #333421
+
+*version-0.82 (20 Apr 2010)
+
+  20 Apr 2010; Torsten Veller <tove@gentoo.org> +version-0.82.ebuild:
+  Version bump
+
+*version-0.80 (02 Feb 2010)
+
+  02 Feb 2010; Torsten Veller <tove@gentoo.org> +version-0.80.ebuild:
+  Version bump
+
+  17 Jan 2010; Torsten Veller <tove@gentoo.org> -version-0.76.ebuild,
+  -version-0.77.01.ebuild, -version-0.78.ebuild:
+  Cleanup
+
+*version-0.79-r1 (15 Jan 2010)
+
+  15 Jan 2010; Torsten Veller <tove@gentoo.org> +files/0.79-assert.patch,
+  -version-0.79.ebuild, +version-0.79-r1.ebuild:
+  Fix for renamed ssaw_period (#300799, cpan #53594)
+
+*version-0.79 (12 Jan 2010)
+
+  12 Jan 2010; Torsten Veller <tove@gentoo.org> +version-0.79.ebuild:
+  Version bump
+
+  05 Jan 2010; nixnut <nixnut@gentoo.org> version-0.77.02.ebuild:
+  ppc stable #288026
+
+  18 Dec 2009; Fabian Groffen <grobian@gentoo.org> version-0.78.ebuild:
+  Marked ~x86-freebsd and ~ia64-linux, bug #297410
+
+  16 Dec 2009; Jonathan Callen <abcd@gentoo.org> version-0.76.ebuild,
+  version-0.77.01.ebuild, version-0.77.02.ebuild, version-0.78.ebuild:
+  QA: Transfer prefix keywords
+
+  14 Dec 2009; Raúl Porcel <armin76@gentoo.org> version-0.77.02.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #288026
+
+  10 Dec 2009; Brent Baude <ranger@gentoo.org> version-0.77.02.ebuild:
+  Marking version-0.77.02 ppc64 stable for bug 288026
+
+  07 Dec 2009; Markus Meier <maekke@gentoo.org> version-0.77.02.ebuild:
+  arm stable, bug #288026
+
+  07 Dec 2009; Jeroen Roovers <jer@gentoo.org> version-0.77.02.ebuild:
+  Stable for HPPA (bug #288026).
+
+  04 Dec 2009; Torsten Veller <tove@gentoo.org> version-0.77.02.ebuild:
+  Stable on amd64 (#288026)
+
+  04 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  version-0.77.02.ebuild:
+  x86 stable, bug 288026
+
+*version-0.78 (24 Oct 2009)
+
+  24 Oct 2009; Torsten Veller <tove@gentoo.org> +version-0.78.ebuild:
+  Version bump
+
+*version-0.77.02 (08 Sep 2009)
+
+  08 Sep 2009; Torsten Veller <tove@gentoo.org> +version-0.77.02.ebuild:
+  Version bump
+
+  03 Sep 2009; Torsten Veller <tove@gentoo.org> version-0.77.01.ebuild:
+  Remove extra_linker_flags again
+
+*version-0.77.01 (04 Aug 2009)
+
+  04 Aug 2009; Torsten Veller <tove@gentoo.org> +version-0.77.01.ebuild:
+  Version bump
+
+  28 Apr 2009; Torsten Veller <tove@gentoo.org> -version-0.73.ebuild,
+  -version-0.74.ebuild:
+  Cleanup
+
+  01 Nov 2008; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +version-0.73.ebuild, +version-0.74.ebuild, +version-0.76.ebuild:
+  dev-perl => perl-core migration
+
+  01 Nov 2008; Torsten Veller <tove@gentoo.org> version-0.73.ebuild,
+  version-0.74.ebuild, version-0.76.ebuild:
+  New virtuals: module-build
+
+  28 Oct 2008; Brent Baude <ranger@gentoo.org> version-0.76.ebuild:
+  stable ppc64, bug 242820
+
+  27 Oct 2008; Jeroen Roovers <jer@gentoo.org> version-0.76.ebuild:
+  Stable for HPPA (bug #242820).
+
+  25 Oct 2008; nixnut <nixnut@gentoo.org> version-0.76.ebuild:
+  Stable on ppc wrt bug 242820
+
+  23 Oct 2008; Raúl Porcel <armin76@gentoo.org> version-0.76.ebuild:
+  alpha/ia64/x86 stable wrt #242820
+
+  20 Oct 2008; Ferris McCormick <fmccor@gentoo.org> version-0.76.ebuild:
+  Sparc stable, Bug #242820.
+
+  20 Oct 2008; Thomas Anderson <gentoofan23@gentoo.org> version-0.76.ebuild:
+  stable amd64, bug 242820
+
+  15 Sep 2008; Torsten Veller <tove@gentoo.org> -version-0.53.ebuild,
+  -version-0.67.01.ebuild, -version-0.68.ebuild, -version-0.69.ebuild,
+  -version-0.70.ebuild, -version-0.71.ebuild, -version-0.72.03.ebuild:
+  Cleanup
+
+*version-0.76 (22 Jul 2008)
+
+  22 Jul 2008; Torsten Veller <tove@gentoo.org> +version-0.76.ebuild:
+  Version bump
+
+  17 Jul 2008; Raúl Porcel <armin76@gentoo.org> version-0.74.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+  06 Jun 2008; Alexis Ballier <aballier@gentoo.org> version-0.74.ebuild:
+  keyword ~sparc-fbsd
+
+*version-0.74 (23 Apr 2008)
+
+  23 Apr 2008; Torsten Veller <tove@gentoo.org> version-0.73.ebuild,
+  +version-0.74.ebuild:
+  Version bump. Fix HOMEPAGE and move build-module to DEPEND only.
+
+  28 Mar 2008; Jeroen Roovers <jer@gentoo.org> version-0.73.ebuild:
+  Stable for HPPA too.
+
+  23 Mar 2008; Alexis Ballier <aballier@gentoo.org> version-0.73.ebuild:
+  keyword ~x86-fbsd
+
+  13 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org> version-0.73.ebuild:
+  ppc. stable
+
+  06 Dec 2007; Raúl Porcel <armin76@gentoo.org> version-0.73.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+  01 Dec 2007; Markus Rothe <corsair@gentoo.org> version-0.73.ebuild:
+  Stable on ppc64
+
+  19 Nov 2007; Joshua Kinard <kumba@gentoo.org> version-0.73.ebuild:
+  Stable on mips.
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org> version-0.73.ebuild:
+  amd64 stable
+
+*version-0.73 (19 Oct 2007)
+
+  19 Oct 2007; Christian Hartmann <ian@gentoo.org> +version-0.73.ebuild:
+  Version bump
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  version-0.72.03.ebuild:
+  Stable on ppc.
+
+  07 Jul 2007; Tom Gall <tgall@gentoo.org> version-0.72.03.ebuild:
+  stable on ppc64
+
+  04 Jul 2007; Raúl Porcel <armin76@gentoo.org> version-0.72.03.ebuild:
+  alpha/ia64/x86 stable
+
+  30 Jun 2007; Joshua Kinard <kumba@gentoo.org> version-0.72.03.ebuild:
+  Stable on mips.
+
+  21 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  version-0.72.03.ebuild:
+  Marking sparc stable
+
+  11 May 2007; Joshua Kinard <kumba@gentoo.org> version-0.70.ebuild:
+  Stable on mips.
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org> version-0.70.ebuild:
+  ppc stable
+
+*version-0.72.03 (22 Apr 2007)
+
+  22 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  -version-0.72.01.ebuild, +version-0.72.03.ebuild:
+  Version bump
+
+*version-0.72.01 (16 Apr 2007)
+
+  16 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  +version-0.72.01.ebuild:
+  Version bump
+
+  16 Apr 2007; Markus Rothe <corsair@gentoo.org> version-0.68.ebuild:
+  Stable on ppc64
+
+  14 Apr 2007; Michael Cummings <mcummings@gentoo.org> version-0.70.ebuild:
+  sparc stable
+
+  09 Apr 2007; Michael Cummings <mcummings@gentoo.org> version-0.70.ebuild:
+  Marking stable amd64
+
+*version-0.71 (06 Apr 2007)
+
+  06 Apr 2007; Michael Cummings <mcummings@gentoo.org> +version-0.71.ebuild:
+  Version bump
+
+  04 Apr 2007; Fernando J. Pereda <ferdy@gentoo.org> version-0.70.ebuild:
+  ~alpha keyword as per bug #161486
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> version-0.68.ebuild:
+  Stable on x86, bug #169152.
+
+  26 Feb 2007; Michael Cummings <mcummings@gentoo.org> version-0.70.ebuild:
+  Bug 161486, tested on swarm, keywording ~mips
+
+*version-0.70 (17 Feb 2007)
+
+  17 Feb 2007; Michael Cummings <mcummings@gentoo.org> +version-0.70.ebuild:
+  Version bump
+
+  30 Jan 2007; Jeroen Roovers <jer@gentoo.org> version-0.69.ebuild:
+  Marked ~hppa (bug #161486).
+
+  22 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> version-0.68.ebuild:
+  Stable on IA64.
+
+  14 Jan 2007; Michael Cummings <mcummings@gentoo.org> version-0.53.ebuild,
+  version-0.67.01.ebuild, version-0.68.ebuild, version-0.69.ebuild:
+  Cleaning up ebuilds
+
+*version-0.69 (14 Jan 2007)
+
+  14 Jan 2007; Michael Cummings <mcummings@gentoo.org> version-0.68.ebuild,
+  +version-0.69.ebuild:
+  Version bump
+
+  08 Jan 2007; Michael Cummings <mcummings@gentoo.org> -version-0.59.ebuild,
+  version-0.68.ebuild:
+  Marking sparc stable
+
+  08 Jan 2007; Michael Cummings <mcummings@gentoo.org> version-0.68.ebuild:
+  Marking amd64 stable
+
+*version-0.68 (06 Nov 2006)
+
+  06 Nov 2006; Michael Cummings <mcummings@gentoo.org> +version-0.68.ebuild:
+  Version bump
+
+  20 Oct 2006; Aron Griffis <agriffis@gentoo.org> version-0.67.01.ebuild:
+  Mark 0.67.01 stable on ia64
+
+  20 Oct 2006; Michael Cummings <mcummings@gentoo.org> -version-0.60.ebuild,
+  -version-0.64.ebuild:
+  Finishing the cleanup
+
+  20 Oct 2006; Michael Cummings <mcummings@gentoo.org> version-0.53.ebuild,
+  version-0.59.ebuild, -version-0.66.1.ebuild, version-0.67.01.ebuild:
+  Marking amd64, sparc stable; cleaning up ebuilds
+
+*version-0.67.01 (20 Aug 2006)
+
+  20 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  +version-0.67.01.ebuild:
+  Version bump
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org> version-0.53.ebuild,
+  version-0.59.ebuild, version-0.60.ebuild, version-0.64.ebuild,
+  version-0.66.1.ebuild:
+  Adding perl dep; fixed DEPEND
+
+*version-0.66.1 (30 Jul 2006)
+
+  30 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  +version-0.66.1.ebuild:
+  Version bump
+
+  18 Jul 2006; Michael Cummings <mcummings@gentoo.org> version-0.53.ebuild,
+  version-0.59.ebuild, version-0.60.ebuild, version-0.64.ebuild:
+  Forcing mb version
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> version-0.59.ebuild:
+  Mark 0.59 stable on ia64
+
+  01 Jul 2006; Michael Cummings <mcummings@gentoo.org> version-0.59.ebuild:
+  Marking stable amd64
+
+*version-0.64 (23 Jun 2006)
+
+  23 Jun 2006; Michael Cummings <mcummings@gentoo.org> +version-0.64.ebuild:
+  Version bump upstream
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org> version-0.59.ebuild:
+  Marking sparc stable
+
+*version-0.60 (22 May 2006)
+
+  22 May 2006; <mcummings@gentoo.org> +version-0.60.ebuild:
+  Version bump
+
+*version-0.59 (26 Apr 2006)
+
+  26 Apr 2006; <mcumming@gentoo.org> +version-0.59.ebuild:
+  Version bump
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org> version-0.53.ebuild:
+  Mark 0.53 ~ia64
+
+  27 Mar 2006; Markus Rothe <corsair@gentoo.org> version-0.53.ebuild:
+  Stable on ppc64
+
+  22 Mar 2006; Michael Cummings <mcummings@gentoo.org> -version-0.50.ebuild,
+  -version-0.52.ebuild, version-0.53.ebuild:
+  Marking stable sparc, x86, cleaning out old copies
+
+  30 Jan 2006; Aaron Kulbe <superlag@gentoo.org> version-0.53.ebuild:
+  Marked ~amd64 for bug #116301.
+
+*version-0.53 (16 Jan 2006)
+
+  16 Jan 2006; Michael Cummings <mcummings@gentoo.org> +version-0.53.ebuild:
+  Another version bump, gearing up for 5.8.8 release
+
+*version-0.52 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org> +version-0.52.ebuild:
+  Version bump
+
+  08 Jan 2006; Joseph Jezak <josejx@gentoo.org> version-0.50.ebuild:
+  Marked ~ppc for bug #116301.
+
+  21 Dec 2005; Markus Rothe <corsair@gentoo.org> version-0.50.ebuild:
+  Added ~ppc64; bug #116301
+
+*version-0.50 (21 Dec 2005)
+
+  21 Dec 2005; <mcumming@gentoo.org> +metadata.xml, +version-0.50.ebuild:
+  New dep for Class-DBI

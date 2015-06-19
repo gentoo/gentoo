@@ -1,0 +1,140 @@
+Patch extracted from maxima git repository.
+
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,19 @@
++2012-03-25 Yasuaki Honda <yasuaki.honda@gmail.com>
++	* version 1.03
++	* A new command "reinit-imaxima" is added. This command reset the
++	communication status of Emacs Lisp and Maxima. When imaxima does
++	not respond to any input, this command will help to resolve such
++	situation.
++
++2011-10-02 Yasuaki Honda <yasuaki.honda@gmail.com>
++	* version 1.01
++	* An old workaround code for tex prevented imaxima on Mac OS X
++	Lion from working. This is related to the placing of the temporary
++	file directory and the name of the file path containing the
++	character "_". This is fixed in this version.
++	* Special treatment of greek character gamma is removed from
++	imaxima.el and commited to maxima mactex.lisp.
++
+ 2009-02-07 Yasuaki Honda <yasuaki.honda@gmail.com>
+ 	* As for inline graph, if the emacs buffer window is too small for
+ 	the generated graph image, the graph is not displayed, but a file
+--- a/imaxima-autoconf-variables.el
++++ b/imaxima-autoconf-variables.el
+@@ -19,6 +19,6 @@
+ ;; Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+ ;; MA 02111-1307 USA
+ (defconst *imaxima-autoconf-package* "imaxima-imath")
+-(defconst *imaxima-autoconf-version* "1.0")
++(defconst *imaxima-autoconf-version* "1.03")
+ 
+ (provide 'imaxima-autoconf-variables)
+--- a/imaxima.el
++++ b/imaxima.el
+@@ -420,6 +420,17 @@
+   (message "%s %s" *imaxima-autoconf-package* *imaxima-autoconf-version*))
+ 
+ ;;
++;; Reset
++;;
++
++(defun reinit-imaxima ()
++  "Re-initialize imaxima"
++  (interactive)
++  (setq imaxima-filter-running nil
++    imaxima-output nil
++    continuation nil))
++
++;;
+ ;; Geometry
+ ;;
+ 
+@@ -1174,6 +1185,7 @@
+ 	  (switch-to-buffer imaxima-buffer)
+ 	(set-buffer imaxima-buffer))
+       (return-from imaxima t)))
++  (reinit-imaxima)
+   (unless (imaxima-image-type-available-p imaxima-image-type)
+     (error "Your version of Emacs does not support the image type %s"
+ 	   imaxima-image-type))
+@@ -1183,9 +1195,7 @@
+   (setq imaxima-file-counter 0)
+   (make-directory
+    (setq imaxima-tmp-subdir
+-	 ;; For some reason TeX doesn't grok underscores in file names
+-	 (imaxima-subst-char-in-string ?_ ?=
+-	    (make-temp-name (expand-file-name "imaxima" imaxima-tmp-dir)))))
++	 (make-temp-name (expand-file-name "imaxima" imaxima-tmp-dir))) t)
+   (set-file-modes imaxima-tmp-subdir 448) ; 700 in octal
+   (let ((process-connection-type process-connection-type-flag))
+     (if imaxima-use-maxima-mode-flag
+--- a/imaxima.lisp
++++ b/imaxima.lisp
+@@ -109,9 +109,9 @@
+ ;;; SBCL.
+ ;;; by yasuaki honda
+ #-sbcl
+-(if (not (fboundp (find-symbol "PRINT-INVERT-CASE" :maxima)))
+-    (defun print-invert-case (obj)
+-      (princ-to-string obj)))
++(unless (fboundp 'maxima::print-invert-case)
++  (defun print-invert-case (obj)
++    (princ-to-string obj)))
+ 
+ (defun print-case-sensitive (obj)
+   (if obj
+@@ -126,7 +126,7 @@
+ 
+ (defun main-prompt ()
+   (format () (concatenate 'string (string (code-char 3)) "(~A~D) " (string (code-char 4)))
+-    (STRIPDOLLAR (print-case-sensitive $inchar)) $linenum))
++    (stripdollar (print-case-sensitive $inchar)) $linenum))
+ 
+ (defun break-dbm-loop (at)
+   (let* (
+@@ -142,7 +142,7 @@
+     (declare (special *mread-prompt* ))
+     (and (consp at) (set-env at))
+     (cond ((null at)
+-	   ($frame 0 nil)))
++	   (break-frame 0 nil)))
+     (catch 'step-continue
+       (catch *quit-tag*
+ 	(unwind-protect
+@@ -672,9 +672,12 @@
+     (setq res (apply (symbol-function '$draw)
+ 		     (append
+ 		      `(
+-			((mequal simp) $terminal $eps)
+-			((mequal simp) $pic_width ,($first $wxplot_size))
+-			((mequal simp) $pic_height ,($second $wxplot_size))
++			((mequal simp) $terminal $eps_color)
++                        ((mequal simp) $dimensions
++                                       ((mlist simp)
++                                        ;; convert points to 1/100 of cm
++                                        ,(* 3.53 ($first $wxplot_size))
++                                        ,(* 3.53 ($second $wxplot_size))))
+ 			((mequal simp) $file_name ,filename))
+ 		      args)))
+     ($ldisp `((wxxmltag simp) ,(format nil "~a.eps" filename) "img"))
+--- a/imaxima.texi
++++ b/imaxima.texi
+@@ -223,6 +223,15 @@
+ information when you want to make bug reports.
+ @end defun
+ 
++@defun reinit-imaxima
++Initialize the imaxima program. Sometimes you may encounter situations
++where imaxima does not repond to your input. This is caused by the
++inconsistency between Emacs Lisp and Maxima. Such situations can be
++resolved by using this command. After calling this command from the
++Emacs mini buffer, you should type simple Maxima expression such as
++1+2; to ensure that the imaxima does respond to you now.
++@end defun
++
+ @node Inline Graph
+ @chapter Inline Graph
+ 

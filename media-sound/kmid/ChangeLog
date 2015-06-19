@@ -1,0 +1,95 @@
+# ChangeLog for media-sound/kmid
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/kmid/ChangeLog,v 1.23 2014/12/03 08:04:42 kensington Exp $
+
+  03 Dec 2014; Michael Palimaka <kensington@gentoo.org> kmid-2.4.0-r1.ebuild:
+  Restrict media-sound/drumstick dependency.
+
+  01 Apr 2013; Michael Palimaka <kensington@gentoo.org> -kmid-2.4.0.ebuild:
+  Remove old.
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> kmid-2.4.0-r1.ebuild:
+  Stable for x86, wrt bug #462890
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> kmid-2.4.0-r1.ebuild:
+  Stable for amd64, wrt bug #462890
+
+*kmid-2.4.0-r1 (26 Feb 2013)
+
+  26 Feb 2013; Michael Palimaka <kensington@gentoo.org> +kmid-2.4.0-r1.ebuild,
+  metadata.xml:
+  Migrate to EAPI 5. Fix potential dependency problems with the handbook. Add
+  upstream metadata.
+
+  28 Oct 2011; Jonathan Callen <abcd@gentoo.org> -kmid-2.3.0-r1.ebuild:
+  remove old
+
+  16 Feb 2011; Markos Chandras <hwoarang@gentoo.org> kmid-2.4.0.ebuild:
+  Stable on amd64 wrt bug #353476
+
+  07 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> kmid-2.4.0.ebuild:
+  x86 stable wrt bug #353476
+
+  02 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org> kmid-2.3.0-r1.ebuild,
+  kmid-2.4.0.ebuild:
+  EAPI3, use array for DOCS
+
+*kmid-2.4.0 (29 Oct 2010)
+
+  29 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> +kmid-2.4.0.ebuild:
+  Version bump.
+
+  15 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> kmid-2.3.0-r1.ebuild:
+  x86 stable wrt bug #322375
+
+*kmid-2.3.1 (13 Jun 2010)
+
+  13 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> +kmid-2.3.1.ebuild:
+  Version bump.
+
+  13 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> kmid-2.3.0-r1.ebuild:
+  amd64 stable wrt #322375
+
+*kmid-2.3.0-r1 (27 Apr 2010)
+
+  27 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> +kmid-2.3.0-r1.ebuild:
+  Use system copy of drumstick.
+
+*kmid-2.3.0 (27 Apr 2010)
+
+  27 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> +kmid-2.3.0.ebuild:
+  Version bump.
+
+  27 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> kmid-2.2.2.ebuild:
+  amd64/x86 stable
+
+  15 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> kmid-0.2.1.ebuild:
+  amd64/x86 stable
+
+*kmid-2.2.2 (15 Mar 2010)
+
+  15 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> +kmid-2.2.2.ebuild:
+  Version bump.
+
+*kmid-0.2.1 (09 Feb 2010)
+
+  09 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> +kmid-0.2.1.ebuild:
+  Version bump.
+
+*kmid-0.2.0 (27 Jan 2010)
+
+  27 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> +kmid-0.2.0.ebuild:
+  Version bump.
+
+  27 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> kmid-0.1.1.ebuild:
+  amd64/x86 stable
+
+*kmid-0.1.1 (30 Dec 2009)
+
+  30 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> +kmid-0.1.1.ebuild:
+  Version bump.
+
+*kmid-0.1.0 (01 Dec 2009)
+
+  01 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> +kmid-0.1.0.ebuild:
+  Initial commit.

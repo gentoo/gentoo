@@ -1,0 +1,162 @@
+# ChangeLog for media-video/2mandvd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/2mandvd/ChangeLog,v 1.35 2015/05/15 16:57:37 kensington Exp $
+
+  15 May 2015; Michael Palimaka <kensington@gentoo.org> -2mandvd-1.8.4.ebuild,
+  -files/2mandvd-1.8.4-libavformat54.patch:
+  Remove old.
+
+  15 May 2015; Pacho Ramos <pacho@gentoo.org> 2mandvd-1.8.5.ebuild:
+  amd64/x86 stable, bug #547658
+
+  10 May 2015; Pacho Ramos <pacho@gentoo.org> 2mandvd-1.8.5.ebuild:
+  Migrate to new-style ffmpeg/libav USE flags
+
+*2mandvd-1.8.5 (31 Aug 2013)
+
+  31 Aug 2013; Davide Pesavento <pesa@gentoo.org> +2mandvd-1.8.5.ebuild,
+  +files/2mandvd-1.8.5-libavformat54.patch,
+  -files/2mandvd-fix-const-char-concatenation.patch:
+  Version bump.
+
+  17 Jun 2013; Tomáš Chvátal <scarabeus@gentoo.org> -2mandvd-1.8.1.ebuild,
+  2mandvd-1.8.4.ebuild, files/2mandvd-1.8.4-libavformat54.patch:
+  Fix usage of more deprecated symbols to be happy with libav9. Just append the
+  diff to current libavformat53 patch.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> 2mandvd-1.8.1.ebuild,
+  2mandvd-1.8.4.ebuild:
+  Move Qt dependencies to the new category
+
+  08 Feb 2013; Alexis Ballier <aballier@gentoo.org> 2mandvd-1.8.4.ebuild,
+  +files/2mandvd-1.8.4-libavformat54.patch:
+  fix broken #if directive causing build failure with latest ffmpeg, bug
+  #456170
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> 2mandvd-1.8.4.ebuild:
+  Stable for x86, wrt bug #442166
+
+  14 Nov 2012; <ago@gentoo.org> 2mandvd-1.8.4.ebuild:
+  Stable for amd64, wrt bug #442166
+
+*2mandvd-1.8.4 (06 Oct 2012)
+
+  06 Oct 2012; Davide Pesavento <pesa@gentoo.org> +2mandvd-1.8.4.ebuild:
+  Version bump, use upstream "make install".
+
+  02 Aug 2012; Davide Pesavento <pesa@gentoo.org> -2mandvd-1.7.3.ebuild,
+  2mandvd-1.8.1.ebuild:
+  amd64/x86 stable wrt bug 429142. Remove old.
+
+*2mandvd-1.8.1 (03 Jun 2012)
+
+  03 Jun 2012; Markos Chandras <hwoarang@gentoo.org> +2mandvd-1.8.1.ebuild:
+  Version bump
+
+  15 Apr 2012; Johannes Huber <johu@gentoo.org> -2mandvd-1.3.5.ebuild,
+  -2mandvd-1.5.5.ebuild, -files/2mandvd-fix-const-char-concatenation.old.patch:
+  Remove old.
+
+  15 Apr 2012; Markus Meier <maekke@gentoo.org> 2mandvd-1.7.3.ebuild:
+  x86 stable, bug #411731
+
+  13 Apr 2012; Agostino Sarubbo <ago@gentoo.org> 2mandvd-1.7.3.ebuild:
+  Stable for amd64, wrt bug #411731
+
+*2mandvd-1.7.3 (12 Mar 2012)
+
+  12 Mar 2012; Davide Pesavento <pesa@gentoo.org> +2mandvd-1.7.3.ebuild,
+  +files/2mandvd-1.7.3-libav.patch, -2mandvd-1.4.ebuild, 2mandvd-1.5.5.ebuild,
+  metadata.xml:
+  Version bump, bug 405153. Thanks to Michael (kensington) for the patch and the
+  updated ebuild. Remove old.
+
+  15 Feb 2012; Markos Chandras <hwoarang@gentoo.org>
+  +files/2mandvd-fix-const-char-concatenation.old.patch, 2mandvd-1.3.5.ebuild,
+  2mandvd-1.4.ebuild:
+  Fix patch for old versions. bug #369839
+
+  24 Nov 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #290906
+
+  08 May 2011; Tomas Touceda <chiiph@gentoo.org>
+  files/2mandvd-fix-const-char-concatenation.patch, 2mandvd-1.5.5.ebuild:
+  Fix patch and unpack output wrt bug 364553
+
+*2mandvd-1.5.5 (22 Apr 2011)
+
+  22 Apr 2011; Tomas Touceda <chiiph@gentoo.org> +2mandvd-1.5.5.ebuild:
+  Version bump, wrt bug 341775
+
+  23 Oct 2010; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove myself from metadata
+
+*2mandvd-1.4 (05 Oct 2010)
+
+  05 Oct 2010; Tomas Touceda <chiiph@gentoo.org> +2mandvd-1.4.ebuild,
+  metadata.xml:
+  Add myself as co-maintainer and version bump
+
+  12 Sep 2010; Torsten Veller <tove@gentoo.org> 2mandvd-1.3.5.ebuild:
+  Add missing die: || "..." -> || die "..."
+
+  08 Sep 2010; Markos Chandras <hwoarang@gentoo.org> -2mandvd-1.1.1.ebuild,
+  -2mandvd-1.2-r1.ebuild, -2mandvd-1.3.1-r1.ebuild, -2mandvd-1.3.2.ebuild,
+  -2mandvd-1.3.3.ebuild, 2mandvd-1.3.5.ebuild:
+  Stable on amd64. Bug #334885. Remove old ebuilds
+
+  06 Sep 2010; Christian Faulhammer <fauli@gentoo.org> 2mandvd-1.3.5.ebuild:
+  stable x86, bug 334885
+
+  13 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  2mandvd-1.2-r1.ebuild:
+  stable x86, bug 305625
+
+  14 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  +files/2mandvd-fix-const-char-concatenation.patch, +2mandvd-1.3.5.ebuild:
+  Version bump
+
+*2mandvd-1.3.5 (13 Jun 2010)
+
+  13 Jun 2010; Markos Chandras <hwoarang@gentoo.org> +2mandvd-1.3.5.ebuild:
+  Version bump
+
+  29 Apr 2010; Markos Chandras <hwoarang@gentoo.org> 2mandvd-1.1.1.ebuild,
+  2mandvd-1.2-r1.ebuild:
+  Migrate to qt4-r2 eclass wrt bug #311481
+
+*2mandvd-1.3.3 (25 Mar 2010)
+
+  25 Mar 2010; Markos Chandras <hwoarang@gentoo.org> +2mandvd-1.3.3.ebuild:
+  Version bump
+
+*2mandvd-1.3.2 (13 Mar 2010)
+*2mandvd-1.3.1-r1 (13 Mar 2010)
+*2mandvd-1.2-r1 (13 Mar 2010)
+
+  13 Mar 2010; Markos Chandras <hwoarang@gentoo.org> -2mandvd-1.2.ebuild,
+  +2mandvd-1.2-r1.ebuild, -2mandvd-1.3.1.ebuild, +2mandvd-1.3.1-r1.ebuild,
+  +2mandvd-1.3.2.ebuild:
+  Install missing file wrt bug #305625 and bumped to 1.3.2
+
+*2mandvd-1.3.1 (26 Feb 2010)
+
+  26 Feb 2010; Markos Chandras <hwoarang@gentoo.org> +2mandvd-1.3.1.ebuild:
+  Version bump wrt bug #304703
+
+  21 Feb 2010; Markos Chandras <hwoarang@gentoo.org> 2mandvd-1.2.ebuild:
+  Stable on amd64 wrt bug #305625
+
+  28 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> 2mandvd-1.2.ebuild:
+  Missing x11-libs/qt-webkit:4 depend wrt
+  http://forums.gentoo.org/viewtopic-p-6151543.html.
+
+*2mandvd-1.2 (25 Nov 2009)
+
+  25 Nov 2009; <hwoarang@gentoo.org> +2mandvd-1.2.ebuild:
+  Version bump
+
+*2mandvd-1.1.1 (09 Nov 2009)
+
+  09 Nov 2009; <hwoarang@gentoo.org> +2mandvd-1.1.1.ebuild, +metadata.xml:
+  Initial commit of 2mandvd application. Fixes bug 266949

@@ -1,0 +1,58 @@
+--- a/src/utils.c
++++ b/src/utils.c
+@@ -137,7 +137,7 @@
+ #endif
+ 
+     va_start(va, msgp);
+-    vsnprintf(msg, 256, msgp, va);
++    vsnprintf(msg, 255, msgp, va);
+ 
+     msg_len = strlen(msg);
+ 
+--- a/src/exit.c
++++ b/src/exit.c
+@@ -36,7 +36,7 @@
+         while(1)
+         {
+             fprintf(stderr, "\n\nWould you like to quit? (y/n): ");
+-            fgets(a, 16, stdin);
++            fgets(a, 2, stdin);
+ 
+             if(!strncasecmp(a, "Y", 1))            
+                 break;
+--- a/src/define_defaults.c
++++ b/src/define_defaults.c
+@@ -36,7 +36,7 @@
+     rand_d_port = (p_mode == M_TRACE) ? 1 : 0;
+     r_timeout = 1;
+     burst_rate = 1;
+-    hwaddr_p[17] = 0;
++    /* hwaddr_p[18] = 0; */
+     init_type = 1;
+     interval_sec = 1;
+     interval_usec = 0;
+--- a/src/inject_defs.h
++++ b/src/inject_defs.h
+@@ -132,9 +132,9 @@
+     u_int16_t rand_d_addr;
+ 
+     u_int8_t *s_addr;                   /* source ethernet address string */
+-    u_int8_t shw_addr[17];
++    u_int8_t shw_addr[18];
+     u_int8_t *d_addr;                   /* destination ethernet address string */
+-    u_int8_t dhw_addr[17];
++    u_int8_t dhw_addr[18];
+ } ehdr_o;
+ 
+ struct arphdr_opts
+@@ -153,8 +153,8 @@
+     u_int8_t *r_eaddr;                  /* receiver ethernet address */
+     u_int16_t rand_r_eaddr;
+ 
+-    u_int8_t shw_addr[17];
+-    u_int8_t rhw_addr[17];
++    u_int8_t shw_addr[18];
++    u_int8_t rhw_addr[18];
+ } ahdr_o;
+ 
+ libnet_t *pkt_d;

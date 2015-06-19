@@ -1,0 +1,254 @@
+# ChangeLog for app-vim/automatictexplugin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/automatictexplugin/ChangeLog,v 1.53 2015/06/09 12:47:28 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  09 Feb 2015; Tim Harder <radhermit@gentoo.org>
+  -automatictexplugin-12.3.ebuild, -automatictexplugin-12.4.ebuild,
+  -automatictexplugin-12.5.ebuild:
+  Remove old.
+
+  09 Feb 2015; Tim Harder <radhermit@gentoo.org>
+  automatictexplugin-12.5-r1.ebuild:
+  Stabilize for amd64/x86.
+
+  06 Jan 2015; Michał Górny <mgorny@gentoo.org>
+  automatictexplugin-12.5-r1.ebuild:
+  Add missing PYTHON_REQUIRED_USE.
+
+*automatictexplugin-12.5-r1 (06 Jan 2015)
+
+  06 Jan 2015; Michał Górny <mgorny@gentoo.org>
+  +automatictexplugin-12.5-r1.ebuild:
+  Convert to python-single-r1, enforce a match on Python version used by vim.
+
+*automatictexplugin-12.5 (12 Apr 2014)
+
+  12 Apr 2014; Tim Harder <radhermit@gentoo.org>
+  +automatictexplugin-12.5.ebuild:
+  Version bump.
+
+  12 Apr 2014; Agostino Sarubbo <ago@gentoo.org> automatictexplugin-12.4.ebuild:
+  Stable for x86, wrt bug #502634
+
+  11 Apr 2014; Chema Alonso <nimiux@gentoo.org> automatictexplugin-12.4.ebuild:
+  Stable for amd64 wrt bug #502634
+
+  25 Jan 2014; Tim Harder <radhermit@gentoo.org>
+  -automatictexplugin-12.1.ebuild, -automatictexplugin-12.2.ebuild:
+  Remove old.
+
+*automatictexplugin-12.4 (25 Jan 2014)
+
+  25 Jan 2014; Tim Harder <radhermit@gentoo.org>
+  +automatictexplugin-12.4.ebuild:
+  Version bump.
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> automatictexplugin-12.3.ebuild:
+  Stable for amd64, wrt bug #474158
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> automatictexplugin-12.3.ebuild:
+  Stable for x86, wrt bug #474158
+
+*automatictexplugin-12.3 (03 May 2013)
+
+  03 May 2013; Tim Harder <radhermit@gentoo.org>
+  +automatictexplugin-12.3.ebuild:
+  Version bump.
+
+  23 Mar 2013; Tim Harder <radhermit@gentoo.org>
+  -automatictexplugin-11.1.ebuild, -automatictexplugin-12.ebuild:
+  Remove old.
+
+*automatictexplugin-12.2 (23 Mar 2013)
+
+  23 Mar 2013; Tim Harder <radhermit@gentoo.org>
+  +automatictexplugin-12.2.ebuild:
+  Version bump.
+
+  04 Dec 2012; <ago@gentoo.org> automatictexplugin-12.1.ebuild:
+  Stable for x86, wrt bug #441124
+
+  03 Dec 2012; <ago@gentoo.org> automatictexplugin-12.1.ebuild:
+  Stable for amd64, wrt bug #441122
+
+*automatictexplugin-12.1 (26 Sep 2012)
+
+  26 Sep 2012; Tim Harder <radhermit@gentoo.org>
+  +automatictexplugin-12.1.ebuild:
+  Version bump.
+
+*automatictexplugin-12 (21 Sep 2012)
+
+  21 Sep 2012; Tim Harder <radhermit@gentoo.org> +automatictexplugin-12.ebuild:
+  Version bump.
+
+  02 Sep 2012; Tim Harder <radhermit@gentoo.org> -automatictexplugin-11.ebuild:
+  Remove old.
+
+  04 Aug 2012; Johannes Huber <johu@gentoo.org> automatictexplugin-11.1.ebuild:
+  Stable for x86, wrt bug #428910
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org>
+  automatictexplugin-11.1.ebuild:
+  Stable for amd64, wrt bug #428910
+
+  27 Jun 2012; Tim Harder <radhermit@gentoo.org>
+  -automatictexplugin-10.6.4.ebuild:
+  Remove old.
+
+  26 Jun 2012; Jeff Horelick <jdhore@gentoo.org> automatictexplugin-11.ebuild:
+  marked x86 per bug 422007
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> automatictexplugin-11.ebuild:
+  Stable for amd64, wrt bug #422007
+
+*automatictexplugin-11.1 (22 Jun 2012)
+
+  22 Jun 2012; Tim Harder <radhermit@gentoo.org>
+  +automatictexplugin-11.1.ebuild:
+  Version bump.
+
+*automatictexplugin-11 (15 May 2012)
+
+  15 May 2012; Tim Harder <radhermit@gentoo.org> +automatictexplugin-11.ebuild:
+  Version bump.
+
+  16 Feb 2012; Tim Harder <radhermit@gentoo.org>
+  -automatictexplugin-10.5.ebuild:
+  Remove old.
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  automatictexplugin-10.6.4.ebuild:
+  x86 stable wrt bug #402809
+
+  09 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  automatictexplugin-10.6.4.ebuild:
+  Stable for amd64, wrt bug #402809
+
+  09 Feb 2012; Tim Harder <radhermit@gentoo.org>
+  -automatictexplugin-10.6.1.ebuild, -automatictexplugin-10.6.3.ebuild:
+  Remove old.
+
+*automatictexplugin-10.6.4 (29 Dec 2011)
+
+  29 Dec 2011; Tim Harder <radhermit@gentoo.org>
+  +automatictexplugin-10.6.4.ebuild:
+  Version bump.
+
+*automatictexplugin-10.6.3 (11 Dec 2011)
+
+  11 Dec 2011; Tim Harder <radhermit@gentoo.org>
+  -automatictexplugin-10.6.2.ebuild, +automatictexplugin-10.6.3.ebuild:
+  Version bump and remove old.
+
+  10 Dec 2011; Tim Harder <radhermit@gentoo.org>
+  -automatictexplugin-10.6.ebuild:
+  Remove old.
+
+*automatictexplugin-10.6.2 (10 Dec 2011)
+
+  10 Dec 2011; Tim Harder <radhermit@gentoo.org>
+  +automatictexplugin-10.6.2.ebuild:
+  Version bump.
+
+  24 Oct 2011; Markus Meier <maekke@gentoo.org> automatictexplugin-10.5.ebuild:
+  x86 stable, bug #387455
+
+  18 Oct 2011; Tony Vroon <chainsaw@gentoo.org> automatictexplugin-10.5.ebuild:
+  Marked stable on AMD64 based on arch testing by Ian "idella4" Delaney &
+  Agostino "ago" Sarubbo in bug #387455.
+
+  09 Oct 2011; Tim Harder <radhermit@gentoo.org>
+  -automatictexplugin-10.2.ebuild, -automatictexplugin-10.3.ebuild:
+  Remove old.
+
+*automatictexplugin-10.6.1 (09 Oct 2011)
+
+  09 Oct 2011; Tim Harder <radhermit@gentoo.org>
+  +automatictexplugin-10.6.1.ebuild:
+  Version bump.
+
+*automatictexplugin-10.6 (25 Sep 2011)
+
+  25 Sep 2011; Tim Harder <radhermit@gentoo.org>
+  +automatictexplugin-10.6.ebuild:
+  Version bump.
+
+*automatictexplugin-10.5 (14 Sep 2011)
+
+  14 Sep 2011; Tim Harder <radhermit@gentoo.org>
+  +automatictexplugin-10.5.ebuild:
+  Version bump.
+
+  31 Aug 2011; Tim Harder <radhermit@gentoo.org>
+  -automatictexplugin-9.7.1.ebuild, -automatictexplugin-9.7.4.ebuild,
+  -automatictexplugin-10.ebuild:
+  Remove old.
+
+*automatictexplugin-10.3 (31 Aug 2011)
+
+  31 Aug 2011; Tim Harder <radhermit@gentoo.org>
+  +automatictexplugin-10.3.ebuild:
+  Version bump.
+
+*automatictexplugin-10.2 (17 Aug 2011)
+
+  17 Aug 2011; Tim Harder <radhermit@gentoo.org>
+  +automatictexplugin-10.2.ebuild:
+  Version bump
+
+*automatictexplugin-10 (10 Aug 2011)
+
+  10 Aug 2011; Tim Harder <radhermit@gentoo.org> +automatictexplugin-10.ebuild:
+  Version bump
+
+*automatictexplugin-9.7.4 (22 Jul 2011)
+
+  22 Jul 2011; Tim Harder <radhermit@gentoo.org>
+  -automatictexplugin-9.6.ebuild, -automatictexplugin-9.6.1.ebuild,
+  +automatictexplugin-9.7.4.ebuild:
+  Version bump and remove old.
+
+*automatictexplugin-9.7.1 (15 Jul 2011)
+
+  15 Jul 2011; Tim Harder <radhermit@gentoo.org>
+  +automatictexplugin-9.7.1.ebuild:
+  Version bump.
+
+*automatictexplugin-9.6.1 (12 Jun 2011)
+
+  12 Jun 2011; Tim Harder <radhermit@gentoo.org>
+  +automatictexplugin-9.6.1.ebuild:
+  Version bump.
+
+  12 Jun 2011; Tim Harder <radhermit@gentoo.org>
+  -automatictexplugin-9.5.ebuild, automatictexplugin-9.6.ebuild:
+  Add dependency on app-vim/align, update HOMEPAGE, and remove old.
+
+*automatictexplugin-9.6 (05 Jun 2011)
+
+  05 Jun 2011; Tim Harder <radhermit@gentoo.org>
+  +automatictexplugin-9.6.ebuild:
+  Version bump.
+
+*automatictexplugin-9.5 (30 May 2011)
+
+  30 May 2011; Tim Harder <radhermit@gentoo.org>
+  -automatictexplugin-9.3.5.ebuild, -automatictexplugin-9.4.3.ebuild,
+  +automatictexplugin-9.5.ebuild:
+  Version bump and remove old. Update dependencies.
+
+*automatictexplugin-9.4.3 (13 May 2011)
+
+  13 May 2011; Tim Harder <radhermit@gentoo.org>
+  +automatictexplugin-9.4.3.ebuild:
+  Version bump.
+
+*automatictexplugin-9.3.5 (29 Apr 2011)
+
+  29 Apr 2011; Tim Harder <radhermit@gentoo.org>
+  +automatictexplugin-9.3.5.ebuild, +metadata.xml:
+  Initial import.

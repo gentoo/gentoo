@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=sys-libs/ncurses[unicode?]
+DESCRIPTION=Dynamic virtual terminal manager
+EAPI=5
+HOMEPAGE=http://www.brain-dump.org/projects/dvtm/
+IUSE=unicode savedconfig
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=MIT
+RDEPEND=sys-libs/ncurses[unicode?]
+SLOT=0
+SRC_URI=http://www.brain-dump.org/projects/dvtm/dvtm-0.14.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	portability	a45c088f246ef5091e029f6285d7ce42	savedconfig	5313100f525c41f6c72c6e04edeb4f65	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=236810fb76d320c1dbc6f486d20c3e11

@@ -1,0 +1,44 @@
+Index: minitar-0.5.3/lib/archive/tar/minitar.rb
+===================================================================
+--- minitar-0.5.3.orig/lib/archive/tar/minitar.rb
++++ minitar-0.5.3/lib/archive/tar/minitar.rb
+@@ -486,7 +486,11 @@ module Archive::Tar::Minitar
+         @devminor = header.devminor
+         @prefix   = header.prefix
+         @read     = 0
+-        @orig_pos = @io.pos
++        begin
++          @orig_pos = @io.pos
++        rescue Errno::ESPIPE
++          @orig_pos = 0
++        end
+       end
+ 
+         # Reads +len+ bytes (or all remaining data) from the entry. Returns
+@@ -585,7 +589,11 @@ module Archive::Tar::Minitar
+       # Creates and returns a new Reader object.
+     def initialize(anIO)
+       @io     = anIO
+-      @init_pos = anIO.pos
++      begin
++        @init_pos = @io.pos
++      rescue Errno::ESPIPE
++        @init_pos = 0
++      end
+     end
+ 
+       # Iterates through each entry in the data stream.
+@@ -621,10 +629,10 @@ module Archive::Tar::Minitar
+ 
+         skip = (512 - (size % 512)) % 512
+ 
+-        if @io.respond_to?(:seek)
+-            # avoid reading...
++        begin
++          # avoid reading...
+           @io.seek(size - entry.bytes_read, IO::SEEK_CUR)
+-        else
++        rescue Errno::ESPIPE, NoMethodError
+           pending = size - entry.bytes_read
+           while pending > 0
+             bread = @io.read([pending, 4096].min).size

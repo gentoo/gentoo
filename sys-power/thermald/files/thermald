@@ -1,0 +1,19 @@
+#!/sbin/runscript
+
+depend() {
+	need dbus
+	after logger
+}
+
+start() {
+	ebegin "Starting thermald"
+
+	start-stop-daemon --start --quiet --name thermald --exec /usr/sbin/thermald -- --dbus-enable
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping thermald"
+	/usr/bin/dbus-send --system --dest=org.freedesktop.thermald /org/freedesktop/thermald org.freedesktop.thermald.Terminate
+	eend $?
+}

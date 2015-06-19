@@ -1,0 +1,53 @@
+# ChangeLog for media-plugins/vdr-svdrpservice
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-svdrpservice/ChangeLog,v 1.10 2014/08/31 06:24:37 hd_brummy Exp $
+
+  31 Aug 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-svdrpservice-0.0.4.ebuild:
+  cleanup
+
+  02 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-svdrpservice-1.0.0.ebuild:
+  stable amd64 x86; wrt bug 495780
+
+*vdr-svdrpservice-1.0.0 (08 Jun 2013)
+
+  08 Jun 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-svdrpservice-1.0.0.ebuild:
+  bump
+
+  01 May 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-svdrpservice-0.0.4.ebuild:
+  wrong use of vdr-plugin_src_install fixed
+
+  01 May 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-svdrpservice-0.0.3.ebuild, vdr-svdrpservice-0.0.4.ebuild:
+  cleanup; eapi=4; vdr-plugin-2.eclass
+
+  02 Jan 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-svdrpservice-0.0.4.ebuild:
+  eapi=3, fixed description, minor fixes; stable amd64, x86 bug #397089
+
+*vdr-svdrpservice-0.0.4 (06 Nov 2008)
+
+  06 Nov 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-svdrpservice-0.0.2.ebuild, +vdr-svdrpservice-0.0.4.ebuild:
+  version bump; cleanup old version
+
+  30 Oct 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-svdrpservice-0.0.3.ebuild:
+  Marked stable on x86.
+
+*vdr-svdrpservice-0.0.3 (07 Oct 2007)
+
+  07 Oct 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-svdrpservice-0.0.3.ebuild:
+  Version bumped.
+
+*vdr-svdrpservice-0.0.2 (27 Sep 2006)
+
+  27 Sep 2006; Joerg Bornkessel <hd_brummy@gentoo.org> +metadata.xml,
+  +vdr-svdrpservice-0.0.2.ebuild:
+  initial ebuild; thx to Mentox at
+  http://www.vdr-portal.de/board/thread.php?postid=498072
+

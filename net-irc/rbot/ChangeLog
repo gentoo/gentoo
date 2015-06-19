@@ -1,0 +1,283 @@
+# ChangeLog for net-irc/rbot
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/rbot/ChangeLog,v 1.62 2015/04/27 01:31:12 mrueg Exp $
+
+  27 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -rbot-0.9.15_p20131020.ebuild:
+  Remove old.
+
+  10 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  rbot-0.9.15_p20131020-r1.ebuild:
+  Add ~ppc, wrt bug #522056
+
+  05 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  rbot-0.9.15_p20131020-r1.ebuild:
+  Add ~x86, wrt bug #522056
+
+*rbot-0.9.15_p20131020-r1 (25 Jan 2015)
+
+  25 Jan 2015; Manuel Rüger <mrueg@gentoo.org> +rbot-0.9.15_p20131020-r1.ebuild:
+  EAPI bump, add ruby 2.0, 2.1 targets. Drop ~ppc, ~x86 keywords.
+
+  14 Aug 2014; Manuel Rüger <mrueg@gentoo.org> rbot-0.9.15_p20131020.ebuild:
+  Remove ruby18 from USE_RUBY.
+
+  15 Mar 2014; Manuel Rüger <mrueg@gentoo.org> -rbot-0.9.15.ebuild:
+  Remove masked rbot version (ruby18-only).
+
+  18 Jan 2014; Anthony G. Basile <blueness@gentoo.org>
+  rbot-0.9.15_p20131020.ebuild:
+  Keyword ~ppc for bug #488674
+
+*rbot-0.9.15_p20131020 (27 Oct 2013)
+
+  27 Oct 2013; Alex Legler <a3li@gentoo.org> +rbot-0.9.15_p20131020.ebuild,
+  -rbot-9999-r10.ebuild, +files/rbot-rakefile.patch:
+  Add git snapshot fixing bug 488674. Remove 9999-r10, bug 479812.
+
+  20 Aug 2013; Patrick Lauer <patrick@gentoo.org> -rbot-0.9.10-r1.ebuild:
+  QA: Remove version with unsatisfiable dependencies
+
+  12 Jan 2013; Ulrich Müller <ulm@gentoo.org> rbot-0.9.10-r1.ebuild,
+  rbot-0.9.15.ebuild, rbot-9999-r10.ebuild, metadata.xml:
+  Update LICENSE, bug 449170. Remove unused hunspell flag from metadata.
+
+  01 Jun 2012; Zac Medico <zmedico@gentoo.org> rbot-0.9.15.ebuild,
+  rbot-9999-r10.ebuild:
+  inherit user for enewuser
+
+  24 Apr 2012; Tomáš Chvátal <scarabeus@gentoo.org> rbot-0.9.15.ebuild,
+  rbot-9999-r10.ebuild:
+  Use hunspell as default (much better solution than dict-based spellcheck) ->
+  dropping hunspell useflag. Remove ispell as whole as it is way worse than
+  aspell.
+
+  18 Apr 2012; Raúl Porcel <armin76@gentoo.org> rbot-0.9.10-r1.ebuild,
+  rbot-0.9.15.ebuild:
+  Drop sparc keywords
+
+  07 Apr 2012; Markus Meier <maekke@gentoo.org> rbot-0.9.15.ebuild:
+  x86 stable, bug #399581
+
+  21 Sep 2011; Michał Górny <mgorny@gentoo.org> rbot-9999-r10.ebuild:
+  Migrate to git-2.
+
+  10 Apr 2011; Alex Legler <a3li@gentoo.org> rbot-0.9.15.ebuild:
+  Bump locale dependency to fix compile issue reported in bug 330227. Remove
+  debugging output.
+
+  19 Jan 2011; Hans de Graaff <graaff@gentoo.org> -rbot-0.9.14.ebuild:
+  Remove old version.
+
+  06 Aug 2010; Alex Legler <a3li@gentoo.org> rbot-0.9.15.ebuild:
+  Enable Rakefile tracing
+
+  06 Aug 2010; Alex Legler <a3li@gentoo.org> rbot-0.9.10-r1.ebuild,
+  rbot-0.9.14.ebuild, rbot-9999-r10.ebuild:
+  Move virtual/ruby dependency to dev-lang/ruby:1.8
+
+*rbot-0.9.15 (28 Jul 2010)
+
+  28 Jul 2010; Alex Legler <a3li@gentoo.org> +rbot-0.9.15.ebuild,
+  +files/rbot.conf2, +files/rbot.init2:
+  Version bump, closes bug 330125 by Jens Pranaitis. Ebuild now uses the
+  ruby-ng eclass. Adds support for specifying a Ruby interpreter for rbot.
+  Add fi to LINGUAS.
+
+  07 Nov 2009; Alex Legler <a3li@gentoo.org> -rbot-0.9.11_rc2.ebuild,
+  rbot-0.9.14.ebuild, metadata.xml:
+  Taking over maintenance; restrict ruby-gettext dependency to the 1.x
+  versions, bug 292297; remove old version.
+
+*rbot-0.9.14 (22 Oct 2008)
+
+  22 Oct 2008; Diego Pettenò <flameeyes@gentoo.org> +rbot-0.9.14.ebuild:
+  Version bump (after a long time).
+
+  25 Jul 2008; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  rbot-0.9.11_rc2.ebuild:
+  mark ~ppc (bug #230517)
+
+  14 Jul 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -rbot-0.9.11_rc1.ebuild, rbot-0.9.11_rc2.ebuild, rbot-9999-r10.ebuild:
+  Add missing dependency over rake when nls USE flag is enabled. Thanks to
+  Chris Henhawke (bunder) for reporting. Remove rc1 ebuild.
+
+*rbot-0.9.11_rc2 (14 Jul 2008)
+
+  14 Jul 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +rbot-0.9.11_rc2.ebuild, rbot-9999-r10.ebuild:
+  Version bump to rc2, this re-integrates the nls support.
+
+  08 Jul 2008; Javier Villavicencio <the_paya@gentoo.org>
+  rbot-0.9.11_rc1.ebuild:
+  Add ~x86-fbsd keyword, wrt #230517
+
+  07 Jul 2008; Friedrich Oslage <bluebird@gentoo.org>
+  rbot-0.9.11_rc1.ebuild:
+  Re-Add ~sparc keyword, bug #230517
+
+  04 Jul 2008; Christian Faulhammer <opfer@gentoo.org>
+  rbot-0.9.11_rc1.ebuild:
+  keyworded ~arch for x86, bug 230517
+
+*rbot-0.9.11_rc1 (02 Jul 2008)
+
+  02 Jul 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +rbot-0.9.11_rc1.ebuild, rbot-9999-r10.ebuild:
+  Add an ebuild for the first release candidate of the new 0.9.11 rbot. As
+  the new version is long overdue, I'm not masking it for now, but I am
+  dropping all the keywords beside the one where I tested it. Note that this
+  RC does not contain nls support for a problem with packaging. Fixed up the
+  live ebuild so that it can be re-used for the next RC too.
+
+*rbot-9999-r10 (30 Jun 2008)
+
+  30 Jun 2008; Diego Pettenò <flameeyes@gentoo.org> metadata.xml,
+  -rbot-9999-r9.ebuild, +rbot-9999-r10.ebuild:
+  Updated live ebuild. Adds USE flags for toilet (figlet replacement) and
+  hunspell (through ispell-compatibility interface -- use rbot-hunspell if
+  you want full hunspell support). Configure the path to tools in the global
+  configuration file rather than editing the plugins themselves. Set to run
+  /bin/false when the tools are disabled.
+
+*rbot-9999-r9 (23 Jun 2008)
+
+  23 Jun 2008; Diego Pettenò <flameeyes@gentoo.org> -rbot-9999-r8.ebuild,
+  +rbot-9999-r9.ebuild:
+  Install rbot without rubygems, don't build locale files if they are not
+  requested, remove mandatory dep over ruby-gettext at both build and
+  runtime.
+
+  23 Jun 2008; Diego Pettenò <flameeyes@gentoo.org> rbot-9999-r8.ebuild:
+  Add new flags to IUSE.
+
+  23 Jun 2008; Diego Pettenò <flameeyes@gentoo.org> metadata.xml,
+  rbot-9999-r8.ebuild:
+  Add a few more USE flags to enable/disable the plugins that use external
+  commands (and proper dependencies on them).
+
+*rbot-9999-r8 (13 Feb 2008)
+
+  13 Feb 2008; Diego Pettenò <flameeyes@gentoo.org> -rbot-9999-r7.ebuild,
+  +rbot-9999-r8.ebuild:
+  Revision bump, rbot moved to GIT now rather than Subversion. Drop the
+  snapshot USE flag as there is no more a progressive number to be used.
+
+  28 Dec 2007; Diego Pettenò <flameeyes@gentoo.org> rbot-9999-r7.ebuild:
+  Properly disable the time plugin if timezone USE flag is disabled.
+
+*rbot-9999-r7 (27 Dec 2007)
+
+  27 Dec 2007; Diego Pettenò <flameeyes@gentoo.org> metadata.xml,
+  -rbot-9999-r6.ebuild, +rbot-9999-r7.ebuild:
+  Always depend on ruby-gettext when building the gem, so that the data is
+  properly added to the gem. Add a dict USE flag for the dictclient plugin,
+  depending on the new ruby-dict ebuild.
+
+*rbot-9999-r6 (26 Dec 2007)
+
+  26 Dec 2007; Diego Pettenò <flameeyes@gentoo.org> -rbot-9999-r5.ebuild,
+  +rbot-9999-r6.ebuild:
+  Bump revision to add proper support to nls: depend on ruby-gettext when
+  enabled and build the locale data.
+
+*rbot-9999-r5 (17 Dec 2007)
+
+  17 Dec 2007; Diego Pettenò <flameeyes@gentoo.org> metadata.xml,
+  -rbot-9999-r4.ebuild, +rbot-9999-r5.ebuild:
+  Add a new revision with USE flags for shorturl and translator plugins, with
+  their dependencies added.
+
+  23 Nov 2007; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Add documentation about the snapshot, timezone and aspell USE flags.
+
+*rbot-9999-r4 (19 Nov 2007)
+
+  19 Nov 2007; Diego Pettenò <flameeyes@gentoo.org> -rbot-9999-r3.ebuild,
+  +rbot-9999-r4.ebuild:
+  Make the spell USE flag work, add an aspell USE flag and make tzinfo
+  optional by mean of timezone USE flag. Also allow to disable the languages.
+
+  19 Nov 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Take maintainership again, and add the live SVN ebuild I had in my overlay.
+  More development will follow.
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove flameeyes from metadata.xml due to retirement.
+
+  20 Feb 2007; Raúl Porcel <armin76@gentoo.org> -rbot-0.9.7.ebuild,
+  -rbot-0.9.10.ebuild, rbot-0.9.10-r1.ebuild:
+  stable x86, remove old
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> rbot-0.9.7.ebuild,
+  rbot-0.9.10.ebuild, rbot-0.9.10-r1.ebuild:
+  Convert to use elog.
+
+*rbot-0.9.10-r1 (23 Sep 2006)
+
+  23 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> rbot-0.9.10.ebuild,
+  +rbot-0.9.10-r1.ebuild:
+  Add new revision of rbot using the gem now, hopefully fixing bug #134987.
+
+*rbot-0.9.10 (15 Sep 2006)
+
+  15 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> -rbot-0.9.9.ebuild,
+  -rbot-0.9.10_pre20060801.ebuild, +rbot-0.9.10.ebuild:
+  Version bump.
+
+*rbot-0.9.10_pre20060801 (31 Jul 2006)
+
+  31 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> metadata.xml,
+  +rbot-0.9.10_pre20060801.ebuild:
+  Snapshot version from current stable branch.
+
+  27 May 2006; Diego Pettenò <flameeyes@gentoo.org> rbot-0.9.9.ebuild:
+  Add ~x86-fbsd keyword.
+
+*rbot-0.9.9 (02 Jan 2006)
+
+  02 Jan 2006; Sven Wegener <swegener@gentoo.org> +rbot-0.9.9.ebuild:
+  Version bump, bug #117402.
+
+  06 Oct 2005; Caleb Tennis <caleb@gentoo.org> rbot-0.9.7.ebuild:
+  Change dep to ruby 1.8
+
+  17 Sep 2005; Sven Wegener <swegener@gentoo.org> rbot-0.9.7.ebuild:
+  Only install html API documentation with USE=doc
+
+  07 Jul 2005; Sven Wegener <swegener@gentoo.org> -rbot-0.9.6.ebuild:
+  Removed old ebuild.
+
+  03 May 2005; Sven Wegener <swegener@gentoo.org> rbot-0.9.6.ebuild,
+  rbot-0.9.7.ebuild:
+  Adjusted dependencies to not pull in dev-ruby/rexml. Instead we depend (by
+  default) on >=virtual/ruby-1.8 that already includes rexml, but the
+  combination of =virtual/ruby-1.6* with dev-ruby/shim-ruby18 or
+  dev-ruby/rexml is also fine. Closes bug #89164.
+
+  22 Apr 2005; Sven Wegener <swegener@gentoo.org> rbot-0.9.7.ebuild:
+  Marked stable on x86.
+
+  18 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> rbot-0.9.7.ebuild:
+  added ~amd64 to KEYWORDS, fixes #89165
+
+  10 Oct 2004; Jason Wever <weeve@gentoo.org> rbot-0.9.7.ebuild:
+  Added ~sparc keyword.
+
+*rbot-0.9.7 (17 Jul 2004)
+
+  17 Jul 2004; Sven Wegener <swegener@gentoo.org> rbot-0.9.6.ebuild,
+  +rbot-0.9.7.ebuild:
+  Version bump. Marked 0.9.6 stable on x86.
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> rbot-0.9.6.ebuild:
+  Masked rbot-0.9.6.ebuild testing for ppc
+
+  12 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> rbot-0.9.6.ebuild:
+  virtual/ruby fix
+
+*rbot-0.9.6 (05 Oct 2003)
+
+  05 Oct 2003; <chuck@gentoo.org> rbot-0.9.6.ebuild:
+  Added new ebuild by Matsuu Takuto <matsuu@gentoo.org>
+  closes bug #27846.

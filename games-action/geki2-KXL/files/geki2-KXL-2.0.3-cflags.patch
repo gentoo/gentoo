@@ -1,0 +1,9 @@
+--- src/Makefile.am.old	2012-11-10 21:50:02.159117541 +0100
++++ src/Makefile.am	2012-11-10 21:50:20.658715770 +0100
+@@ -4,5 +4,5 @@
+ 	        boss.h extern.h ranking.h your.h game.h\
+ 	        geki2.h load.h opening.h my.h misc.h
+ 
+-CFLAGS = @X_CFLAGS@ @KXL_CFLAGS@
++AM_CFLAGS = @X_CFLAGS@ @KXL_CFLAGS@
+ LIBS = @X_LIBS@ -lX11 @KXL_LIBS@ -lKXL

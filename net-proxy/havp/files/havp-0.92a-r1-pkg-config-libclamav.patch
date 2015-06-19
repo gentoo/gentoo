@@ -1,0 +1,66 @@
+--- a/configure.in
++++ b/configure.in
+@@ -5,6 +5,7 @@
+ unset CDPATH
+ 
+ AC_PROG_CXX
++PKG_PROG_PKG_CONFIG
+ 
+ AC_PREFIX_DEFAULT(/usr/local)
+ 
+@@ -83,48 +84,15 @@
+ 	AC_DEFINE(SSLTUNNEL)
+ fi
+ 
+-AC_MSG_CHECKING(for ClamAV scanner library)
+-
+ if test "$enable_clamav" = "yes"
+ then
+-	clamprefix="`clamav-config --prefix 2>/dev/null`"
+-	clamversion="`clamav-config --version 2>/dev/null`"
+-
+-	if test "x$clamprefix" = "x"
+-	then
+-		AC_MSG_RESULT([clamav-config not found])
+-
+-		echo ""
+-		echo " Error finding ClamAV installation!"
+-		echo " Add ClamAV binaries path to PATH and run configure again."
+-		echo ""
+-		echo " To disable ClamAV library support, use --disable-clamav."
+-		echo ""
+-
+-		exit 1
+-	fi
+-
+-	for cl in `clamav-config --cflags 2>/dev/null`; do
+-		if test "x`echo $cl | perl -ne 'print if (/^-I/)' 2>/dev/null`" != "x"
+-		then
+-			CFLAGS="$CFLAGS $cl"
+-		fi
+-	done
+-
+-	for cl in `clamav-config --libs 2>/dev/null`; do
+-		if test "x`echo $cl | perl -ne 'print if (/(^-L|thread|c_r)/)' 2>/dev/null`" != "x"
+-		then
+-			LDFLAGS="$LDFLAGS $cl"
+-		fi
+-	done
+-	LDFLAGS="$LDFLAGS -lclamav"
+-
+-	SCANNEROBJECTS="clamlibscanner.o"
+-	AC_DEFINE(USECLAMLIB)
+-
+-	AC_MSG_RESULT([found $clamversion in $clamprefix])
+-else
+-	AC_MSG_RESULT([disabled :-(])
++	PKG_CHECK_MODULES(clamav, libclamav,
++		[CFLAGS="$clamav_CFLAGS $CFLAGS"
++		 LDFLAGS="$clamav_LIBS $LDFLAGS"
++
++		 SCANNEROBJECTS="clamlibscanner.o"
++		 AC_DEFINE(USECLAMLIB)
++		])
+ fi
+ 
+ AC_MSG_CHECKING(for Trend Micro scanner)

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: metapackage for all extra syntax packages
+HOMEPAGE=http://www.vim.org/
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=metapackage
+RDEPEND=app-vim/bnf-syntax app-vim/brainfuck-syntax app-vim/cfengine-syntax app-vim/dhcpd-syntax app-vim/ebnf-syntax app-vim/eruby-syntax app-vim/fluxbox-syntax app-vim/gentoo-syntax app-vim/gtk-syntax app-vim/help-extra-syntax app-vim/nagios-syntax app-vim/ntp-syntax app-vim/pam-syntax app-vim/pgn-syntax app-vim/selinux-syntax app-vim/wikipedia-syntax app-vim/xquery-syntax app-vim/xsl-syntax || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+_eclasses_=vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=41f68ce086d46b936436ff1b09c16ca1

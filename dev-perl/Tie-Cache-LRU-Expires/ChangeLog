@@ -1,0 +1,43 @@
+# ChangeLog for dev-perl/Tie-Cache-LRU-Expires
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Tie-Cache-LRU-Expires/ChangeLog,v 1.8 2014/08/26 17:58:13 axs Exp $
+
+*Tie-Cache-LRU-Expires-0.550.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Tie-Cache-LRU-Expires-0.550.0-r1.ebuild,
+  -Tie-Cache-LRU-Expires-0.550.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  29 Jul 2012; Torsten Veller <tove@gentoo.org>
+  -Tie-Cache-LRU-Expires-0.540.0.ebuild:
+  Cleanup
+
+*Tie-Cache-LRU-Expires-0.550.0 (24 Jul 2012)
+
+  24 Jul 2012; Torsten Veller <tove@gentoo.org>
+  +Tie-Cache-LRU-Expires-0.550.0.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -Tie-Cache-LRU-Expires-0.54.ebuild:
+  Cleanup
+
+*Tie-Cache-LRU-Expires-0.540.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Tie-Cache-LRU-Expires-0.540.0.ebuild:
+  Change version scheme
+
+  24 Apr 2011; Fabian Groffen <grobian@gentoo.org>
+  Tie-Cache-LRU-Expires-0.54.ebuild:
+  Marked ~x86-solaris, bug #296509
+
+*Tie-Cache-LRU-Expires-0.54 (30 Aug 2009)
+
+  30 Aug 2009; Torsten Veller <tove@gentoo.org>
+  +Tie-Cache-LRU-Expires-0.54.ebuild, +metadata.xml:
+  Initial commit (#277335)

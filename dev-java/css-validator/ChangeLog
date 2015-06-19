@@ -1,0 +1,14 @@
+# ChangeLog for dev-java/css-validator
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/css-validator/ChangeLog,v 1.2 2012/12/16 14:11:50 pacho Exp $
+
+  16 Dec 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due retirement, #95685
+
+*css-validator-20120222 (23 Feb 2012)
+
+  23 Feb 2012; Krzysztof Pawlik <nelchael@gentoo.org>
+  +css-validator-20120222.ebuild,
+  +files/css-validator-20120222-build.xml.patch, +metadata.xml:
+  Initial version of htmlparser: Check Cascading Style Sheets (CSS) and (X)HTML
+  documents with style sheets.

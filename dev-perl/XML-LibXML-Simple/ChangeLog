@@ -1,0 +1,36 @@
+# ChangeLog for dev-perl/XML-LibXML-Simple
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-LibXML-Simple/ChangeLog,v 1.6 2014/10/19 20:35:10 zlogene Exp $
+
+  19 Oct 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -XML-LibXML-Simple-0.920.0.ebuild:
+  Drop old.
+
+*XML-LibXML-Simple-0.930.0 (17 Mar 2013)
+
+  17 Mar 2013; Torsten Veller <tove@gentoo.org>
+  +XML-LibXML-Simple-0.930.0.ebuild:
+  Version bump
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org>
+  -XML-LibXML-Simple-0.910.0.ebuild:
+  Cleanup
+
+*XML-LibXML-Simple-0.920.0 (25 Dec 2012)
+
+  25 Dec 2012; Torsten Veller <tove@gentoo.org>
+  +XML-LibXML-Simple-0.920.0.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  03 May 2012; Torsten Veller <tove@gentoo.org>
+  +XML-LibXML-Simple-0.910.0.ebuild, +metadata.xml:
+  Import from ::perl-experimental for biber (#386817)
+
+*XML-LibXML-Simple-0.910.0 (17 Oct 2011)
+
+  17 Oct 2011; Torsten Veller <tove@gentoo.org>
+  +XML-LibXML-Simple-0.910.0.ebuild, +metadata.xml:
+  Initial commit (#386817). Thanks to Christopher Schwan

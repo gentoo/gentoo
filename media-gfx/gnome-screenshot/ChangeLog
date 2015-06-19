@@ -1,0 +1,111 @@
+# ChangeLog for media-gfx/gnome-screenshot
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gnome-screenshot/ChangeLog,v 1.24 2015/06/09 16:30:50 eva Exp $
+
+*gnome-screenshot-3.16.2 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-screenshot-3.12.0.ebuild, +gnome-screenshot-3.16.2.ebuild:
+  Version bump for Gnome 3.16. Clean up old revision.
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnome-screenshot-3.14.0-r1.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnome-screenshot-3.14.0-r1.ebuild:
+  amd64 stable, bug 534012
+
+*gnome-screenshot-3.14.0-r1 (03 Feb 2015)
+
+  03 Feb 2015; Pacho Ramos <pacho@gentoo.org>
+  +files/gnome-screenshot-3.14.0-use-dash.patch,
+  +gnome-screenshot-3.14.0-r1.ebuild, -gnome-screenshot-3.14.0.ebuild:
+  Use dash for time format separator (#531330 by Kristian Fiskerstrand), drop
+  old
+
+*gnome-screenshot-3.14.0 (23 Dec 2014)
+
+  23 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-screenshot-3.10.1.ebuild, +gnome-screenshot-3.14.0.ebuild:
+  Version bump for Gnome 3.14. Clean up old revision.
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gnome-screenshot-3.12.0.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gnome-screenshot-3.12.0.ebuild:
+  Stable for amd64, wrt bug #512912
+
+*gnome-screenshot-3.12.0 (27 Apr 2014)
+
+  27 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-screenshot-3.12.0.ebuild:
+  Version bump for Gnome 3.12.
+
+  27 Apr 2014; Pacho Ramos <pacho@gentoo.org> -gnome-screenshot-3.8.3.ebuild:
+  drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gnome-screenshot-3.10.1.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gnome-screenshot-3.10.1.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-screenshot-3.10.1.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-screenshot-3.10.1.ebuild:
+  arch stable, bug 888
+
+*gnome-screenshot-3.10.1 (24 Dec 2013)
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org> +gnome-screenshot-3.10.1.ebuild,
+  -gnome-screenshot-3.6.1.ebuild, -gnome-screenshot-3.8.2.ebuild:
+  Version bump for Gnome 3.10
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> gnome-screenshot-3.8.3.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> gnome-screenshot-3.8.3.ebuild:
+  amd64 stable, bug #478252
+
+*gnome-screenshot-3.8.3 (11 Jul 2013)
+
+  11 Jul 2013; Pacho Ramos <pacho@gentoo.org> +gnome-screenshot-3.8.3.ebuild,
+  -gnome-screenshot-3.8.1.ebuild:
+  Version bump, drop old
+
+*gnome-screenshot-3.8.2 (14 May 2013)
+
+  14 May 2013; Pacho Ramos <pacho@gentoo.org> +gnome-screenshot-3.8.2.ebuild,
+  -gnome-screenshot-3.8.0.ebuild:
+  Version bump, drop old
+
+*gnome-screenshot-3.8.1 (18 Apr 2013)
+
+  18 Apr 2013; Pacho Ramos <pacho@gentoo.org> +gnome-screenshot-3.8.1.ebuild:
+  Version bump
+
+  29 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-screenshot-3.4.1.ebuild:
+  Clean up old revision.
+
+*gnome-screenshot-3.8.0 (28 Mar 2013)
+
+  28 Mar 2013; Pacho Ramos <pacho@gentoo.org> +gnome-screenshot-3.8.0.ebuild:
+  Version bump for Gnome 3.8
+
+*gnome-screenshot-3.6.1 (23 Dec 2012)
+
+  23 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-screenshot-3.4.1.ebuild, +gnome-screenshot-3.6.1.ebuild:
+  Version bump for Gnome 3.6. Bump to EAPI=5, fix license.
+
+  06 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gnome-screenshot-3.4.1.ebuild:
+  Add postinst message explaining that screenshots are now saved in ~/Pictures
+
+*gnome-screenshot-3.4.1 (05 May 2012)
+
+  05 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +gnome-screenshot-3.4.1.ebuild, +metadata.xml:
+  New separate gnome screenshot package, formerly part of
+  gnome-extra/gnome-utils.

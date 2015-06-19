@@ -1,0 +1,42 @@
+# ChangeLog for dev-lang/niecza
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/niecza/ChangeLog,v 1.8 2015/06/06 18:51:44 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> niecza-19.ebuild,
+  niecza-21.ebuild, niecza-22.ebuild, niecza-24.ebuild, niecza-9999.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*niecza-24 (05 Dec 2012)
+
+  05 Dec 2012; Patrick Lauer <patrick@gentoo.org> +files/fix-bootstrap-24.patch,
+  +niecza-24.ebuild, niecza-22.ebuild:
+  Bump
+
+*niecza-22 (05 Oct 2012)
+
+  05 Oct 2012; Patrick Lauer <patrick@gentoo.org> +files/fix-bootstrap-22.patch,
+  +niecza-22.ebuild:
+  Bump
+
+*niecza-21 (28 Aug 2012)
+
+  28 Aug 2012; Patrick Lauer <patrick@gentoo.org> +files/fix-bootstrap-21.patch,
+  +files/fix-bootstrap-9999.patch, +niecza-21.ebuild, niecza-9999.ebuild:
+  Bump
+
+*niecza-9999 (22 Aug 2012)
+
+  22 Aug 2012; Patrick Lauer <patrick@gentoo.org> +niecza-9999.ebuild:
+  Add live ebuild
+
+  22 Aug 2012; Patrick Lauer <patrick@gentoo.org> niecza-19.ebuild:
+  Make repoman happy
+
+*niecza-19 (22 Aug 2012)
+
+  22 Aug 2012; Patrick Lauer <patrick@gentoo.org> +files/fix-bootstrap.patch,
+  +metadata.xml, +niecza-19.ebuild:
+  Initial import, ebuilds by me

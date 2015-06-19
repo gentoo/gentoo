@@ -1,0 +1,38 @@
+# ChangeLog for dev-ml/camlp4
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/camlp4/ChangeLog,v 1.8 2015/06/06 19:43:13 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  17 Mar 2015; Alexis Ballier <aballier@gentoo.org> -camlp4-4.02.1_p2.ebuild:
+  remove old
+
+*camlp4-4.02.1_p3 (05 Mar 2015)
+
+  05 Mar 2015; Alexis Ballier <aballier@gentoo.org> +camlp4-4.02.1_p3.ebuild:
+  version bump
+
+  05 Mar 2015; Alexis Ballier <aballier@gentoo.org> camlp4-4.02.1_p2.ebuild:
+  block old ocaml versions
+
+  05 Mar 2015; Alexis Ballier <aballier@gentoo.org>
+  -camlp4-4.02.0_p1-r1.ebuild:
+  remove old
+
+*camlp4-4.02.1_p2 (30 Jan 2015)
+
+  30 Jan 2015; Alexis Ballier <aballier@gentoo.org> +camlp4-4.02.1_p2.ebuild:
+  version bump, by hfk22, bug #538206
+
+*camlp4-4.02.0_p1-r1 (29 Nov 2014)
+
+  29 Nov 2014; Alexis Ballier <aballier@gentoo.org> -camlp4-4.02.0_p1.ebuild,
+  +camlp4-4.02.0_p1-r1.ebuild:
+  install properly so that the lib is found
+
+*camlp4-4.02.0_p1 (28 Nov 2014)
+
+  28 Nov 2014; Alexis Ballier <aballier@gentoo.org> +camlp4-4.02.0_p1.ebuild,
+  +metadata.xml:
+  initial import, split out of dev-lang/ocaml

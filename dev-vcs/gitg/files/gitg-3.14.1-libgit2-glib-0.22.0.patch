@@ -1,0 +1,123 @@
+ gitg/gitg-author-details-dialog.vala | 1 -
+ gitg/gitg-clone-dialog.vala          | 5 +----
+ libgitg/gitg-commit.vala             | 4 ++--
+ libgitg/gitg-lanes.vala              | 4 ++--
+ tests/libgitg/test-commit.vala       | 2 +-
+ 5 files changed, 6 insertions(+), 10 deletions(-)
+
+diff --git a/gitg/gitg-author-details-dialog.vala b/gitg/gitg-author-details-dialog.vala
+index 64cdb65..59f66dd 100644
+--- a/gitg/gitg-author-details-dialog.vala
++++ b/gitg/gitg-author-details-dialog.vala
+@@ -81,7 +81,6 @@ namespace Gitg
+ 
+ 			try
+ 			{
+-				d_config.refresh();
+ 				author_name = d_config.get_string("user.name");
+ 			}
+ 			catch {}
+diff --git a/gitg/gitg-clone-dialog.vala b/gitg/gitg-clone-dialog.vala
+index 94eb610..60390f9 100644
+--- a/gitg/gitg-clone-dialog.vala
++++ b/gitg/gitg-clone-dialog.vala
+@@ -80,9 +80,8 @@ public class CloneDialog : Gtk.Dialog
+ 		d_entry_url.changed.connect((e) => {
+ 			string ?tooltip_text = null;
+ 			string ?icon_name = null;
+-			bool url_supported = Ggit.Remote.is_supported_url(d_entry_url.get_text());
+ 
+-			if (!url_supported && (d_entry_url.text != ""))
++			if (d_entry_url.text != "")
+ 			{
+ 				icon_name = "dialog-warning-symbolic";
+ 				tooltip_text = _("The URL introduced is not supported");
+@@ -90,8 +89,6 @@ public class CloneDialog : Gtk.Dialog
+ 
+ 			d_entry_url.set_icon_from_icon_name(Gtk.EntryIconPosition.SECONDARY, icon_name);
+ 			d_entry_url.set_icon_tooltip_text(Gtk.EntryIconPosition.SECONDARY, tooltip_text);
+-
+-			set_response_sensitive(Gtk.ResponseType.OK, url_supported);
+ 		});
+ 	}
+ }
+diff --git a/libgitg/gitg-commit.vala b/libgitg/gitg-commit.vala
+index 2aba60d..2ec5a4c 100644
+--- a/libgitg/gitg-commit.vala
++++ b/libgitg/gitg-commit.vala
+@@ -122,7 +122,7 @@ public class Commit : Ggit.Commit
+ 			var parents = get_parents();
+ 
+ 			// Create a new diff from the parents to the commit tree
+-			if (parents.size() == 0)
++			if (parents.size == 0)
+ 			{
+ 				diff = new Ggit.Diff.tree_to_tree(repo,
+ 				                                  null,
+@@ -131,7 +131,7 @@ public class Commit : Ggit.Commit
+ 			}
+ 			else
+ 			{
+-				for (var i = 0; i < parents.size(); ++i)
++				for (var i = 0; i < parents.size; ++i)
+ 				{
+ 					var parent = parents.get(0);
+ 
+diff --git a/libgitg/gitg-lanes.vala b/libgitg/gitg-lanes.vala
+index 06886dc..f2d99f5 100644
+--- a/libgitg/gitg-lanes.vala
++++ b/libgitg/gitg-lanes.vala
+@@ -158,7 +158,7 @@ public class Lanes : Object
+ 		init_next_layer();
+ 		var mylane = d_lanes[pos];
+ 
+-		for (uint i = 0; i < parents.size(); ++i)
++		for (uint i = 0; i < parents.size; ++i)
+ 		{
+ 			int lnpos;
+ 			var poid = parents.get_id(i);
+@@ -439,7 +439,7 @@ public class Lanes : Object
+ 
+ 		var parents = commit.get_parents();
+ 
+-		for (uint i = 0; i < parents.size(); ++i)
++		for (uint i = 0; i < parents.size; ++i)
+ 		{
+ 			expand_lane_from_oid(parents.get_id(i));
+ 		}
+diff --git a/tests/libgitg/test-commit.vala b/tests/libgitg/test-commit.vala
+index fd0c137..65c0473 100644
+--- a/tests/libgitg/test-commit.vala
++++ b/tests/libgitg/test-commit.vala
+@@ -252,7 +252,7 @@ class Gitg.Test.Commit : Gitg.Test.Repository
+ 			assert_streq(d_repository.get_head().get_target().to_string(),
+ 			             oid.to_string());
+ 
+-			assert_uinteq(commit.get_parents().size(), 0);
++			assert_uinteq(commit.get_parents().size, 0);
+ 
+ 			var reflog = d_repository.lookup_reference("HEAD").get_log();
+ 			var entry = reflog.get_entry_from_index(0);
+ libgitg/gitg-repository-list-box.vala | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/libgitg/gitg-repository-list-box.vala b/libgitg/gitg-repository-list-box.vala
+index 8dd5b33..393b29e 100644
+--- a/libgitg/gitg-repository-list-box.vala
++++ b/libgitg/gitg-repository-list-box.vala
+@@ -494,14 +494,13 @@ namespace Gitg
+ 				d_row = row;
+ 			}
+ 
+-			protected override bool transfer_progress(Ggit.TransferProgress stats) throws Error
++			protected override void transfer_progress(Ggit.TransferProgress stats)
+ 			{
+ 				var recvobj = stats.get_received_objects();
+ 				var indxobj = stats.get_indexed_objects();
+ 				var totaobj = stats.get_total_objects();
+ 
+ 				d_row.fraction = (recvobj + indxobj) / (double)(2 * totaobj);
+-				return true;
+ 			}
+ 		}
+ 

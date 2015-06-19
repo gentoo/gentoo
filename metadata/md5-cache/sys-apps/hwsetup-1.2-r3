@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=sys-apps/pciutils[zlib?] zlib? ( sys-libs/zlib ) sys-libs/libkudzu
+DESCRIPTION=Hardware setup program from Knoppix - used only on LiveCD
+EAPI=5
+HOMEPAGE=http://www.knopper.net/
+IUSE=zlib
+KEYWORDS=alpha amd64 hppa ia64 -mips ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=sys-apps/pciutils[zlib?] zlib? ( sys-libs/zlib ) sys-apps/hwdata-gentoo
+SLOT=0
+SRC_URI=http://debian-knoppix.alioth.debian.org/sources/hwsetup_1.2-7.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9dca05b116e8bee3ee3978571259f968

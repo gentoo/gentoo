@@ -1,0 +1,68 @@
+# ChangeLog for app-dicts/dictd-wn
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/dictd-wn/ChangeLog,v 1.20 2014/01/05 11:13:15 pacho Exp $
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  17 Oct 2009; Mark Loeser <halcy0n@gentoo.org> dictd-wn-2.0.ebuild:
+  QA fixes; unquoted variables, redundant cd ${S}
+
+  06 Aug 2007; Wulf C. Krueger <philantrop@gentoo.org> dictd-wn-2.0.ebuild:
+  Removed deprecated gnuconfig_update as econf works fine now. Fixes bug 160176.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  19 May 2006; Markus Rothe <corsair@gentoo.org> dictd-wn-2.0.ebuild:
+  Added ~ppc64; bug #132804
+
+  12 May 2006; Anders Rune Jensen <arj@gentoo.org> dictd-wn-2.0.ebuild:
+  Added ~amd64. Fixes bug #132804
+	
+  07 Apr 2005; Yuta SATOH <nigoro@gentoo.org> dictd-wn-1.5-r1.ebuild,
+  dictd-wn-2.0.ebuild:
+  Stable on ppc64
+
+  27 Feb 2005; Yuta SATOH <nigoro@gentoo.org> dictd-wn-1.5-r1.ebuild:
+  added ~ppc64
+
+  30 Jul 2004; Anders Rune Jensen <arj@gentoo.org> metadata.xml:
+  QA - IUSE fix and {add missing,correct} metatata.xml.
+
+  25 Jul 2004; Alastair Tse <liquidx@gentoo.org> dictd-wn-2.0.ebuild:
+  removing amd64 keyword temporarily because of problems with configure script.
+
+*dictd-wn-2.0 (24 Jul 2004)
+
+  24 Jul 2004; Alastair Tse <liquidx@gentoo.org> +dictd-wn-2.0.ebuild:
+  version bump (#54439)
+
+  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  dictd-wn-1.5-r1.ebuild:
+  QA - IUSE fix
+
+  09 Feb 2004; Dylan Carlson <absinthe@gentoo.org> dictd-wn-1.5-r1.ebuild:
+  added amd64 keyword.
+
+  19 Jan 2003; Olivier Reisch <doctomoe@gentoo.org> :
+  Added ~ppc keyword
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*dictd-wn-1.5-r1 (1 Feb 2002)
+
+  03 Dec 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
+  Moved to app-dicts
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> dictd-wn-1.5-r1.ebuild :
+  Added DESCRIPTION.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

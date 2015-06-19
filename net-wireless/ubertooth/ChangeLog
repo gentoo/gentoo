@@ -1,0 +1,132 @@
+# ChangeLog for net-wireless/ubertooth
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/ubertooth/ChangeLog,v 1.30 2015/05/03 19:10:49 zerochaos Exp $
+
+  03 May 2015; Rick Farina <zerochaos@gentoo.org> ubertooth-9999.ebuild:
+  update to distutils-r1
+
+  03 May 2015; Rick Farina <zerochaos@gentoo.org> ubertooth-9999.ebuild:
+  changed from python dfu to C dfu implementation
+
+  19 Mar 2015; Rick Farina <zerochaos@gentoo.org> ubertooth-9999.ebuild:
+  update pcap dep properly.  upstream should add some better flags for
+  controlling it soon but this mostly works
+
+  18 Mar 2015; Rick Farina <zerochaos@gentoo.org> ubertooth-9999.ebuild:
+  update live ebuild for new udev installation method
+
+  26 Aug 2014; Rick Farina <zerochaos@gentoo.org> ubertooth-2014.04.1-r1.ebuild,
+  ubertooth-9999.ebuild:
+  fix typo/stupidity in firmware fix
+
+*ubertooth-2014.04.1-r1 (25 Aug 2014)
+
+  25 Aug 2014; Rick Farina <zerochaos@gentoo.org>
+  +ubertooth-2014.04.1-r1.ebuild, -ubertooth-2012.10.1-r1.ebuild,
+  -ubertooth-2012.10.1.ebuild, -ubertooth-2014.04.1.ebuild, metadata.xml,
+  ubertooth-9999.ebuild:
+  move firmware to appropriate location and ship the dfu image instead of the
+  bin
+
+  08 Apr 2014; Rick Farina <zerochaos@gentoo.org> metadata.xml,
+  ubertooth-9999.ebuild:
+  make pcap optional and fix a few issues with live ebuild
+
+  08 Apr 2014; Rick Farina <zerochaos@gentoo.org> ubertooth-2014.04.1.ebuild,
+  ubertooth-9999.ebuild:
+  add := to bluez dep
+
+  08 Apr 2014; Rick Farina <zerochaos@gentoo.org> ubertooth-2014.04.1.ebuild,
+  ubertooth-9999.ebuild:
+  add := to libpcap dep
+
+*ubertooth-2014.04.1 (08 Apr 2014)
+
+  08 Apr 2014; Rick Farina <zerochaos@gentoo.org> +ubertooth-2014.04.1.ebuild,
+  metadata.xml, ubertooth-9999.ebuild:
+  new release from upstream and live fixes
+
+*ubertooth-2012.10.1-r1 (27 Apr 2013)
+
+  27 Apr 2013; Rick Farina <zerochaos@gentoo.org>
+  +ubertooth-2012.10.1-r1.ebuild:
+  adjust subslot and subslot deps properly
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> ubertooth-0.0_p534.ebuild,
+  ubertooth-2012.10.1.ebuild, ubertooth-9999.ebuild:
+  Move Qt dependencies to the new category
+
+  05 Feb 2013; Rick Farina <zerochaos@gentoo.org> ubertooth-9999.ebuild:
+  fixing EGIT_PROJECT, thanks to radhermit for pointing out the issue
+
+  05 Dec 2012; Rick Farina <zerochaos@gentoo.org> ubertooth-9999.ebuild:
+  upstream upgraded their sourceforge account to new style which changed repo
+  location
+
+  17 Nov 2012; Rick Farina <zerochaos@gentoo.org> ubertooth-2012.10.1.ebuild,
+  ubertooth-9999.ebuild:
+  fix USE=-python compilation thanks to help from #gentoo-python
+
+  16 Oct 2012; Rick Farina <zerochaos@gentoo.org> ubertooth-9999.ebuild:
+  add ubertooth-scan following development
+
+  09 Oct 2012; Rick Farina <zerochaos@gentoo.org> ubertooth-2012.10.1.ebuild,
+  ubertooth-9999.ebuild:
+  readd arm keyword
+
+  08 Oct 2012; Rick Farina <zerochaos@gentoo.org> ubertooth-2012.10.1.ebuild,
+  ubertooth-9999.ebuild:
+  fix mistake during distutils conversion
+
+*ubertooth-2012.10.1 (08 Oct 2012)
+
+  08 Oct 2012; Rick Farina <zerochaos@gentoo.org> +ubertooth-2012.10.1.ebuild,
+  ubertooth-9999.ebuild:
+  bump
+
+  13 Sep 2012; Rick Farina <zerochaos@gentoo.org> ubertooth-9999.ebuild:
+  replace live firmware building with pass for now
+
+  31 Aug 2012; Rick Farina <zerochaos@gentoo.org> metadata.xml,
+  ubertooth-9999.ebuild:
+  added upstream support for clock following an existing local bluetooth
+  connection
+
+  26 Aug 2012; Rick Farina <zerochaos@gentoo.org> ubertooth-9999.ebuild:
+  svn->git plus various python build related fixes (thanks to Arfrever for being
+  insanely patient)
+
+  12 Aug 2012; Samuli Suominen <ssuominen@gentoo.org>
+  ubertooth-0.0_p534.ebuild, ubertooth-9999.ebuild:
+  Inherit multilib.eclass for function get_libdir as noted by repoman.
+
+  12 Aug 2012; Samuli Suominen <ssuominen@gentoo.org>
+  ubertooth-0.0_p534.ebuild, ubertooth-9999.ebuild:
+  Fix bug 428402 again for USE flag "dfu"
+
+  29 Jul 2012; Rick Farina <zerochaos@gentoo.org> ubertooth-0.0_p534.ebuild,
+  ubertooth-9999.ebuild:
+  resolve DESCRIPTION issue wrt bug #428304
+
+  28 Jul 2012; Rick Farina <zerochaos@gentoo.org> ubertooth-0.0_p534.ebuild,
+  ubertooth-9999.ebuild:
+  adjust libusb dep to fix bug #428402
+
+  27 Jul 2012; Rick Farina <zerochaos@gentoo.org> ubertooth-0.0_p534.ebuild,
+  ubertooth-9999.ebuild:
+  fix missing DEPEND thanks to radhermit for noticing how dumb I am
+
+  27 Jul 2012; Rick Farina <zerochaos@gentoo.org> ubertooth-9999.ebuild:
+  cleanup use flags a little in prep for re-adding arm keyword
+
+  27 Jul 2012; Michael Palimaka <kensington@gentoo.org>
+  ubertooth-0.0_p534.ebuild, ubertooth-9999.ebuild:
+  Add missing slot dependencies on Qt.
+
+*ubertooth-9999 (27 Jul 2012)
+*ubertooth-0.0_p534 (27 Jul 2012)
+
+  27 Jul 2012; Rick Farina <zerochaos@gentoo.org> +files/40-ubertooth.rules,
+  +metadata.xml, +ubertooth-0.0_p534.ebuild, +ubertooth-9999.ebuild:
+  initial commit of ubertooth, a few comments left in the ebuild but mostly
+  functional for all

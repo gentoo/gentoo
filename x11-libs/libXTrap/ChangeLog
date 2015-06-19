@@ -1,0 +1,168 @@
+# ChangeLog for x11-libs/libXTrap
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXTrap/ChangeLog,v 1.45 2013/10/08 05:08:35 ago Exp $
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXTrap-1.0.1.ebuild:
+  Stable for x86, wrt bug #475480
+
+  07 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXTrap-1.0.1.ebuild:
+  Stable for sparc, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXTrap-1.0.1.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  05 Oct 2013; Markus Meier <maekke@gentoo.org> libXTrap-1.0.1.ebuild:
+  arm stable, bug #475480
+
+  05 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXTrap-1.0.1.ebuild:
+  Stable for alpha, wrt bug #475480
+
+  04 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXTrap-1.0.1.ebuild:
+  Stable for ppc64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXTrap-1.0.1.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  02 Oct 2013; Jeroen Roovers <jer@gentoo.org> libXTrap-1.0.1.ebuild:
+  Stable for HPPA (bug #475480).
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org> libXTrap-1.0.1.ebuild:
+  Stable for amd64, wrt bug #475480
+
+  20 Aug 2013; Julian Ospald <hasufell@gentoo.org> libXTrap-1.0.0.ebuild,
+  libXTrap-1.0.0-r1.ebuild, libXTrap-1.0.1.ebuild:
+  fix dependencies
+
+*libXTrap-1.0.1 (04 Jan 2013)
+
+  04 Jan 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libXTrap-1.0.1.ebuild:
+  Version bump.
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> libXTrap-1.0.0-r1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #419473
+
+  12 Jul 2012; Brent Baude <ranger@gentoo.org> libXTrap-1.0.0-r1.ebuild:
+  Marking libXTrap-1.0.0-r1 ppc stable for bug 419473
+
+  11 Jul 2012; Brent Baude <ranger@gentoo.org> libXTrap-1.0.0-r1.ebuild:
+  Marking libXTrap-1.0.0-r1 ppc64 stable for bug 419473
+
+  29 Jun 2012; Markus Meier <maekke@gentoo.org> libXTrap-1.0.0-r1.ebuild:
+  arm stable, bug #419473
+
+  28 Jun 2012; Jeroen Roovers <jer@gentoo.org> libXTrap-1.0.0-r1.ebuild:
+  Stable for HPPA (bug #419473).
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libXTrap-1.0.0-r1.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libXTrap-1.0.0-r1.ebuild:
+  Stable for amd64, wrt bug #419473
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> libXTrap-1.0.0-r1.ebuild:
+  keyword ~amd64-fbsd
+
+*libXTrap-1.0.0-r1 (14 Apr 2012)
+
+  14 Apr 2012; Michał Górny <mgorny@gentoo.org> +libXTrap-1.0.0-r1.ebuild:
+  Update to use xorg-2 eclass.
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> libXTrap-1.0.0.ebuild:
+  Drop to ~mips
+
+  04 Feb 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  libXTrap-1.0.0.ebuild:
+  Drop mirroring restriction.  Thanks to Zhang Le of bug #163088.
+
+  01 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  libXTrap-1.0.0.ebuild:
+  libXext has a runtime dep on xextproto now, so we don't need to depend on it
+  here.
+
+  19 Jul 2006; Guy Martin <gmsoft@gentoo.org> libXTrap-1.0.0.ebuild:
+  Stable on hppa.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> libXTrap-1.0.0.ebuild:
+  Mark 1.0.0 stable on ia64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  libXTrap-1.0.0.ebuild:
+  ppc/sparc/mips/alpha/arm/sh stable
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> libXTrap-1.0.0.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org> libXTrap-1.0.0.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  libXTrap-1.0.0.ebuild:
+  x86 stable.
+
+  05 May 2006; Diego Pettenò <flameeyes@gentoo.org> libXTrap-1.0.0.ebuild:
+  Add ~x86-fbsd keyword.
+
+  28 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-libXTrap-1.0.0, Manifest:
+  Revert to working digest.
+
+  28 Apr 2006; Alec Warner <antarus@gentoo.org> files/digest-libXTrap-1.0.0,
+  Manifest:
+  Fixing SHA256 digest, pass four
+
+  24 Mar 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  libXTrap-1.0.0.ebuild:
+  (#127306) Digests changed between release candidates and final release for
+  the same tarballs.
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> libXTrap-1.0.0.ebuild:
+  Added ~ppc64; bug #122726
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -libXTrap-0.99.2.ebuild:
+  Pull old versions.
+
+*libXTrap-1.0.0 (17 Dec 2005)
+
+  17 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXTrap-1.0.0.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -libXTrap-0.99.1.ebuild:
+  Pull old versions.
+
+*libXTrap-0.99.2 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXTrap-0.99.2.ebuild:
+  Bump for 7.0RC3.
+
+  04 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -libXTrap-0.99.0.ebuild:
+  Drop old version.
+
+*libXTrap-0.99.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libXTrap-0.99.1.ebuild:
+  Bump for 7.0 RC1.
+
+  14 Oct 2005; <dang@gentoo.org> libXTrap-0.99.0.ebuild:
+  Marked ~amd64
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> libXTrap-0.99.0.ebuild:
+  Marked ~ppc
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> libXTrap-0.99.0.ebuild:
+  Add ~sparc keyword (modular X testing).
+
+*libXTrap-0.99.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libXTrap-0.99.0.ebuild:
+  Initial commit for modular X.

@@ -1,0 +1,267 @@
+# ChangeLog for dev-vcs/tig
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/tig/ChangeLog,v 1.38 2015/06/14 19:48:15 maekke Exp $
+
+  14 Jun 2015; Markus Meier <maekke@gentoo.org> tig-2.0.3.ebuild:
+  arm stable, bug #549078
+
+*tig-2.1 (13 Mar 2015)
+
+  13 Mar 2015; Patrick McLean <chutzpah@gentoo.org> +tig-2.1.ebuild:
+  Version bump, install example configs from contrib.
+
+  08 Nov 2014; Tim Harder <radhermit@gentoo.org> -tig-1.2.1.ebuild,
+  -tig-2.0.2.ebuild:
+  Remove old.
+
+  08 Nov 2014; Tim Harder <radhermit@gentoo.org> tig-2.0.3.ebuild:
+  Stabilize for amd64/x86.
+
+  08 Oct 2014; Manuel Rüger <mrueg@gentoo.org> tig-2.0.2.ebuild:
+  Mark stable on amd64. See bug #512662.
+
+*tig-2.0.3 (31 Aug 2014)
+
+  31 Aug 2014; Tim Harder <radhermit@gentoo.org> +tig-2.0.3.ebuild:
+  Version bump.
+
+  04 Aug 2014; Tim Harder <radhermit@gentoo.org> -tig-2.0.1-r1.ebuild:
+  Remove old.
+
+*tig-2.0.2 (04 Jun 2014)
+
+  04 Jun 2014; Tim Harder <radhermit@gentoo.org> +tig-2.0.2.ebuild:
+  Version bump (bug #512358).
+
+  07 May 2014; Tim Harder <radhermit@gentoo.org> -tig-2.0.1.ebuild:
+  Remove old.
+
+*tig-2.0.1-r1 (07 May 2014)
+
+  07 May 2014; Tim Harder <radhermit@gentoo.org> +tig-2.0.1-r1.ebuild,
+  metadata.xml:
+  Add unicode use flag (fixes bug #509744).
+
+*tig-2.0.1 (30 Apr 2014)
+
+  30 Apr 2014; Tim Harder <radhermit@gentoo.org> +tig-2.0.1.ebuild:
+  Version bump.
+
+  25 Jan 2014; Tim Harder <radhermit@gentoo.org> -tig-1.0.ebuild,
+  -tig-1.1.ebuild, -tig-1.2.ebuild:
+  Remove old.
+
+  30 Sep 2013; Agostino Sarubbo <ago@gentoo.org> tig-1.2.1.ebuild:
+  Stable for x86, wrt bug #486128
+
+  28 Sep 2013; Agostino Sarubbo <ago@gentoo.org> tig-1.2.1.ebuild:
+  Stable for amd64, wrt bug #486128
+
+  26 Aug 2013; Tim Harder <radhermit@gentoo.org> tig-1.2.1.ebuild:
+  Fix version set wrong in tarball.
+
+*tig-1.2.1 (26 Aug 2013)
+
+  26 Aug 2013; Tim Harder <radhermit@gentoo.org> +tig-1.2.1.ebuild:
+  Version bump (bug #482406).
+
+*tig-1.2 (10 Aug 2013)
+
+  10 Aug 2013; Tim Harder <radhermit@gentoo.org> tig-1.1.ebuild,
+  +tig-1.2.ebuild:
+  Version bump and fix pkgconfig dep.
+
+  15 Jun 2013; Justin Lecher <jlec@gentoo.org> tig-1.1.ebuild, metadata.xml:
+  Build correctly with ncurses[tinfo]
+
+  11 Jan 2013; Agostino Sarubbo <ago@gentoo.org> tig-1.1.ebuild:
+  Stable for x86, wrt bug #450958
+
+  11 Jan 2013; Agostino Sarubbo <ago@gentoo.org> tig-1.1.ebuild:
+  Stable for amd64, wrt bug #450958
+
+*tig-1.1 (13 Oct 2012)
+
+  13 Oct 2012; Tim Harder <radhermit@gentoo.org> +tig-1.1.ebuild:
+  Version bump.
+
+  24 Jul 2012; Tim Harder <radhermit@gentoo.org> -tig-0.18.ebuild:
+  Remove old.
+
+  30 Jun 2012; Agostino Sarubbo <ago@gentoo.org> tig-1.0.ebuild:
+  Stable for amd64, wrt bug #422081
+
+  29 Jun 2012; Jeff Horelick <jdhore@gentoo.org> tig-1.0.ebuild:
+  marked x86 per bug 422081
+
+*tig-1.0 (12 May 2012)
+
+  12 May 2012; Tim Harder <radhermit@gentoo.org> +tig-1.0.ebuild:
+  Version bump.
+
+  03 Nov 2011; Tim Harder <radhermit@gentoo.org> -tig-0.17.ebuild:
+  Remove old.
+
+  02 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> tig-0.18.ebuild:
+  x86 stable wrt bug #388505
+
+  27 Oct 2011; Tony Vroon <chainsaw@gentoo.org> tig-0.18.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani & Agostino "ago" Sarubbo in bug #388505.
+
+  09 Sep 2011; Michał Górny <mgorny@gentoo.org> tig-0.18.ebuild:
+  Migrate to bash-completion-r1.
+
+*tig-0.18 (29 Aug 2011)
+
+  29 Aug 2011; Tim Harder <radhermit@gentoo.org> +tig-0.18.ebuild:
+  Version bump.
+
+  15 Jul 2011; Tim Harder <radhermit@gentoo.org> -tig-0.14.1.ebuild,
+  -tig-0.15.ebuild, -tig-0.16.ebuild, -tig-0.16.1.ebuild, -tig-0.16.2.ebuild:
+  Remove old.
+
+  15 Jul 2011; Markus Meier <maekke@gentoo.org> tig-0.17.ebuild:
+  x86 stable, bug #372771
+
+  26 Jun 2011; Markos Chandras <hwoarang@gentoo.org> tig-0.17.ebuild:
+  Stable on amd64 wrt bug #372771
+
+*tig-0.17 (07 Mar 2011)
+
+  07 Mar 2011; Tim Harder <radhermit@gentoo.org> +tig-0.17.ebuild,
+  metadata.xml:
+  Version bump. Update to EAPI 4 and add myself as a maintainer.
+
+*tig-0.16.2 (09 Nov 2010)
+
+  09 Nov 2010; Tim Harder <radhermit@gentoo.org> +tig-0.16.2.ebuild:
+  Version bump to bugfix release.
+
+*tig-0.16.1 (19 Sep 2010)
+
+  19 Sep 2010; Robin H. Johnson <robbat2@gentoo.org> +tig-0.16.1.ebuild:
+  Version bump.
+
+*tig-0.16 (15 Jun 2010)
+
+  15 Jun 2010; Justin Lecher <jlec@gentoo.org> tig-0.15.ebuild,
+  +tig-0.16.ebuild:
+  QA, cleanup ebuilds, Version Bump
+
+  15 Jun 2010; Justin Lecher <jlec@gentoo.org> +tig-0.14.1.ebuild,
+  +tig-0.15.ebuild, +metadata.xml:
+  New package (copied from dev-util/tig)
+
+  17 Mar 2010; Sebastian Pipping <sping@gentoo.org> tig-0.14.1.ebuild,
+  tig-0.15.ebuild:
+  Propagate move of dev-util/git to dev-vcs/git
+
+  06 Mar 2010; Joseph Jezak <josejx@gentoo.org> tig-0.14.1.ebuild,
+  tig-0.15.ebuild:
+  Marked ~ppc.
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org> tig-0.15.ebuild:
+  Transfer Prefix keywords
+
+*tig-0.15 (02 Dec 2009)
+
+  02 Dec 2009; Greg Kroah-Hartman <gregkh@gentoo.org> +tig-0.15.ebuild:
+  0.15 ebuid
+
+  30 Jul 2009; Christian Faulhammer <fauli@gentoo.org> tig-0.14.1.ebuild:
+  add IUSE to make repoman happy
+
+  30 Jul 2009; Christian Faulhammer <fauli@gentoo.org> -tig-0.10.ebuild,
+  -tig-0.10.1.ebuild, -tig-0.11.ebuild, -tig-0.12.ebuild,
+  -tig-0.12.1.ebuild, -tig-0.13.ebuild, -tig-0.14.ebuild:
+  clean up
+
+  27 Jul 2009; <chainsaw@gentoo.org> tig-0.14.1.ebuild:
+  Marked stable on AMD64 as requested by Christian Faulhammer
+  <fauli@gentoo.org> in bug #278704. Compile-tested with
+  USE="bash-completion" on a Core2 Duo.
+
+  22 Jul 2009; Christian Faulhammer <fauli@gentoo.org> tig-0.14.1.ebuild:
+  stable x86, bug 278704
+
+*tig-0.14.1 (17 Feb 2009)
+
+  17 Feb 2009; Greg Kroah-Hartman <gregkh@gentoo.org> +tig-0.14.1.ebuild:
+  0.14.1 bump
+
+*tig-0.14 (07 Feb 2009)
+
+  07 Feb 2009; Greg Kroah-Hartman <gregkh@gentoo.org> +tig-0.14.ebuild:
+  0.14 update
+
+*tig-0.13 (14 Jan 2009)
+
+  14 Jan 2009; Greg Kroah-Hartman <gregkh@gentoo.org> +tig-0.13.ebuild:
+  0.13 release
+
+*tig-0.12.1 (17 Oct 2008)
+
+  17 Oct 2008; Greg Kroah-Hartman <gregkh@gentoo.org> +tig-0.12.1.ebuild:
+  0.12.1 release
+
+  17 Oct 2008; Greg Kroah-Hartman <gregkh@gentoo.org> tig-0.12.ebuild:
+  mark 0.12 stable on x86 and amd64
+
+*tig-0.12 (15 Sep 2008)
+
+  15 Sep 2008; Greg Kroah-Hartman <gregkh@gentoo.org> +tig-0.12.ebuild:
+  0.12 release
+
+  12 May 2008; Greg Kroah-Hartman <gregkh@gentoo.org> -tig-0.6.ebuild,
+  -tig-0.7.ebuild, -tig-0.8.ebuild, -tig-0.9.ebuild, -tig-0.9.1.ebuild:
+  remove older ebuilds
+
+*tig-0.11 (08 Apr 2008)
+
+  08 Apr 2008; Greg Kroah-Hartman <gregkh@gentoo.org> +tig-0.11.ebuild:
+  0.11 version bump
+
+*tig-0.10.1 (21 Mar 2008)
+
+  21 Mar 2008; Greg Kroah-Hartman <gregkh@gentoo.org> +tig-0.10.1.ebuild:
+  0.10.1 release
+  	- should work with wide characters now
+  	- added bash-completion config
+
+*tig-0.10 (19 Mar 2008)
+
+  19 Mar 2008; Greg Kroah-Hartman <gregkh@gentoo.org> +tig-0.10.ebuild:
+  0.10 release
+
+*tig-0.9.1 (01 Oct 2007)
+
+  01 Oct 2007; Greg Kroah-Hartman <gregkh@gentoo.org> +tig-0.9.1.ebuild:
+  tig 0.9.1 release
+
+*tig-0.9 (13 Sep 2007)
+
+  13 Sep 2007; Greg Kroah-Hartman <gregkh@gentoo.org> +tig-0.9.ebuild:
+  tig 0.9 upstream release
+
+*tig-0.8 (20 Jun 2007)
+
+  20 Jun 2007; Greg Kroah-Hartman <gregkh@gentoo.org> +tig-0.8.ebuild:
+  0.8 upstream version update
+
+*tig-0.7 (31 May 2007)
+
+  31 May 2007; Greg Kroah-Hartman <gregkh@gentoo.org> +tig-0.7.ebuild:
+  Version bump to 0.7
+
+  11 May 2007; Sven Wegener <swegener@gentoo.org> tig-0.6.ebuild:
+  Pass our own CFLAGS. Do not force a clean, manually install included
+  manpages and documentation.
+
+*tig-0.6 (09 May 2007)
+
+  09 May 2007; Greg Kroah-Hartman <gregkh@gentoo.org> +metadata.xml,
+  +tig-0.6.ebuild:
+  - Initial addition of tig to the build system.
+    Note that we do not add the documentation as the Makefile is a bit borked in
+    this regard.

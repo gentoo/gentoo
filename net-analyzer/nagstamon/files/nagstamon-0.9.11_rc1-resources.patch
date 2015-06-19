@@ -1,0 +1,13 @@
+diff --git a/Nagstamon/nagstamon.py b/Nagstamon/nagstamon.py
+index 0e016ef..7dca409 100755
+--- a/Nagstamon/nagstamon.py
++++ b/Nagstamon/nagstamon.py
+@@ -86,6 +86,8 @@ except Exception, err:
+             Resources = path
+             break
+ 
++Resources = "/usr/share/nagstamon/resources"
++
+ # initialize GUI and actions
+ # if modules are not available from central python install try the ones in the same directory
+ from Nagstamon import GUI

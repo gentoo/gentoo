@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst setup unpack
+DEPEND==virtual/ada-1995* >=app-eselect/eselect-gnat-1.3
+DESCRIPTION=An implementation of the Distributed Systems Annex for the GNAT compiler
+HOMEPAGE=http://libre2.adacore.com/
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND==virtual/ada-1995*
+SLOT=0
+SRC_URI=mirror://gentoo/glade-2006.0.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	gnat	546f2ed044470213fd280463b74dc7c9	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a0eb2b87c20fc30771bb1b6cbb2ac87d

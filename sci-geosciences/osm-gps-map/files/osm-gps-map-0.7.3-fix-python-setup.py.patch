@@ -1,0 +1,15 @@
+--- setup.py	2011-03-19 10:08:23.000000000 +0300
++++ setup.py	2013-04-02 23:35:01.469947224 +0400
+@@ -21,9 +21,9 @@
+ 
+ _osmgpsmap = Extension(name = 'osmgpsmap',
+             sources= ['osmgpsmapmodule.c','osmgpsmap.c'],
+-            include_dirs = get_include('osmgpsmap pygobject-2.0'),
+-            library_dirs = get_lib_dirs('osmgpsmap pygobject-2.0'),
+-            libraries = get_libs('osmgpsmap pygobject-2.0'),
++            include_dirs = get_include('gtk+-2.0 pygobject-2.0'),
++            library_dirs = get_lib_dirs('gtk+-2.0 pygobject-2.0'),
++            libraries = get_libs('gtk+-2.0 pygobject-2.0') + ["osmgpsmap"],
+             define_macros = [('VERSION', '"""%s"""' % VERSION)],
+             )
+ 

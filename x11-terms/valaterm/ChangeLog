@@ -1,0 +1,51 @@
+# ChangeLog for x11-terms/valaterm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/valaterm/ChangeLog,v 1.13 2015/01/03 13:49:42 mgorny Exp $
+
+  03 Jan 2015; Michał Górny <mgorny@gentoo.org> valaterm-0.6.ebuild:
+  Use python-any-r1 for waf.
+
+  25 Apr 2014; Pacho Ramos <pacho@gentoo.org> -valaterm-0.4.3.ebuild:
+  Drop old
+
+  18 Aug 2013; Agostino Sarubbo <ago@gentoo.org> valaterm-0.6.ebuild:
+  Stable for x86, wrt bug #478270
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> valaterm-0.6.ebuild:
+  Stable for amd64, wrt bug #478270
+
+  12 May 2013; Pacho Ramos <pacho@gentoo.org> valaterm-0.6.ebuild:
+  Use vala.eclass (#467406)
+
+  03 Oct 2012; Samuli Suominen <ssuominen@gentoo.org> -valaterm-0.5.ebuild,
+  -valaterm-0.5.1.ebuild:
+  old
+
+*valaterm-0.6 (03 Oct 2012)
+
+  03 Oct 2012; Samuli Suominen <ssuominen@gentoo.org> +valaterm-0.6.ebuild:
+  Version bump wrt #436798 by Jacques-Pascal Deplaix
+
+*valaterm-0.5.1 (30 Jun 2012)
+
+  30 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> +valaterm-0.5.1.ebuild:
+  Version bump wrt #423477 by Jacques-Pascal Deplaix
+
+  22 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> valaterm-0.5.ebuild:
+  Fix license from GPL-2 to GPL-3 wrt COPYING.
+
+*valaterm-0.5 (22 Jun 2012)
+
+  22 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> +valaterm-0.5.ebuild:
+  Version bump.
+
+  22 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> valaterm-0.4.3.ebuild:
+  amd64/x86 stable
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> valaterm-0.4.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*valaterm-0.4.3 (14 Jan 2012)
+
+  14 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> +valaterm-0.4.3.ebuild:
+  Initial commit wrt #368491 by Jacques-Pascal Deplaix

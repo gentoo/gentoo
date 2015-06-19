@@ -1,0 +1,11 @@
+--- apt-proxy	2002-04-04 14:30:19.000000000 +0200
++++ apt-proxy.new	2003-03-13 00:49:48.000000000 +0100
+@@ -1,5 +1,7 @@
+-#!/bin/ash
++#!/bin/sh
+ # (You may safely change the above to /bin/sh if you do not have ash available)
++### I really modified it (was /bin/ash)
++### Radek Podgorny <radek@podgorny.cz> (for Gentoo)
+ #
+ # $Id: apt-proxy-1.3.0-sh.patch,v 1.1 2004/04/22 18:12:31 mholzer Exp $
+ # Copyright Paul Russell <rusty@samba.org>

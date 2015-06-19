@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<use>
+		<flag name="fits">Enable support for the FITS image format through cfitsio</flag>
+		<flag name="indi">Enable support for Astronomical control library using libindi</flag>
+	</use>
+	<herd>kde</herd>
+</pkgmetadata>

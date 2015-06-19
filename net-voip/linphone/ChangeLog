@@ -1,0 +1,515 @@
+# ChangeLog for net-voip/linphone
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-voip/linphone/ChangeLog,v 1.80 2015/04/28 08:20:02 bircoph Exp $
+
+  28 Apr 2015; Andrew Savchenko <bircoph@gentoo.org> -linphone-3.4.3-r1.ebuild,
+  linphone-3.6.1.ebuild, -files/linphone-3.4.3-nls.patch:
+  Fix dependencies on mediastreamer, bugs 504268, 519798.
+  Remove old version.
+
+  28 Apr 2015; Andrew Savchenko <bircoph@gentoo.org> linphone-3.5.2.ebuild:
+  Linphone-3.5 works only with mediastreamer-2.8, bug 545196.
+
+  12 Nov 2014; Andrew Savchenko <bircoph@gentoo.org> metadata.xml:
+  Package is now directly maintained instead of proxy-maintaining.
+
+  27 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Voip herd is removed: http://article.gmane.org/gmane.linux.gentoo.devel/88434
+
+  14 Oct 2013; Sergey Popov <pinkbyte@gentoo.org> linphone-3.4.3-r1.ebuild:
+  Adjust media-libs/mediastreamer dependency, wrt bug #477996
+
+  14 Oct 2013; Sergey Popov <pinkbyte@gentoo.org> linphone-3.5.2.ebuild:
+  Stable on amd64 and x86, wrt bug #486490
+
+  14 Oct 2013; Sergey Popov <pinkbyte@gentoo.org> -linphone-3.4.3.ebuild,
+  linphone-3.4.3-r1.ebuild:
+  Stable keyword for pcc was forgotten, bug #363311. Drop old revision
+
+*linphone-3.6.1 (09 Oct 2013)
+
+  09 Oct 2013; Julian Ospald <hasufell@gentoo.org>
+  -files/linphone-3.1.0-nls.patch, -linphone-3.1.1.ebuild,
+  -files/linphone-3.1.1-external-mstreamer.patch, -linphone-3.2.1-r2.ebuild,
+  -files/linphone-3.2.1-external-mediastreamer.patch,
+  -files/linphone-3.2.1-linphone.desktop.patch,
+  -files/linphone-3.2.1-log-window-crash.patch,
+  -files/linphone-3.2.1-nls.patch,
+  -files/linphone-3.2.99.1-external-mediastreamer.patch,
+  -linphone-3.3.2.ebuild, +linphone-3.6.1.ebuild,
+  +files/linphone-3.6.1-nls.patch, metadata.xml:
+  version bump wrt #478686, remove old
+
+  09 Oct 2013; Julian Ospald <hasufell@gentoo.org> linphone-3.5.2.ebuild:
+  set max dep for net-libs/ortp
+
+  29 Sep 2013; Julian Ospald <hasufell@gentoo.org> linphone-3.5.2.ebuild,
+  +files/linphone-3.5.2-automake-1.13.patch:
+  fix automake-1.13 warnings wrt #468808
+
+  06 Mar 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  linphone-3.1.1.ebuild, linphone-3.2.1-r2.ebuild, linphone-3.3.2.ebuild,
+  linphone-3.4.3-r1.ebuild, linphone-3.4.3.ebuild, linphone-3.5.2.ebuild:
+  Does not build against libeXosip-4.0.0, bug #460490.
+
+  16 Dec 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due retirement, #260683
+
+*linphone-3.5.2 (19 Nov 2012)
+
+  19 Nov 2012; Michał Górny <mgorny@gentoo.org> +files/linphone-3.5.2-nls.patch,
+  +linphone-3.5.2.ebuild, metadata.xml:
+  Version bump wrt bug #397645. Thanks to Andrew Savchenko for his effort on
+  linphone ebuilds.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> linphone-3.1.1.ebuild,
+  linphone-3.2.1-r2.ebuild, linphone-3.3.2.ebuild, linphone-3.4.3.ebuild,
+  linphone-3.4.3-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  24 Apr 2012; Michał Górny <mgorny@gentoo.org> linphone-3.3.2.ebuild,
+  linphone-3.4.3.ebuild, linphone-3.4.3-r1.ebuild:
+  Update to use mirror://.
+
+  25 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Set herd as primary maintainer as talked with volkmar.
+
+  06 Jan 2012; Brent Baude <ranger@gentoo.org> linphone-3.4.3.ebuild:
+  Marking linphone-3.4.3 ppc stable for bug 363311
+
+  06 Nov 2011; Fabian Groffen <grobian@gentoo.org> linphone-3.4.3-r1.ebuild,
+  linphone-3.4.3.ebuild, linphone-3.3.2.ebuild:
+  Drop ~ppc-macos keyword for versions that (indirectly) depend on
+  mediastreamer-2.7.3
+
+  23 Oct 2011; Markus Meier <maekke@gentoo.org> linphone-3.4.3-r1.ebuild:
+  x86 stable, bug #363311
+
+  12 Oct 2011; Tony Vroon <chainsaw@gentoo.org> linphone-3.4.3-r1.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo, Ian
+  "idella4" Delaney & Tomáš "Mepho" Pružina in bug #363311.
+
+*linphone-3.4.3-r1 (24 May 2011)
+
+  24 May 2011; Peter Volkov <pva@gentoo.org> -linphone-3.3.1.ebuild,
+  +linphone-3.4.3-r1.ebuild:
+  Add pax marking for linphone, bug #365353, thank Nikoli for report. Drop
+  unused.
+
+  14 May 2011; Thomas Kahle <tomka@gentoo.org> linphone-3.4.3.ebuild:
+  x86 stable per bug 363311
+
+  01 May 2011; Markos Chandras <hwoarang@gentoo.org> linphone-3.4.3.ebuild:
+  Stable on amd64 wrt bug #363311
+
+*linphone-3.4.3 (09 Apr 2011)
+
+  09 Apr 2011; Peter Volkov <pva@gentoo.org> +linphone-3.4.3.ebuild,
+  linphone-3.4.3-nls.patch:
+  Version bump, bug #354533 thank Ivan Ivanich for report and Andrew Savchenko
+  for help.
+
+  09 Apr 2011; Peter Volkov <pva@gentoo.org> linphone-3.3.2.ebuild:
+  Update mediastreamer dependency, bug #323281 thank Michael Weber and Petr
+  Pisar.
+
+  01 Jan 2011; Markos Chandras <hwoarang@gentoo.org> linphone-3.3.2.ebuild:
+  Stable on amd64 wrt bug #349258
+
+  27 Dec 2010; Thomas Kahle <tomka@gentoo.org> linphone-3.3.2.ebuild:
+  x86 stable per bug 349258
+
+  23 Oct 2010; Fabian Groffen <grobian@gentoo.org> linphone-3.3.2.ebuild:
+  Fix compilation on Darwin
+
+*linphone-3.3.2 (23 Jul 2010)
+
+  23 Jul 2010; Peter Volkov <pva@gentoo.org> +linphone-3.3.2.ebuild:
+  Version bump.
+
+  18 Jul 2010; <nixnut@gentoo.org> linphone-3.2.1-r2.ebuild:
+  ppc stable #317235
+
+  10 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  linphone-3.2.1-r2.ebuild:
+  x86 stable wrt bug #317235
+
+*linphone-3.3.1 (07 Jun 2010)
+
+  07 Jun 2010; Peter Volkov <pva@gentoo.org> -linphone-3.1.2.ebuild,
+  -linphone-3.2.1.ebuild, -linphone-3.2.1-r1.ebuild, -linphone-3.3.0.ebuild,
+  +linphone-3.3.1.ebuild:
+  Version bump. Drop old.
+
+  21 May 2010; Peter Volkov <pva@gentoo.org>
+  +files/linphone-3.2.99.1-external-mediastreamer.patch:
+  Added missed patch, thank Willard Dawson for report in bug #320739 and
+  Rion for xmpp report.
+
+*linphone-3.3.0 (20 May 2010)
+
+  20 May 2010; Peter Volkov <pva@gentoo.org> +linphone-3.3.0.ebuild:
+  Version bump.
+
+  20 May 2010; Peter Volkov <pva@gentoo.org> linphone-3.2.1-r2.ebuild:
+  amd64 stable, bug 317235.
+
+  01 Apr 2010; Fabian Groffen <grobian@gentoo.org> linphone-3.2.1-r2.ebuild:
+  Unbreak for Prefix: use ${ED}/usr/...
+
+*linphone-3.2.1-r2 (26 Mar 2010)
+
+  26 Mar 2010; Peter Volkov <pva@gentoo.org> +linphone-3.2.1-r2.ebuild:
+  Finally fix bug #307865 (install icon to correct location).
+
+  21 Mar 2010; Fabian Groffen <grobian@gentoo.org> linphone-3.2.1-r1.ebuild:
+  Bumped to EAPI=3 for Prefix changes, marked ~ppc-macos and ~x86-macos, bug
+  #310253
+
+*linphone-3.2.1-r1 (18 Mar 2010)
+
+  18 Mar 2010; Peter Volkov <pva@gentoo.org> +linphone-3.2.1-r1.ebuild,
+  +files/linphone-3.2.1-linphone.desktop.patch:
+  Make linphone.desktop validateable, bug #307865, thank Rion for report.
+
+*linphone-3.2.1 (18 Feb 2010)
+
+  18 Feb 2010; Peter Volkov <pva@gentoo.org> +linphone-3.2.1.ebuild,
+  +files/linphone-3.2.1-external-mediastreamer.patch,
+  +files/linphone-3.2.1-log-window-crash.patch,
+  +files/linphone-3.2.1-nls.patch:
+  Version bump, fixes bug #285478.
+
+  24 Aug 2009; Mike Frysinger <vapier@gentoo.org> linphone-3.1.2.ebuild:
+  Fix libtool mismatch troubles #282268 by rainer and drop pointless LINGUAS
+  default.
+
+*linphone-3.1.2 (20 Aug 2009)
+
+  20 Aug 2009; Mike Frysinger <vapier@gentoo.org> +linphone-3.1.2.ebuild:
+  Version bump.
+
+  19 Jul 2009; Mounir Lamouri <volkmar@gentoo.org>
+  -files/linphone-1.6.0-call.patch,
+  -files/linphone-2.0.1-configure-gsm.patch,
+  -files/linphone-2.0.1-mediastreamer-deps.patch,
+  -files/linphone-2.0.1-speexdsp.patch,
+  -files/linphone-2.1.1-ortp-deps.patch, -linphone-3.0.0.ebuild,
+  -files/linphone-3.0.0-pkg-config.patch, -linphone-3.1.0.ebuild,
+  -files/linphone-3.1.0-external-mstreamer.patch,
+  -files/linphone-3.1.0-novideo-preferences.patch, metadata.xml:
+  Removing old ebuilds and patches
+
+  08 Jul 2009; Markus Meier <maekke@gentoo.org> linphone-3.1.1.ebuild:
+  amd64 stable, bug #259172
+
+  03 Jul 2009; Mounir Lamouri <volkmar@gentoo.org> linphone-3.1.1.ebuild:
+  Stable on ppc, bug 259172
+
+  02 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  linphone-3.1.1.ebuild:
+  stable x86, bug 259172
+
+  16 May 2009; Mounir Lamouri <volkmar@gentoo.org> metadata.xml,
+  -linphone-2.1.1.ebuild:
+  Use global gsm USE flag instead of local one.
+
+  15 May 2009; Markus Meier <maekke@gentoo.org> linphone-3.1.0.ebuild,
+  linphone-3.1.1.ebuild:
+  add ~amd64, bug #267491
+
+  13 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  linphone-3.1.1.ebuild:
+  keyword this, too
+
+  13 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  linphone-3.1.0.ebuild:
+  keyworded ~arch for x86, bug 267491
+
+  29 Apr 2009; Mounir Lamouri <volkmar@gentoo.org> linphone-3.1.0.ebuild,
+  linphone-3.1.1.ebuild:
+  Fix mistake in DEPEND, inverted pkgconfig and gettext.
+
+  28 Apr 2009; Mounir Lamouri <volkmar@gentoo.org> linphone-3.0.0.ebuild:
+  ppc stable, bug 267386
+
+  27 Apr 2009; Markus Meier <maekke@gentoo.org> linphone-3.0.0.ebuild:
+  amd64/x86 stable, bug #267386
+
+*linphone-3.1.1 (27 Apr 2009)
+
+  27 Apr 2009; Mounir Lamouri <volkmar@gentoo.org>
+  +files/linphone-3.1.1-external-mstreamer.patch, +linphone-3.1.1.ebuild:
+  Version bump to 3.1.1. See bug 263420.
+
+  26 Apr 2009; Mounir Lamouri <volkmar@gentoo.org> metadata.xml:
+  Taking maintainership.
+
+*linphone-3.1.0 (26 Apr 2009)
+
+  26 Apr 2009; Mounir Lamouri <volkmar@gentoo.org>
+  +files/linphone-3.1.0-external-mstreamer.patch,
+  +files/linphone-3.1.0-nls.patch,
+  +files/linphone-3.1.0-novideo-preferences.patch, +linphone-3.1.0.ebuild:
+  Version bump to 3.1.0 and complete rewrite of the ebuild. See bug 263420.
+
+  24 Apr 2009; Mounir Lamouri <volkmar@gentoo.org> linphone-2.1.1.ebuild,
+  linphone-3.0.0.ebuild:
+  Moving back ebuilds to SLOT 0, no reason to use SLOT 1.
+
+  24 Apr 2009; Mounir Lamouri <volkmar@gentoo.org> linphone-2.1.1.ebuild,
+  linphone-3.0.0.ebuild, metadata.xml:
+  linphone uses ilbc with a mediastreamer plugin since a long time.
+	ilbc USE flag was not dropped when needed. See bug 258407.
+
+  02 Jan 2009; Mike Frysinger <vapier@gentoo.org> linphone-3.0.0.ebuild:
+  Disable intltool requirements #252704.
+
+*linphone-3.0.0 (23 Dec 2008)
+
+  23 Dec 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/linphone-3.0.0-pkg-config.patch, +linphone-3.0.0.ebuild:
+  Version bump #246494 by Nico Schlömer.
+
+  23 Dec 2008; Mike Frysinger <vapier@gentoo.org> linphone-2.1.1.ebuild:
+  Disable USE=video #189774.
+
+  11 Dec 2008; <ssuominen@gentoo.org> linphone-2.1.1.ebuild:
+  Fix speex dep. wrt #233381.
+
+  31 Aug 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  linphone-2.1.1.ebuild:
+  nasm moved to DEPEND for bug #221451
+
+  22 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  16 Aug 2008; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove stkn from metadata.xml (#27693)
+
+  01 Aug 2008; nixnut <nixnut@gentoo.org> linphone-2.1.1.ebuild:
+  Stable on ppc wrt bug 210741
+
+  23 Apr 2008; Markus Meier <maekke@gentoo.org> linphone-2.1.1.ebuild:
+  amd64/x86 stable, bug #210741
+
+*linphone-2.1.1 (19 Feb 2008)
+
+  19 Feb 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/linphone-2.1.1-ortp-deps.patch, +linphone-2.1.1.ebuild:
+  Version bump.
+
+  02 Feb 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  -linphone-1.7.1.ebuild, -linphone-1.7.1-r1.ebuild, -linphone-2.0.1.ebuild:
+  clean out older ebuilds with missing local use flag
+
+  22 Jan 2008; Mike Frysinger <vapier@gentoo.org> linphone-2.0.1-r1.ebuild:
+  Force disable building of the manual and running doxygen to save time and
+  such #206109 by Marcel Unbehaun.
+
+  22 Jan 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/linphone-2.0.1-no-alsa.patch, linphone-2.0.1-r1.ebuild:
+  Fix from upstream for building with USE=-alsa.
+
+  20 Jan 2008; Mike Frysinger <vapier@gentoo.org> linphone-2.0.1-r1.ebuild:
+  Change USE=novideo to USE=video and force newer gsm as the older one
+  installed broken libraries.
+
+  16 Jan 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/linphone-2.0.1-speexdsp.patch, linphone-2.0.1-r1.ebuild:
+  Fix building with newer versions of speex #205893 by Chi-Thanh Christopher
+  Nguyen.
+
+*linphone-2.0.1-r1 (14 Jan 2008)
+
+  14 Jan 2008; Mike Frysinger <vapier@gentoo.org> +linphone-2.0.1-r1.ebuild:
+  Stop installing mediastreamer headers/libs so that we can install the
+  external library package.
+
+*linphone-2.0.1 (14 Jan 2008)
+
+  14 Jan 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/linphone-1.99.0-core-amd64.patch,
+  +files/linphone-2.0.1-configure-gsm.patch,
+  +files/linphone-2.0.1-mediastreamer-deps.patch, +linphone-2.0.1.ebuild:
+  Version bump.
+
+*linphone-1.7.1-r1 (20 Aug 2007)
+
+  20 Aug 2007; Mike Frysinger <vapier@gentoo.org> +linphone-1.7.1-r1.ebuild:
+  Remove autotool garbage, dont force gtk interface on everyone (USE=gtk),
+  cleanup configure options, add support for USE=arts, and add some notes
+  about oRTP/ffmpeg.
+
+*linphone-1.7.1 (25 Apr 2007)
+
+  25 Apr 2007; Stefan Schweizer <genstef@gentoo.org> -linphone-1.7.0.ebuild,
+  +linphone-1.7.1.ebuild:
+  Version bump thanks to Roman Zimmermann <mereandor@gmail.com> and karpi in
+  bug 174803
+
+*linphone-1.7.0 (14 Apr 2007)
+
+  14 Apr 2007; Stefan Schweizer <genstef@gentoo.org>
+  +files/linphone-1.6.0-call.patch, +metadata.xml, +linphone-1.7.0.ebuild:
+  Version bump, move to net-voip, bug 112688, remove /ortp, bug 171181, fix
+  deps, bug 158551
+
+*linphone-1.6.0-r1 (02 Feb 2007)
+
+  02 Feb 2007; Timothy Redaelli <drizzt@gentoo.org>
+  +files/linphone-1.6.0-call.patch, +linphone-1.6.0-r1.ebuild:
+  Revbump: Add patch to avoid linphonec "call" to crash.
+  Patch already sent upstream.
+
+*linphone-1.6.0 (30 Jan 2007)
+
+  30 Jan 2007; Timothy Redaelli <drizzt@gentoo.org> metadata.xml,
+  linphone-1.1.0.ebuild, linphone-1.3.5.ebuild, linphone-1.5.1.ebuild,
+  +linphone-1.6.0.ebuild:
+  Version bump
+
+  18 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  linphone-1.3.5.ebuild:
+  stable x86, bug #147795
+
+  26 Nov 2006; Timothy Redaelli <drizzt@gentoo.org>
+  +files/linphone-1.3.5-docs.diff, linphone-1.3.5.ebuild:
+  Added patch to remove obsolete developer-docs directory wrt bug #132824.
+
+  26 Nov 2006; Timothy Redaelli <drizzt@gentoo.org>
+  +files/linphone-1.5.1-pkgconfig.patch, linphone-1.5.1.ebuild:
+  Added an explicit call to PKG_PROG_PKG_CONFIG (thx to Flameeyes) in
+  configure.in.
+
+*linphone-1.5.1 (26 Nov 2006)
+
+  26 Nov 2006; Timothy Redaelli <drizzt@gentoo.org> +linphone-1.5.1.ebuild:
+  Imported 1.5.1 version from voip overlay without USE portaudio.
+
+  07 Jul 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  linphone-1.1.0.ebuild:
+  removed optional dep that isn't in portage anymore
+
+  01 Jul 2006; Lars Weiler <pylon@gentoo.org> linphone-1.3.5.ebuild:
+  Added ~ppc; bug #132672.
+
+  09 May 2006; Stefan Schweizer <genstef@gentoo.org> linphone-1.3.5.ebuild:
+  Correctly used eautoreconf many thanks to Marcin Deranek <gringo@slonko.net>
+  in bug 132758
+
+*linphone-1.3.5 (05 May 2006)
+
+  05 May 2006; Stefan Schweizer <genstef@gentoo.org>
+  +files/ilbc-1.2.0-makefile.diff, +linphone-1.3.5.ebuild:
+  Version bump, fixes bugs 108187,113199,116685 and 129194
+
+  30 Sep 2005; Stefan Knoblich <stkn@gentoo.org> linphone-1.1.0.ebuild:
+  Dropping unnecessary gnome-panel dependency, thanks to
+  Thomas Fischer <fischer@unix-ag.uni-kl.de> in bug #107704.
+
+  30 Sep 2005; Stefan Knoblich <stkn@gentoo.org> -linphone-0.10.2.ebuild,
+  -linphone-1.0.1.ebuild:
+  Removed old ebuilds.
+
+  30 Sep 2005; Stefan Knoblich <stkn@gentoo.org> linphone-1.1.0.ebuild:
+  Stable on x86.
+
+  02 Sep 2005; <dang@gentoo.org> linphone-1.1.0.ebuild:
+  Marked ~amd64
+
+*linphone-1.1.0 (29 Aug 2005)
+
+  29 Aug 2005; Stefan Knoblich <stkn@gentoo.org> +linphone-1.1.0.ebuild:
+  Version bump, linphone libs are now put into /usr/lib/linphone and ortp
+  headers are removed to avoid conflicts with net-libs/ortp.
+
+  15 Jul 2005; Stefan Knoblich <stkn@gentoo.org> linphone-1.0.1.ebuild,
+  +linphone-1.0.1-ipv6-include.diff:
+  Always include <netdb.h> in coreapi/linphonecore.c even if USE flag is set
+  -ipv6, fixes #99083. Thanks to Anders Hellgen pointing out that patch from
+  0.12.x is still needed.
+
+  14 Jul 2005; Stefan Knoblich <stkn@gentoo.org> linphone-1.0.1.ebuild:
+  Indentation fixes, added missing dodoc, replaced einstall with make
+  (einstall completely broke file locations), added missing
+  dev-perl/XML-Parser and speex dependencies.
+
+*linphone-1.0.1 (14 Jul 2005)
+
+  14 Jul 2005; John Mylchreest <johnm@gentoo.org> +metadata.xml,
+  +linphone-0.10.2.ebuild, +linphone-1.0.1.ebuild:
+  moving from net-im, updating to the latest version and closing all bugs.
+
+  03 Aug 2004; David Holm <dholm@gentoo.org> linphone-0.12.2.ebuild:
+  Added to ~ppc.
+
+*linphone-0.12.2 (30 Jul 2004)
+
+  30 Jul 2004; <stkn@gentoo.org> +files/linphone-0.12.2-include-fix.diff,
+  +linphone-0.12.2.ebuild:
+  version bump
+
+  10 Jun 2004; Aron Griffis <agriffis@gentoo.org> linphone-0.12.1.ebuild:
+  Fix use invocation
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> linphone-0.12.1.ebuild:
+  Add inherit eutils
+
+  12 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> linphone-0.12.1.ebuild:
+  marked ~amd64
+
+  14 Mar 2004; Stefan Knoblich <stkn@gentoo.org> linphone-0.10.2.ebuild,
+  linphone-0.12.0.ebuild, linphone-0.12.1.ebuild:
+  updated depdendencies (linphone won't build with libosip-2.x)
+
+  07 Jan 2004; Sven Blumenstein <bazik@gentoo.org> linphone-0.12.1.ebuild:
+  Removed KEYWORD's of untested archs again. 
+  Please dont add new ebuilds with 
+  KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa ~arm" 
+  if you didnt test on these archs! Fill a bug or talk
+  to the arch lead if you want it tested. Thanks!
+
+*linphone-0.12.1 (03 Jan 2004)
+
+  03 Jan 2004; Stefan Knoblich <stkn@gentoo.org> linphone-0.10.2.ebuild,
+  linphone-0.12.0.ebuild, linphone-0.12.1.ebuild, linphone-0.9.0-r1.ebuild,
+  linphone-0.12.1-include-fix.diff:
+  removed old linphone-0.9, copyright header updated for 2004, added
+  linphone-0.12.1
+
+  31 Dec 2003; Sven Blumenstein <bazik@gentoo.org> linphone-0.10.2.ebuild,
+  linphone-0.12.0.ebuild, linphone-0.9.0-r1.ebuild:
+  Fixed handling of the (optional) x86-only DEPEND
+  dev-lang/nasm and removed KEYWORD's of untested archs.
+
+  07 Dec 2003; Heinrich Wendel <lanius@gentoo.org> linphone-0.10.2.ebuild,
+  linphone-0.9.0-r1.ebuild:
+  fixed alsa dep
+
+*linphone-0.12.0 (04 Oct 2003)
+
+  04 Oct 2003; Stefan Knoblich <stkn@gentoo.org> linphone-0.12.0.ebuild:
+  Version bumped. Changed dependency from alsa-driver to alsa-lib.
+
+  26 Sep 2003; Martin Holzer <mholzer@gentoo.org> linphone-0.10.2.ebuild:
+  Added IUSE flags. Closes #29265.
+
+  12 Jun 2003; <msterret@gentoo.org> linphone-0.10.2.ebuild:
+  added header from skel.ebuild
+
+*linphone-0.10.2 (04 May 2003)
+
+  04 May 2003; Martin Holzer <mholzer@gentoo.org> linphone-0.10.2.ebuild:
+  Version bumped. Ebuild submitted by Jiri VERUNEK <verunek@vol.cz> in #20391.
+
+*linphone-0.9.0-r1 (20 Mar 2003)
+
+  20 Mar 2003; Seemant Kulleen <seemant@gentoo.org> linphone-0.9.0-r1.ebuild:
+  removed pic stuff
+
+*linphone-0.9.0 (05 Sep 2002)
+
+  05 Sep 2002; Daniel Robbins <drobbins@gentoo.org> This ebuild was created by
+  gaarde (Paul Belt) or someone else using his account. Looks ok, so moving to
+  its proper place in net-im (was in net-dialup before.)

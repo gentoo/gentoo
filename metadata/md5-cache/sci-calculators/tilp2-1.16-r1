@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=dev-libs/glib:2 gnome-base/libglade:2.0 x11-libs/gtk+:2 >=sci-libs/libticalcs2-1.1.7 >=sci-libs/libticables2-1.3.3 >=sci-libs/libtifiles2-1.1.5 >=sci-libs/libticonv-1.1.3 nls? ( virtual/libintl ) xinerama? ( x11-libs/libXinerama ) virtual/pkgconfig nls? ( sys-devel/gettext ) xinerama? ( x11-proto/xineramaproto )
+DESCRIPTION=Communication program for Texas Instruments calculators
+EAPI=4
+HOMEPAGE=http://lpg.ticalc.org/prj_tilp
+IUSE=nls threads xinerama
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 gnome-base/libglade:2.0 x11-libs/gtk+:2 >=sci-libs/libticalcs2-1.1.7 >=sci-libs/libticables2-1.3.3 >=sci-libs/libtifiles2-1.1.5 >=sci-libs/libticonv-1.1.3 nls? ( virtual/libintl ) xinerama? ( x11-libs/libXinerama )
+SLOT=0
+SRC_URI=mirror://sourceforge/tilp/tilp2-linux/tilp2-1.16.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=19b881b04de77da34d700d32770599a3

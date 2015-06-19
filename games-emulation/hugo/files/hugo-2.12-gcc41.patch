@@ -1,0 +1,11 @@
+--- pce.h.old	2006-05-02 20:06:13.000000000 +0200
++++ pce.h	2006-05-02 20:06:33.000000000 +0200
+@@ -196,7 +196,7 @@
+ extern UChar language;
+ // the current language
+ 
+-extern int BaseClock, UPeriod;
++extern int UPeriod;
+ 
+ extern UChar US_encoded_card;
+ // Do we have to swap even and odd bytes in the rom

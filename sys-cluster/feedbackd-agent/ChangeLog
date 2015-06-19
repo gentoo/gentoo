@@ -1,0 +1,51 @@
+# ChangeLog for sys-cluster/feedbackd-agent
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/feedbackd-agent/ChangeLog,v 1.14 2010/09/11 14:21:31 scarabeus Exp $
+
+  11 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Drop useles maintainer line
+
+  29 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  feedbackd-agent-0.4.ebuild, +files/feedbackd-agent-0.4-asneeded.patch:
+  Fix building with -Wl,--as-needed wrt #248411 by Kacper Kowalik.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org>
+  feedbackd-agent-0.4.ebuild:
+  Remove virtual/libc
+
+  26 Apr 2007; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Update for cluster herd split to hp-cluster and ha-cluster.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  16 May 2005; Christian Zoffoli <xmerlin@gentoo.org>
+  feedbackd-agent-0.4.ebuild:
+  stable x86.
+
+*feedbackd-agent-0.4 (27 Jan 2005)
+
+  27 Jan 2005; Christian Zoffoli <xmerlin@gentoo.org>
+  feedbackd-agent-0.4.ebuild:
+  fixed url
+
+  27 Jan 2005; Christian Zoffoli <xmerlin@gentoo.org>
+  -feedbackd-agent-0.3.1.ebuild:
+  removed obsolete 0.3.1
+
+  27 Jan 2005; Christian Zoffoli <xmerlin@gentoo.org> :
+  release 0.4 some minor cleanups
+
+  04 Sep 2004; Thomas Matthijs <axxo@gentoo.org> feedbackd-agent-0.3.1.ebuild:
+  fix depend syntax 58347
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  feedbackd-agent-0.3.1.ebuild:
+  virtual/glibc -> virtual/libc
+
+*feedbackd-agent-0.3.1 (09 Jun 2004)
+
+  09 Jun 2004; Michael Imhof <tantive@gentoo.org> feedbackd-agent-0.3.1.ebuild,
+  files/compile-gnu-source.patch:
+  Inital import. Closes #51317.
+

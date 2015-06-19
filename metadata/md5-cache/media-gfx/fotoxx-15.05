@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm prepare
+DEPEND=x11-libs/gtk+:3 media-libs/libpng media-libs/tiff media-libs/lcms:2
+DESCRIPTION=Program for improving image files made with a digital camera
+EAPI=4
+HOMEPAGE=http://www.kornelix.com/fotoxx.html
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=x11-libs/gtk+:3 media-libs/libpng media-libs/tiff media-libs/lcms:2 media-libs/exiftool media-gfx/ufraw[gtk] media-gfx/dcraw x11-misc/xdg-utils
+SLOT=0
+SRC_URI=http://www.kornelix.com/uploads/1/3/0/3/13035936/fotoxx-15.05.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=bfbbbb29f4f35d0e8796454670325f27

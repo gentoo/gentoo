@@ -1,0 +1,74 @@
+# ChangeLog for sys-process/time
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/time/ChangeLog,v 1.9 2015/02/01 11:26:41 polynomial-c Exp $
+
+*time-1.7-r2 (01 Feb 2015)
+
+  01 Feb 2015; Lars Wendler <polynomial-c@gentoo.org> +time-1.7-r2.ebuild,
+  +files/time-1.7-incorrect_memory_usage.patch:
+  Fixed incorrect memory usage (bug #332253).
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> time-1.7-r1.ebuild:
+  Add arm64 love.
+
+  03 Jun 2012; Mike Frysinger <vapier@gentoo.org> time-1.7-r1.ebuild:
+  Update to EAPI=4.
+
+  17 Oct 2010; Mart Raudsepp <leio@gentoo.org> time-1.7-r1.ebuild:
+  Drop to ~mips
+
+  10 Jan 2010; Jonathan Callen <abcd@gentoo.org> time-1.7-r1.ebuild:
+  Add prefix keywords
+
+  13 Nov 2006; Sven Wegener <swegener@gentoo.org> time-1.7-r1.ebuild:
+  Fix mirror:// SRC_URI.
+
+  13 Oct 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/time-1.7-build.patch, time-1.7-r1.ebuild:
+  Cleanup autotools #151000.
+
+*time-1.7-r1 (03 Mar 2005)
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +files/1.7-info-dir-entry.patch, +time-1.7-r1.ebuild:
+  Moved from sys-apps/time to sys-process/time.
+
+  11 Sep 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/1.7-info-dir-entry.patch, time-1.7-r1.ebuild, -time-1.7.ebuild:
+  Redo the whole ebuild ... much cleaner this way says i.
+
+  28 Jul 2004; Tom Gall <tgall@gentoo.org> time-1.7-r1.ebuild:
+  stable on ppc64, bug #58303
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> time-1.7-r1.ebuild,
+  time-1.7.ebuild:
+  virtual/glibc -> virtual/libc
+
+  20 Feb 2003; Zach Welch <zwelch@gentoo.org>:
+  add arm keyword
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*time-1.7-r1 (15 Apr 2002)
+
+  21 Jul 2002; Mark Guertin <gerk@gentoo.org>:
+  updated keywords (ppc)
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> time-1.7.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> time-1.7-r1.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  15 Apr 2002; Matthew Kennedy <mkennedy@gentoo.org>
+  time-1.7-r1.ebuild, ChangeLog, files/digest-time-1.7-r1 :
+
+  Resolves bug #1784 (thanks to set_48035@yahoo.com who submitted the
+  patch).
+
+
+*time-1.7 (27 Feb 2002)
+	
+  27 Feb 2002; Bruce A. Locke <blocke@shivan.org> time-1.7.ebuild :
+
+  Time ebuild contributed by naz@themoonsofjupiter.net (Michael M Nazaroff)

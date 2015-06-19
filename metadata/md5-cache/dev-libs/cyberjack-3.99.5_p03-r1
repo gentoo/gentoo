@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=sys-apps/pcsc-lite virtual/libusb:1 fox? ( >=x11-libs/fox-1.6 ) xml? ( dev-libs/libxml2 ) virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=REINER SCT cyberJack pinpad/e-com USB user space driver library
+EAPI=5
+HOMEPAGE=http://www.reiner-sct.de/ http://www.libchipcard.de/
+IUSE=fox udev xml
+KEYWORDS=amd64 x86
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=sys-apps/pcsc-lite virtual/libusb:1 fox? ( >=x11-libs/fox-1.6 ) xml? ( dev-libs/libxml2 ) udev? ( virtual/udev )
+SLOT=0
+SRC_URI=http://support.reiner-sct.de/downloads/LINUX/V3.99.5_SP03/pcsc-cyberjack_3.99.5final.SP03.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=04e360ca8dc576503513b6faa07274fc

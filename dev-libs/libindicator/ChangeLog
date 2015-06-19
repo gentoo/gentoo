@@ -1,0 +1,102 @@
+# ChangeLog for dev-libs/libindicator
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libindicator/ChangeLog,v 1.18 2015/06/09 14:30:44 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*libindicator-12.10.1-r301 (07 May 2015)
+*libindicator-12.10.1-r201 (07 May 2015)
+
+  07 May 2015; Michał Górny <mgorny@gentoo.org>
+  +libindicator-12.10.1-r201.ebuild, +libindicator-12.10.1-r301.ebuild:
+  Add multilib support, thanks to Karol Herbst. Part of
+  https://github.com/gentoo/gentoo-portage-rsync-mirror/pull/65.
+
+*libindicator-12.10.1-r200 (15 Mar 2014)
+*libindicator-12.10.1-r300 (15 Mar 2014)
+
+  15 Mar 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +libindicator-12.10.1-r200.ebuild, +libindicator-12.10.1-r300.ebuild:
+  Version bump wrt #467976 by Agostino Sarubbo
+
+  30 Jul 2012; Samuli Suominen <ssuominen@gentoo.org>
+  libindicator-12.10.0-r200.ebuild, libindicator-12.10.0-r300.ebuild:
+  Pull in dev-util/dbus-test-runner and use virtualx.eclass for src_test() wrt
+  #391179 by Jonathan Lovelace
+
+  26 Jul 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -libindicator-0.4.1-r201.ebuild, -libindicator-0.4.1-r300.ebuild:
+  old
+
+*libindicator-12.10.0-r300 (26 Jul 2012)
+*libindicator-12.10.0-r200 (26 Jul 2012)
+
+  26 Jul 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +libindicator-12.10.0-r200.ebuild, +libindicator-12.10.0-r300.ebuild:
+  Version bump.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  libindicator-0.4.1-r201.ebuild, libindicator-0.4.1-r300.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  26 Nov 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -libindicator-0.4.1-r200.ebuild:
+  old
+
+*libindicator-0.4.1-r300 (26 Nov 2011)
+*libindicator-0.4.1-r201 (26 Nov 2011)
+
+  26 Nov 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +libindicator-0.4.1-r201.ebuild, +libindicator-0.4.1-r300.ebuild:
+  Provide GTK+-3.0 version in SLOT="3"
+
+  20 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Move to ayatana herd.
+
+  19 Nov 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -libindicator-0.3.6.ebuild, -files/libindicator-0.3.6-missing_template.patch,
+  -libindicator-0.3.13.ebuild, -libindicator-0.3.22.ebuild:
+  old
+
+*libindicator-0.4.1-r200 (19 Nov 2011)
+
+  19 Nov 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +libindicator-0.4.1-r200.ebuild:
+  Version bump.
+
+*libindicator-0.3.22 (07 May 2011)
+
+  07 May 2011; Christoph Mende <angelos@gentoo.org>
+  +libindicator-0.3.22.ebuild:
+  Version bump
+
+*libindicator-0.3.13 (18 Sep 2010)
+
+  18 Sep 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  +libindicator-0.3.13.ebuild:
+  Version bump.
+
+  31 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  libindicator-0.3.6.ebuild:
+  Don't build with -Werror wrt #312463 by Jean-Francis Roy.
+
+*libindicator-0.3.6 (31 Mar 2010)
+
+  31 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +libindicator-0.3.6.ebuild,
+  +files/libindicator-0.3.6-missing_template.patch:
+  Version bump wrt #310077 by Matt Enright.
+
+*libindicator-0.2.1 (01 Nov 2009)
+
+  01 Nov 2009; Romain Perier <mrpouet@gentoo.org>
+  +libindicator-0.2.1.ebuild:
+  Version bump.
+
+*libindicator-0.2.0 (21 Sep 2009)
+
+  21 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +libindicator-0.2.0.ebuild:
+  Initial commit. Used by gnome-extra/indicator-applet and
+  xfce-extra/xfce4-indicator-plugin.

@@ -1,0 +1,82 @@
+# ChangeLog for dev-perl/Params-Classify
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Params-Classify/ChangeLog,v 1.11 2015/06/13 21:38:57 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Params-Classify-0.13.0-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*Params-Classify-0.13.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Params-Classify-0.13.0-r1.ebuild, -Params-Classify-0.13.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  01 Apr 2012; Raúl Porcel <armin76@gentoo.org> Params-Classify-0.13.0.ebuild:
+  Add ~ia64/~s390/~sh/~sparc wrt #403413
+
+  01 Mar 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Add missing cpan remote-id tags in metadata.xml (#406287)
+
+  19 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  Params-Classify-0.13.0.ebuild:
+  Keyworded on alpha, bug #389001
+
+  07 Nov 2011; Fabian Groffen <grobian@gentoo.org>
+  Params-Classify-0.13.0.ebuild:
+  Added Prefix keywords, bug #389001
+
+  06 Nov 2011; Markus Meier <maekke@gentoo.org> Params-Classify-0.13.0.ebuild:
+  add ~arm, bug #389001
+
+  31 Oct 2011; Jeroen Roovers <jer@gentoo.org> Params-Classify-0.13.0.ebuild:
+  Marked ~hppa (bug #389001).
+
+*Params-Classify-0.13.0 (30 Oct 2011)
+
+  30 Oct 2011; Torsten Veller <tove@gentoo.org> +Params-Classify-0.13.0.ebuild,
+  +metadata.xml:
+  Move from ::perl-experimental for Module-Runtime
+
+*Params-Classify-0.013 (08 Jan 2011)
+
+  08 Jan 2011; Torsten Veller <tove@gentoo.org> +Params-Classify-0.013.ebuild:
+  Version bump
+
+*Params-Classify-0.012 (04 Nov 2010)
+
+  04 Nov 2010; Torsten Veller <tove@gentoo.org>
+  +Params-Classify-0.012.ebuild:
+  Version bump
+
+*Params-Classify-0.011 (22 Aug 2010)
+
+  22 Aug 2010; Kent Fredric <kentfredric@gmail.com>
+  +Params-Classify-0.011.ebuild:
+  Bump
+
+  09 Aug 2010; Michele Beltrame <m@cattlegrid.info>
+  Params-Classify-0.009.ebuild:
+  depend on M::B
+
+*Params-Classify-0.009 (11 Oct 2009)
+
+  11 Oct 2009; Kent Fredric <kentfredric@gmail.com>
+  -Params-Classify-0.007.ebuild, -Params-Classify-0.008.ebuild,
+  +Params-Classify-0.009.ebuild:
+  Bumped
+
+*Params-Classify-0.008 (14 Sep 2009)
+
+  14 Sep 2009; Kent Fredric <kentfredric@gmail.com>
+  +Params-Classify-0.008.ebuild:
+  Bumped
+
+*Params-Classify-0.007 (14 Aug 2009)
+
+  14 Aug 2009; Kent Fredric <kentfredric@gmail.com>
+  +Params-Classify-0.007.ebuild, +metadata.xml:
+  Added

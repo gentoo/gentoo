@@ -1,0 +1,6 @@
+diff -Nru zorroutils-0.04.orig/zorroutils.h zorroutils-0.04/zorroutils.h
+--- zorroutils-0.04.orig/zorroutils.h	2000-09-28 20:46:14.000000000 +0200
++++ zorroutils-0.04/zorroutils.h	2006-09-16 18:08:17.000000000 +0200
+@@ -16,1 +16,1 @@
+-#define ZORRO_ID_DB "/usr/share/zorro.ids"
++#define ZORRO_ID_DB "/usr/share/misc/zorro.ids"

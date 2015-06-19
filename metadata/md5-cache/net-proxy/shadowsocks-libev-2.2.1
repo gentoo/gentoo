@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install setup
+DEPEND=openssl? ( dev-libs/openssl:= ) polarssl? ( net-libs/polarssl )
+DESCRIPTION=A lightweight secured scoks5 proxy for embedded devices and low end boxes
+EAPI=5
+HOMEPAGE=https://github.com/shadowsocks/shadowsocks-libev
+IUSE=debug +openssl polarssl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=openssl? ( dev-libs/openssl:= ) polarssl? ( net-libs/polarssl )
+REQUIRED_USE=^^ ( openssl polarssl )
+SLOT=0
+SRC_URI=https://github.com/shadowsocks/shadowsocks-libev/archive/v2.2.1.tar.gz -> shadowsocks-libev-2.2.1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=fdea33999b7b0806e4626bf87642bda0

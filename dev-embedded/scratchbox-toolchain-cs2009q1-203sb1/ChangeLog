@@ -1,0 +1,26 @@
+# ChangeLog for dev-embedded/scratchbox-toolchain-cs2009q1-203sb1
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/scratchbox-toolchain-cs2009q1-203sb1/ChangeLog,v 1.5 2014/08/10 20:05:47 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  scratchbox-toolchain-cs2009q1-203sb1-1.0.13.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  13 Sep 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #278944
+
+  18 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  scratchbox-toolchain-cs2009q1-203sb1-1.0.13.ebuild:
+  Repeat after me: the next person using binchecks to sidestep QA tests will
+  be asked to refrain from ever committing to the tree.
+
+  18 Jan 2010; Olivier Crête <tester@gentoo.org>
+  scratchbox-toolchain-cs2009q1-203sb1-1.0.13.ebuild:
+  Restore strip/binchecks RESTRICT, it does NOT work without them, bug
+  #296294
+
+*scratchbox-toolchain-cs2009q1-203sb1-1.0.13 (17 Jan 2010)
+
+  17 Jan 2010; Dominik Kapusta <ayoy@gentoo.org>
+  +scratchbox-toolchain-cs2009q1-203sb1-1.0.13.ebuild, +metadata.xml:
+  Initial commit for cs2009q1 203sb1 scratchbox toolchain

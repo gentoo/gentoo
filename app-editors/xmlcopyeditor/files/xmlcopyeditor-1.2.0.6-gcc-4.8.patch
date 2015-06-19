@@ -1,0 +1,13 @@
+--- a/xmlcopyeditor-1.2.0.9/src/housestyle.h	2012-10-07 09:19:52.000000000 -0400
++++ b/xmlcopyeditor-1.2.0.9/src/housestyle.h	2013-04-03 10:27:46.784455182 -0400
+@@ -68,8 +68,9 @@
+ 		           filterDirectory,
+ 		           filterFile,
+ 		           pathSeparator,
+-		           error,
++		           error
+ #ifdef __WXMSW__
++                   ,
+                    aspellDataPath,
+                    aspellDictPath
+ #endif

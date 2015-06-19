@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=>=dev-lang/ocaml-3.11:=[ocamlopt] dev-ml/easy-format:=[ocamlopt] dev-ml/biniou:=[ocamlopt] dev-ml/cppo >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=JSON parsing and pretty-printing library for OCaml
+EAPI=5
+HOMEPAGE=http://mjambon.com/yojson.html
+IUSE=examples
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=>=dev-lang/ocaml-3.11:=[ocamlopt] dev-ml/easy-format:=[ocamlopt] dev-ml/biniou:=[ocamlopt]
+SLOT=0/1.2.0
+SRC_URI=https://github.com/mjambon/yojson/archive/v1.2.0.tar.gz -> yojson-1.2.0.tar.gz
+_eclasses_=findlib	9cf6020ee5481f39f1aa566a323f9868
+_md5_=2b6043cf8cfe815f0a7d569caf41596c

@@ -1,0 +1,56 @@
+# ChangeLog for dev-tcltk/tclperl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tclperl/ChangeLog,v 1.15 2015/03/25 15:56:31 jlec Exp $
+
+  25 Mar 2015; Justin Lecher <jlec@gentoo.org> -tclperl-3.2.ebuild,
+  metadata.xml:
+  Drop old
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> tclperl-3.2-r1.ebuild:
+  Stable for x86, wrt bug #543882
+
+  24 Mar 2015; Agostino Sarubbo <ago@gentoo.org> tclperl-3.2-r1.ebuild:
+  Stable for amd64, wrt bug #543882
+
+*tclperl-3.2-r1 (20 Mar 2015)
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> +tclperl-3.2-r1.ebuild:
+  Fix tcl/tk slotting; Bump to EAPI=5
+
+  07 Oct 2012; Agostino Sarubbo <ago@gentoo.org> -tclperl-3.1.ebuild:
+  Remove old
+
+  23 May 2011; Thomas Kahle <tomka@gentoo.org> tclperl-3.2.ebuild:
+  x86 stable per bug 364825
+
+  11 May 2011; Christoph Mende <angelos@gentoo.org> tclperl-3.2.ebuild:
+  Stable on amd64 wrt bug #364825
+
+  28 May 2010; Justin Lecher <jlec@gentoo.org> tclperl-3.2.ebuild:
+  Added missing LDFLAGS #247189
+
+*tclperl-3.2 (01 May 2007)
+
+  01 May 2007; MATSUU Takuto <matsuu@gentoo.org> +tclperl-3.2.ebuild:
+  Version bumped.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Nov 2004; <pyrania@gentoo.org> tclperl-3.1.ebuild:
+  Marked stable on x86.
+
+*tclperl-3.1 (22 Oct 2004)
+
+  22 Oct 2004; MATSUU Takuto <matsuu@gentoo.org> +tclperl-2.5-r1.ebuild,
+  +tclperl-3.1.ebuild:
+  Fixed compile error. Bug 68281.
+  Version bumped.
+
+  17 Oct 2004; David Holm <dholm@gentoo.org> tclperl-2.5.ebuild:
+  Added to ~ppc.
+
+*tclperl-2.5 (17 May 2004)
+
+  17 May 2004; <matsuu@gentoo.org> +tclperl-2.5.ebuild:
+  Initial import.

@@ -1,0 +1,88 @@
+# ChangeLog for dev-perl/Text-Unaccent
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Text-Unaccent/ChangeLog,v 1.21 2014/08/22 20:29:23 axs Exp $
+
+*Text-Unaccent-1.80.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Text-Unaccent-1.80.0-r1.ebuild, -Text-Unaccent-1.80.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Text-Unaccent-1.08.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Text-Unaccent-1.80.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Text-Unaccent-1.80.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +Text-Unaccent-1.80.0.ebuild:
+  Change version scheme
+
+  18 Apr 2010; Torsten Veller <tove@gentoo.org> Text-Unaccent-1.08.ebuild:
+  Fix LICENSE. EAPI=3. Maintenance
+
+  14 Jan 2010; Fabian Groffen <grobian@gentoo.org>
+  Text-Unaccent-1.08.ebuild:
+  Transfer Prefix keywords
+
+  25 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Text-Unaccent-1.08.ebuild:
+  Marking amd64 stable, bug 112272
+
+  25 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  +files/text-unaccent_size_t.diff, Text-Unaccent-1.08.ebuild:
+  Patch from novas0x2a - sizeof(size_t) != sizeof(int) after all. Tested on
+  x86, sparc, amd64.
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Text-Unaccent-1.08.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  19 Jul 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Text-Unaccent-1.08.ebuild:
+  Stable on alpha.
+
+  11 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  Text-Unaccent-1.08.ebuild:
+  Keywording ~amd64 for bins
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> Text-Unaccent-1.08.ebuild:
+  Mark 1.08 stable on ia64
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org> Text-Unaccent-1.08.ebuild:
+  Mark 1.08 ~ia64
+
+  19 Feb 2006; Bryan Østergaard <kloeri@gentoo.org
+  Text-Unaccent-1.08.ebuild:
+  ~alpha keyword, bug 112272.
+
+  27 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  Text-Unaccent-1.08.ebuild:
+  Stable on hppa, ppc.
+
+  15 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Text-Unaccent-1.08.ebuild:
+  Mirror syntax
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Text-Unaccent-1.08.ebuild:
+  marking sparc x86 stable
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Text-Unaccent-1.08.ebuild:
+  Marking stable x86, dep for bins
+
+  14 Nov 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Text-Unaccent-1.08.ebuild:
+  Added to ~hppa, ~ppc. See bug #112272.
+
+*Text-Unaccent-1.08 (12 Nov 2005)
+
+  12 Nov 2005; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +Text-Unaccent-1.08.ebuild:
+  New dep for app-misc/bins

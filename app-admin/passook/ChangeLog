@@ -1,0 +1,65 @@
+# ChangeLog for app-admin/passook
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/passook/ChangeLog,v 1.22 2012/12/19 16:23:01 jer Exp $
+
+  19 Dec 2012; Jeroen Roovers <jer@gentoo.org> -passook-1.0.0.ebuild:
+  Old.
+
+  19 Dec 2012; Jeroen Roovers <jer@gentoo.org> passook-20121001.ebuild:
+  Stable for HPPA (bug #441046).
+
+  01 Dec 2012; Raúl Porcel <armin76@gentoo.org> passook-1.0.0.ebuild,
+  passook-20121001.ebuild:
+  Drop sparc keywords
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> passook-20121001.ebuild:
+  Stable for x86, wrt bug #441046
+
+  04 Nov 2012; Agostino Sarubbo <ago@gentoo.org> passook-20121001.ebuild:
+  Stable for amd64, wrt bug #441046
+
+  03 Nov 2012; Anthony G. Basile <blueness@gentoo.org> passook-20121001.ebuild:
+  stable ppc ppc64, bug #441046
+
+*passook-20121001 (01 Oct 2012)
+
+  01 Oct 2012; Ulrich Müller <ulm@gentoo.org> passook-1.0.0.ebuild,
+  +passook-20121001.ebuild:
+  New snapshot from upstream git repo. License is GPL-3+ now, bug 436178.
+
+  06 Apr 2010; Jonathan Callen <abcd@gentoo.org> passook-1.0.0.ebuild,
+  -files/passook.diff, +files/passook.patch:
+  Bump to EAPI=3, add prefix keywords, update patch
+
+  26 Jan 2008; Fabian Groffen <grobian@gentoo.org> passook-1.0.0.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  09 Sep 2005; Luis Medinas <metalgod@gentoo.org> passook-1.0.0.ebuild:
+  Marked Stable on AMD64. Closes bug #105251.
+
+  09 Aug 2005; Luis Medinas <metalgod@gentoo.org> passook-1.0.0.ebuild:
+  Added ~amd64 Keywords.
+
+  29 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> passook-1.0.0.ebuild:
+  inherit eutils for epatch
+
+  07 Mar 2004; Tom Gall <tgall@gentoo.org> passook-1.0.0.ebuild:
+  stable on ppc64
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*passook-1.0.0 (25 Jul 2002)
+  29 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> passoook-1.0.0.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  25 Jul 2002; Seemant Kulleen <seemant@gentoo.org> passoook-1.0.0.ebuild :
+
+  Version bump, kinda. Upstream doesn't attach a version to the filename, so
+  this is pretty much just an updated ebuild, with nothing more.
+
+*passook-0.5.0 (9 Mar 2002)
+
+  9 Mar 2002; T.Bangert <thilo.bangert@gmx.net> ChangeLog :
+  
+  created passook ebuild

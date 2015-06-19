@@ -1,0 +1,11 @@
+--- Gauche-0.9.3.2.orig/ext/tls/Makefile.in
++++ Gauche-0.9.3.2/ext/tls/Makefile.in
+@@ -77,6 +77,8 @@
+ 	@sed -e "s@\.\./ssl/@../../$(srcdir)/axTLS/ssl/@g" \
+              -e "s/system/safe_system/g" \
+              -e "s@openssl @sh ../../$(srcdir)/kick_openssl @g" \
++             -e "/do_reneg = 1;/i#if 0" \
++             -e "/do_reneg = 0;/a#endif"  \
+              $(srcdir)/axTLS/ssl/test/ssltest.c >> $(SSLTEST_GENERATED)
+ 	@cat $(srcdir)/system-fix.c >> $(SSLTEST_GENERATED)
+ 

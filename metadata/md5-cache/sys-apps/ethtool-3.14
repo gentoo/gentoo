@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DEPEND=app-arch/xz-utils
+DESCRIPTION=Utility for examining and tuning ethernet-based network interfaces
+EAPI=4
+HOMEPAGE=http://www.kernel.org/pub/software/network/ethtool/
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://kernel/software/network/ethtool/ethtool-3.14.tar.xz
+_md5_=f6f1ba57e90f7ca88622f34db3423c6f

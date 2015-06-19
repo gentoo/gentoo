@@ -1,0 +1,32 @@
+# ChangeLog for net-misc/xrdp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/xrdp/ChangeLog,v 1.13 2015/02/19 16:58:37 mgorny Exp $
+
+*xrdp-0.8.0-r1 (19 Feb 2015)
+
+  19 Feb 2015; Michał Górny <mgorny@gentoo.org>
+  +files/xrdp-0.8.0-crypt-null-return.patch, +xrdp-0.8.0-r1.ebuild,
+  -xrdp-0.6.1.ebuild, -xrdp-0.8.0.ebuild:
+  Patch out crypt() NULL return check vulnerability, bug #540630. Remove old.
+
+  27 Oct 2014; Michał Górny <mgorny@gentoo.org> xrdp-0.6.1.ebuild,
+  xrdp-0.8.0.ebuild:
+  Add missing DEPEND, and RDEPEND on backend providers.
+
+  23 Oct 2014; Michał Górny <mgorny@gentoo.org> xrdp-0.6.1.ebuild,
+  xrdp-0.8.0.ebuild:
+  Warn about use of bundled rsakeys.ini, in case someone installed xrdp manually
+  or using a bad ebuild before.
+
+  23 Oct 2014; Michał Górny <mgorny@gentoo.org> files/xrdp-initd,
+  xrdp-0.6.1.ebuild, xrdp-0.8.0.ebuild:
+  Fix install paths in init.d. Set proper --localstatedir. Both reported by Jan
+  Psota.
+
+*xrdp-0.8.0 (23 Oct 2014)
+*xrdp-0.6.1 (23 Oct 2014)
+
+  23 Oct 2014; Michał Górny <mgorny@gentoo.org> +files/startwm.sh,
+  +files/xrdp-initd, +files/xrdp-sesman.pamd, +metadata.xml, +xrdp-0.6.1.ebuild,
+  +xrdp-0.8.0.ebuild:
+  Initial commit of net-misc/xrdp, bug #352363.

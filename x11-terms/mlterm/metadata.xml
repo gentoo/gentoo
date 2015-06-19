@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>cjk</herd>
+  <use>
+    <flag name="fcitx">Enable <pkg>app-i18n/fcitx</pkg> support</flag>
+    <flag name="ibus">Enable <pkg>app-i18n/ibus</pkg> support</flag>
+    <flag name="libssh2">Enable <pkg>net-libs/libssh2</pkg> support</flag>
+    <flag name="regis">Enable ReGIS support</flag>
+    <flag name="scim">Enable <pkg>app-i18n/scim</pkg> support</flag>
+    <flag name="uim">Enable <pkg>app-i18n/uim</pkg> support</flag>
+    <flag name="utempter">Enable <pkg>sys-libs/libutempter</pkg> support</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">mlterm</remote-id>
+  </upstream>
+</pkgmetadata>

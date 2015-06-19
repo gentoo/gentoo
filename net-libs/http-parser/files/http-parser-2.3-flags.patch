@@ -1,0 +1,32 @@
+commit 3752e633e23284133decc8ca8481e4416a317fbc
+Author: hasufell <hasufell@gentoo.org>
+Date:   Sun Jun 30 12:27:04 2013 +0200
+
+    respect system flags
+
+diff --git a/Makefile b/Makefile
+index 64e5c2f..2e20723 100644
+--- a/Makefile
++++ b/Makefile
+@@ -7,9 +7,9 @@ CPPFLAGS_DEBUG += $(CPPFLAGS_DEBUG_EXTRA)
+ CPPFLAGS_FAST = $(CPPFLAGS) -DHTTP_PARSER_STRICT=0
+ CPPFLAGS_FAST += $(CPPFLAGS_FAST_EXTRA)
+ 
+-CFLAGS += -Wall -Wextra -Werror
+-CFLAGS_DEBUG = $(CFLAGS) -O0 -g $(CFLAGS_DEBUG_EXTRA)
+-CFLAGS_FAST = $(CFLAGS) -O3 $(CFLAGS_FAST_EXTRA)
++CFLAGS += -Wall -Wextra
++CFLAGS_DEBUG = $(CFLAGS) $(CFLAGS_DEBUG_EXTRA)
++CFLAGS_FAST = $(CFLAGS) $(CFLAGS_FAST_EXTRA)
+ CFLAGS_LIB = $(CFLAGS_FAST) -fPIC
+ 
+ test: test_g test_fast
+@@ -44,7 +44,7 @@ libhttp_parser.o: http_parser.c http_parser.h Makefile
+ 	$(CC) $(CPPFLAGS_FAST) $(CFLAGS_LIB) -c http_parser.c -o libhttp_parser.o
+ 
+ library: libhttp_parser.o
+-	$(CC) $(LDFLAGS_LIB) -o $(SONAME) $<
++	$(CC) $(CFLAGS) $(LDFLAGS_LIB) -o $(SONAME) $<
+ 
+ package: http_parser.o
+ 	$(AR) rcs libhttp_parser.a http_parser.o

@@ -1,0 +1,319 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/ia64/package.use.mask,v 1.172 2015/06/13 16:03:46 pacho Exp $
+
+# Pacho Ramos <pacho@gentoo.org> (13 Jun 2015)
+# Missing keywords, bug #513108
+net-misc/spice-gtk smartcard webdav
+
+# James Le Cuirot <chewi@gentoo.org> (11 Jun 2015)
+# Temporarily mask rdeps of rhino, which has EAPI 1, until I have a
+# chance to drop Java support on ia64 entirely.
+dev-java/icedtea javascript
+
+# Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
+# net-fs/libnfs lacks ia64 keyword, bug #551576
+gnome-base/gvfs nfs
+
+# Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
+# dev-lang/luajit and dev-lua/lgi and lack ia64 keyword, bug #551540
+dev-libs/libpeas lua jit
+
+# James Le Cuirot <chewi@gentoo.org> (20 May 2015)
+# Temporarily mask rdeps of icedtea-web to deal with bug #549134 until
+# I have a chance to drop Java support on ia64 entirely.
+dev-java/icedtea nsplugin webstart
+
+# Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
+# Needs sci-physics/bullet & media-libs/libsdl2 tested #499974
+dev-libs/efl physics sdl
+
+# Michał Górny <mgorny@gentoo.org> (08 Mar 2015)
+# Dependency not keyworded on this arch, bug #542570.
+xfce-base/xfce4-settings libinput
+
+# Alexis Ballier <aballier@gentoo.org> (11 Feb 2015)
+# Missing ffmpeg deps, bug #510340
+media-video/ffmpeg x265 gme ssh
+
+# Patrick Lauer <patrick@gentoo.org> (10 Feb 2015)
+# Missing keywords for media-libs/x265
+media-video/libav x265
+
+# Pacho Ramos <pacho@gentoo.org> (10 Jan 2014)
+# Missing keywords
+net-misc/networkmanager teamd
+
+# Gilles Dartiguelongue <eva@gentoo.org> (23 Dec 2014)
+# New dependencies for wayland support in Gnome 3.14
+# See bug #533420.
+media-libs/clutter egl
+x11-wm/mutter kms
+
+# Mark Wright <gienah@gentoo.org> (14-23 Dec 2014)
+# test dependencies need keywording
+dev-haskell/binary test
+dev-haskell/text test
+dev-haskell/vector test
+
+# Pacho Ramos <pacho@gentoo.org> (11 Nov 2014)
+# Missing keywords, bug #523686
+>=dev-libs/libgdata-0.16.1 test
+
+# Michał Górny <mgorny@gentoo.org> (30 Oct 2014)
+# Requires non-keyworded >=x11-libs/libxkbcommon-0.4.
+sys-apps/systemd terminal
+sys-apps/systemd xkb
+
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (16 Sep 2014)
+# Needs libepoxy keywording, bug #510940
+x11-base/xorg-server glamor wayland
+
+# Maciej Mrozowski <reavertm@gentoo.org> (13 Aug 2014)
+# Missing keywords on dev-libs/protobuf-c (bug 519772)
+>=net-libs/libgadu-1.12.0 gg11
+
+# Christoph Junghans <ottxor@gentoo.org> (21 Jul 2014)
+# Missing keywords on sci-libs/libcerf (bug 517726)
+sci-visualization/gnuplot libcerf
+
+# Markos Chandras <hwoarang@gentoo.org> (26 Apr 2014)
+# dev-libs/jansson is not keyworded for ia64. Bug #507428
+app-admin/ulogd json
+
+# Pacho Ramos <pacho@gentoo.org> (12 Apr 2014)
+# Missing keywords, bug #507490
+net-misc/modemmanager mbim
+
+# Mike Frysinger <vapier@gentoo.org> (15 Mar 2014)
+# Various deps not ported to ia64.
+dev-python/ipython nbconvert notebook
+
+# Mike Frysinger <vapier@gentoo.org> (15 Mar 2014)
+# dev-python/greenlet is not ported to ia64.
+dev-python/pyzmq green test
+
+# Pacho Ramos <pacho@gentoo.org> (15 Mar 2014)
+# Missing keywords, bug #504672
+>=net-misc/vinagre-3.10 rdp
+
+# Pacho Ramos <pacho@gentoo.org> (23 Feb 2014)
+# Needed dependencies cannot be installed on ia64, bug #498638
+dev-util/dbus-test-runner test
+
+# Pacho Ramos <pacho@gentoo.org> (22 Feb 2014)
+# Missing keywords, bug #495250
+>=gnome-base/gnome-extra-apps-3.10 tracker
+
+# Pacho Ramos <pacho@gentoo.org> (10 Feb 2014)
+# Missing keywords, bug #495254
+>=dev-libs/totem-pl-parser-3.10 quvi
+>=media-video/totem-3.10 flash
+
+# Pacho Ramos <pacho@gentoo.org> (19 Jan 2014)  
+# Missing keywords, bug #478254
+gnome-base/gnome classic extras
+
+# Pacho Ramos <pacho@gentoo.org> (11 Jan 2014)
+sys-kernel/dracut -dracut_modules_systemd
+
+# Julian Ospald <hasufell@gentoo.org> (04 Jan 2014)
+# no keyword for media-libs/tremor
+>=dev-libs/DirectFB-1.7.1 tremor
+
+# Pacho Ramos <pacho@gentoo.org> (02 Dec 2013)
+# Missing keywords, bug #493156
+media-libs/libgphoto2 serial
+
+# Pacho Ramos <pacho@gentoo.org> (28 Nov 2013)
+# Missing keywords, bug #492820
+net-im/telepathy-connection-managers sipe
+
+# Mark Wright <gienah@gentoo.org> (26 Oct 2013)
+# template-haskell not yet available
+dev-haskell/dataenc test
+
+# Pacho Ramos <pacho@gentoo.org> (20 Jul 2013)
+# Keywords pending, bug #476710
+>=gnome-base/gnome-extra-apps-3.8 games
+
+# Patrick Lauer <patrick@gentoo.org> (17 Jun 2013)
+# Fix per-arch mask of phonon[zeitgeist] #460140
+media-libs/phonon zeitgeist
+
+# Tom Wijsman <TomWij@gentoo.org> (9 May 2013)
+# Unmasking dev-java/antlr[java] as per bug #412223, acked by sera.
+dev-java/antlr -java
+
+# Dirkjan Ochtman <djc@gentoo.org> (3 May 2013)
+# depends on net-libs/polarssl
+>=net-misc/openvpn-2.3.1 polarssl
+
+# Gilles Dartiguelongue <eva@gentoo.org> (1 Apr 2013)
+# missing keyword on media-libs/tremor, bug #453200
+media-libs/gst-plugins-base ivorbis
+
+# Julian Ospald <hasufell@gentoo.org> (31 Mar 2013)
+# depends on mono/monodevelop
+>=net-irc/hexchat-2.9.4-r1 theme-manager
+
+# Sergei Trofimovich <slyfox@gentoo.org> (26 Mar 2013)
+# sys-devel/llvm has no ia64 keywords
+dev-lang/ghc llvm
+
+# Agostino Sarubbo <ago@gentoo.org> (09 Feb 2013)
+# Mask media-video/libav[hardcoded-tables] bug #453328
+# I don't use use.mask because it works on ffmpeg
+media-video/libav hardcoded-tables
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Jan 2013)
+# remove mask when net-libs/libqmi is keyworded here
+net-misc/modemmanager qmi qmi-newest
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (22 Jan 2013)
+# remove mask if/when media-gfx/argyllcms is keywored here.
+x11-misc/colord argyllcms extra-print-profiles
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Dec 2012)
+# remove mask if/when mail-client/thunderbird is keyworded here
+app-misc/tracker thunderbird
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Dec 2012)
+# requires app-office/unoconv, which requires virtual/ooo, which is not
+# keyworded here. Remove mask if this situation changes.
+gnome-extra/sushi office
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (27 Dec 2012)
+# remove mask when dev-java/fop is keyworded here
+gnome-extra/libgda reports
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (26 Dec 2012)
+# remove when app-accessibility/at-spi2-core is stable for ia64
+=net-libs/webkit-gtk-1.8.3-r300 webkit2
+
+# Agostino Sarubbo <ago@gentoo.org> (18 Dec 2012)
+# kde is not stable, then no needs phonon backends
+media-libs/phonon gstreamer vlc
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (15 Dec 2012)
+# media-video/coherence not keyworded
+=media-video/totem-2* upnp-av
+
+# Robin H Johnson <robbat2@gentoo.org> (01 Nov 2012)
+# MySQL 5.5 wants systemtap, tcmalloc & jemalloc
+>=dev-db/mysql-5.5 tcmalloc
+>=dev-db/mariadb-5.5 tcmalloc
+>=dev-db/percona-server-5.5 tcmalloc
+
+# Raúl Porcel <armin76@gentoo.org> (28 May 2012)
+# Needs x11-misc/lightdm(which also requires some other deps)
+x11-misc/xscreensaver new-login
+
+# Mike Frysinger <vapier@gentoo.org> (10 May 2012)
+# We only want java available for unstable ebuilds, but we can't do that
+# currently, so we have to mask it from packages that go stable :(.  #412223
+app-accessibility/brltty java
+app-pda/pilot-link java
+app-text/hyperestraier java
+dev-db/qdbm java
+dev-lang/R java
+dev-libs/beecrypt java
+dev-libs/cyrus-sasl java
+dev-libs/link-grammar java
+dev-ruby/fakeweb java
+dev-ruby/net-scp java
+dev-ruby/net-ssh java
+dev-ruby/test-spec java
+dev-ruby/tmail java
+dev-tex/tex4ht java
+dev-vcs/subversion java
+gnome-extra/libgda java
+media-libs/libcaca java
+net-dns/libidn java
+net-print/cups java
+sys-libs/db java
+www-client/firefox java
+www-client/seamonkey java
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
+# Requires gnutls[pkcs11], which is use.masked on ia64
+net-libs/glib-networking smartcard
+
+# Ralph Sennhauser <sera@gentoo.org> (31 Dec 2011)
+# Needs dev-java/fop which is not available for ia64 due to missing JVM #345433
+net-analyzer/wireshark doc-pdf
+
+# Alexey Shvetsov <alexxy@gentoo.org> (17 Dec 2011)
+# Mask use numa for openmpi
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_fabrics_sctp openmpi_ofed_features_rdmacm
+
+# Raúl Porcel <armin76@gentoo.org> (05 Nov 2011)
+# jit not supported on ia64
+dev-libs/libpcre jit
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (03 Nov 2011)
+# Missing keywords in gst-plugins-{faac,lame,twolame}, bug #389433
+gnome-extra/gnome-media aac mp3 twolame
+
+# Robin H. Johnson <robbat2@gentoo.org> (03 Sep 2011)
+# Remove this for your arch after you keyword dev-utils/google-perftools (bug #381737
+dev-libs/libmemcached tcmalloc
+
+# Alexey Shvetsov <alexxy@gentoo.org> (31 Aug 2011)
+# Mask numa use flag per bug #381313
+sys-apps/hwloc numa
+
+# Pacho Ramos <pacho@gentoo.org> (19 Jul 2011)
+# Missing keywords on dependencies
+app-cdr/brasero vcd
+
+# Tomáš Chvátal <scarabeus@gentoo.org> (4 Apr 2011)
+# Needs sci-libs/umfpack keyworded. Bug #361947.
+media-libs/gegl umfpack
+
+# Sebastian Pipping <sping@gentoo.org> (22 Feb 2011)
+# No media-sound/lilypond here, yet (bug #356069)
+app-text/asciidoc test
+
+# Diego Elio Pettenò <flameeyes@gentoo.org> (17 Dec 2010)
+# needs sys-libs/libcap-ng that is masked right now
+sys-apps/smartmontools caps
+
+# Raúl Porcel <armin76@gentoo.org> (5 Dec 2010)
+# Mask doc-pdf because of Java dependencies (bug #347259)
+net-analyzer/wireshark doc-pdf
+# Needs testing
+www-client/elinks javascript
+
+# Raúl Porcel <armin76@gentoo.org> (19 Sep 2010)
+# dev-ruby/ffi fails to build
+dev-ruby/nokogiri ffi
+
+# Raúl Porcel <armin76@gentoo.org> (26 Jun 2010)
+# custom-optimization doesn't work on ia64
+mail-client/thunderbird custom-optimization
+www-client/firefox custom-optimization
+www-client/seamonkey custom-optimization
+
+# Ben de Groot <yngwin@gentoo.org> (16 Jan 2010)
+# qtmultimedia is not keyworded, bug 293671
+dev-python/PyQt4 multimedia
+
+# Raúl Porcel <armin76@gentoo.org)
+# Keep deps minimal
+x11-wm/fvwm lock
+
+# Raúl Porcel <armin76@gentoo.org> (11 Apr 2009)
+# net-libs/webkit-gtk segfaults but dev-qt/qtwebkit doesn't
+dev-python/PyQt4 -webkit
+
+# Jean-Noel Rivasseau <elvanor@gentoo.org> (28 Jul 2008)
+# icu4j tests need jdk-1.6
+dev-java/icu4j test
+
+# Raúl Porcel <armin76@gentoo.org> (07 Jul 2008)
+# Make clisp deps minimal
+dev-lisp/clisp hyperspec pari svm
+
+# missing keywords
+media-plugins/gst-plugins-meta dts dv lame libvisual modplug mms taglib vcd wavpack

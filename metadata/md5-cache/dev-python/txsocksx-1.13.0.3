@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-python/vcversioner[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=Twisted client endpoints for SOCKS{4,4a,5}
+EAPI=5
+HOMEPAGE=https://github.com/habnabit/txsocksx
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>=dev-python/parsley-1.2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pyopenssl[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/twisted-core[python_targets_python2_7(-)?,-python_single_target_python2_7(-),crypt] dev-python/twisted-web[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/zope-interface[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=mirror://pypi/t/txsocksx/txsocksx-1.13.0.3.tar.gz
+_eclasses_=distutils-r1	c01d5c4af34f4a37a51fc9638299c222	eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	6d3a3cb5705b9fff1aeb7cfa4e3336fe	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=1653e800223a16a9e50f42b6b52c6a13

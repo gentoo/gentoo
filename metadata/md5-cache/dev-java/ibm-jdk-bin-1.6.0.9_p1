@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install nofetch postinst postrm prerm setup unpack
+DEPEND=selinux? ( sec-policy/selinux-java ) >=dev-java/java-config-2.2.0 app-eselect/eselect-java
+DESCRIPTION=IBM Java SE Development Kit
+HOMEPAGE=http://www.ibm.com/developerworks/java/jdk/
+IUSE=X alsa doc examples javacomm nsplugin odbc selinux
+KEYWORDS=-* amd64 ppc ppc64 x86
+LICENSE=IBM-J1.6
+RDEPEND=ppc? ( =virtual/libstdc++-3.3 ) ppc64? ( =virtual/libstdc++-3.3 ) X? ( x11-libs/libXext x11-libs/libXft x11-libs/libXi x11-libs/libXp x11-libs/libXtst x11-libs/libX11 x11-libs/libXt ) alsa? ( media-libs/alsa-lib ) doc? ( =dev-java/java-sdk-docs-1.6.0* ) odbc? ( dev-db/unixODBC ) selinux? ( sec-policy/selinux-java ) >=dev-java/java-config-2.2.0 app-eselect/eselect-java
+RESTRICT=fetch
+SLOT=1.6
+SRC_URI=x86? ( ibm-java-sdk-6.0-9.1-linux-i386.tgz ) amd64? ( ibm-java-sdk-6.0-9.1-linux-x86_64.tgz ) ppc? ( ibm-java-sdk-6.0-9.1-linux-ppc.tgz ) ppc64? ( ibm-java-sdk-6.0-9.1-linux-ppc64.tgz ) javacomm? ( x86? ( ibm-java-javacomm-6.0-9.0-linux-i386.tgz ) amd64? ( ibm-java-javacomm-6.0-9.0-linux-x86_64.tgz ) ppc? ( ibm-java-javacomm-6.0-9.0-linux-ppc.tgz ) ppc64? ( ibm-java-javacomm-6.0-9.0-linux-ppc64.tgz ) )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	java-vm-2	caa0212cf1c60716fd4b3ab09268be3e	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=4b62346d4783fe2c66f57072c7be65ae

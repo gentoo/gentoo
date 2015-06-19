@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>gnustep</herd>
+  <longdescription>This theme closely follows the original NeXT look and feel. The controls and the user interface have the same guidlenies, the menus, scrollbars and general impression are familiar to to the old-style user. But the Shades are more subtle, several controls look the same, but are made less intursive, more subtle. Some icons are smoother.</longdescription>
+</pkgmetadata>

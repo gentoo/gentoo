@@ -1,0 +1,10 @@
+# ChangeLog for dev-util/vmtouch
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/vmtouch/ChangeLog,v 1.1 2014/07/12 10:11:34 dlan Exp $
+
+*vmtouch-0.8.0 (12 Jul 2014)
+
+  12 Jul 2014; Yixun Lan <dlan@gentoo.org> +vmtouch-0.8.0.ebuild,
+  +metadata.xml:
+  initial version added by me
+

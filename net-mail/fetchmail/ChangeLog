@@ -1,0 +1,1076 @@
+# ChangeLog for net-mail/fetchmail
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/fetchmail/ChangeLog,v 1.274 2015/04/08 18:18:33 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> fetchmail-6.3.26-r2.ebuild:
+  Drop old Python implementations
+
+  23 Feb 2015; Michał Górny <mgorny@gentoo.org> fetchmail-6.3.26-r2.ebuild:
+  Update SRC_URI. https://github.com/gentoo/gentoo-portage-rsync-mirror/pull/49
+  by mm1ke.
+
+  23 Oct 2014; Mike Frysinger <vapier@gentoo.org> fetchmail-6.3.26-r2.ebuild:
+  Update HOMEPAGE.
+
+  25 Jan 2014; Tim Harder <radhermit@gentoo.org> -fetchmail-6.3.24.ebuild,
+  -fetchmail-6.3.26.ebuild, -fetchmail-6.3.26-r1.ebuild:
+  Remove old.
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.26-r2.ebuild:
+  Stable for ppc64, wrt bug #487744
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.26-r2.ebuild:
+  Stable for ppc, wrt bug #487744
+
+  17 Dec 2013; Raúl Porcel <armin76@gentoo.org> fetchmail-6.3.26-r2.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #487744
+
+  27 Nov 2013; Markus Meier <maekke@gentoo.org> fetchmail-6.3.26-r2.ebuild:
+  arm stable, bug #487744
+
+  26 Nov 2013; Pacho Ramos <pacho@gentoo.org> fetchmail-6.3.26-r2.ebuild:
+  x86 stable, bug #487744
+
+  14 Nov 2013; Chema Alonso <nimiux@gentoo.org> fetchmail-6.3.26-r2.ebuild:
+  Stable for amd64 wrt bug #487744
+
+  11 Nov 2013; Jeroen Roovers <jer@gentoo.org> fetchmail-6.3.26-r2.ebuild:
+  Stable for HPPA (bug #487744).
+
+*fetchmail-6.3.26-r2 (06 Oct 2013)
+
+  06 Oct 2013; Pacho Ramos <pacho@gentoo.org> +fetchmail-6.3.26-r2.ebuild,
+  +files/fetchmail.conf, +files/fetchmail.service:
+  Add unit file (#487070)
+
+  06 Aug 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.26-r1.ebuild:
+  Stable for s390, wrt bug #477574
+
+  04 Aug 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.26-r1.ebuild:
+  Stable for ia64, wrt bug #477574
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.26-r1.ebuild:
+  Stable for sparc, wrt bug #477574
+
+  30 Jul 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.26-r1.ebuild:
+  Stable for alpha, wrt bug #477574
+
+  27 Jul 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.26-r1.ebuild:
+  Stable for x86, wrt bug #477574
+
+  23 Jul 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.26-r1.ebuild:
+  Stable for arm, wrt bug #477574
+
+  22 Jul 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.26-r1.ebuild:
+  Stable for ppc64, wrt bug #477574
+
+  22 Jul 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.26-r1.ebuild:
+  Stable for ppc, wrt bug #477574
+
+  22 Jul 2013; Jeroen Roovers <jer@gentoo.org> fetchmail-6.3.26-r1.ebuild:
+  Stable for HPPA (bug #477574).
+
+  21 Jul 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.26-r1.ebuild:
+  Stable for amd64, wrt bug #477574
+
+*fetchmail-6.3.26-r1 (31 May 2013)
+
+  31 May 2013; Tim Harder <radhermit@gentoo.org> +fetchmail-6.3.26-r1.ebuild,
+  +files/fetchmail-6.3.26-python-optional.patch,
+  +files/fetchmail-6.3.26-tests.patch:
+  Revbump to fix tests and make python features truly optional (fixes bug
+  #471882).
+
+  30 May 2013; Tim Harder <radhermit@gentoo.org> fetchmail-6.3.26.ebuild:
+  Add PYTHON_REQUIRED_USE for python-single-r1.
+
+  26 May 2013; Tim Harder <radhermit@gentoo.org> -fetchmail-6.3.22.ebuild,
+  -fetchmail-6.3.23.ebuild:
+  Remove old.
+
+*fetchmail-6.3.26 (26 May 2013)
+
+  26 May 2013; Tim Harder <radhermit@gentoo.org> +fetchmail-6.3.26.ebuild:
+  Version bump, migrate to python-single-r1, respect AR (bug #457512).
+
+  01 Mar 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.24.ebuild:
+  Stable for sh, wrt bug #457428
+
+  28 Feb 2013; Jeroen Roovers <jer@gentoo.org> fetchmail-6.3.24.ebuild:
+  Stable for HPPA (bug #457428).
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.24.ebuild:
+  Stable for ia64, wrt bug #457428
+
+  20 Feb 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.24.ebuild:
+  Stable for s390, wrt bug #457428
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.24.ebuild:
+  Stable for alpha, wrt bug #457428
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.24.ebuild:
+  Stable for sparc, wrt bug #457428
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.24.ebuild:
+  Stable for arm, wrt bug #457428
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.24.ebuild:
+  Stable for ppc, wrt bug #457428
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.24.ebuild:
+  Stable for ppc64, wrt bug #457428
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.24.ebuild:
+  Stable for x86, wrt bug #457428
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.24.ebuild:
+  Stable for amd64, wrt bug #457428
+
+*fetchmail-6.3.24 (04 Jan 2013)
+
+  04 Jan 2013; Eray Aslan <eras@gentoo.org> +fetchmail-6.3.24.ebuild:
+  Version bump
+
+  16 Dec 2012; Tim Harder <radhermit@gentoo.org> -fetchmail-6.3.21.ebuild,
+  -files/conf.d-fetchmail, -files/fetchmail.new,
+  -files/fetchmail-gss_c_nt_hostbased_service.patch:
+  Remove old.
+
+*fetchmail-6.3.23 (16 Dec 2012)
+
+  16 Dec 2012; Tim Harder <radhermit@gentoo.org> +fetchmail-6.3.23.ebuild:
+  Version bump.
+
+  05 Oct 2012; Brent Baude <ranger@gentoo.org> fetchmail-6.3.22.ebuild:
+  Marking fetchmail-6.3.22 ppc for bug 431284
+
+  26 Sep 2012; Kacper Kowalik <xarthisius@gentoo.org> fetchmail-6.3.22.ebuild:
+  ppc64 stable wrt #431284
+
+  23 Sep 2012; Raúl Porcel <armin76@gentoo.org> fetchmail-6.3.22.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #431284
+
+  14 Sep 2012; Markus Meier <maekke@gentoo.org> fetchmail-6.3.22.ebuild:
+  arm stable, bug #431284
+
+  13 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> fetchmail-6.3.22.ebuild:
+  x86 stable wrt bug #431284
+
+  06 Sep 2012; Agostino Sarubbo <ago@gentoo.org> fetchmail-6.3.22.ebuild:
+  Stable for amd64, wrt bug #431284
+
+  04 Sep 2012; Jeroen Roovers <jer@gentoo.org> fetchmail-6.3.22.ebuild:
+  Stable for HPPA (bug #431284).
+
+  30 Aug 2012; Tim Harder <radhermit@gentoo.org> fetchmail-6.3.21.ebuild:
+  Inherit user eclass and add quotes to appease repoman.
+
+*fetchmail-6.3.22 (30 Aug 2012)
+
+  30 Aug 2012; Tim Harder <radhermit@gentoo.org> +fetchmail-6.3.22.ebuild:
+  Version bump.
+
+  16 Jun 2012; Fabian Groffen <grobian@gentoo.org> fetchmail-6.3.21.ebuild:
+  Added Prefix keywords, fixed for Prefix
+
+  06 Nov 2011; Eray Aslan <eras@gentoo.org> fetchmail-6.3.21.ebuild,
+  +files/fetchmail-gss_c_nt_hostbased_service.patch:
+  Fix compiling against >=heimdal-1.4 - bug #389347. Thanks to Rafał Mużyło.
+
+  06 Nov 2011; Eray Aslan <eras@gentoo.org> -fetchmail-6.3.20.ebuild:
+  remove old
+
+  27 Aug 2011; Raúl Porcel <armin76@gentoo.org> fetchmail-6.3.21.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #380453
+
+  26 Aug 2011; Thomas Kahle <tomka@gentoo.org> fetchmail-6.3.21.ebuild:
+  x86 stable per bug 380453
+
+  26 Aug 2011; Markos Chandras <hwoarang@gentoo.org> fetchmail-6.3.21.ebuild:
+  Stable on amd64 wrt bug #380453
+
+  25 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> fetchmail-6.3.21.ebuild:
+  ppc/ppc64 stable wrt #380453
+
+  25 Aug 2011; Jeroen Roovers <jer@gentoo.org> fetchmail-6.3.21.ebuild:
+  Stable for HPPA (bug #380453).
+
+*fetchmail-6.3.21 (24 Aug 2011)
+
+  24 Aug 2011; Eray Aslan <eras@gentoo.org> +files/fetchmail.initd,
+  -files/MD5_library_pickup.patch, +fetchmail-6.3.21.ebuild,
+  -files/debian-580796.patch, +files/fetchmail.confd:
+  Version bump. Add socks USE flag - bug #380405. Allow multiple deamons - bug
+  #380371. Remove unused patches.
+
+  05 Aug 2011; Eray Aslan <eras@gentoo.org> files/fetchmail.new:
+  fix deprecated chuid option in init script - bug #377777
+
+  13 Jun 2011; Eray Aslan <eras@gentoo.org> -fetchmail-6.3.19.ebuild:
+  Remove vulnerable version
+
+  12 Jun 2011; Raúl Porcel <armin76@gentoo.org> fetchmail-6.3.20.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #369403
+
+  11 Jun 2011; Markus Meier <maekke@gentoo.org> fetchmail-6.3.20.ebuild:
+  arm stable, bug #369403
+
+  08 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> fetchmail-6.3.20.ebuild:
+  x86 stable wrt security bug #369403
+
+  07 Jun 2011; Markos Chandras <hwoarang@gentoo.org> fetchmail-6.3.20.ebuild:
+  Stable on amd64 wrt bug #369403
+
+  07 Jun 2011; Jeroen Roovers <jer@gentoo.org> fetchmail-6.3.20.ebuild:
+  Stable for HPPA (bug #369403).
+
+  07 Jun 2011; Kacper Kowalik <xarthisius@gentoo.org> fetchmail-6.3.20.ebuild:
+  ppc/ppc64 stable wrt #369403
+
+*fetchmail-6.3.20 (07 Jun 2011)
+
+  07 Jun 2011; Eray Aslan <eras@gentoo.org> +fetchmail-6.3.20.ebuild:
+  Version bump - security bug #369403
+
+  28 May 2011; Eray Aslan <eras@gentoo.org> -fetchmail-6.3.17.ebuild,
+  -fetchmail-6.3.17-r1.ebuild, -fetchmail-6.3.18.ebuild:
+  Remove old versions
+
+  28 May 2011; Brent Baude <ranger@gentoo.org> fetchmail-6.3.19.ebuild:
+  Marking fetchmail-6.3.19 ppc for bug 364849
+
+  23 May 2011; Thomas Kahle <tomka@gentoo.org> fetchmail-6.3.19.ebuild:
+  x86 stable per bug 364849
+
+  21 May 2011; Raúl Porcel <armin76@gentoo.org> fetchmail-6.3.19.ebuild:
+  alpha/ia64/s390/sh/sparc/x86 stable wrt #364849
+
+  17 May 2011; Markus Meier <maekke@gentoo.org> fetchmail-6.3.19.ebuild:
+  arm stable, bug #364849
+
+  13 May 2011; Jeroen Roovers <jer@gentoo.org> fetchmail-6.3.19.ebuild:
+  Stable for HPPA (bug #364849).
+
+  12 May 2011; Eray Aslan <eras@gentoo.org> fetchmail-6.3.19.ebuild:
+  Add flex to depend - bug #221399
+
+  02 May 2011; Samuli Suominen <ssuominen@gentoo.org> fetchmail-6.3.19.ebuild:
+  ppc64 stable wrt #364849
+
+  28 Apr 2011; Markos Chandras <hwoarang@gentoo.org> fetchmail-6.3.19.ebuild:
+  Stable on amd64 wrt bug #364849
+
+  25 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  fetchmail-6.3.17.ebuild, fetchmail-6.3.17-r1.ebuild, fetchmail-6.3.18.ebuild,
+  fetchmail-6.3.19.ebuild:
+  Fix deprecation warnings.
+
+*fetchmail-6.3.19 (13 Dec 2010)
+
+  13 Dec 2010; Torsten Veller <tove@gentoo.org> +fetchmail-6.3.19.ebuild:
+  Version bump. s/com_err/e2fsprogs-libs
+
+*fetchmail-6.3.18 (10 Oct 2010)
+
+  10 Oct 2010; Torsten Veller <tove@gentoo.org> +fetchmail-6.3.18.ebuild:
+  Version bump
+
+  31 May 2010; Torsten Veller <tove@gentoo.org>
+  -files/fetchmail-6.2.5-broken-headers.patch, -fetchmail-6.3.14.ebuild,
+  -fetchmail-6.3.15.ebuild, -fetchmail-6.3.16.ebuild:
+  Cleanup
+
+*fetchmail-6.3.17-r1 (18 May 2010)
+
+  18 May 2010; Torsten Veller <tove@gentoo.org>
+  +files/MD5_library_pickup.patch, +fetchmail-6.3.17-r1.ebuild,
+  +files/debian-580796.patch:
+  Remove insecure connection warning if sslfingerprint is given (#319907).
+  Thanks to David Fellows.
+  Fix linking of libwww's libmd5 (#319283). Thanks to Karl Hakimian and
+  Matthias Andree.
+
+  12 May 2010; Joseph Jezak <josejx@gentoo.org> fetchmail-6.3.17.ebuild:
+  Marked ppc stable for bug #318875.
+
+  10 May 2010; Brent Baude <ranger@gentoo.org> fetchmail-6.3.17.ebuild:
+  Marking fetchmail-6.3.17 ppc64 for bug 318875
+
+  09 May 2010; Raúl Porcel <armin76@gentoo.org> fetchmail-6.3.17.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #318875
+
+  08 May 2010; Jeroen Roovers <jer@gentoo.org> fetchmail-6.3.17.ebuild:
+  Stable for HPPA (bug #318875).
+
+  08 May 2010; Torsten Veller <tove@gentoo.org> fetchmail-6.3.17.ebuild:
+  Stable on amd64 and x86 (#318875)
+
+  07 May 2010; Torsten Veller <tove@gentoo.org> fetchmail-6.3.17.ebuild:
+  Fix PYTHON_DEPEND. Thanks to Arfrever. Maintenance
+
+*fetchmail-6.3.17 (06 May 2010)
+
+  06 May 2010; Torsten Veller <tove@gentoo.org> +fetchmail-6.3.17.ebuild,
+  metadata.xml:
+  Version bump. Fetchmailconf is installed only if USE=tk.
+
+*fetchmail-6.3.16 (07 Apr 2010)
+
+  07 Apr 2010; Torsten Veller <tove@gentoo.org> +fetchmail-6.3.16.ebuild:
+  Version bump
+
+  29 Mar 2010; Torsten Veller <tove@gentoo.org>
+  -files/6.3.11-fix-free-corruption.patch, -fetchmail-6.3.11-r1.ebuild,
+  -fetchmail-6.3.13.ebuild:
+  Cleanup
+
+*fetchmail-6.3.15 (29 Mar 2010)
+
+  29 Mar 2010; Torsten Veller <tove@gentoo.org> +fetchmail-6.3.15.ebuild:
+  Version bump. Upstream introduces a bad-header option so remove our
+  bad-header patch
+
+  10 Mar 2010; Jeroen Roovers <jer@gentoo.org> fetchmail-6.3.14.ebuild:
+  Stable for HPPA (bug #307761).
+
+  09 Mar 2010; Joseph Jezak <josejx@gentoo.org> fetchmail-6.3.14.ebuild:
+  Marked ppc stable for bug #307761.
+
+  08 Mar 2010; Brent Baude <ranger@gentoo.org> fetchmail-6.3.14.ebuild:
+  Marking fetchmail-6.3.14 ppc64 for bug 307761
+
+  05 Mar 2010; Torsten Veller <tove@gentoo.org> fetchmail-6.3.14.ebuild:
+  Stable on amd64 (#307761)
+
+  04 Mar 2010; Raúl Porcel <armin76@gentoo.org> fetchmail-6.3.14.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #307761
+
+  04 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  fetchmail-6.3.14.ebuild:
+  stable x86, security bug 307761
+
+*fetchmail-6.3.14 (05 Feb 2010)
+
+  05 Feb 2010; Torsten Veller <tove@gentoo.org> +fetchmail-6.3.14.ebuild:
+  Version bump
+
+  30 Oct 2009; Torsten Veller <tove@gentoo.org> fetchmail-6.3.13.ebuild:
+  Run --with-ssl before --with-kerberos. Kerberos requires ssl. Heimdal is
+  not really usable as long as openssl doesn't support it (#245934)
+
+*fetchmail-6.3.13 (30 Oct 2009)
+
+  30 Oct 2009; Torsten Veller <tove@gentoo.org> -fetchmail-6.3.11.ebuild,
+  +fetchmail-6.3.13.ebuild:
+  Version bump (#288578). Adds heimdal support (#185652, #231400). Drops
+  Kerberos V4 support. Cleanup
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> fetchmail-6.3.11-r1.ebuild:
+  ppc stable #282015
+
+  05 Sep 2009; Brent Baude <ranger@gentoo.org> fetchmail-6.3.11-r1.ebuild:
+  Marking fetchmail-6.3.11-r1 ppc64 for bug 282015
+
+  01 Sep 2009; Jeroen Roovers <jer@gentoo.org> fetchmail-6.3.11-r1.ebuild:
+  Stable for HPPA (bug #282015).
+
+  29 Aug 2009; Raúl Porcel <armin76@gentoo.org> fetchmail-6.3.11-r1.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #282015
+
+  23 Aug 2009; Torsten Veller <tove@gentoo.org> fetchmail-6.3.11-r1.ebuild:
+  Add full path to python_mod_optimize.
+
+  19 Aug 2009; Torsten Veller <tove@gentoo.org> -fetchmail-6.3.8-r1.ebuild,
+  -files/fetchmail-6.3.8-null-msg-pointer.patch,
+  -files/fetchmail-6.3.8-resize-buffer.patch, -fetchmail-6.3.9.ebuild,
+  -fetchmail-6.3.9-r1.ebuild, -files/fetchmail:
+  Cleanup
+
+  19 Aug 2009; Torsten Veller <tove@gentoo.org> fetchmail-6.3.11-r1.ebuild:
+  Stable on x86, amd64 (282015)
+
+*fetchmail-6.3.11-r1 (15 Aug 2009)
+
+  15 Aug 2009; Torsten Veller <tove@gentoo.org>
+  +files/6.3.11-fix-free-corruption.patch, +fetchmail-6.3.11-r1.ebuild:
+  Bump to fix segmentation fault (#280760)
+
+  10 Aug 2009; Markus Meier <maekke@gentoo.org> fetchmail-6.3.11.ebuild:
+  amd64 stable, bug #280537
+
+  09 Aug 2009; Raúl Porcel <armin76@gentoo.org> fetchmail-6.3.11.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #280537
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> fetchmail-6.3.11.ebuild:
+  ppc stable #280537
+
+  08 Aug 2009; Jeroen Roovers <jer@gentoo.org> fetchmail-6.3.11.ebuild:
+  Stable for HPPA (bug #280537).
+
+  08 Aug 2009; Brent Baude <ranger@gentoo.org> fetchmail-6.3.11.ebuild:
+  Marking fetchmail-6.3.11 ppc64 for bug 280537
+
+  06 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  fetchmail-6.3.11.ebuild:
+  stable x86, security bug 280537
+
+  06 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  fetchmail-6.3.11.ebuild:
+  request USE=krb4 on app-crypt/mit-krb5
+
+*fetchmail-6.3.11 (06 Aug 2009)
+
+  06 Aug 2009; Torsten Veller <tove@gentoo.org> +fetchmail-6.3.11.ebuild:
+  Version bump
+
+*fetchmail-6.3.9-r1 (20 Feb 2009)
+
+  20 Feb 2009; Jeremy Olexa <darkside@gentoo.org> +files/fetchmail.new,
+  +fetchmail-6.3.9-r1.ebuild:
+  (non maintainer commit) don't run fetchmail as root - create new fetchmail
+  user instead, long standing bug in Gentoo. Fixed by Brian Verkley in bug
+  124387
+
+  11 Jan 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  -files/fetchmail-6.3.7-poll-again.patch, -fetchmail-6.3.6.ebuild,
+  -fetchmail-6.3.7-r1.ebuild, -fetchmail-6.3.8.ebuild,
+  -fetchmail-6.3.8-r2.ebuild:
+  Clean up
+
+  10 Jan 2009; Markus Meier <maekke@gentoo.org> fetchmail-6.3.9.ebuild:
+  amd64 stable, bug #253871
+
+  07 Jan 2009; Raúl Porcel <armin76@gentoo.org> fetchmail-6.3.9.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #253871
+
+  07 Jan 2009; Jeroen Roovers <jer@gentoo.org> fetchmail-6.3.9.ebuild:
+  Stable for HPPA (bug #253871).
+
+  06 Jan 2009; Brent Baude <ranger@gentoo.org> fetchmail-6.3.9.ebuild:
+  Marking fetchmail-6.3.9 ppc64 for bug 253871
+
+  06 Jan 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  fetchmail-6.3.9.ebuild:
+  ppc stable, bug #253871
+
+*fetchmail-6.3.9 (25 Dec 2008)
+
+  25 Dec 2008; Torsten Veller <tove@gentoo.org> +fetchmail-6.3.9.ebuild:
+  Version bump.
+
+  22 Jun 2008; Markus Meier <maekke@gentoo.org> fetchmail-6.3.8-r2.ebuild:
+  amd64 stable, bug #227105
+
+  16 Jun 2008; Jeroen Roovers <jer@gentoo.org> fetchmail-6.3.8-r2.ebuild:
+  Stable for HPPA (bug #227105).
+
+  15 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  fetchmail-6.3.8-r2.ebuild:
+  ppc stable, bug #227105
+
+  15 Jun 2008; Raúl Porcel <armin76@gentoo.org> fetchmail-6.3.8-r2.ebuild:
+  ia64/sparc/x86 stable wrt security #227105
+
+  15 Jun 2008; Tobias Klausmann <klausman@gentoo.org>
+  fetchmail-6.3.8-r2.ebuild:
+  Stable on alpha, bug #227105
+
+  15 Jun 2008; Brent Baude <ranger@gentoo.org> fetchmail-6.3.8-r2.ebuild:
+  Marking fetchmail-6.3.8-r2 ppc64 for bug 227105
+
+  15 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  fetchmail-6.3.8-r2.ebuild:
+  remove useless dodoc ABOUT-NLS
+
+*fetchmail-6.3.8-r2 (15 Jun 2008)
+
+  15 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  +files/fetchmail-6.3.8-resize-buffer.patch, +fetchmail-6.3.8-r2.ebuild:
+  revbump, include fix for security bug #227105
+
+  03 Sep 2007; Raphael Marichez <falco@gentoo.org> ChangeLog:
+  Fix possible security issue (DoS), bug 191154
+
+  12 Jun 2007; Marius Mauch <genone@gentoo.org> fetchmail-6.3.6.ebuild,
+  fetchmail-6.3.7-r1.ebuild, fetchmail-6.3.8.ebuild:
+  Replacing einfo with elog
+
+  13 May 2007; Joshua Kinard <kumba@gentoo.org> fetchmail-6.3.8.ebuild:
+  Stable on mips, per #175022.
+
+  03 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  fetchmail-6.3.8.ebuild:
+  ppc stable, bug #175022
+
+  02 May 2007; Bryan Østergaard <kloeri@gentoo.org> fetchmail-6.3.8.ebuild:
+  Stable on Alpha, bug 175022.
+
+  02 May 2007; Jeroen Roovers <jer@gentoo.org> fetchmail-6.3.8.ebuild:
+  Stable for HPPA (bug #175022).
+
+  01 May 2007; Markus Rothe <corsair@gentoo.org> fetchmail-6.3.8.ebuild:
+  Stable on ppc64; bug #175022
+
+  30 Apr 2007; Steve Dibb <beandog@gentoo.org> fetchmail-6.3.8.ebuild:
+  amd64 stable, security bug 175022
+
+  30 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  fetchmail-6.3.8.ebuild:
+  Stable on sparc wrt security #175022
+
+  30 Apr 2007; Raúl Porcel <armin76@gentoo.org> fetchmail-6.3.8.ebuild:
+  ia64 + x86 stable wrt security bug 175022
+
+*fetchmail-6.3.8 (07 Apr 2007)
+
+  07 Apr 2007; Torsten Veller <tove@gentoo.org> -fetchmail-6.3.7.ebuild,
+  +fetchmail-6.3.8.ebuild:
+  Version bump. Removed old version.
+
+*fetchmail-6.3.7-r1 (07 Mar 2007)
+
+  07 Mar 2007; Andrej Kacian <ticho@gentoo.org>
+  +files/fetchmail-6.3.7-poll-again.patch, -fetchmail-6.3.3.ebuild,
+  -fetchmail-6.3.4.ebuild, +fetchmail-6.3.7-r1.ebuild:
+  Apply patch from upstream to fix bug #163782. Removed obsolete ebuilds.
+
+  18 Feb 2007; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fix broken Manifest. Thanks to drphibes on irc for reporting.
+
+*fetchmail-6.3.7 (18 Feb 2007)
+
+  18 Feb 2007; Andrej Kacian <ticho@gentoo.org> +fetchmail-6.3.7.ebuild:
+  Version bump. Should fix bug #163782, reported upstream as #10133.
+
+  20 Jan 2007; Alexander H. Færøy <eroyf@gentoo.org>
+  fetchmail-6.3.6.ebuild:
+  Stable on MIPS; bug #160463
+
+  18 Jan 2007; Andrej Kacian <ticho@gentoo.org> +fetchmail-6.3.3.ebuild:
+  Readded 6.3.3 at request of Natanael Copa <natanael.copa at gmail.com> in
+  bug #134187 - 6.3.3 is the last version that works with uclibc.
+
+  08 Jan 2007; Torsten Veller <tove@gentoo.org>
+  -files/patch-6.3.2.1-fix-netrc-SIGSEGV.diff,
+  -files/fetchmail-6.3.5-preserve-logging-fd.patch, fetchmail-6.3.4.ebuild,
+  -fetchmail-6.3.5.ebuild, -fetchmail-6.3.5-r1.ebuild:
+  Removed old ebuilds and unused patches.
+  Removed all unneeded keywords from fetchmail-6.3.4.
+
+  08 Jan 2007; Markus Rothe <corsair@gentoo.org> fetchmail-6.3.6.ebuild:
+  Stable on ppc64; bug #160463
+
+  08 Jan 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  fetchmail-6.3.6.ebuild:
+  Stable on ppc wrt bug #160463.
+
+  08 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  fetchmail-6.3.6.ebuild:
+  stable on amd64 wrt bug 160463
+
+  08 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  fetchmail-6.3.6.ebuild:
+  Stable on sparc wrt security #160463
+
+  08 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  fetchmail-6.3.6.ebuild:
+  stable x86, security bug #160463
+
+  08 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> fetchmail-6.3.6.ebuild:
+  Stable on Alpha + IA64, bug 160463.
+
+  08 Jan 2007; Jeroen Roovers <jer@gentoo.org> fetchmail-6.3.6.ebuild:
+  Stable for HPPA (bug #160463).
+
+*fetchmail-6.3.6 (06 Jan 2007)
+
+  06 Jan 2007; Andrej Kacian <ticho@gentoo.org> +fetchmail-6.3.6.ebuild:
+  Version bump.
+
+  05 Jan 2007; Andrej Kacian <ticho@gentoo.org>
+  -files/fetchmail-6.2.5-mit-krb5-1.4.patch:
+  One more patch removal.
+
+  05 Jan 2007; Andrej Kacian <ticho@gentoo.org>
+  -files/fetchmail-6.2.5-gentoo.patch,
+  -files/fetchmail-6.2.5-kerberos.patch, -fetchmail-6.2.5.2-r1.ebuild,
+  -fetchmail-6.3.2.ebuild, -fetchmail-6.3.2-r1.ebuild,
+  -fetchmail-6.3.3.ebuild, fetchmail-6.3.4.ebuild, fetchmail-6.3.5.ebuild,
+  fetchmail-6.3.5-r1.ebuild:
+  Remove old ebuilds and unused patches. Use emake install instead of
+  einstall. Don't run autoconf, since we only apply patches to source files,
+  not to autofoo templates. Closes bug #160170.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  fetchmail-6.2.5.2-r1.ebuild, fetchmail-6.3.2.ebuild,
+  fetchmail-6.3.2-r1.ebuild, fetchmail-6.3.3.ebuild, fetchmail-6.3.4.ebuild,
+  fetchmail-6.3.5.ebuild, fetchmail-6.3.5-r1.ebuild:
+  Remove gnuconfig_update usage, leave it to econf.
+
+  03 Dec 2006; Alexander H. Færøy <eroyf@gentoo.org>
+  fetchmail-6.3.4.ebuild:
+  Stable on MIPS; bug 137187
+
+*fetchmail-6.3.5-r1 (10 Oct 2006)
+
+  10 Oct 2006; Robin H. Johnson <robbat2@gentoo.org>
+  +files/fetchmail-6.3.5-preserve-logging-fd.patch,
+  +fetchmail-6.3.5-r1.ebuild:
+  Fix broken logfd handling, thanks to Brian Harring <ferringb@gmail.com> for
+  helping cook up the patch.
+
+*fetchmail-6.3.5 (09 Oct 2006)
+
+  09 Oct 2006; <ticho@gentoo.org> +fetchmail-6.3.5.ebuild:
+  Version bump.
+
+  09 Oct 2006; Timothy Redaelli <drizzt@gentoo.org> fetchmail-6.3.4.ebuild:
+  Added ~x86-fbsd keyword.
+
+  15 Sep 2006; Thomas Cort <tcort@gentoo.org> fetchmail-6.3.4.ebuild:
+  Stable on alpha wrt Bug #137187.
+
+  19 Aug 2006; Torsten Veller <tove@gentoo.org> fetchmail-6.2.5.2-r1.ebuild,
+  fetchmail-6.3.2.ebuild, fetchmail-6.3.2-r1.ebuild, fetchmail-6.3.3.ebuild,
+  fetchmail-6.3.4.ebuild:
+  dev-lang/python has changed the useflag: tcltk -> tk
+
+  30 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  fetchmail-6.3.4.ebuild:
+  Stable on hppa
+
+  25 Jun 2006; Marcus D. Hanwell <cryos@gentoo.org> fetchmail-6.3.4.ebuild:
+  Marked stable on amd64, bug 137187.
+
+  20 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  fetchmail-6.3.4.ebuild:
+  Stable on sparc wrt #137187
+
+  19 Jun 2006; Michele Noberasco <s4t4n@gentoo.org> fetchmail-6.3.4.ebuild:
+  Stable on x86; bug #137187
+
+  18 Jun 2006; Emanuele Giaquinta <exg@gentoo.org> fetchmail-6.3.4.ebuild:
+  Stable on ppc; bug #137187
+
+  18 Jun 2006; Markus Rothe <corsair@gentoo.org> fetchmail-6.3.4.ebuild:
+  Stable on ppc64; bug #137187
+
+  29 Apr 2006; <tcort@gentoo.org> fetchmail-6.3.2-r1.ebuild:
+  Stable on alpha and amd64 wrt Bug #125301.
+
+*fetchmail-6.3.4 (22 Apr 2006)
+
+  22 Apr 2006; Andrej Kacian <ticho@gentoo.org> +fetchmail-6.3.4.ebuild:
+  Version bump.
+
+*fetchmail-6.3.3 (07 Apr 2006)
+
+  07 Apr 2006; Andrej Kacian <ticho@gentoo.org> +fetchmail-6.3.3.ebuild:
+  Version bump.
+
+  10 Mar 2006; Michael Hanselmann <hansmi@gentoo.org>
+  fetchmail-6.3.2-r1.ebuild:
+  Stable on ppc.
+
+  08 Mar 2006; Markus Rothe <corsair@gentoo.org> fetchmail-6.3.2-r1.ebuild:
+  Stable on ppc64; bug #125301
+
+  02 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  fetchmail-6.3.2-r1.ebuild:
+  Stable on sparc
+
+  01 Mar 2006; Andrej Kacian <ticho@gentoo.org> fetchmail-6.3.2-r1.ebuild:
+  Stable on x86.
+
+  01 Mar 2006; Andrej Kacian <ticho@gentoo.org> fetchmail-6.3.2-r1.ebuild:
+  Changed ppc64 to ~ppc64, was marked stable by mistake.
+
+*fetchmail-6.3.2-r1 (01 Mar 2006)
+
+  01 Mar 2006; Andrej Kacian <ticho@gentoo.org>
+  +files/patch-6.3.2.1-fix-netrc-SIGSEGV.diff, +fetchmail-6.3.2-r1.ebuild:
+  Apply the .netrc segfault patch. Suggested in bug #124477 by Paul Thompson
+  <thompson at pobox.com>.
+
+  27 Feb 2006; Markus Rothe <corsair@gentoo.org> fetchmail-6.3.2.ebuild:
+  Stable on ppc64
+
+  27 Feb 2006; Christian Birchinger <joker@gentoo.org>
+  fetchmail-6.3.2.ebuild:
+  Added sparc stable keyword
+
+  25 Feb 2006; Andrej Kacian <ticho@gentoo.org> fetchmail-6.3.2.ebuild:
+  Stable on x86.
+
+  24 Jan 2006; Torsten Veller <tove@gentoo.org> ChangeLog:
+  Removed fetchmail-6.3.0 and fetchmail-6.3.1 (bug #120218).
+
+*fetchmail-6.3.2 (22 Jan 2006)
+
+  22 Jan 2006; Andrej Kacian <ticho@gentoo.org> +fetchmail-6.3.2.ebuild:
+  Version bump.
+
+*fetchmail-6.3.1 (19 Dec 2005)
+
+  19 Dec 2005; Andrej Kacian <ticho@gentoo.org> +fetchmail-6.3.1.ebuild:
+  Version bump.
+
+*fetchmail-6.3.0 (10 Dec 2005)
+
+  10 Dec 2005; Andrej Kacian <ticho@gentoo.org> +fetchmail-6.3.0.ebuild:
+  Version bump. Start using tarball distributed from berlios.de. Removed some
+  deprecated patches from the new ebuild. Fix bugs #104384 by Natanael Copa
+  <natanael.copa at gmail.com> and #114732 by Daniel Drake <dsd at
+  gentoo.org>.
+
+  31 Oct 2005; Andrej Kacian <ticho@gentoo.org>
+  -files/configure-5.9.14.diff, -files/fetchmail-6.1.0-gentoo.diff,
+  -files/fetchmail-6.2.0-gentoo.diff,
+  -files/fetchmail-6.2.2-multiple-return-path.diff,
+  -files/fetchmail-6.2.5-fetchsizelimit.patch, -fetchmail-5.9.14.ebuild,
+  -fetchmail-6.2.1-r1.ebuild, -fetchmail-6.2.2-r2.ebuild,
+  -fetchmail-6.2.3.ebuild, -fetchmail-6.2.4.ebuild, -fetchmail-6.2.5.ebuild,
+  -fetchmail-6.2.5-r1.ebuild, -fetchmail-6.2.5-r2.ebuild,
+  -fetchmail-6.2.5.2.ebuild:
+  Big ebuild cleanup, as 6.2.5.2-r1 is stable on all supported arches.
+
+  28 Oct 2005; Luis Medinas <metalgod@gentoo.org>
+  fetchmail-6.2.5.2-r1.ebuild:
+  Marked Stable on amd64. Bug #110366.
+
+  26 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  fetchmail-6.2.5.2-r1.ebuild:
+  Stable on ppc.
+
+  26 Oct 2005; Aaron Walker <ka0ttic@gentoo.org>
+  fetchmail-6.2.5.2-r1.ebuild:
+  Stable on mips for bug #110366.
+
+  26 Oct 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  fetchmail-6.2.5.2-r1.ebuild:
+  Stable on hppa. See bug #110366.
+
+  25 Oct 2005; Brent Baude <ranger@gentoo.org> fetchmail-6.2.5.2-r1.ebuild:
+  Marking fetchmail-6.2.5.2-r1 ppc64 stable for bug 110366
+
+  25 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  fetchmail-6.2.5.2-r1.ebuild:
+  stable on alpha as per bug #110366
+
+  25 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  fetchmail-6.2.5.2-r1.ebuild:
+  Stable on sparc wrt #110366
+
+  25 Oct 2005; Andrej Kacian <ticho@gentoo.org> fetchmail-6.2.5.2-r1.ebuild:
+  Stable on x86, security bug #110366.
+
+*fetchmail-6.2.5.2-r1 (25 Oct 2005)
+
+  25 Oct 2005; Andrej Kacian <ticho@gentoo.org>
+  +fetchmail-6.2.5.2-r1.ebuild:
+  Update fetchmailconf script due to security bug #110366.
+
+  13 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> fetchmail-6.2.5.2.ebuild:
+  Stable on mips.
+
+  12 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  fetchmail-6.2.5.2.ebuild:
+  Fix dependencies wrt bug #42534. (forgot to fix this one)
+
+  12 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  fetchmail-6.2.5-r2.ebuild:
+  Fix dependencies wrt bug #42534
+
+  06 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> fetchmail-6.2.5.2.ebuild:
+  Re-added ~mips for bug 99915.
+
+  23 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  fetchmail-6.2.5.2.ebuild:
+  Stable on alpha + ia64, bug 99865.
+
+  23 Jul 2005; Jory A. Pratt <anarchy@gentoo.org> fetchmail-6.2.5.2.ebuild:
+  Stable on ppc wrt bug #99865
+
+  22 Jul 2005; Herbie Hopkins <herbs@gentoo.org> fetchmail-6.2.5.2.ebuild:
+  Stable on amd64 wrt bug #99865.
+
+  22 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  fetchmail-6.2.5.2.ebuild:
+  Stable on sparc wrt #99865
+
+  22 Jul 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  fetchmail-6.2.5.2.ebuild:
+  Stable on hppa. bug #99865
+
+  22 Jul 2005; Markus Rothe <corsair@gentoo.org> fetchmail-6.2.5.2.ebuild:
+  Stable on ppc64 (bug #99865)
+
+  22 Jul 2005; Andrej Kacian <ticho@gentoo.org> fetchmail-6.2.5.2.ebuild:
+  Stable on x86.
+
+*fetchmail-6.2.5.2 (22 Jul 2005)
+
+  22 Jul 2005; Andrej Kacian <ticho@gentoo.org>
+  files/fetchmail-6.2.5-broken-headers.patch,
+  +files/fetchmail-6.2.5-gentoo.patch, files/fetchmail-6.2.5-kerberos.patch,
+  +fetchmail-6.2.5.2.ebuild:
+  Version bump, security bug #99865.
+
+  01 Jul 2005; Andrej Kacian <ticho@gentoo.org> fetchmail-5.9.14.ebuild,
+  fetchmail-6.2.2-r2.ebuild, fetchmail-6.2.3.ebuild, fetchmail-6.2.4.ebuild:
+  Fixed year in copyright headers.
+
+  01 Jul 2005; Andrej Kacian <ticho@gentoo.org>
+  +files/fetchmail-6.2.5-mit-krb5-1.4.patch, fetchmail-6.2.5.ebuild,
+  fetchmail-6.2.5-r1.ebuild, fetchmail-6.2.5-r2.ebuild:
+  Added a patch to remove a deprecated function call from sources if
+  >=mit-krb5-1.4 is installed. Closes bug #97263, reported by Tomasz
+  Mloduchowski <mlodutb at mit.edu>.
+
+  31 May 2005; Andrej Kacian <ticho@gentoo.org> fetchmail-6.2.5-r2.ebuild:
+  Made ebuild compatible with Gentoo/FreeBSD (bug #92401, by Diego Pettenò
+  <flameeyes@gentoo.org>.
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> files/fetchmail:
+  Add 'need net' to the init script. Resolves bug 90826, thanks to Henrik Brix
+  Andersen <brix@gentoo.org> for reporting.
+
+  29 Apr 2005; Markus Rothe <corsair@gentoo.org> fetchmail-6.2.5-r2.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #90750
+
+*fetchmail-6.2.5-r2 (28 Apr 2005)
+
+  28 Apr 2005; Andrej Kacian <ticho@gentoo.org> +fetchmail-6.2.5-r2.ebuild:
+  Some ebuild enhancements - mostly DEPEND related. Closes bug #84687, patch
+  provided by Diego Pettenò <flameeyes@gentoo.org>.
+
+  02 Nov 2004; Bret Curtis,,, <psi@gentoo.org> fetchmail-6.2.3.ebuild,
+  fetchmail-6.2.5-r1.ebuild, fetchmail-6.2.5.ebuild:
+  6.2.3 stable on mips, >6.2.3 are marked ~mips
+
+*fetchmail-6.2.5-r1 (03 Sep 2004)
+
+  03 Sep 2004; Andrej Kacian <ticho@gentoo.org>
+  +files/fetchmail-6.2.5-broken-headers.patch, +fetchmail-6.2.5-r1.ebuild:
+  Apply patch to fetchmail sources to receive mail even if it has broken
+  headers, instead of deleting it, or choking up on it, for POP3 fetching.
+  Patch submitted by Philippe Weibel <philippe.weibel@free.fr>, closes
+  #34788.
+
+  07 Aug 2004; Tom Knight <tomk@gentoo.org>
+  +files/fetchmail-6.2.5-fetchsizelimit.patch, fetchmail-6.2.5.ebuild:
+  Added fetchmail-6.2.5-fetchsizelimit.patch to fix bug #40126
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  fetchmail-5.9.14.ebuild, fetchmail-6.2.1-r1.ebuild,
+  fetchmail-6.2.2-r2.ebuild, fetchmail-6.2.3.ebuild, fetchmail-6.2.4.ebuild,
+  fetchmail-6.2.5.ebuild:
+  virtual/glibc -> virtual/libc
+
+  30 Jun 2004; Tom Gall <tgall@gentoo.org> fetchmail-6.2.5.ebuild:
+  stable on ppc64, bug #55661
+
+  12 May 2004; Michael McCabe <randy@gentoo.org> fetchmail-6.2.5.ebuild:
+  Added s390 keyword and fix
+
+  30 Mar 2004; Jon Portnoy <avenj@gentoo.org> fetchmail-6.2.5.ebuild :
+  Stable on AMD64.
+
+  30 Mar 2004; Lars Weiler <pylon@gentoo.org> fetchmail-6.2.5.ebuild:
+  stable on ppc, as requested in bug #37717
+
+  26 Mar 2004; Jay Maynard <jmaynard@gentoo.org> fetchmail-6.2.5.ebuild:
+  Unable to reproduce header corruption on Alpha; marking 6.2.5 stable
+
+  26 Mar 2004; Seemant Kulleen <seemant@gentoo.org> fetchmail-6.2.5.ebuild:
+  mark stable on x86
+
+  27 Feb 2004; Sven Blumenstein <bazik@gentoo.org> fetchmail-6.2.5.ebuild:
+  Stable on sparc.
+
+  27 Feb 2004; Sven Blumenstein <bazik@gentoo.org> fetchmail-6.2.5.ebuild:
+  Stable on sparc.
+
+  22 Feb 2004; Aron Griffis <agriffis@gentoo.org> fetchmail-5.9.14.ebuild:
+  Remove arm keywords
+
+  22 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> fetchmail-6.2.5.ebuild:
+  Fix kerberos5 support. Closing #28113.
+
+  18 Jan 2004; <tuxus@gentoo.org> fetchmail-6.2.3.ebuild:
+  Added ~mips to KEYWORDS.
+
+  21 Nov 2003; Jason Wever <weeve@gentoo.org> fetchmail-6.2.5.ebuild:
+  Added ~sparc keyword.
+
+  12 Nov 2003; <mkennedy@gentoo.org> fetchmail-6.2.5.ebuild:
+  use make, not emake
+
+  12 Nov 2003; Daniel Ahlberg <aliz@gentoo.org> fetchmail-6.2.5.ebuild :
+  Make it compile on amd64.
+
+*fetchmail-6.2.5 (22 Oct 2003)
+
+  22 Oct 2003; Martin Holzer <mholzer@gentoo.org> fetchmail-6.2.5.ebuild:
+  Version bumped.
+
+  03 Sep 2003; Aron Griffis <agriffis@gentoo.org> fetchmail-6.2.3.ebuild,
+  fetchmail-6.2.4.ebuild:
+  Mark 6.2.3 stable on alpha, and mark 6.2.4 unusable.  It corrupts mail
+  headers, at least on alpha.
+
+*fetchmail-6.2.4 (17 Aug 2003)
+
+  17 Aug 2003; Nick Hadaway <raker@gentoo.org> fetchmail-6.2.4.ebuild:
+  Version bump.  Added kerberos and krb4 suuport.
+
+  21 Jul 2003; Nick Hadaway <raker@gentoo.org> fetchmail-6.2.3.ebuild:
+  Marked stable for x86
+
+*fetchmail-6.2.3 (19 Jul 2003)
+
+  19 Jul 2003; Nick Hadaway <raker@gentoo.org> fetchmail-6.2.3.ebuild:
+  Version bump.  Removed an unneeded patch.
+
+*fetchmail-6.2.2-r2 (15 Apr 2003)
+
+  15 Apr 2003; Jon Portnoy <avenj@gentoo.org> fetchmail-6.2.2-r2.ebuild :
+  Patch added to fix a bug with multiple return paths confusing 
+  fetchmail. Fixes bug #19372.
+
+*fetchmail-6.2.2-r1 (24 Mar 2003)
+
+  31 Mar 2003; Jon Portnoy <avenj@gentoo.org> files/fetchmail
+	files/conf.d-fetchmail :
+  Adjusted init scripts to get polling_period from conf.d/fetchmail,
+  fixes bug #18546.
+
+
+  30 Mar 2003; Jon Portnoy <avenj@gentoo.org> files/fetchmail :
+  Added -d 60 to close bug #18491
+
+*fetchmail-6.2.2 (24 Mar 2003)
+
+  25 Mar 2003; Daniel Robbins <drobbins@gentoo.org> files/fetchmail:
+  initscript now has "use mta" so that we can begin to close bug #11455.
+  
+  24 Mar 2003; Jon Portnoy <avenj@gentoo.org> fetchmail-6.2.2.ebuild :
+  Version bump, latest fetchmail.
+
+  05 Feb 2003; Aron Griffis <agriffis@gentoo.org> fetchmail-6.2.1-r1.ebuild :
+  Mark stable on alpha
+
+*fetchmail-6.2.1-r1 (28 Jan 2003)
+
+  19 Mar 2003; Martin Holzer <mholzer@gentoo.org> fetchmail-6.2.1-r1.ebuild:
+  Added ipv6 to IUSE. Closes #17816.
+
+  27 Feb 2003; Seemant Kulleen <seemant@gentoo.org> fetchmail-5.9.14.ebuild,
+  fetchmail-6.2.1-r1.ebuild:
+  homepage and SRC_URI update thanks to Brian Bilbrey <bilbrey@orbdesigns.com>
+  in bug #16446
+
+  28 Jan 2003; Nick Hadaway <raker@gentoo.org> fetchmail-6.2.1-r1.ebuild,
+  files/digest-fetchmail-6.2.1-r1 :
+  New ebuild with changes as suggested on bug #14643.  Stupid configure
+  scripts?  Thanks to Benjamin Ritcey for noticing it's failures.
+
+*fetchmail-6.2.1 (16 Jan 2003)
+
+  16 Jan 2003; Nick Hadaway <raker@gentoo.org> fetchmail-6.2.1.ebuild,
+  files/digest-fetchmail-6.2.1 :
+  Version bump.
+
+*fetchmail-6.2.0-r1 (26 Dec 2002)
+
+  26 Dec 2002; Nick Hadaway <raker@gentoo.org> fetchmail-6.2.0-r1.ebuild,
+  digest-fetchmail-6.2.0-r1, files/fetchmail-6.2.0-gentoo.diff :
+  Enable ipv6 support.
+
+  16 Dec 2002; Aron Griffis <agriffis@gentoo.org> fetchmail-6.2.0.ebuild :
+  Added ~alpha to KEYWORDS
+
+*fetchmail-6.2.0 (14 Dec 2002)
+
+  14 Dec 2002; Jon Portnoy <avenj@gentoo.org> fetchmail-6.2.0.ebuild :
+  Version bump, major security fix. In stable straight off due to the 
+  nature of the security hole (potential root compromise).
+  See http://security.e-matters.de/advisories/052002.html for more
+  information.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*fetchmail-6.1.2 (01 Nov 2002)
+
+  14 Nov 2002; Nick Hadaway <raker@gentoo.org> fetchmail-6.1.2.ebuild :
+  Marked stable.  Adjusted ebuild based on bug #10523.
+
+  01 Nov 2002; Brandon Low <lostlogic@gentoo.org> fetchmail-6.1.2.ebuild :
+  Refix the manpages so that we don't install un-necessary stuff,
+  version bump, unstable briefly.
+
+*fetchmail-6.1.1 (21 Oct 2002)
+
+  23 Oct 2002; Nick Hadaway <raker@gentoo.org> fetchmail-6.1.1.ebuild :
+  Fixed a manpage symlink problem as reported on bug #9270.  Thanks
+  to sakari@ionstream.fi for noticing this problem.
+
+  22 Oct 2002; Nick Hadaway <raker@gentoo.org> fetchmail-6.1.1.ebuild :
+  Removing the unstable flag.
+
+  21 Oct 2002; Nick Hadaway <raker@gentoo.org> fetchmail-6.1.1.ebuild,
+  files/digest-fetchmail-6.1.1 :
+  Version bump.  No ebuild changes required.  Currently marked unstable
+  Please test and comment on bug #9340
+
+*fetchmail-6.1.0 (01 Oct 2002)
+
+  10 Oct 2002; Nick Hadaway <raker@gentoo.org> fetchmail-6.1.0.ebuild :
+  I made a booboo and patched the Makefile post-configure.  Reversing
+  patch.
+
+  08 Oct 2002; Nick Hadaway <raker@gentoo.org> fetchmail-6.1.0.ebuild :
+  Added a patch to remove /usr/include warning messages if ssl is
+  enabled. 
+
+  01 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Security update.
+
+*fetchmail-5.9.14 (11 Sep 2002)
+
+  30 Sep 2002; Brad Cowan <bcowan@gentoo.org> :
+  Changed einstall back to install and placed man pages in correct dir
+  Fixes bug #8554
+
+  28 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS
+  
+  11 Sep 2002; Nick Hadaway <raker@gentoo.org> fetchmail-5.9.14.ebuild,
+  files/digest-fetchmail-5.9.14, files/configure-5.9.14.diff :
+  Version bump.  Fixed some ebuild typos, modified configure so gcc3
+  doesn't complain about -I/usr/include.  Changed to econf and einstall.
+  Please check out bug #7338 if you want hints on how to log fetchmail
+  errors to a console.
+
+*fetchmail-5.9.11-r1 (16 Jul 2002)
+
+  16 Jul 2002; Ben Lutgens <lamer@gentoo.org> fetchmail-5.9.11-r1,
+  files/fetchmail :
+  Added an initscript, revved the minor version to -r1 for masking purposes,
+  masked. Fixes bug 4415
+  
+
+*fetchmail-5.9.7 (14 Feb 2002)
+
+  14 Feb 2002; Arcady Genkin <agenkin@thpoon.com> fetchmail-5.9.7.ebuild :
+  Updated to 5.9.7 version.
+  Warns the user if fetchmailconf cannot be run due to missing python+tkinter.
+
+*fetchmail-5.9.6 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

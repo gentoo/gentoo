@@ -1,0 +1,16 @@
+diff --git a/gtk/Makefile.am b/gtk/Makefile.am
+index 7b29e61..86b3939 100644
+--- a/gtk/Makefile.am
++++ b/gtk/Makefile.am
+@@ -505,6 +505,11 @@ vncdisplaykeymap_win322xtkbd.c:
+ if WITH_PYTHON
+ pyexec_LTLIBRARIES = SpiceClientGtk.la
+ 
++# workaround for broken parallel install support in automake with LTLIBRARIES
++# http://debbugs.gnu.org/cgi/bugreport.cgi?bug=7328
++install_pyexecLTLIBRARIES = install-pyexecLTLIBRARIES
++$(install_pyexecLTLIBRARIES): install-libLTLIBRARIES
++
+ SpiceClientGtk_la_LIBADD = libspice-client-gtk-2.0.la libspice-client-glib-2.0.la $(PYGTK_LIBS)
+ SpiceClientGtk_la_CFLAGS = $(GTK_CFLAGS) $(PYTHON_INCLUDES) $(PYGTK_CFLAGS) $(WARN_PYFLAGS)
+ SpiceClientGtk_la_LDFLAGS = -module -avoid-version -fPIC

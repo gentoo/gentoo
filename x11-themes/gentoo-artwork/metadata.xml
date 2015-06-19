@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>maintainer-needed@gentoo.org</email>
+</maintainer>
+<use>
+	<flag name='grub'>Install extra <pkg>sys-boot/grub</pkg> themes</flag>
+	<flag name='icons'>Install icons</flag>
+	<flag name='lilo'>Install extra <pkg>sys-boot/lilo</pkg> themes</flag>
+	<flag name='pixmaps'>Install pixmaps</flag>
+</use>
+</pkgmetadata>

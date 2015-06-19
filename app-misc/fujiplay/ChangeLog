@@ -1,0 +1,36 @@
+# ChangeLog for app-misc/fujiplay
+# Copyright 2002-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/fujiplay/ChangeLog,v 1.13 2012/10/28 14:24:42 ago Exp $
+
+  28 Oct 2012; Agostino Sarubbo <ago@gentoo.org> fujiplay-1.33.ebuild:
+  Add ~amd64, wrt bug #439862
+
+  30 Dec 2008; Christoph Mende <angelos@gentoo.org> fujiplay-1.33.ebuild:
+  QA: Respect CC (bug 243640), respect CFLAGS, prevent stripping (bug
+  240031)
+
+  30 Jul 2007; Sven Wegener <swegener@gentoo.org>
+  fujiplay-1.33-unterminated-strings.patch:
+  Disable CVS keyword replacement for bug #109226.
+
+  28 Jan 2007; Marius Mauch <genone@gentoo.org> fujiplay-1.33.ebuild:
+  Replacing einfo with elog
+
+  25 Nov 2006; Charlie Shepherd <masterdriverz@gentoo.org>
+  files/fujiplay-1.33-unterminated-strings.patch:
+  Fix fujiplay-1.33-unterminated-strings.patch, thanks to Philanthrop, Bug 109226
+
+  08 Jan 2005; Maurice van der Pot <griffon26@gentoo.org> +metadata.xml,
+  +files/fujiplay-1.33-unterminated-strings.patch, fujiplay-1.33.ebuild:
+  Fix unterminated strings, closing bug #34931.
+
+  07 Dec 2003; Martin Holzer <mholzer@gentoo.org> fujiplay-1.33.ebuild:
+  digest update. Closes #34931.
+
+*fujiplay-1.33 (15 Feb 2003)
+
+  12 Jun 2003; <msterret@gentoo.org> fujiplay-1.33.ebuild:
+  fix Header
+
+  15 Feb 2003; Seth Chandler <sethbc@gentoo.org> fujiplay-1.33.ebuild:
+  added fujiplay to portage...

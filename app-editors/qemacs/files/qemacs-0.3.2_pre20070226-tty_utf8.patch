@@ -1,0 +1,43 @@
+utf8 input in tty.c
+http://lists.gnu.org/archive/html/qemacs-devel/2004-03/msg00000.html
+http://bugs.gentoo.org/62829
+
+--- qemacs-orig/tty.c	2007-02-08 00:27:33.000000000 +0100
++++ qemacs/tty.c	2007-02-26 15:07:41.000000000 +0100
+@@ -78,7 +78,6 @@
+     /* input handling */
+     enum InputState input_state;
+     int input_param;
+-    int utf8_state;
+     int utf8_index;
+     unsigned char buf[10];
+     char *term_name;
+@@ -374,15 +373,19 @@
+ 
+     /* charset handling */
+     if (s->charset == &charset_utf8) {
+-        if (ts->utf8_state == 0) {
+-            const char *p;
+-            p = (const char *)ts->buf;
+-            ch = utf8_decode(&p);
+-        } else {
+-            ts->utf8_state = utf8_length[ts->buf[0]] - 1;
+-            ts->utf8_index = 0;
+-            return;
+-        }
++		/* Make sure utf8 input works correctly 20040314 <damm@opensource.se> */
++		ts->utf8_index++;
++
++		if (utf8_length[ts->buf[0]] == ts->utf8_index) {;
++			const char *p;
++			p = (const char *)ts->buf;
++			ch = utf8_decode(&p);
++			ts->utf8_index = 0;
++		}
++		else {
++			return;
++		}
++
+     } else {
+         ch = ts->buf[0];
+     }

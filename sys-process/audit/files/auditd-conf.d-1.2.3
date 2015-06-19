@@ -1,0 +1,16 @@
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/audit/files/auditd-conf.d-1.2.3,v 1.1 2006/06/22 07:41:46 robbat2 Exp $
+
+# Configuration options for auditd
+# -f for foreground mode
+# There are some other options as well, but you'll have to look in the source
+# code to find them as they aren't ready for use yet.
+EXTRAOPTIONS=''
+
+# Audit rules file to run after starting auditd
+RULEFILE_STARTUP=/etc/audit/audit.rules
+
+# Audit rules file to run before and after stopping auditd
+RULEFILE_STOP_PRE=/etc/audit/audit.rules.stop.pre
+RULEFILE_STOP_POST=/etc/audit/audit.rules.stop.post

@@ -1,0 +1,27 @@
+From 6214cf15fafae52d67233d27462488487091d8d6 Mon Sep 17 00:00:00 2001
+From: Kai-Uwe Behrmann <ku.b@gmx.de>
+Date: Wed, 20 Mar 2013 18:15:17 +0100
+Subject: [PATCH 1/1] * [core]: fix double object release
+
+... which was revealed by valgrind
+
+2013-03-31: backport to oyranos-0.9.1, remove patch for nonexistent file
+---
+ API_generated/oyranos_devices.c      |    1 -
+
+diff --git a/API_generated/oyranos_devices.c b/API_generated/oyranos_devices.c
+index 4ed5138..8cee0c8 100644
+--- a/API_generated/oyranos_devices.c
++++ b/API_generated/oyranos_devices.c
+@@ -1896,7 +1896,6 @@ OYAPI int  OYEXPORT
+         oyConfigs_MoveIn( taxi_devices, &taxi_dev, -1 );
+       }
+       oyConfigs_Release( &configs_ );
+-      oyOptions_Release( &options );
+       oyFree_m_(ranks);
+     }
+ 
+-- 
+1.5.6.5
+
+

@@ -1,0 +1,10 @@
+--- splat-1.2.1.orig/utils/fontdata.c
++++ splat-1.2.1/utils/fontdata.c
+@@ -32,6 +32,7 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <zlib.h>
++#include <stdlib.h>
+ 
+ int main(argc,argv)
+ int argc;

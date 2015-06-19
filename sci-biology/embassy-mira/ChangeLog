@@ -1,0 +1,38 @@
+# ChangeLog for sci-biology/embassy-mira
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/embassy-mira/ChangeLog,v 1.8 2015/03/29 08:35:07 jlec Exp $
+
+  29 Mar 2015; Justin Lecher <jlec@gentoo.org> -embassy-mira-2.8.2-r1.ebuild,
+  metadata.xml:
+  Drop old
+
+  20 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  embassy-mira-2.8.2.ebuild, embassy-mira-2.8.2-r1.ebuild:
+  Fix SRC_URI for emboss wrt #387299
+
+  13 Mar 2011; Raúl Porcel <armin76@gentoo.org> embassy-mira-2.8.2.ebuild,
+  embassy-mira-2.8.2-r1.ebuild:
+  Drop sparc keywords
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  embassy-mira-2.8.2-r1.ebuild:
+  Transfer Prefix keywords
+
+  01 Sep 2009; Olivier Fisette <ribosome@gentoo.org> metadata.xml:
+  Giving up maintainership of this package.
+
+*embassy-mira-2.8.2-r1 (01 Sep 2009)
+
+  01 Sep 2009; Olivier Fisette <ribosome@gentoo.org>
+  +embassy-mira-2.8.2-r1.ebuild:
+  Updated version for EMBASSY 6.1.0.
+
+  01 Sep 2009; Olivier Fisette <ribosome@gentoo.org>
+  embassy-mira-2.8.2.ebuild:
+  Stabilised on amd64 and x86.
+
+*embassy-mira-2.8.2 (27 Aug 2008)
+
+  27 Aug 2008; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +embassy-mira-2.8.2.ebuild:
+  Initial import for EMBASSY 6.0.1.

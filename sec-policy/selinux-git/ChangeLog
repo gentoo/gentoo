@@ -1,0 +1,35 @@
+# ChangeLog for sec-policy/selinux-git
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-git/ChangeLog,v 1.6 2015/06/05 16:10:34 perfinion Exp $
+
+  05 Jun 2015; Jason Zaman <perfinion@gentoo.org>
+  selinux-git-2.20141203-r5.ebuild:
+  Stabilize policy 2.20141203-r5
+
+*selinux-git-2.20141203-r6 (05 Jun 2015)
+
+  05 Jun 2015; Jason Zaman <perfinion@gentoo.org>
+  +selinux-git-2.20141203-r6.ebuild:
+  Release of 2.20141203-r6
+
+*selinux-git-2.20141203-r5 (15 Apr 2015)
+
+  15 Apr 2015; Jason Zaman <perfinion@gentoo.org>
+  +selinux-git-2.20141203-r5.ebuild:
+  Release of 2.20141203-r5
+
+  26 Mar 2015; Jason Zaman <perfinion@gentoo.org>
+  -selinux-git-2.20141203-r4.ebuild, selinux-git-9999.ebuild:
+  drop broken, add in dep on -9999
+
+*selinux-git-2.20141203-r4 (22 Mar 2015)
+
+  22 Mar 2015; Sven Vermeulen <swift@gentoo.org>
+  +selinux-git-2.20141203-r4.ebuild:
+  Release of 2.20141203-r4
+
+*selinux-git-2.20141203-r3 (29 Jan 2015)
+
+  29 Jan 2015; Jason Zaman <perfinion@gentoo.org>
+  +selinux-git-2.20141203-r3.ebuild, selinux-git-2.20141203-r2.ebuild:
+  Initial commit to portage.

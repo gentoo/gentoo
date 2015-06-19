@@ -1,0 +1,25 @@
+Index: activylircd-0.4/Makefile
+===================================================================
+--- activylircd-0.4.orig/Makefile
++++ activylircd-0.4/Makefile
+@@ -14,16 +14,16 @@ names.h: /usr/include/linux/input.h genn
+ 	./gennames $< > $@
+ 
+ activylircd: activylircd.c /usr/include/linux/input.h names.h Makefile
+-	$(CC) $(CFLAGS) -o $@ $<
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
+ 
+ key2lircd: key2lircd.c /usr/include/linux/input.h names.h Makefile
+-	$(CC) $(CFLAGS) -o $@ $<
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
+ 
+ eventmapper: eventmapper.c /usr/include/linux/input.h names.h Makefile
+-	$(CC) $(CFLAGS) -o $@ $<
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
+ 
+ key2xd: key2xd.c Makefile
+-	$(CC) $(CFLAGS) -o $@  -lX11 -lXtst $<
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< -lX11 -lXtst
+ 
+ install: $(PROG)
+ 	install -v -t /usr/bin $(PROG)

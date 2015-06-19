@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gnome</herd>
+<use>
+	<flag name="flickr">Enable uploading to Flickr</flag>
+	<flag name="map">Enable world map display using	<pkg>media-libs/libchamplain</pkg></flag>
+	<flag name="picasa">Enable uploading to Google's Picasa Web Albums</flag>
+</use>
+</pkgmetadata>

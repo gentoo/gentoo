@@ -1,0 +1,21 @@
+# ChangeLog for dev-php/PEAR-Math_BigInteger
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Math_BigInteger/ChangeLog,v 1.4 2015/05/05 07:43:58 jer Exp $
+
+  05 May 2015; Jeroen Roovers <jer@gentoo.org>
+  PEAR-Math_BigInteger-1.0.2.ebuild:
+  Mark ~ppc64 (bug #528470).
+
+  07 Nov 2014; Brian Evans <grknight@gentoo.org>
+  PEAR-Math_BigInteger-1.0.2.ebuild:
+  Fix wrong Description from a copied ebuild
+
+  06 Nov 2014; Jeroen Roovers <jer@gentoo.org>
+  PEAR-Math_BigInteger-1.0.2.ebuild:
+  Marked ~hppa (bug #528470).
+
+*PEAR-Math_BigInteger-1.0.2 (06 Nov 2014)
+
+  06 Nov 2014; Brian Evans <grknight@gentoo.org>
+  +PEAR-Math_BigInteger-1.0.2.ebuild, +metadata.xml:
+  New package to satisfy the dependency in dev-php/PEAR-Numbers_Words

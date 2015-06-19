@@ -1,0 +1,89 @@
+Starting with ghc-7.4 base and haskell98 are incompatible:
+
+ Ambiguous module name `Prelude':
+  it was found in multiple packages: base haskell98-2.0.0.1
+
+Gentoo-bug: https://bugs.gentoo.org/428226
+Reported-by:  Chris Reffett
+diff --git a/Bustle/Noninteractive.hs b/Bustle/Noninteractive.hs
+index 2aa1e05..4a4d9b0 100644
+--- a/Bustle/Noninteractive.hs
++++ b/Bustle/Noninteractive.hs
+@@ -3,7 +3,8 @@ where
+ 
+ import Prelude hiding (log)
+ 
+-import System
++import System.Environment (getArgs)
++import System.Exit (exitFailure)
+ import System.IO (hPutStrLn, stderr)
+ 
+ import Bustle.Parser (readLog)
+diff --git a/Bustle/Stats.hs b/Bustle/Stats.hs
+index da374a5..939cafd 100644
+--- a/Bustle/Stats.hs
++++ b/Bustle/Stats.hs
+@@ -36,7 +36,7 @@ frequencies = reverse
+     where alt Nothing  = Just 1
+           alt (Just n) = Just (n + 1)
+ 
+-mean :: Fractional a => [a] -> a
++mean :: (Eq a, Fractional a) => [a] -> a
+ mean = acc 0 0
+    where acc 0 _ [] = error "mean of empty list"
+          acc n t [] = t / n
+diff --git a/bustle-dot.hs b/bustle-dot.hs
+index aa7c45e..77d6f18 100644
+--- a/bustle-dot.hs
++++ b/bustle-dot.hs
+@@ -3,7 +3,9 @@ import Prelude hiding (log)
+ import Control.Monad
+ import Data.List
+ import Data.Maybe
+-import System
++import System.IO
++import System.Environment
++import System.Exit
+ 
+ import Bustle.Parser (readLog)
+ import Bustle.Types
+diff --git a/bustle.cabal b/bustle.cabal
+index 7ad7412..0a49ca1 100644
+--- a/bustle.cabal
++++ b/bustle.cabal
+@@ -27,11 +27,11 @@ Executable bustle
+   if flag(PostCabalizedGtk2HS)
+     -- Since gtk2hs 0.11, pango is a separate package, and its module names
+     -- have changed.
+-    Build-Depends:  haskell98, mtl, base >= 4 && < 5, containers, parsec,
++    Build-Depends:  mtl, base >= 4 && < 5, containers, parsec,
+                     filepath, process,
+                     gtk > 0.11, glade, pango, glib, cairo
+   else
+-    Build-Depends:  haskell98, mtl, base >= 4 && < 5, containers, parsec,
++    Build-Depends:  mtl, base >= 4 && < 5, containers, parsec,
+                     filepath, process,
+                     gtk > 0.10 && < 0.11, glade, pango, glib, cairo
+ 
+@@ -39,18 +39,18 @@ Executable bustle-count
+   Main-is:        bustle-count.hs
+   Other-modules:  Bustle.Parser, Bustle.Stats, Bustle.Types,
+                   Bustle.Noninteractive
+-  Build-Depends:  haskell98, base >= 4 && < 5, containers, parsec
++  Build-Depends:  base >= 4 && < 5, containers, parsec
+   Ghc-options:    -Wall -fno-warn-unused-imports -fno-warn-unused-do-bind
+ 
+ Executable bustle-time
+   Main-is:        bustle-time.hs
+   Other-modules:  Bustle.Parser, Bustle.Stats, Bustle.Types,
+                   Bustle.Noninteractive
+-  Build-Depends:  haskell98, base >= 4 && < 5, containers, parsec
++  Build-Depends:  base >= 4 && < 5, containers, parsec
+   Ghc-options:    -Wall -fno-warn-unused-imports -fno-warn-unused-do-bind
+ 
+ Executable bustle-dot
+   Main-is:        bustle-dot.hs
+   Other-modules:  Bustle.Parser, Bustle.Types
+-  Build-Depends:  haskell98, base >= 4 && < 5, containers, parsec
++  Build-Depends:  base >= 4 && < 5, containers, parsec
+   Ghc-options:    -Wall -fno-warn-unused-imports -fno-warn-unused-do-bind

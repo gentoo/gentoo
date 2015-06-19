@@ -1,0 +1,10 @@
+diff -Nur work.orig/usr.bin/minigzip/Makefile work/usr.bin/minigzip/Makefile
+--- work.orig/usr.bin/minigzip/Makefile	2012-07-16 04:39:31.000000000 +0900
++++ work/usr.bin/minigzip/Makefile	2012-07-16 04:45:30.000000000 +0900
+@@ -10,4 +10,6 @@
+ DPADD=	${LIBZ}
+ LDADD=	-lz
+ 
++CFLAGS+= -I${.CURDIR}/../../lib/libz
++
+ .include <bsd.prog.mk>

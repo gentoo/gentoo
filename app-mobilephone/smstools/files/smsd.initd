@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/smstools/files/smsd.initd,v 1.2 2006/06/15 12:52:19 chainsaw Exp $
+
+depend() {
+	need localmount
+}
+
+start() {
+	ebegin "Starting smsd"
+	start-stop-daemon -b -m -p /var/run/smsd.pid -c smsd:sms --start --exec /usr/bin/smsd -- \
+		-c /etc/smsd.conf
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping smsd"
+	start-stop-daemon --stop -p /var/run/smsd.pid
+	eend ${?}
+}

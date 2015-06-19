@@ -1,0 +1,33 @@
+--- c-wrapper-0.6.1.orig/configure.ac
++++ c-wrapper-0.6.1/configure.ac
+@@ -53,6 +53,7 @@
+ 
+ dnl Check for libraries
+ dnl Add your macro calls to check required libraries, if you have any.
++PKG_CHECK_MODULES([FFI], [libffi])
+ 
+ dnl Platform-dependent configuration.
+ AC_ARG_ENABLE(objc, [  --enable-objc           turn on Objective-C support])
+--- c-wrapper-0.6.1.orig/src/Makefile.in
++++ c-wrapper-0.6.1/src/Makefile.in
+@@ -20,9 +20,9 @@
+ GAUCHE_PACKAGE = @GAUCHE_PACKAGE@
+ INSTALL        = @GAUCHE_INSTALL@
+ 
+-CPPFLAGS       = -I./libffi/include -DGAUCHE_API_0_8_8 @CPPFLAGS@
++CPPFLAGS       = -DGAUCHE_API_0_8_8 @FFI_CFLAGS@ @CPPFLAGS@
+ LDFLAGS        = @LDFLAGS@
+-LIBS           = libffi/.libs/libffi.a @LIBS@
++LIBS           = @FFI_LIBS@ @LIBS@
+ 
+ YACC           = @YACC@
+ 
+@@ -38,7 +38,7 @@
+ SCMFILES  = 
+ HEADERS   = 
+ 
+-TARGET    = libffi/.libs/libffi.a $(ARCHFILES)
++TARGET    = $(ARCHFILES)
+ GENERATED = libffi
+ CONFIG_GENERATED = libffi/Makefile Makefile cwcompile
+ 

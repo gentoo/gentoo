@@ -1,0 +1,57 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/dante/files/dante-1.3.2-sockd-init,v 1.1 2013/04/09 18:09:40 tomwij Exp $
+
+SOCKD_OPT=""
+[ "${SOCKD_FORKDEPTH:-1}" -gt 1 ] && SOCKD_OPT="${SOCKD_OPT} -N ${SOCKD_FORKDEPTH}"
+[ "${SOCKD_DEBUG:-0}" -eq 1 ] && SOCKD_OPT="${SOCKD_OPT} -d"
+[ "${SOCKD_DISABLE_KEEPALIVE:-0}" -eq 1 ] && SOCKD_OPT="${SOCKD_OPT} -n"
+PIDFILE=/var/run/sockd.pid
+SOCKDIR=/var/lock/dante-sockd/
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	# first check that it exists
+	if [ ! -f /etc/socks/sockd.conf ] ; then
+		eerror "You need to setup /etc/socks/sockd.conf first"
+		eerror "Examples are in /usr/share/doc/dante[version]/example"
+		eerror "for more info, see: man sockd.conf"
+		return 1
+	fi
+
+	/usr/sbin/sockd -V >/tmp/dante-sockd.checkconf 2>&1
+	if [ $? -ne 0 ]; then
+		cat /tmp/dante-sockd.checkconf
+		eerror "Something is wrong with your configuration file"
+		eerror "for more info, see: man sockd.conf"
+		return 1
+	fi
+	rm /tmp/dante-sockd.checkconf
+
+	DAEMON_UID=`sed -e '/^[ \t]*user[.]notprivileged[ \t]*:/{s/.*:[ \t]*//;q};d' /etc/socks/sockd.conf`
+	if [ -n "$DAEMON_UID" ]; then
+		[ ! -d $SOCKDIR ] && mkdir $SOCKDIR && chown $DAEMON_UID $SOCKDIR
+		[ ! -f $SOCKDIR/.keep ] && touch $SOCKDIR/.keep 
+	fi
+
+	return 0
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting dante sockd"
+	start-stop-daemon --start --quiet \
+		--background --pidfile $PIDFILE --make-pidfile --env TMPDIR=$SOCKDIR \
+		--exec /usr/sbin/sockd -- ${SOCKD_OPT} >/dev/null 2>&1
+	eend $? "Failed to start sockd"
+}
+
+stop() {
+	ebegin "Stopping dante sockd"
+	start-stop-daemon --stop --quiet --pidfile $PIDFILE
+	eend $? "Failed to stop sockd"
+}

@@ -1,0 +1,24 @@
+diff -ru wmlaptop-1.4.orig/src/battery.c wmlaptop-1.4/src/battery.c
+--- wmlaptop-1.4.orig/src/battery.c	2010-11-26 14:26:27.594108155 -0600
++++ wmlaptop-1.4/src/battery.c	2010-11-26 14:26:51.324108155 -0600
+@@ -74,7 +74,7 @@
+ 
+ bool ACPI_canSupport( )
+ {
+-	if( access( ACPI_ACCESS_TEST, R_OK ) == SUCCESS )
++	if( access( ACPI_ACCESS_TEST, R_OK | X_OK ) == SUCCESS )
+ 		return true;
+ 	return false;
+ }
+diff -ru wmlaptop-1.4.orig/src/battery.h wmlaptop-1.4/src/battery.h
+--- wmlaptop-1.4.orig/src/battery.h	2010-11-26 14:26:27.594108155 -0600
++++ wmlaptop-1.4/src/battery.h	2010-11-26 14:26:56.100774821 -0600
+@@ -24,7 +24,7 @@
+ /*******************
+  * ACPI FEATURES   *
+  *********************************************************************************/
+-#define    ACPI_ACCESS_TEST      "/proc/acpi/info"
++#define    ACPI_ACCESS_TEST      "/proc/acpi"
+ #define    ACPI_BATTERY_DIR      "/proc/acpi/battery"
+ //TODO #define    ACPI_BATTERY_DIR      "/home/mtc/hisBattery/battery"
+ 

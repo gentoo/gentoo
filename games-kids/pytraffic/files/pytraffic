@@ -1,0 +1,6 @@
+#!/usr/bin/env python
+
+import os
+os.chdir("@GAMES_DATADIR@")
+import pytraffic.Main
+

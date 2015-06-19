@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=ratpoison
+Comment=Say good-bye to the rodent
+Exec=ratpoison
+TryExec=ratpoison
+Icon=
+Type=Application

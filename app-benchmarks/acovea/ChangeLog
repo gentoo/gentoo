@@ -1,0 +1,81 @@
+# ChangeLog for app-benchmarks/acovea
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/acovea/ChangeLog,v 1.23 2015/04/19 09:40:50 pacho Exp $
+
+  19 Apr 2015; Pacho Ramos <pacho@gentoo.org> acovea-5.1.1-r1.ebuild:
+  x86 stable wrt bug #534820
+
+  02 Mar 2015; Agostino Sarubbo <ago@gentoo.org> acovea-5.1.1-r1.ebuild:
+  Stable for ppc, wrt bug #534820
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org> acovea-5.1.1-r1.ebuild:
+  Stable for amd64, wrt bug #534820
+
+*acovea-5.1.1-r1 (01 Jul 2014)
+
+  01 Jul 2014; Patrick Lauer <patrick@gentoo.org> +acovea-5.1.1-r1.ebuild,
+  +files/acovea-5.1.1-underlinking.patch, acovea-5.1.1.ebuild:
+  Fix underlinking #495212
+
+  06 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> acovea-5.1.1.ebuild,
+  +files/acovea-5.1.1-glibc-212.patch:
+  Fix building with recent glibc wrt #336260 by Diego E. Pettenò.
+
+  28 Jun 2009; Patrick Lauer <patrick@gentoo.org> acovea-5.1.1.ebuild,
+  +files/acovea-5.1.1-gcc44.patch:
+  Adding gcc 4.4 compile fix by Victor Ostorga. Closes #272625
+
+  03 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> acovea-5.1.1.ebuild:
+  Request automake 1.9 otherwise eautomake fails.
+
+  18 Mar 2009; Brent Baude <ranger@gentoo.org> acovea-5.1.1.ebuild:
+  stable ppc, bug 261721
+
+  08 Mar 2009; Markus Meier <maekke@gentoo.org> acovea-5.1.1.ebuild:
+  amd64/x86 stable, bug #261721
+
+  05 Aug 2008; Jeremy Olexa <darkside@gentoo.org> -acovea-4.0.0.ebuild:
+  remove old, broken version. bug #226517
+
+  06 Jul 2008; Piotr Jaroszyński <peper@gentoo.org> acovea-5.1.1.ebuild:
+  has_version needs a category too.
+
+  01 Jun 2008; Panagiotis Christopoulos <pchrist@gentoo.org>
+  +files/acovea-5.1.1-libevocosm.patch, acovea-5.1.1.ebuild:
+  Apply patch which fixes dev-libs/libevocosm issue. Patch created by John
+  Brooks <aspecialj@gmail.com>, bug 219998
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  02 Oct 2006; Emanuele Giaquinta <exg@gentoo.org> ChangeLog:
+  Adjust deps, bug #145260; thanks to expose@luftgetrock.net.
+
+  15 Jul 2006; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove aliz from metadata.xml as he's retired.
+
+*acovea-5.1.1 (27 Jun 2006)
+
+  27 Jun 2006; Emanuele Giaquinta <exg@gentoo.org>
+  +files/acovea-5.1.1-asneeded.patch, +files/acovea-5.1.1-free-fix.patch,
+  +acovea-5.1.1.ebuild:
+  Version bump, bug #86142. Add ~ppc keyword. Fix linking with --as-needed. Fix
+  double free issue by kristiaan.lenaerts@gmail.com.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  02 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> acovea-4.0.0.ebuild:
+  Fix homepage and src_uri, closes bug 66056.
+
+  14 Jun 2004; Daniel Ahlberg <aliz@gentoo.org> acovea-4.0.0.ebuild:
+  Unmasked on x86 and amd64.
+
+*acovea-4.0.0 (07 May 2004)
+
+  07 May 2004; Daniel Ahlberg <aliz@gentoo.org> acovea-4.0.0.ebuild:
+  Initial import.

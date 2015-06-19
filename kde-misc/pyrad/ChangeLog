@@ -1,0 +1,37 @@
+# ChangeLog for kde-misc/pyrad
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/pyrad/ChangeLog,v 1.8 2014/10/25 20:07:18 mrueg Exp $
+
+  25 Oct 2014; Manuel Rüger <mrueg@gentoo.org> -pyrad-0.6.2.ebuild:
+  Cleanup old.
+
+*pyrad-0.6.2-r1 (22 Oct 2014)
+
+  22 Oct 2014; Manuel Rüger <mrueg@gentoo.org> +pyrad-0.6.2-r1.ebuild:
+  Convert to distutils-r1.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  10 Mar 2013; Michael Palimaka <kensington@gentoo.org> -pyrad-0.5.3-r1.ebuild,
+  -pyrad-0.6.1.ebuild:
+  Remove old.
+
+*pyrad-0.6.2 (29 Jan 2013)
+
+  29 Jan 2013; Michael Palimaka <kensington@gentoo.org> +pyrad-0.6.2.ebuild:
+  Version bump wrt bug #453738.
+
+*pyrad-0.6.1 (05 Dec 2012)
+
+  05 Dec 2012; Michael Palimaka <kensington@gentoo.org> +pyrad-0.6.1.ebuild:
+  Version bump, wrt bug #445028.
+
+  11 Sep 2012; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Drop maintainership
+
+*pyrad-0.5.3-r1 (17 Jul 2011)
+
+  17 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +pyrad-0.5.3-r1.ebuild, +metadata.xml:
+  New package, bug 298675. Thanks to Arne Babenhauserheide for the ebuild.

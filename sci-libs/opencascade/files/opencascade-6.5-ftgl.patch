@@ -1,0 +1,77 @@
+--- opencascade/ros/src/OpenGl/OpenGl_FontMgr.cxx.orig	2011-03-06 21:55:55.000000000 +0100
++++ opencascade/ros/src/OpenGl/OpenGl_FontMgr.cxx	2011-03-06 23:06:05.000000000 +0100
+@@ -1,8 +1,9 @@
+ #include <OpenGl_FontMgr.hxx>
+ 
+-#include <FTGLTextureFont.h>        
+-#include <FTLibrary.h>
+-#include <FTFace.h>
++#include <ftgl.h>
++// #include <FTGLTextureFont.h>        
++// #include <FTLibrary.h>
++// #include <FTFace.h>
+ #include <Standard_Stream.hxx>
+ 
+ #undef TRACE
+@@ -71,10 +72,29 @@
+         if ( it.Value()->FontAspect() == OSD_FA_Regular ) {
+           //this workaround for fonts with names dependent on system locale.
+           //for example: "Times New Roman Fett Kursive" or "Times New Roman Gras Italiqui"
+-          FTFace face(it.Value()->FontPath()->ToCString());
++//           FTFace face(it.Value()->FontPath()->ToCString());
++
++    FT_Library* library = new FT_Library;
++    FT_Error ftErrLib = FT_Init_FreeType( library);
++
++    const FT_Long DEFAULT_FACE_INDEX = 0;
++    FT_Face*  ftFace = new FT_Face;
++
++    FT_Error err = FT_New_Face( (*library), it.Value()->FontPath()->ToCString(), DEFAULT_FACE_INDEX, ftFace);
++
++//     if( err)
++//     {
++//         delete ftFace;
++//         ftFace = 0;
++//     }
++//     else
++//     {
++//         numGlyphs = (*ftFace)->num_glyphs;
++//         hasKerningTable = FT_HAS_KERNING((*ftFace));
++//     }
+               
+-          if ( face.Error() == FT_Err_Ok ) {
+-            if ( (*face.Face())->style_flags == 0 ) {
++          if ( err == FT_Err_Ok ) {
++            if ( (*ftFace)->style_flags == 0 ) {
+               info->SysFont = it.Value();
+             }
+             else {
+@@ -82,22 +102,22 @@
+ #ifdef TRACE
+               cout << "TKOpenGl::initializeFontDB() detected new font!\n"
+                 << "\tFont Previous Name: " << it.Value()->FontName()->ToCString() << endl
+-                << "\tFont New Name: " << (*face.Face())->family_name << endl
+-                << "\tFont Aspect: " << (*face.Face())->style_flags << endl;
++                << "\tFont New Name: " << (*ftFace)->family_name << endl
++                << "\tFont Aspect: " << (*ftFace)->style_flags << endl;
+ #endif
+               OSD_FontAspect aspect = OSD_FA_Regular;
+-              if ( (*face.Face())->style_flags == (FT_STYLE_FLAG_ITALIC | FT_STYLE_FLAG_BOLD) )
++              if ( (*ftFace)->style_flags == (FT_STYLE_FLAG_ITALIC | FT_STYLE_FLAG_BOLD) )
+                 aspect = OSD_FA_BoldItalic;
+-              else if ( (*face.Face())->style_flags == FT_STYLE_FLAG_ITALIC )
++              else if ( (*ftFace)->style_flags == FT_STYLE_FLAG_ITALIC )
+                 aspect = OSD_FA_Italic;
+-              else if ( (*face.Face())->style_flags == FT_STYLE_FLAG_BOLD )
++              else if ( (*ftFace)->style_flags == FT_STYLE_FLAG_BOLD )
+                 aspect = OSD_FA_Bold;
+ 
+ #ifdef TRACE
+               cout << "\tOSD_FontAspect: " << aspect << endl;
+ #endif
+               Handle(TCollection_HAsciiString) aFontName =
+-                new TCollection_HAsciiString( (*face.Face())->family_name );
++                new TCollection_HAsciiString( (*ftFace)->family_name );
+               info->SysFont = new OSD_SystemFont( aFontName, aspect, it.Value()->FontPath() );
+             }
+           }

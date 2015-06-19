@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=>=app-i18n/ibus-table-1.1 virtual/pkgconfig
+DESCRIPTION=Chinese extra phrases for ibus-table based IME
+EAPI=5
+HOMEPAGE=http://code.google.com/p/ibus/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=app-i18n/ibus-table-1.1
+SLOT=0
+SRC_URI=http://ibus.googlecode.com/files/ibus-table-extraphrase-1.3.9.20110826.tar.gz
+_md5_=85006fd08e7fed8f89fa63013ba15ab5

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=mysql? ( virtual/mysql ) odbc? ( dev-db/unixODBC ) postgres? ( dev-db/postgresql ) sqlite? ( dev-db/sqlite:3 ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=An SQL connectivity library for platform and database independent connectivity
+EAPI=5
+HOMEPAGE=http://cppcms.com/sql/cppdb/
+IUSE=doc examples mysql mysql_internal odbc odbc_internal postgres postgres_internal sqlite sqlite_internal
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Boost-1.0 MIT )
+RDEPEND=mysql? ( virtual/mysql ) odbc? ( dev-db/unixODBC ) postgres? ( dev-db/postgresql ) sqlite? ( dev-db/sqlite:3 )
+SLOT=0
+SRC_URI=mirror://sourceforge/cppcms/cppdb-0.3.1.tar.bz2
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=e61e78fe87b25e6ebdbfa361af5db41e

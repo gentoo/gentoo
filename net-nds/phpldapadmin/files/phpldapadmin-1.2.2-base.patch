@@ -1,0 +1,34 @@
+From 7dc8d57d6952fe681cb9e8818df7f103220457bd Mon Sep 17 00:00:00 2001
+From: Deon George <wurley@users.sf.net>
+Date: Tue, 24 Jan 2012 12:37:28 +1100
+Subject: [PATCH] SF Bug #3477910 - XSS vulnerability in query
+
+---
+ lib/QueryRender.php |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/QueryRender.php b/lib/QueryRender.php
+index 291ec40..685f3ba 100644
+--- a/lib/QueryRender.php
++++ b/lib/QueryRender.php
+@@ -497,7 +497,7 @@ class QueryRender extends PageRender {
+ 				$this->getAjaxRef($base),
+ 				$this->getAjaxRef($base),
+ 				($show == $this->getAjaxRef($base) ? '#F0F0F0' : '#E0E0E0'),
+-				$base);
++				htmlspecialchars($base));
+ 		}
+ 		echo '</tr>';
+ 		echo '</table>';
+@@ -545,7 +545,7 @@ class QueryRender extends PageRender {
+ 		echo ' ]</small>';
+ 
+ 		echo '<br />';
+-		printf('<small>%s: <b>%s</b></small>',_('Base DN'),$base);
++		printf('<small>%s: <b>%s</b></small>',_('Base DN'),htmlspecialchars($base));
+ 
+ 		echo '<br />';
+ 		printf('<small>%s: <b>%s</b></small>',_('Filter performed'),htmlspecialchars($this->template->resultsdata[$base]['filter']));
+-- 
+1.7.4.1
+

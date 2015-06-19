@@ -1,0 +1,91 @@
+# ChangeLog for dev-perl/Bio-SamTools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Bio-SamTools/ChangeLog,v 1.19 2015/06/13 19:35:04 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Bio-SamTools-1.390.0-r1.ebuild, Bio-SamTools-1.410.0.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*Bio-SamTools-1.410.0 (18 Apr 2015)
+
+  18 Apr 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Bio-SamTools-1.410.0.ebuild:
+  Version bump
+
+  02 Oct 2014; Justin Lecher <jlec@gentoo.org> Bio-SamTools-1.390.0-r1.ebuild,
+  +files/Bio-SamTools-1.390.0-samtools-1.patch:
+  Make it build with samtools-1, #523568
+
+  24 Sep 2014; Justin Lecher <jlec@gentoo.org> -Bio-SamTools-1.330.0.ebuild,
+  -Bio-SamTools-1.370.0-r1.ebuild, -Bio-SamTools-1.380.0.ebuild,
+  Bio-SamTools-1.390.0-r1.ebuild:
+  Drop old; restrict version for dep on samtools, #523568
+
+*Bio-SamTools-1.390.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Bio-SamTools-1.390.0-r1.ebuild, -Bio-SamTools-1.390.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 May 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #199047
+
+*Bio-SamTools-1.390.0 (03 Sep 2013)
+
+  03 Sep 2013; Patrick Lauer <patrick@gentoo.org> +Bio-SamTools-1.390.0.ebuild:
+  Bump
+
+*Bio-SamTools-1.380.0 (17 Aug 2013)
+
+  17 Aug 2013; Patrick Lauer <patrick@gentoo.org> +Bio-SamTools-1.380.0.ebuild:
+  Bump
+
+*Bio-SamTools-1.370.0-r1 (24 Jan 2013)
+
+  24 Jan 2013; Justin Lecher <jlec@gentoo.org> -Bio-SamTools-1.370.0.ebuild,
+  +Bio-SamTools-1.370.0-r1.ebuild:
+  Bump module version and fix buildsystem, #452364
+
+*Bio-SamTools-1.370.0 (23 Jan 2013)
+
+  23 Jan 2013; Justin Lecher <jlec@gentoo.org> +Bio-SamTools-1.370.0.ebuild:
+  Version Bump, #452364
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  21 Apr 2012; Torsten Veller <tove@gentoo.org> -Bio-SamTools-1.290.0.ebuild,
+  -Bio-SamTools-1.300.0.ebuild, -Bio-SamTools-1.310.0.ebuild:
+  Cleanup
+
+*Bio-SamTools-1.330.0 (29 Feb 2012)
+
+  29 Feb 2012; Robin H. Johnson <robbat2@gentoo.org>
+  +Bio-SamTools-1.330.0.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*Bio-SamTools-1.310.0 (25 Sep 2011)
+
+  25 Sep 2011; Torsten Veller <tove@gentoo.org> Bio-SamTools-1.290.0.ebuild,
+  Bio-SamTools-1.300.0.ebuild, +Bio-SamTools-1.310.0.ebuild:
+  Version bump. Fix R/DEPEND.
+
+*Bio-SamTools-1.300.0 (05 Sep 2011)
+
+  05 Sep 2011; Robin H. Johnson <robbat2@gentoo.org>
+  +Bio-SamTools-1.300.0.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Bio-SamTools-1.29.ebuild:
+  Cleanup
+
+*Bio-SamTools-1.290.0 (01 Sep 2011)
+
+  01 Sep 2011; Torsten Veller <tove@gentoo.org> +Bio-SamTools-1.290.0.ebuild:
+  Change version scheme
+
+*Bio-SamTools-1.29 (20 Jul 2011)
+
+  20 Jul 2011; Andrey Kislyuk <weaver@gentoo.org> +Bio-SamTools-1.29.ebuild,
+  +metadata.xml:
+  New package, ebuild written by me, dependency of sci-biology/GBrowse

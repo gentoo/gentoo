@@ -1,0 +1,25 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ntop/files/ntop-initd-r1,v 1.1 2013/08/06 06:28:07 polynomial-c Exp $
+
+description="ntop - a network traffic analyzer"
+pidfile="/run/ntop.pid"
+command="/usr/bin/ntop"
+command_args="-L ${NTOP_OPTS}"
+start_stop_daemon_args="-p ${pidfile} -m -b"
+
+depend() {
+	need net
+}
+
+start_pre() {
+	if [ ! -e /var/lib/ntop/ntop_pw.db ] ; then
+		eerror "You need to set a password first by running"
+		eerror "ntop --set-admin-password"
+		return 1
+	fi
+
+	export LC_ALL=C # apparently doesn't work with some locales (#191576 and #205382)
+	export GDFONTPATH=/usr/share/fonts/corefonts # apparently the only font that works (#231705)
+}

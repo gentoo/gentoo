@@ -1,0 +1,37 @@
+# ChangeLog for app-forensics/mac-robber
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/mac-robber/ChangeLog,v 1.10 2015/06/09 11:15:11 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  08 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  17 Feb 2012; Tim Harder <radhermit@gentoo.org> -mac-robber-1.00.ebuild:
+  Remove old.
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> mac-robber-1.02.ebuild:
+  x86 stable wrt bug #396803
+
+*mac-robber-1.02 (26 Jun 2011)
+
+  26 Jun 2011; Tim Harder <radhermit@gentoo.org> +mac-robber-1.02.ebuild:
+  Version bump. Respect LDFLAGS (bug #336772).
+
+  13 Sep 2009; Patrick Lauer <patrick@gentoo.org> mac-robber-1.00.ebuild:
+  Remove virtual/libc deps
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  11 Aug 2005; Luis Medinas <metalgod@gentoo.org> mac-robber-1.00.ebuild:
+  Added ~amd64 keywords.
+
+  08 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  mac-robber-1.00.ebuild:
+  mark ~ppc
+
+  26 Jan 2005; Daniel Black <dragonheart@gentoo.org> 
+  +mac-robber-1.00.ebuild, +metadata.xml:
+  Initial import. Suggested by Michael Zanetta <mzanetta@telsys.ch>.

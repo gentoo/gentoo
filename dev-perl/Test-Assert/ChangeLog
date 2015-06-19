@@ -1,0 +1,50 @@
+# ChangeLog for dev-perl/Test-Assert
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Assert/ChangeLog,v 1.12 2015/06/13 21:49:43 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Test-Assert-0.50.400-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*Test-Assert-0.50.400-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Test-Assert-0.50.400-r1.ebuild, -Test-Assert-0.50.400.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  05 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> Test-Assert-0.50.400.ebuild:
+  Fix DESCRIPTION
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop duplication of myself as a maintainer where there is a herd.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Test-Assert-0.0504.ebuild:
+  Cleanup
+
+*Test-Assert-0.50.400 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +Test-Assert-0.50.400.ebuild:
+  Change version scheme
+
+  24 Dec 2009; Torsten Veller <tove@gentoo.org> -Test-Assert-0.0501.ebuild:
+  Cleanup
+
+*Test-Assert-0.0504 (10 Dec 2009)
+
+  10 Dec 2009; Torsten Veller <tove@gentoo.org> +Test-Assert-0.0504.ebuild:
+  Version bump
+
+  22 Oct 2009; Torsten Veller <tove@gentoo.org> Test-Assert-0.0501.ebuild:
+  Fix dependency
+
+  10 Aug 2009; Torsten Veller <tove@gentoo.org> Test-Assert-0.0501.ebuild:
+  New virtual: dev-perl/parent to virtual
+
+*Test-Assert-0.0501 (23 Jun 2009)
+
+  23 Jun 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Test-Assert-0.0501.ebuild, +metadata.xml:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

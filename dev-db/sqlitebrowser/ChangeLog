@@ -1,0 +1,119 @@
+# ChangeLog for dev-db/sqlitebrowser
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/sqlitebrowser/ChangeLog,v 1.25 2015/06/16 00:39:31 pesa Exp $
+
+  16 Jun 2015; Davide Pesavento <pesa@gentoo.org> sqlitebrowser-3.3.1.ebuild,
+  sqlitebrowser-3.5.1.ebuild, sqlitebrowser-3.6.0.ebuild:
+  Adjust dev-libs/qcustomplot USE deps.
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*sqlitebrowser-3.6.0 (02 Jun 2015)
+
+  02 Jun 2015; Michael Weber <xmw@gentoo.org>
+  +files/sqlitebrowser-3.6.0-unbundle-keep-qscintilla.patch,
+  +files/sqlitebrowser-3.6.0-unbundle.patch, +sqlitebrowser-3.6.0.ebuild:
+  Version bump (bug 550292 by Tomáš Chaloupka).
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org>
+  +files/sqlitebrowser-3.5.1-unbundle.patch, sqlitebrowser-3.5.1.ebuild:
+  Fix tests
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> sqlitebrowser-3.3.1.ebuild,
+  sqlitebrowser-3.5.1.ebuild:
+  Remove unnecessary qt4-r2 eclass usage
+
+*sqlitebrowser-3.5.1 (21 Feb 2015)
+
+  21 Feb 2015; Justin Lecher <jlec@gentoo.org> +sqlitebrowser-3.5.1.ebuild,
+  -files/sqlitebrowser-2.0_beta1-gold.patch,
+  -files/sqlitebrowser-2.0_beta1-qt-4.7.0.patch,
+  -sqlitebrowser-2.0_beta1-r2.ebuild:
+  Drop old; Version Bump
+
+  29 Sep 2014; Justin Lecher <jlec@gentoo.org> sqlitebrowser-3.3.1.ebuild:
+  qcustomplot pkg move
+
+*sqlitebrowser-3.3.1 (28 Sep 2014)
+
+  28 Sep 2014; Justin Lecher <jlec@gentoo.org> +sqlitebrowser-3.3.1.ebuild,
+  +files/sqlitebrowser-3.3.1-unbundle.patch, metadata.xml:
+  Version Bump, #516662
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org>
+  sqlitebrowser-2.0_beta1-r2.ebuild:
+  Move Qt dependencies to the new category
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org>
+  sqlitebrowser-2.0_beta1-r2.ebuild:
+  Move Qt dependencies to the new category
+
+  21 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  sqlitebrowser-2.0_beta1-r2.ebuild:
+  inherit eutils for make_desktop_entry
+
+  14 Apr 2012; Michael Weber <xmw@gentoo.org>
+  -sqlitebrowser-2.0_beta1-r1.ebuild:
+  Remove old version (requested by Johannes Huber).
+
+*sqlitebrowser-2.0_beta1-r2 (29 Mar 2012)
+
+  29 Mar 2012; Michael Weber <xmw@gentoo.org>
+  +sqlitebrowser-2.0_beta1-r2.ebuild,
+  +files/sqlitebrowser-2.0_beta1-gold.patch:
+  Revbump to replace qt4.eclass and EAPI-4 (bug 409985) and fix gold linker
+  problem (bug 372129). Thanks Michael (kensington) for the patches.
+
+*sqlitebrowser-2.0_beta1-r1 (07 Nov 2010)
+
+  07 Nov 2010; Michael Weber <xmw@gentoo.org>
+  -sqlitebrowser-2.00_beta1.ebuild, +sqlitebrowser-2.0_beta1-r1.ebuild,
+  +files/sqlitebrowser-2.0_beta1-qt-4.7.0.patch, metadata.xml:
+  Revbump to fix qt-4.7.0 issue (bug #338476), taking maintainership.
+
+  06 Nov 2010; Michael Weber <xmw@gentoo.org>
+  sqlitebrowser-2.00_beta1.ebuild:
+  Adjust DEPEND to exclude qt-gui-4.7 (bug 338476 by flameeyes)
+
+*sqlitebrowser-2.00_beta1 (31 Dec 2009)
+
+  31 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +sqlitebrowser-2.00_beta1.ebuild:
+  Version bump.
+
+  25 Oct 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove drizzt from metadata.xml (#149111)
+
+  06 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  sqlitebrowser-1.3.ebuild, +files/sqlitebrowser-1.3-glibc-2.10.patch:
+  Fix building with GLIBC 2.10+ wrt #274214.
+
+  03 Feb 2009; <drizzt@gentoo.org>
+  +files/sqlitebrowser-1.3-sqlite-deprecated.patch,
+  sqlitebrowser-1.3.ebuild:
+  Don't use sqlite internal functions wrt bug #227215
+
+  27 Jul 2008; Carsten Lohrke <carlo@gentoo.org> sqlitebrowser-1.3.ebuild:
+  QA: Get rid of deprecated qt_min_version().
+
+  27 Sep 2007; Timothy Redaelli <drizzt@gentoo.org>
+  sqlitebrowser-1.3.ebuild:
+  Change UIC files version from 3.2 to 3.3 if you have qt-3.3.
+  Thanks to Billy DeVincentis for reporting wrt bug #193949.
+
+  09 May 2007; Timothy Redaelli <drizzt@gentoo.org>
+  sqlitebrowser-1.3.ebuild:
+  Fix qt deps.
+  Thanks to REdOG for reporting wrt bug #177840.
+
+  13 Feb 2007; Piotr Jaroszyński <peper@gentoo.org>
+  sqlitebrowser-1.3.ebuild:
+  Add ~amd64 wrt bug #165998.
+
+*sqlitebrowser-1.3 (18 Dec 2006)
+
+  18 Dec 2006; Timothy Redaelli <drizzt@gentoo.org>
+  +files/sqlitebrowser-1.3-externalsqlite.patch, +metadata.xml,
+  +sqlitebrowser-1.3.ebuild:
+  Initial commit wrt bug #96124.

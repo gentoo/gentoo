@@ -1,0 +1,33 @@
+# ChangeLog for games-action/lugaru
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/lugaru/ChangeLog,v 1.8 2015/06/01 22:05:44 mr_bones_ Exp $
+
+  01 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org> lugaru-1.0c-r1.ebuild:
+  clean up app-emulation/emul-linux which has been removed
+
+  22 May 2015; Michael Sterrett <mr_bones_@gentoo.org> lugaru-1.0c-r1.ebuild:
+  possibly improve deps (bug #349162)
+
+  27 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org> -lugaru-1.0c.ebuild:
+  old
+
+  25 Jun 2014; Michał Górny <mgorny@gentoo.org> lugaru-1.0c-r1.ebuild:
+  Update multilib dependencies to use the lowest known EAPI 5 or multilib
+  versions.
+
+*lugaru-1.0c-r1 (25 Jun 2014)
+
+  25 Jun 2014; Michał Górny <mgorny@gentoo.org> +lugaru-1.0c-r1.ebuild:
+  Support multilib dependencies aside to emul-linux-x86.
+
+  26 Apr 2014; Ulrich Müller <ulm@gentoo.org> lugaru-1.0c.ebuild:
+  Fix LICENSE, bug 505608.
+
+  29 Mar 2013; Julian Ospald <hasufell@gentoo.org> lugaru-1.0c.ebuild:
+  use unpack_zip from unpacker.eclass instead of unzip
+
+*lugaru-1.0c (12 May 2010)
+
+  12 May 2010; Mike Frysinger <vapier@gentoo.org> +lugaru-1.0c.ebuild,
+  +metadata.xml:
+  Initial ebuild based on current lugaru-demo ebuild.

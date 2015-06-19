@@ -1,0 +1,15 @@
+# Copyright 1999-2014 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/desc/xfce_plugins.desc,v 1.9 2014/09/16 11:12:15 ssuominen Exp $
+
+# This file contains descriptions of XFCE_PLUGINS USE_EXPAND flags.
+
+# Keep it sorted.
+
+battery - Build battery plug-in for panel
+brightness - Build xfce4-brightness-plugin for panel
+clock - Build xfce4-orageclock-plugin for panel
+multiload-nandhp - Build a port of the GNOME multiload applet for panel
+power - Build power management plug-in for panel
+trash - Build thunar-tpa (trash) plugin for panel
+xmonad - Build xmonad-log-applet for panel

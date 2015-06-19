@@ -1,0 +1,309 @@
+# ChangeLog for dev-util/ddd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ddd/ChangeLog,v 1.78 2015/02/17 17:38:44 haubi Exp $
+
+  17 Feb 2015; Michael Haubenwallner <haubi@gentoo.org> ddd-3.3.12-r4.ebuild:
+  Add ~ppc-aix keyword.
+
+  14 Jul 2014; Maciej Mrozowski <reavertm@gentoo.org>
+  files/ddd-3.3.12-man.patch:
+  Use libiconv-compatible charsets, bug 516370.
+
+*ddd-3.3.12-r4 (08 Apr 2014)
+
+  08 Apr 2014; Maciej Mrozowski <reavertm@gentoo.org> +ddd-3.3.12-r4.ebuild,
+  +files/ddd-3.3.12-tinfo.patch, -ddd-3.3.12-r1.ebuild, -ddd-3.3.12-r2.ebuild:
+  Add tinfo as termcap-compatible library. Patch by Jeroen Roovers. Bug 458186.
+  Remove old.
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org> ddd-3.3.12-r3.ebuild:
+  Stable for sparc, wrt bug #456630
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org> ddd-3.3.12-r3.ebuild:
+  Stable for ia64, wrt bug #456630
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> ddd-3.3.12-r3.ebuild:
+  Stable for alpha, wrt bug #456630
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> ddd-3.3.12-r3.ebuild:
+  Stable for ppc64, wrt bug #456630
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> ddd-3.3.12-r3.ebuild:
+  Stable for ppc, wrt bug #456630
+
+  17 Feb 2013; Agostino Sarubbo <ago@gentoo.org> ddd-3.3.12-r3.ebuild:
+  Stable for amd64, wrt bug #456630
+
+  17 Feb 2013; Agostino Sarubbo <ago@gentoo.org> ddd-3.3.12-r3.ebuild:
+  Stable for x86, wrt bug #456630
+
+*ddd-3.3.12-r3 (06 Nov 2012)
+
+  06 Nov 2012; Maciej Mrozowski <reavertm@gentoo.org> +ddd-3.3.12-r3.ebuild,
+  +files/ddd-3.3.12-gdb-disassembler-bug.patch, +files/ddd-3.3.12-man.patch:
+  Add readline USE flag, fix manpage installation bug 439888 and machine code
+  view bug 439766 (by Simone Scanzoni)
+
+  24 Oct 2012; Ulrich Müller <ulm@gentoo.org> ddd-3.3.12-r1.ebuild,
+  ddd-3.3.12-r2.ebuild:
+  Update dependency after package move from x11-libs/openmotif to
+  x11-libs/motif.
+
+  05 Sep 2012; Justin Lecher <jlec@gentoo.org> ddd-3.3.12-r1.ebuild,
+  ddd-3.3.12-r2.ebuild:
+  Use doicon instead insinto + doins to install icon files
+
+  18 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> ddd-3.3.12-r2.ebuild:
+  x86 stable wrt bug #393831
+
+  18 Dec 2011; Maciej Mrozowski <reavertm@gentoo.org> ddd-3.3.12-r2.ebuild:
+  Added missing ncurses and X11 dependencies.
+
+  16 Dec 2011; Agostino Sarubbo <ago@gentoo.org> ddd-3.3.12-r2.ebuild:
+  Stable for AMD64, wrt bug #393831
+
+  14 Jul 2011; Jonathan Callen <abcd@gentoo.org> ddd-3.3.12-r2.ebuild:
+  Add ~x86-linux/~amd64-linux keywords for bug 375093
+
+  10 Oct 2010; Ulrich Mueller <ulm@gentoo.org> ddd-3.3.12-r1.ebuild,
+  ddd-3.3.12-r2.ebuild:
+  Fix openmotif dependency. Change EAPI to 1 to allow for slot dependency.
+
+*ddd-3.3.12-r2 (23 Aug 2010)
+
+  23 Aug 2010; Maciej Mrozowski <reavertm@gentoo.org> +ddd-3.3.12-r2.ebuild,
+  metadata.xml:
+  Take over maintenance, cleanup ebuild a bit, add elfutils dep for ppc32/64
+  (bug 291972), install pdf docs instead of html ones (missing figures).
+
+  27 Sep 2009; Víctor Ostorga <vostorga@gentoo.org> -ddd-3.3.11.ebuild, -ddd-3.3.12.ebuild:
+  Cleaning out old ebuilds
+
+  24 Jul 2009; Joseph Jezak <josejx@gentoo.org> ddd-3.3.12-r1.ebuild:
+  Marked ppc/ppc64 stable for bug #275333.
+
+  12 Jul 2009; Raúl Porcel <armin76@gentoo.org> ddd-3.3.12-r1.ebuild:
+  ia64/sparc stable wrt #275333
+
+  08 Jul 2009; Markus Meier <maekke@gentoo.org> ddd-3.3.12-r1.ebuild:
+  amd64 stable, bug #275333
+
+  30 Jun 2009; Christian Faulhammer <fauli@gentoo.org> ddd-3.3.12-r1.ebuild:
+  stable x86, bug 275333
+
+  28 Jun 2009; Tobias Klausmann <klausman@gentoo.org> ddd-3.3.12-r1.ebuild:
+  Stable on alpha, bug #275333
+
+*ddd-3.3.12-r1 (20 May 2009)
+
+  20 May 2009; Ryan Hill <dirtyepic@gentoo.org> +ddd-3.3.12-r1.ebuild,
+  +files/ddd-3.3.12-gcc44.patch:
+  Revision bump.
+  
+    - fix building with GCC 4.4
+    - depend on x11-libs/xfontsel, tweak the rest
+    - use Gnu mirror and change LICENSE to [L]GPL-3
+    - rewrite src_install
+	
+  Maintainer needed.
+
+*ddd-3.3.12 (23 Apr 2009)
+
+  23 Apr 2009; Patrick Lauer <patrick@gentoo.org> +ddd-3.3.12.ebuild:
+  Bump to 3.3.12. Fixes #252261
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  21 Feb 2008; Ulrich Mueller <ulm@gentoo.org> ddd-3.3.11.ebuild:
+  Explicitely depend on x11-libs/openmotif wrt bug 193505.
+
+  14 Nov 2007; Robin H. Johnson <robbat2@gentoo.org> ddd-3.3.11.ebuild:
+  ddd had some parallel-compile blips. Build in two passes, with headers
+  first, then the rest.
+
+  22 Jul 2007; Hans de Graaff <graaff@gentoo.org> ddd-3.3.11.ebuild:
+  Drop virtual/x11 references.
+
+  28 Aug 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/ddd-3.3.1-detect-hipot.patch, -files/ddd-3.3.1-gcc3-gentoo.patch,
+  -files/ddd-3.3.1-help-window-fix.patch,
+  -files/ddd-3.3.1-link-libstdc++.patch, -files/ddd-3.3.8-gcc34.patch,
+  -ddd-3.3.1-r3.ebuild, -ddd-3.3.10.ebuild:
+  clean out old, non-modX ebuilds
+
+  28 Aug 2006; Aron Griffis <agriffis@gentoo.org> ddd-3.3.11.ebuild:
+  Mark 3.3.11 stable on ia64
+
+  10 Aug 2006; Michael Sterrett <mr_bones_@gentoo.org> -ddd-3.3.1-r1.ebuild,
+  -ddd-3.3.1-r2.ebuild, -ddd-3.3.7.ebuild, -ddd-3.3.8.ebuild,
+  -ddd-3.3.9.ebuild:
+  clean out old ebuilds
+
+  24 Jul 2006; Jose Luis Rivero <yoswink@gentoo.org> ddd-3.3.11.ebuild:
+  Stable on alpha wrt bug #129126
+
+  24 Jul 2006; Joshua Jackson <tsunam@gentoo.org> ddd-3.3.11.ebuild:
+  Stable x86; bug #129126
+
+  20 Jul 2006; Markus Rothe <corsair@gentoo.org> ddd-3.3.11.ebuild:
+  Stable on ppc64; bug #129126
+
+  16 Jul 2006; Jason Wever <weeve@gentoo.org> ddd-3.3.11.ebuild:
+  Stable on SPARC wrt bug #129126.
+
+  16 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org> ddd-3.3.11.ebuild:
+  ppc stable, bug #129126
+
+  16 Jul 2006; Simon Stelling <blubb@gentoo.org> ddd-3.3.11.ebuild:
+  stable on amd64
+
+  05 Jun 2006; Carsten Lohrke <carlo@gentoo.org> ddd-3.3.11.ebuild:
+  openmotif -> virtual/motif - X is a dependency at runtime as well...
+
+  30 Jan 2006; Robin H. Johnson <robbat2@gentoo.org> Manifest:
+  Manifest fix.
+
+  29 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org> ddd-3.3.11.ebuild:
+  Dependency update: media-gfx/gnuplot -> sci-visualization/gnuplot.
+
+  29 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org> ddd-3.3.10.ebuild:
+  Dependency update: media-gfx/gnuplot -> sci-visualization/gnuplot.
+
+  26 Jan 2006; Simon Stelling <blubb@gentoo.org> metadata.xml:
+  fix metadata.xml
+
+  06 Jan 2006; Simon Stelling <blubb@gentoo.org> +metadata.xml,
+  ddd-3.3.10.ebuild, ddd-3.3.11.ebuild:
+  add RESTRICT=test to fix bug 118042; adding missing metadata.xml
+
+  13 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>; ddd-3.3.11.ebuild:
+  Add modular X dependencies.
+
+*ddd-3.3.11 (12 Jul 2005)
+
+  12 Jul 2005; Martin Holzer <mholzer@gentoo.org> +ddd-3.3.11.ebuild:
+  version bumped. closes #92116
+
+  08 Apr 2005; Markus Rothe <corsair@gentoo.org> ddd-3.3.10.ebuild:
+  Stable on ppc64
+
+  27 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> ddd-3.3.10.ebuild:
+  Stable on ppc.
+
+  22 Mar 2005; Aron Griffis <agriffis@gentoo.org> ddd-3.3.10.ebuild:
+  Stable on amd64
+
+  14 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> ddd-3.3.10.ebuild:
+  Stable on sparc
+
+  12 Mar 2005; Aron Griffis <agriffis@gentoo.org> ddd-3.3.10.ebuild:
+  Add RDEPEND=gnuplot #30114.  Stable on alpha, ia64, x86
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*ddd-3.3.10 (27 Nov 2004)
+
+  27 Nov 2004; Martin Holzer <mholzer@gentoo.org> +ddd-3.3.10.ebuild:
+  Version bumped. Closes 71155
+
+  22 Aug 2004; Tom Gall <tgall@gentoo.org> ddd-3.3.9.ebuild:
+  stable on ppc64, bug #58188
+
+*ddd-3.3.9 (07 Jul 2004)
+
+  07 Jul 2004; Martin Holzer <mholzer@gentoo.org> ddd-3.3.9.ebuild:
+  Version bumped. Closes 56000
+
+  03 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> ddd-3.3.8.ebuild:
+  Stable on alpha.
+
+  01 Jun 2004; Travis Tilley <lv@gentoo.org> ddd-3.3.8.ebuild:
+  stable on amd64
+
+  29 May 2004; Travis Tilley <lv@gentoo.org> +files/ddd-3.3.8-gcc34.patch,
+  ddd-3.3.8.ebuild:
+  gcc 3.4 fix
+
+  04 Apr 2004; Aron Griffis <agriffis@gentoo.org> ddd-3.3.7.ebuild,
+  ddd-3.3.8.ebuild:
+  Add ia64 keywords for bug 46560
+
+  23 Feb 2004; Sven Blumenstein <bazik@gentoo.org> ddd-3.3.7.ebuild,
+  ddd-3.3.8.ebuild:
+  Stable on sparc.
+
+*ddd-3.3.8 (19 Feb 2004)
+
+  19 Feb 2004; Martin Holzer <mholzer@gentoo.org> ddd-3.3.8.ebuild:
+  Version bumped.
+
+  19 Feb 2004; Martin Holzer <mholzer@gentoo.org> ddd-3.3.7.ebuild:
+  changed SRC_URI to sf.net
+
+  18 Feb 2004; Martin Schlemmer <azarah@gentoo.org> ddd-3.3.7.ebuild:
+  Mark x86, amd64 and alpha stable, as we need it for gcc-3.3.2 and later, bug
+  #34982.
+
+  11 Jan 2004; Heinrich Wendel <lanius@gentoo.org> ddd-3.3.1-r1.ebuild,
+  ddd-3.3.1-r2.ebuild, ddd-3.3.1-r3.ebuild, ddd-3.3.7.ebuild:
+  fixed motif dep
+
+  30 Oct 2003; Martin Schlemmer <azarah@gentoo.org> ddd-3.3.1-r3.ebuild,
+  files/ddd-3.3.1-help-window-fix.patch:
+  Fix repeated printing in help system, bug #30115, patch by bartron
+  <bartron@gmx.net>.
+
+  13 Oct 2003; Martin Holzer <mholzer@gentoo.org> ddd-3.3.7.ebuild:
+  added gcc3 depend. Closes #30844.
+
+*ddd-3.3.7 (02 Oct 2003)
+
+  02 Oct 2003; Joshua Kinard <kumba@gentoo.org> ddd-3.3.7.ebuild:
+  Made a new ebuild for ddd-3.3.7, which according to the GNU homepage, requires gcc-3.x,
+  so this ebuild will not compile with gcc-2.95.x.
+  Closes Bug #28468
+ 
+*ddd-3.3.1-r3 (05 Dec 2002)
+
+  30 Mar 2003; Alastair Tse <liquidx@gentoo.org> ddd-3.3.1-r1.ebuild,
+  ddd-3.3.1-r2.ebuild, ddd-3.3.1-r3.ebuild:
+  change deps to virtual/motif
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : 
+  changed sparc ~sparc keywords
+
+  05 Dec 2002; Martin Schlemmer <azarah@gentoo.org> :
+  Fix detection of double hipot(double, double), added
+  ddd-3.3.1-detect-hipot.patch.  Fix not linking to libstdc++,
+  ddd-3.3.1-link-libstdc++.patch.  Fix sandbox errors (need to
+  pass 'tooldir=...' to 'make install'), closing bug #4614.
+
+
+*ddd-3.3.1-r2 (29 Jul 2002)
+
+  29 Jul 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  ddd-3.3.1-r2.ebuild, files/digest-ddd-3.3.1-r2,
+  files/ddd-3.3.1-gcc3-gentoo.patch :
+
+  Support for gcc3.[12]. Thanks to Michal Sylwester
+  <michal@michal.eu.org> of bug 3829 for the solution.
+
+*ddd-3.3.1-r1 (1 Feb 2002)
+
+  1 Feb 2002; Michael Nazaroff <naz@gentoo.org> ChangeLog :
+
+  Updated the ebuild the ebuild to remove motif is use variable since it's a
+  build time requirment.
+
+*ddd-3.3.1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

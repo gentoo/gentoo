@@ -1,0 +1,15 @@
+* 10.4 doesn't have posix spawn, but fortunately it's only used on ARM
+  (iPhone), so we can still compile it
+
+--- src/gdb/macosx/macosx-nat-inferior.c
++++ src/gdb/macosx/macosx-nat-inferior.c
+@@ -58,7 +58,9 @@
+ #include <sys/sysctl.h>
+ #include <sys/proc.h>
+ #include <mach/mach_error.h>
++#ifdef TARGET_ARM
+ #include <spawn.h>
++#endif
+ 
+ #include "macosx-nat-dyld.h"
+ #include "macosx-nat-inferior.h"

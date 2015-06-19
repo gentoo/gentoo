@@ -1,0 +1,52 @@
+# ChangeLog for dev-python/python-dsv
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-dsv/ChangeLog,v 1.11 2015/06/09 16:44:58 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  01 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -python-dsv-1.4.1.ebuild:
+  Remove old.
+
+*python-dsv-1.4.1-r1 (25 Dec 2014)
+
+  25 Dec 2014; Michał Górny <mgorny@gentoo.org> +python-dsv-1.4.1-r1.ebuild:
+  Convert to distutils-r1.
+
+  09 Apr 2014; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  [QA] Dissolve the mobile-phone herd to maintainer-needed because it is empty
+  and nobody joined it after multiple recruitment mails.
+
+  11 Nov 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -python-dsv-1.4.0-r1.ebuild, -files/python-dsv-1.4.0-wxversion.patch:
+  old
+
+*python-dsv-1.4.1 (11 Nov 2011)
+
+  11 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> +python-dsv-1.4.1.ebuild,
+  +files/python-dsv-1.4.1-wxversion.patch:
+  Version bump and use wxpython 2.8 instead of 2.6 wrt #330683
+
+  12 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  python-dsv-1.4.0-r1.ebuild:
+  Set SUPPORT_PYTHON_ABIS (bug #345543).
+
+*python-dsv-1.4.0-r1 (04 Dec 2007)
+
+  04 Dec 2007; Ali Polatel <hawking@gentoo.org>
+  +files/python-dsv-1.4.0-wxversion.patch, -python-dsv-1.4.0.ebuild,
+  +python-dsv-1.4.0-r1.ebuild:
+  Revbump. Added patch to prevent running against other SLOTs of wxpython,
+  #201165. Drop old.
+
+  03 Oct 2007; Ryan Hill <dirtyepic@gentoo.org> python-dsv-1.4.0.ebuild:
+  Lock wxpython dependency.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*python-dsv-1.4.0 (17 Apr 2006)
+
+  17 Apr 2006; Alin Nastac <mrness@gentoo.org> +metadata.xml,
+  +python-dsv-1.4.0.ebuild:
+  Initial import from bug 57323, thanks to Sourav Mandal <sourav@sourav.net>.

@@ -1,0 +1,243 @@
+# ChangeLog for net-news/snownews
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-news/snownews/ChangeLog,v 1.40 2014/10/28 23:24:31 jer Exp $
+
+  28 Oct 2014; Jeroen Roovers <jer@gentoo.org> snownews-1.5.12-r1.ebuild:
+  Fix building against sys-libs/ncurses[tinfo] (bug #526264).
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> -snownews-1.5.10.ebuild,
+  metadata.xml:
+  Cleanup due bug #151880
+
+  11 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  snownews-1.5.12-r1.ebuild:
+  stop using built_with_use
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> snownews-1.5.10.ebuild,
+  snownews-1.5.12-r1.ebuild:
+  Drop sparc keywords
+
+  05 May 2012; Brent Baude <ranger@gentoo.org> snownews-1.5.12-r1.ebuild:
+  Marking snownews-1.5.12-r1 ppc for bug 307699
+
+  22 Apr 2012; Markus Meier <maekke@gentoo.org> snownews-1.5.12-r1.ebuild:
+  x86 stable, bug #307699
+
+  22 Apr 2012; Agostino Sarubbo <ago@gentoo.org> snownews-1.5.12-r1.ebuild:
+  Stable for amd64, wrt bug #307699
+
+  12 May 2010; Jeremy Olexa <darkside@gentoo.org> snownews-1.5.12-r1.ebuild:
+  Add Gentoo Prefix changes, bump to EAPI3, add keywords. bug 316825
+
+  17 Mar 2010; Cédric Krier <cedk@gentoo.org> snownews-1.5.10.ebuild,
+  snownews-1.5.12-r1.ebuild:
+  Remove wrong dependency to XML-LibXSLT
+
+  17 Mar 2010; Cédric Krier <cedk@gentoo.org>
+  +files/snownews-1.5.7-stdint.patch:
+  Re-add snownews-1.5.7-stdint.patch for bug #309933
+
+*snownews-1.5.12-r1 (14 Mar 2010)
+
+  14 Mar 2010; Cédric Krier <cedk@gentoo.org> -snownews-1.5.7-r2.ebuild,
+  -files/snownews-1.5.7-manpath.patch, -files/snownews-1.5.7-stdint.patch,
+  -snownews-1.5.8.ebuild, -snownews-1.5.9.ebuild, -snownews-1.5.11.ebuild,
+  -snownews-1.5.12.ebuild, +snownews-1.5.12-r1.ebuild:
+  Fix unicode display for bug #309307 and remove old
+
+*snownews-1.5.12 (22 Sep 2009)
+
+  22 Sep 2009; Cédric Krier <cedk@gentoo.org> +snownews-1.5.12.ebuild:
+  Version bump
+
+*snownews-1.5.11 (20 Mar 2009)
+
+  20 Mar 2009; Cédric Krier <cedk@gentoo.org> +snownews-1.5.11.ebuild:
+  Version bump
+
+  09 Nov 2008; Tiago Cunha <tcunha@gentoo.org> snownews-1.5.10.ebuild:
+  stable sparc, bug 244538
+
+  09 Nov 2008; Cédric Krier <cedk@gentoo.org> snownews-1.5.10.ebuild:
+  Remove dodoc for README.colors
+
+  09 Nov 2008; Markus Meier <maekke@gentoo.org> snownews-1.5.10.ebuild:
+  x86 stable, bug #244538
+
+  01 Nov 2008; nixnut <nixnut@gentoo.org> snownews-1.5.10.ebuild:
+  Stable on ppc wrt bug 244538
+
+  27 Oct 2008; Jeremy Olexa <darkside@gentoo.org> snownews-1.5.10.ebuild:
+  amd64 stable, bug 244538
+
+*snownews-1.5.10 (31 Jul 2008)
+
+  31 Jul 2008; Cédric Krier <cedk@gentoo.org> +snownews-1.5.10.ebuild:
+  Version bump
+
+  18 Feb 2008; Cédric Krier <cedk@gentoo.org>
+  -files/snownews-1.5.9-install.patch, snownews-1.5.9.ebuild:
+  Remove patch and fix digest due to silent release
+
+*snownews-1.5.9 (17 Feb 2008)
+
+  17 Feb 2008; Cédric Krier <cedk@gentoo.org>
+  +files/snownews-1.5.9-install.patch, +snownews-1.5.9.ebuild:
+  Version bump
+
+*snownews-1.5.8 (10 Jan 2008)
+
+  10 Jan 2008; Cédric Krier <cedk@gentoo.org> +snownews-1.5.8.ebuild:
+  Version bump
+
+  14 Jul 2007; Cédric Krier <cedk@gentoo.org> -snownews-1.5.7-r1.ebuild:
+  Remove old
+
+  17 Mar 2007; Steve Dibb <beandog@gentoo.org> snownews-1.5.7-r2.ebuild:
+  amd64 stable, bug 170262
+
+  13 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  snownews-1.5.7-r2.ebuild:
+  Stable on sparc wrt #170262
+
+  10 Mar 2007; Andrej Kacian <ticho@gentoo.org> snownews-1.5.7-r2.ebuild:
+  Stable on x86, bug #170262.
+
+  10 Mar 2007; nixnut <nixnut@gentoo.org> snownews-1.5.7-r2.ebuild:
+  Stable on ppc wrt bug 170262
+
+  10 Mar 2007; Cedric Krier <cedk@gentoo.org> -snownews-1.5.5.1.ebuild,
+  -snownews-1.5.6.1.ebuild, -snownews-1.5.7.ebuild:
+  Remove old version
+
+  30 Jan 2007; Steve Dibb <beandog@gentoo.org> snownews-1.5.7-r1.ebuild:
+  amd64 stable, bug 162959
+
+*snownews-1.5.7-r2 (23 Jan 2007)
+
+  23 Jan 2007; Cedric Krier <cedk@gentoo.org>
+  +files/snownews-1.5.7-manpath.patch, +snownews-1.5.7-r2.ebuild:
+  Add patch for bug #163439
+
+  22 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  snownews-1.5.7-r1.ebuild:
+  Stable on sparc wrt #162959
+
+  21 Jan 2007; Andrej Kacian <ticho@gentoo.org> snownews-1.5.7-r1.ebuild:
+  Stable on x86, bug #162959.
+
+  20 Jan 2007; nixnut <nixnut@gentoo.org> snownews-1.5.7-r1.ebuild:
+  Stable on ppc wrt bug 162959
+
+  03 Dec 2006; Cedric Krier <cedk@gentoo.org>
+  +files/snownews-1.5.7-stdint.patch, snownews-1.5.7-r1.ebuild:
+  Fix bug #121805
+
+*snownews-1.5.7-r1 (03 Dec 2006)
+
+  03 Dec 2006; Cedric Krier <cedk@gentoo.org> metadata.xml,
+  +snownews-1.5.7-r1.ebuild:
+  Fix for bug #140789 and improvements
+
+  02 May 2006; Jason Wever <weeve@gentoo.org> snownews-1.5.6.1.ebuild:
+  Stable on SPARC.
+
+*snownews-1.5.7 (17 Jul 2005)
+
+  17 Jul 2005; Michael Kohl <citizen428@gentoo.org> +snownews-1.5.7.ebuild:
+  Version bump.
+
+  04 May 2005; Jan Brinkmann <luckyduck@gentoo.org> snownews-1.5.6.1.ebuild:
+  stable on amd64
+
+*snownews-1.5.6.1 (18 Mar 2005)
+*snownews-1.5.5.1 (18 Mar 2005)
+
+  18 Mar 2005; Seemant Kulleen <seemant@gentoo.org> +metadata.xml,
+  +snownews-1.5.5.1.ebuild, +snownews-1.5.6.1.ebuild:
+  Moved from net-www/snownews to net-news/snownews.
+
+  26 Jan 2005; Michael Kohl <citizen428@gentoo.org> snownews-1.5.6.1.ebuild:
+  Marked stable on x86.
+
+  21 Jan 2005; Lars Weiler <pylon@gentoo.org> snownews-1.5.6.1.ebuild:
+  Stable on ppc.
+
+*snownews-1.5.6.1 (09 Dec 2004)
+
+  09 Dec 2004; Michael Kohl <citizen428@gentoo.org> -snownews-1.5.4.ebuild,
+  snownews-1.5.5.1.ebuild, +snownews-1.5.6.1.ebuild, -snownews-1.5.6.ebuild:
+  Version bump for the bugfix release. Marked 1.5.5.1 stable on x86 and
+  cleaned out 1.5.4 and 1.5.6.
+
+*snownews-1.5.6 (08 Dec 2004)
+
+  08 Dec 2004; Michael Kohl <citizen428@gentoo.org> +snownews-1.5.6.ebuild,
+  -snownews-1.5.6_beta1.ebuild:
+  Version bump; added new dependencies for snowsync. Moved dependencies on
+  Perl libraries to RDEPEND.
+
+*snownews-1.5.6_beta1 (22 Nov 2004)
+
+  22 Nov 2004; Michael Kohl <citizen428@gentoo.org>
+  +snownews-1.5.6_beta1.ebuild:
+  Beta release for the impatient.
+
+*snownews-1.5.5.1 (08 Nov 2004)
+
+  08 Nov 2004; Michael Kohl <citizen428@gentoo.org>
+  +snownews-1.5.5.1.ebuild:
+  Version bump; closing bug #70382, thanks to nile <automaticbox@gmail.com>
+
+  28 Oct 2004; Michael Kohl <citizen428@gentoo.org> -snownews-1.3.4.ebuild,
+  -snownews-1.4.4.ebuild, -snownews-1.5.2.ebuild, -snownews-1.5.3.ebuild,
+  snownews-1.5.4.ebuild:
+  Marking stable on x86, removing old versions.
+
+*snownews-1.5.4 (29 Sep 2004)
+
+  29 Sep 2004; Michael Kohl <citizen428@gentoo.org> +snownews-1.5.4.ebuild,
+  -snownews-1.5.4_beta2.ebuild:
+  Version bump; this is obsoleting the beta which should have never been here,
+  so I'm removing it
+
+*snownews-1.5.4_beta2 (22 Sep 2004)
+
+  22 Sep 2004; Michael Kohl <citizen428@gentoo.org> metadata.xml,
+  +snownews-1.5.4_beta2.ebuild:
+  Beta version for the impatient
+
+  11 Sep 2004; Tom Martin <slarti@gentoo.org> snownews-1.5.3.ebuild:
+  Marked ~amd64.
+
+  24 Jun 2004; Stuart Herbert <stuart@gentoo.org> snownews-1.5.3.ebuild:
+  Marked stable on x86
+
+*snownews-1.5.3 (23 Jun 2004)
+
+  23 Jun 2004; Stuart Herbert <stuart@gentoo.org> +snownews-1.5.3.ebuild:
+  Version bump; bug #53016; thanks to Michael Kohl <citizen428@cargal.org>
+
+*snownews-1.5.2 (23 Apr 2004)
+
+  23 Apr 2004; Stuart Herbert <stuart@gentoo.org> snownews-1.5.2.ebuild:
+  Version bump; see bug #44346
+
+*snownews-1.4.4 (10 Mar 2004)
+
+  10 Mar 2004; Martin Holzer <mholzer@gentoo.org> snownews-1.4.4.ebuild:
+  Version bumped. Closes 41678
+
+*snownews-1.3.4 (09 Nov 2003)
+
+  09 Nov 2003; Bartosch Pixa <darkspecter@gentoo.org> snownews-1.3.4.ebuild:
+  version bump
+
+  08 Oct 2003; Bartosch Pixa <darkspecter@gentoo.org> snownews-1.2.3.ebuild:
+  set ~ppc in keywords
+
+*snownews-1.2.3 (08 Oct 2003)
+
+  08 Oct 2003; Bartosch Pixa <darkspecter@gentoo.org> metadata.xml,
+  snownews-1.2.3.ebuild:
+  initial import, ebuild submited by Jan Brinkmann <lucky@the-luckyduck.de>

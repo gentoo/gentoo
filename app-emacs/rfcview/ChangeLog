@@ -1,0 +1,50 @@
+# ChangeLog for app-emacs/rfcview
+# Copyright 2000-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/rfcview/ChangeLog,v 1.15 2015/01/27 19:29:07 ulm Exp $
+
+  27 Jan 2015; Ulrich Müller <ulm@gentoo.org> rfcview-0.13.ebuild:
+  Update HOMEPAGE, bug 537928.
+
+  19 Apr 2014; Ulrich Müller <ulm@gentoo.org> -rfcview-0.5.ebuild:
+  Remove old.
+
+  19 Apr 2014; Agostino Sarubbo <ago@gentoo.org> rfcview-0.13.ebuild:
+  Stable for alpha, wrt bug #505456
+
+  24 Mar 2014; Agostino Sarubbo <ago@gentoo.org> rfcview-0.13.ebuild:
+  Stable for x86, wrt bug #505456
+
+  24 Mar 2014; Agostino Sarubbo <ago@gentoo.org> rfcview-0.13.ebuild:
+  Stable for amd64, wrt bug #505456
+
+*rfcview-0.13 (20 Feb 2014)
+
+  20 Feb 2014; Ulrich Müller <ulm@gentoo.org> +rfcview-0.13.ebuild:
+  Version bump. New upstream.
+
+  04 Nov 2007; Ulrich Mueller <ulm@gentoo.org> rfcview-0.5.ebuild:
+  amd64 stable, bug 195512
+
+  04 Nov 2007; Ulrich Mueller <ulm@gentoo.org> files/50rfcview-gentoo.el:
+  Canonicalise sitefile.
+
+  08 Oct 2007; Christian Faulhammer <opfer@gentoo.org> rfcview-0.5.ebuild:
+  drop ppc-macos
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> rfcview-0.5.ebuild:
+  Mark 0.5 stable on alpha
+
+  30 Jun 2005; Matthew Kennedy <mkennedy@gentoo.org> rfcview-0.5.ebuild:
+  Keywording ~amd64.
+
+  01 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> rfcview-0.5.ebuild:
+  Stable on x86. Added to ~alpha and ~ppc-macos.
+
+*rfcview-0.5 (31 Oct 2003)
+
+  31 Oct 2003; <mkennedy@gentoo.org> metadata.xml, rfcview-0.5.ebuild,
+  files/50rfcview-gentoo.el:
+  initial import. ebuild submitted by Matthew Kennedy <mkennedy@gentoo.org>

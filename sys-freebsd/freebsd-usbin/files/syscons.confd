@@ -1,0 +1,14 @@
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-usbin/files/syscons.confd,v 1.1 2006/09/14 17:03:27 flameeyes Exp $
+# Example syscons config file. This is the place to set things like keymap, etc.
+
+# Set the keymap to "uk.iso".
+#KEYMAP="uk.iso"
+
+# Set the keyboard rate to 250ms delay, and 34 repeat rate.
+#KEYRATE="250.34"
+
+# Change the behaviour of F-unction keys (see kbdcontrol(1)).
+#KEYCHANGE="10 'ssh myhost'"
+
+# See vidcontrol(1) -t
+#BLANKTIME="off"

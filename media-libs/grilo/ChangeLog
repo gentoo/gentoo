@@ -1,0 +1,208 @@
+# ChangeLog for media-libs/grilo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/grilo/ChangeLog,v 1.46 2015/06/09 16:30:22 eva Exp $
+
+*grilo-0.2.12 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org> -grilo-0.2.10.ebuild,
+  +grilo-0.2.12.ebuild:
+  Version bump for Gnome 3.16. Clean up old revision.
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> grilo-0.2.10.ebuild,
+  grilo-0.2.11.ebuild:
+  Drop old Python implementations
+
+  19 Dec 2014; Pacho Ramos <pacho@gentoo.org> grilo-0.2.11.ebuild:
+  amd64 stable, bug 529964
+
+  18 Dec 2014; Pacho Ramos <pacho@gentoo.org> grilo-0.2.11.ebuild:
+  x86 stable, bug 529964
+
+*grilo-0.2.11 (02 Sep 2014)
+
+  02 Sep 2014; Pacho Ramos <pacho@gentoo.org> +grilo-0.2.11.ebuild,
+  -grilo-0.2.9.ebuild:
+  Version bump, drop old, don't rename grilo-simple-playlist as we don't have
+  the older slot for some time.
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org> grilo-0.2.10.ebuild:
+  x86 stable, bug 508862
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org> grilo-0.2.10.ebuild:
+  amd64 stable, bug 508862
+
+  25 Apr 2014; Pacho Ramos <pacho@gentoo.org> -grilo-0.1.20.ebuild:
+  Drop old
+
+*grilo-0.2.10 (29 Mar 2014)
+
+  29 Mar 2014; Pacho Ramos <pacho@gentoo.org> +grilo-0.2.10.ebuild,
+  -grilo-0.2.7.ebuild, -grilo-0.2.8.ebuild:
+  Version bump, drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> grilo-0.2.9.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> grilo-0.2.9.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> grilo-0.2.9.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> grilo-0.2.9.ebuild:
+  arch stable, bug 888
+
+*grilo-0.2.9 (22 Feb 2014)
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> +grilo-0.2.9.ebuild:
+  Version bump
+
+*grilo-0.2.8 (11 Feb 2014)
+
+  11 Feb 2014; Pacho Ramos <pacho@gentoo.org> +grilo-0.2.8.ebuild,
+  -files/grilo-0.1.16-fix-automagic-test-ui.patch,
+  -files/grilo-0.2.6-testui-crash.patch, -grilo-0.1.18-r1.ebuild,
+  -grilo-0.2.6.ebuild, metadata.xml:
+  Version bump, drop old
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> grilo-0.1.20.ebuild,
+  grilo-0.2.7.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> grilo-0.1.20.ebuild,
+  grilo-0.2.7.ebuild:
+  amd64 stable, bug #478252
+
+  14 Oct 2013; Michał Górny <mgorny@gentoo.org> grilo-0.2.6.ebuild,
+  grilo-0.2.7.ebuild:
+  Use python_gen_any_dep. Bug #487354.
+
+*grilo-0.2.7 (28 Sep 2013)
+
+  28 Sep 2013; Pacho Ramos <pacho@gentoo.org> +grilo-0.2.7.ebuild,
+  -grilo-0.2.4.ebuild:
+  Version bump, drop old
+
+  02 Aug 2013; Gilles Dartiguelongue <eva@gentoo.org> grilo-0.2.6.ebuild,
+  -files/grilo-0.1.16-media-source-infinite-loop.patch:
+  Add missing liboauth dependency. Switch to python-any-r1 eclass.
+
+*grilo-0.2.6 (26 May 2013)
+
+  26 May 2013; Pacho Ramos <pacho@gentoo.org>
+  +files/grilo-0.2.6-testui-crash.patch, +grilo-0.2.6.ebuild,
+  -grilo-0.2.3.ebuild:
+  Version bump, remove old
+
+  12 May 2013; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Add doctype to metadata.xml
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> grilo-0.1.20.ebuild,
+  grilo-0.2.4.ebuild:
+  Add ~arm, wrt bug #449220
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> grilo-0.1.20.ebuild,
+  grilo-0.2.4.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> grilo-0.1.20.ebuild,
+  grilo-0.2.4.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> grilo-0.2.4.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> grilo-0.1.20.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> grilo-0.2.4.ebuild:
+  Add ~ppc64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> grilo-0.1.20.ebuild:
+  Add ~ppc64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> grilo-0.2.4.ebuild:
+  Add ~ppc, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> grilo-0.1.20.ebuild:
+  Add ~ppc, wrt bug #449220
+
+  10 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org> grilo-0.2.4.ebuild:
+  Fix build failure with USE=vala due to subslotting (bug #446692, thanks to
+  Maciej Piechotka).
+
+*grilo-0.2.4 (10 Dec 2012)
+
+  10 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  grilo-0.1.18-r1.ebuild, grilo-0.1.20.ebuild, -grilo-0.2.0-r1.ebuild,
+  -grilo-0.2.2.ebuild, grilo-0.2.3.ebuild, +grilo-0.2.4.ebuild:
+  Version bump. Update license, clarify pygobject dependency. Drop old.
+
+*grilo-0.2.3 (25 Nov 2012)
+
+  25 Nov 2012; Gilles Dartiguelongue <eva@gentoo.org> +grilo-0.2.3.ebuild:
+  Version bump.
+
+  28 Oct 2012; Gilles Dartiguelongue <eva@gentoo.org> grilo-0.2.2.ebuild:
+  Fix invalid DEPEND.
+
+*grilo-0.2.2 (28 Oct 2012)
+
+  28 Oct 2012; Gilles Dartiguelongue <eva@gentoo.org> +grilo-0.2.2.ebuild:
+  Version bump. Add python handling for testsuite (still broken). Drop unneeded
+  blocker since the file is now slotted properly.
+
+  04 Oct 2012; Agostino Sarubbo <ago@gentoo.org> grilo-0.1.18-r1.ebuild:
+  Stable for amd64, wrt bug #427544
+
+  03 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> grilo-0.1.18-r1.ebuild:
+  x86 stable wrt bug #427544
+
+*grilo-0.2.0-r1 (16 Sep 2012)
+*grilo-0.1.20 (16 Sep 2012)
+*grilo-0.1.18-r1 (16 Sep 2012)
+
+  16 Sep 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -grilo-0.1.17.ebuild, -grilo-0.1.18.ebuild, +grilo-0.1.18-r1.ebuild,
+  +grilo-0.1.20.ebuild, +grilo-0.2.0-r1.ebuild, metadata.xml:
+  Version bump; slot to allow parallel installation of 0.2.x and 0.1.x; disable
+  USE=debug (it only adds debugging CFLAGS). Rename test-ui USE flag to gtk for
+  simplicity. Drop old.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> grilo-0.1.17.ebuild,
+  grilo-0.1.18.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*grilo-0.1.18 (16 Mar 2012)
+
+  16 Mar 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -grilo-0.1.16.ebuild, +grilo-0.1.18.ebuild:
+  Version bump fixing some network errors; drop old.
+
+  20 Oct 2011; Alexandre Rostovtsev <tetromino@gentoo.org> grilo-0.1.16.ebuild,
+  grilo-0.1.17.ebuild:
+  Add gnome-common build dep (bug #387879). Thanks to Albert W. Hopkins
+  <marduk@python.net> for reporting.
+
+*grilo-0.1.17 (01 Oct 2011)
+
+  01 Oct 2011; Nirbheek Chauhan <nirbheek@gentoo.org> -grilo-0.1.15.ebuild,
+  +grilo-0.1.17.ebuild:
+  Bump to 0.1.17, remove old, from gnome overlay
+
+*grilo-0.1.16 (14 Aug 2011)
+
+  14 Aug 2011; Nirbheek Chauhan <nirbheek@gentoo.org> +grilo-0.1.16.ebuild,
+  +files/grilo-0.1.16-constants.py,
+  +files/grilo-0.1.16-fix-automagic-test-ui.patch,
+  +files/grilo-0.1.16-media-source-infinite-loop.patch:
+  Bump to 0.1.16, bug 377651
+
+  15 Jun 2011; Pacho Ramos <pacho@gentoo.org> grilo-0.1.15.ebuild:
+  Prepare to set 'xz' as default compressor for eapi4.
+
+*grilo-0.1.15 (02 Jun 2011)
+
+  02 Jun 2011; Nirbheek Chauhan <nirbheek@gentoo.org> +grilo-0.1.15.ebuild,
+  +metadata.xml:
+  Add new ebuild for Grilo, a media discovery and browsing library

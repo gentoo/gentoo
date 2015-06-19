@@ -1,0 +1,73 @@
+# ChangeLog for dev-ruby/colorize
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/colorize/ChangeLog,v 1.16 2015/06/07 17:30:12 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*colorize-0.7.7 (20 Apr 2015)
+
+  20 Apr 2015; Manuel Rüger <mrueg@gentoo.org> +colorize-0.7.7.ebuild:
+  Version bump.
+
+  05 Mar 2015; Hans de Graaff <graaff@gentoo.org> -colorize-0.7.3.ebuild,
+  -colorize-0.7.4.ebuild:
+  Cleanup.
+
+  05 Mar 2015; Hans de Graaff <graaff@gentoo.org> colorize-0.7.5.ebuild:
+  Add ruby22. Remove obsolete rubyforge homepage.
+
+*colorize-0.7.5 (19 Dec 2014)
+
+  19 Dec 2014; Manuel Rüger <mrueg@gentoo.org> +colorize-0.7.5.ebuild:
+  Version bump.
+
+*colorize-0.7.4 (12 Dec 2014)
+
+  12 Dec 2014; Hans de Graaff <graaff@gentoo.org> +colorize-0.7.4.ebuild:
+  Version bump.
+
+  03 Nov 2014; Manuel Rüger <mrueg@gentoo.org> colorize-0.7.3.ebuild:
+  Drop jruby.
+
+  01 Aug 2014; Manuel Rüger <mrueg@gentoo.org> -colorize-0.7.1.ebuild,
+  -colorize-0.7.2.ebuild:
+  Cleanup old.
+
+*colorize-0.7.3 (20 May 2014)
+
+  20 May 2014; Hans de Graaff <graaff@gentoo.org> +colorize-0.7.3.ebuild:
+  Version bump.
+
+*colorize-0.7.2 (18 Apr 2014)
+
+  18 Apr 2014; Manuel Rüger <mrueg@gentoo.org> +colorize-0.7.2.ebuild,
+  -colorize-0.6.0.ebuild, -colorize-0.7.0.ebuild:
+  Version bump. Cleanup old.
+
+*colorize-0.7.1 (04 Apr 2014)
+
+  04 Apr 2014; Hans de Graaff <graaff@gentoo.org> +colorize-0.7.1.ebuild:
+  Version bump.
+
+*colorize-0.7.0 (25 Mar 2014)
+
+  25 Mar 2014; Manuel Rüger <mrueg@gentoo.org> +colorize-0.7.0.ebuild:
+  Version bump.
+
+  28 Dec 2013; Hans de Graaff <graaff@gentoo.org> colorize-0.6.0.ebuild:
+  Add ruby21, jruby.
+
+  02 Nov 2013; Manuel Rüger <mrueg@gentoo.org> -colorize-0.5.8.ebuild:
+  Cleanup old.
+
+*colorize-0.6.0 (26 Sep 2013)
+
+  26 Sep 2013; Hans de Graaff <graaff@gentoo.org> +colorize-0.6.0.ebuild:
+  Version bump.
+
+*colorize-0.5.8 (14 Aug 2013)
+
+  14 Aug 2013; Manuel Rüger <mrueg@gentoo.org> +colorize-0.5.8.ebuild,
+  +metadata.xml:
+  Initial version

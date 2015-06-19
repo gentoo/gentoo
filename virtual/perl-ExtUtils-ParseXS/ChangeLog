@@ -1,0 +1,354 @@
+# ChangeLog for virtual/perl-ExtUtils-ParseXS
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/perl-ExtUtils-ParseXS/ChangeLog,v 1.73 2015/06/05 20:34:06 dilfridge Exp $
+
+*perl-ExtUtils-ParseXS-3.280.0 (05 Jun 2015)
+
+  05 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-ExtUtils-ParseXS-3.180.0-r2.ebuild,
+  -perl-ExtUtils-ParseXS-3.220.0.ebuild, +perl-ExtUtils-ParseXS-3.280.0.ebuild:
+  Add Perl 5.22 version, remove old
+
+  04 Apr 2015; Mike Frysinger <vapier@gentoo.org>
+  perl-ExtUtils-ParseXS-3.240.0.ebuild:
+  Mark m68k/s390/sh stable.
+
+  02 Apr 2015; Tom Gall <tgall@gentoo.org> perl-ExtUtils-ParseXS-3.240.0.ebuild:
+  stable on arm64
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-ParseXS-3.240.0.ebuild:
+  Stable for alpha, wrt bug #536790
+
+  17 Feb 2015; Markus Meier <maekke@gentoo.org>
+  perl-ExtUtils-ParseXS-3.240.0.ebuild:
+  arm stable, bug #536790
+
+  17 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-ParseXS-3.240.0.ebuild:
+  Stable for ia64, wrt bug #536790
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-ParseXS-3.240.0.ebuild:
+  Stable for sparc, wrt bug #536790
+
+  15 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-ParseXS-3.240.0.ebuild:
+  Stable for ppc64, wrt bug #536790
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-ParseXS-3.240.0.ebuild:
+  Stable for ppc, wrt bug #536790
+
+  13 Feb 2015; Jeroen Roovers <jer@gentoo.org>
+  perl-ExtUtils-ParseXS-3.240.0.ebuild:
+  Stable for HPPA (bug #536790).
+
+  13 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-ParseXS-3.240.0.ebuild:
+  Stable for x86, wrt bug #536790
+
+  08 Feb 2015; Mikle Kolyada <zlogene@gentoo.org>
+  perl-ExtUtils-ParseXS-3.240.0.ebuild:
+  amd64 stable wrt bug #536790
+
+*perl-ExtUtils-ParseXS-3.180.0-r2 (19 Jul 2014)
+
+  19 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-ExtUtils-ParseXS-3.180.0-r1.ebuild,
+  +perl-ExtUtils-ParseXS-3.180.0-r2.ebuild,
+  perl-ExtUtils-ParseXS-3.240.0.ebuild:
+  Improve dependencies
+
+*perl-ExtUtils-ParseXS-3.240.0 (06 Jul 2014)
+*perl-ExtUtils-ParseXS-3.180.0-r1 (06 Jul 2014)
+
+  06 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-ExtUtils-ParseXS-2.22.03.ebuild, -perl-ExtUtils-ParseXS-2.22.05.ebuild,
+  -perl-ExtUtils-ParseXS-2.22.06.ebuild, -perl-ExtUtils-ParseXS-3.150.0.ebuild,
+  -perl-ExtUtils-ParseXS-3.180.0.ebuild,
+  +perl-ExtUtils-ParseXS-3.180.0-r1.ebuild,
+  -perl-ExtUtils-ParseXS-3.210.0.ebuild, +perl-ExtUtils-ParseXS-3.240.0.ebuild:
+  Add perl-5.20 version; improve dependencies; remove old
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  perl-ExtUtils-ParseXS-2.22.03.ebuild, perl-ExtUtils-ParseXS-2.22.05.ebuild,
+  perl-ExtUtils-ParseXS-2.22.06.ebuild, perl-ExtUtils-ParseXS-3.150.0.ebuild,
+  perl-ExtUtils-ParseXS-3.180.0.ebuild, perl-ExtUtils-ParseXS-3.210.0.ebuild,
+  perl-ExtUtils-ParseXS-3.220.0.ebuild:
+  Add arm64 love.
+
+  05 Sep 2013; Mike Frysinger <vapier@gentoo.org>
+  perl-ExtUtils-ParseXS-2.22.03.ebuild, perl-ExtUtils-ParseXS-2.22.05.ebuild,
+  perl-ExtUtils-ParseXS-3.180.0.ebuild:
+  Mark m68k/s390/sh stable #461896.
+
+*perl-ExtUtils-ParseXS-3.220.0 (05 Sep 2013)
+
+  05 Sep 2013; Patrick Lauer <patrick@gentoo.org>
+  +perl-ExtUtils-ParseXS-3.220.0.ebuild:
+  Bump
+
+  24 Aug 2013; Mikle Kolyada <zlogene@gentoo.org>
+  perl-ExtUtils-ParseXS-3.180.0.ebuild:
+  sparc stable wrt bug #461896
+
+  24 Aug 2013; Mikle Kolyada <zlogene@gentoo.org>
+  perl-ExtUtils-ParseXS-3.180.0.ebuild:
+  ia64 stable wrt bug #461896
+
+  17 Aug 2013; Mikle Kolyada <zlogene@gentoo.org>
+  perl-ExtUtils-ParseXS-3.180.0.ebuild:
+  x86 stable wrt bug #461896
+
+*perl-ExtUtils-ParseXS-3.210.0 (16 Aug 2013)
+
+  16 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +perl-ExtUtils-ParseXS-3.210.0.ebuild:
+  Bump
+
+  13 Aug 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-ParseXS-3.180.0.ebuild:
+  Stable for alpha, wrt bug #461896
+
+  11 Aug 2013; Jeroen Roovers <jer@gentoo.org>
+  perl-ExtUtils-ParseXS-3.180.0.ebuild:
+  Stable for HPPA (bug #461896).
+
+  10 Aug 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-ParseXS-3.180.0.ebuild:
+  Stable for ppc64, wrt bug #461896
+
+  10 Aug 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-ParseXS-3.180.0.ebuild:
+  Stable for arm, wrt bug #461896
+
+  10 Aug 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-ParseXS-3.180.0.ebuild:
+  Stable for ppc, wrt bug #461896
+
+  10 Aug 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-ExtUtils-ParseXS-3.180.0.ebuild:
+  Stable for amd64, wrt bug #461896
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org>
+  perl-ExtUtils-ParseXS-3.180.0.ebuild:
+  Add ~arm-linux keyword.
+
+*perl-ExtUtils-ParseXS-3.180.0 (26 Dec 2012)
+
+  26 Dec 2012; Torsten Veller <tove@gentoo.org>
+  +perl-ExtUtils-ParseXS-3.180.0.ebuild:
+  Version bump
+
+  28 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  perl-ExtUtils-ParseXS-2.22.06.ebuild, perl-ExtUtils-ParseXS-3.150.0.ebuild:
+  keyword ~amd64-fbsd
+
+  02 Feb 2012; Torsten Veller <tove@gentoo.org>
+  -perl-ExtUtils-ParseXS-3.40.0.ebuild, -perl-ExtUtils-ParseXS-3.50.0.ebuild,
+  -perl-ExtUtils-ParseXS-3.70.0.ebuild, -perl-ExtUtils-ParseXS-3.80.0.ebuild,
+  -perl-ExtUtils-ParseXS-3.110.0.ebuild:
+  Cleanup
+
+*perl-ExtUtils-ParseXS-3.150.0 (02 Feb 2012)
+
+  02 Feb 2012; Torsten Veller <tove@gentoo.org>
+  +perl-ExtUtils-ParseXS-3.150.0.ebuild:
+  Version bump
+
+*perl-ExtUtils-ParseXS-3.110.0 (08 Jan 2012)
+
+  08 Jan 2012; Torsten Veller <tove@gentoo.org>
+  +perl-ExtUtils-ParseXS-3.110.0.ebuild:
+  Version bump
+
+*perl-ExtUtils-ParseXS-3.80.0 (25 Dec 2011)
+
+  25 Dec 2011; Torsten Veller <tove@gentoo.org>
+  +perl-ExtUtils-ParseXS-3.80.0.ebuild:
+  Version bump
+
+*perl-ExtUtils-ParseXS-3.70.0 (19 Dec 2011)
+
+  19 Dec 2011; Torsten Veller <tove@gentoo.org>
+  +perl-ExtUtils-ParseXS-3.70.0.ebuild:
+  Version bump
+
+*perl-ExtUtils-ParseXS-3.50.0 (12 Oct 2011)
+
+  12 Oct 2011; Torsten Veller <tove@gentoo.org>
+  +perl-ExtUtils-ParseXS-3.50.0.ebuild:
+  Version bump
+
+  25 Aug 2011; Torsten Veller <tove@gentoo.org>
+  -perl-ExtUtils-ParseXS-3.20.0.ebuild:
+  Cleanup
+
+*perl-ExtUtils-ParseXS-3.40.0 (25 Aug 2011)
+
+  25 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +perl-ExtUtils-ParseXS-3.40.0.ebuild:
+  Version bump
+
+*perl-ExtUtils-ParseXS-3.20.0 (06 Aug 2011)
+
+  06 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +perl-ExtUtils-ParseXS-3.20.0.ebuild:
+  Version bump
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org>
+  perl-ExtUtils-ParseXS-2.22.03.ebuild, perl-ExtUtils-ParseXS-2.22.05.ebuild,
+  perl-ExtUtils-ParseXS-2.22.06.ebuild:
+  Drop ~sparc-fbsd KEYWORD
+
+  02 May 2011; Fabian Groffen <grobian@gentoo.org>
+  perl-ExtUtils-ParseXS-2.22.06.ebuild:
+  Marked ~x64-freebsd
+
+  22 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  perl-ExtUtils-ParseXS-2.22.05.ebuild:
+  ppc64 stable wrt #333421
+
+  18 Oct 2010; Jeroen Roovers <jer@gentoo.org>
+  perl-ExtUtils-ParseXS-2.22.05.ebuild:
+  Stable for HPPA (bug #323529).
+
+  07 Sep 2010; Torsten Veller <tove@gentoo.org>
+  perl-ExtUtils-ParseXS-2.21.ebuild:
+  Add perl-5.12.2 as provider
+
+*perl-ExtUtils-ParseXS-2.22.06 (15 Jul 2010)
+
+  15 Jul 2010; Torsten Veller <tove@gentoo.org>
+  +perl-ExtUtils-ParseXS-2.22.06.ebuild:
+  Version bump
+
+  14 Jul 2010; Torsten Veller <tove@gentoo.org>
+  perl-ExtUtils-ParseXS-2.21.ebuild:
+  Add perl-5.12 as provider
+
+  27 Jun 2010; <nixnut@gentoo.org> perl-ExtUtils-ParseXS-2.22.05.ebuild:
+  ppc stable #323529
+
+  21 Jun 2010; Raúl Porcel <armin76@gentoo.org>
+  perl-ExtUtils-ParseXS-2.22.05.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #323529
+
+  15 Jun 2010; Torsten Veller <tove@gentoo.org>
+  perl-ExtUtils-ParseXS-2.22.05.ebuild:
+  Stable on amd64 and x86 (#323529)
+
+  16 Apr 2010; Jeroen Roovers <jer@gentoo.org>
+  perl-ExtUtils-ParseXS-2.22.03.ebuild:
+  Stable for HPPA (bug #307243).
+
+*perl-ExtUtils-ParseXS-2.22.05 (14 Mar 2010)
+
+  14 Mar 2010; Torsten Veller <tove@gentoo.org>
+  +perl-ExtUtils-ParseXS-2.22.05.ebuild:
+  Version bump
+
+  13 Mar 2010; Raúl Porcel <armin76@gentoo.org>
+  perl-ExtUtils-ParseXS-2.22.03.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #307243
+
+  11 Mar 2010; Markus Meier <maekke@gentoo.org>
+  perl-ExtUtils-ParseXS-2.22.03.ebuild:
+  amd64/x86 stable, bug #307243
+
+  10 Mar 2010; Joseph Jezak <josejx@gentoo.org>
+  perl-ExtUtils-ParseXS-2.22.03.ebuild:
+  Marked ppc/ppc64 stable for bug #307243.
+
+*perl-ExtUtils-ParseXS-2.22.03 (12 Feb 2010)
+
+  12 Feb 2010; Torsten Veller <tove@gentoo.org>
+  +perl-ExtUtils-ParseXS-2.22.03.ebuild:
+  Version bump
+
+*perl-ExtUtils-ParseXS-2.22.02 (29 Jan 2010)
+
+  29 Jan 2010; Torsten Veller <tove@gentoo.org>
+  +perl-ExtUtils-ParseXS-2.22.02.ebuild:
+  Version bump
+
+*perl-ExtUtils-ParseXS-2.22.01 (26 Jan 2010)
+
+  26 Jan 2010; Torsten Veller <tove@gentoo.org>
+  +perl-ExtUtils-ParseXS-2.22.01.ebuild:
+  Version bump
+
+  17 Jan 2010; Torsten Veller <tove@gentoo.org>
+  -perl-ExtUtils-ParseXS-2.18.ebuild, -perl-ExtUtils-ParseXS-2.19.ebuild,
+  -perl-ExtUtils-ParseXS-2.20.ebuild:
+  Cleanup
+
+*perl-ExtUtils-ParseXS-2.22 (12 Jan 2010)
+
+  12 Jan 2010; Torsten Veller <tove@gentoo.org>
+  +perl-ExtUtils-ParseXS-2.22.ebuild:
+  Version bump
+
+  07 Jan 2010; Torsten Veller <tove@gentoo.org>
+  perl-ExtUtils-ParseXS-2.18.ebuild, perl-ExtUtils-ParseXS-2.19.ebuild,
+  perl-ExtUtils-ParseXS-2.20.ebuild, perl-ExtUtils-ParseXS-2.20.0401.ebuild,
+  perl-ExtUtils-ParseXS-2.21.ebuild:
+  Empty HOMEPAGE and LICENSE
+
+  05 Jan 2010; nixnut <nixnut@gentoo.org>
+  perl-ExtUtils-ParseXS-2.20.0401.ebuild:
+  ppc stable #288026
+
+  15 Dec 2009; Jonathan Callen <abcd@gentoo.org>
+  perl-ExtUtils-ParseXS-2.19.ebuild, perl-ExtUtils-ParseXS-2.20.ebuild,
+  perl-ExtUtils-ParseXS-2.20.0401.ebuild, perl-ExtUtils-ParseXS-2.21.ebuild:
+  QA: Add prefix keywords
+
+  14 Dec 2009; Raúl Porcel <armin76@gentoo.org>
+  perl-ExtUtils-ParseXS-2.20.0401.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #288026
+
+  10 Dec 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking perl-ExtUtils-ParseXS-2.20.0401 ppc64 stable for bug 288026
+
+  07 Dec 2009; Markus Meier <maekke@gentoo.org>
+  perl-ExtUtils-ParseXS-2.20.0401.ebuild:
+  arm stable, bug #288026
+
+  07 Dec 2009; Jeroen Roovers <jer@gentoo.org>
+  perl-ExtUtils-ParseXS-2.20.0401.ebuild:
+  Stable for HPPA (bug #288026).
+
+  04 Dec 2009; Torsten Veller <tove@gentoo.org>
+  perl-ExtUtils-ParseXS-2.20.0401.ebuild:
+  Stable on amd64 (#288026)
+
+  04 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  perl-ExtUtils-ParseXS-2.20.0401.ebuild:
+  x86 stable, bug 288026
+
+*perl-ExtUtils-ParseXS-2.21 (06 Oct 2009)
+
+  06 Oct 2009; Torsten Veller <tove@gentoo.org>
+  +perl-ExtUtils-ParseXS-2.21.ebuild:
+  Version bump
+
+*perl-ExtUtils-ParseXS-2.20.0401 (15 Sep 2009)
+
+  15 Sep 2009; Torsten Veller <tove@gentoo.org>
+  +perl-ExtUtils-ParseXS-2.20.0401.ebuild:
+  Version bump
+
+*perl-ExtUtils-ParseXS-2.20 (03 Jul 2009)
+
+  03 Jul 2009; Torsten Veller <tove@gentoo.org>
+  +perl-ExtUtils-ParseXS-2.20.ebuild:
+  Version bump
+
+*perl-ExtUtils-ParseXS-2.19 (01 Nov 2008)
+*perl-ExtUtils-ParseXS-2.18 (01 Nov 2008)
+
+  01 Nov 2008; Yuval Yaari <yuval@gentoo.org> +metadata.xml,
+  +perl-ExtUtils-ParseXS-2.18.ebuild, +perl-ExtUtils-ParseXS-2.19.ebuild:
+  Adding virtuals for dual-lifed modules that come with perl-5.10

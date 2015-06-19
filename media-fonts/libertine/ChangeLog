@@ -1,0 +1,162 @@
+# ChangeLog for media-fonts/libertine
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/libertine/ChangeLog,v 1.4 2015/04/05 06:11:41 yngwin Exp $
+
+*libertine-5.3.0.20120702-r2 (05 Apr 2015)
+
+  05 Apr 2015; Ben de Groot <yngwin@gentoo.org>
+  +libertine-5.3.0.20120702-r2.ebuild, -libertine-5.3.0.20120702-r1.ebuild,
+  -libertine-5.3.0.20120702.ebuild, metadata.xml:
+  As per current fonts team policy, only install the superior opentype format
+
+*libertine-5.3.0.20120702-r1 (27 Feb 2015)
+
+  27 Feb 2015; Ben de Groot <yngwin@gentoo.org>
+  +libertine-5.3.0.20120702-r1.ebuild, metadata.xml:
+  Prefer installing OpenType over TrueType fonts
+
+*libertine-5.3.0.20120702 (22 Feb 2015)
+
+  22 Feb 2015; Ben de Groot <yngwin@gentoo.org>
+  +libertine-5.3.0.20120702.ebuild:
+  Move from libertine-ttf to libertine. Install OpenType fonts as well (bug
+  #406301). Version bump (bug #431430).
+
+  08 Dec 2012; Markus Meier <maekke@gentoo.org>
+  libertine-ttf-5.1.3.20110615.ebuild:
+  add ~arm, bug #440908
+
+  26 Mar 2012; Brent Baude <ranger@gentoo.org>
+  libertine-ttf-5.1.3.20110615.ebuild:
+  Marking libertine-ttf-5.1.3.20110615 ~ppc64 for bug 398521
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org>
+  libertine-ttf-5.1.3.20110615.ebuild:
+  alpha/ia64/sparc stable wrt #405037
+
+  23 Feb 2012; Brent Baude <ranger@gentoo.org>
+  libertine-ttf-5.1.3.20110615.ebuild:
+  Marking libertine-ttf-5.1.3.20110615 ppc for bug 405037
+
+  20 Feb 2012; Tomáš Chvátal <scarabeus@gentoo.org> -libertine-ttf-4.4.1.ebuild,
+  libertine-ttf-5.1.3.20110615.ebuild:
+  Remove old stable 5.1.3.20110615 wrt bug#405037.
+
+*libertine-ttf-5.1.3.20110615 (20 Jun 2011)
+
+  20 Jun 2011; Peter Volkov <pva@gentoo.org>
+  +libertine-ttf-5.1.3.20110615.ebuild:
+  Version bump, bug #368991 thank Michael Kefeder for report.
+
+  22 May 2011; Joseph Jezak <josejx@gentoo.org> libertine-ttf-4.7.5.ebuild:
+  Marked ppc stable for bug #357777.
+
+  20 Mar 2011; Raúl Porcel <armin76@gentoo.org> libertine-ttf-4.7.5.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #357777
+
+  09 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  libertine-ttf-4.7.5.ebuild:
+  Stable on amd64 wrt bug #357777
+
+*libertine-ttf-4.7.5 (05 Jul 2010)
+
+  05 Jul 2010; Ryan Hill <dirtyepic@gentoo.org>
+  -libertine-ttf-2.8.14.ebuild, -libertine-ttf-4.1.8.ebuild,
+  +libertine-ttf-4.7.5.ebuild:
+  Version bump. (bug #324455 by Lars Wendler)
+
+  26 Apr 2009; Brent Baude <ranger@gentoo.org> libertine-ttf-4.4.1.ebuild:
+  stable ppc, bug 267040
+
+  25 Apr 2009; Raúl Porcel <armin76@gentoo.org> libertine-ttf-4.4.1.ebuild:
+  alpha/ia64/sparc stable wrt #267040
+
+  23 Apr 2009; Markus Meier <maekke@gentoo.org> libertine-ttf-4.4.1:
+  amd64/x86 stable, bug #267040
+
+*libertine-ttf-4.4.1 (22 Mar 2009)
+
+  22 Mar 2009; Peter Alfredsen <loki_val@gentoo.org>
+  +libertine-ttf-4.4.1.ebuild:
+  Bump, bug 263358. Thanks to hitachi <mail@konstantinhansen.de> for
+  reporting.
+
+  04 Feb 2009; Raúl Porcel <armin76@gentoo.org> libertine-ttf-4.1.8.ebuild:
+  ia64 stable wrt #254633
+
+  18 Jan 2009; Markus Meier <maekke@gentoo.org> libertine-ttf-4.1.8.ebuild:
+  amd64/x86 stable, bug #254633
+
+  18 Jan 2009; Tobias Klausmann <klausman@gentoo.org>
+  libertine-ttf-4.1.8.ebuild:
+  Stable on alpha, bug #254633
+
+  14 Jan 2009; Joseph Jezak <josejx@gentoo.org> libertine-ttf-4.1.8.ebuild:
+  Marked ppc stable for bug #254633.
+
+  12 Jan 2009; Ferris McCormick <fmccor@gentoo.org>
+  libertine-ttf-4.1.8.ebuild:
+  Sparc stable, Bug #254633.
+
+*libertine-ttf-4.1.8 (03 Nov 2008)
+
+  03 Nov 2008; Peter Volkov <pva@gentoo.org> -libertine-ttf-2.7.9.ebuild,
+  +libertine-ttf-4.1.8.ebuild:
+  Version bump.
+
+  25 Aug 2008; Raúl Porcel <armin76@gentoo.org>
+  libertine-ttf-2.8.14.ebuild:
+  ia64 stable wrt #234979
+
+  24 Aug 2008; Tobias Klausmann <klausman@gentoo.org>
+  libertine-ttf-2.8.14.ebuild:
+  Stable on alpha, bug #234979
+
+  22 Aug 2008; nixnut <nixnut@gentoo.org> libertine-ttf-2.8.14.ebuild:
+  Stable on ppc wrt bug 234979
+
+  21 Aug 2008; Friedrich Oslage <bluebird@gentoo.org>
+  libertine-ttf-2.8.14.ebuild:
+  Stable on sparc, bug #234979
+
+  20 Aug 2008; Markus Meier <maekke@gentoo.org> libertine-ttf-2.8.14.ebuild:
+  x86 stable, bug #234979
+
+  19 Aug 2008; Peter Volkov <pva@gentoo.org> libertine-ttf-2.8.14.ebuild:
+  amd64 stable, bug #234979
+
+  29 Jul 2008; Peter Alfredsen <loki_val@gentoo.org>
+  libertine-ttf-2.8.14.ebuild:
+  RDEPEND !<x11-libs/pango-1.20.4 wrt bug #233311
+
+*libertine-ttf-2.8.14 (07 Jul 2008)
+
+  07 Jul 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +libertine-ttf-2.8.14.ebuild:
+  Bump
+
+  04 Jun 2008; Peter Alfredsen <loki_val@gentoo.org>
+  libertine-ttf-2.7.9.ebuild:
+  License is GPL-2-with-font-exception, not GPL-2
+
+  20 Feb 2008; nixnut <nixnut@gentoo.org> libertine-ttf-2.7.9.ebuild:
+  Added ~ppc wrt bug 208716
+
+  23 Jan 2008; Raúl Porcel <armin76@gentoo.org> libertine-ttf-2.7.9.ebuild:
+  Add ~alpha/~ia64/~sparc
+
+*libertine-ttf-2.7.9 (31 Dec 2007)
+
+  31 Dec 2007; Ryan Hill <dirtyepic@gentoo.org> -libertine-ttf-2.6.9.ebuild,
+  +libertine-ttf-2.7.9.ebuild:
+  Version bump.  Should fix bug #194409.
+
+  01 Sep 2007; Christoph Mende <angelos@gentoo.org>
+  libertine-ttf-2.6.9.ebuild:
+  Added ~amd64
+
+*libertine-ttf-2.6.9 (06 Aug 2007)
+
+  06 Aug 2007; Ryan Hill <dirtyepic@gentoo.org> +metadata.xml,
+  +libertine-ttf-2.6.9.ebuild:
+  Initial import.  Thanks to everyone on bug #121217 and the Sunrise project.

@@ -1,0 +1,28 @@
+--- a/src/filehandling_functions.c
++++ b/src/filehandling_functions.c
+@@ -96,11 +96,14 @@ matchfile(char **buf, char *name)
+ 	{
+ 		/* use strcat rather than strdup, because xmalloc handles all 
+ 		 * malloc errors */
+-		char *thisfile = xmalloc(strlen(dp->d_name)+1);
++		int len = strlen(dp->d_name)+1;
++		char *thisfile = xmalloc(len * 2);
++		char *thisfile_info = thisfile + len;
+ 		strcat(thisfile, dp->d_name);
+ 
+ 		/* strip suffixes (so "gcc.info.gz" -> "gcc") */
+ 		strip_compression_suffix(thisfile);
++		strcat(thisfile_info, thisfile);
+ 		strip_info_suffix(thisfile);
+ 
+ 		/* compare this file with the file we're looking for */
+@@ -109,8 +112,7 @@ matchfile(char **buf, char *name)
+ 			/* we found a match! */
+ 			matched++;
+ 			/* put it in the buffer */
+-			strncat(Buf, thisfile, 1023-strlen(Buf));
+-			strncat(Buf, ".info", 1023-strlen(Buf));
++			strncat(Buf, thisfile_info, 1023-strlen(Buf));
+ 
+ 			/* clean up, and exit the loop */
+ 			xfree(thisfile);

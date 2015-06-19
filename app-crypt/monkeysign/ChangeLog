@@ -1,0 +1,54 @@
+# ChangeLog for app-crypt/monkeysign
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/monkeysign/ChangeLog,v 1.9 2015/03/20 07:39:47 jlec Exp $
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> files/monkeysign.desktop,
+  monkeysign-2.0.2-r1.ebuild:
+  Fix desktop file
+
+*monkeysign-2.0.2-r1 (02 Feb 2015)
+
+  02 Feb 2015; Kristian Fiskerstrand <k_f@gentoo.org>
+  +files/monkeysign-2.0.2-smtplib.patch, +monkeysign-2.0.2-r1.ebuild,
+  -files/monkeysign-1.1-rst2s5.patch,
+  -files/monkeysign-1.2-test-no-emit-version.patch, -monkeysign-1.1-r2.ebuild,
+  -monkeysign-2.0.0.ebuild, -monkeysign-2.0.2.ebuild:
+  Fix NameError: Global name 'SMTPException' is not defined. The patch is
+  already submitted and included upstream.
+
+*monkeysign-2.0.2 (06 Dec 2014)
+
+  06 Dec 2014; Kristian Fiskerstrand <k_f@gentoo.org> +monkeysign-2.0.2.ebuild:
+  Version bump
+
+  30 Nov 2014; Michał Górny <mgorny@gentoo.org> monkeysign-1.1-r2.ebuild,
+  monkeysign-2.0.0.ebuild:
+  Add missing PYTHON_USEDEPs.
+
+*monkeysign-2.0.0 (06 Nov 2014)
+
+  06 Nov 2014; Kristian Fiskerstrand <k_f@gentoo.org>
+  +files/monkeysign-1.2-test-no-emit-version.patch,
+  +files/monkeysign-2.0.0-rst2s5.patch, +monkeysign-2.0.0.ebuild:
+  Bump version to 2.0.0, fixes bug #521822
+
+*monkeysign-1.1-r2 (29 Jul 2014)
+
+  29 Jul 2014; Kristian Fiskerstrand <k_f@gentoo.org> +monkeysign-1.1-r2.ebuild,
+  -monkeysign-1.1-r1.ebuild, -monkeysign-1.1.ebuild:
+  Further fixes to ebuild based on feedback. Remove old.
+
+*monkeysign-1.1-r1 (29 Jul 2014)
+
+  29 Jul 2014; Kristian Fiskerstrand <k_f@gentoo.org> +monkeysign-1.1-r1.ebuild:
+  Revbump with updated ebuild based on feedback from review on IRC
+
+  29 Jul 2014; Kristian Fiskerstrand <k_f@gentoo.org> monkeysign-1.1.ebuild:
+  Update DESCRIPTION to be more informative
+
+*monkeysign-1.1 (29 Jul 2014)
+
+  29 Jul 2014; Kristian Fiskerstrand <k_f@gentoo.org>
+  +files/monkeysign-1.1-basename.patch, +files/monkeysign-1.1-rst2s5.patch,
+  +files/monkeysign.desktop, +metadata.xml, +monkeysign-1.1.ebuild:
+  New package written by me

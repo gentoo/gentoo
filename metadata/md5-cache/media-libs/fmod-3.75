@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=music and sound effects library, and a sound processing system
+HOMEPAGE=http://www.fmod.org/
+KEYWORDS=-* x86
+LICENSE=BSD fmod-3.75
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://www.fmod.org/files/fmodapi375linux.tar.gz
+_md5_=de8d988e09aadf7bd4f7c416008dc374

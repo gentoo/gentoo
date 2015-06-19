@@ -1,0 +1,94 @@
+# ChangeLog for app-dicts/aspell-pt-br
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-pt-br/ChangeLog,v 1.20 2014/01/05 11:07:16 pacho Exp $
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> -aspell-pt-br-6.0.20070411.ebuild,
+  -aspell-pt-br-6.0.20080221.ebuild, metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org>
+  aspell-pt-br-6.0.20070411.ebuild, aspell-pt-br-6.0.20080221.ebuild,
+  aspell-pt-br-6.0.20090702.ebuild:
+  keyword ~amd64-fbsd
+
+  05 Jun 2010; Raúl Porcel <armin76@gentoo.org>
+  aspell-pt-br-6.0.20090702.ebuild:
+  m68k stable
+
+  05 Jun 2010; Raúl Porcel <armin76@gentoo.org>
+  aspell-pt-br-6.0.20090702.ebuild:
+  alpha/arm/ia64/s390/sh stable wrt #310015
+
+  14 May 2010; Jeroen Roovers <jer@gentoo.org>
+  aspell-pt-br-6.0.20090702.ebuild:
+  Stable for HPPA (bug #310015).
+
+  05 Apr 2010; Markus Meier <maekke@gentoo.org>
+  aspell-pt-br-6.0.20090702.ebuild:
+  amd64/arm/x86 stable, bug #310015
+
+  27 Mar 2010; Tiago Cunha <tcunha@gentoo.org>
+  aspell-pt-br-6.0.20090702.ebuild:
+  stable sparc, bug 310015
+
+  24 Mar 2010; Brent Baude <ranger@gentoo.org>
+  aspell-pt-br-6.0.20090702.ebuild:
+  Marking aspell-pt-br-6.0.20090702 ppc stable for bug 310015
+
+  21 Mar 2010; Brent Baude <ranger@gentoo.org>
+  aspell-pt-br-6.0.20090702.ebuild:
+  Marking aspell-pt-br-6.0.20090702 ppc64 stable for bug 310015
+
+*aspell-pt-br-6.0.20090702 (05 Dec 2009)
+
+  05 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +aspell-pt-br-6.0.20090702.ebuild:
+  Version bump wrt #254562, thanks to Ronan Arraes Jardim Chagas for
+  reporting.
+
+  18 Oct 2009; Mark Loeser <halcy0n@gentoo.org>
+  aspell-pt-br-6.0.20070411.ebuild, aspell-pt-br-6.0.20080221.ebuild:
+  QA fixes; IUSE is not defined
+
+  04 Jan 2009; Robin H. Johnson <robbat2@gentoo.org>
+  aspell-pt-br-6.0.20070411.ebuild, aspell-pt-br-6.0.20080221.ebuild:
+  Block aspell-pt versions that would install a file conflict, per bug
+  #247391.
+
+  19 Nov 2008; Peter Volkov <pva@gentoo.org>
+  aspell-pt-br-6.0.20080221.ebuild:
+  ~mips keyworded, bug #189262
+
+*aspell-pt-br-6.0.20080221 (29 Mar 2008)
+
+  29 Mar 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  +aspell-pt-br-6.0.20080221.ebuild:
+  Version bump as per bug 212525. Thanks, Diogo Tridapalli, for providing
+  the ebuilds.
+
+  03 Nov 2007; Roy Marples <uberlord@gentoo.org>
+  aspell-pt-br-6.0.20070411.ebuild:
+  Keyworded ~sparc-fbsd and ~x86-fbsd
+
+  08 Sep 2007; Joseph Jezak <josejx@gentoo.org>
+  aspell-pt-br-6.0.20070411.ebuild:
+  Marked ~ppc/~ppc64 for bug #189262.
+
+  25 Aug 2007; Raúl Porcel <armin76@gentoo.org>
+  aspell-pt-br-6.0.20070411.ebuild:
+  Add ~ia64 wrt #189262
+
+  20 Aug 2007; Jeroen Roovers <jer@gentoo.org>
+  aspell-pt-br-6.0.20070411.ebuild:
+  Marked ~hppa (bug #189262).
+
+  17 Aug 2007; Ferris McCormick <fmccor@gentoo.org>
+  aspell-pt-br-6.0.20070411.ebuild:
+  Add ~sparc keyword --- Bug #189262 --- request from philantrop.
+
+*aspell-pt-br-6.0.20070411 (17 Aug 2007)
+
+  17 Aug 2007; Wulf C. Krueger <philantrop@gentoo.org> +metadata.xml,
+  +aspell-pt-br-6.0.20070411.ebuild:
+  Initial ebuild, inspired the one provided by Fabrício Nihues on bug 188884.

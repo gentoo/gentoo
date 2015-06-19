@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile postinst postrm preinst prepare unpack
+DEPEND=dev-util/intltool >=gnome-base/librsvg-2.34 sys-devel/gettext >=x11-misc/icon-naming-utils-0.8.90 >=sys-apps/sed-4
+DESCRIPTION=a derivative of the standard Tango theme, using a more orange approach
+EAPI=4
+HOMEPAGE=http://packages.ubuntu.com/gutsy/x11/tangerine-icon-theme
+IUSE=minimal
+KEYWORDS=amd64 x86
+LICENSE=CC-BY-SA-2.5 LGPL-2.1
+RDEPEND=!minimal? ( || ( x11-themes/gnome-icon-theme kde-apps/oxygen-icons ) )
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=mirror://ubuntu/pool/universe/t/tangerine-icon-theme/tangerine-icon-theme_0.27.tar.gz http://www.gentoo.org/images/gentoo-logo.svg
+_eclasses_=gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f1f24e569a7369ff9876642cde66dfe2

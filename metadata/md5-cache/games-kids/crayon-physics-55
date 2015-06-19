@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare setup unpack
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=2D physics puzzle/sandbox game with drawing
+EAPI=5
+HOMEPAGE=http://www.crayonphysics.com/
+IUSE=bundled-libs
+KEYWORDS=-* amd64 x86
+LICENSE=CRAYON-PHYSICS
+RDEPEND=media-sound/pulseaudio[abi_x86_32(-)] dev-qt/qtcore:4[abi_x86_32(-)] dev-qt/qtgui:4[abi_x86_32(-)] virtual/glu[abi_x86_32(-)] virtual/opengl[abi_x86_32(-)] x11-libs/libX11[abi_x86_32(-)] x86? ( !bundled-libs? ( media-libs/libmikmod media-libs/libsdl:0[X,sound,video,opengl,joystick] media-libs/libvorbis media-libs/sdl-image[png,jpeg,tiff] media-libs/sdl-mixer[vorbis,wav] media-libs/smpeg[X,opengl] media-libs/tiff:0 virtual/jpeg ) ) games-misc/games-envd
+RESTRICT=bindist fetch splitdebug
+SLOT=0
+SRC_URI=crayon_physics_deluxe-linux-release55.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=f7c1f6af35e8959534100dc2aa195d69

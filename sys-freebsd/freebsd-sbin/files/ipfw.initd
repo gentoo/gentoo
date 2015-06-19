@@ -1,0 +1,110 @@
+#!/sbin/runscript
+# Copyright 2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# This is a nice client firewall script which should suit most desktop users.
+# We allow auth and ssh in by default.
+
+PORTS_IN=${PORTS_IN-auth ssh}
+
+opts="panic showstatus"
+
+depend() {
+	before net
+	provide firewall
+}
+
+ipfw() {
+	/sbin/ipfw -f -q "$@"
+}
+
+init() {
+	# Load the kernel module
+	if ! sysctl net.inet.ip.fw.enable=1 >/dev/null 2>/dev/null ; then
+		if ! kldload ipfw ; then
+			eend 1 "Unable to load firewall module"
+			return 1
+		fi
+	fi
+
+	ipfw flush
+
+	ipfw add allow all from any to any via lo0
+	ipfw add allow all from any to 127.0.0.0/8
+	ipfw add deny ip from 127.0.0.0/8 to any
+
+	ipfw add allow ipv6-icmp from :: to ff02::/16
+	ipfw add allow ipv6-icmp from fe80::/10 to fe80::/10
+	ipfw add allow ipv6-icmp from fe80::/10 to ff02::/16
+}
+
+start() {
+	local x= log=
+	ebegin "Starting firewall rules"
+	if ! init ; then
+		eend 1 "Failed to flush firewall ruleset"
+		return 1
+	fi
+
+	[ "${LOG_DENY}" = "yes" ] && log="log"
+
+	# Use a statefull firewall
+	ipfw add check-state
+
+	# Open our configured ports
+	if [ -n "${PORTS_IN}" ] ; then
+		local pin=
+		for x in ${PORTS_IN} ; do
+		    pin="${pin}${pin:+,}${x}"
+		done
+		ipfw add allow tcp from any to me ${pin} established keep-state
+		ipfw add allow tcp from any to me6 ${pin} established keep-state
+		ipfw add allow tcp from any to me ${pin} setup keep-state
+		ipfw add allow tcp from any to me6 ${pin} setup keep-state
+		ipfw add allow udp from any to me ${pin} established
+		ipfw add allow udp from any to me ${pin} keep-state
+		ipfw add allow udp from any to me6 ${pin} established
+		ipfw add allow udp from any to me6 ${pin} keep-state
+	fi
+
+	# Nice flexable rules that disallow incoming except for stuff we
+	# have asked for, and allow all outgoing.
+	ipfw add allow tcp from me to any established keep-state
+	ipfw add allow tcp from me to any setup keep-state
+	ipfw add allow tcp from me6 to any established keep-state 
+	ipfw add allow tcp from me6 to any setup keep-state 
+	ipfw add deny ${log} tcp from any to any
+	ipfw add allow udp from me to any established 
+	ipfw add allow udp from me to any keep-state
+	ipfw add allow udp from me6 to any established
+	ipfw add allow udp from me6 to any keep-state
+	ipfw add deny ${log} udp from any to any
+
+	# Be a good firewall and allow some ICMP traffic.
+	# Remove 8 if you really want to disallow ping.
+	ipfw add allow icmp from any to any icmptypes 0,3,8,11,12
+	ipfw add allow ip6 from any to any proto ipv6-icmp 
+
+	eend 0
+}
+
+stop() {
+	ebegin "Stopping firewall rules"
+	# We don't unload the kernel module as that action
+	# can cause memory leaks as of FreeBSD 6.x
+	sysctl net.inet.ip.fw.enable=0 >/dev/null
+	eend $?
+}
+
+panic() {
+	ebegin "Stopping firewall rules - hard"
+	if ! init ; then
+		eend 1 "Failed to flush firewall ruleset"
+		return 1
+	fi
+	eend 0
+}
+
+showstatus() {
+	ipfw show
+}

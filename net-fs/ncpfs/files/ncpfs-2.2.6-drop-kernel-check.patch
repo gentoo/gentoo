@@ -1,0 +1,31 @@
+Description: Drop kernel version check
+Author: Bastian Blank <waldi@debian.org>
+Bug-Debian: http://bugs.debian.org/692472
+
+--- ncpfs-2.2.6.orig/sutil/ncpm_common.c
++++ ncpfs-2.2.6/sutil/ncpm_common.c
+@@ -243,23 +243,6 @@ static int load_ncpfs(void)
+ #endif	/* MOUNT2 */
+ 
+ static int getmountver(void) {
+-	struct utsname name;
+-	int maj, mid, rev;
+-	int ver;
+-
+-	if (uname(&name)) {
+-		errexit(1, _("Cannot get kernel release\n"));
+-	}
+-	if (sscanf(name.release, "%d.%d.%d", &maj, &mid, &rev) != 3) {
+-		errexit(2, _("Cannot convert kernel release \"%s\" to number\n"), name.release);
+-	}
+-	ver = maj*0x10000 + mid*0x100 + rev;
+-	if (ver < 0x20100)
+-		return 2;
+-	if (ver < 0x20328)
+-		return 3;
+-	if (ver < 0x2051F)
+-		return 4;
+ 	return 5;
+ }
+ 
+

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci-physics</herd>
+<longdescription lang="en">
+  This package contains all the user documentation for the Geant4
+  simulation toolkit in PDF formats.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-perl/Data-Structure-Util >=dev-perl/IO-Event-0.812.0 dev-perl/AnyEvent dev-perl/Event virtual/perl-Time-HiRes dev-perl/File-Slurp test? ( dev-perl/Test-SharedFork ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=flock() wrapper. Auto-create locks
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/File-Flock/
+IUSE=test
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Data-Structure-Util >=dev-perl/IO-Event-0.812.0 dev-perl/AnyEvent dev-perl/Event virtual/perl-Time-HiRes dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MU/MUIR/modules/File-Flock-2014.01.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=8cc068fb9fe08a12114a919130dae37b

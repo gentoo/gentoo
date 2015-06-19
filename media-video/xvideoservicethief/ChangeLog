@@ -1,0 +1,166 @@
+# ChangeLog for media-video/xvideoservicethief
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/xvideoservicethief/ChangeLog,v 1.34 2013/03/02 22:44:32 hwoarang Exp $
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org>
+  xvideoservicethief-2.4.1-r2.ebuild:
+  Move Qt dependencies to the new category
+
+  05 Aug 2012; Markos Chandras <hwoarang@gentoo.org>
+  files/xvideoservicethief-2.4.1-gcc47.patch,
+  xvideoservicethief-2.4.1-r2.ebuild:
+  Update gcc47 patch. Bug #430006
+
+  18 Jul 2012; Markos Chandras <hwoarang@gentoo.org>
+  +files/xvideoservicethief-2.4.1-gcc47.patch,
+  xvideoservicethief-2.4.1-r2.ebuild:
+  Fix building with gcc-4.7. Bug #427066 thanks to Duncan <1i5t5.duncan@cox.net>
+
+  12 Jul 2012; Johannes Huber <johu@gentoo.org>
+  -xvideoservicethief-2.4.1-r1.ebuild:
+  Remove old.
+
+  12 Jul 2012; Johannes Huber <johu@gentoo.org>
+  xvideoservicethief-2.4.1-r2.ebuild:
+  Stable for x86, wrt bug #426196
+
+  12 Jul 2012; Agostino Sarubbo <ago@gentoo.org>
+  xvideoservicethief-2.4.1-r2.ebuild:
+  Stable for amd64, wrt bug #426196
+
+*xvideoservicethief-2.4.1-r2 (11 Jul 2012)
+
+  11 Jul 2012; Markos Chandras <hwoarang@gentoo.org>
+  +xvideoservicethief-2.4.1-r2.ebuild,
+  files/xvideoservicethief-2.4.1-youtube-api.patch:
+  Revbump to fix problems with recent youtube changes
+
+  26 Aug 2011; Markos Chandras <hwoarang@gentoo.org>
+  -xvideoservicethief-2.4.1.ebuild:
+  ^
+
+  21 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  xvideoservicethief-2.4.1-r1.ebuild:
+  x86 stable wrt bug #379157
+
+  14 Aug 2011; Markos Chandras <hwoarang@gentoo.org>
+  xvideoservicethief-2.4.1-r1.ebuild:
+  Stable on amd64 wrt bug #379157
+
+*xvideoservicethief-2.4.1-r1 (14 Aug 2011)
+
+  14 Aug 2011; Markos Chandras <hwoarang@gentoo.org>
+  +xvideoservicethief-2.4.1-r1.ebuild,
+  +files/xvideoservicethief-2.4.1-youtube-api.patch:
+  add patch from upstream svn repository to fix youtube plugin
+
+  01 May 2011; Markos Chandras <hwoarang@gentoo.org>
+  -xvideoservicethief-2.4.ebuild, xvideoservicethief-2.4.1.ebuild:
+  Change media-video/ffmpeg dependency to virtual/ffmpeg. Bug #362157
+
+  03 Nov 2010; Markus Meier <maekke@gentoo.org>
+  xvideoservicethief-2.4.1.ebuild:
+  x86 stable, bug #343115
+
+  29 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  xvideoservicethief-2.4.1.ebuild:
+  Stable on amd64 wrt bug #343115
+
+  28 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  xvideoservicethief-2.4.1.ebuild:
+  Add missing || dies. Fix Korean typo mistake
+
+  28 Oct 2010; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add myself as maintainer
+
+*xvideoservicethief-2.4.1 (11 Sep 2010)
+
+  11 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  +xvideoservicethief-2.4.1.ebuild:
+  Version bump
+
+  17 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  -xvideoservicethief-2.2.ebuild, -xvideoservicethief-2.3.ebuild,
+  -xvideoservicethief-2.3.2.ebuild:
+  Remove old ebuilds
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  xvideoservicethief-2.4.ebuild:
+  stable x86, bug 327411
+
+  09 Jul 2010; Pacho Ramos <pacho@gentoo.org> xvideoservicethief-2.4.ebuild:
+  stable amd64, bug 327411
+
+  23 Apr 2010; Markos Chandras <hwoarang@gentoo.org>
+  xvideoservicethief-2.4.ebuild:
+  Add qt-webkit dependency wrt bug #316441
+
+*xvideoservicethief-2.4 (15 Apr 2010)
+
+  15 Apr 2010; Markos Chandras <hwoarang@gentoo.org>
+  +xvideoservicethief-2.4.ebuild:
+  Version bump wrt bug #315475. Thanks to Dustin Polke
+  <gentoobugsie.20.dsurawicz@spamgourmet.com> for the patch
+
+*xvideoservicethief-2.3.2 (23 Jan 2010)
+
+  23 Jan 2010; <hwoarang@gentoo.org> +xvideoservicethief-2.3.2.ebuild:
+  Version bump
+
+  26 Nov 2009; Markus Meier <maekke@gentoo.org>
+  xvideoservicethief-2.2.ebuild:
+  amd64 stable, bug #289747
+
+  29 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  xvideoservicethief-2.2.ebuild:
+  stable x86, bug 289747
+
+  19 Oct 2009; Markos Chandras <hwoarang@gentoo.org> -files/gcc-4.3.patch:
+  Remove unneeded gcc-4.3 patch
+
+*xvideoservicethief-2.3 (19 Oct 2009)
+
+  19 Oct 2009; Markos Chandras <hwoarang@gentoo.org>
+  -xvideoservicethief-2.0.0-r1.ebuild, -xvideoservicethief-2.1.ebuild,
+  +xvideoservicethief-2.3.ebuild:
+  Version bump, remove old ebuilds
+
+*xvideoservicethief-2.2 (08 Aug 2009)
+
+  08 Aug 2009; Markos Chandras <hwoarang@gentoo.org>
+  +xvideoservicethief-2.2.ebuild:
+  Version bump
+
+*xvideoservicethief-2.1 (06 Jul 2009)
+
+  06 Jul 2009; Markos Chandras <hwoarang@gentoo.org>
+  +xvideoservicethief-2.1.ebuild:
+  Version bump
+
+  30 Jun 2009; Markos Chandras <hwoarang@gentoo.org>
+  -xvideoservicethief-1.8.2.ebuild, -xvideoservicethief-2.0.0.ebuild:
+  Remove old ebuilds
+
+  08 Jun 2009; Markos Chandras <hwoarang@gentoo.org>
+  xvideoservicethief-2.0.0-r1.ebuild,
+  -files/xvideoservicethief-2.0.0-plugins_path.patch:
+  Install translations, remove patch, use sed instead
+
+*xvideoservicethief-2.0.0-r1 (08 Jun 2009)
+
+  08 Jun 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +xvideoservicethief-2.0.0-r1.ebuild,
+  +files/xvideoservicethief-2.0.0-plugins_path.patch:
+  Install plugins wrt #273222, thanks to Sven Wehner for reporting.
+
+*xvideoservicethief-2.0.0 (09 May 2009)
+
+  09 May 2009; Markos Chandras <hwoarang@gentoo.org>
+  +xvideoservicethief-2.0.0.ebuild:
+  Version bump
+
+*xvideoservicethief-1.8.2 (14 Mar 2009)
+
+  14 Mar 2009; Ben de Groot <yngwin@gentoo.org> +files/gcc-4.3.patch,
+  +metadata.xml, +xvideoservicethief-1.8.2.ebuild:
+  Initial import from qting-edge overlay. See also bug 210894.

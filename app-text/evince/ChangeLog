@@ -1,0 +1,1245 @@
+# ChangeLog for app-text/evince
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/evince/ChangeLog,v 1.288 2015/06/10 20:59:58 pacho Exp $
+
+  10 Jun 2015; Pacho Ramos <pacho@gentoo.org> -evince-3.14.2.ebuild,
+  evince-3.14.2-r1.ebuild:
+  amd64/x86 stable, bug #551554; drop old
+
+*evince-3.16.1 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org> -evince-3.12.2.ebuild,
+  -evince-3.12.2-r1.ebuild, -evince-3.14.1-r1.ebuild, +evince-3.16.1.ebuild,
+  -files/evince-3.12.2-memory-leak.patch,
+  -files/evince-3.12.2-print-center.patch,
+  -files/evince-3.12.2-scroll-search-1.patch,
+  -files/evince-3.12.2-scroll-search-2.patch,
+  -files/evince-3.14.0-non-bash-support.patch,
+  -files/evince-3.14.1-critical-warning.patch,
+  -files/evince-3.14.1-disable-toggle-find.patch,
+  -files/evince-3.14.1-gnome-desktop.patch,
+  -files/evince-3.14.1-incorrect-resolution.patch,
+  -files/evince-3.14.1-scroll-search.patch,
+  -files/evince-3.14.1-show-correct.patch,
+  -files/evince-3.14.1-thumbnail-size.patch:
+  Version bump for Gnome 3.16. Clean up old revisions.
+
+*evince-3.14.2-r1 (22 Mar 2015)
+
+  22 Mar 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +evince-3.14.2-r1.ebuild:
+  Make browser plugin optional (bug #535704, thanks to Austin S. Hemmelgarn).
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> evince-3.14.2.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> evince-3.14.2.ebuild:
+  amd64 stable, bug 534012
+
+*evince-3.14.2 (08 Mar 2015)
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> +evince-3.14.2.ebuild:
+  Version bump
+
+  25 Feb 2015; Pacho Ramos <pacho@gentoo.org> -evince-3.14.1.ebuild,
+  evince-3.14.1-r1.ebuild:
+  gvfs is used at runtime (#541318 by Kelvin Ng), drop old
+
+*evince-3.14.1-r1 (18 Jan 2015)
+
+  18 Jan 2015; Pacho Ramos <pacho@gentoo.org> +evince-3.14.1-r1.ebuild,
+  +files/evince-3.14.1-critical-warning.patch,
+  +files/evince-3.14.1-disable-toggle-find.patch,
+  +files/evince-3.14.1-gnome-desktop.patch,
+  +files/evince-3.14.1-incorrect-resolution.patch,
+  +files/evince-3.14.1-scroll-search.patch,
+  +files/evince-3.14.1-show-correct.patch,
+  +files/evince-3.14.1-thumbnail-size.patch:
+  Apply multiple upstream patches, tests are no longer provided in 3.14 cycle as
+  they were broken, drop old
+
+  27 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org> evince-3.14.1.ebuild:
+  Add missing dependency for eautoreconf, bug #533682.
+
+*evince-3.14.1 (21 Dec 2014)
+
+  21 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org> +evince-3.14.1.ebuild,
+  +files/evince-3.14.0-non-bash-support.patch:
+  Version bump for Gnome 3.14.
+
+*evince-3.12.2-r1 (19 Dec 2014)
+
+  19 Dec 2014; Pacho Ramos <pacho@gentoo.org> +evince-3.12.2-r1.ebuild,
+  +files/evince-3.12.2-memory-leak.patch,
+  +files/evince-3.12.2-print-center.patch,
+  +files/evince-3.12.2-scroll-search-1.patch,
+  +files/evince-3.12.2-scroll-search-2.patch, -evince-3.12.1.ebuild:
+  Fix scrolling when search is used (#532878 by Johan Hovold), apply some more
+  fixes from 3.12 branch. Drop old.
+
+  19 Dec 2014; Pacho Ramos <pacho@gentoo.org> evince-3.12.2.ebuild:
+  amd64 stable, bug 529964
+
+  18 Dec 2014; Pacho Ramos <pacho@gentoo.org> evince-3.12.2.ebuild:
+  x86 stable, bug 529964
+
+  13 Nov 2014; Pacho Ramos <pacho@gentoo.org> -evince-2.32.0-r4.ebuild,
+  -files/evince-0.7.1-display-menu.patch,
+  -files/evince-2.32.0-create_thumbnail_frame-null.patch,
+  -files/evince-2.32.0-desktop-categories.patch,
+  -files/evince-2.32.0-dvi-CVEs.patch, -files/evince-2.32.0-dvi-security.patch,
+  -files/evince-2.32.0-gold.patch,
+  -files/evince-2.32.0-libdocument-segfault.patch,
+  -files/evince-2.32.0-libview-crash.patch, -files/evince-2.32.0-pk-fonts.patch,
+  -files/evince-2.32.0-stop-spinner.patch,
+  -files/evince-2.32.0-update-poppler.patch,
+  -files/evince-2.32.0-use-popup.patch, -files/gconf-2.m4, metadata.xml:
+  Drop old (#508854)
+
+*evince-3.12.2 (02 Sep 2014)
+
+  02 Sep 2014; Pacho Ramos <pacho@gentoo.org> +evince-3.12.2.ebuild,
+  -evince-3.10.3.ebuild:
+  Version bump, drop old
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> evince-3.12.1.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> evince-3.12.1.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  16 Jun 2014; Anthony G. Basile <blueness@gentoo.org> evince-3.10.3.ebuild,
+  evince-3.12.1.ebuild:
+  Keyword ~mips
+
+*evince-3.12.1 (27 Apr 2014)
+
+  27 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org> +evince-3.12.1.ebuild,
+  metadata.xml:
+  Version bump for Gnome 3.12.
+
+  23 Apr 2014; Pacho Ramos <pacho@gentoo.org> -evince-3.8.3.ebuild:
+  Drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> evince-3.10.3.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> evince-3.10.3.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> evince-3.10.3.ebuild:
+  Fix wrong commit, bug 502160
+
+*evince-3.10.3 (24 Dec 2013)
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org> +evince-3.10.3.ebuild,
+  metadata.xml:
+  Version bump for Gnome 3.10
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org> -evince-3.6.1.ebuild,
+  -evince-3.8.2.ebuild, -files/evince-3.6.0-evince.desktop.patch,
+  evince-3.8.3.ebuild:
+  Add missing RDEPEND on librsvg (#494130 by Johan Hovold), drop old.
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> evince-3.8.3.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> evince-3.8.3.ebuild:
+  amd64 stable, bug #478252
+
+  01 Aug 2013; Alexandre Rostovtsev <tetromino@gentoo.org> evince-3.8.2.ebuild,
+  evince-3.8.3.ebuild:
+  Add missing dependency on gnome-icon-theme-symbolic (bug #479290, thanks to
+  Timo Kamph).
+
+*evince-3.8.3 (11 Jul 2013)
+
+  11 Jul 2013; Pacho Ramos <pacho@gentoo.org> +evince-3.8.3.ebuild,
+  -evince-3.8.0.ebuild:
+  Version bump, drop old
+
+*evince-3.8.2 (15 May 2013)
+
+  15 May 2013; Pacho Ramos <pacho@gentoo.org> +evince-3.8.2.ebuild:
+  Version bump
+
+*evince-3.8.0 (28 Mar 2013)
+
+  28 Mar 2013; Pacho Ramos <pacho@gentoo.org> +evince-3.8.0.ebuild:
+  Version bump for Gnome 3.8
+
+  05 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org> -evince-3.4.0.ebuild,
+  -files/evince-3.4.0-glib-gold.patch:
+  Clean up old revision.
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> evince-3.6.1.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  27 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org> evince-3.6.1.ebuild:
+  Add missing gdbus-codegen dependency; remove dbus USE flag, which is now
+  pointless since >=gtk+-3.6[X] always requires dbus (bug #448804, thanks to
+  Florian Faber).
+
+  16 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org> evince-3.6.1.ebuild:
+  Update to EAPI5, modernize ebuild.
+
+*evince-3.6.1 (16 Dec 2012)
+
+  16 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/evince-3.6.0-evince.desktop.patch, +evince-3.6.1.ebuild, metadata.xml:
+  Version bump for Gnome 3.6.
+
+  03 Nov 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  evince-2.32.0-r4.ebuild, files/evince-2.32.0-gold.patch:
+  Update the gold patch to fix glib-2.32 problems; -lm is always needed for
+  libdocument, not just for the thumbnailer executable. Add missing libICE
+  dependency.
+
+  17 Oct 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -evince-2.32.0-r3.ebuild, evince-2.32.0-r4.ebuild, -evince-3.2.1-r1.ebuild,
+  -files/evince-3.2.1-glib-gold.patch, -files/evince-3.2.1-libgxps-0.2.patch,
+  evince-3.4.0.ebuild:
+  Drop useless USE=doc, it only regenerated documentation; fixes bug #436778.
+  Update license. Drop old.
+
+  23 Aug 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  evince-2.32.0-r3.ebuild, evince-2.32.0-r4.ebuild, evince-3.2.1-r1.ebuild,
+  evince-3.4.0.ebuild:
+  gtk-doc-am dependency is not needed, m4/gtk-doc.m4 is in the tarball. Thanks
+  to Gilles Dartiguelongue for noticing.
+
+  15 Jul 2012; Raúl Porcel <armin76@gentoo.org> evince-2.32.0-r4.ebuild:
+  alpha/ia64/sparc stable wrt #410611
+
+  16 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> evince-2.32.0-r3.ebuild,
+  evince-2.32.0-r4.ebuild, evince-3.2.1-r1.ebuild, evince-3.4.0.ebuild,
+  metadata.xml:
+  Use global USE flag "postscript" instead of local USE flag "ps" for
+  PostScript support
+
+  08 Jun 2012; Pacho Ramos <pacho@gentoo.org> -evince-3.2.1.ebuild,
+  metadata.xml:
+  Drop maintainer from metadata as talked with him, bug #90641. Drop old.
+
+  24 May 2012; Samuli Suominen <ssuominen@gentoo.org> evince-2.32.0-r4.ebuild:
+  ppc stable wrt #410611
+
+  10 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  evince-2.32.0-r3.ebuild, evince-2.32.0-r4.ebuild, evince-3.2.1.ebuild,
+  evince-3.2.1-r1.ebuild, evince-3.4.0.ebuild, metadata.xml:
+  Add "ps" USE flag (enabled by default) to allow disabling PostScript support
+  (bug #414973, thanks to nzqr).
+
+*evince-3.4.0 (05 May 2012)
+
+  05 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +evince-3.4.0.ebuild, +files/evince-3.4.0-glib-gold.patch:
+  Version bump with small bugfixes and UI improvements.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> evince-2.32.0-r3.ebuild,
+  evince-2.32.0-r4.ebuild, evince-3.2.1.ebuild, evince-3.2.1-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  30 Apr 2012; Justin Lecher <jlec@gentoo.org> evince-3.2.1-r1.ebuild,
+  +files/evince-3.2.1-glib-gold.patch:
+  Add fix for problems with glib-2.32 and gold linker, #414065
+
+  29 Apr 2012; Markus Meier <maekke@gentoo.org> evince-2.32.0-r4.ebuild:
+  x86 stable, bug #410611
+
+  25 Apr 2012; Markus Meier <maekke@gentoo.org> evince-2.32.0-r4.ebuild:
+  arm stable, bug #410611
+
+  19 Apr 2012; Brent Baude <ranger@gentoo.org> evince-2.32.0-r4.ebuild:
+  Marking evince-2.32.0-r4 ppc64 stable for bug 410611
+
+  18 Apr 2012; Agostino Sarubbo <ago@gentoo.org> evince-2.32.0-r4.ebuild:
+  Stable for amd64, wrt bug #410611
+
+  30 Jan 2012; Pacho Ramos <pacho@gentoo.org> evince-2.32.0-r4.ebuild:
+  Stop allowing to build gtk-doc files as they are useless for evince as
+  discussed in bug #398435 (by Nick Bowler). Thanks to Alexandre Rostovtsev for
+  looking to the issue.
+
+*evince-2.32.0-r4 (17 Dec 2011)
+
+  17 Dec 2011; Pacho Ramos <pacho@gentoo.org> +evince-2.32.0-r4.ebuild,
+  +files/evince-2.32.0-create_thumbnail_frame-null.patch,
+  +files/evince-2.32.0-desktop-categories.patch, -evince-2.32.0-r2.ebuild:
+  Fix menu categories, bug #393585 by Sergey S. Starikoff; apply another patch
+  from 2.32 branch to fix another crash. Remove old.
+
+  04 Dec 2011; Alexandre Rostovtsev <tetromino@gentoo.org> evince-3.2.1.ebuild,
+  evince-3.2.1-r1.ebuild:
+  evince-3.x uses docbook-xml-dtd:4.3, not 4.1.2 (bug #392263, thanks to
+  markus.heuberger@gmx.net for reporting).
+
+  26 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org> evince-3.2.1.ebuild,
+  evince-3.2.1-r1.ebuild:
+  Fix the gnome-icon-theme configure sed (bug #391859, thanks to Florian Faber
+  <faber@faberman.de> for reporting).
+
+*evince-3.2.1-r1 (23 Nov 2011)
+
+  23 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +evince-3.2.1-r1.ebuild, +files/evince-3.2.1-libgxps-0.2.patch:
+  Add patches to fix libgxps-0.2 and texlive-2011 support.
+
+  16 Nov 2011; Justin Lecher <jlec@gentoo.org> evince-2.32.0-r2.ebuild,
+  evince-2.32.0-r3.ebuild, evince-3.2.1.ebuild:
+  Corrected Slotting of media-libs/tiff
+
+  15 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  evince-2.32.0-r2.ebuild, evince-2.32.0-r3.ebuild:
+  QA: eautoreconf should be before gnome2_src_prepare.
+
+*evince-3.2.1 (03 Nov 2011)
+
+  03 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -files/evince-2.91.5-fix-evinceview-introspection.patch,
+  -evince-3.0.2.ebuild, +evince-3.2.1.ebuild, metadata.xml:
+  Bump to 3.2.1 from the gnome overlay. Drop old. Add several missing
+  dependencies. Notable changes: UI fixes, stability improvements, XPS support.
+
+  17 Oct 2011; Justin Lecher <jlec@gentoo.org> +files/evince-2.32.0-gold.patch,
+  metadata.xml, evince-2.32.0-r3.ebuild:
+  Fix linking with gold.ld
+
+  05 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org> evince-2.32.0-r3.ebuild:
+  ppc/ppc64 stable wrt #369909
+
+*evince-3.0.2 (16 Aug 2011)
+
+  16 Aug 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +files/evince-2.91.5-fix-evinceview-introspection.patch,
+  +evince-3.0.2.ebuild:
+  Bump to 3.0.2, from gnome overlay for GNOME 3
+
+  13 Aug 2011; Raúl Porcel <armin76@gentoo.org> evince-2.32.0-r3.ebuild:
+  alpha/ia64/sparc stable wrt #369909
+
+  17 Jul 2011; Markus Meier <maekke@gentoo.org> evince-2.32.0-r3.ebuild:
+  arm stable, bug #369909
+
+  14 Jul 2011; Thomas Kahle <tomka@gentoo.org> evince-2.32.0-r3.ebuild:
+  x86 stable per bug 369909
+
+  01 Jul 2011; Markos Chandras <hwoarang@gentoo.org> evince-2.32.0-r3.ebuild:
+  Stable on amd64 wrt bug #278255
+
+  12 Jun 2011; Pacho Ramos <pacho@gentoo.org> -evince-2.32.0-r1.ebuild,
+  evince-2.32.0-r3.ebuild:
+  Fix gconf-2.m4 missing again (bug #371272 by Francesco Turco). Remove old.
+
+  26 Apr 2011; Kacper Kowalik <xarthisius@gentoo.org> evince-2.32.0-r2.ebuild:
+  ppc64 stable wrt #363447
+
+  23 Apr 2011; Raúl Porcel <armin76@gentoo.org> evince-2.32.0-r2.ebuild:
+  alpha/arm/ia64/sparc stable wrt #363447
+
+*evince-2.32.0-r3 (21 Apr 2011)
+
+  21 Apr 2011; Pacho Ramos <pacho@gentoo.org> +evince-2.32.0-r3.ebuild,
+  +files/evince-2.32.0-stop-spinner.patch,
+  +files/evince-2.32.0-use-popup.patch:
+  Revision bump to include upstream patches reported by Arthur Taylor fixing
+  random minimizing (bug #364311) and useless wakeups (bug #364313) problems.
+
+  16 Apr 2011; Pacho Ramos <pacho@gentoo.org> evince-2.32.0-r2.ebuild:
+  gconf-2.m4 is needed for autoconf, bug #363781 by Jimmy C. Chau.
+
+  15 Apr 2011; Christoph Mende <angelos@gentoo.org> evince-2.32.0-r2.ebuild:
+  Stable on amd64 wrt bug #363447
+
+  15 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  evince-2.32.0-r2.ebuild:
+  x86 stable wrt security bug #363447
+
+  13 Apr 2011; Brent Baude <ranger@gentoo.org> evince-2.32.0-r2.ebuild:
+  Marking evince-2.32.0-r2 ppc for bug 363447
+
+*evince-2.32.0-r2 (13 Apr 2011)
+
+  13 Apr 2011; Pacho Ramos <pacho@gentoo.org> +evince-2.32.0-r2.ebuild,
+  +files/evince-2.32.0-dvi-security.patch,
+  +files/evince-2.32.0-libview-crash.patch,
+  +files/evince-2.32.0-update-poppler.patch:
+  Fix libview crash, upstream bug #630999; fix another security issue in the
+  dvi-backend; update poppler api with Arch patch (bug #354709 by Justin
+  Lecher, Ian Abbott and Rafał Mużyło).
+
+  09 Apr 2011; Gilles Dartiguelongue <eva@gentoo.org> -evince-2.30.3.ebuild,
+  -evince-2.32.0.ebuild:
+  Clean up old revisions.
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org> evince-2.32.0-r1.ebuild:
+  Marking evince-2.32.0-r1 ppc stable for bug 353436
+
+  21 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> evince-2.32.0-r1.ebuild:
+  ppc64 stable wrt #353436
+
+  16 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> evince-2.30.3.ebuild,
+  evince-2.32.0.ebuild, evince-2.32.0-r1.ebuild:
+  Fix slot-deps on gtk+ and other libs
+
+  12 Mar 2011; Raúl Porcel <armin76@gentoo.org> evince-2.32.0-r1.ebuild:
+  alpha/arm/ia64/sparc stable wrt #353436
+
+  24 Feb 2011; Thomas Kahle <tomka@gentoo.org> evince-2.32.0-r1.ebuild:
+  x86 stable per bug 353436
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org> evince-2.32.0-r1.ebuild:
+  Stable on amd64 wrt bug #353436
+
+  14 Feb 2011; Pacho Ramos <pacho@gentoo.org> evince-2.32.0.ebuild:
+  Add gnome-base/gsettings-desktop-schemas to RDEPEND as asked by Nirbheek.
+
+*evince-2.32.0-r1 (18 Jan 2011)
+
+  18 Jan 2011; Pacho Ramos <pacho@gentoo.org> -evince-2.26.2.ebuild,
+  -files/evince-2.27.4-smclient-configure.patch, -evince-2.28.2.ebuild,
+  +evince-2.32.0-r1.ebuild, +files/evince-2.32.0-dvi-CVEs.patch,
+  +files/evince-2.32.0-libdocument-segfault.patch,
+  +files/evince-2.32.0-pk-fonts.patch:
+  Revision bump including upstream patches for fixing security bugs in dvi
+  backend, libdocument segfaults and problem with pk fonts after applying
+  security patch. Remove old.
+
+  07 Dec 2010; Gilles Dartiguelongue <eva@gentoo.org> evince-2.32.0.ebuild:
+  Re-drop hppa keyword, thanks to Mr_Bones for reminding.
+
+*evince-2.32.0 (17 Oct 2010)
+
+  17 Oct 2010; Pacho Ramos <pacho@gentoo.org> +evince-2.32.0.ebuild:
+  Version bump for Gnome 2.32: Make Shrink to Printable Area default option
+  for Page Scaling, preliminary support for adding new annotations, add
+  confirmation dialog on closing window when document has been modified, add
+  an action to edit menu to save current settings as default, add a new
+  sidebar page to show the list of annotations, finish DBus API for synctex
+  support, use cairo to draw search results, other bugfixes and translation
+  updates.
+
+  17 Oct 2010; Raúl Porcel <armin76@gentoo.org> evince-2.30.3.ebuild:
+  alpha/ia64/sparc stable wrt #324077
+
+  14 Oct 2010; Markus Meier <maekke@gentoo.org> evince-2.30.3.ebuild:
+  arm stable, bug #324077
+
+  09 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> evince-2.30.3.ebuild:
+  ppc64 stable wrt #324077
+
+  15 Sep 2010; Gilles Dartiguelongue <eva@gentoo.org> evince-2.30.3.ebuild:
+  Make hicolor-icon-theme an alternative to gnome-icon-theme, bug #326855.
+  Drop libtool-1 compat.
+
+  11 Sep 2010; Joseph Jezak <josejx@gentoo.org> evince-2.30.3.ebuild:
+  Marked ppc for bug #324077.
+
+  19 Aug 2010; Gilles Dartiguelongue <eva@gentoo.org> evince-2.30.3.ebuild:
+  Raise gtk-doc dependency according to configure.
+
+  18 Aug 2010; Markus Meier <maekke@gentoo.org> evince-2.28.2.ebuild:
+  arm stable, bug #314899
+
+  14 Aug 2010; Raúl Porcel <armin76@gentoo.org> evince-2.28.2.ebuild:
+  alpha/ia64/sparc stable wrt #314899
+
+  01 Aug 2010; Christian Faulhammer <fauli@gentoo.org> evince-2.30.3.ebuild:
+  x86 stable, bug 324077
+
+  31 Jul 2010; Pacho Ramos <pacho@gentoo.org> evince-2.30.3.ebuild:
+  amd64 stable, bug 324077
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org> evince-2.26.2.ebuild,
+  evince-2.28.2.ebuild, evince-2.30.3.ebuild:
+  Drop HPPA keywording (bug #324511).
+
+*evince-2.30.3 (03 Jul 2010)
+
+  03 Jul 2010; Pacho Ramos <pacho@gentoo.org> -evince-2.30.2.ebuild,
+  +evince-2.30.3.ebuild:
+  Version bump: Fix cbz comics (bug #326515 by Dirk Best). Remove old
+  testing.
+
+*evince-2.30.2 (23 Jun 2010)
+
+  23 Jun 2010; Pacho Ramos <pacho@gentoo.org> -evince-2.30.1-r1.ebuild,
+  +evince-2.30.2.ebuild:
+  Version bump with updated translations and fixes, remove old.
+
+*evince-2.30.1-r1 (13 Jun 2010)
+
+  13 Jun 2010; Pacho Ramos <pacho@gentoo.org> +evince-2.30.1-r1.ebuild:
+  Add new version for Gnome 2.30.
+
+  04 Jun 2010; Markus Meier <maekke@gentoo.org> evince-2.28.2.ebuild:
+  x86 stable, bug #314899
+
+  22 May 2010; Raúl Porcel <armin76@gentoo.org> evince-2.28.2.ebuild:
+  Add ~arm
+
+  03 May 2010; Olivier Crête <tester@gentoo.org> evince-2.28.2.ebuild:
+  amd64 stable, bug #314899
+
+  24 Feb 2010; Gilles Dartiguelongue <eva@gentoo.org> -evince-2.24.2.ebuild,
+  -evince-2.28.1.ebuild:
+  Clean up old revisions.
+
+  10 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> evince-2.24.2.ebuild,
+  evince-2.26.2.ebuild, evince-2.28.1.ebuild, evince-2.28.2.ebuild:
+  Update poppler dependency for #304349
+
+  17 Jan 2010; Jeroen Roovers <jer@gentoo.org> evince-2.26.2.ebuild:
+  Stable for HPPA (bug #281427).
+
+  15 Jan 2010; Jonathan Callen <abcd@gentoo.org> evince-2.28.2.ebuild:
+  Add prefix keywords
+
+*evince-2.28.2 (18 Dec 2009)
+
+  18 Dec 2009; Gilles Dartiguelongue <eva@gentoo.org> +evince-2.28.2.ebuild:
+  Version bump. Rendering fixes, documentation and translation updates.
+
+  03 Dec 2009; Brent Baude <ranger@gentoo.org> evince-2.26.2.ebuild:
+  Marking evince-2.26.2 ppc64 stable for bug 281427
+
+  28 Nov 2009; Raúl Porcel <armin76@gentoo.org> evince-2.26.2.ebuild:
+  alpha/ia64/sparc stable wrt #281427
+
+  01 Nov 2009; Nirbheek Chauhan <nirbheek@gentoo.org> +files/gconf-2.m4:
+  Fix bug 291339 -- need gconf-2.m4 for autoconf
+
+  29 Oct 2009; Gilles Dartiguelongue <eva@gentoo.org> -evince-2.26.1.ebuild,
+  +files/evince-2.27.4-smclient-configure.patch, +evince-2.28.1.ebuild,
+  metadata.xml:
+  New version for GNOME 2.28. Clean up old revision.
+
+*evince-2.28.1 (29 Oct 2009)
+
+  29 Oct 2009; Gilles Dartiguelongue <eva@gentoo.org> -evince-2.26.1.ebuild,
+  +files/evince-2.27.4-smclient-configure.patch, +evince-2.28.1.ebuild,
+  metadata.xml:
+  New version for GNOME 2.28. Clean up old revision.
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> evince-2.26.2.ebuild:
+  ppc stable #281427
+
+  16 Oct 2009; Markus Meier <maekke@gentoo.org> evince-2.26.2.ebuild:
+  x86 stable, bug #281427
+
+  08 Oct 2009; Mart Raudsepp <leio@gentoo.org> Manifest:
+  Fix Manifest
+
+  08 Oct 2009; Olivier Crête <tester@gentoo.org> evince-2.26.2.ebuild:
+  Stable on amd64, bug #281427
+
+*evince-2.26.2 (18 May 2009)
+
+  18 May 2009; Gilles Dartiguelongue <eva@gentoo.org> evince-2.24.2.ebuild,
+  +evince-2.26.2.ebuild:
+  Bump to 2.26.2. Bug fixes and translation updates.
+
+*evince-2.26.1 (02 May 2009)
+
+  02 May 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -files/evince-0.6.1-dbus-switch.patch,
+  -files/evince-2.22.2-t1lib-fonts.patch, -evince-2.22.2-r1.ebuild,
+  +evince-2.26.1.ebuild:
+  New version for GNOME 2.26. Load of small improvments here and there.
+  Clean up old revisions.
+
+  27 Apr 2009; Jeroen Roovers <jer@gentoo.org> evince-2.24.2:
+  Stable for HPPA (bug #260063).
+
+  12 Apr 2009; Friedrich Oslage <bluebird@gentoo.org> evince-2.24.2.ebuild:
+  Stable on sparc, bug #260063
+
+  10 Apr 2009; Peter Alfredsen <loki_val@gentoo.org>
+  evince-2.22.2-r1.ebuild:
+  Updating app-text/evince for virtual/poppler-glib update; cairo is the
+  superior backend, always enable it anywhere it can be used.
+
+  30 Mar 2009; Peter Alfredsen <loki_val@gentoo.org> -evince-2.20.1.ebuild,
+  evince-2.22.2-r1.ebuild, evince-2.24.2.ebuild:
+  Update dependencies w.r.t. bug 264230, fully-split-out poppler transition.
+  Also punt evince-2.20.1, since no version of poppler in-tree meets the
+  requirements of <app-text/poppler-bindings-0.8.
+
+  18 Mar 2009; Raúl Porcel <armin76@gentoo.org> evince-2.24.2.ebuild:
+  alpha/ia64 stable wrt #260063
+
+  15 Mar 2009; Markus Meier <maekke@gentoo.org> evince-2.24.2.ebuild:
+  x86 stable, bug #260063
+
+  12 Mar 2009; Daniel Gryniewicz <dang@gentoo.org> evince-2.24.2.ebuild:
+  poppler-bindings needs cairo too; bug #262111
+
+  11 Mar 2009; Daniel Gryniewicz <dang@gentoo.org> evince-2.24.2.ebuild:
+  Marked stable on amd64
+
+  07 Mar 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  evince-2.20.1.ebuild, evince-2.22.2-r1.ebuild, evince-2.24.2.ebuild:
+  Transition to eapi 2 use deps
+
+  06 Mar 2009; Brent Baude <ranger@gentoo.org> evince-2.24.2.ebuild:
+  Marking evince-2.24.2 ppc stable for bug 260063
+
+  05 Mar 2009; Brent Baude <ranger@gentoo.org> evince-2.24.2.ebuild:
+  Marking evince-2.24.2 ppc64 stable for bug 260063
+
+  05 Mar 2009; Gilles Dartiguelongue <eva@gentoo.org> -evince-2.20.2.ebuild,
+  -evince-2.24.0.ebuild, -evince-2.24.1.ebuild:
+  Clean up old revisions.
+
+*evince-2.24.2 (24 Nov 2008)
+
+  24 Nov 2008; Gilles Dartiguelongue <eva@gentoo.org> +evince-2.24.2.ebuild:
+  Bump to 2.24.2. Bug fixes and translation updates.
+
+*evince-2.24.1 (20 Nov 2008)
+
+  20 Nov 2008; Gilles Dartiguelongue <eva@gentoo.org> +evince-2.24.1.ebuild:
+  Bump to 2.24.1. Bug fixes and translation updates.
+
+  13 Nov 2008; Brent Baude <ranger@gentoo.org> evince-2.22.2-r1.ebuild:
+  Marking evince-2.22.2-r1 ppc64 stable for bug 236971
+
+  06 Nov 2008; Jeremy Olexa <darkside@gentoo.org> evince-2.24.0.ebuild:
+  minor die message wording improvement for evince-2.24.0
+
+*evince-2.24.0 (11 Oct 2008)
+
+  11 Oct 2008; Gilles Dartiguelongue <eva@gentoo.org> metadata.xml,
+  evince-2.22.2-r1.ebuild, +evince-2.24.0.ebuild:
+  New version for GNOME 2.24. Use multimedia keys, better session integration
+  and usual lot of bug fixes. Fix repoman warnings.
+
+  25 Sep 2008; Jeroen Roovers <jer@gentoo.org> evince-2.22.2-r1.ebuild:
+  Stable for HPPA (bug #236971).
+
+  04 Sep 2008; Christian Faulhammer <opfer@gentoo.org> evince-2.20.1.ebuild,
+  evince-2.20.2.ebuild:
+  change dependency from virtual/tetex to virtual/tex-base
+
+  12 Aug 2008; Mart Raudsepp <leio@gentoo.org> evince-2.20.1.ebuild,
+  -evince-2.22.0.ebuild, -evince-2.22.1.1.ebuild, evince-2.22.2-r1.ebuild:
+  Remove old. Remove unnecessary autotools inherit on latest
+
+  12 Aug 2008; Raúl Porcel <armin76@gentoo.org> evince-2.22.2-r1.ebuild:
+  alpha/ia64/sparc stable wrt #229709
+
+  10 Aug 2008; Markus Meier <maekke@gentoo.org> evince-2.22.2-r1.ebuild:
+  x86 stable, bug #229709
+
+  02 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  30 Jul 2008; Brent Baude <ranger@gentoo.org> evince-2.22.2-r1.ebuild:
+  Marking evince-2.22.2-r1 ppc stable for bug 229709
+
+  26 Jul 2008; Olivier Crête <tester@gentoo.org> evince-2.22.2-r1.ebuild:
+  Stable on amd64, bug #229709
+
+*evince-2.22.2-r1 (07 Jul 2008)
+
+  07 Jul 2008; Daniel Gryniewicz <dang@gentoo.org>
+  +files/evince-2.22.2-t1lib-fonts.patch, -evince-2.22.2.ebuild,
+  +evince-2.22.2-r1.ebuild:
+  Bump to 2.22.2-r1
+
+  - Fix horrible font rendering of dvi files with t1lib. Bug #158172
+
+  06 Jul 2008; Peter Alfredsen <loki_val@gentoo.org> evince-2.20.1.ebuild,
+  evince-2.20.2.ebuild:
+  Adjust deps wrt bug #230944
+
+  01 Jul 2008; Gilles Dartiguelongue <eva@gentoo.org> evince-2.20.1.ebuild,
+  evince-2.20.2.ebuild, evince-2.22.0.ebuild, evince-2.22.1.1.ebuild,
+  evince-2.22.2.ebuild:
+  add docbook-xml-dtd-4.1.2 to DEPEND, fix bug #229077.
+
+*evince-2.22.2 (29 May 2008)
+
+  29 May 2008; Daniel Gryniewicz <dang@gentoo.org> +evince-2.22.2.ebuild:
+  Bump to 2.22.2
+
+  * Fixes warning with gtk-2.10 (Matthias Drochner)
+
+  * Fixes crash in impress backend (Hans Petter Jansson)
+
+  * Handle multipage tiff properly (Carlos Garcia Campos)
+
+  05 May 2008; Daniel Gryniewicz <dang@gentoo.org> evince-2.22.1.1.ebuild:
+  Use virtual/tex-base rather than virtual/tetex; bug #219322
+
+  21 Apr 2008; <welp@gentoo.org> evince-2.22.0.ebuild,
+  evince-2.22.1.1.ebuild:
+  keyring to gnome-keyring
+
+*evince-2.22.1.1 (08 Apr 2008)
+
+  08 Apr 2008; Rémi Cardona <remi@gentoo.org> +evince-2.22.1.1.ebuild:
+  Bump to 2.22.1.1, bugfix release, contains our dbus patch
+
+  02 Apr 2008; Daniel Gryniewicz <dang@gentoo.org>
+  -files/evince-2.22.0-gtk-doc-die-die-die.patch, evince-2.22.0.ebuild:
+  Remove gtk-doc hack in favor of gtk-doc-am dep
+
+*evince-2.22.0 (27 Mar 2008)
+
+  27 Mar 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/evince-2.22.0-gtk-doc-die-die-die.patch, +evince-2.22.0.ebuild:
+  New version for GNOME 2.22. Uses GIO, lots of bug and crash fixes. Uses
+  libspectre in place of ghostscript. gnome-keyring is now optional.
+
+  04 Feb 2008; Jeroen Roovers <jer@gentoo.org> evince-2.20.2.ebuild:
+  Stable for HPPA (bug #208366).
+
+  03 Feb 2008; Raúl Porcel <armin76@gentoo.org> evince-2.20.2.ebuild:
+  alpha/ia64/sparc stable wrt #208366
+
+  02 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org> evince-2.20.2.ebuild:
+  Stable on amd64 wrt bug #208366.
+
+  01 Feb 2008; Mart Raudsepp <leio@gentoo.org>
+  -files/evince-0.5.3-links.patch, -files/evince-0.6.1-freebsd.patch,
+  -files/evince-0.6.1-gv-limit.patch, -evince-0.5.3-r1.ebuild,
+  -evince-0.6.1-r3.ebuild:
+  Remove Gnome 2.16 and older versions
+
+  01 Feb 2008; Brent Baude <ranger@gentoo.org> evince-2.20.2.ebuild:
+  Marking evince-2.20.2 ppc64 and ppc stable for bug 208366
+
+  01 Feb 2008; Christian Faulhammer <opfer@gentoo.org> evince-2.20.2.ebuild:
+  stable x86, bug 208366
+
+*evince-2.20.2 (06 Dec 2007)
+
+  06 Dec 2007; Gilles Dartiguelongue <eva@gentoo.org> +evince-2.20.2.ebuild:
+  bump to 2.20.2
+
+  14 Nov 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  evince-2.20.1.ebuild:
+  ppc stable, bug #196735
+
+  12 Nov 2007; Jeroen Roovers <jer@gentoo.org> evince-2.20.1.ebuild:
+  Stable for HPPA (bug #196735).
+
+  11 Nov 2007; Raúl Porcel <armin76@gentoo.org> evince-2.20.1.ebuild:
+  alpha/ia64 stable wrt security #196735
+
+  10 Nov 2007; Daniel Gryniewicz <dang@gentoo.org> evince-2.20.1.ebuild:
+  Marked stable on amd64 for bug #196735
+
+  10 Nov 2007; Ferris McCormick <fmccor@gentoo.org> evince-2.20.1.ebuild:
+  Sparc stable --- Yet more for security Bug #196735
+
+  10 Nov 2007; Christian Faulhammer <opfer@gentoo.org> evince-2.20.1.ebuild:
+  stable x86, security bug 196735
+
+  10 Nov 2007; Markus Rothe <corsair@gentoo.org> evince-2.20.1.ebuild:
+  Stable on ppc64; bug #196735
+
+  17 Oct 2007; Gilles Dartiguelongue <eva@gentoo.org>
+  evince-0.5.3-r1.ebuild, evince-0.6.1-r3.ebuild, evince-0.8.3.ebuild,
+  evince-2.20.0.ebuild:
+  fix some QA warnings
+
+*evince-2.20.1 (17 Oct 2007)
+
+  17 Oct 2007; Gilles Dartiguelongue <eva@gentoo.org> +evince-2.20.1.ebuild:
+  bump to 2.20.1, changed back WANT_AUTOMAKE to 1.9 because it fails otherwise
+
+  25 Sep 2007; Daniel Gryniewicz <dang@gentoo.org> ChangeLog:
+  Remove dev version; prep for unmask
+
+  23 Sep 2007; Tom Gall <tgall@gentoo.org>
+  evince-0.8.3.ebuild:
+  stable on ppc64
+
+*evince-2.20.0 (19 Sep 2007)
+
+  19 Sep 2007; Daniel Gryniewicz <dang@gentoo.org> -evince-2.19.92.ebuild,
+  +evince-2.20.0.ebuild:
+  Bump to 2.20.0
+  
+  * Forms support broken by forgotten ifdef fix (Carlos Garcia Campos)
+  
+  * Issue with making a copy and xfer to different file system (Carlos Garcia
+  Campos)
+  
+  * Desktop file fixes (Götz Waschk)
+
+*evince-2.19.92 (04 Sep 2007)
+
+  04 Sep 2007; Daniel Gryniewicz <dang@gentoo.org> +evince-2.19.92.ebuild:
+  New evince to go with new poppler
+
+  28 Aug 2007; Jeroen Roovers <jer@gentoo.org> evince-0.8.3.ebuild:
+  Stable for HPPA (bug #185823).
+
+*evince-0.9.3 (23 Aug 2007)
+
+  23 Aug 2007; Daniel Gryniewicz <dang@gentoo.org> +evince-0.9.3.ebuild:
+  Pre-release version of evince to go with the pre-release version of poppler
+
+  11 Aug 2007; Andrej Kacian <ticho@gentoo.org> evince-0.8.3.ebuild:
+  Stable on x86, bug #185823.
+
+  10 Aug 2007; Daniel Gryniewicz <dang@gentoo.org> evince-0.8.3.ebuild:
+  Restrict tests; they need dogtail (whatever that is).  Bug #188177
+
+  10 Aug 2007; Christoph Mende <angelos@gentoo.org> evince-0.8.3.ebuild:
+  Stable on amd64 wrt bug #185823
+
+  08 Aug 2007; Raúl Porcel <armin76@gentoo.org> evince-0.8.3.ebuild:
+  alpha/ia64 stable wrt #185823
+
+  07 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org> evince-0.8.3.ebuild:
+  Stable on ppc wrt bug #185823.
+
+  07 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> evince-0.8.3.ebuild:
+  Stable on sparc wrt #185823
+
+  02 Aug 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  evince-0.5.3-r1.ebuild, evince-0.6.1-r3.ebuild:
+  correct dbus deps (bug #187369)
+
+*evince-0.8.3 (19 Jul 2007)
+
+  19 Jul 2007; Gilles Dartiguelongue <eva@gentoo.org> -evince-0.6.0.ebuild,
+  -evince-0.6.1.ebuild, -evince-0.6.1-r1.ebuild, -evince-0.6.1-r2.ebuild,
+  -evince-0.8.0.ebuild, -evince-0.8.1.ebuild, +evince-0.8.3.ebuild:
+  cleaning up old versions
+  bump to 0.8.3
+  * fix compilation against poppler 0.5.4
+  * freebsd patch is upstream
+
+  08 Jul 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  evince-0.5.3-r1.ebuild, evince-0.6.0.ebuild, evince-0.6.1.ebuild,
+  evince-0.6.1-r1.ebuild, evince-0.6.1-r2.ebuild, evince-0.6.1-r3.ebuild,
+  evince-0.8.0.ebuild, evince-0.8.1.ebuild:
+  remove reference to old, removed dbus (bug #183696)
+
+  16 May 2007; Roy Marples <uberlord@gentoo.org> evince-0.6.1-r3.ebuild,
+  evince-0.8.1.ebuild:
+  Keyworded ~x86-fbsd, ##178471 thanks to Joe Peterson.
+
+  15 May 2007; Daniel Gryniewicz <dang@gentoo.org>
+  +files/evince-0.6.1-freebsd.patch, +files/evince-0.8.1-freebsd.patch,
+  evince-0.6.1-r3.ebuild, evince-0.8.1.ebuild:
+  Freebsd fixes; bug #178471
+
+*evince-0.8.1 (21 Apr 2007)
+
+  21 Apr 2007; Remi Cardona <remi@gentoo.org> +evince-0.8.1.ebuild:
+  bump to 0.8.1
+
+  16 Apr 2007; Daniel Gryniewicz <dang@gentoo.org> evince-0.6.1-r3.ebuild:
+  add libxml2 dep; bug #172732
+
+  29 Mar 2007; Markus Rothe <corsair@gentoo.org> evince-0.6.1-r3.ebuild:
+  Stable on ppc64; bug #156573
+
+*evince-0.8.0 (27 Mar 2007)
+
+  27 Mar 2007; Daniel Gryniewicz <dang@gentoo.org>
+  +files/evince-0.7.1-display-menu.patch, +evince-0.8.0.ebuild:
+  gnome 2.18.0
+
+  27 Mar 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  evince-0.6.1-r3.ebuild:
+  ppc stable, bug #156573
+
+  27 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  evince-0.6.1-r3.ebuild:
+  Stable on alpha/amd64/ia64 wrt bug #156573.
+
+  27 Mar 2007; Jeroen Roovers <jer@gentoo.org> evince-0.6.1-r3.ebuild:
+  Stable for HPPA (bug #156573).
+
+  27 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  evince-0.6.1-r3.ebuild:
+  Stable on sparc wrt security #156573
+
+  27 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  evince-0.6.1-r3.ebuild:
+  stable x86, security bug 156573
+
+*evince-0.6.1-r3 (26 Mar 2007)
+
+  26 Mar 2007; Daniel Gryniewicz <dang@gentoo.org>
+  +files/evince-0.6.1-gv-limit.patch, +evince-0.6.1-r3.ebuild:
+  Bump to 0.6.1-r3
+  	Add patch for bug #156573
+
+  24 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  evince-0.6.1-r2.ebuild:
+  Stable on alpha/ia64 wrt bug #171545.
+
+  24 Mar 2007; Markus Rothe <corsair@gentoo.org> evince-0.6.1-r2.ebuild:
+  Stable on ppc64; bug #171545
+
+  22 Mar 2007; Steve Dibb <beandog@gentoo.org> evince-0.6.1-r2.ebuild:
+  amd64 stable, bug 171545
+
+  21 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  evince-0.6.1-r2.ebuild:
+  stable x86, bug 171545
+
+  21 Mar 2007; Jeroen Roovers <jer@gentoo.org> evince-0.6.1-r2.ebuild:
+  Stable for HPPA (bug #171545).
+
+  20 Mar 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  evince-0.6.1-r2.ebuild:
+  Stable on ppc wrt bug #171545.
+
+  20 Mar 2007; Ferris McCormick <fmccor@gentoo.org> evince-0.6.1-r2.ebuild:
+  sparc stable --- Bug #171545 --- Has seemed fine for over a month.
+
+*evince-0.6.1-r2 (14 Feb 2007)
+
+  14 Feb 2007; Daniel Gryniewicz <dang@gentoo.org> +evince-0.6.1-r2.ebuild:
+  Make evince use gnomeprint, rather than gtkprint; gtkprint is not ready, and
+  will be re-enabled in 0.7.x. bug #162151
+
+  04 Feb 2007; Markus Rothe <corsair@gentoo.org> evince-0.6.1-r1.ebuild:
+  Stable on ppc64; bug #164978
+
+  03 Feb 2007; Andrej Kacian <ticho@gentoo.org> evince-0.6.1-r1.ebuild:
+  Stable on x86, bug #164978.
+
+  03 Feb 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  evince-0.6.1-r1.ebuild:
+  Stable on ppc wrt bug #164978.
+
+  03 Feb 2007; Olivier Crête <tester@gentoo.org> evince-0.6.1-r1.ebuild:
+  Stable on amd64 per bug #164978
+
+  01 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  evince-0.6.1-r1.ebuild:
+  Stable on sparc
+
+  21 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> evince-0.6.1.ebuild:
+  Stable on IA64, bug 156662.
+
+  18 Jan 2007; Jeroen Roovers <jer@gentoo.org> evince-0.6.1-r1.ebuild:
+  Stable for HPPA (bug #147751).
+
+  14 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> evince-0.6.1.ebuild:
+  Stable on Alpha.
+
+  21 Dec 2006; Markus Rothe <corsair@gentoo.org> evince-0.6.1.ebuild:
+  Stable on ppc64; bug #156662
+
+  18 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> evince-0.6.1.ebuild:
+  Stable on sparc
+
+*evince-0.6.1-r1 (17 Dec 2006)
+
+  17 Dec 2006; Daniel Gryniewicz <dang@gentoo.org>
+  +files/evince-0.6.1-dbus-switch.patch, +evince-0.6.1-r1.ebuild:
+  Add actual configure switch for dbus; bug #158034
+
+  17 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org> evince-0.6.1.ebuild:
+  Stable on ppc wrt bug #156662.
+
+  12 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> evince-0.6.1.ebuild:
+  Stable on amd64 wrt bug #156662.
+
+  10 Dec 2006; Andrej Kacian <ticho@gentoo.org> evince-0.6.1.ebuild:
+  Stable on x86, bug #156662.
+
+  09 Nov 2006; Doug Goldstein <cardoe@gentoo.org> evince-0.5.3-r1.ebuild,
+  evince-0.6.0.ebuild, evince-0.6.1.ebuild:
+  Update D-Bus depends to new bindings
+
+  22 Oct 2006; Daniel Gryniewicz <dang@gentoo.org>
+  -files/evince-0.4.0-display-menu.patch, -files/evince-0.4.0-no-tiff.patch,
+  -files/evince-0.4.0-t1lib_is_t1.patch, -evince-0.4.0-r3.ebuild,
+  -evince-0.5.0.ebuild, -evince-0.5.1.ebuild, -evince-0.5.4.ebuild,
+  -evince-0.5.5.ebuild:
+  Cleanup old versions
+
+  21 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> evince-0.6.0.ebuild:
+  Stable on ia64, bug 151835.
+
+  21 Oct 2006; Jeroen Roovers <jer@gentoo.org> evince-0.6.0.ebuild:
+  Stable for HPPA (bug #151835).
+
+  20 Oct 2006; Aron Griffis <agriffis@gentoo.org> evince-0.5.3-r1.ebuild:
+  Mark 0.5.3-r1 stable on alpha
+
+  19 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> evince-0.6.0.ebuild:
+  Stable on Alpha.
+
+  18 Oct 2006; Emanuele Giaquinta <exg@gentoo.org> evince-0.6.0.ebuild:
+  Stable on ppc; bug #151835
+
+  18 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> evince-0.6.0.ebuild:
+  Stable on sparc wrt #151835
+
+  18 Oct 2006; Andrej Kacian <ticho@gentoo.org> evince-0.6.0.ebuild:
+  Stable on x86, bug #151835.
+
+  18 Oct 2006; Markus Rothe <corsair@gentoo.org> evince-0.6.0.ebuild:
+  Stable on ppc64; bug #151835
+
+  18 Oct 2006; Daniel Gryniewicz <dang@gentoo.org> evince-0.6.0.ebuild:
+  Marked stable on amd64 for bug #151835
+
+  18 Oct 2006; Daniel Gryniewicz <dang@gentoo.org> +evince-0.6.1.ebuild:
+  New upstream version
+
+*evince-0.6.1 (18 Oct 2006)
+
+  18 Oct 2006; Daniel Gryniewicz <dang@gentoo.org> +evince-0.6.1.ebuild:
+  Bump to 0.6.1
+
+  06 Oct 2006; Daniel Gryniewicz <dang@gentoo.org> evince-0.4.0-r3.ebuild,
+  evince-0.5.0.ebuild, evince-0.5.1.ebuild, evince-0.5.3-r1.ebuild,
+  evince-0.5.4.ebuild, evince-0.5.5.ebuild, evince-0.6.0.ebuild:
+  only 0.4.0 needs automake, so it gets a gnome-common dep. Remove autoreconf
+  from the rest. Bug #150115
+
+  19 Sep 2006; Aron Griffis <agriffis@gentoo.org> evince-0.5.3-r1.ebuild:
+  Mark 0.5.3-r1 stable on ia64. #139612
+
+  05 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> +evince-0.6.0.ebuild:
+  Bump to 0.6.0
+
+*evince-0.6.0 (05 Sep 2006)
+
+  05 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> +evince-0.6.0.ebuild:
+  Bump to 0.6.0
+
+  16 Aug 2006; Markus Rothe <corsair@gentoo.org> evince-0.5.3-r1.ebuild:
+  Stable on ppc64
+
+*evince-0.5.5 (08 Aug 2006)
+
+  08 Aug 2006; Daniel Gryniewicz <dang@gentoo.org> +evince-0.5.5.ebuild:
+  New upstream 0.5.5
+
+  08 Aug 2006; Daniel Gryniewicz <dang@gentoo.org>
+  -files/evince-0.5.2-djvu-miniexp.patch, -evince-0.5.2.ebuild,
+  -evince-0.5.2-r1.ebuild, -evince-0.5.3.ebuild:
+  Clean up unnecessary versions
+
+  27 Jul 2006; Daniel Gryniewicz <dang@gentoo.org> evince-0.5.4.ebuild:
+  evince can now build correctly with ptex; change to use virtual/tetex. Bug
+  #120156
+
+  17 Jul 2006; Jeroen Roovers <jer@gentoo.org> evince-0.5.3-r1.ebuild:
+  Marked stable for HPPA (bug #139612).
+
+  17 Jul 2006; Daniel Gryniewicz <dang@gentoo.org> evince-0.5.3-r1.ebuild:
+  Marked stable on amd64 for bug #139612
+
+  14 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  evince-0.5.3-r1.ebuild:
+  ppc stable, bug #139612
+
+*evince-0.5.4 (14 Jul 2006)
+
+  14 Jul 2006; Daniel Gryniewicz <dang@gentoo.org> +evince-0.5.4.ebuild:
+  New upstream rev
+
+  12 Jul 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  evince-0.5.3-r1.ebuild:
+  Stable on x86 wrt bug #139612.
+
+  10 Jul 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  evince-0.5.3-r1.ebuild:
+  Stable on sparc wrt #139612
+
+*evince-0.5.3-r1 (29 Jun 2006)
+
+  29 Jun 2006; Daniel Gryniewicz <dang@gentoo.org>
+  +files/evince-0.5.3-links.patch, +evince-0.5.3-r1.ebuild:
+  Fix for bug# 134201
+
+  08 Jun 2006; Joseph Jezak <josejx@gentoo.org> evince-0.5.1.ebuild:
+  Marked ppc stable.
+
+  29 May 2006; Jason Wever <weeve@gentoo.org> evince-0.5.1.ebuild:
+  Stable on SPARC wrt bug #132349.
+
+  26 May 2006; Markus Rothe <corsair@gentoo.org> evince-0.5.1.ebuild:
+  Stable on ppc64
+
+  26 May 2006; Chris Gianelloni <wolf31o2@gentoo.org> evince-0.5.1.ebuild:
+  Stable on amd64 wrt bug #132349
+
+  25 May 2006; Chris Gianelloni <wolf31o2@gentoo.org> evince-0.5.1.ebuild:
+  Stable on x86 wrt bug #132349.
+
+*evince-0.5.3 (23 May 2006)
+
+  23 May 2006; Daniel Gryniewicz <dang@gentoo.org>
+  +files/evince-0.5.3-display-menu.patch, +evince-0.5.3.ebuild:
+  New version.  0.5.3
+
+  05 May 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  evince-0.5.2-r1.ebuild:
+  Added to ~hppa, bug #125236
+
+*evince-0.5.2-r1 (03 May 2006)
+
+  03 May 2006; Daniel Gryniewicz <dang@gentoo.org>
+  +files/evince-0.5.2-djvu-miniexp.patch, evince-0.5.2.ebuild,
+  +evince-0.5.2-r1.ebuild:
+  Fix for bug #132129. Add -r1, with a patch to work with .17, and make it dep
+  on >= .17. Make -r0 dep on .16
+
+  02 May 2006; Markus Rothe <corsair@gentoo.org> evince-0.5.2.ebuild:
+  Added ~ppc64
+
+*evince-0.5.2 (01 May 2006)
+
+  01 May 2006; Daniel Gryniewicz <dang@gentoo.org> +evince-0.5.2.ebuild:
+  Bump for 2.14.1
+
+  22 Apr 2006; Carsten Lohrke <carlo@gentoo.org> evince-0.4.0-r3.ebuild,
+  evince-0.5.0.ebuild, evince-0.5.1.ebuild:
+  Removed PROVIDE as of bug #130746.
+
+  24 Mar 2006; Aron Griffis <agriffis@gentoo.org> evince-0.5.0.ebuild:
+  Mark 0.5.0 stable on ia64
+
+  10 Mar 2006; <dang@gentoo.org> evince-0.5.1.ebuild:
+  Make it dep on poppler-bindings-0.5.1 per bug #124948
+
+*evince-0.5.1 (03 Mar 2006)
+
+  03 Mar 2006; <dang@gentoo.org> +evince-0.5.1.ebuild:
+  New evince bump.  For gnome-2.14-rc
+
+  21 Feb 2006; Aron Griffis <agriffis@gentoo.org> evince-0.5.0.ebuild:
+  Mark 0.5.0 ~alpha
+
+  18 Feb 2006; Aron Griffis <agriffis@gentoo.org> evince-0.5.0.ebuild:
+  Mark 0.5.0 ~ia64
+
+  07 Feb 2006; Aron Griffis <agriffis@gentoo.org> evince-0.4.0-r3.ebuild:
+  Mark 0.4.0-r3 stable on alpha
+
+  03 Feb 2006; Guy Martin <gmsoft@gentoo.org> evince-0.4.0-r3.ebuild:
+  Stable on hppa.
+
+  27 Jan 2006; <dang@gentoo.org> evince-0.5.0.ebuild:
+  Re-add support for djvu. Bug #101108
+
+  22 Jan 2006; <dang@gentoo.org> evince-0.4.0-r3.ebuild:
+  Marked stable on amd64 per bug #119634
+
+  22 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  evince-0.4.0-r3.ebuild:
+  Marked ppc stable for bug #119634; Stabilize Gnome-2.12.2
+
+  22 Jan 2006; Joshua Jackson <tsunam@gentoo.org> evince-0.4.0-r3.ebuild:
+  Stable on x86 for bug #119634; Stabilize Gnome-2.12.2
+
+  20 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  evince-0.4.0-r3.ebuild:
+  Stable on sparc wrt #119634
+
+*evince-0.5.0 (20 Jan 2006)
+
+  20 Jan 2006; <dang@gentoo.org> -evince-0.4.0-r1.ebuild,
+  -evince-0.4.0-r2.ebuild, +evince-0.5.0.ebuild:
+  New version of evince.  Adds comicbook support, among other thigns
+
+  19 Jan 2006; <dang@gentoo.org> evince-0.4.0-r3.ebuild:
+  Evince deps on ghostscript to process postscript files. Bug #119103
+
+*evince-0.4.0-r3 (03 Jan 2006)
+
+  03 Jan 2006; <dang@gentoo.org> +evince-0.4.0-r3.ebuild:
+  Bump evince to dep on poppler-bindings
+
+  26 Dec 2005; Bryan Østergaard <kloeri@gentoo.org evince-0.4.0-r2.ebuild:
+  ~alpha keyword.
+
+  14 Dec 2005; <dang@gentoo.org> evince-0.4.0-r2.ebuild:
+  Don't need explicit X deps, only uses what gtk+ requires
+
+  04 Nov 2005; <dang@gentoo.org> evince-0.4.0-r2.ebuild:
+  Modular X deps
+
+  21 Oct 2005; Leonardo Boshell <leonardop@gentoo.org> metadata.xml,
+  evince-0.4.0-r2.ebuild:
+  Pass --copy to libtoolize call. Pass --disable-scrollkeeper instead of using
+  gnome2_omf_fix. Move gnome-doc-utils from RDEPEND to DEPEND. Added gconf and
+  libglade dependencies. Set G2CONF in pkg_setup() instead of the global
+  scope. Misc clean-ups. Added gnome herd to metadata.xml.
+
+  17 Oct 2005; <dang@gentoo.org> +files/evince-0.4.0-no-tiff.patch,
+  evince-0.4.0-r2.ebuild:
+  Make tiff actually optional
+
+  17 Oct 2005; John N. Laliberte <allanonjl@gentoo.org>
+  evince-0.4.0-r2.ebuild:
+  fix message when poppler needs gtk. fixes #109571
+
+  14 Oct 2005; <dang@gentoo.org> evince-0.4.0-r2.ebuild:
+  Needs poppler built with gtk. bug #109029
+
+  20 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  evince-0.4.0-r2.ebuild:
+  Keyworded ~sparc
+
+  14 Sep 2005; <dang@gentoo.org> -files/evince-0.3.1-64bit.patch,
+  -files/evince-0.3.1-t1lib_is_t1.patch,
+  -files/evince-0.3.2-t1lib_is_t1.patch, -evince-0.3.1.ebuild,
+  -evince-0.3.2.ebuild:
+  Remove old evince versions
+
+*evince-0.4.0-r2 (13 Sep 2005)
+
+  13 Sep 2005; <dang@gentoo.org> +evince-0.4.0-r2.ebuild:
+  Add 'nautilus' use flag that enables the nautilus properties page for
+  filetypes supported by evince
+
+*evince-0.4.0-r1 (13 Sep 2005)
+
+  13 Sep 2005; <dang@gentoo.org> +files/evince-0.4.0-display-menu.patch,
+  +evince-0.4.0-r1.ebuild:
+  Make the menu entry for evince not hidden.  Bug #104917
+
+*evince-0.4.0 (30 Aug 2005)
+
+  30 Aug 2005; <dang@gentoo.org> +files/evince-0.4.0-t1lib_is_t1.patch,
+  +evince-0.4.0.ebuild:
+  Add evince 0.4.0. Two things are missing from this ebuild: the nautilus
+  plugin (was cauing -fPIC errors), and djvu support (still waiting on a
+  revbump for that). Will revbump when those are fixed.
+
+  04 Aug 2005; <dang@gentoo.org> evince-0.3.2.ebuild:
+  Remove djvu support until new version of djvu is released. bug #101108
+
+*evince-0.3.2 (27 Jun 2005)
+
+  27 Jun 2005; <dang@gentoo.org> +files/evince-0.3.2-t1lib_is_t1.patch,
+  +evince-0.3.2.ebuild:
+  revbump to 0.3.2
+
+  22 Jun 2005; <dang@gentoo.org> evince-0.3.1.ebuild:
+  Updated libgnomeui and libgnomeprintui deps
+
+  18 Jun 2005; <dang@gentoo.org> +files/evince-0.3.1-64bit.patch,
+  evince-0.3.1.ebuild:
+  Clean up dependency list, add patch to make dvi work on amd64, add ~amd64
+
+  18 Jun 2005; David Holm <dholm@gentoo.org> evince-0.3.1.ebuild:
+  Added to ~ppc.
+
+  17 Jun 2005; <dang@gentoo.org> evince-0.3.1.ebuild:
+  minimum poppeler is 0.3.2
+
+*evince-0.3.1 (17 Jun 2005)
+
+  17 Jun 2005; <dang@gentoo.org> +files/evince-0.3.1-t1lib_is_t1.patch,
+  +evince-0.3.1.ebuild:
+  Initial version of evince in portage.  Thanks to numerous people in 
+  bug #78956 for the initial ebuild and comments.

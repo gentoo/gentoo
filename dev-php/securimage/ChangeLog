@@ -1,0 +1,17 @@
+# ChangeLog for dev-php/securimage
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/securimage/ChangeLog,v 1.3 2012/04/27 03:35:28 binki Exp $
+
+  27 Apr 2012; Nathan Phillip Brink <binki@gentoo.org> securimage-3.0.1.ebuild:
+  Add ~x86 keyword.
+
+  27 Apr 2012; Nathan Phillip Brink <binki@gentoo.org> securimage-3.0.1.ebuild:
+  Add missing runtime dependencies on PHP's gd and truetype (freetype)
+  features.
+
+*securimage-3.0.1 (26 Jan 2012)
+
+  26 Jan 2012; Nathan Phillip Brink <binki@gentoo.org>
+  +securimage-3.0.1.ebuild, +metadata.xml:
+  Add new ebuild securimage-3.0.1, a PHP Captcha generator library.
+

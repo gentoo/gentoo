@@ -1,0 +1,66 @@
+# ChangeLog for dev-java/jmi-interface
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jmi-interface/ChangeLog,v 1.12 2007/10/24 05:20:35 wltjr Exp $
+
+  24 Oct 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -jmi-interface-1.0-r1.ebuild, -jmi-interface-1.0-r2.ebuild:
+  Removed java gen 1 ebuilds.
+
+  19 Aug 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  jmi-interface-1.0-r3.ebuild:
+  amd64 stable, bug #187681.
+
+  15 Aug 2007; Christian Faulhammer <opfer@gentoo.org>
+  jmi-interface-1.0-r3.ebuild:
+  stable x86, bug 187681
+
+*jmi-interface-1.0-r3 (16 Jan 2007)
+
+  16 Jan 2007; Vlastimil Babka <caster@gentoo.org>
+  +jmi-interface-1.0-r3.ebuild:
+  Revbump to fix bug #162328 by Mikhail V. Vorozhtsov
+  <mikhail.vorozhtsov@gmail.com> - mof-1.0.xml is installed also as mof.xml
+  for compatibility with netbeans 5.5.
+
+  09 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  jmi-interface-1.0-r2.ebuild:
+  Add ~x86-fbsd keyword.
+
+*jmi-interface-1.0-r2 (08 Dec 2006)
+
+  08 Dec 2006; Vlastimil Babka <caster@gentoo.org>
+  +files/jmi-interface-1.0-enum.patch, +jmi-interface-1.0-r2.ebuild:
+  Migrated to gen-2 eclasses, bug #157482.
+
+  22 Sep 2005; Petteri Räty <betelgeuse@gentoo.org>
+  jmi-interface-1.0-r1.ebuild:
+  Added missing ant-core to dependencies. Fixes bug #106929.
+
+  15 Aug 2005; Petteri Räty <betelgeuse@gentoo.org>
+  jmi-interface-1.0-r1.ebuild:
+  Marked stable on x86 in preparation for Netbeans 4.0
+
+  12 Aug 2005; Petteri Räty <betelgeuse@gentoo.org>
+  files/jmi-interface-1.0-build.xml, -jmi-interface-1.0.ebuild,
+  jmi-interface-1.0-r1.ebuild:
+  Removed the older version because it does not work with Netbeans.
+  Fixed emerging with a 1.5 jdk.
+
+*jmi-interface-1.0-r1 (19 Jul 2005)
+
+  19 Jul 2005; Thomas Matthijs <axxo@gentoo.org>
+  +jmi-interface-1.0-r1.ebuild:
+  new rev with an extra file needed for netbeans
+
+  27 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  jmi-interface-1.0.ebuild:
+  build the jar again when use=doc, fixes #94189
+
+*jmi-interface-1.0 (03 May 2005)
+
+  03 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +files/jmi-interface-1.0-build.xml, +metadata.xml,
+  +jmi-interface-1.0.ebuild:
+  Inital import, ebuild submitted by Petteri Räty <petteri.raty@welho.com> in
+  bug #90978.
+

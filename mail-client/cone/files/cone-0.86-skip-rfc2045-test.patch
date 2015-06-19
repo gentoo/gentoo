@@ -1,0 +1,11 @@
+--- cone-0.86/rfc2045/Makefile.am.orig
++++ cone-0.86/rfc2045/Makefile.am
+@@ -77,6 +77,6 @@
+ endif
+ 
+ check-am:
+-	@SHELL@ $(srcdir)/testsuite | cmp -s - $(srcdir)/$(TESTSUITE)
+-	@SHELL@ $(srcdir)/testsuitemm | cmp -s - $(srcdir)/testsuitemm.txt
++#	@SHELL@ $(srcdir)/testsuite | cmp -s - $(srcdir)/$(TESTSUITE)
++#	@SHELL@ $(srcdir)/testsuitemm | cmp -s - $(srcdir)/testsuitemm.txt
+ 	@SHELL@ $(srcdir)/testrfc3676parsersuite | diff -U 3 $(srcdir)/testrfc3676parsersuite.txt -

@@ -1,0 +1,44 @@
+From: Julian Ospald <hasufell@gentoo.org>
+--- Build/CMakeLists.txt
++++ Build/CMakeLists.txt
+@@ -11,6 +11,9 @@
+ 
+ project(libRocket C CXX)
+ 
++# paths
++include(GNUInstallDirs)
++
+ set(LIBROCKET_VERSION_MAJOR 1)
+ set(LIBROCKET_VERSION_MINOR 2)
+ set(LIBROCKET_VERSION_PATCH 1)
+@@ -131,8 +134,8 @@
+     endif()
+ 
+     install(TARGETS ${NAME}
+-            LIBRARY DESTINATION lib
+-            ARCHIVE DESTINATION lib
++            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     )
+ endforeach(library)
+ 
+@@ -237,7 +240,7 @@
+         endif()
+     endif()
+    
+-    set(SAMPLES_DIR opt/Rocket/Samples)
++    set(SAMPLES_DIR opt/Rocket/Samples CACHE PATH "path to samples dir")
+ 
+     # The samples use the shell library
+     include_directories(${PROJECT_SOURCE_DIR}/Samples/shell/include)
+@@ -256,8 +259,8 @@
+     target_link_libraries(${sample_LIBRARIES})
+ 
+     install(TARGETS shell
+-            LIBRARY DESTINATION lib
+-            ARCHIVE DESTINATION lib
++            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     )
+ 
+     list(APPEND samples treeview customlog drag loaddocument)

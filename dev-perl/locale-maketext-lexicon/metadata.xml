@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">Locale-Maketext-Lexicon</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Extract</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Extract::Plugin::Base</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Extract::Plugin::FormFu</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Extract::Plugin::FormFu::Extractor</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Extract::Plugin::Generic</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Extract::Plugin::Mason</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Extract::Plugin::Perl</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Extract::Plugin::TT2</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Extract::Plugin::TT2::Directive</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Extract::Plugin::TT2::Parser</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Extract::Plugin::TextTemplate</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Extract::Plugin::TextTemplate::Parser</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Extract::Plugin::YAML</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Extract::Plugin::YAML::Extractor</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Extract::Run</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Lexicon</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Lexicon::Auto</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Lexicon::Extract::Run</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Lexicon::Gettext</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Lexicon::Msgcat</remote-id>
+    <remote-id type="cpan-module">Locale::Maketext::Lexicon::Tie</remote-id>
+  </upstream>
+</pkgmetadata>

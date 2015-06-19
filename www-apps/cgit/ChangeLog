@@ -1,0 +1,156 @@
+# ChangeLog for www-apps/cgit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/cgit/ChangeLog,v 1.32 2015/03/13 15:28:54 zx2c4 Exp $
+
+*cgit-0.11.2 (13 Mar 2015)
+
+  13 Mar 2015; Jason A. Donenfeld <zx2c4@gentoo.org> +cgit-0.11.2.ebuild:
+  Bump version
+
+*cgit-0.11.1-r1 (05 Mar 2015)
+
+  05 Mar 2015; Manuel Rüger <mrueg@gentoo.org> +cgit-0.11.1-r1.ebuild,
+  -cgit-0.11.1.ebuild:
+  Use correct bundled git version.
+
+*cgit-0.11.1 (05 Mar 2015)
+
+  05 Mar 2015; Robin H. Johnson <robbat2@gentoo.org> +cgit-0.11.1.ebuild:
+  Bump for infra use.
+
+*cgit-0.10.2 (20 Jan 2015)
+
+  20 Jan 2015; Manuel Rüger <mrueg@gentoo.org> +cgit-0.10.2.ebuild:
+  Version bump. Fixes bug #517376.
+
+  18 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> cgit-0.10.1.ebuild:
+  x86 stable wrt bug #503004
+
+  18 Jul 2014; Chema Alonso <nimiux@gentoo.org> cgit-0.10.1.ebuild:
+  Stable for amd64 wrt bug #503004
+
+  04 Jul 2014; Julian Ospald <hasufell@gentoo.org> cgit-0.10.1.ebuild,
+  cgit-9999.ebuild:
+  fix verbose build log, respect AR, CC, CFLAGS and LDFLAGS
+
+  21 May 2014; Sergey Popov <pinkbyte@gentoo.org> cgit-0.10.1.ebuild,
+  cgit-9999.ebuild:
+  QA: add slot to openssl dependency, wrt bug #508174. Thanks to Julian Ospald
+  for discovering this issue
+
+  08 May 2014; Jason A. Donenfeld <zx2c4@gentoo.org> -cgit-0.10.ebuild:
+  Remove old version.
+
+*cgit-0.10.1 (27 Feb 2014)
+
+  27 Feb 2014; Jason A. Donenfeld <zx2c4@gentoo.org> +cgit-0.10.1.ebuild:
+  Version bump.
+
+  05 Feb 2014; Jason A. Donenfeld <zx2c4@gentoo.org> -cgit-0.9.2.ebuild,
+  cgit-0.10.ebuild:
+  Remove old version and stabilize latest.
+
+  22 Jan 2014; Jason A. Donenfeld <zx2c4@gentoo.org> cgit-9999.ebuild:
+  Update new build options for latest git head.
+
+  21 Jan 2014; Jason A. Donenfeld <zx2c4@gentoo.org> cgit-9999.ebuild:
+  Remove variable to avoid maintainer confusion.
+
+*cgit-0.10 (21 Jan 2014)
+
+  21 Jan 2014; Jason A. Donenfeld <zx2c4@gentoo.org> +cgit-0.10.ebuild,
+  cgit-9999.ebuild, metadata.xml:
+  Version bump.
+
+  13 Oct 2013; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Updated Nikoli's e-mail address for easier automatic assignment.
+
+  16 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #66351
+
+  30 May 2013; Jason A. Donenfeld <zx2c4@gentoo.org> cgit-0.9.2.ebuild:
+  Dont forget to bump the git version too.
+
+*cgit-0.9.2 (27 May 2013)
+
+  27 May 2013; Jason A. Donenfeld <zx2c4@gentoo.org> +cgit-0.9.2.ebuild,
+  -cgit-0.9.1.ebuild:
+  Version bump, and remove old version with security vulnerability.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #96436
+
+*cgit-0.9.1 (15 Nov 2012)
+
+  15 Nov 2012; Jason A. Donenfeld <zx2c4@gentoo.org> +cgit-0.9.1.ebuild,
+  -cgit-0.8.3.5.ebuild, -cgit-0.9.0.2-r1.ebuild,
+  -files/cgit-0.9.0.2-fix-xss.patch, cgit-9999.ebuild, files/cgitrc:
+  Version bump, with security fixes. Remove old insecure versions.
+
+  01 Jun 2012; Zac Medico <zmedico@gentoo.org> cgit-0.8.3.5.ebuild,
+  cgit-0.9.0.2-r1.ebuild, cgit-9999.ebuild:
+  inherit user for enewuser
+
+  16 Sep 2011; Peter Volkov <pva@gentoo.org> -cgit-0.9.ebuild,
+  cgit-0.9.0.2-r1.ebuild, +cgit-9999.ebuild:
+  Revert mistakenly deleted 9999 ebuild, fix webconfig postinstall (bug 382979
+  by Alon Bar-Lev), drop old. Thank Nikoli for this job.
+
+*cgit-0.9.0.2-r1 (11 Sep 2011)
+
+  11 Sep 2011; Peter Volkov <pva@gentoo.org> -cgit-0.9.0.1.ebuild,
+  -cgit-0.9.0.2.ebuild, +cgit-0.9.0.2-r1.ebuild,
+  +files/cgit-0.9.0.2-fix-xss.patch, -cgit-9999.ebuild:
+  Fix XSS vulnerability in rename hint, bug #378803, thank Nikoli for this job.
+  Drop old.
+
+*cgit-0.9.0.2 (03 Aug 2011)
+
+  03 Aug 2011; Peter Volkov <pva@gentoo.org> +cgit-0.9.0.2.ebuild:
+  Version bump, bug #376457 thank ScytheMan for report and Nikoli for this job.
+
+*cgit-0.9.0.1 (27 Jun 2011)
+
+  27 Jun 2011; Peter Volkov <pva@gentoo.org> +cgit-0.9.0.1.ebuild,
+  cgit-9999.ebuild, files/postinstall-en.txt:
+  Version bump, bump EAPI, add instructions for apache2 installation bug 370681
+  wrt to Oliver Schinagl. Thank Nikoli for all this job.
+
+  27 Jun 2011; Peter Volkov <pva@gentoo.org> -cgit-0.8.3.1-r1.ebuild:
+  Drop old and vulnerable version.
+
+*cgit-9999 (29 Apr 2011)
+*cgit-0.9 (29 Apr 2011)
+*cgit-0.8.3.5 (29 Apr 2011)
+
+  29 Apr 2011; Peter Volkov <pva@gentoo.org> +cgit-0.8.3.5.ebuild,
+  +cgit-0.9.ebuild, +cgit-9999.ebuild, files/cgitrc, metadata.xml:
+  Version bump, bug #325411. Fixes security bug #357819, thank Paweł Hajdan,
+  Jr. for report. Fixes cgi support bug 310961 wrt parafin. Thank Nikoli for
+  this job.
+
+  16 Jun 2010; Lance Albertson <ramereth@gentoo.org> -cgit-0.8.3.1.ebuild,
+  cgit-0.8.3.1-r1.ebuild:
+  Require newer app-text/asciidoc if doc is enabled (resolves #321117), ebuild
+  cleanup
+
+  17 Mar 2010; Sebastian Pipping <sping@gentoo.org> cgit-0.8.3.1.ebuild,
+  cgit-0.8.3.1-r1.ebuild:
+  Propagate move of dev-util/git to dev-vcs/git
+
+*cgit-0.8.3.1-r1 (09 Mar 2010)
+
+  09 Mar 2010; Lance Albertson <ramereth@gentoo.org>
+  +cgit-0.8.3.1-r1.ebuild:
+  Add doc useflag to make install the manpage optional
+
+*cgit-0.8.3.1 (20 Feb 2010)
+
+  20 Feb 2010; Lance Albertson <ramereth@gentoo.org> +cgit-0.8.3.1.ebuild,
+  +files/cgitrc, +files/postinstall-en.txt, +metadata.xml:
+  Initial ebuild
+
+  Thanks to everyone who helped in #223339 for contributing to the ebuild.

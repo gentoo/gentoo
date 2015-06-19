@@ -1,0 +1,26 @@
+# ChangeLog for sci-libs/coinor-csdp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/coinor-csdp/ChangeLog,v 1.3 2014/02/04 09:31:09 jlec Exp $
+
+*coinor-csdp-6.1.1-r1 (04 Feb 2014)
+
+  04 Feb 2014; Justin Lecher <jlec@gentoo.org> +coinor-csdp-6.1.1-r1.ebuild,
+  -coinor-csdp-6.1.1.ebuild:
+  Fix underlinking and respect CC
+
+  15 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  coinor-csdp-6.1.1.ebuild:
+  Import from science overlay
+
+  15 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  coinor-csdp-6.1.1.ebuild:
+  Respect LDFLAGS, proper atlas detection
+
+  29 Jan 2013; Sébastien Fabbro <bicatali@gentoo.org> coinor-csdp-6.1.1.ebuild:
+  sci-libs/coinor-csdp: use generic pkg-config
+
+*coinor-csdp-6.1.1 (20 Jul 2012)
+
+  20 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org> +coinor-csdp-6.1.1.ebuild,
+  +metadata.xml:
+  sci-libs/coinor-csdp: Initial import

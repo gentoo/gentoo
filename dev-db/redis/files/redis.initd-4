@@ -1,0 +1,33 @@
+#!/sbin/runscript
+# $Header: /var/cvsroot/gentoo-x86/dev-db/redis/files/redis.initd-4,v 1.4 2015/03/12 12:07:36 mschiff Exp $
+
+REDIS_DIR=${REDIS_DIR:-/var/lib/redis}
+REDIS_CONF=${REDIS_CONF:-/etc/redis.conf}
+REDIS_OPTS=${REDIS_OPTS:-"${REDIS_CONF}"}
+REDIS_USER=${REDIS_USER:-redis}
+REDIS_GROUP=${REDIS_GROUP:-redis}
+REDIS_TIMEOUT=${REDIS_TIMEOUT:-30}
+
+command=/usr/sbin/redis-server
+pidfile=${REDIS_PID:-/run/redis/redis.pid}
+start_stop_daemon_args="--background --make-pidfile --pidfile ${pidfile}
+	--chdir \"${REDIS_DIR}\" --user ${REDIS_USER} --group ${REDIS_GROUP}"
+command_args="${REDIS_OPTS}"
+
+depend() {
+	use net localmount logger
+	after keepalived
+}
+
+start_pre() {
+	checkpath -d -m 0775 -o ${REDIS_USER}:${REDIS_GROUP} $(dirname ${REDIS_PID})
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop \
+		--exec ${command} \
+		--retry ${REDIS_TIMEOUT} \
+		--pidfile ${pidfile}
+	eend
+}

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=sys-fs/mtools dev-perl/Crypt-PasswdMD5 dev-perl/Digest-SHA1 dev-lang/nasm >=sys-boot/gnu-efi-3.0u virtual/os-headers
+DESCRIPTION=SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
+EAPI=5
+HOMEPAGE=http://www.syslinux.org/
+IUSE=custom-cflags
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-fs/mtools dev-perl/Crypt-PasswdMD5 dev-perl/Digest-SHA1
+SLOT=0
+SRC_URI=mirror://kernel/linux/utils/boot/syslinux/6.xx/syslinux-6.03.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=70dfc0334f70de06bd310305a41fd157

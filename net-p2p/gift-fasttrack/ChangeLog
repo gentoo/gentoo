@@ -1,0 +1,163 @@
+# ChangeLog for net-p2p/gift-fasttrack
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/gift-fasttrack/ChangeLog,v 1.42 2012/10/22 10:15:26 radhermit Exp $
+
+  22 Oct 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  gift-fasttrack-0.8.9-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 May 2008; Raúl Porcel <armin76@gentoo.org>
+  gift-fasttrack-0.8.9-r1.ebuild:
+  Fix SRC_URI, bug #218657
+
+  12 Jul 2007; Petteri Räty <betelgeuse@gentoo.org> metadata.xml,
+  gift-fasttrack-0.8.9-r1.ebuild:
+  Add net-p2p/gift to DEPEND for bug #184927, remove redundant src_compile and
+  use spaces for indentation in metadata.xml.
+
+  15 May 2007; Raúl Porcel <armin76@gentoo.org>
+  -gift-fasttrack-0.8.9.ebuild, gift-fasttrack-0.8.9-r1.ebuild:
+  alpha stable wrt #169166 and drop old
+
+  20 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gift-fasttrack-0.8.9-r1.ebuild:
+  Stable on sparc wrt #169166
+
+  20 Apr 2007; Raúl Porcel <armin76@gentoo.org>
+  gift-fasttrack-0.8.9-r1.ebuild:
+  ia64 stable
+
+  08 Apr 2007; Peter Weller <welp@gentoo.org>
+  gift-fasttrack-0.8.9-r1.ebuild:
+  Stable on amd64 wrt bug 169166
+
+  25 Mar 2007; Raúl Porcel <armin76@gentoo.org>
+  gift-fasttrack-0.8.9-r1.ebuild:
+  Add ~ia64 wrt bug 132197
+
+  03 Mar 2007; Raúl Porcel <armin76@gentoo.org>
+  gift-fasttrack-0.8.9-r1.ebuild:
+  x86 stable wrt bug 169166
+
+  21 Jan 2007; Raúl Porcel <armin76@gentoo.org>
+  -gift-fasttrack-0.8.8.ebuild:
+  Drop old
+
+  11 Sep 2006; Thomas Cort <tcort@gentoo.org> gift-fasttrack-0.8.9.ebuild:
+  Stable on alpha.
+
+  10 Sep 2006; Javier Villavicencio <the_paya@gentoo.org>
+  gift-fasttrack-0.8.9-r1.ebuild:
+  Added ~x86-fbsd keyword.
+
+*gift-fasttrack-0.8.9-r1 (20 Jun 2006)
+
+  20 Jun 2006; Jon Hood <squinky86@gentoo.org>
+  +gift-fasttrack-0.8.9-r1.ebuild:
+  Bump to fix install data path, #134043.
+
+  10 May 2006; Jon Hood <squinky86@gentoo.org> gift-fasttrack-0.8.9.ebuild:
+  Multilib-strict updates; thanks metalgod.
+
+  05 May 2006; <tcort@gentoo.org> gift-fasttrack-0.8.9.ebuild:
+  Added ~alpha keyword wrt Bug #132197.
+
+  04 May 2006; Jason Wever <weeve@gentoo.org> gift-fasttrack-0.8.9.ebuild:
+  Stable on SPARC wrt bug #126631.
+
+  29 Apr 2006; Mark Loeser <halcy0n@gentoo.org> gift-fasttrack-0.8.9.ebuild:
+  Stable on x86; bug #126631
+
+  26 Apr 2006; Jon Hood <squinky86@gentoo.org> gift-fasttrack-0.8.9.ebuild:
+  Mark stable on amd64, #126631.
+
+*gift-fasttrack-0.8.9 (27 Apr 2005)
+
+  27 Apr 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  -gift-fasttrack-0.8.7.ebuild, +gift-fasttrack-0.8.9.ebuild:
+  Version bump, bug #88656
+
+  02 Feb 2005; Jon Hood <squinky86@gentoo.org> gift-fasttrack-0.8.8.ebuild:
+  Fix postinstall information.
+
+*gift-fasttrack-0.8.8 (10 Dec 2004)
+
+  10 Dec 2004; Jon Hood <squinky86@gentoo.org> +gift-fasttrack-0.8.8.ebuild:
+  Version bump.
+
+  18 Jul 2004; Jon Hood <squinky86@gentoo.org> gift-fasttrack-0.8.7.ebuild:
+  fix gift.conf -> giftd.conf typo; thanks Bill Skellenger
+  <william@skellenger.net>, #57425
+
+  06 Jul 2004; Jon Hood <squinky86@gentoo.org> gift-fasttrack-0.8.7.ebuild:
+  fix R/DEPEND irt #34161, thanks Tom Forsythe <gentoobugs@animelover.com>
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> gift-fasttrack-0.8.7.ebuild:
+  virtual/glibc needs changed to virtual/libc
+
+  23 Jun 2004; Jason Wever <weeve@gentoo.org> gift-fasttrack-0.8.7.ebuild:
+  Stable on sparc wrt bug #54452.
+
+  19 Jun 2004; Jon Hood <squinky86@gentoo.org> -gift-fasttrack-0.8.5.ebuild,
+  -gift-fasttrack-0.8.6.ebuild:
+  removing vulnerable versions
+
+  19 Jun 2004; Danny van Dyk <kugelfang@gentoo.org>
+  gift-fasttrack-0.8.7.ebuild:
+  Marked stable on amd64.
+
+*gift-fasttrack-0.8.7 (19 Jun 2004)
+
+  19 Jun 2004; Jon Hood <squinky86@gentoo.org> +gift-fasttrack-0.8.7.ebuild:
+  version bump for null pointer vulnerability, #54452
+  thanks to Alan Fitton <alan@ajfuk.net> for finding and helping fix this
+
+*gift-fasttrack-0.8.6 (27 Apr 2004)
+
+  27 Apr 2004; Jon Hood <squinky86@gentoo.org> gift-fasttrack-0.8.6.ebuild,
+  gift-fasttrack-0.8.5.ebuild, files/digest-gift-fasttrack-0.8.6:
+  version bump (#48781), mark 0.8.5 stable on x86, cleanup old versions
+  remove DEPEND="!net-p2p/gift-fasttrack-cvs" as it does not exist
+
+  25 Apr 2004; Jon Hood <squinky86@gentoo.org>
+  gift-fasttrack-0.8.4.ebuild, gift-fasttrack-0.8.5.ebuild:
+  fix typo on econf line
+  added "die"
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  gift-fasttrack-0.8.4.ebuild, gift-fasttrack-0.8.5.ebuild:
+  Added IUSE.
+
+*gift-fasttrack-0.8.5 (01 Feb 2004)
+
+  01 Feb 2004; Martin Holzer <mholzer@gentoo.org> gift-fasttrack-0.8.4.ebuild,
+  gift-fasttrack-0.8.5.ebuild:
+  Version bumped. Closes 38331
+
+*gift-fasttrack-0.8.4 (27 Sep 2003)
+
+  27 Sep 2003; Markus Nigbur <pyrania@gentoo.org> gift-fasttrack-0.8.4.ebuild:
+  Bump, thanks to ufk (bug #29733)
+
+*gift-fasttrack-0.8.3 (16 Aug 2003)
+
+  16 Aug 2003; Brandon Low <lostlogic@gentoo.org> gift-fasttrack-0.8.3.ebuild:
+  Bump
+
+*gift-fasttrack-0.8.2 (24 Jul 2003)
+
+  24 Jul 2003; Brandon Low <lostlogic@gentoo.org> gift-fasttrack-0.8.2.ebuild:
+  Bump, thanks to carlos@gentoo.org
+
+*gift-fasttrack-0.8.1 (14 Jul 2003)
+
+  02 Jul 2003; Brandon Low <lostlogic@gentoo.org>
+  gift-fasttrack-0.8.1.ebiuld:
+  First version non-cvs
+
+  16 Jul 2003; Michael Nazaroff<naz@gentoo.org> gift-fasttrack-0.8.1.ebiuld:
+  Fixed DEPEND line in ebuild.
+

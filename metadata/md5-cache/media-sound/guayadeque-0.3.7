@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=dev-db/sqlite:3 dev-db/wxsqlite3 dev-libs/glib:2 media-libs/flac media-libs/gstreamer:0.10[introspection] >=media-libs/taglib-1.6.4 net-misc/curl sys-apps/dbus x11-libs/wxGTK:2.8[X] ayatana? ( >=dev-libs/libindicate-0.7 ) ipod? ( media-libs/libgpod ) !minimal? ( dev-perl/GStreamer media-libs/gnonlin:0.10 media-plugins/gst-plugins-alsa:0.10 media-plugins/gst-plugins-ffmpeg:0.10 media-plugins/gst-plugins-gio:0.10 media-plugins/gst-plugins-gnomevfs:0.10 media-plugins/gst-plugins-libnice:0.10 media-plugins/gst-plugins-pulse:0.10 media-plugins/gst-plugins-soup:0.10 media-plugins/gst-plugins-x:0.10 media-libs/gst-plugins-bad:0.10 media-libs/gst-plugins-base:0.10 media-libs/gst-plugins-good:0.10 media-libs/gst-plugins-ugly:0.10 ) app-arch/unzip sys-devel/gettext virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Music management program designed for all music enthusiasts
+EAPI=5
+HOMEPAGE=http://guayadeque.org/
+IUSE=ayatana ipod +minimal linguas_es linguas_uk linguas_it linguas_de linguas_fr linguas_is linguas_nb linguas_th linguas_cs linguas_ru linguas_hu linguas_sv linguas_nl linguas_pt_BR linguas_pt linguas_el linguas_sk linguas_pl linguas_tr linguas_ja linguas_sr linguas_bg linguas_ca_ES linguas_hr
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-db/sqlite:3 dev-db/wxsqlite3 dev-libs/glib:2 media-libs/flac media-libs/gstreamer:0.10[introspection] >=media-libs/taglib-1.6.4 net-misc/curl sys-apps/dbus x11-libs/wxGTK:2.8[X] ayatana? ( >=dev-libs/libindicate-0.7 ) ipod? ( media-libs/libgpod ) !minimal? ( dev-perl/GStreamer media-libs/gnonlin:0.10 media-plugins/gst-plugins-alsa:0.10 media-plugins/gst-plugins-ffmpeg:0.10 media-plugins/gst-plugins-gio:0.10 media-plugins/gst-plugins-gnomevfs:0.10 media-plugins/gst-plugins-libnice:0.10 media-plugins/gst-plugins-pulse:0.10 media-plugins/gst-plugins-soup:0.10 media-plugins/gst-plugins-x:0.10 media-libs/gst-plugins-bad:0.10 media-libs/gst-plugins-base:0.10 media-libs/gst-plugins-good:0.10 media-libs/gst-plugins-ugly:0.10 )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/guayadeque/guayadeque-0.3.7.tar.bz2
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	wxwidgets	6d6eec2685256d35511e7b6d5461bec9
+_md5_=ae9c44ae2a14e2e177fcfde027f24cd2

@@ -1,0 +1,21 @@
+# ChangeLog for dev-python/atom
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/atom/ChangeLog,v 1.5 2015/06/06 19:58:42 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> atom-0.3.10.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> atom-0.3.10.ebuild:
+  amd64 stable, bug 540290
+
+*atom-0.3.10 (16 Nov 2014)
+
+  16 Nov 2014; Ian Delaney <idella4@gentoo.org> +atom-0.3.10.ebuild,
+  +metadata.xml:
+  new dep to ets' package enaml, ebuild written by me

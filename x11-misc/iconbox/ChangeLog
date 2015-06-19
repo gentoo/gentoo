@@ -1,0 +1,35 @@
+# ChangeLog for x11-misc/iconbox
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/iconbox/ChangeLog,v 1.9 2012/12/15 06:53:09 radhermit Exp $
+
+  15 Dec 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  17 May 2012; Samuli Suominen <ssuominen@gentoo.org> iconbox-0.2.ebuild:
+  Set HOMEPAGE to http://packages.gentoo.org/ because upstream is dead wrt
+  #416285
+
+  02 Mar 2011; Kevin McCarthy <signals@gentoo.org> iconbox-0.2.ebuild:
+  Slotted gtk+ depends and EAPI=2 bump to support it.
+
+  10 Apr 2006; <smithj@gentoo.org> iconbox-0.2.ebuild:
+  x86 stable
+
+  21 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> iconbox-0.2.ebuild:
+  Fixed DEPEND for modular X.
+
+  10 Jul 2005; Jonathan Smith <smithj@gentoo.org> iconbox-0.2.ebuild:
+  #98575: added dev-perl/gtk2-perl as a dep... no idea how i missed it the
+  first time
+
+  09 Jul 2005; Jonathan Smith <smithj@gentoo.org> iconbox-0.2.ebuild:
+  added ~amd64
+
+  15 Jun 2005; David Holm <dholm@gentoo.org> iconbox-0.2.ebuild:
+  Added to ~ppc.
+
+*iconbox-0.2 (14 Jun 2005)
+
+  14 Jun 2005; Jonathan Smith <smithj@gentoo.org> +iconbox-0.2.ebuild:
+  initial commit for #93796
+

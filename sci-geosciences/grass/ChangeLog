@@ -1,0 +1,612 @@
+# ChangeLog for sci-geosciences/grass
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/grass/ChangeLog,v 1.127 2015/03/20 15:24:07 jlec Exp $
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> grass-6.4.2.ebuild:
+  Fix tcl/tk slotting
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org> grass-6.4.2.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org> grass-6.4.2.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+  06 Jan 2014; Justin Lecher <jlec@gentoo.org> grass-6.4.2.ebuild:
+  Punt base.eclass
+
+  06 Jan 2014; Justin Lecher <jlec@gentoo.org> -grass-6.4.1-r1.ebuild,
+  grass-6.4.2.ebuild, metadata.xml:
+  Drop old; punt base.eclass
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> grass-6.4.2.ebuild:
+  Stable for ppc, wrt bug #464568
+
+  02 Jul 2013; Agostino Sarubbo <ago@gentoo.org> grass-6.4.2.ebuild:
+  Stable for x86, wrt bug #464568
+
+  02 Jul 2013; Agostino Sarubbo <ago@gentoo.org> grass-6.4.2.ebuild:
+  Stable for amd64, wrt bug #464568
+
+  18 Jan 2013; Luca Barbato <lu_zero@gentoo.org> grass-6.4.2.ebuild,
+  +files/grass-6.4.2-configure.patch, files/grass-6.4.2-ffmpeg-1.patch,
+  +files/grass-6.4.2-libav-9.patch:
+  Finish addressing bug #443264 and force configure regeneration to second QA
+  team requests
+
+  17 Jan 2013; Alexis Ballier <aballier@gentoo.org> grass-6.4.2.ebuild,
+  +files/grass-6.4.2-ffmpeg-1.patch:
+  Fix build with latest ffmpeg. Part of bug #443264. Note: this patches
+  configure directly to avoid having to autoreconf it.
+
+  24 Oct 2012; Ulrich Müller <ulm@gentoo.org> grass-6.4.1-r1.ebuild,
+  grass-6.4.2.ebuild:
+  Update dependency after package move from x11-libs/openmotif to
+  x11-libs/motif.
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, #24135.
+
+  28 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> grass-6.4.2.ebuild:
+  Fix wxwidgets handling, thanks to papillon81
+
+  24 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> grass-6.4.2.ebuild:
+  Whitespace to shutup repoman.
+
+*grass-6.4.2 (24 May 2012)
+
+  24 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> +grass-6.4.2.ebuild:
+  Version bump, eapi4.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> grass-6.4.1-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  04 Mar 2012; Justin Lecher <jlec@gentoo.org> grass-6.4.1.ebuild,
+  grass-6.4.1-r1.ebuild, metadata.xml:
+  Adopt deps to unbundled x11-libs/libGLw situation
+
+*grass-6.4.1-r1 (23 Jan 2012)
+
+  23 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> +grass-6.4.1-r1.ebuild:
+  Rename sql.1 manpage to sql.1grass (file collision with sys-process/parallel)
+  wrt #381599 by Matt Summers
+
+  15 Nov 2011; Steve Arnold <nerdboy@gentoo.org> grass-6.4.1.ebuild,
+  +files/grass-6.4.1-nopycompile.patch, +files/grass-6.4.1-timer_flags.patch:
+  Added small fixes for bugs 375999 and 381763. Thanks to Chris Mayo for 
+  the second patch. Not addressing other upstream issues at this time.
+
+  27 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> grass-6.4.1.ebuild,
+  +files/grass-6.4.1-libpng15.patch:
+  Fix building with libpng15 wrt #384069 by Martin von Gagern
+
+  28 Aug 2011; Markos Chandras <hwoarang@gentoo.org> grass-6.4.1.ebuild:
+  Respect LDFLAGS. bug #375999
+
+  22 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org> -grass-6.3.0.ebuild,
+  -files/grass-6.3.0-gcc44.patch, -files/grass-6.3.0-html-nonviz.patch,
+  -files/grass-6.3.0-o_creat.patch, -files/grass_icon.png:
+  old
+
+  19 Jul 2011; Markus Meier <maekke@gentoo.org> grass-6.4.1.ebuild:
+  x86 stable, bug #362987
+
+  24 Jun 2011; Brent Baude <ranger@gentoo.org> grass-6.4.1.ebuild:
+  Marking grass-6.4.1 ppc for bug 362987
+
+  21 Jun 2011; Markos Chandras <hwoarang@gentoo.org> grass-6.4.1.ebuild:
+  Stable on amd64 wrt bug #362987
+
+  11 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org> -grass-6.4.0.ebuild,
+  grass-6.4.1.ebuild:
+  Grass is quite happy to use any tiff version that gdal suplies.
+
+  19 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> grass-6.4.1.ebuild:
+  Fix patch name. Per bug #364049. This is the reason why conditional patches
+  are stupid.
+
+*grass-6.4.1 (14 Apr 2011)
+
+  14 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> +grass-6.4.1.ebuild:
+  Version bump to latest. (only compilation tested now)
+
+  10 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  grass-6.3.0.ebuild:
+  Fix deprecation warning.
+
+  05 Apr 2011; Justin Lecher <jlec@gentoo.org> grass-6.4.0.ebuild:
+  Cleaned double /
+
+  26 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> grass-6.3.0.ebuild,
+  grass-6.4.0.ebuild:
+  Depend on virtual/ffmpeg instead of media-video/ffmpeg. Cleanup the
+  deprecated if has_version for old ffmpeg.
+
+  24 Mar 2011; Ryan Hill <dirtyepic@gentoo.org> grass-6.4.0.ebuild:
+  eselect wxwidgets affects build behaviour, not runtime, and only outside of
+  portage so it has no use here. Use 'unicode' wx libs since 'base' means non-X
+  only. Don't use \ inside of quotes.
+
+  10 Mar 2011; Justin Lecher <jlec@gentoo.org> grass-6.3.0.ebuild,
+  grass-6.4.0.ebuild, metadata.xml:
+  Remove largefile USE support and default to it
+
+  26 Feb 2011; Raúl Porcel <armin76@gentoo.org> grass-6.3.0.ebuild,
+  grass-6.4.0.ebuild:
+  Drop sparc keywords
+
+  20 Feb 2011; Steve Arnold <nerdboy@gentoo.org> grass-6.4.0.ebuild:
+  Migrating to requested mysql virtual: dev-db/mysql -> virtual/mysql
+
+  08 Nov 2010; Kacper Kowalik <xarthisius@gentoo.org> grass-6.3.0.ebuild,
+  grass-6.4.0.ebuild:
+  media-libs/jpeg -> virtual/jpeg
+
+  10 Oct 2010; Ulrich Mueller <ulm@gentoo.org> grass-6.3.0.ebuild,
+  grass-6.4.0.ebuild:
+  Fix openmotif dependency.
+
+  05 Sep 2010; Ryan Hill <dirtyepic@gentoo.org> grass-6.3.0.ebuild:
+  s/wxwindows/wxwidgets
+
+*grass-6.4.0 (04 Sep 2010)
+
+  04 Sep 2010; Steve Arnold <nerdboy@gentoo.org> -grass-6.4.0_rc5.ebuild,
+  -grass-6.4.0_rc6.ebuild, +grass-6.4.0.ebuild,
+  files/grass-6.4.0-html-nonviz.patch,
+  -files/grass-6.4.0_rc6-html-nonviz.patch:
+  Updated to official 6.4.0 release and removed old rc releases/patches. 
+  Both GUIs tested (with actual data) on amd64.
+
+  17 Jun 2010; Patrick Lauer <patrick@gentoo.org> grass-6.3.0.ebuild,
+  grass-6.4.0_rc5.ebuild, grass-6.4.0_rc6.ebuild:
+  Migrating away from deprecated postgres virtuals
+
+  17 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  grass-6.4.0_rc6.ebuild:
+  Add missing backslash
+
+  17 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  grass-6.4.0_rc6.ebuild:
+  Fix usage of python_set_active_version().
+
+  17 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  files/grass-6.4.0_rc6-html-nonviz.patch:
+  Update grass-640_rc6 nonviz patch. Pastebin fail. Per bug #300504.
+
+  15 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  grass-6.4.0_rc6.ebuild:
+  Make mysql backend work. Per bug #323773.
+
+  14 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  grass-6.4.0_rc6.ebuild, +files/grass-6.4.0_rc6-html-nonviz.patch:
+  Fix -opengl nonviz patch to work with latest. Fix -nls build.
+
+  13 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  files/grass-pkgconf.patch:
+  Update pkgconfig patch to provide path to grassdir.
+
+  30 May 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  grass-6.3.0.ebuild, grass-6.4.0_rc5.ebuild:
+  Delete calls to deprecated distutils_python_version().
+
+  04 May 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  grass-6.4.0_rc6.ebuild, metadata.xml:
+  Fix QA warnings.
+
+  04 May 2010; Tomáš Chvátal <scarabeus@gentoo.org> -grass-5.4.0.ebuild,
+  -files/99grass-6, -grass-6.0.1.ebuild, -files/99grass-6.2,
+  -files/grass-6.2.0-html-nonviz.patch, -grass-6.2.1.ebuild,
+  -files/grass-6.2.1-ffmpeg-fix.patch, -files/grass-6.2.1-gcc43.patch,
+  -files/grass-6.2.1-html-nonviz.patch,
+  -files/grass-6.2.1-html-nviz-fix.patch, grass-6.4.0_rc6.ebuild,
+  +files/grass-pkgconf.patch:
+  Update install approach. Install .pc file. Drop old.
+
+  30 Apr 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  grass-6.4.0_rc6.ebuild:
+  Opengl requires tcl/tk.
+
+*grass-6.4.0_rc6 (30 Apr 2010)
+
+  30 Apr 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +grass-6.4.0_rc6.ebuild:
+  Add new rc version (in-progress)
+
+  17 Feb 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  grass-6.4.0_rc5.ebuild, +files/grass-6.4.0-html-nonviz.patch:
+  Slightly update grass ebuild. Synced with sci overlay + whitespace
+  cleanup.
+
+  03 Feb 2010; Markos Chandras <hwoarang@gentoo.org> grass-6.3.0.ebuild:
+  Stable on amd64 wrt bug #250850
+
+  31 Jan 2010; Raúl Porcel <armin76@gentoo.org> grass-6.3.0.ebuild:
+  sparc stable wrt #250850
+
+  10 Jan 2010; nixnut <nixnut@gentoo.org> grass-6.3.0.ebuild:
+  ppc stable #250850
+
+  07 Jan 2010; Christian Faulhammer <fauli@gentoo.org> grass-6.3.0.ebuild:
+  stable x86, bug 250850
+
+*grass-6.4.0_rc5 (28 Dec 2009)
+
+  28 Dec 2009; Steve Arnold <nerdboy@gentoo.org> +grass-6.4.0_rc5.ebuild:
+  Updated to latest upstream "stable" release; tested with additional real 
+  data sets (fixes import issues with certain shape files).
+
+  04 Sep 2009; Steve Arnold <nerdboy@gentoo.org> grass-6.3.0.ebuild:
+  Updated to use postgresql virtual and verified it builds correctly from 
+  libpq-8.0 all the way through postgres-8.3.7 (which means it can go 
+  stable now). Yee-haw!  Also tested importing a bunch of old vector data
+  using both postgres and sqlite with no issues (since it now defaults to
+  requiring a full SQL backend).
+
+  02 Aug 2009; Steve Arnold <nerdboy@gentoo.org> grass-6.3.0.ebuild:
+  Updated desktop file and description (set terminal=false).
+
+  08 Jun 2009; Steve Arnold <nerdboy@gentoo.org>
+  +files/grass-6.3.0-gcc44.patch, grass-6.3.0.ebuild:
+  Updated with additional C++ include for bug #270916 (thanks to   	 
+  Jiri Moravec <qjim@volny.cz> for the patch).  I still don't have
+  gcc 4.4 yet, but the benign nature of the patch and building with
+  gcc 4.3.3 should suffice.
+
+  23 Mar 2009; Steve Arnold <nerdboy@gentoo.org>
+  +files/grass-6.3.0-o_creat.patch, grass-6.3.0.ebuild:
+  Updated with fix for fortify_source error and buffer size.  Thanks to
+  Martin von Gagern <Martin.vGagern@gmx.net> for the o_creat patch; it
+  seems cleaner than the upstream equivalent.
+
+  19 Dec 2008; Steve Arnold <nerdboy@gentoo.org>
+  +files/grass-6.2.1-gcc43.patch, grass-6.2.1.ebuild:
+  Backported ffmpeg fixup and use flag cleanup (see bug #250850).  Also 
+  added ggc 4.3 include patch.  Still need postgres 8.3 pushed to stable
+  before Grass 6.3 can go stable.
+
+  08 Nov 2008; Steve Arnold <nerdboy@gentoo.org> metadata.xml,
+  grass-6.3.0.ebuild:
+  Updated deps and use flags for current version (including postgres).
+  Note that parallel makes are supposed to work now, both with and without
+  distcc (tested on multiple dual-core amd64 boxes).  Closes bugs #241244
+  and #242190.
+
+  04 Oct 2008; Petteri Räty <betelgeuse@gentoo.org> -grass-6.2.0-r1.ebuild:
+  Delete old version. Fixes bug #204785.
+
+  21 Sep 2008; Steve Arnold <nerdboy@gentoo.org> grass-6.3.0.ebuild:
+  Updated for bug #237495 (forces python when wxwindows is enabled).
+
+  14 Aug 2008; Steve Arnold <nerdboy@gentoo.org> grass-6.2.0-r1.ebuild,
+  grass-6.2.1.ebuild, grass-6.2.3.ebuild, grass-6.3.0.ebuild:
+  updated slotting of ver. 6 packages to address bug #234070
+
+  06 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  17 Jul 2008; Alexis Ballier <aballier@gentoo.org> grass-6.2.1.ebuild:
+  Fix deps wrt ffmpeg: 0.4.9_p20070616-r3 to -r20 doesn't have swscaler, -r1
+  and -r2 have it, part of bug #231831.
+
+  25 Jun 2008; Steve Arnold <nerdboy@gentoo.org> grass-6.3.0.ebuild:
+  Fixed oversight (bug #229297) and checked for any wxpython use flag issues;
+  Tested on both amd64 and x86.
+
+*grass-6.3.0 (24 Jun 2008)
+
+  24 Jun 2008; Steve Arnold <nerdboy@gentoo.org>
+  +files/grass-6.3.0-html-nonviz.patch, grass-5.4.0.ebuild,
+  grass-6.0.1.ebuild, grass-6.2.0-r1.ebuild, grass-6.2.1.ebuild,
+  grass-6.2.3.ebuild, +grass-6.3.0.ebuild:
+  Added latest release with wxpython gui support and tested with gcc 4.3.1
+  (see bugs #223639 and #217917).  Now includes multiple ffmpeg dirctories
+  so sing out if you know of a better way...  Also fixed more QA warnings
+  in older versions.
+
+
+  21 May 2008; Tiziano Müller <dev-zero@gentoo.org> grass-5.4.0.ebuild,
+  grass-6.0.1.ebuild, grass-6.2.0-r1.ebuild, grass-6.2.1.ebuild,
+  grass-6.2.3.ebuild:
+  Changed dependency for postgresql from dev-db/postgresql to
+  virtual/postgresql-server
+
+  17 May 2008; Steve Arnold <nerdboy@gentoo.org> grass-6.2.3.ebuild:
+  Corrected versioning glitch with latest ebuild (sorry about that, chief...)
+
+  16 May 2008; Steve Arnold <nerdboy@gentoo.org> grass-6.2.3.ebuild:
+  updated depends for bug #221345
+
+  07 May 2008; Steve Arnold <nerdboy@gentoo.org> grass-6.2.3.ebuild:
+  Updated to handle either ffmpeg API, but not a permanent fix; this should
+  be reverted to the new interface once ffmpeg is unmasked and stable.
+
+  04 May 2008; Steve Arnold <nerdboy@gentoo.org> grass-6.2.1.ebuild:
+  forced stable version to use the older ffmpeg
+
+  04 May 2008; Steve Arnold <nerdboy@gentoo.org> grass-6.2.3.ebuild:
+  Updated for changed include path in latest ffmpeg.  Still needs testing,
+  but it builds and runs; so far I've only found avcodec included in the
+  source for Grass 6.2.3.
+
+*grass-6.2.3 (01 May 2008)
+
+  01 May 2008; Steve Arnold <nerdboy@gentoo.org>
+  +files/grass-6.2.3-html-nonviz.patch,
+  +files/grass-6.2.3-html-nviz-fix.patch, -grass-6.2.1-r1.ebuild,
+  +grass-6.2.3.ebuild:
+  Refined and updated for testing and stablizing; fixes bugs #217873 and 
+  #219764.  Thanks to Martin von Gagern <Martin.vGagern@gmx.net> for the
+  updated patches and other suggestions.
+
+  22 Mar 2008; Steve Arnold <nerdboy@gentoo.org> grass-6.2.1-r1.ebuild:
+  Minor cleanup of desktop stuff and adding ~ppc64 keyword back (gdal
+  is now up to date for ppc64).
+
+*grass-6.2.1-r1 (22 Mar 2008)
+
+  22 Mar 2008; Steve Arnold <nerdboy@gentoo.org> +files/grass_icon.png,
+  +grass-6.2.1-r1.ebuild:
+  Updated ebuild with various fixes and enhancements, with enough changes to
+  warrant a revision bump.  Several QA fixes, streamlined the X-related USE
+  flags somewhat, added desktop files, and tested nviz 3D with terrain data
+  on amd64 w/radeon xorg driver (works nicely after minor system update,
+  with no more video artifacts).  Grass env file now provides GRASS_HOME
+  variable for gdal rebuild.
+
+  06 Mar 2008; nixnut <nixnut@gentoo.org> grass-6.2.1.ebuild:
+  Stable on ppc wrt bug 212033
+
+  03 Mar 2008; Christian Faulhammer <opfer@gentoo.org> grass-6.2.1.ebuild:
+  stable x86, bug 212033
+
+  03 Mar 2008; Ferris McCormick <fmccor@gentoo.org> grass-6.2.1.ebuild:
+  Sparc stable, Bug #212033, I really wish this came with some demo files, but
+  it doesn't seem to.
+
+  02 Sep 2007; Christoph Mende <angelos@gentoo.org> grass-6.2.0-r1.ebuild:
+  Stable on amd64
+
+  23 Aug 2007; Steve Arnold <nerdboy@gentoo.org>
+  +files/grass-6.2.1-ffmpeg-fix.patch,
+  +files/grass-6.2.1-html-nviz-fix.patch, grass-6.2.1.ebuild:
+  Updated with some blas and lapack checking, as well as an opengl check,
+  a patch for ffmpeg, and an install script.  Closes bug #189299.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; grass-5.4.0.ebuild,
+  grass-6.0.1.ebuild, grass-6.2.0-r1.ebuild, grass-6.2.1.ebuild:
+  Drop virtual/x11 references.
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> grass-6.0.1.ebuild,
+  grass-6.2.0-r1.ebuild, grass-6.2.1.ebuild:
+  (QA) RESTRICT clean up.
+
+  01 Jul 2007; Steve Arnold <nerdboy@gentoo.org>
+  +files/grass-6.2.1-html-nonviz.patch, grass-6.2.1.ebuild:
+  Updated patch and configure options for minimal no-X install (at least
+  it builds on a server and works in a console).
+  
+  Compile with the following USE flags turned off:
+  -opengl -glw -motif -tcl -tk -X
+
+  02 Jun 2007; nixnut <nixnut@gentoo.org> grass-6.2.0-r1.ebuild:
+  Stable on ppc wrt bug 179150
+
+  23 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  grass-6.2.0-r1.ebuild:
+  x86 stable, bug 179150
+
+  20 May 2007; Ferris McCormick <fmccor@gentoo.org> grass-6.2.0-r1.ebuild:
+  Stable on sparc --- Bug #179150 --- seems fine for sparc.
+
+*grass-6.2.1 (19 May 2007)
+
+  19 May 2007; Steve Arnold <nerdboy@gentoo.org> -files/99grass-6.1.0,
+  +files/99grass-6.2, -files/99grass-6.2.0, grass-6.2.0-r1.ebuild,
+  +grass-6.2.1.ebuild:
+  Update to current upstream release and consolidate environment settings.
+  This closes bug #177070; also opened bug #179150 for stablizing 6.2.0.
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org> grass-6.0.1.ebuild:
+  Fix *initd, *confd and *envd calls (#173884, #174266)
+
+  23 Apr 2007; Sven Wegener <swegener@gentoo.org> grass-5.4.0.ebuild:
+  Sync IUSE (-tcltk +tk)
+
+  15 Apr 2007; Christian Faulhammer <opfer@gentoo.org> grass-5.4.0.ebuild:
+  moved from USE flag tcltk to tk, see bug 17808
+
+  13 Mar 2007; Danny van Dyk <kugelfang@gentoo.org> grass-6.2.0-r1.ebuild:
+  QA: which -> type -P
+
+  10 Feb 2007; Christian Faulhammer <opfer@gentoo.org> grass-6.0.1.ebuild:
+  moved from tcltk USE flag to tk, see bug 17808
+
+*grass-6.2.0-r1 (29 Jan 2007)
+
+  29 Jan 2007; Steve Arnold <nerdboy@gentoo.org> files/99grass-6.2.0,
+  +files/grass-6.2.0-html-nonviz.patch, -grass-6.2.0.ebuild,
+  +grass-6.2.0-r1.ebuild:
+  Added fix for bug 160809 and workaround for bug 159074.
+
+  08 Jan 2007; Danny van Dyk <kugelfang@gentoo.org> -grass-6.1.0.ebuild:
+  QA: Removed unused versions.
+
+  24 Dec 2006; Steve Arnold <nerdboy@gentoo.org> grass-6.2.0.ebuild:
+  more updates to latest version (based on user feedback in bug below).
+
+  24 Dec 2006; Steve Arnold <nerdboy@gentoo.org> +grass-6.0.1.ebuild,
+  -grass-6.0.2.ebuild:
+  Cleaned up wrong ebuild (sorry about that).  This will get cleaned up
+  again when 6.2.0 is stable.
+
+*grass-6.2.0 (24 Dec 2006)
+
+  24 Dec 2006; Steve Arnold <nerdboy@gentoo.org> +files/99grass-6.2.0,
+  +grass-6.2.0.ebuild:
+  Added version bump with bug fixes (see bug #153796 for initial ebuild
+  courtesy of Christian Georges <c.georges@cso.net>).
+
+  23 Nov 2006; Francesco Riosa <vivo@gentoo.org> grass-5.4.0.ebuild,
+  grass-6.0.1.ebuild, grass-6.0.2.ebuild, grass-6.1.0.ebuild:
+  dev-db/mysql => virtual/mysql
+
+  11 Nov 2006; nixnut <nixnut@gentoo.org> grass-6.0.1.ebuild:
+  Stable on ppc wrt bug 154726
+
+  26 Oct 2006; Marien Zwart <marienz@gentoo.org> grass-6.1.0.ebuild:
+  Fix depset syntax error.
+
+  26 Oct 2006; Steve Arnold <nerdboy@gentoo.org> grass-6.1.0.ebuild:
+  more use flag changes (trying to keep up with the Jones...) to take
+  advantage of the global ncurses flag
+
+  26 Oct 2006; Steve Arnold <nerdboy@gentoo.org> grass-6.1.0.ebuild:
+  use flag clean-up (fix for bug 152784, caused by brain-fart) for 
+  truetype
+
+*grass-6.1.0 (23 Oct 2006)
+
+  23 Oct 2006; Steve Arnold <nerdboy@gentoo.org> +files/99grass-6.1.0,
+  +grass-6.1.0.ebuild:
+  Version bump for updated Grass (still has a minor math lib issue if built
+  without Blas/Lapack support).
+
+  06 Sep 2006; Steve Arnold <nerdboy@gentoo.org> -grass-5.0.2.ebuild:
+  removing old version due to dep cleanup issues (requested by dberkholz)
+
+  29 May 2006; Steve Arnold <nerdboy@gentoo.org> grass-5.4.0.ebuild:
+  fixed modular X deps (one last time)
+
+  27 May 2006; Steve Arnold <nerdboy@gentoo.org> grass-5.4.0.ebuild,
+  grass-6.0.1.ebuild, grass-6.0.2.ebuild:
+  Fixed bash configure error, made modular X compliant (5.4.0), and
+  cleaned up some loose ends (also stable bump for amd64).
+
+  16 May 2006; Mark Loeser <halcy0n@gentoo.org> grass-5.4.0.ebuild:
+  Fix depend syntax; bug #133006
+
+  19 Mar 2006; Steve Arnold <nerdboy@gentoo.org> grass-6.0.2.ebuild:
+  fixing keywords on new version
+
+*grass-6.0.2 (18 Mar 2006)
+
+  18 Mar 2006; Steve Arnold <nerdboy@gentoo.org> grass-5.0.2.ebuild,
+  grass-5.4.0.ebuild, grass-6.0.1.ebuild, +grass-6.0.2.ebuild:
+  Fixes for bugs 119133, 123707, and 125561 (dep removal, sed bash fix, and 
+  rev bump) plus tcltk repair and modular X updates (ver. 6 only).
+
+  13 Oct 2005; Steve Arnold <nerdboy@gentoo.org> -grass-6.0.0-r2.ebuild,
+  grass-6.0.1.ebuild:
+  ebuild cleanup and change for bug #106877
+
+  17 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> grass-6.0.0-r2.ebuild:
+  Stable on ppc.
+
+*grass-6.0.1 (14 Sep 2005)
+
+  14 Sep 2005; Steve Arnold <nerdboy@gentoo.org> +grass-6.0.1.ebuild:
+  version bump to close bug #103361
+
+  11 Sep 2005; Steve Arnold <nerdboy@gentoo.org> grass-5.4.0.ebuild,
+  grass-6.0.0-r2.ebuild:
+  stable bump for sparc and x86
+
+  11 Aug 2005; Steve Arnold <nerdboy@gentoo.org>
+  files/digest-grass-6.0.0-r2, Manifest:
+  Fixing weird digest problem (bug #101719) - old soource tarball?
+
+*grass-5.4.0 (08 Aug 2005)
+
+  08 Aug 2005; Steve Arnold <nerdboy@gentoo.org> +grass-5.4.0.ebuild
+  -grass-5.0.3.ebuild:
+  added interim version (bug 72353) since 5.0.3 is broken wrt newer freetype
+
+*grass-6.0.0-r2 (25 Jul 2005)
+
+  25 Jul 2005; Steve Arnold <nerdboy@gentoo.org> files/99grass-6,
+  -grass-6.0.0-r1.ebuild, +grass-6.0.0-r2.ebuild:
+  fixed environment glitch (bug 100105)
+
+*grass-6.0.0-r1 (23 Jul 2005)
+
+  23 Jul 2005; Steve Arnold <nerdboy@gentoo.org> +grass-6.0.0-r1.ebuild:
+  fixed for use with gdal, ogdi, proj, etc (gdal is apparently no
+  longer optional)
+
+  20 Jul 2005; Steve Arnold <nerdboy@gentoo.org> grass-6.0.0.ebuild:
+  fixed up gdal use flag handling and added to use.local
+
+*grass-6.0.0 (15 Jun 2005)
+
+  15 Jun 2005; Steve Arnold <nerdboy@gentoo.org> +files/99grass-6,
+  metadata.xml, +grass-6.0.0.ebuild:
+  modified version of user-submitted ebuild (bug 72353 and 84862).
+  The former bug is not being closed just yet...
+
+  02 Jun 2005; Olivier Fisette <ribosome@gentoo.org> grass-5.0.2.ebuild,
+  grass-5.0.3.ebuild:
+  Use "virtual/motif" instead of "x11-libs/openmotif".
+
+  10 Jan 2005; Danny van Dyk <kugelfang@gentoo.org> grass-5.0.3.ebuild:
+  Marked ~amd64.
+
+*grass-5.0.2 (28 Dec 2004)
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +grass-5.0.2.ebuild, +grass-5.0.3.ebuild:
+  Moved from app-misc/grass to sci-geosciences/grass.
+
+  12 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> grass-5.0.3.ebuild:
+  Added nls IUSE flag.
+
+  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  grass-5.0.3.ebuild:
+  x86 stable
+
+  30 Mar 2004; Donnie Berkholz <spyderous@gentoo.org>; grass-5.0.2.ebuild,
+  grass-5.0.3.ebuild:
+  Change x11-base/xfree dependency to virtual/x11.
+
+  30 Mar 2004; Donnie Berkholz <spyderous@gentoo.org>; grass-5.0.3.ebuild:
+  S was broken -- apparently slipped through QA.
+
+  04 Mar 2004; Martin Holzer <mholzer@gentoo.org> grass-5.0.2.ebuild,
+  grass-5.0.3.ebuild:
+  fixing fftw depend.
+
+  13 Jan 2004; Martin Holzer <mholzer@gentoo.org> grass-5.0.2.ebuild,
+  grass-5.0.3.ebuild:
+  Homepage update
+
+  11 Jan 2004; Heinrich Wendel <lanius@gentoo.org> grass-5.0.2.ebuild,
+  grass-5.0.3.ebuild:
+  fixed motif dep
+
+*grass-5.0.3 (29 Dec 2003)
+
+  29 Dec 2003; Martin Holzer <mholzer@gentoo.org> grass-5.0.3.ebuild:
+  Version bumped.
+
+  06 Sep 2003; Heinrich Wendel <lanius@gentoo.org> grass-5.0.2.ebuild:
+  fixed motif/truetype include path
+
+  03 Sep 2003; Heinrich Wendel <lanius@gentoo.org> grass-5.0.2.ebuild:
+  back to lesstif, openmotif does not work ..
+
+  22 Aug 2003; Heinrich Wendel <lanius@gentoo.org> grass-5.0.2.ebuild:
+  made dep on virtual/motif instead of lesstif (bug #25627)
+
+  17 Aug 2003; Martin Holzer <mholzer@gentoo.org> grass-5.0.1.ebuild,
+  grass-5.0.2.ebuild:
+  Fixed install dir. Marked stable
+
+*grass-5.0.2 (17 Apr 2003)
+
+  17 Apr 2003; Martin Holzer <mholzer@gentoo.org> Manifest, grass-5.0.2.ebuild:
+  Version bumped. Ebuild submitted by Doug Gorley <douggorley@shaw.ca> in #19309.
+
+*grass-5.0.1 (11 Apr 2003)
+
+  11 Apr 2003; Graham Forest <vladimir@gentoo.org> grass-5.0.1.ebuild:
+  Initial import, ebuild submitted by both Andy Romeril <aromeril@attbi.com>,
+  and Doug Gorley <douggorley@shaw.ca>

@@ -1,0 +1,230 @@
+# ChangeLog for x11-libs/libXfontcache
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXfontcache/ChangeLog,v 1.58 2015/04/13 00:14:54 mrueg Exp $
+
+  13 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -libXfontcache-1.0.5.ebuild:
+  Remove old.
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> libXfontcache-1.0.5-r1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #419473
+
+  12 Jul 2012; Brent Baude <ranger@gentoo.org> libXfontcache-1.0.5-r1.ebuild:
+  Marking libXfontcache-1.0.5-r1 ppc stable for bug 419473
+
+  11 Jul 2012; Brent Baude <ranger@gentoo.org> libXfontcache-1.0.5-r1.ebuild:
+  Marking libXfontcache-1.0.5-r1 ppc64 stable for bug 419473
+
+  29 Jun 2012; Markus Meier <maekke@gentoo.org> libXfontcache-1.0.5-r1.ebuild:
+  arm stable, bug #419473
+
+  28 Jun 2012; Jeroen Roovers <jer@gentoo.org> libXfontcache-1.0.5-r1.ebuild:
+  Stable for HPPA (bug #419473).
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libXfontcache-1.0.5-r1.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libXfontcache-1.0.5-r1.ebuild:
+  Stable for amd64, wrt bug #419473
+
+*libXfontcache-1.0.5-r1 (14 Apr 2012)
+
+  14 Apr 2012; Michał Górny <mgorny@gentoo.org>
+  +libXfontcache-1.0.5-r1.ebuild:
+  Update to use xorg-2 eclass.
+
+  10 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -libXfontcache-1.0.4.ebuild:
+  remove old
+
+  19 Jan 2010; Raúl Porcel <armin76@gentoo.org> libXfontcache-1.0.5.ebuild:
+  s390 stable wrt #294958
+
+  18 Jan 2010; Raúl Porcel <armin76@gentoo.org> libXfontcache-1.0.5.ebuild:
+  alpha/ia64/sh/sparc stable wrt #294958
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  libXfontcache-1.0.5.ebuild:
+  Transfer Prefix keywords
+
+  14 Jan 2010; Markus Meier <maekke@gentoo.org> libXfontcache-1.0.5.ebuild:
+  arm stable, bug #294958
+
+  14 Jan 2010; Jeroen Roovers <jer@gentoo.org> libXfontcache-1.0.5.ebuild:
+  Stable for HPPA (bug #294958).
+
+  27 Dec 2009; Joseph Jezak <josejx@gentoo.org> libXfontcache-1.0.5.ebuild:
+  Marked ppc stable for bug #294958.
+
+  15 Dec 2009; Brent Baude <ranger@gentoo.org> libXfontcache-1.0.5.ebuild:
+  Marking libXfontcache-1.0.5 ppc64 stable for bug 294958
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  libXfontcache-1.0.5.ebuild:
+  x86 stable, bug 294958
+
+  10 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  libXfontcache-1.0.5.ebuild:
+  amd64 stable wrt #294958
+
+*libXfontcache-1.0.5 (11 Oct 2009)
+
+  11 Oct 2009; Rémi Cardona <remi@gentoo.org> +libXfontcache-1.0.5.ebuild:
+  bump to 1.0.5, sync with overlay
+
+  19 Dec 2007; Dawid Węgliński <cla@gentoo.org> ChangeLog:
+  Stable on x86 (bug #202087)
+
+  09 Oct 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  -files/fix_shadow_manpages.patch, -libXfontcache-1.0.2.ebuild,
+  -libXfontcache-1.0.3.ebuild:
+  Drop old ebuilds.
+
+  07 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  libXfontcache-1.0.4.ebuild:
+  Stable on sparc wrt #175465
+
+  03 Jul 2007; Lars Weiler <pylon@gentoo.org> libXfontcache-1.0.4.ebuild:
+  Stable on ppc; bug #175465.
+
+  02 Jul 2007; Raúl Porcel <armin76@gentoo.org> libXfontcache-1.0.4.ebuild:
+  alpha stable wrt #175465
+
+  24 Jun 2007; Joshua Kinard <kumba@gentoo.org> libXfontcache-1.0.4.ebuild:
+  Stable on mips, per #175465.
+
+  04 May 2007; Daniel Gryniewicz <dang@gentoo.org>
+  libXfontcache-1.0.4.ebuild:
+  Marked stable on amd64 for bug #175465
+
+  02 May 2007; Guy Martin <gmsoft@gentoo.org> libXfontcache-1.0.4.ebuild:
+  Stable on hppa
+
+  29 Apr 2007; Andrej Kacian <ticho@gentoo.org> libXfontcache-1.0.4.ebuild:
+  Stable on x86, bug #175465.
+
+  25 Apr 2007; Raúl Porcel <armin76@gentoo.org> libXfontcache-1.0.4.ebuild:
+  Stable on ia64 wrt bug #175465.
+
+  25 Apr 2007; Markus Rothe <corsair@gentoo.org> libXfontcache-1.0.4.ebuild:
+  Stable on ppc64; bug #175465
+
+  26 Mar 2007; Peter Weller <welp@gentoo.org> libXfontcache-1.0.4.ebuild:
+  Keyworded ~x86-fbsd wrt bug 165286
+
+  26 Mar 2007; Raúl Porcel <armin76@gentoo.org> libXfontcache-1.0.4.ebuild:
+  Add ~ia64 wrt bug 165286
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  04 Feb 2007; Guy Martin <gmsoft@gentoo.org> libXfontcache-1.0.4.ebuild:
+  Added ~hppa to KEYWORDS.
+
+*libXfontcache-1.0.4 (16 Dec 2006)
+
+  16 Dec 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXfontcache-1.0.4.ebuild:
+  Version bump for 7.2.  Build/dist fix only.
+
+*libXfontcache-1.0.3 (21 Oct 2006)
+
+  21 Oct 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXfontcache-1.0.3.ebuild:
+  Version bump.
+
+  01 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  libXfontcache-1.0.2.ebuild:
+  libXext has a runtime dep on xextproto now, so we don't need to depend on it
+  here.
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  libXfontcache-1.0.2.ebuild:
+  ppc/sparc/mips/alpha/arm/sh stable
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  -libXfontcache-1.0.1-r1.ebuild:
+  Pull old versions.
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  libXfontcache-1.0.2.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org> libXfontcache-1.0.2.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  libXfontcache-1.0.2.ebuild:
+  x86 stable.
+
+*libXfontcache-1.0.2 (29 Apr 2006)
+
+  29 Apr 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXfontcache-1.0.2.ebuild:
+  Version bump.  Includes the shadow manpages fix.
+
+*libXfontcache-1.0.1-r1 (22 Feb 2006)
+
+  22 Feb 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +files/fix_shadow_manpages.patch, -libXfontcache-1.0.1.ebuild,
+  +libXfontcache-1.0.1-r1.ebuild:
+  Fix shadow manpages.
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> libXfontcache-1.0.1.ebuild:
+  Added ~ppc64
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -libXfontcache-0.99.2.ebuild, -libXfontcache-1.0.0.ebuild:
+  Pull old versions.
+
+*libXfontcache-1.0.1 (23 Dec 2005)
+
+  23 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libXfontcache-1.0.1.ebuild:
+  Bump for 7.0.
+
+*libXfontcache-1.0.0 (17 Dec 2005)
+
+  17 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXfontcache-1.0.0.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -libXfontcache-0.99.1.ebuild:
+  Pull old versions.
+
+*libXfontcache-0.99.2 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXfontcache-0.99.2.ebuild:
+  Bump for 7.0RC3.
+
+  26 Nov 2005; Simon Stelling <blubb@gentoo.org>
+  libXfontcache-0.99.1.ebuild:
+  added ~amd64 keyword
+
+  04 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -libXfontcache-0.99.0.ebuild:
+  Drop old versions.
+
+*libXfontcache-0.99.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libXfontcache-0.99.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org>
+  libXfontcache-0.99.0.ebuild:
+  Marked ~ppc
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org>
+  libXfontcache-0.99.0.ebuild:
+  Add ~sparc keyword (modular X testing).
+
+*libXfontcache-0.99.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libXfontcache-0.99.0.ebuild:
+  Initial commit for modular X.

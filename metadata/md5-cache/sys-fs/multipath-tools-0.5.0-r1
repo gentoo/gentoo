@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=>=sys-fs/lvm2-2.02.45 >=virtual/udev-171 dev-libs/libaio sys-libs/readline systemd? ( sys-apps/systemd ) virtual/pkgconfig virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Device mapper target autoconfig
+EAPI=4
+HOMEPAGE=http://christophe.varoqui.free.fr/
+IUSE=systemd
+KEYWORDS=~alpha amd64 ~arm ~ia64 ppc ppc64 ~sparc x86
+LICENSE=GPL-2
+RDEPEND=>=sys-fs/lvm2-2.02.45 >=virtual/udev-171 dev-libs/libaio sys-libs/readline systemd? ( sys-apps/systemd )
+SLOT=0
+SRC_URI=http://christophe.varoqui.free.fr/multipath-tools/multipath-tools-0.5.0.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438
+_md5_=57adc83d0289d2f692d8b511fa32ba19

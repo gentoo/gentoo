@@ -1,0 +1,51 @@
+# ChangeLog for app-arch/hardlink
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/hardlink/ChangeLog,v 1.13 2015/02/03 23:22:01 chutzpah Exp $
+
+*hardlink-0.3.0 (03 Feb 2015)
+
+  03 Feb 2015; Patrick McLean <chutzpah@gentoo.org> +hardlink-0.3.0.ebuild:
+  Version bump.
+
+  06 Mar 2014; Agostino Sarubbo <ago@gentoo.org> hardlink-0.2.0.ebuild:
+  Stable for ppc64, wrt bug #476042
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> hardlink-0.2.0.ebuild:
+  Stable for ppc, wrt bug #476042
+
+  01 Mar 2014; Pacho Ramos <pacho@gentoo.org> hardlink-0.2.0.ebuild:
+  amd64 stable, bug #476042
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> hardlink-0.2.0.ebuild:
+  x86 stable wrt bug #476042
+
+  03 Aug 2013; Michael Weber <xmw@gentoo.org> hardlink-0.2.0.ebuild:
+  Adding ~arm keyword.
+
+  20 May 2012; Samuli Suominen <ssuominen@gentoo.org> hardlink-0.2.0.ebuild:
+  Install README.rsync for accomplishing rsync temporary file exclusion wrt
+  #416613
+
+  19 May 2012; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Backed up by the shell-tools herd.
+
+  19 May 2012; Samuli Suominen <ssuominen@gentoo.org> hardlink-0.2.0.ebuild:
+  Keyword ~ppc/~ppc64 (to match keywording of app-arch/hardlink++) wrt #337250
+  by Diego Elio Pettenò
+
+  19 May 2012; Samuli Suominen <ssuominen@gentoo.org> -hardlink-0.1.1.ebuild:
+  old
+
+*hardlink-0.2.0 (19 May 2012)
+
+  19 May 2012; Samuli Suominen <ssuominen@gentoo.org> +hardlink-0.2.0.ebuild:
+  Version bump.
+
+  23 Oct 2009; Robin H. Johnson <robbat2@gentoo.org> hardlink-0.1.1.ebuild:
+  Build fixup.
+
+*hardlink-0.1.1 (22 Oct 2009)
+
+  22 Oct 2009; Robin H. Johnson <robbat2@gentoo.org> +hardlink-0.1.1.ebuild,
+  +metadata.xml:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

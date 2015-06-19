@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=dev-libs/glib-2.22 dev-libs/libxml2 X? ( >=x11-libs/gtk+-2.12:2 media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 media-libs/gst-plugins-base:0.10 media-plugins/gst-plugins-xvideo:0.10 ) gstreamer? ( media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 ) virtual/pkgconfig dev-libs/gobject-introspection
+DESCRIPTION=Library for video acquisition using Genicam cameras
+EAPI=4
+HOMEPAGE=http://live.gnome.org/Aravis
+IUSE=X gstreamer
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-libs/glib-2.22 dev-libs/libxml2 X? ( >=x11-libs/gtk+-2.12:2 media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 media-libs/gst-plugins-base:0.10 media-plugins/gst-plugins-xvideo:0.10 ) gstreamer? ( media-libs/gstreamer:0.10 media-libs/gst-plugins-base:0.10 )
+SLOT=0
+SRC_URI=mirror://gnome/sources/aravis/0.1/aravis-0.1.15.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=d1b046bc3d664c3005e145f997e7e372

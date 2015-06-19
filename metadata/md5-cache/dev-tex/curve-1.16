@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare unpack
+DEPEND=>=dev-texlive/texlive-latexextra-2010 app-arch/unzip virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DESCRIPTION=LaTeX style for a CV (curriculum vitae) with flavour option
+EAPI=2
+HOMEPAGE=http://www.ctan.org/tex-archive/macros/latex/contrib/curve/
+IUSE=doc examples
+KEYWORDS=amd64 ppc ~sparc x86
+LICENSE=LPPL-1.2
+RDEPEND=>=dev-texlive/texlive-latexextra-2010 virtual/latex-base
+SLOT=0
+SRC_URI=ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/curve.zip -> curve-1.16.zip
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	latex-package	d023314500e725be8c78a868e4771dbb	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c5bcfcff71dc4a315523734cbf732a4d

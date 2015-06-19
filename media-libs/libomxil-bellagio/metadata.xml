@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>x11</herd>
+	<use>
+		<flag name="audioeffects">enable audio volume/mixer effects components</flag>
+		<flag name="clocksrc">enable clock component</flag>
+		<flag name="videoscheduler">enable xvideosink video scheduler</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">omxil</remote-id>
+	</upstream>
+</pkgmetadata>

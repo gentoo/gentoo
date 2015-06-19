@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/perl virtual/perl-Digest-MD5
+DESCRIPTION=Extensible perl-based build utility
+HOMEPAGE=http://www.dsmit.com/cons/
+KEYWORDS=alpha ~amd64 ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl virtual/perl-Digest-MD5 !sci-biology/emboss
+SLOT=2.2
+SRC_URI=http://www.dsmit.com/cons/stable/cons-2.2.0.tgz
+_md5_=762b627bdbc6068e1862913336e44bc3

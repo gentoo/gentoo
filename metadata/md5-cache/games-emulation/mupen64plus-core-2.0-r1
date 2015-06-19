@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=media-libs/libpng:0= media-libs/libsdl:0=[joystick,opengl,video] sys-libs/zlib:0=[minizip] lirc? ( app-misc/lirc:0 ) osd? ( media-fonts/ttf-bitstream-vera media-libs/freetype:2= virtual/opengl:0= virtual/glu:0= ) !<games-emulation/mupen64plus-2.0 virtual/pkgconfig
+DESCRIPTION=A fork of Mupen64 Nintendo 64 emulator, core library
+EAPI=5
+HOMEPAGE=http://code.google.com/p/mupen64plus/
+IUSE=lirc new-dynarec +osd cpu_flags_x86_sse
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=media-libs/libpng:0= media-libs/libsdl:0=[joystick,opengl,video] sys-libs/zlib:0=[minizip] lirc? ( app-misc/lirc:0 ) osd? ( media-fonts/ttf-bitstream-vera media-libs/freetype:2= virtual/opengl:0= virtual/glu:0= ) !<games-emulation/mupen64plus-2.0 !<games-emulation/m64py-0.2.1-r1 !<games-emulation/mupen64plus-audio-sdl-2.0-r1 !<games-emulation/mupen64plus-input-sdl-2.0-r1 !<games-emulation/mupen64plus-rsp-hle-2.0-r1 !<games-emulation/mupen64plus-ui-console-2.0-r1 !<games-emulation/mupen64plus-video-glide64mk2-2.0-r1 !<games-emulation/mupen64plus-video-rice-2.0-r1
+SLOT=0/2
+SRC_URI=https://github.com/mupen64plus/mupen64plus-core/releases/download/2.0/mupen64plus-core-src-2.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=fce664e657485a57edb14cd203113412

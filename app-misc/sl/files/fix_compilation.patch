@@ -1,0 +1,22 @@
+--- sl.orig/sl.c	2010-08-09 21:36:45.483225339 +0200
++++ sl/sl.c	2010-08-09 22:01:12.462051982 +0200
+@@ -30,6 +30,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <strings.h>
++#include <string.h>
+ #include <time.h>
+ #ifdef LINUX20
+   #include <ncurses/curses.h>
+@@ -186,10 +187,7 @@ int main(int argc, char *argv[])
+     scrollok(stdscr, FALSE);
+     DIREC = RTOL;
+     p = 3 * COLS / 10;
+-    pp = (char*)malloc((size_t)(COLS + ALL_LENGTH + 10) * (D51HIGHT + 1) * (D51PATTERNS + 1));
+-    for (i = 0; i <= (COLS + ALL_LENGTH + 1) * (D51HIGHT + 1) * D51PATTERNS; ++i) {
+-      pp[i] = (char)NULL;
+-    }
++    pp = (char *)calloc(1, (size_t)(COLS + ALL_LENGTH + 10) * (D51HIGHT + 1) * (D51PATTERNS + 1));
+ 
+     for (j = 0; j < D51PATTERNS; ++j) {
+       for (i = 0; i <= D51HIGHT; ++i) {

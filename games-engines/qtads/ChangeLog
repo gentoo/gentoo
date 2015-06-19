@@ -1,0 +1,103 @@
+# ChangeLog for games-engines/qtads
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-engines/qtads/ChangeLog,v 1.34 2015/02/19 01:17:12 mr_bones_ Exp $
+
+  19 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> -qtads-2.1.5.ebuild:
+  old
+
+  10 Feb 2015; Agostino Sarubbo <ago@gentoo.org> qtads-2.1.6.ebuild:
+  Stable for x86, wrt bug #539516
+
+  10 Feb 2015; Agostino Sarubbo <ago@gentoo.org> qtads-2.1.6.ebuild:
+  Stable for amd64, wrt bug #539516
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> qtads-2.1.5.ebuild,
+  qtads-2.1.6.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> qtads-2.1.5.ebuild,
+  qtads-2.1.6.ebuild:
+  Move Qt dependencies to the new category
+
+  04 Feb 2013; Michael Sterrett <mr_bones_@gentoo.org> qtads-2.1.6.ebuild:
+  eapi=5
+
+  24 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org> -qtads-2.1.3.ebuild:
+  old
+
+  13 Jan 2013; Agostino Sarubbo <ago@gentoo.org> qtads-2.1.5.ebuild:
+  Stable for x86, wrt bug #449908
+
+  03 Jan 2013; Agostino Sarubbo <ago@gentoo.org> qtads-2.1.5.ebuild:
+  Stable for amd64, wrt bug #449908
+
+*qtads-2.1.6 (03 Jan 2013)
+
+  03 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org> +qtads-2.1.6.ebuild:
+  version bump
+
+  03 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org> -qtads-2.1.1.ebuild,
+  -qtads-2.1.4.ebuild, qtads-2.1.5.ebuild:
+  old
+
+  07 Nov 2012; Michael Sterrett <mr_bones_@gentoo.org> qtads-2.1.5.ebuild:
+  EAPI=4; add patch from Nikos Chantziaras to improve ebuild (bug #433918)
+
+*qtads-2.1.5 (05 Oct 2012)
+
+  05 Oct 2012; Michael Sterrett <mr_bones_@gentoo.org> +qtads-2.1.5.ebuild:
+  version bump
+
+  03 Sep 2012; Michael Palimaka <kensington@gentoo.org> qtads-2.1.4.ebuild:
+  Add missing slot dependencies on Qt.
+
+*qtads-2.1.4 (24 Aug 2012)
+
+  24 Aug 2012; Julian Ospald <hasufell@gentoo.org> +qtads-2.1.4.ebuild:
+  version bump wrt #430194
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> qtads-2.1.3.ebuild:
+  x86 stable wrt bug #418021
+
+  29 May 2012; Agostino Sarubbo <ago@gentoo.org> qtads-2.1.3.ebuild:
+  Stable for amd64, wrt bug #418021
+
+*qtads-2.1.3 (12 Apr 2012)
+
+  12 Apr 2012; Michael Sterrett <mr_bones_@gentoo.org> -qtads-2.1.2.ebuild,
+  +qtads-2.1.3.ebuild:
+  version bump (bug #411763)
+
+*qtads-2.1.2 (02 Feb 2012)
+
+  02 Feb 2012; Michael Sterrett <mr_bones_@gentoo.org> +qtads-2.1.2.ebuild:
+  version bump (bug #401883)
+
+  11 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> qtads-2.1.1.ebuild:
+  x86 stable wrt bug #365025
+
+  27 Apr 2011; Christoph Mende <angelos@gentoo.org> qtads-2.1.1.ebuild:
+  Stable on amd64 wrt bug #365025
+
+*qtads-2.1.1 (20 Feb 2011)
+
+  20 Feb 2011; Michael Sterrett <mr_bones_@gentoo.org> +qtads-2.1.1.ebuild:
+  version bump
+
+*qtads-2.1.0 (02 Feb 2011)
+
+  02 Feb 2011; Michael Sterrett <mr_bones_@gentoo.org> +qtads-2.1.0.ebuild:
+  version bump
+
+*qtads-2.0.2 (16 Jan 2011)
+
+  16 Jan 2011; Michael Sterrett <mr_bones_@gentoo.org> +qtads-2.0.2.ebuild:
+  version bump (bug #351669)
+
+*qtads-2.0.1 (31 Dec 2010)
+
+  31 Dec 2010; Michael Sterrett <mr_bones_@gentoo.org> +qtads-2.0.1.ebuild,
+  +metadata.xml:
+  initial commit of version 2 (bug #338986) with ebuild submitted by Nikos
+  Chantziaras

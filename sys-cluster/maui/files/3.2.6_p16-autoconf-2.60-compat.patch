@@ -1,0 +1,17 @@
+--- maui-3.2.6p16.orig/Makefile.in	2006-05-23 15:20:49.000000000 -0700
++++ maui-3.2.6p16/Makefile.in	2006-09-25 20:42:24.000000000 -0700
+@@ -18,7 +18,13 @@
+ # ============================
+ # Resource Manager section
+ # ============================
+-@ll_definitions@@sdr_definitions@@pbs_definitions@@sge_definitions@@lsf_definitions@@mx_definitions@@pcre_definitions@
++@ll_definitions@
++@sdr_definitions@
++@pbs_definitions@
++@sge_definitions@
++@lsf_definitions@
++@mx_definitions@
++@pcre_definitions@
+ 
+ # ============================
+ # Master Makefile for @PACKAGE_NAME@-@PACKAGE_VERSION@

@@ -1,0 +1,56 @@
+From 78d26b8497b3845fc8130981c76214d6788f7a9d Mon Sep 17 00:00:00 2001
+From: Richard Yao <ryao@cs.stonybrook.edu>
+Date: Mon, 7 May 2012 14:14:45 -0400
+Subject: [PATCH] Revert Fix zpl_writepage() deadlock
+
+The commit, cfc9a5c88f91f7b4d606fce89505e1f404691ea5, to fix deadlocks
+in zpl_writepage() relied on PF_MEMALLOC.   That had the effect of
+disabling the direct reclaim path on all allocations originating from
+calls to this function, but it failed to address the actual cause of
+those deadlocks.  This led to the same deadlocks being observed with
+swap on zvols, but not with swap on the loop device, which exercises
+this code.
+
+The use of PF_MEMALLOC also had the side effect of permitting
+allocations to be made from ZONE_DMA in instances that did not require
+it.  This contributes to the possibility of panics caused by depletion
+of pages from ZONE_DMA.
+
+As such, we revert this patch in favor of a proper fix for both issues.
+
+Signed-off-by: Richard Yao <ryao@cs.stonybrook.edu>
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Issue #726
+---
+ module/zfs/zpl_file.c |   15 +--------------
+ 1 file changed, 1 insertion(+), 14 deletions(-)
+
+diff --git a/module/zfs/zpl_file.c b/module/zfs/zpl_file.c
+index 5ac41c9..2e9f72a 100644
+--- a/module/zfs/zpl_file.c
++++ b/module/zfs/zpl_file.c
+@@ -358,20 +358,7 @@
+ 	ASSERT(PageLocked(pp));
+ 	ASSERT(!PageWriteback(pp));
+ 
+-	/*
+-	 * Disable the normal reclaim path for zpl_putpage().  This
+-	 * ensures that all memory allocations under this call path
+-	 * will never enter direct reclaim.  If this were to happen
+-	 * the VM might try to write out additional pages by calling
+-	 * zpl_putpage() again resulting in a deadlock.
+-	 */
+-	if (current->flags & PF_MEMALLOC) {
+-		(void) zfs_putpage(mapping->host, pp, wbc);
+-	} else {
+-		current->flags |= PF_MEMALLOC;
+-		(void) zfs_putpage(mapping->host, pp, wbc);
+-		current->flags &= ~PF_MEMALLOC;
+-	}
++	(void) zfs_putpage(mapping->host, pp, wbc);
+ 
+ 	return (0);
+ }
+-- 
+1.7.10
+

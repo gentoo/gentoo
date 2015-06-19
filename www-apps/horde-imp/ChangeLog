@@ -1,0 +1,347 @@
+# ChangeLog for www-apps/horde-imp
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/horde-imp/ChangeLog,v 1.71 2012/08/22 15:20:53 a3li Exp $
+
+  22 Aug 2012; Alex Legler <a3li@gentoo.org> metadata.xml:
+  removing from metadata
+
+*horde-imp-4.3.9 (22 Mar 2011)
+
+  22 Mar 2011; Alex Legler <a3li@gentoo.org> +horde-imp-4.3.9.ebuild:
+  Version bump. Closes bug 359999 by Dennis Koerner.
+
+  22 Oct 2010; Alex Legler <a3li@gentoo.org> -horde-imp-4.3.4.ebuild,
+  -horde-imp-4.3.7.ebuild:
+  cleanup
+
+  22 Oct 2010; Jeroen Roovers <jer@gentoo.org> horde-imp-4.3.8.ebuild:
+  Stable for HPPA (bug #307759).
+
+  10 Oct 2010; Raúl Porcel <armin76@gentoo.org> horde-imp-4.3.8.ebuild:
+  sparc stable wrt #307759
+
+  08 Oct 2010; Brent Baude <ranger@gentoo.org> horde-imp-4.3.8.ebuild:
+  Marking horde-imp-4.3.8 ppc for bug 307759
+
+  05 Oct 2010; Markus Meier <maekke@gentoo.org> horde-imp-4.3.8.ebuild:
+  x86 stable, bug #307759
+
+  03 Oct 2010; Markos Chandras <hwoarang@gentoo.org> horde-imp-4.3.8.ebuild:
+  Stable on amd64 wrt bug #307759
+
+  02 Oct 2010; Tobias Klausmann <klausman@gentoo.org>
+  horde-imp-4.3.8.ebuild:
+  Stable on alpha, bug #307759
+
+*horde-imp-4.3.8 (29 Sep 2010)
+
+  29 Sep 2010; Alex Legler <a3li@gentoo.org> -horde-imp-4.3.5.ebuild,
+  -horde-imp-4.3.6.ebuild, +horde-imp-4.3.8.ebuild:
+  Version bump, fixes CVE-2010-0463, bug 307759.
+
+  18 Sep 2010; Raúl Porcel <armin76@gentoo.org> horde-imp-4.3.7.ebuild:
+  alpha/sparc stable wrt #333207
+
+  23 Aug 2010; Markus Meier <maekke@gentoo.org> horde-imp-4.3.7.ebuild:
+  x86 stable, bug #333207
+
+  19 Aug 2010; Markos Chandras <hwoarang@gentoo.org> horde-imp-4.3.7.ebuild:
+  Stable on amd64 wrt bug #333207
+
+*horde-imp-4.3.7 (17 Jul 2010)
+
+  17 Jul 2010; Alex Legler <a3li@gentoo.org> +horde-imp-4.3.7.ebuild:
+  Version bump
+
+*horde-imp-4.3.6 (17 Dec 2009)
+
+  17 Dec 2009; Alex Legler <a3li@gentoo.org> +horde-imp-4.3.6.ebuild,
+  metadata.xml:
+  Version bump; taking over maintenance from wrobel
+
+  03 Nov 2009; Raúl Porcel <armin76@gentoo.org> horde-imp-4.3.5.ebuild:
+  Add ~ia64 wrt #282942
+
+*horde-imp-4.3.5 (17 Sep 2009)
+
+  17 Sep 2009; Alex Legler <a3li@gentoo.org> +horde-imp-4.3.5.ebuild:
+  Version bump.
+
+  12 Sep 2009; Alex Legler <a3li@gentoo.org> -horde-imp-4.1.6.ebuild:
+  Non-maintainer commit: Removing vulnerable ebuilds, GLSA 200909-14.
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> horde-imp-4.3.4.ebuild:
+  ppc stable #262976
+
+  25 Aug 2009; Raúl Porcel <armin76@gentoo.org> horde-imp-4.3.4.ebuild:
+  sparc stable wrt #262976
+
+  25 Aug 2009; Jeroen Roovers <jer@gentoo.org> horde-imp-4.3.4.ebuild:
+  Stable for HPPA (bug #262976).
+
+  25 Aug 2009; Tobias Klausmann <klausman@gentoo.org>
+  horde-imp-4.3.4.ebuild:
+  Stable on alpha, bug #256125
+
+  25 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  horde-imp-4.3.4.ebuild:
+  stable x86, security bug 262976
+
+  24 Aug 2009; Steve Dibb <beandog@gentoo.org> horde-imp-4.3.4.ebuild:
+  amd64 stable, bug 262976
+
+*horde-imp-4.3.4 (24 Aug 2009)
+
+  24 Aug 2009; Alex Legler <a3li@gentoo.org> -horde-imp-4.2.ebuild,
+  -horde-imp-4.3.ebuild, +horde-imp-4.3.4.ebuild:
+  Non-maintainer commit: Version bump for security bug 262976. Removing
+  unneeded vulnerable versions.
+
+*horde-imp-4.3 (27 Oct 2008)
+
+  27 Oct 2008; Gunnar Wrobel <wrobel@gentoo.org> +horde-imp-4.3.ebuild:
+  Added horde-imp-4.3.
+
+  07 Aug 2008; wrobel@gentoo.org metadata.xml:
+  Updated maintainer.
+
+*horde-imp-4.2 (01 Jun 2008)
+
+  01 Jun 2008; Mike Frysinger <vapier@gentoo.org> +horde-imp-4.2.ebuild:
+  Version bump #224333 by Arfrever Frehtes Taifersar Arahesis.
+
+  31 May 2008; Mike Frysinger <vapier@gentoo.org> horde-imp-4.1.6.ebuild:
+  Depend on either horde or horde-groupware as pointed out by Robin Bankhead
+  #217326.
+
+  23 Jan 2008; Steve Dibb <beandog@gentoo.org> horde-imp-4.1.6.ebuild:
+  amd64 stable, security bug 205377
+
+  18 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  horde-imp-4.1.6.ebuild:
+  ppc stable, bug #205377
+
+  16 Jan 2008; Raúl Porcel <armin76@gentoo.org> horde-imp-4.1.6.ebuild:
+  alpha/sparc stable wrt security #205377
+
+  15 Jan 2008; Jeroen Roovers <jer@gentoo.org> horde-imp-4.1.6.ebuild:
+  Stable for HPPA (bug #205377).
+
+  13 Jan 2008; Markus Meier <maekke@gentoo.org> horde-imp-4.1.6.ebuild:
+  x86 stable, security bug #205377
+
+*horde-imp-4.1.6 (12 Jan 2008)
+
+  12 Jan 2008; Mike Frysinger <vapier@gentoo.org> +horde-imp-4.1.6.ebuild:
+  Version bump.
+
+*horde-imp-4.1.5 (23 Dec 2007)
+
+  23 Dec 2007; Mike Frysinger <vapier@gentoo.org> +horde-imp-4.1.5.ebuild:
+  Version bump.
+
+  11 May 2007; Steve Dibb <beandog@gentoo.org> horde-imp-4.1.4.ebuild:
+  amd64 stable, security bug 170977
+
+  10 May 2007; Jose Luis Rivero <yoswink@gentoo.org> horde-imp-4.1.4.ebuild:
+  Stable on alpha wrt security #170977
+
+  08 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  horde-imp-4.1.4.ebuild:
+  ppc stable, bug #170977
+
+  07 May 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  horde-imp-4.1.4.ebuild:
+  Stable on sparc wrt security #170977
+
+  07 May 2007; Jeroen Roovers <jer@gentoo.org> horde-imp-4.1.4.ebuild:
+  Stable for HPPA (bug #170977).
+
+  05 May 2007; Andrej Kacian <ticho@gentoo.org> horde-imp-4.1.4.ebuild:
+  Stable on x86, security bug #170977.
+
+*horde-imp-4.1.4 (05 May 2007)
+
+  05 May 2007; Mike Frysinger <vapier@gentoo.org> +horde-imp-4.1.4.ebuild:
+  Version bump.
+
+  06 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> horde-imp-4.1.3.ebuild:
+  Stable on Alpha.
+
+  04 Nov 2006; <blubb@gentoo.org> horde-imp-4.1.3.ebuild:
+  stable on amd64
+
+  30 Sep 2006; <ticho@gentoo.org> horde-imp-4.1.3.ebuild:
+  Stable on x86, bug #148767.
+
+  26 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  horde-imp-4.1.3.ebuild:
+  Stable on hppa wrt #148767
+
+  26 Sep 2006; Jason Wever <weeve@gentoo.org> horde-imp-4.1.3.ebuild:
+  Stable on SPARC wrt bug #148767.
+
+  23 Sep 2006; Joseph Jezak <josejx@gentoo.org> horde-imp-4.1.3.ebuild:
+  Marked ppc for bug #148767.
+
+*horde-imp-4.1.3 (23 Aug 2006)
+
+  23 Aug 2006; Mike Frysinger <vapier@gentoo.org> +horde-imp-4.1.3.ebuild:
+  Version bump #144796 by David Bosso.
+
+*horde-imp-4.1.2 (19 Jun 2006)
+
+  19 Jun 2006; Luca Longinotti <chtekk@gentoo.org> +horde-imp-4.1.2.ebuild:
+  Version bump
+
+*horde-imp-4.1.1 (15 Jun 2006)
+
+  15 Jun 2006; Luca Longinotti <chtekk@gentoo.org> +horde-imp-4.1.1.ebuild:
+  Version bump
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org>
+  files/digest-horde-imp-3.2.8, files/digest-horde-imp-4.0.4, Manifest:
+  Fixing SHA256 digest, pass four
+
+  04 Apr 2006; <blubb@gentoo.org> horde-imp-4.1.ebuild:
+  stable on amd64 wrt bug 126435
+
+  31 Mar 2006; Jose Luis Rivero <yoswink@gentoo.org> horde-imp-4.1.ebuild:
+  Stable on alpha wrt bug #126435
+
+  28 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> horde-imp-4.1.ebuild:
+  Stable on hppa wrt security #126435
+
+  28 Mar 2006; Mark Loeser <halcy0n@gentoo.org> horde-imp-4.1.ebuild:
+  Stable on x86; bug #126435
+
+  25 Mar 2006; Joseph Jezak <josejx@gentoo.org> horde-imp-4.1.ebuild:
+  Marked ppc stable for bug #126435.
+
+  20 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> horde-imp-4.1.ebuild:
+  Stable on sparc wrt security #126435
+
+*horde-imp-4.1 (09 Mar 2006)
+
+  09 Mar 2006; Mike Frysinger <vapier@gentoo.org> +horde-imp-4.1.ebuild:
+  Version bump #125571 by Pol.
+
+*horde-imp-4.0.4 (25 Oct 2005)
+
+  25 Oct 2005; Mike Frysinger <vapier@gentoo.org> +horde-imp-4.0.4.ebuild:
+  Version bump.
+
+*horde-imp-3.2.8 (26 Apr 2005)
+
+  26 Apr 2005; Mike Frysinger <vapier@gentoo.org> +horde-imp-3.2.8.ebuild:
+  Version bump for security #90365.
+
+*horde-imp-4.0.3 (16 Apr 2005)
+
+  16 Apr 2005; Mike Frysinger <vapier@gentoo.org> -horde-imp-4.0.2.ebuild,
+  +horde-imp-4.0.3.ebuild:
+  Version bump.
+
+*horde-imp-4.0.2 (23 Feb 2005)
+
+  23 Feb 2005; Mike Frysinger <vapier@gentoo.org> -horde-imp-4.0.1.ebuild,
+  +horde-imp-4.0.2.ebuild:
+  Version bump.
+
+*horde-imp-4.0.1 (16 Jan 2005)
+
+  16 Jan 2005; Mike Frysinger <vapier@gentoo.org> +horde-imp-4.0.1.ebuild:
+  Version bump.
+
+*horde-imp-3.2.7 (16 Jan 2005)
+
+  16 Jan 2005; Mike Frysinger <vapier@gentoo.org> +horde-imp-3.2.7.ebuild:
+  Version bump.
+
+*horde-imp-4.0 (24 Dec 2004)
+
+  24 Dec 2004; Mike Frysinger <vapier@gentoo.org> +horde-imp-4.0.ebuild:
+  Version bump.
+
+*horde-imp-3.2.6 (08 Nov 2004)
+
+  08 Nov 2004; Mike Frysinger <vapier@gentoo.org> -horde-imp-3.2.4.ebuild,
+  horde-imp-3.2.5.ebuild, +horde-imp-3.2.6.ebuild:
+  Version bump.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  15 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> horde-imp-3.2.4.ebuild,
+  horde-imp-3.2.5.ebuild:
+  net-www/horde -> www-apps/horde
+
+*horde-imp-3.2.4 (15 Aug 2004)
+
+  15 Aug 2004; Stuart Herbert <stuart@gentoo.org> +metadata.xml,
+  +horde-imp-3.2.4.ebuild, +horde-imp-3.2.5.ebuild:
+  Moved from net-www/horde-imp to www-apps/horde-imp.
+
+*horde-imp-3.2.5 (08 Aug 2004)
+
+  08 Aug 2004; Mike Frysinger <vapier@gentoo.org> +horde-imp-3.2.5.ebuild:
+  Version bump to fix security issues #59336
+
+*horde-imp-3.2.4 (13 Jun 2004)
+
+  13 Jun 2004; Mike Frysinger <vapier@gentoo.org> +horde-imp-3.2.4.ebuild:
+  Version bump #53400 by Ronald Hummelink.
+
+  01 Apr 2004; Chris Aniszczyk <zx@gentoo.org> horde-imp-3.2.3.ebuild:
+  Marking ~hppa
+
+*horde-imp-3.2.3 (26 Feb 2004)
+
+  26 Feb 2004; Martin Holzer <mholzer@gentoo.org> horde-imp-3.2.3.ebuild:
+  Version bumped.
+
+  15 Dec 2003; Stuart Herbert <stuart@gentoo.org> horde-imp-3.2.2.ebuild:
+  Fix for bug #32636
+
+  04 Dec 2003; Martin Holzer <mholzer@gentoo.org> horde-imp-3.2.2.ebuild:
+  fixing coreutils chown.
+
+  12 Nov 2003; Martin Holzer <mholzer@gentoo.org> horde-imp-3.2.2.ebuild:
+  added webapps-apache
+
+*horde-imp-3.2.2 (11 Sep 2003)
+
+  11 Sep 2003; Martin Holzer <mholzer@gentoo.org> horde-imp-3.1.ebuild,
+  horde-imp-3.2.1.ebuild, horde-imp-3.2.2.ebuild, horde-imp-3.2.ebuild:
+  Version bumped.
+
+*horde-imp-3.2.1 (08 Apr 2003)
+  08 Apr 2003; Dean Bailey <alron@gentoo.org> horde-imp-3.2.1 :
+  Version bump to 3.2.1, added dep on horde-pear
+
+*horde-imp-3.2 (24 Feb 2003)
+  24 Feb 2003; Dean Bailey <alron@gentoo.org> horde-imp-3.2 :
+  Version bump to 3.2, also removed the RC's from cvs as they are no longer
+  needed.
+
+*horde-imp-3.2_rc3 (18 Feb 2003)
+  18 Feb 2003; Dean Bailey <alron@gentoo.org> horde-imp-3.2_rc3 :
+  Added 3.2-RC3 of IMP. Masked as -x86 so on. This is just a minor version bump.
+  Same as previous RC.
+
+*horde-imp-3.2_rc2 (10 Feb 2003)
+  10 Feb 2003; Dean Bailey <alron@gentoo.org> horde-imp-3.2_rc2 :
+  Added 3.2-RC2 of IMP. Masked as -x86 so on. This is just a minor version bump. Same reasons as previous
+  RC.
+
+*horde-imp-3.2_rc1 (05 Feb 2003)
+  05 Feb 2003; Dean Bailey <alron@gentoo.org> horde-imp-3.2_rc1 :
+  Added 3.2-RC1 of IMP. Masked as -x86 so on. This version fixes a bunch of bugs/security issues. Mostly
+  dealing with temp files for attachment uploads, and sessions.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+  
+*horde-imp-3.1 (31 Oct 2002)
+
+  31 Oct 2002; Karl Trygve Kalleberg <karltk@gentoo.org> horde-imp-2.1.ebuild files/digest-horde-imp-3.1 : 
+  Initial import. Ebuild submitted by Christophe GUILLOUX <cg@rootix.info>.  

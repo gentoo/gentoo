@@ -1,0 +1,52 @@
+# ChangeLog for dev-java/jax-ws-tools
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jax-ws-tools/ChangeLog,v 1.12 2014/06/29 00:11:42 mrueg Exp $
+
+  29 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -jax-ws-tools-2.0.1.ebuild:
+  NM: Cleanup old.
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> jax-ws-tools-2.0.1-r1.ebuild:
+  ppc stable #275204
+
+  05 Jul 2009; Markus Meier <maekke@gentoo.org>
+  jax-ws-tools-2.0.1-r1.ebuild:
+  amd64 stable, bug #275204
+
+  30 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  jax-ws-tools-2.0.1-r1.ebuild:
+  stable x86, bug 275204
+
+*jax-ws-tools-2.0.1-r1 (05 Oct 2008)
+
+  05 Oct 2008; Petteri Räty <betelgeuse@gentoo.org>
+  +files/jax-ws-tools-2.0.1-remove-unused-saaj-import.patch,
+  +jax-ws-tools-2.0.1-r1.ebuild:
+  Remove unneeded dependencies and use slot deps.
+
+  11 May 2008; Markus Meier <maekke@gentoo.org> jax-ws-tools-2.0.1.ebuild:
+  amd64 stable, bug #214778
+
+  28 Mar 2008; nixnut <nixnut@gentoo.org> jax-ws-tools-2.0.1.ebuild:
+  Stable on ppc wrt bug 214778
+
+  28 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  jax-ws-tools-2.0.1.ebuild:
+  quote variables
+
+  28 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  jax-ws-tools-2.0.1.ebuild:
+  stable x86, bug 214778
+
+  11 Aug 2007; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml:
+  Remove myself from <maintainer>.
+
+  07 May 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  jax-ws-tools-2.0.1.ebuild:
+  Set needed jsr181 version to 1.0
+
+*jax-ws-tools-2.0.1 (01 May 2007)
+
+  01 May 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/jax-ws-tools-2.0.1-gentoo.patch, +metadata.xml,
+  +jax-ws-tools-2.0.1.ebuild:
+  Initial commit of jax-ws-tools.

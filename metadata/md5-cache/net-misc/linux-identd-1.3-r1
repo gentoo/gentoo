@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=A real IDENT daemon for linux
+EAPI=5
+HOMEPAGE=http://www.fukt.bsnet.se/~per/identd/
+IUSE=xinetd
+KEYWORDS=alpha amd64 ~hppa ia64 ~mips ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=xinetd? ( sys-apps/xinetd )
+SLOT=0
+SRC_URI=http://www.fukt.bsnet.se/~per/identd/linux-identd-1.3.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a7fcf8d94d37fa85eb53a5746956fcdc

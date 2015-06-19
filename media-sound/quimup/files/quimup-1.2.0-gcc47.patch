@@ -1,0 +1,13 @@
+diff --git a/src/qm_mpdcom.cpp b/src/qm_mpdcom.cpp
+index 5659c9b..a949798 100644
+--- a/src/qm_mpdcom.cpp
++++ b/src/qm_mpdcom.cpp
+@@ -19,6 +19,8 @@
+  *  along with this program. If not, see http://www.gnu.org/licenses/.
+  */
+ 
++#include <unistd.h>
++
+ #include "qm_mpdcom.h"
+ 
+ qm_mpdCom::qm_mpdCom()

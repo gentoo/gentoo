@@ -1,0 +1,9 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -19,5 +19,5 @@
+ library_include_HEADERS = servicelog-1/servicelog.h
+ 
+ install-exec-hook:
+-	install -D --mode=754 --group=service servicelog.db \
++	install -D --mode=754 --group=wheel servicelog.db \
+ 		${DESTDIR}/var/lib/servicelog/servicelog.db

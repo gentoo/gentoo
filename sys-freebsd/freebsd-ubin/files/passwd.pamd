@@ -1,0 +1,11 @@
+#
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-ubin/files/passwd.pamd,v 1.1 2006/04/01 16:43:51 flameeyes Exp $
+#
+# PAM configuration for the "passwd" service
+#
+
+# passwd(1) does not use the auth, account or session services.
+
+# password
+#password	requisite	pam_passwdqc.so		enforce=users
+password	required	pam_unix.so		no_warn try_first_pass nullok

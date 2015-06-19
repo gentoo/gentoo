@@ -1,0 +1,20 @@
+# ChangeLog for net-libs/libmapi
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libmapi/ChangeLog,v 1.4 2014/08/10 20:49:26 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> libmapi-1.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  05 Feb 2013; Pacho Ramos <pacho@gentoo.org> -libmapi-0.9.ebuild, metadata.xml:
+  Cleanup due #260981 after talking with him
+
+  10 Oct 2012; nobody +files/openchange-1.0-BORG-fix-soname-QA.patch,
+  +files/openchange-1.0-BORG-python-location-fix.patch:
+  Add libmapi 1.0
+
+
+*libmapi-0.9 (23 Feb 2010)
+
+  23 Feb 2010; Robert Piasek <dagger@gentoo.org> +libmapi-0.9.ebuild,
+  +metadata.xml:
+  New ebuild for libmapi-0.9.

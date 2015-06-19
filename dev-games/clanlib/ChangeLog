@@ -1,0 +1,365 @@
+# ChangeLog for dev-games/clanlib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-games/clanlib/ChangeLog,v 1.70 2015/03/30 20:28:50 mr_bones_ Exp $
+
+  30 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> clanlib-0.8.1.ebuild:
+  EAPI=5
+
+  26 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> -clanlib-2.3.6.ebuild,
+  -files/clanlib-2.3.6-autotools.patch, -files/clanlib-2.3.6-mesa.patch:
+  old
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> clanlib-2.3.7.ebuild:
+  Stable for x86, wrt bug #541586
+
+  28 Feb 2015; Agostino Sarubbo <ago@gentoo.org> clanlib-2.3.7.ebuild:
+  Stable for amd64, wrt bug #541586
+
+  28 Jan 2015; Michał Górny <mgorny@gentoo.org> clanlib-2.3.6.ebuild,
+  clanlib-2.3.7.ebuild:
+  Switch to CPU_FLAGS_X86.
+
+  12 Sep 2014; Tupone Alfredo <tupone@gentoo.org> clanlib-2.3.7.ebuild,
+  +files/clanlib-2.3.7-doc.patch:
+  Fix build with USE=doc. Bug #521340 by flameeyes
+
+*clanlib-2.3.7 (28 Oct 2013)
+
+  28 Oct 2013; Michael Sterrett <mr_bones_@gentoo.org> +clanlib-2.3.7.ebuild,
+  +files/clanlib-2.3.6-mesa.patch, +files/clanlib-2.3.7-autotools.patch,
+  clanlib-2.3.6.ebuild:
+  version bump and apply upstream patch to stable to fix building with newer
+  mesa (bug #447258)
+
+  31 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org> -clanlib-2.3.4.ebuild,
+  -files/clanlib-2.3.4-autotools.patch:
+  old
+
+  29 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> clanlib-0.8.1.ebuild,
+  +files/clanlib-0.8.1-gcc47.patch:
+  Fix building with gcc 4.7, wrt bug #448428. Thanks to Diego Elio Pettenò for
+  discovering this issue
+
+  29 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> clanlib-0.8.1.ebuild:
+  Add missing dependency on virtual/glu
+
+  04 Dec 2012;  <ago@gentoo.org> clanlib-2.3.6.ebuild:
+  Stable for x86, wrt bug #440168
+
+  03 Nov 2012; <ago@gentoo.org> clanlib-2.3.6.ebuild:
+  Stable for amd64, wrt bug #440168
+
+  29 Oct 2012; Michael Sterrett <mr_bones_@gentoo.org> clanlib-2.3.6.ebuild:
+  tidy
+
+*clanlib-2.3.6 (25 Sep 2012)
+
+  25 Sep 2012; Tupone Alfredo <tupone@gentoo.org> +clanlib-2.3.6.ebuild,
+  +files/clanlib-2.3.6-autotools.patch:
+  Version bump to 2.3.6.
+  Adding required_use. Bug #425696 by Diego
+
+  03 Aug 2012; Markos Chandras <hwoarang@gentoo.org> clanlib-2.3.4.ebuild:
+  Stable on amd64 wrt bug #418677
+
+  13 Jun 2012; Johannes Huber <johu@gentoo.org> clanlib-2.3.4.ebuild:
+  Stable for x86, wrt bug #420141
+
+  11 Jun 2012; Agostino Sarubbo <ago@gentoo.org> clanlib-2.3.4.ebuild:
+  Stable for amd64, wrt bug #420141
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> clanlib-2.3.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  07 Mar 2012; Michael Sterrett <mr_bones_@gentoo.org> clanlib-0.8.1.ebuild:
+  Adjust X deps (bug #407273)
+
+  07 Feb 2012; Tupone Alfredo <tupone@gentoo.org> clanlib-2.3.4.ebuild:
+  mikmod and vorbis require sound
+
+*clanlib-2.3.4 (06 Feb 2012)
+
+  06 Feb 2012; Tupone Alfredo <tupone@gentoo.org> +clanlib-2.3.4.ebuild,
+  +files/clanlib-2.3.4-autotools.patch:
+  Version bump to 2.3.4 Bug #288218 by proDOOMman
+
+  15 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> clanlib-0.8.1.ebuild,
+  +files/clanlib-0.8.1-libpng15.patch:
+  Fix building with libpng15 wrt #378203 by Diego Elio Pettenò
+
+  25 Feb 2011; Kevin McCarthy <signals@gentoo.org> clanlib-0.8.1.ebuild:
+  Update depends from media-libs/jpeg to virtual/jpeg
+
+  16 Jan 2011; Michael Sterrett <mr_bones_@gentoo.org> clanlib-0.8.1.ebuild:
+  add static-libs support
+
+  17 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> clanlib-0.8.1.ebuild:
+  Remove virtual/glu where already virtual/opengl is stated.
+
+  04 Aug 2009; Michael Sterrett <mr_bones_@gentoo.org> clanlib-0.8.1.ebuild,
+  +files/clanlib-0.8.1-gcc44.patch:
+  EAPI=2; add gcc44 patch submitted by Fredric Johansson via bug #275791
+
+  26 Aug 2008; Tristan Heaven <nyhm@gentoo.org> clanlib-0.8.1.ebuild:
+  Add missing media-libs/alsa-lib dependency, bug #227509
+
+  20 Jun 2008; Thomas Anderson (gentoofan23) <gentoofan23@gentoo.org>
+  clanlib-0.7.8-r2.ebuild, clanlib-0.8.1.ebuild:
+  amd64 stable, bug #227355; Fix minor QA warnings in clanlib-0.7.8-r1
+
+  29 May 2008; Christian Faulhammer <opfer@gentoo.org> clanlib-0.8.1.ebuild:
+  stable x86, bug 214803
+
+*clanlib-0.8.1 (30 Apr 2008)
+
+  30 Apr 2008; Tristan Heaven <nyhm@gentoo.org>
+  +files/clanlib-0.8.1-gcc43.patch, +files/clanlib-0.8.1-ndebug.patch,
+  +clanlib-0.8.1.ebuild:
+  Version bump, bug #214860
+
+  29 Oct 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/clanlib-0.7.8-ndebug.patch, +files/clanlib-0.8.0-ndebug.patch,
+  clanlib-0.7.8-r2.ebuild, clanlib-0.8.0.ebuild:
+  add patch to build with -DNDEBUG from Guenther Brunthaler (bug #154513)
+
+  22 Jul 2007; Hans de Graaff <graaff@gentoo.org> clanlib-0.6.5-r4.ebuild,
+  clanlib-0.7.8-r2.ebuild:
+  Drop virtual/x11 references.
+
+  12 Jun 2007; Tristan Heaven <nyhm@gentoo.org>
+  +files/clanlib-0.8.0-gcc42.patch, clanlib-0.8.0.ebuild:
+  Patch for gcc-4.2
+
+*clanlib-0.8.0 (23 Sep 2006)
+
+  23 Sep 2006; Mike Frysinger <vapier@gentoo.org> +clanlib-0.8.0.ebuild:
+  Version bump #130963 by Andrija Prcic / #146376 by Pacho Ramos.
+
+*clanlib-0.6.5-r4 (13 Sep 2006)
+
+  13 Sep 2006; <tupone@gentoo.org> +files/clanlib-0.6.5-bounds.patch,
+  -clanlib-0.6.5-r3.ebuild, +clanlib-0.6.5-r4.ebuild:
+  Fixing segfaults after few seconds of driving, Bug #100987 by Frank Weinberg
+
+  12 Sep 2006; <tupone@gentoo.org> +files/clanlib-0.6.5-64bit.patch,
+  clanlib-0.6.5-r3.ebuild:
+  Fix building with amd64. Bug #146114 by Frank Weinberg
+  using patch given in Bug #146849 by Pacho Ramos
+
+  11 Sep 2006; <tupone@gentoo.org> clanlib-0.6.5-r3.ebuild:
+  Removed lua flag. Bug #136587 by Kai.
+  Removed amd64 as is not actually buildable there.
+
+  08 Jun 2006; Mike Frysinger <vapier@gentoo.org> clanlib-0.6.5-r3.ebuild:
+  Add support for USE=lua #135289 by James Le Cuirot.
+
+  08 Jun 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/clanlib-0.6.5-uclibc.patch, clanlib-0.6.5-r3.ebuild:
+  Add support for building on uClibc systems #135081 by James Le Cuirot.
+
+  13 May 2006; Mike Frysinger <vapier@gentoo.org>
+  files/clanlib-0.6.5-DirectFB-update.patch:
+  Fix building with newer DirectFB #132945 by ferret.
+
+*clanlib-0.7.8-r2 (26 Mar 2006)
+
+  26 Mar 2006; <Tupone@gentoo.org> +files/clanlib-0.7.8-refreshfix.patch,
+  +clanlib-0.7.8-r2.ebuild:
+  Fix for wormux segfault, bug #96382 by Radek "rush" Senfeld
+
+  26 Feb 2006; <Tupone@gentoo.org> clanlib-0.7.8-r1.ebuild:
+  Modular X dependency fix
+  clanJavaScript & clanVoice are not supported by clanlib-0.7.8
+
+  11 Feb 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  clanlib-0.6.5-r3.ebuild, clanlib-0.7.8-r1.ebuild:
+  Clean up existing modular X depedencies a bit.  Add modular X dependencies for
+  older version (bug #120897).
+
+  14 Jan 2006; Mark Loeser <halcy0n@gentoo.org>
+  +files/clanlib-0.6.5-gcc41.patch, +files/clanlib-0.7.8-gcc41.patch,
+  clanlib-0.6.5-r3.ebuild, clanlib-0.7.8-r1.ebuild:
+  Add patch by Kristiaan Lenaerts <kristiaan.lenaerts AT gmail DOT com> to fix
+  compilation with gcc-4.1; bug #115847
+
+  13 Jan 2006; Stefan Schweizer <genstef@gentoo.org>
+  clanlib-0.7.8-r1.ebuild:
+  Add modular depends
+
+*clanlib-0.6.5-r3 (01 Mar 2005)
+
+  01 Mar 2005; Mike Frysinger <vapier@gentoo.org> +clanlib-0.6.5-r3.ebuild:
+  Touchup config script to not suck.
+
+  01 Mar 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/clanlib-0.6.5-freetype.patch, clanlib-0.6.5-r2.ebuild:
+  Add patch by Jim Ramsay to fix building with freetype #76533.
+
+  01 Mar 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/clanlib-0.6.5-DirectFB-update.patch, clanlib-0.6.5-r2.ebuild:
+  Fix building with newer DirectFB #77034 by Andreas Bulling.
+
+  02 Jan 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/0.7.8-install-opengl-wrap.patch, clanlib-0.7.8-r1.ebuild:
+  Take patch from upstream and install the opengl_wrap.h header file #76371 by
+  Greg Yasko.
+
+  23 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  clanlib-0.7.8-r1.ebuild:
+  update SRC_URI; media-libs/hermes isn't needed for 0.7
+
+*clanlib-0.7.8-r1 (15 Aug 2004)
+
+  15 Aug 2004; Mike Frysinger <vapier@gentoo.org> +clanlib-0.7.8-r1.ebuild:
+  Install clanlib-0.6.x into a SLOT-ed dir but move 0.7.x back into normal
+  behavior #52509 / #44258.
+
+*clanlib-0.6.5-r2 (15 Aug 2004)
+
+  15 Aug 2004; Mike Frysinger <vapier@gentoo.org> +clanlib-0.6.5-r2.ebuild:
+  Install clanlib-0.6.x into a SLOT-ed dir but move 0.7.x back into normal
+  behavior #52509 / #44258.
+
+  15 Aug 2004; Mike Frysinger <vapier@gentoo.org> files/0.6.5-gcc3.patch:
+  Update gcc-3.x patch from ROCKLinux #51997 by Felix Riemann.
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> clanlib-0.7.7.ebuild:
+  add sed-4 dep
+
+  02 Jun 2004; Aron Griffis <agriffis@gentoo.org> clanlib-0.7.7.ebuild:
+  Fix use invocation
+
+*clanlib-0.7.8 (10 May 2004)
+
+  10 May 2004; Michael Sterrett <mr_bones_@gentoo.org> clanlib-0.7.8.ebuild:
+  version bump (bug #50686)
+
+  29 Apr 2004; Aron Griffis <agriffis@gentoo.org> clanlib-0.6.5-r1.ebuild,
+  clanlib-0.7.7.ebuild:
+  Add ~alpha
+
+*clanlib-0.7.7 (17 Jan 2004)
+
+  17 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump + patch #38464.
+
+*clanlib-0.7.6 (11 Nov 2003)
+
+  09 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  clanlib-0.6.5-r1.ebuild:
+  call replace-flags in src_compile; more error checking/messages
+
+  15 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add small patch to fix #33453.
+
+  11 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*clanlib-0.7.5 (25 Oct 2003)
+
+  25 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*clanlib-0.7.4 (06 Oct 2003)
+
+  20 Oct 2003; Ian Leitch <port001@gentoo.org> clanlib-0.6.5-r1.ebuild,
+  clanlib-0.7.2-r1.ebuild, clanlib-0.7.4.ebuild:
+  Install the INSTALL.linux document. #31594
+
+  06 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump to fix #30488.
+
+*clanlib-0.7.3 (07 Sep 2003)
+
+  07 Sep 2003; Karl Trygve Kalleberg <karltk@gentoo.org>
+  clanlib-0.7.3.ebuild: 
+  New upstream version. Reworked clanlib-config slightly. More specific 
+  SLOTing, as upstream is very unstable.
+
+*clanlib-0.7.2-r1 (16 Jul 2003)
+
+  02 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added gcc3 patch #27349.
+
+  16 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  SLOT-ed version #22594.
+
+*clanlib-0.7.2 (27 Jun 2003)
+
+  27 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #22594.
+
+*clanlib-0.7.1 (29 Apr 2003)
+
+  05 May 2003; Paul de Vrieze <pauldv@gentoo.org> clanlib-0.7.1.ebuild:
+  Changed to make sure it runs with an uptodate version of automake which it
+  requires.
+
+  29 Apr 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*clanlib-0.6.5-r1 (16 Jul 2003)
+
+  02 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added gcc3 patch #27349.
+
+  16 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  SLOT-ed version #22594.
+
+*clanlib-0.6.5 (17 Apr 2003)
+
+  29 Apr 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added support for doc use flag and cleaned up a bit.
+
+  17 Apr 2003; Patrick Kursawe <phosphan@gentoo.org> :
+  New version
+
+*clanlib-0.6.3 (02 Okt 2002)
+
+  02 Okt 2002; Bart Verwilst <verwilst@gentoo.org> :
+  New version
+
+*clanlib-0.5.4-r4 (16 Jul 2003)
+
+  16 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  SLOT-ed version #22594.
+
+*clanlib-0.5.4-r3 (14 Apr 2002)
+
+  29 Apr 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added support for doc use flag and cleaned up a bit.
+
+  14 Apr 2002; Seemant Kulleen <seemant@gentoo.org> clanlib-0.5.4-r3.ebuild :
+  Updated the dependency for hermes to point to hermes' new location in
+  media-libs instead of app-games.
+
+*clanlib-0.5.4-r2 (12 Apr 2002)
+
+  12 Apr 2002; Seemant Kulleen <seemant@gentoo.org> clanlib-0.5.4-r2.ebuild :
+  Compile against newest libpng
+
+*clanlib-0.5.4-r1 (12 Apr 2002)
+
+  12 Apr 2002; Seemant Kulleen <seemant@gentoo.org> clanlib-0.5.4-r1.ebuild :
+  oops, I had a vorbis flag still lying around.  Many more things are now
+  optional, like jpeg support and png and mikmod support (if those flags 
+  get accepted into gentoo usage).
+
+*clanlib-0.5.4 (28 Mar 2002)
+
+  28 Mar 2002; Seemant Kulleen <seemant@gentoo.org> clanlib-0.5.4.ebuild :
+  oggvorbis is the new USE flag instead of separate ogg and vorbis flags.
+
+*clanlib-0.5.4 (24 Feb 2002)
+
+  24 Feb 2002; Grant Goodyear <g2boojum@gentoo.org> :
+  New version.  Thanks to Seemant Kulleen!!!
+  
+*clanlib-0.5.010512 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

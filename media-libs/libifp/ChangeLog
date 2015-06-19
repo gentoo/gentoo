@@ -1,0 +1,55 @@
+# ChangeLog for media-libs/libifp
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libifp/ChangeLog,v 1.16 2011/02/21 17:50:53 ssuominen Exp $
+
+  21 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> libifp-1.0.0.2.ebuild:
+  Skip running src_test() wrt #318597 by Diego Elio Pettenò.
+
+  21 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> libifp-1.0.0.2.ebuild:
+  USE="static-libs" and remove useless libtool archive. Use virtual/libusb:0.
+
+  07 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> libifp-1.0.0.2.ebuild:
+  Remove USE="modules" because libifp-module is unmaintained wrt #286081.
+
+  21 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> libifp-1.0.0.2.ebuild,
+  metadata.xml:
+  To keep tree constant; rename USE module to USE modules.
+
+  11 May 2009; Samuli Suominen <ssuominen@gentoo.org> libifp-1.0.0.2.ebuild:
+  Respect CFLAGS and CXXFLAGS wrt #240814, thanks to Diego E. Pettenò.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  18 Jul 2006; Joshua Jackson <tsunam@gentoo.org> libifp-1.0.0.2.ebuild:
+  Stable x86 for amarok #139095
+
+  08 Jul 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  libifp-1.0.0.2.ebuild:
+  stable on ppc (Bug #139095)
+
+  04 Jul 2006; Markus Rothe <corsair@gentoo.org> libifp-1.0.0.2.ebuild:
+  Stable on ppc64; bug #139095
+
+  17 Apr 2006; Markus Rothe <corsair@gentoo.org> libifp-1.0.0.2.ebuild:
+  Added ~ppc64; bug #129409
+
+  16 Apr 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  libifp-1.0.0.2.ebuild:
+  mark ~ppc -- library compiles and links ok, and ppc is a supported platform
+  upstream so I'm giving it the benefit of the doubt (Bug #129409)
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> libifp-1.0.0.2.ebuild:
+  Mark 1.0.0.2 ~ia64
+
+  27 Feb 2006; Patrick McLean <chutzpah@gentoo.org> libifp-1.0.0.2.ebuild:
+  Stable on amd64.
+
+  06 Feb 2006; Patrick McLean <chutzpah@gentoo.org> libifp-1.0.0.2.ebuild:
+  Fix dependency syntax (bug #121742).
+
+*libifp-1.0.0.2 (23 Jan 2006)
+
+  23 Jan 2006; Patrick McLean <chutzpah@gentoo.org> +metadata.xml, +libifp-1.0.0.2.ebuild:
+  Initial version, ebuild submitted by Przemyslaw Maciag <p_maciag@wp.pl>.
+

@@ -1,0 +1,52 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/lirc/files/lircd-0.8.6-r2,v 1.2 2014/01/23 21:37:11 vapier Exp $
+
+PIDFILE=/var/run/lirc/${SVCNAME}.pid
+: ${LIRCD_SYMLINKFILE:=/dev/lircd}
+: ${LIRCD_SOCKET:=/var/run/lirc/lircd}
+
+depend() {
+	need localmount
+	use modules
+	provide lirc
+}
+
+start() {
+	local retval
+
+	ebegin "Starting lircd"
+
+	for retval in ${LIRCD_SET_SYSCLASSRCS} ; do
+		if [ -e /sys/class/rc/${retval}/protocols ] && \
+		grep -qs 'lirc' /sys/class/rc/${retval}/protocols ; then
+			einfo "Setting lirc protocol active for ${retval}"
+			echo lirc >/sys/class/rc/${retval}/protocols
+		fi
+	done
+
+	checkpath -q -d -m 0755 -o root:root /var/run/lirc
+	rm -Rf ${LIRCD_SOCKET} && ln -s ${LIRCD_SOCKET} ${LIRCD_SYMLINKFILE}
+	if [ $? -ne 0 ]; then
+		eend $? "Unable to create symbolic link ${LIRCD_SYMLINKFILE}"
+		return 1
+	fi
+
+	start-stop-daemon --start --quiet --pidfile "${PIDFILE}" --exec /usr/sbin/lircd -- \
+		-P "${PIDFILE}" ${LIRCD_OPTS}
+	retval=$?
+
+	if [ ${retval} -ne 0 ]; then
+		rm -Rf ${LIRCD_SOCKET}
+	fi
+
+	eend ${retval}
+}
+
+stop() {
+	ebegin "Stopping lircd"
+	rm -f ${LIRCD_SYMLINKFILE}
+	start-stop-daemon --stop --quiet --pidfile "${PIDFILE}" --exec /usr/sbin/lircd
+	eend $?
+}

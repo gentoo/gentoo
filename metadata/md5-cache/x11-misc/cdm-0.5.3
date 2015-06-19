@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare unpack
+DEPEND=app-shells/bash
+DESCRIPTION=The Console Display Manager
+EAPI=4
+HOMEPAGE=https://wiki.archlinux.org/index.php/CDM
+IUSE=pam consolekit
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-shells/bash dev-util/dialog x11-apps/xdpyinfo x11-apps/xinit consolekit? ( sys-auth/consolekit sys-apps/dbus ) pam? ( virtual/pam )
+REQUIRED_USE=consolekit? ( pam )
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~gienah/snapshots/cdm-0.5.3.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	pam	aa1ebb3ab720ea04dbbdd6eaaf9554ed	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f469f57b2e124db809aa5f7cb1430cc6

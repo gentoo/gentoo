@@ -1,0 +1,36 @@
+# ChangeLog for app-officeext/dmaths
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-officeext/dmaths/ChangeLog,v 1.7 2013/04/27 08:21:49 scarabeus Exp $
+
+  27 Apr 2013; Tomáš Chvátal <scarabeus@gentoo.org> -dmaths-3.4.9.0.ebuild,
+  dmaths-3.4.9.0-r1.ebuild:
+  Stabilise latest, drop older.
+
+*dmaths-3.4.9.0-r1 (23 Mar 2013)
+
+  23 Mar 2013; Tomáš Chvátal <scarabeus@gentoo.org> +dmaths-3.4.9.0-r1.ebuild:
+  migrate to office-ext-r1 eclass
+
+  11 Jan 2013; Tomáš Chvátal <scarabeus@gentoo.org> -dmaths-3.4.2.2.ebuild,
+  dmaths-3.4.9.0.ebuild:
+  Stabilise on amd64 and x86. Drop older.
+
+*dmaths-3.4.9.0 (31 Oct 2012)
+
+  31 Oct 2012; Tomáš Chvátal <scarabeus@gentoo.org> +dmaths-3.4.9.0.ebuild:
+  Version bump to latest.
+
+  23 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> dmaths-3.4.2.2.ebuild:
+  Stable on amd64 and x86.
+
+*dmaths-3.4.2.2 (10 May 2012)
+
+  10 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> +dmaths-3.4.2.2.ebuild,
+  -dmaths-3.3.ebuild:
+  Version bump to work with latest libreo.
+
+*dmaths-3.3 (09 May 2012)
+
+  09 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> +dmaths-3.3.ebuild,
+  +metadata.xml:
+  Initial commit. Fixes bug#251598.

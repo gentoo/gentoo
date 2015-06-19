@@ -1,0 +1,21 @@
+--- a/configure.in
++++ b/configure.in
+@@ -65,8 +65,18 @@
+ 					 AC_DEFINE([HAVE_GTK_2], 1, Found GTK 2),
+            HAVE_GTK_2=0)
+ fi
++AC_ARG_ENABLE(ncurses, [  --enable-ncurses        enable ncurses support],
++              [if test "$enableval" = no; then no_ncurses=yes; fi])
++if test x$no_ncurses != xyes; then
++PKG_CHECK_MODULES(ncurses, ncurses,[
++	AC_DEFINE([HAVE_LIBNCURSES], [1], found ncurses library)
++	HAVE_CURSES=1
++	LIBS="$LIBS $ncurses_LIBS"
++	CFLAGS="$CFLAGS $ncurses_CFLAGS"],
+ AC_CHECK_LIB(ncurses, initscr, HAVE_CURSES=1; LIBS="$LIBS -lncurses";
+ 	AC_DEFINE([HAVE_LIBNCURSES], [1], found ncurses library))
++	)
++fi
+ AC_CHECK_LIB(intl, libintl_gettext, LIBS="$LIBS -lintl")
+ AC_CHECK_LIB(pthread, pthread_create, LIBS="$LIBS -lpthread", AC_MSG_ERROR(Pthread required and not found. Please check if you have libpthread in your system and specify using CFLAGS and LDFLAGS when configure))
+ 

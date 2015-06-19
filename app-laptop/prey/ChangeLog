@@ -1,0 +1,62 @@
+# ChangeLog for app-laptop/prey
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/prey/ChangeLog,v 1.15 2015/06/04 18:59:39 kensington Exp $
+
+  04 Jun 2015; Michael Palimaka <kensington@gentoo.org> prey-0.5.4-r1.ebuild:
+  Move various kde-base packages to kde-apps.
+
+  14 Aug 2013; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Dropped herds and maintainers, assigned to maintainer-needed; as per
+  confirmation from all maintainers, see bug #451882.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  15 Feb 2013; Pacho Ramos <pacho@gentoo.org> prey-0.5.4-r1.ebuild:
+  Don't show elog messages always (#457596)
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> prey-0.5.4-r1.ebuild:
+  Stable for x86, wrt bug #432776
+
+  11 Nov 2012; <ago@gentoo.org> prey-0.5.4-r1.ebuild:
+  Stable for amd64, wrt bug #432776
+
+*prey-0.5.4-r1 (10 Nov 2012)
+
+  10 Nov 2012; Markos Chandras <hwoarang@gentoo.org> +prey-0.5.4-r1.ebuild,
+  -prey-0.5.4.ebuild:
+  Fix base directory. Bug #438728. Remove old
+
+  05 Oct 2012; Agostino Sarubbo <ago@gentoo.org> prey-0.5.4.ebuild:
+  Move rm to src_prepare(), wrt to bug #437294
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> prey-0.5.4.ebuild:
+  x86 stable wrt bug #432776
+
+  26 Aug 2012; Markos Chandras <hwoarang@gentoo.org>
+  -files/prey-0.5.3-gtk-ui.patch, -prey-0.5.3.ebuild:
+  Remove old
+
+*prey-0.5.4 (19 Jul 2012)
+
+  19 Jul 2012; Markos Chandras <hwoarang@gentoo.org>
+  +files/prey-0.5.4-cron-functions.patch, +files/prey-0.5.4-gtk-ui.patch,
+  +prey-0.5.4.ebuild:
+  Version bump
+
+  01 Jun 2012; Zac Medico <zmedico@gentoo.org> prey-0.5.3.ebuild:
+  inherit user for enewgroup
+
+  13 Apr 2012; Markos Chandras <hwoarang@gentoo.org> prey-0.5.3.ebuild:
+  Install modules before trying to modify them in src_install. Bug #411675
+
+  31 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> prey-0.5.3.ebuild:
+  Fix media-video/mplayer USE depend from "v4l2" to "v4l" wrt #385241
+
+*prey-0.5.3 (19 Sep 2011)
+
+  19 Sep 2011; Markos Chandras <hwoarang@gentoo.org> +prey-0.5.3.ebuild,
+  +files/prey-0.5.3-gtk-ui.patch, +files/prey-0.5.3-mplayer-support.patch,
+  +files/prey.cron, +files/prey-cron-functions.patch, +metadata.xml:
+  Initial commit. Thanks to Travis Hansen <travisghansen@yahoo.com> and Thomas
+  Kear <thomas.kear@gmail.com> for the ebuilds. Bug #305813

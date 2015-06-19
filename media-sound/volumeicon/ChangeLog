@@ -1,0 +1,37 @@
+# ChangeLog for media-sound/volumeicon
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/volumeicon/ChangeLog,v 1.9 2014/03/26 20:33:43 ssuominen Exp $
+
+*volumeicon-0.5.0 (26 Mar 2014)
+
+  26 Mar 2014; Samuli Suominen <ssuominen@gentoo.org> +volumeicon-0.5.0.ebuild:
+  Version bump wrt #482454 by Haydania-Capri DiTori and Bruce Guenter
+
+  11 Jun 2012; Agostino Sarubbo <ago@gentoo.org> volumeicon-0.4.6.ebuild:
+  Stable for amd64, wrt bug #419697
+
+  10 Jun 2012; Jeff Horelick <jdhore@gentoo.org> volumeicon-0.4.6.ebuild:
+  marked x86 per bug 419697
+
+  06 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> volumeicon-0.4.6.ebuild:
+  Force ALSA for now wrt #419891 by Maurizio Camisaschi
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> volumeicon-0.4.6.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  18 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> -volumeicon-0.4.5.ebuild:
+  old
+
+  18 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> volumeicon-0.4.6.ebuild,
+  +files/volumeicon-0.4.6-glib-2.31.patch:
+  Fix building with dev-libs/glib >= 2.31 wrt #412473 by "Andrey"
+
+*volumeicon-0.4.6 (20 Jan 2012)
+
+  20 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> +volumeicon-0.4.6.ebuild:
+  Version bump wrt #399179 by "barul"
+
+*volumeicon-0.4.5 (12 Nov 2011)
+
+  12 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> +volumeicon-0.4.5.ebuild:
+  Initial commit wrt #364101 by crok.r245 (bugzilla) and barul (freenode)

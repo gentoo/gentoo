@@ -1,0 +1,187 @@
+# ChangeLog for dev-haskell/regex-posix
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/regex-posix/ChangeLog,v 1.47 2014/07/25 08:58:19 slyfox Exp $
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> regex-posix-0.95.2.ebuild:
+  Stable for sparc, wrt bug #473338
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org> regex-posix-0.95.2.ebuild:
+  Stable for ia64, wrt bug #473338
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org> regex-posix-0.95.2.ebuild:
+  Stable for alpha, wrt bug #473338
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> regex-posix-0.95.2.ebuild:
+  Stable for amd64, wrt bug #473338
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> regex-posix-0.95.2.ebuild:
+  Stable for x86, wrt bug #473338
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> regex-posix-0.95.2.ebuild:
+  Stable for ppc64, wrt bug #473338
+
+  24 Jun 2013; Agostino Sarubbo <ago@gentoo.org> regex-posix-0.95.2.ebuild:
+  Stable for ppc, wrt bug #473338
+
+  19 Jun 2013; Sergei Trofimovich <slyfox@gentoo.org> -regex-posix-0.71.ebuild,
+  -regex-posix-0.72.0.2.ebuild, -regex-posix-0.72.0.3.ebuild,
+  -regex-posix-0.93.1.ebuild, -regex-posix-0.94.1.ebuild:
+  Drop old.
+
+*regex-posix-0.95.2 (19 Sep 2012)
+
+  19 Sep 2012; Mark Wright <gienah@gentoo.org> +regex-posix-0.95.2.ebuild:
+  Bump regex-posix to 0.95.2
+
+  19 Sep 2012; Mark Wright <gienah@gentoo.org>
+  +files/regex-posix-0.95.1-control-exception.patch,
+  +files/regex-posix-0.95.1-ghc-7.5.patch, regex-posix-0.95.1.ebuild:
+  Patch regex-posix-0.95.1 build for ghc 7.6.1
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org> regex-posix-0.71.ebuild,
+  regex-posix-0.72.0.2.ebuild, regex-posix-0.72.0.3.ebuild,
+  regex-posix-0.93.1.ebuild, regex-posix-0.94.1.ebuild,
+  regex-posix-0.95.1.ebuild:
+  move dev-haskell/regex-posix/regex-posix-0.95.1.ebuild ebuild to
+  mirror://hackage
+
+  05 May 2012; Sergei Trofimovich <slyfox@gentoo.org> regex-posix-0.95.1.ebuild:
+  alpha/ia64/ppc64/sparc stable (bug #404641)
+
+  16 Apr 2012; Brent Baude <ranger@gentoo.org> regex-posix-0.95.1.ebuild:
+  Marking regex-posix-0.95.1 ppc for bug 404641
+
+  14 Apr 2012; Mark Wright <gienah@gentoo.org> metadata.xml,
+  regex-posix-0.95.1.ebuild:
+  EAPI=4. [profile?] for haskell library dependencies, part of fix for bug
+  341795 dev-haskell/* USE=profile missing dependencies
+
+  05 Apr 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  regex-posix-0.95.1.ebuild:
+  x86 stable wrt bug #404641
+
+  28 Mar 2012; Agostino Sarubbo <ago@gentoo.org> regex-posix-0.95.1.ebuild:
+  Stable for amd64, wrt bug #404641
+
+  04 Dec 2011; Sergei Trofimovich <slyfox@gentoo.org> regex-posix-0.95.1.ebuild:
+  Restored sccidentally dropped keywords.
+
+*regex-posix-0.95.1 (04 Dec 2011)
+
+  04 Dec 2011; Sergei Trofimovich <slyfox@gentoo.org>
+  +regex-posix-0.95.1.ebuild:
+  Version bump.
+
+  25 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  regex-posix-0.94.1.ebuild:
+  ppc/ppc64 stable wrt #339580
+
+  20 Nov 2010; Sergei Trofimovich <slyfox@gentoo.org>
+  regex-posix-0.94.1.ebuild:
+  alpha/ia64/sparc stable (bug #339580). Marked ~x86-fbsd (bug #227677).
+
+  19 Oct 2010; Thomas Kahle <tomka@gentoo.org> regex-posix-0.94.1.ebuild:
+  x86 stable per bug 339580
+
+  16 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  regex-posix-0.94.1.ebuild:
+  Stable on amd64 wrt bug #339580
+
+  01 Jul 2010; Jeroen Roovers <jer@gentoo.org> regex-posix-0.71.ebuild,
+  regex-posix-0.72.0.3.ebuild, regex-posix-0.93.1.ebuild,
+  regex-posix-0.94.1.ebuild:
+  Drop support for ghc and darcs.
+
+*regex-posix-0.94.1 (21 Feb 2010)
+
+  21 Feb 2010; Lennart Kolmodin <kolmodin@gentoo.org> +regex-posix-0.94.1.ebuild:
+  Version bump dev-haskell/regex-posix, the previous version didn't build
+  with cabal-1.8.
+
+  02 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  regex-posix-0.93.1.ebuild:
+  Transfer Prefix keywords
+
+  19 Apr 2009; Lennart Kolmodin <kolmodin@gentoo.org>
+  -regex-posix-0.92.ebuild:
+  Remove hard masked (broken) version, did not work with >=ghc-6.8
+
+*regex-posix-0.72.0.3 (19 Apr 2009)
+
+  19 Apr 2009; Lennart Kolmodin <kolmodin@gentoo.org>
+  +regex-posix-0.72.0.3.ebuild:
+  Version bump.
+
+  04 Oct 2008; Raúl Porcel <armin76@gentoo.org> regex-posix-0.93.1.ebuild:
+  alpha/ia64 stable
+
+  04 Oct 2008; Ferris McCormick <fmccor@gentoo.org>
+  regex-posix-0.72.0.2.ebuild:
+  Sparc stable --- Bug #230919 and Bug #239368.
+
+  15 Jul 2008; Jeroen Roovers <jer@gentoo.org> regex-posix-0.93.1.ebuild:
+  Stable for HPPA (bug #230919).
+
+  06 Jul 2008; Markus Meier <maekke@gentoo.org> regex-posix-0.72.0.2.ebuild:
+  amd64/x86 stable, bug #230919
+
+*regex-posix-0.93.1 (04 May 2008)
+
+  04 May 2008; Lennart Kolmodin <kolmodin@gentoo.org>
+  +regex-posix-0.93.1.ebuild:
+  Version bump. This version should work with ghc-6.8.
+
+  01 Mar 2008; Raúl Porcel <armin76@gentoo.org>
+  regex-posix-0.72.0.2.ebuild:
+  Add ~alpha
+
+  01 Mar 2008; Raúl Porcel <armin76@gentoo.org> regex-posix-0.92.ebuild:
+  Add ~alpha
+
+*regex-posix-0.72.0.2 (20 Dec 2007)
+
+  20 Dec 2007; Duncan Coutts <dcoutts@gentoo.org>
+  +regex-posix-0.72.0.2.ebuild:
+  New version. Released with ghc-6.8 but works with ghc-6.6.
+
+  17 Dec 2007; Jeroen Roovers <jer@gentoo.org> regex-posix-0.71.ebuild:
+  Stable for HPPA.
+
+  16 Dec 2007; nixnut <nixnut@gentoo.org> regex-posix-0.71.ebuild:
+  Stable on ppc wrt bug 201984
+
+  12 Dec 2007; Ferris McCormick <fmccor@gentoo.org> regex-posix-0.71.ebuild:
+  Sparc stable --- part of Bug #201984.
+
+  26 Nov 2007; Jeroen Roovers <jer@gentoo.org> regex-posix-0.92.ebuild:
+  Stable for HPPA (dev-lang/ghc-6.6.1).
+
+  20 Nov 2007; Ferris McCormick <fmccor@gentoo.org> regex-posix-0.92.ebuild:
+  Add ~sparc for testing.
+
+  15 Nov 2007; Steve Dibb <beandog@gentoo.org> regex-posix-0.71.ebuild:
+  amd64 stable, bug 196616
+
+  05 Nov 2007; Duncan Coutts <dcoutts@gentoo.org> regex-posix-0.71.ebuild:
+  Added ~ppc and ~sparc to keywords
+
+  23 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  regex-posix-0.71.ebuild:
+  stable x86, bug 196616
+
+  29 Aug 2007; Jeroen Roovers <jer@gentoo.org> regex-posix-0.92.ebuild:
+  Marked ~hppa (bug #187147).
+
+  06 Aug 2007; Lennart Kolmodin <kolmodin@gentoo.org>
+  regex-posix-0.71.ebuild, regex-posix-0.92.ebuild:
+  Add ~ia64. Tested by Duncan Coutts <dcoutts@gentoo.org>.
+
+*regex-posix-0.92 (05 Aug 2007)
+*regex-posix-0.71 (05 Aug 2007)
+
+  05 Aug 2007; Lennart Kolmodin <kolmodin@gentoo.org> +metadata.xml,
+  +regex-posix-0.71.ebuild, +regex-posix-0.92.ebuild:
+  Initial import.

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=>=dev-libs/boost-1.50[threads(+)] sasl? ( dev-libs/cyrus-sasl ) ssl? ( dev-libs/openssl:= ) >=dev-util/scons-2.3.0
+DESCRIPTION=C++ Driver for MongoDB
+EAPI=5
+HOMEPAGE=https://github.com/mongodb/mongo-cxx-driver
+IUSE=debug sasl ssl static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=dev-libs/boost-1.50[threads(+)] sasl? ( dev-libs/cyrus-sasl ) ssl? ( dev-libs/openssl:= )
+SLOT=0
+SRC_URI=https://github.com/mongodb/mongo-cxx-driver/archive/legacy-1.0.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	scons-utils	988e24b9e2e4642189b4e97c03e5ae71	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=431b770647c141eeeb2b9abc0fc11c18

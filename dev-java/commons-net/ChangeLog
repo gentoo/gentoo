@@ -1,0 +1,204 @@
+# ChangeLog for dev-java/commons-net
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-net/ChangeLog,v 1.52 2014/08/10 20:11:53 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  commons-net-1.4.1-r1.ebuild, commons-net-3.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  30 May 2013; Tim Harder <radhermit@gentoo.org> commons-net-3.2.ebuild:
+  Update paths for doc, examples, and source use flags (fixes bug #471782).
+
+*commons-net-3.2 (29 May 2013)
+
+  29 May 2013; Tom Wijsman <TomWij@gentoo.org> +commons-net-3.2.ebuild,
+  +files/commons-net-3.2-build.xml:
+  Version bump to 3.2.
+
+  31 Dec 2011; Ralph Sennhauser <sera@gentoo.org> commons-net-1.4.1-r1.ebuild:
+  Drop ia64 support #345433
+
+  19 Dec 2011; Ralph Sennhauser <sera@gentoo.org> commons-net-1.4.1-r1.ebuild:
+  Fix homepage wrt #202445. Add missing IUSE to please repoman.
+
+  03 May 2011; Fabian Groffen <grobian@gentoo.org> commons-net-1.4.1-r1.ebuild:
+  Marked ~x64-freebsd
+
+  16 Jul 2010; Fabian Groffen <grobian@gentoo.org>
+  commons-net-1.4.1-r1.ebuild:
+  Marked ~x64-macos
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  commons-net-1.4.1-r1.ebuild:
+  Transfer Prefix keywords
+
+  15 Feb 2008; Petteri Räty <betelgeuse@gentoo.org>
+  commons-net-1.4.1-r1.ebuild:
+  Add RESTRICT=test or the generic src_test that we will be adding will run test.
+
+  29 Jun 2007; Petteri Räty <betelgeuse@gentoo.org>
+  commons-net-1.4.1-r1.ebuild:
+  Depend on >=dev-java/jakarta-oro-2.0.8-r2 to prevent versions from
+  dev-java/oro that was moved to jakarta-oro from matching. Switch to
+  java-pkg_doexamples.
+
+  11 Feb 2007; Vlastimil Babka <caster@gentoo.org> -files/gentoo-1.2.diff,
+  -files/gentoo.diff, -commons-net-1.2.2-r1.ebuild,
+  -commons-net-1.3.0-r1.ebuild, -commons-net-1.4.1.ebuild:
+  Cleanup.
+
+  10 Feb 2007; nixnut <nixnut@gentoo.org> commons-net-1.4.1-r1.ebuild:
+  Stable on ppc wrt bug 163955
+
+  03 Feb 2007; Steve Dibb <beandog@gentoo.org> commons-net-1.4.1-r1.ebuild:
+  amd64 stable, bug 163955
+
+  31 Jan 2007; Markus Rothe <corsair@gentoo.org>
+  commons-net-1.4.1-r1.ebuild:
+  Stable on ppc64; bug #163955
+
+  30 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  commons-net-1.4.1-r1.ebuild:
+  stable x86; bug #163955
+
+  26 Jan 2007; Petteri Räty <betelgeuse@gentoo.org>
+  commons-net-1.4.1-r1.ebuild:
+  use dojavadoc and remove redundant src_compile
+
+  17 Oct 2006; Joshua Nichols <nichoj@gentoo.org>
+  commons-net-1.4.1-r1.ebuild:
+  Keyworded ~ia64.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  commons-net-1.2.2-r1.ebuild, commons-net-1.3.0-r1.ebuild,
+  commons-net-1.4.1.ebuild, commons-net-1.4.1-r1.ebuild:
+  Dropping sparc keywords, see #96229
+
+  23 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  commons-net-1.4.1-r1.ebuild:
+  Add java-ant-2.
+
+  23 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  commons-net-1.4.1-r1.ebuild:
+  Add ~x86-fbsd keyword.
+
+*commons-net-1.4.1-r1 (20 Jul 2006)
+
+  20 Jul 2006; Joshua Nichols <jnichols@gentoo.org>
+  +commons-net-1.4.1-r1.ebuild:
+  Revision bump to support new Java system.
+
+  07 Jun 2006; Joshua Nichols <jnichols@gentoo.org>
+  commons-net-1.4.1.ebuild:
+  Removed junit USE flag which is no longer used (bug #135960)
+
+*commons-net-1.4.1 (22 Dec 2005)
+
+  22 Dec 2005; Joshua Nichols <nichoj@gentoo.org> +commons-net-1.4.1.ebuild:
+  Version bump (bug #116226).
+
+  09 Jul 2005; Thomas Matthijs <axxo@gentoo.org>
+  commons-net-1.2.2-r1.ebuild, commons-net-1.3.0-r1.ebuild:
+  fix deps, some cleanups
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org>
+  commons-net-1.3.0-r1.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  02 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  commons-net-1.2.2-r1.ebuild, -commons-net-1.2.2.ebuild,
+  commons-net-1.3.0-r1.ebuild, -commons-net-1.3.0.ebuild:
+  cleanup, removed old revision with a dependency to oro.
+
+*commons-net-1.3.0-r1 (29 Mar 2005)
+*commons-net-1.2.2-r1 (29 Mar 2005)
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +commons-net-1.2.2-r1.ebuild, +commons-net-1.3.0-r1.ebuild:
+  moved from dev-java/oro to dev-java/jakarta-oro dependency. see #71337.
+  introduced support for the examples and the source useflag.
+
+  26 Jan 2005; Markus Rothe <corsair@gentoo.org> commons-net-1.3.0.ebuild:
+  Stable on ppc64
+
+  20 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> commons-net-1.2.2.ebuild,
+  commons-net-1.3.0.ebuild:
+  added missing jikes dependency. see #78819.
+
+  11 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> commons-net-1.3.0.ebuild:
+  fixed a dependency problem with junit/ant-tasks. also see bug #76534.
+
+  09 Jan 2005; Robin H. Johnson <robbat2@gentoo.org>
+  commons-net-1.3.0.ebuild:
+  DEPEND on junit if USE=junit.
+
+  22 Dec 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  commons-net-1.3.0.ebuild:
+  Disabled unit tests by default, they can be selectively enabled using the
+  junit useflag. Partial fix for #74541.
+
+  18 Dec 2004; Markus Rothe <corsair@gentoo.org> commons-net-1.3.0.ebuild:
+  added ~ppc64 to KEYWORDS
+
+*commons-net-1.3.0 (15 Dec 2004)
+
+  15 Dec 2004; Thomas Matthijs <axxo@gentoo.org> +commons-net-1.3.0.ebuild:
+  version bump
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> commons-net-1.2.2.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  16 Oct 2004; Dylan Carlson <absinthe@gentoo.org> commons-net-1.2.2.ebuild:
+  Stable on amd64.
+
+  10 Sep 2004; Thomas Matthijs <axxo@gentoo.org> commons-net-1.2.2.ebuild:
+  changed dependenciess to ant-core
+
+  27 Aug 2004; <SeJo@gentoo.org> commons-net-1.2.2.ebuild:
+  stable on ppc
+
+  23 Aug 2004; Chris Aniszczyk <zx@gentoo.org> -commons-net-1.1.0.ebuild,
+  -commons-net-1.2.0.ebuild, commons-net-1.2.2.ebuild:
+  Cleanup & Marking x86
+
+  23 Jul 2004; Thomas Matthijs <axxo@gentoo.org> commons-net-1.1.0.ebuild,
+  commons-net-1.2.0.ebuild, commons-net-1.2.2.ebuild:
+  use -D instead of build.properties
+
+*commons-net-1.2.2 (16 Jul 2004)
+
+  16 Jul 2004; Thomas Matthijs <axxo@gentoo.org> +commons-net-1.2.2.ebuild:
+  Version Bump
+
+  20 Jun 2004; <SeJo@gentoo.org> commons-net-1.1.0.ebuild:
+  patch added by SeJo created by axxo@keanu.be, thanks
+
+*commons-net-1.2.0 (03 May 2004)
+
+  08 May 2004; Chris Aniszczyk <zx@gentoo.org> -commons-net-1.0.0.ebuild,
+  commons-net-1.1.0.ebuild:
+  Clean up. Marking 1.1.0 stable on x86
+
+  08 May 2004; Chris Aniszczyk <zx@gentoo.org> commons-net-1.1.0.ebuild:
+  Version bump
+
+*commons-net-1.1.0 (28 Feb 2004)
+
+  28 Feb 2004; Chris Aniszczyk <zx@gentoo.org> commons-net-1.1.0.ebuild,
+  files/gentoo.diff:
+  Version bump.
+
+  19 Jan 2004; Adrian Almenar <strider@gentoo.org> commons-net-1.0.0.ebuild:
+  Added amd64 keyword.
+
+*commons-net-1.0.0 (22 Mar 2003)
+
+  26 Apr 2003; Adrian Almenar <strider@gentoo.org> commons-net-1.0.0.ebuild:
+  Updated SRC_URI so this ebuild uses apache mirrors.
+
+  06 Apr 2003; Dylan Carlson <absinthe@gentoo.org> commons-net-1.0.0.ebuild:
+  x86 ppc sparc moved to stable.
+
+  22 Mar 2003; Dylan Carlson <absinthe@gentoo.org> commons-net-1.0.0.ebuild:
+  Initial import.

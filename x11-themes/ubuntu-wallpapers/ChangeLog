@@ -1,0 +1,87 @@
+# ChangeLog for x11-themes/ubuntu-wallpapers
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/ubuntu-wallpapers/ChangeLog,v 1.18 2015/04/28 21:19:14 pacho Exp $
+
+  28 Apr 2015; Pacho Ramos <pacho@gentoo.org> -ubuntu-wallpapers-14.10.0.ebuild:
+  Drop old
+
+*ubuntu-wallpapers-15.04.1 (28 Apr 2015)
+
+  28 Apr 2015; Pacho Ramos <pacho@gentoo.org> +ubuntu-wallpapers-15.04.1.ebuild:
+  Version bump (#547936 by Sebastian Pipping), , drop old, stabilize directly as
+  this is only providing wallpapers (and looks to still work and look ok).
+
+*ubuntu-wallpapers-14.10.0 (20 Nov 2014)
+
+  20 Nov 2014; Pacho Ramos <pacho@gentoo.org> +ubuntu-wallpapers-14.10.0.ebuild,
+  -ubuntu-wallpapers-14.04.0.1.ebuild:
+  Version bump, drop old, stabilize directly as this is only providing
+  wallpapers (and looks to still work and look ok)
+
+  01 Jun 2014; Pacho Ramos <pacho@gentoo.org> -ubuntu-wallpapers-13.10.ebuild,
+  ubuntu-wallpapers-14.04.0.1.ebuild:
+  Stabilize, drop old
+
+*ubuntu-wallpapers-14.04.0.1 (02 May 2014)
+
+  02 May 2014; Pacho Ramos <pacho@gentoo.org>
+  +ubuntu-wallpapers-14.04.0.1.ebuild:
+  Version bump
+
+  23 Jan 2014; Sergey Popov <pinkbyte@gentoo.org>
+  ubuntu-wallpapers-13.10.ebuild:
+  Stable on arm, wrt bug #491480
+
+  18 Nov 2013; Pacho Ramos <pacho@gentoo.org> -ubuntu-wallpapers-13.04.0.ebuild,
+  ubuntu-wallpapers-13.10.ebuild:
+  amd64/x86 stable, bug #491480; drop old.
+
+*ubuntu-wallpapers-13.10 (28 Oct 2013)
+
+  28 Oct 2013; Pacho Ramos <pacho@gentoo.org> +ubuntu-wallpapers-13.10.ebuild,
+  -ubuntu-wallpapers-0.35.2.ebuild:
+  Version bump, drop old.
+
+  12 Jun 2013; Sergey Popov <pinkbyte@gentoo.org>
+  ubuntu-wallpapers-13.04.0.ebuild:
+  Add ~arm keyword
+
+  12 Jun 2013; Sergey Popov <pinkbyte@gentoo.org>
+  ubuntu-wallpapers-13.04.0.ebuild:
+  Stable on amd64 and x86, wrt bug #472830
+
+*ubuntu-wallpapers-13.04.0 (16 May 2013)
+
+  16 May 2013; Pacho Ramos <pacho@gentoo.org> +ubuntu-wallpapers-13.04.0.ebuild,
+  -ubuntu-wallpapers-0.34.1.ebuild:
+  Version bump, drop old
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> ubuntu-wallpapers-0.34.1.ebuild,
+  ubuntu-wallpapers-0.35.2.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  25 Dec 2012; Jeff Horelick <jdhore@gentoo.org>
+  ubuntu-wallpapers-0.35.2.ebuild:
+  marked x86 per bug 447508
+
+  16 Dec 2012; Sergey Popov <pinkbyte@gentoo.org>
+  ubuntu-wallpapers-0.35.2.ebuild:
+  Stable on amd64, keyword ~x86 wrt bug #447508
+
+  04 Dec 2012;  <ago@gentoo.org> ubuntu-wallpapers-0.34.1.ebuild:
+  Stable for x86, wrt bug #438100
+
+*ubuntu-wallpapers-0.35.2 (21 Oct 2012)
+
+  21 Oct 2012; Pacho Ramos <pacho@gentoo.org> +ubuntu-wallpapers-0.35.2.ebuild:
+  Version bump (#438158 by Sergey Popov).
+
+  12 Oct 2012; Agostino Sarubbo <ago@gentoo.org>
+  ubuntu-wallpapers-0.34.1.ebuild:
+  Stable for amd64, wrt bug #438100
+
+*ubuntu-wallpapers-0.34.1 (15 Sep 2012)
+
+  15 Sep 2012; Pacho Ramos <pacho@gentoo.org> +metadata.xml,
+  +ubuntu-wallpapers-0.34.1.ebuild:
+  Add Ubuntu wallpapers.

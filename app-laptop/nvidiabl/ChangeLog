@@ -1,0 +1,113 @@
+# ChangeLog for app-laptop/nvidiabl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/nvidiabl/ChangeLog,v 1.25 2015/06/05 14:26:48 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  31 Dec 2014; Michael Palimaka <kensington@gentoo.org> -nvidiabl-0.81.ebuild:
+  Remove old.
+
+  27 Dec 2014; Agostino Sarubbo <ago@gentoo.org> nvidiabl-0.83.ebuild:
+  Stable for amd64, wrt bug #495338
+
+  09 Mar 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> nvidiabl-0.83.ebuild:
+  x86 stable wrt bug #495338
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> nvidiabl-0.83.ebuild:
+  The check needs to be fatal again as, otherwise, it doesn't build (#502080 by
+  Pawel Hajdan, Jr.)
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> -nvidiabl-0.80.ebuild,
+  nvidiabl-0.83.ebuild:
+  Don't make kernel check fatal, drop old
+
+*nvidiabl-0.83 (25 Sep 2013)
+
+  25 Sep 2013;  <christoph@gentoo.org> +nvidiabl-0.83.ebuild:
+  Version bump (bug #485704)
+
+  25 Sep 2013;  <christoph@gentoo.org> metadata.xml:
+  Remove myself from metadata since I do not own a Nvidia GPU anymore
+
+  30 Apr 2013; Vicente Olivert Riera <vincent@gentoo.org> nvidiabl-0.81.ebuild:
+  amd64, x86 stable. eapi 5 bump. verbose build log fixed.
+
+  25 Apr 2013; Christoph Mende <angelos@gentoo.org> nvidiabl-0.81.ebuild:
+  Restrict test suite as it does nothing other than insmod the module
+
+*nvidiabl-0.81 (09 Feb 2013)
+
+  09 Feb 2013;  <christoph@gentoo.org> +nvidiabl-0.81.ebuild,
+  -nvidiabl-0.79.ebuild:
+  Version bump, remove old
+
+*nvidiabl-0.80 (19 Jan 2013)
+
+  19 Jan 2013;  <christoph@gentoo.org> +nvidiabl-0.80.ebuild,
+  -nvidiabl-0.77.ebuild:
+  Version bump, remove old
+
+*nvidiabl-0.79 (16 Sep 2012)
+
+  16 Sep 2012; Christoph Mende <angelos@gentoo.org> +nvidiabl-0.79.ebuild,
+  -nvidiabl-0.76.ebuild:
+  Version bump, remove old
+
+*nvidiabl-0.77 (03 Sep 2012)
+
+  03 Sep 2012; Christoph Mende <angelos@gentoo.org> +nvidiabl-0.77.ebuild,
+  -nvidiabl-0.74.ebuild:
+  Version bump, remove old
+
+*nvidiabl-0.76 (16 Jul 2012)
+
+  16 Jul 2012; Christoph Mende <angelos@gentoo.org> +nvidiabl-0.76.ebuild,
+  -nvidiabl-0.73.ebuild:
+  Version bump
+
+  02 Jul 2012; Christoph Mende <angelos@gentoo.org> nvidiabl-0.74.ebuild:
+  Explain how to enable FB_BACKLIGHT
+
+*nvidiabl-0.74 (19 May 2012)
+
+  19 May 2012; Christoph Mende <angelos@gentoo.org> +nvidiabl-0.74.ebuild,
+  -nvidiabl-0.70.ebuild, -nvidiabl-0.72.ebuild:
+  Version bump, remove old
+
+  23 Apr 2012; Michał Górny <mgorny@gentoo.org> nvidiabl-0.70.ebuild,
+  nvidiabl-0.72.ebuild, nvidiabl-0.73.ebuild:
+  Use mirror://github.
+
+*nvidiabl-0.73 (19 Feb 2012)
+
+  19 Feb 2012; Christoph Mende <angelos@gentoo.org> +nvidiabl-0.73.ebuild:
+  Version bump
+
+*nvidiabl-0.72 (10 Nov 2011)
+
+  10 Nov 2011; Christoph Mende <angelos@gentoo.org> -nvidiabl-0.69.ebuild,
+  +nvidiabl-0.72.ebuild:
+  Version bump
+
+*nvidiabl-0.70 (19 Jul 2011)
+
+  19 Jul 2011; Christoph Mende <angelos@gentoo.org> +nvidiabl-0.70.ebuild:
+  Version bump
+
+  30 Apr 2011; Christoph Mende <angelos@gentoo.org> -nvidiabl-0.67.ebuild:
+  Remove old
+
+*nvidiabl-0.69 (14 Apr 2011)
+
+  14 Apr 2011; Christoph Mende <angelos@gentoo.org> +nvidiabl-0.69.ebuild:
+  Version bump
+
+  18 Mar 2011; Christoph Mende <angelos@gentoo.org> nvidiabl-0.67.ebuild:
+  Added check for FB_BACKLIGHT
+
+*nvidiabl-0.67 (17 Mar 2011)
+
+  17 Mar 2011; Christoph Mende <angelos@gentoo.org> +nvidiabl-0.67.ebuild,
+  +metadata.xml:
+  Initial import

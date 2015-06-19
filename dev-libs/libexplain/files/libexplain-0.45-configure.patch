@@ -1,0 +1,23 @@
+--- libexplain-0.45.D001.orig/configure.ac
++++ libexplain-0.45.D001/configure.ac
+@@ -26,6 +26,10 @@
+ AC_PROG_RANLIB
+ AC_PROG_YACC
+ 
++LT_INIT
++top_builddir=`pwd`
++AC_SUBST(top_builddir)
++
+ case "$YACC" in
+ *bison*)
+   ;;
+--- libexplain-0.45.D001.orig/Makefile.in
++++ libexplain-0.45.D001/Makefile.in
+@@ -35,6 +35,7 @@
+ #
+ # directory containing the source
+ #
++top_builddir = @top_builddir@
+ srcdir = @srcdir@
+ VPATH = @srcdir@
+ 

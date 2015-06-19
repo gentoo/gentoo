@@ -1,0 +1,124 @@
+# ChangeLog for sci-astronomy/predict
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/predict/ChangeLog,v 1.22 2013/07/08 16:30:51 bicatali Exp $
+
+  08 Jul 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/predict-2.2.3-xforms.patch, -predict-2.2.3.ebuild:
+  Removed old
+
+  07 Jul 2013; Agostino Sarubbo <ago@gentoo.org> predict-2.2.3-r1.ebuild:
+  Stable for x86, wrt bug #472528
+
+  18 Jun 2013; Chema Alonso <nimiux@gentoo.org> predict-2.2.3-r1.ebuild:
+  Stable for amd64 wrt bug #472528
+
+  18 Jun 2013; Chema Alonso <nimiux@gentoo.org> predict-2.2.3-r1.ebuild,
+  +files/predict-2.2.3-earthtrack.patch:
+  Add earthtrack patch wrt bug 472686
+
+  11 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> predict-2.2.3-r1.ebuild:
+  Fixed earthtrack and cleaning, bug #472686 thanks Chema Alonso
+
+  06 Jun 2013; Michael Sterrett <mr_bones_@gentoo.org> predict-2.2.3-r1.ebuild:
+  fix AM_CONFIG_HEADER issue (bug #469704); fix another buffer warning; tidy
+  epatch work
+
+*predict-2.2.3-r1 (06 Aug 2012)
+
+  06 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> +predict-2.2.3-r1.ebuild,
+  metadata.xml:
+  New version with more fixes and gtk-2 from Debian, rewritten ebuild
+
+  04 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  Switched herd to sci-astronomy
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> predict-2.2.3.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  29 Sep 2010; Thomas Beierlein <tomjbe@gentoo.org> predict-2.2.3.ebuild:
+  Fix buffer overflow and index out of bounds problem. (Bug 339109). Thanks
+  Diego for reporting.
+
+  23 Feb 2009; Sébastien Fabbro <bicatali@gentoo.org> predict-2.2.3.ebuild:
+  Now propagate LDFLAGS, respect as-needed, and simplified/modernized ebuild
+
+  06 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  11 Sep 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  -predict-2.2.2-r3.ebuild, predict-2.2.3.ebuild, +files/predict-2.2.3-xforms.patch
+  Removed old versions, added longdescription, added a patch for
+  xforms. Should fix bug #140991.
+
+  26 Jan 2007; Steve Dibb <beandog@gentoo.org> predict-2.2.3.ebuild:
+  amd64 stable, bug 160130
+
+  26 Jan 2007; Raúl Porcel <armin76@gentoo.org> predict-2.2.3.ebuild:
+  x86 stable wrt bug 160130
+
+*predict-2.2.3 (11 Jan 2007)
+
+  11 Jan 2007; Markus Dittrich <markusle@gentoo.org> files/predict-update,
+  +predict-2.2.3.ebuild:
+  Version bump and general ebuild overhaul (see bug #140991). Fixed
+  predict-update script to resolve insecure temp file handling via
+  wget (see bug #160130).
+
+  08 Dec 2005; Marcus D. Hanwell <cryos@gentoo.org> predict-2.2.2-r3.ebuild:
+  Stable on amd64.
+
+  05 Aug 2005; Herbie Hopkins <herbs@gentoo.org> predict-2.2.2-r3.ebuild:
+  Marked ~amd64 wrt bug #101375.
+
+  23 Jun 2005; Olivier Fisette <ribosome@gentoo.org>
+  -predict-2.2.2-r2.ebuild, predict-2.2.2-r3.ebuild:
+  Removed obsolete version. Added to x86.
+
+*predict-2.2.2-r3 (05 Jan 2005)
+
+  05 Jan 2005; Patrick Kursawe <phosphan@gentoo.org> -predict-2.2.1.ebuild,
+  +predict-2.2.2-r3.ebuild:
+  Putting data files in the right location now, removing old version.
+
+*predict-2.2.2-r2 (23 Dec 2004)
+
+  23 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +files/predict-update, +predict-2.2.1.ebuild, +predict-2.2.2-r2.ebuild:
+  Moved from app-sci/predict to sci-astronomy/predict.
+
+*predict-2.2.2-r2 (25 Oct 2004)
+
+  25 Oct 2004; Patrick Kursawe <phosphan@gentoo.org> +predict-2.2.2-r2.ebuild:
+  Removed useless errno definition which caused trouble with newer glibc
+  versions. (see bug #68458)
+
+  02 Jun 2004; Aron Griffis <agriffis@gentoo.org> predict-2.2.1.ebuild,
+  predict-2.2.2-r1.ebuild:
+  Fix use invocation
+
+  19 Apr 2004; Patrick Kursawe <phosphan@gentoo.org> predict-2.2.1.ebuild,
+  predict-2.2.2-r1.ebuild, predict-2.2.2.ebuild:
+  Adding IUSE, cleanup
+
+  08 Dec 2003; Donnie Berkholz <spyderous@gentoo.org>; predict-2.2.1.ebuild,
+  predict-2.2.2-r1.ebuild, predict-2.2.2.ebuild:
+  Using keepdir instead of touching .keep to fix bug #35308.
+
+*predict-2.2.2-r1 (11 Nov 2003)
+
+  11 Nov 2003; Patrick Kursawe <phosphan@gentoo.org> predict-2.2.2-r1.ebuild:
+  Fixed typo, moved vocalizer to /usr/bin
+
+*predict-2.2.2 (11 Nov 2003)
+
+  11 Nov 2003; Patrick Kursawe <phosphan@gentoo.org> predict-2.2.2.ebuild:
+  Version bump, added predict-update.
+
+*predict-2.2.1 (17 Oct 2002)
+
+  17 Mar 2003; Graham Forest <vladimir@gentoo.org> predict-2.2.1.ebuild:
+  set ~ppc in keywords
+
+  17 Oct 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog:
+
+  Initial Commit

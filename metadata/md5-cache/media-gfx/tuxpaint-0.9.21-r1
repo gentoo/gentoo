@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=app-text/libpaper dev-libs/fribidi gnome-base/librsvg >=media-libs/libpng-1.2 >=media-libs/freetype-2 media-libs/libsdl media-libs/sdl-image[png] media-libs/sdl-mixer media-libs/sdl-pango media-libs/sdl-ttf x11-libs/cairo nls? ( sys-devel/gettext ) >=sys-apps/sed-4
+DESCRIPTION=Drawing program designed for young children
+EAPI=2
+HOMEPAGE=http://www.tuxpaint.org/
+IUSE=nls
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=app-text/libpaper dev-libs/fribidi gnome-base/librsvg >=media-libs/libpng-1.2 >=media-libs/freetype-2 media-libs/libsdl media-libs/sdl-image[png] media-libs/sdl-mixer media-libs/sdl-pango media-libs/sdl-ttf x11-libs/cairo
+SLOT=0
+SRC_URI=mirror://sourceforge/tuxpaint/tuxpaint-0.9.21.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=32619a061ada6ab081a7ff51653c2c86

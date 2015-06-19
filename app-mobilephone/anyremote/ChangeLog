@@ -1,0 +1,210 @@
+# ChangeLog for app-mobilephone/anyremote
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/anyremote/ChangeLog,v 1.42 2015/03/04 10:11:07 kensington Exp $
+
+*anyremote-6.5 (04 Mar 2015)
+
+  04 Mar 2015; Michael Palimaka <kensington@gentoo.org> +anyremote-6.5.ebuild,
+  -anyremote-6.3.1.ebuild:
+  Version bump. Remove old.
+
+  04 Mar 2015; Michael Palimaka <kensington@gentoo.org> metadata.xml:
+  Add upstream metadata.
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> anyremote-6.4.ebuild:
+  Stable for x86, wrt bug #534888
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> anyremote-6.4.ebuild:
+  Stable for amd64, wrt bug #534888
+
+  14 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -anyremote-6.0.ebuild:
+  Cleanup old.
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> anyremote-6.3.1.ebuild:
+  x86 stable wrt bug #504282
+
+  24 May 2014; Markos Chandras <hwoarang@gentoo.org> anyremote-6.3.1.ebuild:
+  Stable on amd64 wrt bug #504282
+
+*anyremote-6.4 (11 May 2014)
+
+  11 May 2014; Manuel Rüger <mrueg@gentoo.org> +anyremote-6.4.ebuild,
+  -anyremote-6.3.ebuild:
+  Version bump. Cleanup old.
+
+  09 Apr 2014; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  [QA] Dissolve the mobile-phone herd to maintainer-needed because it is empty
+  and nobody joined it after multiple recruitment mails.
+
+*anyremote-6.3.1 (25 Jul 2013)
+
+  25 Jul 2013; Chris Reffett <creffett@gentoo.org> +anyremote-6.3.1.ebuild,
+  -anyremote-5.5.ebuild, -anyremote-6.1.1.ebuild, -anyremote-6.1.ebuild,
+  -anyremote-6.2.ebuild:
+  Version bump, remove old
+
+*anyremote-6.3 (18 May 2013)
+
+  18 May 2013; Markos Chandras <hwoarang@gentoo.org> +anyremote-6.3.ebuild:
+  Version bump
+
+  03 Mar 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop from metadata as talked with him
+
+*anyremote-6.2 (18 Dec 2012)
+
+  18 Dec 2012; Markos Chandras <hwoarang@gentoo.org> +anyremote-6.2.ebuild:
+  Version bump
+
+*anyremote-6.1.1 (23 Oct 2012)
+
+  23 Oct 2012; Markos Chandras <hwoarang@gentoo.org> +anyremote-6.1.1.ebuild:
+  Version bump
+
+*anyremote-6.1 (13 Oct 2012)
+
+  13 Oct 2012; Markos Chandras <hwoarang@gentoo.org> +anyremote-6.1.ebuild:
+  Version bump
+
+  10 Sep 2012; Johannes Huber <johu@gentoo.org> anyremote-6.0.ebuild:
+  Stable for x86, wrt bug #428888
+
+  08 Sep 2012; Agostino Sarubbo <ago@gentoo.org> anyremote-6.0.ebuild:
+  Stable for amd64, wrt bug #428888
+
+  13 Jun 2012; Jeff Horelick <jdhore@gentoo.org> -anyremote-5.4.1.ebuild,
+  -anyremote-5.4.2.ebuild:
+  Remove old per bug 420417
+
+  13 Jun 2012; Jeff Horelick <jdhore@gentoo.org> anyremote-5.5.ebuild:
+  marked x86 per bug 420417
+
+  11 Jun 2012; Agostino Sarubbo <ago@gentoo.org> anyremote-5.5.ebuild:
+  Stable for amd64, wrt bug #420417
+
+*anyremote-6.0 (21 May 2012)
+
+  21 May 2012; Markos Chandras <hwoarang@gentoo.org> +anyremote-6.0.ebuild:
+  Version bump
+
+  02 May 2012; Jeff Horelick <jdhore@gentoo.org> anyremote-5.4.1.ebuild,
+  anyremote-5.4.2.ebuild, anyremote-5.5.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> anyremote-5.4.2.ebuild:
+  x86 stable wrt bug #399947
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> anyremote-5.4.2.ebuild:
+  Stable for amd64, wrt bug #399947
+
+*anyremote-5.5 (22 Jan 2012)
+
+  22 Jan 2012; Markos Chandras <hwoarang@gentoo.org> +anyremote-5.5.ebuild,
+  -anyremote-5.3.ebuild, -anyremote-5.4.ebuild:
+  version bump. drop old
+
+*anyremote-5.4.2 (26 Sep 2011)
+
+  26 Sep 2011; Markos Chandras <hwoarang@gentoo.org> +anyremote-5.4.2.ebuild:
+  Version bump
+
+  21 May 2011; Thomas Kahle <tomka@gentoo.org> anyremote-5.4.1.ebuild:
+  x86 stable per bug 364043
+
+  25 Apr 2011; Markos Chandras <hwoarang@gentoo.org> anyremote-5.4.1.ebuild:
+  Stable on amd64 wrt bug #364043
+
+  13 Apr 2011; Markus Meier <maekke@gentoo.org> anyremote-5.4.ebuild:
+  x86 stable, bug #358541
+
+*anyremote-5.4.1 (18 Mar 2011)
+
+  18 Mar 2011; Serkan Kaba <serkan@gentoo.org> +anyremote-5.4.1.ebuild:
+  Version bump.
+
+  13 Mar 2011; Markos Chandras <hwoarang@gentoo.org> anyremote-5.4.ebuild:
+  Stable on amd64 wrt bug #358541
+
+*anyremote-5.4 (13 Feb 2011)
+
+  13 Feb 2011; Serkan Kaba <serkan@gentoo.org> -anyremote-5.1.2.ebuild,
+  -anyremote-5.1.3.ebuild, -anyremote-5.2.ebuild, +anyremote-5.4.ebuild:
+  Version bump. Remove old.
+
+  24 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> anyremote-5.3.ebuild:
+  x86 stable wrt bug #351800
+
+  17 Jan 2011; Markos Chandras <hwoarang@gentoo.org> anyremote-5.3.ebuild:
+  Stable on amd64 wrt bug #351800
+
+*anyremote-5.3 (23 Oct 2010)
+
+  23 Oct 2010; Markos Chandras <hwoarang@gentoo.org> +anyremote-5.3.ebuild:
+  Version bump
+
+*anyremote-5.2 (08 Sep 2010)
+
+  08 Sep 2010; Serkan Kaba <serkan@gentoo.org> +anyremote-5.2.ebuild:
+  Version bump. Fixes bug #336305.
+
+*anyremote-5.1.3 (14 Jul 2010)
+
+  14 Jul 2010; Serkan Kaba <serkan@gentoo.org> -anyremote-5.1.1.ebuild,
+  +anyremote-5.1.3.ebuild:
+  Version bump. Remove old.
+
+  29 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  anyremote-5.1.2.ebuild:
+  stable x86, bug 325717
+
+  27 Jun 2010; Christoph Mende <angelos@gentoo.org> anyremote-5.1.2.ebuild:
+  Stable on amd64 wrt bug #325719
+
+  11 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  anyremote-5.1.1.ebuild, anyremote-5.1.2.ebuild:
+  Drop bluez-libs and bluez-utils support wrt #301630.
+
+  23 Mar 2010; Serkan Kaba <serkan@gentoo.org> anyremote-5.1.1.ebuild,
+  anyremote-5.1.2.ebuild:
+  Fix my user. Add missing pkgconfig dependency. Fixes bug #310657
+
+*anyremote-5.1.2 (21 Mar 2010)
+
+  21 Mar 2010; Serkan Kaba <serkan@gentoo.org> +anyremote-5.1.1.ebuild,
+  +anyremote-5.1.2.ebuild, +metadata.xml:
+  Version bump. Remove old. Change herd and category.
+
+*anyremote-5.1.1 (19 Feb 2010)
+
+  19 Feb 2010; Serkan Kaba <serkan@gentoo.org> +anyremote-5.1.1.ebuild,
+  metadata.xml:
+  Version bump. Take over the package.
+
+*anyremote-5.1 (11 Jan 2010)
+
+  11 Jan 2010; Markos Chandras <hwoarang@gentoo.org> +anyremote-5.1.ebuild:
+  version bump. Fixes bug #300478
+
+*anyremote-5.0-r1 (26 Dec 2009)
+
+  26 Dec 2009; Markos Chandras <hwoarang@gentoo.org> -anyremote-5.0.ebuild,
+  +anyremote-5.0-r1.ebuild:
+  Fixed documentation path wrt bug #298317
+
+*anyremote-5.0 (15 Oct 2009)
+
+  15 Oct 2009; Markos Chandras <hwoarang@gentoo.org> +anyremote-5.0.ebuild:
+  Version bump ( fixes bug #289052 )
+
+  26 Jul 2009; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add net-p2p herd on metadata.xml. Fixes bug 279158
+
+  12 May 2009; Peter Alfredsen <loki_val@gentoo.org>
+  anyremote-4.18.1.ebuild:
+  List net-wireless/bluez first in ( a b ) dependency w.r.t. bug 269519.
+
+*anyremote-4.18.1 (21 Apr 2009)
+
+  21 Apr 2009; Markos Chandras <hwoarang@gentoo.org> +metadata.xml,
+  +anyremote-4.18.1.ebuild:
+  Initial commit of anyremote program. Fixes bug #209686

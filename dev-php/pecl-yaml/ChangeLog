@@ -1,0 +1,49 @@
+# ChangeLog for dev-php/pecl-yaml
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-yaml/ChangeLog,v 1.6 2015/04/29 00:14:43 grknight Exp $
+
+*pecl-yaml-1.1.1-r1 (29 Apr 2015)
+
+  29 Apr 2015; Brian Evans <grknight@gentoo.org> +pecl-yaml-1.1.1-r1.ebuild,
+  -pecl-yaml-1.1.0-r1.ebuild:
+  Revbump to add php5-6 target wrt bug 538128; drop old
+
+*pecl-yaml-1.1.1 (04 Jan 2014)
+
+  04 Jan 2014; Matti Bickel <mabi@gentoo.org> +pecl-yaml-1.1.1.ebuild,
+  -pecl-yaml-1.1.0.ebuild:
+  version bump, cleanup
+
+*pecl-yaml-1.1.0-r1 (15 Aug 2013)
+
+  15 Aug 2013; Ole Markus With <olemarkus@gentoo.org>
+  +pecl-yaml-1.1.0-r1.ebuild:
+  Revbump. Removing php 5.3 support, adding 5.5 support
+
+  23 Aug 2012; Ole Markus With <olemarkus@gentoo.org> -pecl-yaml-1.0.1.ebuild:
+  Removing old ebuilds
+
+*pecl-yaml-1.1.0 (20 May 2012)
+
+  20 May 2012; Ole Markus With <olemarkus@gentoo.org> +pecl-yaml-1.1.0.ebuild:
+  Version bump
+
+*pecl-yaml-1.0.1 (22 Feb 2011)
+
+  22 Feb 2011; Ole Markus With <olemarkus@gentoo.org>
+  -pecl-yaml-1.0.0.ebuild, +pecl-yaml-1.0.1.ebuild:
+  Version bump
+
+*pecl-yaml-1.0.0 (21 Feb 2011)
+
+  21 Feb 2011; Ole Markus With <olemarkus@gentoo.org>
+  +pecl-yaml-1.0.0.ebuild:
+  Version bump
+
+*pecl-yaml-0.6.3-r1 (02 Dec 2010)
+*pecl-yaml-0.6.3 (02 Dec 2010)
+
+  02 Dec 2010; Ole Markus With <olemarkus@gentoo.org>
+  +pecl-yaml-0.6.3.ebuild, +pecl-yaml-0.6.3-r1.ebuild, +metadata.xml:
+  Initial commit of pecl-yaml (requested in #347511). Thanks to nathan for
+  the ebuild.

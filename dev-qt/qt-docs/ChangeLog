@@ -1,0 +1,25 @@
+# ChangeLog for dev-qt/qt-docs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qt-docs/ChangeLog,v 1.4 2015/06/17 13:46:28 pesa Exp $
+
+*qt-docs-5.4.2_p0 (17 Jun 2015)
+
+  17 Jun 2015; Davide Pesavento <pesa@gentoo.org> +qt-docs-5.4.2_p0.ebuild,
+  -qt-docs-5.4.1_p0.ebuild, metadata.xml:
+  Version bump.
+
+*qt-docs-5.4.1_p0 (01 Apr 2015)
+
+  01 Apr 2015; Davide Pesavento <pesa@gentoo.org> +qt-docs-5.4.1_p0.ebuild,
+  -qt-docs-5.4.1.ebuild:
+  Add _p version suffix to adapt better to upstream scheme; fix LICENSE; update
+  HOMEPAGE; simplify ebuild.
+
+  15 Mar 2015; Ben de Groot <yngwin@gentoo.org> qt-docs-5.4.1.ebuild:
+  Adjust description
+
+*qtdocumentation-5.4.1 (14 Mar 2015)
+
+  14 Mar 2015; Jason A. Donenfeld <zx2c4@gentoo.org> +metadata.xml,
+  +qtdocumentation-5.4.1.ebuild:
+  Qt documentation import

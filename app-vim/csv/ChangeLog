@@ -1,0 +1,88 @@
+# ChangeLog for app-vim/csv
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/csv/ChangeLog,v 1.19 2015/01/17 01:45:27 radhermit Exp $
+
+  17 Jan 2015; Tim Harder <radhermit@gentoo.org> -csv-0.29.ebuild,
+  csv-0.30.ebuild:
+  Stabilize for amd64/x86 and remove old.
+
+*csv-0.31 (17 Jan 2015)
+
+  17 Jan 2015; Tim Harder <radhermit@gentoo.org> +csv-0.31.ebuild:
+  Version bump.
+
+  29 Mar 2014; Tim Harder <radhermit@gentoo.org> -csv-0.22.ebuild,
+  -csv-0.26.ebuild, -csv-0.28.ebuild:
+  Remove old.
+
+*csv-0.30 (29 Mar 2014)
+
+  29 Mar 2014; Tim Harder <radhermit@gentoo.org> +csv-0.30.ebuild:
+  Version bump.
+
+  05 Jan 2014; Agostino Sarubbo <ago@gentoo.org> csv-0.29.ebuild:
+  Stable for x86, wrt bug #495356
+
+  03 Jan 2014; Chema Alonso <nimiux@gentoo.org> csv-0.29.ebuild:
+  Stable for amd64 wrt bug #495356
+
+  30 Nov 2013; Johannes Huber <johu@gentoo.org> csv-0.28.ebuild:
+  x86 stable wrt bug #481844
+
+  05 Nov 2013; Tony Vroon <chainsaw@gentoo.org> csv-0.28.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #481844.
+
+*csv-0.29 (03 Nov 2013)
+
+  03 Nov 2013; Tim Harder <radhermit@gentoo.org> +csv-0.29.ebuild:
+  Version bump.
+
+*csv-0.28 (13 Jan 2013)
+
+  13 Jan 2013; Tim Harder <radhermit@gentoo.org> +csv-0.28.ebuild:
+  Version bump.
+
+  03 Aug 2012; Tim Harder <radhermit@gentoo.org> -csv-0.21.ebuild:
+  Remove old.
+
+*csv-0.26 (03 Aug 2012)
+
+  03 Aug 2012; Tim Harder <radhermit@gentoo.org> +csv-0.26.ebuild:
+  Version bump.
+
+*csv-0.22 (13 Nov 2011)
+
+  13 Nov 2011; Tim Harder <radhermit@gentoo.org> -csv-0.18.ebuild,
+  -csv-0.19.ebuild, +csv-0.22.ebuild:
+  Version bump and remove old.
+
+*csv-0.21 (10 Oct 2011)
+
+  10 Oct 2011; Tim Harder <radhermit@gentoo.org> +csv-0.21.ebuild:
+  Version bump.
+
+  01 Oct 2011; Tim Harder <radhermit@gentoo.org> -csv-0.16.ebuild,
+  -csv-0.17.ebuild:
+  Remove old.
+
+*csv-0.19 (01 Oct 2011)
+
+  01 Oct 2011; Tim Harder <radhermit@gentoo.org> +csv-0.19.ebuild:
+  Version bump.
+
+*csv-0.18 (09 Sep 2011)
+
+  09 Sep 2011; Tim Harder <radhermit@gentoo.org> +csv-0.18.ebuild:
+  Version bump.
+
+*csv-0.17 (17 Aug 2011)
+
+  17 Aug 2011; Tim Harder <radhermit@gentoo.org> +csv-0.17.ebuild:
+  Version bump
+
+*csv-0.16 (30 Jul 2011)
+
+  30 Jul 2011; Tim Harder <radhermit@gentoo.org> +csv-0.16.ebuild,
+  +metadata.xml:
+  Initial import.

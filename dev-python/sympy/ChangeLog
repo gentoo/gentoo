@@ -1,0 +1,160 @@
+# ChangeLog for dev-python/sympy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sympy/ChangeLog,v 1.35 2015/06/07 16:13:36 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> sympy-0.7.4.1.ebuild,
+  sympy-0.7.6.ebuild:
+  Drop old Python implementations
+
+*sympy-0.7.6 (15 Dec 2014)
+
+  15 Dec 2014; Andrey Grozin <grozin@gentoo.org> +sympy-0.7.6.ebuild,
+  +files/sympy-0.7.6-doc-makefile.patch:
+  Version bump
+
+  06 Jul 2014; Mike Gilbert <floppym@gentoo.org> sympy-0.7.4.1.ebuild:
+  Use python_gen_cond_dep.
+
+  12 Jun 2014; Patrick Lauer <patrick@gentoo.org> -sympy-0.7.3.ebuild:
+  Dropping old version with unsatisfiable dependencies
+
+  06 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org> sympy-0.7.4.1.ebuild:
+  Reintroduce use flag system-mpmath to allow using bundled mpmath, bug #500284
+
+*sympy-0.7.4.1 (03 Feb 2014)
+
+  03 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org> +sympy-0.7.4.1.ebuild,
+  -files/sympy-0.6.6-sphinx.patch, -files/sympy-0.6.7-python-2.7.patch,
+  -files/sympy-0.7.1-mpmath.patch, -files/sympy-0.7.2-mpmath.patch,
+  -sympy-0.6.7.ebuild, -sympy-0.7.0.ebuild, -sympy-0.7.1.ebuild,
+  -sympy-0.7.2-r1.ebuild, -sympy-0.7.2.ebuild, metadata.xml:
+  Version bump and cleanup, reworked tests, forced system mpmath dependency
+
+  28 Dec 2013; Justin Lecher <jlec@gentoo.org> sympy-0.7.3.ebuild:
+  Add workaround for XDG_CONFIG_HOME problems, #488378
+
+  16 Oct 2013; Justin Lecher <jlec@gentoo.org> sympy-0.7.3.ebuild:
+  Fix problems with doc building, #488172; simplify py 2/3 selection code
+
+*sympy-0.7.3 (15 Oct 2013)
+
+  15 Oct 2013; Justin Lecher <jlec@gentoo.org> sympy-0.7.2-r1.ebuild,
+  +sympy-0.7.3.ebuild, metadata.xml:
+  Version Bump; fix missing py3.3 handling, #488098
+
+  13 Oct 2013; Pacho Ramos <pacho@gentoo.org> sympy-0.7.2-r1.ebuild:
+  Also compatible with python3_3
+
+  09 Jun 2013; Mike Gilbert <floppym@gentoo.org> sympy-0.7.1.ebuild,
+  sympy-0.7.2-r1.ebuild, sympy-0.7.2.ebuild:
+  Depend on virtual/python-imaging.
+
+  10 May 2013; Patrick Lauer <patrick@gentoo.org> sympy-0.7.2-r1.ebuild:
+  Fix inherit
+
+*sympy-0.7.2-r1 (31 Mar 2013)
+
+  31 Mar 2013; Andrey Grozin <grozin@gentoo.org> +sympy-0.7.2-r1.ebuild metadata.xml:
+  Python-3.2 support
+
+*sympy-0.7.2 (20 Oct 2012)
+
+  20 Oct 2012; Andrey Grozin <grozin@gentoo.org> +sympy-0.7.2.ebuild,
+  +files/sympy-0.7.2-mpmath.patch:
+  Version bump
+
+  09 Aug 2012; Patrick Lauer <patrick@gentoo.org> sympy-0.7.1.ebuild:
+  Restrict pypy
+
+  24 Feb 2012; Andrey Grozin <grozin@gentoo.org> sympy-0.7.1.ebuild,
+  metadata.xml:
+  USE flag pyglet added, closing bug #405315
+
+  08 Aug 2011; Markos Chandras <hwoarang@gentoo.org> sympy-0.7.1.ebuild:
+  Restrict Jython ABIs. Fix dependencies. Call python_pkg_setup(). Patch by
+  Arfrever.
+
+*sympy-0.7.1 (05 Aug 2011)
+
+  05 Aug 2011; Andrey Grozin <grozin@gentoo.org> +sympy-0.7.1.ebuild,
+  +files/sympy-0.7.1-mpmath.patch:
+  Version bump, now uses system mpmath, does not embed pyglet (system pyglet is
+  a recommended soft dependence). Thanks to Francois Bissey
+  <francois.bissey@canterbury.ac.nz> for this ebuild.
+
+  26 Jul 2011; Jesus Rivero <neurogeek@gentoo.org> sympy-0.7.0.ebuild:
+  Added test DEPEND
+
+*sympy-0.7.0 (29 Jun 2011)
+
+  29 Jun 2011; Andrey Grozin <grozin@gentoo.org> +sympy-0.7.0.ebuild:
+  Version bump
+
+  07 Mar 2011; Justin Lecher <jlec@gentoo.org> sympy-0.6.7.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  13 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  sympy-0.6.7.ebuild:
+  dev-python/py -> dev-python/pytest.
+
+  24 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  sympy-0.6.7.ebuild, +files/sympy-0.6.7-python-2.7.patch:
+  Fix majority of test failures with Python 2.7 (bug #330713).
+
+*sympy-0.6.7 (16 Apr 2010)
+
+  16 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +sympy-0.6.7.ebuild:
+  Version bump. Set SUPPORT_PYTHON_ABIS.
+
+  07 Feb 2010; Peter Volkov <pva@gentoo.org> sympy-0.6.5.ebuild,
+  sympy-0.6.6.ebuild:
+  Add inherit eutils: epatch is defined there.
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> sympy-0.6.5.ebuild,
+  sympy-0.6.6.ebuild:
+  virtual/ghostscript->app-text/ghostscript-gpl: ghostscript-gpl is the only
+  implementation left in the tree.
+
+*sympy-0.6.6 (24 Dec 2009)
+
+  24 Dec 2009; Andrey Grozin <grozin@gentoo.org>
+  -files/sympy-0.6.4-sphinx.patch, +sympy-0.6.6.ebuild,
+  +files/sympy-0.6.6-sphinx.patch:
+  Version bump, bug #298131, thanks to Rafal Muzylo <galtgendo@o2.pl>
+
+  04 Sep 2009; Patrick Lauer <patrick@gentoo.org> -sympy-0.6.4.ebuild:
+  Remove old
+
+*sympy-0.6.5 (19 Jul 2009)
+
+  19 Jul 2009; Andrey Grozin <grozin@gentoo.org> -sympy-0.6.3.ebuild,
+  -files/sympy-0.6.3-sphinx.patch, +sympy-0.6.5.ebuild,
+  +files/sympy-0.6.5-sphinx.patch:
+  Version bump
+
+*sympy-0.6.4 (14 Apr 2009)
+
+  14 Apr 2009; Andrey Grozin <grozin@gentoo.org>
+  -files/sympy-0.6.2-sphinx.patch, +files/sympy-0.6.4-sphinx.patch,
+  -sympy-0.6.2.ebuild, +sympy-0.6.4.ebuild:
+  Version bump
+
+*sympy-0.6.3 (20 Nov 2008)
+
+  20 Nov 2008; Andrey Grozin <grozin@gentoo.org>
+  +files/sympy-0.6.3-sphinx.patch, +sympy-0.6.3.ebuild:
+  Version bump, should now work with python-2.6
+
+*sympy-0.6.2 (02 Sep 2008)
+
+  25 Oct 2008; Pieter Van den Abeele <pvdabeel@gentoo.org> sympy-0.6.2.ebuild:
+  Keyworded ~ppc. Closes bug #237720
+
+  02 Sep 2008; Andrey Grozin <grozin@gentoo.org>
+  +files/sympy-0.6.2-sphinx.patch, +metadata.xml, +sympy-0.6.2.ebuild:
+  Initial import. Based on the ebuild in sunrise, bug #192785. Thanks to
+  Thomas Pani, Thomas Sachau.

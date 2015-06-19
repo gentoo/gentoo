@@ -1,0 +1,48 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/mjpg-streamer/files/mjpg-streamer.initd,v 1.1 2011/11/17 20:00:39 aidecoe Exp $
+
+MJPG_STREAMER_PIDFILE="${MJPG_STREAMER_PIDFILE:-/var/run/${SVCNAME}.pid}"
+MY_NAME=${SVCNAME//-/_}
+
+depend() {
+	use logger
+}
+
+checkconfig() {
+	local vars
+
+	[[ ${INPUT_PLUGIN} ]] || vars+=\ INPUT_PLUGIN
+	[[ ${OUTPUT_PLUGIN} ]] || vars+=\ OUTPUT_PLUGIN
+	[[ ${MJPG_STREAMER_USER} ]] || vars+=\ MJPG_STREAMER_USER
+	[[ ${MJPG_STREAMER_GROUP} ]] || vars+=\ MJPG_STREAMER_GROUP
+	vars="${vars# }"
+
+	if [[ ${vars} ]]; then
+		eerror "Required variables in /etc/conf.d/${SVCNAME} are not set:"
+		eerror "  ${vars// /, }"
+		return 1
+	fi
+
+	return 0
+}
+
+start() {
+	checkconfig || return $?
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --exec /usr/bin/${MY_NAME} \
+		--user "${MJPG_STREAMER_USER}" \
+		--group "${MJPG_STREAMER_GROUP}" -w 100 -b -m \
+		--pidfile "${MJPG_STREAMER_PIDFILE}" \
+		-- -i "/usr/lib/input_${INPUT_PLUGIN}.so ${INPUT_PLUGIN_OPTS}" \
+		-o "/usr/lib/output_${OUTPUT_PLUGIN}.so ${OUTPUT_PLUGIN_OPTS}"
+	eend $? "Check syslog to see why startup failed."
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --exec /usr/bin/${MY_NAME} \
+		--pidfile "${MJPG_STREAMER_PIDFILE}"
+	eend $?
+}

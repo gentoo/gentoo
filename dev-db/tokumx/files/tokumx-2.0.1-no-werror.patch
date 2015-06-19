@@ -1,0 +1,53 @@
+diff -uNr mongo-tokumx-2.0.1.ORIG/CMakeLists.txt mongo-tokumx-2.0.1/CMakeLists.txt
+--- mongo-tokumx-2.0.1.ORIG/CMakeLists.txt	2015-04-14 11:28:47.723631388 +0100
++++ mongo-tokumx-2.0.1/CMakeLists.txt	2015-04-14 11:29:04.734632235 +0100
+@@ -82,14 +82,13 @@
+   endforeach(flag)
+ endmacro(set_cxxflags_if_supported)
+ 
+-set(CMAKE_C_FLAGS "-fPIC -fno-strict-aliasing -ggdb -Wall -Wsign-compare -Wno-unknown-pragmas -Winvalid-pch -Werror -pipe")
++set(CMAKE_C_FLAGS "-fPIC -fno-strict-aliasing -ggdb -Wall -Wsign-compare -Wno-unknown-pragmas -Winvalid-pch -pipe")
+ set(CMAKE_CXX_FLAGS "-fPIC -fno-strict-aliasing -ggdb")
+ set_cxxflags_if_supported(
+   -Wall
+   -Wsign-compare
+   -Wno-unknown-pragmas
+   -Winvalid-pch
+-  -Werror
+   -pipe
+   -Wnon-virtual-dtor
+   -Woverloaded-virtual
+diff -uNr mongo-tokumx-2.0.1.ORIG/SConstruct mongo-tokumx-2.0.1/SConstruct
+--- mongo-tokumx-2.0.1.ORIG/SConstruct	2015-04-14 11:28:47.724631388 +0100
++++ mongo-tokumx-2.0.1/SConstruct	2015-04-14 11:29:20.550633023 +0100
+@@ -710,7 +710,7 @@
+                          "-Winvalid-pch"] )
+     # env.Append( " -Wconversion" ) TODO: this doesn't really work yet
+     if linux:
+-        env.Append( CCFLAGS=["-Werror", "-pipe"] )
++        env.Append( CCFLAGS=["-pipe"] )
+         if not has_option('clang'):
+             env.Append( CCFLAGS=["-fno-builtin-memcmp"] ) # glibc's memcmp is faster than gcc's
+ 
+diff -uNr mongo-tokumx-2.0.1.ORIG/src/third_party/v8/CMakeLists.txt mongo-tokumx-2.0.1/src/third_party/v8/CMakeLists.txt
+--- mongo-tokumx-2.0.1.ORIG/src/third_party/v8/CMakeLists.txt	2015-04-14 11:28:47.853631395 +0100
++++ mongo-tokumx-2.0.1/src/third_party/v8/CMakeLists.txt	2015-04-14 11:30:00.934635034 +0100
+@@ -126,7 +126,6 @@
+ 
+ set(V8_CXX_FLAGS
+   -Wall
+-  -Werror
+   -W
+   -Wno-unused-parameter
+   -Woverloaded-virtual
+diff -uNr mongo-tokumx-2.0.1.ORIG/src/third_party/v8/SConscript mongo-tokumx-2.0.1/src/third_party/v8/SConscript
+--- mongo-tokumx-2.0.1.ORIG/src/third_party/v8/SConscript	2015-04-14 11:28:47.836631394 +0100
++++ mongo-tokumx-2.0.1/src/third_party/v8/SConscript	2015-04-14 11:29:49.341634457 +0100
+@@ -47,7 +47,6 @@
+   'gcc': {
+     'all': {
+       'CCFLAGS':      ['-Wall',
+-                       '-Werror',
+                        '-W',
+                        '-Wno-unused-parameter',
+                        '-Woverloaded-virtual',

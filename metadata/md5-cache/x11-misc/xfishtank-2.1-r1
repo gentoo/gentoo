@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=x11-libs/libX11 x11-libs/libXt x11-libs/libXext x11-proto/xproto x11-misc/imake
+DESCRIPTION=Turns your root window into an aquarium
+EAPI=2
+HOMEPAGE=http://www.ibiblio.org/pub/Linux/X11/demos/
+KEYWORDS=amd64 ppc ppc64 x86 ~x86-linux
+LICENSE=public-domain
+RDEPEND=x11-libs/libX11 x11-libs/libXt x11-libs/libXext
+SLOT=0
+SRC_URI=http://www.ibiblio.org/pub/Linux/X11/demos/xfishtank-2.1tp.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=075e1e364f89632b3f65bc402b22cb29

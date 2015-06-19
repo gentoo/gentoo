@@ -1,0 +1,55 @@
+# ChangeLog for games-puzzle/wmpuzzle
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/wmpuzzle/ChangeLog,v 1.14 2015/03/26 17:33:46 mr_bones_ Exp $
+
+  26 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/wmpuzzle-0.5.0-asneeded.patch, -wmpuzzle-0.5.0.ebuild:
+  old
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> wmpuzzle-0.5.2.ebuild:
+  Stable for x86, wrt bug #543228
+
+  24 Mar 2015; Agostino Sarubbo <ago@gentoo.org> wmpuzzle-0.5.2.ebuild:
+  Stable for amd64, wrt bug #543228
+
+  19 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> -wmpuzzle-0.5.1.ebuild:
+  old
+
+*wmpuzzle-0.5.2 (11 Feb 2015)
+
+  11 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> +wmpuzzle-0.5.2.ebuild,
+  wmpuzzle-0.5.0.ebuild, wmpuzzle-0.5.1.ebuild:
+  version bump
+
+  21 Feb 2013; Michael Sterrett <mr_bones_@gentoo.org> wmpuzzle-0.5.1.ebuild:
+  update menu icon handling
+
+*wmpuzzle-0.5.1 (20 Jan 2013)
+
+  20 Jan 2013; Samuli Suominen <ssuominen@gentoo.org> +wmpuzzle-0.5.1.ebuild:
+  Version bump wrt #453120 by Agostino Sarubbo
+
+  20 Jan 2013; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Missing desktop-dock in metadata.xml
+
+  25 May 2011; Michael Sterrett <mr_bones_@gentoo.org> wmpuzzle-0.5.0.ebuild:
+  fix SRC_URI (bug #366961)
+
+  24 Nov 2008; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Re-assign to games herd.
+
+  26 Jun 2008; Santiago M. Mola <coldwind@gentoo.org> wmpuzzle-0.5.0.ebuild:
+  amd64 stable wrt bug #229485
+
+  26 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  wmpuzzle-0.5.0.ebuild:
+  stable x86, bug 229485
+
+  18 Jan 2008; Samuli Suominen <ssuominen@gentoo.org>
+  +files/wmpuzzle-0.5.0-asneeded.patch, wmpuzzle-0.5.0.ebuild:
+  Fixed building with asneeded.
+
+*wmpuzzle-0.5.0 (17 Jan 2008)
+
+  17 Jan 2008; Samuli Suominen <ssuominen@gentoo.org> +wmpuzzle-0.5.0.ebuild:
+  Initial commit. Ebuild by Kenneth Prugh a.k.a. Ken69267

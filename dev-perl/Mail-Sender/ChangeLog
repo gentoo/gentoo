@@ -1,0 +1,127 @@
+# ChangeLog for dev-perl/Mail-Sender
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Mail-Sender/ChangeLog,v 1.32 2015/02/14 15:19:42 zlogene Exp $
+
+*Mail-Sender-0.8.23 (14 Feb 2015)
+
+  14 Feb 2015; Mikle Kolyada <zlogene@gentoo.org> +Mail-Sender-0.8.23.ebuild:
+  Version bump
+
+  12 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> -Mail-Sender-0.8.21.ebuild:
+  Drop old.
+
+*Mail-Sender-0.8.22-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Mail-Sender-0.8.22-r1.ebuild, -Mail-Sender-0.8.22.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> Mail-Sender-0.8.22.ebuild:
+  Stable for x86, wrt bug #457310
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> Mail-Sender-0.8.22.ebuild:
+  Stable for amd64, wrt bug #457310
+
+  07 Jan 2013; Torsten Veller <tove@gentoo.org> +Mail-Sender-0.8.21.ebuild:
+  Readd erroneously dropped version
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org> -Mail-Sender-0.8.16.ebuild,
+  -Mail-Sender-0.8.21.ebuild:
+  Cleanup
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> Mail-Sender-0.8.22.ebuild:
+  Add ~ppc, wrt bug #369695
+
+*Mail-Sender-0.8.22 (25 Dec 2012)
+
+  25 Dec 2012; Torsten Veller <tove@gentoo.org> +Mail-Sender-0.8.22.ebuild:
+  Version bump
+
+  06 Dec 2012; <ago@gentoo.org> Mail-Sender-0.8.21.ebuild:
+  Stable for x86, wrt bug #441238
+
+  06 Dec 2012; <ago@gentoo.org> Mail-Sender-0.8.21.ebuild:
+  Stable for amd64, wrt bug #441238
+
+*Mail-Sender-0.8.21 (30 Sep 2012)
+
+  30 Sep 2012; Torsten Veller <tove@gentoo.org> +Mail-Sender-0.8.21.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org> -Mail-Sender-0.8.13.ebuild:
+  Cleanup
+
+  12 Feb 2012; Raúl Porcel <armin76@gentoo.org> Mail-Sender-0.8.13.ebuild,
+  Mail-Sender-0.8.16.ebuild:
+  Drop ia64. x86 stable wrt #396933
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Mail-Sender-0.8.16.ebuild:
+  Stable for amd64, wrt bug #396933
+
+  21 Feb 2010; Hanno Boeck <hanno@gentoo.org> Mail-Sender-0.8.13.ebuild,
+  Mail-Sender-0.8.16.ebuild:
+  Change license, it has a non-free clause, see
+  http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=568652.
+
+  01 May 2009; Torsten Veller <tove@gentoo.org> -Mail-Sender-0.8.10.ebuild:
+  Cleanup
+
+*Mail-Sender-0.8.16 (07 Sep 2008)
+
+  07 Sep 2008; Torsten Veller <tove@gentoo.org> +Mail-Sender-0.8.16.ebuild:
+  Version bump
+
+  14 Jul 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Assigning dev-perl/Mail-Sender to perl-herd, as chriswhite has been retired
+  (#56211).
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> Mail-Sender-0.8.13.ebuild:
+  Stable on x86, bug #169152.
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Mail-Sender-0.8.13.ebuild:
+  Stable on ia64.
+
+  10 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Mail-Sender-0.8.10.ebuild, Mail-Sender-0.8.13.ebuild:
+  Marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Mail-Sender-0.8.10.ebuild, Mail-Sender-0.8.13.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> Mail-Sender-0.8.10.ebuild:
+  Mark 0.8.10 stable on ia64
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  Mail-Sender-0.8.10.ebuild, Mail-Sender-0.8.13.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+  15 May 2006; Jon Hood <squinky86@gentoo.org> Mail-Sender-0.8.13.ebuild:
+  Add ~amd64, #121762.
+
+*Mail-Sender-0.8.13 (01 May 2006)
+
+  01 May 2006; <mcumming@gentoo.org> +Mail-Sender-0.8.13.ebuild:
+  Version bump
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org> Mail-Sender-0.8.10.ebuild:
+  Mark 0.8.10 ~ia64
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  Mail-Sender-0.8.10.ebuild:
+  Virtuals for perl-core
+
+  15 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Mail-Sender-0.8.10.ebuild:
+  Marking x86 stable
+
+*Mail-Sender-0.8.10 (04 Nov 2005)
+
+  04 Nov 2005; Chris White <chriswhite@gentoo.org> +metadata.xml,
+  +Mail-Sender-0.8.10.ebuild:
+  Initial import into the tree.  Needed for package Eidetic.

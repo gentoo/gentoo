@@ -1,0 +1,35 @@
+--- build
++++ build
+@@ -1,9 +1,10 @@
+ #!/bin/sh
+ 
+ # Install defaults
+-APPDEFAULTS=/usr/lib/X11/app-defaults
+-BINDIR=/usr/games/bin
+-LIBDIR=/usr/games/lib/scrabble
++APPDEFAULTS=$DESTDIR/usr/$LIBDIR/X11/app-defaults
++REAL_APPDEFAULTS=/usr/$LIBDIR/X11/app-defaults
++BINDIR=$DESTDIR/usr/games/bin
++LIBDIR=$DESTDIR/usr/share/games/xscrabble
+ 
+ # Version (don't modify without knowing!!)
+ MAJOR=2
+@@ -53,6 +54,7 @@
+ 
+ if test "$1" = "install" ; then
+   mkdirhier $BINDIR
++  mkdir -p $APPDEFAULTS
+   echo "mkdirhier $BINDIR"
+   install -c -s src/xscrab $BINDIR
+   echo "install -c -s src/xscrab $BINDIR"
+@@ -90,8 +92,8 @@
+   echo "mv -f xscrabble_$2/app-defaults/XScrabble_$2 $APPDEFAULTS"
+   rm -f $APPDEFAULTS/XScrabble
+   echo "rm -f $APPDEFAULTS/XScrabble"
+-  ln -fs $APPDEFAULTS/XScrabble_$2 $APPDEFAULTS/XScrabble
+-  echo "ln -fs $APPDEFAULTS/XScrabble_$2 $APPDEFAULTS/XScrabble"
++  ln -fs $REAL_APPDEFAULTS/XScrabble_$2 $APPDEFAULTS/XScrabble
++  echo "ln -fs $REAL_APPDEFAULTS/XScrabble_$2 $APPDEFAULTS/XScrabble"
+   chmod a+rwx $LIBDIR/$2 
+   chmod a+rw $LIBDIR/$2/scrabble_scores
+   rm -rf xscrabble_$2

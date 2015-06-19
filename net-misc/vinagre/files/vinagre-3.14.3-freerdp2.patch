@@ -1,0 +1,35 @@
+From c819f3e06363faa3e0c1503d7bbcf3ac88c6dedd Mon Sep 17 00:00:00 2001
+From: Nick Andrade <SDNick484@gmail.com>
+Date: Sat, 16 May 2015 08:03:29 +0100
+Subject: Fix building against newer FreeRDP versions
+
+https://bugzilla.gnome.org/show_bug.cgi?id=749124
+
+diff --git a/plugins/rdp/vinagre-rdp-tab.c b/plugins/rdp/vinagre-rdp-tab.c
+index c4c11f8..690a580 100644
+--- a/plugins/rdp/vinagre-rdp-tab.c
++++ b/plugins/rdp/vinagre-rdp-tab.c
+@@ -887,7 +887,6 @@ open_freerdp (VinagreRdpTab *rdp_tab)
+   settings->RdpSecurity = TRUE;
+   settings->TlsSecurity = TRUE;
+   settings->NlaSecurity = TRUE;
+-  settings->DisableEncryption = FALSE;
+   settings->EncryptionMethods = ENCRYPTION_METHOD_40BIT | ENCRYPTION_METHOD_128BIT | ENCRYPTION_METHOD_FIPS;
+   settings->EncryptionLevel = ENCRYPTION_LEVEL_CLIENT_COMPATIBLE;
+ #else
+@@ -898,6 +897,12 @@ open_freerdp (VinagreRdpTab *rdp_tab)
+   settings->encryption_method = ENCRYPTION_METHOD_40BIT | ENCRYPTION_METHOD_128BIT | ENCRYPTION_METHOD_FIPS;
+   settings->encryption_level = ENCRYPTION_LEVEL_CLIENT_COMPATIBLE;
+ #endif
++#include <freerdp/version.h>
++#if (FREERDP_VERSION_MAJOR == 1 && FREERDP_VERSION_MINOR >= 2 && FREERDP_VERSION_REVISION >= 1)
++  settings->UseRdpSecurityLayer = FALSE;
++#else
++  settings->DisableEncryption = FALSE;
++#endif
+ 
+   /* Set display size */
+ #if HAVE_FREERDP_1_1
+-- 
+cgit v0.10.2
+

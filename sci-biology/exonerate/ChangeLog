@@ -1,0 +1,38 @@
+# ChangeLog for sci-biology/exonerate
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/exonerate/ChangeLog,v 1.7 2014/07/09 21:04:13 dilfridge Exp $
+
+  09 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -exonerate-2.2.0.ebuild:
+  Remove old
+
+  25 Jan 2013; Justin Lecher <jlec@gentoo.org> exonerate-2.2.0-r1.ebuild,
+  metadata.xml:
+  We need USE=utils for testing, #453978; move to autotool-utils.eclass
+
+  13 Dec 2011; Justin Lecher <jlec@gentoo.org> exonerate-2.2.0-r1.ebuild:
+  Respect CFLAGS and CC, #394545
+
+  22 Jun 2011; Fabian Groffen <grobian@gentoo.org> exonerate-2.2.0-r1.ebuild:
+  Marked ~ppc-macos and ~x64-macos for bug #372327
+
+  10 Mar 2011; Justin Lecher <jlec@gentoo.org> exonerate-2.2.0.ebuild,
+  exonerate-2.2.0-r1.ebuild, metadata.xml:
+  Remove largefile USE support and default to it
+
+*exonerate-2.2.0-r1 (20 Jun 2010)
+
+  20 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  +exonerate-2.2.0-r1.ebuild, +files/exonerate-2.2.0-asneeded.patch:
+  Fixing --as-needed issues wrt bug 268094, adding threads flag, adding more
+  docs
+
+*exonerate-2.2.0 (01 May 2009)
+
+  01 May 2009; Jeff Gardner <je_fro@gentoo.org> +exonerate-2.2.0.ebuild,
+  +metadata.xml:
+  Bump and move to portage.
+
+  18 Jan 2008; Jeff Gardner <je_fro@gentoo.org> +exonerate-1.4.0.ebuild:
+  Initial import thanks to dawe on bug #206521
+

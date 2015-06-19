@@ -1,0 +1,24 @@
+--- libqxt~orig/doc/doc.pri	2010-08-19 17:06:12.000000000 +0200
++++ libqxt/doc/doc.pri	2010-08-19 17:08:16.000000000 +0200
+@@ -1,5 +1,3 @@
+-SUBDIRS += tools/3rdparty/qdoc3
+-
+ win32 {
+     QXT_WINCONFIG = release/
+     !CONFIG(release, debug|release) {
+@@ -16,14 +14,13 @@
+ }
+ 
+ $$unixstyle {
+-    QDOC = QXT_SOURCE_TREE=$$QXT_SOURCE_TREE QXT_BUILD_TREE=$$QXT_BUILD_TREE $$QXT_BUILD_TREE/tools/3rdparty/qdoc3/$${QXT_WINCONFIG}qdoc3
++    QDOC = QXT_SOURCE_TREE=$$QXT_SOURCE_TREE QXT_BUILD_TREE=$$QXT_BUILD_TREE $$[QT_INSTALL_BINS]/qdoc3
+ } else {
+     QDOC = set QXT_SOURCE_TREE=$$QXT_SOURCE_TREE&& set QXT_BUILD_TREE=$$QXT_BUILD_TREE&& $$QXT_BUILD_TREE/tools/3rdparty/qdoc3/$${QXT_WINCONFIG}qdoc3.exe
+     QDOC = $$replace(QDOC, "/", "\\\\")
+ }
+ 
+ adp_docs.commands = ($$QDOC -DQXT_DOXYGEN_RUN $$QXT_SOURCE_TREE/doc/src/qxt.qdocconf)
+-adp_docs.depends += sub-tools-3rdparty-qdoc3
+ docs.depends = adp_docs
+ QMAKE_EXTRA_TARGETS += adp_docs docs
+ 

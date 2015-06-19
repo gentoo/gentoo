@@ -1,0 +1,50 @@
+# ChangeLog for media-libs/libxspf
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libxspf/ChangeLog,v 1.13 2013/03/02 21:45:44 hwoarang Exp $
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> libxspf-1.2.0.ebuild:
+  Move Qt dependencies to the new category
+
+  22 Aug 2012; Christoph Junghans <ottxor@gentoo.org> libxspf-1.2.0.ebuild:
+  added prefix keywords
+
+  30 Jul 2012; Samuli Suominen <ssuominen@gentoo.org> libxspf-1.2.0.ebuild,
+  +files/libxspf-1.2.0-gcc47.patch:
+  Fix building with sys-devel/gcc >= 4.7 wrt #421745 by Diego Elio Pettenò and
+  Tristan Heaven
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> libxspf-1.2.0.ebuild:
+  Drop sparc keywords
+
+  06 May 2012; Davide Pesavento <pesa@gentoo.org> libxspf-1.2.0.ebuild:
+  Migrate to EAPI=4 and qt4-r2 eclass.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> libxspf-1.2.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  01 Jun 2009; Ferris McCormick <fmccor@gentoo.org> libxspf-1.2.0.ebuild:
+  Sparc stable, required for Bug #271815.
+
+  31 May 2009; Markus Meier <maekke@gentoo.org> libxspf-1.2.0.ebuild:
+  amd64/x86 stable, bug #271815
+
+  31 May 2009; nixnut <nixnut@gentoo.org> libxspf-1.2.0.ebuild:
+  ppc stable #271815
+
+  12 May 2009; Samuli Suominen <ssuominen@gentoo.org> libxspf-1.2.0.ebuild:
+  Remove unset XDG_CONFIG_HOME and inherit qt4 which does this for us now.
+
+  11 May 2009; Samuli Suominen <ssuominen@gentoo.org> libxspf-1.2.0.ebuild:
+  unset XDG_CONFIG_HOME because otherwise qt-assistant fails with sandbox
+  violation, thanks to Alexis Ballier.
+
+  10 May 2009; Samuli Suominen <ssuominen@gentoo.org> libxspf-1.2.0.ebuild:
+  Add >=x11-libs/qt-assistant-4 to USE doc deps, thanks to Sebastian
+  Pipping.
+
+*libxspf-1.2.0 (10 May 2009)
+
+  10 May 2009; Samuli Suominen <ssuominen@gentoo.org> +libxspf-1.2.0.ebuild,
+  +files/libxspf-1.2.0-gcc44.patch:
+  Initial commit for bug 261604 with GCC 4.4 compile fix. This is renamed
+  (by upstream) media-libs/libspiff. Thanks to Sebastian Pipping.

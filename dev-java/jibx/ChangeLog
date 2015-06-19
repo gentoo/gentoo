@@ -1,0 +1,58 @@
+# ChangeLog for dev-java/jibx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jibx/ChangeLog,v 1.16 2015/06/09 13:46:50 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  19 Oct 2012; Christoph Junghans <ottxor@gentoo.org> jibx-1.1.5-r1.ebuild:
+  added prefix support (bug #435576)
+
+  29 Sep 2012; Fabian Groffen <grobian@gentoo.org> jibx-1.1.5-r1.ebuild:
+  Marked ~x64-macos
+
+  20 Mar 2010; Petteri Räty <betelgeuse@gentoo.org> -jibx-1.1.5.ebuild:
+  Remove old revision.
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> jibx-1.1.5-r1.ebuild:
+  ppc stable #274029
+
+  02 Jul 2009; Markus Meier <maekke@gentoo.org> jibx-1.1.5-r1.ebuild:
+  amd64 stable, bug #274029
+
+  17 Jun 2009; Christian Faulhammer <fauli@gentoo.org> jibx-1.1.5-r1.ebuild:
+  stable x86, bug 274029
+
+*jibx-1.1.5-r1 (13 May 2009)
+
+  13 May 2009; Petteri Räty <betelgeuse@gentoo.org> +jibx-1.1.5-r1.ebuild:
+  Migrate to the stax-api virtual.
+
+  13 May 2009; Petteri Räty <betelgeuse@gentoo.org> -jibx-1.1.3.ebuild:
+  Remove old version.
+
+  20 Feb 2008; Petteri Räty <betelgeuse@gentoo.org> jibx-1.1.5.ebuild:
+  Fix jar installation to not install dep jars.
+
+*jibx-1.1.5 (20 Feb 2008)
+
+  20 Feb 2008; Petteri Räty <betelgeuse@gentoo.org> +jibx-1.1.5.ebuild:
+  Version bump. Fixes bug #210199.
+
+  11 Aug 2007; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml:
+  Remove myself from <maintainer>.
+
+  15 May 2007; Alistair John Bush <ali_bush@gentoo.org> jibx-1.1.3.ebuild:
+  Adding to ~amd64
+
+  05 May 2007; Krzysiek Pawlik <nelchael@gentoo.org> jibx-1.1.3.ebuild:
+  Split generators to jibx-tools.
+
+  28 Apr 2007; Krzysiek Pawlik <nelchael@gentoo.org> jibx-1.1.3.ebuild:
+  Add missing dev-java/jsr173 DEPEND.
+
+*jibx-1.1.3 (24 Apr 2007)
+
+  24 Apr 2007; Krzysiek Pawlik <nelchael@gentoo.org> +metadata.xml,
+  +jibx-1.1.3.ebuild:
+  Initial commit of JiBX.

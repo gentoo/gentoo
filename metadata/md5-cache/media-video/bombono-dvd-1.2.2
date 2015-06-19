@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=app-i18n/enca app-cdr/dvd+rw-tools dev-cpp/gtkmm:2.4 dev-cpp/libxmlpp:2.6 >=dev-libs/boost-1.51 media-libs/libdvdread media-sound/twolame media-video/dvdauthor virtual/cdrtools >=virtual/ffmpeg-9 >=media-video/mjpegtools-1.8.0 x11-libs/gtk+:2 virtual/pkgconfig >=dev-util/scons-0.96.1 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=GUI DVD authoring program
+EAPI=4
+HOMEPAGE=http://www.bombono.org/
+IUSE=gnome test
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=app-i18n/enca app-cdr/dvd+rw-tools dev-cpp/gtkmm:2.4 dev-cpp/libxmlpp:2.6 >=dev-libs/boost-1.51 media-libs/libdvdread media-sound/twolame media-video/dvdauthor virtual/cdrtools >=virtual/ffmpeg-9 >=media-video/mjpegtools-1.8.0 x11-libs/gtk+:2 gnome? ( gnome-base/gvfs )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/bombono/bombono-dvd-1.2.2.tar.bz2
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	scons-utils	988e24b9e2e4642189b4e97c03e5ae71	toolchain-funcs	42408102d713fbad60ca21349865edb4	virtualx	73cfc129b4b9ba23aed1abb10c825d86
+_md5_=992ffed147160201dd7178e68abf9dd2

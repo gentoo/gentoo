@@ -1,0 +1,187 @@
+# ChangeLog for lxde-base/lxdm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/lxde-base/lxdm/ChangeLog,v 1.35 2015/03/28 23:33:06 mrueg Exp $
+
+  28 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -lxdm-0.4.1-r5.ebuild,
+  -lxdm-0.4.1-r7.ebuild, -lxdm-0.4.1-r8.ebuild:
+  Remove old.
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org> lxdm-0.4.1-r9.ebuild:
+  amd64 stable, bug #499318
+
+  23 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> lxdm-0.4.1-r9.ebuild:
+  x86 stable wrt bug #499318
+
+*lxdm-0.4.1-r9 (23 Dec 2013)
+
+  23 Dec 2013; Pavel Kazakov <nullishzero@gentoo.org>
+  +files/lxdm-0.4.1-fix-optional-pam.patch, +lxdm-0.4.1-r9.ebuild:
+  Make pam a conditional subdirectory; bug #469512
+
+  22 Dec 2013; Markos Chandras <hwoarang@gentoo.org>
+  files/lxdm-0.4.1-optional-consolekit.patch:
+  Update git hashes for fixes regarding the optional consolekit support as
+  pointed out by upstream. Remove obsolete comment
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> +files/lxdm.service,
+  lxdm-0.4.1-r8.ebuild:
+  Add unit file (#488014)
+
+  22 Dec 2013; Markos Chandras <hwoarang@gentoo.org>
+  files/lxdm-0.4.1-optional-consolekit.patch:
+  fix typos
+
+*lxdm-0.4.1-r8 (22 Dec 2013)
+
+  22 Dec 2013; Markos Chandras <hwoarang@gentoo.org>
+  +files/lxdm-0.4.1-optional-consolekit.patch, +lxdm-0.4.1-r8.ebuild,
+  metadata.xml:
+  Add (and fix) upstream patch for optional consolekit support. Thanks to
+  Bombino <teknocratdefunct@riseup.net>. Bug #443666
+
+  13 Dec 2013; Markos Chandras <hwoarang@gentoo.org> lxdm-0.4.1-r7.ebuild:
+  Require automake-1.12. Bug #493996 thanks to piruthiviraj natarajan
+  <piruthiviraj@gmail.com>
+
+  14 Sep 2013; Agostino Sarubbo <ago@gentoo.org> lxdm-0.4.1-r7.ebuild:
+  Stable for x86, wrt bug #480056
+
+  08 Sep 2013; Agostino Sarubbo <ago@gentoo.org> lxdm-0.4.1-r7.ebuild:
+  Stable for amd64, wrt bug #480056
+
+  04 Aug 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  lxdm-0.4.1-r7.ebuild:
+  Keyword ~ppc
+
+  07 May 2013; Victor Ostorga lxdm-0.4.1-r7.ebuild:
+  Updating elog message
+
+*lxdm-0.4.1-r7 (05 May 2013)
+
+  05 May 2013; Fabio Erculiani <lxnay@gentoo.org> -lxdm-0.4.1-r6.ebuild,
+  +lxdm-0.4.1-r7.ebuild, +files/lxdm-0.4.1-fix-pam-100-cpu.patch:
+  the new pam config needs a patch to avoid 100% cpu usage by lxdm-binary. See:
+  https://bugs.launchpad.net/ubuntu/+source/lxdm/+bug/922363
+
+*lxdm-0.4.1-r6 (03 May 2013)
+
+  03 May 2013; Fabio Erculiani <lxnay@gentoo.org> +lxdm-0.4.1-r6.ebuild,
+  +files/lxdm-0.4.1-pam-use-system-local-login.patch:
+  revision bump, fix pam module as per bug #422495. This makes pam_systemd.so
+  back working
+
+  14 Aug 2012; Víctor Ostorga <vostorga@gentoo.org> lxdm-0.4.1-r5.ebuild,
+  +files/lxdm-0.4.1-selinux-support.patch:
+  Adding selinux support, patch thanks to Jory A. Pratt <anarchy@gentoo.org>
+  bug #393329
+
+  13 Aug 2012; Steev Klimaszewski <steev@gentoo.org> lxdm-0.4.1-r5.ebuild,
+  metadata.xml:
+  Add ~arm keyword. Tested on multiple armv7 machines. Remove unused consolekit
+  USE flag from metadata.xml.
+
+  08 Aug 2012; Markos Chandras <hwoarang@gentoo.org> -lxdm-0.3.0-r1.ebuild,
+  -lxdm-0.3.0-r3.ebuild, -lxdm-0.4.1-r1.ebuild, -lxdm-0.4.1-r2.ebuild,
+  -lxdm-0.4.1-r4.ebuild:
+  clean up
+
+  13 Jun 2012; Jeff Horelick <jdhore@gentoo.org> lxdm-0.4.1-r5.ebuild:
+  marked x86 per bug 419975
+
+  11 Jun 2012; Agostino Sarubbo <ago@gentoo.org> lxdm-0.4.1-r5.ebuild:
+  Stable for amd64, wrt bug #419975
+
+*lxdm-0.4.1-r5 (07 May 2012)
+
+  07 May 2012; Markos Chandras <hwoarang@gentoo.org>
+  +files/lxdm-0.4.1-event-check.patch, +lxdm-0.4.1-r5.ebuild:
+  Apply upstream patch for bug #412025. Thanks to everyone who contributed and
+  tested
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> lxdm-0.3.0-r1.ebuild,
+  lxdm-0.3.0-r3.ebuild, lxdm-0.4.1-r1.ebuild, lxdm-0.4.1-r2.ebuild,
+  lxdm-0.4.1-r4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*lxdm-0.4.1-r4 (18 Feb 2012)
+
+  18 Feb 2012; Markos Chandras <hwoarang@gentoo.org>
+  +files/lxdm-0.4.1-missing-pam-defines.patch, +lxdm-0.4.1-r4.ebuild,
+  -lxdm-0.4.1-r3.ebuild:
+  Fix pam support. Thanks to Simon Poirier for investigating this. Bug #403999
+
+*lxdm-0.4.1-r3 (04 Feb 2012)
+
+  04 Feb 2012; Markos Chandras <hwoarang@gentoo.org>
+  +files/lxdm-0.4.1-configure-add-pam.patch,
+  +files/lxdm-0.4.2-configure-add-pam.patch, +lxdm-0.4.1-r3.ebuild,
+  -files/xinitrc:
+  Drop xinitrc. Add pam support. Bug #393681 and Bug #393675. Thanks to Mitch
+  Harder <mmharder@gmail.com>
+
+*lxdm-0.4.1-r2 (27 Sep 2011)
+
+  27 Sep 2011; Markos Chandras <hwoarang@gentoo.org> +lxdm-0.4.1-r2.ebuild:
+  Drop --with-pam since it silently disabled pam support. bug #384615 by
+  Alexander E. Patrakov <patrakov@gmail.com>
+
+*lxdm-0.4.1-r1 (03 Aug 2011)
+
+  03 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> -lxdm-0.4.1.ebuild,
+  +lxdm-0.4.1-r1.ebuild:
+  fix upstream bug, tarball contains pre-made lxdm.conf, making greeter=
+  pointing to /usr/local
+
+  02 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> lxdm-0.4.1.ebuild,
+  +files/lxdm-0.4.1-git-fix-null-pointer-deref.patch:
+  backport NULL pointer dereference patch from git
+
+  02 Aug 2011; Fabio Erculiani <lxnay@gentoo.org>
+  -files/lxdm-0.4.0-pam_console-disable.patch,
+  +files/lxdm-0.4.1-pam_console-disable.patch:
+  fix epatch
+
+*lxdm-0.4.1 (02 Aug 2011)
+
+  02 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> -lxdm-0.4.0.ebuild,
+  +lxdm-0.4.1.ebuild:
+  version bump
+
+*lxdm-0.4.0 (02 Aug 2011)
+
+  02 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> +lxdm-0.4.0.ebuild,
+  +files/lxdm-0.4.0-pam_console-disable.patch:
+  version bump
+
+*lxdm-0.3.0-r3 (03 Jul 2011)
+
+  03 Jul 2011; Fabio Erculiani <lxnay@gentoo.org> -lxdm-0.3.0-r2.ebuild,
+  +lxdm-0.3.0-r3.ebuild,
+  +files/lxdm-0.3.0-properly-load-session-settings-using-dmrc-entry-as-pointer-
+  for-xsessions-dir-file.patch:
+  add patch that fixes loading of Fluxbox, E17, Openbox and perhaps others, see
+  http://lxnay.wordpress.com/2011/07/03/lxdm-the-wannabe-login-manager for more
+  details
+
+*lxdm-0.3.0-r2 (18 Feb 2011)
+
+  18 Feb 2011; Fabio Erculiani <lxnay@gentoo.org> +lxdm-0.3.0-r2.ebuild,
+  +files/xinitrc:
+  also provide xinitrc
+
+  25 Jan 2011; Fabio Erculiani <lxnay@gentoo.org> lxdm-0.3.0-r1.ebuild:
+  some trivial fixes
+
+*lxdm-0.3.0-r1 (25 Jan 2011)
+
+  25 Jan 2011; Fabio Erculiani <lxnay@gentoo.org> -lxdm-0.3.0.ebuild,
+  +lxdm-0.3.0-r1.ebuild:
+  add librsvg as RDEPEND, since the shipped gtk theme uses SVG, close bug
+  #346833
+
+*lxdm-0.3.0 (24 Jan 2011)
+
+  24 Jan 2011; Fabio Erculiani <lxnay@gentoo.org> +lxdm-0.3.0.ebuild,
+  +files/lxdm-0.3.0-consolekit-disable.patch,
+  +files/lxdm-0.3.0-pam_console-disable.patch, +metadata.xml:
+  new ebuild, close bug #346833

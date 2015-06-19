@@ -1,0 +1,46 @@
+diff --git Makefile.am Makefile.am
+new file mode 100644
+index 0000000..63ca53b
+--- /dev/null
++++ Makefile.am
+@@ -0,0 +1,10 @@
++ACLOCAL_AMFLAGS = -I config
++
++lib_LTLIBRARIES = libiniparser.la
++
++libiniparser_la_LDFLAGS = -no-undefined -version-info @SHARED_VERSION_INFO@
++libiniparser_la_SOURCES = src/dictionary.c  src/iniparser.c
++
++include_HEADERS = src/dictionary.h  src/iniparser.h
++
++
+diff --git configure.ac configure.ac
+new file mode 100644
+index 0000000..1eac717
+--- /dev/null
++++ configure.ac
+@@ -0,0 +1,24 @@
++AC_PREREQ([2.65])
++AC_INIT([iniparser], [3.0], [ndevilla@free.fr])
++
++AC_CONFIG_AUX_DIR(config)
++AC_CONFIG_MACRO_DIR(config)
++
++AM_INIT_AUTOMAKE([1.8 foreign])
++
++SHARED_VERSION_INFO="0"
++AC_SUBST(SHARED_VERSION_INFO)
++
++
++# Checks for programs.
++AC_PROG_CC
++
++LT_INIT
++# Checks for header files.
++AC_CHECK_HEADERS([ ctype.h stdio.h stdlib.h string.h ])
++
++# Checks for library functions.
++AC_CHECK_FUNCS([strcmp])
++
++AC_CONFIG_FILES([Makefile])
++AC_OUTPUT

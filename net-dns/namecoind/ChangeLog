@@ -1,0 +1,26 @@
+# ChangeLog for net-dns/namecoind
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/namecoind/ChangeLog,v 1.5 2015/01/02 14:34:10 blueness Exp $
+
+  02 Jan 2015; Anthony G. Basile <blueness@gentoo.org> namecoind-0.3.80.ebuild:
+  Improve S for 0.3.80
+
+*namecoind-0.3.80 (02 Jan 2015)
+
+  02 Jan 2015; Anthony G. Basile <blueness@gentoo.org>
+  +files/namecoind-0.3.80-makefile.patch, +namecoind-0.3.80.ebuild:
+  Version bump, bug #534204
+
+  22 Jun 2014; Anthony G. Basile <blueness@gentoo.org> namecoind-0.3.72.ebuild:
+  Add dependency on dev-libs/glib:2, bug #514362
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> namecoind-0.3.72.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+*namecoind-0.3.72 (01 Dec 2013)
+
+  01 Dec 2013; Anthony G. Basile <blueness@gentoo.org>
+  +namecoind-0.3.72.ebuild, +files/namecoind-0.3.72-makefile.patch,
+  +files/namecoin.conf, +files/namecoin.confd, +files/namecoin.initd,
+  +metadata.xml:
+  Initial commit

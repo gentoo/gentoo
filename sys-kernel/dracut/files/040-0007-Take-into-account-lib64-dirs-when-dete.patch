@@ -1,0 +1,44 @@
+From 25efd305dace3275c661e0a7dfbaef42b4cbc6d7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Amadeusz=20=C5=BBo=C5=82nowski?= <aidecoe@aidecoe.name>
+Date: Sun, 11 Jan 2015 15:10:39 +0100
+Subject: [PATCH 7/7] Take into account lib64 dirs when detecting version,
+ modules and params
+
+---
+ lsinitrd.sh | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/lsinitrd.sh b/lsinitrd.sh
+index 4f12c2c..dc1f88f 100755
+--- a/lsinitrd.sh
++++ b/lsinitrd.sh
+@@ -124,7 +124,7 @@ extract_files()
+ list_modules()
+ {
+     echo "dracut modules:"
+-    $CAT "$image" | cpio --extract --verbose --quiet --to-stdout -- 'lib/dracut/modules.txt' 'usr/lib/dracut/modules.txt' 2>/dev/null
++    $CAT "$image" | cpio --extract --verbose --quiet --to-stdout -- 'lib64/dracut/modules.txt' 'lib/dracut/modules.txt' 'usr/lib/dracut/modules.txt' 2>/dev/null
+     ((ret+=$?))
+ }
+ 
+@@ -217,7 +217,7 @@ ret=0
+ if (( ${#filenames[@]} > 0 )); then
+     extract_files
+ else
+-    version=$($CAT "$image" | cpio --extract --verbose --quiet --to-stdout -- 'lib/dracut/dracut-*' 'usr/lib/dracut/dracut-*' 2>/dev/null)
++    version=$($CAT "$image" | cpio --extract --verbose --quiet --to-stdout -- 'lib64/dracut/dracut-*' 'lib/dracut/dracut-*' 'usr/lib/dracut/dracut-*' 2>/dev/null)
+     ((ret+=$?))
+     echo "Version: $version"
+     echo
+@@ -226,7 +226,7 @@ else
+         echo "========================================================================"
+     else
+         echo -n "Arguments: "
+-        $CAT "$image" | cpio --extract --verbose --quiet --to-stdout -- 'lib/dracut/build-parameter.txt' 'usr/lib/dracut/build-parameter.txt' 2>/dev/null
++        $CAT "$image" | cpio --extract --verbose --quiet --to-stdout -- 'lib64/dracut/build-parameter.txt' 'lib/dracut/build-parameter.txt' 'usr/lib/dracut/build-parameter.txt' 2>/dev/null
+         echo
+         list_modules
+         list_files
+-- 
+2.2.1
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">Bio-ASN1-EntrezGene</remote-id>
+    <remote-id type="cpan-module">Bio::ASN1::EntrezGene</remote-id>
+    <remote-id type="cpan-module">Bio::ASN1::EntrezGene::Indexer</remote-id>
+    <remote-id type="cpan-module">Bio::ASN1::Sequence</remote-id>
+    <remote-id type="cpan-module">Bio::ASN1::Sequence::Indexer</remote-id>
+  </upstream>
+</pkgmetadata>

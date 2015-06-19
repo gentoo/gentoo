@@ -1,0 +1,14 @@
+Takes a very long time.
+
+
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -136,7 +136,7 @@
+                 test-rmdel \
+                 test-admin test-delta test-get test-prs test-prt test-unget \
+                 test-cdc  test-sact test-val \
+-                test-large test-sccsdiff test-binary test-bsd-sccs test-what \
++                test-sccsdiff test-binary test-bsd-sccs test-what \
+                 test-year-2000
+ 	echo Tests passed.
+ 

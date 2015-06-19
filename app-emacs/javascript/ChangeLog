@@ -1,0 +1,37 @@
+# ChangeLog for app-emacs/javascript
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/javascript/ChangeLog,v 1.7 2011/06/11 14:30:47 ulm Exp $
+
+  11 Jun 2011; Ulrich Mueller <ulm@gentoo.org> javascript-2.0_beta8.ebuild,
+  javascript-2.2.1.ebuild:
+  HOMEPAGE has moved, bug 371101.
+
+*javascript-2.2.1 (15 Oct 2009)
+
+  15 Oct 2009; Ulrich Mueller <ulm@gentoo.org> +javascript-2.2.1.ebuild:
+  Version bump. New HOMEPAGE.
+
+  14 Jun 2008; Ulrich Mueller <ulm@gentoo.org> javascript-2.0_beta8.ebuild:
+  Do not assign SIMPLE_ELISP since elisp.eclass now detects this case
+  automatically.
+
+  29 Oct 2007; Diego Pettenò <flameeyes@gentoo.org>
+  javascript-2.0_beta8.ebuild:
+  Add ~x86-fbsd keyword.
+
+  14 Aug 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  javascript-2.0_beta8.ebuild:
+  Keyword ~ppc.
+
+  15 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  javascript-2.0_beta8.ebuild:
+  keyworded ~amd64; bug 177361
+
+*javascript-2.0_beta8 (05 May 2007)
+
+  05 May 2007; Ulrich Mueller <ulm@gentoo.org>
+  +files/50javascript-gentoo.el, +metadata.xml,
+  +javascript-2.0_beta8.ebuild:
+  Initial import. Ebuild submitted by Matsuyama Tomohiro
+  <matsuyama@ariel-networks.com>, bug #175694.
+

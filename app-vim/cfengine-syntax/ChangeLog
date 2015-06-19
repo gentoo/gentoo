@@ -1,0 +1,81 @@
+# ChangeLog for app-vim/cfengine-syntax
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/cfengine-syntax/ChangeLog,v 1.19 2015/06/06 09:21:24 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  09 Feb 2015; Tim Harder <radhermit@gentoo.org>
+  -cfengine-syntax-20050105.ebuild, -cfengine-syntax-20140713.ebuild:
+  Remove old.
+
+  09 Feb 2015; Tim Harder <radhermit@gentoo.org>
+  cfengine-syntax-20141019.ebuild:
+  Stabilize for all.
+
+*cfengine-syntax-20141019 (19 Oct 2014)
+
+  19 Oct 2014; Tim Harder <radhermit@gentoo.org>
+  +cfengine-syntax-20141019.ebuild:
+  Version bump (bug #373797).
+
+*cfengine-syntax-20140713 (14 Jul 2014)
+
+  14 Jul 2014; Tim Harder <radhermit@gentoo.org>
+  +cfengine-syntax-20140713.ebuild:
+  Version bump.
+
+  01 May 2013; Ulrich Müller <ulm@gentoo.org> cfengine-syntax-20050105.ebuild:
+  Fix LICENSE, bug 445828.
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org>
+  cfengine-syntax-20050105.ebuild:
+  Drop to ~mips
+
+  22 May 2010; Raúl Porcel <armin76@gentoo.org>
+  cfengine-syntax-20050105.ebuild:
+  arm/s390 stable
+
+  07 Mar 2010; Lance Albertson <ramereth@gentoo.org>
+  cfengine-syntax-20050105.ebuild:
+  Keyword arm so that it can be used with the vim-syntax useflag in #152275
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  07 Apr 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove ciaranm from metadata.xml.
+
+  29 Sep 2005; Luis Medinas <metalgod@gentoo.org>
+  cfengine-syntax-20050105.ebuild:
+  Marked Stable on amd64
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  cfengine-syntax-20050105.ebuild:
+  Stable on ppc.
+
+  06 Apr 2005; Markus Rothe <corsair@gentoo.org>
+  cfengine-syntax-20050105.ebuild:
+  Stable on ppc64
+
+  18 Feb 2005; Tom Martin <slarti@gentoo.org>
+  cfengine-syntax-20050105.ebuild:
+  Marked ~amd64.
+
+  13 Feb 2005; Markus Rothe <corsair@gentoo.org>
+  cfengine-syntax-20050105.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  01 Feb 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  cfengine-syntax-20050105.ebuild:
+  x86, sparc, mips stable
+
+  25 Jan 2005; Michael Hanselmann <hansmi@gentoo.org>
+  cfengine-syntax-20050105.ebuild:
+  Added to ~ppc, bug 79493.
+
+*cfengine-syntax-20050105 (05 Jan 2005)
+
+  05 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +cfengine-syntax-20050105.ebuild:
+  New package, bug #76711

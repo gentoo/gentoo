@@ -1,0 +1,56 @@
+# ChangeLog for games-engines/frobtads
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-engines/frobtads/ChangeLog,v 1.12 2013/01/03 22:57:11 mr_bones_ Exp $
+
+  03 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/frobtads-1.2.1-underlinking.patch, -frobtads-0.13.ebuild,
+  -frobtads-1.0.ebuild, -frobtads-1.2.1.ebuild:
+  old
+
+  04 Dec 2012; <ago@gentoo.org> frobtads-1.2.2.ebuild:
+  Stable for x86, wrt bug #442160
+
+  14 Nov 2012; Agostino Sarubbo <ago@gentoo.org> frobtads-1.2.2.ebuild:
+  Stable for amd64, wrt bug #442160
+
+  02 Oct 2012; Michael Sterrett <mr_bones_@gentoo.org> frobtads-1.2.2.ebuild:
+  drop autotools
+
+*frobtads-1.2.2 (02 Oct 2012)
+
+  02 Oct 2012; Michael Sterrett <mr_bones_@gentoo.org> +frobtads-1.2.2.ebuild:
+  version bump
+
+*frobtads-1.2.1 (23 Aug 2012)
+
+  23 Aug 2012; Julian Ospald <hasufell@gentoo.org> +frobtads-1.2.1.ebuild,
+  +files/frobtads-1.2.1-underlinking.patch:
+  version bump wrt #396449
+
+  04 Sep 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> frobtads-1.0.ebuild:
+  x86 stable wrt bug #381499
+
+  02 Sep 2011; Tony Vroon <chainsaw@gentoo.org> frobtads-1.0.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani & Agostino "ago" Sarubbo in bug #381499 filed by Michael "Mr. Bones"
+  Sterrett.
+
+*frobtads-1.0 (30 Jul 2011)
+
+  30 Jul 2011; Tupone Alfredo <tupone@gentoo.org> +frobtads-1.0.ebuild:
+  Version bump to 1.0 Bug #364297 by Nikos Chantziaras
+
+  29 Oct 2009; Markus Meier <maekke@gentoo.org> frobtads-0.13.ebuild:
+  amd64/x86 stable, bug #289006
+
+*frobtads-0.13 (08 May 2009)
+
+  08 May 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +frobtads-0.13.ebuild:
+  version bump (bug #268971)
+
+*frobtads-0.12 (05 Sep 2008)
+
+  05 Sep 2008; Michael Sterrett <mr_bones_@gentoo.org> +metadata.xml,
+  +frobtads-0.12.ebuild:
+  initial commit - ebuild submitted by Nikos Chantziaras via bug #149764

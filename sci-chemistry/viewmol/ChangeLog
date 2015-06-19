@@ -1,0 +1,71 @@
+# ChangeLog for sci-chemistry/viewmol
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/viewmol/ChangeLog,v 1.17 2012/10/24 19:34:04 ulm Exp $
+
+  24 Oct 2012; Ulrich Müller <ulm@gentoo.org> viewmol-2.4.1-r2.ebuild:
+  Update dependency after package move from x11-libs/openmotif to
+  x11-libs/motif.
+
+  06 Oct 2012; Justin Lecher <jlec@gentoo.org> viewmol-2.4.1-r2.ebuild:
+  Add missing DEP on virtual/glu, #437076
+
+  25 Jun 2011; Justin Lecher <jlec@gentoo.org> viewmol-2.4.1-r2.ebuild,
+  metadata.xml:
+  Cleaned ebuild
+
+*viewmol-2.4.1-r2 (17 Apr 2011)
+
+  17 Apr 2011; Justin Lecher <jlec@gentoo.org> -viewmol-2.4.1-r1.ebuild,
+  +viewmol-2.4.1-r2.ebuild:
+  Fix installation into /usr/usr/share, #360271
+
+  10 Oct 2010; Ulrich Mueller <ulm@gentoo.org> viewmol-2.4.1-r1.ebuild:
+  Fix openmotif dependency.
+
+  26 Apr 2010; Justin Lecher <jlec@gentoo.org> viewmol-2.4.1-r1.ebuild:
+  Using python_get_library -l
+
+  11 Mar 2010; Justin Lecher <jlec@gentoo.org>
+  -viewmol-2.4.1.ebuild:
+  broken version removed
+
+*viewmol-2.4.1-r1 (10 Mar 2010)
+
+  10 Mar 2010; Justin Lecher <jlec@gentoo.org>
+  +files/2.4.1-change-default-paths.patch, +viewmol-2.4.1-r1.ebuild:
+  Bumped to EAPI=3, princepily prefix ready, adopt to current python
+  situation, fix #308691
+
+  27 Jun 2008; Ulrich Mueller <ulm@gentoo.org> viewmol-2.4.1.ebuild:
+  Change dependency from virtual/motif to x11-libs/openmotif, bug 224749.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; viewmol-2.4.1.ebuild:
+  Drop virtual/x11 references.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  20 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  (#148281) Change herd to sci-chemistry from sci.
+
+  05 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Remove myself as maintainer, anyone feel free to work on this, although I'll
+  continue to do so as well.
+
+  07 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Update to my new email address.
+
+  02 Dec 2005; Donnie Berkholz <dberkholz@gentoo.org>; viewmol-2.4.1.ebuild:
+  Fix up modular X deps -- add libXp and libXi, remove libX11 and libXt as
+  redundant.
+
+*viewmol-2.4.1 (02 Dec 2005)
+
+  02 Dec 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/2.4.1-change-default-path-to-usr.patch,
+  +files/2.4.1-look-for-python-in-right-place.patch,
+  +files/2.4.1-remove-icc-check.patch,
+  +files/2.4.1-use-root-for-app-defaults.patch, +metadata.xml,
+  +viewmol-2.4.1.ebuild:
+  New GUI front-end for computational chemistry.
+

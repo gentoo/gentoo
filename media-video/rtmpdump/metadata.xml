@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>hwoarang@gentoo.org</email>
+<name>Markos Chandras</name>
+</maintainer>
+<use>
+	<flag name='gnutls'>Use GnuTLS library instead of the default OpenSSL</flag>
+	<flag name='polarssl'>Use PolarSSL library instead of the default OpenSSL</flag>
+</use>
+<longdescription lang="en">
+</longdescription>
+</pkgmetadata>
+

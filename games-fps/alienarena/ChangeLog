@@ -1,0 +1,212 @@
+# ChangeLog for games-fps/alienarena
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/alienarena/ChangeLog,v 1.45 2013/06/13 14:34:23 hasufell Exp $
+
+*alienarena-20130207 (13 Jun 2013)
+
+  13 Jun 2013; Julian Ospald <hasufell@gentoo.org> +alienarena-20130207.ebuild,
+  +files/alienarena-20130207-nodocs.patch:
+  version bump wrt #473148
+
+  24 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -alienarena-20111227.ebuild, -files/alienarena-20111227-nodocs.patch:
+  old
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  alienarena-20120629.ebuild:
+  x86 stable wrt bug #432076
+
+  21 Sep 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  -alienarena-20110311.ebuild, -files/alienarena-20110311-nodocs.patch:
+  old
+
+  21 Aug 2012; Agostino Sarubbo <ago@gentoo.org> alienarena-20120629.ebuild:
+  Stable for amd64, wrt bug #432076
+
+*alienarena-20120629 (18 Jul 2012)
+
+  18 Jul 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  +alienarena-20120629.ebuild, +files/alienarena-20120629-nodocs.patch:
+  version bump
+
+  09 Jun 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  alienarena-20111227.ebuild:
+  use internal ode since alienarena doesn't work with dev-games/ode-0.12 (bug
+  #420327)
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> alienarena-20110311.ebuild,
+  alienarena-20111227.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  alienarena-20111227.ebuild:
+  x86 stable wrt bug #401439
+
+  31 Jan 2012; Agostino Sarubbo <ago@gentoo.org> alienarena-20111227.ebuild:
+  Stable for amd64, wrt bug #401439
+
+*alienarena-20111227 (30 Dec 2011)
+
+  30 Dec 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  +alienarena-20111227.ebuild, +files/alienarena-20111227-nodocs.patch:
+  version bump
+
+  14 May 2011; Thomas Kahle <tomka@gentoo.org> alienarena-20110311.ebuild:
+  x86 stable per bug 363645
+
+  16 Apr 2011; Christoph Mende <angelos@gentoo.org> alienarena-20110311.ebuild:
+  Stable on amd64 wrt bug #363645
+
+*alienarena-20110311 (13 Mar 2011)
+
+  13 Mar 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  +alienarena-20110311.ebuild, +files/alienarena-20110311-nodocs.patch:
+  version bump
+
+  25 Feb 2011; Kevin McCarthy <signals@gentoo.org> alienarena-20100726.ebuild:
+  Updated depends from media-libs/jpeg to virtual/jpeg
+
+  10 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  alienarena-20101214.ebuild:
+  x86 stable wrt bug #352160
+
+  27 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  alienarena-20101214.ebuild:
+  Stable on amd64 wrt bug #352160
+
+*alienarena-20101214 (18 Dec 2010)
+
+  18 Dec 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +alienarena-20101214.ebuild, +files/alienarena-20101214-nodocs.patch:
+  version bump
+
+  24 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  alienarena-20100726.ebuild:
+  Stable on amd64 wrt bug #335832
+
+  10 Sep 2010; Christian Faulhammer <fauli@gentoo.org>
+  alienarena-20100726.ebuild:
+  stable x86, bug 335832
+
+*alienarena-20100726 (30 Jul 2010)
+
+  30 Jul 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +alienarena-20100726.ebuild:
+  version bump
+
+  11 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  alienarena-20100504.ebuild:
+  stable x86, bug 323471
+
+  24 Jun 2010; Pacho Ramos <pacho@gentoo.org> alienarena-20100504.ebuild:
+  stable amd64, bug 323471
+
+  23 May 2010; Pacho Ramos <pacho@gentoo.org> alienarena-20091227.ebuild:
+  stable amd64, bug 308589
+
+  11 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  alienarena-20091227.ebuild:
+  x86 stable wrt bug #308589
+
+  10 May 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  alienarena-20100504.ebuild, +files/alienarena-20100504-fixups.patch:
+  upstream fixups patch
+
+*alienarena-20100504 (07 May 2010)
+
+  07 May 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +alienarena-20100504.ebuild:
+  version bump
+
+  29 Jan 2010; Tupone Alfredo <tupone@gentoo.org>
+  -files/alienarena-20090616-path-overflows.patch,
+  alienarena-20091227.ebuild, +files/alienarena-20091227-jpeg8.patch:
+  Fix build with >=media-libs/jpeg-8 Bug #302093 by Xake
+
+*alienarena-20091227 (29 Dec 2009)
+
+  29 Dec 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +alienarena-20091227.ebuild:
+  version bump
+
+*alienarena-20091016 (03 Nov 2009)
+
+  03 Nov 2009; Tristan Heaven <nyhm@gentoo.org> +alienarena-20091016.ebuild:
+  Version bump, bug #290121
+
+*alienarena-20091006 (14 Oct 2009)
+
+  14 Oct 2009; Tristan Heaven <nyhm@gentoo.org> +alienarena-20091006.ebuild:
+  Version bump, bug #288624
+
+  24 Jun 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  alienarena-20090616.ebuild:
+  add keywords (bug #275124); tidy
+
+*alienarena-20090616 (21 Jun 2009)
+
+  21 Jun 2009; Tristan Heaven <nyhm@gentoo.org> +alienarena-20090616.ebuild,
+  +files/alienarena-20090616-path-overflows.patch:
+  Version bump
+
+*alienarena-20081016 (22 Dec 2008)
+
+  22 Dec 2008; Tristan Heaven <nyhm@gentoo.org> +alienarena-20081016.ebuild:
+  Version bump, bug #245703
+
+*alienarena-20080603 (06 Jun 2008)
+
+  06 Jun 2008; Tristan Heaven <nyhm@gentoo.org> +alienarena-20080603.ebuild:
+  Version bump
+
+*alienarena-20080227 (25 Mar 2008)
+
+  25 Mar 2008; Tristan Heaven <nyhm@gentoo.org>
+  +files/alienarena-20080227-include.patch, +alienarena-20080227.ebuild:
+  Version bump, thanks to Paul Bredbury and Rémy Dupont, bug #212575
+
+  22 Jan 2008; Tristan Heaven <nyhm@gentoo.org> alienarena-20071011.ebuild:
+  Fix deps again, bug #206378
+
+*alienarena-20071011 (23 Nov 2007)
+
+  23 Nov 2007; Tristan Heaven <nyhm@gentoo.org>
+  +files/alienarena-20071011-paths.patch, +alienarena-20071011.ebuild:
+  Version bump by Paul Bredbury, bug #195545
+
+*alienarena-20070613-r1 (24 Sep 2007)
+
+  24 Sep 2007; Tristan Heaven <nyhm@gentoo.org>
+  +files/alienarena-20070613-dos.patch,
+  +files/alienarena-20070613-format-strings.patch,
+  -alienarena-20070613.ebuild, +alienarena-20070613-r1.ebuild:
+  Security fixes from Debian, bug #191484
+
+  28 Jul 2007; Tristan Heaven <nyhm@gentoo.org> alienarena-20070613.ebuild:
+  Fix dependencies for USE=sdl
+
+*alienarena-20070613 (14 Jun 2007)
+
+  14 Jun 2007; Tristan Heaven <nyhm@gentoo.org>
+  +files/alienarena-20070613-paths.patch, +files/alienarena.xpm,
+  +alienarena-20070613.ebuild:
+  Version bump
+
+  07 Mar 2007; Piotr Jaroszyński <peper@gentoo.org>
+  alienarena-20070224-r1.ebuild:
+  Add ~amd64 wrt bug #169049.
+
+*alienarena-20070224-r1 (26 Feb 2007)
+
+  26 Feb 2007; Tristan Heaven <nyhm@gentoo.org>
+  +files/alienarena-20070224-gamedir.patch, +alienarena-20070224-r1.ebuild:
+  Revision bump with upstream patch
+
+*alienarena-20070224 (25 Feb 2007)
+
+  25 Feb 2007; Tristan Heaven <nyhm@gentoo.org>
+  +files/alienarena-20070224-build.patch,
+  +files/alienarena-20070224-exec-stack.patch,
+  +files/alienarena-20070224-paths.patch, +metadata.xml,
+  +alienarena-20070224.ebuild:
+  Initial commit, based on Paul Bredbury's ebuild from bug #110972

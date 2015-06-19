@@ -1,0 +1,13 @@
+# ChangeLog for sys-process/procexp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/procexp/ChangeLog,v 1.2 2015/04/08 18:27:47 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> procexp-1.5.277.ebuild:
+  Drop old Python implementations
+
+*procexp-1.5.277 (10 Jul 2013)
+
+  10 Jul 2013; Sergey Popov <pinkbyte@gentoo.org> +procexp-1.5.277.ebuild,
+  +metadata.xml:
+  Initial commit, wrt bug #437072, thanks to Jakub Paluszak <paluszak AT
+  gmail.com> for initial ebuild

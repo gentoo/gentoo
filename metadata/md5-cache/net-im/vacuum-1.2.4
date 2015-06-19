@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-qt/qtcore:4[ssl] dev-qt/qtgui:4 dev-qt/qtlockedfile[qt4(+)] dev-libs/openssl:0 adiummessagestyle? ( dev-qt/qtwebkit:4 ) net-dns/libidn x11-libs/libXScrnSaver sys-libs/zlib[minizip] sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Qt4 Crossplatform Jabber client
+EAPI=5
+HOMEPAGE=http://code.google.com/p/vacuum-im
+IUSE=+adiummessagestyle +annotations +autostatus +avatars +birthdayreminder +bitsofbinary +bookmarks +captchaforms +chatstates +clientinfo +commands +compress +console +dataforms +datastreamsmanager +emoticons +filemessagearchive +filestreamsmanager +filetransfer +gateways +inbandstreams +iqauth +jabbersearch +messagearchiver +multiuserchat +pepmanager +privacylists +privatestorage +registration +remotecontrol +rosteritemexchange +rostersearch +servermessagearchive +servicediscovery +sessionnegotiation +shortcutmanager +socksstreams +urlprocessor +vcard +xmppuriqueries linguas_de linguas_pl linguas_ru linguas_uk
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtcore:4[ssl] dev-qt/qtgui:4 dev-qt/qtlockedfile[qt4(+)] dev-libs/openssl:0 adiummessagestyle? ( dev-qt/qtwebkit:4 ) net-dns/libidn x11-libs/libXScrnSaver sys-libs/zlib[minizip]
+REQUIRED_USE=annotations? ( privatestorage ) avatars? ( vcard ) birthdayreminder? ( vcard ) bookmarks? ( privatestorage ) captchaforms? ( dataforms ) commands? ( dataforms ) datastreamsmanager? ( dataforms ) filemessagearchive? ( messagearchiver ) filestreamsmanager? ( datastreamsmanager ) filetransfer? ( filestreamsmanager datastreamsmanager ) pepmanager? ( servicediscovery ) registration? ( dataforms ) remotecontrol? ( commands dataforms ) servermessagearchive? ( messagearchiver ) sessionnegotiation? ( dataforms )
+SLOT=0/1.17
+SRC_URI=https://googledrive.com/host/0B7A5K_290X8-NE5nLUx5Yl9BTkk/vacuum-1.2.4.tar.xz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=7dbc80422d2d570ca4f294c768bcf904

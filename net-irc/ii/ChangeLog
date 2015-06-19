@@ -1,0 +1,49 @@
+# ChangeLog for net-irc/ii
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/ii/ChangeLog,v 1.9 2014/01/04 05:41:49 radhermit Exp $
+
+*ii-1.7 (04 Jan 2014)
+
+  04 Jan 2014; Tim Harder <radhermit@gentoo.org> +ii-1.7.ebuild:
+  Version bump.
+
+  25 Oct 2011; Nathan Phillip Brink <binki@gentoo.org> ii-1.6.ebuild:
+  Add ~amd64-linux keyword.
+
+*ii-1.6 (20 Oct 2011)
+
+  20 Oct 2011; Nathan Phillip Brink <binki@gentoo.org> -ii-1.4.ebuild,
+  +ii-1.6.ebuild:
+  Bump to ii-1.6 for bug #387907 by Richard Anderson. Install query.sh as
+  ii-query, bump to EAPI=4.
+
+*ii-1.4 (27 Nov 2008)
+
+  27 Nov 2008; Raúl Porcel <armin76@gentoo.org> +ii-1.4.ebuild:
+  Version bump wrt #238918
+
+  05 Aug 2008; Raúl Porcel <armin76@gentoo.org> ii-1.3.ebuild:
+  Fix HOMEPAGE, SRC_URI
+
+*ii-1.3 (16 Jul 2007)
+
+  16 Jul 2007; Raúl Porcel <armin76@gentoo.org> -ii-1.1.ebuild,
+  +ii-1.3.ebuild:
+  Version bump, drop old
+
+*ii-1.1 (28 May 2007)
+
+  28 May 2007; Raúl Porcel <armin76@gentoo.org> -ii-1.ebuild,
+  +ii-1.1.ebuild:
+  Version bump, old
+
+  22 Feb 2007; Raúl Porcel <armin76@gentoo.org> ii-1.ebuild:
+  respect LDFLAGS, CFLAGS, bug 167994
+
+*ii-1 (22 Feb 2007)
+
+  22 Feb 2007; Raúl Porcel <armin76@gentoo.org> +metadata.xml,
+  +ii-1.ebuild:
+  New ebuild, bug 157822, thanks to Christian Berendt (lhunephel) <christian
+  at suppentopf dot net> for the initial ebuild
+

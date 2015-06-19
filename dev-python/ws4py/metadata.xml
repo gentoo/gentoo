@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <maintainer>
+    <email>vapier@gentoo.org</email>
+    <description>make whatever changes you want</description>
+  </maintainer>
+  <use>
+    <flag name="client">Install client modules</flag>
+    <flag name="server">Install server modules</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">Lawouach/WebSocket-for-Python</remote-id>
+  </upstream>
+</pkgmetadata>

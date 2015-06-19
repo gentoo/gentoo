@@ -1,0 +1,41 @@
+# ChangeLog for app-admin/puppet-lint
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/puppet-lint/ChangeLog,v 1.9 2014/12/28 10:36:13 graaff Exp $
+
+*puppet-lint-1.1.0 (28 Dec 2014)
+
+  28 Dec 2014; Hans de Graaff <graaff@gentoo.org> +puppet-lint-1.1.0.ebuild:
+  Version bump.
+
+  10 Aug 2014; Patrick Lauer <patrick@gentoo.org> puppet-lint-0.3.2.ebuild:
+  Fix description for more repoman happy
+
+  18 May 2014; Hans de Graaff <graaff@gentoo.org> puppet-lint-0.3.2.ebuild:
+  Add ruby20, ruby21.
+
+  08 Sep 2013; Hans de Graaff <graaff@gentoo.org> -puppet-lint-0.2.1.ebuild,
+  -puppet-lint-0.2.1-r1.ebuild:
+  Cleanup.
+
+*puppet-lint-0.3.2 (20 Nov 2012)
+
+  20 Nov 2012; Hans de Graaff <graaff@gentoo.org> +puppet-lint-0.3.2.ebuild:
+  Version bump.
+
+*puppet-lint-0.2.1-r1 (06 Nov 2012)
+
+  06 Nov 2012; Hans de Graaff <graaff@gentoo.org> +puppet-lint-0.2.1-r1.ebuild:
+  Merge changes from my overlay and fix other issues: drop unneeded
+  dependencies, fix FEATURES=test, actually install documentation.
+
+  06 Nov 2012; Theo Chatzimichos <tampakrap@gentoo.org> metadata.xml:
+  Add sysadmin herd as maintainer (antarus is already there
+
+  06 Nov 2012; Alec Warner <antarus@gentoo.org> -Changelog:
+  Remove duplicate Changelog :/
+
+*puppet-lint-0.2.1 (06 Nov 2012)
+
+  06 Nov 2012; Alec Warner <antarus@gentoo.org> +Changelog, +metadata.xml,
+  +puppet-lint-0.2.1.ebuild:
+  Initial Import

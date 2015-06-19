@@ -1,0 +1,15 @@
+--- common/driver.c	2011-05-02 09:10:50.000000000 +0800
++++ common/driver.c.new	2012-11-30 16:43:59.067925006 +0800
+@@ -191,10 +191,9 @@
+ 
+ 	logprintf(obj, "\n");
+ 	logprintf(obj, "\n");
+-	logprintf(obj, "Msieve v. %d.%02d (SVN %s)\n", 
++	logprintf(obj, "Msieve v. %d.%02d\n", 
+ 				MSIEVE_MAJOR_VERSION, 
+-				MSIEVE_MINOR_VERSION,
+-				MSIEVE_SVN_VERSION);
++				MSIEVE_MINOR_VERSION);
+ 	start_time = time(NULL);
+ 	if (obj->flags & MSIEVE_FLAG_LOG_TO_STDOUT) {
+ 		printf("%s", ctime(&start_time));

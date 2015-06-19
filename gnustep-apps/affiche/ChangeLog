@@ -1,0 +1,83 @@
+# ChangeLog for gnustep-apps/affiche
+# Copyright 2000-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/affiche/ChangeLog,v 1.15 2008/08/01 11:52:23 grobian Exp $
+
+  01 Aug 2008; Fabian Groffen <grobian@gentoo.org> affiche-0.6.0-r3.ebuild:
+  Fix HOMEPAGE
+
+  16 Nov 2007; Steve Dibb <beandog@gentoo.org> affiche-0.6.0-r3.ebuild:
+  amd64 stable, bug 195990
+
+  08 Nov 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  -affiche-0.6.0-r2.ebuild:
+  Remove old version
+
+  27 Oct 2007; nixnut <nixnut@gentoo.org> affiche-0.6.0-r3.ebuild:
+  Stable on ppc wrt bug 195990
+
+  17 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  affiche-0.6.0-r3.ebuild:
+  stable x86, bug 195990
+
+*affiche-0.6.0-r3 (10 Sep 2007)
+
+  10 Sep 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  +affiche-0.6.0-r3.ebuild:
+  Version bump from the GNUstep overlay
+
+  18 Aug 2007; Christoph Mende <angelos@gentoo.org> affiche-0.6.0-r2.ebuild:
+  Added ~amd64 wrt bug #170433
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  15 Apr 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -affiche-0.6.0-r1.ebuild, affiche-0.6.0-r2.ebuild:
+  Stabilized latest ebuild; pruned old ebuilds
+
+*affiche-0.6.0-r2 (11 Nov 2004)
+
+  11 Nov 2004; Armando Di Cianno <fafhrd@gentoo.org> +affiche-0.6.0-r2.ebuild,
+  -affiche-0.6.0.ebuild:
+  Mass Update: gnustep.eclass revamped to allow configurable root install;
+  gnustep-base/libs/apps updated to utilize new gnustep.eclass (only versions
+  bumped where files would change); some KEYWORDS were accidentally dropped
+  between version bumps of packages -- this has been resolved; windowmaker
+  correctly supports gnustep now
+
+*affiche-0.6.0-r1 (14 Oct 2004)
+
+  14 Oct 2004; David Holm <dholm@gentoo.org> affiche-0.6.0-r1.ebuild:
+  Added to ~ppc.
+
+  09 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org> affiche-0.6.0.ebuild:
+  Compatibility changes for new gnustep eclass.
+
+  23 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org> affiche-0.6.0.ebuild:
+  Changed referenced categories in ebuilds to reflect recent epkgmove changes.
+
+*affiche-0.6.0 (22 Jul 2004)
+
+  22 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org> +metadata.xml,
+  +affiche-0.6.0.ebuild:
+  Moved from app-gnustep/affiche to gnustep-apps/affiche.
+
+  22 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org> affiche-0.6.0.ebuild:
+  Changing the eclass to gnustep-old
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> affiche-0.6.0.ebuild:
+  Added IUSE=
+
+  18 Feb 2004; David Holm <dholm@gentoo.org> affiche-0.6.0.ebuild:
+  Added to ~ppc.
+
+  18 Oct 2003; Nick Hadaway <raker@gentoo.org> affiche-0.6.0.ebuild:
+  Fixed the policy violation of setting ${A}
+
+  28 Jul 2003; Patrick Kursawe <phosphan@gentoo.org> affiche-0.6.0.ebuild:
+  Little description line fix because of bug #25403
+
+*affiche-0.6.0 (17 Jul 2003)
+
+  17 Jul 2003; Michele Balistreri <brain@gentoo.org> affiche-0.6.0.ebuild:
+  New ebuild.

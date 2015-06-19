@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare test
+DEPEND=x11-libs/libX11
+DESCRIPTION=An aggressively optimizing Scheme compiler
+EAPI=5
+HOMEPAGE=http://community.schemewiki.org/?Stalin
+KEYWORDS=~x86
+LICENSE=GPL-3
+RDEPEND=x11-libs/libX11
+RESTRICT=strip
+SLOT=0
+SRC_URI=ftp://ftp.ecn.purdue.edu/qobi/stalin-0.11.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=47a0ea13fab246107fa92cb3bc5c25f8

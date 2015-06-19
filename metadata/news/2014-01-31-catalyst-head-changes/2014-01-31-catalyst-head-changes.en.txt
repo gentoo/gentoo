@@ -1,0 +1,28 @@
+Title: Catalyst head changes
+Author: Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+Content-Type: text/plain
+Posted: 2014-01-31
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: dev-util/catalyst
+
+After a long period on "life support", the catalyst repository is
+going to have major changes introduced to master in the next few days.
+The work done in the rewrite branch[1] by Brian Dolbec, is finally
+going to be merged into master through the pending branch[2].
+Anyone using catalyst to produce stages is advised to use the latest
+release (currently 2.0.16). If you need to track the stable 2.X branch,
+please use the catalyst 2.0.9999 ebuild.
+Anyone wanting to help with catalyst development and testing is
+encouraged to use the 9999 version and report issues to the catalyst
+team, pending the understanding that master may be broken during the
+next few months. Please report any issues to our bugzilla[3]. You
+can always find us in the #gentoo-releng irc channel of freenode.
+To be clear, these changes will only affect catalyst-9999 and the
+master branch of the repository. If you're not using either, this
+doesn't affect you.
+
+ [1] - http://git.overlays.gentoo.org/gitweb/?p=proj/catalyst.git;a=shortlog;h=refs/heads/rewrite-on-master
+ [2] - http://git.overlays.gentoo.org/gitweb/?p=proj/catalyst.git;a=shortlog;h=refs/heads/pending
+ [3] - https://bugs.gentoo.org/enter_bug.cgi?product=Gentoo%20Hosted%20Projects
+    Component: Catalyst

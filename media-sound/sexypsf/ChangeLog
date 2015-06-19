@@ -1,0 +1,95 @@
+# ChangeLog for media-sound/sexypsf
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/sexypsf/ChangeLog,v 1.25 2011/07/20 16:31:31 pacho Exp $
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #81177
+
+  24 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> sexypsf-0.4.7.ebuild:
+  amd64 stable
+
+  03 Feb 2007; Harald van Dĳk <truedfx@gentoo.org>
+  files/sexypsf-0.4.7-misc.patch:
+  Use CFLAGS when linking
+
+  20 Jan 2007; Harald van Dĳk <truedfx@gentoo.org>
+  -files/sexypsf-0.4.5-gentoo.patch, -files/sexypsf-0.4.6-gentoo.patch,
+  -files/sexypsf-0.4.6-xmms.patch:
+  Clean up old unused files
+
+  04 Nov 2006; Harald van Dĳk <truedfx@gentoo.org> -sexypsf-0.4.5.ebuild,
+  -sexypsf-0.4.6.ebuild:
+  Remove older versions
+
+  03 Nov 2006; Christian Faulhammer <opfer@gentoo.org> sexypsf-0.4.7.ebuild:
+  stabled x86, bug #153356
+
+  31 Oct 2006; Luca Barbato <lu_zero@gentoo.org> sexypsf-0.4.7.ebuild:
+  Bigendian fix for oss and cleanup, goodbye xmms
+
+  07 Aug 2006; Luca Barbato <lu_zero@gentoo.org> sexypsf-0.4.7.ebuild:
+  Make it properly work on bigendian
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-sexypsf-0.4.5,
+  files/digest-sexypsf-0.4.6, files/digest-sexypsf-0.4.7, Manifest:
+  Fixing SHA256 digest, pass four
+
+  19 Feb 2006; Harald van Dĳk <truedfx@gentoo.org>
+  files/sexypsf-0.4.7-misc.patch, sexypsf-0.4.7.ebuild:
+  Remove bmp support as beep-media-player is going away
+  Get rid of a bunch of warnings
+
+  26 Jan 2006; Harald van Dĳk <truedfx@gentoo.org> sexypsf-0.4.7.ebuild:
+  Fix parallel build issue (bug #119240)
+
+  15 Nov 2005; Danny van Dyk <kugelfang@gentoo.org> sexypsf-0.4.7.ebuild:
+  This works on amd64 as of version 0.4.7, marked accordingly.
+
+  12 Nov 2005; Harald van Dĳk <truedfx@gentoo.org>
+  files/sexypsf-0.4.7-misc.patch:
+  Even more potential 64-bit issues
+
+  06 Nov 2005; Harald van Dĳk <truedfx@gentoo.org>
+  files/sexypsf-0.4.7-misc.patch, sexypsf-0.4.7.ebuild:
+  Add bmp support
+
+  02 Nov 2005; Harald van Dĳk <truedfx@gentoo.org>
+  files/sexypsf-0.4.7-misc.patch:
+  Some more 64-bit problems
+
+*sexypsf-0.4.7 (26 Oct 2005)
+
+  26 Oct 2005; Harald van Dĳk <truedfx@gentoo.org>
+  +files/sexypsf-0.4.7-misc.patch, metadata.xml, +sexypsf-0.4.7.ebuild:
+  Version bump plus gcc4 and 64bit fixes
+  And marking myself as maintainer
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> sexypsf-0.4.6.ebuild:
+  Stable on ppc.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  sexypsf-0.4.6.ebuild:
+  Stable x86.
+
+*sexypsf-0.4.6 (07 Oct 2004)
+
+  07 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/sexypsf-0.4.6-gentoo.patch, +files/sexypsf-0.4.6-xmms.patch,
+  +sexypsf-0.4.6.ebuild:
+  Version bump.
+
+  19 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> sexypsf-0.4.5.ebuild:
+  -sparc -amd64
+
+  29 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> sexypsf-0.4.5.ebuild:
+  Stable x86.
+
+  01 Apr 2004; David Holm <dholm@gentoo.org> sexypsf-0.4.5.ebuild:
+  Added to ~ppc.
+
+*sexypsf-0.4.5 (30 Mar 2004)
+
+  30 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> sexypsf-0.4.5.ebuild,
+  files/sexypsf-0.4.5-gentoo.patch:
+  Initial version.  Player and xmms plugin for playstation music files.
+

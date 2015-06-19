@@ -1,0 +1,28 @@
+# ChangeLog for games-puzzle/freesweep
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/freesweep/ChangeLog,v 1.7 2014/10/31 02:01:18 mr_bones_ Exp $
+
+  31 Oct 2014; Michael Sterrett <mr_bones_@gentoo.org> freesweep-0.92.ebuild:
+  tidy
+
+  30 Oct 2014; Jeroen Roovers <jer@gentoo.org> freesweep-0.92.ebuild:
+  Fix building against sys-libs/ncurses[tinfo] (bug #526710).
+
+  05 Jan 2010; Joseph Jezak <josejx@gentoo.org> freesweep-0.92.ebuild:
+  Marked ~ppc for bug #293682.
+
+  24 Dec 2009; Pacho Ramos <pacho@gentoo.org> freesweep-0.92.ebuild:
+  amd64 stable, bug 295709
+
+  19 Dec 2009; Fabian Groffen <grobian@gentoo.org> freesweep-0.92.ebuild:
+  Marked ~ppc-macos, bug #296991
+
+  09 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  freesweep-0.92.ebuild:
+  stable x86, bug 295709
+
+*freesweep-0.92 (04 Nov 2009)
+
+  04 Nov 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +freesweep-0.92.ebuild, +metadata.xml:
+  Initial commit - ebuild submitted by Alexey Charkov via bug #290803

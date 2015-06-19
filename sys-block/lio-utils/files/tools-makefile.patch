@@ -1,0 +1,8 @@
+--- tools/Makefile	2011-06-20 23:25:07.000000000 +0400
++++ tools/Makefile	2011-06-21 00:06:26.000000000 +0400
+@@ -12,4 +12,5 @@
+ 	rm -f $(ISCSI_NAME_OBJS) $(ISCSI_NAME) 
+ 
+ install:
++	mkdir -p $(DESTDIR)/usr/sbin
+ 	install -m 0755 $(ISCSI_NAME)     $(DESTDIR)/usr/sbin/iscsi-name

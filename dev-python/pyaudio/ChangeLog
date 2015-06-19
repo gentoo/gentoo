@@ -1,0 +1,82 @@
+# ChangeLog for dev-python/pyaudio
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyaudio/ChangeLog,v 1.21 2015/01/23 02:01:42 mrueg Exp $
+
+  23 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -pyaudio-0.2.3.ebuild,
+  -pyaudio-0.2.4.ebuild, -pyaudio-0.2.6.ebuild, -pyaudio-0.2.7-r1.ebuild,
+  -pyaudio-0.2.7.ebuild:
+  Remove old.
+
+  05 Dec 2014; Agostino Sarubbo <ago@gentoo.org> pyaudio-0.2.8.ebuild:
+  Stable for x86, wrt bug #530554
+
+  04 Dec 2014; Agostino Sarubbo <ago@gentoo.org> pyaudio-0.2.8.ebuild:
+  Stable for amd64, wrt bug #530554
+
+*pyaudio-0.2.8 (15 May 2014)
+
+  15 May 2014; Ian Delaney <idella4@gentoo.org> +pyaudio-0.2.8.ebuild:
+  bump; drop py2.6 py3.2 add py3.4 pypy support
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org> pyaudio-0.2.7-r1.ebuild:
+  amd64 stable, bug #495606
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> pyaudio-0.2.7-r1.ebuild:
+  x86 stable wrt bug #495606
+
+*pyaudio-0.2.7-r1 (10 Aug 2013)
+
+  10 Aug 2013; Michał Górny <mgorny@gentoo.org> +pyaudio-0.2.7-r1.ebuild:
+  Migrate to distutils-r1.
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> pyaudio-0.2.7.ebuild:
+  Stable for x86, wrt bug #456604
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> pyaudio-0.2.7.ebuild:
+  Stable for amd64, wrt bug #456604
+
+*pyaudio-0.2.7 (02 Nov 2012)
+
+  02 Nov 2012; Tim Harder <radhermit@gentoo.org> +pyaudio-0.2.7.ebuild:
+  Version bump.
+
+*pyaudio-0.2.6 (29 Oct 2012)
+
+  29 Oct 2012; Patrick Lauer <patrick@gentoo.org> +pyaudio-0.2.6.ebuild:
+  Bump
+
+  03 Aug 2012; Markos Chandras <hwoarang@gentoo.org> pyaudio-0.2.4.ebuild:
+  Stable on amd64 wrt bug #417815
+
+  01 Aug 2012; Jeff Horelick <jdhore@gentoo.org> pyaudio-0.2.4.ebuild:
+  marked x86 per bug 417815
+
+*pyaudio-0.2.4 (19 Apr 2012)
+
+  19 Apr 2012; Patrick Lauer <patrick@gentoo.org> +pyaudio-0.2.4.ebuild:
+  Bump
+
+  21 Feb 2012; Patrick Lauer <patrick@gentoo.org> pyaudio-0.2.3.ebuild:
+  Restricting jython
+
+  22 Aug 2010; Markus Meier <maekke@gentoo.org> pyaudio-0.2.3.ebuild:
+  x86 stable, bug #329091
+
+  19 Aug 2010; Markos Chandras <hwoarang@gentoo.org> pyaudio-0.2.3.ebuild:
+  Stable on amd64 wrt bug #329091
+
+  14 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pyaudio-0.2.3.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  02 Jun 2010; Dirkjan Ochtman <djc@gentoo.org> metadata.xml:
+  python team takes over maintainership.
+
+  02 Jun 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove hncaldwell from metadata.xml (#230778)
+
+*pyaudio-0.2.3 (21 Jan 2009)
+
+  21 Jan 2009; Heath Caldwell <hncaldwell@gentoo.org> +metadata.xml,
+  +pyaudio-0.2.3.ebuild:
+  New ebuild for pyaudio. Ebuild written by me.

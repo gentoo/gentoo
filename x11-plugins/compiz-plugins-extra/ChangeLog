@@ -1,0 +1,112 @@
+# ChangeLog for x11-plugins/compiz-plugins-extra
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/compiz-plugins-extra/ChangeLog,v 1.21 2012/09/25 14:35:30 pinkbyte Exp $
+
+  25 Sep 2012; Sergey Popov <pinkbyte@gentoo.org>
+  -compiz-plugins-extra-0.8.6-r1.ebuild,
+  -files/compiz-plugins-extra-0.8.6-libnotify.patch:
+  Drop old
+
+  16 Aug 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +files/compiz-plugins-extra-0.8.8-libnotify.patch,
+  compiz-plugins-extra-0.8.8.ebuild:
+  Add correct libnotify patch for 0.8.8
+
+*compiz-plugins-extra-0.8.8 (10 Aug 2012)
+
+  10 Aug 2012; Maxim Koltsov <maksbotan@gentoo.org>
+  +compiz-plugins-extra-0.8.8.ebuild:
+  Bump to 0.8.8, bug 429988. Thanks to Pinkbyte
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  compiz-plugins-extra-0.8.6-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  25 Apr 2012; Justin Lecher <jlec@gentoo.org>
+  compiz-plugins-extra-0.8.6-r1.ebuild:
+  Drop unnessecary die
+
+  21 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  -compiz-plugins-extra-0.8.4-r1.ebuild,
+  compiz-plugins-extra-0.8.6-r1.ebuild:
+  Remove old, fix library slot-deps
+
+  28 Feb 2011; Samuli Suominen <ssuominen@gentoo.org>
+  compiz-plugins-extra-0.8.6-r1.ebuild,
+  files/compiz-plugins-extra-0.8.6-libnotify.patch:
+  Fix building with x11-libs/libnotify >= 0.7 wrt #354761 by Diego Elio
+  Pettenò.
+
+  26 Feb 2011; Kevin McCarthy <signals@gentoo.org>
+  compiz-plugins-extra-0.8.4-r1.ebuild, compiz-plugins-extra-0.8.6-r1.ebuild:
+  Updated depends from media-libs/jpeg to virtual/jpeg
+
+  13 Feb 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -compiz-plugins-extra-0.8.4.ebuild, compiz-plugins-extra-0.8.4-r1.ebuild,
+  -compiz-plugins-extra-0.8.6.ebuild, compiz-plugins-extra-0.8.6-r1.ebuild,
+  +files/compiz-plugins-extra-0.8.6-libnotify.patch:
+  Resolve automagic dependencies over libnotify: force it on 0.8.4-r1, and
+  patch 0.8.6-r1 to respect a libnotify USE flag instead. Drop old version.
+
+*compiz-plugins-extra-0.8.6-r1 (04 Sep 2010)
+
+  04 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +compiz-plugins-extra-0.8.6-r1.ebuild, metadata.xml:
+  Rename gnome USE flag to gconf (like x11-wm/compiz); disable static libs
+  and remove .la files (ibid.).
+
+*compiz-plugins-extra-0.8.6 (03 Apr 2010)
+
+  03 Apr 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +compiz-plugins-extra-0.8.6.ebuild:
+  Replaced compiz ~ deps with >= deps to support the new compiz-0.8.6
+  release and to avoid future dep issues.
+  Did a revbump to avoid issues with installed packages.
+
+  23 Dec 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  compiz-plugins-extra-0.8.4.ebuild, compiz-plugins-extra-0.8.4-r1.ebuild:
+  Dropped block for old package name now that I've finally set the pkg move.
+
+  20 Dec 2009; Romain Perier <mrpouet@gentoo.org>
+  -compiz-plugins-extra-0.8.2.ebuild:
+  Clean up old version
+
+*compiz-plugins-extra-0.8.4-r1 (01 Nov 2009)
+
+  01 Nov 2009; Romain Perier <mrpouet@gentoo.org>
+  +compiz-plugins-extra-0.8.4-r1.ebuild:
+  Fix two QA , replace $(use_enable gnome gconf) by $(use_enable gnome
+  schemas). Add inheritance from gnome2-utils.eclass in order to install
+  gconf schemas correctly. New revision. Many thanks to scarab.
+
+*compiz-plugins-extra-0.8.4 (15 Oct 2009)
+
+  15 Oct 2009; Romain Perier <mrpouet@gentoo.org>
+  +compiz-plugins-extra-0.8.4.ebuild:
+  Version bump.
+
+  27 Aug 2009; Mike Auty <ikelos@gentoo.org>
+  compiz-plugins-extra-0.8.2.ebuild:
+  Removing glitz dependency on cairo, fixes bug 273939.
+
+  25 Apr 2009; Brent Baude <ranger@gentoo.org>
+  compiz-plugins-extra-0.8.2.ebuild:
+  Marking compiz-plugins-extra-0.8.2 ~ppc for bug 246804
+
+  25 Apr 2009; Brent Baude <ranger@gentoo.org>
+  compiz-plugins-extra-0.8.2.ebuild:
+  Marking compiz-plugins-extra-0.8.2 ~ppc64 for bug 246804
+
+  04 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +files/compiz-plugins-extra-no-gconf.patch:
+  Trying to add the patch again.
+
+  03 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +files/compiz-plugins-extra-no-gconf.patch:
+  Added missing patch.
+
+*compiz-plugins-extra-0.8.2 (03 Apr 2009)
+
+  03 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +metadata.xml, +compiz-plugins-extra-0.8.2.ebuild:
+  Bumped compiz to the 0.8.2 release.

@@ -1,0 +1,9 @@
+DEFINED_PHASES=install unpack
+DEPEND=!sys-libs/glibc !sys-libs/uclibc
+DESCRIPTION=Script to emulate the behavior of glibc's getent utility
+EAPI=5
+HOMEPAGE=http://www.uclibc.org/
+LICENSE=LGPL-2
+SLOT=0
+SRC_URI=http://git.uclibc.org/uClibc/plain/extra/scripts/getent
+_md5_=b8a46b3dbf45d74517803e645eb7d8e9

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=sys-libs/ncurses sys-libs/readline >=dev-embedded/gputils-0.13.7 boehm-gc? ( dev-libs/boehm-gc ) !dev-embedded/sdcc-svn
+DESCRIPTION=Small device C compiler (for various microprocessors)
+EAPI=2
+HOMEPAGE=http://sdcc.sourceforge.net/
+IUSE=+boehm-gc doc
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses sys-libs/readline >=dev-embedded/gputils-0.13.7 boehm-gc? ( dev-libs/boehm-gc ) !dev-embedded/sdcc-svn
+RESTRICT=strip
+SLOT=0
+SRC_URI=mirror://sourceforge/sdcc/sdcc-src-2.9.0.tar.bz2 doc? ( mirror://sourceforge/sdcc/sdcc-doc-2.9.0.tar.bz2 )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=0cfa4896a318ceadbde53d6a67152c3d

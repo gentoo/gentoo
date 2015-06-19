@@ -1,0 +1,54 @@
+# ChangeLog for sys-fs/unionfs-fuse
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/unionfs-fuse/ChangeLog,v 1.11 2015/01/30 18:37:06 sping Exp $
+
+*unionfs-fuse-1.0 (30 Jan 2015)
+
+  30 Jan 2015; Sebastian Pipping <sping@gentoo.org> +unionfs-fuse-1.0.ebuild:
+  Bump to 1.0
+
+*unionfs-fuse-9999 (11 Jan 2015)
+
+  11 Jan 2015; Sebastian Pipping <sping@gentoo.org> +unionfs-fuse-9999.ebuild:
+  Add live ebuild
+
+  21 Feb 2013; Zac Medico <zmedico@gentoo.org> unionfs-fuse-0.26.ebuild:
+  Fix for prefix and add ~x86-linux keyword.
+
+  22 Sep 2012; Sebastian Pipping <sping@gentoo.org> unionfs-fuse-0.26.ebuild,
+  +files/unionfs-fuse-0.26-declare-chroot.patch,
+  +files/unionfs-fuse-0.26-link-pthread.patch:
+  Fix underlinking to pthreads with GCC 4.7 (bug #435822), mainly. Patches
+  forwarded to upstream.
+
+  14 Sep 2012; Sebastian Pipping <sping@gentoo.org> -unionfs-fuse-0.23.ebuild:
+  Remove 0.23 ebuilds since upstream now considers 0.23 to be severely broken
+
+*unionfs-fuse-0.26 (14 Sep 2012)
+
+  14 Sep 2012; Sebastian Pipping <sping@gentoo.org> +unionfs-fuse-0.26.ebuild:
+  Bump to 0.26, looks trivial
+
+*unionfs-fuse-0.25 (04 Feb 2012)
+
+  04 Feb 2012; Sebastian Pipping <sping@gentoo.org> +unionfs-fuse-0.25.ebuild:
+  Bump to 0.25
+
+*unionfs-fuse-0.24 (21 May 2010)
+
+  21 May 2010; Sebastian Pipping <sping@gentoo.org>
+  +unionfs-fuse-0.24.ebuild:
+  Bump to 0.24
+
+  18 Mar 2010; Sebastian Pipping <sping@gentoo.org> metadata.xml:
+  Put myself in as maintainer
+
+  17 Jan 2010; Alex Legler <a3li@gentoo.org> unionfs-fuse-0.23.ebuild:
+  Keyword ~amd64, bug 301207 by Martin Väth.
+
+*unionfs-fuse-0.23 (12 Jan 2010)
+
+  12 Jan 2010; Sebastian Pipping <sping@gentoo.org>
+  +unionfs-fuse-0.23.ebuild, +files/unionfs-fuse-0.23-makefile.patch,
+  +metadata.xml:
+  New package (fixes bug #143026)

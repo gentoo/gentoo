@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install
+DEPEND=virtual/pkgconfig net-misc/curl >=dev-libs/jansson-2.6 virtual/libusb:1[udev] ncurses? ( sys-libs/ncurses ) udev? ( virtual/libudev ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Bitcoin CPU/GPU/FPGA/ASIC miner in C
+EAPI=5
+HOMEPAGE=http://bitcointalk.org/?topic=28402.msg357369 http://github.com/ckolivas/cgminer
+IUSE=doc examples udev hardened ncurses ants1 ants2 ants3 avalon avalon2 avalon4 bab bflsc bitforce bitfury bitmine_A1 blockerupter cointerra drillbit hashfast hashratio icarus klondike knc minion modminer sp10 sp30
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-3
+RDEPEND=net-misc/curl >=dev-libs/jansson-2.6 virtual/libusb:1[udev] ncurses? ( sys-libs/ncurses ) udev? ( virtual/libudev )
+REQUIRED_USE=|| ( ants1 ants2 ants3 avalon avalon2 avalon4 bab bflsc bitforce bitfury bitmine_A1 blockerupter cointerra drillbit hashfast hashratio icarus klondike knc minion modminer sp10 sp30 )
+SLOT=0
+SRC_URI=http://ck.kolivas.org/apps/cgminer/cgminer-4.9.2.tar.bz2
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=93e1c2b6886c2ddc449429413bbcc016

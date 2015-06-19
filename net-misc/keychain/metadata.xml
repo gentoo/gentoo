@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>base-system</herd>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>drobbins@funtoo.org</email>
+		<name>Daniel Robbins</name>
+		<description>Upstream contact, please CC on bugs</description>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">funtoo/keychain</remote-id>
+	</upstream>
+</pkgmetadata>

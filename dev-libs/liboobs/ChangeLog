@@ -1,0 +1,117 @@
+# ChangeLog for dev-libs/liboobs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/liboobs/ChangeLog,v 1.29 2015/04/03 10:41:28 dlan Exp $
+
+  03 Apr 2015; Yixun Lan <dlan@gentoo.org> liboobs-3.0.0.ebuild:
+  keyword arm64, tested on cortex-a53 hardware
+
+  11 Feb 2015; Patrick Lauer <patrick@gentoo.org> liboobs-3.0.0.ebuild:
+  Whitespace
+
+  02 Dec 2014; Pacho Ramos <pacho@gentoo.org> liboobs-3.0.0.ebuild:
+  Update ebuild
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> liboobs-3.0.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  22 Jun 2014; Markus Meier <maekke@gentoo.org> liboobs-3.0.0.ebuild:
+  add ~arm, bug #512042
+
+  05 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org> -liboobs-2.32.0.ebuild:
+  Clean up old revision.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> liboobs-2.32.0.ebuild,
+  liboobs-3.0.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  05 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org> liboobs-3.0.0.ebuild:
+  ppc stable wrt #369909
+
+  13 Aug 2011; Raúl Porcel <armin76@gentoo.org> liboobs-3.0.0.ebuild:
+  alpha/ia64/sparc stable wrt #369909
+
+  14 Jul 2011; Thomas Kahle <tomka@gentoo.org> liboobs-3.0.0.ebuild:
+  x86 stable per bug 369909
+
+  01 Jul 2011; Markos Chandras <hwoarang@gentoo.org> liboobs-3.0.0.ebuild:
+  Stable on amd64 wrt bug #278255
+
+*liboobs-3.0.0 (03 Apr 2011)
+
+  03 Apr 2011; Pacho Ramos <pacho@gentoo.org> -liboobs-2.30.1.ebuild,
+  +liboobs-3.0.0.ebuild:
+  Version bump: link against OOBS_LIBS so strict linking works, store
+  OobsUser's main group as GID rather than OobsGroup, remove idle tasks when
+  destroying objects. Remove old.
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org> liboobs-2.32.0.ebuild:
+  Marking liboobs-2.32.0 ppc stable for bug 353436
+
+  12 Mar 2011; Raúl Porcel <armin76@gentoo.org> liboobs-2.32.0.ebuild:
+  alpha/ia64/sparc stable wrt #353436
+
+  24 Feb 2011; Thomas Kahle <tomka@gentoo.org> liboobs-2.32.0.ebuild:
+  x86 stable per bug 353436
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org> liboobs-2.32.0.ebuild:
+  Stable on amd64 wrt bug #353436
+
+  31 Jan 2011; Raúl Porcel <armin76@gentoo.org> liboobs-2.30.1.ebuild:
+  alpha/ia64/sparc stable
+
+  30 Jan 2011; Raúl Porcel <armin76@gentoo.org> liboobs-2.30.1.ebuild:
+  alpha/ia64/sparc stable wrt #348987
+
+*liboobs-2.32.0 (29 Oct 2010)
+
+  29 Oct 2010; Pacho Ramos <pacho@gentoo.org> +liboobs-2.32.0.ebuild:
+  Version bump for Gnome 2.32.
+
+  11 Sep 2010; Joseph Jezak <josejx@gentoo.org> liboobs-2.30.1.ebuild:
+  Marked ppc for bug #324077.
+
+  06 Sep 2010; Pacho Ramos <pacho@gentoo.org> -liboobs-2.22.2.ebuild,
+  liboobs-2.30.1.ebuild:
+  Remove old, also drop no longer needed FIXME statement.
+
+  11 Aug 2010; Joseph Jezak <josejx@gentoo.org> liboobs-2.22.2.ebuild,
+  liboobs-2.30.1.ebuild:
+  Marked ~ppc.
+
+  01 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  liboobs-2.30.1.ebuild:
+  x86 stable, bug 324077
+
+  31 Jul 2010; Pacho Ramos <pacho@gentoo.org> liboobs-2.30.1.ebuild:
+  amd64 stable, bug 324077
+
+*liboobs-2.30.1 (16 Jun 2010)
+
+  16 Jun 2010; Pacho Ramos <pacho@gentoo.org> +liboobs-2.30.1.ebuild:
+  Version bump for Gnome 2.30 with bugfixes and adapted to new
+  system-tools-backends.
+
+  31 May 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -liboobs-2.20.0.ebuild, -liboobs-2.22.0.ebuild:
+  Clean up old revisions.
+
+  22 May 2010; Raúl Porcel <armin76@gentoo.org> liboobs-2.22.2.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #313563
+
+*liboobs-2.22.2 (10 Sep 2009)
+
+  10 Sep 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +liboobs-2.22.2.ebuild:
+  Version bump.
+
+*liboobs-2.22.0 (23 Mar 2008)
+
+  23 Mar 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +liboobs-2.22.0.ebuild:
+  New version for GNOME-2.22. Add HAL for network support and uses GIO.
+
+*liboobs-2.20.0 (24 Jan 2008)
+
+  24 Jan 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +liboobs-2.20.0.ebuild:
+  Initial commit

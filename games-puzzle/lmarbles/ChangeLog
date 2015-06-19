@@ -1,0 +1,44 @@
+# ChangeLog for games-puzzle/lmarbles
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/lmarbles/ChangeLog,v 1.11 2015/02/22 10:00:00 tupone Exp $
+
+  22 Feb 2015; Tupone Alfredo <tupone@gentoo.org> lmarbles-1.0.8.ebuild:
+  EAPI 5
+
+  04 Aug 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  lmarbles-1.0.8.ebuild:
+  also install the manual (bug #331199)
+
+  23 Jan 2010; Brent Baude <ranger@gentoo.org> lmarbles-1.0.8.ebuild:
+  stable ppc, bug 296122
+
+  19 Dec 2009; Pacho Ramos <pacho@gentoo.org> lmarbles-1.0.8.ebuild:
+  amd64 stable, bug 296122
+
+  09 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  lmarbles-1.0.8.ebuild:
+  stable x86, bug 296122
+
+*lmarbles-1.0.8 (07 Nov 2009)
+
+  07 Nov 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +lmarbles-1.0.8.ebuild, +files/lmarbles-1.0.8-gentoo.patch:
+  version bump
+
+  08 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*lmarbles-1.0.7 (18 Feb 2005)
+
+  18 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> +lmarbles-1.0.7.ebuild:
+  version bump (bug #82445)
+
+  08 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> lmarbles-1.0.6.ebuild:
+  fix HOMEPAGE
+
+*lmarbles-1.0.6 (08 Jun 2004)
+
+  08 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> lmarbles-1.0.6.ebuild,
+  metadata.xml:
+  version bump and name change from games-puzzle/marbles (bug #52566)
+

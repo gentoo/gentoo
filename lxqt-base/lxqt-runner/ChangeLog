@@ -1,0 +1,43 @@
+# ChangeLog for lxqt-base/lxqt-runner
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/lxqt-base/lxqt-runner/ChangeLog,v 1.9 2015/04/15 07:06:09 dlan Exp $
+
+  15 Apr 2015; Yixun Lan <dlan@gentoo.org> lxqt-runner-0.9.0.ebuild:
+  keyword arm/arm64, tested on cortex-A9/A53 hardware; support lxqt, bug 528676
+
+*lxqt-runner-0.9.0 (10 Feb 2015)
+
+  10 Feb 2015; Ben de Groot <yngwin@gentoo.org> +lxqt-runner-0.9.0.ebuild:
+  LXQt 0.9.0 version bump
+
+  30 Jan 2015; Michael Palimaka <kensington@gentoo.org>
+  lxqt-runner-0.7.0-r1.ebuild, lxqt-runner-0.8.0.ebuild:
+  Update SRC_URI by Michael Vetter <g.bluehut@gmail.com> wrt bug #537032.
+
+*lxqt-runner-0.8.0 (08 Nov 2014)
+
+  08 Nov 2014; Jauhien Piatlicki <jauhien@gentoo.org> +lxqt-runner-0.8.0.ebuild:
+  version bump
+
+  08 Nov 2014; Ben de Groot <yngwin@gentoo.org> lxqt-runner-0.7.0-r1.ebuild:
+  Move libqtxdg to new category
+
+  02 Nov 2014; Jauhien Piatlicki <jauhien@gentoo.org>
+  lxqt-runner-0.7.0-r1.ebuild:
+  make dependencies more precise (preparation for LXQt 0.8.0 release)
+
+  29 May 2014; Manuel Rüger <mrueg@gentoo.org> lxqt-runner-0.7.0-r1.ebuild:
+  Add ~arm keyword.
+
+*lxqt-runner-0.7.0-r1 (27 May 2014)
+
+  27 May 2014; Jauhien Piatlicki <jauhien@gentoo.org>
+  +lxqt-runner-0.7.0-r1.ebuild, -lxqt-runner-0.7.0.ebuild:
+  install mans
+
+*lxqt-runner-0.7.0 (27 May 2014)
+
+  27 May 2014; Jauhien Piatlicki <jauhien@gentoo.org> +lxqt-runner-0.7.0.ebuild,
+  +metadata.xml:
+  Initial import from the qt overlay, thanks to Harvey Mittens and Davide
+  Pesavento, see bug #509946

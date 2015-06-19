@@ -1,0 +1,33 @@
+--- feynmf-orig/feynmf.pl	2007-11-06 08:32:37.000000000 +0100
++++ feynmf/feynmf.pl	2007-11-06 09:33:04.000000000 +0100
+@@ -119,6 +119,7 @@
+ require 5.000;
+ # use strict;
+ use File::Find;
++use File::Temp qw(tempfile);
+ use Getopt::Long;
+ 
+ ########################################################################
+@@ -270,18 +271,18 @@
+     my @tfm = @_;
+     # Prepare a fake temporary PL file
+     # (/dev/null won't do, because the font must not be empty):
+-    my ($pl) = "/tmp/feynmf$$.pl";
+     my ($tfm);
+     $pltotf_prog
+ 	or die "feynmf: fatal: pltopf programm required unless -notfm\n";
+-    open (PL, ">$pl") or die "feynmf: can't open temporary file $pl: $!\n";
++    my ($PL, $pl) = tempfile("/tmp/feynmfXXXXXX", SUFFIX => ".pl");
++    $PL or die "feynmf: can't open temporary file: $!\n";
+     push @temporay_files, $pl;
+-    print PL <<__END_PL__;
++    print $PL <<__END_PL__;
+       (FAMILY FEYNMF)
+       (DESIGNSIZE R 10.0)
+       (CHARACTER D 1 (CHARWD R 10.0) (CHARHT R 10.0))
+ __END_PL__
+-    close (PL);
++    close ($PL);
+     foreach $tfm (@tfm) {
+ 	maybe_run "$pltotf_prog $pl $tfm.tfm" unless -r "$tfm.tfm";
+     }

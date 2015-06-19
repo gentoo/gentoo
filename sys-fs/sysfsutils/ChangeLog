@@ -1,0 +1,211 @@
+# ChangeLog for sys-fs/sysfsutils
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/sysfsutils/ChangeLog,v 1.53 2013/05/05 23:34:40 vapier Exp $
+
+  05 May 2013; Mike Frysinger <vapier@gentoo.org> sysfsutils-2.1.0.ebuild:
+  Fix building with automake-1.13 #467642 by thomas.
+
+  12 Mar 2013; Samuli Suominen <ssuominen@gentoo.org> sysfsutils-2.1.0.ebuild:
+  Run eautoreconf to workaround maintainer mode.
+
+  09 Mar 2013; Samuli Suominen <ssuominen@gentoo.org> sysfsutils-2.1.0.ebuild:
+  Remove unnecessary epunt_cxx call wrt #460786 by Roman Žilka
+
+  19 Nov 2010; Justin Lecher <jlec@gentoo.org> sysfsutils-2.1.0.ebuild:
+  Import Prefix Changes
+
+  11 Oct 2009; Mike Frysinger <vapier@gentoo.org> sysfsutils-2.1.0.ebuild:
+  Use epunt_cxx #288544 by Michał Masłowski and gen_usr_ldscript -a.
+
+  16 Dec 2007; Raúl Porcel <armin76@gentoo.org> sysfsutils-2.1.0.ebuild:
+  alpha/ia64/sparc stable wrt #202080
+
+  16 Dec 2007; Samuli Suominen <drac@gentoo.org> sysfsutils-2.1.0.ebuild:
+  amd64 stable wrt #202080
+
+  14 Dec 2007; Jeroen Roovers <jer@gentoo.org> sysfsutils-2.1.0.ebuild:
+  Stable for HPPA (bug #202080).
+
+  14 Dec 2007; nixnut <nixnut@gentoo.org> sysfsutils-2.1.0.ebuild:
+  Stable on ppc wrt bug 202080
+
+  14 Dec 2007; Markus Rothe <corsair@gentoo.org> sysfsutils-2.1.0.ebuild:
+  Stable on ppc64; bug #202080
+
+  13 Dec 2007; Markus Meier <maekke@gentoo.org> sysfsutils-2.1.0.ebuild:
+  x86 stable, bug #202080
+
+*sysfsutils-2.1.0 (21 Jan 2007)
+
+  21 Jan 2007; Mike Frysinger <vapier@gentoo.org> +sysfsutils-2.1.0.ebuild:
+  Version bump #163012 by yuntaku.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  sysfsutils-1.0.0.ebuild:
+  Remove gnuconfig_update usage, leave it to econf.
+
+  09 Jul 2006; Joshua Kinard <kumba@gentoo.org> sysfsutils-1.3.0-r1.ebuild:
+  Marked stable on mips.
+
+*sysfsutils-2.0.0 (19 May 2006)
+
+  19 May 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +sysfsutils-2.0.0.ebuild:
+  Version bump on behalf of GregKH. You might need to run revdep-rebuild if
+  upgrading from sysfsutils-1.x.x.
+
+*sysfsutils-1.3.0-r1 (29 Nov 2005)
+
+  29 Nov 2005; Mike Frysinger <vapier@gentoo.org>
+  +sysfsutils-1.3.0-r1.ebuild:
+  Touchup build so we dont install .a/.la files into /lib.
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org>
+  sysfsutils-1.3.0.ebuild:
+  Stable on hppa, ppc.
+
+  08 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  sysfsutils-1.3.0.ebuild:
+  Stable on sparc
+
+  08 Nov 2005; Martin Schlemmer <azarah@gentoo.org> sysfsutils-1.3.0.ebuild:
+  Mark stable x86.
+
+  03 Nov 2005; <dang@gentoo.org> sysfsutils-1.3.0.ebuild:
+  Marked stable on amd64
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> sysfsutils-1.3.0.ebuild:
+  Mark 1.3.0 stable on ia64
+
+  16 Sep 2005; Aron Griffis <agriffis@gentoo.org> sysfsutils-1.3.0.ebuild:
+  Mark 1.3.0 stable on alpha
+
+  14 Sep 2005; Brent Baude <ranger@gentoo.org> sysfsutils-1.3.0.ebuild:
+  Marking sysfsutils-1.3.0 stable for ppc64 for livecd fixes
+
+  29 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  sysfsutils-1.2.0-r2.ebuild:
+  Stable on sparc
+
+  08 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  sysfsutils-1.2.0-r3.ebuild:
+  Stable on amd64, fixes #101466.
+
+  19 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  sysfsutils-1.2.0-r2.ebuild:
+  Stable on alpha.
+
+  18 Jul 2005; Joseph Jezak <josejx@gentoo.org> sysfsutils-1.2.0-r2.ebuild:
+  Marked ppc stable.
+
+  12 Jul 2005; Simon Stelling <blubb@gentoo.org> sysfsutils-1.2.0-r2.ebuild:
+  stable on amd64
+
+  03 Jul 2005; Olivier Crête <tester@gentoo.org>
+  sysfsutils-1.2.0-r2.ebuild:
+  Stable on x86 per bug 82970
+
+  03 Jul 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  sysfsutils-1.2.0-r2.ebuild:
+  Stable on hppa. bug 82970
+
+*sysfsutils-1.3.0 (03 Jul 2005)
+
+  03 Jul 2005; Martin Schlemmer <azarah@gentoo.org>
+  +sysfsutils-1.3.0.ebuild:
+  Update version.
+
+*sysfsutils-1.2.0-r3 (03 Jul 2005)
+
+  03 Jul 2005; Martin Schlemmer <azarah@gentoo.org>
+  +sysfsutils-1.2.0-r3.ebuild:
+  Add linker script to fix newer gcc only linking to static lib if .so's in
+  /lib and .a in /usr/lib, bug #4411. Do not use absolute symlink for libtool
+  linker script.
+
+  03 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  sysfsutils-1.2.0-r2.ebuild:
+  Made multilib-strict aware.
+
+  03 Jul 2005; Aron Griffis <agriffis@gentoo.org>
+  sysfsutils-1.2.0-r2.ebuild:
+  stable on ia64 #82970
+
+  03 Jul 2005; Markus Rothe <corsair@gentoo.org> sysfsutils-1.2.0-r2.ebuild:
+  Stable on ppc64 (bug #82970)
+
+*sysfsutils-1.2.0-r2 (02 Jul 2005)
+
+  02 Jul 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +sysfsutils-1.2.0-r2.ebuild:
+  Add small fix for -r2 that installs shared libs in /lib to allow for usage
+  before /usr is available. See bug #82970 for information.
+
+*sysfsutils-1.2.0-r1 (20 May 2005)
+
+  20 May 2005; <brix@gentoo.org>
+  +files/sysfsutils-1.2.0-write-attribute.patch,
+  +sysfsutils-1.2.0-r1.ebuild:
+  Added write_attribute() patch fixing bug #84228.
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> sysfsutils-1.2.0.ebuild:
+  stable on ia64
+
+  08 Mar 2005; Tom Gall <tgall@gentoo.org> sysfsutils-1.2.0.ebuild:
+  stable on ppc64, used as part of iprutils
+
+  03 Mar 2005; Markus Rothe <corsair@gentoo.org> sysfsutils-1.2.0.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #83939
+
+  31 Dec 2004; Bryan Østergaard <kloeri@gentoo.org>
+  sysfsutils-1.2.0.ebuild:
+  ~alpha keyword.
+
+  17 Dec 2004; Tony Vroon <chainsaw@gentoo.org> sysfsutils-1.2.0.ebuild:
+  Stripped problematic elibtoolize calls. No longer uses einstall. Closes bug #74631.
+
+*sysfsutils-1.2.0 (08 Nov 2004)
+
+  08 Nov 2004; Greg Kroah-Hartman <gregkh@gentoo.org> metadata.xml,
+  +sysfsutils-1.2.0.ebuild:
+  1.2.0 release
+  ugh, make me the maintainer, like I don't have anything else better to do...
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  sysfsutils-0.2.0.ebuild, sysfsutils-0.3.0.ebuild, sysfsutils-0.4.0.ebuild,
+  sysfsutils-1.0.0.ebuild:
+  virtual/glibc -> virtual/libc
+
+  22 Mar 2004; Joshua Kinard <kumba@gentoo.org> sysfsutils-1.0.0.ebuild:
+  Added ~mips to KEYWORDS and added gnuconfig support for mips.
+
+*sysfsutils-1.0.0 (29 Feb 2004)
+
+  29 Feb 2004; Martin Schlemmer <azarah@gentoo.org> sysfsutils-1.0.0.ebuild,
+  files/sysfsutils-1.0.0-dont-check-for-libsysfs.patch:
+  Update version. Do not check for external libsysfs, else it links systool, etc
+  against old libsysfs as well if older sysfsutils is installed.
+
+  26 Feb 2004; Ciaran McCreesh <ciaranm@gentoo.org> sysfsutils-0.4.0.ebuild:
+  Seems happy on sparc
+
+  17 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> :
+  manifest fix
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> sysfsutils-0.4.0.ebuild:
+  set ppc in keywords
+
+*sysfsutils-0.4.0 (18 Dec 2003)
+
+  18 Dec 2003; Martin Schlemmer <azarah@gentoo.org> sysfsutils-0.4.0.ebuild:
+  Update version.
+
+*sysfsutils-0.3.0 (07 Nov 2003)
+
+  07 Nov 2003; Martin Schlemmer <azarah@gentoo.org> sysfsutils-0.3.0.ebuild:
+  Update version.
+
+*sysfsutils-0.2.0 (11 Oct 2003)
+
+  11 Oct 2003; Martin Schlemmer <azarah@gentoo.org> sysfsutils-0.2.0.ebuild:
+  Initial ebuild submitted by myself.

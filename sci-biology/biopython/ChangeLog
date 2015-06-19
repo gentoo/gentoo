@@ -1,0 +1,393 @@
+# ChangeLog for sci-biology/biopython
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/biopython/ChangeLog,v 1.85 2015/04/07 14:32:18 jlec Exp $
+
+  29 Mar 2015; Justin Lecher <jlec@gentoo.org> -biopython-1.57.ebuild,
+  -biopython-1.64.ebuild, -files/SffIO_broken_padding.patch,
+  -files/SffIO_error_in_check_eof.patch, -files/biopython-1.51-flex.patch,
+  -files/biopython-1.62-SffIO.patch:
+  Drop old
+
+  28 Mar 2015; Agostino Sarubbo <ago@gentoo.org> biopython-1.65.ebuild:
+  Stable for ppc, wrt bug #544544
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> biopython-1.65.ebuild:
+  Stable for x86, wrt bug #544544
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> biopython-1.65.ebuild:
+  Stable for amd64, wrt bug #544544
+
+  26 Mar 2015; Justin Lecher <jlec@gentoo.org>
+  +files/biopython-1.65-test-fix-backport.patch, biopython-1.65.ebuild:
+  Backport test fix
+
+  26 Mar 2015; Justin Lecher <jlec@gentoo.org> biopython-1.65.ebuild:
+  Add note for embos support, bug #543510
+
+  03 Mar 2015; Justin Lecher <jlec@gentoo.org> -biopython-1.58.ebuild,
+  -biopython-1.59.ebuild, -biopython-1.61.ebuild, -biopython-1.62-r1.ebuild,
+  -biopython-1.62.ebuild, -biopython-1.63-r1.ebuild, -biopython-1.63.ebuild,
+  biopython-1.64.ebuild:
+  Drop old
+
+*biopython-1.65 (03 Mar 2015)
+
+  03 Mar 2015; Justin Lecher <jlec@gentoo.org> +biopython-1.65.ebuild:
+  Version Bump; add py3 and pypy support
+
+*biopython-1.64 (03 Jun 2014)
+
+  03 Jun 2014; Justin Lecher <jlec@gentoo.org> +biopython-1.64.ebuild:
+  Version Bump, thanks Martin Mokrejs <mmokrejs@fold.natur.cuni.cz> preparing
+  the ebuild
+
+*biopython-1.63-r1 (07 May 2014)
+
+  07 May 2014; Justin Lecher <jlec@gentoo.org> +biopython-1.63-r1.ebuild,
+  +files/SffIO_broken_padding.patch, +files/SffIO_error_in_check_eof.patch:
+  Import changes from sci overlay
+
+*biopython-1.63 (30 Jan 2014)
+
+  30 Jan 2014; Justin Lecher <jlec@gentoo.org> +biopython-1.63.ebuild:
+  Version Bump
+
+*biopython-1.62-r1 (29 Dec 2013)
+
+  29 Dec 2013; Justin Lecher <jlec@gentoo.org> +biopython-1.62-r1.ebuild,
+  +files/biopython-1.62-SffIO.patch:
+  Add additional patch from Martin Mokrejš
+
+*biopython-1.62 (17 Sep 2013)
+
+  17 Sep 2013; Justin Lecher <jlec@gentoo.org> +biopython-1.62.ebuild:
+  Version Bump
+
+  02 Jul 2013; Justin Lecher <jlec@gentoo.org> biopython-1.61.ebuild:
+  Fix deps for python
+
+  06 Jun 2013; Justin Lecher <jlec@gentoo.org> biopython-1.61.ebuild:
+  Keyword ~-linux
+
+*biopython-1.61 (26 Apr 2013)
+
+  26 Apr 2013; Justin Lecher <jlec@gentoo.org> +biopython-1.61.ebuild,
+  metadata.xml:
+  Version Bump
+
+  14 Dec 2012; Ulrich Müller <ulm@gentoo.org> biopython-1.57.ebuild,
+  biopython-1.58.ebuild, biopython-1.59.ebuild:
+  Update LICENSE, HPND according to LICENSE file.
+
+*biopython-1.59 (27 Feb 2012)
+
+  27 Feb 2012; Andrey Kislyuk <weaver@gentoo.org> +biopython-1.59.ebuild:
+  Version bump
+
+  26 Dec 2011; Andrey Kislyuk <weaver@gentoo.org> +biopython-1.58.ebuild:
+  Version bump
+
+*biopython-1.58 (26 Dec 2011)
+
+  26 Dec 2011; Andrey Kislyuk <weaver@gentoo.org> +biopython-1.58.ebuild:
+  Version bump
+
+  23 Jun 2011; Markos Chandras <hwoarang@gentoo.org> -biopython-1.56.ebuild:
+  Remove old ebuilds. Requested by Arfrever
+
+  28 May 2011; Brent Baude <ranger@gentoo.org> biopython-1.57.ebuild:
+  Marking biopython-1.57 ppc for bug 365877
+
+  24 May 2011; Markus Meier <maekke@gentoo.org> biopython-1.57.ebuild:
+  x86 stable, bug #365877
+
+  06 May 2011; Justin Lecher <jlec@gentoo.org> biopython-1.56.ebuild,
+  biopython-1.57.ebuild:
+  Cleaned DESCRIPTION
+
+  05 May 2011; Markos Chandras <hwoarang@gentoo.org> biopython-1.57.ebuild:
+  Stable on amd64 wrt bug #365877
+
+*biopython-1.57 (03 Apr 2011)
+
+  03 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +biopython-1.57.ebuild:
+  Version bump.
+
+  30 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -biopython-1.55.ebuild:
+  Delete.
+
+  30 Jan 2011; Raúl Porcel <armin76@gentoo.org> biopython-1.55.ebuild,
+  biopython-1.56.ebuild:
+  Drop alpha/sparc keywords
+
+  15 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  biopython-1.56.ebuild:
+  x86 stable wrt bug #351498
+
+  14 Jan 2011; Brent Baude <ranger@gentoo.org> biopython-1.56.ebuild:
+  stable ppc, bug 351498
+
+  13 Jan 2011; Markos Chandras <hwoarang@gentoo.org> biopython-1.56.ebuild:
+  Stable on amd64 wrt bug #351498
+
+  06 Jan 2011; Brent Baude <ranger@gentoo.org> biopython-1.55.ebuild:
+  Marking biopython-1.55 ppc for bug 341519
+
+*biopython-1.56 (13 Dec 2010)
+
+  13 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -biopython-1.53.ebuild, -biopython-1.54.ebuild, +biopython-1.56.ebuild:
+  Version bump.
+
+  31 Oct 2010; Raúl Porcel <armin76@gentoo.org> biopython-1.55.ebuild:
+  alpha/sparc stable wrt #341519
+
+  21 Oct 2010; Thomas Kahle <tomka@gentoo.org> biopython-1.55.ebuild:
+  x86 stable per bug 341519
+
+  19 Oct 2010; Markos Chandras <hwoarang@gentoo.org> biopython-1.55.ebuild:
+  Stable on amd64 wrt bug #341519
+
+  15 Oct 2010; Brent Baude <ranger@gentoo.org> biopython-1.54.ebuild:
+  stable ppc, bug 327151
+
+  10 Oct 2010; Raúl Porcel <armin76@gentoo.org> biopython-1.54.ebuild:
+  sparc stable wrt #327151
+
+*biopython-1.55 (17 Sep 2010)
+
+  17 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +biopython-1.55.ebuild:
+  Version bump.
+
+  12 Sep 2010; Tobias Klausmann <klausman@gentoo.org> biopython-1.54.ebuild:
+  Stable on alpha, bug #327151
+
+  12 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  biopython-1.54.ebuild:
+  stable x86, bug 327151
+
+  06 Jul 2010; Markos Chandras <hwoarang@gentoo.org> biopython-1.54.ebuild:
+  Stable on amd64 wrt bug #327151
+
+*biopython-1.54 (05 Jun 2010)
+
+  05 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -biopython-1.49.ebuild, -files/biopython-1.49-flex.patch,
+  -biopython-1.51.ebuild, -biopython-1.52.ebuild, +biopython-1.54.ebuild:
+  Version bump.
+
+  13 Feb 2010; Raúl Porcel <armin76@gentoo.org> biopython-1.53.ebuild:
+  alpha/sparc stable wrt #301964
+
+  07 Feb 2010; Markus Meier <maekke@gentoo.org> biopython-1.53.ebuild:
+  amd64/x86 stable, bug #301964
+
+  24 Jan 2010; Brent Baude <ranger@gentoo.org> biopython-1.53.ebuild:
+  stable ppc, bug 301964
+
+*biopython-1.53 (21 Dec 2009)
+
+  21 Dec 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +biopython-1.53.ebuild:
+  Version bump. Set SUPPORT_PYTHON_ABIS.
+
+  31 Oct 2009; Markus Meier <maekke@gentoo.org> biopython-1.52.ebuild:
+  amd64/x86 stable, bug #290931
+
+*biopython-1.52 (23 Sep 2009)
+
+  23 Sep 2009; Andrey Kislyuk <weaver@gentoo.org> +biopython-1.52.ebuild:
+  Version bump
+
+*biopython-1.51 (09 Sep 2009)
+
+  09 Sep 2009; Andrey Kislyuk <weaver@gentoo.org>
+  +files/biopython-1.51-flex.patch, +biopython-1.51.ebuild:
+  Version bump
+
+  26 Aug 2009; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
+  remove now unused flag description
+
+  26 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  -biopython-1.42.ebuild, -files/biopython-1.43-buildkdtree.patch,
+  -biopython-1.44.ebuild, -files/biopython-1.44-sequtils-complement.patch,
+  -biopython-1.47.ebuild, -files/biopython-1.47-kdtree.patch:
+  clean up
+
+  26 Aug 2009; Tobias Klausmann <klausman@gentoo.org> biopython-1.49.ebuild:
+  Stable on alpha, bug #277822
+
+  02 Aug 2009; nixnut <nixnut@gentoo.org> biopython-1.49.ebuild:
+  ppc stable #277822
+
+  20 Jul 2009; Jeremy Olexa <darkside@gentoo.org> biopython-1.49.ebuild:
+  amd64 stable, bug 277822
+
+  17 Jul 2009; Ferris McCormick <fmccor@gentoo.org> biopython-1.49.ebuild:
+  Sparc stable --- bug #277822 --- ran tests successfully.
+
+  14 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  biopython-1.49.ebuild:
+  stable x86, bug 277822
+
+  24 Mar 2009; Olivier Fisette <ribosome@gentoo.org> metadata.xml:
+  Giving up maintainership of this package.
+
+*biopython-1.49 (16 Jan 2009)
+
+  16 Jan 2009; Olivier Fisette <ribosome@gentoo.org>
+  +files/biopython-1.49-flex.patch, +biopython-1.49.ebuild:
+  Version bump. Thanks to Juan Aguado <juantxorena@gmail.com> for his work.
+  Fixes bug #248799.
+
+  06 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  14 Jul 2008; nixnut <nixnut@gentoo.org> biopython-1.44.ebuild:
+  Stable on ppc wrt bug 221159
+
+  07 Jul 2008; Raúl Porcel <armin76@gentoo.org> biopython-1.44.ebuild:
+  alpha/sparc/x86 stable wrt #221159
+
+*biopython-1.47 (06 Jul 2008)
+
+  06 Jul 2008; Olivier Fisette <ribosome@gentoo.org>
+  +files/biopython-1.47-kdtree.patch, +biopython-1.47.ebuild:
+  New version. Better documentation installation. Added scripts and test
+  suite. KDTree now enabled by default (requires switching to EAPI 1).
+
+  06 Jul 2008; Olivier Fisette <ribosome@gentoo.org> biopython-1.44.ebuild:
+  Stable on amd64.
+
+  30 Jan 2008; Olivier Fisette <ribosome@gentoo.org> biopython-1.42.ebuild,
+  biopython-1.44.ebuild:
+  Q.A.: Quoted variables.
+
+  30 Jan 2008; Olivier Fisette <ribosome@gentoo.org> -biopython-1.43.ebuild:
+  Removed buggy version (see bug #202602).
+
+*biopython-1.44 (30 Jan 2008)
+
+  30 Jan 2008; Olivier Fisette <ribosome@gentoo.org>
+  +files/biopython-1.44-sequtils-complement.patch, +biopython-1.44.ebuild:
+  Fixed six_frame_translations function. Thanks to JTRiley
+  <justin.t.riley@gmail.com> for his patch. (Fixes bug #202606.)
+
+*biopython-1.43 (17 May 2007)
+
+  17 May 2007; Olivier Fisette <ribosome@gentoo.org>
+  +files/biopython-1.43-buildkdtree.patch, -biopython-1.40b.ebuild,
+  +biopython-1.43.ebuild:
+  New upstream version. Ebuild clean-up. Pruned old version.
+
+  16 May 2007; Raúl Porcel <armin76@gentoo.org> biopython-1.42.ebuild:
+  alpha stable wrt #153774
+
+  05 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  biopython-1.42.ebuild:
+  stabled x86, bug #153774
+
+  03 Nov 2006; <blubb@gentoo.org> biopython-1.42.ebuild:
+  stable on amd64
+
+  03 Nov 2006; Olivier Fisette <ribosome@gentoo.org> -biopython-1.41.ebuild:
+  Pruned old version.
+
+  02 Nov 2006; nixnut <nixnut@gentoo.org> biopython-1.42.ebuild:
+  Stable on ppc wrt bug 153774
+
+  02 Nov 2006; Jason Wever <weeve@gentoo.org> biopython-1.42.ebuild:
+  Stable on SPARC wrt bug #153774.
+
+  14 Sep 2006; Olivier Fisette <ribosome@gentoo.org> metadata.xml:
+  Taking over maintainership.
+
+*biopython-1.42 (12 Sep 2006)
+
+  12 Sep 2006; Olivier Fisette <ribosome@gentoo.org> +biopython-1.42.ebuild:
+  New upstream version.
+
+  19 Jan 2006; George Shapovalov <george@gentoo.org> +biopython-1.41.ebuild:
+  new version, cleaned up install
+
+  30 Aug 2005; Olivier Fisette <ribosome@gentoo.org> -biopython-1.24.ebuild,
+  -biopython-1.30.ebuild:
+  Removed obsolete versions.
+
+  12 Jun 2005; Bryan Østergaard <kloeri@gentoo.org> biopython-1.40b.ebuild:
+  Stable on alpha.
+
+  21 May 2005; Jason Wever <weeve@gentoo.org> biopython-1.40b.ebuild:
+  Stable on SPARC.
+
+  13 May 2005; Olivier Fisette <ribosome@gentoo.org> -biopython-1.10.ebuild,
+  -biopython-1.21.ebuild, -biopython-1.23.ebuild, biopython-1.40b.ebuild:
+  Removed obsolete versions. Added 1.40b to x86.
+
+*biopython-1.40b (19 Feb 2005)
+
+  19 Feb 2005; Olivier Fisette <ribosome@gentoo.org>
+  +biopython-1.40b.ebuild:
+  New version. Should fix bug #82498.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*biopython-1.23 (23 Dec 2004)
+
+  23 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +biopython-1.10.ebuild, +biopython-1.21.ebuild, +biopython-1.23.ebuild,
+  +biopython-1.24.ebuild, +biopython-1.30.ebuild:
+  Moved from app-sci/biopython to sci-biology/biopython.
+
+  13 Dec 2004; Jason Wever <weeve@gentoo.org> biopython-1.24.ebuild:
+  Stable on sparc.
+
+*biopython-1.30 (07 Oct 2004)
+
+  07 Oct 2004; George Shapovalvo <george@gentoo.org> biopython-1.30.ebuild :
+  new version (#51833)
+  amd64 has problems with KDTree, will try to look into this more later
+
+  05 May 2004; Bryan Østergaard <kloeri@gentoo.org> biopython-1.24.ebuild:
+  Stable on alpha.
+
+  03 Apr 2004; Peter Bienstman <pbienst@gentoo.org> biopython-1.24.ebuild:
+  Marked stable on x86
+
+*biopython-1.24 (29 Feb 2004)
+
+  29 Feb 2004; Peter Bienstman <pbienst@gentoo.org> biopython-1.24.ebuild :
+  version bump
+
+*biopython-1.23 (30 Dec 2003)
+
+  29 Feb 2004; Peter Bienstman <pbienst@gentoo.org> biopython-1.23.ebuild :
+  marked stable on x86
+
+  30 Dec 2003; George Shapovalvo <george@gentoo.org> biopython-1.23.ebuild :
+  new version, reworked to use distutils. Thanks to 
+  Peter Bienstman <Peter.Bienstman@rug.ac.be> for an update (#35727)
+
+  02 Sep 2003; Alastair Tse <liquidx@gentoo.org> biopython-1.10.ebuild,
+  biopython-1.21.ebuild:
+  moved dev-python/Numeric to dev-python/numeric
+
+*biopython-1.21 (08 Aug 2003)
+
+  08 Aug 2003; George Shapovalov <george@gentoo.org> biopython-1.21.ebuild :
+  new version, added few docs (#25428)
+  thanks to Daniel Jaeggi <daniel@jaeggi.co.uk> for notification
+
+  04 Jul 2003; Alastair Tse <liquidx@gentoo.org> biopython-1.10.ebuild:
+  renamed reportlab dep
+
+*biopython-1.10 (18 Feb 2003)
+
+  18 Feb 2003; George Shapovalov <george@gentoo.org> ChangeLog, biopython-1.10.ebuild, files/digest-biopython-1.10 :
+  initial release (#11617)
+  Biopython - python module for Computational Moelcular Biology
+  ebuild submitted by Daniel Jaeggi <daniel@jaeggi.co.uk>

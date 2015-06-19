@@ -1,0 +1,889 @@
+# ChangeLog for dev-util/netbeans
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/netbeans/ChangeLog,v 1.182 2015/05/21 14:42:26 monsieurp Exp $
+
+  21 May 2015; Patrice Clement <monsieurp@gentoo.org> -netbeans-7.2.ebuild:
+  Remove old.
+
+  21 May 2015; Agostino Sarubbo <ago@gentoo.org> netbeans-8.0.2.ebuild:
+  Stable for x86, wrt bug #538862
+
+  21 May 2015; Agostino Sarubbo <ago@gentoo.org> netbeans-8.0.2.ebuild:
+  Stable for amd64, wrt bug #538862
+
+  04 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org> -netbeans-7.0.1-r2.ebuild,
+  -netbeans-7.1.1.ebuild, -netbeans-7.1.2.ebuild, -netbeans-7.3.ebuild,
+  -netbeans-7.4.ebuild, -netbeans-8.0.ebuild:
+  removed obsolete ebuilds
+
+  04 Feb 2015; Miroslav Šulc <fordfrog@gentoo.org> netbeans-8.0.2.ebuild:
+  restricted compilation to jdk7
+
+*netbeans-8.0.2 (07 Dec 2014)
+
+  07 Dec 2014; Miroslav Šulc <fordfrog@gentoo.org> +netbeans-8.0.2.ebuild:
+  bumped to version 8.0.2 in 8.0 slot
+
+*netbeans-8.0 (23 Mar 2014)
+
+  23 Mar 2014; Miroslav Šulc <fordfrog@gentoo.org> +netbeans-8.0.ebuild:
+  new ebuild for version 8.0
+
+*netbeans-7.4 (16 Oct 2013)
+
+  16 Oct 2013; Miroslav Šulc <fordfrog@gentoo.org> +netbeans-7.4.ebuild:
+  version bump
+
+*netbeans-7.3 (21 Feb 2013)
+
+  21 Feb 2013; Miroslav Šulc <fordfrog@gentoo.org> +netbeans-7.3.ebuild:
+  version bump
+
+  09 Dec 2012; <ago@gentoo.org> netbeans-7.2.ebuild:
+  Stable for x86, wrt bug #441170
+
+  09 Dec 2012; <ago@gentoo.org> netbeans-7.2.ebuild:
+  Stable for amd64, wrt bug #441170
+
+  07 Oct 2012; Kacper Kowalik <xarthisius@gentoo.org> metadata.xml:
+  Drop dev-tools from metadata.xml
+
+  22 Aug 2012; Miroslav Šulc <fordfrog@gentoo.org> netbeans-7.2.ebuild:
+  fixed emerge when bg locale is specified (bug #432172)
+
+  25 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -files/6.8/nbbuild_build.xml.patch,
+  -files/6.8/nbbuild_templates_projectized.xml.patch, -netbeans-6.8-r1.ebuild:
+  netbeans 6.8 has been moved to java-overlay because it is pretty old now
+
+*netbeans-7.2 (25 Jul 2012)
+
+  25 Jul 2012; Miroslav Šulc <fordfrog@gentoo.org> +netbeans-7.2.ebuild:
+  netbeans 7.2 release
+
+  30 May 2012; Johannes Huber <johu@gentoo.org> netbeans-7.1.2.ebuild:
+  Stable for x86, wrt bug #417799
+
+  28 May 2012; Agostino Sarubbo <ago@gentoo.org> netbeans-7.1.2.ebuild:
+  Stable for amd64, wrt bug #417799
+
+  07 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> netbeans-7.1.1.ebuild:
+  x86 stable wrt bug #414387
+
+  06 May 2012; Agostino Sarubbo <ago@gentoo.org> netbeans-7.1.1.ebuild:
+  Stable for amd64, wrt bug #414387
+
+*netbeans-7.1.2 (26 Apr 2012)
+
+  26 Apr 2012; Miroslav Šulc <fordfrog@gentoo.org> +netbeans-7.1.2.ebuild:
+  Version bump in 7.1 slot
+
+*netbeans-7.1.1 (05 Mar 2012)
+
+  05 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org> -netbeans-7.1-r1.ebuild,
+  +netbeans-7.1.1.ebuild:
+  Version bump
+
+*netbeans-7.1-r1 (06 Jan 2012)
+
+  06 Jan 2012; Miroslav Šulc <fordfrog@gentoo.org> +netbeans-7.1-r1.ebuild:
+  Version bump
+
+*netbeans-7.0.1-r2 (01 Nov 2011)
+
+  01 Nov 2011; Miroslav Šulc <fordfrog@gentoo.org> -netbeans-7.0.1-r1.ebuild,
+  +netbeans-7.0.1-r2.ebuild:
+  Added missing call to overriden pkg_setup (thanks sera)
+
+  24 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  -files/6.5/all-visualweb.insync.JspxSerializer.java.patch,
+  -netbeans-6.5-r4.ebuild, -files/6.5/nbbuild_build.xml.patch,
+  -netbeans-6.7.1.ebuild, -files/6.5/nbbuild_templates_projectized.xml.patch,
+  -netbeans-6.9-r2.ebuild, -files/6.7/nbbuild_build.xml.patch,
+  -netbeans-6.9-r3.ebuild, -files/6.7/nbbuild_templates_projectized.xml.patch,
+  -netbeans-6.9.1.ebuild, -files/6.9/cnd.model.services-build.xml.patch,
+  -netbeans-7.0.1.ebuild, -files/6.9/nbbuild_build.xml.patch,
+  -files/6.9/nbbuild_templates_projectized.xml.patch,
+  -files/6.9/netbeans-keychain.patch, -files/6.9/o.jruby.distro_disable.patch,
+  metadata.xml:
+  Moving obsolete ebuilds to java-overlay
+
+*netbeans-7.0.1-r1 (03 Oct 2011)
+
+  03 Oct 2011; Miroslav Šulc <fordfrog@gentoo.org> +netbeans-7.0.1-r1.ebuild:
+  Updated translation sources
+
+  16 Sep 2011; Miroslav Šulc <fordfrog@gentoo.org> netbeans-7.0.1.ebuild:
+  Building NetBeans is supported only with JDK 1.6
+
+  22 Aug 2011; Miroslav Šulc <fordfrog@gentoo.org> -netbeans-7.0.ebuild:
+  Removed obsolete version
+
+*netbeans-7.0.1 (05 Aug 2011)
+
+  05 Aug 2011; Miroslav Šulc <fordfrog@gentoo.org> +netbeans-7.0.1.ebuild:
+  Version bump
+
+*netbeans-7.0 (21 Apr 2011)
+
+  21 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org> -netbeans-7.0_rc2.ebuild,
+  +netbeans-7.0.ebuild:
+  Bumped to latest version and removed rc2
+
+*netbeans-7.0_rc2 (08 Apr 2011)
+
+  08 Apr 2011; Miroslav Šulc <fordfrog@gentoo.org> -netbeans-7.0_rc1.ebuild,
+  +netbeans-7.0_rc2.ebuild:
+  Bumped to 7.0 rc2
+
+*netbeans-7.0_rc1 (30 Mar 2011)
+
+  30 Mar 2011; Miroslav Šulc <fordfrog@gentoo.org> +netbeans-7.0_rc1.ebuild:
+  Added ebuild for netbeans 7.0 rc1. This release is split into separate
+  ebuilds for each cluster. Also the way how bundled jars are handled has
+  changed to be more transparent and easier to handle.
+
+  23 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org> netbeans-6.9.1.ebuild:
+  Fixed typo in support for custom patches
+
+  21 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/6.9/cnd.model.services-build.xml.patch, netbeans-6.9.1.ebuild:
+  Fixed bug #342647 (thanks to Andrew Haley <aph@redhat.com> for the fix)
+
+  12 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org> netbeans-6.9.1.ebuild:
+  just few minor fixes, also switched to EAPI=3
+
+  08 Aug 2010; Miroslav Šulc <fordfrog@gentoo.org> -files/6.9/netbeans.png,
+  netbeans-6.9.1.ebuild:
+  Updated list of bundled runtime jars
+
+  05 Aug 2010; Miroslav Šulc <fordfrog@gentoo.org> -files/6.9/netbeans.png,
+  netbeans-6.9.1.ebuild:
+  Moved netbeans icon from repository to distfiles
+
+*netbeans-6.9.1 (05 Aug 2010)
+
+  05 Aug 2010; Miroslav Šulc <fordfrog@gentoo.org> +netbeans-6.9.1.ebuild:
+  Version bump
+
+  19 Jul 2010; Miroslav Šulc <fordfrog@gentoo.org> netbeans-6.9-r3.ebuild:
+  Added support for including custom patches when building netbeans
+
+  17 Jul 2010; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/6.9/netbeans-keychain.patch, metadata.xml:
+  Added support for keychain in netbeans
+
+  17 Jul 2010; Miroslav Šulc <fordfrog@gentoo.org>
+  -files/5.5.1/jdbcstorage-build.xml-comments.patch,
+  -files/5.5.1/jspparser-build.xml.patch,
+  -files/5.5.1/mdrant-build.xml-comments.patch, -files/5.5.1/startscript.sh,
+  -files/netbeans.desktop, -files/netbeans.png, -files/startscript.sh,
+  metadata.xml:
+  removed some really old versions of netbeans (3.6 and 5.5.1) and redundant
+  version (6.7)
+
+  16 Jul 2010; Miroslav Šulc <fordfrog@gentoo.org> netbeans-6.9-r2.ebuild:
+  Removed error message when no class files are found (bug #328357)
+
+*netbeans-6.9-r2 (08 Jul 2010)
+
+  08 Jul 2010; Miroslav Šulc <fordfrog@gentoo.org> -netbeans-6.9-r1.ebuild,
+  +netbeans-6.9-r2.ebuild:
+  fixed netbeans 6.9 icon issues
+
+*netbeans-6.9-r1 (08 Jul 2010)
+
+  08 Jul 2010; Miroslav Šulc <fordfrog@gentoo.org> +files/6.9/netbeans.png,
+  -netbeans-6.9.ebuild, +netbeans-6.9-r1.ebuild:
+  Fixed bug #325217 which caused javadoc could not be built, also added high
+  resolution icon
+
+  07 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  netbeans-6.8-r1.ebuild:
+  stable x86, bug 318151
+
+  30 Jun 2010; Miroslav Šulc <fordfrog@gentoo.org> netbeans-6.9.ebuild:
+  Added ~x86 back to netbeans-6.9
+
+  29 Jun 2010; Christoph Mende <angelos@gentoo.org> netbeans-6.8-r1.ebuild:
+  Stable on amd64 wrt bug #318151
+
+*netbeans-6.9 (22 Jun 2010)
+
+  22 Jun 2010; Miroslav Šulc <fordfrog@gentoo.org>
+  files/6.9/nbbuild_build.xml.patch, -netbeans-6.9_beta-r1.ebuild,
+  files/6.9/nbbuild_templates_projectized.xml.patch,
+  +files/6.9/o.jruby.distro_disable.patch, +netbeans-6.9.ebuild:
+  Added ebuild for Netbeans 6.9 final release
+
+  22 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  netbeans-6.5-r4.ebuild, netbeans-6.7.ebuild, netbeans-6.7.1.ebuild,
+  netbeans-6.8-r1.ebuild, netbeans-6.9_beta-r1.ebuild:
+  dev-util/subversion renamed to dev-vcs/subversion.
+
+*netbeans-6.9_beta-r1 (26 May 2010)
+
+  26 May 2010; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-6.9_beta.ebuild, +netbeans-6.9_beta-r1.ebuild:
+  fixed problem with ant (bug #319165)
+
+*netbeans-6.9_beta (28 Apr 2010)
+
+  28 Apr 2010; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/6.9/nbbuild_build.xml.patch, +netbeans-6.9_beta.ebuild,
+  +files/6.9/nbbuild_templates_projectized.xml.patch:
+  Added Netbeans 6.9 beta release
+
+  09 Mar 2010; Jonathan Callen <abcd@gentoo.org> netbeans-6.5-r4.ebuild,
+  netbeans-6.7.ebuild, netbeans-6.7.1.ebuild, netbeans-6.8-r1.ebuild:
+  QA: When not using an absolute path, you MUST NOT use a file extension
+  (.png, .svg, or .xpm) on the icon name for make_desktop_entry
+
+  24 Jan 2010; Petteri Räty <betelgeuse@gentoo.org> netbeans-6.8-r1.ebuild:
+  Filter ecj-3.5
+
+  28 Dec 2009; Petteri Räty <betelgeuse@gentoo.org>
+  netbeans-5.5.1-r1.ebuild:
+  Filter new slots of ecj-3.5 reported in bug #295678.
+
+*netbeans-6.8-r1 (22 Dec 2009)
+
+  22 Dec 2009; Miroslav Šulc <fordfrog@gentoo.org> -netbeans-6.8.ebuild,
+  +netbeans-6.8-r1.ebuild:
+  Fixed bug #297749
+
+*netbeans-6.8 (10 Dec 2009)
+
+  10 Dec 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-6.8_rc2.ebuild, +netbeans-6.8.ebuild:
+  Version bump
+
+*netbeans-6.8_rc2 (04 Dec 2009)
+
+  04 Dec 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-6.8_rc1.ebuild, +netbeans-6.8_rc2.ebuild:
+  Version bump
+
+*netbeans-6.8_rc1 (28 Nov 2009)
+
+  28 Nov 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  -files/5.5-r2/jdbcstorage-build.xml-comments.patch,
+  -files/5.5-r2/jspparser-build.xml.patch,
+  -files/5.5-r2/mdrant-build.xml-comments.patch,
+  -files/5.5-r2/startscript.sh,
+  files/6.8/nbbuild_templates_projectized.xml.patch,
+  -netbeans-6.8_beta-r1.ebuild, +netbeans-6.8_rc1.ebuild:
+  Version bump, also removed old unused files
+
+*netbeans-6.8_beta-r1 (25 Oct 2009)
+
+  25 Oct 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-6.8_beta.ebuild, +netbeans-6.8_beta-r1.ebuild:
+  Fixed issue https://bugs.gentoo.org/show_bug.cgi?id=290468
+
+*netbeans-6.8_beta (24 Oct 2009)
+
+  24 Oct 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-6.8_alpha2.ebuild, +netbeans-6.8_beta.ebuild:
+  Version bump
+
+*netbeans-6.8_alpha2 (11 Oct 2009)
+
+  11 Oct 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/6.8/nbbuild_build.xml.patch, +netbeans-6.8_alpha2.ebuild,
+  +files/6.8/nbbuild_templates_projectized.xml.patch:
+  added netbeans 6.8 milestone 2 ebuild. though this ebuild will not be
+  stabilized, i decided to put it into main tree because it is pretty stable
+  and solves some issues netbeans 6.7* has so it might help netbeans users
+  to overcome issues of netbeans 6.7*
+
+*netbeans-6.7.1 (03 Aug 2009)
+
+  03 Aug 2009; Miroslav Šulc <fordfrog@gentoo.org> +netbeans-6.7.1.ebuild:
+  Version bump. I did not add JavaFX support as part of the project is
+  closed source and it seems it is not possible to build it. Anyway,
+  netbeans users can use update center to get JavaFX module.
+
+*netbeans-6.7 (29 Jun 2009)
+
+  29 Jun 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-6.7_rc3.ebuild, +netbeans-6.7.ebuild:
+  Version bump
+
+*netbeans-6.7_rc3 (17 Jun 2009)
+
+  17 Jun 2009; <fordfrog@gentoo.org> -files/6.7/autoupdate.ui.fix.patch,
+  +netbeans-6.7_rc3.ebuild, -netbeans-6.7_rc2_p1.ebuild:
+  Version bump
+
+*netbeans-6.7_rc2_p1 (09 Jun 2009)
+
+  09 Jun 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/6.7/autoupdate.ui.fix.patch, -netbeans-6.7_rc2.ebuild,
+  +netbeans-6.7_rc2_p1.ebuild:
+  Added patch that fixes problems with activate/deactivate buttons being
+  disabled in plugins manager, more info at
+  http://www.netbeans.org/issues/show_bug.cgi?id=165841
+
+*netbeans-6.7_rc2 (05 Jun 2009)
+
+  05 Jun 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-6.7_rc1.ebuild, +netbeans-6.7_rc2.ebuild:
+  Version bump
+
+  02 Jun 2009; Miroslav Šulc <fordfrog@gentoo.org> netbeans-6.7_rc1.ebuild:
+  Fixed compilation error when jvyamlb.jar was missing
+
+*netbeans-6.7_rc1 (01 Jun 2009)
+
+  01 Jun 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-6.7_beta-r7.ebuild, +netbeans-6.7_rc1.ebuild:
+  Bump to Netbeans 6.7 RC1
+
+*netbeans-6.7_beta-r7 (23 May 2009)
+
+  23 May 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-6.7_beta-r6.ebuild, +netbeans-6.7_beta-r7.ebuild:
+  Unbundled dev-java/jna, dev-java/jna-posix and dev-java/joni. bytelist is
+  now bundled again because with bytelist-1.0.2 netbeans cannot compile
+  because dev-java/jcodings is not on classpath, and restricting to
+  bytelist-1.0 would mean dev-java/jruby-1.2.0 would be blocked.
+
+  20 May 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-6.7_beta-r6.ebuild:
+  Fixed bug #270368 (problem with installation of php cluster when installed
+  javacup does not contain CUPTask ant task)
+
+  19 May 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-6.7_beta-r6.ebuild:
+  Added javacup to ANT_TASKS when building php module
+
+*netbeans-6.7_beta-r6 (16 May 2009)
+
+  16 May 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-6.7_beta-r5.ebuild, +netbeans-6.7_beta-r6.ebuild:
+  Fixed permissions on dorun.sh
+
+*netbeans-6.7_beta-r5 (13 May 2009)
+
+  13 May 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-6.7_beta-r4.ebuild, +netbeans-6.7_beta-r5.ebuild:
+  Added dependency on dev-java/glassfish-deployment-api and updated to
+  latest dev-util/jay USE flag change
+
+  08 May 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-6.7_beta-r4.ebuild:
+  Fixed bug #268969 (thx Martin von Gagern <Martin.vGagern@gmx.net> for
+  testing the solution)
+
+*netbeans-6.7_beta-r4 (03 May 2009)
+
+  03 May 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-6.7_beta-r3.ebuild, +netbeans-6.7_beta-r4.ebuild:
+  Fixed bug #268508 (broken symlink) and unbundled dev-java/jsch
+
+*netbeans-6.7_beta-r3 (03 May 2009)
+
+  03 May 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-6.7_beta-r2.ebuild, +netbeans-6.7_beta-r3.ebuild:
+  Unbundled yydebug.jar and added comments to not-yet-unbundled jars
+
+*netbeans-6.7_beta-r2 (03 May 2009)
+
+  03 May 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-6.7_beta-r1.ebuild, +netbeans-6.7_beta-r2.ebuild:
+  Fixed problem with freezing when openning css file
+
+  02 May 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-6.7_beta-r1.ebuild:
+  Fixed and improved documentation building
+
+  02 May 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  netbeans-6.7_beta-r1.ebuild:
+  Fixed problem with compilation of netbeans locales, also updated locales
+  to the latest sources
+
+*netbeans-6.7_beta-r1 (02 May 2009)
+
+  02 May 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  -netbeans-6.7_beta.ebuild, +netbeans-6.7_beta-r1.ebuild:
+  Fixed problem with missing jars
+
+*netbeans-6.7_beta (02 May 2009)
+
+  02 May 2009; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/6.7/nbbuild_build.xml.patch, +netbeans-6.7_beta.ebuild,
+  +files/6.7/nbbuild_templates_projectized.xml.patch:
+  Added netbeans 6.7 beta ebuild
+
+  29 Mar 2009; Petteri Räty <betelgeuse@gentoo.org>
+  netbeans-5.5.1-r1.ebuild, netbeans-6.5-r4.ebuild:
+  Migrate to EAPI 2 for bug #239835.
+
+  24 Mar 2009; Petteri Räty <betelgeuse@gentoo.org>
+  netbeans-5.5.1-r1.ebuild:
+  Add SLOT dep for antlr.
+
+  24 Mar 2009; Petteri Räty <betelgeuse@gentoo.org> -netbeans-5.5.1.ebuild:
+  Remove old revision.
+
+*netbeans-6.5-r4 (17 Dec 2008)
+
+  17 Dec 2008; Miroslav Šulc <fordfrog@gentoo.org> -netbeans-6.5-r3.ebuild,
+  +netbeans-6.5-r4.ebuild:
+  Fixed bug #251270 (inclusion of binary files for SunOS and Mac)
+
+*netbeans-6.5-r3 (05 Dec 2008)
+
+  05 Dec 2008; Miroslav Šulc <fordfrog@gentoo.org> -netbeans-6.5-r2.ebuild,
+  +netbeans-6.5-r3.ebuild:
+  Applied patch from Markus Meier <maekke@gentoo.org>. Building of several
+  localizations is now performed in single run. Fixed bug #249839 (problem
+  with web-service client generation).
+
+  04 Dec 2008; Miroslav Šulc <fordfrog@gentoo.org> netbeans-6.5-r2.ebuild:
+  Another fix of the check of what modules are missing in netbeans modules
+
+  04 Dec 2008; Miroslav Šulc <fordfrog@gentoo.org> netbeans-6.5-r2.ebuild:
+  Fixed bug in checking of what netbeans modules need to be added
+
+  04 Dec 2008; Miroslav Šulc <fordfrog@gentoo.org> netbeans-6.5-r2.ebuild:
+  Rewritten checking of needed and not specified modules so it should be
+  easier for users to add the missing modules
+
+  04 Dec 2008; Miroslav Šulc <fordfrog@gentoo.org> netbeans-6.5-r2.ebuild:
+  Filtered all ecj compilers
+
+*netbeans-6.5-r2 (03 Dec 2008)
+
+  03 Dec 2008; Miroslav Šulc <fordfrog@gentoo.org> -netbeans-6.5-r1.ebuild,
+  +netbeans-6.5-r2.ebuild:
+  Fixed runtime linkage to java-ws-tools-2
+
+  01 Dec 2008; Miroslav Šulc <fordfrog@gentoo.org> netbeans-6.5-r1.ebuild:
+  Netbeans still depends on com.sun packages so added dependency on
+  java-virtuals/jdk-with-com-sun.
+
+  30 Nov 2008; Miroslav Šulc <fordfrog@gentoo.org> netbeans-6.5-r1.ebuild:
+  Fixed default NETBEANS_MODULES dependency (bug #249204).
+
+  26 Nov 2008; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/6.5/all-visualweb.insync.JspxSerializer.java.patch,
+  netbeans-6.5-r1.ebuild:
+  Fixed bug #248904, also fixed problem with visualweb not being installed
+
+  23 Nov 2008; Miroslav Šulc <fordfrog@gentoo.org> netbeans-6.5-r1.ebuild:
+  Fixed issues introduced by previous update
+
+  23 Nov 2008; Miroslav Šulc <fordfrog@gentoo.org> netbeans-6.5-r1.ebuild:
+  Fixed issues reported by Peter Volkov <pva@gentoo.org> and Jeremy Olexa
+  <darkside@gentoo.org> in gentoo-dev@lists.gentoo.org. Also fixed
+  compilation in case 'nb' module is not specified.
+
+*netbeans-6.5-r1 (22 Nov 2008)
+
+  22 Nov 2008; Miroslav Šulc <fordfrog@gentoo.org> -netbeans-6.5.ebuild,
+  +netbeans-6.5-r1.ebuild:
+  netbeans compiles fine even with JDK 1.6 so I dropped the restriction on
+  JDK, also commons-fileupload linking fixed
+
+*netbeans-6.5 (21 Nov 2008)
+
+  21 Nov 2008; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/6.5/nbbuild_build.xml.patch,
+  +files/6.5/nbbuild_templates_projectized.xml.patch, metadata.xml,
+  +netbeans-6.5.ebuild:
+  Version bump. This ebuild does not contain 'ruby' support but it can be
+  downloaded from netbeans update center.
+
+  13 Sep 2008; Petteri Räty <betelgeuse@gentoo.org>
+  netbeans-5.5.1-r1.ebuild:
+  Use JAVA_PKG_NV_DEPEND to work around bug #237580 (java-config not
+  supporting slotted virtuals).
+
+  12 Sep 2008; Petteri Räty <betelgeuse@gentoo.org>
+  netbeans-5.5.1-r1.ebuild:
+  Add slot dep for jdk-with-com-sun.
+
+  30 May 2008; Kenneth Prugh <ken69267@gentoo.org> netbeans-5.5.1-r1.ebuild:
+  amd64 stable, bug #220223
+
+  30 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  netbeans-5.5.1-r1.ebuild:
+  stable x86, bug 220223
+
+  29 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  netbeans-5.5.1-r1.ebuild:
+  exchange USE=c++ with USE=cxx
+
+  05 May 2008; Petteri Räty <betelgeuse@gentoo.org>
+  netbeans-5.5.1-r1.ebuild:
+  java-virtuals/sun-jdk is now java-virtuals/jdk-with-com-sun
+
+  04 May 2008; Petteri Räty <betelgeuse@gentoo.org> files/netbeans.desktop:
+  Remove extension from the icon to follow the specification.
+
+  04 May 2008; Petteri Räty <betelgeuse@gentoo.org>
+  netbeans-5.5.1-r1.ebuild:
+  Doesn't build with ibm-jdk-bin so require a sun-jdk. Reported in bug #220197.
+
+*netbeans-5.5.1-r1 (22 Mar 2008)
+
+  22 Mar 2008; William L. Thomson Jr. <wltjr@gentoo.org>
+  -netbeans-5.5-r6.ebuild, +netbeans-5.5.1-r1.ebuild:
+  Switched to java-virtuals/servlet-api, EAPI=1 slots, quoted vars, filtered
+  ecj-3.3, and removed unused stable version
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> netbeans-5.5-r6.ebuild,
+  netbeans-5.5.1.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  11 Jan 2008; Vlastimil Babka <caster@gentoo.org> netbeans-5.5-r6.ebuild,
+  netbeans-5.5.1.ebuild:
+  Stable on amd64, bug #204625. Also apply WANT_ANT_TASKS fix to 5.5-r6.
+
+  07 Jan 2008; Markus Meier <maekke@gentoo.org> netbeans-5.5.1.ebuild:
+  x86 stable, bug #204625
+
+  07 Jan 2008; Miroslav Šulc <fordfrog@gentoo.org> netbeans-5.5.1.ebuild:
+  Added missing ant-trax ant task
+
+  06 Jan 2008; Petteri Räty <betelgeuse@gentoo.org> netbeans-5.5.1.ebuild:
+  Add WANT_ANT_TASKS for ant-nodeps because otherwise netbeans fails to build
+  with JAVA_PKG_STRICT.
+
+  02 Jan 2008; Vlastimil Babka <caster@gentoo.org> netbeans-5.5-r6.ebuild,
+  netbeans-5.5.1.ebuild:
+  Remove direct dependencies to dev-java/ant-tasks
+
+*netbeans-5.5.1 (25 Aug 2007)
+
+  25 Aug 2007; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/5.5.1/jdbcstorage-build.xml-comments.patch,
+  +files/5.5.1/jspparser-build.xml.patch,
+  +files/5.5.1/mdrant-build.xml-comments.patch, +files/5.5.1/startscript.sh,
+  +netbeans-5.5.1.ebuild:
+  Version bump. Added support for C/C++ Pack, based on bug #162914,
+  contributed by Sergey Belyashov <Sergey.Belyashov@gmail.com>.
+
+  19 Aug 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  netbeans-5.5-r6.ebuild:
+  amd64 stable, bug #187681.
+
+  15 Aug 2007; Christian Faulhammer <opfer@gentoo.org>
+  netbeans-5.5-r6.ebuild:
+  stable x86, bug 187681
+
+  11 Jun 2007; Petteri Räty <betelgeuse@gentoo.org> netbeans-5.5-r6.ebuild:
+  Remove build requirement on sun-jmx as Netbeans builds just fine with the
+  jar deleted.
+
+  23 May 2007; Diego Pettenò <flameeyes@gentoo.org> netbeans-5.5-r6.ebuild:
+  Add ~x86-fbsd keyword. Bug #176906.
+
+  09 May 2007; Vlastimil Babka <caster@gentoo.org> netbeans-5.5-r6.ebuild:
+  Update to changed xml-xmlbeans version.
+
+  06 May 2007; Miroslav Šulc <fordfrog@gentoo.org> netbeans-5.5-r6.ebuild:
+  Fixed how icon and desktop entry is made
+
+  04 May 2007; Vlastimil Babka <caster@gentoo.org> netbeans-5.5-r6.ebuild:
+  Micromanage ant-tasks dep to prevent bug #177079.
+
+  04 May 2007; Miroslav Šulc <fordfrog@gentoo.org> netbeans-5.5-r6.ebuild:
+  Updated because of jaxp changes
+
+*netbeans-5.5-r6 (04 May 2007)
+
+  04 May 2007; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/5.5-r2/jspparser-build.xml.patch, -netbeans-5.5-r4.ebuild,
+  -netbeans-5.5-r5.ebuild, +netbeans-5.5-r6.ebuild:
+  Unbundled more JARs and corrected dependencies according to new eclass patch
+
+  03 May 2007; Petteri Räty <betelgeuse@gentoo.org> netbeans-5.5-r5.ebuild:
+  Pull in >=dev-java/ant-1.7.0 because the ebuild uses the new layout.
+
+*netbeans-5.5-r5 (02 May 2007)
+
+  02 May 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +netbeans-5.5-r5.ebuild:
+  Adjust ant symlinks to point to /usr/share/ant instead of /usr/share/ant-core.
+
+  06 Apr 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -files/antbuild.xml.patch, -files/emptyunscramble.xsl,
+  -files/nbbuild.patch, -files/netbeans, -files/netbeans-KDE.desktop,
+  -netbeans-3.5.1.ebuild:
+  Removed older version, along with old files, some orphaned by previous removals
+
+  06 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  netbeans-3.6-r1.ebuild:
+  ppc stable, bug #102099
+
+  18 Mar 2007; Steve Dibb <beandog@gentoo.org> netbeans-3.6-r1.ebuild:
+  amd64 stable, bug 102099
+
+  10 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  netbeans-3.6-r1.ebuild:
+  stable x86, bug 102099
+
+  08 Mar 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -netbeans-3.4.1.ebuild:
+  Removed 3.4.1 it's quite old and there is a newer stable version, that is
+  also quite old.
+
+*netbeans-5.5-r4 (28 Jan 2007)
+
+  28 Jan 2007; Miroslav Šulc <fordfrog@gentoo.org> -netbeans-5.5-r3.ebuild,
+  +netbeans-5.5-r4.ebuild:
+  Corrected bug #164256.
+
+*netbeans-5.5-r3 (28 Jan 2007)
+
+  28 Jan 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -netbeans-5.5-r2.ebuild, +netbeans-5.5-r3.ebuild:
+  Added a little sed to fix paths in bin/netbeans script to address bug# 163483
+
+  27 Jan 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -files/5.5/deps-txt.patch,
+  -files/5.5/mdr_extras_jdbcstorage_build.xml.patch,
+  -files/5.5/jdbcstorage-build.xml-comments.patch,
+  -files/5.5/mdr_extras_mdrant_build.xml.patch, -files/4.0/startscript.sh,
+  -files/5.5/mdrant-build.xml-comments.patch, -files/5.5/modules-txt.patch,
+  -files/5.5/public-packages-txt.patch, -files/5.5/startscript.sh,
+  -netbeans-4.0-r2.ebuild, -netbeans-5.5.ebuild, -netbeans-5.5-r1.ebuild:
+  House cleaning, removed older versions
+
+  23 Jan 2007; Miroslav Šulc <fordfrog@gentoo.org> netbeans-5.5-r2.ebuild:
+  Corrected dependency on prefuse slot 2006, reported by Alistair Bush
+  <alistair.bush@gmail.com>.
+
+*netbeans-5.5-r2 (21 Jan 2007)
+
+  21 Jan 2007; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/5.5-r2/jdbcstorage-build.xml-comments.patch,
+  +files/5.5-r2/mdrant-build.xml-comments.patch,
+  +files/5.5-r2/startscript.sh, +netbeans-5.5-r2.ebuild:
+  Removed legacy stuff and cleaned code, javadoc is now generated from the
+  sources instead of being downloaded, license changed to CDDL, dropped
+  dependency on tomcat, checked and corrected all dependencies, more bundled
+  jars replaced with system jars, config files moved to etc so they are
+  protected now against rewrite on upgrades, removed legacy stuff from
+  launcher script.
+
+  16 Jan 2007; Vlastimil Babka <caster@gentoo.org> netbeans-5.5.ebuild,
+  netbeans-5.5-r1.ebuild:
+  Raised jmi-interface dependency to compatible revision. Fixes bug #160829 by
+  Mikhail V. Vorozhtsov <mikhail.vorozhtsov@gmail.com>.
+
+  09 Jan 2007; Vlastimil Babka <caster@gentoo.org> netbeans-4.0-r2.ebuild,
+  netbeans-5.5.ebuild, netbeans-5.5-r1.ebuild:
+  Convert einfo to elog where appropriate.
+
+  08 Jan 2007; Petteri Räty <betelgeuse@gentoo.org> netbeans-5.5-r1.ebuild:
+  ecj-3.1 and ecj-3.2 fail to compile Netbeans
+
+  09 Dec 2006; Diego Pettenò <flameeyes@gentoo.org> netbeans-5.5-r1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  06 Dec 2006; Petteri Räty <betelgeuse@gentoo.org>
+  +files/5.5/jdbcstorage-build.xml-comments.patch,
+  +files/5.5/mdrant-build.xml-comments.patch, netbeans-5.5-r1.ebuild:
+  Added patches for malformed build.xml files.
+
+  05 Dec 2006; Vlastimil Babka <caster@gentoo.org> netbeans-5.5-r1.ebuild:
+  Fixed jsch dependency to >=dev-java/jsch-0.1.24 to fix bug #157208.
+
+  05 Dec 2006; Vlastimil Babka <caster@gentoo.org> netbeans-5.5-r1.ebuild:
+  Fix jdk/jre dep atoms wrt bug #157197.
+
+  30 Nov 2006; Vlastimil Babka <caster@gentoo.org> netbeans-4.0-r2.ebuild:
+  Update xerces dep for upcoming 2.6 slotmove.
+
+*netbeans-5.5 (04 Nov 2006)
+
+  04 Nov 2006; William L. Thomson Jr. <wltjr@gentoo.org>
+  +files/5.5/deps-txt.patch, +files/5.5/files-layout-txt.patch,
+  +files/5.5/mdr_extras_jdbcstorage_build.xml.patch,
+  +files/5.5/mdr_extras_mdrant_build.xml.patch,
+  +files/5.5/modules-txt.patch, +files/5.5/public-packages-txt.patch,
+  +files/5.5/startscript.sh, +netbeans-5.5.ebuild:
+  Initial ebuild for Netbeans 5.5. Contributions from ali_bush & fordfrog on
+  runtime issues & making packages for deps. Still uses some bundled stuff,
+  but uses as much of the system resources as feasible.
+
+  05 Oct 2006; Aron Griffis <agriffis@gentoo.org> netbeans-3.6-r1.ebuild:
+  Mark 3.6-r1 stable on ia64
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> netbeans-3.4.1.ebuild,
+  netbeans-3.5.1.ebuild, netbeans-3.6-r1.ebuild:
+  Dropping sparc keywords, see #96229
+
+  21 Aug 2006; Daniel Gryniewicz <dang@gentoo.org> netbeans-3.5.1.ebuild:
+  Marked stable on amd64 for bug #144446
+
+  07 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org> netbeans-3.4.1.ebuild,
+  netbeans-3.5.1.ebuild, netbeans-3.6-r1.ebuild:
+  Dropped alpha, due to alpha not having stable JRE/JDK.
+
+  11 Dec 2005; Petteri Räty <betelgeuse@gentoo.org> netbeans-4.0-r2.ebuild:
+  Loosened xerces dependency (bug #115158).
+
+  17 Aug 2005; Petteri Räty <betelgeuse@gentoo.org> netbeans-4.0-r2.ebuild:
+  Fixed a problem where an old junit emerge could cause an access violation. 
+  Thanks to obsidian-studios for reporting the error.
+
+*netbeans-4.0-r2 (19 Jul 2005)
+
+  19 Jul 2005; Thomas Matthijs <axxo@gentoo.org> +files/4.0/startscript.sh,
+  +files/emptyunscramble.xsl, -netbeans-4.0-r1.ebuild,
+  +netbeans-4.0-r2.ebuild:
+  Commiting for Petteri Räty, changes by him: Version bump because of Bug
+  #98603, Bug #96646 and Bug 99545. This version now depends on the corrected
+  version of jmi-interface and doesn't fail with access violations if the
+  system jars are dated older then the files in the Netbeans tarball. Also
+  more information messages about the progress of the ebuild.
+
+  19 Jun 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  -netbeans-4.0.ebuild:
+  Removing 4.0 in favor of 4.0-r1, it is a broken ebuild now
+
+  19 Jun 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  netbeans-3.4.1.ebuild, netbeans-3.5.1.ebuild, netbeans-3.6-r1.ebuild:
+  Removing ${PV} from the descriptions to prevent web descriptions from breaking
+  Resolves bug #54457
+
+*netbeans-4.0-r1 (04 Jun 2005)
+
+  04 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org> netbeans-4.0.ebuild,
+  +netbeans-4.0-r1.ebuild:
+  Updated reference to servletapi-2.3, we dont install a versioned servletapi
+  jar any longer.
+
+  24 May 2005; Saleem Abdulrasool <compnerd@gentoo.org> netbeans-4.0.ebuild:
+  Adding patch to please the SUN JDKs.  Resolves Bug #93617.  Patch from
+  Betelgeuse.
+
+  23 May 2005; Jan Brinkmann <luckyduck@gentoo.org> netbeans-4.0.ebuild:
+  added ~amd64 to KEYWORDS
+
+  17 May 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/antbuild.xml.patch, +files/nbbuild.patch, +files/startscript.sh:
+  Adding missing files.  Also closes bug #80877.
+
+*netbeans-4.0 (17 May 2005)
+
+  17 May 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  +netbeans-4.0.ebuild:
+  Adding Netbeans 4.0 to tree.  Resolves Bug #68734.  Modified ebuild from
+  Betelgeuse.
+
+  21 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> netbeans-3.5.1.ebuild:
+  Stable on ppc.
+
+  20 Feb 2005; Aron Griffis <agriffis@gentoo.org> netbeans-3.6-r1.ebuild:
+  add ~ia64 66762
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  09 Jun 2004; Aron Griffis <agriffis@gentoo.org> netbeans-3.4.1.ebuild,
+  netbeans-3.5.1.ebuild, netbeans-3.6-r1.ebuild:
+  Fix use invocation
+
+  08 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> netbeans-3.3.2.ebuild,
+  netbeans-3.4.ebuild, netbeans-3.5.ebuild, netbeans-3.6.ebuild:
+  clean older ebuilds
+
+  04 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> netbeans-3.5.1.ebuild:
+  Stable on alpha.
+
+*netbeans-3.6-r1 (26 Apr 2004)
+
+  26 Apr 2004; Brandon Low <lostlogic@gentoo.org> +netbeans-3.6-r1.ebuild:
+  Fix major bugs in ebuild wherein it was not installing important components of
+  netbeans
+
+*netbeans-3.6 (22 Apr 2004)
+
+  22 Apr 2004; Martin Holzer <mholzer@gentoo.org> netbeans-3.6.ebuild:
+  Verison bumped. Closes 48202
+
+  15 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> netbeans-3.5.1.ebuild:
+  marked ~amd64
+
+  23 Feb 2004; Sven Blumenstein <bazik@gentoo.org> netbeans-3.5.1.ebuild:
+  Stable on sparc.
+
+  07 Jan 2004; Brandon Low <lostlogic@gentoo.org> netbeans-3.5.1.ebuild:
+  Mark stable on x86
+
+*netbeans-3.5.1 (04 Aug 2003)
+
+  04 Aug 2003; Brandon Low <lostlogic@gentoo.org> netbeans-3.5.1.ebuild:
+  Bump
+
+*netbeans-3.5 (14 Jun 2003)
+
+  14 Jun 2003; Brandon Low <lostlogic@gentoo.org> netbeans-3.5.ebuild:
+  Bump, adjust ebuild for slightly higher goodness level.
+
+  26 May 2003; Dylan Carlson <absinthe@gentoo.org> netbeans-3.3.2.ebuild,
+  netbeans-3.4.1.ebuild, netbeans-3.4.ebuild, files/netbeans:
+  Fixed license for J2EE, and in 3.4.1 added a /usr/bin run script to close
+  #18928. Doing a symlink was not a good solution as many people symlink /opt to
+  other places, and dosym would fail under that circumstance.
+
+*netbeans-3.4.1 (23 Jan 2003)
+
+  15 Feb 2003; Mark Guertin <gerk@gentoo.org> netbeans-3.4.1.ebuild :
+  set ppc in keywords
+
+  23 Jan 2003; Matthew Kennedy <mkennedy@gentoo.org>
+  netbeans-3.4.1.ebuild, file/digest-netbeans-3.4.1, ChangeLog:
+
+  Minor version bump (thanks to Douglas Pollock <pollockd@magma.ca>,
+  bug #14395). Ebuild and ChangeLog clean up.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc
+  keywords
+ 
+*netbeans-3.4 (14 Sep 2002)
+
+  14 Sep 2002; Matthew Kennedy <mkennedy@gentoo.org>
+  netbeans-3.4.ebuild, files/digest-netbeans-3.4 :
+
+  New major release. Resolves bug 7199 and 7017. Updated ebuild
+  contributed by Douglas Pollock <desudation@yahoo.ca>. Added support
+  for KDE menus. Updated desktop icon to new dark blue logo.
+
+*netbeans-3.3.2 ( 28 Jun 2002 )
+
+  28 Jun 2002; George Shapovalov <george@gentoo.org>
+  netbeans-3.3.2.ebuild, files/digest-3.3.2 :
+
+  new version released, updated ebuild to comply with present requirements;
+  (updated versions were submitted by Tejaswi Kasturi <tej@kasturi.org>
+  and Heiko Helmle <helman@gmx.net>).
+  Added few licenses under which parts of the package are released, still 
+  need to add few more.
+  I could not fetch sources from a few locations, however Tejaswi claims 
+  he never had difficulty fetching them. Therefore I am committing and masking 
+  new version. Will unmask when licenses are all added and SRC_URI checked.
+
+*netbeans-3.3.1 ( 6 Feb 2002 )
+
+  6 Feb 2002; Karl Trygve Kalleberg <karltk@gentoo.org>
+  files/netbeans.desktop files/netbeans.png :
+ 
+  Minor fix in netbeans.desktop so that NetBeans integrates properly with 
+  GNOME now.
+
+*netbeans-3.3.1 ( 5 Feb 2002 )
+
+  5 Feb 2002; Karl Trygve Kalleberg <karltk@gentoo.org>
+  netbeans-3.3.1.ebuild, files/digest-3.3.1 files/netbeans.desktop
+  files/netbeans.png : 
+ 
+  NetBeans is an Open Source Java IDE. 
+
+  Ebuild contributed by Matthew Kennedy

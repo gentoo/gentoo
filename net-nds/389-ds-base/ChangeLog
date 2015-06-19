@@ -1,0 +1,160 @@
+# ChangeLog for net-nds/389-ds-base
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-nds/389-ds-base/ChangeLog,v 1.30 2015/03/21 21:46:42 jlec Exp $
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> 389-ds-base-1.3.0.2-r1.ebuild:
+  use dosbin instead of exeinto /usr/sbin/ && doexe
+
+  02 Nov 2014; Sven Vermeulen <swift@gentoo.org> 389-ds-base-1.3.0.2-r1.ebuild:
+  Remove sec-policy/selinux-* dependency from DEPEND but keep in RDEPEND (bug
+  #527698)
+
+  26 Jun 2014; Michael Palimaka <kensington@gentoo.org>
+  -389-ds-base-1.3.0.2.ebuild, -files/389-ds-base-1.2.11.16-cve-2012-4450.patch,
+  -files/selinux.patch:
+  Remove old.
+
+  22 Jun 2014; Fabio Erculiani <lxnay@gentoo.org> metadata.xml:
+  reset to maintainer-needed@
+
+  04 Mar 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  389-ds-base-1.3.0.2.ebuild, 389-ds-base-1.3.0.2-r1.ebuild:
+  Add subslot dependency on dev-libs/icu
+
+*389-ds-base-1.3.0.2-r1 (22 Aug 2013)
+
+  22 Aug 2013; Sven Vermeulen <swift@gentoo.org>
+  +389-ds-base-1.3.0.2-r1.ebuild:
+  Fix bug #445484 - move SELinux policy into selinux-dirsrv and depend on that
+
+*389-ds-base-1.3.0.2 (14 Mar 2013)
+
+  14 Mar 2013; Fabio Erculiani <lxnay@gentoo.org> +389-ds-base-1.3.0.2.ebuild,
+  -389-ds-base-1.2.11.15.ebuild:
+  version bump, fixes bug #461522
+
+*389-ds-base-1.2.11.15 (02 Oct 2012)
+
+  02 Oct 2012; Fabio Erculiani <lxnay@gentoo.org> 389-ds-base-1.2.11.15.ebuild:
+  inherit user eclass
+
+  02 Oct 2012; Fabio Erculiani <lxnay@gentoo.org>
+  +389-ds-base-1.2.11.15.ebuild,
+  +files/389-ds-base-1.2.11.16-cve-2012-4450.patch,
+  +files/389-ds-base-1.2.11-fix-mozldap.patch, -389-ds-base-1.2.8.3.ebuild,
+  -389-ds-base-1.2.9.6.ebuild:
+  version bump, closes #405127, #428178, #436768
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> 389-ds-base-1.2.8.3.ebuild,
+  389-ds-base-1.2.9.6.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*389-ds-base-1.2.9.6 (14 Aug 2011)
+
+  14 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> +389-ds-base-1.2.9.6.ebuild:
+  version bump
+
+  13 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> 389-ds-base-1.2.8.3.ebuild,
+  +files/selinux.patch:
+  apply back a patch for selinux, close bug 378953
+
+  12 Aug 2011; Fabio Erculiani <lxnay@gentoo.org>
+  -files/1.2.6/selinux_gentoo.patch, -files/1.2.6/selinux_makefile.patch,
+  389-ds-base-1.2.8.3.ebuild:
+  drop selinux patch, no longer needed, close bug 378661
+
+*389-ds-base-1.2.8.3 (14 Jun 2011)
+
+  14 Jun 2011; Fabio Erculiani <lxnay@gentoo.org> +389-ds-base-1.2.8.3.ebuild,
+  -389-ds-base-1.2.8.2.ebuild:
+  version bump
+
+*389-ds-base-1.2.8.2 (14 Jun 2011)
+
+  14 Jun 2011; Fabio Erculiani <lxnay@gentoo.org> +389-ds-base-1.2.8.2.ebuild,
+  -389-ds-base-1.2.6-r2.ebuild, -389-ds-base-1.2.7.5.ebuild:
+  version bump, fixes Gentoo bug #371633, drop older releases
+
+  23 Mar 2011; Eray Aslan <eras@gentoo.org> 389-ds-base-1.2.6-r2.ebuild,
+  389-ds-base-1.2.7.5.ebuild:
+  change mit-krb5 USE flag to openldap in DEPEND
+
+  11 Jan 2011; Fabio Erculiani <lxnay@gentoo.org>
+  389-ds-base-1.2.7.5.ebuild:
+  install another header, making FreeIPA compile, close bug #338305
+
+*389-ds-base-1.2.7.5 (11 Jan 2011)
+
+  11 Jan 2011; Fabio Erculiani <lxnay@gentoo.org>
+  -389-ds-base-1.2.5-r1.ebuild, +389-ds-base-1.2.7.5.ebuild:
+  version bump, remove 1.2.5, add blocker against >=sys-libs/db-5.0
+
+*389-ds-base-1.2.6-r2 (12 Nov 2010)
+
+  12 Nov 2010; Fabio Erculiani <lxnay@gentoo.org> files/389-ds.initd,
+  -389-ds-base-1.2.6-r1.ebuild, +389-ds-base-1.2.6-r2.ebuild:
+  fix /var/{lock,lib}/dirsrv directories permissions
+
+  15 Oct 2010; Fabio Erculiani <lxnay@gentoo.org>
+  389-ds-base-1.2.5-r1.ebuild, 389-ds-base-1.2.6-r1.ebuild:
+  ease libtool dependency, 389-ds works with libtool-2
+
+*389-ds-base-1.2.6-r1 (21 Sep 2010)
+
+  21 Sep 2010; Fabio Erculiani <lxnay@gentoo.org> files/389-ds.initd,
+  -389-ds-base-1.2.6.ebuild, +389-ds-base-1.2.6-r1.ebuild:
+  do not start 389ds instances that have been removed, close bug 338133,
+  thanks to Andreis Vinogradovs for reporting
+
+*389-ds-base-1.2.6 (15 Sep 2010)
+
+  15 Sep 2010; Fabio Erculiani <lxnay@gentoo.org>
+  -389-ds-base-1.2.6_rc7.ebuild, +389-ds-base-1.2.6.ebuild:
+  version bump
+
+*389-ds-base-1.2.6_rc7 (12 Aug 2010)
+
+  12 Aug 2010; Fabio Erculiani <lxnay@gentoo.org>
+  -389-ds-base-1.2.6_rc6.ebuild, +389-ds-base-1.2.6_rc7.ebuild:
+  version bump
+
+*389-ds-base-1.2.6_rc6 (06 Aug 2010)
+
+  06 Aug 2010; Fabio Erculiani <lxnay@gentoo.org>
+  -389-ds-base-1.2.6_rc3-r1.ebuild, +389-ds-base-1.2.6_rc6.ebuild,
+  -files/0001-Bug-617629-Missing-aliases-in-new-schema-files.patch:
+  version bump
+
+  28 Jul 2010; Fabio Erculiani <lxnay@gentoo.org> files/restart-dirsrv,
+  files/start-dirsrv:
+  fix start/stop scripts
+
+*389-ds-base-1.2.6_rc3-r1 (28 Jul 2010)
+*389-ds-base-1.2.5-r1 (28 Jul 2010)
+
+  28 Jul 2010; Fabio Erculiani <lxnay@gentoo.org> -389-ds-base-1.2.5.ebuild,
+  +389-ds-base-1.2.5-r1.ebuild, -389-ds-base-1.2.6_rc3.ebuild,
+  +389-ds-base-1.2.6_rc3-r1.ebuild,
+  +files/0001-Bug-617629-Missing-aliases-in-new-schema-files.patch:
+  backport upstream patch from git, see
+  https://bugzilla.redhat.com/show_bug.cgi?id=617629
+
+*389-ds-base-1.2.5 (23 Jul 2010)
+
+  23 Jul 2010; Fabio Erculiani <lxnay@gentoo.org> +389-ds-base-1.2.5.ebuild:
+  provide 389-ds-base-1.2.5 (stable)
+
+  23 Jul 2010; Fabio Erculiani <lxnay@gentoo.org> files/start-dirsrv:
+  silently add trivial change to start-dirsrv to always exit with a valid
+  status
+
+*389-ds-base-1.2.6_rc3 (07 Jul 2010)
+
+  07 Jul 2010; Fabio Erculiani <lxnay@gentoo.org>
+  +files/1.2.6/selinux_gentoo.patch, +files/1.2.6/selinux_makefile.patch,
+  +files/389-ds.initd, +files/389-ds-snmp.initd,
+  +389-ds-base-1.2.6_rc3.ebuild, +files/restart-dirsrv, +files/start-dirsrv,
+  +metadata.xml:
+  new ebuild, 389 Directory Server server package, thanks to
+  Andreis_Vinogradovs ( slepnoga ) <spamslepnoga@inbox.ru> for the base
+  ebuild, will close #104554

@@ -1,0 +1,20 @@
+--- vitunes-2.3/Makefile.linux.orig
++++ vitunes-2.3/Makefile.linux
+@@ -12,7 +12,7 @@
+ # build info
+ CC?=/usr/bin/cc
+ CFLAGS+=-c -std=gnu99 -D_GNU_SOURCE -Wall -Wextra -Wno-unused-value $(CDEPS) $(CDEBUG)
+-LDFLAGS+=-lm -lncurses -lutil $(LDEPS)
++LIBS=-lm -lncurses -lutil $(LDEPS)
+ 
+ OBJS=commands.o compat.o e_commands.o \
+ 	  keybindings.o medialib.o meta_info.o \
+@@ -27,7 +27,7 @@
+ .PHONY: debug clean install uninstall publish-repos man-debug
+ 
+ vitunes: $(OBJS)
+-	$(CC) -o $@ $(LDFLAGS) $(OBJS)
++	$(CC) -o $@ $(LDFLAGS) $(OBJS) $(LIBS)
+ 
+ .c.o:
+ 	$(CC) $(CFLAGS) $<

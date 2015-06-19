@@ -1,0 +1,17 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -182,9 +182,11 @@
+ AC_CHECK_LIB(pcap, pcap_open_live, , AC_MSG_ERROR([ERROR - pcap check failed]))
+ AC_CHECK_LIB(net, libnet_init, , AC_MSG_ERROR([ERROR - libnet check failed]))
+ AC_CHECK_LIB(cap, cap_init, , AC_MSG_WARN([libcap check failed]))
+-AC_CHECK_LIB(ncurses, initscr, , AC_MSG_WARN([ncurses check failed]))
+-AC_CHECK_LIB(curses,  initscr, , AC_MSG_WARN([curses check failed]))
+-AC_CHECK_LIB(termcap, tgetent)
++PKG_CHECK_MODULES(ncurses,ncurses,
++	LIBS="$LIBS $ncurses_LIBS"
++	AC_DEFINE([HAVE_NCURSES_H], 1, [We have ncurses headers])
++	AC_DEFINE([HAVE_LIBNCURSES], 1, [We have ncurses libraries]),
++	AC_MSG_ERROR([ncurses check failed]))
+ if test "x$dmalloc_test" = "xyes"; then
+ 	AC_CHECK_LIB(dmalloc, malloc, ,AC_MSG_RESULT([dmalloc unavailable]))
+ fi

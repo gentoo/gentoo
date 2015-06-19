@@ -1,0 +1,70 @@
+# ChangeLog for media-plugins/vdr-lcr
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-lcr/ChangeLog,v 1.16 2015/02/20 13:32:48 hd_brummy Exp $
+
+  20 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-lcr-0.0.9.ebuild:
+  better Description
+
+  23 Feb 2014; Joerg Bornkessel <hd_brummy@gentoo.org> -vdr-lcr-0.0.8.ebuild:
+  cleanup old
+
+  23 Feb 2014; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-lcr-0.0.9.ebuild:
+  cleanup old; eapi=5; converted to vdr-plugin-2.eclass
+
+  18 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> vdr-lcr-0.0.9.ebuild:
+  x86 stable wrt bug #393741
+
+  18 Dec 2011; Agostino Sarubbo <ago@gentoo.org> vdr-lcr-0.0.9.ebuild:
+  Stable for AMD64, wrt bug #393741
+
+*vdr-lcr-0.0.9 (14 Aug 2008)
+
+  14 Aug 2008; Matthias Schwarzott <zzam@gentoo.org> +vdr-lcr-0.0.9.ebuild:
+  Version bumped.
+
+  05 Jan 2007; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-lcr-0.0.8.ebuild:
+  einfo converted to elog
+
+  17 Nov 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-lcr-0.0.5.ebuild, -vdr-lcr-0.0.6.ebuild, vdr-lcr-0.0.8.ebuild:
+  vdr-lcr-0.0.8 stabel on x86; cleanup old versions
+
+  15 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Assigned to Gentoo VDR Project.
+
+*vdr-lcr-0.0.8 (05 May 2006)
+
+  05 May 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-lcr-0.0.8.ebuild:
+  version bump
+
+*vdr-lcr-0.0.6 (13 Mar 2006)
+
+  13 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-lcr-0.0.6.ebuild:
+  version bump
+
+  04 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-lcr-0.0.3.ebuild, -vdr-lcr-0.0.4.ebuild:
+  cleanup old version
+
+*vdr-lcr-0.0.5 (04 Mar 2006)
+
+  04 Mar 2006; Matthias Schwarzott <zzam@gentoo.org> +vdr-lcr-0.0.5.ebuild:
+  Version bumped, thanks to theonlychriss, http://bugs.gentoo.de/view.php?id=395.
+
+*vdr-lcr-0.0.4 (01 Mar 2006)
+
+  01 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-lcr-0.0.4.ebuild:
+  version bump
+
+  28 Feb 2006; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-lcr-0.0.3.ebuild:
+  fixed QA issues; Bug #124320
+
+*vdr-lcr-0.0.3 (28 Feb 2006)
+
+  28 Feb 2006; Joerg Bornkessel <hd_brummy@gentoo.org> +metadata.xml,
+  +vdr-lcr-0.0.3.ebuild:
+  import ebuild from gentoo.de overlay cvs
+

@@ -1,0 +1,56 @@
+# ChangeLog for app-misc/razertool
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/razertool/ChangeLog,v 1.11 2015/06/09 11:49:59 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> razertool-0.0.7-r3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  28 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  razertool-0.0.7-r3.ebuild:
+  Install 90-razertool.rules to /lib/udev instead of /etc/udev.
+
+  23 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  razertool-0.0.7-r3.ebuild:
+  Use SLOT dependencies for x11-libs/gtk+.
+
+*razertool-0.0.7-r3 (07 Apr 2010)
+
+  07 Apr 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  -razertool-0.0.7-r2.ebuild, +razertool-0.0.7-r3.ebuild:
+  plugdev is created by hal, use usb group by default instead
+
+*razertool-0.0.7-r2 (06 Apr 2010)
+
+  06 Apr 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  -razertool-0.0.7-r1.ebuild, +razertool-0.0.7-r2.ebuild:
+  HAL is dead, bug #313393
+
+*razertool-0.0.7-r1 (07 Dec 2009)
+
+  07 Dec 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  -razertool-0.0.7.ebuild, +razertool-0.0.7-r1.ebuild:
+  Fix udev rule deprecated key names, thanks Lars in bug #295921. Also
+  switch to EAPI 2
+
+  16 May 2009; Robin H. Johnson <robbat2@gentoo.org> razertool-0.0.7.ebuild:
+  Migration to virtual/libusb. Verified by testing hardware (by
+  Polynomial-C).
+
+  05 Oct 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  razertool-0.0.7.ebuild:
+  Add missing pkconfig dependency, bug #239614
+
+  28 Aug 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  razertool-0.0.7.ebuild:
+  Add warning on older firmwares, icon and desktop entry. Thanks Lars
+  <polynomial-C@gmx.de> in bug #235946
+
+*razertool-0.0.7 (27 Aug 2008)
+
+  27 Aug 2008; Bernard Cafarelli <voyageur@gentoo.org> +metadata.xml,
+  +razertool-0.0.7.ebuild:
+  Initial commit, thanks Paul Bredbury <brebs@sent.com> for the ebuild.
+  Closes bug #144982

@@ -1,0 +1,29 @@
+# ChangeLog for games-misc/opensfx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/opensfx/ChangeLog,v 1.7 2015/02/06 21:43:18 tupone Exp $
+
+  06 Feb 2015; Tupone Alfredo <tupone@gentoo.org> opensfx-0.2.3.ebuild:
+  EAPI 5
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> opensfx-0.2.3.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  15 Oct 2010; Markus Meier <maekke@gentoo.org> opensfx-0.2.3.ebuild:
+  add ~arm, bug #316003
+
+  28 May 2010; Joseph Jezak <josejx@gentoo.org> opensfx-0.2.3.ebuild:
+  Marked ppc/ppc64 stable for bug #320501.
+
+  25 May 2010; Pacho Ramos <pacho@gentoo.org> opensfx-0.2.3.ebuild:
+  stable amd64, bug 320501
+
+  25 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> opensfx-0.2.3.ebuild:
+  x86 stable wrt bug #320501
+
+*opensfx-0.2.3 (07 Apr 2010)
+
+  07 Apr 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +opensfx-0.2.3.ebuild, +metadata.xml:
+  initial commit - ebuild submitted by Locke 'Wizzleby' Shinseiko via bug
+  #308355
+

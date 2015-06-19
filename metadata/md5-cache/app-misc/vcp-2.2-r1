@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=sys-libs/ncurses
+DESCRIPTION=copy files/directories in a curses interface
+EAPI=2
+HOMEPAGE=http://members.iinet.net.au/~lynx/vcp/
+KEYWORDS=amd64 ppc ~sparc x86
+LICENSE=BSD
+RDEPEND=sys-libs/ncurses
+SLOT=0
+SRC_URI=http://members.iinet.net.au/~lynx/vcp/vcp-2.2.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=3da6a79a4ebb2c8b5bc50a31c67c3007

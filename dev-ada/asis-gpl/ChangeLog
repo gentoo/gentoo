@@ -1,0 +1,58 @@
+# ChangeLog for dev-ada/asis-gpl
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ada/asis-gpl/ChangeLog,v 1.11 2014/07/13 16:26:07 ulm Exp $
+
+  13 Jul 2014; Ulrich Müller <ulm@gentoo.org> asis-gpl-3.4.6.2006.ebuild,
+  asis-gpl-4.1.3.2007-r1.ebuild, asis-gpl-4.1.3.2007-r2.ebuild,
+  asis-gpl-4.1.3.2008.ebuild, asis-gpl-4.1.3.2008-r1.ebuild:
+  Don't call eselect with obsolete/removed --no-color option.
+
+*asis-gpl-4.1.3.2008-r1 (19 Aug 2008)
+
+  19 Aug 2008; George Shapovalov <george@gentoo.org>
+  +asis-gpl-4.1.3.2008-r1.ebuild:
+  asis-2008 should go into the same new SLOT as gnat-2008. Revbumping to
+  force
+
+*asis-gpl-4.1.3.2008 (07 Jul 2008)
+
+  07 Jul 2008; George Shapovalov <george@gentoo.org>
+  +asis-gpl-4.1.3.2008.ebuild:
+  new version
+
+  17 May 2008; George Shapovalov <george@gentoo.org>
+  asis-gpl-3.4.6.2006.ebuild, asis-gpl-4.1.3.2007-r1.ebuild,
+  asis-gpl-4.1.3.2007-r2.ebuild:
+  updated DEPEND to use new latex virtual (#222501)
+
+  24 Jan 2008; George Shapovalov <george@gentoo.org>
+  asis-gpl-3.4.6.2006.ebuild, -asis-gpl-4.1.3.2007.ebuild,
+  asis-gpl-4.1.3.2007-r1.ebuild, asis-gpl-4.1.3.2007-r2.ebuild:
+  fixed quotation issues, removed stale ebuild
+
+*asis-gpl-4.1.3.2007-r2 (14 Sep 2007)
+
+  14 Sep 2007; <portage-cvs@gentoo.org> +asis-gpl-4.1.3.2007-r2.ebuild:
+  another fix for #191090
+
+*asis-gpl-4.1.3.2007-r1 (04 Sep 2007)
+
+  04 Sep 2007; George Shapovalov <george@gentoo.org>
+  asis-gpl-4.1.3.2007.ebuild, +asis-gpl-4.1.3.2007-r1.ebuild:
+  changing gcc to gnatgcc (asis needs it occasionally too). Fixes #191090,
+  thanks to Maxim Reznik for report
+
+*asis-gpl-4.1.3.2007 (25 May 2007)
+
+  25 May 2007; George Shapovalov <george@gentoo.org> +asis-gpl-4.1.3.2007.ebuild:
+  added new version to match gnat-2007
+
+  25 Jan 2007; Marius Mauch <genone@gentoo.org> asis-gpl-3.4.6.2006.ebuild:
+  Replacing einfo with elog
+
+*asis-gpl-3.4.6.2006 (26 Oct 2006)
+
+  26 Oct 2006; George Shapovalov <george@gentoo.org> +metadata.xml,
+  +asis-gpl-3.4.6.2006.ebuild:
+  added the ACT version of asis
+

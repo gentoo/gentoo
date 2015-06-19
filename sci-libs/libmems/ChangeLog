@@ -1,0 +1,33 @@
+# ChangeLog for sci-libs/libmems
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/libmems/ChangeLog,v 1.8 2014/05/24 07:43:43 pacho Exp $
+
+  24 May 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #199047
+
+  08 Jan 2013; Kacper Kowalik <xarthisius@gentoo.org> libmems-1.6_p1.ebuild:
+  Fix SRC_URI
+
+  09 Nov 2012; Justin Lecher <jlec@gentoo.org> libmems-1.6_p1.ebuild:
+  mirror -> http correct in SRC_URI
+
+  08 Nov 2012; Justin Lecher <jlec@gentoo.org> libmems-1.6.ebuild,
+  libmems-9999.ebuild:
+  Merge changes through all revisions
+
+*libmems-1.6_p1 (08 Nov 2012)
+
+  08 Nov 2012; Justin Lecher <jlec@gentoo.org> +libmems-1.6_p1.ebuild,
+  +files/libmems-1.6_p1-boost.patch, +files/libmems-1.6_p1-build.patch,
+  +files/libmems-1.6_p1-gcc-4.7.patch:
+  Version bump, which fixes gcc-4.7, respect for user env and boost-1.51
+  compatibility, #442300
+
+  31 Oct 2012; Diego E. Pettenò <flameeyes@gentoo.org> libmems-1.6.ebuild:
+  QA: drop maximum boost version dep; if it fails to build, it has to be fixed.
+
+  04 Aug 2011; Markos Chandras <hwoarang@gentoo.org> libmems-1.6.ebuild:
+  Restrict newer boost versions. Bug #301687 and Bug 362915
+
+  03 Apr 2009; Andrey Kislyuk <weaver@gentoo.org> ChangeLog:
+  New package sci-libs/libmems, ebuild written by me

@@ -1,0 +1,10 @@
+# ChangeLog for gnome-extra/gnome-directory-thumbnailer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-directory-thumbnailer/ChangeLog,v 1.1 2015/06/09 16:14:54 eva Exp $
+
+*gnome-directory-thumbnailer-0.1.6 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-directory-thumbnailer-0.1.6.ebuild, +metadata.xml:
+  Initial ebuild from gnome-overlay for Gnome 3.16.
+

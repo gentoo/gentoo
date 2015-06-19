@@ -1,0 +1,54 @@
+# ChangeLog for net-analyzer/syweb
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/syweb/ChangeLog,v 1.8 2014/07/17 16:02:41 jer Exp $
+
+  17 Jul 2014; Jeroen Roovers <jer@gentoo.org> -syweb-0.64.ebuild,
+  syweb-0.65.ebuild:
+  Quotes.
+
+*syweb-0.65 (26 Aug 2013)
+
+  26 Aug 2013; Sergey Popov <pinkbyte@gentoo.org> +syweb-0.65.ebuild:
+  Version bump
+
+  02 Jul 2012; Matti Bickel <mabi@gentoo.org> -syweb-0.59.ebuild,
+  syweb-0.64.ebuild:
+  remove unneeded depend.php, also remove old version with permission from jer
+
+*syweb-0.64 (17 Apr 2012)
+
+  17 Apr 2012; Jeroen Roovers <jer@gentoo.org> +syweb-0.64.ebuild:
+  Version bump.
+
+*syweb-0.59 (01 Dec 2009)
+
+  01 Dec 2009; Tiago Cunha <tcunha@gentoo.org> -syweb-0.58-r1.ebuild,
+  +syweb-0.59.ebuild, files/postinstall-en.txt, +files/reconfig,
+  -files/syweb-class_lexer.inc.patch, -files/syweb-setup.inc.patch,
+  -files/syweb-total_firewall.layout.patch:
+  - Version bump.
+  - Remove old.
+
+*syweb-0.58-r1 (13 Dec 2008)
+
+  13 Dec 2008; Tiago Cunha <tcunha@gentoo.org> +files/postinstall-en.txt,
+  files/syweb-setup.inc.patch, -syweb-0.58.ebuild, +syweb-0.58-r1.ebuild:
+  Revision bump:
+  - Keep the layouts directory to avoid it being removed by a package manager
+  if it's empty.
+  - The cache directory shouldn't be reached by browsers, thus move it to
+  hostroot. While there, change setup.inc.patch accordingly.
+  - Use a file to display post-install instructions by using the function
+  webapp_postinst_txt provided by the webapp eclass instead of using elog.
+
+  09 Nov 2008; Tiago Cunha <tcunha@gentoo.org> metadata.xml:
+  Update my email address. Thanks pva
+
+*syweb-0.58 (19 Aug 2008)
+
+  19 Aug 2008; Peter Volkov <pva@gentoo.org>
+  +files/syweb-class_lexer.inc.patch, +files/syweb-setup.inc.patch,
+  +files/syweb-total_firewall.layout.patch, +metadata.xml,
+  +syweb-0.58.ebuild:
+  Initial import. Separated out from symon.
+

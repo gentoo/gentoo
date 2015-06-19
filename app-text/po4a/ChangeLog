@@ -1,0 +1,346 @@
+# ChangeLog for app-text/po4a
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/po4a/ChangeLog,v 1.90 2015/06/13 19:12:38 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org> po4a-0.45-r1.ebuild,
+  po4a-0.45-r2.ebuild:
+  The Module::Build module is no longer part of core Perl and has been moved to
+  dev-perl
+
+  31 May 2015; Ian Delaney <idella4@gentoo.org> metadata.xml:
+  Edited metadata.xml adding proxy maintainer and proxy-maintainers herd,
+  declaration of interest by new maintainer expressed in bug #550210
+
+  19 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Drop to maintainer-needed
+
+  12 Dec 2014; Raúl Porcel <armin76@gentoo.org> po4a-0.45-r1.ebuild,
+  po4a-0.45-r2.ebuild:
+  arm64 stable
+
+*po4a-0.45-r2 (29 Nov 2014)
+
+  29 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org> po4a-0.45-r1.ebuild,
+  +po4a-0.45-r2.ebuild:
+  Revert changes to stable ebuild by monsieurp and put them in a revision bump
+  instead.
+
+  29 Nov 2014; Patrice Clement <monsieurp@gentoo.org> po4a-0.45-r1.ebuild:
+  Honour languages set by LINGUAS. Bug #402691.
+
+  26 Oct 2014; Mike Frysinger <vapier@gentoo.org> po4a-0.45-r1.ebuild:
+  Mark m68k/s390/sh stable.
+
+  19 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org> -po4a-0.42.ebuild:
+  Remove old
+
+*po4a-0.45-r1 (15 Oct 2014)
+
+  15 Oct 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org> +po4a-0.45-r1.ebuild,
+  -po4a-0.45.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on dev-lang/perl upgrades
+
+  23 Sep 2014; Agostino Sarubbo <ago@gentoo.org> po4a-0.45.ebuild:
+  Stable for alpha, wrt bug #520014
+
+  22 Sep 2014; Agostino Sarubbo <ago@gentoo.org> po4a-0.45.ebuild:
+  Stable for sparc, wrt bug #520014
+
+  22 Sep 2014; Agostino Sarubbo <ago@gentoo.org> po4a-0.45.ebuild:
+  Stable for ia64, wrt bug #520014
+
+  21 Sep 2014; Agostino Sarubbo <ago@gentoo.org> po4a-0.45.ebuild:
+  Stable for ppc64, wrt bug #520014
+
+  21 Sep 2014; Agostino Sarubbo <ago@gentoo.org> po4a-0.45.ebuild:
+  Stable for ppc, wrt bug #520014
+
+  13 Sep 2014; Markus Meier <maekke@gentoo.org> po4a-0.45.ebuild:
+  arm stable, bug #520014
+
+  28 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> po4a-0.45.ebuild:
+  x86 stable wrt bug #520014
+
+  25 Aug 2014; Manuel Rüger <mrueg@gentoo.org> po4a-0.45.ebuild:
+  Mark amd64 stable. Bug #520014.
+
+  23 Aug 2014; Jeroen Roovers <jer@gentoo.org> po4a-0.45.ebuild:
+  Stable for HPPA (bug #520014).
+
+  15 Feb 2014; Markos Chandras <hwoarang@gentoo.org> po4a-0.45.ebuild:
+  Add ~mips
+
+  11 Jan 2014;  <zlogene@gentoo.org> -po4a-0.38.ebuild, -po4a-0.39.ebuild,
+  -po4a-0.40.1.ebuild, -po4a-0.41.ebuild:
+  Drop old
+
+  05 Jan 2014; Naohiro Aota <naota@gentoo.org> po4a-0.45.ebuild:
+  Add ~x86-fbsd
+
+*po4a-0.45 (29 Oct 2013)
+
+  29 Oct 2013; Patrick Lauer <patrick@gentoo.org> +po4a-0.45.ebuild:
+  Bump
+
+  24 Feb 2013; Agostino Sarubbo <ago@gentoo.org> po4a-0.42.ebuild:
+  Stable for sh, wrt bug #453122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> po4a-0.42.ebuild:
+  Stable for s390, wrt bug #453122
+
+  06 Feb 2013; Agostino Sarubbo <ago@gentoo.org> po4a-0.42.ebuild:
+  Stable for sparc, wrt bug #453122
+
+  05 Feb 2013; Jeroen Roovers <jer@gentoo.org> po4a-0.42.ebuild:
+  Stable for HPPA (bug #453122).
+
+  04 Feb 2013; Agostino Sarubbo <ago@gentoo.org> po4a-0.42.ebuild:
+  Stable for alpha, wrt bug #453122
+
+  29 Jan 2013; Agostino Sarubbo <ago@gentoo.org> po4a-0.42.ebuild:
+  Stable for ia64, wrt bug #453122
+
+  26 Jan 2013; Agostino Sarubbo <ago@gentoo.org> po4a-0.42.ebuild:
+  Stable for ppc64, wrt bug #453122
+
+  26 Jan 2013; Agostino Sarubbo <ago@gentoo.org> po4a-0.42.ebuild:
+  Stable for ppc, wrt bug #453122
+
+  26 Jan 2013; Markus Meier <maekke@gentoo.org> po4a-0.42.ebuild:
+  arm stable, bug #453122
+
+  24 Jan 2013; Agostino Sarubbo <ago@gentoo.org> po4a-0.42.ebuild:
+  Stable for x86, wrt bug #453122
+
+  24 Jan 2013; Agostino Sarubbo <ago@gentoo.org> po4a-0.42.ebuild:
+  Stable for amd64, wrt bug #453122
+
+  20 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+*po4a-0.42 (02 Sep 2012)
+
+  02 Sep 2012; Tim Harder <radhermit@gentoo.org> +po4a-0.42.ebuild:
+  Version bump.
+
+  24 Mar 2012; Fabian Groffen <grobian@gentoo.org> po4a-0.41.ebuild:
+  Marked ~x64-macos
+
+  29 May 2011; Torsten Veller <tove@gentoo.org> +files/0.41-po4a-build.patch,
+  po4a-0.41.ebuild:
+  Depend on dev-libs/libxslt, app-text/docbook-xsl-stylesheets (#368909),
+  app-text/docbook-xml-dtd:4.1.2. Work around the endless waiting if output is
+  redirected (#369011)
+
+*po4a-0.41 (22 May 2011)
+
+  22 May 2011; Torsten Veller <tove@gentoo.org> +po4a-0.41.ebuild:
+  Version bump. Thanks to Tim Harder (#368303)
+
+  07 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> po4a-0.38.ebuild:
+  ppc64 stable wrt #350877
+
+  19 Oct 2010; Torsten Veller <tove@gentoo.org>
+  -files/0.36-3-debian.patches, -files/po4a-fix-io-capture.patch:
+  Cleanup
+
+  19 Oct 2010; Torsten Veller <tove@gentoo.org> -po4a-0.32-r1.ebuild,
+  -po4a-0.34.ebuild, -po4a-0.36.ebuild, -po4a-0.36.4.ebuild,
+  -po4a-0.37.1.ebuild, po4a-0.38.ebuild, po4a-0.39.ebuild:
+  Disable tests because they fail with gettext-0.18.1.1. Cleanup
+
+*po4a-0.40.1 (19 Oct 2010)
+
+  19 Oct 2010; Torsten Veller <tove@gentoo.org> +po4a-0.40.1.ebuild,
+  +files/compare-po.pl:
+  Version bump (#338520). Tests work with gettext-0.18.1.1 (#341073)
+
+  08 May 2010; Raúl Porcel <armin76@gentoo.org> po4a-0.38.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #312979
+
+  22 Apr 2010; Jeroen Roovers <jer@gentoo.org> po4a-0.38.ebuild:
+  Stable for HPPA (bug #312979).
+
+  18 Apr 2010; Markus Meier <maekke@gentoo.org> po4a-0.38.ebuild:
+  arm stable, bug #312979
+
+  18 Apr 2010; <nixnut@gentoo.org> po4a-0.38.ebuild:
+  ppc stable #312979
+
+  16 Apr 2010; Markos Chandras <hwoarang@gentoo.org> po4a-0.38.ebuild:
+  Stable on amd64 wrt bug #312979
+
+*po4a-0.39 (13 Apr 2010)
+
+  13 Apr 2010; Torsten Veller <tove@gentoo.org> +po4a-0.39.ebuild:
+  Version bump. Thanks to Tim Harder (#314917)
+
+  12 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> po4a-0.38.ebuild:
+  x86 stable wrt bug #312979
+
+*po4a-0.38 (18 Jan 2010)
+
+  18 Jan 2010; Torsten Veller <tove@gentoo.org> +po4a-0.38.ebuild:
+  Version bump
+
+  02 Jan 2010; Christian Faulhammer <fauli@gentoo.org> po4a-0.37.1.ebuild:
+  Transfer Prefix keywords
+
+*po4a-0.37.1 (30 Nov 2009)
+
+  30 Nov 2009; Torsten Veller <tove@gentoo.org> +po4a-0.37.1.ebuild:
+  Version bump
+
+*po4a-0.36.4 (05 Sep 2009)
+
+  05 Sep 2009; Torsten Veller <tove@gentoo.org>
+  +files/po4a-fix-io-capture.patch, +po4a-0.36.4.ebuild:
+  Version bump. Workaround for the perl hangs bug (#275268). Thanks to Kent
+  Fredric
+
+  31 May 2009; Brent Baude <ranger@gentoo.org> po4a-0.36.ebuild:
+  Marking po4a-0.36 ~ppc64 for bug 267987
+
+*po4a-0.36 (03 Apr 2009)
+
+  03 Apr 2009; Torsten Veller <tove@gentoo.org>
+  +files/0.36-3-debian.patches, +po4a-0.36.ebuild:
+  Version bump (#264474)
+
+  19 Nov 2008; Torsten Veller <tove@gentoo.org> -po4a-0.21.ebuild,
+  -po4a-0.25.ebuild, -po4a-0.29.ebuild, -po4a-0.30.ebuild,
+  -po4a-0.32.ebuild, -po4a-0.33.3.ebuild:
+  Cleanup
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org> po4a-0.21.ebuild,
+  po4a-0.25.ebuild, po4a-0.29.ebuild, po4a-0.30.ebuild, po4a-0.32.ebuild,
+  po4a-0.32-r1.ebuild, po4a-0.33.3.ebuild, po4a-0.34.ebuild:
+  New virtuals: module-build
+
+*po4a-0.34 (31 Jul 2008)
+
+  31 Jul 2008; Torsten Veller <tove@gentoo.org> +po4a-0.34.ebuild:
+  Version bump (#233474)
+
+*po4a-0.33.3 (30 Apr 2008)
+
+  30 Apr 2008; Torsten Veller <tove@gentoo.org> +po4a-0.33.3.ebuild:
+  Version bump.
+
+  24 Dec 2007; Brent Baude <ranger@gentoo.org> po4a-0.32-r1.ebuild:
+  Marking po4a-0.32-r1 ppc for deb to bug 203220
+
+  11 Sep 2007; Raúl Porcel <armin76@gentoo.org> po4a-0.32-r1.ebuild:
+  alpha/ia64 stable
+
+  27 Aug 2007; Markus Ullmann <jokey@gentoo.org> po4a-0.32-r1.ebuild:
+  Stable on x86 wrt bug #189440
+
+  27 Aug 2007; Jeroen Roovers <jer@gentoo.org> po4a-0.32-r1.ebuild:
+  Stable for HPPA (bug #189440).
+
+  27 Aug 2007; Ferris McCormick <fmccor@gentoo.org> po4a-0.32-r1.ebuild:
+  Sparc stable --- security Bug #189440 --- Builds itself and runs test suite.
+
+  25 Aug 2007; Christoph Mende <angelos@gentoo.org> po4a-0.32-r1.ebuild:
+  Stable on amd64 wrt security bug #189440
+
+*po4a-0.32-r1 (25 Aug 2007)
+
+  25 Aug 2007; Christian Hartmann <ian@gentoo.org> +po4a-0.32-r1.ebuild:
+  Fix test failures on sgml test mentioned in bug #189440 - many thanks go to
+  upstream (nekral in #po4a on oftc) for helping me fix this one!
+
+  19 Aug 2007; Ferris McCormick <fmccor@gentoo.org> po4a-0.32.ebuild:
+  Sparc stable --- Security Bug #189440 --- builds itself and passes all 134
+  tests.
+
+  19 Aug 2007; Jeroen Roovers <jer@gentoo.org> po4a-0.32.ebuild:
+  Stable for HPPA (bug #189440).
+
+*po4a-0.32 (19 Aug 2007)
+
+  19 Aug 2007; Christian Hartmann <ian@gentoo.org> +po4a-0.32.ebuild:
+  Version bump; bug #189101
+
+  19 Jul 2007; Jeroen Roovers <jer@gentoo.org> po4a-0.30.ebuild:
+  Stable for HPPA too.
+
+  21 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org> po4a-0.30.ebuild:
+  Stable on sparc
+
+  24 May 2007; Bryan Østergaard <kloeri@gentoo.org> po4a-0.30.ebuild:
+  Stable on IA64.
+
+  14 Apr 2007; Michael Cummings <mcummings@gentoo.org> po4a-0.30.ebuild:
+  amd64 stable
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org> po4a-0.25.ebuild:
+  x86 stable
+
+*po4a-0.30 (23 Jan 2007)
+
+  23 Jan 2007; Michael Cummings <mcummings@gentoo.org> +po4a-0.30.ebuild:
+  Bug 160531, version bump
+
+*po4a-0.29 (02 Jan 2007)
+
+  02 Jan 2007; Michael Cummings <mcummings@gentoo.org> +po4a-0.29.ebuild:
+  Version bump, bug 158201, thanks to Nils Kneuper
+
+  21 Oct 2006; Michael Cummings <mcummings@gentoo.org> po4a-0.25.ebuild:
+  sparc stable
+
+  20 Oct 2006; Michael Cummings <mcummings@gentoo.org> po4a-0.21.ebuild,
+  po4a-0.25.ebuild:
+  Marking amd64 stable
+
+  11 Oct 2006; Jeroen Roovers <jer@gentoo.org> po4a-0.25.ebuild:
+  Marked ~hppa (bug #144414).
+
+  29 Aug 2006; Bryan Østergaard <kloeri@gentoo.org> po4a-0.25.ebuild:
+  Add ~alpha keyword, bug 144414.
+
+  19 Aug 2006; Jason Wever <weeve@gentoo.org> po4a-0.25.ebuild:
+  Added ~sparc keyword wrt bug #144414.
+
+  19 Aug 2006; Tobias Scherbaum <dertobi123@gentoo.org> po4a-0.25.ebuild:
+  Added ~ppc, bug #144414
+
+  14 Jul 2006; Michael Cummings <mcummings@gentoo.org> po4a-0.21.ebuild,
+  po4a-0.25.ebuild:
+  Forcing mb version
+
+*po4a-0.25 (28 Jun 2006)
+
+  28 Jun 2006; Michael Cummings <mcummings@gentoo.org> +po4a-0.25.ebuild:
+  Version bump
+
+  28 Jun 2006; Michael Cummings <mcummings@gentoo.org> po4a-0.21.ebuild:
+  Bug 138332, the Makefile being distributed was causing sandbox problems.
+  Also, keyworded ~amd64.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org> po4a-0.21.ebuild:
+  Marking stable x86
+
+  28 Nov 2005; <mcumming@gentoo.org> po4a-0.21.ebuild:
+  Switched from perl-module to perl-app eclass
+
+*po4a-0.21 (14 May 2005)
+
+  14 May 2005; Michael Cummings <mcummings@gentoo.org> -po4a-0.19.ebuild,
+  -po4a-0.20.ebuild, +po4a-0.21.ebuild:
+  New version, bug fixes, submitted by Jordi Vilalta <jvprat@wanadoo.es> in
+  bug 84286.
+
+*po4a-0.20 (16 Apr 2005)
+
+  16 Apr 2005; Michael Cummings <mcummings@gentoo.org> +po4a-0.20.ebuild:
+  Version bump, courtesty of Jordi Vilalta <jvprat@wanadoo.es>, bug 84286
+
+*po4a-0.19 (18 Jan 2005)
+
+  18 Jan 2005; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +po4a-0.19.ebuild:
+  Bug 55156; ebuild provided by Jordi Vilalta <jvprat@wanadoo.es>;

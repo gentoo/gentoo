@@ -1,0 +1,149 @@
+# ChangeLog for games-arcade/crack-attack
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/crack-attack/ChangeLog,v 1.29 2015/01/04 09:08:26 tupone Exp $
+
+  04 Jan 2015; Tupone Alfredo <tupone@gentoo.org>
+  crack-attack-1.1.14-r1.ebuild:
+  EAPI 5
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> crack-attack-1.1.14-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  16 Mar 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  crack-attack-1.1.14-r1.ebuild:
+  take out unused libXmu mention (bug #408457)
+
+  16 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  crack-attack-1.1.14-r1.ebuild:
+  virtual/glut -> media-libs/glut
+
+  11 Jul 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  crack-attack-1.1.14-r1.ebuild:
+  work around lesser file systems (bug #324699)
+
+  25 Jun 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  crack-attack-1.1.14-r1.ebuild:
+  EAPI=2; add pkgconfig dep
+
+  30 Apr 2008; Tristan Heaven <nyhm@gentoo.org>
+  +files/crack-attack-1.1.14-gcc43.patch, crack-attack-1.1.14-r1.ebuild:
+  Fix building with gcc-4.3
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org>
+  crack-attack-1.1.14-r1.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  09 Apr 2007; Peter Weller <welp@gentoo.org> ChangeLog:
+  Keyworded ~x86-fbsd wrt bug 173405
+
+*crack-attack-1.1.14-r1 (05 Jul 2005)
+
+  05 Jul 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/crack-attack-1.1.14-glut.patch, +crack-attack-1.1.14-r1.ebuild:
+  Add bugfix from upstream for freeglut support #97954 by Andrew Sayman.
+
+*crack-attack-1.1.14 (15 May 2005)
+
+  15 May 2005; Mike Frysinger <vapier@gentoo.org>
+  +crack-attack-1.1.14.ebuild:
+  Version bump #92721 by Keith Constable.
+
+*crack-attack-1.1.13-r1 (25 Apr 2005)
+
+  25 Apr 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/crack-attack-1.1.13-binpaths.patch, +crack-attack-1.1.13-r1.ebuild:
+  Fix path issues #90263 by hodak@nemo.physics.ncsu.edu / Andrew Sayman.
+
+*crack-attack-1.1.13 (24 Apr 2005)
+
+  24 Apr 2005; Mike Frysinger <vapier@gentoo.org>
+  +crack-attack-1.1.13.ebuild:
+  Version bump.
+
+  13 Apr 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  crack-attack-1.1.12-r1.ebuild:
+  Take Debian patch for icon (bug #89006);  add desktop entry support.
+
+*crack-attack-1.1.12-r1 (11 Apr 2005)
+
+  11 Apr 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/crack-attack-1.1.12-garbage.patch, +crack-attack-1.1.12-r1.ebuild:
+  Add patch by Dmitrii Tisnek to fix garbage bug #88747.
+
+*crack-attack-1.1.12 (28 Mar 2005)
+
+  28 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +crack-attack-1.1.12.ebuild:
+  version bump (bug #86829)
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*crack-attack-1.1.11-r1 (02 Dec 2004)
+
+  02 Dec 2004; Mike Frysinger <vapier@gentoo.org> -files/1.1.10-GL.patch,
+  -files/1.1.10-gcc34.patch, -files/1.1.10-i865g.patch,
+  +files/1.1.11-multi-compat.patch, -crack-attack-1.1.10.ebuild,
+  +crack-attack-1.1.11-r1.ebuild, -crack-attack-1.1.11.ebuild:
+  Version bump to add multiplayer-compat patch from upstream #73102 by Keith
+  Constable.
+
+  12 Nov 2004; Simon Stelling <blubb@gentoo.org> crack-attack-1.1.11.ebuild:
+  added ~amd64
+
+*crack-attack-1.1.11 (22 Oct 2004)
+
+  22 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +crack-attack-1.1.11.ebuild:
+  version bump (bug #68484) - patch from Andrew Sayman
+
+  16 Jul 2004; Mike Frysinger <vapier@gentoo.org> +files/1.1.10-GL.patch,
+  crack-attack-1.1.10.ebuild:
+  Add a patch to fix GL funkiness #48925
+
+  11 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  crack-attack-1.1.10.ebuild, files/1.1.10-i865g.patch:
+  add patch from Guillaume Cottenceau via bug #53320
+
+  04 May 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  crack-attack-1.1.10.ebuild, files/1.1.10-gcc34.patch:
+  added patch for gcc 3.4 from Andrew Sayman via bug #49470
+
+*crack-attack-1.1.10 (20 Oct 2003)
+
+  20 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org>
+  crack-attack-1.1.10.ebuild:
+  version bump
+
+*crack-attack-1.1.9 (05 Oct 2003)
+
+  13 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add filter-flags to remove march=pentium3 #30483.
+
+  05 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org>
+  crack-attack-1.1.9.ebuild:
+  version bump; I removed the gcc33 patch since it seems to have been
+  at least partially picked up by upstream.
+
+*crack-attack-1.1.8 (29 Jul 2002)
+
+  21 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add gcc3 patch #27015.
+
+  21 Aug 2003; Michael Sterrett <msterret@gentoo.org>
+  crack-attack-1.1.8.ebuild:
+  more error messages; dohtml for html docs
+
+  05 Mar 2003; Mike Frysinger <vapier@gentoo.org> :
+  Fix GL with new XFree (#15551) and add games eclass support.
+
+  29 Jul 2002; Spider <spider@gentoo.org> crack-attack-1.1.8.ebuild :
+  Updated to the latest version
+  
+*crack-attack-1.1.7 (14 Apr 2002)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> crack-attack-1.1.7.ebuild :
+  Added LICENSE, KEYWORDS.
+
+  14 Apr 2002; Bart Verwilst <verwilst@gentoo.org> Changelog :
+  Initial Version

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=tcpd? ( >=sys-apps/tcp-wrappers-7.6-r2 ) rpc? ( net-libs/libtirpc ) virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=powerful replacement for inetd
+EAPI=4
+HOMEPAGE=http://www.xinetd.org/
+IUSE=perl rpc tcpd
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+LICENSE=BSD
+RDEPEND=tcpd? ( >=sys-apps/tcp-wrappers-7.6-r2 ) rpc? ( net-libs/libtirpc ) perl? ( dev-lang/perl )
+SLOT=0
+SRC_URI=http://www.xinetd.org/xinetd-2.3.15.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ae4099912b506172c84eaf6facc00ce7

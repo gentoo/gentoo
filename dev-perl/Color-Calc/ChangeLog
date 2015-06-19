@@ -1,0 +1,14 @@
+# ChangeLog for dev-perl/Color-Calc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Color-Calc/ChangeLog,v 1.2 2015/06/13 21:40:54 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Color-Calc-1.73.0.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*Color-Calc-1.73.0 (18 Mar 2013)
+
+  18 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> +Color-Calc-1.73.0.ebuild,
+  +metadata.xml:
+  Initial import from perl-experimental overlay with some improvements, wrt bug
+  #311031

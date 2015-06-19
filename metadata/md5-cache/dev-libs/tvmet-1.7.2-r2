@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=doc? ( app-doc/doxygen ) test? ( dev-util/cppunit )
+DESCRIPTION=Tiny Vector Matrix library using Expression Templates
+EAPI=5
+HOMEPAGE=http://tvmet.sourceforge.net/
+IUSE=debug doc test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=LGPL-2.1
+SLOT=0
+SRC_URI=mirror://sourceforge/tvmet/tvmet-1.7.2.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=93a28d2f5a0621e9488b310d9852db83

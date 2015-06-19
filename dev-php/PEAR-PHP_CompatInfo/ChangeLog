@@ -1,0 +1,61 @@
+# ChangeLog for dev-php/PEAR-PHP_CompatInfo
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-PHP_CompatInfo/ChangeLog,v 1.7 2014/08/10 20:54:33 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-PHP_CompatInfo-1.9.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*PEAR-PHP_CompatInfo-1.9.0 (18 Jan 2012)
+
+  18 Jan 2012; Matti Bickel <mabi@gentoo.org> +PEAR-PHP_CompatInfo-1.9.0.ebuild,
+  -PEAR-PHP_CompatInfo-1.5.1.ebuild, -PEAR-PHP_CompatInfo-1.6.1.ebuild:
+  version bump & remove old
+
+*PEAR-PHP_CompatInfo-1.6.1 (26 Feb 2008)
+
+  26 Feb 2008; Raúl Porcel <armin76@gentoo.org>
+  +PEAR-PHP_CompatInfo-1.6.1.ebuild:
+  Version bump, import from the php overlay
+
+  16 Feb 2008; Jakub Moc <jakub@gentoo.org>
+  PEAR-PHP_CompatInfo-1.6.1.ebuild:
+  Version bump
+
+  06 Dec 2007; Markus Ullmann <jokey@gentoo.org>
+  -PEAR-PHP_CompatInfo-1.5.0.ebuild, PEAR-PHP_CompatInfo-1.5.1.ebuild:
+  LICENSE fix from project overlay
+
+  02 Dec 2007; Jakub Moc <jakub@gentoo.org>
+  PEAR-PHP_CompatInfo-1.5.1.ebuild:
+  Fix LICENSE
+
+*PEAR-PHP_CompatInfo-1.5.1 (29 Nov 2007)
+
+  29 Nov 2007; Markus Ullmann <jokey@gentoo.org>
+  -PEAR-PHP_CompatInfo-1.4.3.ebuild, +PEAR-PHP_CompatInfo-1.5.1.ebuild:
+  Version bump from project overlay
+
+  22 Nov 2007; Jakub Moc <jakub@gentoo.org>
+  +PEAR-PHP_CompatInfo-1.5.1.ebuild:
+  Version bump
+
+*PEAR-PHP_CompatInfo-1.5.0 (15 Nov 2007)
+
+  15 Nov 2007; Markus Ullmann <jokey@gentoo.org>
+  +PEAR-PHP_CompatInfo-1.5.0.ebuild:
+  Version bump from project overlay
+
+  15 Nov 2007; Jakub Moc <jakub@gentoo.org>
+  +PEAR-PHP_CompatInfo-1.5.0.ebuild:
+  Version bump; fix DOS line breaks.
+
+*PEAR-PHP_CompatInfo-1.4.3 (30 Aug 2007)
+
+  30 Aug 2007; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +PEAR-PHP_CompatInfo-1.4.3.ebuild:
+  Port from project overlay
+
+  17 Aug 2007; Jakub Moc <jakub@gentoo.org> +metadata.xml,
+  +PEAR-PHP_CompatInfo-1.4.3.ebuild:
+  New ebuild

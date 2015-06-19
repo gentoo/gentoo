@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DEPEND=>=net-libs/roadrunner-0.9.1
+DESCRIPTION=A simple system for setting up and using a cluster of OS X machines
+HOMEPAGE=http://www.novajo.ca/xgridagent/
+KEYWORDS=~x86 ~ppc
+LICENSE=Apache-2.0
+RDEPEND=>=net-libs/roadrunner-0.9.1
+SLOT=0
+SRC_URI=http://www.novajo.ca/xgridagent-1.0.tar.gz
+_md5_=6560ec36cd0f8c133ecaadda1609f2ef

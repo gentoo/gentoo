@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>pinkbyte@gentoo.org</email>
+		<name>Sergey Popov</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">themoken/canto-next</remote-id>
+	</upstream>
+</pkgmetadata>

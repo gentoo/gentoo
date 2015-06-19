@@ -1,0 +1,48 @@
+# ChangeLog for games-engines/residualvm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-engines/residualvm/ChangeLog,v 1.11 2015/03/25 13:45:01 ago Exp $
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> residualvm-0.2.1.ebuild:
+  Stable for x86, wrt bug #541556
+
+  28 Feb 2015; Agostino Sarubbo <ago@gentoo.org> residualvm-0.2.1.ebuild:
+  Stable for amd64, wrt bug #541556
+
+  19 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> -residualvm-0.1.1.ebuild:
+  old
+
+*residualvm-0.2.1 (27 Jan 2015)
+
+  27 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org> +residualvm-0.2.1.ebuild:
+  version bump
+
+  27 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/residualvm-0.1.0-EE.patch, -residualvm-0.1.0.ebuild, metadata.xml:
+  old
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> residualvm-0.1.0.ebuild,
+  residualvm-0.1.1.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+*residualvm-0.1.1 (14 Feb 2013)
+
+  14 Feb 2013; Julian Ospald <hasufell@gentoo.org> +residualvm-0.1.1.ebuild:
+  version bump
+
+  02 Feb 2013; Julian Ospald <hasufell@gentoo.org>
+  files/residualvm-0.1.0-EE.patch:
+  comply with upstream patch
+
+  31 Jan 2013; Julian Ospald <hasufell@gentoo.org> residualvm-0.1.0.ebuild,
+  +files/residualvm-0.1.0-EE.patch:
+  fix build under EE locale
+
+*residualvm-0.1.0 (14 Jan 2013)
+
+  14 Jan 2013; Julian Ospald <hasufell@gentoo.org> +residualvm-0.1.0.ebuild,
+  +metadata.xml:
+  initial import wrt #451542

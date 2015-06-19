@@ -1,0 +1,9 @@
+DEFINED_PHASES=install unpack
+DEPEND=dev-vcs/git
+DESCRIPTION=tool for updating or switching between versions of the Linux kernel source
+EAPI=4
+HOMEPAGE=http://github.com/psomas/ketchup
+LICENSE=GPL-2
+SLOT=0
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=3992b59f5682d744d16d83acb246aa24

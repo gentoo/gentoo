@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare unpack
+DEPEND=dev-lang/perl
+DESCRIPTION=Provides a trash can by intercepting certain calls to glibc
+EAPI=5
+HOMEPAGE=http://pages.stern.nyu.edu/~marriaga/software/libtrash/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=http://pages.stern.nyu.edu/~marriaga/software/libtrash/libtrash-3.2.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=96460926f2cd06f9c2eb65c0bb5a5850

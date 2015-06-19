@@ -1,0 +1,89 @@
+# ChangeLog for net-im/pyaim-t
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/pyaim-t/ChangeLog,v 1.21 2015/04/08 18:03:12 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pyaim-t-0.8.0.1-r1.ebuild:
+  Drop old Python implementations
+
+  23 Nov 2014; Manuel Rüger <mrueg@gentoo.org> -files/pyaim-t-0.8-initd,
+  -pyaim-t-0.8.0.1.ebuild, pyaim-t-0.8.0.1-r1.ebuild:
+  Mark stable on x86. Based on build testing by Myckel Habets. Add missing die.
+  Cleanup old. Fixes bug #471544
+
+  23 Nov 2014; Chema Alonso <nimiux@gentoo.org> pyaim-t-0.8.0.1-r1.ebuild:
+  Stable for amd64 wrt bug #471544
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> pyaim-t-0.8.0.1-r1.ebuild,
+  pyaim-t-0.8.0.1.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  09 Mar 2014; Manuel Rüger <mrueg@gentoo.org>
+  -files/pyaim-t-0.8-twisted-2.5.patch, -pyaim-t-0.8a.ebuild:
+  Cleanup old.
+
+*pyaim-t-0.8.0.1-r1 (18 Sep 2013)
+
+  18 Sep 2013; Hanno Boeck <hanno@gentoo.org> +pyaim-t-0.8.0.1-r1.ebuild,
+  +files/pyaim-t-0.8.0.1-pillow-imaging.patch, +files/pyaim-t-0.8-initd-r1:
+  Fix old PIL imports, move to new eclass, cleanup, fix init script pidfile dir
+  creation, sync with pyicq-t.
+
+  03 Aug 2013; Michał Górny <mgorny@gentoo.org> pyaim-t-0.8.0.1.ebuild,
+  pyaim-t-0.8a.ebuild:
+  Move dev-python/twisted to dev-python/twisted-core.
+
+  28 May 2013; Mike Gilbert <floppym@gentoo.org> pyaim-t-0.8.0.1.ebuild,
+  pyaim-t-0.8a.ebuild:
+  Set python active version to 2.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  08 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> pyaim-t-0.8.0.1.ebuild:
+  x86 stable wrt bug #385907
+
+  06 Oct 2011; Markos Chandras <hwoarang@gentoo.org> pyaim-t-0.8.0.1.ebuild:
+  Stable on amd64 wrt bug #385907
+
+*pyaim-t-0.8.0.1 (24 Aug 2011)
+
+  24 Aug 2011; Hanno Boeck <hanno@gentoo.org> +pyaim-t-0.8.0.1.ebuild,
+  +files/pyaim-t-0.8.0.1-python26-warnings.patch, files/pyaim-t-0.8-initd:
+  Version bump, added fix for deprecation warnings with python 2.6/2.7, don't
+  use --chuid due to warning with openrc/baselayout2, port to EAPI 3.
+
+  06 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pyaim-t-0.8a.ebuild:
+  Use PYTHON_DEPEND instead of NEED_PYTHON.
+
+  08 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pyaim-t-0.8a.ebuild:
+  Delete calls to deprecated python_version().
+
+  14 Mar 2009; Raúl Porcel <armin76@gentoo.org> pyaim-t-0.8a.ebuild:
+  x86 stable wrt #236048
+
+  28 Sep 2008; Thomas Anderson <gentoofan23@gentoo.org> pyaim-t-0.8a.ebuild:
+  stable amd64, bug 236048
+
+  05 Aug 2008; Thomas Anderson <gentoofan23@gentoo.org> metadata.xml:
+  Add USE flag description to metadata as per GLEP 56.
+
+  29 May 2008; Ali Polatel <hawking@gentoo.org> pyaim-t-0.8a.ebuild:
+  python_mod_{cleanup,optimize} are ROOT aware.
+
+  17 Mar 2008; Hanno Boeck <hanno@gentoo.org> pyaim-t-0.8a.ebuild:
+  Add ~amd64 keyword,.
+
+  21 Jan 2008; Maurice van der Pot <griffon26@gentoo.org>
+  pyaim-t-0.8a.ebuild:
+  Adapted the ebuild to the new home of pyaim-t on google code. Thanks to
+  Michael Perigard <michael@rustyhalo.org> in bug #206823 for the heads-up.
+
+*pyaim-t-0.8a (04 Jun 2007)
+
+  04 Jun 2007; Maurice van der Pot <griffon26@gentoo.org>
+  +files/pyaim-t-0.8-initd, +files/pyaim-t-0.8-twisted-2.5.patch,
+  +metadata.xml, +pyaim-t-0.8a.ebuild:
+  Initial import of pyaim-t into portage as requested by Chris Carlin
+  <carlin@jlab.org> (closes bug #123160).

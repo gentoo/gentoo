@@ -1,0 +1,70 @@
+# ChangeLog for dev-vcs/svnmailer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/svnmailer/ChangeLog,v 1.6 2015/02/25 06:12:47 idella4 Exp $
+
+*svnmailer-1.0.9-r1 (25 Feb 2015)
+
+  25 Feb 2015; Ian Delaney <idella4@gentoo.org> +svnmailer-1.0.9-r1.ebuild,
+  -svnmailer-1.0.9.ebuild:
+  revbump; convert -> distutils-r1, rm old
+
+  24 Mar 2014; Kacper Kowalik <xarthisius@gentoo.org> metadata.xml:
+  Drop maintainership
+
+*svnmailer-1.0.9 (22 Nov 2011)
+
+  22 Nov 2011; Kacper Kowalik <xarthisius@gentoo.org> +svnmailer-1.0.9.ebuild,
+  -files/svnmailer-1.0.8-python2.5.diff, -svnmailer-1.0.8-r2.ebuild,
+  metadata.xml:
+  Version bump, drop old, claim maintainership
+
+  06 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  svnmailer-1.0.8-r2.ebuild:
+  Use Python 2 (bug #329493).
+
+  22 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  svnmailer-1.0.8-r2.ebuild:
+  dev-util/subversion renamed to dev-vcs/subversion.
+
+  06 Mar 2010; Ulrich Mueller <ulm@gentoo.org> +svnmailer-1.0.8-r2.ebuild,
+  +files/svnmailer-1.0.8-python2.5.diff, +metadata.xml:
+  Move package from dev-util to dev-vcs, bug 56967.
+
+  27 Sep 2008; Petteri Räty <betelgeuse@gentoo.org>
+  svnmailer-1.0.8-r2.ebuild:
+  Use EAPI 2 use dependencies instead of built_with_use.
+
+  27 Sep 2008; Petteri Räty <betelgeuse@gentoo.org>
+  -svnmailer-1.0.8.ebuild, -svnmailer-1.0.8-r1.ebuild:
+  Remove old ebuilds.
+
+  28 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Andrew Ross (aross) from metadata.xml (as per #139633). Assigning
+  to maintainer-needed.
+
+*svnmailer-1.0.8-r2 (06 Apr 2008)
+
+  06 Apr 2008; Hanno Boeck <hanno@gentoo.org>
+  +files/svnmailer-1.0.8-python2.5.diff, +svnmailer-1.0.8-r2.ebuild:
+  Patch for Python 2.5.
+
+*svnmailer-1.0.8-r1 (26 Jan 2007)
+
+  26 Jan 2007; Andrew Ross <aross@gentoo.org> +svnmailer-1.0.8-r1.ebuild:
+  Detect when subversion was built without USE=python, thanks to Nicolas
+  Litchinko <n.litchinko@noos.fr> in bug #163933
+
+  26 Jan 2007; Andrew Ross <aross@gentoo.org> metadata.xml,
+  svnmailer-1.0.8.ebuild:
+  Take over maintainership from retired dev (bug #73878). Install HTML docs in
+  the correct location (bug #157575).
+
+  30 Jun 2006; Sebastian Bergmann <sebastian@gentoo.org>
+  svnmailer-1.0.8.ebuild:
+  Mark ~amd64.
+
+*svnmailer-1.0.8 (30 Jun 2006)
+
+  30 Jun 2006; Sebastian Bergmann <sebastian@gentoo.org> +metadata.xml,
+  +svnmailer-1.0.8.ebuild:
+  Initial ebuild, based upon work by Andre Malo <nd@apache.org>.

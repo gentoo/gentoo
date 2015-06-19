@@ -1,0 +1,37 @@
+# ChangeLog for dev-java/hamcrest-library
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/hamcrest-library/ChangeLog,v 1.7 2015/04/13 09:07:14 monsieurp Exp $
+
+  13 Apr 2015; Patrice Clement <monsieurp@gentoo.org>
+  hamcrest-library-1.3-r1.ebuild:
+  Retroactively marking x86 stable (ALLARCHES). Fix bug 546296.
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> hamcrest-library-1.3-r1.ebuild:
+  Stable for amd64, wrt bug #546296
+
+  11 Apr 2015; Patrice Clement <monsieurp@gentoo.org>
+  hamcrest-library-1.3-r1.ebuild:
+  Adjust virtuals (at least jdk/jre 1.6).
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  hamcrest-library-1.1.ebuild, hamcrest-library-1.3-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*hamcrest-library-1.1 (28 Feb 2014)
+
+  28 Feb 2014; Johann Schmitz <ercpe@gentoo.org>
+  +files/1.1-remove-targets.patch, +hamcrest-library-1.1.ebuild:
+  Backported ebuild to 1.1 (:0) as a dependency of jmock:2
+
+*hamcrest-library-1.3-r1 (11 Sep 2013)
+
+  11 Sep 2013; Johann Schmitz <ercpe@gentoo.org>
+  +hamcrest-library-1.3-r1.ebuild, -hamcrest-library-1.3.ebuild:
+  Rev-bumped hamcrest-library to use slot dependencies for
+  hamcrest-{generator,core}
+
+*hamcrest-library-1.3 (10 Sep 2013)
+
+  10 Sep 2013; Johann Schmitz <ercpe@gentoo.org>
+  +files/1.3-remove-targets.patch, +hamcrest-library-1.3.ebuild, +metadata.xml:
+  Ebuild for hamcrest-library (bug #287775) - dependency of ganttproject et al

@@ -1,0 +1,14 @@
+Add missing includes for ressource limits.
+
+Signed-off-by: Markus Rathgeb <maggu2810@gmail.com>
+
+--- main.cpp
++++ main.cpp
+@@ -22,6 +22,7 @@
+ 
+ #include <stdlib.h>
+ #include <time.h>
++#include <sys/resource.h>
+ #include <sys/wait.h>
+ #include <signal.h>
+ #include <execinfo.h>

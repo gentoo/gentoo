@@ -1,0 +1,81 @@
+# ChangeLog for sys-apps/ucspi-proxy
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/ucspi-proxy/ChangeLog,v 1.19 2014/10/02 09:36:01 polynomial-c Exp $
+
+*ucspi-proxy-0.99 (02 Oct 2014)
+
+  02 Oct 2014; Lars Wendler <polynomial-c@gentoo.org> +ucspi-proxy-0.99.ebuild:
+  Version bump. Converted ebuild to EAPI-5 and added ~amd64 keyword.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> ucspi-proxy-0.97.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  20 Aug 2012; Mike Frysinger <vapier@gentoo.org> ucspi-proxy-0.98.ebuild:
+  Drop pointless sed dependency.
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #118937
+
+*ucspi-proxy-0.98 (14 Jan 2010)
+
+  14 Jan 2010; Thilo Bangert <bangert@gentoo.org>
+  -ucspi-proxy-0.97-r1.ebuild, -ucspi-proxy-0.97-r2.ebuild,
+  +ucspi-proxy-0.98.ebuild:
+  version bump - remove old
+
+*ucspi-proxy-0.97-r2 (14 Jan 2010)
+
+  14 Jan 2010; Thilo Bangert <bangert@gentoo.org>
+  +ucspi-proxy-0.97-r2.ebuild:
+  multilib ready - EAPI2
+
+  20 Nov 2009; Thilo Bangert <bangert@gentoo.org> ucspi-proxy-0.97.ebuild,
+  ucspi-proxy-0.97-r1.ebuild:
+  add rdep on bglibs due to possibly linking dynamically
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> ucspi-proxy-0.97.ebuild,
+  ucspi-proxy-0.97-r1.ebuild:
+  Remove virtual/libc
+
+*ucspi-proxy-0.97-r1 (25 Jul 2008)
+
+  25 Jul 2008; Thilo Bangert <bangert@gentoo.org> ucspi-proxy-0.97.ebuild,
+  +ucspi-proxy-0.97-r1.ebuild:
+  install ucspi-proxy - fix DESCRIPTION
+
+  26 Jan 2008; Thilo Bangert <bangert@gentoo.org> -ucspi-proxy-0.95.ebuild,
+  -ucspi-proxy-0.96.ebuild:
+  remove old versions
+
+  16 Jan 2008; Raúl Porcel <armin76@gentoo.org> ucspi-proxy-0.97.ebuild:
+  x86 stable
+
+*ucspi-proxy-0.97 (12 Oct 2007)
+
+  12 Oct 2007; Thilo Bangert <bangert@gentoo.org> +ucspi-proxy-0.97.ebuild:
+  version bump - bug 195240 - thanks Raúl
+
+  26 Feb 2007; Thilo Bangert <bangert@gentoo.org> ucspi-proxy-0.96.ebuild:
+  fix ROOT misuse
+
+*ucspi-proxy-0.96 (11 Jun 2006)
+
+  11 Jun 2006; Thilo Bangert <bangert@gentoo.org> metadata.xml,
+  +ucspi-proxy-0.96.ebuild:
+  version bump - new maintainer - added longdesc
+
+  06 Jun 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  ucspi-proxy-0.95.ebuild:
+  Removed gcc-config from DEPEND as it's not neccessary.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  ucspi-proxy-0.95.ebuild:
+  virtual/glibc -> virtual/libc
+
+  23 Sep 2003; Robin H. Johnson <robbat2@gentoo.org> ucspi-proxy-0.95.ebuild:
+  bump to stable
+
+*ucspi-proxy-0.95 (11 Aug 2003)
+
+  11 Aug 2003; Robin H. Johnson <robbat2@gentoo.org> ucspi-proxy-0.95.ebuild:
+  Initial commit, thanks to Kalin Kozhuharov <kalin@thinrope.net>, bug #23836

@@ -1,0 +1,361 @@
+# ChangeLog for dev-python/dnspython
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/dnspython/ChangeLog,v 1.96 2015/04/08 08:05:28 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> dnspython-1.11.1.ebuild:
+  Drop old Python implementations
+
+  06 Mar 2015; Ian Delaney <idella4@gentoo.org> dnspython-1.12.0-r1.ebuild:
+  add multilib eclass to inherit to exlicitly support of function from the
+  eclass
+
+*dnspython-1.12.0-r1 (06 Mar 2015)
+
+  06 Mar 2015; Ian Delaney <idella4@gentoo.org> +dnspython-1.12.0-r1.ebuild:
+  revbump; add py3 support by addition of dnspython3 tarball, SRC_URI updated,
+  virtual re-write, assistance from NP-Hardass in achieving final form of the
+  ebuild
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -dnspython-1.10.0-r1.ebuild,
+  -dnspython-1.10.0.ebuild, -dnspython-1.9.4.ebuild:
+  Remove old.
+
+  11 Oct 2014; Ian Delaney <idella4@gentoo.org> dnspython-1.12.0.ebuild:
+  tidy / fix to test phase, prompt from Arfrever
+
+  14 Sep 2014; Agostino Sarubbo <ago@gentoo.org> dnspython-1.11.1.ebuild:
+  Stable for ppc64, wrt bug #513558
+
+  07 Sep 2014; Agostino Sarubbo <ago@gentoo.org> dnspython-1.11.1.ebuild:
+  Stable for ppc, wrt bug #513558
+
+*dnspython-1.12.0 (04 Sep 2014)
+
+  04 Sep 2014; Ian Delaney <idella4@gentoo.org> +dnspython-1.12.0.ebuild:
+  bump
+
+  30 Aug 2014; Chema Alonso <nimiux@gentoo.org> dnspython-1.11.1.ebuild:
+  Stable for amd64 wrt bug #513558
+
+  02 Aug 2014; Raúl Porcel <armin76@gentoo.org> dnspython-1.11.1.ebuild:
+  alpha/sparc stable wrt #513558
+
+  26 Jul 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> dnspython-1.11.1.ebuild:
+  x86 stable wrt bug #513558
+
+  24 Jun 2014; Markus Meier <maekke@gentoo.org> dnspython-1.11.1.ebuild:
+  arm stable, bug #513558
+
+  22 Jun 2014; Akinori Hattori <hattya@gentoo.org> dnspython-1.11.1.ebuild:
+  ia64 stable wrt bug #513558
+
+  17 Jun 2014; Jeroen Roovers <jer@gentoo.org> dnspython-1.11.1.ebuild:
+  Stable for HPPA (bug #513558).
+
+*dnspython-1.11.1 (21 Oct 2013)
+
+  21 Oct 2013; Patrick Lauer <patrick@gentoo.org> +dnspython-1.11.1.ebuild:
+  Bump
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> dnspython-1.10.0-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*dnspython-1.10.0-r1 (29 May 2013)
+
+  29 May 2013; Ian Delaney <idella4@gentoo.org> +dnspython-1.10.0-r1.ebuild:
+  revbump, migrate -> distutils-r1
+
+  01 Dec 2012; Tim Harder <radhermit@gentoo.org> dnspython-1.9.4.ebuild,
+  dnspython-1.10.0.ebuild:
+  Fix LICENSE (bug #445412 by ulm).
+
+*dnspython-1.10.0 (19 Apr 2012)
+
+  19 Apr 2012; Patrick Lauer <patrick@gentoo.org> +dnspython-1.10.0.ebuild:
+  Bump
+
+  23 Jun 2011; Markos Chandras <hwoarang@gentoo.org> -dnspython-1.9.2.ebuild:
+  Remove old ebuilds. Requested by Arfrever
+
+  28 May 2011; Brent Baude <ranger@gentoo.org> dnspython-1.9.4.ebuild:
+  Marking dnspython-1.9.4 ppc for bug 365333
+
+  21 May 2011; Raúl Porcel <armin76@gentoo.org> dnspython-1.9.4.ebuild:
+  alpha/arm/ia64/s390/sh/sparc/x86 stable wrt #365333
+
+  13 May 2011; Jeroen Roovers <jer@gentoo.org> dnspython-1.9.4.ebuild:
+  Stable for HPPA (bug #365333).
+
+  01 May 2011; Markos Chandras <hwoarang@gentoo.org> dnspython-1.9.4.ebuild:
+  Stable on amd64 wrt bug #365333
+
+  29 Apr 2011; Samuli Suominen <ssuominen@gentoo.org> dnspython-1.9.4.ebuild:
+  ppc64 stable wrt #365333
+
+*dnspython-1.9.4 (28 Mar 2011)
+
+  28 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +dnspython-1.9.4.ebuild:
+  Version bump.
+
+  08 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -dnspython-1.8.0.ebuild:
+  Delete.
+
+  08 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  dnspython-1.9.2.ebuild:
+  ppc64 stable wrt #351026
+
+  29 Jan 2011; Raúl Porcel <armin76@gentoo.org> dnspython-1.9.2.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #351026
+
+  25 Jan 2011; Jeroen Roovers <jer@gentoo.org> dnspython-1.9.2.ebuild:
+  Stable for HPPA (bug #351026).
+
+  15 Jan 2011; Markus Meier <maekke@gentoo.org> dnspython-1.9.2.ebuild:
+  x86 stable, bug #351026
+
+  15 Jan 2011; Markus Meier <maekke@gentoo.org> dnspython-1.9.2.ebuild:
+  arm stable, bug #351026
+
+  14 Jan 2011; Brent Baude <ranger@gentoo.org> dnspython-1.9.2.ebuild:
+  stable ppc, bug 351026
+
+  07 Jan 2011; Markos Chandras <hwoarang@gentoo.org> dnspython-1.9.2.ebuild:
+  Stable on amd64 wrt bug #351026
+
+*dnspython-1.9.2 (08 Dec 2010)
+
+  08 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +dnspython-1.9.2.ebuild:
+  Version bump.
+
+  16 Aug 2010; Fabian Groffen <grobian@gentoo.org> dnspython-1.8.0.ebuild:
+  Marked ~x64-macos, bug #306705
+
+  17 May 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  dnspython-1.8.0.ebuild:
+  amd64 stable (tested by rullzer) (bug #309395).
+
+  11 May 2010; Brent Baude <ranger@gentoo.org> dnspython-1.8.0.ebuild:
+  stable ppc64, bug 309395
+
+  09 May 2010; Raúl Porcel <armin76@gentoo.org> dnspython-1.8.0.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #309395
+
+  11 Apr 2010; <nixnut@gentoo.org> dnspython-1.8.0.ebuild:
+  ppc stable #309395
+
+  02 Apr 2010; Jeroen Roovers <jer@gentoo.org> dnspython-1.8.0.ebuild:
+  Stable for HPPA (bug #309395).
+
+  22 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  dnspython-1.8.0.ebuild:
+  stable x86, bug 309395
+
+*dnspython-1.8.0 (07 Feb 2010)
+
+  07 Feb 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +dnspython-1.8.0.ebuild:
+  Version bump (bug #303046).
+
+  14 Nov 2009; Raúl Porcel <armin76@gentoo.org> dnspython-1.7.1.ebuild:
+  ia64/s390/sh/sparc stable wrt #288118
+
+  11 Nov 2009; Brent Baude <ranger@gentoo.org> dnspython-1.7.1.ebuild:
+  Marking dnspython-1.7.1 ppc64 for bug 288118
+
+  22 Oct 2009; Tobias Klausmann <klausman@gentoo.org>
+  dnspython-1.7.1.ebuild:
+  Stable on alpha, bug #288118
+
+  16 Oct 2009; Jeroen Roovers <jer@gentoo.org> dnspython-1.7.1.ebuild:
+  Stable for HPPA (bug #288118).
+
+  15 Oct 2009; Markus Meier <maekke@gentoo.org> dnspython-1.7.1.ebuild:
+  amd64/arm/x86 stable, bug #288118
+
+  11 Oct 2009; nixnut <nixnut@gentoo.org> dnspython-1.7.1.ebuild:
+  ppc stable #288118
+
+  10 Oct 2009; Fabian Groffen <grobian@gentoo.org> dnspython-1.7.1.ebuild:
+  Merge from Prefix
+
+  08 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  dnspython-1.7.1.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*dnspython-1.7.1 (07 Sep 2009)
+
+  07 Sep 2009; Patrick Lauer <patrick@gentoo.org> +dnspython-1.7.1.ebuild:
+  Bump
+
+  12 May 2008; Markus Rothe <corsair@gentoo.org> dnspython-1.6.0.ebuild:
+  Stable on ppc64
+
+  10 May 2008; Santiago M. Mola <coldwind@gentoo.org>
+  dnspython-1.6.0.ebuild:
+  amd64 stable
+
+  09 May 2008; Raúl Porcel <armin76@gentoo.org> dnspython-1.6.0.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+  19 Mar 2008; Jeroen Roovers <jer@gentoo.org> dnspython-1.6.0.ebuild:
+  Stable for HPPA.
+
+*dnspython-1.6.0 (15 Dec 2007)
+
+  15 Dec 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  -dnspython-1.3.3.ebuild, +dnspython-1.6.0.ebuild:
+  Version bump. Dropped 1.3.3. Fixed SRC_URIs.
+
+  13 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  dnspython-1.5.0.ebuild:
+  ppc. stable
+
+  29 Jul 2007; Tom Gall <tgall@gentoo.org> dnspython-1.5.0.ebuild:
+  stable on ppc64
+
+  16 Jul 2007; Raúl Porcel <armin76@gentoo.org> dnspython-1.5.0.ebuild:
+  alpha/x86 stable
+
+  09 Jun 2007; Joe Peterson <lavajoe@gentoo.org> dnspython-1.5.0.ebuild:
+  Add ~x86-fbsd keyword
+
+  04 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  dnspython-1.5.0.ebuild:
+  Stable on sparc
+
+  17 Mar 2007; Steve Dibb <beandog@gentoo.org> dnspython-1.3.5.ebuild,
+  dnspython-1.5.0.ebuild:
+  amd64 stable
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org> dnspython-1.3.5.ebuild:
+  x86 stable
+
+  04 Mar 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  dnspython-1.3.3.ebuild, dnspython-1.3.5.ebuild, dnspython-1.5.0.ebuild:
+  Replaced einfo with elog in pkg_postinst. In 1.5.0: cleanup, added
+  NEED_PYTHON, added examples use-flag.
+
+*dnspython-1.5.0 (27 Dec 2006)
+
+  27 Dec 2006; Tiziano Müller <dev-zero@gentoo.org>
+  -dnspython-1.3.2.ebuild, -dnspython-1.3.4.ebuild, -dnspython-1.4.0.ebuild,
+  +dnspython-1.5.0.ebuild:
+  Version bump. Dropped old versions.
+
+*dnspython-1.4.0 (25 Sep 2006)
+
+  25 Sep 2006; Marien Zwart <marienz@gentoo.org> +dnspython-1.4.0.ebuild:
+  Version bump and some minor cleanup. Closes bug #146775, thanks to Martin
+  Jackson <mhjacks@swbell.net> for reporting.
+
+  17 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  dnspython-1.3.5.ebuild:
+  ppc stable
+
+  21 May 2006; Markus Rothe <corsair@gentoo.org> dnspython-1.3.5.ebuild:
+  Stable on ppc64
+
+  16 Mar 2006; Markus Rothe <corsair@gentoo.org> dnspython-1.3.5.ebuild:
+  Added ~ppc64; bug #126354
+
+  02 Feb 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fix rmd160 digests.
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> dnspython-1.3.5.ebuild:
+  Mark 1.3.5 stable on ia64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> dnspython-1.3.5.ebuild:
+  Mark 1.3.5 stable on alpha
+
+  21 Jan 2006; Jeroen Roovers <jer@gentoo.org> dnspython-1.3.5.ebuild:
+  Marked stable on hppa (bug #119602).
+
+  19 Nov 2005; Chris White <chriswhite@gentoo.org> metadata.xml:
+  Added japanese metadata.xml translation thanks to Yoshino-san.
+
+*dnspython-1.3.5 (12 Nov 2005)
+
+  12 Nov 2005; Lukasz Strzygowski <lucass@gentoo.org>
+  +dnspython-1.3.5.ebuild:
+  Version bump. Closing bug #112239.
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> dnspython-1.3.4.ebuild:
+  Mark 1.3.4 stable on ia64
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> dnspython-1.3.4.ebuild:
+  Mark 1.3.4 stable on alpha
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  dnspython-1.3.4.ebuild:
+  Stable on ppc.
+
+  30 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  dnspython-1.3.3.ebuild:
+  Stable on sparc
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> dnspython-1.3.4.ebuild:
+  add ~ia64
+
+  09 Aug 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  dnspython-1.3.4.ebuild:
+  Added to ~hppa.
+
+*dnspython-1.3.4 (01 Aug 2005)
+
+  01 Aug 2005; Lukasz Strzygowski <lucass@gentoo.org>
+  +dnspython-1.3.4.ebuild:
+  Version bump. Closing bug #101021.
+
+  03 May 2005; Simon Stelling <blubb@gentoo.org> dnspython-1.3.3.ebuild:
+  stable on amd64
+
+  24 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> dnspython-1.3.3.ebuild:
+  Add ~alpha keyword, bug 86127.
+
+  21 Mar 2005; Jason Wever <weeve@gentoo.org> dnspython-1.3.3.ebuild:
+  Added ~sparc keyword wrt bug #86127.
+
+  12 Feb 2005; Bryan Østergaard <kloeri@gentoo.org>
+  -dnspython-1.3.0.ebuild, -dnspython-1.3.1.ebuild:
+  Remove old versions.
+
+*dnspython-1.3.3 (31 Jan 2005)
+
+  31 Jan 2005; Fernando Serboncini <fserb@gentoo.org>
+  +dnspython-1.3.3.ebuild:
+  Version bump
+
+  26 Jan 2005; Lukasz Strzygowski <lucass@gentoo.org>
+  dnspython-1.3.1.ebuild, dnspython-1.3.2.ebuild:
+  Marked stable on x86.
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*dnspython-1.3.2 (07 Aug 2004)
+
+  07 Aug 2004; Lukasz Strzygowski <lucass@gentoo.org> +dnspython-1.3.2.ebuild:
+  Version bump. Fixed dependency and typo in message in pkg_postinst.
+  Thanks to Martin Jackson, bug #59719.
+
+  21 Jul 2004; David Holm <dholm@gentoo.org> dnspython-1.3.1.ebuild:
+  Added to ~ppc.
+
+*dnspython-1.3.1 (19 Jul 2004)
+
+  19 Jul 2004; Lukasz Strzygowski <lucass@gentoo.org> metadata.xml,
+  +dnspython-1.3.1.ebuild:
+  Version bump. Added function src_test and removed informations
+  about tests from ebuild. Added description to metadata.
+
+  08 Jul 2004; Rob Cakebread <pythonhead@gentoo.org> dnspython-1.3.0.ebuild:
+  Marked stable on x86
+
+*dnspython-1.3.0 (02 May 2004)
+
+  02 May 2004; Bryan Østergaard <kloeri@gentoo.org> +metadata.xml,
+  +dnspython-1.3.0.ebuild:
+  Initial import, bug #46500.

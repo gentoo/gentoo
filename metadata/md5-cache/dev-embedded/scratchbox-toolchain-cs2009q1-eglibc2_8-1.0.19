@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=A cross-compilation toolkit designed to make embedded Linux application development easier
+HOMEPAGE=http://www.scratchbox.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND==dev-embedded/scratchbox-1.0*
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://scratchbox.org/download/files/sbox-releases/hathor/tarball/scratchbox-toolchain-cs2009q1-eglibc2.8-armv7-1.0.19-11-i386.tar.gz http://scratchbox.org/download/files/sbox-releases/hathor/tarball/scratchbox-toolchain-cs2009q1-eglibc2.8-i486-1.0.19-5-i386.tar.gz
+_md5_=e26a60b9d1df4a775bae0984b78362ce

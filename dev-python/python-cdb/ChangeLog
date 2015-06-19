@@ -1,0 +1,107 @@
+# ChangeLog for dev-python/python-cdb
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-cdb/ChangeLog,v 1.30 2015/01/05 05:24:49 idella4 Exp $
+
+*python-cdb-0.34-r1 (05 Jan 2015)
+
+  05 Jan 2015; Ian Delaney <idella4@gentoo.org> +python-cdb-0.34-r1.ebuild:
+  revbump; conversion -> distutils-r1
+
+  03 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  python-cdb-0.34.ebuild:
+  Update dependencies (bug #302062).
+
+  26 Nov 2009; Raúl Porcel <armin76@gentoo.org> python-cdb-0.34.ebuild:
+  ia64 stable wrt #289417
+
+  26 Nov 2009; Markus Meier <maekke@gentoo.org> python-cdb-0.34.ebuild:
+  arm stable, bug #289417
+
+  22 Nov 2009; Tiago Cunha <tcunha@gentoo.org> python-cdb-0.34.ebuild:
+  stable sparc, bug 289417
+
+  29 Oct 2009; Markus Meier <maekke@gentoo.org> python-cdb-0.34.ebuild:
+  amd64/x86 stable, bug #289417
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> python-cdb-0.34.ebuild:
+  ppc stable #289417
+
+  11 Oct 2009; Fabian Groffen <grobian@gentoo.org> python-cdb-0.34.ebuild:
+  Merge from Prefix
+
+*python-cdb-0.34 (13 Sep 2009)
+
+  13 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -python-cdb-0.32.ebuild, +python-cdb-0.34.ebuild:
+  Version bump. Set SUPPORT_PYTHON_ABIS.
+
+  27 Sep 2008; Raúl Porcel <armin76@gentoo.org> python-cdb-0.32-r1.ebuild:
+  arm stable wrt #231306
+
+  18 Jul 2008; Olivier Crête <tester@gentoo.org> python-cdb-0.32-r1.ebuild:
+  Stable on amd64, bug #231306
+
+  14 Jul 2008; nixnut <nixnut@gentoo.org> python-cdb-0.32-r1.ebuild:
+  Stable on ppc wrt bug 231306
+
+  14 Jul 2008; Raúl Porcel <armin76@gentoo.org> python-cdb-0.32-r1.ebuild:
+  ia64/sparc stable wrt #231306
+
+  10 Jul 2008; Christian Faulhammer <opfer@gentoo.org>
+  python-cdb-0.32-r1.ebuild:
+  stable x86, bug 231306
+
+  17 Jan 2008; Fabian Groffen <grobian@gentoo.org> python-cdb-0.32.ebuild,
+  python-cdb-0.32-r1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  09 Dec 2006; Timothy Redaelli <drizzt@gentoo.org>
+  python-cdb-0.32-r1.ebuild:
+  Add ~x86-fbsd keyword
+
+*python-cdb-0.32-r1 (25 Sep 2006)
+
+  25 Sep 2006; Marien Zwart <marienz@gentoo.org>
+  +files/python-cdb-0.32-python-2.5-compat.patch,
+  +python-cdb-0.32-r1.ebuild:
+  Revision bump with a patch to build on python 2.5 and a src_test. Closes bug
+  #148505.
+
+  12 Jul 2006; Aron Griffis <agriffis@gentoo.org> python-cdb-0.32.ebuild:
+  Mark 0.32 stable on ia64
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> python-cdb-0.32.ebuild:
+  Mark 0.32 ~ia64
+
+  02 Mar 2006; Markus Ullmann <jokey@gentoo.org> python-cdb-0.32.ebuild:
+  Adding ~arm keyword
+
+  24 Jan 2006; Jason Wever <weeve@gentoo.org> python-cdb-0.32.ebuild:
+  Stable on SPARC.
+
+  28 Aug 2005; Fabian Groffen <grobian@gentoo.org> python-cdb-0.32.ebuild:
+  Marking ~ppc-macos (bug #87701)
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  python-cdb-0.32.ebuild:
+  Stable on ppc.
+
+  01 Apr 2005; Joseph Jezak <josejx@gentoo.org> python-cdb-0.32.ebuild:
+  Marked ~ppc for bug #87349.
+
+  27 Mar 2005; Tom Martin <slarti@gentoo.org> python-cdb-0.32.ebuild:
+  Stable on amd64, testing on sparc.
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  07 Dec 2004; Dylan Carlson <absinthe@gentoo.org> python-cdb-0.32.ebuild:
+  Keywords ~amd64.
+
+  11 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> python-cdb-0.32.ebuild:
+  Fix header.
+
+*python-cdb-0.32 (12 Jul 2003)
+
+  12 Jul 2003; Alastair Tse <liquidx@gentoo.org> python-cdb-0.32.ebuild:
+  initial ebuild. contributed by M Stearn <mstearn@hotmail.com>

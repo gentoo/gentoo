@@ -1,0 +1,75 @@
+# ChangeLog for dev-java/jnr-constants
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jnr-constants/ChangeLog,v 1.16 2015/06/17 09:21:56 monsieurp Exp $
+
+  17 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
+  -jnr-constants-0.8.2-r1.ebuild, -jnr-constants-0.8.2.ebuild,
+  -jnr-constants-0.8.3.ebuild, -jnr-constants-0.8.4.ebuild,
+  -jnr-constants-0.8.5.ebuild:
+  Remove old.
+
+  17 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
+  jnr-constants-0.8.6.ebuild:
+  Stable for x86+amd64 through ALLARCHES. Fix bug 552362.
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  21 Mar 2015; Patrice Clement <monsieurp@gentoo.org>
+  jnr-constants-0.8.6.ebuild:
+  Set required virtual JRE/JDK to 1.6.
+
+*jnr-constants-0.8.6 (21 Mar 2015)
+
+  21 Mar 2015; Patrice Clement <monsieurp@gentoo.org>
+  +jnr-constants-0.8.6.ebuild, jnr-constants-0.8.5.ebuild:
+  Version bump courtesy of Arfrever <arfrever.fta@gmail.com>.
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org> jnr-constants-0.8.5.ebuild:
+  amd64 stable, bug #495396
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  jnr-constants-0.8.5.ebuild:
+  x86 stable wrt bug #495396
+
+*jnr-constants-0.8.5 (27 Sep 2013)
+
+  27 Sep 2013; Tom Wijsman <TomWij@gentoo.org> +jnr-constants-0.8.5.ebuild:
+  Version bump to 0.8.5; fixes bug #486030, reported by Arfrever.
+
+*jnr-constants-0.8.2-r1 (17 Aug 2013)
+*jnr-constants-0.8.3-r1 (17 Aug 2013)
+
+  17 Aug 2013; Tom Wijsman <TomWij@gentoo.org> +jnr-constants-0.8.2-r1.ebuild,
+  +jnr-constants-0.8.3-r1.ebuild:
+  Revision bump. Slotted 0.8.2 and 0.8.3 into SLOT="0.8.2" for at least dev-java
+  /jnr-posix.
+
+*jnr-constants-0.8.4 (11 Jul 2013)
+
+  11 Jul 2013; Tom Wijsman <TomWij@gentoo.org> +jnr-constants-0.8.4.ebuild:
+  Version bump to 0.8.4.
+
+  09 Aug 2012; Johannes Huber <johu@gentoo.org> jnr-constants-0.8.3.ebuild:
+  Stable for x86, wrt bug #428942
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> jnr-constants-0.8.3.ebuild:
+  Stable for amd64, wrt bug #428942
+
+*jnr-constants-0.8.3 (28 May 2012)
+
+  28 May 2012; Ralph Sennhauser <sera@gentoo.org> +jnr-constants-0.8.3.ebuild:
+  Version bump. #417889
+
+  09 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  jnr-constants-0.8.2.ebuild:
+  x86 stable wrt bug #396305
+
+  30 Apr 2012; Agostino Sarubbo <ago@gentoo.org> jnr-constants-0.8.2.ebuild:
+  Stable for amd64, wrt bug #396305
+
+*jnr-constants-0.8.2 (12 Jan 2012)
+
+  12 Jan 2012; Ralph Sennhauser <sera@gentoo.org> +jnr-constants-0.8.2.ebuild,
+  +files/jnr-constants_maven-build.xml, +metadata.xml:
+  New package, replacement for dev-java/constantine.

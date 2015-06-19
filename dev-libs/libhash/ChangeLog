@@ -1,0 +1,51 @@
+# ChangeLog for dev-libs/libhash
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libhash/ChangeLog,v 1.14 2012/05/10 15:52:45 ago Exp $
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -libhash-1.0.3.ebuild:
+  Remove old
+
+  06 May 2012; Raúl Porcel <armin76@gentoo.org> libhash-1.0.3.ebuild,
+  libhash-1.0.3-r1.ebuild:
+  Drop ia64 keywords
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> libhash-1.0.3-r1.ebuild:
+  x86 stable wrt bug #396895
+
+  08 Feb 2012; Markus Meier <maekke@gentoo.org> libhash-1.0.3-r1.ebuild:
+  arm stable, bug #396895
+
+  07 Feb 2012; Jeroen Roovers <jer@gentoo.org> libhash-1.0.3-r1.ebuild:
+  Stable for HPPA (bug #396895).
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org> libhash-1.0.3-r1.ebuild:
+  Marking libhash-1.0.3-r1 ppc for bug 396895
+
+  02 Feb 2012; Agostino Sarubbo <ago@gentoo.org> libhash-1.0.3-r1.ebuild:
+  Stable for amd64, wrt bug #396895
+
+*libhash-1.0.3-r1 (16 Aug 2010)
+
+  16 Aug 2010; Jeroen Roovers <jer@gentoo.org> -libhash-1.0.2.ebuild,
+  +libhash-1.0.3-r1.ebuild:
+  Add SONAME thanks to Nathan Phillip Brink (bug #332937).
+
+  18 May 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  libhash-1.0.3.ebuild:
+  Respect CPPFLAGS/LDFLAGS and fix linking of tests with --as-needed.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*libhash-1.0.3 (14 Jun 2005)
+
+  14 Jun 2005; Mike Frysinger <vapier@gentoo.org> +libhash-1.0.3.ebuild:
+  Version bump #96070 by David Holm.
+
+  17 Jul 2004; David Holm <dholm@gentoo.org> libhash-1.0.2.ebuild:
+  Added to ~ppc.
+
+*libhash-1.0.2 (13 Jul 2004)
+
+  13 Jul 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

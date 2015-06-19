@@ -1,0 +1,45 @@
+# ChangeLog for dev-db/pgagent
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/pgagent/ChangeLog,v 1.11 2015/01/26 10:18:58 ago Exp $
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pgagent-3.4.0.ebuild:
+  Stable for x86, wrt bug #534944
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pgagent-3.4.0.ebuild:
+  Stable for amd64, wrt bug #534944
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org> pgagent-3.3.0.ebuild,
+  pgagent-3.4.0.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org> pgagent-3.3.0.ebuild,
+  pgagent-3.4.0.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+*pgagent-3.4.0 (15 Sep 2014)
+
+  15 Sep 2014; Aaron W. Swenson <titanofold@gentoo.org> +pgagent-3.4.0.ebuild:
+  Version bump.
+
+  28 Jul 2013; Aaron W. Swenson <titanofold@gentoo.org> -pgagent-3.2.1.ebuild:
+  Remove old.
+
+  27 Jul 2013; Agostino Sarubbo <ago@gentoo.org> pgagent-3.3.0.ebuild:
+  Stable for x86, wrt bug #477414
+
+  21 Jul 2013; Agostino Sarubbo <ago@gentoo.org> pgagent-3.3.0.ebuild:
+  Stable for amd64, wrt bug #477414
+
+*pgagent-3.3.0 (02 Feb 2013)
+
+  02 Feb 2013; Patrick Lauer <patrick@gentoo.org> +pgagent-3.3.0.ebuild:
+  Bump
+
+  28 Jul 2012; Aaron W. Swenson <titanofold@gentoo.org> pgagent-3.2.1.ebuild:
+  Add GPL-2 to $LICENSE. Fixes bug 425922.
+
+*pgagent-3.2.1 (28 Apr 2012)
+
+  28 Apr 2012; Aaron W. Swenson <titanofold@gentoo.org> +pgagent-3.2.1.ebuild,
+  +files/pgagent.confd, +files/pgagent.initd, +metadata.xml:
+  Initial commit. Bug 292767.

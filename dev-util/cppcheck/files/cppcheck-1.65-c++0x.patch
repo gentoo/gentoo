@@ -1,0 +1,9 @@
+--- cppcheck-1.65/gui/gui.pro
++++ cppcheck-1.65/gui/gui.pro
+@@ -150,6 +150,4 @@
+     LIBS += -lshlwapi
+ }
+ 
+-contains(QMAKE_CC, gcc) {
+     QMAKE_CXXFLAGS += -std=c++0x
+-}

@@ -1,0 +1,140 @@
+privilege-drop by Marc Haber <mh+debian-packages@zugschlus.de>
+
+--- a/Source/icmp.c
++++ b/Source/icmp.c
+@@ -39,6 +39,8 @@
+ #include "log.h"
+ #include "filter.h"
+ #include "configuration.h"
++#include <string.h>
++#include <errno.h>
+ 
+ /* Socket */
+ int icmp_socket;
+@@ -296,14 +298,16 @@
+ 
+   icmp_socket = socket(AF_INET, SOCK_RAW, IPPROTO_ICMP);
+   if (icmp_socket <= 0) {
+-	log.log(log.level_or_fd, "FATAL: Unable to open icmp raw socket");
++	int error = errno;
++    	log.log(log.level_or_fd, "FATAL: Unable to open icmp raw socket\nERROR No: %d\nERROR : %s", error, strerror(error));
+     exit(1);
+   }
+ 
+-  setgid(((struct passwd *)nobody)->pw_gid);
++  /* Don't do this here - race conditions will arise */
++  /* setgid(((struct passwd *)nobody)->pw_gid);
+   initgroups(((struct passwd *)nobody)->pw_name,
+ 	     ((struct passwd *)nobody)->pw_gid);
+-  setuid(((struct passwd *)nobody)->pw_uid);
++  setuid(((struct passwd *)nobody)->pw_uid); */
+ 
+   for(;;) {
+     if (read(icmp_socket, (__u8 *) &pkt, ICMP_CAPTURE_LENGTH) == -1) {
+--- a/Source/main.c
++++ b/Source/main.c
+@@ -153,6 +153,17 @@
+     run_thread(&udp_t, log_udp, (void *)account);
+   }
+ 
++  /* Sleep 1 sec to allow the other threads to catchup */
++  /* Not the best way to solve the issue but it works */
++  sleep(1);
++
++  /* Drop privileges */
++
++  setgid(((struct passwd *)account)->pw_gid);
++  initgroups(((struct passwd *)account)->pw_name,
++	     ((struct passwd *)account)->pw_gid);
++  setuid(((struct passwd *)account)->pw_uid);
++
+ }  
+ 
+ 
+@@ -160,8 +171,10 @@
+  * reload_configuration
+  *
+  * Stops the threads and reloads the configuration
++ *
++ * -- DEPRECATED (due to privilege drop cannot reload - needs a restart!)
+  */
+-void reload_configuration() {
++void reload_configuration_DEPRECATED() {
+   extern pthread_mutex_t log_mutex, service_mutex, dns_mutex, r_mux, w_mux;
+   extern pthread_cond_t w_cond;
+   extern int readers;
+@@ -353,8 +366,10 @@
+  * Function executed when we receive a SIHUP signal
+  */
+ void sighup(int sig) {
+-  reload_configuration();
+-  log.log(log.level_or_fd, "IP Protocols Logger: reloaded configuration.");
++  // DEPRECATED - reload_configuration();
++  // log.log(log.level_or_fd, "IP Protocols Logger: reloaded configuration.");
++  log.log(log.level_or_fd, "IP Protocols Logger: reload configuration is unsupported.");
++  die(sig);
+   signal(SIGHUP, sighup);
+ }
+ 
+--- a/Source/tcp.c
++++ b/Source/tcp.c
+@@ -44,6 +44,8 @@
+ #include "filter.h"
+ #include "configuration.h"
+ #include "ident.h"
++#include <errno.h>
++#include <string.h>
+ 
+ /* Socket */
+ int tcp_socket;
+@@ -258,14 +260,16 @@
+ 
+   tcp_socket = socket(AF_INET, SOCK_RAW, IPPROTO_TCP);
+   if (tcp_socket <= 0) {
+-	log.log(log.level_or_fd, "FATAL: Unable to open tcp raw socket");
++  	int error = errno;
++	log.log(log.level_or_fd, "FATAL: Unable to open tcp raw socket\nERROR No: %d\nERROR : %s", error, strerror(error));
+     exit(1);
+   }
+ 
+-  setgid(((struct passwd *)nobody)->pw_gid);
++  /* Don't do this here - race conditions will arise */
++  /* setgid(((struct passwd *)nobody)->pw_gid);
+   initgroups(((struct passwd *)nobody)->pw_name,
+ 	     ((struct passwd *)nobody)->pw_gid);
+-  setuid(((struct passwd *)nobody)->pw_uid);
++  setuid(((struct passwd *)nobody)->pw_uid); */
+ 
+   for(;;) {
+     if (read(tcp_socket, (__u8 *) &pkt, TCP_CAPTURE_LENGTH) == -1) {
+--- a/Source/udp.c
++++ b/Source/udp.c
+@@ -39,6 +39,8 @@
+ #include "filter.h"
+ #include "configuration.h"
+ #include "ident.h"
++#include <errno.h>
++#include <string.h>
+ 
+ /* Socket */
+ int udp_socket;
+@@ -138,14 +140,16 @@
+ 
+   udp_socket = socket(AF_INET, SOCK_RAW, IPPROTO_UDP);
+   if (udp_socket <= 0) {
+-	log.log(log.level_or_fd, "FATAL: Unable to open udp raw socket");
++  	int error = errno;
++	log.log(log.level_or_fd, "FATAL: Unable to open udp raw socket\nERROR No: %d\nERROR : %s", error, strerror(error));
+     exit(1);
+   }
+ 
+-  setgid(((struct passwd *)nobody)->pw_gid);
++  /* Don't do this here - race conditions will arise */
++  /* setgid(((struct passwd *)nobody)->pw_gid);
+   initgroups(((struct passwd *)nobody)->pw_name,
+ 	     ((struct passwd *)nobody)->pw_gid);
+-  setuid(((struct passwd *)nobody)->pw_uid);
++  setuid(((struct passwd *)nobody)->pw_uid); */
+ 
+   for(;;) {
+     if (read(udp_socket, (__u8 *) &pkt, UDP_CAPTURE_LENGTH) == -1) {

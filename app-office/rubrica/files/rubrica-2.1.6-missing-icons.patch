@@ -1,0 +1,30 @@
+--- a/src/app.c
++++ b/src/app.c
+@@ -59,13 +59,13 @@
+   {"all",                      "all groups",    N_("all groups")   },
+ 
+   {"flame",                    "hot contacts",  N_("hot contacts") },
+-  {"system-users",             "friends",       N_("friends")      },
++  {"emblem-handshake",             "friends",       N_("friends")      },
+   {"emblem-favorite",          "heart",         N_("heart")        },
+   {"go-home",                  "relatives",     N_("relatives")    },
+   
+   {"chat",                     "chat",          N_("chat")         },
+   
+-  {"emblem-photos",            "holidays",      N_("holidays")     },
++  {"emblem-pictures",            "holidays",      N_("holidays")     },
+   {"applications-multimedia",  "hobbies",       N_("hobbies")      },
+   {"sport",                    "sport",         N_("sport")        },
+ 
+--- a/src/callbacks.c
++++ b/src/callbacks.c
+@@ -597,7 +597,8 @@
+     "Ukrainian Iryna Rtveliashvili <irina.rtv@mail.ru>\n"
+     "Deutsch Christian Faulhammer <christian@faulhammer.org>\n"
+     "French Julien Lesouef <julien.lesouef@free.fr>\n"
+-    "Russian Dmitry Koroban <dimka.rs@gmail.com>";
++    "Russian Dmitry Koroban <dimka.rs@gmail.com>\n"
++    "Hungarian Peter Gaal <pgaal@gmx.net>";
+ 
+ 
+   const gchar* license = 

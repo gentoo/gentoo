@@ -1,0 +1,38 @@
+# ChangeLog for www-apache/mod_backtrace
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_backtrace/ChangeLog,v 1.7 2014/12/23 13:15:45 mjo Exp $
+
+*mod_backtrace-2.01 (23 Dec 2014)
+
+  23 Dec 2014; Michael Orlitzky <mjo@gentoo.org> +mod_backtrace-2.01.ebuild,
+  -mod_backtrace-0.0.1-r1.ebuild, files/10_mod_backtrace.conf, metadata.xml:
+  Version bump partially addressing bug #532808.
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> -mod_backtrace-0.0.1.ebuild,
+  metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+*mod_backtrace-0.0.1-r1 (16 Oct 2012)
+
+  16 Oct 2012; Patrick Lauer <patrick@gentoo.org>
+  +mod_backtrace-0.0.1-r1.ebuild:
+  Improving ebuilds to use use-depends
+
+  23 Mar 2008; Benedikt Böhm <hollow@gentoo.org>
+  mod_backtrace-0.0.1.ebuild:
+  fix depend.apache usage wrt #208033; use confutils.eclass
+
+  31 Jan 2008; Benedikt Böhm <hollow@gentoo.org>
+  files/10_mod_backtrace.conf, metadata.xml:
+  update metadata; cleanup
+
+  10 Jan 2008; Benedikt Böhm <hollow@gentoo.org>
+  files/10_mod_backtrace.conf, mod_backtrace-0.0.1.ebuild:
+  fix #205172
+
+*mod_backtrace-0.0.1 (08 Sep 2007)
+
+  08 Sep 2007; Benedikt Böhm <hollow@gentoo.org>
+  +files/10_mod_backtrace.conf, +metadata.xml, +mod_backtrace-0.0.1.ebuild:
+  initial version

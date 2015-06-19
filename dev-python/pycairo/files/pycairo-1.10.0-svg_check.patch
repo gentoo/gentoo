@@ -1,0 +1,126 @@
+--- src/cairomodule.c
++++ src/cairomodule.c
+@@ -116,7 +116,7 @@
+ #else
+   0,
+ #endif
+-#ifdef CAIRO_HAS_SVG_SURFACE
++#ifdef PYCAIRO_ENABLE_SVG
+   &PycairoSVGSurface_Type,
+ #else
+   0,
+@@ -247,7 +247,7 @@
+   if (PyType_Ready(&PycairoPSSurface_Type) < 0)
+     return NULL;
+ #endif
+-#ifdef CAIRO_HAS_SVG_SURFACE
++#ifdef PYCAIRO_ENABLE_SVG
+   if (PyType_Ready(&PycairoSVGSurface_Type) < 0)
+     return NULL;
+ #endif
+@@ -337,7 +337,7 @@
+   PyModule_AddObject(m, "PSSurface", (PyObject *)&PycairoPSSurface_Type);
+ #endif
+ 
+-#ifdef CAIRO_HAS_SVG_SURFACE
++#ifdef PYCAIRO_ENABLE_SVG
+   Py_INCREF(&PycairoSVGSurface_Type);
+   PyModule_AddObject(m, "SVGSurface", (PyObject *)&PycairoSVGSurface_Type);
+ #endif
+@@ -399,7 +399,7 @@
+ #else
+   PyModule_AddIntConstant(m, "HAS_PS_SURFACE", 0);
+ #endif
+-#if CAIRO_HAS_SVG_SURFACE
++#if PYCAIRO_ENABLE_SVG
+   PyModule_AddIntConstant(m, "HAS_SVG_SURFACE", 1);
+ #else
+   PyModule_AddIntConstant(m, "HAS_SVG_SURFACE", 0);
+--- src/private.h
++++ src/private.h
+@@ -75,7 +75,7 @@
+ extern PyTypeObject PycairoPSSurface_Type;
+ #endif
+ 
+-#if CAIRO_HAS_SVG_SURFACE
++#if PYCAIRO_ENABLE_SVG
+ extern PyTypeObject PycairoSVGSurface_Type;
+ #endif
+ 
+--- src/py3cairo.h
++++ src/py3cairo.h
+@@ -171,7 +171,7 @@
+ #define PycairoPSSurface_Type       *(Pycairo_CAPI->PSSurface_Type)
+ #endif
+ 
+-#if CAIRO_HAS_SVG_SURFACE
++#if PYCAIRO_ENABLE_SVG
+ #define PycairoSVGSurface_Type      *(Pycairo_CAPI->SVGSurface_Type)
+ #endif
+ 
+--- src/surface.c
++++ src/surface.c
+@@ -72,7 +72,7 @@
+     type = &PycairoPSSurface_Type;
+     break;
+ #endif
+-#if CAIRO_HAS_SVG_SURFACE
++#if PYCAIRO_ENABLE_SVG
+   case CAIRO_SURFACE_TYPE_SVG:
+     type = &PycairoSVGSurface_Type;
+     break;
+@@ -1022,7 +1022,7 @@
+ 
+ 
+ /* Class SVGSurface(Surface) ----------------------------------------------- */
+-#ifdef CAIRO_HAS_SVG_SURFACE
++#ifdef PYCAIRO_ENABLE_SVG
+ #include <cairo-svg.h>
+ 
+ static PyObject *
+@@ -1133,7 +1133,7 @@
+   0,                                  /* tp_is_gc */
+   0,                                  /* tp_bases */
+ };
+-#endif  /* CAIRO_HAS_SVG_SURFACE */
++#endif  /* PYCAIRO_ENABLE_SVG */
+ 
+ 
+ #if CAIRO_HAS_WIN32_SURFACE
+--- wscript
++++ wscript
+@@ -1,6 +1,7 @@
+ # -*- python -*-
+ 
+ import os
++import subprocess
+ 
+ top = '.'
+ out = 'build_directory'
+@@ -11,6 +12,17 @@
+ cairo_version_required = '1.10.0'
+ 
+ 
++def check_svg():
++  if os.environ.get('PYCAIRO_DISABLE_SVG', None) is None:
++    return_code = subprocess.call(['pkg-config', '--exists', 'cairo-svg'])
++    if return_code == 0:
++      return True
++    else:
++      return False
++  else:
++    return False
++
++
+ def options(ctx):
+   print('  %s/options()' %d)
+   ctx.tool_options('gnu_dirs')
+@@ -39,6 +51,8 @@
+   ctx.define('PYCAIRO_VERSION_MAJOR', version[0])
+   ctx.define('PYCAIRO_VERSION_MINOR', version[1])
+   ctx.define('PYCAIRO_VERSION_MICRO', version[2])
++  if check_svg():
++    ctx.define('PYCAIRO_ENABLE_SVG', 1)
+ 
+   ctx.write_config_header('src/config.h')
+ 

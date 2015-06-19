@@ -1,0 +1,26 @@
+# ChangeLog for x11-apps/xtitle
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xtitle/ChangeLog,v 1.5 2014/05/31 14:11:16 zlogene Exp $
+
+*xtitle-1.0.3 (31 May 2014)
+
+  31 May 2014; Mikle Kolyada <zlogene@gentoo.org> +xtitle-1.0.3.ebuild:
+  Version bump
+
+  06 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Reassigning due to Zlogene became Gentoo developer, remove proxy maintainers
+  herd
+
+  06 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> xtitle-1.0.2.ebuild:
+  x86 stable wrt bug #445596
+
+  02 Dec 2012; Agostino Sarubbo <ago@gentoo.org> xtitle-1.0.2.ebuild:
+  Stable for amd64, wrt bug #445596
+
+*xtitle-1.0.2 (01 Nov 2012)
+
+  01 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> +xtitle-1.0.2.ebuild,
+  +metadata.xml:
+  Initial commit wrt bug #281916. Thanks to Alexander Huemer and Mikle Kolyada
+  for providing ebuilds. The latter will maintain this package through proxy
+  maintainers

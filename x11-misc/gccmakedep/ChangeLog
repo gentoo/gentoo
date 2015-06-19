@@ -1,0 +1,163 @@
+# ChangeLog for x11-misc/gccmakedep
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/gccmakedep/ChangeLog,v 1.44 2015/03/14 14:27:46 maekke Exp $
+
+  14 Mar 2015; Markus Meier <maekke@gentoo.org> gccmakedep-1.0.3.ebuild:
+  arm stable, bug #530652
+
+  06 Mar 2015; Jeroen Roovers <jer@gentoo.org> gccmakedep-1.0.3.ebuild:
+  Stable for HPPA (bug #530652).
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> gccmakedep-1.0.3.ebuild:
+  add arm64 support, tested on A53 board
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gccmakedep-1.0.3.ebuild:
+  Stable for alpha, wrt bug #530652
+
+  23 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gccmakedep-1.0.3.ebuild:
+  Stable for sparc, wrt bug #530652
+
+  22 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gccmakedep-1.0.3.ebuild:
+  Stable for ia64, wrt bug #530652
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gccmakedep-1.0.3.ebuild:
+  Stable for ppc64, wrt bug #530652
+
+  20 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gccmakedep-1.0.3.ebuild:
+  Stable for ppc, wrt bug #530652
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gccmakedep-1.0.3.ebuild:
+  Stable for x86, wrt bug #530652
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gccmakedep-1.0.3.ebuild:
+  Stable for amd64, wrt bug #530652
+
+*gccmakedep-1.0.3 (02 Jun 2014)
+
+  02 Jun 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +gccmakedep-1.0.3.ebuild, -gccmakedep-1.0.2.ebuild:
+  Version bump. Remove old.
+
+  22 Feb 2013; Zac Medico <zmedico@gentoo.org> gccmakedep-1.0.2-r1.ebuild:
+  Add ~arm-linux keyword.
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> gccmakedep-1.0.2-r1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #419473
+
+  12 Jul 2012; Brent Baude <ranger@gentoo.org> gccmakedep-1.0.2-r1.ebuild:
+  Marking gccmakedep-1.0.2-r1 ppc stable for bug 419473
+
+  11 Jul 2012; Brent Baude <ranger@gentoo.org> gccmakedep-1.0.2-r1.ebuild:
+  Marking gccmakedep-1.0.2-r1 ppc64 stable for bug 419473
+
+  29 Jun 2012; Markus Meier <maekke@gentoo.org> gccmakedep-1.0.2-r1.ebuild:
+  arm stable, bug #419473
+
+  28 Jun 2012; Jeroen Roovers <jer@gentoo.org> gccmakedep-1.0.2-r1.ebuild:
+  Stable for HPPA (bug #419473).
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> gccmakedep-1.0.2-r1.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> gccmakedep-1.0.2-r1.ebuild:
+  Stable for amd64, wrt bug #419473
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> gccmakedep-1.0.2-r1.ebuild:
+  keyword ~amd64-fbsd
+
+*gccmakedep-1.0.2-r1 (14 Apr 2012)
+
+  14 Apr 2012; Michał Górny <mgorny@gentoo.org> +gccmakedep-1.0.2-r1.ebuild:
+  Update to use xorg-2 eclass.
+
+  17 Oct 2010; Mart Raudsepp <leio@gentoo.org> gccmakedep-1.0.2.ebuild:
+  Drop to ~mips
+
+  10 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  gccmakedep-1.0.2.ebuild:
+  Transfer Prefix keywords
+
+  22 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/force-rm.patch:
+  Drop stale patches.
+
+  11 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  gccmakedep-1.0.2.ebuild:
+  Update description to be less generic.
+
+  19 Jul 2006; Guy Martin <gmsoft@gentoo.org> gccmakedep-1.0.2.ebuild:
+  Stable on hppa.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> gccmakedep-1.0.2.ebuild:
+  Mark 1.0.2 stable on ia64
+
+  01 Jul 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  gccmakedep-1.0.2.ebuild:
+  ppc/sparc/mips/alpha/arm/sh stable
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  gccmakedep-1.0.2.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org> gccmakedep-1.0.2.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  gccmakedep-1.0.2.ebuild:
+  x86 stable.
+
+*gccmakedep-1.0.2 (20 May 2006)
+
+  20 May 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  -gccmakedep-1.0.1-r1.ebuild, +gccmakedep-1.0.2.ebuild:
+  Bump. Incorporates force-rm.patch.
+
+  03 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  gccmakedep-1.0.1-r1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  03 Apr 2006; Stephen P. Becker <geoman@gentoo.org>
+  gccmakedep-1.0.1-r1.ebuild:
+  added ~mips keyword
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> gccmakedep-1.0.1-r1.ebuild:
+  Added ~ppc64
+
+*gccmakedep-1.0.1-r1 (06 Feb 2006)
+
+  06 Feb 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  +files/force-rm.patch, -gccmakedep-1.0.1.ebuild,
+  +gccmakedep-1.0.1-r1.ebuild:
+  (#119719) RM needs to use 'rm -f' to ensure non-interactivity.
+
+  02 Feb 2006; <nixnut@gentoo.org> gccmakedep-1.0.1.ebuild:
+  Added ~ppc keyword. bug 120289
+
+  29 Jan 2006; Ferris McCormick <fmccor@gentoo.org> gccmakedep-1.0.1.ebuild:
+  Add ~sparc keyword.  Required for some packages to use X-modular.
+
+  27 Dec 2005; Stefaan De Roeck <stefaan@gentoo.org>
+  gccmakedep-1.0.1.ebuild:
+  Marked ~alpha
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -gccmakedep-0.99.0.ebuild:
+  Pull old versions.
+
+  23 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+*gccmakedep-1.0.1 (23 Dec 2005)
+
+  23 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +gccmakedep-1.0.1.ebuild:
+  Bump for 7.0.
+
+  19 Dec 2005; Herbie Hopkins <herbs@gentoo.org> gccmakedep-0.99.0.ebuild:
+  Marked ~amd64 wrt bug #115925.
+
+*gccmakedep-0.99.0 (09 Dec 2005)
+
+  09 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +gccmakedep-0.99.0.ebuild:
+  Initial import.

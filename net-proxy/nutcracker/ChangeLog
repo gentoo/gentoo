@@ -1,0 +1,17 @@
+# ChangeLog for net-proxy/nutcracker
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/nutcracker/ChangeLog,v 1.2 2014/03/18 14:49:55 neurogeek Exp $
+
+*nutcracker-0.3.0 (18 Mar 2014)
+
+  18 Mar 2014; Jesus Rivero <neurogeek@gentoo.org> +nutcracker-0.3.0.ebuild,
+  +files/nutcracker-0.3.0-use-system-libyaml.patch:
+  Version bump
+
+*nutcracker-0.2.4 (31 Oct 2013)
+
+  31 Oct 2013; Jesus Rivero <neurogeek@gentoo.org> +nutcracker-0.2.4.ebuild,
+  +files/nutcracker-0.2.4-use-system-libyaml.patch, +files/nutcracker.confd,
+  +files/nutcracker.initd:
+  Initial commit
+

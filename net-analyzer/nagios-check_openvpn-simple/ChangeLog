@@ -1,0 +1,22 @@
+# ChangeLog for net-analyzer/nagios-check_openvpn-simple
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-check_openvpn-simple/ChangeLog,v 1.4 2015/04/08 18:01:22 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org>
+  nagios-check_openvpn-simple-0.0.1.ebuild:
+  Drop old Python implementations
+
+  10 Nov 2014; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove empty herd tag from metadata.xml
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org>
+  nagios-check_openvpn-simple-0.0.1.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+*nagios-check_openvpn-simple-0.0.1 (20 Apr 2014)
+
+  20 Apr 2014; Michael Orlitzky <mjo@gentoo.org> +metadata.xml,
+  +nagios-check_openvpn-simple-0.0.1.ebuild:
+  New package: net-analyzer/nagios-check_openvpn-simple, a nagios plugin to
+  check if OpenVPN is running. Fixes bug #484058.

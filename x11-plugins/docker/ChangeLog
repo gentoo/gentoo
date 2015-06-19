@@ -1,0 +1,107 @@
+# ChangeLog for x11-plugins/docker
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/docker/ChangeLog,v 1.24 2015/01/19 19:31:07 voyageur Exp $
+
+*docker-1.5-r1 (19 Jan 2015)
+
+  19 Jan 2015; Bernard Cafarelli <voyageur@gentoo.org> docker-1.5.ebuild,
+  +docker-1.5-r1.ebuild, +files/docker-1.5-makefile_rename.patch, metadata.xml:
+  Move under desktop-dock, block app-emulation/docker in current stable, clean
+  ebuild and rename binary
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due desktop-wm removal
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> docker-1.5.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  29 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  files/docker-1.5-makefile.patch:
+  Fix building with -Wl,--as-needed and respect LDFLAGS wrt #248605.
+
+  22 Sep 2008; David Shakaryan <omp@gentoo.org> metadata.xml:
+  Change herd from commonbox to desktop-wm.
+
+  13 May 2008; Raúl Porcel <armin76@gentoo.org> docker-1.5.ebuild:
+  alpha stable wrt #220781
+
+  12 May 2008; nixnut <nixnut@gentoo.org> docker-1.5.ebuild:
+  Stable on ppc wrt bug 220781
+
+  11 May 2008; Markus Meier <maekke@gentoo.org> docker-1.5.ebuild:
+  x86 stable, bug #220781
+
+  10 May 2008; Santiago M. Mola <coldwind@gentoo.org> docker-1.5.ebuild:
+  amd64 back to stable, bug #220781
+
+  24 Apr 2008; David Shakaryan <omp@gentoo.org>
+  +files/docker-1.5-makefile.patch, docker-1.5.ebuild:
+  Various QA fixes by Jakub Moc. (bug #207733)
+
+  22 Apr 2007; Markus Rothe <corsair@gentoo.org> docker-1.5.ebuild:
+  Added ~ppc64
+
+  07 Dec 2006; Diego Pettenò <flameeyes@gentoo.org> docker-1.5.ebuild:
+  Add ~x86-fbsd keyword as per bug #156873. Thanks to Mark Kowarsky
+  (mark_alec) for reporting.
+
+  01 Nov 2006; David Shakaryan <omp@gentoo.org> docker-1.5.ebuild:
+  Code cleanup and add x11-libs/libX11 to dependencies. (bug #153606)
+
+  29 Oct 2006; David Shakaryan <omp@gentoo.org> -docker-1.3-r1.ebuild,
+  docker-1.5.ebuild:
+  Remove older version and add dev-util/pkgconfig to DEPEND. (bug #150635)
+
+  02 Sep 2006; <blubb@gentoo.org> docker-1.5.ebuild:
+  stable on amd64
+
+  08 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> docker-1.3-r1.ebuild,
+  docker-1.5.ebuild:
+  Fix HOMEPAGE/SRC_URI for bug 73110.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  26 Jul 2004; <malc@gentoo.org> docker-1.5.ebuild:
+  Add ~amd64 - closes bug #58438
+
+  12 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> docker-1.5.ebuild:
+  Stable on alpha.
+
+*docker-1.5 (07 Feb 2004)
+
+  07 Feb 2004; Ian Leitch <port001@gentoo.org> docker-1.3-r1.ebuild,
+  docker-1.5.ebuild, metadata.xml:
+  Moved from x11-misc/docker to x11-plugins/docker.
+
+  30 Oct 2003; Brandon Hale <tseng@gentoo.org> docker-1.3-r1.ebuild,
+  docker-1.3.ebuild, docker-1.5.ebuild, metadata.xml:
+  Added metadata.xml, cleanup, mark 1.5 stable on x86.
+
+  09 Jul 2003; Will Woods <wwoods@gentoo.org> docker-1.5.ebuild:
+  Added ~alpha to KEYWORDS
+
+  12 Jun 2003; <msterret@gentoo.org> docker-1.3-r1.ebuild, docker-1.5.ebuild:
+  fix Header
+
+*docker-1.5 (25 Jan 2003)
+
+  25 Jan 2003; Brad Cowan <bcowan@gentoo.org> docker-1.5.ebuild,
+  files/digest-docker-1.5:
+  Version bump...removed depends on openbox.
+
+*docker-1.3-r1 (26 Oct 2002)
+
+  26 Oct 2002; Matt Keadle <mkeadle@gentoo.org> docker-1.3-r1.ebuild
+  files/digest-docker-1.3-r1
+
+  Added glib2 to DEPEND
+
+*docker-1.3 (23 Oct 2002)
+
+  23 Oct 2002; Matt Keadle <mkeadle@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way.
+
+  Initial Gentoo docker release.

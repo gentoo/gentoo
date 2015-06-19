@@ -1,0 +1,13 @@
+# ChangeLog for app-admin/consolehm
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/consolehm/ChangeLog,v 1.2 2009/10/11 23:13:32 halcy0n Exp $
+
+  11 Oct 2009; Mark Loeser <halcy0n@gentoo.org> consolehm-1.31.ebuild:
+  QA fixes, unquoted variables
+
+*consolehm-1.31 (12 Jan 2007)
+
+  12 Jan 2007; Javier Villavicencio <the_paya@gentoo.org>
+  +files/consolehm-gcc4.patch, +consolehm-1.31.ebuild:
+  New ebuild. Hardware sensors monitoring for FreeBSD.
+

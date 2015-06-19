@@ -1,0 +1,12 @@
+# ChangeLog for media-sound/flack
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/flack/ChangeLog,v 1.2 2013/07/21 08:58:33 pacho Exp $
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #92799
+
+*flack-2.0.6 (23 Oct 2011)
+
+  23 Oct 2011; Stefan Briesenick <sbriesen@gentoo.org> +flack-2.0.6.ebuild,
+  +metadata.xml:
+  initial commit

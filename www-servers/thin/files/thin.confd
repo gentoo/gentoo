@@ -1,0 +1,20 @@
+# /etc/conf.d/thin: Configuration for /etc/init.d/thin*
+# Copy this file to /etc/conf.d/thin.SERVERNAME for server specific options.
+
+# Set the configuration file location.
+# In start-all mode (/etc/init.d/thin), this must point to the directory where
+# all the thin configurations are located.
+# When starting a specific server (/etc/init.d/thin.SERVER), point to the exact
+# location of the .yml configuration file.
+# CONFIG="/etc/thin/${SVCNAME#*.}.yml"
+
+# Disable looking for a configuration file.
+# You can use THIN_OPTS instead for setting command line options.
+# NOCONFIG=0
+
+# Set the Ruby interpreter to use.
+# RUBY="/usr/bin/ruby"
+
+# Set command line options to pass to thin.
+# In specific server mode, '--tag SERVER_NAME' is automatically appended.
+# THIN_OPTS=

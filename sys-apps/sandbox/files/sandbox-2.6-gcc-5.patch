@@ -1,0 +1,13 @@
+fix building w/gcc-5
+
+--- a/libsandbox/Makefile.in
++++ b/libsandbox/Makefile.in
+@@ -68,7 +68,7 @@ sb_nr.h: symbols.h $(SB_NR_FILE)
+ 
+ TRACE_MAKE_HEADER = \
+ 	$(SB_AWK) $(GEN_TRACE_SCRIPT) -v MODE=gen | \
+-		$(COMPILE) -E -include $(top_srcdir)/headers.h - $$f | \
++		$(COMPILE) -E -P -include $(top_srcdir)/headers.h - $$f | \
+ 		$(SB_AWK) $(GEN_TRACE_SCRIPT) -v syscall_prefix=$$t > $$header
+ trace_syscalls.h: $(GEN_TRACE_SCRIPT) Makefile
+ if SB_SCHIZO

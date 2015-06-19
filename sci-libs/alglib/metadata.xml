@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <maintainer>
+    <email>jlec@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+ALGLIB is a cross-platform numerical analysis and data processing library. It 
+supports several programming languages (C++, C#, Pascal, VBA) and several 
+operating systems (Windows, Linux, Solaris). ALGLIB features include:
+
+* Linear algebra (direct algorithms, EVD/SVD)
+* Solvers (linear and nonlinear)
+* Interpolation
+* Optimization
+* Fast Fourier transforms
+* Numerical integration
+* Linear and nonlinear least-squares fitting
+* Ordinary differential equations
+* Special functions
+* Statistics (descriptive statistics, hypothesis testing)
+* Data analysis (classification/regression, including neural networks)
+* Multiple precision versions of linear algebra, interpolation optimization and 
+* others algorithms (using MPFR for floating point computations)
+
+Why to choose ALGLIB? Because it is:
+
+* portable. It can be compiled almost anywhere using almost any compiler 
+(see compatibility matrix for more info).
+* easy to use. It supports many programming languages. If you use one language, 
+you don't need to study another (FORTRAN, for example) to compile and link an 
+external library.
+* open source. It can be used for free under GPL 2+.
+* suited for commercial users too. Those who want to use ALGLIB in commercial 
+applications can buy commercial license without copyleft requirement.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,53 @@
+# ChangeLog for sys-fs/static-dev
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/static-dev/ChangeLog,v 1.15 2014/11/17 02:19:23 vapier Exp $
+
+  17 Nov 2014; Mike Frysinger <vapier@gentoo.org> static-dev-0.1.ebuild:
+  Only check for devtmpfs when installing into / #469620 by Roy Bamford.
+
+  27 Apr 2013; Mike Frysinger <vapier@gentoo.org> static-dev-0.1.ebuild:
+  Check for devtmpfs too #454404 by Alexander Tsoy.
+
+  21 Jul 2011; Mike Frysinger <vapier@gentoo.org> static-dev-0.1.ebuild:
+  Switch to newer makedev package and drop arch-specific logic #373625 by
+  Bertrand Jacquin.
+
+  15 Apr 2011; Ulrich Mueller <ulm@gentoo.org> static-dev-0.1.ebuild:
+  Don't PROVIDE virtual/dev-manager, it is a new-style virtual now. Bug 361133.
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> static-dev-0.1.ebuild:
+  Drop to ~mips
+
+  06 Dec 2009; Mike Frysinger <vapier@gentoo.org> static-dev-0.1.ebuild:
+  Create device nodes in $D/dev instead of /dev #295732 by Diego E.
+  Pettenò.
+
+  01 Oct 2007; Mike Frysinger <vapier@gentoo.org> static-dev-0.1.ebuild:
+  Fixup from Scott Price for devfs test #137434.
+
+  17 Sep 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing johnm from metadata.xml (see #186467 for reference).
+
+  13 Jul 2006; Aron Griffis <agriffis@gentoo.org> static-dev-0.1.ebuild:
+  Mark 0.1 stable on ia64. #107875
+
+  05 Jul 2006; Jeroen Roovers <jer@gentoo.org> static-dev-0.1.ebuild:
+  Stable on hppa (bug #107875).
+
+  26 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org> static-dev-0.1.ebuild:
+  Stable on sparc wrt #107875
+
+  03 May 2006; Markus Rothe <corsair@gentoo.org> static-dev-0.1.ebuild:
+  Stable on ppc64; bug #107875
+
+  01 May 2006; Joseph Jezak <josejx@gentoo.org> static-dev-0.1.ebuild:
+  Marked ppc stable for bug #107875.
+
+  15 Apr 2006; John Mylchreest <johnm@gentoo.org> static-dev-0.1.ebuild:
+  Exit if trying to install over udev or devfs
+
+*static-dev-0.1 (20 Mar 2006)
+
+  20 Mar 2006; John Mylchreest <johnm@gentoo.org> +metadata.xml,
+  +static-dev-0.1.ebuild:
+  initial commit. A basic static /dev

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>games</herd>
+	<maintainer>
+		<email>hasufell@gentoo.org</email>
+		<name>Julian Ospald</name>
+	</maintainer>
+	<longdescription lang="en">
+		A complete from scratch recreation of Super Mario Bros. with a focus on
+		perfectly imitating the feel the 1985 classic gave us. Then give Mario
+		a portal gun, add puzzle game mechanics from Portal and there you go.
+		And if that wasn't crazy enough, play 4-player coop, with everyone
+		having their own Portal gun!
+	</longdescription>
+</pkgmetadata>
+

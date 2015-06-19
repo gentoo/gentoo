@@ -1,0 +1,131 @@
+# ChangeLog for dev-java/proguard
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/proguard/ChangeLog,v 1.30 2015/06/09 13:59:18 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*proguard-5.2.1 (04 Apr 2015)
+
+  04 Apr 2015; James Le Cuirot <chewi@gentoo.org> +proguard-5.2.1.ebuild,
+  -files/build.xml:
+  Version bump. Remove j2me support because we're going to remove sun-j2me-bin.
+  Also remove unused build.xml file.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> proguard-4.5.ebuild,
+  proguard-4.7.ebuild, proguard-4.8.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*proguard-4.8 (26 Aug 2012)
+
+  26 Aug 2012; Ian Whyman <thev00d00@gentoo.org> +proguard-4.8.ebuild:
+  Version bump, bug #431050
+
+*proguard-4.7 (25 Dec 2011)
+
+  25 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org> +proguard-4.7.ebuild:
+  Vesion bump
+
+  25 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org> -proguard-4.3.ebuild,
+  -proguard-4.4.ebuild:
+  Removed old versions
+
+  16 Dec 2011; Naohiro Aota <naota@gentoo.org> proguard-4.5.ebuild:
+  Add ~x86-fbsd wrt 182475
+
+  01 Aug 2010; Markos Chandras <hwoarang@gentoo.org> proguard-4.5.ebuild:
+  Stable on amd64 wrt bug #329769
+
+  26 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> proguard-4.5.ebuild:
+  x86 stable wrt bug #329769
+
+*proguard-4.5 (25 Jun 2010)
+
+  25 Jun 2010; Petteri Räty <betelgeuse@gentoo.org> +proguard-4.5.ebuild:
+  Version bump reported in bug #325361.
+
+  07 Dec 2009; Markus Meier <maekke@gentoo.org> proguard-4.4.ebuild:
+  amd64/x86 stable, bug #295666
+
+  25 Nov 2009; Markus Meier <maekke@gentoo.org> proguard-4.3.ebuild:
+  amd64 stable, bug #284296
+
+*proguard-4.4 (04 Nov 2009)
+
+  04 Nov 2009; Petteri Räty <betelgeuse@gentoo.org> +proguard-4.4.ebuild,
+  metadata.xml:
+  Version bump. Fixes bug #290821 and bug #276985.
+
+  04 Nov 2009; Petteri Räty <betelgeuse@gentoo.org> -proguard-3.10.ebuild,
+  -proguard-4.1.ebuild, -proguard-4.2-r1.ebuild:
+  Remove old versions.
+
+  05 Oct 2009; Christian Faulhammer <fauli@gentoo.org> proguard-4.3.ebuild:
+  stable x86, bug 284296
+
+*proguard-4.3 (04 Feb 2009)
+
+  04 Feb 2009; Serkan Kaba <serkan@gentoo.org> +proguard-4.3.ebuild:
+  Version bump. Add missing dependency on ant-core.
+
+*proguard-4.2-r1 (22 Oct 2008)
+
+  22 Oct 2008; Miroslav Šulc <fordfrog@gentoo.org> -proguard-4.2.ebuild,
+  +proguard-4.2-r1.ebuild:
+  Fixed bug in proguard gui, patch by Alex Barker <alex@1stleg.com>, bug
+  #214636.
+
+  29 Jun 2008; Torsten Veller <tove@gentoo.org> proguard-4.1.ebuild,
+  proguard-4.2.ebuild:
+  Add missing die: || "..." -> || die "..."
+
+*proguard-4.2 (29 Mar 2008)
+
+  29 Mar 2008; Alistair Bush <ali_bush@gentoo.org> +proguard-4.2.ebuild:
+  Version Bump. see #214636.
+
+*proguard-4.1 (21 Feb 2008)
+
+  21 Feb 2008; Miroslav Šulc <fordfrog@gentoo.org> +proguard-4.1.ebuild:
+  Version bump
+
+  12 Nov 2007; Petteri Räty <betelgeuse@gentoo.org> -proguard-3.8.ebuild,
+  -proguard-3.9.ebuild:
+  Delete old versions.
+
+*proguard-3.10 (02 Sep 2007)
+
+  02 Sep 2007; Petteri Räty <betelgeuse@gentoo.org> +proguard-3.10.ebuild:
+  Version bump.
+
+*proguard-3.9 (27 Aug 2007)
+
+  27 Aug 2007; Petteri Räty <betelgeuse@gentoo.org> +proguard-3.9.ebuild:
+  Version bump.
+
+*proguard-3.8 (11 Mar 2007)
+
+  11 Mar 2007; Miroslav Šulc <fordfrog@gentoo.org> files/build.xml,
+  -proguard-3.6.ebuild, +proguard-3.8.ebuild:
+  Version bump. Also added launchers.
+
+  03 Feb 2007; Steve Dibb <beandog@gentoo.org> proguard-3.6.ebuild:
+  add ~amd64, bug 149432
+
+  05 Jan 2007; Vlastimil Babka <caster@gentoo.org> proguard-3.6.ebuild:
+  Convert einfo to elog.
+
+  20 Aug 2006; Krzysiek Pawlik <nelchael@gentoo.org> proguard-3.6.ebuild:
+  Added missing DEPENDs, see bug #144514.
+
+  10 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org> +files/build.xml:
+  Added missing build.xml, thanks to Piotr Radkowski <nuada@silvermedia.pl>.
+
+  08 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org> proguard-3.6.ebuild:
+  Fixed license, bug #139586.
+
+*proguard-3.6 (07 Jul 2006)
+
+  07 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org> +metadata.xml,
+  +proguard-3.6.ebuild:
+  Initial version.

@@ -1,0 +1,168 @@
+# ChangeLog for media-libs/evas
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/evas/ChangeLog,v 1.33 2015/03/16 23:35:12 vapier Exp $
+
+*evas-1.7.10 (16 Mar 2015)
+
+  16 Mar 2015; Mike Frysinger <vapier@gentoo.org> +evas-1.7.10.ebuild:
+  Version bump.
+
+  29 Jan 2015; Michał Górny <mgorny@gentoo.org> evas-1.7.8.ebuild,
+  evas-1.7.9.ebuild, evas-9999.ebuild:
+  Convert to CPU_FLAGS_X86.
+
+  11 Mar 2014; Lars Wendler <polynomial-c@gentoo.org> evas-1.7.9.ebuild:
+  Fixed compilation with >=freetype-2.5.1 (bug #493586).
+
+*evas-1.7.9 (11 Nov 2013)
+
+  11 Nov 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> +evas-1.7.9.ebuild,
+  -evas-1.7.9_pre2.ebuild:
+  Version bump, drop pre-release
+
+*evas-1.7.9_pre2 (04 Oct 2013)
+
+  04 Oct 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +evas-1.7.9_pre2.ebuild, -evas-1.7.9_pre1.ebuild:
+  New pre-release, drop old
+
+*evas-9999 (28 Sep 2013)
+
+  28 Sep 2013; Mike Frysinger <vapier@gentoo.org> +evas-9999.ebuild,
+  -evas-1.7.7.ebuild, evas-1.7.8.ebuild, evas-1.7.9_pre1.ebuild:
+  Clean up ebuild and merge live git version from E overlay.
+
+*evas-1.7.9_pre1 (17 Sep 2013)
+
+  17 Sep 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +evas-1.7.9_pre1.ebuild:
+  Add testing version for bug 462732 to test
+
+*evas-1.7.8 (04 Aug 2013)
+
+  04 Aug 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> +evas-1.7.8.ebuild:
+  Version bump
+
+*evas-1.7.7 (20 May 2013)
+
+  20 May 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -evas-1.7.6.1.ebuild, +evas-1.7.7.ebuild:
+  Version bump, drop old
+
+  24 Apr 2013; Agostino Sarubbo <ago@gentoo.org> evas-1.7.6.1.ebuild:
+  Add ~ppc, wrt bug #462050
+
+  09 Apr 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> evas-1.7.6.1.ebuild:
+  Fix typos
+
+*evas-1.7.6.1 (08 Apr 2013)
+
+  08 Apr 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> +evas-1.7.6.1.ebuild,
+  -evas-1.7.4.ebuild, -evas-1.7.5-r1.ebuild, -evas-1.7.5.ebuild:
+  Version bump, drop old, also fixes bug 458618
+
+*evas-1.7.5-r1 (02 Apr 2013)
+
+  02 Apr 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +evas-1.7.5-r1.ebuild, metadata.xml:
+  Add USE flag support for wayland, fixes bug 459872
+
+*evas-1.7.5 (04 Jan 2013)
+
+  04 Jan 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> +evas-1.7.5.ebuild:
+  Version bump
+
+*evas-1.7.4 (21 Dec 2012)
+
+  21 Dec 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> -evas-1.7.2.ebuild,
+  -evas-1.7.3.ebuild, +evas-1.7.4.ebuild:
+  Version bump, drop old
+
+*evas-1.7.3 (08 Dec 2012)
+
+  08 Dec 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> -evas-1.7.1.ebuild,
+  +evas-1.7.3.ebuild:
+  Version bump, drop old
+
+  30 Nov 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> evas-1.7.2.ebuild:
+  Drop svg USE flag, disable experimental svg support, suggest external loader
+  support in pkg_postinst
+
+*evas-1.7.2 (23 Nov 2012)
+
+  23 Nov 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> -evas-1.7.0.ebuild,
+  +evas-1.7.2.ebuild:
+  Version bump, drop old
+
+*evas-1.7.1 (22 Oct 2012)
+
+  22 Oct 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> -evas-1.2.1.ebuild,
+  +evas-1.7.1.ebuild:
+  Version bump, drop old
+
+  21 Sep 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> evas-1.7.0.ebuild:
+  Adjust dependency for gles USE flag, since mesa now has 2 flags for it, fixes
+  bug 426652
+
+  10 Sep 2012; Mike Frysinger <vapier@gentoo.org> evas-1.7.0.ebuild:
+  Add arm love.
+
+*evas-1.7.0 (07 Sep 2012)
+
+  07 Sep 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> -evas-1.0.1.ebuild,
+  -evas-1.1.0.ebuild, +evas-1.7.0.ebuild:
+  Version bump, drop old
+
+  09 Jul 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> evas-1.2.1.ebuild:
+  Disable automagic harfbuzz support, in tree version of harfbuzz is too old
+
+*evas-1.2.1 (17 Jun 2012)
+
+  17 Jun 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> +evas-1.2.1.ebuild:
+  Version bump
+
+  08 Feb 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -files/evas-1.0.0-libpng-1.5.patch:
+  Drop unused patch
+
+*evas-1.1.0 (08 Feb 2012)
+
+  08 Feb 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> -evas-1.0.0.ebuild,
+  -evas-1.0.0-r1.ebuild, +evas-1.1.0.ebuild:
+  Version bump, drop old versions
+
+*evas-1.0.1 (29 May 2011)
+
+  29 May 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> +evas-1.0.1.ebuild:
+  Version bump
+
+*evas-1.0.0-r1 (15 Mar 2011)
+
+  15 Mar 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +evas-1.0.0-r1.ebuild:
+  revision bump: Always disable edb as image loader, prevents automagic dep
+
+  26 Feb 2011; Kevin McCarthy <signals@gentoo.org> evas-1.0.0.ebuild:
+  Updated depends from media-libs/jpeg to virtual/jpeg
+
+  20 Feb 2011; Mike Frysinger <vapier@gentoo.org> evas-1.0.0.ebuild,
+  +files/evas-1.0.0-libpng-1.5.patch:
+  Fix building with libpng-1.5.
+
+*evas-1.0.0 (30 Jan 2011)
+
+  30 Jan 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -evas-1.0.0_beta2.ebuild, +evas-1.0.0.ebuild:
+  Version bump, drop old
+
+*evas-1.0.0_beta3 (17 Dec 2010)
+
+  17 Dec 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +evas-1.0.0_beta3.ebuild:
+  Version bump
+
+*evas-1.0.0_beta2 (18 Nov 2010)
+
+  18 Nov 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +evas-1.0.0_beta2.ebuild, +metadata.xml:
+  Initial commit, based on ebuild in enlightenment overlay

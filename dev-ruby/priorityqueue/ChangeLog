@@ -1,0 +1,12 @@
+# ChangeLog for dev-ruby/priorityqueue
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/priorityqueue/ChangeLog,v 1.2 2015/04/11 15:03:07 graaff Exp $
+
+  11 Apr 2015; Hans de Graaff <graaff@gentoo.org> priorityqueue-0.1.2.ebuild:
+  Document ruby22 status.
+
+*priorityqueue-0.1.2 (15 May 2014)
+
+  15 May 2014; Manuel Rüger <mrueg@gentoo.org> +metadata.xml,
+  +priorityqueue-0.1.2.ebuild:
+  Initial ebuild.

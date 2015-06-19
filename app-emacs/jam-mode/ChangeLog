@@ -1,0 +1,45 @@
+# ChangeLog for app-emacs/jam-mode
+# Copyright 2000-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/jam-mode/ChangeLog,v 1.14 2014/04/19 12:52:41 ulm Exp $
+
+  19 Apr 2014; Ulrich Müller <ulm@gentoo.org> -jam-mode-0.1.ebuild,
+  -files/70jam-mode-gentoo.el:
+  Remove old.
+
+  19 Apr 2014; Agostino Sarubbo <ago@gentoo.org> jam-mode-0.3.ebuild:
+  Stable for alpha, wrt bug #505528
+
+  12 Apr 2014; Agostino Sarubbo <ago@gentoo.org> jam-mode-0.3.ebuild:
+  Stable for x86, wrt bug #505528
+
+  11 Apr 2014; Chema Alonso <nimiux@gentoo.org> jam-mode-0.3.ebuild:
+  Stable for amd64 wrt bug #505528
+
+*jam-mode-0.3 (23 Feb 2014)
+
+  23 Feb 2014; Ulrich Müller <ulm@gentoo.org> +jam-mode-0.3.ebuild,
+  +files/50jam-mode-gentoo.el:
+  Version bump.
+
+  14 Dec 2007; Christian Faulhammer <opfer@gentoo.org> jam-mode-0.1.ebuild:
+  amd64 stable
+
+  04 Jul 2007; Ulrich Mueller <ulm@gentoo.org> jam-mode-0.1.ebuild:
+  Remove redundant functions. Dropped ~ppc-macos keyword.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> jam-mode-0.1.ebuild:
+  Mark 0.1 stable on alpha
+
+  01 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org> jam-mode-0.1.ebuild:
+  Keywording ~amd64.
+
+  01 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> jam-mode-0.1.ebuild:
+  Stable on x86. Added to ~alpha and ~ppc-macos.
+
+*jam-mode-0.1 (10 Sep 2003)
+
+  10 Sep 2003; Matthew Kennedy <mkennedy@gentoo.org> :
+  Initial import.  Ebuild submitted by Jeremy Maitin-Shepard <jbms@attbi.com>.

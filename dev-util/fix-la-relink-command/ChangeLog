@@ -1,0 +1,63 @@
+# ChangeLog for dev-util/fix-la-relink-command
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/fix-la-relink-command/ChangeLog,v 1.12 2013/12/22 16:00:57 jer Exp $
+
+  22 Dec 2013; Jeroen Roovers <jer@gentoo.org>
+  fix-la-relink-command-0.1.1.ebuild:
+  Stable for HPPA (bug #478252).
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org>
+  fix-la-relink-command-0.1.1.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org>
+  fix-la-relink-command-0.1.1.ebuild:
+  amd64 stable, bug #478252
+
+  30 May 2012; Alexis Ballier <aballier@gentoo.org>
+  fix-la-relink-command-0.1.1.ebuild:
+  keyword ~x86-fbsd
+
+  29 May 2012; Fabian Groffen <grobian@gentoo.org>
+  fix-la-relink-command-0.1.1.ebuild:
+  Marked *-solaris
+
+  29 May 2012; Fabian Groffen <grobian@gentoo.org>
+  fix-la-relink-command-0.1.1.ebuild:
+  Marked *-macos
+
+  28 May 2012; Anthony G. Basile <blueness@gentoo.org>
+  fix-la-relink-command-0.1.1.ebuild:
+  Keyword ~mips
+
+  27 May 2012; Jeroen Roovers <jer@gentoo.org>
+  fix-la-relink-command-0.1.1.ebuild:
+  Marked ~hppa (bug #417569).
+
+  26 May 2012; Alexis Ballier <aballier@gentoo.org>
+  fix-la-relink-command-0.1.1.ebuild:
+  keyword ~amd64-fbsd, bug #417569
+
+  26 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  fix-la-relink-command-0.1.1.ebuild:
+  Forgot to remove src_compile.
+
+*fix-la-relink-command-0.1.1 (26 May 2012)
+
+  26 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -fix-la-relink-command-0.1.ebuild, +fix-la-relink-command-0.1.1.ebuild:
+  Provide pre-generated man page in tarball; generating it at build time fails
+  with FEATURES=-userpriv because Perldoc.pm automatically drops root
+  privileges before writing output files (bug #417593, thanks to rainer and
+  infowolfe).
+
+*fix-la-relink-command-0.1 (26 May 2012)
+
+  26 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +fix-la-relink-command-0.1.ebuild, +metadata.xml:
+  Add a last-resort hack for fixing up relink_command in .la files to prevent
+  libraries that are being built from linking to older versions of themselves
+  installed in the filesystem. Needed e.g. for evolution-data-server and
+  libxml2. Derived from a script used in the evolution-data-server ebuild, and
+  therefore keyworded on arches where evolution-data-server itself is
+  keyworded.

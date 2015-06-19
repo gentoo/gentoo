@@ -1,0 +1,13 @@
+diff --git a/wrapper/opensync.i b/wrapper/opensync.i
+index 623c0f4..8131158 100644
+--- a/wrapper/opensync.i
++++ b/wrapper/opensync.i
+@@ -82,7 +82,7 @@ typedef struct {} OSyncHashTable;
+ %extend OSyncChange {
+ 	OSyncChange(PyObject *obj=NULL) {
+ 		OSyncChange *change = NULL;
+-		if (obj)
++		if ((obj) && (obj != Py_None))
+ 			change = (OSyncChange *)PyCObject_AsVoidPtr(obj);
+ 		else
+ 			change = osync_change_new();

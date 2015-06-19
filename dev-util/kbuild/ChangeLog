@@ -1,0 +1,199 @@
+# ChangeLog for dev-util/kbuild
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kbuild/ChangeLog,v 1.39 2014/12/22 13:08:53 polynomial-c Exp $
+
+  22 Dec 2014; Lars Wendler <polynomial-c@gentoo.org>
+  kbuild-0.1.9998_pre20131130.ebuild:
+  Stabilized for bug #525506.
+
+*kbuild-0.1.9998_pre20131130 (30 Nov 2013)
+
+  30 Nov 2013; Lars Wendler <polynomial-c@gentoo.org>
+  +kbuild-0.1.9998_pre20131130.ebuild:
+  Version bump (bug #492918).
+
+  25 Apr 2013; Lars Wendler <polynomial-c@gentoo.org>
+  kbuild-0.1.9998_pre20120806.ebuild:
+  Fixed eautoreconf with >=automake-1.13 (bug #467104).
+
+  13 Apr 2013; Lars Wendler <polynomial-c@gentoo.org>
+  -kbuild-0.1.9998_pre20110817.ebuild, -kbuild-0.1.9998_pre20110817-r1.ebuild:
+  Removed old.
+
+  09 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  kbuild-0.1.9998_pre20120806.ebuild:
+  Stable for x86, wrt bug #465200
+
+  09 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  kbuild-0.1.9998_pre20120806.ebuild:
+  Stable for amd64, wrt bug #465200
+
+  09 Apr 2013; Lars Wendler <polynomial-c@gentoo.org>
+  kbuild-0.1.9998_pre20120806.ebuild:
+  Don't depend on specific automake version (bug #437238).
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  05 Oct 2012; Agostino Sarubbo <ago@gentoo.org>
+  kbuild-0.1.9998_pre20120806.ebuild:
+  Respect CC,AR,RANLIB, wrt to bug #380063
+
+*kbuild-0.1.9998_pre20120806 (06 Aug 2012)
+
+  06 Aug 2012; Lars Wendler <polynomial-c@gentoo.org>
+  +kbuild-0.1.9998_pre20120806.ebuild,
+  +files/kbuild-0.1.9998_pre20120806-qa.patch:
+  New snapshot. Needed for the upcoming virtualbox-4.2 series.
+
+*kbuild-0.1.9998_pre20110817-r1 (20 Jun 2012)
+
+  20 Jun 2012; Justin Lecher <jlec@gentoo.org>
+  +kbuild-0.1.9998_pre20110817-r1.ebuild,
+  +files/kbuild-0.1.9998_pre20110817-gcc-4.7.patch, metadata.xml:
+  Fix for gcc-4.7, #419705; thanks Brennan Shacklett for the patch
+
+  05 Jun 2012; Lars Wendler <polynomial-c@gentoo.org> -kbuild-0.1.5-r1.ebuild,
+  -kbuild-0.1.5_p2.ebuild, -kbuild-0.1.5_p2-r1.ebuild:
+  Removed old versions.
+
+  04 Jun 2012; Justin Lecher <jlec@gentoo.org>
+  kbuild-0.1.9998_pre20110817.ebuild,
+  +files/kbuild-0.1.9998_pre20110817-gold.patch:
+  Fix for underlinking (missing pthread) detected by gold, #367607
+
+  18 Apr 2012; Lars Wendler <polynomial-c@gentoo.org>
+  kbuild-0.1.9998_pre20110817.ebuild:
+  Use better separators in sed statement (bug #398031).
+
+  18 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug 118003.
+
+  07 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  kbuild-0.1.9998_pre20110817.ebuild:
+  x86 stable wrt bug #386317
+
+  01 Nov 2011; Tony Vroon <chainsaw@gentoo.org>
+  kbuild-0.1.9998_pre20110817.ebuild:
+  Marked stable on AMD64 based on arch testing by Tomáš "Mepho" Pružina,
+  Blain "doc235" Anderson & Elijah "Armageddon" El Lazkani in security bug
+  #386317.
+
+  24 Aug 2011; Markus Meier <maekke@gentoo.org> kbuild-0.1.5_p2-r1.ebuild:
+  x86 stable, bug #380005
+
+  22 Aug 2011; Tony Vroon <chainsaw@gentoo.org> kbuild-0.1.5_p2-r1.ebuild:
+  Mark stable on AMD64 based on arch testing by Agostino "ago" Sarubbo & Ian
+  "idella4" Delaney in bug #380005 filed by Lars "Polynomial-C" Wendler.
+
+  20 Aug 2011; Lars Wendler <polynomial-c@gentoo.org>
+  kbuild-0.1.9998_pre20110817.ebuild:
+  Added sys-devel/flex to DEPEND (bug #379889).
+
+*kbuild-0.1.9998_pre20110817 (17 Aug 2011)
+
+  17 Aug 2011; Lars Wendler <polynomial-c@gentoo.org>
+  +kbuild-0.1.9998_pre20110817.ebuild,
+  +files/kbuild-0.1.9998_pre20110817-kash-link-pthread.patch:
+  Added snapshot version as >=0.1.999 is required by >=virtualbox-4.1.2
+
+  11 Aug 2011; Mike Frysinger <vapier@gentoo.org> kbuild-0.1.5-r1.ebuild,
+  kbuild-0.1.5_p2.ebuild, kbuild-0.1.5_p2-r1.ebuild, kbuild-9999.ebuild:
+  Use pull in virtual/yacc #278006 by Eric Smith.
+
+*kbuild-0.1.5_p2-r1 (19 Jan 2011)
+
+  19 Jan 2011; Lars Wendler <polynomial-c@gentoo.org>
+  +kbuild-0.1.5_p2-r1.ebuild, +files/kbuild-0.1.5_p2-qa.patch:
+  Added patch to respect LDLFAGS. Thanks to Kacper Kowalik who provided a fix
+  in bug #332225.
+
+  22 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  kbuild-0.1.5-r1.ebuild:
+  dev-util/subversion renamed to dev-vcs/subversion.
+
+  19 Jun 2010; Jonathan Callen <abcd@gentoo.org> kbuild-0.1.5-r1.ebuild:
+  Moving dev-util/cvs* to dev-vcs/cvs*
+
+  03 Jun 2010; Lars Wendler <polynomial-c@gentoo.org>
+  kbuild-0.1.5-r1.ebuild, kbuild-0.1.5_p2.ebuild:
+  Fixed license (GPL-2 --> GPL-3)
+
+*kbuild-0.1.5_p2 (03 Jun 2010)
+
+  03 Jun 2010; Lars Wendler <polynomial-c@gentoo.org> -kbuild-0.1.4.ebuild,
+  -kbuild-0.1.5.ebuild, kbuild-0.1.5-r1.ebuild, +kbuild-0.1.5_p2.ebuild,
+  +files/kbuild-0.1.5-gentoo-docdir.patch,
+  -files/kbuild-fix-acl-include.patch, metadata.xml:
+  Version bump and ebuild cleanups suggested by Chris Beswick (bug #317329).
+  Fixed installation into wrong docdir reported by flameeyes (bug #295784).
+  Fix added to stable version as well without revbump.
+  Removed old versions.
+  Added myself as maintainer.
+
+  09 Nov 2009; Markus Meier <maekke@gentoo.org> kbuild-0.1.5-r1.ebuild:
+  amd64 stable, bug #285451
+
+  22 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  kbuild-0.1.5-r1.ebuild:
+  stable x86, bug 285451
+
+  08 Jun 2009; Jim Ramsay <lack@gentoo.org> kbuild-0.1.5-r1.ebuild,
+  +files/kbuild-glibc-2.10.patch:
+  Patch so kbuild compiles against glibc-2.10 (Bug #270607)
+
+  24 Apr 2009; Patrick Lauer <patrick@gentoo.org> kbuild-0.1.5-r1:
+  Adding subversion to depends, fixes #266741
+
+*kbuild-0.1.5-r1 (18 Apr 2009)
+
+  18 Apr 2009; Patrick Lauer <patrick@gentoo.org> +kbuild-0.1.5-r1.ebuild:
+  Small fix for the missing svn revision, fixes #265537 and allows
+  virtualbox-2.2 to install. Thanks to Alessio Cassibba.
+
+*kbuild-9999 (29 Mar 2009)
+
+  29 Mar 2009; Patrick Lauer <patrick@gentoo.org> +kbuild-9999.ebuild:
+  Adding kbuild live ebuild for virtualbox-9999. Thanks to Alessio Cassibba
+  (X-Drum). Based on the ebuild from the jokey overlay.
+
+  11 Mar 2009; Markus Ullmann <jokey@gentoo.org>
+  +files/kbuild-unknown-configure-opt.patch, kbuild-0.1.5.ebuild:
+  Add QA fix for bug #256981
+
+*kbuild-0.1.5 (03 Mar 2009)
+
+  03 Mar 2009; Patrick Lauer <patrick@gentoo.org> +kbuild-0.1.5.ebuild:
+  Bump to 0.1.5. Imported from the jokey overlay, ebuilds by Alessio
+  Cassibba (X-Drum) <swapon@gmail.com>. eautoreconf is now mandatory, force
+  it. EAPI=2.
+
+  28 Oct 2008; Markus Ullmann <jokey@gentoo.org> kbuild-0.1.4.ebuild:
+  Reinstate stable keyword for bug #244718
+
+  27 Oct 2008; Markus Ullmann <jokey@gentoo.org> kbuild-0.1.4.ebuild:
+  Fix gettext dependency for bug #238556 thanks to Kristoffer for the
+  notification
+
+*kbuild-0.1.4 (15 Sep 2008)
+
+  15 Sep 2008; Markus Ullmann <jokey@gentoo.org>
+  +files/kbuild-fix-acl-include.patch, kbuild-0.1.3.ebuild,
+  +kbuild-0.1.4.ebuild:
+  (Proxy-Commit) Port from dev overlay
+
+  13 Sep 2008; Alessio Cassibba (X-Drum) <swapon@gmail.com>
+  kbuild-0.1.3.ebuild, -files/kbuild-0.1.3-fix-acl-include.patch,
+  +kbuild-0.1.4.ebuild, +files/kbuild-fix-acl-include.patch:
+  Version bump: remove dev-util/yacc from DEPEND, see bug #236948; fix unused
+  sys/acl.h include, thanks to all people involved, see bug #236949
+
+*kbuild-0.1.3 (06 Sep 2008)
+
+  06 Sep 2008; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +kbuild-0.1.3.ebuild:
+  Import for virtualbox-ose
+
+  03 Sep 2008; Alessio Cassibba (X-Drum) <swapon@gmail.com>
+  +kbuild-0.1.3.ebuild, +metadata.xml:
+  Initial ebuild for kBuild

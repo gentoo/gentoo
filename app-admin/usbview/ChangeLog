@@ -1,0 +1,149 @@
+# ChangeLog for app-admin/usbview
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/usbview/ChangeLog,v 1.47 2014/10/09 09:29:27 jer Exp $
+
+  09 Oct 2014; Jeroen Roovers <jer@gentoo.org> usbview-2.0.ebuild:
+  Fix dependencies. Do not install NEWS.
+
+  13 Feb 2013; Samuli Suominen <ssuominen@gentoo.org> -usbview-1.1.ebuild:
+  old
+
+  12 Feb 2013; Jeroen Roovers <jer@gentoo.org> usbview-2.0.ebuild:
+  Stable for HPPA (bug #456426).
+
+  12 Feb 2013; Agostino Sarubbo <ago@gentoo.org> usbview-2.0.ebuild:
+  Stable for sparc, wrt bug #456426
+
+  12 Feb 2013; Agostino Sarubbo <ago@gentoo.org> usbview-2.0.ebuild:
+  Stable for alpha, wrt bug #456426
+
+  10 Feb 2013; Agostino Sarubbo <ago@gentoo.org> usbview-2.0.ebuild:
+  Stable for ppc, wrt bug #456426
+
+  10 Feb 2013; Agostino Sarubbo <ago@gentoo.org> usbview-2.0.ebuild:
+  Stable for ppc64, wrt bug #456426
+
+  10 Feb 2013; Agostino Sarubbo <ago@gentoo.org> usbview-2.0.ebuild:
+  Stable for x86, wrt bug #456426
+
+  10 Feb 2013; Agostino Sarubbo <ago@gentoo.org> usbview-2.0.ebuild:
+  Stable for amd64, wrt bug #456426
+
+  23 Oct 2012; Samuli Suominen <ssuominen@gentoo.org> usbview-2.0.ebuild:
+  Ensure CONFIG_DEBUG_FS is enabled for /sys/kernel/debug/usb/devices.
+
+  23 Oct 2012; Samuli Suominen <ssuominen@gentoo.org> usbview-2.0.ebuild:
+  Remove pointless doman line since Makefile.am is handling manpage
+  installation. Correct GTK+ dependency from 2.x to 3.x as per configure.ac.
+
+*usbview-2.0 (22 Oct 2012)
+
+  22 Oct 2012; Jeroen Roovers <jer@gentoo.org> -usbview-1.1-r1.ebuild,
+  -files/usbview-1.1-missing-usbfs.patch, +usbview-2.0.ebuild:
+  Version bump by Gary E. Miller (bug #439290).
+
+*usbview-1.1-r1 (21 Oct 2012)
+
+  21 Oct 2012; Samuli Suominen <ssuominen@gentoo.org> +usbview-1.1-r1.ebuild,
+  +files/usbview-1.1-missing-usbfs.patch:
+  Use /sys instead of /proc to avoid missing usbfs wrt #433096 by
+  Gary E. Miller
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> usbview-1.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  27 Jul 2010; Jeroen Roovers <jer@gentoo.org> usbview-1.1.ebuild:
+  Stable for HPPA too.
+
+  31 Dec 2009; Jeroen Roovers <jer@gentoo.org> usbview-1.1.ebuild:
+  Marked ~hppa too.
+
+  07 May 2009; Tobias Klausmann <klausman@gentoo.org> usbview-1.1.ebuild:
+  Stable on alpha, bug #267955
+
+  03 May 2009; Raúl Porcel <armin76@gentoo.org> usbview-1.1.ebuild:
+  sparc/x86 stable wrt #267955
+
+  01 May 2009; Brent Baude <ranger@gentoo.org> usbview-1.1.ebuild:
+  stable ppc64, bug 267955
+
+  30 Apr 2009; Brent Baude <ranger@gentoo.org> usbview-1.1.ebuild:
+  stable ppc, bug 267955
+
+  30 Apr 2009; Samuli Suominen <ssuominen@gentoo.org> usbview-1.1.ebuild:
+  amd64 stable wrt #267955
+
+*usbview-1.1 (11 Mar 2009)
+
+  11 Mar 2009; Greg Kroah-Hartman <gregkh@gentoo.org> +usbview-1.1.ebuild:
+  1.1 after 9 years, an upstream release
+
+  11 Jan 2008; Santiago M. Mola <coldwind@gentoo.org> usbview-1.0-r3.ebuild:
+  Add pkgconfig to DEPEND, #205016
+
+  28 Nov 2007; Samuli Suominen <ssuominen@gentoo.org> usbview-1.0-r3.ebuild:
+  Run eautoreconf wrt #194835.
+
+  24 Aug 2007; Raúl Porcel <armin76@gentoo.org> usbview-1.0-r3.ebuild:
+  alpha stable wrt #187920, thanks to Tobias Klausmann for testing
+
+  20 Aug 2007; Markus Ullmann <jokey@gentoo.org> usbview-1.0-r3.ebuild:
+  Stable on x86 wrt bug #187920
+
+  19 Aug 2007; Christoph Mende <angelos@gentoo.org> usbview-1.0-r3.ebuild:
+  Stable on amd64 wrt bug #187920
+
+  18 Aug 2007; nixnut <nixnut@gentoo.org> usbview-1.0-r3.ebuild:
+  Stable on ppc wrt bug 187920
+
+  14 Aug 2007; Markus Rothe <corsair@gentoo.org> usbview-1.0-r3.ebuild:
+  Stable on ppc64; bug #187920
+
+  13 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> usbview-1.0-r3.ebuild:
+  Stable on sparc wrt #187920
+
+  29 Jul 2007; Samuli Suominen <ssuominen@gentoo.org> usbview-1.0-r3.ebuild:
+  Fix desktop entry name.
+
+*usbview-1.0-r3 (21 Jul 2007)
+
+  21 Jul 2007; Samuli Suominen <ssuominen@gentoo.org> +usbview-1.0-r3.ebuild:
+  GTK+-2 port, and more.
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> usbview-1.0-r1.ebuild:
+  Mark 1.0-r1 stable on alpha
+
+*usbview-1.0-r2 (01 May 2005)
+
+  01 May 2005; John N. Laliberte <allanonjl@gentoo.org +metadata.xml,
+  +usbview-1.0-r2.ebuild:
+  Add a .desktop menu item. Fixes bug #58380
+
+  30 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> usbview-1.0-r1.ebuild:
+  Add ~alpha keyword, bug 87008.
+
+  03 Jan 2005; Markus Rothe <corsair@gentoo.org> usbview-1.0-r1.ebuild:
+  Stable on ppc64
+
+  12 Jul 2004; Tom Gall <tgall@gentoo.org> usbview-1.0-r1.ebuild:
+  add ~ppc64, bug #56697
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> usbview-1.0-r1.ebuild:
+  Add die following econf for bug 48950
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*usbview-1.0-r1 (1 Feb 2002)
+  11 Sep 2002; Owen Stampflee <owen@gentoo.org> usbview-1.0-r1.ebuild
+  Added PPC to KEYWORDS.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,81 @@
+# ChangeLog for app-text/goldendict
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/goldendict/ChangeLog,v 1.16 2015/06/09 12:23:43 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  31 Dec 2014; Michael Palimaka <kensington@gentoo.org> goldendict-1.0.1.ebuild:
+  Enforce USE dependency for media-libs/phonon.
+
+  19 Apr 2014; Maxim Koltsov <maksbotan@gentoo.org> goldendict-1.0.1.ebuild:
+  Fix desktop file, add missings x11-libs/libX11 dependency, bug #507066 and
+  #507068.
+
+  08 Oct 2013; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Fix e-mail address to match bugzilla's.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> goldendict-1.0.1.ebuild:
+  Move Qt dependencies to the new category
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #96436
+
+  26 Jul 2012; Ben de Groot <yngwin@gentoo.org> goldendict-1.0.1.ebuild:
+  Use l10n.eclass for handling locales. Bump eapi to 4.
+
+  19 Jul 2012; Michael Palimaka <kensington@gentoo.org>
+  +files/goldendict-1.0.1-gcc-4.7.patch, goldendict-1.0.1.ebuild:
+  Fix build with GCC 4.7, wrt bug #426988. Thanks to Sven Eden
+  <yamakuzure@gmx.net>.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> goldendict-1.0.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  14 Feb 2012; Davide Pesavento <pesa@gentoo.org>
+  -files/goldendict-0.9.0-gcc4.4.patch, -goldendict-0.9.0_p20100410.ebuild,
+  goldendict-1.0.1.ebuild, metadata.xml:
+  Depend on qt3support being enabled (bug #390985). Remove obsolete version.
+
+  09 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> goldendict-1.0.1.ebuild:
+  x86 stable wrt bug #365343
+
+  01 May 2011; Markos Chandras <hwoarang@gentoo.org> goldendict-1.0.1.ebuild:
+  Stable on amd64 wrt bug #365343
+
+  26 Mar 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  goldendict-0.9.0_p20100410.ebuild, goldendict-1.0.1.ebuild:
+  Adapt phonon dependency for package move
+
+*goldendict-1.0.1 (25 Jan 2011)
+
+  25 Jan 2011; Peter Volkov <pva@gentoo.org> +goldendict-1.0.1.ebuild,
+  metadata.xml:
+  Version bump, #347809 thank Nikoli for this job. Added myself and Nikoli as
+  maintainers.
+
+  29 Dec 2010; Peter Volkov <pva@gentoo.org>
+  +goldendict-0.9.0_p20100410.ebuild, +files/goldendict-0.9.0-gcc4.4.patch,
+  +metadata.xml:
+  Move from app-dicts per bug #347535, thank Rion for report.
+
+  06 Dec 2010; Alex Alexander <wired@gentoo.org> -goldendict-0.9.0.ebuild:
+  old, depends on qt 4.5
+
+*goldendict-0.9.0_p20100410 (10 Apr 2010)
+
+  10 Apr 2010; Ben de Groot <yngwin@gentoo.org> goldendict-0.9.0.ebuild,
+  +goldendict-0.9.0_p20100410.ebuild:
+  Pin Qt version to 4.5 for 0.9.0, as per bug #313059. Adding snapshot
+  ebuild, based on the live git one in qting-edge overlay by Davide
+  Pesavento.
+
+*goldendict-0.9.0 (23 Jan 2010)
+
+  23 Jan 2010; Markos Chandras <hwoarang@gentoo.org>
+  +goldendict-0.9.0.ebuild, +files/goldendict-0.9.0-gcc4.4.patch,
+  +metadata.xml:
+  Initial ebuild of goldendict. Bug #264631

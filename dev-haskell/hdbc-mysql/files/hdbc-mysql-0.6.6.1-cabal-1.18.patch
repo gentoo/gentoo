@@ -1,0 +1,33 @@
+--- HDBC-mysql-0.6.6.1-orig/Setup.lhs	2012-08-30 13:40:03.000000000 +1000
++++ HDBC-mysql-0.6.6.1/Setup.lhs	2014-07-03 22:31:21.162259637 +1000
+@@ -1,6 +1,7 @@
+ #!/usr/bin/env runhaskell
+ 
+ \begin{code}
++{-# LANGUAGE MultiParamTypeClasses, FlexibleInstances #-}
+ import Distribution.Simple
+ import Distribution.PackageDescription
+ import Distribution.Version
+@@ -26,8 +27,21 @@
+     }
+ }
+ 
++-- 'ConstOrId' is a @Cabal-1.16@ vs @Cabal-1.18@ compatibility hack,
++-- 'programFindLocation' has a new (unused in this case)
++-- parameter. 'ConstOrId' adds this parameter when types say it is
++-- mandatory.
++class ConstOrId a b where
++    constOrId :: a -> b
++
++instance ConstOrId a a where
++    constOrId = id
++
++instance ConstOrId a (b -> a) where
++    constOrId = const
++
+ mysqlConfigProgram = (simpleProgram "mysql_config") {
+-    programFindLocation = \verbosity -> do
++    programFindLocation = \verbosity -> constOrId $ do
+       mysql_config  <- findProgramOnPath "mysql_config"  verbosity
+       mysql_config5 <- findProgramOnPath "mysql_config5" verbosity
+       return (mysql_config `mplus` mysql_config5)

@@ -1,0 +1,362 @@
+# ChangeLog for www-apache/mod_jk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_jk/ChangeLog,v 1.82 2015/05/27 11:16:46 ago Exp $
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> mod_jk-1.2.40.ebuild:
+  Stable for x86, wrt bug #548936
+
+  21 May 2015; Agostino Sarubbo <ago@gentoo.org> mod_jk-1.2.40.ebuild:
+  Stable for amd64, wrt bug #548936
+
+*mod_jk-1.2.40 (08 May 2015)
+
+  08 May 2015; Pacho Ramos <pacho@gentoo.org> +mod_jk-1.2.40.ebuild,
+  -mod_jk-1.2.28-r1.ebuild, -mod_jk-1.2.30.ebuild, -mod_jk-1.2.32.ebuild:
+  Version bump (#505934 by Guido Jäkel), drop old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> mod_jk-1.2.28-r1.ebuild,
+  mod_jk-1.2.30.ebuild, mod_jk-1.2.32.ebuild, mod_jk-1.2.37.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> mod_jk-1.2.37.ebuild:
+  Stable for ppc, wrt bug #457492
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> mod_jk-1.2.37.ebuild:
+  Stable for x86, wrt bug #457492
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> mod_jk-1.2.37.ebuild:
+  Stable for amd64, wrt bug #457492
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+*mod_jk-1.2.37 (12 Oct 2012)
+
+  12 Oct 2012; Patrick Lauer <patrick@gentoo.org> +mod_jk-1.2.37.ebuild:
+  Bump
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> mod_jk-1.2.32.ebuild:
+  x86 stable wrt bug #400519
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> mod_jk-1.2.32.ebuild:
+  Marking mod_jk-1.2.32 ppc for bug 400519
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> mod_jk-1.2.32.ebuild:
+  Stable for amd64, wrt bug #400519
+
+*mod_jk-1.2.32 (14 Oct 2011)
+
+  14 Oct 2011; Steve Dibb <beandog@gentoo.org> +mod_jk-1.2.32.ebuild:
+  Version bump, bug 355151
+
+  24 Oct 2010; Brent Baude <ranger@gentoo.org> mod_jk-1.2.30.ebuild:
+  Marking mod_jk-1.2.30 ppc for bug 315561
+
+  26 May 2010; Pacho Ramos <pacho@gentoo.org> mod_jk-1.2.30.ebuild:
+  stable amd64, bug 315561
+
+  11 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> mod_jk-1.2.30.ebuild:
+  x86 stable wrt bug #315561
+
+*mod_jk-1.2.30 (16 Mar 2010)
+
+  16 Mar 2010; Alistair Bush <ali_bush@gentoo.org> +mod_jk-1.2.30.ebuild:
+  Version Bump.
+
+  30 Oct 2009; Petteri Räty <betelgeuse@gentoo.org>
+  mod_jk-1.2.28-r1.ebuild:
+  Move need_apache after DEPEND and RDEPEND so that the apache eclass
+  dependencies actually get used.
+
+  18 Sep 2009; Benedikt Böhm <hollow@gentoo.org> files/88_mod_jk.conf,
+  -mod_jk-1.2.25.ebuild, -mod_jk-1.2.26-r1.ebuild,
+  -files/new/88_mod_jk.conf, -mod_jk-1.2.27.ebuild, -mod_jk-1.2.28.ebuild,
+  -files/new/jk-workers.properties:
+  remove old ebuilds
+
+  07 Jun 2009; Markus Meier <maekke@gentoo.org> mod_jk-1.2.28-r1.ebuild:
+  amd64/x86 stable, bug #272414
+
+  06 Jun 2009; nixnut <nixnut@gentoo.org> mod_jk-1.2.28-r1.ebuild:
+  ppc stable #272414
+
+  26 May 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  mod_jk-1.2.27.ebuild, mod_jk-1.2.28.ebuild, mod_jk-1.2.28-r1.ebuild:
+  Add pkg_setup().
+
+*mod_jk-1.2.28-r1 (05 May 2009)
+
+  05 May 2009; Petteri Räty <betelgeuse@gentoo.org>
+  +mod_jk-1.2.28-r1.ebuild:
+  Proxy commit for weisso. Fixes jk-workers.properties installation reported
+  in bug #267069.
+
+  18 Apr 2009; Markus Meier <maekke@gentoo.org> mod_jk-1.2.27.ebuild:
+  amd64/x86 stable, bug #265455
+
+  18 Apr 2009; nixnut <nixnut@gentoo.org> mod_jk-1.2.27.ebuild:
+  ppc stable #265455
+
+  05 Apr 2009; Petteri Räty <betelgeuse@gentoo.org> mod_jk-1.2.28.ebuild:
+  Add empty RDEPEND.
+
+*mod_jk-1.2.28 (05 Apr 2009)
+
+  05 Apr 2009; Petteri Räty <betelgeuse@gentoo.org> +mod_jk-1.2.28.ebuild:
+  Version bump. Fixes bug #264035.
+
+  16 Feb 2009; Petteri Räty <betelgeuse@gentoo.org> files/88_mod_jk.conf,
+  files/new/88_mod_jk.conf:
+  Fix typo in comments. Fixes bug #259226.
+
+  10 Dec 2008; Petteri Räty <betelgeuse@gentoo.org> metadata.xml:
+  Add weisso as proxy maintainer.
+
+*mod_jk-1.2.27 (06 Dec 2008)
+
+  06 Dec 2008; Petteri Räty <betelgeuse@gentoo.org> +mod_jk-1.2.27.ebuild:
+  Version bump. Thanks to Mike Weissman <mike@weisso.com>. Fixes bug
+  #245597.
+
+  06 Dec 2008; Petteri Räty <betelgeuse@gentoo.org> metadata.xml:
+  Remove wltjr as he retired ages ago.
+
+  25 Oct 2008; nixnut <nixnut@gentoo.org> mod_jk-1.2.26-r1.ebuild:
+  Stable on ppc wrt bug 242726
+
+  19 Oct 2008; Markus Meier <maekke@gentoo.org> mod_jk-1.2.26-r1.ebuild:
+  amd64/x86 stable, bug #242726
+
+  05 Feb 2008; William L. Thomson Jr. <wltjr@gentoo.org>
+  -mod_jk-1.2.21-r2.ebuild, -mod_jk-1.2.22.ebuild, -mod_jk-1.2.23.ebuild:
+  Removed older versions per bug #206140
+
+  31 Jan 2008; Benedikt Böhm <hollow@gentoo.org> mod_jk-1.2.21-r2.ebuild,
+  mod_jk-1.2.22.ebuild, mod_jk-1.2.23.ebuild, mod_jk-1.2.25.ebuild,
+  mod_jk-1.2.26-r1.ebuild:
+  fix depend.apache usage wrt #208033
+
+*mod_jk-1.2.26-r1 (16 Jan 2008)
+
+  16 Jan 2008; William L. Thomson Jr. <wltjr@gentoo.org>
+  +files/new/88_mod_jk.conf, +files/new/jk-workers.properties,
+  -mod_jk-1.2.26.ebuild, +mod_jk-1.2.26-r1.ebuild:
+  Updated installed files for >=1.2.26, put them in dir called new, verses
+  versioning the dir name. Address new module conf options per bug #204815
+
+  11 Jan 2008; William L. Thomson Jr. <wltjr@gentoo.org>
+  mod_jk-1.2.25.ebuild:
+  amd64 stable, bug #204098.
+
+  04 Jan 2008; nixnut <nixnut@gentoo.org> mod_jk-1.2.25.ebuild:
+  Stable on ppc wrt bug 204098
+
+  03 Jan 2008; Markus Meier <maekke@gentoo.org> mod_jk-1.2.25.ebuild:
+  x86 stable, bug #204098
+
+*mod_jk-1.2.26 (24 Dec 2007)
+
+  24 Dec 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  +mod_jk-1.2.26.ebuild:
+  Bumped to latest release
+
+  11 Aug 2007; Raúl Porcel <armin76@gentoo.org> mod_jk-1.2.25.ebuild:
+  Back to ~arch, went straight to stable
+
+*mod_jk-1.2.25 (10 Aug 2007)
+
+  10 Aug 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  +mod_jk-1.2.25.ebuild:
+  Bumped to latest release
+
+  02 Aug 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -mod_jk-1.2.24.ebuild:
+  Removed 1.2.24, upstream withdrew release due to a semi serious security issue.
+
+*mod_jk-1.2.24 (31 Jul 2007)
+
+  31 Jul 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  +mod_jk-1.2.24.ebuild:
+  Bumped to latest release
+
+  27 Jul 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  mod_jk-1.2.23.ebuild:
+  ppc stable, bug #186218
+
+  25 Jul 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  mod_jk-1.2.23.ebuild:
+  Stable on amd64, security bug #186218
+
+  25 Jul 2007; Christian Faulhammer <opfer@gentoo.org> mod_jk-1.2.23.ebuild:
+  stable x86, security bug 186218
+
+  01 Jun 2007; nixnut <nixnut@gentoo.org> mod_jk-1.2.22.ebuild:
+  Stable on ppc wrt bug 179121
+
+  20 May 2007; Christian Faulhammer <opfer@gentoo.org> mod_jk-1.2.22.ebuild:
+  stable x86/amd64, bug 179121
+
+  19 May 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  mod_jk-1.2.22.ebuild:
+  Stable on amd64, bug #179121
+
+*mod_jk-1.2.23 (19 May 2007)
+
+  19 May 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  +mod_jk-1.2.23.ebuild:
+  Bumped to latest release
+
+  13 May 2007; Luca Longinotti <chtekk@gentoo.org> mod_jk-1.2.21-r2.ebuild,
+  mod_jk-1.2.22.ebuild:
+  Remove Apache1 support (part of fix for #178380).
+
+*mod_jk-1.2.22 (18 Apr 2007)
+
+  18 Apr 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -mod_jk-1.2.22_pre.ebuild, +mod_jk-1.2.22.ebuild:
+  Bumped to latest version
+
+*mod_jk-1.2.22_pre (02 Apr 2007)
+
+  02 Apr 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  +mod_jk-1.2.22_pre.ebuild:
+  Bumped to latest dev snapshot of upcoming release
+
+  08 Mar 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  mod_jk-1.2.21-r2.ebuild:
+  Re-stabilizing, accidentally dropped back to ~arch :)
+
+*mod_jk-1.2.21-r2 (08 Mar 2007)
+
+  08 Mar 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  files/88_mod_jk.conf, -mod_jk-1.2.19-r1.ebuild, -mod_jk-1.2.20-r1.ebuild,
+  -mod_jk-1.2.21-r1.ebuild, +mod_jk-1.2.21-r2.ebuild:
+  Removed versions that have a security vulnerability per bug #169433.
+  Corrected file path issue with modules conf file.
+
+  08 Mar 2007; Steve Dibb <beandog@gentoo.org> mod_jk-1.2.21-r1.ebuild:
+  amd64 stable, security bug 169433
+
+  06 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  mod_jk-1.2.21-r1.ebuild:
+  stable x86; security bug 169433; removed CHANGES.txt from doc installation
+
+*mod_jk-1.2.21-r1 (04 Mar 2007)
+*mod_jk-1.2.20-r1 (04 Mar 2007)
+*mod_jk-1.2.19-r1 (04 Mar 2007)
+
+  04 Mar 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  files/88_mod_jk.conf, -mod_jk-1.2.19.ebuild, +mod_jk-1.2.19-r1.ebuild,
+  -mod_jk-1.2.20.ebuild, +mod_jk-1.2.20-r1.ebuild, -mod_jk-1.2.21.ebuild,
+  +mod_jk-1.2.21-r1.ebuild:
+  Corrected error in apache module conf file logs -> log
+
+  02 Mar 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -mod_jk-1.2.21_pre.ebuild, +mod_jk-1.2.21.ebuild:
+  Bumped to latest release
+
+*mod_jk-1.2.21_pre (26 Feb 2007)
+
+  26 Feb 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  +mod_jk-1.2.21_pre.ebuild, -mod_jk-1.2.21.ebuild:
+  Bumped to next dev release, bug found/fixed upstream
+
+*mod_jk-1.2.21 (26 Feb 2007)
+
+  26 Feb 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  files/88_mod_jk.conf, +mod_jk-1.2.21.ebuild:
+  Bumped to latest development version, added sed to change paths from apache2
+  -> apache depending on use. Paths were set/hard coded to fix bug #164838.
+  Could cause issues for apache (!apache2) users < 1.2.21. But no worse than
+  present :)
+
+  03 Feb 2007; Steve Dibb <beandog@gentoo.org> mod_jk-1.2.20.ebuild:
+  amd64 stable, bug 162949
+
+  21 Jan 2007; Andrej Kacian <ticho@gentoo.org> mod_jk-1.2.20.ebuild:
+  Stable on x86, bug #161949.
+
+  15 Jan 2007; Luca Longinotti <chtekk@gentoo.org> metadata.xml,
+  mod_jk-1.2.19.ebuild, mod_jk-1.2.20.ebuild:
+  Cleanup.
+
+  09 Jan 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -mod_jk-1.2.15-r1.ebuild, mod_jk-1.2.19.ebuild, mod_jk-1.2.20.ebuild:
+  Moved forward ~ppc keyword, removed older version.
+
+  09 Jan 2007; Vlastimil Babka <caster@gentoo.org> mod_jk-1.2.15-r1.ebuild,
+  mod_jk-1.2.19.ebuild, mod_jk-1.2.20.ebuild:
+  Convert einfo to elog.
+
+  06 Jan 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -mod_jk-1.2.10.ebuild, -mod_jk-1.2.13.ebuild, -mod_jk-1.2.15.ebuild,
+  -mod_jk-1.2.18.ebuild, -mod_jk-1.2.18-r1.ebuild:
+  House cleaning, removed older versions
+
+*mod_jk-1.2.20 (21 Dec 2006)
+
+  21 Dec 2006; William L. Thomson Jr. <wltjr@gentoo.org>
+  +mod_jk-1.2.20.ebuild:
+  Bumping package to lastest stable version. Dropped java USE flag, should
+  have been jni, but upstream will be dropping the jni stuff or has.
+
+  05 Nov 2006; Christian Faulhammer <opfer@gentoo.org> mod_jk-1.2.19.ebuild:
+  stable x86, bug #151748
+
+  05 Nov 2006; Daniel Gryniewicz <dang@gentoo.org> mod_jk-1.2.19.ebuild:
+  Marked stable on amd64 for bug #151748
+
+  22 Sep 2006; William L. Thomson Jr. <wltjr@gentoo.org>
+  mod_jk-1.2.18-r1.ebuild:
+  Updated ebuild to not use 1.6 jdks due to compilation issues
+
+*mod_jk-1.2.18 (17 Sep 2006)
+
+  17 Sep 2006; William L. Thomson Jr. <wltjr@gentoo.org> metadata.xml,
+  +mod_jk-1.2.18.ebuild:
+  Updated mod_jk to latest releases. Introduced java use flag to control if
+  jni stuff should be built and also installed. Removed ~ppc keyword due to
+  lack of hardware to test on.
+
+*mod_jk-1.2.15 (23 Jul 2006)
+
+  23 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org> files/88_mod_jk.conf,
+  +mod_jk-1.2.15.ebuild:
+  Version bump, fixes bug #112225 and bug #110170.
+
+  26 May 2006; <nixnut@gentoo.org> mod_jk-1.2.13.ebuild:
+  Added ~ppc. bug #134330
+
+  08 Jan 2006; Carsten Lohrke <carlo@gentoo.org> metadata.xml:
+  Maintainer retired.
+
+  17 Oct 2005; Petteri Räty <betelgeuse@gentoo.org> mod_jk-1.2.10.ebuild,
+  mod_jk-1.2.13.ebuild:
+  Removed dependency on virtual/jdk, fixes bug #109121.
+
+  11 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org> mod_jk-1.2.10.ebuild,
+  mod_jk-1.2.13.ebuild:
+  minor fixes
+
+*mod_jk-1.2.13 (01 Jun 2005)
+
+  01 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org> mod_jk-1.2.10.ebuild,
+  +mod_jk-1.2.13.ebuild:
+  updated HOMEPAGE, new upstream version.
+
+  29 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  files/jk-workers.properties, mod_jk-1.2.10.ebuild:
+  tomcat dependency isnt required, give the choice to the user. fixes #89939.
+  also modified the default workers file. thanks to Andy Wang
+  <dopey@moonteeth.com> for the suggestion.
+
+*mod_jk-1.2.10 (14 Apr 2005)
+
+  14 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> +metadata.xml,
+  +files/88_mod_jk.conf, +files/jk-workers.properties, +mod_jk-1.2.10.ebuild:
+  Inital import. Ebuild is based on the apache-module.eclass, fixes #19094.
+  Special thanks to trapni and beu for offering that much help.

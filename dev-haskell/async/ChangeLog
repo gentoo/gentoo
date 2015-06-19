@@ -1,0 +1,43 @@
+# ChangeLog for dev-haskell/async
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/async/ChangeLog,v 1.10 2015/06/06 10:14:36 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*async-2.0.2 (23 Dec 2014)
+
+  23 Dec 2014; Mark Wright <gienah@gentoo.org> +async-2.0.2.ebuild:
+  Bump async to 2.0.2
+
+  20 Dec 2014; Sergei Trofimovich <slyfox@gentoo.org> async-2.0.1.4.ebuild:
+  Allow ghc-7.8 (bug #533060 by Michael Jones).
+
+*async-2.0.1.6 (13 Dec 2014)
+
+  13 Dec 2014; Mark Wright <gienah@gentoo.org> +async-2.0.1.6.ebuild:
+  Bump async to 2.0.1.6
+
+*async-2.0.1.5 (21 Feb 2014)
+
+  21 Feb 2014; Sergei Trofimovich <slyfox@gentoo.org> +async-2.0.1.5.ebuild:
+  Version bump.
+
+  13 Sep 2013; Mark Wright <gienah@gentoo.org>
+  optparse-applicative-0.5.2.1.ebuild:
+  Sync with overlay: add ~ppc ~ppc64 ~sparc keywords
+
+  19 Jun 2013; Mikle Kolyada <zlogene@gentoo.org> async-2.0.1.4.ebuild:
+  x86 stable wrt bug #472636
+
+  19 Jun 2013; Mikle Kolyada <zlogene@gentoo.org> async-2.0.1.4.ebuild:
+  amd64 stable wrt bug #472636
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*async-2.0.1.4 (18 Nov 2012)
+
+  18 Nov 2012; Mark Wright <gienah@gentoo.org> +async-2.0.1.4.ebuild,
+  +metadata.xml:
+  Add async

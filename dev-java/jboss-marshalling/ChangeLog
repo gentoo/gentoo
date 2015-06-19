@@ -1,0 +1,11 @@
+# ChangeLog for dev-java/jboss-marshalling
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jboss-marshalling/ChangeLog,v 1.1 2014/05/28 15:41:48 tomwij Exp $
+
+*jboss-marshalling-1.3.0 (28 May 2014)
+
+  28 May 2014; Tom Wijsman <TomWij@gentoo.org> +jboss-marshalling-1.3.0.ebuild,
+  +metadata.xml:
+  New ebuild for dev-java/marshalling, an alternative compatible serialization
+  API that fixes many JDK serialization API problems; introduced as a dependency
+  of dev-java/netty-codec.

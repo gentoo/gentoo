@@ -1,0 +1,175 @@
+# ChangeLog for media-video/handbrake
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/handbrake/ChangeLog,v 1.30 2015/05/15 16:58:16 thev00d00 Exp $
+
+*handbrake-0.10.1 (15 May 2015)
+
+  15 May 2015; Ian Whyman <thev00d00@gentoo.org> +handbrake-0.10.1.ebuild,
+  -handbrake-0.10.0.ebuild:
+  Version bump #547598
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> handbrake-0.10.0-r1.ebuild,
+  handbrake-0.10.0.ebuild, handbrake-0.9.9-r1.ebuild, handbrake-9999.ebuild:
+  Drop old Python implementations
+
+*handbrake-0.10.0-r1 (01 Feb 2015)
+
+  01 Feb 2015; Michał Górny <mgorny@gentoo.org> +handbrake-0.10.0-r1.ebuild,
+  handbrake-9999.ebuild:
+  Introduce USE=libav to control the preferred implementation. Add subslot op to
+  force rebuilds on ABI change.
+
+  13 Dec 2014; Ian Whyman <thev00d00@gentoo.org> handbrake-0.10.0.ebuild,
+  handbrake-9999.ebuild:
+  Remove invalid configure options, #532378
+
+*handbrake-0.10.0 (12 Dec 2014)
+
+  12 Dec 2014; Ian Whyman <thev00d00@gentoo.org> +handbrake-0.10.0.ebuild,
+  -handbrake-0.9.9.ebuild, handbrake-9999.ebuild, metadata.xml:
+  Bump to 0.10.0, without x265 support for now
+
+  14 Nov 2014; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Remove myself.
+
+  17 Sep 2014; Luca Barbato <lu_zero@gentoo.org> handbrake-9999.ebuild:
+  Update the live ebuild, it requires at least Libav11, x265 direct support
+  disabled for now.
+
+  01 Sep 2014; Michał Górny <mgorny@gentoo.org> handbrake-0.9.9-r1.ebuild,
+  handbrake-0.9.9.ebuild, handbrake-9999.ebuild:
+  Remove := subslot operator from || () block since it is meaningless and
+  broken.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> handbrake-0.9.9-r1.ebuild,
+  handbrake-0.9.9.ebuild, handbrake-9999.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  24 Jul 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  handbrake-0.9.9-r1.ebuild, handbrake-0.9.9.ebuild, handbrake-9999.ebuild:
+  Swap virtual/udev[gudev] for virtual/libgudev, package does not seem to
+  require libudev or udevd; bug 506034
+
+*handbrake-0.9.9-r1 (26 Mar 2014)
+
+  26 Mar 2014; Tom Wijsman <TomWij@gentoo.org> +handbrake-0.9.9-r1.ebuild,
+  handbrake-9999.ebuild:
+  Revision bump, add more gstreamer dependencies to unbreak parts of the
+  application; fixes bug #505396, reported by Abigail.
+
+  19 Mar 2014; Tom Wijsman <TomWij@gentoo.org>
+  files/handbrake-9999-remove-faac-dependency.patch, handbrake-9999.ebuild:
+  Update faac and a52 patching in live ebuild; fixes bug #503122, reported by
+  sven.a.jonsson.
+
+  06 Feb 2014; Ian Whyman <thev00d00@gentoo.org> handbrake-0.9.9.ebuild,
+  handbrake-9999.ebuild:
+  Drop --enable-ff-mpeg2 and deps as per #500274
+
+  14 Dec 2013; Tom Wijsman <TomWij@gentoo.org>
+  +files/handbrake-0.9.9-fix-compilation-with-mp4v2-v1.9.1.patch,
+  files/handbrake-9999-fix-compilation-with-mp4v2-v1.9.1.patch,
+  files/handbrake-9999-remove-faac-dependency.patch, handbrake-0.9.9.ebuild,
+  handbrake-9999.ebuild:
+  Forward ported 9999 patches, also removed one that has been applied upstream;
+  fixes bug #494032, reported by Piotr Mitas (yabolus).
+
+  16 Sep 2013; Tom Wijsman <TomWij@gentoo.org>
+  +files/handbrake-0.9.9-add-gmodule-to-gtk-configure.patch,
+  files/handbrake-9999-remove-faac-dependency.patch, handbrake-0.9.9.ebuild,
+  handbrake-9999.ebuild:
+  Added gmodule to linker command line, fixes bug #482674 reported by Neil.
+  Repaired handbrake-9999-remove-faac-dependency.patch, fixes bug #484234
+  reported by Piotr Mitas. The live version still fails due to missing
+  ff_cpu_cpuid, likely needs newer (masked) ffmpeg to proceed.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> handbrake-0.9.9.ebuild,
+  handbrake-9999.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  12 Aug 2013; Ian Whyman <thev00d00@gentoo.org> handbrake-0.9.9.ebuild,
+  handbrake-9999.ebuild:
+  Fix broken ffmpeg deps, thanks to Damien Granger on #480682
+
+  11 Aug 2013; Alexis Ballier <aballier@gentoo.org> handbrake-0.9.9.ebuild,
+  handbrake-9999.ebuild:
+  write proper ffmpeg/libav deps
+
+  15 Jul 2013; Tom Wijsman <TomWij@gentoo.org>
+  +files/handbrake-0.9.9-remove-faac-dependency.patch,
+  -handbrake-0.9.9_pre5441-r1.ebuild,
+  files/handbrake-9999-remove-faac-dependency.patch, handbrake-0.9.9.ebuild,
+  handbrake-9999.ebuild:
+  Fix faac dependency removal patch for handbrake-9999, currently it still fails
+  to build due to a yasm based cpuid detection they introduced that doesn't
+  appear to work; also heavily documented that ebuild with TODOs that would be
+  nice to have for the upcoming release. Fixed up src_configure a bit. Removed
+  old snapshot version 0.9.9_pre5441-r1.
+
+  07 Jul 2013; Tom Wijsman <TomWij@gentoo.org> handbrake-0.9.9.ebuild,
+  handbrake-9999.ebuild:
+  Add sub slot operator for media-libs/x264 dependency.
+
+  04 Jul 2013; Tom Wijsman <TomWij@gentoo.org> handbrake-0.9.9.ebuild:
+  Removed unconditional -lfaac LDFLAG from missed GTK configure.
+
+  04 Jul 2013; Tom Wijsman <TomWij@gentoo.org> handbrake-0.9.9.ebuild:
+  Block <media-video/ffmpeg-1.2.1 even more.
+
+  29 Jun 2013; Tom Wijsman <TomWij@gentoo.org> handbrake-0.9.9.ebuild,
+  handbrake-0.9.9_pre5441-r1.ebuild, handbrake-9999.ebuild:
+  Block <media-video/ffmpeg-1.2.1, which Handbrake 0.9.9 does not build against,
+  due to a dependency version change in =virtual/ffmpeg-9. Reported by Heiss,
+  fixes bug #475262.
+
+  23 May 2013; Tom Wijsman <TomWij@gentoo.org> handbrake-0.9.9.ebuild,
+  handbrake-9999.ebuild:
+  Added missing intltool dependency.
+
+*handbrake-0.9.9 (23 May 2013)
+
+  23 May 2013; Tom Wijsman <TomWij@gentoo.org> +handbrake-0.9.9.ebuild,
+  handbrake-9999.ebuild:
+  Version bump to 0.9.9.
+
+  16 May 2013; Tom Wijsman <TomWij@gentoo.org>
+  handbrake-0.9.9_pre5441-r1.ebuild, handbrake-9999.ebuild:
+  Changed slot of libmp4v2 dependency from 1 to 0 since 0 installs the required
+  include files whereas 1 doesn't.
+
+*handbrake-0.9.9_pre5441-r1 (07 May 2013)
+
+  07 May 2013; Ian Whyman <thev00d00@gentoo.org>
+  +handbrake-0.9.9_pre5441-r1.ebuild, -handbrake-0.9.9_pre5441.ebuild,
+  handbrake-9999.ebuild, metadata.xml:
+  Add support for fdk-aac, update 9999 ebuild
+
+  07 May 2013; Ian Whyman <thev00d00@gentoo.org> handbrake-0.9.9_pre5441.ebuild,
+  metadata.xml:
+  Fix build with automake 1.13 #468694, call eautoreconf instead of autogen.sh,
+  add myself to maintainers
+
+  05 May 2013; Tom Wijsman <TomWij@gentoo.org> handbrake-0.9.9_pre5441.ebuild,
+  handbrake-9999.ebuild, metadata.xml:
+  Made use of python-any-r1 instead of python-single-r1 since python is only
+  relevant at Python and the implementation does not matter. Use the global
+  gstreamer USE flag instead of the local gst USE flag. Better support prefixes
+  using EPREFIX. Thanks to Nikoli for these suggestions. More testing of
+  dependency versions and the use of virtuals will follow the coming week...
+
+*handbrake-0.9.9_pre5441 (05 May 2013)
+*handbrake-9999 (05 May 2013)
+
+  05 May 2013; Tom Wijsman <TomWij@gentoo.org>
+  +files/handbrake-9999-expand-MK_SUBTITLE_PGS.patch,
+  +files/handbrake-9999-fix-compilation-with-mp4v2-v1.9.1.patch,
+  +files/handbrake-9999-remove-dvdnav-dup.patch,
+  +files/handbrake-9999-remove-faac-dependency.patch,
+  +files/handbrake-9999-use-older-libmkv.patch,
+  +files/handbrake-9999-use-unpatched-a52.patch,
+  +handbrake-0.9.9_pre5441.ebuild, +handbrake-9999.ebuild, +metadata.xml:
+  Added handbrake; an open-source, GPL-licensed, multiplatform, multithreaded
+  video transcoder. Thanks to all contributors of bug #89432. Stepping up as its
+  maintainer, help is welcome. 0.9.9 will no longer require one to use bundled
+  libraries therefore handbrake can now reside in the Portage tree; once 0.9.9
+  is released and ffmpeg-1.2 is no longer masked, we can unmask handbrake.

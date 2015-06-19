@@ -1,0 +1,24 @@
+# ChangeLog for dev-python/python-uinput
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-uinput/ChangeLog,v 1.5 2015/04/07 14:19:24 jlec Exp $
+
+*python-uinput-0.10.2 (28 Jul 2014)
+
+  28 Jul 2014; Justin Lecher <jlec@gentoo.org> python-uinput-0.9.ebuild,
+  python-uinput-0.10.1.ebuild, +python-uinput-0.10.2.ebuild:
+  Version Bump; drop unsupported python versions
+
+*python-uinput-0.10.1 (13 Nov 2013)
+
+  13 Nov 2013; Justin Lecher <jlec@gentoo.org> python-uinput-0.9.ebuild,
+  +python-uinput-0.10.1.ebuild, metadata.xml:
+  Version Bump and fix buildsystem for newer udev, #489640; add missing dep on
+  virtual/udev; drop uneccessary eutils.eclass and fix DESCRIPTION
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> python-uinput-0.9.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*python-uinput-0.9 (18 Mar 2013)
+
+  18 Mar 2013; Patrick McLean <chutzpah@gentoo.org> +python-uinput-0.9.ebuild:
+  New package python-uinput

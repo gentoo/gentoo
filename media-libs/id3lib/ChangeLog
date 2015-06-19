@@ -1,0 +1,312 @@
+# ChangeLog for media-libs/id3lib
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/id3lib/ChangeLog,v 1.82 2013/05/03 18:05:14 ssuominen Exp $
+
+  03 May 2013; Samuli Suominen <ssuominen@gentoo.org> id3lib-3.8.3-r8.ebuild,
+  -id3lib-3.8.3-r9.ebuild:
+  Revert unnecessary revision bump and autotools-utils.eclass port.
+
+*id3lib-3.8.3-r9 (03 May 2013)
+
+  03 May 2013; Justin Lecher <jlec@gentoo.org> +id3lib-3.8.3-r9.ebuild,
+  metadata.xml:
+  Fix obsolete macros to work with automake-1.13, #467704; bumped to EAPI=5 and
+  autotools-utils.eclass
+
+  22 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> id3lib-3.8.3-r8.ebuild:
+  USE="static-libs" and remove libid3.la when it's disabled.
+
+  25 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> -id3lib-3.8.3-r7.ebuild:
+  old
+
+  25 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> id3lib-3.8.3-r8.ebuild:
+  ppc/ppc64 stable wrt #393807
+
+  01 Jan 2012; Raúl Porcel <armin76@gentoo.org> id3lib-3.8.3-r8.ebuild:
+  alpha/ia64/sh/sparc stable wrt #393807
+
+  21 Dec 2011; Markus Meier <maekke@gentoo.org> id3lib-3.8.3-r8.ebuild:
+  arm stable, bug #393807
+
+  20 Dec 2011; Jeroen Roovers <jer@gentoo.org> id3lib-3.8.3-r8.ebuild:
+  Stable for HPPA (bug #393807).
+
+  18 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> id3lib-3.8.3-r8.ebuild:
+  x86 stable wrt bug #393807
+
+  17 Dec 2011; Agostino Sarubbo <ago@gentoo.org> id3lib-3.8.3-r8.ebuild:
+  Stable for AMD64, wrt bug #393807
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  id3lib-3.8.3-r8.ebuild:
+  Transfer Prefix keywords
+
+*id3lib-3.8.3-r8 (16 Jul 2009)
+
+  16 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +id3lib-3.8.3-r8.ebuild,
+  +files/id3lib-3.8.3-missing_nullpointer_check.patch:
+  Missing null check wrt #277845 by Thomas Eschenbacher.
+
+*id3lib-3.8.3-r7 (29 Jul 2008)
+
+  29 Jul 2008; Ben de Groot <yngwin@gentoo.org> +id3lib-3.8.3-r7.ebuild:
+  Rev bump to force recompilation, in order to fix bugs #233273 and #233240
+
+  11 Apr 2008; Ben de Groot <yngwin@gentoo.org>
+  +files/id3lib-3.8.3-gcc-4.3.patch, id3lib-3.8.3-r6.ebuild:
+  Add gcc-4.3 patch from bug 212455
+
+  23 Oct 2007; Alexis Ballier <aballier@gentoo.org> -id3lib-3.8.3-r5.ebuild:
+  remove version affected by GLSA-200709-08
+
+  02 Sep 2007; Joshua Kinard <kumba@gentoo.org> id3lib-3.8.3-r6.ebuild:
+  Stable on mips, per #189610.
+
+  29 Aug 2007; Markus Rothe <corsair@gentoo.org> id3lib-3.8.3-r6.ebuild:
+  Stable on ppc64; bug #189610
+
+  24 Aug 2007; Raúl Porcel <armin76@gentoo.org> id3lib-3.8.3-r6.ebuild:
+  alpha/ia64 stable wrt security #189610
+
+  22 Aug 2007; Christian Faulhammer <opfer@gentoo.org>
+  id3lib-3.8.3-r6.ebuild:
+  stable x86, security bug 189610
+
+  22 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  id3lib-3.8.3-r6.ebuild:
+  ppc stable, bug #189610
+
+  21 Aug 2007; Christoph Mende <angelos@gentoo.org> id3lib-3.8.3-r6.ebuild:
+  Stable on amd64 wrt security bug #189610
+
+  21 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  id3lib-3.8.3-r6.ebuild:
+  Stable on sparc wrt security #189610
+
+  21 Aug 2007; Jeroen Roovers <jer@gentoo.org> id3lib-3.8.3-r6.ebuild:
+  Stable for HPPA (bug #189610). Fixed drac´s ChangeLog entry.
+
+*id3lib-3.8.3-r6 (20 Aug 2007)
+
+  20 Aug 2007; Samuli Suominen <drac@gentoo.org>
+  +files/id3lib-3.8.3-security.patch, +id3lib-3.8.3-r6.ebuild:
+  Fix security bug 189610.
+
+  25 Jun 2007; Joshua Kinard <kumba@gentoo.org> id3lib-3.8.3-r5.ebuild:
+  Stable on mips, per #130992.
+
+  21 Jun 2007; Samuli Suominen <drac@gentoo.org> id3lib-3.8.3-r5.ebuild:
+  Stable on arm wrt bug 130922.
+
+  05 Jun 2007; Raúl Porcel <armin76@gentoo.org> id3lib-3.8.3-r5.ebuild:
+  alpha stable wrt #130922
+
+  15 May 2007; Samuli Suominen <drac@gentoo.org> id3lib-3.8.3-r5.ebuild:
+  Remove USE="examples" for bug 178654.
+
+  18 Apr 2007; nixnut <nixnut@gentoo.org> id3lib-3.8.3-r5.ebuild:
+  Stable on ppc wrt bug 130922
+
+  17 Apr 2007; Samuli Suominen <drac@gentoo.org> id3lib-3.8.3-r5.ebuild:
+  RESTRICT="test" as per bug 130922.
+
+  17 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  id3lib-3.8.3-r5.ebuild:
+  Stable on sparc wrt #130922
+
+  16 Apr 2007; Raúl Porcel <armin76@gentoo.org> id3lib-3.8.3-r5.ebuild:
+  ia64 stable wrt bug 130922
+
+  16 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  id3lib-3.8.3-r5.ebuild:
+  stable amd64, bug 130922
+
+  16 Apr 2007; Jeroen Roovers <jer@gentoo.org> id3lib-3.8.3-r5.ebuild:
+  Stable for HPPA (bug #130922).
+
+  15 Apr 2007; Andrej Kacian <ticho@gentoo.org> id3lib-3.8.3-r5.ebuild:
+  Stable on x86, bug #130922.
+
+  15 Apr 2007; Markus Rothe <corsair@gentoo.org> id3lib-3.8.3-r5.ebuild:
+  Stable on ppc64; bug #130922
+
+*id3lib-3.8.3-r5 (05 Oct 2006)
+
+  05 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/id3lib-3.8.3-unicode16.patch, +id3lib-3.8.3-r5.ebuild:
+  Add patch to fix unicode16 writing. Thanks for the users in bug #130922.
+
+  30 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -id3lib-3.8.3-r3.ebuild, id3lib-3.8.3-r4.ebuild:
+  Force using latest autotools (#149588). Remove old ebuild.
+
+  13 May 2006; Diego Pettenò <flameeyes@gentoo.org> id3lib-3.8.3-r4.ebuild:
+  Add ~x86-fbsd keyword.
+
+  07 Feb 2006; Simon Stelling <blubb@gentoo.org> id3lib-3.8.3-r4.ebuild:
+  stable on amd64
+
+  07 Feb 2006; Aron Griffis <agriffis@gentoo.org> id3lib-3.8.3-r4.ebuild:
+  Mark 3.8.3-r4 stable on alpha
+
+  06 Feb 2006; Michele Noberasco <s4t4n@gentoo.org> id3lib-3.8.3-r4.ebuild:
+  Stable for x86. See bug #12155
+
+  06 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  id3lib-3.8.3-r4.ebuild:
+  Stable on sparc wrt #121555
+
+  06 Feb 2006; Markus Rothe <corsair@gentoo.org> id3lib-3.8.3-r4.ebuild:
+  Stable on ppc64: bug #121555
+
+  04 Feb 2006; <nixnut@gentoo.org> id3lib-3.8.3-r4.ebuild:
+  Stable on ppc. bug 121555
+
+  04 Feb 2006; Diego Pettenò <flameeyes@gentoo.org> id3lib-3.8.3-r4.ebuild:
+  Drop dependencies on autotools, autotools eclass handle them.
+
+  08 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> id3lib-3.8.3-r4.ebuild:
+  Change the AT_M4DIR to use the full path to fix it when it builds inside
+  zlib sbudir. Closes bug #114913.
+
+*id3lib-3.8.3-r4 (17 Sep 2005)
+
+  17 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/id3lib-3.8.3-autoconf259.patch,
+  +files/id3lib-3.8.3-doxyinput.patch, +id3lib-3.8.3-r4.ebuild:
+  Examples are now installed with examples useflag. The doc useflag builds and
+  installs API (doxygen) documentation that supercedes id3lib-docs package.
+
+  04 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> id3lib-3.8.3-r3.ebuild:
+  Don't install INSTALL file.
+
+  23 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> id3lib-3.8.3-r3.ebuild:
+  Don't use cp -a.
+
+  25 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> id3lib-3.8.3-r3.ebuild:
+  removed no-deprecated from cppflags, not needed any longer. therefor
+  src_compile is gone, the default one is sufficient
+
+  29 Dec 2004; Daniel Goller <morfic@gentoo.org>
+  +files/id3lib-3.8.3-test_io.patch, id3lib-3.8.3-r3.ebuild:
+  Fixed make check, closing bug 64899
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  05 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -id3lib-3.8.3-r2.ebuild:
+  get_libdir fixes.  Removing broke version.
+
+*id3lib-3.8.3-r3 (12 Sep 2004)
+
+  12 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -files/id3lib-3.8.0-gcc3.patch, +files/id3lib-3.8.3-zlib.patch,
+  -id3lib-3.8.0.ebuild, -id3lib-3.8.3-r1.ebuild, +id3lib-3.8.3-r3.ebuild:
+  Revision bump to fix linking issue. Only changes in
+  files/id3lib-3.8.3-zlib.patch were made, and it's a QA fix directly into
+  stable. Removing old versions.
+
+  26 Aug 2004; Tom Gall <tgall@gentoo.org> id3lib-3.8.3-r2.ebuild:
+  stable on ppc64, bug #58311
+
+  20 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  id3lib-3.8.3-r2.ebuild:
+  Fix ebuild installing extra stuff into the docs dir. Added IUSE=doc option for
+  example files. Closes bug #56922.
+
+  11 Jul 2004; Bryan Østergaard,,, <kloeri@gentoo.org> id3lib-3.8.3-r2.ebuild:
+  Stable on alpha, requested in bug 56498.
+
+*id3lib-3.8.3-r2 (08 Jul 2004)
+
+  08 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +id3lib-3.8.3-r2.ebuild:
+  Revision bump to fix bug #56492.  Straight into stable as it is a QA issue.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> id3lib-3.8.0.ebuild,
+  id3lib-3.8.3-r1.ebuild:
+  virtual/glibc -> virtual/libc
+
+  26 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> id3lib-3.8.0.ebuild,
+  id3lib-3.8.3-r1.ebuild:
+  Added explicit IUSE.
+
+  15 Mar 2004; Stephen P. Becker <geoman@gentoo.org> id3lib-3.8.3-r1.ebuild:
+  Added ~mips keyword.
+
+  28 Jan 2004; Aron Griffis <agriffis@gentoo.org> id3lib-3.8.3-r1.ebuild:
+  stable on ia64
+
+  17 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> id3lib-3.8.3-r1.ebuild:
+  set ppc in keywords
+
+  01 Dec 2003; Ciaran McCreesh <ciaranm@gentoo.org> id3lib-3.8.3-r1.ebuild:
+  Moved to stable on sparc for easytag
+
+*id3lib-3.8.3-r1 (05 Apr 2003)
+
+  21 Apr 2003; Brandon Low <lostlogic@gentoo.org> Manifest,
+  id3lib-3.8.3-r1.ebuild, id3lib-3.8.3.ebuild, id3lib-3.8.3.ebuild:
+  Mark keywords x86 and change 1 line of the ebuild (no functional change).
+
+  05 Apr 2003; Martin Holzer <mholzer@gentoo.org> id3lib-3.8.3-r1.ebuild:
+  Added 2 symblink for backward comp.
+
+*id3lib-3.8.3 (03 Mar 2003)
+
+  14 Mar 2003; Aron Griffis <agriffis@gentoo.org> id3lib-3.8.3.ebuild:
+  Add ~alpha to KEYWORDS
+
+  03 Mar 2003; Martin Holzer <mholzer@gentoo.org> id3lib-3.8.3.ebuild
+  files/digest-id3lib-3.8.3 ChangeLog :
+  Version bumped. Closes #16738.
+
+*id3lib-3.8.2 (08 Jan 2003)
+
+  03 Mar 2003; Martin Holzer <mholzer@gentoo.org> id3lib-3.8.2.ebuild :
+  Marked as stable.
+
+  08 Jan 2003; Martin Holzer <mholzer@gentoo.org> id3lib-3.8.2.ebuild
+  files/digest-id3lib-3.8.2 ChangeLog :
+  Version bumped. Closes #13430.
+
+*id3lib-3.8.0 (23 Aug 2002)
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  26 Aug 2002; Matthew Kennedy <mkennedy@gentoo.org>
+  id3lib-3.8.0.ebuild, ChangeLog :
+
+  Slightly improved the gcc check. Resolves bug #6982.
+
+  23 Aug 2002; Matthew Kennedy <mkennedy@gentoo.org>
+  id3lib-3.8.0.ebuild, ChangeLog, files/digest-id3lib-3.8.0 :
+
+  Version bump. Removed azarah's patch for _pre2 (doesn't seem to be
+  necessary for gcc3.2), added the following for 3.8.0 from Michael Best
+  <gentoo@pendragon.org> for gcc3.2 compatibility (Bug #6840)
+	
+*id3lib-3.8.0_pre2-r3 (6 Jun 2002)
+
+  6 Jun 2002; Brandon Low <lostlogic@lostlogicx.com> id3lib-3.8.0_pre2-r3.ebuild :
+
+  Fix installation locations, and CPPFLAG specifications, neaten ebuild, fixes issue
+  with grip not finding id3.h
+
+*id3lib-3.8.0_pre2-r1 (5 May 2002)
+
+  5 May 2002; Martin Schlemmer <azarah@gentoo.org> id3lib-3.8.0_pre2-r1.ebuild :
+
+  Resolve bug #2128 (do not compile with gcc3).
+
+*id3lib-3.8.0_pre2 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

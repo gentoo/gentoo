@@ -1,0 +1,25 @@
+# ChangeLog for app-vim/vim-spell-el
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/vim-spell-el/ChangeLog,v 1.5 2010/03/18 13:29:24 hwoarang Exp $
+
+  18 Mar 2010; Markos Chandras <hwoarang@gentoo.org>
+  vim-spell-el-20080402.ebuild:
+  Stable on amd64
+
+  11 Mar 2010; Dror Levin <spatz@gentoo.org> vim-spell-el-20080402.ebuild:
+  Keyword ~amd64, bug 294725.
+
+  20 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing agorf as a maintainer since he was retired.
+
+  02 May 2008; Markus Meier <maekke@gentoo.org>
+  vim-spell-el-20080402.ebuild:
+  x86 stable, bug #219916
+
+*vim-spell-el-20080402 (02 Apr 2008)
+
+  02 Apr 2008; Aggelos Orfanakos <agorf@gentoo.org> +metadata.xml,
+  +vim-spell-el-20080402.ebuild:
+  Initial ebuild by Dimitris Kavadas <dpkavadas@gmail.com>.
+

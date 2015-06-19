@@ -1,0 +1,286 @@
+# ChangeLog for www-client/uzbl
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-client/uzbl/ChangeLog,v 1.58 2014/07/06 12:18:50 swift Exp $
+
+*uzbl-2012.05.14-r1 (06 Jul 2014)
+
+  06 Jul 2014; Sven Vermeulen <swift@gentoo.org> +uzbl-2012.05.14-r1.ebuild,
+  uzbl-9999.ebuild:
+  Fix bug #513466 (incl. #506006, #456310, #486012, #453208) thanks to Kéwan
+  "tharvik" Marconnet
+
+  02 Jun 2014; Tom Wijsman <TomWij@gentoo.org> uzbl-2012.05.14.ebuild,
+  uzbl-9999.ebuild:
+  Repoman didn't update the Gentoo Copyright header for some reason.
+
+  02 Jun 2014; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Added Kéwan Marconnet (tharvik) as proxy maintainer.
+
+  08 May 2014; Alex Alexander <wired@gentoo.org> metadata.xml:
+  maintainer-needed
+
+  13 Apr 2014; Agostino Sarubbo <ago@gentoo.org> -uzbl-2010.08.05.ebuild,
+  -uzbl-2011.04.12.ebuild, -uzbl-2011.11.28.ebuild:
+  Remove old
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> uzbl-2012.05.14.ebuild:
+  Stable for x86, wrt bug #404985
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> uzbl-2012.05.14.ebuild:
+  amd64 stable, bug #404985
+
+  02 Feb 2013; Alex Alexander <wired@gentoo.org> -uzbl-2010.11.25.ebuild,
+  -uzbl-2011.02.15.ebuild, -uzbl-2011.03.17.ebuild, -uzbl-2011.07.17.ebuild,
+  -uzbl-2011.07.25.ebuild, -uzbl-2011.10.01.ebuild,
+  -files/uzbl-makefile-docdir.patch:
+  removed obsolete stuff
+
+*uzbl-2012.05.14 (20 Aug 2012)
+
+  20 Aug 2012; Tim Harder <radhermit@gentoo.org> +uzbl-2012.05.14.ebuild,
+  uzbl-9999.ebuild:
+  Version bump. Use vcs-snapshot eclass to unpack release tarballs.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> uzbl-2010.08.05.ebuild,
+  uzbl-2010.11.25.ebuild, uzbl-2011.02.15.ebuild, uzbl-2011.03.17.ebuild,
+  uzbl-2011.04.12.ebuild, uzbl-2011.07.17.ebuild, uzbl-2011.07.25.ebuild,
+  uzbl-2011.10.01.ebuild, uzbl-2011.11.28.ebuild, uzbl-9999.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*uzbl-2011.11.28 (26 Dec 2011)
+
+  26 Dec 2011; Alex Alexander <wired@gentoo.org> +uzbl-2011.11.28.ebuild,
+  uzbl-9999.ebuild:
+  version bump, prefix changes in 9999
+
+  24 Dec 2011; Justin Lecher <jlec@gentoo.org> uzbl-2011.10.01.ebuild:
+  Added prefix offset fixes and keyworded for ~-linux, tested by me
+
+*uzbl-2011.10.01 (30 Oct 2011)
+
+  30 Oct 2011; Alex Alexander <wired@gentoo.org> +uzbl-2011.10.01.ebuild:
+  version bump, bug 388761
+
+  24 Oct 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  uzbl-2010.08.05.ebuild, uzbl-2010.11.25.ebuild, uzbl-2011.02.15.ebuild,
+  uzbl-2011.03.17.ebuild, uzbl-2011.04.12.ebuild, uzbl-2011.07.17.ebuild,
+  uzbl-2011.07.25.ebuild, uzbl-9999.ebuild:
+  Depend on correct slot of pygobject.
+
+  06 Aug 2011; Markus Meier <maekke@gentoo.org> uzbl-2011.04.12.ebuild:
+  x86 stable, bug #368237
+
+  02 Aug 2011; Markos Chandras <hwoarang@gentoo.org> uzbl-2011.04.12.ebuild:
+  Stable on amd64 wrt bug #368237
+
+*uzbl-2011.07.25 (26 Jul 2011)
+
+  26 Jul 2011; Alex Alexander <wired@gentoo.org> +uzbl-2011.07.25.ebuild:
+  version bump
+
+*uzbl-2011.07.17 (25 Jul 2011)
+
+  25 Jul 2011; Alex Alexander <wired@gentoo.org> +uzbl-2011.07.17.ebuild,
+  uzbl-9999.ebuild, metadata.xml:
+  version bump, live ebuild update, switched to git-2
+
+*uzbl-2011.04.12 (14 Apr 2011)
+
+  14 Apr 2011; Alex Alexander <wired@gentoo.org> +uzbl-2011.04.12.ebuild:
+  version bump
+
+*uzbl-2011.03.17 (25 Mar 2011)
+
+  25 Mar 2011; Alex Alexander <wired@gentoo.org> uzbl-2010.08.05.ebuild,
+  uzbl-2010.11.25.ebuild, uzbl-2011.02.15.ebuild, +uzbl-2011.03.17.ebuild,
+  uzbl-9999.ebuild:
+  version bump. added missing runtime dep, bug #360149
+
+  21 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  uzbl-2010.08.05.ebuild, uzbl-2010.11.25.ebuild, uzbl-2011.02.15.ebuild,
+  uzbl-9999.ebuild:
+  Fix slot-deps on gnome libs
+
+  15 Feb 2011; Alex Alexander <wired@gentoo.org> uzbl-2011.02.15.ebuild,
+  uzbl-9999.ebuild:
+  added warning, removed unnecessary quotes
+
+*uzbl-2011.02.15 (15 Feb 2011)
+
+  15 Feb 2011; Alex Alexander <wired@gentoo.org> +uzbl-2011.02.15.ebuild,
+  uzbl-9999.ebuild:
+  version bump, bug #355093
+
+*uzbl-2010.11.25 (05 Dec 2010)
+
+  05 Dec 2010; Alex Alexander <wired@gentoo.org> +uzbl-2010.11.25.ebuild,
+  uzbl-9999.ebuild:
+  version bump, added glib to deps
+
+  19 Nov 2010; Alex Alexander <wired@gentoo.org> -uzbl-2010.02.02-r1.ebuild,
+  -uzbl-2010.03.14.ebuild, -uzbl-2010.04.03.ebuild:
+  removed old
+
+  07 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  uzbl-2010.08.05.ebuild:
+  x86 stable wrt security bug #331421
+
+  06 Aug 2010; Markos Chandras <hwoarang@gentoo.org> uzbl-2010.08.05.ebuild:
+  Stable on amd64 wrt bug #331421
+
+*uzbl-2010.08.05 (06 Aug 2010)
+
+  06 Aug 2010; Alex Alexander <wired@gentoo.org> +uzbl-2010.08.05.ebuild:
+  version bump, includes security fix, bug 331421
+
+  24 Jun 2010; Pacho Ramos <pacho@gentoo.org> uzbl-2010.04.03.ebuild:
+  stable amd64, bug 323327
+
+  21 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  uzbl-2010.04.03.ebuild:
+  QA: Fix keywording. Ekeyword gets confused with multiple KEYWORDS lines.
+
+  21 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  uzbl-2010.04.03.ebuild:
+  stable x86, bug 323327
+
+  04 Apr 2010; Alex Alexander <wired@gentoo.org> uzbl-2010.04.03.ebuild,
+  uzbl-9999.ebuild:
+  removed comment
+
+  04 Apr 2010; Alex Alexander <wired@gentoo.org> uzbl-2010.04.03.ebuild,
+  uzbl-9999.ebuild:
+  removed obsolete dependency
+
+*uzbl-2010.04.03 (04 Apr 2010)
+
+  04 Apr 2010; Alex Alexander <wired@gentoo.org> +uzbl-2010.04.03.ebuild,
+  uzbl-9999.ebuild:
+  version bump, fix keywords
+
+  30 Mar 2010; Alex Alexander <wired@gentoo.org> uzbl-2010.02.02-r1.ebuild,
+  uzbl-2010.03.14.ebuild, uzbl-9999.ebuild:
+  9999: integrated recommendations from bug #310375 together with other
+  ebuild improvements, added vim-syntax USE. all versions: changed
+  description
+
+*uzbl-2010.03.14 (15 Mar 2010)
+
+  15 Mar 2010; Alex Alexander <wired@gentoo.org> +uzbl-2010.03.14.ebuild,
+  uzbl-9999.ebuild:
+  version bump. removed makefile patch from -9999 (applied upstream)
+
+  14 Mar 2010; Alex Alexander <wired@gentoo.org> uzbl-9999.ebuild:
+  makefile patch applied upstream in experimental branch, don't try to patch
+  again
+
+*uzbl-2010.02.02-r1 (14 Mar 2010)
+
+  14 Mar 2010; Alex Alexander <wired@gentoo.org> -uzbl-2010.01.05.ebuild,
+  -uzbl-2010.02.02.ebuild, +uzbl-2010.02.02-r1.ebuild,
+  -files/uzbl-2010.02.02-makefile-cleanup.patch, uzbl-9999.ebuild,
+  -files/uzbl-9999-makefile-cleanup.patch,
+  -files/uzbl-makefile-cleanup.patch, +files/uzbl-makefile-docdir.patch:
+  updated makefile patch and sent it upstream - fixes bug #309159. fixed bug
+  309163. removed old version
+
+  17 Feb 2010; Alex Alexander <wired@gentoo.org>
+  files/uzbl-9999-makefile-cleanup.patch:
+  updated patch for live ebuild
+
+*uzbl-2010.02.02 (03 Feb 2010)
+
+  03 Feb 2010; Alex Alexander <wired@gentoo.org> +uzbl-2010.02.02.ebuild,
+  +files/uzbl-2010.02.02-makefile-cleanup.patch:
+  uzbl-2010.02.02 version bump
+
+  27 Jan 2010; Alex Alexander <wired@gentoo.org> uzbl-9999.ebuild,
+  files/uzbl-9999-makefile-cleanup.patch:
+  fixed live ebuild && patch - bug 302331
+
+*uzbl-2010.01.05 (05 Jan 2010)
+
+  05 Jan 2010; Alex Alexander <wired@gentoo.org> -uzbl-2009.12.22.ebuild,
+  +uzbl-2010.01.05.ebuild:
+  version bump, fixes security issue with javascript. for more details read
+  http://www.uzbl.org/news.php?id=22
+
+*uzbl-2009.12.22 (23 Dec 2009)
+
+  23 Dec 2009; Alex Alexander <wired@gentoo.org> -uzbl-0_pre20091222.ebuild,
+  +uzbl-2009.12.22.ebuild:
+  upstream plans to keep date-based versioning, modified our ebuild version
+  to follow that :)
+
+*uzbl-0_pre20091222 (23 Dec 2009)
+
+  23 Dec 2009; Alex Alexander <wired@gentoo.org>
+  -uzbl-0_pre20091130-r1.ebuild, +uzbl-0_pre20091222.ebuild,
+  files/uzbl-makefile-cleanup.patch:
+  version bump, removed old one
+
+  20 Dec 2009; Alex Alexander <wired@gentoo.org>
+  files/uzbl-9999-makefile-cleanup.patch:
+  updated makefile patch
+
+  16 Dec 2009; Alex Alexander <wired@gentoo.org>
+  files/uzbl-9999-makefile-cleanup.patch:
+  updated live ebuild's makefile patch
+
+  12 Dec 2009; Alex Alexander <wired@gentoo.org> uzbl-9999.ebuild:
+  allow user set EGIT_REPO_URI
+
+  09 Dec 2009; Alex Alexander <wired@gentoo.org>
+  uzbl-0_pre20091130-r1.ebuild, uzbl-9999.ebuild:
+  some extra deps
+
+  08 Dec 2009; Alex Alexander <wired@gentoo.org>
+  uzbl-0_pre20091130-r1.ebuild, uzbl-9999.ebuild,
+  files/uzbl-9999-makefile-cleanup.patch:
+  added better elog messages to inform the user about optional runtime
+  dependencies. fixed -9999 patch to work with updated makefile. -browser
+  +tabbed results in -browser -tabbed (with ewarn). +browser depends on
+  x11-misc/xclip, used in uzbl's example config.
+
+  05 Dec 2009; Alex Alexander <wired@gentoo.org> -uzbl-0_pre20091130.ebuild,
+  uzbl-0_pre20091130-r1.ebuild, uzbl-9999.ebuild,
+  files/uzbl-9999-makefile-cleanup.patch, files/uzbl-makefile-cleanup.patch:
+  some makefile improvements after talking with upstream
+
+*uzbl-0_pre20091130-r1 (05 Dec 2009)
+
+  05 Dec 2009; Alex Alexander <wired@gentoo.org>
+  +uzbl-0_pre20091130-r1.ebuild, uzbl-9999.ebuild, metadata.xml:
+  added new browser and tabbed USE flags, some new optional dependencies
+
+  05 Dec 2009; Alex Alexander <wired@gentoo.org> -uzbl-0_pre20091107.ebuild:
+  removed old version
+
+  04 Dec 2009; Alex Alexander <wired@gentoo.org> uzbl-9999.ebuild,
+  metadata.xml:
+  added 'experimental' USE flag that activates experimental git branch
+
+  04 Dec 2009; Alex Alexander <wired@gentoo.org>
+  files/uzbl-9999-makefile-cleanup.patch, files/uzbl-makefile-cleanup.patch:
+  updated makefile patches to fix -j2+ install issue
+
+  04 Dec 2009; Alex Alexander <wired@gentoo.org> uzbl-0_pre20091107.ebuild,
+  uzbl-0_pre20091130.ebuild, uzbl-9999.ebuild:
+  updated dependencies
+
+*uzbl-0_pre20091130 (04 Dec 2009)
+
+  04 Dec 2009; Alex Alexander <wired@gentoo.org> +uzbl-0_pre20091130.ebuild:
+  20091130 snapshot
+
+*uzbl-9999 (04 Dec 2009)
+
+  04 Dec 2009; Alex Alexander <wired@gentoo.org> +uzbl-9999.ebuild,
+  +files/uzbl-9999-makefile-cleanup.patch:
+  live ebuild
+
+*uzbl-0_pre20091107 (04 Dec 2009)
+
+  04 Dec 2009; Alex Alexander <wired@gentoo.org> +uzbl-0_pre20091107.ebuild,
+  +files/uzbl-makefile-cleanup.patch, +metadata.xml:
+  new ebuild

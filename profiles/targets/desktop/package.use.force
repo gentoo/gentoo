@@ -1,0 +1,8 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/targets/desktop/package.use.force,v 1.1 2014/06/03 04:20:46 tetromino Exp $
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (03 Jun 2014)
+# Ensure shared-mime-info is pulled in by glib, otherwise GNOME, XFCE, and
+# numerous gtk-based applications will break, see bug #511894
+dev-libs/glib mime

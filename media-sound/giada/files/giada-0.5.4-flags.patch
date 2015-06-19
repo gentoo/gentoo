@@ -1,0 +1,10 @@
+--- giada-0.5.4/src/Makefile.am
++++ giada-0.5.4/src/Makefile.am
+@@ -1,6 +1,6 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+-AM_CXXFLAGS = -Wall -pedantic -Werror
++AM_CXXFLAGS = -Wall -pedantic
+ 
+ # aeffect.h (header from VST SDK) uses 'long long' which is not supported
+ # in ISO C++ 1998 and -Werror flag breaks the compilation.

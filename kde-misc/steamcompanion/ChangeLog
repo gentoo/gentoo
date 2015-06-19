@@ -1,0 +1,70 @@
+# ChangeLog for kde-misc/steamcompanion
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/steamcompanion/ChangeLog,v 1.14 2014/08/05 16:31:41 mrueg Exp $
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> steamcompanion-0.5.4-r1.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  24 Apr 2014; Johannes Huber <johu@gentoo.org> -steamcompanion-0.5.4.ebuild,
+  steamcompanion-0.5.4-r1.ebuild:
+  amd64/x86 stable, remove old.
+
+*steamcompanion-0.5.4-r1 (21 Mar 2014)
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org> +steamcompanion-0.5.4-r1.ebuild:
+  Revision bump to EAPI 5.
+
+  18 Apr 2012; Johannes Huber <johu@gentoo.org> -steamcompanion-0.5.1.ebuild,
+  -steamcompanion-0.5.2.ebuild:
+  Remove old.
+
+  18 Apr 2012; Markus Meier <maekke@gentoo.org> steamcompanion-0.5.4.ebuild:
+  x86 stable, bug #409403
+
+  04 Apr 2012; Agostino Sarubbo <ago@gentoo.org> steamcompanion-0.5.4.ebuild:
+  Stable for amd64, wrt bug #409403
+
+*steamcompanion-0.5.4 (20 Feb 2012)
+
+  20 Feb 2012; Johannes Huber <johu@gentoo.org> +steamcompanion-0.5.4.ebuild:
+  Version bump wrt bug #404905.
+
+*steamcompanion-0.5.2 (03 Feb 2012)
+
+  03 Feb 2012; Johannes Huber <johu@gentoo.org> +steamcompanion-0.5.2.ebuild:
+  Version bump wrt bug #402009.
+
+*steamcompanion-0.5.1 (08 Dec 2011)
+
+  08 Dec 2011; Johannes Huber <johu@gentoo.org> +steamcompanion-0.5.1.ebuild,
+  -steamcompanion-0.2.2.ebuild, -steamcompanion-0.3.1.ebuild,
+  -steamcompanion-0.4.0.ebuild, -steamcompanion-0.5.ebuild:
+  Version bump, removed old, bug #393207
+
+*steamcompanion-0.5 (16 Oct 2011)
+
+  16 Oct 2011; Marc Schiffbauer <mschiff@gentoo.org>
+  +steamcompanion-0.5.ebuild:
+  Version bump. Fixes bug #386593
+
+*steamcompanion-0.4.0 (22 Sep 2011)
+
+  22 Sep 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +steamcompanion-0.4.0.ebuild:
+  Version bump
+
+  09 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  steamcompanion-0.2.2.ebuild:
+  Fix SLOT
+
+*steamcompanion-0.3.1 (07 Aug 2011)
+
+  07 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +steamcompanion-0.3.1.ebuild:
+  Version bump
+
+*steamcompanion-0.2.2 (19 May 2011)
+
+  19 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +steamcompanion-0.2.2.ebuild, +metadata.xml:
+  Initial commit for handy plasmoid.

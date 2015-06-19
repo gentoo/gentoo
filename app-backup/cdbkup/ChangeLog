@@ -1,0 +1,56 @@
+# ChangeLog for app-backup/cdbkup
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/cdbkup/ChangeLog,v 1.7 2015/06/09 09:02:07 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  10 Sep 2010; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Duplicate <maintainer> block of the herd is pointless.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> cdbkup-1.0.ebuild:
+  Remove virtual/libc
+
+  04 Oct 2008; Thomas Anderson <gentoofan23@gentoo.org> cdbkup-1.0.ebuild,
+  cdbkup-1.0-r1.ebuild:
+  Fix dependency issues from bug #163469, Quoting
+
+  01 Nov 2006; Lars Weiler <pylon@gentoo.org> cdbkup-1.0.ebuild,
+  cdbkup-1.0-r1.ebuild:
+  Changing to virtual/cdrtools; bug #147880.
+
+  04 Jul 2005; Robin H. Johnson <robbat2@gentoo.org> +cdbkup-1.0.ebuild,
+  +cdbkup-1.0-r1.ebuild:
+  Moved from app-cdr/cdbkup to app-backup/cdbkup.
+
+  20 Jun 2005; Diego Pettenò <flameeyes@gentoo.org> cdbkup-1.0-r1.ebuild:
+  Moved dependency from sys-apps/eject to virtual/eject as per bug #94236, and
+  changed to RDEPEND as it doesn't provide any kind of compile-time support.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> cdbkup-1.0.ebuild:
+  Masked cdbkup-1.0.ebuild stable for ppc
+
+  16 Aug 2004; Dylan Carlson <absinthe@gentoo.org> cdbkup-1.0-r1.ebuild:
+  KEYWORDS ~amd64.
+
+*cdbkup-1.0-r1 (10 May 2004)
+
+  10 May 2004; Daniel Ahlberg <aliz@gentoo.org> cdbkup-1.0-r1.ebuild:
+  Tar patch is only needed for tar <1.13.17, closing #49288.
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> cdbkup-1.0.ebuild:
+  Add die following econf for bug 48950
+
+  29 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> cdbkup-1.0.ebuild:
+  inherit eutils for epatch; use epatch; IUSE; depend on sed >= 4
+
+  21 Nov 2003; Daniel Ahlberg <aliz@gentoo.org> cdbkup-1.0.ebuild :
+  Block app-misc/cdcat becuse it also install /usr/bin/cdcat. Closing #27502.
+
+*cdbkup-1.0 (18 Aug 2002)
+
+  28 Mar 2003; Pieter Van den Abeele <pvdabeel@gentoo.org> cdbkup-1.0.ebuild:
+  Added ~ppc
+
+  18 Aug 2002; Daniel Ahlberg <aliz@gentoo.org> cdbkup-1.0.ebuild:
+  Initial import. Ebuild submitted by Cal Evans <cal@calevans.com>.

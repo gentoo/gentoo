@@ -1,0 +1,153 @@
+# ChangeLog for dev-perl/Pango
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Pango/ChangeLog,v 1.46 2015/05/01 12:08:10 dilfridge Exp $
+
+  01 May 2015; Andreas K. Huettel <dilfridge@gentoo.org> Pango-1.224.0.ebuild:
+  dev-perl/extutils-depends just became dev-perl/ExtUtils-Depends
+
+  12 Sep 2014; Mikle Kolyada <zlogene@gentoo.org> -Pango-1.223.0.ebuild:
+  Drop old.
+
+  04 Mar 2014; Vicente Olivert Riera <vincent@gentoo.org> Pango-1.224.0.ebuild:
+  Add ~mips keyword.
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> Pango-1.224.0.ebuild:
+  Stable for sparc, wrt bug #463056
+
+  18 May 2013; Agostino Sarubbo <ago@gentoo.org> Pango-1.224.0.ebuild:
+  Stable for alpha, wrt bug #463056
+
+  18 May 2013; Agostino Sarubbo <ago@gentoo.org> Pango-1.224.0.ebuild:
+  Stable for ia64, wrt bug #463056
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> Pango-1.224.0.ebuild:
+  Stable for hppa, wrt bug #463056
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> Pango-1.224.0.ebuild:
+  Stable for ppc64, wrt bug #463056
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> Pango-1.224.0.ebuild:
+  Stable for ppc, wrt bug #463056
+
+  15 May 2013; Agostino Sarubbo <ago@gentoo.org> Pango-1.224.0.ebuild:
+  Stable for x86, wrt bug #463056
+
+  15 May 2013; Agostino Sarubbo <ago@gentoo.org> Pango-1.224.0.ebuild:
+  Stable for amd64, wrt bug #463056
+
+*Pango-1.224.0 (10 Feb 2013)
+
+  10 Feb 2013; Torsten Veller <tove@gentoo.org> +Pango-1.224.0.ebuild:
+  Version bump
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org> -Pango-1.222.0.ebuild:
+  Cleanup
+
+  27 Aug 2012; Raúl Porcel <armin76@gentoo.org> Pango-1.223.0.ebuild:
+  alpha/ia64/sparc stable wrt #418839
+
+  09 Aug 2012; Brent Baude <ranger@gentoo.org> Pango-1.223.0.ebuild:
+  Marking Pango-1.223.0 ppc for bug 418839
+
+  07 Aug 2012; Brent Baude <ranger@gentoo.org> Pango-1.223.0.ebuild:
+  Marking Pango-1.223.0 ppc64 for bug 418839
+
+  05 Aug 2012; Johannes Huber <johu@gentoo.org> Pango-1.223.0.ebuild:
+  Stable for x86, wrt bug #418839
+
+  04 Aug 2012; Jeroen Roovers <jer@gentoo.org> Pango-1.223.0.ebuild:
+  Stable for HPPA (bug #418839).
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> Pango-1.223.0.ebuild:
+  Stable for amd64, wrt bug #418839
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -Pango-1.221.ebuild:
+  Cleanup
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> Pango-1.222.0.ebuild:
+  ia64/sparc stable wrt #400201
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> Pango-1.222.0.ebuild:
+  x86 stable wrt bug #400201
+
+  03 Mar 2012; Brent Baude <ranger@gentoo.org> Pango-1.222.0.ebuild:
+  Marking Pango-1.222.0 ppc64 for bug 400201
+
+*Pango-1.223.0 (02 Mar 2012)
+
+  02 Mar 2012; Robin H. Johnson <robbat2@gentoo.org> +Pango-1.223.0.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  27 Feb 2012; Brent Baude <ranger@gentoo.org> Pango-1.222.0.ebuild:
+  Marking Pango-1.222.0 ppc for bug 400201
+
+  27 Feb 2012; Jeroen Roovers <jer@gentoo.org> Pango-1.222.0.ebuild:
+  Stable for HPPA (bug #400201).
+
+  25 Feb 2012; Tobias Klausmann <klausman@gentoo.org> Pango-1.222.0.ebuild:
+  Stable on alpha, bug #400201
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Pango-1.222.0.ebuild:
+  Stable for amd64, wrt bug #400201
+
+*Pango-1.222.0 (06 Aug 2011)
+
+  06 Aug 2011; Torsten Veller <tove@gentoo.org> +Pango-1.222.0.ebuild:
+  Version bump
+
+  11 May 2011; Michael Weber <xmw@gentoo.org> Pango-1.221.ebuild:
+  added ~arm keyword (bug 264983)
+
+  24 Jan 2011; Jeroen Roovers <jer@gentoo.org> Pango-1.221.ebuild:
+  Stable for HPPA (bug #351661).
+
+  13 Jan 2011; Brent Baude <ranger@gentoo.org> Pango-1.221.ebuild:
+  Marking Pango-1.221 ppc stable for bug 341865
+
+  13 Nov 2010; Raúl Porcel <armin76@gentoo.org> Pango-1.221.ebuild:
+  alpha/ia64/sparc stable
+
+  05 Nov 2010; Samuli Suominen <ssuominen@gentoo.org> Pango-1.221.ebuild:
+  ppc64 stable wrt #341865
+
+  05 Nov 2010; Markos Chandras <hwoarang@gentoo.org> Pango-1.221.ebuild:
+  Stable on amd64 wrt bug #341865
+
+  04 Nov 2010; Christian Faulhammer <fauli@gentoo.org> Pango-1.221.ebuild:
+  x86 stable, bug 341865
+
+  21 Oct 2010; Jeroen Roovers <jer@gentoo.org> Pango-1.221.ebuild:
+  Marked ~hppa (bug #322187).
+
+  11 Aug 2010; Joseph Jezak <josejx@gentoo.org> Pango-1.221.ebuild:
+  Marked ~ppc/~ppc64 for bug #322187.
+
+  17 Jun 2010; Torsten Veller <tove@gentoo.org> Pango-1.221.ebuild:
+  Makefile.PL should not return success when there is failure (#322423).
+  Thanks to David Abbott
+
+  29 May 2010; Raúl Porcel <armin76@gentoo.org> Pango-1.221.ebuild:
+  Add ~alpha/~ia64/~sparc
+
+  10 Jan 2010; Fabian Groffen <grobian@gentoo.org> Pango-1.221.ebuild:
+  Transfer Prefix keywords
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org> -Pango-1.220.ebuild:
+  Cleanup
+
+*Pango-1.221 (25 Aug 2009)
+
+  25 Aug 2009; Robin H. Johnson <robbat2@gentoo.org> +Pango-1.221.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  25 Aug 2009; Robin H. Johnson <robbat2@gentoo.org> Pango-1.220.ebuild:
+  Works on amd64 too.
+
+*Pango-1.220 (07 Jun 2009)
+
+  07 Jun 2009; Torsten Veller <tove@gentoo.org> +Pango-1.220.ebuild,
+  +metadata.xml:
+  Initial commit

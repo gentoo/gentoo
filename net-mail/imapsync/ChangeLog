@@ -1,0 +1,424 @@
+# ChangeLog for net-mail/imapsync
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/imapsync/ChangeLog,v 1.99 2014/12/04 15:44:15 radhermit Exp $
+
+*imapsync-1.607-r1 (04 Dec 2014)
+
+  04 Dec 2014; Tim Harder <radhermit@gentoo.org> -imapsync-1.607.ebuild,
+  +imapsync-1.607-r1.ebuild:
+  Add missing dev-perl/Unicode-String dep (bug #531626).
+
+  04 Dec 2014; Tim Harder <radhermit@gentoo.org> -imapsync-1.567.ebuild,
+  -imapsync-1.584-r1.ebuild:
+  Remove old.
+
+*imapsync-1.607 (04 Dec 2014)
+
+  04 Dec 2014; Tim Harder <radhermit@gentoo.org> +imapsync-1.607.ebuild:
+  Version bump.
+
+  27 Sep 2014; Agostino Sarubbo <ago@gentoo.org> imapsync-1.592-r1.ebuild:
+  Stable for ppc, wrt bug #514478
+
+  18 Sep 2014; Agostino Sarubbo <ago@gentoo.org> imapsync-1.592-r1.ebuild:
+  Stable for x86, wrt bug #514478
+
+  18 Sep 2014; Agostino Sarubbo <ago@gentoo.org> imapsync-1.592-r1.ebuild:
+  Stable for amd64, wrt bug #514478
+
+  23 Jun 2014; Tim Harder <radhermit@gentoo.org> -imapsync-1.569.ebuild,
+  -imapsync-1.580.ebuild, -imapsync-1.584.ebuild, -imapsync-1.592.ebuild:
+  Remove old.
+
+*imapsync-1.592-r1 (23 Jun 2014)
+
+  23 Jun 2014; Tim Harder <radhermit@gentoo.org> +imapsync-1.592-r1.ebuild:
+  Add missing rdep on dev-perl/IO-Tee (bug #514424).
+
+*imapsync-1.592 (15 Jun 2014)
+
+  15 Jun 2014; Tim Harder <radhermit@gentoo.org> +imapsync-1.592.ebuild:
+  Version bump.
+
+*imapsync-1.584-r1 (30 Apr 2014)
+
+  30 Apr 2014; Tim Harder <radhermit@gentoo.org> +imapsync-1.584-r1.ebuild:
+  Add dep on dev-perl/File-Copy-Recursive (bug #497474).
+
+*imapsync-1.584 (14 Feb 2014)
+
+  14 Feb 2014; Tim Harder <radhermit@gentoo.org> +imapsync-1.584.ebuild:
+  Version bump.
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> imapsync-1.567.ebuild:
+  Stable for x86, wrt bug #495860
+
+  23 Jan 2014; Tim Harder <radhermit@gentoo.org> -imapsync-1.542.ebuild,
+  -imapsync-1.547.ebuild:
+  Remove old.
+
+*imapsync-1.580 (23 Jan 2014)
+
+  23 Jan 2014; Tim Harder <radhermit@gentoo.org> +imapsync-1.580.ebuild:
+  Version bump.
+
+  20 Jan 2014; Agostino Sarubbo <ago@gentoo.org> imapsync-1.567.ebuild:
+  Stable for ppc, wrt bug #495860
+
+  18 Jan 2014; Pacho Ramos <pacho@gentoo.org> imapsync-1.567.ebuild:
+  amd64 stable, bug #495860
+
+*imapsync-1.569 (25 Dec 2013)
+
+  25 Dec 2013; Tim Harder <radhermit@gentoo.org> +imapsync-1.569.ebuild:
+  Version bump.
+
+*imapsync-1.567 (27 Sep 2013)
+
+  27 Sep 2013; Tim Harder <radhermit@gentoo.org> +imapsync-1.567.ebuild:
+  Version bump.
+
+  21 Jul 2013; Tim Harder <radhermit@gentoo.org> -imapsync-1.525.ebuild,
+  -imapsync-1.536.ebuild:
+  Remove old.
+
+*imapsync-1.547 (21 Jul 2013)
+
+  21 Jul 2013; Tim Harder <radhermit@gentoo.org> +imapsync-1.547.ebuild:
+  Version bump.
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> imapsync-1.542.ebuild:
+  Stable for amd64, wrt bug #474274
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> imapsync-1.542.ebuild:
+  Stable for x86, wrt bug #474274
+
+  24 Jun 2013; Agostino Sarubbo <ago@gentoo.org> imapsync-1.542.ebuild:
+  Stable for ppc, wrt bug #474274
+
+  22 May 2013; Tim Harder <radhermit@gentoo.org> -imapsync-1.508.ebuild,
+  -imapsync-1.518.ebuild:
+  Remove old.
+
+*imapsync-1.542 (22 May 2013)
+
+  22 May 2013; Tim Harder <radhermit@gentoo.org> +imapsync-1.542.ebuild:
+  Version bump.
+
+*imapsync-1.536 (06 May 2013)
+
+  06 May 2013; Tim Harder <radhermit@gentoo.org> +imapsync-1.536.ebuild:
+  Version bump (bug #468652).
+
+  11 Apr 2013; Agostino Sarubbo <ago@gentoo.org> imapsync-1.525.ebuild:
+  Stable for ppc, wrt bug #464464
+
+  09 Apr 2013; Agostino Sarubbo <ago@gentoo.org> imapsync-1.525.ebuild:
+  Stable for x86, wrt bug #464464
+
+  09 Apr 2013; Chema Alonso <nimiux@gentoo.org> imapsync-1.525.ebuild:
+  Stable for amd64 wrt bug #464464
+
+  02 Mar 2013; Tim Harder <radhermit@gentoo.org> -imapsync-1.488.ebuild,
+  -imapsync-1.498.ebuild, -imapsync-1.504.ebuild:
+  Remove old.
+
+*imapsync-1.525 (02 Mar 2013)
+
+  02 Mar 2013; Tim Harder <radhermit@gentoo.org> +imapsync-1.525.ebuild:
+  Version bump.
+
+*imapsync-1.518 (15 Jan 2013)
+
+  15 Jan 2013; Tim Harder <radhermit@gentoo.org> +imapsync-1.518.ebuild:
+  Version bump (bug #452326).
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> imapsync-1.508.ebuild:
+  Stable for x86, wrt bug #441458
+
+  09 Dec 2012; Agostino Sarubbo <ago@gentoo.org> imapsync-1.508.ebuild:
+  Stable for ppc, wrt bug #441458
+
+  08 Dec 2012; <ago@gentoo.org> imapsync-1.508.ebuild:
+  Stable for amd64, wrt bug #441458
+
+*imapsync-1.508 (25 Sep 2012)
+
+  25 Sep 2012; Tim Harder <radhermit@gentoo.org> +imapsync-1.508.ebuild:
+  Version bump.
+
+  18 Sep 2012; Johannes Huber <johu@gentoo.org> imapsync-1.498.ebuild:
+  Stable for x86, wrt bug #434298
+
+  08 Sep 2012; Anthony G. Basile <blueness@gentoo.org> imapsync-1.498.ebuild:
+  Stable ppc, bug #434298
+
+  08 Sep 2012; Agostino Sarubbo <ago@gentoo.org> imapsync-1.498.ebuild:
+  Stable for amd64, wrt bug #434298
+
+  08 Sep 2012; Tim Harder <radhermit@gentoo.org> -imapsync-1.476.ebuild,
+  -imapsync-1.487.ebuild:
+  Remove old.
+
+*imapsync-1.504 (08 Sep 2012)
+
+  08 Sep 2012; Tim Harder <radhermit@gentoo.org> +imapsync-1.504.ebuild:
+  Version bump.
+
+  21 Aug 2012; Johannes Huber <johu@gentoo.org> imapsync-1.488.ebuild:
+  Stable for x86, wrt bug #429176
+
+  04 Aug 2012; Anthony G. Basile <blueness@gentoo.org> imapsync-1.488.ebuild:
+  Stable ppc, bug #429176
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> imapsync-1.488.ebuild:
+  Stable for amd64, wrt bug #429176
+
+*imapsync-1.498 (01 Aug 2012)
+
+  01 Aug 2012; Tim Harder <radhermit@gentoo.org> +imapsync-1.498.ebuild:
+  Version bump.
+
+  29 May 2012; Tim Harder <radhermit@gentoo.org> -imapsync-1.480.ebuild,
+  -imapsync-1.484.ebuild:
+  Remove old.
+
+*imapsync-1.488 (29 May 2012)
+
+  29 May 2012; Tim Harder <radhermit@gentoo.org> +imapsync-1.488.ebuild:
+  Version bump.
+
+*imapsync-1.487 (19 Mar 2012)
+
+  19 Mar 2012; Tim Harder <radhermit@gentoo.org> +imapsync-1.487.ebuild:
+  Version bump.
+
+  17 Feb 2012; Tim Harder <radhermit@gentoo.org> -imapsync-1.456.ebuild:
+  Remove old.
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> imapsync-1.476.ebuild:
+  x86 stable wrt bug #402639
+
+  15 Feb 2012; Brent Baude <ranger@gentoo.org> imapsync-1.476.ebuild:
+  Marking imapsync-1.476 ppc for bug 402639
+
+  08 Feb 2012; Agostino Sarubbo <ago@gentoo.org> imapsync-1.476.ebuild:
+  Stable for amd64, wrt bug #402639
+
+*imapsync-1.484 (08 Feb 2012)
+
+  08 Feb 2012; Tim Harder <radhermit@gentoo.org> +imapsync-1.484.ebuild:
+  Version bump.
+
+*imapsync-1.480 (07 Feb 2012)
+
+  07 Feb 2012; Tim Harder <radhermit@gentoo.org> +imapsync-1.480.ebuild:
+  Version bump.
+
+  07 Feb 2012; Tim Harder <radhermit@gentoo.org> -imapsync-1.303.ebuild,
+  -imapsync-1.350-r1.ebuild, -imapsync-1.404.ebuild, -imapsync-1.452.ebuild,
+  -imapsync-1.468.ebuild:
+  Remove old.
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org> imapsync-1.456.ebuild:
+  Marking imapsync-1.456 ppc for bug 388021
+
+*imapsync-1.476 (23 Dec 2011)
+
+  23 Dec 2011; Tim Harder <radhermit@gentoo.org> +imapsync-1.476.ebuild:
+  Version bump.
+
+*imapsync-1.468 (28 Nov 2011)
+
+  28 Nov 2011; Tim Harder <radhermit@gentoo.org> +imapsync-1.468.ebuild:
+  Version bump.
+
+  25 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> imapsync-1.456.ebuild:
+  x86 stable wrt bug #388021
+
+  22 Oct 2011; Markos Chandras <hwoarang@gentoo.org> imapsync-1.456.ebuild:
+  Stable on amd64 wrt bug #388021
+
+*imapsync-1.456 (15 Sep 2011)
+
+  15 Sep 2011; Tim Harder <radhermit@gentoo.org> +imapsync-1.456.ebuild:
+  Version bump.
+
+  24 Aug 2011; Tim Harder <radhermit@gentoo.org> imapsync-1.303.ebuild,
+  imapsync-1.350-r1.ebuild, imapsync-1.404.ebuild:
+  Use project specific HOMEPAGE.
+
+*imapsync-1.452 (24 Aug 2011)
+
+  24 Aug 2011; Tim Harder <radhermit@gentoo.org> +imapsync-1.452.ebuild:
+  Version bump.
+
+*imapsync-1.404 (07 Mar 2011)
+
+  07 Mar 2011; Torsten Veller <tove@gentoo.org> +imapsync-1.404.ebuild:
+  Version bump. Thanks to Nick Bebout, Michael Orlitzky and Jesse Adelman
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -imapsync-1.255-r1.ebuild,
+  -imapsync-1.267.ebuild:
+  Cleanup
+
+*imapsync-1.350-r1 (03 Oct 2010)
+
+  03 Oct 2010; Tim Harder <radhermit@gentoo.org> -imapsync-1.350.ebuild,
+  +imapsync-1.350-r1.ebuild:
+  Revision bump and remove old. Remove dev-perl/DateManip dependency as it
+  is not used anymore.
+
+*imapsync-1.350 (25 Sep 2010)
+
+  25 Sep 2010; Tim Harder <radhermit@gentoo.org> +imapsync-1.350.ebuild:
+  Version bump (fixes bug #322747, thanks to Deniss Gaplevsky for
+  reporting).
+
+  26 Jun 2010; <nixnut@gentoo.org> imapsync-1.303.ebuild:
+  ppc stable #301836
+
+  20 Jun 2010; Raúl Porcel <armin76@gentoo.org> imapsync-1.303.ebuild:
+  x86 stable wrt #301836
+
+  07 Jun 2010; Christoph Mende <angelos@gentoo.org> imapsync-1.303.ebuild:
+  amd64 stable (bug #301836)
+
+*imapsync-1.303 (24 Jan 2010)
+
+  24 Jan 2010; Torsten Veller <tove@gentoo.org> +imapsync-1.303.ebuild:
+  Version bump. Supports Mail-IMAPClient-3 too. Thanks to Kerin Millar
+  (#302022)
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> imapsync-1.267.ebuild:
+  ppc stable #274370
+
+  05 Jul 2009; Markus Meier <maekke@gentoo.org> imapsync-1.267.ebuild:
+  amd64 stable, bug #274370
+
+  17 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  imapsync-1.267.ebuild:
+  stable x86, bug 274370
+
+  20 Mar 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  -files/imapsync-1.182-gentoo.patch, -imapsync-1.182.ebuild:
+  Cleanup
+
+  20 Mar 2009; Raúl Porcel <armin76@gentoo.org> imapsync-1.255-r1.ebuild:
+  x86 stable wrt #261667
+
+  08 Mar 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  imapsync-1.255-r1.ebuild:
+  ppc stable, bug #261667
+
+*imapsync-1.267 (08 Mar 2009)
+
+  08 Mar 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  +imapsync-1.267.ebuild:
+  Version bump, #261456
+
+  29 Oct 2008; Torsten Veller <tove@gentoo.org> imapsync-1.255-r1.ebuild:
+  Add dev-perl/DateManip dependency (#244859)
+
+*imapsync-1.255-r1 (19 Jul 2008)
+
+  19 Jul 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  -imapsync-1.255.ebuild, +imapsync-1.255-r1.ebuild:
+  Fix dep on Mail-IMAPClient as per #232277
+
+*imapsync-1.255 (28 Jun 2008)
+
+  28 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  -imapsync-1.217.ebuild, +imapsync-1.255.ebuild:
+  Version bump, #218810
+
+  09 Jun 2008; Torsten Veller <tove@gentoo.org> imapsync-1.217.ebuild:
+  Add Digest-HMAC to RDEPEND (#225089). Don't run imapsync during installation
+  to minimize DEPEND.
+
+  30 Aug 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing langthang from metadata due to his retirement (see #53239 for
+  reference).
+
+*imapsync-1.217 (01 Apr 2007)
+
+  01 Apr 2007; Andrej Kacian <ticho@gentoo.org>
+  -files/imapsync-1.171-gentoo.patch, -files/imapsync-gentoo.patch,
+  -files/imapsync-ssl.patch, -imapsync-1.121.ebuild, imapsync-1.182.ebuild,
+  +imapsync-1.217.ebuild:
+  1.182 stable on x86. Version bump to 1.217. Removed 1.121, as well as
+  obsolete patches from FILESDIR.
+
+  25 Mar 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  imapsync-1.182.ebuild:
+  ppc stable
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Jan 2007; Fernando J. Pereda <ferdy@gentoo.org> -imapsync-1.171.ebuild,
+  -imapsync-1.171-r1.ebuild:
+  QA: Clean unused versions.
+
+  10 Dec 2006; Andrej Kacian <ticho@gentoo.org> imapsync-1.171.ebuild,
+  imapsync-1.171-r1.ebuild, imapsync-1.182.ebuild:
+  Change perl-core/Digest-MD5 and perl-core/MIME-Base64 dependencies to
+  appropriate virtuals. Bug #157668 by Jakub Moc <jakub at gentoo.org>.
+
+  18 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  imapsync-1.182.ebuild:
+  Added ~ppc
+
+*imapsync-1.182 (30 Aug 2006)
+
+  30 Aug 2006; Tuấn Văn <langthang@gentoo.org>
+  +files/imapsync-1.182-gentoo.patch, +imapsync-1.182.ebuild:
+  version bump.
+
+  25 Aug 2006; Tuấn Văn <langthang@gentoo.org> imapsync-1.171-r1.ebuild:
+  add dev-perl/IO-Socket-SSL to DEPEND, bug #145106.
+  remove no longer in use dev-perl/Digest-HMAC.
+
+*imapsync-1.171-r1 (08 May 2006)
+
+  08 May 2006; Tuấn Văn <langthang@gentoo.org> +imapsync-1.171-r1.ebuild:
+  add dev-perl/TermReadKey to RDEPEND. Thanks to Joe Baker
+  <joebaker@dcresearch.com>.
+
+*imapsync-1.171 (03 May 2006)
+
+  03 May 2006; Tuấn Văn <langthang@gentoo.org>
+  +files/imapsync-1.171-gentoo.patch, +imapsync-1.171.ebuild:
+  version bump. bug #108755.
+  add dev-perl/Net-SSLeay to RDEPEND. bug #117692 reported by Trenton D. Adams 
+  <trenton.d.adams@gmail.com>.
+  remove ssl USE flag. ssl support is included upstream.
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  imapsync-1.121.ebuild:
+  Virtuals for some perl-core deps
+
+  27 Nov 2005; Tom Martin <slarti@gentoo.org> imapsync-1.121.ebuild:
+  Marked ~amd64 resolving bug #108757. Also, RESTRICT="test"; they were
+  intended for upstream only.
+
+  07 Jul 2005; Andrej Kacian <ticho@gentoo.org> imapsync-1.121.ebuild:
+  Stable on x86.
+
+  24 May 2005; Michael Cummings <mcummings@gentoo.org> imapsync-1.121.ebuild:
+  dev-perl/Digest-MD5 => perl-core/Digest-MD5
+
+*imapsync-1.121 (06 Mar 2005)
+
+  06 Mar 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/imapsync-gentoo.patch, +files/imapsync-ssl.patch,
+  -imapsync-1.118.ebuild, +imapsync-1.121.ebuild:
+  Bump imapsync and remove old version wrt #84186. Reported by Thomas Seifert
+  <ts77@gmx.de>
+
+*imapsync-1.118 (31 Jan 2005)
+
+  31 Jan 2005; Tuấn Văn <langthang@gentoo.org> +metadata.xml,
+  +imapsync-1.118.ebuild:
+  Initial import. Ebuild submitted by Lee Weisz <lweisz@mindspring.com>. Bug
+  #42838.

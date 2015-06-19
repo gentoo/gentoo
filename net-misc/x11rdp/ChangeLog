@@ -1,0 +1,19 @@
+# ChangeLog for net-misc/x11rdp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/x11rdp/ChangeLog,v 1.2 2015/04/12 18:39:09 mgorny Exp $
+
+  12 Apr 2015; Michał Górny <mgorny@gentoo.org> x11rdp-0.8.0.1.9.5.ebuild:
+  Add a dependency on (old) xorg-server, bugs #542160 and #528624.
+
+*x11rdp-0.8.0.1.9.5 (27 Oct 2014)
+
+  27 Oct 2014; Michał Górny <mgorny@gentoo.org>
+  +files/xorg-cve-2011-4028+4029.patch,
+  +files/xorg-server-1.9-cve-2013-1940.patch,
+  +files/xorg-server-1.9-cve-2013-4396.patch,
+  +files/xorg-server-1.9-nouveau-default.patch,
+  +files/xorg-server-disable-acpi.patch,
+  +files/xrdp-0.8.0-0001-Include-xorg-list.h-to-fix-build-errors.patch,
+  +files/xrdp-0.8.0-0002-Remove-dither-printing.patch, +metadata.xml,
+  +x11rdp-0.8.0.1.9.5.ebuild:
+  Add x11rdp server.

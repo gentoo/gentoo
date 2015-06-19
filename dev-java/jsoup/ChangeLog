@@ -1,0 +1,20 @@
+# ChangeLog for dev-java/jsoup
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jsoup/ChangeLog,v 1.4 2015/05/27 11:11:40 ago Exp $
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> jsoup-1.8.1.ebuild:
+  Stable for x86, wrt bug #549600
+
+  18 May 2015; Agostino Sarubbo <ago@gentoo.org> jsoup-1.8.1.ebuild:
+  Stable for amd64, wrt bug #549600
+
+*jsoup-1.8.1 (14 Dec 2014)
+
+  14 Dec 2014; Johann Schmitz <ercpe@gentoo.org> +jsoup-1.8.1.ebuild:
+  Version bump as per bug #532142
+
+*jsoup-1.7.2 (25 Sep 2013)
+
+  25 Sep 2013; Johann Schmitz <ercpe@gentoo.org> +jsoup-1.7.2.ebuild,
+  +metadata.xml:
+  Ebuild for jsoup-1.7.2 - java html parsing library

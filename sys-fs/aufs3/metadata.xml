@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>jlec@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="debug">Enable additional debugging support</flag>
+    <flag name="hfs">Enable hfs support</flag>
+    <flag name="fuse">Enable fuse support</flag>
+    <flag name="inotify">Enable inotify support</flag>
+    <flag name="kernel-patch">Patch the current kernel for aufs3 support</flag>
+    <flag name="nfs">Enable support for nfs export</flag>
+    <flag name="pax_kernel">Apply patch needed for pax enabled kernels</flag>
+    <flag name="ramfs">Enable initramfs/rootfs support</flag>
+  </use>
+</pkgmetadata>

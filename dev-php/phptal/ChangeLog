@@ -1,0 +1,15 @@
+# ChangeLog for dev-php/phptal
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/phptal/ChangeLog,v 1.2 2014/01/06 17:26:14 mabi Exp $
+
+*phptal-1.2.2 (06 Jan 2014)
+
+  06 Jan 2014; Matti Bickel <mabi@gentoo.org> +phptal-1.2.2.ebuild,
+  -phptal-1.2.1.ebuild:
+  version bump, cleanup
+
+*phptal-1.2.1 (02 Jan 2010)
+
+  02 Jan 2010; Ben de Groot <yngwin@gentoo.org> +phptal-1.2.1.ebuild,
+  +metadata.xml:
+  Initial import. Ebuild by me.

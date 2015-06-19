@@ -1,0 +1,59 @@
+# ChangeLog for dev-java/skinlf
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/skinlf/ChangeLog,v 1.12 2014/03/08 17:23:12 tomwij Exp $
+
+*skinlf-6.7-r1 (08 Mar 2014)
+
+  08 Mar 2014; Tom Wijsman <TomWij@gentoo.org> +skinlf-6.7-r1.ebuild,
+  -skinlf-6.7.ebuild:
+  Revision bump. EAPI 5.
+
+  30 Dec 2012; Ulrich Müller <ulm@gentoo.org> skinlf-6.7.ebuild:
+  Fix LICENSE, see LICENSE file, bug 447610.
+
+  25 Sep 2011; Vlastimil Babka <caster@gentoo.org> skinlf-6.7.ebuild:
+  Pin laf-plugin slot.
+
+  03 Aug 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -skinlf-1.2.12-r1.ebuild:
+  Remove old version.
+
+*skinlf-6.7 (28 Apr 2007)
+
+  28 Apr 2007; Vlastimil Babka <caster@gentoo.org>
+  +files/skinlf-6.7-build.xml, +files/skinlf-6.7-common.xml,
+  +files/skinlf-6.7-image-utils-without-jimi.patch, +skinlf-6.7.ebuild:
+  Version bump, migrated to generation-2 java eclasses.
+
+  01 Apr 2007; Petteri Räty <betelgeuse@gentoo.org> -skinlf-1.2.12.ebuild:
+  Remove gen 1 ebuild.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  30 Nov 2006; Vlastimil Babka <caster@gentoo.org> skinlf-1.2.12.ebuild,
+  skinlf-1.2.12-r1.ebuild:
+  Update xerces dep for upcoming 2.6 slotmove.
+
+  19 Mar 2006; Mark Loeser <halcy0n@gentoo.org> skinlf-1.2.12.ebuild,
+  skinlf-1.2.12-r1.ebuild:
+  Add DEPEND on app-arch/unzip
+
+  01 Feb 2006; Patrick McLean <chutzpah@gentoo.org> skinlf-1.2.12-r1.ebuild:
+  Added ~amd64 keyword (bug #120087).
+
+*skinlf-1.2.12-r1 (24 Jan 2006)
+
+  24 Jan 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/skinlf-1.2.12-image-utils-without-jimi.patch,
+  +skinlf-1.2.12-r1.ebuild:
+  patch to work without fetch-restricted sun-jimi
+
+*skinlf-1.2.12 (22 Jan 2006)
+
+  22 Jan 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/skinlf-1.2.12-build.xml, +files/skinlf-1.2.12-common.xml,
+  +files/skinlf-1.2.12-common-devjavanet.xml,
+  +files/skinlf-1.2.12-image-utils.patch, +metadata.xml,
+  +skinlf-1.2.12.ebuild:
+  Initial import of ebuild written by me

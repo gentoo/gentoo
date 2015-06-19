@@ -1,0 +1,25 @@
+# ChangeLog for sys-apps/qcontrol
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/qcontrol/ChangeLog,v 1.4 2011/04/02 19:28:53 armin76 Exp $
+
+*qcontrol-0.4.2-r1 (02 Apr 2011)
+
+  02 Apr 2011; Raúl Porcel <armin76@gentoo.org> files/0.4.2-Makefile.patch,
+  files/init.d, -files/qcontrol.1, -files/ts209.lua, -files/ts409.lua,
+  -qcontrol-0.4.2.ebuild, +qcontrol-0.4.2-r1.ebuild:
+  Use debian patchset, rework ebuild a bit, bug #336245
+
+  11 Jun 2009; Raúl Porcel <armin76@gentoo.org> files/0.4.2-Makefile.patch:
+  Add -ldl to LDFLAGS
+
+  03 Feb 2009; Raúl Porcel <armin76@gentoo.org> qcontrol-0.4.2.ebuild:
+  arm stable
+
+*qcontrol-0.4.2 (26 Dec 2008)
+
+  26 Dec 2008; Raúl Porcel <armin76@gentoo.org>
+  +files/0.4.2-Makefile.patch, +files/conf.d, +files/init.d,
+  +files/qcontrol.1, +files/ts209.lua, +files/ts409.lua, +metadata.xml,
+  +qcontrol-0.4.2.ebuild:
+  Initial import, ebuild by me
+

@@ -1,0 +1,29 @@
+From 983a675c94ecec54ae14593744aa9a2198466499 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 15 Sep 2011 12:59:55 +0200
+Subject: [PATCH] Support building against NPAPI-SDK as well.
+
+---
+ macros/npapi.m4 |    6 +++++-
+ 1 files changed, 5 insertions(+), 1 deletions(-)
+
+diff --git a/macros/npapi.m4 b/macros/npapi.m4
+index e3bde2f..522bbb1 100644
+--- a/macros/npapi.m4
++++ b/macros/npapi.m4
+@@ -34,7 +34,11 @@ AC_DEFUN([GNASH_PATH_NPAPI],
+ 
+   if test x$cross_compiling = xno; then
+     if test x"$PKG_CONFIG" != x -a x"${ac_cv_path_npapi_incl}" = x; then
+-      $PKG_CONFIG --exists mozilla-plugin && NPAPI_CFLAGS="`$PKG_CONFIG --cflags mozilla-plugin`"
++      if $PKG_CONFIG --exists npapi-sdk; then
++        NPAPI_CFLAGS="`$PKG_CONFIG --cflags npapi-sdk`"
++      elif $PKG_CONFIG --exists mozilla-plugin; then
++        NPAPI_CFLAGS="`$PKG_CONFIG --cflags mozilla-plugin`"
++      fi
+     fi
+   fi
+ 
+-- 
+1.7.3.4
+

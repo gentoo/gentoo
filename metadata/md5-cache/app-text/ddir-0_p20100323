@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=A perl implementation of the tree(1) program
+HOMEPAGE=http://freshmeat.net/projects/ddir
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=mirror://gentoo/ddir-0_p20100323.tar.bz2
+_md5_=89c54e354a0a8cad6911abaa6fea027a

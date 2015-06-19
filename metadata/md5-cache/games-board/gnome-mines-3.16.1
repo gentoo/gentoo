@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=>=dev-libs/glib-2.40:2 >=gnome-base/librsvg-2.32.0 >=x11-libs/gtk+-3.12:3 || ( dev-lang/vala:0.28 dev-lang/vala:0.26 dev-lang/vala:0.24 dev-lang/vala:0.22 ) app-text/yelp-tools dev-libs/appstream-glib >=dev-util/intltool-0.50 sys-devel/gettext virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.14.1:1.14 >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 app-arch/xz-utils >=sys-apps/sed-4 >=dev-util/intltool-0.50.2-r1
+DESCRIPTION=Clear hidden mines from a minefield
+EAPI=5
+HOMEPAGE=https://wiki.gnome.org/Apps/Mines
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2+
+RDEPEND=>=dev-libs/glib-2.40:2 >=gnome-base/librsvg-2.32.0 >=x11-libs/gtk+-3.12:3 !<x11-themes/gnome-themes-standard-3.14 games-misc/games-envd !gnome-extra/gnome-games
+SLOT=0
+SRC_URI=mirror://gnome/sources/gnome-mines/3.16/gnome-mines-3.16.1.tar.xz
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome-games	7f53729f215f511269a6397612dd96da	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747	vala	09bc7da1a93142c9eb90786e6f6b39d2	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=a17b0221457d2ea835ba1fad19df1b4b

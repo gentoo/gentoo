@@ -1,0 +1,27 @@
+# ChangeLog for sci-libs/coinor-bonmin
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/coinor-bonmin/ChangeLog,v 1.2 2014/02/04 09:56:21 jlec Exp $
+
+  04 Feb 2014; Justin Lecher <jlec@gentoo.org> coinor-bonmin-1.7.4.ebuild:
+  Move preparations to src_prepare
+
+*coinor-bonmin-1.7.3 (07 Dec 2013)
+
+  07 Dec 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-bonmin-1.7.3.ebuild, -coinor-bonmin-1.7.0.ebuild:
+  sci-libs/coinor-bonmin: Version bump
+
+*coinor-bonmin-1.7.0 (17 Jul 2013)
+
+  17 Jul 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-bonmin-1.7.0.ebuild, -coinor-bonmin-1.6.0.ebuild:
+  sci-libs/coinor-bonmin: Version bump
+
+  03 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add unocumented USE to metadata.xml
+
+*coinor-bonmin-1.6.0 (18 Jul 2012)
+
+  18 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +coinor-bonmin-1.6.0.ebuild, +metadata.xml:
+  sci-libs/coinor-bonmin: Initial import

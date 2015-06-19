@@ -1,0 +1,93 @@
+# ChangeLog for x11-plugins/fsviewer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/fsviewer/ChangeLog,v 1.26 2015/05/29 21:43:42 mrueg Exp $
+
+  29 May 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/fsviewer-0.2.5-windowmaker.patch, -fsviewer-0.2.5.ebuild:
+  Remove old.
+
+  02 Mar 2015; Agostino Sarubbo <ago@gentoo.org> fsviewer-0.2.6.ebuild:
+  Stable for ppc, wrt bug #507088
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> fsviewer-0.2.6.ebuild:
+  x86 stable wrt bug #507088
+
+  24 May 2014; Markos Chandras <hwoarang@gentoo.org> fsviewer-0.2.6.ebuild:
+  Stable on amd64 wrt bug #507088
+
+  07 Apr 2014; Samuli Suominen <ssuominen@gentoo.org> fsviewer-0.2.5.ebuild,
+  fsviewer-0.2.6.ebuild:
+  Use EAPI5 instead of EAPI1.
+
+  11 Jul 2012; Bernard Cafarelli <voyageur@gentoo.org> fsviewer-0.2.5.ebuild,
+  fsviewer-0.2.6.ebuild, +files/fsviewer-0.2.6-wmaker-0.95_support.patch:
+  Fix ~arch version to support new windowmaker
+
+  14 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> fsviewer-0.2.5.ebuild:
+  x11-libs/libPropList rename to x11-libs/libproplist
+
+  12 Nov 2011; Justin Lecher <jlec@gentoo.org> fsviewer-0.2.5.ebuild:
+  Corrected slotting for png and tiff
+
+  08 Nov 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  fsviewer-0.2.5.ebuild:
+  Move to virtual/jpeg
+
+*fsviewer-0.2.6 (26 Jun 2010)
+
+  26 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +fsviewer-0.2.6.ebuild:
+  Version bump wrt #292835 by Mr. Anderson.
+
+  03 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> fsviewer-0.2.5.ebuild:
+  List media-libs/libpng only once in DEPEND wrt #258534.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  fsviewer-0.2.5.ebuild:
+  Drop virtual/x11 references.
+
+  26 Jan 2006; Michele Noberasco <s4t4n@gentoo.org> fsviewer-0.2.5.ebuild:
+  Fixed DEPEND. Closes bug #150634.
+  -fsviewer-0.2.3e-r1.ebuild:
+  Wiped out previous release.
+
+  03 Sep 2006; Joshua Jackson <tsunam@gentoo.org> fsviewer-0.2.5.ebuild:
+  Stable x86; bug #144835
+
+  26 Aug 2006; <nixnut@gentoo.org> fsviewer-0.2.5.ebuild:
+  Stable on ppc wrt bug #144835
+
+  23 Aug 2006; <malc@gentoo.org> fsviewer-0.2.5.ebuild:
+  Stable on amd64
+
+  22 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml:
+  Moved to desktop-dock.
+
+  22 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> fsviewer-0.2.5.ebuild:
+  Fixed DEPEND for modular X.
+
+*fsviewer-0.2.5 (22 Jun 2005)
+
+  22 Jun 2005; Jonathan Smith <smithj@gentoo.org>
+  +files/fsviewer-0.2.5-windowmaker.patch, +metadata.xml,
+  +fsviewer-0.2.5.ebuild:
+  added metadata and version bump which fixes #76865
+
+  28 Jun 2004; <augustus@gentoo.org> fsviewer-0.2.3e-r1.ebuild:
+  Marrked amd64.  First fsviewer tag for amd64.
+
+*fsviewer-0.2.3e-r1 (05 Jun 2003)
+
+  05 Jun 2003; robh <robh@gentoo.org> fsviewer-0.2.3e-r1.ebuild,
+  fsviewer-0.2.3e.ebuild:
+  fixed /usr/share/GNUstep sillyness.
+
+*fsviewer-0.2.3e (24 Oct 2002)
+
+  24 Oct 2002; Nick Hadaway <raker@gentoo.org> fsviewer-0.2.3e.ebuild,
+  files/digest-fsviewer-0.2.3e :
+  Initial ebuild in portage.
+
+*FSViewer.app-0.2.3d (24 Jul 2002)                                              
+  
+  24 Jul 2002; R.Wyrick <rob@wyrick.org> ChangeLog :

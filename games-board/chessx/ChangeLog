@@ -1,0 +1,33 @@
+# ChangeLog for games-board/chessx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/chessx/ChangeLog,v 1.6 2015/05/11 20:23:53 mr_bones_ Exp $
+
+  11 May 2015; Michael Sterrett <mr_bones_@gentoo.org> -chessx-1.3.0.ebuild,
+  -files/chessx-1.3.0-zlib.patch:
+  old
+
+*chessx-1.3.2 (06 May 2015)
+
+  06 May 2015; Michael Sterrett <mr_bones_@gentoo.org> +chessx-1.3.2.ebuild,
+  +files/chessx-1.3.2-zlib.patch:
+  version bump
+
+  24 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> chessx-1.3.0.ebuild:
+  needs dev-qt/linguist-tools (bug #547572)
+
+  24 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> -chessx-1.2.2.ebuild,
+  -files/chessx-1.2.2-zlib.patch:
+  old
+
+*chessx-1.3.0 (21 Apr 2015)
+
+  21 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> +chessx-1.3.0.ebuild,
+  +files/chessx-1.3.0-zlib.patch:
+  version bump
+
+*chessx-1.2.2 (13 Apr 2015)
+
+  13 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> +chessx-1.2.2.ebuild,
+  +files/chessx-1.2.2-zlib.patch, +metadata.xml:
+  initial commit with ebuild work from Damien Sticklen and David Baribeault via
+  bug #280896

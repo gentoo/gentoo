@@ -1,0 +1,54 @@
+# ChangeLog for games-server/mtavc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-server/mtavc/ChangeLog,v 1.11 2015/03/11 22:22:15 mr_bones_ Exp $
+
+  11 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> mtavc-0.5.ebuild:
+  EAPI=5
+
+  07 Sep 2014; Ulrich Müller <ulm@gentoo.org> mtavc-0.5.ebuild:
+  Update dependency, this links against libstdc++.so.5.
+
+  21 Apr 2013; Ulrich Müller <ulm@gentoo.org> mtavc-0.5.ebuild:
+  Fix LICENSE, bug 465852.
+
+*mtavc-0.5 (08 Feb 2007)
+
+  08 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> -mtavc-0.3.ebuild,
+  +mtavc-0.5.ebuild:
+  Version bump to 0.5 and remove 0.3, since it couldn't be downloaded anymore,
+  anyway.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> mtavc-0.3.ebuild:
+  virtual/glibc -> virtual/libc
+
+  26 May 2004; Michael Sterrett <mr_bones_@gentoo.org> mtavc-0.2.0.ebuild,
+  mtavc-0.2.2.ebuild:
+  cleaned old versions
+
+*mtavc-0.3 (01 Jan 2003)
+
+  01 Jan 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bumpage.
+
+*mtavc-0.2.2 (27 Oct 2003)
+
+  27 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bumpage.
+
+*mtavc-0.2.0 (21 Sep 2003)
+
+  21 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bumpage + rework install slightly.
+
+*mtavc-0.1.0 (02 Sep 2003)
+
+  03 Sep 2003; Michael Sterrett <msterret@gentoo.org> mtavc-0.1.0.ebuild:
+  DEPEND on sys-libs/lib-compat
+
+  02 Sep 2003; Michael Sterrett <msterret@gentoo.org> mtavc-0.1.0.ebuild:
+  Is linked against glibc-2.2. I feel so sorry for people who only distribute
+  binaries.
+
+  02 Sep 2003; Michael Sterrett <msterret@gentoo.org> mtavc-0.1.0.ebuild,
+  files/mtavc:
+  initial commit (bug 25872)

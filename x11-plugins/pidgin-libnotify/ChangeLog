@@ -1,0 +1,120 @@
+# ChangeLog for x11-plugins/pidgin-libnotify
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/pidgin-libnotify/ChangeLog,v 1.30 2015/03/29 04:02:49 mrueg Exp $
+
+  29 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -pidgin-libnotify-0.14.ebuild:
+  Remove old.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> pidgin-libnotify-0.14.ebuild,
+  pidgin-libnotify-0.14-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org> pidgin-libnotify-0.14-r1.ebuild:
+  Marking pidgin-libnotify-0.14-r1 ppc for bug 360843
+
+  28 Mar 2011; Christoph Mende <angelos@gentoo.org>
+  pidgin-libnotify-0.14-r1.ebuild:
+  Stable on amd64 wrt bug #360843
+
+  28 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  pidgin-libnotify-0.14-r1.ebuild:
+  x86 stable wrt bug #360843
+
+  28 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  pidgin-libnotify-0.14-r1.ebuild:
+  Remove hardcoded -g3 from CFLAGS by Agostino Sarubbo.
+
+*pidgin-libnotify-0.14-r1 (12 Mar 2011)
+
+  12 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +pidgin-libnotify-0.14-r1.ebuild:
+  Import Debian patchset solving notify-osd support wrt #338927.
+
+  30 Jan 2011; Samuli Suominen <ssuominen@gentoo.org>
+  pidgin-libnotify-0.14.ebuild,
+  +files/pidgin-libnotify-0.14-libnotify-0.7.patch:
+  Fix building with x11-libs/libnotify >= 0.7.
+
+  22 Jul 2010; Peter Volkov <pva@gentoo.org> pidgin-libnotify-0.14.ebuild:
+  Don't build static libs: for plugins they are useless, bug #327237, thank
+  Bruno Yporti for report.
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org> pidgin-libnotify-0.14.ebuild:
+  Drop HPPA keywording (bug #324511).
+
+  29 Sep 2009; Olivier Crête <tester@gentoo.org>
+  -pidgin-libnotify-0.13-r1.ebuild:
+  Remove old versions
+
+  06 Sep 2009; Markus Meier <maekke@gentoo.org>
+  pidgin-libnotify-0.14.ebuild:
+  amd64/x86 stable, bug #281645
+
+  01 Sep 2009; Jeroen Roovers <jer@gentoo.org> pidgin-libnotify-0.14.ebuild:
+  Stable for HPPA (bug #281645).
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> pidgin-libnotify-0.14.ebuild:
+  ppc stable #281645
+
+  16 Aug 2009; Petteri Räty <betelgeuse@gentoo.org>
+  pidgin-libnotify-0.14.ebuild:
+  Migrate to EAPI 2 in order to get rid of built_with_use.
+
+*pidgin-libnotify-0.14 (01 Feb 2009)
+
+  01 Feb 2009; Olivier Crête <tester@gentoo.org>
+  -pidgin-libnotify-0.13.ebuild, +pidgin-libnotify-0.14.ebuild:
+  Version bump, bug #255539
+
+  21 Feb 2008; Jeroen Roovers <jer@gentoo.org>
+  pidgin-libnotify-0.13-r1.ebuild:
+  Stable for HPPA (bug #210400).
+
+  19 Feb 2008; Christoph Mende <angelos@gentoo.org>
+  pidgin-libnotify-0.13-r1.ebuild:
+  Stable on amd64, bug #210400
+
+  17 Feb 2008; nixnut <nixnut@gentoo.org> pidgin-libnotify-0.13-r1.ebuild:
+  Stable on ppc wrt bug 210400
+
+  16 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  pidgin-libnotify-0.13-r1.ebuild:
+  stable x86, bug 210400
+
+  07 Jan 2008; <tester@gentoo.org> pidgin-libnotify-0.13.ebuild:
+  Add missing inherit eutils for built_with_use
+
+  07 Jan 2008; <tester@gentoo.org> pidgin-libnotify-0.13.ebuild,
+  pidgin-libnotify-0.13-r1.ebuild:
+  Add DEPEND on pkgconfig
+
+  07 Jan 2008; <tester@gentoo.org> pidgin-libnotify-0.13.ebuild,
+  pidgin-libnotify-0.13-r1.ebuild:
+  Add dep on gtk (and check that pidgin has it too)
+
+*pidgin-libnotify-0.13-r1 (26 Oct 2007)
+
+  26 Oct 2007; Olivier Crête <tester@gentoo.org>
+  +files/pidgin-libnotify-showbutton.patch,
+  +pidgin-libnotify-0.13-r1.ebuild:
+  Add patch to fix the show button in the bubble, bug #188325
+
+  28 Aug 2007; nixnut <nixnut@gentoo.org> pidgin-libnotify-0.13.ebuild:
+  Stable on ppc wrt bug 189781
+
+  26 Aug 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  pidgin-libnotify-0.13.ebuild:
+  Marked stable on amd64 as per bug 189781.
+
+  24 Aug 2007; Christian Faulhammer <opfer@gentoo.org>
+  pidgin-libnotify-0.13.ebuild:
+  stable x86, bug 189781
+
+  23 Aug 2007; Jeroen Roovers <jer@gentoo.org> pidgin-libnotify-0.13.ebuild:
+  Stable for HPPA (bug #189781).
+
+*pidgin-libnotify-0.13 (03 Jul 2007)
+
+  03 Jul 2007; Olivier Crête <tester@gentoo.org> +metadata.xml,
+  +pidgin-libnotify-0.13.ebuild:
+  New version, this is the continuation of gaim-libnotify

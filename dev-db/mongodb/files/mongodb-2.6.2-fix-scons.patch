@@ -1,0 +1,35 @@
+--- a/SConstruct	2014-06-16 19:32:46.274507258 +0200
++++ b/SConstruct	2014-06-16 19:34:04.763586829 +0200
+@@ -813,7 +813,6 @@
+     # -Winvalid-pch Warn if a precompiled header (see Precompiled Headers) is found in the search path but can't be used.
+     env.Append( CCFLAGS=["-fPIC",
+                          "-fno-strict-aliasing",
+-                         "-ggdb",
+                          "-pthread",
+                          "-Wall",
+                          "-Wsign-compare",
+@@ -821,13 +820,13 @@
+                          "-Winvalid-pch"] )
+     # env.Append( " -Wconversion" ) TODO: this doesn't really work yet
+     if linux or darwin:
+-        env.Append( CCFLAGS=["-pipe"] )
+         if not has_option("disable-warnings-as-errors"):
+             env.Append( CCFLAGS=["-Werror"] )
+ 
+     env.Append( CPPDEFINES=["_FILE_OFFSET_BITS=64"] )
+-    env.Append( CXXFLAGS=["-Wnon-virtual-dtor", "-Woverloaded-virtual"] )
+     env.Append( LINKFLAGS=["-fPIC", "-pthread"] )
++    env.Append( CXXFLAGS=os.environ['CXXFLAGS'] )
++    env.Append( LINKFLAGS=os.environ['LDFLAGS'] )
+ 
+     # SERVER-9761: Ensure early detection of missing symbols in dependent libraries at program
+     # startup.
+@@ -844,7 +843,7 @@
+     if not darwin:
+         env.Append( LINKFLAGS=["-rdynamic"] )
+ 
+-    env.Append( LIBS=[] )
++    env.Append( LIBS=['pcre', 'pcrecpp', 'snappy', 'yaml-cpp'] )
+ 
+     #make scons colorgcc friendly
+     for key in ('HOME', 'TERM'):

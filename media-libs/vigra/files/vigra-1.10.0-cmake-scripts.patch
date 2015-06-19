@@ -1,0 +1,53 @@
+Description: Fix location of installed cmake scripts
+Author: Jens-Malte Gottfried <jmgottfried@web.de>
+Forwarded: not-needed
+Last-Update: 2013-12-11
+
+Index: vigra-1.10.0/CMakeLists.txt
+===================================================================
+--- vigra-1.10.0.orig/CMakeLists.txt
++++ vigra-1.10.0/CMakeLists.txt
+@@ -276,10 +276,10 @@ CONFIGURE_FILE(${PROJECT_SOURCE_DIR}/con
+ 
+ # export targets:
+ INSTALL(EXPORT vigra-targets
+-        DESTINATION lib${LIB_SUFFIX}/vigra)
++        DESTINATION lib${LIB_SUFFIX}/cmake/Vigra)
+ INSTALL(FILES ${PROJECT_BINARY_DIR}/lib/vigra/CMake/VigraConfig.cmake
+             ${PROJECT_BINARY_DIR}/lib/vigra/CMake/VigraConfigVersion.cmake
+-        DESTINATION lib${LIB_SUFFIX}/vigra)
++        DESTINATION lib${LIB_SUFFIX}/cmake/Vigra)
+ EXPORT(TARGETS vigraimpex FILE vigra-targets.cmake)
+ 
+ ##################################################
+Index: vigra-1.10.0/config/VigraConfig.cmake.in
+===================================================================
+--- vigra-1.10.0.orig/config/VigraConfig.cmake.in
++++ vigra-1.10.0/config/VigraConfig.cmake.in
+@@ -1,5 +1,5 @@
+ get_filename_component(SELF_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+-get_filename_component(Vigra_TOP_DIR  "${SELF_DIR}/../../" ABSOLUTE)
++get_filename_component(Vigra_TOP_DIR  "${SELF_DIR}/../../../" ABSOLUTE)
+ 
+ include(${SELF_DIR}/vigra-targets.cmake)
+ get_target_property(VIGRA_TYPE vigraimpex TYPE)
+@@ -9,6 +9,6 @@
+ endif(${VIGRA_TYPE} STREQUAL "STATIC_LIBRARY")
+ get_filename_component(Vigra_INCLUDE_DIRS "${Vigra_TOP_DIR}/include/" ABSOLUTE)
+ 
+-IF(EXISTS ${SELF_DIR}/../vigranumpy/VigranumpyConfig.cmake)
+-    INCLUDE(${SELF_DIR}/../vigranumpy/VigranumpyConfig.cmake)
++IF(EXISTS ${SELF_DIR}/VigranumpyConfig.cmake)
++    INCLUDE(${SELF_DIR}/VigranumpyConfig.cmake)
+ ENDIF()
+--- vigra-1.10.0.orig/vigranumpy/CMakeLists.txt
++++ vigra-1.10.0/vigranumpy/CMakeLists.txt
+@@ -53,7 +53,7 @@
+                            COMMENT "Creating vigranumpy setup in ${CMAKE_CURRENT_BINARY_DIR}/dist")        
+     ENDIF()
+     
+-    set(VIGRANUMPY_CONFIG_INSTALL_PATH lib${LIB_SUFFIX}/vigranumpy)
++    set(VIGRANUMPY_CONFIG_INSTALL_PATH lib${LIB_SUFFIX}/cmake/Vigra)
+     
+     set(VIGRANUMPY_INCLUDE_RELATIVE "")
+     foreach(PATH ${CMAKE_INSTALL_PREFIX}/include ${VIGRANUMPY_INCLUDE_DIRS})

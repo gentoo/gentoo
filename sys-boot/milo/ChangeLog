@@ -1,0 +1,47 @@
+# ChangeLog for sys-boot/milo
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/milo/ChangeLog,v 1.9 2011/04/02 12:00:59 armin76 Exp $
+
+  02 Apr 2011; Raúl Porcel <armin76@gentoo.org> milo-2.4.18.ebuild:
+  Remove PROVIDE line for bug #359971
+
+  11 Jan 2010; Raúl Porcel <armin76@gentoo.org> milo-2.4.18.ebuild:
+  Remove functions from ccc.eclass as its going to be removed
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing taviso from metadata.xml as per #202471.
+
+  08 Apr 2007; Mike Frysinger <vapier@gentoo.org> milo-2.4.18.ebuild:
+  Remove output hacks for countdown.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> milo-2.4.18.ebuild:
+  Switch to use epause and ebeep, bug #62950
+
+*milo-2.4.18 (08 Dec 2003)
+
+  08 Dec 2003; Seemant Kulleen <seemant@gentoo.org> metadata.xml,
+  milo-2.4.18.ebuild, files/README-gentoo, files/linux-2.2.25-gcc3-milo.diff,
+  files/milo-2.2-18-gcc3-gentoo.diff, files/mkserial_no.c, files/objstrip.c:
+  moved from sys-apps to sys-boot
+
+  16 Sep 2003; Seemant Kulleen <seemant@gentoo.org> milo-2.4.18.ebuild:
+  dependency from app-admin/mtools to sys-fs/mtools
+
+  05 Jun 2003; Tavis Ormandy <taviso@gentoo.org> milo-2.4.18.ebuild,
+  files/milo-2.2-18-gcc3-gentoo.diff:
+  by setting the MILO_IMAGE variable, users can select which images are built.
+
+  05 Jun 2003; Tavis Ormandy <taviso@gentoo.org> milo-2.4.18.ebuild:
+  updating some uri's.
+
+*milo-2.4.18 (03 Jun 2003)
+
+  03 Jun 2003; Tavis Ormandy <taviso@gentoo.org> milo-2.4.18.ebuild,
+  files/README-gentoo, files/linux-2.2.25-gcc3-milo.diff,
+  files/milo-2.2-18-gcc3-gentoo.diff, files/mkserial_no.c, files/objstrip.c:
+  Initial import, the Alpha MIniLOader, bootloader for machines
+  without SRM, or special cases where aboot is not appropriate.
+

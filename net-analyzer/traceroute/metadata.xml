@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>netmon</herd>
+	<longdescription>Utility to trace the route of IP packets</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">traceroute</remote-id>
+	</upstream>
+</pkgmetadata>

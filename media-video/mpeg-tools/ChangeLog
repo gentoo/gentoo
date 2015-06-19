@@ -1,0 +1,149 @@
+# ChangeLog for media-video/mpeg-tools
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/mpeg-tools/ChangeLog,v 1.36 2014/03/14 10:13:59 ago Exp $
+
+  14 Mar 2014; Agostino Sarubbo <ago@gentoo.org> mpeg-tools-1.5b-r5.ebuild:
+  Stable for ppc64, wrt bug #495822
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> mpeg-tools-1.5b-r5.ebuild:
+  Stable for ppc, wrt bug #495822
+
+  02 Mar 2014; Agostino Sarubbo <ago@gentoo.org> mpeg-tools-1.5b-r5.ebuild:
+  Stable for x86, wrt bug #495822
+
+  23 Feb 2014; Pacho Ramos <pacho@gentoo.org> mpeg-tools-1.5b-r5.ebuild:
+  amd64 stable, bug #495822
+
+  02 Aug 2013; Samuli Suominen <ssuominen@gentoo.org>
+  -mpeg-tools-1.5b-r3.ebuild:
+  old
+
+  02 Aug 2013; Samuli Suominen <ssuominen@gentoo.org>
+  mpeg-tools-1.5b-r4.ebuild:
+  amd64/ppc64/x86 stable
+
+*mpeg-tools-1.5b-r5 (02 Aug 2013)
+
+  02 Aug 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +mpeg-tools-1.5b-r5.ebuild, +files/mpeg-tools-1.5b-jpeg.patch:
+  Use if and else to support both libjpeg.so.62, libjpeg.so.8 and
+  libjpeg.so.9 wrt #479462 by Juergen Rose
+
+  04 Jun 2012; Michael Weber <xmw@gentoo.org> mpeg-tools-1.5b-r4.ebuild:
+  ppc stable (bug 366229)
+
+  15 Dec 2011; Fabian Groffen <grobian@gentoo.org>
+  files/mpeg-tools-1.5b-powerpc.patch, mpeg-tools-1.5b-r4.ebuild:
+  Fix powerpc patch for Darwin, replace malloc.h with stdlib.h for Darwin and
+  BSD-ish systems, keyworded ~ppc-macos and ~x64-macos
+
+  19 Jan 2011; Dror Levin <spatz@gentoo.org> mpeg-tools-1.5b-r3.ebuild,
+  mpeg-tools-1.5b-r4.ebuild:
+  Change dep to virtual/jpeg.
+
+  27 Jun 2010; <nixnut@gentoo.org> mpeg-tools-1.5b-r3.ebuild:
+  ~ppc added
+
+  11 Mar 2010; Joseph Jezak <josejx@gentoo.org> mpeg-tools-1.5b-r4.ebuild,
+  +files/mpeg-tools-1.5b-powerpc.patch:
+  Fixed compilation on ppc/ppc64 and added keywords.
+
+*mpeg-tools-1.5b-r4 (04 Feb 2010)
+
+  04 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +mpeg-tools-1.5b-r4.ebuild, +files/mpeg-tools-1.5b-as-needed.patch:
+  As-needed conform linking and respecting LDFLAGS, #282733
+
+  30 Oct 2009; Fabian Groffen <grobian@gentoo.org>
+  mpeg-tools-1.5b-r3.ebuild:
+  Marked ~x86-linux and ~amd64-linux, bug #290637
+
+  05 Oct 2009; Markus Meier <maekke@gentoo.org> mpeg-tools-1.5b-r3.ebuild:
+  x86 stable
+
+  04 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  mpeg-tools-1.5b-r3.ebuild:
+  amd64 stable
+
+*mpeg-tools-1.5b-r3 (24 Aug 2009)
+
+  24 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +mpeg-tools-1.5b-r3.ebuild, +files/mpeg-tools-1.5b-system-jpeg-7.patch:
+  Fix building with >=media-libs/jpeg-7 wrt #282588, thanks to Christian
+  Becke for reporting.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  mpeg-tools-1.5b-r2.ebuild:
+  Drop virtual/x11 references.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  mpeg-tools-1.5b-r2.ebuild:
+  Convert to use elog.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-mpeg-tools-1.5b-r2, Manifest:
+  Fixing SHA256 digest, pass four
+
+  11 Feb 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  mpeg-tools-1.5b-r2.ebuild:
+  Added modular X dependencies (bug #121011, Moshe Kaminsky).
+
+  21 Jan 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/1.5b/mpeg-tools-1.5b-fix-exit-call.patch, -files/1.5b/libpnmrw.c,
+  -files/1.5b/mpeg-tools-1.5b-gentoo.patch, -files/1.5b/libpnmrw.h,
+  -mpeg-tools-1.5b.ebuild, -mpeg-tools-1.5b-r1.ebuild:
+  clean old files
+
+  30 Sep 2005; Simon Stelling <blubb@gentoo.org> mpeg-tools-1.5b-r2.ebuild:
+  stable on amd64 wrt bug 107344
+
+  29 Sep 2005; Mark Loeser <halcy0n@gentoo.org> mpeg-tools-1.5b-r2.ebuild:
+  Stable on x86; bug #107344
+
+*mpeg-tools-1.5b-r2 (27 Sep 2005)
+
+  27 Sep 2005; Mike Frysinger <vapier@gentoo.org>
+  files/mpeg-tools-1.5b-64bit_fixes.patch,
+  +files/mpeg-tools-1.5b-build.patch,
+  +files/mpeg-tools-1.5b-system-jpeg.patch,
+  +files/mpeg-tools-1.5b-tempfile-convert.patch,
+  +files/mpeg-tools-1.5b-tempfile-mpeg-encode.patch,
+  +files/mpeg-tools-1.5b-tempfile-tests.patch, +mpeg-tools-1.5b-r2.ebuild:
+  Clean up source code, fix insecure tempfile usage #107344, and let netpbm
+  install the converting programs eyuvtoppm/ppmtoeyuv since it has newer
+  versions #78777.
+
+  13 Aug 2004; Chris White <chriswhite@gentoo.org> +metadata.xml:
+  Adding missing metadata.xml.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> mpeg-tools-1.5b-r1.ebuild,
+  mpeg-tools-1.5b.ebuild:
+  Add inherit eutils
+
+  25 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> mpeg-tools-1.5b-r1.ebuild:
+  Add patch with 64bit fixes and other cleanups by Mikael Rosbacke
+  <rosbacke@nada.kth.se> in #38951.
+
+*mpeg-tools-1.5b-r1 (07 Nov 2003)
+
+  07 Nov 2003; Martin Schlemmer <azarah@gentoo.org> mpeg-tools-1.5b-r1.ebuild,
+  files/1.5b/mpeg-tools-1.5b-fix-exit-call.patch:
+  Fix exit() being called without arguments, bug #32801.
+
+  11 Jun 2003; <msterret@gentoo.org> mpeg-tools-1.5b.ebuild:
+  Fix url (Bug#: 22544)
+
+*mpeg-tools-1.5b (1 Feb 2002)
+
+  12 Apr 2003; Seemant Kulleen <seemant@gentoo.org> Manifest,
+  mpeg-tools-1.5b.ebuild, files/1.5b/mpeg-tools-1.5b-gentoo.patch:
+  errno fix from Ian Abbott <ian@abbott.org> in bug #19152
+
+  28 Aug 2002; Karl Trygve Kalleberg <karltk@gentoo.org> mpeg-tools-1.5b files/1.5b/libpnmrw.c files/1.5b/libpnmrw.h :
+  Fixed a few files so that it compiles with gcc-3.2. Fixes #7041.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  Added initial ChangeLog.

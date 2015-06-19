@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst setup unpack
+DEPEND=>=gnustep-base/gnustep-make-2.0 virtual/gnustep-back
+DESCRIPTION=Simple image viewer
+HOMEPAGE=http://home.gna.org/gsimageapps/
+IUSE=debug doc
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=gnustep-base/gnustep-make-2.0 virtual/gnustep-back debug? ( !<sys-devel/gdb-6.0 )
+SLOT=0
+SRC_URI=http://download.gna.org/gsimageapps/Preview-0.8.5.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	gnustep-2	5c8ef29c1d72267699559746ef1c0096	gnustep-base	87d599af9a09a523d6d233e462f3758e	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=6a843804b7559108bd356618d9356cab

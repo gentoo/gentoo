@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=>=sys-libs/ncurses-5.0 !dev-java/nailgun canna? ( app-i18n/canna ) >=sys-apps/sed-4.0
+DESCRIPTION=Emacs like micro editor Ng -- based on mg2a
+HOMEPAGE=http://tt.sakura.ne.jp/~amura/ng/
+IUSE=canna
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=Emacs
+RDEPEND=>=sys-libs/ncurses-5.0 !dev-java/nailgun canna? ( app-i18n/canna )
+SLOT=0
+SRC_URI=http://tt.sakura.ne.jp/~amura/archives/ng/ng-1.5beta1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=2191292f445b80a2b39985b874a4d9dc

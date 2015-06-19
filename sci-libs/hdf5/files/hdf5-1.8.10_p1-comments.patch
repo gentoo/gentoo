@@ -1,0 +1,29 @@
+Convert // comment marks to /**/ in order to fix FTBS on ia64
+
+https://bugs.gentoo.org/show_bug.cgi?id=447740
+
+Patch written by Kacper Kowalik <xarthisius@gentoo.org>
+--- a/tools/h5dump/h5dump_ddl.c
++++ b/tools/h5dump/h5dump_ddl.c
+@@ -1341,8 +1341,8 @@ handle_attributes(hid_t fid, const char *attr, void UNUSED * data, int UNUSED pe
+     string_dataformat.do_escape = display_escape;
+     outputformat = &string_dataformat;
+ 
+-    //attr_name = attr + j + 1;
+-	// need to replace escape characters
++    /* attr_name = attr + j + 1; */
++	/* need to replace escape characters */
+ 	attr_name = h5tools_str_replace(attr + j + 1, "\\/", "/");
+ 
+ 
+--- a/tools/lib/h5tools_str.c
++++ b/tools/lib/h5tools_str.c
+@@ -632,7 +632,7 @@ h5tools_str_indent(h5tools_str_t *str, const h5tool_format_t *info,
+         h5tools_str_append(str, "%s", OPT(info->line_indent, ""));
+     }
+ 
+-//    ctx->need_prefix = 0;
++      /* ctx->need_prefix = 0; */
+ }
+ 
+ /*-------------------------------------------------------------------------

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>bazaar</herd>
+  <herd>python</herd>
+  <herd>openstack</herd>
+  <upstream>
+    <remote-id type="pypi">testtools</remote-id>
+    <remote-id type="github">testing-cabal/testtools</remote-id>
+  </upstream>
+</pkgmetadata>

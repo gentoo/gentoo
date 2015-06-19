@@ -1,0 +1,18 @@
+--- ./sqlgrey-1.7.6/init/sqlgrey.gentoo.orig	2007-05-12 11:12:12.000000000 +0200
++++ ./sqlgrey-1.7.6/init/sqlgrey.gentoo		2007-05-12 12:05:52.491468250 +0200
+@@ -14,13 +14,13 @@
+ 	# SQLite puts files in the working directory
+ 	cd ~sqlgrey
+ 	sqlgrey -d
+-	eend
++	eend $?
+ }
+ 
+ stop() {
+ 	ebegin "Shutting down SQLgrey"
+ 	sqlgrey -k
+-	eend
++	eend $?
+ }
+ 
+ # hack: seems Net::Server doesn't set REUSEADDR on socket?

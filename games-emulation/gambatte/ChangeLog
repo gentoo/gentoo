@@ -1,0 +1,59 @@
+# ChangeLog for games-emulation/gambatte
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/gambatte/ChangeLog,v 1.11 2015/06/04 16:07:19 mr_bones_ Exp $
+
+  04 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  gambatte-0.5.0_p20131102.ebuild:
+  remove pointless nonfatal (bug #551168)
+
+  22 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -gambatte-0.5.0_p20130601.ebuild, metadata.xml:
+  old
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  29 Aug 2014; Chema Alonso <nimiux@gentoo.org>
+  gambatte-0.5.0_p20131102.ebuild:
+  Stable for amd64 wrt bug #518250
+
+  14 Aug 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gambatte-0.5.0_p20131102.ebuild:
+  x86 stable wrt bug #518250
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> gambatte-0.5.0_p20130601.ebuild,
+  gambatte-0.5.0_p20131102.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+*gambatte-0.5.0_p20131102 (18 Nov 2013)
+
+  18 Nov 2013; Julian Ospald <hasufell@gentoo.org>
+  +gambatte-0.5.0_p20131102.ebuild:
+  version bump
+
+  16 Nov 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -gambatte-0.5.0_p20130310.ebuild, -gambatte-0.5.0_p20130413.ebuild:
+  old
+
+*gambatte-0.5.0_p20130601 (06 Jun 2013)
+
+  06 Jun 2013; Julian Ospald <hasufell@gentoo.org>
+  +gambatte-0.5.0_p20130601.ebuild:
+  version bump
+
+*gambatte-0.5.0_p20130413 (13 Apr 2013)
+
+  13 Apr 2013; Julian Ospald <hasufell@gentoo.org>
+  +gambatte-0.5.0_p20130413.ebuild:
+  version bump
+
+  13 Apr 2013; Julian Ospald <hasufell@gentoo.org>
+  +gambatte-0.5.0_p20130310.ebuild, +metadata.xml:
+  category move games-engines -> games-emulation
+
+*gambatte-0.5.0_p20130310 (10 Mar 2013)
+
+  10 Mar 2013; Julian Ospald <hasufell@gentoo.org>
+  +gambatte-0.5.0_p20130310.ebuild, +metadata.xml:
+  initial import wrt #214479 based on Jared Bs ebuild

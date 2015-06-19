@@ -1,0 +1,13 @@
+# ChangeLog for sci-mathematics/ent
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/ent/ChangeLog,v 1.2 2011/06/19 09:42:37 jlec Exp $
+
+  19 Jun 2011; Justin Lecher <jlec@gentoo.org> ent-101202.ebuild:
+  Add missing dependency, #371511
+
+*ent-101202 (02 Dec 2010)
+
+  02 Dec 2010; Justin Lecher <jlec@gentoo.org> +files/101202-gentoo.patch,
+  +ent-101202.ebuild, +metadata.xml:
+  Addition requested #347577
+

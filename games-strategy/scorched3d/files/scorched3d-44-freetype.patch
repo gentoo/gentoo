@@ -1,0 +1,45 @@
+--- acinclude.m4.orig
++++ acinclude.m4
+@@ -437,7 +437,7 @@
+    if test "$FT2_CONFIG" = "no" ; then
+      no_ft=yes
+    else
+-     FT2_CFLAGS=`$FT2_CONFIG $ft_config_args --cflags`
++     FT2_CFLAGS="`$FT2_CONFIG $ft_config_args --cflags` `$FT2_CONFIG $ft_config_args --cflags | sed -e 's:freetype2:freetype2/freetype:'`"
+      FT2_LIBS=`$FT2_CONFIG $ft_config_args --libs`
+      ft_config_major_version=`$FT2_CONFIG $ft_config_args --version | \
+        sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
+--- src.orig/client/GLEXT/GLFont2dFreeType.h
++++ src/client/GLEXT/GLFont2dFreeType.h
+@@ -23,10 +23,10 @@
+ 
+ #include <GLEXT/GLFont2dStorage.h>
+ #include <ft2build.h>
+-#include <freetype/freetype.h>
+-#include <freetype/ftglyph.h>
+-#include <freetype/ftoutln.h>
+-#include <freetype/fttrigon.h>
++#include <freetype.h>
++#include <ftglyph.h>
++#include <ftoutln.h>
++#include <fttrigon.h>
+ #include <string>
+ 
+ class GLFont2dFreeType
+--- src.orig/launcher/wxdialogs/TrueTypeFont.h
++++ src/launcher/wxdialogs/TrueTypeFont.h
+@@ -25,10 +25,10 @@
+ #include <wx/image.h>
+ #include <ft2build.h>
+ #include <string>
+-#include <freetype/freetype.h>
+-#include <freetype/ftglyph.h>
+-#include <freetype/ftoutln.h>
+-#include <freetype/fttrigon.h>
++#include <freetype.h>
++#include <ftglyph.h>
++#include <ftoutln.h>
++#include <fttrigon.h>
+ 
+ class TrueTypeFont
+ {

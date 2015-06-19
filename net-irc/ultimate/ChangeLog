@@ -1,0 +1,125 @@
+# ChangeLog for net-irc/ultimate
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/ultimate/ChangeLog,v 1.27 2015/04/27 01:30:09 mrueg Exp $
+
+  27 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -ultimate-3.0.2.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> ultimate-3.0.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> ultimate-3.0.2-r2.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+  11 Aug 2012; Markus Meier <maekke@gentoo.org> ultimate-3.0.2-r2.ebuild:
+  x86 stable, bug #419255
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> ultimate-3.0.2-r2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*ultimate-3.0.2-r2 (16 Jun 2011)
+
+  16 Jun 2011; Nathan Phillip Brink <binki@gentoo.org>
+  -ultimate-3.0.2-r1.ebuild, +ultimate-3.0.2-r2.ebuild,
+  -files/ultimate-3.0.2-system-zlib.patch,
+  +files/ultimate-3.0.2-system-zlib-r1.patch:
+  Fix bug #371889 by flameeyes caused by bad system-zlib patch.
+
+  04 May 2011; Nathan Phillip Brink (binki) <binki@gentoo.org> metadata.xml:
+  Take ownership of this package now that I don't need to proxy it.
+
+*ultimate-3.0.2-r1 (02 May 2011)
+
+  02 May 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +ultimate-3.0.2-r1.ebuild, +files/ultimate-3.0.2-config.patch.in,
+  +files/ultimate-3.0.2-entropy-path.patch,
+  +files/ultimate-3.0.2-make-failfast.patch,
+  +files/ultimate-3.0.2-open-mode.patch,
+  +files/ultimate-3.0.2-system-zlib.patch, +files/ultimateircd.conf.2,
+  +files/ultimateircd.rc.2, metadata.xml:
+  Revision bump by Nathan Phillip Brink, who's the new proxied maintainer for
+  the package. Fixes bugs #251434 and 364957.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> ultimate-3.0.2.ebuild:
+  Remove virtual/libc
+
+  16 Apr 2007; Raúl Porcel <armin76@gentoo.org>
+  -files/Ultimate-2.8.7-gentoo.patch, -ultimate-3.0.1.ebuild,
+  ultimate-3.0.2.ebuild:
+  x86 stable && remove old
+
+*ultimate-3.0.2 (13 Mar 2007)
+
+  13 Mar 2007; Raúl Porcel <armin76@gentoo.org> -ultimate-2.8.8.ebuild,
+  -ultimate-2.8.9.ebuild, ultimate-3.0.1.ebuild, +ultimate-3.0.2.ebuild:
+  Version bump, stable x86, and drop old
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  30 Jun 2005; Sven Wegener <swegener@gentoo.org> ultimate-2.8.9.ebuild:
+  Added cross-compile support.
+
+*ultimate-3.0.1 (12 Apr 2005)
+*ultimate-2.8.9 (12 Apr 2005)
+
+  12 Apr 2005; Sven Wegener <swegener@gentoo.org> +ultimate-2.8.9.ebuild,
+  -ultimate-3.0.0.ebuild, +ultimate-3.0.1.ebuild:
+  Version bump.
+
+*ultimate-3.0.0 (19 Mar 2005)
+
+  19 Mar 2005; Sven Wegener <swegener@gentoo.org>
+  -ultimate-3.0.0_rc3.ebuild, +ultimate-3.0.0.ebuild:
+  Version bump.
+
+*ultimate-3.0.0_rc3 (14 Mar 2005)
+
+  14 Mar 2005; Sven Wegener <swegener@gentoo.org> -ultimate-2.8.7.ebuild,
+  ultimate-2.8.8.ebuild, -ultimate-3.0.0_rc2.ebuild,
+  +ultimate-3.0.0_rc3.ebuild:
+  Version bump. Marked 2.8.8 stable on x86. Removed old ebuilds.
+
+*ultimate-3.0.0_rc2 (30 Jan 2005)
+
+  30 Jan 2005; Sven Wegener <swegener@gentoo.org>
+  +files/3.0.0_rc2-config.patch, +files/ultimateircd.rc-3.0.0,
+  +ultimate-3.0.0_rc2.ebuild:
+  Version bump.
+
+  09 Oct 2004; Sven Wegener <swegener@gentoo.org> files/ultimateircd.rc:
+  Modified to 'use net' not 'need net' in init script. Closes bug #66467.
+
+*ultimate-2.8.8 (17 Jul 2004)
+
+  17 Jul 2004; Sven Wegener <swegener@gentoo.org> files/ultimateircd.conf,
+  files/ultimateircd.rc, ultimate-2.8.7.ebuild, +ultimate-2.8.8.ebuild:
+  Version bump.
+
+  09 Jul 2004; Sven Wegener <swegener@gentoo.org> ultimate-2.8.7.ebuild:
+  Marked stable on x86.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  ultimate-2.8.7.ebuild:
+  virtual/glibc -> virtual/libc
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  ultimate-2.8.7.ebuild:
+  Masked ultimate-2.8.7.ebuild testing for ppc
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> ultimate-2.8.7.ebuild:
+  Add inherit eutils
+
+  14 Feb 2004; Jason Wever <weeve@gentoo.org> ultimate-2.8.7.ebuild:
+  Added ~sparc keyword.
+
+  27 Oct 2003; Chuck Short <zul@gentoo.org> files/ultimateircd.conf,
+  files/ultimateircd.rc:
+  Updated init scripts, closes bug #31958.
+
+*ultimate-2.8.7 (24 Oct 2003)
+
+  24 Oct 2003; Chuck Short <zul@gentoo.org> ultimate-2.8.7.ebuild,
+  files/Ultimate-2.8.7-gentoo.patch, files/setup.h, files/ultimateircd.conf,
+  files/ultimateircd.rc:
+  Initial version, closes #31466.

@@ -1,0 +1,90 @@
+# ChangeLog for dev-ruby/pry
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/pry/ChangeLog,v 1.20 2015/06/07 19:05:24 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  11 Apr 2015; Hans de Graaff <graaff@gentoo.org> pry-0.10.1.ebuild:
+  Document ruby22 status.
+
+  16 Mar 2015; Hans de Graaff <graaff@gentoo.org> -pry-0.9.11.4.ebuild,
+  -pry-0.9.12.6.ebuild:
+  Cleanup.
+
+*pry-0.10.1 (24 Jan 2015)
+
+  24 Jan 2015; Manuel Rüger <mrueg@gentoo.org> +pry-0.10.1.ebuild:
+  Version bump.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> pry-0.9.11.4.ebuild,
+  pry-0.9.12.6.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  25 Jul 2014; Manuel Rüger <mrueg@gentoo.org> pry-0.9.12.6-r1.ebuild:
+  Fix whitespace.
+
+*pry-0.9.12.6-r1 (25 Jul 2014)
+
+  25 Jul 2014; Manuel Rüger <mrueg@gentoo.org> +pry-0.9.12.6-r1.ebuild:
+  Add ruby20, ruby21 targets. 3 tests failing.
+
+  05 Apr 2014; Manuel Rüger <mrueg@gentoo.org> -pry-0.9.7.4-r1.ebuild,
+  -pry-0.9.7.4.ebuild:
+  Cleanup slot 0, ruby18-only.
+
+*pry-0.9.12.6 (10 Mar 2014)
+
+  10 Mar 2014; Vikraman Choudhury (vikraman) <vikraman@gentoo.org>
+  +pry-0.9.12.6.ebuild, pry-0.9.11.4.ebuild:
+  Patch coderay dependency in gemspec, fix test dependencies, bump to 0.12.6.
+
+*pry-0.9.11.4 (20 Jan 2013)
+
+  20 Jan 2013; Hans de Graaff <graaff@gentoo.org> +pry-0.9.11.4.ebuild:
+  Version bump. Drop ruby18 since it no longer seems to be supported and move
+  this version into a separate slot to allow parallel ruby18 and ruby19
+  versions if needed.
+
+  14 Nov 2012; Hans de Graaff <graaff@gentoo.org> +pry-0.9.7.4-r1.ebuild:
+  Revision bump to depend on the right slot of slop, and to actually write the
+  right gemspec with fixed dependencies. Fixes bug 443054. Drop ppc64 due to
+  unkeyworded slop slot.
+
+*pry-0.9.7.4-r1 (14 Nov 2012)
+
+  14 Nov 2012; Hans de Graaff <graaff@gentoo.org> +pry-0.9.7.4-r1.ebuild:
+  Revision bump to depend on the right slot of slop, and to actually write the
+  right gemspec with fixed dependencies. Fixes bug 443054.
+
+  14 Nov 2012; Diego E. Pettenò <flameeyes@gentoo.org> pry-0.9.7.4.ebuild:
+  Bump dependency on ruby_parser as reported by antarus.
+
+  14 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata.xml so that it's the same as most other packages.
+
+  09 Aug 2012; Hans de Graaff <graaff@gentoo.org> pry-0.9.7.4.ebuild:
+  Add a blocker against dev-python/pry for bug 430536.
+
+  09 May 2012; Hans de Graaff <graaff@gentoo.org> pry-0.9.7.4.ebuild:
+  Add ~ppc64 keyword to match adhearsion's ppc64 keywording.
+
+  29 Apr 2012; Thomas Kahle <tomka@gentoo.org> pry-0.9.7.4.ebuild:
+  marked ~x86 per bug 391073
+
+  27 Apr 2012; Hans de Graaff <graaff@gentoo.org> -pry-0.9.6.2.ebuild:
+  Remove old version.
+
+  28 Jan 2012; Hans de Graaff <graaff@gentoo.org> pry-0.9.7.4.ebuild:
+  Add missing test dependency on open4, bug 391073.
+
+*pry-0.9.7.4 (24 Dec 2011)
+
+  24 Dec 2011; Hans de Graaff <graaff@gentoo.org> +pry-0.9.7.4.ebuild:
+  Version bump.
+
+*pry-0.9.6.2 (24 Oct 2011)
+
+  24 Oct 2011; Hans de Graaff <graaff@gentoo.org> +pry-0.9.6.2.ebuild,
+  +metadata.xml:
+  Initial import. New dependency for dev-ruby/adhearsion.

@@ -1,0 +1,10 @@
+# ChangeLog for media-sound/pitchtune
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/pitchtune/ChangeLog,v 1.1 2009/08/15 20:26:41 ssuominen Exp $
+
+*pitchtune-0.0.4 (15 Aug 2009)
+
+  15 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +pitchtune-0.0.4.ebuild:
+  Initial commit wrt #88948, thanks to Anton Romanov for reporting.
+

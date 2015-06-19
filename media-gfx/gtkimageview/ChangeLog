@@ -1,0 +1,97 @@
+# ChangeLog for media-gfx/gtkimageview
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gtkimageview/ChangeLog,v 1.26 2014/07/07 06:59:12 mgorny Exp $
+
+  07 Jul 2014; Michał Górny <mgorny@gentoo.org> gtkimageview-1.6.4.ebuild:
+  Force RESTRICT=userpriv only with USE=test, bug #446628. Update HOMEPAGE. Set
+  SRC_URI to our mirrors since the original host is dead and the new homepage
+  does not carry distfiles.
+
+  21 Aug 2012; Christoph Junghans <ottxor@gentoo.org> gtkimageview-1.6.4.ebuild:
+  added prefix keywords
+
+  29 May 2012; Alexis Ballier <aballier@gentoo.org> gtkimageview-1.6.4.ebuild:
+  keyword ~amd64-fbsd
+
+  30 Apr 2012; Justin Lecher <jlec@gentoo.org> gtkimageview-1.6.4.ebuild:
+  Use GNOME2_LA_PUNT instead of manual punting
+
+  30 Apr 2012; Justin Lecher <jlec@gentoo.org> gtkimageview-1.6.4.ebuild:
+  Clean fix for virtualx.eclass usage, #294295
+
+  29 Apr 2012; Justin Lecher <jlec@gentoo.org> gtkimageview-1.6.4.ebuild:
+  Move to EAPI=4, handle static-libs, add fix for gold.ld, call Xemake #294295;
+  do not call elibtoolize twice, #411389
+
+  12 Mar 2011; Tim Harder <radhermit@gentoo.org> gtkimageview-1.6.4.ebuild:
+  Use slot dep for gtk+.
+
+  31 Jan 2010; Raúl Porcel <armin76@gentoo.org> gtkimageview-1.6.4.ebuild:
+  arm/ia64/sh/sparc stable wrt #293850
+
+  16 Jan 2010; Tobias Klausmann <klausman@gentoo.org>
+  gtkimageview-1.6.4.ebuild:
+  Stable on alpha, bug #293850
+
+  28 Dec 2009; Markus Meier <maekke@gentoo.org> gtkimageview-1.6.4.ebuild:
+  x86 stable, bug #293850
+
+  28 Dec 2009; Markus Meier <maekke@gentoo.org> gtkimageview-1.6.4.ebuild:
+  inherit virtualx to make tests pass by flameeyes in bug #294295
+
+  23 Dec 2009; Markos Chandras <hwoarang@gentoo.org>
+  gtkimageview-1.6.4.ebuild:
+  Stable on amd64 wrt bug #293850
+
+  17 Dec 2009; Raúl Porcel <armin76@gentoo.org> gtkimageview-1.6.4.ebuild:
+  Add ~ia64/~sh/~sparc wrt #272088
+
+  16 Dec 2009; Jeroen Roovers <jer@gentoo.org> gtkimageview-1.6.4.ebuild:
+  Stable for HPPA (bug #272088).
+
+  08 Dec 2009; Brent Baude <ranger@gentoo.org> gtkimageview-1.6.4.ebuild:
+  Marking gtkimageview-1.6.4 ppc64 for bug 293850
+
+  21 Nov 2009; nixnut <nixnut@gentoo.org> gtkimageview-1.6.4.ebuild:
+  ppc stable #293850
+
+  05 Oct 2009; Mounir Lamouri <volkmar@gentoo.org>
+  gtkimageview-1.6.4.ebuild:
+  Keywording for ppc, bug 272088
+
+  19 Sep 2009; Markus Meier <maekke@gentoo.org> gtkimageview-1.6.4.ebuild:
+  add ~arm, bug #272088
+
+  04 Jul 2009; Brent Baude <ranger@gentoo.org> gtkimageview-1.6.4.ebuild:
+  Marking gtkimageview-1.6.4 ~ppc64 for bug 272088
+
+  02 Jul 2009; Robin H. Johnson <robbat2@gentoo.org>
+  gtkimageview-1.6.4.ebuild:
+  Use the EAPI2 SRC_URI arrows to avoid the Wiki screwing up the file.
+
+  30 Jun 2009; Alexis Ballier <aballier@gentoo.org>
+  gtkimageview-1.6.4.ebuild:
+  keyword ~x86-fbsd
+
+  28 Jun 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  gtkimageview-1.6.4.ebuild:
+  Fix build with USE=doc, bug #273958. Move gnome-common to DEPEND, add die
+  messages, strip G_DISABLE* to prevent build failures.
+
+  12 Jun 2009; Markus Meier <maekke@gentoo.org> gtkimageview-1.6.4.ebuild:
+  do not use -Werror during build wrt bug #272301
+  use gnome eclass and add USE=doc wrt bug #272303
+  add USE=examples and update mirror wrt bug #272620
+
+  07 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  gtkimageview-1.6.4.ebuild:
+  Keyworded on alpha, bug #272088
+
+  03 Jun 2009; Markus Meier <maekke@gentoo.org> gtkimageview-1.6.4.ebuild:
+  add ~amd64, bug #272088
+
+*gtkimageview-1.6.4 (01 Jun 2009)
+
+  01 Jun 2009; Markus Meier <maekke@gentoo.org> +gtkimageview-1.6.4.ebuild,
+  +metadata.xml:
+  initial import of gtkimageview, ebuild by me

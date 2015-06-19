@@ -1,0 +1,76 @@
+# ChangeLog for sci-chemistry/ccp4i
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/ccp4i/ChangeLog,v 1.18 2015/03/27 10:48:40 jlec Exp $
+
+  27 Mar 2015; Justin Lecher <jlec@gentoo.org> -ccp4i-6.1.3-r3.ebuild:
+  Drop old
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> ccp4i-6.1.3-r4.ebuild:
+  Stable for x86, wrt bug #544422
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> ccp4i-6.1.3-r4.ebuild:
+  Stable for amd64, wrt bug #544422
+
+  25 Mar 2015; Justin Lecher <jlec@gentoo.org> ccp4i-6.1.3-r4.ebuild:
+  Drop unnecessary PYTHON_DEPEND
+
+*ccp4i-6.1.3-r4 (09 Mar 2015)
+
+  09 Mar 2015; Justin Lecher <jlec@gentoo.org> +ccp4i-6.1.3-r4.ebuild:
+  Bump to new python.eclasses
+
+  06 Jan 2014; Justin Lecher <jlec@gentoo.org> ccp4i-6.1.3-r3.ebuild:
+  Punt base.eclass
+
+  13 Dec 2012; Justin Lecher <jlec@gentoo.org> ccp4i-6.1.3-r3.ebuild,
+  metadata.xml:
+  Add missing dep on sci-libs/ccp4-libs, #405867
+
+  28 Apr 2012; Justin Lecher <jlec@gentoo.org> -ccp4i-6.1.3-r2.ebuild:
+  Drop old
+
+  07 Sep 2011; Justin Lecher <jlec@gentoo.org> ccp4i-6.1.3-r3.ebuild:
+  EAPI bump, fixed usage of virtualx eclass
+
+  07 Aug 2011; Markos Chandras <hwoarang@gentoo.org> ccp4i-6.1.3-r3.ebuild:
+  Stable on amd64 wrt bug #375907
+
+  07 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> ccp4i-6.1.3-r3.ebuild:
+  x86 stable wrt bug #375907
+
+  23 Jul 2011; Justin Lecher <jlec@gentoo.org> ccp4i-6.1.3-r3.ebuild,
+  metadata.xml:
+  Add verbose postinst msg, #375907
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> ccp4i-6.1.3-r3.ebuild:
+  marked ~ppc wrt #303931
+
+*ccp4i-6.1.3-r3 (16 Jun 2010)
+
+  16 Jun 2010; Justin Lecher <jlec@gentoo.org> +ccp4i-6.1.3-r3.ebuild:
+  Attempts tp fix bug 314053
+
+*ccp4i-6.1.3-r2 (25 Apr 2010)
+
+  25 Apr 2010; Justin Lecher <jlec@gentoo.org>
+  files/6.1.3-rename-rapper.patch, +ccp4i-6.1.3-r2.ebuild,
+  files/6.1.3-rename-superpose.patch, files/6.1.3-rename-truncate.patch,
+  -ccp4i-6.1.3-r1.ebuild:
+  Fixes missing renames, thanks Johan Hattne for giving the patches, #314053
+
+  22 Apr 2010; Justin Lecher <jlec@gentoo.org> ccp4i-6.1.3-r1.ebuild:
+  Fixes for Python ABIs, keyworded for *-linux
+
+*ccp4i-6.1.3-r1 (20 Mar 2010)
+
+  20 Mar 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +ccp4i-6.1.3-r1.ebuild:
+  Including arpwarp interface
+
+*ccp4i-6.1.3 (06 Feb 2010)
+
+  06 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +files/6.1.3-fix-baubles.patch, +files/6.1.3-rename-rapper.patch,
+  +files/6.1.3-rename-superpose.patch, +files/6.1.3-rename-truncate.patch,
+  +ccp4i-6.1.3.ebuild, +metadata.xml:
+  Interface splitted from ccp4

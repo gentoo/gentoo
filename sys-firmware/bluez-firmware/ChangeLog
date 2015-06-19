@@ -1,0 +1,84 @@
+# ChangeLog for sys-firmware/bluez-firmware
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-firmware/bluez-firmware/ChangeLog,v 1.4 2014/08/10 20:19:46 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> bluez-firmware-1.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  12 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  bluez-firmware-1.2.ebuild:
+  RESTRICT="bindist" too.
+
+  12 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  bluez-firmware-1.2.ebuild:
+  RESTRICT="mirror" since the license doesn't explicitely give us
+  authorization to redistribute.
+
+  12 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +bluez-firmware-1.2.ebuild, +metadata.xml:
+  Move from net-wireless category. Use correct license wrt #456948 by Daniel
+  Westermann-Clark
+
+  10 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  -bluez-firmware-1.1.ebuild:
+  old
+
+  10 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  bluez-firmware-1.2.ebuild:
+  amd64/ppc/x86 stable; change LICENSE from as-is to GPL-2 as per COPYING and
+  because the tarball doesn't seem to have any other.
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+  05 Mar 2012; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove betelgeuse
+
+  09 Feb 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Herd is primary maintainer.
+
+  02 Jun 2008; Jeroen Roovers <jer@gentoo.org> bluez-firmware-1.2.ebuild:
+  Stable for HPPA (bug #224409).
+
+  13 May 2008; Petteri Räty <betelgeuse@gentoo.org> metadata.xml:
+  Remove proxy maintainer as he doesn't use Gentoo any more.
+
+  17 Apr 2008; Jeroen Roovers <jer@gentoo.org> bluez-firmware-1.2.ebuild:
+  Marked ~hppa too.
+
+  12 May 2007; Petteri Räty <betelgeuse@gentoo.org> ChangeLog:
+  Sign Manifest.
+
+  12 May 2007; Petteri Räty <betelgeuse@gentoo.org> metadata.xml:
+  Add Dick Marinus <dm@chello.nl> as a proxy maintainer to metadata.xml.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  22 Oct 2006; Piotr Jaroszyński <peper@gentoo.org>
+  bluez-firmware-1.2.ebuild:
+  Add ~amd64 keyword. Bug #111243.
+
+*bluez-firmware-1.2 (11 Jul 2006)
+
+  11 Jul 2006; Alastair Tse <liquidx@gentoo.org> +bluez-firmware-1.2.ebuild:
+  Version bump with new support for STM Bluetooth chips.
+
+  23 May 2006; Robin H. Johnson <robbat2@gentoo.org>
+  bluez-firmware-1.1.ebuild:
+  Add ~ppc.
+
+  06 Feb 2006; Alastair Tse <liquidx@gentoo.org> -bluez-firmware-1.0.ebuild,
+  bluez-firmware-1.1.ebuild:
+  stable bump for x86
+
+*bluez-firmware-1.1 (03 Nov 2005)
+
+  03 Nov 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +bluez-firmware-1.1.ebuild:
+  Version bump.
+
+*bluez-firmware-1.0 (26 Sep 2004)
+
+  26 Sep 2004; Alastair Tse <liquidx@gentoo.org> +bluez-firmware-1.0.ebuild:
+  intiial commit

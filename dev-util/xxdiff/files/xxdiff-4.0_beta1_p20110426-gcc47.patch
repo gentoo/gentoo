@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/show_bug.cgi?id=442302
+
+# HG changeset patch
+# User Martin Blais <mblais@marketfactory.com>
+# Date 1339464558 14400
+# Node ID 00d868ea5f4a92f4b5c7e2665403eb18c7390aca
+# Parent  fdc247a7d9e51ca71b284f592be33f0465140f6b
+Fixed compile error that only shows up in FC17 with gcc-4.7.
+
+diff -r fdc247a7d9e5 -r 00d868ea5f4a src/main.h
+--- a/src/main.h	Mon Feb 20 10:46:22 2012 -0500
++++ b/src/main.h	Mon Jun 11 21:29:18 2012 -0400
+@@ -35,6 +35,10 @@
+  * PUBLIC DECLARATIONS
+  *============================================================================*/
+ 
++extern "C" {
++
+ extern char** environ;
+ 
++}
++
+ #endif
+

@@ -1,0 +1,14 @@
+Gentoo enables _FORTIFY_SOURCE by default so this avoids redefined warnings.
+
+--- inkscape-0.91pre3/configure.ac
++++ inkscape-0.91pre3/configure.ac
+@@ -72,9 +72,6 @@
+   ####
+   # Generic cpp flags...
+ 
+-  # What is just plain "-W" ?
+-  # Fortify source requires -O2 or higher, which is handled with newer autoconf
+-  CPPFLAGS="-W -D_FORTIFY_SOURCE=2 $CPPFLAGS"
+   # Enable format and format security warnings
+   CPPFLAGS="-Wformat -Wformat-security $CPPFLAGS"
+   # Enable all default warnings

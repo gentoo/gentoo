@@ -1,0 +1,232 @@
+# ChangeLog for sci-libs/umfpack
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/umfpack/ChangeLog,v 1.59 2015/05/13 07:01:52 jmorgan Exp $
+
+  13 May 2015; Jack Morgan <jmorgan@gentoo.org> umfpack-5.6.2.ebuild:
+  ppc64 stable wrt bug #534650
+
+  06 May 2015; Justin Lecher <jlec@gentoo.org> umfpack-5.6.2.ebuild:
+  Require full cholmod library functionality for USE=cholmod, bug #547526
+
+  26 Apr 2015; Pacho Ramos <pacho@gentoo.org> umfpack-5.6.2.ebuild:
+  ppc stable wrt bug #534650
+
+  26 Apr 2015; Pacho Ramos <pacho@gentoo.org> umfpack-5.6.2.ebuild:
+  x86 stable wrt bug #534650
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> umfpack-5.6.2.ebuild:
+  Stable for amd64, wrt bug #534650
+
+  04 Mar 2015; Justin Lecher <jlec@gentoo.org> umfpack-5.2.0.ebuild:
+  Add missing dep, #538552
+
+  22 Feb 2015; Matt Turner <mattst88@gentoo.org> umfpack-5.2.0.ebuild,
+  umfpack-5.6.2.ebuild:
+  Drop alpha keyword.
+
+  13 Jan 2015; Jeroen Roovers <jer@gentoo.org> umfpack-5.6.2.ebuild:
+  Stable for HPPA (bug #534650).
+
+  04 Jan 2015; Justin Lecher <jlec@gentoo.org> -umfpack-5.6.1-r1.ebuild:
+  Drop old
+
+  18 Jun 2014; Tobias Klausmann <klausman@gentoo.org> umfpack-5.6.1-r1.ebuild:
+  Keyworded on alpha, bug #442862
+
+  18 Jun 2014; Tobias Klausmann <klausman@gentoo.org> umfpack-5.6.2.ebuild:
+  Keyworded on alpha, bug #442862
+
+  22 Mar 2014; Justin Lecher <jlec@gentoo.org> umfpack-5.6.1-r1.ebuild,
+  umfpack-5.6.2.ebuild, metadata.xml:
+  Fix myeconfargs assignment
+
+  04 Mar 2014; Vicente Olivert Riera <vincent@gentoo.org> umfpack-5.6.2.ebuild:
+  Add ~mips keyword.
+
+  18 Jul 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  umfpack-5.6.2.ebuild:
+  Keyword ~arm.
+
+  01 Jul 2013; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove redundant metis useflag description
+
+*umfpack-5.6.2 (25 Jun 2013)
+
+  25 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> +umfpack-5.6.2.ebuild,
+  -files/5.5.1-autotools.patch, -umfpack-5.5.2.ebuild, metadata.xml:
+  Version bump, switch to EAPI5 and new tar ball
+
+  21 Feb 2013; Justin Lecher <jlec@gentoo.org> umfpack-5.2.0.ebuild,
+  umfpack-5.5.2.ebuild, umfpack-5.6.1-r1.ebuild, metadata.xml:
+  Use tc-getPKG_CONFIG from toolchain-funcs.eclass instead of plain pkg-config
+
+  21 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml,
+  umfpack-5.6.1-r1.ebuild:
+  Re-introduce metis description
+
+*umfpack-5.6.1-r1 (21 Nov 2012)
+
+  21 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> +umfpack-5.6.1-r1.ebuild,
+  -umfpack-5.5.1.ebuild, -umfpack-5.6.1.ebuild, metadata.xml:
+  Tar ball changed, dependence on metis is now through cholmod only
+
+  19 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> umfpack-5.6.1.ebuild:
+  cholmod only needed with metis
+
+  14 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> umfpack-5.6.1.ebuild:
+  Remove metis flag when not asked, thanks Arfrever for noticing
+
+  13 Nov 2012; Anthony G. Basile <blueness@gentoo.org> umfpack-5.6.1.ebuild:
+  keyword ~ppc ~ppc64, bug #442862
+
+  13 Nov 2012; Jeroen Roovers <jer@gentoo.org> umfpack-5.6.1.ebuild:
+  Marked ~hppa (bug #442862).
+
+  12 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml,
+  umfpack-5.6.1.ebuild:
+  Force depend on cholmod-2 (really fixing bug #442866)
+
+  12 Nov 2012; Justin Lecher <jlec@gentoo.org> umfpack-5.6.1.ebuild:
+  Add missing dep on sci-libs/suitesparseconfig, #442842
+
+  12 Nov 2012; Justin Lecher <jlec@gentoo.org> umfpack-5.6.1.ebuild,
+  metadata.xml:
+  Fix deps
+
+*umfpack-5.6.1 (12 Nov 2012)
+
+  12 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> +umfpack-5.6.1.ebuild,
+  metadata.xml:
+  Version bump
+
+  16 Oct 2012; Justin Lecher <jlec@gentoo.org> umfpack-5.2.0.ebuild,
+  umfpack-5.5.1.ebuild, umfpack-5.5.2.ebuild:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  16 Oct 2012;  <naota@gentoo.org> umfpack-5.5.2.ebuild:
+  Add ~x86-fbsd.
+
+  30 May 2012; Alexis Ballier <aballier@gentoo.org> umfpack-5.5.2.ebuild:
+  keyword ~amd64-fbsd
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> umfpack-5.2.0.ebuild,
+  umfpack-5.5.1.ebuild, umfpack-5.5.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  26 Apr 2012; Justin Lecher <jlec@gentoo.org> umfpack-5.2.0.ebuild,
+  umfpack-5.5.1.ebuild, umfpack-5.5.2.ebuild, metadata.xml:
+  Drop unnessecary die
+
+*umfpack-5.5.2 (20 Jan 2012)
+
+  20 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org> +umfpack-5.5.2.ebuild:
+  Version bump
+
+  04 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/5.5.1-autotools.patch, -umfpack-5.4.0.ebuild, -umfpack-5.5.0.ebuild,
+  -files/umfpack-5.5.0-autotools.patch, umfpack-5.5.1.ebuild:
+  Ebuild cleaning, make sure metis is linked
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> umfpack-5.2.0.ebuild,
+  umfpack-5.4.0.ebuild, umfpack-5.5.0.ebuild, umfpack-5.5.1.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> umfpack-5.2.0.ebuild,
+  umfpack-5.4.0.ebuild, umfpack-5.5.0.ebuild, umfpack-5.5.1.ebuild:
+  Added fortran-2.eclass support
+
+*umfpack-5.5.1 (23 Feb 2011)
+
+  23 Feb 2011; Sébastien Fabbro <bicatali@gentoo.org> +umfpack-5.5.1.ebuild:
+  Bump
+
+  22 Dec 2010; Sébastien Fabbro <bicatali@gentoo.org> umfpack-5.5.0.ebuild:
+  Added static-libs flag
+
+  09 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> umfpack-5.2.0.ebuild:
+  ppc64 stable wrt #318649
+
+  16 May 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  files/umfpack-5.5.0-autotools.patch:
+  Changed the NCHOLMOD define in the autotools patch to fix bug #319841
+
+*umfpack-5.5.0 (14 May 2010)
+
+  14 May 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +umfpack-5.5.0.ebuild, +files/umfpack-5.5.0-autotools.patch, metadata.xml:
+  Version bump. Now can use METIS partitioning, via CHOLMOD
+
+  02 Jan 2010; Christian Faulhammer <fauli@gentoo.org> umfpack-5.4.0.ebuild:
+  Transfer Prefix keywords
+
+*umfpack-5.4.0 (21 Nov 2009)
+
+  21 Nov 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  +umfpack-5.4.0.ebuild:
+  Version bump
+
+  12 Oct 2009; Jeroen Roovers <jer@gentoo.org> umfpack-5.2.0.ebuild:
+  Stable for HPPA (bug #245707).
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> umfpack-5.2.0.ebuild:
+  ppc stable #245707
+
+  20 Apr 2009; Markus Meier <maekke@gentoo.org> umfpack-5.2.0:
+  x86 stable, bug #245707
+
+  27 Mar 2009; Ferris McCormick <fmccor@gentoo.org> umfpack-5.2.0.ebuild:
+  Sparc stable, preparation for bug #245707.
+
+  23 Mar 2009; Jeremy Olexa <darkside@gentoo.org> umfpack-5.2.0.ebuild:
+  amd64 stable, bug 245707
+
+  23 Mar 2009; Jeremy Olexa <darkside@gentoo.org> umfpack-5.2.0.ebuild:
+  amd64 stable, bug 245707
+
+  08 Feb 2009; Tobias Klausmann <klausman@gentoo.org> umfpack-5.2.0.ebuild:
+  Stable on alpha, bug #245707
+
+  08 Jul 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/umfpack-5.0.3-autotools.patch,
+  -files/umfpack-5.1.0-autotools.patch, files/umfpack-5.2.0-autotools.patch,
+  -umfpack-5.0.3.ebuild, -umfpack-5.1.0.ebuild:
+  Removed older versions, make tests not failures not die the src_test since
+  almost all of the failures were only timings. This should be fixed next
+  version bump, upstream contacted.
+
+  15 Apr 2008; Jeroen Roovers <jer@gentoo.org> umfpack-5.2.0.ebuild:
+  Marked ~hppa (bug #215834).
+
+  12 Apr 2008; Raúl Porcel <armin76@gentoo.org> umfpack-5.2.0.ebuild:
+  Add ~sparc wrt #215834
+
+  07 Apr 2008; Tobias Klausmann <klausman@gentoo.org> umfpack-5.2.0.ebuild:
+  Keyworded on alpha, bug #215834
+
+  26 Mar 2008; Markus Rothe <corsair@gentoo.org> umfpack-5.2.0.ebuild:
+  Added ~ppc64; bug #213359
+
+*umfpack-5.2.0 (29 Jan 2008)
+
+  29 Jan 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/umfpack-5.2.0-autotools.patch, metadata.xml, +umfpack-5.2.0.ebuild:
+  Version bump. Updated description, udpated patch.
+
+  09 Sep 2007; Joseph Jezak <josejx@gentoo.org> umfpack-5.1.0.ebuild:
+  Marked ~ppc for bug #191600.
+
+*umfpack-5.1.0 (18 Aug 2007)
+
+  18 Aug 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/umfpack-5.1.0-autotools.patch, umfpack-5.0.3.ebuild,
+  +umfpack-5.1.0.ebuild:
+  Version bump. Fixed autotools patch
+
+*umfpack-5.0.3 (19 Feb 2007)
+
+  19 Feb 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/umfpack-5.0.3-autotools.patch, +metadata.xml,
+  +umfpack-5.0.3.ebuild:
+  Initial import. Closing bug #40255, with autotoolization added. 
+  Thanks Nathaniel Domingo <nathaniel.domingo@up.edu.ph> for the initial ebuild.

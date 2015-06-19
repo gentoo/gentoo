@@ -1,0 +1,34 @@
+# ChangeLog for app-dicts/aspell-hr
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-hr/ChangeLog,v 1.10 2014/01/05 11:03:25 pacho Exp $
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org> aspell-hr-0.51.0.ebuild:
+  keyword ~amd64-fbsd
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org> aspell-hr-0.51.0.ebuild:
+  Drop to ~mips
+
+  18 Oct 2009; Mark Loeser <halcy0n@gentoo.org> aspell-hr-0.51.0.ebuild:
+  QA fixes; IUSE is not defined
+
+  03 Nov 2007; Roy Marples <uberlord@gentoo.org> aspell-hr-0.51.0.ebuild:
+  Keyworded ~sparc-fbsd and ~x86-fbsd
+
+  10 Aug 2007; Jeroen Roovers <jer@gentoo.org> ChangeLog:
+  Stable for HPPA (bug #178690).
+
+  01 Dec 2006; Kevin F. Quinn <kevquinn@gentoo.org> aspell-hr-0.51.0.ebuild:
+  Ebuild cleanups for bug #132718
+
+  27 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+*aspell-de-20011124 (27 Sep 2004)
+
+  27 Sep 2004; Anders Rune Jensen <arj@gentoo.org> aspell-hr-0.51.0.ebuild:
+  New aspell dictionary. Many thanks to Gour for providing the ebuild.
+  Fixes #65046.

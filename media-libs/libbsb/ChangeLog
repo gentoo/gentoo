@@ -1,0 +1,10 @@
+# ChangeLog for media-libs/libbsb
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libbsb/ChangeLog,v 1.1 2011/06/23 11:19:04 mschiff Exp $
+
+*libbsb-0.0.7 (23 Jun 2011)
+
+  23 Jun 2011; Marc Schiffbauer <mschiff@gentoo.org> +libbsb-0.0.7.ebuild,
+  +metadata.xml:
+  New ebuild for libbsb. Fixes bug #332265
+

@@ -1,0 +1,10 @@
+--- dvbtune-0.5/Makefile.orig	2006-01-06 13:01:11.973196250 +0100
++++ dvbtune-0.5/Makefile	2006-01-06 13:01:46.667364500 +0100
+@@ -1,5 +1,6 @@
+ INCS=-I /usr/include/libxml2
+-CFLAGS= -Wall $(INCS)
++CFLAGS ?= -Wall
++CFLAGS += $(INCS)
+ CC=gcc
+ all: dvbtune
+ 

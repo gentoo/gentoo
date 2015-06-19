@@ -1,0 +1,53 @@
+# ChangeLog for sys-auth/libnss-cache
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/libnss-cache/ChangeLog,v 1.9 2014/08/10 20:22:04 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  libnss-cache-0.1-r1.ebuild, libnss-cache-0.10.1.ebuild,
+  libnss-cache-0.10.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*libnss-cache-0.10.2 (06 Oct 2012)
+
+  06 Oct 2012; Michael Weber <xmw@gentoo.org> +libnss-cache-0.10.2.ebuild:
+  Version bump (euscan)
+
+*libnss-cache-0.10.1 (29 May 2011)
+
+  29 May 2011; Christian Ruppert <idl0r@gentoo.org> -libnss-cache-0.1.ebuild,
+  -libnss-cache-0.10.ebuild, +libnss-cache-0.10.1.ebuild,
+  -files/0.1-make-install.patch, +files/libnss-cache-0.10.1-make.patch,
+  -files/libnss-cache-0.10-make.patch, metadata.xml:
+  Version bump, also fixes bug 368951. Remove old versions. Add multilib
+  support. Add myself as secondary maintainer.
+
+*libnss-cache-0.10 (13 Jan 2011)
+
+  13 Jan 2011; Robin H. Johnson <robbat2@gentoo.org> +libnss-cache-0.10.ebuild,
+  +files/libnss-cache-0.10-fix-shadow-test.patch,
+  +files/libnss-cache-0.10-make.patch:
+  Version bump.
+
+*libnss-cache-0.1-r1 (15 Sep 2010)
+
+  15 Sep 2010; Michael Weber <xmw@gentoo.org> +libnss-cache-0.1-r1.ebuild,
+  +files/libnss-cache-0.1-r1-make-install.patch, metadata.xml:
+  Revbump to fix install locations (bug #277995, thanks Nathan March) and
+  LDFLAGS (bug #336554).
+
+  17 Jul 2010; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Fix metadata.xml. maintainer-needed is not a herd
+
+  23 Oct 2009; Víctor Ostorga <vostorga@gentoo.org>
+  libnss-cache-0.1.ebuild:
+  Adding die to emake install
+
+  18 Mar 2009; Robin H. Johnson <robbat2@gentoo.org>
+  files/0.1-make-install.patch, libnss-cache-0.1.ebuild:
+  Update the patch and ebuild to use DESTDIR and PREFIX sanely. Add ~x86.
+
+*libnss-cache-0.1 (18 Mar 2009)
+
+  18 Mar 2009; Alec Warner <antarus@gentoo.org>
+  +files/0.1-make-install.patch, +libnss-cache-0.1.ebuild:
+  Initial import of libnss-cache.

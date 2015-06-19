@@ -1,0 +1,137 @@
+diff -Nurp c-sdk.orig/configure.in c-sdk/configure.in
+--- c-sdk.orig/configure.in	2011-01-06 12:05:39.000000000 +0000
++++ c-sdk/configure.in	2013-03-14 18:01:19.647224070 +0000
+@@ -42,7 +42,7 @@ dnl ***** END LICENSE BLOCK *****
+ AC_PREREQ(2.12)
+ AC_INIT(ldap/include/ldap.h)
+ 
+-AC_CONFIG_AUX_DIR(${srcdir}/config/autoconf)
++AC_CONFIG_AUX_DIR(./config/autoconf)
+ AC_CANONICAL_SYSTEM
+ 
+ dnl ========================================================
+@@ -86,24 +86,6 @@ DLLFLAGS="${DLLFLAGS=}"
+ HOST_CFLAGS="${HOST_CFLAGS=}"
+ HOST_LDFLAGS="${HOST_LDFLAGS=}"
+ 
+-case "$target" in
+-*-cygwin*|*-mingw*|*-msvc*|*-mks*)
+-    # Check to see if we are really running in a msvc environemnt
+-    _WIN32_MSVC=
+-    AC_CHECK_PROGS(CC, cl)
+-    if test "$CC" = "cl"; then
+-        echo 'main() { return 0; }' > dummy.c
+-        ${CC} -o dummy dummy.c >/dev/null 2>&1
+-        if test $? = 0; then
+-            _WIN32_MSVC=1
+-            CXX=$CC
+-        else
+-            AC_MSG_WARN([$(CC) test failed.  Using normal feature tests])
+-        fi
+-        rm -f dummy dummy.o dummy.obj dummy.exe dummy.c
+-    fi
+-    ;;
+-esac
+ 
+ if test -n "$_WIN32_MSVC"; then
+     SKIP_PATH_CHECKS=1
+@@ -152,18 +134,6 @@ AC_ARG_WITH(mozilla,
+ 	        AC_DEFINE(MOZILLA_CLIENT)
+ 	    fi])
+ 
+-AC_ARG_ENABLE(optimize,
+-    [  --enable-optimize(=val) Enable code optimizations (val, ie. -O2) ],
+-    [ if test "$enableval" != "no"; then
+-        MOZ_OPTIMIZE=1
+-        if test -n "$enableval" && test "$enableval" != "yes"; then
+-    	    _OPTIMIZE_FLAGS=`echo $enableval | sed -e 's|\\\ | |g'`
+-            _SAVE_OPTIMIZE_FLAGS=$_OPTIMIZE_FLAGS
+-        fi
+-      else
+-        MOZ_OPTIMIZE=
+-    fi ])
+-
+ AC_ARG_ENABLE(debug,
+     [  --enable-debug(=val)    Enable debugging (debug flags val)],
+     [ if test "$enableval" != "no"; then
+@@ -176,26 +146,6 @@ AC_ARG_ENABLE(debug,
+             MOZ_DEBUG=
+     fi])
+ 
+-AC_ARG_ENABLE(win32-target,
+-    [  --enable-win32-target=\$t
+-                          Specify win32 flavor. (WIN95 or WINNT)],
+-    OS_TARGET=`echo $enableval | tr a-z A-Z`,
+-    OS_TARGET=)
+-
+-AC_ARG_ENABLE(debug-rtl,
+-    [  --enable-debug-rtl      Use the MSVC debug runtime library],
+-    [ if test "$enableval" = "yes"; then
+-	    USE_DEBUG_RTL=1
+-      fi ])
+-
+-AC_ARG_ENABLE(n32,
+-    [  --enable-n32            Enable n32 ABI support (IRIX only)],
+-    [ if test "$enableval" = "yes"; then
+-	USE_N32=1
+-      else if test "$enableval" = "no"; then
+-	USE_N32=
+-      fi
+-    fi ])
+ 
+ AC_ARG_ENABLE(64bit,
+     [  --enable-64bit          Enable 64-bit support (on certain platforms)],
+@@ -261,10 +211,6 @@ dnl svrcore implies both nspr and nss
+        if test -z "$SVRCORE_CFLAGS" -o -z "$SVRCORE_LIBS" ; then
+            if test -n "$_SYSTEM_SVRCORE"; then
+                AM_PATH_SVRCORE(4.0.1, [MOZ_NATIVE_SVRCORE=1], [MOZ_NATIVE_SVRCORE=])
+-           else
+-       	       dnl see if we are being built in the same build tree as svrcore
+-               AM_PATH_INTREE_SVRCORE(../../dist)
+-               dnl failing that, see if we can find svrcore-config or pkg-config svrcore
+                if test -z "$SVRCORE_CFLAGS" -o -z "$SVRCORE_LIBS"; then
+                    AM_PATH_SVRCORE(4.0.1, [MOZ_NATIVE_SVRCORE=1], [MOZ_NATIVE_SVRCORE=])
+                fi
+@@ -294,9 +240,6 @@ dnl nss requires nspr
+             _SYSTEM_NSS=no
+ 	    fi], _SYSTEM_NSS= )
+ 
+-if test "$_WIN32_MSVC"; then
+-    _SYSTEM_NSS=
+-fi
+ 
+ dnl first, see if user has specified explicit NSPR include and lib paths,
+ dnl of if the user has explicitly disabled the use of nss
+@@ -308,10 +251,6 @@ dnl next, see if user explicitly said to
+ if test -n "$USE_NSS" -a -z "$NSS_CFLAGS" -a -z "$NSS_LIBS" ; then
+ dnl nss requires nspr
+    no_nspr=no
+-   if test -z "$_SYSTEM_NSS" -o "$_SYSTEM_NSS" = "no" ; then
+-dnl see if we are being built in the same build tree as nss
+-      AM_PATH_INTREE_NSS(../../dist)
+-   fi
+ dnl failing that, see if we can find nss-config or pkg-config nss
+    if test -z "$NSS_CFLAGS" -a "$_SYSTEM_NSS" != "no" ; then
+       AM_PATH_NSS(3.9.0, [MOZ_NATIVE_NSS=1], [MOZ_NATIVE_NSS=])
+@@ -348,10 +287,6 @@ fi
+ 
+ dnl next, look for in-tree nspr if user did not specify explicit system nspr
+ if test "$no_nspr" = "no" -a -z "$NSPR_CFLAGS" -a -z "$NSPR_LIBS" ; then
+-   if test -z "$_SYSTEM_NSPR" -o "$_SYSTEM_NSPR" = "no" ; then
+-dnl see if we are being built in the same build tree as nspr
+-      AM_PATH_INTREE_NSPR(../../dist)
+-   fi
+ dnl failing that, see if we can find nspr-config or pkg-config nspr
+    if test -z "$NSPR_CFLAGS" -a "$_SYSTEM_NSPR" != "no" ; then
+       AM_PATH_NSPR(4.0.0, [MOZ_NATIVE_NSPR=1], [MOZ_NATIVE_NSPR=])
+@@ -1520,9 +1455,7 @@ tools are selected during the Xcode/Deve
+     ;;
+ 
+ *-linux*)
+-    if test -z "$USE_NSPR_THREADS"; then
+-        USE_PTHREADS=1
+-    fi
++    USE_PTHREADS=1
+     AC_DEFINE(XP_UNIX)
+     AC_DEFINE(_POSIX_SOURCE)
+     AC_DEFINE(_BSD_SOURCE)

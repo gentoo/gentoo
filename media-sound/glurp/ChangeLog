@@ -1,0 +1,133 @@
+# ChangeLog for media-sound/glurp
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/glurp/ChangeLog,v 1.35 2012/05/05 08:20:42 mgorny Exp $
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> glurp-0.12.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  12 Dec 2011; Tim Harder <radhermit@gentoo.org> glurp-0.12.3.ebuild:
+  Remove deps that aren't explicitly required that gtk pulls in.
+
+  11 Dec 2011; Tim Harder <radhermit@gentoo.org> -glurp-0.11.6-r2.ebuild,
+  -files/glurp-0.11.6-system_libmpd.patch:
+  Remove old.
+
+  11 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> glurp-0.12.3.ebuild:
+  x86 stable wrt bug #392867
+
+  04 Dec 2011; Markos Chandras <hwoarang@gentoo.org> glurp-0.12.3.ebuild:
+  Stable on amd64 wrt bug #392867
+
+  02 Dec 2011; Tim Harder <radhermit@gentoo.org> glurp-0.12.3.ebuild:
+  Update to EAPI 4 and fix dependencies.
+
+*glurp-0.12.3 (19 Apr 2011)
+
+  19 Apr 2011; Alexis Ballier <aballier@gentoo.org> +glurp-0.12.3.ebuild:
+  version bump
+
+  13 Mar 2011; Raúl Porcel <armin76@gentoo.org> glurp-0.11.6-r2.ebuild:
+  Drop sparc keywords
+
+  03 Jun 2009; Tiago Cunha <tcunha@gentoo.org> glurp-0.11.6-r2.ebuild:
+  stable sparc, bug 255771
+
+  02 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  glurp-0.11.6-r2.ebuild:
+  stable x86, bug 255771
+
+*glurp-0.11.6-r2 (01 Jun 2009)
+
+  01 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> +glurp-0.11.6-r2.ebuild,
+  +files/glurp-0.11.6-system_libmpd.patch:
+  Use system libmpd #255771.
+
+  30 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Andrej Kacian (Ticho) from metadata.xml (as per #59986).
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> glurp-0.11.6-r1.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  28 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> glurp-0.11.5.ebuild,
+  glurp-0.11.6.ebuild, glurp-0.11.6-r1.ebuild:
+  Add missing pkgconfig dependency, thanks to Patrick Lauer in bug #153095.
+
+*glurp-0.11.6-r1 (12 Mar 2006)
+
+  12 Mar 2006; <ticho@gentoo.org> +files/glurp.svg, +glurp-0.11.6-r1.ebuild:
+  Create a desktop entry. Closes bug #97189, by Sebastian <sebastian_ml at
+  gmx.net>.
+
+  07 Feb 2006; Simon Stelling <blubb@gentoo.org> glurp-0.11.6.ebuild:
+  stable on amd64
+
+  20 Oct 2005; Andrej Kacian <ticho@gentoo.org> -glurp-0.11.2.ebuild,
+  -glurp-0.11.3.ebuild, -glurp-0.11.4.ebuild:
+  Getting rid of old ebuilds.
+
+  17 Sep 2005; Andrej Kacian <ticho@gentoo.org> glurp-0.11.6.ebuild:
+  Stable on x86.
+
+  24 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> glurp-0.11.6.ebuild:
+  Stable on sparc
+
+*glurp-0.11.6 (05 Jun 2005)
+
+  05 Jun 2005; Andrej Kacian <ticho@gentoo.org> +glurp-0.11.6.ebuild:
+  Version bump.
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> glurp-0.11.5.ebuild:
+  Stable on amd64.
+
+  27 Apr 2005; Andrej Kacian <ticho@gentoo.org> glurp-0.11.4.ebuild,
+  glurp-0.11.5.ebuild:
+  Stable on x86.
+
+*glurp-0.11.4 (29 Dec 2004)
+
+  29 Dec 2004; Andrej Kacian <ticho@gentoo.org> +glurp-0.11.4.ebuild:
+  Version bump.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  glurp-0.11.3.ebuild:
+  Stable sparc.
+
+  22 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  glurp-0.11.3.ebuild:
+  Added to ~sparc.
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> glurp-0.11.3.ebuild:
+  Stable on amd64.
+
+  23 Sep 2004; Andrej Kacian <ticho@gentoo.org> glurp-0.11.3.ebuild:
+  Stable on x86.
+
+  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> glurp-0.11.2.ebuild:
+  Stable amd64.
+
+  07 Sep 2004; Andrej Kacian <ticho@gentoo.org> glurp-0.11.2.ebuild:
+  Stable on x86.
+
+*glurp-0.11.3 (06 Sep 2004)
+
+  06 Sep 2004; Andrej Kacian <ticho@gentoo.org> +glurp-0.11.3.ebuild:
+  Version bump.
+
+  03 Sep 2004; Tom Martin <slarti@gentoo.org> glurp-0.11.2.ebuild:
+  Marked ~amd64.
+
+  03 Sep 2004; Andrej Kacian <ticho@gentoo.org> metadata.xml:
+  Changed maintainership in metadata.xml to me.
+
+  30 Aug 2004; David Holm <dholm@gentoo.org> glurp-0.11.2.ebuild:
+  Added to ~ppc.
+
+*glurp-0.11.2 (11 Aug 2004)
+
+  11 Aug 2004; Patrick Dawson <pkdawson@gentoo.org> glurp-0.11.2.ebuild :
+  Initial import.  Ebuild submitted by Andrej Kacian <andrej@kacian.sk>.
+  Closes bug #51732.
+

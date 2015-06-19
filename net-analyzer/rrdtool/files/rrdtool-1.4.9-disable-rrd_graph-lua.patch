@@ -1,0 +1,52 @@
+--- a/bindings/lua/rrdlua.c
++++ b/bindings/lua/rrdlua.c
+@@ -267,6 +267,7 @@
+   return 1;
+ }
+ 
++#ifdef HAVE_RRD_GRAPH
+ static int
+ lua_rrd_graph (lua_State * L)
+ {
+@@ -291,6 +292,7 @@
+   rrd_freemem(calcpr);
+   return 3;
+ }
++#endif /* HAVE_RRD_GRAPH */
+ 
+ static int
+ lua_rrd_flushcached(lua_State *L)
+@@ -305,11 +307,13 @@
+   return lua_rrd_infocall(L, "info", rrd_info);
+ }
+ 
++#ifdef HAVE_RRD_GRAPH
+ static int
+ lua_rrd_graphv (lua_State * L)
+ {
+   return lua_rrd_infocall(L, "graphv", rrd_graph_v);
+ }
++#endif /* HAVE_RRD_GRAPH */
+ 
+ static int
+ lua_rrd_updatev (lua_State * L)
+@@ -347,7 +351,9 @@
+   {"dump", lua_rrd_dump},
+   {"fetch", lua_rrd_fetch},
+   {"first", lua_rrd_first},
++#ifdef HAVE_RRD_GRAPH
+   {"graph", lua_rrd_graph},
++#endif /* HAVE_RRD_GRAPH */
+   {"last", lua_rrd_last},
+   {"resize", lua_rrd_resize},
+   {"restore", lua_rrd_restore},
+@@ -357,7 +363,9 @@
+ #if defined(DINF)
+   {"info", lua_rrd_info},
+   {"updatev", lua_rrd_updatev},
++#ifdef HAVE_RRD_GRAPH
+   {"graphv", lua_rrd_graphv},
++#endif /* HAVE_RRD_GRAPH */
+ #endif
+   {NULL, NULL}
+ };

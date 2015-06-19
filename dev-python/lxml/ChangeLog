@@ -1,0 +1,854 @@
+# ChangeLog for dev-python/lxml
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/lxml/ChangeLog,v 1.225 2015/06/07 09:32:38 maekke Exp $
+
+  07 Jun 2015; Markus Meier <maekke@gentoo.org> lxml-3.4.1.ebuild:
+  arm stable, bug #540290
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> lxml-3.4.4.ebuild:
+  Add missing eutils.eclass
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  02 Jun 2015; Jack Morgan <jmorgan@gentoo.org> lxml-3.4.1.ebuild:
+  sparc stable wrt bug #540290
+
+  16 May 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/lxml-3.4.4-cross-compile.patch, lxml-3.4.4.ebuild:
+  Fix from Chromium OS for cross-compiling.
+
+  13 May 2015; Justin Lecher <jlec@gentoo.org> lxml-3.3.5.ebuild:
+  Add missing inherit from eutils.eclass
+
+*lxml-3.4.4 (13 May 2015)
+
+  13 May 2015; Justin Lecher <jlec@gentoo.org> +lxml-3.4.4.ebuild:
+  Verion Bump
+
+*lxml-3.4.3 (05 May 2015)
+
+  05 May 2015; Justin Lecher <jlec@gentoo.org> +lxml-3.4.3.ebuild,
+  -files/lxml-3.4.0-common_imports.py.patch,
+  -files/lxml-3.4.0-test_xslt.py.patch, -lxml-3.3.6.ebuild, -lxml-3.4.0.ebuild:
+  Version Bump; drop old
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> lxml-3.4.1.ebuild:
+  Stable for ia64, wrt bug #540290
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> lxml-3.4.1.ebuild:
+  Stable for alpha, wrt bug #540290
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> lxml-3.3.5.ebuild,
+  lxml-3.3.6.ebuild, lxml-3.4.0.ebuild:
+  Drop old Python implementations
+
+  21 Mar 2015; Jeroen Roovers <jer@gentoo.org> lxml-3.4.1.ebuild:
+  Stable for HPPA (bug #540290).
+
+  15 Mar 2015; Patrice Clement <monsieurp@gentoo.org>
+  +files/lxml-3.3.x-test_etree.py.patch,
+  +files/lxml-3.4.0-common_imports.py.patch,
+  +files/lxml-3.4.0-test_xslt.py.patch, lxml-3.3.5.ebuild, lxml-3.3.6.ebuild,
+  lxml-3.4.0.ebuild, lxml-3.4.1.ebuild, lxml-3.4.2.ebuild:
+  Patch broken tests in 3.3.x and 3.4.0 versions. Fix bug 439156.
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> lxml-3.4.1.ebuild:
+  x86 stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> lxml-3.4.1.ebuild:
+  ppc stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> lxml-3.4.1.ebuild:
+  ppc64 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> lxml-3.4.1.ebuild:
+  amd64 stable, bug 540290
+
+  02 Mar 2015; Yixun Lan <dlan@gentoo.org> lxml-3.4.1.ebuild:
+  add arm64 support, tested on A53 board
+
+*lxml-3.4.2 (09 Feb 2015)
+
+  09 Feb 2015; Tim Harder <radhermit@gentoo.org> +lxml-3.4.2.ebuild:
+  Version bump.
+
+  24 Nov 2014; Mike Gilbert <floppym@gentoo.org> lxml-3.3.5.ebuild,
+  lxml-3.3.6.ebuild, lxml-3.4.0.ebuild, lxml-3.4.1.ebuild:
+  Convert hard-coded python_targets to python_gen_cond_dep calls.
+
+  24 Nov 2014; Rick Farina <zerochaos@gentoo.org> lxml-3.3.5.ebuild,
+  lxml-3.3.6.ebuild, lxml-3.4.0.ebuild:
+  remove references to python3_2 since it's no longer in IUSE
+
+*lxml-3.4.1 (21 Nov 2014)
+
+  21 Nov 2014; Tim Harder <radhermit@gentoo.org> +lxml-3.4.1.ebuild:
+  Version bump.
+
+*lxml-3.4.0 (11 Sep 2014)
+
+  11 Sep 2014; Tim Harder <radhermit@gentoo.org> +lxml-3.4.0.ebuild:
+  Version bump.
+
+*lxml-3.3.6 (29 Aug 2014)
+
+  29 Aug 2014; Tim Harder <radhermit@gentoo.org> +lxml-3.3.6.ebuild:
+  Version bump.
+
+  10 Jun 2014; Dirkjan Ochtman <djc@gentoo.org>
+  -files/lxml-3.0.1-skip-failing-test.patch, -files/lxml-test-elementtree.patch,
+  -lxml-2.3.4.ebuild, -lxml-2.3.5.ebuild, -lxml-2.3.6.ebuild,
+  -lxml-3.0.1.ebuild, -lxml-3.1.0.ebuild, -lxml-3.1.1.ebuild,
+  -lxml-3.1.2.ebuild, -lxml-3.2.0.ebuild, -lxml-3.2.1.ebuild,
+  -lxml-3.2.4.ebuild, -lxml-3.2.5.ebuild, -lxml-3.3.0.ebuild,
+  -lxml-3.3.1.ebuild, -lxml-3.3.2.ebuild, -lxml-3.3.3.ebuild:
+  Remove old, vulnerable versions (bug 509134)
+
+  17 May 2014; Agostino Sarubbo <ago@gentoo.org> lxml-3.3.5.ebuild:
+  Stable for alpha, wrt bug #509134
+
+  15 May 2014; Markus Meier <maekke@gentoo.org> lxml-3.3.5.ebuild:
+  arm stable, bug #509134
+
+  14 May 2014; Agostino Sarubbo <ago@gentoo.org> lxml-3.3.5.ebuild:
+  Stable for sparc, wrt bug #509134
+
+  13 May 2014; Agostino Sarubbo <ago@gentoo.org> lxml-3.3.5.ebuild:
+  Stable for ia64, wrt bug #509134
+
+  11 May 2014; Agostino Sarubbo <ago@gentoo.org> lxml-3.3.5.ebuild:
+  Stable for ppc64, wrt bug #509134
+
+  10 May 2014; Agostino Sarubbo <ago@gentoo.org> lxml-3.3.5.ebuild:
+  Stable for ppc, wrt bug #509134
+
+  07 May 2014; Agostino Sarubbo <ago@gentoo.org> lxml-3.3.5.ebuild:
+  Stable for x86, wrt bug #509134
+
+  07 May 2014; Agostino Sarubbo <ago@gentoo.org> lxml-3.3.5.ebuild:
+  Stable for amd64, wrt bug #509134
+
+  05 May 2014; Jeroen Roovers <jer@gentoo.org> lxml-3.3.5.ebuild:
+  Stable for HPPA (bug #509134).
+
+  03 May 2014; Ian Delaney <idella4@gentoo.org> lxml-3.3.3.ebuild,
+  lxml-3.3.5.ebuild:
+  drop py2.6
+
+*lxml-3.3.5 (25 Apr 2014)
+
+  25 Apr 2014; Tim Harder <radhermit@gentoo.org> +lxml-3.3.5.ebuild:
+  Version bump.
+
+  02 Apr 2014; Patrick McLean <chutzpah@gentoo.org> lxml-3.3.3.ebuild:
+  Add python3_4 support.
+
+  12 Mar 2014; Agostino Sarubbo <ago@gentoo.org> lxml-3.3.0.ebuild:
+  Stable for sparc, wrt bug #500684
+
+*lxml-3.3.3 (07 Mar 2014)
+
+  07 Mar 2014; Justin Lecher <jlec@gentoo.org> +lxml-3.3.3.ebuild,
+  metadata.xml:
+  Version Bump
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> lxml-3.3.0.ebuild:
+  Stable for ppc, wrt bug #500684
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> lxml-3.3.0.ebuild:
+  Stable for x86, wrt bug #500684
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> lxml-3.3.0.ebuild:
+  amd64 stable, bug #500684
+
+*lxml-3.3.2 (01 Mar 2014)
+
+  01 Mar 2014; Tim Harder <radhermit@gentoo.org> +lxml-3.3.2.ebuild:
+  Version bump.
+
+  25 Feb 2014; Markus Meier <maekke@gentoo.org> lxml-3.3.0.ebuild:
+  arm stable, bug #500684
+
+  20 Feb 2014; Akinori Hattori <hattya@gentoo.org> lxml-3.3.0.ebuild:
+  ia64 stable wrt bug #500684
+
+*lxml-3.3.1 (19 Feb 2014)
+
+  19 Feb 2014; Tim Harder <radhermit@gentoo.org> +lxml-3.3.1.ebuild:
+  Version bump.
+
+  18 Feb 2014; Jeroen Roovers <jer@gentoo.org> lxml-3.3.0.ebuild:
+  Fix Manifest.
+
+  18 Feb 2014; Jeroen Roovers <jer@gentoo.org> lxml-3.3.0.ebuild:
+  Stable for HPPA (bug #500684).
+
+  11 Feb 2014; Jeroen Roovers <jer@gentoo.org> lxml-3.2.1.ebuild:
+  Stable for HPPA (bug #450174).
+
+*lxml-3.3.0 (26 Jan 2014)
+
+  26 Jan 2014; Tim Harder <radhermit@gentoo.org> +lxml-3.3.0.ebuild:
+  Version bump.
+
+*lxml-3.2.5 (25 Jan 2014)
+
+  25 Jan 2014; Tim Harder <radhermit@gentoo.org> +lxml-3.2.5.ebuild:
+  Version bump.
+
+  18 Jan 2014; Markus Meier <maekke@gentoo.org> lxml-3.2.1.ebuild:
+  arm stable, bug #450174
+
+*lxml-3.2.4 (07 Nov 2013)
+
+  07 Nov 2013; Tim Harder <radhermit@gentoo.org> +lxml-3.2.4.ebuild:
+  Version bump.
+
+  22 Oct 2013; Fabian Groffen <grobian@gentoo.org> lxml-3.2.1.ebuild:
+  Marked ~x64-macos, bug #487670
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> lxml-3.0.1.ebuild,
+  lxml-3.1.0.ebuild, lxml-3.1.1.ebuild, lxml-3.1.2.ebuild, lxml-3.2.0.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> lxml-3.2.1.ebuild:
+  Drop stale conditionals after py3.1 removal.
+
+  02 Sep 2013; Agostino Sarubbo <ago@gentoo.org> lxml-3.2.1.ebuild:
+  Stable for sparc, wrt bug #450174
+
+  02 Sep 2013; Agostino Sarubbo <ago@gentoo.org> lxml-3.2.1.ebuild:
+  Stable for sh, wrt bug #450174
+
+  02 Sep 2013; Agostino Sarubbo <ago@gentoo.org> lxml-3.2.1.ebuild:
+  Stable for s390, wrt bug #450174
+
+  02 Sep 2013; Agostino Sarubbo <ago@gentoo.org> lxml-3.2.1.ebuild:
+  Stable for ppc, wrt bug #450174
+
+  02 Sep 2013; Agostino Sarubbo <ago@gentoo.org> lxml-3.2.1.ebuild:
+  Stable for ia64, wrt bug #450174
+
+  01 Sep 2013; Agostino Sarubbo <ago@gentoo.org> lxml-3.2.1.ebuild:
+  Stable for x86, wrt bug #450174
+
+  01 Sep 2013; Agostino Sarubbo <ago@gentoo.org> lxml-3.2.1.ebuild:
+  Stable for amd64, wrt bug #450174
+
+  04 Jul 2013; Mike Gilbert <floppym@gentoo.org> lxml-3.2.1.ebuild:
+  Do an in-source build to avoid a race condition on creating src/lxml/includes
+  /lxml-version.h, bug 465656.
+
+  22 May 2013; Ian Delaney <idella4@gentoo.org> lxml-3.2.0.ebuild,
+  lxml-3.2.1.ebuild:
+  Return arches in KEYWORDS to 1 line in -3.2.1
+
+  22 May 2013; Mike Gilbert <floppym@gentoo.org> lxml-3.2.0.ebuild:
+  Drop pypy support.
+
+  22 May 2013; Ian Delaney <idella4@gentoo.org> lxml-3.2.0.ebuild,
+  lxml-3.2.1.ebuild:
+  Adjust -3.2.1.ebuild to depend on beautifulsoup-3, beatufulsoup3 added to IUSE
+
+*lxml-3.2.1 (14 May 2013)
+
+  14 May 2013; Tim Harder <radhermit@gentoo.org> +lxml-3.2.1.ebuild:
+  Version bump.
+
+  04 May 2013; Mike Gilbert <floppym@gentoo.org>
+  +files/lxml-test-elementtree.patch, lxml-3.2.0.ebuild:
+  Fix tests when dev-python/elementtree is installed.
+
+  04 May 2013; Mike Gilbert <floppym@gentoo.org> lxml-3.2.0.ebuild:
+  Restore -fno-strict-aliasing for python2.
+
+*lxml-3.2.0 (28 Apr 2013)
+
+  28 Apr 2013; Tim Harder <radhermit@gentoo.org> +lxml-3.2.0.ebuild:
+  Version bump.
+
+*lxml-3.1.2 (12 Apr 2013)
+
+  12 Apr 2013; Tim Harder <radhermit@gentoo.org> +lxml-3.1.2.ebuild:
+  Version bump.
+
+*lxml-3.1.1 (07 Apr 2013)
+
+  07 Apr 2013; Tim Harder <radhermit@gentoo.org> +lxml-3.1.1.ebuild:
+  Version bump.
+
+*lxml-3.1.0 (13 Feb 2013)
+
+  13 Feb 2013; Tim Harder <radhermit@gentoo.org> +lxml-3.1.0.ebuild:
+  Version bump.
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> lxml-3.0.1.ebuild:
+  Stable for x86, wrt bug #454314
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> lxml-3.0.1.ebuild:
+  Stable for amd64, wrt bug #454314
+
+  18 Jan 2013; Patrick McLean <chutzpah@gentoo.org> lxml-3.0.1.ebuild:
+  Re-add python-3.3 support
+
+  17 Jan 2013; Michał Górny <mgorny@gentoo.org> lxml-3.0.1.ebuild:
+  Finish adding PYTHON_USEDEPs.
+
+  16 Jan 2013; Michał Górny <mgorny@gentoo.org> lxml-3.0.1.ebuild:
+  Add PYTHON_USEDEP on setuptools. Disable python2.5 because of beautifulsoup.
+
+  27 Dec 2012; Raúl Porcel <armin76@gentoo.org> lxml-2.3.4.ebuild:
+  alpha/s390/sh/sparc stable wrt #441256
+
+  17 Dec 2012; Michał Górny <mgorny@gentoo.org> lxml-3.0.1.ebuild:
+  Bump to EAPI=5 to make Paludis happy, bug #447524.
+
+  10 Dec 2012; Michał Górny <mgorny@gentoo.org> lxml-3.0.1.ebuild:
+  Fix running tests in out-of-source build.
+
+  10 Dec 2012; Michał Górny <mgorny@gentoo.org> lxml-3.0.1.ebuild:
+  Clean up the ebuild a bit. Fix test phases. Enable all CPython versions.
+
+  01 Dec 2012; Michał Górny <mgorny@gentoo.org> lxml-3.0.1.ebuild:
+  Force in-source build due to src_test() hackery.
+
+  01 Nov 2012; Michał Górny <mgorny@gentoo.org> lxml-3.0.1.ebuild:
+  Update to match distutils library build dir.
+
+  29 Oct 2012; Michał Górny <mgorny@gentoo.org> lxml-3.0.1.ebuild:
+  Fix running tests with out-of-source builds. Minor fixes & restore keywords
+  lost due to python-exec.
+
+  20 Oct 2012; Jeroen Roovers <jer@gentoo.org> lxml-3.0.1.ebuild:
+  Marked ~hppa (bug #438388).
+
+*lxml-3.0.1 (19 Oct 2012)
+
+  19 Oct 2012; Patrick McLean <chutzpah@gentoo.org>
+  +files/lxml-3.0.1-skip-failing-test.patch, +lxml-3.0.1.ebuild:
+  Version bump, new version ported to distutils-r1. Drop ~alpha, ~amd64-fbsd,
+  ~hppa, ~ia64 and ~sparc pending resolution of bug #438388. Add patch to skip
+  test that fails due to a memory allocation failure (I actually have no idea
+  how to debug this).
+
+  13 Oct 2012; Raúl Porcel <armin76@gentoo.org> lxml-2.3.4.ebuild,
+  lxml-2.3.5.ebuild, lxml-2.3.6.ebuild:
+  Add ~s390/~sh
+
+  02 Oct 2012; Mike Gilbert <floppym@gentoo.org> lxml-2.3.4.ebuild,
+  lxml-2.3.5.ebuild, lxml-2.3.6.ebuild:
+  Restrict python 3.3 based on testing by Arfrever. This can be reversed in
+  lxml-3.0.
+
+  29 Sep 2012; Tim Harder <radhermit@gentoo.org> -lxml-2.3.2.ebuild,
+  -lxml-2.3.3.ebuild:
+  Remove old.
+
+*lxml-2.3.6 (29 Sep 2012)
+
+  29 Sep 2012; Tim Harder <radhermit@gentoo.org> +lxml-2.3.6.ebuild:
+  Version bump.
+
+*lxml-2.3.5 (21 Aug 2012)
+
+  21 Aug 2012; Tim Harder <radhermit@gentoo.org> +lxml-2.3.5.ebuild:
+  Version bump. Update to EAPI 4.
+
+  07 Aug 2012; Alexis Ballier <aballier@gentoo.org> lxml-2.3.4.ebuild:
+  keyword ~amd64-fbsd
+
+  05 Aug 2012; Anthony G. Basile <blueness@gentoo.org> lxml-2.3.4.ebuild:
+  Stable arm, bug #427546
+
+  05 Aug 2012; Anthony G. Basile <blueness@gentoo.org> lxml-2.3.4.ebuild:
+  Stable arm, bug #427546
+
+  17 Jun 2012; Raúl Porcel <armin76@gentoo.org> lxml-2.3.4.ebuild:
+  ia64/sparc stable wrt #415873
+
+  29 May 2012; Brent Baude <ranger@gentoo.org> lxml-2.3.4.ebuild:
+  Marking lxml-2.3.4 ppc for bug 415873
+
+  23 May 2012; Brent Baude <ranger@gentoo.org> lxml-2.3.4.ebuild:
+  Marking lxml-2.3.4 ppc64 for bug 415873
+
+  21 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> lxml-2.3.4.ebuild:
+  x86 stable wrt bug #415873
+
+  16 May 2012; Jeroen Roovers <jer@gentoo.org> lxml-2.3.4.ebuild:
+  Stable for HPPA (bug #415873).
+
+  14 May 2012; Agostino Sarubbo <ago@gentoo.org> lxml-2.3.4.ebuild:
+  Stable for amd64, wrt bug #415873
+
+*lxml-2.3.4 (11 Apr 2012)
+
+  11 Apr 2012; Patrick Lauer <patrick@gentoo.org> +lxml-2.3.4.ebuild:
+  Bump for #411485
+
+  01 Apr 2012; Tomáš Chvátal <scarabeus@gentoo.org> -lxml-2.3.1.ebuild,
+  -lxml-2.3.ebuild:
+  Punt old versions.
+
+  19 Mar 2012; Raúl Porcel <armin76@gentoo.org> lxml-2.3.2.ebuild:
+  ia64/sparc stable wrt #406431
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> lxml-2.3.2.ebuild:
+  x86 stable wrt bug #406431
+
+  07 Mar 2012; Brent Baude <ranger@gentoo.org> lxml-2.3.2.ebuild:
+  Marking lxml-2.3.2 ppc for bug 406431
+
+  03 Mar 2012; Brent Baude <ranger@gentoo.org> lxml-2.3.2.ebuild:
+  Marking lxml-2.3.2 ppc64 for bug 406431
+
+  02 Mar 2012; Agostino Sarubbo <ago@gentoo.org> lxml-2.3.2.ebuild:
+  Stable for amd64, wrt bug #406431
+
+  01 Mar 2012; Jeroen Roovers <jer@gentoo.org> lxml-2.3.2.ebuild:
+  Stable for HPPA (bug #406431).
+
+*lxml-2.3.3 (01 Mar 2012)
+
+  01 Mar 2012; Dirkjan Ochtman <djc@gentoo.org> +lxml-2.3.3.ebuild:
+  Version bump to 2.3.3 for bug 404431 (thanks to Ian Delaney).
+
+  20 Feb 2012; Patrick Lauer <patrick@gentoo.org> lxml-2.3.1.ebuild,
+  lxml-2.3.2.ebuild, lxml-2.3.ebuild:
+  Restricting pypy #404049
+
+  13 Feb 2012; Kacper Kowalik <xarthisius@gentoo.org> lxml-2.3.1.ebuild:
+  ppc64 stable wrt #392629
+
+  09 Feb 2012; Matt Turner <mattst88@gentoo.org> lxml-2.3.2.ebuild:
+  Added ~mips, bug 393181.
+
+  01 Feb 2012; Brent Baude <ranger@gentoo.org> lxml-2.3.1.ebuild:
+  Marking lxml-2.3.1 ppc for bug 392629
+
+  19 Jan 2012; Tobias Klausmann <klausman@gentoo.org> lxml-2.3.2.ebuild:
+  Keyworded on alpha, bug #383195
+
+  11 Dec 2011; Raúl Porcel <armin76@gentoo.org> lxml-2.3.1.ebuild:
+  ia64/sparc stable wrt #392629
+
+  07 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> lxml-2.3.1.ebuild:
+  x86 stable wrt bug #392629
+
+  02 Dec 2011; Markos Chandras <hwoarang@gentoo.org> lxml-2.3.1.ebuild:
+  Stable on amd64 wrt bug #392629
+
+  02 Dec 2011; Jeroen Roovers <jer@gentoo.org> lxml-2.3.1.ebuild:
+  Stable for HPPA (bug #392629).
+
+*lxml-2.3.2 (30 Nov 2011)
+
+  30 Nov 2011; Dirkjan Ochtman <djc@gentoo.org> +lxml-2.3.2.ebuild:
+  Version bump to 2.3.2.
+
+*lxml-2.3.1 (11 Oct 2011)
+
+  11 Oct 2011; Dirkjan Ochtman <djc@gentoo.org> +lxml-2.3.1.ebuild:
+  Version bump to 2.3.1.
+
+  19 Sep 2011; Markus Meier <maekke@gentoo.org> lxml-2.3.ebuild:
+  add ~arm, bug #383195
+
+  08 Sep 2011; Fabian Groffen <grobian@gentoo.org> lxml-2.3.ebuild:
+  Marked ~sparc-solaris
+
+  05 Sep 2011; Jesus Rivero <neurogeek@gentoo.org> lxml-2.3.ebuild:
+  License fix, changed to PSF-2
+
+  16 Apr 2011; Raúl Porcel <armin76@gentoo.org> lxml-2.3.ebuild:
+  ia64/sparc stable wrt #357853
+
+  11 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> lxml-2.3.ebuild:
+  x86 stable wrt bug #357853
+
+  31 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> lxml-2.3.ebuild:
+  ppc64 stable wrt #357853
+
+  27 Mar 2011; Brent Baude <ranger@gentoo.org> lxml-2.3.ebuild:
+  Marking lxml-2.3 ppc for bug 357853
+
+  09 Mar 2011; Markos Chandras <hwoarang@gentoo.org> lxml-2.3.ebuild:
+  Stable on amd64 wrt bug #357853
+
+  08 Mar 2011; Jeroen Roovers <jer@gentoo.org> lxml-2.3.ebuild:
+  Stable for HPPA (bug #357853).
+
+*lxml-2.3 (06 Feb 2011)
+
+  06 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -lxml-2.2.6.ebuild, -lxml-2.2.7.ebuild, +lxml-2.3.ebuild:
+  Version bump.
+
+  27 Dec 2010; Brent Baude <ranger@gentoo.org> lxml-2.2.8.ebuild:
+  Marking lxml-2.2.8 ppc64 for bug 341325
+
+  13 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  lxml-2.2.8.ebuild:
+  Restrict Jython ABIs.
+
+  23 Oct 2010; Raúl Porcel <armin76@gentoo.org> lxml-2.2.8.ebuild:
+  ia64/sparc stable wrt #341325
+
+  20 Oct 2010; Brent Baude <ranger@gentoo.org> lxml-2.2.8.ebuild:
+  stable ppc, bug 341325
+
+  20 Oct 2010; Christian Faulhammer <fauli@gentoo.org> lxml-2.2.8.ebuild:
+  stable x86, bug 341325
+
+  19 Oct 2010; Jeroen Roovers <jer@gentoo.org> lxml-2.2.8.ebuild:
+  Stable for HPPA (bug #341325).
+
+  18 Oct 2010; Markos Chandras <hwoarang@gentoo.org> lxml-2.2.8.ebuild:
+  Stable on amd64 wrt bug #341325
+
+*lxml-2.2.8 (12 Sep 2010)
+
+  12 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +lxml-2.2.8.ebuild:
+  Version bump.
+
+*lxml-2.2.7 (24 Jul 2010)
+
+  24 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +lxml-2.2.7.ebuild:
+  Version bump. Restrict 3.2 Python ABI (bug #318923).
+
+  11 May 2010; Brent Baude <ranger@gentoo.org> lxml-2.2.6.ebuild:
+  stable ppc64, bug 313145
+
+  08 May 2010; Raúl Porcel <armin76@gentoo.org> lxml-2.2.6.ebuild:
+  ia64/sparc stable wrt #313145
+
+  26 Apr 2010; Christian Faulhammer <fauli@gentoo.org> lxml-2.2.6.ebuild:
+  stable x86, bug 313145
+
+  25 Apr 2010; Javier Villavicencio <the_paya@gentoo.org> lxml-2.2.6.ebuild:
+  Keyworded ~x86-fbsd.
+
+  18 Apr 2010; <nixnut@gentoo.org> lxml-2.2.6.ebuild:
+  ppc stable #313145
+
+  08 Apr 2010; Jeroen Roovers <jer@gentoo.org> lxml-2.2.6.ebuild:
+  Stable for HPPA (bug #313145).
+
+  07 Apr 2010; Markos Chandras <hwoarang@gentoo.org> lxml-2.2.6.ebuild:
+  Stable on amd64 wrt bug #313145
+
+  06 Mar 2010; Raúl Porcel <armin76@gentoo.org> lxml-2.2.4.ebuild:
+  ia64/sparc stable wrt #301955
+
+*lxml-2.2.6 (02 Mar 2010)
+
+  02 Mar 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +lxml-2.2.6.ebuild:
+  Version bump.
+
+  10 Feb 2010; Joseph Jezak <josejx@gentoo.org> lxml-2.2.4.ebuild:
+  Marked ppc stable for bug #301955.
+
+  08 Feb 2010; Peter Volkov <pva@gentoo.org> lxml-2.2.2.ebuild,
+  lxml-2.2.3.ebuild:
+  Add inherit eutils for epatch.
+
+  07 Feb 2010; Markus Meier <maekke@gentoo.org> lxml-2.2.4.ebuild:
+  amd64/x86 stable, bug #301955
+
+  24 Jan 2010; Jeroen Roovers <jer@gentoo.org> lxml-2.2.4.ebuild:
+  Stable for HPPA (bug #301955).
+
+  23 Jan 2010; Tom Gall <tgall@gentoo.org> lxml-2.2.4.ebuild:
+  stable on ppc64, bug #301955
+
+  24 Nov 2009; Jeroen Roovers <jer@gentoo.org> lxml-2.2.3.ebuild,
+  lxml-2.2.4.ebuild:
+  Marked ~hppa (bug #291232).
+
+  21 Nov 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  lxml-2.2.4.ebuild, +files/lxml-2.2.4-python-2.7.patch:
+  Fix tests with Python 2.7 (bug #293892).
+
+*lxml-2.2.4 (20 Nov 2009)
+
+  20 Nov 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +lxml-2.2.4.ebuild:
+  Version bump.
+
+  15 Nov 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  lxml-2.2.3.ebuild:
+  Disable broken tests (bug #292806).
+
+  03 Nov 2009; Raúl Porcel <armin76@gentoo.org> lxml-2.2.3.ebuild:
+  Add ~ia64/~sparc wrt #291232
+
+*lxml-2.2.3 (30 Oct 2009)
+
+  30 Oct 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +lxml-2.2.3.ebuild:
+  Version bump. Add dependency on dev-python/beautifulsoup (bug #285482).
+
+  10 Oct 2009; Fabian Groffen <grobian@gentoo.org> lxml-2.2.2.ebuild:
+  Merge from Prefix
+
+  05 Oct 2009; Raúl Porcel <armin76@gentoo.org> lxml-2.2.2.ebuild:
+  ia64/sparc stable wrt #284981
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> lxml-2.2.2.ebuild:
+  ppc stable #284981
+
+  26 Sep 2009; Brent Baude <ranger@gentoo.org> lxml-2.2.2.ebuild:
+  Marking lxml-2.2.2 ppc64 for bug 284981
+
+  19 Sep 2009; Markus Meier <maekke@gentoo.org> lxml-2.2.2.ebuild:
+  amd64/x86 stable, bug #284981
+
+  18 Sep 2009; Jeroen Roovers <jer@gentoo.org> lxml-2.2.2.ebuild:
+  Stable for HPPA (bug #284981).
+
+  06 Sep 2009; Christian Ruppert <idl0r@gentoo.org>
+  -files/lxml-1.0-distutils.diff, -files/lxml-2.1.5_unicode_test.patch:
+  Remove unused patch.
+
+  12 Aug 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  lxml-2.2.2.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  31 Jul 2009; <chainsaw@gentoo.org> lxml-2.2.1.ebuild:
+  Marked stable on AMD64 as requested by Arfrever Frehtes Taifersar Arahesis
+  <arfrever@gentoo.org> in bug #277126. Compile-tested on a Core2 Duo.
+
+  26 Jul 2009; Brent Baude <ranger@gentoo.org> lxml-2.2.1.ebuild:
+  stable ppc64, bug 277126
+
+  23 Jul 2009; Raúl Porcel <armin76@gentoo.org> lxml-2.2.1.ebuild:
+  ia64 stable wrt #277126
+
+  17 Jul 2009; nixnut <nixnut@gentoo.org> lxml-2.2.1.ebuild:
+  ppc stable #277126
+
+  10 Jul 2009; Ferris McCormick <fmccor@gentoo.org> lxml-2.2.1.ebuild:
+  Sparc stable, bug #277126.
+
+  10 Jul 2009; Jeroen Roovers <jer@gentoo.org> lxml-2.2.1.ebuild:
+  Stable for HPPA (bug #277126).
+
+  09 Jul 2009; Christian Faulhammer <fauli@gentoo.org> lxml-2.2.1.ebuild:
+  stable x86, bug 277126
+
+*lxml-2.2.2 (09 Jul 2009)
+
+  09 Jul 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -lxml-2.1.1.ebuild, -lxml-2.1.5.ebuild, lxml-2.2.1.ebuild,
+  +lxml-2.2.2.ebuild:
+  Version bump. Fix tests.
+
+*lxml-2.2.1 (07 Jun 2009)
+
+  07 Jun 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +lxml-2.2.1.ebuild:
+  Version bump. Add "threads" USE flag (bug #240360).
+
+  23 Feb 2009; Joseph Jezak <josejx@gentoo.org> lxml-2.0.3.ebuild:
+  Marked ~ppc for bug #215557.
+
+*lxml-2.1.5 (20 Jan 2009)
+
+  20 Jan 2009; Jesus Rivero <neurogeek@gentoo.org>
+  +files/lxml-2.1.5_unicode_test.patch, +lxml-2.1.5.ebuild:
+  Version bump. Closes bug #255545
+
+*lxml-2.1.1 (19 Aug 2008)
+
+  19 Aug 2008; Ali Polatel <hawking@gentoo.org> -lxml-1.0.2.ebuild,
+  +lxml-2.1.1.ebuild:
+  Version bump. Drop old.
+
+  14 Jul 2008; Rob Cakebread <pythonhead@gentoo.org> -lxml-2.0.2.ebuild:
+  Removed crusty old 2.0.2
+
+  13 Jul 2008; Joseph Jezak <josejx@gentoo.org> lxml-2.0.5.ebuild:
+  Marked ~ppc for bug #231604.
+
+  26 May 2008; Raúl Porcel <armin76@gentoo.org> lxml-1.3.6.ebuild,
+  lxml-2.0.5.ebuild:
+  sparc stable and add ~sparc
+
+  25 May 2008; Markus Rothe <corsair@gentoo.org> lxml-2.0.5.ebuild:
+  Stable on ppc64; bug #223443
+
+  24 May 2008; nixnut <nixnut@gentoo.org> lxml-1.3.6.ebuild:
+  Stable on ppc wrt bug 223443
+
+  24 May 2008; Jeroen Roovers <jer@gentoo.org> lxml-2.0.3.ebuild:
+  Stable for HPPA (bug #223443).
+
+*lxml-2.0.5 (21 May 2008)
+
+  21 May 2008; Markus Ullmann <jokey@gentoo.org> +lxml-2.0.5.ebuild:
+  Version bump wrt bug #219122
+
+  08 Apr 2008; Raúl Porcel <armin76@gentoo.org> lxml-2.0.3.ebuild:
+  Re-add ~ia64 wrt #215557
+
+  07 Apr 2008; Markus Rothe <corsair@gentoo.org> lxml-2.0.3.ebuild:
+  Added ~ppc64; bug #215557
+
+  07 Apr 2008; Jeroen Roovers <jer@gentoo.org> lxml-2.0.3.ebuild:
+  Marked ~hppa (bug #215557).
+
+  07 Apr 2008; Ali Polatel <hawking@gentoo.org>
+  files/lxml-2.0.3-no-fake-pyrex.patch:
+  Fixed patch to work fine, bug 215557.
+
+*lxml-2.0.3 (31 Mar 2008)
+
+  31 Mar 2008; Ali Polatel <hawking@gentoo.org>
+  +files/lxml-2.0.3-no-fake-pyrex.patch, +lxml-2.0.3.ebuild:
+  Version bump, use cython instead of bundled pyrex.
+
+  20 Mar 2008; Ferris McCormick <fmccor@gentoo.org> lxml-1.3.6.ebuild:
+  Add ~sparc for Bug #213611.  Tests pass (which is not the case for 2.0.2).
+
+  20 Mar 2008; Brent Baude <ranger@gentoo.org> lxml-2.0.2.ebuild:
+  keyworded ~arch for ppc64, bug 213611
+
+  16 Mar 2008; Jeroen Roovers <jer@gentoo.org> lxml-1.3.6.ebuild,
+  lxml-2.0.2.ebuild:
+  Marked ~hppa (bug #213611, despite bug #213632).
+
+  29 Feb 2008; Raúl Porcel <armin76@gentoo.org> lxml-1.3.6.ebuild:
+  ia64 stable wrt #209201
+
+  28 Feb 2008; Markus Meier <maekke@gentoo.org> lxml-1.3.6.ebuild:
+  x86 stable, bug #209201
+
+  28 Feb 2008; nixnut <nixnut@gentoo.org> ChangeLog:
+  Stable on ppc wrt bug 209201
+
+  28 Feb 2008; Santiago M. Mola <coldwind@gentoo.org> lxml-1.3.6.ebuild:
+  amd64 stable wrt bug #209201
+
+*lxml-2.0.2 (27 Feb 2008)
+
+  27 Feb 2008; Tiziano Müller <dev-zero@gentoo.org> +lxml-2.0.2.ebuild:
+  Version bump (bug #208807, thanks to Torsten Rehn).
+
+*lxml-1.3.6 (15 Dec 2007)
+
+  15 Dec 2007; Lukasz Strzygowski <lucass@gentoo.org> -lxml-1.3.4.ebuild,
+  +lxml-1.3.6.ebuild:
+  Version bump (bug #201389). Dropped old version.
+
+*lxml-1.3.4 (31 Aug 2007)
+
+  31 Aug 2007; Rob Cakebread <pythonhead@gentoo.org> -lxml-1.3.2.ebuild,
+  +lxml-1.3.4.ebuild:
+  Version bump, removed old version
+
+  08 Jul 2007; Ali Polatel <hawking@gentoo.org> lxml-1.3.2.ebuild:
+  Fixed setuptools dependency. bug 184549
+
+  04 Jul 2007; Lukasz Strzygowski <lucass@gentoo.org> lxml-1.3.2.ebuild:
+  Removed use_setuptools sed.
+
+*lxml-1.3.2 (04 Jul 2007)
+
+  04 Jul 2007; Lukasz Strzygowski <lucass@gentoo.org> -lxml-1.3.1.ebuild,
+  +lxml-1.3.2.ebuild:
+  Version bump. Dropped old version.
+
+*lxml-1.3.1 (03 Jul 2007)
+
+  03 Jul 2007; Lukasz Strzygowski <lucass@gentoo.org> -lxml-1.3.ebuild,
+  +lxml-1.3.1.ebuild:
+  Version bump. Dropped old version.
+
+*lxml-1.3 (24 Jun 2007)
+
+  24 Jun 2007; Lukasz Strzygowski <lucass@gentoo.org> -lxml-1.2.ebuild,
+  -lxml-1.2.1.ebuild, +lxml-1.3.ebuild:
+  Version bump. Dropped old versions.
+
+*lxml-1.2.1 (27 Feb 2007)
+
+  27 Feb 2007; Lukasz Strzygowski <lucass@gentoo.org> +lxml-1.2.1.ebuild:
+  Version bump.
+
+  21 Feb 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  -files/lxml-1.1.2-distutils.patch, -lxml-1.1.2.ebuild:
+  Removed 1.1.2 because of failing regression tests.
+
+*lxml-1.2 (21 Feb 2007)
+
+  21 Feb 2007; Lukasz Strzygowski <lucass@gentoo.org> +lxml-1.2.ebuild:
+  Version bump: added dep on setuptools, added NEED_PYTHON.
+
+*lxml-1.1.2 (10 Jan 2007)
+
+  10 Jan 2007; Tiziano Müller <dev-zero@gentoo.org>
+  +files/lxml-1.1.2-distutils.patch, -lxml-1.0.ebuild, -lxml-1.0.3.ebuild,
+  +lxml-1.1.2.ebuild:
+  Version bump, bug #148776. Dropped old versions.
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> lxml-1.0.2.ebuild:
+  Stable on ia64.
+
+  28 Sep 2006; Stephanie Lockwood-Childs <wormo@gentoo.org> lxml-1.0.3.ebuild:
+  mark ~ppc -- reported by David Gurvich (Bug #148734)
+
+*lxml-1.0.3 (09 Aug 2006)
+
+  09 Aug 2006; Lukasz Strzygowski <lucass@gentoo.org> +lxml-1.0.3.ebuild:
+  Version bump.
+
+  01 Aug 2006; Lukasz Strzygowski <lucass@gentoo.org>
+  -files/lxml-0.9.1-distutils.diff, -files/lxml-0.9.2-distutils.diff,
+  -lxml-0.6.ebuild, -lxml-0.7.ebuild, -lxml-0.9.1.ebuild,
+  -lxml-0.9.2.ebuild, lxml-1.0.ebuild, lxml-1.0.2.ebuild:
+  Minor cleanup. Removed 0.x releases.
+
+  01 Aug 2006; Krzysiek Pawlik <nelchael@gentoo.org> lxml-1.0.2.ebuild:
+  Stable on x86
+
+*lxml-1.0.2 (28 Jun 2006)
+
+  28 Jun 2006; Lukasz Strzygowski <lucass@gentoo.org> +lxml-1.0.2.ebuild:
+  Version bump.
+
+*lxml-1.0 (02 Jun 2006)
+
+  02 Jun 2006; Lukasz Strzygowski <lucass@gentoo.org>
+  +files/lxml-1.0-distutils.diff, +lxml-1.0.ebuild:
+  Version bump.
+
+*lxml-0.9.2 (19 May 2006)
+
+  19 May 2006; Lukasz Strzygowski <lucass@gentoo.org>
+  +files/lxml-0.9.2-distutils.diff, +lxml-0.9.2.ebuild:
+  Version bump. Marked ~amd64.
+
+*lxml-0.9.1 (03 Apr 2006)
+
+  03 Apr 2006; Lukasz Strzygowski <lucass@gentoo.org>
+  +files/lxml-0.9.1-distutils.diff, +lxml-0.9.1.ebuild:
+  Version bump: cleanup, fixed dep on libxml2, patch to force use of distutils.
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> lxml-0.7.ebuild:
+  Mark 0.7 ~ia64
+
+*lxml-0.7 (19 Jul 2005)
+
+  19 Jul 2005; Lukasz Strzygowski <lucass@gentoo.org> lxml-0.6.ebuild,
+  +lxml-0.7.ebuild:
+  Version bump. lxml-0.6 marked stable on x86.
+
+*lxml-0.6 (01 Jun 2005)
+
+  01 Jun 2005; Lukasz Strzygowski <lucass@gentoo.org> +metadata.xml,
+  +lxml-0.6.ebuild:
+  Initial commit. Thanks to Henry Bucklow for bug #94623.

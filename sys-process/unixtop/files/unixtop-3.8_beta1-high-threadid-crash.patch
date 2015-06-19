@@ -1,0 +1,75 @@
+http://sourceforge.net/tracker/index.php?func=detail&aid=2815842&group_id=72892&atid=536042
+
+*** hash.c-old  Thu Jul  2 15:30:55 2009
+--- hash.c      Thu Jul  2 15:48:39 2009
+***************
+*** 1354,1360 ****
+      hi->value = value;
+
+      /* hash to the bucket */
+!     bucket = &(ht->buckets[((key.k_thr * 10000 + key.k_pid) % ht->num_buckets)]);
+
+      /* walk the list to make sure we do not have a duplicate */
+      ll = &(bucket->list);
+--- 1354,1360 ----
+      hi->value = value;
+
+      /* hash to the bucket */
+!     bucket = &(ht->buckets[(((unsigned long)(key.k_thr) * 10000U + (unsigned long)(key.k_pid)) % ht->num_buckets)]);
+
+      /* walk the list to make sure we do not have a duplicate */
+      ll = &(bucket->list);
+***************
+*** 1408,1414 ****
+      pidthr_t k1;
+
+      /* find the bucket */
+!     bucket = &(ht->buckets[((key.k_thr * 10000 + key.k_pid) % ht->num_buckets)]);
+
+      /* walk the list until we find the existing item */
+      ll = &(bucket->list);
+--- 1408,1414 ----
+      pidthr_t k1;
+
+      /* find the bucket */
+!     bucket = &(ht->buckets[(((unsigned long)(key.k_thr) * 10000U + (unsigned long)(key.k_pid)) % ht->num_buckets)]);
+
+      /* walk the list until we find the existing item */
+      ll = &(bucket->list);
+***************
+*** 1460,1466 ****
+      pidthr_t k1;
+
+      result = NULL;
+!     if ((bucket = &(ht->buckets[((key.k_thr * 10000 + key.k_pid) % ht->num_buckets)])) != NULL)
+      {
+        ll = &(bucket->list);
+        li = LL_FIRST(ll);
+--- 1460,1466 ----
+      pidthr_t k1;
+
+      result = NULL;
+!     if ((bucket = &(ht->buckets[(((unsigned long)(key.k_thr) * 10000U + (unsigned long)(key.k_pid)) % ht->num_buckets)])) != NULL)
+      {
+        ll = &(bucket->list);
+        li = LL_FIRST(ll);
+***************
+*** 1499,1505 ****
+      pidthr_t k1;
+
+      result = NULL;
+!     if ((bucket = &(ht->buckets[((key.k_thr * 10000 + key.k_pid) % ht->num_buckets)])) != NULL)
+      {
+        ll = &(bucket->list);
+        li = LL_FIRST(ll);
+--- 1499,1505 ----
+      pidthr_t k1;
+
+      result = NULL;
+!     if ((bucket = &(ht->buckets[(((unsigned long)(key.k_thr) * 10000U + (unsigned long)(key.k_pid)) % ht->num_buckets)])) != NULL)
+      {
+        ll = &(bucket->list);
+        li = LL_FIRST(ll);
+
+
+

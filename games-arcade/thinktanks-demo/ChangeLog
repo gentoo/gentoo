@@ -1,0 +1,73 @@
+# ChangeLog for games-arcade/thinktanks-demo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/thinktanks-demo/ChangeLog,v 1.15 2015/06/01 21:38:20 mr_bones_ Exp $
+
+  01 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  thinktanks-demo-1.1-r2.ebuild:
+  clean up app-emulation/emul-linux which has been removed
+
+  05 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -thinktanks-demo-1.1-r1.ebuild:
+  old
+
+  01 Feb 2015; Mikle Kolyada <zlogene@gentoo.org> thinktanks-demo-1.1-r2.ebuild:
+  x86 stable wrt bug #535896
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org> thinktanks-demo-1.1-r2.ebuild:
+  Stable for amd64, wrt bug #535896
+
+*thinktanks-demo-1.1-r2 (27 Jun 2014)
+
+  27 Jun 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +thinktanks-demo-1.1-r2.ebuild:
+  Updated EAPI to 5, fixed dependencies, ensured gx86-multilib support
+
+  27 Dec 2012; Tupone Alfredo <tupone@gentoo.org>
+  thinktanks-demo-1.1-r1.ebuild:
+  Use QA_PREBUILT. Bug #440012 by Diego Elio Pettenò
+
+  05 Feb 2012; Mike Frysinger <vapier@gentoo.org>
+  thinktanks-demo-1.1-r1.ebuild:
+  Move to new unpacker eclass for unpack_makeself.
+
+  14 Dec 2011; Mike Frysinger <vapier@gentoo.org>
+  thinktanks-demo-1.1-r1.ebuild:
+  The games.eclass has dropped GAMES_CHECK_LICENSE support (since portage now
+  has ACCEPT_LICENSE), so drop it here too.
+
+  25 Jun 2008; Kenneth Prugh <ken69267@gentoo.org>
+  thinktanks-demo-1.1-r1.ebuild:
+  amd64 stable, bug #229131
+
+  24 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  thinktanks-demo-1.1-r1.ebuild:
+  stable x86, bug 229131
+
+*thinktanks-demo-1.1-r1 (25 Apr 2008)
+
+  25 Apr 2008; Tupone Alfredo <tupone@gentoo.org>
+  +thinktanks-demo-1.1-r1.ebuild:
+  Removing internal copies of system libraries. Fix bug #217036 by Gordon Malm.
+
+  19 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  thinktanks-demo-1.1.ebuild:
+  Adding strip to RESTRICT for bug #137819.
+
+  13 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  thinktanks-demo-1.1.ebuild:
+  Fixed thinktanksdemo/thinktanks-demo thanks to stupid epkgmove.
+
+*thinktanks-demo-1.1 (13 Apr 2006)
+
+  13 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +thinktanks-demo-1.1.ebuild:
+  Moved from games-arcade/thinktanksdemo to games-arcade/thinktanks-demo.
+
+  21 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  thinktanksdemo-1.1.ebuild:
+  Changed check_license to explicitly list license to check.
+
+*thinktanksdemo-1.1 (07 Oct 2003)
+
+  07 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

@@ -1,0 +1,396 @@
+# ChangeLog for app-crypt/truecrypt
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/truecrypt/ChangeLog,v 1.80 2015/06/09 09:36:05 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  06 Jul 2014; Alon Bar-Lev <alonbl@gentoo.org> truecrypt-7.2.ebuild:
+  Mask truecrypt-7.2, bug#508084
+
+*truecrypt-7.2 (06 Jul 2014)
+
+  06 Jul 2014; Alon Bar-Lev <alonbl@gentoo.org> +truecrypt-7.2.ebuild:
+  Version bump
+
+  08 Dec 2013; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/truecrypt-7.1a-build.patch, truecrypt-7.1a.ebuild:
+  Force dl library, bug#481060
+
+  02 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #328951
+
+  09 Apr 2013; Samuli Suominen <ssuominen@gentoo.org> truecrypt-7.1a.ebuild:
+  Remove sys-fs/device-mapper from || () syntax in favour of sys-fs/lvm2 wrt
+  #461382
+
+  22 Dec 2012; Alon Bar-Lev <alonbl@gentoo.org> metadata.xml,
+  truecrypt-7.1a.ebuild:
+  Add asm use, per bug#445059, thanks to Thomas Rausch
+
+  14 Dec 2012; Alon Bar-Lev <alonbl@gentoo.org> truecrypt-7.1a.ebuild:
+  Solve gentoo mirror breakage due to restrict fetch, bug#434458
+
+  02 Aug 2012; Tim Harder <radhermit@gentoo.org> truecrypt-7.1a.ebuild:
+  Remove PORTDIR from license warning (bug #416737).
+
+  06 Mar 2012; Tim Harder <radhermit@gentoo.org> truecrypt-7.1a.ebuild:
+  Make the download instructions clearer (bug #406745).
+
+  19 Feb 2012; Tim Harder <radhermit@gentoo.org> -truecrypt-7.1.ebuild:
+  Remove old due to unfetchable sources.
+
+*truecrypt-7.1a (19 Feb 2012)
+
+  19 Feb 2012; Tim Harder <radhermit@gentoo.org> +truecrypt-7.1a.ebuild:
+  Version bump (bug #403353 by bdouxx).
+
+*truecrypt-7.1 (07 Dec 2011)
+
+  07 Dec 2011; Dane Smith <c1pher@gentoo.org> -truecrypt-7.0a-r2.ebuild,
+  -truecrypt-7.0a-r5.ebuild, -truecrypt-7.0a-r6.ebuild, +truecrypt-7.1.ebuild:
+  Version bump wrt bug 381717. Drop old wrt bug 382663.
+
+*truecrypt-7.0a-r6 (15 Jul 2011)
+
+  15 Jul 2011; Dane Smith <c1pher@gentoo.org> +truecrypt-7.0a-r6.ebuild:
+  Rev bump. Include our own headers by default. Removed dependency on a
+  pkcs11 implementation. Should work with any of them now. Thanks Alon
+  Bar-Lev for the help. Bump to EAPI 4. Bug 369781
+
+  15 Jul 2011; Dane Smith <c1pher@gentoo.org> truecrypt-7.0a-r5.ebuild:
+  Allow for the inclusion of our own pkcs11.h if using >=opensc-0.12 wrt
+  bug 369781. No revbump. Thanks to Alon Bar-Lev and Diego Elio Petteno
+  for help with the fix.
+
+*truecrypt-7.0a-r5 (01 Jun 2011)
+
+  01 Jun 2011; Dane Smith <c1pher@gentoo.org> -truecrypt-7.0a-r4.ebuild,
+  +truecrypt-7.0a-r5.ebuild, +files/execstack-fix.diff:
+  Revbump. Add new patch. Fix WX stack issues.
+
+*truecrypt-7.0a-r4 (01 Jun 2011)
+
+  01 Jun 2011; Dane Smith <c1pher@gentoo.org> -truecrypt-7.0a-r3.ebuild,
+  +truecrypt-7.0a-r4.ebuild, files/makefile-archdetect.diff:
+  Revbump and remove old r3.
+  Modify my patch to better detect all arches. Prior way didn't work
+  effectively.
+  Add depend on dev-lang/nasm if not powerpc since it's now needed for x86 and
+  amd64 wrt bug 369691.
+  Remove double RDEPEND.
+
+*truecrypt-7.0a-r3 (01 Jun 2011)
+
+  01 Jun 2011; Dane Smith <c1pher@gentoo.org> +truecrypt-7.0a-r3.ebuild,
+  +files/makefile-archdetect.diff:
+  Add new patch to fix arch detection for the i{3,5,7} processors.
+  Revbump to r3 and include that patch. Fixes bug 369203.
+  Paxmark the installed binary.
+
+  25 Apr 2011; Dane Smith <c1pher@gentoo.org> truecrypt-7.0a-r2.ebuild:
+  Re-added the fetch and mirror restriction after a conversation on -dev. 
+  Please see bug 241650 before removing this in the future.
+
+  20 Mar 2011; Dane Smith <c1pher@gentoo.org> truecrypt-7.0a-r2.ebuild:
+  Correct typo for rc-update wrt bug 359485.
+
+  13 Jan 2011; Dane Smith <c1pher@gentoo.org> -truecrypt-7.0a-r1.ebuild:
+  Drop old revision.
+
+*truecrypt-7.0a-r2 (15 Dec 2010)
+
+  15 Dec 2010; Dane Smith <c1pher@gentoo.org> +truecrypt-7.0a-r2.ebuild,
+  +files/truecrypt.init, metadata.xml:
+  Revbump to 7.0a-r2
+  *Adds init script for baselayout-2 wrt bug 302170.
+  *Ebuild cleanup and documenting.
+  *Added myself as a maintainer in metadata.
+
+  07 Nov 2010; Dane Smith <c1pher@gentoo.org> truecrypt-7.0a-r1.ebuild:
+  Removed the fetch restrict. Note for future version bumps: the source
+  archives
+  will need to be added to the Gentoo mirrors manually.
+
+*truecrypt-7.0a-r1 (06 Nov 2010)
+
+  06 Nov 2010; Dane Smith <c1pher@gentoo.org> -truecrypt-7.0a.ebuild,
+  +truecrypt-7.0a-r1.ebuild:
+  Revision bump for TrueCrypt. Addresses lack of deskop entry and icon wrt
+  bug
+  341007 and lack of entry in KDE4 menu wrt bug 343717.
+
+*truecrypt-7.0a (13 Oct 2010)
+
+  13 Oct 2010; Dane Smith <c1pher@gentoo.org> -truecrypt-4.3a.ebuild,
+  -files/truecrypt-4.3a-2.6.23.patch, -files/truecrypt-4.3a-2.6.24.patch,
+  -files/truecrypt-4.3a-2.6.29.patch, -truecrypt-6.2a.ebuild,
+  -truecrypt-6.3a.ebuild, +truecrypt-7.0a.ebuild:
+  Version bump wrt bug 329075. Uses new license that was already added.
+  truecrypt-stop is now executeable. Addresses bug 234618. Checks
+  CONFIG_CRYPTO_XTS wrt bug 298907. Only warns about the license once. Added
+  a number of missing || die. Thanks Eray Aslan for much of the ebuild
+  clean-up! Also removes all old versions as upstream will no longer provide 
+  sources for any of them.
+
+  13 Oct 2010; Dane Smith <c1pher@gentoo.org> truecrypt-6.3a.ebuild:
+  Updated the fetch link wrt bug 335854.
+
+  27 Dec 2009; Joseph Jezak <josejx@gentoo.org> truecrypt-6.3a.ebuild:
+  Marked ~ppc for bug #275498.
+
+*truecrypt-6.3a (27 Nov 2009)
+
+  27 Nov 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -truecrypt-6.3.ebuild, +truecrypt-6.3a.ebuild:
+  Version bump (bug #294660).
+
+*truecrypt-6.3 (24 Oct 2009)
+
+  24 Oct 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -truecrypt-6.2.ebuild, +truecrypt-6.3.ebuild:
+  Version bump (bug #290173).
+
+  31 Aug 2009; Mike Auty <ikelos@gentoo.org> truecrypt-6.2.ebuild,
+  truecrypt-6.2a.ebuild:
+  Making CONFIG_CHECK non-fatal for userland ebuilds, see bug 283320.
+
+  15 Jul 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  truecrypt-6.2a.ebuild:
+  Add dependency on app-admin/sudo (bug #277373).
+
+  07 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  truecrypt-6.2a.ebuild:
+  Use elog for fetch error.
+
+*truecrypt-6.2a (22 Jun 2009)
+
+  22 Jun 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +truecrypt-6.2a.ebuild:
+  Version bump.
+
+  21 May 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  truecrypt-6.2.ebuild:
+  Fix building with USE="-X" when x11-libs/wxGTK is built with USE="X" (bug
+  #270279). Fix dependencies (bug #270441). Check for appropriate kernel
+  configuration.
+
+  18 May 2009; Robin H. Johnson <robbat2@gentoo.org> truecrypt-4.3a.ebuild,
+  truecrypt-6.2.ebuild:
+  Update all ebuilds to reflect our warnings about the license per the
+  trustees decision of 2009/May/17. Users further interested in the matter
+  should see Gentoo bug #241650.
+
+  18 May 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  truecrypt-6.2.ebuild:
+  Allow to use pkcs11.h from dev-libs/pkcs11-helper.
+
+*truecrypt-6.2 (18 May 2009)
+
+  18 May 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  truecrypt-4.3a.ebuild, -files/truecrypt-5.0-bool.patch,
+  -files/truecrypt-5.1-64bit.patch, -files/truecrypt-5.1a-external-wx.patch,
+  -truecrypt-6.0a.ebuild, +truecrypt-6.2.ebuild:
+  Version bump (bug #245322).
+
+  20 Apr 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +files/truecrypt-4.3a-2.6.29.patch, truecrypt-4.3a:
+  Fix building with Linux 2.6.29 (bug #264450).
+
+  10 Apr 2009; Caleb Tennis <caleb@gentoo.org> truecrypt-4.3a.ebuild:
+  fix device-mapper dep for lvm2, see #265599
+
+  03 Nov 2008; Daniel Black <dragonheart@gentoo.org> truecrypt-4.3a.ebuild,
+  truecrypt-6.0a.ebuild:
+  changed due to licensing concerns. Bug #241650. Thanks Donnie and Robin.
+
+  09 Jul 2008; Daniel Black <dragonheart@gentoo.org>
+  -files/truecrypt-5.1a-gcc-4.3.patch, -files/truecrypt-6.0a-gcc-4.3.patch,
+  -truecrypt-5.1a.ebuild, truecrypt-6.0a.ebuild:
+  remove version 5.1a as it cannot be downloaded and is on fetch restriction -
+  thanks Arfrever. remove gcc patch on 6.0a as it compiles fine on gcc-4.3.1
+
+*truecrypt-6.0a (09 Jul 2008)
+
+  09 Jul 2008; Daniel Black <dragonheart@gentoo.org>
+  +files/truecrypt-6.0a-gcc-4.3.patch, +truecrypt-6.0a.ebuild:
+  version bump as per bug #230862 thanks to Sebastian and m.nawaz
+
+  18 Apr 2008; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/truecrypt-5.1a-gcc-4.3.patch, truecrypt-5.1a.ebuild:
+  Fix gcc-4.3 issue, bug#218137, thanks to Holger Ackermann
+
+*truecrypt-5.1a (21 Mar 2008)
+
+  21 Mar 2008; Alon Bar-Lev <alonbl@gentoo.org>
+  -files/truecrypt-5.0-64bit.patch, -files/truecrypt-5.0-build.patch,
+  -files/truecrypt-5.0-nogui.patch, -files/truecrypt-5.1-nogui.patch,
+  +files/truecrypt-5.1a-external-wx.patch, -truecrypt-5.0a.ebuild,
+  -truecrypt-5.1.ebuild, +truecrypt-5.1a.ebuild:
+  Version bump, bug#213846
+
+*truecrypt-5.1 (13 Mar 2008)
+
+  13 Mar 2008; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/truecrypt-5.1-64bit.patch, +files/truecrypt-5.1-nogui.patch,
+  +truecrypt-5.1.ebuild:
+  Version bump, bug#213074
+
+  22 Feb 2008; Alon Bar-Lev <alonbl@gentoo.org>
+  files/truecrypt-5.0-nogui.patch:
+  Fix -X, bug#210485
+
+  15 Feb 2008; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/truecrypt-5.0-nogui.patch, truecrypt-5.0a.ebuild:
+  Add X USE flag, based on http://home.att.net/~Tom.Horsley/tah-tc-5.0.tar.gz,
+  bug#210175, thanks for Quosek for the reference
+
+*truecrypt-5.0a (13 Feb 2008)
+
+  13 Feb 2008; Alon Bar-Lev <alonbl@gentoo.org>
+  files/truecrypt-5.0-64bit.patch, files/truecrypt-5.0-bool.patch,
+  -truecrypt-5.0.ebuild, +truecrypt-5.0a.ebuild:
+  Version bump bug#210024, more 64bit fixups
+
+  10 Feb 2008; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/truecrypt-5.0-bool.patch, truecrypt-5.0.ebuild:
+  Workaround wxGTK with odbc USE flag, bug#209467
+
+  09 Feb 2008; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/truecrypt-5.0-64bit.patch, truecrypt-5.0.ebuild:
+  Fix 64bit issues, bug#209449, thanks to Aron for testing
+
+*truecrypt-5.0 (08 Feb 2008)
+
+  08 Feb 2008; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/truecrypt-5.0-build.patch, +truecrypt-5.0.ebuild:
+  Version bump, bug#209091
+
+  25 Dec 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  files/truecrypt-4.3a-2.6.24.patch:
+  Modify 2.6.24 fix, bug#198394, thanks to elschner.net
+
+  15 Dec 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/truecrypt-4.3a-2.6.24.patch, truecrypt-4.3a.ebuild:
+  Add 2.6.24 support, bug#198394, thanks to elschner.net
+
+  02 Nov 2007; Alon Bar-Lev <alonbl@gentoo.org> truecrypt-4.3a.ebuild:
+  Remove requirement to unload modules, test not use the modules anyway,
+  bug#197839, thanks to Jakub and Guenther Brunthaler
+
+  02 Nov 2007; Alon Bar-Lev <alonbl@gentoo.org> -truecrypt-4.3.ebuild:
+  Cleanup
+
+  02 Nov 2007; Steve Dibb <beandog@gentoo.org> truecrypt-4.3a.ebuild:
+  amd64 stable, bug 197557
+
+  01 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  truecrypt-4.3a.ebuild:
+  stable x86, bug 197557
+
+  10 Oct 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/truecrypt-4.3a-2.6.23.patch, truecrypt-4.3a.ebuild:
+  Fix for 2.6.23, bug#186901, thanks to virdiq
+
+  11 Aug 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  -files/truecrypt-4.2a-2.6.19.patch, -files/truecrypt-4.2a-2.6.20.patch,
+  -files/truecrypt-4.2a-makefile.patch,
+  -files/truecrypt-4.2a_kernel-2.6.18-rc1_fix.patch,
+  files/truecrypt-stop.sh, -truecrypt-4.2a-r1.ebuild,
+  -truecrypt-4.2a-r2.ebuild, -truecrypt-4.2a-r3.ebuild:
+  Cleanup
+
+  11 Aug 2007; Alon Bar-Lev <alonbl@gentoo.org> files/truecrypt-stop.sh:
+  Don't fail if no volumes are mounted, bug#168691, thanks to Jakob Truelsen
+
+*truecrypt-4.3a (07 Jun 2007)
+
+  07 Jun 2007; Alon Bar-Lev <alonbl@gentoo.org> +truecrypt-4.3a.ebuild:
+  Version bump, bug#181201, thanks to Yoann Pannier
+
+  28 Apr 2007; Raúl Porcel <armin76@gentoo.org> truecrypt-4.3.ebuild:
+  x86 stable wrt #176159
+
+  27 Apr 2007; Steve Dibb <beandog@gentoo.org> truecrypt-4.3.ebuild:
+  amd64 stable, bug 176159
+
+  27 Mar 2007; Alon Bar-Lev <alonbl@gentoo.org> truecrypt-4.2a-r3.ebuild,
+  truecrypt-4.3.ebuild:
+  Fixed rcscripts location
+
+*truecrypt-4.3 (24 Mar 2007)
+
+  24 Mar 2007; Alon Bar-Lev <alonbl@gentoo.org> +truecrypt-4.3.ebuild:
+  Version bump
+
+*truecrypt-4.2a-r3 (01 Mar 2007)
+
+  01 Mar 2007; Alon Bar-Lev <alonbl@gentoo.org> +files/truecrypt-stop.sh,
+  +truecrypt-4.2a-r3.ebuild:
+  Added stop addon, bug#168691, thanks to Jakob Truelsen
+
+*truecrypt-4.2a-r2 (06 Feb 2007)
+
+  06 Feb 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/truecrypt-4.2a-2.6.20.patch, +truecrypt-4.2a-r2.ebuild:
+  Added 2.6.20 support, bug#165454, thanks to Patrick
+
+  05 Feb 2007; Steve Dibb <beandog@gentoo.org> truecrypt-4.2a-r1.ebuild:
+  amd64 stable, bug 164077
+
+  29 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  truecrypt-4.2a-r1.ebuild:
+  stable x86; bug #164077
+
+  27 Jan 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  -files/truecrypt-4.2-makefile.patch,
+  -files/truecrypt-4.2-nosectorformat.patch, -truecrypt-4.2-r1.ebuild,
+  -truecrypt-4.2a.ebuild:
+  Cleanup
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> truecrypt-4.2-r1.ebuild,
+  truecrypt-4.2a.ebuild, truecrypt-4.2a-r1.ebuild:
+  Replacing einfo with elog
+
+*truecrypt-4.2a-r1 (06 Dec 2006)
+
+  06 Dec 2006; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/truecrypt-4.2a-2.6.19.patch, +truecrypt-4.2a-r1.ebuild:
+  linux-2.6.19 support, closes bug#157228 thanks to Timothy Redaelli
+
+  09 Oct 2006; Alon Bar-Lev <alonbl@gentoo.org> truecrypt-4.2a.ebuild:
+  Fixed kernel location. Added no strip support, thanks to Tristan Heaven for
+  reporting this
+
+  22 Aug 2006; Thomas Cort <tcort@gentoo.org> truecrypt-4.2a.ebuild:
+  Added ~amd64 keyword wrt Bug #135866.
+
+  15 Jul 2006; Daniel Black <dragonheart@gentoo.org>
+  +files/truecrypt-4.2a_kernel-2.6.18-rc1_fix.patch, truecrypt-4.2a.ebuild:
+  added fix for 2.6.18 kernels as per bug #140387 thanks to Fredrik Smedberg
+
+  12 Jul 2006; Daniel Black <dragonheart@gentoo.org> truecrypt-4.2a.ebuild:
+  correct license name bug #140083 thanks to Alex Tarkovsky
+
+*truecrypt-4.2a (11 Jul 2006)
+
+  11 Jul 2006; Daniel Black <dragonheart@gentoo.org>
+  +files/truecrypt-4.2a-makefile.patch, +truecrypt-4.2a.ebuild:
+  version bump
+
+*truecrypt-4.2-r1 (06 Jun 2006)
+
+  06 Jun 2006; Daniel Black <dragonheart@gentoo.org>
+  files/truecrypt-4.2-nosectorformat.patch, +truecrypt-4.2-r1.ebuild,
+  -truecrypt-4.2.ebuild:
+  %uL should be %Lu in patch
+
+  06 Jun 2006; Daniel Black <dragonheart@gentoo.org>
+  +files/truecrypt-4.2-nosectorformat.patch, truecrypt-4.2.ebuild:
+  fix for 2.6.17 kernels that nolonger define SECTOR_FORMAT as per bug #135741
+
+*truecrypt-4.2 (05 Jun 2006)
+
+  05 Jun 2006; Daniel Black <dragonheart@gentoo.org>
+  +files/truecrypt-4.2-makefile.patch, +metadata.xml, +truecrypt-4.2.ebuild:
+  initial ebuild as per bug #112197 largely based off ebuild by Greg Tassone

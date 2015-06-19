@@ -1,0 +1,122 @@
+# ChangeLog for media-sound/galan
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/galan/ChangeLog,v 1.29 2013/01/28 02:43:11 mattst88 Exp $
+
+  28 Jan 2013; Matt Turner <mattst88@gentoo.org> galan-0.3.0_beta7.ebuild:
+  Add virtual/glu dependency, bug 438748.
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> galan-0.3.0_beta7.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  18 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> galan-0.3.0_beta7.ebuild:
+  Remove no-op USE="esd" because media-sound/esound isn't in tree anymore.
+
+  29 Jul 2011; Samuli Suominen <ssuominen@gentoo.org> galan-0.3.0_beta7.ebuild:
+  Use lrdf.pc to gain -I/usr/include/raptor2 (lrdf.h -> raptor.h). Remove both
+  .a and .la files as useless.
+
+  23 Mar 2011; Gilles Dartiguelongue <eva@gentoo.org> galan-0.3.0_beta7.ebuild:
+  Fix slot-deps on gnome libs.
+
+  12 Mar 2011; Tim Harder <radhermit@gentoo.org> galan-0.3.0_beta7.ebuild:
+  Update to EAPI 2, use slot deps for gtk+ and fftw, use emake instead of make,
+  and use default line ordering.
+
+  24 Oct 2010; Raúl Porcel <armin76@gentoo.org> galan-0.3.0_beta7.ebuild:
+  Drop sparc keywords
+
+*galan-0.3.0_beta7 (09 Jun 2009)
+
+  09 Jun 2009; Patrick Lauer <patrick@gentoo.org> +galan-0.3.0_beta7.ebuild:
+  Bump to beta7, fixes #273341
+
+  13 Apr 2008; Alexis Ballier <aballier@gentoo.org>
+  galan-0.3.0_beta6.ebuild:
+  pkgconfig is only a build dep, bug #217278
+
+  14 Jan 2008; Tony Vroon <chainsaw@gentoo.org> galan-0.3.0_beta6.ebuild:
+  Add pkgconfig dependency for the Evil Compile Person
+  <bugs@dev.gentooexperimental.org>, closes bug #205660.
+
+  21 Dec 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  -files/galan-0.2.14-alsalib-fix.patch, -galan-0.2.14.ebuild:
+  gnome-1.x removal
+
+  26 Dec 2005; Luca Barbato <lu_zero@gentoo.org> galan-0.2.14.ebuild,
+  galan-0.3.0_beta6.ebuild:
+  oggvorbis Cleanup
+
+  12 Jun 2005; Sven Wegener <swegener@gentoo.org> galan-0.2.14.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  19 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove retired developer from metadata.xml.
+
+  12 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  galan-0.2.14.ebuild, galan-0.3.0_beta6.ebuild:
+  Stable sparc and cleanups.
+
+  22 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -galan-0.3.0_beta3.ebuild, -galan-0.3.0_beta5.ebuild:
+  Added ~sparc.  Removed old versions.
+
+*galan-0.3.0_beta6 (23 Jun 2004)
+
+  23 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +galan-0.3.0_beta6.ebuild:
+  Version bump.
+
+  27 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> galan-0.3.0_beta5.ebuild:
+  marked ~amd64.
+
+  17 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  galan-0.3.0_beta3.ebuild, galan-0.3.0_beta5.ebuild:
+  IUSE=jack
+
+  26 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> galan-0.2.14.ebuild,
+  galan-0.3.0_beta3.ebuild, galan-0.3.0_beta5.ebuild:
+  ebuild cleanup.
+
+  11 Mar 2004; David Holm <dholm@gentoo.org> galan-0.3.0_beta5.ebuild:
+  Added to ~ppc.
+
+*galan-0.3.0_beta5 (10 Mar 2004)
+
+  10 Mar 2004; <torbenh@gentoo.org> galan-0.3.0_beta5.ebuild:
+  Version bump. i think i have fixed the gcc-2.x issue upstream. if not mail me
+  please.
+
+  06 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  galan-0.3.0_beta3.ebuild, files/galan-0.3.0_beta3-gcc2_fix.patch:
+  Added patch to fix gcc2 compile (Bug #40515). Added =dev-libs/fftw-2* to
+  DEPEND (Bug #40514). Both fixes thanks to Tristan Henderson
+  <T.Henderson@cs.ucl.ac.uk>.
+
+*galan-0.3.0_beta3 (04 Feb 2004)
+
+  04 Feb 2004; <torbenh@gentoo.org> galan-0.2.13d.ebuild, galan-0.2.14.ebuild,
+  galan-0.3.0_beta3.ebuild, metadata.xml:
+  Added galan-0.3.0_beta3.
+  removed the other arch keywords, because repoman mourns around.
+  liblrdf is not in the other archs and jack-audio-connection-kit
+  neither.
+
+  01 Feb 2004; Brian Harring <ferringb@gentoo.org> galan-0.2.14.ebuild, 
+  files/galan-0.2.14-alsalib-fix.patch:
+  Patch to fix alsalib-1.0 compilation issues (38995)
+
+  12 Jun 2003; <msterret@gentoo.org> galan-0.2.14.ebuild:
+  fix Header
+
+*galan-0.2.14 (24 Mar 2003)
+
+  24 Mar 2003; jje <jje@gentoo.org> galan-0.2.14.ebuild:
+  Version bump.
+
+*galan-0.2.13d (15 Mar 2003)
+
+  15 Mar 2003; jje <jje@gentoo.org> galan-0.2.13d.ebuild:
+  Initial revision. Dependencies are going to take some tuning over time,
+  first cut.
+  
+  Submitted by Torben Hohn.

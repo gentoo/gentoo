@@ -1,0 +1,121 @@
+# ChangeLog for java-virtuals/jdk-with-com-sun
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/java-virtuals/jdk-with-com-sun/ChangeLog,v 1.23 2015/04/14 21:40:53 chewi Exp $
+
+  14 Apr 2015; James Le Cuirot <chewi@gentoo.org>
+  jdk-with-com-sun-20111111-r2.ebuild:
+  diablo-jdk is about to be last-rited. Also remove ye olde apple-jdk-bin
+  versions.
+
+  02 Aug 2014; Ralph Sennhauser <sera@gentoo.org>
+  -jdk-with-com-sun-20111111-r1.ebuild:
+  Remove old
+
+*jdk-with-com-sun-20111111-r2 (03 May 2014)
+
+  03 May 2014; Tom Wijsman <TomWij@gentoo.org>
+  +jdk-with-com-sun-20111111-r2.ebuild:
+  Support oracle-jdk-bin-1.8.
+
+*jdk-with-com-sun-20111111-r1 (30 Jun 2013)
+
+  30 Jun 2013; Tom Wijsman <TomWij@gentoo.org>
+  +jdk-with-com-sun-20111111-r1.ebuild, -jdk-with-com-sun-20111111.ebuild:
+  Remove sun-jdk and sun-jre-bin from the virtuals, acked by Caster. For
+  security bug #473830 reported by Agostino Sarubbo.
+
+  04 Oct 2012; Ralph Sennhauser <sera@gentoo.org>
+  jdk-with-com-sun-20111111.ebuild:
+  Change license to public-domain. #426800
+
+  13 Jan 2012; Ralph Sennhauser <sera@gentoo.org>
+  -jdk-with-com-sun-20111030.ebuild, -jdk-with-com-sun-20111107.ebuild:
+  Remove old.
+
+  29 Nov 2011; Fabian Groffen <grobian@gentoo.org>
+  jdk-with-com-sun-20111111.ebuild:
+  Apple-provided JDKs are actually Sun/Oracle's, hence contain com.sun.*
+
+*jdk-with-com-sun-20111111 (11 Nov 2011)
+
+  11 Nov 2011; Vlastimil Babka <caster@gentoo.org>
+  +jdk-with-com-sun-20111111.ebuild:
+  Add icedtea-7 and icedtea-bin-7 variants.
+
+*jdk-with-com-sun-20111107 (07 Nov 2011)
+
+  07 Nov 2011; Vlastimil Babka <caster@gentoo.org>
+  -jdk-with-com-sun-20080505-r1.ebuild, -jdk-with-com-sun-20100419.ebuild,
+  -jdk-with-com-sun-20110911.ebuild, +jdk-with-com-sun-20111107.ebuild:
+  Prepare for icedtea-bin version and VMHANDLE migration.
+
+  30 Oct 2011; Vlastimil Babka <caster@gentoo.org>
+  jdk-with-com-sun-20100419.ebuild, jdk-with-com-sun-20110911.ebuild,
+  jdk-with-com-sun-20111030.ebuild:
+  Package move icedtea6-bin to icedtea-bin.
+
+*jdk-with-com-sun-20111030 (30 Oct 2011)
+
+  30 Oct 2011; Vlastimil Babka <caster@gentoo.org>
+  +jdk-with-com-sun-20111030.ebuild:
+  Prepare for icedtea VMHANDLE change.
+
+*jdk-with-com-sun-20110911 (11 Sep 2011)
+
+  11 Sep 2011; Serkan Kaba <serkan@gentoo.org>
+  +jdk-with-com-sun-20110911.ebuild:
+  Bump to add oracle-jdk-bin-1.7
+
+  01 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  jdk-with-com-sun-20100419.ebuild:
+  x86 stable wrt bug #320519
+
+  25 May 2010; Pacho Ramos <pacho@gentoo.org>
+  jdk-with-com-sun-20100419.ebuild:
+  stable amd64, bug 320519
+
+  23 Apr 2010; Alexis Ballier <aballier@gentoo.org>
+  jdk-with-com-sun-20080505-r1.ebuild, jdk-with-com-sun-20100419.ebuild:
+  change diablo-jdk:1.5 to 1.6, 1.5 is gone
+
+*jdk-with-com-sun-20100419 (19 Apr 2010)
+
+  19 Apr 2010; Vlastimil Babka <caster@gentoo.org>
+  -jdk-with-com-sun-20080505.ebuild, +jdk-with-com-sun-20100419.ebuild:
+  Bump to add icedtea6-bin and icedtea:6 as alternatives.
+
+  23 Dec 2009; Vlastimil Babka <caster@gentoo.org>
+  -jdk-with-com-sun-1.4.ebuild:
+  Remove the 1.4 slot as 1.4 is going away.
+
+  13 Sep 2008; Petteri Räty <betelgeuse@gentoo.org>
+  jdk-with-com-sun-20080505-r1.ebuild:
+  Mark stable.
+
+*jdk-with-com-sun-1.4 (12 Sep 2008)
+
+  12 Sep 2008; Petteri Räty <betelgeuse@gentoo.org>
+  +jdk-with-com-sun-1.4.ebuild:
+  Add slot 1.4 needed for tomcat.
+
+*jdk-with-com-sun-20080505-r1 (12 Sep 2008)
+
+  12 Sep 2008; Miroslav Šulc <fordfrog@gentoo.org>
+  +jdk-with-com-sun-20080505-r1.ebuild:
+  Added blackdown-jdk-1.4.2 so we have a usable 1.4 JDK even on amd64
+  systems
+
+  30 May 2008; Kenneth Prugh <ken69267@gentoo.org>
+  jdk-with-com-sun-20080505.ebuild:
+  amd64 stable, bug #220223
+
+  08 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  jdk-with-com-sun-20080505.ebuild:
+  stable x86, bug 220223
+
+*jdk-with-com-sun-20080505 (05 May 2008)
+
+  05 May 2008; Petteri Räty <betelgeuse@gentoo.org> +metadata.xml,
+  +jdk-with-com-sun-20080505.ebuild:
+  Rename sun-jdk virtual to jdk-with-com-sun to avoid having to specify
+  category with sun-jdk.

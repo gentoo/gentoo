@@ -1,0 +1,30 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/corosync/files/corosync.initd,v 1.4 2014/12/30 11:10:14 ultrabug Exp $
+
+depend() {
+	need net
+	use logger
+}
+
+start() {
+	configtest || return 1
+	ebegin "Starting Corosync Cluster Engine"
+	start-stop-daemon --start -q --exec /usr/sbin/corosync \
+		--pidfile /var/run/corosync.pid --make-pidfile --background \
+		-- -f
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Corosync Cluster Engine"
+	start-stop-daemon --stop -q --pidfile /var/run/corosync.pid
+	eend $?
+}
+
+configtest() {
+	ebegin "Checking corosync configuration"
+	test -f /etc/corosync/corosync.conf
+	eend $? "failed, please create the corosync configuration file"
+}

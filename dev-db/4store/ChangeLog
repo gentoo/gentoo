@@ -1,0 +1,9 @@
+# ChangeLog for dev-db/4store
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/4store/ChangeLog,v 1.1 2013/02/01 03:33:52 patrick Exp $
+
+*4store-1.1.5 (01 Feb 2013)
+
+  01 Feb 2013; Patrick Lauer <patrick@gentoo.org> +4store-1.1.5.ebuild,
+  +metadata.xml:
+  Initial commit, ebuild based on #343213 by Guido Jaekel

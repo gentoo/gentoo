@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm preinst
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=A scalable icon theme called Nou
+HOMEPAGE=http://www.silvestre.com.ar/
+IUSE=minimal
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!minimal? ( || ( x11-themes/tango-icon-theme x11-themes/gnome-icon-theme ) )
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=http://www.silvestre.com.ar/icons/Nou-090208.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=0156218cfe880987707be1eec46ed6ca

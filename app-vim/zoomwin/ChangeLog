@@ -1,0 +1,145 @@
+# ChangeLog for app-vim/zoomwin
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/zoomwin/ChangeLog,v 1.42 2012/12/30 14:58:44 ago Exp $
+
+  30 Dec 2012; Agostino Sarubbo <ago@gentoo.org> zoomwin-24.ebuild:
+  Stable for alpha, wrt bug #441136
+
+  29 Dec 2012; Agostino Sarubbo <ago@gentoo.org> zoomwin-24.ebuild:
+  Stable for sparc, wrt bug #441136
+
+  17 Dec 2012; Agostino Sarubbo <ago@gentoo.org> zoomwin-24.ebuild:
+  Stable for ia64, wrt bug #441136
+
+  04 Dec 2012; <ago@gentoo.org> zoomwin-24.ebuild:
+  Stable for x86, wrt bug #441136
+
+  04 Dec 2012; Anthony G. Basile <blueness@gentoo.org> zoomwin-24.ebuild:
+  stable ppc, bug #441136
+
+  03 Dec 2012; <ago@gentoo.org> zoomwin-24.ebuild:
+  Stable for amd64, wrt bug #441136
+
+*zoomwin-24 (03 Aug 2012)
+
+  03 Aug 2012; Tim Harder <radhermit@gentoo.org> +zoomwin-24.ebuild:
+  Version bump.
+
+  07 Jan 2011; Tim Harder <radhermit@gentoo.org> -zoomwin-21.ebuild,
+  -zoomwin-22.ebuild:
+  Remove old
+
+  07 Jan 2011; Brent Baude <ranger@gentoo.org> zoomwin-23.ebuild:
+  stable ppc, bug 345067
+
+  14 Nov 2010; Raúl Porcel <armin76@gentoo.org> zoomwin-23.ebuild:
+  alpha/ia64/sparc stable
+
+  14 Nov 2010; Markus Meier <maekke@gentoo.org> zoomwin-23.ebuild:
+  x86 stable, bug #345067
+
+  11 Nov 2010; Markos Chandras <hwoarang@gentoo.org> zoomwin-23.ebuild:
+  Stable on amd64 wrt bug #345067
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org> zoomwin-21.ebuild:
+  Drop to ~mips
+
+*zoomwin-23 (30 Sep 2010)
+
+  30 Sep 2010; Tim Harder <radhermit@gentoo.org> +zoomwin-23.ebuild:
+  Version bump. Now requires vim 7.2.
+
+*zoomwin-22 (20 Sep 2008)
+
+  20 Sep 2008; Ali Polatel <hawking@gentoo.org> -zoomwin-16.ebuild,
+  -zoomwin-17.ebuild, -zoomwin-19.ebuild, +zoomwin-22.ebuild:
+  Version bump. Drop old.
+
+  25 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> zoomwin-21.ebuild:
+  Added ~amd64, fix quoting.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  12 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> zoomwin-21.ebuild:
+  Stable on ppc.
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> zoomwin-21.ebuild:
+  Mark 21 stable on alpha
+
+  07 Sep 2005; Aron Griffis <agriffis@gentoo.org> zoomwin-21.ebuild:
+  Mark 21 stable on ia64
+
+  07 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> zoomwin-21.ebuild:
+  x86 sparc mips stable
+
+*zoomwin-21 (08 Aug 2005)
+
+  08 Aug 2005; Ciaran McCreesh <ciaranm@gentoo.org> +zoomwin-21.ebuild:
+  Version bump, bug #101777
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> zoomwin-19.ebuild:
+  Stable on ppc.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  19 Sep 2004; Bryan Østergaard,,, <kloeri@gentoo.org> zoomwin-19.ebuild:
+  Stable on alpha.
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> zoomwin-19.ebuild:
+  Stable on x86, sparc, mips
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> zoomwin-19.ebuild:
+  Display plugin help text, bug #62559
+
+  06 Sep 2004; Bryan Østergaard <kloeri@gentoo.org> zoomwin-17.ebuild:
+  Stable on alpha.
+
+*zoomwin-19 (20 Aug 2004)
+
+  20 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org> +zoomwin-19.ebuild:
+  Version bump
+
+  20 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org> zoomwin-17.ebuild:
+  Stable on x86
+
+  12 May 2004; Ciaran McCreesh <ciaranm@gentoo.org> zoomwin-17.ebuild:
+  Stable on sparc, mips
+
+  11 Apr 2004; Ciaran McCreesh <ciaranm@gentoo.org> zoomwin-11.ebuild,
+  zoomwin-15.ebuild:
+  Remove old versions
+
+*zoomwin-17 (11 Apr 2004)
+
+  11 Apr 2004; Ciaran McCreesh <ciaranm@gentoo.org> zoomwin-17.ebuild:
+  Version bump
+
+  06 Feb 2004; Ciaran McCreesh <ciaranm@gentoo.org> zoomwin-16.ebuild:
+  Stable on x86, sparc ; added ~mips
+
+  23 Jan 2004; Aron Griffis <agriffis@gentoo.org> zoomwin-16.ebuild:
+  stable on alpha and ia64
+
+*zoomwin-16 (23 Dec 2003)
+
+  23 Dec 2003; Ciaran McCreesh <ciaranm@gentoo.org> zoomwin-16.ebuild:
+  Version bump
+
+*zoomwin-15 (19 Dec 2003)
+
+  19 Dec 2003; Ciaran McCreesh <ciaranm@gentoo.org> zoomwin-15.ebuild:
+  Version bump
+
+  05 Dec 2003; Ciaran McCreesh <ciaranm@gentoo.org> zoomwin-11.ebuild:
+  Added ~ppc to keywords
+
+  03 Dec 2003; Ciaran McCreesh <ciaranm@gentoo.org> zoomwin-11.ebuild:
+  Stable on sparc and x86
+
+*zoomwin-11 (30 Oct 2003)
+
+  30 Oct 2003; Aron Griffis <agriffis@gentoo.org> zoomwin-11.ebuild:
+  Add Ron Aaron's zoomwin plugin. Ebuild contributed by Ciaran McCreesh in bug
+  32332. License verified by Ciaran in email with Ron.

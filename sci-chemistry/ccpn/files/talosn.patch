@@ -1,0 +1,16 @@
+ ccpnmr2.3/python/ccpnmr/format/general/Constants.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ccpnmr2.3/python/ccpnmr/format/general/Constants.py b/ccpnmr2.3/python/ccpnmr/format/general/Constants.py
+index d10553e..fb732db 100644
+--- a/ccpnmr2.3/python/ccpnmr/format/general/Constants.py
++++ b/ccpnmr2.3/python/ccpnmr/format/general/Constants.py
+@@ -865,7 +865,7 @@ IoSetupList = [
+      'cyana':   ['dihedrals.aco',1,1,       [['SelectionList','version','Cyana version:',['2.0','2.1'],None]],
+                                             [['SelectionList','version','Cyana version:',['2.0','2.1'],None]]],
+      'nmrStar': ['nmrStar.str',1,0,         [],[]],
+-     'talos':   ['dihedral.tab',1,0,        [['MultiSelectionList','validClasses','Classes for valid constraint:',['Good','New','Warn','None'],None],
++     'talos':   ['dihedral.tab',1,0,        [['MultiSelectionList','validClasses','Classes for valid constraint:',['Good','New','Warn','Dyn', 'Strong', 'Generous', 'None'],None],
+                                              ['IntEntry','validCount','Count variable lower limit for valid constraint:',0,None],
+                                              ['FloatEntry','multiplyDeviation','Multiplication factor to convert deviation in constraint range:',2.0,None]],
+                                             []]},

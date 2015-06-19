@@ -1,0 +1,66 @@
+--- vittk-1.1.1.orig/vittk.in
++++ vittk-1.1.1/vittk.in
+@@ -17,7 +17,7 @@
+ 
+ set font "@FONT@"
+ set system_task_cmd "ls"
+-set system_vittkrc "@prefix@/etc/vittkrc"
++set system_vittkrc "@sysconfdir@/vittkrc"
+ set task "@TASK@"
+ set ver "@VER@"
+ 
+@@ -28,8 +28,8 @@
+   source ./vars.tcl
+   set auto_path ". $auto_path"
+ } else { 
+-  source @prefix@/lib/vittk/vars.tcl
+-  set auto_path "@prefix@/lib/vittk $auto_path"
++  source @libdir@/vittk/vars.tcl
++  set auto_path "@libdir@/vittk $auto_path"
+ }
+ 
+ ReadRcs
+--- vittk-1.1.1.orig/vittk.man.in
++++ vittk-1.1.1/vittk.man.in
+@@ -89,13 +89,13 @@
+ in Taskwarrior.  At this time, various other parts of the VITtk color
+ scheme can only be changed system-wide by altering the variables in
+ .br
+-@prefix@/lib/vars.tcl.
++@libdir@/vars.tcl.
+ .SH FONTS
+ VITtk requires a fixed-width font for it's columns to align correctly.
+ The default font "TkFixedFont" has been set to ensure this happens. You can
+ use other Xwindows fonts by using the -fn option or your ~/.vittkrc file.
+ Instructions for browsing fixed-width fonts can be found in the
+-/usr/local/share/doc/vittk/Fonts file. If you specify a proportional font
++@docdir@/Fonts file. If you specify a proportional font
+ (you will get a warning message and) the VITtk display will probably look very
+ bad, and if you use the -fn option with the name of a non-existent font then
+ VITtk will default the default tcl/tkfont (e.g. "fixed") without warning.
+@@ -103,20 +103,20 @@
+ fixed-width, so care should be taken to specify an existing font.
+ .SH SETTINGS
+ There are a number of settings which allow you to "remotely control"
+-many aspects of VITtk.  Refer to the @prefix@/etc/vittkrc file for more 
++many aspects of VITtk.  Refer to the @sysconfdir@/vittkrc file for more 
+ information.  There are also some settings which are hard-coded 
+ (e.g. how long feedback messages are displayed.)  These could be
+-changed sytem-wide by editing @prefix@/lib/vars.tcl.
++changed sytem-wide by editing @libdir@/vars.tcl.
+ .SH FILES
+-@prefix@/etc/vittkrc - the system-wide VITtk configuration file
++@sysconfdir@/vittkrc - the system-wide VITtk configuration file
+ .br
+ ~/.vittkrc - user VITtk configuration file
+ .br
+ /tmp/vittk-$USER.log - VITtk actions log
+ .br
+-@prefix@/share/doc/vittk/README - quick start and more information
++@docdir@/README - quick start and more information
+ .br
+-@prefix@/share/doc/vittk/Tutorial - a brief VITtk tutoral
++@docdir@/Tutorial - a brief VITtk tutoral
+ .SH CREDITS & COPYRIGHT
+ VITtk was written by Steve Rader (C) 2011.
+ 

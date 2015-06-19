@@ -1,0 +1,297 @@
+# ChangeLog for net-nntp/inn
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-nntp/inn/ChangeLog,v 1.58 2015/06/09 05:32:30 jer Exp $
+
+*inn-2.5.5 (09 Jun 2015)
+
+  09 Jun 2015; Jeroen Roovers <jer@gentoo.org> +inn-2.5.5.ebuild:
+  Version bump.
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> inn-2.5.3-r1.ebuild,
+  inn-2.5.3-r2.ebuild, inn-2.5.4.ebuild:
+  Drop old Python implementations
+
+*inn-2.5.4 (09 Jun 2014)
+
+  09 Jun 2014; Patrick Lauer <patrick@gentoo.org> +inn-2.5.4.ebuild:
+  Bump
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> inn-2.5.3-r1.ebuild,
+  inn-2.5.3-r2.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*inn-2.5.3-r2 (03 Jun 2013)
+
+  03 Jun 2013; Michael Palimaka <kensington@gentoo.org>
+  +files/inn-2.5.3-ar.patch, +files/innd-r1, +inn-2.5.3-r2.ebuild:
+  Add missing PYTHON_REQUIRED_USE. Add elog to recommend using emerge --config.
+  Respect AR wrt bug #461254. Use correct run dir and fix init script to avoid
+  reporting its status as 'crashed', wrt bug #468010.
+
+  14 Mar 2013; Michael Palimaka <kensington@gentoo.org> -inn-2.5.3.ebuild:
+  Remove old.
+
+  12 Mar 2013; Agostino Sarubbo <ago@gentoo.org> inn-2.5.3-r1.ebuild:
+  Stable for ppc, wrt bug #461216
+
+  10 Mar 2013; Agostino Sarubbo <ago@gentoo.org> inn-2.5.3-r1.ebuild:
+  Stable for x86, wrt bug #461216
+
+  10 Mar 2013; Agostino Sarubbo <ago@gentoo.org> inn-2.5.3-r1.ebuild:
+  Stable for amd64, wrt bug #461216
+
+*inn-2.5.3-r1 (06 Feb 2013)
+
+  06 Feb 2013; Michael Palimaka <kensington@gentoo.org>
+  +files/inn-2.5.3-tests.patch, +inn-2.5.3-r1.ebuild:
+  Migrate to EAPI 5. Add missing dependencies. Migrate to python-r1 wrt bug
+  #315855. Add a test fix wrt bug #348490. Do not install /var/run wrt bug
+  #454182.
+
+  22 Dec 2012; Ulrich Müller <ulm@gentoo.org> inn-2.5.3.ebuild:
+  Fix LICENSE, see LICENSE file, bug 446550.
+
+  21 Nov 2012; Jeroen Roovers <jer@gentoo.org> -inn-2.5.2.ebuild,
+  -inn-2.5.2-r1.ebuild:
+  Old.
+
+  20 Nov 2012; Brent Baude <ranger@gentoo.org> inn-2.5.3.ebuild:
+  Marking inn-2.5.3 ppc for bug 432002
+
+  30 Aug 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> inn-2.5.3.ebuild:
+  x86 stable wrt bug #432002
+
+  22 Aug 2012; Agostino Sarubbo <ago@gentoo.org> inn-2.5.3.ebuild:
+  Stable for amd64, wrt bug #432002
+
+  22 Aug 2012; Jeroen Roovers <jer@gentoo.org> inn-2.5.3.ebuild:
+  Use fowners instead of chown (bug #432256).
+
+*inn-2.5.3 (20 Aug 2012)
+
+  20 Aug 2012; Jeroen Roovers <jer@gentoo.org> +inn-2.5.3.ebuild, files/innd:
+  Version bump (bug #432002).
+
+  08 Feb 2012; Sergei Trofimovich <slyfox@gentoo.org> files/innd:
+  Converted /etc/init.d/innd to use --user instead of --chuid.
+
+  06 Aug 2011; Jeroen Roovers <jer@gentoo.org> inn-2.5.2-r1.ebuild:
+  Replace piped sed calls with single combined sed scripts.
+
+  06 Aug 2011; Jeroen Roovers <jer@gentoo.org> inn-2.5.2-r1.ebuild:
+  Fix pkg_config. Make it more verbose.
+
+*inn-2.5.2-r1 (06 Aug 2011)
+
+  06 Aug 2011; Jeroen Roovers <jer@gentoo.org> -files/inn-2.4.3-berkdb45.patch,
+  -files/inn-2.4.3-configure.patch, -files/inn-2.4.3-runtests.patch,
+  -inn-2.5.1.ebuild, +inn-2.5.2-r1.ebuild:
+  Clean up ebuild: fix chown arguments by Agostino Sarubbo (bug #362617), long
+  lines, nearly incomprehensible brace expansion arguments, spelling, die()
+  more often, remove unused eclass.
+
+  22 Jun 2011; Brent Baude <ranger@gentoo.org> inn-2.5.2.ebuild:
+  Marking inn-2.5.2 ppc for bug 362517
+
+  21 Jun 2011; Markos Chandras <hwoarang@gentoo.org> inn-2.5.2.ebuild:
+  Stable on amd64 wrt bug #362517
+
+  20 May 2011; Thomas Kahle <tomka@gentoo.org> inn-2.5.2.ebuild:
+  x86 stable per bug 362517
+
+  29 Dec 2010; Markos Chandras <hwoarang@gentoo.org> inn-2.5.1.ebuild:
+  Stable on amd64 wrt bug #300650
+
+  13 Dec 2010; Jeroen Roovers <jer@gentoo.org> inn-2.5.1.ebuild,
+  inn-2.5.2.ebuild:
+  Add IUSE=perl.
+
+  12 Dec 2010; Thomas Kahle <tomka@gentoo.org> inn-2.5.1.ebuild:
+  x86 stable per bug 300650
+
+  11 Dec 2010; Jeroen Roovers <jer@gentoo.org> inn-2.5.1.ebuild:
+  Stable for PPC (bug #300650).
+
+*inn-2.5.2 (27 Nov 2010)
+
+  27 Nov 2010; Jeroen Roovers <jer@gentoo.org> +inn-2.5.2.ebuild:
+  Version bump.
+
+  12 Jan 2010; Jeroen Roovers <jer@gentoo.org> inn-2.5.1.ebuild:
+  dev-lang/perl and dev-perl/MIME-tools are not optional.
+
+  12 Jan 2010; Jeroen Roovers <jer@gentoo.org> inn-2.5.0.ebuild,
+  inn-2.5.1.ebuild:
+  Fix HOMEPAGE.
+
+*inn-2.5.1 (12 Jan 2010)
+
+  12 Jan 2010; Jeroen Roovers <jer@gentoo.org> inn-2.5.0.ebuild,
+  +inn-2.5.1.ebuild:
+  Version bump, and backporting to 2.5.0 fixing the following issues: Depend
+  on dev-perl/MIME-tools thanks to Raphaël Barrois (bug #298160). Fix
+  configure options (remove obsolete ones, replace changed options, add
+  default ones). Fix python.m4 failure because it greps LDFLAGS (which we do
+  not use to pass libraries to the linker). Fix biff/comsat service test.
+  Fix doexe error in doinitd. Do not enable libtool (not the upstream
+  default). Unrestricting tests. Enable parallel make.
+
+*inn-2.4.3-r2 (08 Nov 2009)
+
+  08 Nov 2009; Richard Freeman <rich0@gentoo.org> +inn-2.4.3-r2.ebuild,
+  +files/inn-2.4.3-configure.patch:
+  Fix for 249486 - thanks to jer and Raphael Barrois
+
+*inn-2.5.0 (25 Jul 2009)
+
+  25 Jul 2009; Patrick Lauer <patrick@gentoo.org> +inn-2.5.0.ebuild:
+  Bump to 2.5.0. Restricting tests. Fixes #230527
+
+  22 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  07 Jun 2008; Diego Pettenò <flameeyes@gentoo.org> inn-2.4.3-r1.ebuild:
+  Remove filtering of --as-needed (it's not a fix) and appending of
+  bindnow-flags (deprecated). Run elibtoolize in src_unpack rather than
+  src_compile.
+
+  26 Jan 2008; Ulrich Mueller <ulm@gentoo.org> -files/2.4.1-berkdb.patch,
+  -inn-2.4.1.ebuild, -inn-2.4.3.ebuild:
+  Remove vulnerable versions wrt bug 201687.
+
+  25 Jan 2008; Wulf C. Krueger <philantrop@gentoo.org> inn-2.4.3-r1.ebuild:
+  Marked stable on amd64 as per bug 201687.
+
+  13 Jan 2008; nixnut <nixnut@gentoo.org> inn-2.4.3-r1.ebuild:
+  Stable on ppc wrt bug 201687
+
+  09 Jan 2008; Markus Meier <maekke@gentoo.org> inn-2.4.3-r1.ebuild:
+  x86 stable, bug #201687
+
+*inn-2.4.3-r1 (30 Dec 2007)
+
+  30 Dec 2007; Ulrich Mueller <ulm@gentoo.org> +inn-2.4.3-r1.ebuild:
+  Replace call to docert by install_cert, bug #201687.
+
+  24 Jun 2007; Wulf C. Krueger <philantrop@gentoo.org> inn-2.4.3.ebuild:
+  Filtering -Wl,--as-needed from LDFLAGS because it breaks the compilation.
+  Fixes bug 182782. Thanks to Conrad Kostecki for spotting this!
+
+  19 May 2007; Christian Faulhammer <opfer@gentoo.org> inn-2.4.3.ebuild:
+  stable amd64, bug 173655
+
+  19 May 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  +files/inn-2.4.3-runtests.patch, inn-2.4.3.ebuild:
+  Fixed multilib-strict issues and test failures.
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org> inn-2.4.1.ebuild,
+  inn-2.4.3.ebuild:
+  Fix *initd, *envd and *confd calls, bug #173884.
+
+  24 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org> inn-2.4.3.ebuild:
+  ppc stable, bug #173655
+
+  22 Apr 2007; Markus Ullmann <jokey@gentoo.org> inn-2.4.3.ebuild:
+  Stable on x86 wrt bug #173655
+
+  17 Apr 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  +files/inn-2.4.3-berkdb45.patch, inn-2.4.3.ebuild:
+  Fixed compatibility problems with sys-libs/db-4.4 and 4.5, fixes bug 174680.
+
+  03 Mar 2007; Sven Wegener <swegener@gentoo.org> inn-2.4.3.ebuild:
+  Add db location for bug #168519.
+
+*inn-2.4.3 (11 Feb 2007)
+
+  11 Feb 2007; Sven Wegener <swegener@gentoo.org> +inn-2.4.3.ebuild:
+  Version bump, bug #135088. Fix certificate location in configuration files,
+  bug #123316. Fix autotools handling, bug #159065. Fix obsolete head/tail
+  invocations, bug #158293.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  25 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> inn-2.4.1.ebuild:
+  Use bindnow-flags function instead of -Wl,-z,now. Change root.root ownership
+  to root:0.
+
+  16 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> inn-2.4.1.ebuild:
+  Remove --with-gnu-ld option, bug #108386.
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  23 Jan 2005; Sven Wegener <swegener@gentoo.org> inn-2.4.1.ebuild:
+  Disable Tcl code because it is broken, bug #69240.
+
+*inn-2.4.1 (17 Jan 2005)
+
+  17 Jan 2005; Sven Wegener <swegener@gentoo.org> +metadata.xml,
+  +files/2.4.1-berkdb.patch, +files/innd, +inn-2.4.1.ebuild:
+  Moved from net-news/inn to net-nntp/inn.
+
+  15 Oct 2004; David Holm <dholm@gentoo.org> inn-2.4.1.ebuild:
+  Added to ~ppc.
+
+  02 Oct 2004; Sven Wegener <swegener@gentoo.org> -inn-2.3.5.ebuild:
+  Removed old ebuild.
+
+  27 Sep 2004; Sven Wegener <swegener@gentoo.org> inn-2.4.1.ebuild:
+  Added elibtoolize to src_unpack() because the included libtool is broken.
+  Modified to not use lazy bindings.
+
+  12 Sep 2004; Sven Wegener <swegener@gentoo.org> files/2.4.1-berkdb.patch,
+  inn-2.4.1.ebuild:
+  Added a patch from Maurice Mueller <maurice_mueller@gmx.de> to make inn
+  compile with BerkeleyDB 4.x. Modified ebuild to correctly initialize tagged
+  hash table in pkg_config and install SSL certificates into the right location
+  to prevent overwriting them when upgrading.
+
+  08 Sep 2004; Sven Wegener <swegener@gentoo.org> +files/2.4.1-berkdb.patch,
+  files/innd, inn-2.4.1.ebuild:
+  Added support for BerkeleyDB via the USE flag berkdb. Added support for the
+  local USE flags innkeywords and inntaggedhash that enable automatic keyword
+  generation support and use a tagged hash table for history.
+
+*inn-2.4.1 (07 Sep 2004)
+
+  07 Sep 2004; Sven Wegener <swegener@gentoo.org> +inn-2.4.1.ebuild:
+  Version bump, package.mask'ed for testing, please report bugs to bug #29020.
+
+  19 Jun 2004; Sven Wegener <swegener@gentoo.org> +metadata.xml:
+  Added metadata.xml
+
+  15 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> inn-2.3.5.ebuild:
+  don't unset/assign P; (bug #44712); use CFLAGS/CXXFLAGS; use use_with; don't
+  assign default to S; header fix; tidy
+
+  14 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> inn-2.3.3.ebuild:
+  clean older version
+
+  07 Dec 2003; Michael Sterrett <mr_bones_@gentoo.org> inn-2.3.5.ebuild:
+  chown x.y -> chown x:y (bug 35127)
+
+  05 Dec 2003; Chuck Short <zul@gentoo.org> inn-2.3.5.ebuild:
+  Chown fixes
+
+  12 Jun 2003; <msterret@gentoo.org> inn-2.3.3.ebuild, inn-2.3.5.ebuild:
+  add Header
+
+*inn-2.3.5 (17 Apr 2003)
+
+  17 Apr 2003; Martin Holzer <mholzer@gentoo.org> Manifest, inn-2.3.5.ebuild:
+  Version bumped. Ebuild submitted by Stefan Förster <gentoo@stefan-foerster.de>
+  in #14601.
+
+*inn-2.3.3 (13 Jun 2002)
+
+  26 Aug 2002; Seemant Kulleen <seemant@gentoo.org> inn-2.3.3.ebuild :
+
+  The compile process does not like parallel make (emake).  Thanks to:
+  psi-jack@myrealbox.com (Eric Renfro) in bug #7021 for finding and
+  reporting.
+
+  13 Jun 2002; Preston A. Elder <prez@gentoo.org> inn-2.3.3.ebuild,
+  files/digest-inn-2.3.3, files/innd, ChangeLog :
+
+  - Added for the first time

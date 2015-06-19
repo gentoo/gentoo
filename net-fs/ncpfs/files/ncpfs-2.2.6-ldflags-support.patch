@@ -1,0 +1,153 @@
+diff -Naurp ncpfs-2.2.6.orig/contrib/pam/Makefile.in ncpfs-2.2.6/contrib/pam/Makefile.in
+--- ncpfs-2.2.6.orig/contrib/pam/Makefile.in	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6/contrib/pam/Makefile.in	2014-08-12 21:06:42.369190770 -0400
+@@ -17,6 +17,7 @@ PAM_LIBRARY = pam_ncp_auth.so
+ PAM_OBJECTS = pam_ncp_auth.do support.do
+ 
+ CFLAGS_pam_ncp_auth.do := -DNCPMOUNT_PATH=\"$(bindir)/ncpmount\" -DNCPUMOUNT_PATH=\"$(bindir)/ncpumount\"
++LDFLAGS = @LDFLAGS@
+ 
+ .PHONY : all install install-dev dep clean mrproper distclean
+ .PHONY : default
+@@ -45,7 +46,7 @@ $(PAM_OBJECTS): %.do: %.c
+ 
+ 
+ $(PAM_LIBRARY): $(PAM_OBJECTS)
+-	$(CC) $(CFLAGS) -shared -o $@ $(PAM_OBJECTS) -L$(NCPLIB_DIR) -lncp -lpam ${LIBS}
++	$(CC) $(CFLAGS) -shared $(LDFLAGS) -o $@ $(PAM_OBJECTS) -L$(NCPLIB_DIR) -lncp -lpam ${LIBS}
+ 
+ dep:
+ 
+diff -Naurp ncpfs-2.2.6.orig/ipx-1.0/Makefile.in ncpfs-2.2.6/ipx-1.0/Makefile.in
+--- ncpfs-2.2.6.orig/ipx-1.0/Makefile.in	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6/ipx-1.0/Makefile.in	2014-08-12 21:06:42.369190770 -0400
+@@ -9,6 +9,7 @@ vpath %.c ${this_srcdir}
+ vpath %.8 ${this_srcdir}
+ 
+ LIBS = @INTLLIBS@ @LIBS@
++LDFLAGS = @LDFLAGS@
+ 
+ O_UTILS = ipx_configure.o ipx_cmd.o
+ O_UTIIPX = ipx_interface.o ipx_internal_net.o ipx_route.o
+@@ -33,7 +34,7 @@ $(ALL_OBJECTS): %.o: %.c
+ 		[ -s $@ ] || rm -f $@
+ 
+ $(UTIIPX): %: %.o ipxutil.o
+-	$(CC) $(CFLAGS) -o $@ $(addsuffix .o,$@) ipxutil.o ${LIBS}
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(addsuffix .o,$@) ipxutil.o ${LIBS}
+ 
+ $(UTILS): %: %.o
+ 	$(CC) $(CFLAGS) -o $@ $(addsuffix .o,$@) ${LIBS}
+diff -Naurp ncpfs-2.2.6.orig/ipxdump/Makefile.in ncpfs-2.2.6/ipxdump/Makefile.in
+--- ncpfs-2.2.6.orig/ipxdump/Makefile.in	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6/ipxdump/Makefile.in	2014-08-12 21:06:42.369190770 -0400
+@@ -11,6 +11,7 @@ ncp_if_ether_support = @ncp_if_ether_sup
+ OBJECTS= ipxutil.o
+ 
+ ALL_OBJECTS := $(EXEC:%=%.o) $(OBJECTS)
++LDFLAGS = @LDFLAGS@
+ 
+ .PHONY : all install dep clean mrproper distclean
+ .PHONY : dist tgz
+@@ -24,7 +25,7 @@ install: $(EXEC)
+ ifeq ($(ncp_if_ether_support),yes)
+ 
+ $(EXEC): %: %.o $(OBJECTS)
+-	$(CC) $(CFLAGS) -o $@ $(addsuffix .o,$@) $(OBJECTS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(addsuffix .o,$@) $(OBJECTS)
+ 
+ else
+ .PHONY ipxdump ipxparse
+diff -Naurp ncpfs-2.2.6.orig/lib/Makefile.in ncpfs-2.2.6/lib/Makefile.in
+--- ncpfs-2.2.6.orig/lib/Makefile.in	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6/lib/Makefile.in	2014-08-12 21:06:42.369190770 -0400
+@@ -23,6 +23,7 @@ STATIC_NCPLIB_BIN := $(STATIC_NCPLIB)
+ CCFLAGS += -I.
+ PIC_FLAGS := -fPIC
+ NWCOMPAT := 1
++LDFLAGS := @LDFLAGS@
+ 
+ SHARED_VLINK :=
+ SHARED_VLINK_CFLAGS :=
+@@ -122,7 +123,7 @@ $(SHARED_NCPLIB): $(SHARED_NCPLIB_BIN)
+ 	ln -sf $< $@
+ 
+ $(SHARED_NCPLIB_BIN): $(SHARED_O_OBJ) ${this_srcdir}/libncp.vers
+-	$(CC) -shared -o $@ -Wl,-soname=$(SHARED_NCPLIB_SONAME) $(SHARED_VLINK) $(SHARED_O_OBJ) ${LIBS} -lc
++	$(CC) -shared -o $@ -Wl,-soname=$(SHARED_NCPLIB_SONAME) $(LDFLAGS) $(SHARED_VLINK) $(SHARED_O_OBJ) ${LIBS} -lc
+ 
+ install_static: $(STATIC_NCPLIB_BIN)
+ 	$(INSTALL) -d $(DESTDIR)$(libadir)
+diff -Naurp ncpfs-2.2.6.orig/Make.rules.in ncpfs-2.2.6/Make.rules.in
+--- ncpfs-2.2.6.orig/Make.rules.in	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6/Make.rules.in	2014-08-12 21:06:42.369190770 -0400
+@@ -42,6 +42,7 @@ CFLAGS_OPTIONS += $(CWARN)
+ CFLAGS_DEFINES := -DN_PLAT_LINUX -DLOCALEDIR=\"${localedir}\" -DNCPFS_VERSION=\"${VERSION}\" -DNCPFS_PACKAGE=\"${PACKAGE}\"
+ 
+ CCFLAGS := $(CFLAGS_DEFINES) $(CFLAGS_OPTIONS) $(INCLUDES)
++LDFLAGS := @LDFLAGS@
+ 
+ # If your system is ELF, either also do a 'make install', or append the util/
+ # directory where the dynamic library resides to the environment
+diff -Naurp ncpfs-2.2.6.orig/sutil/Makefile.in ncpfs-2.2.6/sutil/Makefile.in
+--- ncpfs-2.2.6.orig/sutil/Makefile.in	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6/sutil/Makefile.in	2014-08-12 21:06:42.369190770 -0400
+@@ -14,6 +14,7 @@ USE_KERNEL = @USE_KERNEL@
+ NDS_SUPPORT = @NDS_SUPPORT@
+ 
+ LIBS = @INTLLIBS@ @LIBS@
++LDFLAGS := @LDFLAGS@
+ 
+ # environ in ncpmount
+ CCFLAGS += -D_GNU_SOURCE
+@@ -69,7 +70,7 @@ $(O_UTILS:.o=.d): %.d: %.c
+ 		[ -s $@ ] || rm -f $@
+ 
+ ncpmap.o: %.o: ncplogin.c
+-	$(CC) $(CFLAGS) $(CCFLAGS) $(CFLAGS_$@) -o $@ -c $<
++	$(CC) $(CFLAGS) $(LDFLAGS) $(CCFLAGS) $(CFLAGS_$@) -o $@ -c $<
+ 
+ ncpmap.d: %.d: ncplogin.c
+ 	set -e; $(CC) -M $(CFLAGS) $(CCFLAGS) $(CFLAGS_$(@:.d=.o)) $< \
+@@ -85,7 +86,7 @@ ncpm_common.d mount_login.d: %.d: %.c
+ 		[ -s $@ ] || rm -f $@
+ 
+ $(UTILS): %: %.o ../lib/libncp.a ncpm_common.o mount_login.o
+-	$(CC) @GC_SECTIONS@-o $@ $(addsuffix .o,$@) $(LDFLAGS_$@) ../lib/libncp.a ${LIBS}
++	$(CC) @GC_SECTIONS@-o $@ $(addsuffix .o,$@) $(LDFLAGS) $(LDFLAGS_$@) ../lib/libncp.a ${LIBS}
+ 
+ ../lib/libncp.a:
+ 	make -C ../lib libncp.a
+diff -Naurp ncpfs-2.2.6.orig/util/Makefile.in ncpfs-2.2.6/util/Makefile.in
+--- ncpfs-2.2.6.orig/util/Makefile.in	2005-01-27 12:35:59.000000000 -0500
++++ ncpfs-2.2.6/util/Makefile.in	2014-08-12 21:06:42.369190770 -0400
+@@ -15,6 +15,7 @@ NDS_SUPPORT = @NDS_SUPPORT@
+ MOUNT2 = @MOUNT2@
+ 
+ LIBS = @INTLLIBS@ @LIBS@
++LDFLAGS = @LDFLAGS@
+ 
+ O_OTHER = dsqueue.o
+ O_USERUTILS = slist.o pqlist.o nwfsinfo.o pserver.o nprint.o nsend.o \
+@@ -83,7 +84,7 @@ install-dev:
+ 	make -C ../lib libncp.so
+ 
+ $(O_USERUTILS) $(O_SBINUTILS) $(O_OTHER) ncptest.o: %.o: %.c
+-	$(CC) $(CFLAGS) $(CCFLAGS) $(CFLAGS_$@) -o $@ -c $<
++	$(CC) $(CFLAGS) $(LDFLAGS) $(CCFLAGS) $(CFLAGS_$@) -o $@ -c $<
+ 
+ %.d: %.c
+ 	set -e; $(CC) -M $(CFLAGS) $(CCFLAGS) $(CFLAGS_$(@:.d=.o)) $< \
+@@ -94,10 +95,10 @@ $(O_USERUTILS) $(O_SBINUTILS) $(O_OTHER)
+ pqstat nwpqjob nprint: dsqueue.o
+ 
+ $(UTILS): %: %.o $(LIBDEP)
+-	$(CC) $(CFLAGS) -o $@ $(addsuffix .o,$@) $(ADDOBJS_$@) -L$(NCPLIB_DIR) -lncp ${LIBS}
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(addsuffix .o,$@) $(ADDOBJS_$@) -L$(NCPLIB_DIR) -lncp ${LIBS}
+ 
+ ipx_probe: ipx_probe.c
+-	$(CC) $(CFLAGS) $(CCFLAGS) -o ipx_probe ipx_probe.c ${LIBS}
++	$(CC) $(CFLAGS) $(LDFLAGS) $(CCFLAGS) -o ipx_probe ipx_probe.c ${LIBS}
+ 
+ dep:
+ 

@@ -1,0 +1,27 @@
+# ChangeLog for media-libs/sublib
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/sublib/ChangeLog,v 1.7 2014/08/10 21:12:26 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> sublib-0.9.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  06 Nov 2013; Patrick Lauer <patrick@gentoo.org> sublib-0.9.ebuild:
+  Shorten description, make repoman happier
+
+  30 Apr 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking sublib-0.9 ppc stable for bug 263984
+
+  04 Apr 2009; Markus Meier <maekke@gentoo.org> sublib-0.9.ebuild:
+  amd64/x86 stable, bug #234305
+
+  27 Mar 2009; Brent Baude <ranger@gentoo.org> sublib-0.9.ebuild:
+  Marking sublib-0.9 ~ppc for bug 234305
+
+  17 Aug 2008; Markus Meier <maekke@gentoo.org> sublib-0.9.ebuild:
+  add ~x86, bug #224547
+
+*sublib-0.9 (29 Jul 2008)
+
+  29 Jul 2008; Steve Dibb <beandog@gentoo.org> +metadata.xml,
+  +sublib-0.9.ebuild:
+  Initial commit, bug 224547

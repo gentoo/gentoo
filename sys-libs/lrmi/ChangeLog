@@ -1,0 +1,81 @@
+# ChangeLog for sys-libs/lrmi
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/lrmi/ChangeLog,v 1.24 2013/01/20 10:08:32 pacho Exp $
+
+  20 Jan 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due retirement, bug #35242
+
+  20 Aug 2010; Michał Januszewski <spock@gentoo.org> lrmi-0.10-r1.ebuild,
+  +files/lrmi-0.10-ldflags.patch:
+  Respect LDFLAGS (bug #331913).
+
+  08 Dec 2008; <ssuominen@gentoo.org> lrmi-0.10-r1.ebuild:
+  Respect AR, CC and RANLIB.
+
+  18 Oct 2008; Michał Januszewski <spock@gentoo.org> -lrmi-0.8.ebuild:
+  Remove an old ebuild.
+
+  09 Oct 2008; Markus Meier <maekke@gentoo.org> lrmi-0.10-r1.ebuild:
+  x86 stable, bug #239857
+
+  23 Aug 2008; Michał Januszewski <spock@gentoo.org> -lrmi-0.6.ebuild,
+  -lrmi-0.7.ebuild, -lrmi-0.9.ebuild, -lrmi-0.10.ebuild:
+  Remove old ebuilds.
+
+  23 Aug 2008; Michał Januszewski <spock@gentoo.org>
+  +files/lrmi-0.10-kernel-2.6.26.patch, lrmi-0.10-r1.ebuild:
+  Fix bug #235495.
+
+  10 Apr 2007; Michał Januszewski <spock@gentoo.org> metadata.xml:
+  Add myself as maintainer.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+*lrmi-0.10-r1 (14 Feb 2006)
+
+  14 Feb 2006; Mike Frysinger <vapier@gentoo.org> +lrmi-0.10-r1.ebuild:
+  Fix library installing as pointed out by the PaX Team.
+
+*lrmi-0.10 (24 Jan 2006)
+
+  24 Jan 2006; Mike Frysinger <vapier@gentoo.org> +lrmi-0.10.ebuild:
+  Version bump.
+
+  13 Nov 2005; Mark Loeser <halcy0n@gentoo.org> lrmi-0.8.ebuild:
+  Stable on x86; bug #112364
+
+*lrmi-0.9 (13 Nov 2005)
+
+  13 Nov 2005; Mike Frysinger <vapier@gentoo.org> +lrmi-0.9.ebuild:
+  Version bump #112179 by PaX Team.
+
+  08 Nov 2004; Daniel Drake <dsd@gentoo.org> lrmi-0.8.ebuild:
+  Library installation fix thanks to Stefan Schweizer <sschweizer@gmail.com> in
+  bug 57299 (ok'd by vapier)
+
+  07 Aug 2004; Tom Martin <slarti@gentoo.org> lrmi-0.8.ebuild:
+  Added fix for static library installation which was left out previously.
+
+  07 Aug 2004; Tom Martin <slarti@gentoo.org> lrmi-0.8.ebuild:
+  Fixed dynamic library installation; bug 57299. Thanks very much to Stefan
+  Schweizer <sschweizer@gmail.com> for reporting.
+
+  02 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> lrmi-0.6.ebuild,
+  lrmi-0.7.ebuild, lrmi-0.8.ebuild:
+  virtual/glibc -> virtual/libc
+
+*lrmi-0.8 (15 Jun 2004)
+
+  15 Jun 2004; Hanno Boeck <hanno@gentoo.org> +lrmi-0.8.ebuild:
+  Version bump.
+
+*lrmi-0.7 (23 Mar 2003)
+
+  23 Mar 2003; Hanno Boeck <hanno@gentoo.org> lrmi-0.7.ebuild :
+  New version.
+
+*lrmi-0.6 (21 Oct 2002)
+
+  21 Oct 2002; Hanno Boeck <hanno@gentoo.org> lrmi-0.6.0.ebuild :
+  Ebuild for lrmi added.

@@ -1,0 +1,125 @@
+# ChangeLog for mail-client/clawsker
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-client/clawsker/ChangeLog,v 1.32 2014/08/10 21:17:21 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> clawsker-0.7.10.ebuild,
+  clawsker-0.7.8.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*clawsker-0.7.10 (22 May 2013)
+
+  22 May 2013; Christian Faulhammer <fauli@gentoo.org> +clawsker-0.7.10.ebuild:
+  version bump
+
+  27 Dec 2012; Christian Faulhammer <fauli@gentoo.org> -clawsker-0.7.7.ebuild:
+  clean up
+
+  31 Oct 2012; Andreas Schuerch <nativemad@gentoo.org> clawsker-0.7.8.ebuild:
+  x86 stable, see bug 437814
+
+  24 Oct 2012; Agostino Sarubbo <ago@gentoo.org> clawsker-0.7.8.ebuild:
+  Stable for amd64, wrt bug #437814
+
+*clawsker-0.7.8 (01 Aug 2012)
+
+  01 Aug 2012; Christian Faulhammer <fauli@gentoo.org> +clawsker-0.7.8.ebuild:
+  version bump
+
+  17 Jul 2012; Christian Faulhammer <fauli@gentoo.org> -clawsker-0.7.5.ebuild:
+  clean up
+
+  03 Jul 2012; Agostino Sarubbo <ago@gentoo.org> clawsker-0.7.7.ebuild:
+  Stable for amd64, wrt bug #422093
+
+  02 Jul 2012; Jeff Horelick <jdhore@gentoo.org> clawsker-0.7.7.ebuild:
+  marked x86 per bug 422093
+
+*clawsker-0.7.7 (20 May 2012)
+
+  20 May 2012; Christian Faulhammer <fauli@gentoo.org> +clawsker-0.7.7.ebuild:
+  version bump
+
+  04 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #206112
+
+  31 Jul 2011; Christian Faulhammer <fauli@gentoo.org> -clawsker-0.7.2.ebuild:
+  clean up
+
+  16 Jul 2011; Markos Chandras <hwoarang@gentoo.org> clawsker-0.7.5.ebuild:
+  Stable on amd64 wrt bug #372957
+
+  29 Jun 2011; Markus Meier <maekke@gentoo.org> clawsker-0.7.5.ebuild:
+  x86 stable, bug #372957
+
+*clawsker-0.7.5 (13 Apr 2011)
+
+  13 Apr 2011; Christian Faulhammer <fauli@gentoo.org>
+  +clawsker-0.7.5.ebuild:
+  version bump
+
+  22 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  -clawsker-0.7.0.ebuild, -clawsker-0.7.1.ebuild:
+  clean up
+
+  07 Aug 2010; Markos Chandras <hwoarang@gentoo.org> clawsker-0.7.2.ebuild:
+  Stable on amd64 wrt bug #331395
+
+  06 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  clawsker-0.7.2.ebuild:
+  stable x86, bug 331395
+
+*clawsker-0.7.2 (03 Jul 2010)
+
+  03 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  +clawsker-0.7.2.ebuild:
+  version bump
+
+*clawsker-0.7.1 (12 Jun 2010)
+
+  12 Jun 2010; Christian Faulhammer <fauli@gentoo.org> +clawsker-0.7.1.ebuild:
+  version bump
+
+  26 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  -clawsker-0.6.0.ebuild:
+  clean up
+
+  01 Aug 2009; Jeremy Olexa <darkside@gentoo.org> clawsker-0.7.0.ebuild:
+  amd64 stable, bug 278682
+
+  24 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  clawsker-0.7.0.ebuild:
+  stable x86, bug 278682
+
+*clawsker-0.7.0 (07 Jul 2009)
+
+  07 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  +clawsker-0.7.0.ebuild:
+  version bump
+
+  22 Apr 2009; Christian Faulhammer <fauli@gentoo.org>
+  -clawsker-0.5.0.ebuild:
+  clean up
+
+  18 Apr 2009; Markus Meier <maekke@gentoo.org> clawsker-0.6.0:
+  amd64/x86 stable, bug #265105
+
+*clawsker-0.6.0 (06 Mar 2009)
+
+  06 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  +clawsker-0.6.0.ebuild:
+  version bump
+
+  28 Nov 2008; Markus Meier <maekke@gentoo.org> clawsker-0.5.0.ebuild:
+  amd64/x86 stable, bug #248760
+
+  28 Nov 2008; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
+  Change my email address
+
+  24 Oct 2008; Markus Meier <maekke@gentoo.org> clawsker-0.5.0.ebuild:
+  add ~amd64, bug #242406
+
+*clawsker-0.5.0 (16 Oct 2008)
+
+  16 Oct 2008; Christian Faulhammer <opfer@gentoo.org> +metadata.xml,
+  +clawsker-0.5.0.ebuild:
+  initial commit for bug 207032

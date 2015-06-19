@@ -1,0 +1,39 @@
+Ripped from Fedora which took this from upstream
+
+* Tue Nov 22 2005 Tim Waugh <twaugh@redhat.com>  3.0-37
+- Applied patch from upstream to fix parsing problem (bug #146638).
+
+http://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=146638
+
+--- bash-3.0/parse.y.subshell	2005-11-22 13:19:11.000000000 +0000
++++ bash-3.0/parse.y	2005-11-22 13:19:24.000000000 +0000
+@@ -2055,14 +2055,6 @@
+   if (uc)
+     shell_input_line_index++;
+ 
+-  if MBTEST(uc == '\\' && remove_quoted_newline && shell_input_line[shell_input_line_index] == '\n')
+-    {
+-	if (SHOULD_PROMPT ())
+-	  prompt_again ();
+-	line_number++;
+-	goto restart_read;
+-    }
+-
+ #if defined (ALIAS) || defined (DPAREN_ARITHMETIC)
+   /* If UC is NULL, we have reached the end of the current input string.  If
+      pushed_string_list is non-empty, it's time to pop to the previous string
+@@ -2078,6 +2070,14 @@
+     }
+ #endif /* ALIAS || DPAREN_ARITHMETIC */
+ 
++  if MBTEST(uc == '\\' && remove_quoted_newline && shell_input_line[shell_input_line_index] == '\n')
++    {
++	if (SHOULD_PROMPT ())
++	  prompt_again ();
++	line_number++;
++	goto restart_read;
++    }
++
+   if (!uc && shell_input_line_terminator == EOF)
+     return ((shell_input_line_index != 0) ? '\n' : EOF);
+ 

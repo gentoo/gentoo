@@ -1,0 +1,46 @@
+# ChangeLog for dev-perl/WebService-MusicBrainz
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/WebService-MusicBrainz/ChangeLog,v 1.9 2015/06/13 22:43:07 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  WebService-MusicBrainz-0.930.0-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*WebService-MusicBrainz-0.930.0-r1 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +WebService-MusicBrainz-0.930.0-r1.ebuild,
+  -WebService-MusicBrainz-0.930.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  25 Nov 2012; Samuli Suominen <ssuominen@gentoo.org>
+  WebService-MusicBrainz-0.930.0.ebuild:
+  ppc64 stable wrt #421795
+
+  22 Aug 2012; Michael Weber <xmw@gentoo.org>
+  WebService-MusicBrainz-0.930.0.ebuild:
+  ppc stable (bug 421795).
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  18 Jun 2012; Jeff Horelick <jdhore@gentoo.org>
+  WebService-MusicBrainz-0.930.0.ebuild:
+  marked x86 per bug 421795
+
+  18 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  WebService-MusicBrainz-0.930.0.ebuild:
+  Stable for amd64, wrt bug #421795
+
+*WebService-MusicBrainz-0.930.0 (19 May 2012)
+
+  19 May 2012; Torsten Veller <tove@gentoo.org>
+  -WebService-MusicBrainz-0.93.ebuild, +WebService-MusicBrainz-0.930.0.ebuild:
+  Change version scheme. Disable online tests
+
+*WebService-MusicBrainz-0.93 (10 May 2012)
+
+  10 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +WebService-MusicBrainz-0.93.ebuild:
+  Initial commit as a prerequisite for bug 415319.

@@ -1,0 +1,45 @@
+# ChangeLog for media-video/snappy
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/snappy/ChangeLog,v 1.10 2014/07/23 15:23:23 ago Exp $
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> snappy-1.0.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> snappy-1.0.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  27 Apr 2014; Pacho Ramos <pacho@gentoo.org> -snappy-0.2.ebuild,
+  -snappy-9999.ebuild:
+  Drop old and live ebuild as nobody is really maintaining it (was completely
+  outdated for current master)
+
+*snappy-1.0 (29 Mar 2014)
+
+  29 Mar 2014; Pacho Ramos <pacho@gentoo.org> +snappy-1.0.ebuild:
+  Version bump
+
+  11 Mar 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #239126
+
+  07 Nov 2011; Nirbheek Chauhan <nirbheek@gentoo.org> snappy-0.2.ebuild,
+  snappy-9999.ebuild:
+  Collides with spice-gtk, add a blocker for now with a FIXME so that it
+  doesn't get forgotten.
+
+  21 Sep 2011; Michał Górny <mgorny@gentoo.org> snappy-9999.ebuild:
+  Migrate to git-2.
+
+*snappy-0.2 (20 Jun 2011)
+
+  20 Jun 2011; Nirbheek Chauhan <nirbheek@gentoo.org> +snappy-0.2.ebuild:
+  Bump to 0.2, with many new features!
+  See http://luisbg.blogalia.com/historias/69950
+
+  15 Jun 2011; Nirbheek Chauhan <nirbheek@gentoo.org> snappy-9999.ebuild:
+  Fix description by inheriting before setting DESCRIPTION
+
+*snappy-9999 (14 Jun 2011)
+
+  14 Jun 2011; Nirbheek Chauhan <nirbheek@gentoo.org> +snappy-9999.ebuild,
+  +metadata.xml:
+  Add the media player snappy because leio wants it in the tree

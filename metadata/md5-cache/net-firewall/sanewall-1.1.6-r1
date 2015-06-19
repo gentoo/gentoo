@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst setup
+DEPEND=app-arch/xz-utils
+DESCRIPTION=iptables firewall generator (fork of firehol)
+EAPI=5
+HOMEPAGE=http://www.sanewall.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=net-firewall/iptables[ipv6] sys-apps/iproute2[-minimal] virtual/modutils || ( net-misc/wget net-misc/curl )
+SLOT=0
+SRC_URI=http://download.sanewall.org/releases/1.1.6/sanewall-1.1.6.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=50e82b91a36d66d821feb79a923d4add

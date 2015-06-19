@@ -1,0 +1,40 @@
+# ChangeLog for app-forensics/rdd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/rdd/ChangeLog,v 1.9 2015/06/09 11:15:57 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  27 Jul 2013; Rick Farina <zerochaos@gentoo.org> rdd-3.0.4-r1.ebuild:
+  already getting complaints about parallel build failures, adding -j1
+
+  27 Jul 2013; Rick Farina <zerochaos@gentoo.org> -rdd-2.0.7.ebuild,
+  -rdd-3.0.4.ebuild, metadata.xml:
+  remove old, outdated, etc
+
+*rdd-3.0.4-r1 (26 Jul 2013)
+
+  26 Jul 2013; Rick Farina <zerochaos@gentoo.org>
+  +files/rdd-3.0.4-sandbox-fix.patch, +rdd-3.0.4-r1.ebuild, rdd-2.0.7.ebuild:
+  add USE=doc, disable html doc generation due to failure, fix sandbox issue
+
+  10 May 2013; Patrick Lauer <patrick@gentoo.org> rdd-3.0.4.ebuild:
+  Whitespace
+
+*rdd-3.0.4 (04 Apr 2013)
+
+  04 Apr 2013; Patrick Lauer <patrick@gentoo.org> +rdd-3.0.4.ebuild:
+  Bump
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> rdd-2.0.7.ebuild:
+  Fix slot-deps on gnome libs
+
+  11 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org> rdd-2.0.7.ebuild:
+  Fix DEPEND/RDEPEND assignment.
+
+*rdd-2.0.7 (01 Mar 2009)
+
+  01 Mar 2009; Patrick Lauer <patrick@gentoo.org> +metadata.xml,
+  +rdd-2.0.7.ebuild:
+  Initial import. Fixes #181189. Ebuild by RB <aoz.syn@gmail.com> based on
+  work by Pieter de Rijk.

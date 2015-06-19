@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>games</herd>
+<longdescription lang="en">
+Berusky is a free logic game, published under GNU Public License and it's based
+on an ancient puzzle named Sokoban.
+
+An old idea of moving boxes in a maze has been expanded with new logic items
+such as explosives, stones, special gates and so on. In addition, up to five
+bugs can cooperate and be controlled by the player.
+
+In order to leave each level (there's about 120 levels in the game) it is
+necessary to own five keys and also to have a free way to the exit. 
+</longdescription>
+</pkgmetadata>

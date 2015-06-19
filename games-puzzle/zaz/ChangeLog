@@ -1,0 +1,81 @@
+# ChangeLog for games-puzzle/zaz
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/zaz/ChangeLog,v 1.19 2014/06/13 15:50:01 mr_bones_ Exp $
+
+  13 Jun 2014; Michael Sterrett <mr_bones_@gentoo.org> zaz-1.0.0.ebuild:
+  EAPI=5; fix build (bug #510432)
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> zaz-1.0.0.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> zaz-1.0.0.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> zaz-1.0.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  05 Oct 2010; Markus Meier <maekke@gentoo.org> zaz-1.0.0.ebuild:
+  x86 stable, bug #339146
+
+  30 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> zaz-1.0.0.ebuild:
+  amd64 stable wrt #339146
+
+  29 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> zaz-1.0.0.ebuild:
+  Replace po/Makefile.in.in with a system copy wrt #336119 by Barrie
+  Backhurst.
+
+*zaz-1.0.0 (04 Sep 2010)
+
+  04 Sep 2010; Michael Sterrett <mr_bones_@gentoo.org> +zaz-1.0.0.ebuild,
+  +files/zaz-1.0.0-build.patch:
+  version bump
+
+  11 Jul 2010; Christian Faulhammer <fauli@gentoo.org> zaz-0.7.0.ebuild:
+  stable x86, bug 325367
+
+  26 Jun 2010; Christoph Mende <angelos@gentoo.org> zaz-0.7.0.ebuild:
+  Stable on amd64 wrt bug #325367
+
+*zaz-0.7.0 (25 May 2010)
+
+  25 May 2010; Michael Sterrett <mr_bones_@gentoo.org> +zaz-0.7.0.ebuild,
+  +files/zaz-0.7.0-build.patch:
+  version bump (bug #319527)
+
+  23 May 2010; Pacho Ramos <pacho@gentoo.org> zaz-0.3.3.ebuild:
+  stable amd64, bug 311261
+
+  03 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> zaz-0.3.3.ebuild:
+  x86 stable wrt bug #311261
+
+*zaz-0.3.3 (23 Feb 2010)
+
+  23 Feb 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/zaz-0.2.9-build.patch, +zaz-0.3.3.ebuild,
+  +files/zaz-0.3.3-build.patch:
+  version bump
+
+  16 Nov 2009; Markus Meier <maekke@gentoo.org> zaz-0.3.0.ebuild:
+  amd64/x86 stable, bug #292591
+
+*zaz-0.3.0 (08 Oct 2009)
+
+  08 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org> +zaz-0.3.0.ebuild,
+  +files/zaz-0.3.0-build.patch:
+  version bump
+
+*zaz-0.2.9 (03 Sep 2009)
+
+  03 Sep 2009; Michael Sterrett <mr_bones_@gentoo.org> +zaz-0.2.9.ebuild,
+  +files/zaz-0.2.9-build.patch:
+  version bump
+
+  27 Aug 2009; Tristan Heaven <nyhm@gentoo.org> zaz-0.2.8.ebuild:
+  Add ~amd64 keyword
+
+*zaz-0.2.8 (26 Aug 2009)
+
+  26 Aug 2009; Michael Sterrett <mr_bones_@gentoo.org> +zaz-0.2.8.ebuild,
+  +files/zaz-0.2.8-build.patch, +metadata.xml:
+  Initial commit (bug #282349)

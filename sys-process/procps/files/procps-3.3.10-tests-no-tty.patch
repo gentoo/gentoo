@@ -1,0 +1,122 @@
+https://bugs.gentoo.org/461302
+
+From 4050148a4533e8a79cef0d7dcd0c058d78c48a31 Mon Sep 17 00:00:00 2001
+From: Craig Small <csmall@enc.com.au>
+Date: Sat, 9 May 2015 17:48:12 +1000
+Subject: [PATCH] Fix some sched and tty tests
+
+The ps sched test has been disabled. There are too many
+odd build farms this fails in strange ways.
+
+Other odd build farms have no tty and so some tests check
+for no tty and skip if not found.
+---
+ testsuite/config/unix.exp            |  9 +++++++++
+ testsuite/pgrep.test/pgrep.exp       | 11 +++++++----
+ testsuite/pkill.test/pkill.exp       |  3 +--
+ testsuite/ps.test/ps_output.exp      |  2 --
+ testsuite/ps.test/ps_sched_batch.exp | 16 +++++++++-------
+ 5 files changed, 26 insertions(+), 15 deletions(-)
+
+diff --git a/testsuite/config/unix.exp b/testsuite/config/unix.exp
+index 522efb1..1318e9a 100644
+--- a/testsuite/config/unix.exp
++++ b/testsuite/config/unix.exp
+@@ -146,3 +146,12 @@ proc kill_testproc { } {
+     kill_process $testproc2_pid
+     file delete $testproc_path
+ }
++
++proc get_tty {} {
++    if { [catch { set raw_tty [ exec tty ] } msg]} {
++        warning "No TTY found"
++        return ""
++    }
++    regexp "/dev/(.+)" $raw_tty > tty
++    return $tty
++}
+diff --git a/testsuite/pgrep.test/pgrep.exp b/testsuite/pgrep.test/pgrep.exp
+index 152b6ec..1c6cec6 100644
+--- a/testsuite/pgrep.test/pgrep.exp
++++ b/testsuite/pgrep.test/pgrep.exp
+@@ -9,8 +9,7 @@ set not_uid [ expr { $uid + 1 } ]
+ set gid [ exec id -g ]
+ set not_gid [ expr { $gid + 1 } ] 
+ set ps "${topdir}ps/pscommand"
+-set raw_tty [ exec tty ]
+-regexp "/dev/(.+)" $raw_tty > tty
++set tty [ get_tty ]
+ 
+ set test "pgprep with no arguments"
+ spawn $pgrep
+@@ -80,8 +79,12 @@ spawn $pgrep -s 1 $testproc_comm
+ expect_blank "$test"
+ 
+ set test "pgrep matches on tty"
+-spawn $pgrep -t $tty $testproc_comm
+-expect_pass "$test" "^$testproc1_pid\\s+$testproc2_pid\\s*$"
++if { $tty == "" } {
++  untested "$test"
++} else {
++    spawn $pgrep -t $tty $testproc_comm
++    expect_pass "$test" "^$testproc1_pid\\s+$testproc2_pid\\s*$"
++}
+ 
+ set test "pgrep doesn't match with bogus tty"
+ spawn $pgrep -t glass $testproc_comm
+diff --git a/testsuite/pkill.test/pkill.exp b/testsuite/pkill.test/pkill.exp
+index 5eece7d..c583cbe 100644
+--- a/testsuite/pkill.test/pkill.exp
++++ b/testsuite/pkill.test/pkill.exp
+@@ -9,8 +9,7 @@ set not_uid [ expr { $uid + 1 } ]
+ set gid [ exec id -g ]
+ set not_gid [ expr { $gid + 1 } ] 
+ set ps "${topdir}ps/pscommand"
+-set raw_tty [ exec tty ]
+-regexp "/dev/(.+)" $raw_tty > tty
++set tty [ get_tty ]
+ 
+ set test "pkill with no arguments"
+ spawn $pkill
+diff --git a/testsuite/ps.test/ps_output.exp b/testsuite/ps.test/ps_output.exp
+index 3a6f3d8..1b2c097 100644
+--- a/testsuite/ps.test/ps_output.exp
++++ b/testsuite/ps.test/ps_output.exp
+@@ -9,8 +9,6 @@ set uid [ exec id -u ]
+ set not_uid [ expr { $uid + 1 } ] 
+ set gid [ exec id -g ]
+ set not_gid [ expr { $gid + 1 } ] 
+-set raw_tty [ exec tty ]
+-regexp "/dev/(.+)" $raw_tty > tty
+ 
+ # All the fields
+ # Cannot do args,cmd,comm
+diff --git a/testsuite/ps.test/ps_sched_batch.exp b/testsuite/ps.test/ps_sched_batch.exp
+index e0c31ff..c58b9a2 100644
+--- a/testsuite/ps.test/ps_sched_batch.exp
++++ b/testsuite/ps.test/ps_sched_batch.exp
+@@ -1,12 +1,14 @@
+ #
+ # check the ps SCHED_BATCH scheduler policy output
+ #
+-set ps "${topdir}ps/pscommand"
+-set schedbatch "${topdir}testsuite/test-schedbatch"
+-
+-spawn $schedbatch 18
+-
++# This is too flaky on certain build systems to be
++# reliable - CS
++#set ps "${topdir}ps/pscommand"
++#set schedbatch "${topdir}testsuite/test-schedbatch"
++#
++#spawn $schedbatch 18
++#
+ set test "ps SCHED_BATCH scheduler"
+-spawn $ps --no-header -o comm,cls,nice -a
+-expect_pass "$test" "\\s+test-schedbatch\\s+B\\s+18"
++#spawn $ps --no-header -o comm,cls,nice -a
++#expect_pass "$test" "\\s+test-schedbatch\\s+B\\s+18"
+ untested "$test"
+-- 
+2.4.0
+

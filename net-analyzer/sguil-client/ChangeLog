@@ -1,0 +1,65 @@
+# ChangeLog for net-analyzer/sguil-client
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sguil-client/ChangeLog,v 1.15 2015/03/25 16:07:17 jlec Exp $
+
+  25 Mar 2015; Justin Lecher <jlec@gentoo.org> sguil-client-0.8.0.ebuild,
+  sguil-client-0.9.0.ebuild:
+  Fix tcl/tk slotting
+
+*sguil-client-0.9.0 (17 Jul 2014)
+
+  17 Jul 2014; Jeroen Roovers <jer@gentoo.org> +sguil-client-0.9.0.ebuild:
+  Version bump.
+
+  16 Jul 2014; Jeroen Roovers <jer@gentoo.org> sguil-client-0.8.0.ebuild:
+  EAPI bump.
+
+  18 Sep 2012; Tim Harder <radhermit@gentoo.org> -sguil-client-0.6.1.ebuild:
+  Remove old.
+
+*sguil-client-0.8.0 (30 Apr 2012)
+
+  30 Apr 2012; Jeroen Roovers <jer@gentoo.org> +sguil-client-0.8.0.ebuild:
+  Version bump.
+
+  30 Apr 2012; Jeroen Roovers <jer@gentoo.org> sguil-client-0.6.1.ebuild:
+  Install everything in client/lib. Remove sed script by Greg Watson (bug
+  190584).
+
+  29 Apr 2012; Jeroen Roovers <jer@gentoo.org> sguil-client-0.6.1.ebuild:
+  Fix inherit. Remove empty DEPEND. Remove useless elog.
+
+  08 Mar 2009; Dawid Węgliński <cla@gentoo.org> sguil-client-0.6.1.ebuild:
+  Migration to EAPI 2, add get_libdir() fix, keyword ~amd64
+
+  16 Aug 2008; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove strerror from metadata.xml (#89719)
+
+  01 May 2007; Marius Mauch <genone@gentoo.org> sguil-client-0.6.1.ebuild:
+  Replacing einfo with elog
+
+  25 Jul 2006; Daniel Black <dragonheart@gentoo.org>
+  -sguil-client-0.5.3.ebuild, -sguil-client-0.6.0_p1.ebuild:
+  cleanout to support ethereal -> wireshark transition
+
+  21 Jul 2006; Benjamin Smee <strerror@gentoo.org>
+  sguil-client-0.6.1.ebuild:
+  Change to ebuild for bug #141151
+
+*sguil-client-0.6.1 (01 Mar 2006)
+
+  01 Mar 2006; Benjamin Smee <strerror@gentoo.org>
+  +sguil-client-0.6.1.ebuild:
+  Version bump
+
+*sguil-client-0.6.0_p1 (24 Dec 2005)
+
+  24 Dec 2005; Benjamin Smee <strerror@gentoo.org>
+  +sguil-client-0.6.0_p1.ebuild:
+  Version bump
+
+*sguil-client-0.5.3 (08 Oct 2005)
+
+  08 Oct 2005; Benjamin Smee <strerror@gentoo.org> +metadata.xml,
+  +sguil-client-0.5.3.ebuild:
+  Initial import

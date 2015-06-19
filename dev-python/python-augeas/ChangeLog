@@ -1,0 +1,62 @@
+# ChangeLog for dev-python/python-augeas
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-augeas/ChangeLog,v 1.14 2015/04/08 08:05:07 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> python-augeas-0.4.1.ebuild,
+  python-augeas-0.4.2_pre131218.ebuild, python-augeas-0.5.0.ebuild:
+  Drop old Python implementations
+
+*python-augeas-0.5.0 (04 Feb 2015)
+
+  04 Feb 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +python-augeas-0.5.0.ebuild:
+  bumping for bug 538292
+
+  02 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -python-augeas-0.4.0.ebuild:
+  Remove old.
+
+  28 Dec 2014; Mike Gilbert <floppym@gentoo.org> python-augeas-0.4.1.ebuild,
+  python-augeas-0.4.2_pre131218.ebuild:
+  Drop PYTHON_MODNAME.
+
+  27 Nov 2014; Pacho Ramos <pacho@gentoo.org>
+  python-augeas-0.4.2_pre131218.ebuild:
+  Support python 3.4
+
+  21 Jan 2014; Ultrabug <ultrabug@gentoo.org>
+  python-augeas-0.4.2_pre131218.ebuild:
+  fix invalid DOCS thx to @angry_vincent
+
+*python-augeas-0.4.2_pre131218 (18 Dec 2013)
+
+  18 Dec 2013; Justin Lecher <jlec@gentoo.org>
+  +python-augeas-0.4.2_pre131218.ebuild:
+  Add latest snapshot with py3 support
+
+*python-augeas-0.4.1 (17 Dec 2013)
+
+  17 Dec 2013; Justin Lecher <jlec@gentoo.org> +python-augeas-0.4.1.ebuild,
+  metadata.xml:
+  Version Bump; bump to new distutils-r1.eclass
+
+  03 Feb 2013; Matthew Thode <prometheanfire@gentoo.org> metadata.xml:
+  taking maintership
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> -python-augeas-0.3.0.ebuild,
+  metadata.xml:
+  Cleanup due #22900
+
+*python-augeas-0.4.0 (11 May 2011)
+
+  11 May 2011; MATSUU Takuto <matsuu@gentoo.org> +python-augeas-0.4.0.ebuild:
+  Version bumped. Added src_test.
+
+  11 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  python-augeas-0.3.0.ebuild:
+  Set SUPPORT_PYTHON_ABIS (bug #345541).
+
+*python-augeas-0.3.0 (24 Feb 2009)
+
+  24 Feb 2009; MATSUU Takuto <matsuu@gentoo.org> +metadata.xml,
+  +python-augeas-0.3.0.ebuild:
+  Initial import, bug #229361.

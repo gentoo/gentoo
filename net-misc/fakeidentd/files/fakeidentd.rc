@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/fakeidentd/files/fakeidentd.rc,v 1.7 2004/10/26 05:14:22 vapier Exp $
+
+depend() {
+	use net
+}
+
+start() {
+	ebegin "Starting fakeidentd"
+	fakeidentd ${FAKEIDENTD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping fakeidentd"
+	start-stop-daemon --stop --pidfile /var/run/fakeidentd.pid
+	local ret=$?
+	rm -f /var/run/fakeidentd.pid
+	eend ${ret}
+}

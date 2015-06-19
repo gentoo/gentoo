@@ -1,0 +1,9 @@
+# ChangeLog for dev-util/obs-service-update_source
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/obs-service-update_source/ChangeLog,v 1.1 2013/11/02 10:05:31 scarabeus Exp $
+
+*obs-service-update_source-20130802 (02 Nov 2013)
+
+  02 Nov 2013; Tomáš Chvátal <scarabeus@gentoo.org> +metadata.xml,
+  +obs-service-update_source-20130802.ebuild:
+  Initial commit of source-update service.

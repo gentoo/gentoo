@@ -1,0 +1,24 @@
+# ChangeLog for sys-apps/lkcdutils
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/lkcdutils/ChangeLog,v 1.6 2009/01/02 05:24:37 vapier Exp $
+
+*lkcdutils-6.2.0 (02 Jan 2009)
+
+  02 Jan 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/lkcdutils-6.2.0-build.patch, +lkcdutils-6.2.0.ebuild:
+  Version bump #146515 by toto.
+
+  04 May 2008; Mike Frysinger <vapier@gentoo.org> lkcdutils-4.1.1.ebuild:
+  Remove wrong stuff from RDEPEND #220213 by Samuli Suominen.
+
+  30 Jun 2004; Aron Griffis <agriffis@gentoo.org> lkcdutils-4.1.1.ebuild:
+  sync IUSE (missing)
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> lkcdutils-4.1.1.ebuild:
+  Add inherit eutils
+
+*lkcdutils-4.1.1 (17 Apr 2004)
+
+  17 Apr 2004; Michael McCabe <randy@gentoo.org> +lkcdutils-4.1.1.ebuild:
+  New ebuild submitted by Jochen Eisinger <jochen@penguin-breeder.org>
+

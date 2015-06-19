@@ -1,0 +1,30 @@
+# ChangeLog for dev-haskell/data-binary-ieee754
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/data-binary-ieee754/ChangeLog,v 1.5 2014/07/25 08:58:55 slyfox Exp $
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*data-binary-ieee754-0.4.4 (13 Sep 2013)
+
+  13 Sep 2013; Mark Wright <gienah@gentoo.org>
+  +data-binary-ieee754-0.4.4.ebuild:
+  Bump data-binary-ieee754 to 0.4.4
+
+*data-binary-ieee754-0.4.3 (22 Dec 2012)
+
+  22 Dec 2012; Sergei Trofimovich <slyfox@gentoo.org>
+  +data-binary-ieee754-0.4.3.ebuild:
+  Version bump.
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org>
+  data-binary-ieee754-0.4.2.1.ebuild:
+  move dev-haskell/data-binary-ieee754/data-binary-ieee754-0.4.2.1.ebuild ebuild
+  to mirror://hackage
+
+*data-binary-ieee754-0.4.2.1 (12 Jan 2012)
+
+  12 Jan 2012; Sergei Trofimovich <slyfox@gentoo.org>
+  +data-binary-ieee754-0.4.2.1.ebuild, +metadata.xml:
+  Initial import. Haskell library to convert Float and Decimal values to/from
+  raw octets. Depend for dev-util/bustle-0.3.1

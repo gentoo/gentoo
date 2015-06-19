@@ -1,0 +1,20 @@
+diff -ru xerces-2_7_1/build.xml xerces-2_7_1-patched/build.xml
+--- xerces-2_7_1/build.xml	2005-07-26 16:09:07.000000000 -0400
++++ xerces-2_7_1-patched/build.xml	2005-12-08 23:51:32.000000000 -0500
+@@ -442,16 +442,6 @@
+       additionalparam='${additional.param}'
+       />
+     <mkdir dir='${build.dir}/docs/javadocs/other'/>
+-    <javadoc packagenames='org.apache.html.*,
+-                           org.apache.wml.*,
+-                           org.apache.xml.serialize.*'
+-      locale='en_US'
+-      sourcepath='${build.src}' destdir='${build.dir}/docs/javadocs/other'
+-      author='true' version='true'
+-      windowtitle='Other Classes' doctitle='Other Classes'
+-      bottom='${copyright}'
+-      additionalparam='${additional.param}'
+-      />
+   </target>
+ 
+   <!-- =================================================================== -->

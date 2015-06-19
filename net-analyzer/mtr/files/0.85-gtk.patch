@@ -1,0 +1,40 @@
+--- a/display.c
++++ b/display.c
+@@ -45,7 +45,7 @@
+ #include "mtr-curses.h"
+ #endif
+ 
+-#ifdef NO_GTK
++#if (NO_GTK == 1)
+ #define gtk_open()
+ #define gtk_close()
+ #define gtk_redraw()
+@@ -71,7 +71,7 @@
+   DisplayMode = DisplayCurses;
+ #endif
+ 
+-#ifndef NO_GTK
++#if (NO_GTK == 0)
+   if(gtk_detect(argc, argv)) {
+     DisplayMode = DisplayGTK;
+   }
+--- a/gtk.c
++++ b/gtk.c
+@@ -26,7 +26,7 @@
+ #include <sys/types.h>
+ #include <string.h>
+ 
+-#ifndef NO_GTK
++#if (NO_GTK == 0)
+ #include <string.h>
+ #include <sys/types.h>
+ #include <gtk/gtk.h>
+@@ -38,7 +38,7 @@
+ #include "version.h"
+ 
+ #include "img/mtr_icon.xpm"
+-#endif
++#endif /* NO_GTK == 0 */
+ 
+ gint gtk_ping(gpointer data);
+ gint Copy_activate(GtkWidget *widget, gpointer data);

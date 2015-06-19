@@ -1,0 +1,217 @@
+# ChangeLog for dev-perl/Cache-Cache
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Cache-Cache/ChangeLog,v 1.59 2014/08/23 22:16:32 axs Exp $
+
+*Cache-Cache-1.60.0-r1 (23 Aug 2014)
+
+  23 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Cache-Cache-1.60.0-r1.ebuild, -Cache-Cache-1.60.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  23 Nov 2012; Anthony G. Basile <blueness@gentoo.org> ChangeLog:
+  Fix failed gpg signiture on Manifest
+
+  23 Nov 2012; Anthony G. Basile <blueness@gentoo.org>
+  Cache-Cache-1.60.0.ebuild:
+  keyword ~arm, bug #442816
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -Cache-Cache-1.05.ebuild:
+  Cleanup
+
+  19 Mar 2012; Raúl Porcel <armin76@gentoo.org> Cache-Cache-1.05.ebuild,
+  Cache-Cache-1.60.0.ebuild:
+  Drop ia64/sparc keywords
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Cache-Cache-1.60.0.ebuild:
+  x86 stable wrt bug #400047
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> Cache-Cache-1.60.0.ebuild:
+  Marking Cache-Cache-1.60.0 ppc64 for bug 400047
+
+  27 Feb 2012; Brent Baude <ranger@gentoo.org> Cache-Cache-1.60.0.ebuild:
+  Marking Cache-Cache-1.60.0 ppc for bug 400047
+
+  27 Feb 2012; Jeroen Roovers <jer@gentoo.org> Cache-Cache-1.60.0.ebuild:
+  Stable for HPPA (bug #400047).
+
+  25 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  Cache-Cache-1.60.0.ebuild:
+  Stable on alpha, bug #400047
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Cache-Cache-1.60.0.ebuild:
+  Stable for amd64, wrt bug #400047
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Cache-Cache-1.06.ebuild:
+  Cleanup
+
+*Cache-Cache-1.60.0 (01 Sep 2011)
+
+  01 Sep 2011; Torsten Veller <tove@gentoo.org> +Cache-Cache-1.60.0.ebuild:
+  Change version scheme
+
+  23 Dec 2009; Fabian Groffen <grobian@gentoo.org> Cache-Cache-1.06.ebuild:
+  Marked ~x86-solaris, bug #296509
+
+  02 May 2009; Torsten Veller <tove@gentoo.org> -Cache-Cache-1.04.ebuild:
+  Cleanup
+
+*Cache-Cache-1.06 (02 Mar 2009)
+
+  02 Mar 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Cache-Cache-1.06.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  15 Apr 2007; Markus Rothe <corsair@gentoo.org> Cache-Cache-1.05.ebuild:
+  Stable on ppc64
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> Cache-Cache-1.05.ebuild:
+  Stable on x86, bug #169152.
+
+  14 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Cache-Cache-1.04.ebuild, Cache-Cache-1.05.ebuild:
+  Ebuild maintenance
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Cache-Cache-1.05.ebuild:
+  Stable on Alpha.
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Cache-Cache-1.05.ebuild:
+  Stable on ia64.
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Cache-Cache-1.05.ebuild:
+  ppc stable
+
+  10 Sep 2006; Michael Cummings <mcummings@gentoo.org>
+  -Cache-Cache-1.03.ebuild:
+  Removing stale version
+
+  28 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Cache-Cache-1.05.ebuild:
+  Stable on hppa
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Cache-Cache-1.05.ebuild:
+  Marking amd64, sparc stable
+
+  04 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Cache-Cache-1.03.ebuild, Cache-Cache-1.04.ebuild, Cache-Cache-1.05.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  03 Jul 2006; Christian Hartmann <ian@gentoo.org> Cache-Cache-1.03.ebuild,
+  Cache-Cache-1.04.ebuild, Cache-Cache-1.05.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed DEPEND
+
+  29 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Cache-Cache-1.05.ebuild:
+  Keyworded ~hppa
+
+*Cache-Cache-1.05 (23 Jun 2006)
+
+  23 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  +Cache-Cache-1.05.ebuild:
+  Version bump upstream
+
+  13 Feb 2006; <mcumming@gentoo.org> Cache-Cache-1.03.ebuild,
+  Cache-Cache-1.04.ebuild:
+  Virtual for perl-core dep
+
+  06 Feb 2006; Simon Stelling <blubb@gentoo.org> Cache-Cache-1.04.ebuild:
+  stable on amd64
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> Cache-Cache-1.04.ebuild:
+  Mark 1.04 stable on ia64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> Cache-Cache-1.04.ebuild:
+  Mark 1.04 stable on alpha
+
+  15 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  Cache-Cache-1.04.ebuild:
+  Stable on ppc.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Cache-Cache-1.04.ebuild:
+  Marking stable sparc x86
+
+  28 Nov 2005; Tom Gall <tgall@gentoo.org> Cache-Cache-1.04.ebuild:
+  stable on ppc64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> Cache-Cache-1.04.ebuild:
+  add ~ia64
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Cache-Cache-1.03.ebuild:
+  dev-perl/Storable => perl-core/Storable migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Cache-Cache-1.04.ebuild:
+  dev-perl/Storable => perl-core/Storable migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Cache-Cache-1.03.ebuild:
+  dev-perl/File-Spec => perl-core/File-Spec migration
+
+*Cache-Cache-1.04 (24 Apr 2005)
+
+  24 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Cache-Cache-1.01.ebuild, -Cache-Cache-1.02.ebuild,
+  +Cache-Cache-1.04.ebuild:
+  version bump; cleaning
+
+  21 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Cache-Cache-1.03.ebuild:
+  Stable on ppc.
+
+  01 Apr 2005; Simon Stelling <blubb@gentoo.org> Cache-Cache-1.03.ebuild:
+  stable on amd64
+
+  22 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> Cache-Cache-1.03.ebuild:
+  Stable on sparc
+
+  22 Jan 2005; Bryan Østergaard <kloeri@gentoo.org>
+  Cache-Cache-1.03.ebuild:
+  Stable on alpha.
+
+  21 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  Cache-Cache-1.03.ebuild:
+  Unmasking for x86
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  24 Dec 2004; Yuta SATOH <nigoro@gentoo.org> Cache-Cache-1.03.ebuild:
+  added ~ppc64
+
+*Cache-Cache-1.03 (19 Oct 2004)
+
+  19 Oct 2004; Michael Cummings <mcummings@gentoo.org>
+  +Cache-Cache-1.03.ebuild:
+  New version on cpan; tested on sparc
+
+  24 May 2004; Bryan Østergaard <kloeri@gentoo.org> Cache-Cache-1.02.ebuild:
+  Stable on alpha.
+
+  20 Jan 2004; <gustavoz@gentoo.org> Cache-Cache-1.02.ebuild:
+  stable on sparc
+
+*Cache-Cache-1.02 (05 Jun 2003)
+
+  05 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  Cache-Cache-1.02.ebuild:
+  Version bump from CPAN, corrected DESCRIPTION
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*Cache-Cache-1.01 (13 Nov 2002)
+
+  13 Nov 2002; Matthew Kennedy <mkennedy@gentoo.org>
+  Cache-Cache-1.01.ebuild, ChangeLog,
+  files/digest-Cache-Cache-1.01 :
+
+  Initial import. Required dep by updated version of HTML::Mason.

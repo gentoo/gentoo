@@ -1,0 +1,36 @@
+# ChangeLog for media-gfx/pictureflow
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/pictureflow/ChangeLog,v 1.9 2014/05/30 21:39:37 pesa Exp $
+
+  30 May 2014; Davide Pesavento <pesa@gentoo.org> metadata.xml:
+  Drop to maintainer-needed.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> pictureflow-0.1.0.ebuild:
+  Move Qt dependencies to the new category
+
+  19 Jul 2012; Michael Palimaka <kensington@gentoo.org>
+  pictureflow-0.1.0.ebuild:
+  Add missing slot dependencies on Qt.
+
+  13 Jun 2011; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove myself from metadata.xml
+
+  12 Jan 2010; <hwoarang@gentoo.org> pictureflow-0.1.0.ebuild:
+  Stable on amd64 wrt bug #300035
+
+  07 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  pictureflow-0.1.0.ebuild:
+  stable x86, bug 300035
+
+  07 Jan 2010; <hwoarang@gentoo.org> pictureflow-0.1.0.ebuild:
+  migrate to qt4-r2 eclass
+
+  11 May 2009; Ferris McCormick <fmccor@gentoo.org>
+  pictureflow-0.1.0.ebuild:
+  Add ~sparc for testing.
+
+*pictureflow-0.1.0 (09 May 2009)
+
+  09 May 2009; Markos Chandras <hwoarang@gentoo.org>
+  +pictureflow-0.1.0.ebuild, +metadata.xml:
+  Initial commit for pictureflow

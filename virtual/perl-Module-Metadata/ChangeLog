@@ -1,0 +1,238 @@
+# ChangeLog for virtual/perl-Module-Metadata
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/perl-Module-Metadata/ChangeLog,v 1.51 2015/06/08 20:16:07 dilfridge Exp $
+
+*perl-Module-Metadata-1.0.26 (08 Jun 2015)
+
+  08 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Module-Metadata-1.0.11-r1.ebuild, +perl-Module-Metadata-1.0.26.ebuild:
+  Add Perl 5.22 version, remove old
+
+  04 Apr 2015; Mike Frysinger <vapier@gentoo.org>
+  perl-Module-Metadata-1.0.11-r1.ebuild, perl-Module-Metadata-1.0.19.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-Metadata-1.0.19.ebuild:
+  Stable for alpha, wrt bug #536790
+
+  17 Feb 2015; Markus Meier <maekke@gentoo.org>
+  perl-Module-Metadata-1.0.19.ebuild:
+  arm stable, bug #536790
+
+  17 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-Metadata-1.0.19.ebuild:
+  Stable for ia64, wrt bug #536790
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-Metadata-1.0.19.ebuild:
+  Stable for sparc, wrt bug #536790
+
+  15 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-Metadata-1.0.19.ebuild:
+  Stable for ppc64, wrt bug #536790
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-Metadata-1.0.19.ebuild:
+  Stable for ppc, wrt bug #536790
+
+  13 Feb 2015; Jeroen Roovers <jer@gentoo.org>
+  perl-Module-Metadata-1.0.19.ebuild:
+  Stable for HPPA (bug #536790).
+
+  13 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-Metadata-1.0.19.ebuild:
+  Stable for x86, wrt bug #536790
+
+  08 Feb 2015; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Module-Metadata-1.0.19.ebuild:
+  amd64 stable wrt bug #536790
+
+*perl-Module-Metadata-1.0.19 (10 Jul 2014)
+*perl-Module-Metadata-1.0.11-r1 (10 Jul 2014)
+
+  10 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Module-Metadata-1.0.3.ebuild, -perl-Module-Metadata-1.0.4-r2.ebuild,
+  -perl-Module-Metadata-1.0.5.ebuild, -perl-Module-Metadata-1.0.6.ebuild,
+  -perl-Module-Metadata-1.0.9-r1.ebuild, -perl-Module-Metadata-1.0.10.ebuild,
+  -perl-Module-Metadata-1.0.11.ebuild, +perl-Module-Metadata-1.0.11-r1.ebuild,
+  +perl-Module-Metadata-1.0.19.ebuild:
+  Add perl-5.20 version; improve dependencies; remove old
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  perl-Module-Metadata-1.0.10.ebuild, perl-Module-Metadata-1.0.11.ebuild,
+  perl-Module-Metadata-1.0.3.ebuild, perl-Module-Metadata-1.0.5.ebuild,
+  perl-Module-Metadata-1.0.6.ebuild, perl-Module-Metadata-1.0.9-r1.ebuild:
+  Add arm64 love.
+
+  17 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  perl-Module-Metadata-1.0.11.ebuild, perl-Module-Metadata-1.0.6.ebuild:
+  Mark m68k stable.
+
+  02 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-Metadata-1.0.11.ebuild:
+  Stable for sh, wrt bug #458122
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-Metadata-1.0.11.ebuild:
+  Stable for sparc, wrt bug #458122
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-Metadata-1.0.11.ebuild:
+  Stable for ia64, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-Metadata-1.0.11.ebuild:
+  Stable for arm, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-Metadata-1.0.11.ebuild:
+  Stable for s390, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-Metadata-1.0.11.ebuild:
+  Stable for alpha, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-Metadata-1.0.11.ebuild:
+  Stable for hppa, wrt bug #458122
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org>
+  perl-Module-Metadata-1.0.11.ebuild:
+  Add ~arm-linux keyword.
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-Metadata-1.0.11.ebuild:
+  Stable for ppc, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-Metadata-1.0.11.ebuild:
+  Stable for ppc64, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-Metadata-1.0.11.ebuild:
+  Stable for x86, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-Metadata-1.0.11.ebuild:
+  Stable for amd64, wrt bug #458122
+
+*perl-Module-Metadata-1.0.11 (22 Aug 2012)
+
+  22 Aug 2012; Torsten Veller <tove@gentoo.org>
+  +perl-Module-Metadata-1.0.11.ebuild:
+  Version bump
+
+*perl-Module-Metadata-1.0.10 (06 Aug 2012)
+
+  06 Aug 2012; Torsten Veller <tove@gentoo.org>
+  +perl-Module-Metadata-1.0.10.ebuild:
+  Version bump
+
+*perl-Module-Metadata-1.0.9-r1 (21 May 2012)
+
+  21 May 2012; Torsten Veller <tove@gentoo.org>
+  -perl-Module-Metadata-1.0.9.ebuild, +perl-Module-Metadata-1.0.9-r1.ebuild:
+  Add perl-5.16 as provider
+
+  15 May 2012; Mark Loeser <halcy0n@gentoo.org>
+  perl-Module-Metadata-1.0.6.ebuild:
+  Stable for ppc64; bug #393397
+
+  28 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  perl-Module-Metadata-1.0.9.ebuild:
+  keyword ~amd64-fbsd
+
+*perl-Module-Metadata-1.0.9 (12 Feb 2012)
+
+  12 Feb 2012; Torsten Veller <tove@gentoo.org>
+  +perl-Module-Metadata-1.0.9.ebuild:
+  Version bump
+
+  02 Feb 2012; Brent Baude <ranger@gentoo.org>
+  perl-Module-Metadata-1.0.6.ebuild:
+  Marking perl-Module-Metadata-1.0.6 ppc stable for bug 393397
+
+  15 Jan 2012; Raúl Porcel <armin76@gentoo.org>
+  perl-Module-Metadata-1.0.6.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #393397
+
+  22 Dec 2011; Markus Meier <maekke@gentoo.org>
+  perl-Module-Metadata-1.0.6.ebuild:
+  x86 stable, bug #393397
+
+  20 Dec 2011; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-Metadata-1.0.6.ebuild:
+  Stable for AMD64, wrt bug #393397
+
+  14 Dec 2011; Markus Meier <maekke@gentoo.org>
+  perl-Module-Metadata-1.0.6.ebuild:
+  arm stable, bug #393397
+
+  07 Dec 2011; Jeroen Roovers <jer@gentoo.org>
+  perl-Module-Metadata-1.0.6.ebuild:
+  Stable for HPPA (bug #393397).
+
+*perl-Module-Metadata-1.0.6 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Module-Metadata-1.0.6.ebuild:
+  Version bump
+
+*perl-Module-Metadata-1.0.5 (06 Aug 2011)
+
+  06 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Module-Metadata-1.0.5.ebuild:
+  Version bump
+
+  06 Jul 2011; Alexis Ballier <aballier@gentoo.org>
+  perl-Module-Metadata-1.0.4-r2.ebuild:
+  keyword ~x86-fbsd, bug #357599
+
+*perl-Module-Metadata-1.0.4-r2 (18 Jun 2011)
+
+  18 Jun 2011; Torsten Veller <tove@gentoo.org>
+  -perl-Module-Metadata-1.0.4-r1.ebuild, +perl-Module-Metadata-1.0.4-r2.ebuild:
+  Add perl-5.14 as provider
+
+  13 Jun 2011; Matt Turner <mattst88@gentoo.org>
+  perl-Module-Metadata-1.0.4-r1.ebuild:
+  Added ~mips, bug 357599
+
+*perl-Module-Metadata-1.0.4-r1 (20 May 2011)
+
+  20 May 2011; Torsten Veller <tove@gentoo.org>
+  -perl-Module-Metadata-1.0.4.ebuild, +perl-Module-Metadata-1.0.4-r1.ebuild:
+  Add perl-5.14.0 as provider
+
+  02 May 2011; Fabian Groffen <grobian@gentoo.org>
+  perl-Module-Metadata-1.0.4.ebuild:
+  Marked ~x64-freebsd
+
+  27 Feb 2011; Fabian Groffen <grobian@gentoo.org>
+  perl-Module-Metadata-1.0.4.ebuild:
+  Add Prefix keywords, bug #353115
+
+  27 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  perl-Module-Metadata-1.0.4.ebuild:
+  Marked ~ppc/~ppc64 wrt #353115
+
+*perl-Module-Metadata-1.0.4 (08 Feb 2011)
+
+  08 Feb 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Module-Metadata-1.0.4.ebuild:
+  Version bump
+
+  30 Jan 2011; Raúl Porcel <armin76@gentoo.org>
+  perl-Module-Metadata-1.0.3.ebuild:
+  Add ~alpha/~arm/~ia64/~m68k/~s390/~sh/~sparc wrt #353115
+
+  29 Jan 2011; Jeroen Roovers <jer@gentoo.org>
+  perl-Module-Metadata-1.0.3.ebuild:
+  Marked ~hppa (bug #353115).
+
+*perl-Module-Metadata-1.0.3 (29 Jan 2011)
+
+  29 Jan 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Module-Metadata-1.0.3.ebuild, +metadata.xml:
+  Initial version

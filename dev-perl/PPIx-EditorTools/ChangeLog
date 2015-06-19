@@ -1,0 +1,93 @@
+# ChangeLog for dev-perl/PPIx-EditorTools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/PPIx-EditorTools/ChangeLog,v 1.15 2015/03/18 16:29:31 monsieurp Exp $
+
+*PPIx-EditorTools-0.190.0 (18 Mar 2015)
+
+  18 Mar 2015; Patrice Clement <monsieurp@gentoo.org>
+  +PPIx-EditorTools-0.190.0.ebuild:
+  Version bump. Add new dep on dev-perl/CPAN-Changes for tests.
+
+  03 Sep 2014; Mikle Kolyada <zlogene@gentoo.org>
+  PPIx-EditorTools-0.170.0.ebuild, PPIx-EditorTools-0.180.0.ebuild:
+  Bump to EAPI=5
+
+*PPIx-EditorTools-0.180.0 (16 Aug 2013)
+
+  16 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +PPIx-EditorTools-0.180.0.ebuild:
+  Bump
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org>
+  -PPIx-EditorTools-0.150.0.ebuild:
+  Cleanup
+
+*PPIx-EditorTools-0.170.0 (20 Aug 2012)
+
+  20 Aug 2012; Torsten Veller <tove@gentoo.org>
+  +PPIx-EditorTools-0.170.0.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  29 Jul 2011; Torsten Veller <tove@gentoo.org>
+  -PPIx-EditorTools-0.130.0.ebuild:
+  Cleanup
+
+*PPIx-EditorTools-0.150.0 (12 May 2011)
+
+  12 May 2011; Torsten Veller <tove@gentoo.org>
+  +PPIx-EditorTools-0.150.0.ebuild:
+  Version bump
+
+  02 Apr 2011; Torsten Veller <tove@gentoo.org> -PPIx-EditorTools-0.11.ebuild,
+  -PPIx-EditorTools-0.120.0.ebuild:
+  Cleanup
+
+*PPIx-EditorTools-0.130.0 (25 Mar 2011)
+
+  25 Mar 2011; Torsten Veller <tove@gentoo.org>
+  +PPIx-EditorTools-0.130.0.ebuild:
+  Version bump
+
+*PPIx-EditorTools-0.120.0 (24 Mar 2011)
+
+  24 Mar 2011; Torsten Veller <tove@gentoo.org>
+  +PPIx-EditorTools-0.120.0.ebuild:
+  Version bump
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -PPIx-EditorTools-0.09.ebuild,
+  -PPIx-EditorTools-0.10.ebuild:
+  Cleanup
+
+*PPIx-EditorTools-0.11 (22 Nov 2010)
+
+  22 Nov 2010; Torsten Veller <tove@gentoo.org> +PPIx-EditorTools-0.11.ebuild:
+  Version bump
+
+*PPIx-EditorTools-0.10 (28 Sep 2010)
+
+  28 Sep 2010; Torsten Veller <tove@gentoo.org>
+  +PPIx-EditorTools-0.10.ebuild:
+  Version bump. Run tests
+
+  15 Feb 2010; Torsten Veller <tove@gentoo.org>
+  +PPIx-EditorTools-0.09.ebuild, +metadata.xml:
+  Import to gentoo from perl-experimental
+
+*PPIx-EditorTools-0.09 (08 Oct 2009)
+
+  08 Oct 2009; Michele Beltrame <m@cattlegrid.info>
+  +PPIx-EditorTools-0.09.ebuild:
+  Bump
+
+  09 Aug 2009; Michele Beltrame <m@cattlegrid.info>
+  -PPIx-EditorTools-0.05.ebuild, +PPIx-EditorTools-0.08.ebuild:
+  Bump
+
+*PPIx-EditorTools-0.05 (10 Jul 2009)
+
+  10 Jul 2009; Torsten Veller <tove@gentoo.org>
+  +PPIx-EditorTools-0.05.ebuild, +metadata.xml:
+  Initial commit

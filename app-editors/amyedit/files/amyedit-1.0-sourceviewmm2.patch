@@ -1,0 +1,331 @@
+Index: amyedit-1.0/configure.in
+===================================================================
+--- amyedit-1.0.orig/configure.in
++++ amyedit-1.0/configure.in
+@@ -36,7 +36,7 @@ AC_ARG_ENABLE(precompiled-headers,
+ AM_CONDITIONAL(PRECOMPILE_HEADERS, test x$enable_precompiled_headers = xyes)
+ 
+ AC_CHECK_LIB([aspell], [new_aspell_config])
+-PKG_CHECK_MODULES(AMYEDIT, gtkmm-2.4 >= 2.6 gtksourceview-1.0)
++PKG_CHECK_MODULES(AMYEDIT, gtkmm-2.4 >= 2.6 gtksourceview-2.0 gtksourceviewmm-2.0)
+ AC_SUBST(AMYEDIT_CFLAGS)
+ AC_SUBST(AMYEDIT_LIBS)
+ 
+Index: amyedit-1.0/src/Makefile.am
+===================================================================
+--- amyedit-1.0.orig/src/Makefile.am
++++ amyedit-1.0/src/Makefile.am
+@@ -25,12 +25,7 @@ sources = \
+ 		TextListViewComboBox.cc      \
+ 		TextListViewListBox.cc       \
+ 		Utils.cc                     \
+-		main.cc                      \
+-		gtksourceviewmm/sourcebuffer.cpp             \
+-		gtksourceviewmm/sourcelanguage.cpp           \
+-		gtksourceviewmm/sourcelanguagesmanager.cpp   \
+-		gtksourceviewmm/sourceview.cpp               \
+-		gtksourceviewmm/init.cc
++		main.cc                      
+ 
+ headers =  \
+ 		AboutDialog.hh               \
+@@ -48,18 +43,9 @@ headers =  \
+ 		TextListModel.hh             \
+ 		TextListViewComboBox.hh      \
+ 		TextListViewListBox.hh    \
+-		Utils.hh                     \
+-		gtksourceviewmm/sourcebuffer.h              \
+-		gtksourceviewmm/sourcelanguage.h            \
+-		gtksourceviewmm/sourcelanguagesmanager.h    \
+-		gtksourceviewmm/sourceview.h                \
+-		gtksourceviewmm/init.hh
++		Utils.hh                     
+ 
+ privateheaders=  \
+-		gtksourceviewmm/private/sourcebuffer_p.h            \
+-		gtksourceviewmm/private/sourcelanguage_p.h          \
+-		gtksourceviewmm/private/sourcelanguagesmanager_p.h  \
+-		gtksourceviewmm/private/sourceview_p.h              \
+ 		Utils_p.hh
+ 
+ if PRECOMPILE_HEADERS
+Index: amyedit-1.0/src/EditTabs.cc
+===================================================================
+--- amyedit-1.0.orig/src/EditTabs.cc
++++ amyedit-1.0/src/EditTabs.cc
+@@ -57,8 +57,8 @@ Foundation, Inc., 59 Temple Place, Suite
+ 
+ #include <gtksourceview/gtksourcebuffer.h>
+ #include <gtksourceviewmm/sourcelanguage.h>
+-#include <gtksourceviewmm/sourcelanguagesmanager.h>
+-#include <gtksourceview/gtksourcelanguagesmanager.h>
++#include <gtksourceviewmm/sourcelanguagemanager.h>
++#include <gtksourceview/gtksourcelanguagemanager.h>
+ #include <gtksourceview/gtksourceiter.h>
+ 
+ #include <gtkmm/stock.h>
+@@ -161,7 +161,7 @@ void EditTabs::OpenTab(Glib::ustring fil
+ 	{
+ 		try 
+ 		{
+-			Glib::RefPtr<Gtk::SourceBuffer> buffer = is_buffer_open(filename);
++			Glib::RefPtr<gtksourceview::SourceBuffer> buffer = is_buffer_open(filename);
+ 			Page *newpage;	
+ 
+ 			if (buffer){
+@@ -553,16 +553,15 @@ Glib::ustring EditTabs::GetUntitledTabNa
+ 
+ void EditTabs::Undo()
+ {
+-	Glib::RefPtr<Gtk::SourceBuffer> buffer = get_current_view()->get_buffer();
++	Glib::RefPtr<gtksourceview::SourceBuffer> buffer = Glib::RefPtr<gtksourceview::SourceBuffer>::cast_static(get_current_view()->get_buffer());
+ 	if (buffer->can_undo ())
+ 		buffer->undo ();
+ 
+ }
+ 
+-
+ void EditTabs::Redo()
+ {
+-	Glib::RefPtr<Gtk::SourceBuffer> buffer = get_current_view()->get_buffer();
++	Glib::RefPtr<gtksourceview::SourceBuffer> buffer = Glib::RefPtr<gtksourceview::SourceBuffer>::cast_static(get_current_view()->get_buffer());
+ 	if (buffer->can_redo ())
+ 		buffer->redo ();
+ 
+@@ -625,10 +624,10 @@ void EditTabs::FindNext()
+ 	Page *curtab = get_current_tab();
+ 	if (curtab)
+ 	{
+-		Glib::RefPtr<Gtk::SourceBuffer::Mark> cursor=curtab->get_buffer()->get_insert();
+-		Gtk::SourceBuffer::iterator start, end;
++		Glib::RefPtr<gtksourceview::SourceBuffer::Mark> cursor=curtab->get_buffer()->get_insert();
++		gtksourceview::SourceBuffer::iterator start, end;
+ 		GtkTextIter climit;
+-		Gtk::SourceBuffer::iterator limit(&climit);
++		gtksourceview::SourceBuffer::iterator limit(&climit);
+ 		FindDialog fdialog;
+ 		int result;
+ 		do
+@@ -648,7 +647,7 @@ void EditTabs::FindNext()
+ 				if(gtk_source_iter_forward_search(cursor->get_iter().gobj(),fdialog.get_text().c_str(),fdialog.get_flags(),start.gobj(),end.gobj(),0))
+ 				{
+ 					curtab->get_buffer()->select_range(end, start);
+-					(static_cast<Gtk::SourceView*>(curtab->get_child()))->scroll_to(end);
++					(static_cast<gtksourceview::SourceView*>(curtab->get_child()))->scroll_to(end);
+ 				}
+ 				else
+ 				{
+@@ -701,7 +700,7 @@ void EditTabs::on_switching_page(GtkNote
+ 
+ }
+ 
+-Glib::RefPtr <Gtk::SourceBuffer> EditTabs::is_buffer_open(Glib::ustring filename){
++Glib::RefPtr <gtksourceview::SourceBuffer> EditTabs::is_buffer_open(Glib::ustring filename){
+ 	int p = get_n_pages();
+ 
+ 	for (int x=0;x<p;x++){
+@@ -711,19 +710,19 @@ Glib::RefPtr <Gtk::SourceBuffer> EditTab
+ 			return curtab->get_buffer();
+ 	}
+ 
+-	return Glib::RefPtr <Gtk::SourceBuffer> (NULL);
++	return Glib::RefPtr <gtksourceview::SourceBuffer> (NULL);
+ 
+ 
+ }
+ 
+-EditTabs::Page::Page(EditTabs *parent, Glib::RefPtr<Gtk::SourceBuffer> buffer){
++EditTabs::Page::Page(EditTabs *parent, Glib::RefPtr<gtksourceview::SourceBuffer> buffer){
+ 
+ 	/* Note to self! CLEAN THIS UP!!!! */
+ 
+ 	/* Page is actually a ScrollWindow thing */
+ 	set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_ALWAYS);
+ 
+-	Gtk::SourceView *sourceview=Gtk::manage(new Gtk::SourceView());
++	gtksourceview::SourceView *sourceview=Gtk::manage(new gtksourceview::SourceView());
+ 
+ 	if (buffer)
+ 		sourceview->set_buffer(buffer);
+@@ -750,10 +749,10 @@ EditTabs::Page::Page(EditTabs *parent, G
+ 	 * (ie buffer is null) */
+ 
+ 	if (!buffer){
+-		Glib::ustring mime_type("text/x-tex");
++		Glib::ustring mime_type("latex");
+ 
+-		Glib::RefPtr<Gtk::SourceLanguagesManager> lm = buffer->get_languages_manager();
+-		Glib::RefPtr<Gtk::SourceLanguage> language = lm->get_language_from_mime_type(mime_type);
++		Glib::RefPtr<gtksourceview::SourceLanguageManager> lm = gtksourceview::SourceLanguageManager::create();
++		Glib::RefPtr<gtksourceview::SourceLanguage> language = lm->get_language(mime_type);
+ 
+ 
+ 		if (language) 
+@@ -820,7 +819,7 @@ void EditTabs::Page::on_changed()
+ 
+ }
+ 
+-void EditTabs::Page::on_mark_changed(Gtk::SourceBuffer::iterator iter, Glib::RefPtr<Gtk::SourceBuffer::Mark> mark){
++void EditTabs::Page::on_mark_changed(gtksourceview::SourceBuffer::iterator iter, Glib::RefPtr<gtksourceview::SourceBuffer::Mark> mark){
+ 	if (mark->get_name()=="insert")
+ 	{
+ 		extern sigc::signal1<void, int> signal_line_set;
+@@ -835,14 +834,14 @@ EditTabs *EditTabs::Page::get_parent()
+ 	return (static_cast<EditTabs*>(Gtk::Widget::get_parent()));
+ }
+ 
+-Gtk::SourceView* EditTabs::Page::get_child()
++gtksourceview::SourceView* EditTabs::Page::get_child()
+ {
+-	return (static_cast<Gtk::SourceView*>(Gtk::Bin::get_child()));
++	return (static_cast<gtksourceview::SourceView*>(Gtk::Bin::get_child()));
+ }
+ 
+-Glib::RefPtr<Gtk::SourceBuffer> EditTabs::Page::get_buffer()
++Glib::RefPtr<gtksourceview::SourceBuffer> EditTabs::Page::get_buffer()
+ {
+-	return (get_child()->get_buffer());
++	return Glib::RefPtr<gtksourceview::SourceBuffer>::cast_static(get_child()->get_buffer());
+ }
+ 
+ EditTabs::Page *EditTabs::get_current_tab()
+@@ -850,9 +849,9 @@ EditTabs::Page *EditTabs::get_current_ta
+ 	return (static_cast<EditTabs::Page*>(get_nth_page(get_current_page())));
+ }
+ 
+-Gtk::SourceView *EditTabs::get_current_view()
++gtksourceview::SourceView *EditTabs::get_current_view()
+ {
+-	return (static_cast<Gtk::SourceView*>(get_current_tab()->get_child()));
++	return (static_cast<gtksourceview::SourceView*>(get_current_tab()->get_child()));
+ }
+ 
+ 
+@@ -861,8 +860,8 @@ void EditTabs::Page::on_preferences_upda
+ 	// For things that need to happen for all pages
+ 	PrefStruct *prefs = PrefStruct::instance();
+ 	
+-	get_child()->set_tabs_width(prefs->get<int>("General", "tab_size"));
+-	get_buffer()->set_highlight(prefs->get<bool>("General", "syntax_highlighting"));
++	get_child()->set_tab_width(prefs->get<int>("General", "tab_size"));
++	get_buffer()->set_highlight_syntax(prefs->get<bool>("General", "syntax_highlighting"));
+ 
+ }
+ 
+Index: amyedit-1.0/src/EditTabs.hh
+===================================================================
+--- amyedit-1.0.orig/src/EditTabs.hh
++++ amyedit-1.0/src/EditTabs.hh
+@@ -63,11 +63,11 @@ class EditTabs: public Gtk::Notebook
+ 		class Page:public Gtk::ScrolledWindow
+ 		{
+ 			public:
+-				Page(EditTabs *parent, Glib::RefPtr<Gtk::SourceBuffer> buffer=Glib::RefPtr<Gtk::SourceBuffer>());
++				Page(EditTabs *parent, Glib::RefPtr<gtksourceview::SourceBuffer> buffer=Glib::RefPtr<gtksourceview::SourceBuffer>());
+ 				
+ 				EditTabs *get_parent();
+-				Gtk::SourceView *get_child();
+-				Glib::RefPtr<Gtk::SourceBuffer> get_buffer();
++				gtksourceview::SourceView *get_child();
++				Glib::RefPtr<gtksourceview::SourceBuffer> get_buffer();
+ 
+ 				Glib::ustring filename;
+ 				Gtk::Label *tablabel;
+@@ -77,8 +77,8 @@ class EditTabs: public Gtk::Notebook
+ 				void on_close_me();
+ 				void on_modified_changed();
+ 				void on_changed();
+-				void on_mark_changed(Gtk::SourceBuffer::iterator iter,
+-				                     Glib::RefPtr<Gtk::SourceBuffer::Mark> mark);
++				void on_mark_changed(gtksourceview::SourceBuffer::iterator iter,
++				                     Glib::RefPtr<gtksourceview::SourceBuffer::Mark> mark);
+ 				void on_preferences_update();
+ 
+ 		};
+@@ -89,13 +89,13 @@ class EditTabs: public Gtk::Notebook
+ 		Glib::ustring GetRootFileName();
+ 		Glib::ustring TabNameFromFile(Glib::ustring start);
+ 		Glib::ustring GetUntitledTabName(Glib::ustring start);
+-		Glib::RefPtr<Gtk::SourceBuffer> is_buffer_open(Glib::ustring filename);
++		Glib::RefPtr<gtksourceview::SourceBuffer> is_buffer_open(Glib::ustring filename);
+ 
+ 		void on_switching_page(GtkNotebookPage *page, guint number);
+ 	public:
+ 		Page *get_current_tab();
+ 	private:
+-		Gtk::SourceView *get_current_view();
++		gtksourceview::SourceView *get_current_view();
+ 
+ 		void on_preferences_update();
+ 
+Index: amyedit-1.0/src/SpellDialog.cc
+===================================================================
+--- amyedit-1.0.orig/src/SpellDialog.cc
++++ amyedit-1.0/src/SpellDialog.cc
+@@ -267,9 +267,9 @@ int SpellDialog::checkDocument(){
+ 	aspell_document_checker_reset(checker);
+ 
+ 	view = getCurrentPage()->get_child();
+-	buffer = view->get_buffer();
++	buffer = Glib::RefPtr<gtksourceview::SourceBuffer>::cast_static(view->get_buffer());
+ 
+-	buffer->set_check_brackets(false);
++	buffer->set_highlight_matching_brackets(false);
+ 
+ 	/* areastart has left gravity, arearight has right gravity, as inserts only
+ 	 * occur inside them, they should always mark the beginning and ends of the
+@@ -315,7 +315,7 @@ int SpellDialog::checkDocument(){
+ 	buffer->delete_mark(areastart);
+ 	buffer->delete_mark(areaend);
+ 	
+-	buffer->set_check_brackets(true);
++	buffer->set_highlight_matching_brackets(true);
+ 	return 0;	
+ }
+ 
+@@ -370,7 +370,7 @@ bool SpellDialog::changeWord(AspellToken
+ 		/* Close Clicked */
+ 		
+ 		buffer->place_cursor(wordend);
+-		buffer->set_check_brackets();
++		buffer->set_highlight_matching_brackets();
+ 		return false;
+ 	}
+ 
+Index: amyedit-1.0/src/SpellDialog.hh
+===================================================================
+--- amyedit-1.0.orig/src/SpellDialog.hh
++++ amyedit-1.0/src/SpellDialog.hh
+@@ -49,8 +49,8 @@ class SpellDialog : public Gtk::Dialog,
+ 
+ 		void on_preferences_update();
+ 	
+-		Gtk::SourceView* view;
+-		Glib::RefPtr<Gtk::SourceBuffer> buffer;
++		gtksourceview::SourceView* view;
++		Glib::RefPtr<gtksourceview::SourceBuffer> buffer;
+ 		Gtk::Entry misslabel;
+ 		Gtk::Entry replaceentry;
+ 		TextListViewListBox listbox;
+Index: amyedit-1.0/src/main.cc
+===================================================================
+--- amyedit-1.0.orig/src/main.cc
++++ amyedit-1.0/src/main.cc
+@@ -53,7 +53,7 @@
+ #include <fstream>
+ 
+ #include "AmyEdit.hh"
+-#include "gtksourceviewmm/init.hh"
++#include "gtksourceviewmm/init.h"
+ #include "Utils.hh"
+ 
+ int main(int argc, char **argv)
+@@ -63,7 +63,7 @@ int main(int argc, char **argv)
+ 	textdomain (GETTEXT_PACKAGE);
+ 	
+ 	Gtk::Main m(&argc, &argv);
+-	Gtk::SourceViewmm_init();
++	gtksourceview::init();
+ 
+ 	/* TODO This should probably be removed and created on demand */
+ 	

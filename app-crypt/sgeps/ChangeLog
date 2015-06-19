@@ -1,0 +1,28 @@
+# ChangeLog for app-crypt/sgeps
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/sgeps/ChangeLog,v 1.5 2015/03/29 03:51:39 mrueg Exp $
+
+  29 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -sgeps-0_pre10.ebuild,
+  -sgeps-0_pre12.ebuild:
+  Remove old.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*sgeps-0_pre15 (16 Apr 2012)
+
+  16 Apr 2012; Diego E. Pettenò <flameeyes@gentoo.org> +sgeps-0_pre15.ebuild:
+  Bump to a new version and add zsh completion.
+
+*sgeps-0_pre12 (22 Jul 2010)
+
+  22 Jul 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +sgeps-0_pre12.ebuild:
+  Bump to a newer revision.
+
+*sgeps-0_pre10 (22 Jan 2010)
+
+  22 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +sgeps-0_pre10.ebuild, +metadata.xml:
+  Initial import of the sgeps script, thanks to Enrico Tagliavini for
+  writing the ebuild.

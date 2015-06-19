@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>gnome</herd>
+  <longdescription lang="en">
+    gtk-update-icon-cache is a tool from GTK+ to update icons and themes
+    caches.
+
+    It is split from the GTK+ sources by the Gentoo Gnome team to help
+    GTK+ 2 and 3 to co-exist better by extracting the single conflicting
+    tool.
+  </longdescription>
+</pkgmetadata>

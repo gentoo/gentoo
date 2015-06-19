@@ -1,0 +1,15 @@
+diff --git a/configure.ac b/configure.ac
+index bebb399..5003f10 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -792,8 +792,8 @@ if test "x$enable_rsyslogrt" = "xyes"; then
+ fi
+ AM_CONDITIONAL(ENABLE_RSYSLOGRT, test x$enable_rsyslogrt = xyes)
+ RSRT_CFLAGS="\$(RSRT_CFLAGS1) \$(LIBESTR_CFLAGS) \$(JSON_C_CFLAGS)"
+-if test "$GCC" = "yes"
+-then RSRT_CFLAGS="$RSRT_CFLAGS -W -Wall -Wformat-security -Wshadow -Wcast-align -Wpointer-arith -Wmissing-format-attribute -Werror=implicit-function-declaration -g"
++if test "$GCC" = "yes"; then
++  RSRT_CFLAGS="$RSRT_CFLAGS -W -Wall -Wformat-security -Wshadow -Wcast-align -Wpointer-arith -Wmissing-format-attribute -Werror=implicit-function-declaration"
+ fi
+ RSRT_LIBS="\$(RSRT_LIBS1) \$(LIBESTR_LIBS) \$(JSON_C_LIBS)"
+ AC_SUBST(RSRT_CFLAGS1)

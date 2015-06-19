@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+<longdescription lang="en">
+  The www-plugins category contains plug-ins for Web browsers.
+</longdescription>
+<longdescription lang="de">
+  Die Kategorie www-plugins enthält Plug-ins für Webbrowser.
+</longdescription>
+<longdescription lang="es">
+  La categoría www-plugins contiene plug-ins para navegadores Web.
+</longdescription>
+<longdescription lang="fr">
+  La catégorie www-plugins contient des plugins pour navigateurs Web.
+</longdescription>
+<longdescription lang="it">
+  La categoria www-plugins contiene plugins per i browser web.
+</longdescription>
+<longdescription lang="nl">
+  De www-plugins categorie bevat webbrowserplugins.
+</longdescription>
+<longdescription lang="pl">
+  Kategoria www-plugins zawiera wtyczki dla przeglądarek internetowych.
+</longdescription>
+<longdescription lang="pt">
+  A categoria www-plugins contém plugins para navegadores da Web.
+</longdescription>
+</catmetadata>

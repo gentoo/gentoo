@@ -1,0 +1,34 @@
+diff --git a/configure.ac b/configure.ac
+index 956763d..6a624ab 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -24,7 +24,7 @@ AC_CONFIG_FILES( \
+   test/Makefile \
+   tools/Makefile)
+ 
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AM_INIT_AUTOMAKE([1.8 gnits check-news dist-bzip2])
+ AM_ACLOCAL_INCLUDE(m4)
+ AM_MAINTAINER_MODE
+@@ -40,7 +40,7 @@ AC_GNU_SOURCE
+ AC_AIX
+ AC_ISC_POSIX
+ AC_PROG_LIBTOOL
+-AM_PROG_CC_STDC
++AC_PROG_CC
+ AM_PROG_CC_C_O
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+diff --git a/m4/typevar.m4 b/m4/typevar.m4
+index ce9578d..66077eb 100644
+--- a/m4/typevar.m4
++++ b/m4/typevar.m4
+@@ -6,7 +6,6 @@
+ ##   defined in errno.h
+ AC_DEFUN([ye_CHECK_VAR_PROGRAM_INVOCATION_SHORT_NAME],
+ [AC_REQUIRE([AC_PROG_CC])dnl
+-AC_REQUIRE([AM_PROG_CC_STDC])dnl
+ dnl
+ 
+ dnl Check for program_invocation_short_name (present on GNU systems only?)

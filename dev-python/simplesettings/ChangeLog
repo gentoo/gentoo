@@ -1,0 +1,25 @@
+# ChangeLog for dev-python/simplesettings
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/simplesettings/ChangeLog,v 1.5 2015/01/09 07:49:51 idella4 Exp $
+
+*simplesettings-0.5-r1 (09 Jan 2015)
+
+  09 Jan 2015; Ian Delaney <idella4@gentoo.org> +simplesettings-0.5-r1.ebuild,
+  -simplesettings-0.5.ebuild:
+  revbump; conversion -> distutils-r1, rm old
+
+  09 Feb 2013; Corentin Chary <iksaif@gentoo.org> simplesettings-0.5.ebuild:
+  Remove dead homepage.
+
+  14 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  simplesettings-0.5.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  09 Jun 2010; Patrick Lauer <patrick@gentoo.org> simplesettings-0.5.ebuild:
+  Adding ~amd64 keyword
+
+*simplesettings-0.5 (25 Jul 2009)
+
+  25 Jul 2009; Jesus Rivero <neurogeek@gentoo.org>
+  +simplesettings-0.5.ebuild, +metadata.xml:
+  Initial commit. Thanks to Almad (bugs@almad.net). Closes bug #238902

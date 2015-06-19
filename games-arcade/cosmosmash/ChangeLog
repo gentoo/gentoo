@@ -1,0 +1,54 @@
+# ChangeLog for games-arcade/cosmosmash
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/cosmosmash/ChangeLog,v 1.14 2015/02/19 01:39:42 mr_bones_ Exp $
+
+  19 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> -cosmosmash-1.4.6.ebuild:
+  old
+
+  10 Feb 2015; Agostino Sarubbo <ago@gentoo.org> cosmosmash-1.4.7.ebuild:
+  Stable for x86, wrt bug #538964
+
+  06 Feb 2015; Agostino Sarubbo <ago@gentoo.org> cosmosmash-1.4.7.ebuild:
+  Stable for amd64, wrt bug #538964
+
+  04 Jan 2015; Tupone Alfredo <tupone@gentoo.org> cosmosmash-1.4.6.ebuild,
+  cosmosmash-1.4.7.ebuild:
+  EAPI 5
+
+*cosmosmash-1.4.7 (20 Apr 2013)
+
+  20 Apr 2013; Michael Sterrett <mr_bones_@gentoo.org> +cosmosmash-1.4.7.ebuild:
+  version bump
+
+  30 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org> -cosmosmash-1.4.5.ebuild:
+  old
+
+  27 Dec 2012; Jeff Horelick <jdhore@gentoo.org> cosmosmash-1.4.6.ebuild:
+  marked x86 per bug 436936
+
+  26 Nov 2012; Michael Sterrett <mr_bones_@gentoo.org> cosmosmash-1.4.6.ebuild:
+  stop trying to test it (bug #444189)
+
+  03 Oct 2012; Agostino Sarubbo <ago@gentoo.org> cosmosmash-1.4.6.ebuild:
+  Stable for amd64, wrt bug #436936
+
+*cosmosmash-1.4.6 (24 Aug 2012)
+
+  24 Aug 2012; Michael Sterrett <mr_bones_@gentoo.org> +cosmosmash-1.4.6.ebuild:
+  version bump
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> cosmosmash-1.4.5.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  14 Dec 2011; Agostino Sarubbo <ago@gentoo.org> cosmosmash-1.4.5.ebuild:
+  Add "~amd64", wrt bug #394557
+
+  11 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  cosmosmash-1.4.5.ebuild:
+  stable x86, bug 325147
+
+*cosmosmash-1.4.5 (18 May 2010)
+
+  18 May 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +cosmosmash-1.4.5.ebuild, +metadata.xml:
+  Initial commit

@@ -1,0 +1,148 @@
+# ChangeLog for x11-misc/xdg-user-dirs-gtk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xdg-user-dirs-gtk/ChangeLog,v 1.37 2015/04/18 20:38:37 pacho Exp $
+
+  18 Apr 2015; Pacho Ramos <pacho@gentoo.org> xdg-user-dirs-gtk-0.10.ebuild:
+  ppc64 stable wrt bug #506826
+
+  02 Mar 2015; Agostino Sarubbo <ago@gentoo.org> xdg-user-dirs-gtk-0.10.ebuild:
+  Stable for ppc, wrt bug #506826
+
+  01 Aug 2014; Raúl Porcel <armin76@gentoo.org> xdg-user-dirs-gtk-0.10.ebuild:
+  sparc stable wrt #506826
+
+  20 Jul 2014; Tobias Klausmann <klausman@gentoo.org>
+  xdg-user-dirs-gtk-0.10.ebuild:
+  Stable on alpha, bug #506826
+
+  22 Jun 2014; Akinori Hattori <hattya@gentoo.org>
+  xdg-user-dirs-gtk-0.10.ebuild:
+  ia64 stable wrt bug #506826
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  xdg-user-dirs-gtk-0.10.ebuild:
+  x86 stable wrt bug #506826
+
+  29 Apr 2014; Chema Alonso <nimiux@gentoo.org> xdg-user-dirs-gtk-0.10.ebuild:
+  Stable for amd64 wrt bug #506826
+
+  27 Apr 2014; Markus Meier <maekke@gentoo.org> xdg-user-dirs-gtk-0.10.ebuild:
+  arm stable, bug #506826
+
+  05 Apr 2014; Jeroen Roovers <jer@gentoo.org> xdg-user-dirs-gtk-0.10.ebuild:
+  Stable for HPPA (bug #506826).
+
+  08 Feb 2014; Pacho Ramos <pacho@gentoo.org> xdg-user-dirs-gtk-0.10.ebuild:
+  Use readme.gentoo.eclass (#498624)
+
+*xdg-user-dirs-gtk-0.10 (21 Jan 2013)
+
+  21 Jan 2013; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +xdg-user-dirs-gtk-0.10.ebuild:
+  Version bump, now uses the new gtk-3.6 bookmark file location.
+
+  17 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -xdg-user-dirs-gtk-0.8-r1.ebuild:
+  old
+
+  17 Jun 2012; Raúl Porcel <armin76@gentoo.org> xdg-user-dirs-gtk-0.9.ebuild:
+  alpha/ia64/sparc stable wrt #416397
+
+  27 May 2012; Markus Meier <maekke@gentoo.org> xdg-user-dirs-gtk-0.9.ebuild:
+  arm stable, bug #416397
+
+  24 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  xdg-user-dirs-gtk-0.9.ebuild:
+  ppc64 stable wrt #416397
+
+  22 May 2012; Brent Baude <ranger@gentoo.org> xdg-user-dirs-gtk-0.9.ebuild:
+  Marking xdg-user-dirs-gtk-0.9 ppc for bug 416397
+
+  21 May 2012; Jeroen Roovers <jer@gentoo.org> xdg-user-dirs-gtk-0.9.ebuild:
+  Stable for HPPA (bug #416397).
+
+  20 May 2012; Agostino Sarubbo <ago@gentoo.org> xdg-user-dirs-gtk-0.9.ebuild:
+  Stable for amd64, wrt bug #416397
+
+  19 May 2012; Anthony G. Basile <blueness@gentoo.org>
+  xdg-user-dirs-gtk-0.9.ebuild:
+  Keyword mips
+
+  18 May 2012; Jeff Horelick <jdhore@gentoo.org> xdg-user-dirs-gtk-0.9.ebuild:
+  marked x86 per bug 416397
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  xdg-user-dirs-gtk-0.8-r1.ebuild, xdg-user-dirs-gtk-0.9.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  xdg-user-dirs-gtk-0.9.ebuild:
+  keyword ~x86-fbsd
+
+*xdg-user-dirs-gtk-0.9 (06 Apr 2012)
+
+  06 Apr 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +xdg-user-dirs-gtk-0.9.ebuild:
+  Version bump, now uses gtk3.
+
+  21 Jan 2011; Jeroen Roovers <jer@gentoo.org> xdg-user-dirs-gtk-0.8-r1.ebuild:
+  Stable for HPPA (bug #349061).
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  xdg-user-dirs-gtk-0.8-r1.ebuild:
+  ppc stable wrt #349061
+
+  26 Dec 2010; Raúl Porcel <armin76@gentoo.org>
+  xdg-user-dirs-gtk-0.8-r1.ebuild:
+  alpha/arm/ia64/sparc/x86 stable wrt #349061
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org>
+  xdg-user-dirs-gtk-0.8-r1.ebuild:
+  amd64/ppc64 stable wrt #349061
+
+  25 Oct 2010; Jeroen Roovers <jer@gentoo.org>
+  xdg-user-dirs-gtk-0.8-r1.ebuild:
+  Marked ~hppa (bug #337632).
+
+  21 Oct 2010; Brent Baude <ranger@gentoo.org>
+  xdg-user-dirs-gtk-0.8-r1.ebuild:
+  Marking xdg-user-dirs-gtk-0.8-r1 ~ppc for bug 337632
+
+  03 Oct 2010; Raúl Porcel <armin76@gentoo.org>
+  xdg-user-dirs-gtk-0.8-r1.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #337632
+
+  26 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  xdg-user-dirs-gtk-0.8-r1.ebuild:
+  Keyword ~ppc64 wrt #337632
+
+  25 Sep 2010; Markus Meier <maekke@gentoo.org>
+  xdg-user-dirs-gtk-0.8-r1.ebuild:
+  add ~arm, bug #337632
+
+  16 Sep 2010; Jeremy Olexa <darkside@gentoo.org>
+  xdg-user-dirs-gtk-0.8-r1.ebuild:
+  Add prefix keywords, bug 337632
+
+*xdg-user-dirs-gtk-0.8-r1 (16 Sep 2010)
+
+  16 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +xdg-user-dirs-gtk-0.8-r1.ebuild:
+  Replace OnlyShowIn=GNOME; with NotShowIn=KDE; in
+  user-dirs-update-gtk.desktop.
+
+  23 Jul 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -xdg-user-dirs-gtk-0.7.ebuild, xdg-user-dirs-gtk-0.8.ebuild:
+  Fix typo in DOCS, bug #271584. Clean up old revision.
+
+*xdg-user-dirs-gtk-0.8 (07 Sep 2008)
+
+  07 Sep 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +xdg-user-dirs-gtk-0.8.ebuild:
+  bump to 0.8, make things better with KDE, updated translations.
+
+*xdg-user-dirs-gtk-0.7 (27 Jul 2008)
+
+  27 Jul 2008; Gilles Dartiguelongue <eva@gentoo.org> +metadata.xml,
+  +xdg-user-dirs-gtk-0.7.ebuild:
+  initial ebuild, thanks goes to suka, fix bug #220112.

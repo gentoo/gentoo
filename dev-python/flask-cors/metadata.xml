@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>idella4@gentoo.org</email>
+  </maintainer>
+  <maintainer>
+    <email>wking@tremily.us</email>
+    <name>W. Trevor King</name>
+    <description>proxy maintainer</description>
+  </maintainer>
+  <upstream>
+    <remote-id type="pypi">Flask-Cors</remote-id>
+    <remote-id type="github">wcdolphin/flask-cors</remote-id>
+  </upstream>
+</pkgmetadata>

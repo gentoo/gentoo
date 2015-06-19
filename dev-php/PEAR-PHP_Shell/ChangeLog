@@ -1,0 +1,15 @@
+# ChangeLog for dev-php/PEAR-PHP_Shell
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-PHP_Shell/ChangeLog,v 1.4 2015/01/14 18:04:14 grknight Exp $
+
+*PEAR-PHP_Shell-0.3.2 (14 Jan 2015)
+
+  14 Jan 2015; Brian Evans <grknight@gentoo.org> +PEAR-PHP_Shell-0.3.2.ebuild,
+  -PEAR-PHP_Shell-0.3.1-r1.ebuild:
+  Version bump; drop old
+
+*PEAR-PHP_Shell-0.3.1-r1 (17 Jun 2010)
+
+  17 Jun 2010; <mabi@gentoo.org> -PEAR-PHP_Shell-0.3.1.ebuild,
+  +PEAR-PHP_Shell-0.3.1-r1.ebuild:
+  eapi bump for php-5.3 (bug #298205)

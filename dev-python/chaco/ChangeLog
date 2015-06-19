@@ -1,0 +1,117 @@
+# ChangeLog for dev-python/chaco
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/chaco/ChangeLog,v 1.26 2015/03/08 23:41:44 pacho Exp $
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> chaco-4.5.0.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> chaco-4.5.0.ebuild:
+  amd64 stable, bug 540290
+
+  19 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -chaco-4.3.0-r1.ebuild,
+  -chaco-4.3.0.ebuild, -chaco-4.4.1.ebuild:
+  Remove old.
+
+*chaco-4.5.0 (15 Nov 2014)
+
+  15 Nov 2014; Ian Delaney <idella4@gentoo.org> +chaco-4.5.0.ebuild:
+  bump; update deps, add fix to qa issue in the build, correction to test phase
+
+*chaco-4.4.1 (29 Jan 2014)
+
+  29 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org> +chaco-4.4.1.ebuild,
+  metadata.xml:
+  Version bump, added upstream check
+
+  14 May 2013; Ian Delaney <idella4@gentoo.org> -chaco-3.4.0.ebuild,
+  -chaco-4.0.0.ebuild, -chaco-4.1.0.ebuild, -chaco-4.2.0.ebuild:
+  drop old
+
+  15 Apr 2013; Ian Delaney <idella4@gentoo.org> chaco-4.3.0-r1.ebuild:
+  Remove duplicate entries in DEPs, minor corrections / improvements to
+  copy_test, python_test, call to dohtml
+
+*chaco-4.3.0-r1 (15 Apr 2013)
+
+  15 Apr 2013; Ian Delaney <idella4@gentoo.org> +chaco-4.3.0-r1.ebuild:
+  migration -> distutils-r1
+
+*chaco-4.3.0 (03 Apr 2013)
+
+  03 Apr 2013; Patrick Lauer <patrick@gentoo.org> +chaco-4.3.0.ebuild:
+  Bump
+
+  06 Dec 2012; Sébastien Fabbro <bicatali@gentoo.org> chaco-4.2.0.ebuild:
+  Keyword amd64-linux and x86-linux
+
+  11 Nov 2012; Ian Delaney <idella4@gentoo.org> chaco-4.0.0.ebuild,
+  chaco-4.1.0.ebuild, chaco-4.2.0.ebuild:
+  Added sphinx to DEPEND to build docs to 4.1.0, 4.2.0, fixes Bug #435858
+
+*chaco-4.2.0 (09 Oct 2012)
+
+  09 Oct 2012; Patrick Lauer <patrick@gentoo.org> +chaco-4.2.0.ebuild:
+  Bump
+
+  27 Feb 2012; Patrick Lauer <patrick@gentoo.org> chaco-3.4.0.ebuild,
+  chaco-4.0.0.ebuild, chaco-4.1.0.ebuild:
+  Restricting pypy
+
+*chaco-4.1.0 (17 Jan 2012)
+
+  17 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org> +chaco-4.1.0.ebuild:
+  Version bump
+
+*chaco-4.0.0 (03 Aug 2011)
+
+  03 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> +chaco-4.0.0.ebuild:
+  Version bump. Possible API break.
+
+*chaco-3.4.0 (30 Jan 2011)
+
+  30 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -chaco-3.3.2.ebuild, +chaco-3.4.0.ebuild:
+  Version bump.
+
+*chaco-3.3.2 (18 Oct 2010)
+
+  18 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -chaco-3.3.1.ebuild, +chaco-3.3.2.ebuild:
+  Version bump.
+
+  05 Aug 2010; Sébastien Fabbro <bicatali@gentoo.org> chaco-3.3.1.ebuild:
+  Added virtualx for documentation generation, bug #330517
+
+*chaco-3.3.1 (07 Jul 2010)
+
+  07 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -chaco-3.2.0.ebuild, +chaco-3.3.1.ebuild:
+  Version bump.
+
+  23 Apr 2010; Sébastien Fabbro <bicatali@gentoo.org> chaco-3.3.0.ebuild:
+  Added virtualx for tests
+
+*chaco-3.3.0 (21 Mar 2010)
+
+  21 Mar 2010; Sébastien Fabbro <bicatali@gentoo.org> +chaco-3.3.0.ebuild:
+  Version bump
+
+*chaco-3.2.0 (05 Sep 2009)
+
+  05 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +chaco-3.2.0.ebuild:
+  Version bump. Set SUPPORT_PYTHON_ABIS.
+
+  24 Apr 2009; Patrick Lauer <patrick@gentoo.org> -chaco-3.0.1.ebuild:
+  Remove old
+
+*chaco-3.1.0 (27 Mar 2009)
+
+  27 Mar 2009; Sébastien Fabbro <bicatali@gentoo.org> +chaco-3.1.0.ebuild:
+  Version bump
+
+*chaco-3.0.1 (15 Jan 2009)
+
+  15 Jan 2009; Sébastien Fabbro <bicatali@gentoo.org> +metadata.xml,
+  +chaco-3.0.1.ebuild:
+  Initial import

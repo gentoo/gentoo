@@ -1,0 +1,25 @@
+# ChangeLog for net-analyzer/dosdetector
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/dosdetector/ChangeLog,v 1.5 2014/07/11 10:26:23 jer Exp $
+
+  11 Jul 2014; Jeroen Roovers <jer@gentoo.org> dosdetector-20060621.ebuild,
+  +files/dosdetector-20060621-isdigit.patch:
+  EAPI bump. New HOMEPAGE/SRC_URI. Add missing include for isdigit(). Set
+  RDEPEND.
+
+  17 Mar 2007; Marcelo Goes <vanquirius@gentoo.org>
+  dosdetector-20060621.ebuild:
+  No need to set S, use emake install instead of einstall, mark x86 stable.
+
+  15 Oct 2006; Thomas Cort <tcort@gentoo.org> dosdetector-20060621.ebuild:
+  Added ~amd64 keyword wrt Bug #151445.
+
+  08 Oct 2006; Markus Ullmann <jokey@gentoo.org> Manifest:
+  Hrm, wrong bug number, should have been bug #95268
+
+*dosdetector-20060621 (08 Oct 2006)
+
+  08 Oct 2006; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +dosdetector-20060621.ebuild:
+  Initial import wrt bug #92950
+

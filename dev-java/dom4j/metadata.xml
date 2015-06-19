@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+	<longdescription>
+		Easy to use, open source library for working with XML, XPath and
+		XSLT on the Java platform using the Java Collections Framework
+		and with full support for DOM, SAX and JAXP.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">dom4j</remote-id>
+	</upstream>
+</pkgmetadata>

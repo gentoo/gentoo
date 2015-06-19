@@ -1,0 +1,40 @@
+# ChangeLog for media-gfx/kiconedit
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/kiconedit/ChangeLog,v 1.8 2014/03/21 20:49:11 johu Exp $
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org> kiconedit-4.4.0.ebuild:
+  Bump to EAPI 5.
+
+  28 Oct 2011; Jonathan Callen <abcd@gentoo.org> kiconedit-4.4.0.ebuild:
+  Bump to EAPI=4; set KDE_HANDBOOK
+
+  02 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org> kiconedit-4.4.0.ebuild:
+  EAPI3
+
+  09 Aug 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  kiconedit-4.4.0.ebuild:
+  Remove unnecessary KDE_MINIMAL
+
+*kiconedit-4.3.1 (15 May 2010)
+
+  15 May 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  -kiconedit-4.3.0.ebuild, +kiconedit-4.3.1.ebuild:
+  Version bump (move from overlay), remove old
+
+*kiconedit-4.4.0 (21 Feb 2010)
+
+  21 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +kiconedit-4.4.0.ebuild:
+  Version bump.
+
+*kiconedit-4.3.0 (06 Aug 2009)
+
+  06 Aug 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  +kiconedit-4.3.0.ebuild:
+  Version bump to 4.3.0
+
+*kiconedit-4.2.4 (22 Jul 2009)
+
+  22 Jul 2009; Alex Alexander <wired@gentoo.org> +kiconedit-4.2.4.ebuild,
+  +metadata.xml:
+  ebuild from kde-testing overlay for kiconedit 4.2.4

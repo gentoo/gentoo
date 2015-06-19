@@ -1,0 +1,188 @@
+# ChangeLog for media-fonts/font-schumacher-misc
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/font-schumacher-misc/ChangeLog,v 1.43 2012/05/15 14:11:40 aballier Exp $
+
+  15 May 2012; Alexis Ballier <aballier@gentoo.org>
+  font-schumacher-misc-1.1.2.ebuild:
+  keyword ~amd64-fbsd
+
+  01 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -font-schumacher-misc-1.1.0.ebuild:
+  old
+
+  15 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  font-schumacher-misc-1.1.2.ebuild:
+  ppc stable wrt #359059
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org>
+  font-schumacher-misc-1.1.2.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #344827
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org>
+  font-schumacher-misc-1.1.2.ebuild:
+  Stable for HPPA (bug #344827).
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org>
+  font-schumacher-misc-1.1.2.ebuild:
+  arm stable, bug #344827
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  font-schumacher-misc-1.1.2.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org>
+  font-schumacher-misc-1.1.2.ebuild:
+  amd64 stable wrt #344827
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org>
+  font-schumacher-misc-1.1.2.ebuild:
+  ppc64 stable wrt #344827
+
+  20 Nov 2010; Michał Górny <mgorny@gentoo.org>
+  -font-schumacher-misc-1.0.0.ebuild:
+  Remove redundant version.
+
+*font-schumacher-misc-1.1.2 (17 Nov 2010)
+
+  17 Nov 2010; Michał Górny <mgorny@gentoo.org>
+  +font-schumacher-misc-1.1.2.ebuild:
+  Version bump.
+
+  21 Oct 2010; Brent Baude <ranger@gentoo.org>
+  font-schumacher-misc-1.1.0.ebuild:
+  Marking font-schumacher-misc-1.1.0 ppc stable for bug 239063
+
+  28 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  font-schumacher-misc-1.1.0.ebuild:
+  ppc64 stable wrt #327777
+
+  19 Sep 2010; Raúl Porcel <armin76@gentoo.org>
+  font-schumacher-misc-1.1.0.ebuild:
+  ia64/s390/sh/sparc stable wrt #327777
+
+  12 Sep 2010; Tobias Klausmann <klausman@gentoo.org>
+  font-schumacher-misc-1.1.0.ebuild:
+  Stable on alpha, bug #327777
+
+  22 Jul 2010; Markus Meier <maekke@gentoo.org>
+  font-schumacher-misc-1.1.0.ebuild:
+  arm stable, bug #327777
+
+  14 Jul 2010; Jeroen Roovers <jer@gentoo.org>
+  font-schumacher-misc-1.1.0.ebuild:
+  Stable for HPPA (bug #327777).
+
+  13 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  font-schumacher-misc-1.1.0.ebuild:
+  x86 stable, bug 327777
+
+  12 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  font-schumacher-misc-1.1.0.ebuild:
+  Stable on amd64 wrt bug #327777
+
+*font-schumacher-misc-1.1.0 (15 Mar 2010)
+
+  15 Mar 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +font-schumacher-misc-1.1.0.ebuild:
+  Version bump.
+
+  06 Jul 2009; Jeroen Roovers <jer@gentoo.org>
+  font-schumacher-misc-1.0.0.ebuild:
+  Stable for HPPA too.
+
+  02 Mar 2009; Peter Volkov <pva@gentoo.org>
+  font-schumacher-misc-1.0.0.ebuild:
+  ~mips keyworded, bug #237411
+
+  04 Feb 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  font-schumacher-misc-1.0.0.ebuild:
+  Drop mirroring restriction.  Thanks to Zhang Le of bug #163088.
+
+  26 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  font-schumacher-misc-1.0.0.ebuild:
+  Add ~x86-fbsd keyword.
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  font-schumacher-misc-1.0.0.ebuild:
+  Stable on Alpha.
+
+  11 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  font-schumacher-misc-1.0.0.ebuild:
+  Mark 1.0.0 stable on ia64
+
+  03 Jul 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  font-schumacher-misc-1.0.0.ebuild:
+  amd64/ppc/sparc/x86 stable, ~alpha.
+
+  02 Jul 2006; Markus Rothe <corsair@gentoo.org>
+  font-schumacher-misc-1.0.0.ebuild:
+  Stable on ppc64
+
+  04 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  font-schumacher-misc-1.0.0.ebuild:
+  (#133980) Add a real description (Max Lorenz).
+
+  28 Apr 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+  24 Mar 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  font-schumacher-misc-1.0.0.ebuild:
+  (#127306) Digests changed between release candidates and final release for
+  the same tarballs.
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org>
+  font-schumacher-misc-1.0.0.ebuild:
+  Added ~ppc64
+
+  10 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  font-schumacher-misc-1.0.0.ebuild:
+  Added to ~hppa, ~ppc.
+
+*font-schumacher-misc-1.0.0 (18 Dec 2005)
+
+  18 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -font-schumacher-misc-0.99.2.ebuild, +font-schumacher-misc-1.0.0.ebuild:
+  Bump for 7.0RC4.
+
+  10 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  font-schumacher-misc-0.99.2.ebuild:
+  Remove mkfontscale and mkfontdir deps; moved to x-modular.eclass.
+
+  07 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -font-schumacher-misc-0.99.0.ebuild, -font-schumacher-misc-0.99.1.ebuild:
+  Pull old versions.
+
+*font-schumacher-misc-0.99.2 (07 Dec 2005)
+
+  07 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +font-schumacher-misc-0.99.2.ebuild:
+  Bump for 7.0RC3.
+
+*font-schumacher-misc-0.99.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +font-schumacher-misc-0.99.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  14 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  font-schumacher-misc-0.99.0.ebuild:
+  Autodiscover fonts instead of specifying them.
+
+  11 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  font-schumacher-misc-0.99.0.ebuild:
+  Update to use new x-modular.eclass setup code. See font-misc-misc ChangeLog
+  for more details.
+
+  09 Aug 2005; Ferris McCormick <fmccor@gentoo.org>
+  font-schumacher-misc-0.99.0.ebuild:
+  Add ~sparc keyword (modular X testing).
+
+*font-schumacher-misc-0.99.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +font-schumacher-misc-0.99.0.ebuild:
+  Initial commit for modular X.
+

@@ -1,0 +1,70 @@
+# ChangeLog for net-wireless/ap-utils
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/ap-utils/ChangeLog,v 1.18 2012/12/15 17:20:59 pacho Exp $
+
+  15 Dec 2012; Pacho Ramos <pacho@gentoo.org> ap-utils-1.5.ebuild:
+  Add missing ncurses dep, #406087 by Bertrand Jacquin
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> -ap-utils-1.3.1.ebuild,
+  -ap-utils-1.3.3.ebuild, -ap-utils-1.4.1.ebuild, metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML, remove old.
+
+*ap-utils-1.5 (05 Sep 2009)
+
+  05 Sep 2009; Patrick Lauer <patrick@gentoo.org> +ap-utils-1.5.ebuild:
+  Bump to 1.5, fixes #151771. Ebuild fixups by Norman Heinen
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Peter Johanson (latexer, #206688) from metadata.xml.
+
+  24 Jul 2007; Steve Dibb <beandog@gentoo.org> ap-utils-1.4.1.ebuild:
+  Add ~amd64, bug 184283
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> ap-utils-1.3.1.ebuild,
+  ap-utils-1.3.3.ebuild, ap-utils-1.4.ebuild, ap-utils-1.4.1.ebuild:
+  (QA) RESTRICT clean up.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  08 Aug 2004; Tom Martin <slarti@gentoo.org> ap-utils-1.3.1.ebuild,
+  ap-utils-1.3.3.ebuild, ap-utils-1.4.1.ebuild, ap-utils-1.4.ebuild:
+  Typo in DESCRIPTION: Utilites -> Utilities. Bug 59717.
+
+*ap-utils-1.4.1 (01 Jun 2004)
+
+  01 Jun 2004; Peter Johanson <latexer@gentoo.org> ap-utils-1.4.1.ebuild,
+  ap-utils-1.4.ebuild:
+  Bump to latest version, and mark 1.4 stable on x86.
+
+  21 Mar 2004; Martin Holzer <mholzer@gentoo.org> ap-utils-1.3.1.ebuild,
+  ap-utils-1.3.3.ebuild, ap-utils-1.4.ebuild:
+  adding categorie. see 45110 for details
+
+*ap-utils-1.4 (24 Feb 2004)
+
+  24 Feb 2004; Peter Johanson <latexer@gentoo.org> ap-utils-1.0.5.ebuild,
+  ap-utils-1.3.3.ebuild, ap-utils-1.4.ebuild, files/ap-utils-1.4-ppc-fix.diff:
+  Marking 1.3.3 stable, and adding latest version. Includes PPC fix.
+
+*ap-utils-1.3.3 (18 Dec 2003)
+
+  18 Dec 2003; Peter Johanson <latexer@gentoo.org> ap-utils-1.3.3.ebuild,
+  metadata.xml:
+  Version bumped, and added metadata.xml
+
+  31 Oct 2002; Hannes Mehnert <hannes@gentoo.org>:
+  moved to net-wireless
+
+*ap-utils-1.3.1 (18 Feb 2003)
+
+  18 Feb 2003; Peter Johanson <latexer@gentoo.org> ap-utils-1.3.1.ebuild files/digest-ap-utils-1.3.1 :
+  Version bump. Thanks to Joseph Carter <knghtbrd@@efn.org> for the ebuild
+
+*ap-utils-1.0.5 (15 Sep 2002)
+
+  03 Nov 2002; Kain <kain@kain.org>:
+  current ap-utils does NOT work correctly on PPC. (endianess issues)
+
+  15 Sep 2002; Aron Griffis <agriffis@gentoo.org> ap-utils-1.0.5.ebuild:
+  Initial ebuild.

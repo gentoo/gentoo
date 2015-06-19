@@ -1,0 +1,248 @@
+# ChangeLog for app-pda/jpilot
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-pda/jpilot/ChangeLog,v 1.50 2014/03/01 22:17:19 mgorny Exp $
+
+  01 Mar 2014; Michał Górny <mgorny@gentoo.org> jpilot-1.8.0.ebuild,
+  jpilot-1.8.1.ebuild:
+  Update libgcrypt dep to use slot :0.
+
+  29 Aug 2012; Anthony G. Basile <blueness@gentoo.org> jpilot-1.8.1.ebuild:
+  Keyword ~arm
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> jpilot-1.8.0.ebuild,
+  jpilot-1.8.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*jpilot-1.8.1 (15 Jun 2011)
+
+  15 Jun 2011; Samuli Suominen <ssuominen@gentoo.org> +jpilot-1.8.1.ebuild,
+  +files/jpilot-1.8.1-char.patch:
+  Version bump wrt #365241 by Rapahel Studer
+
+  31 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> jpilot-1.8.0.ebuild:
+  Remove sparc keywording wrt #353436, Comment #28.
+
+  12 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -jpilot-0.99.9.ebuild, -files/jpilot-0.99.9-keyring-cats.patch:
+  Delete.
+
+  12 Jan 2011; Brent Baude <ranger@gentoo.org> jpilot-1.8.0.ebuild:
+  Marking jpilot-1.8.0 ppc for bug 333717
+
+  18 Sep 2010; Raúl Porcel <armin76@gentoo.org> jpilot-1.8.0.ebuild:
+  alpha/ia64/sparc stable wrt #333717
+
+  23 Aug 2010; Markus Meier <maekke@gentoo.org> jpilot-1.8.0.ebuild:
+  x86 stable, bug #333717
+
+  21 Aug 2010; Thomas Beierlein <tomjbe@gentoo.org> jpilot-1.8.0.ebuild:
+  amd64 stable, bug #333717
+
+  21 Aug 2010; Samuli Suominen <ssuominen@gentoo.org> jpilot-1.8.0.ebuild,
+  +files/jpilot-1.8.0-char.patch:
+  Rename .pdb file with bad char.
+
+  01 Aug 2010; Samuli Suominen <ssuominen@gentoo.org> jpilot-1.8.0.ebuild:
+  Fix testsuite wrt #330709 by Diego E. Pettenò.
+
+*jpilot-1.8.0 (13 Jul 2010)
+
+  13 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> +jpilot-1.8.0.ebuild:
+  Version bump wrt #225277 by Didier Link.
+
+  21 May 2008; Samuli Suominen <drac@gentoo.org> jpilot-0.99.9.ebuild:
+  Move gettext and pkgconfig to DEPEND.
+
+  17 Feb 2008; nixnut <nixnut@gentoo.org> jpilot-0.99.9.ebuild:
+  Stable on ppc wrt bug 209068
+
+  14 Feb 2008; Raúl Porcel <armin76@gentoo.org> jpilot-0.99.9.ebuild:
+  alpha/ia64/sparc stable wrt #209068
+
+  11 Feb 2008; Christian Faulhammer <opfer@gentoo.org> jpilot-0.99.9.ebuild:
+  stable x86, bug 209068
+
+  10 Feb 2008; Wulf C. Krueger <philantrop@gentoo.org> jpilot-0.99.9.ebuild:
+  Added a dependency on pkg-config. Fixes bug 206007. Marked stable on amd64
+  as per bug 209068.
+
+*jpilot-0.99.9 (17 Sep 2007)
+
+  17 Sep 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  -files/jpilot-0.99.8-glibc-free.patch, -files/jpilot-0.99.8-glob.patch,
+  -files/jpilot-0.99.8-memory.patch,
+  +files/jpilot-0.99.9-keyring-cats.patch, -jpilot-0.99.8_pre9.ebuild,
+  -jpilot-0.99.8.ebuild, -jpilot-0.99.8-r1.ebuild, +jpilot-0.99.9.ebuild:
+  Version bump to 0.99.9 with several fixes. Removed obsolete versions. Fixes
+  bugs 93471, 128076, 148440 and 160349. Thanks to (in order of appearance)
+  Craig Lawson, Mark Wagner, Serhij S. Stasyuk and Thomas Jost for their
+  contributions!
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> jpilot-0.99.7-r1.ebuild,
+  jpilot-0.99.8_pre9.ebuild, jpilot-0.99.8.ebuild, jpilot-0.99.8-r1.ebuild:
+  Replacing einfo with elog
+
+  29 Aug 2006; Chris White <chriswhite@gentoo.org> jpilot-0.99.7-r1.ebuild,
+  jpilot-0.99.8_pre9.ebuild, jpilot-0.99.8.ebuild, jpilot-0.99.8-r1.ebuild:
+  gtk2 -> gtk conversion.
+
+*jpilot-0.99.8-r1 (30 May 2006)
+
+  30 May 2006; Mike Auty <ikelos@gentoo.org>
+  +files/jpilot-0.99.8-glibc-free.patch, +jpilot-0.99.8-r1.ebuild:
+  Version bump fixing bug #129835
+
+*jpilot-0.99.8 (28 Mar 2006)
+
+  28 Mar 2006; Scott Stoddard <deltacow@gentoo.org>
+  +files/jpilot-0.99.8-glob.patch, +files/jpilot-0.99.8-memory.patch,
+  +jpilot-0.99.8.ebuild:
+  New version.  Patches applied to bring it up to date with upstream.
+
+  28 Mar 2006; Scott Stoddard <deltacow@gentoo.org> jpilot-0.99.7-r1.ebuild,
+  jpilot-0.99.8_pre9.ebuild:
+  Fix for bad libdir on multilib systems.
+
+*jpilot-0.99.8_pre9 (08 Jul 2005)
+
+  08 Jul 2005; Alastair Tse <liquidx@gentoo.org> -jpilot-0.99.2-r1.ebuild,
+  -jpilot-0.99.5.ebuild, -jpilot-0.99.6-r1.ebuild, -jpilot-0.99.7.ebuild,
+  +jpilot-0.99.8_pre9.ebuild:
+  version bump. (#88811)
+
+  09 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  jpilot-0.99.7-r1.ebuild:
+  Stable on ppc.
+
+  31 Mar 2005; <blubb@gentoo.org> jpilot-0.99.7-r1.ebuild:
+  stable on amd64
+
+  20 Mar 2005; Jason Wever <weeve@gentoo.org> jpilot-0.99.7-r1.ebuild:
+  Fixed up ebuild to inherits eutils so epatch will work and marked stable on
+  SPARC.
+
+  13 Mar 2005; Aron Griffis <agriffis@gentoo.org>
+  +files/jpilot-0.99.7-gcc2.patch, jpilot-0.99.7-r1.ebuild:
+  Add patch for gcc-2 compilation #70127.  Stable on alpha, ia64, x86
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*jpilot-0.99.7-r1 (05 Jul 2004)
+
+  05 Jul 2004; Aron Griffis <agriffis@gentoo.org> +jpilot-0.99.7-r1.ebuild:
+  Split out the jpilot-syncmal plugin since there are other jpilot plugins and
+  it doesn't make sense to tie them all into this ebuild. Remove useless sed
+  from src_compile. Make installation simpler with DESTDIR. Remove unnecessary
+  jpilot.xpm symlink.
+
+  26 Jun 2004; Alastair Tse <liquidx@gentoo.org> jpilot-0.99.7.ebuild:
+  install icons in the right place (#54264)
+
+  05 May 2004; Bryan Østergaard <kloeri@gentoo.org> jpilot-0.99.6-r1.ebuild:
+  Stable on alpha.
+
+*jpilot-0.99.7 (03 May 2004)
+
+  03 May 2004; Grant Goodyear <g2boojum@gentoo.org> jpilot-0.99.7.ebuild:
+  Version bump.  Thanks to Tobias Sager (bug # 44672).
+
+  03 May 2004; David Holm <dholm@gentoo.org> jpilot-0.99.6-r1.ebuild:
+  Added to ~ppc.
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> jpilot-0.99.2-r1.ebuild,
+  jpilot-0.99.5.ebuild:
+  Add die following econf for bug 48950
+
+  14 Mar 2004; Jason Wever <weeve@gentoo.org> jpilot-0.99.6-r1.ebuild:
+  Marked stable on sparc.
+
+  18 Feb 2004; <augustus@gentoo.org> jpilot-0.99.6-r1.ebuild:
+  ~amd64 added.
+
+  14 Feb 2004; Adrian Almenar <strider@gentoo.org> jpilot-0.99.6-r1.ebuild,
+  jpilot-0.99.6.ebuild:
+  Moved to stable on x86.
+
+  13 Jan 2003; Adrian Almenar <strider@gentoo.org> jpilot-0.99.6-r1.ebuild:
+  Fixes #37633. Thanks Grant Goodyear <g2boojum@gentoo.org> for the fix. 
+  
+  23 Nov 2003; Adrian Almenar <strider@gentoo.org> jpilot-0.99.6-r1.ebuild:
+  Fixes bug #34130.
+
+*jpilot-0.99.6-r1 (22 Nov 2003)
+
+  22 Nov 2003; Adrian Almenar <strider@gentoo.org> jpilot-0.99.6-r1.ebuild:
+  Updated Syncmal and Malsync to latest versions. Closes bug #33355
+
+*jpilot-0.99.6 (12 Nov 2003)
+
+  12 Nov 2003; Alastair Tse <liquidx@gentoo.org> jpilot-0.99.3.ebuild:
+  version bump and ebuild cleanup
+
+  25 Sep 2003; Martin Holzer <mholzer@gentoo.org> jpilot-0.99.5.ebuild:
+  fixed gtk depend. Closes #25666
+
+  09 Sep 2003; Aron Griffis <agriffis@gentoo.org> jpilot-0.99.5.ebuild:
+  Stable on alpha
+
+  30 Aug 2003; Alastair Tse <liquidx@gentoo.org> jpilot-0.99.2-r1.ebuild,
+  jpilot-0.99.3.ebuild, jpilot-0.99.5.ebuild:
+  moved dev-libs/pilot-link to app-pda/pilot-link
+  moved app-misc/jpilot to app-pda/jpilot
+
+  08 Jul 2003; Aron Griffis <agriffis@gentoo.org> jpilot-0.99.5.ebuild:
+  Add ~alpha to KEYWORDS
+
+  01 Jul 2003; Jason Wever <weeve@gentoo.org> jpilot-0.99.5.ebuild:
+  Changed ~sparc keyword to sparc.
+
+  11 Jun 2003; Jason Wever <weeve@gentoo.org> jpilot-0.99.5.ebuild:
+  Added ~sparc to keywords.
+
+*jpilot-0.99.5 (19 Mar 2003)
+
+  19 Mar 2003; Zach Welch <zwelch@gentoo.org> jpilot-0.99.5.ebuild:
+  bump version; fix bug 14333
+
+*jpilot-0.99.3 (18 Nov 2002)
+
+  09 Feb 2003; Seemant Kulleen <seemant@gentoo.org> *.ebuild :
+
+  Sed expression delimiter from / to :, closing bug #15006 by Blu3
+  <david+gentoo.org@blue-labs.org>
+
+  18 Nov 2002; Bruce A. Locke <blocke@shivan.org> jpilot-0.99.3.ebuild:
+  Version bump and pilot-link version dependency bump (see bug #9640)
+
+*jpilot-0.99.2-r1 (27 May 2002)
+
+  17 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> jpilot-0.99.2-r1.ebuild :
+  Added IUSE.
+ 
+  22 Jul 2002; Owen Stampflee <owen@gentoo.org> :
+  Fixed Various to make package Repoman Complaint.
+
+  27 May 2002; Seemant Kulleen <seemant@gentoo.org> jpilot-0.99.2-r1.ebuild
+  files/digest-jpilot-0.99.2-r1 :
+
+  Recenly I updated the pilot-link and gnome-pilot and gnome-pilot-link
+  packages.  As a result, the syncmal plugin for the jpilot package broke.
+  Upon closer investigation, it turned out the syncmal-plugin itself has an
+  updated version.  So, this revision differs only by the version number of
+  the syncmal plugin.
+
+*jpilot-0.99.2 (12 Feb 2002)
+
+  17 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> jpilot-0.99.2.ebuild :
+  Added IUSE.
+
+  12 Feb 2002; Bruce A. Locke <blocke@shivan.org> ChangeLog :
+
+  Added 0.99.2 with updated malsync plugin and cleaned up ebuild
+
+  PLEASE NOTE: reliable USB support with jpilot and other packages
+  is dependent on having a CVS snapshot of pilot-link that is not
+  source compatible with packages such as GNOME's Pilot support.
+
+*jpilot-0.99-r2 (1 Feb 2002)

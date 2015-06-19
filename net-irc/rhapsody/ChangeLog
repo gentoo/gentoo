@@ -1,0 +1,47 @@
+# ChangeLog for net-irc/rhapsody
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/rhapsody/ChangeLog,v 1.10 2009/12/15 19:16:19 armin76 Exp $
+
+  15 Dec 2009; Raúl Porcel <armin76@gentoo.org> rhapsody-0.28b.ebuild:
+  Add missing inherit, bug #297063
+
+  07 Jun 2008; Raúl Porcel <armin76@gentoo.org>
+  +files/rhapsody-0.28b-uclibc.patch, rhapsody-0.28b.ebuild:
+  Add a patch to compile with uclibc, by Natanael Copa, bug #219692
+
+  25 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> rhapsody-0.28b.ebuild:
+  amd64 stable
+
+  20 Feb 2007; Raúl Porcel <armin76@gentoo.org> -rhapsody-0.25b.ebuild,
+  -rhapsody-0.26b.ebuild, rhapsody-0.28b.ebuild:
+  stable x86, remove old
+
+*rhapsody-0.28b (01 Aug 2006)
+
+  01 Aug 2006; Sven Wegener <swegener@gentoo.org> +rhapsody-0.28b.ebuild:
+  Version bump.
+
+*rhapsody-0.26b (27 Aug 2005)
+
+  27 Aug 2005; Sven Wegener <swegener@gentoo.org> +rhapsody-0.26b.ebuild:
+  Version bump.
+
+  24 Aug 2005; Olivier Crête <tester@gentoo.org> rhapsody-0.25b.ebuild:
+  Marked ~amd64, thanks to Jim Laflin for testing
+
+  05 Jul 2005; Sven Wegener <swegener@gentoo.org> rhapsody-0.25b.ebuild:
+  Marked stable on x86.
+
+*rhapsody-0.25b (25 May 2005)
+
+  25 May 2005; Sven Wegener <swegener@gentoo.org> -rhapsody-0.24b.ebuild,
+  +rhapsody-0.25b.ebuild:
+  Version bump.
+
+*rhapsody-0.24b (16 Mar 2005)
+
+  16 Mar 2005; Sven Wegener <swegener@gentoo.org> +metadata.xml,
+  +rhapsody-0.24b.ebuild:
+  Initial commit. ebuild based on the one Ed Wildgoose <gentoo@wildgooses.com>
+  posted to bug #85208.
+

@@ -1,0 +1,625 @@
+Fixes build issue with texinfo-5.1
+https://bugs.gentoo.org/show_bug.cgi?id=483122
+
+============================================================
+--- doc/monotone.texi	fcc02ef992214968bfbdd4a1f968846535de22f7
++++ doc/monotone.texi	4feaab5a3c304a6a465402d6069d214137d63198
+@@ -4845,7 +4845,7 @@ @subsection Global Options
+ Cancel all previous @option{--rcfile} options (standard rcfiles are
+ still loaded). See @ref{rcfiles}.
+ 
+-@itemx --root <arg>
++@item --root <arg>
+ Limit the search for a workspace to the specified root directory
+ 
+ @item --ssh-sign <arg>
+@@ -6247,7 +6247,7 @@ @section Informative
+ the root directory of the specified path (or the workspace, if no path
+ is given).
+ 
+-@itemx mtn list vars [@var{domain}]
++@item mtn list vars [@var{domain}]
+ @itemx mtn ls vars
+ @command{ls vars} is an alias for @command{list vars}.
+ 
+============================================================
+--- doc/pcrepattern.texi	43ef52850c1fd113b8a21d63634bafe61b3aec45
++++ doc/pcrepattern.texi	7ae6fb9367a2410c588230742d63ff4f83daa909
+@@ -74,32 +74,32 @@ @subsubheading Characters and Metacharac
+ brackets, the metacharacters are as follows:
+ 
+ @table @code
+-@itemx \
++@item \
+ general escape character with several uses
+-@itemx ^
++@item ^
+ assert start of string (or line, in multiline mode)
+-@itemx $
++@item $
+ assert end of string (or line, in multiline mode)
+-@itemx .
++@item .
+ match any character except newline (by default)
+-@itemx [
++@item [
+ start character class definition
+-@itemx |
++@item |
+ start of alternative branch
+-@itemx (
++@item (
+ start subpattern
+-@itemx )
++@item )
+ end subpattern
+-@itemx ?
++@item ?
+ extends the meaning of @samp{(}
+          also 0 or 1 quantifier
+          also quantifier minimizer
+-@itemx *
++@item *
+ 0 or more quantifier
+-@itemx +
++@item +
+ 1 or more quantifier
+          also ``possessive quantifier''
+-@itemx @{
++@item @{
+ start min/max quantifier
+ @end table
+ 
+@@ -108,16 +108,16 @@ @subsubheading Characters and Metacharac
+ class". In a character class the only metacharacters are:
+ 
+ @table @code
+-@itemx \
++@item \
+ general escape character
+-@itemx ^
++@item ^
+ negate the class, but only if the first character
+-@itemx -
++@item -
+ indicates character range
+-@itemx [
++@item [
+ POSIX character class (only if followed by POSIX
+            syntax)
+-@itemx ]
++@item ]
+ terminates the character class
+ @end table
+ 
+@@ -159,25 +159,25 @@ @subsubheading Non-printing Characters
+ represents:
+ 
+ @table @code
+-@itemx \a
++@item \a
+ alarm, that is, the BEL character (hex 07)
+-@itemx \c@var{x}
++@item \c@var{x}
+ "control-@var{x}", where @var{x} is any character
+-@itemx \e
++@item \e
+ escape (hex 1B)
+-@itemx \f
++@item \f
+ formfeed (hex 0C)
+-@itemx \n
++@item \n
+ linefeed (hex 0A)
+-@itemx \r
++@item \r
+ carriage return (hex 0D)
+-@itemx \t
++@item \t
+ tab (hex 09)
+-@itemx \@var{ddd}
++@item \@var{ddd}
+ character with octal code @var{ddd}, or backreference
+-@itemx \x@var{hh}
++@item \x@var{hh}
+ character with hex code @var{hh}
+-@itemx \x@{@var{hhh...}@}
++@item \x@{@var{hhh...}@}
+ character with hex code @var{hhh...}
+ @end table
+ 
+@@ -244,27 +244,27 @@ @subsubheading Non-printing Characters
+ @samp{\777} are permitted. For example:
+ 
+ @table @code
+-@itemx \040
++@item \040
+ is another way of writing a space
+-@itemx \40
++@item \40
+ is the same, provided there are fewer than 40
+             previous capturing subpatterns
+-@itemx \7
++@item \7
+ is always a back reference
+-@itemx \11
++@item \11
+ might be a back reference, or another way of
+             writing a tab
+-@itemx \011
++@item \011
+ is always a tab
+-@itemx \0113
++@item \0113
+ is a tab followed by the character @samp{3}
+-@itemx \113
++@item \113
+ might be a back reference, otherwise the
+             character with octal code 113
+-@itemx \377
++@item \377
+ might be a back reference, otherwise
+             the byte consisting entirely of 1 bits
+-@itemx \81
++@item \81
+ is either a back reference, or a binary zero
+             followed by the two characters @samp{8} and @samp{1}
+ @end table
+@@ -294,25 +294,25 @@ @subsubheading Generic character types
+ following are always recognized:
+ 
+ @table @code
+-@itemx \d
++@item \d
+ any decimal digit
+-@itemx \D
++@item \D
+ any character that is not a decimal digit
+-@itemx \h
++@item \h
+ any horizontal whitespace character
+-@itemx \H
++@item \H
+ any character that is not a horizontal whitespace character
+-@itemx \s
++@item \s
+ any whitespace character
+-@itemx \S
++@item \S
+ any character that is not a whitespace character
+-@itemx \v
++@item \v
+ any vertical whitespace character
+-@itemx \V
++@item \V
+ any character that is not a vertical whitespace character
+-@itemx \w
++@item \w
+ any ``word'' character
+-@itemx \W
++@item \W
+ any ``non-word'' character
+ @end table
+ 
+@@ -342,43 +342,43 @@ @subsubheading Generic character types
+ characters are:
+ 
+ @table @code
+-@itemx U+0009
++@item U+0009
+ Horizontal tab
+-@itemx U+0020
++@item U+0020
+ Space
+-@itemx U+00A0
++@item U+00A0
+ Non-break space
+-@itemx U+1680
++@item U+1680
+ Ogham space mark
+-@itemx U+180E
++@item U+180E
+ Mongolian vowel separator
+ @item U+2000
+ En quad
+-@itemx U+2001
++@item U+2001
+ Em quad
+-@itemx U+2002
++@item U+2002
+ En space
+-@itemx U+2003
++@item U+2003
+ Em space
+-@itemx U+2004
++@item U+2004
+ Three-per-em space
+-@itemx U+2005
++@item U+2005
+ Four-per-em space
+-@itemx U+2006
++@item U+2006
+ Six-per-em space
+ @item U+2007
+ Figure space
+-@itemx U+2008
++@item U+2008
+ Punctuation space
+-@itemx U+2009
++@item U+2009
+ Thin space
+-@itemx U+200A
++@item U+200A
+ Hair space
+-@itemx U+202F
++@item U+202F
+ Narrow no-break space
+-@itemx U+205F
++@item U+205F
+ Medium mathematical space
+-@itemx U+3000
++@item U+3000
+ Ideographic space
+ @end table
+ 
+@@ -386,19 +386,19 @@ @subsubheading Generic character types
+ The vertical space characters are:
+ 
+ @table @code
+-@itemx U+000A
++@item U+000A
+ Linefeed
+-@itemx U+000B
++@item U+000B
+ Vertical tab
+-@itemx U+000C
++@item U+000C
+ Formfeed
+-@itemx U+000D
++@item U+000D
+ Carriage return
+-@itemx U+0085
++@item U+0085
+ Next line
+-@itemx U+2028
++@item U+2028
+ Line separator
+-@itemx U+2029
++@item U+2029
+ Paragraph separator
+ @end table
+ 
+@@ -418,15 +418,15 @@ @subsubheading Newline Conventions
+ the following five sequences:
+ 
+ @table @code
+-@itemx (*CR)
++@item (*CR)
+   carriage return
+-@itemx (*LF)
++@item (*LF)
+   linefeed
+-@itemx (*CRLF)
++@item (*CRLF)
+   carriage return, followed by linefeed
+-@itemx (*ANYCRLF)
++@item (*ANYCRLF)
+   any of the three above
+-@itemx (*ANY)
++@item (*ANY)
+   all Unicode newline sequences
+ @end table
+ 
+@@ -474,9 +474,9 @@ @subsubheading Newline Sequences
+ pattern string with one of the following sequences:
+ 
+ @table @code
+-@itemx (*BSR_ANYCRLF)
++@item (*BSR_ANYCRLF)
+ @key{CR}, @key{LF}, or @key{CR}@key{LF} only
+-@itemx (*BSR_UNICODE)
++@item (*BSR_UNICODE)
+ any Unicode newline sequence (the default)
+ @end table
+ 
+@@ -501,11 +501,11 @@ @subsubheading Unicode Character Propert
+ 256, but they do work in this mode.  The extra escape sequences are:
+ 
+ @table @code
+-@itemx \p@{@var{xx}@}
++@item \p@{@var{xx}@}
+ a character with the @var{xx} property
+-@itemx \P@{@var{xx}@}
++@item \P@{@var{xx}@}
+ a character without the @var{xx} property
+-@itemx \X
++@item \X
+ an extended Unicode sequence
+ @end table
+ 
+@@ -618,83 +618,83 @@ @subsubheading Unicode Character Propert
+ @table @code
+ @item C
+ Other
+-@itemx Cc
++@item Cc
+ Control
+-@itemx Cf
++@item Cf
+ Format
+-@itemx Cn
++@item Cn
+ Unassigned
+-@itemx Co
++@item Co
+ Private use
+-@itemx Cs
++@item Cs
+ Surrogate
+ 
+ @item L
+ Letter
+-@itemx Ll
++@item Ll
+ Lower case letter
+-@itemx Lm
++@item Lm
+ Modifier letter
+-@itemx Lo
++@item Lo
+ Other letter
+-@itemx Lt
++@item Lt
+ Title case letter
+-@itemx Lu
++@item Lu
+ Upper case letter
+ 
+ @item M
+ Mark
+-@itemx Mc
++@item Mc
+ Spacing mark
+-@itemx Me
++@item Me
+ Enclosing mark
+-@itemx Mn
++@item Mn
+ Non-spacing mark
+ 
+ @item N
+ Number
+-@itemx Nd
++@item Nd
+ Decimal number
+-@itemx Nl
++@item Nl
+ Letter number
+-@itemx No
++@item No
+ Other number
+ 
+ @item P
+ Punctuation
+-@itemx Pc
++@item Pc
+ Connector punctuation
+-@itemx Pd
++@item Pd
+ Dash punctuation
+-@itemx Pe
++@item Pe
+ Close punctuation
+-@itemx Pf
++@item Pf
+ Final punctuation
+-@itemx Pi
++@item Pi
+ Initial punctuation
+-@itemx Po
++@item Po
+ Other punctuation
+-@itemx Ps
++@item Ps
+ Open punctuation
+ 
+ @item S
+ Symbol
+-@itemx Sc
++@item Sc
+ Currency symbol
+-@itemx Sk
++@item Sk
+ Modifier symbol
+-@itemx Sm
++@item Sm
+ Mathematical symbol
+-@itemx So
++@item So
+ Other symbol
+ 
+ @item Z
+ Separator
+-@itemx Zl
++@item Zl
+ Line separator
+-@itemx Zp
++@item Zp
+ Paragraph separator
+-@itemx Zs
++@item Zs
+ Space separator
+ @end table
+ 
+@@ -771,18 +771,18 @@ @subsubheading Simple assertions
+ described below.  The backslashed assertions are:
+ 
+ @table @code
+-@itemx \b
++@item \b
+ matches at a word boundary
+-@itemx \B
++@item \B
+ matches when not at a word boundary
+-@itemx \A
++@item \A
+ matches at the start of the subject
+-@itemx \Z
++@item \Z
+ matches at the end of the subject
+           also matches before a newline at the end of the subject
+-@itemx \z
++@item \z
+ matches only at the end of the subject
+-@itemx \G
++@item \G
+ matches at the first matching position in the subject
+ @end table
+ 
+@@ -993,33 +993,33 @@ @subsubheading POSIX Character Classes
+ supported class names are
+ 
+ @table @code
+-@itemx alnum
++@item alnum
+ letters and digits
+-@itemx alpha
++@item alpha
+ letters
+-@itemx ascii
++@item ascii
+ character codes 0 -- 127
+-@itemx blank
++@item blank
+ space or tab only
+-@itemx cntrl
++@item cntrl
+ control characters
+-@itemx digit
++@item digit
+ decimal digits (same as @samp{\d})
+-@itemx graph
++@item graph
+ printing characters, excluding space
+-@itemx lower
++@item lower
+ lower case letters
+-@itemx print
++@item print
+ printing characters, including space
+-@itemx punct
++@item punct
+ printing characters, excluding letters and digits
+-@itemx space
++@item space
+ white space (not quite the same as @samp{\s})
+-@itemx upper
++@item upper
+ upper case letters
+-@itemx word
++@item word
+ ``word'' characters (same as @samp{\w})
+-@itemx xdigit
++@item xdigit
+ hexadecimal digits
+ @end table
+ 
+@@ -1071,22 +1071,22 @@ @subsubheading Internal Option Setting
+ @samp{)}.  The option letters are
+ 
+ @table @code
+-@itemx i
++@item i
+ Caseless: characters in one case match the corresponding
+      characters in other cases as well.
+-@itemx m
++@item m
+ Multiline: @samp{^} and @samp{$} match at newlines
+      as well as at beginning and end of string.
+-@itemx s
++@item s
+ Dotall: dot matches any character, including newline characters.
+-@itemx x
++@item x
+ Extended syntax: unescaped white space is ignored and embedded
+      comments are possible.
+-@itemx J
++@item J
+ Dupnames: names for capturing subpattern need not be unique.
+-@itemx U
++@item U
+ Ungreedy: quantifiers match as few times as possible by default.
+-@itemx X
++@item X
+ Extra: for forward compatibility, give an error if any escape sequence
+ with no defined meaning appears.
+ @end table
+@@ -1358,11 +1358,11 @@ @subsubheading Repetition
+ single-character abbreviations:
+ 
+ @table @code
+-@itemx *
++@item *
+ is equivalent to @{0,@}
+-@itemx +
++@item +
+ is equivalent to @{1,@}
+-@itemx ?
++@item ?
+ is equivalent to @{0,1@}
+ @end table
+ 
+@@ -2302,7 +2302,7 @@ @subsubheading Verbs that act immediatel
+ The following verbs act as soon as they are encountered:
+ 
+ @table @code
+-@itemx (*ACCEPT)
++@item (*ACCEPT)
+ 
+ This verb causes the match to end successfully, skipping the remainder
+ of the pattern. When inside a recursion, only the innermost pattern is
+@@ -2317,7 +2317,7 @@ @subsubheading Verbs that act immediatel
+ This matches @samp{AB}, @samp{AAD}, or @samp{ACD}, but when it matches
+ @samp{AB}, no data is captured.
+ 
+-@itemx (*FAIL) @r{or} (*F)
++@item (*FAIL) @r{or} (*F)
+ 
+ This verb causes the match to fail, forcing backtracking to occur. It
+ is equivalent to @samp{(?!)} but easier to read.  It is not clear
+@@ -2334,7 +2334,7 @@ @subsubheading Verbs that act after back
+ occurs.
+ 
+ @table @code
+-@itemx (*COMMIT)
++@item (*COMMIT)
+ 
+ This verb causes the whole match to fail outright if the rest of the
+ pattern does not match. Even if the pattern is unanchored, no further
+@@ -2350,7 +2350,7 @@ @subsubheading Verbs that act after back
+ This matches @samp{xxaab} but not @samp{aacaab}. It can be thought of
+ as a kind of dynamic anchor, or ``I've started, so I must finish.''
+ 
+-@itemx (*PRUNE)
++@item (*PRUNE)
+ 
+ This verb causes the match to fail at the current position if the rest
+ of the pattern does not match. If the pattern is unanchored, the
+@@ -2363,7 +2363,7 @@ @subsubheading Verbs that act after back
+ are some uses of @code{(*PRUNE)} that cannot be expressed in any other
+ way.
+ 
+-@itemx (*SKIP)
++@item (*SKIP)
+ 
+ This verb is like @code{(*PRUNE)}, except that if the pattern is
+ unanchored, the "bumpalong" advance is not to the next character, but
+@@ -2383,7 +2383,7 @@ @subsubheading Verbs that act after back
+ attempt would start at the second character instead of skipping on to
+ @samp{c}.
+ 
+-@itemx (*THEN)
++@item (*THEN)
+ 
+ This verb causes a skip to the next alternation if the rest of the
+ pattern does not match. That is, it cancels pending backtracking, but

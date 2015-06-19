@@ -1,0 +1,27 @@
+# ChangeLog for dev-vcs/gitstats
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/gitstats/ChangeLog,v 1.5 2015/04/08 17:53:03 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> gitstats-0_pre131024.ebuild,
+  gitstats-9999.ebuild:
+  Drop old Python implementations
+
+*gitstats-0_pre131024 (24 Oct 2013)
+
+  24 Oct 2013; Justin Lecher <jlec@gentoo.org> +gitstats-0_pre131024.ebuild,
+  gitstats-9999.ebuild, -gitstats-100711.ebuild, metadata.xml:
+  Drop old; pack latest and bump to new python eclasses, #489132
+
+  21 Sep 2011; Michał Górny <mgorny@gentoo.org> gitstats-9999.ebuild:
+  Migrate to git-2.
+
+  23 Jul 2010; Justin Lecher <jlec@gentoo.org> gitstats-9999.ebuild,
+  gitstats-100711.ebuild:
+  Last fix for Parhon ABIS, 329485
+
+*gitstats-100711 (11 Jul 2010)
+*gitstats-9999 (11 Jul 2010)
+
+  11 Jul 2010; Justin Lecher <jlec@gentoo.org> +gitstats-9999.ebuild,
+  +gitstats-100711.ebuild, +metadata.xml:
+  Import from sunrise

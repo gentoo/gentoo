@@ -1,0 +1,37 @@
+# ChangeLog for dev-java/jettison
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jettison/ChangeLog,v 1.10 2013/03/17 15:24:46 hwoarang Exp $
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  24 Apr 2010; Fabian Groffen <grobian@gentoo.org> jettison-1.0.ebuild:
+  Marked ~sparc-solaris ~x86-solaris, bug #314093
+
+  15 Jan 2010; Jonathan Callen <abcd@gentoo.org> jettison-1.0.ebuild:
+  Add prefix keywords
+
+  28 Dec 2009; Joseph Jezak <josejx@gentoo.org> jettison-1.0.ebuild:
+  Marked ppc stable for bug #279728.
+
+  06 Sep 2009; Brent Baude <ranger@gentoo.org> jettison-1.0.ebuild:
+  Marking jettison-1.0 ppc64 for bug 279728
+
+  02 Aug 2009; Markus Meier <maekke@gentoo.org> jettison-1.0.ebuild:
+  amd64/x86 stable, bug #279728
+
+  20 Apr 2009; Markus Meier <maekke@gentoo.org> jettison-1.0:
+  add ~amd64, bug #258616
+
+  20 Mar 2009; Joseph Jezak <josejx@gentoo.org> jettison-1.0.ebuild:
+  Marked ~ppc/~ppc64 for bug #258616.
+
+  05 Feb 2009; Petteri Räty <betelgeuse@gentoo.org> jettison-1.0.ebuild:
+  Require jaxp-virtual so jettison builds with 1.4.
+
+*jettison-1.0 (05 Feb 2009)
+
+  05 Feb 2009; Petteri Räty <betelgeuse@gentoo.org> +files/build.xml,
+  +metadata.xml, +jettison-1.0.ebuild:
+  Initial addition from java-experimental. Fixes bug #257512. Ebuild written
+  by Mike Weissman <mike@weisso.com>.

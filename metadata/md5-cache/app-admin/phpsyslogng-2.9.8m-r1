@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=>=app-admin/webapp-config-1.50.15
+DESCRIPTION=php-syslog-ng is a log monitor designed to easily manage logs from many hosts
+HOMEPAGE=http://php-syslog-ng.googlecode.com/
+IUSE=mysql vhosts
+KEYWORDS=~amd64 ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/httpd-php mysql? ( >=virtual/mysql-4.1 ) >=app-admin/webapp-config-1.50.15
+SLOT=2.9.8m-r1
+SRC_URI=http://php-syslog-ng.googlecode.com/files/php-syslog-ng-2.9.8m.tar.gz
+_eclasses_=webapp	6621f8b5df9f14800054a5953065efeb
+_md5_=9ca8842a737bfbdbe22d458e78120ea9

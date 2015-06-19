@@ -1,0 +1,42 @@
+Use ncurses.pc to get Libs: instead of using AC_CHECK_LIB because ncurses can be configured
+to have separate termcap library called libtinfo; and we need both -ltinfo and -lncurses for
+linking since symbols are used from both
+
+http://bugs.gentoo.org/459650
+
+--- configure.in
++++ configure.in
+@@ -125,12 +125,7 @@
+ # End compile emacs stuff
+ 
+ # Check for ncurses
+-	HEADERS="curses.h term.h"
+-	NCURSESLIB=""
+-	AC_CHECK_HEADERS([$HEADERS],,[AC_MSG_ERROR([$HEADERS_ERROR_MESSAGE])],)
+-	AC_CHECK_LIB(ncurses, setupterm, [NCURSESLIB="-lncurses"],[AC_MSG_ERROR([$LIBRARIES_ERROR_MESSAGE])] , )
+-	AC_CHECK_LIB(ncurses, tputs,     [NCURSESLIB="-lncurses"],[AC_MSG_ERROR([$LIBRARIES_ERROR_MESSAGE])] , )
+-	AC_SUBST(NCURSESLIB)
++	PKG_CHECK_MODULES(NCURSES, ncurses, [], [AC_MSG_ERROR([$LIBRARIES_ERROR_MESSAGE])])
+ # End check for ncurses
+ 
+ # Check for PAM support
+--- src/libraries/Makefile.am
++++ src/libraries/Makefile.am
+@@ -4,7 +4,7 @@
+ INCLUDES      = -I../.. -I../
+ BUILT_SOURCES = parse_settings.h
+ 
+-AM_CFLAGS = -DSETTINGS_DIR=\"$(sysconfdir)/qingy\" -DSBINDIR=\"$(sbindir)/\"
++AM_CFLAGS = -DSETTINGS_DIR=\"$(sysconfdir)/qingy\" -DSBINDIR=\"$(sbindir)/\" $(NCURSES_CFLAGS)
+ 
+ if !WANT_STATIC
+ pkglib_LTLIBRARIES = libqingy.la
+@@ -35,7 +35,7 @@
+ EXTRA_libqingy_la_SOURCES =           \
+     crypto_openssl.c crypto_libgcrypt.c crypto.h
+ 
+-libqingy_la_LIBADD  = @PASSWDLIB@ @CRYPTOLIB@ @NCURSESLIB@ @XLIBS@
++libqingy_la_LIBADD  = @PASSWDLIB@ @CRYPTOLIB@ @XLIBS@ $(NCURSES_LIBS)
+ libqingy_la_LDFLAGS = -release @VERSION@
+ 
+ libqingy_static_la_SOURCES = $(libqingy_la_SOURCES)

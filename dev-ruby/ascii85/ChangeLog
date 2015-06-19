@@ -1,0 +1,102 @@
+# ChangeLog for dev-ruby/ascii85
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ascii85/ChangeLog,v 1.28 2015/06/07 16:47:02 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  31 Jan 2015; Hans de Graaff <graaff@gentoo.org> ascii85-1.0.2-r2.ebuild:
+  Add ruby22.
+
+  29 Oct 2014; Manuel Rüger <mrueg@gentoo.org> -ascii85-1.0.2-r1.ebuild,
+  ascii85-1.0.2-r2.ebuild:
+  Drop jruby target. Update Homepage. Cleanup old.
+
+  19 Aug 2014; Raúl Porcel <armin76@gentoo.org> ascii85-1.0.2-r1.ebuild,
+  ascii85-1.0.2-r2.ebuild:
+  Add ~arm wrt #519170
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> ascii85-1.0.2-r1.ebuild,
+  ascii85-1.0.2-r2.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  15 May 2014; Manuel Rüger <mrueg@gentoo.org> ascii85-1.0.2-r1.ebuild:
+  Remove ruby18.
+
+*ascii85-1.0.2-r2 (08 May 2014)
+
+  08 May 2014; Peter Wilmott <p8952@gentoo.org> +ascii85-1.0.2-r2.ebuild:
+  Drop ruby18 target, add ruby21 target.
+
+  02 Nov 2013; Manuel Rüger <mrueg@gentoo.org> -ascii85-1.0.2.ebuild:
+  Cleanup old.
+
+*ascii85-1.0.2-r1 (05 Oct 2013)
+
+  05 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +ascii85-1.0.2-r1.ebuild:
+  Add ruby20 target.
+
+  04 Sep 2013; Manuel Rüger <mrueg@gentoo.org> -ascii85-1.0.1.ebuild:
+  Cleanup old.
+
+*ascii85-1.0.2 (07 Nov 2012)
+
+  07 Nov 2012; Hans de Graaff <graaff@gentoo.org> +ascii85-1.0.2.ebuild:
+  Version bump with test fixes by Michel Boaventura in the ruby overlay.
+
+  28 Oct 2012; Raúl Porcel <armin76@gentoo.org> ascii85-1.0.1.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #431384
+
+  14 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> ascii85-1.0.1.ebuild:
+  Port to rspec helper for testing.
+
+  29 Jul 2012; Hans de Graaff <graaff@gentoo.org> -ascii85-1.0.0-r1.ebuild:
+  Cleanup.
+
+  01 May 2012; Raúl Porcel <armin76@gentoo.org> ascii85-1.0.1.ebuild:
+  Drop ia64/sparc keywords
+
+  12 Apr 2012; Hans de Graaff <graaff@gentoo.org> ascii85-1.0.1.ebuild:
+  Add ppc64 keyword since pdf-reader is keyworded as well, and hopefully this
+  keyword just didn't get committed.
+
+  02 Mar 2012; Naohiro Aota <naota@gentoo.org> ascii85-1.0.1.ebuild:
+  Add ~x86-fbsd
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org> ascii85-1.0.1.ebuild:
+  Marking ascii85-1.0.1 ~ppc for bug 388357
+
+  03 Dec 2011; Raúl Porcel <armin76@gentoo.org> ascii85-1.0.1.ebuild:
+  Add ~ia64/~sparc wrt #388357
+
+  13 Nov 2011; Markus Meier <maekke@gentoo.org> ascii85-1.0.1.ebuild:
+  add ~x86, bug #388357
+
+  28 Oct 2011; Jeroen Roovers <jer@gentoo.org> ascii85-1.0.1.ebuild:
+  Marked ~hppa (bug #388357).
+
+*ascii85-1.0.1 (24 May 2011)
+
+  24 May 2011; Hans de Graaff <graaff@gentoo.org> +ascii85-1.0.1.ebuild:
+  Version bump.
+
+  09 Oct 2010; Hans de Graaff <graaff@gentoo.org> ascii85-1.0.0-r1.ebuild:
+  Depend on rspec-1.
+
+  09 Oct 2010; Hans de Graaff <graaff@gentoo.org> -ascii85-1.0.0.ebuild:
+  Remove old version.
+
+*ascii85-1.0.0-r1 (24 Sep 2010)
+
+  24 Sep 2010; Hans de Graaff <graaff@gentoo.org> +ascii85-1.0.0-r1.ebuild:
+  Add ree18 target.
+
+  22 May 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  ascii85-1.0.0.ebuild:
+  Various cleanups.
+
+*ascii85-1.0.0 (28 Jan 2010)
+
+  28 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +ascii85-1.0.0.ebuild, +metadata.xml:
+  Initial import of ascii85, dependency of newer pdf-reader.

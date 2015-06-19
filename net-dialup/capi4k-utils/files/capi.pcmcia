@@ -1,0 +1,31 @@
+#!/bin/bash
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/capi4k-utils/files/capi.pcmcia,v 1.1 2005/09/03 20:25:17 sbriesen Exp $
+
+. /etc/pcmcia/shared
+. /etc/conf.d/capi
+
+# Syslog output
+syslog() {  # <msg>
+	/usr/bin/logger -t "capi-pcmcia" "$@"
+}
+
+case "${ACTION}" in
+	start)
+		# loading capi
+		if ! ( [ -f /proc/capi/capi20 ] || /sbin/modprobe -sq capi ); then
+			syslog "could not load CAPI!"
+			exit 1
+		fi
+
+		# loading capidrv (should be loaded *after* card driver)
+		if ! ( [ -f /proc/capi/capidrv -o "${CAPI_LOAD_CAPIDRV}" != "yes" ] \
+			|| /sbin/modprobe -sq capidrv ); then
+			syslog "could not load CAPIDRV!"
+		fi
+		;;
+	stop)
+		;;
+esac
+exit 0

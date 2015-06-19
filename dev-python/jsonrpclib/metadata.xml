@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <maintainer>
+    <email>vapier@gentoo.org</email>
+    <description>make whatever changes you want</description>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">joshmarshall/jsonrpclib</remote-id>
+  </upstream>
+</pkgmetadata>

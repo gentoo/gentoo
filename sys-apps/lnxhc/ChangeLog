@@ -1,0 +1,23 @@
+# ChangeLog for sys-apps/lnxhc
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/lnxhc/ChangeLog,v 1.4 2013/07/04 12:24:08 ago Exp $
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> lnxhc-1.2-r1.ebuild:
+  Stable for x86, wrt bug #475038
+
+  28 Jun 2013; Agostino Sarubbo <ago@gentoo.org> lnxhc-1.2-r1.ebuild:
+  Stable for amd64, wrt bug #475038
+
+*lnxhc-1.2-r1 (22 May 2013)
+
+  22 May 2013; Chris Reffett <creffett@gentoo.org>
+  +files/lnxhc-1.2-ifconfig-path.patch, +lnxhc-1.2-r1.ebuild, -lnxhc-1.2.ebuild:
+  Revision bump. Add patch to correct references to /sbin/ifconfig to
+  /bin/ifconfig.
+
+*lnxhc-1.2 (09 Feb 2013)
+
+  09 Feb 2013; Chris Reffett <creffett@gentoo.org>
+  +files/lnxhc-1.2-usrlocal.patch, +lnxhc-1.2.ebuild, +metadata.xml:
+  New package wrt bug 443922. Credit to Fpemud <fpemud@sina.com> for the initial
+  ebuild.

@@ -1,0 +1,75 @@
+# ChangeLog for dev-perl/Clipboard
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Clipboard/ChangeLog,v 1.19 2014/08/24 12:43:36 axs Exp $
+
+*Clipboard-0.130.0-r1 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Clipboard-0.130.0-r1.ebuild, -Clipboard-0.130.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  15 Jan 2013; Markus Meier <maekke@gentoo.org> Clipboard-0.130.0.ebuild:
+  add ~arm, bug #449762
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -Clipboard-0.09.ebuild:
+  Cleanup
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Clipboard-0.130.0.ebuild:
+  x86 stable wrt bug #400057
+
+  01 Mar 2012; Brent Baude <ranger@gentoo.org> Clipboard-0.130.0.ebuild:
+  Marking Clipboard-0.130.0 ppc for bug 400057
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Clipboard-0.130.0.ebuild:
+  Stable for amd64, wrt bug #400057
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Clipboard-0.130.ebuild:
+  Cleanup
+
+*Clipboard-0.130.0 (01 Sep 2011)
+
+  01 Sep 2011; Torsten Veller <tove@gentoo.org> +Clipboard-0.130.0.ebuild:
+  Change version scheme
+
+  03 Apr 2011; Torsten Veller <tove@gentoo.org> -Clipboard-0.11.ebuild:
+  Cleanup
+
+*Clipboard-0.130 (17 Jan 2011)
+
+  17 Jan 2011; Torsten Veller <tove@gentoo.org> +Clipboard-0.130.ebuild:
+  Version bump
+
+*Clipboard-0.11 (09 Oct 2010)
+
+  09 Oct 2010; Torsten Veller <tove@gentoo.org> +Clipboard-0.11.ebuild:
+  Version bump
+
+  25 Nov 2009; Markus Meier <maekke@gentoo.org> Clipboard-0.09.ebuild:
+  amd64 stable, bug #284544
+
+  19 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  Clipboard-0.09.ebuild:
+  stable x86, bug 284544
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> Clipboard-0.09.ebuild:
+  ppc stable #284544
+
+  24 Sep 2009; Mounir Lamouri <volkmar@gentoo.org> Clipboard-0.09.ebuild:
+  Keywording for ppc. Bug 285496
+
+  18 Sep 2009; Alexis Ballier <aballier@gentoo.org> Clipboard-0.09.ebuild:
+  keyword ~ppc64, working fine on a PowerMac 970
+
+  14 May 2009; Torsten Veller <tove@gentoo.org> Clipboard-0.09.ebuild:
+  Depend on x11-misc/xclip (#269761)
+
+*Clipboard-0.09 (05 May 2009)
+
+  05 May 2009; Mike Frysinger <vapier@gentoo.org> +Clipboard-0.09.ebuild,
+  +metadata.xml:
+  Initial ebuild by Maximilian Grothusmann #254932.

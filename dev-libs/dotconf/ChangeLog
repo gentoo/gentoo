@@ -1,0 +1,86 @@
+# ChangeLog for dev-libs/dotconf
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/dotconf/ChangeLog,v 1.34 2015/03/03 06:20:27 dlan Exp $
+
+  02 Mar 2015; Yixun Lan <dlan@gentoo.org> dotconf-1.3.ebuild:
+  add arm64 support, tested on A53 board
+
+  29 Aug 2013; Agostino Sarubbo <ago@gentoo.org> dotconf-1.3.ebuild:
+  Stable for ia64, wrt bug #478264
+
+  02 Aug 2013; Markus Meier <maekke@gentoo.org> dotconf-1.3.ebuild:
+  arm stable, bug #478264
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> dotconf-1.3.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  25 Dec 2012; Markus Meier <maekke@gentoo.org> dotconf-1.3.ebuild:
+  add ~arm
+
+  24 Mar 2011; William Hubbs <williamh@gentoo.org> -dotconf-1.1.0.ebuild,
+  -dotconf-1.1.0-r1.ebuild, -files/dotconf-1.1.0-fix-dotconf-m4.patch:
+  remove old buggy versions
+
+  24 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> dotconf-1.3.ebuild:
+  ppc stable wrt #349304
+
+  24 Jan 2011; Jeroen Roovers <jer@gentoo.org> dotconf-1.3.ebuild:
+  Stable for HPPA (bug #349304).
+
+  23 Jan 2011; Raúl Porcel <armin76@gentoo.org> dotconf-1.3.ebuild:
+  alpha/sparc stable wrt #349304
+
+  01 Jan 2011; Markos Chandras <hwoarang@gentoo.org> dotconf-1.3.ebuild:
+  Stable on amd64 wrt bug #349304
+
+  29 Dec 2010; Brent Baude <ranger@gentoo.org> dotconf-1.3.ebuild:
+  stable ppc64, bug 349304
+
+  21 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> dotconf-1.3.ebuild:
+  x86 stable wrt bug #349304
+
+  21 Dec 2010; William Hubbs <williamh@gentoo.org> dotconf-1.3.ebuild:
+  add warning about revdep-rebuild
+
+*dotconf-1.3 (28 Sep 2010)
+
+  28 Sep 2010; William Hubbs <williamh@gentoo.org> +dotconf-1.3.ebuild:
+  version bump
+
+  23 Feb 2010; Joseph Jezak <josejx@gentoo.org> dotconf-1.1.0-r1.ebuild:
+  Marked ~ppc64.
+
+  11 Feb 2010; Jonathan Callen <abcd@gentoo.org> dotconf-1.1.0-r1.ebuild:
+  Drop redundant src_configure() (breaks on prefix)
+
+  11 Feb 2010; Jonathan Callen <abcd@gentoo.org> dotconf-1.1.0-r1.ebuild:
+  Add ~amd64-linux/~x86-linux keywords
+
+  24 Oct 2009; Tobias Klausmann <klausman@gentoo.org>
+  dotconf-1.1.0-r1.ebuild:
+  Stable on alpha, bug #289439
+
+*dotconf-1.1.0-r1 (18 May 2009)
+
+  18 May 2009; William Hubbs <williamh@gentoo.org> +dotconf-1.1.0-r1.ebuild,
+  +files/dotconf-1.1.0-fix-dotconf-m4.patch:
+  Fixes dotconf.m4 so that it doesn't cause error messages, closes #187125.
+  Thanks to Michael Krelin for the patch.
+
+  23 Mar 2009; William Hubbs <williamh@gentoo.org> dotconf-1.1.0.ebuild:
+  Fixed bug #221549 and #243510.
+
+  15 Apr 2008; Jeroen Roovers <jer@gentoo.org> dotconf-1.1.0.ebuild:
+  Stable for HPPA (bug #217235).
+
+  12 Apr 2008; Raúl Porcel <armin76@gentoo.org> dotconf-1.1.0.ebuild:
+  sparc stable
+
+  06 Apr 2008; Tobias Klausmann <klausman@gentoo.org> dotconf-1.1.0.ebuild:
+  Keyworded on alpha, bug #204504
+
+  24 Mar 2008; Ferris McCormick <fmccor@gentoo.org> dotconf-1.1.0.ebuild:
+  Add ~sparc keyword, required for Bug #204504.
+
+  11 Jan 2008; Jeroen Roovers <jer@gentoo.org> dotconf-1.1.0.ebuild:
+  Marked ~hppa (bug #204504).

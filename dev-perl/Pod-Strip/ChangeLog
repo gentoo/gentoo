@@ -1,0 +1,13 @@
+# ChangeLog for dev-perl/Pod-Strip
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Pod-Strip/ChangeLog,v 1.2 2015/06/13 22:40:15 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Pod-Strip-1.20.0.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*Pod-Strip-1.20.0 (22 Mar 2015)
+
+  22 Mar 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Pod-Strip-1.20.0.ebuild, +metadata.xml:
+  New package, needed for dev-perl/Crypt-SMIME

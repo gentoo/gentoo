@@ -1,0 +1,71 @@
+# ChangeLog for media-fonts/hkscs-ming
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/hkscs-ming/ChangeLog,v 1.16 2012/09/18 07:13:24 phajdan.jr Exp $
+
+  18 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -hkscs-ming-1.0_pre20030919-r1.ebuild, hkscs-ming-1.0_pre20030919-r2.ebuild:
+  Stable on all arches (bug #308951). Remove old and broken.
+
+*hkscs-ming-1.0_pre20030919-r2 (14 May 2012)
+
+  14 May 2012; Naohiro Aota <naota@gentoo.org>
+  +hkscs-ming-1.0_pre20030919-r2.ebuild:
+  Revbump to update HOMEPAGE, SRC_URI and LICENSE. #308951
+
+  24 Feb 2008; Raúl Porcel <armin76@gentoo.org>
+  hkscs-ming-1.0_pre20030919-r1.ebuild:
+  sparc stable
+
+  23 Jan 2008; Raúl Porcel <armin76@gentoo.org>
+  hkscs-ming-1.0_pre20030919-r1.ebuild:
+  Add ~sparc
+
+  30 Aug 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing liquidx from metadata due to his retirement (see #171155 for
+  reference).
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  hkscs-ming-1.0_pre20030919-r1.ebuild:
+  (QA) RESTRICT clean up.
+
+  26 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  hkscs-ming-1.0_pre20030919-r1.ebuild:
+  Declare linenumber a locak to shut up Timothy.
+
+  26 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  hkscs-ming-1.0_pre20030919-r1.ebuild:
+  Add ~x86-fbsd keyword, fix the unpack function for bsdtar compatibility, use
+  elog instead of einfo for the setup information, fix quoting, add binchecks
+  restrict.
+
+  11 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  hkscs-ming-1.0_pre20030919-r1.ebuild:
+  Mark 1.0_pre20030919-r1 stable on ia64
+
+  15 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Stable on amd64.
+
+  29 Sep 2004; Mamoru KOMACHI <usata@gentoo.org>
+  hkscs-ming-1.0_pre20030919-r1.ebuild:
+  Stable on alpha and ppc.
+
+  29 Jul 2004; Danny van Dyk <kugelfang@gentoo.org>
+  hkscs-ming-1.0_pre20030919-r1.ebuild:
+  Marked ~amd64.
+
+*hkscs-ming-1.0_pre20030919-r1 (21 Jun 2004)
+
+  21 Jun 2004; Mamoru KOMACHI <usata@gentoo.org>
+  +hkscs-ming-1.0_pre20030919-r1.ebuild:
+  font.eclassify
+
+  28 Mar 2004; Alastair Tse <liquidx@gentoo.org>
+  hkscs-ming-1.0_pre20030919.ebuild:
+  added ppc keyword
+
+*hkscs-ming-1.0_pre20030919 (07 Feb 2004)
+
+  07 Feb 2004; Alastair Tse <liquidx@gentoo.org>
+  hkscs-ming-1.0_pre20030919.ebuild:
+  initial ebuild. finally a good chinese font :)
+

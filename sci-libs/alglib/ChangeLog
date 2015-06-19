@@ -1,0 +1,25 @@
+# ChangeLog for sci-libs/alglib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/alglib/ChangeLog,v 1.6 2015/04/07 14:40:33 jlec Exp $
+
+  18 Mar 2015; Andreas Schuerch <nativemad@gentoo.org> alglib-3.7.0.ebuild:
+  x86 stable, see bug 490036. Thanks Myckel Habets
+
+  19 Jan 2014; Pacho Ramos <pacho@gentoo.org> alglib-3.7.0.ebuild:
+  amd64 stable, bug 490036
+
+  09 Dec 2013; Justin Lecher <jlec@gentoo.org> alglib-3.8.2.ebuild,
+  files/CMakeLists.txt-3.8.2:
+  Seperate test from build
+
+*alglib-3.8.2 (06 Dec 2013)
+
+  06 Dec 2013; Justin Lecher <jlec@gentoo.org> +alglib-3.8.2.ebuild,
+  +files/CMakeLists.txt-3.8.2:
+  Version Bump
+
+*alglib-3.7.0 (22 Jun 2013)
+
+  22 Jun 2013; Justin Lecher <jlec@gentoo.org> +alglib-3.7.0.ebuild,
+  +files/CMakeLists.txt, +metadata.xml:
+  New package, build system taken from Debian, thanks

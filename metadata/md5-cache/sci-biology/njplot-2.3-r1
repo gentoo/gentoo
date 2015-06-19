@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=sci-biology/ncbi-tools[X,static-libs] x11-libs/libXmu
+DESCRIPTION=A phylogenetic tree drawing program which supports tree rooting
+EAPI=5
+HOMEPAGE=http://pbil.univ-lyon1.fr/software/njplot.html
+KEYWORDS=~amd64 ~x86
+LICENSE=public-domain
+RDEPEND=sci-biology/ncbi-tools[X,static-libs] x11-libs/libXmu
+SLOT=0
+SRC_URI=ftp://pbil.univ-lyon1.fr/pub/mol_phylogeny/njplot/archive/njplot-2.3.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b6469166295dbe4b91f1208b71582984

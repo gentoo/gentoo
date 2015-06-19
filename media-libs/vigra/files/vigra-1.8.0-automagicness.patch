@@ -1,0 +1,54 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1b75688..18d01ef 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -46,19 +46,38 @@ ENDIF ()
+ ##################################################
+ 
+ INCLUDE(VigraFindPackage)
++option(WITH_TIFF "Enable tiff support" ON)
++option(WITH_JPEG "Enable jpeg support" ON)
++option(WITH_PNG "Enable png support" ON)
++option(WITH_OPENEXR "Enable openexr support" ON)
++option(WITH_FFTW3 "Enable fftw support" ON)
++option(ENABLE_DOC "Build documentation" ON)
++
++if(WITH_TIFF)
+ VIGRA_FIND_PACKAGE(TIFF NAMES libtiff)
++endif()
++if(WITH_JPEG)
+ VIGRA_FIND_PACKAGE(JPEG NAMES libjpeg)
++endif()
++if(WITH_PNG)
+ VIGRA_FIND_PACKAGE(PNG)
++endif()
++if(WITH_OPENEXR)
+ VIGRA_FIND_PACKAGE(OpenEXR)
++endif()
++if(WITH_FFTW3)
+ VIGRA_FIND_PACKAGE(FFTW3 NAMES libfftw3-3)
+ VIGRA_FIND_PACKAGE(FFTW3F NAMES libfftw3f-3)
++endif()
+ IF(WITH_HDF5)
+     VIGRA_FIND_PACKAGE(HDF5)
+ ENDIF()
+ 
+ SET(DOXYGEN_SKIP_DOT TRUE)
++if(ENABLE_DOC)
+ FIND_PACKAGE(Doxygen)
+ FIND_PACKAGE(PythonInterp)
++endif()
+ 
+ IF(WITH_VIGRANUMPY)
+     FIND_PACKAGE( VIGRANUMPY_DEPENDENCIES )
+@@ -317,10 +336,4 @@ ELSE()
+   MESSAGE( STATUS "  vigranumpy will NOT be installed" )
+ ENDIF()
+ 
+-IF(NOT TIFF_FOUND OR NOT JPEG_FOUND OR NOT PNG_FOUND OR NOT FFTW3_FOUND OR
+-   NOT HDF5_FOUND OR NOT VIGRANUMPY_DEPENDENCIES_FOUND)
+-  MESSAGE( STATUS "" )
+-  MESSAGE( STATUS "Consider setting DEPENDENCY_SEARCH_PREFIX to find missing libraries" )
+-ENDIF()
+-
+ MESSAGE( STATUS "---------------------------------------------------------" )

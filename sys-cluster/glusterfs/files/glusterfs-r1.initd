@@ -1,0 +1,122 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/glusterfs/files/glusterfs-r1.initd,v 1.1 2012/11/19 13:36:35 ultrabug Exp $
+
+if [[ "${SVCNAME}" != "glusterfs" ]]
+then
+	GLUSTERFS_NAME="${SVCNAME#glusterfs.}"
+else
+	GLUSTERFS_NAME="glusterfs"
+fi
+
+GLUSTERFS_PIDFILE="/var/run/${SVCNAME}.pid"
+
+eval 'GLUSTERFS_LOGFILE="${'${GLUSTERFS_NAME}'_log:-/var/log/glusterfs/'${GLUSTERFS_NAME}'.log}"'
+eval 'GLUSTERFS_VOLFILE="${'${GLUSTERFS_NAME}'_vol:-/etc/glusterfs/'${GLUSTERFS_NAME}'.vol}"'
+eval 'GLUSTERFS_SERVER="${'${GLUSTERFS_NAME}'_server}"'
+eval 'GLUSTERFS_PORT="${'${GLUSTERFS_NAME}'_port:-6996}"'
+eval 'GLUSTERFS_TRANSPORT="${'${GLUSTERFS_NAME}'_transport:-socket}"'
+eval 'GLUSTERFS_OPTS="${'${GLUSTERFS_NAME}'_opts}"'
+eval 'GLUSTERFS_MOUNTPOINT="${'${GLUSTERFS_NAME}'_mountpoint}"'
+
+depend() {
+	need net 
+	[[ -n "${GLUSTERFS_MOUNTPOINT}" ]] && need fuse
+	use dns
+	before netmount
+	after firewall ntp-client ntpd
+}
+
+checkconfig() {
+	if [[ -z "${GLUSTERFS_NAME}" ]]
+	then
+		eerror "The service name is not properly formatted."
+		return 1
+	fi
+
+	if [[ -z "${GLUSTERFS_SERVER}" ]]
+	then
+		if [[ -z "${GLUSTERFS_VOLFILE}" ]]
+		then
+			eerror "No GlusterFS volume file source has been defined.  Edit /etc/conf.d/glusterfs"
+			eerror "and configure a volume file source for ${SVCNAME}."
+			return 1
+		else
+			if [[ ! -f "${GLUSTERFS_VOLFILE}" ]]
+			then
+				eerror "Cannot find volume file: ${GLUSTERFS_VOLFILE}"
+				return 1
+			fi
+		fi
+	fi
+
+	if [[ -n "${GLUSTERFS_MOUNTPOINT}" && ! -d "${GLUSTERFS_MOUNTPOINT}" ]]
+	then
+		eerror "The mountpoint ${GLUSTERFS_MOUNTPOINT} does not exist."
+		return 1
+	fi
+}
+
+start() {
+	local status daemon
+
+	checkconfig || return 1
+
+	ebegin "Starting GlusterFS (${SVCNAME})"
+	eindent
+
+	if [[ -z "${GLUSTERFS_MOUNTPOINT}" ]]
+	then
+		einfo "Starting in server mode ..."
+		daemon="glusterfsd"
+	else
+		einfo "Starting in client mode. Mounting filesystem ..."
+		daemon="glusterfs"
+	fi
+
+	if [[ -n "${GLUSTERFS_SERVER}" ]]
+	then
+		einfo "Using server supplied volume file"
+		start-stop-daemon --start --pidfile ${GLUSTERFS_PIDFILE} \
+			--exec /usr/sbin/${daemon} -- \
+			--pid-file=${GLUSTERFS_PIDFILE} \
+			--log-file=${GLUSTERFS_LOGFILE} \
+			--volfile-server=${GLUSTERFS_SERVER} \
+			--volfile-server-port=${GLUSTERFS_PORT} \
+			--volfile-server-transport=${GLUSTERFS_TRANSPORT} \
+			${GLUSTERFS_OPTS} ${GLUSTERFS_MOUNTPOINT}
+		status="$?"
+	else
+		einfo "Using local volume file"
+		start-stop-daemon --start --pidfile ${GLUSTERFS_PIDFILE} \
+			--exec /usr/sbin/${daemon} -- \
+			--pid-file=${GLUSTERFS_PIDFILE} \
+			--log-file=${GLUSTERFS_LOGFILE} \
+			--volfile=${GLUSTERFS_VOLFILE} \
+			${GLUSTERFS_OPTS} ${GLUSTERFS_MOUNTPOINT}
+		status="$?"
+	fi
+
+	eoutdent
+	eend ${status}
+}
+
+stop() {
+	local status
+
+	ebegin "Stopping GlusterFS (${SVCNAME})"
+	eindent
+	if [[ -z "${GLUSTERFS_MOUNTPOINT}" ]]
+	then
+		einfo "Stopping server process ..."
+		start-stop-daemon --stop --pidfile ${GLUSTERFS_PIDFILE}
+		status="$?"
+	else
+		einfo "Unmounting ${GLUSTERFS_MOUNTPOINT} ..."
+		umount "${GLUSTERFS_MOUNTPOINT}"
+		status="$?"
+	fi
+	eoutdent
+	eend ${status}
+}

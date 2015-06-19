@@ -1,0 +1,11 @@
+*delayer-0.0.2 (11 Jun 2014)
+
+  01 Feb 2015; Hans de Graaff <graaff@gentoo.org> delayer-0.0.2.ebuild:
+  Add ruby22.
+
+  12 Jun 2014; Hans de Graaff <graaff@gentoo.org> delayer-0.0.2.ebuild:
+  Fix building with USE=doc. Avoid bundler dependendency in tests.
+
+  11 Jun 2014; Naohiro Aota <naota@gentoo.org> +delayer-0.0.2.ebuild,
+  +metadata.xml:
+  New package: dev-ruby/delayer

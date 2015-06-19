@@ -1,0 +1,61 @@
+# ChangeLog for sys-libs/libmath++
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libmath++/ChangeLog,v 1.19 2013/09/23 08:43:00 pinkbyte Exp $
+
+  23 Sep 2013; Sergey Popov <pinkbyte@gentoo.org> -libmath++-0.0.4.ebuild:
+  Drop old revision, leaving s390 as unstable only
+
+  26 Aug 2013; Agostino Sarubbo <ago@gentoo.org> libmath++-0.0.4-r1.ebuild:
+  Stable for ppc, wrt bug #480694
+
+  12 Aug 2013; Agostino Sarubbo <ago@gentoo.org> libmath++-0.0.4-r1.ebuild:
+  Stable for x86, wrt bug #480694
+
+  12 Aug 2013; Agostino Sarubbo <ago@gentoo.org> libmath++-0.0.4-r1.ebuild:
+  Stable for amd64, wrt bug #480694
+
+  22 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> libmath++-0.0.4-r1.ebuild:
+  Force in-source build, wrt bug #474098. Thanks to Jason Mours for discovering
+  this issue
+
+*libmath++-0.0.4-r1 (19 Jun 2013)
+
+  19 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> +libmath++-0.0.4-r1.ebuild:
+  Revision bump: EAPI 5, utilize autotools-utils eclass, add compatibility with
+  automake 1.13, wrt bug #471950
+
+  20 Apr 2008; Diego Pettenò <flameeyes@gentoo.org> libmath++-0.0.4.ebuild:
+  Run eautoreconf in src_unpack phase, bug #207479.
+
+  21 Nov 2006; Tiziano Müller <dev-zero@gentoo.org> libmath++-0.0.4.ebuild:
+  Fixing automake/autoconf deps again, bug #154567
+
+  09 Nov 2006; Tiziano Müller <dev-zero@gentoo.org> libmath++-0.0.4.ebuild:
+  WANT_AUTOMAKE/AUTOCONF added, bug #154567 thanks to Patrick Nagel
+
+  24 May 2006; Mark Loeser <halcy0n@gentoo.org> libmath++-0.0.4.ebuild:
+  Add doc USE flag to install doxygen documentation; bug #109416
+
+  17 Mar 2005; Christian Parpart <trapni@gentoo.org> libmath++-0.0.4.ebuild:
+  adding to amd64
+
+  03 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*libmath++-0.0.4 (25 Nov 2004)
+
+  25 Nov 2004; Christian Parpart <trapni@gentoo.org> libmath++-0.0.3.ebuild,
+  +libmath++-0.0.4.ebuild:
+  * version bump to 0.0.4 (contains bugfixes and gcc3.4 compile fixes)
+  * updated download URLs
+
+  30 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> libmath++-0.0.3.ebuild:
+  Add IUSE; use generic src_compile; install some docs
+
+  17 Apr 2004; Michael McCabe <randy@gentoo.org> libmath++-0.0.3.ebuild:
+  added s390 to keywords
+
+*libmath++-0.0.3 (1 Aug 2002)
+
+  1 Aug 2002; J. Alberto Suárez López <bass@gentoo.org> libmath++-0.0.3.ebuild
+  First relase 

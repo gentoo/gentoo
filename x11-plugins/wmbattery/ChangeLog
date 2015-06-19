@@ -1,0 +1,157 @@
+# ChangeLog for x11-plugins/wmbattery
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmbattery/ChangeLog,v 1.36 2015/04/17 12:10:54 voyageur Exp $
+
+*wmbattery-2.47 (17 Apr 2015)
+
+  17 Apr 2015; Bernard Cafarelli <voyageur@gentoo.org> +wmbattery-2.47.ebuild:
+  Version bump, better upower support and apm is now optional
+
+  05 Nov 2014; Bernard Cafarelli <voyageur@gentoo.org> wmbattery-2.45.ebuild:
+  Host tarball on my devspace, bug #527610
+
+*wmbattery-2.45 (10 Oct 2014)
+
+  10 Oct 2014; Bernard Cafarelli <voyageur@gentoo.org> +wmbattery-2.45.ebuild:
+  Version bump with new homepage
+
+  29 Jul 2014; Samuli Suominen <ssuominen@gentoo.org>
+  -files/wmbattery-2.43-upower-0.99.patch, -wmbattery-2.40.ebuild,
+  -wmbattery-2.43.ebuild:
+  old
+
+  29 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> wmbattery-2.44.ebuild:
+  amd64/x86 stable (since there is no chance 2.40 or 2.43 works at all on modern
+  systems)
+
+*wmbattery-2.44 (29 Jul 2014)
+
+  29 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> +wmbattery-2.44.ebuild:
+  Version bump. Improved support for current Linux /sys interface(s).
+  Optionalize sys-power/upower dependency using USE="upower".
+
+  19 Jun 2014; Samuli Suominen <ssuominen@gentoo.org> wmbattery-2.40.ebuild:
+  Update from EAPI 3 to 5.
+
+  19 Jun 2014; Samuli Suominen <ssuominen@gentoo.org> -wmbattery-2.41.ebuild,
+  -wmbattery-2.42.ebuild:
+  old
+
+*wmbattery-2.43 (19 Jun 2014)
+
+  19 Jun 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +files/wmbattery-2.43-upower-0.99.patch, +wmbattery-2.43.ebuild:
+  Version bump; patch for excluding obsolete UPower API.
+
+  26 May 2014; Samuli Suominen <ssuominen@gentoo.org> wmbattery-2.42.ebuild:
+  Fix dependencies to allow sys-power/upower-pm-utils.
+
+  12 Feb 2014; Bernard Cafarelli <voyageur@gentoo.org> wmbattery-2.42.ebuild:
+  Depend on virtual/pkgconfig too
+
+  11 Feb 2014; Bernard Cafarelli <voyageur@gentoo.org> wmbattery-2.41.ebuild,
+  wmbattery-2.42.ebuild:
+  Fix missing RDEPEND, thanks ssuominen
+
+*wmbattery-2.42 (11 Feb 2014)
+
+  11 Feb 2014; Bernard Cafarelli <voyageur@gentoo.org>
+  -wmbattery-2.19-r1.ebuild, +wmbattery-2.42.ebuild:
+  Version bump, adds upower support
+
+*wmbattery-2.41 (25 Sep 2012)
+
+  25 Sep 2012; Bernard Cafarelli <voyageur@gentoo.org> +wmbattery-2.41.ebuild:
+  Version bump
+
+  08 Jul 2012; Jeroen Roovers <jer@gentoo.org> wmbattery-2.19-r1.ebuild,
+  wmbattery-2.40.ebuild:
+  Update HOMEPAGE.
+
+  18 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> wmbattery-2.40.ebuild:
+  x86 stable wrt bug #393813
+
+  16 Dec 2011; Agostino Sarubbo <ago@gentoo.org> wmbattery-2.40.ebuild:
+  Stable for AMD64, wrt bug #393813
+
+*wmbattery-2.40 (08 Jul 2010)
+
+  08 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +wmbattery-2.40.ebuild:
+  Version bump.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  wmbattery-2.19-r1.ebuild:
+  Drop virtual/x11 references.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  24 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  wmbattery-2.19-r1.ebuild:
+  Fixed DEPEND for modular X.
+
+  07 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmbattery-2.19-r1.ebuild:
+  Removed COPYING from doinstall.
+
+  18 Nov 2004; Michele Noberasco <s4t4n@gentoo.org> wmbattery-1.2.1-r2.ebuild:
+  Remove older version.
+
+  16 Nov 2004; Michael Hanselmann <hansmi@gentoo.org>
+  wmbattery-2.19-r1.ebuild:
+  Added to ~ppc.
+
+  01 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  wmbattery-1.2.1-r2.ebuild, wmbattery-2.19-r1.ebuild:
+  Keyworded -sparc, no classic apm here
+
+  01 Aug 2004; Michele Noberasco <s4t4n@gentoo.org> wmbattery-2.19-r1.ebuild:
+  Stable for x86.
+  wmbattery-2.19.ebuild, wmbattery-1.2.1-r1.ebuild:
+  Remove older ebuilds.
+
+*wmbattery-2.19-r1 (17 Jul 2004)
+
+  17 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmbattery-2.19-r1.ebuild:
+  New revision, install man file in /usr/share/man/man1, let wmbattery know that
+  its pixmaps are installed in /usr/share/pixmaps/wmbattery, closing #39436.
+
+*wmbattery-1.2.1-r2 (17 Jul 2004)
+
+  17 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmbattery-1.2.1-r2.ebuild:
+  New revision, install man file in /usr/share/man/man1, let wmbattery know that
+  its pixmaps are installed in /usr/share/pixmaps/wmbattery, closing #39436.
+
+  12 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> wmbattery-2.19.ebuild:
+  Unmask on amd64.
+
+  15 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> wmbattery-2.19.ebuild:
+  Add amd64 keyword.
+
+  24 Jan 2004; Markus Nigbur <pyrania@gentoo.org> wmbattery-2.19.ebuild:
+  SRC_URI fix.
+
+*wmbattery-2.19 (06 Dec 2003)
+
+  06 Dec 2003; Ian Leitch <port001@gentoo.org> wmbattery-1.2.1-r1.ebuild,
+  wmbattery-2.19.ebuild:
+  Version bump. Fixed SRC_URI, new dep on apmd for 2.x, removed sparc and am64
+  from KEYWORDS and set ~x86 as we don't yet know the stability of this 2.x
+  release. Also changed both version to install pixmaps into /usr/share/pixmaps
+  instead of /usr/share/icons. #32596
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*wmbattery-1.2.1-r1 (7-Feb-2002)
+
+  29 Aug 2002; Seemant Kulleen <seemant@gentoo.org>  * :
+
+  Relocated to x11-plugins
+
+  7 Feb 2002; Vitaly Kushneriuk <vitaly@gentoo.org> wmbattery-1.2.1-r1.ebuild :
+  
+  Fixed and added to portage.
+
+  2 Feb 2002; Arcady Genkin <agenkin@thpoon.com> wmbattery-1.2.1-r1.ebuild :
+	
+  First version of this portage.

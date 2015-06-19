@@ -1,0 +1,264 @@
+# ChangeLog for sys-apps/ifplugd
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/ifplugd/ChangeLog,v 1.56 2014/11/02 09:45:40 swift Exp $
+
+  02 Nov 2014; Sven Vermeulen <swift@gentoo.org> ifplugd-0.28-r9.ebuild:
+  Remove sec-policy/selinux-* dependency from DEPEND but keep in RDEPEND (bug
+  #527698)
+
+  16 May 2014; Sven Vermeulen <swift@gentoo.org> ifplugd-0.28-r9.ebuild:
+  Fix bug #509740 - Add USE=selinux dependency to sec-policy/selinux-ifplugd
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> ifplugd-0.28-r9.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  28 Dec 2011; Tomáš Chvátal <scarabeus@gentoo.org> ifplugd-0.28-r9.ebuild:
+  Cleanup a bit to eapi4
+
+  28 Dec 2011; Fabio Erculiani <lxnay@gentoo.org> ifplugd-0.28-r9.ebuild:
+  seems to work on ~arm
+
+  05 Feb 2008; Jeroen Roovers <jer@gentoo.org> ifplugd-0.28-r9.ebuild:
+  Stable for HPPA too.
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing uberlord from metadata.xml as per #199318.
+
+  16 Dec 2007; Samuli Suominen <drac@gentoo.org> ifplugd-0.28-r9.ebuild:
+  amd64 stable wrt #195214
+
+  16 Dec 2007; nixnut <nixnut@gentoo.org> ifplugd-0.28-r9.ebuild:
+  Stable on ppc wrt bug 195214
+
+  14 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  ifplugd-0.28-r9.ebuild:
+  stable x86, bug 195214
+
+*ifplugd-0.28-r9 (02 Nov 2007)
+
+  02 Nov 2007; Roy Marples <uberlord@gentoo.org>
+  +files/ifplugd-0.28-noip.patch, +ifplugd-0.28-r9.ebuild:
+  ifplugd now works on kernels without IP, #197791 thanks to Alon Bar-Lev.
+
+  26 Jul 2007; Roy Marples <uberlord@gentoo.org> ifplugd-0.28-r8.ebuild:
+  RDEPEND on baselayout-1.12, #186418 thanks to Cameron Maxwell.
+
+*ifplugd-0.28-r8 (23 Mar 2007)
+
+  23 Mar 2007; Roy Marples <uberlord@gentoo.org>
+  +files/ifplugd-0.28-strictalias.patch, +ifplugd-0.28-r8.ebuild:
+  Fix aliasing QA, #171415.
+
+  03 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ifplugd-0.28-r7.ebuild:
+  Stable on x86 wrt bug #149294.
+
+  30 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> ifplugd-0.28-r7.ebuild:
+  Marked stable on amd64 for bug #149294
+
+  28 Sep 2006; Joseph Jezak <josejx@gentoo.org> ifplugd-0.28-r7.ebuild:
+  Marked ppc stable for bug #149294.
+
+  09 Sep 2006; <ticho@gentoo.org> ifplugd-0.28-r6.ebuild:
+  Stable on x86, bug #145943.
+
+  09 Sep 2006; Thomas Cort <tcort@gentoo.org> ifplugd-0.28-r6.ebuild:
+  Stable on amd64 wrt Bug #145943.
+
+  03 Sep 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  ifplugd-0.28-r6.ebuild:
+  stable on ppc (Bug #145943)
+
+*ifplugd-0.28-r7 (16 Aug 2006)
+
+  16 Aug 2006; Roy Marples <uberlord@gentoo.org> +ifplugd-0.28-r7.ebuild:
+  Don't install init/conf files as baselayout-1.12 (now stable) has inbuilt
+  ifplugd support.
+
+*ifplugd-0.28-r6 (14 Apr 2006)
+
+  14 Apr 2006; Roy Marples <uberlord@gentoo.org>
+  -files/ifplugd-0.28-gentoo.diff, -files/gentoo-ifplugd-conf-v3,
+  +files/ifplugd-0.28-interface.patch, -files/gentoo-ifplugd.action-v2,
+  -files/gentoo-ifplugd-init-v3, -ifplugd-0.28.ebuild,
+  -ifplugd-0.28-r4.ebuild, +ifplugd-0.28-r6.ebuild:
+  Fixed conflicting types for 'dev_t' compile error, #129916.
+  Thanks to Michael Cramer.
+  
+  Punted old versions.
+
+*ifplugd-0.28-r5 (06 Apr 2006)
+
+  06 Apr 2006; Roy Marples <uberlord@gentoo.org> files/ifplugd.init,
+  +ifplugd-0.28-r5.ebuild:
+  Init script works with stable baselayout #125099
+  and now respects the SHUTDOWN configuration option again, #128988.
+
+  24 Dec 2005; Simon Stelling <blubb@gentoo.org> ifplugd-0.28-r4.ebuild:
+  stable on amd64
+
+  23 Dec 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  ifplugd-0.28-r4.ebuild:
+  Marked ppc stable, #116369
+
+  23 Dec 2005; Mark Loeser <halcy0n@gentoo.org> ifplugd-0.28-r4.ebuild:
+  Stable on x86; bug #116369
+
+*ifplugd-0.28-r4 (13 Oct 2005)
+
+  13 Oct 2005; Roy Marples <uberlord@gentoo.org> files/ifplugd.action,
+  -ifplugd-0.28-r3.ebuild, +ifplugd-0.28-r4.ebuild:
+  Fixed initng support, #109150
+
+*ifplugd-0.28-r3 (10 Oct 2005)
+
+  10 Oct 2005; Roy Marples <uberlord@gentoo.org>
+  -files/ifplugd-0.26-gentoo.diff, +files/ifplugd-0.28-nlapi.diff,
+  files/ifplugd.init, metadata.xml, -ifplugd-0.28-r2.ebuild,
+  +ifplugd-0.28-r3.ebuild:
+  Fixed init script to work with all options and stop correctly with
+  baselayout<1.12 wrt #108464
+  
+  ifplugd.action is now installed to /etc
+
+*ifplugd-0.28-r2 (08 Sep 2005)
+
+  08 Sep 2005; Roy Marples <uberlord@gentoo.org> files/ifplugd.init,
+  -ifplugd-0.26-r1.ebuild, -ifplugd-0.28-r1.ebuild, +ifplugd-0.28-r2.ebuild:
+  New init script so we don't stop ifplugd processes launched by other
+  scripts and we don't start ifplugd on an interface where it is already
+  running.
+
+  Punted older ebuilds.
+
+  02 Sep 2005; Roy Marples <uberlord@gentoo.org> ifplugd-0.28-r1.ebuild:
+  Install ifplugd.action to /usr/sbin and not /etc/init.d
+
+*ifplugd-0.28-r1 (01 Sep 2005)
+
+  01 Sep 2005; Roy Marples <uberlord@gentoo.org> -files/ifplugd,
+  files/ifplugd.action, +files/ifplugd.conf, +files/ifplugd.init,
+  metadata.xml, -ifplugd-0.13-r1.ebuild, -ifplugd-0.25.ebuild,
+  -ifplugd-0.27.ebuild, ifplugd-0.28.ebuild, +ifplugd-0.28-r1.ebuild:
+  New init script, new configuration options,
+  better integration with baselayout-1.12.0, initng support
+  fixes bugs #42804, #48482 and hopefully #75214
+  
+  Punted older versions
+
+  30 Jun 2005; Joseph Jezak <josejx@gentoo.org> ifplugd-0.28.ebuild:
+  Marked ppc stable.
+
+*ifplugd-0.28 (04 Jun 2005)
+
+  04 Jun 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/ifplugd-0.28-gentoo.diff, +ifplugd-0.28.ebuild:
+  Version bump.
+
+  06 May 2005; Aaron Walker <ka0ttic@gentoo.org> ifplugd-0.27.ebuild:
+  Stable on x86.
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  ifplugd-0.26-r1.ebuild:
+  Stable on ppc.
+
+  09 Apr 2005; Aaron Walker <ka0ttic@gentoo.org>
+  files/gentoo-ifplugd-init-v3:
+  Added depend() to init script as we need pcmcia to start before ifplugd if
+  the user uses pcmcia. Fixes bug 88222.
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> ifplugd-0.26-r1.ebuild:
+  stable on amd64
+
+*ifplugd-0.27 (31 Mar 2005)
+
+  31 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> +ifplugd-0.27.ebuild:
+  Version bump.
+
+*ifplugd-0.26-r1 (22 Mar 2005)
+
+  22 Mar 2005; Aaron Walker <ka0ttic@gentoo.org>
+  files/gentoo-ifplugd-conf-v3, -ifplugd-0.26.ebuild,
+  +ifplugd-0.26-r1.ebuild:
+  Revision bump; Default to SHUTDOWN=no in config.
+
+  15 Mar 2005; Seemant Kulleen <seemant@gentoo.org> ifplugd-0.25.ebuild,
+  ifplugd-0.26.ebuild:
+  Dependency update: net-www/lynx -> www-client/lynx.
+
+  31 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> ifplugd-0.26.ebuild:
+  Marked stable on x86.
+
+  22 Dec 2004; Aaron Walker <ka0ttic@gentoo.org>
+  files/ifplugd-0.26-gentoo.diff:
+  Fix wrong path to ifplugd.action in gentoo patch; closes bug 75264.
+
+*ifplugd-0.26 (20 Dec 2004)
+
+  20 Dec 2004; Aaron Walker <ka0ttic@gentoo.org> metadata.xml,
+  -files/gentoo-ifplugd-init-v2, +files/ifplugd-0.26-gentoo.diff,
+  ifplugd-0.13-r1.ebuild, -ifplugd-0.15.ebuild, -ifplugd-0.20.ebuild,
+  -ifplugd-0.24.ebuild, ifplugd-0.25.ebuild, +ifplugd-0.26.ebuild:
+  Version bump; 0.25 stable on x86. Major cleanup and uncrustification; old
+  ebuilds/filesdir cruft removed. Doxygen removed from deps as it was never
+  required in the first place. Also updated metadata.xml.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  ifplugd-0.20.ebuild, ifplugd-0.24.ebuild, ifplugd-0.25.ebuild:
+  Masked ifplugd-0.25.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  ifplugd-0.20.ebuild, ifplugd-0.24.ebuild:
+  Masked ifplugd-0.24.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  ifplugd-0.20.ebuild:
+  Masked ifplugd-0.20.ebuild stable for ppc
+
+  09 Aug 2004; Seemant Kulleen <seemant@gentoo.org> ifplugd-0.25.ebuild:
+  Add pkgconfig to DEPEND, closing bug #54154 by Greg Andreou
+  <gregorya@dai.ed.ac.uk>
+
+  30 Jun 2004; Aron Griffis <agriffis@gentoo.org> ifplugd-0.15.ebuild:
+  sync IUSE (+doc)
+
+*ifplugd-0.25 (18 May 2004)
+
+  18 May 2004; Martin Holzer <mholzer@gentoo.org> ifplugd-0.25.ebuild:
+  Version bumped. Closes 51234
+
+*ifplugd-0.24 (16 May 2004)
+
+  16 May 2004; Martin Holzer <mholzer@gentoo.org> ifplugd-0.24.ebuild:
+  Version bumped. Closes 49082
+
+  22 Feb 2004; David Holm <dholm@gentoo.org> ifplugd-0.20.ebuild:
+  Added to ~ppc.
+
+*ifplugd-0.20 (15 Nov 2003)
+
+  15 Nov 2003; Wout Mertens <wmertens@gentoo.org> ifplugd-0.20.ebuild :
+  Version bump, fixing several issues with ifplugd.
+  New config file format, making it easier to read.
+  Many thanks to everyone who helped on bugs #28388 and #30443
+
+*ifplugd-0.15 (17 Mar 2003)
+
+  06 Aug 2003; Wout Mertens <wmertens@gentoo.org> ebuild, files/gentoo-*-v2 :
+  Version bump, versioned action and init script. Init script now supports
+  suspend and resume.
+  Note: For it to work on my system (eepro100), I need to add -m mii to the
+  options, and add -a. I think. Testers welcome.
+  TODO: add an /etc/apm/event.d/ifplugd script
+
+*ifplugd-0.13-r1 (21 Mar 2003)
+
+  21 Mar 2003; Wout Mertens <wmertens@gentoo.org> :
+  Fixed the action script, otherwise ifplugd would die when dhcpcd
+  failed. Also put it in stable, because it has no downstream
+  dependencies and it works for me.
+  
+*ifplugd-0.13 (17 Mar 2003)
+
+  17 Mar 2003; Wout Mertens <wmertens@gentoo.org> :
+  Initial ebuild.

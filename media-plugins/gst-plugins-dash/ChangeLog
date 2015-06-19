@@ -1,0 +1,57 @@
+# ChangeLog for media-plugins/gst-plugins-dash
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-dash/ChangeLog,v 1.12 2015/03/15 13:36:31 pacho Exp $
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> gst-plugins-dash-1.4.5.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> gst-plugins-dash-1.4.5.ebuild:
+  amd64 stable, bug 534012
+
+*gst-plugins-dash-1.4.5 (03 Feb 2015)
+
+  03 Feb 2015; Pacho Ramos <pacho@gentoo.org> +gst-plugins-dash-1.4.5.ebuild,
+  -gst-plugins-dash-1.2.3.ebuild, -gst-plugins-dash-1.2.4.ebuild:
+  Version bump, drop old
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-dash-1.2.4-r1.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-dash-1.2.4-r1.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org>
+  gst-plugins-dash-1.2.4-r1.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+*gst-plugins-dash-1.2.4-r1 (10 Jun 2014)
+
+  10 Jun 2014; Michał Górny <mgorny@gentoo.org>
+  +gst-plugins-dash-1.2.4-r1.ebuild:
+  Enable multilib support, bug #493176.
+
+*gst-plugins-dash-1.2.4 (31 May 2014)
+
+  31 May 2014; Pacho Ramos <pacho@gentoo.org> +gst-plugins-dash-1.2.4.ebuild,
+  -gst-plugins-dash-1.2.0.ebuild:
+  Version bump, drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gst-plugins-dash-1.2.3.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gst-plugins-dash-1.2.3.ebuild:
+  amd64 stable, bug 499954
+
+*gst-plugins-dash-1.2.3 (01 Mar 2014)
+
+  01 Mar 2014; <leio@gentoo.org> +gst-plugins-dash-1.2.3.ebuild:
+  Version bump to be in sync with the rest; no code changes.
+
+*gst-plugins-dash-1.2.0 (29 Sep 2013)
+
+  29 Sep 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  +gst-plugins-dash-1.2.0.ebuild, +metadata.xml:
+  Initial ebuild.

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install setup unpack
+DEPEND=dev-vcs/git
+DESCRIPTION=Gentoo LiveCD tools for autoconfiguration of hardware
+EAPI=4
+HOMEPAGE=http://wolf31o2.org/projects/livecd-tools
+LICENSE=GPL-2
+RDEPEND=dev-util/dialog net-dialup/mingetty >=sys-apps/baselayout-2 >=sys-apps/openrc-0.8.2-r1 sys-apps/pciutils sys-apps/gawk sys-apps/sed
+SLOT=0
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d0ca3df5b9b0df80f3c870fad9024867

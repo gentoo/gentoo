@@ -1,0 +1,67 @@
+# ChangeLog for dev-java/japitools
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/japitools/ChangeLog,v 1.15 2014/06/17 11:09:11 mrueg Exp $
+
+  17 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -japitools-0.9.7.ebuild:
+  NM: Cleanup superseeded ebuilds.
+
+  05 Mar 2012; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove betelgeuse
+
+  09 Feb 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Herd is primary maintainer.
+
+  04 Jul 2008; Christian Faulhammer <opfer@gentoo.org>
+  japitools-0.9.7-r1.ebuild:
+  stable x86, bug 220479
+
+  04 Jul 2008; Kenneth Prugh <ken69267@gentoo.org>
+  japitools-0.9.7-r1.ebuild:
+  amd64 stable, bug #220479
+
+*japitools-0.9.7-r1 (03 Jul 2008)
+
+  03 Jul 2008; Serkan Kaba <serkan@gentoo.org>
+  +files/japitools-0.9.7-classpath.patch, +japitools-0.9.7-r1.ebuild:
+  Revbump to fix the tests for IBM JDK's. Reported by Kenneth Prugh
+  <ken69267@gentoo.org> in bug #220479.
+
+  28 Mar 2008; Kenneth Prugh <ken69267@gentoo.org> japitools-0.9.7.ebuild:
+  amd64 stable, bug #214769
+
+  28 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  japitools-0.9.7.ebuild:
+  quote variable
+
+  27 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  japitools-0.9.7.ebuild:
+  stable x86, bug 214769
+
+  07 May 2007; Vlastimil Babka <caster@gentoo.org> japitools-0.9.7.ebuild:
+  Migrate to split-ant, tweak style.
+
+  16 Mar 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -japitools-0.9.5-r1.ebuild, japitools-0.9.7.ebuild:
+  Added ~amd64, removed older version
+
+*japitools-0.9.7 (19 Nov 2006)
+
+  19 Nov 2006; Petteri Räty <betelgeuse@gentoo.org>
+  +japitools-0.9.7.ebuild:
+  Version bump.
+
+  19 Nov 2006; Petteri Räty <betelgeuse@gentoo.org>
+  -japitools-0.9.5.ebuild, japitools-0.9.5-r1.ebuild:
+  Changed homepage to http://sab39.netreach.com/japi/ and removed old revision.
+
+*japitools-0.9.5-r1 (21 Aug 2006)
+
+  22 Aug 2006; Joshua Nichols <nichoj@gentoo.org>
+  +japitools-0.9.5-r1.ebuild:
+  Migrated to new Java system, thanks to Caster. japitools-0.9.5-r1.ebuild
+
+*japitools-0.9.5 (13 Oct 2005)
+
+  13 Oct 2005; Petteri Räty <betelgeuse@gentoo.org> +metadata.xml,
+  +japitools-0.9.5.ebuild:
+  Initial import. Ebuild done by me.

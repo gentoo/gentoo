@@ -1,0 +1,10 @@
+DEFINED_PHASES=prepare
+DESCRIPTION=PaX flags maintenance daemon
+EAPI=5
+HOMEPAGE=http://www.grsecurity.net/
+IUSE=pam
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~blueness/hardened-sources/paxctld/paxctld_1.0.orig.tar.gz
+_md5_=dc064da6532c30e6fe83f46474727215

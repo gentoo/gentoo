@@ -1,0 +1,26 @@
+# ChangeLog for x11-plugins/wmbatteries
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmbatteries/ChangeLog,v 1.6 2014/09/01 13:38:23 voyageur Exp $
+
+  01 Sep 2014; Bernard Cafarelli <voyageur@gentoo.org>
+  wmbatteries-0.1.3.ebuild:
+  Replace einstall with emake install, bug #521752
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  wmbatteries-0.1.3.ebuild:
+  Drop virtual/x11 references.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  24 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  wmbatteries-0.1.3.ebuild:
+  Fixed DEPEND for modular X.
+
+  06 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmbatteries-0.1.3.ebuild:
+  Stable for x86.
+
+*wmbatteries-0.1.3 (17 Jul 2004)
+
+  17 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmbatteries-0.1.3.ebuild:
+  Initial import. Thanks to Philipp Sandhaus. Closes #48412.

@@ -1,0 +1,15 @@
+diff --git a/tc/Makefile b/tc/Makefile
+index 3aa9f26..0a827da 100644
+--- a/tc/Makefile
++++ b/tc/Makefile
+@@ -58,7 +58,9 @@ else
+ 	CFLAGS += -DTC_CONFIG_XT_H
+ 	TCSO += m_xt_old.so
+     else
+-      TCMODULES += m_ipt.o
++      ifneq ($(TC_CONFIG_XT),n)
++        TCMODULES += m_ipt.o
++      endif
+     endif
+   endif
+ endif

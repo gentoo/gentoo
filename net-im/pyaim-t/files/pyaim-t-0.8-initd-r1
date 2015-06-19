@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/pyaim-t/files/pyaim-t-0.8-initd-r1,v 1.1 2013/09/18 16:15:29 hanno Exp $
+
+depend() {
+	need net
+	use jabber-server
+}
+
+start() {
+	ebegin "Starting AIM Jabber Transport"
+	checkpath -q -d -m 0755 -o jabber:jabber /var/run/jabber/
+	start-stop-daemon --start --pidfile /var/run/jabber/pyaim-t.pid -u jabber -g jabber \
+		--exec INSPATH/pyaim-t.py -- \
+		-b -c /etc/jabber/pyaim-t.xml -l /var/log/jabber/pyaim-t.log
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping AIM Jabber Transport"
+	start-stop-daemon --stop --quiet --pidfile /var/run/jabber/pyaim-t.pid
+	eend $?
+}

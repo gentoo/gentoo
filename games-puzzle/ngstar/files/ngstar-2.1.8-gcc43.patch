@@ -1,0 +1,10 @@
+--- libngstar2/Configuration.hh
++++ libngstar2/Configuration.hh
+@@ -26,6 +26,7 @@
+ #include <fstream>
+ #include <iostream>
+ #include <string>
++#include <cstdlib>
+ 
+ #include <getopt.h>
+ #include <sys/stat.h>

@@ -1,0 +1,55 @@
+# ChangeLog for app-vim/gitolite-syntax
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/gitolite-syntax/ChangeLog,v 1.12 2015/06/06 09:26:48 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  11 Feb 2015; Patrick Lauer <patrick@gentoo.org>
+  gitolite-syntax-20130306.ebuild:
+  Whitespace
+
+*gitolite-syntax-20130306 (28 Dec 2014)
+
+  28 Dec 2014; Robin H. Johnson <robbat2@gentoo.org>
+  +gitolite-syntax-20130306.ebuild:
+  Bump.
+
+  31 Dec 2013; Markus Meier <maekke@gentoo.org>
+  gitolite-syntax-20111225.ebuild:
+  add ~arm, bug #493540
+
+  23 Dec 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #66351
+
+  30 Oct 2012; Christian Ruppert <idl0r@gentoo.org>
+  -gitolite-syntax-20100826.ebuild:
+  Cleanup
+
+  21 Jun 2012; Jeff Horelick <jdhore@gentoo.org>
+  gitolite-syntax-20111225.ebuild:
+  marked x86 per bug 422009
+
+  19 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  gitolite-syntax-20111225.ebuild:
+  Stable for amd64, wrt bug #422009
+
+*gitolite-syntax-20111225 (20 May 2012)
+
+  20 May 2012; Christian Ruppert <idl0r@gentoo.org>
+  +gitolite-syntax-20111225.ebuild:
+  Version bump
+
+  12 Feb 2011; Markos Chandras <hwoarang@gentoo.org>
+  gitolite-syntax-20100826.ebuild:
+  Stable on amd64 wrt bug #353760
+
+  10 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gitolite-syntax-20100826.ebuild:
+  x86 stable wrt bug #353760
+
+*gitolite-syntax-20100826 (02 Nov 2010)
+
+  02 Nov 2010; Christian Ruppert <idl0r@gentoo.org>
+  +gitolite-syntax-20100826.ebuild, +metadata.xml:
+  Initial import of app-vim/gitolite-syntax-20100826.

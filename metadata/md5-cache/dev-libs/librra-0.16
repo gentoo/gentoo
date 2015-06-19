@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install setup
+DEPEND=>=app-pda/synce-core-0.16[python?] >=dev-libs/libmimedir-0.5.1 python? ( >=dev-python/pyrex-0.9.6 ) virtual/pkgconfig python? ( =dev-lang/python-2.7* )
+DESCRIPTION=Implements the RRA protocol, for syncing pre WM-2005 PIM data, and files for all versions
+EAPI=4
+HOMEPAGE=http://sourceforge.net/projects/synce/
+IUSE=python recurrence static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>=app-pda/synce-core-0.16[python?] >=dev-libs/libmimedir-0.5.1 python? ( >=dev-python/pyrex-0.9.6 ) python? ( =dev-lang/python-2.7* )
+SLOT=0
+SRC_URI=mirror://sourceforge/synce/librra-0.16.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=5f9ef80e00d2d0b9306c3f1af46585ae

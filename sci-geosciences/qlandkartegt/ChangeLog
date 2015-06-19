@@ -1,0 +1,165 @@
+# ChangeLog for sci-geosciences/qlandkartegt
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/qlandkartegt/ChangeLog,v 1.31 2015/02/17 09:15:33 jlec Exp $
+
+*qlandkartegt-1.8.1 (17 Feb 2015)
+
+  17 Feb 2015; Justin Lecher <jlec@gentoo.org> +qlandkartegt-1.8.1.ebuild:
+  Version Bump
+
+*qlandkartegt-1.8.0 (10 Feb 2015)
+
+  10 Feb 2015; Justin Lecher <jlec@gentoo.org>
+  +files/qlandkartegt-1.8.0-deprecated.patch,
+  +files/qlandkartegt-1.8.0-includes.patch, +qlandkartegt-1.8.0.ebuild:
+  Version Bump; add QT5 support
+
+*qlandkartegt-1.7.7 (04 Dec 2014)
+
+  04 Dec 2014; Justin Lecher <jlec@gentoo.org> +qlandkartegt-1.7.7.ebuild:
+  Version Bump, #519950
+
+*qlandkartegt-1.7.6-r2 (18 Feb 2014)
+
+  18 Feb 2014; Justin Lecher <jlec@gentoo.org> -qlandkartegt-1.7.6-r1.ebuild,
+  +qlandkartegt-1.7.6-r2.ebuild,
+  -files/qlandkartegt-1.7.6-openstreetmaps.patch:
+  Drop user agent string patch and follow upstream
+
+*qlandkartegt-1.7.6-r1 (17 Feb 2014)
+
+  17 Feb 2014; Justin Lecher <jlec@gentoo.org> -qlandkartegt-1.4.2.ebuild,
+  -qlandkartegt-1.5.1.ebuild, -qlandkartegt-1.6.0.ebuild,
+  -qlandkartegt-1.7.0.ebuild, -qlandkartegt-1.7.5.ebuild,
+  -qlandkartegt-1.7.6.ebuild, +qlandkartegt-1.7.6-r1.ebuild,
+  +files/qlandkartegt-1.7.6-openstreetmaps.patch:
+  Backport patch for OSM useragent restrictions, drop old
+
+*qlandkartegt-1.7.6 (16 Feb 2014)
+
+  16 Feb 2014; Justin Lecher <jlec@gentoo.org> +qlandkartegt-1.7.6.ebuild:
+  Version Bump
+
+  23 Oct 2013; Hanno Boeck <hanno@gentoo.org> metadata.xml:
+  Remove myself as maintainer, now maintained by sci-geosciences herd.
+
+  23 Oct 2013; Justin Lecher <jlec@gentoo.org> qlandkartegt-1.7.5.ebuild:
+  Fix license
+
+*qlandkartegt-1.7.5 (23 Oct 2013)
+
+  23 Oct 2013; Justin Lecher <jlec@gentoo.org> +qlandkartegt-1.7.5.ebuild:
+  Version Bump, #489094
+
+  01 Oct 2013; Davide Pesavento <pesa@gentoo.org> qlandkartegt-1.4.2.ebuild,
+  qlandkartegt-1.5.1.ebuild, qlandkartegt-1.6.0.ebuild,
+  qlandkartegt-1.7.0.ebuild:
+  Properly fix qtgui/qtdbus deps wrt bug 484190.
+
+  10 Jul 2013; Patrick Lauer <patrick@gentoo.org> qlandkartegt-1.4.2.ebuild,
+  qlandkartegt-1.5.1.ebuild, qlandkartegt-1.6.0.ebuild,
+  qlandkartegt-1.7.0.ebuild:
+  Fixing qtgui deps for qt-4.8.5
+
+*qlandkartegt-1.7.0 (07 May 2013)
+
+  07 May 2013; Justin Lecher <jlec@gentoo.org> +qlandkartegt-1.7.0.ebuild,
+  metadata.xml:
+  Version Bump, #462810
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> qlandkartegt-1.4.2.ebuild,
+  qlandkartegt-1.5.1.ebuild, qlandkartegt-1.6.0.ebuild:
+  Move Qt dependencies to the new category
+
+*qlandkartegt-1.6.0 (04 Feb 2013)
+
+  04 Feb 2013; Patrick Lauer <patrick@gentoo.org> +qlandkartegt-1.6.0.ebuild:
+  Bump for #451304, small dependency changes
+
+*qlandkartegt-1.5.1 (29 Aug 2012)
+
+  29 Aug 2012; Justin Lecher <jlec@gentoo.org> qlandkartegt-1.4.2.ebuild,
+  +qlandkartegt-1.5.1.ebuild, metadata.xml:
+  Version Bump
+
+*qlandkartegt-1.4.2 (24 May 2012)
+
+  24 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> +qlandkartegt-1.4.2.ebuild,
+  -qlandkartegt-1.2.2.ebuild, metadata.xml:
+  Version bump to latest version. Thanks to Nikoli for the ebuild. Fixes bug
+  #392977 and bug#404465.
+
+*qlandkartegt-1.2.2 (14 Jul 2011)
+
+  14 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/1.1.2-fix_automagicness.patch, -qlandkartegt-1.2.1.ebuild,
+  +qlandkartegt-1.2.2.ebuild:
+  Version bump. Drop older. Drop patch applied by upstream.
+
+*qlandkartegt-1.2.1 (30 Jun 2011)
+
+  30 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -qlandkartegt-1.1.2.ebuild, +qlandkartegt-1.2.1.ebuild:
+  Version bump to latest, drop older.
+
+*qlandkartegt-1.1.2 (01 Jun 2011)
+
+  01 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/1.1.2-fix_automagicness.patch, -qlandkartegt-0.18.1.ebuild,
+  -qlandkartegt-1.1.0.ebuild, +qlandkartegt-1.1.2.ebuild:
+  Version bump to latest. Drop older. Fix automagicness.
+
+  23 Feb 2011; Hanno Boeck <hanno@gentoo.org> qlandkartegt-1.1.0.ebuild:
+  Add dependency to qt-webkit, thanks to Joop Stakenborg in #356175.
+
+*qlandkartegt-1.1.0 (21 Feb 2011)
+
+  21 Feb 2011; Hanno Boeck <hanno@gentoo.org> +qlandkartegt-1.1.0.ebuild:
+  Version bump.
+
+*qlandkartegt-0.18.1 (27 Apr 2010)
+
+  27 Apr 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -qlandkartegt-0.13.0.ebuild, -qlandkartegt-0.14.1.ebuild,
+  -qlandkartegt-0.15.1.ebuild, +qlandkartegt-0.18.1.ebuild:
+  Version bump. Adjust deps. Drop old.
+
+  30 Sep 2009; Dominik Kapusta <ayoy@gentoo.org> qlandkartegt-0.13.0.ebuild,
+  qlandkartegt-0.14.1.ebuild, qlandkartegt-0.15.1.ebuild:
+  Removed dependency on Qt metapackage
+
+  19 Sep 2009; Hanno Boeck <hanno@gentoo.org> qlandkartegt-0.15.1.ebuild:
+  Add qt-sql dependency.
+
+*qlandkartegt-0.15.1 (19 Sep 2009)
+
+  19 Sep 2009; Hanno Boeck <hanno@gentoo.org> +qlandkartegt-0.15.1.ebuild:
+  Version bump.
+
+*qlandkartegt-0.14.1 (03 Aug 2009)
+
+  03 Aug 2009; Hanno Boeck <hanno@gentoo.org> +qlandkartegt-0.14.1.ebuild:
+  Version bump and add gpsbabel dep.
+
+*qlandkartegt-0.13.0 (10 Jun 2009)
+
+  10 Jun 2009; Hanno Boeck <hanno@gentoo.org> +qlandkartegt-0.13.0.ebuild:
+  Version bump.
+
+*qlandkartegt-0.12.0 (07 May 2009)
+
+  07 May 2009; Hanno Boeck <hanno@gentoo.org> +qlandkartegt-0.12.0.ebuild:
+  Version bump.
+
+*qlandkartegt-0.11.1 (15 Apr 2009)
+
+  15 Apr 2009; Hanno Boeck <hanno@gentoo.org> +qlandkartegt-0.11.1.ebuild:
+  Version bump.
+
+  20 Mar 2009; Hanno Boeck <hanno@gentoo.org> qlandkartegt-0.11.0.ebuild:
+  Add dependency to qt-opengl.
+
+*qlandkartegt-0.11.0 (10 Mar 2009)
+
+  10 Mar 2009; Hanno Boeck <hanno@gentoo.org> +qlandkartegt-0.11.0.ebuild:
+  Initial commit of qlandkartegt, successor of qlandkarte.

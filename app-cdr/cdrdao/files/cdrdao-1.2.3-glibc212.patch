@@ -1,0 +1,12 @@
+http://bugs.gentoo.org/332237
+
+--- dao/ScsiIf-linux.cc
++++ dao/ScsiIf-linux.cc
+@@ -30,6 +30,7 @@
+ #include <asm/param.h>
+ #include <scsi/scsi.h>
+ #include <scsi/sg.h>
++#include <sys/stat.h>
+ 
+ #include "ScsiIf.h"
+ #include "sg_err.h"

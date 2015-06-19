@@ -1,0 +1,15 @@
+--- Makefile_BACKUP	2010-01-12 01:26:33.000000000 +0100
++++ Makefile	2010-01-12 01:26:58.000000000 +0100
+@@ -7,10 +7,10 @@
+ LIB = -lfuse -lpthread -lm
+ 
+ build:
+-	make -C src/
++	$(MAKE) -C src/
+ 
+ clean:
+-	make -C src/ clean
++	$(MAKE) -C src/ clean
+ 
+ install: build
+ 	cp src/unionfs $(DESTDIR)/sbin/

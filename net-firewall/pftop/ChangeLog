@@ -1,0 +1,52 @@
+# ChangeLog for net-firewall/pftop
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/pftop/ChangeLog,v 1.10 2014/11/04 12:26:49 pacho Exp $
+
+  04 Nov 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #131845
+
+*pftop-0.7-r2 (21 Jul 2012)
+
+  21 Jul 2012; Javier Villavicencio <the_paya@gentoo.org> +pftop-0.7-r2.ebuild:
+  Fix for bug #426662, thanks adeel_n@yahoo.com
+
+  13 Apr 2012; Ulrich Müller <ulm@gentoo.org> pftop-0.7-r1.ebuild:
+  Move EAPI assignment to top of ebuild, bug 411875.
+
+*pftop-0.7-r1 (10 Mar 2012)
+
+  10 Mar 2012; Javier Villavicencio <the_paya@gentoo.org> +pftop-0.7-r1.ebuild,
+  metadata.xml:
+  Update patches from FreeBSD ports to compile on FreeBSD 9, add useflag for
+  ALTQ support.
+
+  21 Apr 2010; Javier Villavicencio <the_paya@gentoo.org> pftop-0.7.ebuild:
+  Don't install precompressed manpages.
+
+  20 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> pftop-0.7.ebuild,
+  -files/pftop-0.7-dead.patch, -files/pftop-0.7-pcap.patch,
+  -files/pftop-0.7-pr123670.patch, -files/pftop-0.7-queue.patch.bz2,
+  -files/pftop-0.7-strnvis_fix.patch:
+  Move all the patches to the mirrors, this removes a bzip2-compressed file
+  from CVS.
+
+*pftop-0.7 (27 Jan 2009)
+
+  27 Jan 2009; Javier Villavicencio <the_paya@gentoo.org>
+  +files/pftop-0.7-dead.patch, +files/pftop-0.7-pcap.patch,
+  +files/pftop-0.7-pr123670.patch, +files/pftop-0.7-queue.patch.bz2,
+  +files/pftop-0.7-strnvis_fix.patch, +pftop-0.7.ebuild:
+  New version.
+
+  22 Oct 2006; Javier Villavicencio <the_paya@gentoo.org> pftop-0.5.ebuild:
+  Add support for FreeBSD 6.2.
+
+  01 May 2006; Diego Pettenò <flameeyes@gentoo.org> pftop-0.5.ebuild:
+  Add support for FreeBSD 6.1.
+
+*pftop-0.5 (14 Apr 2006)
+
+  14 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> +metadata.xml,
+  +pftop-0.5.ebuild:
+  Add pftop ebuild based on the one contributed by Javier Villavicencio in bug
+  #110722.

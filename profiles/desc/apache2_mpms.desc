@@ -1,0 +1,12 @@
+# Copyright 2007 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/desc/apache2_mpms.desc,v 1.1 2007/11/28 07:50:44 hollow Exp $
+
+# This file contains descriptions of APACHE2_MPMS USE_EXPAND flags.
+
+# Keep it sorted.
+event - An experimental variant of the standard worker MPM
+itk - Allows to run each virtual host under a separate uid and gid
+peruser - Peruser is a working implementation of the perchild MPM allowing to run each apache child process as its own user and group, each handling its own set of virtual hosts
+prefork - Implements a non-threaded, pre-forking web server
+worker - Multi-Processing Module implementing a hybrid multi-threaded multi-process web server

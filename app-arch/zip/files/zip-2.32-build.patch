@@ -1,0 +1,89 @@
+respect build environment settings
+
+--- zip/unix/Makefile
++++ zip/unix/Makefile
+@@ -12,15 +12,15 @@
+ 
+ list:   all
+ 
+-MAKE = make -f unix/Makefile
++MAKE := $(MAKE) -f unix/Makefile
+ SHELL = /bin/sh
+ LN = ln -s
+ 
+ # (to use the Gnu compiler, change cc to gcc in CC)
+-CC = cc
++CC ?= gcc
+ BIND = $(CC)
+ AS = $(CC) -c
+-CPP = /lib/cpp
++CPP ?= $(CC)
+ EXE =
+ 
+ # probably can change this to 'install' if you have it
+@@ -47,7 +47,7 @@
+ #   LFLAGS1   flags after output file spec, before obj file list
+ #   LFLAGS2   flags after obj file list (libraries, etc)
+ CFLAGS_NOOPT = -I. -DUNIX $(LOCAL_ZIP)
+-CFLAGS = -O2 $(CFLAGS_NOOPT)
++CFLAGS ?= -O2 $(CFLAGS_NOOPT)
+ LFLAGS1 =
+ LFLAGS2 = -s
+ 
+--- zip/unix/configure
++++ zip/unix/configure
+@@ -13,52 +13,13 @@
+ 
+ CC=${1-cc}
+-CFLAGS=${2-"-I. -DUNIX"}
+-LFLAGS1=""
++CFLAGS="${2--I. -DUNIX} ${CFLAGS} ${CPPFLAGS}"
++LFLAGS1="${LDFLAGS}"
+ LN="ln -s"
+-echo "Check C compiler type (optimization option)"
+-cat > conftest.c << _EOF_
+-int main()
+-{
+-#ifndef __SUNPRO_C
+-   bad code
+-#endif
+-   return 0;
+-}
+-_EOF_
+-$CC $CFLAGS -c conftest.c > /dev/null 2>/dev/null
+-if test $? -eq 0; then
+-  echo '  Sun C (-xO3)'
+-  CFLAGS="${CFLAGS} -xO3"
+-else
+-  cat > conftest.c << _EOF_
+-int main()
+-{
+-#ifndef __DECC
+-   bad code
+-#endif
+-   return 0;
+-}
+-_EOF_
+-  $CC $CFLAGS -c conftest.c > /dev/null 2>/dev/null
+-  if test $? -eq 0; then
+-    echo '  DEC C (-O3)'
+-    CFLAGS="${CFLAGS} -O3"
+-  else
+-    echo '  Other (gcc?) (-O2)'
+-    CFLAGS="${CFLAGS} -O2"
+-  fi
+-fi
+ 
+ echo Check for the C preprocessor
+ # on SVR4, cc -E does not produce correct assembler files. Need /lib/cpp.
+ CPP="${CC} -E"
+ # solaris as(1) needs -P, maybe others as well ?
+-[ -f /usr/ccs/lib/cpp ] && CPP="/usr/ccs/lib/cpp -P"
+-[ -f /usr/lib/cpp ] && CPP=/usr/lib/cpp
+-[ -f /lib/cpp ] && CPP=/lib/cpp
+-[ -f /usr/bin/cpp ] && CPP=/usr/bin/cpp
+-[ -f /xenix ] && CPP="${CC} -E"
+-[ -f /lynx.os ] && CPP="${CC} -E"
+ 
+ echo "#include <stdio.h>" > conftest.c
+ $CPP conftest.c >/dev/null 2>/dev/null || CPP="${CC} -E"

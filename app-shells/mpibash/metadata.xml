@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <maintainer>
+    <email>ottxor@gentoo.org</email>
+    <name>Christoph Junghans</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">losalamos/MPI-Bash</remote-id>
+  </upstream>
+</pkgmetadata>

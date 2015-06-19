@@ -1,0 +1,19 @@
+# ChangeLog for media-libs/pymemphis
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/pymemphis/ChangeLog,v 1.4 2012/02/26 07:54:56 patrick Exp $
+
+  26 Feb 2012; Patrick Lauer <patrick@gentoo.org> pymemphis-0.2.1.ebuild:
+  Restricting pypy and jython
+
+  07 Mar 2011; Justin Lecher <jlec@gentoo.org> pymemphis-0.2.1.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  18 Jun 2010; Justin Lecher <jlec@gentoo.org> pymemphis-0.2.1.ebuild:
+  Fixed usage of python.eclass suggested by Arfrever
+
+*pymemphis-0.2.1 (18 Jun 2010)
+
+  18 Jun 2010; Justin Lecher <jlec@gentoo.org> +pymemphis-0.2.1.ebuild,
+  +metadata.xml:
+  Initial Addition
+

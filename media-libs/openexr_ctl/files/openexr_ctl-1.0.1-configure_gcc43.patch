@@ -1,0 +1,22 @@
+diff -up openexr_ctl-1.0.1/configure.conf_gcc43 openexr_ctl-1.0.1/configure
+--- openexr_ctl-1.0.1/configure.conf_gcc43	2008-01-09 17:08:57.000000000 +0100
++++ openexr_ctl-1.0.1/configure	2008-01-09 17:10:25.000000000 +0100
+@@ -20851,6 +20851,7 @@ cat >>conftest.$ac_ext <<_ACEOF
+ 
+ #include <CtlSimdInterpreter.h>
+ #include <Iex.h>
++#include <cstdlib>
+ 
+ int
+ main ()
+diff -up openexr_ctl-1.0.1/configure.ac.conf_gcc43 openexr_ctl-1.0.1/configure.ac
+--- openexr_ctl-1.0.1/configure.ac.conf_gcc43	2008-01-09 17:11:25.000000000 +0100
++++ openexr_ctl-1.0.1/configure.ac	2008-01-09 17:12:17.000000000 +0100
+@@ -108,6 +108,7 @@ AM_COMPILELINKRUN(
+    [$CTL_LIBS],[[
+ #include <CtlSimdInterpreter.h>
+ #include <Iex.h>
++#include <cstdlib>
+ ]],
+    [[Ctl::SimdInterpreter interp; interp.setMaxInstCount(10);]],
+    AC_MSG_RESULT([The ctl test program succeeded.]), 

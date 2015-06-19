@@ -1,0 +1,251 @@
+# ChangeLog for dev-lisp/cmucl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cmucl/ChangeLog,v 1.47 2015/05/23 18:51:08 mrueg Exp $
+
+  23 May 2015; Manuel Rüger <mrueg@gentoo.org> metadata.xml:
+  Drop unneeded USE flag description.
+
+  23 May 2015; Pacho Ramos <pacho@gentoo.org> -cmucl-19c.ebuild,
+  -cmucl-19d_p2.ebuild, -cmucl-20a.ebuild, -cmucl-20b_p001.ebuild,
+  -cmucl-20d-r3.ebuild, -files/19c/README.Gentoo, -files/19c/cmucl.sh,
+  -files/19c/herald-save.lisp-gentoo.patch, -files/19c/install-clc.lisp,
+  -files/19c/site-init.lisp.in, -files/19d-cmucl-patch-002.patch,
+  -files/19d-gentoo.patch, -files/20a-multiplefixes.patch,
+  -files/20a-patch000.patch,
+  -files/20b-customize-lisp-implementation-version.patch,
+  -files/20b-execstack-fixes.patch, -files/20b-nositeinit-build.patch,
+  -files/20b-patch001.patch,
+  -files/20d-customize-lisp-implementation-version.patch,
+  -files/20d-execstack-fixes.patch, -files/fix-man-and-doc-installation.patch:
+  Drop old
+
+  23 May 2015; Pacho Ramos <pacho@gentoo.org> cmucl-20e.ebuild:
+  x86 stable wrt bug #526744
+
+  28 Jan 2015; Michał Górny <mgorny@gentoo.org> cmucl-20a.ebuild,
+  cmucl-20b_p001.ebuild, cmucl-20d-r3.ebuild, cmucl-20e.ebuild:
+  Switch to CPU_FLAGS_X86.
+
+*cmucl-20e (06 Feb 2014)
+
+  06 Feb 2014; Andrey Grozin <grozin@gentoo.org> +cmucl-20e.ebuild,
+  +files/20e-customize-lisp-implementation-version.patch,
+  +files/20e-execstack-fixes.patch:
+  Version bump
+
+  12 May 2013; Patrick Lauer <patrick@gentoo.org> cmucl-20d-r3.ebuild:
+  Fix inherit
+
+*cmucl-20d-r3 (20 Apr 2013)
+
+  20 Apr 2013; Andrey Grozin <grozin@gentoo.org> +cmucl-20d-r3.ebuild,
+  +files/20d-customize-lisp-implementation-version.patch,
+  +files/20d-execstack-fixes.patch:
+  Version bump from the lisp overlay (pmasked)
+
+  24 Oct 2012; Ulrich Müller <ulm@gentoo.org> cmucl-19c.ebuild,
+  cmucl-19d_p2.ebuild, cmucl-20a.ebuild, cmucl-20b_p001.ebuild:
+  Update dependency after package move from x11-libs/openmotif to
+  x11-libs/motif.
+
+  07 Jun 2012; Zac Medico <zmedico@gentoo.org> cmucl-20a.ebuild,
+  cmucl-20b_p001.ebuild:
+  inherit multilib for get_libdir
+
+  08 Jul 2011; Samuli Suominen <ssuominen@gentoo.org> cmucl-20b_p001.ebuild:
+  Convert from "useq" to "use".
+
+  02 May 2011; Andrey Grozin <grozin@gentoo.org> files/20b-patch001.patch:
+  cvs commit mangled the file 20b-patch001.patch; now the offending chunk is
+  removed
+
+*cmucl-20b_p001 (29 Apr 2011)
+
+  29 Apr 2011; Andrey Grozin <grozin@gentoo.org>
+  +files/20b-customize-lisp-implementation-version.patch,
+  +cmucl-20b_p001.ebuild, +files/20b-execstack-fixes.patch,
+  +files/20b-nositeinit-build.patch, +files/20b-patch001.patch,
+  files/site-init.lisp.in, metadata.xml:
+  Version bump from the lisp overlay
+
+  17 Dec 2010; Ulrich Mueller <ulm@gentoo.org> cmucl-19c.ebuild,
+  cmucl-19d_p2.ebuild, cmucl-20a.ebuild:
+  Remove PROVIDE, commonlisp is now a new-style virtual.
+
+  10 Oct 2010; Ulrich Mueller <ulm@gentoo.org> cmucl-19c.ebuild,
+  cmucl-19d_p2.ebuild, cmucl-20a.ebuild:
+  Fix openmotif dependency.
+
+  27 May 2010; Tomas Touceda <chiiph@gentoo.org> cmucl-20a.ebuild,
+  +files/cmuclrc, +files/site-init.lisp.in:
+  Add dodir to fix installing issue. wrt bug 321375 and some missing files
+
+*cmucl-20a (12 May 2010)
+
+  12 May 2010; Tomas Touceda <chiiph@gentoo.org>
+  +files/20a-multiplefixes.patch, +cmucl-20a.ebuild,
+  +files/20a-patch000.patch, +files/fix-man-and-doc-installation.patch:
+  Version bump to 20a.
+
+  04 Sep 2008; Christian Faulhammer <opfer@gentoo.org> cmucl-19c.ebuild:
+  change dependency from virtual/tetex to virtual/latex-base
+
+  28 Jul 2008; Panagiotis Christopoulos <pchrist@gentoo.org> metadata.xml:
+  Update metadata.xml to include USE flag descriptions. Entries taken from
+  profiles/use.local.desc
+
+  27 Jun 2008; Ulrich Mueller <ulm@gentoo.org> cmucl-19c.ebuild,
+  cmucl-19d_p2.ebuild:
+  Change dependency from virtual/motif to x11-libs/openmotif, bug 224749.
+
+  21 Jan 2008; Ulrich Mueller <ulm@gentoo.org> -files/19a/cmucl.sh,
+  -files/19a/herald-save.lisp-gentoo.patch, -files/19a/install-clc.lisp,
+  -files/19a/site-init.lisp.in, -files/19b/README.Gentoo,
+  -files/18e/README.Gentoo, -files/19b/cmucl.sh,
+  -files/18e/herald-save.lisp-gentoo.patch,
+  -files/18e/install-clc.lisp-gentoo.patch, -files/18e/site-init.lisp.in,
+  -files/19a/README.Gentoo, -files/19b/herald-save.lisp-gentoo.patch,
+  -files/19b/install-clc.lisp, -files/19b/site-init.lisp.in,
+  -cmucl-18e-r4.ebuild, -cmucl-19a-r1.ebuild, -cmucl-19b.ebuild,
+  cmucl-19c.ebuild, -cmucl-19d_pre1.ebuild, -cmucl-19d_pre1-r1.ebuild,
+  cmucl-19d_p2.ebuild:
+  Remove lesstif USE flag and depend on virtual/motif wrt bug 117057. Remove
+  bogus doc and source USE flags, fixes bug 203469. Add quotes around some
+  variables. Clean up old versions on behalf of hkBst.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  03 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> cmucl-18e-r4.ebuild,
+  cmucl-19a-r1.ebuild, cmucl-19b.ebuild, cmucl-19c.ebuild:
+  Use mirror://debian/ where applicable, or use mirror://gentoo/ if the file
+  has been removed from debian's mirrors.
+
+*cmucl-19d_p2 (11 Dec 2006)
+
+  11 Dec 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/19d-cmucl-patch-002.patch, +cmucl-19d_p2.ebuild:
+  New upstream version.
+
+*cmucl-19d_pre1-r1 (19 Nov 2006)
+
+  19 Nov 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  +cmucl-19d_pre1-r1.ebuild:
+  pkg_prerm should have been pkg_postrm; Fixes a problem where files from the
+  previous CMUCL are left over.
+
+*cmucl-19d_pre1 (09 Nov 2006)
+
+  09 Nov 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/19d-gentoo.patch, +cmucl-19d_pre1.ebuild:
+  New upstream version; Remove support for Common Lisp Controller.
+
+  21 Sep 2006; <ticho@gentoo.org> cmucl-19c.ebuild:
+  Stable on x86, bug #146102.
+
+  10 Aug 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  files/18e/site-init.lisp.in, files/19a/site-init.lisp.in,
+  files/19b/site-init.lisp.in, files/19c/site-init.lisp.in:
+  Stop recommending ILISP.
+
+  04 Apr 2006; Matthew Kennedy <mkennedy@gentoo.org> cmucl-19c.ebuild:
+  Update common-lisp-controller dependency to
+  >=dev-lisp/common-lisp-controller-4* (works with 5.x too).
+
+*cmucl-19c (08 Dec 2005)
+
+  08 Dec 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/19c/README.Gentoo, +files/19c/cmucl.sh,
+  +files/19c/herald-save.lisp-gentoo.patch, +files/19c/install-clc.lisp,
+  +files/19c/site-init.lisp.in, +cmucl-19c.ebuild:
+  New upstream version; Resolves Bug #60106; Incidentally resolves Bug #101864.
+
+  18 Aug 2005; Matthew Kennedy <mkennedy@gentoo.org> cmucl-18e-r4.ebuild,
+  cmucl-19a-r1.ebuild, cmucl-19b.ebuild:
+  Missing sys-devel/bc dependency added; Resolves Bug #102796.
+
+*cmucl-19b (25 Jul 2005)
+
+  25 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/19b/README.Gentoo, +files/19b/cmucl.sh,
+  +files/19b/herald-save.lisp-gentoo.patch, +files/19b/install-clc.lisp,
+  +files/19b/site-init.lisp.in, +cmucl-19b.ebuild:
+  New upstream version.
+
+  15 Apr 2005; Matthew Kennedy <mkennedy@gentoo.org> -cmucl-18e.ebuild,
+  -cmucl-18e-r1.ebuild, -cmucl-18e-r2.ebuild, -cmucl-18e-r3.ebuild,
+  -cmucl-19a.ebuild, cmucl-19a-r1.ebuild:
+  Keywording stable x86; Removed old ebuilds
+
+  12 Feb 2005; Matthew Kennedy <mkennedy@gentoo.org> cmucl-19a-r1.ebuild:
+  Refine dependency on Common Lisp Controller to
+  =dev-lisp/common-lisp-controller-4*
+
+*cmucl-19a (10 Feb 2005)
+
+  10 Feb 2005; Matthew Kennedy <mkennedy@gentoo.org> cmucl-19a-r1.ebuild:
+  Support for Common Lisp Controller v4; Build CMUCL with CMUCL-CLX
+  and CMUCL-GRAYSTREAM system defnitions by default -- this removes
+  the ugly dependency some packages previously had on
+  dev-lisp/cmucl-sources (which is now obsolete).
+  
+  30 Nov 2004; Sven Wegener <swegener@gentoo.org> cmucl-18e-r4.ebuild,
+  cmucl-19a.ebuild:
+  Fixed invalid atoms in *DEPEND.
+
+  04 Nov 2004; Matthew Kenendy <mkennedy@gentoo.org> cmucl-18e-r4.ebuild,
+  cmucl-19a.ebuild:
+  Corrected dependencies.
+
+*cmucl-19a (09 Aug 2004)
+
+  09 Aug 2004; <mkennedy@gentoo.org> cmucl-19a.ebuild:
+  Debian patch level bump
+
+  18 May 2004; Mamoru KOMACHI <usata@gentoo.org> cmucl-18e-r1.ebuild,
+  cmucl-18e-r2.ebuild, cmucl-18e-r3.ebuild, cmucl-18e-r4.ebuild,
+  cmucl-18e.ebuild:
+  Changed app-text/tetex to virtual/tetex, see bug #50865
+
+  14 Mar 2004; <mkennedy@gentoo.org> cmucl-18e-r4.ebuild:
+  Marking stable for x86
+
+*cmucl-18e-r4 (28 Feb 2004)
+
+  28 Feb 2004; <mkennedy@gentoo.org> cmucl-18e-r4.ebuild:
+  Fixed sed substitution problem.
+
+  26 Feb 2004; <mkennedy@gentoo.org> metadata.xml:
+  Added metadata.xml; Move out postinst, prerm states to eclass; Fix ebuild to
+  build against openmotif or lesstif
+
+*cmucl-18e-r3 (13 Feb 2004)
+
+  13 Feb 2004; <mkennedy@gentoo.org> cmucl-18e-r3.ebuild:
+  Correct include path to location of lesstif motif headers
+
+*cmucl-18e-r2 (28 Jan 2004)
+
+  28 Jan 2004; <mkennedy@gentoo.org> cmucl-18e-r2.ebuild,
+  files/18e/herald-save.lisp-gentoo.patch,
+  files/18e/install-clc.lisp-gentoo.patch, files/18e/site-init.lisp.in:
+  inherit common-lisp-common; use register-common-lisp-implementation and not
+  /usr/sbin/register-common-lisp-implementation; controller clean up
+
+  25 Nov 2003; <mkennedy@gentoo.org> cmucl-18e-r1.ebuild:
+  marking stable for x86
+
+*cmucl-18e-r1 (25 Nov 2003)
+
+  25 Nov 2003; <mkennedy@gentoo.org> cmucl-18e-r1.ebuild:
+  minor changes to work with the new clc code
+
+*cmucl-18e-r1 (21 Nov 2003)
+
+  21 Nov 2003; <mkennedy@gentoo.org> cmucl-18e-r1.ebuild:
+  preserve file mtimes. changes for new controller
+
+*cmucl-18e (23 Sep 2003)
+
+  23 Sep 2003; Matthew Kennedy <mkennedy@gentoo.org> :
+  Initial import.

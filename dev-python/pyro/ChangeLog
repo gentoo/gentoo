@@ -1,0 +1,589 @@
+# ChangeLog for dev-python/pyro
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyro/ChangeLog,v 1.118 2015/04/22 06:48:55 jlec Exp $
+
+  22 Apr 2015; Justin Lecher <jlec@gentoo.org> -pyro-4.23.ebuild:
+  Drop old
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pyro-3.16-r1.ebuild,
+  pyro-4.23.ebuild:
+  Drop old Python implementations
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> pyro-4.25.ebuild:
+  ppc stable, bug 540290
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pyro-4.25.ebuild:
+  Stable for x86, wrt bug #535356
+
+  16 Jan 2015; Ian Delaney <idella4@gentoo.org> -pyro-4.17-r1.ebuild,
+  -pyro-4.22.ebuild, -pyro-4.24.ebuild, pyro-4.25.ebuild:
+  clean old impl, rm old
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pyro-4.25.ebuild:
+  Stable for amd64, wrt bug #535356
+
+  17 Jul 2014; Ian Delaney <idella4@gentoo.org> pyro-4.24.ebuild,
+  pyro-4.25.ebuild:
+  drop py2.6 pypy2_0 add py3.4
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> pyro-4.22.ebuild,
+  pyro-4.23.ebuild, pyro-4.24.ebuild, pyro-4.25.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> pyro-4.24.ebuild:
+  x86 stable wrt bug #509710
+
+*pyro-4.25 (12 Jun 2014)
+
+  12 Jun 2014; Amadeusz Żołnowski <aidecoe@gentoo.org> +pyro-4.25.ebuild:
+  Version bump.
+
+  NEWS
+  ~~~~
+  - now also puts package name in serpent serialization data for custom class
+    instances (previously only the class name was used)
+  - requires serpent 1.5 or newer (because of the feature above)
+  - support for (Linux) abstract namespace AF_UNIX sockets (with a 0-byte at
+    the start of the name)
+  - register_dict_to_class method added on SerializerBase, to be able to
+    deserialize to particular user defined classes
+  - docs: mention that you may have to install serpent manually (most notably
+    with alternative Python implementations)
+  - docs: mention the serialization hooks on SerializerBase
+  - added ser_custom example that shows how to use the serialization hooks
+
+  24 May 2014; Markos Chandras <hwoarang@gentoo.org> pyro-4.24.ebuild:
+  Stable on amd64 wrt bug #509710
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> pyro-3.16-r1.ebuild,
+  pyro-4.17-r1.ebuild, pyro-4.22.ebuild, pyro-4.23.ebuild, pyro-4.24.ebuild:
+  Add support for the new PyPy slotting.
+
+  30 Mar 2014; Amadeusz Żołnowski <aidecoe@gentoo.org> pyro-4.24.ebuild:
+  Deps are not ready for Python 3.4, thus removing from targets.
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> pyro-4.23.ebuild:
+  Stable for ppc, wrt bug #502792
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> pyro-4.23.ebuild:
+  Stable for x86, wrt bug #502792
+
+*pyro-4.24 (03 Mar 2014)
+
+  03 Mar 2014; Amadeusz Żołnowski <aidecoe@gentoo.org> +pyro-4.24.ebuild:
+  Version bump. Added python3_4 support.
+
+  NEWS
+  ~~~~
+  - Python 3.4 compatibility added (fixed pickle/marshal issues)
+  - a backwards incompatible change has been implemented regarding the
+    threadpool implementation and configuration, see next two items.
+  - threadpool is now again a fixed size determined by the new THREADPOOL_SIZE
+    config item (defaults to 16)
+  - config items removed: THREADPOOL_MINTHREADS, THREADPOOL_MAXTHREADS,
+    THREADPOOL_IDLETIMEOUT
+  - daemon no longer sends an exception response when a communication error
+    occurred (such as a timeout). This fixes the MSG_PING/disconnect example.
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> pyro-4.23.ebuild:
+  amd64 stable, bug #502792
+
+*pyro-4.23 (23 Jan 2014)
+
+  23 Jan 2014; Amadeusz Żołnowski <aidecoe@gentoo.org> +pyro-4.23.ebuild:
+  Version bump.
+
+  NEWS
+  ~~~~
+
+  - Pyro4.test.echoserver now correctly runs the NS’s broadcast server as well
+  - unix domain socket creation no longer fails when bind or connect address is
+    unicode instead of str
+  - docs: added more info on dealing with new serialization configuration in
+    existing code
+  - docs: improved name server documentation on registering objects
+  - docs: various small updates
+
+  20 Jan 2014; Agostino Sarubbo <ago@gentoo.org> pyro-4.22.ebuild:
+  Stable for ppc, wrt bug #494262
+
+  19 Jan 2014; Pacho Ramos <pacho@gentoo.org> pyro-4.22.ebuild:
+  amd64 stable, bug 494262
+
+  28 Dec 2013; Amadeusz Żołnowski <aidecoe@gentoo.org> -pyro-4.20.ebuild:
+  Removed testing 4.20.
+
+  28 Dec 2013; Amadeusz Żołnowski <aidecoe@gentoo.org> -pyro-4.8.ebuild,
+  -pyro-4.11.ebuild, -pyro-4.17.ebuild:
+  4.17-r1 is stable long enough to remove all 4.* using deprecated distutils.
+
+  28 Dec 2013; Amadeusz Żołnowski <aidecoe@gentoo.org> -pyro-3.16.ebuild:
+  3.16-r1 is stable long enough to remove 3.16 using deprecated distutils
+  eclass.
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pyro-4.22.ebuild:
+  Stable for x86, wrt bug #494262
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> pyro-3.16-r1.ebuild:
+  Stable for ppc, wrt bug #487334
+
+  11 Oct 2013; Sergey Popov <pinkbyte@gentoo.org> pyro-3.16-r1.ebuild:
+  Stable on amd64 and x86, wrt bug #487334
+
+*pyro-4.22 (08 Oct 2013)
+
+  08 Oct 2013; Amadeusz Żołnowski <aidecoe@gentoo.org> +pyro-4.22.ebuild:
+  Version bump.
+
+  NEWS
+  ~~~~
+
+  Pyro 4.22
+
+  - support added in daemon to accept multiple serializers in incoming messages
+  - new config item added for that: SERIALIZERS_ACCEPTED (defaults to ‘safe’
+    serializers)
+  - wire protocol header changed. Not backwards compatible! New protocol
+    version: 46.
+  - wire protocol: header now contains serializer used for the data payload
+  - wire protocol: header is extensible with optional ‘annotations’. One is
+    used for the HMAC digest that used to be in all messages even when the hmac
+    option wasn’t enabled.
+  - refactored core.MessageFactory: new submodule Pyro4.message. If you used
+    MessageFactory in your own code you’ll need to refactor it to use the new
+    Pyro4.message.Message API instead.
+  - disconnects example client code updated to reflect this API change
+  - you can now write the protocol in URIs in lowercase if you want
+    (“pyro:...”) (will still be converted to uppercase)
+  - fixed poll server loop() not handling self.clients which caused crashes
+    with a custom loopCondition
+  - fixed some unit test hang/timeout/crash issues
+  - improved unit tests for jython, disabled ipv6 tests for jython because of
+    too many issues.
+  - improved unit tests for ironpython.
+
+  Pyro 4.21
+
+  - fixed denial of service vulnerabilities in socket servers
+  - MSG_PING message type added (internal server ping mechanism)
+  - disconnects example added that uses MSG_PING
+  - more exception types recognised in the serializers (such as GeneratorExit)
+  - fixed async regression when dealing with errors (properly serialize
+    exceptionwrapper)
+  - fixed warehouse and stockmarket tutorials to work with new serializer logic
+  - fixed examples that didn’t yet work with new serializer logic
+  - fixed unit tests to use unittest2 on Python 2.6
+  - no longer supports jython 2.5. You’ll have to upgrade to jython 2.7.
+  - got rid of some byte/str handling cruft (because we no longer need to deal
+    with jython 2.5)
+  - implemented autoproxy support for serpent and json serializers. It is not
+    possible to do this for marshal.
+  - fixed serpent serialization problem with backslash escapes in unicode
+    strings (requires serpent >= 1.3)
+
+  06 Oct 2013; Amadeusz Żołnowski <aidecoe@gentoo.org> pyro-4.20.ebuild:
+  Use virtual/python-unittest2. Fixes bug #483726.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> pyro-3.16-r1.ebuild,
+  pyro-4.17-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> pyro-4.20.ebuild:
+  Drop stale conditionals after py3.1 removal.
+
+  18 Jul 2013; Amadeusz Żołnowski <aidecoe@gentoo.org> pyro-4.20.ebuild,
+  +files/4.20-0001-Use-unittest2-for-older-Python-version.patch:
+  Fixed tests for Python 2.6 and 3.1.
+
+*pyro-4.20 (10 Jul 2013)
+
+  10 Jul 2013; Ian Delaney <idella4@gentoo.org> +pyro-4.20.ebuild:
+  bump, drop pypy1_9 support, add new dep serpent', addresses Bug #474624 by
+  aidecoe
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> pyro-4.17-r1.ebuild:
+  Stable for ppc, wrt bug #474202
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> pyro-4.17-r1.ebuild:
+  Stable for amd64, wrt bug #474202
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> pyro-4.17-r1.ebuild:
+  Stable for x86, wrt bug #474202
+
+  06 Jun 2013; Mike Gilbert <floppym@gentoo.org> pyro-4.17-r1.ebuild:
+  Re-enable python3 and parallel build.
+
+*pyro-4.17-r1 (22 May 2013)
+*pyro-3.16-r1 (22 May 2013)
+
+  22 May 2013; Justin Lecher <jlec@gentoo.org> +pyro-3.16-r1.ebuild,
+  +pyro-4.17-r1.ebuild, metadata.xml:
+  Bump to new distutils eclass
+
+  16 Feb 2013; Amadeusz Żołnowski <aidecoe@gentoo.org> -pyro-4.14.ebuild:
+  Removing 4.14 which couldn't be stabilized because of serious bugs.
+
+  03 Feb 2013; Agostino Sarubbo <ago@gentoo.org> pyro-4.17.ebuild:
+  Stable for ppc, wrt bug #455170
+
+  03 Feb 2013; Agostino Sarubbo <ago@gentoo.org> pyro-4.17.ebuild:
+  Stable for amd64, wrt bug #455170
+
+  02 Feb 2013; Jeff Horelick <jdhore@gentoo.org> pyro-4.17.ebuild:
+  x86 stable wrt bug #455170
+
+  02 Feb 2013; Amadeusz Żołnowski <aidecoe@gentoo.org> pyro-4.8.ebuild,
+  pyro-4.14.ebuild, pyro-4.17.ebuild:
+  Copied Ian Delaney tests fix to all Pyro4 ebuilds. Fixes bug #455148 by
+  flameeyes.
+
+  02 Feb 2013; Ian Delaney <idella4@gentoo.org> pyro-4.11.ebuild:
+  testBCLookup added to list of disabled tests requiring network connection,
+  fixes Bug #454686 by flameeyes
+
+*pyro-4.17 (25 Dec 2012)
+
+  25 Dec 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> +pyro-4.17.ebuild:
+  Version bump. All tests pass fine now (on amd64 at least).
+
+  Pyro 4.17
+
+  - Fixed possible IndentationError problem with sending modules in Flame
+  - Can now deal with exceptions that can’t be serialized: they’re raised as
+    generic PyroError instead, with appropriate message
+  - Added new config item FLAME_ENABLED, to enable/disable the use of Pyro
+    Flame on the server. Default is false (disabled).
+  - Moved futures from core to new futures module. Code using Pyro4.Future will
+    still work.
+  - Added python version info to configuration dump
+  - Made it more clear in the manual that you need to have the same major
+    Python version on both sides
+
+  Pyro 4.16
+
+  - New implementation for the threadpool server: job queue with self-adjusting
+    number of workers. The workaround that was in place (fixed pool size) has
+    been removed.
+  - Minor api doc fix: corrected reference of Pyro4 package members
+
+  Pyro 4.15
+
+  - Minimum threadpool size increased to 20 (from 4) to give a bit more
+    breathing room while the threadpool scaling still needs to be fixed
+  - Binding a proxy will no longer release an existing connection first,
+    instead it will just do nothing if the proxy has already been bound to its
+    uri
+  - Resolved a race condition related to releasing and binding a proxy,
+    improved unit test
+  - Documentation contains new homepage link
+  - No longer gives a warning about version incompatibility on Jython 2.5
+  - Optimize bytecode flag no longer added in setup script when using jython,
+    this used to crash the setup.py install process on jython
+  - Fixed a gc issue due to a circular dependency
+  - IronPython: improved suggesting a free port number in
+    socketutil.findProbablyUnusedPort
+  - IronPython: threadpoolserver no longer attempts to join the worker threads
+    because not all threads seemed to actually exit on IronPython, thereby
+    hanging the process when shutting down a daemon.
+  - Added a paragraph to tips&tricks about MSG_WAITALL
+  - socket.MSG_WAITALL is no longer deleted by importing Pyro on systems that
+    have a broken MSG_WAITALL (Windows). You’ll have to check for this yourself
+    now, but I wanted to get rid of this side effect of importing Pyro.
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> pyro-4.11.ebuild:
+  x86 stable wrt bug #419025
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> pyro-4.11.ebuild:
+  Marking pyro-4.11 ppc for bug 419025
+
+  02 Jun 2012; Markos Chandras <hwoarang@gentoo.org> pyro-4.11.ebuild:
+  Stable on amd64 wrt bug #419025
+
+  02 Jun 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> pyro-4.14.ebuild:
+  Removed the test restriction; see comment 3 in the bug #416809.
+
+  01 Jun 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> -pyro-4.13.ebuild,
+  pyro-4.11.ebuild:
+  The 4.13 has bug which is workarounded in the 4.14, therefore removing the
+  older version.
+
+*pyro-4.14 (01 Jun 2012)
+
+  01 Jun 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> +pyro-4.14.ebuild,
+  pyro-4.11.ebuild:
+  Version bump wrt bug #416809.  This version comes with several bug fixes and
+  one workaround for threadpool scaling problem.  I have restricted the test for
+  this version because it fails anyway because of the latest problem which is
+  not fully solved:    FAIL: testPoolGrowth
+  (PyroTests.test_threadpool.ThreadpoolTests)
+
+*pyro-4.11 (01 Jun 2012)
+
+  01 Jun 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> +pyro-4.11.ebuild:
+  Restored pyro-4.11, because this is the only candidate for the stabilization
+  in the slot 4.
+
+  01 Jun 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> -pyro-4.4.ebuild:
+  Removed oldest stable version in the slot 4.
+
+  01 Jun 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> -pyro-4.11.ebuild,
+  -pyro-4.12.ebuild:
+  Removed old versions in the slot 4 with exception to the stable one.
+
+  01 Jun 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> -pyro-3.13.ebuild,
+  -pyro-3.15.ebuild:
+  Removed old versions in the slot 3.
+
+  29 May 2012; Brent Baude <ranger@gentoo.org> pyro-3.16.ebuild:
+  Marking pyro-3.16 ppc for bug 416255
+
+  21 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> pyro-3.16.ebuild:
+  x86 stable wrt bug #416255
+
+  20 May 2012; Agostino Sarubbo <ago@gentoo.org> pyro-3.16.ebuild:
+  Stable for amd64, wrt bug #416255
+
+*pyro-3.16 (16 May 2012)
+
+  16 May 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> +pyro-3.16.ebuild,
+  metadata.xml:
+  Version bump.  Added myself to the metadata to see the package under my
+  profile in the euscan service.
+
+  NEWS
+
+  - connecting a proxy socket now also honors a timeout set by
+    proxy._setTimeout()
+
+  - fix setNoInherit on 64-bits Python on Windows (see
+    http://tech.oyster.com/cherrypy-ctypes-and-being-explicit/)
+
+*pyro-4.13 (19 Apr 2012)
+
+  19 Apr 2012; Patrick Lauer <patrick@gentoo.org> +pyro-4.13.ebuild:
+  Bump
+
+*pyro-4.12 (09 Mar 2012)
+
+  09 Mar 2012; Patrick Lauer <patrick@gentoo.org> +pyro-4.12.ebuild:
+  Bump
+
+  27 Feb 2012; Brent Baude <ranger@gentoo.org> pyro-4.8.ebuild:
+  Marking pyro-4.8 ppc for bug 400335
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> pyro-4.8.ebuild:
+  x86 stable wrt bug #400335
+
+  17 Feb 2012; Agostino Sarubbo <ago@gentoo.org> pyro-4.8.ebuild:
+  Stable for amd64, wrt bug #400335
+
+*pyro-4.11 (08 Feb 2012)
+
+  08 Feb 2012; Patrick Lauer <patrick@gentoo.org> +pyro-4.11.ebuild:
+  Bump for #401975
+
+  28 Nov 2011; Amadeusz Żołnowski <aidecoe@gentoo.org> pyro-4.4.ebuild,
+  pyro-4.8.ebuild:
+  Updated Pyro4 homepage URI-s.
+
+*pyro-3.15 (24 Sep 2011)
+
+  24 Sep 2011; Mike Gilbert <floppym@gentoo.org> +pyro-3.15.ebuild:
+  Version bump requested by aidecoe.
+
+*pyro-4.8 (05 Sep 2011)
+
+  05 Sep 2011; Dirkjan Ochtman <djc@gentoo.org> +pyro-4.8.ebuild:
+  Version bump to 4.8 (thanks to jbergstroem for testing).
+
+  07 Jul 2011; Jesus Rivero <neurogeek@gentoo.org> pyro-4.4.ebuild:
+  Disabled tests that request connections wrt bug #370577
+
+  01 Jul 2011; Markos Chandras <hwoarang@gentoo.org> -pyro-3.12.ebuild,
+  -pyro-4.1.ebuild, -pyro-4.2.ebuild, -pyro-4.3.ebuild:
+  Remove old ebuilds. Requested by Arfrever
+
+  01 Jul 2011; Thomas Kahle <tomka@gentoo.org> pyro-4.4.ebuild:
+  x86 stable per bug 370507
+
+  27 Jun 2011; Brent Baude <ranger@gentoo.org> pyro-3.13.ebuild:
+  Marking pyro-3.13 ppc for bug 371659
+
+  27 Jun 2011; Brent Baude <ranger@gentoo.org> pyro-4.4.ebuild:
+  Marking pyro-4.4 ppc for bug 370507
+
+  19 Jun 2011; Markus Meier <maekke@gentoo.org> pyro-3.13.ebuild:
+  x86 stable, bug #371659
+
+  18 Jun 2011; Markos Chandras <hwoarang@gentoo.org> pyro-3.13.ebuild:
+  Stable on amd64 wrt bug #371659
+
+  08 Jun 2011; Markos Chandras <hwoarang@gentoo.org> pyro-4.4.ebuild:
+  Stable on amd64 wrt bug #370507
+
+  28 May 2011; Brent Baude <ranger@gentoo.org> pyro-4.3.ebuild:
+  Marking pyro-4.3 ppc for bug 363873
+
+*pyro-3.13 (09 May 2011)
+
+  09 May 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pyro-3.13.ebuild:
+  Version bump.
+
+*pyro-4.4 (26 Apr 2011)
+
+  26 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pyro-4.4.ebuild:
+  Version bump.
+
+  26 Apr 2011; Markos Chandras <hwoarang@gentoo.org> pyro-4.3.ebuild:
+  Stable on amd64 wrt bug #363873
+
+  18 Apr 2011; Thomas Kahle <tomka@gentoo.org> pyro-4.3.ebuild:
+  x86 stable per bug 363873
+
+  16 Apr 2011; Raúl Porcel <armin76@gentoo.org> pyro-3.12.ebuild,
+  pyro-4.1.ebuild, pyro-4.2.ebuild, pyro-4.3.ebuild:
+  Drop alpha/ia64/sparc
+
+  10 Apr 2011; Markus Meier <maekke@gentoo.org> pyro-3.12.ebuild:
+  x86 stable, bug #357989
+
+  10 Apr 2011; Tobias Klausmann <klausman@gentoo.org> pyro-3.12.ebuild:
+  Stable on alpha, bug #357989
+
+  27 Mar 2011; Brent Baude <ranger@gentoo.org> pyro-3.12.ebuild:
+  Marking pyro-3.12 ppc for bug 357989
+
+  09 Mar 2011; Markos Chandras <hwoarang@gentoo.org> pyro-3.12.ebuild:
+  Stable on amd64 wrt bug #357989
+
+*pyro-4.3 (08 Mar 2011)
+*pyro-3.12 (08 Mar 2011)
+
+  08 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pyro-3.12.ebuild, +pyro-4.3.ebuild:
+  Version bumps.
+
+  07 Jan 2011; Brent Baude <ranger@gentoo.org> pyro-4.1.ebuild:
+  Marking pyro-4.1 ppc for bug 347107
+
+*pyro-4.2 (04 Jan 2011)
+
+  04 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pyro-4.2.ebuild:
+  Version bump. Disable tests requiring network connection (bug #341723).
+
+  01 Aug 2010; Markos Chandras <hwoarang@gentoo.org> pyro-4.1.ebuild:
+  Stable on amd64 wrt bug #330605
+
+  31 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> pyro-4.1.ebuild:
+  x86 stable wrt bug #330605
+
+*pyro-4.1 (29 Jun 2010)
+
+  29 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pyro-3.9.1.ebuild, +pyro-4.1.ebuild:
+  Version bump.
+
+  07 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> pyro-3.10.ebuild:
+  amd64 stable wrt #300243
+
+  11 Jan 2010; Christian Faulhammer <fauli@gentoo.org> pyro-3.10.ebuild:
+  stable x86, bug 300243
+
+*pyro-3.10 (07 Dec 2009)
+
+  07 Dec 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +pyro-3.10.ebuild:
+  Version bump.
+
+  11 Oct 2009; Fabian Groffen <grobian@gentoo.org> pyro-3.9.1.ebuild:
+  Merge from Prefix
+
+  18 Sep 2009; Markus Meier <maekke@gentoo.org> pyro-3.9.1.ebuild:
+  amd64 stable, bug #284997
+
+  16 Sep 2009; Christian Faulhammer <fauli@gentoo.org> pyro-3.9.1.ebuild:
+  stable x86, bug 284997
+
+  04 Sep 2009; Patrick Lauer <patrick@gentoo.org> -pyro-3.7.ebuild,
+  -pyro-3.9.ebuild:
+  Remove old
+
+  04 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pyro-3.9.1.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*pyro-3.9.1 (01 Jun 2009)
+
+  01 Jun 2009; Patrick Lauer <patrick@gentoo.org> +pyro-3.9.1.ebuild:
+  Bump to 3.9.1, fixes #271202
+
+*pyro-3.9 (26 Apr 2009)
+
+  26 Apr 2009; Patrick Lauer <patrick@gentoo.org> +pyro-3.9.ebuild:
+  Bump to 3.9, fixes #267550
+
+*pyro-3.7 (05 Jun 2007)
+
+  05 Jun 2007; Lukasz Strzygowski <lucass@gentoo.org> -pyro-3.5.ebuild,
+  +pyro-3.7.ebuild:
+  Version bump. Removed old version.
+
+  04 Mar 2007; Lukasz Strzygowski <lucass@gentoo.org> pyro-3.4.ebuild,
+  pyro-3.5.ebuild:
+  Replaced einfo with elog in pkg_postinst. In 3.5: added doc/examples
+  use-flags, minor cleanup.
+
+  21 Feb 2007; Lukasz Strzygowski <lucass@gentoo.org> files/digest-pyro-3.4,
+  files/digest-pyro-3.5, Manifest:
+  Convert to Manifest2.
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> pyro-3.5.ebuild:
+  Mark 3.5 ~ia64
+
+*pyro-3.5 (02 Dec 2005)
+
+  02 Dec 2005; Alastair Tse <liquidx@gentoo.org>
+  -files/pyro-3.3-unattend.patch, -pyro-3.3.ebuild, -pyro-3.3-r1.ebuild,
+  +pyro-3.5.ebuild:
+  version bump (#113442)
+
+  18 Sep 2005; Simon Stelling <blubb@gentoo.org> pyro-3.4.ebuild:
+  stable on amd64
+
+  17 Sep 2005; Lukasz Strzygowski <lucass@gentoo.org> pyro-3.3-r1.ebuild,
+  pyro-3.4.ebuild:
+  Marked stable on x86.
+
+  07 Feb 2005; Fernando Serboncini <fserb@gentoo.org> pyro-3.3.ebuild:
+  stable on x86
+
+*pyro-3.4 (28 Jan 2005)
+
+  28 Jan 2005; Rob Cakebread <pythonhead@gentoo.org>
+  +files/pyro-3.4-unattend.patch, +pyro-3.4.ebuild:
+  Version bump.
+
+  18 Dec 2004; Simon Stelling <blubb@gentoo.org> pyro-3.3-r1.ebuild:
+  added ~amd64
+
+  17 Jul 2004; David Holm <dholm@gentoo.org> pyro-3.3-r1.ebuild:
+  Added to ~ppc.
+
+*pyro-3.3-r1 (07 Jul 2004)
+
+  07 Jul 2004; Alastair Tse <liquidx@gentoo.org> +pyro-3.3-r1.ebuild,
+  pyro-3.3.ebuild:
+  fix overwriting /usr/bin/esd temporarily be renaming esd to pyroesd. (#56096)
+
+  17 Feb 2004; <kloeri@gentoo.org> pyro-3.3.ebuild:
+  Add missing SLOT.
+
+*pyro-3.3 (16 Feb 2004)
+
+  16 Feb 2004; <kloeri@gentoo.org> pyro-3.3.ebuild,
+  files/pyro-3.3-unattend.patch:
+  Initial import.

@@ -1,0 +1,89 @@
+# ChangeLog for dev-db/octopus
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/octopus/ChangeLog,v 1.22 2015/04/05 21:18:55 monsieurp Exp $
+
+  05 Apr 2015; Patrice Clement <monsieurp@gentoo.org> octopus-3.0.1-r4.ebuild:
+  EAPI 5 bump wrt bug 543906.
+
+*octopus-3.0.1-r4 (05 Apr 2015)
+
+  05 Apr 2015; Patrice Clement <monsieurp@gentoo.org> +octopus-3.0.1-r4.ebuild:
+  EAPI 5 bump wrt bug 543906.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> octopus-3.0.1-r3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  05 Apr 2010; Vlastimil Babka <caster@gentoo.org> -octopus-3.0.1-r2.ebuild:
+  Remove old.
+
+  09 Dec 2009; Markus Meier <maekke@gentoo.org> octopus-3.0.1-r3.ebuild:
+  amd64/x86 stable, bug #296214
+
+  10 Nov 2009; Vlastimil Babka <caster@gentoo.org> -octopus-3.0.1-r1.ebuild:
+  Remove old.
+
+  10 Nov 2009; Markus Meier <maekke@gentoo.org> octopus-3.0.1-r2.ebuild:
+  x86 stable, bug #291465
+
+*octopus-3.0.1-r3 (08 Nov 2009)
+
+  08 Nov 2009; Vlastimil Babka <caster@gentoo.org> +octopus-3.0.1-r3.ebuild:
+  Revbump to remove dependency on 1.5 jdk - bug #292001.
+
+*octopus-3.0.1-r2 (18 Sep 2009)
+
+  18 Sep 2009; Alistair Bush <ali_bush@gentoo.org>
+  +files/octopus-jdk-1.5.patch, +octopus-3.0.1-r2.ebuild:
+  Revbump and add patch to allow compulation with 1.5 vms.
+
+  10 Jan 2008; Vlastimil Babka <caster@gentoo.org> octopus-3.0.1-r1.ebuild:
+  Restrict junit dependency.
+
+  13 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  octopus-3.0.1-r1.ebuild:
+  filtered jikes and quoted some variables
+
+  20 Aug 2007; Vlastimil Babka <caster@gentoo.org> octopus-3.0.1-r1.ebuild:
+  Restrict jdk in DEPEND to 1.4 only for added abstract API in 1.5+, reported
+  by opfer in bug #189277.
+
+  12 Jul 2007; Petteri Räty <betelgeuse@gentoo.org> -octopus-3.0.1.ebuild:
+  Remove generation 1 ebuild.
+
+  12 Jul 2007; Petteri Räty <betelgeuse@gentoo.org>
+  octopus-3.0.1-r1.ebuild:
+  Prefer virtual/jdk-1.5 over 1.4 and use JAVA_PKG_IUSE.
+
+  13 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  octopus-3.0.1-r1.ebuild:
+  stable x86; bug 166276
+
+  12 Feb 2007; Petteri Räty <betelgeuse@gentoo.org>
+  octopus-3.0.1-r1.ebuild:
+  Restrict test because we would need maven to run them properly.
+
+  10 Feb 2007; Petteri Räty <betelgeuse@gentoo.org>
+  octopus-3.0.1-r1.ebuild:
+  Make javadocs install to standard location.
+
+  27 Dec 2006; Petteri Räty <betelgeuse@gentoo.org> metadata.xml,
+  octopus-3.0.1.ebuild, octopus-3.0.1-r1.ebuild:
+  Moved the very long description to metadata.xml as longdescription.
+
+*octopus-3.0.1-r1 (27 Dec 2006)
+
+  27 Dec 2006; Petteri Räty <betelgeuse@gentoo.org>
+  +octopus-3.0.1-r1.ebuild:
+  Migrated to generation 2. Does not use any packed jars. Fixes bug #110905.
+
+  30 Nov 2006; Vlastimil Babka <caster@gentoo.org> octopus-3.0.1.ebuild:
+  Update xerces dep for upcoming 2.6 slotmove.
+
+  29 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> octopus-3.0.1.ebuild:
+  updated (R)DEPEND to reflect rhino SLOT changes.
+
+*octopus-3.0.1 (22 Jan 2005)
+
+  22 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> +metadata.xml,
+  +files/octopus-3.0.1-gentoo-build.xml, +octopus-3.0.1.ebuild:
+  Initial import. Fixes bug #75622.

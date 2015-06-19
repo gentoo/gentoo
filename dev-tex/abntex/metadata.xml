@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>tex</herd>
+	<maintainer>
+		<email>rafaelmartins@gentoo.org</email>
+		<name>Rafael G. Martins</name>
+	</maintainer>
+	<use>
+		<flag name="lyx">Install with <pkg>app-office/lyx</pkg> layout</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">abntex</remote-id>
+	</upstream>
+</pkgmetadata>

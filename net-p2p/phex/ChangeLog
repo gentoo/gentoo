@@ -1,0 +1,86 @@
+# ChangeLog for net-p2p/phex
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/phex/ChangeLog,v 1.17 2014/06/18 19:22:46 mrueg Exp $
+
+  18 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -phex-3.2.0.102.ebuild:
+  NM: Cleanup superseded ebuilds.
+
+  10 Jul 2010; Stanislav Ochotnicky <sochotnicky@gentoo.org>
+  files/0001-Remove-MacOS-GUI-references.patch, phex-3.2.0.102-r1.ebuild:
+  Move file removal from patch to ebuild to prevent failure on some systems
+
+*phex-3.2.0.102-r1 (18 Jun 2010)
+
+  18 Jun 2010; Stanislav Ochotnicky <sochotnicky@gentoo.org>
+  +files/0001-Remove-MacOS-GUI-references.patch, +phex-3.2.0.102-r1.ebuild:
+  Remove MacOS GUI related calls (#298698)
+
+  22 Jan 2008; Petteri Räty <betelgeuse@gentoo.org> phex-3.2.0.102.ebuild:
+  Migrate to EAPI=1 slot deps.
+
+  22 Jan 2008; Petteri Räty <betelgeuse@gentoo.org> -phex-3.0.0.99.ebuild:
+  Remove old version.
+
+*phex-3.2.0.102 (15 Jan 2008)
+
+  15 Jan 2008; Vlastimil Babka <caster@gentoo.org> metadata.xml,
+  +phex-3.2.0.102.ebuild:
+  Version bump, bug #185634. Build from source, most bundled deps removed, few
+  that we don't have package for are left - bug #176739. Added java herd to
+  metadata.xml.
+
+  21 Jul 2007; Petteri Räty <betelgeuse@gentoo.org> phex-3.0.0.99.ebuild:
+  Change RDEPEND from >=dev-java/jgoodies-looks-1.3.2 to >=2.0 because this
+  uses the 2.0 slot.
+
+*phex-3.0.0.99 (12 Jan 2007)
+
+  12 Jan 2007; Raúl Porcel <armin76@gentoo.org> -files/phex-2.6.4.89.sh,
+  -files/phex-2.8.2.92.sh, +files/phex-3.0.0.99.sh, -files/phex.sh,
+  -phex-2.0.0.76.ebuild, -phex-2.6.0.87.ebuild, -phex-2.8.2.92.ebuild,
+  +phex-3.0.0.99.ebuild:
+  Remove broken ebuilds, version bump, fix bug 119416
+
+  09 Dec 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  -phex-2.1.2.79.ebuild, -phex-2.1.4.80.ebuild, -phex-2.6.4.89.ebuild:
+  clean out some ebuilds
+
+*phex-2.8.2.92 (17 Jan 2006)
+
+  17 Jan 2006; Karol Wojtaszek <sekretarz@gentoo.org>
+  +files/phex-2.8.2.92.sh, +phex-2.8.2.92.ebuild:
+  Version bump, bug #111812 by Roel Brook <Rainmaker526@hotmail.com>. Added
+  ~amd64 keyword
+
+*phex-2.6.4.89 (26 Sep 2005)
+
+  26 Sep 2005; <mkay@gentoo.org> +files/phex-2.6.4.89.sh,
+  +phex-2.6.4.89.ebuild:
+  Version bump to 2.6.4.89
+
+*phex-2.6.0.87 (28 Jul 2005)
+
+  28 Jul 2005; <sekretarz@gentoo.org> +phex-2.6.0.87.ebuild:
+  Version bump, bug #96135. Moved phex wrapper to /usr/bin
+
+*phex-2.1.4.80 (13 Oct 2004)
+
+  13 Oct 2004; Jon Hood <squinky86@gentoo.org> +phex-2.1.4.80.ebuild:
+  Version bump.
+
+*phex-2.1.2.79 (17 Sep 2004)
+
+  17 Sep 2004; Jon Hood <squinky86@gentoo.org> +phex-2.1.2.79.ebuild:
+  Version bump.
+
+  22 Aug 2004; Jon Hood <squinky86@gentoo.org> phex-2.0.0.76.ebuild:
+  Stable on x86.
+
+  22 Jul 2004; David Holm <dholm@gentoo.org> phex-2.0.0.76.ebuild:
+  Added to ~ppc.
+
+*phex-2.0.0.76 (22 Jul 2004)
+
+  22 Jul 2004; Jon Hood <squinky86@gentoo.org> +metadata.xml,
+  +phex-2.0.0.76.ebuild, +files/phex.sh:
+  Initial commit.

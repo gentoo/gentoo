@@ -1,0 +1,12 @@
+*** tftp_def.old.c      2009-02-28 17:56:12.000000000 +0100
+--- tftp_def.c  2009-02-28 17:57:02.000000000 +0100
+***************
+*** 141,146 ****
+--- 141,147 ----
+   */
+  inline char *Strncpy(char *to, const char *from, size_t size)
+  {
++      if (size <= 0) { *to = '\000'; return to; }
+       to[size-1] = '\000';
+       return strncpy(to, from, size - 1);
+  }

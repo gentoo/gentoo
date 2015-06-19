@@ -1,0 +1,11 @@
+--- a/lib/arch/generic/functions	2001-10-26 04:36:09.000000000 -0500
++++ b/lib/arch/generic/functions	2003-07-30 18:23:57.000000000 -0500
+@@ -831,7 +831,7 @@
+ 
+   if (!$found || !-e $SHELLS_FILE) {
+     open(F,">>".$SHELLS_FILE);
+-    print F "$INSTALL_DIR/jail\n";
++    print F "$INSTALL_DIR/bin/jail\n";
+     close(F);
+   } 
+ }

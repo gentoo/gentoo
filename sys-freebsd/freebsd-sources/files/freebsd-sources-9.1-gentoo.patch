@@ -1,0 +1,21 @@
+diff -Nur sys.orig/conf/kern.mk sys/conf/kern.mk
+--- sys.orig/conf/kern.mk	2012-07-12 13:26:37.000000000 +0900
++++ sys/conf/kern.mk	2012-07-16 02:32:19.000000000 +0900
+@@ -5,7 +5,7 @@
+ #
+ CWARNFLAGS?=	-Wall -Wredundant-decls -Wnested-externs -Wstrict-prototypes \
+ 		-Wmissing-prototypes -Wpointer-arith -Winline -Wcast-qual \
+-		-Wundef -Wno-pointer-sign -fformat-extensions \
++		-Wundef -Wno-pointer-sign \
+ 		-Wmissing-include-dirs -fdiagnostics-show-option \
+ 		${CWARNEXTRA}
+ #
+@@ -52,7 +52,7 @@
+ #
+ .if ${MACHINE_CPUARCH} == "i386"
+ .if ${MK_CLANG_IS_CC} == "no" && ${CC:T:Mclang} != "clang"
+-CFLAGS+=	-mno-align-long-strings -mpreferred-stack-boundary=2
++CFLAGS+=	-mpreferred-stack-boundary=2
+ .else
+ CFLAGS+=	-mno-aes -mno-avx
+ .endif

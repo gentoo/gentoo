@@ -1,0 +1,58 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/audit/files/auditd-init.d-1.7.17,v 1.1 2009/12/19 22:08:44 robbat2 Exp $
+
+start_auditd() {
+	ebegin "Starting auditd"
+	start-stop-daemon \
+		--start --quiet --pidfile /var/run/auditd.pid \
+		--exec /sbin/auditd -- ${EXTRAOPTIONS}
+	local ret=$?
+	eend $ret
+	return $ret
+}
+
+stop_auditd() {	
+	ebegin "Stopping auditd"
+	start-stop-daemon \
+		--stop --quiet --pidfile /var/run/auditd.pid
+	local ret=$?
+	eend $ret
+	return $ret
+}
+
+
+loadfile() {
+	local rules="$1"
+	if [ -n "${rules}" -a -f "${rules}" ]; then
+		einfo "Loading audit rules from ${rules}"
+		/sbin/auditctl -R "${rules}" 1>/dev/null
+		return $?
+	else
+		return 0
+	fi
+}
+
+start() {
+	start_auditd
+	local ret=$?
+	if [ $ret -eq 0 -a "${RC_CMD}" != "restart" ]; then
+		loadfile "${RULEFILE_STARTUP}"
+	fi
+	return $ret
+}
+
+stop() {
+	[ "${RC_CMD}" != "restart" ] && loadfile "${RULEFILE_STOP_PRE}"
+	stop_auditd
+	local ret=$?
+	[ "${RC_CMD}" != "restart" ] && loadfile "${RULEFILE_STOP_POST}"
+	return $ret
+}
+
+# This is a special case, we do not want to touch the rules at all
+restart() {
+	stop_auditd
+	start_auditd
+}

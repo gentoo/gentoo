@@ -1,0 +1,124 @@
+# ChangeLog for app-backup/boxbackup
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/boxbackup/ChangeLog,v 1.28 2015/04/19 22:49:38 mrueg Exp $
+
+  19 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -boxbackup-0.10.ebuild,
+  -files/boxbackup-0.10-gcc41-noll.patch, -files/boxbackup-0.10-gcc43.patch,
+  -files/boxbackup-0.10-gentoo.patch, -files/boxbackup-0.10-malloc.patch:
+  Remove old.
+
+  24 May 2012; Mike Frysinger <vapier@gentoo.org> boxbackup-0.10.ebuild,
+  boxbackup-0.11.1.ebuild:
+  Inherit user for enewuser/etc...
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> boxbackup-0.11.1.ebuild:
+  x86 stable wrt bug #399913
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> boxbackup-0.11.1.ebuild:
+  Stable for amd64, wrt bug #399913
+
+*boxbackup-0.11.1 (30 Aug 2011)
+
+  30 Aug 2011; Patrick Lauer <patrick@gentoo.org> -boxbackup-0.11_rc8.ebuild,
+  +boxbackup-0.11.1.ebuild:
+  Bump and install fix for #299411
+
+  30 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  boxbackup-0.11_rc8.ebuild:
+  Forgot one -j1 that is needed.
+
+  07 Jun 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  boxbackup-0.11_rc8.ebuild:
+  Also use -j1 for install, again bug #299411.
+
+*boxbackup-0.11_rc8 (07 May 2010)
+
+  07 May 2010; Jeroen Roovers <jer@gentoo.org> +boxbackup-0.11_rc8.ebuild,
+  +files/boxbackup-0.11_rc8-testbbackupd.patch:
+  Version bump (bug #205558).
+
+  03 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  boxbackup-0.10.ebuild:
+  Use -j1 for build (bug #299411).
+
+  23 Dec 2009; Fabian Groffen <grobian@gentoo.org> boxbackup-0.10.ebuild,
+  +files/boxbackup-0.10-malloc.patch:
+  Added patch to fix compilation on Darwin (and FreeBSD) and marked
+  ~x86-macos and ~ppc-macos, bug #292187
+
+  12 Oct 2009; Mark Loeser <halcy0n@gentoo.org> boxbackup-0.10.ebuild:
+  QA fixes; unquoted variables
+
+  05 Jan 2009; Patrick Lauer <patrick@gentoo.org> boxbackup-0.10.ebuild:
+  Homepage fix
+
+  18 Dec 2008; Peter Alfredsen <loki_val@gentoo.org>
+  -files/boxbackup-0.09-darwin.patch, -files/boxbackup-0.09-gentoo.patch,
+  +files/boxbackup-0.10-gcc43.patch, -boxbackup-0.09-r1.ebuild,
+  boxbackup-0.10.ebuild:
+  Fix 226867, gcc43 compilation. Punt old. Thanks to mikko.tiihonen@iki.fi
+  for gcc fix.
+
+  23 Jul 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  04 Jun 2008; Diego Pettenò <flameeyes@gentoo.org> boxbackup-0.10.ebuild:
+  Use eautoreconf, not the bootstrap script.
+
+  25 Jan 2008; Fabian Groffen <grobian@gentoo.org> metadata.xml,
+  boxbackup-0.09-r1.ebuild, boxbackup-0.10.ebuild:
+  Dropped ppc-macos keyword, see you in prefix, drop maintainership as I
+  don't use boxbackup any more.
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org> boxbackup-0.09-r1.ebuild,
+  boxbackup-0.10.ebuild:
+  Fix *initd and *envd calls, bug #173884.
+
+  04 Feb 2007; Simon Stelling <blubb@gentoo.org> boxbackup-0.10.ebuild:
+  stable on amd64; bug 156901
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> boxbackup-0.09-r1.ebuild,
+  boxbackup-0.10.ebuild:
+  Replacing einfo with elog
+
+  04 Dec 2006; Christian Faulhammer <opfer@gentoo.org>
+  boxbackup-0.10.ebuild:
+  stable x86, bug #156901
+
+  22 Oct 2006; Piotr Jaroszyński <peper@gentoo.org> boxbackup-0.10.ebuild:
+  Add ~amd64 keyword. Bug #122420.
+
+  19 Jun 2006; Fabian Groffen <grobian@gentoo.org>
+  +files/boxbackup-0.10-gcc41-noll.patch, boxbackup-0.10.ebuild:
+  Adding a patch for compiling with GCC4.1, many thanks to Stuart Hickinbottom
+  <stuart@hickinbottom.demon.co.uk> (bug #136300)
+
+*boxbackup-0.10 (05 Mar 2006)
+
+  05 Mar 2006; Fabian Groffen <grobian@gentoo.org>
+  +files/boxbackup-0.10-gentoo.patch, +boxbackup-0.10.ebuild:
+  Upstream version bump.  Thanks to Rajiv Aaron Manglani (rajiv@g.o) for
+  reminding.  (bug #123865)
+
+  13 Dec 2005; Fabian Groffen <grobian@gentoo.org> boxbackup-0.09-r1.ebuild:
+  Marked x86 after some period of flawless functioning.
+
+*boxbackup-0.09-r1 (02 Nov 2005)
+
+  02 Nov 2005; Fabian Groffen <grobian@gentoo.org>
+  +boxbackup-0.09-r1.ebuild:
+  Added new version which uses client-only USE-flag to only install the client
+  (bug #109246)
+
+  22 Sep 2005; Fabian Groffen <grobian@gentoo.org> boxbackup-0.09.ebuild:
+  Fix for bug #106872 : tell enewuser which group the new user should belong to
+
+*boxbackup-0.09 (17 Sep 2005)
+
+  17 Sep 2005; Fabian Groffen <grobian@gentoo.org>
+  +files/boxbackup-0.09-darwin.patch, +files/boxbackup-0.09-gentoo.patch,
+  +files/bbackupd.rc, +files/bbstored.rc, +metadata.xml,
+  +boxbackup-0.09.ebuild:
+  Initial import of boxbackup ebuild, largerly based on the work done by Mark
+  Spanbroek <mark at spanbroek (dot] net>.  The Gentoo-patches were made by
+  Anatoly Shipitsin <sauron [at) infocentr dot ru>.

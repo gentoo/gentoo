@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-db/libdbi dev-libs/iniparser sys-libs/talloc sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Data receiver of the SMB Traffic Analyzer project
+EAPI=4
+HOMEPAGE=http://github.com/hhetter/smbtad
+IUSE=debug
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-db/libdbi dev-libs/iniparser sys-libs/talloc || ( <net-fs/samba-3.6[smbtav2] >=net-fs/samba-3.6 )
+SLOT=0
+SRC_URI=http://morelias.org/smbta/smbtad-1.2.6.tar.bz2
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=696d518226a72e5132451c4b2f349f6a

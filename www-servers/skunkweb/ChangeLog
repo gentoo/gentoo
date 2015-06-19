@@ -1,0 +1,145 @@
+# ChangeLog for www-servers/skunkweb
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-servers/skunkweb/ChangeLog,v 1.24 2014/01/08 06:09:02 vapier Exp $
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> skunkweb-3.4.4.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  22 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  skunkweb-3.4.4.ebuild:
+  Use Python 2.
+
+  14 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Christian Andreetta (satya, #48841) from metadata.xml.
+
+*skunkweb-3.4.4 (06 Feb 2008)
+
+  06 Feb 2008; Benedikt Böhm <hollow@gentoo.org> metadata.xml,
+  -skunkweb-3.4.0.ebuild, -skunkweb-3.4.0-r1.ebuild, -skunkweb-3.4.1.ebuild,
+  skunkweb-3.4.3.ebuild, +skunkweb-3.4.4.ebuild:
+  version bump; cleanup old version (#208706); cleanup ebuild
+
+  31 Jan 2008; Benedikt Böhm <hollow@gentoo.org> skunkweb-3.4.0-r1.ebuild,
+  skunkweb-3.4.1.ebuild, skunkweb-3.4.3.ebuild:
+  fix depend.apache usage wrt #208033
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org> skunkweb-3.4.0.ebuild:
+  Fixing the DEPEND/RDEPEND for the move of net-www/apache to
+  www-servers/apache (#78622).
+
+  12 May 2007; Luca Longinotti <chtekk@gentoo.org> skunkweb-3.4.0.ebuild,
+  skunkweb-3.4.0-r1.ebuild, skunkweb-3.4.1.ebuild, skunkweb-3.4.3.ebuild:
+  Apache 1.X masking (fix ebuilds to not require apache-1*).
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org> skunkweb-3.4.0-r1.ebuild,
+  skunkweb-3.4.1.ebuild, skunkweb-3.4.3.ebuild:
+  Fix *initd, *confd and *envd calls (#173884, #174266)
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  16 Oct 2006; <malc@gentoo.org> skunkweb-3.4.3.ebuild:
+  ~amd64 with multilib-strict patch, bug #117274, thanks to Christoph Mende
+  (angelos)
+
+  04 Jun 2006; Michael Stewart <vericgar@gentoo.org>
+  skunkweb-3.4.0-r1.ebuild, skunkweb-3.4.1.ebuild, skunkweb-3.4.3.ebuild:
+  Address dependency issues caused by depend.apache. Refer to bug 107127.
+
+*skunkweb-3.4.3 (23 May 2006)
+
+  23 May 2006; Christian Andreetta <satya@gentoo.org>
+  +skunkweb-3.4.3.ebuild:
+  version bump (bug #132829)
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> files/digest-skunkweb-3.4.0,
+  files/digest-skunkweb-3.4.0-r1, Manifest:
+  Fixing SHA256 digest, pass four
+
+*skunkweb-3.4.1 (14 Mar 2006)
+
+  14 Mar 2006; Christian Andreetta <satya@gentoo.org>
+  -skunkweb-3.4_beta5.ebuild, -skunkweb-3.4_beta5-r1.ebuild,
+  +skunkweb-3.4.1.ebuild:
+  Old ebuild cleanup. 3.4.1 version bump (at the moment, the "mvc" service
+  requires a dependency not in portage tree: later :-) )
+
+  13 Feb 2006; Christian Andreetta <satya@gentoo.org>
+  skunkweb-3.4_beta5.ebuild, skunkweb-3.4_beta5-r1.ebuild,
+  skunkweb-3.4.0.ebuild:
+  changed "apache1" use flag to "apache": portage use flags cleanup by halcy0n
+
+  23 Aug 2005; Christian Andreetta <satya@gentoo.org>
+  skunkweb-3.4_beta5.ebuild, skunkweb-3.4_beta5-r1.ebuild,
+  skunkweb-3.4.0.ebuild, skunkweb-3.4.0-r1.ebuild:
+  enewuser Darwin and BSD fix (bug #103421)
+
+  13 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  skunkweb-3.4.0-r1.ebuild:
+  Add app-admin/sudo dependency.
+
+*skunkweb-3.4.0-r1 (12 Mar 2005)
+
+  12 Mar 2005; Christian Andreetta <satya@gentoo.org>
+  +files/100_mod_skunkweb.conf, +skunkweb-3.4.0-r1.ebuild:
+  Uses new apache-module eclass: bug #79434 (thanks to Elfyn McBratney)
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  19 Nov 2004; Christian Andreetta <satya@gentoo.org>
+  +files/skunkweb-cron-cache_cleaner, skunkweb-3.4.0.ebuild:
+  cron script: cache cleaner
+
+  07 Nov 2004; Christian Andreetta <satya@gentoo.org> +files/skunkweb-init,
+  skunkweb-3.4.0.ebuild:
+  initscript minor change. docs position in cvs note in ebuild
+
+*skunkweb-3.4_beta5-r1 (06 Nov 2004)
+
+  06 Nov 2004; Christian Andreetta <satya@gentoo.org> +metadata.xml,
+  +skunkweb-3.4.0.ebuild, +skunkweb-3.4_beta5-r1.ebuild,
+  +skunkweb-3.4_beta5.ebuild:
+  minor initscript change. Package moved from dev-python to www-servers
+
+*skunkweb-3.4.0 (08 Oct 2004)
+
+  08 Oct 2004; Rob Cakebread <pythonhead@gentoo.org> files/skunkweb-init,
+  +skunkweb-3.4.0.ebuild:
+  Version bump. bug# 63686 Thanks Jacob Smullyan <smulloni@smullyan.org>
+
+  28 Sep 2004; Sven Wegener <swegener@gentoo.org> files/skunkweb-init:
+  Gentoo Technologies, Inc. -> Gentoo Foundation
+
+*skunkweb-3.4_beta5-r1 (06 Sep 2004)
+
+  06 Sep 2004; Christian Andreetta <satya@gentoo.org>
+  +skunkweb-3.4_beta5-r1.ebuild:
+  some install paths fixes (apache2, logs, /var/lib)
+
+  03 Sep 2004; Christian Andreetta <satya@gentoo.org> metadata.xml,
+  +files/skunkweb-init, skunkweb-3.4_beta5.ebuild:
+  initscript added
+
+  28 Jul 2004; Alastair Tse <liquidx@gentoo.org> skunkweb-3.4_beta5.ebuild:
+  fix enewuser enewgroup issues (#58526)
+
+  07 May 2004; Bryan Østergaard <kloeri@gentoo.org> skunkweb-3.4_beta5.ebuild:
+  Fix IUSE.
+
+  10 Apr 2004; Bryan Østergaard <kloeri@gentoo.org> skunkweb-3.4_beta5.ebuild:
+  Stable on x86.
+
+  25 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  skunkweb-3.4_beta5.ebuild:
+  don't use deprecated ? : use syntax
+
+*skunkweb-3.4_beta5 (24 Oct 2003)
+
+  24 Oct 2003; Rob Cakebread <pythonhead@gentoo.org> metadata.xml,
+  skunkweb-3.4_beta5.ebuild:
+  Initial commit. Thank you Jacob Smullyan <smulloni@smullyan.org> (Bug #26450)

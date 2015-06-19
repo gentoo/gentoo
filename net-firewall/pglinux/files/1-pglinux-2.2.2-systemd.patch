@@ -1,0 +1,144 @@
+commit dad29189eabd8aaee79fefd95bd9f8ff216d3bec
+Author: jre <jre-phoenix@users.sourceforge.net>
+Date:   Sat May 18 10:13:49 2013 +0200
+
+    integrated the systemd service file
+    
+    thanks again ARCH Linux guys, especially Pierre Buard
+
+ 2.) Uninstall
+diff --git a/pgl/Makefile.am b/pgl/Makefile.am
+index b738fdd..a81c3ee 100644
+--- a/pgl/Makefile.am
++++ b/pgl/Makefile.am
+@@ -4,6 +4,10 @@ MASTER_BLOCKLIST_DIR = @MASTER_BLOCKLIST_DIR@
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ 
++# Ensure that make distcheck continues to work
++DISTCHECK_CONFIGURE_FLAGS = \
++	--with-systemdsystemunitdir=$$dc_install_base/$(systemdsystemunitdir)
++
+ SUBDIRS = \
+ 	docs \
+ 	pglcmd \
+diff --git a/pgl/configure.ac b/pgl/configure.ac
+index 213baa5..04e43cb 100644
+--- a/pgl/configure.ac
++++ b/pgl/configure.ac
+@@ -132,6 +132,17 @@ AC_ARG_WITH([gentoo-init],
+ 
+ AM_CONDITIONAL(GENTOOINIT, [test "x$gentoo_init" = "xyes"])
+ 
++# use systemd service file (yes, if user specifies a path)
++# http://www.freedesktop.org/software/systemd/man/daemon.html
++PKG_PROG_PKG_CONFIG
++AC_ARG_WITH([systemdsystemunitdir],
++        AS_HELP_STRING([--with-systemdsystemunitdir=DIR], [Directory for systemd service files]),
++        [], [with_systemdsystemunitdir=$($PKG_CONFIG --variable=systemdsystemunitdir systemd)])
++if test "x$with_systemdsystemunitdir" != xno; then
++        AC_SUBST([systemdsystemunitdir], [$with_systemdsystemunitdir])
++fi
++AM_CONDITIONAL(HAVE_SYSTEMD, [test -n "$with_systemdsystemunitdir" -a "x$with_systemdsystemunitdir" != xno ])
++
+ # let user specify iconsdir
+ AC_ARG_WITH([iconsdir],
+     [AS_HELP_STRING([--with-iconsdir=DIR],
+@@ -311,6 +322,11 @@ else
+ echo QT-gui....................................... : no
+ fi
+ 
++if test -n "$with_systemdsystemunitdir" -a "x$with_systemdsystemunitdir" != xno; then
++echo systemdsystemunitdir......................... : $systemdsystemunitdir
++else
++echo systemd...................................... : no
++fi
+ echo
+ echo .............................................
+ echo "Developer debug:"
+diff --git a/pgl/pglcmd/Makefile.am b/pgl/pglcmd/Makefile.am
+index 896b6bc..132a475 100644
+--- a/pgl/pglcmd/Makefile.am
++++ b/pgl/pglcmd/Makefile.am
+@@ -48,6 +48,9 @@ pgllib_DATA = \
+ 	pglcmd.lib \
+ 	pglcmd.main
+ 
++systemdsystemunit_DATA = \
++	init/pgl.service
++
+ # Don't update PATH here anymore, because on user's make it doesn't contain
+ # [/usr]/sbin
+ pglcmd.defaults:
+@@ -103,6 +106,15 @@ init/pgl:
+ 	chmod +x init/pgl
+ endif
+ 
++init/pgl.service:
++	sed \
++	-e 's|@data_root_dir@|$(datarootdir)|g' \
++	-e 's|@CONF_DIR@|$(sysconfdir)|g' \
++	-e 's|@LIB_DIR@|$(libdir)|g' \
++	-e 's|@BIN_DIR@|$(bindir)|g' \
++	-e 's|@PID_DIR@|$(PIDDIR)|g' \
++	< init/pgl.service.in > init/pgl.service
++
+ networkmanager/20pglcmd:
+ 	$(do_subst) < networkmanager/20pglcmd.in > networkmanager/20pglcmd
+ 	chmod +x networkmanager/20pglcmd
+@@ -119,6 +131,7 @@ EXTRA_DIST = \
+ 	cron.daily/pglcmd.in \
+ 	init/pgl.in \
+ 	init/pgl.gentoo.in \
++	init/pgl.service.in \
+ 	networkmanager/20pglcmd.in \
+ 	pglcmd.lib
+ 
+@@ -131,4 +144,5 @@ CLEANFILES = \
+ 	pglcmd.wd \
+ 	cron.daily/pglcmd \
+ 	init/pgl \
++	init/pgl.service \
+ 	networkmanager/20pglcmd
+diff --git a/pgl/pglcmd/init/pgl.service.in b/pgl/pglcmd/init/pgl.service.in
+new file mode 100644
+index 0000000..55779bd
+--- /dev/null
++++ b/pgl/pglcmd/init/pgl.service.in
+@@ -0,0 +1,15 @@
++[Unit]
++Description=PeerGuardian Linux - an IP Blocker
++Documentation=man:pgld(1) file://@data_root_dir@/doc/pgl/README.blocklists
++After=network.target
++ConditionPathExists=|@CONF_DIR@/pgl/blocklists.list
++ConditionDirectoryNotEmpty=|@LIB_DIR@/pgl
++
++[Service]
++BusName=org.netfilter.pgl
++ExecStart=@BIN_DIR@/pglcmd start
++ExecStop=@BIN_DIR@/pglcmd stop
++PIDFile=@PID_DIR@/pgld.pid
++
++[Install]
++WantedBy=multi-user.target
+diff --git a/pgl/pglcmd/init/service b/pgl/pglcmd/init/service
+deleted file mode 100644
+index 3f2f747..0000000
+--- a/pgl/pglcmd/init/service
++++ /dev/null
+@@ -1,15 +0,0 @@
+-[Unit]
+-Description=PeerGuardian Linux - an IP Blocker
+-Documentation=man:pgld(1) file:///usr/share/doc/pgl/README.blocklists
+-After=network.target
+-ConditionPathExists=|/etc/pgl/blocklists.list
+-ConditionDirectoryNotEmpty=|/usr/lib/pgl
+-
+-[Service]
+-BusName=org.netfilter.pgl
+-ExecStart=/usr/bin/pglcmd start
+-ExecStop=/usr/bin/pglcmd stop
+-PIDFile=/run/pgld.pid
+-
+-[Install]
+-WantedBy=multi-user.target

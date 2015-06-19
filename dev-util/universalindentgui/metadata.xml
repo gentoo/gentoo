@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>qt</herd>
+	<maintainer>
+		<email>wired@gentoo.org</email>
+		<name>Alex Alexander</name>
+	</maintainer>
+	<use>
+		<flag name="html">Add support for HTML files</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">universalindent</remote-id>
+	</upstream>
+</pkgmetadata>

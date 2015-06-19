@@ -1,0 +1,35 @@
+# ChangeLog for mail-filter/ask
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/ask/ChangeLog,v 1.9 2011/11/20 12:44:11 eras Exp $
+
+*ask-2.5.3 (20 Nov 2011)
+
+  20 Nov 2011; Eray Aslan <eras@gentoo.org> +ask-2.5.3.ebuild:
+  version bump - bug #231680. Thanks to Greisberger Christophe
+
+  23 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  18 Mar 2007; Marius Mauch <genone@gentoo.org> ask-2.4.1.ebuild:
+  Replacing einfo with elog
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> ask-2.4.1.ebuild:
+  Stable on ppc.
+
+  25 Sep 2004; Andrej Kacian <ticho@gentoo.org> ask-2.4.1.ebuild:
+  Stable on x86.
+
+  28 Aug 2004; David Holm <dholm@gentoo.org> ask-2.4.1.ebuild:
+  Added to ~ppc.
+
+  08 Aug 2004; <tomk@gentoo.org> ask-2.4.1.ebuild:
+  Removed redundant functions
+
+*ask-2.4.1 (07 Aug 2004)
+
+  07 Aug 2004; Tom Knight <tomk@gentoo.org> +ask-2.4.1.ebuild:
+  Thanks to Saleem A. for submitting this ebuild in bug #25952
+

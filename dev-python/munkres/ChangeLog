@@ -1,0 +1,40 @@
+# ChangeLog for dev-python/munkres
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/munkres/ChangeLog,v 1.10 2015/06/03 20:24:01 jlec Exp $
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> munkres-1.0.5.4-r2.ebuild:
+  Drop old Python implementations
+
+  24 May 2014; Sven Vermeulen <swift@gentoo.org> metadata.xml:
+  Add Joshua Downer as maintainer for the package
+
+  22 Mar 2014; Michael Palimaka <kensington@gentoo.org>
+  -munkres-1.0.5.4-r1.ebuild:
+  Remove old.
+
+  20 Oct 2013; Stanislav Ochotnicky <sochotnicky@gentoo.org> metadata.xml:
+  Move to maintainer-needed
+
+*munkres-1.0.5.4-r2 (08 Jun 2013)
+
+  08 Jun 2013; Stanislav Ochotnicky <sochotnicky@gentoo.org>
+  +munkres-1.0.5.4-r2.ebuild:
+  Update to EAPI5 add doc USE flag for API documentation
+
+*munkres-1.0.5.4-r1 (30 May 2012)
+
+  30 May 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  +munkres-1.0.5.4-r1.ebuild, -munkres-1.0.5.4.ebuild:
+  Enable tests, install documentation, drop empty (R)DEPEND
+
+  28 May 2012; Jeff Horelick <jdhore@gentoo.org> munkres-1.0.5.4.ebuild:
+  Keyword ~x86.
+
+*munkres-1.0.5.4 (27 May 2012)
+
+  27 May 2012; Stanislav Ochotnicky <sochotnicky@gentoo.org>
+  +munkres-1.0.5.4.ebuild, +metadata.xml:
+  New munkres python module ebuild

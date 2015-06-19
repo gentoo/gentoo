@@ -1,0 +1,672 @@
+# ChangeLog for sys-process/vixie-cron
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/vixie-cron/ChangeLog,v 1.82 2015/04/24 20:29:33 floppym Exp $
+
+  24 Apr 2015; Mike Gilbert <floppym@gentoo.org> files/vixie-cron.service:
+  Set IgnoreSIGPIPE=false, bug 482758.
+
+  01 Feb 2014; Mike Frysinger <vapier@gentoo.org> vixie-cron-4.1-r14.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  07 Nov 2013; Lars Wendler <polynomial-c@gentoo.org>
+  -vixie-cron-4.1-r10.ebuild, -vixie-cron-4.1-r12.ebuild,
+  -vixie-cron-4.1-r13.ebuild, vixie-cron-4.1-r14.ebuild:
+  Really mark sparc stable this time (bug #308055). Removed vulnerable
+  versions.
+
+  25 Oct 2013; Agostino Sarubbo <ago@gentoo.org> vixie-cron-4.1-r14.ebuild:
+  arm stable wrt bug #308055
+
+  24 Oct 2013; Agostino Sarubbo <ago@gentoo.org> vixie-cron-4.1-r14.ebuild:
+  Stable for ia64, wrt bug #308055
+
+  24 Oct 2013; Agostino Sarubbo <ago@gentoo.org> vixie-cron-4.1-r14.ebuild:
+  Stable for alpha, wrt bug #308055
+
+  23 Oct 2013; Agostino Sarubbo <ago@gentoo.org> vixie-cron-4.1-r14.ebuild:
+  Stable for ppc64, wrt bug #308055
+
+  22 Oct 2013; Agostino Sarubbo <ago@gentoo.org> vixie-cron-4.1-r14.ebuild:
+  Stable for ppc, wrt bug #308055
+
+  21 Oct 2013; Jeroen Roovers <jer@gentoo.org> vixie-cron-4.1-r14.ebuild:
+  Stable for HPPA (bug #308055).
+
+  20 Oct 2013; Agostino Sarubbo <ago@gentoo.org> vixie-cron-4.1-r14.ebuild:
+  Stable for x86, wrt bug #308055
+
+  20 Oct 2013; Agostino Sarubbo <ago@gentoo.org> vixie-cron-4.1-r14.ebuild:
+  Stable for amd64, wrt bug #308055
+
+*vixie-cron-4.1-r14 (19 Oct 2013)
+
+  19 Oct 2013; Chris Reffett <creffett@gentoo.org>
+  +files/vixie-cron-4.1-crontabrace.patch, +vixie-cron-4.1-r14.ebuild:
+  Security bump. Add backported patch wrt bug 308055.
+
+  11 Oct 2013; Sergey Popov <pinkbyte@gentoo.org> vixie-cron-4.1-r13.ebuild:
+  Stable on x86, wrt bug #480122
+
+  10 Oct 2013; Tony Vroon <chainsaw@gentoo.org> vixie-cron-4.1-r13.ebuild:
+  Marked stable on AMD64 based on arch tester report by MJJoker in bug #480122.
+
+  08 Oct 2013; Markus Meier <maekke@gentoo.org> vixie-cron-4.1-r13.ebuild:
+  arm stable, bug #480122
+
+  08 Oct 2013; Jeroen Roovers <jer@gentoo.org> vixie-cron-4.1-r13.ebuild:
+  Stable for HPPA (bug #480122).
+
+*vixie-cron-4.1-r13 (13 Jul 2013)
+
+  13 Jul 2013; Pacho Ramos <pacho@gentoo.org> +files/vixie-cron.service,
+  +vixie-cron-4.1-r13.ebuild:
+  Install unit file (#465982)
+
+  24 May 2012; Mike Frysinger <vapier@gentoo.org> vixie-cron-4.1-r10.ebuild,
+  vixie-cron-4.1-r12.ebuild:
+  Add missing eclass inherits, and quote path vars.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> vixie-cron-4.1-r12.ebuild:
+  keyword ~amd64-fbsd
+
+*vixie-cron-4.1-r12 (31 Dec 2011)
+
+  31 Dec 2011; Christian Ruppert <idl0r@gentoo.org> -vixie-cron-4.1-r11.ebuild,
+  +vixie-cron-4.1-r12.ebuild, +files/vixie-cron.rc7:
+  Revbump, improves the init script, bug 368189.
+
+  20 Sep 2011; Christian Ruppert <idl0r@gentoo.org> files/crontab-3.0.1-r4,
+  files/crontab:
+  Whitespace
+
+  04 Sep 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  vixie-cron-4.1-r11.ebuild:
+  x86 stable wrt bug #369845
+
+  23 Aug 2011; Markos Chandras <hwoarang@gentoo.org> vixie-cron-4.1-r11.ebuild:
+  Stable on amd64 wrt bug #369845
+
+  17 Oct 2010; Mart Raudsepp <leio@gentoo.org> vixie-cron-4.1-r10.ebuild:
+  Drop to ~mips
+
+  14 May 2009; Thilo Bangert <bangert@gentoo.org> vixie-cron-4.1-r9.ebuild,
+  vixie-cron-4.1-r10.ebuild, vixie-cron-4.1-r11.ebuild:
+  fix LICENSE - bug #263598
+
+  12 May 2009; Thilo Bangert <bangert@gentoo.org> files/crontab-3.0.1-r4:
+  reduce chance of race condition - bug #98189
+
+*vixie-cron-4.1-r11 (26 Sep 2008)
+
+  26 Sep 2008; Chris PeBenito <pebenito@gentoo.org>
+  +files/vixie-cron-4.1-selinux-1.diff, +vixie-cron-4.1-r11.ebuild:
+  Update SELinux patch for seuser support.
+
+  21 Sep 2008; Mike Frysinger <vapier@gentoo.org> vixie-cron-4.1-r10.ebuild:
+  Drop bindnow-flags usage #212004 by Paweł Hajdan jr (ph).
+
+  14 Jun 2008; Zac Medico <zmedico@gentoo.org> vixie-cron-4.1-r10.ebuild:
+  Bug #226505 - For compatibility with phase execution order in
+  >=portage-2.1.5, call has_version inside pkg_preinst instead of
+  pkg_postinst.
+
+  24 Apr 2007; Alexander Færøy <eroyf@gentoo.org>
+  vixie-cron-4.1-r10.ebuild:
+  Stable on MIPS.
+
+  13 Apr 2007; Fernando J. Pereda <ferdy@gentoo.org>
+  vixie-cron-4.1-r10.ebuild:
+  Stable on alpha as per security bug #164466
+
+  11 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  vixie-cron-4.1-r10.ebuild:
+  ppc stable, bug #164466
+
+  10 Apr 2007; Markus Rothe <corsair@gentoo.org> vixie-cron-4.1-r10.ebuild:
+  Stable on ppc64; bug #164466
+
+  10 Apr 2007; Peter Weller <welp@gentoo.org> vixie-cron-4.1-r10.ebuild:
+  Stable on amd64 wrt bug 164466
+
+  10 Apr 2007; René Nussbaumer <killerfox@gentoo.org>
+  vixie-cron-4.1-r10.ebuild:
+  Stable on hppa. See bug #164466.
+
+  10 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  vixie-cron-4.1-r10.ebuild:
+  Stable on sparc wrt security #164466
+
+  10 Apr 2007; Raúl Porcel <armin76@gentoo.org> vixie-cron-4.1-r10.ebuild:
+  ia64 + x86 stable wrt security bug 164466
+
+  09 Apr 2007; Raphael Marichez <falco@gentoo.org>
+  vixie-cron-4.1-r10.ebuild:
+  Fixes bash iteration in chown, thanks to phreak
+
+*vixie-cron-4.1-r10 (08 Apr 2007)
+
+  08 Apr 2007; Raphael Marichez <falco@gentoo.org>
+  +files/vixie-cron-4.1-hardlink.patch, +vixie-cron-4.1-r10.ebuild:
+  Revision bump, fixes bug 164466
+
+  26 Mar 2007; Alec Warner <antarus@gentoo.org> vixie-cron-4.1-r9.ebuild:
+  Remove dependency on portage: ref bug 162516
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove ka0ttic from metadata.xml due to retirement.
+
+  13 Jan 2007; Steve Dibb <beandog@gentoo.org>
+  -files/vixie-cron-3.0.1-close_stdin.diff,
+  -files/vixie-cron-3.0.1-pam.patch, -files/vixie-cron-3.0.1-selinux.diff,
+  -vixie-cron-3.0.1-r4.ebuild, -vixie-cron-3.0.1-r5.ebuild,
+  -vixie-cron-4.1-r7.ebuild, -vixie-cron-4.1-r8.ebuild:
+  Remove versions affected by GLSAs, bug 140503
+
+  04 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  vixie-cron-4.1-r7.ebuild, vixie-cron-4.1-r8.ebuild,
+  vixie-cron-4.1-r9.ebuild:
+  Get rid of debug.eclass usage. Aaron is missing for a while now so just
+  proceeding.
+
+  05 Nov 2006; Thilo Bangert <bangert@gentoo.org>
+  vixie-cron-3.0.1-r4.ebuild, vixie-cron-3.0.1-r5.ebuild,
+  vixie-cron-4.1-r7.ebuild, vixie-cron-4.1-r8.ebuild,
+  vixie-cron-4.1-r9.ebuild:
+  add CRON_SYSTEM_CRONTAB="yes" - to support more generic eclass
+  see bug #89213
+
+  17 Oct 2006; Roy Marples <uberlord@gentoo.org> vixie-cron-4.1-r9.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  09 Jul 2006; Joshua Kinard <kumba@gentoo.org> vixie-cron-4.1-r9.ebuild:
+  Marked stable on mips.
+
+  18 Jun 2006; Bryan Østergaard <kloeri@gentoo.org>
+  vixie-cron-4.1-r9.ebuild:
+  ia64 stable, bug 134194.
+
+  03 Jun 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  vixie-cron-4.1-r9.ebuild:
+  Stable on hppa. See bug #134194.
+
+  02 Jun 2006; Thomas Cort <tcort@gentoo.org> vixie-cron-4.1-r9.ebuild:
+  Stable on amd64 wrt security Bug #134194.
+
+  02 Jun 2006; Markus Rothe <corsair@gentoo.org> vixie-cron-4.1-r9.ebuild:
+  Stable on ppc64; bug #134194
+
+  01 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  vixie-cron-4.1-r9.ebuild:
+  Stable on sparc wrt security #134194
+
+  01 Jun 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  vixie-cron-4.1-r9.ebuild:
+  ppc stable, bug #134194
+
+  01 Jun 2006; Thomas Cort <tcort@gentoo.org> vixie-cron-4.1-r9.ebuild:
+  Stable on alpha wrt security Bug #134194.
+
+  01 Jun 2006; Alec Warner <antarus@gentoo.org> vixie-cron-4.1-r9.ebuild:
+  Stable on x86 wrt bug # 134194
+
+*vixie-cron-4.1-r9 (01 Jun 2006)
+
+  01 Jun 2006; Stefan Cornelius <dercorny@gentoo.org>
+  +files/vixie-cron-4.1-setuid_check.patch, +vixie-cron-4.1-r9.ebuild:
+  Bumping for security bug #134194, special thanks to Eugene Ilkov
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org>
+  files/digest-vixie-cron-3.0.1-r4, files/digest-vixie-cron-3.0.1-r5,
+  files/digest-vixie-cron-4.1-r7, files/digest-vixie-cron-4.1-r8, Manifest:
+  Fixing SHA256 digest, pass four
+
+  19 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  vixie-cron-4.1-r8.ebuild:
+  Add a cron group if one doesn't exists already.
+
+  07 Apr 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove ciaranm from metadata.xml.
+
+  02 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  vixie-cron-4.1-r8.ebuild:
+  Add ~x86-fbsd keyword.
+
+  28 Jan 2006; Simon Stelling <blubb@gentoo.org>
+  +files/vixie-cron-3.0.1-selinux.diff,
+  -files/vixie-cron-3.0.1-selinux.diff.bz2, vixie-cron-3.0.1-r4.ebuild,
+  vixie-cron-3.0.1-r5.ebuild:
+  no need to bzip smallish patches
+
+  25 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  vixie-cron-4.1-r8.ebuild:
+  Use bindnow-flags function instead of -Wl,-z,now.
+
+  16 Sep 2005; Aron Griffis <agriffis@gentoo.org> vixie-cron-4.1-r8.ebuild:
+  Mark 4.1-r8 stable on alpha
+
+  22 Aug 2005; Luis Medinas <metalgod@gentoo.org> vixie-cron-4.1-r8.ebuild:
+  Marked Stable on AMD64.
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  vixie-cron-4.1-r8.ebuild:
+  Stable on ppc.
+
+  11 Aug 2005; Markus Rothe <corsair@gentoo.org> vixie-cron-4.1-r8.ebuild:
+  Stable on ppc64
+
+  09 Aug 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  vixie-cron-4.1-r8.ebuild:
+  Stable on hppa.
+
+  09 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> -vixie-cron-4.1-r4.ebuild,
+  -vixie-cron-4.1-r6.ebuild, vixie-cron-4.1-r8.ebuild:
+  4.1-r8 stable on x86,mips,sparc.  Tidy old ebuilds.
+
+  28 Jun 2005; Joshua Kinard <kumba@gentoo.org> vixie-cron-4.1-r7.ebuild:
+  Marked stable on mips.
+
+  09 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> files/vixie-cron.rc6:
+  use clock for bug 90259.
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> vixie-cron-4.1-r7.ebuild:
+  Stable on ppc64
+
+  20 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  vixie-cron-4.1-r6.ebuild, vixie-cron-4.1-r7.ebuild,
+  vixie-cron-4.1-r8.ebuild:
+  Inherit pam eclass for newpamd.
+
+*vixie-cron-4.1-r8 (14 May 2005)
+
+  14 May 2005; Aaron Walker <ka0ttic@gentoo.org> +files/pamd.compatible,
+  +vixie-cron-4.1-r8.ebuild:
+  Revision bump; added new pam.d file that's compatible witn openpam. Also
+  updated deps to use virtual/pam. bug 92592.
+
+  14 May 2005; Guy Martin <gmsoft@gentoo.org> vixie-cron-4.1-r7.ebuild:
+  Stable on hppa.
+
+  09 May 2005; Aron Griffis <agriffis@gentoo.org> vixie-cron-4.1-r7.ebuild:
+  stable on ia64
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  vixie-cron-4.1-r7.ebuild:
+  Stable on ppc.
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> vixie-cron-4.1-r7.ebuild:
+  Stable on amd64.
+
+  25 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  vixie-cron-4.1-r7.ebuild:
+  Stable on sparc
+
+  25 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  vixie-cron-4.1-r7.ebuild:
+  Stable on alpha.
+
+  23 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> vixie-cron-4.1-r7.ebuild:
+  Marked stable on x86.
+
+*vixie-cron-4.1-r7 (13 Mar 2005)
+
+  13 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> +vixie-cron-4.1-r7.ebuild:
+  Revision bump; updated list of files ignored in /etc/cron.d
+
+*vixie-cron-3.0.1-r5 (04 Mar 2005)
+
+  04 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +files/cron.pam.d, +files/crontab, +files/crontab-3.0.1-r4,
+  +files/crontab.5.diff, +files/vixie-cron-3.0.1-close_stdin.diff,
+  +files/vixie-cron-3.0.1-pam.patch,
+  +files/vixie-cron-3.0.1-selinux.diff.bz2,
+  +files/vixie-cron-4.1-basename.diff,
+  +files/vixie-cron-4.1-commandline.patch, +files/vixie-cron-4.1-cron.deny,
+  +files/vixie-cron-4.1-pam.patch, +files/vixie-cron-4.1-selinux.diff,
+  +files/vixie-cron.rc6, +vixie-cron-3.0.1-r4.ebuild,
+  +vixie-cron-3.0.1-r5.ebuild, +vixie-cron-4.1-r4.ebuild,
+  +vixie-cron-4.1-r6.ebuild:
+  Moved from sys-apps/vixie-cron to sys-process/vixie-cron.
+
+  04 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  vixie-cron-3.0.1-r4.ebuild, vixie-cron-3.0.1-r5.ebuild,
+  vixie-cron-4.1-r4.ebuild:
+  Move sys-apps/cronbase -> sys-process/cronbase
+
+*vixie-cron-4.1-r6 (23 Feb 2005)
+
+  23 Feb 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/vixie-cron-4.1-basename.diff, -vixie-cron-4.1-r5.ebuild,
+  +vixie-cron-4.1-r6.ebuild:
+  Patch vixie to use basename(argv[0]) instead of argv[0] for bug 82057.
+  Thanks to Colin Kingsley for the patch.
+
+  15 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> vixie-cron-4.1-r5.ebuild:
+  Fix dopamd invocation since the semantics were changed.
+
+  05 Feb 2005; Aaron Walker <ka0ttic@gentoo.org>
+  -vixie-cron-3.0.1-r1.ebuild, -vixie-cron-3.0.1-r3.ebuild,
+  -vixie-cron-4.1-r3.ebuild:
+  Tidy!
+
+  04 Feb 2005; Bryan Østergaard <kloeri@gentoo.org>
+  vixie-cron-4.1-r4.ebuild:
+  Stable on alpha, bug 80271.
+
+  01 Feb 2005; Markus Rothe <corsair@gentoo.org> vixie-cron-4.1-r4.ebuild:
+  Stable on ppc64; bug #80271
+
+  31 Jan 2005; Michael Hanselmann <hansmi@gentoo.org>
+  vixie-cron-4.1-r4.ebuild:
+  Stable on ppc, as ka0ttic requested.
+
+  18 Jan 2005; Joshua Kinard <kumba@gentoo.org> vixie-cron-4.1-r4.ebuild:
+  Marked stable on mips.
+
+  18 Jan 2005; Joshua Kinard <kumba@gentoo.org> vixie-cron-4.1-r4.ebuild:
+  Marked stable on mips.
+
+*vixie-cron-4.1-r5 (15 Jan 2005)
+
+  15 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> +vixie-cron-4.1-r5.ebuild:
+  Revision bump for cron.eclass testing.
+
+  10 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  vixie-cron-3.0.1-r1.ebuild, vixie-cron-3.0.1-r3.ebuild,
+  vixie-cron-3.0.1-r4.ebuild, vixie-cron-3.0.1-r5.ebuild,
+  vixie-cron-4.1-r3.ebuild, vixie-cron-4.1-r4.ebuild:
+  Added in a message with a link to the Cron Guide, bug #77320
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  20 Dec 2004; Dylan Carlson <absinthe@gentoo.org> vixie-cron-4.1-r4.ebuild:
+  Stable on amd64.
+
+  09 Dec 2004; Guy Martin <gmsoft@gentoo.org> vixie-cron-4.1-r4.ebuild:
+  Stable on hppa.
+
+  03 Dec 2004; Aaron Walker <ka0ttic@gentoo.org>
+  files/vixie-cron-4.1-commandline.patch:
+  Updated command-line patch now that its issues have been resolved.
+
+  03 Dec 2004; Aaron Walker <ka0ttic@gentoo.org> vixie-cron-4.1-r4.ebuild:
+  Give USE=debug some respect and append -DDEBUGGING to CFLAGS if enabled.
+
+  02 Dec 2004; Aaron Walker <ka0ttic@gentoo.org>
+  files/vixie-cron-4.1-commandline.patch:
+  Reverted command-line patch until I can figure out why all of a sudden it
+  doesn't work.
+
+  01 Dec 2004; Aaron Walker <ka0ttic@gentoo.org>
+  files/vixie-cron-4.1-commandline.patch:
+  Updated command-line patch for bug 73072. Thanks to Thomas Eschenbacher for
+  the improved patch.
+
+  30 Nov 2004; Aaron Walker <ka0ttic@gentoo.org> vixie-cron-4.1-r4.ebuild:
+  New patch revision; fixes all the uninitialized variable compiler warnings.
+
+  25 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  vixie-cron-4.1-r4.ebuild:
+  Stable on sparc
+
+  24 Nov 2004; Aaron Walker <ka0ttic@gentoo.org> -vixie-cron-4.1-r1.ebuild,
+  -vixie-cron-4.1-r2.ebuild, vixie-cron-4.1-r4.ebuild:
+  Marked r4 stable on x86; tidy up r1 and r2.
+
+  18 Nov 2004; Aaron Walker <ka0ttic@gentoo.org> vixie-cron-4.1-r4.ebuild:
+  Add warning in pkg_postinst if /etc/pam.d/cron is SUID and give user
+  instructions for fixing permissions.
+
+*vixie-cron-4.1-r4 (15 Nov 2004)
+
+  15 Nov 2004; Aaron Walker <ka0ttic@gentoo.org> +vixie-cron-4.1-r4.ebuild:
+  Revision bump; fix /etc/pam.d/cron perms bug #71326
+
+  09 Nov 2004; Bryan Østergaard <kloeri@gentoo.org>
+  vixie-cron-4.1-r3.ebuild:
+  Stable on alpha.
+
+  08 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  vixie-cron-4.1-r3.ebuild:
+  Stable on sparc
+
+  07 Nov 2004; Joshua Kinard <kumba@gentoo.org> vixie-cron-4.1-r3.ebuild:
+  Marked stable on mips.
+
+  07 Nov 2004; Aaron Walker <ka0ttic@gentoo.org> vixie-cron-4.1-r3.ebuild:
+  Stable on x86.
+
+*vixie-cron-4.1-r3 (04 Nov 2004)
+
+  04 Nov 2004; Aaron Walker <ka0ttic@gentoo.org> +vixie-cron-4.1-r3.ebuild:
+  Revision bump (bug #69796); use tc-getCC instead of ${CC}
+
+  31 Oct 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  vixie-cron-4.1-r2.ebuild:
+  No bug reports on this, stable on sparc mips x86
+
+*vixie-cron-4.1-r2 (08 Oct 2004)
+
+  08 Oct 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  +files/vixie-cron-4.1-commandline.patch, +vixie-cron-4.1-r2.ebuild:
+  New revision. Includes a fix for the -q options (thanks to Christophe Saout
+  <christophe at saout.de> in bug #65398), secure ldflags (bug #66348) and
+  updated HOMEPAGE (bug #65898)
+
+  07 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> metadata.xml:
+  Updated metadata info.
+
+  28 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  files/vixie-cron-4.1-selinux.diff:
+  Fix up selinux patch
+
+  25 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> -vixie-cron-4.1.ebuild:
+  Remove 4.1, 4.1-r1 is about to be unmasked
+
+*vixie-cron-4.1-r1 (24 Sep 2004)
+
+  24 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> +vixie-cron-4.1-r1.ebuild:
+  Fix /etc/cron.d/, bug #61961. Thanks to Aaron Walker for doing all the hard
+  work.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  vixie-cron-3.0.1-r4.ebuild, vixie-cron-3.0.1-r5.ebuild:
+  Masked vixie-cron-3.0.1-r5.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  vixie-cron-3.0.1-r4.ebuild:
+  Masked vixie-cron-3.0.1-r4.ebuild stable for ppc
+
+  28 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  +files/vixie-cron-4.1-cron.deny, vixie-cron-4.1.ebuild:
+  Provide a sample cron.deny so that crontab works similarly to older versions
+
+*vixie-cron-4.1 (27 Aug 2004)
+
+  27 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  +files/vixie-cron-4.1-pam.patch, +files/vixie-cron-4.1-selinux.diff.bz2,
+  +vixie-cron-4.1.ebuild:
+  Bump to version 4.1, package.masked for now. I've probably screwed up porting
+  some of the patches forward, and I can't test the selinux patch at all.
+  Feedback to bug #61961.
+
+  27 Aug 2004; Mike Frysinger <vapier@gentoo.org> files/vixie-cron.rc6:
+  Dont need logger, use logger #57787 by Paul Varner.
+
+  17 Aug 2004; Chris PeBenito <pebenito@gentoo.org>
+  files/vixie-cron-3.0.1-selinux.diff.bz2:
+  Update SELinux patch due to collision with PAM patch.
+
+*vixie-cron-3.0.1-r5 (17 Aug 2004)
+
+  17 Aug 2004; Sven Wegener <swegener@gentoo.org> +files/cron.pam.d,
+  -files/vixie-cron-3.0.1-gentoo.patch, +files/vixie-cron-3.0.1-pam.patch,
+  vixie-cron-3.0.1-r1.ebuild, vixie-cron-3.0.1-r3.ebuild,
+  vixie-cron-3.0.1-r4.ebuild, +vixie-cron-3.0.1-r5.ebuild:
+  Revision bump. Added support for the pam USE flag, to allow cronjobs to be
+  restricted by the limits set via /etc/security/limits.conf. Moved large patch
+  from files/ to mirrors.
+
+  14 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  vixie-cron-3.0.1-r1.ebuild, vixie-cron-3.0.1-r3.ebuild,
+  vixie-cron-3.0.1-r4.ebuild:
+  don't assign default to S
+
+  11 Jun 2004; Bryan Østergaard <kloeri@gentoo.org>
+  vixie-cron-3.0.1-r4.ebuild:
+  Stable on alpha.
+
+  15 May 2004; Joshua Kinard <kumba@gentoo.org> vixie-cron-3.0.1-r4.ebuild:
+  Marked stable on mips.
+
+  19 Apr 2004; Jon Portnoy <avenj@gentoo.org> files/crontab.5.diff,
+  vixie-cron-3.0.1-r4.ebuild :
+  Minor manpage update from ciaranm, stolen from FreeBSD.
+
+  19 Apr 2004; Jon Portnoy <avenj@gentoo.org> files/crontab-3.0.1-r4 :
+  Updated to do run-crons every 10 minutes rather than every minute.
+  Bug #46628.
+
+  29 Mar 2004; Jon Portnoy <avenj@gentoo.org>
+  files/crontab, files/crontab-3.0.1-r4, vixie-cron-3.0.1-r4.ebuild :
+  No longer need SIGHUP notice, bug 39749.
+  3.0.1-r4 stable on AMD64.
+
+  29 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  vixie-cron-3.0.1-r4.ebuild:
+  stable on sparc
+
+  26 Mar 2004; Seemant Kulleen <seemant@gentoo.org>
+  vixie-cron-3.0.1-r4.ebuild:
+  bump to stable x86
+
+  14 Mar 2004; Tom Gall <tgall@gentoo.org> vixie-cron-3.0.1-r4.ebuild:
+  stable on ppc64
+
+  28 Jan 2004; Aron Griffis <agriffis@gentoo.org> vixie-cron-3.0.1-r3.ebuild:
+  stable on alpha and ia64
+
+  22 Jan 2004; Martin Holzer <mholzer@gentoo.org> vixie-cron-3.0.1-r1.ebuild,
+  vixie-cron-3.0.1-r3.ebuild:
+  fixing einfo. closes 39022
+
+  28 Dec 2003; Joshua Kinard <kumba@gentoo.org> vixie-cron-3.0.1-r3.ebuild:
+  Move to mips stable (~mips -> mips)
+
+  26 Dec 2003; root <root@gentoo.org> vixie-cron-3.0.1-r4.ebuild:
+  Marked stable on hppa.
+
+  14 Dec 2003; Martin Schlemmer <azarah@gentoo.org> files/crontab,
+  files/crontab-3.0.1-r4:
+  Move comment. Add environment variables, else jobs run with vanilla
+  environment which might break some scripts.
+
+  12 Dec 2003; Chris PeBenito <pebenito@gentoo.org> files/crontab,
+  files/crontab-3.0.1-r4:
+  Changed daily, weekly, and monthly runtimes to FreeBSD times (3:01, 4:15,
+  5:30, respectively) per #3296.
+
+*vixie-cron-3.0.1-r3 (11 Dec 2003)
+
+  11 Dec 2003; Seemant Kulleen <seemant@gentoo.org> metadata.xml,
+  vixie-cron-3.0.1-r1.ebuild, vixie-cron-3.0.1-r3.ebuild,
+  vixie-cron-3.0.1-r4.ebuild, files/crontab, files/crontab-3.0.1-r4,
+  files/vixie-cron-3.0.1-close_stdin.diff,
+  files/vixie-cron-3.0.1-gentoo.patch,
+  files/vixie-cron-3.0.1-selinux.diff.bz2, files/vixie-cron.rc6:
+  vixie-cron is the proper name for the package
+
+  19 Nov 2003; Jason Wever <weeve@gentoo.org> vcron-3.0.1-r3.ebuild:
+  Marked stable on sparc.
+
+  19 Nov 2003; Seemant Kulleen <seemant@gentoo.org> vcron-3.0.1-r4.ebuild:
+  fix RDEPEND syntax on cronbase -- people need to learn repoman
+
+*vixie-cron-3.0.1-r4 (19 Nov 2003)
+
+  19 Nov 2003; Preston A. Elder <prez@gentoo.org> vcron-3.0.1-r4.ebuild,
+  crontab-3.0.1-r4:
+  Changed to allow run-crons to run minutely (requires newer cronbase).
+
+*vcron-3.0.1-r3 (12 Nov 2003)
+
+  12 Nov 2003; Chris PeBenito <pebenito@gentoo.org> vcron-3.0.1-r2.ebuild,
+  vcron-3.0.1-r3.ebuild:
+  Bump to make sure everyone gets the fixed patch.
+
+  12 Nov 2003; Chris PeBenito <pebenito@gentoo.org>
+  files/vcron-3.0.1-close_stdin.diff:
+  Fixed close stdin patch, to close 32911.  Thanks to Mike Kordik
+  for some pointers.
+
+  30 Oct 2003; Chris PeBenito <pebenito@gentoo.org> vcron-3.0.1-r2.ebuild:
+  Mark stable on x86 and ppc.
+
+  28 Oct 2003; Chris PeBenito <pebenito@gentoo.org> vcron-3.0.1-r1.ebuild,
+  vcron-3.0.1-r2.ebuild, files/vcron-3.0.1-selinux.diff.bz2:
+  Switch SELinux patch from old API to new API.
+
+*vcron-3.0.1-r2 (16 Oct 2003)
+
+  16 Oct 2003; Chris PeBenito <pebenito@gentoo.org> vcron-3.0.1-r2.ebuild,
+  files/vcron-3.0.1-close_stdin.diff:
+  Add 1-line patch to close stdin, to close out #26413.
+
+*vixie-cron-3.0.1-r1 (20 Apr 2002)
+
+  07 May 2003; Martin Holzer <mholzer@gentoo.org> vcron-3.0.1-r1.ebuild :
+  Seems like the packages removed from world. 
+  SRC_URI & Homepage updated. Closes #20387.
+
+  21 Apr 2003; Guy Martin <gmsoft@gentoo.org> vcron-3.0.1-r1.ebuild :
+  Added hppa to KEYWORDS.
+
+  13 Apr 2003; Seemant Kulleen <seemant@gentoo.org> Manifest,
+  files/vixie-cron-3.0.1-gentoo.patch:
+  cleaned up patch: closing bug #19229 by Markus Nigbur <pYrania@1337-Designz.de>
+
+  12 Apr 2003; Seemant Kulleen <seemant@gentoo.org> Manifest,
+  vcron-3.0.1-r1.ebuild:
+  slight syntax fix to not inherit eutils
+
+  23 Mar 2003; Joshua Brindle <method@gentoo.org> vcron-3.0.1-r1.ebuild:
+  added selinux support, thanks pebenito
+
+  24 Feb 2003; Nicholas Wourms <dragon@gentoo.org> vcron-3.0.1-r1.ebuild :
+  Marked as stable for mips.
+
+  20 Feb 2003; Zach Welch <zwelch@gentoo.org> vcron-3.0.1-r1.ebuild :
+  Add arm keyword
+
+  19 Feb 2003; Martin Holzer <mholzer@gentoo.org> vcron-3.0.1-r1.ebuild :
+  added keepdir /var/spool/cron/crontabs/
+
+  06 Aug 2002; Daniel Ahlberg <aliz@gentoo.org> vcron-3.0.1-r1.ebuild :
+  Updated homepage tag.
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> vcron-3.0.1-r1.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> vcron-3.0.1-r1.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  20 Apr 2002; Thilo Bangert <bangert@gentoo.org> files/crontab :
+  added own crontab
+  fixed path to suit /var/spool/cron/lastrun
+  added support for /etc/cron.hourly
+  
+  20 Apr 2002; Thilo Bangert <bangert@gentoo.org> vcron-3.0.1.ebuild :
+  added PROVIDE="virtual/cron" && RDEPEND="virtual/cron"
+  removed code duplication
+  install own version of /etc/crontab
+  rdepend on sys-apps/cronbase and virtual/mta
+  
+  20 Apr 2002; Thilo Bangert <bangert@gentoo.org> files/vcron.rc6 :
+  added "provide cron"
+
+  20 April 2002; Martin Schlemmer <azarah@gentoo.org> files/vcron.rc6 :
+  Update to NEED "logger"
+
+*vcron-3.0.1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :

@@ -1,0 +1,21 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/package.use.mask,v 1.13 2012/08/01 10:46:14 grobian Exp $
+
+# Fabian Groffen <grobian@gentoo.org> (30 Oct 2009)
+# X and linux only
+media-video/mplayer xvmc xv dga X xinerama xscreensaver
+media-video/mplayer dvb lirc svga jack joystick matrox
+
+# Jeremy Olexa <darkside@gentoo.org> (12 Feb 2009)
+# Doesn't work with python support, bug 257572
+gnome-extra/libgsf python
+
+# Fabian Groffen <grobian@gentoo.org> (06 Aug 2008)
+# runtime loading is horribly broken (it uses fixed .so.0, but when
+# that's fixed it still doesn't work)
+dev-vcs/subversion dso
+
+# Elias Pipping <pipping@gentoo.org> (27 Aug 2007)
+# elinks does not compile with USE=perl (tested with 0.11.{2,3})
+www-client/elinks perl

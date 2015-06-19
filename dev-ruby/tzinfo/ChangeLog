@@ -1,0 +1,586 @@
+# ChangeLog for dev-ruby/tzinfo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/tzinfo/ChangeLog,v 1.148 2015/04/19 11:25:25 mrueg Exp $
+
+  19 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -tzinfo-0.3.37.ebuild:
+  Remove old.
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> tzinfo-0.3.43.ebuild:
+  Stable for x86, wrt bug #545462
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> tzinfo-0.3.43.ebuild:
+  Stable for ppc64, wrt bug #545462
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> tzinfo-0.3.43.ebuild:
+  Stable for ppc, wrt bug #545462
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> tzinfo-0.3.43.ebuild:
+  Stable for amd64, wrt bug #545462
+
+*tzinfo-0.3.43-r1 (04 Apr 2015)
+
+  04 Apr 2015; Hans de Graaff <graaff@gentoo.org> tzinfo-0.3.43.ebuild,
+  +tzinfo-0.3.43-r1.ebuild:
+  Create stable candidate.
+
+  04 Apr 2015; Hans de Graaff <graaff@gentoo.org> -tzinfo-0.3.38.ebuild:
+  Cleanup.
+
+  18 Mar 2015; Hans de Graaff <graaff@gentoo.org> -tzinfo-0.3.37-r1.ebuild,
+  -tzinfo-1.2.1.ebuild:
+  Cleanup.
+
+*tzinfo-0.3.43 (27 Feb 2015)
+
+  27 Feb 2015; Hans de Graaff <graaff@gentoo.org> +tzinfo-0.3.43.ebuild:
+  Version bump.
+
+  25 Feb 2015; Hans de Graaff <graaff@gentoo.org> tzinfo-1.2.2.ebuild:
+  Add ruby22.
+
+  10 Nov 2014; Manuel Rüger <mrueg@gentoo.org> tzinfo-0.3.37-r1.ebuild,
+  tzinfo-0.3.37.ebuild, tzinfo-0.3.38.ebuild:
+  Drop jruby target.
+
+  12 Aug 2014; Anthony G. Basile <blueness@gentoo.org> tzinfo-1.2.1.ebuild,
+  tzinfo-1.2.2.ebuild:
+  Keyword ~ppc and ~ppc64, bug #519170
+
+*tzinfo-1.2.2 (10 Aug 2014)
+
+  10 Aug 2014; Manuel Rüger <mrueg@gentoo.org> +tzinfo-1.2.2.ebuild:
+  Version bump.
+
+  18 Jul 2014; Hans de Graaff <graaff@gentoo.org> tzinfo-0.3.37.ebuild,
+  tzinfo-0.3.37-r1.ebuild, tzinfo-0.3.38.ebuild, tzinfo-1.2.1.ebuild:
+  Update HOMEPAGE.
+
+  18 Jul 2014; Hans de Graaff <graaff@gentoo.org> -tzinfo-1.1.0.ebuild,
+  -tzinfo-1.2.0.ebuild:
+  Cleanup.
+
+  07 Jul 2014; Tobias Klausmann <klausman@gentoo.org> tzinfo-1.2.1.ebuild:
+  Keyworded on alpha, bug #487178
+
+*tzinfo-1.2.1 (02 Jun 2014)
+
+  02 Jun 2014; Hans de Graaff <graaff@gentoo.org> +tzinfo-1.2.1.ebuild:
+  Version bump.
+
+*tzinfo-1.2.0 (27 May 2014)
+
+  27 May 2014; Hans de Graaff <graaff@gentoo.org> +tzinfo-1.2.0.ebuild:
+  Version bump.
+
+  26 Apr 2014; Hans de Graaff <graaff@gentoo.org> tzinfo-1.1.0.ebuild:
+  Add ruby21. Run all tests.
+
+  22 Apr 2014; Manuel Rüger <mrueg@gentoo.org> tzinfo-0.3.37-r1.ebuild,
+  tzinfo-0.3.37.ebuild, tzinfo-0.3.38.ebuild, tzinfo-1.1.0.ebuild:
+  Remove ruby18 target.
+
+*tzinfo-0.3.38 (28 Feb 2014)
+
+  28 Feb 2014; Hans de Graaff <graaff@gentoo.org> +tzinfo-0.3.38.ebuild:
+  Version bump. Add ruby21.
+
+  24 Feb 2014; Manuel Rüger <mrueg@gentoo.org> -tzinfo-0.3.35.ebuild:
+  Cleanup old.
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> tzinfo-0.3.37.ebuild:
+  Stable for ppc64, wrt bug #487180
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> tzinfo-0.3.37.ebuild:
+  Stable for ppc, wrt bug #487180
+
+  08 Dec 2013; Johannes Huber <johu@gentoo.org> tzinfo-1.1.0.ebuild:
+  add ~x86, bug #487178
+
+  08 Dec 2013; Johannes Huber <johu@gentoo.org> tzinfo-0.3.37.ebuild:
+  x86 stable, bug #487180
+
+*tzinfo-0.3.37-r1 (05 Nov 2013)
+
+  05 Nov 2013; Hans de Graaff <graaff@gentoo.org> +tzinfo-0.3.37-r1.ebuild:
+  Revision bump to add ruby20.
+
+  24 Oct 2013; Tony Vroon <chainsaw@gentoo.org> tzinfo-0.3.37.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #487180.
+
+  13 Oct 2013; Markus Meier <maekke@gentoo.org> tzinfo-1.1.0.ebuild:
+  add ~arm, bug #487178
+
+  07 Oct 2013; Jeroen Roovers <jer@gentoo.org> tzinfo-1.1.0.ebuild:
+  Marked ~hppa (bug #487178).
+
+*tzinfo-1.1.0 (07 Oct 2013)
+
+  07 Oct 2013; Hans de Graaff <graaff@gentoo.org> -tzinfo-1.0.1.ebuild,
+  +tzinfo-1.1.0.ebuild:
+  Version bump. Drop all arches except amd64 for new thread_safe dependency,
+  bug 487178. Move into a separate slot because most dependencies expect this.
+
+*tzinfo-1.0.1 (26 Aug 2013)
+
+  26 Aug 2013; Hans de Graaff <graaff@gentoo.org> +tzinfo-1.0.1.ebuild:
+  Version bump. tzinfo now uses the system timezone data from
+  sys-libs/timezone-data.
+
+*tzinfo-0.3.37 (21 Apr 2013)
+
+  21 Apr 2013; Hans de Graaff <graaff@gentoo.org> +tzinfo-0.3.37.ebuild:
+  Version bump.
+
+  21 Apr 2013; Hans de Graaff <graaff@gentoo.org> -tzinfo-0.3.33.ebuild:
+  Cleanup.
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> tzinfo-0.3.35.ebuild:
+  Stable for ppc64, wrt bug #464366
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> tzinfo-0.3.35.ebuild:
+  Stable for ppc, wrt bug #464366
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> tzinfo-0.3.35.ebuild:
+  Stable for x86, wrt bug #464366
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> tzinfo-0.3.35.ebuild:
+  Stable for amd64, wrt bug #464366
+
+  15 Jan 2013; Rick Farina <zerochaos@gentoo.org> tzinfo-0.3.33.ebuild,
+  tzinfo-0.3.35.ebuild:
+  adding ~arm keywords to net-analyzer/metasploit rdeps
+
+*tzinfo-0.3.35 (08 Nov 2012)
+
+  08 Nov 2012; Hans de Graaff <graaff@gentoo.org> +tzinfo-0.3.35.ebuild:
+  Version bump.
+
+  08 Nov 2012; Hans de Graaff <graaff@gentoo.org> -tzinfo-0.3.31.ebuild:
+  Cleanup.
+
+  17 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> tzinfo-0.3.33.ebuild:
+  x86 stable wrt bug #437360
+
+  12 Oct 2012; Agostino Sarubbo <ago@gentoo.org> tzinfo-0.3.33.ebuild:
+  Stable for amd64, wrt bug #437360
+
+  10 Oct 2012; Anthony G. Basile <blueness@gentoo.org> tzinfo-0.3.33.ebuild:
+  stable ppc ppc64, bug #437360
+
+  24 Sep 2012; Hans de Graaff <graaff@gentoo.org> -tzinfo-0.3.32.ebuild:
+  Cleanup.
+
+  01 May 2012; Raúl Porcel <armin76@gentoo.org> tzinfo-0.3.31.ebuild,
+  tzinfo-0.3.32.ebuild, tzinfo-0.3.33.ebuild:
+  Drop ia64/sparc keywords
+
+*tzinfo-0.3.33 (08 Apr 2012)
+
+  08 Apr 2012; Diego E. Pettenò <flameeyes@gentoo.org> +tzinfo-0.3.33.ebuild,
+  -tzinfo-0.3.31-r1.ebuild, -tzinfo-0.3.32-r1.ebuild:
+  Version bump.
+
+*tzinfo-0.3.32 (12 Mar 2012)
+*tzinfo-0.3.32-r1 (12 Mar 2012)
+
+  12 Mar 2012; Diego E. Pettenò <flameeyes@gentoo.org> +tzinfo-0.3.32-r1.ebuild,
+  +tzinfo-0.3.32.ebuild:
+  Version bump (keep one open to stable, and one with ruby19).
+
+  09 Mar 2012; Hans de Graaff <graaff@gentoo.org> -tzinfo-0.3.27.ebuild:
+  Remove old version.
+
+  08 Mar 2012; Brent Baude <ranger@gentoo.org> tzinfo-0.3.31.ebuild:
+  Marking tzinfo-0.3.31 ppc64 for bug 393667
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org> tzinfo-0.3.31.ebuild:
+  Marking tzinfo-0.3.31 ppc for bug 393667
+
+  31 Dec 2011; Fabian Groffen <grobian@gentoo.org> tzinfo-0.3.31-r1.ebuild:
+  Add Prefix keywords, bug #396547
+
+  28 Dec 2011; Hans de Graaff <graaff@gentoo.org> tzinfo-0.3.27.ebuild:
+  Drop ruby19 from stable version.
+
+*tzinfo-0.3.31-r1 (28 Dec 2011)
+
+  28 Dec 2011; Hans de Graaff <graaff@gentoo.org> tzinfo-0.3.31.ebuild,
+  +tzinfo-0.3.31-r1.ebuild:
+  Revision bump to drop ruby19 from stable version.
+
+  28 Dec 2011; Hans de Graaff <graaff@gentoo.org> -tzinfo-0.3.30.ebuild:
+  Remove old version.
+
+  18 Dec 2011; Raúl Porcel <armin76@gentoo.org> tzinfo-0.3.31.ebuild:
+  ia64/sparc stable wrt #393667
+
+  15 Dec 2011; Agostino Sarubbo <ago@gentoo.org> tzinfo-0.3.31.ebuild:
+  Stable for AMD64, wrt bug #393667
+
+  14 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> tzinfo-0.3.31.ebuild:
+  x86 stable wrt bug #393667
+
+  14 Dec 2011; Hans de Graaff <graaff@gentoo.org> tzinfo-0.3.31.ebuild:
+  Fix incompatibility with rake 0.9 by skipping documentation building and
+  running the tests directly.
+
+*tzinfo-0.3.31 (08 Dec 2011)
+
+  08 Dec 2011; Diego E. Pettenò <flameeyes@gentoo.org> +tzinfo-0.3.31.ebuild:
+  Version bump.
+
+*tzinfo-0.3.30 (29 Sep 2011)
+
+  29 Sep 2011; Diego E. Pettenò <flameeyes@gentoo.org> -tzinfo-0.3.22.ebuild,
+  -tzinfo-0.3.24.ebuild, -tzinfo-0.3.28.ebuild, -tzinfo-0.3.29.ebuild,
+  +tzinfo-0.3.30.ebuild:
+  Version bump and remove old.
+
+  09 Sep 2011; Fabian Groffen <grobian@gentoo.org> tzinfo-0.3.29.ebuild:
+  Marked ~sparc-solaris
+
+  17 Jul 2011; Mark Loeser <halcy0n@gentoo.org> tzinfo-0.3.27.ebuild:
+  Stable for ppc/ppc64; bug #371553
+
+*tzinfo-0.3.29 (29 Jun 2011)
+
+  29 Jun 2011; Hans de Graaff <graaff@gentoo.org> +tzinfo-0.3.29.ebuild:
+  Version bump.
+
+  24 Jun 2011; Raúl Porcel <armin76@gentoo.org> tzinfo-0.3.27.ebuild:
+  ia64/sparc stable wrt #371553
+
+  19 Jun 2011; Markus Meier <maekke@gentoo.org> tzinfo-0.3.27.ebuild:
+  x86 stable, bug #371553
+
+  18 Jun 2011; Markos Chandras <hwoarang@gentoo.org> tzinfo-0.3.27.ebuild:
+  Stable on amd64 wrt bug #371553
+
+*tzinfo-0.3.28 (14 Jun 2011)
+
+  14 Jun 2011; Hans de Graaff <graaff@gentoo.org> +tzinfo-0.3.28.ebuild:
+  Version bump.
+
+  14 Jun 2011; Hans de Graaff <graaff@gentoo.org> -tzinfo-0.3.25.ebuild,
+  -tzinfo-0.3.26.ebuild:
+  Remove old versions.
+
+  29 May 2011; Raúl Porcel <armin76@gentoo.org> tzinfo-0.3.24.ebuild:
+  sparc stable wrt #359091
+
+*tzinfo-0.3.27 (28 Apr 2011)
+
+  28 Apr 2011; Hans de Graaff <graaff@gentoo.org> +tzinfo-0.3.27.ebuild:
+  Version bump.
+
+*tzinfo-0.3.26 (02 Apr 2011)
+
+  02 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org> +tzinfo-0.3.26.ebuild:
+  Version bump.
+
+  28 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> tzinfo-0.3.24.ebuild:
+  x86 stable wrt bug #359091
+
+  21 Mar 2011; Markos Chandras <hwoarang@gentoo.org> tzinfo-0.3.24.ebuild:
+  Stable on amd64 wrt bug #359091
+
+  16 Mar 2011; Hans de Graaff <graaff@gentoo.org> tzinfo-0.3.24.ebuild:
+  Add back jruby since it breaks the dependency chain for Rails otherwise.
+
+*tzinfo-0.3.25 (15 Mar 2011)
+
+  15 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org> -tzinfo-0.3.23.ebuild,
+  tzinfo-0.3.24.ebuild, +tzinfo-0.3.25.ebuild:
+  Version bump, remove old, drop ruby19/jruby support from .24 to mark it
+  stable.
+
+  16 Jan 2011; Hans de Graaff <graaff@gentoo.org> -tzinfo-0.3.16.ebuild:
+  Remove old version.
+
+*tzinfo-0.3.24 (16 Jan 2011)
+
+  16 Jan 2011; Hans de Graaff <graaff@gentoo.org> +tzinfo-0.3.24.ebuild:
+  Version bump.
+
+  04 Dec 2010; Fabian Groffen <grobian@gentoo.org> tzinfo-0.3.23.ebuild:
+  Marked ~{ppc,x64,x86}-macos
+
+  28 Sep 2010; Brent Baude <ranger@gentoo.org> tzinfo-0.3.22.ebuild:
+  Marking tzinfo-0.3.22 ppc for bug 333525
+
+  18 Sep 2010; Raúl Porcel <armin76@gentoo.org> tzinfo-0.3.22.ebuild:
+  sparc stable wrt #333525
+
+  21 Aug 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/tzinfo.gemspec:
+  Remove unused file.
+
+  21 Aug 2010; Markos Chandras <hwoarang@gentoo.org> tzinfo-0.3.22.ebuild:
+  Stable on amd64 wrt bug #333525
+
+  20 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> tzinfo-0.3.22.ebuild:
+  x86 stable wrt bug #333525
+
+*tzinfo-0.3.23 (19 Aug 2010)
+
+  19 Aug 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  tzinfo-0.3.22.ebuild, +tzinfo-0.3.23.ebuild:
+  Version bump, drop non-ruby18 targets from .22 so that it can be marked
+  stable.
+
+  11 Jul 2010; Hans de Graaff <graaff@gentoo.org> -tzinfo-0.3.13.ebuild,
+  -tzinfo-0.3.20.ebuild:
+  Remove old versions.
+
+*tzinfo-0.3.22 (29 May 2010)
+
+  29 May 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +tzinfo-0.3.22.ebuild:
+  Version bump.
+
+  23 May 2010; Pacho Ramos <pacho@gentoo.org> tzinfo-0.3.16.ebuild:
+  stable amd64, bug 312963
+
+  22 May 2010; Alex Legler <a3li@gentoo.org> tzinfo-0.3.20.ebuild:
+  Add REE18 support
+
+  22 May 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  tzinfo-0.3.13.ebuild, tzinfo-0.3.16.ebuild, -tzinfo-0.3.18.ebuild,
+  -tzinfo-0.3.19.ebuild, tzinfo-0.3.20.ebuild:
+  Cleanup old versions, use new syntax.
+
+  09 May 2010; Raúl Porcel <armin76@gentoo.org> tzinfo-0.3.16.ebuild:
+  sparc stable wrt #312963
+
+*tzinfo-0.3.20 (20 Apr 2010)
+
+  20 Apr 2010; Hans de Graaff <graaff@gentoo.org> +tzinfo-0.3.20.ebuild:
+  Version bump: Updated to tzdata version 2010i.
+
+  18 Apr 2010; <nixnut@gentoo.org> tzinfo-0.3.16.ebuild:
+  ppc stable #312963
+
+  12 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> tzinfo-0.3.16.ebuild:
+  x86 stable wrt bug #312963
+
+*tzinfo-0.3.19 (07 Apr 2010)
+
+  07 Apr 2010; Hans de Graaff <graaff@gentoo.org> +tzinfo-0.3.19.ebuild:
+  Version bump: Updated to tzdata version 2010h.
+
+  03 Apr 2010; Hans de Graaff <graaff@gentoo.org> tzinfo-0.3.16.ebuild:
+  Drop ruby19 and jruby to facilitate stabling this specific version.
+
+  03 Apr 2010; Hans de Graaff <graaff@gentoo.org> -tzinfo-0.3.15.ebuild,
+  -tzinfo-0.3.17.ebuild:
+  Remove old versions.
+
+*tzinfo-0.3.18 (30 Mar 2010)
+
+  30 Mar 2010; Hans de Graaff <graaff@gentoo.org> +tzinfo-0.3.18.ebuild:
+  Version bump: Updated to tzdata version 2010g.
+
+*tzinfo-0.3.17 (17 Mar 2010)
+
+  17 Mar 2010; Hans de Graaff <graaff@gentoo.org> +tzinfo-0.3.17.ebuild:
+  Version bump: Updated to tzdata version 2010e.
+
+  28 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -tzinfo-0.3.15-r1.ebuild:
+  Remove old version.
+
+  11 Jan 2010; Fabian Groffen <grobian@gentoo.org> tzinfo-0.3.16.ebuild:
+  Marked ~x64-solaris
+
+*tzinfo-0.3.16 (06 Jan 2010)
+
+  06 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +tzinfo-0.3.16.ebuild:
+  Version bump.
+
+  04 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  tzinfo-0.3.15-r1.ebuild:
+  Transfer Prefix keywords
+
+  21 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  tzinfo-0.3.15-r1.ebuild:
+  Restore keywords (test-unit recursion).
+
+  16 Dec 2009; Jeroen Roovers <jer@gentoo.org> tzinfo-0.3.15-r1.ebuild:
+  Marked ~hppa (bug #297072).
+
+  15 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  tzinfo-0.3.15-r1.ebuild:
+  Restore keywords as restored on virtual/ruby-test-unit.
+
+*tzinfo-0.3.15-r1 (15 Dec 2009)
+
+  15 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -tzinfo-0.3.12-r1.ebuild, -tzinfo-0.3.14.ebuild, +tzinfo-0.3.15-r1.ebuild:
+  Bump to fakegem and clean up older versions.
+
+  11 Nov 2009; Tiago Cunha <tcunha@gentoo.org> tzinfo-0.3.13.ebuild:
+  stable sparc, bug 282207
+
+*tzinfo-0.3.15 (27 Oct 2009)
+
+  27 Oct 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +tzinfo-0.3.15.ebuild:
+  Version bump.
+
+  25 Oct 2009; Markus Meier <maekke@gentoo.org> tzinfo-0.3.13.ebuild:
+  amd64/x86 stable, bug #282207
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> tzinfo-0.3.13.ebuild:
+  ppc stable #282207
+
+*tzinfo-0.3.14 (21 Aug 2009)
+
+  21 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +tzinfo-0.3.14.ebuild:
+  Version bump.
+
+  13 Jun 2009; Hans de Graaff <graaff@gentoo.org> -tzinfo-0.3.11.ebuild,
+  -tzinfo-0.3.12.ebuild, tzinfo-0.3.13.ebuild:
+  Remove old versions. Add ~alpha keyword to latest version, closing
+  #272787. Thanks to Yuta Satoh for testing.
+
+  19 May 2009; Brent Baude <ranger@gentoo.org> tzinfo-0.3.13.ebuild:
+  keyworded ~arch for ppc64, bug 270420
+
+  04 May 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  tzinfo-0.3.13.ebuild:
+  Fix src_test when Ruby 1.9 is not present.
+
+  20 Apr 2009; Markus Meier <maekke@gentoo.org> tzinfo-0.3.12-r1:
+  x86 stable, bug #266520
+
+  20 Apr 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/tzinfo.gemspec:
+  Fix fake gemspec.
+
+  20 Apr 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/tzinfo.gemspec, tzinfo-0.3.13:
+  Install for Ruby 1.9 too, add tests for both versions, install a fake
+  gemspec for both versions.
+
+  19 Apr 2009; Tiago Cunha <tcunha@gentoo.org> tzinfo-0.3.12-r1.ebuild:
+  stable sparc, bug 266520
+
+  18 Apr 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  tzinfo-0.3.12-r1.ebuild:
+  stable amd64, bug 266520
+
+  18 Apr 2009; nixnut <nixnut@gentoo.org> tzinfo-0.3.12-r1.ebuild:
+  ppc stable #266520
+
+*tzinfo-0.3.13 (17 Apr 2009)
+
+  17 Apr 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +tzinfo-0.3.13.ebuild:
+  Version bump, although with an hack because one test fails when ran in
+  Portage.
+
+*tzinfo-0.3.12-r1 (12 Dec 2008)
+
+  12 Dec 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  -tzinfo-0.3.8.ebuild, +tzinfo-0.3.12-r1.ebuild:
+  Remove old version, add new revision that does not use the gem but rather
+  the tarball package.
+
+*tzinfo-0.3.12 (12 Nov 2008)
+
+  12 Nov 2008; Diego Pettenò <flameeyes@gentoo.org> +tzinfo-0.3.12.ebuild:
+  Version bump.
+
+  08 Nov 2008; nixnut <nixnut@gentoo.org> tzinfo-0.3.11.ebuild:
+  Stable on ppc wrt bug 245348
+
+  06 Nov 2008; Raúl Porcel <armin76@gentoo.org> tzinfo-0.3.11.ebuild:
+  ia64/x86 stable wrt #245348
+
+  03 Nov 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  tzinfo-0.3.11.ebuild:
+  stable amd64, bug 245348
+
+  16 Oct 2008; Diego Pettenò <flameeyes@gentoo.org> -tzinfo-0.3.6.ebuild,
+  -tzinfo-0.3.7.ebuild, -tzinfo-0.3.10.ebuild:
+  Cleanup old ebuilds.
+
+*tzinfo-0.3.11 (07 Oct 2008)
+
+  07 Oct 2008; Diego Pettenò <flameeyes@gentoo.org> +tzinfo-0.3.11.ebuild:
+  Version bump.
+
+  07 Oct 2008; nixnut <nixnut@gentoo.org> tzinfo-0.3.8.ebuild:
+  Stable on ppc wrt bug 239465
+
+  04 Oct 2008; Markus Meier <maekke@gentoo.org> tzinfo-0.3.8.ebuild:
+  x86 stable, bug #239465
+
+  04 Oct 2008; Thomas Anderson <gentoofan23@gentoo.org> tzinfo-0.3.8.ebuild:
+  stable amd64, bug 239465
+
+  03 Oct 2008; Ferris McCormick <fmccor@gentoo.org> tzinfo-0.3.8.ebuild:
+  Sparc stable, Bug #239465.
+
+*tzinfo-0.3.10 (03 Oct 2008)
+
+  03 Oct 2008; Diego Pettenò <flameeyes@gentoo.org> +tzinfo-0.3.10.ebuild:
+  Version bump.
+
+  07 Jul 2008; Friedrich Oslage <bluebird@gentoo.org> tzinfo-0.3.8.ebuild:
+  Add ~sparc keyword, bug #230517
+
+*tzinfo-0.3.8 (26 Apr 2008)
+
+  26 Apr 2008; Hans de Graaff <graaff@gentoo.org> +tzinfo-0.3.8.ebuild:
+  Version bump: Updated to tzdata version 2008b, ruby 1.9 compatibility fixes.
+
+*tzinfo-0.3.7 (19 Mar 2008)
+
+  19 Mar 2008; Hans de Graaff <graaff@gentoo.org> +tzinfo-0.3.7.ebuild:
+  Version bump: Updated to tzdata version 2008a
+
+  19 Mar 2008; Hans de Graaff <graaff@gentoo.org> -tzinfo-0.3.3.ebuild,
+  -tzinfo-0.3.4.ebuild, -tzinfo-0.3.5.ebuild:
+  Remove old versions
+
+*tzinfo-0.3.6 (26 Jan 2008)
+
+  26 Jan 2008; Hans de Graaff <graaff@gentoo.org> +tzinfo-0.3.6.ebuild:
+  Version bump: Updated to tzdata version 2007k
+
+*tzinfo-0.3.5 (04 Nov 2007)
+
+  04 Nov 2007; Hans de Graaff <graaff@gentoo.org> +tzinfo-0.3.5.ebuild:
+  Version bump: Updated to tzdata version 2007h
+
+*tzinfo-0.3.4 (25 Aug 2007)
+
+  25 Aug 2007; Hans de Graaff <graaff@gentoo.org> -tzinfo-0.3.2.ebuild,
+  +tzinfo-0.3.4.ebuild:
+  Version bump: Updated to tzdata version 2007g. Remove old version.
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove flameeyes from metadata.xml due to retirement.
+
+  17 Mar 2007; Robin H. Johnson <robbat2@gentoo.org> tzinfo-0.3.3.ebuild:
+  Add ~x86 and ~ppc.
+
+  28 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> tzinfo-0.3.2.ebuild,
+  tzinfo-0.3.3.ebuild:
+  Fix header (my local copy had the correct header, what's happened?).
+
+*tzinfo-0.3.3 (28 Nov 2006)
+
+  28 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> +tzinfo-0.3.3.ebuild:
+  Version bump.
+
+*tzinfo-0.3.2 (23 Nov 2006)
+
+  23 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> +metadata.xml,
+  +tzinfo-0.3.2.ebuild:
+  Initial import of tzinfo gem package (future dependency of rbot, and thus in
+  portage).

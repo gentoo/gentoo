@@ -1,0 +1,39 @@
+# ChangeLog for x11-plugins/wmsvencd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmsvencd/ChangeLog,v 1.12 2015/03/20 08:03:49 jlec Exp $
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> files/wmsvencd.desktop:
+  Fix desktop file
+
+  22 Jul 2014; Manuel Rüger <mrueg@gentoo.org> wmsvencd-0.5.0.ebuild:
+  Update HOMEPAGE
+
+  05 Sep 2012; Justin Lecher <jlec@gentoo.org> wmsvencd-0.5.0.ebuild:
+  Use domenu instead insinto + doins to install .desktop files
+
+  26 May 2011; Michele Noberasco <s4t4n@gentoo.org> wmsvencd-0.5.0.ebuild:
+  Fixed non existent HOMEPAGE and SRC_URI (no replacements available). Closes bug #367181.
+
+  31 Aug 2010; Michele Noberasco <s4t4n@gentoo.org> wmsvencd-0.5.0.ebuild:
+  Honour LDFLAGS. Closes bug #334613.
+
+  25 Oct 2006; Michele Noberasco <s4t4n@gentoo.org> wmsvencd-0.5.0.ebuild:
+  Added missing libxpm dependancy. Closes bug #150657.
+
+  11 Jun 2006; Krzysiek Pawlik <nelchael@gentoo.org> wmsvencd-0.5.0.ebuild:
+  Fix DEPEND, see bug #136421.
+
+  31 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> wmsvencd-0.5.0.ebuild:
+  Fixed DEPEND for modular X.
+
+  06 Sep 2004; Michele Noberasco <s4t4n@gentoo.org> wmsvencd-0.5.0.ebuild:
+  Stable for x86...
+
+  18 Jul 2004; David Holm <dholm@gentoo.org> :
+  Added to ~ppc.
+
+*wmsvencd-0.5.0 (17 Jul 2004)
+
+  17 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmsvencd-0.5.0.ebuild:
+  Initial import. Thanks to Przemyslaw Maciag. Closes #53583.
+  Remove the S definition...

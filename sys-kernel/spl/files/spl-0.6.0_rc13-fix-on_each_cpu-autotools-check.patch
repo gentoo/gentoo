@@ -1,0 +1,46 @@
+From 050cd84e628e5d827a0b345cda12b97253fccd37 Mon Sep 17 00:00:00 2001
+From: Brian Behlendorf <behlendorf1@llnl.gov>
+Date: Mon, 7 Jan 2013 14:09:09 -0800
+Subject: [PATCH] Linux compat 3.7.1, on_each_cpu()
+
+Some kernels require that we include the 'linux/irqflags.h'
+header for the SPL_AC_3ARGS_ON_EACH_CPU check.  Otherwise,
+the functions local_irq_enable()/local_irq_disable() will not
+be defined and the prototype will be misdetected as the four
+argument version.
+
+This change actually include 'linux/interrupt.h' which in turn
+includes 'linux/irqflags.h' to be as generic as possible.
+
+Additionally, passing NULL as the function can result in a
+gcc error because the on_each_cpu() macro executes it
+unconditionally.  To make the test more robust we pass the
+dummy function on_each_cpu_func().
+
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Closes #204
+---
+ config/spl-build.m4 |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/config/spl-build.m4 b/config/spl-build.m4
+index f710d8e..6e4afed 100644
+--- a/config/spl-build.m4
++++ b/config/spl-build.m4
+@@ -1312,9 +1312,12 @@ dnl #
+ AC_DEFUN([SPL_AC_3ARGS_ON_EACH_CPU], [
+ 	AC_MSG_CHECKING([whether on_each_cpu() wants 3 args])
+ 	SPL_LINUX_TRY_COMPILE([
++		#include <linux/interrupt.h>
+ 		#include <linux/smp.h>
++
++		void on_each_cpu_func(void *data) { return; }
+ 	],[
+-		on_each_cpu(NULL, NULL, 0);
++		on_each_cpu(on_each_cpu_func, NULL, 0);
+ 	],[
+ 		AC_MSG_RESULT(yes)
+ 		AC_DEFINE(HAVE_3ARGS_ON_EACH_CPU, 1,
+-- 
+1.7.10
+

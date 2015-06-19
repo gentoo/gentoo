@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst preinst prepare unpack
+DESCRIPTION=Collection of DNS client/server software
+EAPI=5
+HOMEPAGE=http://cr.yp.to/djbdns.html
+IUSE=ipv6 selinux
+KEYWORDS=alpha amd64 hppa ~mips ppc ppc64 sparc x86
+LICENSE=public-domain
+RDEPEND=sys-apps/ucspi-tcp virtual/daemontools selinux? ( sec-policy/selinux-djbdns )
+SLOT=0
+SRC_URI=http://cr.yp.to/djbdns/djbdns-1.05.tar.gz http://smarden.org/pape/djb/manpages/djbdns-1.05-man.tar.gz ipv6? ( http://www.fefe.de/dns/djbdns-1.05-test27.diff.bz2 )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=52440b73e0e72753899a313e0b82fc01

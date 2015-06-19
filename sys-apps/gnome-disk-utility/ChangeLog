@@ -1,0 +1,493 @@
+# ChangeLog for sys-apps/gnome-disk-utility
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/gnome-disk-utility/ChangeLog,v 1.103 2015/06/09 22:55:38 eva Exp $
+
+*gnome-disk-utility-3.16.2 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-disk-utility-3.12.1.ebuild, +gnome-disk-utility-3.16.2.ebuild:
+  Version bump for Gnome 3.16. Clean up old revision.
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnome-disk-utility-3.14.0.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnome-disk-utility-3.14.0.ebuild:
+  amd64 stable, bug 534012
+
+*gnome-disk-utility-3.14.0 (23 Dec 2014)
+
+  23 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-disk-utility-3.14.0.ebuild:
+  Version bump for Gnome 3.14. Clean up old revision.
+
+  13 Nov 2014; Pacho Ramos <pacho@gentoo.org>
+  -files/gnome-disk-utility-2.32.1-non-utf8-crash.patch,
+  -files/gnome-disk-utility-2.32.1-optional-avahi.patch,
+  -files/gnome-disk-utility-3.0.2-nautilus2-compat-r201.patch,
+  -files/gnome-disk-utility-3.0.2-nautilus2-compat.patch,
+  -files/gnome-disk-utility-3.0.2-separate-libgdu.patch,
+  -files/gnome-disk-utility-3.8.2-kill-gsd-automagic.patch,
+  -files/gnome-disk-utility-3.8.2-raise-gsd-dependency.patch,
+  -gnome-disk-utility-3.0.2-r201.ebuild, -gnome-disk-utility-3.10.0.ebuild,
+  metadata.xml:
+  Drop old (#508854)
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gnome-disk-utility-3.12.1.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gnome-disk-utility-3.12.1.ebuild:
+  Stable for amd64, wrt bug #512912
+
+*gnome-disk-utility-3.12.1 (27 Apr 2014)
+
+  27 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-disk-utility-3.12.1.ebuild:
+  Version bump for Gnome 3.12.
+
+  27 Apr 2014; Pacho Ramos <pacho@gentoo.org> -gnome-disk-utility-3.8.2.ebuild:
+  drop old
+
+  29 Mar 2014; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gnome-disk-utility-3.8.2.ebuild, gnome-disk-utility-3.10.0.ebuild:
+  systemd now has subslots
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gnome-disk-utility-3.10.0.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gnome-disk-utility-3.10.0.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-disk-utility-3.10.0.ebuild:
+  Fix wrong commit, bug 502160
+
+  18 Jan 2014; Pacho Ramos <pacho@gentoo.org> gnome-disk-utility-3.10.0.ebuild,
+  gnome-disk-utility-3.8.2.ebuild:
+  Add missing gnome-common DEPEND, bug #498224 by Vikraman
+
+*gnome-disk-utility-3.10.0 (24 Dec 2013)
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org>
+  +files/gnome-disk-utility-3.10.0-kill-gsd-automagic.patch,
+  +files/gnome-disk-utility-3.10.0-raise-gsd-dependency.patch,
+  +gnome-disk-utility-3.10.0.ebuild, -gnome-disk-utility-3.0.2-r301.ebuild,
+  -gnome-disk-utility-3.4.1.ebuild, -gnome-disk-utility-3.6.1.ebuild,
+  -gnome-disk-utility-3.8.0.ebuild:
+  Version bump for Gnome 3.10
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> gnome-disk-utility-3.8.2.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> gnome-disk-utility-3.8.2.ebuild:
+  amd64 stable, bug #478252
+
+  28 Sep 2013; Pacho Ramos <pacho@gentoo.org> gnome-disk-utility-3.8.2.ebuild:
+  Rekeyword to stop the strange mix of keywords for every available version, I
+  cannot see any reference to reasons for dropping them, probably were dropped
+  due missing keywords on deps that were later keyworded and this was forgotten
+
+  10 Aug 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-disk-utility-3.8.2.ebuild,
+  +files/gnome-disk-utility-3.8.2-kill-gsd-automagic.patch,
+  +files/gnome-disk-utility-3.8.2-raise-gsd-dependency.patch:
+  Fix pseudo-automagic dependency on gnome-settings-daemon, bug #478820. 478820
+
+  27 Jul 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-disk-utility-3.8.2.ebuild:
+  Re-add systemd USE flag, other gtk based desktop might still need it.
+
+  27 Jul 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-disk-utility-3.8.2.ebuild:
+  Add missing USE dependency on libcanberra. systemd is not optional for
+  gnome3.8.
+
+  17 Jul 2013; Markus Meier <maekke@gentoo.org>
+  gnome-disk-utility-3.6.1.ebuild:
+  add ~arm, bug #471752
+
+  30 Jun 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-disk-utility-3.8.2.ebuild:
+  Add missing subslot operator.
+
+*gnome-disk-utility-3.8.2 (29 May 2013)
+
+  29 May 2013; Pacho Ramos <pacho@gentoo.org> +gnome-disk-utility-3.8.2.ebuild,
+  -gnome-disk-utility-2.32.1-r1.ebuild:
+  Version bump, remove old
+
+  17 May 2013; Matt Turner <mattst88@gentoo.org>
+  gnome-disk-utility-3.6.1.ebuild:
+  Added ~alpha.
+
+  02 Apr 2013; Pacho Ramos <pacho@gentoo.org> gnome-disk-utility-3.8.0.ebuild:
+  Fix g-s-d dependency, bug #463912 by Chris Mayo
+
+*gnome-disk-utility-3.8.0 (28 Mar 2013)
+
+  28 Mar 2013; Pacho Ramos <pacho@gentoo.org> +gnome-disk-utility-3.8.0.ebuild:
+  Version bump for Gnome 3.8
+
+*gnome-disk-utility-3.6.1 (24 Dec 2012)
+
+  24 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  -files/gnome-disk-utility-2.30.1-optional-avahi.patch,
+  -gnome-disk-utility-2.32.1.ebuild,
+  -files/gnome-disk-utility-2.91.6-optional-avahi.patch,
+  -gnome-disk-utility-3.0.2-r200.ebuild, -gnome-disk-utility-3.0.2-r300.ebuild,
+  -gnome-disk-utility-3.4.0.ebuild, +gnome-disk-utility-3.6.1.ebuild,
+  metadata.xml:
+  Version bump for Gnome 3.6. Clean up old revisions.
+
+  28 Oct 2012; Raúl Porcel <armin76@gentoo.org>
+  gnome-disk-utility-3.0.2-r201.ebuild:
+  ia64/sh/sparc stable wrt #427544
+
+  16 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  gnome-disk-utility-3.0.2-r201.ebuild:
+  stable ppc, bug #427544
+
+  15 Oct 2012; Matt Turner <mattst88@gentoo.org>
+  gnome-disk-utility-3.0.2-r201.ebuild:
+  Stable on alpha, bug 427544.
+
+  14 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  gnome-disk-utility-3.0.2-r201.ebuild:
+  stable ppc64, bug #427544
+
+  06 Oct 2012; Markus Meier <maekke@gentoo.org>
+  gnome-disk-utility-3.0.2-r201.ebuild:
+  arm stable, bug #427544
+
+  04 Oct 2012; Agostino Sarubbo <ago@gentoo.org>
+  gnome-disk-utility-3.0.2-r201.ebuild:
+  Stable for amd64, wrt bug #427544
+
+  03 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gnome-disk-utility-3.0.2-r201.ebuild:
+  x86 stable wrt bug #427544
+
+  05 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gnome-disk-utility-3.4.0.ebuild, gnome-disk-utility-3.4.1.ebuild:
+  Add missing gnome-icon-theme-symbolic dependency (bug #414619, thanks to Jim
+  Ramsay (lack)).
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  gnome-disk-utility-2.32.1.ebuild, gnome-disk-utility-2.32.1-r1.ebuild,
+  gnome-disk-utility-3.0.2-r200.ebuild, gnome-disk-utility-3.0.2-r201.ebuild,
+  gnome-disk-utility-3.0.2-r300.ebuild, gnome-disk-utility-3.0.2-r301.ebuild,
+  gnome-disk-utility-3.4.0.ebuild, gnome-disk-utility-3.4.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*gnome-disk-utility-3.4.1 (24 Apr 2012)
+
+  24 Apr 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +gnome-disk-utility-3.4.1.ebuild:
+  Version bump.
+
+*gnome-disk-utility-3.4.0 (12 Apr 2012)
+*gnome-disk-utility-3.0.2-r301 (12 Apr 2012)
+*gnome-disk-utility-3.0.2-r201 (12 Apr 2012)
+
+  12 Apr 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gnome-disk-utility-2.32.1.ebuild, gnome-disk-utility-2.32.1-r1.ebuild,
+  gnome-disk-utility-3.0.2-r200.ebuild, +gnome-disk-utility-3.0.2-r201.ebuild,
+  gnome-disk-utility-3.0.2-r300.ebuild, +gnome-disk-utility-3.0.2-r301.ebuild,
+  +files/gnome-disk-utility-3.0.2-nautilus2-compat-r201.patch,
+  +files/gnome-disk-utility-3.0.2-separate-libgdu.patch,
+  +gnome-disk-utility-3.4.0.ebuild:
+  Add new, udisks2-based gnome-disk-utility-3.4. Split libgdu out of
+  gnome-disk-utility-3.0.2 to allow libgdu-3.0.2 (needed for gvfs) to be
+  installed in parallel with gnome-disk-utility-3.4. Update DESCRIPTION
+  (devicekit-disks is now udisks).
+
+  27 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  gnome-disk-utility-2.32.1.ebuild, gnome-disk-utility-2.32.1-r1.ebuild,
+  gnome-disk-utility-3.0.2-r200.ebuild, gnome-disk-utility-3.0.2-r300.ebuild:
+  Pin to SLOT="0" of sys-fs/udisks.
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org>
+  gnome-disk-utility-3.0.2-r200.ebuild:
+  alpha/ia64/sh/sparc stable wrt #393007
+
+  05 Mar 2012; Brent Baude <ranger@gentoo.org>
+  gnome-disk-utility-3.0.2-r200.ebuild:
+  Marking gnome-disk-utility-3.0.2-r200 ppc stable for bug 393007
+
+  05 Mar 2012; Brent Baude <ranger@gentoo.org>
+  gnome-disk-utility-3.0.2-r200.ebuild:
+  Marking gnome-disk-utility-3.0.2-r200 ppc64 stable for bug 393007
+
+  18 Jan 2012; Markus Meier <maekke@gentoo.org>
+  gnome-disk-utility-3.0.2-r200.ebuild:
+  arm stable, bug #393007
+
+  14 Jan 2012; Markus Meier <maekke@gentoo.org>
+  gnome-disk-utility-3.0.2-r200.ebuild:
+  x86 stable, bug #393007
+
+  29 Dec 2011; Pacho Ramos <pacho@gentoo.org>
+  gnome-disk-utility-3.0.2-r200.ebuild:
+  amd64 stable, bug 393007
+
+  18 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gnome-disk-utility-3.0.2-r200.ebuild, gnome-disk-utility-3.0.2-r300.ebuild:
+  Only skip KDE for gdu-notification-daemon autostart.
+
+  05 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  gnome-disk-utility-2.32.1-r1.ebuild:
+  ppc/ppc64 stable wrt #369909
+
+*gnome-disk-utility-3.0.2-r300 (04 Oct 2011)
+*gnome-disk-utility-3.0.2-r200 (04 Oct 2011)
+
+  04 Oct 2011; Pacho Ramos <pacho@gentoo.org> -gnome-disk-utility-3.0.2.ebuild,
+  +gnome-disk-utility-3.0.2-r200.ebuild, +gnome-disk-utility-3.0.2-r300.ebuild,
+  +files/gnome-disk-utility-3.0.2-nautilus2-compat.patch:
+  Have a version prepared to work on Gnome2 with nautilus-2 and another one for
+  Gnome3.
+
+  01 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gnome-disk-utility-2.32.1.ebuild, gnome-disk-utility-2.32.1-r1.ebuild,
+  gnome-disk-utility-3.0.2.ebuild:
+  Clean libgnome-keyring, rarian and udisks dependencies.
+
+*gnome-disk-utility-3.0.2 (15 Aug 2011)
+
+  15 Aug 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +files/gnome-disk-utility-2.91.6-optional-avahi.patch,
+  +gnome-disk-utility-3.0.2.ebuild:
+  Bump to 3.0.2, from gnome overlay for GNOME 3
+
+  13 Aug 2011; Raúl Porcel <armin76@gentoo.org>
+  gnome-disk-utility-2.32.1-r1.ebuild:
+  alpha/ia64/sh/sparc stable wrt #369909
+
+  17 Jul 2011; Markus Meier <maekke@gentoo.org>
+  gnome-disk-utility-2.32.1-r1.ebuild:
+  arm stable, bug #369909
+
+  14 Jul 2011; Thomas Kahle <tomka@gentoo.org>
+  gnome-disk-utility-2.32.1-r1.ebuild:
+  x86 stable per bug 369909
+
+  01 Jul 2011; Markos Chandras <hwoarang@gentoo.org>
+  gnome-disk-utility-2.32.1-r1.ebuild:
+  Stable on amd64 wrt bug #278255
+
+  29 Apr 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gnome-disk-utility-2.32.1.ebuild:
+  ppc/ppc64 stable wrt #361125
+
+  24 Apr 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gnome-disk-utility-2.32.1.ebuild:
+  alpha/ia64/sh/sparc/x86 stable wrt #361125
+
+  15 Apr 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-disk-utility-2.30.1.ebuild:
+  Clean up old revision.
+
+  12 Apr 2011; Markus Meier <maekke@gentoo.org>
+  gnome-disk-utility-2.32.1.ebuild:
+  arm stable, bug #361125
+
+*gnome-disk-utility-2.32.1-r1 (03 Apr 2011)
+
+  03 Apr 2011; Pacho Ramos <pacho@gentoo.org>
+  -files/gnome-disk-utility-2.28.1-fix-potfiles_skip.patch,
+  +gnome-disk-utility-2.32.1-r1.ebuild,
+  +files/gnome-disk-utility-2.32.1-non-utf8-crash.patch,
+  +files/gnome-disk-utility-2.32.1-optional-avahi.patch:
+  Revision bump to fix optional avahi patch (bug #361183 by Fab) and apply
+  Mandriva patch (also used in Arch) to prevent major problems like freezes and
+  crashes on systems without UTF8 locale (upstream bug #616198). Remove old.
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org>
+  gnome-disk-utility-2.32.1.ebuild:
+  Stable on amd64 wrt bug #361125
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org>
+  gnome-disk-utility-2.32.0-r1.ebuild:
+  Marking gnome-disk-utility-2.32.0-r1 ppc stable for bug 353436
+
+  21 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  gnome-disk-utility-2.30.1.ebuild:
+  Fix slot-deps on gnome libs
+
+  21 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  gnome-disk-utility-2.32.0-r1.ebuild:
+  ppc64 stable wrt #353436
+
+  12 Mar 2011; Raúl Porcel <armin76@gentoo.org>
+  gnome-disk-utility-2.32.0-r1.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #353436
+
+  09 Mar 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-disk-utility-2.32.0-r1.ebuild, gnome-disk-utility-2.32.1.ebuild:
+  Add missing dtd to DEPEND, bug #358049.
+
+  26 Feb 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-disk-utility-2.32.1.ebuild:
+  Fix libunique slot.
+
+  26 Feb 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-disk-utility-2.32.0.ebuild, gnome-disk-utility-2.32.0-r1.ebuild,
+  gnome-disk-utility-2.32.1.ebuild:
+  Pin libunique to slot 1. Remove old revision.
+
+  24 Feb 2011; Thomas Kahle <tomka@gentoo.org>
+  gnome-disk-utility-2.32.0-r1.ebuild:
+  x86 stable per bug 353436
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org>
+  gnome-disk-utility-2.32.0-r1.ebuild:
+  Stable on amd64 wrt bug #353436
+
+  31 Jan 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gnome-disk-utility-2.32.1.ebuild:
+  Fix regression introduced by moving unsynced 2.32.1 from overlay to tree.
+
+*gnome-disk-utility-2.32.1 (31 Jan 2011)
+
+  31 Jan 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +gnome-disk-utility-2.32.1.ebuild:
+  Add 2.32.1, needs libnotify-0.7
+
+*gnome-disk-utility-2.32.0-r1 (17 Jan 2011)
+
+  17 Jan 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +gnome-disk-utility-2.32.0-r1.ebuild:
+  Use xdg-open instead of nautilus when accessing mountpoint from palimpsest
+  wrt #350919 by Delan Azabani.
+
+  17 Jan 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gnome-disk-utility-2.32.0.ebuild:
+  Revert prev. commit to unbreak deptree for Xfce and LXDE.
+
+  07 Jan 2011; Pacho Ramos <pacho@gentoo.org> gnome-disk-utility-2.32.0.ebuild:
+  gnome-base/nautilus is always required since it's not only used for nautilus
+  extension (bug #350919 by Delan Azabani).
+
+  20 Oct 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-disk-utility-2.28.1.ebuild, gnome-disk-utility-2.32.0.ebuild:
+  Pin gtk/glib to slot 2. Split pure runtime dependencies from those that
+  are also needed at build time.
+
+  18 Oct 2010; Raúl Porcel <armin76@gentoo.org>
+  gnome-disk-utility-2.30.1.ebuild:
+  alpha/ia64/sh/sparc stable
+
+  14 Oct 2010; Markus Meier <maekke@gentoo.org>
+  gnome-disk-utility-2.30.1.ebuild:
+  arm stable, bug #324077
+
+*gnome-disk-utility-2.32.0 (12 Oct 2010)
+
+  12 Oct 2010; Pacho Ramos <pacho@gentoo.org>
+  +gnome-disk-utility-2.32.0.ebuild:
+  Version bump for Gnome 2.32: bugfixes and translation updates.
+
+  07 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  gnome-disk-utility-2.30.1.ebuild:
+  ppc64 stable wrt #324077
+
+  11 Sep 2010; Joseph Jezak <josejx@gentoo.org>
+  gnome-disk-utility-2.30.1.ebuild:
+  Marked ppc for bug #324077.
+
+  07 Sep 2010; Pacho Ramos <pacho@gentoo.org>
+  gnome-disk-utility-2.30.1.ebuild:
+  Update gnome-keyring dependencies.
+
+  06 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  gnome-disk-utility-2.30.1.ebuild:
+  USE="gnome-keyring" to reduce dependencies because xfce-base/thunar is
+  using gnome-base/gvfs with gdu support.
+
+  29 Aug 2010; Raúl Porcel <armin76@gentoo.org>
+  gnome-disk-utility-2.28.1.ebuild:
+  arm stable
+
+  19 Aug 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-disk-utility-2.30.1.ebuild:
+  Add missing intltoolize call and a comment to avahi patch.
+
+  14 Aug 2010; Raúl Porcel <armin76@gentoo.org>
+  gnome-disk-utility-2.28.1.ebuild:
+  alpha/ia64/sh/sparc stable
+
+  11 Aug 2010; Joseph Jezak <josejx@gentoo.org>
+  gnome-disk-utility-2.28.1.ebuild, gnome-disk-utility-2.30.1.ebuild:
+  Marked ~ppc for bug #323803.
+
+  09 Aug 2010; Samuli Suominen <ssuominen@gentoo.org>
+  gnome-disk-utility-2.30.1.ebuild:
+  Don't enable USE nautilus by default because it's enabled in gnome's
+  desktop profile.
+
+  01 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  gnome-disk-utility-2.30.1.ebuild:
+  x86 stable, bug 324077
+
+  31 Jul 2010; Pacho Ramos <pacho@gentoo.org>
+  gnome-disk-utility-2.30.1.ebuild:
+  amd64 stable, bug 324077
+
+  11 Jul 2010; Raúl Porcel <armin76@gentoo.org>
+  gnome-disk-utility-2.30.1.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #323803
+
+  06 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  gnome-disk-utility-2.28.1.ebuild, gnome-disk-utility-2.30.1.ebuild:
+  Keyword ~ppc64 wrt #313563
+
+  16 Jun 2010; Pacho Ramos <pacho@gentoo.org>
+  gnome-disk-utility-2.30.1.ebuild:
+  Reapply potfiles patch since upstream still didn't fix the issue.
+
+  13 Jun 2010; Pacho Ramos <pacho@gentoo.org>
+  +files/gnome-disk-utility-2.30.1-optional-avahi.patch:
+  Committing missing patch, thanks to iamben for noticing.
+
+*gnome-disk-utility-2.30.1 (13 Jun 2010)
+
+  13 Jun 2010; Pacho Ramos <pacho@gentoo.org>
+  +gnome-disk-utility-2.30.1.ebuild, metadata.xml:
+  Add new version for Gnome 2.30. Also fix bug #300620 (thanks to Priit Laes
+  for reporting) adding a 'fat' USE flag like sys-block/gparted.
+
+  04 Jun 2010; Markus Meier <maekke@gentoo.org>
+  gnome-disk-utility-2.28.1.ebuild:
+  x86 stable, bug #314899
+
+  22 May 2010; Raúl Porcel <armin76@gentoo.org>
+  gnome-disk-utility-2.28.1.ebuild:
+  Add ~arm/~sh
+
+  22 May 2010; Raúl Porcel <armin76@gentoo.org>
+  gnome-disk-utility-2.28.1.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #313563
+
+  03 May 2010; Olivier Crête <tester@gentoo.org>
+  gnome-disk-utility-2.28.1.ebuild:
+  amd64 stable, bug #314899
+
+  19 Apr 2010; Pacho Ramos <pacho@gentoo.org>
+  -gnome-disk-utility-2.28.0.ebuild, gnome-disk-utility-2.28.1.ebuild,
+  +files/gnome-disk-utility-2.28.1-fix-potfiles_skip.patch:
+  Drop encoding set from POTFILES.skip since it doesn't need it and causes
+  'intltool-update -m' to fail (see bug #313351 , thanks to Diego for
+  reporting). Removing old testing version.
+
+*gnome-disk-utility-2.28.1 (04 Nov 2009)
+
+  04 Nov 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-disk-utility-2.28.1.ebuild:
+  Version bump. Add missing gnome-doc-utils and libnotify dependency, bug
+  #291880. Fix a crash in nautilus extension. Translation updates.
+
+*gnome-disk-utility-2.28.0 (29 Oct 2009)
+
+  29 Oct 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-disk-utility-2.28.0.ebuild, +metadata.xml:
+  Initial ebuild for GNOME 2.28.

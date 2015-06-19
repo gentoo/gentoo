@@ -1,0 +1,31 @@
+# ChangeLog for games-arcade/trailblazer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/trailblazer/ChangeLog,v 1.7 2015/01/05 19:39:48 tupone Exp $
+
+  05 Jan 2015; Tupone Alfredo <tupone@gentoo.org> trailblazer-0.9.ebuild:
+  EAPI 5
+
+  06 Aug 2011; Diego E. Pettenò <flameeyes@gentoo.org> trailblazer-0.9.ebuild,
+  files/trailblazer-0.9-underlink.patch:
+  QA: apply patches before sedding the Makefile, otherwise underlinking patch
+  would fail if the flags didn't match.
+
+  20 Jun 2011; Tupone Alfredo <tupone@gentoo.org> trailblazer-0.9.ebuild,
+  +files/trailblazer-0.9-underlink.patch:
+  Fix underlink. Bug #369757 by Diego Elio Pettenò
+
+  30 Sep 2010; Tupone Alfredo <tupone@gentoo.org> trailblazer-0.9.ebuild,
+  +files/trailblazer-0.9-ldflags.patch:
+  Respect LDFLAGS. Bug #337432 by flameeyes@gentoo.org
+
+  24 Apr 2007; Timothy Redaelli <drizzt@gentoo.org> trailblazer-0.9.ebuild:
+  Add ~x86-fbsd keyword.
+  Thanks to Nathan Smith for reporting wrt bug #175779
+
+  08 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*trailblazer-0.9 (18 Aug 2005)
+
+  18 Aug 2005; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Alexandru Toma #82441.

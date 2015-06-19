@@ -1,0 +1,49 @@
+# ChangeLog for net-p2p/phxd
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/phxd/ChangeLog,v 1.12 2014/08/10 20:37:50 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  phxd-0.1.0_pre23092005.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> phxd-0.1.0_pre23092005.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+  03 Aug 2013; Michał Górny <mgorny@gentoo.org>
+  phxd-0.1.0_pre23092005.ebuild:
+  Move dev-python/twisted to dev-python/twisted-core.
+
+  10 Sep 2008; Raúl Porcel <armin76@gentoo.org>
+  phxd-0.1.0_pre23092005.ebuild:
+  Remove useless die, bug #237284
+
+  16 Aug 2008; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove kang from metadata.xml (#51508)
+
+  29 Jun 2008; Torsten Veller <tove@gentoo.org>
+  phxd-0.1.0_pre23092005.ebuild:
+  Add missing die: || "..." -> || die "..."
+
+  09 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  phxd-0.1.0_pre23092005.ebuild:
+  Use doenvd for bug #173884.
+
+  09 Jan 2007; Guillaume Destuynder <kang@gentoo.org>
+  phxd-0.1.0_pre23092005.ebuild:
+  Fix #159829 - removed mysql deps. Removed 0.0.1 ebuild.
+
+  23 Nov 2006; Francesco Riosa <vivo@gentoo.org>
+  phxd-0.0.1_pre26062005.ebuild, phxd-0.1.0_pre23092005.ebuild:
+  dev-db/mysql => virtual/mysql
+
+*phxd-0.1.0_pre23092005 (23 Sep 2005)
+  23 Sep 2005; Guillaume Destuynder <kang@gentoo.org>
+  +phxd-0.1.0_pre23092005.ebuild:
+  - Version bump. has IRC compatibility support. See vivahx.com for more info.
+
+  27 Jun 2005; David Holm <dholm@gentoo.org> phxd-0.0.1_pre26062005.ebuild:
+  Added to ~ppc.
+
+  26 Jun 2005; Guillaume Destuynder <kang@gentoo.org> ChangeLog:
+  Initial import. This ebuild provides a replacement for net-p2p/mhxd which is
+  not supported anymore upstream.

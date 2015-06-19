@@ -1,0 +1,36 @@
+--- focuswriter.pro.orig	2014-07-20 17:37:05.000000000 +0400
++++ focuswriter.pro	2014-07-31 17:56:00.702801120 +0400
+@@ -90,13 +90,14 @@
+ 		src/spelling/dictionary_provider_voikko.cpp
+ 
+ 	lessThan(QT_MAJOR_VERSION, 5) {
++		CONFIG += qtsingleapplication
+ 		SOURCES += src/sdl/sound.cpp
+ 	} else {
+ 		SOURCES += src/sound.cpp
+ 	}
+ }
+ 
+-INCLUDEPATH += src src/fileformats src/qtsingleapplication src/qtzip src/spelling
++INCLUDEPATH += src src/fileformats src/qtzip src/spelling
+ 
+ # Specify program sources
+ HEADERS += src/action_manager.h \
+@@ -155,8 +156,6 @@
+ 	src/fileformats/rtf_tokenizer.h \
+ 	src/fileformats/rtf_writer.h \
+ 	src/fileformats/txt_reader.h \
+-	src/qtsingleapplication/qtsingleapplication.h \
+-	src/qtsingleapplication/qtlocalpeer.h \
+ 	src/qtzip/qtzipreader.h \
+ 	src/qtzip/qtzipwriter.h \
+ 	src/spelling/abstract_dictionary.h \
+@@ -219,8 +218,6 @@
+ 	src/fileformats/rtf_tokenizer.cpp \
+ 	src/fileformats/rtf_writer.cpp \
+ 	src/fileformats/txt_reader.cpp \
+-	src/qtsingleapplication/qtsingleapplication.cpp \
+-	src/qtsingleapplication/qtlocalpeer.cpp \
+ 	src/qtzip/qtzip.cpp \
+ 	src/spelling/dictionary_dialog.cpp \
+ 	src/spelling/dictionary_manager.cpp \

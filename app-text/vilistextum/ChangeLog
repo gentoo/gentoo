@@ -1,0 +1,161 @@
+# ChangeLog for app-text/vilistextum
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/vilistextum/ChangeLog,v 1.45 2013/12/24 14:54:07 jlec Exp $
+
+  24 Dec 2013; Justin Lecher <jlec@gentoo.org> -vilistextum-2.6.9.ebuild:
+  Drop old
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> vilistextum-2.6.9-r1.ebuild:
+  Stable for x86, wrt bug #491954
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> vilistextum-2.6.9-r1.ebuild:
+  Stable for sparc, wrt bug #491954
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> vilistextum-2.6.9-r1.ebuild:
+  amd64 stable, bug #491954
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> vilistextum-2.6.9-r1.ebuild:
+  Stable for ppc, wrt bug #491954
+
+  23 Nov 2013; Fabian Groffen <grobian@gentoo.org>
+  files/vilistextum-2.6.9-blockquote.patch:
+  Fix utf8 check after changes by blockquote patch, bug #491954
+
+  22 Nov 2013; Justin Lecher <jlec@gentoo.org> vilistextum-2.6.9-r1.ebuild,
+  metadata.xml:
+  Bump to EAPI=5
+
+*vilistextum-2.6.9-r1 (11 Sep 2013)
+
+  11 Sep 2013; Fabian Groffen <grobian@gentoo.org>
+  +files/vilistextum-2.6.9-blockquote.patch, +vilistextum-2.6.9-r1.ebuild:
+  Add patch by me to fix blockquote rendering.
+
+  08 Aug 2011; Fabian Groffen <grobian@gentoo.org> vilistextum-2.6.9.ebuild,
+  +files/vilistextum-2.6.9-darwin11.patch:
+  Fixed for OSX Lion (10.7), marked ~x64-macos
+
+  27 Mar 2011; Jeremy Olexa <darkside@gentoo.org> -vilistextum-2.6.7.ebuild,
+  -vilistextum-2.6.7-r1.ebuild:
+  remove old ebuilds
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> vilistextum-2.6.9.ebuild:
+  sparc stable wrt #350833
+
+  06 Feb 2011; Fabian Groffen <grobian@gentoo.org> vilistextum-2.6.9.ebuild:
+  Check for en_GB before resorting to Australian, for what it's worth
+
+  06 Feb 2011; Fabian Groffen <grobian@gentoo.org> vilistextum-2.6.9.ebuild:
+  Search for an UTF-8 locale for people that lack en_US.UTF-8, such that we
+  don't blindly hardcode an invalid locale to be used that causes invalid
+  locale errors at runtime
+
+  06 Feb 2011; Fabian Groffen <grobian@gentoo.org> vilistextum-2.6.9.ebuild:
+  Marked ~x86-solaris
+
+  15 Jan 2011; Markus Meier <maekke@gentoo.org> vilistextum-2.6.9.ebuild:
+  x86 stable, bug #350833
+
+  08 Jan 2011; Markos Chandras <hwoarang@gentoo.org> vilistextum-2.6.9.ebuild:
+  Stable on amd64 wrt bug #350833
+
+  07 Jan 2011; Brent Baude <ranger@gentoo.org> vilistextum-2.6.9.ebuild:
+  Marking vilistextum-2.6.9 ppc for bug 350833
+
+  07 Jan 2011; Justin Lecher <jlec@gentoo.org> vilistextum-2.6.9.ebuild:
+  Make sure correct locale is present during test, 350833
+
+  06 Jan 2011; Justin Lecher <jlec@gentoo.org> vilistextum-2.6.7.ebuild,
+  vilistextum-2.6.7-r1.ebuild, vilistextum-2.6.9.ebuild:
+  Some Clean up
+
+  18 Mar 2010; Fabian Groffen <grobian@gentoo.org> vilistextum-2.6.9.ebuild,
+  +files/vilistextum-2.6.9-prefix.patch:
+  Add Prefix patch, transferred Prefix keywords, override locale
+  autodetection with en_US.UTF-8 to avoid using a random (possibly
+  non-working) other UTF-8 locale.
+
+*vilistextum-2.6.7-r1 (06 Mar 2010)
+
+  06 Mar 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +vilistextum-2.6.7-r1.ebuild, vilistextum-2.6.9.ebuild:
+  do not try to install *.css which are not available, #305543, thanks
+  Christophe LEFEBVRE for the patches
+
+*vilistextum-2.6.9 (13 Feb 2008)
+
+  13 Feb 2008; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org>
+  +files/vilistextum-2.6.9-gentoo.diff, +vilistextum-2.6.9.ebuild:
+  Version bump, #155734
+
+  11 Jan 2008; Fabian Groffen <grobian@gentoo.org> vilistextum-2.6.7.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  04 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  vilistextum-2.6.7.ebuild:
+  Fix autotools handling, patch by Jakub Moc in bug #152215.
+
+  29 Oct 2005; Fabian Groffen <grobian@gentoo.org> vilistextum-2.6.7.ebuild:
+  Marked ~ppc-macos (bug #109438)
+
+  16 Jul 2005; Joseph Jezak <josejx@gentoo.org> vilistextum-2.6.7.ebuild:
+  Marked ppc stable for bug #99221.
+
+  31 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  vilistextum-2.6.7.ebuild:
+  mark ~ppc
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> vilistextum-2.6.7.ebuild:
+  stable on amd64
+
+  04 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  vilistextum-2.6.7.ebuild:
+  Stable on sparc wrt #74694
+
+  04 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> -vilistextum-2.6.1.ebuild,
+  -vilistextum-2.6.2.ebuild, vilistextum-2.6.7.ebuild:
+  Marked stable on x86 for bug 74694 and removed vulnerable versions;
+  temporarily removed kde support until a version of kde-misc/kaptain is
+  marked stable.
+
+  02 Jan 2005; Aaron Walker <ka0ttic@gentoo.org>
+  files/vilistextum-2.6.7-use-glibc-iconv.diff, vilistextum-2.6.7.ebuild:
+  Updated glibc iconv patch from upstream maintainer to allow
+  --disable-multibyte. Also apply that patch regardless of USE flags.
+
+*vilistextum-2.6.7 (01 Jan 2005)
+
+  01 Jan 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/vilistextum-2.6.7-gentoo.diff,
+  +files/vilistextum-2.6.7-use-glibc-iconv.diff, +vilistextum-2.6.7.ebuild:
+  Version bump; currently package.mask'd however for testing. See bug 74694.
+
+  21 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml:
+  Add metadata (shell-tools)
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  vilistextum-2.6.1.ebuild, vilistextum-2.6.2.ebuild:
+  virtual/glibc -> virtual/libc
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> vilistextum-2.6.2.ebuild:
+  Add die following econf for bug 48950
+
+  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  vilistextum-2.6.1.ebuild, vilistextum-2.6.2.ebuild:
+  Don't assign default to S; header fix
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*vilistextum-2.6.1.ebuild (2 August 2002)
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> vilistextum-2.6.1.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+*vilistextum-2.6.2 (21 May 2002)
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> vilistextum-2.6.2.ebuild :
+  Added KEYWORDS.
+
+  21 May 2002; Bruce A. Locke <blocke@shivan.org> vilistextum-2.6.2.ebuild :
+
+  Update to 2.6.2

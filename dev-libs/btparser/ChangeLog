@@ -1,0 +1,87 @@
+# ChangeLog for dev-libs/btparser
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/btparser/ChangeLog,v 1.20 2015/04/08 17:51:55 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> btparser-0.24.ebuild,
+  btparser-0.25.ebuild:
+  Drop old Python implementations
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> btparser-0.25.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> btparser-0.25.ebuild:
+  Stable for amd64, wrt bug #512912
+
+*btparser-0.25 (15 Jul 2014)
+
+  15 Jul 2014; Pacho Ramos <pacho@gentoo.org> +btparser-0.25.ebuild:
+  Version bump
+
+  12 Sep 2013; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -btparser-0.17.ebuild, -btparser-0.19.ebuild:
+  Drop old.
+
+  30 Jun 2013; Justin Lecher <jlec@gentoo.org> btparser-0.24.ebuild,
+  metadata.xml:
+  Fix usage of python-r1.eclass
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> btparser-0.19.ebuild,
+  btparser-0.24.ebuild:
+  Stable for x86, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> btparser-0.19.ebuild,
+  btparser-0.24.ebuild:
+  Stable for amd64, wrt bug #458984
+
+*btparser-0.24 (24 Dec 2012)
+
+  24 Dec 2012; Pacho Ramos <pacho@gentoo.org> +btparser-0.24.ebuild,
+  -btparser-0.16.ebuild, -btparser-0.18.ebuild:
+  Version bump, drop old
+
+  04 Oct 2012; Agostino Sarubbo <ago@gentoo.org> btparser-0.17.ebuild:
+  Stable for amd64, wrt bug #427544
+
+  03 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> btparser-0.17.ebuild:
+  x86 stable wrt bug #427544
+
+*btparser-0.19 (29 Sep 2012)
+
+  29 Sep 2012; Pacho Ramos <pacho@gentoo.org> +btparser-0.19.ebuild:
+  Version bump.
+
+*btparser-0.18 (15 Sep 2012)
+
+  15 Sep 2012; Pacho Ramos <pacho@gentoo.org> +btparser-0.18.ebuild:
+  Version bump.
+
+*btparser-0.17 (30 Jun 2012)
+
+  30 Jun 2012; Pacho Ramos <pacho@gentoo.org> +btparser-0.17.ebuild,
+  -btparser-0.13.ebuild:
+  Version bump, remove old.
+
+  15 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> btparser-0.16.ebuild:
+  x86 stable wrt bug #407011
+
+  13 Mar 2012; Agostino Sarubbo <ago@gentoo.org> btparser-0.16.ebuild:
+  Stable for amd64, wrt bug #407011
+
+*btparser-0.16 (07 Mar 2012)
+
+  07 Mar 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +btparser-0.16.ebuild:
+  Version bump. Now with python bindings, similarity metrics, and better thread
+  parsing.
+
+  14 Jan 2012; Markus Meier <maekke@gentoo.org> btparser-0.13.ebuild:
+  x86 stable, bug #393007
+
+  29 Dec 2011; Pacho Ramos <pacho@gentoo.org> btparser-0.13.ebuild:
+  amd64 stable, bug 393007
+
+*btparser-0.13 (16 Nov 2011)
+
+  16 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +btparser-0.13.ebuild, +metadata.xml:
+  Add gdb backtrace parsing library from the gnome overlay; needed for abrt.

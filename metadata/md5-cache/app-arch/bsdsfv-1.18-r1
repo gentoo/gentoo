@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=all-in-one SFV checksum utility
+EAPI=3
+HOMEPAGE=http://bsdsfv.sourceforge.net/
+KEYWORDS=amd64 arm ~hppa m68k ppc s390 sh sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=BSD
+SLOT=0
+SRC_URI=mirror://sourceforge/bsdsfv/bsdsfv-1.18.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=5046eee4a9d6e404a578a0f880f88232

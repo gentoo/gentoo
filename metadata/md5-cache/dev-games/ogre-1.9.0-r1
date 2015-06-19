@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=media-libs/freetype:2 virtual/opengl virtual/glu x11-libs/libX11 x11-libs/libXaw x11-libs/libXrandr x11-libs/libXt boost? ( dev-libs/boost ) cg? ( media-gfx/nvidia-cg-toolkit ) freeimage? ( media-libs/freeimage ) gles2? ( >=media-libs/mesa-9.0.0[gles2] ) gles3? ( >=media-libs/mesa-10.0.0[gles2] ) gl3plus? ( >=media-libs/mesa-9.2.5 ) ois? ( dev-games/ois ) threads? ( poco? ( dev-libs/poco ) tbb? ( dev-cpp/tbb ) ) tools? ( dev-libs/tinyxml[stl] ) zip? ( sys-libs/zlib dev-libs/zziplib ) x11-proto/xf86vidmodeproto virtual/pkgconfig doc? ( app-doc/doxygen ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Object-oriented Graphics Rendering Engine
+EAPI=5
+HOMEPAGE=http://www.ogre3d.org/
+IUSE=+boost cg doc double-precision examples +freeimage gl3plus gles2 gles3 ois +opengl poco profile tbb threads tools +zip
+KEYWORDS=amd64 ~arm x86
+LICENSE=MIT public-domain
+RDEPEND=media-libs/freetype:2 virtual/opengl virtual/glu x11-libs/libX11 x11-libs/libXaw x11-libs/libXrandr x11-libs/libXt boost? ( dev-libs/boost ) cg? ( media-gfx/nvidia-cg-toolkit ) freeimage? ( media-libs/freeimage ) gles2? ( >=media-libs/mesa-9.0.0[gles2] ) gles3? ( >=media-libs/mesa-10.0.0[gles2] ) gl3plus? ( >=media-libs/mesa-9.2.5 ) ois? ( dev-games/ois ) threads? ( poco? ( dev-libs/poco ) tbb? ( dev-cpp/tbb ) ) tools? ( dev-libs/tinyxml[stl] ) zip? ( sys-libs/zlib dev-libs/zziplib )
+REQUIRED_USE=threads? ( ^^ ( boost poco tbb ) ) poco? ( threads ) tbb? ( threads ) ?? ( gl3plus ( || ( gles2 gles3 ) ) ) gles3? ( gles2 ) gl3plus? ( opengl )
+RESTRICT=test
+SLOT=0/1.9.0
+SRC_URI=https://bitbucket.org/sinbad/ogre/get/v1-9-0.tar.bz2 -> ogre-1.9.0.tar.bz2
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vcs-snapshot	58b766562c9fbfb3268b04e33cdf2f66
+_md5_=73626e500859c40fdb28fe3161fc2ab5

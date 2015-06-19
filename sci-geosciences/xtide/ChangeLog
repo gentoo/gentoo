@@ -1,0 +1,30 @@
+# ChangeLog for sci-geosciences/xtide
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/xtide/ChangeLog,v 1.8 2014/11/25 22:55:35 hasufell Exp $
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  27 Oct 2013; Julian Ospald <hasufell@gentoo.org> xtide-2.13.ebuild:
+  stable on x86 wrt #474420
+
+*xtide-2.13.1 (13 Jul 2013)
+
+  13 Jul 2013; Julian Ospald <hasufell@gentoo.org> +xtide-2.13.1.ebuild,
+  +files/xtide-2.13.1-Werror.patch, +files/xtide-2.13.1-gps-switch.patch:
+  version bump
+
+  26 Jun 2013; Chema Alonso <nimiux@gentoo.org> xtide-2.13.ebuild:
+  Stable for amd64 wrt bug #474420
+
+  20 May 2013; Julian Ospald <hasufell@gentoo.org> xtide-2.13.ebuild:
+  fix dependencies wrt #470748
+
+  17 Feb 2013; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  set correct maintainer
+
+*xtide-2.13 (10 Feb 2013)
+
+  10 Feb 2013; Julian Ospald <hasufell@gentoo.org> +xtide-2.13.ebuild,
+  +metadata.xml:
+  initial import wrt #214868 based on Tim Ceras work

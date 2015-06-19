@@ -1,0 +1,36 @@
+# ChangeLog for app-misc/gnutu
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/gnutu/ChangeLog,v 1.8 2012/10/17 16:33:22 ago Exp $
+
+  17 Oct 2012; Agostino Sarubbo <ago@gentoo.org> gnutu-2.5.ebuild:
+  Add ~amd64, eapi4
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -gnutu-2.0.ebuild:
+  Remove old
+
+*gnutu-2.5 (08 Jan 2009)
+
+  08 Jan 2009; Jeroen Roovers <jer@gentoo.org> +gnutu-2.5.ebuild:
+  Version bump thanks to Ben Leggett (bug #147369).
+
+  14 Jul 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Assigning app-misc/gnutu to m-needed, as chriswhite has been retired (#56211).
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  01 Jan 2006; Chris White <chriswhite@gentoo.org> gnutu-2.0.ebuild:
+  Fix bug #110163.
+
+*gnutu-2.0 (03 Oct 2005)
+
+  03 Oct 2005; Chris White <chriswhite@gentoo.org>
+  +files/gnutu-2.0-event.patch, +metadata.xml, +gnutu-2.0.ebuild:
+  Initial import into the tree. This fixes bug #104521. Ebuild submitted by
+  Craig Duquette. Original ebuild posted by forums user GaMMa.

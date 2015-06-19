@@ -1,0 +1,55 @@
+# ChangeLog for www-client/weboob
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-client/weboob/ChangeLog,v 1.9 2015/04/08 18:30:30 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> weboob-0g.ebuild,
+  weboob-0h.ebuild, weboob-9998.ebuild, weboob-9999.ebuild:
+  Drop old Python implementations
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> weboob-0g.ebuild,
+  weboob-0h.ebuild, weboob-9998.ebuild, weboob-9999.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*weboob-0h (09 Jan 2014)
+
+  09 Jan 2014; Patrick Lauer <patrick@gentoo.org> +weboob-0h.ebuild:
+  Bump for #497592
+
+  12 Sep 2013; Michał Górny <mgorny@gentoo.org> weboob-0g.ebuild,
+  weboob-9998.ebuild, weboob-9999.ebuild:
+  Remove dep on virtual/python-json. JSON is now built-in in all supported
+  implementations.
+
+*weboob-0g (03 Aug 2013)
+
+  03 Aug 2013; Mike Gilbert <floppym@gentoo.org> +weboob-0g.ebuild,
+  -weboob-0d.ebuild, -weboob-0e-r2.ebuild, weboob-9998.ebuild,
+  weboob-9999.ebuild:
+  Version bump based on ebuild by Laurent Bachelier, bug 463396. Convert to
+  distutils-r1.
+
+*weboob-0e-r2 (25 Mar 2013)
+
+  25 Mar 2013; Patrick Lauer <patrick@gentoo.org> +weboob-0e-r2.ebuild,
+  -weboob-0e-r1.ebuild, weboob-9998.ebuild, weboob-9999.ebuild:
+  Fix PyQt deps #462368
+
+*weboob-0e-r1 (25 Mar 2013)
+
+  25 Mar 2013; Patrick Lauer <patrick@gentoo.org> +weboob-0e-r1.ebuild,
+  -weboob-0e.ebuild:
+  Bump for #462842
+
+*weboob-0e (28 Jan 2013)
+
+  28 Jan 2013; Patrick Lauer <patrick@gentoo.org> +weboob-0e.ebuild,
+  weboob-9998.ebuild, weboob-9999.ebuild:
+  Bump for #454040
+
+*weboob-0d (25 Jan 2013)
+*weboob-9999 (25 Jan 2013)
+*weboob-9998 (25 Jan 2013)
+
+  25 Jan 2013; Patrick Lauer <patrick@gentoo.org> +metadata.xml,
+  +weboob-0d.ebuild, +weboob-9998.ebuild, +weboob-9999.ebuild:
+  Initial import from laurentb overlay

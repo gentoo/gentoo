@@ -1,0 +1,22 @@
+This check leads to false positives for lilo.  We disable it.
+
+From: Anthony G. Basile <blueness@gentoo.org>
+
+diff -Naur bin86-0.16.20.orig/as/assemble.c bin86-0.16.20/as/assemble.c
+--- bin86-0.16.20.orig/as/assemble.c	2013-10-29 11:45:37.000000000 -0400
++++ bin86-0.16.20/as/assemble.c	2013-12-09 18:43:45.018184693 -0500
+@@ -325,12 +325,14 @@
+     /* We handle "rep[ne]" refix as separate instruction; check if it's valid */
+     if (prevop == 0xF2 && (opcode&0xF6) != 0xA6)        /* REPNE CMPS/SCAS */
+         error (REPNE_STRING);
++#if 0
+     if (prevop == 0xF3 && !((opcode&0xFC) == 0x6C ||    /* REP INS/OUTS */
+         (opcode&0xFC) == 0xA4 ||                        /* REP MOVS/CMPS */
+         (opcode&0xFC) == 0xAC ||                        /* REP SCAS/LODS */
+         (opcode&0xFE) == 0xAA))                         /* REP STOS */
+         error (REP_STRING);
+ #endif
++#endif
+     routine = rout_table[symptr->value_reg_or_op.op.routine];
+     getsym();
+     (*routine)();

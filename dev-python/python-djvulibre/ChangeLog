@@ -1,0 +1,18 @@
+# ChangeLog for dev-python/python-djvulibre
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-djvulibre/ChangeLog,v 1.5 2015/06/03 21:19:59 jlec Exp $
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  06 Jul 2014; Sergey Popov <pinkbyte@gentoo.org>
+  python-djvulibre-0.3.9.ebuild:
+  Add missing dependency on dev-python/setuptools, correct dependency on
+  dev-python/cython, wrt bug #514298. Thanks to Patrick Lauer for discovering
+  this issue and Ian Delaney - for providing patch
+
+*python-djvulibre-0.3.9 (28 Feb 2013)
+
+  28 Feb 2013; Sergey Popov <pinkbyte@gentoo.org>
+  +python-djvulibre-0.3.9.ebuild, +metadata.xml:
+  Initial commit, wrt bug #459624

@@ -1,0 +1,519 @@
+# ChangeLog for sys-libs/zlib
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/zlib/ChangeLog,v 1.136 2014/01/17 04:23:20 vapier Exp $
+
+  17 Jan 2014; Mike Frysinger <vapier@gentoo.org> zlib-1.2.8-r1.ebuild:
+  Add arm64 keywords.
+
+  16 Jan 2014; Mike Frysinger <vapier@gentoo.org> zlib-1.2.8-r1.ebuild:
+  Mark m68k/s390/sh stable.
+
+  27 Dec 2013; Akinori Hattori <hattya@gentoo.org> zlib-1.2.8-r1.ebuild:
+  ia64 stable wrt bug #488916
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> zlib-1.2.8-r1.ebuild:
+  Stable for sparc, wrt bug #488916
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> zlib-1.2.8-r1.ebuild:
+  Stable for ppc, wrt bug #488916
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> zlib-1.2.8-r1.ebuild:
+  Stable for ppc64, wrt bug #488916
+
+  21 Nov 2013; Sergey Popov <pinkbyte@gentoo.org> zlib-1.2.8-r1.ebuild:
+  Stable on arm, wrt bug #488916
+
+  03 Nov 2013; Matt Turner <mattst88@gentoo.org> zlib-1.2.8-r1.ebuild:
+  alpha stable, bug 488916.
+
+  01 Nov 2013; Agostino Sarubbo <ago@gentoo.org> zlib-1.2.8-r1.ebuild:
+  Stable for x86, wrt bug #488916
+
+  01 Nov 2013; Agostino Sarubbo <ago@gentoo.org> zlib-1.2.8-r1.ebuild:
+  Stable for amd64, wrt bug #488916
+
+  25 Oct 2013; Jeroen Roovers <jer@gentoo.org> zlib-1.2.8-r1.ebuild:
+  Stable for HPPA (bug #488916).
+
+  28 Jul 2013; Alexis Ballier <aballier@gentoo.org> zlib-1.2.8-r1.ebuild:
+  Fix blocker on emul-libs
+
+*zlib-1.2.8-r1 (23 Jun 2013)
+
+  23 Jun 2013; Pacho Ramos <pacho@gentoo.org> +zlib-1.2.8-r1.ebuild:
+  Add ebuild supporting native multilib (#457134, thanks to mgorny and vapier
+  for their help)
+
+  17 Jun 2013; Mike Frysinger <vapier@gentoo.org> zlib-1.2.8.ebuild:
+  Fix transposed emake #473370 by Michał Górny.
+
+  05 Jun 2013; Mike Frysinger <vapier@gentoo.org> metadata.xml:
+  Add upstream CPE tag (security info) from ChromiumOS.
+
+*zlib-1.2.8 (04 May 2013)
+
+  04 May 2013; Mike Frysinger <vapier@gentoo.org> +zlib-1.2.8.ebuild:
+  Version bump #468014 by Samuli Suominen.
+
+  30 Sep 2012; Raúl Porcel <armin76@gentoo.org> zlib-1.2.7.ebuild:
+  ia64/m68k/s390/sh/sparc stable wrt #435754
+
+  28 Sep 2012; Johannes Huber <johu@gentoo.org> zlib-1.2.7.ebuild:
+  Stable for x86, wrt bug #435754
+
+  28 Sep 2012; Matt Turner <mattst88@gentoo.org> zlib-1.2.7.ebuild:
+  Stable on alpha, bug 435754.
+
+  26 Sep 2012; Anthony G. Basile <blueness@gentoo.org> zlib-1.2.7.ebuild:
+  stable arm, bug #435754
+
+  26 Sep 2012; Jeroen Roovers <jer@gentoo.org> zlib-1.2.7.ebuild:
+  Stable for HPPA (bug #435754).
+
+  25 Sep 2012; Anthony G. Basile <blueness@gentoo.org> zlib-1.2.7.ebuild:
+  stable ppc64, bug #435754
+
+  25 Sep 2012; Anthony G. Basile <blueness@gentoo.org> zlib-1.2.7.ebuild:
+  stable ppc, bug #435754
+
+  23 Sep 2012; Agostino Sarubbo <ago@gentoo.org> zlib-1.2.7.ebuild:
+  Stable for amd64, wrt bug #435754
+
+  18 Aug 2012; Mike Frysinger <vapier@gentoo.org> zlib-1.2.7.ebuild:
+  Extract host os field via config.sub #347167 by Diego Elio Pettenò.
+
+  18 Aug 2012; Mike Frysinger <vapier@gentoo.org> zlib-1.2.7.ebuild:
+  Remove libz/libminizip static files by name to avoid deleting files for
+  targets that need more #419645 by Maciej Szmigiero.
+
+  08 Jul 2012; Raúl Porcel <armin76@gentoo.org> zlib-1.2.5.1-r1.ebuild,
+  zlib-1.2.5.1-r2.ebuild:
+  ia64/m68k/s390/sh/sparc stable wrt #384483
+
+  17 Jun 2012; Raúl Porcel <armin76@gentoo.org> zlib-1.2.5.1-r1.ebuild:
+  ia64/m68k/s390/sh/sparc stable wrt #384483
+
+  26 May 2012; Markus Meier <maekke@gentoo.org> zlib-1.2.5.1-r2.ebuild:
+  arm stable, bug #384483
+
+  24 May 2012; Matt Turner <mattst88@gentoo.org> zlib-1.2.5.1-r2.ebuild:
+  Stable on alpha, bug 384483.
+
+  22 May 2012; Jeff Horelick <jdhore@gentoo.org> zlib-1.2.5.1-r2.ebuild:
+  marked x86 per bug 384483
+
+  20 May 2012; Agostino Sarubbo <ago@gentoo.org> zlib-1.2.5.1-r2.ebuild:
+  Stable for amd64, wrt bug #384483
+
+  19 May 2012; Samuli Suominen <ssuominen@gentoo.org> zlib-1.2.5.1-r2.ebuild:
+  ppc64 stable wrt #384483
+
+  06 May 2012; Brent Baude <ranger@gentoo.org> zlib-1.2.5.1-r2.ebuild:
+  Marking zlib-1.2.5.1-r2 ppc for bug 384483
+
+  03 May 2012; Mike Frysinger <vapier@gentoo.org> zlib-1.2.6.ebuild,
+  zlib-1.2.7.ebuild:
+  Fix by jk3064 for mingw headers #409801.
+
+*zlib-1.2.7 (03 May 2012)
+
+  03 May 2012; Mike Frysinger <vapier@gentoo.org> +zlib-1.2.7.ebuild:
+  Version bump #414453 by Samuli Suominen.
+
+  01 May 2012; Jeroen Roovers <jer@gentoo.org> zlib-1.2.5.1-r2.ebuild:
+  Stable for HPPA (bug #384483).
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> zlib-1.2.6.ebuild:
+  keyword ~amd64-fbsd
+
+*zlib-1.2.6 (30 Jan 2012)
+
+  30 Jan 2012; Mike Frysinger <vapier@gentoo.org> +zlib-1.2.6.ebuild:
+  Version bump.
+
+  23 Sep 2011; Justin Lecher <jlec@gentoo.org> zlib-1.2.5.1-r2.ebuild,
+  metadata.xml:
+  econf dies alone
+
+  21 Sep 2011; Mike Frysinger <vapier@gentoo.org> zlib-1.2.5.1-r2.ebuild:
+  Also rename macros in new minizip headers.
+
+*zlib-1.2.5.1-r2 (21 Sep 2011)
+
+  21 Sep 2011; Mike Frysinger <vapier@gentoo.org>
+  +files/zlib-1.2.4-minizip-autotools.patch, +zlib-1.2.5.1-r2.ebuild,
+  metadata.xml:
+  Add USE=static-libs support, and USE=minizip to control building of the
+  minizip code as a library for other apps to link against (like vlc) #383351.
+
+*zlib-1.2.5.1-r1 (16 Sep 2011)
+
+  16 Sep 2011; Mike Frysinger <vapier@gentoo.org> +zlib-1.2.5.1-r1.ebuild:
+  Rename OF/ON defines in exported header to avoid collisions with other
+  packages #383179 by Ben Longbons.
+
+*zlib-1.2.5.1 (11 Sep 2011)
+
+  11 Sep 2011; Mike Frysinger <vapier@gentoo.org> +zlib-1.2.5.1.ebuild,
+  +files/zlib-1.2.5.1-symlinks.patch, +files/zlib-1.2.5.1-version.patch:
+  Version bump.
+
+  01 May 2011; Kacper Kowalik <xarthisius@gentoo.org> zlib-1.2.5-r2.ebuild:
+  ppc64 stable wrt #359953
+
+  10 Apr 2011; Raúl Porcel <armin76@gentoo.org> zlib-1.2.5-r2.ebuild:
+  ia64/m68k/s390/sh/sparc stable wrt #359953
+
+  08 Apr 2011; Markus Meier <maekke@gentoo.org> zlib-1.2.5-r2.ebuild:
+  arm stable, bug #359953
+
+  29 Mar 2011; Jeroen Roovers <jer@gentoo.org> zlib-1.2.5-r2.ebuild:
+  Stable for HPPA (bug #359953).
+
+  27 Mar 2011; Brent Baude <ranger@gentoo.org> zlib-1.2.5-r2.ebuild:
+  stable ppc, bug 359953
+
+  27 Mar 2011; Tobias Klausmann <klausman@gentoo.org> zlib-1.2.5-r2.ebuild:
+  Stable on alpha, bug #359953
+
+  26 Mar 2011; Christian Faulhammer <fauli@gentoo.org> zlib-1.2.5-r2.ebuild:
+  stable x86, bug 359953
+
+  22 Mar 2011; Christoph Mende <angelos@gentoo.org> zlib-1.2.5-r2.ebuild:
+  Stable on amd64 wrt bug #359953
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> zlib-1.2.3-r1.ebuild:
+  Drop to ~mips
+
+  08 Jul 2010; Mike Frysinger <vapier@gentoo.org> zlib-1.2.5-r2.ebuild:
+  Update by Alon Bar-Lev for mingw support #310307 by Nathan Phillip Brink.
+
+  07 Jul 2010; Mike Frysinger <vapier@gentoo.org> zlib-1.2.5-r2.ebuild,
+  files/zlib-1.2.5-fbsd_chosts.patch, +files/zlib-1.2.5-ldflags.patch,
+  files/zlib-1.2.5-lfs-decls.patch:
+  Clean up patch documentation and fix parallel builds #319661 by Xake.
+
+  01 May 2010; Alexis Ballier <aballier@gentoo.org> zlib-1.2.5-r2.ebuild,
+  +files/zlib-1.2.5-fbsd_chosts.patch:
+  add a small patch to recognize freebsd chosts too, bug #316841
+
+*zlib-1.2.5-r2 (29 Apr 2010)
+
+  29 Apr 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -zlib-1.2.5-r1.ebuild, +zlib-1.2.5-r2.ebuild,
+  files/zlib-1.2.5-lfs-decls.patch:
+  Try two at guessing what zlib wanted to do, assume a mistake between .4
+  and .5 where a condition was reversed, this one makes more sense in light
+  of 1.2.4, the definitions _and_ the comments.
+
+*zlib-1.2.5-r1 (25 Apr 2010)
+
+  25 Apr 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +zlib-1.2.5-r1.ebuild, +files/zlib-1.2.5-lfs-decls.patch:
+  Revision bump, add patch from bug #316377.
+
+  20 Apr 2010; Mike Frysinger <vapier@gentoo.org> zlib-1.2.5.ebuild:
+  Drop now unnecessary visibility patch #316343 by Alon Bar-Lev.
+
+*zlib-1.2.5 (20 Apr 2010)
+
+  20 Apr 2010; Mike Frysinger <vapier@gentoo.org> +zlib-1.2.5.ebuild:
+  Version bump #316343 by Samuli Suominen.
+
+  14 Apr 2010; Mike Frysinger <vapier@gentoo.org> zlib-1.2.4.ebuild:
+  Tweak the sed on configure tests to cover more cases #310573 by Jan-Erik
+  Skata.
+
+  20 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  files/zlib-1.2.4-configure-LANG.patch:
+  Use upstream patch instead.
+
+  19 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> zlib-1.2.4.ebuild,
+  +files/zlib-1.2.4-configure-LANG.patch:
+  Fix NLS issues wrt #310225, thanks to Priit Laes for reporting.
+
+  19 Mar 2010; Mike Frysinger <vapier@gentoo.org> zlib-1.2.4.ebuild:
+  Add to ~arch and block older broken libxml2 versions #309623.
+
+*zlib-1.2.4 (16 Mar 2010)
+
+  16 Mar 2010; Mike Frysinger <vapier@gentoo.org> +zlib-1.2.4.ebuild,
+  +files/zlib-1.2.4-LDFLAGS.patch, +files/zlib-1.2.4-build.patch,
+  +files/zlib-1.2.4-visibility-support.patch:
+  Version bump #309623 by Samuli Suominen.
+
+  10 Oct 2009; Mike Frysinger <vapier@gentoo.org> zlib-1.2.3-r1.ebuild,
+  +files/zlib-1.2.3-mingw-implib.patch:
+  Improve zlib build & install for mingw #288212 by spadix.
+
+  02 May 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/zlib-1.2.3-build.patch, zlib-1.2.3-r1.ebuild:
+  Fixes from kerzol for mingw targets #182903.
+
+  12 May 2007; Joshua Kinard <kumba@gentoo.org> zlib-1.2.3-r1.ebuild:
+  Stable on mips.
+
+  01 Nov 2006; Bryan Østergaard <kloeri@gentoo.org> zlib-1.2.3-r1.ebuild:
+  Stable on Alpha, bug 152573.
+
+  31 Oct 2006; Danny van Dyk <kugelfang@gentoo.org> zlib-1.2.3-r1.ebuild:
+  Marked stable on amd64.
+
+  30 Oct 2006; Jeroen Roovers <jer@gentoo.org> zlib-1.2.3-r1.ebuild:
+  Stable for HPPA (bug #152573).
+
+  25 Oct 2006; Lars Weiler <pylon@gentoo.org> ChangeLog:
+  Stable on ppc; bug #152573.
+
+  25 Oct 2006; Jason Wever <weeve@gentoo.org> zlib-1.2.3-r1.ebuild:
+  Stable on SPARC wrt bug #152573.
+
+  23 Oct 2006; Andrej Kacian <ticho@gentoo.org> zlib-1.2.3-r1.ebuild:
+  Stable on x86, bug #152573.
+
+  23 Oct 2006; Markus Rothe <corsair@gentoo.org> zlib-1.2.3-r1.ebuild:
+  Stable on ppc64; bug #152573
+
+  16 Oct 2006; Roy Marples <uberlord@gentoo.org> zlib-1.2.3-r1.ebuild:
+  Add ~sparc-fbsd keyword.
+
+*zlib-1.2.3-r1 (07 Oct 2006)
+
+  07 Oct 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/zlib-1.2.3-r1-bsd-soname.patch,
+  +files/zlib-1.2.3-visibility-support.patch, +zlib-1.2.3-r1.ebuild:
+  Use gcc visibility to handle exporting of symbols #149929 by galtgendo.
+
+  30 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> zlib-1.2.3.ebuild:
+  Add ~x86-fbsd keyword.
+
+  19 Mar 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/zlib-1.2.3-LDFLAGS.patch, zlib-1.2.3.ebuild:
+  Fixes by Diego Pettenò to respect user LDFLAGS and not run ldconfig #126718.
+
+  06 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  files/zlib-1.2.1-fPIC.patch:
+  Don't try to execute -fPIC, append that afterward to make NetBSD work _and_
+  PIC being used, or it will build only static libraries on PIC arches.
+
+  21 Feb 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/zlib-1.2.3-bsd-soname.patch, zlib-1.2.3.ebuild:
+  Generate DT_SONAME in the shared lib on BSD hosts #123571 by Diego Pettenò.
+
+  22 Jul 2005; Hardave Riar <hardave@gentoo.org> zlib-1.2.3.ebuild:
+  Stable on mips, bug #99751.
+
+  21 Jul 2005; Aron Griffis <agriffis@gentoo.org> zlib-1.2.3.ebuild:
+  stable on ia64
+
+  21 Jul 2005; Herbie Hopkins <herbs@gentoo.org> zlib-1.2.3.ebuild:
+  Stable on amd64 wrt bug #99751.
+
+  21 Jul 2005; <solar.@gentoo.org> zlib-1.2.3.ebuild:
+  - stable on x86 for CAN-2005-1849 bug #99751
+
+*zlib-1.2.3 (21 Jul 2005)
+
+  21 Jul 2005; Tavis Ormandy <taviso@gentoo.org> +zlib-1.2.3.ebuild:
+  security bump #99751
+
+  06 Jul 2005; Stephen Bennett <spb@gentoo.org> zlib-1.2.2-r1.ebuild:
+  mips stable for bug #98121
+
+*zlib-1.2.2-r1 (06 Jul 2005)
+
+  06 Jul 2005; Tavis Ormandy <taviso@gentoo.org>
+  +files/zlib-1.2.2-inftrees.patch, +zlib-1.2.2-r1.ebuild:
+  fix #97547 CAN-2005-2096
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> zlib-1.2.2.ebuild:
+  Stable on ppc64
+
+  19 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> zlib-1.2.2.ebuild:
+  Stable on alpha.
+
+  17 Feb 2005; Luca Barbato <lu_zero@gentoo.org> zlib-1.2.2.ebuild:
+  Marked ppc
+
+  06 Feb 2005; Joshua Kinard <kumba@gentoo.org> zlib-1.2.2.ebuild:
+  Marked stable on mips.
+
+  20 Jan 2005; Marcus Hanwell <cryos@gentoo.org> zlib-1.2.2.ebuild:
+  Marking stable on amd64.
+
+  20 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> zlib-1.2.2.ebuild:
+  Stable on sparc
+
+  02 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  zlib-1.2.1-r3.ebuild, zlib-1.2.2.ebuild:
+  Make zlib friendly with multilib by moving some stuff from src_compile to
+  pkg_setup.
+
+  03 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*zlib-1.2.2 (03 Nov 2004)
+
+  03 Nov 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/zlib-1.2.2-mapfile.patch, +zlib-1.2.2.ebuild:
+  Version bump #69920 by Tobias Sager.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  zlib-1.1.4-r4.ebuild, zlib-1.2.1-r2.ebuild:
+  Masked zlib-1.2.1-r2.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  zlib-1.1.4-r4.ebuild:
+  Masked zlib-1.1.4-r4.ebuild stable for ppc
+
+  28 Aug 2004; Travis Tilley <lv@gentoo.org> +files/zlib-1.2.1-fPIC.patch,
+  zlib-1.2.1-r3.ebuild:
+  added a patch to always use -fPIC for the shared library test, otherwise it
+  may fail on -fPIC dependant archs. fixes bug #61868
+
+  27 Aug 2004; Travis Tilley <lv@gentoo.org> zlib-1.2.1-r3.ebuild:
+  moved CONF_LIBDIR logic to use $(get_libdir) instead so that the ebuild will
+  still use lib when CONF_LIBDIR is set, but the current version of portage
+  doesnt have CONF_LIBDIR support
+
+  27 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> zlib-1.2.1-r3.ebuild:
+  Stable on alpha, bug 61749.
+
+  26 Aug 2004; Tom Gall <tgall@gentoo.org> zlib-1.2.1-r3.ebuild:
+  stable on ppc64, bug #61749
+
+  26 Aug 2004; Jon Portnoy <avenj@gentoo.org> zlib-1.2.1-r3.ebuild :
+  Stable on x86
+
+  26 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> zlib-1.2.1-r3.ebuild:
+  Stable on sparc wrt #61749
+
+*zlib-1.2.1-r3 (26 Aug 2004)
+
+  26 Aug 2004; <solar@gentoo.org> +files/zlib-1.2.1-CAN-2004-0797.patch,
+  +zlib-1.2.1-r3.ebuild:
+  security fix. bug #61749
+
+  24 Aug 2004; Sven Wegener <swegener@gentoo.org> zlib-1.1.4-r2.ebuild,
+  zlib-1.1.4-r3.ebuild, zlib-1.1.4-r4.ebuild, zlib-1.2.1-r1.ebuild,
+  zlib-1.2.1.ebuild:
+  Don't assign default to S and added missing IUSE.
+
+  14 Aug 2004; Travis Tilley <lv@gentoo.org> zlib-1.2.1-r2.ebuild:
+  made zlib ebuild CONF_LIBDIR aware for installing to lib64/lib32
+
+  02 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> zlib-1.1.4-r2.ebuild,
+  zlib-1.1.4-r3.ebuild, zlib-1.1.4-r4.ebuild, zlib-1.2.1-r1.ebuild,
+  zlib-1.2.1-r2.ebuild, zlib-1.2.1.ebuild:
+  virtual/glibc -> virtual/libc
+
+  01 Jul 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/zlib-1.2.1-configure.patch:
+  Patch the custom configure file to not error when warnings are spat out #55434
+  by Honza.
+
+  29 Jun 2004; Joshua Kinard <kumba@gentoo.org> zlib-1.2.1-r2.ebuild:
+  Marked stable on sparc and mips.
+
+  28 Jun 2004; Brandon Hale <tseng@gentoo.org> zlib-1.2.1-r2.ebuild:
+  Stable on x86.
+
+  11 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> zlib-1.2.1-r2.ebuild:
+  Stable on alpha.
+
+*zlib-1.2.1-r2 (23 Dec 2003)
+
+  02 May 2004; Mike Frysinger <vapier@gentoo.org> :
+  Don't install doc/man pages if build is in USE.
+
+  23 Dec 2003; Robin H. Johnson <robbat2@gentoo.org> zlib-1.2.1-r2.ebuild:
+  fix bug #36333.
+
+*zlib-1.2.1-r1 (21 Dec 2003)
+
+  21 Dec 2003; Robin H. Johnson <robbat2@gentoo.org> zlib-1.2.1-r1.ebuild:
+  move libraries from /usr/lib to /lib as per bug 27064
+
+*zlib-1.2.1 (02 Dec 2003)
+
+  02 Dec 2003; Seemant Kulleen <seemant@gentoo.org> zlib-1.1.3-r3.ebuild,
+  zlib-1.1.4-r1.ebuild, zlib-1.1.4.ebuild, zlib-1.2.1.ebuild,
+  files/zlib-1.2.1-build-fPIC.patch, files/zlib-1.2.1-glibc.patch,
+  files/zlib-1.2.1-mapfile.patch:
+  version bumped to newest upstream -- includes an updated mapfile patch from:
+  Danek Duvall <duvall@emufarm.org>
+
+  16 Nov 2003; Bartosch Pixa <darkspecter@gentoo.org> zlib-1.1.4-r3.ebuild:
+  set ppc in keywords
+
+*zlib-1.1.4-r4 (07 Nov 2003)
+
+  07 Nov 2003; Martin Schlemmer <azarah@gentoo.org> zlib-1.1.4-r4.ebuild,
+  files/zlib-1.1.4-mapfile.patch:
+  Only export global symbols, bug #32764. Patch thanks to Danek Duvall
+  <duvall@emufarm.org>.
+
+*zlib-1.1.4-r3 (29 Oct 2003)
+
+  29 Oct 2003; Martin Schlemmer <azarah@gentoo.org> zlib-1.1.4-r3.ebuild,
+  files/zlib-1.1.4-build-fPIC.patch, files/zlib-1.1.4-glibc.patch,
+  files/zlib-1.1.4-gzprintf.patch:
+  Add patches from Mandrake to add -fPIC rather than append-flags, hopefully
+  this will solve bug #32140.  Also add updated security patch.
+
+*zlib-1.1.4-r2 (27 Oct 2003)
+
+  27 Oct 2003; Martin Schlemmer <azarah@gentoo.org> zlib-1.1.4-r2.ebuild:
+  Do not call make with 'make CFLAGS=$CFLAGS', as that discards flags set by the
+  Makefile, and breaks things, bug #28021, thanks to Denys Duchier
+  <duchier@ps.uni-sb.de>.
+
+  17 Sep 2003; Jon Portnoy <avenj@gentoo.org> :
+  ia64 keywords.
+
+*zlib-1.1.4-r1 (25 Feb 2003)
+
+  25 Feb 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Security update. Added patch by Kelledin <kelledin+BTQ@skarpsey.dyndns.org> posted
+  on bugtraq.
+
+*zlib-1.1.4 (11 Mar 2002)
+
+  20 Feb 2003; Zach Welch <zwelch@gentoo.org> zlib-1.1.4.ebuild :
+  Added arm to keywords.
+
+  07 Feb 2003; Guy Martin <gmsoft@gentoo.org> zlib-1.1.4.ebuild :
+  Added hppa to keywords.
+
+  12 Dec 2002; Jan Seidel <tuxus@gentoo.org> zlib-1.1.4.ebuild : 
+  Added mips to keywords.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+  17 Nov 2002: Stefan Jones <cretin@gentoo.org> zlib-1.1.4.ebuild :
+  Added -fPIC CFLAG, stop prelink error non-PIC shared library.
+
+  15 Jul 2002; Mark Guertin <gerk@gentoo.org>
+  Added ppc to keywords
+
+  11 Mar 2002; Bruce A. Locke <blocke@shivan.org> zlib-1.1.4.ebuild :
+
+  - upstream security update (possible exploitable buffer overflow)
+  - website moved
+  - src_install is now version independent
+  
+*zlib-1.1.3-r3 (4 March 2002)
+
+  4 March 2002; Donny Davies <woodchip@gentoo.org> zlib-1.1.3-r3.ebuild :
+
+  Fix to install the library 755.
+
+*zlib-1.1.3-r2 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

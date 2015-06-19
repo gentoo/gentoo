@@ -1,0 +1,123 @@
+# ChangeLog for x11-misc/bbrun
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/bbrun/ChangeLog,v 1.31 2013/10/19 15:04:06 pacho Exp $
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> -bbrun-1.6.ebuild, metadata.xml:
+  Cleanup due desktop-wm removal
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> bbrun-1.6.ebuild,
+  bbrun-1.6-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> bbrun-1.6.ebuild,
+  bbrun-1.6-r1.ebuild:
+  Drop sparc keywords
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> bbrun-1.6-r1.ebuild:
+  x86 stable wrt bug #397259
+
+  03 Feb 2012; Brent Baude <ranger@gentoo.org> bbrun-1.6-r1.ebuild:
+  Marking bbrun-1.6-r1 ppc for bug 397259
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org> bbrun-1.6-r1.ebuild:
+  Stable for amd64, wrt bug #397259
+
+*bbrun-1.6-r1 (11 Jun 2011)
+
+  11 Jun 2011; Kacper Kowalik <xarthisius@gentoo.org> +bbrun-1.6-r1.ebuild,
+  +files/bbrun-1.6-makefile.patch:
+  Fix underlinking wrt #367853. Remove multilib eclass, bump to EAPI4, simplify
+  ebuild
+
+  10 Apr 2011; Kacper Kowalik <xarthisius@gentoo.org> metadata.xml:
+  Change herd from nonexisting commonbox to desktop-wm
+
+  28 Mar 2011; Christoph Mende <angelos@gentoo.org> bbrun-1.6.ebuild:
+  Fixed gtk+ dep and cleanup
+
+  28 May 2010; Kacper Kowalik <xarthisius@gentoo.org> bbrun-1.6.ebuild,
+  +files/bbrun-1.6-respectflags.patch:
+  Adding missing dependency and respect user flags. Thanks Patrick for the
+  report and Andrew Brouwers for patch.
+
+  13 Jan 2008; Samuli Suominen <drac@gentoo.org> bbrun-1.6.ebuild:
+  toolchanify and stable on amd64.
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove ka0ttic from metadata.xml due to retirement.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  04 Dec 2006; David Shakaryan <omp@gentoo.org> -bbrun-1.4.ebuild,
+  bbrun-1.6.ebuild:
+  Add dev-util/pkgconfig to DEPEND and remove older version.
+
+  17 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> bbrun-1.6.ebuild:
+  Stable on ppc.
+
+  08 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> bbrun-1.6.ebuild:
+  Stable on sparc
+
+  08 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> bbrun-1.6.ebuild:
+  Marked stable on x86.
+
+  31 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> bbrun-1.6.ebuild:
+  added ~amd64 to KEYWORDS. fixes #80127
+
+*bbrun-1.6 (08 Jan 2005)
+
+  08 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> metadata.xml,
+  -bbrun-1.3.ebuild, bbrun-1.4.ebuild, +bbrun-1.6.ebuild:
+  Version bump for bug 64425; new version now uses gtk+-2. Removed
+  virtual/blackbox dep as its only true dep is gtk+ for bug 48555. Tidy
+  ebuilds. Also updated HOMEPAGE/SRC_URI.
+
+  14 Aug 2004; Sven Wegener <swegener@gentoo.org> bbrun-1.4.ebuild:
+  Trimmed trailing whitespace.
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> bbrun-1.3.ebuild,
+  bbrun-1.4.ebuild:
+  Removed S=, added IUSE=
+
+  30 Oct 2003; Brandon Hale <tseng@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+  19 Jun 2003; mkeadle <mkeadle@gentoo.org> bbrun-1.4.ebuild:
+  moving 1.4 into stable x86 land. it's been quite a while and it's stable.
+
+*bbrun-1.4 (21 Feb 2003)
+
+  21 Feb 2003; Matt Keadle <mkeadle@gentoo.org> bbrun-1.4.ebuild :
+
+  Version bump to latest. I've removed the pgk_postinst() step from the ebuild
+  that was adding an entry for bbrun to /etc/X11/Sessions/blackbox. If you don't
+  have blackbox installed it would create an empty file. bbrun is usable in any
+  *box window manager, and since this step isn't being made for either Fluxbox or
+  Openbox it'll be up to the user to add bbrun to their .xinitrc is they want it
+  auto stated on login
+
+*bbrun-1.3 (13 Apr 2002)
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+  13 Apr 2002; Seemant Kulleen <seemant@gentoo.org> bbrun-1.3.ebuild :
+
+  Version upgrade info, and new SRC_URI/HOMEPAGE info supplied by
+  cmjohn@mail.utexas.edu (Chris Johnson) in bug #1642
+
+*bbrun-1.1-r3 (15 Mar 2002)
+
+  15 Mar 2002; Seemant Kulleen <seemant@gentoo.org>  bbrun-1.1-r3.ebuild :
+
+  Updated DEPEND info to virtual/blackbox
+
+*bbrun-1.1-r2 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,148 @@
+# ChangeLog for app-arch/ppmd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/ppmd/ChangeLog,v 1.42 2015/05/14 07:28:31 mr_bones_ Exp $
+
+  14 May 2015; Michael Sterrett <mr_bones_@gentoo.org> -ppmd-9.1_p16.ebuild:
+  old
+
+  13 Mar 2013; Tom Wijsman <TomWij@gentoo.org> ppmd-10.1_p5.ebuild,
+  ppmd-9.1_p14.ebuild, ppmd-9.1_p16.ebuild:
+  Non-maintainer commit; updated homepage according to bug #409239, thanks to df
+  for mentioning.
+
+*ppmd-10.1_p5 (13 Mar 2013)
+
+  13 Mar 2013; Tom Wijsman <TomWij@gentoo.org> +ppmd-10.1_p5.ebuild:
+  Non-maintainer commit, version bump to 10.1.
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -ppmd-9.1_p10.ebuild:
+  Remove old
+
+*ppmd-9.1_p16 (20 Sep 2010)
+
+  20 Sep 2010; Jeroen Roovers <jer@gentoo.org> +ppmd-9.1_p16.ebuild:
+  Patch bump. Respect LDFLAGS (bug #337861), CC, CFLAGS.
+
+  06 Apr 2010; Jonathan Callen <abcd@gentoo.org> ppmd-9.1_p14.ebuild:
+  Bump to EAPI=3, add prefix keywords, QA fixes
+
+  12 Oct 2009; Mark Loeser <halcy0n@gentoo.org> ppmd-9.1_p10.ebuild,
+  ppmd-9.1_p14.ebuild:
+  QA fixes; unquoted variables
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/ppmd-p10-makefile.patch:
+  Fix patch to apply.
+
+  18 Jun 2008; Jeremy Olexa <darkside@gentoo.org> -ppmd-9.1_p8.ebuild:
+  remove old. bug #226529
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  17 Mar 2008; Jeroen Roovers <jer@gentoo.org> ppmd-9.1_p14.ebuild:
+  Stable for HPPA (bug #213594).
+
+  16 Mar 2008; nixnut <nixnut@gentoo.org> ppmd-9.1_p14.ebuild:
+  Stable on ppc wrt bug 213594
+
+  16 Mar 2008; Raúl Porcel <armin76@gentoo.org> ppmd-9.1_p14.ebuild:
+  sparc/x86 stable
+
+  25 Feb 2008; Steve Dibb <beandog@gentoo.org> ppmd-9.1_p8.ebuild,
+  ppmd-9.1_p10.ebuild, ppmd-9.1_p14.ebuild:
+  Keyword -amd64, bug 183365
+
+*ppmd-9.1_p14 (12 Feb 2008)
+
+  12 Feb 2008; Raúl Porcel <armin76@gentoo.org> ppmd-9.1_p8.ebuild,
+  ppmd-9.1_p10.ebuild, +ppmd-9.1_p14.ebuild:
+  Version bump, mark -alpha/-ia64 since it segfaults, and on amd64 as well
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org> ppmd-9.1_p10.ebuild:
+  ppc stable
+
+  24 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> ppmd-9.1_p10.ebuild:
+  Stable on sparc
+
+  11 Apr 2007; Jeroen Roovers <jer@gentoo.org> ppmd-9.1_p10.ebuild:
+  Stable for HPPA too.
+
+  03 Apr 2007; Raúl Porcel <armin76@gentoo.org> ppmd-9.1_p10.ebuild:
+  ia64 stable
+
+  20 Mar 2007; Raúl Porcel <armin76@gentoo.org> ppmd-9.1_p10.ebuild:
+  x86 stable
+
+  18 Mar 2007; Fabian Groffen <grobian@gentoo.org> ppmd-9.1_p8.ebuild,
+  ppmd-9.1_p10.ebuild:
+  Dropped ppc-macos, see you in prefix
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  28 Sep 2005; Brian Harring <ferringb@gentoo.org> ppmd-9.1_p10.ebuild:
+  Version bump.
+
+*ppmd-9.1_p10 (28 Sep 2005)
+
+  14 Sep 2005; Fabian Groffen <grobian@gentoo.org> ppmd-9.1_p8.ebuild:
+  Marking ~ppc-macos (bug #105857)
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> ppmd-9.1.ebuild,
+  ppmd-9.1_p8.ebuild:
+  Masked ppmd-9.1_p8.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> ppmd-9.1.ebuild:
+  Masked ppmd-9.1.ebuild stable for ppc
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> ppmd-9.1_p8.ebuild:
+  Stable on alpha.
+
+  13 Aug 2004; Jason Wever <weeve@gentoo.org> ppmd-9.1_p8.ebuild:
+  Stable on sparc.
+
+  07 Aug 2004; Brian Harring <ferringb@gentoo.org> ppmd-9.1_p8.ebuild:
+  Stabling on x86.
+
+*ppmd-9.1_p8 (21 Jul 2004)
+
+  21 Jul 2004; Brian Harring <ferringb@gentoo.org> :
+  bumping to 9.1 patch8, re-enabling support for -O3- bug #57587.
+
+  18 Jul 2004; Ciaran McCreesh <ciaranm@gentoo.org> ppmd-9.1.ebuild:
+  Stable on sparc at ferringb's request
+
+  17 Jul 2004; Brian Harring <ferringb@gentoo.org> ppmd-9.1.ebuild:
+  removing the gzip rdepend; no clue how that got in there.  Stabling x86 also.
+
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> ppmd-9.1.ebuild:
+  Stable on alpha.
+
+  20 Apr 2004; Daniel Black <dragonheart@gentoo.org> ppmd-9.1.ebuild:
+  QA - removed runtime dependance on automake, autoconf and sed
+
+  05 Apr 2004; Chris Aniszczyk <zx@gentoo.org> ppmd-9.1.ebuild:
+  Stable on hppa
+
+  22 Mar 2004; Seemant Kulleen <seemant@gentoo.org> ppmd-9.1.ebuild:
+  filter out -O3 flag, replace with -O2 flag. Also, replaced the head && mv
+  statement with an inline sed. closes bug #44529 by Tobias Minich
+  <belgabor@gmx.de>
+
+  12 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> ppmd-9.1.ebuild:
+  amd64 unmask.
+
+  08 Dec 2003; Seemant Kulleen <seemant@gentoo.org> ppmd-9.1.ebuild:
+  fixes for broken aclocal, closing bug #35179 by Brian Harring
+  <bdharring@wisc.edu>
+
+*ppmd-9.1 (15 Nov 2003)
+
+  15 Nov 2003; Seemant Kulleen <seemant@gentoo.org> ppmd-9.1.ebuild:
+  PPM based compressor. Ebuild submitted by Brian Harring <bdharring@wisc.edu>
+  in bug #33066

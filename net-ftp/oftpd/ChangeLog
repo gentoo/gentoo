@@ -1,0 +1,184 @@
+# ChangeLog for net-ftp/oftpd
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/oftpd/ChangeLog,v 1.41 2014/04/07 12:32:25 vapier Exp $
+
+*oftpd-0.3.7-r10 (07 Apr 2014)
+
+  07 Apr 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/oftpd-0.3.7-error-output.patch,
+  +files/oftpd-0.3.7-pthread-cancel.patch, +oftpd-0.3.7-r10.ebuild,
+  files/conf.d.oftpd-r7:
+  Fix timeout crashes and error message.  Add a note about passive behavior and
+  default network settings.
+
+*oftpd-0.3.7-r9 (29 Mar 2014)
+
+  29 Mar 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/oftpd-0.3.7-delay-root-check.patch, +oftpd-0.3.7-r9.ebuild:
+  Delay root check until after processing the command line.
+
+*oftpd-0.3.7-r8 (23 Jan 2013)
+
+  23 Jan 2013; Michael Weber <xmw@gentoo.org> -oftpd-0.3.7-r3.ebuild,
+  +oftpd-0.3.7-r8.ebuild, -files/oftpd-0.3.7-family.patch,
+  +files/oftpd-0.3.7-htons.patch, +files/oftpd-0.3.7-unistd.patch,
+  -files/conf.d.oftpd, -files/init.d.oftpd:
+  Revbump to add htons patch by tallungulate@gmail.com (bug 371963), fix
+  unistd, EAPI-4, drop old.
+
+  19 Dec 2012; Ulrich Müller <ulm@gentoo.org> oftpd-0.3.7-r3.ebuild,
+  oftpd-0.3.7-r7.ebuild:
+  Fix LICENSE, see COPYING, bug 446300.
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> oftpd-0.3.7-r7.ebuild:
+  sh/sparc stable wrt #420965
+
+  22 Jun 2012; Brent Baude <ranger@gentoo.org> oftpd-0.3.7-r7.ebuild:
+  Marking oftpd-0.3.7-r7 ppc64 for bug 420965
+
+  16 Jun 2012; Michael Weber <xmw@gentoo.org> oftpd-0.3.7-r7.ebuild:
+  arm stable (bug 408487)
+
+  16 Jun 2012; Michael Weber <xmw@gentoo.org> oftpd-0.3.7-r7.ebuild:
+  ppc stable (bug 420965)
+
+  13 Jun 2012; Jeff Horelick <jdhore@gentoo.org> oftpd-0.3.7-r7.ebuild:
+  marked x86 per bug 420965
+
+  13 Jun 2012; Agostino Sarubbo <ago@gentoo.org> oftpd-0.3.7-r7.ebuild:
+  Stable for amd64, wrt bug #420965
+
+  17 Jun 2011; Michael Weber <xmw@gentoo.org> files/conf.d.oftpd-r7:
+  Fix conf.d file
+
+*oftpd-0.3.7-r7 (17 Jun 2011)
+
+  17 Jun 2011; Michael Weber <xmw@gentoo.org> -oftpd-0.3.7-r6.ebuild,
+  +oftpd-0.3.7-r7.ebuild, +files/conf.d.oftpd-r7, +files/init.d.oftpd-r7,
+  -files/conf.d.oftpd-r6, -files/init.d.oftpd-r1:
+  Revision bump, improvements in the conf.d file, thanks to SpanKY (bug 371967)
+
+*oftpd-0.3.7-r6 (06 Nov 2010)
+
+  06 Nov 2010; Michael Weber <xmw@gentoo.org> -oftpd-0.3.7-r4.ebuild,
+  -oftpd-0.3.7-r5.ebuild, +oftpd-0.3.7-r6.ebuild, -files/conf.d.oftpd-r1,
+  +files/conf.d.oftpd-r6:
+  Rev bump to fix default port and description in config file (bug #344169,
+  thanks to Christohper Harrington <ironiridis@gmail.com>).
+
+*oftpd-0.3.7-r5 (01 Sep 2010)
+
+  01 Sep 2010; Michael Weber <xmw@gentoo.org> +oftpd-0.3.7-r5.ebuild,
+  +files/oftpd-0.3.7-family-1.patch,
+  +files/oftpd-0.3.7-ipv6rel2-0.3.6-to-0.3.7.patch, metadata.xml:
+  Revbump to re-add ipv6 support, fixes bug 157005, thanks to Bruno
+  <bonbons67@internet.lu> and Mario Fetka (geos_one) <mario.fetka@gmail.com>
+  for their work on this bug.
+
+  13 Jun 2009; Fabian Groffen <grobian@gentoo.org> files/init.d.oftpd-r1:
+  (Non-maintainer commit) Fix bug #273440, patch by Lars Wendler (Polynomial-C)
+
+*oftpd-0.3.7-r4 (29 May 2009)
+
+  29 May 2009; Robert Buchholz <rbu@gentoo.org> files/init.d.oftpd-r1,
+  +oftpd-0.3.7-r4.ebuild:
+  Fix #97183 for real. The new init script had not been installed before.
+
+  29 May 2009; Robert Buchholz <rbu@gentoo.org> -oftpd-0.3.7-r1.ebuild,
+  -oftpd-0.3.7-r2.ebuild, oftpd-0.3.7-r3.ebuild:
+  Remove ebuilds that are vulnerable to GLSA 200701-09, fix repoman warnings.
+
+  02 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml, oftpd-0.3.7-r1.ebuild:
+  Removing eradicator as a maintainer since he was retired. Quoted some
+  vars.
+
+  05 Jan 2007; Steve Dibb <beandog@gentoo.org> oftpd-0.3.7-r3.ebuild:
+  amd64 stable, bug 159178
+
+  05 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  oftpd-0.3.7-r3.ebuild:
+  stable x86, security bug #159178
+
+  04 Jan 2007; Tom Gall <tgall@gentoo.org> oftpd-0.3.7-r3.ebuild:
+  stable on ppc64, bug #159178
+
+  04 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org> oftpd-0.3.7-r3.ebuild:
+  Stable on sparc wrt security #159178
+
+*oftpd-0.3.7-r3 (04 Jan 2007)
+
+  04 Jan 2007; Roy Marples <uberlord@gentoo.org>
+  +files/oftpd-0.3.7-family.patch, +oftpd-0.3.7-r3.ebuild:
+  Stop crashing when requesting an unsupported address family, #159178 thanks
+  to Tavis Ormandy.
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> oftpd-0.3.7-r2.ebuild:
+  Stable on x86 wrt bug #130500.
+
+  01 Apr 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  oftpd-0.3.7-r2.ebuild:
+  Stable amd64, ppc64, sparc.
+
+  04 Dec 2005; Tom Gall <tgall@gentoo.org> 
+  oftpd-0.3.7-r1.ebuild:
+  stable on ppc64
+
+*oftpd-0.3.7-r2 (02 Jul 2005)
+
+  02 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/conf.d.oftpd-r1, files/init.d.oftpd, +files/init.d.oftpd-r1,
+  +oftpd-0.3.7-r2.ebuild:
+  Added support to change tcp port to the init script.  Closes bug #97183.
+
+  15 May 2005; Konstantin Arkhipov <voxus@gentoo.org> oftpd-0.3.7-r1.ebuild:
+  Added ~amd64 keyword wrt bug #92567. Header fixed.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  oftpd-0.3.7-r1.ebuild:
+  virtual/glibc -> virtual/libc
+
+  28 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  oftpd-0.3.7-r1.ebuild:
+  Added IUSE.
+
+*oftpd-0.3.7-r1 (31 Mar 2004)
+
+  31 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  oftpd-0.3.6-r7.ebuild, oftpd-0.3.7-r1.ebuild, oftpd-0.3.7.ebuild:
+  Someone mucked up the configure line when they were marking this stable (bug
+  #46348), so I am revbumping it.
+
+  27 Mar 2004; Luca Barbato <lu_zero@gentoo.org> oftpd-0.3.7.ebuild:
+  Marked ppc for securty issue with the previous version see  #45738
+
+  25 Mar 2004; Jason Wever <weeve@gentoo.org> oftpd-0.3.7.ebuild:
+  Marked stable on sparc wrt bug #45738.
+
+  25 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> metadata.xml,
+  oftpd-0.3.6-r7.ebuild, oftpd-0.3.7.ebuild, files/conf.d.oftpd,
+  files/init.d.oftpd, files/oftpd.rc6:
+  Fixed up init/conf scripts.  bumping security fix to stable x86.
+
+*oftpd-0.3.7 (25 Mar 2004)
+
+  25 Mar 2004; <solar@gentoo.org> oftpd-0.3.6-r7.ebuild, oftpd-0.3.7.ebuild:
+  Version bump. oftpd DoS vulnerability. bug #45738
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*oftpd-0.3.6-r7 (3 May 2002)
+  
+  3 May 2002; Donny Davies <woodchip@gentoo.org> :
+  
+  Added LICENSE, SLOT.
+
+*oftpd-0.3.6-r6 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

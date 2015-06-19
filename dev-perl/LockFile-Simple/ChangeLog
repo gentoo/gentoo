@@ -1,0 +1,150 @@
+# ChangeLog for dev-perl/LockFile-Simple
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/LockFile-Simple/ChangeLog,v 1.40 2014/08/22 18:11:49 axs Exp $
+
+*LockFile-Simple-0.208.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +LockFile-Simple-0.208.0-r1.ebuild, -LockFile-Simple-0.208.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org>
+  -LockFile-Simple-0.207.0.ebuild:
+  Cleanup
+
+  06 Oct 2012; Raúl Porcel <armin76@gentoo.org>
+  LockFile-Simple-0.207.0.ebuild, LockFile-Simple-0.208.0.ebuild:
+  Drop alpha keywords
+
+  02 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  LockFile-Simple-0.208.0.ebuild:
+  stable ppc ppc64, bug #428990
+
+  18 Sep 2012; Jeroen Roovers <jer@gentoo.org> LockFile-Simple-0.208.0.ebuild:
+  Stable for HPPA (bug #428990).
+
+  12 Sep 2012; Johannes Huber <johu@gentoo.org> LockFile-Simple-0.208.0.ebuild:
+  Stable for x86, wrt bug #428990
+
+  12 Sep 2012; Agostino Sarubbo <ago@gentoo.org>
+  LockFile-Simple-0.208.0.ebuild:
+  Stable for amd64, wrt bug #428990
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*LockFile-Simple-0.208.0 (02 Jun 2012)
+
+  02 Jun 2012; Torsten Veller <tove@gentoo.org>
+  +LockFile-Simple-0.208.0.ebuild:
+  Version bump
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org>
+  -LockFile-Simple-0.2.5-r1.ebuild:
+  Cleanup
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org>
+  LockFile-Simple-0.2.5-r1.ebuild, LockFile-Simple-0.207.0.ebuild:
+  Drop ia64/s390/sparc
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  LockFile-Simple-0.207.0.ebuild:
+  x86 stable wrt bug #400163
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> LockFile-Simple-0.207.0.ebuild:
+  Marking LockFile-Simple-0.207.0 ppc64 for bug 400163
+
+  27 Feb 2012; Brent Baude <ranger@gentoo.org> LockFile-Simple-0.207.0.ebuild:
+  Marking LockFile-Simple-0.207.0 ppc for bug 400163
+
+  27 Feb 2012; Jeroen Roovers <jer@gentoo.org> LockFile-Simple-0.207.0.ebuild:
+  Stable for HPPA (bug #400163).
+
+  25 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  LockFile-Simple-0.207.0.ebuild:
+  Stable on alpha, bug #400163
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  LockFile-Simple-0.207.0.ebuild:
+  Stable for amd64, wrt bug #400163
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -LockFile-Simple-0.207.ebuild:
+  Cleanup
+
+*LockFile-Simple-0.207.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +LockFile-Simple-0.207.0.ebuild:
+  Change version scheme
+
+*LockFile-Simple-0.207 (04 Feb 2010)
+
+  04 Feb 2010; Torsten Veller <tove@gentoo.org>
+  +LockFile-Simple-0.207.ebuild:
+  Version bump
+
+  06 Jul 2009; Jeroen Roovers <jer@gentoo.org>
+  LockFile-Simple-0.2.5-r1.ebuild:
+  Stable for HPPA too.
+
+  02 Dec 2008; Jeroen Roovers <jer@gentoo.org>
+  LockFile-Simple-0.2.5-r1.ebuild:
+  Marked ~hppa too.
+
+  16 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  LockFile-Simple-0.2.5-r1.ebuild:
+  Ebuild maintenance
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  LockFile-Simple-0.2.5-r1.ebuild:
+  Adding perl dep; fixed header; fixed DEPEND
+
+  27 Nov 2005; Tom Gall <tgall@gentoo.org> LockFile-Simple-0.2.5-r1.ebuild:
+  stable on ppc64
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  LockFile-Simple-0.2.5-r1.ebuild:
+  Mark 0.2.5-r1 stable on ia64
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  LockFile-Simple-0.2.5-r1.ebuild:
+  add ~ia64
+
+  28 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -LockFile-Simple-0.2.5.ebuild, LockFile-Simple-0.2.5-r1.ebuild:
+  Just cleaning up
+
+  24 Dec 2004; Yuta SATOH <nigoro@gentoo.org> LockFile-Simple-0.2.5-r1.ebuild:
+  added ~ppc64
+
+  15 Apr 2004; Michael McCabe <randy@gentoo.org>
+  LockFile-Simple-0.2.5-r1.ebuild:
+  adding s390 keywords
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*LockFile-Simple-0.2.5-r1 (5 May 2002)
+
+  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org>
+  LockFile-Simple-0.2.5-r1.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  5 May 2002; Seemant Kulleen <seemant@gentoo.org>
+  LockFile-Simple-0.2.5-r1.ebuild files/digest-LockFile-Simple-0.2.5-r1 :
+
+  Conversion to eclasses.
+
+*LockFile-Simple-0.2.5 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

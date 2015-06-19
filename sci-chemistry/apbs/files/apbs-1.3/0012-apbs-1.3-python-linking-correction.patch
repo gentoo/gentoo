@@ -1,0 +1,60 @@
+From 73a1f1d63d7617fea85c10990b1f35c9567a3573 Mon Sep 17 00:00:00 2001
+Message-Id: <73a1f1d63d7617fea85c10990b1f35c9567a3573.1325691465.git.jlec@gentoo.org>
+In-Reply-To: <89d53654acb88cd8dbd4bc9eb388ca6e76d0d6ea.1325691465.git.jlec@gentoo.org>
+References: <89d53654acb88cd8dbd4bc9eb388ca6e76d0d6ea.1325691465.git.jlec@gentoo.org>
+From: Justin Lecher <jlec@gentoo.org>
+Date: Wed, 4 Jan 2012 11:49:50 +0100
+Subject: [PATCH 12/15] apbs 1.3 python linking correction
+
+---
+ bin/Makefile.am                |    4 ++--
+ tools/python/Makefile.am       |    2 +-
+ tools/python/vgrid/Makefile.am |    2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/bin/Makefile.am b/bin/Makefile.am
+index 9dae096..574be3d 100644
+--- a/bin/Makefile.am
++++ b/bin/Makefile.am
+@@ -15,7 +15,7 @@ build_libraries = @apbs_build_libraries@
+ bindir = ${prefix}/bin
+ bin_PROGRAMS     = apbs
+ apbs_SOURCES     = main.c 
+-apbs_LDADD       = ${build_libraries} -L../src/aaa_lib/.libs/ libapbsmainroutines.la
++apbs_LDADD       = ${build_libraries} .libs/libapbsmainroutines.la
+ 
+ # This is a hack I suspect, but needed to force apbs to be
+ # rebuilt anytime the make command is issued
+@@ -29,7 +29,7 @@ rm.apbs: Makefile
+ 
+ lib_LTLIBRARIES = libapbsmainroutines.la
+ libapbsmainroutines_la_SOURCES = routines.c
+-libapbsmainroutines_la_LIBADD = -L../src/aaa_lib/.libs/ -lapbs @mc_lib@
++libapbsmainroutines_la_LIBADD = ../src/aaa_lib/.libs/libapbs.la @mc_lib@
+ libapbsmainroutines_la_LDFLAGS = -version-info ${APBS_VERSION}
+ 
+ INCLUDES = @inc_list@
+diff --git a/tools/python/Makefile.am b/tools/python/Makefile.am
+index 2c1fbea..6a09644 100644
+--- a/tools/python/Makefile.am
++++ b/tools/python/Makefile.am
+@@ -16,4 +16,4 @@ SUBDIRS          = vgrid
+ noinst_PROGRAMS       = _apbslib.so
+ _apbslib_so_SOURCES   = apbslib.c
+ _apbslib_so_LINK      = $(PY_CC) $(PY_LINKFLAGS) $(LDFLAGS) -o $@ $(PY_SHARED)
+-_apbslib_so_LDADD     = ${top_builddir}/bin/.libs/libapbsmainroutines.a ${top_builddir}/src/aaa_lib/.libs/libapbs.a $(PY_LDFLAGS) ${z_lib} @OPENMP_LIBS@ @maloc_lib@ @mc_lib@
++_apbslib_so_LDADD     = -L${top_builddir}/bin/.libs/ -lapbsmainroutines -L${top_builddir}/src/aaa_lib/.libs/ -lapbs $(PY_LDFLAGS) ${z_lib} @maloc_lib@ @mc_lib@
+diff --git a/tools/python/vgrid/Makefile.am b/tools/python/vgrid/Makefile.am
+index 50c09ac..165cd4d 100644
+--- a/tools/python/vgrid/Makefile.am
++++ b/tools/python/vgrid/Makefile.am
+@@ -16,5 +16,5 @@ if PY_PRESENT
+    noinst_PROGRAMS     = _vgrid.so
+    _vgrid_so_SOURCES   = vgridlib.c
+    _vgrid_so_LINK      = $(PY_CC) $(PY_LINKFLAGS) $(LDFLAGS) -o $@ $(PY_SHARED)
+-   _vgrid_so_LDADD     = ${top_builddir}/bin/.libs/libapbsmainroutines.la ${top_builddir}/src/aaa_lib/.libs/libapbs.la @lib_list@
++   _vgrid_so_LDADD     = -L${top_builddir}/bin/.libs/ -lapbsmainroutines -L${top_builddir}/src/aaa_lib/.libs/ -lapbs @lib_list@
+ endif
+-- 
+1.7.8.2
+

@@ -1,0 +1,46 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/targets/desktop/plasma/package.use,v 1.7 2015/06/04 18:57:38 kensington Exp $
+
+# Not required, but makes life easier with Qt; bug 457934
+app-arch/unzip natspec
+
+# Required by app-office/akonadi-server
+dev-qt/qtsql mysql
+
+# Required by dev-qt/qtcore
+dev-libs/libpcre pcre16
+
+# Required by media-gfx/graphviz which is required by kde-apps/kcachegrind
+media-libs/gd fontconfig
+
+# Required by kde-apps/libkexiv2
+media-gfx/exiv2 xmp
+
+# Required by kde-base/pykde4
+dev-python/PyQt4 script sql webkit
+
+# Required by kde-frameworks/kactivities
+sys-libs/zlib minizip
+
+# Required by kde-frameworks/kapidox
+media-gfx/graphviz python
+
+# Required by kde-frameworks/kcoreaddons
+dev-qt/qtcore icu
+
+# Required by kde-plasma/kwin
+media-libs/mesa egl
+
+# Allow certain KDE 4 components to be coinstalled with Plasma 5
+<dev-util/kdevelop-4.8.0 -gdbui
+kde-apps/kde4-l10n minimal
+kde-apps/kdeartwork-meta minimal
+kde-apps/kdebase-kioslaves minimal
+kde-apps/kdebase-meta minimal
+kde-apps/kdebase-runtime-meta minimal
+kde-base/baloo minimal
+kde-base/kactivities minimal
+kde-base/kde-meta minimal
+net-libs/libkpeople minimal
+sys-auth/polkit-kde-agent minimal

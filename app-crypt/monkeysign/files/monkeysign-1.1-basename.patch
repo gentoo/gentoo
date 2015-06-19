@@ -1,0 +1,12 @@
+diff -r 954b8fe8cdb2 scripts/monkeyscan
+--- a/scripts/monkeyscan	Tue Oct 01 00:02:17 2013 +0200
++++ b/scripts/monkeyscan	Tue Oct 01 00:04:27 2013 +0200
+@@ -25,7 +25,7 @@
+ if directory == 'scripts':
+     sys.path.insert(0, os.path.dirname(__file__) + '/..')
+ 
+-if basename == 'monkeysign':
++if basename[:10] == 'monkeysign':
+     from monkeysign.cli import MonkeysignCli as ui
+ else:
+     try:

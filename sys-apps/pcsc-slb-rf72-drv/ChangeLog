@@ -1,0 +1,75 @@
+# ChangeLog for sys-apps/pcsc-slb-rf72-drv
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pcsc-slb-rf72-drv/ChangeLog,v 1.16 2014/03/13 21:36:11 ulm Exp $
+
+  13 Mar 2014; Ulrich Müller <ulm@gentoo.org>
+  pcsc-slb-rf72-drv-1.1.0-r1.ebuild, pcsc-slb-rf72-drv-1.1.0-r2.ebuild:
+  Fix LICENSE, add mirror and bindist restriction, bug 445750.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  pcsc-slb-rf72-drv-1.1.0-r1.ebuild, pcsc-slb-rf72-drv-1.1.0-r2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  13 Jan 2012; Agostino Sarubbo <ago@gentoo.org>
+  pcsc-slb-rf72-drv-1.1.0-r1.ebuild:
+  Drop amd64 stable keyword, revert to ~amd64, wrt bug #392803
+
+  11 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  pcsc-slb-rf72-drv-1.1.0-r1.ebuild:
+  Drop x86 stable keywords, revert to ~x86, bug #392803.
+
+*pcsc-slb-rf72-drv-1.1.0-r2 (10 Dec 2010)
+
+  10 Dec 2010; Dane Smith <c1pher@gentoo.org>
+  +pcsc-slb-rf72-drv-1.1.0-r2.ebuild,
+  +files/pcsc-slb-rf72-drv-1.1.0-build-new.patch:
+  Revision bump.
+  *Fixed LDFLAGS respect wrt bug 334775.
+  *Moved to EAPI 2.
+  *Numerous small QA fixes.
+
+  11 Nov 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  -pcsc-slb-rf72-drv-1.1.0.ebuild:
+  Cleanup
+
+  11 Nov 2007; Dawid Węgliński <cla@gentoo.org>
+  pcsc-slb-rf72-drv-1.1.0-r1.ebuild:
+  Stable on x86 (bug #198718)
+
+  11 Nov 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  pcsc-slb-rf72-drv-1.1.0-r1.ebuild:
+  Override CC, LD, thanks to drac
+
+  11 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  pcsc-slb-rf72-drv-1.1.0-r1.ebuild:
+  amd64 stable wrt #198718
+
+  10 Nov 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  pcsc-slb-rf72-drv-1.1.0-r1.ebuild:
+  Cleanups
+
+  15 Feb 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  pcsc-slb-rf72-drv-1.1.0-r1.ebuild:
+  Fix postrm for multi libraries
+
+*pcsc-slb-rf72-drv-1.1.0-r1 (07 Oct 2006)
+
+  07 Oct 2006; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/pcsc-slb-rf72-drv-1.1.0-build.patch, +files/reader.conf,
+  metadata.xml, +pcsc-slb-rf72-drv-1.1.0-r1.ebuild:
+  Reassigning to crypt herd, approved by vapier, fix ebuild to actually work,
+  using required dependency, removed binary dependency, modifying text reallocation issues,
+  adding configuration file, removing samples since they are not related to pcsc.
+
+*pcsc-slb-rf72-drv-1.1.0 (15 Nov 2002)
+
+  15 Nov 2002; Zach Welch <zwelch@gentoo.org> :
+  Relocated, mask for testing, and commited.  See bug 8449 for more info.
+
+  27 Sep 2002; Juan Salaverria <rael@vectorstar.net> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

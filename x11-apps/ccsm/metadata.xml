@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>desktop-effects</herd>
+<longdescription lang="en">Compizconfig Settings Manager.</longdescription>
+</pkgmetadata>

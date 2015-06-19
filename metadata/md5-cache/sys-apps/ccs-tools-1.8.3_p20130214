@@ -1,0 +1,13 @@
+DEFINED_PHASES=config install postinst prepare test
+DEPEND=sys-libs/ncurses sys-libs/readline
+DESCRIPTION=TOMOYO Linux tools
+EAPI=3
+HOMEPAGE=http://tomoyo.sourceforge.jp/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses sys-libs/readline sys-apps/which
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge.jp/tomoyo/49693/ccs-tools-1.8.3-20130214.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a61980a111f39aa63f074a711455fbd4

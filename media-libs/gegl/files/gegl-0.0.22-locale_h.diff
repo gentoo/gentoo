@@ -1,0 +1,10 @@
+--- gegl-0.0.22/gegl/gegl-init.c	2008-12-31 02:38:59.000000000 +0100
++++ gegl-0.0.22-1/gegl/gegl-init.c	2009-01-14 22:21:41.000000000 +0100
+@@ -26,6 +26,7 @@
+ #include <glib/gi18n-lib.h>
+ 
+ #include <stdlib.h>
++#include <locale.h>
+ #ifdef HAVE_UNISTD_H
+ #include <unistd.h>
+ #endif

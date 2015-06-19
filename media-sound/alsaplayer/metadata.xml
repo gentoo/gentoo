@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>sound</herd>
+	<use>
+		<flag name="id3tag">Enables ID3 tagging with id3tag library</flag>
+	</use>
+	<maintainer>
+		<email>redhatter@gentoo.org</email>
+		<name>Stuart Longland</name>
+	</maintainer>
+</pkgmetadata>

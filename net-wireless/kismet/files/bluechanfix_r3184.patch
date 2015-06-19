@@ -1,0 +1,15 @@
+Index: packetsourcetracker.cc
+===================================================================
+--- packetsourcetracker.cc	(revision 3183)
++++ packetsourcetracker.cc	(working copy)
+@@ -151,7 +151,10 @@
+ 				break;
+ 
+ 			case SOURCE_channel:
+-				osstr << psrc->channel;
++				if (psrc->strong_source != NULL)
++					osstr << psrc->strong_source->FetchChannel();
++				else
++					osstr << psrc->channel;
+ 				cache->Cache(fnum, osstr.str());
+ 				break;

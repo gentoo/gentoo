@@ -1,0 +1,29 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/smartmontools/files/smartd-r1.rc,v 1.1 2014/08/09 09:36:30 polynomial-c Exp $
+
+pidfile="/run/smartd.pid"
+command="/usr/sbin/smartd"
+command_args="-p ${pidfile} ${SMARTD_OPTS}"
+extra_started_commands="reload"
+
+depend() {
+    need localmount
+    after bootmisc
+}
+
+start_pre() {
+	if [ ! -f "/etc/smartd.conf" ] ; then
+		eerror "You should setup your /etc/smartd.conf file!"
+		eerror "See the smartd.conf(5) manpage."
+		return 1
+	fi
+	return 0
+}
+
+reload() {
+	ebegin "Reloading configuration"
+	start-stop-daemon --signal HUP --pidfile ${pidfile} ${command##*/}
+	eend $?
+}

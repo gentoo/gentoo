@@ -1,0 +1,26 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 04_dtd_trace.dpatch by Sylvain Le Gall <gildor@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: No description.
+
+@DPATCH@
+diff -urNad xml-light-2.2~/dtd.ml xml-light-2.2/dtd.ml
+--- xml-light-2.2~/dtd.ml	2005-02-18 10:01:54.000000000 +0100
++++ xml-light-2.2/dtd.ml	2006-10-26 23:22:25.000000000 +0200
+@@ -267,7 +267,7 @@
+ exception TmpResult of dtd_result
+ 
+ let prove_child dtd tag = 
+-	trace dtd tag;
++	(*trace dtd tag;*)
+ 	match dtd.current with
+ 	| DTDEmpty -> raise (Prove_error EmptyExpected)
+ 	| DTDAny -> ()
+@@ -505,4 +505,4 @@
+ 		sprintf "<!ELEMENT %s %s>" tag (etype_to_string etype)
+ 
+ ;;
+-to_string_ref := to_string
+\ No newline at end of file
++to_string_ref := to_string

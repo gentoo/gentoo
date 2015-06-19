@@ -1,0 +1,27 @@
+# ChangeLog for dev-perl/Crypt-X509
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-X509/ChangeLog,v 1.2 2014/05/29 10:38:26 zlogene Exp $
+
+*Crypt-X509-0.510.0 (29 May 2014)
+
+  29 May 2014; Mikle Kolyada <zlogene@gentoo.org> +Crypt-X509-0.510.0.ebuild,
+  -Crypt-X509-0.51.ebuild:
+  Fix version scheme
+
+  28 May 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  +Crypt-X509-0.51.ebuild, +metadata.xml:
+  Initial commit. Ebuild written by me. Satisfies dependency for www-apps/rt.
+
+  28 May 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  +Crypt-X509-0.51.ebuild, +metadata.xml:
+  Initial commit. Ebuild written by me. Satisfies dependency for www-apps/rt.
+
+  28 May 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  +Crypt-X509-0.51.ebuild, +metadata.xml:
+  Initial commit. Ebuild written by me. Satisfies dependency for www-apps/rt.
+
+*Crypt-X509-0.51 (28 May 2014)
+
+  28 May 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  +Crypt-X509-0.51.ebuild, +metadata.xml:
+  Initial commit. Ebuild written by me. Satisfies dependency for www-apps/rt.

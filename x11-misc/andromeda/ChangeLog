@@ -1,0 +1,27 @@
+# ChangeLog for x11-misc/andromeda
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/andromeda/ChangeLog,v 1.6 2015/03/29 05:23:14 yngwin Exp $
+
+  29 Mar 2015; Ben de Groot <yngwin@gentoo.org> -andromeda-0.2.1.ebuild,
+  andromeda-0.3.ebuild:
+  Update ebuild wrt gitorious shutdown (bug #544866). Remove old.
+
+*andromeda-0.3 (23 Jun 2014)
+
+  23 Jun 2014; Michael Palimaka <kensington@gentoo.org> +andromeda-0.3.ebuild:
+  Version bump.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> andromeda-0.2.1.ebuild:
+  Move Qt dependencies to the new category
+
+  19 May 2012; Ben de Groot <yngwin@gentoo.org> andromeda-0.2.1.ebuild:
+  Add test useflag and conditional dependency on qt-test (bug #416445)
+
+  30 Apr 2012; Ben de Groot <yngwin@gentoo.org> andromeda-0.2.1.ebuild:
+  Up the dependencies to Qt 4.8.0. Fixes bug #414093.
+
+*andromeda-0.2.1 (29 Apr 2012)
+
+  29 Apr 2012; Ben de Groot <yngwin@gmail.com> +andromeda-0.2.1.ebuild,
+  +metadata.xml:
+  Initial commit of x11-misc/andromeda Qt4 filemanager

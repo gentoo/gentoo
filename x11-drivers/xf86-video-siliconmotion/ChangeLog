@@ -1,0 +1,340 @@
+# ChangeLog for x11-drivers/xf86-video-siliconmotion
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-siliconmotion/ChangeLog,v 1.70 2015/05/09 17:14:36 mattst88 Exp $
+
+  09 May 2015; Matt Turner <mattst88@gentoo.org>
+  -files/xf86-video-siliconmotion-1.7.7-mibstore_h.patch,
+  -xf86-video-siliconmotion-1.7.7-r1.ebuild,
+  -xf86-video-siliconmotion-1.7.7.ebuild:
+  Drop old.
+
+*xf86-video-siliconmotion-1.7.8 (09 May 2015)
+
+  09 May 2015; Matt Turner <mattst88@gentoo.org>
+  +xf86-video-siliconmotion-1.7.8.ebuild:
+  Version bump to 1.7.8, straight to stable.
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-siliconmotion-1.7.7-r1.ebuild:
+  Stable for x86, wrt bug #530652
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-siliconmotion-1.7.7-r1.ebuild:
+  Stable for amd64, wrt bug #530652
+
+*xf86-video-siliconmotion-1.7.7-r1 (27 May 2014)
+
+  27 May 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/xf86-video-siliconmotion-1.7.7-mibstore_h.patch,
+  +xf86-video-siliconmotion-1.7.7-r1.ebuild,
+  -files/xf86-video-siliconmotion-1.7.5-abi-check.patch,
+  -files/xf86-video-siliconmotion-1.7.5-new-vgahw.patch,
+  -files/xf86-video-siliconmotion-1.7.5-xorg-server-1.12.patch,
+  -xf86-video-siliconmotion-1.7.5.ebuild,
+  -xf86-video-siliconmotion-1.7.6.ebuild:
+  Fix build with newer xorg-server. Remove old.
+
+  18 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-siliconmotion-1.7.7.ebuild:
+  Stable for x86, wrt bug #440872
+
+  16 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-siliconmotion-1.7.7.ebuild:
+  Stable for amd64, wrt bug #440872
+
+  12 Aug 2012; Matt Turner <mattst88@gentoo.org>
+  xf86-video-siliconmotion-1.7.5.ebuild, xf86-video-siliconmotion-1.7.6.ebuild,
+  xf86-video-siliconmotion-1.7.7.ebuild:
+  Remove alpha/ia64 keywords. There's no siliconmotion hardware on these
+  platforms. These keywords were totally bogus.
+
+*xf86-video-siliconmotion-1.7.7 (21 Jul 2012)
+
+  21 Jul 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-siliconmotion-1.7.7.ebuild:
+  Version bump.
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-siliconmotion-1.7.6.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-siliconmotion-1.7.6.ebuild:
+  Stable for amd64, wrt bug #419473
+
+  16 May 2012; Alexis Ballier <aballier@gentoo.org>
+  xf86-video-siliconmotion-1.7.6.ebuild:
+  keyword ~amd64-fbsd (compile tested only)
+
+*xf86-video-siliconmotion-1.7.6 (24 Mar 2012)
+
+  24 Mar 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-siliconmotion-1.7.6.ebuild:
+  Version bump.
+
+  18 Mar 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/xf86-video-siliconmotion-1.7.5-abi-check.patch,
+  +files/xf86-video-siliconmotion-1.7.5-new-vgahw.patch,
+  +files/xf86-video-siliconmotion-1.7.5-xorg-server-1.12.patch,
+  xf86-video-siliconmotion-1.7.5.ebuild:
+  Fix building against xorg-server-1.12.
+
+  21 Aug 2011; Matt Turner <mattst88@gentoo.org>
+  xf86-video-siliconmotion-1.7.5.ebuild:
+  Add ~mips.
+
+  18 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86-video-siliconmotion-1.7.4.ebuild:
+  old
+
+  16 Apr 2011; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-siliconmotion-1.7.5.ebuild:
+  alpha/ia64 stable wrt #359059
+
+  26 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  xf86-video-siliconmotion-1.7.5.ebuild:
+  x86 stable, bug 359059
+
+  21 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  xf86-video-siliconmotion-1.7.5.ebuild:
+  Stable on amd64 wrt bug #359059
+
+*xf86-video-siliconmotion-1.7.5 (28 Feb 2011)
+
+  28 Feb 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-siliconmotion-1.7.5.ebuild:
+  Version bump.
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-siliconmotion-1.7.4.ebuild:
+  alpha/ia64 stable wrt #344827
+
+  12 Sep 2010; Tobias Klausmann <klausman@gentoo.org>
+  xf86-video-siliconmotion-1.7.4.ebuild:
+  Stable on alpha, bug #327777
+
+  11 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/siliconmotion.xinf:
+  drop useless file
+
+  13 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  xf86-video-siliconmotion-1.7.4.ebuild:
+  x86 stable, bug 327777
+
+  12 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  xf86-video-siliconmotion-1.7.4.ebuild:
+  Stable on amd64 wrt bug #327777
+
+*xf86-video-siliconmotion-1.7.4 (29 Apr 2010)
+
+  29 Apr 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-siliconmotion-1.7.4.ebuild:
+  Version bump.
+
+  23 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86-video-siliconmotion-1.6.0.ebuild,
+  -xf86-video-siliconmotion-1.7.0.ebuild:
+  rm
+
+  15 Dec 2009; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-siliconmotion-1.7.3.ebuild:
+  alpha/ia64 stable wrt #282290
+
+  05 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  xf86-video-siliconmotion-1.7.3.ebuild:
+  x86 stable, bug 282290
+
+  30 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  xf86-video-siliconmotion-1.7.3.ebuild:
+  amd64 stable wrt #282290
+
+  06 Aug 2009; Rémi Cardona <remi@gentoo.org>
+  -xf86-video-siliconmotion-1.4.1.ebuild,
+  -xf86-video-siliconmotion-1.5.1.ebuild:
+  drop old ebuilds
+
+*xf86-video-siliconmotion-1.7.3 (06 Aug 2009)
+
+  06 Aug 2009; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-siliconmotion-1.7.3.ebuild:
+  bump to 1.7.3
+
+  23 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  xf86-video-siliconmotion-1.7.0.ebuild:
+  Stable on alpha for xorg-server-1.5/xorg-x11-7.4
+
+  15 Apr 2009; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-siliconmotion-1.6.0.ebuild:
+  ia64 stable wrt #251832
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org>
+  xf86-video-siliconmotion-1.6.0.ebuild:
+  x86 stable, bug #251832
+
+  05 Apr 2009; Olivier Crête <tester@gentoo.org>
+  xf86-video-siliconmotion-1.6.0.ebuild:
+  Stable on amd64, bug #251832
+
+  13 Mar 2009; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-siliconmotion-1.4.1.ebuild,
+  xf86-video-siliconmotion-1.5.1.ebuild,
+  xf86-video-siliconmotion-1.6.0.ebuild,
+  xf86-video-siliconmotion-1.7.0.ebuild:
+  Drop ~sh, its not available there
+
+*xf86-video-siliconmotion-1.7.0 (13 Jan 2009)
+
+  13 Jan 2009; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-video-siliconmotion-1.7.0.ebuild:
+  Version bump. Adds support for SMI 50x chipsets, RandR 1.2, EXA
+  acceleration, and dual head.
+
+*xf86-video-siliconmotion-1.6.0 (10 Jun 2008)
+
+  10 Jun 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-video-siliconmotion-1.6.0.ebuild:
+  Bump to latest. Should all be compatible with xorg-server-1.5.
+
+  24 Feb 2008; Donnie Berkholz <dberkholz@gentoo.org>; ChangeLog:
+  Update my email.
+
+  31 Jan 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-video-siliconmotion-1.4.2.ebuild:
+  Clean up.
+
+  02 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-siliconmotion-1.5.1.ebuild:
+  alpha stable wrt #175465
+
+  05 May 2007; Daniel Gryniewicz <dang@gentoo.org>
+  xf86-video-siliconmotion-1.5.1.ebuild:
+  Marked stable on amd64 for bug #175465
+
+  29 Apr 2007; Andrej Kacian <ticho@gentoo.org>
+  xf86-video-siliconmotion-1.5.1.ebuild:
+  Stable on x86, bug #175465.
+
+  25 Apr 2007; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-siliconmotion-1.5.1.ebuild:
+  Stable on ia64 wrt bug #175465
+
+*xf86-video-siliconmotion-1.5.1 (20 Mar 2007)
+
+  20 Mar 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-siliconmotion-1.5.1.ebuild:
+  Version bump from upstream.  Fixes some bugs and adds EXA support.
+
+  24 Jan 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-video-siliconmotion-1.3.1.5.ebuild:
+  Stop supporting Xorg 7.0.
+
+*xf86-video-siliconmotion-1.4.2 (21 Oct 2006)
+
+  21 Oct 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-siliconmotion-1.4.2.ebuild:
+  Version bump.
+
+  13 Oct 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  xf86-video-siliconmotion-1.4.1.ebuild:
+  AMD64/x86 stable for bug #144549 (X7.1).
+
+  11 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-siliconmotion-1.3.1.5.ebuild,
+  xf86-video-siliconmotion-1.4.1.ebuild:
+  Update description to be less generic.
+
+  05 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/siliconmotion.xinf:
+  Add hwdata files for system-config-display.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  xf86-video-siliconmotion-1.4.1.ebuild:
+  Mark 1.4.1 stable on ia64
+
+  01 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-siliconmotion-1.4.1.ebuild:
+  stable on alpha sh
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  xf86-video-siliconmotion-1.3.1.5.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-siliconmotion-1.3.1.5.ebuild:
+  x86 stable.
+
+  05 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xf86-video-siliconmotion-1.4.1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  16 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xf86-video-siliconmotion-1.3.1.5.ebuild:
+  Add ~x86-fbsd keyword.
+
+*xf86-video-siliconmotion-1.4.1 (14 Apr 2006)
+
+  14 Apr 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-siliconmotion-1.4.1.ebuild:
+  Bump for 7.1 RC1.
+
+  06 Mar 2006; Stefaan De Roeck <stefaan@gentoo.org>
+  xf86-video-siliconmotion-1.3.1.5.ebuild:
+  Marked ~alpha (bug #122726)
+
+  02 Feb 2006; Luis Medinas <metalgod@gentoo.org>
+  xf86-video-siliconmotion-1.3.1.5.ebuild:
+  Added ~amd64 keyword.
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xf86-video-siliconmotion-1.3.1.3.ebuild,
+  -xf86-video-siliconmotion-1.3.1.4.ebuild:
+  Pull old versions.
+
+*xf86-video-siliconmotion-1.3.1.5 (23 Dec 2005)
+
+  23 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-siliconmotion-1.3.1.5.ebuild:
+  Bump for 7.0.
+
+*xf86-video-siliconmotion-1.3.1.4 (18 Dec 2005)
+
+  18 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-siliconmotion-1.3.1.4.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  files/digest-xf86-video-siliconmotion-1.3.1.3, Manifest:
+  Update digest to match patch introduced by x-modular.eclass changes.
+
+  09 Dec 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-video-siliconmotion-1.3.1.ebuild,
+  -xf86-video-siliconmotion-1.3.1.1.ebuild,
+  -xf86-video-siliconmotion-1.3.1.2.ebuild:
+  Pull old versions.
+
+*xf86-video-siliconmotion-1.3.1.3 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-siliconmotion-1.3.1.3.ebuild:
+  Bump for 7.0RC3.
+
+*xf86-video-siliconmotion-1.3.1.2 (11 Nov 2005)
+
+  11 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-siliconmotion-1.3.1.2.ebuild:
+  Bump for 7.0RC2.
+
+*xf86-video-siliconmotion-1.3.1.1 (20 Oct 2005)
+
+  20 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-siliconmotion-1.3.1.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <dberkholz@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+*xf86-video-siliconmotion-1.3.1 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-video-siliconmotion-1.3.1.ebuild:
+  Initial commit for modular X.

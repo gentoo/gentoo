@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst preinst unpack
+DESCRIPTION=Raspberry PI boot loader and firmware
+EAPI=5
+HOMEPAGE=https://github.com/raspberrypi/firmware
+KEYWORDS=~arm -*
+LICENSE=GPL-2 raspberrypi-videocore-bin
+RDEPEND=!sys-boot/raspberrypi-loader
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=https://github.com/raspberrypi/firmware/raw/128fa52bbc/boot/bootcode.bin -> raspberrypi-firmware-128fa52bbc-bootcode.bin https://github.com/raspberrypi/firmware/raw/128fa52bbc/boot/fixup.dat -> raspberrypi-firmware-128fa52bbc-fixup.dat https://github.com/raspberrypi/firmware/raw/128fa52bbc/boot/fixup_cd.dat -> raspberrypi-firmware-128fa52bbc-fixup_cd.dat https://github.com/raspberrypi/firmware/raw/128fa52bbc/boot/fixup_x.dat -> raspberrypi-firmware-128fa52bbc-fixup_x.dat https://github.com/raspberrypi/firmware/raw/128fa52bbc/boot/start.elf -> raspberrypi-firmware-128fa52bbc-start.elf https://github.com/raspberrypi/firmware/raw/128fa52bbc/boot/start_cd.elf -> raspberrypi-firmware-128fa52bbc-start_cd.elf https://github.com/raspberrypi/firmware/raw/128fa52bbc/boot/start_x.elf -> raspberrypi-firmware-128fa52bbc-start_x.elf
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f16a8ce4365e1525bef6d1ca048d6ba6

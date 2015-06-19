@@ -1,0 +1,60 @@
+# ChangeLog for app-admin/syslogread
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/syslogread/ChangeLog,v 1.15 2014/08/18 20:07:14 creffett Exp $
+
+*syslogread-0.92-r1 (18 Aug 2014)
+
+  18 Aug 2014; Christopher Reffett <2011creffett@gentoo.org>
+  +syslogread-0.92-r1.ebuild, -syslogread-0.92.ebuild:
+  QA: revbump, EAPI bump, drop old
+
+  23 Dec 2013; Tom Wijsman <TomWij@gentoo.org> -files/0.92/syslogread.init,
+  syslogread-0.92.ebuild:
+  [QA] Remove unused files. (A stub init script that has been 7,5 years in the
+  Portage tree and was never used.)
+
+  20 Oct 2012; Agostino Sarubbo <ago@gentoo.org> syslogread-0.92.ebuild:
+  Add ~amd64, wrt bug #439004
+
+  20 Oct 2012; Agostino Sarubbo <ago@gentoo.org> syslogread-0.92.ebuild:
+  Comment keepdir since syslog now is a file
+
+  31 May 2012; Zac Medico <zmedico@gentoo.org> syslogread-0.92.ebuild:
+  inherit user for enewgroup and enewuser
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #118937
+
+  07 Apr 2011; Ultrabug <ultrabug@gentoo.org> syslogread-0.92.ebuild:
+  migrate ebuilds to new-style virtual, wrt #358881
+
+  29 Jan 2011; Thilo Bangert <bangert@gentoo.org> syslogread-0.92.ebuild:
+  dep on virtual/daemontools
+
+  29 Sep 2010; Michael Weber <xmw@gentoo.org> syslogread-0.92.ebuild:
+  Added ~arm keyword
+
+  14 Jan 2010; Thilo Bangert <bangert@gentoo.org> syslogread-0.92.ebuild,
+  +files/syslogread-0.92-fix-parallel-build.patch:
+  EAPI2 - fix parallel build (bug #277586) - multilib ready - create user in
+  pkg_setup
+
+  13 Jul 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  syslogread-0.92.ebuild:
+  Replace the make call with emake -j1 and add a bug to track the issue.
+
+  25 Jan 2008; Thilo Bangert <bangert@gentoo.org> syslogread-0.92.ebuild:
+  honour ROOT
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> syslogread-0.92.ebuild:
+  Replacing einfo with elog
+
+  24 Jul 2006; Thilo Bangert <bangert@gentoo.org> syslogread-0.92.ebuild:
+  remove HOMPAGE from SRC_URI
+
+*syslogread-0.92 (11 Jun 2006)
+
+  11 Jun 2006; Thilo Bangert <bangert@gentoo.org> +files/0.92/klogd.run,
+  +files/0.92/syslogread.init, +files/0.92/syslogread.run,
+  +files/0.92/syslogread-log.run, +metadata.xml, +syslogread-0.92.ebuild:
+  initial import

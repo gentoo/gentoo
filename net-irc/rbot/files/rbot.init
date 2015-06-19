@@ -1,0 +1,55 @@
+#!/sbin/runscript
+# Copyright 2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/rbot/files/rbot.init,v 1.1 2007/11/19 13:56:54 flameeyes Exp $
+
+depend() {
+	 need net
+	 use dns
+}
+
+start() {
+	if ! [ -d "${RBOTDIR}" ]; then
+		eerror "The path you specified (${RBOTDIR}) is not a directory."
+		eerror "Please set RBOTDIR variable in /etc/conf.d/${myservice}"
+		eerror "to a proper value for an rbot base directory."
+		return 1
+	fi
+
+	if ! [ -f "${RBOTDIR}/conf.yaml" ]; then
+		eerror "You didn't configure rbot yet. Please configure rbot by running"
+		eerror "	rbot ${RBOTDIR}"
+		eerror "at least once."
+		return 1
+	fi
+
+	# for a series of reason, we can't rely on the process being started
+	# with 'ruby' name. As using ruby18 would break for ruby 1.9, get the
+	# linked name to use as rubyname.
+	ruby="$(readlink /usr/bin/ruby)"
+
+	export USER="${RBOTUSER%%:*}"
+	export HOME="/dev/null"
+	ebegin "Starting rbot"
+	start-stop-daemon \
+		--start \
+		--exec "/usr/bin/${ruby}" --name "${ruby}" \
+		--pidfile "${RBOTDIR}/rbot.pid" \
+		--chuid "${RBOTUSER}" \
+		-- /usr/bin/rbot --background "${RBOTDIR}"
+	eend $?
+}
+
+stop() {
+	# for a series of reason, we can't rely on the process being started
+	# with 'ruby' name. As using ruby18 would break for ruby 1.9, get the
+	# linked name to use as rubyname.
+	ruby="$(readlink /usr/bin/ruby)"
+
+	ebegin "Stopping rbot"
+	start-stop-daemon --stop \
+		--exec "/usr/bin/${ruby}" \
+		--pidfile "${RBOTDIR}/rbot.pid" \
+		--user "${RBOTUSER%%:*}"
+	eend $?
+}

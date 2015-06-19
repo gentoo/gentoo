@@ -1,0 +1,24 @@
+move xfce-extra/xfce4-appfinder xfce-base/xfce4-appfinder
+move dev-lisp/cl-asdf dev-lisp/asdf
+move dev-lisp/cl-asdf-binary-locations dev-lisp/asdf-binary-locations
+slotmove media-libs/libharu 2 0
+move sys-fs/bleachbit sys-apps/bleachbit
+move sys-infiniband/openib sys-infiniband/ofed
+move app-text/djview4 app-text/djview
+move app-text/focuswriter app-editors/focuswriter
+move app-mobilephone/jacksms-desktop app-mobilephone/freesmee
+move app-office/languagetool app-officeext/languagetool
+move dev-vcs/cola dev-vcs/git-cola
+move app-portage/eclean-kernel app-admin/eclean-kernel
+move kde-misc/kcm-gtk-config kde-misc/kde-gtk-config
+move x11-misc/see x11-misc/seetxt
+move dev-python/Whoosh dev-python/whoosh
+move dev-texlive/texlive-latex3 dev-texlive/texlive-latexrecommended
+move net-libs/axTLS net-libs/axtls
+move x11-misc/tudor-volumed media-sound/tudor-volumed
+move media-video/leechcraft-lmp media-sound/leechcraft-lmp
+move x11-themes/gtk-engines-nimbus x11-themes/nimbus
+move media-gfx/iscan-plugin-gt-s80 media-gfx/esci-interpreter-gt-s80
+move x11-libs/libPropList x11-libs/libproplist
+move dev-perl/Text-ParseWords perl-core/Text-ParseWords
+move net-fs/leechcraft-vrooby sys-fs/leechcraft-vrooby

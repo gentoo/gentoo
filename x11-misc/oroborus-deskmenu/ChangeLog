@@ -1,0 +1,19 @@
+# ChangeLog for x11-misc/oroborus-deskmenu
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/oroborus-deskmenu/ChangeLog,v 1.4 2013/10/19 15:13:26 pacho Exp $
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due desktop-wm removal
+
+  04 Jun 2012; Michael Weber <xmw@gentoo.org> oroborus-deskmenu-1.4.5.ebuild:
+  Fix SRC_URI (reported by df, bug 416129)
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  oroborus-deskmenu-1.4.5.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*oroborus-deskmenu-1.4.5 (31 May 2010)
+
+  31 May 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  +oroborus-deskmenu-1.4.5.ebuild, +metadata.xml:
+  New ebuild for oroborus-deskmenu, formerly part of x11-wm/oroborus-extras

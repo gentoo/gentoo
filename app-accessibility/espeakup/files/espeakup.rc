@@ -1,0 +1,28 @@
+#!/sbin/runscript
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/espeakup/files/espeakup.rc,v 1.4 2009/11/01 18:50:32 eva Exp $
+
+depend() {
+	after modules
+	use alsasound pulseaudio
+}
+
+start() {
+	ebegin "Starting espeakup"
+	start-stop-daemon --start --exec /usr/bin/espeakup \
+		-- ${ESPEAKUP_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping espeakup"
+	start-stop-daemon --stop --pidfile /var/run/espeakup.pid
+	eend $?
+}
+
+restart() {
+	svc_stop || exit 1
+	sleep 2
+	svc_start || exit 1
+}

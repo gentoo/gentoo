@@ -1,0 +1,73 @@
+# ChangeLog for media-sound/positron
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/positron/ChangeLog,v 1.21 2014/08/10 21:09:59 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> positron-1.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  11 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  positron-1.1.ebuild:
+  Use Python 2 (bug #313967).
+
+  20 Dec 2008; Alexis Ballier <aballier@gentoo.org> positron-1.1.ebuild:
+  install doc in /usr/share/doc/PF, bug #241290
+
+  20 Dec 2008; Alexis Ballier <aballier@gentoo.org> positron-1.1.ebuild:
+  convert to distutils eclass
+
+  10 Mar 2007; Steve Dibb <beandog@gentoo.org> positron-1.1.ebuild:
+  Update license, bug 170323
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> positron-1.1.ebuild:
+  Remove src_compile.
+
+  28 May 2005; Jan Brinkmann <luckyduck@gentoo.org> -positron-1.0.ebuild,
+  positron-1.1.ebuild:
+  Dont make use of the deprecated oggvorbis useflag any longer, see #94254.
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> positron-1.1.ebuild:
+  Stable on ppc.
+
+  28 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  positron-1.1.ebuild:
+  Stable sparc and amd64.
+
+  13 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> positron-1.1.ebuild:
+  ~sparc ~amd64
+
+  06 May 2004; Jeremy Huddleston <eradicator@gentoo.org> positron-1.1.ebuild:
+  Stable x86.
+
+  17 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> positron-1.0.ebuild,
+  positron-1.1.ebuild:
+  IUSE=oggvorbis.
+
+*positron-1.1 (03 Apr 2004)
+
+  03 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> positron-1.1.ebuild:
+  Version bump.  Closes bug #46647.
+
+  20 Oct 2003; Heinrich Wendel <lanius@gentoo.org> positron-1.0.ebuild:
+  bug #31504
+
+  01 Aug 2003; Todd Berman <tberman@gentoo.org> positron-1.0.ebuild:
+  marking stable on ppc per upstream request.
+
+  30 Jul 2003; Todd Berman <tberman@gentoo.org> positron-1.0.ebuild,
+  positron-1.0_beta1.ebuild, positron-1.0_beta2.ebuild:
+  Removing the two beta ebuilds, marking the 1.0 ebuild stable on x86.
+
+*positron-1.0 (19 Jun 2003)
+
+  19 Jun 2003; Todd Berman <tberman@gentoo.org> positron-1.0.ebuild:
+  Version bump
+
+*positron-1.0_beta2 (28 May 2003)
+
+  28 May 2003; Todd Berman <tberman@gentoo.org> positron-1.0_beta2.ebuild:
+  Version bump.
+
+*positron-1.0_beta1 (24 May 2003)
+
+  24 May 2003; Todd Berman <tberman@gentoo.org> positron-1.0_beta1.ebuild:
+  Initial Import.

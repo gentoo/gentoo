@@ -1,0 +1,36 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/minetest/files/minetestserver.initd,v 1.1 2013/08/05 22:31:13 hasufell Exp $
+
+description="Minetest dedicated server"
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "starting server"
+	start-stop-daemon \
+		--start \
+		--quiet \
+		--make-pidfile \
+		--pidfile "${PIDFILE}" \
+		--background \
+		--user ${USER} \
+		--group ${GROUP} \
+		--exec "${MINETESTBIN}" -- ${ARGS}
+
+	eend $?
+}
+
+stop() {
+	ebegin "stopping server"
+	start-stop-daemon \
+		--stop \
+		--signal 15 \
+		--quiet \
+		--pidfile "${PIDFILE}"
+
+	eend $?
+}

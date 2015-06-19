@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare setup
+DEPEND=>=dev-libs/libowfat-0.25[diet=] diet? ( dev-libs/dietlibc ) ssl? ( dev-libs/openssl )
+DESCRIPTION=High performance web server
+EAPI=4
+HOMEPAGE=http://www.fefe.de/gatling/
+IUSE=ssl diet
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/libowfat-0.25[diet=] diet? ( dev-libs/dietlibc ) ssl? ( dev-libs/openssl )
+REQUIRED_USE=ssl? ( !diet )
+SLOT=0
+SRC_URI=http://dl.fefe.de/gatling-0.13.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=969b4eef121ff98bcd9bb903ab903cd6

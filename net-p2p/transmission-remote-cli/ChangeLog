@@ -1,0 +1,89 @@
+# ChangeLog for net-p2p/transmission-remote-cli
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/transmission-remote-cli/ChangeLog,v 1.16 2015/04/08 18:17:51 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org>
+  transmission-remote-cli-1.6.3.ebuild, transmission-remote-cli-1.7.0.ebuild:
+  Drop old Python implementations
+
+  29 Mar 2015; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove unneeded useflag description from metadata.xml
+
+  29 Mar 2015; Pacho Ramos <pacho@gentoo.org>
+  transmission-remote-cli-1.6.3.ebuild, transmission-remote-cli-1.7.0.ebuild:
+  Drop rdns USE due to adns removal (#514000)
+
+*transmission-remote-cli-1.7.0 (18 May 2014)
+
+  18 May 2014; Michael Weber <xmw@gentoo.org>
+  +transmission-remote-cli-1.7.0.ebuild,
+  -transmission-remote-cli-1.6.2-r1.ebuild:
+  Version bump by lorem_ipsum
+
+  09 Apr 2014; Michał Górny <mgorny@gentoo.org>
+  transmission-remote-cli-1.6.2-r1.ebuild, transmission-remote-cli-1.6.3.ebuild:
+  Remove python2.5 leftover.
+
+*transmission-remote-cli-1.6.3 (14 Nov 2013)
+
+  14 Nov 2013; Michael Weber <xmw@gentoo.org>
+  +transmission-remote-cli-1.6.3.ebuild, -transmission-remote-cli-1.6.1.ebuild,
+  -transmission-remote-cli-1.6.2.ebuild:
+  Version bump by hendrik, drop old.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org>
+  transmission-remote-cli-1.6.1.ebuild, transmission-remote-cli-1.6.2-r1.ebuild,
+  transmission-remote-cli-1.6.2.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*transmission-remote-cli-1.6.2-r1 (22 Aug 2013)
+
+  22 Aug 2013; Michael Weber <xmw@gentoo.org>
+  +transmission-remote-cli-1.6.2-r1.ebuild:
+  Revbump by lorem_ipsum.
+
+  10 Aug 2013; Michael Weber <xmw@gentoo.org>
+  -transmission-remote-cli-1.4.7-r1.ebuild,
+  -transmission-remote-cli-1.5.0.ebuild, -transmission-remote-cli-1.6.0.ebuild:
+  Drop old versions.
+
+*transmission-remote-cli-1.6.2 (10 Aug 2013)
+
+  10 Aug 2013; Michael Weber <xmw@gentoo.org>
+  +transmission-remote-cli-1.6.2.ebuild:
+  Version bump by lorem_ipsum.
+
+*transmission-remote-cli-1.6.1 (28 Jul 2013)
+
+  28 Jul 2013; Michael Weber <xmw@gentoo.org>
+  +transmission-remote-cli-1.6.1.ebuild:
+  Version bump by lorem_ipsum.
+
+*transmission-remote-cli-1.6.0 (02 Jul 2013)
+
+  02 Jul 2013; Michael Weber <xmw@gentoo.org>
+  +transmission-remote-cli-1.6.0.ebuild:
+  Version bump by lorem_ipsum
+
+  29 May 2013; Michael Weber <xmw@gentoo.org>
+  -transmission-remote-cli-1.4.7.ebuild,
+  transmission-remote-cli-1.4.7-r1.ebuild, transmission-remote-cli-1.5.0.ebuild:
+  Fix REQUIRED_USE for python-r1 by lorem_ipsum
+
+*transmission-remote-cli-1.5.0 (23 Mar 2013)
+
+  23 Mar 2013; Michael Weber <xmw@gentoo.org>
+  +transmission-remote-cli-1.5.0.ebuild:
+  Version bump by lorem_ipsum
+
+*transmission-remote-cli-1.4.7-r1 (14 Feb 2013)
+
+  14 Feb 2013; Michael Weber <xmw@gentoo.org>
+  +transmission-remote-cli-1.4.7-r1.ebuild:
+  Improved python-r1 handling
+
+*transmission-remote-cli-1.4.7 (14 Feb 2013)
+
+  14 Feb 2013; Michael Weber <xmw@gentoo.org>
+  +transmission-remote-cli-1.4.7.ebuild, +metadata.xml:
+  Initial import

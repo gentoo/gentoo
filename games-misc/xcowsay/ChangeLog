@@ -1,0 +1,42 @@
+# ChangeLog for games-misc/xcowsay
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/xcowsay/ChangeLog,v 1.10 2012/05/03 03:29:41 jdhore Exp $
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> xcowsay-1.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  30 Dec 2011; Markos Chandras <hwoarang@gentoo.org> xcowsay-1.3.ebuild:
+  Add missing gtk+ and gdk-pixbuf dependencies. Bug #395323
+
+  17 May 2011; Markos Chandras <hwoarang@gentoo.org> -xcowsay-1.2.ebuild:
+  remove old
+
+  27 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> xcowsay-1.3.ebuild:
+  x86 stable wrt bug #358577
+
+  13 Mar 2011; Markos Chandras <hwoarang@gentoo.org> xcowsay-1.3.ebuild:
+  Stable on amd64 wrt bug #358577
+
+*xcowsay-1.3 (05 Jan 2011)
+
+  05 Jan 2011; Markos Chandras <hwoarang@gentoo.org> +xcowsay-1.3.ebuild,
+  metadata.xml:
+  Version bump. Thanks to kirin yuri <kirin.yuri@ya.ru> for the ebuild. Bug
+  #350383
+
+  30 Sep 2010; Markus Meier <maekke@gentoo.org> xcowsay-1.2.ebuild:
+  x86 stable, bug #338776
+
+  27 Sep 2010; Markos Chandras <hwoarang@gentoo.org> xcowsay-1.2.ebuild:
+  Stable on amd64 wrt bug #338776
+
+  26 Aug 2010; Markos Chandras <hwoarang@gentoo.org> xcowsay-1.2.ebuild,
+  +files/xcowsay-1.2-no-dbus.patch:
+  Apply patch from upstream which fixes compilation with -dbus. Bug #334533
+
+*xcowsay-1.2 (25 Aug 2010)
+
+  25 Aug 2010; Markos Chandras <hwoarang@gentoo.org> +xcowsay-1.2.ebuild,
+  +metadata.xml:
+  Initial commit of xcowsay
+

@@ -1,0 +1,24 @@
+# ChangeLog for dev-tex/isotope
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/isotope/ChangeLog,v 1.5 2011/07/20 15:58:21 pacho Exp $
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #70723
+
+  03 Aug 2009; Markus Meier <maekke@gentoo.org> isotope-20040401.ebuild:
+  x86 stable, bug #274133
+
+  01 Aug 2009; Marcus D. Hanwell <cryos@gentoo.org> isotope-20040401.ebuild:
+  Marked stable on amd64, bug 274133.
+
+  10 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  isotope-20040401.ebuild:
+  keywording ~x86, bug 198480
+
+*isotope-20040401 (27 May 2007)
+
+  27 May 2007; Marcus D. Hanwell <cryos@gentoo.org> +metadata.xml,
+  +isotope-20040401.ebuild:
+  Initial inport, thanks to Felix Eckert <dadula@gmx.de> for his work. Closes
+  bug 149311.
+

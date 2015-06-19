@@ -1,0 +1,328 @@
+# ChangeLog for x11-libs/libXmu
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXmu/ChangeLog,v 1.93 2015/03/03 11:27:15 dlan Exp $
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> libXmu-1.1.2.ebuild:
+  add arm64 support, tested on A53 board
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> libXmu-1.1.1-r1.ebuild,
+  libXmu-1.1.2.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXmu-1.1.2.ebuild:
+  Stable for x86, wrt bug #475480
+
+  07 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXmu-1.1.2.ebuild:
+  Stable for sparc, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXmu-1.1.2.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  05 Oct 2013; Markus Meier <maekke@gentoo.org> libXmu-1.1.2.ebuild:
+  arm stable, bug #475480
+
+  05 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXmu-1.1.2.ebuild:
+  Stable for alpha, wrt bug #475480
+
+  04 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXmu-1.1.2.ebuild:
+  Stable for ppc64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXmu-1.1.2.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  02 Oct 2013; Jeroen Roovers <jer@gentoo.org> libXmu-1.1.2.ebuild:
+  Stable for HPPA (bug #475480).
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org> libXmu-1.1.2.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*libXmu-1.1.2 (11 Sep 2013)
+
+  11 Sep 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libXmu-1.1.2.ebuild, -libXmu-1.1.0.ebuild:
+  Version bump.
+
+*libXmu-1.1.1-r1 (26 Feb 2013)
+
+  26 Feb 2013; Michał Górny <mgorny@gentoo.org> +libXmu-1.1.1-r1.ebuild:
+  Enable multilib.
+
+  22 Feb 2013; Zac Medico <zmedico@gentoo.org> libXmu-1.1.1.ebuild:
+  Add ~arm-linux keywords.
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> libXmu-1.1.1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #419473
+
+  12 Jul 2012; Brent Baude <ranger@gentoo.org> libXmu-1.1.1.ebuild:
+  Marking libXmu-1.1.1 ppc stable for bug 419473
+
+  11 Jul 2012; Brent Baude <ranger@gentoo.org> libXmu-1.1.1.ebuild:
+  Marking libXmu-1.1.1 ppc64 stable for bug 419473
+
+  29 Jun 2012; Markus Meier <maekke@gentoo.org> libXmu-1.1.1.ebuild:
+  arm stable, bug #419473
+
+  28 Jun 2012; Jeroen Roovers <jer@gentoo.org> libXmu-1.1.1.ebuild:
+  Stable for HPPA (bug #419473).
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libXmu-1.1.1.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libXmu-1.1.1.ebuild:
+  Stable for amd64, wrt bug #419473
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> libXmu-1.1.1.ebuild:
+  keyword ~amd64-fbsd
+
+*libXmu-1.1.1 (07 Mar 2012)
+
+  07 Mar 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libXmu-1.1.1.ebuild:
+  Version bump.
+
+  22 Jun 2011; Fabian Groffen <grobian@gentoo.org> libXmu-1.1.0.ebuild:
+  Marked ~x64-macos, bug #371861
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> libXmu-1.1.0.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> libXmu-1.1.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #344827
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> libXmu-1.1.0.ebuild:
+  Stable for HPPA (bug #344827).
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org> libXmu-1.1.0.ebuild:
+  arm stable, bug #344827
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org> libXmu-1.1.0.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> libXmu-1.1.0.ebuild:
+  amd64 stable wrt #344827
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> libXmu-1.1.0.ebuild:
+  ppc64 stable wrt #344827
+
+*libXmu-1.1.0 (31 Oct 2010)
+
+  31 Oct 2010; Tomáš Chvátal <scarabeus@gentoo.org> +libXmu-1.1.0.ebuild:
+  Version bump
+
+  25 Feb 2010; Jonathan Callen <abcd@gentoo.org> libXmu-1.0.5.ebuild:
+  Transfer prefix keywords (no other changes)
+
+  23 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org> -libXmu-1.0.3.ebuild,
+  -libXmu-1.0.4.ebuild:
+  rm
+
+  19 Jan 2010; Raúl Porcel <armin76@gentoo.org> libXmu-1.0.5.ebuild:
+  s390 stable wrt #294958
+
+  18 Jan 2010; Raúl Porcel <armin76@gentoo.org> libXmu-1.0.5.ebuild:
+  alpha/ia64/sh/sparc stable wrt #294958
+
+  14 Jan 2010; Markus Meier <maekke@gentoo.org> libXmu-1.0.5.ebuild:
+  arm stable, bug #294958
+
+  14 Jan 2010; Jeroen Roovers <jer@gentoo.org> libXmu-1.0.5.ebuild:
+  Stable for HPPA (bug #294958).
+
+  27 Dec 2009; Joseph Jezak <josejx@gentoo.org> libXmu-1.0.5.ebuild:
+  Marked ppc stable for bug #294958.
+
+  15 Dec 2009; Brent Baude <ranger@gentoo.org> libXmu-1.0.5.ebuild:
+  Marking libXmu-1.0.5 ppc64 stable for bug 294958
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org> libXmu-1.0.5.ebuild:
+  x86 stable, bug 294958
+
+  10 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> libXmu-1.0.5.ebuild:
+  amd64 stable wrt #294958
+
+*libXmu-1.0.5 (28 Sep 2009)
+
+  28 Sep 2009; Rémi Cardona <remi@gentoo.org> +libXmu-1.0.5.ebuild:
+  bump to 1.0.5
+
+  23 Jun 2009; Tobias Klausmann <klausman@gentoo.org> libXmu-1.0.4.ebuild:
+  Stable on alpha for xorg-server-1.5/xorg-x11-7.4
+
+  15 May 2009; Raúl Porcel <armin76@gentoo.org> libXmu-1.0.4.ebuild:
+  arm/s390 stable
+
+  04 May 2009; Samuli Suominen <ssuominen@gentoo.org> libXmu-1.0.3.ebuild,
+  libXmu-1.0.4.ebuild:
+  Move use_ functions out of global scope.
+
+  16 Apr 2009; Jeroen Roovers <jer@gentoo.org> libXmu-1.0.4.ebuild:
+  Stable for HPPA (bug #251832).
+
+  15 Apr 2009; Raúl Porcel <armin76@gentoo.org> libXmu-1.0.4.ebuild:
+  ia64/sh stable wrt #251832
+
+  06 Apr 2009; Friedrich Oslage <bluebird@gentoo.org> libXmu-1.0.4.ebuild:
+  Stable on sparc, bug #251832
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org> libXmu-1.0.4.ebuild:
+  x86 stable, bug #251832
+
+  05 Apr 2009; Olivier Crête <tester@gentoo.org> libXmu-1.0.4.ebuild:
+  Stable on amd64, bug #251832
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> libXmu-1.0.4.ebuild:
+  Marking libXmu-1.0.4 ppc64 stable for bug 251832
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> libXmu-1.0.4.ebuild:
+  Marking libXmu-1.0.4 ppc stable for bug 251832
+
+*libXmu-1.0.4 (11 Sep 2008)
+
+  11 Sep 2008; Donnie Berkholz <dberkholz@gentoo.org>; +libXmu-1.0.4.ebuild:
+  Version bump.
+
+  31 Jan 2008; Donnie Berkholz <dberkholz@gentoo.org>; -libXmu-1.0.2.ebuild:
+  Clean up.
+
+  07 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> libXmu-1.0.3.ebuild:
+  Stable on sparc wrt #175465
+
+  03 Jul 2007; Lars Weiler <pylon@gentoo.org> libXmu-1.0.3.ebuild:
+  Stable on ppc; bug #175465.
+
+  02 Jul 2007; Raúl Porcel <armin76@gentoo.org> libXmu-1.0.3.ebuild:
+  alpha stable wrt #175465
+
+  27 May 2007; Joshua Kinard <kumba@gentoo.org> libXmu-1.0.3.ebuild:
+  Stable on mips.
+
+  20 May 2007; Jeroen Roovers <jer@gentoo.org> libXmu-1.0.3.ebuild:
+  Stable for HPPA (bug #175465).
+
+  04 May 2007; Daniel Gryniewicz <dang@gentoo.org> libXmu-1.0.3.ebuild:
+  Marked stable on amd64 for bug #175465
+
+  29 Apr 2007; Andrej Kacian <ticho@gentoo.org> libXmu-1.0.3.ebuild:
+  Stable on x86, bug #175465.
+
+  25 Apr 2007; Raúl Porcel <armin76@gentoo.org> libXmu-1.0.3.ebuild:
+  Stable on ia64 wrt bug #175465
+
+  25 Apr 2007; Markus Rothe <corsair@gentoo.org> libXmu-1.0.3.ebuild:
+  Stable on ppc64; bug #175465
+
+*libXmu-1.0.3 (10 Nov 2006)
+
+  10 Nov 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXmu-1.0.3.ebuild:
+  Version bump for 7.2RC2.  Contains minor fixes.
+
+  19 Jul 2006; Guy Martin <gmsoft@gentoo.org> libXmu-1.0.2.ebuild:
+  Stable on hppa.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> libXmu-1.0.2.ebuild:
+  Mark 1.0.2 stable on ia64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>; libXmu-1.0.2.ebuild:
+  ppc/sparc/mips/alpha/arm/sh stable
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>; -libXmu-1.0.0.ebuild:
+  Pull old ebuild.
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> libXmu-1.0.2.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org> libXmu-1.0.2.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>; libXmu-1.0.2.ebuild:
+  x86 stable.
+
+*libXmu-1.0.2 (13 May 2006)
+
+  13 May 2006; Donnie Berkholz <spyderous@gentoo.org>; -libXmu-1.0.1.ebuild,
+  +libXmu-1.0.2.ebuild:
+  Bump.
+
+*libXmu-1.0.1 (29 Apr 2006)
+
+  29 Apr 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXmu-1.0.1.ebuild:
+  Version bump.  Includes a Cygwin build fix.
+
+  31 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> libXmu-1.0.0.ebuild:
+  Add ~x86-fbsd keyword.
+
+  09 Mar 2006; Aron Griffis <agriffis@gentoo.org> libXmu-1.0.0.ebuild:
+  Mark 1.0.0 ~ia64
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> libXmu-1.0.0.ebuild:
+  Added ~ppc64
+
+  31 Jan 2006; Rene Nussbaumer <killerfox@gentoo.org> libXmu-1.0.0.ebuild:
+  Unstable on hppa.
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -libXmu-0.99.2.ebuild:
+  Pull old versions.
+
+  26 Dec 2005; Stefaan De Roeck <stefaan@gentoo.org> libXmu-1.0.0.ebuild:
+  Marked ~alpha
+
+*libXmu-1.0.0 (17 Dec 2005)
+
+  17 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXmu-1.0.0.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -libXmu-0.99.1-r1.ebuild:
+  Pull old versions.
+
+*libXmu-0.99.2 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXmu-0.99.2.ebuild:
+  Bump for 7.0RC3.
+
+  04 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -libXmu-0.99.0.ebuild, -libXmu-0.99.1.ebuild, libXmu-0.99.1-r1.ebuild:
+  Add missing xproto dep.  Drop old versions.
+
+*libXmu-0.99.1-r1 (27 Oct 2005)
+
+  27 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXmu-0.99.1-r1.ebuild:
+  Rev-bump for new USE flag.
+
+  27 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  libXmu-0.99.1.ebuild:
+  Added ipv6 USE flag.
+
+*libXmu-0.99.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libXmu-0.99.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  28 Aug 2005; MATSUU Takuto <matsuu@gentoo.org> libXmu-0.99.0.ebuild:
+  Marked ~sh
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> libXmu-0.99.0.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> libXmu-0.99.0.ebuild:
+  Marked ~amd64
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> libXmu-0.99.0.ebuild:
+  Add ~sparc keyword (modular X testing).
+
+*libXmu-0.99.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libXmu-0.99.0.ebuild:
+  Initial commit for modular X.

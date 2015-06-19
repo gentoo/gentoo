@@ -1,0 +1,50 @@
+# ChangeLog for x11-plugins/wmappl
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmappl/ChangeLog,v 1.16 2014/09/01 15:42:53 voyageur Exp $
+
+  01 Sep 2014; Bernard Cafarelli <voyageur@gentoo.org> wmappl-0.71.ebuild:
+  Replace einstall with emake install, bug #521676
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> wmappl-0.71.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; wmappl-0.71.ebuild:
+  Drop virtual/x11 references.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  22 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> -wmappl-0.6.ebuild,
+  wmappl-0.71.ebuild:
+  Fixed DEPEND for modular X.
+
+  01 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> wmappl-0.71.ebuild:
+  Stable on sparc
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> wmappl-0.71.ebuild:
+  Stable on amd64.
+
+  29 Sep 2004; <pyrania@gentoo.org> wmappl-0.71.ebuild:
+  Marked stable on x86.
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> wmappl-0.71.ebuild:
+  Masked wmappl-0.71.ebuild stable for ppc
+
+*wmappl-0.71 (23 Aug 2004)
+
+  23 Aug 2004; Michele Noberasco <s4t4n@gentoo.org>; wmappl-0.71.ebuild:
+  Version bump. Closes #61307. Also adding missing digest file.
+  wmappl-0.6.ebuild:
+  Update HOMEPAGE and SRC_URI...
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*wmappl-0.6 (07 Feb 2002)
+
+  29 Aug 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
+  Relocated to x11-plugins
+
+  7 Feb 2002; Vitaly Kushneriuk <vitaly@gentoo.org> wmappl-0.6.ebuild :
+  
+  Just added to portage.

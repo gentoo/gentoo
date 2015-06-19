@@ -1,0 +1,29 @@
+# ChangeLog for media-video/mkclean
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/mkclean/ChangeLog,v 1.6 2013/07/21 09:02:21 pacho Exp $
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #92799
+
+*mkclean-0.8.7 (25 Sep 2012)
+
+  25 Sep 2012; Tim Harder <radhermit@gentoo.org> +mkclean-0.8.7.ebuild:
+  Version bump.
+
+  12 Jun 2012; Stefan Briesenick <sbriesen@gentoo.org> -mkclean-0.8.6.ebuild:
+  removed old ebuild
+
+  12 Jun 2012; Stefan Briesenick <sbriesen@gentoo.org> mkclean-0.8.6-r1.ebuild:
+  added emake -j1: Upstream parallel compilation bug
+
+*mkclean-0.8.6-r1 (27 Jan 2012)
+
+  27 Jan 2012; Stefan Briesenick <sbriesen@gentoo.org>
+  +mkclean-0.8.6-r1.ebuild:
+  added mkWDclean and mkcleanreg utilities (solving bug #398117).
+
+*mkclean-0.8.6 (05 Dec 2011)
+
+  05 Dec 2011; Stefan Briesenick <sbriesen@gentoo.org> +mkclean-0.8.6.ebuild,
+  +metadata.xml:
+  initial commit

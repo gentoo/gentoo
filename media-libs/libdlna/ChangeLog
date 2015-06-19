@@ -1,0 +1,59 @@
+# ChangeLog for media-libs/libdlna
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdlna/ChangeLog,v 1.13 2015/03/13 20:08:38 hwoarang Exp $
+
+  13 Mar 2015; Markos Chandras <hwoarang@gentoo.org>
+  +files/libdlna-0.2.4-ffmpeg.patch, libdlna-0.2.4.ebuild:
+  Adapt to the latest ffmpeg API. Bug #540150
+
+  16 Feb 2015; Jeroen Roovers <jer@gentoo.org> libdlna-0.2.4.ebuild,
+  +files/libdlna-0.2.4-libav9.patch, -files/libdlna-libav9.patch:
+  Clean up patch and rename it to include the version. Respect CC. Clean up
+  ebuild.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> libdlna-0.2.4.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  21 Apr 2013; Luca Barbato <lu_zero@gentoo.org>
+  -files/libdlna-0.2.3-ffmpeg_api.patch,
+  -files/libdlna-0.2.3-libavcodec-libavformat-include-paths.patch,
+  +files/libdlna-libav9.patch, libdlna-0.2.4.ebuild:
+  Fix bug #443238
+
+  15 Nov 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Reassign to maintainer-needed as the email address is not registered in
+  bugzilla anymore.
+
+  20 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> libdlna-0.2.4.ebuild:
+  Add prefix compatibility, keyword it on ~amd64-linux
+
+  22 May 2012; Johannes Huber <johu@gentoo.org> libdlna-0.2.4.ebuild:
+  Stable for x86, wrt bug #415723
+
+  18 May 2012; Agostino Sarubbo <ago@gentoo.org> libdlna-0.2.4.ebuild:
+  Stable for amd64, wrt bug #415723
+
+*libdlna-0.2.4 (02 Apr 2012)
+
+  02 Apr 2012; Pacho Ramos <pacho@gentoo.org> +libdlna-0.2.4.ebuild,
+  -libdlna-0.2.3.ebuild, metadata.xml:
+  Version bump, remove old, new maintainer by #385295. Thanks a lot to Sal
+  Gonzalez for his work.
+
+  03 Feb 2012; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  orphan package because I am not interested any longer
+
+  11 Nov 2011; Alexis Ballier <aballier@gentoo.org> libdlna-0.2.3.ebuild,
+  +files/libdlna-0.2.3-ffmpeg_api.patch:
+  fix build with ffmpeg-0.8, bug #382593, and make it multilib-strict compliant
+
+  04 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> libdlna-0.2.3.ebuild:
+  Move to virtual/ffmpeg from media-video/ffmpeg.
+
+*libdlna-0.2.3 (23 Dec 2009)
+
+  23 Dec 2009; Jeremy Olexa <darkside@gentoo.org> +libdlna-0.2.3.ebuild,
+  +files/libdlna-0.2.3-libavcodec-libavformat-include-paths.patch,
+  +metadata.xml:
+  Initial import. Many thanks to all the contributors on bug 204007. Moved
+  from sunrise overlay

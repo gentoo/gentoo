@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>tomka@gentoo.org</email>
+    <name>Thomas Kahle</name>
+  </maintainer>
+  <maintainer>
+    <email>chutzpah@gentoo.org</email>
+    <name>Patrick McLean</name>
+  </maintainer>
+  <longdescription lang="en">A commercial quality OCR engine originally developed at HP between 1985 and
+  1995. In 1995, this engine was among the top 3 evaluated by UNLV. It was
+  open-sourced by HP and UNLV in 2005.</longdescription>
+  <upstream>
+    <remote-id type="google-code">tesseract-ocr</remote-id>
+  </upstream>
+  <use>
+    <flag name="webp"> Enable support for webp image format.</flag>
+    <flag name="scrollview"> Enable graphics support
+    (ScrollView).</flag>
+    <flag name="linguas_chr"> Enable support for the Cherokee language.</flag>
+    <flag name="linguas_jp"> Enable support for Japanese.</flag>
+    <flag name="osd"> Enable support orientation and script
+    detection.</flag>
+    <flag name="opencl">Enable opencl support for speedup using GPU computation.</flag>
+  </use>
+</pkgmetadata>

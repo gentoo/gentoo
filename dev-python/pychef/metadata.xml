@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <maintainer>
+    <email>prometheanfire@gentoo.org</email>
+    <name>Matthew Thode</name>
+  </maintainer>
+  <longdescription lang="en">
+    A Python API for interacting with a Chef server.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">PyChef</remote-id>
+    <remote-id type="github">coderanger/pychef</remote-id>
+  </upstream>
+</pkgmetadata>

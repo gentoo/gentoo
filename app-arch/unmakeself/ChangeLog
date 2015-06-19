@@ -1,0 +1,44 @@
+# ChangeLog for app-arch/unmakeself
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/unmakeself/ChangeLog,v 1.11 2012/01/15 15:43:13 phajdan.jr Exp $
+
+  15 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> unmakeself-1.1.ebuild:
+  x86 stable wrt bug #396765
+
+  04 Jan 2012; Agostino Sarubbo <ago@gentoo.org> unmakeself-1.1.ebuild:
+  Stable for AMD64, wrt bug #396765
+
+  17 Nov 2011; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Change developer's email
+
+*unmakeself-1.1 (28 May 2010)
+
+  28 May 2010; Tristan Heaven <nyhm@gentoo.org> +unmakeself-1.1.ebuild,
+  metadata.xml:
+  Version bump
+
+  22 May 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove genstef from metadata.xml (#66339)
+
+  24 Jul 2008; Raúl Porcel <armin76@gentoo.org> unmakeself-1.0.ebuild:
+  x86 stable wrt #232229
+
+  18 Jul 2008; Santiago M. Mola <coldwind@gentoo.org> unmakeself-1.0.ebuild:
+  amd64 stable
+
+  13 Jul 2007; Diego Pettenò <flameeyes@gentoo.org> unmakeself-1.0.ebuild:
+  Fix dependency for the bsdtar->libarchive move.
+
+  13 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add herd
+
+  10 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  unmakeself-1.0.ebuild:
+  keyworded ~amd64, bug 172797
+
+*unmakeself-1.0 (18 Jun 2006)
+
+  18 Jun 2006; Stefan Schweizer <genstef@gentoo.org> +metadata.xml,
+  +unmakeself-1.0.ebuild:
+  New ebuild written by myself
+

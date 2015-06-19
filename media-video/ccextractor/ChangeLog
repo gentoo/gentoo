@@ -1,0 +1,43 @@
+# ChangeLog for media-video/ccextractor
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/ccextractor/ChangeLog,v 1.9 2014/04/25 18:28:18 beandog Exp $
+
+*ccextractor-0.69 (25 Apr 2014)
+*ccextractor-0.68 (25 Apr 2014)
+
+  25 Apr 2014; Steve Dibb <beandog@gentoo.org> +ccextractor-0.68.ebuild,
+  +ccextractor-0.69.ebuild, +files/ccextractor-0.68-libpng.patch:
+  Version bumps, bug 504978
+
+  05 Apr 2014; Agostino Sarubbo <ago@gentoo.org> ccextractor-0.59.ebuild:
+  Stable for x86, wrt bug #505094
+
+  29 Mar 2014; Chema Alonso <nimiux@gentoo.org> ccextractor-0.59.ebuild:
+  Stable for amd64 wrt bug #505094
+
+  08 Oct 2011; Tim Harder <radhermit@gentoo.org> -ccextractor-0.54.ebuild,
+  -ccextractor-0.55.ebuild:
+  Remove old.
+
+*ccextractor-0.59 (08 Oct 2011)
+
+  08 Oct 2011; Tim Harder <radhermit@gentoo.org> +ccextractor-0.59.ebuild:
+  Version bump. Update to EAPI 4, add unzip dependency (bug #371475), and
+  respect LDFLAGS (bug #337681).
+
+  16 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Fix herd.
+
+  03 Dec 2009; Markus Meier <maekke@gentoo.org> ccextractor-0.55.ebuild:
+  add ~x86, bug #294451
+
+*ccextractor-0.55 (14 Sep 2009)
+
+  14 Sep 2009; Steve Dibb <beandog@gentoo.org> +ccextractor-0.55.ebuild:
+  Version bump
+
+*ccextractor-0.54 (01 Jun 2009)
+
+  01 Jun 2009; Steve Dibb <beandog@gentoo.org> +ccextractor-0.54.ebuild,
+  +metadata.xml:
+  Initial commit; bug 228261

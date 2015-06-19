@@ -1,0 +1,38 @@
+# ChangeLog for app-crypt/stan
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/stan/ChangeLog,v 1.10 2014/08/10 02:27:00 patrick Exp $
+
+  10 Aug 2014; Patrick Lauer <patrick@gentoo.org> stan-0.4.1.ebuild:
+  Fix description for more repoman happy
+
+  04 Jun 2013; Alon Bar-Lev <alonbl@gentoo.org> stan-0.4.1.ebuild:
+  Fix automake-1.13 compatibility, bug#467556
+
+  02 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #328951
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> stan-0.4.1.ebuild:
+  Stable for x86, wrt bug #441892
+
+  14 Nov 2012; Agostino Sarubbo <ago@gentoo.org> stan-0.4.1.ebuild:
+  Stable for amd64, wrt bug #441892
+
+  01 Apr 2011; Dane Smith <c1pher@gentoo.org> stan-0.4.1.ebuild,
+  metadata.xml:
+  Add package to crypto herd and add myself as maintainer.
+  Ebuild cleanup. Move to EAPI 2.
+
+  23 Feb 2009; Jeremy Olexa <darkside@gentoo.org> stan-0.4.1.ebuild:
+  add ~amd64, bug 258747
+
+  30 Dec 2008; Christoph Mende <angelos@gentoo.org> stan-0.4.1.ebuild:
+  QA: Respect CFLAGS and CC (bug 243552)
+
+  13 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add herd
+
+*stan-0.4.1 (23 Oct 2006)
+
+  23 Oct 2006; Steve Dibb <beandog@gentoo.org>
+  +files/stan-0.4.1-errno.patch, +metadata.xml, +stan-0.4.1.ebuild:
+  Moving from media-video to app-crypt, see bug 138006

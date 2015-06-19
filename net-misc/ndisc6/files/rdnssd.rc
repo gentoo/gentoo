@@ -1,0 +1,25 @@
+#!/sbin/runscript
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ndisc6/files/rdnssd.rc,v 1.1 2010/08/28 14:53:59 xmw Exp $
+
+depend() {
+	need localmount
+	before net
+	use logger
+}
+
+start() {
+	ebegin "Starting rdnssd"
+	start-stop-daemon --start --quiet --exec /usr/sbin/rdnssd -- ${RDNSSD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping rdnssd"
+	start-stop-daemon --stop --quiet --pidfile /var/run/rdnssd.pid
+	if [ -x /sbin/resolvconf ]; then 
+ 		/sbin/resolvconf -f -d rdnssd || true
+ 	fi
+	eend $?
+}

@@ -1,0 +1,102 @@
+# ChangeLog for media-gfx/sxiv
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/sxiv/ChangeLog,v 1.22 2014/11/27 07:46:42 radhermit Exp $
+
+*sxiv-1.3.1 (27 Nov 2014)
+
+  27 Nov 2014; Tim Harder <radhermit@gentoo.org> +sxiv-1.3.1.ebuild:
+  Version bump.
+
+*sxiv-1.3 (25 Oct 2014)
+
+  25 Oct 2014; Tim Harder <radhermit@gentoo.org> +sxiv-1.3.ebuild,
+  +files/sxiv-1.3-makefile.patch:
+  Version bump.
+
+  25 Apr 2014; Tim Harder <radhermit@gentoo.org> -sxiv-1.1-r1.ebuild,
+  -files/sxiv-1.1-fix-segfault.patch:
+  Remove old.
+
+*sxiv-1.2 (25 Apr 2014)
+
+  25 Apr 2014; Tim Harder <radhermit@gentoo.org> +sxiv-1.2.ebuild,
+  +files/sxiv-1.2-makefile.patch:
+  Version bump.
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> sxiv-1.1.1.ebuild:
+  Stable for x86, wrt bug #495706
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> sxiv-1.1.1.ebuild:
+  amd64 stable, bug #495706
+
+  21 Jul 2013; Tim Harder <radhermit@gentoo.org> -sxiv-1.0.ebuild,
+  -sxiv-1.0-r1.ebuild, -files/sxiv-1.0-makefile.patch:
+  Remove old.
+
+*sxiv-1.1.1 (21 Jul 2013)
+
+  21 Jul 2013; Tim Harder <radhermit@gentoo.org> +sxiv-1.1.1.ebuild:
+  Version bump.
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> sxiv-1.1-r1.ebuild:
+  Stable for x86, wrt bug #471880
+
+  02 Jun 2013; Chema Alonso <nimiux@gentoo.org> sxiv-1.1-r1.ebuild:
+  Stable for amd64 wrt bug #471880
+
+*sxiv-1.1-r1 (08 Apr 2013)
+
+  08 Apr 2013; Tim Harder <radhermit@gentoo.org> -sxiv-1.1.ebuild,
+  +sxiv-1.1-r1.ebuild, +files/sxiv-1.1-fix-segfault.patch:
+  Revbump, apply patch to fix segfault issue (bug #465040). Remove old.
+
+*sxiv-1.1 (01 Apr 2013)
+
+  01 Apr 2013; Tim Harder <radhermit@gentoo.org> +sxiv-1.1.ebuild,
+  +files/sxiv-1.1-makefile.patch:
+  Version bump.
+
+*sxiv-1.0-r1 (24 Oct 2012)
+
+  24 Oct 2012; Tim Harder <radhermit@gentoo.org> +sxiv-1.0-r1.ebuild,
+  +files/sxiv-1.0-makefile.patch:
+  Revbump to properly respect CFLAGS (bug #439456) and use verbose build
+  output.
+
+  24 Jun 2012; Tim Harder <radhermit@gentoo.org> -sxiv-0.9-r1.ebuild:
+  Remove old.
+
+  23 Apr 2012; Michał Górny <mgorny@gentoo.org> sxiv-0.9-r1.ebuild,
+  sxiv-1.0.ebuild:
+  Use mirror://github.
+
+  05 Apr 2012; Jeff Horelick <jdhore@gentoo.org> sxiv-1.0.ebuild:
+  marked x86 per bug 409879
+
+  29 Mar 2012; Agostino Sarubbo <ago@gentoo.org> sxiv-1.0.ebuild:
+  Stable for amd64, wrt bug #409879
+
+*sxiv-1.0 (14 Nov 2011)
+
+  14 Nov 2011; Michael Weber <xmw@gentoo.org> +sxiv-1.0.ebuild:
+  Version bump
+
+  26 Aug 2011; Tim Harder <radhermit@gentoo.org> -sxiv-0.8.2.ebuild,
+  -sxiv-0.9.ebuild:
+  Remove old.
+
+*sxiv-0.9-r1 (26 Aug 2011)
+
+  26 Aug 2011; Tim Harder <radhermit@gentoo.org> +sxiv-0.9-r1.ebuild:
+  Revbump to add support for savedconfig (bug #380419 by James Rowe).
+
+*sxiv-0.9 (17 Aug 2011)
+
+  17 Aug 2011; Tim Harder <radhermit@gentoo.org> +sxiv-0.9.ebuild:
+  Version bump
+
+*sxiv-0.8.2 (11 Aug 2011)
+
+  11 Aug 2011; Tim Harder <radhermit@gentoo.org> +sxiv-0.8.2.ebuild,
+  +metadata.xml:
+  Initial import (bug #366871). Ebuild based on work by Petr Sabata.

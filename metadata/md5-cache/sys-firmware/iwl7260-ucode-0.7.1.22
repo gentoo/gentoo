@@ -1,0 +1,12 @@
+DEFINED_PHASES=install pretend setup
+DESCRIPTION=Firmware for Intel (R) Dual Band Wireless-AC 7260
+EAPI=5
+HOMEPAGE=http://wireless.kernel.org/en/users/Drivers/iwlwifi
+IUSE=bluetooth
+KEYWORDS=~amd64 ~x86
+LICENSE=ipw3945
+RDEPEND=bluetooth? ( sys-firmware/iwl3160-7260-bt-ucode ) !sys-kernel/linux-firmware[-savedconfig]
+SLOT=7
+SRC_URI=http://wireless.kernel.org/en/users/Drivers/iwlwifi?action=AttachFile&do=get&target=iwlwifi-7260-ucode-22.1.7.0.tgz -> iwl7260-ucode-0.7.1.22.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=e66cf1b5e67c1ccc20ed2539600cc200

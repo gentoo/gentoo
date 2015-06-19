@@ -1,0 +1,184 @@
+diff -Naur ttcut-old/avstream/ttcommon.cpp ttcut/avstream/ttcommon.cpp
+--- ttcut-old/avstream/ttcommon.cpp	2011-05-05 00:00:33.936254667 +0200
++++ ttcut/avstream/ttcommon.cpp	2011-05-05 00:03:27.396254667 +0200
+@@ -51,6 +51,18 @@
+   return sNewFileName;
+ }
+ 
++// return the aspect ratio as string value
++QString ttAspectRatioText(int aspect_ratio_information)
++{
++  QString szTemp;
++
++  if ( aspect_ratio_information == 1 ) szTemp = "1:1";
++  if ( aspect_ratio_information == 2 ) szTemp = "4:3";
++  if ( aspect_ratio_information == 3 ) szTemp = "16:9";
++  if ( aspect_ratio_information == 4 ) szTemp = "2.21:1";
++
++  return szTemp;
++}
+ 
+ // check if file fName exists
+ bool ttFileExists( QString fName )
+diff -Naur ttcut-old/avstream/ttcommon.h ttcut/avstream/ttcommon.h
+--- ttcut-old/avstream/ttcommon.h	2011-05-05 00:00:33.936254667 +0200
++++ ttcut/avstream/ttcommon.h	2011-05-05 00:03:58.412921334 +0200
+@@ -11,6 +11,7 @@
+ extern "C" bool    ttDeleteFile( QString fName );
+ extern "C" QString ttAddFileExt( QString fName, const char* cExt );
+ extern "C" QString ttChangeFileExt( QString fName, const char* cExt );
++extern "C" QString ttAspectRatioText(int aspect_ratio_information);
+ extern "C" QTime   ttMsecToTime( int msec );
+ extern "C" QTime   ttMsecToTimeD( double msec );
+ extern "C" QTime   ttFramesToTime(long lFrames, float fps);
+diff -Naur ttcut-old/avstream/ttmpeg2videoheader.cpp ttcut/avstream/ttmpeg2videoheader.cpp
+--- ttcut-old/avstream/ttmpeg2videoheader.cpp	2011-05-05 00:00:33.936254667 +0200
++++ ttcut/avstream/ttmpeg2videoheader.cpp	2011-05-05 00:05:42.999588000 +0200
+@@ -170,18 +170,11 @@
+ }
+ 
+ /* /////////////////////////////////////////////////////////////////////////////
+- * Returns the aspect ration as string value
++ * Returns the aspect ratio as string value
+  */
+ QString TTSequenceHeader::aspectRatioText()
+ {
+-  QString szTemp;
+-
+-  if ( aspect_ratio_information == 1 ) szTemp = "1:1";
+-  if ( aspect_ratio_information == 2 ) szTemp = "4:3";
+-  if ( aspect_ratio_information == 3 ) szTemp = "16:9";
+-  if ( aspect_ratio_information == 4 ) szTemp = "2.21:1";
+-
+-  return szTemp;
++  return ttAspectRatioText(aspect_ratio_information);
+ }
+ 
+ /* /////////////////////////////////////////////////////////////////////////////
+diff -Naur ttcut-old/avstream/ttmpeg2videostream.cpp ttcut/avstream/ttmpeg2videostream.cpp
+--- ttcut-old/avstream/ttmpeg2videostream.cpp	2011-05-05 00:00:33.936254667 +0200
++++ ttcut/avstream/ttmpeg2videostream.cpp	2011-05-05 00:00:43.579588002 +0200
+@@ -1505,7 +1505,7 @@
+ 
+   QDir    temp_dir( TTCut::tempDirPath );
+   QString avi_out_file   = "encode.avi";
+-  QString mpeg2_out_file = "encode";          // extension is added by transcode (!)
++  QString mpeg2_out_file = "encode.m2v";
+   new_file_info.setFile( temp_dir, avi_out_file );
+   
+   TTPicturesHeader* start_pic = header_list->pictureHeaderAt( start );
+@@ -1538,7 +1538,7 @@
+   TTTranscodeProvider* transcode_prov = new TTTranscodeProvider( );
+   transcode_prov->setParameter( enc_par );
+ 
+-  // encode the part with transcode
++  // encode the part with ffmpeg
+   if ( transcode_prov->encodePart() )
+   {
+     new_file_info.setFile( temp_dir, "encode.m2v" );
+@@ -1565,7 +1565,7 @@
+   }
+   else
+   {
+-    log->errorMsg(c_name, "Error in transcode part (!)");
++    log->errorMsg(c_name, "Error in ffmpeg part (!)");
+   }
+ 
+   // remove temporary files
+diff -Naur ttcut-old/extern/tttranscode.cpp ttcut/extern/tttranscode.cpp
+--- ttcut-old/extern/tttranscode.cpp	2011-05-05 00:00:33.939588000 +0200
++++ ttcut/extern/tttranscode.cpp	2011-05-05 00:02:27.062921334 +0200
+@@ -49,9 +49,9 @@
+   // message logger instance
+   log = TTMessageLogger::getInstance();
+   
+-  QString str_head = "starting encoder >>>transcode -y ffmpeg<<<";
++  QString str_head = "starting encoder >>>ffmpeg<<<";
+ 
+-  str_command       = "transcode";
++  str_command       = "ffmpeg";
+   transcode_success = false;
+ 
+   setModal( true );
+@@ -76,7 +76,7 @@
+ {
+ #if defined (TTTRANSCODE_DEBUG)
+   log->debugMsg( c_name, "----------------------------------------------------" );
+-  log->debugMsg( c_name, "transcode parameter:" );
++  log->debugMsg( c_name, "ffmpeg parameter:" );
+   log->debugMsg( c_name, "----------------------------------------------------" );
+   log->debugMsg( c_name, "avi-file    : %s",    qPrintable(enc_par.avi_input_finfo.absoluteFilePath()) );
+   log->debugMsg( c_name, "mpeg-file   : %s",    qPrintable(enc_par.mpeg2_output_finfo.absoluteFilePath()) );
+@@ -86,32 +86,32 @@
+   log->debugMsg( c_name, "----------------------------------------------------" );
+ #endif
+ 
+-  //transcode -i encode.avi --pre_clip 0 -y ffmpeg --export_prof dvd-pal --export_asr 2 -o encode
+   QString str_aspect;
+-  str_aspect.sprintf("%d",enc_par.video_aspect_code );
++  str_aspect = ttAspectRatioText(enc_par.video_aspect_code);
+ 
+   QString str_format;
+   str_format.sprintf("%dx%d", enc_par.video_width, enc_par.video_height);
+ 
+   QString str_bitrate;
+-  str_bitrate.sprintf("%f", enc_par.video_bitrate);
++  str_bitrate.sprintf("%.0f", enc_par.video_bitrate);
++
++  QString str_aspect_opt;
++  str_aspect_opt = "setdar=";
++
++  str_aspect_opt += str_aspect;
+ 
+   strl_command_line.clear();
+ 
+   strl_command_line << "-i"
+-		    << enc_par.avi_input_finfo.absoluteFilePath()
+-		    << "--pre_clip"
+-		    << "0"
+-		    //<< "-y"               // isn't neccessary unless --export_prof is specified!
+-		    //<< "mpeg2enc,mp2enc"  // mpeg2enc->video, mp2enc->audio!
+-        //<< "-F"
+-        //<< "8,\"-v 1 -q 3\""
+-		    << "--export_prof"
+-		    << "dvd"            // dvd-pal
+-		    << "--export_asr"
+-		    << str_aspect
+-		    << "-o"
+-		    << enc_par.mpeg2_output_finfo.absoluteFilePath();
++            << enc_par.avi_input_finfo.absoluteFilePath()
++            << "-y"
++            << "-target"
++            << "dvd" //autodetects pal/ntsc
++            << "-f"
++            << "mpeg2video" //else ffmpeg creates an mpegps stream that mplex can not handle
++            << "-vf"
++            << str_aspect_opt //workaround for mpeg2video not preserving aspect ratio in combination with --enable-avfilter
++            << enc_par.mpeg2_output_finfo.absoluteFilePath();
+ 
+   log->infoMsg(c_name, strl_command_line.join(" "));
+ }
+@@ -124,7 +124,7 @@
+   int update        = EVENT_LOOP_INTERVALL;     //update intervall for local event loop
+   transcode_success = false;      
+   
+-  // create the process object for transcode
++  // create the process object for ffmpeg
+   proc = new QProcess();
+   
+   // read both channels: stderr and stdout
+@@ -197,12 +197,12 @@
+   switch (e_status) {
+     case QProcess::NormalExit:
+       //log->debugMsg(c_name, "The process ecxited normally: %d", e_code);
+-      procMsg = tr("Transcode exit normally ... done(0)");
++      procMsg = tr("ffmpeg exit normally ... done(0)");
+       transcode_success = true;
+       break;
+     case QProcess::CrashExit:
+       //log->debugMsg(c_name, "The process crashed: %d", e_code);
+-      procMsg = tr("Transcode crashed");
++      procMsg = tr("ffmpeg crashed");
+       transcode_success = false;
+       break;
+     default:

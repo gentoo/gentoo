@@ -1,0 +1,243 @@
+# ChangeLog for gnustep-apps/gnumail
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/gnumail/ChangeLog,v 1.42 2015/04/21 18:57:15 pacho Exp $
+
+  21 Apr 2015; Pacho Ramos <pacho@gentoo.org> gnumail-1.2.2.ebuild:
+  ppc stable wrt bug #535418
+
+  21 Apr 2015; Pacho Ramos <pacho@gentoo.org> gnumail-1.2.2.ebuild:
+  x86 stable wrt bug #535418
+
+  01 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gnumail-1.2.2.ebuild:
+  Stable for amd64, wrt bug #535418
+
+*gnumail-1.2.2 (27 Oct 2014)
+
+  27 Oct 2014; Bernard Cafarelli <voyageur@gentoo.org> +gnumail-1.2.2.ebuild:
+  Version bump, clean ebuild
+
+  20 Oct 2014; Bernard Cafarelli <voyageur@gentoo.org>
+  -gnumail-1.2.0_pre3-r1.ebuild, gnumail-1.2.0.ebuild,
+  -files/gnumail-1.2.0_pre3-index.patch,
+  -files/gnumail-1.2.0_pre3-pgpversion.patch:
+  Drop old version, relax pantomime dependency
+
+  24 Aug 2012; Michael Weber <xmw@gentoo.org> gnumail-1.2.0.ebuild:
+  ppc stable (bug 421335).
+
+  19 Jun 2012; Jeff Horelick <jdhore@gentoo.org> gnumail-1.2.0.ebuild:
+  marked x86 per bug 421335
+
+  17 Jun 2012; Agostino Sarubbo <ago@gentoo.org> gnumail-1.2.0.ebuild:
+  Stable for amd64, wrt bug #421335
+
+*gnumail-1.2.0 (14 Nov 2011)
+
+  14 Nov 2011; Bernard Cafarelli <voyageur@gentoo.org> +gnumail-1.2.0.ebuild:
+  Maintenance release bump, ebuild cleanup
+
+  06 Jun 2011; Bernard Cafarelli <voyageur@gentoo.org>
+  gnumail-1.2.0_pre3-r1.ebuild:
+  Fix dependency on pantomime
+
+  16 Dec 2008; Bernard Cafarelli <voyageur@gentoo.org>
+  gnumail-1.2.0_pre3-r1.ebuild:
+  Fix compilation with forced --as-needed, bug #251143
+
+  06 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  08 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  gnumail-1.2.0_pre3-r1.ebuild:
+  amd64 stable wrt bug #207381
+
+  30 Jan 2008; Brent Baude <ranger@gentoo.org> gnumail-1.2.0_pre3-r1.ebuild:
+  Marking gnumail-1.2.0_pre3-r1 ppc for bug 207381
+
+  25 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  gnumail-1.2.0_pre3-r1.ebuild:
+  stable x86, bug 207381
+
+  30 Sep 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  -gnumail-1.2.0_pre3.ebuild, gnumail-1.2.0_pre3-r1.ebuild:
+  Remove old version, fix another quoting
+
+  26 Sep 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  gnumail-1.2.0_pre3-r1.ebuild:
+  egnustep_install dies by itself, no need to do it in the ebuild
+
+*gnumail-1.2.0_pre3-r1 (26 Sep 2007)
+
+  26 Sep 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  +files/gnumail-1.2.0_pre3-pgpversion.patch, +gnumail-1.2.0_pre3-r1.ebuild:
+  Fix a crash on amd64, patch by Jose Quinteiro <gentoo@quinteiro.com>
+
+*gnumail-1.2.0_pre3 (10 Sep 2007)
+
+  10 Sep 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  +files/gnumail-1.2.0_pre3-index.patch, +gnumail-1.2.0_pre3.ebuild,
+  -gnumail-1.2.0.20050606.ebuild, -gnumail-1.2.0.20060424.ebuild,
+  -gnumail-1.2.0.20060925.ebuild:
+  Version bump from the GNUstep overlay
+  Remove old versions
+
+  22 Aug 2007; Roy Marples <uberlord@gentoo.org>
+  gnumail-1.2.0.20060925.ebuild:
+  Keyworded ~x86-fbsd, #183467 thanks to Nathan Smith.
+
+  31 Dec 2006; Fabian Groffen <grobian@gentoo.org>
+  gnumail-1.2.0.20060925.ebuild:
+  add >=gnustep-gui-0.11.0 requirement, as pointed out by Ben White <bwhite
+  (at> cat dot-net.au> in bug #159535
+
+*gnumail-1.2.0.20060925 (05 Dec 2006)
+
+  05 Dec 2006; Fabian Groffen <grobian@gentoo.org>
+  +gnumail-1.2.0.20060925.ebuild:
+  Version bump, closes bug #149288
+
+*gnumail-1.2.0.20060424 (25 Mar 2006)
+
+  25 Mar 2006; Fabian Groffen <grobian@gentoo.org>
+  -gnumail-1.2.0_pre20050414.ebuild, +gnumail-1.2.0.20060424.ebuild:
+  Removed CVS ebuilds, version bump (manual CVS snapshot)
+
+  16 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  gnumail-1.2.0.20050606.ebuild:
+  Remove GNUish cp -a call. Bug #103487.
+
+*gnumail-1.2.0.20050606 (10 Jun 2005)
+
+  10 Jun 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -gnumail-1.2.0_pre20050312.ebuild, +gnumail-1.2.0.20050606.ebuild:
+  updates (and stabilization of Addresses.app) of GNUMail related GNUstep ebuilds
+
+  05 May 2005; Sven Wegener <swegener@gentoo.org>
+  gnumail-1.2.0_pre20050312.ebuild, gnumail-1.2.0_pre20050414.ebuild:
+  Added missing parentheses to *DEPEND.
+
+*gnumail-1.2.0_pre20050414 (15 Apr 2005)
+
+  15 Apr 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -gnumail-1.2.0_pre20050106-r1.ebuild, +gnumail-1.2.0_pre20050414.ebuild:
+  General GNUMail related ebuild version bumps
+
+*gnumail-1.2.0_pre20050312 (17 Mar 2005)
+
+  17 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -gnumail-1.2.0_pre20041203.ebuild, -gnumail-1.2.0_pre20050106.ebuild,
+  +gnumail-1.2.0_pre20050312.ebuild:
+  ebuild updates for GNUstep base, libs, and apps across the board; proper
+  versions (to be stabilized, in due time) added where apropos, cvs-pull
+  versions updated where needed
+
+*gnumail-1.2.0_pre20050106-r1 (18 Jan 2005)
+
+  18 Jan 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  +files/Emoticon-dont-break-C.patch, +gnumail-1.2.0_pre20050106-r1.ebuild:
+  Fixed emoticon bundle that would mangle some embedded C/C++/ObjC code
+
+*gnumail-1.2.0_pre20050106 (10 Jan 2005)
+
+  10 Jan 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -gnumail-1.2.0_pre20041030.ebuild, -gnumail-1.2.0_pre20041108.ebuild,
+  +gnumail-1.2.0_pre20050106.ebuild:
+  cvs snapshot version bumps; cleaned out old cvs versioned ebuilds; fixed
+  date spec on ebuild headers as repoman was complaining
+
+  09 Jan 2005; Sven Wegener <swegener@gentoo.org>
+  gnumail-1.2.0_pre20041030.ebuild, gnumail-1.2.0_pre20041108.ebuild,
+  gnumail-1.2.0_pre20041203.ebuild:
+  Added missing parentheses in SRC_URI/*DEPEND/LICENSE.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*gnumail-1.2.0_pre20041203 (03 Dec 2004)
+
+  03 Dec 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +gnumail-1.2.0_pre20041203.ebuild:
+  General version bump
+
+*gnumail-1.2.0_pre20041108 (11 Nov 2004)
+
+  11 Nov 2004; Armando Di Cianno <fafhrd@gentoo.org> -gnumail-1.1.0.ebuild,
+  -gnumail-1.2.0_pre20040916.ebuild, -gnumail-1.2.0_pre20040927.ebuild,
+  gnumail-1.2.0_pre20041030.ebuild, +gnumail-1.2.0_pre20041108.ebuild:
+  Mass Update: gnustep.eclass revamped to allow configurable root install;
+  gnustep-base/libs/apps updated to utilize new gnustep.eclass (only versions
+  bumped where files would change); some KEYWORDS were accidentally dropped
+  between version bumps of packages -- this has been resolved; windowmaker
+  correctly supports gnustep now
+
+*gnumail-1.2.0_pre20041030 (31 Oct 2004)
+
+  31 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +gnumail-1.2.0_pre20041030.ebuild:
+  Version bump; keyworded for ~ppc
+
+  17 Oct 2004; David Holm <dholm@gentoo.org>
+  gnumail-1.2.0_pre20040927.ebuild:
+  Added to ~ppc.
+
+*gnumail-1.2.0_pre20040916 (03 Oct 2004)
+
+  03 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  gnumail-1.2.0_pre20040916.ebuild, gnumail-1.2.0_pre20040927.ebuild:
+  Updated to use GENTOO_GNUSTEP_ROOT variable from gnustep.eclass
+
+*gnumail-1.2.0_pre20040927 (28 Sep 2004)
+
+  28 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +gnumail-1.2.0_pre20040927.ebuild:
+  Verison bump; pre-release is a date specd live cvs pull.
+
+*gnumail-1.2.0_pre20040907 (10 Sep 2004)
+
+  10 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org> metadata.xml,
+  +gnumail-1.2.0_pre20040907.ebuild:
+  Version bump; keyworded for ~x86
+
+  23 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org> gnumail-1.1.0.ebuild:
+  Changed referenced categories in ebuilds to reflect recent epkgmove changes.
+
+*gnumail-1.1.0 (23 Jul 2004)
+
+  23 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org> +metadata.xml,
+  +gnumail-1.1.0.ebuild:
+  Moved from app-gnustep/gnumail to gnustep-apps/gnumail.
+
+  22 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org> gnumail-1.1.0.ebuild:
+  Changing the eclass to gnustep-old
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> gnumail-1.1.0.ebuild:
+  sync IUSE (-${IUSE})
+
+  01 Jun 2004; Aron Griffis <agriffis@gentoo.org> gnumail-1.1.0.ebuild:
+  Fix use invocation
+
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> gnumail-1.1.0.ebuild:
+  Stable on alpha.
+
+  06 Feb 2004; Aron Griffis <agriffis@gentoo.org> gnumail-1.1.0.ebuild:
+  add ~alpha
+
+  18 Oct 2003; Nick Hadaway <raker@gentoo.org> gnumail-1.1.0.ebuild:
+  Removed stable ebuilds and fixed policy violation of setting ${A}.
+
+*gnumail-1.1.0 (21 Aug 2003)
+
+  21 Aug 2003; Nick Hadaway <raker@gentoo.org> gnumail-1.1.0.ebuild:
+  Version bump.  Finally a stable release.
+
+*gnumail-1.1.0_pre2 (16 Aug 2003)
+
+  16 Aug 2003; Nick Hadaway <raker@gentoo.org> gnumail-1.1.0_pre2-r1.ebuild;
+  Added xface and crypt to IUSE for installing the Face.bundle and 
+  PGP.bundle.  Thanks to Caleb Shay on bug #26724 for noticing these
+  missing features.
+
+*gnumail-1.1.0_pre2 (15 Jul 2003)
+
+  15 Jul 2003; Nick Hadaway <raker@gentoo.org> gnumail-1.1.0_pre2.ebuild:
+  New ebuild.

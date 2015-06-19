@@ -1,0 +1,60 @@
+# ChangeLog for net-libs/libblkmaker
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libblkmaker/ChangeLog,v 1.14 2015/05/07 14:57:13 blueness Exp $
+
+  07 May 2015; Anthony G. Basile <blueness@gentoo.org> libblkmaker-0.4.2.ebuild,
+  libblkmaker-0.5.0.ebuild, libblkmaker-0.5.1.ebuild:
+  Swtich from gitorious to github.  Bug #544858.
+
+*libblkmaker-0.5.1 (19 Feb 2015)
+*libblkmaker-0.4.2 (19 Feb 2015)
+
+  19 Feb 2015; Anthony G. Basile <blueness@gentoo.org>
+  +libblkmaker-0.4.2.ebuild, +libblkmaker-0.5.1.ebuild,
+  libblkmaker-0.5.0.ebuild:
+  Version bump
+
+  16 Sep 2014; Anthony G. Basile <blueness@gentoo.org> libblkmaker-0.3.2.ebuild:
+  Revert last commit
+
+  16 Sep 2014; Anthony G. Basile <blueness@gentoo.org> libblkmaker-0.3.2.ebuild:
+  Add subslotting to reflect change in ABI and soname
+
+  16 Sep 2014; Anthony G. Basile <blueness@gentoo.org>
+  -libblkmaker-0.3.1.ebuild, -libblkmaker-0.3.3.ebuild,
+  -libblkmaker-0.4.0.ebuild:
+  Remove older unstable versions
+
+*libblkmaker-0.5.0 (16 Sep 2014)
+
+  16 Sep 2014; Anthony G. Basile <blueness@gentoo.org>
+  +libblkmaker-0.5.0.ebuild:
+  Version bump
+
+*libblkmaker-0.4.0 (06 Jun 2014)
+*libblkmaker-0.3.3 (06 Jun 2014)
+
+  06 Jun 2014; Anthony G. Basile <blueness@gentoo.org>
+  +libblkmaker-0.3.3.ebuild, +libblkmaker-0.4.0.ebuild:
+  Version bumps
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libblkmaker-0.3.2.ebuild:
+  Stable for x86, wrt bug #489300
+
+  19 Jan 2014; Pacho Ramos <pacho@gentoo.org> libblkmaker-0.3.2.ebuild:
+  amd64 stable, bug 489300
+
+*libblkmaker-0.3.2 (22 Oct 2013)
+
+  22 Oct 2013; Anthony G. Basile <blueness@gentoo.org>
+  +libblkmaker-0.3.2.ebuild, libblkmaker-0.3.1.ebuild:
+  Version bump
+
+  26 Jun 2013; Anthony G. Basile <blueness@gentoo.org> libblkmaker-0.3.1.ebuild:
+  Keyword ~arm for bfgminer
+
+  26 Jun 2013; Anthony G. Basile <blueness@gentoo.org> libblkmaker-0.3.1.ebuild:
+  Keyword ~ppc ~ppc64 for bfgminer
+
+  14 Jun 2013; Anthony G. Basile <blueness@gentoo.org> ChangeLog:
+  Initial commit: needed for bfgminer

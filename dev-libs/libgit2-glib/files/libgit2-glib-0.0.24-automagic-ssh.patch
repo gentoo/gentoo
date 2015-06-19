@@ -1,0 +1,75 @@
+diff --git a/configure.ac b/configure.ac
+index 8c1559c..94175c9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -79,32 +79,44 @@ dnl ===========================================================================
+ dnl Check for libgit2 ssh support
+ dnl ===========================================================================
+ 
+-AC_MSG_CHECKING([for libgit2 ssh support])
+-
+-cflags_save="${CFLAGS}"
+-libs_save="${LIBS}"
+-
+-CFLAGS="${LIBGIT2_GLIB_CFLAGS}"
+-LIBS="${LIBGIT2_GLIB_LIBS}"
+-
+-AC_TRY_RUN([
+-        #include <git2.h>
+-        int
+-        main(int argc, const char *argv[])
+-        {
+-                git_threads_init ();
+-                return ((git_libgit2_features() & GIT_FEATURE_SSH) != 0) ? 0 : 1;
+-        }
+-],[
+-    AC_MSG_RESULT([yes])
+-    git_ssh=yes
+-],[
+-    AC_MSG_RESULT([no])
+-    git_ssh=no
+-])
+-
+-CFLAGS="${cflags_save}"
+-LIBS="${libs_save}"
++AC_ARG_ENABLE([ssh],
++              AS_HELP_STRING([--enable-ssh[=@<:@no/auto/yes@:>@]],[Build with libgit2 ssh support]),
++              [enable_ssh=$enableval],
++              [enable_ssh="auto"])
++
++git_ssh=no
++
++if test "x$enable_ssh" != "xno"; then
++    AC_MSG_CHECKING([for libgit2 ssh support])
++
++    cflags_save="${CFLAGS}"
++    libs_save="${LIBS}"
++
++    CFLAGS="${LIBGIT2_GLIB_CFLAGS}"
++    LIBS="${LIBGIT2_GLIB_LIBS}"
++
++    AC_TRY_RUN([
++            #include <git2.h>
++            int
++            main(int argc, const char *argv[])
++            {
++                    git_threads_init ();
++                    return ((git_libgit2_features() & GIT_FEATURE_SSH) != 0) ? 0 : 1;
++            }
++    ],[
++        AC_MSG_RESULT([yes])
++        git_ssh=yes
++    ],[
++        AC_MSG_RESULT([no])
++        git_ssh=no
++        if test "x$enable_ssh" = "xyes"; then
++            AC_MSG_ERROR([libgit2 ssh support was requiested, but not found])
++        fi
++    ])
++
++    CFLAGS="${cflags_save}"
++    LIBS="${libs_save}"
++fi
+ 
+ if test "x$git_ssh" = "xyes"; then
+ 	LIBGIT2_GLIB_CFLAGS="${LIBGIT2_GLIB_CFLAGS} -DGIT_SSH=1"

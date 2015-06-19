@@ -1,0 +1,101 @@
+--- CriticalMass-1.0.0.orig/tinyxml/tinyxml.cpp	2003-03-03 03:34:58.000000000 +0100
++++ CriticalMass-1.0.0/tinyxml/tinyxml.cpp	2008-04-18 19:40:35.000000000 +0200
+@@ -21,10 +21,12 @@
+ distribution.
+ */
+ 
+ #include "tinyxml.h"
+ 
++#include <cstring>
++
+ 
+ TiXmlNode::TiXmlNode( NodeType _type )
+ {
+ 	parent = 0;
+ 	type = _type;
+--- CriticalMass-1.0.0.orig/tinyxml/tinyxml.h	2003-03-03 03:34:58.000000000 +0100
++++ CriticalMass-1.0.0/tinyxml/tinyxml.h	2008-04-18 19:40:35.000000000 +0200
+@@ -28,10 +28,11 @@
+ #ifdef _MSC_VER
+ #pragma warning( disable : 4530 )
+ #pragma warning( disable : 4786 )
+ #endif
+ 
++#include <cstdlib>
+ #include <string>
+ #include <stdio.h>
+ #include <assert.h>
+ 
+ class TiXmlDocument;
+--- CriticalMass-1.0.0.orig/tinyxml/tinyxmlparser.cpp	2003-03-03 03:34:58.000000000 +0100
++++ CriticalMass-1.0.0/tinyxml/tinyxmlparser.cpp	2008-04-18 19:40:35.000000000 +0200
+@@ -23,10 +23,12 @@
+ 
+ 
+ #include "tinyxml.h"
+ #include <ctype.h>
+ 
++#include <cstring>
++
+ const char* TiXmlBase::SkipWhiteSpace( const char* p )
+ {
+ 	while ( p && *p && 
+ 	        ( isspace( *p ) || *p == '\n' || *p == '\r' ) )
+ 		p++;
+--- CriticalMass-1.0.0.orig/utils/ResourceManager.cpp	2005-01-02 03:59:29.000000000 +0100
++++ CriticalMass-1.0.0/utils/ResourceManager.cpp	2008-04-18 19:40:35.000000000 +0200
+@@ -20,10 +20,12 @@
+ #include <ResourceManager.hpp>
+ #include <FindHash.hpp>
+ #include <Endian.hpp>
+ #include <WalkDirectory.hpp>
+ 
++#include <cstring>
++
+ #ifdef WIN32
+ const char PATH_SEPERATOR = '\\';
+ #else
+ const char PATH_SEPERATOR = '/';
+ #endif
+--- CriticalMass-1.0.0.orig/utils/Value.hpp	2004-12-18 03:41:24.000000000 +0100
++++ CriticalMass-1.0.0/utils/Value.hpp	2008-04-18 19:40:35.000000000 +0200
+@@ -13,10 +13,11 @@
+ // FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details
+ //
+ #ifndef _Value_hpp_
+ #define _Value_hpp_
+ 
++#include <cstdlib>
+ #include <stdio.h>
+ #include <string>
+ 
+ #include <Trace.hpp>
+ 
+--- CriticalMass-1.0.0.orig/utils/zStreamBufferImplZLib.cpp	2005-07-31 22:06:14.000000000 +0200
++++ CriticalMass-1.0.0/utils/zStreamBufferImplZLib.cpp	2008-04-18 19:40:35.000000000 +0200
+@@ -10,10 +10,11 @@
+ //
+ // This program is distributed in the hope that it will be useful,  but  WITHOUT
+ // ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ // FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details
+ //
++#include <cstdlib>
+ #include <Trace.hpp>
+ #include <zStreamBufferImplZLib.hpp>
+ 
+ bool ziStreamBufferImplZLib::init( void)
+ {
+--- CriticalMass-1.0.0.orig/utils/zStream.cpp	2005-07-31 22:06:14.000000000 +0200
++++ CriticalMass-1.0.0/utils/zStream.cpp	2008-04-18 19:40:35.000000000 +0200
+@@ -10,10 +10,11 @@
+ //
+ // This program is distributed in the hope that it will be useful,  but  WITHOUT
+ // ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ // FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details
+ //
++#include <cstdlib>
+ #include <Trace.hpp>
+ #include <Endian.hpp>
+ #include <zStream.hpp>
+ #include <zStreamBufferImplLZMA.hpp>
+ #include <zStreamBufferImplZLib.hpp>

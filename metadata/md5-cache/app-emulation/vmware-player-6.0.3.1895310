@@ -1,0 +1,15 @@
+DEFINED_PHASES=config install postinst postrm preinst prepare prerm unpack
+DEPEND=>=sys-apps/sed-4 dev-libs/libxslt
+DESCRIPTION=Emulate a complete PC on your PC without the usual performance overhead of most emulators
+EAPI=5
+HOMEPAGE=http://www.vmware.com/products/player/
+IUSE=cups doc +vmware-tools
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=vmware GPL-2
+PDEPEND=~app-emulation/vmware-modules-279.3 vmware-tools? ( app-emulation/vmware-tools )
+RDEPEND=dev-cpp/cairomm dev-cpp/glibmm:2 dev-cpp/gtkmm:2.4 dev-cpp/libgnomecanvasmm:2.6 dev-cpp/pangomm:1.4 dev-libs/atk dev-libs/glib:2 dev-libs/libaio dev-libs/libsigc++ dev-libs/libxml2 =dev-libs/openssl-0.9.8* dev-libs/xmlrpc-c gnome-base/libgnomecanvas gnome-base/libgtop:2 gnome-base/librsvg:2 gnome-base/orbit media-libs/fontconfig media-libs/freetype media-libs/libart_lgpl =media-libs/libpng-1.2* net-misc/curl cups? ( net-print/cups ) sys-devel/gcc sys-fs/fuse sys-libs/glibc sys-libs/zlib x11-libs/cairo x11-libs/gtk+:2 x11-libs/libgksu x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXft x11-libs/libXi x11-libs/libXinerama x11-libs/libXrandr x11-libs/libXrender x11-libs/libXtst x11-libs/pango x11-libs/startup-notification !app-emulation/vmware-workstation
+RESTRICT=strip
+SLOT=0
+SRC_URI=x86? ( https://softwareupdate.vmware.com/cds/vmw-desktop/player/6.0.3/1895310/linux/core/VMware-Player-6.0.3-1895310.i386.bundle.tar ) amd64? ( https://softwareupdate.vmware.com/cds/vmw-desktop/player/6.0.3/1895310/linux/core/VMware-Player-6.0.3-1895310.x86_64.bundle.tar )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f	vmware-bundle	23c070352c2722510704dae8063293e0
+_md5_=c465bbdf1a322ee744184423d9139bf4

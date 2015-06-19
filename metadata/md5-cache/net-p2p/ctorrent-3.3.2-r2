@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-libs/openssl
+DESCRIPTION=Enhanced CTorrent is a BitTorrent console client written in C and C++
+EAPI=2
+HOMEPAGE=http://www.rahul.net/dholmes/ctorrent/
+KEYWORDS=amd64 arm ppc ~s390 ~sh ~sparc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=dev-libs/openssl
+SLOT=0
+SRC_URI=mirror://sourceforge/dtorrent/ctorrent-dnh3.3.2.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=de9b8c8f5172cb040e16d340f7d2b32c

@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=gtk? ( ~app-admin/packagekit-gtk-0.8.15 ) qt4? ( =app-admin/packagekit-qt4-0.8* )
+DESCRIPTION=PackageKit Package Manager interface (meta package)
+EAPI=5
+HOMEPAGE=http://www.packagekit.org/
+IUSE=gtk qt4
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=gtk? ( ~app-admin/packagekit-gtk-0.8.15 ) qt4? ( =app-admin/packagekit-qt4-0.8* )
+SLOT=0
+_md5_=544c00f5dd8c6b2ccbf1e45cd095f41e

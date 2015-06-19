@@ -1,0 +1,46 @@
+# ChangeLog for dev-python/yapps
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/yapps/ChangeLog,v 1.6 2015/06/07 16:36:31 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  23 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -yapps-2.1.1.ebuild:
+  Remove old.
+
+*yapps-2.2.0 (17 Jul 2014)
+
+  17 Jul 2014; Ian Delaney <idella4@gentoo.org> +yapps-2.2.0.ebuild:
+  bump; add py3, pypy support, based on patch by R. Cardona from Bug #517010,
+  fixes said bug.
+
+  30 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  yapps-2.1.1.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*yapps-2.1.1 (23 Apr 2009)
+
+  23 Apr 2009; Patrick Lauer <patrick@gentoo.org> +metadata.xml,
+  +yapps-2.1.1.ebuild:
+  Initial import from sunrise overlay. Fixes #158110
+
+  07 Feb 2007; Tiziano Müller <dev-zero@gentoo.org> yapps-2.1.1.ebuild:
+  Added NEED_PYTHON
+
+  29 Jan 2007; Christian Faulhammer <opfer@gentoo.org> yapps-2.1.1.ebuild:
+  don't depend on base packages
+  adjusted DESCRIPTION
+
+  28 Jan 2007; Ali Polatel (hawking) <polatel@nerdshack.com>
+  yapps-2.1.1.ebuild:
+  Added examples use flag
+
+  25 Dec 2006; Tiziano Müller <dev-zero@gentoo.org> yapps-2.1.1.ebuild:
+  Corrected dependencies, some cosmetics
+
+  14 Dec 2006; Ali Polatel (hawking) <polatel@nerdshack.com>
+  +yapps-2.1.1.ebuild, +metadata.xml:
+  New ebuild for bug 158110

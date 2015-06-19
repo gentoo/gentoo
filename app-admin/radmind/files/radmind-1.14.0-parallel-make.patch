@@ -1,0 +1,50 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -204,37 +204,37 @@
+ radmind : libsnet/libsnet.la ${RADMIND_OBJ} Makefile
+ 	${CC} ${CFLAGS} -o radmind ${RADMIND_OBJ} ${LDFLAGS}
+ 
+-fsdiff : ${FSDIFF_OBJ}
++fsdiff : libsnet/libsnet.la ${FSDIFF_OBJ}
+ 	${CC} ${CFLAGS} -o fsdiff ${FSDIFF_OBJ} ${LDFLAGS}
+ 
+-ktcheck: ${KTCHECK_OBJ}
++ktcheck: libsnet/libsnet.la ${KTCHECK_OBJ}
+ 	${CC} ${CFLAGS} -o ktcheck ${KTCHECK_OBJ} ${LDFLAGS}
+ 
+-lapply: ${LAPPLY_OBJ}
++lapply: libsnet/libsnet.la ${LAPPLY_OBJ}
+ 	${CC} ${CFLAGS} -o lapply ${LAPPLY_OBJ} ${LDFLAGS}
+ 
+-lcksum: ${LCKSUM_OBJ}
++lcksum: libsnet/libsnet.la ${LCKSUM_OBJ}
+ 	${CC} ${CFLAGS} -o lcksum ${LCKSUM_OBJ} ${LDFLAGS}
+ 
+-lcreate: ${LCREATE_OBJ}
++lcreate: libsnet/libsnet.la ${LCREATE_OBJ}
+ 	${CC} ${CFLAGS} -o lcreate ${LCREATE_OBJ} ${LDFLAGS}
+ 
+-lmerge: ${LMERGE_OBJ}
++lmerge: libsnet/libsnet.la ${LMERGE_OBJ}
+ 	${CC} ${CFLAGS} -o lmerge ${LMERGE_OBJ} ${LDFLAGS}
+ 
+-lfdiff: ${LFDIFF_OBJ}
++lfdiff: libsnet/libsnet.la ${LFDIFF_OBJ}
+ 	${CC} ${CFLAGS} -o lfdiff ${LFDIFF_OBJ} ${LDFLAGS}
+ 
+-repo : ${REPO_OBJ}
++repo: libsnet/libsnet.la ${REPO_OBJ}
+ 	${CC} ${CFLAGS} -o repo ${REPO_OBJ} ${LDFLAGS}
+ 
+ t2pkg: ${T2PKG_OBJ}
+ 	${CC} ${CFLAGS} -o t2pkg ${T2PKG_OBJ} ${LDFLAGS}
+ 
+-twhich: ${TWHICH_OBJ}
++twhich: libsnet/libsnet.la ${TWHICH_OBJ}
+ 	${CC} ${CFLAGS} -o twhich ${TWHICH_OBJ} ${LDFLAGS}
+ 
+-lsort: ${LSORT_OBJ}
++lsort: libsnet/libsnet.la ${LSORT_OBJ}
+ 	${CC} ${CFLAGS} -o lsort ${LSORT_OBJ} ${LDFLAGS}
+ 
+ FRC :

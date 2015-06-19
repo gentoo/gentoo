@@ -1,0 +1,47 @@
+# ChangeLog for games-misc/wumpus
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/wumpus/ChangeLog,v 1.16 2015/02/06 13:41:04 ago Exp $
+
+  06 Feb 2015; Agostino Sarubbo <ago@gentoo.org> wumpus-1.4.ebuild:
+  Stable for amd64, wrt bug #539028
+
+  06 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> wumpus-1.4.ebuild:
+  EAPI=5
+
+  14 Nov 2013; Michael Sterrett <mr_bones_@gentoo.org> wumpus-1.4.ebuild:
+  tidy
+
+  01 Sep 2010; Alfredo Tupone <tupone@gentoo.org> wumpus-1.4.ebuild:
+  Respect LDFLAGS. Bug #335469 by flameeyes@gentoo.org
+
+  05 Feb 2008; Fabian Groffen <grobian@gentoo.org> wumpus-1.4.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  08 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  20 Sep 2005; Kito <kito@gentoo.org> wumpus-1.4.ebuild:
+  ~ppc-macos. Closes Bug 106570
+
+  24 Aug 2005; Olivier Crête <tester@gentoo.org> wumpus-1.4.ebuild:
+  Marked ~amd64, thanks to Erik Musick and darktama for testing
+
+  29 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org> wumpus-1.4.ebuild:
+  fixup toolchain-funcs call for bug #100713; tidy
+
+  17 May 2005; Chris Gianelloni <wolf31o2@gentoo.org> wumpus-1.4.ebuild:
+  Cleanup for bug #92745.
+
+  29 Dec 2004; Joseph Jezak <josejx@gentoo.org> wumpus-1.4.ebuild:
+  Marked ppc stable.
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> wumpus-1.4.ebuild:
+  Added ~ppc.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> wumpus-1.4.ebuild:
+  virtual/glibc -> virtual/libc
+
+*wumpus-1.4 (04 Mar 2003)
+
+  04 Mar 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Tavis Ormandy <taviso@sdf.lonestar.org> #16418.

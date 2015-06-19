@@ -1,0 +1,72 @@
+# ChangeLog for x11-plugins/wmwifi
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmwifi/ChangeLog,v 1.20 2010/12/02 15:46:06 flameeyes Exp $
+
+  02 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org> wmwifi-0.6.ebuild:
+  QA: remove unneeded dependency over automake 1.4; remove unneeded src_unpack;
+  add die statements to install.
+
+  28 Jun 2008; Markus Meier <maekke@gentoo.org> wmwifi-0.6.ebuild:
+  x86 stable, bug #229597
+
+  27 Jun 2008; Santiago M. Mola <coldwind@gentoo.org> wmwifi-0.6.ebuild:
+  amd64 stable wrt bug #229597, thanks to Chad A. Simmons for testing.
+
+  26 Jun 2008; nixnut <nixnut@gentoo.org> wmwifi-0.6.ebuild:
+  Stable on ppc wrt bug 229597
+
+*wmwifi-0.6 (14 Apr 2008)
+
+  14 Apr 2008; Michele Noberasco <s4t4n@gentoo.org> wmwifi-0.6.ebuild:
+  Version bump, closes bug #217426.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; wmwifi-0.5.ebuild:
+  Drop virtual/x11 references.
+
+  15 Jun 2007; Christoph Mende <angelos@gentoo.org> wmwifi-0.5.ebuild:
+  Stable on amd64 wrt bug 179508
+
+  15 Jun 2007; Michele Noberasco <s4t4n@gentoo.org> metadata.xml:
+  Fixed automake dependancy. Closes bug #181714.
+
+  18 Oct 2006; Michele Noberasco <s4t4n@gentoo.org> metadata.xml:
+  Added missing automake dependancy. Closes bug #150648.
+
+  15 Jul 2006; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove rphillips from metadata.xml as he's retired.
+
+  15 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> -wmwifi-0.3.ebuild,
+  wmwifi-0.5.ebuild:
+  Fixed DEPEND for modular X, see bug #118306. Removed old version.
+
+  24 Dec 2005; Michael Hanselmann <hansmi@gentoo.org> wmwifi-0.5.ebuild:
+  Stable on ppc.
+
+  20 Dec 2005; Michele Noberasco <s4t4n@gentoo.org> wmwifi-0.5.ebuild:
+  Stable for x86.
+
+  07 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmwifi-0.5.ebuild,
+  wmwifi-0.3.ebuild:
+  Removed RDEPEND as it was equal to DEPEND.
+
+*wmwifi-0.5 (04 Nov 2005)
+
+  04 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmwifi-0.5.ebuild:
+  Version bump.
+  metdata.xml:
+  Assigned to desktop-dock herd.
+
+  02 Oct 2005; Tom Martin <slarti@gentoo.org> wmwifi-0.3.ebuild:
+  Marked ~amd64.
+
+  30 Jun 2005; Joseph Jezak <josejx@gentoo.org> wmwifi-0.3.ebuild:
+  Marked ppc stable for bug #97516.
+
+  28 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org> wmwifi-0.3.ebuild:
+  mark ~ppc
+
+*wmwifi-0.3 (31 Jan 2004)
+
+  31 Jan 2004; <rphillips@gentoo.org> wmwifi-0.3.ebuild:
+  Initial Import
+

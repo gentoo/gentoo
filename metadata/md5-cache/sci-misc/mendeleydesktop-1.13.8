@@ -1,0 +1,14 @@
+DEFINED_PHASES=install nofetch postinst postrm prepare setup unpack
+DESCRIPTION=Research management tool for desktop and web
+EAPI=5
+HOMEPAGE=http://www.mendeley.com/
+IUSE=python_targets_python3_3 python_targets_python3_4 python_targets_python2_7 python_single_target_python3_3 python_single_target_python3_4 python_single_target_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=Mendeley-terms
+RDEPEND=python_single_target_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),python_single_target_python3_3(+)?,python_single_target_python3_4(+)?,python_single_target_python2_7(+)?] dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsvg:4 dev-qt/qtwebkit:4 dev-qt/qtxmlpatterns:4 x11-libs/libX11
+REQUIRED_USE=^^ ( python_single_target_python3_3 python_single_target_python3_4 python_single_target_python2_7 ) python_single_target_python3_3? ( python_targets_python3_3 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python2_7? ( python_targets_python2_7 )
+RESTRICT=fetch
+SLOT=0
+SRC_URI=amd64? ( mendeleydesktop-1.13.8-linux-x86_64.tar.bz2 ) x86? ( mendeleydesktop-1.13.8-linux-i486.tar.bz2 ) amd64-linux? ( mendeleydesktop-1.13.8-linux-x86_64.tar.bz2 ) x86-linux? ( mendeleydesktop-1.13.8-linux-i486.tar.bz2 )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	7a178335dbd6ea7f50ed4e3e1c13c1e4	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=0faa00c60bfeebfbcc46ff52f736c3ac

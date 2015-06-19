@@ -1,0 +1,103 @@
+#!/sbin/runscript
+
+extra_started_commands="attach"
+
+depend() {
+	# we can use dns and net, but we can also in most cases live without them
+	use dns net ntp-client ntpd
+}
+
+create_work_directory() {
+	if [ ! -d "${RUNTIMEDIR}" ]; then
+		einfo "Directory ${RUNTIMEDIR} not existing, creating now."
+		mkdir "${RUNTIMEDIR}"
+		if [ ! -d "${RUNTIMEDIR}" ]; then
+			eeror "Directory ${RUNTIMEDIR} could not be created!"
+			return 1
+		fi
+	fi
+	if [ ! -e "${RUNTIMEDIR}"/ca-bundle.crt ] ; then
+		ln -s /etc/ssl/certs/ca-certificates.crt "${RUNTIMEDIR}"/ca-bundle.crt
+	fi
+}
+
+cuda_check() {
+	if [ -f /opt/cuda/lib/libcudart.so ]; then
+		# symlink wont harm :]
+		ln -snf /opt/cuda/lib/libcudart.so "${RUNTIMEDIR}"/libcudart.so
+	fi
+}
+
+check_baselayout() {
+	if [ "${RC_VERSION:-0}" = "0" ]; then
+		eerror "This script cannot be used for baselayout-1."
+		return 1
+	fi
+}
+
+start() {
+	check_baselayout || return 1
+	create_work_directory || return 1
+	cuda_check
+
+	# always ensure proper ownership
+	chown -R "${USER}:${GROUP}" "${RUNTIMEDIR}"
+
+	if [ ! -f "${RUNTIMEDIR}/lockfile" ]; then
+		einfo "File \"${RUNTIMEDIR}/lockfile\" does not exist, assuming first run."
+		einfo "You need to setup an account on the BOINC project homepage beforehand!"
+		einfo "Go to http://boinc.berkeley.edu/ and locate your project."
+		einfo "Then either run /etc/init.d/boinc attach or connect with a gui client"
+		einfo "and attach to a project with that."
+		echo
+		ewarn "Note that for attaching to some project you need your network up and running."
+		ewarn "network is needed only for jobs fetching afterwards"
+	fi
+
+	if [ "${ALLOW_REMOTE_RPC}" = "yes" ]; then
+		ARGS="${ARGS} --allow_remote_gui_rpc"
+	fi
+
+	ebegin "Starting ${SVCNAME}"
+	su -m ${USER} -c "nice -n ${NICELEVEL} \"${BOINCBIN}\" ${ARGS} --daemon --dir \"${RUNTIMEDIR}\" --redirectio"
+	eend $?
+}
+
+attach() {
+	local password url key
+
+	einfo "If you cant find your account key just try to obtain it by using:"
+	einfo "    boinccmd --passwd PASSWORD_FROM_GUI_RPC_AUTH --lookup_account URL EMAIL PASSWORD"
+
+	printf "    Enter the Project URL: "
+	read url
+	printf "    Enter your Account Key: "
+	read key
+
+	if ! service_started; then
+		"${RC_SERVICE}" start
+	fi
+
+	password=$(cat "${RUNTIMEDIR}/gui_rpc_auth.cfg")
+
+	ebegin "${SVCNAME}: Attaching to project"
+	su -m ${USER} -c "boinccmd --passwd \"${password}\" --project_attach ${url} ${key}"
+	eend $?
+
+	unset password url key
+
+	sleep 10
+	tail "${RUNTIMEDIR}/stdoutdae.txt"
+}
+
+stop() {
+	local password
+
+	password=$(cat "${RUNTIMEDIR}/gui_rpc_auth.cfg")
+
+	ebegin "Stopping ${SVCNAME}"
+	su -m ${USER} -c "boinccmd --passwd \"${password}\" --quit"
+	eend $?
+
+	unset password
+}

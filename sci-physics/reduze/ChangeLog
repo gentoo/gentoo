@@ -1,0 +1,25 @@
+# ChangeLog for sci-physics/reduze
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/reduze/ChangeLog,v 1.4 2013/11/12 15:08:47 grozin Exp $
+
+*reduze-2.0.9 (12 Nov 2013)
+
+  12 Nov 2013; Andrey Grozin <grozin@gentoo.org> -reduze-1.2.ebuild,
+  -reduze-2.0.8.ebuild, +reduze-2.0.9.ebuild:
+  Version bump; USE flag berkdb masked. Closing #432356.
+
+*reduze-2.0.8 (08 Aug 2012)
+
+  08 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> +reduze-2.0.8.ebuild,
+  metadata.xml:
+  Version bump. Now use cmake, rewritten from scratch and respect upstream
+  options
+
+  17 Jan 2011; Andrey Grozin <grozin@gentoo.org> reduze-1.2.ebuild:
+  Downgrade to EAPI 3
+
+*reduze-1.2 (16 Jan 2011)
+
+  16 Jan 2011; Andrey Grozin <grozin@gentoo.org> +reduze-1.2.ebuild,
+  +metadata.xml:
+  Initial import

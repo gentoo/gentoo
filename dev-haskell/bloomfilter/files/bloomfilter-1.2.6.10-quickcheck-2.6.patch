@@ -1,0 +1,12 @@
+--- bloomfilter-1.2.6.10-orig/tests/QCSupport.hs	2012-06-16 09:59:56.000000000 +1000
++++ bloomfilter-1.2.6.10/tests/QCSupport.hs	2012-07-14 19:00:06.035731133 +1000
+@@ -20,9 +20,6 @@
+     arbitrary = choose (epsilon, 1 - epsilon)
+         where epsilon = 1e-6 :: P
+ 
+-instance Arbitrary Ordering where
+-    arbitrary = oneof [return LT, return GT, return EQ]
+-
+ -- For some reason, MIN_VERSION_random doesn't work here :-(
+ #if __GLASGOW_HASKELL__ < 704
+ integralRandomR :: (Integral a, RandomGen g) => (a, a) -> g -> (a, g)

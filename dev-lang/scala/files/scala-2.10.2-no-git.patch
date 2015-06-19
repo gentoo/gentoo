@@ -1,0 +1,24 @@
+--- scala-2.10.2-orig/tools/get-scala-commit-date	2013-05-31 00:44:27.000000000 +1000
++++ scala-2.10.2/tools/get-scala-commit-date	2013-08-20 20:26:34.859699000 +1000
+@@ -10,8 +10,8 @@
+ 
+ [[ $# -eq 0 ]] || cd "$1"
+ 
+-lastcommitdate=$(git log --format="%ci" HEAD | head -n 1 | cut -d ' ' -f 1)
+-lastcommithours=$(git log --format="%ci" HEAD | head -n 1 | cut -d ' ' -f 2)
++lastcommitdate="2013-05-31"
++lastcommithours="00:00:00"
+ 
+ # 20120324
+ echo "${lastcommitdate//-/}-${lastcommithours//:/}"
+--- scala-2.10.2-orig/tools/get-scala-commit-sha	2013-05-31 00:44:27.000000000 +1000
++++ scala-2.10.2/tools/get-scala-commit-sha	2013-08-20 20:26:34.860152000 +1000
+@@ -12,7 +12,7 @@
+ 
+ # printf %016s is not portable for 0-padding, has to be a digit.
+ # so we're stuck disassembling it.
+-hash=$(git log -1 --format="%H" HEAD)
++hash="60d462ef6e0dba5f9a7c4cc81255fcb9fba7939a"
+ hash=${hash#g}
+ hash=${hash:0:10}
+ echo "$hash"

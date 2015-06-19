@@ -1,0 +1,19 @@
+commit 898e8541804d0f5a6475b27f8ca5e57cf282208f
+Author: Mike Gilbert <floppym@gentoo.org>
+Date:   Tue Dec 25 16:05:33 2012 -0500
+
+    Respect CFLAGS for xl2tpd-control.
+
+diff --git a/Makefile b/Makefile
+index 2a0f341..d694246 100644
+--- a/Makefile
++++ b/Makefile
+@@ -115,7 +115,7 @@ $(EXEC): $(OBJS) $(HDRS)
+ 	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LDLIBS)
+ 
+ $(CONTROL_EXEC): $(CONTROL_SRCS)
+-	$(CC) $(LDFLAGS) $(CONTROL_SRCS) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $(CONTROL_SRCS) -o $@
+ 
+ pfc:
+ 	$(CC) $(CFLAGS) -c contrib/pfc.c

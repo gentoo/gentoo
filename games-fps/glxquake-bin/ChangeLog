@@ -1,0 +1,56 @@
+# ChangeLog for games-fps/glxquake-bin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/glxquake-bin/ChangeLog,v 1.14 2015/06/14 19:43:34 ulm Exp $
+
+  14 Jun 2015; Ulrich Müller <ulm@gentoo.org> glxquake-bin-0-r2.ebuild:
+  [QA] Remove emul-linux-x86-* from dependencies.
+
+  05 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -glxquake-bin-0-r1.ebuild:
+  old
+
+  01 Feb 2015; Mikle Kolyada <zlogene@gentoo.org> glxquake-bin-0-r2.ebuild:
+  x86 stable wrt bug #535900
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org> glxquake-bin-0-r2.ebuild:
+  Stable for amd64, wrt bug #535900
+
+*glxquake-bin-0-r2 (07 Jul 2014)
+
+  07 Jul 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +glxquake-bin-0-r2.ebuild:
+  Bumped EAPI to 5, adjusted deps for gx86-multilib
+
+  04 Feb 2013; Tupone Alfredo <tupone@gentoo.org> glxquake-bin-0-r1.ebuild:
+  Use QA_PREBUILT. Bug #453996 by Diego
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> glxquake-bin-0-r1.ebuild:
+  Replacing einfo with elog
+
+  05 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  glxquake-bin-0-r1.ebuild:
+  Removing old virtual/x11 dependency.
+
+  19 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  glxquake-bin-0-r1.ebuild:
+  Adding strip to RESTRICT for bug #137819.
+
+  10 Sep 2006; <tupone@gentoo.org> files/digest-glxquake-bin-0-r1, Manifest:
+  Updating non versioned tar.gz. Bug #130342 by Raymond Lewis Rebbeck
+
+*glxquake-bin-0-r1 (10 Sep 2006)
+
+  10 Sep 2006; <tupone@gentoo.org> -glxquake-bin-0.ebuild,
+  +glxquake-bin-0-r1.ebuild:
+  Add instructions for post install actions. Bug #135066 by Kimmo Sundqvist
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> glxquake-bin-0.ebuild:
+  Fixed up the dependencies, ported to modular X, and closing bug #123561.
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+*glxquake-bin-0 (08 May 2005)
+
+  08 May 2005; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me for #54638 by Marcos González.

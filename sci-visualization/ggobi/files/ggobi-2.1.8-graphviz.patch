@@ -1,0 +1,13 @@
+--- plugins/GraphLayout/graphviz.c	2009-03-15 15:03:18.000000000 -0400
++++ plugins/GraphLayout/graphviz.c	2009-03-15 15:04:30.000000000 -0400
+@@ -267,8 +267,8 @@
+       m = visible[i];
+       name = (gchar *) g_array_index (d->rowlab, gchar *, m);
+       node = agfindnode (graph, name);
+-      pos[i][0] = (gdouble) ND_coord_i(node).x;
+-      pos[i][1] = (gdouble) ND_coord_i(node).y;
++      pos[i][0] = (gdouble) ND_coord(node).x;
++      pos[i][1] = (gdouble) ND_coord(node).y;
+     }
+ 
+   } else if (layout_type == TWOPI_LAYOUT) {

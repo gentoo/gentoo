@@ -1,0 +1,31 @@
+From 6b43368c9b10ba112e4272f66c507a0da9cf7e13 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Sat, 15 Mar 2014 17:48:41 -0400
+Subject: [PATCH 3/3] build: Add BLUETOOTH_LIBS to libgnome-shell's libadd for
+ ld.gold
+
+For ld.gold, adding BLUETOOTH_LIBS to gnome_shell_LDADD has no effect:
+the libgnome-bluetooth-applet must be linked to the binary that actually
+uses a function from libgnome-bluetooth-applet, i.e. to libgnome-shell.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=726435
+---
+ src/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index a73eaae..c8fd46f 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -315,7 +315,7 @@ libgnome_shell_base_la_LIBADD = $(libgnome_shell_libadd)
+ libgnome_shell_base_la_CPPFLAGS = $(gnome_shell_cflags)
+ 
+ libgnome_shell_la_LDFLAGS = $(libgnome_shell_ldflags)
+-libgnome_shell_la_LIBADD = $(GNOME_SHELL_LIBS) $(MUTTER_LIBS) libgnome-shell-base.la
++libgnome_shell_la_LIBADD = $(GNOME_SHELL_LIBS) $(MUTTER_LIBS) $(BLUETOOTH_LIBS) libgnome-shell-base.la
+ libgnome_shell_la_CPPFLAGS = $(MUTTER_CFLAGS) $(gnome_shell_cflags)
+ 
+ ShellMenu-0.1.gir: libgnome-shell-menu.la
+-- 
+2.1.2
+

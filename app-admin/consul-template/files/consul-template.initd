@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+# Copyright 2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/consul-template/files/consul-template.initd,v 1.1 2015/05/26 03:54:54 zmedico Exp $
+
+description="consul-template agent"
+group=${group:-${SVCNAME}}
+pidfile=${pidfile:-"/run/${SVCNAME}/${SVCNAME}.pid"}
+user=${user:-${SVCNAME}}
+
+command="/usr/bin/${SVCNAME}"
+command_args="agent -config-dir=/etc/consul-template.d ${command_args}"
+command_background="true"
+start_stop_daemon_args="--user ${user} --group ${group} \
+	--stdout /var/log/${SVCNAME}/${SVCNAME}.log \
+	--stderr /var/log/${SVCNAME}/${SVCNAME}.log"
+
+depend() {
+	need net
+	after net
+}
+
+start_pre() {
+	checkpath -d -m 0755 -o "${user}":"${group}" "${pidfile%/*}"
+}

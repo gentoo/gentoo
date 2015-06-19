@@ -1,0 +1,28 @@
+# ChangeLog for dev-java/jackson-databind
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jackson-databind/ChangeLog,v 1.5 2015/06/14 15:30:26 monsieurp Exp $
+
+*jackson-databind-2.5.1-r1 (14 Jun 2015)
+
+  14 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
+  +jackson-databind-2.5.1-r1.ebuild, -jackson-databind-2.5.1.ebuild:
+  Update dependency on cglib from 2.2 to 3.
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  05 Mar 2015; James Le Cuirot <chewi@gentoo.org> jackson-databind-2.5.1.ebuild:
+  Fix "diee" typo. Not sure how that got in there!
+
+*jackson-databind-2.5.1 (04 Mar 2015)
+
+  04 Mar 2015; James Le Cuirot <chewi@gentoo.org> +files/real-cglib.patch,
+  +jackson-databind-2.5.1.ebuild, -files/2.3.1-build.xml,
+  -jackson-databind-2.3.1.ebuild:
+  Version bump.
+
+*jackson-databind-2.3.1 (12 Jan 2014)
+
+  12 Jan 2014; Johann Schmitz <ercpe@gentoo.org> +files/2.3.1-build.xml,
+  +jackson-databind-2.3.1.ebuild, +metadata.xml:
+  New ebuild for the databind component of dev-java/jackson

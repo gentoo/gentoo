@@ -1,0 +1,11 @@
+diff -urN ykneo-ccid-tools-0.0.0.orig/NEO_Config.c ykneo-ccid-tools-0.0.0/NEO_Config.c
+--- ykneo-ccid-tools-0.0.0.orig/NEO_Config.c	2012-12-20 21:30:44.000000000 +0100
++++ ykneo-ccid-tools-0.0.0/NEO_Config.c	2013-08-12 16:40:18.109041000 +0200
+@@ -9,6 +9,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include <neo_if.h>
+ 
+ #pragma pack(push, 1)

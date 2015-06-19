@@ -1,0 +1,201 @@
+# ChangeLog for media-video/guvcview
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/guvcview/ChangeLog,v 1.44 2015/01/02 11:47:55 pacho Exp $
+
+  02 Jan 2015; Pacho Ramos <pacho@gentoo.org> guvcview-2.0.1.ebuild:
+  Newer gtk+ is needed (#532596 by Uros)
+
+  07 Dec 2014; Maxim Koltsov <maksbotan@gentoo.org> guvcview-2.0.1.ebuild:
+  Depend on libsdl2 instead of libsdl1, bug #531922.
+
+*guvcview-2.0.1 (07 Dec 2014)
+
+  07 Dec 2014; Maxim Koltsov <maksbotan@gentoo.org> +guvcview-2.0.1.ebuild:
+  Bump to 2.0.1
+
+*guvcview-1.7.3 (19 Mar 2014)
+
+  19 Mar 2014; Tim Harder <radhermit@gentoo.org> +guvcview-1.7.3.ebuild:
+  Version bump (bug #504988).
+
+*guvcview-1.7.2 (13 Dec 2013)
+
+  13 Dec 2013; Tim Harder <radhermit@gentoo.org> +guvcview-1.7.2.ebuild:
+  Version bump.
+
+*guvcview-1.7.1 (23 Jul 2013)
+
+  23 Jul 2013; Tim Harder <radhermit@gentoo.org> +guvcview-1.7.1.ebuild:
+  Version bump.
+
+  23 Dec 2012; Samuli Suominen <ssuominen@gentoo.org> guvcview-1.6.1.ebuild:
+  Set !<sys-kernel/linux-headers-3.4-r2 in attempt to ensure linux/uvcvideo.h
+  is always installed #448260
+
+  23 Dec 2012; Samuli Suominen <ssuominen@gentoo.org> guvcview-1.6.1.ebuild:
+  Pull in virtual/os-headers for #include <linux/foo.h> type of code
+
+  11 Dec 2012; Ian Stakenvicius <axs@gentoo.org> guvcview-1.6.1.ebuild:
+  virtualize the udev dependency
+
+  19 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> -guvcview-1.5.1.ebuild,
+  -guvcview-1.5.3.ebuild, -files/guvcview-1.5.3-header.patch,
+  -guvcview-1.6.0.ebuild:
+  old
+
+  19 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> guvcview-1.6.1.ebuild:
+  amd64/x86 stable
+
+*guvcview-1.6.1 (24 Aug 2012)
+
+  24 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> +guvcview-1.6.1.ebuild:
+  Version bump.
+
+*guvcview-1.5.1 (02 Aug 2012)
+
+  02 Aug 2012; Patrick Lauer <patrick@gentoo.org> +guvcview-1.5.1.ebuild:
+  Restore last non-gtk3 version
+
+*guvcview-1.6.0 (15 Jul 2012)
+
+  15 Jul 2012; Julian Ospald <hasufell@gentoo.org> +guvcview-1.6.0.ebuild:
+  version bump wrt bug #426648
+
+  16 May 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/guvcview-1.5.1-loops.patch, -guvcview-1.4.2.ebuild,
+  -guvcview-1.5.0.ebuild, -guvcview-1.5.1.ebuild, guvcview-1.5.3.ebuild:
+  Stabilise latest on amd64 and x86. Drop older.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> guvcview-1.4.2.ebuild,
+  guvcview-1.5.0.ebuild, guvcview-1.5.1.ebuild, guvcview-1.5.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  25 Mar 2012; Tim Harder <radhermit@gentoo.org> -guvcview-1.4.4.ebuild,
+  -guvcview-1.5.2.ebuild, -files/guvcview-1.5.2-pulse.patch:
+  Remove old.
+
+*guvcview-1.5.3 (07 Mar 2012)
+
+  07 Mar 2012; Tim Harder <radhermit@gentoo.org> +guvcview-1.5.3.ebuild,
+  +files/guvcview-1.5.3-header.patch:
+  Version bump.
+
+*guvcview-1.5.2 (13 Feb 2012)
+
+  13 Feb 2012; Tim Harder <radhermit@gentoo.org> +guvcview-1.5.2.ebuild,
+  +files/guvcview-1.5.2-pulse.patch:
+  Version bump.
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> guvcview-1.5.1.ebuild:
+  x86 stable wrt bug #399789
+
+  23 Jan 2012; Agostino Sarubbo <ago@gentoo.org> guvcview-1.5.1.ebuild:
+  Stable for amd64, wrt bug #399789
+
+  18 Nov 2011; Luca Barbato <lu_zero@gentoo.org>
+  files/guvcview-1.5.1-loops.patch:
+  Trim away cosmetics
+
+  18 Nov 2011; Luca Barbato <lu_zero@gentoo.org> guvcview-1.5.1.ebuild,
+  +files/guvcview-1.5.1-loops.patch:
+  Fix segfault when enumerating controls
+
+*guvcview-1.5.1 (12 Nov 2011)
+
+  12 Nov 2011; Tim Harder <radhermit@gentoo.org> +guvcview-1.5.1.ebuild:
+  Version bump.
+
+  09 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> guvcview-1.5.0.ebuild:
+  Fix HOMEPAGE from berlios to sourceforge.
+
+*guvcview-1.5.0 (22 Aug 2011)
+
+  22 Aug 2011; Tim Harder <radhermit@gentoo.org> +guvcview-1.5.0.ebuild:
+  Version bump
+
+  21 Apr 2011; Tim Harder <radhermit@gentoo.org> guvcview-1.4.2.ebuild,
+  guvcview-1.4.4.ebuild:
+  Depend on virtual/ffmpeg instead of media-video/ffmpeg.
+
+  19 Apr 2011; Thomas Kahle <tomka@gentoo.org> guvcview-1.4.2.ebuild:
+  x86 stable per bug 359603
+
+  21 Mar 2011; Markos Chandras <hwoarang@gentoo.org> guvcview-1.4.2.ebuild:
+  Stable on amd64 wrt bug #359603
+
+*guvcview-1.4.4 (20 Mar 2011)
+
+  20 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> +guvcview-1.4.4.ebuild:
+  Version bump.
+
+*guvcview-1.4.2 (14 Oct 2010)
+
+  14 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +guvcview-1.4.2.ebuild:
+  Version bump wrt #326903 by Siim Ainsaar.
+
+  05 Apr 2010; Markos Chandras <hwoarang@gentoo.org> guvcview-1.2.2.ebuild:
+  Stable on amd64 wrt bug #310187
+
+  24 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  guvcview-1.2.2.ebuild:
+  stable x86, bug 310187
+
+*guvcview-1.3.0 (19 Mar 2010)
+
+  19 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +guvcview-1.3.0.ebuild:
+  Version bump.
+
+*guvcview-1.2.2 (22 Feb 2010)
+
+  22 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +guvcview-1.2.2.ebuild:
+  Version bump wrt #295378, thanks to Marco Paolone for ebuild.
+
+*guvcview-1.1.1 (02 Jun 2009)
+
+  02 Jun 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +guvcview-1.1.1.ebuild:
+  Version bump.
+
+  30 May 2009; Samuli Suominen <ssuominen@gentoo.org> guvcview-1.1.0.ebuild,
+  +files/guvcview-1.1.0-automagic_pulseaudio.patch:
+  Patch pulseaudio to have AC_ARG_ENABLE for controlling the feature with
+  correct version checking.
+
+  29 May 2009; Samuli Suominen <ssuominen@gentoo.org> guvcview-1.1.0.ebuild:
+  USE pulseaudio for >=0.9.15 and don't allow previous versions installed
+  because of missing include wrt #271183.
+
+*guvcview-1.1.0 (24 May 2009)
+
+  24 May 2009; Zac Medico <zmedico@gentoo.org> +guvcview-1.1.0.ebuild:
+  1.1.0 bump.
+
+  29 Apr 2009; Samuli Suominen <ssuominen@gentoo.org>
+  -files/guvcview-0.9.6-implicit_declaration_setlocale.patch,
+  +files/guvcview-1.0.5-implicit_declaration_setlocale.patch,
+  -guvcview-0.9.6.ebuild, guvcview-1.0.5.ebuild:
+  Add include for locale.h to get setlocale wrt #267862, thanks to Ivan
+  Miljenovic.
+
+*guvcview-1.0.5 (23 Apr 2009)
+
+  23 Apr 2009; Zac Medico <zmedico@gentoo.org> +guvcview-1.0.5.ebuild:
+  Version bump.
+
+  17 Dec 2008; Steve Dibb <beandog@gentoo.org> guvcview-0.9.6.ebuild:
+  Add ~amd64, bug 250621
+
+  10 Dec 2008; Samuli Suominen <ssuominen@gentoo.org>
+  +files/guvcview-0.9.6-implicit_declaration_setlocale.patch,
+  guvcview-0.9.6.ebuild:
+  Add include for locale.h to get setlocale wrt #250495, thanks to Ivan
+  Miljenovic.
+
+*guvcview-0.9.6 (09 Dec 2008)
+
+  09 Dec 2008; Samuli Suominen <ssuominen@gentoo.org> +guvcview-0.9.6.ebuild:
+  Initial commit from Gentoo forums, thanks to RMX for pointing this
+  application out for me.

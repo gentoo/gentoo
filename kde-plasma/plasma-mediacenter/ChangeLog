@@ -1,0 +1,10 @@
+# ChangeLog for kde-plasma/plasma-mediacenter
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-plasma/plasma-mediacenter/ChangeLog,v 1.1 2015/05/31 22:06:18 johu Exp $
+
+*plasma-mediacenter-5.3.1 (31 May 2015)
+
+  31 May 2015; Johannes Huber <johu@gentoo.org> +metadata.xml,
+  +plasma-mediacenter-5.3.1.ebuild:
+  Initial commit for KDE Plasma 5. Imported from kde overlay. Ebuilds written by
+  several people. Thank you all who worked on it in the overlay.

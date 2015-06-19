@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=app-arch/unzip
+DESCRIPTION=GBA cart writing utility by Jeff Frohwein
+EAPI=5
+HOMEPAGE=http://www.devrs.com/gba/software.php#misc
+KEYWORDS=x86
+LICENSE=public-domain
+SLOT=0
+SRC_URI=http://www.devrs.com/gba/files/flgba.zip
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d2c4c6d1b185546b4d7a9815b2f3a92b

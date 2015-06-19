@@ -1,0 +1,237 @@
+# ChangeLog for x11-apps/appres
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/appres/ChangeLog,v 1.68 2015/04/12 10:25:37 mrueg Exp $
+
+  12 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -appres-1.0.3.ebuild:
+  Remove old.
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> appres-1.0.4.ebuild:
+  add arm64 support, tested on A53 board
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org> appres-1.0.4.ebuild:
+  Stable for x86, wrt bug #475480
+
+  07 Oct 2013; Agostino Sarubbo <ago@gentoo.org> appres-1.0.4.ebuild:
+  Stable for sparc, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org> appres-1.0.4.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  05 Oct 2013; Markus Meier <maekke@gentoo.org> appres-1.0.4.ebuild:
+  arm stable, bug #475480
+
+  05 Oct 2013; Agostino Sarubbo <ago@gentoo.org> appres-1.0.4.ebuild:
+  Stable for alpha, wrt bug #475480
+
+  04 Oct 2013; Agostino Sarubbo <ago@gentoo.org> appres-1.0.4.ebuild:
+  Stable for ppc64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org> appres-1.0.4.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  02 Oct 2013; Jeroen Roovers <jer@gentoo.org> appres-1.0.4.ebuild:
+  Stable for HPPA (bug #475480).
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org> appres-1.0.4.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*appres-1.0.4 (20 May 2013)
+
+  20 May 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +appres-1.0.4.ebuild:
+  Version bump.
+
+  15 May 2012; Alexis Ballier <aballier@gentoo.org> appres-1.0.3.ebuild:
+  keyword ~amd64-fbsd
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> appres-1.0.3.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> appres-1.0.3.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #344827
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> appres-1.0.3.ebuild:
+  Stable for HPPA (bug #344827).
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org> appres-1.0.3.ebuild:
+  arm stable, bug #344827
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org> appres-1.0.3.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> appres-1.0.3.ebuild:
+  amd64 stable wrt #344827
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> appres-1.0.3.ebuild:
+  ppc64 stable wrt #344827
+
+*appres-1.0.3 (01 Nov 2010)
+
+  01 Nov 2010; Tomáš Chvátal <scarabeus@gentoo.org> +appres-1.0.3.ebuild:
+  Version bump.
+
+  10 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> -appres-1.0.1.ebuild:
+  rm
+
+  19 Jan 2010; Raúl Porcel <armin76@gentoo.org> appres-1.0.2.ebuild:
+  s390 stable wrt #294958
+
+  18 Jan 2010; Raúl Porcel <armin76@gentoo.org> appres-1.0.2.ebuild:
+  alpha/ia64/sh/sparc stable wrt #294958
+
+  14 Jan 2010; Markus Meier <maekke@gentoo.org> appres-1.0.2.ebuild:
+  arm stable, bug #294958
+
+  14 Jan 2010; Christian Faulhammer <fauli@gentoo.org> appres-1.0.2.ebuild:
+  Transfer Prefix keywords
+
+  14 Jan 2010; Jeroen Roovers <jer@gentoo.org> appres-1.0.2.ebuild:
+  Stable for HPPA (bug #294958).
+
+  27 Dec 2009; Joseph Jezak <josejx@gentoo.org> appres-1.0.2.ebuild:
+  Marked ppc stable for bug #294958.
+
+  15 Dec 2009; Brent Baude <ranger@gentoo.org> appres-1.0.2.ebuild:
+  Marking appres-1.0.2 ppc64 stable for bug 294958
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org> appres-1.0.2.ebuild:
+  x86 stable, bug 294958
+
+  10 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> appres-1.0.2.ebuild:
+  amd64 stable wrt #294958
+
+*appres-1.0.2 (03 Oct 2009)
+
+  03 Oct 2009; Tomáš Chvátal <scarabeus@gentoo.org> +appres-1.0.2.ebuild:
+  Version bump.
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org> appres-1.0.1.ebuild:
+  add empty IUSE entry to silence repoman
+
+  09 Oct 2007; Donnie Berkholz <dberkholz@gentoo.org>; -appres-1.0.0.ebuild:
+  Drop old ebuilds.
+
+  07 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> appres-1.0.1.ebuild:
+  Stable on sparc wrt #175465
+
+  03 Jul 2007; Lars Weiler <pylon@gentoo.org> appres-1.0.1.ebuild:
+  Stable on ppc; bug #175465.
+
+  02 Jul 2007; Raúl Porcel <armin76@gentoo.org> appres-1.0.1.ebuild:
+  alpha stable wrt #175465
+
+  24 Jun 2007; Joshua Kinard <kumba@gentoo.org> appres-1.0.1.ebuild:
+  Stable on mips, per #175465.
+
+  20 May 2007; Jeroen Roovers <jer@gentoo.org> appres-1.0.1.ebuild:
+  Stable for HPPA (bug #175465).
+
+  05 May 2007; Daniel Gryniewicz <dang@gentoo.org> appres-1.0.1.ebuild:
+  Marked stable on amd64 for bug #175465
+
+  29 Apr 2007; Andrej Kacian <ticho@gentoo.org> appres-1.0.1.ebuild:
+  Stable on x86, bug #175465.
+
+  25 Apr 2007; Raúl Porcel <armin76@gentoo.org> appres-1.0.1.ebuild:
+  Stable on ia64 wrt bug #175465.
+
+  25 Apr 2007; Markus Rothe <corsair@gentoo.org> appres-1.0.1.ebuild:
+  Stable on ppc64; bug #175465
+
+  04 Feb 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  appres-1.0.1.ebuild:
+  Remove an unnecessary mirror restriction.
+
+  04 Feb 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  appres-1.0.0.ebuild:
+  Drop mirroring restriction.  Thanks to Zhang Le of bug #163088.
+
+*appres-1.0.1 (25 Jan 2007)
+
+  25 Jan 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  +appres-1.0.1.ebuild:
+  Version bump for X7.2.
+
+  10 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>; appres-1.0.0.ebuild:
+  Update description to be less generic.
+
+  06 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> appres-1.0.0.ebuild:
+  Add ~x86-fbsd keyword.
+
+  17 Aug 2006; Aron Griffis <agriffis@gentoo.org> appres-1.0.0.ebuild:
+  Mark 1.0.0 stable on ia64
+
+  16 Aug 2006; Jeroen Roovers <jer@gentoo.org> appres-1.0.0.ebuild:
+  Stable for HPPA.
+
+  15 Aug 2006; Guy Martin <gmsoft@gentoo.org> ChangeLog:
+  Marked stable on hppa.
+
+  01 Jul 2006; Donnie Berkholz <spyderous@gentoo.org>; appres-1.0.0.ebuild:
+  amd64/x86/ppc64 stable.
+
+  01 Jul 2006; Donnie Berkholz <spyderous@gentoo.org>; appres-1.0.0.ebuild:
+  ppc/sparc/mips/alpha/arm/sh stable
+
+  24 May 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  files/digest-appres-1.0.0, Manifest:
+  (#134079) Fix digest.
+
+  20 May 2006; Robin H. Johnson <robbat2@gentoo.org> appres-1.0.0.ebuild:
+  Added ~ppc after testing.
+
+  28 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-appres-1.0.0,
+  Manifest:
+  Revert to working digest.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> files/digest-appres-1.0.0,
+  Manifest:
+  Fixing SHA256 digest, pass four
+
+  24 Mar 2006; Donnie Berkholz <spyderous@gentoo.org>; appres-1.0.0.ebuild:
+  (#127306) Digests changed between release candidates and final release for
+  the same tarballs.
+
+  08 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> appres-1.0.0.ebuild:
+  Add ~amd64 keyword (satisfy xscreensaver modular deps).
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> appres-1.0.0.ebuild:
+  Added ~ppc64
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -appres-0.99.2.ebuild:
+  Pull old versions.
+
+*appres-1.0.0 (18 Dec 2005)
+
+  18 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +appres-1.0.0.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -appres-0.99.0.ebuild, -appres-0.99.1.ebuild:
+  Pull old versions.
+
+*appres-0.99.2 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +appres-0.99.2.ebuild:
+  Bump for 7.0RC3.
+
+*appres-0.99.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +appres-0.99.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> appres-0.99.0.ebuild:
+  Add ~sparc keyword (Modular X testing).
+
+*appres-0.99.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +appres-0.99.0.ebuild:
+  Initial commit for modular X.

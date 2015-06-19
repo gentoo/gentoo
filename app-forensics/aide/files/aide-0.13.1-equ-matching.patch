@@ -1,0 +1,83 @@
+--- src/gen_list.c.orig	2007-12-19 15:37:13.000000000 -0800
++++ src/gen_list.c	2007-12-19 16:19:43.000000000 -0800
+@@ -732,33 +732,6 @@
+   return retval;
+ }
+ 
+-//this is used to check if $text if equal to a node in $rxrlist
+-//should be used to check equ_rx_lst only
+-int check_list_for_equal(list* rxrlist,char* text,DB_ATTR_TYPE* attr)
+-{
+-  list* r=NULL;
+-  int retval=1;
+-  char *temp;
+-
+-  for(r=rxrlist;r;r=r->next){
+-    temp=((rx_rule*)r->data)->rx;
+-    
+-    //FIXME, if rx not begin with ^, may need to do something else
+-    if(temp[0]=='^') //^ is for reg exp, we can ignore this character
+-      temp++;
+-
+-    //we don't need to worry about buff-overflow, so strcmp is safe
+-    if((retval=strcmp(temp, text))==0){
+-      *attr=((rx_rule*)r->data)->attr;
+-      error(231,"\"%s\" matches string from line #%ld: %s\n",text,((rx_rule*)r->data)->conf_lineno,((rx_rule*)r->data)->rx);
+-      break;
+-    } else {
+-      error(231,"\"%s\" doesn't match string from line #%ld: %s\n",text,((rx_rule*)r->data)->conf_lineno,((rx_rule*)r->data)->rx);
+-    }
+-  }
+-  return retval;
+-}
+-
+ /* 
+  * Function check_node_for_match()
+  * calls itself recursively to go to the top and then back down.
+@@ -783,35 +756,24 @@
+     return retval;
+   }
+   
+-  /* We need this to check whether this was the first one *
+-   * to be called and not a recursive call */
+-  if(!((retval&16)==16)){
+-    retval|=16;
++  /* if this call is not recursive we check the equals list and we set top *
++   * and retval so we know following calls are recursive */
++  if(!(retval&16)){
+     top=1;
+-  } else {
+-    top=0;
+-  }
+-  
+-  /* if no deeper match found */
+-  if(!((retval&8)==8)&&!((retval&4)==4)){
++    retval|=16;
++
+     if(!check_list_for_match(node->equ_rx_lst,text,attr)){
+-      /*
+-	Zhi Wen Wong added this line to fix bug that equ not work for 
+-	compare
+-	if we do "=/bin", we should only check /bin
+-	so, /bin/bash or /bin/something should return 0 as neg
+-      */
+-      if(!check_list_for_equal(node->equ_rx_lst,text,attr))
+-	retval|=(2|4);
+-    };
+-  };
++      retval|=2|4;
++    }
++  }
+   /* We'll use retval to pass information on whether to recurse 
+    * the dir or not */
+ 
+ 
+-  if(!((retval&8)==8)&&!((retval&4)==4)){
++  /* If 4 and 8 are not set, we will check for matches */
++  if(!(retval&(4|8))){
+     if(!check_list_for_match(node->sel_rx_lst,text,attr))
+-      retval|=(1|8);
++      retval|=1|8;
+   }
+ 
+   /* Now let's check the ancestors */

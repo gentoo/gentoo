@@ -1,0 +1,33 @@
+# ChangeLog for dev-perl/DateTime-HiRes
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/DateTime-HiRes/ChangeLog,v 1.8 2015/06/13 22:36:53 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  DateTime-HiRes-0.10.0.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+  12 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> DateTime-HiRes-0.10.0.ebuild:
+  Drop old.
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop duplication of myself as a maintainer where there is a herd.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -DateTime-HiRes-0.01.ebuild:
+  Cleanup
+
+*DateTime-HiRes-0.10.0 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org> +DateTime-HiRes-0.10.0.ebuild:
+  Change version scheme
+
+  23 Jun 2009; Torsten Veller <tove@gentoo.org> DateTime-HiRes-0.01.ebuild:
+  Add description and Module-Build dependency
+
+*DateTime-HiRes-0.01 (23 Jun 2009)
+
+  23 Jun 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +DateTime-HiRes-0.01.ebuild, +metadata.xml:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

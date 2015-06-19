@@ -1,0 +1,16 @@
+diff -Npur spnavcfg-0.2.1.orig/Makefile.in spnavcfg-0.2.1/Makefile.in
+--- spnavcfg-0.2.1.orig/Makefile.in	2012-01-24 19:50:04.738222230 +0100
++++ spnavcfg-0.2.1/Makefile.in	2012-01-24 19:51:13.199221053 +0100
+@@ -20,9 +20,9 @@ clean:
+ 
+ .PHONY: install
+ install:
+-	$(INSTALL) -d $(PREFIX)/bin
+-	$(INSTALL) -m 4775 $(bin) $(PREFIX)/bin/$(bin)
++	$(INSTALL) -d $(DESTDIR)$(PREFIX)/bin
++	$(INSTALL) -m 4775 $(bin) $(DESTDIR)$(PREFIX)/bin/$(bin)
+ 
+ .PHONY: uninstall
+ uninstall:
+-	rm -f $(PREFIX)/bin/$(bin)
++	rm -f $(DESTDIR)$(PREFIX)/bin/$(bin)

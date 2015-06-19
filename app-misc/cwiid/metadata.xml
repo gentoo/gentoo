@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>lxnay@gentoo.org</email>
+	</maintainer>
+	<maintainer>
+	    <email>ziapannocchia@gmail.com</email>
+		<name>Marco Clocchiatti</name>
+	    <description>Proxied co-maintainer</description>
+	</maintainer>
+</pkgmetadata>

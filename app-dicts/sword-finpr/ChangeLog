@@ -1,0 +1,12 @@
+# ChangeLog for app-dicts/sword-finpr
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/sword-finpr/ChangeLog,v 1.2 2014/01/05 22:48:45 creffett Exp $
+
+  05 Jan 2014; Chris Reffett <creffett@gentoo.org> sword-finpr-1.2.ebuild:
+  EAPI bump
+
+*sword-finpr-1.2 (13 May 2008)
+
+  13 May 2008; Steve Dibb <beandog@gentoo.org> +metadata.xml,
+  +sword-finpr-1.2.ebuild:
+  Initial commit

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile config install postinst postrm preinst prepare setup
+DEPEND=postgres? ( dev-db/postgresql[server] ) dev-python/lxml dev-python/psycopg:2 dev-python/pychart dev-python/reportlab media-gfx/pydot dev-python/vobject dev-python/mako dev-python/pyyaml dev-python/Babel dev-python/gdata ldap? ( dev-python/python-ldap ) dev-python/python-openid dev-python/werkzeug dev-python/xlwt dev-python/feedparser dev-python/python-dateutil dev-python/pywebdav ssl? ( dev-python/pyopenssl ) dev-python/vatnumber dev-python/zsi =dev-lang/python-2*
+DESCRIPTION=Open Source ERP & CRM
+EAPI=3
+HOMEPAGE=http://www.openerp.com/
+IUSE=postgres ldap ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=postgres? ( dev-db/postgresql[server] ) dev-python/lxml dev-python/psycopg:2 dev-python/pychart dev-python/reportlab media-gfx/pydot dev-python/vobject dev-python/mako dev-python/pyyaml dev-python/Babel dev-python/gdata ldap? ( dev-python/python-ldap ) dev-python/python-openid dev-python/werkzeug dev-python/xlwt dev-python/feedparser dev-python/python-dateutil dev-python/pywebdav ssl? ( dev-python/pyopenssl ) dev-python/vatnumber dev-python/zsi =dev-lang/python-2*
+SLOT=0
+SRC_URI=http://nightly.openerp.com/6.1/releases/openerp-6.1-1.tar.gz
+_eclasses_=distutils	92e738ea29389cb3f34778d7a349ac71	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=662fe359a782752bb01af42cb45623d9

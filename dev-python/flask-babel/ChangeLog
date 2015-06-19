@@ -1,0 +1,50 @@
+# ChangeLog for dev-python/flask-babel
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/flask-babel/ChangeLog,v 1.12 2015/04/08 08:05:14 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> flask-babel-0.8-r1.ebuild:
+  Drop old Python implementations
+
+  25 Mar 2015; Maxim Koltsov <maksbotan@gentoo.org> flask-babel-0.9.ebuild:
+  Add python 3.3 and 3.4 to PYTHON_COMPAT
+
+  16 Jan 2015; Patrick Lauer <patrick@gentoo.org> flask-babel-0.9.ebuild:
+  Stable on amd64 and x86 for 527558
+
+  07 May 2014; Ian Delaney <idella4@gentoo.org> flask-babel-0.9.ebuild:
+  drop py2.6 add pypy support drop IUSE doc since half the source files are
+  missing
+
+  21 Jan 2014; Patrick Lauer <patrick@gentoo.org> -flask-babel-0.7.ebuild,
+  -flask-babel-0.8.ebuild:
+  Remove old
+
+*flask-babel-0.9 (10 Aug 2013)
+
+  10 Aug 2013; Patrick Lauer <patrick@gentoo.org> +flask-babel-0.9.ebuild:
+  Bump
+
+  17 Jun 2013; Patrick Lauer <patrick@gentoo.org> flask-babel-0.8-r1.ebuild:
+  Fix python targets as flask was downrated
+
+*flask-babel-0.8-r1 (09 Jun 2013)
+
+  09 Jun 2013; Ian Delaney <idella4@gentoo.org> +flask-babel-0.8-r1.ebuild:
+  revbump, migrate -> distutils-r1, rm -0.8
+
+*flask-babel-0.8 (19 Apr 2012)
+
+  19 Apr 2012; Patrick Lauer <patrick@gentoo.org> +flask-babel-0.8.ebuild:
+  Bump
+
+*flask-babel-0.7 (08 Sep 2011)
+
+  08 Sep 2011; Rafael G. Martins <rafaelmartins@gentoo.org>
+  -flask-babel-0.6.ebuild, +flask-babel-0.7.ebuild:
+  Version bump. Thanks to Johan Bergström (bug #381993).
+
+*flask-babel-0.6 (14 Dec 2010)
+
+  14 Dec 2010; Rafael G. Martins <rafaelmartins@gentoo.org>
+  +flask-babel-0.6.ebuild, +metadata.xml:
+  Initial version.

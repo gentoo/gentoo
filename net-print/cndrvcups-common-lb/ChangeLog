@@ -1,0 +1,30 @@
+# ChangeLog for net-print/cndrvcups-common-lb
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-print/cndrvcups-common-lb/ChangeLog,v 1.5 2015/04/08 21:32:22 pacho Exp $
+
+  08 Apr 2015; Pacho Ramos <pacho@gentoo.org>
+  -cndrvcups-common-lb-2.70-r2.ebuild, cndrvcups-common-lb-2.90.ebuild:
+  amd64/x86 stable, drop old
+
+*cndrvcups-common-lb-2.90 (25 Sep 2014)
+
+  25 Sep 2014; Pacho Ramos <pacho@gentoo.org> +cndrvcups-common-lb-2.90.ebuild:
+  Version bump
+
+*cndrvcups-common-lb-2.70-r2 (14 Oct 2013)
+
+  14 Oct 2013; Pacho Ramos <pacho@gentoo.org>
+  +cndrvcups-common-lb-2.70-r2.ebuild, -cndrvcups-common-lb-2.70-r1.ebuild:
+  Fix installation of missing files (#478290 by Michael Marineau)
+
+*cndrvcups-common-lb-2.70-r1 (01 Jul 2013)
+
+  01 Jul 2013; Pacho Ramos <pacho@gentoo.org>
+  +cndrvcups-common-lb-2.70-r1.ebuild, -cndrvcups-common-lb-2.70.ebuild:
+  Install in proper path
+
+*cndrvcups-common-lb-2.70 (29 Jun 2013)
+
+  29 Jun 2013; Pacho Ramos <pacho@gentoo.org> +cndrvcups-common-lb-2.70.ebuild,
+  +metadata.xml:
+  Introduce this driver as requested by M.A.R. Osorio via mail

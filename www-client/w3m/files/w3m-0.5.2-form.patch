@@ -1,0 +1,11 @@
+diff -Naur w3m-0.5.2.orig/form.c w3m-0.5.2/form.c
+--- w3m-0.5.2.orig/form.c	2004-02-06 02:23:07.000000000 +0900
++++ w3m-0.5.2/form.c	2008-05-16 08:34:48.000000000 +0900
+@@ -403,6 +403,7 @@
+     line->lineBuf = buf;
+     line->propBuf = prop;
+     line->len = len;
++    line->size = len;
+ 
+     return pos;
+ }

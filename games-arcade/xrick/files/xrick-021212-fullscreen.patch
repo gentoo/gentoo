@@ -1,0 +1,21 @@
+diff -ur xrick-021212/src/sysvid.c xrick-021212.patched/src/sysvid.c
+--- xrick-021212/src/sysvid.c	2002-12-24 16:33:43.000000000 +0300
++++ xrick-021212.patched/src/sysvid.c	2011-01-14 03:03:16.636668016 +0300
+@@ -145,10 +145,14 @@
+     IFDEBUG_VIDEO(sys_printf("xrick/video: SDL says, use these modes:\n"););
+     for (i = 0; modes[i]; i++) {
+       IFDEBUG_VIDEO(sys_printf("  %dx%d\n", modes[i]->w, modes[i]->h););
+-      if (modes[i]->w <= modes[mode]->w && modes[i]->w >= SYSVID_WIDTH &&
+-	  modes[i]->h * SYSVID_WIDTH >= modes[i]->w * SYSVID_HEIGHT) {
++      if ((!fszoom && modes[i]->w <= modes[mode] &&
++	   modes[i]->w >= SYSVID_WIDTH) ||
++	  (fszoom && modes[i]->w > modes[mode]->w)) {
+ 	mode = i;
+-	fszoom = modes[mode]->w / SYSVID_WIDTH;
++	if (modes[i]->h * SYSVID_WIDTH >= modes[i]->w * SYSVID_HEIGHT)
++	  fszoom = modes[mode]->w / SYSVID_WIDTH;
++	else
++	  fszoom = modes[mode]->h / SYSVID_HEIGHT;
+       }
+     }
+     if (fszoom != 0) {

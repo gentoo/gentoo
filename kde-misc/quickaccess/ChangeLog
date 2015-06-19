@@ -1,0 +1,65 @@
+# ChangeLog for kde-misc/quickaccess
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/quickaccess/ChangeLog,v 1.14 2015/06/04 18:57:33 kensington Exp $
+
+  04 Jun 2015; Michael Palimaka <kensington@gentoo.org>
+  quickaccess-0.8.2-r1.ebuild:
+  Move various kde-base packages to kde-apps.
+
+  06 Feb 2015; Michael Palimaka <kensington@gentoo.org>
+  quickaccess-0.8.2-r1.ebuild:
+  Add missing dependency wrt bug #536300.
+
+  05 May 2014; Johannes Huber <johu@gentoo.org> -quickaccess-0.8.2.ebuild,
+  quickaccess-0.8.2-r1.ebuild:
+  amd64/x86 stable, remove old.
+
+*quickaccess-0.8.2-r1 (21 Mar 2014)
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org> +quickaccess-0.8.2-r1.ebuild:
+  Revision bump to EAPI 5.
+
+  11 Jun 2013; Agostino Sarubbo <ago@gentoo.org> quickaccess-0.8.2.ebuild:
+  Stable for x86, wrt bug #472986
+
+  11 Jun 2013; Agostino Sarubbo <ago@gentoo.org> quickaccess-0.8.2.ebuild:
+  Stable for amd64, wrt bug #472986
+
+  20 Dec 2012; Michael Palimaka <kensington@gentoo.org>
+  -files/quickaccess-0.8.1-gcc46.patch, -quickaccess-0.8.1b.ebuild:
+  Remove old.
+
+*quickaccess-0.8.2 (22 Jan 2012)
+
+  22 Jan 2012; Johannes Huber <johu@gentoo.org> +quickaccess-0.8.2.ebuild,
+  quickaccess-0.8.1b.ebuild:
+  Version bump wrt bug #399765.
+
+  29 Oct 2011; Jonathan Callen <abcd@gentoo.org> -quickaccess-0.8.1.ebuild,
+  quickaccess-0.8.1b.ebuild:
+  Bump to EAPI=4; remove old
+
+  22 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  quickaccess-0.8.1b.ebuild:
+  Correct patch filename, bug 380267
+
+*quickaccess-0.8.1b (20 Aug 2011)
+
+  20 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +quickaccess-0.8.1b.ebuild:
+  Switch from maintenance fork 1 to maintenance fork 2, with some improvements
+  for kde-4.5 and later
+
+  12 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  quickaccess-0.8.1.ebuild, +files/quickaccess-0.8.1-gcc46.patch:
+  Fix compilation with gcc-4.6 using a patch from OpenSUSE, bug 370029
+
+  31 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  quickaccess-0.8.1.ebuild:
+  EAPI3, slotmove to 4
+
+*quickaccess-0.8.1 (11 May 2010)
+
+  11 May 2010; Dror Levin <spatz@gentoo.org> +quickaccess-0.8.1.ebuild,
+  +metadata.xml:
+  Initial import from kde overlay, thanks to all who worked on it there.

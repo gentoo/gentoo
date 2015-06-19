@@ -1,0 +1,77 @@
+# ChangeLog for kde-misc/kcometen4
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kcometen4/ChangeLog,v 1.19 2014/11/03 10:24:36 mrueg Exp $
+
+  03 Nov 2014; Manuel Rüger <mrueg@gentoo.org> -kcometen4-1.0.7.ebuild:
+  Cleanup old.
+
+  03 Nov 2014; Agostino Sarubbo <ago@gentoo.org> kcometen4-1.0.8.ebuild:
+  Stable for x86, wrt bug #527436
+
+  30 Oct 2014; Agostino Sarubbo <ago@gentoo.org> kcometen4-1.0.8.ebuild:
+  Stable for amd64, wrt bug #527436
+
+*kcometen4-1.0.8 (14 Jun 2014)
+
+  14 Jun 2014; Manuel Rüger <mrueg@gentoo.org> +kcometen4-1.0.8.ebuild:
+  Version bump.
+
+  11 Jun 2013; Michael Palimaka <kensington@gentoo.org> kcometen4-1.0.7.ebuild:
+  Add missing dependency.
+
+  11 Jun 2013; Agostino Sarubbo <ago@gentoo.org> kcometen4-1.0.7.ebuild:
+  Stable for x86, wrt bug #472986
+
+  11 Jun 2013; Agostino Sarubbo <ago@gentoo.org> kcometen4-1.0.7.ebuild:
+  Stable for amd64, wrt bug #472986
+
+  29 May 2013; Michael Palimaka <kensington@gentoo.org> kcometen4-1.0.7.ebuild,
+  metadata.xml:
+  Remove redundant code.
+
+  07 May 2013; Johannes Huber <johu@gentoo.org> kcometen4-1.0.7.ebuild:
+  Raise KDE_MINIMAL and change use dep to fix bug #468840.
+
+  29 Oct 2011; Jonathan Callen <abcd@gentoo.org> kcometen4-1.0.7.ebuild:
+  Bump to EAPI=4
+
+  13 Jun 2011; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove myself from metadata.xml
+
+  31 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> kcometen4-1.0.7.ebuild:
+  slotmove to 4
+
+  30 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org> kcometen4-1.0.7.ebuild:
+  Move to eapi3. Fix deps.
+
+*kcometen4-1.0.7 (14 Dec 2010)
+
+  14 Dec 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  +kcometen4-1.0.7.ebuild:
+  Version bump
+
+  11 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -kcometen4-1.0.5.ebuild:
+  Drop no-longer required ebuild.
+
+*kcometen4-1.0.6 (09 Nov 2009)
+
+  09 Nov 2009; Markos Chandras <hwoarang@gentoo.org>
+  +kcometen4-1.0.6.ebuild:
+  Version bump
+
+  03 Nov 2009; Jonathan Callen <abcd@gentoo.org> -kcometen4-1.0.4.ebuild:
+  Drop old version
+
+*kcometen4-1.0.5 (30 Jun 2009)
+
+  30 Jun 2009; Markos Chandras <hwoarang@gentoo.org>
+  +kcometen4-1.0.5.ebuild:
+  Version bump
+
+*kcometen4-1.0.4 (12 Feb 2009)
+
+  12 Feb 2009; Markos Chandras <hwoarang@gentoo.org> +metadata.xml,
+  +kcometen4-1.0.4.ebuild:
+  Initial commit of kcometen4 screensaver ( bug #258768 ) Thanks to
+  Shaumyadeep Chaudhuri <shaumya@gmail.com>.

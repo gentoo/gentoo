@@ -1,0 +1,62 @@
+# ChangeLog for games-emulation/zinc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/zinc/ChangeLog,v 1.15 2015/06/01 21:37:32 mr_bones_ Exp $
+
+  01 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org> zinc-1.1.ebuild:
+  clean up app-emulation/emul-linux which has been removed
+
+  07 Feb 2015; Agostino Sarubbo <ago@gentoo.org> zinc-1.1.ebuild:
+  Stable for amd64, wrt bug #539146
+
+  13 Oct 2014; Michał Górny <mgorny@gentoo.org> zinc-1.1.ebuild:
+  Support multilib providers for deps.
+
+  01 Aug 2014; Michael Sterrett <mr_bones_@gentoo.org> zinc-1.1.ebuild:
+  EAPI=5; update HOMEPAGE/SRC_URI
+
+  14 Apr 2013; Ulrich Müller <ulm@gentoo.org> zinc-1.1.ebuild:
+  Fix LICENSE, see readme.txt file: "This emulator may be freely distributed
+  as long as the ROM files are not included and the executable is not modified
+  in any way."
+
+  12 Feb 2007; Simon Stelling <blubb@gentoo.org> zinc-1.1.ebuild:
+  fix deps for amd64
+
+  12 Feb 2007; Simon Stelling <blubb@gentoo.org> zinc-1.1.ebuild:
+  marked ~amd64; bug 129803
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> zinc-1.1.ebuild:
+  Removing old virtual/x11 dependency.
+
+  23 Aug 2006; Michael Sterrett <mr_bones_@gentoo.org> zinc-1.1.ebuild:
+  take care of the QA notices; use GAMES_PREFIX_OPT
+
+  11 Feb 2006; Joshua Baergen <joshuabaergen@gentoo.org> zinc-0.9.ebuild,
+  zinc-1.1.ebuild:
+  Added modular X deps (bug #122315, Tupone Alfredo).
+
+*zinc-1.1 (28 Jan 2005)
+
+  28 Jan 2005; Michael Sterrett <mr_bones_@gentoo.org> +zinc-1.1.ebuild:
+  version bump (bug #79677)
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> zinc-0.9.ebuild:
+  virtual/glibc -> virtual/libc
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*zinc-0.9 (9 Jul 2002)
+
+  16 Oct 2002; Mike Frysinger <vapier@gentoo.org> :
+  removed src_unpack check for ARCH since we have KEYWORDS now
+  updated the DEPEND variable
+
+  06 Aug 2002; Mark Guertin <gerk@gentoo.org> :
+  Added -ppc -sparc -sparc64 to keywords
+
+  9 Jul 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

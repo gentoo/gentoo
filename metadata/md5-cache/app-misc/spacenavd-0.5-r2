@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=X? ( x11-apps/xdpyinfo )
+DESCRIPTION=The spacenavd daemon provides free alternative to the 3dxserv daemon
+EAPI=4
+HOMEPAGE=http://spacenav.sourceforge.net/
+IUSE=X
+KEYWORDS=amd64 ppc64 x86
+LICENSE=GPL-3
+RDEPEND=X? ( x11-apps/xdpyinfo )
+SLOT=0
+SRC_URI=mirror://sourceforge/project/spacenav/spacenav%20daemon/spacenavd%200.5/spacenavd-0.5.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=61bce20958cdaaaf6db47309da6f423f

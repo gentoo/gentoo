@@ -1,0 +1,35 @@
+# ChangeLog for dev-java/jsr311-api
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jsr311-api/ChangeLog,v 1.6 2014/06/19 00:25:49 mrueg Exp $
+
+  19 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -jsr311-api-1.0-r1.ebuild,
+  -jsr311-api-1.0.ebuild:
+  NM: Cleanup superseded ebuilds.
+
+  29 Dec 2009; Joseph Jezak <josejx@gentoo.org> jsr311-api-1.1.ebuild:
+  Marked ppc stable for bug #284323.
+
+  11 Sep 2009; Markus Meier <maekke@gentoo.org> jsr311-api-1.1.ebuild:
+  amd64/x86 stable, bug #284323
+
+*jsr311-api-1.1 (20 Jun 2009)
+*jsr311-api-1.0-r1 (20 Jun 2009)
+
+  20 Jun 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +jsr311-api-1.0-r1.ebuild, files/jsr311-api-1.0-manifest,
+  +jsr311-api-1.1.ebuild, +files/jsr311-api-1.1-build.xml,
+  +files/jsr311-api-1.1-manifest, +files/jsr311-api-1.1-maven-build.xml:
+  Version bump to latest upstream version needed for jersey-1.1.0. Backport
+  ebuild tweaks to 1.0-r1 as well for ease of maintenance.
+
+  31 Mar 2009; Petteri Räty <betelgeuse@gentoo.org> jsr311-api-1.0.ebuild:
+  Migrate to EAPI 2. Fix javadoc installation and cleanup ebuild. Fixes bug
+  #264396.
+
+*jsr311-api-1.0 (23 Feb 2009)
+
+  23 Feb 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +files/jsr311-api-1.0-build.xml, +files/jsr311-api-1.0-manifest,
+  +files/jsr311-api-1.0-maven-build.xml, +metadata.xml,
+  +jsr311-api-1.0.ebuild:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

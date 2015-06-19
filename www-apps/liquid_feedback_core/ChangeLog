@@ -1,0 +1,40 @@
+# ChangeLog for www-apps/liquid_feedback_core
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/liquid_feedback_core/ChangeLog,v 1.6 2014/12/30 11:06:24 tupone Exp $
+
+  30 Dec 2014; Tupone Alfredo <tupone@gentoo.org>
+  liquid_feedback_core-2.2.3.ebuild, liquid_feedback_core-2.2.6.ebuild,
+  liquid_feedback_core-3.0.4.ebuild:
+  Fix linking with postgresql
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  liquid_feedback_core-2.2.3.ebuild, liquid_feedback_core-2.2.6.ebuild,
+  liquid_feedback_core-3.0.4.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+*liquid_feedback_core-3.0.4 (30 Nov 2014)
+
+  30 Nov 2014; Alfredo Tupone <tupone@gentoo.org>
+  +liquid_feedback_core-3.0.4.ebuild,
+  +files/liquid_feedback_core-3.0.4-gentoo.patch:
+  Version bump to 3.0.4
+
+*liquid_feedback_core-2.2.6 (28 Nov 2014)
+
+  28 Nov 2014; Alfredo Tupone <tupone@gentoo.org>
+  +liquid_feedback_core-2.2.6.ebuild,
+  +files/liquid_feedback_core-2.2.6-gentoo.patch:
+  Version bump to 2.2.6 needed by frontend 2.2.7
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  liquid_feedback_core-2.2.3.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+*liquid_feedback_core-2.2.3 (28 Apr 2013)
+
+  28 Apr 2013; Alfredo Tupone <tupone@gentoo.org>
+  +liquid_feedback_core-2.2.3.ebuild,
+  +files/liquid_feedback_core-2.2.3-gentoo.patch, +files/postinstall-en.txt,
+  +metadata.xml:
+  New package
+

@@ -1,0 +1,409 @@
+# ChangeLog for app-text/scrollkeeper
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/scrollkeeper/ChangeLog,v 1.103 2015/03/10 20:54:16 vapier Exp $
+
+  10 Mar 2015; Mike Frysinger <vapier@gentoo.org> scrollkeeper-9999-r1.ebuild:
+  Mark arm64 stable.
+
+  02 Mar 2015; Yixun Lan <dlan@gentoo.org> scrollkeeper-9999-r1.ebuild:
+  add arm64 support, tested on A53 board
+
+  21 Oct 2013; Ulrich Müller <ulm@gentoo.org> scrollkeeper-9999-r1.ebuild:
+  Fix LICENSE, bug 488938.
+
+  31 May 2012; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Drop sgml herd.
+
+  28 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  scrollkeeper-9999-r1.ebuild:
+  keyword ~amd64-fbsd
+
+  06 May 2011; Pacho Ramos <pacho@gentoo.org> -scrollkeeper-0.3.14-r2.ebuild,
+  -files/scrollkeeper-0.3.14-gcc2_fix.patch,
+  -files/scrollkeeper-0.3.14-gentoo.patch,
+  -files/scrollkeeper-0.3.14-nls.patch, -scrollkeeper-9999.ebuild,
+  scrollkeeper-9999-r1.ebuild, -files/scrollkeeper-logrotate:
+  As talked with Gilles days ago, drop old versions as they are no needed and
+  it allows us to finally solve bug #256379 (I have tried to mail and contact
+  m68k team without success). Also make repoman happier.
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org>
+  scrollkeeper-0.3.14-r2.ebuild, scrollkeeper-9999.ebuild,
+  scrollkeeper-9999-r1.ebuild:
+  Stable for HPPA (bug #314899).
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org>
+  scrollkeeper-0.3.14-r2.ebuild, scrollkeeper-9999.ebuild,
+  scrollkeeper-9999-r1.ebuild:
+  Drop HPPA keywording (bug #324511).
+
+  22 Mar 2010; Fabian Groffen <grobian@gentoo.org>
+  scrollkeeper-9999-r1.ebuild:
+  Marked ~ppc-macos
+
+  02 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  scrollkeeper-9999-r1.ebuild:
+  Transfer Prefix keywords
+
+  02 Mar 2009; Raúl Porcel <armin76@gentoo.org>
+  scrollkeeper-9999-r1.ebuild:
+  arm/s390/sh stable
+
+  08 Jan 2009; Raúl Porcel <armin76@gentoo.org>
+  scrollkeeper-9999-r1.ebuild:
+  Add ~arm/~s390/~sh
+
+  05 Jul 2008; <ricmm@gentoo.org> scrollkeeper-0.3.14-r2.ebuild:
+  Drop to ~mips due to unstable deps
+
+*scrollkeeper-9999-r1 (01 Jul 2008)
+
+  01 Jul 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +scrollkeeper-9999-r1.ebuild:
+  bump to r1 to make sure everyone gets the dtd.
+
+  03 May 2008; Ryan Hill <dirtyepic@gentoo.org> scrollkeeper-9999.ebuild:
+  Keyword ~mips.
+
+  29 Nov 2007; Jeroen Roovers <jer@gentoo.org> scrollkeeper-9999.ebuild:
+  Stable for HPPA (bug #199740).
+
+  26 Nov 2007; Markus Rothe <corsair@gentoo.org> scrollkeeper-9999.ebuild:
+  Stable on ppc64; bug #199740
+
+  24 Nov 2007; Brent Baude <ranger@gentoo.org> scrollkeeper-9999.ebuild:
+  Marking scrollkeeper-9999 ppc stable for bug 199740
+
+  22 Nov 2007; Raúl Porcel <armin76@gentoo.org> scrollkeeper-9999.ebuild:
+  alpha/ia64/sparc stable wrt #199740
+
+  21 Nov 2007; Dawid Węgliński <cla@gentoo.org> scrollkeeper-9999.ebuild:
+  Stable on x86 (bug #199740)
+
+  20 Nov 2007; Samuli Suominen <drac@gentoo.org> scrollkeeper-9999.ebuild:
+  amd64 stable wrt #199740
+
+  17 Nov 2007; nixnut <nixnut@gentoo.org> scrollkeeper-9999.ebuild:
+  Added ~ppc wrt bug 196360
+
+  28 Oct 2007; Markus Rothe <corsair@gentoo.org> scrollkeeper-9999.ebuild:
+  Added ~ppc64; bug #196360
+
+  23 Oct 2007; Raúl Porcel <armin76@gentoo.org> scrollkeeper-9999.ebuild:
+  Add ~ia64/~sparc wrt #196360
+
+  23 Oct 2007; Roy Marples <uberlord@gentoo.org> scrollkeeper-9999.ebuild:
+  Keyworded ~sparc-fbsd
+
+  22 Oct 2007; Raúl Porcel <armin76@gentoo.org> scrollkeeper-9999.ebuild:
+  Add ~alpha wrt #196360
+
+  19 Oct 2007; Jeroen Roovers <jer@gentoo.org> scrollkeeper-9999.ebuild:
+  Marked ~hppa (bug #196360).
+
+  18 Oct 2007; Roy Marples <uberlord@gentoo.org> scrollkeeper-9999.ebuild:
+  Keyworded ~x86-fbsd
+
+  13 Oct 2007; Mart Raudsepp <leio@gentoo.org> scrollkeeper-9999.ebuild:
+  Try to have a smooth migration to rarian by using a PDEPEND
+
+*scrollkeeper-9999 (12 Oct 2007)
+
+  12 Oct 2007; Rémi Cardona <remi@gentoo.org> +scrollkeeper-9999.ebuild:
+  new entirely bogus version for Gnome 2.20 (scrollkeeper is now deprecated)
+
+  27 May 2007; Joshua Kinard <kumba@gentoo.org>
+  scrollkeeper-0.3.14-r2.ebuild:
+  Stable on mips.
+
+  12 Mar 2007; Leonardo Boshell <leonardop@gentoo.org> metadata.xml:
+  Replacing text-markup herd with the new sgml herd.
+
+  28 Jan 2007; Marius Mauch <genone@gentoo.org>
+  scrollkeeper-0.3.14-r1.ebuild, scrollkeeper-0.3.14-r2.ebuild:
+  Replacing einfo with elog
+
+  21 Dec 2006; Roy Marples <uberlord@gentoo.org>
+  scrollkeeper-0.3.14-r2.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  18 Sep 2006; Steev Klimaszewski <steev@gentoo.org>
+  scrollkeeper-0.3.14-r2.ebuild:
+  Add ~x86-fbsd keyword
+
+  17 Jul 2006; Daniel Gryniewicz <dang@gentoo.org> ChangeLog:
+  Marked stable on amd64 for bug #139612
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-scrollkeeper-0.3.14-r1, Manifest:
+  Fixing SHA256 digest, pass four
+
+  07 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  scrollkeeper-0.3.14-r2.ebuild:
+  Mark 0.3.14-r2 stable on alpha
+
+  30 Jan 2006; Leonardo Boshell <leonardop@gentoo.org>
+  scrollkeeper-0.3.14-r1.ebuild, scrollkeeper-0.3.14-r2.ebuild:
+  Added docbook-xsl-stylesheets to RDEPEND; removed docbook-sgml-utils (bug
+  #114231).
+
+  22 Jan 2006; <dang@gentoo.org> scrollkeeper-0.3.14-r2.ebuild:
+  Marked stable on amd64 per bug #119634
+
+  22 Jan 2006; Markus Rothe <corsair@gentoo.org>
+  scrollkeeper-0.3.14-r2.ebuild:
+  Stable on ppc64
+
+  22 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  scrollkeeper-0.3.14-r2.ebuild:
+  Marked ppc stable for bug #119634; Stabilize Gnome-2.12.2
+
+  22 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  scrollkeeper-0.3.14-r2.ebuild:
+  Stable on sparc
+
+  22 Jan 2006; Joshua Jackson <tsunam@gentoo.org>
+  scrollkeeper-0.3.14-r2.ebuild:
+  Stable on x86 for bug #119634; Stabilize Gnome-2.12.2
+
+  10 Oct 2005; Hardave Riar <hardave@gentoo.org>
+  scrollkeeper-0.3.14-r1.ebuild:
+  Stable on mips.
+
+  01 Oct 2005; Luis Medinas <metalgod@gentoo.org>
+  scrollkeeper-0.3.14-r1.ebuild:
+  Marked Stable on amd64.
+
+*scrollkeeper-0.3.14-r2 (24 Sep 2005)
+
+  24 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/scrollkeeper-0.3.14-nls.patch, +scrollkeeper-0.3.14-r2.ebuild:
+  Added patch to handle properly disabled NLS support as per bug #103386.
+  Fixes Gentoo/FreeBSD.
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  scrollkeeper-0.3.14-r1.ebuild:
+  Mark 0.3.14-r1 stable on alpha
+
+  03 Sep 2005; Markus Rothe <corsair@gentoo.org>
+  scrollkeeper-0.3.14-r1.ebuild:
+  Stable on ppc64
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  scrollkeeper-0.3.14-r1.ebuild:
+  Stable on ppc.
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  scrollkeeper-0.3.14-r1.ebuild:
+  stable on ia64
+
+  24 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  scrollkeeper-0.3.14-r1.ebuild:
+  Stable on sparc
+
+  23 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  scrollkeeper-0.3.14-r1.ebuild:
+  Stable on x86.
+
+  29 Jun 2005; Leonardo Boshell <leonardop@gentoo.org>
+  scrollkeeper-0.3.14-r1.ebuild:
+  Modified docbook-xml-dtd dependency to use '~' syntax.
+
+  23 Jun 2005; Leonardo Boshell <leonardop@gentoo.org>
+  scrollkeeper-0.3.14-r1.ebuild, files/scrollkeeper-0.3.14-gentoo.patch:
+  Modified patch to stop installing files that are handled by dodoc.
+  Suggestions by TGL on bug #96831.
+
+*scrollkeeper-0.3.14-r1 (20 Jun 2005)
+
+  20 Jun 2005; Leonardo Boshell <leonardop@gentoo.org>
+  scrollkeeper-0.3.14-r1.ebuild, files/scrollkeeper-logrotate:
+  New revision, installs a logrotate file for /var/log/scrollkeeper.log.
+  Thanks to Gad Kadosh for the contribution on bug #89351.
+  
+  29 May 2005; Leonardo Boshell <leonardop@gentoo.org>
+  scrollkeeper-0.3.14.ebuild, files/scrollkeeper-0.3.14-gentoo.patch:
+  Modified patch to avoid failure with 'collision-protect' feature; thanks
+  to Harald van Dijk. Resolves bug #74105.
+
+  01 Jul 2004; Tom Gall <tgall@gentoo.org> scrollkeeper-0.3.14.ebuild:
+  stable on ppc64 bug #54799
+
+  13 May 2004; Stephen P. Becker <geoman@gentoo.org>
+  scrollkeeper-0.3.14.ebuild:
+  Stable on mips.
+
+  17 Apr 2004; Travis Tilley <lv@gentoo.org> scrollkeeper-0.3.14.ebuild:
+  stable on amd64
+
+  14 Mar 2004; Stephen P. Becker <geoman@gentoo.org>
+  scrollkeeper-0.3.14.ebuild:
+  Added ~mips keyword.
+
+  09 Mar 2004; <agriffis@gentoo.org> scrollkeeper-0.3.14.ebuild:
+  stable on alpha and ia64
+
+  27 Feb 2004; Mike Gardiner <obz@gentoo.org> metadata.xml:
+  Added metadata to text-markup, then gnome
+
+  13 Feb 2004; Alastair Tse <liquidx@gentoo.org>
+  scrollkeeper-0.3.11-r1.ebuild, scrollkeeper-0.3.12.ebuild,
+  scrollkeeper-0.3.14.ebuild:
+  change descriptions (#41393)
+
+  12 Feb 2004; L. Boshell <leonardop@gentoo.org> scrollkeeper-0.3.14.ebuild,
+  files/scrollkeeper-0.3.14-gcc2_fix.patch:
+  Added patch to make it compile under gcc-2.
+  
+  10 Feb 2004; foser <foser@gentoo.org> scrollkeeper-0.3.14.ebuild,
+  metadata.xml:
+  Dep on intltool-0.29 and up for XML-Parser dep (#41096)
+  Add metadata.xml, add to gnome herd for now
+
+  10 Feb 2004; <gustavoz@gentoo.org> scrollkeeper-0.3.14.ebuild:
+  stable on hppa and sparc
+
+  10 Feb 2004; Bartosch Pixa <darkspecter@gentoo.org>
+  scrollkeeper-0.3.14.ebuild:
+  set ppc in keywords
+
+  08 Feb 2004; <spider@gentoo.org> scrollkeeper-0.3.14.ebuild:
+  x86 stable
+
+*scrollkeeper-0.3.14 (05 Feb 2004)
+
+  05 Feb 2004; <spider@gentoo.org> scrollkeeper-0.3.14.ebuild 
+  files/scrollkeeper-0.3.14-gentoo.diff :
+  Versionbump. Removed echo formatting fluff in pkg_, moved to einfo. removed
+  old comment/buildfix
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> scrollkeeper-0.3.12.ebuild:
+  Stable on ia64
+
+  08 Nov 2003; Todd Sunderlin <todd@gentoo.org> scrollkeeper-0.3.12.ebuild:
+  added sparc keyword
+
+  06 Oct 2003; Mike Gardiner <obz@gentoo.org> scrollkeeper-0.3.12.ebuild:
+  Marked stable on x86
+
+  23 Sep 2003; Bartosch Pixa <darkspecter@gentoo.org>
+  scrollkeeper-0.3.12.ebuild:
+  set ppc in keywords
+
+*scrollkeeper-0.3.12 (24 Jan 2003)
+
+  01 Jul 2003; Guy Martin <gmsoft@gentoo.org> scrollkeeper-0.3.12.ebuild :
+  Added hppa to KEYWORDS.
+
+  21 Feb 2003; Aron Griffis <agriffis@gentoo.org> scrollkeeper-0.3.12.ebuild :
+  Mark stable on Alpha
+
+  10 Feb 2003; foser <foser@gentoo.org> scrollkeeper-0.3.1[1-r1,2].ebuild :
+  Fixed docbook-xml-dtd to be more picky
+  
+  24 Jan 2003; Spider <spider@gentoo.org> : scrollkeeper-0.3.12.ebuild: 
+  First official release in ages, now fixes the tempfile vulnerability and 
+  other bugs from previous version. I had to remake the install-data patch due 
+  to some slight changes to the Makefile.in. nothing big here.
+  
+  
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*scrollkeeper-0.3.11-r1 (04 Sep 2002)
+
+  15 Sep 2002; Seemant Kulleen <seemant@gentoo.org>
+  scrollkeeper-0.3.11-r1.ebuild :
+
+  man page/LFH fixes.
+
+  04 Sep 2002; Daniel Ahlberg <aliz@gentoo.org> scrollkeeper-0.3.11.ebuild-r1 files/scrollkeeper-0.3.11-gentoo.diff :
+  Security update.
+
+*scrollkeeper-0.3.11 (29 Jul 2002)
+  
+  19 Oct 2002; phoen][x <phoenix@gentoo.org> scrollkeeper-0.3.11.ebuild :
+
+  Fixed a typo (SRC_URI).
+
+  27 Aug 2002; Martin Schlemmer <azarah@gentoo.org> scrollkeeper-0.3.11.ebuild :
+  Touch ${S}/intl/libintl.h if "nls" is not in USE.  Closes bug #7011.
+
+  29 Jul 2002; Spider <spider@gentoo.org> scrollkeeper-0.3.11.ebuild :
+  Update ebuild and patch
+  
+*scrollkeeper-0.3.10 (12 Jul 2002)
+
+  20 Jul 2002; Mark Guertin <gerk@gentoo.org> :
+  Adjusted KEYWORDS (there were 2 unmatching sets of them)
+
+  15 Jul 2002; Owen Stampflee <owen@gentoo.org> :
+  Added KEYWORDS.
+
+
+  12 Jul 2002; Seemant Kulleen <seemant@gentoo.org>
+  scrollkeeper-0.3.10-r1.ebuild files/digest-scrollkeeper-0.3.10-r1 :
+
+  Blah.  changed einstall to make install, because otherwise stuff was
+  getting merged into ${D}.  Silly silly seemant.  Closes bug #4880 by
+  koto@mynetix.de (Andreas Kotowicz)
+
+*scrollkeeper-0.3.10 (10 Jul 2002)
+
+  10 Jul 2002; Seemant Kulleen <seemant@gentoo.org>
+  scrollkeeper-0.3.10.ebuild files/digest-scrollkeeper-0.3.10
+  files/scrollkeeper-0.3.10.diff :
+
+  Version bump. Also ran autoconf and automake, since the diff affects
+  Makefile.in.  Thenks to: christian-neumair@web.de (Christian - Manny
+  Calavera - Neumair) in bug #4822
+
+*scrollkeeper-0.3.9-r1 (29 Jun 2002)
+
+  29 Jun 2002; Martin Schlemmer <azarah@gentoo.org> *.ebuild:
+  Unfortunately we cannot have both installed, so changed them
+  all to have SLOT="0".  Also fixed some syntax errors in the
+  0.3.9 ebuild.
+
+*scrollkeeper-0.2-r4 (13 Jun 2002)
+  20 Sept 2002; Mike Frysinger <vapier@gentoo.org> :
+  Updated HOMEPAGE variable
+
+  13 Jun 2002; Spider <spider@gentoo.org> scrollkeeper-0.2-r4.ebuild :
+  fix the link bug
+
+*scrollkeeper-0.3.9 (1 Jun 2002)
+  1 Jun 2002; Spider <spider@gentoo.org> scrollkeeper-0.3.9.ebuild :
+  new version released. fixed the bugs we patched
+
+
+*scrollkeeper-0.3.8-r2 (1 Jun 2002)
+  1 Jun 2002; Spider <spider@gentoo.org> scrollkeeper-0.3.8-r2.ebuild :
+  ebuild update to use /usr/bin/scrollkeeper* instead of "scrollkeeper-*" for paths
+    
+*scrollkeeper-0.3.8-r1 (31 May 2002)
+  31 May 2002; Spider <spider@gentoo.org> scrollkeeper-0.3.8-r1.ebuild :
+  updated with a patch for gcc 3.1 at ia32
+
+*scrollkeeper-0.3.6 (22 May 2002)
+*scrollkeeper-0.3.8 (22 May 2002)
+*scrollkeeper-0.3.4-r5 (22 May 2002)
+  22 May 2002; Spider <spider@gentoo.org> scrollkeeper-0.3.4-r5.ebuild scrollkeeper-0.3.6.ebuild scrollkeeper-0.3.8.ebuild :
+  Added an updated -r that has some minor fixes
+  Added 0.3.6 that is known to work
+  Added 0.3.8 that has strict dtd checking and kinda breaks older stuff
+
+*scrollkeeper-0.2-r3 (27 Mar 2002)
+
+  27 Mar 2002; Seemant Kulleen <seemant@gentoo.org> scrollkeeper-0.2-r3.ebuild :
+
+  man page/LFH fixes submitted by Matthew Kennedy.
+
+*scrollkeeper-0.2-r2 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

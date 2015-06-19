@@ -1,0 +1,24 @@
+--- server.c.old	2010-11-08 11:53:18.000000000 +0100
++++ server.c	2010-11-08 11:53:43.000000000 +0100
+@@ -905,8 +905,8 @@
+ 	int len;
+ 
+ 	packet[0]=P_MESSAGE;
+-	if (!name){snprintf(packet+1,256,"%s",msg);len=strlen(msg)+1+1;}
+-	else {snprintf(packet+1,256,"%s> %s",name,msg);len=strlen(name)+strlen(msg)+1+3;}
++	if (!name){snprintf(packet+1,255,"%s",msg);len=strlen(msg)+1+1;}
++	else {snprintf(packet+1,255,"%s> %s",name,msg);len=strlen(name)+strlen(msg)+1+3;}
+ 	send_chunk_packet_to_player(packet,len,player);
+ }
+ 
+--- console.c.old	2010-11-08 11:53:26.000000000 +0100
++++ console.c	2010-11-08 11:54:44.000000000 +0100
+@@ -206,7 +206,7 @@
+ void c_setcolor_3b(unsigned char a)
+ {
+ 	char txt[8];
+-	snprintf(txt,16,"\033[%dm",30+(a&7));
++	snprintf(txt,sizeof(txt),"\033[%dm",30+(a&7));
+ 	my_print(txt);
+ }
+ 

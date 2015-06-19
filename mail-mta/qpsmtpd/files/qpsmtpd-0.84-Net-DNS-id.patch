@@ -1,0 +1,28 @@
+Net::DNS function nextid() changed to id().
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+diff -Nuar qpsmtpd-0.84.orig/qpsmtpd-async qpsmtpd-0.84/qpsmtpd-async
+--- qpsmtpd-0.84.orig/qpsmtpd-async	2009-04-03 05:48:34.000000000 +0000
++++ qpsmtpd-0.84/qpsmtpd-async	2013-04-15 23:01:49.952857659 +0000
+@@ -145,7 +145,7 @@
+         # print "Next DNS ID: $Net::DNS::Resolver::global{id}\n";
+     };
+     if ($@) {
+-        # print "Next DNS ID: " . Net::DNS::Header::nextid() . "\n";
++        # print "Next DNS ID: " . Net::DNS::Header::id() . "\n";
+     }
+     
+     # Fixup lost kqueue after fork
+diff -Nuar qpsmtpd-0.84.orig/qpsmtpd-forkserver qpsmtpd-0.84/qpsmtpd-forkserver
+--- qpsmtpd-0.84.orig/qpsmtpd-forkserver	2010-04-08 05:29:52.000000000 +0000
++++ qpsmtpd-0.84/qpsmtpd-forkserver	2013-04-15 23:01:49.952857659 +0000
+@@ -285,7 +285,7 @@
+     # all children should have different seeds, to prevent conflicts
+     srand();
+     for (0 .. rand(65536)) {
+-	Net::DNS::Header::nextid();
++	Net::DNS::Header::id();
+     }
+   
+     close $_ for $select->handles;

@@ -1,0 +1,14 @@
+diff -urN gtkterm-0.99.7-rc1.old/configure.in gtkterm-0.99.7-rc1/configure.in
+--- gtkterm-0.99.7-rc1.old/configure.in	2012-03-02 14:05:29.842885142 -0800
++++ gtkterm-0.99.7-rc1/configure.in	2012-03-02 14:11:20.242419122 -0800
+@@ -32,8 +32,8 @@
+ dnl Checks for GTK+ and Imlib and libvte
+ PKG_CHECK_MODULES(VTE, vte >= 0.20, , AC_MSG_ERROR([*** vte >= 0.20 not installed ***]))
+ 
+-AC_SUBST(VTE_CFLAGS)
+-AC_SUBST(VTE_LIBS)
++AC_SUBST(TERMINAL_WIDGET_CFLAGS)
++AC_SUBST(TERMINAL_WIDGET_LIBS)
+ 
+ PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.16, , AC_MSG_ERROR([*** GTK >= 2.16 not installed ***]))
+ 

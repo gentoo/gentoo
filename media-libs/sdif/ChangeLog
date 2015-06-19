@@ -1,0 +1,33 @@
+# ChangeLog for media-libs/sdif
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/sdif/ChangeLog,v 1.9 2014/08/10 21:11:52 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> sdif-3.8.6.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  06 Nov 2013; Patrick Lauer <patrick@gentoo.org> sdif-3.8.6.ebuild:
+  Shorten description, make repoman happier
+
+  07 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata and fix indentation.
+
+  03 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  31 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org> sdif-3.8.6.ebuild:
+  Stable sparc.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org> sdif-3.8.6.ebuild:
+  Stable amd64, x86.  Added to ~sparc.
+
+  11 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org> sdif-3.8.6.ebuild:
+  Added to ~amd64.
+
+  05 Sep 2004; David Holm <dholm@gentoo.org> sdif-3.8.6.ebuild:
+  Added to ~ppc.
+
+*sdif-3.8.6 (03 Sep 2004)
+
+  03 Sep 2004; Chris White <chriswhite@gentoo.org> +metadata.xml,
+  +files/sdif-3.8.6-cflags.patch, +sdif-3.8.6.ebuild:
+  Initial Import into the tree.

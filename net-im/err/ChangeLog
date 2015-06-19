@@ -1,0 +1,84 @@
+# ChangeLog for net-im/err
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/err/ChangeLog,v 1.16 2015/06/04 10:39:54 jlec Exp $
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> err-1.7.1.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+*err-1.7.1 (05 Oct 2013)
+
+  05 Oct 2013; Sergey Popov <pinkbyte@gentoo.org> -err-1.3.1-r1.ebuild,
+  -err-1.5.1-r1.ebuild, -err-1.6.1.ebuild, +err-1.7.1.ebuild, metadata.xml:
+  Version bump: EAPI 5, migrate to distutils-r1, optional dependencies for IRC
+  backend. Drop old versions
+
+  17 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> err-1.3.1-r1.ebuild,
+  err-1.5.1-r1.ebuild, err-1.6.1.ebuild:
+  Correct yapsy dependency - these versions of err does not support 1.10
+
+*err-1.6.1 (03 Apr 2013)
+
+  03 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> +err-1.6.1.ebuild:
+  Version bump
+
+  03 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> files/errd.confd,
+  metadata.xml:
+  Add comments to confd file, add upstream info to metadata
+
+*err-1.5.1-r1 (25 Dec 2012)
+*err-1.3.1-r1 (25 Dec 2012)
+
+  25 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> -err-1.3.1.ebuild,
+  +err-1.3.1-r1.ebuild, -err-1.5.1.ebuild, +err-1.5.1-r1.ebuild,
+  files/errd.initd:
+  Fix pid directory detection, revision bump, drop old revisions wrt bug
+  #448498
+
+  25 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> err-1.3.1.ebuild,
+  err-1.5.1.ebuild, files/errd.initd:
+  Move pidfile directory creation from ebuilds to initscript, wrt bug #448498
+
+*err-1.3.1 (06 Oct 2012)
+
+  06 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> -err-1.2.1-r1.ebuild,
+  -err-1.3.0-r1.ebuild, +err-1.3.1.ebuild, -files/err-tests.patch:
+  Version bump. Drop old ebuilds and tests' patch
+
+  18 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> err-1.3.0-r1.ebuild:
+  Fix description
+
+  16 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> -err-9999.ebuild:
+  Drop err's live ebuild, cause it is very hard to support it in consistent and
+  up-to-date state
+
+*err-1.5.1 (16 Sep 2012)
+
+  16 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> +err-1.5.1.ebuild:
+  Version bump
+
+  30 Aug 2012; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Set correct email address, drop proxy maintainer
+
+*err-1.3.0-r1 (03 Jul 2012)
+*err-1.2.1-r1 (03 Jul 2012)
+
+  03 Jul 2012; Maxim Koltsov <maksbotan@gentoo.org> +err-1.2.1-r1.ebuild,
+  +err-1.3.0-r1.ebuild, +files/err-tests.patch, -err-1.2.1.ebuild,
+  -err-1.3.0.ebuild:
+  Fix tests, bug 316083. Thanks to Pinkbyte
+
+*err-1.3.0 (26 Jun 2012)
+
+  26 Jun 2012; Maxim Koltsov <maksbotan@gentoo.org> +err-1.3.0.ebuild,
+  err-9999.ebuild, files/errd.initd, metadata.xml:
+  Bump to 1.3.0, fix some errors in ebuild and initscript. Thanks to Pinkbyte.
+
+*err-9999 (21 Jun 2012)
+*err-1.2.1 (21 Jun 2012)
+
+  21 Jun 2012; Maxim Koltsov <maksbotan@gentoo.org> +err-1.2.1.ebuild,
+  +err-9999.ebuild, +files/errd.confd, +files/errd.initd, +metadata.xml:
+  Add net-im/err, bug 421373. Thanks to Pinkbyte

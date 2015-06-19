@@ -1,0 +1,8 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=DLX Simulator
+HOMEPAGE=http://www.davidviner.com/dlx.php
+KEYWORDS=x86 ppc
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.davidviner.com/dlx/dlx.tar.gz
+_md5_=74df56e59380e4f492bcf587ced519eb

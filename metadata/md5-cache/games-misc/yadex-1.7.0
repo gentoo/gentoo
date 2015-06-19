@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=x11-libs/libX11
+DESCRIPTION=A Doom level (wad) editor
+EAPI=5
+HOMEPAGE=http://www.teaser.fr/~amajorel/yadex/
+KEYWORDS=~ppc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 games-misc/games-envd
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.teaser.fr/~amajorel/yadex/yadex-1.7.0.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=ea25fdc80d528dc9d46377dd7dd0f697

@@ -1,0 +1,84 @@
+# ChangeLog for sys-boot/plymouth-openrc-plugin
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/plymouth-openrc-plugin/ChangeLog,v 1.17 2013/04/29 10:43:43 lxnay Exp $
+
+  29 Apr 2013; Fabio Erculiani <lxnay@gentoo.org>
+  plymouth-openrc-plugin-0.1.2.ebuild:
+  do not block systemd, just warn user
+
+  25 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Drop maintainer by his request, remove proxy maintainers herd, reassigning to
+  maintainer-needed
+
+  03 Mar 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  This will now be proxy maintained
+  https://bugs.gentoo.org/show_bug.cgi?id=430478#c8
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  plymouth-openrc-plugin-0.1.2.ebuild:
+  Add ~arm, wrt bug #449220
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  plymouth-openrc-plugin-0.1.2.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  plymouth-openrc-plugin-0.1.2.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  plymouth-openrc-plugin-0.1.2.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  plymouth-openrc-plugin-0.1.2.ebuild:
+  Add ~ppc64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  plymouth-openrc-plugin-0.1.2.ebuild:
+  Add ~ppc, wrt bug #449220
+
+  23 Apr 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  a3li is the new maintainer (as discussed in #gentoo-dev).
+
+  18 Apr 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> metadata.xml:
+  Dropped my maintainership.
+
+  27 Oct 2011; Amadeusz Żołnowski <aidecoe@gentoo.org>
+  plymouth-openrc-plugin-0.1.2.ebuild:
+  Block sys-apps/systemd to not interfere with systemd plymouth support. Refs
+  bug #383067.
+
+  11 Jul 2011; Amadeusz Żołnowski <aidecoe@gentoo.org>
+  -plymouth-openrc-plugin-0.1.1.ebuild:
+  Remove old version.
+
+*plymouth-openrc-plugin-0.1.2 (11 Jul 2011)
+
+  11 Jul 2011; Amadeusz Żołnowski <aidecoe@gentoo.org>
+  +plymouth-openrc-plugin-0.1.2.ebuild:
+  Version bump to 0.1.2. Fixes bug #374025.
+
+  v0.1.2 changes:
+
+  * Checking at runtime if /run/plymouth subdirectory exists and if doesn't,
+  it's being created.
+
+  03 Jul 2011; Amadeusz Żołnowski <aidecoe@gentoo.org>
+  plymouth-openrc-plugin-0.1.1.ebuild:
+  Weak block for <sys-boot/plymouth-0.8.3-r5 instead of strong is sufficient
+  for conflicting files.
+
+  03 Jul 2011; Amadeusz Żołnowski <aidecoe@gentoo.org>
+  plymouth-openrc-plugin-0.1.1.ebuild:
+  Block <sys-boot/plymouth-0.8.3-r5 because of conflicting file
+  /lib/rc/plugins/plymouth.so and depend on 0.8.3-r5 or above.
+
+*plymouth-openrc-plugin-0.1.1 (03 Jul 2011)
+
+  03 Jul 2011; Amadeusz Żołnowski <aidecoe@gentoo.org>
+  +plymouth-openrc-plugin-0.1.1.ebuild, +metadata.xml:
+  Initial ebuild. Resolves bug #372699.
+
+  Plugin for OpenRC is installed directly by sys-boot/plymouth until upcoming
+  plymouth-0.8.3-r5.ebuild. Now it's going to be installed by this package.

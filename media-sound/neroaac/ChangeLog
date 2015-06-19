@@ -1,0 +1,21 @@
+# ChangeLog for media-sound/neroaac
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/neroaac/ChangeLog,v 1.5 2013/07/21 08:58:54 pacho Exp $
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #92799
+
+  13 Jun 2012; Stefan Briesenick <sbriesen@gentoo.org> neroaac-1.5.1.ebuild:
+  fixed QA Notices, solves bug #417749.
+
+  12 Mar 2011; Thomas Kahle <tomka@gentoo.org> neroaac-1.5.1.ebuild:
+  x86 stable per bug 356265
+
+  27 Feb 2011; Markos Chandras <hwoarang@gentoo.org> neroaac-1.5.1.ebuild:
+  Stable on amd64 wrt bug #356265
+
+*neroaac-1.5.1 (21 Jul 2010)
+
+  21 Jul 2010; Stefan Briesenick <sbriesen@gentoo.org>
+  +neroaac-1.5.1.ebuild, +metadata.xml:
+  initial commit.

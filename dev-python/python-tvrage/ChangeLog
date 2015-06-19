@@ -1,0 +1,21 @@
+# ChangeLog for dev-python/python-tvrage
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-tvrage/ChangeLog,v 1.5 2015/06/07 15:47:43 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> python-tvrage-0.4.1.ebuild:
+  Drop old Python implementations
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> python-tvrage-0.4.1.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> python-tvrage-0.4.1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*python-tvrage-0.4.1 (27 May 2013)
+
+  27 May 2013; Mike Gilbert <floppym@gentoo.org> +metadata.xml,
+  +python-tvrage-0.4.1.ebuild:
+  New package; dependency of net-misc/flexget.

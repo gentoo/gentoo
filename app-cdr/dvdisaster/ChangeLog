@@ -1,0 +1,123 @@
+# ChangeLog for app-cdr/dvdisaster
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/dvdisaster/ChangeLog,v 1.30 2015/01/28 19:05:58 mgorny Exp $
+
+  28 Jan 2015; Michał Górny <mgorny@gentoo.org> dvdisaster-0.72.2.ebuild:
+  Switch to CPU_FLAGS_X86.
+
+  26 Sep 2012; Samuli Suominen <ssuominen@gentoo.org> dvdisaster-0.72.4.ebuild:
+  ppc stable wrt #428050
+
+  05 Aug 2012; Samuli Suominen <ssuominen@gentoo.org> dvdisaster-0.72.4.ebuild:
+  Use full compiler name wrt #429928 by Julian Ospald
+
+  04 Aug 2012; Agostino Sarubbo <ago@gentoo.org> dvdisaster-0.72.4.ebuild:
+  Stable for amd64, wrt bug #428050
+
+  27 Jul 2012; Jeff Horelick <jdhore@gentoo.org> dvdisaster-0.72.4.ebuild:
+  marked x86 per bug 428050
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> dvdisaster-0.72.2.ebuild,
+  dvdisaster-0.72.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*dvdisaster-0.72.4 (26 Apr 2012)
+
+  26 Apr 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +dvdisaster-0.72.4.ebuild:
+  Version bump. This version is correctly including dev-libs/glib >= 2.31
+  header(s) wrt #413631. Thanks to Juergen Rose for reporting.
+
+  15 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  -dvdisaster-0.70.4.ebuild, -dvdisaster-0.72_rc1.ebuild,
+  -dvdisaster-0.72.1.ebuild, dvdisaster-0.72.2.ebuild:
+  ppc stable wrt #385787, drop old
+
+  08 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  dvdisaster-0.72.2.ebuild:
+  x86 stable wrt bug #385787
+
+  08 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> dvdisaster-0.72.2.ebuild:
+  amd64 stable wrt #385787
+
+  08 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> dvdisaster-0.72.2.ebuild:
+  Remove --debug which was only overriding flags from environment with -ggdb
+  wrt #385819 by Agostino Sarubbo
+
+  23 Sep 2011; Lars Wendler <polynomial-c@gentoo.org> dvdisaster-0.72.2.ebuild:
+  non-maintainer commit: Readded libpng15 patch. Moved ebuild back to EAPI-4.
+  Should fix bug #383491 reported by Jean-Francois Ostiguy.
+
+*dvdisaster-0.72.2 (16 Sep 2011)
+
+  16 Sep 2011; Steve Dibb <beandog@gentoo.org> +dvdisaster-0.72.2.ebuild:
+  Version bump
+
+  15 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> dvdisaster-0.72.1.ebuild,
+  +files/dvdisaster-0.72.1-libpng15.patch:
+  Fix building with libpng15 (missing zlib.h include) wrt #380139 by Diego Elio
+  Pettenò
+
+  21 Aug 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  dvdisaster-0.72.1.ebuild:
+  QA: add missing dependencies over libpng and zlib that it uses.
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  dvdisaster-0.70.4.ebuild:
+  Fix slot-dep on gtk+
+
+*dvdisaster-0.72.1 (03 Sep 2009)
+
+  03 Sep 2009; Patrick Lauer <patrick@gentoo.org> +dvdisaster-0.72.1.ebuild:
+  Bump to 0.72.1, fixes #281119
+
+*dvdisaster-0.72_rc1 (30 Apr 2009)
+
+  30 Apr 2009; Samuli Suominen <ssuominen@gentoo.org>
+  -dvdisaster-0.71.26.ebuild, +dvdisaster-0.72_rc1.ebuild:
+  Version bump.
+
+*dvdisaster-0.71.26 (03 Jun 2008)
+
+  03 Jun 2008; Steve Dibb <beandog@gentoo.org> +dvdisaster-0.71.26.ebuild:
+  Version bump, bug 216357
+
+  29 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Lars Weiler (Pylon) from metadata.xml (as per #215644).
+
+  02 Mar 2008; Markus Meier <maekke@gentoo.org> dvdisaster-0.70.4.ebuild:
+  x86 stable, bug #209875
+
+  02 Mar 2008; Robert Buchholz <rbu@gentoo.org> dvdisaster-0.70.4.ebuild:
+  stable amd64, bug 209875
+  Fix quoting
+
+  01 Mar 2008; Lars Weiler <pylon@gentoo.org> dvdisaster-0.70.4.ebuild:
+  stable ppc, bug #209875
+
+*dvdisaster-0.70.4 (12 May 2007)
+
+  12 May 2007; Lars Weiler <pylon@gentoo.org> dvdisaster-0.66.ebuild,
+  dvdisaster-0.70.1.ebuild, +dvdisaster-0.70.4.ebuild:
+  Version bump; updated HOMEPAGE and SRC_URI.
+
+  11 Nov 2006; Piotr Jaroszyński <peper@gentoo.org>
+  dvdisaster-0.70.1.ebuild:
+  Add ~amd64 wrt bug #154492.
+
+  10 Sep 2006; Lars Weiler <pylon@gentoo.org> dvdisaster-0.70.1.ebuild:
+  Works on ppc; added ~ppc.
+
+  27 Aug 2006; Lars Weiler <pylon@gentoo.org> dvdisaster-0.70.1.ebuild:
+  Set the path to the docsubdir; bug #145117.
+
+*dvdisaster-0.70.1 (21 Aug 2006)
+
+  21 Aug 2006; Lars Weiler <pylon@gentoo.org> +dvdisaster-0.70.1.ebuild:
+  Version bump; bug #143468.
+
+*dvdisaster-0.66 (17 Jun 2006)
+
+  17 Jun 2006; Lars Weiler <pylon@gentoo.org> +files/dvd-rom-0.66.patch,
+  +metadata.xml, +dvdisaster-0.66.ebuild:
+  Initial import; thanks to all contributors in bug #81290.

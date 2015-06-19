@@ -1,0 +1,89 @@
+# ChangeLog for app-misc/datefudge
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/datefudge/ChangeLog,v 1.26 2015/04/17 00:29:29 mrueg Exp $
+
+  17 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -datefudge-1.14.ebuild:
+  Remove old.
+
+  10 Jun 2014; Mike Frysinger <vapier@gentoo.org> datefudge-1.17.ebuild:
+  Add arm64 love.
+
+  10 May 2012; Alexis Ballier <aballier@gentoo.org> datefudge-1.17.ebuild:
+  apply the bsd patch before sedding the makefile otherwise it does not apply
+  on amd64-fbsd and keyword ~amd64-fbsd
+
+  31 Mar 2012; Raúl Porcel <armin76@gentoo.org> datefudge-1.17.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #405123
+
+  12 Mar 2012; Markus Meier <maekke@gentoo.org> datefudge-1.17.ebuild:
+  arm stable, bug #405123
+
+  09 Mar 2012; Brent Baude <ranger@gentoo.org> datefudge-1.17.ebuild:
+  Marking datefudge-1.17 ppc64 for bug 405123
+
+  08 Mar 2012; Naohiro Aota <naota@gentoo.org> +files/datefudge-1.17-bsd.patch,
+  datefudge-1.17.ebuild:
+  Add ~x86-fbsd. Add patch to deal with FreeBSD. #326999
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> datefudge-1.17.ebuild:
+  Marking datefudge-1.17 ppc for bug 405123
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> datefudge-1.17.ebuild:
+  x86 stable wrt bug #405123
+
+  21 Feb 2012; Jeroen Roovers <jer@gentoo.org> datefudge-1.17.ebuild:
+  Stable for HPPA (bug #405123).
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> datefudge-1.17.ebuild:
+  Stable for amd64, wrt bug #405123
+
+  21 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> datefudge-1.17.ebuild:
+  Use full compiler name wrt #403117 by kensington
+
+*datefudge-1.17 (20 Sep 2011)
+
+  20 Sep 2011; Jeremy Olexa <darkside@gentoo.org> +datefudge-1.17.ebuild:
+  Version bump from upstream, migrate to EAPI4, add prefix mods from bug 383749
+
+  22 Feb 2011; nixnut <nixnut@gentoo.org> datefudge-1.14.ebuild:
+  ppc stable #352744
+
+  30 Jan 2011; Raúl Porcel <armin76@gentoo.org> datefudge-1.14.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #352744
+
+  28 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  datefudge-1.14.ebuild:
+  x86 stable wrt bug #352744
+
+  25 Jan 2011; Jeroen Roovers <jer@gentoo.org> datefudge-1.14.ebuild:
+  Stable for HPPA (bug #352744).
+
+  07 Dec 2010; Matt Turner <mattst88@gentoo.org> datefudge-1.14.ebuild:
+  Added ~mips, bug 326999.
+
+  13 Nov 2010; Raúl Porcel <armin76@gentoo.org> datefudge-1.14.ebuild:
+  Add ~ia64/~m68k/~s390/~sh/~sparc wrt #326999
+
+  10 Oct 2010; Tobias Klausmann <klausman@gentoo.org> datefudge-1.14.ebuild:
+  Keyworded on alpha, bug #326999
+
+  28 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> datefudge-1.14.ebuild:
+  amd64/ppc64 stable
+
+  13 Sep 2010; Joseph Jezak <josejx@gentoo.org> datefudge-1.14.ebuild:
+  Marked ~ppc for bug #326999.
+
+  21 Jul 2010; Markus Meier <maekke@gentoo.org> datefudge-1.14.ebuild:
+  add ~arm, bug #326999
+
+  19 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> datefudge-1.14.ebuild:
+  Keyword ~ppc64 wrt #326999.
+
+  14 Jul 2010; Jeroen Roovers <jer@gentoo.org> datefudge-1.14.ebuild:
+  Marked ~hppa (bug #326999).
+
+*datefudge-1.14 (05 Jul 2010)
+
+  05 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +datefudge-1.14.ebuild:
+  Initial commit.

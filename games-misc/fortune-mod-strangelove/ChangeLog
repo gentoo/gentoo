@@ -1,0 +1,41 @@
+# ChangeLog for games-misc/fortune-mod-strangelove
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-strangelove/ChangeLog,v 1.9 2015/02/05 17:40:52 tupone Exp $
+
+  05 Feb 2015; Tupone Alfredo <tupone@gentoo.org>
+  fortune-mod-strangelove-20041203.ebuild:
+  EAPI 5
+
+  12 Jan 2013; Ulrich Müller <ulm@gentoo.org>
+  fortune-mod-strangelove-20041203.ebuild:
+  Update LICENSE, bug 450450.
+
+  12 Dec 2010; Fabian Groffen <grobian@gentoo.org>
+  fortune-mod-strangelove-20041203.ebuild:
+  Added Prefix keywords
+
+  08 Oct 2010; Mart Raudsepp <leio@gentoo.org>
+  fortune-mod-strangelove-20041203.ebuild:
+  Drop to ~mips
+
+  20 Nov 2006; Steve Dibb <beandog@gentoo.org> metadata.xml:
+  Add to games herd
+
+  19 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  fortune-mod-strangelove-20041203.ebuild:
+  Add ~x86-fbsd keyword
+
+  27 Aug 2005; Markus Rothe <corsair@gentoo.org>
+  fortune-mod-strangelove-20041203.ebuild:
+  Stable on ppc64
+
+  31 Jul 2005; Markus Rothe <corsair@gentoo.org>
+  fortune-mod-strangelove-20041203.ebuild:
+  Added ~ppc64 (bug #100217)
+
+*fortune-mod-strangelove-20041203 (03 Dec 2004)
+
+  03 Dec 2004; Don Seiler <rizzo@gentoo.org> +metadata.xml,
+  +fortune-mod-strangelove-20041203.ebuild:
+  Initial import.
+

@@ -1,0 +1,48 @@
+# ChangeLog for kde-misc/kosd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kosd/ChangeLog,v 1.11 2015/06/04 18:57:33 kensington Exp $
+
+  04 Jun 2015; Michael Palimaka <kensington@gentoo.org> kosd-0.8.1.ebuild:
+  Move various kde-base packages to kde-apps.
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org> kosd-0.8.1.ebuild:
+  Bump to EAPI 5.
+
+  11 May 2013; Andreas K. Huettel <dilfridge@gentoo.org> kosd-0.8.1.ebuild:
+  Does not really need solid, only libsolid from kdelibs
+
+  20 Dec 2012; Michael Palimaka <kensington@gentoo.org> -kosd-0.7.1.ebuild:
+  Remove old.
+
+*kosd-0.8.1 (24 Nov 2011)
+
+  24 Nov 2011; Andreas K. Huettel <dilfridge@gentoo.org> +kosd-0.8.1.ebuild:
+  Version bump
+
+  29 Oct 2011; Jonathan Callen <abcd@gentoo.org> -kosd-0.6.0.ebuild,
+  -kosd-0.6.2.ebuild, kosd-0.7.1.ebuild:
+  Bump to EAPI=4; remove old
+
+*kosd-0.7.1 (22 Aug 2011)
+
+  22 Aug 2011; Marc Schiffbauer <mschiff@gentoo.org> +kosd-0.7.1.ebuild:
+  Version bump. Drop old 0.6.0. Thanks to rafnov. Fixes bug #379923
+
+*kosd-0.6.2 (26 Feb 2011)
+
+  26 Feb 2011; Andreas K. Huettel <dilfridge@gentoo.org> +kosd-0.6.2.ebuild:
+  Version bump
+
+  31 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> -kosd-0.4.2.ebuild,
+  kosd-0.6.0.ebuild:
+  Remove old
+
+*kosd-0.6.0 (06 Jan 2011)
+
+  06 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org> +kosd-0.6.0.ebuild:
+  Version bump
+
+*kosd-0.4.2 (28 Oct 2009)
+
+  28 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> +kosd-0.4.2.ebuild:
+  Initial commit wrt #223837, thanks to Baldrun Orv for reporting.

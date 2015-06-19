@@ -1,0 +1,214 @@
+# ChangeLog for media-video/dvdauthor
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/dvdauthor/ChangeLog,v 1.57 2015/05/29 05:31:03 jmorgan Exp $
+
+  29 May 2015; Jack Morgan <jmorgan@gentoo.org> dvdauthor-0.7.1.ebuild:
+  sparc stable wrt bug #493620
+
+  15 May 2015; Mikle Kolyada <zlogene@gentoo.org> dvdauthor-0.7.1.ebuild:
+  amd64 stable wrt bug #493620
+
+  26 Apr 2015; Pacho Ramos <pacho@gentoo.org> dvdauthor-0.7.1.ebuild:
+  ppc stable wrt bug #493620
+
+  26 Apr 2015; Pacho Ramos <pacho@gentoo.org> dvdauthor-0.7.1.ebuild:
+  x86 stable wrt bug #493620
+
+  23 Apr 2015; Jeroen Roovers <jer@gentoo.org> dvdauthor-0.7.1.ebuild:
+  Stable for PPC64 (bug #493620).
+
+  06 Feb 2015; Alexis Ballier <aballier@gentoo.org> dvdauthor-0.7.1.ebuild,
+  +files/dvdauthor-0.7.1-glibc220.patch:
+  fix build with glibc 2.20, patch from upstream, bug #529162
+
+  10 Apr 2013; Samuli Suominen <ssuominen@gentoo.org> dvdauthor-0.7.1.ebuild:
+  Fix building with USE="graphicsmagick" wrt #459976 by Erik Zeek, Andrew John
+  Hughes, and others.
+
+*dvdauthor-0.7.1 (21 Nov 2012)
+
+  21 Nov 2012; Alexis Ballier <aballier@gentoo.org> +dvdauthor-0.7.1.ebuild:
+  version bump
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> dvdauthor-0.7.0.ebuild:
+  sparc stable wrt #418323
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> dvdauthor-0.7.0.ebuild:
+  Marking dvdauthor-0.7.0 ppc for bug 418323
+
+  05 Jun 2012; Brent Baude <ranger@gentoo.org> dvdauthor-0.7.0.ebuild:
+  Marking dvdauthor-0.7.0 ppc64 for bug 418323
+
+  31 May 2012; Agostino Sarubbo <ago@gentoo.org> dvdauthor-0.7.0.ebuild:
+  Stable for amd64, wrt bug #418323
+
+  31 May 2012; Jeff Horelick <jdhore@gentoo.org> dvdauthor-0.7.0.ebuild:
+  marked x86 per bug 418323
+
+  22 May 2012; Samuli Suominen <ssuominen@gentoo.org> dvdauthor-0.7.0.ebuild:
+  Use CFLAGS from fribidi.pc to ensure check in configure.ac for FriBidiParType
+  (FRIBIDI2) is working wrt #417041 by "Nikoli"
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> dvdauthor-0.6.18.ebuild,
+  dvdauthor-0.7.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> -dvdauthor-0.6.11.ebuild:
+  old
+
+  23 Oct 2011; Raúl Porcel <armin76@gentoo.org> dvdauthor-0.6.18.ebuild:
+  sparc stable wrt #385973
+
+  16 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> -dvdauthor-0.6.14.ebuild,
+  -files/dvdauthor-0.6.14-libpng-1.5.patch:
+  old
+
+  11 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> dvdauthor-0.6.18.ebuild:
+  ppc/ppc64 stable wrt #385973
+
+  10 Oct 2011; Tim Harder <radhermit@gentoo.org> dvdauthor-0.6.18.ebuild:
+  Add pkgconfig dependency (bug #386603 by Nikoli).
+
+*dvdauthor-0.7.0 (09 Oct 2011)
+
+  09 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> +dvdauthor-0.7.0.ebuild,
+  +files/dvdauthor-0.7.0-libpng15.patch, metadata.xml:
+  Version bump wrt #308899 by Daniel Pielmeier
+
+  08 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> dvdauthor-0.6.18.ebuild:
+  x86 stable wrt bug #385973
+
+  08 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> dvdauthor-0.6.18.ebuild:
+  amd64 stable wrt #385973
+
+  14 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> dvdauthor-0.6.18.ebuild,
+  +files/dvdauthor-0.6.18-libpng15.patch:
+  Fix building with libpng15 (again, restore dropped patch) wrt #355039 by
+  Hanno Boeck
+
+*dvdauthor-0.6.18 (13 Sep 2011)
+
+  13 Sep 2011; Steve Dibb <beandog@gentoo.org> +dvdauthor-0.6.18.ebuild:
+  Version bump, bug 242473
+
+  21 Feb 2011; Mike Frysinger <vapier@gentoo.org> dvdauthor-0.6.14.ebuild,
+  +files/dvdauthor-0.6.14-libpng-1.5.patch:
+  Fix for building with libpng-1.5 #355039 by Lars Wendler.
+
+  21 Dec 2008; nixnut <nixnut@gentoo.org> dvdauthor-0.6.14.ebuild:
+  Stable on ppc wrt bug 250664
+
+  14 Dec 2008; Markus Meier <maekke@gentoo.org> dvdauthor-0.6.14.ebuild:
+  amd64/x86 stable, bug #250664
+
+  27 Nov 2007; Matthias Schwarzott <zzam@gentoo.org>
+  dvdauthor-0.6.10.ebuild:
+  Fixed quoting.
+
+*dvdauthor-0.6.14 (25 Feb 2007)
+
+  25 Feb 2007; Alexis Ballier <aballier@gentoo.org>
+  +dvdauthor-0.6.14.ebuild:
+  Version bump, bug #163628
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  03 May 2006; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata to list media-video@gentoo.org as maintainer.
+
+  28 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  dvdauthor-0.6.11.ebuild:
+  Stable on ppc, bug #120743
+
+  24 May 2005; Markus Rothe <corsair@gentoo.org> dvdauthor-0.6.11.ebuild:
+  Stable on ppc64
+
+  17 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  dvdauthor-0.6.11.ebuild:
+  Stable on sparc
+
+  22 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> -dvdauthor-0.5.0.ebuild,
+  -dvdauthor-0.5.3.ebuild, dvdauthor-0.6.11.ebuild:
+  stable on amd64 and x86, did some cleanup
+
+*dvdauthor-0.6.11 (13 Apr 2005)
+
+  13 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> +dvdauthor-0.6.11.ebuild:
+  new upstream release, fixes #81730
+
+  04 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +files/dvdauthor-0.6.10-debugsegfault.patch, dvdauthor-0.6.10.ebuild:
+  added a patch contributed by Danny van Dyk <kugelfang@gentoo.org>. please see
+  #62836
+
+  08 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> dvdauthor-0.5.0.ebuild,
+  dvdauthor-0.5.3.ebuild, dvdauthor-0.6.10.ebuild:
+  added missing media-libs/libpng dependency. fixes bug #60299.
+
+  08 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org>
+  +files/dvdauthor-0.6.10-im6.patch, dvdauthor-0.6.10.ebuild:
+  Make dvdauthor work with imagemagick-6*, bug #66226
+
+  04 Oct 2004; Patrick Kursawe <phosphan@gentoo.org> dvdauthor-0.5.0.ebuild,
+  dvdauthor-0.5.3.ebuild, dvdauthor-0.6.10.ebuild:
+  Correcting "HOMEPAGE" (see bug #66009)
+
+  29 Aug 2004; Tom Gall <tgall@gentoo.org> dvdauthor-0.6.10.ebuild:
+  added ~ppc64, bug #60786
+
+  13 Jul 2004; Tom Martin <slarti@gentoo.org> dvdauthor-0.6.10.ebuild,
+  files/0.6.10-gcc34.patch:
+  Changed epatch lines from ${PV} to ${P} so that the 64bit-utf8 patch would
+  apply. Renamed 0.6.10-gcc34.patch -> dvdauthor-0.6.10-gcc34.patch for
+  consistency. Thanks for the heads up kumquat (bug 56870).
+
+  10 Jul 2004; Danny van Dyk <kugelfang@gentoo.org>
+  +files/dvdauthor-0.6.10-utf8.patch, dvdauthor-0.6.10.ebuild:
+  Added utf8 patch on 64-bit ${ARCH}s. BUG #56482.
+
+  01 Jun 2004; Travis Tilley <lv@gentoo.org> dvdauthor-0.6.10.ebuild:
+  stable on amd64
+
+  18 May 2004; Mike Frysinger <vapier@gentoo.org> metadata.xml,
+  +files/0.6.10-gcc34.patch, dvdauthor-0.6.10.ebuild, -dvdauthor-0.6.8.ebuild,
+  -dvdauthor-0.6.9.ebuild:
+  Add gcc-3.4 patch and clean up old ebuilds.
+
+*dvdauthor-0.6.10 (16 May 2004)
+
+  16 May 2004; Martin Holzer <mholzer@gentoo.org> dvdauthor-0.6.10.ebuild:
+  Version bumped. Closes 47857
+
+  02 May 2004; David Holm <dholm@gentoo.org> dvdauthor-0.6.9.ebuild:
+  Added to ~ppc.
+
+*dvdauthor-0.6.9 (01 Feb 2004)
+
+  01 Feb 2004; Martin Holzer <mholzer@gentoo.org> dvdauthor-0.6.9.ebuild:
+  Version bumped. Closes 40003
+
+  22 Jan 2004; Jon Portnoy <avenj@gentoo.org> dvdauthor-0.6.8.ebuild :
+  AMD64 keywords.
+
+  04 Jan 2004; Martin Holzer <mholzer@gentoo.org> dvdauthor-0.6.8.ebuild:
+  adding imagemagick as depend. Closes 37140
+
+*dvdauthor-0.6.8 (03 Jan 2004)
+
+  03 Jan 2004; Martin Holzer <mholzer@gentoo.org> dvdauthor-0.5.0.ebuild,
+  dvdauthor-0.5.3.ebuild, dvdauthor-0.6.8.ebuild:
+  Version bumped. Closes 36694.
+
+  29 Dec 2003; Jason Wever <weeve@gentoo.org> dvdauthor-0.5.3.ebuild:
+  Added ~sparc to keywords.
+
+*dvdauthor-0.5.3 (08 Jul 2003)
+
+  08 Jul 2003; Martin Holzer <mholzer@gentoo.org> dvdauthor-0.5.3.ebuild:
+  Version bumped. Closes #22975.
+
+*dvdauthor-0.5.0 (10 Mar 2003)
+
+  10 Mar 2003; <rac@gentoo.org> dvdauthor-0.5.0.ebuild:
+  Initial ebuild.  DVD authoring tools.

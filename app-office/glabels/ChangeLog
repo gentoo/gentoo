@@ -1,0 +1,364 @@
+# ChangeLog for app-office/glabels
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/glabels/ChangeLog,v 1.80 2015/06/13 09:59:39 pacho Exp $
+
+  13 Jun 2015; Pacho Ramos <pacho@gentoo.org> glabels-3.2.1.ebuild:
+  Needs rebuilding with eds subslot bumps
+
+  19 Dec 2014; Pacho Ramos <pacho@gentoo.org> glabels-3.2.1.ebuild:
+  amd64 stable, bug 529964
+
+  18 Dec 2014; Pacho Ramos <pacho@gentoo.org> glabels-3.2.1.ebuild:
+  x86 stable, bug 529964
+
+*glabels-3.2.1 (11 Nov 2014)
+
+  11 Nov 2014; Pacho Ramos <pacho@gentoo.org> +glabels-3.2.1.ebuild,
+  -files/glabels-3.0.1-eds-3.6.patch:
+  Version bump
+
+  18 Apr 2014; Pacho Ramos <pacho@gentoo.org> -glabels-3.0.1-r1.ebuild,
+  -glabels-3.0.1.ebuild:
+  Drop old
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> glabels-3.2.0.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> glabels-3.2.0.ebuild:
+  arch stable, bug 888
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> glabels-3.2.0.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> glabels-3.2.0.ebuild:
+  amd64 stable, bug #478252
+
+*glabels-3.2.0 (10 Nov 2013)
+
+  10 Nov 2013; Pacho Ramos <pacho@gentoo.org> +glabels-3.2.0.ebuild:
+  Version bump
+
+  07 Apr 2013; Gilles Dartiguelongue <eva@gentoo.org> glabels-3.0.1-r1.ebuild:
+  Apply team policy.
+
+*glabels-3.0.1-r1 (07 Apr 2013)
+
+  07 Apr 2013; Pacho Ramos <pacho@gentoo.org>
+  +files/glabels-3.0.1-eds-3.6.patch, +glabels-3.0.1-r1.ebuild,
+  -files/glabels-2.2.6-documentation.patch,
+  -files/glabels-2.2.7-documentation.patch, -glabels-3.0.0.ebuild:
+  Fix building with eds-3.6 (from upstream master branch), drop 'doc' USE and
+  drop old versions.
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> glabels-3.0.1.ebuild:
+  Stable for sparc, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> glabels-3.0.1.ebuild:
+  Stable for x86, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> glabels-3.0.1.ebuild:
+  Stable for amd64, wrt bug #458984
+
+*glabels-3.0.1 (22 Sep 2012)
+
+  22 Sep 2012; Pacho Ramos <pacho@gentoo.org> +glabels-3.0.1.ebuild,
+  -glabels-2.2.8.ebuild:
+  Version bump, drop old.
+
+  20 May 2012; Mark Loeser <halcy0n@gentoo.org> glabels-2.2.8.ebuild,
+  glabels-3.0.0.ebuild:
+  Revert to ~ppc; bug #393713
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> glabels-2.2.8.ebuild,
+  glabels-3.0.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> glabels-3.0.0.ebuild:
+  sparc stable wrt #393007
+
+  05 Mar 2012; Brent Baude <ranger@gentoo.org> glabels-3.0.0.ebuild:
+  Marking glabels-3.0.0 ppc stable for bug 393007
+
+  14 Jan 2012; Markus Meier <maekke@gentoo.org> glabels-3.0.0.ebuild:
+  x86 stable, bug #393007
+
+  29 Dec 2011; Pacho Ramos <pacho@gentoo.org> glabels-3.0.0.ebuild:
+  amd64 stable, bug 393007
+
+*glabels-3.0.0 (21 Nov 2011)
+
+  21 Nov 2011; Pacho Ramos <pacho@gentoo.org> +glabels-3.0.0.ebuild,
+  -glabels-2.3.0.ebuild:
+  Version bump, remove development version.
+
+  16 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> glabels-2.2.8.ebuild,
+  glabels-2.3.0.ebuild:
+  Fix slot-deps on gtk+ and other libs
+
+  26 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> glabels-2.3.0.ebuild:
+  Marked ~ppc wrt #338861
+
+  24 Jan 2011; Gilles Dartiguelongue <eva@gentoo.org> -glabels-2.2.7.ebuild:
+  Clean up old revision.
+
+  12 Oct 2010; Raúl Porcel <armin76@gentoo.org> glabels-2.3.0.ebuild:
+  Add ~sparc wrt #338861
+
+  10 Oct 2010; Raúl Porcel <armin76@gentoo.org> glabels-2.2.8.ebuild:
+  sparc stable wrt #335817
+
+*glabels-2.3.0 (26 Sep 2010)
+
+  26 Sep 2010; Gilles Dartiguelongue <eva@gentoo.org> -glabels-2.2.4.ebuild,
+  +glabels-2.3.0.ebuild, metadata.xml:
+  Version bump.
+
+  11 Sep 2010; <nixnut@gentoo.org> glabels-2.2.8.ebuild:
+  ppc stable #335817
+
+  08 Sep 2010; Markos Chandras <hwoarang@gentoo.org> glabels-2.2.8.ebuild:
+  Stable on amd64 wrt bug #335817
+
+  06 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> glabels-2.2.8.ebuild:
+  x86 stable wrt bug #335817
+
+  08 Jul 2010; Raúl Porcel <armin76@gentoo.org> glabels-2.2.7.ebuild:
+  sparc stable wrt #319961
+
+*glabels-2.2.8 (26 May 2010)
+
+  26 May 2010; Gilles Dartiguelongue <eva@gentoo.org> glabels-2.2.4.ebuild,
+  -glabels-2.2.6.ebuild, +glabels-2.2.8.ebuild:
+  Version bump. New templates, updated translations, fix a crash with
+  glib-2.24.
+
+  25 May 2010; Pacho Ramos <pacho@gentoo.org> glabels-2.2.7.ebuild:
+  stable amd64, bug 319961
+
+  24 May 2010; <nixnut@gentoo.org> glabels-2.2.7.ebuild:
+  ppc stable #319961
+
+  21 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> glabels-2.2.7.ebuild:
+  x86 stable wrt bug #319961
+
+*glabels-2.2.7 (14 Mar 2010)
+
+  14 Mar 2010; Gilles Dartiguelongue <eva@gentoo.org> -glabels-2.2.5.ebuild,
+  +glabels-2.2.7.ebuild, +files/glabels-2.2.7-documentation.patch:
+  Version bump. New template, updated documentation and translations.
+
+*glabels-2.2.6 (24 Feb 2010)
+
+  24 Feb 2010; Gilles Dartiguelongue <eva@gentoo.org> +glabels-2.2.6.ebuild,
+  +files/glabels-2.2.6-documentation.patch:
+  Version bump, bug #293746. A couple of fixes and translation updates.
+
+*glabels-2.2.5 (02 May 2009)
+
+  02 May 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -files/glabels-2.2.1-drop-gtk-doc.patch,
+  -files/glabels-2.2.1-pkg-config-macro.patch, -glabels-2.0.4.ebuild,
+  -glabels-2.2.2.ebuild, -glabels-2.2.3.ebuild, +glabels-2.2.5.ebuild:
+  Bump to 2.2.5. Fix problems with gtk+-2.16. Clean up old revisions.
+
+  18 Mar 2009; Brent Baude <ranger@gentoo.org> glabels-2.2.4.ebuild:
+  stable ppc, bug 259936
+
+  08 Mar 2009; Markus Meier <maekke@gentoo.org> glabels-2.2.4.ebuild:
+  x86 stable, bug #259936
+
+  27 Feb 2009; Ferris McCormick <fmccor@gentoo.org> glabels-2.2.4.ebuild:
+  Sparc stable, Bug #259936.
+
+  27 Feb 2009; Richard Freeman <rich0@gentoo.org> glabels-2.2.4.ebuild:
+  amd64 stable - 259936
+
+  09 Jan 2009; Brent Baude <ranger@gentoo.org> glabels-2.2.3.ebuild:
+  stable ppc, bug 234569
+
+  26 Dec 2008; Friedrich Oslage <bluebird@gentoo.org> glabels-2.2.3.ebuild:
+  Stable on sparc, bug #234569
+
+  25 Dec 2008; Markus Meier <maekke@gentoo.org> glabels-2.2.3.ebuild:
+  amd64/x86 stable, bug #234569
+
+*glabels-2.2.4 (24 Dec 2008)
+
+  24 Dec 2008; Gilles Dartiguelongue <eva@gentoo.org> +glabels-2.2.4.ebuild:
+  Bump to 2.2.4. Fix some performance and i18n issues. A few bug fixes.
+
+*glabels-2.2.3 (20 Nov 2008)
+
+  20 Nov 2008; Gilles Dartiguelongue <eva@gentoo.org> -glabels-2.2.1.ebuild,
+  +glabels-2.2.3.ebuild:
+  Bump to 2.2.3. Bug fixes.
+
+  04 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing leonardop as a maintainer since he was retired.
+
+  20 Mar 2008; Gilles Dartiguelongue <eva@gentoo.org> glabels-2.2.2.ebuild:
+  add inltoolize call, fix bug #213999
+
+*glabels-2.2.2 (25 Feb 2008)
+
+  25 Feb 2008; Gilles Dartiguelongue <eva@gentoo.org> +glabels-2.2.2.ebuild:
+  bump to 2.2.2, fix crashers and rendering problems
+
+*glabels-2.2.1 (24 Feb 2008)
+
+  24 Feb 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/glabels-2.2.1-drop-gtk-doc.patch,
+  +files/glabels-2.2.1-pkg-config-macro.patch, -glabels-2.2.0.ebuild,
+  +glabels-2.2.1.ebuild:
+  bump to 2.2.1 and remove broken 2.2.0
+   * fixes rotated labels clipping
+   * add missing pkg-config macro, fix bug #204276
+   * add ewarn about file format change, fix part of bug #206055
+
+*glabels-2.2.0 (31 Dec 2007)
+
+  bump to 2.2.0
+
+  04 Feb 2007; Steve Dibb <beandog@gentoo.org> glabels-2.0.4.ebuild:
+  amd64 stable, bug 159984
+
+  11 Jan 2007; Christian Faulhammer <opfer@gentoo.org> glabels-2.0.4.ebuild:
+  stable x86, bug #159984
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  glabels-2.0.4.ebuild:
+  ppc stable
+
+  23 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org> glabels-2.0.4.ebuild:
+  Stable on sparc
+
+*glabels-2.0.4 (03 Jan 2006)
+
+  03 Jan 2006; Leonardo Boshell <leonardop@gentoo.org>
+  +glabels-2.0.4.ebuild:
+  Version bump. Updated dependencies' version numbers. Set USE_DESTDIR and
+  added call to gnome2_omf_fix() to avoid the usual sandbox problem.
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> glabels-2.0.3.ebuild:
+  Stable on ppc.
+
+  13 Aug 2005; Luis Medinas <metalgod@gentoo.org> glabels-2.0.3.ebuild:
+  Stable on AMD64.
+
+  08 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> glabels-2.0.3.ebuild:
+  Stable on sparc
+
+  07 Aug 2005; Leonardo Boshell <leonardop@gentoo.org> glabels-2.0.3.ebuild:
+  Stable on x86.
+
+*glabels-2.0.3 (03 Jul 2005)
+
+  03 Jul 2005; Leonardo Boshell <leonardop@gentoo.org> glabels-2.0.3.ebuild,
+  files/glabels-2.0.3-update_dbs_switch.patch:
+  New release. Modified patch to enable/disable running
+  update-{mime,desktop}-database.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> glabels-2.0.2.ebuild:
+  stable on amd64
+
+  11 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> glabels-2.0.2.ebuild:
+  Stable on sparc
+
+  10 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> glabels-2.0.2.ebuild:
+  Stable on ppc.
+
+  09 Apr 2005; Leonardo Boshell <leonardop@gentoo.org> glabels-2.0.2.ebuild:
+  Marked stable on x86.
+
+  28 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> glabels-2.0.1.ebuild:
+  Stable on ppc.
+
+*glabels-2.0.2 (07 Mar 2005)
+
+  07 Mar 2005; Leonardo Boshell <leonardop@gentoo.org> glabels-2.0.2.ebuild,
+  files/glabels-2.0.2-no_update_desktop_db.patch:
+  New release. Updated patch.
+
+  29 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> glabels-2.0.1.ebuild:
+  Stable on sparc
+
+  25 Nov 2004; Leonardo Boshell <leonardop@gentoo.org> glabels-2.0.1.ebuild:
+  Marked stable on x86. Added support for the `static' USE flag.
+
+  26 Nov 2004; Mike Gardiner <obz@gentoo.org> glabels-1.93.3.ebuild,
+  glabels-2.0.1.ebuild:
+  Added app-text/scrollkeeper dep, see bug #72477
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  glabels-1.93.3.ebuild:
+  Masked glabels-1.93.3.ebuild stable for ppc
+
+  04 Sep 2004; Thomas Matthijs <axxo@gentoo.org> glabels-1.93.3.ebuild,
+  glabels-2.0.1.ebuild:
+  fix depend syntax 58347
+
+*glabels-2.0.1 (03 Sep 2004)
+
+  03 Sep 2004; L. Boshell <leonardop@gentoo.org> glabels-2.0.1.ebuild,
+  files/glabels-2.0.1-sandbox_fix.patch:
+  New version. Added patch to fix a potential sandbox violation when
+  desktop-file-utils is installed. Resolves bug #60545.
+
+  18 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> glabels-1.93.3.ebuild:
+  Stable on sparc
+
+*glabels-2.0.0 (10 Aug 2004)
+
+  10 Aug 2004; L. Boshell <leonardop@gentoo.org> glabels-2.0.0.ebuild:
+  New release. See bug #59921.
+
+  25 May 2004; L. Boshell <leonardop@gentoo.org> glabels-1.93.3.ebuild:
+  Marked stable on x86.
+
+  26 Apr 2004; Ferris McCormick <fmccor@gentoo.org> glabels-1.93.3.ebuild:
+  Add ~sparc keyword at user request.
+
+  19 Apr 2004; David Holm <dholm@gentoo.org> glabels-1.93.3.ebuild:
+  Added to ~ppc.
+
+*glabels-1.93.3 (19 Apr 2004)
+
+  19 Apr 2004; L. Boshell <leonardop@gentoo.org> glabels-1.93.3.ebuild:
+  New release. Dependencies corrections.
+
+  19 Apr 2004; L. Boshell <leonardop@gentoo.org> glabels-1.93.2.ebuild:
+  Marked stable on x86.
+
+*glabels-1.93.2 (14 Feb 2004)
+
+  14 Feb 2004; Alastair Tse <liquidx@gentoo.org> glabels-1.93.2.ebuild:
+  version bump. update deps
+
+*glabels-1.92.3 (12 Nov 2003)
+
+  12 Nov 2003; Alastair Tse <liquidx@gentoo.org> glabels-1.92.0.ebuild,
+  glabels-1.92.2.ebuild, glabels-1.92.3.ebuild:
+  version bump. marking 1.92.2 as stable
+
+*glabels-1.92.2 (07 Nov 2003)
+
+  07 Nov 2003; Alastair Tse <liquidx@gentoo.org> glabels-1.92.0.ebuild,
+  glabels-1.92.2.ebuild:
+  version bump, updated SRC_URI and HOMEPAGE
+
+*glabels-1.92.0 (28 Sep 2003)
+
+  28 Sep 2003; Mike Gardiner <obz@gentoo.org> glabels-1.92.0.ebuild,
+  metadata.xml, files/glabels-1.92.0.desktop:
+  New version bump to fix bugs like #29831, #27214, #28773, #29076. Thanks to
+  <wolfwood@users.sourceforge.net> for the .desktop file ideas and patches, etc
+
+*glabels-1.90.0 (07 Dec 2002)
+
+  28 Jul 2003; foser <foser@gentoo.org> glabels-1.90.0.ebuild :
+  Fix gdk-pixbuf dep (#25346)
+
+  07 Dec 2002; L. Boshell <leonardop@gentoo.org> ChangeLog,
+  glabels-1.90.0.ebuild : Initial import. Reported by Rigo Ketelings on
+  bug #7076.

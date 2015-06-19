@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>base-system</herd>
+<use>
+ <flag name='netlink'>Build against libnfnetlink which enables the nfnl_osf util</flag>
+</use>
+<longdescription>
+  iptables is the userspace command line program used to set up, maintain, and
+  inspect the tables of IPv4 packet filter rules in the Linux kernel. It's a
+  part of packet filtering framework which allows the stateless and stateful
+  packet filtering, all kinds of network address and port translation, and is a
+  flexible and extensible infrastructure with multiple layers of API's for 3rd
+  party extensions. The iptables package also includes ip6tables. ip6tables is
+  used for configuring the IPv6 packet filter.
+
+  Note that some extensions (e.g. imq and l7filter) are not included into
+  official kernel sources so you have to patch the sources before installation.
+</longdescription>
+<upstream>
+ <remote-id type="cpe">cpe:/a:netfilter_core_team:iptables</remote-id>
+</upstream>
+</pkgmetadata>

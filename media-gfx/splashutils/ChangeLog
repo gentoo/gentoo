@@ -1,0 +1,1146 @@
+# ChangeLog for media-gfx/splashutils
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/splashutils/ChangeLog,v 1.231 2015/02/02 15:38:50 pinkbyte Exp $
+
+  02 Feb 2015; Sergey Popov <pinkbyte@gentoo.org>
+  -splashutils-1.5.4.4-r1.ebuild, -splashutils-1.5.4.4-r4.ebuild:
+  Drop old
+
+  02 Feb 2015; Sergey Popov <pinkbyte@gentoo.org>
+  splashutils-1.5.4.4-r5.ebuild:
+  Stable on amd64 and x86, wrt bug #538402
+
+  02 Feb 2015; Sergey Popov <pinkbyte@gentoo.org>
+  splashutils-1.5.4.4-r1.ebuild, splashutils-1.5.4.4-r4.ebuild,
+  splashutils-1.5.4.4-r5.ebuild:
+  Fix Udev documentation guide URL, bug #534480, thanks to Alex Legler
+
+  01 Feb 2015; Sergey Popov <pinkbyte@gentoo.org>
+  splashutils-1.5.4.4-r1.ebuild, splashutils-1.5.4.4-r4.ebuild,
+  splashutils-1.5.4.4-r5.ebuild:
+  Correct SRC_URI and HOMEPAGE, wrt bug #537752
+
+*splashutils-1.5.4.4-r5 (01 Feb 2015)
+
+  01 Feb 2015; Sergey Popov <pinkbyte@gentoo.org>
+  +splashutils-1.5.4.4-r5.ebuild, files/splashutils-1.5.4.4-ft25.patch,
+  +files/splashutils-1.5.4.4-sys-queue.patch:
+  Revision bump: correct freetype 2.5 patch, wrt bug #506124. Add support for
+  user patches, add include for queue.h kernel header explicitly, prune
+  unnecessary libtool files
+
+  01 Feb 2015; Sergey Popov <pinkbyte@gentoo.org>
+  -splashutils-1.5.4.4-r2.ebuild, -splashutils-1.5.4.4-r3.ebuild,
+  -files/splashutils-openrc-0.4.3-runlevel-fix.patch,
+  -files/splashutils-openrc-0.4-fix.patch,
+  -files/splashutils-1.5.4.3-daemon-exit-signal.patch,
+  -files/splashutils-1.5.4.3-fix_rc_var.patch,
+  -files/splashutils-1.5.4.3-libjpeg.patch,
+  -files/splashutils-1.5.4.3-libpng15_compat.patch,
+  -files/splashutils-1.5.4.3-makefile.patch,
+  -files/splashutils-1.5.4.3-nondefault-runlevel.patch,
+  -files/splashutils-1.5.4.3-openrc-effects.patch,
+  -files/splashutils-1.5.4.3-openrc-umount-fix.patch,
+  -files/splashutils-1.5.4.3-splash-functions.patch,
+  -files/splashutils-1.5.4.3-splash_geninitramfs.patch,
+  -files/splashutils-1.5.4.3-splash_util.patch,
+  -files/initrd.splash-cmp-str-instead-of-int.patch:
+  Drop old
+
+  30 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  splashutils-1.5.4.4-r1.ebuild, splashutils-1.5.4.4-r2.ebuild,
+  splashutils-1.5.4.4-r3.ebuild, splashutils-1.5.4.4-r4.ebuild:
+  Drop support for mng images since it requires lcms:0, bug 526834
+
+  28 Aug 2014; Samuli Suominen <ssuominen@gentoo.org>
+  splashutils-1.5.4.4-r1.ebuild:
+  Remove old reference to removed version of media-libs/libmng.
+
+  26 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  +files/splashutils-1.5.4.4-ft25.patch, splashutils-1.5.4.4-r4.ebuild:
+  Fix build failure against stable freetype (bug #506124 by Nathan Caldwell and
+  others, fix by  Lars Wendler).
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  splashutils-1.5.4.4-r1.ebuild, splashutils-1.5.4.4-r2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  01 Jan 2014; Markos Chandras <hwoarang@gentoo.org>
+  splashutils-1.5.4.4-r1.ebuild:
+  Backport gpm[static-libs] fix from later revisions. Bug #484338
+
+*splashutils-1.5.4.4-r4 (14 Oct 2013)
+
+  14 Oct 2013; Sergey Popov <pinkbyte@gentoo.org>
+  +splashutils-1.5.4.4-r4.ebuild:
+  Revision bump: drop explicit baselayout dependency and baselayout 1.x support
+  code
+
+  14 Oct 2013; Sergey Popov <pinkbyte@gentoo.org>
+  splashutils-1.5.4.4-r1.ebuild, splashutils-1.5.4.4-r2.ebuild,
+  splashutils-1.5.4.4-r3.ebuild:
+  Replace virtual/jpeg with virtual/jpeg:0 in the deps, bug #480530
+
+  27 Sep 2013; Sergey Popov <pinkbyte@gentoo.org>
+  splashutils-1.5.4.4-r1.ebuild:
+  Drop to ~ppc, bugs #369075 and #486152
+
+*splashutils-1.5.4.4-r3 (16 Jun 2013)
+
+  16 Jun 2013; Pacho Ramos <pacho@gentoo.org>
+  +files/splashutils-1.5.4.4-multi-keyboard.patch,
+  +splashutils-1.5.4.4-r3.ebuild, metadata.xml:
+  Support multiple keyboards (#450156), Asaf Gery will also proxy maintain this
+  package.
+
+  15 Apr 2013; Samuli Suominen <ssuominen@gentoo.org>
+  splashutils-1.5.4.4-r2.ebuild:
+  Pull in sys-libs/zlib with USE="static-libs" enabled for USE="png" also when
+  USE="freetype" is disabled wrt #466022 by "dottomi"
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> splashutils-1.5.4.4-r2.ebuild:
+  Add ~arm, wrt bug #449220
+
+  20 Jan 2013; Pacho Ramos <pacho@gentoo.org> -splashutils-1.5.4.3-r3.ebuild,
+  -splashutils-1.5.4.4.ebuild, metadata.xml:
+  Cleanup due retirement, bug #35242
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> splashutils-1.5.4.4-r2.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> splashutils-1.5.4.4-r2.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> splashutils-1.5.4.4-r2.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> splashutils-1.5.4.4-r2.ebuild:
+  Add ~ppc64, wrt bug #449220
+
+  11 Dec 2012; Ian Stakenvicius <axs@gentoo.org> splashutils-1.5.4.3-r3.ebuild,
+  splashutils-1.5.4.4.ebuild, splashutils-1.5.4.4-r1.ebuild,
+  splashutils-1.5.4.4-r2.ebuild:
+  virtualized references to sys-fs/udev
+
+  07 Dec 2012; Agostino Sarubbo <ago@gentoo.org> splashutils-1.5.4.4-r1.ebuild:
+  Stable for ppc, wrt bug #422921
+
+  30 Nov 2012; Michael Weber <xmw@gentoo.org> -splashutils-1.5.4.4-r3.ebuild:
+  Remove broken version
+
+*splashutils-1.5.4.4-r3 (30 Nov 2012)
+
+  30 Nov 2012; Michael Weber <xmw@gentoo.org> +splashutils-1.5.4.4-r3.ebuild,
+  +files/splashutils-1.5.4.4-r3-bzip2.patch:
+  Revbump to add -lbz2 to libfbsplashrender.pc (bug 408283)
+
+  28 Oct 2012; Markos Chandras <hwoarang@gentoo.org>
+  splashutils-1.5.4.4-r1.ebuild:
+  Stable on amd64 wrt bug #422921
+
+*splashutils-1.5.4.4-r2 (26 Oct 2012)
+
+  26 Oct 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +splashutils-1.5.4.4-r2.ebuild:
+  Revision bump to -r2 with EAPI=4 to use USE deps defaults; add a use dep on
+  static-libs for sys-libs/gpm as well.
+
+  21 Oct 2012; Markus Meier <maekke@gentoo.org> splashutils-1.5.4.4-r1.ebuild:
+  x86 stable, bug #422921
+
+*splashutils-1.5.4.4-r1 (22 May 2012)
+
+  22 May 2012; Michael Weber <xmw@gentoo.org> +splashutils-1.5.4.4-r1.ebuild,
+  +files/splashutils-1.5.4.4-bzip2.patch:
+  Revbump to fix bug 408283 and bug 412383 (non-maint commit)
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> splashutils-1.5.4.3-r3.ebuild,
+  splashutils-1.5.4.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  01 Mar 2012; Brent Baude <ranger@gentoo.org> splashutils-1.5.4.4.ebuild:
+  Marking splashutils-1.5.4.4 ppc for bug 387633
+
+  13 Nov 2011; Markus Meier <maekke@gentoo.org> splashutils-1.5.4.4.ebuild:
+  x86 stable, bug #387633
+
+  12 Nov 2011; Markos Chandras <hwoarang@gentoo.org> splashutils-1.5.4.4.ebuild:
+  Stable on amd64 wrt bug #387633
+
+  19 Oct 2011; Peter Volkov <pva@gentoo.org> splashutils-1.5.4.3-r3.ebuild:
+  Fix build issue in stable, bug #384131.
+
+  18 Oct 2011; Peter Volkov <pva@gentoo.org> splashutils-1.5.4.4.ebuild,
+  files/splashutils-1.5.4.4-freetype-bz2.patch:
+  Fixed build failure reported in bug 384131 wrt Robin Johnson.
+
+  04 Sep 2011; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.4.3-r3.ebuild:
+  Fix bug #381189.
+
+  28 Aug 2011; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.4.4.ebuild:
+  Fix bug #380281.
+
+  23 Jul 2011; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.4.4.ebuild, +files/splashutils-1.5.4.4-freetype-bz2.patch:
+  Fix bug #374203 (patch by Theofilos Intzoglou).
+
+  14 Jun 2011; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.4.4.ebuild, +files/splashutils-1.5.4.4-gentoo-typo-fix.patch:
+  Fix a typo in the Gentoo initscript.
+
+*splashutils-1.5.4.4 (12 Jun 2011)
+
+  12 Jun 2011; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.5.4.4.ebuild:
+  Version bump. This fixes issues from bug #366107 and drops numerous patches
+  from the 1.5.4.3-r3 ebuild.
+
+  08 May 2011; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.4.3-r3.ebuild,
+  +files/splashutils-1.5.4.3-libpng15_compat.patch:
+  Add a patch for libpng-1.5 compatiblity (bug #361333).
+
+  26 Mar 2011; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.4.3-r3.ebuild:
+  Replace media-libs/jpeg with virtual/jpeg in the deps (bug #356939).
+
+  25 Feb 2011; Samuli Suominen <ssuominen@gentoo.org>
+  splashutils-1.5.4.3-r3.ebuild:
+  Fix media-libs/libmng depend to require USE="static-libs" wrt #356231 by
+  candrews.
+
+  06 Jan 2011; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.4.3-r3.ebuild:
+  Add a dependency on libpng[static-libs] (bug #349664).
+
+  28 Nov 2010; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.4.3-r3.ebuild:
+  Add a fix for bug #346339.
+
+  10 Oct 2010; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.4.3-r3.ebuild,
+  +files/splashutils-1.5.4.3-splash-functions.patch,
+  +files/splashutils-1.5.4.3-splash_util.patch:
+  Add two patches to fix bug #339767.
+
+  30 Sep 2010; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.4.3-r3.ebuild:
+  Add a USE-flag dependency on media-libs/lcsm[static-libs] (bug #336172).
+
+  28 Aug 2010; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.4.3-r3.ebuild,
+  +files/initrd.splash-cmp-str-instead-of-int.patch:
+  Add a patch for initrd.splash (by Amadeusz Żołnowski, bug #330107).
+
+  28 Aug 2010; Michał Januszewski <spock@gentoo.org>
+  -splashutils-1.5.4.3-r2.ebuild:
+  Remove old ebuild.
+
+  28 Aug 2010; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.4.3-r3.ebuild:
+  Add static-libs to the required USE flags of libjpeg (bug #334519).
+
+  19 Jul 2010; Joseph Jezak <josejx@gentoo.org>
+  splashutils-1.5.4.3-r3.ebuild:
+  Marked ppc stable for bug #326759.
+
+  11 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  splashutils-1.5.4.3-r3.ebuild:
+  Stable on amd64 wrt bug #326759
+
+  06 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  splashutils-1.5.4.3-r3.ebuild:
+  stable x86, security bug 326759
+
+*splashutils-1.5.4.3-r3 (03 Jul 2010)
+
+  03 Jul 2010; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.5.4.3-r3.ebuild:
+  Bump internal libpng to 1.4.3 (bug #326759).
+
+  21 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  splashutils-1.5.4.3-r2.ebuild:
+  Restrict media-libs/lcms depend to old version.
+
+  04 Apr 2010; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.4.3-r2.ebuild,
+  +files/splashutils-1.5.4.3-daemon-exit-signal.patch,
+  +files/splashutils-1.5.4.3-openrc-effects.patch:
+  Do not enable fadeout if it's not explicitly requested, make sure all
+  signals are processed before exiting (bug #296152).
+
+  09 Mar 2010; Joseph Jezak <josejx@gentoo.org>
+  splashutils-1.5.4.3-r2.ebuild:
+  Marked ppc stable for bug #307525.
+
+  07 Mar 2010; Markus Meier <maekke@gentoo.org>
+  splashutils-1.5.4.3-r2.ebuild:
+  amd64 stable, bug #307525
+
+  04 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  splashutils-1.5.4.3-r2.ebuild:
+  x86 stable wrt security bug #307525
+
+*splashutils-1.5.4.3-r2 (03 Mar 2010)
+
+  03 Mar 2010; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.5.4.3-r2.ebuild:
+  Bump internal libpng.
+
+*splashutils-1.5.4.3-r1 (02 Mar 2010)
+
+  02 Mar 2010; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.5.4.3-r1.ebuild, +files/splashutils-1.5.4.3-libjpeg.patch:
+  Bump the internal versions of libfreetype, libjpeg and libpng (bug
+  #307525).
+
+  25 Jan 2010; Samuli Suominen <ssuominen@gentoo.org>
+  splashutils-1.5.4.3.ebuild:
+  Require SLOT="0" of media-libs/jpeg for headers.
+
+  07 Dec 2009; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.4.3.ebuild:
+  Fix bug #296108.
+
+  22 Nov 2009; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.4.3.ebuild,
+  +files/splashutils-1.5.4.3-nondefault-runlevel.patch:
+  Fix bug #282995.
+
+  12 Sep 2009; Petteri Räty <betelgeuse@gentoo.org>
+  splashutils-1.5.4.3.ebuild:
+  Migrate to EAPI 2 so that we can switch from built_with_use to
+  has_version.
+
+  12 Sep 2009; Petteri Räty <betelgeuse@gentoo.org>
+  -splashutils-1.5.4.2.ebuild:
+  Remove old version to remove built_with_use calls in tree.
+
+  31 May 2009; nixnut <nixnut@gentoo.org> splashutils-1.5.4.3.ebuild:
+  ppc stable #270832
+
+  29 May 2009; Steve Dibb <beandog@gentoo.org> splashutils-1.5.4.3.ebuild:
+  amd64 stable, bug 270832
+
+  25 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  splashutils-1.5.4.3.ebuild:
+  stable x86, bug 270832
+
+  11 May 2009; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.4.3.ebuild,
+  +files/splashutils-1.5.4.3-splash_geninitramfs.patch:
+  Fix bug #268784 (essential libdir not respected in splash_geninitramfs).
+
+  12 Apr 2009; <solar@gentoo.org> splashutils-1.5.4.2.ebuild,
+  splashutils-1.5.4.3.ebuild:
+  - This packge works fine when KLCC is overridden to use the cross compilers
+  CC. But breaks elsewhere. So we need to remove ~arm keyword till klibc deps
+  can be worked out
+
+  06 Apr 2009; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.5.4.3-openrc-umount-fix.patch,
+  splashutils-1.5.4.3.ebuild:
+  Fix the problem of the progress bar not reaching 100% during reboot.
+
+  25 Mar 2009; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-openrc-0.4.3-runlevel-fix.patch,
+  splashutils-1.5.4.3.ebuild:
+  Fix bug #261617 (icons not showing up during boot).
+
+  10 Feb 2009; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.4.2.ebuild, splashutils-1.5.4.3.ebuild:
+  Do not override the KLCC setting with the system compiler. This makes
+  splashutils use klibc when building the kernel helper and fixes bug
+  #257604.
+
+  08 Jan 2009; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.5.4.3-fix_rc_var.patch, splashutils-1.5.4.3.ebuild:
+  Fix parsing of the boot messages so that the progress variable works
+  properly.
+
+  08 Jan 2009; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.4.3.ebuild:
+  Add a fix for bug #253952 (support <sys-devel/libtool-2.2).
+
+  02 Jan 2009; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.5.4.3-makefile.patch, splashutils-1.5.4.3.ebuild:
+  Fix bug #253189 (concurrent make problems).
+
+  28 Dec 2008; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-openrc-0.4-fix.patch, splashutils-1.5.4.2.ebuild,
+  splashutils-1.5.4.3.ebuild:
+  Fix bug #252134 (compatibility with OpenRC 0.4.x) and #251953
+  (pre-stripped files). Remove forced serial make (-j1) in 1.5.4.3.
+
+  11 Dec 2008; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.4.2.ebuild, splashutils-1.5.4.3.ebuild:
+  Add a block on sys-apps/lcdsplash (bug #248315).
+
+*splashutils-1.5.4.3 (13 Nov 2008)
+
+  13 Nov 2008; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.5.4.3.ebuild:
+  Version bump.
+
+  18 Oct 2008; Michał Januszewski <spock@gentoo.org>
+  -splashutils-1.5.3.4.ebuild:
+  Remove an old ebuild.
+
+  21 Sep 2008; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.4.2.ebuild:
+  Fix console=tty1 check to not allow invalid kernel command line options.
+
+  21 Sep 2008; <solar@gentoo.org> splashutils-1.5.4.2.ebuild:
+  - Make cross compile aware. Avoid calls to built_with_use when doing x-compiles
+
+  13 Sep 2008; nixnut <nixnut@gentoo.org> splashutils-1.5.4.2.ebuild:
+  Stable on ppc wrt bug 237000
+
+  10 Sep 2008; Michał Januszewski <spock@gentoo.org>
+  -files/splashutils-gcc43-fix.patch, -files/openrc-splash-crash.patch,
+  -files/openrc-strlist-abi.patch, -splashutils-1.5.4-r1.ebuild,
+  -splashutils-1.5.4.1.ebuild:
+  Remove old ebuilds.
+
+  08 Sep 2008; Markus Meier <maekke@gentoo.org> splashutils-1.5.4.2.ebuild:
+  amd64/x86 stable, bug #237000
+
+  22 Aug 2008; Markus Meier <maekke@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  22 Jul 2008; Michał Januszewski <spock@gentoo.org>
+  -files/splashutils-1.5.2.1-baselayout-rc5.patch,
+  -splashutils-1.5.2.1.ebuild, -splashutils-1.5.4.ebuild:
+  Remove old ebuilds.
+
+*splashutils-1.5.4.2 (22 Jul 2008)
+
+  22 Jul 2008; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.5.4.2.ebuild:
+  Version bump, fixes bug #227907.
+
+  14 Jun 2008; Zac Medico <zmedico@gentoo.org> splashutils-1.5.2.1.ebuild,
+  splashutils-1.5.3.4.ebuild, splashutils-1.5.4.ebuild,
+  splashutils-1.5.4-r1.ebuild, splashutils-1.5.4.1.ebuild:
+  Bug #226505 - For compatibility with phase execution order in
+  >=portage-2.1.5, call has_version inside pkg_preinst instead of
+  pkg_postinst.
+
+  27 Apr 2008; Markus Meier <maekke@gentoo.org> splashutils-1.5.3.4.ebuild:
+  amd64 stable, bug #210588
+
+*splashutils-1.5.4.1 (20 Apr 2008)
+
+  20 Apr 2008; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.5.4.1.ebuild:
+  Version bump.
+
+  17 Apr 2008; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-gcc43-fix.patch, splashutils-1.5.4-r1.ebuild:
+  Add a fix for gcc 4.3.0.
+
+  11 Apr 2008; Michał Januszewski <spock@gentoo.org>
+  +files/openrc-splash-crash.patch, splashutils-1.5.4-r1.ebuild:
+  Fix a potential crash in the OpenRC splash plugin. Patch by Roy Marples.
+
+  25 Mar 2008; Michał Januszewski <spock@gentoo.org>
+  +files/openrc-strlist-abi.patch, splashutils-1.5.4-r1.ebuild:
+  Fix breakage caused by openrc ABI change (patch by Roy Marples).
+
+*splashutils-1.5.4-r1 (02 Mar 2008)
+
+  02 Mar 2008; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.5.4-r1.ebuild:
+  Revision bump (fixes bugs #211643, #211598).
+
+  25 Feb 2008; Michał Januszewski <spock@gentoo.org>
+  -files/splashutils-1.4.2-getcfg.patch,
+  -files/splashutils-1.4.2-misc-strip.patch,
+  -files/splashutils-1.4.2-rcabort.patch, -splashutils-1.4.2.ebuild,
+  -splashutils-1.4.2.1.ebuild, -splashutils-1.5.3.2.ebuild,
+  -splashutils-1.5.3.3.ebuild:
+  Remove old ebuilds.
+
+*splashutils-1.5.4 (25 Feb 2008)
+
+  25 Feb 2008; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.5.4.ebuild:
+  Version bump.
+
+  19 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  splashutils-1.5.3.4.ebuild:
+  stable x86, bug 210588
+
+  19 Feb 2008; nixnut <nixnut@gentoo.org> splashutils-1.5.3.4.ebuild:
+  Stable on ppc wrt bug 210588
+
+  03 Feb 2008; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.3.4.ebuild:
+  Switch the build to EAPI 1, make the png, mng and truetype flags enabled by
+  default.
+
+*splashutils-1.5.3.4 (27 Jan 2008)
+
+  27 Jan 2008; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.5.3.4.ebuild:
+  Version bump.  Fixes bug #206998.
+
+  15 Jan 2008; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.3.3.ebuild:
+  Fix bug #205919.
+
+*splashutils-1.5.3.3 (06 Jan 2008)
+
+  06 Jan 2008; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.5.3.3.ebuild:
+  Version bump (fixes bugs #200217, #200668).
+
+  23 Dec 2007; Michał Januszewski <spock@gentoo.org>
+  -splashutils-1.5.2.ebuild, -splashutils-1.5.3.ebuild,
+  -splashutils-1.5.3.1.ebuild:
+  Remove old ebuilds.
+
+  23 Dec 2007; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.3.2.ebuild:
+  Add info about the fbcondecor USE flag for users upgrading from pre-1.5.3
+  versions (bug #202686).
+
+  21 Dec 2007; nixnut <nixnut@gentoo.org> splashutils-1.5.2.1.ebuild:
+  Stable on ppc wrt bug 195443
+
+*splashutils-1.5.3.2 (16 Dec 2007)
+
+  16 Dec 2007; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.5.3.2.ebuild:
+  Version bump.
+
+*splashutils-1.5.3.1 (05 Dec 2007)
+
+  05 Dec 2007; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.5.3.1.ebuild:
+  Version bump: minor bugfixes.
+
+  01 Dec 2007; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.3.ebuild:
+  Fix bug #200911: don't install documentation both to
+  /usr/share/doc/splashutils and /usr/share/doc/splashutils-<ver>.
+
+*splashutils-1.5.3 (25 Nov 2007)
+
+  25 Nov 2007; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.5.3.ebuild:
+  Version bump.
+
+  21 Oct 2007; Steve Dibb <beandog@gentoo.org> splashutils-1.5.2.ebuild,
+  splashutils-1.5.2.1.ebuild:
+  amd64 stable, bug 195443
+
+  11 Oct 2007; Roy Marples <uberlord@gentoo.org>
+  +files/splashutils-1.5.2.1-baselayout-rc5.patch,
+  splashutils-1.5.2.1.ebuild:
+  Patch splashtutils to work on baselayout-2.0.0_rc5
+
+  11 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  splashutils-1.5.2.1.ebuild:
+  stable x86, bug 195443
+
+  24 Sep 2007; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.2.1.ebuild:
+  Add missing quotes around variables that can contain spaces.
+
+  23 Sep 2007; Michał Januszewski <spock@gentoo.org>
+  -splashutils-1.4.3.ebuild, -splashutils-1.5.1.ebuild,
+  -splashutils-1.5.1.1.ebuild:
+  Remove old ebuilds.
+
+*splashutils-1.5.2.1 (23 Sep 2007)
+
+  23 Sep 2007; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.5.2.1.ebuild:
+  Version bump (bugfix release).
+
+*splashutils-1.5.2 (10 Sep 2007)
+
+  10 Sep 2007; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.5.2.ebuild:
+  Version bump.
+
+  07 Sep 2007; Michał Januszewski <spock@gentoo.org>
+  -files/splashutils-1.4.1-multilib.patch,
+  -files/splashutils-1.5-baselayout-1.patch,
+  -files/splashutils-1.5-fbsplash.patch, -splashutils-1.4.1.ebuild,
+  -splashutils-1.5.ebuild:
+  Remove old ebuilds.
+
+*splashutils-1.5.1.1 (03 Sep 2007)
+
+  03 Sep 2007; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.5.1.1.ebuild:
+  Version bump (bugfix release).
+
+  02 Sep 2007; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.ebuild, splashutils-1.5.1.ebuild:
+  Change the deps to require klibc-1.5 or later (bug #191074).
+
+*splashutils-1.5.1 (26 Aug 2007)
+
+  26 Aug 2007; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.5.1.ebuild:
+  Version bump (bugfix release).
+
+  19 Aug 2007; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.5-baselayout-1.patch, splashutils-1.5.ebuild:
+  Fix keyboard detection in baselayout-1 splash-functions.sh.
+
+  14 Aug 2007; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.5-fbsplash.patch, splashutils-1.5.ebuild:
+  Fix bug #188578.
+
+  12 Aug 2007; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.5.ebuild:
+  Change ewarn's to elog's.
+
+*splashutils-1.5 (11 Aug 2007)
+
+  11 Aug 2007; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.5.ebuild:
+  Version bump.
+
+  06 Aug 2007; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.4.1.ebuild, splashutils-1.4.2.ebuild,
+  splashutils-1.4.2.1.ebuild, splashutils-1.4.3.ebuild:
+  Remove references to media-gfx/bootsplash.
+
+  22 Jul 2007; Joseph Jezak <josejx@gentoo.org> splashutils-1.4.2.ebuild:
+  Marked ppc stable for bug #178161.
+
+  16 Jul 2007; Michal Januszewski <spock@gentoo.org>
+  splashutils-1.4.1.ebuild, splashutils-1.4.2.ebuild,
+  splashutils-1.4.2.1.ebuild, splashutils-1.4.3.ebuild:
+  Fix bug #185415.
+
+  07 Jul 2007; Michał Januszewski <spock@gentoo.org>
+  -files/splashutils-gentoo-0.1.14-stat.patch,
+  -files/splashutils-gentoo-0.5.4-old-baselayout.patch,
+  -files/splashutils-1.1.9.10-2.6.18-vt-fix.patch,
+  -files/splashutils-1.1.9.10-makefile.patch,
+  -files/splashutils-1.1.9.10-ppc-2.6.14.patch,
+  -files/splashutils-1.1.9.10-types_h.patch,
+  -files/splashutils-1.3.1-boot_message-fix.patch,
+  -files/splashutils-1.3.1-boot_msg.patch,
+  -files/splashutils-1.3.1-cachedir.patch, -files/splashutils-depscan.patch,
+  -splashutils-1.1.9.10-r1.ebuild, -splashutils-1.3.1.ebuild:
+  Remove old ebuilds.
+
+*splashutils-1.4.3 (07 Jul 2007)
+
+  07 Jul 2007; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.4.3.ebuild:
+  Version bump.
+
+*splashutils-1.4.2.1 (09 Jun 2007)
+
+  09 Jun 2007; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.4.2.1.ebuild:
+  Version bump.
+
+  14 May 2007; Markus Ullmann <jokey@gentoo.org> splashutils-1.4.2.ebuild:
+  Stable on x86 wrt bug #178161
+
+  13 May 2007; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.4.2-misc-strip.patch, splashutils-1.4.2.ebuild:
+  Fix bug #178291.
+
+  12 May 2007; Steve Dibb <beandog@gentoo.org> splashutils-1.4.2.ebuild:
+  amd64 stable, bug 178161
+
+  12 May 2007; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.4.2-getcfg.patch, splashutils-1.4.2.ebuild:
+  Fix bug #177623.
+
+  07 May 2007; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.4.2-rcabort.patch, splashutils-1.4.2.ebuild:
+  Add support for rc-abort in the baselayout2 splash plugin.
+
+  07 May 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  splashutils-1.4.1.ebuild:
+  Stable on amd64/ppc/x86 wrt it being required for the new themes for 2007.0
+  and our testing it on the release.
+
+*splashutils-1.4.2 (06 May 2007)
+
+  06 May 2007; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.4.2.ebuild:
+  Version bump.
+
+  30 Apr 2007; Marius Mauch <genone@gentoo.org>
+  splashutils-1.1.9.10-r1.ebuild, splashutils-1.3.1.ebuild,
+  splashutils-1.4.1.ebuild:
+  Replacing einfo with elog
+
+  22 Apr 2007; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.1.9.10-r1.ebuild, splashutils-1.3.1.ebuild,
+  splashutils-1.4.1.ebuild:
+  Use newinitd and newconfd (bug #174266).
+
+  22 Apr 2007; Michał Januszewski <spock@gentoo.org>
+  -files/splashutils-1.4-remove-debug-msgs.patch, -splashutils-1.4.ebuild:
+  Remove an old ebuild.
+
+  17 Apr 2007; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.4.1-multilib.patch, splashutils-1.4.1.ebuild:
+  Fix support for multilib systems.
+
+*splashutils-1.4.1 (12 Apr 2007)
+
+  12 Apr 2007; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.4.1.ebuild:
+  Version bump.
+
+  11 Apr 2007; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.4.ebuild:
+  Fix the ebuild to handle multilib properly.
+
+  09 Apr 2007; Michał Januszewski <spock@gentoo.org>
+  -files/splashutils-1.3-initrd-chvt.patch,
+  -files/splashutils-1.3-r2-fbsplash.patch, -files/splashutils-1.3-r2.patch,
+  -splashutils-1.1.9.8-r1.ebuild, -splashutils-1.3-r2.ebuild,
+  -splashutils-1.3-r3.ebuild:
+  Remove old ebuilds.
+
+  09 Apr 2007; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-gentoo-0.1.14-stat.patch,
+  splashutils-1.1.9.10-r1.ebuild:
+  Fix bug #173830.
+
+  06 Apr 2007; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.4-remove-debug-msgs.patch, splashutils-1.4.ebuild:
+  Add a patch to remove some debugging messages.
+
+*splashutils-1.4 (05 Apr 2007)
+
+  05 Apr 2007; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.4.ebuild:
+  Version bump.
+
+  21 Mar 2007; Michał Januszewski <spock@gentoo.org>
+  files/splashutils-gentoo-0.5.4-old-baselayout.patch:
+  Update the old-baselayout patch so that /usr/bin/stat is not used during boot.
+
+  15 Mar 2007; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.3.1-cachedir.patch, splashutils-1.3.1.ebuild:
+  Add support for baselayout 1.13.0.
+
+  14 Mar 2007; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.3.1-boot_message-fix.patch, splashutils-1.3.1.ebuild:
+  Fix bug #170822.
+
+  13 Mar 2007; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.3.1-boot_msg.patch, splashutils-1.3.1.ebuild:
+  Add a patch to use BOOT_MSG to set the system message when running the
+  splash daemon.
+
+*splashutils-1.3.1 (13 Mar 2007)
+
+  13 Mar 2007; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-gentoo-0.5.4-old-baselayout.patch,
+  +splashutils-1.3.1.ebuild:
+  Version bump.
+
+  17 Feb 2007; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.3-r2.ebuild, splashutils-1.3-r3.ebuild:
+  Remove invalid usage of $ROOT (bug #167285).
+
+  10 Feb 2007; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.1.9.10-types_h.patch, splashutils-1.1.9.10-r1.ebuild:
+  Fix compilation problems with 2.6.19+ kernels (bug #164806).
+
+  27 Jan 2007; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.3-initrd-chvt.patch, splashutils-1.3-r2.ebuild,
+  splashutils-1.3-r3.ebuild:
+  Fix bug #163552.
+
+  26 Nov 2006; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.3-r3.ebuild:
+  Bugfix: do not display a list of services to be started during boot.
+
+*splashutils-1.3-r3 (21 Nov 2006)
+
+  21 Nov 2006; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.3-r3.ebuild:
+  Add support for new features present in sys-apps/baselayout-1.13.*.
+
+  27 Sep 2006; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.1.9.10-2.6.18-vt-fix.patch,
+  splashutils-1.1.9.10-r1.ebuild:
+  Fix compilation issues with 2.6.18 kernels.
+
+  25 Sep 2006; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.3-r2-fbsplash.patch, splashutils-1.3-r2.ebuild:
+  Make it possible to compile splashutils without support for fbsplash (bug
+  #149094).
+
+  21 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  splashutils-1.1.9.10-r1.ebuild:
+  Stable on amd64/ppc/x86 wrt release snapshot.
+
+  11 Aug 2006; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.3-r2.ebuild:
+  Add a dependency on klibc-1.4.13 or newer to allow clean compilation with
+  ccache (bug #143594).
+
+  10 Aug 2006; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.3-r2.ebuild:
+  Make sure splash_util.static is linked against nptl libs. Should fix bug
+  #140511.
+
+*splashutils-1.3-r2 (08 Aug 2006)
+
+  08 Aug 2006; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.3-r2.patch, +splashutils-1.3-r2.ebuild:
+  Version bump (added fixes for bugs #140596, #140667 and #141994).
+
+  05 Aug 2006; Herbie Hopkins <herbs@gentoo.org> splashutils-1.3-r1.ebuild:
+  Use correct path to klibc headers on multilib systems.
+
+  15 Jul 2006; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.3-pthreads.patch, splashutils-1.3-r1.ebuild:
+  Added a patch fixing a potential problem with the animation thread.
+
+  15 Jul 2006; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.3-fdset.patch, splashutils-1.3-r1.ebuild:
+  Added a fix for bug #140470.
+
+*splashutils-1.3-r1 (15 Jul 2006)
+
+  15 Jul 2006; Michał Januszewski <spock@gentoo.org>
+  -splashutils-1.3.ebuild, +splashutils-1.3-r1.ebuild:
+  Minor bugfixes in the Gentoo scripts.
+
+*splashutils-1.3 (15 Jul 2006)
+
+  15 Jul 2006; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.3.ebuild:
+  Version bump.
+
+  12 Jul 2006; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.1.9.8-r1.ebuild, splashutils-1.1.9.10-r1.ebuild:
+  Remove useless cpp checks in freetype (bug #138116).
+
+  22 Apr 2006; Michał Januszewski <spock@gentoo.org>
+  -files/splashutils-1.1.9.9-external-klibc.patch:
+  Removed an unused patch.
+
+  22 Apr 2006; Michał Januszewski <spock@gentoo.org>
+  -splashutils-1.1.9.9-r1.ebuild, -splashutils-1.1.9.10.ebuild:
+  Removed old ebuilds without support for the --svcdir option in baselayout's
+  depscan.
+
+  16 Apr 2006; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.1.9.10-makefile.patch,
+  splashutils-1.1.9.10-r1.ebuild:
+  Added a patch to fix compilation issues with make 3.81 (bug #130181).
+
+  14 Mar 2006; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.1.9.10-r1.ebuild:
+  Made most of the einfo/ewarn messages conditional.
+
+  06 Mar 2006; Michał Januszewski <spock@gentoo.org>
+  -splashutils-1.1.9.8.ebuild, -splashutils-1.1.9.9.ebuild:
+  Removed old ebuilds.
+
+*splashutils-1.1.9.10-r1 (02 Mar 2006)
+*splashutils-1.1.9.8-r1 (02 Mar 2006)
+
+  02 Mar 2006; Roy Marples <uberlord@gentoo.org>
+  +files/splashutils-depscan.patch, +splashutils-1.1.9.8-r1.ebuild,
+  splashutils-1.1.9.9.ebuild, splashutils-1.1.9.9-r1.ebuild,
+  +splashutils-1.1.9.10-r1.ebuild:
+  Support baselayout's depscan --svcdir option instead of nasty variable
+  hacking.
+
+  02 Feb 2006; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.1.9.8.ebuild, splashutils-1.1.9.9.ebuild,
+  splashutils-1.1.9.9-r1.ebuild, splashutils-1.1.9.10.ebuild:
+  Added dependency on app-arch/cpio to all ebuilds (bug #121256).
+
+  01 Jan 2006; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.1.9.8.ebuild, splashutils-1.1.9.9.ebuild,
+  splashutils-1.1.9.9-r1.ebuild, splashutils-1.1.9.10.ebuild:
+  Fixed a typo (bug #117330).
+
+  20 Nov 2005; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.1.9.10-ppc-2.6.14.patch, splashutils-1.1.9.10.ebuild:
+  Added a patch to allow building splashutils against 2.6.14 on ppc (bug
+  #112744).
+
+*splashutils-1.1.9.10 (29 Sep 2005)
+
+  29 Sep 2005; Michał Januszewski <spock@gentoo.org>
+  -splashutils-0.9.1.ebuild, -splashutils-1.1.9.6-r1.ebuild,
+  -splashutils-1.1.9.7.ebuild, +splashutils-1.1.9.10.ebuild:
+  Version bump.
+
+  09 Sep 2005; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.1.9.9-r1.ebuild:
+  Updated zlib to 1.2.3 (requested in bug #104118).
+
+  08 Sep 2005; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.1.9.9-r1.ebuild:
+  Added a fix for bug #104251 -- try to support gcc built with the 'vanilla' 
+  USE flag.
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  splashutils-1.1.9.8.ebuild:
+  Stable on ppc.
+
+  31 Aug 2005; Luis Medinas <metalgod@gentoo.org>
+  splashutils-1.1.9.8.ebuild:
+  Marked Stable on AMD64.
+
+*splashutils-1.1.9.9-r1 (28 Aug 2005)
+
+  28 Aug 2005; Michał Januszewski <spock@gentoo.org>
+  +files/splashutils-1.1.9.9-external-klibc.patch,
+  splashutils-1.1.9.8.ebuild, +splashutils-1.1.9.9-r1.ebuild:
+  Updated the splashutils ebuild to build against external klibc. Credits for
+  the patch go to Martin Schlemmer <azarah (at) gentoo (dot) org> (bug
+  #103855). Marked 1.1.9.8 stable on x86.
+
+*splashutils-1.1.9.9 (21 Aug 2005)
+
+  21 Aug 2005; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.1.9.9.ebuild:
+  Version bump.
+
+  20 Jul 2005; Joseph Jezak <josejx@gentoo.org> splashutils-1.1.9.7.ebuild:
+  Marked ppc stable for 2.6.12 support.
+
+*splashutils-1.1.9.8 (18 Jul 2005)
+
+  18 Jul 2005; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.1.9.8.ebuild:
+  Version bump.
+
+*splashutils-1.1.9.7 (09 Jul 2005)
+
+  09 Jul 2005; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.1.9.7.ebuild:
+  Version bump -- 1.1.9.7 includes many bugfixes and has support for genkernel
+  initrds. Changed all KBUILD_OUTPUT references to KV_OUT_DIR in the ebuild.
+  This should fix compilation problems for people using an external kernel
+  object directory.
+
+  08 Jul 2005; Michał Januszewski <spock@gentoo.org>
+  -splashutils-1.1.9.6.ebuild, splashutils-1.1.9.6-r1.ebuild:
+  Fixed a typo in the ebuild info messages (bug #98375). Removed old ebuild.
+
+  07 Jul 2005; Herbie Hopkins <herbs@gentoo.org>
+  splashutils-1.1.9.6-r1.ebuild:
+  Stable on amd64.
+
+  06 Jul 2005; Daniel Drake <dsd@gentoo.org> splashutils-1.1.9.6-r1.ebuild:
+  Stable on x86, required for fbsplash on 2.6.12
+
+  23 Jun 2005; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.1.9.6-r1.ebuild:
+  Use KERNEL_DIR instead of /usr/src/linux for the kernel source tree (bug
+  #96897).
+
+  23 Jun 2005; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.1.9.6.ebuild, splashutils-1.1.9.6-r1.ebuild:
+  Replaced 'mkdev' with 'mknod' (bug #96725).
+
+  12 Jun 2005; Michał Januszewski <spock@gentoo.org>
+  splashutils-0.9.1.ebuild, splashutils-1.1.9.6.ebuild:
+  Negate -fstack-protector regardless of the 'hardened' USE flag state (fix
+  for bug #71193).
+
+  12 Jun 2005; Michał Januszewski <spock@gentoo.org>
+  -splashutils-1.1.9.5.ebuild:
+  Removed old ebuild.
+
+*splashutils-1.1.9.6-r1 (12 Jun 2005)
+
+  12 Jun 2005; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.1.9.6-r1.ebuild:
+  Added a fix for bug #95657.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  splashutils-0.9.1.ebuild:
+  Stable on ppc.
+
+  24 May 2005; Herbie Hopkins <herbs@gentoo.org> splashutils-1.1.9.6.ebuild:
+  fixed multilib issue
+
+*splashutils-1.1.9.6 (16 May 2005)
+
+  16 May 2005; Michał Januszewski <spock@gentoo.org>
+  -splashutils-1.1.9.3.ebuild, -splashutils-1.1.9.4.ebuild,
+  +splashutils-1.1.9.6.ebuild:
+  And another bugfix release, which includes fixes for some remaining issues 
+  spotted in the 1.1.9.x series (bug #90483 comes to mind). The default silent 
+  tty has now been set to tty16 to avoid conflicts with consolefont and 
+  syslog-ng. If you have a 'tty:' setting on your kernel command line, try 
+  removing it in case of any problems. A new utility script, called 
+  splash_manager, is included in this release. The script can be used for 
+  switching, setting, testing and listing themes. It's somewhat experimental
+  at this stage, so please test it. If you are not sure how the kernel command 
+  line should be set, try using 'splash_manager -c switch -t <theme>'.
+
+  29 Apr 2005; Michał Januszewski <spock@gentoo.org>
+  -splashutils-0.9_rc1.ebuild, -splashutils-1.1.9.1.ebuild,
+  -splashutils-1.1.9.2.ebuild:
+  Removed old ebuilds.
+
+*splashutils-1.1.9.5 (29 Apr 2005)
+
+  29 Apr 2005; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.1.9.5.ebuild:
+  Yet another bugfix release. Includes fixes for 16bpp modes, and complete or
+  partial fixes for bugs: #90307, #90331, #90483, #90556. There have also been
+  some important changes in the ebuild. The sample Gentoo themes have been
+  removed from this package and are now available in
+  media-gfx/splash-themes-gentoo. Some additional sanity checks (/dev/tty1
+  presence, GCC_SPEC checking) have been added to make it easier to fix common
+  problems.
+
+  26 Apr 2005; Michał Januszewski <spock@gentoo.org>
+  splashutils-1.1.9.4.ebuild:
+  Avoid installing the default symlink if it already exists -- fixed bug #90484.
+
+*splashutils-1.1.9.4 (24 Apr 2005)
+
+  24 Apr 2005; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.1.9.4.ebuild:
+  A bugfix release (fixes bugs: #88461, #87113, #85531). It also introduces
+  support for new USE flags: png, truetype and kdgraphics. The first two of
+  them should probably be enabled to make sure all themes work correctly.
+  kdgraphics is a local USE flag which changes the way the silent splash image
+  is displayed. Please read the description in use.local.desc before enabling
+  it, as it has the potential to break things and it should probably be kept
+  disabled in all common situations.
+
+*splashutils-1.1.9.3 (28 Mar 2005)
+
+  28 Mar 2005; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.1.9.3.ebuild:
+  A new release with bugfixes and some simple new features. Please have a look
+  at the project changelog at my devsite for a full list of changes.
+
+*splashutils-1.1.9.2 (21 Mar 2005)
+
+  21 Mar 2005; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.1.9.2.ebuild:
+  Version bump. Mostly bugfixes. Please have a look at the project homepage
+  for a full list of changes.
+
+*splashutils-1.1.9.1 (09 Mar 2005)
+
+  09 Mar 2005; Michał Januszewski <spock@gentoo.org>
+  +splashutils-1.1.9.1.ebuild:
+  Added a development version of splashutils.
+
+  08 Mar 2005; Michał Januszewski <spock@gentoo.org>
+  splashutils-0.9.1.ebuild, -splashutils-0.9_pre09.ebuild,
+  -splashutils-0.9_pre10.ebuild, splashutils-0.9_rc1.ebuild:
+  Removed old ebuilds. Updated the remaining ebuilds to work with KBUILD_OUTPUT.
+
+  07 Mar 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  splashutils-0.9.1.ebuild:
+  Marking stable on amd64 so we have the right version on the LiveCD... bad
+  spock...
+
+  01 Mar 2005; Michał Januszewski <spock@gentoo.org>
+  splashutils-0.9.1.ebuild:
+  Marked stable on x86.
+
+  11 Feb 2005; Michał Januszewski <spock@gentoo.org>
+  splashutils-0.9.1.ebuild, splashutils-0.9_pre09.ebuild,
+  splashutils-0.9_pre10.ebuild, splashutils-0.9_rc1.ebuild:
+  Added version deps as a fix for bug #81608.
+
+*splashutils-0.9.1 (27 Jan 2005)
+
+  27 Jan 2005; Michał Januszewski <spock@gentoo.org>
+  +splashutils-0.9.1.ebuild, -splashutils-0.9_pre07.ebuild,
+  -splashutils-0.9_pre08.ebuild:
+  Added a new version of splashutils with some amazing new features and
+  bugfixes which I'm too lazy to list here ;) Removed old ebuilds.
+
+  16 Jan 2005; Michal Januszewski <spock@gentoo.org>
+  splashutils-0.9_rc1.ebuild:
+  Added hardened compilation fixes from bug #71193.
+
+  12 Jan 2005; Michal Januszewski <spock@gentoo.org>
+  splashutils-0.9_rc1.ebuild:
+  Marked stable on x86.
+
+  04 Jan 2005; Michael Hanselmann <hansmi@gentoo.org>
+  splashutils-0.9_rc1.ebuild:
+  Added to ~ppc, bug 76637.
+
+*splashutils-0.9_rc1 (12 Nov 2004)
+
+  12 Nov 2004; Michal Januszewski <spock@gentoo.org>
+  +splashutils-0.9_rc1.ebuild:
+  A new bugfix release. Closes #68853 and #70029. Fixes some theme issues
+  (wrong images for 8bpp, wrong box coordinates for the gentoo theme).
+
+  20 Oct 2004; Michal Januszewski <spock@gentoo.org>
+  splashutils-0.9_pre10.ebuild:
+  Marked splashutils stable on x86 and amd64. Changed baselayout dep. to >=
+  1.9.4-r5.
+
+  13 Oct 2004; Michal Januszewski <spock@gentoo.org>
+  splashutils-0.9_pre07.ebuild, splashutils-0.9_pre08.ebuild,
+  splashutils-0.9_pre09.ebuild, splashutils-0.9_pre10.ebuild:
+  Added a dep on virtual/linux-sources.
+
+  01 Oct 2004; Michal Januszewski <spock@gentoo.org>
+  splashutils-0.9_pre10.ebuild:
+  Added a little fix (removed dependency on unistd.h for syscalls.nrs) which
+  should make splashutils compile with older kernels.
+
+*splashutils-0.9_pre10 (27 Sep 2004)
+
+  27 Sep 2004; Michal Januszewski <spock@gentoo.org>
+  +splashutils-0.9_pre10.ebuild:
+  Splashutils update. Includes small bugfixes, klibc and libpng updates, and
+  2.6.9-rc2 compatibility. Closes bug #64068.
+
+  08 Sep 2004; Michal Januszewski <spock@gentoo.org>
+  splashutils-0.9_pre09.ebuild:
+  Updated the klibc version (bug #63170). Marked ~amd64.
+
+*splashutils-0.9_pre09 (07 Sep 2004)
+
+  07 Sep 2004; Michal Januszewski <spock@gentoo.org>
+  +splashutils-0.9_pre09.ebuild:
+  Splashutils update, includes fixes for amd64 and dithering for 15/16bpp modes.
+  Special thanks to Christian Roessner for his help with making it work on 
+  amd64.
+
+*splashutils-0.9_pre08 (05 Sep 2004)
+
+  05 Sep 2004; Michal Januszewski <spock@gentoo.org>
+  +splashutils-0.9_pre08.ebuild:
+  Version bump. Added a new theme 'gentoo' and fixed the 'emergence' theme. For
+  a full ChangeLog for splashutils check http://dev.gentoo.org/~spock/. Closes
+  bugs #61341, #61478, #61960 and possibly #61678.
+
+  30 Aug 2004; Michal Januszewski <spock@gentoo.org>
+  splashutils-0.9_pre07.ebuild:
+  Updated the ebuild to display info about 'make prepare', not try to execute it.
+
+  22 Aug 2004; Michal Januszewski <spock@gentoo.org>
+  splashutils-0.9_pre07.ebuild:
+  Added a fix for 8bpp silent images for the emergence theme.
+
+*splashutils-0.9_pre07 (21 Aug 2004)
+
+  21 Aug 2004; Michal Januszewski <spock@gentoo.org> +metadata.xml,
+  +splashutils-0.9_pre07.ebuild:
+  Intial commit.

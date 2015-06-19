@@ -1,0 +1,36 @@
+# ChangeLog for app-crypt/sbsigntool
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/sbsigntool/ChangeLog,v 1.8 2015/06/09 09:34:22 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> sbsigntool-0.6-r1.ebuild:
+  Stable for x86, wrt bug #495328
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> sbsigntool-0.6-r1.ebuild:
+  amd64 stable, bug #495328
+
+*sbsigntool-0.6-r1 (03 Oct 2013)
+
+  03 Oct 2013; Greg Kroah-Hartman <gregkh@gentoo.org>
+  +files/0002-image.c-clear-image-variable.patch,
+  +files/0003-Fix-for-multi-sign.patch, +sbsigntool-0.6-r1.ebuild:
+  patches to fix multi-key signing, fixing bugs with new versions of UEFI
+  firmware. Taken from the openSUSE packages as the upstream Launchpad project
+  is now dead.
+
+  05 Sep 2013; Mike Frysinger <vapier@gentoo.org> sbsigntool-0.6.ebuild:
+  Fix $AR handling #481480 by Agostino Sarubbo.
+
+  28 Aug 2013; Agostino Sarubbo <ago@gentoo.org> sbsigntool-0.6.ebuild:
+  Stable for x86, wrt bug #481396
+
+  17 Aug 2013; Agostino Sarubbo <ago@gentoo.org> sbsigntool-0.6.ebuild:
+  Stable for amd64, wrt bug #481396
+
+*sbsigntool-0.6 (24 Dec 2012)
+
+  24 Dec 2012; Mike Frysinger <vapier@gentoo.org> +metadata.xml,
+  +sbsigntool-0.6.ebuild:
+  New package #444830 by Maxim Kammerer.

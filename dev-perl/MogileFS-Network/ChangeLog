@@ -1,0 +1,27 @@
+# ChangeLog for dev-perl/MogileFS-Network
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/MogileFS-Network/ChangeLog,v 1.5 2014/08/26 19:12:38 axs Exp $
+
+*MogileFS-Network-0.060.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +MogileFS-Network-0.060.0-r1.ebuild, -MogileFS-Network-0.060.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  12 Apr 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Fix cpan distribution in metadata.xml
+
+  01 Mar 2012; Torsten Veller <tove@gentoo.org>
+  MogileFS-Network-0.060.0.ebuild:
+  Fix Header. Drop default same-as-perl license. Currently the dependencies are
+  (only) needed at runtime
+
+*MogileFS-Network-0.060.0 (29 Feb 2012)
+
+  29 Feb 2012; Robin H. Johnson <robbat2@gentoo.org>
+  +MogileFS-Network-0.060.0.ebuild, +metadata.xml:
+  Initial commit. Module was previously part of MogileFS-Server but is now
+  optional extra.

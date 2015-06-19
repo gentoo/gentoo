@@ -1,0 +1,43 @@
+# ChangeLog for sys-cluster/moosefs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/moosefs/ChangeLog,v 1.8 2015/04/08 18:25:44 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> moosefs-1.6.26-r1.ebuild,
+  moosefs-1.6.27.ebuild:
+  Drop old Python implementations
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> moosefs-1.6.26-r1.ebuild,
+  moosefs-1.6.27.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+*moosefs-1.6.27 (07 Jun 2013)
+*moosefs-1.6.26-r1 (07 Jun 2013)
+
+  07 Jun 2013; Ultrabug <ultrabug@gentoo.org> -moosefs-1.6.25.ebuild,
+  -moosefs-1.6.26.ebuild, +moosefs-1.6.26-r1.ebuild, +moosefs-1.6.27.ebuild,
+  -files/mfs.initd, -files/mfscgiserver.initd:
+  version bump, fix #468742 thx to Marcin Grabowski, drop old
+
+*moosefs-1.6.26 (21 Jan 2013)
+
+  21 Jan 2013; Ultrabug <ultrabug@gentoo.org> -moosefs-1.6.20-r2.ebuild,
+  +moosefs-1.6.26.ebuild, +files/mfs.initd-r1, +files/mfscgiserver.initd-r1:
+  Version bump fix #453134, update init scripts, drop old
+
+*moosefs-1.6.25 (02 Jul 2012)
+
+  02 Jul 2012; Ultrabug <ultrabug@gentoo.org> +moosefs-1.6.25.ebuild:
+  version bump
+
+*moosefs-1.6.20-r2 (02 Aug 2011)
+
+  02 Aug 2011; Ultrabug <ultrabug@gentoo.org> -moosefs-1.6.20-r1.ebuild,
+  +moosefs-1.6.20-r2.ebuild, +files/mfscgiserver.confd,
+  +files/mfscgiserver.initd:
+  Add mfs CGI server init script. drop old.
+
+*moosefs-1.6.20-r1 (08 Jul 2011)
+
+  08 Jul 2011; Ultrabug <ultrabug@gentoo.org> -moosefs-1.6.20.ebuild,
+  +moosefs-1.6.20-r1.ebuild, files/mfs.confd, files/mfs.initd:
+  Enhanced init script, add an autorestore functionnality. Drop old.

@@ -1,0 +1,13 @@
+# ChangeLog for net-analyzer/ipguard
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ipguard/ChangeLog,v 1.2 2014/10/13 23:05:26 jer Exp $
+
+  13 Oct 2014; Jeroen Roovers <jer@gentoo.org> files/ipguard.confd:
+  Set -r option by default.
+
+*ipguard-1.04 (13 Oct 2014)
+
+  13 Oct 2014; Jeroen Roovers <jer@gentoo.org> +ipguard-1.04.ebuild,
+  +files/ipguard.confd, +metadata.xml:
+  Initial commit.
+

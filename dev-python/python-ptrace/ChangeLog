@@ -1,0 +1,113 @@
+# ChangeLog for dev-python/python-ptrace
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-ptrace/ChangeLog,v 1.23 2015/06/07 19:34:38 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add bitbucket to remote-id in metadata.xml
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> python-ptrace-0.8.1-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> python-ptrace-0.8.1-r1.ebuild:
+  amd64 stable, bug 540290
+
+*python-ptrace-0.8.1-r1 (01 Dec 2014)
+
+  01 Dec 2014; Mike Gilbert <floppym@gentoo.org> +files/0.8.1-python3.4.patch,
+  +python-ptrace-0.8.1-r1.ebuild, -python-ptrace-0.8.1.ebuild:
+  Fix tests with python3.4.
+
+  01 Dec 2014; Mike Gilbert <floppym@gentoo.org> python-ptrace-0.8.1.ebuild:
+  Add upstream bug url.
+
+  01 Dec 2014; Mike Gilbert <floppym@gentoo.org> -python-ptrace-0.6.6.ebuild,
+  -python-ptrace-0.7.ebuild, -python-ptrace-0.8.ebuild,
+  python-ptrace-0.8.1.ebuild:
+  Drop optional runtime dep on dev-libs/distorm64, and restore python3 and pypy
+  support. Remove old.
+
+  30 Nov 2014; Michał Górny <mgorny@gentoo.org> python-ptrace-0.7.ebuild,
+  python-ptrace-0.8.1.ebuild, python-ptrace-0.8.ebuild:
+  Add missing PYTHON_USEDEPs. Remove Python3 & PyPy since distorm64 does not
+  support them.
+
+*python-ptrace-0.8.1 (05 Nov 2014)
+
+  05 Nov 2014; Patrick Lauer <patrick@gentoo.org> +python-ptrace-0.8.1.ebuild:
+  Bump
+
+*python-ptrace-0.8 (17 Oct 2014)
+
+  17 Oct 2014; Ian Delaney <idella4@gentoo.org> +python-ptrace-0.8.ebuild:
+  bump; add IUSE doc to install doc folder's files
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  python-ptrace-0.6.6.ebuild, python-ptrace-0.7.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*python-ptrace-0.7 (10 Apr 2014)
+
+  10 Apr 2014; Ian Delaney <idella4@gentoo.org> +python-ptrace-0.7.ebuild,
+  -python-ptrace-0.6.2.ebuild, -python-ptrace-0.6.3.ebuild,
+  -python-ptrace-0.6.4.ebuild, -python-ptrace-0.6.5.ebuild:
+  bump; radical updating that goes with adding py3 pypy support and conversion
+  -> distutils-r1
+
+*python-ptrace-0.6.6 (07 Jan 2014)
+
+  07 Jan 2014; Patrick Lauer <patrick@gentoo.org> +python-ptrace-0.6.6.ebuild,
+  metadata.xml:
+  Bump, improve metadata.xml
+
+*python-ptrace-0.6.5 (13 Jun 2013)
+
+  13 Jun 2013; Patrick Lauer <patrick@gentoo.org> +python-ptrace-0.6.5.ebuild:
+  Bump
+
+*python-ptrace-0.6.4 (09 Mar 2012)
+
+  09 Mar 2012; Patrick Lauer <patrick@gentoo.org> +python-ptrace-0.6.4.ebuild:
+  Bump
+
+  22 Nov 2011; Jesus Rivero <neurogeek@gentoo.org>
+  python-ptrace-0.6.3.ebuild, -python-ptrace-0.6.3-r1.ebuild:
+  Reverted the revbump and applied changes to 0.6.3
+
+*python-ptrace-0.6.3-r1 (22 Nov 2011)
+
+  22 Nov 2011; Jesus Rivero <neurogeek@gentoo.org>
+  +python-ptrace-0.6.3-r1.ebuild:
+  Revbump to take care of examples. Closes bug #291838
+
+*python-ptrace-0.6.3 (28 Jul 2011)
+
+  28 Jul 2011; Patrick Lauer <patrick@gentoo.org> +python-ptrace-0.6.3.ebuild:
+  Bump for #375895
+
+  08 Feb 2010; Peter Volkov <pva@gentoo.org> python-ptrace-0.6.ebuild,
+  python-ptrace-0.6.2.ebuild:
+  Add inherit eutils for epatch.
+
+*python-ptrace-0.6.2 (15 Nov 2009)
+
+  15 Nov 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +python-ptrace-0.6.2.ebuild:
+  Version bump.
+
+  18 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  python-ptrace-0.6.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  04 Sep 2009; Patrick Lauer <patrick@gentoo.org> -python-ptrace-0.5.ebuild:
+  Remove old
+
+*python-ptrace-0.6 (28 Feb 2009)
+
+  28 Feb 2009; Patrick Lauer <patrick@gentoo.org> +python-ptrace-0.6.ebuild:
+  Bump to 0.6. Really closes #247892 now.
+
+*python-ptrace-0.5 (03 Feb 2009)
+
+  03 Feb 2009; Patrick Lauer <patrick@gentoo.org> +metadata.xml,
+  +python-ptrace-0.5.ebuild:
+  Initial import. Ebuild from Tuna <tuna@lyua.org>. Closes #247892

@@ -1,0 +1,251 @@
+# ChangeLog for dev-perl/File-MMagic
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-MMagic/ChangeLog,v 1.63 2014/12/04 12:27:05 zlogene Exp $
+
+  04 Dec 2014; Mikle Kolyada <zlogene@gentoo.org> File-MMagic-1.300.0-r1.ebuild:
+  Stable for all wrt bug #525306
+
+  30 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -File-MMagic-1.280.0-r1.ebuild, -File-MMagic-1.290.0-r1.ebuild:
+  Remove old
+
+  30 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  File-MMagic-1.270.0-r1.ebuild, File-MMagic-1.280.0-r1.ebuild,
+  File-MMagic-1.290.0-r1.ebuild, File-MMagic-1.300.0-r1.ebuild:
+  Fix license, bug 381183
+
+*File-MMagic-1.280.0-r1 (22 Aug 2014)
+*File-MMagic-1.290.0-r1 (22 Aug 2014)
+*File-MMagic-1.270.0-r1 (22 Aug 2014)
+*File-MMagic-1.300.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +File-MMagic-1.270.0-r1.ebuild, +File-MMagic-1.280.0-r1.ebuild,
+  +File-MMagic-1.290.0-r1.ebuild, +File-MMagic-1.300.0-r1.ebuild,
+  -File-MMagic-1.270.0.ebuild, -File-MMagic-1.280.0.ebuild,
+  -File-MMagic-1.290.0.ebuild, -File-MMagic-1.300.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+*File-MMagic-1.300.0 (25 Aug 2013)
+
+  25 Aug 2013; Patrick Lauer <patrick@gentoo.org> +File-MMagic-1.300.0.ebuild:
+  Bump
+
+*File-MMagic-1.290.0 (15 Jul 2012)
+
+  15 Jul 2012; Torsten Veller <tove@gentoo.org> +File-MMagic-1.290.0.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*File-MMagic-1.280.0 (16 Jun 2012)
+
+  16 Jun 2012; Torsten Veller <tove@gentoo.org> +File-MMagic-1.280.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -File-MMagic-1.27.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> File-MMagic-1.270.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*File-MMagic-1.270.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org> +File-MMagic-1.270.0.ebuild:
+  Change version scheme
+
+  01 May 2009; Torsten Veller <tove@gentoo.org> -File-MMagic-1.25.ebuild:
+  Cleanup
+
+  15 Apr 2007; Markus Rothe <corsair@gentoo.org> File-MMagic-1.27.ebuild:
+  Stable on ppc64
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> File-MMagic-1.27.ebuild:
+  Stable on x86, bug #169152.
+
+  28 Dec 2006; Javier Villavicencio <the_paya@gentoo.org>
+  File-MMagic-1.27.ebuild:
+  Added ~x86-fbsd keyword.
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  File-MMagic-1.27.ebuild:
+  Stable on Alpha.
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  File-MMagic-1.27.ebuild:
+  Stable on ia64.
+
+  09 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  -File-MMagic-1.20.ebuild, -File-MMagic-1.22.ebuild,
+  File-MMagic-1.25.ebuild, -File-MMagic-1.26.ebuild,
+  File-MMagic-1.27.ebuild:
+  cleaning up stale ebuilds
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  File-MMagic-1.27.ebuild:
+  ppc stable
+
+  07 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  File-MMagic-1.27.ebuild:
+  Marking stable amd64, sparc
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  File-MMagic-1.20.ebuild, File-MMagic-1.22.ebuild, File-MMagic-1.25.ebuild,
+  File-MMagic-1.26.ebuild, File-MMagic-1.27.ebuild:
+  Adding perl dep; fixed header; fixed DEPEND
+
+  19 Jul 2006; Bryan Østergaard <kloeri@gentoo.org>
+  File-MMagic-1.26.ebuild:
+  Stable on alpha.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> File-MMagic-1.26.ebuild:
+  Mark 1.26 stable on ia64
+
+*File-MMagic-1.27 (23 Jun 2006)
+
+  23 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  +File-MMagic-1.27.ebuild:
+  Version bump upstream
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  File-MMagic-1.26.ebuild:
+  Actual stable mark -sorry
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org> ChangeLog:
+  marking stable sparc
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-File-MMagic-1.20, files/digest-File-MMagic-1.22,
+  files/digest-File-MMagic-1.25, Manifest:
+  Fixing SHA256 digest, pass four
+
+*File-MMagic-1.26 (26 Apr 2006)
+
+  26 Apr 2006; <mcummings@gentoo.org> +File-MMagic-1.26.ebuild:
+  Version bump
+
+  06 Feb 2006; Simon Stelling <blubb@gentoo.org> File-MMagic-1.25.ebuild:
+  stable on amd64
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> File-MMagic-1.25.ebuild:
+  Mark 1.25 stable on ia64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> File-MMagic-1.25.ebuild:
+  Mark 1.25 stable on alpha
+
+  21 Jan 2006; Markus Rothe <corsair@gentoo.org> File-MMagic-1.25.ebuild:
+  Stable on ppc64
+
+  15 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  File-MMagic-1.25.ebuild:
+  Stable on ppc.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  File-MMagic-1.25.ebuild:
+  Marking stable sparc x86
+
+*File-MMagic-1.25 (19 Nov 2005)
+
+  19 Nov 2005; Michael Cummings <mcummings@gentoo.org>
+  +File-MMagic-1.25.ebuild:
+  Version bump
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> File-MMagic-1.22.ebuild:
+  Mark 1.22 stable on ia64
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> File-MMagic-1.22.ebuild:
+  add ~ia64
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> File-MMagic-1.22.ebuild:
+  Stable on amd64.
+
+  30 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  File-MMagic-1.22.ebuild:
+  Stable on ppc.
+
+  26 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  File-MMagic-1.22.ebuild:
+  Stable on alpha.
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -File-MMagic-1.15-r1.ebuild, -File-MMagic-1.15.ebuild,
+  -File-MMagic-1.19.ebuild, File-MMagic-1.20.ebuild, File-MMagic-1.22.ebuild:
+  cleaning
+
+  10 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  File-MMagic-1.20.ebuild:
+  Stable on ppc.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> File-MMagic-1.22.ebuild:
+  Stable on ppc64
+
+  03 Nov 2004; Markus Rothe <corsair@gentoo.org> File-MMagic-1.22.ebuild:
+  Marked ~ppc64; bug #69727
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> File-MMagic-1.20.ebuild:
+  Stable on amd64.
+
+*File-MMagic-1.22 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  File-MMagic-1.22.ebuild:
+  new version on cpan
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org> File-MMagic-1.20.ebuild:
+  Stable on alpha.
+
+  20 Jan 2004; <gustavoz@gentoo.org> File-MMagic-1.20.ebuild:
+  stable on sparc
+
+  09 Nov 2003; Michael Cummings <mcummings@gentoo.org>
+  File-MMagic-1.20.ebuild:
+  100+ days, no bugs, unmasked
+
+*File-MMagic-1.20 (31 Jul 2003)
+
+  31 Jul 2003; Michael Cummings <mcummings@gentoo.org>
+  File-MMagic-1.20.ebuild:
+  CPAN Version bump, please test
+
+*File-MMagic-1.19 (07 Jun 2003)
+
+  07 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  File-MMagic-1.19.ebuild:
+  CPAN version bump
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+
+  forced version bump to install into correct locations
+
+*File-MMagic-1.15-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*File-MMagic-1.15 (5 May 2002)
+
+  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> File-MMagic-1.15.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  5 May 2002; Seemant Kulleen <seemant@gentoo.org> File-MMagic-1.15.ebuild
+  files/digst-File-MMagic-1.15 :
+
+  Version bump and conversion to eclasses.
+
+*File-MMagic-1.12 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

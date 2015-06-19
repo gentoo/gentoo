@@ -1,0 +1,67 @@
+Original from:
+http://trac.macports.org/browser/trunk/dports/www/webkit-gtk/files/patch-quartz-WebCore-plugins-gtk-gtkxtbin.c.diff?format=txt
+http://trac.macports.org/browser/trunk/dports/www/webkit-gtk/files/patch-quartz-WebCore-plugins-gtk-PluginViewGtk.cpp.diff?format=txt
+
+Adapted for 1.6.1
+
+--- Source/WebCore/plugins/gtk/PluginViewGtk.cpp
++++ Source/WebCore/plugins/gtk/PluginViewGtk.cpp
+@@ -70,6 +70,8 @@
+ #endif
+ #include <gtk/gtk.h>
+ 
++#undef XP_UNIX
++
+ #if defined(XP_UNIX)
+ #include "RefPtrCairo.h"
+ #include "gtk2xtbin.h"
+@@ -439,9 +441,9 @@
+         event->setDefaultHandled();
+ }
+ 
+-#if defined(XP_UNIX)
+ void PluginView::handleFocusInEvent()
+ {
++#if defined(XP_UNIX)
+     if (!m_isStarted || m_status != PluginStatusLoadedSuccessfully)
+         return;
+ 
+@@ -454,10 +456,12 @@
+     event.detail = NotifyDetailNone;
+ 
+     dispatchNPEvent(npEvent);
++#endif
+ }
+ 
+ void PluginView::handleFocusOutEvent()
+ {
++#if defined(XP_UNIX)
+     if (!m_isStarted || m_status != PluginStatusLoadedSuccessfully)
+         return;
+ 
+@@ -470,8 +474,8 @@
+     event.detail = NotifyDetailNone;
+ 
+     dispatchNPEvent(npEvent);
+-}
+ #endif
++}
+ 
+ void PluginView::setParent(ScrollView* parent)
+ {
+--- Source/WebCore/plugins/gtk/gtk2xtbin.c
++++ Source/WebCore/plugins/gtk/gtk2xtbin.c
+@@ -41,7 +41,7 @@
+  * The GtkXtBin widget allows for Xt toolkit code to be used
+  * inside a GTK application.  
+  */
+-
++#if 0
+ #include "GtkVersioning.h"
+ #include "xembed.h"
+ #include "gtk2xtbin.h"
+@@ -966,3 +966,4 @@
+ 
+   return;
+ }
++#endif

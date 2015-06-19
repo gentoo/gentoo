@@ -1,0 +1,36 @@
+diff -Naur a/include/linux/init_task.h b/include/linux/init_task.h
+--- a/include/linux/init_task.h	2012-10-09 14:42:04.000000000 +0200
++++ b/include/linux/init_task.h	2012-10-08 18:14:11.000000000 +0200
+@@ -123,6 +123,8 @@
+ 
+ extern struct cred init_cred;
+ 
++#ifndef CONFIG_SCHED_BFS
++
+ extern struct task_group root_task_group;
+ 
+ #ifdef CONFIG_CGROUP_SCHED
+@@ -132,6 +134,8 @@
+ # define INIT_CGROUP_SCHED(tsk)
+ #endif
+ 
++#endif
++	
+ #ifdef CONFIG_PERF_EVENTS
+ # define INIT_PERF_EVENTS(tsk)						\
+ 	.perf_event_mutex = 						\
+diff -Naur a/include/linux/sched.h b/include/linux/sched.h
+--- a/include/linux/sched.h	2012-10-09 14:42:04.000000000 +0200
++++ b/include/linux/sched.h	2012-10-08 18:36:50.000000000 +0200
+@@ -1264,6 +1264,11 @@
+ 	const struct sched_class *sched_class;
+ 	struct sched_entity se;
+ 	struct sched_rt_entity rt;
++
++#ifdef CONFIG_CGROUP_SCHED
++	struct task_group *sched_task_group;
++#endif
++
+ #endif
+ 
+ #ifdef CONFIG_PREEMPT_NOTIFIERS

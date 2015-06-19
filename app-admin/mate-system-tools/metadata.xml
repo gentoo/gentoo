@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>TomWij@gentoo.org</email>
+		<name>Tom Wijsman</name>
+	</maintainer>
+	<longdescription lang="en">
+	Formerly known as the Ximian Setup Tools, the GST are a fully
+    integrated set of tools aimed to make easy the job that means the
+    computer administration on an UNIX or Linux system. They're
+    thought to help from the new Linux or UNIX user to the system
+    administrators.
+	</longdescription>
+	<use>
+		<flag name="nfs">Adds support for NFS shares</flag>
+		<flag name="caja">Adds support for the Caja file manager</flag>
+	</use>
+</pkgmetadata>

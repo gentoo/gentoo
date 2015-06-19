@@ -1,0 +1,56 @@
+--- convert/Makefile
++++ convert/Makefile
+@@ -24,7 +24,7 @@
+ #CC = cc
+ 
+ # compiler flags
+-CFLAGS = -O -g -Wall -W -Wreturn-type -Wunused -Wmissing-prototypes $(PROFLAG)
++CFLAGS += -Wall -W -Wreturn-type -Wunused -Wmissing-prototypes $(PROFLAG)
+ 
+ # if you have an ANSI C Compiler, use the following line, otherwise
+ # uncomment the longer .c.o rule, also
+@@ -52,15 +52,6 @@
+ 
+ all: $(TARGETS)
+ 
+-ppmtoeyuv: ppmtoeyuv.c
+-	$(CC) -o ppmtoeyuv ppmtoeyuv.c
+-
+-jmovie2jpeg: jmovie2jpeg.c
+-	$(CC) -o jmovie2jpeg jmovie2jpeg.c
+-
+-mpeg_demux: mpeg_demux.c
+-	$(CC) -O -o mpeg_demux mpeg_demux.c
+-	
+ vidtoppm: vidtoppm.c
+ 	$(CC) -lXvid -lX11 $(INCLUDE) -o vidtoppm vidtoppm.c 
+ 
+--- convert/mtv/Makefile
++++ convert/mtv/Makefile
+@@ -4,7 +4,7 @@
+ 
+ PURIFY        = $(PURIFYHOME)/purify
+ 
+-CFLAGS= -g  -I.
++CFLAGS+=  -I.
+ 
+ #CFLAGS= -O -DLITTLE_ENDIEN
+ LFLAGS=
+@@ -15,7 +15,7 @@
+ default: movieToVid
+ 
+ movieToVid: movieToVid.o
+-	cc ${CFLAGS} -o movieToVid movieToVid.o
++	$(CC) $(CFLAGS) -o movieToVid movieToVid.o
+ 
+ clean:
+ 	rm -f core lintout makeout tags Makefile.bak *.o \
+--- mpeg_encode/Makefile.orig	2005-09-26 16:01:51.000000000 -0400
++++ mpeg_encode/Makefile	2005-09-26 16:02:11.000000000 -0400
+@@ -97,5 +97,5 @@
+ 
+ #	gcc
+-CFLAGS	      =  $(INCLUDEDIR) $(DEBUGFLAG) -Wall -Wmissing-prototypes $(PROFLAG) $(PROTOFLAG)
++CFLAGS	      +=  $(INCLUDEDIR) -Wall -Wmissing-prototypes $(PROFLAG) $(PROTOFLAG)
+ 
+ #	gcc-strict

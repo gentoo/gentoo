@@ -1,0 +1,50 @@
+--- setup.py.orig	2012-01-07 20:27:45.072840503 +0000
++++ setup.py	2012-01-07 20:24:22.127570128 +0000
+@@ -1,26 +1,25 @@
+ from distutils.core import setup, Extension
+ from os import getenv
+ import sys
+-import os
+-p = sys.prefix
+-NUMPYPATH = '.'
+-if os.path.isdir(p + '/include/numpy'):
+-  NUMPY = 'NUMPY'
+-elif os.path.isdir(p + '/Lib/site-packages/numpy/core/include/numpy'):
+-  NUMPY = 'NUMPY'
+-  NUMPYPATH = p + '/Lib/site-packages/numpy/core/include'
+-else:
++import os, os.path
++
++try:
++    import numpy
++    NUMPY = 'NUMPY'
++    NUMPYPATH = numpy.get_include()
++except:
+   NUMPY = 'NONUMPY'
+-print 'numpy: ' + NUMPY
++  NUMPYPATH = '.'
++
+ windir = getenv('windir')
+ if windir == None:
+   WIN32 = 'NOWIN32'
+-  LPSOLVE55 = '../../lpsolve55/bin/ux32'
++  LPSOLVEINC = os.path.join(sys.prefix,'include','lpsolve')
+ else:
+   WIN32 = 'WIN32'
+   LPSOLVE55 = '../../lpsolve55/bin/win32'
+ setup (name = "lpsolve55",
+-       version = "5.5.0.9",
++       version = "5.5.2.0",
+        description = "Linear Program Solver, Interface to lpsolve",
+        author = "Peter Notebaert",
+        author_email = "lpsolve@peno.be",
+@@ -29,8 +28,7 @@
+        ext_modules = [Extension("lpsolve55",
+ 				["lpsolve.c", "hash.c", "pythonmod.c"],
+                                 define_macros=[('PYTHON', '1'), (WIN32, '1'), ('NODEBUG', '1'), ('DINLINE', 'static'), (NUMPY, '1'), ('_CRT_SECURE_NO_WARNINGS', '1')],
+-                                include_dirs=['../..', NUMPYPATH],
+-                                library_dirs=[LPSOLVE55],
++                                include_dirs=[LPSOLVEINC, NUMPYPATH],
+ 				libraries = ["lpsolve55"])
+ 		      ]
+ )

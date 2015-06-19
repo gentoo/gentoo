@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=virtual/perl-AutoLoader >=virtual/perl-IO-Compress-1.30 >=dev-perl/Archive-Zip-1.00 >=dev-perl/PAR-Dist-0.32 dev-lang/perl:=[-build(-)]
+DESCRIPTION=Perl Archive Toolkit
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/PAR/
+KEYWORDS=amd64 x86 ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-AutoLoader >=virtual/perl-IO-Compress-1.30 >=dev-perl/Archive-Zip-1.00 >=dev-perl/PAR-Dist-0.32 dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/R/RS/RSCHUPP/PAR-1.007.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=247f081b63fd9989d315d5264b8011c0

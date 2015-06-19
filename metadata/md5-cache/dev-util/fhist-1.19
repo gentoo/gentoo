@@ -1,0 +1,13 @@
+DEFINED_PHASES=prepare
+DEPEND=dev-libs/libexplain sys-devel/gettext sys-apps/groff sys-devel/bison test? ( app-arch/sharutils )
+DESCRIPTION=File history and comparison tools
+EAPI=4
+HOMEPAGE=http://fhist.sourceforge.net/fhist.html
+IUSE=test
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~x86-linux
+LICENSE=GPL-3
+RDEPEND=dev-libs/libexplain sys-devel/gettext sys-apps/groff
+SLOT=0
+SRC_URI=http://fhist.sourceforge.net/fhist-1.19.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=36815487e0997cbb22e759731bf9414b

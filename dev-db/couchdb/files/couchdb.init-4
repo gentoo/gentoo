@@ -1,0 +1,17 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Dirkjan Ochtman
+# Distributed under the terms of the Apache License, Version 2.0
+
+pidfile=${COUCHDB_PID_FILE}
+command=${EXEC:-/usr/bin/couchdb}
+command_args="-b -o ${COUCHDB_STDOUT_FILE} -e ${COUCHDB_STDERR_FILE} -p ${pidfile} ${COUCHDB_OPTIONS}"
+
+start_stop_daemon_args="--user ${COUCHDB_USER}"
+
+depend() {
+	need net
+}
+
+start_pre() {
+	checkpath -q -d -m 0755 -o ${COUCHDB_USER} /var/run/couchdb
+}

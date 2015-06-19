@@ -1,0 +1,24 @@
+Description: Fix FTBFS with Qt 4.7.
+
+--- qdevelop-0.28.orig/src/build.h
++++ qdevelop-0.28/src/build.h
+@@ -56,7 +56,7 @@ private:
+ 	int m_warnings;
+ 	QString m_forceMode;
+ signals:
+-	void message(QString, QString=0);
++	void message(QString, QString=QString());
+ protected slots:
+ 	void slotBuildMessages();
+ 	void slotStopBuild();
+--- qdevelop-0.28.orig/src/textEdit.h
++++ qdevelop-0.28/src/textEdit.h
+@@ -142,7 +142,7 @@ public:
+     void setMouseHidden( bool hidden );
+ public slots:
+     void gotoLine( int line, bool moveTop );
+-    void slotFind(Ui::FindWidget uiFind, Ui::ReplaceWidget uiReplace, QString ttf=0,  QTextDocument::FindFlags options=0, bool fromButton=false);
++    void slotFind(Ui::FindWidget uiFind, Ui::ReplaceWidget uiReplace, QString ttf=QString(),  QTextDocument::FindFlags options=0, bool fromButton=false);
+     void slotIndent(bool indent=true);
+     void slotUnindent();
+     void comment(ActionComment action);

@@ -1,0 +1,24 @@
+# ChangeLog for app-portage/fetchcommandwrapper
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/fetchcommandwrapper/ChangeLog,v 1.4 2015/06/06 07:41:10 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*fetchcommandwrapper-0.7.2 (21 Nov 2014)
+
+  21 Nov 2014; Sebastian Pipping <sping@gentoo.org>
+  fetchcommandwrapper-0.7.1.ebuild, +fetchcommandwrapper-0.7.2.ebuild:
+  Bump to 0.7.2, move to distutils-r1
+
+*fetchcommandwrapper-0.7.1 (27 Oct 2010)
+
+  27 Oct 2010; Sebastian Pipping <sping@gentoo.org>
+  -fetchcommandwrapper-0.7.ebuild, +fetchcommandwrapper-0.7.1.ebuild:
+  Bugfix bump
+
+*fetchcommandwrapper-0.7 (27 Oct 2010)
+
+  27 Oct 2010; Sebastian Pipping <sping@gentoo.org>
+  +fetchcommandwrapper-0.7.ebuild, +metadata.xml:
+  New package

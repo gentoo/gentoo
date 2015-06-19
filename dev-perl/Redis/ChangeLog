@@ -1,0 +1,15 @@
+# ChangeLog for dev-perl/Redis
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Redis/ChangeLog,v 1.2 2014/12/11 23:59:48 dilfridge Exp $
+
+*Redis-1.976.0 (11 Dec 2014)
+
+  11 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org> +Redis-1.976.0.ebuild:
+  Version bump, bug 531378. Ebuild by Ferenc Erki.
+
+*Redis-1.961.0 (25 Oct 2014)
+
+  25 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org> +Redis-1.961.0.ebuild,
+  +metadata.xml:
+  New package, bug 475726
+

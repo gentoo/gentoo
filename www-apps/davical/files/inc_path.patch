@@ -1,0 +1,28 @@
+--- htdocs/always.php.orig	2012-01-05 21:28:16.382878446 +0100
++++ htdocs/always.php	2012-01-05 21:30:06.828431957 +0100
+@@ -48,7 +48,7 @@
+ // $c->default_locale = array('es_MX', 'es_AR', 'es', 'pt');  // An array of locales to try, or just a single locale
+ // $c->local_tzid = 'Pacific/Auckland';  // Perhaps we should read from /etc/timezone - I wonder how standard that is?
+ $c->default_locale = 'en';
+-$c->locale_path = '../locale';
++$c->locale_path = '../../davical/locale';
+ $c->base_url = preg_replace('#/[^/]+\.php.*$#', '', $_SERVER['SCRIPT_NAME']);
+ $c->base_directory = preg_replace('#/[^/]*$#', '', $_SERVER['DOCUMENT_ROOT']);
+ $c->default_privileges = array('read-free-busy', 'schedule-deliver');
+@@ -80,6 +80,7 @@
+         '../../awl/inc'
+       , '/usr/share/awl/inc'        // Where it ends up on Debian
+       , '/usr/share/php/awl/inc'    // Fedora's standard for PHP libraries
++      , '/usr/share/php5/awl/inc'   // Gentoo's standard for PHP5 libraries
+       , '/usr/local/share/awl/inc'
+   );
+   foreach( $try_paths AS $awl_include_path ) {
+@@ -95,7 +96,7 @@
+ }
+ 
+ // Ensure that ../inc is in our included paths as early as possible
+-set_include_path( '../inc'. PATH_SEPARATOR. get_include_path());
++set_include_path( '../../davical/inc'. PATH_SEPARATOR. get_include_path());
+ 
+ 
+ /** We actually discovered this and worked around it earlier, but we can't log it until the utilties are loaded */

@@ -1,0 +1,28 @@
+From e463986ba1f40210b40eff34c4aac727c7f2e571 Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Wed, 13 May 2015 04:22:45 +1000
+Subject: [PATCH] Fix build with >=cmake-3.2.
+
+The FindOpenGL module no longer pulls in X11 libraries.
+---
+ source/shared_lib/CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/source/shared_lib/CMakeLists.txt b/source/shared_lib/CMakeLists.txt
+index 3da563e..e5a06fc 100644
+--- a/source/shared_lib/CMakeLists.txt
++++ b/source/shared_lib/CMakeLists.txt
+@@ -95,6 +95,10 @@ IF(BUILD_MEGAGLEST_MODEL_VIEWER OR BUILD_MEGAGLEST_MAP_EDITOR OR BUILD_MEGAGLEST
+ 		SET(EXTERNAL_LIBS ${EXTERNAL_LIBS} ${OPENGL_LIBRARY})
+ 	ENDIF()
+ 
++        IF(UNIX)
++		FIND_PACKAGE(X11 REQUIRED)
++		SET(EXTERNAL_LIBS ${EXTERNAL_LIBS} ${X11_LIBRARIES})
++        ENDIF()
+ 
+         IF(WANT_XERCES)
+ 	        FIND_PACKAGE(XercesC REQUIRED)
+-- 
+2.3.6
+

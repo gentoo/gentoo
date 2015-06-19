@@ -1,0 +1,66 @@
+--- mlton-20130715-orig/bin/upgrade-basis	2013-07-16 05:59:09.000000000 +1000
++++ mlton-20130715/bin/upgrade-basis	2013-12-17 18:17:24.165889500 +1100
+@@ -28,7 +28,7 @@
+ tmp="$$.sml"
+ 
+ echo "val () = print \"I work\"" >"$tmp"
+-if ! mlton "$tmp" 1>&2; then
++if ! mlton -link-opt -fno-PIE "$tmp" 1>&2; then
+         die "Error: cannot upgrade basis because the compiler doesn't work"
+ fi
+ 
+--- mlton-20130715-orig/mlton/Makefile	2013-07-16 05:59:09.000000000 +1000
++++ mlton-20130715/mlton/Makefile	2013-12-17 23:35:06.137421195 +1100
+@@ -106,7 +106,7 @@
+ 	rm -f control/version.sml
+ 	$(MAKE) control/version.sml
+ 	@echo 'Compiling mlton (takes a while)'
+-	mlton $(FLAGS) $(FILE)
++	mlton $(FLAGS) -link-opt -fno-PIE $(FILE)
+ 
+ .PHONY: def-use
+ def-use: mlton.def-use
+--- mlton-20130715-orig/mllex/Makefile	2013-07-16 05:59:09.000000000 +1000
++++ mlton-20130715/mllex/Makefile	2013-12-18 07:03:29.592171611 +1100
+@@ -21,7 +21,7 @@
+ 
+ $(NAME): $(NAME).mlb $(shell PATH="$(BIN):$$PATH" && "$(MLTON)" -stop f $(NAME).mlb)
+ 	@echo 'Compiling $(NAME)'
+-	"$(MLTON)" $(FLAGS) $(NAME).mlb
++	"$(MLTON)" $(FLAGS) -link-opt -fno-PIE $(NAME).mlb
+ 
+ html/index.html: $(TEX_FILES)
+ 	mkdir -p html
+--- mlton-20130715-orig/mlnlffigen/Makefile	2013-07-16 05:59:09.000000000 +1000
++++ mlton-20130715/mlnlffigen/Makefile	2013-12-18 11:55:33.590660407 +1100
+@@ -22,7 +22,7 @@
+ 
+ $(NAME): $(NAME).mlb $(shell PATH="$(BIN):$$PATH" && "$(MLTON)" -stop f $(NAME).mlb)
+ 	@echo 'Compiling $(NAME)'
+-	$(MLTON) $(FLAGS) $(NAME).mlb
++	$(MLTON) $(FLAGS) -link-opt -fno-PIE $(NAME).mlb
+ 
+ .PHONY: clean
+ clean:
+--- mlton-20130715-orig/mlprof/Makefile	2013-07-16 05:59:09.000000000 +1000
++++ mlton-20130715/mlprof/Makefile	2013-12-20 14:02:50.292677796 +1100
+@@ -21,7 +21,7 @@
+ 
+ $(NAME): $(NAME).mlb $(shell PATH="$(BIN):$$PATH" && "$(MLTON)" -stop f $(NAME).mlb)
+ 	@echo 'Compiling $(NAME)'
+-	$(MLTON) $(FLAGS) $(NAME).mlb
++	$(MLTON) $(FLAGS) -link-opt -fno-PIE $(NAME).mlb
+ 
+ .PHONY: clean
+ clean:
+--- mlton-20130715-orig/mlyacc/Makefile	2013-07-16 05:59:09.000000000 +1000
++++ mlton-20130715/mlyacc/Makefile	2013-12-20 15:01:26.567775876 +1100
+@@ -41,7 +41,7 @@
+ 
+ $(NAME): $(NAME).mlb $(shell PATH="$(BIN):$$PATH" && "$(MLTON)" -stop f $(NAME).mlb)
+ 	@echo 'Compiling $(NAME)'
+-	"$(MLTON)" $(FLAGS) $(NAME).mlb
++	"$(MLTON)" $(FLAGS) -link-opt -fno-PIE $(NAME).mlb
+ 
+ src/yacc.lex.sml: src/yacc.lex
+ 	rm -f src/yacc.lex.sml && \

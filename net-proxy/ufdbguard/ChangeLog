@@ -1,0 +1,169 @@
+# ChangeLog for net-proxy/ufdbguard
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/ufdbguard/ChangeLog,v 1.31 2015/04/24 10:18:43 eras Exp $
+
+  24 Apr 2015; Eray Aslan <eras@gentoo.org> ufdbguard-1.24-r1.ebuild,
+  ufdbguard-1.29.ebuild:
+  Do not hard code squid user and group id - bug #537610
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> ufdbguard-1.24-r1.ebuild,
+  ufdbguard-1.29.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> ufdbguard-1.24-r1.ebuild,
+  ufdbguard-1.29.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+  28 Dec 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  -ufdbguard-1.27-r1.ebuild, -ufdbguard-1.28.ebuild, files/ufdb.initd.2:
+  Remove old; update init script to drop 'need net' and to add 'use logger'.
+
+*ufdbguard-1.29 (29 Aug 2012)
+
+  29 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/ufdbguard-1.29-parallel-make.patch, +ufdbguard-1.29.ebuild:
+  Version bump.
+
+  18 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #391429.
+
+*ufdbguard-1.28 (19 Jan 2012)
+
+  19 Jan 2012; Diego E. Pettenò <flameeyes@gentoo.org> +ufdbguard-1.28.ebuild:
+  Version bump
+
+*ufdbguard-1.27-r1 (12 Jan 2012)
+
+  12 Jan 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +ufdbguard-1.27-r1.ebuild, -ufdbguard-1.26-r1.ebuild, -ufdbguard-1.26.ebuild,
+  -ufdbguard-1.27.ebuild, files/ufdb.initd.2:
+  Remove old versions; revision bump to fix a mistake in the init script.
+
+*ufdbguard-1.27 (04 Nov 2011)
+
+  04 Nov 2011; Diego E. Pettenò <flameeyes@gentoo.org> +ufdbguard-1.27.ebuild:
+  Version bump.
+
+*ufdbguard-1.26-r1 (22 Oct 2011)
+
+  22 Oct 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +ufdbguard-1.26-r1.ebuild, +files/ufdb.initd.2:
+  Revision bump to update the init script to be more sophisticated thanks to
+  OpenRC.
+
+  14 Sep 2011; Diego E. Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Forcing Manifest regeneration.
+
+  14 Sep 2011; Diego E. Pettenò <flameeyes@gentoo.org> files/ufdb.initd:
+  Do not use bashism to reload ufdbGuard; use the new extra_started_commands
+  variable instead of opts.
+
+  06 Sep 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  ufdbguard-1.24-r1.ebuild, ufdbguard-1.26.ebuild, files/ufdb.initd:
+  Replace --chuid option with --user in init script; depend on openrc as the
+  init script always used --wait.
+
+  06 Jul 2011; Diego E. Pettenò <flameeyes@gentoo.org> -ufdbguard-1.11.ebuild,
+  -ufdbguard-1.20.ebuild, -files/ufdbguard-1.20-parallel-make.patch,
+  -files/ufdbguard-1.23-gentoo.patch, -files/ufdbguard.confd,
+  -files/ufdbguard.initd:
+  Remove old versions (which included a number of QA issues).
+
+*ufdbguard-1.26 (25 Jun 2011)
+
+  25 Jun 2011; Diego E. Pettenò <flameeyes@gentoo.org> -ufdbguard-1.25.ebuild,
+  +ufdbguard-1.26.ebuild:
+  Version bump; also add -fno-strict-aliasing as upstream code seems to have
+  possible issues.
+
+  18 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ufdbguard-1.24-r1.ebuild:
+  x86 stable wrt bug #371039
+
+*ufdbguard-1.25 (10 Jun 2011)
+
+  10 Jun 2011; Diego E. Pettenò <flameeyes@gentoo.org> +ufdbguard-1.25.ebuild:
+  Version bump.
+
+*ufdbguard-1.24-r1 (01 May 2011)
+
+  01 May 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -ufdbguard-1.23-r1.ebuild, -ufdbguard-1.24.ebuild, +ufdbguard-1.24-r1.ebuild,
+  files/ufdb.confd, files/ufdb.initd:
+  Update init script to wait to see if ufdb successfully started; add urls to
+  the generated tables if present; add a variable to set options for
+  ufdbGenTable and default to -W.
+
+  16 Feb 2011; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata, I'll co-maintain 1.24 and later as well.
+
+*ufdbguard-1.24 (16 Feb 2011)
+
+  16 Feb 2011; Diego E. Pettenò <flameeyes@gentoo.org> +ufdbguard-1.24.ebuild,
+  +files/ufdbguard-1.24-gentoo.patch:
+  Version bump.
+
+*ufdbguard-1.23-r1 (31 Jan 2011)
+
+  31 Jan 2011; Jeroen Roovers <jer@gentoo.org> -ufdbguard-1.23.ebuild,
+  +ufdbguard-1.23-r1.ebuild, files/ufdbUpdate.cron:
+  /etc/cron.daily/ufdbUpdate: line 10: return: can only `return\' from a
+  function or sourced script.
+
+*ufdbguard-1.23 (07 Dec 2010)
+
+  07 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org> +ufdbguard-1.23.ebuild,
+  +files/ufdbguard-1.23-gentoo.patch,
+  +files/ufdbguard-1.23-parallel-make.patch, +files/ufdb.confd,
+  +files/ufdb.initd, +files/ufdbUpdate.cron, -files/ufdbhttpd.confd,
+  -files/ufdbhttpd.initd, metadata.xml:
+  Version bump. This new version renames the init script to ufdb (to fall in
+  line with the official documentation), relocates the blacklists and the
+  configuration file, allows setting user/password for download without editing
+  the script, allows to disable at build time the use of ufdbhttpd, installs a
+  cron.daily file to update the database and adds a reload target to the init
+  script (with a reconfig alias as that's what the official documentation
+  suggests to use). Also add a doc USE flag to download and install the
+  official reference manual for the version.
+
+  07 May 2010; Jeroen Roovers <jer@gentoo.org> ufdbguard-1.20.ebuild:
+  Remove dev cruft from ebuild.
+
+*ufdbguard-1.20 (07 May 2010)
+
+  07 May 2010; Jeroen Roovers <jer@gentoo.org> -ufdbguard-1.13.ebuild,
+  -ufdbguard-1.16.ebuild, +ufdbguard-1.20.ebuild,
+  +files/ufdbguard-1.20-parallel-make.patch:
+  Fix parallel make (bug #297988).
+
+  07 May 2010; Jeroen Roovers <jer@gentoo.org> ufdbguard-1.13.ebuild,
+  ufdbguard-1.16.ebuild:
+  Replace dev-util/yacc with sys-devel/bison. Remove dohtml and dodoc *.html
+  *.txt calls as those files are not distributed in these versions.
+
+  07 May 2010; Jeroen Roovers <jer@gentoo.org> ufdbguard-1.13.ebuild,
+  ufdbguard-1.16.ebuild:
+  Fix quoting issues. Move around (R)DEPENDs so yacc and flex are not
+  RDEPENDs (bug #221341). Set IUSE too.
+
+*ufdbguard-1.16 (18 Mar 2009)
+
+  18 Mar 2009; J. Alberto Suárez López <bass@gentoo.org>
+  files/ufdbguard.confd, files/ufdbguard.initd, +files/ufdbhttpd.confd,
+  +files/ufdbhttpd.initd, +ufdbguard-1.16.ebuild:
+  Version Bump
+
+  12 Oct 2008; Alin Năstac <mrness@gentoo.org> ufdbguard-1.13.ebuild:
+  Remove squid run-time dependency (#241212).
+
+  23 Oct 2007; J. Alberto Suárez López <bass@gentoo.org> ChangeLog:
+  Version bump
+
+  25 May 2007; J. Alberto Suárez López <bass@gentoo.org>
+  ufdbguard-1.11.ebuild:
+  stable x86
+
+*ufdbguard-1.11 (24 Apr 2007)
+
+  24 Apr 2007; J.Alberto Suárez López <bass@gentoo.org> :
+  Initial import.

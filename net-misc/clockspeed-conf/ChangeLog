@@ -1,0 +1,22 @@
+# ChangeLog for net-misc/clockspeed-conf
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/clockspeed-conf/ChangeLog,v 1.4 2011/01/29 23:23:18 bangert Exp $
+
+  29 Jan 2011; Thilo Bangert <bangert@gentoo.org>
+  clockspeed-conf-0.4.5-r1.ebuild:
+  dep on virtual/daemontools - assign RDEPEND
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+*clockspeed-conf-0.4.5-r1 (22 Apr 2005)
+
+  22 Apr 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/clockspeed-conf-0.4.5-gentoo.patch,
+  +clockspeed-conf-0.4.5-r1.ebuild:
+  Use Gentoo-specific paths #90073 by Thilo Bangert.
+
+*clockspeed-conf (19 Apr 2005)
+
+  19 Apr 2005; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Thilo Bangert #89344.

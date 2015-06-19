@@ -1,0 +1,91 @@
+# ChangeLog for app-mobilephone/sobexsrv
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/sobexsrv/ChangeLog,v 1.24 2014/04/09 10:02:24 tomwij Exp $
+
+  09 Apr 2014; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  [QA] Dissolve the mobile-phone herd to maintainer-needed because it is empty
+  and nobody joined it after multiple recruitment mails.
+
+  02 Jun 2012; Zac Medico <zmedico@gentoo.org> sobexsrv-1.0.1.ebuild:
+  inherit user for enewgroup and enewuser
+
+  29 Oct 2010; Christian Birchinger <joker@gentoo.org>
+  sobexsrv-1.0.1.ebuild:
+  Honor the user's CC and LDFLAGS values
+
+  11 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> sobexsrv-1.0.1.ebuild:
+  Drop bluez-libs and bluez-utils support wrt #301630.
+
+  21 Nov 2009; Raúl Porcel <armin76@gentoo.org> sobexsrv-1.0.1.ebuild:
+  Drop sparc keyword
+
+  12 May 2009; Peter Alfredsen <loki_val@gentoo.org> sobexsrv-1.0.1.ebuild:
+  List net-wireless/bluez first in ( a b ) dependency w.r.t. bug 269519.
+
+  05 Mar 2009; Tiziano Müller <dev-zero@gentoo.org> sobexsrv-1.0.1.ebuild:
+  Added net-wireless/bluez as an option for dep/rdep (tested and works
+  fine).
+
+  12 Jul 2008; Alin Năstac <mrness@gentoo.org> -sobexsrv-1.0.0_pre4.ebuild:
+  Remove obsolete version.
+
+  24 Mar 2008; Markus Meier <maekke@gentoo.org> sobexsrv-1.0.1.ebuild:
+  amd64 stable, bug #201787
+
+  22 Dec 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  sobexsrv-1.0.1.ebuild:
+  ppc stable, bug #201787
+
+  10 Dec 2007; Dawid Węgliński <cla@gentoo.org> sobexsrv-1.0.1.ebuild:
+  Stable on x86 (bug #201787)
+
+  09 Dec 2007; Christian Birchinger <joker@gentoo.org>
+  sobexsrv-1.0.1.ebuild:
+  Added sparc stable keyword
+
+*sobexsrv-1.0.1 (26 Oct 2007)
+
+  26 Oct 2007; Christian Birchinger <joker@gentoo.org>
+  +sobexsrv-1.0.1.ebuild:
+  Version bump and 64bit fixes.
+
+  16 Feb 2007; Christian Birchinger <joker@gentoo.org>
+  sobexsrv-1.0.0_pre4.ebuild:
+  Small fix for the manpage installation path (not worth a bump).
+
+  23 Jan 2007; Marius Mauch <genone@gentoo.org> sobexsrv-1.0.0_pre4.ebuild:
+  Replacing einfo with elog
+
+  22 Aug 2006; Christian Birchinger <joker@gentoo.org>
+  sobexsrv-1.0.0_pre4.ebuild:
+  Fixed minor comment glitch #144557
+
+  16 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  sobexsrv-1.0.0_pre4.ebuild:
+  ppc stable
+
+  14 May 2006; Mark Loeser <halcy0n@gentoo.org> sobexsrv-1.0.0_pre4.ebuild:
+  Stable on x86; bug #131734
+
+  06 May 2006; Simon Stelling <blubb@gentoo.org> sobexsrv-1.0.0_pre4.ebuild:
+  stable on amd64
+
+  05 May 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  sobexsrv-1.0.0_pre4.ebuild:
+  Added to ~ppc, bug #131734
+
+  29 Apr 2006; Christian Birchinger <joker@gentoo.org>
+  sobexsrv-1.0.0_pre4.ebuild:
+  Added net-wireless/bluez-utils as runtime depend because it depends on the
+  bluetooth init script from bluez-utils
+
+  16 Apr 2006; Christian Birchinger <joker@gentoo.org>
+  sobexsrv-1.0.0_pre4.ebuild:
+  Added sparc stable keyword
+
+*sobexsrv-1.0.0_pre4 (21 Mar 2006)
+
+  21 Mar 2006; Christian Birchinger <joker@gentoo.org>
+  +files/conf.d_sobexsrv, +files/init.d_sobexsrv, +metadata.xml,
+  +sobexsrv-1.0.0_pre4.ebuild:
+  Initial import

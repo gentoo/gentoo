@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=media-sound/jack-audio-connection-kit-0.80.0 >=media-plugins/swh-plugins-0.4.6 media-libs/ladspa-sdk >=sci-libs/fftw-3.0.1 media-libs/libsndfile media-libs/alsa-lib >=dev-libs/libxml2-2.5 >=x11-libs/gtk+-2:2 osc? ( >=media-libs/liblo-0.5 )
+DESCRIPTION=JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
+EAPI=2
+HOMEPAGE=http://jamin.sourceforge.net
+IUSE=osc
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=>=media-sound/jack-audio-connection-kit-0.80.0 >=media-plugins/swh-plugins-0.4.6 media-libs/ladspa-sdk >=sci-libs/fftw-3.0.1 media-libs/libsndfile media-libs/alsa-lib >=dev-libs/libxml2-2.5 >=x11-libs/gtk+-2:2 osc? ( >=media-libs/liblo-0.5 )
+SLOT=0
+SRC_URI=mirror://sourceforge/jamin/jamin-0.95.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8821fd31740db0c248a1631b089fd1f4

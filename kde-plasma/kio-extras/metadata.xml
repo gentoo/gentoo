@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<use>
+		<flag name="phonon">Enable file audio preview plugin using <pkg>media-libs/phonon</pkg></flag>
+		<flag name="sftp">Enable SFTP protocol support using <pkg>net-libs/libssh</pkg></flag>
+	</use>
+</pkgmetadata>

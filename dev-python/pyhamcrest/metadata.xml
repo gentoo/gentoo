@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>alunduil@gentoo.org</email>
+		<name>Alex Brandt</name>
+	</maintainer>
+	<longdescription lang="en">
+	</longdescription>
+	<use>
+		<flag name="numpy">Enable optional dependence on dev-python/numpy</flag>
+	</use>
+	<upstream>
+		<remote-id type="pypi">PyHamcrest</remote-id>
+		<remote-id type="github">hamcrest/PyHamcrest</remote-id>
+	</upstream>
+</pkgmetadata>

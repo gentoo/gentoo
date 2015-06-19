@@ -1,0 +1,433 @@
+# ChangeLog for media-fonts/terminus-font
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/terminus-font/ChangeLog,v 1.105 2015/04/28 10:04:05 yngwin Exp $
+
+  28 Apr 2015; Ben de Groot <yngwin@gentoo.org> terminus-font-4.39-r1.ebuild:
+  stable
+
+*terminus-font-4.39-r1 (10 Feb 2015)
+
+  10 Feb 2015; Ben de Groot <yngwin@gentoo.org> +terminus-font-4.39-r1.ebuild,
+  metadata.xml:
+  Add pcf-unicode-only useflag, enabled by default (bug #520222). Bump EAPI to
+  5. Alphabetize USE flags listing.
+
+  08 Feb 2015; Mike Gilbert <floppym@gentoo.org> terminus-font-4.39.ebuild:
+  Install 75-yes-terminus.conf.
+
+  09 Sep 2014; Mike Frysinger <vapier@gentoo.org> terminus-font-4.39.ebuild:
+  Fix typo in install when USE=-pcf.
+
+*terminus-font-4.39 (09 Sep 2014)
+
+  09 Sep 2014; Mike Frysinger <vapier@gentoo.org> +terminus-font-4.39.ebuild:
+  Version bump #509860 by bill.
+
+  06 Sep 2013; Agostino Sarubbo <ago@gentoo.org> terminus-font-4.38.ebuild:
+  Stable for sparc, wrt bug #448010
+
+  05 Sep 2013; Agostino Sarubbo <ago@gentoo.org> terminus-font-4.38.ebuild:
+  Stable for ppc64, wrt bug #448010
+
+  01 Sep 2013; Agostino Sarubbo <ago@gentoo.org> terminus-font-4.38.ebuild:
+  Stable for alpha, wrt bug #448010
+
+  29 Aug 2013; Markus Meier <maekke@gentoo.org> terminus-font-4.38.ebuild:
+  arm stable, bug #448010
+
+  29 Aug 2013; Agostino Sarubbo <ago@gentoo.org> terminus-font-4.38.ebuild:
+  Stable for ia64, wrt bug #448010
+
+  28 Aug 2013; Agostino Sarubbo <ago@gentoo.org> terminus-font-4.38.ebuild:
+  Stable for x86, wrt bug #448010
+
+  28 Aug 2013; Chema Alonso <nimiux@gentoo.org> terminus-font-4.38.ebuild:
+  Stable for amd64 wrt bug #448010
+
+  26 Aug 2013; Agostino Sarubbo <ago@gentoo.org> terminus-font-4.38.ebuild:
+  Stable for ppc, wrt bug #448010
+
+  26 Aug 2013; Jeroen Roovers <jer@gentoo.org> terminus-font-4.38.ebuild:
+  Stable for HPPA (bug #448010).
+
+  10 Feb 2013; Christoph Junghans <ottxor@gentoo.org> terminus-font-4.36.ebuild,
+  terminus-font-4.38.ebuild:
+  fixed awk deps (bug #455732)
+
+  29 Aug 2012; Ben de Groot <yngwin@gentoo.org> metadata.xml,
+  terminus-font-4.38.ebuild:
+  Rename center-tilde useflag (bug #432886). Remove unnecessary dies (eapi=4).
+
+  21 Aug 2012; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml,
+  terminus-font-4.38.ebuild:
+  Add useflag to center the tilda.
+
+*terminus-font-4.38 (21 Aug 2012)
+
+  21 Aug 2012; Tomáš Chvátal <scarabeus@gentoo.org> +terminus-font-4.38.ebuild,
+  -files/terminus-font-4.32-parallel-install.patch, -terminus-font-4.30.ebuild,
+  -terminus-font-4.32.ebuild, -terminus-font-4.35.ebuild, metadata.xml,
+  terminus-font-4.36.ebuild:
+  Version bump to 4.38. Stabilise 4.36 on all archs. Remove older. Resolves
+  bug#428608.
+
+  27 Aug 2011; Justin Lecher <jlec@gentoo.org> terminus-font-4.36.ebuild,
+  metadata.xml:
+  Removed broken USE=width and add new USE=distinct-l for new upstream l form
+  patch, #379455; thanks Conway S. Smith for the patched ebuild
+
+*terminus-font-4.36 (15 Aug 2011)
+
+  15 Aug 2011; Justin Lecher <jlec@gentoo.org> +terminus-font-4.36.ebuild,
+  metadata.xml:
+  Version Bump
+
+  14 Jun 2011; Fabian Groffen <grobian@gentoo.org> terminus-font-4.35.ebuild:
+  Marked ~x86-macos (#369547) and ~ppc-macos
+
+*terminus-font-4.35 (20 May 2011)
+
+  20 May 2011; Justin Lecher <jlec@gentoo.org> -terminus-font-4.34.ebuild,
+  +terminus-font-4.35.ebuild:
+  Version bump, fixes #366391
+
+*terminus-font-4.34 (06 May 2011)
+
+  06 May 2011; Justin Lecher <jlec@gentoo.org> terminus-font-4.30.ebuild,
+  +terminus-font-4.34.ebuild:
+  Non-maintainer Version Bump, notified by euscan
+
+  22 Jan 2011; Ryan Hill <dirtyepic@gentoo.org> terminus-font-4.30.ebuild,
+  terminus-font-4.32.ebuild, +files/terminus-font-4.32-parallel-install.patch:
+  Properly fix parallel install (bug #352321 by Tolga Dalman).
+
+  21 Jan 2011; Justin Lecher <jlec@gentoo.org> terminus-font-4.30.ebuild,
+  terminus-font-4.32.ebuild:
+  Fix parallel installation problem, #352321
+
+*terminus-font-4.32 (20 Jan 2011)
+
+  20 Jan 2011; Dror Levin <spatz@gentoo.org> +terminus-font-4.32.ebuild:
+  Version bump, bug 351108.
+
+  07 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  terminus-font-4.30.ebuild:
+  ppc64 stable wrt #320303
+
+  01 Jul 2010; Peter Volkov <pva@gentoo.org> -terminus-font-4.28.ebuild,
+  terminus-font-4.30.ebuild:
+  Drop old. Update HOMEPAGE, thank upstream developer Dimitar Zhekov for
+  notification.
+
+  19 Jun 2010; Raúl Porcel <armin76@gentoo.org> terminus-font-4.30.ebuild:
+  alpha/arm/ia64/s390/sh/sparc/x86 stable wrt #320303
+
+  20 May 2010; Peter Volkov <pva@gentoo.org> terminus-font-4.30.ebuild:
+  amd64 stable, bug #320303
+
+  20 May 2010; Jeroen Roovers <jer@gentoo.org> terminus-font-4.30.ebuild:
+  Stable for HPPA PPC (bug #320303).
+
+  15 Mar 2010; Jeremy Olexa <darkside@gentoo.org> terminus-font-4.30.ebuild:
+  Since my last commit moved this ebuild to EAPI3, add a src_prepare, and
+  src_compile function
+
+  15 Mar 2010; Jeremy Olexa <darkside@gentoo.org> terminus-font-4.30.ebuild:
+  Convert to EAPI3 and add EPREFIX where needed, bug 309603
+
+  11 Feb 2010; Mark Loeser <halcy0n@gentoo.org> terminus-font-4.28.ebuild,
+  terminus-font-4.30.ebuild:
+  Add font_pkg_setup to pkg_setup so the eclass sets up the prefix compat
+  variables correctly
+
+*terminus-font-4.30 (22 Dec 2009)
+
+  22 Dec 2009; Peter Volkov <pva@gentoo.org> +terminus-font-4.30.ebuild:
+  Version bump, bug #297841, thank Jacek Sowiński for report.
+
+  07 Sep 2009; Ryan Hill <dirtyepic@gentoo.org> -terminus-font-4.20.ebuild,
+  -terminus-font-4.26.ebuild:
+  Remove old.
+
+  05 Jun 2009; Peter Volkov <pva@gentoo.org> terminus-font-4.28.ebuild,
+  metadata.xml:
+  Raw USE flag renamed to raw-font-data as it had inconsistent usage with
+  global USE flag, bug #271918, thank Antti Mäkelä for report
+
+  12 Jan 2009; Jeroen Roovers <jer@gentoo.org> terminus-font-4.28.ebuild:
+  Stable for HPPA (bug #252648).
+
+  07 Jan 2009; Raúl Porcel <armin76@gentoo.org> terminus-font-4.28.ebuild:
+  alpha/arm/ia64/s390/sh stable wrt #252648
+
+  02 Jan 2009; Torsten Veller <tove@gentoo.org> terminus-font-4.28.ebuild:
+  Stable on x86 (#252648)
+
+  30 Dec 2008; Friedrich Oslage <bluebird@gentoo.org>
+  terminus-font-4.28.ebuild:
+  Stable on sparc, bug #252648
+
+  28 Dec 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  terminus-font-4.28.ebuild:
+  ppc stable, bug #252648
+
+  27 Dec 2008; Brent Baude <ranger@gentoo.org> terminus-font-4.28.ebuild:
+  stable ppc64, bug 252648
+
+  27 Dec 2008; Jeremy Olexa <darkside@gentoo.org> terminus-font-4.28.ebuild:
+  amd64 stable, bug 252648
+
+*terminus-font-4.28 (06 Oct 2008)
+
+  06 Oct 2008; Peter Volkov <pva@gentoo.org> metadata.xml,
+  -terminus-font-4.26-r2.ebuild, +terminus-font-4.28.ebuild:
+  Version bump, bug #238415 reported by Arfrever Frehtes Taifersar Arahesis.
+  Fixes missing glyph problem, bug #233363, reported by Alexey Charkov.
+  Added +pcf, +psf and raw USE flags so now you can select what font formats
+  you are interested in, fixes bug #228793 reported by Nikita Ofitserov.
+  Removed broken ebuild.
+
+  17 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*terminus-font-4.26-r2 (22 Jun 2008)
+
+  22 Jun 2008; Peter Volkov <pva@gentoo.org> -terminus-font-4.26-r1.ebuild,
+  +terminus-font-4.26-r2.ebuild:
+  Fixed typo in USE flag for terminus font: qoute -> quote, bug #228813,
+  thank Franz Metz for report. Added RDEPEND to avoid implicit
+  RDEPEND=DEPEND.
+
+  21 Jun 2008; Peter Volkov <pva@gentoo.org> terminus-font-4.26-r1.ebuild:
+  Updated lost in the previous commit dependency.
+
+*terminus-font-4.26-r1 (21 Jun 2008)
+
+  21 Jun 2008; Peter Volkov <pva@gentoo.org> -terminus-font-4.07.ebuild,
+  +terminus-font-4.26-r1.ebuild:
+  Added upstream patches to change view of some letters, bug #199696, thank
+  Kir Kolyshkin for report and Leonid Evdokimov for work. Ported to use
+  font.eclass; changed installation to install all fonts not depending on X
+  USE flag, bug #155783, thank J.Taimr for report.
+
+  16 Jun 2008; Santiago M. Mola <coldwind@gentoo.org>
+  terminus-font-4.26.ebuild:
+  amd64 stable wrt bug #227179, quoting fixed.
+
+  16 Jun 2008; Joseph Jezak <josejx@gentoo.org> terminus-font-4.26.ebuild:
+  Marked ppc/ppc64 stable for bug #227179.
+
+  16 Jun 2008; Jeroen Roovers <jer@gentoo.org> terminus-font-4.26.ebuild:
+  Stable for HPPA (bug #227179).
+
+  15 Jun 2008; Raúl Porcel <armin76@gentoo.org> terminus-font-4.26.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #227179
+
+*terminus-font-4.26 (15 Apr 2008)
+
+  15 Apr 2008; Jeroen Roovers <jer@gentoo.org> +terminus-font-4.26.ebuild:
+  Version bump (bug #216208).
+
+  16 Sep 2007; Ryan Hill <dirtyepic@gentoo.org> terminus-font-4.20.ebuild:
+  Stop pulling in bdftopcf unless USE="X".  Bug #192490 by pva.
+
+  22 Jul 2007; Ryan Hill <dirtyepic@gentoo.org> terminus-font-4.07.ebuild,
+  -terminus-font-4.11.ebuild, -terminus-font-4.12.ebuild,
+  -terminus-font-4.14.ebuild, -terminus-font-4.14-r1.ebuild,
+  terminus-font-4.20.ebuild:
+  Remove virtual/x11, system DEPENDs, and old versions.
+
+  18 Mar 2007; Simon Stelling <blubb@gentoo.org> terminus-font-4.20.ebuild:
+  stable on amd64; bug 171063
+
+  17 Mar 2007; Markus Rothe <corsair@gentoo.org> terminus-font-4.20.ebuild:
+  Stable on ppc64; bug #171063
+
+  16 Mar 2007; Jeroen Roovers <jer@gentoo.org> terminus-font-4.20.ebuild:
+  Stable for HPPA (bug #171063).
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org> terminus-font-4.20.ebuild:
+  x86 stable
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  26 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  terminus-font-4.20.ebuild:
+  Add ~x86-fbsd keyword.
+
+  23 Oct 2006; Emanuele Giaquinta <exg@gentoo.org>
+  terminus-font-4.20.ebuild:
+  Stable on ppc.
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  terminus-font-4.20.ebuild:
+  Stable on Alpha.
+
+  07 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  terminus-font-4.20.ebuild:
+  Stable on sparc
+
+  11 Jul 2006; Aron Griffis <agriffis@gentoo.org> terminus-font-4.20.ebuild:
+  Mark 4.20 stable on ia64
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-terminus-font-4.07, files/digest-terminus-font-4.11,
+  files/digest-terminus-font-4.12, files/digest-terminus-font-4.14,
+  files/digest-terminus-font-4.14-r1, Manifest:
+  Fixing SHA256 digest, pass four
+
+*terminus-font-4.20 (31 Mar 2006)
+
+  31 Mar 2006; Emanuele Giaquinta <exg@gentoo.org>
+  +terminus-font-4.20.ebuild:
+  Version bump. Bug #119070
+
+  13 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  terminus-font-4.14.ebuild:
+  Stable on hppa
+
+  01 Feb 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  terminus-font-4.07.ebuild, terminus-font-4.11.ebuild,
+  terminus-font-4.12.ebuild, terminus-font-4.14.ebuild:
+  modular X deps for all ebuilds
+
+*terminus-font-4.14-r1 (11 Jan 2006)
+
+  11 Jan 2006; Robin H. Johnson <robbat2@gentoo.org>
+  +terminus-font-4.14-r1.ebuild:
+  Fixes for modular-X, and support for parallel building (the Makefile is clean).
+
+  03 Sep 2005; Markus Rothe <corsair@gentoo.org> terminus-font-4.14.ebuild:
+  Stable on ppc64
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  terminus-font-4.14.ebuild:
+  Stable on ppc.
+
+  23 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  terminus-font-4.14.ebuild:
+  Stable on sparc
+
+  22 Aug 2005; Aron Griffis <agriffis@gentoo.org> terminus-font-4.14.ebuild:
+  stable alpha amd64 ia64 x86
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> terminus-font-4.12.ebuild:
+  Stable on ppc64
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  terminus-font-4.12.ebuild:
+  Stable on ppc.
+
+  05 Jun 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  terminus-font-4.12.ebuild:
+  Stable on hppa.
+
+  31 May 2005; Marcus D. Hanwell <marcus@gentoo.org>
+  terminus-font-4.12.ebuild:
+  Stable on amd64.
+
+  30 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  terminus-font-4.12.ebuild:
+  Stable on sparc
+
+*terminus-font-4.14 (29 May 2005)
+
+  29 May 2005; Mamoru KOMACHI <usata@gentoo.org> -terminus-font-4.09.ebuild,
+  terminus-font-4.12.ebuild, +terminus-font-4.14.ebuild:
+  Version bumped. This closes bug #94260.
+
+  06 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org> terminus-font-4.11.ebuild:
+  Marked stable on amd64.
+
+  03 Apr 2005; Guy Martin <gmsoft@gentoo.org> terminus-font-4.11.ebuild:
+  Stable on hppa.
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> terminus-font-4.11.ebuild:
+  stable on ia64
+
+*terminus-font-4.12 (17 Mar 2005)
+
+  17 Mar 2005; MATSUU Takuto <matsuu@gentoo.org> +terminus-font-4.12.ebuild:
+  Version bump. Bug 85533.
+
+  19 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> terminus-font-4.11.ebuild:
+  Fixed file collsion with sys-apps/kdb. This closes bug #76937.
+
+  14 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  terminus-font-4.11.ebuild:
+  Stable on sparc
+
+  10 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> terminus-font-4.11.ebuild:
+  Stable on x86 and ppc.
+
+*terminus-font-4.11 (06 Jan 2005)
+
+  06 Jan 2005; MATSUU Takuto <matsuu@gentoo.org> +terminus-font-4.11.ebuild:
+  Version bumped. Bug 72300.
+
+  15 Dec 2004; Markus Rothe <corsair@gentoo.org> terminus-font-4.09.ebuild:
+  Stable on ppc64
+
+  01 Nov 2004; Markus Rothe <corsair@gentoo.org> terminus-font-4.09.ebuild:
+  Marked ~ppc64; bug #68103
+
+*terminus-font-4.09 (12 Sep 2004)
+
+  12 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> +terminus-font-4.09.ebuild:
+  Version bumped. This closes bug #62728.
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org> terminus-font-4.07.ebuild:
+  Fix use invocation
+
+  08 Mar 2004; <matsuu@gentoo.org> terminus-font-4.07.ebuild:
+  Marked as stable.
+  Removed old versions.
+
+*terminus-font-4.07 (26 Feb 2004)
+
+  26 Feb 2004; <matsuu@gentoo.org> terminus-font-4.07.ebuild:
+  Version bumped. Bug # 42882.
+
+  23 Feb 2004; Lars Weiler <pylon@gentoo.org> terminus-font-4.06.ebuild:
+  stable on ppc
+
+  03 Feb 2004; <augustus@gentoo.org> terminus-font-4.06.ebuild:
+  Added ~amd64 keyword.
+
+*terminus-font-4.06 (31 Jan 2004)
+
+  31 Jan 2004; Mamoru KOMACHI <usata@gentoo.org> metadata.xml,
+  terminus-font-4.03-r1.ebuild, terminus-font-4.06.ebuild:
+  Version bumped. Updated HOMEPAGE.
+
+*terminus-font-4.03-r1 (26 Sep 2003)
+
+  26 Sep 2003; Matthew Kennedy <mkennedy@gentoo.org>
+  terminus-font-4.03-r1.ebuild:
+  add upstream authors courier-like a patch
+
+*terminus-font-4.03 (30 Jul 2003)
+
+  30 Jul 2003; Mamoru KOMACHI <usata@gentoo.org> terminus-font-4.03.ebuild:
+  New version. Tidy up ebuild according to the change in source package
+  structure. Thanks to Yuri Enshin <kot@formoza-centre.ru> in bug #23500.
+
+*terminus-font-4.00-r2 (24 Apr 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*terminus-fonts-4.00 (23 Apr 2003)
+
+  24 Apr 2003; Tom Payne <twp@gentoo.org> terminus-fonts-4.00-r2.ebuild :
+
+  Added pkg_postrm. Thanks Paul Totterman.
+
+  23 Apr 2003; Tom Payne <twp@gentoo.org> terminus-fonts-4.00-r1.ebuild :
+
+  Fix pkg_postinst.
+
+  23 Apr 2003; Tom Payne <twp@gentoo.org> terminus-fonts-4.00.ebuild :
+
+  Initial version. Ebuild submitted by Paul Totterman. Bug # 18639.

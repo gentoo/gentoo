@@ -1,0 +1,14 @@
+# ChangeLog for dev-perl/ExtUtils-CChecker
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/ExtUtils-CChecker/ChangeLog,v 1.2 2015/06/13 22:04:34 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  ExtUtils-CChecker-0.90.0.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*ExtUtils-CChecker-0.90.0 (17 Feb 2015)
+
+  17 Feb 2015; Tony Vroon <chainsaw@gentoo.org>
+  +ExtUtils-CChecker-0.90.0.ebuild, +metadata.xml:
+  Initial commit, ebuild based on the work of Kent Fredic & Torsten "tove"
+  Veller in the experimental Perl overlay. Herd review by Kent Fredric.

@@ -1,0 +1,45 @@
+# ChangeLog for sci-libs/btf
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/btf/ChangeLog,v 1.9 2015/02/22 00:48:45 mattst88 Exp $
+
+  22 Feb 2015; Matt Turner <mattst88@gentoo.org> btf-1.1.3.ebuild,
+  btf-1.2.0.ebuild:
+  Drop alpha keyword.
+
+  24 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> -btf-1.0.1.ebuild,
+  -btf-1.1.0.ebuild, -btf-1.1.2.ebuild, btf-1.2.0.ebuild:
+  Switch to EAPI5 and new tar ball
+
+*btf-1.2.0 (12 Nov 2012)
+
+  12 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> +btf-1.2.0.ebuild,
+  metadata.xml:
+  Version bump
+
+*btf-1.1.3 (20 Jan 2012)
+
+  20 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org> +btf-1.1.3.ebuild:
+  Version bump
+
+  26 Jun 2011; Justin Lecher <jlec@gentoo.org> btf-1.0.1.ebuild,
+  btf-1.1.0.ebuild, btf-1.1.2.ebuild, metadata.xml:
+  Straight out QA issues
+
+*btf-1.1.2 (23 Feb 2011)
+
+  23 Feb 2011; Sébastien Fabbro <bicatali@gentoo.org> +btf-1.1.2.ebuild:
+  Bump
+
+  25 Dec 2010; Sébastien Fabbro <bicatali@gentoo.org> btf-1.1.0.ebuild:
+  Added static-libs flag
+
+*btf-1.1.0 (21 Nov 2009)
+
+  21 Nov 2009; Sébastien Fabbro <bicatali@gentoo.org> +btf-1.1.0.ebuild:
+  Version bump
+
+*btf-1.0.1 (05 Feb 2008)
+
+  05 Feb 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/btf-1.0.1-autotools.patch, +metadata.xml, +btf-1.0.1.ebuild:
+  Initial import, part of the suitesparse

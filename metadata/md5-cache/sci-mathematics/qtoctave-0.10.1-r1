@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=|| ( ( >=dev-qt/qtgui-4.8.5:4 dev-qt/designer:4 ) <dev-qt/qtgui-4.8.5:4 ) >=dev-qt/qtsvg-4.6:4 virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Qt4 front-end for Octave
+EAPI=5
+HOMEPAGE=http://forja.rediris.es/projects/csl-qtoctave/
+KEYWORDS=amd64 x86 ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=|| ( ( >=dev-qt/qtgui-4.8.5:4 dev-qt/designer:4 ) <dev-qt/qtgui-4.8.5:4 ) >=dev-qt/qtsvg-4.6:4 sci-mathematics/octave
+SLOT=0
+SRC_URI=http://forja.rediris.es/frs/download.php/2054/qtoctave-0.10.1.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=6d0eb1b90d223d80ce49ecf90acd0d08

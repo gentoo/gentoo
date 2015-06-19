@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-nds/ypserv/files/rpc.ypxfrd-2.23,v 1.1 2011/04/21 14:18:40 jer Exp $
+
+depend() {
+	need net portmap ypserv
+}
+
+start() {
+	ebegin "Starting rpc.ypxfrd"
+	YOPTS=""
+	if [ -n "${YPXFRD_OPTS}" ]; then YOPTS="-- ${YPXFRD_OPTS}"; fi
+ 	start-stop-daemon --start --quiet --pidfile /var/run/ypxfrd.pid --exec /usr/sbin/rpc.ypxfrd ${YOPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping rpc.ypxfrd"
+	start-stop-daemon --stop --quiet --pidfile /var/run/ypxfrd.pid --exec /usr/sbin/rpc.ypxfrd
+	eend $?
+}

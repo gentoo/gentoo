@@ -1,0 +1,55 @@
+# /etc/conf.d/vdr.graphtft
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-graphtft/files/confd,v 1.1 2007/12/23 22:05:10 hd_brummy Exp $
+
+####### Global config for Graphtft ####################
+
+#
+# set the DIR of the Framebuffer Device
+#   allowed values: device_names directFB none
+#   default: /dev/fb0
+#GRAPHTFT_DEVICE=/dev/fb0 
+
+
+###### Configuration for graphtft-fe ##################
+#
+# set GRAPHTFT_DEVICE="" to none 
+
+# set your tft display 
+#	no default values
+#	default: not set, exemple
+#GRAPHTFT_DISPLAY=":0.1" 
+
+# switch to user 
+#	default user root ; depand on your x configuration
+#
+#GRAPHTFT_USER="root"
+
+# set the width of your display
+#	allowed values: 
+#	default: 800
+#GRAPHTFT_SCREEN_WIDTH="800"
+
+# set the height of your display
+#	allowed values:
+#	default: 480
+#GRAPHTFT_SCREEN_HEIGHT="480"
+
+# run output without windowsframe
+#	allowed values: yes no
+#	default: yes
+#GRAPHTFT_NO_FRAME="yes"
+
+# set the IP to your X Display
+#	allowed values: ip address
+#	default: localhost IP
+#GRAPHTFT_HOST="127.0.0.1"
+
+# set the port to your X Display
+#	allowed values: portnumber
+#	default: 2039
+#GRAPHTFT_PORT="2039"
+
+# set the logevel for graphtft-fe
+#	allowed values: 0 1 2 3
+# 	default: 0
+#GRAPHTFT_LOG_LEVEL="0"

@@ -1,0 +1,300 @@
+# ChangeLog for sys-freebsd/freebsd-contrib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-contrib/ChangeLog,v 1.51 2015/05/24 11:24:01 mgorny Exp $
+
+  24 May 2015; Michał Górny <mgorny@gentoo.org> -freebsd-contrib-9.2.ebuild,
+  -freebsd-contrib-9.2_rc1.ebuild, -freebsd-contrib-9.2_rc2.ebuild,
+  -freebsd-contrib-9.2_rc3.ebuild:
+  Remove 9.2. Part of https://github.com/gentoo/gentoo-portage-rsync-
+  mirror/pull/126 by nigoro.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  freebsd-contrib-8.2.ebuild, freebsd-contrib-9.1.ebuild,
+  freebsd-contrib-9.2.ebuild, freebsd-contrib-9.2_rc1.ebuild,
+  freebsd-contrib-9.2_rc2.ebuild, freebsd-contrib-9.2_rc3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*freebsd-contrib-9.2 (09 Nov 2013)
+
+  09 Nov 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-contrib-9.2.ebuild:
+  bump to 9.2
+
+*freebsd-contrib-9.2_rc3 (26 Aug 2013)
+
+  26 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-contrib-9.2_rc3.ebuild:
+  bump to rc3
+
+*freebsd-contrib-9.2_rc2 (22 Aug 2013)
+
+  22 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-contrib-9.2_rc2.ebuild:
+  bump to rc2
+
+  11 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  freebsd-contrib-9.2_rc1.ebuild:
+  Simplify a bit to call freebsd_src_unpack, bug #476646 by Yuta SATOH
+
+*freebsd-contrib-9.2_rc1 (09 Aug 2013)
+
+  09 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-contrib-9.2_rc1.ebuild:
+  Version bump, based on work of Yuta SATOH in bug #476646
+
+  09 Aug 2013; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-contrib-9.0.ebuild:
+  remove old
+
+  18 Jun 2013; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-contrib-7.2.ebuild, -freebsd-contrib-8.0.ebuild:
+  remove old
+
+  27 Jan 2013; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-contrib-9.1_rc1.ebuild, -freebsd-contrib-9.1_rc2.ebuild,
+  -freebsd-contrib-9.1_rc3.ebuild:
+  remove rc versions
+
+*freebsd-contrib-9.1 (27 Jan 2013)
+
+  27 Jan 2013; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-contrib-9.1.ebuild:
+  Bump to 9.1
+
+  12 Jan 2013; Ulrich Müller <ulm@gentoo.org> freebsd-contrib-7.2.ebuild,
+  freebsd-contrib-8.0.ebuild, freebsd-contrib-8.2.ebuild,
+  freebsd-contrib-9.0.ebuild, freebsd-contrib-9.1_rc1.ebuild,
+  freebsd-contrib-9.1_rc2.ebuild, freebsd-contrib-9.1_rc3.ebuild:
+  Fix LICENSE, bug 449796.
+
+*freebsd-contrib-9.1_rc3 (06 Nov 2012)
+
+  06 Nov 2012; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-contrib-9.1_rc3.ebuild:
+  bump to rc3
+
+*freebsd-contrib-9.1_rc2 (14 Oct 2012)
+
+  14 Oct 2012; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-contrib-9.1_rc2.ebuild:
+  bump to 9.1_rc2
+
+*freebsd-contrib-9.1_rc1 (11 Sep 2012)
+
+  11 Sep 2012; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-contrib-9.1_rc1.ebuild:
+  bump to 9.1_rc1 from bsd overlay by Yuta SATOH, bug #426838
+
+  04 May 2012; Alexis Ballier <aballier@gentoo.org> freebsd-contrib-9.0.ebuild:
+  install libodialog in lib64 for amd64
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> freebsd-contrib-9.0.ebuild:
+  keyword ~amd64-fbsd
+
+  30 Mar 2012; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-contrib-9.0_rc1.ebuild, -freebsd-contrib-9.0_rc2.ebuild,
+  -freebsd-contrib-9.0_rc3.ebuild:
+  remove old
+
+*freebsd-contrib-9.0 (16 Jan 2012)
+
+  16 Jan 2012; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-contrib-9.0.ebuild:
+  bump to 9.0
+
+  10 Dec 2011; Naohiro Aota <naota@gentoo.org> freebsd-contrib-8.0.ebuild,
+  freebsd-contrib-8.2.ebuild:
+  Block dev-util/diaglog. Bug #352455
+
+*freebsd-contrib-9.0_rc3 (09 Dec 2011)
+
+  09 Dec 2011; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-contrib-9.0_rc3.ebuild:
+  bump to 9.0_rc3
+
+*freebsd-contrib-9.0_rc2 (07 Dec 2011)
+
+  07 Dec 2011; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-contrib-9.0_rc2.ebuild:
+  bump to rc2
+
+*freebsd-contrib-9.0_rc1 (07 Nov 2011)
+
+  07 Nov 2011; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-contrib-9.0_rc1.ebuild:
+  bump to 9.0_rc1
+
+*freebsd-contrib-8.2 (06 Jul 2011)
+
+  06 Jul 2011; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-contrib-8.2.ebuild:
+  bump to 8.2
+
+*freebsd-contrib-8.0 (19 Mar 2010)
+
+  19 Mar 2010; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-contrib-8.0.ebuild:
+  bump to 8.0 from the bsd overlay
+
+  11 Mar 2010; Alexis Ballier <aballier@gentoo.org>
+  -freebsd-contrib-6.2.ebuild, -freebsd-contrib-7.1.ebuild:
+  remove old
+
+*freebsd-contrib-7.2 (22 May 2009)
+
+  22 May 2009; Alexis Ballier <aballier@gentoo.org>
+  +freebsd-contrib-7.2.ebuild:
+  bump to 7.2
+
+*freebsd-contrib-7.1 (22 Jan 2009)
+
+  22 Jan 2009; Javier Villavicencio <the_paya@gentoo.org>
+  +freebsd-contrib-7.1.ebuild:
+  Import 7.1 ebuilds from gentoo-bsd overlay.
+
+*freebsd-contrib-6.2 (15 Jan 2007)
+
+  15 Jan 2007; Timothy Redaelli <drizzt@gentoo.org>
+  -freebsd-contrib-6.2_rc2.ebuild, +freebsd-contrib-6.2.ebuild:
+  Bump to 6.2 and remove old version.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-contrib-6.1-r1.ebuild:
+  Remove 6.1 ebuild.
+
+*freebsd-contrib-6.2_rc2 (29 Dec 2006)
+
+  29 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-contrib-6.2_rc1.ebuild, +freebsd-contrib-6.2_rc2.ebuild:
+  Bump to rc2 and remove older versions.
+
+  22 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-contrib-6.2_rc1.ebuild:
+  Learn from kde-meta, extract just the part of code we need, cuts the time
+  needed to build freebsd-contrib to about an half.
+
+*freebsd-contrib-6.1-r1 (22 Nov 2006)
+
+  22 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/freebsd-contrib-5.3-lib_csu-makefile.patch,
+  -files/freebsd-contrib-6.2-sparc64.patch, -freebsd-contrib-6.1.ebuild,
+  +freebsd-contrib-6.1-r1.ebuild, -freebsd-contrib-6.2_beta3.ebuild,
+  freebsd-contrib-6.2_rc1.ebuild:
+  Don't build csu directory, as that is code coming from GCC and GCC will take
+  care of building it; this way the sparc64 patch is unneeded and the GCC
+  sources have no more reason to be keeped here. Also remove kerberos and ssl
+  useflags as they were referring to cvs, and users are using dev-util/cvs.
+  Remove all the patches as they are not needed anymore now.
+
+*freebsd-contrib-6.2_rc1 (19 Nov 2006)
+
+  19 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-contrib-6.2_rc1.ebuild:
+  Version bump to 6.2-RC1.
+
+  18 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> ChangeLog, Manifest:
+  Remove 6.2_beta2.
+
+  18 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Remove 6.2_beta2.
+
+  18 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-contrib-6.2_beta2.ebuild:
+  Remove 6.2_beta2.
+
+*freebsd-contrib-6.2_beta3 (01 Nov 2006)
+
+  01 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-contrib-6.2_beta3.ebuild:
+  Bump to 6.2_beta3.
+
+  19 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Remove 6.2_beta1 ebuild.
+
+  19 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-contrib-6.2_beta1.ebuild:
+  Remove 6.2_beta1 ebuild.
+
+  17 Oct 2006; Roy Marples <uberlord@gentoo.org>
+  +files/freebsd-contrib-6.2-sparc64.patch,
+  freebsd-contrib-6.2_beta2.ebuild:
+  Added ~sparc-fbsd keyword.
+
+*freebsd-contrib-6.2_beta2 (05 Oct 2006)
+
+  05 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-contrib-6.2_beta2.ebuild:
+  Version 6.2_beta2.
+
+*freebsd-contrib-6.2_beta1 (21 Sep 2006)
+
+  21 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-contrib-6.2_beta1.ebuild:
+  Add 6.2_beta1 ebuilds.
+
+  09 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-contrib-6.1.ebuild:
+  Move sort in /bin so that it won't hinder booting without /usr partition.
+
+  27 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-contrib-6.0.ebuild:
+  Remove 6.0 version.
+
+*freebsd-contrib-6.1 (09 May 2006)
+
+  09 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-contrib-6.1_rc2.ebuild, +freebsd-contrib-6.1.ebuild:
+  Update to 6.1-RELEASE.
+
+*freebsd-contrib-6.1_rc2 (02 May 2006)
+
+  02 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -freebsd-contrib-6.1_rc1.ebuild, +freebsd-contrib-6.1_rc2.ebuild:
+  Update to 6.1_rc2.
+
+*freebsd-contrib-6.1_rc1 (01 May 2006)
+
+  01 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +freebsd-contrib-6.1_rc1.ebuild:
+  Update to 6.1_rc1.
+
+  20 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-contrib-6.0.ebuild:
+  Drop dependency on freebsd-headers.
+
+  02 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/freebsd-contrib-crt_gcc4.patch:
+  Drop obsolete files.
+
+*freebsd-contrib-6.0 (01 Apr 2006)
+
+  01 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/freebsd-contrib-5.3-lib_csu-makefile.patch,
+  +files/freebsd-contrib-crt_gcc4.patch, +metadata.xml,
+  +freebsd-contrib-6.0.ebuild:
+  Import into portage.
+
+  20 Feb 2006; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Fix deprecated stuff to use NO_* syntax.
+
+*freebsd-contrib-5.4 (25 Aug 2005)
+
+  25 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/freebsd-contrib-5.3-lib_csu-makefile.patch,
+  +files/freebsd-contrib-crt_gcc4.patch, +freebsd-contrib-5.4.ebuild:
+  Moved to sys-freebsd.
+
+  18 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-contrib-5.4.ebuild:
+  Updated to reflect bsdmk/freebsd eclasses changes.
+
+  29 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  freebsd-contrib-5.4.ebuild:
+  Adapt to recent bsdmk changes.
+
+*freebsd-contrib-5.3.20050301 (31 Mar 2005)
+
+  31 Mar 2005; Otavio R. Piske <angusyoung@gentoo.org>
+  freebsd-contrib-5.3.20050301.ebuild:
+  New ebuild based on updated sources and with suport for new use flags.
+  Thanks to Diego Petteno for the use flag patch.

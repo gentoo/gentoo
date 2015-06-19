@@ -1,0 +1,55 @@
+All patches below 500 are from the Debian git repository (Nov 23 12:35 CET 2009):
+
+http://git.debian.org/?p=collab-maint/mupen64plus.git;a=tree;f=debian/patches;hb=master
+
+Patches included:
+=================
+
+fix-desktop-file.patch
+destdir.patch
+dejavu-font.patch
+as-needed.patch
+system-libpng.patch
+system-zlib.patch
+system-libbz2.patch
+remove-gln64.patch
+remove-nondfsg-icons.patch
+glide64-noasm.patch
+rice-texturepack-crash.patch
+rice-screenflickering.patch
+static-binutils-libs.patch
+fix-7z-subfolder.patch
+ftbfs-dynarec.patch
+ftbfs-kfreebsd.patch
+ftbfs-debugger.patch
+debian-archs.patch
+ftbfs-glibc210.patch
+version-string.patch
+default-optimisations.patch
+gtk-open-filter.patch
+noexecstack.patch
+fix_readpng.patch
+jttl_fix_romclosed.patch
+rice_nodebug.patch
+interpreter_x86_fldcw.patch
+correct_fpr32_mapping.patch
+load_aidacrate.patch
+load_vistatus.patch
+fix_r0_override.patch
+resume_on_start.patch
+osd-pause-crash.patch
+system-liblzma.patch
+- system-liblzma got changed to work without the droped xdg-basedir.patch
+
+Patches excluded:
+=================
+
+plugin-searchpath.patch
+xdg-basedir.patch
+- Because Gentoo uses different locations like /usr/games/lib(64) and /usr/share/games.
+  The usage of xdg patch location standards would ne nice though.
+
+A big thanks to all the authors of the patches.
+
+Have fun
+Christian Birchinger <joker@gentoo.org>

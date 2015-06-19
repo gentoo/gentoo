@@ -1,0 +1,10 @@
+# ChangeLog for media-fonts/lohit-nepali
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/lohit-nepali/ChangeLog,v 1.1 2015/02/20 18:27:31 yngwin Exp $
+
+*lohit-nepali-2.94.0 (20 Feb 2015)
+
+  20 Feb 2015; Ben de Groot <yngwin@gentoo.org> +lohit-nepali-2.94.0.ebuild,
+  +metadata.xml:
+  Break up lohit-fonts into individual packages, as is done upstream (bug
+  #399181).

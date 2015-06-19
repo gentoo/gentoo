@@ -1,0 +1,57 @@
+From a8a6ac1d0f4893860efad48833ce6168f684054a Mon Sep 17 00:00:00 2001
+From: Hans de Goede <hdegoede@redhat.com>
+Date: Tue, 25 Sep 2012 12:59:13 +0200
+Subject: [PATCH 01/21] Deal with libusbredirparser.pc rename to
+ libusbredirparser-0.5.pc
+
+The usbredir 0.5 release introduced the new API for 64 bit packet ids, but
+it kept the libusbredirparser.pc name as is, meaning that older versions of
+qemu will still have their pkg-config check for usbredirparser fulfilled,
+and build with the usb-redir device. Due to the API change there will be
+some compiler warnings, but the build will succeed, however the usb-redir
+device will be broken on 32 bit machines.
+
+To solve this, the usbredir-0.5.2 release renames the libusbredirparser.pc
+file to libusbredirparser-0.5.pc, so that it will no longer fulfill the
+pkg-config check of the qemu-1.2 and older releases, stopping the (silent)
+breakage.
+
+spice-gtk does not use the changed parts of the API, but does
+use libusbredirparser for the usbredirfilter* functions. This patch adapts
+spice-gtk's configure to accept both the libusbredirparser-0.5 and the
+libusbredirparser pkg-config names.
+
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+---
+ configure.ac | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index c7367cc..7c59575 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -349,10 +349,17 @@ AC_ARG_ENABLE([usbredir],
+ if test "x$enable_usbredir" = "xno"; then
+   have_usbredir="no"
+ else
+-  PKG_CHECK_MODULES([USBREDIR],
+-                    [libusb-1.0 >= 1.0.9 libusbredirhost >= 0.4.2 libusbredirparser >= 0.4],
+-                    [have_usbredir=yes],
+-                    [have_usbredir=no])
++  if ${PKG_CONFIG} libusbredirparser-0.5; then
++    PKG_CHECK_MODULES([USBREDIR],
++                      [libusb-1.0 >= 1.0.9 libusbredirhost libusbredirparser-0.5],
++                      [have_usbredir=yes],
++                      [have_usbredir=no])
++  else
++    PKG_CHECK_MODULES([USBREDIR],
++                      [libusb-1.0 >= 1.0.9 libusbredirhost >= 0.4.2 libusbredirparser >= 0.4],
++                      [have_usbredir=yes],
++                      [have_usbredir=no])
++  fi
+   if test "x$have_usbredir" = "xno" && test "x$enable_usbredir" = "xyes"; then
+     AC_MSG_ERROR([usbredir support explicitly requested, but some required packages are not available])
+   fi
+-- 
+1.7.12.1
+

@@ -1,0 +1,12 @@
+[Unit]
+Description=Prosody XMPP (Jabber) server
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/jabber/prosody.pid
+ExecStart=/usr/bin/prosodyctl start
+ExecStop=/usr/bin/prosodyctl stop
+
+[Install]
+WantedBy=multi-user.target

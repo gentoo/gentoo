@@ -1,0 +1,283 @@
+# ChangeLog for net-irc/pisg
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/pisg/ChangeLog,v 1.69 2014/11/10 22:50:24 dilfridge Exp $
+
+  10 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org> pisg-0.73-r1.ebuild:
+  Replace perlinfo with perl_set_version
+
+  13 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> -pisg-0.73.ebuild:
+  Drop revision with old EAPI
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> pisg-0.73-r1.ebuild:
+  Stable for ppc, wrt bug #495846
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> pisg-0.73-r1.ebuild:
+  amd64 stable, bug #495846
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> pisg-0.73-r1.ebuild:
+  x86 stable wrt bug #495846
+
+*pisg-0.73-r1 (03 Sep 2013)
+
+  03 Sep 2013; Ian Delaney <idella4@gentoo.org> +pisg-0.73-r1.ebuild,
+  -pisg-0.72.ebuild:
+  revbump -> EAPI 5, remove old
+
+  03 Aug 2012; Anthony G. Basile <blueness@gentoo.org> pisg-0.73.ebuild:
+  Stable ppc, bug #419249
+
+  03 Aug 2012; Jeff Horelick <jdhore@gentoo.org> pisg-0.73.ebuild:
+  marked x86 per bug 419249
+
+  03 Aug 2012; Markos Chandras <hwoarang@gentoo.org> pisg-0.73.ebuild:
+  Stable on amd64 wrt bug #419249
+
+*pisg-0.73 (27 Mar 2012)
+
+  27 Mar 2012; Jeremy Olexa <darkside@gentoo.org> +pisg-0.73.ebuild:
+  version bump with only minor updates
+
+  31 Aug 2008; Raúl Porcel <armin76@gentoo.org> -pisg-0.71.ebuild,
+  pisg-0.72.ebuild:
+  x86 stable, remove old
+
+  31 Aug 2008; Thomas Anderson <gentoofan23@gentoo.org> pisg-0.72.ebuild:
+  stable amd64, bug 236122
+
+  30 Aug 2008; Brent Baude <ranger@gentoo.org> pisg-0.72.ebuild:
+  stable ppc, bug 236122
+
+*pisg-0.72 (07 Jul 2008)
+
+  07 Jul 2008; Raúl Porcel <armin76@gentoo.org> +pisg-0.72.ebuild:
+  Version bump
+
+  03 Jun 2007; Raúl Porcel <armin76@gentoo.org> -pisg-0.70.ebuild:
+  old
+
+  01 Jun 2007; nixnut <nixnut@gentoo.org> pisg-0.71.ebuild:
+  Stable on ppc wrt bug 178804
+
+  19 May 2007; Peter Weller <welp@gentoo.org> pisg-0.71.ebuild:
+  Stable on amd64 wrt bug 178804
+
+  16 May 2007; Raúl Porcel <armin76@gentoo.org> pisg-0.71.ebuild:
+  x86 stable wrt #178804
+
+*pisg-0.71 (10 Apr 2007)
+
+  10 Apr 2007; Peter Weller <welp@gentoo.org> +pisg-0.71.ebuild:
+  Bumped to 0.71
+
+  19 Feb 2007; <welp@gentoo.org> pisg-0.70.ebuild:
+  Stable on amd64
+
+  19 Feb 2007; Raúl Porcel <armin76@gentoo.org> -pisg-0.67.ebuild,
+  -pisg-0.68.ebuild, -pisg-0.69.ebuild:
+  old
+
+  19 Feb 2007; nixnut <nixnut@gentoo.org> pisg-0.70.ebuild:
+  Stable on ppc wrt bug 167634
+
+  19 Feb 2007; Raúl Porcel <armin76@gentoo.org> pisg-0.70.ebuild:
+  stable x86 wrt bug 167634
+
+*pisg-0.70 (22 Oct 2006)
+
+  22 Oct 2006; Sven Wegener <swegener@gentoo.org> +pisg-0.70.ebuild:
+  Version bump.
+
+*pisg-0.69 (05 Sep 2006)
+
+  05 Sep 2006; Sven Wegener <swegener@gentoo.org> +pisg-0.69.ebuild:
+  Version bump.
+
+*pisg-0.68 (17 Mar 2006)
+
+  17 Mar 2006; Sven Wegener <swegener@gentoo.org> +pisg-0.68.ebuild:
+  Version bump.
+
+  02 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> pisg-0.67.ebuild:
+  Stable on ppc.
+
+  25 Sep 2005; Sven Wegener <swegener@gentoo.org> pisg-0.67.ebuild:
+  Stable on x86.
+
+*pisg-0.67 (19 Aug 2005)
+
+  19 Aug 2005; Sven Wegener <swegener@gentoo.org> +pisg-0.67.ebuild:
+  Version bump.
+
+  07 Jul 2005; Sven Wegener <swegener@gentoo.org>
+  -files/0.56-network-option-fix.patch, -pisg-0.65.ebuild:
+  Removed old ebuild.
+
+  07 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org> pisg-0.66.ebuild:
+  ppc stable
+
+  25 Jun 2005; Sven Wegener <swegener@gentoo.org> pisg-0.66.ebuild:
+  Marked stable on x86.
+
+  18 Jun 2005; Sven Wegener <swegener@gentoo.org> -pisg-0.64.ebuild:
+  Removed old ebuild.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> pisg-0.65.ebuild:
+  Stable on ppc.
+
+  16 May 2005; Sven Wegener <swegener@gentoo.org> pisg-0.64.ebuild,
+  pisg-0.65.ebuild, pisg-0.66.ebuild:
+  Marked 0.65 stable on x86. Don't use globbing when using doins.
+
+*pisg-0.66 (12 May 2005)
+
+  12 May 2005; Sven Wegener <swegener@gentoo.org> +pisg-0.66.ebuild:
+  Version bump.
+
+  22 Apr 2005; Sven Wegener <swegener@gentoo.org> -pisg-0.63.ebuild:
+  Removed old ebuild.
+
+  20 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> pisg-0.64.ebuild:
+  Stable on ppc.
+
+*pisg-0.65 (16 Apr 2005)
+
+  16 Apr 2005; Thomas Matthijs <axxo@gentoo.org> +pisg-0.65.ebuild:
+  version bump
+
+  10 Apr 2005; Sven Wegener <swegener@gentoo.org> -pisg-0.62.ebuild,
+  pisg-0.64.ebuild:
+  Marked stable on x86. Removed old ebuild.
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> pisg-0.63.ebuild:
+  Stable on ppc.
+
+*pisg-0.64 (24 Feb 2005)
+
+  24 Feb 2005; Sven Wegener <swegener@gentoo.org> +pisg-0.64.ebuild:
+  Version bump.
+
+  17 Feb 2005; Sven Wegener <swegener@gentoo.org> pisg-0.63.ebuild:
+  Marked stable on x86.
+
+  21 Jan 2005; Sven Wegener <swegener@gentoo.org> -pisg-0.57.ebuild:
+  Removed old ebuild.
+
+  21 Jan 2005; Lars Weiler <pylon@gentoo.org> pisg-0.62.ebuild:
+  Stable on ppc.
+
+*pisg-0.63 (12 Jan 2005)
+
+  12 Jan 2005; Sven Wegener <swegener@gentoo.org> pisg-0.62.ebuild,
+  +pisg-0.63.ebuild:
+  Version bump. Marked 0.62 stable on x86.
+
+*pisg-0.62 (11 Dec 2004)
+
+  11 Dec 2004; Sven Wegener <swegener@gentoo.org> +pisg-0.62.ebuild:
+  Version bump.
+
+  08 Dec 2004; Sven Wegener <swegener@gentoo.org> pisg-0.57.ebuild,
+  pisg-0.61.ebuild:
+  dev-lang/perl also belongs in DEPEND.
+
+  05 Dec 2004; Sven Wegener <swegener@gentoo.org> -pisg-0.60.ebuild,
+  pisg-0.61.ebuild:
+  Marked stable on x86. Removed old ebuild.
+
+  13 Nov 2004; Sven Wegener <swegener@gentoo.org> -pisg-0.58.ebuild,
+  -pisg-0.59.ebuild, pisg-0.60.ebuild:
+  Marked 0.60 stable on x86. Removed old ebuilds.
+
+  12 Nov 2004; Simon Stelling <blubb@gentoo.org> pisg-0.61.ebuild:
+  added ~amd64
+
+*pisg-0.61 (31 Oct 2004)
+
+  31 Oct 2004; Sven Wegener <swegener@gentoo.org> +pisg-0.61.ebuild:
+  Version bump.
+
+*pisg-0.60 (15 Oct 2004)
+
+  15 Oct 2004; Sven Wegener <swegener@gentoo.org> -pisg-0.51.ebuild,
+  pisg-0.58.ebuild, +pisg-0.60.ebuild:
+  Version bump. Marked 0.58 stable on x86. Removed old ebuild.
+
+*pisg-0.59 (03 Oct 2004)
+
+  03 Oct 2004; Sven Wegener <swegener@gentoo.org> +pisg-0.59.ebuild:
+  Version bump.
+
+  01 Oct 2004; Sven Wegener <swegener@gentoo.org> -pisg-0.56.ebuild,
+  pisg-0.57.ebuild:
+  Marked stable on x86. Removed old ebuild.
+
+*pisg-0.58 (09 Sep 2004)
+
+  09 Sep 2004; Sven Wegener <swegener@gentoo.org> +pisg-0.58.ebuild:
+  Version bump.
+
+*pisg-0.57 (28 Aug 2004)
+
+  28 Aug 2004; Sven Wegener <swegener@gentoo.org> pisg-0.51.ebuild,
+  pisg-0.56.ebuild, +pisg-0.57.ebuild:
+  Version bump.
+
+  17 Jul 2004; Sven Wegener <swegener@gentoo.org> -pisg-0.52.ebuild,
+  -pisg-0.55.ebuild, pisg-0.56.ebuild:
+  Removed old ebuilds and marked 0.56 stable on x86.
+
+  26 Jun 2004; Sven Wegener <swegener@gentoo.org>
+  -files/0.50-network-option-fix.patch, -pisg-0.50.ebuild, pisg-0.51.ebuild,
+  pisg-0.52.ebuild, pisg-0.55.ebuild, pisg-0.56.ebuild:
+  Updated dependencies. Thanks to dju` <dju@elegiac.net> in bug #55172. Removed
+  older ebuilds.
+
+*pisg-0.56 (19 Jun 2004)
+
+  19 Jun 2004; Sven Wegener <swegener@gentoo.org>
+  +files/0.56-network-option-fix.patch, +pisg-0.56.ebuild:
+  Version bump
+
+  17 Jun 2004; Sven Wegener <swegener@gentoo.org> pisg-0.52.ebuild,
+  pisg-0.55.ebuild:
+  Fixed permission issue.
+
+*pisg-0.55 (09 Jun 2004)
+
+  09 Jun 2004; Chuck Short <zul@gentoo.org> pisg-0.55.ebuild:
+  Version bump, closes #52461.
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> pisg-0.50.ebuild,
+  pisg-0.51.ebuild, pisg-0.52.ebuild:
+  Masked pisg-0.52.ebuild testing for ppc
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> pisg-0.50.ebuild,
+  pisg-0.51.ebuild:
+  Masked pisg-0.51.ebuild stable for ppc
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> pisg-0.50.ebuild:
+  Masked pisg-0.50.ebuild stable for ppc
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> pisg-0.50.ebuild:
+  Add inherit eutils
+
+*pisg-0.52 (16 Mar 2004)
+
+  16 Mar 2004; Chuck Short <zul@gentoo.org> pisg-0.52.ebuild:
+  Version bump, closes #44762.
+  Fixes permission issue.
+
+  16 Mar 2004; Chuck Short <zul@gentoo.org> pisg-0.51.ebuild:
+  Marked stable for x86.
+
+*pisg-0.51 (11 Feb 2004)
+
+  11 Feb 2004; Chuck Short <zul@gentoo.org> pisg-0.51.ebuild:
+  Version bump, closes #40962.
+
+*pisg-0.50 (18 Jan 2004)
+
+  18 Jan 2004; Chuck Short <zul@gentoo.org> metadata.xml, pisg-0.50.ebuild,
+  files/0.50-network-option-fix.patch:
+  Initial version, ebuild submitted by Sven Wegener 
+  < sven.wegener -at- stealer.net >. Closes #37848.

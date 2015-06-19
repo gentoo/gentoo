@@ -1,0 +1,32 @@
+# ChangeLog for media-plugins/vdr-videosystem
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-videosystem/ChangeLog,v 1.7 2012/05/01 13:01:49 hd_brummy Exp $
+
+  01 May 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-videosystem-0.0.1.ebuild:
+  vdr-plugin-2.eclass
+
+  28 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-videosystem-0.0.1.ebuild:
+  Fixed quoting.
+
+  13 Mar 2007; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-videosystem-0.0.1.ebuild:
+  Marked stable on x86.
+
+  03 Dec 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-videosystem-0.0.1-uint64.diff, vdr-videosystem-0.0.1.ebuild:
+  Added patch to compile also with vdr-1.4.4_p1
+
+  15 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Now really assign to Gentoo VDR Project.
+
+  15 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Assigned to Gentoo VDR Project.
+
+*vdr-videosystem-0.0.1 (15 May 2006)
+
+  15 May 2006; Matthias Schwarzott <zzam@gentoo.org> +metadata.xml,
+  +vdr-videosystem-0.0.1.ebuild:
+  Initial import of ebuild written by me.
+

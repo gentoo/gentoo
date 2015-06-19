@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/libxml2 sys-libs/zlib aac? ( media-libs/faac media-libs/faad2 ) aften? ( media-libs/aften[cxx] ) alsa? ( media-libs/alsa-lib ) amr? ( media-libs/opencore-amr ) gtk? ( x11-libs/gtk+:2 ) jack? ( media-libs/libsamplerate media-sound/jack-audio-connection-kit ) mp3? ( media-sound/lame ) pulseaudio? ( media-sound/pulseaudio ) qt4? ( >=dev-qt/qtgui-4.6:4 opengl? ( virtual/opengl >=dev-qt/qtopengl-4.6:4 ) ) sdl? ( media-libs/libsdl ) truetype? ( media-libs/freetype:2 media-libs/fontconfig ) vorbis? ( media-libs/libvorbis ) vpx? ( media-libs/libvpx ) x264? ( media-libs/x264:= ) xv? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXv ) xvid? ( media-libs/xvid ) dev-lang/yasm virtual/pkgconfig nls? ( sys-devel/gettext ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Video editor designed for simple cutting, filtering and encoding tasks
+EAPI=5
+HOMEPAGE=http://fixounet.free.fr/avidemux
+IUSE=aac aften alsa amr gtk jack +mp3 nls opengl oss pulseaudio qt4 sdl +truetype vorbis vpx +x264 +xv +xvid linguas_bg linguas_ca linguas_cs linguas_de linguas_el linguas_es linguas_fr linguas_it linguas_ja linguas_pt_BR linguas_ru linguas_sr linguas_sr@latin linguas_tr linguas_zh_TW
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libxml2 sys-libs/zlib aac? ( media-libs/faac media-libs/faad2 ) aften? ( media-libs/aften[cxx] ) alsa? ( media-libs/alsa-lib ) amr? ( media-libs/opencore-amr ) gtk? ( x11-libs/gtk+:2 ) jack? ( media-libs/libsamplerate media-sound/jack-audio-connection-kit ) mp3? ( media-sound/lame ) pulseaudio? ( media-sound/pulseaudio ) qt4? ( >=dev-qt/qtgui-4.6:4 opengl? ( virtual/opengl >=dev-qt/qtopengl-4.6:4 ) ) sdl? ( media-libs/libsdl ) truetype? ( media-libs/freetype:2 media-libs/fontconfig ) vorbis? ( media-libs/libvorbis ) vpx? ( media-libs/libvpx ) x264? ( media-libs/x264:= ) xv? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXv ) xvid? ( media-libs/xvid )
+SLOT=2
+SRC_URI=mirror://sourceforge/avidemux/avidemux_2.5.6.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=77ca736c5489bd99ab332a8ea1309a22

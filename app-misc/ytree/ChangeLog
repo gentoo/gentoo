@@ -1,0 +1,91 @@
+# ChangeLog for app-misc/ytree
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/ytree/ChangeLog,v 1.20 2014/12/31 14:29:04 kensington Exp $
+
+*ytree-1.98 (31 Dec 2014)
+
+  31 Dec 2014; Michael Palimaka <kensington@gentoo.org> +ytree-1.98.ebuild:
+  Version bump.
+
+  31 Dec 2014; Michael Palimaka <kensington@gentoo.org>
+  -files/ytree-1.92-gentoo.patch, -files/ytree-1.92-support-cflags.patch:
+  Remove unused patches.
+
+  17 Jan 2014; Chris Reffett <creffett@gentoo.org> ytree-1.97.ebuild:
+  EAPI bump
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -ytree-1.92-r1.ebuild:
+  Remove old
+
+  23 Mar 2012; Agostino Sarubbo <ago@gentoo.org> ytree-1.97.ebuild:
+  Add ~amd64, wrt bug #408847
+
+  21 Mar 2012; Thomas Kahle <tomka@gentoo.org> ytree-1.97.ebuild:
+  marked x86 per bug 306307
+
+  18 Mar 2012; Pacho Ramos <pacho@gentoo.org> -ytree-1.92-r2.ebuild,
+  -ytree-1.94.ebuild, metadata.xml:
+  Drop maintainer due retirement, bug 118003. Drop old.
+
+*ytree-1.97 (30 Jan 2012)
+
+  30 Jan 2012; Jeroen Roovers <jer@gentoo.org> -ytree-1.95.ebuild,
+  +ytree-1.97.ebuild:
+  Better version bump.
+
+*ytree-1.95 (30 Jan 2012)
+
+  30 Jan 2012; Jeroen Roovers <jer@gentoo.org> +ytree-1.95.ebuild:
+  Version bump.
+
+  11 Apr 2010; Markus Ullmann <jokey@gentoo.org> ytree-1.94.ebuild:
+  Fix quoting, meh
+
+*ytree-1.94 (11 Apr 2010)
+
+  11 Apr 2010; Markus Ullmann <jokey@gentoo.org> +ytree-1.94.ebuild,
+  +files/ytree-1.94-bindir.patch:
+  Version bump, fix #306543
+
+*ytree-1.92-r2 (23 Feb 2010)
+
+  23 Feb 2010; Jeroen Roovers <jer@gentoo.org> +ytree-1.92-r2.ebuild,
+  +files/ytree-1.92-gentoo.patch:
+  Respect CC (bug #243684) and LDFLAGS.
+
+*ytree-1.92-r1 (31 Jan 2009)
+
+  31 Jan 2009; <jokey@gentoo.org> +files/ytree-1.92-support-cflags.patch,
+  -ytree-1.92.ebuild, +ytree-1.92-r1.ebuild:
+  Add cflag support for bug #240085
+
+  27 Oct 2008; Markus Ullmann <jokey@gentoo.org> -ytree-1.90.ebuild,
+  ytree-1.92.ebuild:
+  Stable new version, drop old and fix CC call bug #243684
+
+*ytree-1.92 (30 Aug 2008)
+
+  30 Aug 2008; Markus Ullmann <jokey@gentoo.org> +ytree-1.92.ebuild:
+  Version bump
+
+  29 Oct 2007; Markus Ullmann <jokey@gentoo.org> -ytree-1.86.ebuild,
+  ytree-1.90.ebuild:
+  Stable on x86 and drop old
+
+*ytree-1.90 (30 Aug 2007)
+
+  30 Aug 2007; Markus Ullmann <jokey@gentoo.org> ytree-1.86.ebuild,
+  +ytree-1.90.ebuild:
+  Version bump wrt bug #190735
+
+  11 Jul 2007; Markus Ullmann <jokey@gentoo.org> ytree-1.86.ebuild:
+  Stable on x86
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*ytree-1.86 (12 Mar 2006)
+
+  12 Mar 2006; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +ytree-1.86.ebuild:
+  Initial import

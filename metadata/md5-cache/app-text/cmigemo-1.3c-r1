@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=dev-lang/perl >=app-dicts/migemo-dict-200812[unicode=] app-i18n/qkc
+DESCRIPTION=C/Migemo -- Migemo library implementation in C
+EAPI=2
+HOMEPAGE=http://www.kaoriya.net/#CMIGEMO
+IUSE=emacs unicode vim-syntax
+KEYWORDS=alpha ~amd64 ~ppc x86
+LICENSE=MIT
+RDEPEND=>=app-dicts/migemo-dict-200812[unicode=] emacs? ( >=app-text/migemo-0.40-r1 )
+SLOT=0
+SRC_URI=http://www.kaoriya.net/dist/var/cmigemo-1.3c-MIT.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=cdd62236d23f79b7076ac9777348b157

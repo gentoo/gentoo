@@ -1,0 +1,128 @@
+# ChangeLog for media-sound/ario
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/ario/ChangeLog,v 1.32 2014/03/22 12:15:59 angelos Exp $
+
+  22 Mar 2014; Christoph Mende <angelos@gentoo.org>
+  -files/ario-1.5-libnotify-0.7.patch, ario-1.5.1.ebuild:
+  Add missing libgcrypt dependency (bug #472028)
+
+  27 May 2012; Christoph Mende <angelos@gentoo.org> ario-1.5.1.ebuild:
+  Allow any python-2 version instead of just 2.7
+
+  27 May 2012; Christoph Mende <angelos@gentoo.org> ario-1.5.1.ebuild:
+  Build with python-2 (bug #415631)
+
+  27 May 2012; Christoph Mende <angelos@gentoo.org> -ario-1.5.ebuild:
+  Remove old
+
+  21 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> ario-1.5.1.ebuild:
+  x86 stable wrt bug #413413
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> ario-1.5.ebuild,
+  ario-1.5.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  26 Apr 2012; Agostino Sarubbo <ago@gentoo.org> ario-1.5.1.ebuild:
+  Stable for amd64, wrt bug #413413
+
+  25 Apr 2012; Christoph Mende <angelos@gentoo.org>
+  +files/ario-1.5.1-single-includes.patch, ario-1.5.1.ebuild:
+  Fix single includes (bug #413413)
+
+*ario-1.5.1 (19 Jun 2011)
+
+  19 Jun 2011; Christoph Mende <angelos@gentoo.org> +ario-1.5.1.ebuild:
+  Version bump
+
+  30 Apr 2011; Christoph Mende <angelos@gentoo.org> -ario-1.4.4.ebuild:
+  Remove old
+
+  30 Apr 2011; Christoph Mende <angelos@gentoo.org>
+  -files/ario-1.1-as-needed.patch, -files/ario-1.3-unsupported-warnings.patch:
+  Removed old files
+
+  13 Apr 2011; Thomas Kahle <tomka@gentoo.org> ario-1.5.ebuild:
+  x86 stable per bug 359475
+
+  21 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> ario-1.4.4.ebuild,
+  ario-1.5.ebuild:
+  Fix slot-deps on gnome libs
+
+  21 Mar 2011; Markos Chandras <hwoarang@gentoo.org> ario-1.5.ebuild:
+  Stable on amd64 wrt bug #359475
+
+  05 Feb 2011; Samuli Suominen <ssuominen@gentoo.org> ario-1.5.ebuild,
+  +files/ario-1.5-libnotify-0.7.patch:
+  Fix building with x11-libs/libnotify >= 0.7 and remove useless libtool and
+  static archive files for plugins.
+
+*ario-1.5 (06 Sep 2010)
+
+  06 Sep 2010; <angelos@gentoo.org> +ario-1.5.ebuild:
+  Version bump (bug #333407)
+
+  16 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> ario-1.4.4.ebuild:
+  x86 stable wrt bug #322911
+
+  07 Jun 2010; Markos Chandras <hwoarang@gentoo.org> ario-1.4.4.ebuild:
+  Stable on amd64 wrt bug #322911
+
+  21 May 2010; Christoph Mende <angelos@gentoo.org> -ario-1.1.ebuild,
+  -ario-1.2.ebuild, -ario-1.2.1.ebuild, -ario-1.3.ebuild,
+  -ario-1.4.1.ebuild:
+  Removed old
+
+*ario-1.4.4 (01 May 2010)
+
+  01 May 2010; Christoph Mende <angelos@gentoo.org> +ario-1.4.4.ebuild:
+  Version bump (bug #315961)
+
+*ario-1.4.1 (11 Dec 2009)
+
+  11 Dec 2009; Christoph Mende <angelos@gentoo.org> +ario-1.4.1.ebuild:
+  Version bump (bug 295786)
+
+  04 Nov 2009; Christoph Mende <angelos@gentoo.org> ario-1.3.ebuild,
+  +files/ario-1.3-unsupported-warnings.patch:
+  Strip warning flags from Makefiles (bug #291391)
+
+*ario-1.3 (30 Oct 2009)
+
+  30 Oct 2009; Christoph Mende <angelos@gentoo.org> +ario-1.3.ebuild:
+  Version bump
+
+*ario-1.2.1 (28 Jan 2009)
+
+  28 Jan 2009; Christoph Mende <angelos@gentoo.org> +ario-1.2.1.ebuild:
+  Version bump
+
+*ario-1.2 (03 Jan 2009)
+
+  03 Jan 2009; Christoph Mende <angelos@gentoo.org> metadata.xml,
+  ario-1.1.ebuild, +ario-1.2.ebuild:
+  Version bump, bug 253502
+
+  08 Dec 2008; Christoph Mende <angelos@gentoo.org> ario-1.1.ebuild:
+  Added USE=audioscrobbler
+
+  06 Dec 2008; Christoph Mende <angelos@gentoo.org>
+  +files/ario-1.1-as-needed.patch, ario-1.1.ebuild:
+  Fixed as-needed, bug 232416 and 247814, thanks to a-v and idl0r on
+  freenode
+
+  06 Dec 2008; Christoph Mende <angelos@gentoo.org> ario-1.1.ebuild:
+  Renamed USE=avahi to USE=zeroconf and added gnome2_icon_savelist
+
+  14 Oct 2008; Diego Pettenò <flameeyes@gentoo.org> ario-1.1.ebuild:
+  Add intltool to dependencies (or it'll use the bundled one).
+
+  04 Jul 2008; Christian Faulhammer <opfer@gentoo.org> ario-1.1.ebuild:
+  keyworded ~arch for x86, bug 230297
+
+  01 Jul 2008; Christoph Mende <angelos@gentoo.org> ario-1.1.ebuild:
+  Added gnome2_icon_cache_update to postinst and postrm, bug 230299
+
+*ario-1.1 (30 Jun 2008)
+
+  30 Jun 2008; Christoph Mende <angelos@gentoo.org> +ario-1.1.ebuild:
+  Initial import, bug 221073

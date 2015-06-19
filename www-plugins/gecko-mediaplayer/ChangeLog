@@ -1,0 +1,450 @@
+# ChangeLog for www-plugins/gecko-mediaplayer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-plugins/gecko-mediaplayer/ChangeLog,v 1.84 2015/06/09 07:15:09 ago Exp $
+
+  09 Jun 2015; Agostino Sarubbo <ago@gentoo.org> gecko-mediaplayer-1.0.9.ebuild:
+  Stable for x86, wrt bug #551192
+
+  08 Jun 2015; Agostino Sarubbo <ago@gentoo.org> gecko-mediaplayer-1.0.9.ebuild:
+  Stable for amd64, wrt bug #551192
+
+  28 May 2014; Samuli Suominen <ssuominen@gentoo.org>
+  -gecko-mediaplayer-1.0.7.ebuild:
+  old
+
+*gecko-mediaplayer-1.0.9 (28 May 2014)
+
+  28 May 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +gecko-mediaplayer-1.0.9.ebuild:
+  Version bump wrt #510060 by Manuel Rüger
+
+  09 Mar 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gecko-mediaplayer-1.0.8.ebuild:
+  x86 stable wrt bug #495718
+
+  06 Mar 2014; Chema Alonso <nimiux@gentoo.org> gecko-mediaplayer-1.0.8.ebuild:
+  Stable for amd64 wrt bug #495718
+
+*gecko-mediaplayer-1.0.8 (03 Jun 2013)
+
+  03 Jun 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +gecko-mediaplayer-1.0.8.ebuild:
+  Version bump.
+
+  14 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  -gecko-mediaplayer-1.0.6.ebuild:
+  old
+
+  21 Jan 2013; Agostino Sarubbo <ago@gentoo.org> gecko-mediaplayer-1.0.7.ebuild:
+  Stable for x86, wrt bug #452690
+
+  21 Jan 2013; Agostino Sarubbo <ago@gentoo.org> gecko-mediaplayer-1.0.7.ebuild:
+  Stable for amd64, wrt bug #452690
+
+  24 Nov 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -gecko-mediaplayer-1.0.5.ebuild:
+  old
+
+*gecko-mediaplayer-1.0.7 (24 Nov 2012)
+
+  24 Nov 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +gecko-mediaplayer-1.0.7.ebuild:
+  Version bump wrt #440978 by Alessandro Capogna
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gecko-mediaplayer-1.0.6.ebuild:
+  x86 stable wrt bug #417819
+
+  28 May 2012; Agostino Sarubbo <ago@gentoo.org>
+  gecko-mediaplayer-1.0.6.ebuild:
+  Stable for amd64, wrt bug #417819
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  gecko-mediaplayer-1.0.5.ebuild, gecko-mediaplayer-1.0.6.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*gecko-mediaplayer-1.0.6 (14 Apr 2012)
+
+  14 Apr 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +gecko-mediaplayer-1.0.6.ebuild:
+  Version bump.
+
+  28 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -gecko-mediaplayer-1.0.4.ebuild:
+  old
+
+  28 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  gecko-mediaplayer-1.0.5.ebuild:
+  x86 stable wrt #399847
+
+  27 Jan 2012; Agostino Sarubbo <ago@gentoo.org>
+  gecko-mediaplayer-1.0.5.ebuild:
+  Stable for amd64, wrt bug #399847
+
+  23 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  gecko-mediaplayer-1.0.5.ebuild:
+  Restore ~ppc64 now that net-misc/npapi-sdk is keyworded wrt #392961
+
+  03 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -gecko-mediaplayer-1.0.5_beta1_p20111207.ebuild:
+  old
+
+*gecko-mediaplayer-1.0.5 (03 Jan 2012)
+
+  03 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +gecko-mediaplayer-1.0.5.ebuild:
+  Version bump wrt #397447 by "ScytheMan"
+
+  07 Dec 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -gecko-mediaplayer-1.0.5_beta1.ebuild,
+  -gecko-mediaplayer-1.0.5_beta1_p20111203.ebuild,
+  -files/gecko-mediaplayer-1.0.5_beta1-firefox-8.x.patch:
+  old
+
+*gecko-mediaplayer-1.0.5_beta1_p20111207 (07 Dec 2011)
+
+  07 Dec 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +gecko-mediaplayer-1.0.5_beta1_p20111207.ebuild:
+  New snapshot wrt #393049 to avoid conflict between const and non-const code.
+  Thanks to Juergen Rose for reporting.
+
+*gecko-mediaplayer-1.0.5_beta1_p20111203 (02 Dec 2011)
+
+  02 Dec 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +gecko-mediaplayer-1.0.5_beta1_p20111203.ebuild:
+  New snapshot to support building against npapi-sdk wrt #383149 by Ian
+  Stakenvicius (and Michał Górny for reporting)
+
+  24 Nov 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gecko-mediaplayer-1.0.5_beta1.ebuild,
+  +files/gecko-mediaplayer-1.0.5_beta1-firefox-8.x.patch:
+  Use Firefox 8.x headers to build.
+
+  18 Nov 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gecko-mediaplayer-1.0.4.ebuild, -files/libxul.pc:
+  Remove support for building against xulrunner from www-client/firefox wrt
+  #390729 by Billy DeVincentis
+
+  18 Nov 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -gecko-mediaplayer-1.0.0.ebuild, -gecko-mediaplayer-1.0.3-r1.ebuild:
+  old
+
+*gecko-mediaplayer-1.0.5_beta1 (18 Nov 2011)
+
+  18 Nov 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +gecko-mediaplayer-1.0.5_beta1.ebuild:
+  Version bump.
+
+  23 Oct 2011; Markus Meier <maekke@gentoo.org> gecko-mediaplayer-1.0.4.ebuild:
+  x86 stable, bug #386957
+
+  15 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gecko-mediaplayer-1.0.4.ebuild:
+  amd64 stable wrt #386957
+
+  25 Sep 2011; Raúl Porcel <armin76@gentoo.org>
+  gecko-mediaplayer-1.0.0.ebuild, gecko-mediaplayer-1.0.3-r1.ebuild,
+  gecko-mediaplayer-1.0.4.ebuild:
+  Drop alpha keywords
+
+  13 Sep 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gecko-mediaplayer-1.0.4.ebuild, +files/libxul.pc:
+  Ship a copy of custom libxul.pc in order to use Firefox 6.0 headers.
+
+  12 Jul 2011; Thomas Kahle <tomka@gentoo.org>
+  gecko-mediaplayer-1.0.3-r1.ebuild:
+  x86 stable per bug 367091
+
+*gecko-mediaplayer-1.0.4 (04 Jul 2011)
+
+  04 Jul 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +gecko-mediaplayer-1.0.4.ebuild:
+  Version bump.
+
+  21 Jun 2011; Markos Chandras <hwoarang@gentoo.org>
+  gecko-mediaplayer-1.0.3-r1.ebuild:
+  Stable on amd64 wrt bug #367091
+
+  14 May 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gecko-mediaplayer-1.0.3-r1.ebuild:
+  Block www-client/chromium wrt #366695 by Jouni Rinne.
+
+*gecko-mediaplayer-1.0.3-r1 (23 Apr 2011)
+
+  23 Apr 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +gecko-mediaplayer-1.0.3-r1.ebuild:
+  Stop using gnome2.eclass and remove support for gnome-base/gconf wrt #364513.
+
+*gecko-mediaplayer-1.0.3 (22 Apr 2011)
+
+  22 Apr 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +gecko-mediaplayer-1.0.3.ebuild:
+  Version bump.
+
+  22 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gecko-mediaplayer-1.0.0.ebuild:
+  ppc64 stable wrt #346187
+
+  22 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gecko-mediaplayer-1.0.0.ebuild:
+  Fix compability with net-libs/xulrunner >= 2.
+
+  30 Jan 2011; Raúl Porcel <armin76@gentoo.org>
+  gecko-mediaplayer-1.0.0.ebuild:
+  alpha stable wrt #346187
+
+  14 Jan 2011; Brent Baude <ranger@gentoo.org>
+  gecko-mediaplayer-1.0.0.ebuild:
+  stable ppc, bug 346187
+
+  01 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  gecko-mediaplayer-1.0.0.ebuild:
+  Stable on amd64 wrt bug #346187
+
+  27 Dec 2010; Thomas Kahle <tomka@gentoo.org> gecko-mediaplayer-1.0.0.ebuild:
+  x86 stable per bug 346187
+
+*gecko-mediaplayer-1.0.0 (06 Nov 2010)
+
+  06 Nov 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +gecko-mediaplayer-1.0.0.ebuild:
+  Version bump.
+
+*gecko-mediaplayer-0.9.9.2_p1762 (16 Sep 2010)
+
+  16 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +gecko-mediaplayer-0.9.9.2_p1762.ebuild:
+  New snapshot for xulrunner 2.0 testing.
+
+  19 Jul 2010; Jeroen Roovers <jer@gentoo.org>
+  gecko-mediaplayer-0.9.9.2.ebuild:
+  Remove HPPA keywording (bug #324511).
+
+  11 May 2010; Joseph Jezak <josejx@gentoo.org>
+  gecko-mediaplayer-0.9.9.2.ebuild:
+  Marked ppc/ppc64 stable for bug #311801.
+
+  09 May 2010; Raúl Porcel <armin76@gentoo.org>
+  gecko-mediaplayer-0.9.9.2.ebuild:
+  alpha stable wrt #311801
+
+  18 Apr 2010; Pacho Ramos <pacho@gentoo.org>
+  gecko-mediaplayer-0.9.9.2.ebuild:
+  amd64 stable, bug 311801
+
+  12 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gecko-mediaplayer-0.9.9.2.ebuild:
+  x86 stable wrt bug #311801
+
+*gecko-mediaplayer-0.9.9.2 (18 Mar 2010)
+
+  18 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +gecko-mediaplayer-0.9.9.2.ebuild:
+  Version bump.
+
+  11 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  gecko-mediaplayer-0.9.9.ebuild:
+  Use nsplugins.eclass wrt #304519, thanks to Martin von Gagern for
+  reporting and Petr Pisar for solution.
+
+*gecko-mediaplayer-0.9.9 (10 Feb 2010)
+
+  10 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +gecko-mediaplayer-0.9.9.ebuild,
+  +files/gecko-mediaplayer-0.9.9-without-gconf.patch:
+  Version bump.
+
+  26 Jan 2010; Ben de Groot <yngwin@gentoo.org>
+  gecko-mediaplayer-0.9.8_p347.ebuild,
+  +files/gecko-mediaplayer-0.9.8_p347-gconf-2.m4.patch:
+  Add patch for configuration without gconf. Fixes bug 301932.
+
+  22 Jan 2010; Jeroen Roovers <jer@gentoo.org>
+  files/gecko-mediaplayer-0.9.8_p347-xulrunner-detection.patch:
+  Unix line endings to make patch-2.5.9 happy, thanks to Alexis Ballier.
+
+  22 Jan 2010; Ben de Groot <yngwin@gentoo.org>
+  gecko-mediaplayer-0.9.8_p347.ebuild,
+  +files/gecko-mediaplayer-0.9.8_p347-xulrunner-detection.patch:
+  Add xulrunner detection patch to prevent breakage when seamonkey-1 is
+  installed. Thanks to Anarchy and ssuominen.
+
+  22 Jan 2010; Ben de Groot <yngwin@gentoo.org>
+  gecko-mediaplayer-0.9.8_p347.ebuild:
+  Drop xulrunner-sdk flag to force proper xulrunner detection, thanks to
+  Anarchy
+
+*gecko-mediaplayer-0.9.8_p347 (22 Jan 2010)
+
+  22 Jan 2010; Ben de Groot <yngwin@gentoo.org>
+  +gecko-mediaplayer-0.9.8_p347.ebuild:
+  Snapshot needed for new xulrunner compatibility
+
+  11 Dec 2009; Brent Baude <ranger@gentoo.org>
+  gecko-mediaplayer-0.9.8.ebuild:
+  Marking gecko-mediaplayer-0.9.8 ppc64 for bug 289703
+
+  08 Dec 2009; Jeroen Roovers <jer@gentoo.org>
+  gecko-mediaplayer-0.9.8.ebuild:
+  Stable for HPPA (bug #289703).
+
+  21 Nov 2009; Markus Meier <maekke@gentoo.org>
+  gecko-mediaplayer-0.9.8.ebuild:
+  x86 stable, bug #289703
+
+  08 Nov 2009; Tobias Klausmann <klausman@gentoo.org>
+  gecko-mediaplayer-0.9.8.ebuild:
+  Stable on alpha, bug #289703
+
+  08 Nov 2009; Tobias Klausmann <klausman@gentoo.org>
+  gecko-mediaplayer-0.9.8.ebuild:
+  Stable on alpha, bug #289682
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> gecko-mediaplayer-0.9.8.ebuild:
+  ppc stable #289703
+
+  19 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  gecko-mediaplayer-0.9.8.ebuild:
+  amd64 stable wrt #289703
+
+  29 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  gecko-mediaplayer-0.9.8.ebuild:
+  Force xulrunner usage to avoid breakage when seamonkey is installed.
+
+*gecko-mediaplayer-0.9.8 (29 Sep 2009)
+
+  29 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +gecko-mediaplayer-0.9.8.ebuild,
+  +files/gecko-mediaplayer-0.9.8-asneeded.patch:
+  Version bump.
+
+  29 Sep 2009; Christian Ruppert <idl0r@gentoo.org>
+  gecko-mediaplayer-0.9.7-r1.ebuild,
+  -files/gecko-mediaplayer-as-needed.patch:
+  Fix bug 286795.
+
+*gecko-mediaplayer-0.9.7-r1 (27 Sep 2009)
+
+  27 Sep 2009; Christian Ruppert <idl0r@gentoo.org>
+  -gecko-mediaplayer-0.9.7.ebuild, +gecko-mediaplayer-0.9.7-r1.ebuild,
+  +files/gecko-mediaplayer-as-needed.patch:
+  Revbump, fix bug 279419.
+
+*gecko-mediaplayer-0.9.7 (29 Aug 2009)
+
+  29 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +gecko-mediaplayer-0.9.7.ebuild:
+  Version bump.
+
+  02 Jul 2009; Joseph Jezak <josejx@gentoo.org>
+  gecko-mediaplayer-0.9.6.ebuild:
+  Marked ~ppc/~ppc64 for bug #274984.
+
+  01 Jul 2009; Jeroen Roovers <jer@gentoo.org>
+  gecko-mediaplayer-0.9.6.ebuild:
+  Marked ~hppa (bug #274984).
+
+  29 Jun 2009; Markus Meier <maekke@gentoo.org>
+  gecko-mediaplayer-0.9.6.ebuild:
+  amd64/x86 stable, bug #274984
+
+  28 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  gecko-mediaplayer-0.9.6.ebuild:
+  Stable on alpha, bug #274984
+
+  21 Jun 2009; Samuli Suominen <ssuominen@gentoo.org>
+  gecko-mediaplayer-0.9.6.ebuild, +files/gecko-mediaplayer-0.9.6-xul.patch:
+  Apply a upstream patch to fix race condition when two xulrunners are
+  installed and wrong headers get picked up wrt #273059, thanks to Anarchy
+  for poking me on IRC.
+
+  07 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  gecko-mediaplayer-0.9.6.ebuild:
+  Keyworded on alpha, bug #272031
+
+  07 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  gecko-mediaplayer-0.9.5.ebuild:
+  Keyworded on alpha, bug #272031
+
+*gecko-mediaplayer-0.9.6 (07 Jun 2009)
+
+  07 Jun 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +gecko-mediaplayer-0.9.6.ebuild:
+  Version bump.
+
+  07 Jun 2009; Samuli Suominen <ssuominen@gentoo.org>
+  gecko-mediaplayer-0.9.5.ebuild:
+  stable amd64, bug 272033
+
+  02 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  gecko-mediaplayer-0.9.5.ebuild:
+  stable x86, bug 272033
+
+  29 May 2009; Steve Dibb <beandog@gentoo.org>
+  gecko-mediaplayer-0.6.3.ebuild:
+  amd64 stable
+
+*gecko-mediaplayer-0.9.5 (17 Apr 2009)
+
+  17 Apr 2009; Ben de Groot <yngwin@gentoo.org>
+  +gecko-mediaplayer-0.9.5.ebuild:
+  Long overdue version bump, bug 232036
+
+  10 Apr 2009; Ulrich Mueller <ulm@gentoo.org> +metadata.xml,
+  +gecko-mediaplayer-0.6.3.ebuild:
+  Package moved from net-www to www-plugins, bug 265569.
+
+  24 Nov 2008; <ssuominen@gentoo.org> metadata.xml:
+  Re-assign to media-video herd.
+
+*gecko-mediaplayer-0.6.3 (30 Jul 2008)
+
+  30 Jul 2008; Samuli Suominen <drac@gentoo.org>
+  -gecko-mediaplayer-0.6.1.ebuild, +gecko-mediaplayer-0.6.3.ebuild:
+  Version bump.
+
+*gecko-mediaplayer-0.6.2 (28 May 2008)
+
+  28 May 2008; Samuli Suominen <drac@gentoo.org>
+  -gecko-mediaplayer-0.6.0.ebuild, +gecko-mediaplayer-0.6.2.ebuild:
+  Version bump.
+
+*gecko-mediaplayer-0.6.1 (20 Apr 2008)
+
+  20 Apr 2008; Samuli Suominen <drac@gentoo.org>
+  +gecko-mediaplayer-0.6.1.ebuild:
+  Version bump wrt #218351, thanks to Robt W Fletcher Jr
+
+  14 Mar 2008; Raúl Porcel <armin76@gentoo.org>
+  gecko-mediaplayer-0.6.0.ebuild:
+  Fix deps on =net-libs/xulrunner-1.8* and =www-client/mozilla-firefox-2.0*
+  wrt #213296
+
+*gecko-mediaplayer-0.6.0 (16 Feb 2008)
+
+  16 Feb 2008; Samuli Suominen <drac@gentoo.org>
+  -gecko-mediaplayer-0.5.2.ebuild, -gecko-mediaplayer-0.5.4.ebuild,
+  +gecko-mediaplayer-0.6.0.ebuild:
+  Version bump.
+
+*gecko-mediaplayer-0.5.4 (12 Feb 2008)
+
+  12 Feb 2008; Samuli Suominen <drac@gentoo.org>
+  -gecko-mediaplayer-0.5.0.ebuild, +gecko-mediaplayer-0.5.4.ebuild:
+  Version bump.
+
+*gecko-mediaplayer-0.5.2 (05 Nov 2007)
+
+  05 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  +gecko-mediaplayer-0.5.2.ebuild:
+  Version bump.
+
+  30 Sep 2007; Samuli Suominen <drac@gentoo.org>
+  gecko-mediaplayer-0.5.0.ebuild:
+  Keyword ~amd64, thanks to Ken Prugh for testing.
+
+*gecko-mediaplayer-0.5.0 (30 Sep 2007)
+
+  30 Sep 2007; Samuli Suominen <drac@gentoo.org>
+  +gecko-mediaplayer-0.5.0.ebuild:
+  Initial commit for bug 185876, thanks to Frittella Laurento.

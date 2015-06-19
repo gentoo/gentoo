@@ -1,0 +1,32 @@
+--- src/sdl/debugger.cpp.old	2012-07-24 09:01:55.062533139 +0200
++++ src/sdl/debugger.cpp	2012-07-24 09:03:31.927731884 +0200
+@@ -1280,7 +1280,8 @@
+   if(n == 2) {
+     u32 addr = 0;
+     sscanf(args[1], "%x", &addr);
+-    for(int i = 0; i < 16; i++) {
++    int i;
++    for(i = 0; i < 16; i++) {
+       int a = debuggerReadByte(addr);
+       int b = debuggerReadByte(addr+1);
+       int c = debuggerReadByte(addr+2);
+@@ -1316,7 +1317,8 @@
+     u32 addr = 0;
+     sscanf(args[1], "%x", &addr);
+     addr = addr & 0xfffffffe;
+-    for(int i = 0; i < 16; i++) {
++    int i;
++    for(i = 0; i < 16; i++) {
+       int a = debuggerReadByte(addr);
+       int b = debuggerReadByte(addr+1);
+       int c = debuggerReadByte(addr+2);
+@@ -1352,7 +1354,8 @@
+     u32 addr = 0;
+     sscanf(args[1], "%x", &addr);
+     addr = addr & 0xfffffffc;
+-    for(int i = 0; i < 16; i++) {
++    int i;
++    for(i = 0; i < 16; i++) {
+       int a = debuggerReadByte(addr);
+       int b = debuggerReadByte(addr+1);
+       int c = debuggerReadByte(addr+2);

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<use>
+		<flag name="eigen">Enable various arithmetic screensavers which use Eigen2 for computations.</flag>
+		<flag name="kexiv2">Enable image rotation based on exif tags with libkexiv2.</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,121 @@
+# ChangeLog for dev-libs/skyutils
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/skyutils/ChangeLog,v 1.33 2014/07/22 20:26:16 mrueg Exp $
+
+  22 Jul 2014; Manuel Rüger <mrueg@gentoo.org> skyutils-2.8-r2.ebuild:
+  Update HOMEPAGE
+
+  09 Apr 2014; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  [QA] Dissolve the mobile-phone herd to maintainer-needed because it is empty
+  and nobody joined it after multiple recruitment mails.
+
+  26 Jul 2013; Chris Reffett <creffett@gentoo.org> -skyutils-2.8-r1.ebuild,
+  metadata.xml, skyutils-2.8-r2.ebuild:
+  Drop old, fix AM_CONFIG_HEADER wrt bug 467672
+
+  06 Jun 2012; Zac Medico <zmedico@gentoo.org> skyutils-2.8-r2.ebuild:
+  inherit eutils for epatch
+
+  03 Sep 2010; Joseph Jezak <josejx@gentoo.org> skyutils-2.8-r2.ebuild:
+  Marked ppc64 stable.
+
+  23 Feb 2010; Joseph Jezak <josejx@gentoo.org> skyutils-2.8-r2.ebuild:
+  Marked ~ppc64.
+
+  08 Nov 2008; nixnut <nixnut@gentoo.org> skyutils-2.8-r2.ebuild:
+  Stable on ppc wrt bug 245365
+
+  05 Nov 2008; Markus Meier <maekke@gentoo.org> skyutils-2.8-r2.ebuild:
+  amd64/x86 stable, bug #245265
+
+*skyutils-2.8-r2 (18 Jul 2008)
+
+  18 Jul 2008; Alin Năstac <mrness@gentoo.org>
+  +files/skyutils-2.8-libs.patch, +skyutils-2.8-r2.ebuild:
+  Link with dependent libraries (#231981).
+
+*skyutils-2.8-r1 (23 May 2007)
+
+  23 May 2007; Alin Năstac <mrness@gentoo.org> -skyutils-2.8.ebuild,
+  +skyutils-2.8-r1.ebuild:
+  Fix QA notice.Set HOMEPAGE to N/A.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  26 Feb 2006; Alin Nastac <mrness@gentoo.org> -skyutils-2.6.ebuild,
+  -skyutils-2.7.ebuild, skyutils-2.8.ebuild:
+  Remove obsolete versions. Remove system packages from dependencies. Remove
+  documentation files with no useful content.
+
+  06 Feb 2006; Simon Stelling <blubb@gentoo.org> skyutils-2.8.ebuild:
+  stable on amd64
+
+  02 Jan 2006; Michael Hanselmann <hansmi@gentoo.org> skyutils-2.8.ebuild:
+  Stable on ppc.
+
+  02 Jan 2006; Alin Nastac <mrness@gentoo.org> skyutils-2.8.ebuild:
+  Stable on x86.
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> skyutils-2.7.ebuild:
+  Stable on ppc.
+
+*skyutils-2.8 (06 Oct 2005)
+
+  06 Oct 2005; Alin Nastac <mrness@gentoo.org> metadata.xml,
+  -skyutils-2.5.ebuild, skyutils-2.6.ebuild, skyutils-2.7.ebuild,
+  +skyutils-2.8.ebuild:
+  Assign to mobile-phone herd. Remove obsolete version. Remove COPYING 
+  and INSTALL from docs. Mark version 2.7 stable on x86. Version bump.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> skyutils-2.6.ebuild:
+  Stable on ppc.
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> skyutils-2.6.ebuild:
+  stable on amd64
+
+*skyutils-2.7 (16 Dec 2004)
+
+  16 Dec 2004; Dylan Carlson <absinthe@gentoo.org> +skyutils-2.7.ebuild:
+  Version bump.
+
+  16 Dec 2004; Dylan Carlson <absinthe@gentoo.org> skyutils-2.6.ebuild:
+  keywords ~amd64 to close bug 73496.
+
+  23 Nov 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed digest.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> skyutils-2.5.ebuild,
+  skyutils-2.6.ebuild:
+  virtual/glibc -> virtual/libc
+
+  06 Jun 2004; Daniel Black <dragonheart@gentoo.org> -skyutils-2.1.ebuild,
+  -skyutils-2.4.ebuild, skyutils-2.6.ebuild:
+  x86 keyword. Clean out old versions
+
+*skyutils-2.6 (18 Apr 2004)
+
+  18 Apr 2004; Daniel Black <dragonheart@gentoo.org> metadata.xml,
+  skyutils-2.6.ebuild:
+  version bump to support smssend-3.3
+
+*skyutils-2.5 (09 Apr 2003)
+
+  09 Apr 2003; Luca Barbato <lu_zero@gentoo.org> : skytuils-2.5.ebuild
+  Thanks to Kfir Ozer <ufk2k@yahoo.com> for the update
+
+*skyutils-2.4 (06 Mar 2003)
+
+  06 Mar 2003; Luca Barbato <lu_zero@gentoo.org> : skytuils-2.4.ebuild
+  Thanks to Michele Balistreri <brain87@gmx.net> for the update
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*skyutils-2.1 (23 Aug 2002)
+
+  23 Aug 2002; George Shapovalov <george@gentoo.org> skytuils-2.1.ebuild : 
+  Initial import. Ebuild submitted by Bob Koutsky <bck@webohme.cz>.
+  Skyutils is assorted collection of helpful C functions. 

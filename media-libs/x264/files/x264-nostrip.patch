@@ -1,0 +1,16 @@
+Index: x264-svn/configure
+===================================================================
+--- x264-svn.orig/configure
++++ x264-svn/configure
+@@ -374,11 +374,6 @@ if [ "$pic" = "yes" ] ; then
+     ASFLAGS="$ASFLAGS -D__PIC__"
+ fi
+ 
+-if [ "$debug" != "yes" -a "$gprof" != "yes" ]; then
+-    CFLAGS="$CFLAGS -s -fomit-frame-pointer"
+-    LDFLAGS="$LDFLAGS -s"
+-fi
+-
+ if [ "$debug" = "yes" ]; then
+     CFLAGS="-O1 -g $CFLAGS"
+ else

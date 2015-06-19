@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<longdescription lang="en">
+		Execline is a non-interactive scripting language similar to sh.
+		According to the home page, the syntax is far mor logical and
+		predictable than sh, and has no security issues.
+	</longdescription>
+</pkgmetadata>

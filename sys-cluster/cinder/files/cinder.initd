@@ -1,0 +1,23 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/cinder/files/cinder.initd,v 1.1 2014/05/11 12:21:59 vadimk Exp $
+
+description="Starts ${SVCNAME} service for OpenStack"
+
+command=/usr/bin/${SVCNAME}
+command_background=yes
+command_args="--config-file /etc/cinder/cinder.conf --log-file /var/log/cinder/${SVCNAME}.log"
+pidfile=/var/run/cinder/${SVCNAME}.pid
+required_files=/etc/cinder/cinder.conf
+
+start_stop_daemon_args="--quiet --user ${CINDER_USER:-cinder}"
+
+depend() {
+	need net
+}
+
+start_pre() {
+	checkpath --directory --owner ${CINDER_USER:-cinder}:${CINDER_GROUP:-cinder} --mode 0755 ${CINDER_RUN:-/var/run/cinder}
+}
+

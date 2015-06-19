@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 7a9821d..db02cad 100644
+--- a/Makefile
++++ b/Makefile
+@@ -18,6 +18,8 @@ FLAGS = -O2 -Wall -fPIC $(GTK_CFLAGS) $(GKRELLM_INCLUDE)
+ LIBS = $(GTK_LIB)
+ LFLAGS = -shared
+ 
++LFLAGS += $(LDFLAGS)
++
+ OBJS = volume.o mixer.o oss_mixer.o
+ 
+ ifeq ($(enable_alsa),1)

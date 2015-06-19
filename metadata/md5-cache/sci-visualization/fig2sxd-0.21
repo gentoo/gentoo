@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=sys-libs/zlib
+DESCRIPTION=Utility to convert files in xfig format to OpenOffice.org Draw format
+EAPI=4
+HOMEPAGE=http://sourceforge.net/projects/fig2sxd
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib
+SLOT=0
+SRC_URI=mirror://sourceforge/fig2sxd/fig2sxd_0.21.orig.tar.gz mirror://sourceforge/fig2sxd/fig2sxd_0.21-2.diff.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=e22461ba0248b6bbd62ef46653fa1566

@@ -1,0 +1,37 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mpd/files/mpd2.init,v 1.1 2014/04/15 16:35:25 angelos Exp $
+
+depend() {
+	need localmount
+	use net netmount nfsmount alsasound esound pulseaudio
+}
+
+checkconfig() {
+	if ! [ -f /etc/mpd.conf ]; then
+		eerror "Configuration file /etc/mpd.conf does not exist."
+		return 1
+	fi
+
+	if ! grep -q ^pid_file /etc/mpd.conf; then
+		eerror "Invalid configuration: pid_file needs to be set."
+		return 1
+	fi
+
+	return 0
+}
+
+start() {
+	checkconfig || return 1
+
+	ebegin "Starting Music Player Daemon"
+	start-stop-daemon --start --quiet --exec /usr/bin/mpd -- /etc/mpd.conf 2>/dev/null
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Music Player Daemon"
+	/usr/bin/mpd --kill
+	eend $?
+}

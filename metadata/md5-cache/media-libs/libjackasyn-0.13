@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=media-sound/jack-audio-connection-kit media-libs/libsamplerate
+DESCRIPTION=An application/library for connecting OSS apps to Jackit
+HOMEPAGE=http://gige.xdv.org/soft/libjackasyn
+IUSE=debug
+KEYWORDS=amd64 sparc x86
+LICENSE=GPL-2
+RDEPEND=media-sound/jack-audio-connection-kit media-libs/libsamplerate
+SLOT=0
+SRC_URI=http://gige.xdv.org/soft/libjackasyn/download/libjackasyn-0.13.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=eb812569fe41f28e426cc08981cc1bd3

@@ -1,0 +1,10 @@
+--- src/utils_private.cpp	2009-05-03 08:55:04.000000000 -0400
++++ src/utils_private.cpp	2009-05-03 08:55:52.000000000 -0400
+@@ -25,6 +25,7 @@
+ #include <cstdarg>
+ #include <iostream>
+ #include <map>
++#include <cstdio>
+ #include <ne_uri.h> 
+ #include "utils_private.h"
+ 

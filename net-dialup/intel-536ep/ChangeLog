@@ -1,0 +1,51 @@
+# ChangeLog for net-dialup/intel-536ep
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/intel-536ep/ChangeLog,v 1.10 2010/02/06 11:12:37 ulm Exp $
+
+  06 Feb 2010; Ulrich Mueller <ulm@gentoo.org> intel-536ep-4.71.ebuild:
+  Fix LICENSE, bug 301123.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  28 Mar 2006; Alin Nastac <mrness@gentoo.org> intel-536ep-4.71.ebuild:
+  Bail out in pkg_setup if kernel version is 2.6.16 or greater (#127464).
+
+  12 Mar 2006; Alin Nastac <mrness@gentoo.org>
+  -files/intel-536ep-4.69-kernel-2.6.10-tty.patch,
+  -files/intel-536ep-4.69-kernel-2.6.11-pm.patch,
+  -intel-536ep-4.69-r1.ebuild, intel-536ep-4.71.ebuild:
+  Remove obsolete version. Cleanup ebuild's code.
+
+  27 Dec 2005; Alin Nastac <mrness@gentoo.org> intel-536ep-4.71.ebuild:
+  Stable on x86.
+
+*intel-536ep-4.71 (27 Nov 2005)
+
+  27 Nov 2005; Alin Nastac <mrness@gentoo.org> -intel-536ep-4.69.ebuild,
+  +intel-536ep-4.71.ebuild:
+  Remove old version. Version bump (#113412).
+
+*intel-536ep-4.69-r1 (24 Mar 2005)
+
+  24 Mar 2005; Alin Nastac <mrness@gentoo.org>
+  +files/intel-536ep-4.69-kernel-2.6.10-tty.patch,
+  +intel-536ep-4.69-r1.ebuild:
+  Fix segfault on kernels >= 2.6.10 (#86331), thanks to Markus Gothe
+  <margo284@student.liu.se>.
+
+  15 Mar 2005; Alin Nastac <mrness@gentoo.org>
+  +files/intel-536ep-4.69-kernel-2.6.11-pm.patch, intel-536ep-4.69.ebuild:
+  Fix broken compilation on systems with kernel ver >= 2.6.11 (#85212), thanks
+  to Markus Gothe <margo284@student.liu.se>.
+
+  10 Feb 2005; Alin Nastac <mrness@gentoo.org> intel-536ep-4.69.ebuild:
+  Fix broken compilation when installed on a machine with a 2.4 kernel (#81120).
+
+*intel-536ep-4.69 (22 Jan 2005)
+
+  22 Jan 2005; Alin Nastac <mrness@gentoo.org> +metadata.xml,
+  +files/intel536ep.confd, +files/intel536ep.initd,
+  +intel-536ep-4.69.ebuild:
+  Initial import from bug #78225.
+

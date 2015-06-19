@@ -1,0 +1,15 @@
+diff -Nuar --exclude '*.g' --exclude '*.cmd' klibc-2.0.2-r1/work/klibc-2.0.2/usr/utils/mkfifo.c klibc-2.0.2.orig/work/klibc-2.0.2/usr/utils/mkfifo.c
+--- klibc-2.0.2-r1/work/klibc-2.0.2/usr/utils/mkfifo.c	2012-10-03 09:41:43.000000000 -0700
++++ klibc-2.0.2.orig/work/klibc-2.0.2/usr/utils/mkfifo.c	2013-12-26 13:19:34.270949780 -0800
+@@ -13,6 +13,11 @@
+ 
+ char *progname;
+ 
++int mkfifo (const char *__p, mode_t __m)
++{
++	return mknod(__p, (__m & ~S_IFMT) | S_IFIFO, (dev_t) 0);
++}
++
+ static int make_fifo(char *dir)
+ {
+ 	if (mkfifo(dir, leaf_mode)) {

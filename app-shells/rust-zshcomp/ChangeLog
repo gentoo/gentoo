@@ -1,0 +1,29 @@
+# ChangeLog for app-shells/rust-zshcomp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-shells/rust-zshcomp/ChangeLog,v 1.4 2015/04/11 21:47:31 jauhien Exp $
+
+*rust-zshcomp-1_beta20150411 (11 Apr 2015)
+
+  11 Apr 2015;  <jauhien@gentoo.org> +rust-zshcomp-1_beta20150411.ebuild,
+  -rust-zshcomp-1.0.0_alpha.ebuild:
+  version bump, upstream splitted rust-zshcomp to the different repo without
+  releases, so snapshot was taken
+
+*rust-zshcomp-1.0.0_alpha (10 Feb 2015)
+
+  10 Feb 2015; Jauhien Piatlicki <jauhien@gentoo.org>
+  +rust-zshcomp-1.0.0_alpha.ebuild, -rust-zshcomp-0.11.0.ebuild,
+  -rust-zshcomp-0.12.0.ebuild, -rust-zshcomp-9999.ebuild:
+  version bump, move live ebuild to rust overlay
+
+*rust-zshcomp-9999 (18 Oct 2014)
+
+  18 Oct 2014; Jauhien Piatlicki <jauhien@gentoo.org> +rust-zshcomp-9999.ebuild:
+  add live version
+
+*rust-zshcomp-0.11.0 (18 Oct 2014)
+*rust-zshcomp-0.12.0 (18 Oct 2014)
+
+  18 Oct 2014; Jauhien Piatlicki <jauhien@gentoo.org> +metadata.xml,
+  +rust-zshcomp-0.11.0.ebuild, +rust-zshcomp-0.12.0.ebuild:
+  initial import from the rust overlay

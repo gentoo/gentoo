@@ -1,0 +1,41 @@
+diff --git a/Makefile b/Makefile
+index e75ffcf..bcdd05c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -188,7 +188,7 @@ avs2ps:	avs2ps.c
+ 	$(CC) $(CFLAGS) $(FLAGS) $(LDFLAGS) -o avs2ps avs2ps.c -lm
+ 
+ balls:	balls.f
+-	$(FC) $(FFLAGS) -o balls balls.f 
++	$(FC) $(LDFLAGS) $(FFLAGS) -o balls balls.f
+ 
+ local.o:	Makefile.incl local.c
+ 	$(CC) $(CFLAGS) $(FLAGS) -c local.c
+@@ -201,21 +201,18 @@ ribbon:	ribbon.f ribbon1.f modsubs.f
+ 	ribbon.f ribbon1.f modsubs.f -o ribbon
+ 
+ rastep:	rastep.f quadric.o suv.o
+-	$(FC) $(FFLAGS) \
+-	rastep.f quadric.o suv.o $(LDFLAGS) \
+-	-o rastep 
++	$(FC) $(FFLAGS) $(LDFLAGS) -o rastep \
++	rastep.f quadric.o suv.o
+ 
+ render:	render.o local.o quadric.o parse.o r3dtops.o ungz.o qinp.o
+-	$(FC) $(FFLAGS) \
++	$(FC) $(FFLAGS) $(LDFLAGS) -o render \
+ 	render.o local.o quadric.o parse.o r3dtops.o ungz.o \
+ 	qinp.o \
+-	$(LIBS) $(LDFLAGS) \
+-	-o render
++	$(LIBS)
+ 
+ normal3d:	normal3d.o quadric.o qinp.o ungz.o parameters.incl
+-	$(FC) $(FFLAGS) \
+-	normal3d.o quadric.o ungz.o qinp.o $(LDFLAGS) \
+-	-o normal3d
++	$(FC) $(FFLAGS) $(LDFLAGS) -o normal3d \
++	normal3d.o quadric.o ungz.o qinp.o
+ 
+ stereo3d:
+ 

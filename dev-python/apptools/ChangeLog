@@ -1,0 +1,128 @@
+# ChangeLog for dev-python/apptools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/apptools/ChangeLog,v 1.27 2015/03/08 23:39:13 pacho Exp $
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> apptools-4.2.1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> apptools-4.2.1.ebuild:
+  amd64 stable, bug 540290
+
+  27 Jun 2014; Mike Gilbert <floppym@gentoo.org> apptools-4.2.0-r1.ebuild,
+  apptools-4.2.1.ebuild:
+  Remove unnecessary setting of TMPDIR.
+
+*apptools-4.2.1 (02 May 2014)
+
+  02 May 2014; Ian Delaney <idella4@gentoo.org> +apptools-4.2.1.ebuild,
+  -apptools-4.2.0.ebuild:
+  bump; rm old, update deps & test phase
+
+  14 May 2013; Ian Delaney <idella4@gentoo.org> -apptools-4.0.0.ebuild,
+  -apptools-4.0.1.ebuild, -apptools-4.1.0.ebuild:
+  drop old
+
+  12 May 2013; Ian Delaney <idella4@gentoo.org> -apptools-3.4.1.ebuild:
+  drop old 3. version
+
+*apptools-4.2.0-r1 (16 Apr 2013)
+
+  16 Apr 2013; Ian Delaney <idella4@gentoo.org> +apptools-4.2.0-r1.ebuild:
+  migration -> distutils-r1
+
+*apptools-4.2.0 (03 Apr 2013)
+
+  03 Apr 2013; Patrick Lauer <patrick@gentoo.org> +apptools-4.2.0.ebuild:
+  Bump
+
+  06 Dec 2012; Sébastien Fabbro <bicatali@gentoo.org> apptools-4.1.0.ebuild:
+  Keyword amd64-linux and x86-linux
+
+*apptools-4.1.0 (09 Oct 2012)
+
+  09 Oct 2012; Patrick Lauer <patrick@gentoo.org> +apptools-4.1.0.ebuild:
+  Bump
+
+  15 Sep 2012; Kacper Kowalik <xarthisius@gentoo.org> apptools-4.0.1.ebuild:
+  Fix virtualmake invocation in src_test(), thanks to Arfrever for all the help.
+
+  13 Sep 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  +files/apptools_test.patch, apptools-4.0.1.ebuild:
+  Disable test that use package installed in  wrt #429668 by Diego Elio Pettenò
+  <flameeyes@gentoo.org>. Thanks to Ian Delaney <johneed@hotmail.com> for the
+  patch
+
+  05 Mar 2012; Justin Lecher <jlec@gentoo.org> apptools-3.4.1.ebuild,
+  apptools-4.0.0.ebuild, apptools-4.0.1.ebuild:
+  revert restriction of pypy
+
+  05 Mar 2012; Justin Lecher <jlec@gentoo.org> apptools-3.4.1.ebuild,
+  apptools-4.0.0.ebuild, apptools-4.0.1.ebuild:
+  Restrict pypy ABI
+
+*apptools-4.0.1 (17 Jan 2012)
+
+  17 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org> apptools-4.0.0.ebuild,
+  +apptools-4.0.1.ebuild:
+  Version bump
+
+*apptools-4.0.0 (03 Aug 2011)
+
+  03 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> +apptools-4.0.0.ebuild:
+  Version bump. Possible API break.
+
+*apptools-3.4.1 (30 Jan 2011)
+
+  30 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -apptools-3.4.0.ebuild, +apptools-3.4.1.ebuild:
+  Version bump.
+
+*apptools-3.4.0 (18 Oct 2010)
+
+  18 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -apptools-3.3.2.ebuild, +apptools-3.4.0.ebuild:
+  Version bump.
+
+  09 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  apptools-3.3.2.ebuild:
+  Fix circular dependency (bug #327465).
+
+  07 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  apptools-3.3.2.ebuild:
+  Unrestrict tests.
+
+*apptools-3.3.2 (31 May 2010)
+
+  31 May 2010; Justin Lecher <jlec@gentoo.org> +apptools-3.3.2.ebuild:
+  Version Bump on permission of Patrick
+
+*apptools-3.3.1 (21 Mar 2010)
+
+  21 Mar 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +apptools-3.3.1.ebuild:
+  Version bump
+
+  15 Mar 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  -apptools-3.2.0.ebuild, apptools-3.3.0.ebuild:
+  Fixed building with new setuptools, bug #308193
+
+*apptools-3.3.0 (06 Sep 2009)
+
+  06 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +apptools-3.3.0.ebuild:
+  Version bump. Set SUPPORT_PYTHON_ABIS.
+
+  24 Apr 2009; Patrick Lauer <patrick@gentoo.org> -apptools-3.1.0.ebuild:
+  Remove old
+
+*apptools-3.2.0 (27 Mar 2009)
+
+  27 Mar 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  +apptools-3.2.0.ebuild:
+  Version bump
+
+*apptools-3.1.0 (15 Jan 2009)
+
+  15 Jan 2009; Sébastien Fabbro <bicatali@gentoo.org> +metadata.xml,
+  +apptools-3.1.0.ebuild:
+  Initial import

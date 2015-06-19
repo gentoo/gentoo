@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/cman/files/qdiskd.initd,v 1.1 2011/09/14 10:41:18 ultrabug Exp $
+
+depend() {
+	use net
+	need cman
+}
+
+start() {
+	ebegin "Starting the Quorum Disk Daemon"
+	start-stop-daemon --start --quiet --exec /usr/sbin/qdiskd -- -Q
+	eend $? "Failed to start qdiskd"
+}
+
+stop() {
+	ebegin "Stopping the Quorum Disk Daemon"
+	start-stop-daemon --stop --pidfile /var/run/qdiskd.pid
+	eend $? "Failed to stop qdiskd"
+}

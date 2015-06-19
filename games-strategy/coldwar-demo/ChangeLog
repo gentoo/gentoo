@@ -1,0 +1,51 @@
+# ChangeLog for games-strategy/coldwar-demo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/coldwar-demo/ChangeLog,v 1.12 2015/06/01 20:52:07 mr_bones_ Exp $
+
+  01 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org> coldwar-demo-1-r2.ebuild:
+  clean up app-emulation/emul-linux which has been removed
+
+  29 Aug 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  -coldwar-demo-1-r1.ebuild:
+  old
+
+  25 Jun 2014; Michał Górny <mgorny@gentoo.org> coldwar-demo-1-r2.ebuild:
+  Update multilib dependencies to use the lowest known EAPI 5 or multilib
+  versions.
+
+*coldwar-demo-1-r2 (25 Jun 2014)
+
+  25 Jun 2014; Michał Górny <mgorny@gentoo.org> +coldwar-demo-1-r2.ebuild:
+  Support multilib dependencies aside to emul-linux-x86.
+
+  07 May 2014; Ulrich Müller <ulm@gentoo.org> coldwar-demo-1-r1.ebuild:
+  Fix LICENSE, add mirror and bindist restrictions, bug 505752.
+
+  29 Jan 2013; Tupone Alfredo <tupone@gentoo.org> coldwar-demo-1-r1.ebuild:
+  Use QA_PREBUILT. Bug #439532 by Diego
+
+  05 Feb 2012; Mike Frysinger <vapier@gentoo.org> coldwar-demo-1-r1.ebuild:
+  Move to new unpacker eclass for unpack_makeself.
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> coldwar-demo-1-r1.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+*coldwar-demo-1-r1 (28 Sep 2006)
+
+  28 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -coldwar-demo-1.ebuild, +coldwar-demo-1-r1.ebuild:
+  Revision bump to remove fetch restriction. Updated ebuild by Paul Bredbury
+  <brebs@sent.com>. Closing bug #142016.
+
+  22 May 2006; Chris Gianelloni <wolf31o2@gentoo.org> coldwar-demo-1.ebuild:
+  Demo->(Demo) for bug #133836.
+
+  20 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org> coldwar-demo-1.ebuild:
+  Added modular X dependencies and fixing other dependencies.
+
+*coldwar-demo-1 (22 Nov 2005)
+
+  22 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +coldwar-demo-1.ebuild:
+  Initial import. Ebuild by Paul Bredbury <brebs@sent.com> and modified by me.
+  Closing bug #111884.

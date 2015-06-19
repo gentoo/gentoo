@@ -1,0 +1,108 @@
+# ChangeLog for dev-python/tpg
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/tpg/ChangeLog,v 1.27 2015/04/14 12:51:37 ago Exp $
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> tpg-3.2.2-r1.ebuild:
+  Stable for ia64, wrt bug #540290
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> tpg-3.2.2-r1.ebuild:
+  Drop old Python implementations
+
+  09 Mar 2015; Pacho Ramos <pacho@gentoo.org> tpg-3.2.2-r1.ebuild:
+  x86 stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> tpg-3.2.2-r1.ebuild:
+  ppc stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> tpg-3.2.2-r1.ebuild:
+  amd64 stable, bug 540290
+
+  23 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -tpg-3.2.2.ebuild:
+  Remove old.
+
+  25 Nov 2014; Pacho Ramos <pacho@gentoo.org> tpg-3.2.2-r1.ebuild:
+  Support python 3.4
+
+*tpg-3.2.2-r1 (30 Mar 2014)
+
+  30 Mar 2014; Ian Delaney <idella4@gentoo.org> +tpg-3.2.2-r1.ebuild,
+  -tpg-3.1.2.ebuild, -tpg-3.1.4.ebuild, -tpg-3.2.1.ebuild:
+  revbump; conversion -> distutils-r1 eclass, Add py3 support, fixes Bug #497508
+  by jarausch
+
+*tpg-3.2.2 (08 Jan 2014)
+
+  08 Jan 2014; Patrick Lauer <patrick@gentoo.org> +tpg-3.2.2.ebuild:
+  Bump
+
+*tpg-3.2.1 (06 Jun 2012)
+
+  06 Jun 2012; Patrick Lauer <patrick@gentoo.org> +tpg-3.2.1.ebuild:
+  Bump for #419791
+
+*tpg-3.1.4 (09 Mar 2012)
+
+  09 Mar 2012; Patrick Lauer <patrick@gentoo.org> +tpg-3.1.4.ebuild:
+  Bump
+
+  26 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  tpg-3.1.2.ebuild:
+  Fix dependencies. Set SUPPORT_PYTHON_ABIS.
+
+  04 Sep 2009; Patrick Lauer <patrick@gentoo.org> -tpg-3.1.1.ebuild:
+  Remove old
+
+*tpg-3.1.2 (15 Feb 2009)
+
+  15 Feb 2009; Patrick Lauer <patrick@gentoo.org> +tpg-3.1.2.ebuild:
+  Bump to 3.1.2
+
+*tpg-3.1.1 (09 Jul 2007)
+
+  09 Jul 2007; Lukasz Strzygowski <lucass@gentoo.org> -tpg-3.0.5.ebuild,
+  -tpg-3.0.6.ebuild, -tpg-3.1.0.ebuild, +tpg-3.1.1.ebuild:
+  Version bump: cleanup, marked ~amd64, added src_test. Dropped old versions.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*tpg-3.1.0 (15 Aug 2006)
+
+  15 Aug 2006; Carsten Lohrke <carlo@gentoo.org> +tpg-3.1.0.ebuild:
+  Version bump.
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> tpg-3.0.6.ebuild:
+  Mark 3.0.6 ~ia64
+
+*tpg-3.0.6 (22 Feb 2006)
+
+  22 Feb 2006; Carsten Lohrke <carlo@gentoo.org> -tpg-3.0.2.ebuild,
+  -tpg-3.0.3.ebuild, -tpg-3.0.4.ebuild, +tpg-3.0.6.ebuild:
+  Version bump.
+
+*tpg-3.0.5 (25 Apr 2005)
+
+  25 Apr 2005; Carsten Lohrke <carlo@gentoo.org> +tpg-3.0.5.ebuild:
+  version bump
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*tpg-3.0.4 (07 Dec 2004)
+
+  07 Dec 2004; Carsten Lohrke <carlo@gentoo.org> +tpg-3.0.4.ebuild:
+  version bump
+
+*tpg-3.0.3 (14 Oct 2004)
+
+  14 Oct 2004; Carsten Lohrke <carlo@gentoo.org> +tpg-3.0.3.ebuild:
+  version bump
+
+  02 May 2004; David Holm <dholm@gentoo.org> tpg-3.0.2.ebuild:
+  Added to ~ppc.
+
+*tpg-3.0.2 (02 May 2004)
+
+  02 May 2004; Bryan Østergaard <kloeri@gentoo.org> +metadata.xml,
+  +tpg-3.0.2.ebuild:
+  Initial import, bug #48538.

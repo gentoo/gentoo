@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare unpack
+DEPEND=dev-libs/libpcre >=dev-libs/glib-2:2 !gtk3? ( >=x11-libs/gtk+-2.18:2 ) gtk3? ( x11-libs/gtk+:3 ) curl? ( >=net-misc/curl-7.10 ) gstreamer? ( media-libs/gstreamer:0.10 ) libnotify? ( x11-libs/libnotify ) dev-util/intltool virtual/pkgconfig sys-devel/gettext
+DESCRIPTION=Download manager using gtk+ and libcurl
+EAPI=4
+HOMEPAGE=http://www.ugetdm.com
+IUSE=aria2 +curl gstreamer gtk3 hide-temp-files libnotify nls
+KEYWORDS=amd64 ppc x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/libpcre >=dev-libs/glib-2:2 !gtk3? ( >=x11-libs/gtk+-2.18:2 ) gtk3? ( x11-libs/gtk+:3 ) curl? ( >=net-misc/curl-7.10 ) gstreamer? ( media-libs/gstreamer:0.10 ) libnotify? ( x11-libs/libnotify )
+REQUIRED_USE=|| ( aria2 curl )
+SLOT=0
+SRC_URI=mirror://sourceforge/urlget/uget-1.8.0.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=e40feac908152637ce87b62053ce92cd

@@ -1,0 +1,35 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/adjtimex/files/adjtimex.init,v 1.5 2010/03/25 19:28:47 robbat2 Exp $
+
+DAEMON=adjtimex
+OPTS="--tick ${TICK} --frequency ${FREQ}"
+CONFD="/etc/conf.d/${DAEMON}"
+
+depend() {
+	before ntp-client ntpd
+	need localmount
+}
+
+checkconfig() {
+    if [ ! -f "${CONFD}" ]; then
+        eerror "Configuration file not found!"
+        eerror "You must run adjtimexconfig to create it."
+        return 1
+    fi
+}
+
+
+start() {
+    checkconfig || return 1
+	ebegin "Regulating system clock with ${DAEMON}..."
+	/usr/sbin/${DAEMON} ${OPTS}
+	eend $?
+}
+
+stop() {
+    :
+}
+
+# vim: ts=4 sw=4 ft=gentoo-init-d:

@@ -1,0 +1,13 @@
+--- chromaprint-1.1/src/ext/ffmpeg_decoder.h
++++ chromaprint-1.1/src/ext/ffmpeg_decoder.h
+@@ -28,6 +28,10 @@
+ }
+ #include "audio_consumer.h"
+ 
++#ifndef AVCODEC_MAX_AUDIO_FRAME_SIZE
++#  define AVCODEC_MAX_AUDIO_FRAME_SIZE 192000
++#endif
++
+ class Decoder
+ {
+ public:

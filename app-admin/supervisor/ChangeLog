@@ -1,0 +1,109 @@
+# ChangeLog for app-admin/supervisor
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/supervisor/ChangeLog,v 1.21 2015/03/08 23:37:29 pacho Exp $
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> supervisor-3.1.3.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> supervisor-3.1.3.ebuild:
+  amd64 stable, bug 540290
+
+*supervisor-3.1.3 (03 Nov 2014)
+
+  03 Nov 2014; Ian Delaney <idella4@gentoo.org> +supervisor-3.1.3.ebuild,
+  -supervisor-3.1.1.ebuild, -supervisor-3.1.2.ebuild:
+  bump, rm old
+
+  17 Sep 2014; Ian Delaney <idella4@gentoo.org> metadata.xml,
+  supervisor-3.1.2.ebuild:
+  revert bump to state of prior versions
+
+*supervisor-3.1.2 (16 Sep 2014)
+
+  16 Sep 2014; Ian Delaney <idella4@gentoo.org> +supervisor-3.1.2.ebuild,
+  -files/3.0_alpha8-no-docs.patch, -supervisor-3.0.ebuild,
+  -supervisor-3.0_alpha10.ebuild, -supervisor-3.0_alpha12.ebuild,
+  -supervisor-3.0_beta1.ebuild, -supervisor-3.0_beta2-r1.ebuild,
+  -supervisor-3.1.0.ebuild, metadata.xml, supervisor-3.1.1.ebuild:
+  bump; add IUSE flag iterparse (term used by upstream) for optional extra and
+  the related dep, tidy dep mock, remove old
+
+*supervisor-3.1.1 (25 Aug 2014)
+
+  25 Aug 2014; Ian Delaney <idella4@gentoo.org> +supervisor-3.1.1.ebuild:
+  bump; add IUSE doc, doc build, tidy
+
+  02 Aug 2014; Ian Delaney <idella4@gentoo.org> supervisor-3.1.0.ebuild:
+  drop py2.6, unrestrict workable test phase, tidy
+
+*supervisor-3.1.0 (01 Aug 2014)
+
+  01 Aug 2014; Patrick Lauer <patrick@gentoo.org> +supervisor-3.1.0.ebuild:
+  Bump
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> supervisor-3.0.ebuild,
+  supervisor-3.0_beta2-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*supervisor-3.0 (10 Aug 2013)
+
+  10 Aug 2013; Patrick Lauer <patrick@gentoo.org> +supervisor-3.0.ebuild:
+  Bump
+
+*supervisor-3.0_beta2-r1 (11 Jun 2013)
+
+  11 Jun 2013; Tiziano Müller <dev-zero@gentoo.org> +files/init.d-r1,
+  +supervisor-3.0_beta2-r1.ebuild, -supervisor-3.0_beta2.ebuild:
+  Fix problem with missing non-py files, disable tests for now, simplify
+  init.d-script.
+
+*supervisor-3.0_beta2 (05 Jun 2013)
+
+  05 Jun 2013; Tiziano Müller <dev-zero@gentoo.org>
+  +supervisor-3.0_beta2.ebuild:
+  Version bump, use distutils-r1
+
+  07 Dec 2012; Ulrich Müller <ulm@gentoo.org> supervisor-3.0_alpha10.ebuild,
+  supervisor-3.0_alpha12.ebuild, supervisor-3.0_beta1.ebuild:
+  Fix LICENSE, bugs 425876 and 444378.
+
+*supervisor-3.0_beta1 (13 Nov 2012)
+
+  13 Nov 2012; Patrick Lauer <patrick@gentoo.org> +supervisor-3.0_beta1.ebuild:
+  Bump
+
+  02 Aug 2012; Jesus Rivero <neurogeek@gentoo.org>
+  supervisor-3.0_alpha10.ebuild, supervisor-3.0_alpha12.ebuild:
+  Bumped to EAPI 4 and added xml(+)
+
+*supervisor-3.0_alpha12 (23 Apr 2012)
+
+  23 Apr 2012; Patrick Lauer <patrick@gentoo.org>
+  +supervisor-3.0_alpha12.ebuild:
+  Bump
+
+  01 Mar 2012; Dirkjan Ochtman <djc@gentoo.org> metadata.xml:
+  Remove myself as a maintainer.
+
+*supervisor-3.0_alpha10 (11 Sep 2011)
+
+  11 Sep 2011; Mike Gilbert <floppym@gentoo.org> -supervisor-3.0_alpha9.ebuild,
+  +supervisor-3.0_alpha10.ebuild:
+  Version bump.
+
+*supervisor-3.0_alpha9 (23 Sep 2010)
+
+  23 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -supervisor-3.0_alpha8.ebuild, +supervisor-3.0_alpha9.ebuild:
+  Version bump.
+
+  07 Jun 2010; Dirkjan Ochtman <djc@gentoo.org>
+  +files/3.0_alpha8-no-docs.patch, supervisor-3.0_alpha8.ebuild:
+  Prevent installation of doc files in /usr/share/doc directly (bug 315981).
+
+*supervisor-3.0_alpha8 (09 Mar 2010)
+
+  09 Mar 2010; Dirkjan Ochtman <djc@gentoo.org>
+  +supervisor-3.0_alpha8.ebuild, +files/conf.d, +files/init.d,
+  +metadata.xml:
+  Initial version of the package.

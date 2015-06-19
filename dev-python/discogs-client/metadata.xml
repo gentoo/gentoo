@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <maintainer>
+    <email>int.teo@gmail.com</email>
+    <name>Theofilos Intzoglou</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="pypi">discogs-client</remote-id>
+    <remote-id type="github">discogs/discogs_client</remote-id>
+  </upstream>
+</pkgmetadata>

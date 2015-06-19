@@ -1,0 +1,23 @@
+--- origsrc/qsvn-0.8.3/src/svnqt/CMakeLists.txt	2009-07-05 04:56:34.000000000 -0500
++++ src/qsvn-0.8.3/src/svnqt/CMakeLists.txt	2009-08-25 00:56:52.432416800 -0500
+@@ -131,7 +131,7 @@ CONFIGURE_FILE(
+ SET(INST_HEADERS ${INST_HEADERS} ${CMAKE_CURRENT_BINARY_DIR}/svnqt_defines.hpp)
+ INCLUDE_DIRECTORIES(BEFORE ${CMAKE_CURRENT_BINARY_DIR})
+ 
+-ADD_LIBRARY(${svnqt-name} SHARED ${SOURCES} ${svnhdr})
++ADD_LIBRARY(${svnqt-name} STATIC ${SOURCES} ${svnhdr})
+ IF(WIN32)
+     ADD_DEFINITIONS(-D_USE_32BIT_TIME_T)
+ ELSE(WIN32)
+@@ -175,9 +175,11 @@ ENDIF (BUILD_TESTS)
+ # install rules
+ # in win32 we don't install it
+ IF(NOT WIN32)
++IF(FALSE)
+     INSTALL(TARGETS ${svnqt-name} DESTINATION ${LIB_INSTALL_DIR})
+     INSTALL(FILES ${INST_HEADERS} DESTINATION include/svnqt)
+     INSTALL(FILES ${CACHEINST_HEADERS} DESTINATION include/svnqt/cache)
++ENDIF(FALSE)
+ ENDIF(NOT WIN32)
+ 
+ IF (BUILD_TESTS)

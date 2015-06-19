@@ -1,0 +1,542 @@
+# ChangeLog for x11-misc/synergy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/synergy/ChangeLog,v 1.133 2015/06/02 05:01:37 jer Exp $
+
+  02 Jun 2015; Jeroen Roovers <jer@gentoo.org> synergy-1.7.3.ebuild:
+  Set dev-libs/openssl dependency.
+
+*synergy-1.7.3 (28 May 2015)
+
+  28 May 2015; Jeroen Roovers <jer@gentoo.org> -synergy-1.7.1.ebuild,
+  -synergy-1.7.2.ebuild, +synergy-1.7.3.ebuild:
+  Version bump, install syntool (bug #550166 by Dmitry daks Fomenko).
+
+*synergy-1.7.2 (22 May 2015)
+
+  22 May 2015; Jeroen Roovers <jer@gentoo.org> -synergy-1.7.0.ebuild,
+  +synergy-1.7.2.ebuild:
+  Version bump (bug #549878 by Alex Barker).
+
+*synergy-1.7.1 (30 Apr 2015)
+
+  30 Apr 2015; Jeroen Roovers <jer@gentoo.org> +synergy-1.7.1.ebuild:
+  Version bump.
+
+  30 Apr 2015; Jeroen Roovers <jer@gentoo.org> -synergy-1.4.16_p1969.ebuild,
+  -synergy-1.5.0_p2278.ebuild, -synergy-1.5.1_p2398.ebuild,
+  -synergy-1.6.1.ebuild, -synergy-1.6.2.ebuild,
+  -files/synergy-1.4.15-cryptopp.patch:
+  Old.
+
+  30 Apr 2015; Jeroen Roovers <jer@gentoo.org> synergy-1.6.3.ebuild:
+  Stable for PPC64 (bug #545908).
+
+  21 Apr 2015; Pacho Ramos <pacho@gentoo.org> synergy-1.6.3.ebuild:
+  ppc stable wrt bug #545908
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> synergy-1.6.3.ebuild:
+  Stable for x86, wrt bug #545908
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> synergy-1.6.3.ebuild:
+  Stable for amd64, wrt bug #545908
+
+*synergy-1.6.3 (08 Apr 2015)
+
+  08 Apr 2015; Jeroen Roovers <jer@gentoo.org> +synergy-1.6.3.ebuild:
+  Version bump (bug #545884 by wyvern5).
+
+*synergy-1.7.0 (09 Mar 2015)
+
+  09 Mar 2015; Jeroen Roovers <jer@gentoo.org> +synergy-1.7.0.ebuild:
+  Version bump.
+
+*synergy-1.6.2 (04 Dec 2014)
+
+  04 Dec 2014; Jeroen Roovers <jer@gentoo.org> +synergy-1.6.2.ebuild:
+  Version bump (bug #531608).
+
+  11 Nov 2014; Jeroen Roovers <jer@gentoo.org> synergy-1.6.1.ebuild:
+  net-dns/avahi is only required with USE=qt4 (bug #528818 by Martin
+  Kletzander).
+
+  08 Nov 2014; Jeroen Roovers <jer@gentoo.org> synergy-1.6.1.ebuild:
+  Add extra HOMEPAGE.
+
+*synergy-1.6.1 (08 Nov 2014)
+
+  08 Nov 2014; Jeroen Roovers <jer@gentoo.org> +synergy-1.6.1.ebuild:
+  Version bump.
+
+*synergy-1.5.1_p2398 (06 Oct 2014)
+
+  06 Oct 2014; Jeroen Roovers <jer@gentoo.org> +synergy-1.5.1_p2398.ebuild:
+  Version bump (bug #524566 by Thanh Ha).
+
+  09 Aug 2014; Jeroen Roovers <jer@gentoo.org> -synergy-1.4.15.ebuild,
+  synergy-1.4.16_p1969.ebuild, synergy-1.5.0_p2278.ebuild,
+  -files/synergy-1.4.12-pthread.patch:
+  Fix DESCRIPTION.
+
+  03 Aug 2014; Agostino Sarubbo <ago@gentoo.org> synergy-1.4.16_p1969.ebuild:
+  Stable for ppc, wrt bug #509656
+
+  02 Aug 2014; Agostino Sarubbo <ago@gentoo.org> synergy-1.4.16_p1969.ebuild:
+  Stable for ppc64, wrt bug #509656
+
+*synergy-1.5.0_p2278 (16 Jul 2014)
+
+  16 Jul 2014; Jeroen Roovers <jer@gentoo.org> -synergy-1.4.17_p2055.ebuild,
+  +synergy-1.5.0_p2278.ebuild:
+  Version bump by Antek Grzymała (antoszka) (bug #509656 comment #3).
+
+  16 Jul 2014; Chema Alonso <nimiux@gentoo.org> synergy-1.4.16_p1969.ebuild:
+  Stable for amd64 wrt bug #509656
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  synergy-1.4.16_p1969.ebuild:
+  x86 stable wrt bug #509656
+
+  08 May 2014; Jeroen Roovers <jer@gentoo.org> synergy-1.4.15.ebuild,
+  synergy-1.4.16_p1969.ebuild, synergy-1.4.17_p2055.ebuild:
+  New HOMEPAGE (bug #509862 by John Stile).
+
+  06 May 2014; Jeroen Roovers <jer@gentoo.org> synergy-1.4.17_p2055.ebuild,
+  +files/synergy-1.4.17_p2055-CSocketMultiplexer.patch:
+  Define src_prepare() to control which eclass applies patches (and run
+  epatch_user). Fix a memory leak (bug #505978).
+
+*synergy-1.4.17_p2055 (06 May 2014)
+
+  06 May 2014; Jeroen Roovers <jer@gentoo.org> +synergy-1.4.17_p2055.ebuild,
+  +files/synergy-1.4.17_p2055-cryptopp.patch,
+  +files/synergy-1.4.17_p2055-gentoo.patch,
+  +files/synergy-1.4.17_p2055-test.patch:
+  Version bump (bug #505978 by José María Fernández González).
+
+  01 Mar 2014; Jeroen Roovers <jer@gentoo.org> synergy-1.4.15.ebuild,
+  synergy-1.4.16_p1969.ebuild:
+  Set minimum crypto++ dependency (bug #503144 by Ben Roberts).
+
+  20 Feb 2014; Jeroen Roovers <jer@gentoo.org> synergy-1.4.16_p1969.ebuild,
+  +files/synergy-1.4.16_p1969-pthread.patch:
+  Set C*FLAGS=-pthread (possibly fixes bug #501806 by Alex Barker).
+
+*synergy-1.4.16_p1969 (19 Feb 2014)
+
+  19 Feb 2014; Jeroen Roovers <jer@gentoo.org> +synergy-1.4.16_p1969.ebuild:
+  Version bump (bug #501748 by Alex Barker).
+
+  02 Nov 2013; Jeroen Roovers <jer@gentoo.org>
+  -files/synergy-1.4.12-cryptopp.patch, -synergy-1.4.10.ebuild,
+  -synergy-1.4.12.ebuild:
+  Old.
+
+  02 Nov 2013; Agostino Sarubbo <ago@gentoo.org> synergy-1.4.15.ebuild:
+  Stable for x86, wrt bug #489482
+
+  02 Nov 2013; Agostino Sarubbo <ago@gentoo.org> synergy-1.4.15.ebuild:
+  Stable for ppc64, wrt bug #489482
+
+  02 Nov 2013; Agostino Sarubbo <ago@gentoo.org> synergy-1.4.15.ebuild:
+  Stable for ppc, wrt bug #489482
+
+  26 Oct 2013; Agostino Sarubbo <ago@gentoo.org> synergy-1.4.15.ebuild:
+  Stable for amd64, wrt bug #489482
+
+  26 Oct 2013; Jeroen Roovers <jer@gentoo.org> synergy-1.4.12.ebuild,
+  synergy-1.4.15.ebuild, +files/synergy-1.4.12-pthread.patch:
+  Append -pthread to CXXFLAGS not CFLAGS (bug #486174 by Vincent de Phily).
+
+*synergy-1.4.15 (26 Oct 2013)
+
+  26 Oct 2013; Jeroen Roovers <jer@gentoo.org> +synergy-1.4.15.ebuild,
+  +files/synergy-1.4.15-cryptopp.patch:
+  Version bump (bug #489444 by Patrick).
+
+  24 Sep 2013; Chema Alonso <nimiux@gentoo.org> synergy-1.4.12.ebuild:
+  Stable for amd64 wrt bug #485864
+
+  24 Sep 2013; Jeroen Roovers <jer@gentoo.org>
+  -files/synergy-1.3.1+gcc-4.3.patch,
+  -files/synergy-1.3.1-infinite-timeout-fix.patch,
+  -files/synergy-1.3.1-stuttered-delay-fix.patch,
+  -files/synergy-1.4.5-clipboard-fix.patch, -files/synergy-1.4.5-gtk3-fix.patch,
+  -synergy-1.4.5-r2.ebuild, -synergy-1.4.7.ebuild:
+  Old.
+
+  13 Jul 2013; Sergey Popov <pinkbyte@gentoo.org> synergy-1.4.12.ebuild:
+  Re-add ~arm keyword, wrt bug #469294
+
+*synergy-1.4.12 (20 Jun 2013)
+
+  20 Jun 2013; Jeroen Roovers <jer@gentoo.org> +synergy-1.4.12.ebuild,
+  +files/synergy-1.4.12-cryptopp.patch:
+  Version bump (bug #469294 by basti).
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> synergy-1.4.10.ebuild,
+  synergy-1.4.5-r2.ebuild, synergy-1.4.7.ebuild:
+  Move Qt dependencies to the new category
+
+  17 Jan 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  It's supposedly comaintained by herd people, if they are not interested, feel
+  free to completely drop it to maintainer-needed
+
+  16 Jan 2013; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  drop maintainership since I no longer use
+
+  17 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> synergy-1.4.10.ebuild:
+  x86 stable wrt bug #435692
+
+  30 Sep 2012; Anthony G. Basile <blueness@gentoo.org> synergy-1.4.10.ebuild:
+  stable ppc ppc64, bug #435692
+
+  21 Sep 2012; Markos Chandras <hwoarang@gentoo.org> synergy-1.4.10.ebuild:
+  Stable on amd64 wrt bug #435692
+
+  03 Sep 2012; Michael Palimaka <kensington@gentoo.org> synergy-1.4.10.ebuild:
+  Add missing slot dependencies on Qt.
+
+  11 Aug 2012; Julian Ospald <hasufell@gentoo.org> synergy-1.4.10.ebuild:
+  make icon cache update conditional
+
+  11 Aug 2012; Julian Ospald <hasufell@gentoo.org> synergy-1.4.5-r2.ebuild,
+  synergy-1.4.7.ebuild, synergy-1.4.10.ebuild:
+  fix icon issue wrt #430824, inherit flag-o-matic
+
+*synergy-1.4.10 (10 Aug 2012)
+
+  10 Aug 2012; Jeremy Olexa <darkside@gentoo.org> -synergy-1.3.1.ebuild,
+  -synergy-1.3.6.ebuild, -synergy-1.4.2.ebuild, +synergy-1.4.10.ebuild:
+  Version bump from upstream with many, many bug fixes. Bug 430694 by Dustin C.
+  Hatch
+
+  19 Jul 2012; Michael Palimaka <kensington@gentoo.org> synergy-1.4.2.ebuild,
+  synergy-1.4.5-r2.ebuild, synergy-1.4.7.ebuild:
+  Add missing slot dependencies on Qt.
+
+  21 May 2012; Samuli Suominen <ssuominen@gentoo.org> synergy-1.4.2.ebuild:
+  inherit eutils for make_desktop_entry
+
+  24 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> synergy-1.4.5-r2.ebuild:
+  x86 stable wrt bug #407297
+
+  13 Mar 2012; Agostino Sarubbo <ago@gentoo.org> synergy-1.4.5-r2.ebuild:
+  Stable for amd64, wrt bug #407297
+
+  09 Mar 2012; Brent Baude <ranger@gentoo.org> synergy-1.4.5-r2.ebuild:
+  Marking synergy-1.4.5-r2 ppc64 for bug 407297
+
+  07 Mar 2012; Brent Baude <ranger@gentoo.org> synergy-1.4.5-r2.ebuild:
+  Marking synergy-1.4.5-r2 ppc for bug 407297
+
+  07 Mar 2012; Jeremy Olexa <darkside@gentoo.org> synergy-1.3.1.ebuild:
+  drop to ~sparc, bug 391393
+
+*synergy-1.4.7 (07 Mar 2012)
+
+  07 Mar 2012; Jeremy Olexa <darkside@gentoo.org> +synergy-1.4.7.ebuild:
+  version bump from upstream with many bug fixes
+
+  19 Feb 2012; Tobias Klausmann <klausman@gentoo.org> synergy-1.3.6.ebuild:
+  Stable on alpha, bug #391393
+
+  27 Jan 2012; Brent Baude <ranger@gentoo.org> synergy-1.3.6.ebuild:
+  Marking synergy-1.3.6 ppc64 for bug 391393
+
+*synergy-1.4.5-r2 (12 Jan 2012)
+
+  12 Jan 2012; Jeremy Olexa <darkside@gentoo.org> -synergy-1.4.5.ebuild,
+  -synergy-1.4.5-r1.ebuild, +synergy-1.4.5-r2.ebuild,
+  +files/synergy-1.4.5-clipboard-fix.patch:
+  Revbump to fix clipboard issue, bug 397549 by Patrick
+
+  04 Jan 2012; Brent Baude <ranger@gentoo.org> synergy-1.3.6.ebuild:
+  Marking synergy-1.3.6 ppc for bug 391393
+
+*synergy-1.4.5-r1 (05 Dec 2011)
+
+  05 Dec 2011; Jeremy Olexa <darkside@gentoo.org> +synergy-1.4.5-r1.ebuild,
+  +files/synergy-1.4.5-gtk3-fix.patch:
+  Add upsteam patch to fix gtk3 compatibility issues, bug 392711 by Rob Bruce
+
+  28 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> synergy-1.3.6.ebuild:
+  x86 stable wrt bug #391393
+
+  26 Nov 2011; Markos Chandras <hwoarang@gentoo.org> synergy-1.3.6.ebuild:
+  Stable on amd64 wrt bug #391393
+
+  22 Nov 2011; Jeremy Olexa <darkside@gentoo.org> synergy-1.4.2.ebuild,
+  synergy-1.4.5.ebuild:
+  block x11-misc/qsynergy, bug 357505 by Jan-Matthias Braun
+
+*synergy-1.4.5 (22 Nov 2011)
+
+  22 Nov 2011; Jeremy Olexa <darkside@gentoo.org> +synergy-1.4.5.ebuild:
+  version bump, by Tobias Wallura in bug 374973
+
+  22 Nov 2011; Jeremy Olexa <darkside@gentoo.org> -synergy-1.3.1-r1.ebuild,
+  -synergy-1.3.1-r2.ebuild, metadata.xml:
+  Take maintainership, rm old
+
+*synergy-1.4.2 (28 Feb 2011)
+
+  28 Feb 2011; Michael Weber <xmw@gentoo.org> +synergy-1.4.2.ebuild:
+  Version bump (bug 354037) and support qsynergy (bug 234673)
+
+  28 Feb 2011; Michael Weber <xmw@gentoo.org> synergy-1.3.6.ebuild:
+  Added manpages
+
+*synergy-1.3.6 (28 Feb 2011)
+
+  28 Feb 2011; Michael Weber <xmw@gentoo.org> +synergy-1.3.6.ebuild:
+  Version bump (bug 354037), thanks wyvern5@gmail.com for the report.
+
+  15 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Drop maintainership.
+
+  19 Jul 2010; Jeremy Olexa <darkside@gentoo.org> synergy-1.3.1-r2.ebuild:
+  Migrate changes from Gentoo Prefix overlay. Convert to EAPI3, add
+  KEYWORDS, adjust econf call. Signed off by wired in #gentoo-dev
+
+*synergy-1.3.1-r2 (19 Jul 2010)
+
+  19 Jul 2010; Alex Alexander <wired@gentoo.org> +synergy-1.3.1-r2.ebuild,
+  +files/synergy-1.3.1-infinite-timeout-fix.patch:
+  fixed bug #291713. Thanks to Jozef Siska for pointing to the patch :)
+
+*synergy-1.3.1-r1 (30 Oct 2009)
+
+  30 Oct 2009; Alex Alexander <wired@gentoo.org> +synergy-1.3.1-r1.ebuild,
+  +files/synergy-1.3.1-stuttered-delay-fix.patch:
+  added patch that reduces delays - bug 257794
+
+  23 Oct 2009; Jeremy Olexa <darkside@gentoo.org> synergy-1.3.1.ebuild:
+  add --disable-debug because debugging exposes an assertion error in
+  switchInDirection()
+
+  15 May 2009; <solar@gentoo.org> synergy-1.3.1.ebuild:
+  - keyword ~arm
+
+  21 Apr 2008; Diego Pettenò <flameeyes@gentoo.org> metadata.xml,
+  -synergy-1.2.4.ebuild, -synergy-1.2.7.ebuild, -synergy-1.2.8.ebuild:
+  Add myself as maintainer, remove old 1.2 series in favour of the last
+  version that is stable everywhere.
+
+  21 Apr 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +files/synergy-1.3.1+gcc-4.3.patch, synergy-1.3.1.ebuild:
+  Add patch to fix building with GCC 4.3.
+
+  14 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml,
+  synergy-1.2.4.ebuild, synergy-1.2.7.ebuild, synergy-1.2.8.ebuild:
+  Removing Masatomo Nakano (nakano, #200340) from metadata.xml. Fixing the
+  minor syntax errors.
+
+  24 Feb 2008; Diego Pettenò <flameeyes@gentoo.org> synergy-1.3.1.ebuild:
+  Fix building when extra warnings are enabled (think new version of GCC for
+  instance), disabling -Werror; disable dependency tracking; don't dodoc
+  non-present files, and use elog rather than einfo for the messages.
+
+  26 Dec 2007; Samuli Suominen <drac@gentoo.org> synergy-1.3.1.ebuild:
+  amd64 stable wrt #202664
+
+  24 Dec 2007; Brent Baude <ranger@gentoo.org> synergy-1.3.1.ebuild:
+  Marking synergy-1.3.1 ppc64 for bug 202664
+
+  22 Dec 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  synergy-1.3.1.ebuild:
+  ppc stable, bug #202664
+
+  20 Dec 2007; Raúl Porcel <armin76@gentoo.org> synergy-1.3.1.ebuild:
+  alpha stable wrt #202664, thanks to Tobias Klausmann for testing
+
+  19 Dec 2007; Jurek Bartuszek <jurek@gentoo.org> synergy-1.3.1.ebuild:
+  x86 stable (bug #202664)
+
+  18 Dec 2007; Ferris McCormick <fmccor@gentoo.org> synergy-1.3.1.ebuild:
+  Sparc stable, Bug #202664 (in the tree 18 months, no bugs but enhancement
+  requests).
+
+  28 Nov 2007; Markus Rothe <corsair@gentoo.org> synergy-1.3.1.ebuild:
+  Added ~ppc64
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; synergy-1.2.4.ebuild,
+  synergy-1.2.7.ebuild, synergy-1.2.8.ebuild, synergy-1.3.1.ebuild:
+  Drop virtual/x11 references.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  18 Sep 2006; Steev Klimaszewski <steev@gentoo.org> synergy-1.3.1.ebuild:
+  Add ~x86-fbsd keyword.
+
+*synergy-1.3.1 (12 Apr 2006)
+
+  12 Apr 2006; Masatomo Nakano <nakano@gentoo.org> +synergy-1.3.1.ebuild:
+  Version bump. (#128623)
+
+*synergy-1.2.8 (12 Feb 2006)
+
+  12 Feb 2006; Masatomo Nakano <nakano@gentoo.org> +synergy-1.2.8.ebuild:
+  Version bump.
+
+  11 Feb 2006; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml,
+  synergy-1.2.4.ebuild:
+  Ported 1.2.4 to modular X, added nakano@gentoo.org as maintainer.
+
+  21 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  -files/synergy-1.2.5-print-buffer.patch,
+  -files/synergy-1.2.6-print-buffer.patch, -synergy-1.2.5.ebuild,
+  -synergy-1.2.6.ebuild, synergy-1.2.7.ebuild:
+  Fixed DEPEND for modular X.
+
+*synergy-1.2.7 (18 Jan 2006)
+
+  18 Jan 2006; Masatomo Nakano <nakano@gentoo.org> +synergy-1.2.7.ebuild:
+  Version bump.
+
+*synergy-1.2.6 (03 Dec 2005)
+
+  03 Dec 2005; Masatomo Nakano <nakano@gentoo.org>
+  +files/synergy-1.2.6-print-buffer.patch, +synergy-1.2.6.ebuild:
+  version bump.
+
+  12 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/synergy-1.2.5-print-buffer.patch, synergy-1.2.5.ebuild:
+  Fix bug 110562 - segfault when server is started with --help.
+
+  03 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org> -synergy-1.2.2.ebuild,
+  -synergy-1.2.3.ebuild, synergy-1.2.4.ebuild, synergy-1.2.5.ebuild:
+  Fixed dodoc not to install COPYING. Removed old versions.
+
+*synergy-1.2.5 (20 Oct 2005)
+
+  20 Oct 2005; Masatomo Nakano <nakano@gentoo.org> +synergy-1.2.5.ebuild:
+  Version bump.
+
+  18 Oct 2005; Aron Griffis <agriffis@gentoo.org> synergy-1.2.4.ebuild:
+  Mark 1.2.4 stable on alpha
+
+  17 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> synergy-1.2.4.ebuild:
+  Stable on ppc.
+
+  14 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> synergy-1.2.4.ebuild:
+  Stable on sparc
+
+  13 Sep 2005; Masatomo Nakano <nakano@gentoo.org> synergy-1.2.4.ebuild:
+  Marked stable on x86.
+
+  19 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> synergy-1.2.3.ebuild:
+  Stable on ppc.
+
+  18 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> synergy-1.2.3.ebuild:
+  Stable on sparc
+
+  17 Aug 2005; Aron Griffis <agriffis@gentoo.org> synergy-1.2.4.ebuild:
+  add ~alpha
+
+  15 Aug 2005; Masatomo Nakano <nakano@gentoo.org> synergy-1.2.3.ebuild:
+  Marked stable on x86.
+
+*synergy-1.2.4 (15 Aug 2005)
+
+  15 Aug 2005; Masatomo Nakano <nakano@gentoo.org> +synergy-1.2.4.ebuild:
+  Version bump.
+
+*synergy-1.2.3 (01 Aug 2005)
+
+  01 Aug 2005; Masatomo Nakano <nakano@gentoo.org> +synergy-1.2.3.ebuild:
+  Version bump
+
+  03 Apr 2005; Masatomo Nakano <nakano@gentoo.org> -synergy-1.0.8.ebuild:
+  Removed old ebuild
+
+  01 Apr 2005; Lars Weiler <pylon@gentoo.org> synergy-1.2.2.ebuild:
+  Stable on ppc.
+
+  01 Apr 2005; Jason Wever <weeve@gentoo.org> synergy-1.2.2.ebuild:
+  Stable on SPARC.
+
+  30 Mar 2005; Masatomo Nakano <nakano@gentoo.org> -synergy-1.0.2.ebuild,
+  -synergy-1.1.8.ebuild, -synergy-1.1.9.ebuild, -synergy-1.1.10.ebuild,
+  synergy-1.2.2.ebuild:
+  Marked stable on x86 and removed old ebuilds.
+
+*synergy-1.2.2 (16 Feb 2005)
+
+  16 Feb 2005; Masatomo Nakano <nakano@gentoo.org> +synergy-1.2.2.ebuild:
+  Version bump.
+
+*synergy-1.1.10 (05 Dec 2004)
+
+  05 Dec 2004; Markus Nigbur <pyrania@gentoo.org> +synergy-1.1.10.ebuild:
+  Version bump.
+
+*synergy-1.1.9 (21 Nov 2004)
+
+  21 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org>
+  -synergy-0.9.13.ebuild, -synergy-1.0.0.ebuild, -synergy-1.0.14.ebuild,
+  +synergy-1.1.9.ebuild:
+  Version bump, ebuild clean up, fixed gcc-3.4 compile issues, bug #66450
+
+  27 Oct 2004; <pyrania@gentoo.org> synergy-1.0.14.ebuild,
+  synergy-1.0.2.ebuild, synergy-1.0.8.ebuild:
+  Stable on sparc.
+
+*synergy-1.1.8 (28 Sep 2004)
+
+  28 Sep 2004; <pyrania@gentoo.org> +synergy-1.1.8.ebuild:
+  Version bump.
+
+  02 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> synergy-1.0.14.ebuild:
+  Marked ~amd64.
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> synergy-0.9.13.ebuild,
+  synergy-1.0.0.ebuild, synergy-1.0.14.ebuild, synergy-1.0.2.ebuild,
+  synergy-1.0.8.ebuild:
+  Marked stable on x86. Ebuild fixup.
+
+  03 Apr 2004; Lars Weiler <pylon@gentoo.org> synergy-1.0.14.ebuild:
+  stable on ppc
+
+  15 Feb 2004; David Holm <dholm@gentoo.org> synergy-1.0.14.ebuild:
+  Added to ~ppc.
+
+  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+*synergy-1.0.14 (25 Aug 2003)
+
+  25 Aug 2003; Stanislav Brabec <utx@gentoo.org> synergy-1.0.14.ebuild:
+  Version bump.
+
+  12 Jun 2003; <msterret@gentoo.org> synergy-0.9.13.ebuild,
+  synergy-1.0.0.ebuild, synergy-1.0.2.ebuild:
+  fix Header
+
+*synergy-1.0.8 (15 May 2003)
+
+  15 May 2003; Stanislav Brabec <utx@gentoo.org> synergy-1.0.8.ebuild:
+  Version bump.
+
+*synergy-1.0.2 (25 Jan 2003)
+
+  18 Mar 2003; Jason Wever <weeve@gentoo.org> synergy-1.0.2.ebuild:
+  Added ~sparc to keywords.
+
+  25 Jan 2003; Brad Cowan <bcowan@gentoo.org> synergy-1.0.2.ebuild,
+  files/digest-synergy-1.0.2:
+  Version bump.
+
+*synergy-1.0.0 (20 Jan 2003)
+  
+  20 Jan 2003; Brad Cowan <bcowan@gentoo.org> synergy-1.0.0.ebuild,
+  files/digest-synergy-1.0.0:
+  Version bump.
+
+*synergy-0.9.13 (8 Nov 2002)
+  
+  8 Nov 2002; Matt Keadle <mkeadle@gentoo.org> synergy-0.9.13.ebuild
+  files/digest-synergy-0.9.13:
+
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way.

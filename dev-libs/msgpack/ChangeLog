@@ -1,0 +1,90 @@
+# ChangeLog for dev-libs/msgpack
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/msgpack/ChangeLog,v 1.20 2015/06/06 19:21:33 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*msgpack-1.1.0 (26 Apr 2015)
+
+  26 Apr 2015; Tim Harder <radhermit@gentoo.org> +msgpack-1.1.0.ebuild:
+  Version bump.
+
+*msgpack-1.0.1 (24 Mar 2015)
+
+  24 Mar 2015; Tim Harder <radhermit@gentoo.org> +msgpack-1.0.1.ebuild:
+  Version bump.
+
+  21 Mar 2015; Tim Harder <radhermit@gentoo.org> -msgpack-0.5.6-r1.ebuild,
+  -msgpack-0.5.8.ebuild, -msgpack-0.6.0_pre20150220.ebuild:
+  Remove old.
+
+*msgpack-1.0.0 (21 Mar 2015)
+
+  21 Mar 2015; Tim Harder <radhermit@gentoo.org> +msgpack-1.0.0.ebuild,
+  +files/msgpack-1.0.0-cflags.patch, +files/msgpack-1.0.0-static.patch:
+  Version bump.
+
+  26 Feb 2015; Ben de Groot <yngwin@gentoo.org>
+  msgpack-0.6.0_pre20150220.ebuild:
+  multilib-enable the snapshot
+
+  26 Feb 2015; Ben de Groot <yngwin@gentoo.org>
+  msgpack-0.6.0_pre20150220.ebuild:
+  restore inadvertently dropped keywords
+
+*msgpack-0.6.0_pre20150220 (26 Feb 2015)
+
+  26 Feb 2015; Ben de Groot <yngwin@gentoo.org>
+  +msgpack-0.6.0_pre20150220.ebuild:
+  snapshot needed for neovim
+
+*msgpack-0.5.9 (09 Jul 2014)
+
+  09 Jul 2014; Tim Harder <radhermit@gentoo.org> +msgpack-0.5.9.ebuild:
+  Version bump.
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> msgpack-0.5.8.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  12 Feb 2014; Tim Harder <radhermit@gentoo.org> msgpack-0.5.8.ebuild:
+  Fix multilib test deps and respect CFLAGS.
+
+*msgpack-0.5.8 (12 Feb 2014)
+
+  12 Feb 2014; Tim Harder <radhermit@gentoo.org> +msgpack-0.5.8.ebuild,
+  metadata.xml:
+  Version bump, add multilib support, add myself as a maintainer.
+
+  10 Feb 2014; Sergey Popov <pinkbyte@gentoo.org> msgpack-0.5.6-r1.ebuild:
+  Add ~amd64-linux and ~x86-linux keywords
+
+*msgpack-0.5.6-r1 (10 Feb 2014)
+
+  10 Feb 2014; Sergey Popov <pinkbyte@gentoo.org> -msgpack-0.5.6.ebuild,
+  +msgpack-0.5.6-r1.ebuild:
+  Revision bump: EAPI 5, epatch_user, fix underlinking in tests, wrt bug
+  #370115, thanks to Diego Elio Pettenò. Drop old
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> -files/msgpack-0.4.2-test.patch,
+  -msgpack-0.4.2.ebuild, metadata.xml:
+  Cleanup due #22900
+
+  11 Nov 2011; Mike Frysinger <vapier@gentoo.org> msgpack-0.4.2.ebuild,
+  msgpack-0.5.6.ebuild:
+  Update gtest depend after category migration #387155.
+
+*msgpack-0.5.6 (10 May 2011)
+
+  10 May 2011; MATSUU Takuto <matsuu@gentoo.org> +msgpack-0.5.6.ebuild:
+  Version bumped. Added static-libs USE flag.
+
+  10 May 2011; Naohiro Aota <naota@gentoo.org> msgpack-0.4.2.ebuild:
+  Add ~x86-fbsd keyword
+
+*msgpack-0.4.2 (02 Mar 2010)
+
+  02 Mar 2010; MATSUU Takuto <matsuu@gentoo.org> +msgpack-0.4.2.ebuild,
+  +files/msgpack-0.4.2-test.patch, +metadata.xml:
+  Initial import.

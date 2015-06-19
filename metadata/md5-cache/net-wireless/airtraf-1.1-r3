@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=net-libs/libpcap sys-libs/ncurses virtual/pkgconfig
+DESCRIPTION=AirTraf 802.11b Wireless traffic sniffer
+EAPI=5
+HOMEPAGE=http://www.elixar.com/
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=net-libs/libpcap sys-libs/ncurses
+SLOT=0
+SRC_URI=http://www.elixar.com/airtraf-1.1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=461fac3601179381cf6313216094e6cc

@@ -1,0 +1,10 @@
+--- a/configure
++++ b/configure
+@@ -421,7 +421,6 @@
+ iptables_find_version	#IPTVER
+ iptables_try_pkgconfig	#try to configure from pkg-config
+ iptables_find_src	#IPTSRC
+-iptables_src_version	#check that IPTSRC match to IPTVER
+ iptables_inc		#IPTINC
+ iptables_modules	#IPTLIB
+ 

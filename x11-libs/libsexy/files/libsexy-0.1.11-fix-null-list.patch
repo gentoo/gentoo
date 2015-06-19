@@ -1,0 +1,34 @@
+diff -Nur libsexy-0.1.11/libsexy/sexy-spell-entry.c libsexy-0.1.11_patched/libsexy/sexy-spell-entry.c
+--- libsexy-0.1.11/libsexy/sexy-spell-entry.c	2006-08-17 21:11:09.000000000 +0300
++++ libsexy-0.1.11_patched/libsexy/sexy-spell-entry.c	2009-05-17 15:15:25.000000000 +0300
+@@ -56,7 +56,7 @@
+ static void (*enchant_dict_add_to_session) (struct EnchantDict * dict, const char *const word, ssize_t len);
+ static int (*enchant_dict_check) (struct EnchantDict * dict, const char *const word, ssize_t len);
+ static void (*enchant_dict_describe) (struct EnchantDict * dict, EnchantDictDescribeFn fn, void * user_data);
+-static void (*enchant_dict_free_suggestions) (struct EnchantDict * dict, char **suggestions);
++static void (*enchant_dict_free_string_list) (struct EnchantDict * dict, char **suggestions);
+ static void (*enchant_dict_store_replacement) (struct EnchantDict * dict, const char *const mis, ssize_t mis_len, const char *const cor, ssize_t cor_len);
+ static char ** (*enchant_dict_suggest) (struct EnchantDict * dict, const char *const word, ssize_t len, size_t * out_n_suggs);
+ static gboolean have_enchant = FALSE;
+@@ -156,8 +156,8 @@
+ 	MODULE_SYMBOL("enchant_dict_add_to_session", enchant_dict_add_to_session)
+ 	MODULE_SYMBOL("enchant_dict_check", enchant_dict_check)
+ 	MODULE_SYMBOL("enchant_dict_describe", enchant_dict_describe)
+-	MODULE_SYMBOL("enchant_dict_free_suggestions",
+-				  enchant_dict_free_suggestions)
++	MODULE_SYMBOL("enchant_dict_free_string_list",
++				  enchant_dict_free_string_list)
+ 	MODULE_SYMBOL("enchant_dict_store_replacement",
+ 				  enchant_dict_store_replacement)
+ 	MODULE_SYMBOL("enchant_dict_suggest", enchant_dict_suggest)
+@@ -435,9 +435,8 @@
+ 			gtk_widget_show(mi);
+ 			gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+ 		}
++		enchant_dict_free_string_list(dict, suggestions);
+ 	}
+-
+-	enchant_dict_free_suggestions(dict, suggestions);
+ }
+ 
+ static GtkWidget *

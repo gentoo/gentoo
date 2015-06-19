@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup
+DEPEND=python? ( !dev-python/pysyck ) python? ( =dev-lang/python-2* )
+DESCRIPTION=Syck is an extension for reading and writing YAML swiftly in popular scripting languages
+EAPI=3
+HOMEPAGE=http://whytheluckystiff.net/syck/
+IUSE=php python
+KEYWORDS=amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos
+LICENSE=BSD
+PDEPEND=php? ( dev-php/pecl-syck !=dev-libs/syck-0.55-r1 )
+RDEPEND=python? ( !dev-python/pysyck ) python? ( =dev-lang/python-2* )
+SLOT=0
+SRC_URI=http://rubyforge.org/frs/download.php/4492/syck-0.55.tar.gz
+_eclasses_=distutils	92e738ea29389cb3f34778d7a349ac71	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a5677a838bd30753059bc839989cf51f

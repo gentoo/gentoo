@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install test
+DEPEND=samtools? ( sci-biology/samtools ) goby? ( sci-biology/goby-cpp )
+DESCRIPTION=A Genomic Mapping and Alignment Program for mRNA and EST Sequences
+EAPI=2
+HOMEPAGE=http://www.gene.com/share/gmap/
+IUSE=+samtools +goby
+KEYWORDS=~amd64 ~x86
+LICENSE=gmap
+RDEPEND=samtools? ( sci-biology/samtools ) goby? ( sci-biology/goby-cpp )
+SLOT=0
+SRC_URI=http://research-pub.gene.com/gmap/src/gmap-gsnap-2011-10-07.tar.gz
+_md5_=bd0b10c7cec81521995b4058cc6374e1

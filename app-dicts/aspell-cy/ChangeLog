@@ -1,0 +1,36 @@
+# ChangeLog for app-dicts/aspell-cy
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-cy/ChangeLog,v 1.12 2014/01/05 10:56:38 pacho Exp $
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org> aspell-cy-0.50.3.ebuild:
+  keyword ~amd64-fbsd
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org> aspell-cy-0.50.3.ebuild:
+  Drop to ~mips
+
+  18 Oct 2009; Mark Loeser <halcy0n@gentoo.org> aspell-cy-0.50.3.ebuild:
+  QA fixes; IUSE is not defined
+
+  03 Nov 2007; Roy Marples <uberlord@gentoo.org> aspell-cy-0.50.3.ebuild:
+  Keyworded ~sparc-fbsd and ~x86-fbsd
+
+  01 Dec 2006; Kevin F. Quinn <kevquinn@gentoo.org> aspell-cy-0.50.3.ebuild:
+  Ebuild cleanups for bug #132718
+
+  30 Jul 2004; Anders Rune Jensen <arj@gentoo.org> +metadata.xml:
+  QA - IUSE fix and {add missing,correct} metatata.xml
+
+*aspell-cy-0.50.3 (18 Oct 2002)
+
+  02 Dec 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
+  Moved from app-i18n to app-dicts
+
+  18 Oct 2002; Seemant Kulleen <seemant@gentoo.org> aspell-cy-0.50.3.ebuild
+  files/digest-aspell-cy-0.50.3 ChangeLog :
+
+  New Welsh language dictionary for aspell.

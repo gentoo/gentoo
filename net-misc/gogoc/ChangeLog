@@ -1,0 +1,100 @@
+# ChangeLog for net-misc/gogoc
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/gogoc/ChangeLog,v 1.26 2014/04/13 18:07:51 pacho Exp $
+
+  13 Apr 2014; Pacho Ramos <pacho@gentoo.org> gogoc-1.2-r3.ebuild:
+  amd64/sparc/x86 stable, bug #506800
+
+  07 Apr 2014; Jeroen Roovers <jer@gentoo.org> gogoc-1.2-r3.ebuild:
+  Stable for HPPA (bug #506800).
+
+*gogoc-1.2-r3 (26 Feb 2014)
+
+  26 Feb 2014; Bernard Cafarelli <voyageur@gentoo.org> +gogoc-1.2-r3.ebuild,
+  +files/gogoc.service:
+  Add systemd unit, thanks Jauhien Piatlicki <piatlicki@gmail.com> in bug
+  #501596
+
+  23 May 2013; Bernard Cafarelli <voyageur@gentoo.org> -gogoc-1.2-r1.ebuild,
+  gogoc-1.2-r2.ebuild:
+  Fix typo in postinst message, spotted by Chris Kerr <gingekerr@yahoo.co.uk>
+  in bug #470116. Remove previous stable version
+
+  08 Feb 2013; Jeroen Roovers <jer@gentoo.org> gogoc-1.2-r2.ebuild:
+  Stable for HPPA (bug #444324).
+
+  02 Jan 2013; Raúl Porcel <armin76@gentoo.org> gogoc-1.2-r2.ebuild:
+  sparc stable wrt #444324
+
+  04 Dec 2012; <ago@gentoo.org> gogoc-1.2-r2.ebuild:
+  Stable for x86, wrt bug #444324
+
+  30 Nov 2012; <ago@gentoo.org> gogoc-1.2-r2.ebuild:
+  Stable for amd64, wrt bug #444324
+
+  12 Jul 2012; Bernard Cafarelli <voyageur@gentoo.org> gogoc-1.2-r1.ebuild,
+  gogoc-1.2-r2.ebuild:
+  Add GPL-2 to LICENSE for init script, bug #426058
+
+  08 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Drop myself out of metadata.
+
+*gogoc-1.2-r2 (11 Jun 2012)
+
+  11 Jun 2012; Bernard Cafarelli <voyageur@gentoo.org> gogoc-1.2-r1.ebuild,
+  +gogoc-1.2-r2.ebuild:
+  Support new net-tools ifconfig and route locations, bug #414243
+
+  03 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org> files/gogoc.rc:
+  Fix warning message in init script, bug #401877
+
+  07 May 2011; Thomas Kahle <tomka@gentoo.org> gogoc-1.2-r1.ebuild:
+  x86 stable per bug 362549
+
+  26 Apr 2011; Jeroen Roovers <jer@gentoo.org> gogoc-1.2-r1.ebuild:
+  Stable for HPPA (bug #362549).
+
+  25 Apr 2011; Raúl Porcel <armin76@gentoo.org> gogoc-1.2-r1.ebuild:
+  sparc stable wrt #362549
+
+  09 Apr 2011; Christoph Mende <angelos@gentoo.org> gogoc-1.2-r1.ebuild:
+  Stable on amd64 wrt bug #362549
+
+  08 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org> gogoc-1.2-r1.ebuild,
+  +files/gogoc-1.2+gcc-4.6.patch:
+  Add patch to fix building with GCC 4.6 (bug #362501).
+
+  04 Jan 2011; Michael Weber <xmw@gentoo.org> gogoc-1.2-r1.ebuild:
+  added ~sparc keyword (bug 340685)
+
+  20 Oct 2010; Christian Faulhammer <fauli@gentoo.org> gogoc-1.2-r1.ebuild:
+  add ~x86, bug 340685
+
+  15 Oct 2010; Jeroen Roovers <jer@gentoo.org> gogoc-1.2-r1.ebuild:
+  Marked ~hppa (bug #340685).
+
+  12 Oct 2010; Bernard Cafarelli <voyageur@gentoo.org> files/gogoc.rc:
+  Small typo on configuration file path
+
+  12 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org> files/gogoc.rc:
+  Fix init script parameters.
+
+  12 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org> gogoc-1.2-r1.ebuild:
+  My mistake.
+
+  11 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org> gogoc-1.2-r1.ebuild:
+  Install README.
+
+*gogoc-1.2-r1 (11 Oct 2010)
+
+  11 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org> -gogoc-1.2.ebuild,
+  +gogoc-1.2-r1.ebuild, files/gogoc.rc:
+  Polish around some of the problems found while trying to run this in
+  production.
+
+*gogoc-1.2 (11 Oct 2010)
+
+  11 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org> +gogoc-1.2.ebuild,
+  +files/gogoc-1.2-overflow.patch, +files/gogoc.rc, +metadata.xml:
+  Initial import of gogoc, the new name and codebase replacing
+  net-misc/gogoc.

@@ -1,0 +1,46 @@
+--- drbd-8.3.6/drbd/drbd_req.c
++++ drbd-8.3.6/drbd/drbd_req.c
+@@ -55,13 +55,21 @@
+ 	__disk_stat_inc(mdev->vdisk, ios[rw]);
+ 	__disk_stat_add(mdev->vdisk, sectors[rw], bio_sectors(bio));
+ 	disk_round_stats(mdev->vdisk);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,32)
++	mdev->vdisk->in_flight[rw]++;
++#else
+	mdev->vdisk->in_flight++;
++#endif
+ #else
+ 	cpu = part_stat_lock();
+ 	part_stat_inc(cpu, &mdev->vdisk->part0, ios[rw]);
+ 	part_stat_add(cpu, &mdev->vdisk->part0, sectors[rw], bio_sectors(bio));
+ 	part_stat_unlock();
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,32)
++	mdev->vdisk->part0.in_flight[rw]++;
++#else
+	mdev->vdisk->part0.in_flight++;
++#endif
+ #endif
+ }
+ 
+@@ -77,13 +85,21 @@
+ #ifdef __disk_stat_add
+ 	__disk_stat_add(mdev->vdisk, ticks[rw], duration);
+ 	disk_round_stats(mdev->vdisk);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,32)
++	mdev->vdisk->in_flight[rw]--;
++#else
+ 	mdev->vdisk->in_flight--;
++#endif
+ #else
+ 	cpu = part_stat_lock();
+ 	part_stat_add(cpu, &mdev->vdisk->part0, ticks[rw], duration);
+ 	part_round_stats(cpu, &mdev->vdisk->part0);
+ 	part_stat_unlock();
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,32)
++	mdev->vdisk->part0.in_flight[rw]--;
++#else
+ 	mdev->vdisk->part0.in_flight--;
++#endif
+ #endif
+ }
+ 

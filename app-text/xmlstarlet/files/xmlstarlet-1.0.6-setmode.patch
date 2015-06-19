@@ -1,0 +1,50 @@
+http://sourceforge.net/tracker/?func=detail&aid=3211822&group_id=66612&atid=515106
+http://xmlstar.git.sourceforge.net/git/gitweb.cgi?p=xmlstar/xmlstar;a=patch;h=5f2445dac0e2a255d89240ec919ecd753045cce5;hp=d0f9902aedc75cef168aa1a34593bc5b74e9669c
+
+
+From 5f2445dac0e2a255d89240ec919ecd753045cce5 Mon Sep 17 00:00:00 2001
+From: Noam Postavsky <npostavs@users.sourceforge.net>
+Date: Mon, 14 Mar 2011 18:13:37 -0400
+Subject: [PATCH 1/1] check that O_BINARY is declared before #include'ing io.h
+
+---
+ configure.ac   |    3 ++-
+ src/xml_C14N.c |    6 +++---
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index b9eb53d..5b2d3bc 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -109,7 +109,8 @@ AS_IF([test "x$STATIC_LIBS" != xno],
+ 
+ AC_CHECK_FUNCS_ONCE([lstat stat])
+ 
+-AC_CHECK_DECL([O_BINARY], [], [], [[
++AC_CHECK_DECL([O_BINARY], [AC_DEFINE([HAVE_DECL_O_BINARY],1,[have O_BINARY])],
++[AC_DEFINE([HAVE_DECL_O_BINARY],0,[don't have O_BINARY])], [[
+ #include <io.h>
+ #include <fcntl.h>
+ ]])
+diff --git a/src/xml_C14N.c b/src/xml_C14N.c
+index 3ef1a7c..115e2ce 100644
+--- a/src/xml_C14N.c
++++ b/src/xml_C14N.c
+@@ -20,11 +20,11 @@
+ #include <stdlib.h>
+ #endif
+ 
+-#if !HAVE_SETMODE
+-# define setmode(fd, mode)
+-#else
++#if HAVE_SETMODE && HAVE_DECL_O_BINARY
+ # include <io.h>
+ # include <fcntl.h>
++#else
++# define setmode(fd, mode)
+ #endif
+ 
+ #include <libxml/xmlmemory.h>
+-- 
+1.7.0.1
+

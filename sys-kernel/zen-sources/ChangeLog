@@ -1,0 +1,436 @@
+# ChangeLog for sys-kernel/zen-sources
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/zen-sources/ChangeLog,v 1.66 2014/02/18 21:17:50 hwoarang Exp $
+
+*zen-sources-3.13.9999 (18 Feb 2014)
+
+  18 Feb 2014; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-3.13.9999.ebuild, metadata.xml:
+  Version bump. Thanks to Daniel Weiss who will proxy-maintain it from now on
+
+*zen-sources-3.12.9999 (15 Nov 2013)
+
+  15 Nov 2013; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-3.12.9999.ebuild:
+  Version bump
+
+*zen-sources-3.11.9999 (21 Sep 2013)
+
+  21 Sep 2013; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-3.11.9999.ebuild:
+  Version bump
+
+*zen-sources-3.10.9999 (12 Jul 2013)
+
+  12 Jul 2013; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-3.10.9999.ebuild, -zen-sources-3.6.9999.ebuild,
+  -zen-sources-3.7.9999.ebuild:
+  Version bump. Remove old ebuilds. Bug #475898
+
+  09 Jun 2013; Mike Frysinger <vapier@gentoo.org> metadata.xml:
+  Add upstream CPE tag (security info) from ChromiumOS.
+
+  21 May 2013; Alex Alexander <wired@gentoo.org> metadata.xml:
+  not maintaining this anymore, removed myself from metadata.xml
+
+*zen-sources-3.9.9999 (18 May 2013)
+
+  18 May 2013; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-3.9.9999.ebuild:
+  Version bump
+
+*zen-sources-3.8.9999 (09 Mar 2013)
+
+  09 Mar 2013; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-3.8.9999.ebuild:
+  Version bump. Bug #460898
+
+  15 Dec 2012; Markos Chandras <hwoarang@gentoo.org>
+  zen-sources-3.6.9999.ebuild, zen-sources-3.7.9999.ebuild:
+  Fix version for installation directory. Bump to EAPI 5
+
+*zen-sources-3.7.9999 (14 Dec 2012)
+*zen-sources-3.6.9999 (14 Dec 2012)
+
+  14 Dec 2012; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-3.6.9999.ebuild, +zen-sources-3.7.9999.ebuild,
+  -zen-sources-9999.ebuild, metadata.xml:
+  Move from a single live ebuild to one live ebuild per major kernel release.
+  Bug #446874
+
+  11 Dec 2012; Markos Chandras <hwoarang@gentoo.org> zen-sources-9999.ebuild:
+  Update git repository. Bug #446874
+
+  21 Jul 2012; Pacho Ramos <pacho@gentoo.org> -zen-sources-2.6.30_p11.ebuild,
+  -zen-sources-2.6.31_p12.ebuild, -zen-sources-2.6.32_p7-r1.ebuild,
+  -zen-sources-2.6.33_p3.ebuild, -zen-sources-2.6.34_p1-r2.ebuild,
+  -zen-sources-2.6.35_p2.ebuild, -zen-sources-2.6.36_p1.ebuild,
+  -zen-sources-2.6.36_p2.ebuild, -zen-sources-2.6.37_p20110325.ebuild,
+  -zen-sources-2.6.38_p20110510.ebuild, metadata.xml:
+  Drop masked versions
+
+  16 Apr 2012; Markos Chandras <hwoarang@gentoo.org>
+  -zen-sources-2.6.38_p20110404.ebuild, -zen-sources-2.6.38_p20110501.ebuild:
+  remove old
+
+  17 Oct 2011; Markos Chandras <hwoarang@gentoo.org> zen-sources-9999.ebuild,
+  metadata.xml:
+  Drop stable useflag. Now enabled by default. Bug #387403. Use minimal use
+  flag for --depth 1 clones. Bug #384673.
+
+  21 Sep 2011; Michał Górny <mgorny@gentoo.org> zen-sources-9999.ebuild:
+  Migrate to git-2.
+
+*zen-sources-2.6.38_p20110510 (10 May 2011)
+
+  10 May 2011; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-2.6.38_p20110510.ebuild:
+  New snapshot
+
+*zen-sources-2.6.38_p20110501 (01 May 2011)
+
+  01 May 2011; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-2.6.38_p20110501.ebuild:
+  New snapshot
+
+*zen-sources-2.6.38_p20110404 (04 Apr 2011)
+
+  04 Apr 2011; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-2.6.38_p20110404.ebuild:
+  New snapshot for 2.6.38 series
+
+*zen-sources-2.6.37_p20110325 (25 Mar 2011)
+
+  25 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-2.6.37_p20110325.ebuild:
+  Zen upstream does not make normal releases anymore, therefore I will be
+  creating snapshots every now and then. For more information look at
+  http://zen-kernel.org/updates-to-zen-release-cycle
+
+*zen-sources-2.6.36_p2 (22 Mar 2011)
+
+  22 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-2.6.36_p2.ebuild:
+  Version bump. Bug #359615
+
+*zen-sources-2.6.36_p1 (02 Dec 2010)
+
+  02 Dec 2010; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-2.6.36_p1.ebuild:
+  Version bump
+
+  26 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  -zen-sources-2.6.32_p6.ebuild, -zen-sources-2.6.32_p7.ebuild,
+  -zen-sources-2.6.33_p1.ebuild, -zen-sources-2.6.33_p2.ebuild,
+  -zen-sources-2.6.33_p2-r1.ebuild, -zen-sources-2.6.34_p1.ebuild:
+  Remove old ebuilds
+
+  02 Sep 2010; Alex Alexander <wired@gentoo.org>
+  zen-sources-2.6.30_p11.ebuild, zen-sources-2.6.31_p12.ebuild,
+  zen-sources-2.6.32_p6.ebuild, zen-sources-2.6.32_p7.ebuild,
+  zen-sources-2.6.32_p7-r1.ebuild, zen-sources-2.6.33_p1.ebuild,
+  zen-sources-2.6.33_p2.ebuild, zen-sources-2.6.33_p2-r1.ebuild,
+  zen-sources-2.6.33_p3.ebuild, zen-sources-2.6.34_p1.ebuild,
+  zen-sources-2.6.34_p1-r2.ebuild, zen-sources-2.6.35_p2.ebuild:
+  explicitly assign RDEPEND
+
+*zen-sources-2.6.35_p2 (02 Sep 2010)
+
+  02 Sep 2010; Alex Alexander <wired@gentoo.org>
+  +zen-sources-2.6.35_p2.ebuild:
+  version bump
+
+  21 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  -files/zen-sources-2.6.31_p5-config_fb_fix.patch,
+  -files/zen-sources-2.6.33_rc2_p1-kernel-sysctl.c.patch:
+  Remove unused files
+
+  03 Aug 2010; Robin H. Johnson <robbat2@gentoo.org> Manifest:
+  kernel-2 deblob support for 2.6.35; bug #324505: deblob-check usage.
+
+*zen-sources-2.6.34_p1-r2 (27 Jul 2010)
+
+  27 Jul 2010; Alex Alexander <wired@gentoo.org>
+  zen-sources-2.6.34_p1.ebuild, -zen-sources-2.6.34_p1-r1.ebuild,
+  +zen-sources-2.6.34_p1-r2.ebuild:
+  new revision with updated bfq patch. bug #327415. removed bfq from
+  2.6.34_p1. switched to EAPI 2.
+
+*zen-sources-2.6.34_p1-r1 (07 Jul 2010)
+
+  07 Jul 2010; Alex Alexander <wired@gentoo.org>
+  +zen-sources-2.6.34_p1-r1.ebuild:
+  fixed bfq patch not applying properly
+
+  07 Jul 2010; Alex Alexander <wired@gentoo.org>
+  zen-sources-2.6.34_p1.ebuild, metadata.xml:
+  added optional bfq patch
+
+*zen-sources-2.6.34_p1 (23 Jun 2010)
+
+  23 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-2.6.34_p1.ebuild:
+  Version bump
+
+*zen-sources-2.6.33_p3 (17 Jun 2010)
+
+  17 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-2.6.33_p3.ebuild:
+  Version bump
+
+*zen-sources-2.6.33_p2-r1 (25 May 2010)
+*zen-sources-2.6.32_p7-r1 (25 May 2010)
+
+  25 May 2010; Markos Chandras <hwoarang@gentoo.org>
+  +files/powernow-k8-family10-model10_fix.patch,
+  +zen-sources-2.6.32_p7-r1.ebuild, +zen-sources-2.6.33_p2-r1.ebuild:
+  Add urgent powernow-k8 patch which fixes turbo clock behavior for the new
+  Phenom II x6 processors. Please visit
+  http://git.kernel.org/?p=linux/kernel/git/stable/linux-2.6.33.y.git;a=comm
+  it;h=1ff21ff30e324d2e994a54baf9dc3df003985b60 for details
+
+  18 May 2010; Alex Alexander <wired@gentoo.org>
+  -zen-sources-2.6.31_p8.ebuild, -zen-sources-2.6.31_p9.ebuild,
+  -zen-sources-2.6.31_p10.ebuild, -zen-sources-2.6.31_p11.ebuild,
+  zen-sources-2.6.31_p12.ebuild, -zen-sources-2.6.32_p1.ebuild,
+  -zen-sources-2.6.32_p2.ebuild, -zen-sources-2.6.32_p3.ebuild,
+  -zen-sources-2.6.32_p4.ebuild, -zen-sources-2.6.32_p5.ebuild,
+  -zen-sources-2.6.33_rc2_p1-r1.ebuild, -zen-sources-2.6.33_rc4_p1.ebuild,
+  -zen-sources-2.6.33_rc5_p1.ebuild, -zen-sources-2.6.33_rc7_p1.ebuild,
+  metadata.xml:
+  removed old versions, obsolete use flag description
+
+*zen-sources-2.6.33_p2 (28 Apr 2010)
+
+  28 Apr 2010; Alex Alexander <wired@gentoo.org>
+  +zen-sources-2.6.33_p2.ebuild:
+  version bump
+
+  26 Apr 2010; Robin H. Johnson <robbat2@gentoo.org>
+  zen-sources-2.6.30_p11.ebuild, zen-sources-2.6.31_p8.ebuild,
+  zen-sources-2.6.31_p9.ebuild, zen-sources-2.6.31_p10.ebuild,
+  zen-sources-2.6.31_p11.ebuild, zen-sources-2.6.31_p12.ebuild,
+  zen-sources-2.6.32_p1.ebuild, zen-sources-2.6.32_p2.ebuild,
+  zen-sources-2.6.32_p3.ebuild, zen-sources-2.6.32_p4.ebuild,
+  zen-sources-2.6.32_p5.ebuild, zen-sources-2.6.32_p6.ebuild,
+  zen-sources-2.6.32_p7.ebuild, zen-sources-2.6.33_p1.ebuild,
+  zen-sources-2.6.33_rc2_p1-r1.ebuild, zen-sources-2.6.33_rc4_p1.ebuild,
+  zen-sources-2.6.33_rc5_p1.ebuild, zen-sources-2.6.33_rc7_p1.ebuild,
+  zen-sources-9999.ebuild, metadata.xml:
+  Update Manifest for deblob support in kernel-2 eclass. Block the 9999
+  series from using unblob as the correct deblob script cannot be known
+  ahead of time. Fix the CVS headers on all ebuilds.
+
+*zen-sources-2.6.32_p7 (05 Mar 2010)
+
+  05 Mar 2010; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-2.6.32_p7.ebuild:
+  Bump 2.6.32 to zen7 (Gogoozled)
+
+*zen-sources-2.6.33_p1 (05 Mar 2010)
+
+  05 Mar 2010; Alex Alexander <wired@gentoo.org>
+  +zen-sources-2.6.33_p1.ebuild:
+  version bump
+
+*zen-sources-2.6.33_rc7_p1 (13 Feb 2010)
+
+  13 Feb 2010; Alex Alexander <wired@gentoo.org>
+  +zen-sources-2.6.33_rc7_p1.ebuild:
+  version bump: 2.6.33_rc7_p1
+
+*zen-sources-2.6.32_p6 (31 Jan 2010)
+*zen-sources-2.6.31_p12 (31 Jan 2010)
+
+  31 Jan 2010; <hwoarang@gentoo.org> +zen-sources-2.6.31_p12.ebuild,
+  +zen-sources-2.6.32_p6.ebuild:
+  Version bump
+
+*zen-sources-2.6.33_rc5_p1 (25 Jan 2010)
+
+  25 Jan 2010; Alex Alexander <wired@gentoo.org>
+  +zen-sources-2.6.33_rc5_p1.ebuild:
+  version bump, includes hotfix
+
+  20 Jan 2010; Markos Chandras <hwoarang@gentoo.org>
+  zen-sources-2.6.33_rc4_p1.ebuild:
+  Remove obsolete patch. Fixes bug #301517
+
+*zen-sources-2.6.32_p5 (19 Jan 2010)
+*zen-sources-2.6.31_p11 (19 Jan 2010)
+
+  19 Jan 2010; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-2.6.31_p11.ebuild, +zen-sources-2.6.32_p5.ebuild:
+  Version bump
+
+*zen-sources-2.6.33_rc4_p1 (17 Jan 2010)
+
+  17 Jan 2010; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-2.6.33_rc4_p1.ebuild:
+  Version bump
+
+  06 Jan 2010; Alex Alexander <wired@gentoo.org>
+  zen-sources-2.6.30_p11.ebuild, zen-sources-2.6.31_p8.ebuild,
+  zen-sources-2.6.31_p9.ebuild, zen-sources-2.6.31_p10.ebuild,
+  zen-sources-2.6.32_p1.ebuild, zen-sources-2.6.32_p2.ebuild,
+  zen-sources-2.6.32_p3.ebuild, zen-sources-2.6.32_p4.ebuild,
+  zen-sources-2.6.33_rc2_p1-r1.ebuild, zen-sources-9999.ebuild:
+  dropped useless RESTRICTs, fixed bug 299906
+
+*zen-sources-2.6.33_rc2_p1-r1 (06 Jan 2010)
+
+  06 Jan 2010; <hwoarang@gentoo.org> -zen-sources-2.6.33_rc2_p1.ebuild,
+  +zen-sources-2.6.33_rc2_p1-r1.ebuild,
+  +files/zen-sources-2.6.33_rc2_p1-kernel-sysctl.c.patch:
+  Bump to fix a kernel configuration issue which is not fixed on zen-sources
+  git
+  repository
+  Related commit:
+  http://git.zen-kernel.org/?p=kernel/zen.git;a=commitdiff;h=3764e86df27a810
+  77ed043ce5c659c7970541371
+
+  03 Jan 2010; Alex Alexander <wired@gentoo.org>
+  zen-sources-2.6.30_p11.ebuild, zen-sources-2.6.31_p8.ebuild,
+  zen-sources-2.6.31_p9.ebuild, zen-sources-2.6.31_p10.ebuild,
+  zen-sources-2.6.32_p1.ebuild, zen-sources-2.6.32_p2.ebuild,
+  zen-sources-2.6.32_p3.ebuild, zen-sources-2.6.32_p4.ebuild,
+  zen-sources-2.6.33_rc2_p1.ebuild:
+  added xz/lzma DEPEND, bug 299351
+
+*zen-sources-2.6.32_p4 (01 Jan 2010)
+
+  01 Jan 2010; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-2.6.32_p4.ebuild:
+  Version bump
+
+*zen-sources-2.6.33_rc2_p1 (26 Dec 2009)
+
+  26 Dec 2009; <hwoarang@gentoo.org> +zen-sources-2.6.33_rc2_p1.ebuild:
+  Add 2.6.33_rc2 zen-sources
+
+*zen-sources-2.6.32_p3 (23 Dec 2009)
+
+  23 Dec 2009; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-2.6.32_p3.ebuild:
+  Version bump
+
+*zen-sources-2.6.31_p10 (19 Dec 2009)
+
+  19 Dec 2009; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-2.6.31_p10.ebuild:
+  Version bump. Drop drm-next availability
+
+*zen-sources-2.6.32_p2 (18 Dec 2009)
+
+  18 Dec 2009; Alex Alexander <wired@gentoo.org>
+  +zen-sources-2.6.32_p2.ebuild:
+  version bump
+
+  16 Dec 2009; Markos Chandras <hwoarang@gentoo.org>
+  -zen-sources-2.6.30_p9-r1.ebuild, -zen-sources-2.6.30_p10.ebuild,
+  -zen-sources-2.6.32_rc5_p2-r1.ebuild, -zen-sources-2.6.32_rc6_p1.ebuild,
+  -zen-sources-2.6.32_rc7_p1.ebuild, -zen-sources-2.6.32_rc8_p1.ebuild:
+  Remove old ebuilds
+
+*zen-sources-2.6.32_p1 (14 Dec 2009)
+*zen-sources-2.6.30_p11 (14 Dec 2009)
+
+  14 Dec 2009; Alex Alexander <wired@gentoo.org>
+  +zen-sources-2.6.30_p11.ebuild, +zen-sources-2.6.32_p1.ebuild:
+  version bumps: 2.6.30_p11 (final), 2.6.32_p1
+
+*zen-sources-2.6.31_p9 (30 Nov 2009)
+
+  30 Nov 2009; Markos Chandras <hwoarang@gentoo.org>
+  -zen-sources-2.6.31_p5-r2.ebuild, -zen-sources-2.6.31_p6.ebuild,
+  -zen-sources-2.6.31_p7.ebuild, +zen-sources-2.6.31_p9.ebuild:
+  Bump to 2.6.31-zen9-white-toast. Remove old 2.6.31 ebuilds
+
+*zen-sources-2.6.32_rc8_p1 (24 Nov 2009)
+
+  24 Nov 2009; Alex Alexander <wired@gentoo.org>
+  +zen-sources-2.6.32_rc8_p1.ebuild:
+  version bump
+
+*zen-sources-2.6.32_rc7_p1 (16 Nov 2009)
+
+  16 Nov 2009; Alex Alexander <wired@gentoo.org>
+  +zen-sources-2.6.32_rc7_p1.ebuild:
+  version bump
+
+*zen-sources-2.6.31_p8 (14 Nov 2009)
+
+  14 Nov 2009; Alex Alexander <wired@gentoo.org>
+  +zen-sources-2.6.31_p8.ebuild:
+  version bump
+
+  08 Nov 2009; Alex Alexander <wired@gentoo.org>
+  zen-sources-2.6.31_p7.ebuild, metadata.xml:
+  added USE flag for drm-next patch
+
+*zen-sources-2.6.31_p7 (07 Nov 2009)
+
+  07 Nov 2009; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-2.6.31_p7.ebuild:
+  Bump to 2.6.31-zen7 "Masturbating Monkeys"
+
+*zen-sources-2.6.31_p6 (04 Nov 2009)
+*zen-sources-2.6.30_p10 (04 Nov 2009)
+
+  04 Nov 2009; Alex Alexander <wired@gentoo.org>
+  +zen-sources-2.6.30_p10.ebuild, -zen-sources-2.6.31_p4-r1.ebuild,
+  +zen-sources-2.6.31_p6.ebuild:
+  version bumps and old removal
+
+*zen-sources-9999 (04 Nov 2009)
+*zen-sources-2.6.32_rc6_p1 (04 Nov 2009)
+*zen-sources-2.6.32_rc5_p2-r1 (04 Nov 2009)
+
+  04 Nov 2009; Alex Alexander <wired@gentoo.org>
+  +zen-sources-2.6.32_rc5_p2-r1.ebuild, +zen-sources-2.6.32_rc6_p1.ebuild,
+  +zen-sources-9999.ebuild, metadata.xml:
+  added rc5, rc6 and 9999 ebuilds
+
+  01 Nov 2009; Markos Chandras <hwoarang@gentoo.org>
+  zen-sources-2.6.30_p9-r1.ebuild, zen-sources-2.6.31_p4-r1.ebuild,
+  zen-sources-2.6.31_p5-r2.ebuild:
+  Use static text on description
+
+*zen-sources-2.6.31_p5-r2 (30 Oct 2009)
+*zen-sources-2.6.31_p4-r1 (30 Oct 2009)
+*zen-sources-2.6.30_p9-r1 (30 Oct 2009)
+
+  30 Oct 2009; Alex Alexander <wired@gentoo.org>
+  -zen-sources-2.6.30_p9.ebuild, +zen-sources-2.6.30_p9-r1.ebuild,
+  -zen-sources-2.6.31_p4.ebuild, +zen-sources-2.6.31_p4-r1.ebuild,
+  -zen-sources-2.6.31_p5-r1.ebuild, +zen-sources-2.6.31_p5-r2.ebuild:
+  fixed install dir name fail :)
+
+*zen-sources-2.6.31_p5-r1 (30 Oct 2009)
+*zen-sources-2.6.31_p4 (30 Oct 2009)
+*zen-sources-2.6.30_p9 (30 Oct 2009)
+
+  30 Oct 2009; Alex Alexander <wired@gentoo.org>
+  -zen-sources-2.6.30-r9.ebuild, +zen-sources-2.6.30_p9.ebuild,
+  -zen-sources-2.6.31-r4.ebuild, -zen-sources-2.6.31-r5.ebuild,
+  +zen-sources-2.6.31_p4.ebuild, +zen-sources-2.6.31_p5-r1.ebuild,
+  +files/zen-sources-2.6.31_p5-config_fb_fix.patch:
+  modified versioning scheme to allow revisions of the same patchset. the
+  patchset version is now defined by _p. this was necessary in order to be
+  able to add hotfixes (like the one in 2.6.31_p5-r1).
+
+*zen-sources-2.6.31-r5 (29 Oct 2009)
+
+  29 Oct 2009; Alex Alexander <wired@gentoo.org>
+  +zen-sources-2.6.31-r5.ebuild:
+  version bump - 2.6.31-zen5
+
+*zen-sources-2.6.31-r4 (20 Oct 2009)
+*zen-sources-2.6.30-r9 (20 Oct 2009)
+
+  20 Oct 2009; Markos Chandras <hwoarang@gentoo.org>
+  +zen-sources-2.6.30-r9.ebuild, +zen-sources-2.6.31-r4.ebuild,
+  +metadata.xml:
+  Initial commit of zen-sources. Fixes bug #288512. Thanks to Brandon
+  Berhent
+  <cheater1034@gmail.com> for the initial ebuilds

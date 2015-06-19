@@ -1,0 +1,52 @@
+# ChangeLog for app-mobilephone/gnocky
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/gnocky/ChangeLog,v 1.12 2014/09/15 09:20:01 jer Exp $
+
+*gnocky-0.0.7 (15 Sep 2014)
+
+  15 Sep 2014; Jeroen Roovers <jer@gentoo.org> -gnocky-0.0.6.ebuild,
+  +gnocky-0.0.7.ebuild:
+  Version bump (bug #319245).
+
+  30 Aug 2014; Michał Górny <mgorny@gentoo.org> gnocky-0.0.6.ebuild:
+  Replace einstall with emake install, bug #521456.
+
+  09 Apr 2014; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  [QA] Dissolve the mobile-phone herd to maintainer-needed because it is empty
+  and nobody joined it after multiple recruitment mails.
+
+  02 May 2012; Jeff Horelick <jdhore@gentoo.org> gnocky-0.0.6.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> gnocky-0.0.6.ebuild:
+  Fix slot-deps on gnome libs
+
+  02 Nov 2008; Alin Năstac <mrness@gentoo.org> -gnocky-0.0.5.ebuild:
+  Remove obsolete version.
+
+*gnocky-0.0.6 (12 Jul 2008)
+
+  12 Jul 2008; Alin Năstac <mrness@gentoo.org> -gnocky-0.0.4.ebuild,
+  +gnocky-0.0.6.ebuild:
+  Version bump.
+
+*gnocky-0.0.5 (30 Dec 2007)
+
+  30 Dec 2007; Alin Năstac <mrness@gentoo.org> +gnocky-0.0.5.ebuild:
+  Version bump.
+
+  25 Oct 2007; Alin Năstac <mrness@gentoo.org> -gnocky-0.0.3.ebuild:
+  Remove obsolete version.
+
+  16 Aug 2007; Alin Năstac <mrness@gentoo.org> ChangeLog:
+  Change gnokii DEPEND atom to the latest available version (#188362).
+
+*gnocky-0.0.4 (07 Aug 2007)
+
+  07 Aug 2007; Alin Năstac <mrness@gentoo.org> +gnocky-0.0.4.ebuild:
+  Version bump (#187986). Add ~amd64 keyword.
+
+*gnocky-0.0.3 (31 Oct 2005)
+
+  31 Oct 2005; Michele Noberasco <s4t4n@gentoo.org> gnocky-0.0.3.ebuild:
+  Initial import.

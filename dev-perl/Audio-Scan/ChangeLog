@@ -1,0 +1,153 @@
+# ChangeLog for dev-perl/Audio-Scan
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Audio-Scan/ChangeLog,v 1.31 2014/08/26 14:58:00 axs Exp $
+
+*Audio-Scan-0.930.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Audio-Scan-0.930.0-r1.ebuild, -Audio-Scan-0.930.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  16 Jun 2012; Torsten Veller <tove@gentoo.org> -Audio-Scan-0.82.ebuild,
+  -Audio-Scan-0.840.ebuild, -Audio-Scan-0.870.0.ebuild,
+  -Audio-Scan-0.880.0.ebuild, -Audio-Scan-0.900.0.ebuild,
+  -Audio-Scan-0.910.0.ebuild, -Audio-Scan-0.920.0.ebuild:
+  Cleanup
+
+  18 Nov 2011; Fabian Groffen <grobian@gentoo.org>
+  Audio-Scan-0.870.0.ebuild, Audio-Scan-0.880.0.ebuild,
+  Audio-Scan-0.930.0.ebuild:
+  Marked ~x86-solaris
+
+*Audio-Scan-0.930.0 (17 Sep 2011)
+
+  17 Sep 2011; Torsten Veller <tove@gentoo.org> +Audio-Scan-0.930.0.ebuild:
+  Version bump
+
+*Audio-Scan-0.920.0 (13 Sep 2011)
+
+  13 Sep 2011; Torsten Veller <tove@gentoo.org> +Audio-Scan-0.920.0.ebuild:
+  Version bump
+
+*Audio-Scan-0.910.0 (07 Sep 2011)
+
+  07 Sep 2011; Robin H. Johnson <robbat2@gentoo.org>
+  +Audio-Scan-0.910.0.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*Audio-Scan-0.900.0 (05 Aug 2011)
+
+  05 Aug 2011; Torsten Veller <tove@gentoo.org> +Audio-Scan-0.900.0.ebuild:
+  Version bump
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org> -Audio-Scan-0.850.ebuild,
+  -Audio-Scan-0.860.0.ebuild:
+  Cleanup
+
+*Audio-Scan-0.880.0 (21 Jul 2011)
+
+  21 Jul 2011; Torsten Veller <tove@gentoo.org> +Audio-Scan-0.880.0.ebuild:
+  Version bump
+
+  24 Apr 2011; Fabian Groffen <grobian@gentoo.org> Audio-Scan-0.840.ebuild:
+  Marked ~x86-solaris, bug #296509
+
+*Audio-Scan-0.870.0 (22 Mar 2011)
+
+  22 Mar 2011; Torsten Veller <tove@gentoo.org> +Audio-Scan-0.870.0.ebuild:
+  Version bump
+
+*Audio-Scan-0.860.0 (19 Mar 2011)
+
+  19 Mar 2011; Torsten Veller <tove@gentoo.org> +Audio-Scan-0.860.0.ebuild:
+  Version bump
+
+*Audio-Scan-0.850 (01 Feb 2011)
+*Audio-Scan-0.840 (01 Feb 2011)
+
+  01 Feb 2011; Torsten Veller <tove@gentoo.org> -Audio-Scan-0.85.ebuild,
+  +Audio-Scan-0.840.ebuild, +Audio-Scan-0.850.ebuild:
+  Add 0.84 again for the new squeezeboxserver-7.5.3 (#353376). Version
+  conversion
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -Audio-Scan-0.59.ebuild,
+  -Audio-Scan-0.62.ebuild, -Audio-Scan-0.83.ebuild, -Audio-Scan-0.84.ebuild:
+  Cleanup
+
+*Audio-Scan-0.85 (10 Sep 2010)
+
+  10 Sep 2010; Torsten Veller <tove@gentoo.org> +Audio-Scan-0.85.ebuild:
+  Version bump
+
+*Audio-Scan-0.84 (28 Aug 2010)
+
+  28 Aug 2010; Torsten Veller <tove@gentoo.org> +Audio-Scan-0.84.ebuild:
+  Version bump
+
+*Audio-Scan-0.83 (12 Jun 2010)
+
+  12 Jun 2010; Torsten Veller <tove@gentoo.org> +Audio-Scan-0.83.ebuild:
+  Version bump
+
+  11 Jun 2010; Torsten Veller <tove@gentoo.org> -Audio-Scan-0.75.ebuild,
+  -Audio-Scan-0.77.ebuild, -Audio-Scan-0.78.ebuild, -Audio-Scan-0.79.ebuild,
+  -Audio-Scan-0.81.ebuild:
+  Cleanup
+
+*Audio-Scan-0.82 (28 May 2010)
+
+  28 May 2010; Torsten Veller <tove@gentoo.org> +Audio-Scan-0.82.ebuild:
+  Version bump
+
+*Audio-Scan-0.81 (16 May 2010)
+
+  16 May 2010; Torsten Veller <tove@gentoo.org> +Audio-Scan-0.81.ebuild:
+  Version bump
+
+*Audio-Scan-0.62 (11 May 2010)
+
+  11 May 2010; Torsten Veller <tove@gentoo.org> +Audio-Scan-0.62.ebuild:
+  Add old version for media-sound/squeezeboxserver-7.5.0 (#319203)
+
+*Audio-Scan-0.79 (29 Apr 2010)
+
+  29 Apr 2010; Torsten Veller <tove@gentoo.org> +Audio-Scan-0.79.ebuild:
+  Version bump
+
+*Audio-Scan-0.78 (17 Apr 2010)
+
+  17 Apr 2010; Torsten Veller <tove@gentoo.org> +Audio-Scan-0.78.ebuild:
+  Version bump
+
+*Audio-Scan-0.77 (15 Apr 2010)
+
+  15 Apr 2010; Torsten Veller <tove@gentoo.org> +Audio-Scan-0.77.ebuild:
+  Version bump
+
+  09 Apr 2010; Torsten Veller <tove@gentoo.org> -Audio-Scan-0.70.ebuild,
+  -Audio-Scan-0.71.ebuild:
+  Cleanup
+
+*Audio-Scan-0.75 (07 Apr 2010)
+
+  07 Apr 2010; Torsten Veller <tove@gentoo.org> +Audio-Scan-0.75.ebuild:
+  Version bump
+
+*Audio-Scan-0.71 (31 Mar 2010)
+
+  31 Mar 2010; Torsten Veller <tove@gentoo.org> +Audio-Scan-0.71.ebuild:
+  Version bump
+
+*Audio-Scan-0.70 (24 Mar 2010)
+
+  24 Mar 2010; Torsten Veller <tove@gentoo.org> +Audio-Scan-0.70.ebuild:
+  Version bump
+
+*Audio-Scan-0.59 (09 Feb 2010)
+
+  09 Feb 2010; Torsten Veller <tove@gentoo.org> +Audio-Scan-0.59.ebuild,
+  +metadata.xml:
+  Initial commit (#287264)

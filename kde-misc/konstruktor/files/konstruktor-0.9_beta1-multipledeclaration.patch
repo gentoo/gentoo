@@ -1,0 +1,10 @@
+--- konstruktor-0.9-beta1/src/app/renderwidget.cpp
++++ konstruktor-0.9-beta1/src/app/renderwidget.cpp
+@@ -395,7 +395,6 @@
+ 		
+ 		glBegin(GL_POINTS);
+ 		
+-		int i = 0;
+ 		for (ldraw::model::const_iterator it = currentModel_->elements().begin(); it != currentModel_->elements().end(); ++it) {
+ 			if ((*it)->get_type() == ldraw::type_ref) {
+ 				ldraw::element_ref *r = CAST_AS_REF(*it);

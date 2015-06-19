@@ -1,0 +1,62 @@
+# ChangeLog for app-benchmarks/piozone
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/piozone/ChangeLog,v 1.19 2015/03/28 23:23:09 mrueg Exp $
+
+  28 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -piozone-1.0-r2.ebuild:
+  Remove old.
+
+  05 Aug 2014; Patrick Lauer <patrick@gentoo.org> piozone-1.0-r2.ebuild,
+  piozone-1.0-r3.ebuild:
+  Make description more repoman-happy
+
+  08 Aug 2012; Brent Baude <ranger@gentoo.org> piozone-1.0-r3.ebuild:
+  Marking piozone-1.0-r3 ppc for bug 418515
+
+  03 Aug 2012; Andreas Schuerch <nativemad@gentoo.org> piozone-1.0-r3.ebuild:
+  x86 stable, see bug 418515
+
+  02 Aug 2012; Markos Chandras <hwoarang@gentoo.org> piozone-1.0-r3.ebuild:
+  Stable on amd64 wrt bug #418515
+
+  10 Nov 2010; Patrick Lauer <patrick@gentoo.org> piozone-1.0-r2.ebuild:
+  Make repoman happy
+
+*piozone-1.0-r3 (12 Oct 2010)
+
+  12 Oct 2010; Jeroen Roovers <jer@gentoo.org> +piozone-1.0-r3.ebuild,
+  +files/piozone-1.0-r3-gentoo.diff:
+  Fix missing includes and defines. Respect CC (bug #243522), LDFLAGS.
+
+  12 Oct 2009; Mark Loeser <halcy0n@gentoo.org> piozone-1.0-r2.ebuild:
+  QA fixes; unquoted variables
+
+  23 Nov 2008; Patrick Lauer <patrick@gentoo.org> piozone-1.0-r2.ebuild:
+  Fixing Homepage.
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  29 May 2005; Marcus D. Hanwell <marcus@gentoo.org> piozone-1.0-r2.ebuild:
+  Stable on amd64.
+
+  30 Mar 2005; Homer Parker <hparker@gentoo.org> piozone-1.0-r2.ebuild:
+  add ~amd64 to close #85039
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  piozone-1.0-r2.ebuild:
+  Masked piozone-1.0-r2.ebuild stable for ppc
+
+  13 Apr 2004; David Holm <dholm@gentoo.org> piozone-1.0-r2.ebuild:
+  Added to ~ppc.
+
+  29 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> piozone-1.0-r2.ebuild:
+  inherit eutils for epatch
+
+  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> piozone-1.0-r2.ebuild:
+  don't assign default to S; header fix; tidy
+
+*piozone-1.0-r2 (12 Aug 2003)
+
+  12 Aug 2003; Martin Holzer <mholzer@gentoo.org> piozone-1.0-r2.ebuild,
+  files/piozone-1.0-gentoo.diff:
+  Initial version. Submitted by Marcelo Góes <blueboard@terra.com.br> in #24250

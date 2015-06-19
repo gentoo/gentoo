@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>monsieurp@gentoo.org</email>
+	</maintainer>
+	<herd>java</herd>
+	<use>
+		<flag name="debug">
+			Enable debugging during compilation.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">jfreegraphics2d</remote-id>
+	</upstream>
+</pkgmetadata>

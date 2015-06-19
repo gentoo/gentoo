@@ -1,0 +1,223 @@
+# ChangeLog for games-fps/ut2003-demo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2003-demo/ChangeLog,v 1.33 2015/06/14 18:16:56 ulm Exp $
+
+  14 Jun 2015; Ulrich Müller <ulm@gentoo.org> ut2003-demo-2206-r3.ebuild:
+  [QA] Remove emul-linux-x86-* from dependencies.
+
+  15 Oct 2014; Pacho Ramos <pacho@gentoo.org> ut2003-demo-2206-r3.ebuild:
+  Support multilib providers for deps. Bump to EAPI=5.
+
+  14 Nov 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  ut2003-demo-2206-r3.ebuild:
+  tidy
+
+  05 Feb 2012; Mike Frysinger <vapier@gentoo.org> ut2003-demo-2206-r3.ebuild:
+  Move to new unpacker eclass for unpack_makeself.
+
+  14 Dec 2011; Mike Frysinger <vapier@gentoo.org> ut2003-demo-2206-r3.ebuild:
+  The games.eclass has dropped GAMES_CHECK_LICENSE support (since portage now
+  has ACCEPT_LICENSE), so drop it here too.
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> ut2003-demo-2206-r3.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  07 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org> files/results.sh:
+  Change all instances of [ to [[.
+
+  14 Nov 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2003-demo-2206-r3.ebuild:
+  Added sys-devel/bc to RDEPEND for the benchmark scripts and closing bug
+  #154824.
+
+  03 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2003-demo-2206-r3.ebuild:
+  Changing the description to match games-fps/ut2003.
+
+  29 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2003-demo-2206-r3.ebuild:
+  Made a few modifications to the ebuild to make the install a bit cleaner, as
+  well as fixing bug #148958.
+
+  15 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org> files/benchmark,
+  files/ut2003-demo, ut2003-demo-2206-r3.ebuild:
+  Change hard-coded /opt to GAMES_PREFIX_OPT.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-ut2003-demo-2206-r3, Manifest:
+  Fixing SHA256 digest, pass four
+
+  14 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2003-demo-2206-r3.ebuild:
+  Removed redundant pkg_setup.
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2003-demo-2206-r3.ebuild:
+  Changed nostrip to strip.
+
+  24 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2003-demo-2206-r3.ebuild:
+  Moved games_pkg_postinst to beginning of pkg_postinst.
+
+  10 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2003-demo-2206-r3.ebuild:
+  Added virtual/libstdc++ dependency.
+
+  10 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2003-demo-2206-r3.ebuild:
+  Added modular X dependencies.
+
+  09 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2003-demo-2206-r3.ebuild:
+  Marking stable on amd64.
+
+  21 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2003-demo-2206-r3.ebuild:
+  Changed to use newicon rather than insinto/newins.
+
+  21 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2003-demo-2206-r3.ebuild:
+  Changed check_license to explicitly list license to check.
+
+  11 Aug 2005; Carlos Silva <r3pek@gentoo.org> ut2003-demo-2206-r3.ebuild:
+  marked ~amd64. closes bug #102076
+
+  12 Apr 2005; Chris Gianelloni <wolf31o2@gentoo.org> -files/misc.tar.bz2,
+  ut2003-demo-2206-r3.ebuild:
+  Moved misc.tar.bz2 to mirrors... saved 31k from the portage tree... w00t...
+
+  12 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  ut2003-demo-2206-r3.ebuild:
+  fix the icon install (bug #58982); tidy src_install
+
+  04 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2003-demo-2206-r3.ebuild:
+  Fixing Ddir and closing bug #46803.
+
+  03 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> :
+  Fixing digest and closing bug #46693.
+
+  01 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2003-demo-2206-r3.ebuild:
+  Fixing fatfingers.
+
+*ut2003-demo-2206-r3 (01 Apr 2004)
+
+  01 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2003-demo-2206-r2.ebuild, ut2003-demo-2206-r3.ebuild,
+  files/ut2003-demo.desktop:
+  Updated with patches to fix recent DoS in Unreal engine based games. See bug
+  #44351 for more information.
+
+  27 Feb 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2003-demo-2206-r2.ebuild:
+  Updating .desktop entry.
+
+  14 Jan 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2003-demo-2206-r2.ebuild:
+  Removed remnants of IpDrv.so.bz2 file which I had missed earlier today.
+
+  14 Jan 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2003-demo-2206-r2.ebuild:
+  Removed old line for IpDrv.so.bz2 to fix a bug.  Closing bug #38218.
+
+  30 Aug 2003; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2003-demo-2206-r2.ebuild:
+  Adding menu entry.  Closes bug #27594.
+
+*ut2003-demo-2206-r2 (23 May 2003)
+
+  23 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Updated results.sh script to fix #19392.
+
+  23 May 2003; Daniel Robbins <drobbins@gentoo.org>: Aliz's security "fix"
+  actually totally broke this ebuild. In the absence of a working fix, it's
+  being removed. Also removing use of evil "games" group.
+  
+  18 May 2003; Daniel Ahlberg <aliz@gentooo.org> : Added missing desktop file.
+
+*ut2003-demo-2206-r1 (16 May 2003)
+
+  16 May 2003; Daniel Ahlberg <aliz@gentoo.org> : 
+  Security update. Ebuild contributed by Chris Gianelloni wolf31o2@hotmail.com in #20993.
+
+*ut2003-demo-2206 (25 Feb 2003)
+
+  25 Feb 2003; Daniel Robbins <drobbins@gentoo.org> : A new release from
+  icculus.org with lots of nice fixes. I'm removing all the older versions of
+  ut2003-demo from CVS because this one is clearly preferable and also has a new
+  versioning scheme (by build number rather than timestamp.) There still seems
+  to be some trouble with the benchmarking, particularly MinDetail. MaxDetail works
+  perfectly for me, while MinDetail seems to look for WinDrv for some reason. But
+  it works fine when I run the command manually. Weird.
+  
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*ut2003-demo-20020925-r2 (06 Oct 2002)
+
+  06 Oct 2002; phoen][x <phoenix@gentoo.org> ChangeLog, ut2003-demo-20020925-r2.ebuild,
+  files/digest-ut2003-demo-20020925-r2, files/benchmark:
+
+  Fixed the benchmarking.
+
+*ut2003-demo-20020925-r1 (25 Sep 2002)
+
+  25 Sep 2002; phoen][x <phoenix@gentoo.org> ChangeLog, ut2003-demo-20020925-r1.ebuild,
+  files/digest-ut2003-demo-20020925-r1, files/results.sh, files/ut2003-demo:
+
+  Removed results.py and added results.sh. This makes the ebuild compatible with the 
+  LiveCD (the LiveCD doesnt come with python).
+
+*ut2003-demo-20020925 (25 Sep 2002)
+
+  25 Sep 2002; Mike Frysinger <vapier@gentoo.org> ChangeLog, ut2003-demo-20020925.ebuild :
+
+  My bad, 1080c is not a new patch, but a supplement to 1080b ... this fixes that ... #8313
+
+*ut2003-demo-20020919 (19 Sep 2002)
+
+  19 Sep 2002; Mike Frysinger <vapier@gentoo.org> ChangeLog, ut2003-demo-20020919.ebuild :
+
+  1080c is out, fixes #8081
+
+*ut2003-demo-20020918-r1 (19 Sep 2002)
+  
+  18 Sep 2002; phoen][x <phoenix@gentoo.org> ChangeLog, ut2003-demo-20020918-r1.ebuild,
+  files/digest-ut2003-demo-20020918, files/results.py, files/ut2003-demo, files/benchmark:
+
+  Revision bump. Added a wrapper which is able to benchmark ut2003. Made the game
+  executable by users who aren't in group games. Fixed a few minor bugs.
+
+
+*ut2003-demo-20020918 (18 Sep 2002)
+  
+  18 Sep 2002; phoen][x <phoenix@gentoo.org> ChangeLog, ut2003-demo-20020918.ebuild,
+  files/digest-ut2003-demo-20020918 :
+
+  This version includes the patch 1080. Installation directory switched to /opt
+  again, sorry for that (this was the last location change, i promise). 
+
+*ut2003-demo-20020915 (15 Sep 2002)
+  
+  17 Sep 2002; phoen][x <phoenix@gentoo.org> ChangeLog, ut2003-demo-20020915.ebuild:
+
+  chmod'ed the whole game to "o-rwx" - that prevent users who aren't members of
+  group 'games' from playing the game. Added a message about that to pkg_postinst().
+
+  16 Sep 2002; phoen][x <phoenix@gentoo.org> ChangeLog, ut2003-demo-20020915.ebuild:
+
+  Added "-f" to "rm ${S}/${FILENAME}",
+
+  Changed install location to /usr/local/games.
+ 
+  Fixed the permissions.
+
+  15 Sep 2002; phoen][x <phoenix@gentoo.org> ChangeLog, ut2003-demo-20020915.ebuild
+  files/digest-ut2003-demo-20020915, files/misc.tar.bz2: 
+
+  Initial import. This package installs the official Unreal Tournament 2003 demo to 
+  /opt/ut2003-demo.
+
+  Modified DEPEND.
+
+  Added --nox11 to prevent the installer from starting.

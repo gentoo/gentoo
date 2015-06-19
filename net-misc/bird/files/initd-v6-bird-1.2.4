@@ -1,0 +1,39 @@
+#!/sbin/runscript
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/bird/files/initd-v6-bird-1.2.4,v 1.1 2010/09/06 14:45:53 chainsaw Exp $
+
+EXE=bird6
+CLI=birdc6
+SOCK="/var/run/${EXE}.ctl"
+
+depend() {
+	need net
+	use logger
+}
+
+checkconfig() {
+	if [ ! -f "/etc/${EXE}.conf" ]; then
+		eerror "Please create /etc/${EXE}.conf"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	checkconfig || return $?
+
+	ebegin "Starting BIRD"
+	"/usr/sbin/${EXE}" -c "/etc/${EXE}.conf" -s "${SOCK}"
+	eend $? "Failed to start BIRD"
+}
+
+stop() {
+	ebegin "Stopping BIRD"
+	if [ -f "${SOCK}" ]; then
+		echo "down" | "/usr/sbin/${CLI}" -s "${SOCK}" &>/dev/null
+		eend $? "Failed to stop BIRD"
+	else
+		eend 0
+	fi
+}

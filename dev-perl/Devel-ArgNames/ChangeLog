@@ -1,0 +1,30 @@
+# ChangeLog for dev-perl/Devel-ArgNames
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Devel-ArgNames/ChangeLog,v 1.6 2015/06/13 11:35:04 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Devel-ArgNames-0.30.0-r1.ebuild:
+  virtual/perl-Test-Simple has gobbled up Test::use::ok, bug 550990
+
+*Devel-ArgNames-0.30.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Devel-ArgNames-0.30.0-r1.ebuild, -Devel-ArgNames-0.30.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Devel-ArgNames-0.03.ebuild:
+  Cleanup
+
+*Devel-ArgNames-0.30.0 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org> +Devel-ArgNames-0.30.0.ebuild:
+  Change version scheme
+
+*Devel-ArgNames-0.03 (22 Jul 2010)
+
+  22 Jul 2010; Torsten Veller <tove@gentoo.org> +Devel-ArgNames-0.03.ebuild,
+  +metadata.xml:
+  Initial commit for Data-Dumper-Concise

@@ -1,0 +1,23 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/lirc/files/lircd-0.8.3,v 1.1 2008/05/05 09:53:19 zzam Exp $
+
+PIDFILE=/var/run/${SVCNAME}.pid
+
+depend() {
+	provide lirc
+}
+
+start() {
+	ebegin "Starting lircd"
+	start-stop-daemon --start --quiet --pidfile "${PIDFILE}" --exec /usr/sbin/lircd -- \
+		-P "${PIDFILE}" ${LIRCD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping lircd"
+	start-stop-daemon --stop --quiet --pidfile "${PIDFILE}" --exec /usr/sbin/lircd
+	eend $?
+}

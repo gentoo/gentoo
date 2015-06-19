@@ -1,0 +1,49 @@
+--- Makefile.orig	2012-06-20 09:32:17.000000000 +0200
++++ Makefile	2012-06-20 09:32:32.000000000 +0200
+@@ -34,15 +34,15 @@
+ 
+ # Targets that do nothing other than descend.
+ all install install-strip uninstall TAGS info dvi check:
+-	$(DESCEND)
++	+$(DESCEND)
+ 
+ clean:
+-	$(DESCEND)
++	+$(DESCEND)
+ 	rm -f Makefile.inc
+ 
+ # Targets that do just a little more than this.
+ distclean mostlyclean:
+-	$(DESCEND)
++	+$(DESCEND)
+ 	rm -f $(DIST).tar $(DIST).tar.gz $(DIST).tgz
+ 	rm -f Makefile.inc src/config.h src/config.h.in~
+ 	rm -f config.status config.cache config.log
+--- src/Makefile.orig	2012-06-20 09:32:49.000000000 +0200
++++ src/Makefile	2012-06-20 09:33:17.000000000 +0200
+@@ -31,7 +31,7 @@
+ 
+ # All targets do nothing other than descend.
+ all install install-strip uninstall clean TAGS info dvi check:
+-	$(DESCEND)
++	+$(DESCEND)
+ 
+ distclean mostlyclean maintainer-clean:
+-	$(DESCEND)
++	+$(DESCEND)
+--- src/libcw/Makefile.orig	2012-06-20 09:33:30.000000000 +0200
++++ src/libcw/Makefile	2012-06-20 09:34:24.000000000 +0200
+@@ -62,11 +62,11 @@
+ libcw.3: libcw.3.m4 libcw.c
+ 	$(AWK) -f libdoc.awk <libcw.c | $(AWK) -f libsigs.awk >signatures
+ 	$(AWK) -f libdoc.awk <libcw.c | $(AWK) -f libfuncs.awk >functions
+-	$(AWK) -f include.awk <libcw.3.m4 >libcw.3
++	$(AWK) -f include.awk <libcw.3.m4  >libcw.3
+ 	rm -f signatures functions
+ 
+ # Build the unit test.
+-libcwtest: libcwtest.o
++libcwtest: libcwtest.o libcw.a libcw.so.3.0.1
+ 	$(CC) -o libcwtest libcwtest.o -L. -lcw
+ 
+ # Build the pkgconfig metadata file.

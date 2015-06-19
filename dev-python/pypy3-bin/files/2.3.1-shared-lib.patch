@@ -1,0 +1,11 @@
+--- rpython/translator/platform/posix.py
++++ rpython/translator/platform/posix.py
+@@ -180,7 +180,7 @@
+                    'int main(int argc, char* argv[]) '
+                    '{ return $(PYPY_MAIN_FUNCTION)(argc, argv); }" > $@')
+             m.rule('$(DEFAULT_TARGET)', ['$(TARGET)', 'main.o'],
+-                   '$(CC_LINK) $(LDFLAGS_LINK) main.o -L. -l$(SHARED_IMPORT_LIB) -o $@')
++                   '$(CC_LINK) $(LDFLAGS_LINK) main.o -L. -l$(SHARED_IMPORT_LIB) \'-Wl,-rpath,$$ORIGIN\' -o $@')
+ 
+         return m
+ 

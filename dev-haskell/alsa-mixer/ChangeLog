@@ -1,0 +1,44 @@
+# ChangeLog for dev-haskell/alsa-mixer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/alsa-mixer/ChangeLog,v 1.9 2015/06/06 10:11:14 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  alsa-mixer-0.1.2-r2.ebuild, alsa-mixer-0.2.0.1.ebuild,
+  alsa-mixer-0.2.0.2.ebuild:
+  Drop trailing '.' from description.
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*alsa-mixer-0.2.0.2 (10 May 2014)
+
+  10 May 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  +alsa-mixer-0.2.0.2.ebuild:
+  Version bump.
+
+  04 Apr 2014; Sergei Trofimovich <slyfox@gentoo.org> -alsa-mixer-0.1.2.ebuild:
+  Drop old.
+
+*alsa-mixer-0.2.0.1 (04 Apr 2014)
+
+  04 Apr 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  +alsa-mixer-0.2.0.1.ebuild:
+  Version bump.
+
+*alsa-mixer-0.1.2-r2 (22 Dec 2012)
+
+  22 Dec 2012; Sergei Trofimovich <slyfox@gentoo.org>
+  +alsa-mixer-0.1.2-r2.ebuild:
+  Switch to EAPI=5
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org> alsa-mixer-0.1.2.ebuild:
+  move dev-haskell/alsa-mixer/alsa-mixer-0.1.2.ebuild ebuild to mirror://hackage
+
+*alsa-mixer-0.1.2 (18 Sep 2011)
+
+  18 Sep 2011; Sergei Trofimovich <slyfox@gentoo.org> +alsa-mixer-0.1.2.ebuild,
+  +metadata.xml:
+  Initial version. Haskell bindings to the ALSA simple mixer API.

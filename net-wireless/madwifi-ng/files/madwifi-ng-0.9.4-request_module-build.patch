@@ -1,0 +1,31 @@
+http://bugs.gentoo.org/show_bug.cgi?id=232099
+http://madwifi-project.org/changeset/3880
+
+=== modified file 'include/compat.h'
+--- include/compat.h	2009-01-31 16:01:16 +0000
++++ include/compat.h	2009-01-31 16:03:33 +0000
+@@ -175,6 +175,10 @@
+ #define DEV_ATH CTL_UNNUMBERED
+ #endif
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,0)
++#define request_module(_fmt, _modname) request_module(_modname)
++#endif
++
+ #endif /* __KERNEL__ */
+ 
+ #endif /* _ATH_COMPAT_H_ */
+
+=== modified file 'net80211/ieee80211_linux.c'
+--- net80211/ieee80211_linux.c	2009-01-31 16:01:16 +0000
++++ net80211/ieee80211_linux.c	2009-01-31 16:03:09 +0000
+@@ -335,7 +335,7 @@
+ {
+ #ifdef CONFIG_KMOD
+ 	int rv;
+-	rv = request_module(modname);
++	rv = request_module("%s", modname);
+ 	if (rv < 0)
+ 		printk(KERN_ERR "failed to automatically load module: %s; " \
+ 			"errno: %d\n", modname, rv);
+

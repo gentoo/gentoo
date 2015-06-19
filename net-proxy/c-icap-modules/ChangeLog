@@ -1,0 +1,14 @@
+# ChangeLog for net-proxy/c-icap-modules
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/c-icap-modules/ChangeLog,v 1.2 2015/01/07 13:54:01 pacho Exp $
+
+  07 Jan 2015; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Reassign as and cleanup discussed at https://www.mail-archive.com/gentoo-
+  dev@lists.gentoo.org/msg66357.html
+
+*c-icap-modules-0.2.4 (13 Apr 2013)
+
+  13 Apr 2013; Tom Wijsman <TomWij@gentoo.org> +c-icap-modules-0.2.4.ebuild,
+  +metadata.xml:
+  New package c-icap-modules, URL blocklist and virus scanner for the C-ICAP
+  server. Contributed by Florian Steinel. Tested and works. Fixes bug #456698.

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dap? ( net-misc/curl:0= ) hdf? ( sci-libs/hdf:0= sci-libs/hdf5:0= ) hdf5? ( sci-libs/hdf5:0=[mpi=,szip=,zlib] )
+DESCRIPTION=Scientific library and interface for array oriented data access
+EAPI=5
+HOMEPAGE=http://www.unidata.ucar.edu/software/netcdf/
+IUSE=+dap examples hdf +hdf5 mpi static-libs szip test tools
+KEYWORDS=amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux
+LICENSE=UCAR-Unidata
+RDEPEND=dap? ( net-misc/curl:0= ) hdf? ( sci-libs/hdf:0= sci-libs/hdf5:0= ) hdf5? ( sci-libs/hdf5:0=[mpi=,szip=,zlib] )
+REQUIRED_USE=test? ( tools ) szip? ( hdf5 ) mpi? ( hdf5 )
+SLOT=0/7
+SRC_URI=ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-4.3.2.tar.gz
+_eclasses_=autotools	a9597abac7226d89ad9d010abeef6cfb	autotools-utils	dbce0f7913bd240fdf0ef428149855c0	eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=82b220e01144f346d4a39389a0ae09fe

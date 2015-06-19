@@ -1,0 +1,29 @@
+# ChangeLog for mail-filter/couriersrs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/couriersrs/ChangeLog,v 1.6 2015/04/23 23:19:34 mrueg Exp $
+
+  23 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -couriersrs-0.1.1.ebuild,
+  -files/couriersrs-0.1.1-libtool-automake-fixes.diff:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> couriersrs-0.1.1.ebuild,
+  couriersrs-0.1.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  01 Feb 2010; Markus Meier <maekke@gentoo.org> couriersrs-0.1.2.ebuild:
+  add ~x86, bug #299862
+
+  01 Feb 2010; Markus Meier <maekke@gentoo.org> couriersrs-0.1.2.ebuild:
+  amd64 stable, bug #299862
+
+*couriersrs-0.1.2 (05 Dec 2009)
+
+  05 Dec 2009; Hanno Boeck <hanno@gentoo.org> +couriersrs-0.1.2.ebuild,
+  +files/couriersrs-0.1.2-automake-fixes.diff:
+  Version bump, fixes partly merged upstream, smaller patch still needed.
+
+*couriersrs-0.1.1 (29 Sep 2009)
+
+  29 Sep 2009; Hanno Boeck <hanno@gentoo.org> +couriersrs-0.1.1.ebuild,
+  +files/couriersrs-0.1.1-libtool-automake-fixes.diff, +metadata.xml:
+  Initial commit of courier srs implementation.

@@ -1,0 +1,58 @@
+# ChangeLog for sys-apps/qdiskusage
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/qdiskusage/ChangeLog,v 1.12 2013/03/02 23:32:30 hwoarang Exp $
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> qdiskusage-1.0.4.ebuild:
+  Move Qt dependencies to the new category
+
+  23 Oct 2010; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove myself from metadata
+
+  14 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  -qdiskusage-1.0.2.ebuild, -qdiskusage-1.0.3-r1.ebuild:
+  Remove old ebuilds
+
+  14 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  qdiskusage-1.0.4.ebuild:
+  stable x86, bug 327225
+
+  09 Jul 2010; Pacho Ramos <pacho@gentoo.org> qdiskusage-1.0.4.ebuild:
+  stable amd64, bug 327225
+
+*qdiskusage-1.0.4 (02 Jun 2010)
+
+  02 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  +qdiskusage-1.0.4.ebuild:
+  Version bump
+
+  31 May 2010; Markos Chandras <hwoarang@gentoo.org>
+  qdiskusage-1.0.2.ebuild, qdiskusage-1.0.3-r1.ebuild:
+  Fix unzip dependencies thanks to Samuli
+
+*qdiskusage-1.0.3-r1 (31 May 2010)
+
+  31 May 2010; Markos Chandras <hwoarang@gentoo.org>
+  -qdiskusage-1.0.3.ebuild, +qdiskusage-1.0.3-r1.ebuild:
+  Install icon correctly this time. Revbump to address this fix to everybody
+
+*qdiskusage-1.0.3 (30 May 2010)
+
+  30 May 2010; Markos Chandras <hwoarang@gentoo.org> -qdiskusage-1.0.ebuild,
+  +qdiskusage-1.0.3.ebuild:
+  Version bump
+
+  27 May 2010; Markos Chandras <hwoarang@gentoo.org> qdiskusage-1.0.ebuild,
+  qdiskusage-1.0.2.ebuild:
+  Fix stupid typo
+
+*qdiskusage-1.0.2 (27 May 2010)
+
+  27 May 2010; Markos Chandras <hwoarang@gentoo.org>
+  +qdiskusage-1.0.2.ebuild:
+  Version bump
+
+*qdiskusage-1.0 (26 May 2010)
+
+  26 May 2010; Markos Chandras <hwoarang@gentoo.org> +qdiskusage-1.0.ebuild,
+  +metadata.xml:
+  Initial commit of qdiskusage application. Moved from qting-edge overlay

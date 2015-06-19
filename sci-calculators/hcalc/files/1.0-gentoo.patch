@@ -1,0 +1,57 @@
+diff --git a/Makefile b/Makefile
+index 5386821..eb5db3e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,5 @@
+-CC = gcc
+-CFLAGS = -g -O2 -MMD
++CC ?= gcc
++CFLAGS += -MMD
+ 
+ OBJS = \
+ 	hcalc.o \
+@@ -10,7 +10,7 @@ OBJS = \
+ 	$E
+ 
+ hcalc : $(OBJS)
+-	gcc -o $@ $^ -L/usr/X11R6/lib -lXpm -lX11
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -lXpm -lX11
+ 
+ clean :
+ 	-rm -f *.o *.d *~ \#* hcalc core
+diff --git a/draw.c b/draw.c
+index 5bde83d..c3bdeb2 100644
+--- a/draw.c
++++ b/draw.c
+@@ -3,6 +3,7 @@
+    http://www.delorie.com/store/hcalc/
+ */
+ #include "hcalc.h"
++#include <string.h>
+ 
+ static char shown_offsets[15];
+ static int shown_bitmask;
+diff --git a/input.c b/input.c
+index d7de47c..f1d45f5 100644
+--- a/input.c
++++ b/input.c
+@@ -5,6 +5,7 @@
+ #include "hcalc.h"
+ #include <ctype.h>
+ #include <string.h>
++#include <stdlib.h>
+ 
+ char pending_op = 0;
+ int making_number = 0;
+diff --git a/setupx.c b/setupx.c
+index 238c1e2..74e574b 100644
+--- a/setupx.c
++++ b/setupx.c
+@@ -3,6 +3,7 @@
+    http://www.delorie.com/store/hcalc/
+ */
+ #include "hcalc.h"
++#include <stdlib.h>
+ 
+ Display *display=0;
+ int screen=0;

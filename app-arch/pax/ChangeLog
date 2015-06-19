@@ -1,0 +1,89 @@
+# ChangeLog for app-arch/pax
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/pax/ChangeLog,v 1.27 2014/11/23 17:45:44 remi Exp $
+
+*pax-3.4.12.16-r1 (23 Nov 2014)
+
+  23 Nov 2014; Rémi Cardona <remi@gentoo.org> +pax-3.4.12.16-r1.ebuild,
+  +files/pax-3.4-fix-fts-includes.patch:
+  Add patch to fix 'fts' includes, add needed AC_PROG_MKDIR_P with recent
+  autoconf (see bug #514308).
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> pax-3.4.12.16.ebuild:
+  Stable for ppc64, wrt bug #474828
+
+  01 Jun 2013; Jeroen Roovers <jer@gentoo.org> pax-3.4.12.16.ebuild:
+  Fix building with automake 1.13 (bug 471966 by Jason Mours).
+
+  17 Aug 2012; Michael Palimaka <kensington@gentoo.org> -pax-3.3.4.ebuild:
+  Remove old.
+
+  06 May 2012; Raúl Porcel <armin76@gentoo.org> pax-3.4.12.16.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #404599
+
+  17 Mar 2012; Raúl Porcel <armin76@gentoo.org> pax-3.3.4.ebuild:
+  sparc stable wrt #381977
+
+  03 Mar 2012; Markus Meier <maekke@gentoo.org> pax-3.4.12.16.ebuild:
+  arm stable, bug #404599
+
+  24 Feb 2012; Brent Baude <ranger@gentoo.org> pax-3.4.12.16.ebuild:
+  Marking pax-3.4.12.16 ppc for bug 404599
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> pax-3.4.12.16.ebuild:
+  x86 stable wrt bug #404599
+
+  21 Feb 2012; Jeroen Roovers <jer@gentoo.org> pax-3.4.12.16.ebuild:
+  Stable for HPPA (bug #404599).
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> pax-3.4.12.16.ebuild:
+  Stable for amd64, wrt bug #404599
+
+*pax-3.4.12.16 (10 Dec 2011)
+
+  10 Dec 2011; Mike Frysinger <vapier@gentoo.org> +files/pax-3.4-x32.patch,
+  +pax-3.4.12.16.ebuild:
+  Version bump, and add x32 patch.
+
+  24 Nov 2010; <mattst88@gentoo.org> pax-3.3.4.ebuild:
+  Remove redundant dependency on rpm2targz, bug #345225.
+
+  24 Nov 2010; <mattst88@gentoo.org> metadata.xml:
+  seemant is retired. Assign to maintainer-needed.
+
+  06 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> pax-3.3.4.ebuild:
+  Keyword ~ppc64 wrt #324521 by Andreas Thalhammer.
+
+  12 May 2008; Samuli Suominen <drac@gentoo.org> pax-3.3.4.ebuild:
+  Set empty RDEPEND wrt #220213.
+
+  20 Mar 2007; Raúl Porcel <armin76@gentoo.org> pax-3.3.4.ebuild:
+  x86 stable
+
+  30 Jul 2006; Rene Nussbaumer <killerfox@gentoo.org> pax-3.3.4.ebuild:
+  Stable on ppc.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> pax-3.3.4.ebuild:
+  stable on amd64
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> pax-3.3.4.ebuild:
+  stable on ia64
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> pax-3.3.4.ebuild:
+  Stable on alpha.
+
+  05 Apr 2004; Chris Aniszczyk <zx@gentoo.org> pax-3.3.4.ebuild:
+  Marking stable on hppa
+
+  21 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> pax-3.3.4.ebuild:
+  header fix; inherit eutils for epatch; arm needs deps first
+
+*pax-3.3.4 (03 Dec 2003)
+
+  03 Dec 2003; Seemant Kulleen <seemant@gentoo.org> pax-3.3.4.ebuild:
+  pax is a POSIX standard archive tool. The ebuild was requested by: Matt
+  Thompson <thompsma@colorado.edu>, and created by: Minati jean michel
+  <magnet@suidzer0.org> in bug #26341

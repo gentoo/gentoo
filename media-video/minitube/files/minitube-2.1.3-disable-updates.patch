@@ -1,0 +1,13 @@
+Index: minitube/src/mainwindow.cpp
+===================================================================
+--- minitube.orig/src/mainwindow.cpp
++++ minitube/src/mainwindow.cpp
+@@ -197,8 +197,6 @@ void MainWindow::lazyInit() {
+ 
+     JsFunctions::instance();
+ 
+-    checkForUpdate();
+-
+     ChannelAggregator::instance()->start();
+ }
+ 

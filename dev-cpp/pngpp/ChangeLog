@@ -1,0 +1,13 @@
+# ChangeLog for dev-cpp/pngpp
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/pngpp/ChangeLog,v 1.3 2012/09/15 08:13:05 ssuominen Exp $
+
+  15 Sep 2012; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Remove myself from metadata.xml and leave the package to cpp@ and graphics@
+
+*pngpp-0.2.5 (28 Jan 2012)
+
+  28 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> +pngpp-0.2.5.ebuild:
+  Initial commit; headers required for building internal development tools
+  from media-libs/chromaprint
+

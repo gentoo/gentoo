@@ -1,0 +1,344 @@
+# ChangeLog for dev-libs/Ice
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/Ice/ChangeLog,v 1.37 2015/04/08 17:51:56 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> Ice-3.5.1.ebuild:
+  Drop old Python implementations
+
+  06 Sep 2014; Rick Farina <zerochaos@gentoo.org> Ice-3.5.1.ebuild:
+  since none of the changelogs include reasoning for dropping the stable
+  keywords, I'm going to assume it was an accident and restore them.
+
+  06 Sep 2014; Sergey Popov <pinkbyte@gentoo.org> Ice-3.5.1.ebuild:
+  Make dependency on dev-libs/db more strict, forbid linking to incompatible
+  versions of it, wrt bug #519248. Thanks to Jonathan Vasquez <jvasquez1011 AT
+  gmail.com> for discovering this issue and Stefan Talpalaru <stefantalpalaru
+  AT yahoo.com> for draft of proposed solution
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> Ice-3.5.1.ebuild:
+  Add support for the new PyPy slotting.
+
+  19 Feb 2014; Sergey Popov <pinkbyte@gentoo.org> -Ice-3.4.2.ebuild,
+  -Ice-3.5.0-r1.ebuild:
+  Drop old versions
+
+  19 Feb 2014; Sergey Popov <pinkbyte@gentoo.org> Ice-3.5.1.ebuild:
+  Stable on amd64, wrt bug #492612
+
+  19 Feb 2014; Sergey Popov <pinkbyte@gentoo.org> Ice-3.5.1.ebuild:
+  Respect compiler, skip mono tests cause they are badly broken, bug #498484
+
+  18 Jan 2014; Pacho Ramos <pacho@gentoo.org> Ice-3.5.1.ebuild:
+  Revert as I was hitting bug #498484 but this the stab with the wrong bug
+  number :S
+
+  18 Jan 2014; Pacho Ramos <pacho@gentoo.org> Ice-3.5.1.ebuild:
+  amd64 stable, bug #492612
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> Ice-3.5.1.ebuild:
+  Stable for x86, wrt bug #492612
+
+  26 Nov 2013; Sergey Popov <pinkbyte@gentoo.org> Ice-3.5.1.ebuild:
+  Use Ruby 1.9 for bindings as suggested by upstream, bug #490172
+
+*Ice-3.5.1 (11 Oct 2013)
+
+  11 Oct 2013; Lars Wendler <polynomial-c@gentoo.org> +Ice-3.5.1.ebuild:
+  Version bump.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> Ice-3.5.0-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  30 Jul 2013; Lars Wendler <polynomial-c@gentoo.org> Ice-3.5.0-r1.ebuild:
+  Non-maintainer commit: Don't use pkg_setup() from ruby-ng eclass.
+
+*Ice-3.5.0-r1 (30 Jul 2013)
+
+  30 Jul 2013; Lars Wendler <polynomial-c@gentoo.org> Ice-3.4.2.ebuild,
+  -Ice-3.4.2-r1.ebuild, -Ice-3.5.0.ebuild, +Ice-3.5.0-r1.ebuild:
+  Non-maintainer commit: Converted ebuild to python-r1 eclass. Thanks to mgorny
+  for his expensive work with the conversion. Changed dependencies to not use
+  >=sys-libs/db-6.0 due to upstream not supporting this version because of
+  license issues (bug #476378). Removed old.
+
+  12 Jun 2013; Lars Wendler <polynomial-c@gentoo.org> Ice-3.5.0.ebuild:
+  Fixed installation with "doc" USE flag being enabled. Thanks to Martin von
+  Gagern for reporting this in bug #473106.
+
+*Ice-3.5.0 (05 Jun 2013)
+
+  05 Jun 2013; Lars Wendler <polynomial-c@gentoo.org> +Ice-3.5.0.ebuild:
+  Non-maintainer commit: Version bump.
+
+  10 Dec 2012; Lars Wendler <polynomial-c@gentoo.org> Ice-3.4.2-r1.ebuild:
+  Fixed dependency on openssl.
+
+  10 Dec 2012; Lars Wendler <polynomial-c@gentoo.org> Ice-3.4.2-r1.ebuild:
+  Re-added gcc47 patch to SRC_URI.
+
+*Ice-3.4.2-r1 (10 Dec 2012)
+
+  10 Dec 2012; Christoph Junghans <ottxor@gentoo.org> +Ice-3.4.2-r1.ebuild:
+  added prefix support (bug #385567)
+
+  16 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> Ice-3.4.2.ebuild:
+  Fix building with >=sys-devel/gcc-4.7 wrt #422585
+
+  16 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> Ice-3.4.2.ebuild:
+  Pull in correct SLOT of dev-libs/openssl to ensure headers are installed.
+
+  16 Nov 2012; Lars Wendler <polynomial-c@gentoo.org> -Ice-3.2.0.ebuild,
+  -files/Ice-3.2.0-Makefile.patch, -Ice-3.2.1.ebuild,
+  -files/Ice-3.2.1-Makefile.patch, -files/Ice-3.2.1-gcc43.patch,
+  -Ice-3.3.1.ebuild, -Ice-3.3.1-r1.ebuild, -files/Ice-3.3.1-Makefile.patch,
+  -files/Ice-3.3.1-openssl.patch, -Ice-3.4.1.ebuild:
+  non-maintainer commit: Removed old versions.
+
+  05 Jul 2012; Agostino Sarubbo <ago@gentoo.org> Ice-3.4.2.ebuild:
+  Stable for amd64, wrt bug #418415
+
+  04 Jul 2012; Jeff Horelick <jdhore@gentoo.org> Ice-3.4.2.ebuild:
+  marked x86 per bug 418415
+
+  04 Jun 2012; Ulrich Müller <ulm@gentoo.org> -Ice-3.3.1-r2.ebuild,
+  -files/Ice-3.3.1-cross-compile.patch, -Ice-3.4.0.ebuild,
+  -files/Ice-3.4.0-openssl.patch, -files/Ice-3.4.0-stream1.patch,
+  -files/Ice-3.4.0-stream2.patch:
+  QA: Remove ebuilds that define EAPI more than once, bug 410999.
+
+  14 Apr 2012; Mike Frysinger <vapier@gentoo.org> Ice-3.4.2.ebuild:
+  Add ia64 love #282954 by Dennis Schridde.
+
+  14 Nov 2011; Diego E. Pettenò <flameeyes@gentoo.org> Ice-3.3.1-r1.ebuild,
+  Ice-3.3.1-r2.ebuild, Ice-3.3.1.ebuild, Ice-3.4.0.ebuild, Ice-3.4.1.ebuild,
+  Ice-3.4.2.ebuild:
+  QA: cxx conditional was broken, fix it.
+
+  13 Nov 2011; Mike Frysinger <vapier@gentoo.org> Ice-3.3.1.ebuild,
+  Ice-3.3.1-r1.ebuild, Ice-3.3.1-r2.ebuild, Ice-3.4.0.ebuild, Ice-3.4.1.ebuild,
+  Ice-3.4.2.ebuild:
+  Convert db[-nocxx] to db[cxx].
+
+  24 Sep 2011; Tony Vroon <chainsaw@gentoo.org> Ice-3.4.2.ebuild,
+  +files/Ice-3.4.2-gcc46.patch:
+  Patch by Maciej Piechotka allows building on GCC 4.6; closes bug #362991.
+
+*Ice-3.4.2 (10 Aug 2011)
+
+  10 Aug 2011; Lars Wendler <polynomial-c@gentoo.org>
+  +files/Ice-3.4.1-db5.patch, +Ice-3.4.2.ebuild:
+  non-maintainer commit: Version bump. Added patch to let Ice compile against
+  >=sys-libs/db-5.0 (bug #376263).
+
+  01 Aug 2010; Markos Chandras <hwoarang@gentoo.org> Ice-3.4.1.ebuild:
+  Make libmcpp more flexible. Stable on amd64 wrt bug #328609
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org> Ice-3.4.1.ebuild:
+  stable x86, bug 328609
+
+*Ice-3.4.1 (13 Jun 2010)
+
+  13 Jun 2010; Tiziano Müller <dev-zero@gentoo.org> +Ice-3.4.1.ebuild:
+  Version bump (thanks to Philip Kovacs for the note and Arfrever for the
+  help with the python stuff). Fixes bugs #323495, #323653 and bug #312133.
+
+  10 Jun 2010; Lars Wendler <polynomial-c@gentoo.org> Ice-3.4.0.ebuild:
+  non-maintainer commit: Fixing compilation against sys-libs/db:4.8 (see bug
+  #312869)
+
+*Ice-3.4.0 (09 Jun 2010)
+*Ice-3.3.1-r2 (09 Jun 2010)
+
+  09 Jun 2010; Tiziano Müller <dev-zero@gentoo.org> +Ice-3.3.1-r2.ebuild,
+  +files/Ice-3.3.1-cross-compile.patch, +Ice-3.4.0.ebuild,
+  +files/Ice-3.4.0-openssl.patch, +files/Ice-3.4.0-stream1.patch,
+  +files/Ice-3.4.0-stream2.patch:
+  Added revised ebuilds from my overlay, solving bug #236264 (they contain
+  ruby, python and c# bindings now) and bug #312133. Thanks to b33fc0d3 for
+  the cross-compile patch. Version bump (bug #312869, thanks to Philip
+  Kovacs for the stream-patches and the adapted openssl-patch).
+
+  08 Jun 2010; Tiziano Müller <dev-zero@gentoo.org> +Ice-3.2.0.ebuild,
+  +files/Ice-3.2.0-Makefile.patch, +Ice-3.2.1.ebuild,
+  +files/Ice-3.2.1-Makefile.patch, +files/Ice-3.2.1-gcc43.patch,
+  +Ice-3.3.1.ebuild, +Ice-3.3.1-r1.ebuild, +files/Ice-3.3.1-Makefile.patch,
+  +files/Ice-3.3.1-openssl.patch, +metadata.xml:
+  Moved from dev-cpp to dev-libs.
+
+  04 Jun 2010; Dror Levin <spatz@gentoo.org> Ice-3.3.1-r1.ebuild:
+  Move patches to src_prepare, fixes repoman QA warnings.
+
+*Ice-3.3.1-r1 (04 Jun 2010)
+
+  04 Jun 2010; Dror Levin <spatz@gentoo.org> +Ice-3.3.1-r1.ebuild,
+  +files/Ice-3.3.1-openssl.patch:
+  Add patch for openssl-1.0.0 compatibility, bug 312023. Thanks to Philip
+  Kovacs.
+
+  19 Nov 2009; Christian Faulhammer <fauli@gentoo.org> Ice-3.3.1.ebuild:
+  stable x86, bug 282359
+
+  21 Jun 2009; Caleb Tennis <caleb@gentoo.org> -Ice-3.3.0.ebuild,
+  -Ice-3.3.0-r1.ebuild, -files/Ice-3.3.0-Makefile.patch,
+  -files/Ice-3.3.0-p1.patch, -files/Ice-3.3.0-p3.patch,
+  -files/Ice-3.3.0-p4.patch, -files/Ice-3.3.0-p5.patch,
+  -files/Ice-3.3.0-p6.patch, -files/Ice-3.3.0-p7.patch,
+  -files/Ice-3.3.0-p8.patch:
+  Remove old ebuild version
+
+*Ice-3.3.1 (28 Mar 2009)
+
+  28 Mar 2009; Caleb Tennis <caleb@gentoo.org>
+  +files/Ice-3.3.1-Makefile.patch, +Ice-3.3.1.ebuild:
+  Version bump
+
+  17 Dec 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/Ice-3.2.1-gcc43.patch, Ice-3.2.1.ebuild:
+  Fix bug 227475. Thanks to bonsaikitten, aka DrEevil, aka Evil Compile
+  Person for reporting and Daniel Beßler <daniel@orgizm.net> for the patch.
+
+*Ice-3.3.0-r1 (11 Nov 2008)
+
+  11 Nov 2008; Caleb Tennis <caleb@gentoo.org> +files/Ice-3.3.0-p1.patch,
+  +files/Ice-3.3.0-p3.patch, +files/Ice-3.3.0-p4.patch,
+  +files/Ice-3.3.0-p5.patch, +files/Ice-3.3.0-p6.patch,
+  +files/Ice-3.3.0-p7.patch, +files/Ice-3.3.0-p8.patch,
+  +Ice-3.3.0-r1.ebuild:
+  rev bump with upstream patchsets since 3.3.0 release
+
+  23 Aug 2008; Markus Meier <maekke@gentoo.org> Ice-3.3.0.ebuild:
+  add ~amd64, bug #235186
+
+*Ice-3.3.0 (21 May 2008)
+
+  21 May 2008; Caleb Tennis <caleb@gentoo.org>
+  +files/Ice-3.3.0-Makefile.patch, -files/Ice-3.3.0_beta1-Makefile.patch,
+  -Ice-3.3.0_beta1.ebuild, +Ice-3.3.0.ebuild:
+  version bump
+
+*Ice-3.3.0_beta1 (23 Apr 2008)
+
+  23 Apr 2008; Caleb Tennis <caleb@gentoo.org>
+  +files/Ice-3.3.0_beta1-Makefile.patch, +Ice-3.3.0_beta1.ebuild:
+  Version bump, currently masked
+
+  25 Sep 2007; Christoph Mende <angelos@gentoo.org> Ice-3.2.1.ebuild:
+  Stable on amd64 wrt bug #192139
+
+  25 Sep 2007; Caleb Tennis <caleb@gentoo.org> Ice-3.2.1.ebuild:
+  Fix quoting
+
+  16 Sep 2007; Christian Faulhammer <opfer@gentoo.org> Ice-3.2.1.ebuild:
+  stable x86, bug 192135
+
+*Ice-3.2.1 (15 Aug 2007)
+
+  15 Aug 2007; Caleb Tennis <caleb@gentoo.org>
+  +files/Ice-3.2.1-Makefile.patch, +Ice-3.2.1.ebuild:
+  version bump
+
+  12 Aug 2007; Caleb Tennis <caleb@gentoo.org> Ice-3.2.0.ebuild:
+  Fix ncurses support from bug #175404
+
+  24 Jul 2007; Caleb Tennis <caleb@gentoo.org>
+  -files/Ice-3.1.1-Makefile.patch, -files/ice-makefile-speedup.patch,
+  -Ice-3.1.1.ebuild:
+  remove old version
+
+  15 Jul 2007; Tiziano Müller <dev-zero@gentoo.org> metadata.xml:
+  cpp-herd taking over
+
+  14 Jul 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Assigning dev-cpp/Ice to m-needed, as chriswhite has been retired (#56211).
+
+*Ice-3.2.0 (13 Mar 2007)
+
+  13 Mar 2007; Caleb Tennis <caleb@gentoo.org>
+  +files/Ice-3.2.0-Makefile.patch, -files/Ice-3.2.0_beta1-Makefile.patch,
+  -Ice-3.2.0_beta1.ebuild, +Ice-3.2.0.ebuild:
+  Version bump
+
+*Ice-3.2.0_beta1 (28 Feb 2007)
+
+  28 Feb 2007; Caleb Tennis <caleb@gentoo.org>
+  +files/Ice-3.2.0_beta1-Makefile.patch, +Ice-3.2.0_beta1.ebuild:
+  Bump to new beta version, package masked because it relies on db-4.5
+
+  03 Feb 2007; Steve Dibb <beandog@gentoo.org> Ice-3.1.1.ebuild:
+  Add ~amd64, bug 142045
+
+*Ice-3.1.1 (30 Oct 2006)
+
+  30 Oct 2006; Caleb Tennis <caleb@gentoo.org>
+  +files/Ice-3.1.1-Makefile.patch, +files/ice-makefile-speedup.patch,
+  +metadata.xml, +Ice-3.1.1.ebuild:
+  Move dev-cpp/ice to dev-cpp/Ice
+
+*ice-3.1.1 (16 Oct 2006)
+
+  16 Oct 2006; Caleb Tennis <caleb@gentoo.org>
+  +files/ice-3.1.1-makefile.patch, +ice-3.1.1.ebuild:
+  version bump
+
+  05 Aug 2006; Chris White <chriswhite@gentoo.org> ice-3.1.0-r6.ebuild:
+  Fixed sys-libs/db dep atom for bug #142045.
+
+  03 Aug 2006; Caleb Tennis <caleb@gentoo.org>
+  +files/ice-3.1-patches/ice-makefile-speedup.patch, ice-3.1.0-r6.ebuild:
+  Remove building of test and demos during normal compilation. Speeds things
+  up tremendously
+
+*ice-3.1.0-r6 (31 Jul 2006)
+
+  31 Jul 2006; Caleb Tennis <caleb@gentoo.org>
+  +files/ice-3.1-patches/Gen.cpp, +files/ice-3.1-patches/ice310-3.patch,
+  +files/ice-3.1-patches/patch.icegrid.txt,
+  +files/ice-3.1-patches/patch.icegrid-5.txt,
+  +files/ice-3.1-patches/patch.slice2cpp.txt, +ice-3.1.0-r6.ebuild:
+  This adds the first 6 patches that have been released since Ice 3.1.0 was
+  released. I bumped it to -r6 to signify this
+
+*ice-3.1.0-r1 (14 Jul 2006)
+
+  14 Jul 2006; Caleb Tennis <caleb@gentoo.org>
+  +files/ice-3.1-patches/GCCountMap.h, +files/ice-3.1-patches/GCShared.h,
+  +files/ice-3.1-patches/ObjectF.h, +ice-3.1.0-r1.ebuild:
+  Revbump to include the first patch release
+
+*ice-3.1.0 (13 Jul 2006)
+
+  13 Jul 2006; Caleb Tennis <caleb@gentoo.org>
+  +files/ice-3.1.0-makefile.patch, +ice-3.1.0.ebuild:
+  new version
+
+  01 May 2006; Chris White <chriswhite@gentoo.org> ice-3.0.1.ebuild:
+  Slotted depend for bug #131554.  Thanks to Tiziano Muller for reporting.
+
+  25 Jan 2006; Caleb Tennis <caleb@gentoo.org>
+  +files/ice-3.0.1-makefile.patch, +ice-3.0.1.ebuild:
+  fix makefile patch
+
+*ice-3.0.1 (25 Jan 2006)
+
+  25 Jan 2006; Caleb Tennis <caleb@gentoo.org> +ice-3.0.1.ebuild:
+  version bump
+
+  19 Jan 2006; Alexandre Buisse <nattfodd@gentoo.org> ice-3.0.0-r1.ebuild:
+  Fixed readline->ncurses USE flag move.
+
+  19 Jan 2006; Alexandre Buisse <nattfodd@gentoo.org>
+  files/ice-3.0.0-makefile.patch, ice-3.0.0-r1.ebuild:
+  Changed readline USE in ncurses and added debug, moved the
+  -I/usr/include/db4.3 in the makefile patch.
+
+*ice-3.0.0-r1 (19 Jan 2006)
+
+  19 Jan 2006; Caleb Tennis <caleb@gentoo.org>
+  +files/ice-3.0.0-makefile.patch, +metadata.xml, +ice-3.0.0-r1.ebuild:
+  Moved package from dev-libs/cpp and bumped with new rev
+
+*ice-3.0.0 (18 Jan 2006)
+
+  18 Jan 2006; Chris White <chriswhite@gentoo.org>
+  +files/ice-3.0.0-makefile.patch, +metadata.xml, +ice-3.0.0.ebuild:
+  Initial import into the tree.  Masked because of sys-libs/db depend.

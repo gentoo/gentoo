@@ -1,0 +1,37 @@
+# ChangeLog for dev-perl/Math-Spline
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Math-Spline/ChangeLog,v 1.9 2014/08/22 21:04:32 axs Exp $
+
+*Math-Spline-0.10.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Math-Spline-0.10.0-r1.ebuild, -Math-Spline-0.10.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 May 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #199047
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Math-Spline-0.01.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Math-Spline-0.10.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Math-Spline-0.10.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org> +Math-Spline-0.10.0.ebuild:
+  Change version scheme
+
+  13 May 2009; Kenneth Prugh <ken69267@gentoo.org> Math-Spline-0.01.ebuild:
+  amd64 stable, bug #269590
+
+  13 May 2009; Torsten Veller <tove@gentoo.org> +files/0.01-pod.diff,
+  Math-Spline-0.01.ebuild:
+  Stable on x86 (#269590). Add podhead patch.
+
+  08 Apr 2009; Andrey Kislyuk <weaver@gentoo.org> ChangeLog:
+  New package, dependency of sci-biology/bioperl. Ebuild written by me.

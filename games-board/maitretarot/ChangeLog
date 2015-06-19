@@ -1,0 +1,34 @@
+# ChangeLog for games-board/maitretarot
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/maitretarot/ChangeLog,v 1.10 2015/03/12 10:06:14 ago Exp $
+
+  12 Mar 2015; Agostino Sarubbo <ago@gentoo.org> maitretarot-0.1.98.ebuild:
+  Stable for amd64, wrt bug #542974
+
+  03 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  maitretarot-0.1.98.ebuild:
+  tidy
+
+  11 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  maitretarot-0.1.98.ebuild:
+  EAPI=5
+
+  08 Nov 2010; Markos Chandras <hwoarang@gentoo.org>
+  maitretarot-0.1.98.ebuild:
+  Keyworded for amd64. Bug #344437
+
+  15 Feb 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  maitretarot-0.1.98.ebuild:
+  EAPI=2; fix doc install (bug #305253)
+
+  14 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  maitretarot-0.1.98.ebuild:
+  QA cleanup: Fix quoting.
+
+  08 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*maitretarot-0.1.98 (13 Jul 2003)
+
+  13 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by TGL <degrenier@easyconnect.fr> #13379.

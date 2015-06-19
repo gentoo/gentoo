@@ -1,0 +1,34 @@
+# ChangeLog for dev-python/patsy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/patsy/ChangeLog,v 1.7 2015/04/08 08:05:06 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> patsy-0.2.0.ebuild,
+  patsy-0.2.1.ebuild, patsy-0.3.0.ebuild:
+  Drop old Python implementations
+
+  09 Mar 2015; Pacho Ramos <pacho@gentoo.org> patsy-0.3.0.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> patsy-0.3.0.ebuild:
+  amd64 stable, bug 540290
+
+*patsy-0.3.0 (22 Aug 2014)
+
+  22 Aug 2014; Justin Lecher <jlec@gentoo.org> patsy-0.2.0.ebuild,
+  +patsy-0.3.0.ebuild, metadata.xml:
+  Version Bump
+
+*patsy-0.2.1 (03 Feb 2014)
+
+  03 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org> +patsy-0.2.1.ebuild,
+  metadata.xml:
+  Version bump
+
+  14 Sep 2013; Michał Górny <mgorny@gentoo.org> patsy-0.2.0.ebuild:
+  Call nosetests via the wrapper wrt bug #484410. Approved by gienah.
+
+*patsy-0.2.0 (11 Aug 2013)
+
+  11 Aug 2013; Sébastien Fabbro <bicatali@gentoo.org> +metadata.xml,
+  +patsy-0.2.0.ebuild:
+  Initial import

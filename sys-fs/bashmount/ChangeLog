@@ -1,0 +1,57 @@
+# ChangeLog for sys-fs/bashmount
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/bashmount/ChangeLog,v 1.15 2014/07/09 15:26:28 ssuominen Exp $
+
+  09 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> -bashmount-1.6.2.ebuild:
+  old
+
+  09 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> bashmount-3.2.0.ebuild:
+  amd64/x86 stable
+
+*bashmount-3.2.0 (19 Jun 2014)
+
+  19 Jun 2014; Samuli Suominen <ssuominen@gentoo.org> +bashmount-3.2.0.ebuild:
+  Version bump; UDisks2 compability wrt #439650
+
+  25 Oct 2012; Samuli Suominen <ssuominen@gentoo.org> -bashmount-1.6.0.ebuild:
+  old
+
+  25 Oct 2012; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Push to maintainer-needed@
+
+  20 Jun 2012; Jeff Horelick <jdhore@gentoo.org> bashmount-1.6.2.ebuild:
+  marked x86 per bug 422207
+
+  19 Jun 2012; Agostino Sarubbo <ago@gentoo.org> bashmount-1.6.2.ebuild:
+  Stable for amd64, wrt bug #422207
+
+  27 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> bashmount-1.6.0.ebuild,
+  bashmount-1.6.2.ebuild:
+  Pin to SLOT="0" of sys-fs/udisks.
+
+  20 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> -bashmount-1.5.3.ebuild:
+  old
+
+*bashmount-1.6.2 (20 Feb 2012)
+
+  20 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> +bashmount-1.6.2.ebuild:
+  Version bump.
+
+  20 Feb 2012; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Drop no-herd.
+
+  04 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> bashmount-1.6.0.ebuild:
+  x86 stable wrt bug #395719
+
+  23 Dec 2011; Agostino Sarubbo <ago@gentoo.org> bashmount-1.6.0.ebuild:
+  Stable for AMD64, wrt bug #395719
+
+*bashmount-1.6.0 (24 Nov 2011)
+
+  24 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> +bashmount-1.6.0.ebuild:
+  Version bump.
+
+*bashmount-1.5.3 (05 Nov 2011)
+
+  05 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> +bashmount-1.5.3.ebuild:
+  Initial commit.

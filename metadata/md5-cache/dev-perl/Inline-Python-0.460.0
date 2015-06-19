@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=virtual/perl-Data-Dumper virtual/perl-Digest-MD5 >=dev-perl/Inline-0.46 python_single_target_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),python_single_target_python3_3(+)?,python_single_target_python2_7(+)?] virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Easy implementation of Python extensions
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Inline-Python/
+IUSE=test python_targets_python3_3 python_targets_python2_7 python_single_target_python3_3 python_single_target_python2_7
+KEYWORDS=~amd64 ~sparc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Data-Dumper virtual/perl-Digest-MD5 >=dev-perl/Inline-0.46 python_single_target_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),python_single_target_python3_3(+)?,python_single_target_python2_7(+)?] dev-lang/perl:=[-build(-)]
+REQUIRED_USE=^^ ( python_single_target_python3_3 python_single_target_python2_7 ) python_single_target_python3_3? ( python_targets_python3_3 ) python_single_target_python2_7? ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/N/NI/NINE/Inline-Python-0.46.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	python-single-r1	7a178335dbd6ea7f50ed4e3e1c13c1e4	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=84e374dab3a8b9f429ad39f7c9e806c1

@@ -1,0 +1,95 @@
+# ChangeLog for app-misc/glcdprocdriver
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/glcdprocdriver/ChangeLog,v 1.21 2014/01/17 18:23:28 creffett Exp $
+
+  17 Jan 2014; Chris Reffett <creffett@gentoo.org>
+  -glcdprocdriver-0.0.3-r2.ebuild, -glcdprocdriver-0.0.5.ebuild:
+  Remove old
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> glcdprocdriver-0.0.6.ebuild:
+  Stable for x86, wrt bug #470334
+
+  19 May 2013; Agostino Sarubbo <ago@gentoo.org> glcdprocdriver-0.0.6.ebuild:
+  Stable for amd64, wrt bug #470334
+
+  13 May 2013; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove removed lcd herd from metadata
+
+  09 Apr 2013; Tom Wijsman <TomWij@gentoo.org> glcdprocdriver-0.0.6.ebuild:
+  Added missing glibc dependency.
+
+*glcdprocdriver-0.0.6 (14 Mar 2013)
+
+  14 Mar 2013; Tom Wijsman <TomWij@gentoo.org> +glcdprocdriver-0.0.6.ebuild:
+  Non-maintainer commit, version bump to 0.0.6.
+
+  04 Aug 2012; Agostino Sarubbo <ago@gentoo.org> glcdprocdriver-0.0.5.ebuild:
+  Stable for amd64, wrt bug #425376
+
+  23 Jul 2012; Jeff Horelick <jdhore@gentoo.org> glcdprocdriver-0.0.5.ebuild:
+  marked x86 per bug 425376
+
+  06 May 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  lcd herd is empty
+
+  24 Nov 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #158470
+
+*glcdprocdriver-0.0.5 (30 May 2009)
+
+  30 May 2009; Robert Buchholz <rbu@gentoo.org>
+  +files/glcdprocdriver-gcc44.patch, -glcdprocdriver-0.0.4.ebuild,
+  +glcdprocdriver-0.0.5.ebuild:
+  Version bump including the gcc-4.3 patch, and adding a gcc-4.4 patch.
+  Bug #271619.
+
+  15 Feb 2009; Peter Alfredsen <loki_val@gentoo.org>
+  +files/glcdprocdriver-gcc43.patch, glcdprocdriver-0.0.3-r2.ebuild,
+  glcdprocdriver-0.0.4.ebuild:
+  Add gcc-4.3 patch per bug 254960. Thanks to Gene Seto
+  <geneseto@hotmail.com> for the patch.
+
+  21 Feb 2008; Robin H. Johnson <robbat2@gentoo.org>
+  glcdprocdriver-0.0.4.ebuild:
+  Add ~ppc.
+
+*glcdprocdriver-0.0.4 (17 Apr 2007)
+
+  17 Apr 2007; Robert Buchholz <rbu@gentoo.org> metadata.xml,
+  +glcdprocdriver-0.0.4.ebuild:
+  Version bump
+
+  11 Apr 2007; Peter Weller <welp@gentoo.org>
+  glcdprocdriver-0.0.3-r2.ebuild:
+  Stable on amd64 wrt bug 173271
+
+  08 Apr 2007; Torsten Veller <tove@gentoo.org>
+  files/glcdprocdriver-0.0.3-makefile.patch,
+  -glcdprocdriver-0.0.3-r1.ebuild, glcdprocdriver-0.0.3-r2.ebuild:
+  Stable on x86. Removed old version.
+
+*glcdprocdriver-0.0.3-r2 (07 Apr 2007)
+
+  07 Apr 2007; Robert Buchholz <rbu@gentoo.org>
+  +files/glcdprocdriver-0.0.3-makefile.patch,
+  +glcdprocdriver-0.0.3-r2.ebuild:
+  Fix as-needed issue wrt bug #173271, thanks tove
+
+  07 Apr 2007; Markus Ullmann <jokey@gentoo.org>
+  glcdprocdriver-0.0.3-r1.ebuild:
+  Stable on x86 wrt bug #173271
+
+*glcdprocdriver-0.0.3-r1 (02 Apr 2007)
+
+  02 Apr 2007; Robert Buchholz <rbu@gentoo.org>
+  -glcdprocdriver-0.0.3.ebuild, +glcdprocdriver-0.0.3-r1.ebuild:
+  install libs into /usr/lib64 on amd64 systems
+
+  18 Oct 2006; Markus Ullmann <jokey@gentoo.org> metadata.xml:
+  Metadata update
+
+*glcdprocdriver-0.0.3 (08 Oct 2006)
+
+  08 Oct 2006; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +glcdprocdriver-0.0.3.ebuild:
+  Initial version, ebuild contributed by Lucian Muresan

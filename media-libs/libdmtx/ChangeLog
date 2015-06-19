@@ -1,0 +1,33 @@
+# ChangeLog for media-libs/libdmtx
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdmtx/ChangeLog,v 1.9 2013/04/02 20:56:29 ago Exp $
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libdmtx-0.7.4.ebuild:
+  Stable for ppc64, wrt bug #462890
+
+  07 Feb 2013; Naohiro Aota <naota@gentoo.org> libdmtx-0.7.4.ebuild:
+  Add ~x86-fbsd wrt bug #430072
+
+  19 Aug 2012; Tomáš Chvátal <scarabeus@gentoo.org> libdmtx-0.7.4.ebuild:
+  Stable ppc wrt bug#431904.
+
+  18 May 2012; Joseph Jezak <josejx@gentoo.org> libdmtx-0.7.4.ebuild:
+  Marked ~ppc ~ppc64 for bug #402989.
+
+  18 Apr 2012; Markus Meier <maekke@gentoo.org> libdmtx-0.7.4.ebuild:
+  x86 stable, bug #409403
+
+  04 Apr 2012; Agostino Sarubbo <ago@gentoo.org> libdmtx-0.7.4.ebuild:
+  Stable for amd64, wrt bug #409403
+
+  01 Apr 2012; Tomáš Chvátal <scarabeus@gentoo.org> libdmtx-0.7.4.ebuild:
+  Make static libs optional and punt the la archive.
+
+  31 Mar 2012; Markus Meier <maekke@gentoo.org> libdmtx-0.7.4.ebuild:
+  add ~arm, bug #402989
+
+*libdmtx-0.7.4 (23 Dec 2011)
+
+  23 Dec 2011; Johannes Huber <johu@gentoo.org> +libdmtx-0.7.4.ebuild,
+  +metadata.xml:
+  New package.

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>ercpe@gentoo.org</email>
+    <name>Johann Schmitz (ercpe)</name>
+  </maintainer>
+  <longdescription>A library that generates short, pretty, unambiguous unique IDs by using an extensive, case-sensitive alphabet and omitting similar-looking letters and numbers.</longdescription>
+  <upstream>
+    <remote-id type="pypi">shortuuid</remote-id>
+  </upstream>
+</pkgmetadata>

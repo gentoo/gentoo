@@ -1,0 +1,14 @@
+# Copyright 1999-2015 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/features/selinux/use.mask,v 1.4 2015/06/02 09:15:36 ulm Exp $
+
+# This file masks out USE flags that are simply NOT allowed in the default
+# profile for any architecture.  This works, for example, if a non-default
+# profile (such as the selinux profiles) have a USE flag associated with
+# them.
+
+-hardened
+-selinux
+
+# tcc is x86-only
+tcc

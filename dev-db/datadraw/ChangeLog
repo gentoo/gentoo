@@ -1,0 +1,10 @@
+# ChangeLog for dev-db/datadraw
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/datadraw/ChangeLog,v 1.1 2012/05/25 07:43:23 xmw Exp $
+
+*datadraw-3.1.1 (25 May 2012)
+
+  25 May 2012; Michael Weber <xmw@gentoo.org> +datadraw-3.1.1.ebuild,
+  +metadata.xml:
+  Initial import, needed as dependency of sci-electronics/gnetman
+

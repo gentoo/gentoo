@@ -1,0 +1,267 @@
+# ChangeLog for sci-mathematics/ginac
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/ginac/ChangeLog,v 1.57 2013/06/04 16:13:15 bicatali Exp $
+
+  04 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> ginac-1.6.2.ebuild:
+  Switch to EAPI5, autotools-utils, keywords amd64-linux and x86-linux
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> ginac-1.5.8.ebuild,
+  ginac-1.6.1.ebuild, ginac-1.6.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*ginac-1.6.2 (25 Nov 2011)
+
+  25 Nov 2011; Sébastien Fabbro <bicatali@gentoo.org> -ginac-1.5.5.ebuild,
+  -ginac-1.6.0.ebuild, +ginac-1.6.2.ebuild:
+  Version bump
+
+  05 Oct 2011; Alexis Ballier <aballier@gentoo.org> ginac-1.5.5.ebuild,
+  ginac-1.5.8.ebuild, ginac-1.6.0.ebuild, ginac-1.6.1.ebuild:
+  remove ptex dep as it is going away
+
+*ginac-1.6.1 (26 Jul 2011)
+
+  26 Jul 2011; Sébastien Fabbro <bicatali@gentoo.org> +ginac-1.6.1.ebuild:
+  Version bump
+
+  28 Jun 2011; Brent Baude <ranger@gentoo.org> ginac-1.5.8.ebuild:
+  Marking ginac-1.5.8 ppc for bug 360605
+
+*ginac-1.6.0 (13 Jun 2011)
+
+  13 Jun 2011; Sébastien Fabbro <bicatali@gentoo.org> -ginac-1.5.7.ebuild,
+  -files/ginac-1.5.7-gcc45.patch, +ginac-1.6.0.ebuild:
+  Version bump. Switched to EAPI4. Added static-libs flag
+
+  26 Apr 2011; Markos Chandras <hwoarang@gentoo.org> ginac-1.5.8.ebuild:
+  Stable on amd64 wrt bug #360605
+
+  25 Apr 2011; Raúl Porcel <armin76@gentoo.org> ginac-1.5.5.ebuild,
+  ginac-1.5.7.ebuild, ginac-1.5.8.ebuild:
+  Drop sparc keywords
+
+  17 Apr 2011; Thomas Kahle <tomka@gentoo.org> ginac-1.5.8.ebuild:
+  x86 stable per bug 360605
+
+*ginac-1.5.8 (27 Sep 2010)
+
+  27 Sep 2010; Sébastien Fabbro <bicatali@gentoo.org> -ginac-1.5.6.ebuild,
+  +ginac-1.5.8.ebuild:
+  Bump
+
+  25 May 2010; Kacper Kowalik <xarthisius@gentoo.org> ginac-1.5.7.ebuild,
+  +files/ginac-1.5.7-gcc45.patch:
+  Fix build with GCC-4.5 wrt bug 321411. Thanks Diego for report
+
+*ginac-1.5.7 (09 Apr 2010)
+
+  09 Apr 2010; Sébastien Fabbro <bicatali@gentoo.org> +ginac-1.5.7.ebuild:
+  Version bump
+
+  12 Feb 2010; Andrey Grozin <grozin@gentoo.org> ginac-1.5.6.ebuild:
+  With USE=doc should depend on virtual/texi2dvi
+
+*ginac-1.5.6 (01 Feb 2010)
+
+  01 Feb 2010; Sébastien Fabbro <bicatali@gentoo.org> -ginac-1.5.1.ebuild,
+  -files/ginac-1.5.1-lexer_cpp.patch, -ginac-1.5.3.ebuild,
+  -files/ginac-1.5.3-parser.patch, +ginac-1.5.6.ebuild:
+  Version bump
+
+  31 Jan 2010; Raúl Porcel <armin76@gentoo.org> ginac-1.5.5.ebuild:
+  sparc stable wrt #300557
+
+  24 Jan 2010; Brent Baude <ranger@gentoo.org> ginac-1.5.5.ebuild:
+  stable ppc, bug 300557
+
+  14 Jan 2010; <hwoarang@gentoo.org> ginac-1.5.5.ebuild:
+  Stable on amd64 wrt bug #300557
+
+  13 Jan 2010; Sébastien Fabbro <bicatali@gentoo.org> ginac-1.5.5.ebuild:
+  Added VARTEXFONTS, bug #223077
+
+  12 Jan 2010; Christian Faulhammer <fauli@gentoo.org> ginac-1.5.5.ebuild:
+  stable x86, bug 300557
+
+  26 Dec 2009; Raúl Porcel <armin76@gentoo.org> ginac-1.5.3.ebuild:
+  sparc stable wrt #289106
+
+*ginac-1.5.5 (12 Nov 2009)
+
+  12 Nov 2009; Sébastien Fabbro <bicatali@gentoo.org> -ginac-1.5.4.ebuild,
+  +ginac-1.5.5.ebuild:
+  Version bump
+
+*ginac-1.5.4 (03 Nov 2009)
+
+  03 Nov 2009; Sébastien Fabbro <bicatali@gentoo.org> +ginac-1.5.4.ebuild:
+  Version bump, thanks Sebastian Mingramm for testing
+
+  30 Oct 2009; Sébastien Fabbro <bicatali@gentoo.org> -ginac-1.3.7.ebuild,
+  -ginac-1.4.3.ebuild:
+  Removed old (#240654)
+
+  29 Oct 2009; Markus Meier <maekke@gentoo.org> ginac-1.5.3.ebuild:
+  amd64/x86 stable, bug #289106
+
+  10 Oct 2009; Raúl Porcel <armin76@gentoo.org> ginac-1.5.1.ebuild:
+  sparc stable wrt #271396
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> ginac-1.5.1.ebuild:
+  ppc stable #271396
+
+  05 Sep 2009; Markus Meier <maekke@gentoo.org> ginac-1.5.1.ebuild:
+  amd64 stable, bug #271396
+
+  11 Aug 2009; Christian Faulhammer <fauli@gentoo.org> ginac-1.5.1.ebuild:
+  stable x86, bug 271396
+
+*ginac-1.5.3 (07 Aug 2009)
+
+  07 Aug 2009; Sébastien Fabbro <bicatali@gentoo.org> +ginac-1.5.3.ebuild,
+  +files/ginac-1.5.3-parser.patch:
+  Version bump
+
+  30 May 2009; Ulrich Mueller <ulm@gentoo.org> ginac-1.4.3.ebuild,
+  ginac-1.5.1.ebuild:
+  Remove app-text/tetex from dependencies, bug 227443.
+
+  06 Apr 2009; Sébastien Fabbro <bicatali@gentoo.org> ginac-1.5.1.ebuild:
+  Removed reference pdf doxygen generation, see bug #264774
+
+*ginac-1.5.1 (03 Apr 2009)
+
+  03 Apr 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/ginac-1.4.1-gcc4.3.patch, +files/ginac-1.5.1-lexer_cpp.patch,
+  +files/ginac-1.5.1-pkgconfig.patch, +ginac-1.5.1.ebuild:
+  Version bump
+
+  27 Mar 2009; Ferris McCormick <fmccor@gentoo.org> ginac-1.4.3.ebuild:
+  Sparc stable, dependency for bug #245707.
+
+  24 Oct 2008; Markus Meier <maekke@gentoo.org> ginac-1.4.3.ebuild:
+  amd64/x86 stable, bug #238471
+
+  20 Oct 2008; Sébastien Fabbro <bicatali@gentoo.org> ginac-1.4.3.ebuild:
+  Filtered optimization more than O1 for gcc<4.2; now passes regression
+  tests
+
+  29 Sep 2008; Sébastien Fabbro <bicatali@gentoo.org> -ginac-1.4.1.ebuild,
+  ginac-1.4.3.ebuild:
+  Better doc installation, removed older 1.4.1 version
+
+  21 Jul 2008; Sébastien Fabbro <bicatali@gentoo.org> ginac-1.4.3.ebuild:
+  Added dev-texlive/fontsrecommended as a dependency when doc flag is
+  selected, closing bug #232373, thanks Henry Gebhardt.
+
+  24 May 2008; Markus Dittrich <markusle@gentoo.org> ginac-1.4.3.ebuild:
+  Fixed compile problems with USE="doc" (see bug #223407).
+
+*ginac-1.4.3 (23 May 2008)
+
+  23 May 2008; Sébastien Fabbro <bicatali@gentoo.org> +ginac-1.4.3.ebuild:
+  Version bump
+
+  01 Apr 2008; Markus Dittrich <markusle@gentoo.org>
+  +files/ginac-1.4.1-gcc4.3.patch, ginac-1.4.1.ebuild:
+  Fixed compile issues with gcc-4.3 (see bug #215570). Thanks much to
+  <spasswolf@web.de> for his patch.
+
+*ginac-1.4.1 (11 Jan 2008)
+
+  11 Jan 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/ginac-1.3.3-gcc4.1-gentoo.patch, metadata.xml, -ginac-1.2.3.ebuild,
+  -ginac-1.3.3.ebuild, -ginac-1.3.4.ebuild, +ginac-1.4.1.ebuild:
+  Version bump. Added doc (bug #98776), removed some older versions, added
+  longdescription.
+
+  23 Oct 2007; Peter Weller <welp@gentoo.org> ginac-1.3.7.ebuild:
+  Stable on amd64 wrt bug 174318
+
+  21 Oct 2007; Markus Meier <maekke@gentoo.org> ginac-1.3.7.ebuild:
+  x86 stable, bug #174318
+
+  21 Oct 2007; nixnut <nixnut@gentoo.org> ginac-1.3.7.ebuild:
+  Stable on ppc wrt bug 174318
+
+*ginac-1.3.7 (17 Mar 2007)
+
+  17 Mar 2007; Markus Dittrich <markusle@gentoo.org> +ginac-1.3.7.ebuild:
+  Version bump.
+
+  02 Feb 2007; Steve Dibb <beandog@gentoo.org> ginac-1.3.4.ebuild:
+  Add ~amd64, bug 149844
+
+  30 Sep 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  ginac-1.3.4.ebuild:
+  stable on ppc (needed for Bug #141446)
+
+  07 Sep 2006; Joshua Jackson <tsunam@gentoo.org> ginac-1.3.4.ebuild:
+  Stable x86; bug #141414
+
+*ginac-1.3.4 (12 Jul 2006)
+
+  12 Jul 2006; Markus Dittrich <markusle@gentoo.org> +ginac-1.3.4.ebuild:
+  Version bump.
+
+  15 Mar 2006; Markus Dittrich <markusle@gentoo.org> +ginac-1.3.3.ebuild, +ginac-1.3.3-gcc4.1-gentoo.patch:
+  Version bump. Also added small patch to allow compilation
+  with gcc-4.1. This fixes bug #125184.
+
+  26 Jun 2005; Olivier Fisette <ribosome@gentoo.org> -ginac-1.1.3.ebuild,
+  -ginac-1.1.6.ebuild:
+  Removed obsolete versions.
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> ginac-1.2.3.ebuild:
+  Dependency update: dev-libs/cln -> sci-libs/cln.
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> ginac-1.1.6.ebuild:
+  Dependency update: dev-libs/cln -> sci-libs/cln.
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> ginac-1.1.3.ebuild:
+  Dependency update: dev-libs/cln -> sci-libs/cln.
+
+*ginac-1.1.6 (28 Dec 2004)
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +ginac-1.1.3.ebuild, +ginac-1.1.6.ebuild, +ginac-1.2.3.ebuild:
+  Moved from app-sci/ginac to sci-mathematics/ginac.
+
+  15 Oct 2004; David Holm <dholm@gentoo.org> ginac-1.2.3.ebuild:
+  Added to ~ppc.
+
+  04 Oct 2004; Jason Wever <weeve@gentoo.org> ginac-1.2.3.ebuild:
+  Added ~sparc keyword.
+
+*ginac-1.2.3 (07 Sep 2004)
+
+  07 Sep 2004; Patrick Kursawe <phosphan@gentoo.org> +ginac-1.2.3.ebuild:
+  Version bump
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> ginac-1.1.3.ebuild,
+  ginac-1.1.6.ebuild:
+  Add die following econf for bug 48950
+
+  19 Apr 2004; Patrick Kursawe <phosphan@gentoo.org> ginac-1.0.9.ebuild:
+  Cleanup
+
+*ginac-1.1.6 (03 Mar 2004)
+
+  03 Mar 2004; Peter Bienstman <pbienst@gentoo.org> ginac-1.1.6.ebuild :
+  new version
+
+*ginac-1.1.3 (09 Sep 2003)
+
+  09 Sep 2003; George Shapovalov <george@gentoo.org> ginac-1.1.3.ebuild :
+  new version, (#25577)
+  thanks to stephen mccaul <stephen@uark.edu> for notification
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*ginac-1.0.9 (29 Oct 2002)
+  
+  29 Oct 2002; G.Shapovalov <george@gentoo.org> ginac-1.0.9.ebuild :
+
+  initial release. 
+  "GiNaC is a CAS as well as a C++ library providing algebraic capabilities."
+  ebuild submitted by Pierre-Henri Jondot <Pierre-Henri.Jondot@wanadoo.fr>

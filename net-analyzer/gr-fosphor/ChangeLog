@@ -1,0 +1,26 @@
+# ChangeLog for net-analyzer/gr-fosphor
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/gr-fosphor/ChangeLog,v 1.6 2015/04/08 18:01:22 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> gr-fosphor-9999.ebuild:
+  Drop old Python implementations
+
+  22 Nov 2014; Rick Farina <zerochaos@gentoo.org> gr-fosphor-9999.ebuild:
+  slot dep on boost
+
+  01 Nov 2014; Rick Farina <zerochaos@gentoo.org> gr-fosphor-9999.ebuild:
+  fixing deps and REQUIRED_USE wrt python-r1 and depcheck
+
+  04 May 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  gr-fosphor-9999.ebuild:
+  Drop gr-osmosdr dependency again as it is not strictly needed.
+
+  05 Nov 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  gr-fosphor-9999.ebuild:
+  Add gr-osmosdr to dependencies and enable glfw by default
+
+*gr-fosphor-9999 (05 Nov 2013)
+
+  05 Nov 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +gr-fosphor-9999.ebuild, +metadata.xml:
+  Initial commit.

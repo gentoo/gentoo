@@ -1,0 +1,20 @@
+# ChangeLog for sys-block/blocks
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/blocks/ChangeLog,v 1.3 2015/04/04 11:09:53 pacho Exp $
+
+  04 Apr 2015; Pacho Ramos <pacho@gentoo.org> blocks-0.1.4_pre131210-r1.ebuild,
+  blocks-9999.ebuild:
+  Fix dependencies (#531050 by Ian Delaney), add support for python 3.4
+
+*blocks-0.1.4_pre131210-r1 (18 Dec 2013)
+
+  18 Dec 2013; Justin Lecher <jlec@gentoo.org> -blocks-0.1.4_pre131210.ebuild,
+  +blocks-0.1.4_pre131210-r1.ebuild, blocks-9999.ebuild:
+  fix dependency, #494570; use versioned tarball
+
+*blocks-9999 (10 Dec 2013)
+*blocks-0.1.4_pre131210 (10 Dec 2013)
+
+  10 Dec 2013; Justin Lecher <jlec@gentoo.org> +blocks-0.1.4_pre131210.ebuild,
+  +blocks-9999.ebuild, +metadata.xml:
+  New addition written by me, #492294

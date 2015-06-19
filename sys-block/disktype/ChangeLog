@@ -1,0 +1,70 @@
+# ChangeLog for sys-block/disktype
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/disktype/ChangeLog,v 1.17 2014/08/10 20:21:40 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> disktype-9.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  28 Sep 2011; Tim Harder <radhermit@gentoo.org> -disktype-8.ebuild:
+  Remove old.
+
+  28 Sep 2011; Tim Harder <radhermit@gentoo.org> disktype-9.ebuild:
+  Respect LDFLAGS (bug #334631) and update to EAPI 4.
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #34534
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> disktype-8.ebuild,
+  disktype-9.ebuild:
+  Remove virtual/libc
+
+  11 May 2008; <solar@gentoo.org> disktype-9.ebuild:
+  - keyworded for ~arm and ~sh
+
+  10 Jun 2007; Daniel Black <dragonheart@gentoo.org> disktype-9.ebuild:
+  install man page
+
+  17 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> disktype-9.ebuild:
+  Stable on sparc
+
+  15 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org> disktype-9.ebuild:
+  Keyworded ~sparc
+
+  13 Mar 2007; Raúl Porcel <armin76@gentoo.org> disktype-9.ebuild:
+  x86 stable
+
+  21 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org> disktype-9.ebuild:
+  ppc stable
+
+  12 Sep 2006; Mike Doty <kingtaco@gentoo.org> disktype-9.ebuild:
+  amd64 stable
+
+  28 Jun 2006; Mike Doty <kingtaco@gentoo.org> disktype-9.ebuild:
+  ~amd64
+
+*disktype-9 (07 Jun 2006)
+
+  07 Jun 2006; Daniel Black <dragonheart@gentoo.org> +disktype-9.ebuild:
+  version bump
+
+  08 Jan 2006; Daniel Black <dragonheart@gentoo.org> -disktype-7.ebuild,
+  disktype-8.ebuild:
+  remove old version. Add || die to make on -8 and do not install the license
+
+*disktype-7 (05 Mar 2005)
+
+  05 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +disktype-7.ebuild, +disktype-8.ebuild:
+  Moved from sys-apps/disktype to sys-block/disktype.
+
+*disktype-8 (04 Mar 2005)
+
+  04 Mar 2005; Daniel Black <dragonheart@gentoo.org> disktype-7.ebuild,
+  +disktype-8.ebuild:
+  version bump and ppc stable.
+
+*disktype-7 (19 Dec 2004)
+
+  19 Dec 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  +disktype-7.ebuild:
+  Initial import as per bug #70643. Ebuild by Daniel Evers <dermojo@gmx.net>

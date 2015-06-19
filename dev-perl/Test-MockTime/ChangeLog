@@ -1,0 +1,35 @@
+# ChangeLog for dev-perl/Test-MockTime
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-MockTime/ChangeLog,v 1.7 2015/03/04 21:11:23 monsieurp Exp $
+
+*Test-MockTime-0.130.0 (04 Mar 2015)
+
+  04 Mar 2015; Patrice Clement <monsieurp@gentoo.org>
+  +Test-MockTime-0.130.0.ebuild:
+  Version bump.
+
+*Test-MockTime-0.120.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Test-MockTime-0.120.0-r1.ebuild, -Test-MockTime-0.120.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Test-MockTime-0.12.ebuild:
+  Cleanup
+
+*Test-MockTime-0.120.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +Test-MockTime-0.120.0.ebuild:
+  Change version scheme
+
+  10 Jun 2009; Torsten Veller <tove@gentoo.org> Test-MockTime-0.12.ebuild:
+  Add ~amd64 (#273456)
+
+*Test-MockTime-0.12 (09 Jun 2009)
+
+  09 Jun 2009; Torsten Veller <tove@gentoo.org> +Test-MockTime-0.12.ebuild,
+  +metadata.xml:
+  Initial commit

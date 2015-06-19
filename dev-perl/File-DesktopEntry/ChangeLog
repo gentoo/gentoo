@@ -1,0 +1,150 @@
+# ChangeLog for dev-perl/File-DesktopEntry
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-DesktopEntry/ChangeLog,v 1.37 2015/06/13 22:46:45 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  File-DesktopEntry-0.40.0-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+  04 Apr 2015; Mike Frysinger <vapier@gentoo.org>
+  File-DesktopEntry-0.40.0-r1.ebuild:
+  Mark arm64/m68k stable.
+
+  02 Mar 2015; Yixun Lan <dlan@gentoo.org> File-DesktopEntry-0.40.0-r1.ebuild:
+  add arm64 support, tested on A53 board
+
+*File-DesktopEntry-0.40.0-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +File-DesktopEntry-0.40.0-r1.ebuild, -File-DesktopEntry-0.40.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  06 May 2012; Alexis Ballier <aballier@gentoo.org>
+  File-DesktopEntry-0.40.0.ebuild:
+  keyword ~amd64-fbsd
+
+  18 Mar 2012; Matt Turner <mattst88@gentoo.org>
+  File-DesktopEntry-0.40.0.ebuild:
+  Added ~mips.
+
+  26 Sep 2011; Fabian Groffen <grobian@gentoo.org>
+  File-DesktopEntry-0.40.0.ebuild:
+  Marked ~x86-macos
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -File-DesktopEntry-0.04.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org>
+  File-DesktopEntry-0.40.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*File-DesktopEntry-0.40.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +File-DesktopEntry-0.40.0.ebuild:
+  Change version scheme
+
+  17 Aug 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  File-DesktopEntry-0.04.ebuild:
+  keyword ~sparc-solaris
+
+  05 Aug 2011; Naohiro Aota <naota@gentoo.org> File-DesktopEntry-0.04.ebuild:
+  Add ~x86-fbsd.
+
+  31 Jul 2011; Raúl Porcel <armin76@gentoo.org> File-DesktopEntry-0.04.ebuild:
+  s390/sh stable
+
+  09 Apr 2011; Markus Meier <maekke@gentoo.org> File-DesktopEntry-0.04.ebuild:
+  arm stable, bug #359627
+
+  27 Mar 2011; Tobias Klausmann <klausman@gentoo.org>
+  File-DesktopEntry-0.04.ebuild:
+  Stable on alpha, bug #359627
+
+  03 Mar 2011; Jonathan Callen <abcd@gentoo.org> File-DesktopEntry-0.04.ebuild:
+  Add ~amd64-linux/~x86-linux keywords
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org> File-DesktopEntry-0.04.ebuild:
+  Add ~alpha/~arm/~s390/~sh
+
+  23 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  File-DesktopEntry-0.04.ebuild:
+  ppc64 stable wrt #321147
+
+  14 Jul 2010; Jeroen Roovers <jer@gentoo.org>
+  File-DesktopEntry-0.04.ebuild:
+  Stable for HPPA (bug #321147).
+
+  11 Jun 2010; Torsten Veller <tove@gentoo.org>
+  -File-DesktopEntry-0.02.ebuild:
+  Cleanup
+
+  30 May 2010; Raúl Porcel <armin76@gentoo.org>
+  File-DesktopEntry-0.04.ebuild:
+  ia64/sparc stable wrt #321147
+
+  24 May 2010; <nixnut@gentoo.org> File-DesktopEntry-0.04.ebuild:
+  ppc stable #321147
+
+  23 May 2010; Torsten Veller <tove@gentoo.org>
+  File-DesktopEntry-0.04.ebuild:
+  Stable on amd64 (#321147). EAPI=3. Add test dependencies
+
+  02 Jan 2010; Brent Baude <ranger@gentoo.org>
+  File-DesktopEntry-0.04.ebuild:
+  Marking File-DesktopEntry-0.04 ~ppc64 for bug 294277
+
+  26 Dec 2009; Raúl Porcel <armin76@gentoo.org>
+  File-DesktopEntry-0.04.ebuild:
+  Add ~ia64/~sparc wrt #294277
+
+  04 Dec 2009; Jeroen Roovers <jer@gentoo.org>
+  File-DesktopEntry-0.04.ebuild:
+  Marked ~hppa (bug #294277).
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org>
+  File-DesktopEntry-0.04.ebuild:
+  New virtuals: module-build
+
+  15 Jul 2008; Raúl Porcel <armin76@gentoo.org>
+  File-DesktopEntry-0.04.ebuild:
+  x86 stable
+
+  17 May 2008; Torsten Veller <tove@gentoo.org>
+  File-DesktopEntry-0.04.ebuild:
+  Fix dependencies (#222449) and licence.
+
+*File-DesktopEntry-0.04 (25 Apr 2008)
+
+  25 Apr 2008; Samuli Suominen <drac@gentoo.org>
+  +File-DesktopEntry-0.04.ebuild:
+  Version bump.
+
+  27 Dec 2007; Andrej Kacian <ticho@gentoo.org>
+  File-DesktopEntry-0.02.ebuild:
+  Stable on x86.
+
+  22 Dec 2007; nixnut <nixnut@gentoo.org> File-DesktopEntry-0.02.ebuild:
+  Added ~ppc wrt bug 202638
+
+  09 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  File-DesktopEntry-0.02.ebuild:
+  Marking amd64 stable
+
+  07 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  File-DesktopEntry-0.02.ebuild:
+  Keywording ~amd64
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  File-DesktopEntry-0.02.ebuild:
+  Adding perl dep; fixed DEPEND
+
+*File-DesktopEntry-0.02 (01 May 2006)
+
+  01 May 2006; <mcumming@gentoo.org> +metadata.xml,
+  +File-DesktopEntry-0.02.ebuild:
+  Bug 131128, ebuild submitted by Filip Dudek in support of zim in bug 112957

@@ -1,0 +1,38 @@
+diff -u -r openntpd-5.7p1-orig/ntpctl.8 openntpd-5.7p1/ntpctl.8
+--- openntpd-5.7p1-orig/ntpctl.8	2015-01-09 16:16:37.102087085 -0800
++++ openntpd-5.7p1/ntpctl.8	2015-01-09 16:18:07.162232969 -0800
+@@ -55,8 +55,8 @@
+ system call, is displayed.
+ .El
+ .Sh FILES
+-.Bl -tag -width "/var/run/ntpd.sockXXX" -compact
+-.It Pa /var/run/ntpd.sock
++.Bl -tag -width "/run/ntpd.sockXXX" -compact
++.It Pa /run/ntpd.sock
+ Socket file for communication with
+ .Xr ntpd 8 .
+ .El
+diff -u -r openntpd-5.7p1-orig/ntpd.8 openntpd-5.7p1/ntpd.8
+--- openntpd-5.7p1-orig/ntpd.8	2015-01-09 16:16:37.101087061 -0800
++++ openntpd-5.7p1/ntpd.8	2015-01-09 16:18:17.853487710 -0800
+@@ -134,7 +134,7 @@
+ Default configuration file.
+ .It Pa /var/db/ntpd.drift
+ Drift file.
+-.It Pa /var/run/ntpd.sock
++.It Pa /run/ntpd.sock
+ Socket file for communication with
+ .Xr ntpctl 8 .
+ .El
+diff -u -r openntpd-5.7p1-orig/ntpd.h openntpd-5.7p1/ntpd.h
+--- openntpd-5.7p1-orig/ntpd.h	2015-01-09 16:16:37.102087085 -0800
++++ openntpd-5.7p1/ntpd.h	2015-01-09 16:18:38.837987712 -0800
+@@ -49,7 +49,7 @@
+ #define	LOCALSTATEDIR	"/var"
+ #endif
+ #define	DRIFTFILE	LOCALSTATEDIR "/db/ntpd.drift"
+-#define	CTLSOCKET	LOCALSTATEDIR "/run/ntpd.sock"
++#define	CTLSOCKET	"/run/ntpd.sock"
+ 
+ #if defined(SO_SETFIB)
+ #define	SO_RTABLE	SO_SETFIB

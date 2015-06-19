@@ -1,0 +1,30 @@
+http://www.forum.free-x.de/wbb/index.php?page=Thread&postID=13727#post13727
+
+fix compile problems vdr up 1.7.13
+diff -u orig/rotor-0.1.5/menu.c rotor-0.1.5/menu.c
+--- orig/rotor-0.1.5/menu.c	2009-10-04 14:54:22.000000000 +0300
++++ rotor-0.1.5/menu.c	2010-03-06 22:42:23.000000000 +0200
+@@ -139,7 +139,8 @@
+   RotorPos=RotorPositions.GetfromSource(OldChannel->Source());
+   Position=RotorPos->GetPos();
+   Frequenz=OldChannel->Frequency();
+-  if ((*OldChannel).Polarization() == 'v' || (*OldChannel).Polarization() == 'V')
++  cDvbTransponderParameters dtp((*OldChannel).Parameters());
++  if (dtp.Polarization() == 'v' || dtp.Polarization() == 'V')
+     Pol='V';
+   else
+     Pol='H';
+Общие подкаталоги: orig/rotor-0.1.5/patches и rotor-0.1.5/patches
+Общие подкаталоги: orig/rotor-0.1.5/po и rotor-0.1.5/po
+diff -u orig/rotor-0.1.5/rotor.c rotor-0.1.5/rotor.c
+--- orig/rotor-0.1.5/rotor.c	2009-10-04 15:10:26.000000000 +0300
++++ rotor-0.1.5/rotor.c	2010-03-05 23:07:52.000000000 +0200
+@@ -93,7 +93,7 @@
+   {
+     if ((source->Code() & 0xC000) != 0x8000)
+       continue;
+-    if ((diseqc=Diseqcs.Get(source->Code(),12000,'h')) || (diseqc=Diseqcs.Get(source->Code(),12000,'v')) || (diseqc=Diseqcs.Get(source->Code(),12000,'l')) || (diseqc=Diseqcs.Get(source->Code(),12000,'r'))) 
++    if ((diseqc=Diseqcs.Get(0,source->Code(),12000,'h')) || (diseqc=Diseqcs.Get(0,source->Code(),12000,'v')) || (diseqc=Diseqcs.Get(0,source->Code(),12000,'l')) || (diseqc=Diseqcs.Get(0,source->Code(),12000,'r'))) 
+     {
+       char *c=strdup(diseqc->Commands());
+       while (c = strchr(c, '['))

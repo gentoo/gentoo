@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 x11-libs/libqxt ~x11-libs/qtermwidget-0.6.0[qt4(+)] ) qt5? ( dev-qt/linguist-tools:5 dev-qt/qtcore:5 dev-qt/qtgui:5 ~x11-libs/qtermwidget-0.6.0[qt5(-)] ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Qt-based multitab terminal emulator
+EAPI=5
+HOMEPAGE=https://github.com/qterminal/qterminal
+IUSE=debug qt4 qt5
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2+
+RDEPEND=qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 x11-libs/libqxt ~x11-libs/qtermwidget-0.6.0[qt4(+)] ) qt5? ( dev-qt/linguist-tools:5 dev-qt/qtcore:5 dev-qt/qtgui:5 ~x11-libs/qtermwidget-0.6.0[qt5(-)] )
+REQUIRED_USE=^^ ( qt4 qt5 )
+SLOT=0
+SRC_URI=https://github.com/qterminal/qterminal/releases/download/0.6.0/qterminal-0.6.0.tar.xz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=e5c066de17c14ace5f28137b75623f0f

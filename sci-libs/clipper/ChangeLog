@@ -1,0 +1,105 @@
+# ChangeLog for sci-libs/clipper
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/clipper/ChangeLog,v 1.23 2013/07/10 11:29:49 jlec Exp $
+
+  10 Jul 2013; Justin Lecher <jlec@gentoo.org> -clipper-20100511-r1.ebuild,
+  -files/20100511-makefile.patch,
+  -files/clipper-20100511-outofsourcebuild.patch:
+  Drop old versioned named ebuild
+
+*clipper-2.1_p100511-r1 (28 May 2013)
+
+  28 May 2013; Justin Lecher <jlec@gentoo.org> +clipper-2.1_p100511-r1.ebuild,
+  +files/2.1_p100511-makefile.patch,
+  +files/clipper-2.1_p100511-outofsourcebuild.patch, metadata.xml:
+  Rename for new version schema
+
+  10 Jul 2012; Justin Lecher <jlec@gentoo.org> -clipper-20100511.ebuild:
+  Cleaned old
+
+  10 Jul 2012; Brent Baude <ranger@gentoo.org> clipper-20100511-r1.ebuild:
+  Marking clipper-20100511-r1 ppc for bug 421645
+
+  18 Jun 2012; Agostino Sarubbo <ago@gentoo.org> clipper-20100511-r1.ebuild:
+  Stable for amd64, wrt bug #421645
+
+  17 Jun 2012; Jeff Horelick <jdhore@gentoo.org> clipper-20100511-r1.ebuild:
+  marked x86 per bug 421645
+
+  17 Jun 2012; Justin Lecher <jlec@gentoo.org> clipper-20100511-r1.ebuild,
+  +files/clipper-20100511-outofsourcebuild.patch:
+  Fix out of source build test failure, #421639
+
+  10 Feb 2012; Justin Lecher <jlec@gentoo.org> +files/20100511-makefile.patch,
+  clipper-20100511-r1.ebuild:
+  Drop -g from FLAGS
+
+  03 Feb 2012; Justin Lecher <jlec@gentoo.org> clipper-20100511-r1.ebuild:
+  Moved to autotools-utils.eclass
+
+*clipper-20100511-r1 (26 Jun 2011)
+
+  26 Jun 2011; Justin Lecher <jlec@gentoo.org> clipper-20100511.ebuild,
+  +clipper-20100511-r1.ebuild, metadata.xml:
+  Bumped EAPI
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  clipper-20100511.ebuild:
+  marked ~ppc wrt #303931
+
+  15 Jan 2011; Justin Lecher <jlec@gentoo.org> -clipper-20091215.ebuild,
+  -clipper-20100416.ebuild:
+  Cleaned old
+
+  20 Dec 2010; Markos Chandras <hwoarang@gentoo.org> clipper-20100511.ebuild:
+  Stable on amd64 wrt bug #348872
+
+  18 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  clipper-20100511.ebuild:
+  x86 stable wrt bug #348872
+
+*clipper-20100511 (11 May 2010)
+
+  11 May 2010; Justin Lecher <jlec@gentoo.org> +clipper-20100511.ebuild:
+  Version Bump
+
+*clipper-20100416 (16 Apr 2010)
+
+  16 Apr 2010; Justin Lecher <jlec@gentoo.org>
+  -files/20070528-as-needed.patch, +clipper-20100416.ebuild,
+  -files/20070907-as-needed.patch:
+  Version Bump, removed old patches
+
+  05 Apr 2010; Justin Lecher <jlec@gentoo.org> clipper-20091215.ebuild:
+  Keyworded for ~x86-linux ~amd64-linux, tested by me
+
+  26 Feb 2010; Justin Lecher <jlec@gentoo.org>
+  clipper-20091215.ebuild:
+  Missing sci-libs/mmdb DEP added
+
+*clipper-20091215 (04 Feb 2010)
+
+  04 Feb 2010; Justin Lecher <jlec@gentoo.org>
+  +files/20091215-missing-var.patch, -clipper-20070528.ebuild,
+  -clipper-20070907.ebuild, +clipper-20091215.ebuild:
+  Version Bump, fix for bug 246293 & 250087
+  Removed old versions
+
+*clipper-20070907 (19 Dec 2007)
+
+  19 Dec 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/20070907-as-needed.patch, +clipper-20070907.ebuild:
+  Bump as a dependency of Coot 0.4 prereleases.
+
+  30 May 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  clipper-20070528.ebuild:
+  Move the sed to change the includes to use clipper-2 to after the install,
+  so it compiles properly. Keyword ~ppc.
+
+*clipper-20070528 (29 May 2007)
+
+  29 May 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/20070528-as-needed.patch, +metadata.xml, +clipper-20070528.ebuild:
+  Add a slotted version of clipper. Version 1 is installed with ccp4-6, but we
+  need version 2 for coots 0.2 and newer.
+

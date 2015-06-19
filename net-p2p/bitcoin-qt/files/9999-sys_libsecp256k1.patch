@@ -1,0 +1,80 @@
+diff --git a/configure.ac b/configure.ac
+index 6784521..3598bab 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -634,6 +634,12 @@ AC_ARG_WITH([daemon],
+ 
+ BITCOIN_QT_INIT
+ 
++PKG_CHECK_MODULES([libsecp256k1],[libsecp256k1],,[true])
++AC_ARG_WITH([libsecp256k1-verify],[],[use_libsecp256k1=$withval],[use_libsecp256k1=yes])
++if test "x$use_libsecp256k1" = "xyes"; then
++    AC_DEFINE(USE_SECP256K1,1,[USE_SECP256K1])
++fi
++
+ if test x$use_pkgconfig = xyes; then
+ 
+   if test x"$PKG_CONFIG" = "x"; then
+@@ -869,9 +875,6 @@ PKGCONFIG_LIBDIR_TEMP="$PKG_CONFIG_LIBDIR"
+ unset PKG_CONFIG_LIBDIR
+ PKG_CONFIG_LIBDIR="$PKGCONFIG_LIBDIR_TEMP"
+ 
+-ac_configure_args="${ac_configure_args} --disable-shared --with-pic"
+-AC_CONFIG_SUBDIRS([src/secp256k1])
+-
+ AC_OUTPUT
+ 
+ dnl Taken from https://wiki.debian.org/RpathIssue
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 0d45203..3a44a16 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,4 +1,3 @@
+-DIST_SUBDIRS = secp256k1
+ AM_LDFLAGS = $(PTHREAD_CFLAGS) $(LIBTOOL_LDFLAGS)
+ 
+ 
+@@ -20,7 +19,7 @@ endif
+ BITCOIN_CONFIG_INCLUDES=-I$(builddir)/config
+ BITCOIN_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
+ 
+-BITCOIN_INCLUDES += -I$(srcdir)/secp256k1/include
++BITCOIN_INCLUDES += $(libsecp256k1_CFLAGS)
+ 
+ LIBBITCOIN_SERVER=libbitcoin_server.a
+ LIBBITCOIN_WALLET=libbitcoin_wallet.a
+@@ -30,10 +29,7 @@ LIBBITCOIN_UTIL=libbitcoin_util.a
+ LIBBITCOIN_CRYPTO=crypto/libbitcoin_crypto.a
+ LIBBITCOIN_UNIVALUE=univalue/libbitcoin_univalue.a
+ LIBBITCOINQT=qt/libbitcoinqt.a
+-LIBSECP256K1=secp256k1/libsecp256k1.la
+-
+-$(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
+-	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C $(@D) $(@F)
++LIBSECP256K1=$(libsecp256k1_LIBS)
+ 
+ # Make is not made aware of per-object dependencies to avoid limiting building parallelization
+ # But to build the less dependent modules first, we manually select their order here:
+@@ -364,7 +360,7 @@ libbitcoinconsensus_la_LDFLAGS = -no-undefined $(RELDFLAGS)
+ libbitcoinconsensus_la_LIBADD = $(CRYPTO_LIBS)
+ libbitcoinconsensus_la_CPPFLAGS = $(CRYPTO_CFLAGS) -I$(builddir)/obj -DBUILD_BITCOIN_INTERNAL
+ if USE_LIBSECP256K1
+-libbitcoinconsensus_la_LIBADD += secp256k1/libsecp256k1.la
++libbitcoinconsensus_la_LIBADD += $(LIBSECP256K1)
+ endif
+ endif
+ 
+diff --git a/src/Makefile.test.include b/src/Makefile.test.include
+index 5fd2afe..014092a 100644
+--- a/src/Makefile.test.include
++++ b/src/Makefile.test.include
+@@ -104,9 +104,6 @@ bitcoin_test_check: $(TEST_BINARY) FORCE
+ bitcoin_test_clean : FORCE
+ 	rm -f $(CLEAN_BITCOIN_TEST) $(test_test_bitcoin_OBJECTS) $(TEST_BINARY)
+ 
+-check-local:
+-	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C secp256k1 check
+-
+ %.json.h: %.json
+ 	@$(MKDIR_P) $(@D)
+ 	@echo "namespace json_tests{" > $@

@@ -1,0 +1,19 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -3,4 +3,4 @@
+ cbm_SOURCES = cbm.cpp \
+ 	      ErrnoError.hpp \
+ 	      statistics.cpp statistics.hpp
+-cbm_LDADD = -lncurses widgets/libwidgets.la
++cbm_LDADD = $(ncurses_LIBS) widgets/libwidgets.la
+--- a/configure.ac
++++ b/configure.ac
+@@ -18,6 +18,8 @@
+ 
+ # Checks for libraries.
+ 
++PKG_CHECK_MODULES(ncurses,ncurses)
++
+ # Checks for header files.
+ 
+ # Checks for typedefs, structures, and compiler characteristics.

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>media-tv</herd>
+	<maintainer>
+	  <email>vdr@gentoo.org</email>
+	  <name>Gentoo VDR Project</name>
+	  <description>Please contacts maintainer before you change something.</description>
+	</maintainer>
+	  <longdescription>
+	  VDR Plugin to show videotext on OSD
+	  </longdescription>
+</pkgmetadata>

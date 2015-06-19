@@ -1,0 +1,155 @@
+# ChangeLog for x11-themes/nimbus
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/nimbus/ChangeLog,v 1.3 2015/05/29 09:02:17 haubi Exp $
+
+  29 May 2015; Michael Haubenwallner <haubi@gentoo.org> nimbus-0.1.7-r1.ebuild:
+  kernel_Interix is wrong, use elibc_Interix (bug#544518)
+
+  03 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> -nimbus-0.1.4.ebuild,
+  -nimbus-0.1.7.ebuild:
+  old
+
+  03 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> nimbus-0.1.7-r1.ebuild:
+  amd64/x86 stable
+
+*nimbus-0.1.7-r1 (03 Jun 2012)
+
+  03 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> +nimbus-0.1.7-r1.ebuild:
+  USE="gtk" controls building of the GTK+ 2.x theme engine for renaming
+  gtk-engines-nimbus to "plain" nimbus wrt #357103 by Jesús Guerrero
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  gtk-engines-nimbus-0.1.4.ebuild, gtk-engines-nimbus-0.1.7.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*gtk-engines-nimbus-0.1.7 (12 Nov 2011)
+
+  12 Nov 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +gtk-engines-nimbus-0.1.7.ebuild:
+  Version bump wrt #387529 by José Romildo Malaquias
+
+  06 Apr 2010; Jonathan Callen <abcd@gentoo.org>
+  gtk-engines-nimbus-0.1.4.ebuild:
+  Add prefix keywords, eautoreconf on Interix
+
+  03 Feb 2010; Markus Meier <maekke@gentoo.org>
+  gtk-engines-nimbus-0.1.4.ebuild:
+  amd64/x86 stable, bug #301073
+
+  28 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Relinquish this to maintainer-needed.
+
+*gtk-engines-nimbus-0.1.4 (26 Oct 2009)
+
+  26 Oct 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +gtk-engines-nimbus-0.1.4.ebuild:
+  Version bump.
+
+*gtk-engines-nimbus-0.1.3 (12 Sep 2009)
+
+  12 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +gtk-engines-nimbus-0.1.3.ebuild:
+  Version bump.
+
+  01 Jun 2009; Markus Meier <maekke@gentoo.org>
+  gtk-engines-nimbus-0.1.2.ebuild:
+  amd64/x86 stable, bug #270824
+
+  31 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  gtk-engines-nimbus-0.1.2.ebuild:
+  Fix src_test because of missing file in POTFILES.skip and disable static
+  libs which doesn't make sense for engine.
+
+*gtk-engines-nimbus-0.1.2 (12 Feb 2009)
+
+  12 Feb 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -gtk-engines-nimbus-0.0.17.ebuild, +gtk-engines-nimbus-0.1.2.ebuild:
+  Version bump and remove old version.
+
+  20 Dec 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  gtk-engines-nimbus-0.1.1.ebuild:
+  stable amd64, bug 251517
+
+  18 Dec 2008; <ssuominen@gentoo.org> gtk-engines-nimbus-0.1.1.ebuild:
+  Add pkg_preinst and pkg_postrm phases for gtk-update-icon-cache.
+  Fix test suite and mark it stable for x86.
+
+  15 Oct 2008; Diego Pettenò <flameeyes@gentoo.org>
+  gtk-engines-nimbus-0.1.0.ebuild, gtk-engines-nimbus-0.1.1.ebuild:
+  Don't inherit autotools (and thus depend on them) for 0.1 series.
+
+*gtk-engines-nimbus-0.1.1 (15 Oct 2008)
+
+  15 Oct 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +gtk-engines-nimbus-0.1.1.ebuild:
+  Version bump.
+
+  06 Oct 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  gtk-engines-nimbus-0.0.17.ebuild:
+  stable amd64, bug #239861 --- Tested by Victor
+
+  05 Oct 2008; Diego Pettenò <flameeyes@gentoo.org>
+  gtk-engines-nimbus-0.0.12.ebuild, gtk-engines-nimbus-0.0.17.ebuild,
+  gtk-engines-nimbus-0.1.0.ebuild:
+  Add pkgconfig dependency, thanks Patrick in bug #239649.
+
+*gtk-engines-nimbus-0.1.0 (30 Sep 2008)
+
+  30 Sep 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +gtk-engines-nimbus-0.1.0.ebuild:
+  Version bump, first 0.1 release.
+
+*gtk-engines-nimbus-0.0.17 (29 Aug 2008)
+
+  29 Aug 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -gtk-engines-nimbus-0.0.16.ebuild, +gtk-engines-nimbus-0.0.17.ebuild:
+  Version bump, thanks to Àngel Díaz in bug #235447.
+
+*gtk-engines-nimbus-0.0.16 (06 Jun 2008)
+
+  06 Jun 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +gtk-engines-nimbus-0.0.16.ebuild:
+  Version bump.
+
+  10 Apr 2008; Samuli Suominen <drac@gentoo.org>
+  -gtk-engines-nimbus-0.0.11.ebuild, gtk-engines-nimbus-0.0.12.ebuild:
+  amd64 stable
+
+  16 Mar 2008; Samuli Suominen <drac@gentoo.org>
+  gtk-engines-nimbus-0.0.11.ebuild:
+  amd64 stable
+
+*gtk-engines-nimbus-0.0.12 (12 Mar 2008)
+
+  12 Mar 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +gtk-engines-nimbus-0.0.12.ebuild:
+  Version bump.
+
+*gtk-engines-nimbus-0.0.11 (02 Feb 2008)
+
+  02 Feb 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -files/nimbus-0.0.10-declarations.patch,
+  -gtk-engines-nimbus-0.0.10.ebuild, +gtk-engines-nimbus-0.0.11.ebuild:
+  Version bump, remove old version, and obsoleted patch.
+
+  19 Dec 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +files/nimbus-0.0.10-declarations.patch, gtk-engines-nimbus-0.0.10.ebuild:
+  Add a patch to fix the poor programming practises.
+
+  19 Dec 2007; Vlastimil Babka <caster@gentoo.org>
+  gtk-engines-nimbus-0.0.10.ebuild:
+  Adding ~x86 keyword.
+
+*gtk-engines-nimbus-0.0.10 (24 Nov 2007)
+
+  24 Nov 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -gtk-engines-nimbus-0.0.9.ebuild, +gtk-engines-nimbus-0.0.10.ebuild:
+  Version bump and add missing intltool dependency.
+
+*gtk-engines-nimbus-0.0.9 (20 Oct 2007)
+
+  20 Oct 2007; Diego Pettenò <flameeyes@gentoo.org> +metadata.xml,
+  +gtk-engines-nimbus-0.0.9.ebuild:
+  Initial import of gtk-engines-nimbus, used by Solaris Express. Ebuild partly
+  based on work by Mariusz in bug #186741.
+

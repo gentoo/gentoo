@@ -1,0 +1,42 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/metalog/files/metalog.initd,v 1.5 2011/09/23 03:15:23 vapier Exp $
+
+extra_started_commands="buffer unbuffer"
+
+PIDFILE=/var/run/metalog.pid
+
+depend() {
+	need localmount
+	use clock hostname
+	after bootmisc
+	provide logger
+}
+
+ssd() { start-stop-daemon --exec /usr/sbin/metalog --pidfile "${PIDFILE}" "$@" ; }
+
+start() {
+	ebegin "Starting metalog"
+	ssd --start -- \
+	    --daemonize --pidfile="${PIDFILE}" ${METALOG_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping metalog"
+	ssd --stop
+	eend $?
+}
+
+buffer() {
+	ebegin "Enabling log buffering"
+	ssd --signal USR2
+	eend $?
+}
+
+unbuffer() {
+	ebegin "Disabling log buffering"
+	ssd --signal USR1
+	eend $?
+}

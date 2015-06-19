@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>idl0r@gentoo.org</email>
+		<name>Christian Ruppert</name>
+	</maintainer>
+	<longdescription>maatkit, formerly MySQL Toolkit, is a collection of command-line utilities that
+provide missing functionality for MySQL. Some of the tools implement lacking
+server functionality, such as online consistency checks for master/slave
+replication; others are client-side utilities such as a query profiler.</longdescription>
+	<use>
+		<flag name="udf">Build the MySQL UDFs shipped with maatkit, requires non-minimal MySQL</flag>
+	</use>
+	<upstream>
+		<remote-id type="google-code">maatkit</remote-id>
+	</upstream>
+</pkgmetadata>

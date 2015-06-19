@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>fonts</herd>
+	<maintainer>
+		<email>nirbheek@gentoo.org</email>
+		<name>Nirbheek Chauhan</name>
+	</maintainer>
+	<maintainer>
+		<email>ssuominen@gentoo.org</email>
+		<name>Samuli Suominen</name>
+	</maintainer>
+	<maintainer>
+		<email>zx2c4@gentoo.org</email>
+		<name>Jason A. Donenfeld</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">adobe-fonts/source-code-pro</remote-id>
+	</upstream>
+</pkgmetadata>

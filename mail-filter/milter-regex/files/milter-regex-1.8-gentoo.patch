@@ -1,0 +1,129 @@
+diff -Nru milter-regex-1.8.orig/Makefile.linux milter-regex-1.8/Makefile.linux
+--- milter-regex-1.8.orig/Makefile.linux	2007-01-11 16:49:52.000000000 +0100
++++ milter-regex-1.8/Makefile.linux	2010-09-24 22:33:19.000000000 +0200
+@@ -6,13 +6,12 @@
+ # see milter-regex.init for an init script for RedHat/Fedora
+ # (contributed by admin@2ka.mipt.ru)
+ 
+-CFLAGS=		-g
+-LDFLAGS=	-lmilter -lpthread
++LIBS=	-lmilter -lpthread
+ 
+ all: milter-regex milter-regex.cat8
+ 
+-milter-regex: milter-regex.o eval.o strlcpy.o y.tab.o
+-	gcc -o milter-regex milter-regex.o eval.o strlcpy.o y.tab.o $(LDFLAGS)
++milter-regex: milter-regex.o eval.o strlcpy.o strlcat.o y.tab.o
++	gcc $(LDFLAGS) -o milter-regex milter-regex.o eval.o strlcpy.o strlcat.o y.tab.o $(LIBS)
+ 
+ milter-regex.o: milter-regex.c eval.h
+ 	gcc $(CFLAGS) -c milter-regex.c
+@@ -22,7 +21,10 @@
+ 
+ strlcpy.o: strlcpy.c
+ 	gcc $(CFLAGS) -c strlcpy.c
+-	
++
++strlcat.o: strlcat.c
++	gcc $(CFLAGS) -c strlcat.c
++
+ y.tab.o: y.tab.c
+ 	gcc $(CFLAGS) -c y.tab.c
+ 
+diff -Nru milter-regex-1.8.orig/parse.y milter-regex-1.8/parse.y
+--- milter-regex-1.8.orig/parse.y	2007-01-11 16:49:52.000000000 +0100
++++ milter-regex-1.8/parse.y	2010-09-24 22:33:19.000000000 +0200
+@@ -71,6 +71,7 @@
+ 	} v;
+ 	int lineno;
+ } YYSTYPE;
++#define YYSTYPE_IS_DECLARED 1
+ 
+ %}
+ 
+@@ -481,9 +482,9 @@
+ 		*r = rs;
+ 		return (0);
+ 	}
+-#ifdef __linux__
+-	(void)&yyrcsid; /* warning about yyrcsid declared but unused */
+-#endif
++//#ifdef __linux__
++//	(void)&yyrcsid; /* warning about yyrcsid declared but unused */
++//#endif
+ }
+ 
+ static int
+diff -Nru milter-regex-1.8.orig/strlcat.c milter-regex-1.8/strlcat.c
+--- milter-regex-1.8.orig/strlcat.c	1970-01-01 01:00:00.000000000 +0100
++++ milter-regex-1.8/strlcat.c	2010-09-24 22:34:31.000000000 +0200
+@@ -0,0 +1,69 @@
++/*	$OpenBSD: strlcat.c,v 1.2 1999/06/17 16:28:58 millert Exp $	*/
++
++/*-
++ * Copyright (c) 1998 Todd C. Miller <Todd.Miller@courtesan.com>
++ * All rights reserved.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ * 3. The name of the author may not be used to endorse or promote products
++ *    derived from this software without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
++ * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
++ * AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL
++ * THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
++ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
++ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
++ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
++ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
++ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
++ * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++ */
++
++#include <sys/types.h>
++#include <string.h>
++
++/*
++ * Appends src to string dst of size siz (unlike strncat, siz is the
++ * full size of dst, not space left).  At most siz-1 characters
++ * will be copied.  Always NUL terminates (unless siz <= strlen(dst)).
++ * Returns strlen(src) + MIN(siz, strlen(initial dst)).
++ * If retval >= siz, truncation occurred.
++ */
++size_t
++strlcat(dst, src, siz)
++	char *dst;
++	const char *src;
++	size_t siz;
++{
++	char *d = dst;
++	const char *s = src;
++	size_t n = siz;
++	size_t dlen;
++
++	/* Find the end of dst and adjust bytes left but don't go past end */
++	while (n-- != 0 && *d != '\0')
++		d++;
++	dlen = d - dst;
++	n = siz - dlen;
++
++	if (n == 0)
++		return(dlen + strlen(s));
++	while (*s != '\0') {
++		if (n != 1) {
++			*d++ = *s;
++			n--;
++		}
++		s++;
++	}
++	*d = '\0';
++
++	return(dlen + (s - src));	/* count does not include NUL */
++}

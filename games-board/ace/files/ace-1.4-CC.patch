@@ -1,0 +1,17 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Fri Jan  4 17:19:04 UTC 2013
+Subject: build system
+
+
+--- ace-1.4/lib/Makefile.am
++++ ace-1.4/lib/Makefile.am
+@@ -25,7 +25,7 @@
+ 	./make-imglib -n cards -i $(srcdir)/png -d images.d $(srcdir)/images.in images.c
+ 
+ make-imglib : make-imglib.c
+-	$(BUILD_CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(srcdir)/make-imglib.c -o make-imglib -lpng -lz
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(srcdir)/make-imglib.c -o make-imglib -lpng -lz
+ 
+ text2c : text2c.c
+-	$(BUILD_CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(srcdir)/text2c.c -o text2c -lpng -lz
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(srcdir)/text2c.c -o text2c -lpng -lz

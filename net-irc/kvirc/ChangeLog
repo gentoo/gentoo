@@ -1,0 +1,701 @@
+# ChangeLog for net-irc/kvirc
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/kvirc/ChangeLog,v 1.156 2014/12/31 13:38:03 kensington Exp $
+
+  31 Dec 2014; Michael Palimaka <kensington@gentoo.org>
+  kvirc-4.4_pre6250.ebuild, kvirc-9999.ebuild:
+  Enforce USE dependency for media-libs/phonon.
+
+  17 Oct 2013; Mike Gilbert <floppym@gentoo.org> kvirc-4.4_pre6250.ebuild,
+  kvirc-9999.ebuild:
+  4.4_pre6250: Minor cleanup. Fix build failure with >=sys-kernel/linux-
+  headers-3.9. 9999: Minor cleanup. Patch by Arfrever.
+
+  17 Oct 2013; Mike Gilbert <floppym@gentoo.org> -kvirc-4.2_pre6066.ebuild:
+  Remove per Arfrever.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> kvirc-4.2_pre6066.ebuild,
+  kvirc-4.4_pre6250.ebuild, kvirc-9999.ebuild:
+  Move Qt dependencies to the new category
+
+  26 Dec 2012; Jeff Horelick <jdhore@gentoo.org> kvirc-4.4_pre6250.ebuild:
+  marked x86 per bug 446526
+
+  12 Dec 2012; Agostino Sarubbo <ago@gentoo.org> kvirc-4.4_pre6250.ebuild:
+  stable on amd64, wrt to bug #446526
+
+*kvirc-4.4_pre6250 (26 Sep 2012)
+
+  26 Sep 2012; Mike Gilbert <floppym@gentoo.org> +kvirc-4.4_pre6250.ebuild:
+  Version bump. Ebuild by Arfrever.
+
+  26 Jul 2012; Michael Palimaka <kensington@gentoo.org>
+  kvirc-4.2_pre6066.ebuild, kvirc-9999.ebuild:
+  Add missing slot dependencies on Qt.
+
+  01 Jun 2012; Zac Medico <zmedico@gentoo.org> kvirc-4.2_pre6066.ebuild,
+  kvirc-9999.ebuild:
+  inherit flag-o-matic for append-flags
+
+  26 May 2012; Mike Gilbert <floppym@gentoo.org> kvirc-4.2_pre6066.ebuild,
+  kvirc-9999.ebuild:
+  Sort USE flags. Patch by Arfrever.
+
+  26 May 2012; Mike Gilbert <floppym@gentoo.org> -kvirc-4.2_pre5816.ebuild:
+  Remove old version per Arfrever.
+
+  25 May 2012; Markos Chandras <hwoarang@gentoo.org> kvirc-4.2_pre5816.ebuild,
+  kvirc-4.2_pre6066.ebuild, kvirc-9999.ebuild, metadata.xml:
+  Rename qt-webkit to webkit per bug #415135
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> kvirc-4.2_pre5816.ebuild,
+  kvirc-4.2_pre6066.ebuild, kvirc-9999.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  05 Apr 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  kvirc-4.2_pre6066.ebuild:
+  x86 stable wrt bug #408789
+
+  24 Mar 2012; Agostino Sarubbo <ago@gentoo.org> kvirc-4.2_pre6066.ebuild:
+  Stable for amd64, wrt bug #408789
+
+*kvirc-4.2_pre6066 (11 Feb 2012)
+
+  11 Feb 2012; Mike Gilbert <floppym@gentoo.org> +kvirc-4.2_pre6066.ebuild:
+  Version bump. Ebuild by Arfrever.
+
+  11 Feb 2012; Mike Gilbert <floppym@gentoo.org> kvirc-9999.ebuild:
+  Update ebuild. Patch by Arfrever.
+
+  04 Feb 2012; Markos Chandras <hwoarang@gentoo.org> kvirc-4.2_pre5816.ebuild:
+  Convert to EAPI4 so we can use REQUIRED_USE to force certain useflag
+  combinations. Bug #327231
+
+  18 Sep 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Add Arfrever as proxy maintainer with proxy-maintainers as herd.
+
+  13 Sep 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #246793
+
+  23 Jun 2011; Markos Chandras <hwoarang@gentoo.org> -kvirc-4.2_pre5727.ebuild:
+  Remove old ebuilds. Requested by Arfrever
+
+  19 Jun 2011; Markus Meier <maekke@gentoo.org> kvirc-4.2_pre5816.ebuild:
+  x86 stable, bug #370519
+
+  08 Jun 2011; Markos Chandras <hwoarang@gentoo.org> kvirc-4.2_pre5816.ebuild:
+  Stable on amd64 wrt bug #370519
+
+*kvirc-4.2_pre5816 (03 May 2011)
+
+  03 May 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +kvirc-4.2_pre5816.ebuild:
+  Version bump.
+
+  25 Apr 2011; Markos Chandras <hwoarang@gentoo.org> kvirc-4.2_pre5727.ebuild:
+  Stable on amd64 wrt bug #364371
+
+  21 Apr 2011; Thomas Kahle <tomka@gentoo.org> kvirc-4.2_pre5727.ebuild:
+  x86 stable per bug 360353
+
+*kvirc-4.2_pre5727 (29 Mar 2011)
+
+  29 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +kvirc-4.2_pre5727.ebuild:
+  Version bump.
+
+  26 Mar 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  kvirc-4.2_pre5206.ebuild, kvirc-4.2_pre5484.ebuild,
+  kvirc-4.2_pre5704.ebuild, kvirc-9999.ebuild:
+  Adapt phonon dependency for package move
+
+*kvirc-4.2_pre5704 (25 Mar 2011)
+
+  25 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +kvirc-4.2_pre5704.ebuild:
+  Version bump.
+
+  24 Mar 2011; Christoph Mende <angelos@gentoo.org> kvirc-4.2_pre5484.ebuild:
+  Stable on amd64 wrt bug #360353
+
+*kvirc-4.2_pre5484 (19 Feb 2011)
+
+  19 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -kvirc-4.2_pre5124.ebuild, +kvirc-4.2_pre5484.ebuild:
+  Version bump.
+
+  30 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  kvirc-4.2_pre5206.ebuild:
+  x86 stable wrt bug #352727
+
+  26 Jan 2011; Markos Chandras <hwoarang@gentoo.org> kvirc-4.2_pre5206.ebuild:
+  Stable on amd64 wrt bug #352727
+
+*kvirc-4.2_pre5206 (19 Dec 2010)
+
+  19 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -kvirc-4.2_pre5000.ebuild, +kvirc-4.2_pre5206.ebuild:
+  Version bump.
+
+  12 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  kvirc-4.2_pre5124.ebuild:
+  x86 stable wrt bug #348092
+
+  10 Dec 2010; Markos Chandras <hwoarang@gentoo.org> kvirc-4.2_pre5124.ebuild:
+  Stable on amd64 wrt bug #348092
+
+*kvirc-4.2_pre5124 (01 Nov 2010)
+
+  01 Nov 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -kvirc-4.1_pre4696.ebuild, +kvirc-4.2_pre5124.ebuild:
+  Version bump.
+
+  20 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  kvirc-4.2_pre5000.ebuild:
+  stable x86, bug 341327
+
+  18 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  kvirc-4.2_pre5000.ebuild:
+  Stable on amd64 wrt bug #341327
+
+*kvirc-4.2_pre5000 (13 Sep 2010)
+
+  13 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +kvirc-4.2_pre5000.ebuild:
+  Version bump.
+
+  13 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -kvirc-4.1_pre4624.ebuild, -kvirc-4.1_pre4666.ebuild:
+  Delete.
+
+  10 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  metadata.xml:
+  Restore previous maintainer.
+
+  19 Aug 2010; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Remove arfrever.
+
+  29 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  kvirc-4.1_pre4696.ebuild:
+  Stable on amd64 wrt bug #330111
+
+  28 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  kvirc-4.1_pre4696.ebuild:
+  x86 stable wrt security bug #330111
+
+*kvirc-4.1_pre4696 (27 Jul 2010)
+
+  27 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +kvirc-4.1_pre4696.ebuild:
+  Version bump.
+
+*kvirc-4.1_pre4666 (13 Jul 2010)
+
+  13 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -kvirc-4.0_pre4200.ebuild, -kvirc-4.0_pre4466.ebuild,
+  +kvirc-4.1_pre4666.ebuild:
+  Version bump.
+
+  10 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  kvirc-4.1_pre4624.ebuild:
+  Stable on amd64 wrt bug #326149
+
+  07 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  kvirc-4.1_pre4624.ebuild:
+  x86 stable wrt security bug #326149
+
+*kvirc-4.1_pre4624 (06 Jul 2010)
+
+  06 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +kvirc-4.1_pre4624.ebuild:
+  Version bump.
+
+*kvirc-4.0_pre4466 (15 Jun 2010)
+
+  15 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -kvirc-4.0_pre3636.ebuild, -kvirc-4.0_pre3831.ebuild,
+  -kvirc-4.0_pre3921.ebuild, -kvirc-4.0_pre4000.ebuild,
+  +kvirc-4.0_pre4466.ebuild:
+  Version bump.
+
+  14 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  kvirc-4.0_pre4200.ebuild:
+  x86 stable wrt bug #320261
+
+  25 May 2010; Markos Chandras <hwoarang@gentoo.org>
+  kvirc-4.0_pre4200.ebuild:
+  Stable on amd64 wrt bug #320261
+
+  09 Apr 2010; Markos Chandras <hwoarang@gentoo.org>
+  kvirc-4.0_pre4000.ebuild:
+  Stable on amd64 wrt bug #311351
+
+  25 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  kvirc-4.0_pre3921.ebuild:
+  stable x86, bug 304009
+
+*kvirc-4.0_pre4200 (22 Mar 2010)
+
+  22 Mar 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +kvirc-4.0_pre4200.ebuild:
+  Version bump.
+
+  07 Mar 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  kvirc-4.0_pre3921.ebuild, kvirc-4.0_pre4000.ebuild, kvirc-9999.ebuild:
+  Delete "crypt" USE flag (bug #307345).
+
+*kvirc-4.0_pre4000 (21 Feb 2010)
+
+  21 Feb 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +kvirc-4.0_pre4000.ebuild:
+  Version bump.
+
+*kvirc-4.0_pre3921 (31 Jan 2010)
+
+  31 Jan 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +kvirc-4.0_pre3921.ebuild:
+  Version bump.
+
+*kvirc-4.0_pre3831 (11 Jan 2010)
+
+  11 Jan 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +kvirc-4.0_pre3831.ebuild:
+  Version bump.
+
+  02 Jan 2010; Markos Chandras <hwoarang@gentoo.org>
+  kvirc-4.0_pre3636.ebuild:
+  Stable on amd64 wrt bug #298799
+
+  29 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  kvirc-4.0_pre3636.ebuild:
+  stable x86, bug 298799
+
+*kvirc-4.0_pre3636 (28 Nov 2009)
+
+  28 Nov 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -kvirc-4.0_pre3513.ebuild, +kvirc-4.0_pre3636.ebuild:
+  Version bump.
+
+  23 Nov 2009; Markus Meier <maekke@gentoo.org> kvirc-4.0_pre3566.ebuild:
+  amd64/x86 stable, bug #294074
+
+  30 Oct 2009; Markus Meier <maekke@gentoo.org> kvirc-4.0_pre3513.ebuild:
+  amd64/x86 stable, bug #290281
+
+*kvirc-4.0_pre3566 (23 Oct 2009)
+
+  23 Oct 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -kvirc-4.0_pre3412.ebuild, -kvirc-4.0_pre3437.ebuild,
+  +kvirc-4.0_pre3566.ebuild:
+  Version bump.
+
+  20 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> kvirc-3.4.0.ebuild,
+  kvirc-3.4.2.ebuild:
+  Block ksirc wrt #214198.
+
+  30 Sep 2009; Dominik Kapusta <ayoy@gentoo.org> kvirc-3.4.0.ebuild,
+  kvirc-3.4.2.ebuild:
+  Removed dependency on Qt metapackage
+
+*kvirc-4.0_pre3513 (18 Sep 2009)
+
+  18 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -kvirc-4.0_pre3330.ebuild, +kvirc-4.0_pre3513.ebuild:
+  Version bump.
+
+*kvirc-4.0_pre3437 (30 Aug 2009)
+
+  30 Aug 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -kvirc-4.0_pre3244.ebuild, +kvirc-4.0_pre3437.ebuild:
+  Version bump.
+
+*kvirc-4.0_pre3412 (15 Aug 2009)
+
+  15 Aug 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -kvirc-4.0_pre3154.ebuild, -kvirc-4.0_pre3190.ebuild,
+  +kvirc-4.0_pre3412.ebuild:
+  Version bump.
+
+*kvirc-4.0_pre3330 (11 Jul 2009)
+
+  11 Jul 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +kvirc-4.0_pre3330.ebuild:
+  Version bump.
+
+*kvirc-4.0_pre3244 (12 Jun 2009)
+
+  12 Jun 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +kvirc-4.0_pre3244.ebuild, kvirc-9999.ebuild:
+  Version bump.
+
+  16 May 2009; Mounir Lamouri <volkmar@gentoo.org> metadata.xml:
+  Use global gsm USE flag instead of local one.
+
+  03 May 2009; Markus Meier <maekke@gentoo.org> kvirc-4.0_pre3190.ebuild:
+  add ~x86, bug #263240
+
+*kvirc-4.0_pre3190 (02 May 2009)
+
+  02 May 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +kvirc-4.0_pre3190.ebuild:
+  Version bump.
+
+  12 Apr 2009; Tobias Klausmann <klausman@gentoo.org>
+  kvirc-4.0_pre3154.ebuild:
+  Keyworded on alpha, bug #263240
+
+  04 Apr 2009; Brent Baude <ranger@gentoo.org> kvirc-4.0_pre3154.ebuild:
+  Marking kvirc-4.0_pre3154 ~ppc for bug 263240
+
+  04 Apr 2009; Brent Baude <ranger@gentoo.org> kvirc-4.0_pre3154.ebuild:
+  Marking kvirc-4.0_pre3154 ~ppc64 for bug 263240
+
+  29 Mar 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  kvirc-4.0_pre3154.ebuild, kvirc-9999.ebuild:
+  Adjust dependencies to allow kde-base/kdelibs-9999.
+
+*kvirc-4.0_pre3154 (21 Mar 2009)
+
+  21 Mar 2009; Arfrever Frehtes Taifersar Arahesis <Arfrever@gentoo.org>
+  +kvirc-4.0_pre3154.ebuild:
+  Version bump.
+
+  21 Mar 2009; Arfrever Frehtes Taifersar Arahesis <Arfrever@gentoo.org>
+  metadata.xml, kvirc-9999.ebuild:
+  Add perl and python USE flags. Add optional dependency on media-sound/gsm
+  (bug #253544). Clean ebuild.
+
+*kvirc-3.4.2 (02 Nov 2008)
+
+  02 Nov 2008; Tomas Chvatal <scarabeus@gentoo.org>
+  -kvirc-3.2.6_pre20070714.ebuild, -kvirc-3.2.6_pre20080204.ebuild,
+  +kvirc-3.4.2.ebuild:
+  Version bump. Remove old.
+
+  02 Nov 2008; Tomas Chvatal <scarabeus@gentoo.org> kvirc-9999.ebuild:
+  Update live ebuild so it keeps track with upstram changes.
+
+  26 Oct 2008; Tomas Chvatal (scarabeus) <scarabeus@gentoo.org>
+  kvirc-9999.ebuild:
+  Whitespace and fix minor issues.
+
+  26 Oct 2008; Tomas Chvatal (scarabeus) <scarabeus@gentoo.org>
+  kvirc-9999.ebuild:
+  Update kvirc live ebuild so it works with kde 4.1
+
+  14 Sep 2008; Markus Ullmann <jokey@gentoo.org> metadata.xml,
+  kvirc-9999.ebuild:
+  Enable qt-webkit support as per notification on irc from Arfrever
+
+  05 Sep 2008; Thomas Anderson <gentoofan23@gentoo.org> kvirc-3.4.0.ebuild:
+  stable amd64, bug 236612
+
+  04 Sep 2008; Brent Baude <ranger@gentoo.org> kvirc-3.4.0.ebuild:
+  stable ppc, bug 236612
+
+  04 Sep 2008; Raúl Porcel <armin76@gentoo.org> kvirc-3.4.0.ebuild:
+  sparc stable wrt #236612
+
+  03 Sep 2008; Markus Ullmann <jokey@gentoo.org> kvirc-3.4.0.ebuild:
+  Stable on x86
+
+  03 Sep 2008; Markus Ullmann <jokey@gentoo.org> metadata.xml,
+  kvirc-9999.ebuild:
+  Heavily modified live ebuild, thanks to Arfrever Frehtes Taifersar
+  Arahesis in bug #224919
+
+  22 Mar 2008; Markus Ullmann <jokey@gentoo.org> kvirc-3.4.0.ebuild:
+  Remove a debug stopper, thanks to Arfrever.FTA@GMail.Com in bug #214191
+
+*kvirc-3.4.0 (21 Mar 2008)
+
+  21 Mar 2008; Markus Ullmann <jokey@gentoo.org>
+  +files/kvirc-3.4.0-kdedir-fix.patch, +kvirc-3.4.0.ebuild:
+  Version bump
+
+  06 Feb 2008; Dawid Węgliński <cla@gentoo.org>
+  kvirc-3.2.6_pre20080204.ebuild:
+  Temporarily use ./autogen.sh instead of eautoreconf
+
+*kvirc-3.2.6_pre20080204 (04 Feb 2008)
+
+  04 Feb 2008; Dawid Węgliński <cla@gentoo.org>
+  +kvirc-3.2.6_pre20080204.ebuild:
+  Version bump. Thanks to Ivan Mironov <mironov.ivan@gmail.com> from bug #207359
+
+  19 Jan 2008; Ingmar Vanhassel <ingmar@gentoo.org>
+  kvirc-3.2.6_pre20070714.ebuild, kvirc-9999.ebuild:
+  Fix KDE dependencies wrt bug 206617.
+
+  16 Nov 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog
+  kvirc-9999.ebuild:
+  ipv6 patch merged upstream, fix quoting
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org>
+  -files/kvirc-3.0.1-kdedir-fix.patch, -files/kvirc-3.2.0-gcc4.patch,
+  -files/kvirc-3.2.3-kdedir-fix.patch, +files/kvirc-gendoc.patch,
+  -kvirc-3.2.0.ebuild, -kvirc-3.2.5.ebuild, kvirc-3.2.6_pre20070714.ebuild:
+  Add doc fix wrt bug #126992 thanks to Togge, also cleanup old crap
+
+  01 Aug 2007; Christoph Mende <angelos@gentoo.org>
+  kvirc-3.2.6_pre20070714.ebuild:
+  Stable on amd64 wrt security bug #183174
+
+  27 Jul 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  kvirc-3.2.6_pre20070714.ebuild:
+  ppc stable, bug #183174
+
+  25 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  kvirc-3.2.6_pre20070714.ebuild:
+  Stable on sparc wrt security #183174
+
+  25 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  kvirc-3.2.6_pre20070714.ebuild:
+  stable x86, security bug 183174
+
+  24 Jul 2007; Markus Ullmann <jokey@gentoo.org>
+  -kvirc-3.2.6_pre20070628.ebuild:
+  Kill old stuff
+
+*kvirc-3.2.6_pre20070714 (24 Jul 2007)
+
+  24 Jul 2007; Markus Ullmann <jokey@gentoo.org> +files/kvirc-noipv6.patch,
+  +kvirc-3.2.6_pre20070714.ebuild, kvirc-9999.ebuild:
+  New snapshot + no-ipv6 patch from Bernd Buschinski wrt bug #184709
+
+  24 Jul 2007; Markus Ullmann <jokey@gentoo.org> kvirc-9999.ebuild:
+  Drop keyword for live ebuild
+
+  02 Jul 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  kvirc-3.2.6_pre20070628.ebuild:
+  Reverted stabilisation on amd64. Fails with USE=-ipv6. cf. bug 183174.
+
+  01 Jul 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  kvirc-3.2.6_pre20070628.ebuild:
+  Marked stable on amd64 as per security bug 183174.
+
+*kvirc-3.2.6_pre20070628 (28 Jun 2007)
+
+  28 Jun 2007; Markus Ullmann <jokey@gentoo.org>
+  +kvirc-3.2.6_pre20070628.ebuild:
+  Add svn snapshot with fixed security bug #183174 and fixed
+  crash-on-initial-setup bugs
+
+  01 May 2007; Raúl Porcel <armin76@gentoo.org>
+  files/kvirc-svn-kdedir-fix.patch:
+  Fix the patch for svn again, thanks to Markus Rennings <mren at mrmx dot de>
+  as always
+
+  18 Mar 2007; Raúl Porcel <armin76@gentoo.org>
+  files/kvirc-3.2.3-kdedir-fix.patch, +files/kvirc-svn-kdedir-fix.patch,
+  kvirc-9999.ebuild:
+  Don't overwrite the patch, as it's used by 3.2.5, thanks to mren for noticing
+
+  18 Mar 2007; Raúl Porcel <armin76@gentoo.org>
+  files/kvirc-3.2.3-kdedir-fix.patch:
+  Fix patch for kvirc-9999, thanks to Markus Rennings <mren at mrmx dot de>
+  for the patch and for noticing this
+
+  13 Jan 2007; nixnut <nixnut@gentoo.org> kvirc-3.2.5.ebuild:
+  Stable on ppc wrt bug 155139
+
+  23 Dec 2006; Peter Weller <welp@gentoo.org> kvirc-3.2.5.ebuild:
+  Stable on amd64 wrt bug #155139
+
+  23 Dec 2006; Markus Ullmann <jokey@gentoo.org> kvirc-3.2.0.ebuild,
+  -kvirc-3.2.3.ebuild, -kvirc-3.2.4.ebuild, kvirc-3.2.5.ebuild,
+  kvirc-9999.ebuild:
+  kvirc moved to svn, thanks to ich@kuja.in in bug #158815 and also some
+  cleanup and automake fix
+
+  14 Nov 2006; Andrej Kacian <ticho@gentoo.org> kvirc-3.2.5.ebuild:
+  Stable on x86, bug #155139, by Mike Pagano <mpagano at gmail.com>.
+
+  24 Sep 2006; <jokey@gentoo.org> kvirc-3.2.0.ebuild, kvirc-3.2.3.ebuild,
+  kvirc-3.2.4.ebuild, kvirc-3.2.5.ebuild, kvirc-9999.ebuild:
+  Changing need-auto. tags to WANT_AUTO tags per bug #148719
+
+*kvirc-3.2.5 (18 Sep 2006)
+
+  18 Sep 2006; Markus Ullmann <jokey@gentoo.org>
+  -files/kvirc-3.2.4-kdedir-fix.patch, kvirc-3.2.4.ebuild,
+  +kvirc-3.2.5.ebuild:
+  Version bump to 3.2.5
+
+*kvirc-3.2.4 (29 Jul 2006)
+
+  29 Jul 2006; Stefan Cornelius <dercorny@gentoo.org>
+  +files/kvirc-3.2.4-kdedir-fix.patch, +kvirc-3.2.4.ebuild:
+  Bumping to version 3.2.4
+
+  07 Jun 2006; Markus Ullmann <jokey@gentoo.org> kvirc-9999.ebuild:
+  Improved CVS live ebuild
+
+  06 Jun 2006; Markus Ullmann <jokey@gentoo.org> kvirc-9999.ebuild:
+  Removing senseless RESTRICTS
+
+*kvirc-3.2.3 (03 Jun 2006)
+
+  03 Jun 2006; Stefan Cornelius <dercorny@gentoo.org>
+  +files/kvirc-3.2.3-kdedir-fix.patch, +kvirc-3.2.3.ebuild:
+  Adding new upstream development snapshot
+
+*kvirc-9999 (23 Apr 2006)
+
+  23 Apr 2006; Markus Ullmann <jokey@gentoo.org> +kvirc-9999.ebuild:
+  Adding cvs ebuild
+
+  09 Feb 2006; Mark Loeser <halcy0n@gentoo.org> kvirc-3.2.0.ebuild:
+  Add some extra quoting
+
+  09 Feb 2006; Mark Loeser <halcy0n@gentoo.org>
+  +files/kvirc-3.2.0-gcc4.patch, kvirc-3.2.0.ebuild:
+  Add patch to fix compilation with gcc-4 by Robert Förster <ich AT kuja DOT
+  in>; bug #114485
+
+  31 Dec 2005; Joshua Kinard <kumba@gentoo.org> kvirc-3.2.0.ebuild:
+  Marked unstable on mips.
+
+  01 Dec 2005; Jason Wever <weeve@gentoo.org> kvirc-3.2.0.ebuild:
+  Stable on SPARC.
+
+  07 Jul 2005; Caleb Tennis <caleb@gentoo.org> kvirc-3.2.0.ebuild:
+  Fix qt dep
+
+  07 Jun 2005; Sven Wegener <swegener@gentoo.org> -kvirc-3.0.1-r1.ebuild:
+  Removed old ebuild.
+
+  22 May 2005; Tobias Scherbaum <dertobi123@gentoo.org> kvirc-3.2.0.ebuild:
+  Stable on ppc.
+
+  16 May 2005; Marcus D. Hanwell <cryos@gentoo.org> kvirc-3.2.0.ebuild:
+  Stable on amd64 and x86.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> kvirc-3.0.1-r1.ebuild:
+  Stable on ppc.
+
+  07 Mar 2005; Sven Wegener <swegener@gentoo.org> kvirc-3.0.1-r1.ebuild,
+  kvirc-3.2.0.ebuild:
+  Include patch by Szymon Stefanek <devnull@omnikron.net> from bug #84281 that
+  fixes kvirc to not link against the already installed libkvilib from
+  previous versions.
+
+*kvirc-3.2.0 (04 Mar 2005)
+
+  04 Mar 2005; Sven Wegener <swegener@gentoo.org> kvirc-3.0.1-r1.ebuild,
+  +kvirc-3.2.0.ebuild:
+  Version bump, bug #83559.
+
+  24 Feb 2005; Gregorio Guidi <greg_g@gentoo.org> kvirc-3.0.1-r1.ebuild,
+  -kvirc-3.0.1.ebuild:
+  Stable on x86.
+
+*kvirc-3.0.1-r1 (29 Jan 2005)
+
+  29 Jan 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +files/kvirc-3.0.1-kdedir-fix.patch, +kvirc-3.0.1-r1.ebuild:
+  Proper use of kde eclasses, and added patch to make sure kvirc does not
+  install anything in /usr/kde*.
+
+  29 Aug 2004; Sven Wegener <swegener@gentoo.org> -kvirc-3.0.0.ebuild,
+  -kvirc-3.0.0_beta2-r1.ebuild:
+  Removed old ebuilds.
+
+  24 Aug 2004; Heinrich Wendel <lanius@gentoo.org> kvirc-3.0.1.ebuild:
+  mark stable on x86
+
+  08 Jul 2004; Sven Wegener <swegener@gentoo.org> kvirc-3.0.0_beta2-r1.ebuild:
+  Sync'ed IUSE to the flags used by the ebuild.
+
+*kvirc-3.0.1 (09 Jun 2004)
+
+  09 Jun 2004; Carsten Lohrke <carlo@gentoo.org> kvirc-3.0.0.ebuild,
+  kvirc-3.0.1.ebuild:
+  version bump, added ~sparc keyword
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> kvirc-3.0.0.ebuild:
+  Masked kvirc-3.0.0.ebuild testing for ppc
+
+  21 Apr 2004; Bryan Stine <battousai@gentoo.org>; kvirc-3.0.0.ebuild:
+  Version bump to 3.0.0 release. This has a cleaned up ebuild and better
+  dependencies. This fixes bug #48255. Thanks to Alessandro Rossini
+  <aronnax@openlug.org> and Daniel Black <dragonheart@gentoo.org>.
+
+  03 Jan 2004; Caleb Tennis <caleb@gentoo.org> kvirc-3.0.0_beta1-r1.ebuild,
+  kvirc-3.0.0_beta2-r1.ebuild:
+  Change dep to get away from need-qt syntax
+  Mark x86 stable (though the ebuild is really old)
+
+  05 Dec 2003; Chuck Short <zul@gentoo.org> kvirc-3.0.0_beta1-r1.ebuild,
+  kvirc-3.0.0_beta2-r1.ebuild:
+  Added ~amd64 to keywords, closes bug #34986.
+
+*kvirc-3.0.0_beta2-r1 (22 May 2003)
+
+  22 May 2003; Paul de Vrieze <pauldv@gentoo.org> kvirc-3.0.0_beta1-r1.ebuild,
+  kvirc-3.0.0_beta2-r1.ebuild:
+  Disable the use of assembly, as it appears to be instable.
+
+  30 Apr 2003; Caleb Tennis <caleb@gentoo.org> kvirc-3.0.0_beta2.ebuild :
+  
+  Minor change to ivp6 config in ebuild to allow it to work properly for
+  users wanting ipv6 - by Simon Koch (skock@palisadescomputing.net).
+  Fixes bug #15954.
+
+*kvirc-3.0.0_beta2 (10 Jan 2003)
+
+  10 Jan 2003; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  A new version. KDE support and ssl support now work properly. This should
+  be a lot better than beta1, and more stable than the cvs snapshot.
+
+  26 Dec 2002; Dan Armak <danarmak@gentoo.org> kvirc-3.0.0_pre20021217.ebuild  :
+
+  Some fixes.
+
+*kvirc-3.0.0_beta1-r1 (22 May 2003)
+ 
+  13 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*kvirc-3.0.0_pre20021217 (19 Dec 2002)
+
+  26 Jan 2003; Jon Nall <nall@gentoo.org> kvirc-3.0.0_pre20021217.ebuild :
+  added ~ppc
+
+  19 Dec 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  A cvs snapshot, maksed for now. I hope it will fix bug #7131.
+
+  28 Jul 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  Use correct slots.
+
+*kvirc-3.0.0_beta1 (01 Jul 2002)
+
+  01 Jul 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  This is the 3.0.0 beta1 release. It compiles under gcc 3.x (fix bug #4127),
+  adds working kde support which can be turned on and off, antialiasing and
+  many other goodies.
+  
+  Note: the ebuild with version number 3.0.0 which existed for a long time
+  was actually the 'xmas' release, a prerelease of 3.0.0 which should have
+  been marked e.g. 3.0.0_alpha1. As it is, portage will not automatically
+  update an already-installed 'xmas' kvirc to beta1, but you are encouraged
+  to do so.
+
+*kvirc-3.0.0 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.
+
+*kvirc-2.1.1-r1 (13 Feb 2003)
+ 
+  13 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.

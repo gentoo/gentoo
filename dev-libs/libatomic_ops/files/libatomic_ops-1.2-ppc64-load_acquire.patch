@@ -1,0 +1,46 @@
+--- src/atomic_ops/sysdeps/gcc/powerpc.h.orig	2006-03-28 22:49:14.000000000 +0000
++++ src/atomic_ops/sysdeps/gcc/powerpc.h	2007-06-08 23:10:07.000000000 +0000
+@@ -63,6 +63,8 @@
+ /* seems to be that a data dependent branch followed by an isync is 	*/
+ /* cheaper.  And the documentation is fairly explicit that this also 	*/
+ /* has acquire semantics.						*/
++/* ppc64 uses ld not lwz */
++#if defined(__powerpc64__) || defined(__ppc64__) || defined(__64BIT__)
+ AO_INLINE AO_t
+ AO_load_acquire(volatile AO_t *addr)
+ {
+@@ -72,7 +74,7 @@
+   /* registers.  I always got "impossible constraint" when I	*/
+   /* tried the "y" constraint.					*/
+   __asm__ __volatile__ (
+-    "lwz %0,%1\n"
++    "ld %0,%1\n"
+     "cmpw cr7,%0,%0\n"
+     "bne- cr7,1f\n"
+     "1: isync\n"
+@@ -80,7 +82,25 @@
+     : "m"(*addr) : "memory", "cc");
+   return result;
+ }
++#else
++AO_INLINE AO_t
++AO_load_acquire(volatile AO_t *addr)
++{
++  AO_t result;
+ 
++  /* FIXME: We should get gcc to allocate one of the condition	*/
++  /* registers.  I always got "impossible constraint" when I	*/
++  /* tried the "y" constraint.					*/
++  __asm__ __volatile__ (
++    "lwz %0,%1\n"
++    "cmpw cr7,%0,%0\n"
++    "bne- cr7,1f\n"
++    "1: isync\n"
++    : "=r" (result)
++    : "m"(*addr) : "memory", "cc");
++  return result;
++}
++#endif
+ #define AO_HAVE_load_acquire
+ 
+ /* We explicitly specify store_release, since it relies 	*/

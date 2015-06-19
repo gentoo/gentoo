@@ -1,0 +1,184 @@
+# ChangeLog for net-analyzer/nfdump
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nfdump/ChangeLog,v 1.42 2014/12/04 10:15:19 jer Exp $
+
+  04 Dec 2014; Jeroen Roovers <jer@gentoo.org> nfdump-1.6.13.ebuild:
+  Remove redundant minilzo and failing and redundant sed scripts.
+
+*nfdump-1.6.13 (04 Dec 2014)
+
+  04 Dec 2014; Jeroen Roovers <jer@gentoo.org> +nfdump-1.6.13.ebuild,
+  +files/nfdump-1.6.13-libft.patch:
+  Version bump.
+
+  05 Jul 2014; Jeroen Roovers <jer@gentoo.org> -nfdump-1.6.9.ebuild,
+  -nfdump-1.6.10_p1.ebuild:
+  Old.
+
+  05 Jul 2014; Agostino Sarubbo <ago@gentoo.org> nfdump-1.6.12.ebuild:
+  Stable for x86, wrt bug #515278
+
+  04 Jul 2014; Agostino Sarubbo <ago@gentoo.org> nfdump-1.6.12.ebuild:
+  Stable for amd64, wrt bug #515278
+
+  27 Jun 2014; Jeroen Roovers <jer@gentoo.org> nfdump-1.6.12.ebuild,
+  +files/nfdump-1.6.12-test-dep.patch:
+  Replace src_test() workaround with a proper test dependency.
+
+*nfdump-1.6.12 (27 Jun 2014)
+
+  27 Jun 2014; Jeroen Roovers <jer@gentoo.org> +nfdump-1.6.12.ebuild:
+  Version bump. Replace shipped minilzo (bug #515278). Work around parallel
+  make issue in src_test().
+
+*nfdump-1.6.10_p1 (14 Aug 2013)
+
+  14 Aug 2013; Jeroen Roovers <jer@gentoo.org> -nfdump-1.6.5.ebuild,
+  -nfdump-1.6.6.ebuild, -nfdump-1.6.8.ebuild, +nfdump-1.6.10_p1.ebuild:
+  Version bump (bug #481022 by Alexandr Tiurin).
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> nfdump-1.6.9.ebuild:
+  Stable for amd64, wrt bug #470536
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> nfdump-1.6.9.ebuild:
+  Stable for x86, wrt bug #470536
+
+*nfdump-1.6.9 (07 Mar 2013)
+
+  07 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> +nfdump-1.6.9.ebuild,
+  metadata.xml:
+  Version bump, bring back USE='readpcap'
+
+  05 Nov 2012; Jeroen Roovers <jer@gentoo.org> nfdump-1.6.8.ebuild:
+  USE=nftrack requires net-analyzer/rrdtool.
+
+  31 Oct 2012; Agostino Sarubbo <ago@gentoo.org> nfdump-1.6.6.ebuild:
+  Stable for amd64, wrt bug #440090
+
+  31 Oct 2012; Agostino Sarubbo <ago@gentoo.org> nfdump-1.6.6.ebuild:
+  Stable for x86, wrt bug #440090
+
+  29 Oct 2012; Jeroen Roovers <jer@gentoo.org> +nfdump-1.6.8.ebuild,
+  metadata.xml:
+  Version bump. Add IUSE=nftrack by Vadim Kuznetsov (bug #406637).
+
+*nfdump-1.6.8 (29 Oct 2012)
+
+  29 Oct 2012; Jeroen Roovers <jer@gentoo.org> +nfdump-1.6.8.ebuild:
+  Version bump.
+
+  04 Jun 2012; Jeroen Roovers <jer@gentoo.org> nfdump-1.6.6.ebuild:
+  Add virtual/yacc dependency.
+
+  06 Apr 2012; Jeroen Roovers <jer@gentoo.org> -nfdump-1.6.1-r2.ebuild:
+  Old.
+
+  05 Apr 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> nfdump-1.6.5.ebuild:
+  x86 stable wrt bug #410021
+
+  29 Mar 2012; Agostino Sarubbo <ago@gentoo.org> nfdump-1.6.5.ebuild:
+  Stable for amd64, wrt bug #410021
+
+*nfdump-1.6.6 (28 Mar 2012)
+
+  28 Mar 2012; Jeroen Roovers <jer@gentoo.org> +nfdump-1.6.6.ebuild:
+  Version bump.
+
+  21 Feb 2012; Jeroen Roovers <jer@gentoo.org> -nfdump-1.6.2.ebuild,
+  -nfdump-1.6.3_p1.ebuild:
+  Old.
+
+  21 Feb 2012; Jeroen Roovers <jer@gentoo.org> nfdump-1.6.5.ebuild:
+  Remove testing cruft.
+
+*nfdump-1.6.5 (21 Feb 2012)
+
+  21 Feb 2012; Jeroen Roovers <jer@gentoo.org> +nfdump-1.6.5.ebuild:
+  Version bump. Fix building against net-analyzer/flow-tools[-static-libs] (bug
+  #405157).
+
+*nfdump-1.6.3_p1 (06 Jun 2011)
+
+  06 Jun 2011; Jeroen Roovers <jer@gentoo.org> +nfdump-1.6.3_p1.ebuild:
+  Version bump.
+
+*nfdump-1.6.2 (19 Apr 2011)
+
+  19 Apr 2011; Jeroen Roovers <jer@gentoo.org> +nfdump-1.6.2.ebuild:
+  Version bump thanks to euscan.
+
+  08 Sep 2010; Markos Chandras <hwoarang@gentoo.org> nfdump-1.6.1-r2.ebuild:
+  Stable on amd64 wrt bug #334479
+
+  27 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  nfdump-1.6.1-r2.ebuild:
+  stable x86, bug 334479
+
+*nfdump-1.6.1-r2 (25 Aug 2010)
+
+  25 Aug 2010; Jeroen Roovers <jer@gentoo.org> -nfdump-1.6.1-r1.ebuild,
+  +nfdump-1.6.1-r2.ebuild:
+  Fix configure option by Alexander Zubkov (bug #334233).
+
+*nfdump-1.6.1-r1 (12 Jul 2010)
+
+  12 Jul 2010; Jeroen Roovers <jer@gentoo.org> +nfdump-1.6.1-r1.ebuild,
+  metadata.xml:
+  Add more USE flags for configure options. Respect CFLAGS.
+
+  26 Jun 2010; Christoph Mende <angelos@gentoo.org> nfdump-1.6.1.ebuild:
+  Stable on amd64 wrt bug #323567
+
+  25 Jun 2010; Peter Volkov <pva@gentoo.org> nfdump-1.6.1.ebuild:
+  Work around ./configure failure, bug #325397, thank Pacho Ramos for
+  report.
+
+  18 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> nfdump-1.6.1.ebuild:
+  x86 stable wrt bug #323567
+
+  31 May 2010; Jeroen Roovers <jer@gentoo.org> nfdump-1.6.1.ebuild:
+  When USE=ftconv, after we run eautoreconf, we need to define the switches
+  differently (bug #322201).
+
+*nfdump-1.6.1 (06 May 2010)
+
+  06 May 2010; Peter Volkov <pva@gentoo.org> +nfdump-1.6.1.ebuild:
+  Version bump. Added missed USE flags, bug #279455, thank Ronny Boesger and
+  Alexander Zubkov for report/job.
+
+  09 Jul 2009; Peter Volkov <pva@gentoo.org>
+  files/nfdump-1.5.8-parallel.patch:
+  Updated parallel build failure patch so finally it really fixed, bug
+  #270072 thank Kevin Pyle for this work.
+
+*nfdump-1.5.8 (11 May 2009)
+
+  11 May 2009; Peter Volkov <pva@gentoo.org> +nfdump-1.5.8.ebuild,
+  +files/nfdump-1.5.8-parallel.patch:
+  Version bump. Fixed parallel build issue, bug #240746, thank Diego E.
+  'Flameeyes' Pettenò for report.
+
+*nfdump-1.5.7 (01 Nov 2008)
+
+  01 Nov 2008; Robin H. Johnson <robbat2@gentoo.org> +nfdump-1.5.7.ebuild:
+  Version bump.
+
+  29 Oct 2008; Diego Pettenò <flameeyes@gentoo.org> nfdump-1.5.1.ebuild:
+  Force -j1 during install, see bug #240746.
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org> -nfdump-1.5.ebuild:
+  Cleanup
+
+*nfdump-1.5.1 (22 Mar 2007)
+
+  22 Mar 2007; Marcelo Goes <vanquirius@gentoo.org> +nfdump-1.5.1.ebuild:
+  1.5.1 version bump.
+
+  19 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+*nfdump-1.5 (27 Mar 2006)
+
+  27 Mar 2006; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +nfdump-1.5.ebuild:
+  Initial import wrt bug #123710

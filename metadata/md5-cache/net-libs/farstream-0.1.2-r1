@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare setup test
+DEPEND=>=media-libs/gstreamer-0.10.33:0.10 >=media-libs/gst-plugins-base-0.10.33:0.10 >=dev-libs/glib-2.30:2 >=net-libs/libnice-0.1.0 introspection? ( >=dev-libs/gobject-introspection-0.10.11 ) python? ( >=dev-python/pygobject-2.16:2 >=dev-python/gst-python-0.10.10:0.10 ) upnp? ( net-libs/gupnp-igd ) dev-util/gtk-doc-am virtual/pkgconfig test? ( media-libs/gst-plugins-good:0.10 media-plugins/gst-plugins-vorbis:0.10 ) =dev-lang/python-2*
+DESCRIPTION=Audio/video conferencing framework specifically designed for instant messengers
+EAPI=4
+HOMEPAGE=http://www.freedesktop.org/wiki/Software/Farstream
+IUSE=+introspection python msn test upnp
+KEYWORDS=alpha ia64 sparc
+LICENSE=LGPL-2.1+
+RDEPEND=>=media-libs/gstreamer-0.10.33:0.10 >=media-libs/gst-plugins-base-0.10.33:0.10 >=dev-libs/glib-2.30:2 >=net-libs/libnice-0.1.0 introspection? ( >=dev-libs/gobject-introspection-0.10.11 ) python? ( >=dev-python/pygobject-2.16:2 >=dev-python/gst-python-0.10.10:0.10 ) upnp? ( net-libs/gupnp-igd ) >=media-libs/gst-plugins-good-0.10.17:0.10 >=media-libs/gst-plugins-bad-0.10.17:0.10 || ( >=media-plugins/gst-plugins-libnice-0.1.0:0.10 <=net-libs/libnice-0.1.3[gstreamer] ) msn? ( >=media-plugins/gst-plugins-mimic-0.10.17:0.10 ) !net-libs/farsight2 =dev-lang/python-2*
+RESTRICT=test
+SLOT=0.1
+SRC_URI=http://freedesktop.org/software/farstream/releases/farstream/farstream-0.1.2.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c54bbdfe6024e501434d77ec9f6d2eb3

@@ -1,0 +1,575 @@
+# ChangeLog for net-misc/vpnc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/vpnc/ChangeLog,v 1.139 2015/06/14 19:51:21 maekke Exp $
+
+  14 Jun 2015; Markus Meier <maekke@gentoo.org> vpnc-0.5.3_p550.ebuild:
+  arm stable, bug #549652
+
+  11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> vpnc-0.5.3_p550.ebuild:
+  Stable for ppc, wrt bug #549652
+
+  02 Jun 2015; Jack Morgan <jmorgan@gentoo.org> vpnc-0.5.3_p550.ebuild:
+  sparc stable wrt bug #549652
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> vpnc-0.5.3_p550.ebuild:
+  Stable for x86, wrt bug #549652
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> vpnc-0.5.3_p550.ebuild:
+  Stable for amd64, wrt bug #549652
+
+  06 Mar 2015; Justin Lecher <jlec@gentoo.org> metadata.xml,
+  vpnc-0.5.3_p527-r1.ebuild, vpnc-0.5.3_p550.ebuild:
+  Adopt to recent aggreemant about how to handle bindist, #541450
+
+*vpnc-0.5.3_p550 (27 Feb 2015)
+
+  27 Feb 2015; Justin Lecher <jlec@gentoo.org> +vpnc-0.5.3_p550.ebuild,
+  vpnc-0.5.3_p527-r1.ebuild:
+  Restrict binary distribution with USE=-bindist, #541450; bump to latest svn
+  snapshot
+
+  05 Jan 2015; Justin Lecher <jlec@gentoo.org> vpnc-0.5.3_p527-r1.ebuild:
+  Fix documentation URL, #534490
+
+  02 Nov 2014; Sven Vermeulen <swift@gentoo.org> vpnc-0.5.3_p527-r1.ebuild:
+  Remove sec-policy/selinux-* dependency from DEPEND but keep in RDEPEND (bug
+  #527698)
+
+  10 Sep 2014; Rick Farina <zerochaos@gentoo.org> vpnc-0.5.3_p527-r1.ebuild:
+  enable subslot rebuilds for libgcrypt
+
+  29 Jul 2014; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Fix e-mail address.
+
+  17 May 2014; Sven Vermeulen <swift@gentoo.org> vpnc-0.5.3_p527-r1.ebuild:
+  Fix bug #509740 - Add USE=selinux dependency to sec-policy/selinux-vpn
+
+  01 Mar 2014; Michał Górny <mgorny@gentoo.org> vpnc-0.5.3_p527-r1.ebuild:
+  Update libgcrypt dep to use slot :0.
+
+  08 Feb 2014; Justin Lecher <jlec@gentoo.org> vpnc-0.5.3_p527-r1.ebuild:
+  Set subslot for libgcrypt
+
+  27 Sep 2013; Justin Lecher <jlec@gentoo.org> -vpnc-0.5.3_p527.ebuild:
+  Drop old
+
+  26 Sep 2013; Agostino Sarubbo <ago@gentoo.org> vpnc-0.5.3_p527-r1.ebuild:
+  Stable for arm, wrt bug #480266
+
+  25 Sep 2013; Agostino Sarubbo <ago@gentoo.org> vpnc-0.5.3_p527-r1.ebuild:
+  Stable for ppc, wrt bug #480266
+
+  23 Sep 2013; Agostino Sarubbo <ago@gentoo.org> vpnc-0.5.3_p527-r1.ebuild:
+  Stable for sparc, wrt bug #480266
+
+  23 Sep 2013; Agostino Sarubbo <ago@gentoo.org> vpnc-0.5.3_p527-r1.ebuild:
+  Stable for ppc64, wrt bug #480266
+
+  22 Sep 2013; Agostino Sarubbo <ago@gentoo.org> vpnc-0.5.3_p527-r1.ebuild:
+  Stable for x86, wrt bug #480266
+
+  21 Sep 2013; Agostino Sarubbo <ago@gentoo.org> vpnc-0.5.3_p527-r1.ebuild:
+  Stable for amd64, wrt bug #480266
+
+  09 Aug 2013; Justin Lecher <jlec@gentoo.org> files/vpnc.service:
+  Fix calls of up/down scripts in systemD unit
+
+*vpnc-0.5.3_p527-r1 (07 Aug 2013)
+
+  07 Aug 2013; Justin Lecher <jlec@gentoo.org> +vpnc-0.5.3_p527-r1.ebuild,
+  +files/vpnc.service, +files/vpnc-tmpfiles.conf:
+  Add systemD support, #479354
+
+  05 Jun 2013; Justin Lecher <jlec@gentoo.org> vpnc-0.5.3_p527.ebuild:
+  Drop USE=-caps restriction for libgcrypt as it was removed, #472392; this
+  also make #467744 obsolete
+
+  01 May 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  removed unused local USE-description: 'hybrid-auth'
+
+  01 May 2013; Justin Lecher <jlec@gentoo.org> vpnc-0.5.3_p527.ebuild:
+  Do not allow caps support for libgcrypt, #467744
+
+  21 Apr 2013; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
+  remove myself as maintainer
+
+  13 Apr 2013; Justin Lecher <jlec@gentoo.org> -vpnc-0.5.3.ebuild,
+  -vpnc-0.5.3_p451.ebuild, -vpnc-0.5.3_p457-r1.ebuild,
+  -vpnc-0.5.3_p457-r2.ebuild, -vpnc-0.5.3_p514.ebuild:
+  Drop old
+
+  13 Apr 2013; Agostino Sarubbo <ago@gentoo.org> vpnc-0.5.3_p527.ebuild:
+  Stable for sparc, wrt bug #463990
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> vpnc-0.5.3_p527.ebuild:
+  Stable for x86, wrt bug #463990
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> vpnc-0.5.3_p527.ebuild:
+  Stable for arm, wrt bug #463990
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> vpnc-0.5.3_p527.ebuild:
+  Stable for ppc64, wrt bug #463990
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> vpnc-0.5.3_p527.ebuild:
+  Stable for ppc, wrt bug #463990
+
+  03 Apr 2013; Agostino Sarubbo <ago@gentoo.org> vpnc-0.5.3_p527.ebuild:
+  Stable for amd64, wrt bug #463990
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*vpnc-0.5.3_p527 (14 Mar 2013)
+
+  14 Mar 2013; Justin Lecher <jlec@gentoo.org> +vpnc-0.5.3_p527.ebuild,
+  metadata.xml:
+  Bump to latest upstream rev, fix resolv.conf handling, #406141; fix test,
+  #442174; add myself as maintainer
+
+  06 Feb 2013; Justin Lecher <jlec@gentoo.org> vpnc-0.5.3_p514.ebuild,
+  metadata.xml:
+  Use REQUIRED_USE to sanitize *DEPENDS, thanks Dmitri Bogomolov for the
+  initial patch, #407965
+
+  27 Dec 2012; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
+  add local description of bindist USE flag to clarify on the whies and about,
+  see bug 448946 by Alexander Berntsen
+
+  19 Jul 2012; Markus Meier <maekke@gentoo.org> vpnc-0.5.3_p514.ebuild:
+  arm stable, bug #424625
+
+  01 Apr 2012; Justin Lecher <jlec@gentoo.org> vpnc-0.5.3_p451.ebuild,
+  vpnc-0.5.3_p457-r1.ebuild, vpnc-0.5.3_p457-r2.ebuild, vpnc-0.5.3_p514.ebuild,
+  metadata.xml:
+  Don't use openssl but gnutls to switch the SSL implementation; default on
+  gnutls; Move to EAPI=4
+
+*vpnc-0.5.3_p514 (14 Feb 2012)
+
+  14 Feb 2012; Justin Lecher <jlec@gentoo.org> vpnc-0.5.3_p457-r2.ebuild,
+  +vpnc-0.5.3_p514.ebuild, +files/vpnc-0.5.3_p514-as-needed.patch,
+  metadata.xml:
+  Version Bump, #392999, fix for compilation with as-needed, respect CC, ensure
+  correct deps, #397511
+
+*vpnc-0.5.3_p457-r2 (03 Jul 2011)
+
+  03 Jul 2011; Christian Faulhammer <fauli@gentoo.org>
+  +vpnc-0.5.3_p457-r2.ebuild:
+  revision bump to make vpnc work with Kernel >=2.6.39 (bug 372441 by maxb
+  <max-braeu AT gmx DOT de>), fix a dependency on iproute2 (bug 372861 by Frank
+  Steinmetzger >Warp_7 AT gmx DOT de>) and fix tests for bug 367577 with a
+  patch from Lori <ljakab AT ac DOT upc DOT Dedu>. The tarball has been
+  updated, we need to create a proper patchset at some point
+
+*vpnc-0.5.3_p457-r1 (12 Feb 2011)
+
+  12 Feb 2011; Christian Faulhammer <fauli@gentoo.org>
+  -vpnc-0.5.3_p457.ebuild, +vpnc-0.5.3_p457-r1.ebuild:
+  Add updated vpnc-script as it should have happened before
+
+  12 Feb 2011; Christian Faulhammer <fauli@gentoo.org>
+  -vpnc-0.5.3_p449-r1.ebuild:
+  clean up
+
+*vpnc-0.5.3_p457 (12 Feb 2011)
+
+  12 Feb 2011; Christian Faulhammer <fauli@gentoo.org>
+  +vpnc-0.5.3_p457.ebuild:
+  New snapshot as requested by user maintainers
+
+  06 Jan 2011; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
+  add Martin Mokrejsas maintainer
+
+  06 Jan 2011; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
+  add Loránd Jakab as maintainer
+
+  04 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  vpnc-0.5.3_p451.ebuild:
+  revert USE flag logic, so GnuTLS is used as default for hybrid auth and
+  OpenSSL only on request
+
+*vpnc-0.5.3_p451 (03 Jan 2011)
+
+  03 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  +vpnc-0.5.3_p451.ebuild:
+  New snapshot which incorporates upstream fixes for lost connections du to
+  rekeying errors (bug 350219 by Lori <ljakab AT ac DOT upc DOT edu>), an
+  updated external vpnc-script which has support for Solaris and IPv6 (bug
+  331445 by ByrneG <gentoo-bugzilla-byrne AT gzone DOT org>), patches taken
+  from upstream mailing list that fix some dead lock problems in the socket
+  handling routines (also bug 350219). Also reenable OpenSSL for
+  hybrid-auth, but check for binary distribution (bug 336012). Lots of
+  thanks to Martin Mokrejs <mmokejs AT fold DOT natur DOT cuni DOT cz> who
+  worked on all the bugs and provided a lot of feedback.
+
+  13 Aug 2010; Christian Faulhammer <fauli@gentoo.org> vpnc-0.5.3.ebuild,
+  vpnc-0.5.3_p449-r1.ebuild, files/vpnc-2.init, files/vpnc-3.init:
+  Create /var/run/vpnc on the fly in init script not by keepdir in ebuild
+
+*vpnc-0.5.3_p449-r1 (23 Mar 2010)
+
+  23 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  -vpnc-0.5.3_p449.ebuild, +vpnc-0.5.3_p449-r1.ebuild, +files/vpnc-3.init:
+  Fix stop behaviour as reported wiith patch in bug 310687 by Dirk Tilger
+  <dirk AT miriup DOT de>
+
+  10 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  vpnc-0.5.3_p449.ebuild:
+  remove bindist and hybrid-auth from IUSE
+
+*vpnc-0.5.3_p449 (10 Nov 2009)
+
+  10 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  +vpnc-0.5.3_p449.ebuild:
+  add SVN snapshot for bug 292431 by Sven <sven DOT koehler AT gmail DOT
+  com>
+
+  31 May 2009; Mike Auty <ikelos@gentoo.org> metadata.xml:
+  Fixing typo in local USE flag description (see bug 271604).
+
+  29 May 2009; Robert Piasek <dagger@gentoo.org>
+  vpnc-0.5.3.ebuild:
+  added ~arm keyword
+
+  08 Jan 2009; Christian Faulhammer <fauli@gentoo.org>
+  -vpnc-0.5.1-r1.ebuild, -vpnc-0.5.1_p332.ebuild:
+  clean up
+
+  07 Jan 2009; Brent Baude <ranger@gentoo.org> vpnc-0.5.3.ebuild:
+  stable ppc64, bug 253233
+
+  04 Jan 2009; Markus Meier <maekke@gentoo.org> vpnc-0.5.3.ebuild:
+  amd64/x86 stable, bug #253233
+
+  02 Jan 2009; Tobias Scherbaum <dertobi123@gentoo.org> vpnc-0.5.3.ebuild:
+  ppc stable, bug #253233
+
+*vpnc-0.5.3 (30 Nov 2008)
+
+  30 Nov 2008; Christian Faulhammer <fauli@gentoo.org> +vpnc-0.5.3.ebuild:
+  version bump: mostly bug fixes
+
+  28 Nov 2008; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
+  Change my email address
+
+  22 Nov 2008; Christian Faulhammer <opfer@gentoo.org> vpnc-0.5.1-r1.ebuild,
+  vpnc-0.5.1_p332.ebuild:
+  don't install COPYING file anymore as reported by coldwind on bug 247935;
+  don't inherit linux-info.eclass anymore; remove die messages
+
+  03 Nov 2008; Raúl Porcel <armin76@gentoo.org> vpnc-0.5.1-r1.ebuild,
+  vpnc-0.5.1_p332.ebuild:
+  Remove resolvconf-gentoo dep, as its p.masked and going to be removed
+
+  16 Oct 2008; Christian Faulhammer <opfer@gentoo.org> files/vpnc-2.init:
+  source is not POSIX compliant so use the dot instead, thanks to Martin
+  Väth <vaeth AT mathematik DOT uni-wuerzburg DOT de> in bug 242198
+
+  11 Sep 2008; Christian Faulhammer <opfer@gentoo.org> files/vpnc-2.init:
+  source /etc/conf.d/vpnc always as people likely rename their init scripts;
+  reported by Eckard Brauer <ecki AT intershop DOT de> in bug 237078
+
+*vpnc-0.5.1_p332 (25 Jun 2008)
+
+  25 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  -vpnc-0.5.1_p325.ebuild, +vpnc-0.5.1_p332.ebuild:
+  new snapshot which fixes bug 229003 for sure and bug 218974 maybe (still to
+  test)
+
+*vpnc-0.5.1_p325 (21 Jun 2008)
+
+  21 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  +vpnc-0.5.1_p325.ebuild, -vpnc-0.5.2_pre20080509-r1.ebuild,
+  -vpnc-0.5.2_pre20080611.ebuild:
+  add a new snapshot with proper version tag, so we really know which revision
+  it is: Fix some bugs and especially memory leaks
+
+*vpnc-0.5.2_pre20080611 (11 Jun 2008)
+
+  11 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  +vpnc-0.5.2_pre20080611.ebuild:
+  a new snapshot which will hopefully fix bug 218974
+
+*vpnc-0.5.2_pre20080509-r1 (11 May 2008)
+
+  11 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  -vpnc-0.5.2_pre20080509.ebuild, +vpnc-0.5.2_pre20080509-r1.ebuild:
+  eliminate /usr/local from vpnc-script...again. reported by Priit Laes <amd
+  AT store20 DOT com> in bug 221229
+
+  10 May 2008; Christian Faulhammer <opfer@gentoo.org> Manifest:
+  regenerate Manifest
+
+*vpnc-0.5.2_pre20080509 (09 May 2008)
+
+  09 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  +vpnc-0.5.2_pre20080509.ebuild:
+  version bump from repository as there seems to be no release planned
+
+  04 Apr 2008; Christian Faulhammer <opfer@gentoo.org> files/vpnc-2.init:
+  update init script so it fails on vpnc startup error, pointed out by Tiziano
+  Müller <dev-zero AT g.o> in bug 216042
+
+  07 Feb 2008; Christian Faulhammer <opfer@gentoo.org> -files/vpnc-1.init,
+  -vpnc-0.5.1.ebuild:
+  clean up
+
+  06 Feb 2008; nixnut <nixnut@gentoo.org> vpnc-0.5.1-r1.ebuild:
+  stable on ppc wrt bug #209045
+
+  06 Feb 2008; Brent Baude <ranger@gentoo.org> vpnc-0.5.1-r1.ebuild:
+  stable ppc64, bug 209045
+
+  05 Feb 2008; Christian Faulhammer <opfer@gentoo.org> vpnc-0.5.1-r1.ebuild:
+  stable x86/amd64, bug 209045
+
+  24 Jan 2008; Christian Faulhammer <opfer@gentoo.org> vpnc-0.5.1.ebuild,
+  vpnc-0.5.1-r1.ebuild:
+  don't check for TUN support in the kernel...it is only needed on runtime, so
+  a reference in postinst should be enough
+
+  07 Jan 2008; Christian Faulhammer <opfer@gentoo.org> vpnc-0.5.1-r1.ebuild:
+  generate scripts directory so people maybe get a clue about it
+
+*vpnc-0.5.1-r1 (07 Jan 2008)
+
+  07 Jan 2008; Christian Faulhammer <opfer@gentoo.org> +files/vpnc-2.init,
+  +vpnc-0.5.1-r1.ebuild:
+  An addition to the init script proposed by Thomas Fischer <fischer AT
+  unix-ag DOT uni-kl DOT de> in bug 203775: execute a script before and after
+  start and shutdown
+
+  02 Jan 2008; Christian Faulhammer <opfer@gentoo.org> vpnc-0.5.1.ebuild:
+  added a missing letter, pointed out by ikelos via mail
+
+  02 Jan 2008; Christian Faulhammer <opfer@gentoo.org> vpnc-0.5.1.ebuild:
+  add net-dns/openresolv as possible new dependency instead of resolvconf-gentoo
+
+  15 Nov 2007; Christian Faulhammer <opfer@gentoo.org> vpnc-0.5.1.ebuild:
+  add resolvconf to IUSE, reported in bug 199153 by Michael Laß <bevan AT
+  bi-co DOT net>
+
+  14 Nov 2007; Christian Faulhammer <opfer@gentoo.org> vpnc-0.5.1.ebuild:
+  make resolvconf depend on the USE flag of that name as it is optional (bug
+  196276, by pa4wdh@yahoo.com); extend a comment
+
+  06 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  -files/vpnc-0.4.0-build.patch, -files/vpnc.init, -vpnc-0.4.0.ebuild,
+  -vpnc-0.4.0-r3.ebuild, -vpnc-0.4.0-r4.ebuild, -vpnc-0.5.0.ebuild:
+  clean up
+
+  06 Nov 2007; Chris Gianelloni <wolf31o2@gentoo.org> vpnc-0.5.1.ebuild:
+  Stable on amd64 wrt bug #186577.
+
+  14 Oct 2007; Christian Faulhammer <opfer@gentoo.org> vpnc-0.5.1.ebuild:
+  correct a path in a script: /usr/local to /usr, thanks to Thomas Fischer
+  <fischer@unix-ag.uni-kl.de> in bug 195702
+
+  11 Oct 2007; Lars Weiler <pylon@gentoo.org> vpnc-0.5.1.ebuild:
+  stable ppc, bug #186577
+
+  11 Oct 2007; Markus Rothe <corsair@gentoo.org> vpnc-0.5.1.ebuild:
+  Stable on ppc64; bug #186577
+
+  10 Oct 2007; Christian Faulhammer <opfer@gentoo.org> vpnc-0.5.1.ebuild:
+  stable x86, bug 186577
+
+*vpnc-0.5.1 (11 Sep 2007)
+
+  11 Sep 2007; Christian Faulhammer <opfer@gentoo.org> +vpnc-0.5.1.ebuild:
+  version bump, including some run-time fixes on amd64
+
+  31 Aug 2007; Christian Faulhammer <opfer@gentoo.org> vpnc-0.5.0.ebuild:
+  adding hybrid authentication support. As distribution of binaries with that
+  feature are not allowed, don't enable it on USE=bindist
+
+  31 Aug 2007; Christian Faulhammer <opfer@gentoo.org> vpnc-0.5.0.ebuild:
+  no longer inherit eutils, add net-dns/resolvconf-gentoo to RDEPEND
+
+*vpnc-0.5.0 (31 Aug 2007)
+
+  31 Aug 2007; Christian Faulhammer <opfer@gentoo.org> +vpnc-0.5.0.ebuild:
+  version bump: hybrid auth support disabled in the ebuild for now, until
+  legal matters are considered; various bug fixes on upstream side to take
+  into account the user environment when building (important for Gentoo, e.g.
+  custom CFLAGS); code clean-up in source
+
+  29 Aug 2007; Christian Faulhammer <opfer@gentoo.org> files/vpnc-1.init:
+  make fall back possible on VPNCOUTPUT...if it is not defined or not yes,
+  just not display anything
+
+*vpnc-0.4.0-r4 (25 Aug 2007)
+
+  25 Aug 2007; Christian Faulhammer <opfer@gentoo.org> +files/vpnc-1.init,
+  +files/vpnc.confd, +vpnc-0.4.0-r4.ebuild:
+  revision bump which installs a conf.d file to control whether output of
+  vpnc's init script should be redirected to oblivion or not; requested by
+  Gautam Iyer <gi1242@users.sourceforge.net> in bug 189867
+
+  19 Aug 2007; nixnut <nixnut@gentoo.org> vpnc-0.4.0-r3.ebuild:
+  Stable on ppc wrt bug 186577
+
+  17 Aug 2007; Christian Faulhammer <opfer@gentoo.org> vpnc-0.4.0-r3.ebuild:
+  stable x86, bug 186577
+
+  15 Aug 2007; Christian Faulhammer <opfer@gentoo.org> vpnc-0.4.0-r3.ebuild:
+  comment about when build patch can be removed as it has been resolved upstream
+
+  07 Aug 2007; Mike Frysinger <vapier@gentoo.org>
+  +files/vpnc-0.4.0-build.patch, vpnc-0.4.0-r3.ebuild:
+  Punt useless src_compile() and fix pkg_postinst() typo.  Respect
+  CFLAGS/LDFLAGS and dont force -O3.
+
+*vpnc-0.4.0-r3 (25 Jul 2007)
+
+  25 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  -files/vpnc-iproute-fix-2.diff, -files/vpnc, files/vpnc.init,
+  -vpnc-0.3.3-r1.ebuild, -vpnc-0.4.0-r1.ebuild, -vpnc-0.4.0-r2.ebuild,
+  +vpnc-0.4.0-r3.ebuild:
+  clean-up; make init script work with baselayout 2; add some comments to die
+  commands
+
+  01 Jun 2007; Christian Faulhammer <opfer@gentoo.org> vpnc-0.4.0-r2.ebuild:
+  added the path for the new vpnc HowTo
+
+  29 May 2007; Christian Faulhammer <opfer@gentoo.org> files/vpnc.init:
+  remove bashisms from init file, fixes bug 179747 reported by Mike Arthur
+  <mike@mikearthur.co.uk>
+
+  03 Mar 2007; Steve Dibb <beandog@gentoo.org> vpnc-0.4.0.ebuild:
+  amd64 stable, security bug 166801
+
+  28 Feb 2007; Christian Faulhammer <opfer@gentoo.org> vpnc-0.4.0-r2.ebuild:
+  added a hint to practical utilities and to the draft version of the vpnc How-To
+
+  27 Feb 2007; Tobias Scherbaum <dertobi123@gentoo.org> vpnc-0.4.0.ebuild:
+  Stable on ppc wrt bug #166801.
+
+*vpnc-0.4.0-r2 (27 Feb 2007)
+
+  27 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  +vpnc-0.4.0-r2.ebuild:
+  additionally install cisco-decrypt
+
+  22 Feb 2007; Christian Faulhammer <opfer@gentoo.org> vpnc-0.4.0-r1.ebuild:
+  the file ChangeLog does not exist anymore, removing from installation
+
+*vpnc-0.4.0-r1 (22 Feb 2007)
+
+  22 Feb 2007; Christian Faulhammer <opfer@gentoo.org> +files/vpnc.init,
+  +vpnc-0.4.0-r1.ebuild:
+  added an impoved init file, provided by James Wells
+  <james_wells@users.sourceforge.net> in bug 167913; added a check for
+  CONFIG_TUN in the Kernel config
+
+  22 Feb 2007; Christian Faulhammer <opfer@gentoo.org> files/vpnc:
+  correct init file entry
+
+  21 Feb 2007; Markus Rothe <corsair@gentoo.org> vpnc-0.4.0.ebuild:
+  Stable on ppc64; bug #166801
+
+  21 Feb 2007; Christian Faulhammer <opfer@gentoo.org> vpnc-0.4.0.ebuild:
+  stable x86; security bug 166801
+
+*vpnc-0.4.0 (19 Feb 2007)
+
+  19 Feb 2007; Hanno Boeck <hanno@gentoo.org> +files/vpnc,
+  +vpnc-0.4.0.ebuild:
+  Version bump, now use upstream Makefile to securely install config.
+
+  14 Feb 2007; Christian Faulhammer <opfer@gentoo.org> metadata.xml:
+  added myself to metadata.xml
+
+  13 Feb 2007; Markus Rothe <corsair@gentoo.org>
+  vpnc-0.3.4_pre20061219.ebuild:
+  Stable on ppc64; bug #158271
+
+  12 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  vpnc-0.3.4_pre20061219.ebuild:
+  stable x86; bug 158271
+
+*vpnc-0.3.4_pre20061219 (19 Dec 2006)
+
+  19 Dec 2006; Hanno Boeck <hanno@gentoo.org>
+  +vpnc-0.3.4_pre20061219.ebuild:
+  Bump to new snapshot.
+
+*vpnc-0.3.4_pre20061029 (28 Oct 2006)
+
+  28 Oct 2006; Hanno Boeck <hanno@gentoo.org>
+  +vpnc-0.3.4_pre20061029.ebuild:
+  Bump to svn snapshot, upstream hasn't released for ages but lot's of bugs
+  are fixed in there.
+
+  19 Jul 2006; Danny van Dyk <kugelfang@gentoo.org> vpnc-0.3.3-r1.ebuild:
+  Marked stable on amd64.
+
+  15 Jun 2006; Hanno Boeck <hanno@gentoo.org> vpnc-0.3.3-r1.ebuild:
+  Add keepdir for /var/run/vpnc.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> files/digest-vpnc-0.3.2,
+  files/digest-vpnc-0.3.3, files/digest-vpnc-0.3.3-r1, Manifest:
+  Fixing SHA256 digest, pass four
+
+  21 Apr 2006; Joshua Jackson <tsunam@gentoo.org> vpnc-0.3.3-r1.ebuild:
+  Stable on x86; bug #129628
+
+  17 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  vpnc-0.3.3-r1.ebuild:
+  ppc stable, bug #129628
+
+  11 Feb 2006; Markus Rothe <corsair@gentoo.org> vpnc-0.3.3-r1.ebuild:
+  Stable on ppc64
+
+  12 Jan 2006; Hanno Boeck <hanno@gentoo.org> vpnc-0.3.3-r1.ebuild:
+  Create /var/run/vpnc dir (resolves #117853).
+
+  23 Dec 2005; Markus Rothe <corsair@gentoo.org> vpnc-0.3.3-r1.ebuild:
+  Added ~ppc64
+
+  20 Dec 2005; Hanno Boeck <hanno@gentoo.org> files/vpnc-iproute-fix-2.diff:
+  Fix Patch failure.
+
+*vpnc-0.3.3-r1 (20 Dec 2005)
+
+  20 Dec 2005; Hanno Boeck <hanno@gentoo.org>
+  +files/vpnc-iproute-fix-2.diff, +vpnc-0.3.3-r1.ebuild:
+  Real fix for iproute problem (from upstream).
+
+*vpnc-0.3.3 (24 Oct 2005)
+
+  24 Oct 2005; Hanno Boeck <hanno@gentoo.org> +files/vpnc-iproute-fix.diff,
+  +vpnc-0.3.3.ebuild:
+  Version bump and fix for iproute.
+
+  10 Jul 2005; Jason Wever <weeve@gentoo.org> vpnc-0.3.2.ebuild:
+  Added ~sparc keyword.
+
+  08 May 2005; Lars Weiler <pylon@gentoo.org> vpnc-0.3.2.ebuild:
+  Stable on ppc.
+
+  11 Feb 2005; Danny van Dyk <kugelfang@gentoo.org>
+  +files/vpnc-0.3.2-64-bit.patch, vpnc-0.3.2.ebuild:
+  Added 64-bit patch (BUG #80030), marked ~amd64. QA: Removed S=${WORKDIR}/${P}.
+
+  29 Dec 2004; Hanno Boeck <hanno@gentoo.org> vpnc-0.3.2.ebuild:
+  Stable on x86.
+
+*vpnc-0.3.2 (07 Dec 2004)
+
+  07 Dec 2004; <hanno@gentoo.org> +vpnc-0.3.2.ebuild:
+  Version bump.
+
+  02 Sep 2004; David Holm <dholm@gentoo.org> vpnc-0.2.ebuild:
+  Added to ~ppc.
+
+*vpnc-0.2 (17 May 2004)
+
+  17 May 2004; Hanno Boeck <hanno@gentoo.org> +vpnc-0.2.ebuild:
+  Version bump.
+
+*vpnc-0.2_pre7 (03 Feb 2004)
+
+  03 Feb 2004; Hanno Boeck <hanno@gentoo.org> vpnc-0.2_pre7.ebuild:
+  Free client for Cisco VPN routing software.

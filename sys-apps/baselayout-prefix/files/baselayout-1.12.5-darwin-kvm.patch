@@ -1,0 +1,22 @@
+http://bugs.gentoo.org/show_bug.cgi?id=360855
+
+by JTRiley 
+
+--- baselayout-1.12.5/src/start-stop-daemon.c
++++ baselayout-1.12.5/src/start-stop-daemon.c
+@@ -73,10 +73,14 @@
+ #include <sys/types.h>
+ 
+ #include <err.h>
+-#include <kvm.h>
+ #include <limits.h>
+ #endif
+ 
++#if defined(OSOpenBSD) || defined(OSFreeBSD) || defined(OSNetBSD)
++#include <kvm.h>
++#endif
++
++
+ #if defined(OShpux)
+ #include <sys/param.h>
+ #include <sys/pstat.h>

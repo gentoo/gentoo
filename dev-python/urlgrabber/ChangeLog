@@ -1,0 +1,182 @@
+# ChangeLog for dev-python/urlgrabber
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/urlgrabber/ChangeLog,v 1.49 2015/04/08 08:05:27 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> urlgrabber-3.9.1-r2.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -urlgrabber-3.9.1-r1.ebuild:
+  Remove old.
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> urlgrabber-3.9.1-r2.ebuild:
+  ppc stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> urlgrabber-3.9.1-r2.ebuild:
+  ppc64 stable, bug 540290
+
+  02 Feb 2015; Alexis Ballier <aballier@gentoo.org> urlgrabber-3.10.1.ebuild:
+  keyword ~arm
+
+*urlgrabber-3.10.1 (21 May 2014)
+
+  21 May 2014; Ian Delaney <idella4@gentoo.org> +urlgrabber-3.10.1.ebuild:
+  bump; drop py2.6
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> urlgrabber-3.9.1-r2.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  18 Aug 2013; Agostino Sarubbo <ago@gentoo.org> urlgrabber-3.9.1-r2.ebuild:
+  Stable for x86, wrt bug #480142
+
+  17 Aug 2013; Agostino Sarubbo <ago@gentoo.org> urlgrabber-3.9.1-r2.ebuild:
+  Stable for amd64, wrt bug #480142
+
+*urlgrabber-3.9.1-r2 (26 Mar 2013)
+
+  26 Mar 2013; Michał Górny <mgorny@gentoo.org> +urlgrabber-3.9.1-r2.ebuild:
+  Migrate to distutils-r1.
+
+  15 Jun 2012; Justin Lecher <jlec@gentoo.org> urlgrabber-3.9.1-r1.ebuild:
+  Restrict pypy because pycurl doesn't support it
+
+  05 Aug 2011; Markos Chandras <hwoarang@gentoo.org> -urlgrabber-3.9.1.ebuild:
+  Remove old ebuild. Requested by Arfrever
+
+  17 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  urlgrabber-3.9.1-r1.ebuild:
+  ppc64 stable wrt #366663
+
+  28 May 2011; Brent Baude <ranger@gentoo.org> urlgrabber-3.9.1-r1.ebuild:
+  Marking urlgrabber-3.9.1-r1 ppc for bug 366663
+
+  28 May 2011; Thomas Kahle <tomka@gentoo.org> urlgrabber-3.9.1-r1.ebuild:
+  x86 stable per bug 366663
+
+  11 May 2011; Markos Chandras <hwoarang@gentoo.org>
+  urlgrabber-3.9.1-r1.ebuild:
+  Stable on amd64 wrt bug #366663
+
+*urlgrabber-3.9.1-r1 (06 Apr 2011)
+
+  06 Apr 2011; Maxim (maksbotan) <kolmax94@gmail.com>
+  +urlgrabber-3.9.1-r1.ebuild, +files/urlgrabber-3.9.1.patch:
+  Revision bump, imported upstream patch. Fixes bug #346753
+
+  27 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -urlgrabber-2.9.6.ebuild, -urlgrabber-3.1.0.ebuild:
+  Delete.
+
+  27 Dec 2010; Brent Baude <ranger@gentoo.org> urlgrabber-3.9.1.ebuild:
+  Marking urlgrabber-3.9.1 ppc64 for bug 337381
+
+  29 Sep 2010; Brent Baude <ranger@gentoo.org> urlgrabber-3.9.1.ebuild:
+  Marking urlgrabber-3.9.1 ppc for bug 337381
+
+  25 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  urlgrabber-3.9.1.ebuild:
+  Require Python >=2.5 (bug #338333).
+
+  25 Sep 2010; Markus Meier <maekke@gentoo.org> urlgrabber-3.9.1.ebuild:
+  x86 stable, bug #337381
+
+  21 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  urlgrabber-3.9.1.ebuild:
+  Stable on amd64 wrt bug #337381
+
+  15 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  urlgrabber-3.9.1.ebuild:
+  Restrict tests.
+
+  15 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  urlgrabber-3.9.1.ebuild:
+  Update EAPI. Fix dependencies. Set SUPPORT_PYTHON_ABIS.
+
+  08 Aug 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removed deathwing00 from metadata as he took an extended away.
+
+*urlgrabber-3.9.1 (19 Mar 2010)
+
+  19 Mar 2010; Ioannis Aslanidis <iaslanidis@gentoo.org>
+  +urlgrabber-3.9.1.ebuild, metadata.xml:
+  Version bump, required for mock to work properly
+
+  24 Jan 2009; Alexis Ballier <aballier@gentoo.org> urlgrabber-3.1.0.ebuild:
+  keyword ~x86-fbsd
+
+  08 Jan 2009; Patrick Lauer <patrick@gentoo.org> -urlgrabber-3.0.0.ebuild:
+  Removing old
+
+  02 Dec 2008; Brent Baude <ranger@gentoo.org> ChangeLog:
+  stable ppc64, bug 249218
+
+  02 Dec 2008; Brent Baude <ranger@gentoo.org> urlgrabber-3.1.0.ebuild:
+  stable ppc64, bug 249218
+
+  30 Nov 2008; Markus Meier <maekke@gentoo.org> urlgrabber-3.1.0.ebuild:
+  amd64/x86 stable, bug #249218
+
+  29 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  urlgrabber-3.1.0.ebuild:
+  ppc stable, bug #est
+
+*urlgrabber-3.1.0 (13 May 2008)
+
+  13 May 2008; Ali Polatel <hawking@gentoo.org> +urlgrabber-3.1.0.ebuild:
+  Version bump.
+
+  28 Mar 2008; Markus Meier <maekke@gentoo.org> urlgrabber-3.0.0.ebuild:
+  x86 stable, bug #215098
+
+  27 Mar 2008; Markus Rothe <corsair@gentoo.org> urlgrabber-3.0.0.ebuild:
+  Stable on ppc64; bug #215098
+
+  14 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  urlgrabber-3.0.0.ebuild:
+  ppc. stable
+
+  15 Nov 2007; Samuli Suominen <drac@gentoo.org> urlgrabber-3.0.0.ebuild:
+  amd64 stable wrt #197514
+
+  15 Nov 2007; Markus Rothe <corsair@gentoo.org> urlgrabber-3.0.0.ebuild:
+  Added ~ppc64
+
+  03 Apr 2007; Peter Weller <welp@gentoo.org> urlgrabber-2.9.6.ebuild:
+  Keyworded ~x86-fbsd
+
+*urlgrabber-3.0.0 (03 Feb 2007)
+
+  03 Feb 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  -urlgrabber-2.9.0.ebuild, +urlgrabber-3.0.0.ebuild:
+  Version bump. Removed old version.
+
+  03 Feb 2007; nixnut <nixnut@gentoo.org> urlgrabber-2.9.6.ebuild:
+  Stable on ppc wrt bug 157797
+
+  02 Feb 2007; Raúl Porcel <armin76@gentoo.org> urlgrabber-2.9.6.ebuild:
+  x86 stable wrt bug 157797
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> urlgrabber-2.9.6.ebuild:
+  Mark 2.9.6 ~ia64
+
+  15 Aug 2005; Luis Medinas <metalgod@gentoo.org> urlgrabber-2.9.6.ebuild:
+  Added ~amd64 keywords.
+
+*urlgrabber-2.9.6 (28 Jun 2005)
+
+  28 Jun 2005; Lukasz Strzygowski <lucass@gentoo.org>
+  +urlgrabber-2.9.6.ebuild:
+  Version bump. Closing bug #96420.
+
+  06 Mar 2005; Joseph Jezak <josejx@gentoo.org> urlgrabber-2.9.0.ebuild:
+  Marked ~ppc.
+
+  27 Feb 2005; Lukasz Strzygowski <lucass@gentoo.org> metadata.xml,
+  urlgrabber-2.9.0.ebuild:
+  Marked stable on x86. Added description to metadata.
+
+*urlgrabber-2.9.0 (10 Dec 2004)
+
+  10 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> +metadata.xml,
+  +urlgrabber-2.9.0.ebuild:
+  Initial import, bug 62771.

@@ -1,0 +1,43 @@
+diff -Naurp matchbox-panel-0.9.3.orig/configure.ac matchbox-panel-0.9.3/configure.ac
+--- matchbox-panel-0.9.3.orig/configure.ac	2006-03-07 18:46:39.000000000 +0000
++++ matchbox-panel-0.9.3/configure.ac	2010-05-18 13:10:59.000000000 +0000
+@@ -56,6 +56,10 @@ AC_ARG_ENABLE(acpi-linux,
+   [  --enable-acpi-linux   Use Linux ACPI rather than APM for battery info],
+      enable_acpi_linux=$enableval, enable_acpi_linux=no )
+ 
++AC_ARG_ENABLE(wireless-tools,
++  [  --enable-wireless-tools   enable building of wifi applet],
++     enable_wireless_tools=$enableval, enable_wireless_tools=no )
++
+ PKG_CHECK_MODULES(LIBMB, libmb >= 1.6,,
+ 	         AC_MSG_ERROR([*** Required Matchbox Library (libmb) 1.6 not installed ***]))
+ 
+@@ -209,17 +213,20 @@ AM_CONDITIONAL(WANT_ACPI, test x$enable_
+ 
+ dnl ------ wireless checks --------------------------------------------------
+ 
+-wifi_enabled=no
+-
+-AC_CHECK_HEADERS(iwlib.h, have_iwlib_h=yes, have_iwlib_h=no)
+-AC_CHECK_LIB(iw, iw_sockets_open, have_libiw=yes, have_libiw=yes)
++if test x$enable_wireless_tools = xyes; then
++  AC_CHECK_HEADERS(iwlib.h, have_iwlib_h=yes, 
++    AC_MSG_ERROR([Unable to find the wireless-tools headers]))
++  AC_CHECK_LIB(iw, iw_sockets_open, have_libiw=yes,
++    AC_MSG_ERROR([Unable to find the wireless-tools library]))
+ 
+-if test x$have_iwlib_h = x"yes" && test x$have_libiw = x"yes"; then
+-	WIRELESS_LIBS="-liw"
+-	wifi_enabled=yes
++  WIRELESS_LIBS="-liw"
++  wifi_enabled=yes
++else
++  WIRELESS_LIBS=""
++  wifi_enabled=no
+ fi
+-AC_SUBST(WIRELESS_LIBS)
+ 
++AC_SUBST(WIRELESS_LIBS)
+ AM_CONDITIONAL(WANT_WIFI, test x$wifi_enabled = x"yes")
+ 
+ 

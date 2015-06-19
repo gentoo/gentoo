@@ -1,0 +1,151 @@
+# ChangeLog for dev-perl/MooseX-Role-Parameterized
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/MooseX-Role-Parameterized/ChangeLog,v 1.15 2015/03/15 18:15:19 zlogene Exp $
+
+  15 Mar 2015; Mikle Kolyada <zlogene@gentoo.org>
+  MooseX-Role-Parameterized-1.80.0.ebuild:
+  Add ~arm/~ppc/~x64-macos keywords wrt bug #543202
+
+*MooseX-Role-Parameterized-1.80.0 (13 Mar 2015)
+
+  13 Mar 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +MooseX-Role-Parameterized-1.80.0.ebuild:
+  Version bump
+
+*MooseX-Role-Parameterized-1.0.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +MooseX-Role-Parameterized-1.0.0-r1.ebuild,
+  -MooseX-Role-Parameterized-1.0.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  16 Apr 2013; Vicente Olivert Riera <vincent@gentoo.org>
+  MooseX-Role-Parameterized-1.0.0.ebuild:
+  Adding ~ppc keyword for dev-perl/PDL and his dependences, wrt bug #449762
+
+  13 Jan 2013; Markus Meier <maekke@gentoo.org>
+  MooseX-Role-Parameterized-1.0.0.ebuild:
+  add ~arm, bug #449762
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  01 Mar 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Add missing cpan remote-id tags in metadata.xml (#406287)
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org>
+  -MooseX-Role-Parameterized-0.260.0.ebuild,
+  -MooseX-Role-Parameterized-0.270.0.ebuild:
+  Cleanup
+
+*MooseX-Role-Parameterized-1.0.0 (24 Jan 2012)
+
+  24 Jan 2012; Torsten Veller <tove@gentoo.org>
+  +MooseX-Role-Parameterized-1.0.0.ebuild:
+  Version bump
+
+  24 Sep 2011; Fabian Groffen <grobian@gentoo.org>
+  MooseX-Role-Parameterized-0.270.0.ebuild:
+  Marked ~x64-macos
+
+*MooseX-Role-Parameterized-0.270.0 (07 Sep 2011)
+
+  07 Sep 2011; Robin H. Johnson <robbat2@gentoo.org>
+  +MooseX-Role-Parameterized-0.270.0.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  29 Jul 2011; Torsten Veller <tove@gentoo.org>
+  -MooseX-Role-Parameterized-0.250.0.ebuild:
+  Cleanup
+
+*MooseX-Role-Parameterized-0.260.0 (21 Apr 2011)
+
+  21 Apr 2011; Torsten Veller <tove@gentoo.org>
+  +MooseX-Role-Parameterized-0.260.0.ebuild:
+  Version bump
+
+  30 Mar 2011; Torsten Veller <tove@gentoo.org>
+  +MooseX-Role-Parameterized-0.250.0.ebuild, +metadata.xml:
+  Import from perl-experimental
+
+*MooseX-Role-Parameterized-0.250.0 (10 Mar 2011)
+
+  10 Mar 2011; Kent Fredric <kentfredric@gmail.com>
+  +MooseX-Role-Parameterized-0.250.0.ebuild:
+  Bump
+
+*MooseX-Role-Parameterized-0.230.0 (10 Mar 2011)
+*MooseX-Role-Parameterized-0.200.0 (10 Mar 2011)
+*MooseX-Role-Parameterized-0.190.0 (10 Mar 2011)
+*MooseX-Role-Parameterized-0.180.0 (10 Mar 2011)
+*MooseX-Role-Parameterized-0.150.0 (10 Mar 2011)
+
+  10 Mar 2011; Kent Fredric <kentfredric@gmail.com>
+  -MooseX-Role-Parameterized-0.15.ebuild,
+  -MooseX-Role-Parameterized-0.18.ebuild,
+  -MooseX-Role-Parameterized-0.19.ebuild,
+  -MooseX-Role-Parameterized-0.20.ebuild,
+  +MooseX-Role-Parameterized-0.150.0.ebuild,
+  +MooseX-Role-Parameterized-0.180.0.ebuild,
+  +MooseX-Role-Parameterized-0.190.0.ebuild,
+  +MooseX-Role-Parameterized-0.200.0.ebuild,
+  -MooseX-Role-Parameterized-0.230.ebuild,
+  +MooseX-Role-Parameterized-0.230.0.ebuild:
+  Migrate remaining to new version scheme
+
+*MooseX-Role-Parameterized-0.240.0 (04 Mar 2011)
+
+  04 Mar 2011; Torsten Veller <tove@gentoo.org>
+  +MooseX-Role-Parameterized-0.240.0.ebuild:
+  Version bump
+
+*MooseX-Role-Parameterized-0.230 (08 Jan 2011)
+
+  08 Jan 2011; Torsten Veller <tove@gentoo.org>
+  +MooseX-Role-Parameterized-0.230.ebuild:
+  Version bump
+
+*MooseX-Role-Parameterized-0.20 (04 Nov 2010)
+
+  04 Nov 2010; Torsten Veller <tove@gentoo.org>
+  +MooseX-Role-Parameterized-0.20.ebuild:
+  Version bump
+
+*MooseX-Role-Parameterized-0.19 (23 Jul 2010)
+
+  23 Jul 2010; Torsten Veller <tove@gentoo.org>
+  +MooseX-Role-Parameterized-0.19.ebuild:
+  Version bump
+
+*MooseX-Role-Parameterized-0.18 (29 Apr 2010)
+
+  29 Apr 2010; Michele Beltrame <m@cattlegrid.info>
+  -MooseX-Role-Parameterized-0.13.ebuild,
+  -MooseX-Role-Parameterized-0.14.ebuild,
+  +MooseX-Role-Parameterized-0.18.ebuild:
+  Bump
+
+*MooseX-Role-Parameterized-0.15 (09 Jan 2010)
+
+  09 Jan 2010; Michele Beltrame <m@cattlegrid.info>
+  -MooseX-Role-Parameterized-0.12.ebuild,
+  +MooseX-Role-Parameterized-0.15.ebuild:
+  Bump
+
+*MooseX-Role-Parameterized-0.14 (10 Dec 2009)
+
+  10 Dec 2009; Kent Fredric <kentfredric@gmail.com>
+  +MooseX-Role-Parameterized-0.14.ebuild:
+  Bumped
+
+*MooseX-Role-Parameterized-0.13 (14 Sep 2009)
+
+  14 Sep 2009; Kent Fredric <kentfredric@gmail.com>
+  +MooseX-Role-Parameterized-0.13.ebuild:
+  Bumped
+
+*MooseX-Role-Parameterized-0.12 (17 Aug 2009)
+
+  17 Aug 2009; Michele Beltrame <m@cattlegrid.info>
+  +MooseX-Role-Parameterized-0.12.ebuild, +metadata.xml:
+  Initial

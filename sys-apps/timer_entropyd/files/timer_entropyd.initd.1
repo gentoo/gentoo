@@ -1,0 +1,14 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/timer_entropyd/files/timer_entropyd.initd.1,v 1.1 2011/10/22 00:21:28 flameeyes Exp $
+
+command=/usr/libexec/timer_entropyd
+
+depend() {
+	need localmount
+	before net
+	use logger
+
+	provide entropy
+}

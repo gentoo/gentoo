@@ -1,0 +1,13 @@
+# ChangeLog for dev-haskell/regex-tdfa-rc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/regex-tdfa-rc/ChangeLog,v 1.2 2015/04/28 20:37:25 slyfox Exp $
+
+  28 Apr 2015; Sergei Trofimovich <slyfox@gentoo.org>
+  regex-tdfa-rc-1.1.8.3.ebuild:
+  x86/amd64 stable wrt bug #546260 (stabilize pandoc-citeproc depends)
+
+*regex-tdfa-rc-1.1.8.3 (14 Dec 2014)
+
+  14 Dec 2014; Mark Wright <gienah@gentoo.org> +metadata.xml,
+  +regex-tdfa-rc-1.1.8.3.ebuild:
+  Add regex-tdfa-rc

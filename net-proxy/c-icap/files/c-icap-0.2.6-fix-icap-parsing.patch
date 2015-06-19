@@ -1,0 +1,11 @@
+--- c-icap-0.2.2.orig/request.c	2013-02-03 16:37:43.000000000 +0000
++++ c-icap-02.2/request.c	2012-06-19 12:55:51.000000000 +0000
+@@ -267,7 +267,7 @@
+                req->req_server[servnamelen] = '\0';
+                if (*end == '/') {       /*service */
+                     start = ++end;
+-                    while (*end != ' ' && *end != '?')
++                    while (*end && *end != ' ' && *end != '?')
+                          end++;
+                     len = end - start;
+                     if (len > 0) {

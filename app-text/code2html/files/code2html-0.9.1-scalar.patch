@@ -1,0 +1,20 @@
+--- code2html.orig	2002-01-12 22:17:02.000000000 +0100
++++ code2html	2014-09-24 13:52:52.000000000 +0200
+@@ -1357,7 +1357,7 @@
+ 								   my @lines = split ( /\n/, $_[0] );
+ 
+                                                                    my $nr = 0;
+-                                                                   my $lengthofnr = length(@lines);
++                                                                   my $lengthofnr = length(scalar(@lines));
+                                                                    my $format = qq{<a name="$_[1]line%u">%${lengthofnr}u</a> %s\n} ;
+ 					                           join ('', map (  {$nr++; sprintf ( $format , $nr, $nr, $_ )} @lines));
+ 					                           },
+@@ -1367,7 +1367,7 @@
+ 								   my @lines = split ( /\n/, $_[0] );
+ 
+                                                                    my $nr = 0; 
+-                                                                   my $lengthofnr = length(@lines);
++                                                                   my $lengthofnr = length(scalar(@lines));
+                                                                    my $format = qq{<a name="$_[1]line%u" href="#$_[1]line%u">%$ {lengthofnr}u</a> %s\n};
+                                                                    join ('', map (  {$nr++; sprintf ( $format , $nr, $nr, $nr, $_ )} @lines));
+ 					                           }

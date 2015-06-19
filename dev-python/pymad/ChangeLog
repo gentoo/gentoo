@@ -1,0 +1,117 @@
+# ChangeLog for dev-python/pymad
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pymad/ChangeLog,v 1.31 2015/04/08 08:04:52 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pymad-0.6-r1.ebuild:
+  Drop old Python implementations
+
+*pymad-0.6-r1 (10 Aug 2013)
+
+  10 Aug 2013; Michał Górny <mgorny@gentoo.org> +pymad-0.6-r1.ebuild:
+  Migrate to distutils-r1.
+
+  29 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pymad-0.5.4.ebuild:
+  Delete.
+
+  29 Jan 2011; Raúl Porcel <armin76@gentoo.org> pymad-0.5.4.ebuild,
+  pymad-0.6.ebuild:
+  Drop ia64/sparc keywords
+
+  07 Jan 2011; Brent Baude <ranger@gentoo.org> pymad-0.6.ebuild:
+  Marking pymad-0.6 ppc for bug 349694
+
+  01 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> pymad-0.6.ebuild:
+  x86 stable wrt bug #349694
+
+  29 Dec 2010; Markos Chandras <hwoarang@gentoo.org> pymad-0.6.ebuild:
+  Stable on amd64 wrt bug #349694
+
+  25 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pymad-0.6.ebuild:
+  Fix dependencies. Set SUPPORT_PYTHON_ABIS.
+
+  21 Mar 2008; Ali Polatel <hawking@gentoo.org> pymad-0.5.4.ebuild,
+  pymad-0.6.ebuild:
+  Changed madplay dependency to libmad, bug 213331 thanks to Michael
+  Polskienazwisko
+
+*pymad-0.6 (03 Jul 2007)
+
+  03 Jul 2007; Lukasz Strzygowski <lucass@gentoo.org> -pymad-0.4.1.ebuild,
+  -pymad-0.5.1.ebuild, -pymad-0.5.2.ebuild, pymad-0.5.4.ebuild,
+  +pymad-0.6.ebuild:
+  Version bump. Dropped old versions.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  21 Oct 2006; Aron Griffis <agriffis@gentoo.org> pymad-0.5.4.ebuild:
+  Mark 0.5.4 stable on ia64
+
+  06 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org> pymad-0.5.4.ebuild:
+  Stable on x86 wrt bug #148933.
+
+  05 Oct 2006; Simon Stelling <blubb@gentoo.org> pymad-0.5.4.ebuild:
+  stable on amd64
+
+  03 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> pymad-0.5.4.ebuild:
+  Stable on sparc
+
+  28 Sep 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  pymad-0.5.4.ebuild:
+  stable on ppc (Bug #148933)
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> pymad-0.5.4.ebuild:
+  Mark 0.5.4 ~ia64
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> pymad-0.5.2.ebuild:
+  Stable on ppc.
+
+*pymad-0.5.4 (24 Jul 2005)
+
+  24 Jul 2005; Lukasz Strzygowski <lucass@gentoo.org> pymad-0.5.1.ebuild,
+  pymad-0.5.2.ebuild, +pymad-0.5.4.ebuild:
+  Version bump. Older versions marked stable on x86.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> pymad-0.4.1.ebuild:
+  Stable on ppc.
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org> pymad-0.5.2.ebuild:
+  Added ~amd64, ~sparc.
+
+*pymad-0.5.2 (07 Dec 2004)
+
+  07 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> +pymad-0.5.2.ebuild:
+  Version bump.
+
+  03 May 2004; Jeremy Huddleston <eradicator@gentoo.org> pymad-0.4.1.ebuild,
+  pymad-0.5.1.ebuild:
+  Changing mad dep to madplay.
+
+*pymad-0.5.1 (19 Feb 2004)
+
+  19 Feb 2004; Bryan Østergaard,,, <kloeri@gentoo.org> pymad-0.5.1.ebuild:
+  Version bump.
+
+  14 Aug 2003; Lars Weiler <pylon@gentoo.org> pymad-0.4.1.ebuild:
+  Added keyword ~ppc
+
+  19 Jul 2003; Nick Hadaway <raker@gentoo.org>:
+  Reverted back to 0.4.1
+
+*pymad-0.4.1-r1 (17 Jul 2003)
+
+  17 Jul 2003; Nick Hadaway <raker@gentoo.org> pymad-0.4.1-r1.ebuild:
+  Changed from media-sound/mad to media-libs/{libmad,libid3tag}
+
+*pymad-0.4.1 (13 Mar 2003)
+
+  04 Apr 2003; Alastair Tse <liquidx@gentoo.org> pymad-0.4.1.ebuild:
+  bump to stable
+
+  13 Mar 2003; Alastair Tse <liquidx@gentoo.org> pymad-0.4.1.ebuild:
+  initial ebuild. Thanks to Mike Wakerly <mikew@wakerly.com> in bug #17270.

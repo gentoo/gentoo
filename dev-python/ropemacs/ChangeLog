@@ -1,0 +1,25 @@
+# ChangeLog for dev-python/ropemacs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ropemacs/ChangeLog,v 1.5 2015/06/03 21:40:41 jlec Exp $
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/ropemacs-0.6-ropemode-dir.patch, -ropemacs-0.6.ebuild:
+  Remove old.
+
+*ropemacs-0.7 (13 May 2014)
+
+  13 May 2014; Ulrich Müller <ulm@gentoo.org> +ropemacs-0.7.ebuild:
+  Version bump, bug 488058.
+
+  08 Oct 2010; Markos Chandras <hwoarang@gentoo.org> ropemacs-0.6.ebuild:
+  Keyworded for amd64. Bug #339633
+
+*ropemacs-0.6 (03 Oct 2010)
+
+  03 Oct 2010; Ulrich Mueller <ulm@gentoo.org> +ropemacs-0.6.ebuild,
+  +files/ropemacs-0.6-ropemode-dir.patch, +metadata.xml:
+  Initial import. Ebuild contributed by Yang Zhang <zyangmath@gmail.com> in
+  bug 338553.

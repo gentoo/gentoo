@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=>=app-i18n/scim-1.2.0 >=app-i18n/libtomoe-gtk-0.6.0[gucharmap=] gucharmap? ( >=gnome-extra/gucharmap-1.4 ) >=x11-libs/gtk+-2.4:2 virtual/pkgconfig >=dev-util/intltool-0.35.0
+DESCRIPTION=Japanese input method Tomoe IMEngine for SCIM
+EAPI=2
+HOMEPAGE=http://tomoe.sourceforge.net/
+IUSE=+gucharmap
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=app-i18n/scim-1.2.0 >=app-i18n/libtomoe-gtk-0.6.0[gucharmap=] gucharmap? ( >=gnome-extra/gucharmap-1.4 ) >=x11-libs/gtk+-2.4:2
+SLOT=0
+SRC_URI=mirror://sourceforge/tomoe/scim-tomoe-0.6.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8c047b79b343acf57774275de02088d2

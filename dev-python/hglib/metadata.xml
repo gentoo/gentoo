@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>arne_bab@web.de</email>
+		<name>Arne Babenhauserheide</name>
+	</maintainer>
+	<maintainer>
+		<email>maksbotan@gentoo.org</email>
+		<name>Maxim Koltsov</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">python-hglib</remote-id>
+	</upstream>
+</pkgmetadata>

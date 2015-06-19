@@ -1,0 +1,86 @@
+# ChangeLog for media-sound/rip
+# Copyright 2002-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/rip/ChangeLog,v 1.22 2007/06/12 18:11:11 aballier Exp $
+
+  12 Jun 2007; Alexis Ballier <aballier@gentoo.org> -rip-1.01-r1.ebuild,
+  rip-1.07.ebuild:
+  Remove old version, add encoders as rdepends, bug #181447
+
+  03 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  23 May 2006; Markus Rothe <corsair@gentoo.org> rip-1.07.ebuild:
+  Stable on ppc64
+
+  08 May 2006; <tcort@gentoo.org> rip-1.07.ebuild:
+  Removed COPYING from dodoc.
+
+  28 May 2005; Diego Pettenò <flameeyes@gentoo.org> rip-1.07.ebuild:
+  Moved dependency to virtual/eject.
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> rip-1.07.ebuild:
+  Stable on ppc.
+
+  20 Dec 2004; Yuta SATOH <nigoro@gentoo.org> rip-1.07.ebuild:
+  added ~ppc64
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org> rip-1.07.ebuild:
+  Stable sparc.
+
+  04 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org> rip-1.07.ebuild:
+  Added to ~sparc.
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> rip-1.01-r1.ebuild,
+  rip-1.07.ebuild:
+  Added IUSE.
+
+  31 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> rip-1.01-r1.ebuild,
+  rip-1.07.ebuild:
+  Removed explicit S=.
+
+  11 Mar 2004; Dylan Carlson <absinthe@gentoo.org> rip-1.07.ebuild:
+  Added amd64 to KEYWORDS.
+
+  01 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> rip-1.01-r1.ebuild,
+  rip-1.07.ebuild:
+  Version bump CDDB_get DEPEND to close bug #37172.
+
+  10 May 2003; George Shapovalov <george@gentoo.org> rip-1.07.ebuild :
+  added ~ppc to keywords since previous version had ppc there, 
+  as was requested by "minor" arch developers
+
+*rip-1.07 (08 May 2003)
+
+  08 May 2003; jje <jje@gentoo.org> rip-1.07.ebuild:
+  Version bump.
+
+  Submitted by: Frank Zschockelt <gentoo@freakysoft.de>
+
+*rip-1.01-r1 (11 Mar 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*rip-1.01 (7 Apr 2002)
+
+  04 Nov 2002; Seemant Kulleen <seemant@gentoo.org> rip-1.01-r1.ebuild :
+
+  Added sys-apps/eject to DEPEND, closing bug #10212 by h@haugland.gs (Helge
+  Haugland)
+
+  7 Apr 2002; G. Shapovalov <george@gentoo.org> Changelog:
+  
+  28 Aug 2002; Calum Selkirk <cselkirk@gentoo.org> rip-1.01-r1 :
+
+  Added ppc to KEYWORDS.
+
+  Initial release of this ebuild. Contains rip-1.01 and rip-1.01-r1
+  rip-1.01.ebuild:
+  	installs two perl modules in addition to the script itself
+	(because of the way script is packaged: modules were included and 
+	author claims they are hard to find)
+	DEPRECATED!  use rip-1.01-r1 instead!
+  rip-1.01-r1.ebuild:
+  	installs script only, necessary modules are installed separately and listed as RDEPEND
+
+

@@ -1,0 +1,209 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 449f4b4..1c9ad00 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -252,7 +252,8 @@ if(NOT MSVC)
+     }
+    " SCANDIR_NEEDS_CONST)
+ 
+-  set(OB_MODULE_PATH "${CMAKE_INSTALL_PREFIX}/${OB_PLUGIN_INSTALL_DIR}")
++  set(OB_MODULE_PATH "${CMAKE_INSTALL_PREFIX}/${OB_PLUGIN_INSTALL_DIR}"
++      CACHE PATH "Set to system install for bindings only build")
+   add_definitions(-DOB_MODULE_PATH="\\"${OB_MODULE_PATH}\\"")
+ 
+   # Add some visibility support when using GCC
+@@ -380,7 +381,8 @@ if(UNIX AND BUILD_SHARED)
+   if(APPLE)
+     set(CMAKE_INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR})
+   else()
+-    set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}")
++    set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${LIB_INSTALL_DIR}"
++        CACHE PATH "Set sane rpath")
+     set(CMAKE_SKIP_BUILD_RPATH FALSE)
+     set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+     set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+@@ -477,6 +479,13 @@ endif()
+ # Should the language bindings be regenereted?
+ option(RUN_SWIG "Generate language bindings with SWIG" OFF)
+ 
++# Build bindings only
++option(BINDINGS_ONLY "Build bindings only" OFF)
++
++# Point to library if building bindings only
++set(BABEL_SYSTEM_LIBRARY ${BABEL_LIBRARY}
++    CACHE PATH "Point to openbabel library if building bindings only")
++
+ # Should all bindings be built?
+ option(ALL_BINDINGS "Build all languages bindings" OFF)
+ 
+diff --git a/scripts/CMakeLists.txt b/scripts/CMakeLists.txt
+index 16e9000..ecd2295 100644
+--- a/scripts/CMakeLists.txt
++++ b/scripts/CMakeLists.txt
+@@ -92,16 +92,30 @@ if (DO_PYTHON_BINDINGS)
+     endif(RUN_SWIG)
+ 
+     add_library(bindings_python MODULE ${openbabel_SOURCE_DIR}/scripts/python/openbabel-python.cpp)
+-    target_link_libraries(bindings_python ${PYTHON_LIBRARIES} ${BABEL_LIBRARY})
++    if(BINDINGS_ONLY)
++        target_link_libraries(bindings_python ${PYTHON_LIBRARIES} ${BABEL_SYSTEM_LIBRARY})
++    else()
++        target_link_libraries(bindings_python ${PYTHON_LIBRARIES} ${BABEL_LIBRARY})
++    endif()
++
+     if(NOT WIN32)
+         set_target_properties(bindings_python PROPERTIES
+             OUTPUT_NAME _openbabel
+             PREFIX ""
+             SUFFIX .so )
+-        add_dependencies(bindings_python openbabel)
+-        install(TARGETS bindings_python LIBRARY DESTINATION ${LIB_INSTALL_DIR})
+-        install(FILES ${openbabel_SOURCE_DIR}/scripts/python/openbabel.py DESTINATION ${LIB_INSTALL_DIR})
+-        install(FILES ${openbabel_SOURCE_DIR}/scripts/python/pybel.py DESTINATION ${LIB_INSTALL_DIR})
++        if(NOT BINDINGS_ONLY)
++            add_dependencies(bindings_python openbabel)
++        endif()
++
++        install(TARGETS bindings_python
++                LIBRARY DESTINATION ${LIB_INSTALL_DIR}
++                COMPONENT bindings_python)
++        install(FILES ${openbabel_SOURCE_DIR}/scripts/python/openbabel.py
++                DESTINATION ${LIB_INSTALL_DIR}
++                COMPONENT bindings_python)
++        install(FILES ${openbabel_SOURCE_DIR}/scripts/python/pybel.py
++                DESTINATION ${LIB_INSTALL_DIR}
++                COMPONENT bindings_python)
+     else(NOT WIN32)
+         set_target_properties(bindings_python PROPERTIES
+             OUTPUT_NAME _openbabel
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index 7841782..6f3495f 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -2,7 +2,12 @@
+ add_definitions(-DTESTDATADIR="\\"${CMAKE_SOURCE_DIR}/test/files/\\"")
+ 
+ # define FORMATDIR for location of format plugin binaries
+-add_definitions(-DFORMATDIR="\\"${openbabel_BINARY_DIR}/lib/\\"")
++if(BINDINGS_ONLY)
++  set(FORMATDIR "${OB_MODULE_PATH}/")
++else()
++  set(FORMATDIR "${openbabel_BINARY_DIR}/lib${LIB_SUFFIX}/")
++endif()
++add_definitions(-DFORMATDIR="\\"${FORMATDIR}/\\"")
+ 
+ ###########################################################
+ #  new tests using obtest.h
+@@ -89,7 +94,7 @@ foreach(test ${tests})
+   add_test(${test}_Test ${TEST_PATH}/test_${test})
+   set_tests_properties(${test}_Test PROPERTIES
+     FAIL_REGULAR_EXPRESSION "ERROR;FAIL;Test failed"
+-    ENVIRONMENT "BABEL_DATADIR=${CMAKE_SOURCE_DIR}/data;LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/lib")
++    ENVIRONMENT "BABEL_DATADIR=${CMAKE_SOURCE_DIR}/data;LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/lib${LIB_SUFFIX}")
+ endforeach(test ${tests})
+ 
+ ############################################################
+@@ -152,7 +157,7 @@ if(WITH_INCHI)
+              ${TEST_PATH}/test_inchiwrite ${inchidata}/${test} ${inchidata}/${test}.txt)
+     set_tests_properties(inchi${test}_Test PROPERTIES
+                          FAIL_REGULAR_EXPRESSION "Not ok"
+-                         ENVIRONMENT "BABEL_DATADIR=${CMAKE_SOURCE_DIR}/data;LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/lib"
++                         ENVIRONMENT "BABEL_DATADIR=${CMAKE_SOURCE_DIR}/data;LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/lib${LIB_SUFFIX}"
+     )
+   endforeach(test ${inchitests})
+ endif(WITH_INCHI)
+@@ -166,7 +171,7 @@ foreach(test ${old_tests})
+   add_test(${test}_Test ${TEST_PATH}/test_${test})
+   set_tests_properties(${test}_Test PROPERTIES
+     FAIL_REGULAR_EXPRESSION "not ok"
+-    ENVIRONMENT "BABEL_DATADIR=${CMAKE_SOURCE_DIR}/data;LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/lib"
++    ENVIRONMENT "BABEL_DATADIR=${CMAKE_SOURCE_DIR}/data;LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/lib${LIB_SUFFIX}"
+  )
+ endforeach(test ${old_tests})
+ 
+@@ -181,8 +186,8 @@ if(NOT BUILD_SHARED AND NOT BUILD_MIXED)
+ endif()
+ install(TARGETS roundtrip
+                 RUNTIME DESTINATION bin
+-                LIBRARY DESTINATION lib
+-                ARCHIVE DESTINATION lib
++                LIBRARY DESTINATION lib${LIB_SUFFIX}
++                ARCHIVE DESTINATION lib${LIB_SUFFIX}
+ )
+ 
+ ###########################
+@@ -199,10 +204,10 @@ if(NOT MINGW AND NOT CYGWIN)
+         babel sym smartssym fastsearch unique kekule)
+     foreach(pytest ${pytests})
+     SET_SOURCE_FILES_PROPERTIES(test${pytest}.py PROPERTIES
+-      PYTHONPATH "${CMAKE_SOURCE_DIR}/scripts/python:${CMAKE_BINARY_DIR}/lib"
+-      BABEL_LIBDIR "${CMAKE_BINARY_DIR}/lib"
++      PYTHONPATH "${CMAKE_SOURCE_DIR}/scripts/python:${CMAKE_BINARY_DIR}/lib${LIB_SUFFIX}"
++      BABEL_LIBDIR "${FORMATDIR}"
+       BABEL_DATADIR "${CMAKE_SOURCE_DIR}/data"
+-      LD_LIBRARY_PATH "${CMAKE_BINARY_DIR}/lib"
++      LD_LIBRARY_PATH "${CMAKE_BINARY_DIR}/lib${LIB_SUFFIX}"
+     )
+       ADD_PYTHON_TEST(pytest_${pytest} test${pytest}.py)
+       set_tests_properties(pytest_${pytest} PROPERTIES
+@@ -221,10 +226,10 @@ if (PYTHON_BINDINGS)
+       bindings _pybel example)
+   foreach(pybindtest ${pybindtests})
+     SET_SOURCE_FILES_PROPERTIES(test${pybindtest}.py PROPERTIES
+-        PYTHONPATH "${CMAKE_SOURCE_DIR}/scripts/python:${CMAKE_BINARY_DIR}/lib"
+-        BABEL_LIBDIR "${CMAKE_BINARY_DIR}/lib"
++        PYTHONPATH "${CMAKE_SOURCE_DIR}/scripts/python:${CMAKE_BINARY_DIR}/lib${LIB_SUFFIX}"
++        BABEL_LIBDIR "${FORMATDIR}"
+         BABEL_DATADIR "${CMAKE_SOURCE_DIR}/data"
+-        LD_LIBRARY_PATH "${CMAKE_BINARY_DIR}/lib"
++        LD_LIBRARY_PATH "${CMAKE_BINARY_DIR}/lib${LIB_SUFFIX}"
+     )
+     if(MSVC)
+       SET_SOURCE_FILES_PROPERTIES(test${pybindtest}.py PROPERTIES
+diff --git a/tools/CMakeLists.txt b/tools/CMakeLists.txt
+index 1f547bf..fb98441 100644
+--- a/tools/CMakeLists.txt
++++ b/tools/CMakeLists.txt
+@@ -38,8 +38,8 @@ if(BUILD_SHARED)
+     target_link_libraries(${tool} ${BABEL_LIBRARY})
+     install(TARGETS ${tool}
+                     RUNTIME DESTINATION bin
+-                    LIBRARY DESTINATION lib
+-                    ARCHIVE DESTINATION lib
++                    LIBRARY DESTINATION lib${LIB_SUFFIX}
++                    ARCHIVE DESTINATION lib${LIB_SUFFIX}
+     )
+   endforeach(tool)
+ 
+@@ -53,8 +53,8 @@ if(BUILD_SHARED)
+     target_link_libraries(obspectrophore ${BABEL_LIBRARY})
+     install(TARGETS obspectrophore
+                     RUNTIME DESTINATION bin
+-                    LIBRARY DESTINATION lib
+-                    ARCHIVE DESTINATION lib
++                    LIBRARY DESTINATION lib${LIB_SUFFIX}
++                    ARCHIVE DESTINATION lib${LIB_SUFFIX}
+     )
+ 
+     # obgrep -- requires getopt
+@@ -66,8 +66,8 @@ if(BUILD_SHARED)
+       target_link_libraries(obgrep ${BABEL_LIBRARY})
+       install(TARGETS obgrep
+                       RUNTIME DESTINATION bin
+-                      LIBRARY DESTINATION lib
+-                      ARCHIVE DESTINATION lib
++                      LIBRARY DESTINATION lib${LIB_SUFFIX}
++                      ARCHIVE DESTINATION lib${LIB_SUFFIX}
+       )
+   endif(NOT MINIMAL_BUILD)
+ 
+@@ -146,7 +146,7 @@ else(BUILD_SHARED)
+ 
+   install(TARGETS babel
+           RUNTIME DESTINATION bin
+-          LIBRARY DESTINATION lib
+-          ARCHIVE DESTINATION lib)
++          LIBRARY DESTINATION lib${LIB_SUFFIX}
++          ARCHIVE DESTINATION lib${LIB_SUFFIX})
+ 
+ endif(BUILD_SHARED)

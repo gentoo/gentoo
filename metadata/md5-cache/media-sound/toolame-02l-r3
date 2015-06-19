@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=tooLAME - an optimized mpeg 1/2 layer 2 audio encoder
+EAPI=4
+HOMEPAGE=http://www.planckenergy.com
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=LGPL-2.1
+SLOT=0
+SRC_URI=mirror://sourceforge/toolame/toolame-02l.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=0eb5b89fe0ab13a079563709cf8998c8

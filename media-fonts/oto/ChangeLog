@@ -1,0 +1,64 @@
+# ChangeLog for media-fonts/oto
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/oto/ChangeLog,v 1.20 2015/05/18 20:32:41 mrueg Exp $
+
+  18 May 2015; Manuel Rüger <mrueg@gentoo.org> -oto-0.4.ebuild:
+  Remove old.
+
+  19 Mar 2014; Agostino Sarubbo <ago@gentoo.org> oto-0.5.ebuild:
+  Stable for alpha, wrt bug #286239
+
+  12 Mar 2014; Agostino Sarubbo <ago@gentoo.org> oto-0.5.ebuild:
+  Stable for sparc, wrt bug #286239
+
+  24 Feb 2014; Chema Alonso <nimiux@gentoo.org> oto-0.5.ebuild:
+  Stable for amd64 wrt bug #286239
+
+  23 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> oto-0.5.ebuild:
+  x86 stable wrt bug #286239
+
+  15 Feb 2014; Akinori Hattori <hattya@gentoo.org> oto-0.5.ebuild:
+  ia64 stable wrt bug #286239
+
+  14 Feb 2014; Markus Meier <maekke@gentoo.org> Manifest:
+  sign manifest
+
+  14 Feb 2014; Markus Meier <maekke@gentoo.org> oto-0.5.ebuild:
+  arm stable, bug #286239
+
+  17 Apr 2010; Ryan Hill <dirtyepic@gentoo.org> oto-0.5.ebuild:
+  Completely broken for 8 months and no one noticed.
+
+  07 Sep 2009; Ryan Hill <dirtyepic@gentoo.org> oto-0.5.ebuild:
+  Clean up ebuild.
+
+*oto-0.5 (24 Sep 2008)
+
+  24 Sep 2008; Peter Alfredsen <loki_val@gentoo.org> +oto-0.5.ebuild:
+  Bump
+
+  24 Feb 2008; Raúl Porcel <armin76@gentoo.org> oto-0.4.ebuild:
+  alpha stable
+
+  23 Jan 2008; Raúl Porcel <armin76@gentoo.org> oto-0.4.ebuild:
+  Add ~alpha, x86 stable
+
+  11 Jul 2006; Aron Griffis <agriffis@gentoo.org> oto-0.4.ebuild:
+  Mark 0.4 stable on ia64
+
+  23 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> oto-0.4.ebuild:
+  Stable on sparc
+
+  23 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> oto-0.4.ebuild:
+  Added ~sparc
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> oto-0.4.ebuild:
+  virtual/glibc -> virtual/libc
+
+  30 Mar 2004; David Holm <dholm@gentoo.org> oto-0.4.ebuild:
+  Added to ~ppc.
+
+*oto-0.4 (30 Mar 2004)
+
+  30 Mar 2004; <matsuu@gentoo.org> metadata.xml, oto-0.4.ebuild:
+  Initial import. Bug#46083.

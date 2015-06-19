@@ -1,0 +1,4 @@
+define command {
+  command_name nagios_ipmi_sensors
+  command_line $USER1$/nagios_ipmi_sensors.pl -h $HOSTADDRESS$
+}

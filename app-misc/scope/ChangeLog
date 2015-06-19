@@ -1,0 +1,45 @@
+# ChangeLog for app-misc/scope
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/scope/ChangeLog,v 1.11 2013/06/06 06:37:41 pinkbyte Exp $
+
+  06 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Reassigning due to Zlogene became Gentoo developer, remove proxy maintainers
+  herd
+
+  03 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> -scope-0.04.ebuild,
+  scope-0.04-r1.ebuild:
+  Respect CC on configure stage too, wrt bug #459848. Drop old revision
+
+  01 Mar 2013; Agostino Sarubbo <ago@gentoo.org> scope-0.04-r1.ebuild:
+  Stable for x86, wrt bug #459750
+
+  01 Mar 2013; Agostino Sarubbo <ago@gentoo.org> scope-0.04-r1.ebuild:
+  Stable for amd64, wrt bug #459750
+
+  28 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Package will be maintained by Mikle Kolyada through proxy maintainers, wrt
+  bug #459570
+
+*scope-0.04-r1 (02 Nov 2012)
+
+  02 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> +scope-0.04-r1.ebuild:
+  Revision bump: EAPI 4, add ~amd64 keyword, wrt bug #440804. Thanks to Mikle
+  Kolyada and Vicente Olivert Riera
+
+  30 Dec 2008; Christoph Mende <angelos@gentoo.org> scope-0.04.ebuild:
+  QA: Respect CC (bug 243668)
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  11 Aug 2006; Chris Bainbridge <chrb@gentoo.org> -scope-0.03.ebuild,
+  scope-0.04.ebuild:
+  stable x86, remove old version
+
+*scope-0.04 (15 Apr 2006)
+
+  15 Apr 2006; <chrb@gentoo.org> +scope-0.04.ebuild:
+  version bump, thanks Alon Bar-Lev, #129988
+
+  26 Oct 2005; Chris Bainbridge <chrb@gentoo.org> ChangeLog:
+  new package

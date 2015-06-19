@@ -1,0 +1,171 @@
+diff --git a/Ganeti/HTools/CLI.hs b/Ganeti/HTools/CLI.hs
+index b000a00..d9177c6 100644
+--- a/Ganeti/HTools/CLI.hs
++++ b/Ganeti/HTools/CLI.hs
+@@ -74,11 +74,11 @@ module Ganeti.HTools.CLI
+ 
+ import Data.Maybe (fromMaybe)
+ import qualified Data.Version
+-import Monad
++import Control.Monad
+ import System.Console.GetOpt
+ import System.IO
+ import System.Info
+-import System
++import System.Exit
+ import Text.Printf (printf)
+ 
+ import qualified Ganeti.HTools.Version as Version(version)
+diff --git a/Ganeti/HTools/ExtLoader.hs b/Ganeti/HTools/ExtLoader.hs
+index 0412c1b..17b8449 100644
+--- a/Ganeti/HTools/ExtLoader.hs
++++ b/Ganeti/HTools/ExtLoader.hs
+@@ -36,10 +36,11 @@ module Ganeti.HTools.ExtLoader
+     ) where
+ 
+ import Data.Maybe (isJust, fromJust)
+-import Monad
++import Control.Monad
++import qualified Control.Exception as E
+ import System.FilePath
+ import System.IO
+-import System
++import System.Exit
+ import Text.Printf (printf, hPrintf)
+ 
+ import qualified Ganeti.HTools.Luxi as Luxi
+@@ -56,8 +57,8 @@ import Ganeti.HTools.CLI
+ import Ganeti.HTools.Utils (sepSplit, tryRead)
+ 
+ -- | Error beautifier
+-wrapIO :: IO (Result a) -> IO (Result a)
+-wrapIO = flip catch (return . Bad . show)
++wrapIO :: (Show a) => IO (Result a) -> IO (Result a)
++wrapIO = flip (E.catch :: IO a -> (E.IOException -> IO a) -> IO a) (return . Bad . show )
+ 
+ parseUtilisation :: String -> Result (String, DynUtil)
+ parseUtilisation line =
+diff --git a/hail.hs b/hail.hs
+index 541e1a9..68f4488 100644
+--- a/hail.hs
++++ b/hail.hs
+@@ -27,10 +27,10 @@ module Main (main) where
+ 
+ import Data.List
+ import Data.Maybe (isJust, fromJust)
+-import Monad
+-import System (exitWith, ExitCode(..))
++import Control.Monad
++import System.Environment
++import System.Exit
+ import System.IO
+-import qualified System
+ 
+ import qualified Ganeti.HTools.Cluster as Cluster
+ 
+@@ -99,7 +99,7 @@ readRequest opts args = do
+ -- | Main function.
+ main :: IO ()
+ main = do
+-  cmd_args <- System.getArgs
++  cmd_args <- getArgs
+   (opts, args) <- parseOpts cmd_args "hail" options
+ 
+   let shownodes = optShowNodes opts
+diff --git a/hbal.hs b/hbal.hs
+index 46cccf8..0254008 100644
+--- a/hbal.hs
++++ b/hbal.hs
+@@ -30,12 +30,12 @@ import Control.Exception (bracket)
+ import Data.List
+ import Data.Maybe (isJust, isNothing, fromJust)
+ import Data.IORef
+-import Monad
+-import System (exitWith, ExitCode(..))
++import Control.Monad
+ import System.IO
++import System.Exit
+ import System.Posix.Process
+ import System.Posix.Signals
+-import qualified System
++import System.Environment
+ 
+ import Text.Printf (printf, hPrintf)
+ 
+@@ -223,7 +223,7 @@ runJobSet master fin_nl il cmd_jobs = do
+ -- | Main function.
+ main :: IO ()
+ main = do
+-  cmd_args <- System.getArgs
++  cmd_args <- getArgs
+   (opts, args) <- parseOpts cmd_args "hbal" options
+ 
+   unless (null args) $ do
+diff --git a/hscan.hs b/hscan.hs
+index c14846f..d613f83 100644
+--- a/hscan.hs
++++ b/hscan.hs
+@@ -28,11 +28,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ module Main (main) where
+ 
+ import Data.Maybe (isJust, fromJust, fromMaybe)
+-import Monad
+-import System (exitWith, ExitCode(..))
++import Control.Monad
++import System.Environment
++import System.Exit
+ import System.IO
+ import System.FilePath
+-import qualified System
+ 
+ import Text.Printf (printf)
+ 
+@@ -135,7 +135,7 @@ writeDataInner nlen name opts cdata fixdata = do
+ -- | Main function.
+ main :: IO ()
+ main = do
+-  cmd_args <- System.getArgs
++  cmd_args <- getArgs
+   (opts, clusters) <- parseOpts cmd_args "hscan" options
+   let local = "LOCAL"
+ 
+diff --git a/hspace.hs b/hspace.hs
+index 57d0302..f207c67 100644
+--- a/hspace.hs
++++ b/hspace.hs
+@@ -29,10 +29,10 @@ import Data.Char (toUpper, isAlphaNum)
+ import Data.List
+ import Data.Maybe (isJust, fromJust)
+ import Data.Ord (comparing)
+-import Monad
+-import System (exitWith, ExitCode(..))
++import Control.Monad
++import System.Exit
++import System.Environment
+ import System.IO
+-import qualified System
+ 
+ import Text.Printf (printf, hPrintf)
+ 
+@@ -207,7 +207,7 @@ printAllocationMap verbose msg nl ixes =
+ -- | Main function.
+ main :: IO ()
+ main = do
+-  cmd_args <- System.getArgs
++  cmd_args <- getArgs
+   (opts, args) <- parseOpts cmd_args "hspace" options
+ 
+   unless (null args) $ do
+diff --git a/test.hs b/test.hs
+index 12aa50d..81838eb 100644
+--- a/test.hs
++++ b/test.hs
+@@ -29,7 +29,7 @@ import Data.IORef
+ import Test.QuickCheck.Batch
+ import System.IO
+ import System.Exit
+-import System (getArgs)
++import System.Environment (getArgs)
+ 
+ import Ganeti.HTools.QC
+ 

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install nofetch postinst postrm prerm setup unpack
+DEPEND=jce? ( app-arch/unzip ) kernel_SunOS? ( app-arch/unzip ) pax_kernel? ( sys-apps/paxctl ) selinux? ( sec-policy/selinux-java ) >=dev-java/java-config-2.2.0 app-eselect/eselect-java
+DESCRIPTION=Oracle's Java SE Development Kit
+EAPI=5
+HOMEPAGE=http://www.oracle.com/technetwork/java/javase/
+IUSE=+X alsa derby doc examples jce kernel_SunOS nsplugin pax_kernel selinux source
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=Oracle-BCLA-JavaSE examples? ( BSD )
+RDEPEND=X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXi x11-libs/libXt x11-libs/libXtst ) alsa? ( media-libs/alsa-lib ) doc? ( dev-java/java-sdk-docs:1.6.0 ) selinux? ( sec-policy/selinux-java ) !prefix? ( sys-libs/glibc ) >=dev-java/java-config-2.2.0 app-eselect/eselect-java
+RESTRICT=fetch strip
+SLOT=1.6
+SRC_URI=amd64? ( jdk-6u45-linux-x64.bin examples? ( jdk-6u45-linux-x64-demos.tar.gz ) ) ia64? ( jdk-6u45-linux-ia64.bin examples? ( jdk-6u45-linux-ia64-demos.tar.gz ) ) x86? ( jdk-6u45-linux-i586.bin examples? ( jdk-6u45-linux-i586-demos.tar.gz ) ) x64-solaris? ( jdk-6u45-solaris-i586.sh jdk-6u45-solaris-x64.sh examples? ( jdk-6u45-solaris-i586-demos.tar.Z jdk-6u45-solaris-x64-demos.tar.Z ) ) x86-solaris? ( jdk-6u45-solaris-i586.sh examples? ( jdk-6u45-solaris-i586-demos.tar.Z ) ) sparc-solaris? ( jdk-6u45-solaris-sparc.sh examples? ( jdk-6u45-solaris-sparc-demos.tar.Z ) ) sparc64-solaris? ( jdk-6u45-solaris-sparc.sh jdk-6u45-solaris-sparcv9.sh examples? ( jdk-6u45-solaris-sparc-demos.tar.Z jdk-6u45-solaris-sparcv9-demos.tar.Z ) ) jce? ( jce_policy-6.zip )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	java-vm-2	caa0212cf1c60716fd4b3ab09268be3e	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=6e21d833357b73d75bf774fb1dd660bc

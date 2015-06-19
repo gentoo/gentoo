@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/unzip
+DESCRIPTION=ViSP images data set
+EAPI=5
+HOMEPAGE=http://www.irisa.fr/lagadic/visp/
+KEYWORDS=~amd64 ~arm
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.irisa.fr/lagadic/visp/download/sequence/ViSP-images-2.10.0.zip
+_md5_=c772ed189697c3551619098c5f1446ba

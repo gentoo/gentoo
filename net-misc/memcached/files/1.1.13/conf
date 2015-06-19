@@ -1,0 +1,28 @@
+# Copyright 2003 Gentoo Technologies, Inc
+# $Header: /var/cvsroot/gentoo-x86/net-misc/memcached/files/1.1.13/conf,v 1.1 2007/03/31 19:03:18 robbat2 Exp $
+# memcached config file
+
+MEMCACHED_BINARY="/usr/bin/memcached"
+
+#Specify memory usage in megabytes (do not use letters)
+#64MB is default
+MEMUSAGE="64"
+
+#User to run as
+MEMCACHED_RUNAS="memcached"
+
+#Specify maximum number of concurrent connections
+#1024 is default
+MAXCONN="1024"
+
+#Listen for connections on what address?
+LISTENON=""
+
+#Listen for connections on what port?
+PORT="11211"
+
+#PID file location
+PIDFILE="/var/run/memcached/memcached-${PORT}.pid"
+
+#Other Options
+MISC_OPTS=""

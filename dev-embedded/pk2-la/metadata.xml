@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>embedded</herd>
+	<longdescription>
+		pk2-la allows the Microchip PICkit2 programmer to be used as a
+		Logic Analyzer and I/O Probe.
+	</longdescription>
+	<maintainer>
+		<email>josejx@gentoo.org</email>
+		<name>Joseph Jezak</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">pk2-la</remote-id>
+	</upstream>
+</pkgmetadata>

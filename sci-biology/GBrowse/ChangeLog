@@ -1,0 +1,49 @@
+# ChangeLog for sci-biology/GBrowse
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/GBrowse/ChangeLog,v 1.10 2015/06/13 19:38:55 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org> GBrowse-2.48-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+  19 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Drop perl herd from metadata
+
+  25 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -GBrowse-2.44-r1.ebuild:
+  Remove old due to old EAPI
+
+*GBrowse-2.48-r1 (27 Aug 2014)
+
+  27 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +GBrowse-2.48-r1.ebuild, -GBrowse-2.48.ebuild:
+  bumped EAPI to 5 to support dev-lang/perl upgrades
+
+  19 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  herd is now sci-biology
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+*GBrowse-2.48 (27 Feb 2012)
+
+  27 Feb 2012; Andrey Kislyuk <weaver@gentoo.org> -GBrowse-2.39.ebuild,
+  +GBrowse-2.48.ebuild:
+  Version bump
+
+*GBrowse-2.44-r1 (02 Jan 2012)
+
+  02 Jan 2012; Andrey Kislyuk <weaver@gentoo.org> -GBrowse-2.44.ebuild,
+  +GBrowse-2.44-r1.ebuild:
+  Disable webapp autoslotting, bug 396085
+
+*GBrowse-2.44 (26 Dec 2011)
+
+  26 Dec 2011; Andrey Kislyuk <weaver@gentoo.org> +GBrowse-2.44.ebuild:
+  Version bump
+
+*GBrowse-2.39 (20 Jul 2011)
+
+  20 Jul 2011; Andrey Kislyuk <weaver@gentoo.org> +GBrowse-2.39.ebuild,
+  +files/GBrowseInstall.pm-2.39.patch, +metadata.xml:
+  Import from sci overlay, rename and rewrite; thanks to Martin Mokrejs
+  <mmokrejs@fold.natur.cuni.cz> and Justin Lecher <jlec@gentoo.org>

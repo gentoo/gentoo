@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=>=dev-libs/libowfat-0.28-r1 dev-libs/dietlibc
+DESCRIPTION=a small yet feature-complete init
+HOMEPAGE=http://www.fefe.de/minit/
+KEYWORDS=~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/libowfat-0.28-r1 dev-libs/dietlibc
+SLOT=0
+SRC_URI=http://dl.fefe.de/minit-0.10.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=17240a603329f79662f507bd89d6bc3e

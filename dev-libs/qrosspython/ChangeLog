@@ -1,0 +1,31 @@
+# ChangeLog for dev-libs/qrosspython
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/qrosspython/ChangeLog,v 1.6 2015/06/06 19:36:54 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> qrosspython-0.3.1.ebuild,
+  qrosspython-9999.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  14 Jul 2014; Sergey Popov <pinkbyte@gentoo.org> qrosspython-9999.ebuild:
+  Migrate to git-r3 eclass
+
+  14 Jul 2014; Sergey Popov <pinkbyte@gentoo.org> qrosspython-0.3.1.ebuild,
+  qrosspython-9999.ebuild:
+  Adjust dependency on dev-libs/qrosscore to ease revbumps, add missing
+  dependencies on dev-python/sip and dev-qt/qttest, wrt bug #514076. Thanks to
+  Patrick Lauer for discovering this issue
+
+*qrosspython-0.3.1 (08 Jan 2014)
+
+  08 Jan 2014; Maxim Koltsov <maksbotan@gentoo.org> +qrosspython-0.3.1.ebuild,
+  qrosspython-9999.ebuild:
+  Add 0.3.1 release, improve python-related code. Thanks to 0xd34df00d.
+
+*qrosspython-9999 (22 Aug 2011)
+
+  22 Aug 2011; Maxim Koltsov <maksbotan@gentoo.org> +qrosspython-9999.ebuild,
+  +metadata.xml:
+  Copy dev-libs/qrosspython from rion-overlay, thanks to 0xd34df00d

@@ -1,0 +1,10 @@
+# ChangeLog for net-dns/hash-slinger
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/hash-slinger/ChangeLog,v 1.1 2015/02/22 23:31:25 mschiff Exp $
+
+*hash-slinger-2.6 (22 Feb 2015)
+
+  22 Feb 2015; Marc Schiffbauer <mschiff@gentoo.org> +hash-slinger-2.6.ebuild,
+  +metadata.xml:
+  Initial commit of hash-slinger
+

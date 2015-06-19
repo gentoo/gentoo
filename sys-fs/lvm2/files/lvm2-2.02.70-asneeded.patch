@@ -1,0 +1,15 @@
+http://bugs.gentoo.org/330255
+
+liblvm2app.so: undefined reference to `floor'
+
+--- liblvm/Makefile.in
++++ liblvm/Makefile.in
+@@ -39,7 +39,7 @@
+ 
+ include $(top_builddir)/make.tmpl
+ 
+-LIBS += $(LVMINTERNAL_LIBS) -ldevmapper
++LIBS += $(LVMINTERNAL_LIBS) -ldevmapper -lm
+ 
+ ifeq ("@DMEVENTD@", "yes")
+   LIBS += -ldevmapper-event

@@ -1,0 +1,57 @@
+# ChangeLog for dev-java/jaxp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jaxp/ChangeLog,v 1.20 2014/06/29 00:13:06 mrueg Exp $
+
+  29 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -jaxp-1.4.ebuild:
+  NM: Cleanup old.
+
+  19 Oct 2012; Christoph Junghans <ottxor@gentoo.org> jaxp-1.4-r1.ebuild:
+  added prefix support (bug #435572)
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> jaxp-1.4-r1.ebuild:
+  Marking jaxp-1.4-r1 ppc for bug 396875
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> jaxp-1.4-r1.ebuild:
+  x86 stable wrt bug #396875
+
+  23 Jan 2012; Agostino Sarubbo <ago@gentoo.org> jaxp-1.4-r1.ebuild:
+  Stable for amd64, wrt bug #396875
+
+  29 Mar 2009; Petteri Räty <betelgeuse@gentoo.org> jaxp-1.4-r1.ebuild:
+  Use ln instead of dosym as dosym seems to be making the build fail.
+
+*jaxp-1.4-r1 (11 Feb 2009)
+
+  11 Feb 2009; Petteri Räty <betelgeuse@gentoo.org> +jaxp-1.4-r1.ebuild:
+  Install a jaxp.jar symlink to jaxp-ri.jar.
+
+  09 Dec 2007; Krzysiek Pawlik <nelchael@gentoo.org> jaxp-1.4.ebuild:
+  Stable on ppc, see bug #200585.
+
+  19 Aug 2007; William L. Thomson Jr. <wltjr@gentoo.org> jaxp-1.4.ebuild:
+  amd64 stable, bug #187681.
+
+  15 Aug 2007; Christian Faulhammer <opfer@gentoo.org> jaxp-1.4.ebuild:
+  stable x86, bug 187681
+
+  11 Aug 2007; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml:
+  Remove myself from <maintainer>.
+
+  23 May 2007; Diego Pettenò <flameeyes@gentoo.org> jaxp-1.4.ebuild:
+  Add ~x86-fbsd keyword. Bug #176906.
+
+  07 May 2007; Krzysiek Pawlik <nelchael@gentoo.org> jaxp-1.4.ebuild:
+  Disable building javadocs using new features from java-pkg-2.eclass.
+
+  04 May 2007; Krzysiek Pawlik <nelchael@gentoo.org> files/build.xml-1.4,
+  jaxp-1.4.ebuild:
+  Use repackaged version of distfile.
+
+  04 May 2007; Krzysiek Pawlik <nelchael@gentoo.org> jaxp-1.4.ebuild:
+  Set JDK/JRE to 1.5, see bug #177069.
+
+*jaxp-1.4 (01 May 2007)
+
+  01 May 2007; Krzysiek Pawlik <nelchael@gentoo.org> +files/build.xml-1.4,
+  +metadata.xml, +jaxp-1.4.ebuild:
+  Initial commit of jaxp.

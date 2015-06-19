@@ -1,0 +1,76 @@
+# ChangeLog for dev-perl/HTML-Clean
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Clean/ChangeLog,v 1.27 2014/08/22 19:21:38 axs Exp $
+
+*HTML-Clean-0.800.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +HTML-Clean-0.800.0-r1.ebuild, -HTML-Clean-0.800.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -HTML-Clean-0.8-r1.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> HTML-Clean-0.800.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*HTML-Clean-0.800.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org> +HTML-Clean-0.800.0.ebuild:
+  Change version scheme
+
+  12 Mar 2009; Torsten Veller <tove@gentoo.org> HTML-Clean-0.8-r1.ebuild:
+  Block <app-text/html-xml-utils-5.3 (#218146). Fix LICENSE
+
+  15 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  HTML-Clean-0.8-r1.ebuild:
+  Ebuild maintenance
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  HTML-Clean-0.8-r1.ebuild:
+  Adding perl dep; fixed header; fixed DEPEND
+
+  09 Dec 2005; Tom Gall <tgall@gentoo.org> HTML-Clean-0.8-r1.ebuild:
+  stable on ppc64
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> HTML-Clean-0.8-r1.ebuild:
+  Mark 0.8-r1 stable on ia64
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> HTML-Clean-0.8-r1.ebuild:
+  add ~ia64
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  HTML-Clean-0.8-r1.ebuild, -HTML-Clean-0.8.ebuild:
+  Cleaning
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  23 Dec 2004; Yuta SATOH <nigoro@gentoo.org> HTML-Clean-0.8-r1.ebuild:
+  added ~ppc64
+
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> HTML-Clean-0.8-r1.ebuild:
+  Stable on alpha.
+
+  15 Apr 2004; Michael McCabe <randy@gentoo.org> HTML-Clean-0.8-r1.ebuild:
+  added s390 to keywords
+
+*HTML-Clean-0.8-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+
+  forced version bump to install into correct locations
+
+*HTML-Clean-0.8 (24 Oct 2002)
+
+  24 Oct 2002; <mcummings@gentoo.org> HTML-Clean-0.8 ChangeLog:
+  Initial import. Ebuild submitted by ryan.shaw@standfordalumni.org.

@@ -1,0 +1,27 @@
+--- xawtv-3.95/libng/plugins/write-qt.c.old	2006-10-16 20:50:45.000000000 +0200
++++ xawtv-3.95/libng/plugins/write-qt.c	2006-10-17 19:36:09.000000000 +0200
+@@ -348,10 +348,10 @@
+ 		    info[i]->name,info[i]->long_name);
+ 	    for (j = 0; j < info[i]->num_fourccs; j++)
+ 		fprintf(stderr,"   fcc   : %s\n",info[i]->fourccs[j]);
+-	    for (j = 0; j < info[i]->num_encoding_colormodels; j++)
++	    for (j = 0; j < lqt_num_colormodels(); j++)
+ 		fprintf(stderr,"   cmodel: %d [%s]\n",
+-			info[i]->encoding_colormodels[j],
+-			lqt_get_colormodel_string(info[i]->encoding_colormodels[j]));
++			lqt_get_colormodel(j),
++			lqt_get_colormodel_string(j));
+ 	}
+ 
+ 	/* sanity checks */
+@@ -378,8 +378,8 @@
+ 	/* pick colormodel */
+ 	fmtid  = VIDEO_NONE;
+ 	cmodel = 0;
+-	for (j = 0; j < info[i]->num_encoding_colormodels; j++) {
+-	    cmodel = info[i]->encoding_colormodels[j];
++	for (j = 0; j < lqt_num_colormodels(); j++) {
++	    cmodel = lqt_get_colormodel(j);
+ 	    if (cmodel>= sizeof(cmodels)/sizeof(int))
+ 		continue;
+ 	    if (!cmodels[cmodel])

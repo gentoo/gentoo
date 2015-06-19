@@ -1,0 +1,345 @@
+# ChangeLog for app-text/docbook-sgml-dtd
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/docbook-sgml-dtd/ChangeLog,v 1.72 2014/04/06 15:20:55 vapier Exp $
+
+  06 Apr 2014; Mike Frysinger <vapier@gentoo.org>
+  docbook-sgml-dtd-3.0-r3.ebuild, docbook-sgml-dtd-3.1-r3.ebuild,
+  docbook-sgml-dtd-4.0-r3.ebuild, docbook-sgml-dtd-4.1-r3.ebuild,
+  docbook-sgml-dtd-4.2-r2.ebuild, docbook-sgml-dtd-4.3-r2.ebuild,
+  docbook-sgml-dtd-4.4.ebuild, docbook-sgml-dtd-4.5.ebuild:
+  Add arm64 love.
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/sgml-herd-has-no-maintainers-
+  again-td259655.html
+
+  08 Dec 2012; Ulrich Müller <ulm@gentoo.org> docbook-sgml-dtd-3.0-r3.ebuild,
+  docbook-sgml-dtd-3.1-r3.ebuild, docbook-sgml-dtd-4.0-r3.ebuild,
+  docbook-sgml-dtd-4.1-r3.ebuild, docbook-sgml-dtd-4.2-r2.ebuild,
+  docbook-sgml-dtd-4.3-r2.ebuild, docbook-sgml-dtd-4.4.ebuild,
+  docbook-sgml-dtd-4.5.ebuild:
+  Fix LICENSE, bug 446352.
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org>
+  docbook-sgml-dtd-4.0-r3.ebuild, docbook-sgml-dtd-4.1-r3.ebuild:
+  keyword ~amd64-fbsd
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  docbook-sgml-dtd-3.0-r3.ebuild:
+  keyword ~amd64-fbsd
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  docbook-sgml-dtd-3.1-r3.ebuild:
+  keyword ~amd64-fbsd
+
+  11 Feb 2010; Ulrich Mueller <ulm@gentoo.org>
+  docbook-sgml-dtd-3.0-r3.ebuild, docbook-sgml-dtd-3.1-r3.ebuild,
+  docbook-sgml-dtd-4.0-r3.ebuild, docbook-sgml-dtd-4.1-r3.ebuild,
+  docbook-sgml-dtd-4.2-r2.ebuild, docbook-sgml-dtd-4.3-r2.ebuild,
+  docbook-sgml-dtd-4.4.ebuild, docbook-sgml-dtd-4.5.ebuild:
+  Fix LICENSE, bug 298556.
+
+  15 Jan 2010; Jonathan Callen <abcd@gentoo.org>
+  docbook-sgml-dtd-3.0-r3.ebuild, docbook-sgml-dtd-3.1-r3.ebuild,
+  docbook-sgml-dtd-4.0-r3.ebuild, docbook-sgml-dtd-4.1-r3.ebuild,
+  docbook-sgml-dtd-4.2-r2.ebuild, docbook-sgml-dtd-4.3-r2.ebuild,
+  docbook-sgml-dtd-4.4.ebuild, docbook-sgml-dtd-4.5.ebuild:
+  Cleanup ebuilds, add prefix keywords
+
+  23 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  docbook-sgml-dtd-3.0-r3.ebuild, docbook-sgml-dtd-3.1-r3.ebuild,
+  docbook-sgml-dtd-4.0-r3.ebuild, docbook-sgml-dtd-4.1-r3.ebuild,
+  docbook-sgml-dtd-4.2-r2.ebuild, docbook-sgml-dtd-4.4.ebuild:
+  Drop to ~mips (for docbook cleanup).
+
+*docbook-sgml-dtd-4.5 (20 Aug 2007)
+
+  20 Aug 2007; Leonardo Boshell <leonardop@gentoo.org>
+  +files/docbook-sgml-dtd-4.5-catalog.diff, +docbook-sgml-dtd-4.5.ebuild:
+  Added DTD for DocBook 4.5 (bug #188497).
+
+  12 Jul 2007; Roy Marples <uberlord@gentoo.org>
+  docbook-sgml-dtd-3.1-r3.ebuild,
+  docbook-sgml-dtd-4.0-r3.ebuild, docbook-sgml-dtd-4.1-r3.ebuild:
+  Keyworded ~sparc-fbsd
+
+  12 Mar 2007; Leonardo Boshell <leonardop@gentoo.org> metadata.xml:
+  Replacing text-markup herd with the new sgml herd.
+
+  11 Feb 2007; Fabian Groffen <grobian@gentoo.org>
+  docbook-sgml-dtd-4.2-r2.ebuild, docbook-sgml-dtd-4.4.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  21 Dec 2006; Roy Marples <uberlord@gentoo.org>
+  docbook-sgml-dtd-3.0-r3.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  26 Nov 2006; Steve Dibb <beandog@gentoo.org>
+  docbook-sgml-dtd-3.0-r3.ebuild, docbook-sgml-dtd-3.1-r3.ebuild,
+  docbook-sgml-dtd-4.0-r3.ebuild, docbook-sgml-dtd-4.1-r3.ebuild,
+  docbook-sgml-dtd-4.2-r2.ebuild, docbook-sgml-dtd-4.3-r2.ebuild,
+  docbook-sgml-dtd-4.4.ebuild:
+  Update homepage
+
+  10 Nov 2006; Alin Nastac <mrness@gentoo.org>
+  docbook-sgml-dtd-4.3-r2.ebuild:
+  Stable on amd64.
+
+  08 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  docbook-sgml-dtd-3.1-r3.ebuild, docbook-sgml-dtd-4.0-r3.ebuild,
+  docbook-sgml-dtd-4.1-r3.ebuild:
+  Add ~x86-fbsd keyword.
+
+  04 Sep 2006; Joshua Kinard <kumba@gentoo.org> docbook-sgml-dtd-4.4.ebuild:
+  Marked stable on mips.
+
+  03 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  docbook-sgml-dtd-3.0-r3.ebuild:
+  Add ~x86-fbsd keyword.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-docbook-sgml-dtd-3.0-r3,
+  files/digest-docbook-sgml-dtd-3.1-r3,
+  files/digest-docbook-sgml-dtd-4.0-r3,
+  files/digest-docbook-sgml-dtd-4.1-r3,
+  files/digest-docbook-sgml-dtd-4.2-r2,
+  files/digest-docbook-sgml-dtd-4.3-r2, files/digest-docbook-sgml-dtd-4.4,
+  Manifest:
+  Fixing SHA256 digest, pass four
+
+  05 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  docbook-sgml-dtd-4.4.ebuild:
+  Add ~x86-fbsd keyword.
+
+  05 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  docbook-sgml-dtd-4.2-r2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  24 Mar 2006; Fabian Groffen <grobian@gentoo.org>
+  docbook-sgml-dtd-4.2-r2.ebuild:
+  Marking ~ppc-macos for hugs98
+
+  19 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org>
+  docbook-sgml-dtd-4.4.ebuild:
+  Stable on amd64.
+
+  21 Sep 2005; Fabian Groffen <grobian@gentoo.org>
+  docbook-sgml-dtd-4.4.ebuild:
+  Marking ~ppc-macos (bug #106252)
+
+  04 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  docbook-sgml-dtd-4.4.ebuild:
+  stable on alpha
+
+  03 Sep 2005; Markus Rothe <corsair@gentoo.org>
+  docbook-sgml-dtd-4.4.ebuild:
+  Stable on ppc64
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  docbook-sgml-dtd-4.4.ebuild:
+  Stable on ppc.
+
+  30 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  docbook-sgml-dtd-4.4.ebuild:
+  Stable on sparc
+
+  30 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  docbook-sgml-dtd-4.4.ebuild:
+  Stable on x86.
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  docbook-sgml-dtd-4.3-r2.ebuild:
+  stable on ia64
+
+  15 Jul 2005; Leonardo Boshell <leonardop@gentoo.org>
+  docbook-sgml-dtd-3.0-r3.ebuild, docbook-sgml-dtd-3.1-r3.ebuild,
+  docbook-sgml-dtd-4.0-r3.ebuild, docbook-sgml-dtd-4.1-r3.ebuild,
+  docbook-sgml-dtd-4.2-r2.ebuild, docbook-sgml-dtd-4.3-r2.ebuild,
+  docbook-sgml-dtd-4.4.ebuild:
+  Call sgml-catalog_cat_include() from the global scope again (bug #98680).
+
+  12 Jul 2005; Guy Martin <gmsoft@gentoo.org>
+  docbook-sgml-dtd-4.3-r2.ebuild:
+  Stable on hppa.
+
+*docbook-sgml-dtd-4.4 (11 Jul 2005)
+
+  11 Jul 2005; Leonardo Boshell <leonardop@gentoo.org>
+  docbook-sgml-dtd-4.4.ebuild, files/docbook-sgml-dtd-4.4-catalog.diff:
+  New DTD version.
+
+*docbook-sgml-dtd-4.3-r2 (11 Jul 2005)
+
+  11 Jul 2005; Leonardo Boshell <leonardop@gentoo.org>
+  docbook-sgml-dtd-3.0-r3.ebuild, docbook-sgml-dtd-3.1-r3.ebuild,
+  docbook-sgml-dtd-4.0-r3.ebuild, docbook-sgml-dtd-4.1-r3.ebuild,
+  docbook-sgml-dtd-4.2-r2.ebuild, docbook-sgml-dtd-4.3-r2.ebuild,
+  files/docbook-sgml-dtd-{3.0,3.1,4.0,4.1,4.2,4.3}-catalog.diff:
+  Updated HOMEPAGE. Modified patches to use DTDDECL instead of SGMLDECL.
+  Using SGMLDECL in a multi-catalog setup like ours is very problematic
+  since the first of those entries take precedence regardless of the type of
+  document being processed. Current tools (opensp) can handle DTDDECL, which
+  is a much better solution. Rev-bumped all SLOTs to propagate changes.
+
+  18 Jun 2005; Markus Rothe <corsair@gentoo.org>
+  docbook-sgml-dtd-4.3-r1.ebuild:
+  Stable on ppc64
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  docbook-sgml-dtd-4.3-r1.ebuild:
+  Stable on ppc.
+
+  14 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  docbook-sgml-dtd-4.3-r1.ebuild:
+  alpha stable
+
+  07 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  docbook-sgml-dtd-4.3-r1.ebuild:
+  Stable on sparc
+
+  05 Jun 2005; Leonardo Boshell <leonardop@gentoo.org>
+  docbook-sgml-dtd-4.3-r1.ebuild:
+  Stable on x86.
+
+*docbook-sgml-dtd-4.3-r1 (18 Oct 2004)
+
+  18 Oct 2004; Mamoru KOMACHI <usata@gentoo.org>
+  +docbook-sgml-dtd-3.0-r2.ebuild, +docbook-sgml-dtd-3.1-r2.ebuild,
+  +docbook-sgml-dtd-4.0-r2.ebuild, +docbook-sgml-dtd-4.1-r2.ebuild,
+  +docbook-sgml-dtd-4.2-r1.ebuild, +docbook-sgml-dtd-4.3-r1.ebuild:
+  Fixed bug #67942.
+
+*docbook-sgml-dtd-4.3 (17 Oct 2004)
+
+  17 Oct 2004; Mamoru KOMACHI <usata@gentoo.org>
+  +files/docbook-sgml-dtd-4.3-catalog.diff, +docbook-sgml-dtd-4.3.ebuild:
+  Version bumped. This closes bug #59329.
+
+  29 Jun 2004; Tom Gall <tgall@gentoo.org> docbook-sgml-dtd-3.0-r1.ebuild,
+  docbook-sgml-dtd-3.1-r1.ebuild, docbook-sgml-dtd-4.0-r1.ebuild:
+  stable on ppc64, bug #54799
+
+  28 Jun 2004; Tom Gall <tgall@gentoo.org> docbook-sgml-dtd-4.1-r1.ebuild:
+  stable on ppc64 bug #54799
+
+  22 Jun 2004; <malc@gentoo.org> docbook-sgml-dtd-4.2.ebuild:
+  Mark stable on amd64
+
+  15 May 2004; Joshua Kinard <kumba@gentoo.org> docbook-sgml-dtd-4.2.ebuild:
+  Marked stable on mips.
+
+  14 Apr 2004; Stephen P. Becker <geoman@gentoo.org>
+  docbook-sgml-dtd-3.0-r1.ebuild, docbook-sgml-dtd-3.1-r1.ebuild,
+  docbook-sgml-dtd-4.0-r1.ebuild, docbook-sgml-dtd-4.1-r1.ebuild:
+  Marked stable on mips.
+
+  09 Mar 2004; <agriffis@gentoo.org> docbook-sgml-dtd-4.2.ebuild:
+  stable on alpha and ia64
+
+  09 Mar 2004; Stephen P. Becker <geoman@gentoo.org>
+  docbook-sgml-dtd-4.0-r1.ebuild:
+  Added ~mips keyword.
+
+  09 Mar 2004; Stephen P. Becker <geoman@gentoo.org>
+  docbook-sgml-dtd-3.0-r1.ebuild, docbook-sgml-dtd-3.1-r1.ebuild,
+  docbook-sgml-dtd-4.1-r1.ebuild:
+  Added ~mips keyword.
+
+  20 Jan 2004; <gustavoz@gentoo.org> docbook-sgml-dtd-4.2.ebuild:
+  stable on sparc
+
+  09 Jan 2004; Aron Griffis <agriffis@gentoo.org> docbook-sgml-dtd-4.2.ebuild:
+  stable on alpha
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org>
+  docbook-sgml-dtd-3.0-r1.ebuild, docbook-sgml-dtd-3.1-r1.ebuild,
+  docbook-sgml-dtd-4.0-r1.ebuild, docbook-sgml-dtd-4.1-r1.ebuild:
+  Stable on ia64
+
+*docbook-sgml-dtd-4.2 (09 Feb 2003)
+
+  23 Jul 2003; Guy Martin <gmsoft@gentoo.org> docbook-sgml-dtd-4.2.ebuild :
+  Marked stable on hppa. 
+
+  09 Feb 2003; Matthew Turk <satai@gentoo.org> : 
+  Version bump, slotted properly.
+
+*docbook-sgml-dtd-4.1-r1 (30 Dec 2002)
+
+  10 Feb 2003; Guy Martin <gmsoft@gentoo.org> :
+  Added hppa to keywords.
+
+30 Dec 2002; Matthew Turk <satai@gentoo.org> : 
+  changed to inherit sgml-catalog and better deal with catalogs. 
+
+*docbook-sgml-dtd-4.0-r1 (30 Dec 2002)
+
+  30 Dec 2002; Matthew Turk <satai@gentoo.org> : 
+  changed to inherit sgml-catalog and better deal with catalogs. 
+
+*docbook-sgml-dtd-3.1-r1 (30 Dec 2002)
+
+  30 Dec 2002; Matthew Turk <satai@gentoo.org> : 
+  changed to inherit sgml-catalog and better deal with catalogs. 
+
+*docbook-sgml-dtd-3.0-r1 (30 Dec 2002)
+
+  30 Dec 2002; Matthew Turk <satai@gentoo.org> :
+  changed to inherit sgml-catalog and better deal with catalogs. 
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*docbook-sgml-dtd-4.0.ebuild (12 Sep 2002)
+
+  12 Sep 2002; satai <satai@gentoo.org> docbook-sgml-dtd-4.0.ebuild :
+  Added more robust file checking.
+
+*docbook-sgml-dtd-4.1.ebuild (12 Sep 2002)
+
+  12 Sep 2002; satai <satai@gentoo.org> docbook-sgml-dtd-4.1.ebuild :
+  Added more robust file checking.
+
+*docbook-sgml-dtd-3.0.ebuild (12 Sep 2002)
+
+  12 Sep 2002; satai <satai@gentoo.org> docbook-sgml-dtd-3.0.ebuild :
+  Added more robust file checking.
+
+*docbook-sgml-dtd-3.1.ebuild (12 Sep 2002)
+
+  15 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Fixed a typo.
+
+  12 Sep 2002; satai <satai@gentoo.org> docbook-sgml-dtd-3.1.ebuild :
+  Added more robust file checking.  Also added pkg_prerm.
+
+*docbook-sgml-dtd-4.0.ebuild (2 August 2002)
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> docbook-sgml-dtd-4.0.ebuild :
+  Added LICENSE.
+
+*docbook-sgml-dtd-3.1.ebuild (2 August 2002)
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> docbook-sgml-dtd-3.1.ebuild :
+  Added LICENSE.
+
+*docbook-sgml-dtd-3.0.ebuild (2 August 2002)
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> docbook-sgml-dtd-3.0.ebuild :
+  Added LICENSE.
+
+*docbook-sgml-dtd-4.1 (1 Feb 2002)
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> docbook-sgml-dtd-4.1.ebuild :
+  Added LICENSE.
+
+  15 Jul 2002; Owen Stampflee <owen@gentoo.org> :
+
+  Added KEYWORDS.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

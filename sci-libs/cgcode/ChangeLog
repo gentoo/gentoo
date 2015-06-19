@@ -1,0 +1,51 @@
+# ChangeLog for sci-libs/cgcode
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/cgcode/ChangeLog,v 1.12 2015/01/26 09:58:58 ago Exp $
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> cgcode-1.0-r2.ebuild:
+  Stable for x86, wrt bug #534628
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> cgcode-1.0-r2.ebuild:
+  Stable for amd64, wrt bug #534628
+
+  04 Jan 2015; Justin Lecher <jlec@gentoo.org> cgcode-1.0-r2.ebuild:
+  Bump EAPI
+
+  21 Feb 2013; Justin Lecher <jlec@gentoo.org> cgcode-1.0-r2.ebuild,
+  metadata.xml:
+  Use tc-getPKG_CONFIG from toolchain-funcs.eclass instead of plain pkg-config
+
+  18 Oct 2012; Justin Lecher <jlec@gentoo.org> -cgcode-1.0.ebuild,
+  -cgcode-1.0-r1.ebuild, cgcode-1.0-r2.ebuild:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+*cgcode-1.0-r2 (30 May 2012)
+
+  30 May 2012; Justin Lecher <jlec@gentoo.org> files/1.0-gentoo.patch,
+  +cgcode-1.0-r2.ebuild:
+  Fix missing linking to blas libs
+
+*cgcode-1.0-r1 (21 Nov 2011)
+
+  21 Nov 2011; Justin Lecher <jlec@gentoo.org> +cgcode-1.0-r1.ebuild,
+  metadata.xml:
+  Install correct symlink for libs, #386227
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> cgcode-1.0.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> cgcode-1.0.ebuild:
+  Added fortran-2.eclass support
+
+  16 Dec 2010; Justin Lecher <jlec@gentoo.org> cgcode-1.0.ebuild:
+  Removal of fortran.eclass, #348851
+
+  10 Nov 2010; Justin Lecher <jlec@gentoo.org> cgcode-1.0.ebuild:
+  Keyworded for ~-linux prefix
+
+*cgcode-1.0 (31 Oct 2010)
+
+  31 Oct 2010; Justin Lecher <jlec@gentoo.org> +files/1.0-gentoo.patch,
+  +cgcode-1.0.ebuild, +metadata.xml:
+  New addition

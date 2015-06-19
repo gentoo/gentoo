@@ -1,0 +1,37 @@
+diff --git a/Jubler-4.6.1/resources/ffmpeg/ffdecode/decodeaudio.c b/Jubler-4.6.1/resources/ffmpeg/ffdecode/decodeaudio.c
+index 92bf071..d163010 100644
+--- a/Jubler-4.6.1/resources/ffmpeg/ffdecode/decodeaudio.c
++++ b/Jubler-4.6.1/resources/ffmpeg/ffdecode/decodeaudio.c
+@@ -37,6 +37,13 @@ jboolean decodeAudio(JNIEnv* env, jobject this, const char *input_filename, cons
+ AVStream *add_audio_stream(JNIEnv* env, jobject this, AVFormatContext *oc, int codec_id, int sample_rate, int channels);
+ void audio_enc_out(JNIEnv * env, jobject this, AVFormatContext *ofcx, AVStream *audio_st, const short *samples, int buf_size);
+ 
++#ifndef AVCODEC_MAX_AUDIO_FRAME_SIZE
++#ifndef MAX_AUDIO_FRAME_SIZE
++#define AVCODEC_MAX_AUDIO_FRAME_SIZE 192000 // 1 second of 48khz 32bit audio
++#else
++#define AVCODEC_MAX_AUDIO_FRAME_SIZE MAX_AUDIO_FRAME_SIZE
++#endif
++#endif
+ 
+ JNIEXPORT jboolean JNICALL Java_com_panayotis_jubler_media_preview_decoders_FFMPEG_createClip(JNIEnv * env, jobject this, jstring audio, jstring wav, jlong start, jlong stop) {
+     const char * audio_c;
+diff --git a/Jubler-4.6.1/resources/ffmpeg/ffdecode/makecache.c b/Jubler-4.6.1/resources/ffmpeg/ffdecode/makecache.c
+index d7ea88b..0190b79 100644
+--- a/Jubler-4.6.1/resources/ffmpeg/ffdecode/makecache.c
++++ b/Jubler-4.6.1/resources/ffmpeg/ffdecode/makecache.c
+@@ -38,6 +38,14 @@
+ #include "defaults.h"
+ #include "utilities.h"
+ 
++#ifndef AVCODEC_MAX_AUDIO_FRAME_SIZE
++#ifndef MAX_AUDIO_FRAME_SIZE
++#define AVCODEC_MAX_AUDIO_FRAME_SIZE 192000 // 1 second of 48khz 32bit audio
++#else
++#define AVCODEC_MAX_AUDIO_FRAME_SIZE MAX_AUDIO_FRAME_SIZE
++#endif
++#endif
++
+ JNIEXPORT jboolean JNICALL Java_com_panayotis_jubler_media_preview_decoders_NativeDecoder_makeCache(JNIEnv * env, jobject this, jstring audio, jstring cache, jstring original) {
+     const char *audio_c;
+     const char *cache_c;

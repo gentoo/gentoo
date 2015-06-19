@@ -1,0 +1,21 @@
+From: Teemu Ikonen <tpikonen@gmail.com>
+Subject: Hardcode pluginsDir to the correct path in Debian
+Git-Branch: p/pluginsdir
+Git-Diff: 532bdd9a6bde03cf47da8fb63fee60..e1db74a038fd5fc27cc5e9f0bee8d3
+
+ meshlab/src/common/pluginmanager.cpp |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meshlab/src/common/pluginmanager.cpp b/meshlab/src/common/pluginmanager.cpp
+index d84c8fa..a039736 100644
+--- a/meshlab/src/common/pluginmanager.cpp
++++ b/meshlab/src/common/pluginmanager.cpp
+@@ -230,7 +230,7 @@ QString PluginManager::getBaseDirPath()
+ 
+ QString PluginManager::getPluginDirPath()
+ {
+-  QDir pluginsDir(getBaseDirPath());
++  QDir pluginsDir("/usr/lib/meshlab");
+   if(!pluginsDir.exists("plugins"))
+     //QMessageBox::warning(0,"Meshlab Initialization","Serious error. Unable to find the plugins directory.");
+     qDebug("Meshlab Initialization: Serious error. Unable to find the plugins directory.");

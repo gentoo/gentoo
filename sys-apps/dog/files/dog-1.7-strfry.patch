@@ -1,0 +1,13 @@
+See Gentoo bug 251675. Upstream appears to be dead.
+
+--- dog.c.orig	2009-04-09 23:29:16.307661147 -0500
++++ dog.c	2009-04-09 23:30:11.353664890 -0500
+@@ -552,7 +552,7 @@
+ 	
+ 	// strfry()
+ #if ALLOW_STRFRY
+-	if (opt_strfry) {
++	if (opt_strfry && str_len > 0) {
+ 		strfry(str);
+ 	}
+ #endif

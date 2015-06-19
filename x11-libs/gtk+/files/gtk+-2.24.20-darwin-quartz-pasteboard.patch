@@ -1,0 +1,15 @@
+gdk_quartz_target_to_pasteboard_type_libgtk_only was moved in
+a269c2f8d26a588c4b61ad605ef496e89759cc03
+https://mail.gnome.org/archives/commits-list/2013-March/msg20203.html
+https://bugzilla.gnome.org/show_bug.cgi?id=704766
+
+--- gtk/gtkclipboard-quartz.c
++++ gtk/gtkclipboard-quartz.c
+@@ -33,6 +33,7 @@
+ #include "gtktextbuffer.h"
+ #include "gtkquartz.h"
+ #include "gtkalias.h"
++#include "quartz/gdkquartz.h"
+ 
+ enum {
+   OWNER_CHANGE,

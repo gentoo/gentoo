@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=Benchmarking for memory and cache
+EAPI=5
+HOMEPAGE=http://www.alasir.com/software/ramspeed/
+IUSE=cpu_flags_x86_sse pic
+KEYWORDS=amd64 x86
+LICENSE=Alasir
+SLOT=0
+SRC_URI=http://www.alasir.com/software/ramspeed/ramsmp-3.5.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ac1a393b6a6c3fd839f6c1fd96c074b5

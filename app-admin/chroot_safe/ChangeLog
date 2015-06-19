@@ -1,0 +1,60 @@
+# ChangeLog for app-admin/chroot_safe
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/chroot_safe/ChangeLog,v 1.17 2015/06/09 08:37:43 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  31 May 2012; Zac Medico <zmedico@gentoo.org> chroot_safe-1.4.ebuild:
+  inherit multilib for get_libdir
+
+  09 May 2012; Agostino Sarubbo <ago@gentoo.org> -chroot_safe-1.3.ebuild:
+  Remove old
+
+  15 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> chroot_safe-1.4.ebuild:
+  ppc stable wrt #362871
+
+  09 May 2011; Thomas Kahle <tomka@gentoo.org> chroot_safe-1.4.ebuild:
+  x86 stable per bug 362871
+
+  15 Apr 2011; Christoph Mende <angelos@gentoo.org> chroot_safe-1.4.ebuild:
+  Stable on amd64 wrt bug #362871
+
+  10 Apr 2011; Christoph Mende <angelos@gentoo.org> chroot_safe-1.4.ebuild,
+  +files/chroot_safe-1.4-ldflags.patch:
+  Bump to EAPI4, respect LDFLAGS, CXX, cleanup
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove ka0ttic from metadata.xml due to retirement.
+
+  21 Feb 2007; <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  04 Jan 2007; Steve Dibb <beandog@gentoo.org> chroot_safe-1.3.ebuild,
+  chroot_safe-1.4.ebuild:
+  ebuild cleanup bug 157658
+
+  07 Sep 2005; Luis Medinas <metalgod@gentoo.org> chroot_safe-1.4.ebuild:
+  Added ~amd64 keyword.
+
+*chroot_safe-1.4 (29 May 2005)
+
+  29 May 2005; Aaron Walker <ka0ttic@gentoo.org> +chroot_safe-1.4.ebuild:
+  Version bump.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  chroot_safe-1.3.ebuild:
+  Stable on ppc.
+
+  24 Nov 2004; Aaron Walker <ka0ttic@gentoo.org> chroot_safe-1.3.ebuild:
+  Marked stable on x86.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  chroot_safe-1.3.ebuild:
+  Masked chroot_safe-1.3.ebuild testing for ppc
+
+*chroot_safe-1.3 (19 Sep 2004)
+
+  19 Sep 2004; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml,
+  +chroot_safe-1.3.ebuild:
+  Initial commit; closes bug #64190

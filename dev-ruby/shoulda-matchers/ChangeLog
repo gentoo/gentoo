@@ -1,0 +1,53 @@
+# ChangeLog for dev-ruby/shoulda-matchers
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/shoulda-matchers/ChangeLog,v 1.10 2015/06/07 19:48:38 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*shoulda-matchers-2.8.0 (01 Feb 2015)
+
+  01 Feb 2015; Manuel Rüger <mrueg@gentoo.org> +shoulda-matchers-2.8.0.ebuild:
+  Version bump.
+
+*shoulda-matchers-2.7.0 (08 Sep 2014)
+
+  08 Sep 2014; Hans de Graaff <graaff@gentoo.org>
+  +shoulda-matchers-2.7.0.ebuild:
+  Version bump.
+
+  08 Sep 2014; Hans de Graaff <graaff@gentoo.org>
+  -shoulda-matchers-2.5.0.ebuild, -shoulda-matchers-2.6.0.ebuild:
+  Cleanup.
+
+  18 Aug 2014; Anthony G. Basile <blueness@gentoo.org>
+  shoulda-matchers-2.5.0.ebuild, shoulda-matchers-2.6.0.ebuild,
+  shoulda-matchers-2.6.1.ebuild:
+  Keyword ~ppc ~ppc64, bug #501968
+
+  11 Aug 2014; Jeroen Roovers <jer@gentoo.org> shoulda-matchers-2.6.1.ebuild:
+  Marked ~hppa (bug #519170).
+
+*shoulda-matchers-2.6.1 (19 May 2014)
+
+  19 May 2014; Hans de Graaff <graaff@gentoo.org>
+  +shoulda-matchers-2.6.1.ebuild:
+  Version bump.
+
+*shoulda-matchers-2.6.0 (19 Apr 2014)
+
+  19 Apr 2014; Manuel Rüger <mrueg@gentoo.org> +shoulda-matchers-2.6.0.ebuild,
+  -shoulda-matchers-2.3.0.ebuild, metadata.xml, shoulda-matchers-2.5.0.ebuild:
+  Remove ruby18 target. Cleanup old. Version bump.
+
+*shoulda-matchers-2.5.0 (22 Jan 2014)
+
+  22 Jan 2014; Hans de Graaff <graaff@gentoo.org>
+  +shoulda-matchers-2.5.0.ebuild:
+  Version bump. Install documentation.
+
+*shoulda-matchers-2.3.0 (20 Aug 2013)
+
+  20 Aug 2013; Rick Farina <zerochaos@gentoo.org> +metadata.xml,
+  +shoulda-matchers-2.3.0.ebuild:
+  initial commit of shoulda-matchers, a dep for metasploit

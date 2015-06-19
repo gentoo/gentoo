@@ -1,0 +1,20 @@
+--- sonic-visualiser-1.9/svcore/data/fileio/CodedAudioFileReader.cpp
++++ sonic-visualiser-1.9/svcore/data/fileio/CodedAudioFileReader.cpp
+@@ -22,6 +22,7 @@
+ #include "base/Serialiser.h"
+ #include "base/Resampler.h"
+ 
++#include <stdint.h>
+ #include <iostream>
+ #include <QDir>
+ #include <QMutexLocker>
+--- sonic-visualiser-1.9/svcore/data/model/WritableWaveFileModel.cpp
++++ sonic-visualiser-1.9/svcore/data/model/WritableWaveFileModel.cpp
+@@ -26,6 +26,7 @@
+ 
+ #include <cassert>
+ #include <iostream>
++#include <stdint.h>
+ 
+ //#define DEBUG_WRITABLE_WAVE_FILE_MODEL 1
+ 

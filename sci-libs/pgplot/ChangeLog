@@ -1,0 +1,146 @@
+# ChangeLog for sci-libs/pgplot
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/pgplot/ChangeLog,v 1.30 2013/02/20 20:12:48 bicatali Exp $
+
+*pgplot-5.2.2-r6 (20 Feb 2013)
+
+  20 Feb 2013; Sébastien Fabbro <bicatali@gentoo.org> +pgplot-5.2.2-r6.ebuild,
+  -pgplot-5.2.2-r5.ebuild:
+  Add fonts in the path to avoid pgplot errors in other programs
+
+  16 Jan 2013; Justin Lecher <jlec@gentoo.org> +files/pgplot-tk86.patch,
+  pgplot-5.2.2-r5.ebuild, metadata.xml:
+  Add fix for tk8.6, #451614, thanks Juergen Rose for the patch
+
+  13 Jan 2013; Markus Meier <maekke@gentoo.org> pgplot-5.2.2-r5.ebuild:
+  add ~arm, bug #449762
+
+  24 Oct 2012; Ulrich Müller <ulm@gentoo.org> pgplot-5.2.2-r5.ebuild:
+  Update dependency after package move from x11-libs/openmotif to
+  x11-libs/motif.
+
+  16 Oct 2012; Justin Lecher <jlec@gentoo.org> pgplot-5.2.2-r5.ebuild,
+  metadata.xml:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  17 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  files/pgplot-makemake.patch:
+  Fixed soname when tk or motif flags are on, bug #425496
+
+*pgplot-5.2.2-r5 (05 Jul 2012)
+
+  05 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org> +pgplot-5.2.2-r5.ebuild,
+  -files/pgplot-ldflags.patch, -pgplot-5.2.2-r3.ebuild, -pgplot-5.2.2-r4.ebuild,
+  files/pgplot-makemake.patch:
+  Switch to EAPI4, added static-libs, fixed makemake patch, keyword amd64-linux,
+  x86-linux
+
+  14 Sep 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +files/pgplot-libpng15.patch, pgplot-5.2.2-r4.ebuild:
+  Fix building with libpng15 wrt #378189 by Diego Elio Pettenò
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> pgplot-5.2.2-r3.ebuild,
+  pgplot-5.2.2-r4.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> pgplot-5.2.2-r3.ebuild,
+  pgplot-5.2.2-r4.ebuild:
+  Added fortran-2.eclass support
+
+  10 Oct 2010; Ulrich Mueller <ulm@gentoo.org> pgplot-5.2.2-r3.ebuild,
+  pgplot-5.2.2-r4.ebuild:
+  Fix openmotif dependency.
+
+*pgplot-5.2.2-r4 (22 May 2010)
+
+  22 May 2010; Justin Lecher <jlec@gentoo.org> pgplot-5.2.2-r3.ebuild,
+  +pgplot-5.2.2-r4.ebuild, +files/pgplot-ldflags.patch:
+  LDFLAGS respected, fix parallel make issue
+
+  15 Mar 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  pgplot-5.2.2-r3.ebuild:
+  Removed fortran eclass and switched to EAPI2
+
+  23 Feb 2009; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml,
+  pgplot-5.2.2-r3.ebuild:
+  Added ~ppc, thanks to Pierre Martin.
+
+  13 Feb 2009; Patrick Kursawe <phosphan@gentoo.org>
+  -pgplot-5.2.2-r2.ebuild, pgplot-5.2.2-r3.ebuild:
+  Setting VARTEXFONTS (see bug #223077).
+  Removed obsolete revision.
+
+  07 Nov 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  files/pgplot-makemake.patch, pgplot-5.2.2-r3.ebuild:
+  Fixed for parallel build
+
+*pgplot-5.2.2-r3 (05 Nov 2008)
+
+  05 Nov 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  files/pgplot-compile-setup.patch, +files/pgplot-headers.patch,
+  files/pgplot-makemake.patch, +pgplot-5.2.2-r3.ebuild:
+  Fix further missing headers, added soname in libcgplot, and as-needed
+  fixes
+
+  29 Jun 2008; Torsten Veller <tove@gentoo.org> pgplot-5.2.2-r2.ebuild:
+  Add missing die: || "..." -> || die "..."
+
+  27 Jun 2008; Ulrich Mueller <ulm@gentoo.org> pgplot-5.2.2-r2.ebuild:
+  Change dependency from virtual/motif to x11-libs/openmotif, bug 224749.
+
+  23 Jun 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  pgplot-5.2.2-r2.ebuild:
+  Enabling gif, wd and ppd drivers to be compiled when gfortran >= 4.3, some
+  minor qa fixes
+
+  11 Oct 2007; Sébastien Fabbro <bicatali@gentoo.org> -pgplot-5.2.2.ebuild,
+  -pgplot-5.2.2-r1.ebuild, pgplot-5.2.2-r2.ebuild:
+  Added ifc as a possible fortran compiler, x11-libs/libXt as a dep, more
+  cleaning.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; pgplot-5.2.2.ebuild:
+  Drop virtual/x11 references.
+
+  23 Apr 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  pgplot-5.2.2-r2.ebuild:
+  fixed a bad link for shared lib
+
+*pgplot-5.2.2-r2 (09 Mar 2007)
+
+  09 Mar 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  files/pgplot-drivers.patch, -files/pgplot-path.patch,
+  +files/pgplot-pgdisp.patch, +pgplot-5.2.2-r2.ebuild:
+  Now install pgdisp, more drivers, and more doc. Add a motif and tk flag 
+  to allow these two drivers to be built. Remove drivers using the non 
+  standard fortran %val for gfortran to compile (if g77 selected, drivers
+  won't be removed). Did some cleaning as well.
+
+*pgplot-5.2.2-r1 (05 Mar 2007)
+
+  05 Mar 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/pgplot-path.patch, metadata.xml, +pgplot-5.2.2-r1.ebuild:
+  General cleaning, added patches, a src_test, now does full 
+  installation, and a longdescrption in metadata.xml. Also tested on 
+  amd64.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  05 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Remove myself as maintainer, anyone feel free to work on this, although I'll
+  continue to do so as well.
+
+  07 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Update to my new email address.
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org> pgplot-5.2.2.ebuild:
+  Mark 5.2.2 ~ia64
+
+*pgplot-5.2.2 (16 Dec 2005)
+
+  16 Dec 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/pgplot-compile-setup.patch, +files/pgplot-drivers.patch,
+  +files/pgplot-makemake.patch, +metadata.xml, +pgplot-5.2.2.ebuild:
+  A Fortran- or C-callable, device-independent graphics package for making
+  simple scientific graphs.

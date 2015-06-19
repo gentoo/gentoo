@@ -1,0 +1,238 @@
+# ChangeLog for x11-proto/xf86driproto
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-proto/xf86driproto/ChangeLog,v 1.65 2015/04/12 18:48:37 mrueg Exp $
+
+  12 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -xf86driproto-2.1.1.ebuild:
+  Remove old.
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> xf86driproto-2.1.1-r1.ebuild:
+  add arm64 support, tested on A53 board
+
+  08 Jun 2014; Agostino Sarubbo <ago@gentoo.org> xf86driproto-2.1.1-r1.ebuild:
+  Stable for arm, wrt bug #500368
+
+  19 Apr 2014; Agostino Sarubbo <ago@gentoo.org> xf86driproto-2.1.1-r1.ebuild:
+  Stable for sparc, wrt bug #500368
+
+  17 Apr 2014; Agostino Sarubbo <ago@gentoo.org> xf86driproto-2.1.1-r1.ebuild:
+  Stable for ia64, wrt bug #500368
+
+  16 Apr 2014; Agostino Sarubbo <ago@gentoo.org> xf86driproto-2.1.1-r1.ebuild:
+  Stable for ppc64, wrt bug #500368
+
+  08 Apr 2014; Agostino Sarubbo <ago@gentoo.org> xf86driproto-2.1.1-r1.ebuild:
+  Stable for ppc, wrt bug #500368
+
+  06 Apr 2014; Agostino Sarubbo <ago@gentoo.org> xf86driproto-2.1.1-r1.ebuild:
+  Stable for x86, wrt bug #500368
+
+  29 Mar 2014; Matt Turner <mattst88@gentoo.org> xf86driproto-2.1.1-r1.ebuild:
+  alpha stable, bug #500368.
+
+  28 Mar 2014; Jeroen Roovers <jer@gentoo.org> xf86driproto-2.1.1-r1.ebuild:
+  Stable for HPPA (bug #500368).
+
+  27 Mar 2014; Agostino Sarubbo <ago@gentoo.org> xf86driproto-2.1.1-r1.ebuild:
+  Stable for amd64, wrt bug #500368
+
+*xf86driproto-2.1.1-r1 (21 Sep 2013)
+
+  21 Sep 2013; Michał Górny <mgorny@gentoo.org> +xf86driproto-2.1.1-r1.ebuild:
+  Convert to multilib.
+
+  27 Feb 2013; Zac Medico <zmedico@gentoo.org> xf86driproto-2.1.1.ebuild:
+  Add ~arm-linux keyword.
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> xf86driproto-2.1.1.ebuild:
+  keyword ~amd64-fbsd
+
+  07 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86driproto-2.1.0.ebuild:
+  old
+
+  05 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  xf86driproto-2.1.1.ebuild:
+  ppc64 stable wrt #354237
+
+  05 Mar 2011; Raúl Porcel <armin76@gentoo.org> xf86driproto-2.1.1.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #354237
+
+  23 Feb 2011; Jeroen Roovers <jer@gentoo.org> xf86driproto-2.1.1.ebuild:
+  Stable for HPPA (bug #354237).
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  xf86driproto-2.1.1.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Christian Faulhammer <fauli@gentoo.org>
+  xf86driproto-2.1.1.ebuild:
+  stable x86, bug 354237
+
+  12 Feb 2011; Markos Chandras <hwoarang@gentoo.org> xf86driproto-2.1.1.ebuild:
+  Stable on amd64 wrt bug #354237
+
+*xf86driproto-2.1.1 (15 Jan 2011)
+
+  15 Jan 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +xf86driproto-2.1.1.ebuild:
+  Version bump
+
+  23 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86driproto-2.0.3.ebuild, -xf86driproto-2.0.4.ebuild:
+  rm
+
+  19 Jan 2010; Raúl Porcel <armin76@gentoo.org> xf86driproto-2.1.0.ebuild:
+  s390 stable wrt #294958
+
+  18 Jan 2010; Raúl Porcel <armin76@gentoo.org> xf86driproto-2.1.0.ebuild:
+  alpha/ia64/sh/sparc stable wrt #294958
+
+  14 Jan 2010; Markus Meier <maekke@gentoo.org> xf86driproto-2.1.0.ebuild:
+  arm stable, bug #294958
+
+  14 Jan 2010; Jeroen Roovers <jer@gentoo.org> xf86driproto-2.1.0.ebuild:
+  Stable for HPPA (bug #294958).
+
+  14 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  xf86driproto-2.1.0.ebuild:
+  Transfer Prefix keywords
+
+  27 Dec 2009; Joseph Jezak <josejx@gentoo.org> xf86driproto-2.1.0.ebuild:
+  Marked ppc stable for bug #294958.
+
+  15 Dec 2009; Brent Baude <ranger@gentoo.org> xf86driproto-2.1.0.ebuild:
+  Marking xf86driproto-2.1.0 ppc64 stable for bug 294958
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  xf86driproto-2.1.0.ebuild:
+  x86 stable, bug 294958
+
+  10 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  xf86driproto-2.1.0.ebuild:
+  amd64 stable wrt #294958
+
+*xf86driproto-2.1.0 (19 Sep 2009)
+
+  19 Sep 2009; Rémi Cardona <remi@gentoo.org> +xf86driproto-2.1.0.ebuild:
+  bump to 2.1.0
+
+  23 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  xf86driproto-2.0.4.ebuild:
+  Stable on alpha for xorg-server-1.5/xorg-x11-7.4
+
+  15 May 2009; Raúl Porcel <armin76@gentoo.org> xf86driproto-2.0.4.ebuild:
+  arm/s390 stable
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  xf86driproto-2.0.3.ebuild, xf86driproto-2.0.4.ebuild:
+  fix repoman warnings
+
+  16 Apr 2009; Jeroen Roovers <jer@gentoo.org> xf86driproto-2.0.4.ebuild:
+  Stable for HPPA (bug #251832).
+
+  15 Apr 2009; Raúl Porcel <armin76@gentoo.org> xf86driproto-2.0.4.ebuild:
+  ia64/sh stable wrt #251832
+
+  06 Apr 2009; Friedrich Oslage <bluebird@gentoo.org>
+  xf86driproto-2.0.4.ebuild:
+  Stable on sparc, bug #251832
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org> xf86driproto-2.0.4.ebuild:
+  x86 stable, bug #251832
+
+  05 Apr 2009; Olivier Crête <tester@gentoo.org> xf86driproto-2.0.4.ebuild:
+  Stable on amd64, bug #251832
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> xf86driproto-2.0.4.ebuild:
+  Marking xf86driproto-2.0.4 ppc64 stable for bug 251832
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> xf86driproto-2.0.4.ebuild:
+  Marking xf86driproto-2.0.4 ppc stable for bug 251832
+
+  16 Dec 2008; Jeroen Roovers <jer@gentoo.org> xf86driproto-2.0.4.ebuild:
+  Marked ~hppa (bug #237411).
+
+*xf86driproto-2.0.4 (10 Apr 2008)
+
+  10 Apr 2008; Hanno Boeck <hanno@gentoo.org> +xf86driproto-2.0.4.ebuild:
+  Version bump.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> xf86driproto-2.0.3.ebuild:
+  Mark 2.0.3 stable on ia64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  xf86driproto-2.0.3.ebuild:
+  arm/sh stable
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  xf86driproto-2.0.3.ebuild:
+  ppc/sparc/mips/alpha stable
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  xf86driproto-2.0.3.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org> xf86driproto-2.0.3.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  xf86driproto-2.0.3.ebuild:
+  x86 stable.
+
+  03 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xf86driproto-2.0.3.ebuild:
+  Add ~x86-fbsd keyword.
+
+  21 Mar 2006; Aron Griffis <agriffis@gentoo.org> xf86driproto-2.0.3.ebuild:
+  Mark 2.0.3 ~ia64. #122726
+
+  10 Mar 2006; Stefaan De Roeck <stefaan@gentoo.org>
+  xf86driproto-2.0.3.ebuild:
+  Keyworded ~alpha
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> xf86driproto-2.0.3.ebuild:
+  Added ~ppc64
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xf86driproto-2.0.1.ebuild, -xf86driproto-2.0.2.ebuild:
+  Pull old versions.
+
+*xf86driproto-2.0.3 (23 Dec 2005)
+
+  23 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +xf86driproto-2.0.3.ebuild:
+  Bump for 7.0.
+
+*xf86driproto-2.0.2 (17 Dec 2005)
+
+  17 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86driproto-2.0.2.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -xf86driproto-2.0.ebuild:
+  Pull old versions.
+
+*xf86driproto-2.0.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +xf86driproto-2.0.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> xf86driproto-2.0.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> xf86driproto-2.0.ebuild:
+  Marked ~amd64
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> xf86driproto-2.0.ebuild:
+  Add ~sparc keyword (modular X testing on sparc).
+
+*xf86driproto-2.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +xf86driproto-2.0.ebuild:
+  Initial commit for modular X

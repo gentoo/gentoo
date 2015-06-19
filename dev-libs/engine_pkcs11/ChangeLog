@@ -1,0 +1,159 @@
+# ChangeLog for dev-libs/engine_pkcs11
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/engine_pkcs11/ChangeLog,v 1.41 2012/05/04 18:35:51 jdhore Exp $
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> engine_pkcs11-0.1.8.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  14 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  engine_pkcs11-0.1.8.ebuild:
+  Add missing pkgconfig dependency; update openssl version dependency; drop doc
+  USE flag: it doesn't require rebuild, from tarball, and is the only use
+  documentatin available.
+
+  22 May 2010; Pacho Ramos <pacho@gentoo.org> engine_pkcs11-0.1.8.ebuild:
+  stable amd64, bug 304003
+
+  06 May 2010; Jeroen Roovers <jer@gentoo.org> engine_pkcs11-0.1.8.ebuild:
+  Stable for HPPA (bug #304003).
+
+  31 Mar 2010; Raúl Porcel <armin76@gentoo.org> engine_pkcs11-0.1.8.ebuild:
+  ia64/sparc stable wrt #304003
+
+  25 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  engine_pkcs11-0.1.8.ebuild:
+  stable x86, bug 304003
+
+  15 Feb 2010; Joseph Jezak <josejx@gentoo.org> engine_pkcs11-0.1.8.ebuild:
+  Marked ppc/ppc64 stable for bug #304003.
+
+*engine_pkcs11-0.1.8 (07 Jan 2010)
+
+  07 Jan 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +engine_pkcs11-0.1.8.ebuild:
+  Version bump.
+
+  15 Dec 2009; Raúl Porcel <armin76@gentoo.org> engine_pkcs11-0.1.7.ebuild:
+  ia64/sparc stable wrt #294076
+
+  09 Dec 2009; Brent Baude <ranger@gentoo.org> engine_pkcs11-0.1.7.ebuild:
+  Marking engine_pkcs11-0.1.7 ppc64 for bug 294076
+
+  08 Dec 2009; nixnut <nixnut@gentoo.org> engine_pkcs11-0.1.7.ebuild:
+  ppc stable #294076
+
+  03 Dec 2009; Jeroen Roovers <jer@gentoo.org> engine_pkcs11-0.1.7.ebuild:
+  Stable for HPPA (bug #294076).
+
+  23 Nov 2009; Markus Meier <maekke@gentoo.org> engine_pkcs11-0.1.7.ebuild:
+  amd64/x86 stable, bug #294076
+
+*engine_pkcs11-0.1.7 (24 Oct 2009)
+
+  24 Oct 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -engine_pkcs11-0.1.4.ebuild, -engine_pkcs11-0.1.5.ebuild,
+  +engine_pkcs11-0.1.7.ebuild:
+  Version bump.
+
+  31 Aug 2009; Brent Baude <ranger@gentoo.org> engine_pkcs11-0.1.6.ebuild:
+  Marking engine_pkcs11-0.1.6 ppc64 for bug 279370
+
+  25 Aug 2009; Raúl Porcel <armin76@gentoo.org> engine_pkcs11-0.1.6.ebuild:
+  ia64/sparc stable wrt #279370
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> engine_pkcs11-0.1.6.ebuild:
+  ppc stable #279370
+
+  08 Aug 2009; Jeroen Roovers <jer@gentoo.org> engine_pkcs11-0.1.6.ebuild:
+  Stable for HPPA (bug #279370).
+
+  02 Aug 2009; Markus Meier <maekke@gentoo.org> engine_pkcs11-0.1.6.ebuild:
+  x86 stable, bug #279370
+
+  31 Jul 2009; <chainsaw@gentoo.org> engine_pkcs11-0.1.6.ebuild:
+  Marked stable on AMD64 as requested by Arfrever Frehtes Taifersar Arahesis
+  <arfrever@gentoo.org> in bug #279370. Compile-tested on a Core2 Duo with
+  USE="-doc".
+
+*engine_pkcs11-0.1.6 (27 Jun 2009)
+
+  27 Jun 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +engine_pkcs11-0.1.6.ebuild,
+  +files/engine_pkcs11-0.1.6-fix_implicit_declaration.patch:
+  Version bump.
+
+  31 Oct 2008; Guy Martin <gmsoft@gentoo.org> engine_pkcs11-0.1.4.ebuild:
+  hppa stable, #198685
+
+*engine_pkcs11-0.1.5 (30 Aug 2008)
+
+  30 Aug 2008; Daniel Black <dragonheart@gentoo.org>
+  +engine_pkcs11-0.1.5.ebuild:
+  version bump thanks to Alon - bug #233519
+
+  10 Jan 2008; Alon Bar-Lev <alonbl@gentoo.org> -engine_pkcs11-0.1.3.ebuild:
+  Cleanup
+
+  13 Nov 2007; Raúl Porcel <armin76@gentoo.org> engine_pkcs11-0.1.4.ebuild:
+  ia64 stable wrt #198685
+
+  11 Nov 2007; Dawid Węgliński <cla@gentoo.org>
+  engine_pkcs11-0.1.4.ebuild:
+  Stable on x86 (bug #198685)
+
+  10 Nov 2007; Ferris McCormick <fmccor@gentoo.org>
+  engine_pkcs11-0.1.4.ebuild:
+  Sparc stable, bug #198685.
+
+  10 Nov 2007; Markus Rothe <corsair@gentoo.org> engine_pkcs11-0.1.4.ebuild:
+  Stable on ppc64; bug #198685
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org> engine_pkcs11-0.1.4.ebuild:
+  amd64 stable wrt #198685
+
+  10 Nov 2007; nixnut <nixnut@gentoo.org> engine_pkcs11-0.1.4.ebuild:
+  Stable on ppc wrt bug 198685
+
+  29 Aug 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing kaiowas from metadata due to his retirement (see #61930 for
+  reference).
+
+  26 Jul 2007; Guy Martin <gmsoft@gentoo.org> engine_pkcs11-0.1.4.ebuild:
+  Added ~hppa to KEYWORDS.
+
+*engine_pkcs11-0.1.4 (20 Jul 2007)
+
+  20 Jul 2007; Alon Bar-Lev <alonbl@gentoo.org> +engine_pkcs11-0.1.4.ebuild:
+  Version bump
+
+  25 Nov 2006; Bryan Østergaard <kloeri@gentoo.org>
+  engine_pkcs11-0.1.3.ebuild:
+  Add ~alpha keyword, bug 135397.
+
+  13 Sep 2006; Petre Rodan <kaiowas@gentoo.org> engine_pkcs11-0.1.3.ebuild:
+  mark stable on amd64 ia64 ppc ppc64 sparc x86
+
+  13 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  engine_pkcs11-0.1.3.ebuild:
+  Mark 0.1.3 ~ia64. #135397
+
+  13 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  engine_pkcs11-0.1.3.ebuild:
+  Keyworded ~sparc wrt #135397
+
+  12 Jun 2006; Mike Doty <kingtaco@gentoo.org> engine_pkcs11-0.1.3.ebuild:
+  marked ~amd64
+
+  08 Jun 2006; Markus Rothe <corsair@gentoo.org> engine_pkcs11-0.1.3.ebuild:
+  Added ~ppc64; bug #135397
+
+  06 Jun 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  engine_pkcs11-0.1.3.ebuild:
+  Added ~ppc, bug #135397
+
+*engine_pkcs11-0.1.3 (03 Jun 2006)
+
+  03 Jun 2006; Petre Rodan <kaiowas@gentoo.org> +metadata.xml,
+  +engine_pkcs11-0.1.3.ebuild:
+  initial commit. contributed by Mark Raddatz in bug #115278
+

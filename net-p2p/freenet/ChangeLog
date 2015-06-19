@@ -1,0 +1,861 @@
+# ChangeLog for net-p2p/freenet
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/freenet/ChangeLog,v 1.186 2015/04/27 15:40:50 tommy Exp $
+
+*freenet-0.7.5_p1467 (27 Apr 2015)
+
+  27 Apr 2015; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1467.ebuild, -freenet-0.7.5_p1465.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1466 (18 Nov 2014)
+
+  18 Nov 2014; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1466.ebuild, -freenet-0.7.5_p1464.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1465 (12 Aug 2014)
+
+  12 Aug 2014; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1465.ebuild, -freenet-0.7.5_p1462.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1464 (20 Jul 2014)
+
+  20 Jul 2014; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1464.ebuild, -freenet-0.7.5_p1459-r1.ebuild,
+  -freenet-0.7.5_p1459.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1462 (01 Jun 2014)
+
+  01 Jun 2014; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1455.ebuild, -freenet-0.7.5_p1456.ebuild,
+  +freenet-0.7.5_p1462.ebuild:
+  Version bump, use --user instead of --chuid for init script, fixes bug
+  488958, drop old
+
+*freenet-0.7.5_p1459-r1 (30 Mar 2014)
+
+  30 Mar 2014; Pacho Ramos <pacho@gentoo.org> +files/freenet.service,
+  +freenet-0.7.5_p1459-r1.ebuild:
+  Add unit file (#502346 by neko259)
+
+  02 Mar 2014; Tom Wijsman <TomWij@gentoo.org> freenet-0.7.5_p1459.ebuild:
+  Unbreak dependency on bcprov in latest version by depending on new SLOT 1.49.
+
+*freenet-0.7.5_p1459 (13 Feb 2014)
+
+  13 Feb 2014; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1459.ebuild, -freenet-0.7.5_p1452.ebuild,
+  -freenet-0.7.5_p1453.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1456 (18 Sep 2013)
+
+  18 Sep 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1456.ebuild:
+  Version bump
+
+  07 Sep 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  freenet-0.7.5_p1455.ebuild:
+  Drop useless mv
+
+  07 Sep 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  freenet-0.7.5_p1455.ebuild:
+  Raise version requirement for bcprov to 1.49, fixes bug 483322
+
+*freenet-0.7.5_p1455 (01 Sep 2013)
+
+  01 Sep 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1455.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1453 (23 Aug 2013)
+
+  23 Aug 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1453.ebuild, -freenet-0.7.5_p1450.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1452 (21 Aug 2013)
+
+  21 Aug 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1452.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1450 (03 Aug 2013)
+
+  03 Aug 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1447.ebuild, -freenet-0.7.5_p1449.ebuild,
+  +freenet-0.7.5_p1450.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1449 (21 Jul 2013)
+
+  21 Jul 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1444.ebuild, +freenet-0.7.5_p1449.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1447 (11 Jul 2013)
+
+  11 Jul 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1447.ebuild, -freenet-0.7.5_p1442.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1444 (24 May 2013)
+
+  24 May 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1444.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1442 (21 May 2013)
+
+  21 May 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1440.ebuild, +freenet-0.7.5_p1442.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1440 (05 Apr 2013)
+
+  05 Apr 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1440.ebuild, -freenet-0.7.5_p1436.ebuild,
+  -freenet-0.7.5_p1437.ebuild, -freenet-0.7.5_p1438.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1438 (27 Mar 2013)
+
+  27 Mar 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1438.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1437 (23 Mar 2013)
+
+  23 Mar 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1437.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1436 (03 Mar 2013)
+
+  03 Mar 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1432.ebuild, -freenet-0.7.5_p1433.ebuild,
+  +freenet-0.7.5_p1436.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1433 (18 Feb 2013)
+
+  18 Feb 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1433.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1432 (06 Feb 2013)
+
+  06 Feb 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1423.ebuild, -freenet-0.7.5_p1424.ebuild,
+  +freenet-0.7.5_p1432.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1424 (12 Jan 2013)
+
+  12 Jan 2013; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1424.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1423 (20 Dec 2012)
+
+  20 Dec 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1419.ebuild, -freenet-0.7.5_p1421.ebuild,
+  -freenet-0.7.5_p1422.ebuild, +freenet-0.7.5_p1423.ebuild:
+  Version bump, drop old, fix license, fixes bug 446618 with thanks to ulm
+
+*freenet-0.7.5_p1422 (30 Oct 2012)
+
+  30 Oct 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1422.ebuild, +files/freenet-0.7.5_p1422-wrapper.conf:
+  Version bump, update and cleanup the wrapper config
+
+*freenet-0.7.5_p1421 (25 Oct 2012)
+
+  25 Oct 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +files/0.7.5_p1321-ext.patch, +freenet-0.7.5_p1421.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1419 (14 Oct 2012)
+
+  14 Oct 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1417.ebuild, +freenet-0.7.5_p1419.ebuild:
+  Version bump, drop old, finally fix bug 429716
+
+*freenet-0.7.5_p1417 (28 Sep 2012)
+
+  28 Sep 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1411.ebuild, -freenet-0.7.5_p1413.ebuild,
+  +freenet-0.7.5_p1417.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1413 (13 Sep 2012)
+
+  13 Sep 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1413.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1411 (11 Sep 2012)
+
+  11 Sep 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1406.ebuild, -freenet-0.7.5_p1407.ebuild,
+  -freenet-0.7.5_p1409.ebuild, -freenet-0.7.5_p1410.ebuild,
+  +freenet-0.7.5_p1411.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1410 (25 Aug 2012)
+
+  25 Aug 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1410.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1409 (02 Aug 2012)
+
+  02 Aug 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1409.ebuild:
+  Version bump
+
+  22 Jun 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  freenet-0.7.5_p1407.ebuild:
+  Add missing user eclass inherit
+
+  22 Jun 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  freenet-0.7.5_p1407.ebuild:
+  Update ebuild, fix tests, thanks to sera, fixes bug 421953
+
+  16 Apr 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1405.ebuild, freenet-0.7.5_p1406.ebuild,
+  freenet-0.7.5_p1407.ebuild:
+  Really drop old, update homepage, fixes bug 412203
+
+*freenet-0.7.5_p1407 (15 Apr 2012)
+
+  15 Apr 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1407.ebuild,
+  +files/libraryloader-revert-using-of-absolute-path.patch:
+  Version bump, drop old
+
+*freenet-0.7.5_p1406 (04 Apr 2012)
+
+  04 Apr 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1406.ebuild:
+  Version bump
+
+  08 Feb 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -files/0.7.5_p1297-ext.patch, -files/strip-version-check.patch,
+  -files/wrapper1.conf:
+  Drop unused patches, thanks to _Mr_Bones_ for the hint
+
+  08 Feb 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-9999.ebuild:
+  Drop live version, commits and releases have settled down
+
+  08 Feb 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1404.ebuild, freenet-0.7.5_p1405.ebuild, freenet-9999.ebuild:
+  Fix dependency on dev-java/bcprov, drop old version
+
+*freenet-0.7.5_p1405 (19 Nov 2011)
+
+  19 Nov 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1405.ebuild:
+  Version bump
+
+  17 Sep 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> freenet-9999.ebuild,
+  -files/strip-openjdk-check.patch:
+  Drop obsolete stripping of openjdk checks
+
+*freenet-0.7.5_p1404 (17 Sep 2011)
+
+  17 Sep 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1401.ebuild, +freenet-0.7.5_p1404.ebuild,
+  freenet-9999.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1401 (27 Aug 2011)
+
+  27 Aug 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1400.ebuild, +freenet-0.7.5_p1401.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1400 (26 Aug 2011)
+
+  26 Aug 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1399.ebuild, +freenet-0.7.5_p1400.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1399 (25 Aug 2011)
+
+  25 Aug 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1397.ebuild, +freenet-0.7.5_p1399.ebuild,
+  freenet-9999.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1397 (17 Aug 2011)
+
+  17 Aug 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1395.ebuild, +freenet-0.7.5_p1397.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1395 (10 Aug 2011)
+
+  10 Aug 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1392.ebuild, +freenet-0.7.5_p1395.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1392 (08 Aug 2011)
+
+  08 Aug 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1389.ebuild, +freenet-0.7.5_p1392.ebuild,
+  freenet-9999.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1389 (31 Jul 2011)
+
+  31 Jul 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1384.ebuild, +freenet-0.7.5_p1389.ebuild,
+  +files/freenet-0.7.5_p1384-libraryloader-just-try-loading.patch,
+  +files/freenet-0.7.5_p1384-nativebiginteger-no-nativedoublevalue.patch,
+  +files/freenet-0.7.5_p1389-wrapper.conf, freenet-9999.ebuild:
+  Version bump, drop old, update live ebuild, fixes bug 376973, bug 376975 and
+  bug 376277
+
+*freenet-0.7.5_p1384 (16 Jul 2011)
+
+  16 Jul 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1378.ebuild, -freenet-0.7.5_p1380.ebuild,
+  +freenet-0.7.5_p1384.ebuild, freenet-9999.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1380 (10 Jul 2011)
+
+  10 Jul 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1380.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1378 (22 Jun 2011)
+
+  22 Jun 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1377.ebuild, +freenet-0.7.5_p1378.ebuild,
+  freenet-9999.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1377 (13 Jun 2011)
+
+  13 Jun 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1376.ebuild, +freenet-0.7.5_p1377.ebuild,
+  freenet-9999.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1376 (28 May 2011)
+
+  28 May 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1375.ebuild, +freenet-0.7.5_p1376.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1375 (15 May 2011)
+
+  15 May 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1372.ebuild, +freenet-0.7.5_p1375.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1372 (07 May 2011)
+
+  07 May 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1364.ebuild, -freenet-0.7.5_p1366.ebuild,
+  +freenet-0.7.5_p1372.ebuild, freenet-9999.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1366 (28 Apr 2011)
+
+  28 Apr 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1366.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1364 (16 Apr 2011)
+
+  16 Apr 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1358.ebuild, -freenet-0.7.5_p1363.ebuild,
+  +freenet-0.7.5_p1364.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1363 (02 Apr 2011)
+
+  02 Apr 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1356.ebuild, +freenet-0.7.5_p1363.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1358 (18 Mar 2011)
+
+  18 Mar 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1358.ebuild:
+  Version bump, also fixes bug 356633
+
+*freenet-0.7.5_p1356 (11 Mar 2011)
+
+  11 Mar 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1352.ebuild, -freenet-0.7.5_p1355.ebuild,
+  +freenet-0.7.5_p1356.ebuild:
+  Version bump, drop old
+
+  27 Feb 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  freenet-0.7.5_p1355.ebuild:
+  Fix bug 356633, thanks to Diego for reporting
+
+*freenet-0.7.5_p1355 (17 Feb 2011)
+
+  17 Feb 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1345.ebuild, +freenet-0.7.5_p1355.ebuild:
+  Version bump, drop old
+
+  15 Feb 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  freenet-0.7.5_p1345.ebuild, freenet-0.7.5_p1352.ebuild, freenet-9999.ebuild:
+  Remove ant-core-1.7'*' dependency, update live ebuild
+
+*freenet-0.7.5_p1352 (13 Feb 2011)
+
+  13 Feb 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1344.ebuild, +freenet-0.7.5_p1352.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1345 (09 Feb 2011)
+
+  09 Feb 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1339.ebuild, +freenet-0.7.5_p1345.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1344 (06 Feb 2011)
+
+  06 Feb 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1336.ebuild, +freenet-0.7.5_p1344.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1339 (29 Jan 2011)
+
+  29 Jan 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1334.ebuild, +freenet-0.7.5_p1339.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1336 (25 Jan 2011)
+
+  25 Jan 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1329.ebuild, +freenet-0.7.5_p1336.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1334 (20 Jan 2011)
+
+  20 Jan 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1323.ebuild, +freenet-0.7.5_p1334.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1329 (16 Jan 2011)
+
+  16 Jan 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1321.ebuild, +freenet-0.7.5_p1329.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1323 (11 Jan 2011)
+
+  11 Jan 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1323.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1321 (06 Jan 2011)
+
+  06 Jan 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1312.ebuild, -freenet-0.7.5_p1320.ebuild,
+  +freenet-0.7.5_p1321.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1320 (04 Jan 2011)
+
+  04 Jan 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1311.ebuild, +freenet-0.7.5_p1320.ebuild,
+  freenet-9999.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1312 (26 Dec 2010)
+
+  26 Dec 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1310.ebuild, +freenet-0.7.5_p1312.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1311 (17 Dec 2010)
+
+  17 Dec 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1311.ebuild:
+  Version bump
+
+  12 Dec 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  freenet-0.7.5_p1310.ebuild:
+  Fix src_prepare phase
+
+*freenet-0.7.5_p1310 (12 Dec 2010)
+
+  12 Dec 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1306.ebuild, -freenet-0.7.5_p1308.ebuild,
+  +freenet-0.7.5_p1310.ebuild:
+  Version bump, drop old ones
+
+*freenet-0.7.5_p1308 (02 Dec 2010)
+
+  02 Dec 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1304.ebuild, +freenet-0.7.5_p1308.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1306 (30 Nov 2010)
+
+  30 Nov 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1306.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1304 (22 Nov 2010)
+
+  22 Nov 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1302.ebuild, +freenet-0.7.5_p1304.ebuild,
+  freenet-9999.ebuild, -files/build.xml, -files/ext.patch:
+  Version bump, drop old, update live ebuild
+
+*freenet-0.7.5_p1302 (10 Nov 2010)
+
+  10 Nov 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +files/0.7.5_p1302-ext.patch, -freenet-0.7.5_p1296.ebuild,
+  -freenet-0.7.5_p1297.ebuild, +freenet-0.7.5_p1302.ebuild, files/build.xml,
+  files/strip-openjdk-check.patch:
+  Version bump, drop old versions
+
+*freenet-0.7.5_p1297 (31 Oct 2010)
+
+  31 Oct 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +files/0.7.5_p1297-ext.patch, -freenet-0.7.5_p1293.ebuild,
+  +freenet-0.7.5_p1297.ebuild, +files/build.xml:
+  Version bump, drop old. Use build.xml from previous version until the
+  issues with the new version are sorted out
+
+*freenet-0.7.5_p1296 (28 Oct 2010)
+
+  28 Oct 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1291.ebuild, +freenet-0.7.5_p1296.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1293 (21 Oct 2010)
+
+  21 Oct 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1293.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1291 (14 Oct 2010)
+
+  14 Oct 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1277.ebuild, -freenet-0.7.5_p1283.ebuild,
+  +freenet-0.7.5_p1291.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1283 (03 Oct 2010)
+
+  03 Oct 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1275.ebuild, +freenet-0.7.5_p1283.ebuild:
+  Version bump, remove old
+
+*freenet-0.7.5_p1277 (13 Sep 2010)
+
+  13 Sep 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1274.ebuild, +freenet-0.7.5_p1277.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1275 (26 Aug 2010)
+
+  26 Aug 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1273.ebuild, +freenet-0.7.5_p1275.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1274 (23 Aug 2010)
+
+  23 Aug 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1272.ebuild, +freenet-0.7.5_p1274.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1273 (22 Aug 2010)
+
+  22 Aug 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1271.ebuild, +freenet-0.7.5_p1273.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1272 (20 Aug 2010)
+
+  20 Aug 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1269.ebuild, +freenet-0.7.5_p1272.ebuild,
+  freenet-9999.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1271 (18 Aug 2010)
+
+  18 Aug 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1263-r1.ebuild, +freenet-0.7.5_p1271.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1269 (15 Aug 2010)
+
+  15 Aug 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1269.ebuild:
+  Version bump
+
+  01 Aug 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  freenet-9999.ebuild:
+  Same change to live ebuild
+
+*freenet-0.7.5_p1263-r1 (01 Aug 2010)
+
+  01 Aug 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1262.ebuild, -freenet-0.7.5_p1263.ebuild,
+  +freenet-0.7.5_p1263-r1.ebuild:
+  Restrict ant-core dependency to 1.7*, fixes bug 330735
+
+*freenet-0.7.5_p1263 (31 Jul 2010)
+
+  31 Jul 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1261.ebuild, +freenet-0.7.5_p1263.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1262 (21 Jul 2010)
+
+  21 Jul 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1262.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1261 (17 Jul 2010)
+
+  17 Jul 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -files/0.7.5_p1245-strip-openjdk-check.patch, -freenet-0.7.5_p1253.ebuild,
+  -freenet-0.7.5_p1257.ebuild, +freenet-0.7.5_p1261.ebuild,
+  +files/strip-openjdk-check.patch:
+  Version bump
+
+*freenet-0.7.5_p1257 (04 Jul 2010)
+
+  04 Jul 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1250.ebuild, +freenet-0.7.5_p1257.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1253 (15 Jun 2010)
+
+  15 Jun 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1247.ebuild, +freenet-0.7.5_p1253.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1250 (13 Jun 2010)
+
+  13 Jun 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1250.ebuild:
+  Version bump
+
+  14 May 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> files/ext.patch:
+  Adjust patch to always create dir for jar
+
+*freenet-0.7.5_p1247 (11 May 2010)
+
+  11 May 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1245.ebuild, +freenet-0.7.5_p1247.ebuild, files/ext.patch:
+  Version bump, disable gwt-based javascript for now
+
+*freenet-0.7.5_p1245 (25 Apr 2010)
+
+  25 Apr 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +files/0.7.5_p1245-strip-openjdk-check.patch, -freenet-0.7.5_p1243.ebuild,
+  -freenet-0.7.5_p1244.ebuild, +freenet-0.7.5_p1245.ebuild,
+  -files/freenet-0.7.5_p1232-strip-error.patch,
+  -files/freenet-0.7.5_p1232-strip-openjdk-warning.patch:
+  Version bump
+
+*freenet-0.7.5_p1244 (18 Mar 2010)
+
+  18 Mar 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1241.ebuild, +freenet-0.7.5_p1244.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1243 (16 Mar 2010)
+
+  16 Mar 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1243.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1241 (13 Mar 2010)
+
+  13 Mar 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1239.ebuild, -freenet-0.7.5_p1240.ebuild,
+  +freenet-0.7.5_p1241.ebuild, files/ext.patch:
+  Version bump
+
+  16 Feb 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  freenet-0.7.5_p1239.ebuild, freenet-0.7.5_p1240.ebuild:
+  QA fixes
+
+*freenet-0.7.5_p1240 (05 Feb 2010)
+
+  05 Feb 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7.5_p1240.ebuild:
+  Version bump
+
+*freenet-0.7.5_p1239 (06 Nov 2009)
+
+  06 Nov 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1237.ebuild, +freenet-0.7.5_p1239.ebuild,
+  freenet-9999.ebuild, files/ext.patch:
+  Version bump
+
+*freenet-0.7.5_p1237 (19 Oct 2009)
+
+  19 Oct 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1236.ebuild, +freenet-0.7.5_p1237.ebuild,
+  freenet-9999.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1236 (20 Sep 2009)
+
+  20 Sep 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1233.ebuild, +freenet-0.7.5_p1236.ebuild:
+  Version bump, drop old
+
+*freenet-0.7.5_p1233 (05 Sep 2009)
+
+  05 Sep 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1229.ebuild, -freenet-0.7.5_p1232.ebuild,
+  +freenet-0.7.5_p1233.ebuild, freenet-9999.ebuild, files/run.sh-20090501,
+  files/ext.patch:
+  Version bump, remove old, move to tarballs as requested by QA team (fixes
+  bug 282248)
+
+*freenet-0.7.5_p1232 (22 Aug 2009)
+
+  22 Aug 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -files/0.7.5_p1228strip-version-check.patch, -freenet-0.7.5_p1228.ebuild,
+  +freenet-0.7.5_p1232.ebuild, +files/freenet-0.7.5_p1232-strip-error.patch,
+  +files/freenet-0.7.5_p1232-strip-openjdk-warning.patch:
+  Version bump, drop old
+
+  17 Aug 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  files/wrapper1.conf:
+  Adjust default wrapper config
+
+*freenet-0.7.5_p1229 (10 Aug 2009)
+
+  10 Aug 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +files/0.7.5_p1228strip-version-check.patch, freenet-0.7.5_p1228.ebuild,
+  +freenet-0.7.5_p1229.ebuild, files/strip-version-check.patch:
+  Version bump
+
+*freenet-0.7.5_p1228 (10 Aug 2009)
+
+  10 Aug 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7.5_p1227.ebuild, +freenet-0.7.5_p1228.ebuild, files/ext.patch,
+  +files/strip-version-check.patch:
+  Version bump
+
+*freenet-0.7.5_p1227 (02 Aug 2009)
+
+  02 Aug 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7_p1222.ebuild, -freenet-0.7_p1223.ebuild,
+  +freenet-0.7.5_p1227.ebuild:
+  Version bump, drop old versions
+
+*freenet-0.7_p1223 (08 Jul 2009)
+
+  08 Jul 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7_p1223.ebuild:
+  Version bump
+
+*freenet-0.7_p1222 (12 Jun 2009)
+
+  12 Jun 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7_p1220.ebuild, +freenet-0.7_p1222.ebuild:
+  Version bump
+
+*freenet-0.7_p1220 (12 Jun 2009)
+
+  12 Jun 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7_p1216.ebuild, +freenet-0.7_p1220.ebuild:
+  Version bump
+
+*freenet-0.7_p1216 (08 Jun 2009)
+
+  08 Jun 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7_p1214.ebuild, +freenet-0.7_p1216.ebuild:
+  Version bump, drop old
+
+*freenet-0.7_p1214 (04 Jun 2009)
+
+  04 Jun 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7_p1212.ebuild, -freenet-0.7_p1213.ebuild,
+  +freenet-0.7_p1214.ebuild, files/ext.patch:
+  Version bump, remove all old versions, update patch
+
+*freenet-0.7_p1213 (01 Jun 2009)
+
+  01 Jun 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7_p1210.ebuild, +freenet-0.7_p1213.ebuild:
+  Version bump, remove old
+
+*freenet-0.7_p1212 (27 May 2009)
+
+  27 May 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7_p1212.ebuild:
+  Version bump
+
+*freenet-0.7_p1210 (24 May 2009)
+
+  24 May 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7_p1206.ebuild, -freenet-0.7_p1208.ebuild,
+  -freenet-0.7_p1209-r2.ebuild, +freenet-0.7_p1210.ebuild:
+  Version bump, remove old versions
+
+*freenet-0.7_p1209-r2 (05 May 2009)
+
+  05 May 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7_p1209-r1.ebuild, +freenet-0.7_p1209-r2.ebuild,
+  files/run.sh-20090501:
+  Fix the run.sh file
+
+*freenet-0.7_p1209-r1 (03 May 2009)
+
+  03 May 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7_p1209.ebuild, +freenet-0.7_p1209-r1.ebuild:
+  Readd seednodes.fref
+
+*freenet-0.7_p1209 (01 May 2009)
+
+  01 May 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +files/run.sh-20090501, +freenet-0.7_p1209.ebuild, freenet-9999.ebuild:
+  Version bump, switch to git sources
+
+*freenet-0.7_p1208 (13 Apr 2009)
+
+  13 Apr 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -freenet-0.7_p1204-r1.ebuild, -freenet-0.7_p1205.ebuild,
+  +freenet-0.7_p1208.ebuild:
+  Version bump, drop old ones
+
+*freenet-0.7_p1206 (22 Mar 2009)
+
+  22 Mar 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7_p1206.ebuild:
+  Version bump
+
+*freenet-0.7_p1205 (27 Feb 2009)
+
+  27 Feb 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-0.7_p1205.ebuild, freenet-9999.ebuild:
+  Version bump
+
+*freenet-9999 (03 Feb 2009)
+
+  03 Feb 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +freenet-9999.ebuild:
+  Add live ebuild
+
+*freenet-0.7_p1204-r1 (02 Feb 2009)
+
+  02 Feb 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> +files/ext.patch,
+  +files/freenet, +files/freenet.old, +files/wrapper1.conf,
+  +freenet-0.7_p1204-r1.ebuild:
+  Initial commit. Fixes bug 128783

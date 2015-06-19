@@ -1,0 +1,17 @@
+ memory-profile/profile_memory.py |    3 +--
+ 1 files changed, 1 insertions(+), 2 deletions(-)
+
+diff --git a/memory-profile/profile_memory.py b/memory-profile/profile_memory.py
+index b1e8c06..da37c90 100644
+--- a/memory-profile/profile_memory.py
++++ b/memory-profile/profile_memory.py
+@@ -28,8 +28,7 @@ from _zeitgeist.engine.extension import Extension
+ from _zeitgeist.engine import constants
+ from _zeitgeist.singleton import SingletonApplication
+ 
+-from pympler.tracker import ClassTracker
+-from pympler.tracker.stats import ConsoleStats
++from pympler.classtracker import ClassTracker, ConsoleStats
+ 
+ DBUS_OBJECT_PATH = "/org/gnome/zeitgeist/memory_profiler"
+ 

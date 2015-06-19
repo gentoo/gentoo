@@ -1,0 +1,76 @@
+# ChangeLog for dev-haskell/hsql
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hsql/ChangeLog,v 1.19 2014/07/25 09:16:36 slyfox Exp $
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> hsql-1.8.1.ebuild,
+  hsql-1.8.2.ebuild:
+  Drop trailing '.' from description.
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org> hsql-1.8.1.ebuild,
+  hsql-1.8.2.ebuild:
+  move dev-haskell/hsql/hsql-1.8.2.ebuild ebuild to mirror://hackage
+
+*hsql-1.8.2 (15 Apr 2012)
+
+  15 Apr 2012; Mark Wright <gienah@gentoo.org> +files/hsql-1.8.1-ghc-7.4.patch,
+  +hsql-1.8.2.ebuild, hsql-1.8.1.ebuild, metadata.xml:
+  Bump hsql to 1.8.2. Patch hsql 1.8.1 to build with ghc 7.4.1.
+
+  04 Aug 2011; Sergei Trofimovich <slyfox@gentoo.org> -hsql-1.7.ebuild,
+  -hsql-1.7.1.ebuild, -files/hsql-1.7-sqltext-to-int.patch:
+  Removed old.
+
+*hsql-1.8.1 (04 Aug 2011)
+
+  04 Aug 2011; Sergei Trofimovich <slyfox@gentoo.org> +hsql-1.8.1.ebuild:
+  Version bump (ghc-7 compatible)
+
+  12 Jul 2010; Sergei Trofimovich <slyfox@gentoo.org> hsql-1.7.ebuild,
+  hsql-1.7.1.ebuild:
+  Fixed bug #278897 (build failure on ghc-6.10+). Thanks to Nikolay Orlyuk
+  <virkony@gmail.com> for the report and fix.
+
+*hsql-1.7.1 (05 Aug 2009)
+
+  05 Aug 2009; Lennart Kolmodin <kolmodin@gentoo.org> +hsql-1.7.1.ebuild:
+  Version bump (builds with ghc 6.10).
+
+  13 Dec 2007; Duncan Coutts <dcoutts@gentoo.org> hsql-1.7.ebuild:
+  Updates for upward compatability with cabal-1.2 and ghc-6.8
+
+  31 Oct 2007; Duncan Coutts <dcoutts@gentoo.org> hsql-1.7.ebuild:
+  Drop virtual/ghc in favour of dev-lang/ghc
+
+  06 Jan 2007; Andres Loeh <kosmikus@gentoo.org> hsql-1.7.ebuild:
+  Fixed elog / einfo usage.
+
+  16 Mar 2006; Duncan Coutts <dcoutts@gentoo.org> hsql-1.7.ebuild:
+  QA fix; Add eutils to inherit.
+
+  11 Mar 2006; Duncan Coutts <dcoutts@gentoo.org>
+  +files/hsql-1.7-sqltext-to-int.patch, hsql-1.7.ebuild:
+  Add a patch by Bjorn Bringert to fix a problem found in the sqlite3 backend.
+  See also bugs #98549 and #98551.
+
+  11 Mar 2006; Duncan Coutts <dcoutts@gentoo.org> hsql-1.7.ebuild:
+  Remove the backends from PDEPEND. Use a message in pkg_postinst instead.
+
+  09 Mar 2006; Duncan Coutts <dcoutts@gentoo.org> hsql-1.7.ebuild:
+  Add ~sparc to KEYWORDS. See bug #124902
+
+  01 Mar 2006; Michael Hanselmann <hansmi@gentoo.org> hsql-1.7.ebuild:
+  Added to ~ppc. See bug #124469.
+
+  01 Mar 2006; Markus Rothe <corsair@gentoo.org> hsql-1.7.ebuild:
+  Added ~ppc64; bug #124469
+
+  23 Feb 2006; Duncan Coutts <dcoutts@gentoo.org> hsql-1.7.ebuild:
+  Changed PDEPEND on the hsql backends to use '~' deps (as suggested by ciaranm)
+
+*hsql-1.7 (23 Feb 2006)
+
+  23 Feb 2006; <dcoutts@gentoo.org> +metadata.xml, +hsql-1.7.ebuild:
+  Initial import.

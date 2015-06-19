@@ -1,0 +1,53 @@
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/www-servers/uwsgi/files/uwsgi.confd-r1,v 1.1 2012/05/15 06:45:08 dev-zero Exp $
+
+# YOU SHOULD ONLY MODIFY THIS FILE IF YOU USE THE UWSGI EMPEROR MODE!
+# IF YOU WANT TO RUN A SINGLE APP INSTANCE, CREATE A COPY AND MODIFY THAT INSTEAD!
+
+# Path (or name) of UNIX/TCP socket to bind to
+# Example : UWSGI_SOCKET=127.0.0.1:1234
+UWSGI_SOCKET=
+
+# Enable threads? (1 = yes, 0 = no). The default is 0
+#
+UWSGI_THREADS=0
+
+# The path to your uWSGI application.
+#
+UWSGI_PROGRAM=
+
+# The path to your uWSGI xml config file.
+#
+UWSGI_XML_CONFIG=
+
+# The number of child processes to spawn. The default is 1.
+#
+UWSGI_PROCESSES=1
+
+# The log file path. If empty, log only errors
+#
+UWSGI_LOG_FILE=
+
+# If you want to run your application inside a chroot then specify the
+# directory here. Leave this blank otherwise.
+#
+UWSGI_CHROOT=
+
+# If you want to run your application from a specific directiory specify
+# it here. Leave this blank otherwise.
+#
+UWSGI_DIR=
+
+# The user and group to run your application as. If you do not specify these,
+# the application will be run as root:root.
+#
+UWSGI_USER=
+
+# Run the uwsgi emperor which loads vassals dynamically from this PATH
+# see http://projects.unbit.it/uwsgi/wiki/Emperor
+# The advised Gentoo folder is /etc/uwsgi.d/
+UWSGI_EMPEROR_PATH=
+
+# Additional options you might want to pass to uWSGI
+#
+UWSGI_EXTRA_OPTIONS=

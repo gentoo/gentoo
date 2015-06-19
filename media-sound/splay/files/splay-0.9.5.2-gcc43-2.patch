@@ -1,0 +1,42 @@
+diff -Nurpa splay-0.9.5.2.orig/apps/splay.cc splay-0.9.5.2/apps/splay.cc
+--- splay-0.9.5.2.orig/apps/splay.cc	2008-12-17 03:37:47.000000000 +0300
++++ splay-0.9.5.2/apps/splay.cc	2008-12-17 03:39:34.000000000 +0300
+@@ -150,16 +150,16 @@ ostream& operator<<(ostream& s, const ID
+   // Print just what we want...
+   s.setf(ios::left);  // The filled fields get the text to the left
+   s << 
+-    "Title : " << nn(ID3_GetTitle(tag)) << endl;
++    "Title : " << nn(ID3_GetTitle(tag)) << std::endl;
+   s << 
+-    "Artist: " << setw(30) << nn(ID3_GetArtist(tag)) << 
++    "Artist: " << std::setw(30) << nn(ID3_GetArtist(tag)) << 
+     "Album: " << nn(ID3_GetAlbum(tag)) << 
+-    endl ; 
++    std::endl ; 
+   
+   s << 
+-    "Genre : " << setw(18) << nn(ID3_gen_list[ID3_GetGenreNum(tag)]) << 
+-    "Track: " << setw(5) << ID3_GetTrackNum(tag) << 
+-    "Year: " <<  setw(6) << nn(ID3_GetYear(tag)); 
++    "Genre : " << std::setw(18) << nn(ID3_gen_list[ID3_GetGenreNum(tag)]) << 
++    "Track: " << std::setw(5) << ID3_GetTrackNum(tag) << 
++    "Year: " <<  std::setw(6) << nn(ID3_GetYear(tag)); 
+ //   if ( ID3_GetComment(tag) ){
+ //     s << endl << "Comment:" << nn(ID3_GetComment(tag)) <<
+ //       nn(ID3_GetLyricist(tag)) << nn(ID3_GetLyrics(tag));
+@@ -180,13 +180,13 @@ static void play(char *filename)
+       try {
+ 	const ID3_Tag*  mytag = new ID3_Tag(filename);
+ 	if ( mytag->HasV1Tag() || mytag->HasV2Tag()  )
+-	  cout << mytag << endl;
++	  std::cout << mytag << std::endl;
+ 	delete mytag;
+ 	
+       }
+ //      catch(ID3_Error &err){
+       catch(...){
+-	cout << "Error found (GetError functions disabled)" << endl;
++	std::cout << "Error found (GetError functions disabled)" << std::endl;
+ //	cout << err.GetErrorFile() << " (" << err.GetErrorLine() << "): "
+ //	     << err.GetErrorType() << ": " << err.GetErrorDesc() << endl;
+       }

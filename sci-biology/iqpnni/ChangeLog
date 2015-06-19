@@ -1,0 +1,29 @@
+# ChangeLog for sci-biology/iqpnni
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/iqpnni/ChangeLog,v 1.5 2013/03/11 15:25:40 jlec Exp $
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+*iqpnni-3.3.2 (25 Sep 2011)
+
+  25 Sep 2011; Andrey Kislyuk <weaver@gentoo.org> +iqpnni-3.3.2.ebuild:
+  Version bump
+
+  24 May 2009; Markus Meier <maekke@gentoo.org> iqpnni-3.3.1.ebuild:
+  amd64/x86 stable, bug #269965
+
+*iqpnni-3.3.1 (05 Jan 2009)
+
+  05 Jan 2009; weaver <weaver@gentoo.org> +files/iqpnni-3.3.1-gcc4.3.patch,
+  +iqpnni-3.3.1.ebuild:
+  Version bump
+
+*iqpnni-3.2 (30 Oct 2008)
+
+  30 Oct 2008; weaver <weaver@gentoo.org> +metadata.xml, +iqpnni-3.2.ebuild:
+  Import from science overlay
+
+  03 Sep 2008; weaver <weaver@gentoo.org> +metadata.xml, +iqpnni-3.2.ebuild:
+  Initial commit for bug 221965, thanks to Marek Miller <mlm@ngc17.pl>
+

@@ -1,0 +1,58 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/fcron/files/fcron.init.3,v 1.1 2012/08/29 17:38:40 flameeyes Exp $
+
+FCRON_INSTANCE=${SVCNAME##*.}
+
+configfile() {
+    if [ -n "${FCRON_INSTANCE}" -a "${SVCNAME}" != "fcron" ]; then
+	echo /etc/fcron/fcron.${FCRON_INSTANCE}.conf
+    else
+	echo /etc/fcron/fcron.conf
+    fi
+}
+
+getconfig() {
+    # if there is no configuration file return the default value
+    if ! [ -f $(configfile) ]; then
+	echo $2
+	return 0
+    fi
+
+    sed -n -e 's:^$1[ \t]*=[ \t]*::p' $(configfile)
+}
+
+depend() {
+    config $(configfile)
+
+    use logger
+    need clock hostname
+    # provide the cron service if we are the main instance
+    [ "${SVCNAME}" = "fcron" ] && provide cron
+}
+
+command="/usr/libexec/fcron"
+command_args="-c $(configfile)"
+pidfile=$(getconfig pidfile /var/run/fcron.pid)
+fcrontabs=$(getconfig fcrontabs /var/spool/fcron)
+
+extra_started_commands="reload"
+
+start_pre() {
+    if [ ! -e $(configfile) ]; then
+	eerror "You will need to create $(configfile) first"
+	eerror "There is a sample in /etc/fcron"
+	return 1
+    fi
+
+    if [ ! -d ${fcrontabs} ]; then
+	ebegin "Creating missing spooldir ${fcrontabs}"
+	${command} --newspooldir ${fcrontabs}
+	eend $?
+    fi
+}
+
+reload() {
+    kill -HUP `cat ${pidfile}`
+}

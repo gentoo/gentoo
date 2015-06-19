@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: gitk for vim
+EAPI=5
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=3574
+KEYWORDS=~amd64 ~x86 ~ppc-macos
+LICENSE=vim
+RDEPEND=dev-vcs/git app-vim/fugitive || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=https://github.com/gregsexton/gitv/archive/v1.3.tar.gz -> gitv-1.3.tar.gz
+_eclasses_=vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=b2194952f5c91591ade04bb82e96efa0

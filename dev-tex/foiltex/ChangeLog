@@ -1,0 +1,62 @@
+# ChangeLog for dev-tex/foiltex
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/foiltex/ChangeLog,v 1.20 2015/04/13 22:17:46 mrueg Exp $
+
+  13 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -foiltex-2.1.4a.ebuild:
+  Remove old.
+
+  13 Apr 2013; Ulrich Müller <ulm@gentoo.org> foiltex-2.1.4a.ebuild,
+  foiltex-2.1.4b.ebuild:
+  Fix LICENSE, see foiltex.ins, bug 464110.
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> foiltex-2.1.4a.ebuild,
+  foiltex-2.1.4b.ebuild:
+  Drop sparc keywords
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> foiltex-2.1.4b.ebuild:
+  Marking foiltex-2.1.4b ppc for bug 397015
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> foiltex-2.1.4b.ebuild:
+  x86 stable wrt bug #397015
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org> foiltex-2.1.4b.ebuild:
+  Stable for amd64, wrt bug #397015
+
+*foiltex-2.1.4b (17 Jun 2009)
+
+  17 Jun 2009; Alexis Ballier <aballier@gentoo.org> +foiltex-2.1.4b.ebuild:
+  bump to 2.1.4b, bug #271226, install to texmf-site and some minor cleanups
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  06 Feb 2007; Alexandre Buisse <nattfodd@gentoo.org> -foiltex-2.1.3.ebuild:
+  Removed outdated foiltex 2.1.3.
+
+  28 Dec 2004; Dylan Carlson <absinthe@gentoo.org> foiltex-2.1.4a.ebuild:
+  Stable on amd64.
+
+  30 Oct 2004; Jason Wever <weeve@gentoo.org> foiltex-2.1.4a.ebuild:
+  Stable on sparc.
+
+  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> foiltex-2.1.4a.ebuild:
+  Stable on x86 and ppc.
+
+*foiltex-2.1.4a (18 Aug 2004)
+
+  18 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> +foiltex-2.1.4a.ebuild:
+  Version bumped. Ebuild provided by Urs Joss <tschenturs@gmx.ch>,
+  closing bug #58210.
+
+  13 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> foiltex-2.1.3.ebuild:
+  marked ~amd64
+
+  12 Jun 2003; <msterret@gentoo.org> foiltex-2.1.3.ebuild:
+  add Header
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*foiltex-2.1.3 (01 July 2002)
+
+  01 July 2002; Felix Kurth <felix@fkurth.de> :
+  Initial release

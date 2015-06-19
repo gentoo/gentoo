@@ -1,0 +1,111 @@
+# ChangeLog for net-misc/clipgrab
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/clipgrab/ChangeLog,v 1.21 2015/05/23 09:42:27 xmw Exp $
+
+*clipgrab-3.4.11 (23 May 2015)
+
+  23 May 2015; Michael Weber <xmw@gentoo.org> +clipgrab-3.4.11.ebuild:
+  Version bump (thanks  Sergey S. Starikoff, bug 549654).
+
+*clipgrab-3.4.9-r1 (17 Mar 2015)
+
+  17 Mar 2015; Michael Weber <xmw@gentoo.org> +clipgrab-3.4.9-r1.ebuild,
+  -clipgrab-3.4.9.ebuild:
+  Works with libav (bug 543330, thanks Sergey S. Starikoff).
+
+*clipgrab-3.4.9 (26 Feb 2015)
+
+  26 Feb 2015; Michael Weber <xmw@gentoo.org> +clipgrab-3.4.9.ebuild,
+  -clipgrab-3.2.0.11.ebuild, -clipgrab-3.2.1.0.ebuild, -clipgrab-3.4.2.ebuild:
+  Version bump (bug 541314).
+
+*clipgrab-3.4.2 (05 Jun 2014)
+
+  05 Jun 2014; Michael Weber <xmw@gentoo.org> +clipgrab-3.4.2.ebuild,
+  +files/clipgrab-3.4.2-obey.patch:
+  Version bump
+
+  11 Aug 2013; Alexis Ballier <aballier@gentoo.org> clipgrab-3.2.0.11.ebuild,
+  clipgrab-3.2.1.0.ebuild:
+  depend on ffmpeg:0
+
+*clipgrab-3.2.1.0 (23 Jun 2013)
+
+  23 Jun 2013; Michael Weber <xmw@gentoo.org> +clipgrab-3.2.1.0.ebuild,
+  +files/clipgrab-3.2.1.0-obey.patch, -clipgrab-3.2.0.10.ebuild,
+  -clipgrab-3.2.0.9.ebuild, -files/3.2.0.6-obey.patch, clipgrab-3.2.0.11.ebuild:
+  Version bump, revert to media-libs/ffmpeg (bug 474368 by Nikoli), drop old.
+
+*clipgrab-3.2.0.11 (21 Apr 2013)
+
+  21 Apr 2013; Michael Weber <xmw@gentoo.org> +clipgrab-3.2.0.11.ebuild:
+  Version bump
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> clipgrab-3.2.0.10.ebuild,
+  clipgrab-3.2.0.9.ebuild:
+  Move Qt dependencies to the new category
+
+*clipgrab-3.2.0.10 (14 Jan 2013)
+
+  14 Jan 2013; Michael Weber <xmw@gentoo.org> -files/3.2.0.6-qrc.patch,
+  -clipgrab-3.2.0.6.ebuild, +clipgrab-3.2.0.10.ebuild,
+  +files/clipgrab-3.2.0.10-obey.patch:
+  Version bump (thanks euscan), drop old
+
+*clipgrab-3.2.0.9 (06 Oct 2012)
+
+  06 Oct 2012; Michael Weber <xmw@gentoo.org> +clipgrab-3.2.0.9.ebuild:
+  Version bump (euscan)
+
+*clipgrab-3.1.3.0 (19 Dec 2011)
+
+  19 Dec 2011; Michael Weber <xmw@gentoo.org> +clipgrab-3.1.3.0.ebuild:
+  Version bump
+
+  12 Nov 2011; Michael Weber <xmw@gentoo.org> clipgrab-3.1.0.2.ebuild:
+  dropping ~sparc
+
+  12 Nov 2011; Michael Weber <xmw@gentoo.org> clipgrab-3.1.0.2.ebuild:
+  Change dep to x11-libs/qt-webkit:4 (thanks to Mithodin, bug 379269)
+
+*clipgrab-3.1.0.2 (12 Nov 2011)
+
+  12 Nov 2011; Michael Weber <xmw@gentoo.org> -clipgrab-3.1.0.1.ebuild,
+  +clipgrab-3.1.0.2.ebuild, metadata.xml:
+  Version bump, thanks to Hans (bug 387233). Taking maint.
+
+  04 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -clipgrab-2.0_beta2.ebuild, clipgrab-3.1.0.1.ebuild:
+  Add sparc keyword to latest (i missed it previously). Drop the stable since
+  it does not work at all so it is better to have no stable than broken stable.
+
+*clipgrab-3.1.0.1 (01 Apr 2011)
+
+  01 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -clipgrab-2.0_beta2-r1.ebuild, +clipgrab-3.1.0.1.ebuild, +files/obey.patch:
+  Version bump to fix virutal/ffmpeg dependency. Fixes bug #289636 and #292029.
+
+  02 Jun 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove bluebird from metadata.xml (#223101)
+
+*clipgrab-2.0_beta2-r1 (21 Jun 2009)
+
+  21 Jun 2009; Pielmeier Daniel <billie@gentoo.org>
+  +clipgrab-2.0_beta2-r1.ebuild:
+  Revision bump. Adding desktop entry.
+
+  13 Feb 2009; Ben de Groot <yngwin@gentoo.org> clipgrab-2.0_beta2:
+  Fix Qt dependency
+
+  04 Oct 2008; Markus Meier <maekke@gentoo.org> clipgrab-2.0_beta2.ebuild:
+  x86 stable, bug #239430
+
+  03 Oct 2008; Friedrich Oslage <bluebird@gentoo.org>
+  clipgrab-2.0_beta2.ebuild:
+  Stable on sparc, bug #239430
+
+*clipgrab-2.0_beta2 (31 Aug 2008)
+
+  31 Aug 2008; Friedrich Oslage <bluebird@gentoo.org> +metadata.xml,
+  +clipgrab-2.0_beta2.ebuild:
+  Initial commit, ebuild by me.

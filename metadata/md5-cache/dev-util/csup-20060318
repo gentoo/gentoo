@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=dev-libs/openssl sys-libs/zlib >=sys-devel/bison-2.1
+DESCRIPTION=A rewrite of CVSup
+HOMEPAGE=http://www.mu.org/~mux/csup.html
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+LICENSE=BSD
+RDEPEND=dev-libs/openssl sys-libs/zlib !>=sys-freebsd/freebsd-ubin-6.2_beta1
+SLOT=0
+SRC_URI=http://mu.org/~mux/csup-snap-20060318.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a0ccdc5051d76d2df75a10ff3f4b1f08

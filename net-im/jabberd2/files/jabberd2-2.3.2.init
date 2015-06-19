@@ -1,0 +1,97 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/jabberd2/files/jabberd2-2.3.2.init,v 1.1 2014/06/01 20:09:54 hasufell Exp $
+
+extra_commands="reload"
+
+depend() {
+	need net
+	use mysql postgresql slapd
+	provide jabber-server
+}
+
+stopJabberServices() {
+
+	eindent
+	for pidfile in /var/run/jabber/*.pid; do
+		if [ -f "${pidfile}" ]; then
+			service=$(basename ${pidfile} .pid)
+			ebegin "Stopping ${service}"
+			start-stop-daemon \
+				--stop \
+				--pidfile ${pidfile}
+			eend $?
+		fi
+	done
+	eoutdent
+
+}
+
+start_pre() {
+	checkpath -d -o jabber /var/run/jabber
+}
+
+start() {
+
+	einfo "Starting Jabber Server ..."
+	local services executable cfgfile pidfile
+	services=$(grep -v ^# /etc/jabber/jabberd.cfg | grep '..*' | awk '{print $1 ":" $2}')
+	eindent
+	for service in ${services}; do
+
+		cfgfile=$(echo ${service} | cut -d ':' -f 2)
+		service=$(echo ${service} | cut -d ':' -f 1)
+		if [ ! -f "${cfgfile}" ]; then
+			if [ -f "/etc/jabber/${service}.xml" ]; then
+				cfgfile="/etc/jabber/${service}.xml"
+			else
+				eerror "Can't find: ${cfgfile} or default /etc/jabber/${service}.xml"
+				stopJabberServices
+				return 1
+			fi
+		fi
+
+		executable=/usr/bin/${service}
+
+		if [ ! -f "${executable}" ]; then
+			eerror "Can't find executable: ${executable}"
+			stopJabberServices
+			return 1
+		fi
+
+		ebegin "Starting ${service} (${cfgfile})"
+		pidfile="$(grep -v ^# ${cfgfile} | grep '<pidfile>' | sed 's#<.\?pidfile>##g')"
+		start-stop-daemon \
+			--background \
+			--start  \
+			--user jabber:jabber \
+			--exec /usr/bin/${service} \
+			--pid ${pidfile} \
+			-- -c ${cfgfile}
+		eend $?
+
+	done
+	eoutdent
+
+}
+
+reload() {
+	eindent
+	for pidfile in /var/run/jabber/*.pid; do
+		if [ -f "${pidfile}" ]; then
+			service=$(basename ${pidfile} .pid)
+			ebegin "Reloading ${service}"
+			kill -HUP $(cat ${pidfile})
+			eend $?
+		fi
+	done
+ 	eoutdent
+}
+
+stop() {
+
+	einfo "Stopping Jabber Server"
+	stopJabberServices
+
+}

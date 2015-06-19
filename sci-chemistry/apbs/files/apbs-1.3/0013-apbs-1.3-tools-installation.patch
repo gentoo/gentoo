@@ -1,0 +1,70 @@
+From 4fd349da80e63c6fd3fbb2f015d8d802c326508e Mon Sep 17 00:00:00 2001
+Message-Id: <4fd349da80e63c6fd3fbb2f015d8d802c326508e.1325691465.git.jlec@gentoo.org>
+In-Reply-To: <89d53654acb88cd8dbd4bc9eb388ca6e76d0d6ea.1325691465.git.jlec@gentoo.org>
+References: <89d53654acb88cd8dbd4bc9eb388ca6e76d0d6ea.1325691465.git.jlec@gentoo.org>
+From: Justin Lecher <jlec@gentoo.org>
+Date: Wed, 4 Jan 2012 13:29:19 +0100
+Subject: [PATCH 13/15] apbs 1.3 tools installation
+
+---
+ Makefile.am              |    2 +-
+ tools/arpack/Makefile.am |    2 +-
+ tools/manip/Makefile.am  |    2 +-
+ tools/mesh/Makefile.am   |    2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index af3a3a3..60ba9bd 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -49,7 +49,7 @@ install-cleanup:
+ 
+ install-tools:
+ 	mkdir -p $(DESTDIR)${prefix}/share/GENTOO_PKG_NAME/tools
+-	-cp -rf tools $(DESTDIR)${prefix}/share/GENTOO_PKG_NAME/
++	-cp -rf tools/conversion tools/visualization tools/matlab $(DESTDIR)${prefix}/share/GENTOO_PKG_NAME/tools
+ 
+ install-examples:
+ 	mkdir -p $(DESTDIR)${prefix}/share/GENTOO_PKG_NAME/examples 
+diff --git a/tools/arpack/Makefile.am b/tools/arpack/Makefile.am
+index 6c05f4a..2362114 100644
+--- a/tools/arpack/Makefile.am
++++ b/tools/arpack/Makefile.am
+@@ -10,7 +10,7 @@ AUTOMAKE_OPTIONS = no-dependencies
+ SUFFIXES = .H .h .C .c .f .o
+ CCLD = $(F77)
+ 
+-noinst_PROGRAMS  = driver
++bin_PROGRAMS  = driver
+ driver_SOURCES   = driver.c readhb.f ardriv.f
+ driver_LDADD     = ../../src/aaa_lib/libapbs.la @arpack_lib@ @apbs_build_libraries@
+ INCLUDES         = @inc_list@
+diff --git a/tools/manip/Makefile.am b/tools/manip/Makefile.am
+index f5f692b..f64f8fc 100644
+--- a/tools/manip/Makefile.am
++++ b/tools/manip/Makefile.am
+@@ -10,7 +10,7 @@ AUTOMAKE_OPTIONS = no-dependencies
+ SUFFIXES = .H .h .C .c .f .o
+ CCLD = $(CC)
+ 
+-noinst_PROGRAMS  = coulomb born
++bin_PROGRAMS  = coulomb born
+ coulomb_SOURCES  = coulomb.c 
+ coulomb_LDADD    = ../../src/aaa_lib/libapbs.la @apbs_build_libraries@
+ born_SOURCES     = born.c 
+diff --git a/tools/mesh/Makefile.am b/tools/mesh/Makefile.am
+index 8ad5cfb..3cd9268 100644
+--- a/tools/mesh/Makefile.am
++++ b/tools/mesh/Makefile.am
+@@ -21,7 +21,7 @@ uhbd_asc2bin_CCLD        = $(F77)
+ else
+ UHBD =
+ endif
+-noinst_PROGRAMS          = mgmesh dxmath mergedx mergedx2 $(UHBD) smooth value dx2mol dx2uhbd benchmark similarity analysis multivalue del2dx tensor2dx
++bin_PROGRAMS          = mgmesh dxmath mergedx mergedx2 $(UHBD) smooth value dx2mol dx2uhbd benchmark similarity analysis multivalue del2dx tensor2dx
+ 
+ mgmesh_SOURCES				= mgmesh.c 
+ mgmesh_LDADD				= ../../src/aaa_lib/libapbs.la @apbs_build_libraries@
+-- 
+1.7.8.2
+

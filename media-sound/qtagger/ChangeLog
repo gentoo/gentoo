@@ -1,0 +1,27 @@
+# ChangeLog for media-sound/qtagger
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/qtagger/ChangeLog,v 1.6 2015/04/04 16:49:38 kensington Exp $
+
+*qtagger-1.0.1-r1 (04 Apr 2015)
+
+  04 Apr 2015; Michael Palimaka <kensington@gentoo.org>
+  +qtagger-1.0.1-r1.ebuild:
+  Migrate to EAPI 5.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> qtagger-1.0.1.ebuild:
+  Move Qt dependencies to the new category
+
+  13 Jun 2011; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove myself from metadata.xml
+
+  10 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> qtagger-1.0.1.ebuild:
+  x86 stable wrt bug #339629
+
+  06 Oct 2010; Markos Chandras <hwoarang@gentoo.org> qtagger-1.0.1.ebuild:
+  Stable on amd64 wrt bug #339629
+
+*qtagger-1.0.1 (20 May 2010)
+
+  20 May 2010; Markos Chandras <hwoarang@gentoo.org> +qtagger-1.0.1.ebuild,
+  +metadata.xml:
+  Initial commit of qtagger

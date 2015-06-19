@@ -1,0 +1,59 @@
+# ChangeLog for app-admin/389-admin-console
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/389-admin-console/ChangeLog,v 1.11 2014/08/18 19:54:09 creffett Exp $
+
+*389-admin-console-1.1.8-r1 (18 Aug 2014)
+
+  18 Aug 2014; Christopher Reffett <2011creffett@gentoo.org>
+  +389-admin-console-1.1.8-r1.ebuild, -389-admin-console-1.1.8.ebuild:
+  QA: EAPI bump, drop old
+
+  26 Jun 2014; Michael Palimaka <kensington@gentoo.org>
+  -389-admin-console-1.1.7.ebuild:
+  Remove old.
+
+  22 Jun 2014; Fabio Erculiani <lxnay@gentoo.org> metadata.xml:
+  reset to maintainer-needed@
+
+  27 Nov 2011; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Removed trailing whitespace.
+
+*389-admin-console-1.1.8 (14 Aug 2011)
+
+  14 Aug 2011; Fabio Erculiani <lxnay@gentoo.org>
+  +389-admin-console-1.1.8.ebuild:
+  version bump
+
+*389-admin-console-1.1.7 (14 Jun 2011)
+
+  14 Jun 2011; Fabio Erculiani <lxnay@gentoo.org>
+  +389-admin-console-1.1.7.ebuild, -389-admin-console-1.1.4-r1.ebuild,
+  -389-admin-console-1.1.5.ebuild:
+  version bump, fixes Gentoo bug #371633, drop older releases
+
+*389-admin-console-1.1.5 (11 Jan 2011)
+
+  11 Jan 2011; Fabio Erculiani <lxnay@gentoo.org>
+  +389-admin-console-1.1.5.ebuild:
+  version bump
+
+  17 Oct 2010; Fabio Erculiani <lxnay@gentoo.org>
+  389-admin-console-1.1.4-r1.ebuild:
+  tweak jdk/jre RDEPEND
+
+*389-admin-console-1.1.4-r1 (15 Oct 2010)
+
+  15 Oct 2010; Fabio Erculiani <lxnay@gentoo.org>
+  -389-admin-console-1.1.4.ebuild, +389-admin-console-1.1.4-r1.ebuild:
+  fix jar installation, make 389-console not crash, revision bump
+
+  11 Jul 2010; Fabio Erculiani <lxnay@gentoo.org>
+  389-admin-console-1.1.4.ebuild:
+  add net-nds/389-admin as post dependency
+
+*389-admin-console-1.1.4 (11 Jul 2010)
+
+  11 Jul 2010; Fabio Erculiani <lxnay@gentoo.org>
+  +389-admin-console-1.1.4.ebuild, +metadata.xml:
+  new ebuild, part of 389 Directory Server (http://port389.org), closes bug
+  #309549

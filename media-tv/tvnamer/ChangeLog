@@ -1,0 +1,21 @@
+# ChangeLog for media-tv/tvnamer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-tv/tvnamer/ChangeLog,v 1.4 2015/06/04 10:36:39 jlec Exp $
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Jan 2015; Mike Frysinger <vapier@gentoo.org> tvnamer-2.3.ebuild:
+  Mark amd64/x86 stable.
+
+*tvnamer-2.3 (29 Jun 2014)
+
+  29 Jun 2014; Ian Whyman <thev00d00@gentoo.org> +tvnamer-2.3.ebuild,
+  -tvnamer-2.2.1.ebuild:
+  Version bump
+
+*tvnamer-2.2.1 (23 Oct 2012)
+
+  23 Oct 2012; Ian Whyman <thev00d00@gentoo.org> +tvnamer-2.2.1.ebuild,
+  +metadata.xml:
+  Inital commit

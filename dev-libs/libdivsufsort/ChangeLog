@@ -1,0 +1,14 @@
+# ChangeLog for dev-libs/libdivsufsort
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libdivsufsort/ChangeLog,v 1.2 2012/12/15 12:38:19 mgorny Exp $
+
+*libdivsufsort-9999 (15 Dec 2012)
+
+  15 Dec 2012; Michał Górny <mgorny@gentoo.org> +libdivsufsort-9999.ebuild:
+  Import the live ebuild.
+
+*libdivsufsort-2.0.1 (10 Apr 2012)
+
+  10 Apr 2012; Michał Górny <mgorny@gentoo.org> +libdivsufsort-2.0.1.ebuild,
+  +metadata.xml:
+  Initial commit for libdivsufsort, a new dependency of zpaq.

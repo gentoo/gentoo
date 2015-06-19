@@ -1,0 +1,129 @@
+# ChangeLog for dev-util/pida
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/pida/ChangeLog,v 1.33 2015/02/21 15:38:41 idella4 Exp $
+
+*pida-0.6.2-r1 (21 Feb 2015)
+
+  21 Feb 2015; Ian Delaney <idella4@gentoo.org> +pida-0.6.2-r1.ebuild,
+  -pida-0.6.2.ebuild:
+  revbump; convert -> distutils-r1, rm old
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> pida-0.6.2.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+  29 Oct 2012; Michał Górny <mgorny@gentoo.org> pida-0.6.2.ebuild:
+  Use virtual for argparse.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> pida-0.6.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Jan 2012; Maxim Koltsov <maksbotan@gentoo.org> pida-0.6.2.ebuild:
+  Depend on bpython with gtk use flag, remove gnome from IUSE as it has nothing
+  to do with gnome, and also pida is rather useless without it. Thanks to
+  Alexander Morozov <lk4d4@yandex.ru> for proposed fix, bug 398741
+
+  14 Jan 2012; Maxim Koltsov <maksbotan@gentoo.org> pida-0.6.2.ebuild:
+  Add gtk use flag to gvim dependency, bug #398737
+
+  23 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> pida-0.6.2.ebuild:
+  Use SLOT dependencies for x11-libs/vte.
+
+  13 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pida-0.6.2.ebuild:
+  Fix dependencies.
+
+*pida-0.6.2 (15 Sep 2010)
+
+  15 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pida-0.6.1.ebuild, +pida-0.6.2.ebuild:
+  Version bump.
+
+*pida-0.6.1 (23 Jun 2010)
+
+  23 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pida-0.5.1.ebuild, -pida-0.5.1-r1.ebuild, +pida-0.6.1.ebuild,
+  +files/pida-0.6.1-fix_implicit_declaration.patch:
+  Version bump (bug #323863). Set SUPPORT_PYTHON_ABIS.
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org> pida-0.5.1-r1.ebuild:
+  Transfer Prefix keywords
+
+  25 Oct 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove welp from metadata.xml (#141007)
+
+  27 Apr 2009; Patrick Lauer <patrick@gentoo.org> pida-0.5.1-r1:
+  eapi2ification for use-deps
+
+*pida-0.5.1-r1 (25 Apr 2009)
+
+  25 Apr 2009; Patrick Lauer <patrick@gentoo.org> +pida-0.5.1-r1.ebuild:
+  Small fix for python paths. Fixes #262349. Ebuild fixes by Douglas
+  Anderson.
+
+  26 Nov 2008; <welp@gentoo.org> -pida-0.5.0.ebuild, pida-0.5.1.ebuild:
+  Remove old. Add librsvg dependency; bug 215501
+
+  06 May 2008; Samuli Suominen <drac@gentoo.org> pida-0.5.1.ebuild:
+  Move pkgconfig to DEPEND wrt #217278.
+
+  19 Jan 2008; <welp@gentoo.org> pida-0.5.1.ebuild:
+  Add pkgconfig dep; bug 206248
+
+  31 Dec 2007; <welp@gentoo.org> pida-0.5.1.ebuild:
+  Added make_desktop_entry
+
+*pida-0.5.1 (31 Dec 2007)
+
+  31 Dec 2007; <welp@gentoo.org> metadata.xml, +pida-0.5.1.ebuild:
+  Version bump; bug 199756. Take over maintainership, as pythonhead seems to
+  have gone MIA.
+
+  10 Jul 2007; Rob Cakebread <pythonhead@gentoo.org> pida-0.5.0.ebuild:
+  Add dep for gnome-python even if no gnome USE set. bug #184670 Thanks René
+  'Necoro' Neumann <necoro@necoro.net>
+
+  07 Jul 2007; Markus Rothe <corsair@gentoo.org> pida-0.5.0.ebuild:
+  Added ~ppc64
+
+  05 Jul 2007; Rob Cakebread <pythonhead@gentoo.org> pida-0.5.0.ebuild:
+  Added RDEPEND for bicylerepair. Thanks Steve Long <slong@rathaus.eclipse.co.uk>
+
+*pida-0.5.0 (05 Jul 2007)
+
+  05 Jul 2007; Rob Cakebread <pythonhead@gentoo.org> -pida-0.4.4.ebuild,
+  +pida-0.5.0.ebuild:
+  Version bump, removed old version.
+
+*pida-0.4.4 (16 May 2007)
+
+  16 May 2007; Rob Cakebread <pythonhead@gentoo.org> -pida-0.4.1.ebuild,
+  +pida-0.4.4.ebuild:
+  Version bump, removed old version. Added gnome-python-extras USE/deps.
+
+  05 Mar 2007; Marius Mauch <genone@gentoo.org> pida-0.4.1.ebuild:
+  Replacing einfo with elog
+
+*pida-0.4.1 (16 Dec 2006)
+
+  16 Dec 2006; Tiziano Müller <dev-zero@gentoo.org> -pida-0.2.2.ebuild,
+  +pida-0.4.1.ebuild:
+  Version bump. Dropped old version. Fixed dependencies.
+
+  19 Nov 2005; <dang@gentoo.org> pida-0.2.2.ebuild:
+  Marked ~amd64
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  05 Aug 2005; Rob Cakebread <pythonhead@gentoo.org> pida-0.2.2.ebuild:
+  Added gnome-python-extras as dep bug# 101423
+
+  05 Aug 2005; Rob Cakebread <pythonhead@gentoo.org> pida-0.2.2.ebuild:
+  Changed vim USE flag to gvim, as vim will be supported in the future.
+
+*pida-0.2.2 (04 Aug 2005)
+
+  04 Aug 2005; Rob Cakebread <pythonhead@gentoo.org> +pida-0.2.2.ebuild:
+  Initial commit. Thank you Björn Michaelsen <bjoern.michaelsen@gmail.com> for
+  the ebuild. bug# 99589

@@ -1,0 +1,72 @@
+commit 0757380fb62bc80ab7f1867b36d8a8b77ad3ed5f
+Author: Simon Jesenko <simon.jesenko@gmail.com>
+Date:   Fri Jul 18 08:00:52 2014 +0200
+
+    fixing tests, substituting ActiveRecord::TestCase with ActiveSupport::TestCase
+
+diff --git a/test/helper.rb b/test/helper.rb
+index b30895f..b0a647e 100644
+--- a/test/helper.rb
++++ b/test/helper.rb
+@@ -1,6 +1,6 @@
+ require 'minitest/autorun'
+ require 'active_record'
+-
++require 'rails'
+ require 'rails/observers/activerecord/active_record'
+ 
+ FIXTURES_ROOT = File.expand_path(File.dirname(__FILE__)) + "/fixtures"
+@@ -68,7 +68,3 @@ end
+ 
+ class Minimalistic < ActiveRecord::Base
+ end
+-
+-ActiveSupport::Deprecation.silence do
+-  require 'active_record/test_case'
+-end
+diff --git a/test/lifecycle_test.rb b/test/lifecycle_test.rb
+index 5129670..fb55206 100644
+--- a/test/lifecycle_test.rb
++++ b/test/lifecycle_test.rb
+@@ -118,7 +118,7 @@ class AroundTopicObserver < ActiveRecord::Observer
+   end
+ end
+ 
+-class LifecycleTest < ActiveRecord::TestCase
++class LifecycleTest < ActiveSupport::TestCase
+   fixtures :topics, :developers, :minimalistics
+ 
+   def test_before_destroy
+diff --git a/test/observing_test.rb b/test/observing_test.rb
+index a7f63dc..120d531 100644
+--- a/test/observing_test.rb
++++ b/test/observing_test.rb
+@@ -32,6 +32,16 @@ end
+ class ObservingTest < ActiveModel::TestCase
+   def setup
+     ObservedModel.observers.clear
++    FooObserver.singleton_class.instance_eval do
++      alias_method :original_observed_classes, :observed_classes
++    end
++  end
++
++  def teardown
++    FooObserver.singleton_class.instance_eval do
++      undef_method :observed_classes
++      alias_method :observed_classes, :original_observed_classes
++    end
+   end
+ 
+   test "initializes model with no cached observers" do
+diff --git a/test/transaction_callbacks_test.rb b/test/transaction_callbacks_test.rb
+index 8f14cd3..30cbb03 100644
+--- a/test/transaction_callbacks_test.rb
++++ b/test/transaction_callbacks_test.rb
+@@ -1,6 +1,6 @@
+ require "helper"
+ 
+-class TransactionCallbacksTest < ActiveRecord::TestCase
++class TransactionCallbacksTest < ActiveSupport::TestCase
+   self.use_transactional_fixtures = false
+   fixtures :topics
+ 

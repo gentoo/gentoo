@@ -1,0 +1,26 @@
+# ChangeLog for dev-util/mpatch
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/mpatch/ChangeLog,v 1.5 2015/03/08 08:25:25 idella4 Exp $
+
+*mpatch-0.8-r1 (08 Mar 2015)
+
+  08 Mar 2015; Ian Delaney <idella4@gentoo.org> +mpatch-0.8-r1.ebuild,
+  -mpatch-0.8.ebuild:
+  revbump; conversion -> distutils-r1, rm old, timeout on bug #540918, closes
+  said bug
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> mpatch-0.8.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  06 Nov 2013; Patrick Lauer <patrick@gentoo.org> mpatch-0.8.ebuild:
+  Shorten description, make repoman happier
+
+  07 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  mpatch-0.8.ebuild:
+  Use Python 2 (bug #326107).
+
+*mpatch-0.8 (18 Aug 2007)
+
+  18 Aug 2007; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +mpatch-0.8.ebuild:
+  Initial Commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

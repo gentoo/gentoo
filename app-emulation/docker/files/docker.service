@@ -1,0 +1,13 @@
+[Unit]
+Description=Docker - The Linux Container Engine
+Requires=network.target
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStartPre=/bin/mount --make-rprivate /
+ExecStart=/usr/bin/docker -d
+TimeoutSec=60
+
+[Install]
+WantedBy=multi-user.target

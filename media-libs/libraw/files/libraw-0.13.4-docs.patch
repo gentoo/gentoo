@@ -1,0 +1,19 @@
+--- LibRaw-0.13.4/Makefile.am.orig
++++ LibRaw-0.13.4/Makefile.am
+@@ -15,11 +15,11 @@
+ 							libraw/libraw_version.h
+ 
+ # Docs
+-doc_DATA =	COPYRIGHT \
+-			LICENSE.CDDL \
+-			LICENSE.LGPL \
+-			LICENSE.LibRaw.pdf \
+-			Changelog.txt
++#doc_DATA =	COPYRIGHT \
++#            LICENSE.CDDL \
++#            LICENSE.LGPL \
++#            LICENSE.LibRaw.pdf \
++#            Changelog.txt
+ 
+ # pkg-config .pc files
+ pkgconfigdir = $(libdir)/pkgconfig

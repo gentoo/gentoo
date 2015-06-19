@@ -1,0 +1,97 @@
+# ChangeLog for x11-plugins/gkrellm-radio
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-radio/ChangeLog,v 1.23 2014/08/10 20:01:37 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  gkrellm-radio-2.0.4.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #144305
+
+  12 Mar 2010; Sebastian Pipping <sping@gentoo.org>
+  gkrellm-radio-2.0.4.ebuild:
+  Fix HOMEPAGE (bug #305855)
+
+  12 Jun 2007; Jim Ramsay <lack@gentoo.org> -gkrellm-radio-2.0.3-r1.ebuild:
+  Old version cleanup
+
+  27 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gkrellm-radio-2.0.4.ebuild:
+  Stable on sparc wrt #176144
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org> gkrellm-radio-2.0.4.ebuild:
+  x86 stable
+
+  12 Mar 2007; Jim Ramsay <lack@gentoo.org> gkrellm-radio-2.0.3-r1.ebuild,
+  gkrellm-radio-2.0.4.ebuild:
+  Updated to use new gkrellm-plugin eclass
+
+  21 Feb 2007; Jim Ramsay <lack@gentoo.org> metadata.xml,
+  -gkrellm-radio-0.3.3.ebuild:
+  Cleaning up old versions for gkrellm-1.2 removal
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gkrellm-radio-2.0.4.ebuild:
+  Masked gkrellm-radio-2.0.4.ebuild stable for ppc
+
+*gkrellm-radio-2.0.4 (22 Jun 2004)
+
+  22 Jun 2004; Martin Holzer <mholzer@gentoo.org> gkrellm-radio-2.0.4.ebuild,
+  metadata.xml:
+  Version bumped. Closes 51474
+
+  21 Jan 2004; Sven Blumenstein <bazik@gentoo.org>
+  gkrellm-radio-2.0.3-r1.ebuild:
+  Stable on sparc.
+
+*gkrellm-radio-2.0.3-r1 (08 Jul 2003)
+
+  08 Jul 2003; Martin Holzer <mholzer@gentoo.org>
+  gkrellm-radio-2.0.3-r1.ebuild:
+  added lirc support. Closes #23488
+
+*gkrellm-radio-2.0.3 (23 Mar 2003)
+
+  23 Mar 2003; Martin Holzer <mholzer@gentoo.org> gkrellm-radio-2.0.3.ebuild:
+  Version bumped. Closes #14442.
+
+*gkrellm-radio-2.0.2 (18 Jan 2003)
+
+  18 Jan 2003; Martin Holzer <mholzer@gentoo.org> gkrellm-radio-2.0.2.ebuild
+  files/digest-gkrellm-radio-2.0.2 ChangeLog :
+  Version bumped. Closes #14137
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*gkrellm-radio-2.0.1 (16 Oct 2002)
+
+  16 Oct 2002; Seemant Kulleen <seemant@gentoo.org>
+  gkrellm-radio-2.0.1.ebuild files/digest-gkrellm-radio-2.0.1 :
+
+  gkrellm2 version submitted by: gustavo@felisberto.net (Gustavo Felisberto)
+  in bug #8926 and tprado@charter.net (Tom Prado) in bug #8436.
+
+*gkrellm-radio-0.3.3 (23 May 2002)
+  
+  11 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
+
+  29 Aug 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
+  Relocated to x11-plugins
+
+  23 May 2002; Seemant Kulleen <seemant@gentoo.org>
+  gkrellm-radio-0.3.3.ebuild files/digest-gkrellm-radio-0.3.3 :
+
+  Version bump.
+
+*gkrellm-radio-0.3 (26 Apr 2002)
+
+  26 Apr 2002; Seemant Kulleen <seemant@gentoo.org> gkrellm-radio-0.3.ebuild
+  files/digest-gkrellm-radio-0.3 :
+
+  New gkrellm plugin

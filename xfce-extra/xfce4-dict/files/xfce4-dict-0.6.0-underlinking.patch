@@ -1,0 +1,21 @@
+http://bugzilla.xfce.org/show_bug.cgi?id=8229
+
+Fix underlinking. See below. Function "floor" and math.h is used in common.c which is part of libdict.
+
+/path/to/ld: ../lib/.libs/libdict.a(libdict_la-common.o): undefined reference to symbol 'floor@@GLIBC_2.2.5'
+/path/to/ld: note: 'floor@@GLIBC_2.2.5' is defined in DSO /lib64/libm.so.6 so try adding it to the linker command line
+/lib/libm.so.6: could not read symbols: Invalid operation
+collect2: ld returned 1 exit status
+
+--- lib/Makefile.am
++++ lib/Makefile.am
+@@ -34,7 +34,8 @@
+ libdict_la_LIBADD =								\
+ 	$(LIBXFCE4PANEL_LIBS)						\
+ 	$(LIBXFCEGUI4_LIBS)							\
+-	@GTHREAD_LIBS@
++	@GTHREAD_LIBS@								\
++	-lm
+ 
+ 
+ noinst_DATA = 									\

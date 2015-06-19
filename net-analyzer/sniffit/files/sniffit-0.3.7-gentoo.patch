@@ -1,0 +1,31 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -10,13 +10,13 @@
+ LIBS       = @LIBS@
+ DEFS	   = @DEFS@
+ OS_OPT     = @OS_OPT@
+-OBJ_FLAG   = -w -O2 -c
+-OBJ_OPT    = -I./libpcap -L./libpcap
+-EXE_FLAG   = -w -O2 -o sniffit
+-EXE_OPT    = -I./libpcap -L./libpcap -lpcap
++OBJ_FLAG   = $(CFLAGS) -c
++OBJ_OPT    = -I/usr/include/pcap -L/usr/lib
++EXE_FLAG   = $(CFLAGS) $(LDFLAGS) -o sniffit
++EXE_OPT    = -I/usr/include/pcap -lpcap
+ EXE_OBJ    = sn_packets.o sn_generation.o sn_interface.o sn_cfgfile.o \
+              sn_logfile.o sn_resolv.o
+-DEP_FILES  = sn_config.h ./libpcap/pcap.h sn_data.h sn_defines.h sn_plugins.h \
++DEP_FILES  = sn_config.h sn_data.h sn_defines.h sn_plugins.h \
+              sn_analyse.c sn_conn_desc.c \
+              sn_packets.o \
+              sn_generation.o sn_interface.o sn_cfgfile.o sn_logfile.o \
+@@ -26,9 +26,7 @@
+ 	@echo "Succesfull compilation..."
+ 
+ sniffit: $(SNIFFIT) $(DEP_FILES)
+-	cd libpcap; make; cd ..
+ 	$(CC) $(EXE_FLAG) $(SNIFFIT) $(EXE_OBJ) $(EXE_OPT) $(LIBS) $(DEFS) $(OS_OPT) 
+-	strip sniffit
+ 
+ sn_cfgfile.o: sn_cfgfile.h sn_cfgfile.c sn_defines.h sn_structs.h sn_config.h
+ 	$(CC) $(OBJ_FLAG) sn_cfgfile.c $(OBJ_OPT) $(DEFS)

@@ -1,0 +1,15 @@
+DEFINED_PHASES=install nofetch postinst unpack
+DEPEND=!sci-chemistry/icm-browser app-arch/unzip vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) amd64? ( 64bit? ( =media-libs/tiff-3* media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 media-libs/libpng:1.2 || ( virtual/jpeg:62 media-libs/jpeg:62 ) x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils ) 32bit? ( virtual/libstdc++:3.3 >=x11-libs/libX11-1.6.2[abi_x86_32(-)] ) ) x86? ( =media-libs/tiff-3* media-libs/libpng:1.2 media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils )
+DESCRIPTION=MolSoft LCC ICM Pro
+EAPI=5
+HOMEPAGE=http://www.molsoft.com/icm_pro.html
+IUSE=32bit 64bit vim-syntax
+KEYWORDS=~amd64 ~x86
+LICENSE=MolSoft
+RDEPEND=!sci-chemistry/icm-browser app-arch/unzip vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) amd64? ( 64bit? ( =media-libs/tiff-3* media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 media-libs/libpng:1.2 || ( virtual/jpeg:62 media-libs/jpeg:62 ) x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils ) 32bit? ( virtual/libstdc++:3.3 >=x11-libs/libX11-1.6.2[abi_x86_32(-)] ) ) x86? ( =media-libs/tiff-3* media-libs/libpng:1.2 media-libs/libmng app-crypt/mit-krb5 app-arch/bzip2 x11-libs/libdrm x11-libs/libX11 sys-apps/keyutils )
+REQUIRED_USE=^^ ( ( !32bit 64bit ) ( 32bit !64bit ) ( 32bit 64bit ) )
+RESTRICT=fetch
+SLOT=0
+SRC_URI=icm-3.7-3b-linux.sh
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=3aee8def7af9ada856e40f243960be73

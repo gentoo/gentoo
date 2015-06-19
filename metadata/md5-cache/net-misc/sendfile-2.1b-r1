@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install postinst
+DESCRIPTION=SAFT implementation for UNIX and serves as a tool for asynchronous sending of files in the Internet
+HOMEPAGE=http://fex.rus.uni-stuttgart.de/saft/sendfile.html
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=virtual/inetd
+SLOT=0
+SRC_URI=http://fex.rus.uni-stuttgart.de/download/sendfile-2.1b.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f2f3ef605bdf7d27b5606eca88631f0f

@@ -1,0 +1,85 @@
+# ChangeLog for games-emulation/gens
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/gens/ChangeLog,v 1.23 2015/03/12 17:28:41 mr_bones_ Exp $
+
+  12 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gens-2.15.5-gcc34.patch, gens-2.15.5.ebuild:
+  EAPI=5
+
+  21 Sep 2011; Michael Sterrett <mr_bones_@gentoo.org> gens-2.15.5.ebuild:
+  zlib-1.2.5 fix (bug #384019); more use flags for libsdl
+
+  28 Oct 2010; Tupone Alfredo <tupone@gentoo.org> gens-2.15.5.ebuild,
+  +files/gens-2.15.5-ovflfix.patch:
+  Fix overflow. Bug #340665 by flameeyes@gentoo.org
+
+  20 Nov 2009; Markus Meier <maekke@gentoo.org> gens-2.15.5.ebuild:
+  x86 stable, bug #286310
+
+  04 Feb 2009; Alfredo Tupone <tupone@gentoo.org>
+  +files/gens-2.15.4-as-needed.patch, +files/gens-2.15.5-as-needed.patch,
+  gens-2.15.4.ebuild, gens-2.15.5.ebuild:
+  Fix --as-needed bug #247350 by flameeyes@gentoo.org
+
+*gens-2.15.5 (14 Oct 2008)
+
+  14 Oct 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gens-2.15.5-romsdir.patch, +gens-2.15.5.ebuild:
+  version bump
+
+*gens-2.15.4 (10 Sep 2008)
+
+  10 Sep 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gens-2.15.4-romsdir.patch, +gens-2.15.4.ebuild:
+  version bump
+
+  29 Nov 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gens-2.12b-romsdir.patch, gens-2.12b.ebuild:
+  add patch from Daniel Schneidereit to fix "Open Rom" always starting in
+  ~/.gens (bug #153593)
+
+  08 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  15 Jan 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gens-2.12b-gcc4.patch, gens-2.12b.ebuild:
+  gcc4 compile patch from Avuton Olrich (bug #119024)
+
+  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> gens-2.12b.ebuild:
+  Making games last on inherit line.
+
+  12 Jun 2005; Sven Wegener <swegener@gentoo.org> gens-2.12b.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  25 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org> gens-2.12b.ebuild:
+  fix deps for bug #86724
+
+*gens-2.12b (01 Jan 2005)
+
+  01 Jan 2005; Mike Frysinger <vapier@gentoo.org> +gens-2.12b.ebuild:
+  Version bump #57423 by Vanquirius.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> gens-2.12a.ebuild:
+  virtual/glibc -> virtual/libc
+
+  04 May 2004; Michael Sterrett <mr_bones_@gentoo.org> gens-2.12a.ebuild:
+  IUSE; dep tidy; shot at fixing bug #49308
+
+  23 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> gens-2.12a.ebuild:
+  don't rdepend on sed, nasm and unzip
+
+  28 Sep 2003; Michael Sterrett <mr_bones_@gentoo.org> gens-2.12a.ebuild:
+  don't use emake for install; add error message
+
+*gens-2.12a (19 Sep 2003)
+
+  19 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump to fix nasm issues #27841.
+
+*gens-2.12 (01 Aug 2003)
+
+  14 Sep 2003; Michael Sterrett <msterret@gentoo.org> gens-2.12.ebuild:
+  added RDEPEND for the run dependencies; fix things up for >=nasm-0.98.37
+
+  01 Aug 2003; Michael Sterrett <msterret@gentoo.org> gens-2.12.ebuild:
+  initial commit.  ebuild contributed by David Holm (modified) via bug 24821.

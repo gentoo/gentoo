@@ -1,0 +1,59 @@
+# ChangeLog for dev-lisp/gentoo-init
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/gentoo-init/ChangeLog,v 1.16 2015/05/23 15:15:30 pacho Exp $
+
+  23 May 2015; Pacho Ramos <pacho@gentoo.org> gentoo-init-1.0.ebuild:
+  x86 stable wrt bug #511170
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> gentoo-init-0.1.ebuild,
+  gentoo-init-1.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  11 Jul 2014; Patrick Lauer <patrick@gentoo.org> gentoo-init-1.0.ebuild:
+  Stable on amd64 #511170
+
+*gentoo-init-1.0 (14 Dec 2012)
+
+  14 Dec 2012; Andrey Grozin <grozin@gentoo.org> +gentoo-init-1.0.ebuild,
+  +files/gentoo-init-1.lisp, +files/source-registry.conf:
+  From the lisp overlay
+
+  07 Apr 2012; Jesus Rivero <neurogeek@gentoo.org> gentoo-init-0.1.ebuild:
+  Changed DEPEND to depend on dev-lisp/asdf-binary-locations instead of
+  dev-lisp/cl-asdf-binary-locations
+
+  10 Jan 2009; Raúl Porcel <armin76@gentoo.org> gentoo-init-0.1.ebuild:
+  alpha/ia64 stable wrt #246074
+
+  07 Jul 2008; Raúl Porcel <armin76@gentoo.org> gentoo-init-0.1.ebuild:
+  Add ~alpha/~ia64 wrt #229217
+
+  29 Apr 2008; Brent Baude <ranger@gentoo.org> gentoo-init-0.1.ebuild:
+  stable ppc, bug 217700
+
+  21 Apr 2008; Ferris McCormick <fmccor@gentoo.org> gentoo-init-0.1.ebuild:
+  Sparc stable, required by Bug #218706.
+
+  20 Apr 2008; Markus Meier <maekke@gentoo.org> gentoo-init-0.1.ebuild:
+  x86 stable, bug #217700
+
+  15 Apr 2008; Markus Rothe <corsair@gentoo.org> gentoo-init-0.1.ebuild:
+  Stable on ppc64; bug #217700
+
+  08 Dec 2007; Samuli Suominen <drac@gentoo.org> gentoo-init-0.1.ebuild:
+  amd64 stable wrt #201216
+
+  20 Nov 2007; Markus Rothe <corsair@gentoo.org> gentoo-init-0.1.ebuild:
+  Added ~ppc64; bug #199368
+
+  26 Jul 2007; Marijn Schouten <hkBst@gentoo.org> gentoo-init-0.1.ebuild:
+  fix URL, bug 186719
+
+  09 Nov 2006; Matthew Kennedy <mkennedy@gentoo.org> +metadata.xml:
+  Added metadata.xml.
+
+*gentoo-init-0.1 (09 Nov 2006)
+
+  09 Nov 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/gentoo-init.lisp, +gentoo-init-0.1.ebuild:
+  Initial port.  Ebuild contributed by Matthew Kennedy <mkennedy@gentoo.org>.

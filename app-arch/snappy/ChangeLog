@@ -1,0 +1,90 @@
+# ChangeLog for app-arch/snappy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/snappy/ChangeLog,v 1.22 2015/03/03 05:40:47 dlan Exp $
+
+  02 Mar 2015; Yixun Lan <dlan@gentoo.org> snappy-1.1.2-r1.ebuild:
+  add arm64 support, tested on A53 board
+
+  15 Nov 2014; Mike Frysinger <vapier@gentoo.org> snappy-1.1.2-r1.ebuild:
+  Make sure we depend on autotools #529078 by Nikoli.
+
+  30 Oct 2014; Markus Meier <maekke@gentoo.org> snappy-1.1.2-r1.ebuild:
+  arm stable, bug #526038
+
+  23 Oct 2014; Pacho Ramos <pacho@gentoo.org> snappy-1.1.2-r1.ebuild:
+  amd64/x86 stable, bug #526038
+
+  26 Sep 2014; Patrick Lauer <patrick@gentoo.org> snappy-1.1.1.ebuild,
+  snappy-1.1.2-r1.ebuild, snappy-1.1.2.ebuild:
+  Fix broken default_src_prepare #523760
+
+  11 Aug 2014; Anthony G. Basile <blueness@gentoo.org> snappy-1.1.1.ebuild,
+  snappy-1.1.2-r1.ebuild, snappy-1.1.2.ebuild:
+  Keyword ~ppc, ~ppc64 for bug #519618
+
+*snappy-1.1.2-r1 (03 Apr 2014)
+
+  03 Apr 2014; Mike Frysinger <vapier@gentoo.org> +snappy-1.1.2-r1.ebuild:
+  Convert to autotools-multilib #504756 by David Heidelberger.
+
+*snappy-1.1.2 (11 Mar 2014)
+
+  11 Mar 2014; Tim Harder <radhermit@gentoo.org> +snappy-1.1.2.ebuild,
+  metadata.xml:
+  Version bump, add myself as a maintainer.
+
+  11 Mar 2014; Pacho Ramos <pacho@gentoo.org> -snappy-1.0.3.ebuild,
+  -snappy-1.0.4.ebuild, -snappy-1.0.5.ebuild, -snappy-1.1.0.ebuild,
+  metadata.xml:
+  Cleanup due #239126
+
+  24 Feb 2014; Chema Alonso <nimiux@gentoo.org> snappy-1.1.1.ebuild:
+  Stable for amd64 wrt bug #495326
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> snappy-1.1.1.ebuild:
+  x86 stable wrt bug #495326
+
+  16 Feb 2014; Markus Meier <maekke@gentoo.org> snappy-1.1.1.ebuild:
+  arm stable, bug #495326
+
+*snappy-1.1.1 (21 Nov 2013)
+
+  21 Nov 2013; Patrick Lauer <patrick@gentoo.org> +snappy-1.1.1.ebuild:
+  Bump
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> snappy-1.1.0.ebuild:
+  Stable for arm, wrt bug #469342
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> snappy-1.1.0.ebuild:
+  Stable for x86, wrt bug #469342
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> snappy-1.1.0.ebuild:
+  Stable for amd64, wrt bug #469342
+
+  26 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> snappy-1.0.5.ebuild,
+  snappy-1.1.0.ebuild:
+  Add ~arm keyword, wrt bug #463308
+
+*snappy-1.1.0 (26 Mar 2013)
+
+  26 Mar 2013; Patrick Lauer <patrick@gentoo.org> +snappy-1.1.0.ebuild:
+  Bump for #457626
+
+  03 Mar 2013; Sébastien Fabbro <bicatali@gentoo.org> snappy-1.0.5.ebuild:
+  Keyword amd64-linux and x86-linux
+
+*snappy-1.0.5 (25 Nov 2012)
+
+  25 Nov 2012; Tim Harder <radhermit@gentoo.org> +snappy-1.0.5.ebuild:
+  Version bump (bug #407733).
+
+*snappy-1.0.4 (21 Nov 2011)
+
+  21 Nov 2011; Nirbheek Chauhan <nirbheek@gentoo.org> +snappy-1.0.4.ebuild:
+  Bump to 1.0.4, bug 385275
+
+*snappy-1.0.3 (14 Jun 2011)
+
+  14 Jun 2011; Nirbheek Chauhan <nirbheek@gentoo.org> +snappy-1.0.3.ebuild,
+  +metadata.xml:
+  Add snappy-1.0.3, there seems to be demand for it

@@ -1,0 +1,21 @@
+# ChangeLog for lxde-base/lxappearance-obconf
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/lxde-base/lxappearance-obconf/ChangeLog,v 1.4 2014/07/18 11:41:20 klausman Exp $
+
+  18 Jul 2014; Tobias Klausmann <klausman@gentoo.org>
+  lxappearance-obconf-0.2.1.ebuild:
+  Keyworded on alpha, bug #499524
+
+  04 Mar 2014; Vicente Olivert Riera <vincent@gentoo.org>
+  lxappearance-obconf-0.2.1.ebuild:
+  Add ~mips keyword.
+
+  14 Feb 2014; Markus Meier <maekke@gentoo.org>
+  lxappearance-obconf-0.2.1.ebuild:
+  add ~arm, bug #499524
+
+*lxappearance-obconf-0.2.1 (05 Jan 2014)
+
+  05 Jan 2014; Pavel Kazakov <nullishzero@gentoo.org>
+  +lxappearance-obconf-0.2.1.ebuild, +metadata.xml:
+  New ebuild

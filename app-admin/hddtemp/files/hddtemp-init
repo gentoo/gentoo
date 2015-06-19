@@ -1,0 +1,23 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/hddtemp/files/hddtemp-init,v 1.7 2012/10/24 18:45:04 aidecoe Exp $
+
+depend() {
+	need localmount
+}
+
+start() {
+	ebegin "Starting hddtemp daemon"
+	/sbin/start-stop-daemon --start --quiet --exec ${HDDTEMP_EXEC} \
+	-- -d ${HDDTEMP_OPTS} ${HDDTEMP_DRIVES}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping hddtemp daemon"
+	start-stop-daemon --stop --quiet --exec ${HDDTEMP_EXEC}
+	eend $?
+}
+
+

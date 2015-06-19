@@ -1,0 +1,84 @@
+# ChangeLog for dev-vcs/bzr-xmloutput
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/bzr-xmloutput/ChangeLog,v 1.19 2015/05/23 15:50:35 mrueg Exp $
+
+  23 May 2015; Manuel Rüger <mrueg@gentoo.org> -bzr-xmloutput-0.8.8.ebuild:
+  Remove old.
+
+*bzr-xmloutput-0.8.8-r2 (10 Mar 2015)
+
+  10 Mar 2015; Ian Delaney <idella4@gentoo.org> +bzr-xmloutput-0.8.8-r2.ebuild:
+  revbump; conversion -> distutils-r1 wrt bug #541008
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> bzr-xmloutput-0.8.8-r1.ebuild:
+  Stable for x86, wrt bug #456632
+
+  29 Nov 2012; <ago@gentoo.org> bzr-xmloutput-0.8.8-r1.ebuild:
+  Stable for amd64, wrt bug #418969
+
+*bzr-xmloutput-0.8.8-r1 (28 Nov 2012)
+
+  28 Nov 2012; Christian Faulhammer <fauli@gentoo.org>
+  +bzr-xmloutput-0.8.8-r1.ebuild,
+  +files/bzr-xmloutput-0.8.8_remove-relative-imports.patch:
+  revision bump for runtime regression with bzr help commands, as reported by
+  Dan Dexter in bug 418969
+
+  28 Nov 2012; Christian Faulhammer <fauli@gentoo.org>
+  -bzr-xmloutput-0.8.7.ebuild:
+  clean up
+
+  30 Sep 2012; Raúl Porcel <armin76@gentoo.org> bzr-xmloutput-0.8.7.ebuild,
+  bzr-xmloutput-0.8.8.ebuild:
+  Drop alpha keywords
+
+  11 Aug 2012; Markus Meier <maekke@gentoo.org> bzr-xmloutput-0.8.8.ebuild:
+  x86 stable, bug #418971
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> bzr-xmloutput-0.8.8.ebuild:
+  Stable for amd64, wrt bug #418971
+
+*bzr-xmloutput-0.8.8 (17 Mar 2012)
+
+  17 Mar 2012; Christian Faulhammer <fauli@gentoo.org>
+  +bzr-xmloutput-0.8.8.ebuild:
+  version bump
+
+  17 Mar 2012; Christian Faulhammer <fauli@gentoo.org>
+  -bzr-xmloutput-0.8.6.ebuild:
+  clean up
+
+  23 Jan 2012; Thomas Kahle <tomka@gentoo.org> bzr-xmloutput-0.8.7.ebuild:
+  x86 stable per bug 383751
+
+  21 Jan 2012; Tobias Klausmann <klausman@gentoo.org>
+  bzr-xmloutput-0.8.7.ebuild:
+  Stable on alpha, bug #383751
+
+  30 Oct 2011; Markos Chandras <hwoarang@gentoo.org> bzr-xmloutput-0.8.7.ebuild:
+  Stable on amd64 wrt bug #383751
+
+*bzr-xmloutput-0.8.7 (16 Aug 2011)
+
+  16 Aug 2011; Christian Faulhammer <fauli@gentoo.org>
+  +bzr-xmloutput-0.8.7.ebuild:
+  version bump
+
+  22 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  bzr-xmloutput-0.8.6.ebuild:
+  x86 stable wrt bug #346985
+
+  12 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  bzr-xmloutput-0.8.6.ebuild:
+  Stable on amd64 wrt bug #346985
+
+  27 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  bzr-xmloutput-0.8.6.ebuild:
+  fix bug 329471 by restricting Python ABIs to 2.*, Bazaar itself has no
+  Python 3 support
+
+*bzr-xmloutput-0.8.6 (30 Mar 2010)
+
+  30 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  +bzr-xmloutput-0.8.6.ebuild, +metadata.xml:
+  initial commit, ebuild taken from Mark Lee's Bazaar overlay

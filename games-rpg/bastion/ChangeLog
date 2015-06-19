@@ -1,0 +1,38 @@
+# ChangeLog for games-rpg/bastion
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/bastion/ChangeLog,v 1.9 2015/05/12 19:20:46 mr_bones_ Exp $
+
+  12 May 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  bastion-20120620-r1.ebuild, metadata.xml:
+  punt bundled-libs use flag (bug #513602)
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> bastion-20120620-r1.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  22 Nov 2013; Julian Ospald <hasufell@gentoo.org> bastion-20120620-r1.ebuild:
+  stable wrt #486242
+
+  02 Jun 2013; Julian Ospald <hasufell@gentoo.org> bastion-20120620-r1.ebuild:
+  splitdebug is not invalid
+
+  13 May 2013; Patrick Lauer <patrick@gentoo.org> bastion-20120620-r1.ebuild:
+  Remove invalid splitdebug restrict
+
+  09 May 2013; Julian Ospald <hasufell@gentoo.org> bastion-20120620-r1.ebuild:
+  restrict splitdebug
+
+*bastion-20120620-r1 (16 Apr 2013)
+
+  16 Apr 2013; Julian Ospald <hasufell@gentoo.org> -bastion-20120620.ebuild,
+  +bastion-20120620-r1.ebuild:
+  fix arch logic, fixes #466024
+
+*bastion-20120620 (21 Mar 2013)
+
+  21 Mar 2013; Julian Ospald <hasufell@gentoo.org> +bastion-20120620.ebuild,
+  +metadata.xml:
+  initial import wrt #419167

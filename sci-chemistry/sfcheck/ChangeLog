@@ -1,0 +1,57 @@
+# ChangeLog for sci-chemistry/sfcheck
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/sfcheck/ChangeLog,v 1.13 2013/06/19 04:28:54 bicatali Exp $
+
+  19 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  sci-chemistry only
+
+  19 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  Changed herd to sci-chemistry
+
+  19 Oct 2012; Justin Lecher <jlec@gentoo.org> sfcheck-7.03.18-r1.ebuild,
+  metadata.xml:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> sfcheck-7.03.18-r1.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> sfcheck-7.03.18-r1.ebuild:
+  Added fortran-2.eclass support
+
+  18 Jan 2011; Thomas Kahle <tomka@gentoo.org> sfcheck-7.03.18-r1.ebuild:
+  x86 stable per bug 351754
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  sfcheck-7.03.18-r1.ebuild:
+  marked ~ppc wrt #303931
+
+  16 Jan 2011; Markos Chandras <hwoarang@gentoo.org> sfcheck-7.03.18-r1.ebuild:
+  Stable on amd64 wrt bug #351754
+
+  15 Jan 2011; Justin Lecher <jlec@gentoo.org> -sfcheck-7.03.17.ebuild:
+  Removed old
+
+*sfcheck-7.03.18-r1 (15 Jun 2010)
+
+  15 Jun 2010; Justin Lecher <jlec@gentoo.org> -sfcheck-7.03.18.ebuild,
+  +sfcheck-7.03.18-r1.ebuild:
+  Necessary bump
+
+*sfcheck-7.03.18 (12 Mar 2010)
+
+  12 Mar 2010; Justin Lecher <jlec@gentoo.org>
+  +sfcheck-7.03.18.ebuild:
+  Version Bump
+
+*sfcheck-7.03.17 (06 Feb 2010)
+
+  06 Feb 2010; Justin Lecher <jlec@gentoo.org>
+  +files/7.03.17-ldflags.patch, +sfcheck-7.03.17.ebuild, +metadata.xml:
+  Splitted sfcheck from ccp4
+
+*sfcheck-7.03.16 (22 Dec 2009)
+
+  22 Dec 2009; Justin Lecher <jlec@gentoo.org>
+  +files/7.03.16-ldflags.patch, +sfcheck-7.03.16.ebuild, +metadata.xml:
+  Initial commit

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare pretend setup unpack
+DEPEND=app-arch/unzip >=sys-apps/sed-4
+DESCRIPTION=A hybrid of two hot genres: Tower Defense and cooperative online Action-RPG
+EAPI=5
+HOMEPAGE=http://dungeondefenders.com/
+IUSE=bundled-libs
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=x11-misc/xdg-utils >=media-libs/alsa-lib-1.0.27.2[abi_x86_32(-)] >=media-sound/pulseaudio-5.0[abi_x86_32(-)] virtual/opengl[abi_x86_32(-)] x11-libs/libX11[abi_x86_32(-)] x11-libs/libXScrnSaver[abi_x86_32(-)] x11-libs/libXcursor[abi_x86_32(-)] x11-libs/libXext[abi_x86_32(-)] x11-libs/libXi[abi_x86_32(-)] x11-libs/libXinerama[abi_x86_32(-)] x11-libs/libXrandr[abi_x86_32(-)] x11-libs/libXxf86vm[abi_x86_32(-)] !bundled-libs? ( >=media-libs/openal-1.15.1[abi_x86_32(-)] ) games-misc/games-envd
+RESTRICT=bindist fetch splitdebug
+SLOT=0
+SRC_URI=dundef-linux-03052013.mojo.run
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	check-reqs	a7f404bfb16e0a996700c5d3ac4edad3	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=4b462bb6e60b8464f41a0a7c6b44d9f0

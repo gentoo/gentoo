@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare setup
+DEPEND=>=dev-libs/gmp-5.0.2 >=dev-libs/mpfr-3.0.1 >=sys-libs/glibc-2.8 >=sys-libs/zlib-1.1.4 app-arch/zip app-arch/unzip dev-libs/mpc dev-libs/cloog-ppl dev-libs/ppl >=media-libs/libart_lgpl-2.1 >=sys-apps/texinfo-4.8 >=sys-devel/binutils-2.15.94 >=sys-devel/bison-1.875 >=sys-devel/flex-2.5.4 sys-devel/gnuconfig sys-devel/m4 >=sys-libs/ncurses-5.2-r2 >=sys-apps/sed-4 sys-devel/gettext virtual/libiconv virtual/yacc
+DESCRIPTION=Native Client newlib-based toolchain (only for compiling IRT)
+EAPI=4
+HOMEPAGE=http://code.google.com/chrome/nativeclient/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD || ( GPL-3 LGPL-3 ) NEWLIB LIBGLOSS GPL-2 GPL-3 LGPL-3 || ( GPL-3 libgcc libstdc++ gcc-runtime-library-exception-3.1 ) FDL-1.2
+RDEPEND=>=dev-libs/gmp-5.0.2 >=dev-libs/mpfr-3.0.1 >=sys-libs/glibc-2.8 >=sys-libs/zlib-1.1.4
+RESTRICT=strip test
+SLOT=0
+SRC_URI=mirror://gnu/binutils/binutils-2.20.1.tar.bz2 ftp://sources.redhat.com/pub/newlib/newlib-1.20.0.tar.gz mirror://gnu/gcc/gcc-4.4.3/gcc-4.4.3.tar.bz2 http://gsdview.appspot.com/nativeclient-archive2/x86_toolchain/r10520/nacltoolchain-buildscripts-r10520.tar.gz http://gsdview.appspot.com/nativeclient-archive2/x86_toolchain/r10520/naclbinutils-2.20.1-r10520.patch.bz2 http://gsdview.appspot.com/nativeclient-archive2/x86_toolchain/r10520/naclnewlib-1.20.0-r10520.patch.bz2 http://gsdview.appspot.com/nativeclient-archive2/x86_toolchain/r10520/naclgcc-4.4.3-r10520.patch.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=e16fbe81c5962c22103a32fe68487542

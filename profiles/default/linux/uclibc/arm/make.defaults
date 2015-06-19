@@ -1,0 +1,12 @@
+# Copyright 1999-2014 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/uclibc/arm/make.defaults,v 1.1 2014/08/16 20:43:28 blueness Exp $
+
+ARCH="arm"
+ACCEPT_KEYWORDS="${ARCH}"
+
+CHOST="arm-unknown-linux-uclibc"
+CFLAGS="-O2"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"

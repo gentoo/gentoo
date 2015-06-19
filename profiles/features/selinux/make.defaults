@@ -1,0 +1,16 @@
+# Copyright 1999-2014 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/features/selinux/make.defaults,v 1.3 2014/05/17 14:44:03 swift Exp $
+#
+
+# selinux - Enable SELinux support
+# unconfined - Enable unconfined domains, needed due to 'targeted' policy type
+# open_perms - Enable open permission in SELinux subsystem
+USE="selinux unconfined open_perms"
+
+FEATURES="selinux sesandbox sfperms"
+
+POLICY_TYPES="strict targeted"
+PORTAGE_T="portage_t"
+PORTAGE_FETCH_T="portage_fetch_t"
+PORTAGE_SANDBOX_T="portage_sandbox_t"

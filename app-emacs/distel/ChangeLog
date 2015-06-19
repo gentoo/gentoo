@@ -1,0 +1,37 @@
+# ChangeLog for app-emacs/distel
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/distel/ChangeLog,v 1.7 2015/06/07 07:49:18 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*distel-4.0.6 (25 Feb 2014)
+
+  25 Feb 2014; Ulrich Müller <ulm@gentoo.org> +distel-4.0.6.ebuild,
+  -distel-4.03.ebuild, -files/distel-4.03-fix-ebin-path.patch:
+  Version bump. Remove old; distel-4.03 fails to build with R15 and later.
+
+  07 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  -distel-3.2_p20071103.ebuild:
+  clean up
+
+*distel-4.03 (20 Feb 2009)
+
+  20 Feb 2009; Ulrich Mueller <ulm@gentoo.org>
+  +files/distel-4.03-fix-ebin-path.patch, files/50distel-gentoo.el,
+  +distel-4.03.ebuild:
+  Version bump and fix path for ebin files, bug 259695. Thanks to
+  Sergey Sinkovskiy <glorybox.away@gmail.com>.
+
+  28 Aug 2008; Ulrich Mueller <ulm@gentoo.org> distel-3.2_p20071103.ebuild:
+  Use elisp-compile instead of elisp-comp, bug 235442.
+
+  15 Jun 2008; Ulrich Mueller <ulm@gentoo.org> distel-3.2_p20071103.ebuild:
+  Require dev-lang/erlang built with USE=emacs, bug 227097.
+
+*distel-3.2_p20071103 (23 Jan 2008)
+
+  23 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  +files/50distel-gentoo.el, +metadata.xml, +distel-3.2_p20071103.ebuild:
+  initial import for bug 183482, based on work of Justin <justin-gentoo AT
+  openaether DOT org>, massaged by ulm

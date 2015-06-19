@@ -1,0 +1,70 @@
+# ChangeLog for gnome-extra/docky
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/docky/ChangeLog,v 1.18 2014/03/22 18:08:16 angelos Exp $
+
+  22 Mar 2014; Christoph Mende <angelos@gentoo.org> -docky-2.1.4.ebuild:
+  Remove old
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> docky-2.2.0.ebuild:
+  Stable for x86, wrt bug #472816
+
+  13 Jun 2013; Chema Alonso <nimiux@gentoo.org> docky-2.2.0.ebuild:
+  Stable for amd64 wrt bug #472816
+
+*docky-2.2.0 (11 May 2013)
+
+  11 May 2013; Christoph Mende <angelos@gentoo.org> +docky-2.2.0.ebuild:
+  Version bump
+
+  10 Apr 2013; Christoph Mende <angelos@gentoo.org> docky-2.1.4.ebuild:
+  Remove -warnaserror from MCS_FLAGS (bug #429564)
+
+  09 Apr 2013; Christoph Mende <angelos@gentoo.org> -docky-2.1.3.ebuild:
+  Remove old
+
+  07 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> docky-2.1.4.ebuild:
+  x86 stable wrt bug #435202
+
+  16 Sep 2012; Agostino Sarubbo <ago@gentoo.org> docky-2.1.4.ebuild:
+  Stable for amd64, wrt bug #435202
+
+  13 Aug 2012; Christoph Mende <angelos@gentoo.org> docky-2.1.3.ebuild,
+  docky-2.1.4.ebuild:
+  Depend on mono-addins[gtk] (bug #431188)
+
+*docky-2.1.4 (21 Jul 2012)
+
+  21 Jul 2012; Christoph Mende <angelos@gentoo.org> +docky-2.1.4.ebuild:
+  Version bump
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> docky-2.1.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  22 Jan 2012; Pacho Ramos <pacho@gentoo.org> -docky-2.1.2.ebuild:
+  Drop old.
+
+  05 Nov 2011; Markos Chandras <hwoarang@gentoo.org> docky-2.1.3.ebuild:
+  Stable on amd64 wrt bug #389181
+
+  04 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> docky-2.1.3.ebuild:
+  x86 stable wrt bug #389181
+
+*docky-2.1.3 (15 Jun 2011)
+
+  15 Jun 2011; Christoph Mende <angelos@gentoo.org> +docky-2.1.3.ebuild:
+  Version bump
+
+  30 Apr 2011; Christoph Mende <angelos@gentoo.org> -docky-2.1.1.ebuild,
+  -files/docky-2.1.1-mono-2.10.patch:
+  Remove old
+
+*docky-2.1.2 (07 Apr 2011)
+
+  07 Apr 2011; Christoph Mende <angelos@gentoo.org> +docky-2.1.2.ebuild:
+  Version bump
+
+*docky-2.1.1 (13 Mar 2011)
+
+  13 Mar 2011; <angelos@gentoo.org> +docky-2.1.1.ebuild,
+  +files/docky-2.1.1-mono-2.10.patch:
+  Initial import

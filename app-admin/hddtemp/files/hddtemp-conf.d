@@ -1,0 +1,13 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/hddtemp/files/hddtemp-conf.d,v 1.4 2012/03/16 14:25:14 aidecoe Exp $
+
+# the hddtemp executable
+HDDTEMP_EXEC=/usr/sbin/hddtemp
+
+# various options to pass to the daemon
+HDDTEMP_OPTS="--listen=127.0.0.1"
+
+# a list of drives to check
+HDDTEMP_DRIVES="/dev/sda /dev/sdb"
+

@@ -1,0 +1,15 @@
+ Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile.am b/Makefile.am
+index 68d78f1..03dbf06 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -20,6 +20,7 @@ include_HEADERS = tclreadline.h
+ INCLUDES = -I$(TCL_INCLUDE_DIR) -I$(READLINE_INCLUDE_DIR)
+ 
+ ## libtclreadline_la_LIBADD = $(LIBS)
++libtclreadline_la_LIBADD = $(TCL_LIB_SPEC) -lreadline
+ libtclreadline_la_LDFLAGS = -release $(MAJOR).$(MINOR).$(PATCHLEVEL)
+ 
+ tclrldir = @TCLRL_DIR@

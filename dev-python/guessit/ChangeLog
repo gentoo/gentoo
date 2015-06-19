@@ -1,0 +1,53 @@
+# ChangeLog for dev-python/guessit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/guessit/ChangeLog,v 1.12 2015/06/07 13:29:06 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> guessit-0.5.4.ebuild,
+  guessit-0.6.2.ebuild:
+  Drop old Python implementations
+
+*guessit-0.9.3 (27 Sep 2014)
+
+  27 Sep 2014; Mike Gilbert <floppym@gentoo.org> +guessit-0.9.3.ebuild:
+  Version bump.
+
+  27 Sep 2014; Mike Gilbert <floppym@gentoo.org> guessit-9999.ebuild:
+  Update deps.
+
+*guessit-0.7.1 (08 Apr 2014)
+
+  08 Apr 2014; Maxim Koltsov <maksbotan@gentoo.org> +guessit-0.7.1.ebuild,
+  guessit-9999.ebuild:
+  Bump to 0.7.1, update live ebuild, bug #507126. Thanks to Nikoli.
+
+  14 Dec 2013; Tom Wijsman <TomWij@gentoo.org> guessit-9999.ebuild:
+  Test fixes in live ebuild; proxied commit for Nikoli, fixes bug #494242.
+
+*guessit-0.6.2 (07 Dec 2013)
+
+  07 Dec 2013; Tom Wijsman <TomWij@gentoo.org> +guessit-0.6.2.ebuild:
+  Version bump to 0.6.2; fixes bug #493462, proxied commit for Nikoli.
+
+  13 Oct 2013; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Updated Nikoli's e-mail address for easier automatic assignment.
+
+  13 Oct 2013; Pacho Ramos <pacho@gentoo.org> guessit-0.5.4.ebuild:
+  Also compatible with python3_3
+
+  25 Apr 2013; Maxim Koltsov <maksbotan@gentoo.org>
+  +files/guessit-0.5.4-python3.patch, +files/guessit-0.5.4-tests.patch,
+  guessit-0.5.4.ebuild:
+  Fix compilation with python3 and tests
+
+*guessit-9999 (24 Apr 2013)
+*guessit-0.5.4 (24 Apr 2013)
+
+  24 Apr 2013; Maxim Koltsov <maksbotan@gentoo.org> +guessit-0.5.4.ebuild,
+  +guessit-9999.ebuild, +metadata.xml:
+  Add dev-python/guessit, bug #449650. Thanks to Nikoli.

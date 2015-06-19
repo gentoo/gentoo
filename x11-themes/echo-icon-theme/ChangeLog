@@ -1,0 +1,29 @@
+# ChangeLog for x11-themes/echo-icon-theme
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/echo-icon-theme/ChangeLog,v 1.5 2013/02/07 22:46:17 ulm Exp $
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org>
+  echo-icon-theme-0.3.89.0_pre20081031.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  echo-icon-theme-0.3.89.0_pre20081031.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*echo-icon-theme-0.3.89.0_pre20081031 (31 Oct 2008)
+
+  31 Oct 2008; Doug Goldstein <cardoe@gentoo.org>
+  -echo-icon-theme-0.3.89.0_pre20080620.ebuild,
+  +echo-icon-theme-0.3.89.0_pre20081031.ebuild:
+  newer snapshot. fixes bug #244316
+
+  24 Jun 2008; Doug Goldstein <cardoe@gentoo.org>
+  echo-icon-theme-0.3.89.0_pre20080620.ebuild:
+  keyword ~x86
+
+*echo-icon-theme-0.3.89.0_pre20080620 (20 Jun 2008)
+
+  20 Jun 2008; Doug Goldstein <cardoe@gentoo.org> +metadata.xml,
+  +echo-icon-theme-0.3.89.0_pre20080620.ebuild:
+  add Fedora's Echo Icon Theme project's icons
+

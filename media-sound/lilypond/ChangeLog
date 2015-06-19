@@ -1,0 +1,903 @@
+# ChangeLog for media-sound/lilypond
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/lilypond/ChangeLog,v 1.194 2015/04/08 17:59:42 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> lilypond-9999.ebuild:
+  Drop old Python implementations
+
+  17 Oct 2014; Tim Harder <radhermit@gentoo.org> -lilypond-2.16.2.ebuild,
+  -lilypond-2.19.13.ebuild, -lilypond-2.19.14.ebuild,
+  -files/lilypond-2.16.0-tex-docs.patch:
+  Remove old.
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> lilypond-2.18.2.ebuild:
+  Stable for x86, wrt bug #523818
+
+  09 Oct 2014; Agostino Sarubbo <ago@gentoo.org> lilypond-2.18.2.ebuild:
+  Stable for amd64, wrt bug #523818
+
+*lilypond-2.19.15 (30 Sep 2014)
+
+  30 Sep 2014; Tim Harder <radhermit@gentoo.org> +lilypond-2.19.15.ebuild:
+  Version bump.
+
+*lilypond-2.19.14 (26 Sep 2014)
+
+  26 Sep 2014; Tim Harder <radhermit@gentoo.org> +lilypond-2.19.14.ebuild:
+  Version bump.
+
+  07 Sep 2014; Tim Harder <radhermit@gentoo.org> lilypond-9999.ebuild:
+  Sync sandbox fix to live ebuild.
+
+  07 Sep 2014; Tim Harder <radhermit@gentoo.org> -lilypond-2.19.8.ebuild,
+  -lilypond-2.19.9.ebuild, -lilypond-2.19.10.ebuild:
+  Remove old.
+
+*lilypond-2.19.13 (07 Sep 2014)
+
+  07 Sep 2014; Tim Harder <radhermit@gentoo.org> lilypond-2.16.2.ebuild,
+  lilypond-2.18.2.ebuild, +lilypond-2.19.13.ebuild:
+  Version bump. Remove bundled texinfo file to fix sandbox issue (bug #448560).
+
+*lilypond-2.19.10 (19 Jul 2014)
+
+  19 Jul 2014; Tim Harder <radhermit@gentoo.org> +lilypond-2.19.10.ebuild:
+  Version bump.
+
+*lilypond-2.19.9 (04 Jul 2014)
+
+  04 Jul 2014; Tim Harder <radhermit@gentoo.org> +lilypond-2.19.9.ebuild:
+  Version bump.
+
+  22 Jun 2014; Tim Harder <radhermit@gentoo.org> -lilypond-2.18.0-r1.ebuild,
+  -lilypond-2.18.1.ebuild, -lilypond-2.19.2.ebuild, -lilypond-2.19.3.ebuild,
+  -lilypond-2.19.4.ebuild, -lilypond-2.19.5.ebuild, -lilypond-2.19.7.ebuild:
+  Remove old.
+
+*lilypond-2.19.8 (19 Jun 2014)
+
+  19 Jun 2014; Tim Harder <radhermit@gentoo.org> +lilypond-2.19.8.ebuild:
+  Version bump.
+
+*lilypond-2.19.7 (28 May 2014)
+
+  28 May 2014; Tim Harder <radhermit@gentoo.org> +lilypond-2.19.7.ebuild:
+  Version bump.
+
+*lilypond-2.19.5 (25 Apr 2014)
+
+  25 Apr 2014; Tim Harder <radhermit@gentoo.org> +lilypond-2.19.5.ebuild:
+  Version bump.
+
+*lilypond-2.19.4 (08 Apr 2014)
+
+  08 Apr 2014; Tim Harder <radhermit@gentoo.org> +lilypond-2.19.4.ebuild:
+  Version bump.
+
+*lilypond-2.19.3 (03 Apr 2014)
+*lilypond-2.18.2 (03 Apr 2014)
+
+  03 Apr 2014; Tim Harder <radhermit@gentoo.org> +lilypond-2.18.2.ebuild,
+  +lilypond-2.19.3.ebuild, lilypond-9999.ebuild:
+  Version bumps, update metapost symlink if necessary.
+
+*lilypond-2.18.1 (18 Feb 2014)
+
+  18 Feb 2014; Tim Harder <radhermit@gentoo.org> +lilypond-2.18.1.ebuild:
+  Version bump.
+
+  04 Feb 2014; Tim Harder <radhermit@gentoo.org> -lilypond-2.18.0.ebuild:
+  Remove old.
+
+*lilypond-2.19.2 (04 Feb 2014)
+
+  04 Feb 2014; Tim Harder <radhermit@gentoo.org> +lilypond-2.19.2.ebuild:
+  Version bump.
+
+*lilypond-2.18.0-r1 (04 Feb 2014)
+
+  04 Feb 2014; Tim Harder <radhermit@gentoo.org> +lilypond-2.18.0-r1.ebuild,
+  lilypond-9999.ebuild:
+  Fix metapost deps (bug #498704 by Aaron Pelton).
+
+  01 Jan 2014; Tim Harder <radhermit@gentoo.org> -lilypond-2.17.95.ebuild,
+  -lilypond-2.17.96.ebuild, -lilypond-2.17.97.ebuild:
+  Remove old.
+
+*lilypond-2.18.0 (01 Jan 2014)
+
+  01 Jan 2014; Tim Harder <radhermit@gentoo.org> +lilypond-2.18.0.ebuild:
+  Version bump.
+
+*lilypond-2.17.97 (11 Dec 2013)
+
+  11 Dec 2013; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.97.ebuild,
+  lilypond-9999.ebuild:
+  Version bump, update live ebuild.
+
+*lilypond-2.17.96 (02 Dec 2013)
+
+  02 Dec 2013; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.96.ebuild:
+  Version bump, fix metapost deps (bug #489804).
+
+*lilypond-2.17.95 (06 Nov 2013)
+
+  06 Nov 2013; Tim Harder <radhermit@gentoo.org> -lilypond-2.17.28.ebuild,
+  -lilypond-2.17.29.ebuild, +lilypond-2.17.95.ebuild:
+  Version bump and remove old.
+
+  27 Oct 2013; Tim Harder <radhermit@gentoo.org> -lilypond-2.14.2.ebuild:
+  Remove old.
+
+*lilypond-2.17.29 (27 Oct 2013)
+
+  27 Oct 2013; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.29.ebuild:
+  Version bump.
+
+  20 Oct 2013; Tim Harder <radhermit@gentoo.org> -lilypond-2.17.23.ebuild,
+  -lilypond-2.17.24.ebuild, -lilypond-2.17.25.ebuild, -lilypond-2.17.26.ebuild:
+  Remove old.
+
+*lilypond-2.17.28 (20 Oct 2013)
+
+  20 Oct 2013; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.28.ebuild:
+  Version bump.
+
+*lilypond-2.17.26 (27 Sep 2013)
+
+  27 Sep 2013; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.26.ebuild:
+  Version bump.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> lilypond-2.16.2.ebuild,
+  lilypond-2.17.23.ebuild, lilypond-2.17.24.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  02 Sep 2013; Agostino Sarubbo <ago@gentoo.org> lilypond-2.16.2.ebuild:
+  Stable for x86, wrt bug #441398
+
+  31 Aug 2013; Agostino Sarubbo <ago@gentoo.org> lilypond-2.16.2.ebuild:
+  Stable for amd64, wrt bug #441398
+
+*lilypond-2.17.25 (29 Aug 2013)
+
+  29 Aug 2013; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.25.ebuild,
+  lilypond-9999.ebuild:
+  Version bump.
+
+  16 Aug 2013; Tim Harder <radhermit@gentoo.org> -lilypond-2.17.19.ebuild,
+  -lilypond-2.17.20.ebuild, -lilypond-2.17.21.ebuild, -lilypond-2.17.22.ebuild:
+  Remove old.
+
+*lilypond-2.17.24 (16 Aug 2013)
+
+  16 Aug 2013; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.24.ebuild:
+  Version bump.
+
+*lilypond-2.17.23 (30 Jul 2013)
+
+  30 Jul 2013; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.23.ebuild:
+  Version bump.
+
+*lilypond-2.17.22 (16 Jul 2013)
+
+  16 Jul 2013; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.22.ebuild:
+  Version bump.
+
+*lilypond-2.17.21 (07 Jul 2013)
+
+  07 Jul 2013; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.21.ebuild:
+  Version bump.
+
+*lilypond-2.17.20 (10 Jun 2013)
+
+  10 Jun 2013; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.20.ebuild:
+  Version bump.
+
+  30 May 2013; Tim Harder <radhermit@gentoo.org> -lilypond-2.17.16.ebuild,
+  -lilypond-2.17.17.ebuild, -lilypond-2.17.18.ebuild:
+  Remove old.
+
+*lilypond-2.17.19 (30 May 2013)
+
+  30 May 2013; Tim Harder <radhermit@gentoo.org> lilypond-2.16.2.ebuild,
+  +lilypond-2.17.19.ebuild, lilypond-9999.ebuild:
+  Version bump, update live ebuild, and add PYTHON_REQUIRED_USE for
+  python-single-r1.
+
+*lilypond-2.17.18 (13 May 2013)
+
+  13 May 2013; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.18.ebuild:
+  Version bump.
+
+  09 May 2013; Tim Harder <radhermit@gentoo.org> -lilypond-2.17.13.ebuild,
+  -lilypond-2.17.14.ebuild, -lilypond-2.17.15.ebuild:
+  Remove old.
+
+*lilypond-2.17.17 (09 May 2013)
+
+  09 May 2013; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.17.ebuild:
+  Version bump.
+
+*lilypond-2.17.16 (16 Apr 2013)
+
+  16 Apr 2013; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.16.ebuild:
+  Version bump.
+
+*lilypond-2.17.15 (02 Apr 2013)
+
+  02 Apr 2013; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.15.ebuild:
+  Version bump.
+
+*lilypond-2.17.14 (15 Mar 2013)
+
+  15 Mar 2013; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.14.ebuild:
+  Version bump.
+
+  25 Feb 2013; Tim Harder <radhermit@gentoo.org> -lilypond-2.16.1.ebuild,
+  -lilypond-2.17.10.ebuild, -lilypond-2.17.11.ebuild, -lilypond-2.17.12.ebuild:
+  Remove old.
+
+*lilypond-2.17.13 (25 Feb 2013)
+
+  25 Feb 2013; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.13.ebuild:
+  Version bump.
+
+*lilypond-2.17.12 (09 Feb 2013)
+
+  09 Feb 2013; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.12.ebuild:
+  Version bump.
+
+  29 Jan 2013; Tim Harder <radhermit@gentoo.org> -lilypond-2.17.8.ebuild,
+  -lilypond-2.17.9.ebuild:
+  Remove old.
+
+*lilypond-2.17.11 (29 Jan 2013)
+
+  29 Jan 2013; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.11.ebuild:
+  Version bump.
+
+*lilypond-2.17.10 (14 Jan 2013)
+*lilypond-2.16.2 (14 Jan 2013)
+
+  14 Jan 2013; Tim Harder <radhermit@gentoo.org> +lilypond-2.16.2.ebuild,
+  +lilypond-2.17.10.ebuild, lilypond-9999.ebuild:
+  Version bumps. Migrate to python-single-r1 and respect LINGUAS.
+
+*lilypond-2.17.9 (20 Dec 2012)
+
+  20 Dec 2012; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.9.ebuild:
+  Version bump.
+
+  13 Dec 2012; Tim Harder <radhermit@gentoo.org> -lilypond-2.16.0.ebuild,
+  -lilypond-2.17.7.ebuild:
+  Remove old.
+
+  07 Dec 2012; Tim Harder <radhermit@gentoo.org> -lilypond-2.17.5.ebuild,
+  -lilypond-2.17.6.ebuild:
+  Remove old.
+
+*lilypond-2.17.8 (07 Dec 2012)
+
+  07 Dec 2012; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.8.ebuild:
+  Version bump.
+
+*lilypond-2.17.7 (24 Nov 2012)
+
+  24 Nov 2012; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.7.ebuild:
+  Version bump.
+
+*lilypond-2.16.1 (12 Nov 2012)
+
+  12 Nov 2012; Tim Harder <radhermit@gentoo.org> +lilypond-2.16.1.ebuild:
+  Version bump.
+
+*lilypond-2.17.6 (06 Nov 2012)
+
+  06 Nov 2012; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.6.ebuild:
+  Version bump.
+
+  22 Oct 2012; Tim Harder <radhermit@gentoo.org> -lilypond-2.17.3.ebuild,
+  -lilypond-2.17.4.ebuild:
+  Remove old.
+
+*lilypond-2.17.5 (22 Oct 2012)
+
+  22 Oct 2012; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.5.ebuild:
+  Version bump.
+
+  13 Oct 2012; Tim Harder <radhermit@gentoo.org> -lilypond-2.17.1.ebuild,
+  -lilypond-2.17.2.ebuild:
+  Remove old.
+
+*lilypond-2.17.4 (13 Oct 2012)
+
+  13 Oct 2012; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.4.ebuild:
+  Version bump.
+
+*lilypond-9999 (30 Sep 2012)
+
+  30 Sep 2012; Tim Harder <radhermit@gentoo.org> +lilypond-9999.ebuild:
+  Add live version.
+
+*lilypond-2.17.3 (30 Sep 2012)
+
+  30 Sep 2012; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.3.ebuild:
+  Version bump.
+
+*lilypond-2.17.2 (15 Sep 2012)
+
+  15 Sep 2012; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.2.ebuild,
+  +files/lilypond-2.17.2-tex-docs.patch:
+  Version bump.
+
+  05 Sep 2012; Tim Harder <radhermit@gentoo.org> lilypond-2.16.0.ebuild,
+  +files/lilypond-2.16.0-tex-docs.patch:
+  Fix sandbox issue when not building docs (bug #434002 by Gerard Neil).
+
+*lilypond-2.17.1 (01 Sep 2012)
+
+  01 Sep 2012; Tim Harder <radhermit@gentoo.org> +lilypond-2.17.1.ebuild:
+  Version bump.
+
+  26 Aug 2012; Tim Harder <radhermit@gentoo.org> -lilypond-2.15.42.ebuild,
+  -lilypond-2.15.95.ebuild:
+  Remove old.
+
+*lilypond-2.16.0 (26 Aug 2012)
+
+  26 Aug 2012; Tim Harder <radhermit@gentoo.org> +lilypond-2.16.0.ebuild:
+  Version bump.
+
+*lilypond-2.15.95 (13 Aug 2012)
+
+  13 Aug 2012; Tim Harder <radhermit@gentoo.org> +lilypond-2.15.95.ebuild:
+  Version bump.
+
+*lilypond-2.15.42 (06 Aug 2012)
+
+  06 Aug 2012; Tim Harder <radhermit@gentoo.org> +lilypond-2.15.42.ebuild:
+  Version bump to latest development release.
+
+  21 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> lilypond-2.14.2.ebuild:
+  x86 stable wrt bug #415627
+
+  13 May 2012; Agostino Sarubbo <ago@gentoo.org> lilypond-2.14.2.ebuild:
+  Stable for amd64, wrt bug #415627
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> lilypond-2.14.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  13 Mar 2012; Tim Harder <radhermit@gentoo.org> lilypond-2.14.2.ebuild:
+  Add build dep on pkgconfig and respect CFLAGS (bug #383515).
+
+  13 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> -lilypond-2.12.2.ebuild,
+  -lilypond-2.12.2-r1.ebuild, -files/lilypond-2.12.2-dont-install-pyc.patch,
+  -files/lilypond-2.12.2-glibc-2.10.patch, -lilypond-2.12.3.ebuild,
+  -files/lilypond-2.12.3-gcc45.patch,
+  -files/lilypond-2.12.3-python-cflags.patch,
+  -files/lilypond-2.12.3-qa_pyc_fix.patch:
+  old
+
+  12 Mar 2012; Tim Harder <radhermit@gentoo.org> lilypond-2.14.2.ebuild:
+  Remove unnecessary python convert shebangs line.
+
+*lilypond-2.14.2 (12 Mar 2012)
+
+  12 Mar 2012; Tim Harder <radhermit@gentoo.org> +lilypond-2.14.2.ebuild,
+  metadata.xml:
+  Version bump (bug #334835). Add myself as a maintainer.
+
+  08 Oct 2011; Raúl Porcel <armin76@gentoo.org> lilypond-2.12.2.ebuild,
+  lilypond-2.12.2-r1.ebuild, lilypond-2.12.3.ebuild:
+  Drop alpha/sparc keywords
+
+  23 Sep 2011; Andreas Schuerch <nativemad@gentoo.org> lilypond-2.12.3.ebuild:
+  x86 stable, thanks Joe Stroller. Bug 331181
+
+  21 Sep 2011; Tony Vroon <chainsaw@gentoo.org> lilypond-2.12.3.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #331181.
+
+  30 Jun 2011; Jeroen Roovers <jer@gentoo.org> lilypond-2.12.3.ebuild:
+  Marked ~hppa (bug #356069).
+
+  29 Jun 2010; Tomas Touceda <chiiph@gentoo.org> lilypond-2.12.3.ebuild,
+  +files/lilypond-2.12.3-gcc45.patch,
+  +files/lilypond-2.12.3-python-cflags.patch:
+  Fix gcc-4.5 building problem wrt bug 317163, and python cflags problem wrt
+  bug 324929
+
+  13 Jun 2010; Tomas Touceda <chiiph@gentoo.org> lilypond-2.12.3.ebuild:
+  Remove hardcoded font path. fc-list works it out, wrt 323603
+
+  12 Jun 2010; Tomas Touceda <chiiph@gentoo.org> lilypond-2.12.3.ebuild:
+  Update font dependency wrt bug 323603 and 311923
+
+  28 Apr 2010; Tomas Touceda <chiiph@gentoo.org> lilypond-2.12.3.ebuild:
+  Fix dependency problem wrt bug 315471, and improve python related code wrt
+  bug 313961. Thanks to Xarthisius and Arfrever for helping with this two
+  issues
+
+*lilypond-2.12.3 (13 Apr 2010)
+
+  13 Apr 2010; Tomas Touceda <chiiph@gentoo.org> -lilypond-2.12.1.ebuild,
+  +lilypond-2.12.3.ebuild, +files/lilypond-2.12.3-qa_pyc_fix.patch:
+  Version bump. Port ebuild to EAPI=3
+
+*lilypond-2.12.2-r1 (10 Dec 2009)
+
+  10 Dec 2009; Ulrich Mueller <ulm@gentoo.org> +lilypond-2.12.2-r1.ebuild,
+  +files/lilypond-2.12.2-dont-install-pyc.patch:
+  Don't install precompiled python object files, fixes bug 258129. Proxy
+  commit for Tomás Touceda (chiiph).
+
+  18 Nov 2009; Raúl Porcel <armin76@gentoo.org> lilypond-2.12.2.ebuild:
+  sparc stable wrt #288316
+
+  24 Oct 2009; Tobias Klausmann <klausman@gentoo.org>
+  lilypond-2.12.2.ebuild:
+  Stable on alpha, bug #288316
+
+  15 Oct 2009; Markus Meier <maekke@gentoo.org> lilypond-2.12.2.ebuild:
+  amd64/x86 stable, bug #288316
+
+  09 Oct 2009; Marijn Schouten <hkBst@gentoo.org> -lilypond-2.10.33.ebuild,
+  -lilypond-2.11.50.ebuild, -lilypond-2.11.51.ebuild,
+  -lilypond-2.11.52.ebuild, -lilypond-2.11.56.ebuild,
+  -lilypond-2.11.58.ebuild, -lilypond-2.11.63.ebuild,
+  -lilypond-2.11.64.ebuild, -lilypond-2.11.65.ebuild:
+  cleanup old stuff
+
+  29 Jul 2009; Ryan Hill <dirtyepic@gentoo.org> lilypond-2.12.2.ebuild,
+  +files/lilypond-2.12.2-glibc-2.10.patch:
+  Fix build w/ glibc-2.10. (bug #270718)
+
+  26 May 2009; Peter Volkov <pva@gentoo.org> lilypond-2.10.33.ebuild,
+  lilypond-2.11.50.ebuild, lilypond-2.11.51.ebuild, lilypond-2.11.52.ebuild,
+  lilypond-2.11.56.ebuild, lilypond-2.11.58.ebuild, lilypond-2.11.63.ebuild,
+  lilypond-2.11.64.ebuild, lilypond-2.11.65.ebuild, lilypond-2.12.1.ebuild,
+  lilypond-2.12.2.ebuild:
+  Removing app-text/ghostscript-esp from dependecies, it'll be removed from
+  the tree, bug #261434.
+
+*lilypond-2.12.2 (13 Mar 2009)
+
+  13 Mar 2009; Ferris McCormick <fmccor@gentoo.org> +lilypond-2.12.2.ebuild:
+  Small version bump to lilypond's current stable, dated 20 January 2009.
+
+  05 Mar 2009; Ferris McCormick <fmccor@gentoo.org> lilypond-2.12.1.ebuild:
+  Sparc stable, Bug #245167.
+
+  08 Feb 2009; Markus Meier <maekke@gentoo.org> lilypond-2.12.1.ebuild:
+  amd64/x86 stable, bug #245167
+
+  07 Feb 2009; Tobias Klausmann <klausman@gentoo.org>
+  lilypond-2.12.1.ebuild:
+  Stable on alpha, bug #245167
+
+*lilypond-2.12.1 (05 Jan 2009)
+
+  05 Jan 2009; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.12.1.ebuild:
+  Major version bump
+
+  16 Dec 2008; Ulrich Mueller <ulm@gentoo.org> lilypond-2.10.33.ebuild,
+  lilypond-2.11.50.ebuild, lilypond-2.11.51.ebuild, lilypond-2.11.52.ebuild,
+  lilypond-2.11.56.ebuild, lilypond-2.11.58.ebuild:
+  Remove virtual/tetex from comments in old versions, in order to avoid
+  false positives on scanning. Bug 222501.
+
+*lilypond-2.11.65 (03 Dec 2008)
+
+  03 Dec 2008; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.11.65.ebuild:
+  bump
+
+*lilypond-2.11.64 (19 Nov 2008)
+
+  19 Nov 2008; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.11.64.ebuild:
+  bump
+
+*lilypond-2.11.63 (31 Oct 2008)
+
+  31 Oct 2008; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.11.63.ebuild:
+  bump, fix bug 230706, reinstate -j1 (bug 236010)
+
+*lilypond-2.11.58 (14 Sep 2008)
+
+  14 Sep 2008; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.11.58.ebuild:
+  bump (bug 236201), try without -j1 (bug 236010)
+
+*lilypond-2.11.56 (19 Aug 2008)
+
+  19 Aug 2008; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.11.56.ebuild:
+  bump
+
+*lilypond-2.11.52 (14 Jul 2008)
+
+  14 Jul 2008; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.11.52.ebuild:
+  bump
+
+*lilypond-2.11.51 (08 Jul 2008)
+
+  08 Jul 2008; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.11.51.ebuild:
+  bump
+
+  03 Jul 2008; Marijn Schouten <hkBst@gentoo.org> -lilypond-2.11.33.ebuild,
+  -lilypond-2.11.36.ebuild, -lilypond-2.11.43.ebuild,
+  -lilypond-2.11.44.ebuild, -lilypond-2.11.46.ebuild,
+  -lilypond-2.11.48.ebuild, -lilypond-2.11.49.ebuild:
+  remove old stuff
+
+*lilypond-2.11.50 (03 Jul 2008)
+
+  03 Jul 2008; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.11.50.ebuild:
+  bump
+
+*lilypond-2.11.49 (12 Jun 2008)
+
+  12 Jun 2008; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.11.49.ebuild:
+  bump
+
+*lilypond-2.11.48 (10 Jun 2008)
+
+  10 Jun 2008; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.11.48.ebuild:
+  bump
+
+*lilypond-2.11.46 (24 May 2008)
+
+  24 May 2008; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.11.46.ebuild:
+  bump
+
+*lilypond-2.11.44 (14 Apr 2008)
+
+  14 Apr 2008; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.11.44.ebuild:
+  bump, does it compile with gcc-4.3?
+
+  11 Apr 2008; Marijn Schouten <hkBst@gentoo.org> lilypond-2.11.43.ebuild:
+  fix bug 217329
+
+  29 Mar 2008; Marijn Schouten <hkBst@gentoo.org>
+  -lilypond-2.10.25-r1.ebuild, -lilypond-2.10.29.ebuild,
+  -lilypond-2.11.27.ebuild, -lilypond-2.11.28.ebuild,
+  -lilypond-2.11.29.ebuild, -lilypond-2.11.30.ebuild:
+  remove old stuff
+
+*lilypond-2.11.43 (29 Mar 2008)
+
+  29 Mar 2008; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.11.43.ebuild:
+  add 2.11.43, possibly includes patch to compile with gcc-4.3
+
+  21 Feb 2008; Raúl Porcel <armin76@gentoo.org> lilypond-2.10.33.ebuild:
+  alpha/sparc/x86 stable
+
+  16 Dec 2007; Marijn Schouten <hkBst@gentoo.org> ChangeLog:
+  remove crufty versions
+
+*lilypond-2.11.36 (16 Dec 2007)
+
+  16 Dec 2007; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.11.36.ebuild:
+  bump
+
+  13 Nov 2007; Samuli Suominen <drac@gentoo.org> lilypond-2.10.33.ebuild:
+  amd64 stable wrt #182995
+
+  10 Nov 2007; Raúl Porcel <armin76@gentoo.org> lilypond-2.10.29.ebuild:
+  sparc stable wrt #182995
+
+  05 Oct 2007; Raúl Porcel <armin76@gentoo.org> lilypond-2.10.29.ebuild:
+  alpha stable wrt #182995, thanks to Tobias Klausmann for testing
+
+  02 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  lilypond-2.10.29.ebuild:
+  stable x86, bug 182995
+
+*lilypond-2.11.33 (23 Sep 2007)
+*lilypond-2.10.33 (23 Sep 2007)
+
+  23 Sep 2007; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.10.33.ebuild,
+  +lilypond-2.11.33.ebuild:
+  bump 2.1[01].33
+
+*lilypond-2.11.30 (30 Aug 2007)
+
+  30 Aug 2007; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.11.30.ebuild:
+  add 2.11.30
+
+*lilypond-2.11.29 (14 Aug 2007)
+*lilypond-2.10.29 (14 Aug 2007)
+
+  14 Aug 2007; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.10.29.ebuild,
+  +lilypond-2.11.29.ebuild:
+  add 2.*.29
+
+  11 Aug 2007; Raúl Porcel <armin76@gentoo.org> lilypond-2.10.25-r1.ebuild:
+  Add ~alpha wrt #186993, thanks to Brian Evans and Tobias Klausmann for testing
+
+  29 Jul 2007; Raúl Porcel <armin76@gentoo.org> lilypond-2.11.28.ebuild:
+  Re-add ~alpha wrt #186993
+
+*lilypond-2.11.28 (26 Jul 2007)
+
+  26 Jul 2007; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.11.28.ebuild:
+  add 2.11.28
+
+  27 Jun 2007; Marijn Schouten <hkBst@gentoo.org> -lilypond-2.10.25.ebuild,
+  lilypond-2.10.25-r1.ebuild, -lilypond-2.11.26.ebuild,
+  lilypond-2.11.27.ebuild:
+  fix fontforge dep, bug 183132, remove a few old versions
+
+  23 Jun 2007; Marijn Schouten <hkBst@gentoo.org> -lilypond-2.10.23.ebuild,
+  -lilypond-2.11.23.ebuild:
+  remove 2.1[01].23
+
+  23 Jun 2007; Diego Pettenò <flameeyes@gentoo.org>
+  lilypond-2.10.23.ebuild, lilypond-2.10.25.ebuild,
+  lilypond-2.10.25-r1.ebuild, lilypond-2.11.23.ebuild,
+  lilypond-2.11.26.ebuild, lilypond-2.11.27.ebuild:
+  Remove autotools eclass inheritance from ebuilds that don't use eauto*
+  functions nor run autotools on their own.
+
+  23 Jun 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +files/lilypond-2.10.25-fontforge.patch, lilypond-2.10.25-r1.ebuild:
+  Add patch from Ed Catmur in bug #178629 to allow building with newer
+  fontforge versions.
+
+*lilypond-2.11.27 (22 Jun 2007)
+
+  22 Jun 2007; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.11.27.ebuild:
+  add 2.11.27
+
+  17 Jun 2007; Sven Wegener <swegener@gentoo.org> lilypond-2.10.23.ebuild,
+  lilypond-2.10.25.ebuild, lilypond-2.10.25-r1.ebuild,
+  lilypond-2.11.23.ebuild, lilypond-2.11.26.ebuild:
+  Use full atoms for has_version.
+
+*lilypond-2.11.26 (11 Jun 2007)
+
+  11 Jun 2007; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.11.26.ebuild:
+  add 2.11.26
+
+*lilypond-2.10.25-r1 (01 Jun 2007)
+
+  01 Jun 2007; Ulrich Mueller <ulm@gentoo.org> +files/50lilypond-gentoo.el,
+  +lilypond-2.10.25-r1.ebuild:
+  Emacs support: Compile elisp files and install them in the proper place,
+  add an Emacs sitefile. Also fixes bug #179177.
+
+*lilypond-2.10.25 (24 May 2007)
+
+  24 May 2007; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.10.25.ebuild:
+  add 2.10.25, fixed bug 179166
+
+*lilypond-2.11.23 (14 May 2007)
+
+  14 May 2007; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.11.23.ebuild:
+  add development version
+
+*lilypond-2.10.23 (13 May 2007)
+
+  13 May 2007; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.10.23.ebuild:
+  add 2.10.23
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*lilypond-2.10.16 (06 Feb 2007)
+
+  06 Feb 2007; Marijn Schouten <hkBst@gentoo.org> +lilypond-2.10.16.ebuild:
+  add lilypond-2.10.16
+
+  28 Jan 2007; Marijn Schouten <hkBst@gentoo.org> metadata.xml:
+  take over maintainership, fix metadata
+
+  10 Jan 2007; Piotr Jaroszyński <peper@gentoo.org> lilypond-2.0.3.ebuild,
+  lilypond-2.2.4.ebuild, lilypond-2.2.6.ebuild, lilypond-2.4.2.ebuild,
+  lilypond-2.5.2.ebuild, lilypond-2.8.0-r1.ebuild:
+  Dependency update: dev-util/guile -> dev-scheme/guile.
+
+  20 Aug 2006; Stefan Schweizer <genstef@gentoo.org>
+  lilypond-2.8.0-r1.ebuild:
+  use virtual/ghostscript, because all ghostscript-8 are now stable,thanks to
+  Ryan Van Wagoner <whiteviz@gmail.com> in bug 138620
+
+  07 Jul 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  lilypond-2.8.0-r1.ebuild:
+  remove non-existent app-text/ghostscript-afpl dep
+
+  28 Apr 2006; Jason Wever <weeve@gentoo.org> lilypond-2.8.0-r1.ebuild:
+  Re-added ~sparc keyword as it went missing.
+
+  05 Apr 2006; Stefan Schweizer <genstef@gentoo.org>
+  lilypond-2.8.0-r1.ebuild:
+  Change virtual/ghostscript to || ( ) RDEPEND, bug 128887 thanks to Jean
+  Bréfort <jean.brefort@normalesup.org>
+
+  29 Mar 2006; Aron Griffis <agriffis@gentoo.org> lilypond-2.0.3.ebuild,
+  lilypond-2.2.4.ebuild, lilypond-2.2.6.ebuild, lilypond-2.4.2.ebuild,
+  lilypond-2.5.2.ebuild, lilypond-2.8.0-r1.ebuild:
+  More testing shows that lilypond-2.8.0 will build with tetex-3, so don't
+  restrict to tetex-2 for that version.  Repair my broken sed expression in the
+  other ebuilds (was subbing pfa->PFA twice instead of doing pfb->PFB in the
+  second case)
+
+  28 Mar 2006; Aron Griffis <agriffis@gentoo.org> lilypond-2.0.3.ebuild,
+  lilypond-2.2.4.ebuild, lilypond-2.2.6.ebuild, lilypond-2.4.2.ebuild,
+  lilypond-2.5.2.ebuild, lilypond-2.8.0-r1.ebuild:
+  Restrict older lilyponds to tetex-2 which provides /usr/bin/inimf #92040.
+  sed makefiles so that mftrace-1.1.x can be used in place of mftrace-1.0.x
+  #90334
+
+  27 Mar 2006; Aron Griffis <agriffis@gentoo.org> lilypond-2.8.0-r1.ebuild:
+  addwrite /root/.PfaEdit workaround #127723
+
+*lilypond-2.8.0-r1 (27 Mar 2006)
+
+  27 Mar 2006; Aron Griffis <agriffis@gentoo.org> -lilypond-2.8.0.ebuild,
+  +lilypond-2.8.0-r1.ebuild:
+  Fix support of USE=emacs. Fix sandbox issue when the same version of
+  lilypond is re-installed
+
+  26 Mar 2006; Aron Griffis <agriffis@gentoo.org> lilypond-2.0.3.ebuild,
+  lilypond-2.2.4.ebuild, lilypond-2.2.6.ebuild, lilypond-2.4.2.ebuild,
+  lilypond-2.5.2.ebuild, lilypond-2.8.0.ebuild:
+  Older lilypond requires older mftrace, doesn't build with mftrace-1.1*. Run
+  emake with LC_ALL=C so that mftrace doesn't complain about using iconv
+
+*lilypond-2.8.0 (26 Mar 2006)
+
+  26 Mar 2006; Aron Griffis <agriffis@gentoo.org> +lilypond-2.8.0.ebuild:
+  Bump to 2.8.0 #97574
+
+  27 Feb 2006; Ciaran McCreesh <ciaranm@gentoo.org> lilypond-2.0.3.ebuild,
+  lilypond-2.2.4.ebuild, lilypond-2.2.6.ebuild, lilypond-2.4.2.ebuild,
+  lilypond-2.5.2.ebuild:
+  Remove global scope cut calls, bug #123958.
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> lilypond-2.5.2.ebuild:
+  updated sys-apps/texinfo dependency , fixes #86611
+
+  20 Feb 2005; Aron Griffis <agriffis@gentoo.org> lilypond-2.5.2.ebuild:
+  Depend on guile-1.6.5 so that lilypond works on ~amd64 #72811
+
+  27 Dec 2004; Jason Wever <weeve@gentoo.org> lilypond-2.5.2.ebuild:
+  Added ~sparc keyword.
+
+*lilypond-2.5.2 (28 Nov 2004)
+
+  28 Nov 2004; Aron Griffis <agriffis@gentoo.org> +lilypond-2.5.2.ebuild:
+  Add lilypond-2.5.2 development version #71234
+
+*lilypond-2.4.2 (28 Nov 2004)
+
+  28 Nov 2004; Aron Griffis <agriffis@gentoo.org> +lilypond-2.4.2.ebuild:
+  Bump to 2.4.2. Add DEPEND on ec-fonts-mftraced which requires dropping some
+  KEYWORDS for now. #69594
+
+*lilypond-2.2.6 (02 Nov 2004)
+
+  02 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -files/lilypond-1.8.2-coreutils-compat.patch, -lilypond-2.2.1.ebuild,
+  -lilypond-2.2.2.ebuild, +lilypond-2.2.6.ebuild:
+  Version bump.
+
+  02 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> lilypond-2.2.1.ebuild,
+  lilypond-2.2.2.ebuild, lilypond-2.2.4.ebuild:
+  app-text/tetex -> virtual/tetex
+
+*lilypond-2.2.4 (19 Jul 2004)
+
+  19 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +lilypond-2.2.4.ebuild:
+  ~sparc -amd64.  Version bump.
+
+*lilypond-2.2.2 (11 Jun 2004)
+
+  11 Jun 2004; Aron Griffis <agriffis@gentoo.org> +lilypond-2.2.2.ebuild:
+  Update to 2.2.2, thanks to Maarten Wisse in bug 46701
+
+*lilypond-2.2.1 (28 May 2004)
+
+  28 May 2004; Aron Griffis <agriffis@gentoo.org> -lilypond-1.5.15.ebuild,
+  -lilypond-1.6.6.ebuild, -lilypond-1.6.9.ebuild, -lilypond-1.8.2.ebuild,
+  -lilypond-2.0.0.ebuild, lilypond-2.0.3.ebuild, +lilypond-2.2.1.ebuild:
+  Mark 2.0.3 stable on alpha and x86; prune old ebuilds. Add ebuild for version
+  2.2.1, thanks to Maarten Wisse in bug 46701 for the ebuild
+
+  18 May 2004; Mamoru KOMACHI <usata@gentoo.org> lilypond-1.5.15.ebuild,
+  lilypond-1.6.6.ebuild, lilypond-1.6.9.ebuild, lilypond-1.8.2.ebuild,
+  lilypond-2.0.0.ebuild, lilypond-2.0.3.ebuild:
+  Changed app-text/tetex to virtual/tetex, see bug #50865
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> lilypond-1.8.2.ebuild,
+  lilypond-2.0.0.ebuild, lilypond-2.0.3.ebuild:
+  Add inherit eutils
+
+  25 Apr 2004; Jon Hood <squinky86@gentoo.org> lilypond-1.6.6.ebuild:
+  added "die"
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  lilypond-1.5.15.ebuild, lilypond-1.6.9.ebuild:
+  Added IUSE.
+
+  21 Mar 2004; David Holm <dholm@gentoo.org> lilypond-2.0.3.ebuild:
+  Added to ~ppc.
+
+*lilypond-2.0.3 (20 Mar 2004)
+
+  20 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  lilypond-1.6.9.ebuild, lilypond-2.0.3.ebuild:
+  Version bump.
+
+  14 Jan 2004; Aron Griffis <agriffis@gentoo.org> lilypond-2.0.0.ebuild:
+  Fix bison dependency from !sys-devel/bison-1.75 to !=sys-devel/bison-1.75
+
+  03 Jan 2004; Aron Griffis <agriffis@gentoo.org> lilypond-2.0.0.ebuild:
+  Fix bison dependency to prevent flip-flops
+
+  09 Dec 2003; Heinrich Wendel <lanius@gentoo.org> lilypond-1.6.6.ebuild,
+  lilypond-1.6.9.ebuild, lilypond-1.8.2.ebuild, lilypond-2.0.0.ebuild:
+  changed app-text/ghostscript to virtual/ghostscript
+
+  03 Dec 2003; Aron Griffis <agriffis@gentoo.org> lilypond-1.8.2.ebuild:
+  Stable on alpha and x86
+
+  01 Oct 2003; Aron Griffis <agriffis@gentoo.org> lilypond-2.0.0.ebuild:
+  Fix trailing whitespace for repoman
+
+*lilypond-2.0.0 (27 Sep 2003)
+
+  27 Sep 2003; Aron Griffis <agriffis@gentoo.org> lilypond-2.0.0.ebuild,
+  files/lilypond-2.0.0-coreutils-compat.patch:
+  Update to 2.0.0.  Thanks to Mike Ossmann in bug 29619
+
+*lilypond-1.8.2 (12 Sep 2003)
+
+  12 Sep 2003; Aron Griffis <agriffis@gentoo.org> lilypond-1.8.2.ebuild,
+  files/lilypond-1.8.2-coreutils-compat.patch:
+  Update to 1.8.2.  Thanks to Mike Ossmann and Chandler Carruth in bug 26136
+
+  12 Sep 2003; Aron Griffis <agriffis@gentoo.org> lilypond-1.6.9.ebuild:
+  Remove web-doc building since it's broken in this ebuild and the 1.8.0 ebuild
+  will have it fixed. This finishes bug 21305
+
+  12 Sep 2003; Aron Griffis <agriffis@gentoo.org> lilypond-1.6.9.ebuild:
+  Fix (part of) bug 21305 by disabling ccache.
+
+  27 May 2003; jje <jje@gentoo.org> lilypond-1.6.9.ebuild:
+  Fixed web-doc target, die was missing...
+
+*lilypond-1.6.9 (17 May 2003)
+
+  17 May 2003; jje <jje@gentoo.org> lilypond-1.6.9.ebuild:
+  Simplified src_compile to reflect current compiler usage.
+  
+  The web-doc target is also being built.
+
+  18 Jan 2003; Aron Griffis <agriffis@gentoo.org> lilypond-1.6.6.ebuild :
+  Fix bug 13396 by requiring tetex-1.0.7-r12 which should fix the missing
+  mf.base compilation problem.
+
+*lilypond-1.6.6 (03 Dec 2002)
+
+  09 Mar 2003; Aron Griffis <agriffis@gentoo.org> lilypond-1.6.6.ebuild:
+  Mark stable on alpha
+
+  21 Feb 2003; Aron Griffis <agriffis@gentoo.org> lilypond-1.6.6.ebuild :
+  Add ~alpha to KEYWORDS
+
+  03 Dec 2002; Aron Griffis <agriffis@gentoo.org> lilypond-1.6.6.ebuild :
+
+  Update to version 1.6.6 which compiles with at least gcc-2.95.3 and
+  gcc-3.2.1.  I put clauses in the ebuild to help compile for gcc-3.[01] but
+  haven't been able to test them.  It shouldn't matter (much) since Gentoo 1.2
+  is using gcc-2.95.3 and Gentoo 1.4 is using gcc-3.2.  This fixes BUG #4682.
+  Thanks to Mike Ossmann <mike@ossmann.com> for his work on this version.
+
+*lilypond-1.5.15 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

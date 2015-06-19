@@ -1,0 +1,53 @@
+# ChangeLog for media-plugins/vco-plugins
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vco-plugins/ChangeLog,v 1.14 2011/06/28 00:01:31 radhermit Exp $
+
+  28 Jun 2011; Tim Harder <radhermit@gentoo.org> vco-plugins-0.3.0.ebuild:
+  Explicitly set RDEPEND=DEPEND.
+
+  27 Jun 2011; Tim Harder <radhermit@gentoo.org> vco-plugins-0.3.0.ebuild:
+  Respect LDFLAGS (bug #334709, patch thanks to Ross Smith) and update to EAPI
+  4.
+
+  18 Nov 2007; Alexis Ballier <aballier@gentoo.org>
+  vco-plugins-0.3.0.ebuild:
+  update homepage and src_uri since they have moved
+
+  18 Nov 2007; Alexis Ballier <aballier@gentoo.org>
+  vco-plugins-0.3.0.ebuild:
+  use full name for g++, make multilib aware, dont force -O3
+
+  18 Nov 2007; Alexis Ballier <aballier@gentoo.org> metadata.xml,
+  -vco-plugins-0.2.1.ebuild:
+  remove old, handle to proaudio herd like others ladspa plugins
+
+  17 Sep 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing fvdpol from metadata.xml (see #51321 for reference).
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  26 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  vco-plugins-0.3.0.ebuild:
+  Stable amd64, x86.
+
+  18 Jun 2004; David Holm <dholm@gentoo.org> vco-plugins-0.3.0.ebuild:
+  Added to ~ppc.
+
+*vco-plugins-0.3.0 (15 Jun 2004)
+
+  15 Jun 2004; Frank van de Pol <fvdpol@gentoo.org> +vco-plugins-0.3.0.ebuild:
+  Version bump to 0.3.0; changed URL for download and homepage to new location.
+
+  10 May 2004; Travis Tilley <lv@gentoo.org> vco-plugins-0.2.1.ebuild:
+  fixed description and added ~amd64 keyword
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  vco-plugins-0.2.1.ebuild:
+  Added IUSE.
+
+*vco-plugins-0.2.1 (19 Jan 2004)
+
+  19 Jan 2004; <torbenh@gentoo.org> vco-plugins-0.2.1.ebuild:
+  Initial Import
+

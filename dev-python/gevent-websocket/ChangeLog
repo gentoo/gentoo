@@ -1,0 +1,40 @@
+# ChangeLog for dev-python/gevent-websocket
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/gevent-websocket/ChangeLog,v 1.8 2015/06/17 07:17:37 idella4 Exp $
+
+*gevent-websocket-0.9.5 (17 Jun 2015)
+
+  17 Jun 2015; Ian Delaney <idella4@gentoo.org> +gevent-websocket-0.9.5.ebuild,
+  -gevent-websocket-0.9.2.ebuild:
+  bump; rm old
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> gevent-websocket-0.9.2.ebuild,
+  gevent-websocket-0.9.3.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> gevent-websocket-0.9.3.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> gevent-websocket-0.9.3.ebuild:
+  amd64 stable, bug 540290
+
+*gevent-websocket-0.9.3 (11 Apr 2014)
+
+  11 Apr 2014; Ian Delaney <idella4@gentoo.org> +gevent-websocket-0.9.3.ebuild,
+  -gevent-websocket-0.3.6.ebuild:
+  bump, rm old
+
+*gevent-websocket-0.9.2 (06 Feb 2014)
+
+  06 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  +gevent-websocket-0.9.2.ebuild, metadata.xml:
+  Version bump and keyword amd64-linux, x86-linux, switched to distutils-r1
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*gevent-websocket-0.3.6 (27 Aug 2012)
+
+  27 Aug 2012; Ultrabug <ultrabug@gentoo.org> +gevent-websocket-0.3.6.ebuild,
+  +metadata.xml:
+  Initial import from ultrabug overlay.

@@ -1,0 +1,320 @@
+# ChangeLog for www-client/surfraw
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-client/surfraw/ChangeLog,v 1.84 2015/02/27 11:05:41 ago Exp $
+
+  27 Feb 2015; Agostino Sarubbo <ago@gentoo.org> surfraw-2.2.9-r1.ebuild:
+  Stable for sparc, wrt bug #535692
+
+  28 Jan 2015; Agostino Sarubbo <ago@gentoo.org> surfraw-2.2.9-r1.ebuild:
+  Stable for ppc, wrt bug #535692
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> surfraw-2.2.9-r1.ebuild:
+  Stable for x86, wrt bug #535692
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org> surfraw-2.2.9-r1.ebuild:
+  Stable for amd64, wrt bug #535692
+
+  08 Jan 2015; Jeroen Roovers <jer@gentoo.org> surfraw-2.2.9-r1.ebuild:
+  Stable for HPPA (bug #535692).
+
+*surfraw-2.2.9-r1 (21 Oct 2014)
+
+  21 Oct 2014; Jeroen Roovers <jer@gentoo.org> +surfraw-2.2.9-r1.ebuild,
+  +files/surfraw-2.2.9-completion.patch:
+  Fix bash-completion (bug #526342).
+
+  12 Mar 2014; Jeroen Roovers <jer@gentoo.org> -surfraw-2.2.8.ebuild:
+  Old.
+
+  12 Mar 2014; Agostino Sarubbo <ago@gentoo.org> surfraw-2.2.9.ebuild:
+  Stable for sparc, wrt bug #502942
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> surfraw-2.2.9.ebuild:
+  Stable for ppc, wrt bug #502942
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> surfraw-2.2.9.ebuild:
+  Stable for x86, wrt bug #502942
+
+  03 Mar 2014; Jeroen Roovers <jer@gentoo.org> surfraw-2.2.9.ebuild:
+  Stable for HPPA (bug #502942).
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> surfraw-2.2.9.ebuild:
+  amd64 stable, bug #502942
+
+*surfraw-2.2.9 (16 Dec 2013)
+
+  16 Dec 2013; Jeroen Roovers <jer@gentoo.org> +surfraw-2.2.9.ebuild:
+  Version bump.
+
+  05 Mar 2013; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Add proxy-maintainers herd.
+
+  26 Jan 2012; Jeroen Roovers <jer@gentoo.org> -surfraw-2.2.7.ebuild:
+  Old.
+
+  09 Jan 2012; Brent Baude <ranger@gentoo.org> surfraw-2.2.8.ebuild:
+  Marking surfraw-2.2.8 ppc for bug 389333
+
+  18 Dec 2011; Raúl Porcel <armin76@gentoo.org> surfraw-2.2.8.ebuild:
+  sparc stable wrt #389333
+
+  26 Nov 2011; Jeroen Roovers <jer@gentoo.org> surfraw-2.2.8.ebuild:
+  Require dev-lang/perl at runtime.
+
+  11 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> surfraw-2.2.8.ebuild:
+  x86 stable wrt bug #389333
+
+  09 Nov 2011; Jeroen Roovers <jer@gentoo.org> surfraw-2.2.8.ebuild:
+  Stable for HPPA (bug #389333).
+
+  03 Nov 2011; Jeroen Roovers <jer@gentoo.org> surfraw-2.2.8.ebuild:
+  Use bash-completion-r1.eclass, remove the symlink fixing hack and use DOCS
+  instead of dodoc by James Rowe (bug #389377).
+
+  03 Nov 2011; Tony Vroon <chainsaw@gentoo.org> surfraw-2.2.8.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo & Ian
+  "idella4" Delaney in bug #389333.
+
+  12 Jul 2011; Jeroen Roovers <jer@gentoo.org> surfraw-2.2.8.ebuild:
+  Default to "default".
+
+*surfraw-2.2.8 (12 Jul 2011)
+
+  12 Jul 2011; Jeroen Roovers <jer@gentoo.org> +surfraw-2.2.8.ebuild:
+  Version bump by James Rowe (bug #374945).
+
+  25 Jan 2011; Jeremy Olexa <darkside@gentoo.org> surfraw-2.2.7.ebuild:
+  Port changes from Gentoo Prefix, use EROOT, add KEYWORDS, convert to
+  EAPI3.
+
+  22 Jan 2011; Jeroen Roovers <jer@gentoo.org>
+  files/surfraw-2.2.6-gentoo_pkg_tools.patch:
+  Clean up patches.
+
+  15 Sep 2010; Jeroen Roovers <jer@gentoo.org> -surfraw-2.2.6.ebuild,
+  surfraw-2.2.7.ebuild:
+  Stable for SPARC (bug #323385).
+
+  18 Jul 2010; Jeroen Roovers <jer@gentoo.org> surfraw-2.2.7.ebuild:
+  Stable for PPC (bug #323385).
+
+  13 Jul 2010; Jeroen Roovers <jer@gentoo.org> surfraw-2.2.7.ebuild:
+  Stable for HPPA (bug #323385).
+
+  11 Jul 2010; Markus Meier <maekke@gentoo.org> surfraw-2.2.7.ebuild:
+  x86 stable, bug #323385
+
+  10 Jul 2010; Thomas Anderson <tanderson@gentoo.org> surfraw-2.2.7.ebuild:
+  stable amd64, bug 323385
+
+*surfraw-2.2.7 (08 May 2010)
+
+  08 May 2010; Jeroen Roovers <jer@gentoo.org> +surfraw-2.2.7.ebuild:
+  Version bump thanks to James Rowe (bug #318947).
+
+  12 Jan 2010; Jeroen Roovers <jer@gentoo.org>
+  -files/surfraw-2.1.5-gentoo_pkg_tools.patch, -surfraw-2.2.5.ebuild:
+  Remove old.
+
+  10 Jan 2010; Markus Meier <maekke@gentoo.org> surfraw-2.2.6.ebuild:
+  x86 stable, bug #298240
+
+  28 Dec 2009; Jeroen Roovers <jer@gentoo.org> surfraw-2.2.6.ebuild:
+  Stable for HPPA (bug #298240).
+
+  28 Dec 2009; Tiago Cunha <tcunha@gentoo.org> surfraw-2.2.6.ebuild:
+  stable sparc, bug 298240
+
+  28 Dec 2009; nixnut <nixnut@gentoo.org> surfraw-2.2.6.ebuild:
+  ppc stable #298240
+
+  24 Dec 2009; Pacho Ramos <pacho@gentoo.org> surfraw-2.2.6.ebuild:
+  amd64 stable, bug 298240
+
+*surfraw-2.2.6 (20 Nov 2009)
+
+  20 Nov 2009; Jeroen Roovers <jer@gentoo.org> +surfraw-2.2.6.ebuild,
+  +files/surfraw-2.2.6-gentoo_pkg_tools.patch:
+  Version bump thanks to James Rowe (bug #293836).
+
+  12 Aug 2009; Jeroen Roovers <jer@gentoo.org> -surfraw-2.2.4.ebuild:
+  Remove old.
+
+  25 Jul 2009; Jeroen Roovers <jer@gentoo.org>
+  files/surfraw-2.1.5-gentoo_pkg_tools.patch:
+  Fixed completion script
+  to work without app-shells/bash-completion installed, many thanks to
+  urcindalo in Bug #277891.
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> surfraw-2.2.5.ebuild:
+  ppc stable #274439
+
+  30 Jun 2009; Raúl Porcel <armin76@gentoo.org> surfraw-2.2.5.ebuild:
+  sparc stable wrt #274439
+
+  17 Jun 2009; Christian Faulhammer <fauli@gentoo.org> surfraw-2.2.5.ebuild:
+  stable x86, bug 274439
+
+  17 Jun 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  surfraw-2.2.5.ebuild:
+  stable amd64, bug 274439
+
+  17 Jun 2009; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Make e-mail address match the one in bugzilla.
+
+  17 Jun 2009; Jeroen Roovers <jer@gentoo.org> surfraw-2.2.5.ebuild:
+  Stable for HPPA (bug #274439).
+
+*surfraw-2.2.5 (13 May 2009)
+
+  13 May 2009; Jeroen Roovers <jer@gentoo.org> +surfraw-2.2.5.ebuild:
+  Version bump.
+
+  14 Apr 2009; Jeroen Roovers <jer@gentoo.org> -surfraw-2.2.3.ebuild:
+  Remove old.
+
+  14 Apr 2009; Raúl Porcel <armin76@gentoo.org> surfraw-2.2.4.ebuild:
+  x86 stable wrt #265459
+
+  12 Apr 2009; Tiago Cunha <tcunha@gentoo.org> surfraw-2.2.4.ebuild:
+  stable amd64/sparc, bug 265459
+
+  11 Apr 2009; nixnut <nixnut@gentoo.org> surfraw-2.2.4.ebuild:
+  ppc stable #265459
+
+  10 Apr 2009; Jeroen Roovers <jer@gentoo.org> surfraw-2.2.4.ebuild:
+  Stable for HPPA (bug #265459).
+
+*surfraw-2.2.4 (11 Mar 2009)
+
+  11 Mar 2009; Jeroen Roovers <jer@gentoo.org>
+  -files/surfraw-gentoo_pkg_tools.patch, -surfraw-2.2.2.ebuild,
+  +surfraw-2.2.4.ebuild:
+  Version bump. Remove old.
+
+  02 Dec 2008; Raúl Porcel <armin76@gentoo.org> surfraw-2.2.3.ebuild:
+  sparc stable wrt #249108
+
+  01 Dec 2008; Jeroen Roovers <jer@gentoo.org> surfraw-2.2.3.ebuild:
+  Do not try to install debian/changelog.
+
+  01 Dec 2008; Jeroen Roovers <jer@gentoo.org> surfraw-2.2.3.ebuild:
+  Stable for HPPA (bug #249108).
+
+  30 Nov 2008; Markus Meier <maekke@gentoo.org> surfraw-2.2.3.ebuild:
+  amd64/x86 stable, bug #249108
+
+  29 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  surfraw-2.2.3.ebuild:
+  ppc stable, bug #249108
+
+  14 Sep 2008; Jeroen Roovers <jer@gentoo.org> -surfraw-2.1.5.ebuild:
+  Remove old.
+
+*surfraw-2.2.3 (14 Sep 2008)
+
+  14 Sep 2008; Jeroen Roovers <jer@gentoo.org> +surfraw-2.2.3.ebuild:
+  Version bump.
+
+  22 Aug 2008; Markus Meier <maekke@gentoo.org> surfraw-2.2.2.ebuild:
+  amd64/x86 stable, bug #235479
+
+  22 Aug 2008; Friedrich Oslage <bluebird@gentoo.org> surfraw-2.2.2.ebuild:
+  Stable on sparc, bug #235479
+
+  22 Aug 2008; nixnut <nixnut@gentoo.org> surfraw-2.2.2.ebuild:
+  Stable on ppc wrt bug 235479
+
+  22 Aug 2008; Jeroen Roovers <jer@gentoo.org> surfraw-2.2.2.ebuild:
+  Stable for HPPA (bug #235479).
+
+  11 Jul 2008; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Take up maintainership.
+
+*surfraw-2.2.2 (11 Jul 2008)
+
+  11 Jul 2008; Jeroen Roovers <jer@gentoo.org> -surfraw-1.0.7.ebuild,
+  surfraw-2.1.5.ebuild, +surfraw-2.2.2.ebuild:
+  Version bump thanks to Simon Ernst and James Rowe (bug #191382). Remove
+  oldest version. Do not quote A. Marked ~hppa too.
+
+  15 Jun 2008; Zac Medico <zmedico@gentoo.org> surfraw-2.1.5.ebuild:
+  Bug #226505 - For compatibility with phase execution order in
+  >=portage-2.1.5, call has_version inside pkg_preinst instead of
+  pkg_postinst.
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing seemant from metadata.xml as per #202469. Assigning to
+  maintainer-needed.
+
+  13 Oct 2007; Seemant Kulleen <seemant@gentoo.org> -surfraw-2.1.1.ebuild,
+  -surfraw-2.1.4.ebuild, surfraw-2.1.5.ebuild:
+  no more linking to compressed manpages. Thanks to James for the report and
+  the fix.
+
+  22 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  surfraw-2.1.5.ebuild:
+  Stable on ppc wrt bug #158484.
+
+  20 Dec 2006; Steve Dibb <beandog@gentoo.org> surfraw-2.1.5.ebuild:
+  amd64 stable, bug 158484
+
+  19 Dec 2006; Christian Faulhammer <opfer@gentoo.org> surfraw-2.1.5.ebuild:
+  stable x86, bug #158484
+
+  18 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> surfraw-2.1.5.ebuild:
+  Stable on sparc wrt #158484
+
+*surfraw-2.1.5 (20 Oct 2006)
+
+  20 Oct 2006; Seemant Kulleen <seemant@gentoo.org>
+  +files/surfraw-2.1.5-gentoo_pkg_tools.patch, +surfraw-2.1.5.ebuild:
+  Version bump thanks to James Rowe in bug #150945
+
+  06 Jun 2006; Seemant Kulleen <seemant@gentoo.org> metadata.xml:
+  Added long description, thanks to James in bug #135489
+
+*surfraw-2.1.4 (31 Mar 2006)
+
+  31 Mar 2006; Seemant Kulleen <seemant@gentoo.org> -surfraw-2.1.0.1.ebuild,
+  +surfraw-2.1.4.ebuild:
+  Version bump, thanks to Jay in bug #127549
+
+*surfraw-2.1.1 (19 Oct 2005)
+
+  19 Oct 2005; Seemant Kulleen <seemant@gentoo.org>
+  +files/surfraw-gentoo_pkg_tools.patch, -surfraw-2.0.2.1.ebuild,
+  surfraw-2.1.0.1.ebuild, +surfraw-2.1.1.ebuild:
+  version bump, thanks to James Rowe (the real maintainer) in bug #109330
+
+*surfraw-2.1.0.1 (10 May 2005)
+
+  10 May 2005; Seemant Kulleen <seemant@gentoo.org> +surfraw-2.1.0.1.ebuild:
+  Version bump thanks to: James Rowe <jnrowe@ukfsn.org> in bug #90968
+
+*surfraw-2.0.2.1 (19 Apr 2005)
+
+  19 Apr 2005; Seemant Kulleen <seemant@gentoo.org> +metadata.xml,
+  +surfraw-2.0.2.1.ebuild:
+  version bump, with many bug fixes, including FHS'ness. Thanks very very much
+  to: James Rowe <jnrowe@ukfsn.org> in bug #88454
+
+*surfraw-1.0.7 (18 Mar 2005)
+
+  18 Mar 2005; Seemant Kulleen <seemant@gentoo.org> +surfraw-1.0.7.ebuild:
+  Moved from net-www/surfraw to www-client/surfraw.
+
+  02 Oct 2004; Markus Nigbur <pyrania@gentoo.org> surfraw-1.0.7.ebuild:
+  Removed unneeded S=, added IUSE.
+
+  30 Jun 2004; David Holm <dholm@gentoo.org> surfraw-1.0.7.ebuild:
+  Added to ~ppc.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*surfraw-1.0.7 (4 Aug 2002)
+
+  4 August 2002; Sascha Schwabbauer <cybersystem@gentoo.org> ChangeLog, surfraw-1.0.7.ebuild, files/digest-surfraw-1.0.7 :
+
+  Initial version in Portage now.
+  Initial ebuild contributed by mikepolniak <mikpolniak@adelphia.net>

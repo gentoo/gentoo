@@ -1,0 +1,124 @@
+# ChangeLog for app-text/psutils
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/psutils/ChangeLog,v 1.39 2013/04/14 16:52:27 ulm Exp $
+
+  14 Apr 2013; Ulrich Müller <ulm@gentoo.org> -psutils-1.17.ebuild,
+  -psutils-1.17-r1.ebuild:
+  Remove old.
+
+  14 Apr 2013; Agostino Sarubbo <ago@gentoo.org> psutils-1.17-r2.ebuild:
+  Stable for sh, wrt bug #460618
+
+  13 Apr 2013; Agostino Sarubbo <ago@gentoo.org> psutils-1.17-r2.ebuild:
+  Stable for s390, wrt bug #460618
+
+  12 Apr 2013; Agostino Sarubbo <ago@gentoo.org> psutils-1.17-r2.ebuild:
+  Stable for ia64, wrt bug #460618
+
+  12 Apr 2013; Agostino Sarubbo <ago@gentoo.org> psutils-1.17-r2.ebuild:
+  Stable for alpha, wrt bug #460618
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> psutils-1.17-r2.ebuild:
+  Stable for x86, wrt bug #460618
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> psutils-1.17-r2.ebuild:
+  Stable for ppc64, wrt bug #460618
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> psutils-1.17-r2.ebuild:
+  Stable for ppc, wrt bug #460618
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> psutils-1.17-r2.ebuild:
+  Stable for hppa, wrt bug #460618
+
+  02 Apr 2013; Chema Alonso <nimiux@gentoo.org> psutils-1.17-r2.ebuild:
+  Stable for amd64 wrt bug #460618
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> psutils-1.17-r2.ebuild:
+  Stable for arm, wrt bug #460618
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> psutils-1.17-r2.ebuild:
+  Stable for sparc, wrt bug #460618
+
+*psutils-1.17-r2 (12 Dec 2012)
+
+  12 Dec 2012; Ulrich Müller <ulm@gentoo.org> +psutils-1.17-r2.ebuild,
+  +files/psutils-1.17-no-fixmacps.patch:
+  Non-maintainer commit. Switch to tarball provided by Debian; the original
+  one contained files md*.ps that are not distributable. The fixmacps command
+  that was using them is therefore no longer available. Fixes bug 440938.
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> psutils-1.17-r1.ebuild:
+  keyword ~amd64-fbsd
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> psutils-1.17.ebuild:
+  Drop to ~mips
+
+  02 Oct 2010; Fabian Groffen <grobian@gentoo.org> psutils-1.17-r1.ebuild:
+  Marked ~x64-macos, bug #333981
+
+  22 Feb 2010; Jonathan Callen <abcd@gentoo.org> psutils-1.17-r1.ebuild:
+  Transfer prefix keywords, bump EAPI
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> psutils-1.17.ebuild,
+  psutils-1.17-r1.ebuild:
+  Remove virtual/libc
+
+*psutils-1.17-r1 (04 Jun 2008)
+
+  04 Jun 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/psutils-1.17-ldflags.patch, +psutils-1.17-r1.ebuild:
+  Dont ignore ldflags, bug #209707
+
+  04 Jun 2008; Alexis Ballier <aballier@gentoo.org> metadata.xml:
+  add tex as herd, not optimal but better than noone
+
+  25 May 2006; Diego Pettenò <flameeyes@gentoo.org> +metadata.xml,
+  psutils-1.17.ebuild:
+  Fix quoting, make use of the right CC value, use emake instead of make
+  (parallel make works), add maintainer-needed metadata.
+
+  02 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> psutils-1.17.ebuild:
+  Add ~x86-fbsd keyword.
+
+  27 Jun 2005; Lina Pezzella <j4rg0n@gentoo.org> psutils-1.17.ebuild:
+  Stable ppc-macos
+
+  10 Apr 2005; Lina Pezzella <j4rg0n@gentoo.org> psutils-1.17.ebuild:
+  Testing ppc-macos. Bug #86079
+
+  29 Aug 2004; Seemant Kulleen <seemant@gentoo.org> psutils-1.17.ebuild:
+  DESCRIPTION spelling fix thanks to: Tim Cera <timcera@earthlink.net> in bug
+  #62158
+
+  17 Jul 2004; Tom Gall <tgall@gentoo.org> psutils-1.17.ebuild:
+  stable on ppc64, bug #55805
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> psutils-1.17.ebuild:
+  virtual/glibc -> virtual/libc
+
+  28 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> psutils-1.17.ebuild:
+  Stable on mips
+
+  07 Mar 2004; Bret Curtis <psi29a@gentoo.org> psutils-1.17.ebuild:
+  Added ~mips to KEYWORDS.
+
+  23 May 2003; Aron Griffis <agriffis@gentoo.org> psutils-1.17.ebuild:
+  Mark stable on alpha
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*psutils-1.17 (1 Feb 2002)
+
+  15 Nov 2003; Guy Martin <gmsoft@gentoo.org> psutils-1.17.ebuild :
+  Added hppa to KEYWORDS.
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> psutils-1.17.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

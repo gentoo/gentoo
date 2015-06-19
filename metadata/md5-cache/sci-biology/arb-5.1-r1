@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=app-text/sablotron media-libs/libpng media-libs/tiff www-client/lynx x11-libs/libXaw x11-libs/libXpm x11-libs/motif:0 opengl? ( media-libs/glew media-libs/freeglut || ( media-libs/mesa[motif] ( media-libs/mesa x11-libs/libGLw ) ) )
+DESCRIPTION=Tools for DNA/RNA sequence database handling and data analysis, phylogenetic analysis
+EAPI=2
+HOMEPAGE=http://www.arb-home.de/
+IUSE=+opengl
+KEYWORDS=~amd64 ~x86
+LICENSE=arb
+RDEPEND=app-text/sablotron media-libs/libpng media-libs/tiff www-client/lynx x11-libs/libXaw x11-libs/libXpm x11-libs/motif:0 opengl? ( media-libs/glew media-libs/freeglut || ( media-libs/mesa[motif] ( media-libs/mesa x11-libs/libGLw ) ) ) sci-visualization/gnuplot
+SLOT=0
+SRC_URI=http://download.arb-home.de/release/arb_5.1/arbsrc.tgz -> arb-5.1.tgz mirror://gentoo/arb-5.1-glibc2.10.patch.bz2 http://dev.gentoo.org/~jlec/arb-5.1-linker.patch.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9ffd1cb11694277f1596ce2364acf591

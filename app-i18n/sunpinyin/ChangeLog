@@ -1,0 +1,86 @@
+# ChangeLog for app-i18n/sunpinyin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/sunpinyin/ChangeLog,v 1.15 2015/05/01 05:52:40 jer Exp $
+
+  01 May 2015; Jeroen Roovers <jer@gentoo.org>
+  sunpinyin-2.0.4_pre20130108.ebuild:
+  Stable for PPC64 (bug #540844).
+
+  19 Apr 2015; Anthony G. Basile <blueness@gentoo.org>
+  sunpinyin-2.0.3-r1.ebuild, sunpinyin-2.0.4_pre20130108.ebuild:
+  Keyword ~ppc and ~ppc64.  Bug #498686.
+
+  08 Mar 2014; Pacho Ramos <pacho@gentoo.org>
+  sunpinyin-2.0.4_pre20130108.ebuild:
+  amd64 stable, bug 498688
+
+  31 Jan 2013; Ben de Groot <yngwin@gentoo.org>
+  sunpinyin-2.0.4_pre20130108.ebuild:
+  Needs python:2.7, bug #454754
+
+*sunpinyin-2.0.4_pre20130108 (30 Jan 2013)
+
+  30 Jan 2013; Ben de Groot <yngwin@gentoo.org>
+  +sunpinyin-2.0.4_pre20130108.ebuild, metadata.xml:
+  Add snapshot, with help from Wang Jiajun (gentoo-zh overlay).
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> sunpinyin-2.0.3-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  18 Apr 2012; Mu Qiao <qiaomuf@gentoo.org> sunpinyin-2.0.3-r1.ebuild,
+  +files/sunpinyin-2.0.3-gcc-4.7.patch:
+  Fix for gcc-4.7 and multilib-strict check (bug #412389)
+
+  Thanks to Alphat-PC for the help.
+
+  17 Apr 2011; Mu Qiao <qiaomuf@gentoo.org> sunpinyin-2.0.3-r1.ebuild,
+  metadata.xml:
+  Fix bug #363759, remove useless use flags in metadata.xml
+
+*sunpinyin-2.0.3-r1 (26 Feb 2011)
+
+  26 Feb 2011; Mu Qiao <qiaomuf@gentoo.org> -sunpinyin-2.0.3.ebuild,
+  +sunpinyin-2.0.3-r1.ebuild, +files/sunpinyin-2.0.3-force-switch.patch:
+  Include upstream patch.
+
+  20 Feb 2011; Mu Qiao <qiaomuf@gentoo.org> sunpinyin-2.0.3.ebuild:
+  Fix compilation for userpriv, thanks to Alphat-PC.
+
+*sunpinyin-2.0.3 (20 Feb 2011)
+
+  20 Feb 2011; Mu Qiao <qiaomuf@gentoo.org> +sunpinyin-2.0.3.ebuild:
+  Version bump for sunpinyin wrt bug #355575
+
+*sunpinyin-2.0.2-r1 (08 Jan 2011)
+
+  08 Jan 2011; Mu Qiao <qiaomuf@gentoo.org> +sunpinyin-2.0.2-r1.ebuild,
+  +files/sunpinyin-2.0.2-ldflags.patch:
+  Fix ldflags wrt bug #351017
+
+*sunpinyin-2.0.2 (02 Dec 2010)
+
+  02 Dec 2010; <gentoo@gentoo.org> +sunpinyin-2.0.2.ebuild:
+  Version bumped.
+
+  04 May 2010; MATSUU Takuto <matsuu@gentoo.org> sunpinyin-2.0.1.ebuild:
+  Fixed checking wrong use flag, bug #318373.
+
+*sunpinyin-2.0.1 (04 May 2010)
+
+  04 May 2010; MATSUU Takuto <matsuu@gentoo.org>
+  -ibus-sunpinyin-2.0_rc3.ebuild, +sunpinyin-2.0.1.ebuild,
+  +files/sunpinyin-2.0.1-mkdir.patch, metadata.xml:
+  Version bumped. Moved from app-i18n/ibus-sunpinyin to app-i18n/sunpinyin,
+  bug #314769.
+
+*ibus-sunpinyin-2.0_rc3 (19 Nov 2009)
+
+  19 Nov 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-sunpinyin-2.0_rc3.ebuild, -ibus-sunpinyin-2.0.20091104.ebuild:
+  Version bumped, bug #292648. Removed old version.
+
+*ibus-sunpinyin-2.0.20091104 (08 Nov 2009)
+
+  08 Nov 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-sunpinyin-2.0.20091104.ebuild, +metadata.xml:
+  Initial import, bug #288566. The ebuild was submitted by Hubert Star.

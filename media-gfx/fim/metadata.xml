@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>xmw@gentoo.org</email>
+<name>Michael Weber</name>
+</maintainer>
+<use>
+    <flag name="dia">Enable DIA file support via app-office/dia</flag>
+    <flag name="graphicsmagick">Enable GraphicsMagick library support</flag>
+    <flag name="imagemagick">Use convert from media-gfx/imagemagick as fallback file opener</flag>
+    <flag name="xfig">Enable FIG file support via media-gfx/xfig</flag>
+</use>
+</pkgmetadata>

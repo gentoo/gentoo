@@ -1,0 +1,38 @@
+# ChangeLog for dev-php/pecl-taint
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-taint/ChangeLog,v 1.6 2014/09/30 23:45:58 grknight Exp $
+
+*pecl-taint-1.2.2-r1 (30 Sep 2014)
+
+  30 Sep 2014; Brian Evans <grknight@gentoo.org> +pecl-taint-1.2.2-r1.ebuild,
+  -pecl-taint-0.5.3.ebuild, -pecl-taint-1.2.2.ebuild:
+  Revbump to drop 5.3 support; drop old
+
+*pecl-taint-1.2.2 (03 Jul 2013)
+
+  03 Jul 2013; Matti Bickel <mabi@gentoo.org> +pecl-taint-1.2.2.ebuild,
+  -pecl-taint-0.4.1.ebuild:
+  version bump; remove old
+
+*pecl-taint-0.5.3 (08 May 2012)
+
+  08 May 2012; Ole Markus With <olemarkus@gentoo.org> +pecl-taint-0.5.3.ebuild,
+  -pecl-taint-0.4.0.ebuild:
+  Version bump
+
+*pecl-taint-0.4.1 (26 Feb 2012)
+
+  26 Feb 2012; Ole Markus With <olemarkus@gentoo.org> +pecl-taint-0.4.1.ebuild,
+  -pecl-taint-0.3.0.ebuild:
+  Version bump
+
+*pecl-taint-0.4.0 (20 Feb 2012)
+
+  20 Feb 2012; Ole Markus With <olemarkus@gentoo.org> +pecl-taint-0.4.0.ebuild:
+  Version bump
+
+*pecl-taint-0.3.0 (18 Feb 2012)
+
+  18 Feb 2012; Ole Markus With <olemarkus@gentoo.org> +metadata.xml,
+  +pecl-taint-0.3.0.ebuild:
+  Committing initial ebuild, version 0.3.0

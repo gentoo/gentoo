@@ -1,0 +1,12 @@
+# ChangeLog for net-wireless/lorcon-old
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/lorcon-old/ChangeLog,v 1.2 2013/04/19 13:51:43 zerochaos Exp $
+
+  19 Apr 2013; Rick Farina <zerochaos@gentoo.org> lorcon-old-9999.ebuild:
+  bump to EAPI5
+
+*lorcon-old-9999 (19 Apr 2013)
+
+  19 Apr 2013; Rick Farina <zerochaos@gentoo.org> +lorcon-old-9999.ebuild,
+  +metadata.xml:
+  initial commit of lorcon-old

@@ -1,0 +1,32 @@
+$OpenBSD: patch-Source_WebKit2_Platform_IPC_Connection_h,v 1.2 2014/07/14 21:13:31 ajacoutot Exp $
+https://bugs.webkit.org/show_bug.cgi?id=130837
+--- Source/WebKit2/Platform/IPC/Connection.h.orig	Fri Jul  4 11:06:55 2014
++++ Source/WebKit2/Platform/IPC/Connection.h	Mon Jul 14 19:31:35 2014
+@@ -216,7 +216,11 @@ class Connection : public ThreadSafeRefCounted<Connect
+ 
+     Client* m_client;
+     bool m_isServer;
++#if CPU(PPC)
++    uint64_t m_syncRequestID;
++#else
+     std::atomic<uint64_t> m_syncRequestID;
++#endif
+ 
+     bool m_onlySendMessagesAsDispatchWhenWaitingForSyncReplyWhenProcessingSuchAMessage;
+     bool m_shouldExitOnSyncMessageSendFailure;
+$OpenBSD: patch-Source_WebKit2_UIProcess_StatisticsRequest_cpp,v 1.3 2014/03/27 22:03:48 landry Exp $
+https://bugs.webkit.org/show_bug.cgi?id=130837
+--- Source/WebKit2/UIProcess/StatisticsRequest.cpp.orig	Thu Mar 27 21:13:49 2014
++++ Source/WebKit2/UIProcess/StatisticsRequest.cpp	Thu Mar 27 21:14:23 2014
+@@ -44,7 +44,11 @@ StatisticsRequest::~StatisticsRequest()
+ 
+ uint64_t StatisticsRequest::addOutstandingRequest()
+ {
++#if CPU(PPC)
++    static int64_t uniqueRequestID;
++#else
+     static std::atomic<int64_t> uniqueRequestID;
++#endif
+ 
+     uint64_t requestID = ++uniqueRequestID;
+     m_outstandingRequests.add(requestID);

@@ -1,0 +1,11 @@
+DEFINED_PHASES=prepare
+DESCRIPTION=A jar program written in C
+EAPI=5
+HOMEPAGE=https://savannah.nongnu.org/projects/fastjar
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris
+LICENSE=GPL-2
+RDEPEND=!<=dev-java/kaffe-1.1.7-r5
+SLOT=0
+SRC_URI=http://download.savannah.nongnu.org/releases/fastjar/fastjar-0.98.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9d9c006d9310fa128c40b8a882a4a6da

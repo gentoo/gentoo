@@ -1,0 +1,24 @@
+# ChangeLog for app-arch/bloscpack
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/bloscpack/ChangeLog,v 1.5 2015/06/05 11:46:33 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> bloscpack-0.5.0.ebuild,
+  bloscpack-0.6.0.ebuild:
+  Remove old Python implementations
+
+*bloscpack-0.6.0 (14 Apr 2014)
+
+  14 Apr 2014; Sébastien Fabbro <bicatali@gentoo.org> +bloscpack-0.6.0.ebuild:
+  Version bump
+
+*bloscpack-0.5.0 (06 Feb 2014)
+
+  06 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org> +bloscpack-0.5.0.ebuild,
+  +metadata.xml:
+  Initial import

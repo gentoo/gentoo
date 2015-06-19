@@ -1,0 +1,25 @@
+From c01874c7770f4f56c031d7463156e03f2945e015 Mon Sep 17 00:00:00 2001
+From: Dmitry Roshchin <dmitry@roshchin.org>
+Date: Mon, 27 Oct 2014 16:19:32 +0300
+Subject: [PATCH] Fix build with boost 1.56
+
+---
+ src/parser/string_pool_test.cpp |    2 ++
+ 1 files changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/src/parser/string_pool_test.cpp b/src/parser/string_pool_test.cpp
+index ad7d7c8..0d32c62 100644
+--- a/src/parser/string_pool_test.cpp
++++ b/src/parser/string_pool_test.cpp
+@@ -5,6 +5,8 @@
+  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+  */
+ 
++#include <iostream>
++
+ #include "orcus/string_pool.hpp"
+ #include "orcus/pstring.hpp"
+ 
+-- 
+1.7.1
+

@@ -1,0 +1,53 @@
+# ChangeLog for sci-libs/ceres-solver
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/ceres-solver/ChangeLog,v 1.9 2014/06/09 05:27:34 patrick Exp $
+
+  09 Jun 2014; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove unneeded useflag description from metadata.xml
+
+*ceres-solver-1.9.0 (09 Jun 2014)
+
+  09 Jun 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  +ceres-solver-1.9.0.ebuild, +files/ceres-solver-1.9.0-underlink.patch,
+  -ceres-solver-1.7.0.ebuild:
+  Version bump. Updated home page, doc building, added patch for underlinking
+  cholmod
+
+*ceres-solver-1.8.0 (14 Nov 2013)
+
+  14 Nov 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +ceres-solver-1.8.0.ebuild, -ceres-solver-1.4.0.ebuild,
+  -ceres-solver-1.6.0.ebuild, -files/ceres-solver-1.4.0-respect-libdir.patch,
+  -files/ceres-solver-1.4.0-test-no-suitesparse.patch, metadata.xml:
+  Version bump. Separate cxsparse (simpler library) from sparse flag, add lapack
+  flag, adapt changes upstream to be more cmake friendly
+
+*ceres-solver-1.7.0 (23 Oct 2013)
+
+  23 Oct 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +ceres-solver-1.7.0.ebuild:
+  Version bump
+
+*ceres-solver-1.6.0 (22 May 2013)
+
+  22 May 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +ceres-solver-1.6.0.ebuild:
+  Version bump
+
+  04 Mar 2013; Sébastien Fabbro <bicatali@gentoo.org> ceres-solver-1.4.0.ebuild:
+  Avoid forced downloading of latex style file minted.sty (bug #460170)
+
+  11 Jan 2013; Sébastien Fabbro <bicatali@gentoo.org> ceres-solver-1.4.0.ebuild,
+  metadata.xml:
+  Fixed for generic pkg-config
+
+  11 Jan 2013; Justin Lecher <jlec@gentoo.org> ceres-solver-1.4.0.ebuild,
+  metadata.xml:
+  Add missing dep on dev-tex/minted, #451012
+
+*ceres-solver-1.4.0 (19 Nov 2012)
+
+  19 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +ceres-solver-1.4.0.ebuild, +files/ceres-solver-1.4.0-respect-libdir.patch,
+  +files/ceres-solver-1.4.0-test-no-suitesparse.patch, +metadata.xml:
+  Initial import

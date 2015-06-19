@@ -1,0 +1,15 @@
+ src/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 8866ac0..f419141 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -100,6 +100,7 @@ target_link_libraries(
+     optimized ${QT_QTDBUS_LIBRARY_RELEASE}
+     optimized ${QT_QTXML_LIBRARY_RELEASE}
+     ${DBUS_LIBRARIES}
++    ${X11_LIBRARIES}
+ )
+ 
+ install(TARGETS ibus-qt

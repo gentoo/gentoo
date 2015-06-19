@@ -1,0 +1,81 @@
+# ChangeLog for x11-themes/korilla
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/korilla/ChangeLog,v 1.21 2012/08/22 12:27:30 johu Exp $
+
+  22 Aug 2012; Johannes Huber <johu@gentoo.org> -korilla-1.3.4-r1.ebuild:
+  Remove old.
+
+  22 Aug 2012; Michael Weber <xmw@gentoo.org> korilla-1.3.5.ebuild:
+  ppc stable (bug 412681).
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> korilla-1.3.4-r1.ebuild,
+  korilla-1.3.5.ebuild:
+  Drop sparc keywords
+
+  22 Apr 2012; Markus Meier <maekke@gentoo.org> korilla-1.3.5.ebuild:
+  x86 stable, bug #412681
+
+  21 Apr 2012; Agostino Sarubbo <ago@gentoo.org> korilla-1.3.5.ebuild:
+  Stable for amd64, wrt bug #412681
+
+  28 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> korilla-1.3.5.ebuild:
+  Add binchecks and strip restricts, use doins rather than cp to copy the files.
+
+  28 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> -korilla-1.3.4.ebuild:
+  Remove broken ebuild.
+
+  28 Jul 2006; Danny van Dyk <kugelfang@gentoo.org> korilla-1.3.4-r1.ebuild:
+  Marked stable on amd64.
+
+  24 Jul 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  korilla-1.3.4-r1.ebuild:
+  Stable on sparc wrt #141456
+
+  23 Jul 2006; Joshua Jackson <tsunam@gentoo.org> korilla-1.3.4-r1.ebuild:
+  Stable x86; bug #141456
+
+  23 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> korilla-1.3.5.ebuild:
+  Add ~x86-fbsd keyword.
+
+*korilla-1.3.5 (23 Jul 2006)
+
+  23 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  korilla-1.3.4-r1.ebuild, +korilla-1.3.5.ebuild:
+  Version bump and update of homepage by Daniel Webert in bugs #141464 and
+  #141456.
+
+  23 Jul 2006; Luca Barbato <lu_zero@gentoo.org> korilla-1.3.4-r1.ebuild:
+  Marked ppc
+
+*korilla-1.3.4-r1 (23 Jul 2006)
+
+  23 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> metadata.xml,
+  +korilla-1.3.4-r1.ebuild:
+  Revision bump, by removing the useless inheritance of kde and installing in
+  /usr/share instead of in KDE's prefix. Also point to Gentoo mirrors as the
+  original site is now unavailable.
+
+  03 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> korilla-1.3.4.ebuild:
+  Stable on sparc
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> korilla-1.3.3.ebuild,
+  korilla-1.3.4.ebuild:
+  sync IUSE
+
+  28 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> korilla-1.3.3.ebuild,
+  korilla-1.3.4.ebuild:
+  clean obsolete comment
+
+  19 Mar 2004; Jason Wever <weeve@gentoo.org> korilla-1.3.4.ebuild:
+  Added ~sparc keyword.
+
+*korilla-1.3.4 (16 Nov 2003)
+
+  16 Nov 2003; Troy Dack <tad@gentoo.org> korilla-1.3.4.ebuild:
+  Version bump. Closes Bug #33483
+
+*korilla-1.3.3 (12 Nov 2003)
+
+  12 Nov 2003; Troy Dack <tad@gentoo.org> korilla-1.3.3.ebuild, metadata.xml:
+  Initial ebuild. Thanks to Alkis Evlogimenos <alkis_e@hotmail.com> for his
+  persistence. Closes Bug #32761.

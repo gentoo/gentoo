@@ -1,0 +1,1630 @@
+# ChangeLog for x11-libs/pango
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/pango/ChangeLog,v 1.431 2015/03/03 11:48:31 dlan Exp $
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> pango-1.36.8.ebuild:
+  add arm64 support, tested on A53 board
+
+  02 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pango-1.36.8.ebuild:
+  Stable for alpha, wrt bug #529964
+
+  01 Jan 2015; Markus Meier <maekke@gentoo.org> pango-1.36.8.ebuild:
+  arm stable, bug #529964
+
+  01 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pango-1.36.8.ebuild:
+  Stable for sparc, wrt bug #529964
+
+  31 Dec 2014; Agostino Sarubbo <ago@gentoo.org> pango-1.36.8.ebuild:
+  Stable for ia64, wrt bug #529964
+
+  30 Dec 2014; Agostino Sarubbo <ago@gentoo.org> pango-1.36.8.ebuild:
+  Stable for ppc64, wrt bug #529964
+
+  28 Dec 2014; Agostino Sarubbo <ago@gentoo.org> pango-1.36.8.ebuild:
+  Stable for ppc, wrt bug #529964
+
+  19 Dec 2014; Pacho Ramos <pacho@gentoo.org> pango-1.36.8.ebuild:
+  amd64 stable, bug 529964
+
+  18 Dec 2014; Pacho Ramos <pacho@gentoo.org> pango-1.36.8.ebuild:
+  x86 stable, bug 529964
+
+  12 Dec 2014; Jeroen Roovers <jer@gentoo.org> pango-1.36.8.ebuild:
+  Stable for HPPA (bug #529964).
+
+  11 Oct 2014; Markus Meier <maekke@gentoo.org> pango-1.36.5.ebuild:
+  arm stable, bug #512012
+
+*pango-1.36.8 (03 Oct 2014)
+
+  03 Oct 2014; Pacho Ramos <pacho@gentoo.org> +pango-1.36.8.ebuild:
+  Version bump
+
+  15 Sep 2014; Agostino Sarubbo <ago@gentoo.org> pango-1.36.5.ebuild:
+  Stable for sparc, wrt bug #512012
+
+*pango-1.36.7 (04 Sep 2014)
+
+  04 Sep 2014; Pacho Ramos <pacho@gentoo.org> +pango-1.36.7.ebuild,
+  -files/pango-1.26.0-lib64.patch, -files/pango-1.30.1-AM_CONFIG_HEADER.patch,
+  -files/pango-1.30.1-config_get_key_system-declaration.patch,
+  -files/pango-1.30.1-coretext-hash.patch,
+  -files/pango-1.32.5-AM_CONFIG_HEADER.patch, -pango-1.36.3-r2.ebuild:
+  Version bump, stop installing manually the cache file under /etc using
+  upstream way of generating the file in proper place under /usr/lib that
+  handles all multilib magic by itself. Drop old.
+
+  25 Aug 2014; Agostino Sarubbo <ago@gentoo.org> pango-1.36.5.ebuild:
+  Stable for alpha, wrt bug #512012
+
+  23 Aug 2014; Agostino Sarubbo <ago@gentoo.org> pango-1.36.5.ebuild:
+  Stable for ia64, wrt bug #512012
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org> pango-1.36.5.ebuild:
+  Stable for ppc64, wrt bug #512012
+
+  07 Aug 2014; Jeroen Roovers <jer@gentoo.org> pango-1.36.5.ebuild:
+  Stable for HPPA (bug #512012).
+
+  28 Jul 2014; Agostino Sarubbo <ago@gentoo.org> pango-1.36.5.ebuild:
+  Stable for ppc, wrt bug #512012
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> pango-1.36.5.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> pango-1.36.5.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  26 Jun 2014; Pacho Ramos <pacho@gentoo.org> pango-1.36.5.ebuild:
+  Raise gtk-doc dependency (#503510 by headcrabextra), handle ROOT in
+  pango.modules generation (#486214 by LeeL and Fabian Groffen)
+
+*pango-1.36.5 (26 Jun 2014)
+
+  26 Jun 2014; Pacho Ramos <pacho@gentoo.org> +pango-1.36.5.ebuild,
+  -pango-1.30.1.ebuild:
+  Version bump, drop old
+
+  24 Jun 2014; Michał Górny <mgorny@gentoo.org> pango-1.36.3-r2.ebuild:
+  Lower dev-libs/glib dep to first known EAPI=5 version, requested by Funtoo for
+  GNOME 3.6.
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> pango-1.36.3-r2.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  26 May 2014; Michał Górny <mgorny@gentoo.org> pango-1.36.3-r2.ebuild:
+  Unconditionally use ${CHOST}-pango-querymodules since prefixing is now
+  unconditional.
+
+  28 Apr 2014; Michał Górny <mgorny@gentoo.org> pango-1.36.3-r2.ebuild:
+  Use multilib_native_use*.
+
+*pango-1.30.1 (27 Apr 2014)
+
+  27 Apr 2014; Pacho Ramos <pacho@gentoo.org> +pango-1.30.1.ebuild:
+  Recover old version needed on arches without no stable pangox-compat still
+
+  27 Apr 2014; Pacho Ramos <pacho@gentoo.org> -pango-1.30.1.ebuild,
+  -pango-1.32.5.ebuild, -pango-1.36.2.ebuild:
+  drop old
+
+  21 Apr 2014; Agostino Sarubbo <ago@gentoo.org> pango-1.36.3.ebuild:
+  Stable for arm, wrt bug #507568
+
+*pango-1.36.3-r2 (20 Apr 2014)
+
+  20 Apr 2014; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -pango-1.36.3-r1.ebuild, +pango-1.36.3-r2.ebuild:
+  Unbreak pango-querymodules postinst call for non-multilib case (bug #508278,
+  thanks to Robert Förster).
+
+  20 Apr 2014; Agostino Sarubbo <ago@gentoo.org> pango-1.36.3.ebuild:
+  Stable for x86, wrt bug #507568
+
+  19 Apr 2014; Agostino Sarubbo <ago@gentoo.org> pango-1.36.3.ebuild:
+  Stable for sparc, wrt bug #507568
+
+  18 Apr 2014; Agostino Sarubbo <ago@gentoo.org> pango-1.36.3.ebuild:
+  Stable for alpha, wrt bug #507568
+
+  17 Apr 2014; Jeroen Roovers <jer@gentoo.org> pango-1.36.3.ebuild:
+  Stable for HPPA (bug #507568).
+
+  17 Apr 2014; Agostino Sarubbo <ago@gentoo.org> pango-1.36.3.ebuild:
+  Stable for ia64, wrt bug #507568
+
+  16 Apr 2014; Agostino Sarubbo <ago@gentoo.org> pango-1.36.3.ebuild:
+  Stable for ppc64, wrt bug #507568
+
+  14 Apr 2014; Agostino Sarubbo <ago@gentoo.org> pango-1.36.3.ebuild:
+  Stable for ppc, wrt bug #507568
+
+  13 Apr 2014; Agostino Sarubbo <ago@gentoo.org> pango-1.36.3.ebuild:
+  Stable for amd64, wrt bug #507568
+
+*pango-1.36.3 (29 Mar 2014)
+*pango-1.36.3-r1 (29 Mar 2014)
+
+  29 Mar 2014; Pacho Ramos <pacho@gentoo.org> +pango-1.36.3-r1.ebuild,
+  +pango-1.36.3.ebuild, -pango-1.34.1.ebuild, -pango-1.36.1.ebuild,
+  -pango-1.36.2-r1.ebuild:
+  Version bump, drop old
+
+  28 Mar 2014; Jeroen Roovers <jer@gentoo.org> pango-1.36.2.ebuild:
+  Stable for HPPA (bug #499954).
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> pango-1.36.2.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> pango-1.36.2.ebuild:
+  amd64 stable, bug 499954
+
+*pango-1.36.2-r1 (01 Mar 2014)
+
+  01 Mar 2014; Michał Górny <mgorny@gentoo.org> +pango-1.36.2-r1.ebuild:
+  Introduce multilib support, bug #488868.
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> pango-1.36.2.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> pango-1.36.2.ebuild:
+  arch stable, bug 888
+
+*pango-1.36.2 (06 Feb 2014)
+
+  06 Feb 2014; Gilles Dartiguelongue <eva@gentoo.org> +pango-1.36.2.ebuild:
+  Version bump. Clean up old revisions.
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org> pango-1.32.5.ebuild,
+  pango-1.34.1.ebuild, pango-1.36.1.ebuild:
+  Add s390 love #469982.
+
+*pango-1.36.1 (23 Dec 2013)
+
+  23 Dec 2013; Gilles Dartiguelongue <eva@gentoo.org> -pango-1.34.0.ebuild,
+  +pango-1.36.1.ebuild, metadata.xml:
+  Version bump for Gnome 3.10. Clean up old revision.
+
+  22 Dec 2013; Jeroen Roovers <jer@gentoo.org> pango-1.34.1.ebuild:
+  Stable for HPPA (bug #478252).
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> pango-1.34.1.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> pango-1.34.1.ebuild:
+  amd64 stable, bug #478252
+
+  14 Nov 2013; Matt Turner <mattst88@gentoo.org> pango-1.32.5.ebuild:
+  alpha stable, bug 476364.
+
+  24 Oct 2013; Jeroen Roovers <jer@gentoo.org> pango-1.32.5.ebuild:
+  Stable for HPPA (bug #476364).
+
+  17 Oct 2013; Markus Meier <maekke@gentoo.org> pango-1.32.5.ebuild:
+  arm stable, bug #476364
+
+  09 Jun 2013; Mike Frysinger <vapier@gentoo.org> metadata.xml:
+  Add upstream CPE tag (security info) from ChromiumOS.
+
+  06 Jun 2013; Alexandre Rostovtsev <tetromino@gentoo.org> pango-1.32.5.ebuild,
+  pango-1.34.0.ebuild, pango-1.34.1.ebuild:
+  Depend on harfbuzz[glib,truetype] (bug #472478, thanks to Conrad Kostecki).
+
+  15 May 2013; Matt Turner <mattst88@gentoo.org> pango-1.32.5.ebuild,
+  pango-1.34.0.ebuild, pango-1.34.1.ebuild:
+  Added ~mips, bug 469982.
+
+*pango-1.34.1 (15 May 2013)
+
+  15 May 2013; Pacho Ramos <pacho@gentoo.org> +pango-1.34.1.ebuild:
+  Version bump
+
+  30 Apr 2013; Alexandre Rostovtsev <tetromino@gentoo.org> pango-1.30.1.ebuild,
+  pango-1.32.5.ebuild, +files/pango-1.30.1-AM_CONFIG_HEADER.patch,
+  +files/pango-1.32.5-AM_CONFIG_HEADER.patch:
+  Fix build failure with automake-1.13 (bug #467126, thanks to Alexandre et
+  al.)
+
+*pango-1.34.0 (28 Mar 2013)
+
+  28 Mar 2013; Pacho Ramos <pacho@gentoo.org> +pango-1.34.0.ebuild:
+  Version bump for Gnome 3.8
+
+  22 Feb 2013; Zac Medico <zmedico@gentoo.org> pango-1.32.5.ebuild:
+  Add ~arm-linux keyword.
+
+  08 Feb 2013; Agostino Sarubbo <ago@gentoo.org> pango-1.32.5.ebuild:
+  Add ~sh, wrt bug #449220
+
+  28 Jan 2013; Alexis Ballier <aballier@gentoo.org> pango-1.32.5.ebuild:
+  keyword ~amd64-fbsd
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> pango-1.32.5.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> pango-1.32.5.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> pango-1.32.5.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  28 Dec 2012; Fabian Groffen <grobian@gentoo.org> pango-1.32.5.ebuild:
+  Fix double prefix
+
+  24 Dec 2012; Jeroen Roovers <jer@gentoo.org> pango-1.32.5.ebuild:
+  Marked ~hppa (bug #447854).
+
+  23 Dec 2012; Agostino Sarubbo <ago@gentoo.org> pango-1.32.5.ebuild:
+  Add ~ppc64, wrt bug #447854
+
+*pango-1.32.5 (19 Dec 2012)
+
+  19 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +files/pango-1.32.1-lib64.patch, +pango-1.32.5.ebuild:
+  Version bump for gnome-3.6; now uses an external harfbuzz library and
+  supports Unicode 6.1. The pangox library was split off into a separate
+  package (pangox-compat). Keywords dropped due to harfbuzz dependency.
+
+  16 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org> metadata.xml:
+  Switch to global introspection USE flag.
+
+  17 Nov 2012; Pacho Ramos <pacho@gentoo.org> -pango-1.28.4.ebuild,
+  -pango-1.29.4.ebuild, pango-1.30.1.ebuild:
+  Show elog messages only when needed (#440554 by poletti.marco). Drop old.
+
+  28 Oct 2012; Raúl Porcel <armin76@gentoo.org> pango-1.30.1.ebuild:
+  ia64/s390/sh/sparc stable wrt #427544
+
+  17 Oct 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -pango-1.28.3-r1.ebuild, -files/pango-1.28.3-heap-corruption.patch,
+  -files/pango-1.28.3-malloc-failure.patch, pango-1.28.4.ebuild,
+  pango-1.29.4.ebuild, -pango-1.30.0.ebuild, pango-1.30.1.ebuild:
+  Drop useless USE=doc, it only regenerated documentation; fixes bug #357205,
+  thanks to Theo Chatzimichos et al. Remove test USE flag since it only served
+  to pull in dependencies for testing regenerated docs. Make mktemp call more
+  portable, thanks to Mart Raudsepp. Update license. Drop old.
+
+  06 Oct 2012; Anthony G. Basile <blueness@gentoo.org> pango-1.30.1.ebuild:
+  stable ppc ppc64, bug #427544
+
+  06 Oct 2012; Markus Meier <maekke@gentoo.org> pango-1.30.1.ebuild:
+  arm stable, bug #427544
+
+  04 Oct 2012; Agostino Sarubbo <ago@gentoo.org> pango-1.30.1.ebuild:
+  Stable for amd64, wrt bug #427544
+
+  03 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> pango-1.30.1.ebuild:
+  x86 stable wrt bug #427544
+
+  02 Oct 2012; Jeroen Roovers <jer@gentoo.org> pango-1.30.1.ebuild:
+  Stable for HPPA (bug #427544).
+
+  26 Sep 2012; Matt Turner <mattst88@gentoo.org> pango-1.30.1.ebuild:
+  Stable on alpha, bug 427544.
+
+  17 Jun 2012; Fabian Groffen <grobian@gentoo.org>
+  files/pango-1.30.1-config_get_key_system-declaration.patch,
+  pango-1.30.1.ebuild:
+  Update patch comments (committed upstream), use get_modname for module
+  extension name
+
+  16 Jun 2012; Fabian Groffen <grobian@gentoo.org>
+  +files/pango-1.30.1-config_get_key_system-declaration.patch,
+  pango-1.30.1.ebuild:
+  Add patch to fix QA abort on x64-macos due to missing function declaration
+
+*pango-1.30.1 (07 Jun 2012)
+
+  07 Jun 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +pango-1.30.1.ebuild, +files/pango-1.30.1-coretext-hash.patch:
+  Version bump, user configuration files are now in ~/.config/pango by default.
+
+  20 May 2012; Samuli Suominen <ssuominen@gentoo.org> pango-1.29.4.ebuild:
+  ppc stable wrt #407643
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> pango-1.28.3-r1.ebuild,
+  pango-1.28.4.ebuild, pango-1.29.4.ebuild, pango-1.30.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  28 Apr 2012; Alexis Ballier <aballier@gentoo.org> pango-1.30.0.ebuild:
+  keyword ~amd64-fbsd
+
+  25 Apr 2012; Fabio Erculiani <lxnay@gentoo.org> pango-1.28.3-r1.ebuild,
+  pango-1.28.4.ebuild, pango-1.29.4.ebuild, pango-1.30.0.ebuild:
+  sync pango-querymodules usage with emul-linux-x86-gtklibs
+
+  25 Apr 2012; Fabio Erculiani <lxnay@gentoo.org> pango-1.28.3-r1.ebuild,
+  pango-1.28.4.ebuild, pango-1.29.4.ebuild, pango-1.30.0.ebuild:
+  simplify pango-querymodules usage
+
+  25 Apr 2012; Fabio Erculiani <lxnay@gentoo.org> pango-1.28.3-r1.ebuild,
+  pango-1.28.4.ebuild:
+  fix pango-querymodules for 1.28.x
+
+  25 Apr 2012; Fabio Erculiani <lxnay@gentoo.org> pango-1.28.3-r1.ebuild,
+  pango-1.28.4.ebuild, pango-1.29.4.ebuild, pango-1.30.0.ebuild:
+  write pango.modules atomically
+
+  01 Apr 2012; Pacho Ramos <pacho@gentoo.org> pango-1.29.4.ebuild,
+  pango-1.30.0.ebuild:
+  Add a die statement to catch pango.modules generation problems like bug
+  #409741 by Nicolas Perrenoud.
+
+  01 Apr 2012; Raúl Porcel <armin76@gentoo.org> pango-1.29.4.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #407643
+
+*pango-1.30.0 (27 Mar 2012)
+
+  27 Mar 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +pango-1.30.0.ebuild:
+  Version bump with various bugfixes.
+
+  25 Mar 2012; Markus Meier <maekke@gentoo.org> pango-1.29.4.ebuild:
+  arm stable, bug #407643
+
+  23 Mar 2012; Jeroen Roovers <jer@gentoo.org> pango-1.29.4.ebuild:
+  Stable for HPPA (bug #407643).
+
+  16 Mar 2012; Jeff Horelick <jdhore@gentoo.org> pango-1.29.4.ebuild:
+  marked x86 per bug 407643
+
+  13 Mar 2012; Agostino Sarubbo <ago@gentoo.org> pango-1.29.4.ebuild:
+  Stable for amd64, wrt bug #407643
+
+  12 Mar 2012; Brent Baude <ranger@gentoo.org> pango-1.29.4.ebuild:
+  Marking pango-1.29.4 ppc64 stable for bug 407643
+
+  15 Feb 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  pango-1.28.3-r1.ebuild, pango-1.28.4.ebuild, pango-1.29.4.ebuild:
+  Don't call elibtoolize multiple times or before eautoreconf (bug #403695,
+  thanks to Kris Hepler for reporting).
+
+  30 Jan 2012; Pacho Ramos <pacho@gentoo.org> pango-1.29.4.ebuild:
+  REQUIRED_USE='doc? ( X )' due upstream bug #643802, move gnome2_src_prepare to
+  proper place.
+
+*pango-1.29.4 (19 Oct 2011)
+
+  19 Oct 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +pango-1.29.4.ebuild:
+  Add pango-1.29.4 (supposedly stable-ish, despite the odd minor version) from
+  the gnome overlay. Includes fix for bug #384671 (pango-querymodules usage
+  when
+  ROOT != /), thanks to vapier.
+
+  Notable changes: introspection improvements.
+
+  11 Jul 2011; Matt Turner <mattst88@gentoo.org> pango-1.28.4.ebuild:
+  Added ~mips, bug 364693
+
+  09 Jul 2011; Raúl Porcel <armin76@gentoo.org> pango-1.28.4.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #371320
+
+  06 Jul 2011; Mark Loeser <halcy0n@gentoo.org> pango-1.28.4.ebuild:
+  Stable for ppc64; bug #371320
+
+  29 Jun 2011; Christoph Mende <angelos@gentoo.org> pango-1.28.4.ebuild:
+  Stable on amd64 wrt bug #371320
+
+  29 Jun 2011; Jeroen Roovers <jer@gentoo.org> pango-1.28.4.ebuild:
+  Stable for HPPA (bug #371320).
+
+  28 Jun 2011; Brent Baude <ranger@gentoo.org> pango-1.28.4.ebuild:
+  Marking pango-1.28.4 ppc stable for bug 371320
+
+  22 Jun 2011; Fabian Groffen <grobian@gentoo.org> pango-1.28.4.ebuild:
+  Marked ~x64-macos, bug #371861
+
+  22 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> pango-1.28.4.ebuild:
+  x86 stable wrt security bug #371320
+
+  05 Jun 2011; Pacho Ramos <pacho@gentoo.org> pango-1.28.4.ebuild:
+  Versions older than 2.63:2.5 won't neither work.
+
+  05 Jun 2011; Pacho Ramos <pacho@gentoo.org> -pango-1.28.1.ebuild,
+  -pango-1.28.3.ebuild, pango-1.28.4.ebuild:
+  Block old sys-devel/autoconf versions to prevent upgrade problems like bug
+  #368333. Remove old.
+
+  29 Apr 2011; Jeroen Roovers <jer@gentoo.org> pango-1.28.4.ebuild:
+  Marked ~hppa (bug #364693).
+
+  24 Apr 2011; Nirbheek Chauhan <nirbheek@gentoo.org> pango-1.28.4.ebuild:
+  Drop keywords on hppa/mips w.r.t. KEYWORDREQ bug 364693
+
+  10 Apr 2011; Samuli Suominen <ssuominen@gentoo.org> pango-1.28.4.ebuild:
+  Punt useless libtool files.
+
+*pango-1.28.4 (04 Apr 2011)
+
+  04 Apr 2011; Nirbheek Chauhan <nirbheek@gentoo.org> +pango-1.28.4.ebuild:
+  Bump to 1.28.4, lots of bugfixes
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org> pango-1.28.3.ebuild:
+  Marking pango-1.28.3 ppc stable for bug 353436
+
+  19 Mar 2011; Pacho Ramos <pacho@gentoo.org> pango-1.28.3-r1.ebuild:
+  Needs >=dev-libs/glib-2.24 due g_malloc0_n usage (bug #359425 by Daniel
+  Díaz).
+
+  18 Mar 2011; Raúl Porcel <armin76@gentoo.org> pango-1.28.3-r1.ebuild:
+  arm/ia64/s390/sh/sparc stable wrt #352087
+
+  18 Mar 2011; Jonathan Callen <abcd@gentoo.org> pango-1.28.3-r1.ebuild:
+  Merge prefix changes from overlay, add prefix keywords
+
+  15 Mar 2011; Jeroen Roovers <jer@gentoo.org> pango-1.28.3-r1.ebuild:
+  Stable for HPPA (bug #352087).
+
+  14 Mar 2011; Markos Chandras <hwoarang@gentoo.org> pango-1.28.3-r1.ebuild:
+  Stable on amd64 wrt bug #352087
+
+  13 Mar 2011; Tobias Klausmann <klausman@gentoo.org> pango-1.28.3-r1.ebuild:
+  Stable on alpha, bug #352087
+
+  13 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  pango-1.28.3-r1.ebuild:
+  stable x86, security bug 352087
+
+  13 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> pango-1.28.3-r1.ebuild:
+  ppc/ppc64 stable wrt #352087
+
+  12 Mar 2011; Pacho Ramos <pacho@gentoo.org>
+  -files/pango-1.26.0-fix-parallel-build.patch:
+  Clean old.
+
+*pango-1.28.3-r1 (12 Mar 2011)
+
+  12 Mar 2011; Pacho Ramos <pacho@gentoo.org> -files/pango-1.2.5-lib64.patch,
+  -pango-1.24.5-r1.ebuild, -files/pango-1.26.0-introspection-automagic.patch,
+  -pango-1.26.2.ebuild, +pango-1.28.3-r1.ebuild,
+  +files/pango-1.28.3-heap-corruption.patch,
+  +files/pango-1.28.3-malloc-failure.patch:
+  Fix security issues: CVE-2011-0020 and CVE-2011-0064. Remove old.
+
+  30 Jan 2011; Raúl Porcel <armin76@gentoo.org> pango-1.28.3.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #348987
+
+  25 Jan 2011; Jeroen Roovers <jer@gentoo.org> pango-1.28.3.ebuild:
+  Stable for HPPA (bug #348987).
+
+  19 Jan 2011; Markos Chandras <hwoarang@gentoo.org> pango-1.28.3.ebuild:
+  Stable on amd64 wrt bug #348987
+
+  18 Jan 2011; Christian Faulhammer <fauli@gentoo.org> pango-1.28.3.ebuild:
+  x86 stable, bug 348987
+
+  09 Oct 2010; Raúl Porcel <armin76@gentoo.org> pango-1.28.1.ebuild:
+  arm/ia64/s390/sh/sparc stable wrt #339527
+
+  07 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> pango-1.28.1.ebuild:
+  ppc64 stable wrt #324077
+
+*pango-1.28.3 (03 Oct 2010)
+
+  03 Oct 2010; Gilles Dartiguelongue <eva@gentoo.org> +pango-1.28.3.ebuild:
+  Version bump. Bug fixes, introspection updates.
+
+  02 Oct 2010; Tobias Klausmann <klausman@gentoo.org> pango-1.28.1.ebuild:
+  Stable on alpha, bug #313331
+
+  11 Sep 2010; Joseph Jezak <josejx@gentoo.org> pango-1.28.1.ebuild:
+  Marked ppc for bug #324077.
+
+  18 Aug 2010; Markus Meier <maekke@gentoo.org> pango-1.26.2.ebuild:
+  arm stable, bug #314899
+
+  14 Aug 2010; Raúl Porcel <armin76@gentoo.org> pango-1.26.2.ebuild:
+  alpha/ia64/sh/sparc stable wrt #314899
+
+  05 Aug 2010; Jeroen Roovers <jer@gentoo.org> pango-1.28.1.ebuild:
+  Stable for HPPA (bug #324077).
+
+  01 Aug 2010; Christian Faulhammer <fauli@gentoo.org> pango-1.28.1.ebuild:
+  x86 stable, bug 324077
+
+  31 Jul 2010; Pacho Ramos <pacho@gentoo.org> pango-1.28.1.ebuild:
+  amd64 stable, bug 324077
+
+  21 Jul 2010; Jeroen Roovers <jer@gentoo.org> pango-1.26.2.ebuild:
+  Stable for HPPA (bug #314899).
+
+  07 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> pango-1.26.2.ebuild:
+  ppc64 stable wrt #314899
+
+  23 Jun 2010; Pacho Ramos <pacho@gentoo.org> pango-1.28.1.ebuild:
+  Bump gtk-doc dependencies as reported in bug #324601 (by Geoff Madden)
+
+  20 Jun 2010; Nirbheek Chauhan <nirbheek@gentoo.org> pango-1.28.1.ebuild,
+  metadata.xml:
+  Add introspection support
+
+*pango-1.28.1 (16 Jun 2010)
+
+  16 Jun 2010; Pacho Ramos <pacho@gentoo.org> -pango-1.28.0.ebuild,
+  +pango-1.28.1.ebuild:
+  Version bump with bugfixes, build fixes, pango-view now accepts --margin
+
+*pango-1.28.0 (13 Jun 2010)
+
+  13 Jun 2010; Pacho Ramos <pacho@gentoo.org> -pango-1.26.0.ebuild,
+  -pango-1.26.1.ebuild, +pango-1.28.0.ebuild:
+  Add new version for Gnome 2.30, clean old testing versions.
+
+  04 Jun 2010; Markus Meier <maekke@gentoo.org> pango-1.26.2.ebuild:
+  x86 stable, bug #314899
+
+  03 May 2010; Olivier Crête <tester@gentoo.org> pango-1.26.2.ebuild:
+  amd64 stable, bug #314899
+
+  07 Feb 2010; <solar@gentoo.org> pango-1.26.2.ebuild:
+  - This version of pango needs to export CXX to avoid c++ from the host
+  being called directly when cross compiling.
+
+*pango-1.26.2 (21 Dec 2009)
+
+  21 Dec 2009; Gilles Dartiguelongue <eva@gentoo.org> +pango-1.26.2.ebuild:
+  Version bump. Bug fixes.
+
+  28 Nov 2009; Rémi Cardona <remi@gentoo.org> pango-1.24.5-r1.ebuild,
+  pango-1.26.0.ebuild:
+  wrong commit, revert
+
+*pango-1.26.1 (21 Nov 2009)
+
+  21 Nov 2009; Romain Perier <mrpouet@gentoo.org> +pango-1.26.1.ebuild:
+  Version bump.
+
+  01 Nov 2009; Gilles Dartiguelongue <eva@gentoo.org> pango-1.26.0.ebuild:
+  Add missing gtk-doc-am to DEPEND, bug #291119.
+
+  31 Oct 2009; Nirbheek Chauhan <nirbheek@gentoo.org> pango-1.26.0.ebuild,
+  +files/pango-1.26.0-fix-parallel-build.patch:
+  Fix parallel build with patch by Martin von Gagern from bug 287825
+
+*pango-1.26.0 (29 Oct 2009)
+
+  29 Oct 2009; Gilles Dartiguelongue <eva@gentoo.org> -pango-1.24.2.ebuild,
+  +pango-1.26.0.ebuild, +files/pango-1.26.0-introspection-automagic.patch,
+  +files/pango-1.26.0-lib64.patch:
+  New version for GNOME 2.28. Clean up old revisions.
+
+  26 Oct 2009; Raúl Porcel <armin76@gentoo.org> pango-1.24.5-r1.ebuild:
+  ia64/s390/sh/sparc stable wrt #285586
+
+  08 Oct 2009; Markus Meier <maekke@gentoo.org> pango-1.24.5-r1.ebuild:
+  arm stable, bug #285586
+
+  03 Oct 2009; Tobias Klausmann <klausman@gentoo.org>
+  pango-1.24.5-r1.ebuild:
+  Stable on alpha, bug #285586
+
+  02 Oct 2009; Mart Raudsepp <leio@gentoo.org> -pango-1.24.3.ebuild,
+  -pango-1.24.4.ebuild, -pango-1.24.5.ebuild:
+  Remove redundant versions
+
+  30 Sep 2009; Jeroen Roovers <jer@gentoo.org> pango-1.24.5-r1.ebuild:
+  Stable for HPPA (bug #285586).
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> pango-1.24.5-r1.ebuild:
+  ppc stable #285586
+
+  25 Sep 2009; Brent Baude <ranger@gentoo.org> pango-1.24.5-r1.ebuild:
+  Marking pango-1.24.5-r1 ppc64 stable for bug 285586
+
+  22 Sep 2009; Markus Meier <maekke@gentoo.org> pango-1.24.5-r1.ebuild:
+  x86 stable, bug #285586
+
+  19 Sep 2009; Olivier Crête <tester@gentoo.org> pango-1.24.5-r1.ebuild:
+  Stable on amd64, bug #285586
+
+  19 Sep 2009; Patrick Lauer <patrick@gentoo.org> pango-1.24.5-r1.ebuild:
+  Fixing test deps so they don't implode
+
+*pango-1.24.5-r1 (19 Sep 2009)
+
+  19 Sep 2009; Mart Raudsepp <leio@gentoo.org> +pango-1.24.5-r1.ebuild:
+  Remove tests workaround, unnecessary since 1.24.2. Tweak short description
+  to match upstream DOAP one. Tweak dependencies, including removal of
+  gracious cairo-svg dependency
+
+  24 Jul 2009; Daniel Gryniewicz <dang@gentoo.org> pango-1.24.2.ebuild:
+  pango needs libXft for testing; bug #277489
+
+  24 Jul 2009; Daniel Gryniewicz <dang@gentoo.org> pango-1.24.5.ebuild:
+  pango needs libXft for testing; bug #277489
+
+*pango-1.24.5 (22 Jul 2009)
+
+  22 Jul 2009; Romain Perier <mrpouet@gentoo.org> +pango-1.24.5.ebuild:
+  Version bump to 1.24.5 . Fix two crashes and one invalid weak reference
+
+  09 Jul 2009; Romain Perier <mrpouet@gentoo.org>
+  pango-1.24.4.ebuild:
+  Fix bug #277193. Drop rm call from src_install() because file no longer
+  generated
+
+*pango-1.24.4 (09 Jul 2009)
+
+  09 Jul 2009; Romain Perier <mrpouet@gentoo.org>
+  +pango-1.24.4.ebuild:
+  Version bump to 1.24.4. Bug fixes
+
+*pango-1.24.3 (29 Jun 2009)
+
+  29 Jun 2009; Gilles Dartiguelongue <eva@gentoo.org> -pango-1.22.4.ebuild,
+  -pango-1.22.4-r1.ebuild, -files/pango-1.22.4-special-chars-crash.patch,
+  -pango-1.24.1.ebuild, +pango-1.24.3.ebuild:
+  Version bump. Build fixes with newer automake, various bug fixes. Clean up
+  old revisions.
+
+  27 May 2009; Raúl Porcel <armin76@gentoo.org> pango-1.24.2.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #268976
+
+  27 May 2009; Brent Baude <ranger@gentoo.org> pango-1.24.2.ebuild:
+  Marking pango-1.24.2 ppc64 and ppc for bug 268976
+
+  25 May 2009; Jeroen Roovers <jer@gentoo.org> pango-1.24.2.ebuild:
+  Stable for HPPA (bug #268976).
+
+  25 May 2009; Markus Meier <maekke@gentoo.org> pango-1.24.2.ebuild:
+  amd64/x86 stable, bug #268976
+
+*pango-1.24.2 (18 May 2009)
+
+  18 May 2009; Gilles Dartiguelongue <eva@gentoo.org> +pango-1.24.2.ebuild:
+  Bump to 1.24.2. Bug fixes.
+
+  13 May 2009; Nirbheek Chauhan <nirbheek@gentoo.org> pango-1.24.1.ebuild:
+  Fix0r bug 269686 -- x11-libs/cairo[X?,svg]
+
+*pango-1.24.1 (04 May 2009)
+
+  04 May 2009; Gilles Dartiguelongue <eva@gentoo.org> -pango-1.18.4.ebuild,
+  -pango-1.20.5.ebuild, +pango-1.24.1.ebuild:
+  New version for GNOME 2.26. Change font loading API to allow lazy loading,
+  optimize HarfBuzz number of malloc calls and more. Clean up old revisions.
+
+*pango-1.22.4-r1 (27 Apr 2009)
+
+  27 Apr 2009; Arun Raghavan <ford_prefect@gentoo.org>
+  +files/pango-1.22.4-special-chars-crash.patch, +pango-1.22.4-r1.ebuild:
+  Fix crashes because of special characters (bug #267560)
+
+  27 Apr 2009; Jeroen Roovers <jer@gentoo.org> pango-1.22.4:
+  Stable for HPPA (bug #260063).
+
+  22 Apr 2009; Mart Raudsepp <leio@gentoo.org> -pango-1.16.5.ebuild,
+  -pango-1.20.3.ebuild, -pango-1.22.3.ebuild:
+  Remove old
+
+  12 Apr 2009; Friedrich Oslage <bluebird@gentoo.org> ChangeLog:
+  Stable on sparc, bug #260063
+
+  28 Mar 2009; Raúl Porcel <armin76@gentoo.org> pango-1.22.4.ebuild:
+  arm/s390/sh/sparc stable
+
+  18 Mar 2009; Raúl Porcel <armin76@gentoo.org> pango-1.22.4.ebuild:
+  alpha/ia64 stable wrt #260063
+
+  15 Mar 2009; Markus Meier <maekke@gentoo.org> pango-1.22.4.ebuild:
+  x86 stable, bug #260063
+
+  11 Mar 2009; Daniel Gryniewicz <dang@gentoo.org> pango-1.22.4.ebuild:
+  Marked stable on amd64
+
+  06 Mar 2009; Brent Baude <ranger@gentoo.org> pango-1.22.4.ebuild:
+  Marking pango-1.22.4 ppc stable for bug 260063
+
+  05 Mar 2009; Brent Baude <ranger@gentoo.org> pango-1.22.4.ebuild:
+  Marking pango-1.22.4 ppc64 stable for bug 260063
+
+  25 Feb 2009; Raúl Porcel <armin76@gentoo.org> pango-1.20.3.ebuild,
+  pango-1.20.5.ebuild:
+  arm/sh stable
+
+  18 Jan 2009; Gilles Dartiguelongue <eva@gentoo.org> pango-1.22.4.ebuild:
+  Update DOCS per bug #254260.
+
+*pango-1.22.4 (21 Dec 2008)
+
+  21 Dec 2008; Mart Raudsepp <leio@gentoo.org> +pango-1.22.4.ebuild:
+  Version bump for various bug fixes, most notably stretched out gnome-menu
+  and firefox (and similar) in CJK environments, bug 250104
+
+  07 Dec 2008; Mike Frysinger <vapier@gentoo.org> pango-1.22.3.ebuild:
+  Add s390 love #202529.
+
+*pango-1.22.3 (24 Nov 2008)
+
+  24 Nov 2008; Mart Raudsepp <leio@gentoo.org> -pango-1.22.1.ebuild,
+  -pango-1.22.2.ebuild, +pango-1.22.3.ebuild:
+  Version bump. Small fixes - fixed pango_matrix_concat; perf improvement in
+  thai engine
+
+  13 Nov 2008; Brent Baude <ranger@gentoo.org> pango-1.20.5.ebuild:
+  Marking pango-1.20.5 ppc64 stable for bug 236971
+
+*pango-1.22.2 (31 Oct 2008)
+
+  31 Oct 2008; Mart Raudsepp <leio@gentoo.org> +pango-1.22.2.ebuild:
+  New bug fix release: Fix crasher when a PangoFcFontMap was freed before
+  its fonts; Fix font description parsing to better handle "normal"
+
+*pango-1.22.1 (21 Oct 2008)
+
+  21 Oct 2008; Mart Raudsepp <leio@gentoo.org> -pango-1.22.0.ebuild,
+  +pango-1.22.1.ebuild:
+  New bug fix release. A crasher case fix, bogus OpenType anchor tables
+  loading fix, OpenType CursiveChain positioning fix, a memory leak fix, and
+  a few other bug fixes.
+
+  06 Oct 2008; Mart Raudsepp <leio@gentoo.org> pango-1.22.0.ebuild:
+  Correct the glib dependency, bug 239494; remove useless epunt_cxx
+
+*pango-1.22.0 (30 Sep 2008)
+
+  30 Sep 2008; Daniel Gryniewicz <dang@gentoo.org> +pango-1.22.0.ebuild:
+  Add pango 1.22.0 to go with cario 1.8.0
+
+  25 Sep 2008; Jeroen Roovers <jer@gentoo.org> pango-1.20.5.ebuild:
+  Stable for HPPA (bug #236971).
+
+  14 Aug 2008; Mart Raudsepp <leio@gentoo.org> -pango-1.18.3.ebuild,
+  -pango-1.20.0.ebuild, -pango-1.20.2.ebuild:
+  Remove old
+
+  12 Aug 2008; Raúl Porcel <armin76@gentoo.org> pango-1.20.5.ebuild:
+  alpha/ia64/sparc stable wrt #229709
+
+  10 Aug 2008; Markus Meier <maekke@gentoo.org> pango-1.20.5.ebuild:
+  x86 stable, bug #229709
+
+  30 Jul 2008; Brent Baude <ranger@gentoo.org> pango-1.20.5.ebuild:
+  Marking pango-1.20.5 ppc stable for bug 229709
+
+  26 Jul 2008; Olivier Crête <tester@gentoo.org> pango-1.20.5.ebuild:
+  Stable on amd64, bug #229709
+
+  17 Jul 2008; Rémi Cardona <remi@gentoo.org>
+  files/pango-1.2.5-lib64.patch:
+  comment out the hunk that modifies Makefile.am, now only Makefile.in is
+  patched, this prevents maintainer-mode from kicking in
+
+*pango-1.20.5 (02 Jul 2008)
+
+  02 Jul 2008; Gilles Dartiguelongue <eva@gentoo.org> +pango-1.20.5.ebuild:
+  bump to 1.20.5. fix a crasher bug with Linux-Libertine font.
+
+  30 Jun 2008; Jeroen Roovers <jer@gentoo.org> pango-1.20.3.ebuild:
+  Stable for HPPA (bug #227679).
+
+  21 Jun 2008; Markus Rothe <corsair@gentoo.org> pango-1.20.3.ebuild:
+  Stable on ppc64; bug #227679
+
+  20 Jun 2008; Christian Faulhammer <opfer@gentoo.org> pango-1.20.3.ebuild:
+  stable x86, bug 227679
+
+  19 Jun 2008; Raúl Porcel <armin76@gentoo.org> pango-1.20.3.ebuild:
+  alpha/ia64/sparc stable wrt #227679
+
+  19 Jun 2008; nixnut <nixnut@gentoo.org> pango-1.20.3.ebuild:
+  Stable on ppc wrt bug 227679
+
+  19 Jun 2008; Olivier Crête <tester@gentoo.org> pango-1.20.3.ebuild:
+  amd64 stable, bug #227679
+
+*pango-1.20.3 (25 May 2008)
+
+  25 May 2008; Gilles Dartiguelongue <eva@gentoo.org> +pango-1.20.3.ebuild:
+  bump to 1.20.3 (just for the sake of it). win32 fixes.
+
+*pango-1.20.2 (10 Apr 2008)
+
+  10 Apr 2008; Mart Raudsepp <leio@gentoo.org> +pango-1.20.2.ebuild:
+  New version adding support for Unicode 5.1. Also fixes a small bug.
+
+*pango-1.20.0 (16 Mar 2008)
+
+  16 Mar 2008; Mart Raudsepp <leio@gentoo.org> +pango-1.20.0.ebuild:
+  New major release. Notable new feature includes addition of
+  pango_layout_set_height() API for better ellipsizing handling in regards to
+  a certain height before ellipsization begins. Also includes the usual set of
+  performance and bug fixes. This ebuild contains highly experimental support
+  for non-X environments, such as DirectFB via cairo
+
+  04 Feb 2008; Jeroen Roovers <jer@gentoo.org> pango-1.18.4.ebuild:
+  Stable for HPPA (bug #208366).
+
+  03 Feb 2008; Raúl Porcel <armin76@gentoo.org> pango-1.18.4.ebuild:
+  alpha/ia64/sparc stable wrt #208366
+
+  02 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org> pango-1.18.4.ebuild:
+  Stable on amd64 wrt bug #208366.
+
+  01 Feb 2008; Brent Baude <ranger@gentoo.org> pango-1.18.4.ebuild:
+  Marking pango-1.18.4 ppc64 and ppc stable for bug 208366
+
+  01 Feb 2008; Christian Faulhammer <opfer@gentoo.org> pango-1.18.4.ebuild:
+  stable x86, bug 208366
+
+  19 Jan 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  -files/pango-1.10.2-slighthint.patch, -files/pango-1.11.3-xfonts.patch,
+  -pango-1.12.3.ebuild:
+  clean up old release
+
+*pango-1.18.4 (19 Jan 2008)
+
+  19 Jan 2008; Gilles Dartiguelongue <eva@gentoo.org> +pango-1.18.4.ebuild:
+  bump to 1.18.4
+
+  04 Jan 2008; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/pango-1.10.2-slighthint.patch, +files/pango-1.11.3-xfonts.patch,
+  +pango-1.12.3.ebuild:
+  Restore old version for no-nptl/2.4 profile
+
+  04 Jan 2008; Saleem Abdulrasool <compnerd@gentoo.org>
+  -files/pango-1.0.99.020606-xfonts.patch,
+  -files/pango-1.2.2-slighthint.patch, -files/pango-1.8.1-fontfix.patch,
+  -files/pango-1.10.2-slighthint.patch, -files/pango-1.11.3-xfonts.patch,
+  -pango-1.8.1-r1.ebuild, -pango-1.10.3.ebuild, -pango-1.10.4.ebuild,
+  -pango-1.12.3.ebuild, -pango-1.14.10.ebuild, -pango-1.16.4.ebuild:
+  prune some unused versions
+
+  23 Nov 2007; Jeroen Roovers <jer@gentoo.org> pango-1.18.3.ebuild:
+  Stable for HPPA (bug #198845).
+
+  20 Nov 2007; Joshua Kinard <kumba@gentoo.org> pango-1.18.3.ebuild:
+  Stable on mips, per #190019.
+
+  19 Nov 2007; Markus Rothe <corsair@gentoo.org> pango-1.18.3.ebuild:
+  Stable on ppc64; bug #198845
+
+  17 Nov 2007; nixnut <nixnut@gentoo.org> pango-1.18.3.ebuild:
+  Stable on ppc wrt bug 198845
+
+  14 Nov 2007; Raúl Porcel <armin76@gentoo.org> pango-1.18.3.ebuild:
+  sparc stable wrt #198845
+
+  14 Nov 2007; Raúl Porcel <armin76@gentoo.org> pango-1.18.3.ebuild:
+  alpha/ia64 stable wrt #198845
+
+  13 Nov 2007; Christian Faulhammer <opfer@gentoo.org> pango-1.18.3.ebuild:
+  stable x86, bug 198845
+
+  13 Nov 2007; Mart Raudsepp <leio@gentoo.org> pango-1.8.1-r1.ebuild,
+  pango-1.10.3.ebuild, pango-1.10.4.ebuild, pango-1.12.3.ebuild,
+  pango-1.14.10.ebuild, pango-1.16.4.ebuild, pango-1.16.5.ebuild,
+  -pango-1.18.2.ebuild:
+  QA: Remove an old versions and fix variable quoting in the rest
+
+  12 Nov 2007; Samuli Suominen <drac@gentoo.org> pango-1.18.3.ebuild:
+  amd64 stable wrt #198845
+
+*pango-1.18.3 (16 Oct 2007)
+
+  16 Oct 2007; Mart Raudsepp <leio@gentoo.org> +pango-1.18.3.ebuild:
+  Version bump for two OpenType engine fixes
+
+*pango-1.18.2 (21 Sep 2007)
+
+  21 Sep 2007; Rémi Cardona <remi@gentoo.org> +pango-1.18.2.ebuild:
+  Add pango-1.18.2 (for Gnome 2.20)
+
+  21 Sep 2007; Brent Baude <ranger@gentoo.org> pango-1.16.5.ebuild:
+  Marking pango-1.16.5 ppc64 for bug #190019
+
+  28 Aug 2007; nixnut <nixnut@gentoo.org> pango-1.16.5.ebuild:
+  Stable on ppc wrt bug 190019
+
+  28 Aug 2007; Jeroen Roovers <jer@gentoo.org> pango-1.16.5.ebuild:
+  Stable for HPPA (bug #190019).
+
+  25 Aug 2007; Raúl Porcel <armin76@gentoo.org> pango-1.16.5.ebuild:
+  alpha/ia64/x86 stable wrt #190019
+
+  24 Aug 2007; Wulf C. Krueger <philantrop@gentoo.org> pango-1.16.5.ebuild:
+  Marked stable on amd64 as per bug 190019.
+
+  24 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> pango-1.16.5.ebuild:
+  Stable on sparc wrt #190019
+
+*pango-1.16.5 (12 Aug 2007)
+
+  12 Aug 2007; Mart Raudsepp <leio@gentoo.org> +pango-1.16.5.ebuild:
+  Version bump
+
+  06 Aug 2007; Joshua Kinard <kumba@gentoo.org> pango-1.16.4.ebuild:
+  Stable on mips, per #185823.
+
+  23 Jul 2007; nixnut <nixnut@gentoo.org> pango-1.16.4.ebuild:
+  Stable on ppc wrt bug 185614
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; pango-1.12.3.ebuild:
+  Missed one.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  pango-1.8.1-r1.ebuild, pango-1.10.3.ebuild, pango-1.10.4.ebuild,
+  pango-1.12.3.ebuild:
+  Drop virtual/x11 references.
+
+  19 Jul 2007; Christoph Mende <angelos@gentoo.org> pango-1.16.4.ebuild:
+  Stable on amd64 wrt bug #185614
+
+  18 Jul 2007; Raúl Porcel <armin76@gentoo.org> pango-1.16.4.ebuild:
+  alpha/ia64/x86 stable wrt #185614
+
+  17 Jul 2007; Jeroen Roovers <jer@gentoo.org> pango-1.16.4.ebuild:
+  Stable for HPPA (bug #185614).
+
+  17 Jul 2007; Markus Rothe <corsair@gentoo.org> pango-1.16.4.ebuild:
+  Stable on ppc64; bug #185614
+
+  17 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> pango-1.16.4.ebuild:
+  Stable on sparc wrt #185614
+
+*pango-1.16.4 (27 Jun 2007)
+
+  27 Jun 2007; Mart Raudsepp <leio@gentoo.org> -pango-1.14.9.ebuild,
+  -pango-1.16.1.ebuild, -pango-1.16.2.ebuild, +pango-1.16.4.ebuild:
+  Version bump for API doc cross-reference fixes
+
+  27 May 2007; Joshua Kinard <kumba@gentoo.org> pango-1.14.10.ebuild:
+  Stable on mips.
+
+*pango-1.16.3 (24 Apr 2007)
+
+  24 Apr 2007; Daniel Gryniewicz <dang@gentoo.org> +pango-1.16.3.ebuild:
+  Bump to 1.16.3
+  - Quantize kerning value if metrics hinting is on.  This greatly improves
+    screen text rendering with certain fonts like DejaVu Sans.
+    See: http://behdad.org/blog/mces/image/metricshinting-kerning.png
+  - Improved hex-box positioning in the cairo backend
+
+*pango-1.16.2 (17 Apr 2007)
+
+  17 Apr 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  +pango-1.16.2.ebuild:
+  Version bump for 2.18.1
+
+*pango-1.16.1 (27 Mar 2007)
+
+  27 Mar 2007; Daniel Gryniewicz <dang@gentoo.org> +pango-1.16.1.ebuild:
+  gnome 2.18.0
+
+  22 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org> pango-1.14.10.ebuild:
+  Stable on alpha/ia64/ppc wrt bug #163678.
+
+  15 Mar 2007; Markus Rothe <corsair@gentoo.org> pango-1.14.10.ebuild:
+  Stable on ppc64; bug #163678
+
+  15 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org> pango-1.14.10.ebuild:
+  Stable on sparc wrt #163678
+
+  15 Mar 2007; Jeroen Roovers <jer@gentoo.org> pango-1.14.10.ebuild:
+  Stable for HPPA (bug #163678).
+
+  14 Mar 2007; Simon Stelling <blubb@gentoo.org> pango-1.14.10.ebuild:
+  stable on amd64; security bug 163768
+
+  14 Mar 2007; Christian Faulhammer <opfer@gentoo.org> pango-1.14.10.ebuild:
+  stable x86, bug 163678
+
+  21 Feb 2007; Simon Stelling <blubb@gentoo.org> pango-1.14.9.ebuild,
+  pango-1.14.10.ebuild:
+  we don't need the use x86 && [[ LIBDIR == lib32 ]] hack anymore
+
+  04 Feb 2007; Mart Raudsepp <leio@gentoo.org> pango-1.14.10.ebuild:
+  Some QA fixes, bug 164686
+
+*pango-1.14.10 (30 Jan 2007)
+
+  30 Jan 2007; Mart Raudsepp <leio@gentoo.org> -pango-1.14.5.ebuild,
+  -pango-1.14.7.ebuild, +pango-1.14.10.ebuild:
+  Version bump. Remove some old versions
+
+  09 Dec 2006; Bryan Østergaard <kloeri@gentoo.org> pango-1.14.9.ebuild:
+  Stable on Alpha.
+
+*pango-1.14.9 (08 Dec 2006)
+
+  08 Dec 2006; Mart Raudsepp <leio@gentoo.org> +pango-1.14.9.ebuild:
+  Version bump
+
+  01 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> pango-1.14.7.ebuild:
+  Stable on hppa wrt #156572
+
+  01 Dec 2006; Markus Rothe <corsair@gentoo.org> pango-1.14.7.ebuild:
+  Stable on ppc64; bug #156572
+
+  01 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> pango-1.14.7.ebuild:
+  Stable on sparc wrt #156572
+
+  30 Nov 2006; Tobias Scherbaum <dertobi123@gentoo.org> pango-1.14.7.ebuild:
+  ppc stable, bug #156572
+
+  30 Nov 2006; Christian Faulhammer <opfer@gentoo.org> pango-1.14.7.ebuild:
+  stable x86, bug #156572
+
+  29 Nov 2006; Olivier Crête <tester@gentoo.org> pango-1.14.7.ebuild:
+  Stable on amd64 for bugs #156572
+
+  20 Oct 2006; Aron Griffis <agriffis@gentoo.org> pango-1.12.3.ebuild:
+  Mark 1.12.3 stable on alpha
+
+*pango-1.14.7 (13 Oct 2006)
+
+  13 Oct 2006; Mart Raudsepp <leio@gentoo.org> -pango-1.14.6.ebuild,
+  +pango-1.14.7.ebuild:
+  New version for build fixes on some systems
+
+*pango-1.14.6 (13 Oct 2006)
+
+  13 Oct 2006; Mart Raudsepp <leio@gentoo.org> +pango-1.14.6.ebuild:
+  Version bump for more cjk goodness
+
+*pango-1.14.5 (07 Oct 2006)
+
+  07 Oct 2006; Mart Raudsepp <leio@gentoo.org> -pango-1.14.4.ebuild,
+  +pango-1.14.5.ebuild:
+  Version bump, mostly fixing a few cjk issues in previous version
+
+*pango-1.14.4 (28 Sep 2006)
+
+  28 Sep 2006; Mart Raudsepp <leio@gentoo.org> -pango-1.14.3.ebuild,
+  +pango-1.14.4.ebuild:
+  Updated version for gnome 2.16
+
+*pango-1.14.3 (07 Sep 2006)
+
+  07 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> -pango-1.13.2.ebuild,
+  +pango-1.14.3.ebuild:
+  New version for gnome 2.16
+
+  16 Aug 2006; Markus Rothe <corsair@gentoo.org> pango-1.12.3.ebuild:
+  Stable on ppc64
+
+  23 Jul 2006; Daniel Gryniewicz <dang@gentoo.org> -pango-1.4.1-r1.ebuild,
+  -pango-1.10.2.ebuild:
+  Clean up unnecessary versions
+
+  17 Jul 2006; Daniel Gryniewicz <dang@gentoo.org> pango-1.12.3.ebuild:
+  Marked stable on amd64 for bug #139612
+
+  16 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org> pango-1.12.3.ebuild:
+  hppa stable, bug #139612
+
+  14 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org> pango-1.12.3.ebuild:
+  ppc stable, bug #139612
+
+  12 Jul 2006; Chris Gianelloni <wolf31o2@gentoo.org> pango-1.12.3.ebuild:
+  Stable on x86 wrt bug #139612.
+
+  10 Jul 2006; Gustavo Zacarias <gustavoz@gentoo.org> pango-1.12.3.ebuild:
+  Stable on sparc wrt #139612
+
+*pango-1.13.2 (05 Jul 2006)
+
+  05 Jul 2006; Stefan Schweizer <genstef@gentoo.org> +pango-1.13.2.ebuild:
+  version bump
+
+*pango-1.12.3 (30 Jun 2006)
+
+  30 Jun 2006; John N. Laliberte <allanonjl@gentoo.org>
+  -pango-1.12.2.ebuild, +pango-1.12.3.ebuild:
+  new version.
+
+  25 Jun 2006; Javier Villavicencio <the_paya@gentoo.org>
+  pango-1.12.2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  07 Jun 2006; John N. Laliberte <allanonjl@gentoo.org>
+  pango-1.4.1-r1.ebuild, pango-1.8.1-r1.ebuild, pango-1.10.2.ebuild,
+  pango-1.10.3.ebuild, pango-1.10.4.ebuild, -pango-1.12.1.ebuild,
+  pango-1.12.2.ebuild:
+  move mkdir to pkg_postinst.  fixes #135912
+
+*pango-1.12.2 (30 Apr 2006)
+
+  30 Apr 2006; John N. Laliberte <allanonjl@gentoo.org>
+  -pango-1.12.0.ebuild, +pango-1.12.2.ebuild:
+  new version, fixes some rendering issues with eclipse. thanks to nichoj for
+  reporting the issue.
+
+  21 Apr 2006; Thomas Cort <tcort@gentoo.org> pango-1.10.3.ebuild:
+  Stable on alpha wrt Bug #126321.
+
+  15 Apr 2006; Stephen P. Becker <geoman@gentoo.org> pango-1.10.3.ebuild:
+  stable on mips
+
+*pango-1.12.1 (07 Apr 2006)
+
+  07 Apr 2006; Marinus Schraal <foser@gentoo.org> pango-1.12.1.ebuild :
+  Clean up X modular deps
+  Remove unneeded built_with_use checks
+
+  24 Mar 2006; Aron Griffis <agriffis@gentoo.org> pango-1.10.3.ebuild:
+  Mark 1.10.3 stable on ia64
+
+  19 Mar 2006; Markus Rothe <corsair@gentoo.org> pango-1.10.3.ebuild:
+  Stable on ppc64
+
+  18 Mar 2006; Olivier Crête <tester@gentoo.org> pango-1.10.3.ebuild:
+  Stable on amd64 per bug #126321
+
+  17 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> pango-1.10.3.ebuild:
+  Stable on x86 wrt bug #126321.
+
+  17 Mar 2006; Tobias Scherbaum <dertobi123@gentoo.org> pango-1.10.3.ebuild:
+  Stable gnome-2.12.3 for ppc, bug #126321
+
+*pango-1.12.0 (16 Mar 2006)
+
+  16 Mar 2006; John N. Laliberte <allanonjl@gentoo.org>
+  +pango-1.12.0.ebuild:
+  new version, bump cairo dep.
+
+  14 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> pango-1.10.3.ebuild:
+  Stable on hppa
+
+  13 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> pango-1.10.3.ebuild:
+  Stable on sparc
+
+*pango-1.10.4 (05 Mar 2006)
+
+  05 Mar 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +pango-1.10.4.ebuild:
+  Version bump from upstream
+
+*pango-1.10.3 (06 Feb 2006)
+
+  06 Feb 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  pango-1.4.1-r1.ebuild, pango-1.8.1.ebuild, pango-1.8.1-r1.ebuild,
+  pango-1.8.2.ebuild, +pango-1.10.3.ebuild:
+  Version bump from upstream and backport mod-x changes
+
+  03 Feb 2006; Aron Griffis <agriffis@gentoo.org> pango-1.10.2.ebuild:
+  Mark 1.10.2 stable on ia64
+
+  13 Jan 2006; Rene Nussbaumer <killerfox@gentoo.org> pango-1.10.2.ebuild:
+  Stable on hppa.
+
+  08 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org> pango-1.10.2.ebuild:
+  ppc stable, bug #117505
+
+  04 Jan 2006; Mark Loeser <halcy0n@gentoo.org> pango-1.10.2.ebuild:
+  Stable on x86; bug #117505
+
+  03 Jan 2006; Fernando J. Pereda <ferdy@gentoo.org> pango-1.10.2.ebuild:
+  Stable on alpha wrt bug #117505
+
+  03 Jan 2006; Luis Medinas <metalgod@gentoo.org> pango-1.10.2.ebuild:
+  Stable on amd64. For bug #117505.
+
+  03 Jan 2006; Markus Rothe <corsair@gentoo.org> pango-1.10.2.ebuild:
+  Stable on ppc64
+
+  03 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org> pango-1.10.2.ebuild:
+  Stable on sparc wrt #117505
+
+*pango-1.10.2 (11 Dec 2005)
+
+  11 Dec 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/pango-1.10.2-slighthint.patch, +pango-1.10.2.ebuild:
+  Version bump from upstream.
+
+  30 Oct 2005; Doug Goldstein <cardoe@gentoo.org> pango-1.10.1.ebuild:
+  Forgot to commit modular X deps from ages ago
+
+  14 Oct 2005; <dang@gentoo.org> pango-1.10.1.ebuild:
+  Needs cairo with both png and X
+
+  11 Oct 2005; Hardave Riar <hardave@gentoo.org> pango-1.8.1-r1.ebuild:
+  Stable on mips.
+
+  11 Oct 2005; <allanon@gentoo.org> pango-1.10.1.ebuild:
+  add check for cairo and png flag, fixes #108857
+
+*pango-1.10.1 (03 Oct 2005)
+
+  03 Oct 2005; Leonardo Boshell <leonardop@gentoo.org> -pango-1.10.0.ebuild,
+  +pango-1.10.1.ebuild:
+  New version.
+
+  28 Sep 2005; John N. Laliberte <allanonjl@gentoo.org> pango-1.8.2.ebuild:
+  fix freetype dep to >= 2.1.8, only for version 1.8.2. The pmasked version is
+  fixed, see gentoo #102271 and gnome #313477
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> pango-1.8.1-r1.ebuild:
+  Mark 1.8.1-r1 stable on alpha
+
+  31 Aug 2005; Herbie Hopkins <herbs@gentoo.org> pango-1.8.1-r1.ebuild:
+  Stable on amd64.
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> pango-1.8.1-r1.ebuild:
+  stable on ia64
+
+*pango-1.10.0 (16 Aug 2005)
+
+  16 Aug 2005; Leonardo Boshell <leonardop@gentoo.org> +pango-1.10.0.ebuild:
+  New version.
+
+  15 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  +files/pango-1.9.1-example_update.patch, pango-1.9.1.ebuild:
+  Added patch from upstream's CVS to fix compilation with latest cairo.
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> pango-1.8.1-r1.ebuild:
+  Stable on ppc.
+
+  08 Aug 2005; Markus Rothe <corsair@gentoo.org> pango-1.8.1-r1.ebuild:
+  Stable on ppc64
+
+  04 Aug 2005; Rene Nussbaumer <killerfox@gentoo.org> pango-1.8.1-r1.ebuild:
+  Stable on hppa.
+
+  01 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> pango-1.8.1-r1.ebuild:
+  Stable on sparc
+
+*pango-1.8.2 (31 Jul 2005)
+
+  31 Jul 2005; Leonardo Boshell <leonardop@gentoo.org> pango-1.8.2.ebuild:
+  New version.
+
+*pango-1.9.1 (31 Jul 2005)
+
+  31 Jul 2005; Marinus Schraal <foser@gentoo.org> pango-1.9.1.ebuild :
+  Unstable release
+
+  30 Jul 2005; John N. Laliberte <allanonjl@gentoo.org>
+  pango-1.8.1-r1.ebuild:
+  stable on x86
+
+  11 Jul 2005; Stephen P. Becker <geoman@gentoo.org> pango-1.8.1.ebuild:
+  stable on mips
+
+*pango-1.8.1-r1 (25 Jun 2005)
+
+  25 Jun 2005; John N. Laliberte <allanonjl@gentoo.org>
+  +files/pango-1.8.1-fontfix.patch, +pango-1.8.1-r1.ebuild:
+  fix for bug #84586
+
+  28 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> pango-1.8.1.ebuild:
+  Stable on alpha.
+
+  20 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> pango-1.8.1.ebuild:
+  Stable on ppc.
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> pango-1.8.1.ebuild:
+  Stable on ppc64
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> pango-1.8.1.ebuild:
+  stable on amd64
+
+  02 Apr 2005; Stephen P. Becker <geoman@gentoo.org> pango-1.8.0.ebuild:
+  stable on mips
+
+  17 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> pango-1.8.1.ebuild:
+  Stable on sparc
+
+  08 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> pango-1.8.0.ebuild:
+  Stable on sparc
+
+  07 Mar 2005; Markus Rothe <corsair@gentoo.org> pango-1.8.0.ebuild:
+  Stable on ppc64
+
+*pango-1.8.1 (06 Mar 2005)
+
+  06 Mar 2005; foser <foser@gentoo.org> pango-1.8.1.ebuild :
+  New release
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  24 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> :
+  Stable on alpha.
+
+  23 Dec 2004; Guy Martin <gmsoft@gentoo.org> pango-1.6.0.ebuild:
+  Stable on hppa.
+
+*pango-1.8.0 (18 Dec 2004)
+
+  18 Dec 2004; foser <foser@gentoo.org> pango-1.8.0.ebuild :
+  New release, add USE static
+
+  14 Dec 2004; Dylan Carlson <absinthe@gentoo.org> pango-1.6.0.ebuild:
+  Stable on amd64.
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> pango-1.6.0.ebuild:
+  Stable on alpha.
+
+  11 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> pango-1.6.0.ebuild:
+  Stable on sparc
+
+  11 Nov 2004; Mike Gardiner <obz@gentoo.org> pango-1.6.0.ebuild:
+  Keyworded ppc for GNOME 2.8
+
+*pango-1.6.0 (14 Sep 2004)
+
+  14 Sep 2004; foser <foser@gentoo.org> pango-1.6.0.ebuild :
+  Gnome 2.8 release, added minor cjk bugfixing patch
+
+  22 Aug 2004; Travis Tilley <lv@gentoo.org> pango-1.4.1-r1.ebuild:
+  made arch specific config file patch apply on x86 when CONF_LIBDIR=lib32. this
+  is just to make building the emul-linux-x86-gtklibs package easier, and has no
+  effect on x86 users in general.
+
+  20 Aug 2004; Tom Gall <tgall@gentoo.org> pango-1.4.1-r1.ebuild:
+  stable on ppc64, bug #58191
+
+*pango-1.4.1-r1 (19 Aug 2004)
+
+  19 Aug 2004; Travis Tilley <lv@gentoo.org> +files/pango-1.2.5-lib64.patch,
+  +pango-1.4.1-r1.ebuild:
+  added a patch that changes the pango config file location to
+  /etc/pango/${CHOST} on amd64 to help the 64bit and 32bit pango co-exist in a
+  multilib environment.
+
+  14 Aug 2004; Stephen P. Becker <geoman@gentoo.org> pango-1.4.1.ebuild:
+  Stable on mips - bug 59692
+
+  13 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> pango-1.4.1.ebuild:
+  Stable on alpha, bug 59692.
+
+  08 Aug 2004; Luca Barbato <lu_zero@gentoo.org> pango-1.4.1.ebuild:
+  Marked ppc
+
+  08 Aug 2004; Jason Wever <weeve@gentoo.org> pango-1.4.1.ebuild:
+  Stable on sparc wrt security bug #59692.
+
+  08 Aug 2004; Travis Tilley <lv@gentoo.org> pango-1.4.1.ebuild:
+  stable on amd64
+
+  07 Aug 2004; <agriffis@gentoo.org> pango-1.4.1.ebuild:
+  stable on ia64 #59692
+
+*pango-1.4.1 (07 Aug 2004)
+
+  07 Aug 2004; foser <foser@gentoo.org> pango-1.4.1.ebuild :
+  New release
+
+  27 Jul 2004; <agriffis@gentoo.org> pango-1.4.0.ebuild:
+  stable on ia64
+
+  23 Jul 2004; Tom Gall <tgall@gentoo.org> pango-1.4.0.ebuild:
+  stable on ppc64
+
+  28 Jun 2004; Tom Gall <tgall@gentoo.org> pango-1.4.0.ebuild:
+  ~ppc64, bug #54792
+
+  19 Jun 2004; Gustavo Zacarias <gustavoz@gentoo.org> pango-1.4.0.ebuild:
+  sparc stable
+
+  16 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> pango-1.4.0.ebuild:
+  Stable on alpha.
+
+  01 Jun 2004; Travis Tilley <lv@gentoo.org> pango-1.4.0.ebuild:
+  stable on amd64
+
+  14 Apr 2004; Stephen P. Becker <geoman@gentoo.org> pango-1.2.5-r1.ebuild,
+  pango-1.4.0.ebuild:
+  Marked stable on mips.
+
+*pango-1.4.0 (18 Mar 2004)
+
+  18 Mar 2004; foser <foser@gentoo.org> pango-1.4.0.ebuild :
+  New release
+  Minor updates, correct license
+
+  06 Mar 2004; Stephen P. Becker <geoman@gentoo.org> pango-1.2.5-r1.ebuild:
+  Added ~mips keyword.
+
+  10 Feb 2004; Bartosch Pixa <darkspecter@gentoo.org> pango-1.2.5-r1.ebuild:
+  set ppc in keywords
+
+  18 Jan 2004; <gustavoz@gentoo.org> pango-1.2.5-r1.ebuild:
+  stable on sparc
+
+  14 Jan 2004; Mike Gardiner <obz@gentoo.org> pango-1.2.5-r1.ebuild:
+  Stable on x86 as part of GNOME-2.4.1
+
+  09 Jan 2004; Aron Griffis <agriffis@gentoo.org> pango-1.2.3.ebuild:
+  stable on alpha
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> pango-1.2.5-r1.ebuild:
+  Stable on ia64
+
+  22 Oct 2003; Bartosch Pixa <darkspecter@gentoo.org> pango-1.2.5.ebuild:
+  set ppc in keywords
+
+  17 Oct 2003; Aron Griffis <agriffis@gentoo.org> pango-1.2.5-r1.ebuild:
+  Stable on alpha
+
+  13 Oct 2003; Jason Wever <weeve@gentoo.org> pango-1.2.5.ebuild:
+  Added sparc keyword.
+
+  05 Oct 2003; Mike Gardiner <obz@gentoo.org> pango-1.2.5.ebuild:
+  Marked stable on x86
+
+*pango-1.2.5-r1 (27 Sep 2003)
+
+  16 Nov 2003; Guy Martin <gmsoft@gentoo.org> pango-1.2.5-r1.ebuild :
+  Marked stable on hppa.
+
+  27 Sep 2003; foser <foser@gentoo.org> pango-1.2.5-r1.ebuild :
+  Add thai shaper fixing patch (#29567)
+  add missing metadata file, part of the gnome herd
+
+  23 Sep 2003; Bartosch Pixa <darkspecter@gentoo.org> pango-1.2.3.ebuild:
+  set ppc in keywords
+
+*pango-1.2.5 (27 Aug 2003)
+
+  27 Aug 2003; foser <foser@gentoo.org> pango-1.2.5.ebuild :
+  New version, corrected all SLOTs to 0
+
+  25 Aug 2003; Mike Gardiner <obz@gentoo.org> pango-1.2.3.ebuild:
+  Moved to stable on x86
+
+*pango-1.2.3 (09 Jun 2003)
+
+  01 Jul 2003; Guy Martin <gmsoft@gentoo.org> pango-1.2.3.ebuild :
+  Added ~hppa to KEYWORDS.
+
+  09 Jun 2003; foser <foser@gentoo.org> pango-1.2.3.ebuild :
+  New version
+
+*pango-1.2.2 (03 Jun 2003)
+
+  03 Jun 2003; foser <foser@gentoo.org> pango-1.2.2.ebuild :
+  New version, updated slighthint patch from RH 
+  Use gnome2 eclass
+
+*pango-1.2.1-r1 (28 Feb 2003)
+
+  06 Apr 2003; Rajiv Manglani <rajiv@gentoo.org> pango-1.2.1-r1.ebuild:
+  stable on ppc.
+
+  09 Mar 2003; Aron Griffis <agriffis@gentoo.org> pango-1.2.1-r1.ebuild:
+  Mark stable on alpha
+
+  01 Mar 2003; Jason Wever <weeve@gentoo.org> pango-1.2.1-r1.ebuild:
+  Addes ~sparc to keywords.
+
+  28 Feb 2003; foser <foser@gentoo.org> pango-1.2.1-r1.ebuild :
+  Added speedimproving patch from cvs
+
+*pango-1.2.1 (04 Feb 2003)
+
+  01 Jul 2003; Guy Martin <gmsoft@gentoo.org> pango-1.2.1.ebuild :
+  Added hpp ato KEYWORDS.
+
+  04 Mar 2003; Jason Wever <weeve@gentoo.org> pango-1.2.1.ebuild:
+  Added sparc to keywords.
+
+  21 Feb 2003; Aron Griffis <agriffis@gentoo.org> pango-1.2.1.ebuild :
+  Mark stable on alpha
+
+  05 Feb 2003; foser <foser@gentoo.org> pango-1.2.1.ebuild :
+  removed sgmltools-lite dep
+  
+  04 Feb 2003; Spider <spider@gentoo.org> pango-1.2.1.ebuild :
+  versionbumped 
+
+*pango-1.2.0 (22 Dec 2002)
+  
+  04 Feb 2003; Spider <spider@gentoo.org> 
+  Change DEBUG to DEBUGBUILD
+
+  01 Jan 2003; Aron Griffis <agriffis@gentoo.org> pango-1.2.0.ebuild :
+  Added ~alpha to KEYWORDS
+
+  22 Dec 2002; foser <foser@gentoo.org> pango-1.2.0.ebuild :
+  New stable version
+  Adapted the slighthint patch to work with it
+
+  14 Dec 2002; Aron Griffis <agriffis@gentoo.org> pango-1.1.3.ebuild :
+  REALLY commented out the slighthinting patch, for the same reason as Bart
+  below.  Maybe Bart forgot to commit the ebuild.  ;-)
+
+  14 Dec 2002; Bart Verwilst <verwilst@gentoo.org> pango-1.1.3.ebuild :
+  Commented out the slighthinting patch temporarily, because it breaks
+  compilation with xft2.  I'm sure Foser/Azarah will come up with a real fix
+  soon, in a new revision or so :$  
+  
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  30 Nov 2002; foser <foser@gentoo.org> pango-1.1.3.ebuild :
+  Added smgltools-lite as docdep
+
+  21 Nov 2002; Martin Schlemmer <azarah@gentoo.org> pango-1.1.3.ebuild :
+  Add some enhancement patches from Redhat.
+
+*pango-1.1.3 (12 Nov 2002)
+
+  04 Feb 2003; Spider <spider@gentoo.org> 
+  Change DEBUG to DEBUGBUILD
+  
+  26 Nov 2002; Jon Nall <nall@gentoo.org> pango-1.1.3.ebuild :
+  added ~ppc to KEYWORDS
+
+  12 Nov 2002; foser <foser@gentoo.org> pango-1.1.3.ebuild :
+  GNOME 2.1.2 release
+
+*pango-1.1.2 (27 Oct 2002)
+
+  04 Feb 2003; Spider <spider@gentoo.org> 
+  Change DEBUG to DEBUGBUILD
+
+  27 Oct 2002; foser <foser@gentoo.org> pango-1.1.2.ebuild :
+  gnome 2.1
+
+*pango-1.0.5 (14 Oct 2002)
+
+  04 Feb 2003; Spider <spider@gentoo.org> 
+  Change DEBUG to DEBUGBUILD
+  
+  02 Nov 2002; foser <foser@gentoo.org> pango-1.0.5.ebuild :
+  Added sgmltools-lite as doc dep (bug #9564)
+
+  14 Oct 2002; foser <foser@gentoo.org> pango-1.0.5.ebuild :
+  New version
+
+*pango-1.0.4-r1 (4 Aug 2002)
+  
+  04 Feb 2003; Spider <spider@gentoo.org> 
+  Change DEBUG to DEBUGBUILD
+  
+  12 aug 2002; Spider <spider@gentoo.org> pango-1.0.4-r1.ebuild :
+  change freetype version to force update
+  
+  04 Aug 2002; Spider <spider@gentoo.org> pango-1.0.4-r1.ebuild :
+  Remove debugging, libtoolize
+  
+*pango-1.0.4 (4 Aug 2002)
+  
+  4 Aug 2002; Gabriele Giorgetti <stroke@gentoo.org> pango-1.0.4:
+  New version.
+
+*pango-1.0.3-r1 (16 Jul 2002)
+  
+  16 Jul 2002; Gabriele Giorgetti <stroke@gentoo.org> pango-1.0.3-r1:
+
+  Add --without-qt to configure. (Should fix bug #5074)
+  QT2 is only needed to build an example program 
+  (examples/qt-viewer.cc).
+
+
+*pango-1.0.3 (15 Jun 2002)
+
+  15 Jul 2002; Owen Stampflee <owen@gentoo.org> :
+
+  Added PPC to KEYWORDS.
+
+  15 Jun 2002; Spider <spider@gentoo.org>; pango-1.0.3.ebuild :
+  elibtoolize with libtool.eclass
+  move debug to eclass
+  new version
+
+*pango-1.0.2 (28 May 2002)
+  28 May 2002; Spider <spider@gentoo.org>; pango-1.0.2.ebuild :
+  new release. finally
+
+*pango-1.0.1-r4 (22 May 2002)
+  22 May 2002; Spider <spider@gentoo.org>; pango-1.0.1-r4.ebuild :
+  Add debug info back in
+
+
+
+*pango-1.0.1-r3 (9 May 2002)
+  9 May 2002; Spider <spider@gentoo.org>; pango-1.0.1-r3.ebuild :
+  fix some unnecessary deps. update DEPEND/RDEPEND
+  
+*pango-1.0.1-r2 (24 Apr 2002)
+  24 Apr 2002; Spider <spider@gentoo.org>; pango-1.0.1-r2.ebuild
+  Libtoolize
+
+*pango-1.0.1-r1 (11 Apr 2002)
+  11 Apr 2002; Spider <spider@gentoo.org>; pango-1.0.1-r1.ebuild
+   adding pango 1.0.1 into portage
+   USE="doc" will install extra documentation about the api's for your pleasure

@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare prerm pretend setup unpack
+DEPEND=app-eselect/eselect-opencl kernel_linux? ( >=sys-libs/glibc-2.6.1 ) X? ( >=app-eselect/eselect-opengl-1.0.9 ) app-arch/xz-utils kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources ) sys-apps/pciutils virtual/pkgconfig
+DESCRIPTION=NVIDIA Accelerated Graphics Driver
+EAPI=5
+HOMEPAGE=http://www.nvidia.com/
+IUSE=acpi multilib kernel_FreeBSD kernel_linux pax_kernel +tools gtk2 gtk3 +X uvm kernel_linux
+KEYWORDS=-* ~amd64 ~x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=GPL-2 NVIDIA-r2
+RDEPEND=app-eselect/eselect-opencl kernel_linux? ( >=sys-libs/glibc-2.6.1 ) X? ( >=app-eselect/eselect-opengl-1.0.9 ) acpi? ( sys-power/acpid ) tools? ( dev-libs/atk dev-libs/glib:2 x11-libs/gdk-pixbuf gtk2? ( >=x11-libs/gtk+-2.4:2 ) gtk3? ( x11-libs/gtk+:3 ) x11-libs/libX11 x11-libs/libXext x11-libs/pango[X] ) X? ( <x11-base/xorg-server-1.17.99:= >=x11-libs/libvdpau-0.3-r1 multilib? ( >=x11-libs/libX11-1.6.2[abi_x86_32] >=x11-libs/libXext-1.3.2[abi_x86_32] ) ) kernel_linux? ( virtual/modutils )
+REQUIRED_USE=tools? ( X || ( gtk2 gtk3 ) )
+RESTRICT=bindist mirror strip
+SLOT=0
+SRC_URI=amd64-fbsd? ( http://us.download.nvidia.com/XFree86/FreeBSD-x86_64/352.21/NVIDIA-FreeBSD-x86_64-352.21.tar.gz ) amd64? ( http://us.download.nvidia.com/XFree86/Linux-x86_64/352.21/NVIDIA-Linux-x86_64-352.21.run ) x86-fbsd? ( http://us.download.nvidia.com/XFree86/FreeBSD-x86/352.21/NVIDIA-FreeBSD-x86-352.21.tar.gz ) x86? ( http://us.download.nvidia.com/XFree86/Linux-x86/352.21/NVIDIA-Linux-x86-352.21.run )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	linux-info	8cbc678e083c23e4ad546ca6509cf304	linux-mod	101302d4b7b694ea9622bbffb187d0de	multilib	62927b3db3a589b0806255f3a002d5d3	nvidia-driver	800f567ff607d5d5171a8149456e294e	portability	a45c088f246ef5091e029f6285d7ce42	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438	unpacker	f300a7ca9131b1024a79762e8edd3c52	user	f54e098dd38ba1c0847a13e685b87747	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=ed37dcf53938ec6a071fbf9e5b013e43

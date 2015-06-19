@@ -1,0 +1,18 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/targets/systemd/package.use.mask,v 1.6 2015/06/10 02:24:39 floppym Exp $
+
+# Pacho Ramos <pacho@gentoo.org> (29 May 2014)
+# upower support is not needed on setups running systemd, also
+# relies on old upower (#508920)
+# Add telepathy-mission-control because of the same logic.
+>=mate-base/mate-session-manager-1.8.1-r1 upower
+>=net-im/telepathy-mission-control-5.16.2 upower
+
+# 'static-libs' support on sys-apps/systemd is not provided
+virtual/libgudev static-libs
+virtual/libudev static-libs
+sys-fs/cryptsetup static static-libs
+sys-fs/lvm2 static static-libs
+sys-fs/dmraid static
+dev-libs/libgudev static-libs

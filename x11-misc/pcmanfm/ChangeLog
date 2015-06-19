@@ -1,0 +1,464 @@
+# ChangeLog for x11-misc/pcmanfm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/pcmanfm/ChangeLog,v 1.111 2015/05/18 08:24:56 hwoarang Exp $
+
+  18 May 2015; Markos Chandras <hwoarang@gentoo.org> pcmanfm-1.2.3.ebuild,
+  pcmanfm-9999.ebuild:
+  Fix erroneous vim lowercase typos
+
+  17 May 2015; Markos Chandras <hwoarang@gentoo.org> pcmanfm-1.2.3.ebuild,
+  pcmanfm-9999.ebuild:
+  Set a good default LINGUAS if it's empty. Bug #548330
+
+  17 May 2015; Markos Chandras <hwoarang@gentoo.org> pcmanfm-1.2.3.ebuild,
+  pcmanfm-9999.ebuild:
+  Add l10n eclass support to drop unwanted locales. Add epatch_user. bug
+  #548330. Sync live ebuild as well
+
+  02 Apr 2015; Markus Meier <maekke@gentoo.org> pcmanfm-1.2.3.ebuild:
+  arm stable, bug #542042
+
+  28 Mar 2015; Agostino Sarubbo <ago@gentoo.org> pcmanfm-1.2.3.ebuild:
+  Stable for ppc, wrt bug #542042
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> pcmanfm-1.2.3.ebuild:
+  Stable for x86, wrt bug #542042
+
+  12 Mar 2015; Agostino Sarubbo <ago@gentoo.org> pcmanfm-1.2.3.ebuild:
+  Stable for amd64, wrt bug #542042
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> pcmanfm-1.2.3.ebuild:
+  add arm64 support, tested on A53 board
+
+  01 Feb 2015; Markos Chandras <hwoarang@gentoo.org> pcmanfm-1.1.2.ebuild,
+  pcmanfm-1.2.2.ebuild, pcmanfm-1.2.3.ebuild, pcmanfm-9999.ebuild:
+  Bring the virtual/freedesktop-icon-theme dependency back. Bug #538424
+
+*pcmanfm-1.2.3 (18 Oct 2014)
+
+  18 Oct 2014; Markos Chandras <hwoarang@gentoo.org> +pcmanfm-1.2.3.ebuild,
+  -pcmanfm-1.2.0.ebuild:
+  Version bump
+
+*pcmanfm-1.2.2 (06 Sep 2014)
+
+  06 Sep 2014; Markos Chandras <hwoarang@gentoo.org> +pcmanfm-1.2.2.ebuild:
+  Version bump. Bug #518134
+
+  09 Mar 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> pcmanfm-1.1.2.ebuild:
+  x86 stable wrt bug #494440
+
+*pcmanfm-1.2.0 (06 Mar 2014)
+
+  06 Mar 2014; Markos Chandras <hwoarang@gentoo.org> +pcmanfm-1.2.0.ebuild:
+  Version bump. Bug #502134
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> pcmanfm-1.1.2.ebuild:
+  Stable for ppc, wrt bug #494440
+
+  04 Mar 2014; Vicente Olivert Riera <vincent@gentoo.org> pcmanfm-1.1.2.ebuild:
+  Add ~mips keyword.
+
+  22 Feb 2014; Chema Alonso <nimiux@gentoo.org> pcmanfm-1.1.2.ebuild:
+  Stable for amd64 wrt bug #494440
+
+  20 Feb 2014; Markus Meier <maekke@gentoo.org> pcmanfm-1.1.2.ebuild:
+  arm stable, bug #494440
+
+  14 Dec 2013; Markos Chandras <hwoarang@gentoo.org> -pcmanfm-1.1.0-r1.ebuild:
+  Remove old
+
+  17 Aug 2013; Markos Chandras <hwoarang@gentoo.org> -pcmanfm-1.0.1.ebuild,
+  -pcmanfm-1.0.2.ebuild, -pcmanfm-1.0.ebuild, -pcmanfm-1.1.0.ebuild:
+  Remove old ebuilds
+
+*pcmanfm-1.1.2 (17 Aug 2013)
+
+  17 Aug 2013; Markos Chandras <hwoarang@gentoo.org> +pcmanfm-1.1.2.ebuild:
+  Version bump
+
+*pcmanfm-1.1.0-r1 (04 May 2013)
+
+  04 May 2013; Markos Chandras <hwoarang@gentoo.org> +pcmanfm-1.1.0-r1.ebuild,
+  pcmanfm-9999.ebuild:
+  Revbump to use libfm subslot deps
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> pcmanfm-1.1.0.ebuild:
+  Don't show elog messages always (#457596)
+
+*pcmanfm-1.1.0 (02 Nov 2012)
+
+  02 Nov 2012; Markos Chandras <hwoarang@gentoo.org> +pcmanfm-1.1.0.ebuild:
+  Version bump. This is pretty much identical to 1.0.2
+
+*pcmanfm-1.0.2 (02 Nov 2012)
+
+  02 Nov 2012; Markos Chandras <hwoarang@gentoo.org> +pcmanfm-1.0.2.ebuild:
+  Version bump
+
+*pcmanfm-1.0.1 (22 Sep 2012)
+
+  22 Sep 2012; Markos Chandras <hwoarang@gentoo.org> +pcmanfm-1.0.1.ebuild:
+  Version bump
+
+  25 Aug 2012; Markos Chandras <hwoarang@gentoo.org> ChangeLog:
+  Remove old ebuilds
+
+*pcmanfm-1.0 (12 Aug 2012)
+
+  12 Aug 2012; Markos Chandras <hwoarang@gentoo.org> +pcmanfm-1.0.ebuild,
+  -pcmanfm-1.0_rc1.ebuild:
+  Version bump. Remove old
+
+  21 Jul 2012; Markos Chandras <hwoarang@gentoo.org> pcmanfm-1.0_rc1.ebuild,
+  pcmanfm-9999.ebuild:
+  Use stricter dependencies for libfm
+
+*pcmanfm-1.0_rc1 (14 Jul 2012)
+
+  14 Jul 2012; Markos Chandras <hwoarang@gentoo.org> +pcmanfm-1.0_rc1.ebuild:
+  Version bump
+
+  18 Jun 2012; Markos Chandras <hwoarang@gentoo.org> pcmanfm-0.9.10.ebuild:
+  Backport automake-1.12 fix from bug #421101
+
+  14 Jun 2012; Markos Chandras <hwoarang@gentoo.org> pcmanfm-9999.ebuild:
+  Restrict tests for live ebuild
+
+  14 Jun 2012; Markos Chandras <hwoarang@gentoo.org> pcmanfm-9999.ebuild:
+  Drop -Werror due to new automake-1.12. Bug #421101
+
+  07 May 2012; Markos Chandras <hwoarang@gentoo.org> -pcmanfm-0.9.9.ebuild,
+  -pcmanfm-0.9.9_pre20110422.ebuild, -pcmanfm-0.9.9_pre20110614.ebuild:
+  remove old
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> pcmanfm-0.9.7-r2.ebuild,
+  pcmanfm-0.9.9_pre20110422.ebuild, pcmanfm-0.9.9_pre20110614.ebuild,
+  pcmanfm-0.9.9.ebuild, pcmanfm-0.9.10.ebuild, pcmanfm-9999.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  14 Apr 2012; Zac Medico <zmedico@gentoo.org> pcmanfm-0.9.10.ebuild:
+  Add ~amd64-linux keyword.
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> pcmanfm-0.9.10.ebuild:
+  Marking pcmanfm-0.9.10 ppc for bug 382255
+
+  11 Dec 2011; Markus Meier <maekke@gentoo.org> pcmanfm-0.9.10.ebuild:
+  arm stable, bug #382255
+
+  07 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> pcmanfm-0.9.10.ebuild:
+  x86 stable wrt bug #382255
+
+  04 Dec 2011; Markos Chandras <hwoarang@gentoo.org> pcmanfm-0.9.10.ebuild:
+  Stable on amd64 wrt bug #382255
+
+  04 Dec 2011; Markos Chandras <hwoarang@gentoo.org> pcmanfm-0.9.10.ebuild,
+  pcmanfm-9999.ebuild:
+  drop -g from CFLAGS when debug is enabled. Bug #382265
+
+*pcmanfm-0.9.10 (25 Oct 2011)
+
+  25 Oct 2011; Markos Chandras <hwoarang@gentoo.org> +pcmanfm-0.9.10.ebuild:
+  version bump
+
+  18 Sep 2011; Markus Meier <maekke@gentoo.org> pcmanfm-0.9.9.ebuild:
+  arm stable, bug #382255
+
+  12 Sep 2011; Markus Meier <maekke@gentoo.org> pcmanfm-0.9.9.ebuild:
+  x86 stable, bug #382255
+
+  10 Sep 2011; Markos Chandras <hwoarang@gentoo.org> pcmanfm-9999.ebuild:
+  Errr fix my previous commit where I removed git-2 eclass accidentally
+
+  10 Sep 2011; Markos Chandras <hwoarang@gentoo.org> pcmanfm-0.9.9.ebuild,
+  pcmanfm-9999.ebuild:
+  Drop -O0. Bug #382265
+
+  08 Sep 2011; Tony Vroon <chainsaw@gentoo.org> pcmanfm-0.9.9.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Tomáš "Mepho" Pružina in bug #382255.
+
+  20 Aug 2011; Markos Chandras <hwoarang@gentoo.org> pcmanfm-0.9.9.ebuild:
+  Fix libfm dependency. Bug #379773
+
+*pcmanfm-0.9.9 (10 Aug 2011)
+
+  10 Aug 2011; Markos Chandras <hwoarang@gentoo.org> +pcmanfm-0.9.9.ebuild:
+  Version bump
+
+  09 Aug 2011; Markos Chandras <hwoarang@gentoo.org>
+  pcmanfm-0.9.9_pre20110614.ebuild, pcmanfm-9999.ebuild:
+  Depend on virtual/freedesktop-icon-theme. Bug #376309
+
+  06 Aug 2011; Zac Medico <zmedico@gentoo.org>
+  pcmanfm-0.9.9_pre20110614.ebuild, pcmanfm-9999.ebuild:
+  Bump to EAPI 3, fix for prefix, and add ~x86-linux keyword.
+
+  29 Jul 2011; Samuli Suominen <ssuominen@gentoo.org>
+  pcmanfm-0.9.9_pre20110422.ebuild:
+  ppc stable wrt #365231
+
+  01 Jul 2011; Markos Chandras <hwoarang@gentoo.org>
+  pcmanfm-0.9.9_pre20110614.ebuild:
+  Fix dependencies. Bug #373169. Thanks to Matthias Bethke
+  <matthias@towiski.de>
+
+  25 Jun 2011; Markos Chandras <hwoarang@gentoo.org>
+  pcmanfm-0.9.9_pre20110422.ebuild, pcmanfm-0.9.9_pre20110614.ebuild,
+  pcmanfm-9999.ebuild:
+  migrate to git-2. Touch non-live ebuilds to silence repoman
+
+*pcmanfm-0.9.9_pre20110614 (14 Jun 2011)
+
+  14 Jun 2011; Markos Chandras <hwoarang@gentoo.org>
+  +pcmanfm-0.9.9_pre20110614.ebuild:
+  New snapshot
+
+  02 Jun 2011; Markus Meier <maekke@gentoo.org>
+  pcmanfm-0.9.9_pre20110422.ebuild:
+  arm stable, bug #365231
+
+  01 Jun 2011; Tobias Klausmann <klausman@gentoo.org>
+  pcmanfm-0.9.9_pre20110422.ebuild:
+  Keyworded on alpha, bug #330911
+
+  25 May 2011; Thomas Kahle <tomka@gentoo.org>
+  pcmanfm-0.9.9_pre20110422.ebuild:
+  x86 stable per bug 365231
+
+  29 Apr 2011; Markos Chandras <hwoarang@gentoo.org>
+  pcmanfm-0.9.9_pre20110422.ebuild:
+  Stable on amd64 wrt bug #365231
+
+*pcmanfm-0.9.9_pre20110422 (22 Apr 2011)
+
+  22 Apr 2011; Markos Chandras <hwoarang@gentoo.org>
+  -pcmanfm-0.9.9_pre20110216-r1.ebuild, +pcmanfm-0.9.9_pre20110422.ebuild:
+  Automated version bump. Remove old snapshots
+
+*pcmanfm-0.9.9_pre20110216-r1 (09 Mar 2011)
+
+  09 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  -pcmanfm-0.9.9_pre20110216.ebuild, +pcmanfm-0.9.9_pre20110216-r1.ebuild:
+  Fix tests. Bug 357125. Thanks to Diego Elio Pettenò. Remove deprecated
+  x-directory entry from desktop file
+
+  07 Mar 2011; Tobias Klausmann <klausman@gentoo.org> pcmanfm-0.9.7-r2.ebuild:
+  Keyworded on alpha, bug #330911
+
+  22 Feb 2011; Markos Chandras <hwoarang@gentoo.org>
+  pcmanfm-0.9.9_pre20110216.ebuild, pcmanfm-9999.ebuild:
+  Fix gtk+ dependencies. Bug #355761
+
+*pcmanfm-0.9.9_pre20110216 (16 Feb 2011)
+
+  16 Feb 2011; Markos Chandras <hwoarang@gentoo.org>
+  -pcmanfm-0.9.9_pre20110213.ebuild, +pcmanfm-0.9.9_pre20110216.ebuild:
+  Automated version bump. Remove old snapshots
+
+*pcmanfm-0.9.9_pre20110213 (13 Feb 2011)
+
+  13 Feb 2011; Markos Chandras <hwoarang@gentoo.org>
+  -pcmanfm-0.9.9_pre20110202.ebuild, +pcmanfm-0.9.9_pre20110213.ebuild:
+  New snapshots. Fixes bug #3095516
+
+*pcmanfm-0.9.9_pre20110202 (02 Feb 2011)
+
+  02 Feb 2011; Markos Chandras <hwoarang@gentoo.org> -pcmanfm-0.9.8.ebuild,
+  +pcmanfm-0.9.9_pre20110202.ebuild:
+  Introduce snapshot. Remove old broken version
+
+  22 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  pcmanfm-0.9.7-r2.ebuild:
+  ppc stable wrt #349724
+
+  02 Jan 2011; Markus Meier <maekke@gentoo.org> pcmanfm-0.9.7-r2.ebuild:
+  arm stable, bug #349724
+
+  02 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  pcmanfm-0.9.7-r2.ebuild:
+  x86 stable wrt bug #349724
+
+  01 Jan 2011; Markos Chandras <hwoarang@gentoo.org> pcmanfm-0.9.7-r2.ebuild:
+  Stable on amd64 wrt bug #349724
+
+  26 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> pcmanfm-0.9.7-r1.ebuild,
+  pcmanfm-0.9.7-r2.ebuild, pcmanfm-0.9.8.ebuild, pcmanfm-9999.ebuild:
+  Remove gnome-mount from libfm and pcmanfm dependencies and IUSE wrt #349012.
+
+  22 Dec 2010; Markos Chandras <hwoarang@gentoo.org> pcmanfm-0.5.2.ebuild,
+  metadata.xml:
+  Introduce desktop-integration use flag. Thanks to Samuel BAUER
+  <samuel.bauer@yahoo.fr>. Bug #349100
+
+  24 Oct 2010; Markus Meier <maekke@gentoo.org> pcmanfm-0.9.7-r2.ebuild:
+  add ~arm, bug #341031
+
+  21 Oct 2010; Brent Baude <ranger@gentoo.org> pcmanfm-0.9.7-r2.ebuild:
+  Marking pcmanfm-0.9.7-r2 ~ppc for bug 341031
+
+*pcmanfm-0.9.8 (17 Oct 2010)
+
+  17 Oct 2010; Markos Chandras <hwoarang@gentoo.org> +pcmanfm-0.9.8.ebuild:
+  Version bump
+
+  01 Oct 2010; Markos Chandras <hwoarang@gentoo.org> pcmanfm-9999.ebuild:
+  Move gnome,hal,udev dependencies from pcmanfm to libfm to actually reflect
+  the underlying code. Bug #330891
+
+  30 Aug 2010; Markos Chandras <hwoarang@gentoo.org> pcmanfm-9999.ebuild:
+  Bring gnome-mount dependency back
+
+*pcmanfm-0.9.7-r2 (25 Aug 2010)
+
+  25 Aug 2010; Markos Chandras <hwoarang@gentoo.org> -pcmanfm-0.9.7.ebuild,
+  +pcmanfm-0.9.7-r2.ebuild, pcmanfm-9999.ebuild:
+  Introduce gnome use flag to get rid of gvfs and gnome-mount dependency for
+  non-gnome users. Gvfs enables automounting support for gnome users.
+  Without that, the entries on fstab will be used instead. Thanks to Lisa
+  Milne <lisa@ltmnet.com> for pointing out. Bug #334391. 
+  Introduced virtual/eject  dependency per bug #333351
+
+  31 Jul 2010; Pacho Ramos <pacho@gentoo.org> pcmanfm-0.9.7-r1.ebuild:
+  amd64 stable, bug 327907
+
+  30 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  pcmanfm-0.9.7-r1.ebuild:
+  stable x86, bug 327907
+
+  17 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  pcmanfm-0.9.7-r1.ebuild:
+  Make gnome-mount depend on hal use flag. Yet another fix for bug #328567
+
+  16 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  pcmanfm-0.9.7-r1.ebuild:
+  Add gnome-base/gnome-mount dependency wrt bug #328567
+
+  12 Jul 2010; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Taking over maintainership
+
+  12 Jul 2010; Markos Chandras <hwoarang@gentoo.org> pcmanfm-9999.ebuild:
+  Add sys-fs/udisks as dependency and remove gnome-mount.
+  Fixes bug #327897
+
+*pcmanfm-9999 (22 Jun 2010)
+
+  22 Jun 2010; Markos Chandras <hwoarang@gentoo.org> +pcmanfm-9999.ebuild:
+  Moved live ebuild from lxde-overlay
+
+  03 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  pcmanfm-0.9.7-r1.ebuild, metadata.xml:
+  Add hal and udev use flag to enable flexibility on gvfs configuration
+
+  03 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  pcmanfm-0.9.7-r1.ebuild:
+  Make gvfs a runtime dependency. Thanks to Samuli for pointing this out
+
+*pcmanfm-0.9.7-r1 (03 Jun 2010)
+
+  03 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  +pcmanfm-0.9.7-r1.ebuild:
+  Force gvfs[hal] dependency to make automounting actually work
+
+  30 May 2010; Markos Chandras <hwoarang@gentoo.org> -pcmanfm-0.9.2.ebuild,
+  -pcmanfm-0.9.3.ebuild, -pcmanfm-0.9.5.ebuild:
+  Remove old pcmanfm ebuilds. Clean up useless SLOT 2
+
+*pcmanfm-0.9.7 (29 May 2010)
+
+  29 May 2010; Markos Chandras <hwoarang@gentoo.org> +pcmanfm-0.9.7.ebuild:
+  Version bump
+
+*pcmanfm-0.9.5 (02 May 2010)
+
+  02 May 2010; Víctor Ostorga <vostorga@gentoo.org> +pcmanfm-0.9.5.ebuild:
+  Version bump to 0.9.5 , fixing RDEPEND versions, adding ~x86 keyword
+
+*pcmanfm-0.9.3 (18 Mar 2010)
+
+  18 Mar 2010; Markos Chandras <hwoarang@gentoo.org> +pcmanfm-0.9.3.ebuild:
+  Version bump
+
+*pcmanfm-0.9.2 (13 Mar 2010)
+
+  13 Mar 2010; Ben de Groot <yngwin@gentoo.org> -pcmanfm-0.9-r1.ebuild,
+  -pcmanfm-0.9.1.ebuild, +pcmanfm-0.9.2.ebuild:
+  Version bump. Add needed intltool dep. Remove obsolete versions.
+
+*pcmanfm-0.9.1 (07 Mar 2010)
+
+  07 Mar 2010; Ben de Groot <yngwin@gentoo.org> +pcmanfm-0.9.1.ebuild:
+  Version bump
+
+*pcmanfm-0.9-r1 (27 Feb 2010)
+
+  27 Feb 2010; Ben de Groot <yngwin@gentoo.org> -pcmanfm-0.9.ebuild,
+  +pcmanfm-0.9-r1.ebuild:
+  Move new pcmanfm to slot 2 (bug 307019)
+
+  23 Feb 2010; Raúl Porcel <armin76@gentoo.org> pcmanfm-0.5.2.ebuild:
+  arm stable wrt #306433
+
+*pcmanfm-0.9 (22 Feb 2010)
+
+  22 Feb 2010; Ben de Groot <yngwin@gentoo.org> +pcmanfm-0.9.ebuild:
+  New experimental version of the rewritten-from-scratch pcmanfm. Dropping
+  keywords.
+
+  24 Jan 2010; Raúl Porcel <armin76@gentoo.org> pcmanfm-0.5.2.ebuild:
+  Add ~arm
+
+  21 Nov 2009; nixnut <nixnut@gentoo.org> pcmanfm-0.5.2.ebuild:
+  ppc stable #292698
+
+  20 Nov 2009; Markus Meier <maekke@gentoo.org> pcmanfm-0.5.2.ebuild:
+  amd64/x86 stable, bug #292698
+
+  05 Nov 2009; Víctor Ostorga <vostorga@gentoo.org> -pcmanfm-0.5.ebuild,
+  -pcmanfm-0.5.1.ebuild, -pcmanfm-0.5.1-r1.ebuild,
+  -files/pcmanfm-0.5.1-shared-mime-info-0.70.patch:
+  Cleaning out old ebuilds
+
+  29 Oct 2009; Víctor Ostorga <vostorga@gentoo.org> pcmanfm-0.5.2.ebuild,
+  +files/pcmanfm-0.5.2-fix-ca-translation.patch:
+  Fixing broken catalan translation, bug #290983
+
+*pcmanfm-0.5.2 (29 Oct 2009)
+
+  29 Oct 2009; Ben de Groot <yngwin@gentoo.org> +pcmanfm-0.5.2.ebuild:
+  Version bump. Drop shared-mime-info patch as the issue has been fixed
+  upstream.
+
+*pcmanfm-0.5.1-r1 (25 Oct 2009)
+
+  25 Oct 2009; Víctor Ostorga <vostorga@gentoo.org>
+  +pcmanfm-0.5.1-r1.ebuild,
+  +files/pcmanfm-0.5.1-shared-mime-info-0.70.patch:
+  Allowing pcmanfm to work against shared-mime-info-0.70 , patch thanks to
+  Samuli Suominen <ssuominen@gentoo.org> bug 288820
+
+  15 Aug 2009; Mounir Lamouri <volkmar@gentoo.org> pcmanfm-0.5.1.ebuild:
+  Keywording for ppc. Bug 271148
+
+  12 Jul 2009; Víctor Ostorga <vostorga@gentoo.org> pcmanfm-0.5.ebuild:
+  Fixing tests, closes bug #262733
+
+  05 Jun 2009; Ben de Groot <yngwin@gentoo.org> pcmanfm-0.5.1.ebuild:
+  Don't forget to inherit autotools... bug 272729
+
+*pcmanfm-0.5.1 (05 Jun 2009)
+
+  05 Jun 2009; Ben de Groot <yngwin@gentoo.org> +pcmanfm-0.5.1.ebuild,
+  +files/pcmanfm-find.desktop.patch:
+  Version bump. Fix desktop file to not break Gnome and possibly other
+  environments, bug 272318.
+
+  04 Sep 2008; Ben de Groot <yngwin@gentoo.org> metadata.xml:
+  Reassigning maintainership to lxde team as a whole
+
+*pcmanfm-0.5 (31 Aug 2008)
+
+  31 Aug 2008; Ben de Groot <yngwin@gentoo.org> +metadata.xml,
+  +pcmanfm-0.5.ebuild:
+  Initial commit. Ebuild based on the work done in Sunrise and freshgen
+  overlays.

@@ -1,0 +1,96 @@
+# ChangeLog for virtual/editor
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/editor/ChangeLog,v 1.30 2014/03/26 08:54:45 ulm Exp $
+
+  26 Mar 2014; Ulrich Müller <ulm@gentoo.org> editor-0.ebuild:
+  Update EAPI to 5.
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> editor-0.ebuild:
+  Add arm64 love.
+
+  16 Jan 2014; Mike Frysinger <vapier@gentoo.org> editor-0.ebuild:
+  Mark m68k/s390/sh stable.
+
+  26 Dec 2013; Ulrich Müller <ulm@gentoo.org> editor-0.ebuild:
+  Drop to unstable keyword on m68k, s390 and sh.
+
+  21 Feb 2013; Zac Medico <zmedico@gentoo.org> editor-0.ebuild:
+  Add ~arm-linux keyword.
+
+  07 Oct 2012; Ulrich Müller <ulm@gentoo.org> editor-0.ebuild:
+  Update package providing pico from pine to alpine.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> editor-0.ebuild:
+  keyword ~amd64-fbsd
+
+  22 Dec 2011; Ulrich Mueller <ulm@gentoo.org> editor-0.ebuild:
+  Dependencies should be kept in alphabetical order (except for nano).
+
+  21 Sep 2011; Mike Gilbert <floppym@gentoo.org> editor-0.ebuild:
+  Prefer vim over gvim to reduce the size of emerge -e @system.
+
+  07 May 2011; Ulrich Mueller <ulm@gentoo.org> editor-0.ebuild:
+  Update dependency after package move from easyedit to ee.
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> editor-0.ebuild:
+  Drop to ~mips
+
+  13 Mar 2010; Ulrich Mueller <ulm@gentoo.org> editor-0.ebuild:
+  Remove sys-apps/busybox, fixes bug 309147.
+
+  11 Mar 2010; Ulrich Mueller <ulm@gentoo.org> editor-0.ebuild:
+  Require USE=edit for app-misc/mc, bug 283113. Change EAPI to 2.
+
+  23 Jan 2010; Ulrich Mueller <ulm@gentoo.org> editor-0.ebuild:
+  Add sys-apps/busybox.
+
+  27 Dec 2009; Ulrich Mueller <ulm@gentoo.org> editor-0.ebuild:
+  Update dependency after package move from emacs-cvs to emacs-vcs.
+
+  15 Dec 2009; Jonathan Callen <abcd@gentoo.org> editor-0.ebuild:
+  QA: Add prefix keywords
+
+  09 Aug 2009; Ulrich Mueller <ulm@gentoo.org> editor-0.ebuild:
+  geresh and qe are gone, bugs 264174 and 275915. Remove them from RDEPEND.
+
+  22 Mar 2008; Ulrich Mueller <ulm@gentoo.org> editor-0.ebuild:
+  Remove mit-scheme since it is masked for removal, bug 202160.
+
+  15 Feb 2008; Christian Faulhammer <opfer@gentoo.org> editor-0.ebuild:
+  add app-editors/efte
+
+  01 Feb 2008; Ulrich Mueller <ulm@gentoo.org> editor-0.ebuild:
+  Undo previous change since bvi is a hex editor. Change LICENSE and HOMEPAGE
+  to empty string wrt bug 140180.
+
+  27 Jan 2008; Christian Faulhammer <opfer@gentoo.org> editor-0.ebuild:
+  add app-editors/bvi and fix LICENSE
+
+  16 Nov 2007; Ulrich Mueller <ulm@gentoo.org> editor-0.ebuild:
+  Add some alternatives to RDEPEND, and a comment about the criteria.
+
+  06 Nov 2007; Christian Faulhammer <opfer@gentoo.org> editor-0.ebuild:
+  remove app-text/yudit again, it is X only
+
+  06 Nov 2007; Christian Faulhammer <opfer@gentoo.org> editor-0.ebuild:
+  add app-text/yudit on request of ulm
+
+  12 Oct 2007; Ulrich Mueller <ulm@gentoo.org> editor-0.ebuild:
+  Add mail-client/pine for pico.
+
+  10 Oct 2007; Fabian Groffen <grobian@gentoo.org> editor-0.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  10 Oct 2007; Christian Faulhammer <opfer@gentoo.org> editor-0.ebuild:
+  app-editors/pico is a dumb ebuild not installing anything, so removing from
+  RDEPEND
+
+  10 Oct 2007; Ulrich Mueller <ulm@gentoo.org> editor-0.ebuild:
+  Add Jove and Hemlock.
+
+*editor-0 (10 Oct 2007)
+
+  10 Oct 2007; Christian Faulhammer <opfer@gentoo.org> +metadata.xml,
+  +editor-0.ebuild:
+  initial commit to remove all the PROVIDE=virtual/editor statements in
+  various ebuilds

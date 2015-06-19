@@ -1,0 +1,99 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sun Apr 21 16:14:18 UTC 2013
+Subject: 
+
+--- skychart-3.8-2450-src/skychart/library/getdss/Makefile
++++ skychart-3.8-2450-src/skychart/library/getdss/Makefile
+@@ -1,24 +1,24 @@
+ CPPFLAGS=-I. -O3 -fPIC $(arch_flags)
+ #### For Suns and similar wrong-endian computers, add -DWRONG_WAY_BYTE_ORDER.
+-CC            = gcc
++CC            ?= gcc
+ OSTYPE = $(shell uname)
+ ifneq ($(findstring Darwin,$(OSTYPE)),)
+ SO_Name = libgetdss.dylib
+-LDFLAGS=  -Wl,-single_module -dynamiclib  -lc -lm -lstdc++
++LDFLAGS +=  -Wl,-single_module -dynamiclib  -lc -lm -lstdc++
+ else
+ SO_Name = libgetdss.so
+-LDFLAGS= -shared -Wl,-soname,$(SO_Name) $(arch_flags)
++LDFLAGS += -shared -Wl,-soname,$(SO_Name) $(arch_flags)
+ endif
+ 
+ OBJS = getdss_lib.o dss.o extr_fit.o getpiece.o \
+ 	hdcmprss.o bitinput.o decode.o dodecode.o hinv.o \
+ 	platelst.o qtreedec.o
+-LIBS = -lm -lstdc++
++LIBS += -lm -lstdc++
+ 
+ all: $(SO_Name)
+ 
+ $(SO_Name):  $(OBJS)
+-	$(CC) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+ 	
+ clean:
+ 	rm -f $(OBJS) $(SO_Name)
+--- skychart-3.8-2450-src/skychart/library/plan404/Makefile
++++ skychart-3.8-2450-src/skychart/library/plan404/Makefile
+@@ -1,7 +1,7 @@
+ # Common flags
+-CC            = gcc
++CC            ?= gcc
+ #CFLAGS        = -O3 -ffast-math (fast-math removed for better compatibility )
+-CFLAGS        = -O3 -fPIC $(arch_flags)
++CFLAGS        += -fPIC $(arch_flags)
+ OSTYPE = $(shell uname)
+ ifneq ($(findstring Darwin,$(OSTYPE)),)
+ SO_Name       = libplan404.dylib
+@@ -35,7 +35,7 @@
+ 	$(CC) $(CFLAGS) -c $< -o $@
+ 
+ $(SO_Name): $(OBJ)
+-	$(CC) $(CFLAGS) $(LIBFLAGS) -o $@ $(OBJ)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(LIBFLAGS) -o $@ $(OBJ)
+ 
+ clean:
+ 	rm -f $(OBJ) $(SO_Name)
+--- skychart-3.8-2450-src/skychart/library/wcs/Makefile
++++ skychart-3.8-2450-src/skychart/library/wcs/Makefile
+@@ -1,5 +1,5 @@
+-CFLAGS= -w -fPIC $(arch_flags)
+-CC= gcc
++CFLAGS += -w -fPIC $(arch_flags)
++CC ?= gcc
+ 
+ OSTYPE = $(shell uname)
+ ifneq ($(findstring Darwin,$(OSTYPE)),)
+@@ -29,7 +29,7 @@
+ all: $(SO_Name)
+ 
+ $(SO_Name): $(OBJS)
+-	$(CC) $(CFLAGS) $(LIBFLAGS) -o $@ $(OBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(LIBFLAGS) -o $@ $(OBJS)
+ 
+ cdcwcs.o:	fitsfile.h wcs.h
+ actread.o:	fitsfile.h wcscat.h wcs.h fitshead.h wcslib.h
+--- skychart-3.8-2450-src/skychart/library/Makefile.in
++++ skychart-3.8-2450-src/skychart/library/Makefile.in
+@@ -24,14 +24,14 @@
+         $(MAKE) -C wcs -f Makefile.win64 all
+  else
+  ifeq ($(CPU_TARGET),i386)
+-        $(MAKE) -C getdss all arch_flags=-m32
+-        $(MAKE) -C plan404 all arch_flags=-m32
+-        $(MAKE) -C wcs all arch_flags=-m32
++        $(MAKE) -C getdss all
++        $(MAKE) -C plan404 all
++        $(MAKE) -C wcs all
+  else
+  ifeq ($(CPU_TARGET),x86_64)
+-        $(MAKE) -C getdss all arch_flags=-m64
+-        $(MAKE) -C plan404 all arch_flags=-m64
+-        $(MAKE) -C wcs all arch_flags=-m64
++        $(MAKE) -C getdss all
++        $(MAKE) -C plan404 all
++        $(MAKE) -C wcs all
+  else
+ 	$(MAKE) -C getdss all
+         $(MAKE) -C plan404 all

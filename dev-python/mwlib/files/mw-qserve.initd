@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/mwlib/files/mw-qserve.initd,v 1.1 2013/07/01 13:56:29 dev-zero Exp $
+
+description="mw-qserve is a job queue server used to distribute and manage jobs"
+
+command="/usr/bin/mw-qserve"
+command_args="--interface=${MW_QSERVE_INTERFACE} --port=${MW_QSERVE_PORT}"
+
+pidfile="/var/run/${SVCNAME}.pid"
+command_background="yes"
+
+start_stop_daemon_args="--user ${MW_QSERVE_USER:-mwlib} \
+	--group ${MW_QSERVE_GROUP:-mwlib} \
+	${MW_QSERVE_LOGFILE:+--stderr ${MW_QSERVE_LOGFILE}} \
+	${MW_QSERVE_LOGFILE:+--stdout ${MW_QSERVE_LOGFILE}}"
+
+depend() {
+	need net localmount
+}

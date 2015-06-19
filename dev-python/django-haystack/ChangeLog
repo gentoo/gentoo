@@ -1,0 +1,33 @@
+# ChangeLog for dev-python/django-haystack
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/django-haystack/ChangeLog,v 1.7 2015/06/08 06:59:01 idella4 Exp $
+
+  08 Jun 2015; Ian Delaney <idella4@gentoo.org> django-haystack-2.2.0.ebuild,
+  django-haystack-2.3.1.ebuild:
+  add dep sphinx for doc build
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+*django-haystack-2.3.1 (08 Apr 2015)
+
+  08 Apr 2015; Justin Lecher <jlec@gentoo.org> +django-haystack-2.3.1.ebuild,
+  -django-haystack-2.1.0.ebuild, metadata.xml:
+  Version Bump, bug #545438
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> django-haystack-2.2.0.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> django-haystack-2.2.0.ebuild:
+  amd64 stable, bug 540290
+
+*django-haystack-2.2.0 (11 Aug 2014)
+
+  11 Aug 2014; Ian Delaney <idella4@gentoo.org> +django-haystack-2.2.0.ebuild:
+  bump, fixes Bug #519422
+
+*django-haystack-2.1.0.ebuild (14 Jun 2014)
+
+  14 Jun 2014; Ian Delaney <idella4@gentoo.org>
+  +django-haystack-2.1.0.ebuild, +metadata.xml:
+  new ebuild, dep to reviewboard-2.0.1, wrt Bug #508088, closes Bug #281096

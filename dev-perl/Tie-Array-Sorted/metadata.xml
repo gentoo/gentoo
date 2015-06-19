@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">Tie-Array-Sorted</remote-id>
+    <remote-id type="cpan-module">Tie::Array::Sorted</remote-id>
+    <remote-id type="cpan-module">Tie::Array::Sorted::Lazy</remote-id>
+  </upstream>
+</pkgmetadata>

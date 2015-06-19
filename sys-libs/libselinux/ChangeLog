@@ -1,0 +1,648 @@
+# ChangeLog for sys-libs/libselinux
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libselinux/ChangeLog,v 1.144 2015/06/09 15:35:39 swift Exp $
+
+*libselinux-9999 (09 Jun 2015)
+
+  09 Jun 2015; Sven Vermeulen <swift@gentoo.org> +libselinux-9999.ebuild:
+  Adding libselinux-9999 to better support upstream integrations
+
+  10 May 2015; Jason Zaman <perfinion@gentoo.org> libselinux-2.4.ebuild:
+  stabilize selinux 2.4 userland
+
+  18 Apr 2015; Jason Zaman <perfinion@gentoo.org> -libselinux-2.3-r1.ebuild,
+  -libselinux-2.4_rc6.ebuild, -libselinux-2.4_rc7.ebuild:
+  Drop old RCs
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> libselinux-2.2.2-r5.ebuild,
+  libselinux-2.3-r1.ebuild, libselinux-2.3-r2.ebuild, libselinux-2.4.ebuild,
+  libselinux-2.4_rc6.ebuild, libselinux-2.4_rc7.ebuild:
+  Drop old Python implementations
+
+  04 Mar 2015; Sven Vermeulen <swift@gentoo.org> libselinux-2.4.ebuild:
+  Fix build failure on x32 (bug #541618)
+
+*libselinux-2.4 (04 Feb 2015)
+
+  04 Feb 2015; Jason Zaman <perfinion@gentoo.org> +libselinux-2.4.ebuild:
+  Version bump
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> libselinux-2.3-r2.ebuild:
+  Stable for x86, wrt bug #535682
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org> libselinux-2.3-r2.ebuild:
+  Stable for amd64, wrt bug #535682
+
+*libselinux-2.4_rc7 (06 Dec 2014)
+
+  06 Dec 2014; Jason Zaman <perfinion@gentoo.org> +libselinux-2.4_rc7.ebuild,
+  -libselinux-2.4_rc2.ebuild, -libselinux-2.4_rc5.ebuild:
+  version bump and ebuild clean up, drop old RC
+
+*libselinux-2.3-r2 (04 Dec 2014)
+
+  04 Dec 2014; Jason Zaman <perfinion@gentoo.org> +libselinux-2.3-r2.ebuild,
+  libselinux-2.4_rc6.ebuild:
+  Call python_optimize, bug 531638
+
+*libselinux-2.4_rc6 (14 Nov 2014)
+
+  14 Nov 2014; Sven Vermeulen <swift@gentoo.org> +libselinux-2.4_rc6.ebuild:
+  Bump to rc6, add python3_4 to PYTHON_COMPAT (fixes bug 529176); rc6 also fixes
+  unconfined issue when USE=-unconfined is set
+
+*libselinux-2.4_rc5 (29 Oct 2014)
+
+  29 Oct 2014; Sven Vermeulen <swift@gentoo.org> +libselinux-2.4_rc5.ebuild,
+  -libselinux-2.4_rc4.ebuild:
+  Bump to 2.4_rc5
+
+*libselinux-2.4_rc4 (07 Oct 2014)
+
+  07 Oct 2014; Sven Vermeulen <swift@gentoo.org> +libselinux-2.4_rc4.ebuild:
+  Bump to 2.4-rc4
+
+*libselinux-2.4_rc2 (21 Sep 2014)
+
+  21 Sep 2014; Sven Vermeulen <swift@gentoo.org>
+  +files/0005-use-ruby-include-with-rubylibver.patch,
+  +files/0006-build-related-fixes-bug-500674.patch, +libselinux-2.4_rc2.ebuild,
+  libselinux-2.3-r1.ebuild:
+  Noved to github; also add in masked 2.4 series
+
+  16 Sep 2014; Brian Dolbec <dolsen@gentoo.org> libselinux-2.3-r1.ebuild:
+  Add python-3.4 target, needed for dep of portage. Tested and 
+  confirmed working by perfinion.
+
+  05 Aug 2014; Sven Vermeulen <swift@gentoo.org> -libselinux-2.2.2-r4.ebuild,
+  -libselinux-2.3.ebuild, -libselinux-2.3_rc1-r1.ebuild,
+  -libselinux-2.3_rc1.ebuild:
+  Remove obsoleted ebuilds
+
+  30 Jul 2014; Sven Vermeulen <swift@gentoo.org> libselinux-2.3-r1.ebuild:
+  Fix bug #514194 - Stabilization of SELinux userspace 2.3
+
+  14 Jul 2014; Sven Vermeulen <swift@gentoo.org> libselinux-2.2.2-r5.ebuild:
+  Stabilize (fix segfault with setfiles)
+
+  09 Jul 2014; Sven Vermeulen <swift@gentoo.org> libselinux-2.2.2-r5.ebuild:
+  Fix bug #516608 - Backport pcre version fix from libselinux-2.3
+
+*libselinux-2.3-r1 (09 Jul 2014)
+
+  09 Jul 2014; Sven Vermeulen <swift@gentoo.org> +libselinux-2.3-r1.ebuild:
+  Fix bug #516608 (segfault with setfiles)
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> libselinux-2.3.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  07 Jun 2014; Sven Vermeulen <swift@gentoo.org> libselinux-2.3.ebuild:
+  Update libpcre and libsepol deps to include MULTILIB_USEDEP
+
+  10 May 2014; Sven Vermeulen <swift@gentoo.org>
+  -files/libselinux-2.1.9-mountsys.patch,
+  -files/libselinux-2.1.9-support_ruby19.patch,
+  -files/libselinux-2.1.12-mountsys.patch:
+  Removing unused patches in files dir
+
+  10 May 2014; Sven Vermeulen <swift@gentoo.org> -libselinux-2.1.13-r1.ebuild,
+  -libselinux-2.1.13-r2.ebuild, -libselinux-2.1.13-r3.ebuild,
+  -libselinux-2.1.13-r4.ebuild, -libselinux-2.2-r1.ebuild,
+  -libselinux-2.2.1-r1.ebuild, -libselinux-2.2.2-r1.ebuild,
+  -libselinux-2.2.2-r2.ebuild:
+  Spring cleanup
+
+*libselinux-2.3 (09 May 2014)
+
+  09 May 2014; Sven Vermeulen <swift@gentoo.org> +libselinux-2.3.ebuild:
+  Bump to 2.3
+
+  30 Apr 2014; Sven Vermeulen <swift@gentoo.org> libselinux-2.2.2-r5.ebuild:
+  Fix bug #509004 by stabilizing r5 (enable ruby bindings)
+
+*libselinux-2.2.2-r5 (29 Apr 2014)
+*libselinux-2.3_rc1-r1 (29 Apr 2014)
+
+  29 Apr 2014; Sven Vermeulen <swift@gentoo.org> +libselinux-2.2.2-r5.ebuild,
+  +libselinux-2.3_rc1-r1.ebuild:
+  Add USE=ruby support, now without ruby-ng eclass calls, fixes bug #509004
+
+*libselinux-2.3_rc1 (28 Apr 2014)
+
+  28 Apr 2014; Sven Vermeulen <swift@gentoo.org> +libselinux-2.3_rc1.ebuild:
+  2.3-rc1 release
+
+  21 Apr 2014; Sven Vermeulen <swift@gentoo.org> libselinux-2.2.2-r4.ebuild:
+  Stabilize 2.2.2-r4
+
+  23 Mar 2014; Sven Vermeulen <swift@gentoo.org> -libselinux-2.2.2-r3.ebuild,
+  -files/libselinux-2.2.2-build.patch:
+  Dropping incorrect builds
+
+*libselinux-2.2.2-r4 (23 Mar 2014)
+
+  23 Mar 2014; Sven Vermeulen <swift@gentoo.org> +libselinux-2.2.2-r4.ebuild:
+  Fix bug #504832 - audit2why.so failures due to dynamic linking
+
+*libselinux-2.2.2-r3 (08 Mar 2014)
+
+  08 Mar 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/libselinux-2.2.2-build.patch, +libselinux-2.2.2-r3.ebuild:
+  Clean up linking behavior #500674 by SpanKY.
+
+  04 Mar 2014; Samuli Suominen <ssuominen@gentoo.org>
+  libselinux-2.2.2-r2.ebuild:
+  Fix installation of python site-packages w/ multilib-strict by passing LIBDIR
+  to "make install" phase wrt #502954
+
+*libselinux-2.2.2-r2 (04 Mar 2014)
+
+  04 Mar 2014; Sven Vermeulen <swift@gentoo.org> +libselinux-2.2.2-r2.ebuild:
+  Fix bug #502544 - Honor multilib dir in pkgconfig file
+
+*libselinux-2.2.2-r1 (02 Feb 2014)
+
+  02 Feb 2014; Sven Vermeulen <swift@gentoo.org> +libselinux-2.2.2-r1.ebuild:
+  Fix bug #480960 (multilib support). Drop ruby eclass as it messes with
+  defaults and I do not understand it. Bump to 2.2.2 release
+
+  02 Feb 2014; Sven Vermeulen <swift@gentoo.org> libselinux-2.2.1-r1.ebuild:
+  Support python 3.3, see bug 499604
+
+  02 Feb 2014; Sven Vermeulen <swift@gentoo.org> libselinux-2.2.1-r1.ebuild:
+  Stabilize for amd64 and x86
+
+  20 Jan 2014; Sven Vermeulen <swift@gentoo.org> libselinux-2.2-r1.ebuild:
+  Stabilize for x86 and amd64
+
+  23 Dec 2013; Sven Vermeulen <swift@gentoo.org> -libselinux-2.1.12.ebuild,
+  -libselinux-2.1.12-r1.ebuild, -libselinux-2.1.12-r2.ebuild,
+  -libselinux-2.1.12-r3.ebuild:
+  Cleaning old version
+
+*libselinux-2.2.1-r1 (10 Dec 2013)
+
+  10 Dec 2013; Sven Vermeulen <swift@gentoo.org> +libselinux-2.2.1-r1.ebuild:
+  Adding 2.2.1 release
+
+*libselinux-2.2-r1 (04 Nov 2013)
+
+  04 Nov 2013; Sven Vermeulen <swift@gentoo.org> +libselinux-2.2-r1.ebuild:
+  New libselinux release
+
+  27 Oct 2013; Sven Vermeulen <swift@gentoo.org> libselinux-2.1.13-r4.ebuild:
+  Fix bug 488102 - Only call ruby-ng pkg_setup if USE=ruby is set
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> libselinux-2.1.13-r4.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  20 Aug 2013; Sven Vermeulen <swift@gentoo.org> libselinux-2.1.13-r4.ebuild:
+  Stabilize, the issue with file_contexts.local is important to get in stable
+
+  10 Aug 2013; Sven Vermeulen <swift@gentoo.org> libselinux-2.1.13-r4.ebuild:
+  Create (parent) directories for local file
+
+*libselinux-2.1.13-r4 (28 Jul 2013)
+
+  28 Jul 2013; Sven Vermeulen <swift@gentoo.org> +libselinux-2.1.13-r4.ebuild:
+  Migrate to python-r1, fix bug #473502
+
+  07 Jul 2013; Sven Vermeulen <swift@gentoo.org> -libselinux-2.1.9.ebuild,
+  -libselinux-2.1.9-r1.ebuild, -libselinux-2.1.9-r2.ebuild,
+  -libselinux-2.1.9-r3.ebuild:
+  Summer cleaning
+
+*libselinux-2.1.13-r3 (23 Jun 2013)
+
+  23 Jun 2013; Sven Vermeulen <swift@gentoo.org> +libselinux-2.1.13-r3.ebuild:
+  Fix bug 473714 (add libpthread in Libs)
+
+  16 Jun 2013; Sven Vermeulen <swift@gentoo.org> libselinux-2.1.13-r2.ebuild:
+  Stabilization
+
+*libselinux-2.1.13-r2 (25 Apr 2013)
+
+  25 Apr 2013; Sven Vermeulen <swift@gentoo.org> +libselinux-2.1.13-r1.ebuild,
+  +libselinux-2.1.13-r2.ebuild:
+  Fix bug #467258 - add selinux_current_policy_path
+
+*libselinux-2.1.13-r1 (25 Apr 2013)
+
+  25 Apr 2013; Sven Vermeulen <swift@gentoo.org> +libselinux-2.1.13-r1.ebuild:
+  New upstream release
+
+  16 Apr 2013; Sven Vermeulen <swift@gentoo.org> libselinux-2.1.12-r3.ebuild:
+  Stabilize libselinux-2.1.12-r3
+
+*libselinux-2.1.12-r3 (29 Mar 2013)
+
+  29 Mar 2013; Sven Vermeulen <swift@gentoo.org> +libselinux-2.1.12-r3.ebuild:
+  Fix error return codes (bug #462626) and Python3 failure if built with swig-1
+  (bug #463410)
+
+  30 Dec 2012; Sven Vermeulen libselinux-2.1.12-r2.ebuild:
+  Stabilize
+
+*libselinux-2.1.12-r2 (03 Dec 2012)
+
+  03 Dec 2012; <swift@gentoo.org> +libselinux-2.1.12-r2.ebuild:
+  Fix bugs #444372 and #443928
+
+  17 Nov 2012; <swift@gentoo.org> libselinux-2.1.12-r1.ebuild:
+  Stabilize
+
+  17 Nov 2012; <swift@gentoo.org> libselinux-2.1.9-r3.ebuild:
+  Stabilize
+
+*libselinux-2.1.12-r1 (29 Oct 2012)
+
+  29 Oct 2012; <swift@gentoo.org> +libselinux-2.1.12-r1.ebuild:
+  Adding support for static-libs and RDEPEND on libpcre[static-libs] when
+  needed. See bug #436752. Also updates patching method and adds
+  Requires.private towards libpcre.
+
+  13 Oct 2012; <swift@gentoo.org> libselinux-2.1.12.ebuild:
+  Supporting user-provided patches using epatch_user
+
+*libselinux-2.1.12 (09 Oct 2012)
+*libselinux-2.1.9-r3 (09 Oct 2012)
+
+  09 Oct 2012; <swift@gentoo.org> +libselinux-2.1.9-r3.ebuild,
+  +files/libselinux-2.1.9-support_ruby19.patch, +libselinux-2.1.12.ebuild,
+  +files/libselinux-2.1.12-mountsys.patch:
+  Introducing upstream version and fix for ruby19
+
+  06 Oct 2012; <swift@gentoo.org> libselinux-2.1.9-r2.ebuild:
+  Stabilize
+
+  03 Oct 2012; Mike Frysinger <vapier@gentoo.org> libselinux-2.1.9-r2.ebuild:
+  Fix /usr/lib handling in utils subdir too.
+
+*libselinux-2.1.9-r2 (08 Sep 2012)
+
+  08 Sep 2012; <swift@gentoo.org> +libselinux-2.1.9-r2.ebuild:
+  Fix bugs #429456 and #417303
+
+  06 Aug 2012; Patrick Lauer <patrick@gentoo.org> libselinux-2.1.9-r1.ebuild:
+  Restricting python ABIs that don't work
+
+  10 Jul 2012; <swift@gentoo.org> libselinux-2.1.9-r1.ebuild:
+  Stabilization
+
+  26 Jun 2012; Mike Gilbert <floppym@gentoo.org> libselinux-2.1.9-r1.ebuild,
+  libselinux-2.1.9.ebuild:
+  Restrict pypy per Arfrever.
+
+  13 May 2012; <swift@gentoo.org> -libselinux-2.1.0.ebuild:
+  Removing obsoleted ebuild
+
+*libselinux-2.1.9-r1 (13 May 2012)
+
+  13 May 2012; <swift@gentoo.org> +libselinux-2.1.9-r1.ebuild,
+  +files/libselinux-2.1.9-mountsys.patch:
+  Mount /sys before trying to mount /sys/fs/selinux from within the policy load
+  functions, bug #414779
+
+  29 Apr 2012; <swift@gentoo.org> libselinux-2.1.9.ebuild:
+  Stabilization
+
+*libselinux-2.1.9 (31 Mar 2012)
+
+  31 Mar 2012; <swift@gentoo.org> +libselinux-2.1.9.ebuild:
+  Bump to version 2.1.9
+
+  12 Nov 2011; <swift@gentoo.org> -libselinux-2.0.94.ebuild,
+  -libselinux-2.0.98.ebuild:
+  Remove deprecated ebuilds
+
+  23 Oct 2011; <swift@gentoo.org> libselinux-2.1.0.ebuild:
+  Stabilization (tracker #384231)
+
+  12 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  -libselinux-2.0.71.ebuild, -libselinux-2.0.85.ebuild,
+  -files/libselinux-2.0.85-headers.patch, -files/compat.py:
+  Removed deprecated versions
+
+*libselinux-2.1.0 (03 Aug 2011)
+
+  03 Aug 2011; Anthony G. Basile <blueness@gentoo.org>
+  +libselinux-2.1.0.ebuild:
+  Bump to 20110727 SELinux userspace release
+
+*libselinux-2.0.98 (15 Jul 2011)
+
+  15 Jul 2011; Anthony G. Basile <blueness@gentoo.org>
+  +libselinux-2.0.98.ebuild:
+  Bump to 2.0.98 - proxy for SwifT
+
+  28 May 2011; Anthony G. Basile <blueness@gentoo.org>
+  libselinux-2.0.94.ebuild:
+  Stable amd64 x86
+
+  13 Feb 2011; Anthony G. Basile <blueness@gentoo.org> metadata.xml:
+  Updated metadata.xml to reflect new selinux herd.
+
+  06 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  libselinux-2.0.94.ebuild:
+  Add "python" USE flag.
+
+  05 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  libselinux-2.0.94.ebuild:
+  Set SUPPORT_PYTHON_ABIS (bug #353763). Respect AR and CC.
+
+*libselinux-2.0.94 (05 Feb 2011)
+
+  05 Feb 2011; Anthony G. Basile <blueness@gentoo.org>
+  +libselinux-2.0.94.ebuild:
+  New upstream release.
+
+  29 Sep 2010; Mike Frysinger <vapier@gentoo.org> libselinux-2.0.85.ebuild,
+  +files/libselinux-2.0.85-headers.patch:
+  Fix by Chris Richards for building with glibc-2.12 #338302.
+
+  16 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  libselinux-2.0.71.ebuild, libselinux-2.0.85.ebuild:
+  Delete calls to deprecated python_version().
+
+  02 Aug 2009; Chris PeBenito <pebenito@gentoo.org>
+  libselinux-2.0.71.ebuild, libselinux-2.0.85.ebuild:
+  Add python_need_rebuild.
+
+*libselinux-2.0.85 (02 Aug 2009)
+
+  02 Aug 2009; Chris PeBenito <pebenito@gentoo.org>
+  +libselinux-2.0.85.ebuild:
+  New upstream release.
+
+  18 Jul 2009; Chris PeBenito <pebenito@gentoo.org>
+  -libselinux-1.34.14.ebuild, libselinux-2.0.71.ebuild:
+  Mark stable. Remove old ebuilds.
+
+*libselinux-2.0.71 (03 Oct 2008)
+
+  03 Oct 2008; Chris PeBenito <pebenito@gentoo.org>
+  +libselinux-2.0.71.ebuild:
+  Initial commit of 2.0 libselinux.
+
+  29 May 2008; Ali Polatel <hawking@gentoo.org> libselinux-1.34.14.ebuild:
+  python_mod_optimize is ROOT aware. Fixed python_mod_cleanup.
+
+  13 May 2008; Chris PeBenito <pebenito@gentoo.org>
+  -libselinux-1.28-r1.ebuild, -libselinux-1.30.ebuild,
+  -libselinux-1.34.0.ebuild, -libselinux-1.34.13.ebuild,
+  libselinux-1.34.14.ebuild:
+  Mark 1.34.14 stable, clear old ebuilds.
+
+  11 May 2008; Chris PeBenito <pebenito@gentoo.org>
+  libselinux-1.34.0.ebuild, libselinux-1.34.13.ebuild,
+  libselinux-1.34.14.ebuild:
+  Fix bug #221501.
+
+*libselinux-1.34.14 (29 Jan 2008)
+
+  29 Jan 2008; Chris PeBenito <pebenito@gentoo.org>
+  +libselinux-1.34.14.ebuild:
+  New upstream bugfix release.
+
+*libselinux-1.34.13 (18 Oct 2007)
+
+  18 Oct 2007; Chris PeBenito <pebenito@gentoo.org>
+  +libselinux-1.34.13.ebuild:
+  New upstream release.
+
+  04 Jun 2007; Chris PeBenito <pebenito@gentoo.org>
+  libselinux-1.34.0.ebuild:
+  Mark stable.
+
+  16 Feb 2007; Stephen Bennett <spb@gentoo.org> libselinux-1.34.0.ebuild:
+  Add missing swig depend. Bug #167007
+
+*libselinux-1.34.0 (15 Feb 2007)
+
+  15 Feb 2007; Chris PeBenito <pebenito@gentoo.org>
+  +libselinux-1.34.0.ebuild:
+  New upstream release.
+
+  23 Oct 2006; Chris PeBenito <pebenito@gentoo.org>
+  libselinux-1.30.29.ebuild:
+  Fix depend for glibc
+
+  09 Oct 2006; Chris PeBenito <pebenito@gentoo.org>
+  libselinux-1.30.29.ebuild:
+  Stable to make repoman happy.
+
+*libselinux-1.30.29 (05 Oct 2006)
+
+  05 Oct 2006; Chris PeBenito <pebenito@gentoo.org>
+  +libselinux-1.30.29.ebuild:
+  Add SVN snapshot.
+
+  31 Jul 2006; Chris PeBenito <pebenito@gentoo.org> libselinux-1.30.ebuild:
+  Mark stable, long overdue.
+
+  07 Apr 2006; Chris PeBenito <pebenito@gentoo.org> libselinux-1.30.ebuild:
+  Split python wrapper compile into a separate emake to ensure the main
+  library is built before trying to build the wrapper. Fixes bug #129074.
+
+  22 Mar 2006; Chris PeBenito <pebenito@gentoo.org> -libselinux-1.24.ebuild,
+  -libselinux-1.28.ebuild, libselinux-1.28-r1.ebuild:
+  Mark 1.28-r1 stable, clean out old ebuilds.
+
+*libselinux-1.30 (18 Mar 2006)
+
+  18 Mar 2006; Chris PeBenito <pebenito@gentoo.org> +libselinux-1.30.ebuild:
+  New upstream release.
+
+  22 Feb 2006; Stephen Bennett <spb@gentoo.org> libselinux-1.28.ebuild:
+  Alpha stable
+
+*libselinux-1.28-r1 (20 Feb 2006)
+
+  20 Feb 2006; Chris PeBenito <pebenito@gentoo.org> +files/compat.py,
+  +libselinux-1.28-r1.ebuild:
+  Add python-selinux compatability aliases to swig wrapper.
+
+  19 Feb 2006; Joshua Kinard <kumba@gentoo.org> libselinux-1.28.ebuild:
+  Marked stable on mips.
+
+  09 Feb 2006; Chris PeBenito <pebenito@gentoo.org> libselinux-1.28.ebuild:
+  Move python_version out of global scope.
+
+  29 Jan 2006; Chris PeBenito <pebenito@gentoo.org> libselinux-1.28.ebuild:
+  Add python version handling to fix #120829, and add -fPIC to LDFLAGS to
+  hopefully fix #119271.
+
+  17 Jan 2006; Chris PeBenito <pebenito@gentoo.org> libselinux-1.28.ebuild:
+  Mark stable, x86, amd64, ppc, sparc.
+
+  14 Jan 2006; Stephen Bennett <spb@gentoo.org> libselinux-1.28.ebuild:
+  Added ~alpha
+
+  15 Dec 2005; Chris PeBenito <pebenito@gentoo.org> libselinux-1.28.ebuild:
+  Tighten up versioning to try to prevent mismatch problems as seen in #112348.
+
+*libselinux-1.28 (09 Dec 2005)
+
+  09 Dec 2005; Chris PeBenito <pebenito@gentoo.org>
+  -files/libselinux-1.22.diff, -libselinux-1.22-r1.ebuild,
+  +libselinux-1.28.ebuild:
+  New upstream release.
+
+  09 Sep 2005; Chris PeBenito <pebenito@gentoo.org> libselinux-1.24.ebuild:
+  Mark stable.
+
+*libselinux-1.24 (25 Jun 2005)
+
+  25 Jun 2005; Chris PeBenito <pebenito@gentoo.org> -libselinux-1.20.ebuild,
+  -libselinux-1.22.ebuild, +libselinux-1.24.ebuild:
+  New upstream release.
+
+  13 May 2005; Chris PeBenito <pebenito@gentoo.org>
+  libselinux-1.22-r1.ebuild:
+  Mark stable.
+
+  10 May 2005; Stephen Bennett <spb@gentoo.org> libselinux-1.22.ebuild:
+  mips stable
+
+*libselinux-1.22-r1 (08 May 2005)
+
+  08 May 2005; Chris PeBenito <pebenito@gentoo.org>
+  +files/libselinux-1.22.diff, +libselinux-1.22-r1.ebuild:
+  A couple fixes, including one for bug #91921.
+
+  01 May 2005; Stephen Bennett <spb@gentoo.org> libselinux-1.22.ebuild:
+  Mark ~mips.
+
+  01 May 2005; Chris PeBenito <pebenito@gentoo.org> libselinux-1.22.ebuild:
+  Mark stable.
+
+*libselinux-1.22 (13 Mar 2005)
+
+  13 Mar 2005; Chris PeBenito <pebenito@gentoo.org> +libselinux-1.22.ebuild:
+  New upstream release.
+
+  13 Feb 2005; Chris PeBenito <pebenito@gentoo.org> libselinux-1.20.ebuild:
+  Mark stable.
+
+*libselinux-1.20 (07 Jan 2005)
+
+  07 Jan 2005; Chris PeBenito <pebenito@gentoo.org> libselinux-1.18.ebuild,
+  +libselinux-1.20.ebuild:
+  New upstream release.  Mark 1.18 stable.
+
+  03 Jan 2005; Chris PeBenito <pebenito@gentoo.org> libselinux-1.16.ebuild,
+  libselinux-1.18.ebuild:
+  Switch to libc virtual for DEP since uclibc now has xattr support.
+
+*libselinux-1.18 (14 Nov 2004)
+
+  14 Nov 2004; Chris PeBenito <pebenito@gentoo.org>
+  +files/selinuxconfig.c.diff, +libselinux-1.18.ebuild:
+  New upstream release.
+
+*libselinux-1.16 (07 Sep 2004)
+
+  07 Sep 2004; Chris PeBenito <pebenito@gentoo.org> +libselinux-1.16.ebuild:
+  New upstream release.
+
+*libselinux-1.14 (02 Jul 2004)
+
+  02 Jul 2004; Chris PeBenito <pebenito@gentoo.org> +libselinux-1.14.ebuild:
+  New upstream version.
+
+  11 Jun 2004; Chris PeBenito <pebenito@gentoo.org> -libselinux-1.10.ebuild,
+  libselinux-1.12.ebuild:
+  Mark stable
+
+*libselinux-1.12 (14 May 2004)
+
+  14 May 2004; Chris PeBenito <pebenito@gentoo.org> +libselinux-1.12.ebuild:
+  New upstream release.
+
+*libselinux-1.10 (17 Apr 2004)
+
+  17 Apr 2004; Chris PeBenito <pebenito@gentoo.org> +libselinux-1.10.ebuild:
+  New upstream version.
+
+  08 Apr 2004; Chris PeBenito <pebenito@gentoo.org> libselinux-1.8.ebuild:
+  Mark stable for 2004.1
+
+*libselinux-1.8 (12 Mar 2004)
+
+  12 Mar 2004; Chris PeBenito <pebenito@gentoo.org> libselinux-1.8.ebuild:
+  New upstream release.
+
+*libselinux-1.6 (24 Feb 2004)
+
+  24 Feb 2004; Chris PeBenito <pebenito@gentoo.org> libselinux-1.6.ebuild:
+  New upstream release.
+
+  16 Dec 2003; Chris PeBenito <pebenito@gentoo.org> libselinux-1.4.ebuild:
+  Mark stable.
+
+*libselinux-1.4 (06 Dec 2003)
+
+  06 Dec 2003; Chris PeBenito <pebenito@gentoo.org> libselinux-1.4.ebuild:
+  New upstream version.
+
+  29 Oct 2003; Joshua Brindle <method@gentoo.org> libselinux-1.2-r2.ebuild:
+  added sparc
+
+*libselinux-1.2-r2 (20 Oct 2003)
+
+  20 Oct 2003; Chris PeBenito <pebenito@gentoo.org> libselinux-1.2-r2.ebuild,
+  files/libselinux-1.2-attr.diff:
+  Compile against sys-apps/attr only if linux-headers are older than 2.4.20.
+
+*libselinux-1.2-r1 (07 Oct 2003)
+
+  07 Oct 2003; Chris PeBenito <pebenito@gentoo.org> libselinux-1.2-r1.ebuild,
+  files/libselinux-1.2-gentoo.diff:
+  Move libraries to /lib, to fix problems with having a separate /usr during
+  booting.
+
+*libselinux-1.2 (03 Oct 2003)
+
+  03 Oct 2003; Chris PeBenito <pebenito@gentoo.org> libselinux-1.2.ebuild,
+  files/libselinux-1.2-const.diff:
+  New upstream version.
+
+  22 Sep 2003; <paul@gentoo.org> metadata.xml:
+  Fix metadata.xml
+
+  21 Aug 2003; Chris PeBenito <pebenito@gentoo.org> libselinux-1.1-r1.ebuild:
+  Add a dep for portage. The newer versions have labelling support for the old
+  API.
+
+  18 Aug 2003; Chris PeBenito <pebenito@gentoo.org> libselinux-1.1-r1.ebuild,
+  metadata.xml:
+  Fix license, this is public-domain, not GPL-2. Use package description in RPM
+  spec file as metadata.xml long description.
+
+  15 Aug 2003; Chris PeBenito <pebenito@gentoo.org> libselinux-1.0.ebuild,
+  libselinux-1.1-r1.ebuild, files/libselinux-1.0-gentoo.diff:
+  Mark stable
+
+*libselinux-1.1-r1 (14 Aug 2003)
+
+  14 Aug 2003; Chris PeBenito <pebenito@gentoo.org> libselinux-1.1-r1.ebuild,
+  libselinux-1.1.ebuild, files/libselinux-1.1-linkfix.diff:
+  Add fix for a random linking problem that causes libselinux to work
+  incorrectly.
+
+*libselinux-1.1 (14 Aug 2003)
+
+  14 Aug 2003; Chris PeBenito <pebenito@gentoo.org> libselinux-1.1.ebuild,
+  files/libselinux-1.1-gentoo.diff:
+  New upstream version
+
+  04 Aug 2003; Chris PeBenito <pebenito@gentoo.org>
+  files/libselinux-1.0-gentoo.diff:
+  Add on a NSA nullbyte patch to the gentoo patch
+
+*libselinux-1.0 (03 Aug 2003)
+
+  03 Aug 2003; Chris PeBenito <pebenito@gentoo.org> libselinux-1.0.ebuild,
+  metadata.xml, files/libselinux-1.0-gentoo.diff:
+  Initial commit

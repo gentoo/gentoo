@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci</herd>
+<longdescription lang="en">
+  The Matrix Algebra on GPU and Multicore Architectures
+  project aims to develop a dense linear algebra library
+  similar to LAPACK but for heterogeneous/hybrid architectures, starting
+  with current "Multicore+GPU" systems.
+</longdescription>
+<use>
+  <flag name="fermi">Compile for GPU NVIDIA Fermi family (2.x cards)</flag>
+  <flag name="kepler">Compile for GPU NVIDIA Kepler family (GF 6xx cards)</flag>
+</use>
+</pkgmetadata>

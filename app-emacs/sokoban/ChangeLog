@@ -1,0 +1,30 @@
+# ChangeLog for app-emacs/sokoban
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/sokoban/ChangeLog,v 1.7 2014/03/29 12:02:26 ulm Exp $
+
+  29 Mar 2014; Ulrich Müller <ulm@gentoo.org> -sokoban-1.04_p20030614.ebuild:
+  Remove old.
+
+  29 Mar 2014; Agostino Sarubbo <ago@gentoo.org> sokoban-1.4.ebuild:
+  Stable for x86, wrt bug #504226
+
+  22 Mar 2014; Chema Alonso <nimiux@gentoo.org> sokoban-1.4.ebuild:
+  Stable for amd64 wrt bug #504226
+
+*sokoban-1.4 (11 Feb 2014)
+
+  11 Feb 2014; Ulrich Müller <ulm@gentoo.org> +sokoban-1.4.ebuild:
+  Version bump. Change to GNU ELPA as upstream.
+
+  22 May 2010; Pacho Ramos <pacho@gentoo.org> sokoban-1.04_p20030614.ebuild:
+  stable amd64, bug 304179
+
+  11 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  sokoban-1.04_p20030614.ebuild:
+  stable x86, bug 304179
+
+*sokoban-1.04_p20030614 (07 Jan 2010)
+
+  07 Jan 2010; Ulrich Mueller <ulm@gentoo.org> +files/50sokoban-gentoo.el,
+  +sokoban-1.04_p20030614.ebuild, +metadata.xml:
+  Initial import, from Emacs overlay. Ebuild contributed by me.

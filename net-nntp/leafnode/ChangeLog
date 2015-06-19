@@ -1,0 +1,454 @@
+# ChangeLog for net-nntp/leafnode
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-nntp/leafnode/ChangeLog,v 1.42 2013/08/26 11:02:12 patrick Exp $
+
+*leafnode-1.11.10 (26 Aug 2013)
+
+  26 Aug 2013; Patrick Lauer <patrick@gentoo.org> +leafnode-1.11.10.ebuild:
+  Bump
+
+  06 Feb 2013; Michael Palimaka <kensington@gentoo.org> -files/local.groups,
+  -files/moderators, -leafnode-1.11.5.ebuild:
+  Remove old.
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> leafnode-1.11.5.ebuild,
+  leafnode-1.11.8.ebuild:
+  Drop sparc keywords
+
+  24 Feb 2012; Brent Baude <ranger@gentoo.org> leafnode-1.11.8.ebuild:
+  Marking leafnode-1.11.8 ppc for bug 403017
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> leafnode-1.11.8.ebuild:
+  x86 stable wrt bug #403017
+
+  11 Feb 2012; Agostino Sarubbo <ago@gentoo.org> leafnode-1.11.8.ebuild:
+  Stable for amd64, wrt bug #403017
+
+  11 Feb 2012; Agostino Sarubbo <ago@gentoo.org> leafnode-1.11.8.ebuild:
+  Fixed dodoc failure, convert src_install to emake, port to EAPI4
+
+*leafnode-1.11.8 (31 Jul 2011)
+
+  31 Jul 2011; Patrick Lauer <patrick@gentoo.org> -leafnode-1.11.6.ebuild,
+  -leafnode-1.11.7.ebuild, +leafnode-1.11.8.ebuild:
+  Bump, remove old
+
+  14 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -leafnode-2.0.0_alpha20070108.ebuild:
+  Remove alpha verion that is masked since 2005 and not updated.
+
+*leafnode-1.11.7 (22 Oct 2009)
+
+  22 Oct 2009; Patrick Lauer <patrick@gentoo.org> +leafnode-1.11.7.ebuild:
+  Bump, fixes #288713
+
+  20 Jun 2008; Sven Wegener <swegener@gentoo.org>
+  leafnode-2.0.0_alpha20070108.ebuild:
+  Add ~amd64 keyword.
+
+  20 Jun 2008; Sven Wegener <swegener@gentoo.org>
+  leafnode-2.0.0_alpha20070108.ebuild:
+  Drop bindnow-flags, bug #227011.
+
+  23 Mar 2007; Sven Wegener <swegener@gentoo.org> -leafnode-1.11.3.ebuild,
+  -leafnode-1.11.4.ebuild, +leafnode-1.11.6.ebuild:
+  Version bump. Cleanup.
+
+  13 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  leafnode-1.11.5.ebuild:
+  Stable on sparc wrt #167718
+
+  05 Mar 2007; Raúl Porcel <armin76@gentoo.org> leafnode-1.11.5.ebuild:
+  x86 stable wrt bug 167718
+
+*leafnode-2.0.0_alpha20070108 (18 Feb 2007)
+
+  18 Feb 2007; Sven Wegener <swegener@gentoo.org>
+  -leafnode-2.0.0_alpha20060831.ebuild,
+  +leafnode-2.0.0_alpha20070108.ebuild:
+  Version bump in the development series.
+
+  21 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  leafnode-1.11.5.ebuild:
+  ppc stable
+
+*leafnode-2.0.0_alpha20060831 (06 Oct 2006)
+
+  06 Oct 2006; Sven Wegener <swegener@gentoo.org>
+  -leafnode-2.0.0_alpha20060711.ebuild,
+  +leafnode-2.0.0_alpha20060831.ebuild:
+  Version bump in the development series.
+
+*leafnode-2.0.0_alpha20060711 (09 Aug 2006)
+
+  09 Aug 2006; Sven Wegener <swegener@gentoo.org>
+  -leafnode-2.0.0_alpha20060321.ebuild,
+  +leafnode-2.0.0_alpha20060711.ebuild:
+  Version bump in the development series.
+
+  06 Aug 2006; Simon Stelling <blubb@gentoo.org> leafnode-1.11.5.ebuild:
+  stable on amd64
+
+  06 May 2006; Jason Wever <weeve@gentoo.org> leafnode-1.11.3.ebuild:
+  Stable on SPARC.
+
+*leafnode-2.0.0_alpha20060321 (09 Apr 2006)
+*leafnode-1.11.5 (09 Apr 2006)
+
+  09 Apr 2006; Sven Wegener <swegener@gentoo.org> +leafnode-1.11.5.ebuild,
+  -leafnode-2.0.0_alpha20050914.ebuild,
+  +leafnode-2.0.0_alpha20060321.ebuild:
+  Version bump.
+
+  25 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  leafnode-2.0.0_alpha20050914.ebuild:
+  Use bindnow-flags function instead of -Wl,-z,now.
+
+*leafnode-1.11.4 (23 Nov 2005)
+
+  23 Nov 2005; Sven Wegener <swegener@gentoo.org> +leafnode-1.11.4.ebuild:
+  Version bump.
+
+*leafnode-2.0.0_alpha20050914 (25 Sep 2005)
+
+  25 Sep 2005; Sven Wegener <swegener@gentoo.org>
+  -leafnode-2.0.0_alpha20050514.ebuild,
+  +leafnode-2.0.0_alpha20050914.ebuild:
+  Version bump in the development series.
+
+*leafnode-2.0.0_alpha20050514 (11 Jun 2005)
+
+  11 Jun 2005; Sven Wegener <swegener@gentoo.org> -leafnode-1.11.2.ebuild,
+  -leafnode-2.0.0_alpha20050422.ebuild,
+  +leafnode-2.0.0_alpha20050514.ebuild:
+  Removed old vulnerable ebuild. Version bump in the development series.
+
+  10 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  leafnode-1.11.3.ebuild:
+  Stable on ppc.
+
+  10 Jun 2005; Sven Wegener <swegener@gentoo.org> leafnode-1.11.3.ebuild:
+  Stable on x86, security bug #95650.
+
+*leafnode-1.11.3 (09 Jun 2005)
+
+  09 Jun 2005; Sven Wegener <swegener@gentoo.org> leafnode-1.11.2.ebuild,
+  +leafnode-1.11.3.ebuild, leafnode-2.0.0_alpha20050422.ebuild:
+  Version bump.
+
+  07 May 2005; Sven Wegener <swegener@gentoo.org> -leafnode-1.11.0.ebuild:
+  Removed old vulnerable ebuilds.
+
+  05 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  leafnode-1.11.2.ebuild:
+  Stable on ppc.
+
+*leafnode-1.11.2 (05 May 2005)
+
+  05 May 2005; Sven Wegener <swegener@gentoo.org> -leafnode-1.11.1.ebuild,
+  +leafnode-1.11.2.ebuild:
+  Version bump, security bug #91546. Stable on x86.
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  leafnode-1.11.0.ebuild:
+  Stable on ppc.
+
+*leafnode-1.11.1 (26 Apr 2005)
+
+  26 Apr 2005; Sven Wegener <swegener@gentoo.org> -leafnode-1.10.8.ebuild,
+  +leafnode-1.11.1.ebuild:
+  Version bump. Removed old ebuild.
+
+  22 Apr 2005; Sven Wegener <swegener@gentoo.org> leafnode-1.11.0.ebuild:
+  Marked stable on x86.
+
+*leafnode-1.11.0 (16 Mar 2005)
+
+  16 Mar 2005; Sven Wegener <swegener@gentoo.org> -leafnode-1.10.6.ebuild,
+  -leafnode-1.10.7.ebuild, +leafnode-1.11.0.ebuild:
+  Version bump. Removed old ebuilds.
+
+  14 Mar 2005; Sven Wegener <swegener@gentoo.org> leafnode-1.10.8.ebuild:
+  Marked stable on x86.
+
+  21 Feb 2005; Simon Stelling <blubb@gentoo.org> leafnode-1.10.8.ebuild:
+  added ~amd64
+
+*leafnode-2.0.0_alpha20050215 (17 Feb 2005)
+
+  17 Feb 2005; Sven Wegener <swegener@gentoo.org>
+  -leafnode-2.0.0_alpha20041227.ebuild,
+  +leafnode-2.0.0_alpha20050215.ebuild:
+  Version bump in the development series.
+
+*leafnode-1.10.8 (23 Jan 2005)
+
+  23 Jan 2005; Sven Wegener <swegener@gentoo.org> +leafnode-1.10.8.ebuild:
+  Version bump.
+
+*leafnode-1.10.7 (17 Jan 2005)
+
+  17 Jan 2005; Sven Wegener <swegener@gentoo.org> +metadata.xml,
+  +files/fetchnews.cron, +files/leafnode.xinetd, +files/local.groups,
+  +files/moderators, +files/texpire.cron, +leafnode-1.10.6.ebuild,
+  +leafnode-1.10.7.ebuild, +leafnode-2.0.0_alpha20041227.ebuild:
+  Moved from net-news/leafnode to net-nntp/leafnode.
+
+*leafnode-2.0.0_alpha20041227 (31 Dec 2004)
+
+  31 Dec 2004; Sven Wegener <swegener@gentoo.org>
+  -leafnode-2.0.0_alpha20041215.ebuild,
+  +leafnode-2.0.0_alpha20041227.ebuild:
+  Version bump. Added support for the pam USE flag. Bug #76075 and #76077 by
+  Daniel Webert.
+
+  19 Dec 2004; Sven Wegener <swegener@gentoo.org> +files/local.groups,
+  +files/moderators, leafnode-2.0.0_alpha20041215.ebuild:
+  Added example local.groups and moderators files. Fixed /var/spool/news
+  permissions. Thanks to Daniel Webert <rockoo@rockoo.homelinux.org> in bug
+  #74845.
+
+*leafnode-2.0.0_alpha20041215 (18 Dec 2004)
+
+  18 Dec 2004; Sven Wegener <swegener@gentoo.org>
+  -leafnode-2.0.0_alpha20041113.ebuild,
+  +leafnode-2.0.0_alpha20041215.ebuild:
+  Version bump in the development series.
+
+*leafnode-2.0.0_alpha20041113 (05 Dec 2004)
+
+  05 Dec 2004; Sven Wegener <swegener@gentoo.org>
+  -leafnode-2.0.0_alpha20041007.ebuild,
+  +leafnode-2.0.0_alpha20041113.ebuild:
+  Version bump in the development series.
+
+*leafnode-1.10.7 (22 Nov 2004)
+
+  22 Nov 2004; Sven Wegener <swegener@gentoo.org> -leafnode-1.10.5.ebuild,
+  +leafnode-1.10.7.ebuild:
+  Version bump. Removed old ebuild.
+
+  13 Nov 2004; Sven Wegener <swegener@gentoo.org> leafnode-1.10.6.ebuild:
+  Marked stable on x86.
+
+  22 Oct 2004; Jason Wever <weeve@gentoo.org>
+  leafnode-2.0.0_alpha20041007.ebuild:
+  Added ~sparc keyword.
+
+*leafnode-2.0.0_alpha20041007 (17 Oct 2004)
+
+  17 Oct 2004; Sven Wegener <swegener@gentoo.org>
+  -leafnode-2.0.0_alpha20040513.ebuild,
+  -leafnode-2.0.0_alpha20040813.ebuild,
+  +leafnode-2.0.0_alpha20041007.ebuild:
+  Version bump in the development series. Removed old development ebuilds.
+
+*leafnode-1.10.6 (03 Oct 2004)
+
+  03 Oct 2004; Sven Wegener <swegener@gentoo.org> +leafnode-1.10.6.ebuild:
+  Version bump.
+
+  03 Oct 2004; Sven Wegener <swegener@gentoo.org> -leafnode-1.10.1.ebuild,
+  -leafnode-1.10.2.ebuild, -leafnode-1.10.4.ebuild, leafnode-1.10.5.ebuild,
+  -leafnode-1.9.49.ebuild, -leafnode-1.9.50.ebuild:
+  Marked stable on x86. Removed old ebuilds.
+
+*leafnode-1.10.5 (04 Sep 2004)
+
+  04 Sep 2004; Sven Wegener <swegener@gentoo.org> +leafnode-1.10.5.ebuild:
+  Version bump.
+
+*leafnode-2.0.0_alpha20040813 (16 Aug 2004)
+
+  16 Aug 2004; Sven Wegener <swegener@gentoo.org>
+  +leafnode-2.0.0_alpha20040813.ebuild:
+  Version bump in the development series.
+
+*leafnode-1.10.4 (16 Aug 2004)
+
+  16 Aug 2004; Sven Wegener <swegener@gentoo.org> +leafnode-1.10.4.ebuild:
+  Version bump.
+
+*leafnode-1.10.2 (22 Jul 2004)
+
+  22 Jul 2004; Sven Wegener <swegener@gentoo.org> +leafnode-1.10.2.ebuild:
+  Version bump.
+
+*leafnode-2.0.0_alpha20040513 (29 Jun 2004)
+
+  29 Jun 2004; Sven Wegener <swegener@gentoo.org>
+  -leafnode-2.0.0_alpha20040206.ebuild, +leafnode-2.0.0_alpha20040513.ebuild:
+  Version bump to 2.0.0_alpha20040513 in the pre-release series and removed the
+  older ebuild as upstream source package has been dropped. Thanks to Daniel
+  Webert <daniel_webert@web.de> in bug #55365. Fixed bug #43094 so that leafnode
+  looks in the right directories for configuration files. Thanks to Rui Malheiro
+  <rmalheiro@6mil.pt> for reporting and providing a patch. Tidied the ebuild a
+  bit. Thanks to tove <bugs@veller.net> in bug #43039 for reporting and
+  providing a solution.
+
+*leafnode-1.10.1 (29 Jun 2004)
+
+  29 Jun 2004; Sven Wegener <swegener@gentoo.org> files/fetchnews.cron,
+  files/texpire.cron, +leafnode-1.10.1.ebuild, leafnode-1.9.49.ebuild,
+  leafnode-1.9.50.ebuild:
+  Version bump to 1.10.1 in the stable series. This should close bug #50177
+  (leafnode 1.9.19 to 1.9.52 doesn't recover from dupes in some groups) and
+  #53089 (Leafnode 1.9.54 ebuild, fixes memory leak). Thanks to Dirk-Lueder
+  Kreie <deelkar@gmx.de> for both reports. Tidied the ebuilds a bit as part of
+  bug #43039.
+
+  19 Jun 2004; Sven Wegener <swegener@gentoo.org> +metadata.xml:
+  Added metadata.xml
+
+  04 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> leafnode-1.9.42.ebuild,
+  leafnode-2.0.0_alpha20030621.ebuild, leafnode-2.0.0_alpha20031028.ebuild:
+  thin ebuilds
+
+  24 Apr 2004; Ferris McCormick <fmccor@gentoo.org> leafnode-1.9.50.ebuild:
+  Add ~sparc keyword at user request (build verified)
+
+*leafnode-2.0.0_alpha20040206 (26 Feb 2004)
+
+  26 Feb 2004; Stewart Honsberger <blkdeath@gentoo.org>
+  leafnode-2.0.0_alpha20040206.ebuild:
+  Version bump.
+
+  26 Feb 2004; Stewart Honsberger <blkdeath@gentoo.org>
+  leafnode-1.9.49.ebuild, leafnode-1.9.50.ebuild:
+  Added ~ppc
+
+  25 Feb 2004; Stewart Honsberger <blkdeath@gentoo.org>
+  leafnode-1.9.49.ebuild:
+  Marked 1.9.49 stable on x86
+
+*leafnode-1.9.50 (25 Feb 2004)
+
+  25 Feb 2004; Stewart Honsberger <blkdeath@gentoo.org>
+  leafnode-1.9.50.ebuild:
+  Version bump.
+
+*leafnode-1.9.49 (17 Feb 2004)
+
+  17 Feb 2004; Stewart Honsberger <blkdeath@gentoo.org>
+  leafnode-1.9.49.ebuild:
+  pkg_postinst ${S} mis-use corrected.
+
+*leafnode-2.0.0_alpha20031028 (20 Nov 2003)
+
+  20 Nov 2003; Stewart Honsberger <blkdeath@gentoo.org>
+  leafnode-2.0.0_alpha20031028.ebuild:
+  Removed slot'ing due to file incompatabilities. This version should be
+  installed by itself.
+
+  17 Nov 2003; Stewart Honsberger <blkdeath@gentoo.org> metadata.xml:
+  Version bump, ${S} and mkdir fixes
+
+  30 Oct 2003; Martin Holzer <mholzer@gentoo.org> leafnode-1.9.42.ebuild,
+  leafnode-2.0.0_alpha20030621.ebuild:
+  adding /var/lib/news
+
+  21 Oct 2003; Martin Holzer <mholzer@gentoo.org> leafnode-1.9.42.ebuild,
+  leafnode-2.0.0_alpha20030621.ebuild:
+  Changing xinetd to virtual/inetd. Closes #31706.
+
+*leafnode-1.9.42 (28 Jun 2003)
+
+  28 Jun 2003; Daniel Ahlberg <aliz@gentoo.org> leafnode-1.9.42.ebuild :
+  Comitting directly to stable becuse of severe loss of data bugfixes. Closing #21599.
+
+*leafnode-2.0.0_alpha20030621 (27 Jun 2003)
+
+  27 Jun 2003; Stewart Honsberger <blkdeath@gentoo.org>
+  leafnode-2.0.0_alpha20030621.ebuild:
+  Initial ebuild for Leafnode 2. Functionality enhancements, etc.
+  NOTE: This is ALPHA software. Use/test at your own peril!
+  
+  Initial ebuild contributed by Torsten <t_veller@gmx.de>
+
+*leafnode-1.9.36 (18 Mar 2003)
+
+  18 Mar 2003; Martin Holzer <mholzer@gentoo.org> leafnode-1.9.31.ebuild,
+  leafnode-1.9.36.ebuild:
+  version bumped. added addictional docs being installed. closes #17745.
+
+*leafnode-1.9.33 (09 Mar 2003)
+
+  09 Mar 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
+
+*leafnode-1.9.31 (02 Jan 2003)
+
+  02 Jan 2003; Daniel Ahlberg <aliz@gentoo.org> leafnode-1.9.31.ebuild :
+  Security update.
+  19 Jan 2003; Thomas Raschbacher <lordvan@gentoo.org> leafnode-1.9.31.ebuild:
+  fixed download location (bug #14056) cuz its now on sf.net
+
+*leafnode-1.9.30-r1 (30 Dec 2002)
+  30 Dec 2002; Thomas Raschbacher <lordvan@gentoo.org> leafnode-1.9.30-r1 ebuild:
+  fixed dep for xinetd(reported in IRC by SirDodger in #gentoo.de)
+  
+*leafnode-1.9.30 (30 Dec 2002)
+  30 Dec 2002; Thomas Raschbacher <lordvan@gentoo.org> leafnode-1.9.30 ebuild:
+  Version bump and removed patch again :)
+	
+*leafnode-1.9.29 (06 Nov 2002)
+
+  06 Nov 2002; Bruce A. Locke <blocke@shivan.org> leafnode-1.9.29.ebuild:
+  Version bump with upstream patch.  Reminder from bug #7781, submitted by
+  markus-krainer@chello.at (Markus Krainer).
+
+*leafnode-1.9.24 (03 Aug 2002)
+
+  03 Aug 2002; Bruce A. Locke <blocke@shivan.org> leafnode-1.9.24.ebuild,
+  files/digest-leafnode-1.9.24, files/fetchnews.cron, files/texpire.cron:
+
+  Version bump, dodoc update, and two new cron files contributed by
+  Markus Krainer (markus-krainer@chello.at)
+
+*leafnode-1.9.22 (23 Apr 2002)
+
+  23 Apr 2002; Markus Krainer <krainer@chello.at> leafnode-1.9.22.ebuild,
+  files/digest-leafnode-1.9.22, ChangeLog :
+
+  - New version 1.9.22
+  - Fix /var/lock/news not being created (bug #1976)
+
+*leafnode-1.9.21 (16 Apr 2002)
+
+  16 Apr 2002; Bruce A. Locke <blocke@shivan.org> leafnode-1.9.21.ebuild:
+
+  Committed to CVS as 1.9.21 ebuild
+
+  07 Apr 2002; Markus Krainer <krainer@chello.at> leafnode-1.9.20.ebuild,
+  files/digest-leafnode-1.9.20, ChangeLog :
+
+  - New version 1.9.20
+  - Removed "--host" option for ./configure (seems deprecated)
+  - Added "--localstatedir=/var" to ./configure (use /var instead of /usr/var)
+  - Added "--sysconfdir=/etc/leafnode" to ./configure
+  - Changed INSTALLROOT to DESTDIR in make install
+  - Removed doc_german from dodoc 
+  - display a warning as there are incompatible changes to prev. version
+
+*leafnode-1.9.19 (24 Feb 2002)
+
+  24 Feb 2002; Chris Houser <chouser@gentoo.org> leafnode-1.9.19.ebuild :
+
+  - More verbose error messages
+  - Removed extraneous settings
+  - Moved creation of news spool dirs to post-install, so that they aren't
+    removed on unmerge
+  - User's CFLAGS settings were being ignored.  Fixed.
+  - Checked in to ebuild tree
+
+  6 Feb 2002; M. Krainer <krainer@chello.at> leafnode-1.9.19.ebuild,
+  files/leafnode.xinetd :
+
+  - Added german documentation to /usr/share/doc/leafnode-1.9.19/doc_german
+  - Added configuration file /etc/xinetd.d/leafnode-nntp (service is
+    disabled by default)
+
+  5 Feb 2002; M. Krainer <krainer@chello.at> leafnode-1.9.19.ebuild,
+  ChangeLog, files/digest-leafnode-1.9.19 :
+
+  - Initial ebuild and ChangeLog for leafnode.

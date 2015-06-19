@@ -1,0 +1,99 @@
+# ChangeLog for net-mail/qmail-qfilter
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/qmail-qfilter/ChangeLog,v 1.25 2011/07/20 17:24:46 pacho Exp $
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #118937
+
+  14 Jan 2010; Thilo Bangert <bangert@gentoo.org>
+  qmail-qfilter-2.1-r1.ebuild:
+  s/src_prepare/src_configure/
+
+  14 Jan 2010; Thilo Bangert <bangert@gentoo.org> -qmail-qfilter-2.0.ebuild,
+  +qmail-qfilter-2.1-r1.ebuild:
+  make multilib ready - remove old version - EAPI=2
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> qmail-qfilter-2.0.ebuild,
+  qmail-qfilter-2.1.ebuild:
+  Remove virtual/libc
+
+  29 Mar 2008; Markus Meier <maekke@gentoo.org> qmail-qfilter-2.1.ebuild:
+  amd64 stable, bug #207409
+
+  08 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  qmail-qfilter-2.1.ebuild:
+  ppc stable, bug #207409
+
+  30 Jan 2008; Raúl Porcel <armin76@gentoo.org> qmail-qfilter-2.1.ebuild:
+  sparc stable wrt #207409
+
+  25 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  qmail-qfilter-2.1.ebuild:
+  remove redundant cd S
+
+  25 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  qmail-qfilter-2.1.ebuild:
+  stable x86, bug 207409
+
+  23 Feb 2007; Thilo Bangert <bangert@gentoo.org> qmail-qfilter-2.1.ebuild:
+  remove ROOT misuse
+
+  22 Feb 2007; Thilo Bangert <bangert@gentoo.org> qmail-qfilter-2.0.ebuild,
+  qmail-qfilter-2.1.ebuild:
+  einfo -> elog
+
+  24 Jul 2006; Thilo Bangert <bangert@gentoo.org> qmail-qfilter-2.1.ebuild,
+  -qmail-qfilter-2.1-r1.ebuild:
+  remove -r1 with unnecessary TMP fix
+  fix SRC_URI, honor ROOT
+
+*qmail-qfilter-2.1-r1 (11 Jun 2006)
+
+  11 Jun 2006; Thilo Bangert <bangert@gentoo.org> metadata.xml,
+  +qmail-qfilter-2.1-r1.ebuild:
+  add longdesc - add maintainer
+  set TMPDIR - fix SRC_URI - honor ROOT
+
+  27 Feb 2006; Michael Hanselmann <hansmi@gentoo.org>
+  qmail-qfilter-2.1.ebuild:
+  Fixed ebuild, bug 124085.
+
+*qmail-qfilter-2.1 (20 Feb 2006)
+
+  20 Feb 2006; Michael Hanselmann <hansmi@gentoo.org>
+  -qmail-qfilter-1.5.ebuild, qmail-qfilter-2.0.ebuild,
+  +qmail-qfilter-2.1.ebuild:
+  Bump to 2.1, 2.0 stable on amd64, ppc, sparc, x86. Removed old version.
+  Changed to virtual/qmail.
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  qmail-qfilter-1.5.ebuild:
+  Stable on ppc.
+
+  09 Jan 2005; Michael Hanselmann <hansmi@gentoo.org>
+  qmail-qfilter-1.5.ebuild, qmail-qfilter-2.0.ebuild:
+  Fixed bug 77022.
+
+*qmail-qfilter-2.0 (07 Jan 2005)
+
+  07 Jan 2005; Michael Hanselmann <hansmi@gentoo.org>
+  +qmail-qfilter-2.0.ebuild:
+  New version 2.0, ebuild provided by Thilo Bangert in bug 77022.
+
+  26 Oct 2004; Tom Martin <slarti@gentoo.org> qmail-qfilter-1.5.ebuild:
+  Marked ~amd64, fixing ${CC} with regard to bug 69004.
+
+  29 Sep 2004; Andrej Kacian <ticho@gentoo.org> +metadata.xml,
+  qmail-qfilter-1.5.ebuild:
+  Add missing metadata.xml. Stable on x86.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  qmail-qfilter-1.5.ebuild:
+  virtual/glibc -> virtual/libc
+
+*qmail-qfilter-1.5 (31 Jul 2003)
+
+  31 Jul 2003; Robin H. Johnson <robbat2@gentoo.org> qmail-qfilter-1.5.ebuild:
+  Initial commit, partially based on bug #4388 by Enrico Morelli
+  <morelli@cerm.unifi.it>, but changed for security reasons.
+

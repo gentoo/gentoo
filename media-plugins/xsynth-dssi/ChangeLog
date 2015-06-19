@@ -1,0 +1,24 @@
+# ChangeLog for media-plugins/xsynth-dssi
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xsynth-dssi/ChangeLog,v 1.4 2012/05/05 08:27:19 jdhore Exp $
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> xsynth-dssi-0.9.2.ebuild,
+  xsynth-dssi-0.9.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*xsynth-dssi-0.9.4 (01 Oct 2010)
+
+  01 Oct 2010; Alexis Ballier <aballier@gentoo.org>
+  +xsynth-dssi-0.9.4.ebuild:
+  version bump
+
+  24 Feb 2010; Markos Chandras <hwoarang@gentoo.org>
+  xsynth-dssi-0.9.2.ebuild:
+  Stable on amd64 wrt bug #287054
+
+*xsynth-dssi-0.9.2 (10 Jan 2009)
+
+  10 Jan 2009; Alexis Ballier <aballier@gentoo.org> +metadata.xml,
+  +xsynth-dssi-0.9.2.ebuild:
+  initial import
+

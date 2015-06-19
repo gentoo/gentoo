@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=sh script to split one big APE/FLAC/WV/WAV audio image with CUE sheet into tracks
+EAPI=4
+HOMEPAGE=https://code.google.com/p/split2flac/
+IUSE=enca flake imagemagick mac mp3 mp4 ogg replaygain wavpack
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=app-cdr/cuetools media-sound/shntool[mac?] virtual/libiconv media-libs/flac enca? ( app-i18n/enca ) flake? ( media-sound/flake ) mp3? ( media-sound/lame || ( media-libs/mutagen media-libs/id3lib ) ) mp4? ( media-libs/faac media-libs/libmp4v2:0[utils] ) ogg? ( media-sound/vorbis-tools ) wavpack? ( media-sound/wavpack ) replaygain? ( mp3? ( media-sound/mp3gain ) mp4? ( media-sound/aacgain ) ogg? ( media-sound/vorbisgain ) ) imagemagick? ( media-gfx/imagemagick )
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~maksbotan/split2flac-20111110-r1.sh
+_md5_=12b85a3a490fdce23201df8414d176bf

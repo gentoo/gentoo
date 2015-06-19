@@ -1,0 +1,115 @@
+# ChangeLog for sys-libs/libixp
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libixp/ChangeLog,v 1.23 2013/10/19 15:00:39 pacho Exp $
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> -libixp-0.5_p20110208-r2.ebuild,
+  metadata.xml:
+  Cleanup due desktop-wm removal
+
+  09 Apr 2013; Naohiro Aota <naota@gentoo.org> libixp-0.5_p20110208-r3.ebuild:
+  Add ~x86-fbsd wrt bug #157553
+
+*libixp-0.5_p20110208-r3 (05 Mar 2012)
+
+  05 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +libixp-0.5_p20110208-r3.ebuild:
+  Change typedef of ulong from uint32_t to unsigned long wrt #393299 to make
+  libixp compatible with x11-wm/wmii-3.9.2 on x86_64 wrt #393299 by Luíza D.
+  Utsch and others
+
+  04 Dec 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -libixp-0.5_p20110208-r1.ebuild:
+  old
+
+*libixp-0.5_p20110208-r2 (04 Dec 2011)
+
+  04 Dec 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +libixp-0.5_p20110208-r2.ebuild:
+  Change ixp_serve9pconn define to ixp_serve9conn as per upstream
+  http://code.google.com/p/libixp/issues/detail?id=2 (this is required for
+  unbundling libixp in x11-wm/wmii-3.9.2)
+
+  04 Dec 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -libixp-0.5_p20110208.ebuild:
+  old
+
+*libixp-0.5_p20110208-r1 (04 Dec 2011)
+
+  04 Dec 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +libixp-0.5_p20110208-r1.ebuild:
+  Remove empty -Wl,-soname from SOLDFLAGS that was causing SONAME to end up
+  being --library=c for some reason.
+
+*libixp-0.5_p20110208 (08 Feb 2011)
+
+  08 Feb 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +libixp-0.5_p20110208.ebuild:
+  Snapshot to get x11-wm/wmii compatible library.
+
+  22 Jun 2010; Jeroen Roovers <jer@gentoo.org> libixp-0.4-r1.ebuild,
+  libixp-0.5-r1.ebuild:
+  Marked ~hppa (bug #323039).
+
+*libixp-0.4-r1 (11 Jun 2010)
+
+  11 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org> +libixp-0.4-r1.ebuild,
+  +files/libixp-0.4-gentoo.diff, libixp-0.5-r1.ebuild,
+  files/libixp-0.5-gentoo.diff:
+  Adding older, revised version for x11-wm/wmii. Minor cleanup in patches.
+
+  11 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org> -libixp-0.2-r1.ebuild,
+  -files/libixp-0.2-shared-object.patch, -libixp-0.4.ebuild,
+  -libixp-0.5.ebuild:
+  Remove old
+
+*libixp-0.5-r1 (11 Jun 2010)
+
+  11 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org> +libixp-0.5-r1.ebuild,
+  +files/libixp-0.5-gentoo.diff:
+  Fix install paths wrt bug 309095. Thanks to Nathan Phillip Brink
+  <ohnobinki@ohnopublishing.net> for report and patch. Additionally fixing
+  multiple QA issues and install shared libs.
+
+  03 Jun 2010; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Needed by x11-wm/wmii, so reassigning to desktop-wm herd.
+
+  02 Jun 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove omp from metadata.xml (#147119)
+
+*libixp-0.5 (11 Jul 2009)
+
+  11 Jul 2009; <omp@gentoo.org> +libixp-0.5.ebuild:
+  Version bump. (bug #268693)
+
+  19 Nov 2007; David Shakaryan <omp@gentoo.org> libixp-0.2-r1.ebuild:
+  Fix small version mistake in blocker dependency.
+
+  19 Nov 2007; David Shakaryan <omp@gentoo.org> libixp-0.2-r1.ebuild:
+  Add newer version as a blocker dependency for older version. (bug #199556)
+
+*libixp-0.4 (18 Nov 2007)
+
+  18 Nov 2007; David Shakaryan <omp@gentoo.org> +libixp-0.4.ebuild:
+  Version bump.
+
+  24 Jun 2007; David Shakaryan <omp@gentoo.org>
+  files/libixp-0.2-shared-object.patch:
+  Updated patch by Luke Renn. (bug #170439)
+
+  23 Feb 2007; David Shakaryan <omp@gentoo.org> libixp-0.2-r1.ebuild:
+  Inherit eutils. (bug #161105)
+
+  20 Jan 2007; Markus Rothe <corsair@gentoo.org> libixp-0.2-r1.ebuild:
+  Added ~ppc64
+
+  17 Jan 2007; David Shakaryan <omp@gentoo.org> -libixp-0.2.ebuild,
+  libixp-0.2-r1.ebuild:
+  Fix sed expression. (bug #160326)
+
+  10 Jan 2007; David Shakaryan <omp@gentoo.org>
+  +files/libixp-0.2-shared-object.patch, +libixp-0.2-r1.ebuild:
+  Compile shared object file; thanks to Maxim Treskin for patch. (bug #161105)
+
+  28 Dec 2006; David Shakaryan <omp@gentoo.org> +libixp-0.2.ebuild,
+  +metadata.xml:
+  Add sys-libs/libixp to tree.

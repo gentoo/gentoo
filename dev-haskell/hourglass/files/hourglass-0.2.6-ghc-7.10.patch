@@ -1,0 +1,14 @@
+--- hourglass-0.2.6-orig/tests/Tests.hs	2014-10-19 20:25:15.000000000 +1100
++++ hourglass-0.2.6/tests/Tests.hs	2015-01-03 16:56:11.788832544 +1100
+@@ -25,7 +25,11 @@
+ import qualified Data.Time.Clock as T
+ import qualified Data.Time.Clock.POSIX as T
+ import qualified Data.Time.Format as T
++#if MIN_VERSION_time(1,5,0)
++import qualified System.Locale as T hiding (defaultTimeLocale)
++#else
+ import qualified System.Locale as T
++#endif
+ 
+ import qualified Control.Exception as E
+ 

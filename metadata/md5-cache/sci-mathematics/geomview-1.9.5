@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm
+DEPEND=>=x11-libs/motif-2.3:0 virtual/glu virtual/opengl emacs? ( virtual/emacs ) zlib? ( sys-libs/zlib )
+DESCRIPTION=Interactive Geometry Viewer
+EAPI=5
+HOMEPAGE=http://geomview.sourceforge.net
+IUSE=motionaveraging debug emacs zlib
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=x11-libs/motif-2.3:0 virtual/glu virtual/opengl emacs? ( virtual/emacs ) zlib? ( sys-libs/zlib ) x11-misc/xdg-utils
+SLOT=0
+SRC_URI=mirror://sourceforge/geomview/geomview-1.9.5.tar.bz2 http://dev.gentoo.org/~jlec/distfiles/geomview.png.tar
+_eclasses_=elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ddc7a04cd2cb46366f71a98cf2160274

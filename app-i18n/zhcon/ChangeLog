@@ -1,0 +1,90 @@
+# ChangeLog for app-i18n/zhcon
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/zhcon/ChangeLog,v 1.22 2015/06/09 11:33:54 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  12 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #178041
+
+  03 Mar 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  This is handled by r0bertz and cjk
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -zhcon-0.2.6-r1.ebuild,
+  -zhcon-0.2.6.ebuild:
+  Remove old
+
+  13 Apr 2012; Ulrich Müller <ulm@gentoo.org> zhcon-0.2.6-r2.ebuild:
+  Move EAPI assignment to top of ebuild, bug 411875.
+
+*zhcon-0.2.6-r2 (25 Jan 2011)
+
+  25 Jan 2011; MATSUU Takuto <matsuu@gentoo.org> +zhcon-0.2.6-r2.ebuild,
+  +files/zhcon-0.2.6-automagic-fix.patch, +files/zhcon-0.2.6.make-fix.patch:
+  Fixed dependency, the patch is submitted by Kacper Kowalik, bug #303001.
+  Clean up.
+
+  09 Jul 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update metadata.xml. antarus is staffer now (#119161)
+
+  09 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> zhcon-0.2.6.ebuild,
+  zhcon-0.2.6-r1.ebuild:
+  Avoid installing ABOUT-NLS file.
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/zhcon-0.2.6.configure.in.patch, files/zhcon-0.2.6.sysconfdir.patch:
+  Fix patch to apply.
+
+  25 Oct 2008; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Add patches by Zhang Le for fixing bug #240024 (fix curses/gpm search, fix
+  amd64, fix building with new linux-headers).
+
+  09 Jun 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +files/zhcon-0.2.6+gcc-4.3.patch, zhcon-0.2.6.ebuild:
+  Add patch to build with GCC 4.3. Thanks to Peter Alfredsen (loki_val) in
+  bug #219769.
+
+  08 Feb 2008; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Fix metadata.
+
+  24 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/zhcon-0.2.3-CAN-2005-0072.patch,
+  -files/zhcon-0.2.3-assert-gentoo.diff, -files/zhcon-0.2.3-gcc34.patch,
+  -files/zhcon-0.2.3-gentoo.diff, -zhcon-0.2.3.ebuild,
+  -zhcon-0.2.3-r1.ebuild, zhcon-0.2.6.ebuild:
+  Use -j1 for make install, thanks Zhang Le in bug #144944. Remove old
+  versions, that don't work anyway.
+
+  22 Oct 2006; Joshua Jackson <tsunam@gentoo.org> zhcon-0.2.3.ebuild,
+  zhcon-0.2.3-r1.ebuild:
+  Moving back to ~x86, as nothing depends on it from searching and it doesn't
+  build on x86
+
+*zhcon-0.2.6 (22 Oct 2006)
+
+  22 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/zhcon-0.2.5.make-fix.patch, +files/zhcon-0.2.6.configure.in.patch,
+  +files/zhcon-0.2.6.sysconfdir.patch, metadata.xml, +zhcon-0.2.6.ebuild:
+  Version bump for zhcon, thanks to Zhang Le (bug #144944) who's also going
+  to be the proxied maintainer for this package.
+
+*zhcon-0.2.3-r1 (25 Jan 2005)
+
+  25 Jan 2005; Alastair Tse <liquidx@gentoo.org>
+  +files/zhcon-0.2.3-CAN-2005-0072.patch, +zhcon-0.2.3-r1.ebuild:
+  security patch for unauthorised file access (CAN-2005-0072) bug #78117
+
+  25 Aug 2004; Karol Wojtaszek <sekretarz@gentoo.org>
+  +files/zhcon-0.2.3-gcc34.patch, zhcon-0.2.3.ebuild:
+  Fixed compile problems with gcc-34. Bug #61381. Thanks to Jackey Yang
+
+  25 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> zhcon-0.2.3.ebuild:
+  Marked stable on x86
+
+*zhcon-0.2.3 (14 Mar 2004)
+
+  14 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> zhcon-0.2.3.ebuild,
+  files/zhcon-0.2.3-assert-gentoo.diff, files/zhcon-0.2.3-gentoo.diff:
+  Initial import. Ebuild submitted by Ray Tsang <rayt@9pnet.com>,
+  closing bug #33746

@@ -1,0 +1,26 @@
+From bb92108fed0242f1a3509384faeb2234d007c05e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 28 Jul 2012 15:54:10 +0200
+Subject: [PATCH 2/3] Trick gcc into importing C99 stdint.h when C++11 is not
+ used.
+
+---
+ src/cpp0x_compat/cstdint | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/cpp0x_compat/cstdint b/src/cpp0x_compat/cstdint
+index d8d71d9..d430649 100644
+--- a/src/cpp0x_compat/cstdint
++++ b/src/cpp0x_compat/cstdint
+@@ -5,3 +5,8 @@
+  * compiles Mana fine so it apparently understands types like uint16_t by
+  * default.
+  */
++
++extern "C"
++{
++#include <stdint.h>
++};
+-- 
+1.7.11.1
+

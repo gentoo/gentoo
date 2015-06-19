@@ -1,0 +1,32 @@
+# ChangeLog for media-sound/jackbeat
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/jackbeat/ChangeLog,v 1.6 2014/06/28 16:32:17 ssuominen Exp $
+
+  28 Jun 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +files/jackbeat-0.7.6-underlinking.patch, jackbeat-0.7.6.ebuild:
+  Link against gmodule-2.0 libraries wrt #508988 by Gabriel Homeier and Ted
+  Tanberry
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> jackbeat-0.7.6.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*jackbeat-0.7.6 (29 Mar 2011)
+
+  29 Mar 2011; Tim Harder <radhermit@gentoo.org> -jackbeat-0.6.3.ebuild,
+  +jackbeat-0.7.6.ebuild, +files/jackbeat-0.7.6-automagic-pulse.patch:
+  Version bump and remove old. Update to EAPI 4 and fix dependencies.
+
+  09 Mar 2009; Raúl Porcel <armin76@gentoo.org> jackbeat-0.6.3.ebuild:
+  Add ~x86 wrt #261715
+
+*jackbeat-0.6.3 (14 Apr 2008)
+
+  14 Apr 2008; Alexis Ballier <aballier@gentoo.org> -jackbeat-0.6.2.ebuild,
+  +jackbeat-0.6.3.ebuild:
+  version bump
+
+*jackbeat-0.6.2 (22 Jan 2008)
+
+  22 Jan 2008; Alexis Ballier <aballier@gentoo.org> +metadata.xml,
+  +jackbeat-0.6.2.ebuild:
+  Initial import, thanks to Benjamin Tremoulheac <gentoo@agsp.org>, bug #112199

@@ -1,0 +1,29 @@
+# ChangeLog for sci-misc/fitsverify
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/fitsverify/ChangeLog,v 1.5 2014/03/27 04:48:19 bicatali Exp $
+
+*fitsverify-4.17 (27 Mar 2014)
+
+  27 Mar 2014; Sébastien Fabbro <bicatali@gentoo.org> +fitsverify-4.17.ebuild,
+  -fitsverify-20110304.ebuild:
+  Version bump (now upstream uses real versions)
+
+  05 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  -fitsverify-20100129.ebuild, fitsverify-20110304.ebuild:
+  keyword amd64-linux, x86-linux
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> fitsverify-20100129.ebuild,
+  fitsverify-20110304.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*fitsverify-20110304 (08 Mar 2011)
+
+  08 Mar 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  +fitsverify-20110304.ebuild:
+  Version bump
+
+*fitsverify-20100129 (31 Jan 2010)
+
+  31 Jan 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +fitsverify-20100129.ebuild, +metadata.xml:
+  Initial import

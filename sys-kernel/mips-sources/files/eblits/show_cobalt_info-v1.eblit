@@ -1,0 +1,21 @@
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/mips-sources/files/eblits/show_cobalt_info-v1.eblit,v 1.1 2009/03/16 06:39:10 kumba Exp $
+
+# Eblit with information/warnings for Cobalt users.
+#
+# If you need to add whitespace for formatting in 'einfo', 'ewarn', or 'eerror', use
+# \040 for a space instead of the standard space.  These functions will strip
+# redundant white space.
+
+show_cobalt_info() {
+	echo -e ""
+	einfo "Please keep in mind that the 2.6 kernel will NOT boot on Cobalt"
+	einfo "systems that are still using the old Cobalt bootloader.  In"
+	einfo "order to boot a 2.6 kernel on Cobalt systems, you must be using"
+	einfo "the CoLo bootloader, which does not have the kernel"
+	einfo "size limitation that the older bootloader has.  If you want"
+	einfo "to use the newer bootloader, make sure you have sys-boot/colo"
+	einfo "installed and setup."
+	echo -e ""
+}

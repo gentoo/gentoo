@@ -1,0 +1,19 @@
+<project name="slf4j-api" default="jar">
+	<target name="compile">
+		<mkdir dir="build"/>
+		<javac srcdir="slf4j-nop/src/main/java/" destdir="build" classpath="${gentoo.classpath}">
+		</javac>
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar destfile="slf4j-nop.jar" basedir="build">
+			<exclude name="org/slf4j/impl/**"/>
+		</jar>
+	</target>
+
+	<target name="javadoc" depends="compile">
+		<mkdir dir="docs"/>
+		<javadoc sourcepath="slf4j-nop/src/main/java/" destdir="docs" classpath="${gentoo.classpath}"/>
+	</target>
+
+</project>

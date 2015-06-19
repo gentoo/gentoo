@@ -1,0 +1,53 @@
+# ChangeLog for sys-cluster/lspbs
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/lspbs/ChangeLog,v 1.14 2014/08/10 20:20:49 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> lspbs-1.1-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  30 Dec 2010; Justin Bronder <jsbronder@gentoo.org> -lspbs-1.1.ebuild,
+  lspbs-1.1-r1.ebuild:
+  cleanup old and fix RDEPEND.implicit
+
+*lspbs-1.1-r1 (02 Mar 2010)
+
+  02 Mar 2010; Justin Bronder <jsbronder@gentoo.org> +lspbs-1.1-r1.ebuild:
+  Update deps and remove unnecessary ldflags mangling.
+
+  31 Jan 2008; Donnie Berkholz <dberkholz@gentoo.org>; -lspbs-1.0.ebuild,
+  -lspbs-1.0-r1.ebuild:
+  Clean up.
+
+  12 May 2007; Donnie Berkholz <dberkholz@gentoo.org>; lspbs-1.0.ebuild:
+  Replace torque/openpbs deps with virtual/pbs.
+
+  26 Apr 2007; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Update for cluster herd split to hp-cluster and ha-cluster.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+*lspbs-1.1 (22 Nov 2006)
+
+  22 Nov 2006; Donnie Berkholz <dberkholz@gentoo.org>; +lspbs-1.1.ebuild:
+  (#153627) Bump, with a bit of ebuild cleanup to make it stop sucking.
+
+*lspbs-1.0-r1 (05 Jul 2005)
+
+  05 Jul 2005; Robin H. Johnson <robbat2@gentoo.org> +lspbs-1.0-r1.ebuild:
+  Move to virtual/pbs.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> lspbs-1.0.ebuild:
+  virtual/glibc -> virtual/libc
+
+  04 May 2004; David Holm <dholm@gentoo.org> lspbs-1.0.ebuild:
+  Added to ~ppc.
+
+*lspbs-1.0 (03 May 2004)
+
+  03 May 2004; Michael Imhof <tantive@gentoo.org> lspbs-1.0.ebuild:
+  Initial ebuild. Submitted by Joseph Spadavecchia 
+  <j.spadavecchia@ed.ac.uk>. Closes #49842.

@@ -1,0 +1,42 @@
+# ChangeLog for sys-auth/pam_yubico
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_yubico/ChangeLog,v 1.8 2015/05/04 03:15:16 zerochaos Exp $
+
+*pam_yubico-2.19-r1 (04 May 2015)
+*pam_yubico-2.17-r1 (04 May 2015)
+
+  04 May 2015; Rick Farina <zerochaos@gentoo.org> +pam_yubico-2.17-r1.ebuild,
+  +pam_yubico-2.19-r1.ebuild, -pam_yubico-2.17.ebuild, -pam_yubico-2.19.ebuild:
+  add missing dep, fix tests in 2.19
+
+*pam_yubico-2.19 (14 Apr 2015)
+
+  14 Apr 2015; Justin Lecher <jlec@gentoo.org> +pam_yubico-2.19.ebuild,
+  -pam_yubico-2.13.ebuild, -pam_yubico-2.14.ebuild, -pam_yubico-2.16.ebuild:
+  Version Bump; drop old
+
+*pam_yubico-2.17 (06 Oct 2014)
+
+  06 Oct 2014; Justin Lecher <jlec@gentoo.org> +pam_yubico-2.17.ebuild,
+  metadata.xml:
+  Version Bump
+
+*pam_yubico-2.16 (19 Aug 2014)
+
+  19 Aug 2014; Rick Farina <zerochaos@gentoo.org> +pam_yubico-2.16.ebuild:
+  version bump, bug 513944
+
+*pam_yubico-2.14 (28 Oct 2013)
+
+  28 Oct 2013; Rick Farina <zerochaos@gentoo.org> +pam_yubico-2.14.ebuild,
+  metadata.xml:
+  version bump, new homepage, new download site, remove unneeded(?) patch
+
+  22 Apr 2013; Rick Farina <zerochaos@gentoo.org> pam_yubico-2.13.ebuild:
+  minor fix to deps and .la fix
+
+*pam_yubico-2.13 (22 Apr 2013)
+
+  22 Apr 2013; Rick Farina <zerochaos@gentoo.org> +files/2.11-drop_privs.patch,
+  +metadata.xml, +pam_yubico-2.13.ebuild:
+  initial commit, deps are likely a bit more complex than this

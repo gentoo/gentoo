@@ -1,0 +1,39 @@
+# ChangeLog for dev-texlive/texlive-langeuropean
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-langeuropean/ChangeLog,v 1.8 2014/11/03 06:51:48 aballier Exp $
+
+*texlive-langeuropean-2014 (03 Nov 2014)
+
+  03 Nov 2014; Alexis Ballier <aballier@gentoo.org>
+  +texlive-langeuropean-2014.ebuild:
+  bump to texlive 2014
+
+  08 Aug 2014; Anthony G. Basile <blueness@gentoo.org>
+  texlive-langeuropean-2013.ebuild:
+  Keyword ~ppc and ~ppc64, bug #475124
+
+  24 Aug 2013; Markus Meier <maekke@gentoo.org>
+  texlive-langeuropean-2013.ebuild:
+  add ~x86, bug #475124
+
+  18 Aug 2013; Markos Chandras <hwoarang@gentoo.org>
+  texlive-langeuropean-2013.ebuild:
+  add ~mips per #475124
+
+  13 Aug 2013; Markus Meier <maekke@gentoo.org>
+  texlive-langeuropean-2013.ebuild:
+  add ~arm, bug #475124
+
+  05 Jul 2013; Tobias Klausmann <klausman@gentoo.org>
+  texlive-langeuropean-2013.ebuild:
+  Keyworded on alpha, bug #475124
+
+  05 Jul 2013; Jeroen Roovers <jer@gentoo.org>
+  texlive-langeuropean-2013.ebuild:
+  Marked ~hppa (bug #475124).
+
+*texlive-langeuropean-2013 (28 Jun 2013)
+
+  28 Jun 2013; Alexis Ballier <aballier@gentoo.org>
+  +texlive-langeuropean-2013.ebuild, +metadata.xml:
+  Initial import for TeX Live 2013

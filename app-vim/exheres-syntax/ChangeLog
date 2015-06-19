@@ -1,0 +1,51 @@
+# ChangeLog for app-vim/exheres-syntax
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/exheres-syntax/ChangeLog,v 1.11 2013/03/17 18:06:02 hwoarang Exp $
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  21 Sep 2011; Michał Górny <mgorny@gentoo.org>
+  exheres-syntax-99999999.ebuild:
+  Migrate to git-2.
+
+  13 Sep 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #225633
+
+  25 Oct 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove coldwind from metadata.xml (#181764)
+
+*exheres-syntax-20090310 (10 Mar 2009)
+
+  10 Mar 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  +exheres-syntax-20090310.ebuild:
+  Version bump for exheres-syntax.
+
+  18 Feb 2009; Thomas Anderson <gentoofan23@gentoo.org> metadata.xml:
+  Pick up maintainership at Santiago's request
+
+*exheres-syntax-20080908 (08 Sep 2008)
+
+  08 Sep 2008; Santiago M. Mola <coldwind@gentoo.org>
+  -exheres-syntax-20080601.ebuild, +exheres-syntax-20080908.ebuild:
+  Version bump.
+
+  28 Aug 2008; Santiago M. Mola <coldwind@gentoo.org>
+  +exheres-syntax-99999999.ebuild:
+  Bring back live ebuild.
+
+  20 Jun 2008; Santiago M. Mola <coldwind@gentoo.org>
+  exheres-syntax-20080601.ebuild:
+  Update SRC_URI.
+
+*exheres-syntax-20080601 (01 Jun 2008)
+
+  01 Jun 2008; Santiago M. Mola <coldwind@gentoo.org> metadata.xml,
+  +exheres-syntax-20080601.ebuild, -exheres-syntax-99999999.ebuild:
+  Add a release and remove live ebuild. Added eroyf as proxied maintainer.
+
+*exheres-syntax-99999999 (20 May 2008)
+
+  20 May 2008; Santiago M. Mola <coldwind@gentoo.org> +metadata.xml,
+  +exheres-syntax-99999999.ebuild:
+  Initial ebuild.

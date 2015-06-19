@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sys-libs/zlib sys-libs/readline:= >=dev-libs/glib-2.6.1 nls? ( >=sys-devel/gettext-0.14.1 ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Console version of Stardict program
+EAPI=5
+HOMEPAGE=http://sdcv.sourceforge.net
+IUSE=nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib sys-libs/readline:= >=dev-libs/glib-2.6.1
+SLOT=0
+SRC_URI=mirror://sourceforge/sdcv/sdcv-0.5.0-beta2-Source.tar.bz2
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=0a39d10b17276c8d49451c5583988596

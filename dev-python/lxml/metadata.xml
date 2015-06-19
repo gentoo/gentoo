@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <use>
+    <flag name="beautifulsoup3">Enable support for Beautiful Soup 3</flag>
+  </use>
+  <upstream>
+    <remote-id type="pypi">lxml</remote-id>
+  </upstream>
+</pkgmetadata>

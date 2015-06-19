@@ -1,0 +1,137 @@
+# ChangeLog for dev-python/adns-python
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/adns-python/ChangeLog,v 1.40 2015/06/02 05:09:09 jmorgan Exp $
+
+  02 Jun 2015; Jack Morgan <jmorgan@gentoo.org> adns-python-1.2.1-r1.ebuild:
+  sparc stable wrt bug #540290
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> adns-python-1.2.1-r1.ebuild:
+  Stable for ia64, wrt bug #540290
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> adns-python-1.2.1-r1.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> adns-python-1.2.1-r1.ebuild:
+  x86 stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> adns-python-1.2.1-r1.ebuild:
+  ppc stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> adns-python-1.2.1-r1.ebuild:
+  ppc64 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> adns-python-1.2.1-r1.ebuild:
+  amd64 stable, bug 540290
+
+  23 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -adns-python-1.2.1.ebuild:
+  Remove old.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> adns-python-1.2.1-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  19 Jan 2013; Michał Górny <mgorny@gentoo.org> adns-python-1.2.1-r1.ebuild:
+  Drop pypy because of segfaults.
+
+*adns-python-1.2.1-r1 (19 Jan 2013)
+
+  19 Jan 2013; Michał Górny <mgorny@gentoo.org> +adns-python-1.2.1-r1.ebuild:
+  Migrate to distutils-r1.
+
+  21 Feb 2012; Patrick Lauer <patrick@gentoo.org> adns-python-1.2.1.ebuild:
+  Restricting jython
+
+  14 Sep 2011; Dirkjan Ochtman <djc@gentoo.org> adns-python-1.2.1.ebuild:
+  Add PyPI homepage.
+
+  14 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  adns-python-1.2.1.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  06 Sep 2009; Christian Ruppert <idl0r@gentoo.org>
+  -files/adns-python-1.1.1-adns-1.3.patch:
+  Remove unused patch.
+
+  24 Apr 2009; Patrick Lauer <patrick@gentoo.org> -adns-python-1.1.1.ebuild:
+  Remove old
+
+  04 Feb 2009; Patrick Lauer <patrick@gentoo.org> adns-python-1.2.1.ebuild:
+  Homepage and SRC_URI fix
+
+  04 Feb 2009; Patrick Lauer <patrick@gentoo.org> +adns-python-1.2.1.ebuild:
+  Bump to 1.2.1, closes #257589
+
+  09 Jan 2009; Patrick Lauer <patrick@gentoo.org> -adns-python-1.0.0.ebuild,
+  -adns-python-1.2.1.ebuild:
+  Removing old
+
+  24 Mar 2008; Brent Baude <ranger@gentoo.org> adns-python-1.2.1.ebuild:
+  Marking adns-python-1.2.1 ppc64 for bug 213740
+
+  22 Mar 2008; nixnut <nixnut@gentoo.org> adns-python-1.2.1.ebuild:
+  Stable on ppc wrt bug 213740
+
+  18 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  adns-python-1.2.1.ebuild:
+  amd64 stable wrt #213740
+
+  18 Mar 2008; Ferris McCormick <fmccor@gentoo.org>
+  adns-python-1.2.1.ebuild:
+  Sparc stable, part of Bug #213740.
+
+  18 Mar 2008; Jeroen Roovers <jer@gentoo.org> adns-python-1.2.1.ebuild:
+  Marked ~hppa (bug #213740).
+
+  17 Mar 2008; Jurek Bartuszek <jurek@gentoo.org> adns-python-1.2.1.ebuild:
+  x86 stable (bug #213740)
+
+*adns-python-1.2.1 (27 Jan 2007)
+
+  27 Jan 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  +adns-python-1.2.1.ebuild:
+  Version bump, updated SRC_URI and HOMEPAGE (bug #164100).
+
+*adns-python-1.1.1 (29 Dec 2006)
+
+  29 Dec 2006; Tiziano Müller <dev-zero@gentoo.org>
+  +files/adns-python-1.1.1-adns-1.3.patch, -adns-python-1.1.0.ebuild,
+  +adns-python-1.1.1.ebuild:
+  Version bump. Fixed bug #150558 (thanks to Fabrice Delliaux) and depend now
+  on >=adns-1.3
+
+  31 July 2006; Tom Gall <tgall@gentoo.org> adns-python-1.1.0.ebuild:
+  added ~ppc64
+
+  02 May 2006; Jason Wever <weeve@gentoo.org> adns-python-1.0.0.ebuild:
+  Stable on SPARC.
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> adns-python-1.1.0.ebuild:
+  Mark 1.1.0 ~ia64
+
+  24 Apr 2005; Simon Stelling <blubb@gentoo.org> adns-python-1.0.0.ebuild:
+  stable on amd64
+
+*adns-python-1.1.0 (12 Feb 2005)
+
+  12 Feb 2005; Bryan Østergaard <kloeri@gentoo.org>
+  +adns-python-1.1.0.ebuild:
+  Version bump.
+
+  30 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> adns-python-1.0.0.ebuild:
+  Adding amd64 keyword. Closing #43595.
+
+  14 Feb 2004; Alastair Tse <liquidx@gentoo.org> adns-python-1.0.0.ebuild:
+  changed depend to >=net-libs/adns-1.0
+
+  01 Nov 2003; Jason Wever <weeve@gentoo.org> adns-python-1.0.0.ebuild:
+  Added ~sparc keyword.
+
+*adns-python-1.0.0 (03 Mar 2003)
+
+  25 Apr 2003; Lars Weiler <pylon@gentoo.org> adns-python-1.0.0.ebuild:
+  Set ~ppc in KEYWORDS
+
+  25 Mar 2003; Alastair Tse <liquidx@gentoo.org> adns-python-1.0.0.ebuild:
+  Using distutils eclass and bumping to stable.
+  
+  03 Mar 2003; foser <foser@gentoo.org> adns-python-1.0.0.ebuild, ChangeLog :
+  Initial commit

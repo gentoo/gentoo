@@ -1,0 +1,338 @@
+# ChangeLog for media-video/projectx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/projectx/ChangeLog,v 1.91 2015/01/30 11:17:29 billie Exp $
+
+  30 Jan 2015; Daniel Pielmeier <billie@gentoo.org> -projectx-0.91.0.08.ebuild:
+  Remove old.
+
+  29 Jan 2015; Michał Górny <mgorny@gentoo.org> projectx-0.91.0.08.ebuild,
+  projectx-0.91.0.10.ebuild:
+  Convert to CPU_FLAGS_X86.
+
+  01 Jan 2015; Agostino Sarubbo <ago@gentoo.org> projectx-0.91.0.10.ebuild:
+  Stable for ppc64, wrt bug #531314
+
+  31 Dec 2014; Agostino Sarubbo <ago@gentoo.org> projectx-0.91.0.10.ebuild:
+  Stable for ppc, wrt bug #531314
+
+  28 Dec 2014; Agostino Sarubbo <ago@gentoo.org> projectx-0.91.0.10.ebuild:
+  Stable for x86, wrt bug #531314
+
+  27 Dec 2014; Agostino Sarubbo <ago@gentoo.org> projectx-0.91.0.10.ebuild:
+  Stable for amd64, wrt bug #531314
+
+*projectx-0.91.0.10 (17 Apr 2014)
+
+  17 Apr 2014; Daniel Pielmeier <billie@gentoo.org> +projectx-0.91.0.10.ebuild:
+  Version bump.
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #92799
+
+  01 May 2013; Daniel Pielmeier <billie@gentoo.org> -projectx-0.91.0.05.ebuild:
+  Remove old.
+
+  14 Apr 2013; Agostino Sarubbo <ago@gentoo.org> projectx-0.91.0.08.ebuild:
+  Stable for ppc, wrt bug #463108
+
+  11 Apr 2013; Agostino Sarubbo <ago@gentoo.org> projectx-0.91.0.08.ebuild:
+  Stable for ppc64, wrt bug #463108
+
+  06 Apr 2013; Agostino Sarubbo <ago@gentoo.org> projectx-0.91.0.08.ebuild:
+  Stable for x86, wrt bug #463108
+
+  06 Apr 2013; Agostino Sarubbo <ago@gentoo.org> projectx-0.91.0.08.ebuild:
+  Stable for amd64, wrt bug #463108
+
+  19 Feb 2013; Daniel Pielmeier <billie@gentoo.org> -projectx-0.91.0.07.ebuild:
+  Remove old.
+
+*projectx-0.91.0.08 (19 Feb 2013)
+
+  19 Feb 2013; Daniel Pielmeier <billie@gentoo.org> +projectx-0.91.0.08.ebuild:
+  Version bump.
+
+*projectx-0.91.0.07 (14 Feb 2013)
+
+  14 Feb 2013; Daniel Pielmeier <billie@gentoo.org> +projectx-0.91.0.07.ebuild:
+  Version bump.
+
+  24 Jan 2013; Daniel Pielmeier <billie@gentoo.org> -projectx-0.91.0.04.ebuild:
+  Remove old.
+
+  22 Jan 2013; Agostino Sarubbo <ago@gentoo.org> projectx-0.91.0.05.ebuild:
+  Stable for x86, wrt bug #451282
+
+  16 Jan 2013; Agostino Sarubbo <ago@gentoo.org> projectx-0.91.0.05.ebuild:
+  Stable for ppc64, wrt bug #451282
+
+  16 Jan 2013; Agostino Sarubbo <ago@gentoo.org> projectx-0.91.0.05.ebuild:
+  Stable for ppc, wrt bug #451282
+
+  13 Jan 2013; Agostino Sarubbo <ago@gentoo.org> projectx-0.91.0.05.ebuild:
+  Stable for amd64, wrt bug #451282
+
+  15 Dec 2012; Daniel Pielmeier <billie@gentoo.org> -projectx-0.91.0.02.ebuild:
+  Remove old.
+
+  15 Dec 2012; Daniel Pielmeier <billie@gentoo.org> -projectx-0.91.0.03.ebuild:
+  Remove old.
+
+  09 Dec 2012; Agostino Sarubbo <ago@gentoo.org> projectx-0.91.0.04.ebuild:
+  Stable for ppc64, wrt bug #441416
+
+  09 Dec 2012; Agostino Sarubbo <ago@gentoo.org> projectx-0.91.0.04.ebuild:
+  Stable for ppc, wrt bug #441416
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> projectx-0.91.0.04.ebuild:
+  Stable for x86, wrt bug #441416
+
+  14 Nov 2012; Daniel Pielmeier <billie@gentoo.org> projectx-0.91.0.05.ebuild:
+  Fix desktop file. Thanks to Agostino Sarubbo in bug #443112.
+
+  14 Nov 2012; Agostino Sarubbo <ago@gentoo.org> projectx-0.91.0.04.ebuild:
+  Stable for amd64, wrt bug #441416
+
+*projectx-0.91.0.05 (09 Nov 2012)
+
+  09 Nov 2012; Daniel Pielmeier <billie@gentoo.org> +projectx-0.91.0.05.ebuild:
+  Version bump.
+
+  07 Nov 2012; Daniel Pielmeier <billie@gentoo.org> projectx-0.91.0.02.ebuild,
+  projectx-0.91.0.03.ebuild, projectx-0.91.0.04.ebuild:
+  edos2unix dies on its own.
+
+  07 Nov 2012; Daniel Pielmeier <billie@gentoo.org> projectx-0.91.0.02.ebuild,
+  projectx-0.91.0.03.ebuild, projectx-0.91.0.04.ebuild:
+  Adress remarks from Chema Alonso in bug #441416. Remove elog warning about
+  confid change (two years should be enough).
+
+*projectx-0.91.0.04 (01 Oct 2012)
+
+  01 Oct 2012; Daniel Pielmeier <billie@gentoo.org> +projectx-0.91.0.04.ebuild:
+  Version bump.
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  projectx-0.91.0.03.ebuild:
+  x86 stable wrt bug #429146
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> projectx-0.91.0.03.ebuild:
+  Stable for amd64, wrt bug #429146
+
+*projectx-0.91.0.03 (16 Jun 2012)
+
+  16 Jun 2012; Daniel Pielmeier <billie@gentoo.org> +projectx-0.91.0.03.ebuild:
+  Version bump.
+
+  06 May 2012; Daniel Pielmeier <billie@gentoo.org>
+  -projectx-0.90.4.00_p33-r1.ebuild:
+  Remove old.
+
+  08 Mar 2012; Brent Baude <ranger@gentoo.org> projectx-0.91.0.02.ebuild:
+  Marking projectx-0.91.0.02 ppc64 for bug 400417
+
+  07 Mar 2012; Brent Baude <ranger@gentoo.org> projectx-0.91.0.02.ebuild:
+  Marking projectx-0.91.0.02 ppc for bug 400417
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  projectx-0.91.0.02.ebuild:
+  x86 stable wrt bug #400417
+
+  27 Jan 2012; Agostino Sarubbo <ago@gentoo.org> projectx-0.91.0.02.ebuild:
+  Stable for amd64, wrt bug #400417
+
+  25 Jan 2012; Daniel Pielmeier <billie@gentoo.org>
+  -projectx-0.90.4.00_p33.ebuild:
+  Remove old.
+
+  20 Nov 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  projectx-0.90.4.00_p33-r1.ebuild:
+  ppc/ppc64 stable wrt #376403
+
+*projectx-0.91.0.02 (18 Aug 2011)
+
+  18 Aug 2011; Daniel Pielmeier <billie@gentoo.org> +projectx-0.91.0.02.ebuild:
+  Version bump. Switch to EAPI 4.
+
+  17 Aug 2011; Thomas Kahle <tomka@gentoo.org>
+  projectx-0.90.4.00_p33-r1.ebuild:
+  x86 stable per bug 376403
+
+  14 Aug 2011; Markos Chandras <hwoarang@gentoo.org>
+  projectx-0.90.4.00_p33-r1.ebuild:
+  Stable on amd64 wrt bug #376403
+
+  10 Jul 2011; Stefan Briesenick <sbriesen@gentoo.org>
+  projectx-0.90.4.00_p33-r1.ebuild, -files/icon.png:
+  icon.png moved to distfiles
+
+  10 Nov 2010; Daniel Pielmeier <billie@gentoo.org>
+  -projectx-0.90.4.00_p32.ebuild,
+  -files/projectx-0.90.4.00-stdout-corrupt.diff, -files/build-0.90.4.xml:
+  Remove old.
+
+  06 Nov 2010; Mark Loeser <halcy0n@gentoo.org>
+  projectx-0.90.4.00_p33.ebuild:
+  Stable for ppc64; bug #328157
+
+  15 Oct 2010; Brent Baude <ranger@gentoo.org>
+  projectx-0.90.4.00_p33.ebuild:
+  stable ppc, bug 328157
+
+  14 Aug 2010; Stefan Briesenick <sbriesen@gentoo.org>
+  projectx-0.90.4.00_p33-r1.ebuild:
+  added app-arch/xz-utils dependency.
+
+*projectx-0.90.4.00_p33-r1 (01 Aug 2010)
+
+  01 Aug 2010; Stefan Briesenick <sbriesen@gentoo.org>
+  +projectx-0.90.4.00_p33-r1.ebuild,
+  +files/projectx-0.90.4.00_p33-idctfast.patch,
+  files/projectx-0.90.4.00_p33-stdout-corrupt.patch,
+  +files/projectx-0.90.4.00_p33-xdg.patch, files/build-0.90.4.00_p33.xml,
+  +files/icon.png:
+  ebuild cleanup, added new IDCT patch (includes MMX/SSE also for amd64),
+  added XDG patch, installs icon, renamed projectx_nogui to projectx_cli.
+
+  17 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  projectx-0.90.4.00_p33.ebuild:
+  Stable on amd64 wrt bug #328157
+
+  17 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  projectx-0.90.4.00_p33.ebuild:
+  stable x86, bug 328157
+
+  16 Mar 2010; Daniel Pielmeier <billie@gentoo.org>
+  -projectx-0.90.4.00-r3.ebuild, -projectx-0.90.4.00-r4.ebuild,
+  -projectx-0.90.4.00_p26.ebuild:
+  Remove old and defect versions.
+
+*projectx-0.90.4.00_p33 (11 Mar 2010)
+
+  11 Mar 2010; Daniel Pielmeier <billie@gentoo.org>
+  +projectx-0.90.4.00_p33.ebuild, +files/projectx-0.90.4.00_p33-bl2.patch,
+  +files/projectx-0.90.4.00_p33-stdout-corrupt.patch,
+  +files/build-0.90.4.00_p33.xml:
+  Version bump. Adding a new snapshot.
+
+  11 Mar 2010; Joseph Jezak <josejx@gentoo.org>
+  projectx-0.90.4.00_p32.ebuild:
+  Marked ppc/ppc64 stable for bug #304673.
+
+  16 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  projectx-0.90.4.00_p32.ebuild:
+  stable x86, bug 304673
+
+  12 Feb 2010; Pacho Ramos <pacho@gentoo.org> projectx-0.90.4.00_p32.ebuild:
+  amd64 stable, bug 304673
+
+  11 Feb 2010; Vlastimil Babka <caster@gentoo.org>
+  projectx-0.90.4.00-r3.ebuild, projectx-0.90.4.00_p26.ebuild,
+  projectx-0.90.4.00_p32.ebuild:
+  Remove java5 and java6 flags and cleanup per bug #304639.
+
+*projectx-0.90.4.00_p32 (08 Oct 2009)
+
+  08 Oct 2009; Pielmeier Daniel <billie@gentoo.org>
+  +projectx-0.90.4.00_p32.ebuild, metadata.xml:
+  Add a new snapshot. Add myself to maintainers.
+
+*projectx-0.90.4.00_p26 (06 Dec 2008)
+
+  06 Dec 2008; Stefan Briesenick <sbriesen@gentoo.org>
+  +projectx-0.90.4.00_p26.ebuild:
+  Version bump with current CVS version.
+
+  09 Nov 2008; Markus Meier <maekke@gentoo.org>
+  projectx-0.90.4.00-r4.ebuild:
+  x86 stable, bug #246079
+
+*projectx-0.90.4.00-r4 (15 May 2008)
+
+  15 May 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/projectx-0.90.4.00-stdout-corrupt.diff,
+  +projectx-0.90.4.00-r4.ebuild:
+  Add a patch to clean up the stdout of the non-gui version. This makes the
+  output parsable by other software, especially by vdr-burn, solving some
+  strange bugs there.
+
+  03 Apr 2008; Brent Baude <ranger@gentoo.org> projectx-0.90.4.00-r3.ebuild:
+  stable ppc, bug 208138
+
+  28 Mar 2008; Markus Meier <maekke@gentoo.org>
+  projectx-0.90.4.00-r3.ebuild:
+  amd64 stable, bug #208138
+
+  24 Feb 2008; Brent Baude <ranger@gentoo.org> projectx-0.90.4.00-r3.ebuild:
+  stable ppc64, bug 208138
+
+  16 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  projectx-0.90.4.00-r3.ebuild:
+  stable x86, bug 208138
+
+  30 Oct 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -projectx-0.90.4.00-r2.ebuild:
+  Remove old revision.
+
+  30 Oct 2007; Petteri Räty <betelgeuse@gentoo.org>
+  projectx-0.90.4.00-r3.ebuild:
+  Relax dev-java/browserlauncher2 dependency to match 1.3 too.
+
+*projectx-0.90.4.00-r3 (01 May 2007)
+
+  01 May 2007; Stefan Briesenick <sbriesen@gentoo.org>
+  +projectx-0.90.4.00-r3.ebuild:
+  added patches (BrowserLauncher2, subtitle clut, subtitle charset), added
+  fast IDCT implementation.
+
+  11 Mar 2007; Stefan Briesenick <sbriesen@gentoo.org>
+  files/build-0.90.4.xml, projectx-0.90.4.00-r2.ebuild:
+  build.xml + ebuild cleanups.
+
+  11 Mar 2007; Stefan Briesenick <sbriesen@gentoo.org>
+  -files/build-0.90.3.xml, -projectx-0.90.3.00.ebuild,
+  -projectx-0.90.3.01.ebuild, -projectx-0.90.4.00.ebuild,
+  -projectx-0.90.4.00-r1.ebuild:
+  removed old versions.
+
+  27 Dec 2006; Markus Rothe <corsair@gentoo.org> projectx-0.90.3.00.ebuild,
+  projectx-0.90.3.01.ebuild, projectx-0.90.4.00.ebuild,
+  projectx-0.90.4.00-r1.ebuild, projectx-0.90.4.00-r2.ebuild:
+  Added ~ppc64
+
+  22 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  projectx-0.90.4.00-r1.ebuild, projectx-0.90.4.00-r2.ebuild:
+  ant_src_unpack -> src_unpack
+
+*projectx-0.90.4.00-r2 (10 Jul 2006)
+
+  10 Jul 2006; Stefan Briesenick <sbriesen@gentoo.org>
+  +projectx-0.90.4.00-r2.ebuild:
+  Always create 'projectx_nogui' wrapper script and symlink 'projectx'
+  corresponding to the 'X' use-flag either to 'projectx_gui' or
+  'projectx_nogui', solving bug #139883.
+
+*projectx-0.90.4.00-r1 (05 Jul 2006)
+
+  05 Jul 2006; Stefan Briesenick <sbriesen@gentoo.org>
+  +projectx-0.90.4.00-r1.ebuild:
+  converted ebuild to use new java-pkg-2 and java-ant-2 eclasses.
+
+*projectx-0.90.4.00 (02 Apr 2006)
+
+  02 Apr 2006; Stefan Briesenick <sbriesen@gentoo.org>
+  +files/build-0.90.4.xml, +projectx-0.90.4.00.ebuild:
+  version bump, internal ebuild enhancements, solving bug #128167.
+
+*projectx-0.90.3.01 (06 Feb 2006)
+
+  06 Feb 2006; Stefan Briesenick <sbriesen@gentoo.org>
+  +projectx-0.90.3.01.ebuild:
+  version bump.
+
+*projectx-0.90.3.00 (21 Jan 2006)
+
+  21 Jan 2006; Stefan Briesenick <sbriesen@gentoo.org>
+  +files/build-0.90.3.xml, +metadata.xml, +projectx-0.90.3.00.ebuild:
+  initial (re-)commit, using same keywords as old removed package. solving bug
+  #108993.

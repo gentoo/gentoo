@@ -1,0 +1,35 @@
+# ChangeLog for dev-libs/libxdiff
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libxdiff/ChangeLog,v 1.9 2013/08/15 09:07:20 patrick Exp $
+
+  15 Aug 2013; Patrick Lauer <patrick@gentoo.org> libxdiff-0.23-r1.ebuild:
+  Whitespace
+
+  15 Aug 2013; Patrick Lauer <patrick@gentoo.org> libxdiff-0.23-r1.ebuild:
+  Whitespace
+
+  07 Aug 2013; Agostino Sarubbo <ago@gentoo.org> libxdiff-0.23-r1.ebuild:
+  Stable for x86, wrt bug #470400
+
+  28 Jul 2013; Agostino Sarubbo <ago@gentoo.org> libxdiff-0.23-r1.ebuild:
+  Stable for amd64, wrt bug #470400
+
+*libxdiff-0.23-r1 (31 Mar 2013)
+
+  31 Mar 2013; Ole Markus With <olemarkus@gentoo.org> +libxdiff-0.23-r1.ebuild:
+  Do not build static libs. Bug 464002
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> libxdiff-0.23.ebuild:
+  Stable for amd64, wrt bug #448254
+
+  31 Mar 2013; Jeff Horelick <jdhore@gentoo.org> libxdiff-0.23.ebuild:
+  marked x86 per bug 448254
+
+  31 Mar 2013; Ole Markus With <olemarkus@gentoo.org> metadata.xml:
+  Dropping from php-herd, adding myself as maintainer
+
+*libxdiff-0.23 (01 Jan 2010)
+
+  01 Jan 2010; Ben de Groot <yngwin@gentoo.org> +libxdiff-0.23.ebuild,
+  +metadata.xml:
+  Initial commit from php testing overlay. Dependency of dev-php5/pecl-xdiff.

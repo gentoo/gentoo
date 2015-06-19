@@ -1,0 +1,93 @@
+# ChangeLog for games-engines/zoom
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-engines/zoom/ChangeLog,v 1.24 2014/07/24 23:46:35 mr_bones_ Exp $
+
+  24 Jul 2014; Michael Sterrett <mr_bones_@gentoo.org> -zoom-1.1.4.ebuild:
+  old
+
+  25 Feb 2013; Agostino Sarubbo <ago@gentoo.org> zoom-1.1.5.ebuild:
+  Stable for x86, wrt bug #458242
+
+  22 Feb 2013; Agostino Sarubbo <ago@gentoo.org> zoom-1.1.5.ebuild:
+  Stable for ppc, wrt bug #458242
+
+  20 Feb 2013; Chema Alonso <nimiux@gentoo.org> zoom-1.1.5.ebuild:
+  Stable for amd64 wrt bug #458242
+
+*zoom-1.1.5 (20 Jan 2013)
+
+  20 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org> +zoom-1.1.5.ebuild:
+  version bump (bug #452288)
+
+  06 Jan 2010; Joseph Jezak <josejx@gentoo.org> zoom-1.1.4.ebuild:
+  Marked ppc stable for bug #288804.
+
+  21 Nov 2009; Markus Meier <maekke@gentoo.org> zoom-1.1.4.ebuild:
+  x86 stable, bug #288804
+
+*zoom-1.1.4 (11 Jul 2009)
+
+  11 Jul 2009; Michael Sterrett <mr_bones_@gentoo.org> +zoom-1.1.4.ebuild:
+  version bump
+
+*zoom-1.1.2 (12 Feb 2008)
+
+  12 Feb 2008; Michael Sterrett <mr_bones_@gentoo.org> +zoom-1.1.2.ebuild:
+  version bump
+
+*zoom-1.1.1 (31 Jul 2007)
+
+  31 Jul 2007; Tristan Heaven <nyhm@gentoo.org> +zoom-1.1.1.ebuild:
+  Version bump, bug #187161
+
+*zoom-1.1.0 (29 Jun 2007)
+
+  29 Jun 2007; Tristan Heaven <nyhm@gentoo.org> +zoom-1.1.0.ebuild:
+  Version bump, bug #176588
+
+  19 Jun 2007; Christoph Mende <angelos@gentoo.org> zoom-1.0.5.ebuild:
+  Added ~amd64 wrt bug 178798
+
+*zoom-1.0.5 (20 Dec 2006)
+
+  20 Dec 2006; Michael Sterrett <mr_bones_@gentoo.org> +zoom-1.0.5.ebuild:
+  version bump (bug #157210)
+
+  29 Jan 2006; Joshua Baergen <joshuabaergen@gentoo.org> zoom-1.0.3.ebuild,
+  zoom-1.0.4a.ebuild:
+  Add modular X dependencies.
+
+*zoom-1.0.4a (31 Oct 2005)
+
+  31 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org> +zoom-1.0.4a.ebuild:
+  version bump
+
+*zoom-1.0.3 (10 Oct 2005)
+
+  10 Oct 2005; Mike Frysinger <vapier@gentoo.org> +zoom-1.0.3.ebuild:
+  Version bump #108580 by Alan Swanson.
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> zoom-1.0.2.ebuild:
+  Stable on ppc.
+
+  24 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> zoom-1.0.2.ebuild:
+  restore ppc keyword; stable on x86
+
+*zoom-1.0.2 (23 May 2005)
+
+  23 May 2005; Michael Sterrett <mr_bones_@gentoo.org> +zoom-1.0.2.ebuild:
+  version bump (bug #93501)
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> zoom-1.0.1.ebuild:
+  Stable on ppc.
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> zoom-1.0.1.ebuild:
+  Added ~ppc.
+
+*zoom-1.0.1 (31 Jan 2003)
+
+  12 Feb 2003; Seemant Kulleen <seemant@gentoo.org> zoom-1.0.1.ebuild :
+  swedishchef fixes
+
+  31 Jan 2003; Ryan Phillips <rphillips@gentoo.org> :
+  Initial import.  Ebuild submitted by Marshall Vandegrift. Fixes #10188

@@ -1,0 +1,258 @@
+# ChangeLog for net-misc/sitecopy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/sitecopy/ChangeLog,v 1.60 2015/04/24 07:58:26 idella4 Exp $
+
+  24 Apr 2015; Ian Delaney <idella4@gentoo.org> -files/0.16.3_p17-neon-29.patch,
+  -sitecopy-0.16.3_p17.ebuild:
+  purge outdated snapshot and the disused patch
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> sitecopy-0.16.6-r1.ebuild:
+  Stable for x86, wrt bug #542440
+
+  12 Mar 2015; Agostino Sarubbo <ago@gentoo.org> sitecopy-0.16.6-r1.ebuild:
+  Stable for amd64, wrt bug #542440
+
+*sitecopy-0.16.6-r1 (31 Jan 2015)
+
+  31 Jan 2015; Ian Delaney <idella4@gentoo.org>
+  +files/sitecopy-0.16.6-01-remote-dynamic-rc.patch,
+  +files/sitecopy-0.16.6-02-french-po-fix.patch,
+  +files/sitecopy-0.16.6-03-wrong-memory-397155.patch,
+  +files/sitecopy-0.16.6-06-sftpdriver.c-fix-for-new-openssh.patch,
+  +files/sitecopy-0.16.6-10-bts410703-preserve-storage-files-sigint.patch,
+  +files/sitecopy-0.16.6-20-bts549721-add-compatibility-for-neon-0.29.0.patch,
+  +files/sitecopy-0.16.6-30-bts320586-manpage-document-sftp.patch,
+  +sitecopy-0.16.6-r1.ebuild, -sitecopy-0.16.6_p3.ebuild:
+  bump subsequent to bug #500070, new patches to match, bump EAPI, removed
+  -0.16.6_p3, all wrt bug #500070
+
+  15 Jan 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove myself from metadata
+
+*sitecopy-0.16.6_p3 (16 Jan 2011)
+
+  16 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  +sitecopy-0.16.6_p3.ebuild, metadata.xml:
+  Version bump. Bug #351637. Thanks to Roger Zauner <rogerx.oss@gmail.com>
+
+  22 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  sitecopy-0.16.3_p17.ebuild:
+  net-misc/neon renamed to net-libs/neon.
+
+  07 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  sitecopy-0.16.3_p17.ebuild:
+  Transfer Prefix keywords
+
+  01 Dec 2009; Markus Meier <maekke@gentoo.org> sitecopy-0.16.3_p17.ebuild:
+  amd64 stable, bug #292827
+
+  28 Aug 2009; Petteri Räty <betelgeuse@gentoo.org>
+  sitecopy-0.16.3_p17.ebuild:
+  Migrate to EAPI 2 in order to get rid of built_with_use.
+
+  30 Jun 2008; Raúl Porcel <armin76@gentoo.org>
+  -files/0.16.3-neon-28.patch, -sitecopy-0.16.3.ebuild,
+  -sitecopy-0.16.3_p15.ebuild, sitecopy-0.16.3_p17.ebuild:
+  sparc/x86 stable, remove old
+
+  14 Jun 2008; nixnut <nixnut@gentoo.org> sitecopy-0.16.3_p17.ebuild:
+  Stable on ppc wrt bug 220615
+
+*sitecopy-0.16.3_p17 (09 Apr 2008)
+
+  09 Apr 2008; Raúl Porcel <armin76@gentoo.org>
+  +files/0.16.3_p17-neon-29.patch, +sitecopy-0.16.3_p17.ebuild:
+  Version bump wrt #216408
+
+*sitecopy-0.16.3_p15 (25 Mar 2008)
+
+  25 Mar 2008; Raúl Porcel <armin76@gentoo.org>
+  +files/0.16.3-neon-28.patch, -sitecopy-0.16.3-r1.ebuild,
+  +sitecopy-0.16.3_p15.ebuild:
+  Fix versioning, new patchset from debian, bug #214426
+
+*sitecopy-0.16.3-r1 (26 Jan 2008)
+
+  26 Jan 2008; Raúl Porcel <armin76@gentoo.org>
+  +sitecopy-0.16.3-r1.ebuild:
+  Revision bump to add patches from Debian, and fix bug #197804
+
+  26 Jan 2008; Raúl Porcel <armin76@gentoo.org>
+  -files/sitecopy-0.14.1-nls.patch, -files/sitecopy-gcc3.4.patch,
+  -sitecopy-0.15.1.ebuild, -sitecopy-0.16.0.ebuild:
+  old
+
+  14 Jul 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Assigning net-misc/sitecopy to m-needed, as chriswhite has been retired
+  (#56211).
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  28 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  sitecopy-0.16.3.ebuild:
+  ppc stable, bug #141514
+
+  28 Jul 2006; Joshua Jackson <tsunam@gentoo.org> sitecopy-0.16.3.ebuild:
+  Stable x86; bug #141514
+
+  24 Jul 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  sitecopy-0.16.3.ebuild:
+  Stable on sparc wrt #141514
+
+  05 Jul 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  sitecopy-0.15.1.ebuild, sitecopy-0.16.0.ebuild:
+  xml2 use flag changed to xml
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org>
+  files/digest-sitecopy-0.15.1, files/digest-sitecopy-0.16.0, Manifest:
+  Fixing SHA256 digest, pass four
+
+  21 Mar 2006; Emanuele Giaquinta <exg@gentoo.org> sitecopy-0.16.3.ebuild:
+  Removed support for gssapi since it's broken. Replaced xml2 useflag with xml
+  useflag.
+
+*sitecopy-0.16.3 (14 Mar 2006)
+
+  14 Mar 2006; Chris White <chriswhite@gentoo.org> +sitecopy-0.16.3.ebuild:
+  Version bump to 0.16.3.
+
+  22 Feb 2006; Chris White <chriswhite@gentoo.org> sitecopy-0.15.1.ebuild,
+  sitecopy-0.16.0.ebuild:
+  Removed uneeded virtual/libc's. Rid of missed sftp reference in 0.16.0 since
+  it's broken right now.
+
+  22 Feb 2006; Chris White <chriswhite@gentoo.org>
+  -sitecopy-0.13.4-r2.ebuild:
+  Removed older versions.
+
+  23 Dec 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  sitecopy-0.16.0.ebuild:
+  Marked ppc stable, #116347
+
+  22 Dec 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  sitecopy-0.16.0.ebuild:
+  Stable on sparc wrt #116347
+
+  22 Dec 2005; Chris White <chriswhite@gentoo.org> metadata.xml,
+  sitecopy-0.16.0.ebuild:
+  x86 stable for bug #116347. Removed broken sftp support. built_with_use to
+  pkg_setup. Readded self as maintianer.
+
+*sitecopy-0.16.0 (10 Sep 2005)
+
+  10 Sep 2005; Daniel Black <dragonheart@gentoo.org>
+  -sitecopy-0.10.12-r1.ebuild, -sitecopy-0.12.1.ebuild,
+  -sitecopy-0.13.4.ebuild, -sitecopy-0.13.4-r1.ebuild,
+  -sitecopy-0.14.1.ebuild, -sitecopy-0.14.2.ebuild, -sitecopy-0.14.3.ebuild,
+  +sitecopy-0.16.0.ebuild:
+  version bump and old version cleanout
+
+*sitecopy-0.15.1 (25 May 2005)
+
+  25 May 2005; Chris White <chriswhite@gentoo.org> +sitecopy-0.15.1.ebuild:
+  Version bump to 0.15.1. Closes bug #89300. New features include sftp and
+  usage of libneon external for various functionality.
+
+  19 Apr 2005; Elfyn McBratney <beu@gentoo.org> metadata.xml:
+  Remove retired developer from metadata.xml.
+
+  30 Jan 2005; Tom Martin <slarti@gentoo.org> sitecopy-0.14.3.ebuild:
+  Marked ~amd64.
+
+*sitecopy-0.14.3 (05 Jan 2005)
+
+  05 Jan 2005; Chris White <chriswhite@gentoo.org>
+  +files/sitecopy-gcc3.4.patch, +sitecopy-0.14.3.ebuild:
+  Fixed bug #76582 and added a nice gcc3.4 patch to go with it.
+
+*sitecopy-0.14.2 (03 Oct 2004)
+
+  03 Oct 2004; Chris White <chriswhite@gentoo.org> +sitecopy-0.14.2.ebuild:
+  Bumped to 0.14.2. Thanks goes to Daniel Webert <rockoo@rockoo.homelinux.org>
+  for reporting. This closes bug #66157.
+
+*sitecopy-0.14.1 (16 Sep 2004)
+
+  16 Sep 2004; Chris White <chriswhite@gentoo.org>
+  +files/sitecopy-0.14.1-nls.patch, +sitecopy-0.14.1.ebuild:
+  Updated to version 0.14.1 as per bug #63855. Cleaned the ebuild logic up some
+  (use_with and use_enable). Removed some of the gnome fixes that are no longer
+  required. Crunched down the xsitecopy and sitecopy build decision to one or
+  the other. Fixed an nls issue while I was at it.
+
+  14 Aug 2004; Chris White <chriswhite@gentoo.org> sitecopy-0.13.4-r2.ebuild:
+  Marked stable on x86.  Closes stable marking for bug #51585.
+
+  07 Aug 2004; Jason Wever <weeve@gentoo.org> sitecopy-0.13.4-r2.ebuild:
+  Stable on sparc wrt bug #51585.
+
+  17 Jul 2004; David Holm <dholm@gentoo.org> :
+  Added to ~ppc.
+
+*sitecopy-0.13.4-r2 (17 Jul 2004)
+
+  17 Jul 2004; Chris White <chriswhite@gentoo.org> +sitecopy-0.13.4-r2.ebuild:
+  Updated to -r2 which fixes security Bug #51585.  Added myself as maintainer
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> sitecopy-0.10.12-r1.ebuild,
+  sitecopy-0.12.1.ebuild, sitecopy-0.13.4-r1.ebuild, sitecopy-0.13.4.ebuild:
+  change virtual/glibc to virtual/libc
+
+  14 Jun 2004; Aron Griffis <agriffis@gentoo.org> sitecopy-0.10.12-r1.ebuild,
+  sitecopy-0.12.1.ebuild, sitecopy-0.13.4-r1.ebuild, sitecopy-0.13.4.ebuild:
+  Fix use invocation
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> sitecopy-0.13.4-r1.ebuild:
+  Add die following econf for bug 48950
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> sitecopy-0.12.1.ebuild,
+  sitecopy-0.13.4.ebuild:
+  Add die following econf for bug 48950
+
+*sitecopy-0.13.4-r1 (19 Oct 2003)
+
+  19 Oct 2003; Heinrich Wendel <lanius@gentoo.org> sitecopy-0.13.4-r1.ebuild:
+  added nls use flag, fixed installing of sitecopy when gnome is set
+
+  19 Oct 2003; Heinrich Wendel <lanius@gentoo.org> sitecopy-0.11.4.ebuild,
+  sitecopy-0.13.4.ebuild:
+  added gnome support, marked 13.4 stable
+
+*sitecopy-0.13.4 (31 Aug 2003)
+
+  31 Aug 2003; Martin Holzer <mholzer@gentoo.org> sitecopy-0.13.4.ebuild:
+  Version bumped.
+
+*sitecopy-0.12.1 (28 Apr 2003)
+
+  28 Apr 2003; Martin Holzer <mholzer@gentoo.org> sitecopy-0.12.1.ebuild:
+  Version bumped. Submitted by Hans Meine <gentoobug@chiefrocker.net> in #20107.
+
+  15 Dec 2002; Maik Schreiber <blizzy@gentoo.org> sitecopy-0.10.12-r1.ebuild:
+  Fixed sandbox violation (bug #10107, thanks to Bob Paddock
+  <bpaddock@csonline.net>).
+
+*sitecopy-0.11.4 (15 Dec 2002)
+
+  15 Dec 2002; Maik Schreiber <blizzy@gentoo.org> : New version.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+  29 Oct 2002; Mike Frysinger <vapier@gentoo.org> : Cleanup / HOMEPAGE fix
+  (#9933)
+
+  30 Aug 2002; Sascha Schwabbauer <cybersystem@gentoo.org>
+  sitecopy-0.10.12-r1.ebuild: Added ppc to keywords.
+
+  09 Jul 2002; phoen][x <phoenix@gentoo.org> sitecopy-0.10.12-r1.ebuild:
+  Added KEYWORDS, LICENSE, SLOT.
+
+*sitecopy-0.10.12-r1 (01 Feb 2002)
+
+  01 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog:
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,14 @@
+--- configure.ac
++++ configure.ac
+@@ -51,6 +51,11 @@
+ # Checks for libraries.
+ #
+ 
++dnl Check for libm for ceil()
++AC_SEARCH_LIBS([ceil], [m], [], [
++	AC_MSG_ERROR([unable to find the ceil() function])
++])
++
+ # check for libcurl.
+ AC_ARG_WITH([curl-config],
+  AC_HELP_STRING([--with-curl-config=PATH], [path to curl-config (e.g. /opt/bin)]),

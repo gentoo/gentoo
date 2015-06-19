@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=app-i18n/freewnn
+DESCRIPTION=Wnn dictionary for librarian
+HOMEPAGE=http://www.tulips.tsukuba.ac.jp/misc/export/cat/ldic/
+KEYWORDS=~amd64 ~x86
+LICENSE=HPND
+RDEPEND=app-i18n/freewnn
+SLOT=0
+SRC_URI=http://www.tulips.tsukuba.ac.jp/misc/export/cat/ldic/ldic-1.04-wnn.txt
+_md5_=73eb8536efbcf32807d91c43dd236d36

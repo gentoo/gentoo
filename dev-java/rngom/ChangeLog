@@ -1,0 +1,40 @@
+# ChangeLog for dev-java/rngom
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/rngom/ChangeLog,v 1.10 2014/08/10 20:22:59 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> rngom-20051226.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  28 Mar 2008; nixnut <nixnut@gentoo.org> rngom-20051226.ebuild:
+  Stable on ppc wrt bug 214778
+
+  19 Aug 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  rngom-20051226.ebuild:
+  amd64 stable, bug #187681.
+
+  15 Aug 2007; Christian Faulhammer <opfer@gentoo.org>
+  rngom-20051226.ebuild:
+  stable x86, bug 187681
+
+  11 Aug 2007; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml:
+  Remove myself from <maintainer>.
+
+  23 May 2007; Diego Pettenò <flameeyes@gentoo.org> rngom-20051226.ebuild:
+  Add ~x86-fbsd keyword. Bug #176906.
+
+  08 May 2007; Alistair John Bush <ali_bush@gentoo.org>
+  rngom-20051226.ebuild:
+  Fix ebuild so it doesn't attempt to build javadocs and actually installs
+  bunded javadoc
+
+  05 May 2007; Vlastimil Babka <caster@gentoo.org> rngom-20051226.ebuild:
+  Remove -i from cp.
+
+  01 May 2007; Krzysiek Pawlik <nelchael@gentoo.org> rngom-20051226.ebuild:
+  Fix DEPEND.
+
+*rngom-20051226 (01 May 2007)
+
+  01 May 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/build.xml-20051226, +metadata.xml, +rngom-20051226.ebuild:
+  Initial commit of rngom.

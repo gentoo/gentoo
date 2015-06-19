@@ -1,0 +1,31 @@
+Index: prey/core/functions
+===================================================================
+--- prey.orig/core/functions
++++ prey/core/functions
+@@ -170,7 +170,7 @@ remove_files(){
+ 
+ get_current_delay(){
+ 	# crontab -l | grep prey | sed "s/^..\([0-9]*\).*/\1/"
+-	crontab -l | grep prey | head -1 | sed 's/ \/.*//'
++	sed -i 's/ \/.*//' /etc/cron.d/prey.cron
+ }
+ 
+ get_delay_for(){
+@@ -197,7 +197,7 @@ get_delay_for(){
+ 
+ update_execution_delay(){
+ 	local full_path=`full_path "$base_path"`
+-	(crontab -l | grep -v prey; echo "${new_delay}" "${full_path}/prey.sh > /var/log/prey.log") | crontab -
++	echo "${new_delay}" "/usr/bin/prey.sh > /var/log/prey.log" > /etc/cron.d/prey.cron
+ }
+ 
+ ####################################################################
+@@ -250,7 +250,7 @@ verify_installation(){
+ 		log " !! Cron daemon not found! Try running it with 'sudo /etc/init.d/cron start'."
+ 	fi
+ 	log " -- Checking for crontab entry..."
+-	local result=`crontab -l | grep 'prey.sh' | wc -l 2> /dev/null`
++	local result=`wc -l /etc/cron.d/prey.cron 2> /dev/null`
+ 	if [ "$result" -gt 0 ]; then
+ 		log " -- Found!"
+ 	else

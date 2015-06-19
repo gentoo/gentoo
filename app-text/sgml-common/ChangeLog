@@ -1,0 +1,259 @@
+# ChangeLog for app-text/sgml-common
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/sgml-common/ChangeLog,v 1.63 2014/04/06 14:52:58 vapier Exp $
+
+  06 Apr 2014; Mike Frysinger <vapier@gentoo.org> sgml-common-0.6.3-r5.ebuild:
+  Add arm64 love.
+
+  12 Nov 2013; Michael Haubenwallner <haubi@gentoo.org>
+  sgml-common-0.6.3-r5.ebuild:
+  Add ~ppc-aix keyword.
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/sgml-herd-has-no-maintainers-
+  again-td259655.html
+
+  17 Feb 2013; Zac Medico <zmedico@gentoo.org> sgml-common-0.6.3-r5.ebuild:
+  Add ~arm-linux keyword.
+
+  03 Jan 2013; Mike Gilbert <floppym@gentoo.org>
+  -files/sgml-common-0.6.3-configure.in.patch,
+  -files/sgml-common-0.6.3-htmldir.patch,
+  -files/sgml-common-0.6.3-man_MANS.patch, sgml-common-0.6.3-r5.ebuild:
+  Repackage build system and eliminate eautoreconf to work around bug 443074.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  sgml-common-0.6.3-r5.ebuild:
+  keyword ~amd64-fbsd
+
+  27 Mar 2012; Mike Gilbert <floppym@gentoo.org>
+  +files/sgml-common-0.6.3-htmldir.patch, sgml-common-0.6.3-r5.ebuild:
+  Install html in the right place. Bug 295115.
+
+  03 May 2011; Fabian Groffen <grobian@gentoo.org> sgml-common-0.6.3-r5.ebuild:
+  Marked ~x64-freebsd
+
+  13 Feb 2011; Fabian Groffen <grobian@gentoo.org> sgml-common-0.6.3-r5.ebuild:
+  Marked ~sparc64-solaris
+
+  18 Aug 2010; Fabian Groffen <grobian@gentoo.org>
+  sgml-common-0.6.3-r5.ebuild:
+  Marked ~m68k-mint, bug #333209
+
+  06 Apr 2010; Jonathan Callen <abcd@gentoo.org>
+  sgml-common-0.6.3-r5.ebuild, files/sgml-common-0.6.3-install-catalog.in,
+  +files/sgml-common-0.6.3-prefix.patch:
+  Bump to EAPI=3, add prefix keywords, more quoting
+
+  19 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  sgml-common-0.6.3-r5.ebuild, +files/sgml-common-0.6.3-man_MANS.patch:
+  Remove WANT_AUTOCONF and WANT_AUTOMAKE vars; patch Makefile.am to support
+  latest automake.
+
+  08 Sep 2007; Christoph Mende <angelos@gentoo.org>
+  sgml-common-0.6.3-r5.ebuild:
+  Stable on amd64 wrt bug #182385
+
+  27 Aug 2007; Raúl Porcel <armin76@gentoo.org>
+  sgml-common-0.6.3-r5.ebuild:
+  alpha/ia64 stable wrt #182385
+
+  24 Aug 2007; Markus Rothe <corsair@gentoo.org>
+  sgml-common-0.6.3-r5.ebuild:
+  Stable on ppc64; bug #182385
+
+  21 Aug 2007; Markus Ullmann <jokey@gentoo.org>
+  sgml-common-0.6.3-r5.ebuild:
+  Stable on x86 wrt bug #182385
+
+  20 Aug 2007; Jeroen Roovers <jer@gentoo.org> sgml-common-0.6.3-r5.ebuild:
+  Stable for HPPA (bug #182385).
+
+  18 Aug 2007; nixnut <nixnut@gentoo.org> sgml-common-0.6.3-r5.ebuild:
+  Stable on ppc wrt bug 182385
+
+  16 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  sgml-common-0.6.3-r5.ebuild:
+  Stable on sparc wrt #182385
+
+  12 Mar 2007; Leonardo Boshell <leonardop@gentoo.org> metadata.xml:
+  Replacing text-markup herd with the new sgml herd.
+
+  14 Nov 2006; Leonardo Boshell <leonardop@gentoo.org>
+  sgml-common-0.6.3-r4.ebuild, sgml-common-0.6.3-r5.ebuild:
+  Add WANT_AUTOCONF declaration to -r4 as well (bug #153846).
+
+  03 Nov 2006; Leonardo Boshell <leonardop@gentoo.org>
+  sgml-common-0.6.3-r5.ebuild:
+  Make sure autoconf 2.1* is required (bug #153846).
+
+  30 Oct 2006; Peter Volkov <pva@gentoo.org> sgml-common-0.6.3-r4.ebuild,
+  sgml-common-0.6.3-r5.ebuild:
+  Depend on autoools eclass in stable version. Raised automake depend version
+  to 1.5. Removed automake from DEPEND as autotools eclass takes care about
+  this. Fixed bug #148273. Thank Ross and many others for report.
+
+  24 Oct 2006; Roy Marples <uberlord@gentoo.org>
+  sgml-common-0.6.3-r5.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  07 Oct 2006; Alexandre Buisse <nattfodd@gentoo.org>
+  sgml-common-0.6.3-r5.ebuild:
+  Force automake-1.4 (bug #148273) by setting WANT_AUTOMAKE at the right
+  place.
+
+  09 May 2006; Leonardo Boshell <leonardop@gentoo.org>
+  sgml-common-0.6.3-r5.ebuild:
+  Set WANT_AUTOMAKE.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+  25 Apr 2006; Fabian Groffen <grobian@gentoo.org>
+  sgml-common-0.6.3-r5.ebuild:
+  Removed ~ppc-macos as it doesn't eautoreconf (bug #131248)
+
+  05 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  files/sgml-common-0.6.3-install-catalog.in, sgml-common-0.6.3-r5.ebuild:
+  Change the installer script to use /bin/bash instead of /bin/sh as it uses
+  bash-specific syntax, and mark ~x86-fbsd.
+
+  26 Mar 2006; Alexandre Buisse <nattfodd@gentoo.org>
+  sgml-common-0.6.3-r5.ebuild:
+  Suppress a \n in KEYWORDS :/
+
+*sgml-common-0.6.3-r5 (26 Mar 2006)
+
+  26 Mar 2006; Alexandre Buisse <nattfodd@gentoo.org>
+  +files/sgml-common-0.6.3-configure.in.patch,
+  +files/sgml-common-0.6.3-install-catalog.in,
+  -files/sgml-common-0.6.3-r4-install-catalog.in,
+  sgml-common-0.6.3-r4.ebuild, +sgml-common-0.6.3-r5.ebuild:
+  Install doc in /usr/share/doc instead of /usr/doc. Thanks to Andrew
+  Kirilenko for the report and Christan Heim for the patch.
+
+  14 Jan 2006; Leonardo Boshell <leonardop@gentoo.org>
+  files/sgml-common-0.6.3-r4-install-catalog.in,
+  sgml-common-0.6.3-r4.ebuild:
+  Modified ebuild and install-catalog script to handle $ROOT values different
+  than "/". See bug #114946.
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  18 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  sgml-common-0.6.3-r4.ebuild:
+  cleaned up src_unpack (bug #63838); cleaned up src_install
+
+  10 Sep 2004; Hasan Khalil <gongloo@gentoo.org> sgml-common=0.6.3-r4.ebuild:
+  stable on macos
+
+  28 Jun 2004; Tom Gall <tgall@gentoo.org> sgml-common-0.6.3-r4.ebuild:
+  stable on ppc64 bug #54792
+
+  13 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  sgml-common-0.6.3-r4.ebuild:
+  Stable on alpha.
+
+  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> sgml-common-0.6.3-r4.ebuild :
+  Stable on AMD64.
+
+  28 Apr 2004; Guy Martin <gmsoft@gentoo.org> sgml-common-0.6.3-r4.ebuild:
+  Marked stable on hppa.
+
+  27 Apr 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  sgml-common-0.6.3-r4.ebuild:
+  Stable on sparc
+
+  26 Apr 2004; Mike Gardiner <obz@gentoo.org> sgml-common-0.6.3-r3.ebuild,
+  sgml-common-0.6.3-r4.ebuild:
+  This has been ~x86 for way too long, for no reason. Marked -r4 x86 now. Fixed
+  S= in -r3 for fun
+
+  15 Apr 2004; Michael McCabe <randy@gentoo.org>
+  sgml-common-0.6.3-r4.ebuild:
+  adding s390 keywords
+
+  21 Mar 2004; Joshua Kinard <kumba@gentoo.org> sgml-common-0.6.3-r4.ebuild:
+  Marked Stable on mips.
+
+  04 Mar 2004; Joshua Kinard <kumba@gentoo.org> sgml-common-0.6.3-r4.ebuild:
+  Added ~mips to KEYWORDS to satisfy repoman deps.
+
+  23 Sep 2003; Bartosch Pixa <darkspecter@gentoo.org>
+  sgml-common-0.6.3-r4.ebuild:
+  set ppc in keywords
+
+  13 Sep 2003; Mike Gardiner <obz@gentoo.org> sgml-common-0.6.3-r1.ebuild,
+  sgml-common-0.6.3.ebuild:
+  Removed older versions
+
+  13 Sep 2003; Mike Gardiner <obz@gentoo.org> metadata.xml,
+  sgml-common-0.6.3-r3.ebuild, sgml-common-0.6.3-r4.ebuild:
+  Added automake to depends, see bug #23080
+
+  10 Feb 2003; Guy Martin <gmsoft@gentoo.org> :
+  Added hppa to keywords.
+
+*sgml-common-0.6.3-r4 (05 Feb 2003)
+
+  05 Feb 2003; Matthew Turk <satai@gentoo.org> :
+  Revision bump.  Now the install-catalog program puts quotations around the
+  catalog files, thus fixing sgmltools-lite.  Masking in package.mask and
+  ~arch.  Also included a script to convert the catalogs into the proper
+  format, with quotation marks.  In response to bug 12792.
+
+*sgml-common-0.6.3-r3 (30 Dec 2002)
+
+  30 Dec 2002; Matthew Turk <satai@gentoo.org> :
+  Changed the echo's around a bit, other misc bits.  Warrants a revision bump
+  just to make sure it gets caught with all the other SGML changes.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*sgml-common-0.6.3-r2 (12 Sep 2002)
+  12 Sep 2002; satai <satai@gentoo.org> sgml-common-0.6.3-r2.ebuild :
+  Added more robust file checking.
+
+*sgml-common-0.6.3-r2 (12 Jul 2002)
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> sgml-common-0.6.3.ebuild :
+  Added LICENSE, SLOT.
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> sgml-common-0.6.3-r2.ebuild :
+  Added LICENSE, SLOT.
+
+  15 Jul 2002; Owen Stampflee <owen@gentoo.org> :
+
+  Added KEYWORDS.
+
+  12 Jul 2002; Seemant Kulleen <seemant@gentoo.org> :
+
+  bumped revision so as to force a remerge.
+
+*sgml-common-0.6.3-r1 (30 Jun 2002)
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> sgml-common-0.6.3-r1.ebuild :
+  Added LICENSE, SLOT.
+  30 Jun 2002; Martin Schlemmer <azarah@gentoo.org> :
+  Fix pkg_postrm() and pkg_prerm() to actually work.
+
+*sgml-common-0.6.3 (08 May 2002)
+  08 May 2002; Spider <spider@gentoo.org> sgml-common-0.6.3.ebuild:
+  the old version was removed from the server, responding to bug on irc.
+  
+*sgml-common-0.6.1-r1 (31 Mar 2002)
+
+  31 Mar 2002; Seemant Kulleen <seemant@gentoo.org> sgml-common-0.6.1-r1.ebuild:
+
+  Cleaned up ebuild.
+
+*sgml-common-0.6.1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

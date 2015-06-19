@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=X? ( x11-libs/libX11 x11-libs/libXaw x11-libs/libXmu x11-libs/libXt ) ncurses? ( sys-libs/ncurses sys-libs/readline ) ssl? ( dev-libs/openssl ) tcl? ( dev-lang/tcl ) X? ( x11-misc/imake x11-misc/xbitmaps x11-proto/xproto app-text/rman x11-apps/mkfontdir x11-apps/bdftopcf )
+DESCRIPTION=Complete 3270 access package
+HOMEPAGE=http://x3270.bgp.nu/
+IUSE=cjk doc ncurses ssl tcl X
+KEYWORDS=amd64 ppc s390 sparc x86
+LICENSE=GPL-2
+RDEPEND=X? ( x11-libs/libX11 x11-libs/libXaw x11-libs/libXmu x11-libs/libXt ) ncurses? ( sys-libs/ncurses sys-libs/readline ) ssl? ( dev-libs/openssl ) tcl? ( dev-lang/tcl )
+SLOT=0
+SRC_URI=mirror://sourceforge/x3270/suite3270-3.3.9ga12.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ee799b338ca55fd8309507ce41672270

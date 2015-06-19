@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>net-ftp</herd>
+  <maintainer>
+    <email>voyageur@gentoo.org</email>
+    <name>Bernard Cafarelli</name>
+  </maintainer>
+  <longdescription lang="en">
+  The native linux ftp/sftp client GUI built on wxGTK
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">filezilla</remote-id>
+  </upstream>
+</pkgmetadata>

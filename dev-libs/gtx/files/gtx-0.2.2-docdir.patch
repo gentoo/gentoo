@@ -1,0 +1,16 @@
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index aa401dc..4d99442 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -5,7 +5,7 @@ SUBDIRS =		\
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = gtx.pc
+ 
+-gtxdocdir = ${prefix}/doc/gtx
++gtxdocdir = ${docdir}
+ 
+ gtxdoc_DATA = \
+ 	README      \

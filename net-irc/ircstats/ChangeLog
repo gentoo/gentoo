@@ -1,0 +1,30 @@
+# ChangeLog for net-irc/ircstats
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/ircstats/ChangeLog,v 1.6 2014/07/03 17:03:53 creffett Exp $
+
+*ircstats-1.1-r1 (03 Jul 2014)
+
+  03 Jul 2014; Chris Reffett <creffett@gentoo.org> +ircstats-1.1-r1.ebuild,
+  -ircstats-1.0.ebuild, -ircstats-1.1.ebuild:
+  [QA] EAPI bump, remove old wrt bug 334597
+
+*ircstats-1.1 (14 Jan 2014)
+
+  14 Jan 2014; Patrick Lauer <patrick@gentoo.org> +ircstats-1.1.ebuild:
+  Bump
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org> ircstats-1.0.ebuild:
+  Add ~amd64
+
+  06 May 2007; Marius Mauch <genone@gentoo.org> ircstats-1.0.ebuild:
+  Replacing einfo with elog
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*ircstats-1.0 (18 Aug 2005)
+
+  18 Aug 2005; Sven Wegener <swegener@gentoo.org> +metadata.xml,
+  +ircstats-1.0.ebuild:
+  Initial commit, ebuild modified from the one submitted by Maxwell
+  Grender-Jones to bug #98339.

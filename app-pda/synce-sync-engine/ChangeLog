@@ -1,0 +1,43 @@
+# ChangeLog for app-pda/synce-sync-engine
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-pda/synce-sync-engine/ChangeLog,v 1.16 2015/06/09 12:02:18 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  15 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  synce-sync-engine-0.15.1-r3.ebuild:
+  Use app-pda/synce-core instead of obsolete dev-libs/libsynce.
+
+  23 Oct 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  synce-sync-engine-0.15.1-r3.ebuild:
+  Use correct slot of pygobject.
+
+*synce-sync-engine-0.15.1-r3 (30 Mar 2011)
+
+  30 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +synce-sync-engine-0.15.1-r3.ebuild:
+  Fix plug-in path for libopensync-python-plugin-0.22.
+
+*synce-sync-engine-0.15.1-r2 (28 Mar 2011)
+
+  28 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +synce-sync-engine-0.15.1-r2.ebuild:
+  Fix plug-in path for libopensync-python-plugin-0.39.
+
+  28 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  synce-sync-engine-0.15.1-r1.ebuild, metadata.xml:
+  USE="opensync" with plugins for both 0.2x and 0.3x series.
+
+*synce-sync-engine-0.15.1-r1 (25 Feb 2011)
+
+  25 Feb 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +synce-sync-engine-0.15.1-r1.ebuild:
+  Install libopensync plug-in to /usr/share/doc/${PF}/synce-opensync-plugin for
+  now.
+
+*synce-sync-engine-0.15.1 (25 Feb 2011)
+
+  25 Feb 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +synce-sync-engine-0.15.1.ebuild:
+  Initial commit.

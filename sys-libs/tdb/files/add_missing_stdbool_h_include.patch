@@ -1,0 +1,27 @@
+From 4e14a437963ba54987cd58b4e0705d9a6d8aea6f Mon Sep 17 00:00:00 2001
+From: Adam Williamson <awilliam@redhat.com>
+Date: Fri, 23 May 2014 10:08:14 -0700
+Subject: [PATCH] tdb/include: include stdbool.h in tdb.h
+
+Commit db5bda56bf08 (tdb: add TDB_MUTEX_LOCKING support) adds a bool, but does
+not include stdbool.h. This causes any build including tdb.h to fail, at least
+for me with GCC 4.9.0.
+---
+ lib/tdb/include/tdb.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/tdb/include/tdb.h b/lib/tdb/include/tdb.h
+index 5ea5e60..03e429c 100644
+--- a/lib/tdb/include/tdb.h
++++ b/lib/tdb/include/tdb.h
+@@ -31,6 +31,7 @@ extern "C" {
+ #endif
+ 
+ #include <signal.h>
++#include <stdbool.h>
+ 
+ /**
+  * @defgroup tdb The tdb API
+-- 
+1.9.3
+

@@ -1,0 +1,47 @@
+# ChangeLog for dev-python/sudsds
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sudsds/ChangeLog,v 1.12 2015/04/08 08:05:10 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> sudsds-1.0.1-r1.ebuild:
+  Drop old Python implementations
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> sudsds-1.0.1-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  20 May 2013; Tomáš Chvátal <scarabeus@gentoo.org> -sudsds-1.0.1.ebuild:
+  Drop overshadowed.
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> sudsds-1.0.1-r1.ebuild:
+  Stable for x86, wrt bug #470464
+
+  19 May 2013; Agostino Sarubbo <ago@gentoo.org> sudsds-1.0.1-r1.ebuild:
+  Stable for amd64, wrt bug #470464
+
+  05 Mar 2013; Tomáš Chvátal <scarabeus@gentoo.org> sudsds-1.0.1-r1.ebuild:
+  Also support 2.5 because why not.
+
+*sudsds-1.0.1-r1 (05 Mar 2013)
+
+  05 Mar 2013; Tomáš Chvátal <scarabeus@gentoo.org> +sudsds-1.0.1-r1.ebuild:
+  Add distutils-r1 using revision.
+
+  24 Jan 2013; Ian Delaney <idella4@gentoo.org> sudsds-1.0.1.ebuild:
+  Fixed build of docs, dropped un-needed die, fixes Bug #452822 by flameeyes
+
+  07 Jan 2013; Tomáš Chvátal <scarabeus@gentoo.org> -sudsds-1.0.ebuild,
+  sudsds-1.0.1.ebuild:
+  Stabilise on amd64 and x86. Remove older.
+
+*sudsds-1.0.1 (20 Dec 2012)
+
+  20 Dec 2012; Tomáš Chvátal <scarabeus@gentoo.org> +sudsds-1.0.1.ebuild:
+  Version bump to latest.
+
+  26 Apr 2012; Tomáš Chvátal <scarabeus@gentoo.org> sudsds-1.0.ebuild:
+  Stable on amd64 and x86.
+
+*sudsds-1.0 (28 Feb 2012)
+
+  28 Feb 2012; Tomáš Chvátal <scarabeus@gentoo.org> +metadata.xml,
+  +sudsds-1.0.ebuild:
+  Add new package, fork of suds by Czech NIC labs for datovka.

@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=sys-apps/sed-4 app-arch/gzip sys-devel/patch sys-devel/autoconf sys-devel/automake
+DESCRIPTION=PPM based compressor -- better behaved than bzip2
+EAPI=3
+HOMEPAGE=http://packages.qa.debian.org/p/ppmd.html
+KEYWORDS=-alpha -amd64 hppa -ia64 ~mips ppc sparc x86 ~x86-interix -amd64-linux -ia64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris
+LICENSE=public-domain
+SLOT=0
+SRC_URI=mirror://debian/pool/main/p/ppmd/ppmd_9.1.orig.tar.gz mirror://debian/pool/main/p/ppmd/ppmd_9.1-14.diff.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f5816d84b22de610658547d1bbb5b139

@@ -1,0 +1,29 @@
+# ChangeLog for dev-php/pecl-lzf
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-lzf/ChangeLog,v 1.4 2014/09/30 03:03:00 grknight Exp $
+
+*pecl-lzf-1.6.2-r1 (30 Sep 2014)
+
+  30 Sep 2014; Brian Evans <grknight@gentoo.org> +pecl-lzf-1.6.2-r1.ebuild,
+  -pecl-lzf-1.6.2.ebuild:
+  Revbump to support current PHP variants; drop old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pecl-lzf-1.6.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*pecl-lzf-1.6.2 (05 Mar 2013)
+
+  05 Mar 2013; Ole Markus With <olemarkus@gentoo.org> +pecl-lzf-1.6.2.ebuild,
+  -pecl-lzf-1.5.2-r1.ebuild:
+  Version bump
+
+*pecl-lzf-1.5.2-r1 (04 Nov 2010)
+
+  04 Nov 2010; Matti Bickel <mabi@gentoo.org> +pecl-lzf-1.5.2-r1.ebuild:
+  add version supporting minor version slotting
+
+*pecl-lzf-1.5.2 (05 Jul 2010)
+
+  05 Jul 2010; Matti Bickel <mabi@gentoo.org> +pecl-lzf-1.5.2.ebuild,
+  +metadata.xml:
+  initial import (bug #223809)

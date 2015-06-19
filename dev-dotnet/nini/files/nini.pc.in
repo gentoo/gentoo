@@ -1,0 +1,9 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+
+
+Name: Nini
+Description: .NET Configuration Library
+Version: @VERSION@
+Libs: @libs@

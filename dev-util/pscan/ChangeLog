@@ -1,0 +1,53 @@
+# ChangeLog for dev-util/pscan
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/pscan/ChangeLog,v 1.14 2015/04/23 00:49:03 mrueg Exp $
+
+  23 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -pscan-20000721.ebuild:
+  Remove old.
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  pscan-20000721-r1.ebuild:
+  Transfer Prefix keywords
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> pscan-20000721.ebuild,
+  pscan-20000721-r1.ebuild:
+  Remove virtual/libc
+
+  11 May 2007; Robin H. Johnson <robbat2@gentoo.org> pscan-20000721.ebuild,
+  pscan-20000721-r1.ebuild:
+  Block src_test due to weirdness.
+
+  09 Apr 2007; nixnut <nixnut@gentoo.org> pscan-20000721-r1.ebuild:
+  Stable on ppc wrt bug 173852
+
+  09 Apr 2007; Peter Weller <welp@gentoo.org> pscan-20000721-r1.ebuild:
+  Stable on amd64 wrt bug 173852
+
+  09 Apr 2007; Raúl Porcel <armin76@gentoo.org> pscan-20000721-r1.ebuild:
+  x86 stable wrt bug 173852
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*pscan-20000721-r1 (19 Feb 2006)
+
+  19 Feb 2006; Olivier Fisette <ribosome@gentoo.org>
+  +pscan-20000721-r1.ebuild:
+  Rename pscan to printf-scan to avoid file collision (see bug #116236).
+
+  12 Aug 2005; Luis Medinas <metalgod@gentoo.org> pscan-20000721.ebuild:
+  Added ~amd64 Keywords.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> pscan-20000721.ebuild:
+  Stable on ppc.
+
+  21 Nov 2004; Robin H. Johnson <robbat2@gentoo.org> pscan-20000721.ebuild:
+  Stable on x86.
+
+  17 Oct 2004; David Holm <dholm@gentoo.org> pscan-20000721.ebuild:
+  Added to ~ppc.
+
+*pscan-20000721 (18 Sep 2004)
+
+  18 Sep 2004; Robin H. Johnson <robbat2@gentoo.org> +pscan-20000721.ebuild:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

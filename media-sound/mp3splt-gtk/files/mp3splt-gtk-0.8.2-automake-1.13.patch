@@ -1,0 +1,61 @@
+From cb38e44936aa6a923f9dedffb7084de657caa54f Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 8 Jun 2013 21:44:45 +0200
+Subject: [PATCH] Resolve use of $(top_srcdir) in TESTS to stop Automake 1.13.1
+ from erroring out
+
+This is actually a cheap port of a fix to upstream bug #153
+https://sourceforge.net/p/mp3splt/bugs/152/
+https://sourceforge.net/p/mp3splt/code/1326/
+---
+ test/Makefile.am  | 7 +++++--
+ test/run-tests.sh | 7 ++++++-
+ 2 files changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/test/Makefile.am b/test/Makefile.am
+index bb77e86..81159e3 100644
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -34,11 +34,14 @@ test_douglas_peucker_la_SOURCES = test_douglas_peucker.c tests.h \
+ $(top_srcdir)/src/douglas_peucker.c $(top_srcdir)/src/douglas_peucker.h \
+ $(top_srcdir)/src/utilities.c $(top_srcdir)/src/utilities.h
+ 
+-TESTS = $(top_srcdir)/test/run-tests.sh
+-TESTS_ENVIRONMENT = NO_MAKE=yes CUTTER="$(CUTTER)"
++TESTS = run-tests.sh
++TESTS_ENVIRONMENT = NO_MAKE=yes CUTTER="$(CUTTER)" TESTS_DIR="$(top_builddir)/test"
+ 
+ echo-cutter:
+ 	@echo $(CUTTER)
+ 
++echo-tests-dir:
++	@echo $(top_builddir)/test
++
+ endif
+ 
+diff --git a/test/run-tests.sh b/test/run-tests.sh
+index a7bee7a..49ca19e 100755
+--- a/test/run-tests.sh
++++ b/test/run-tests.sh
+@@ -5,6 +5,11 @@ top_dir="$BASE_DIR/.."
+ 
+ if test -z "$NO_MAKE"; then
+     make -C $top_dir > /dev/null || exit 1
++  TESTS_DIR=$BASE_DIR
++else
++  if test -z "$TESTS_DIR"; then
++    TESTS_DIR="`make -s -C $BASE_DIR echo-tests-dir`"
++  fi
+ fi
+ 
+ if test -z "$CUTTER"; then
+@@ -21,5 +26,5 @@ fi
+   exit 1
+ }
+ 
+-$CUTTER -s $BASE_DIR "$@" $BASE_DIR
++$CUTTER -s $BASE_DIR "$@" $TESTS_DIR
+ 
+-- 
+1.8.2.1
+

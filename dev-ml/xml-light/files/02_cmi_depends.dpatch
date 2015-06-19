@@ -1,0 +1,18 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 02_cmi_depends.dpatch by Sylvain Le Gall <gildor@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: No description.
+
+@DPATCH@
+diff -urNad xml-light-2.2~/Makefile xml-light-2.2/Makefile
+--- xml-light-2.2~/Makefile	2006-01-03 17:34:23.000000000 +0100
++++ xml-light-2.2/Makefile	2006-01-03 17:35:04.000000000 +0100
+@@ -82,6 +82,6 @@
+ .mll.ml:
+ 	ocamllex $<
+ 
+-.mly.ml:
++%.mli %.ml: %.mly
+ 	ocamlyacc $<
+ 

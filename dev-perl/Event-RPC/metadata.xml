@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">Event-RPC</remote-id>
+    <remote-id type="cpan-module">Event::RPC</remote-id>
+    <remote-id type="cpan-module">Event::RPC::AuthPasswdHash</remote-id>
+    <remote-id type="cpan-module">Event::RPC::Client</remote-id>
+    <remote-id type="cpan-module">Event::RPC::Connection</remote-id>
+    <remote-id type="cpan-module">Event::RPC::LogConnection</remote-id>
+    <remote-id type="cpan-module">Event::RPC::Logger</remote-id>
+    <remote-id type="cpan-module">Event::RPC::Loop</remote-id>
+    <remote-id type="cpan-module">Event::RPC::Loop::AnyEvent</remote-id>
+    <remote-id type="cpan-module">Event::RPC::Loop::Event</remote-id>
+    <remote-id type="cpan-module">Event::RPC::Loop::Glib</remote-id>
+    <remote-id type="cpan-module">Event::RPC::Message</remote-id>
+    <remote-id type="cpan-module">Event::RPC::Server</remote-id>
+  </upstream>
+</pkgmetadata>

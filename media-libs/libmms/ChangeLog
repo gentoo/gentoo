@@ -1,0 +1,224 @@
+# ChangeLog for media-libs/libmms
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libmms/ChangeLog,v 1.67 2014/06/24 22:11:25 mgorny Exp $
+
+  24 Jun 2014; Michał Górny <mgorny@gentoo.org> libmms-0.6.2-r1.ebuild:
+  Lower dev-libs/glib dep to first known EAPI=5 version, requested by Funtoo for
+  GNOME 3.6.
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> libmms-0.6.2-r1.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+*libmms-0.6.4 (25 Apr 2014)
+
+  25 Apr 2014; Patrick McLean <chutzpah@gentoo.org> +libmms-0.6.4.ebuild:
+  Version bump, fix for CVE-2014-2892 (bug #507822).
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libmms-0.6.2-r1.ebuild:
+  Stable for sparc, wrt bug #495736
+
+  19 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libmms-0.6.2-r1.ebuild:
+  Stable for ppc64, wrt bug #495736
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libmms-0.6.2-r1.ebuild:
+  Stable for alpha, wrt bug #495736
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libmms-0.6.2-r1.ebuild:
+  Stable for ppc, wrt bug #495736
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libmms-0.6.2-r1.ebuild:
+  Stable for x86, wrt bug #495736
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> libmms-0.6.2-r1.ebuild:
+  amd64 stable, bug #495736
+
+  01 Jan 2014; Jeroen Roovers <jer@gentoo.org> libmms-0.6.2-r1.ebuild:
+  Stable for HPPA (bug #495736).
+
+*libmms-0.6.2-r1 (10 Aug 2013)
+
+  10 Aug 2013; Alexis Ballier <aballier@gentoo.org> +libmms-0.6.2-r1.ebuild:
+  Convert to multilib and stack it for medialibs r9
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> libmms-0.6.2.ebuild:
+  Add ~arm, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> libmms-0.6.2.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org> libmms-0.6.2.ebuild:
+  keyword ~amd64-fbsd
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> libmms-0.6.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  24 Apr 2011; Tim Harder <radhermit@gentoo.org>
+  -files/libmms-0.4-nested_comments.patch,
+  -files/libmms-0.4-this_keyword.patch, -libmms-0.5.ebuild,
+  -files/libmms-0.5-checkborders.patch:
+  Remove old.
+
+  24 Apr 2011; Raúl Porcel <armin76@gentoo.org> libmms-0.6.2.ebuild:
+  sparc stable wrt #357417
+
+  25 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> libmms-0.6.2.ebuild:
+  ppc/ppc64 stable wrt #357417
+
+  21 Mar 2011; Thomas Kahle <tomka@gentoo.org> libmms-0.6.2.ebuild:
+  x86 stable per bug 357417
+
+  13 Mar 2011; Tobias Klausmann <klausman@gentoo.org> libmms-0.6.2.ebuild:
+  Stable on alpha, bug #357417
+
+  08 Mar 2011; Jeroen Roovers <jer@gentoo.org> libmms-0.6.2.ebuild:
+  Stable for HPPA (bug #357417).
+
+  06 Mar 2011; Markos Chandras <hwoarang@gentoo.org> libmms-0.6.2.ebuild:
+  Stable on amd64 wrt bug #357417
+
+  29 Jan 2011; Jonathan Callen <abcd@gentoo.org> libmms-0.6.2.ebuild:
+  Add ~x86-freebsd/~amd64-linux/~x86-linux keywords
+
+*libmms-0.6.2 (19 Jan 2011)
+
+  19 Jan 2011; Tim Harder <radhermit@gentoo.org> +libmms-0.6.2.ebuild:
+  Version bump.
+
+  10 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> libmms-0.6.ebuild:
+  USE="static-libs" and punt .la files.
+
+  09 Aug 2010; Jeroen Roovers <jer@gentoo.org> libmms-0.5.ebuild:
+  Stable for HPPA (bug #310183).
+
+*libmms-0.6 (08 Jun 2010)
+
+  08 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> +libmms-0.6.ebuild:
+  Version bump.
+
+  05 Apr 2010; Raúl Porcel <armin76@gentoo.org> libmms-0.5.ebuild:
+  alpha/sparc stable wrt #310183
+
+  24 Mar 2010; Christian Faulhammer <fauli@gentoo.org> libmms-0.5.ebuild:
+  stable x86, bug 310183
+
+  23 Mar 2010; Brent Baude <ranger@gentoo.org> libmms-0.5.ebuild:
+  Marking libmms-0.5 ppc for bug 310183
+
+  21 Mar 2010; Brent Baude <ranger@gentoo.org> libmms-0.5.ebuild:
+  stable ppc64, bug 310183
+
+  19 Mar 2010; Pacho Ramos <pacho@gentoo.org> libmms-0.5.ebuild:
+  amd64 stable, bug 310183
+
+*libmms-0.5 (22 Dec 2009)
+
+  22 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> +libmms-0.5.ebuild,
+  +files/libmms-0.5-checkborders.patch:
+  Version bump wrt #297579 by Jan Vansteenkiste.
+
+  20 May 2009; Brent Baude <ranger@gentoo.org> libmms-0.4.ebuild:
+  Marking libmms-0.4 ppc for bug 268294
+
+  09 May 2009; Raúl Porcel <armin76@gentoo.org> libmms-0.4.ebuild:
+  sparc stable wrt #268294
+
+  07 May 2009; Jeroen Roovers <jer@gentoo.org> libmms-0.4.ebuild:
+  Stable for HPPA (bug #268294).
+
+  04 May 2009; Samuli Suominen <ssuominen@gentoo.org> libmms-0.4.ebuild:
+  New HOMEPAGE and SRC_URI at launchpad.
+
+  03 May 2009; Markus Meier <maekke@gentoo.org> libmms-0.4.ebuild:
+  amd64/x86 stable, bug #268294
+
+  03 May 2009; Tobias Klausmann <klausman@gentoo.org> libmms-0.4.ebuild:
+  Stable on alpha, bug #266986
+
+  03 May 2009; Brent Baude <ranger@gentoo.org> libmms-0.4.ebuild:
+  Marking libmms-0.4 ppc64 for bug 268294
+
+*libmms-0.4 (12 Dec 2008)
+
+  12 Dec 2008; Samuli Suominen <ssuominen@gentoo.org>
+  +files/libmms-0.4-nested_comments.patch,
+  +files/libmms-0.4-this_keyword.patch, +libmms-0.4.ebuild:
+  Version bump for bug 203647, thanks to Gordon and Hans.
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing foser from metadata.xml as per #120234.
+
+  23 Oct 2007; Jeroen Roovers <jer@gentoo.org> libmms-0.3.ebuild:
+  Stable for HPPA too (audacious).
+
+  18 Oct 2007; Raúl Porcel <armin76@gentoo.org> libmms-0.3.ebuild:
+  alpha stable
+
+  16 Jun 2007; Joshua Kinard <kumba@gentoo.org> libmms-0.3.ebuild:
+  Stable on mips.
+
+  15 Apr 2007; Peter Weller <welp@gentoo.org> libmms-0.3.ebuild:
+  Stable on amd64
+
+  13 Apr 2007; Raúl Porcel <armin76@gentoo.org> libmms-0.3.ebuild:
+  x86 stable
+
+  10 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> libmms-0.3.ebuild:
+  Stable on sparc
+
+  08 Apr 2007; Tony Vroon <chainsaw@gentoo.org> libmms-0.3.ebuild:
+  Mark stable on PPC & PPC64, dependency of the audacious 1.3 branch.
+
+  11 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> libmms-0.3.ebuild:
+  Alpha love.
+
+  08 Mar 2007; Jason Wever <weeve@gentoo.org> libmms-0.3.ebuild:
+  Added ~sparc keyword wrt bug #168465.
+
+  04 Mar 2007; Javier Villavicencio <the_paya@gentoo.org> libmms-0.3.ebuild:
+  Added ~x86-fbsd keyword, and the fix from bug 168724.
+
+  27 Feb 2007; Tom Gall <tgall@gentoo.org> libmms-0.3.ebuild:
+  added ~ppc64
+
+  27 Feb 2007; Guy Martin <gmsoft@gentoo.org> libmms-0.3.ebuild:
+  Added ~hppa to KEYWORDS.
+
+  27 Feb 2007; Joseph Jezak <josejx@gentoo.org> libmms-0.3.ebuild:
+  Marked ~ppc for Chainsaw.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  19 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> libmms-0.3.ebuild:
+  Marked ~amd64 bug #146525
+
+*libmms-0.3 (26 Aug 2006)
+
+  26 Aug 2006; Hanno Boeck <hanno@gentoo.org> +libmms-0.3.ebuild:
+  Version bump.
+
+*libmms-0.2-r1 (20 Jul 2006)
+
+  20 Jul 2006; John N. Laliberte <allanonjl@gentoo.org>
+  +files/libmms_0.2-7-cumulative.diff, +libmms-0.2-r1.ebuild:
+  apply patch to fix #139320
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-libmms-0.1,
+  Manifest:
+  Fixing SHA256 digest, pass four
+
+*libmms-0.2 (26 Mar 2006)
+
+  26 Mar 2006; Marinus Schraal <foser@gentoo.org> libmms-0.2.ebuild :
+  New release
+
+  07 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> libmms-0.1.ebuild:
+  Remove COPYING.LIB from dodoc.
+
+*libmms-0.1 (08 Jan 2005)
+
+  08 Jan 2004; foser <foser@gentoo.org> libmms-0.1.ebuild :
+  Initial commit
+  Library to support mms streaming
+  Added to media-video (video) herd, foser as temporary maintainer

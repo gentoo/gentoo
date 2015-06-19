@@ -1,0 +1,5 @@
+CHOST="armv4tl-softfloat-linux-gnueabi"
+CFLAGS="-O2 -pipe -march=armv4t"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"

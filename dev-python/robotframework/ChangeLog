@@ -1,0 +1,64 @@
+# ChangeLog for dev-python/robotframework
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/robotframework/ChangeLog,v 1.13 2015/06/03 21:39:06 jlec Exp $
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  19 Jan 2015; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Drop myself from metadata.
+
+*robotframework-2.8.7 (19 Jan 2015)
+
+  19 Jan 2015; Tim Harder <radhermit@gentoo.org> +robotframework-2.8.7.ebuild:
+  Version bump.
+
+  08 Oct 2014; Tim Harder <radhermit@gentoo.org> -robotframework-2.7.6.ebuild,
+  -robotframework-2.7.7.ebuild, -robotframework-2.8.1.ebuild,
+  -robotframework-2.8.2.ebuild, -robotframework-2.8.3.ebuild,
+  -robotframework-2.8.4.ebuild:
+  Remove old.
+
+*robotframework-2.8.6 (08 Oct 2014)
+
+  08 Oct 2014; Tim Harder <radhermit@gentoo.org> +robotframework-2.8.6.ebuild:
+  Version bump.
+
+*robotframework-2.8.5 (25 Jun 2014)
+
+  25 Jun 2014; Tim Harder <radhermit@gentoo.org> +robotframework-2.8.5.ebuild:
+  Version bump.
+
+*robotframework-2.8.4 (11 Feb 2014)
+
+  11 Feb 2014; Tim Harder <radhermit@gentoo.org> +robotframework-2.8.4.ebuild:
+  Version bump.
+
+*robotframework-2.8.3 (20 Dec 2013)
+
+  20 Dec 2013; Tim Harder <radhermit@gentoo.org> +robotframework-2.8.3.ebuild:
+  Version bump.
+
+*robotframework-2.8.2 (02 Dec 2013)
+
+  02 Dec 2013; Tim Harder <radhermit@gentoo.org> +robotframework-2.8.2.ebuild:
+  Version bump.
+
+*robotframework-2.8.1 (15 Jun 2013)
+
+  15 Jun 2013; Tim Harder <radhermit@gentoo.org> +robotframework-2.8.1.ebuild:
+  Version bump.
+
+*robotframework-2.7.7 (16 Mar 2013)
+
+  16 Mar 2013; Tim Harder <radhermit@gentoo.org> +robotframework-2.7.7.ebuild:
+  Version bump.
+
+  30 Jan 2013; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Add myself as maintainer.
+
+*robotframework-2.7.6 (29 Jan 2013)
+
+  29 Jan 2013; Tim Harder <radhermit@gentoo.org> +robotframework-2.7.6.ebuild,
+  +metadata.xml:
+  Initial import, ebuild by me.

@@ -1,0 +1,206 @@
+# ChangeLog for app-text/build-docbook-catalog
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/build-docbook-catalog/ChangeLog,v 1.47 2015/05/14 07:37:17 mr_bones_ Exp $
+
+  14 May 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -build-docbook-catalog-1.19.1-r1.ebuild:
+  old
+
+  11 Feb 2014; Fabian Groffen <grobian@gentoo.org>
+  build-docbook-catalog-1.20.ebuild:
+  Export MAKEOPTS in case not yet set, bug #490754
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  build-docbook-catalog-1.19.1-r1.ebuild, build-docbook-catalog-1.19.1.ebuild,
+  build-docbook-catalog-1.20.ebuild:
+  Add arm64 love.
+
+  15 Nov 2013; Christoph Junghans <ottxor@gentoo.org>
+  build-docbook-catalog-1.20.ebuild:
+  fixed installation on prefix (related bug #490754)
+
+  30 Sep 2013; Christoph Junghans <ottxor@gentoo.org>
+  build-docbook-catalog-1.20.ebuild:
+  removed unneeded eutils inherit
+
+*build-docbook-catalog-1.20 (30 Sep 2013)
+
+  30 Sep 2013; Christoph Junghans <ottxor@gentoo.org>
+  +build-docbook-catalog-1.20.ebuild:
+  version bump
+
+*build-docbook-catalog-1.19.1-r1 (11 Sep 2013)
+
+  11 Sep 2013; Christoph Junghans <ottxor@gentoo.org>
+  +build-docbook-catalog-1.19.1-r1.ebuild,
+  +files/build-docbook-catalog-1.19.1-no-flock.patch:
+  added prefix support
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/sgml-herd-has-no-maintainers-
+  again-td259655.html
+
+  07 Feb 2013; Alexis Ballier <aballier@gentoo.org>
+  build-docbook-catalog-1.19.1.ebuild:
+  we need sys-apps/flock on fbsd, bug #412201
+
+  06 Dec 2012; Mike Gilbert <floppym@gentoo.org>
+  build-docbook-catalog-1.19.1.ebuild:
+  RDEPEND on libxml2 for the xmlcatalog utility.
+
+  06 Dec 2012; Mike Gilbert <floppym@gentoo.org>
+  -build-docbook-catalog-1.19.ebuild, -build-docbook-catalog-1.4.ebuild,
+  -build-docbook-catalog-1.6.ebuild:
+  Remove old.
+
+  06 Dec 2012; Mike Gilbert <floppym@gentoo.org>
+  build-docbook-catalog-1.19.1.ebuild:
+  Stable on x86 wrt bug 437024. armin76 accidentally removed x86 from CC.
+
+  06 Oct 2012; Raúl Porcel <armin76@gentoo.org>
+  build-docbook-catalog-1.19.1.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc/x86 stable wrt #437024
+
+  04 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  build-docbook-catalog-1.19.1.ebuild:
+  stable arm ppc ppc64, bug #437024
+
+  03 Oct 2012; Jeroen Roovers <jer@gentoo.org>
+  build-docbook-catalog-1.19.1.ebuild:
+  Stable for HPPA (bug #437024).
+
+  03 Oct 2012; Agostino Sarubbo <ago@gentoo.org>
+  build-docbook-catalog-1.19.1.ebuild:
+  Stable for amd64, wrt bug #437024
+
+*build-docbook-catalog-1.19.1 (02 Oct 2012)
+
+  02 Oct 2012; Mike Gilbert <floppym@gentoo.org>
+  +build-docbook-catalog-1.19.1.ebuild:
+  Version bump for bug 437004. Don't install /etc/xml/.keep.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  build-docbook-catalog-1.19.ebuild:
+  keyword ~amd64-fbsd
+
+*build-docbook-catalog-1.19 (28 Mar 2012)
+
+  28 Mar 2012; Mike Frysinger <vapier@gentoo.org>
+  +build-docbook-catalog-1.19.ebuild:
+  Version bump.
+
+*build-docbook-catalog-1.6 (29 Mar 2011)
+
+  29 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  build-docbook-catalog-1.4.ebuild, -build-docbook-catalog-1.5.ebuild,
+  +build-docbook-catalog-1.6.ebuild:
+  Version bump to handle bug #290680. Fix up SRC_URI/HOMEPAGE for old version.
+
+*build-docbook-catalog-1.5 (23 Aug 2009)
+
+  23 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -build-docbook-catalog-1.2.ebuild, +build-docbook-catalog-1.5.ebuild:
+  Remove old version and add a new version to close bug #194485.
+
+  08 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  build-docbook-catalog-1.2.ebuild, build-docbook-catalog-1.4.ebuild:
+  keepdir /etc/xml to avoid stage building issues wrt #277092
+
+  08 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  build-docbook-catalog-1.2.ebuild, build-docbook-catalog-1.4.ebuild:
+  build-docbook-catalog needs getopt wrt #277092
+
+  24 Nov 2008; Brent Baude <ranger@gentoo.org>
+  build-docbook-catalog-1.4.ebuild:
+  Marking build-docbook-catalog-1.4 ppc64 for bug 246090
+
+  15 Nov 2008; Raúl Porcel <armin76@gentoo.org>
+  build-docbook-catalog-1.4.ebuild:
+  alpha/arm/ia64 stable wrt #246090
+
+  12 Nov 2008; Jeroen Roovers <jer@gentoo.org>
+  build-docbook-catalog-1.4.ebuild:
+  Stable for HPPA (bug #246090).
+
+  09 Nov 2008; nixnut <nixnut@gentoo.org> build-docbook-catalog-1.4.ebuild:
+  Stable on ppc wrt bug 246090
+
+  09 Nov 2008; Markus Meier <maekke@gentoo.org>
+  build-docbook-catalog-1.4.ebuild:
+  amd64/x86 stable, bug #246090
+
+  08 Nov 2008; Ferris McCormick <fmccor@gentoo.org>
+  build-docbook-catalog-1.4.ebuild:
+  Sparc stable, required for Bug #246090.
+
+*build-docbook-catalog-1.4 (22 Sep 2008)
+
+  22 Sep 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -build-docbook-catalog-1.3.ebuild, +build-docbook-catalog-1.4.ebuild:
+  Bump to fix missing delegations.
+
+*build-docbook-catalog-1.3 (22 Sep 2008)
+
+  22 Sep 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +build-docbook-catalog-1.3.ebuild:
+  Release a new build-docbook-catalog supporting multiple XSL stylesheets
+  (for xsl-ns).
+
+  29 Aug 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing agriffis from metadata due to his retirement (see #182294 for
+  reference).
+
+  12 Mar 2007; Leonardo Boshell <leonardop@gentoo.org> metadata.xml:
+  Replacing text-markup herd with the new sgml herd.
+
+  01 Mar 2007; <genstef@gentoo.org> build-docbook-catalog-1.2.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  24 Oct 2006; Roy Marples <uberlord@gentoo.org>
+  build-docbook-catalog-1.2.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  05 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  build-docbook-catalog-1.2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  14 Feb 2006; Fabian Groffen <grobian@gentoo.org>
+  build-docbook-catalog-1.2.ebuild:
+  Marked ~ppc-macos (bug #122760)
+
+  09 Feb 2005; Aron Griffis <agriffis@gentoo.org>
+  -build-docbook-catalog-1.1.ebuild:
+  Trim old ebuilds
+
+  10 Oct 2004; Tom Gall <tgall@gentoo.org> build-docbook-catalog-1.2.ebuild:
+  stable on ppc64, bug #60792
+
+  22 Aug 2004; Joshua Kinard <kumba@gentoo.org>
+  build-docbook-catalog-1.2.ebuild:
+  Marked stable on mips.
+
+  19 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  build-docbook-catalog-1.2.ebuild:
+  Stable on sparc wrt #60792
+
+  18 Aug 2004; Aron Griffis <agriffis@gentoo.org>
+  build-docbook-catalog-1.2.ebuild:
+  stable on alpha, ia64 and amd64
+
+  19 Aug 2004; Mike Gardiner <obz@gentoo.org> build-docbook-catalog-1.2.ebuild:
+  Marked stable on x86
+
+*build-docbook-catalog-1.2 (23 Jul 2004)
+
+  23 Jul 2004; Aron Griffis <agriffis@gentoo.org>
+  +build-docbook-catalog-1.2.ebuild:
+  Update to version 1.2, which is quieter except when --verbose is specified
+
+  15 Jul 2004; Robin H. Johnson <robbat2@gentoo.org> :
+  fix broken package.
+
+*build-docbook-catalog-1.1 (29 Jun 2004)
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> +metadata.xml,
+  +build-docbook-catalog-1.1.ebuild:
+  New package to generate docbook-xml catalogs.  Submitted by myself in bug 52725

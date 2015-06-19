@@ -1,0 +1,42 @@
+--- Makefile.in
++++ Makefile.in
+@@ -62,7 +62,7 @@
+ #LFLAGS=-g @LDFLAGS@ @LIBS@
+ #LFLAGS=-pg ${LFLAGS}
+ DEPEND=depend.m
+-ECHO=@/bin/echo
++ECHO=@echo
+ INSTALL=@INSTALL@
+ INSTALL_PROGRAM=@INSTALL_PROGRAM@
+ INSTALL_DATA=@INSTALL_DATA@
+@@ -192,11 +192,11 @@
+ #
+ 
+ .version: .version_major .version_minor .version_patch
+-	@/bin/echo -n `cat .version_major`.`cat .version_minor`.`cat \
++	@echo -n `cat .version_major`.`cat .version_minor`.`cat \
+ 		.version_patch`  > .version
+ 
+ _version.h: .version
+-	@/bin/echo -e \#define SZ_VERSION \"`cat .version`\"  > _version.h
++	@echo -e \#define SZ_VERSION \"`cat .version`\"  > _version.h
+ 
+ .PHONY: transmit
+ transmit: # distribution-archive
+@@ -209,12 +209,12 @@
+ 
+ version.sed: _version.h
+ 	@echo Creating version-specific sed script...
+-	@/bin/echo s/\<\<version\>\>/`cat .version`/ > version.sed
+-	@/bin/echo s/\<\<date\>\>/`date +"%d%b%y" \
++	@echo s/\<\<version\>\>/`cat .version`/ > version.sed
++	@echo s/\<\<date\>\>/`date +"%d%b%y" \
+ 	 | sed -e y/abceglnoprtuvy/ABCEGLNOPRTUVY/`/ >> version.sed
+-	@/bin/echo s/\<\<tar-file\>\>/${PACKAGE}-`cat .version`.tar.gz/ \
++	@echo s/\<\<tar-file\>\>/${PACKAGE}-`cat .version`.tar.gz/ \
+ 	 >> version.sed
+-	@/bin/echo s/\<\<lsm-file\>\>/${PACKAGE}-`cat .version`.lsm/ >> version.sed
++	@echo s/\<\<lsm-file\>\>/${PACKAGE}-`cat .version`.lsm/ >> version.sed
+ 
+ .PHONY: ${PACKAGE}.lsm
+ ${PACKAGE}.lsm: version.sed LSM

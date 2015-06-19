@@ -1,0 +1,117 @@
+# ChangeLog for media-plugins/vdr-pvr350
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-pvr350/ChangeLog,v 1.23 2014/03/03 12:01:08 hd_brummy Exp $
+
+  03 Mar 2014; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-pvr350-1.7.5.ebuild:
+  depend fixed
+
+*vdr-pvr350-1.7.5 (03 Mar 2014)
+
+  03 Mar 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-pvr350-1.7.5.ebuild:
+  bump, keyword ~amd64
+
+  28 Jun 2012; Michael Sterrett <mr_bones_@gentoo.org> vdr-pvr350-1.7.3.ebuild,
+  vdr-pvr350-1.7.4.ebuild:
+  fix mirror name
+
+*vdr-pvr350-1.7.4 (27 Jun 2012)
+
+  27 Jun 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -files/vdr-pvr350-0.0.4.20070807-vdr-1.6.0.diff,
+  -files/vdr-pvr350-0.0.4_pre1-vdr-1.3.42.diff, vdr-pvr350-1.7.3.ebuild,
+  +vdr-pvr350-1.7.4.ebuild, -files/pvr-linux-headers.diff:
+  bump; cleanup; vdr-plugin-2.eclass; eapi=4; new homepage; use mirror; fixed
+  use-flag check
+
+*vdr-pvr350-1.7.3 (15 Sep 2011)
+
+  15 Sep 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-pvr350-1.7.3.ebuild, -vdr-pvr350-2008.09.07.ebuild:
+  version bump, fix #364669
+
+  01 Dec 2010; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-pvr350-2008.09.07.ebuild:
+  removed ivtv depend; bug #263295
+
+  14 Apr 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  -vdr-pvr350-0.0.4_pre1.ebuild, -vdr-pvr350-0.0.4.20070807.ebuild,
+  -vdr-pvr350-2008.05.30.ebuild:
+  clean out old, dep-broken ebuilds
+
+  14 Apr 2009; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-pvr350-2008.09.07.ebuild:
+  Marked stable on x86, Bug #264148.
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/vdr-pvr350-0.0.4_pre1-vdr-1.3.42.diff:
+  Fix patch with absolute paths.
+
+*vdr-pvr350-2008.09.07 (04 Oct 2008)
+
+  04 Oct 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-pvr350-2008.09.07.ebuild:
+  Version bumped. It contains various improvements, look into HISTORY for
+  details. Please note, that it will not work with vdr-1.7.1.
+
+  01 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  01 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-pvr350-0.0.4_pre1.ebuild, vdr-pvr350-0.0.4.20070807.ebuild,
+  vdr-pvr350-2008.05.30.ebuild:
+  Add missing a52dec dependency on the newer ebuilds, thanks to gehlhajo.
+  Use BUILD_PARAMS to set additional build parameters.
+
+*vdr-pvr350-2008.05.30 (02 Jun 2008)
+
+  02 Jun 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-pvr350-2008.05.30.ebuild:
+  Version bumped.
+
+  28 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-pvr350-0.0.4.20070807.ebuild:
+  Fixed quoting.
+
+  01 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-pvr350-0.0.4.20070807-vdr-1.6.0.diff,
+  vdr-pvr350-0.0.4_pre1.ebuild, vdr-pvr350-0.0.4.20070807.ebuild:
+  Make plugin compatible to vdr-1.6.0
+
+*vdr-pvr350-0.0.4.20070807 (19 Aug 2007)
+
+  19 Aug 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/pvr-linux-headers.diff, +vdr-pvr350-0.0.4.20070807.ebuild:
+  Version bumped.
+
+  05 Jan 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-pvr350-0.0.4_pre1.ebuild:
+  einfo converted to elog
+
+  04 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-pvr350-0.0.4_pre1.ebuild:
+  Marked stable on x86.
+
+  15 Aug 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-pvr350-0.0.4_pre1.ebuild:
+  No longer use internal vdr-plugin.eclass-variable.
+
+  15 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Assigned to Gentoo VDR Project.
+
+  15 May 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-pvr350-0.0.4_pre1.ebuild:
+  Now inherits eutils.eclass
+
+  14 Apr 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-pvr350-0.0.4_pre1-vdr-1.3.42.diff,
+  vdr-pvr350-0.0.4_pre1.ebuild:
+  Added patch to work with vdr-1.3.42 and greater - Thanks to Harri Kaimio
+  <harri@kaimio.fi> - See Bug #128867
+
+*vdr-pvr350-0.0.4_pre1 (21 Mar 2006)
+
+  21 Mar 2006; Matthias Schwarzott <zzam@gentoo.org> +metadata.xml,
+  +vdr-pvr350-0.0.4_pre1.ebuild:
+  Imported from gentoo.de.
+

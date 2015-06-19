@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+
+command="/usr/sbin/sssd"
+command_args="${SSSD_OPTIONS} -D"
+start_stop_daemon_args="--quiet"
+description="System Security Services Daemon"
+
+depend(){
+    need localmount clock
+    use syslog xdm
+}
+
+if [ "${RC_VERSION:-0}" = "0" ]; then
+        start() {
+                eerror "This script cannot be used for baselayout-1."
+                return 1
+        }
+fi

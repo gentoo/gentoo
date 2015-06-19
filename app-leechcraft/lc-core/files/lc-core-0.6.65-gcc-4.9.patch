@@ -1,0 +1,48 @@
+From 2db7cf510491e3ef2f25341b35b3705acf824bc3 Mon Sep 17 00:00:00 2001
+From: 0xd34df00d <0xd34df00d@gmail.com>
+Date: Thu, 12 Jun 2014 23:38:39 +0400
+Subject: [PATCH] [Interfaces] Added missing include.
+
+---
+ src/interfaces/itexteditor.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/interfaces/itexteditor.h b/src/interfaces/itexteditor.h
+index 059b936..0004bc5 100644
+--- a/src/interfaces/itexteditor.h
++++ b/src/interfaces/itexteditor.h
+@@ -29,6 +29,7 @@
+ 
+ #pragma once
+ 
++#include <functional>
+ #include <QPair>
+ #include <QList>
+ #include <QRegExp>
+-- 
+1.9.3
+
+From 317cbe27a95cc6536f163c0c833eeb1b4fb3f53b Mon Sep 17 00:00:00 2001
+From: 0xd34df00d <0xd34df00d@gmail.com>
+Date: Thu, 12 Jun 2014 23:32:15 +0400
+Subject: [PATCH] [Util] Added a missing include.
+
+---
+ src/util/qml/plotitem.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/util/qml/plotitem.h b/src/util/qml/plotitem.h
+index 194c69c..8185851 100644
+--- a/src/util/qml/plotitem.h
++++ b/src/util/qml/plotitem.h
+@@ -29,6 +29,7 @@
+ 
+ #pragma once
+ 
++#include <functional>
+ #include <QDeclarativeItem>
+ #include "qmlconfig.h"
+ 
+-- 
+1.9.3
+

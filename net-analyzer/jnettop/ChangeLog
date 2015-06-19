@@ -1,0 +1,108 @@
+# ChangeLog for net-analyzer/jnettop
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/jnettop/ChangeLog,v 1.28 2014/07/12 18:42:15 jer Exp $
+
+  12 Jul 2014; Jeroen Roovers <jer@gentoo.org> jnettop-0.13.0-r1.ebuild,
+  files/jnettop-0.13.0-asneeded.patch, +files/jnettop-0.13.0-tinfo.patch:
+  Remove CVS header from patch. Fix building against sys-libs/ncurses[tinfo].
+
+  30 Oct 2012; Agostino Sarubbo <ago@gentoo.org> jnettop-0.13.0-r1.ebuild:
+  Stable for amd64, wrt bug #439748
+
+  27 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> jnettop-0.13.0-r1.ebuild:
+  Add ~amd64-linux keyword
+
+  27 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> jnettop-0.13.0-r1.ebuild:
+  Fix automagic dependencies wrt bug #439752. Thanks to Phr33d0m for
+  discovering this issue
+
+  17 Aug 2012; Benda Xu <heroxbd@gentoo.org> jnettop-0.13.0-r1.ebuild:
+  keyword ~arm and ~x86-linux. ref #431612
+
+  16 Aug 2012; Jeroen Roovers <jer@gentoo.org> jnettop-0.13.0-r1.ebuild:
+  EAPI bump by XU Benda (bug #431612). Install dot file in a way people can
+  spot it.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> jnettop-0.13.0-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  jnettop-0.13.0-r1.ebuild, +files/jnettop-0.13.0-asneeded.patch:
+  Add patch to fix build with --as-needed by Kevin Pyle, closes bug #247930.
+  Also respect user cflags.
+
+  20 Aug 2007; Markus Ullmann <jokey@gentoo.org> jnettop-0.13.0-r1.ebuild:
+  Stable on x86
+
+*jnettop-0.13.0-r1 (20 Aug 2007)
+
+  20 Aug 2007; Markus Ullmann <jokey@gentoo.org> -jnettop-0.11.0.ebuild,
+  -jnettop-0.13.0.ebuild, +jnettop-0.13.0-r1.ebuild:
+  Add example config to docs wrt bug #187748
+
+  20 Mar 2007; Raúl Porcel <armin76@gentoo.org> jnettop-0.13.0.ebuild:
+  x86 stable
+
+  01 Nov 2006; Markus Ullmann <jokey@gentoo.org> jnettop-0.11.0.ebuild,
+  jnettop-0.13.0.ebuild:
+  Fixing deps wrt bug #153250
+
+*jnettop-0.13.0 (09 Jul 2006)
+
+  09 Jul 2006; Marcelo Goes <vanquirius@gentoo.org> -jnettop-0.10.1.ebuild,
+  +jnettop-0.13.0.ebuild:
+  0.13.0 version bump.
+
+  05 Mar 2006; Markus Ullmann <jokey@gentoo.org> jnettop-0.10.1.ebuild:
+  INSTALL cleanup
+
+  15 Feb 2006; Markus Ullmann <jokey@gentoo.org> jnettop-0.10.1.ebuild,
+  jnettop-0.11.0.ebuild:
+  Removing virtual/libpcap wrt bug #117898
+
+  27 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> jnettop-0.11.0.ebuild:
+  0.11.0 x86 stable for bug 107425. Thanks to Daniel Webert <rockoo at gmail
+  dot com>.
+
+*jnettop-0.11.0 (01 Jul 2005)
+
+  01 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> +jnettop-0.11.0.ebuild:
+  Version bump.
+
+  08 May 2005; Herbie Hopkins <herbs@gentoo.org> jnettop-0.10.1.ebuild:
+  Marked ~amd64 wrt bug #91891.
+
+  24 Apr 2005; Marcelo Goes <vanquirius@gentoo.org> jnettop-0.10.1.ebuild,
+  -jnettop-0.9.ebuild:
+  Use make install instead of emake install. Removing old ebuild.
+
+  25 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> jnettop-0.10.1.ebuild:
+  Marked stable on x86.
+
+  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> jnettop-0.10.1.ebuild,
+  jnettop-0.9.ebuild:
+  changed net-libs/libpcap depend to virtual/libcap
+
+*jnettop-0.10.1 (09 Jan 2005)
+
+  09 Jan 2005; Daniel Black <dragonheart@gentoo.org> +jnettop-0.10.1.ebuild:
+  Version bump as per bug #75190. Thanks Vanquirius <marcelogoes@gmail.com>
+
+  19 Nov 2004; Jason Wever <weeve@gentoo.org> jnettop-0.9.ebuild:
+  Added ~sparc keyword.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Aug 2004; David Holm <dholm@gentoo.org> jnettop-0.9.ebuild:
+  Added to ~ppc.
+
+  10 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
+  jnettop-0.9.ebuild:
+  tidy
+
+*jnettop-0.9 (11 Oct 2003)
+
+  11 Oct 2003; Martin Holzer <mholzer@gentoo.org> jnettop-0.9.ebuild:
+  Initial Version. Submitted by Arturas .lajus <x11@junk.b0x.la> in #25589.
+

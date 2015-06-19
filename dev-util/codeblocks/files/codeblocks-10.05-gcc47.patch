@@ -1,0 +1,91 @@
+--- a/src/include/scripting/bindings/sc_base_types.h
++++ b/src/include/scripting/bindings/sc_base_types.h
+@@ -33,6 +33,7 @@ DECLARE_INSTANCE_TYPE(wxPoint);
+ DECLARE_INSTANCE_TYPE(wxSize);
+ DECLARE_INSTANCE_TYPE(wxString);
+ 
++using SqPlus::GetTypeName;
+ // C::B primitives and types
+ DECLARE_INSTANCE_TYPE(ConfigManager);
+ DECLARE_INSTANCE_TYPE(EditorManager);
+@@ -59,6 +60,7 @@ namespace SqPlus \
+     inline T Get(TypeWrapper<T>,HSQUIRRELVM v,int idx) { SQInteger i; SQPLUS_CHECK_GET(sq_getinteger(v,idx,&i)); return (T)i; } \
+ }
+ 
++using SqPlus::Push;
+ DECLARE_ENUM_TYPE(wxPathFormat);
+ DECLARE_ENUM_TYPE(wxPathNormalize);
+ DECLARE_ENUM_TYPE(PrintColourMode);
+--- /dev/null
++++ b/src/include/scripting/squirrel/sqmem.h
+@@ -0,0 +1,8 @@
++/*	see copyright notice in squirrel.h */
++#ifndef _SQMEM_H_
++#define _SQMEM_H_
++
++void *sq_vm_malloc(SQUnsignedInteger size);
++void *sq_vm_realloc(void *p,SQUnsignedInteger oldsize,SQUnsignedInteger size);
++void sq_vm_free(void *p,SQUnsignedInteger size);
++#endif //_SQMEM_H_
+--- a/src/include/scripting/squirrel/sqstate.h
++++ b/src/include/scripting/squirrel/sqstate.h
+@@ -136,8 +136,4 @@ extern SQObjectPtr _one_;
+ extern SQObjectPtr _minusone_;
+ 
+ bool CompileTypemask(SQIntVec &res,const SQChar *typemask);
+-
+-void *sq_vm_malloc(SQUnsignedInteger size);
+-void *sq_vm_realloc(void *p,SQUnsignedInteger oldsize,SQUnsignedInteger size);
+-void sq_vm_free(void *p,SQUnsignedInteger size);
+ #endif //_SQSTATE_H_
+--- a/src/include/scripting/squirrel/squtils.h
++++ b/src/include/scripting/squirrel/squtils.h
+@@ -2,6 +2,7 @@
+ #ifndef _SQUTILS_H_
+ #define _SQUTILS_H_
+ 
++#include "sqmem.h"
+ #define sq_new(__ptr,__type) {__ptr=(__type *)sq_vm_malloc(sizeof(__type));new (__ptr) __type;}
+ #define sq_delete(__ptr,__type) {__ptr->~__type();sq_vm_free(__ptr,sizeof(__type));}
+ #define SQ_MALLOC(__size) sq_vm_malloc((__size));
+--- a/src/plugins/contrib/help_plugin/defs.h
++++ b/src/plugins/contrib/help_plugin/defs.h
+@@ -289,7 +289,7 @@ class QMap : public std::map<Key, T>
+ 
+             if (i.second == false && overwrite)
+             {
+-                find(k)->second = t;
++                this->find(k)->second = t;
+             }
+ 
+             return i.first;
+@@ -297,7 +297,7 @@ class QMap : public std::map<Key, T>
+ 
+         int remove(const Key &k)
+         {
+-            return erase(k);
++            return this->erase(k);
+         }
+ };
+ 
+--- a/src/plugins/contrib/help_plugin/man2html.cpp
++++ b/src/plugins/contrib/help_plugin/man2html.cpp
+@@ -123,7 +123,7 @@
+ 
+ #include <ctype.h>
+ 
+-//#include <unistd.h>
++#include <unistd.h>
+ #include <string.h>
+ 
+ #include <stdio.h>
+--- a/src/plugins/debuggergdb/gdb_driver.cpp
++++ b/src/plugins/debuggergdb/gdb_driver.cpp
+@@ -72,6 +72,7 @@ static wxRegEx reChildPid3(_T("Thread[ \t]+[xA-Fa-f0-9-]+[ \t]+\\(LWP ([0-9]+)\\
+ 
+ 
+ // scripting support
++using SqPlus::Push;
+ DECLARE_INSTANCE_TYPE(GDB_driver);
+ 
+ GDB_driver::GDB_driver(DebuggerGDB* plugin)

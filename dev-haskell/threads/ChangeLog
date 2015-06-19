@@ -1,0 +1,30 @@
+# ChangeLog for dev-haskell/threads
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/threads/ChangeLog,v 1.6 2015/06/06 18:06:49 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*threads-0.5.1.3 (04 Apr 2015)
+
+  04 Apr 2015; Mark Wright <gienah@gentoo.org> +threads-0.5.1.3.ebuild:
+  Bump threads to 0.5.1.3
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*threads-0.5.1.2 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org> +threads-0.5.1.2.ebuild:
+  Bump threads to 0.5.1.2
+
+*threads-0.5.1.1 (21 Feb 2014)
+
+  21 Feb 2014; Sergei Trofimovich <slyfox@gentoo.org> +threads-0.5.1.1.ebuild:
+  Version bump.
+
+*threads-0.5.0.2 (20 Jun 2013)
+
+  20 Jun 2013; Alexander Vershilov <qnikst@gentoo.org> +metadata.xml,
+  +threads-0.5.0.2.ebuild:
+  add 0.5.0.2 due to #473858

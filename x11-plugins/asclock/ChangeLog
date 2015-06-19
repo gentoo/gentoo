@@ -1,0 +1,86 @@
+# ChangeLog for x11-plugins/asclock
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/asclock/ChangeLog,v 1.26 2014/03/23 16:58:39 kensington Exp $
+
+  23 Mar 2014; Michael Palimaka <kensington@gentoo.org>
+  asclock-2.0.12-r1.ebuild:
+  Update HOMEPAGE wrt bug #367187.
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop afterstep herd
+
+  12 Jun 2012; Agostino Sarubbo <ago@gentoo.org> asclock-2.0.12-r1.ebuild:
+  Stable for amd64, wrt bug #418669
+
+  25 Aug 2010; Jeremy Olexa <darkside@gentoo.org> asclock-2.0.12-r1.ebuild:
+  Migrate changes from Gentoo Prefix overlay. KEYWORDS, EAPI3, CFLAG
+  handling. Approved by maintainer
+
+  03 Nov 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  asclock-2.0.12-r1.ebuild:
+  ~amd64 fix and keyword, bug #234642
+
+  03 May 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  asclock-2.0.12-r1.ebuild:
+  Respect LDFLAGS (bug #171351).
+
+  08 Dec 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  asclock-2.0.12.ebuild:
+  backfill modX deps
+
+  08 Dec 2006; Timothy Redaelli <drizzt@gentoo.org>
+  asclock-2.0.12-r1.ebuild:
+  Stable on ppc wrt bug #153218
+
+  27 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  asclock-2.0.12-r1.ebuild:
+  Stable on sparc wrt #153218
+
+  23 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  asclock-2.0.12-r1.ebuild:
+  stable x86, bug #153218
+
+  22 Nov 2006; Joseph Jezak <josejx@gentoo.org> asclock-2.0.12-r1.ebuild:
+  Marked ppc stable for bug #153218.
+
+*asclock-2.0.12-r1 (10 Oct 2006)
+
+  10 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  +files/asclock-gcc41.patch, +asclock-2.0.12-r1.ebuild:
+  Modular X + gcc-4.1 fixes.
+
+  02 Jan 2006; Michele Noberasco <s4t4n@gentoo.org> asclock-2.0.12.ebuild:
+  removed COPYING and INSTALL from dodoc.
+
+  16 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> asclock-2.0.12.ebuild:
+  Remove GNUish cp -a call. Bug #103487.
+
+  17 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml:
+  Added metadata.xml (afterstep herd).
+
+  06 Sep 2004; Hardave Riar <hardave@gentoo.org> asclock-2.0.12.ebuild:
+  Stable on mips
+
+  08 Jul 2004; Hardave Riar <hardave@gentoo.org> asclock-2.0.12.ebuild:
+  Added ~mips KEYWORD
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> asclock-2.0.12.ebuild:
+  glibc -> libc
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*asclock-2.0.12 (14 Apr 2002)
+
+  14 Apr 2002; Seemant Kulleen <seemant@gentoo.org> asclock-2.0.12-r1.ebuild :
+
+  Cleaned up ebuild a little bit
+
+*asclock-2.0.12 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

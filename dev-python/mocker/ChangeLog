@@ -1,0 +1,71 @@
+# ChangeLog for dev-python/mocker
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/mocker/ChangeLog,v 1.17 2015/06/03 20:22:13 jlec Exp $
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> mocker-1.1.1-r1.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> mocker-1.1.1-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> mocker-1.1.1-r1.ebuild:
+  amd64 stable, bug 540290
+
+  01 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -mocker-1.1.ebuild:
+  Remove old.
+
+  28 Dec 2014; Mike Gilbert <floppym@gentoo.org> mocker-1.1.1-r1.ebuild:
+  python-r1 cleanup.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> mocker-1.1.1-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  22 Oct 2013; Fabian Groffen <grobian@gentoo.org> mocker-1.1.1-r1.ebuild:
+  Marked ~x64-macos, bug #487670
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> mocker-1.1.1-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*mocker-1.1.1-r1 (20 Jul 2013)
+
+  20 Jul 2013; Ian Delaney <idella4@gentoo.org> +mocker-1.1.1-r1.ebuild,
+  -mocker-1.1.1.ebuild:
+  migrate -> distutils-r1, remove old
+
+*mocker-1.1.1 (04 Nov 2012)
+
+  04 Nov 2012; Ian Delaney <idella4@gentoo.org>
+  +files/mocker-1.1.1-pypy_test.patch, +mocker-1.1.1.ebuild, -mocker-1.0.ebuild:
+  bumped to mocker-1.1.1, new patch for pypy to pass tests, mocker-1.0 dropped,
+  closes Bug 425686
+
+*mocker-1.1 (16 Sep 2011)
+
+  16 Sep 2011; Dirkjan Ochtman <djc@gentoo.org> +mocker-1.1.ebuild:
+  Version bump to 1.1 (fixes bug 382949, thanks jbergstroem).
+
+  01 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -mocker-0.10.1.ebuild:
+  Delete.
+
+*mocker-1.0 (21 Jun 2010)
+
+  21 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +mocker-1.0.ebuild:
+  Version bump. Set SUPPORT_PYTHON_ABIS.
+
+  10 Oct 2009; Fabian Groffen <grobian@gentoo.org> mocker-0.10.1.ebuild:
+  Merge from Prefix
+
+  15 Feb 2009; Patrick Lauer <patrick@gentoo.org> mocker-0.10.1.ebuild:
+  Adding ~amd64 keyword
+
+*mocker-0.10.1 (30 Aug 2008)
+
+  30 Aug 2008; Rob Cakebread <pythonhead@gentoo.org> +metadata.xml,
+  +mocker-0.10.1.ebuild:
+  Initial commit, ebuild by Maciej Blizinski <maciej.blizinski@gmail.com> -
+  thanks, Maciej. bug #214433

@@ -1,0 +1,18 @@
+# ChangeLog for dev-python/potr
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/potr/ChangeLog,v 1.4 2015/06/07 15:17:13 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> potr-1.0.1.ebuild:
+  Drop old Python implementations
+
+*potr-1.0.1 (29 Dec 2014)
+
+  29 Dec 2014; Amadeusz Żołnowski <aidecoe@gentoo.org> +potr-1.0.1.ebuild,
+  +metadata.xml:
+  Add initial ebuild.

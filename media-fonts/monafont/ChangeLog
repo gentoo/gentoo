@@ -1,0 +1,131 @@
+# ChangeLog for media-fonts/monafont
+# Copyright 2000-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/monafont/ChangeLog,v 1.34 2009/01/02 23:39:36 matsuu Exp $
+
+  02 Jan 2009; MATSUU Takuto <matsuu@gentoo.org> -monafont-2.90-r1.ebuild:
+  Removed old revision.
+
+  22 Jul 2007; Ryan Hill <dirtyepic@gentoo.org> monafont-2.90-r1.ebuild,
+  monafont-2.90-r2.ebuild:
+  Remove virtual/x11.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  monafont-2.90-r1.ebuild:
+  Convert to use elog.
+
+  26 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  monafont-2.90-r2.ebuild:
+  Add ~x86-fbsd keyword, fix quoting, add binchecks and strip restricts.
+
+  30 Oct 2006; Simon Stelling <blubb@gentoo.org> monafont-2.90-r2.ebuild:
+  stable on amd64
+
+  25 Oct 2006; Jeroen Roovers <jer@gentoo.org> monafont-2.90-r2.ebuild:
+  Stable for HPPA (bug #152334).
+
+  24 Oct 2006; Andrej Kacian <ticho@gentoo.org> monafont-2.90-r2.ebuild:
+  Stable on x86, bug #152334.
+
+  23 Oct 2006; Markus Rothe <corsair@gentoo.org> monafont-2.90-r2.ebuild:
+  Stable on ppc64; bug #152334
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  monafont-2.90-r2.ebuild:
+  Stable on Alpha.
+
+  07 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  monafont-2.90-r2.ebuild:
+  Stable on sparc
+
+  16 Jul 2006; <nixnut@gentoo.org> monafont-2.90-r2.ebuild:
+  Stable on ppc. Bug #140590
+
+  16 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  monafont-2.90-r2.ebuild:
+  Fix path for X binaries to /usr/bin, as per bug #140590.
+
+  11 Jul 2006; Aron Griffis <agriffis@gentoo.org> monafont-2.90-r2.ebuild:
+  Mark 2.90-r2 stable on ia64
+
+  23 Mar 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  monafont-2.90-r1.ebuild:
+  Port to modular X.
+
+*monafont-2.90-r2 (11 Jan 2006)
+
+  11 Jan 2006; Robin H. Johnson <robbat2@gentoo.org>
+  +monafont-2.90-r2.ebuild:
+  Fix DEPEND/RDEPEND for modular-X.
+
+  27 Jan 2005; Yuta SATOH <nigoro@gentoo.org> monafont-2.90-r1.ebuild:
+  stable on ppc64
+
+  19 Dec 2004; Yuta SATOH <nigoro@gentoo.org> monafont-2.90-r1.ebuild:
+  added ~ppc64
+
+  05 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> monafont-2.90-r1.ebuild,
+  -monafont-2.90.ebuild:
+  Added app-arch/unzip to DEPEND. Thanks to Yusuke Shinyama
+  <yusuke@cs.nyu.edu> for pointing that; bug #66171.
+
+  29 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> monafont-2.90-r1.ebuild:
+  Stable on sparc
+
+  29 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> -monafont-2.22.ebuild,
+  monafont-2.90-r1.ebuild, monafont-2.90.ebuild:
+  Stable on x86, alpha and ppc.
+
+*monafont-2.90-r1 (22 Jun 2004)
+
+  22 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> +monafont-2.90-r1.ebuild:
+  font.eclassify
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org> monafont-2.90.ebuild:
+  Fix use invocation
+
+  03 Feb 2004; <augustus@gentoo.org> monafont-2.90.ebuild:
+  Added ~amd64 keyword.
+
+  08 Dec 2003; Mamoru KOMACHI <usata@gentoo.org> monafont-2.90.ebuild:
+  Fixed mkdirhier problem, bug #35332
+
+  12 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> monafont-2.30_pre2.ebuild,
+  monafont-2.90.ebuild:
+  Marked as stable on all arches. Removed prerelease version.
+
+  27 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> monafont-2.90.ebuild:
+  Marked as stable on x86
+
+  11 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> metadata.xml,
+  monafont-2.22.ebuild, monafont-2.30_pre2.ebuild, monafont-2.90.ebuild:
+  Added `export PERL_BADLANG=0` because of the warnings you get when you
+  emerge the ebuilds with LC_CTYPE=*.UTF-8 (See Bug #28419)
+  Also added `export LC_CTYPE=C` as it fails to build if LANG variable
+  set. Thanks to Henry Yang <henryy@karajishi.org> for reporting the bug.
+
+*monafont-2.90 (10 Sep 2003)
+
+  10 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> monafont-2.90.ebuild:
+  Version bump.  Added TrueType font and changed DESCRIPTION accordingly.
+
+*monafont-2.30_pre2 (20 Aug 2003)
+
+  20 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> monafont-2.30_pre2.ebuild:
+  New prerelease version
+
+*monafont-2.22 (27 Jul 2003)
+
+  20 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> monafont-2.22.ebuild:
+  Fixed typo in displaying FontPath messages. Thanks to HAGIHARA Yoshiaki
+  <hagi@p1d.com> in bug #26938
+
+  08 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> monafont-2.22.ebuild:
+  Marked stable on x86 and alpha
+
+  31 Jul 2003; Mamoru KOMACHI <usata@gentoo.org> monafont-2.22.ebuild:
+  Added ~alpha, ~sparc and ~ppc keywords
+
+  27 Jul 2003; Mamoru KOMACHI <usata@gentoo.org> monafont-2.22.ebuild:
+  Initial import, ebuild submitted by Shota Nakano
+  <nakano@artemis.aid.kyushu-id.ac.jp> at GentooJP BugTrack
+

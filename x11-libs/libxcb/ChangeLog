@@ -1,0 +1,581 @@
+# ChangeLog for x11-libs/libxcb
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libxcb/ChangeLog,v 1.160 2015/04/08 17:28:02 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> libxcb-1.10.ebuild,
+  libxcb-1.11-r1.ebuild, libxcb-1.11.ebuild, libxcb-1.9.1-r1.ebuild,
+  libxcb-1.9.1.ebuild, libxcb-1.9.3-r1.ebuild, libxcb-1.9.3.ebuild:
+  Drop old Python implementations
+
+  14 Mar 2015; Markus Meier <maekke@gentoo.org> libxcb-1.11-r1.ebuild:
+  arm stable, bug #530652
+
+  06 Mar 2015; Jeroen Roovers <jer@gentoo.org> libxcb-1.11-r1.ebuild:
+  Stable for HPPA (bug #530652).
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libxcb-1.11-r1.ebuild:
+  Stable for alpha, wrt bug #530652
+
+  23 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libxcb-1.11-r1.ebuild:
+  Stable for sparc, wrt bug #530652
+
+  23 Feb 2015; Matt Turner <mattst88@gentoo.org> libxcb-1.11-r1.ebuild:
+  Add docs USE flag and add proper dependency, bug 534122.
+
+  23 Feb 2015; Matt Turner <mattst88@gentoo.org> libxcb-1.11-r1.ebuild:
+  Depend on dev-libs/check for tests, bug 484054.
+
+  22 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libxcb-1.11-r1.ebuild:
+  Stable for ia64, wrt bug #530652
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libxcb-1.11-r1.ebuild:
+  Stable for ppc64, wrt bug #530652
+
+  20 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libxcb-1.11-r1.ebuild:
+  Stable for ppc, wrt bug #530652
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libxcb-1.11-r1.ebuild:
+  Stable for x86, wrt bug #530652
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libxcb-1.11-r1.ebuild:
+  Stable for amd64, wrt bug #530652
+
+*libxcb-1.11-r1 (30 Dec 2014)
+
+  30 Dec 2014; Rémi Cardona <remi@gentoo.org> +libxcb-1.11-r1.ebuild,
+  +files/libxcb-1.11-Don-t-install-headers-man-pages-for-disabled-extensi.patch
+  :
+  Don't install headers/man pages for disabled extension, see bug #533906.
+
+  21 Dec 2014; Michał Górny <mgorny@gentoo.org> files/xcb-rebuilder.sh:
+  Use sys-apps/gentoo-functions in xcb-rebuilder, bug #504420.
+
+*libxcb-1.11 (22 Oct 2014)
+
+  22 Oct 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/libxcb-1.11-xevie-xprint_removal.patch, +libxcb-1.11.ebuild:
+  Version bump.
+
+  03 Sep 2014; Mike Gilbert <floppym@gentoo.org> libxcb-1.10.ebuild:
+  Drop MULTILIB_USEDEP from xcb-proto in python_check_deps, bug 520146.
+
+  21 Aug 2014; Mike Gilbert <floppym@gentoo.org> libxcb-1.10.ebuild:
+  Add missing ${PYTHON_DEPS} to DEPEND, bug 520146.
+
+  29 Jul 2014; Michał Górny <mgorny@gentoo.org> libxcb-1.10.ebuild,
+  libxcb-1.9.3-r1.ebuild:
+  Fix finding Python when building in a root, bug #503228. Patch by James Le
+  Cuirot.
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> libxcb-1.10.ebuild,
+  libxcb-1.9.1-r1.ebuild, libxcb-1.9.1.ebuild, libxcb-1.9.3-r1.ebuild,
+  libxcb-1.9.3.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  15 Jun 2014; Mike Frysinger <vapier@gentoo.org> libxcb-1.10.ebuild:
+  Add arm64 love.
+
+  08 Jun 2014; Agostino Sarubbo <ago@gentoo.org> libxcb-1.10.ebuild:
+  Stable for arm, wrt bug #500368
+
+  19 Apr 2014; Agostino Sarubbo <ago@gentoo.org> libxcb-1.10.ebuild:
+  Stable for sparc, wrt bug #500368
+
+  17 Apr 2014; Agostino Sarubbo <ago@gentoo.org> libxcb-1.10.ebuild:
+  Stable for ia64, wrt bug #500368
+
+  16 Apr 2014; Agostino Sarubbo <ago@gentoo.org> libxcb-1.10.ebuild:
+  Stable for ppc64, wrt bug #500368
+
+  08 Apr 2014; Agostino Sarubbo <ago@gentoo.org> libxcb-1.10.ebuild:
+  Stable for ppc, wrt bug #500368
+
+  06 Apr 2014; Agostino Sarubbo <ago@gentoo.org> libxcb-1.10.ebuild:
+  Stable for x86, wrt bug #500368
+
+  29 Mar 2014; Matt Turner <mattst88@gentoo.org> libxcb-1.10.ebuild:
+  alpha stable, bug #500368.
+
+  28 Mar 2014; Jeroen Roovers <jer@gentoo.org> libxcb-1.10.ebuild:
+  Stable for HPPA (bug #500368).
+
+  27 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libxcb-1.10.ebuild:
+  Stable for amd64, wrt bug #500368
+
+  26 Mar 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -files/libxcb-1.7-interix.patch, -files/libxcb-1.8-waitall-hang.patch,
+  -files/libxcb-1.8.1-multithread-deadlock.patch,
+  -files/libxcb-1.9-python-3-exception.patch,
+  -files/libxcb-1.9-python-3-iteritems.patch, -libxcb-1.7.ebuild,
+  -libxcb-1.8-r1.ebuild, -libxcb-1.8.1-r1.ebuild, -libxcb-1.8.1.ebuild,
+  -libxcb-1.8.ebuild, -libxcb-1.9-r1.ebuild, -libxcb-1.9.ebuild:
+  Remove old/vulnerable versions, bug #471098.
+
+  27 Jan 2014; Mike Gilbert <floppym@gentoo.org> libxcb-1.10.ebuild:
+  Drop python3_1 (again).
+
+*libxcb-1.10 (26 Jan 2014)
+
+  26 Jan 2014; Matt Turner <mattst88@gentoo.org> +libxcb-1.10.ebuild:
+  Version bumped to 1.10, bug 496800.
+
+*libxcb-1.9.3-r1 (11 Jan 2014)
+
+  11 Jan 2014; Michał Górny <mgorny@gentoo.org> +libxcb-1.9.3-r1.ebuild:
+  Backport the python-any-r1 conversion from x11 overlay.
+
+*libxcb-1.9.1-r1 (23 Nov 2013)
+
+  23 Nov 2013; Mark Wright <gienah@gentoo.org>
+  +files/libxcb-1.9.1-conflicting-types-for-xcb_ge_event_t.patch,
+  +files/libxcb-1.9.1-list-object-has-no-attribute-lenfield_name.patch,
+  +libxcb-1.9.1-r1.ebuild:
+  Part of fix for bug 491496, thanks to Rion for reporting, thanks to gerardo
+  for the libxcb-list-object-has-no-attribute-lenfield_name.patch. libxcb-1.9.1
+  -conflicting-types-for-xcb_ge_event_t.patch by me. Fix bug 472032, thanks to
+  Myckel Habets for reporting.
+
+  12 Nov 2013; Matt Turner <mattst88@gentoo.org> libxcb-1.9.3.ebuild:
+  Update dependency on xcb-proto to make sure users get the fix for bug 490928.
+
+*libxcb-1.9.3 (09 Nov 2013)
+
+  09 Nov 2013; Matt Turner <mattst88@gentoo.org> +libxcb-1.9.3.ebuild:
+  Version bump to 1.9.3.
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libxcb-1.9.1.ebuild:
+  Stable for x86, wrt bug #475480
+
+  07 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libxcb-1.9.1.ebuild:
+  Stable for sparc, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libxcb-1.9.1.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  05 Oct 2013; Markus Meier <maekke@gentoo.org> libxcb-1.9.1.ebuild:
+  arm stable, bug #475480
+
+  05 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libxcb-1.9.1.ebuild:
+  Stable for alpha, wrt bug #475480
+
+  04 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libxcb-1.9.1.ebuild:
+  Stable for ppc64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libxcb-1.9.1.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  02 Oct 2013; Jeroen Roovers <jer@gentoo.org> libxcb-1.9.1.ebuild:
+  Stable for HPPA (bug #475480).
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org> libxcb-1.9.1.ebuild:
+  Stable for amd64, wrt bug #475480
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> libxcb-1.9-r1.ebuild,
+  libxcb-1.9.1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  30 Jun 2013; Justin Lecher <jlec@gentoo.org> libxcb-1.9-r1.ebuild,
+  libxcb-1.9.1.ebuild, metadata.xml:
+  Fix usage of python-r1.eclass
+
+  01 Jun 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  libxcb-1.9.1.ebuild, metadata.xml:
+  Add xkb USE flag, bug #471684.
+
+*libxcb-1.9.1 (01 Jun 2013)
+
+  01 Jun 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libxcb-1.9.1.ebuild:
+  Version bump for security bug #471098.
+
+  06 Mar 2013; Michał Górny <mgorny@gentoo.org> libxcb-1.9-r1.ebuild:
+  Migrate to python-r1.
+
+*libxcb-1.9-r1 (25 Feb 2013)
+
+  25 Feb 2013; Michał Górny <mgorny@gentoo.org> +libxcb-1.9-r1.ebuild:
+  Enable multilib.
+
+  22 Feb 2013; Zac Medico <zmedico@gentoo.org> libxcb-1.9.ebuild:
+  Add ~arm-linux keyword.
+
+  04 Jan 2013; Jeroen Roovers <jer@gentoo.org> libxcb-1.9.ebuild:
+  Stable for HPPA (bug #440872).
+
+  01 Jan 2013; Raúl Porcel <armin76@gentoo.org> libxcb-1.9.ebuild:
+  s390/sh stable wrt #440872
+
+  30 Dec 2012; Agostino Sarubbo <ago@gentoo.org> libxcb-1.9.ebuild:
+  Stable for alpha, wrt bug #440872
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org> libxcb-1.9.ebuild:
+  Stable for sparc, wrt bug #440872
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org> libxcb-1.9.ebuild:
+  Stable for ia64, wrt bug #440872
+
+  17 Dec 2012; Markus Meier <maekke@gentoo.org> libxcb-1.9.ebuild:
+  arm stable, bug #440872
+
+  08 Dec 2012; Agostino Sarubbo <ago@gentoo.org> libxcb-1.9.ebuild:
+  Stable for ppc64, wrt bug #440872
+
+  28 Nov 2012; Brent Baude <ranger@gentoo.org> libxcb-1.9.ebuild:
+  Marking libxcb-1.9 ppc stable for bug 440872
+
+  18 Nov 2012; Agostino Sarubbo <ago@gentoo.org> libxcb-1.9.ebuild:
+  Stable for x86, wrt bug #440872
+
+  16 Nov 2012; Agostino Sarubbo <ago@gentoo.org> libxcb-1.9.ebuild:
+  Stable for amd64, wrt bug #440872
+
+*libxcb-1.9 (31 Oct 2012)
+
+  31 Oct 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/libxcb-1.9-python-3-exception.patch,
+  +files/libxcb-1.9-python-3-iteritems.patch, +libxcb-1.9.ebuild:
+  Version bump.
+
+*libxcb-1.8.1-r1 (06 Oct 2012)
+
+  06 Oct 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/libxcb-1.8.1-multithread-deadlock.patch, +libxcb-1.8.1-r1.ebuild:
+  Add patch to fix wine deadlock, bug #436780.
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> libxcb-1.8.1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #419473
+
+  12 Jul 2012; Brent Baude <ranger@gentoo.org> libxcb-1.8.1.ebuild:
+  Marking libxcb-1.8.1 ppc stable for bug 419473
+
+  11 Jul 2012; Brent Baude <ranger@gentoo.org> libxcb-1.8.1.ebuild:
+  Marking libxcb-1.8.1 ppc64 stable for bug 419473
+
+  28 Jun 2012; Jeroen Roovers <jer@gentoo.org> libxcb-1.8.1.ebuild:
+  Stable for HPPA (bug #419473).
+
+  28 Jun 2012; Markus Meier <maekke@gentoo.org> libxcb-1.8.1.ebuild:
+  arm stable, bug #419473
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libxcb-1.8.1.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libxcb-1.8.1.ebuild:
+  Stable for amd64, wrt bug #419473
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> libxcb-1.8.1.ebuild:
+  keyword ~amd64-fbsd
+
+  10 Mar 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  libxcb-1.8.1.ebuild:
+  Update ebuild with suggestions from Arfrever.
+
+*libxcb-1.8.1 (10 Mar 2012)
+
+  10 Mar 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libxcb-1.8.1.ebuild:
+  Version bump.
+
+*libxcb-1.8-r1 (03 Mar 2012)
+
+  03 Mar 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libxcb-1.8-r1.ebuild, +files/libxcb-1.8-waitall-hang.patch:
+  Add patch to fix hang on BSD and OS X, bug #405951.
+
+  08 Feb 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  libxcb-1.7.ebuild, libxcb-1.8.ebuild:
+  Drop runtime dependency on xcb-proto, bug #398953.
+
+  11 Jan 2012; Matt Turner <mattst88@gentoo.org> libxcb-1.8.ebuild:
+  Bump dependency to xcb-proto-1.7.
+
+*libxcb-1.8 (11 Jan 2012)
+
+  11 Jan 2012; Matt Turner <mattst88@gentoo.org> +libxcb-1.8.ebuild:
+  Version bump.
+
+  08 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org> libxcb-1.7.ebuild:
+  Run eautoreconf as configure.ac is patched.
+
+  08 Jun 2011; Markus Duft <mduft@gentoo.org> libxcb-1.7.ebuild,
+  +files/libxcb-1.7-interix.patch:
+  added patch for x86-interix, reported upstream.
+
+  30 May 2011; Tomáš Chvátal <scarabeus@gentoo.org> libxcb-1.7.ebuild:
+  Silence deprecation warning.
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> libxcb-1.7.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> libxcb-1.7.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #344827
+
+  27 Jan 2011; Jeremy Olexa <darkside@gentoo.org> libxcb-1.7.ebuild:
+  Push Gentoo Prefix changes from x11 overlay, as approved
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> libxcb-1.7.ebuild:
+  Stable for HPPA (bug #344827).
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org> libxcb-1.7.ebuild:
+  arm stable, bug #344827
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org> libxcb-1.7.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> libxcb-1.7.ebuild:
+  amd64 stable wrt #344827
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> libxcb-1.7.ebuild:
+  ppc64 stable wrt #344827
+
+  21 Oct 2010; Tomáš Chvátal <scarabeus@gentoo.org> -libxcb-1.5.ebuild:
+  old
+
+  21 Oct 2010; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking libxcb-1.6 ppc stable for bug 239063
+
+  28 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> libxcb-1.6.ebuild:
+  ppc64 stable wrt #327777
+
+  19 Sep 2010; Raúl Porcel <armin76@gentoo.org> libxcb-1.6.ebuild:
+  ia64/s390/sh/sparc stable wrt #327777
+
+  12 Sep 2010; Tobias Klausmann <klausman@gentoo.org> libxcb-1.6.ebuild:
+  Stable on alpha, bug #327777
+
+*libxcb-1.7 (14 Aug 2010)
+
+  14 Aug 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -libxcb-1.4-r1.ebuild, +libxcb-1.7.ebuild:
+  Version bump. Drop older.
+
+  02 Aug 2010; Raúl Porcel <armin76@gentoo.org> libxcb-1.5.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #308521
+
+  22 Jul 2010; Markus Meier <maekke@gentoo.org> libxcb-1.6.ebuild:
+  arm stable, bug #327777
+
+  14 Jul 2010; Jeroen Roovers <jer@gentoo.org> libxcb-1.6.ebuild:
+  Stable for HPPA (bug #327777).
+
+  13 Jul 2010; Christian Faulhammer <fauli@gentoo.org> libxcb-1.6.ebuild:
+  x86 stable, bug 327777
+
+  12 Jul 2010; Markos Chandras <hwoarang@gentoo.org> libxcb-1.6.ebuild:
+  Stable on amd64 wrt bug #327777
+
+  31 May 2010; Guy Martin <gmsoft@gentoo.org> libxcb-1.5.ebuild:
+  hppa stable, #308521
+
+  12 May 2010; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking libxcb-1.5 ppc64 stable for bug 308521
+
+  25 Apr 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  libxcb-1.6.ebuild:
+  Improve Python-related code, patch by arfrever, bug 316995
+
+*libxcb-1.6 (20 Apr 2010)
+
+  20 Apr 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libxcb-1.6.ebuild:
+  Version bump.
+
+  18 Apr 2010; Markus Meier <maekke@gentoo.org> libxcb-1.5.ebuild:
+  arm stable, bug #308521
+
+  18 Apr 2010; <nixnut@gentoo.org> libxcb-1.5.ebuild:
+  ppc stable #308521
+
+  16 Apr 2010; Pacho Ramos <pacho@gentoo.org> libxcb-1.5.ebuild:
+  amd64 stable, bug 308521
+
+  09 Apr 2010; Christian Faulhammer <fauli@gentoo.org> libxcb-1.5.ebuild:
+  stable x86, bug 308521
+
+  23 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org> -libxcb-1.1.ebuild:
+  rm
+
+  15 Dec 2009; Brent Baude <ranger@gentoo.org> libxcb-1.4-r1.ebuild:
+  Marking libxcb-1.4-r1 ppc64 stable for bug 294958
+
+  15 Dec 2009; Raúl Porcel <armin76@gentoo.org> libxcb-1.4-r1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #282290
+
+  14 Dec 2009; Rémi Cardona <remi@gentoo.org> libxcb-1.1.ebuild,
+  libxcb-1.4-r1.ebuild:
+  change LICENSE to MIT
+
+  13 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -libxcb-1.1.90.1.ebuild:
+  rm
+
+  04 Dec 2009; Rémi Cardona <remi@gentoo.org> libxcb-1.5.ebuild:
+  up dep on xcb-proto (fixes bug #295692)
+
+*libxcb-1.5 (04 Dec 2009)
+
+  04 Dec 2009; Rémi Cardona <remi@gentoo.org> +libxcb-1.5.ebuild:
+  bump to 1.5
+
+  26 Oct 2009; Jeroen Roovers <jer@gentoo.org> libxcb-1.4-r1.ebuild:
+  Stable for HPPA (bug #282290).
+
+  11 Oct 2009; nixnut <nixnut@gentoo.org> libxcb-1.4-r1.ebuild:
+  ppc stable #282290
+
+  09 Oct 2009; Markus Meier <maekke@gentoo.org> libxcb-1.4-r1.ebuild:
+  arm stable, bug #282290
+
+  05 Oct 2009; Christian Faulhammer <fauli@gentoo.org> libxcb-1.4-r1.ebuild:
+  x86 stable, bug 282290
+
+  30 Sep 2009; Samuli Suominen <ssuominen@gentoo.org> libxcb-1.4-r1.ebuild:
+  amd64 stable wrt #282290
+
+  28 Sep 2009; Rémi Cardona <remi@gentoo.org> files/xcb-rebuilder.sh:
+  add upgrade guide URL at the end of xcb-rebuilder.sh
+
+  17 Sep 2009; Rémi Cardona <remi@gentoo.org> libxcb-1.4-r1.ebuild:
+  remove the call to preserve_old_lib_notify, it's confusing
+
+  17 Sep 2009; Rémi Cardona <remi@gentoo.org> -libxcb-1.4.ebuild:
+  drop old ebuilds
+
+*libxcb-1.4-r1 (14 Sep 2009)
+
+  14 Sep 2009; Rémi Cardona <remi@gentoo.org> +libxcb-1.4-r1.ebuild:
+  respect ${ROOT}, fixes bug #284950
+
+  11 Sep 2009; Rémi Cardona <remi@gentoo.org> libxcb-1.4.ebuild:
+  add preserve_old_lib to libxcb 1.4 and add a link to a proper upgrade
+  guide
+
+  11 Sep 2009; Rémi Cardona <remi@gentoo.org> -libxcb-1.3.ebuild:
+  drop old ebuilds
+
+  18 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> libxcb-1.4.ebuild:
+  Fix unrecognized options: --disable-xselinux.
+
+  18 Aug 2009; Rémi Cardona <remi@gentoo.org> files/xcb-rebuilder.sh:
+  don't try to rebuild broken packages, just list them
+
+*libxcb-1.4 (06 Aug 2009)
+
+  06 Aug 2009; Rémi Cardona <remi@gentoo.org> +libxcb-1.4.ebuild:
+  bump to 1.4
+
+*libxcb-1.3 (07 Jun 2009)
+
+  07 Jun 2009; Rémi Cardona <remi@gentoo.org> +libxcb-1.3.ebuild,
+  +files/xcb-rebuilder.sh:
+  bump to 1.3, add xcb-rebuilder.sh from the x11 overlay
+
+  04 May 2009; Samuli Suominen <ssuominen@gentoo.org> libxcb-1.1.ebuild,
+  libxcb-1.1.90.1.ebuild:
+  Move use_ functions out of global scope.
+
+  06 Feb 2009; Raúl Porcel <armin76@gentoo.org> libxcb-1.1.ebuild:
+  arm/ia64/s390/sh stable wrt #244210
+
+  01 Feb 2009; nixnut <nixnut@gentoo.org> libxcb-1.1.ebuild:
+  ppc stable #244210
+
+  31 Jan 2009; Tobias Klausmann <klausman@gentoo.org> libxcb-1.1.ebuild:
+  Stable on alpha, bug #244210
+
+  28 Jan 2009; Brent Baude <ranger@gentoo.org> libxcb-1.1.ebuild:
+  Marking libxcb-1.1 ppc64 for bug 244210
+
+  23 Jan 2009; Markus Meier <maekke@gentoo.org> libxcb-1.1.ebuild:
+  amd64/x86 stable, bug #244210
+
+  21 Jan 2009; Jeroen Roovers <jer@gentoo.org> libxcb-1.1.ebuild:
+  Stable for HPPA (bug #244210).
+
+  21 Jan 2009; Ferris McCormick <fmccor@gentoo.org> libxcb-1.1.ebuild:
+  Sparc stable, Bug #244210.
+
+*libxcb-1.1.90.1 (30 Jul 2008)
+
+  30 Jul 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +libxcb-1.1.90.1.ebuild:
+  Bump. Adds support for XInput and SELinux extensions, the
+  language-dependent parts of a Python parser, and other bugfixes.
+
+  07 Nov 2007; Donnie Berkholz <dberkholz@gentoo.org>; libxcb-1.1.ebuild:
+  Add a post-installation notice about the new sloppy locking.
+
+  07 Nov 2007; Donnie Berkholz <dberkholz@gentoo.org>; libxcb-1.1.ebuild:
+  Add USE=doc flag to skip the API docs.
+
+*libxcb-1.1 (07 Nov 2007)
+
+  07 Nov 2007; Donnie Berkholz <dberkholz@gentoo.org>; +libxcb-1.1.ebuild:
+  Bump. Adds that variable everyone's been clamoring for to stop apps from
+  dying: set LIBXCB_ALLOW_SLOPPY_LOCK to avoid aborting. Also has a number of
+  important bugfixes.
+
+  07 Nov 2007; Donnie Berkholz <dberkholz@gentoo.org>; libxcb-1.0.ebuild:
+  Update dep to pull in xcb-proto of the same version.
+
+  24 Jun 2007; Joshua Kinard <kumba@gentoo.org> libxcb-1.0.ebuild:
+  Stable on mips, per #175465.
+
+  21 Apr 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  -libxcb-0.9.93.ebuild:
+  Drop release candidate.
+
+  18 Apr 2007; Jose Luis Rivero <yoswink@gentoo.org> libxcb-1.0.ebuild:
+  Stable on alpha wrt security bug #172752
+
+  17 Apr 2007; Donnie Berkholz <dberkholz@gentoo.org>; libxcb-0.9.93.ebuild,
+  libxcb-1.0.ebuild:
+  (#174639) Update HOMEPAGE.
+
+  13 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org> libxcb-1.0.ebuild:
+  ppc stable, bug #172752
+
+  11 Apr 2007; Jeroen Roovers <jer@gentoo.org> libxcb-1.0.ebuild:
+  Stable for HPPA (bug #172752).
+
+  11 Apr 2007; Raúl Porcel <armin76@gentoo.org> libxcb-1.0.ebuild:
+  ia64 stable wrt security bug 172752
+
+  11 Apr 2007; Peter Weller <welp@gentoo.org> libxcb-1.0.ebuild:
+  Stable on amd64
+
+  11 Apr 2007; Markus Rothe <corsair@gentoo.org> libxcb-1.0.ebuild:
+  Stable on ppc64; bug #172752
+
+  22 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org> libxcb-1.0.ebuild:
+  Stable on sparc
+
+  21 Mar 2007; Christian Faulhammer <opfer@gentoo.org> libxcb-1.0.ebuild:
+  stable x86, security bug 170208
+
+  24 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> libxcb-1.0.ebuild:
+  Add ~x86-fbsd keyword.
+
+  24 Nov 2006; Donnie Berkholz <dberkholz@gentoo.org>; libxcb-1.0.ebuild:
+  Dep on dev-libs/libpthread-stubs.
+
+*libxcb-1.0 (24 Nov 2006)
+
+  24 Nov 2006; Donnie Berkholz <dberkholz@gentoo.org>; +libxcb-1.0.ebuild:
+  Bump.
+
+  03 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> libxcb-0.9.93.ebuild:
+  Remove ~x86-fbsd keyword as this release does not work correctly.
+
+*libxcb-0.9.93 (03 Nov 2006)
+
+  03 Nov 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  -libxcb-0.9.92.ebuild, +libxcb-0.9.93.ebuild:
+  Bump for XCB1.0RC3.
+
+*libxcb-0.9.92 (09 Oct 2006)
+
+  09 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>; +metadata.xml,
+  +libxcb-0.9.92.ebuild:
+  Add X C-language Bindings library.

@@ -1,0 +1,43 @@
+# ChangeLog for dev-python/python-nss
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-nss/ChangeLog,v 1.8 2015/02/04 09:16:17 idella4 Exp $
+
+*python-nss-0.16.0 (04 Feb 2015)
+
+  04 Feb 2015; Ian Delaney <idella4@gentoo.org> +python-nss-0.16.0.ebuild:
+  bump; test phase added with exclusions made for unviable tests in the suite,
+  fixes bug #534050 by sping
+
+*python-nss-0.12-r1 (05 Jan 2015)
+
+  05 Jan 2015; Ian Delaney <idella4@gentoo.org> +python-nss-0.12-r1.ebuild,
+  -python-nss-0.12.ebuild, -python-nss-0.8-r1.ebuild, -python-nss-0.8.ebuild:
+  revbump; conversion -> distutils-r1, rm old versions and disused patch
+
+  22 Feb 2012; Patrick Lauer <patrick@gentoo.org> python-nss-0.12.ebuild,
+  python-nss-0.8-r1.ebuild, python-nss-0.8.ebuild:
+  Restricting jython
+
+  04 Feb 2012; Maxim Koltsov <maksbotan@gentoo.org> metadata.xml:
+  Fix maintainer's email in metadata
+
+*python-nss-0.12 (04 Dec 2011)
+
+  04 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org> +python-nss-0.12.ebuild,
+  +files/python-nss-0.12-rsapssparams.patch:
+  Bump to 0.12, bug 390867. Thanks to slepnoga.
+
+  17 Nov 2011; Peter Volkov <pva@gentoo.org> python-nss-0.8.ebuild,
+  python-nss-0.8-r1.ebuild:
+  Update HOMEPAGE, thank slepnoga for report.
+
+*python-nss-0.8-r1 (31 Oct 2011)
+
+  31 Oct 2011; Maxim Koltsov <maksbotan@gentoo.org> +python-nss-0.8-r1.ebuild:
+  Fix docs processing in src_install. Thanks to Arfrever.
+
+*python-nss-0.8 (30 Oct 2011)
+
+  30 Oct 2011; Maxim Koltsov <maksbotan@gentoo.org> +python-nss-0.8.ebuild,
+  +files/gentoo_lib_name.patch, +metadata.xml:
+  Add dev-python/python-nss, thanks to slepnoga. Bug #305881

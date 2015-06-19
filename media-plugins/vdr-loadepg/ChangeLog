@@ -1,0 +1,41 @@
+# ChangeLog for media-plugins/vdr-loadepg
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-loadepg/ChangeLog,v 1.6 2014/01/08 14:17:39 hd_brummy Exp $
+
+*vdr-loadepg-0.2.5 (08 Jan 2014)
+
+  08 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-loadepg-0.1.9.ebuild, -vdr-loadepg-0.1.11.ebuild,
+  -vdr-loadepg-0.2.0.ebuild, vdr-loadepg-0.2.3.ebuild,
+  +vdr-loadepg-0.2.5.ebuild:
+  bump; eapi=5; vdr-plugin-2.eclass
+
+*vdr-loadepg-0.2.3 (08 Mar 2010)
+
+  08 Mar 2010; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-loadepg-0.2.3.ebuild:
+  version bump (1.7.12)
+
+*vdr-loadepg-0.2.0 (26 Jul 2008)
+
+  26 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-loadepg-0.1.9.ebuild, vdr-loadepg-0.1.11.ebuild,
+  +vdr-loadepg-0.2.0.ebuild:
+  Version bumped. Homepage and src_uri were moved. Thanks to pizzak for
+  notice and testing.
+
+*vdr-loadepg-0.1.11 (03 Aug 2007)
+
+  03 Aug 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-loadepg-0.1.11.ebuild:
+  Version bumped.
+
+  17 Apr 2007; Matthias Schwarzott <zzam@gentoo.org> files/rc-addon.sh:
+  Removed bash specific stuff.
+
+*vdr-loadepg-0.1.9 (12 Aug 2006)
+
+  12 Aug 2006; Joerg Bornkessel <hd_brummy@gentoo.org> +files/rc-addon.sh,
+  +metadata.xml, +vdr-loadepg-0.1.9.ebuild:
+  initial ebuild
+

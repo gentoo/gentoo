@@ -1,0 +1,12 @@
+# ChangeLog for app-text/binfind
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/binfind/ChangeLog,v 1.2 2014/08/06 07:09:31 patrick Exp $
+
+  06 Aug 2014; Patrick Lauer <patrick@gentoo.org> binfind-0.0.3.ebuild:
+  Make description more repoman-happy
+
+*binfind-0.0.3 (29 Dec 2008)
+
+  29 Dec 2008; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +binfind-0.0.3.ebuild:
+  Initial commit. Really useful tool for large input files.

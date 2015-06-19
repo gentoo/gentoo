@@ -1,0 +1,20 @@
+cdavl.c:101:53: error: ‘struct ext2_super_block’ has no member named ‘s_log_frag_size’
+cdavl.c:105:53: error: ‘struct ext2_super_block’ has no member named ‘s_frags_per_group’
+
+http://bugs.gentoo.org/425820
+
+--- src/cdavl/cdavl.c
++++ src/cdavl/cdavl.c
+@@ -98,9 +98,11 @@
+ 	PRINT4("s_free_inodes_count:      ", le32_to_cpu(sb->s_free_inodes_count));
+ 	PRINT4("s_first_data_block:       ", le32_to_cpu(sb->s_first_data_block));
+ 	PRINT4("s_log_block_size:         ", le32_to_cpu(sb->s_log_block_size));
++	#if 0
+ 	PRINT4("s_log_frag_size:          ", le32_to_cpu(sb->s_log_frag_size));
+-	PRINT4("s_blocks_per_group:       ", le32_to_cpu(sb->s_blocks_per_group));
+ 	PRINT4("s_frags_per_group:        ", le32_to_cpu(sb->s_frags_per_group));
++	#endif
++	PRINT4("s_blocks_per_group:       ", le32_to_cpu(sb->s_blocks_per_group));
+ 	PRINT4("s_inodes_per_group:       ", le32_to_cpu(sb->s_inodes_per_group));
+ 	PRINT4("s_mtime:                  ", le32_to_cpu(sb->s_mtime));
+ 	PRINT4("s_wtime:                  ", le32_to_cpu(sb->s_wtime));

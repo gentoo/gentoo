@@ -1,0 +1,128 @@
+# ChangeLog for dev-db/maatkit
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/maatkit/ChangeLog,v 1.30 2014/11/27 23:46:23 dilfridge Exp $
+
+  27 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  maatkit-7540-r1.ebuild:
+  Remove call to perl-module_pkg_postinst, does not do anything outside
+  perl-core
+
+  07 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> -maatkit-7540.ebuild:
+  Drop old
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org> maatkit-7540-r1.ebuild:
+  amd64 stable, bug #491976
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> maatkit-7540-r1.ebuild:
+  x86 stable wrt bug #491976
+
+*maatkit-7540-r1 (10 Sep 2013)
+
+  10 Sep 2013; Ian Delaney <idella4@gentoo.org> +maatkit-7540-r1.ebuild,
+  -maatkit-7207.ebuild:
+  revbump -> EAPI5, remove old
+
+  03 Mar 2013; Wolfram Schlich <wschlich@gentoo.org> metadata.xml:
+  removed myself from metadata.xml
+
+  20 Sep 2011; Andreas Schuerch <nativemad@gentoo.org> maatkit-7540.ebuild:
+  x86 stable, see bug 383399
+
+  18 Sep 2011; Markos Chandras <hwoarang@gentoo.org> maatkit-7540.ebuild:
+  Stable on amd64 wrt bug #383399
+
+*maatkit-7540 (06 Jul 2011)
+
+  06 Jul 2011; Christian Ruppert <idl0r@gentoo.org> -maatkit-5014.ebuild,
+  -maatkit-5240.ebuild, -maatkit-6070.ebuild, -maatkit-7041.ebuild,
+  +maatkit-7540.ebuild, metadata.xml:
+  Version bump, bug 374231. Add myself as secondary maintainer.
+
+  10 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> maatkit-7207.ebuild:
+  x86 stable wrt bug #363245
+
+  25 Apr 2011; Raúl Porcel <armin76@gentoo.org> maatkit-5014.ebuild,
+  maatkit-5240.ebuild, maatkit-6070.ebuild, maatkit-7041.ebuild,
+  maatkit-7207.ebuild:
+  Drop sparc keywords
+
+  16 Apr 2011; Christoph Mende <angelos@gentoo.org> maatkit-7207.ebuild:
+  Stable on amd64 wrt bug #363245
+
+*maatkit-7207 (07 Feb 2011)
+
+  07 Feb 2011; Robin H. Johnson <robbat2@gentoo.org> +maatkit-7207.ebuild:
+  Version bump.
+
+  04 Jan 2011; Michael Weber <xmw@gentoo.org> maatkit-6070.ebuild:
+  sparc stable (bug 345809)
+
+  28 Nov 2010; Markos Chandras <hwoarang@gentoo.org> maatkit-6070.ebuild:
+  Stable on amd64 wrt bug #345809
+
+  21 Nov 2010; Markus Meier <maekke@gentoo.org> maatkit-6070.ebuild:
+  x86 stable, bug #345809
+
+*maatkit-7041 (17 Nov 2010)
+
+  17 Nov 2010; Christian Ruppert <idl0r@gentoo.org> +maatkit-7041.ebuild:
+  Version bump, bug 341539. Fix dependencies.
+
+  17 Nov 2010; Christian Ruppert <idl0r@gentoo.org> maatkit-6070.ebuild:
+  Respect LDFLAGS whith use "udf", bug 345809.
+
+*maatkit-6070 (03 May 2010)
+
+  03 May 2010; Patrick Lauer <patrick@gentoo.org> +maatkit-6070.ebuild:
+  Bump for #316865
+
+  13 Apr 2010; Markos Chandras <hwoarang@gentoo.org> maatkit-5240.ebuild:
+  Stable on amd64 wrt bug #304031
+
+  24 Mar 2010; Christian Faulhammer <fauli@gentoo.org> maatkit-5240.ebuild:
+  stable x86, bug 304031
+
+  02 Jan 2010; Christian Faulhammer <fauli@gentoo.org> maatkit-5240.ebuild:
+  Transfer Prefix keywords
+
+*maatkit-5240 (09 Dec 2009)
+
+  09 Dec 2009; Wolfram Schlich <wschlich@gentoo.org> +maatkit-5240.ebuild:
+  version bump
+
+*maatkit-5014 (16 Nov 2009)
+
+  16 Nov 2009; Wolfram Schlich <wschlich@gentoo.org> -maatkit-2325.ebuild,
+  -maatkit-2442.ebuild, -maatkit-2582.ebuild, -maatkit-3329.ebuild,
+  -maatkit-4334.ebuild, +maatkit-5014.ebuild:
+  version bump (also fixes bug #285442), removed old versions
+
+*maatkit-4334 (05 Aug 2009)
+
+  05 Aug 2009; Robin H. Johnson <robbat2@gentoo.org> +maatkit-4334.ebuild,
+  metadata.xml:
+  Version bump, now also builds the UDFs if requested.
+
+*maatkit-3329 (22 Apr 2009)
+
+  22 Apr 2009; Benedikt Böhm <hollow@gentoo.org> +maatkit-3329.ebuild:
+  version bump
+
+*maatkit-2582 (07 Mar 2009)
+
+  07 Mar 2009; Patrick Lauer <patrick@gentoo.org> +maatkit-2582.ebuild:
+  Bump to 2582, fixes #250916
+
+  13 Dec 2008; Friedrich Oslage <bluebird@gentoo.org> maatkit-2442.ebuild:
+  Add ~sparc keyword
+
+*maatkit-2442 (03 Nov 2008)
+
+  03 Nov 2008; Wolfram Schlich <wschlich@gentoo.org> +maatkit-2442.ebuild:
+  version bump
+
+*maatkit-2325 (06 Oct 2008)
+
+  06 Oct 2008; Wolfram Schlich <wschlich@gentoo.org> +metadata.xml,
+  +maatkit-2325.ebuild:
+  initial import

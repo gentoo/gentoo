@@ -1,0 +1,121 @@
+# ChangeLog for dev-perl/HTML-LinkExtractor
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-LinkExtractor/ChangeLog,v 1.27 2014/08/23 02:02:58 axs Exp $
+
+*HTML-LinkExtractor-0.130.0-r1 (23 Aug 2014)
+
+  23 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +HTML-LinkExtractor-0.130.0-r1.ebuild, -HTML-LinkExtractor-0.130.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  05 Aug 2014; Mikle Kolyada <zlogene@gentoo.org>
+  HTML-LinkExtractor-0.130.0.ebuild:
+  Fix DESCRIPTION
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -HTML-LinkExtractor-0.13.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org>
+  HTML-LinkExtractor-0.130.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*HTML-LinkExtractor-0.130.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +HTML-LinkExtractor-0.130.0.ebuild:
+  Change version scheme
+
+  03 Feb 2010; Torsten Veller <tove@gentoo.org>
+  HTML-LinkExtractor-0.13.ebuild:
+  Fix LICENSE: same terms as perl (#301969). Maintenance
+
+  01 May 2009; Torsten Veller <tove@gentoo.org>
+  -HTML-LinkExtractor-0.12.1.ebuild:
+  Cleanup
+
+  05 Dec 2006; Yuval Yaari <yuval@gentoo.org>
+  -HTML-LinkExtractor-0.11.ebuild, HTML-LinkExtractor-0.12.1.ebuild,
+  HTML-LinkExtractor-0.13.ebuild:
+  Cleanup + adding RDEPEND on dev-perl/URI (bug #156679)
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  HTML-LinkExtractor-0.11.ebuild, HTML-LinkExtractor-0.12.1.ebuild,
+  HTML-LinkExtractor-0.13.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  HTML-LinkExtractor-0.13.ebuild:
+  Mark 0.13 stable on ia64
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  HTML-LinkExtractor-0.11.ebuild, HTML-LinkExtractor-0.12.1.ebuild,
+  HTML-LinkExtractor-0.13.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed header
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  HTML-LinkExtractor-0.13.ebuild:
+  Mark 0.13 ~ia64
+
+  06 Feb 2006; Simon Stelling <blubb@gentoo.org>
+  HTML-LinkExtractor-0.13.ebuild:
+  stable on amd64
+
+  27 Nov 2005; Tom Gall <tgall@gentoo.org> HTML-LinkExtractor-0.13.ebuild:
+  stable on ppc64
+
+  12 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  HTML-LinkExtractor-0.13.ebuild:
+  Stable on sparc
+
+  12 Aug 2005; Michael Cummings <mcummings@gentoo.org>
+  HTML-LinkExtractor-0.13.ebuild:
+  Marking stable x86
+
+  30 Jul 2005; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  HTML-LinkExtractor-0.11.ebuild, HTML-LinkExtractor-0.12.1.ebuild,
+  HTML-LinkExtractor-0.13.ebuild:
+  PowerPC stable
+
+  12 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  HTML-LinkExtractor-0.12.1.ebuild:
+  stable on amd64
+
+*HTML-LinkExtractor-0.13 (25 Apr 2005)
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  HTML-LinkExtractor-0.12.1.ebuild, +HTML-LinkExtractor-0.13.ebuild:
+  Cleaning
+
+  09 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  HTML-LinkExtractor-0.12.1.ebuild:
+  Stable on sparc
+
+  23 Dec 2004; Yuta SATOH <nigoro@gentoo.org>
+  HTML-LinkExtractor-0.12.1.ebuild:
+  added ~ppc64
+
+*HTML-LinkExtractor-0.12.1 (17 Oct 2004)
+
+  17 Oct 2004; Michael Cummings <mcummings@gentoo.org>
+  +HTML-LinkExtractor-0.12.1.ebuild:
+  New version on cpan, contains bug fixes; changed dep for tokeparser. Version number adjusted so future upgrades weren't blocked by portage expectations of number sequences.
+
+  13 Jul 2004; Robert Coie <rac@gentoo.org> HTML-LinkExtractor-0.11.ebuild:
+  Keywording amd64 and x86
+
+  13 Jul 2004; <rac@gentoo.org> HTML-LinkExtractor-0.11.ebuild:
+  Keyword x86 and amd64
+
+  18 Apr 2004; David Holm <dholm@gentoo.org> HTML-LinkExtractor-0.11.ebuild:
+  Added to ~ppc.
+
+*HTML-LinkExtractor-0.11 (17 Apr 2004)
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org>
+  HTML-LinkExtractor-0.11.ebuild:
+  Initial import.

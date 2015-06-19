@@ -1,0 +1,67 @@
+From 9af4e992ff9fa10816beba36478c711ac2c8542a Mon Sep 17 00:00:00 2001
+From: hasufell <hasufell@gentoo.org>
+Date: Thu, 27 Mar 2014 21:17:21 +0100
+Subject: [PATCH 3/4] add odamex.wad install destination to wad search path
+
+---
+ CMakeLists.txt    | 9 +++++++++
+ common/d_main.cpp | 2 ++
+ config.h.in       | 6 ++++++
+ 3 files changed, 17 insertions(+)
+ create mode 100644 config.h.in
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 91d5c50..a06613e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,6 +13,15 @@
+ 
+ set(PROJECT_VERSION 0.7.0)
+ set(PROJECT_COPYRIGHT "2006-2014")
++
++configure_file (
++  "${PROJECT_SOURCE_DIR}/config.h.in"
++  "${PROJECT_BINARY_DIR}/config.h"
++  )
++
++include_directories(
++	${PROJECT_BINARY_DIR}
++)
+ 
+ # Default build type
+ if(NOT MSVC)
+diff --git a/common/d_main.cpp b/common/d_main.cpp
+index 31d4f59..be0ffd2 100644
+--- a/common/d_main.cpp
++++ b/common/d_main.cpp
+@@ -23,6 +23,7 @@
+ //-----------------------------------------------------------------------------
+ 
+ #include "version.h"
++#include "config.h"
+ 
+ #include <sstream>
+ #include <string>
+@@ -506,6 +507,7 @@ static std::string BaseFileSearch(std::string file, std::string ext = "", std::s
+ 	D_AddSearchDir(dirs, getenv("DOOMWADDIR"), separator);
+ 	D_AddSearchDir(dirs, getenv("DOOMWADPATH"), separator);
+ 	D_AddSearchDir(dirs, getenv("HOME"), separator);
++	D_AddSearchDir(dirs, CMAKE_WADDIR, separator);
+ 
+ 	// [AM] Search additional paths based on platform
+ 	D_AddPlatformSearchDirs(dirs);
+diff --git a/config.h.in b/config.h.in
+new file mode 100644
+index 0000000..e91b3a6
+--- /dev/null
++++ b/config.h.in
+@@ -0,0 +1,6 @@
++#ifndef CONFIG_H
++#define CONFIG_H
++
++#define CMAKE_WADDIR "@CMAKE_INSTALL_DATADIR@"
++
++#endif
+-- 
+1.9.1
+

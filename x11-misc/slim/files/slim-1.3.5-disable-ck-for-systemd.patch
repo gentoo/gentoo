@@ -1,0 +1,122 @@
+diff -Naur slim-1.3.5/app.cpp slim-1.3.5.new/app.cpp
+--- slim-1.3.5/app.cpp	2012-12-31 08:03:42.000000000 -0500
++++ slim-1.3.5.new/app.cpp	2013-08-22 14:16:37.994854259 -0400
+@@ -138,11 +138,14 @@
+ 	daemonmode = false;
+ 	force_nodaemon = false;
+ 	firstlogin = true;
++#ifdef USE_CONSOLEKIT
++	consolekit_support_enabled = true;
++#endif
+ 	Dpy = NULL;
+ 
+ 	/* Parse command line
+ 	   Note: we force a option for nodaemon switch to handle "-nodaemon" */
+-	while((tmp = getopt(argc, argv, "vhp:n:d?")) != EOF) {
++	while((tmp = getopt(argc, argv, "vhsp:n:d?")) != EOF) {
+ 		switch (tmp) {
+ 		case 'p':	/* Test theme */
+ 			testtheme = optarg;
+@@ -163,6 +166,11 @@
+ 			std::cout << APPNAME << " version " << VERSION << endl;
+ 			exit(OK_EXIT);
+ 			break;
++#ifdef USE_CONSOLEKIT
++		case 's':	/* Disable consolekit support */
++			consolekit_support_enabled = false;
++			break;
++#endif
+ 		case '?':	/* Illegal */
+ 			logStream << endl;
+ 		case 'h':   /* Help */
+@@ -171,6 +179,9 @@
+ 			<< "	-d: daemon mode" << endl
+ 			<< "	-nodaemon: no-daemon mode" << endl
+ 			<< "	-v: show version" << endl
++#ifdef USE_CONSOLEKIT
++			<< "	-s: start for systemd, disable consolekit support" << endl
++#endif
+ 			<< "	-p /path/to/theme/dir: preview theme" << endl;
+ 			exit(OK_EXIT);
+ 			break;
+@@ -559,6 +570,7 @@
+ #endif
+ 
+ #ifdef USE_CONSOLEKIT
++	if (consolekit_support_enabled) {
+ 	/* Setup the ConsoleKit session */
+ 	try {
+ 		ck.open_session(DisplayName, pw->pw_uid);
+@@ -567,6 +579,7 @@
+ 		logStream << APPNAME << ": " << e << endl;
+ 		exit(ERR_EXIT);
+ 	}
++	}
+ #endif
+ 
+ 	/* Create new process */
+@@ -578,6 +591,7 @@
+ 		char** child_env = pam.getenvlist();
+ 
+ # ifdef USE_CONSOLEKIT
++		if (consolekit_support_enabled) {
+ 		char** old_env = child_env;
+ 
+ 		/* Grow the copy of the environment for the session cookie */
+@@ -590,6 +604,7 @@
+ 		memcpy(child_env, old_env, sizeof(char*)*n+1);
+ 		child_env[n - 1] = StrConcat("XDG_SESSION_COOKIE=", ck.get_xdg_session_cookie());
+ 		child_env[n] = NULL;
++		}
+ # endif /* USE_CONSOLEKIT */
+ #else
+ 
+@@ -611,6 +626,7 @@
+ 		child_env[n++]=StrConcat("MAIL=", maildir.c_str());
+ 		child_env[n++]=StrConcat("XAUTHORITY=", xauthority.c_str());
+ # ifdef USE_CONSOLEKIT
++		if (consolekit_support_enabled)
+ 		child_env[n++]=StrConcat("XDG_SESSION_COOKIE=", ck.get_xdg_session_cookie());
+ # endif /* USE_CONSOLEKIT */
+ 		child_env[n++]=0;
+@@ -656,12 +672,14 @@
+ 	}
+ 
+ #ifdef USE_CONSOLEKIT
++	if (consolekit_support_enabled) {
+ 	try {
+ 		ck.close_session();
+ 	}
+ 	catch(Ck::Exception &e) {
+ 		logStream << APPNAME << ": " << e << endl;
+ 	};
++	}
+ #endif
+ 
+ #ifdef USE_PAM
+diff -Naur slim-1.3.5/app.h slim-1.3.5.new/app.h
+--- slim-1.3.5/app.h	2012-12-31 08:03:42.000000000 -0500
++++ slim-1.3.5.new/app.h	2013-08-22 14:12:45.536850016 -0400
+@@ -108,6 +108,10 @@
+ 	char *testtheme;
+ 	bool testing;
+ 
++#ifdef USE_CONSOLEKIT
++	bool consolekit_support_enabled;
++#endif
++
+ 	std::string themeName;
+ 	std::string mcookie;
+ 
+diff -Naur slim-1.3.5/slim.service slim-1.3.5.new/slim.service
+--- slim-1.3.5/slim.service	2012-12-31 08:03:42.000000000 -0500
++++ slim-1.3.5.new/slim.service	2013-08-22 14:15:39.186853186 -0400
+@@ -3,7 +3,7 @@
+ After=systemd-user-sessions.service
+ 
+ [Service]
+-ExecStart=/usr/bin/slim -nodaemon
++ExecStart=/usr/bin/slim -nodaemon -s
+ 
+ [Install]
+ Alias=display-manager.service

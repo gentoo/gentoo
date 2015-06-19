@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.0 >=app-editors/gvim-7.0 )
+DESCRIPTION=vim plugin: A set of menus/shortcuts to work with Python files
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=30
+KEYWORDS=alpha amd64 ia64 ppc sparc x86
+LICENSE=vim
+RDEPEND=|| ( >=app-editors/vim-7.0 >=app-editors/gvim-7.0 )
+SLOT=0
+SRC_URI=mirror://gentoo/vimpython-1.13.tar.bz2 http://dev.gentoo.org/~radhermit/vim/vimpython-1.13.tar.bz2
+_eclasses_=vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=77a4e7a6fb6e2e6eb87a4276b5417812

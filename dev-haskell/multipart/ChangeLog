@@ -1,0 +1,9 @@
+# ChangeLog for dev-haskell/multipart
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/multipart/ChangeLog,v 1.1 2014/12/14 11:15:23 gienah Exp $
+
+*multipart-0.1.2 (14 Dec 2014)
+
+  14 Dec 2014; Mark Wright <gienah@gentoo.org> +metadata.xml,
+  +multipart-0.1.2.ebuild:
+  Add multipart

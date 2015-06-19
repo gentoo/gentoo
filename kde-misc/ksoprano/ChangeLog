@@ -1,0 +1,21 @@
+# ChangeLog for kde-misc/ksoprano
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/ksoprano/ChangeLog,v 1.4 2015/06/04 18:57:34 kensington Exp $
+
+  04 Jun 2015; Michael Palimaka <kensington@gentoo.org> ksoprano-0.2-r1.ebuild:
+  Move various kde-base packages to kde-apps.
+
+  14 Aug 2014; Johannes Huber <johu@gentoo.org> -ksoprano-0.2.ebuild:
+  Remove old.
+
+*ksoprano-0.2-r1 (13 May 2014)
+
+  13 May 2014; Johannes Huber <johu@gentoo.org> +ksoprano-0.2-r1.ebuild,
+  ksoprano-0.2.ebuild:
+  Revision bump adapts use flag changes made in KDE 4.13.1, bug #508350.
+
+*ksoprano-0.2 (18 Jun 2013)
+
+  18 Jun 2013; Chris Reffett <creffett@gentoo.org> +ksoprano-0.2.ebuild,
+  +metadata.xml:
+  Add to tree from kde overlay

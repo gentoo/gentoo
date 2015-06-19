@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>java</herd>
+  <longdescription lang="en">
+    This provides a streaming API to access attachments parts in a MIME message.
+	Often times, a large MIME message cannot be loaded into memory. Hence the
+	whole message or attachment parts are written to a file system and access to
+	the attachment parts is provided using those files.
+  </longdescription>
+</pkgmetadata>
+

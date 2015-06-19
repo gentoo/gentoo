@@ -1,0 +1,43 @@
+# ChangeLog for media-gfx/apngdis
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/apngdis/ChangeLog,v 1.9 2015/05/23 01:13:19 mrueg Exp $
+
+  23 May 2015; Manuel Rüger <mrueg@gentoo.org> -apngdis-2.3.ebuild,
+  -apngdis-2.4.ebuild, -apngdis-2.5.ebuild, -apngdis-2.6.ebuild:
+  Remove old.
+
+*apngdis-2.7 (11 Oct 2014)
+
+  11 Oct 2014; Tim Harder <radhermit@gentoo.org> +apngdis-2.7.ebuild:
+  Version bump.
+
+  17 Dec 2013; Tim Harder <radhermit@gentoo.org> apngdis-2.6.ebuild:
+  Add dep on libpng.
+
+*apngdis-2.6 (17 Dec 2013)
+
+  17 Dec 2013; Tim Harder <radhermit@gentoo.org> +apngdis-2.6.ebuild,
+  +files/apngdis-2.6-gcc-4.3.patch, +files/apngdis-2.6-makefile.patch:
+  Version bump.
+
+*apngdis-2.5 (03 Oct 2012)
+
+  03 Oct 2012; Tim Harder <radhermit@gentoo.org> +apngdis-2.5.ebuild:
+  Version bump.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> apngdis-2.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*apngdis-2.4 (23 Aug 2011)
+
+  23 Aug 2011; Tim Harder <radhermit@gentoo.org> +apngdis-2.4.ebuild:
+  Version bump.
+
+  29 Apr 2011; Tim Harder <radhermit@gentoo.org> apngdis-2.3.ebuild:
+  Fix dependencies and linking error.
+
+*apngdis-2.3 (26 Apr 2011)
+
+  26 Apr 2011; Mike Frysinger <vapier@gentoo.org> +apngdis-2.3.ebuild,
+  +metadata.xml:
+  New package.

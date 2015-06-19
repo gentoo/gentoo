@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt?] ncurses? ( >=sys-libs/ncurses-5.3 ) fam? ( virtual/fam ) readline? ( >=sys-libs/readline-4.3 )
+DESCRIPTION=Make replacement
+EAPI=5
+HOMEPAGE=http://omake.metaprl.org/
+IUSE=doc fam ncurses +ocamlopt readline
+KEYWORDS=~amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt?] ncurses? ( >=sys-libs/ncurses-5.3 ) fam? ( virtual/fam ) readline? ( >=sys-libs/readline-4.3 )
+RESTRICT=installsources
+SLOT=0
+SRC_URI=http://omake.metaprl.org/downloads/omake-0.9.8.6-0.rc1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=e91e97396c3c2e21ec4bb5012b10c1c0

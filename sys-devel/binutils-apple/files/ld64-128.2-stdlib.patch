@@ -1,0 +1,14 @@
+Patch by Linlin Yan <yanlinlin82@gmail.com>
+
+https://bugs.gentoo.org/show_bug.cgi?id=490932
+
+--- ld64-128.2/src/other/rebase.cpp
++++ ld64-128.2/src/other/rebase.cpp
+@@ -29,6 +29,7 @@
+ #include <limits.h>
+ #include <stdarg.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <fcntl.h>
+ #include <errno.h>
+ #include <unistd.h>

@@ -1,0 +1,38 @@
+# ChangeLog for gnustep-apps/sudoku
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/sudoku/ChangeLog,v 1.9 2015/05/31 12:06:26 mrueg Exp $
+
+  31 May 2015; Manuel Rüger <mrueg@gentoo.org> -sudoku-0.6.ebuild:
+  Remove old.
+
+  09 Jul 2012; Michael Weber <xmw@gentoo.org> sudoku-0.7.ebuild:
+  ppc stable (bug 400359)
+
+  19 Jun 2012; Agostino Sarubbo <ago@gentoo.org> sudoku-0.7.ebuild:
+  Stable for amd64, wrt bug #400359
+
+  19 Jun 2012; Jeff Horelick <jdhore@gentoo.org> sudoku-0.7.ebuild:
+  marked x86 per bug 400359
+
+*sudoku-0.7 (05 Aug 2011)
+*sudoku-0.6 (05 Aug 2011)
+
+  05 Aug 2011; Bernard Cafarelli <voyageur@gentoo.org> +sudoku-0.6.ebuild,
+  +sudoku-0.7.ebuild, -sudoku-6.ebuild:
+  Version bump, new homepage. Rename old ebuild for new versioning, use Gentoo
+  mirror for old distfile
+
+  08 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> sudoku-6.ebuild:
+  amd64 stable wrt bug #207381
+
+  30 Jan 2008; Brent Baude <ranger@gentoo.org> sudoku-6.ebuild:
+  Marking sudoku-6 ppc for bug 207381
+
+  25 Jan 2008; Christian Faulhammer <opfer@gentoo.org> sudoku-6.ebuild:
+  stable x86, bug 207381
+
+*sudoku-6 (10 Sep 2007)
+
+  10 Sep 2007; Bernard Cafarelli <voyageur@gentoo.org> +metadata.xml,
+  +sudoku-6.ebuild:
+  Initial import from the GNUstep overlay

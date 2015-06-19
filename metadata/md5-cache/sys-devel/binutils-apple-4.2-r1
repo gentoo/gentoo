@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=sys-devel/binutils-config lto? ( sys-devel/llvm ) test? ( >=dev-lang/perl-5.8.8 ) || ( >=sys-devel/gcc-apple-4.2.1 sys-devel/llvm )
+DESCRIPTION=Darwin assembler as(1) and static linker ld(1), Xcode Tools 4.2
+EAPI=3
+HOMEPAGE=http://www.opensource.apple.com/darwinsource/
+IUSE=lto test
+KEYWORDS=~ppc-macos ~x64-macos ~x86-macos
+LICENSE=APSL-2
+RDEPEND=sys-devel/binutils-config lto? ( sys-devel/llvm )
+SLOT=4
+SRC_URI=http://www.opensource.apple.com/tarballs/ld64/ld64-127.2.tar.gz http://www.opensource.apple.com/tarballs/cctools/cctools-809.tar.gz http://www.opensource.apple.com/tarballs/cctools/cctools-855.tar.gz http://www.opensource.apple.com/tarballs/libunwind/libunwind-30.tar.gz http://www.opensource.apple.com/tarballs/dyld/dyld-195.5.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=2d94439cc6beec030cee70d2c20b498f

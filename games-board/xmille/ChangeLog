@@ -1,0 +1,56 @@
+# ChangeLog for games-board/xmille
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/xmille/ChangeLog,v 1.16 2013/11/06 19:11:04 mr_bones_ Exp $
+
+  06 Nov 2013; Michael Sterrett <mr_bones_@gentoo.org> -xmille-2.0-r1.ebuild:
+  old
+
+  24 Feb 2013; Agostino Sarubbo <ago@gentoo.org> xmille-2.0-r2.ebuild:
+  Stable for x86, wrt bug #458642
+
+  24 Feb 2013; Agostino Sarubbo <ago@gentoo.org> xmille-2.0-r2.ebuild:
+  Stable for amd64, wrt bug #458642
+
+  22 Feb 2013; Agostino Sarubbo <ago@gentoo.org> xmille-2.0-r2.ebuild:
+  Stable for ppc, wrt bug #458642
+
+*xmille-2.0-r2 (22 Jan 2013)
+
+  22 Jan 2013; Julian Ospald <hasufell@gentoo.org> +xmille-2.0-r2.ebuild:
+  EAPI-bump, respect cflags wrt #453430
+
+  08 Oct 2010; Tupone Alfredo <tupone@gentoo.org> xmille-2.0-r1.ebuild:
+  Respect LDFLAGS. Bug #336826 by flameeyes@gentoo.org
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> xmille-2.0-r1.ebuild:
+  Removing old virtual/x11 dependency.
+
+  23 Apr 2006; Michael Sterrett <mr_bones_@gentoo.org> xmille-2.0-r1.ebuild:
+  update debian patch
+
+  29 Jan 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  xmille-2.0-r1.ebuild:
+  Add modular X dependencies.
+
+  09 Jan 2006; Michael Sterrett <mr_bones_@gentoo.org> xmille-2.0-r1.ebuild:
+  tidy; debian patch bump
+
+  21 Dec 2004; Dylan Carlson <absinthe@gentoo.org> xmille-2.0-r1.ebuild:
+  keywords ~amd64.
+
+  11 Nov 2004; Joseph Jezak <josejx@gentoo.org> xmille-2.0-r1.ebuild:
+  Marked ppc stable.
+
+  23 Apr 2004; David Holm <dholm@gentoo.org> xmille-2.0-r1.ebuild:
+  Added to ~ppc.
+
+*xmille-2.0-r1 (22 Apr 2004)
+
+  22 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> xmille-2.0-r1.ebuild:
+  get the patch off the Debian mirrors; update to the latest Debian patch.
+
+*xmille-2.0 (08 Jan 2004)
+
+  08 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> metadata.xml,
+  xmille-2.0.ebuild, files/2.0.patch:
+  initial commit; ebuild and patch from Bruce Guenter via bug 37626

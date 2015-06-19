@@ -1,0 +1,19 @@
+commit 56f0caaae3cc3fdbf6eaa21fc419c951c53a156d
+Author: Peter Volkov <peter.volkov@gmail.com>
+Date:   Mon Jun 9 12:36:12 2014 +0400
+
+    Fix crash on exit (regression of xfig.3.2.5c)
+
+diff --git a/u_free.c b/u_free.c
+index 18d517a..4a5080f 100755
+--- a/u_free.c
++++ b/u_free.c
+@@ -270,8 +270,6 @@ void free_Fonts(void)
+       XUnloadFont(tool_d, nf->fid);
+       if (nf->fstruct != NULL)
+ 	  XFreeFont(tool_d, nf->fstruct); 
+-      if (nf->fset != NULL)
+-	  XFreeFontSet(tool_d, nf->fset); 
+       nf = nf->next;
+     } 
+   }

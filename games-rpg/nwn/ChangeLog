@@ -1,0 +1,386 @@
+# ChangeLog for games-rpg/nwn
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/nwn/ChangeLog,v 1.82 2015/06/14 17:08:19 ulm Exp $
+
+  14 Jun 2015; Ulrich Müller <ulm@gentoo.org> nwn-1.68-r5.ebuild,
+  nwn-1.68-r6.ebuild, nwn-1.69-r1.ebuild:
+  [QA] Remove emul-linux-x86-* from dependencies.
+
+  15 Oct 2014; Pacho Ramos <pacho@gentoo.org> nwn-1.68-r5.ebuild,
+  nwn-1.68-r6.ebuild, nwn-1.69-r1.ebuild:
+  Support multilib providers for deps. Bump to EAPI=5.
+
+  03 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org> nwn-1.68-r5.ebuild,
+  nwn-1.68-r6.ebuild, nwn-1.69-r1.ebuild:
+  clean deps (bug #522082)
+
+*nwn-1.68-r6 (21 Dec 2012)
+
+  21 Dec 2012; Michael Sterrett <mr_bones_@gentoo.org> +nwn-1.68-r6.ebuild:
+  Add a version of 1.68 without built_with_use
+
+  24 Sep 2012; Mike Frysinger <vapier@gentoo.org> nwn-1.68-r5.ebuild,
+  nwn-1.69-r1.ebuild:
+  QA_DT_HASH (old/deprecated) -> QA_FLAGS_IGNORED (new hotness).
+
+  11 Dec 2011; Denis Dupeyron <calchan@gentoo.org> nwn-1.68-r5.ebuild,
+  nwn-1.69-r1.ebuild:
+  Fix libsdl dependency, thanks to John Moe (bug #373527).
+
+  16 Dec 2010; Michael Sterrett <mr_bones_@gentoo.org> nwn-1.68-r5.ebuild:
+  GAMES_LICENSE_CHECK is deprecated. The license checking is handled by the
+  package manager instead.
+
+  09 Sep 2010; Michael Sterrett <mr_bones_@gentoo.org> nwn-1.69-r1.ebuild:
+  tidy; drop obsolete GAMES_LICENSE_CHECK
+
+  28 Jun 2010; Michael Sterrett <mr_bones_@gentoo.org> -nwn-1.68-r1.ebuild,
+  -nwn-1.68-r4.ebuild, nwn-1.68-r5.ebuild, nwn-1.69-r1.ebuild:
+  stable for x86 and amd64; clean old
+
+  25 Mar 2010; <calchan@gentoo.org> nwn-1.69-r1.ebuild:
+  Stable for amd64, bug #307365.
+
+*nwn-1.69-r1 (25 Jan 2010)
+*nwn-1.68-r5 (25 Jan 2010)
+
+  25 Jan 2010; Denis Dupeyron <calchan@gentoo.org> +nwn-1.68-r5.ebuild,
+  +nwn-1.69-r1.ebuild:
+  Updated and cleaned-up binary libs. Fixed bug #210619.
+
+  24 Sep 2009; Petteri Räty <betelgeuse@gentoo.org> nwn-1.69.ebuild:
+  Migrate to EAPI 2 in order to nuke built_with_use.
+
+  13 Aug 2008; Denis Dupeyron <calchan@gentoo.org> nwn-1.69.ebuild:
+  Fixed LINGUAS issue, thanks to Michael Sterrett. Fixed QA warnings.
+
+*nwn-1.69 (02 Aug 2008)
+
+  02 Aug 2008; Denis Dupeyron <calchan@gentoo.org> +nwn-1.69.ebuild:
+  Version bump, see bug #231704. Massively simplified the ebuild since this
+  version supports only the english language.
+
+  01 Aug 2008; Denis Dupeyron <calchan@gentoo.org> Manifest:
+  Fixed Manifest, bug #227419.
+
+  28 Jul 2008; Chris Gianelloni <wolf31o2@gentoo.org> metadata.xml:
+  Removing myself from metadata.xml since I am retiring from the project.
+
+  29 May 2008; Christian Faulhammer <opfer@gentoo.org> nwn-1.68-r4.ebuild:
+  stable x86, bug 222519
+
+  24 Feb 2008; Denis Dupeyron <calchan@gentoo.org> -nwn-1.68-r3.ebuild:
+  Removed useless ebuild.
+
+*nwn-1.68-r4 (20 Feb 2008)
+
+  20 Feb 2008; Denis Dupeyron <calchan@gentoo.org> +nwn-1.68-r4.ebuild:
+  Fixed bug #210562, thanks to Anton Romanov.
+
+  16 Feb 2008; Denis Dupeyron <calchan@gentoo.org> -nwn-1.68-r2.ebuild:
+  Removed old experimental ebuild.
+
+*nwn-1.68-r3 (16 Feb 2008)
+
+  16 Feb 2008; Denis Dupeyron <calchan@gentoo.org> +nwn-1.68-r3.ebuild:
+  Internal libSDL update. Cosmetic fixes.
+
+  07 Sep 2007; Denis Dupeyron <calchan@gentoo.org> nwn-1.68-r2.ebuild:
+  Less annoying iconification. Fixed fullscreen toggling for international
+  users with an AltGr key.
+
+  05 Sep 2007; Denis Dupeyron <calchan@gentoo.org> nwn-1.68-r2.ebuild:
+  Changed URI for custom libSDL. Added postinst message describing new
+  features. Fixed keywords.
+
+  04 Sep 2007; Denis Dupeyron <calchan@gentoo.org> nwn-1.68-r1.ebuild:
+  Applied locale dir fix to current stable version (see bug #183344
+  comment #6).
+
+*nwn-1.68-r2 (04 Sep 2007)
+
+  04 Sep 2007; Denis Dupeyron <calchan@gentoo.org> +nwn-1.68-r2.ebuild:
+  Replaced provided libSDL with a custom version which should fix
+  compatibility with USE=xcb (bug #170644). Included patch based on
+  http://home.woh.rr.com/nwmovies/fullscreen-toggle-1211.patch which provides
+  fullscreen toggling and nwmovies compatibility fixes. See
+  http://home.woh.rr.com/nwmovies/libsdl.html for details. Also, fixed
+  behavior described in comment #6 of bug #183344.
+
+  27 Aug 2007; Chris Gianelloni <wolf31o2@gentoo.org> -nwn-1.68.ebuild,
+  nwn-1.68-r1.ebuild:
+  Stable on amd64/x86 for bug #190150.
+
+  18 Aug 2007; Chris Gianelloni <wolf31o2@gentoo.org> metadata.xml,
+  nwn-1.68-r1.ebuild:
+  Removed downloading of additional dialog files per bug #183344.
+
+  31 Jan 2007; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.68-r1.ebuild:
+  Fixed DESCRIPTION to be only one line. Thanks to Denis Dupeyron
+  <calchan@gentoo.org> for spotting this. Closing bug #162843.
+
+  19 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.68-r1.ebuild:
+  Added a ton of patches from Denis Dupeyron <calchan@gentoo.org>. This closes
+  bug #152367.
+
+  29 Nov 2006; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.68-r1.ebuild:
+  We don't want to touch our metadata files again, so I've cleaned that up.
+
+  17 Nov 2006; Chris Gianelloni <wolf31o2@gentoo.org> -nwn-1.67.ebuild,
+  -nwn-1.67-r1.ebuild, nwn-1.68.ebuild:
+  Marking 1.68 stable on amd64/x86 and removing all 1.67 ebuilds. This removes
+  all of the monolithic NWN ebuilds from the tree. Yay!
+
+*nwn-1.68-r1 (17 Nov 2006)
+
+  17 Nov 2006; Chris Gianelloni <wolf31o2@gentoo.org> +nwn-1.68-r1.ebuild:
+  This is the initial import of the new nwn ebuild which goes with the new
+  nwn-data ebuild. Between the two, this should resolve quite a few bugs, as
+  mentioned on the nwn-data ChangeLog. I still plan on adding more support,
+  but this should be a good start.
+
+  06 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.68.ebuild:
+  Removed virtual/x11 from dependencies.
+
+  27 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.67.ebuild,
+  nwn-1.67-r1.ebuild, nwn-1.68.ebuild:
+  Change the instructions at the end of the ebuild from einfo to elog.
+
+*nwn-1.68 (05 Sep 2006)
+
+  05 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org> +nwn-1.68.ebuild:
+  Version bump to the 1.68 patch and closing bug #145602.
+
+  29 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.67-r1.ebuild:
+  Stable on amd64 and x86.
+
+  26 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> files/digest-nwn-1.67,
+  files/digest-nwn-1.67-r1, ChangeLog, Manifest:
+  Fixing ChangeLog and Manifest. Upstream keeps changing these files, because
+  they were fine when I last downloaded them. Closing bug #137941.
+
+  20 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> -nwn-1.66.ebuild,
+  -nwn-1.66-r1.ebuild, nwn-1.67.ebuild:
+  Marking stable on amd64 and x86. Removing older ebuilds. Fixing Manifest.
+  Closing bug #136756.
+
+  25 May 2006; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.66-r1.ebuild,
+  nwn-1.67-r1.ebuild:
+  Added a small fix for users with HotU or SoU.
+
+*nwn-1.67-r1 (16 May 2006)
+*nwn-1.67 (16 May 2006)
+
+  16 May 2006; Chris Gianelloni <wolf31o2@gentoo.org> +nwn-1.67.ebuild,
+  +nwn-1.67-r1.ebuild:
+  Version bump to 1.67 (and 1.67-r1) and closing bug #131499.
+
+  21 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.66.ebuild:
+  Fixing unpacking. This resolves the issue where /opt/nwn/nwn is a directory
+  since we were erroneously unpacking nwresources129.tar.gz twice.
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.66.ebuild,
+  nwn-1.66-r1.ebuild:
+  Changed nomirror to mirror and nostrip to strip.
+
+  22 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.66-r1.ebuild:
+  Removed debug line.
+
+  21 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.66.ebuild,
+  nwn-1.66-r1.ebuild:
+  Changed to using virtual/libstdc++ on x86.
+
+  20 Mar 2006; Mark Loeser <halcy0n@gentoo.org> nwn-1.66.ebuild,
+  nwn-1.66-r1.ebuild:
+  Add DEPEND on app-arch/unzip
+
+  15 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.66.ebuild:
+  Fixing unpacking for bug #125979.
+
+  23 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org> -files/nwn.png,
+  nwn-1.66.ebuild:
+  Moved nwn.png to DISTDIR.
+
+  23 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org> -files/nwn.png,
+  nwn-1.66.ebuild:
+  Moved nwn.png to DISTDIR.
+
+  12 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.66.ebuild,
+  nwn-1.66-r1.ebuild:
+  Added notice about color problems due to bug #118728.
+
+  04 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org> -files/nwn,
+  -nwn-1.65-r1.ebuild, nwn-1.66.ebuild, nwn-1.66-r1.ebuild:
+  Removing older version and adding modular X dependencies.
+
+  19 Dec 2005; Chris Gianelloni <wolf31o2@gentoo.org> files/fixinstall,
+  nwn-1.66-r1.ebuild:
+  Fixing fixinstall file and made it install properly.
+
+  28 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.65-r1.ebuild,
+  nwn-1.66.ebuild, nwn-1.66-r1.ebuild:
+  Add proper dependencies on either gcc-3.3/libstdc++-v3 for gcc stabilization.
+
+  02 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.66-r1.ebuild:
+  Added license checking and initial language support information.
+
+  01 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.66-r1.ebuild:
+  fperm is supposed to be fperms.
+
+  21 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.65-r1.ebuild,
+  nwn-1.66.ebuild, nwn-1.66-r1.ebuild:
+  Added addition dir variable to games_make_wrapper for bug #109793.
+
+  16 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.66-r1.ebuild:
+  Fix fixinstall not being executable.
+
+  30 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> files/fixinstall:
+  Made cosmetic fix to fixinstall script.
+
+  22 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/nwn-1.65-fixinstall, +files/fixinstall, nwn-1.65-r1.ebuild,
+  nwn-1.66.ebuild, nwn-1.66-r1.ebuild:
+  Fixed fixinstall script.
+
+*nwn-1.66-r1 (21 Sep 2005)
+
+  21 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> metadata.xml,
+  nwn-1.66.ebuild, +nwn-1.66-r1.ebuild:
+  Initial commit of new split ebuild for nwn (1.66-r1). It is currently
+  masked, but I'm hoping that this becomes the default for nwn quite shortly.
+  Closing bug #106484.
+
+  16 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org> nwn-1.65-r1.ebuild,
+  nwn-1.66.ebuild:
+  needs app-arch/unzip
+
+  15 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.66.ebuild:
+  Fixing digest and disabling German support for the time being.
+
+*nwn-1.66 (13 Sep 2005)
+
+  13 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> +nwn-1.66.ebuild:
+  Version bump to 1.66 and added a couple more mirrors for
+  nwresources129.tar.gz. Closing bug #96640.
+
+*nwn-1.65-r1 (02 Jan 2005)
+
+  02 Jan 2005; Mike Frysinger <vapier@gentoo.org> +nwn-1.65-r1.ebuild,
+  -nwn-1.65.ebuild:
+  Fix array usage with $A so it actually works #76428 by Francois Guimond.
+
+  30 Dec 2004; Mike Frysinger <vapier@gentoo.org> nwn-1.65.ebuild:
+  Add localization support #61260 by dju.
+
+*nwn-1.65 (30 Dec 2004)
+
+  30 Dec 2004; Mike Frysinger <vapier@gentoo.org>
+  -files/nwn-1.30-fixinstall, -files/nwn-1.32-fixinstall,
+  -files/nwn-1.61-fixinstall, -files/nwn-1.62-fixinstall,
+  +files/nwn-1.65-fixinstall, -nwn-1.62.ebuild, +nwn-1.65.ebuild:
+  Version bump #74871 by Francois Guimond et al.
+
+  28 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> nwn-1.62.ebuild:
+  fix DESCRIPTION (bug #62066)
+
+  05 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.62.ebuild:
+  Changed license to NWN-EULA and closing bug #52507.
+
+  03 Jun 2004; Aron Griffis <agriffis@gentoo.org> nwn-1.62.ebuild:
+  Fix use invocation
+
+  24 May 2004; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.62.ebuild:
+  Fixed typo and closing bug #50809.
+
+  18 May 2004; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.62.ebuild:
+  Added RDEPEND for app-emulation/emul-linux-x86-baselibs on amd64.
+
+  17 May 2004; Chris Gianelloni <wolf31o2@gentoo.org> +files/nwn.png,
+  nwn-1.62.ebuild:
+  Added .desktop entry and closing bug #50809.
+
+  17 May 2004; Danny van Dyk <kugelfang@gentoo.org> nwn-1.62.ebuild:
+  Marked ~amd64.
+
+  11 May 2004; Michael Sterrett <mr_bones_@gentoo.org> nwn-1.30.ebuild,
+  nwn-1.32.ebuild, nwn-1.61-r1.ebuild:
+  clean older ebuilds
+
+  19 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> nwn-1.62.ebuild:
+  opengl isn't optional.
+
+*nwn-1.62 (28 Feb 2004)
+
+  28 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #43033 by Luca Santarelli.
+
+*nwn-1.61-r1 (14 Jan 2004)
+
+  14 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  I neglected to include the fix install script in the version bump #38351.
+
+*nwn-1.61 (03 Jan 2004)
+
+  03 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #36007.
+
+*nwn-1.32 (13 Oct 2003)
+
+  13 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #29316 and add helpful output #29505 and fix SRC_URI #31073.
+
+*nwn-1.30 (26 Jun 2003)
+
+  01 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> nwn-1.30.ebuild:
+  chown user.group -> chown user:group
+
+  06 Sep 2003; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.30.ebuild:
+  Added RESTRICT=fetch.  Closes bug #27548.
+
+  29 Aug 2003; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.30.ebuild:
+  Added RESTRICT=fetch.  Closing bug #27548.
+
+  14 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add updated ebuild from Daniel Mannarino <thesnark@operamail.com> #25162.
+  Fixes USE=nowin install.
+
+  16 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add resources via USE=nowin for those ppl who run pure linux.
+
+  26 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump (added 1.30 patch) #23391.
+
+*nwn-1.29 (22 Jun 2003)
+
+  22 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump + games.eclass support #23198.
+
+*nwn-1.29_beta6 (06 Jun 2003)
+
+  06 Jun 2003; Martin Holzer <mholzer@gentoo.org> nwn-1.29_beta4.ebuild,
+  nwn-1.29_beta5.ebuild, nwn-1.29_beta6.ebuild:
+  Version bumped. Marked stable. Cleanup
+
+*nwn-1.29_beta5 (24 May 2003)
+
+  24 May 2003; Martin Holzer <mholzer@gentoo.org> nwn-1.29_beta5.ebuild,
+  files/nwn-1.29_beta5-fixinstall:
+  Version bumped.
+
+*app-games/nwn-1.29_beta2.ebuild (13 Apr 2003)
+
+  13 Apr 2003; phoen][x <phoenix@gentoo.org> ChangeLog, nwn-1.29_beta4.ebuild,
+  files/digest-nwn-1.29_beta4, files/nwn-1.29_beta4-fixinstall :
+  Version bump.
+
+*app-games/nwn-1.29_beta2.ebuild (28 Mar 2003)
+
+  28 Mar 2003; phoen][x <phoenix@gentoo.org> ChangeLog, nwn-1.29_beta3.ebuild,
+  files/digest-nwn-1.29_beta3, files/nwn-1.29_beta3-fixinstall :
+  Version bump.
+
+*app-games/nwn-1.29_beta2.ebuild (27 Mar 2003)
+
+  27 Mar 2003; phoen][x <phoenix@gentoo.org> ChangeLog, nwn-1.29_beta2.ebuild,
+  files/digest-nwn-1.29_beta2, files/nwn-1.29_beta2-fixinstall :
+  Initial import.

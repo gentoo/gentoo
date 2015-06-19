@@ -1,0 +1,22 @@
+--- src/lib/Makefile.orig	2007-12-03 17:47:58.476149933 +0000
++++ src/lib/Makefile	2007-12-03 17:50:34.353032850 +0000
+@@ -94,7 +94,7 @@
+ 
+ shared.yes: libcdf.$(SHAREDEXT)
+ 
+-libcdf.so \
++libcdf.$(SHAREDEXT) \
+ libcdf.dylib \
+ libcdf.sl: $(OBJs)
+ 	@if [ -f $@ ] ; then rm $@ ; else $(NULL) ; fi
+@@ -102,8 +102,8 @@
+ 	  echo $(LD) $(LDFLAGS) -o $@ $(OBJs) $(SYSLIBS); \
+ 	       $(LD) $(LDFLAGS) -o $@ $(OBJs) $(SYSLIBS); \
+ 	else \
+-	  echo $(LD) $(LDFLAGS) -o $@ $(OBJs) $(SYSLIBS); \
+-	       $(LD) $(LDFLAGS) -o $@ $(OBJs) $(SYSLIBS); \
++	  echo $(LD) $(LDFLAGS) -Wl,-soname,libcdf.$(SHAREDEXT) -o $@ $(OBJs) $(SYSLIBS); \
++	       $(LD) $(LDFLAGS) -Wl,-soname,libcdf.$(SHAREDEXT) -o $@ $(OBJs) $(SYSLIBS); \
+ 	fi
+ 
+ libcdf.o: $(OBJs)

@@ -1,0 +1,28 @@
+From TeX Live svn rev 23421.
+Remove unnecessary headers. Fixes build with kpathsea from TeX Live 2012.
+
+
+Index: source/texk/web2c/luatexdir/luatex.c
+===================================================================
+--- source/texk/web2c/luatexdir/luatex.c	(revision 23420)
++++ source/texk/web2c/luatexdir/luatex.c	(revision 23421)
+@@ -32,7 +32,6 @@
+ #include <kpathsea/readable.h>
+ #include <kpathsea/variable.h>
+ #include <kpathsea/absolute.h>
+-#include <kpathsea/recorder.h>
+ #ifdef WIN32
+ #include <kpathsea/concatn.h>
+ #endif
+Index: source/texk/web2c/lib/texmfmp.c
+===================================================================
+--- source/texk/web2c/lib/texmfmp.c	(revision 23420)
++++ source/texk/web2c/lib/texmfmp.c	(revision 23421)
+@@ -17,7 +17,6 @@
+ #include <kpathsea/readable.h>
+ #include <kpathsea/variable.h>
+ #include <kpathsea/absolute.h>
+-#include <kpathsea/recorder.h>
+ #ifdef WIN32
+ #include <kpathsea/concatn.h>
+ #endif

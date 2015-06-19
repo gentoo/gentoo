@@ -1,0 +1,76 @@
+# ChangeLog for sys-power/bbswitch
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-power/bbswitch/ChangeLog,v 1.17 2014/03/04 19:57:30 ago Exp $
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> bbswitch-0.8.ebuild:
+  Stable for x86, wrt bug #502936
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> bbswitch-0.8.ebuild:
+  amd64 stable, bug #502936
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> bbswitch-0.7.ebuild:
+  Stable for x86, wrt bug #480128
+
+*bbswitch-0.8 (11 Dec 2013)
+
+  11 Dec 2013; Pacho Ramos <pacho@gentoo.org> +bbswitch-0.8.ebuild,
+  -bbswitch-0.6.ebuild:
+  Version bump, drop old (#493826 by Marko Samiric)
+
+  31 Aug 2013; Agostino Sarubbo <ago@gentoo.org> bbswitch-0.7.ebuild:
+  Stable for amd64, wrt bug #480128
+
+  04 Jul 2013; Fabio Erculiani <lxnay@gentoo.org>
+  -files/bbswitch-0.5-kernel-3.8.patch:
+  drop unused patch
+
+*bbswitch-0.7 (04 Jul 2013)
+
+  04 Jul 2013; Fabio Erculiani <lxnay@gentoo.org> -bbswitch-0.5-r1.ebuild,
+  +bbswitch-0.7.ebuild:
+  version bump, bug #475632, drop old
+
+  02 Apr 2013; Pacho Ramos <pacho@gentoo.org> -bbswitch-0.5.ebuild:
+  Drop old
+
+  02 Apr 2013; Rick Farina <zerochaos@gentoo.org> bbswitch-0.6.ebuild:
+  fixing license per bug #463956
+
+*bbswitch-0.6 (02 Apr 2013)
+
+  02 Apr 2013; Rick Farina <zerochaos@gentoo.org> +bbswitch-0.6.ebuild:
+  version bump with pax fixes, commited with permission of mva
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*bbswitch-0.5-r1 (26 Feb 2013)
+
+  26 Feb 2013; Pacho Ramos <pacho@gentoo.org> +bbswitch-0.5-r1.ebuild,
+  +files/bbswitch-0.5-kernel-3.8.patch, -bbswitch-0.4.2.ebuild:
+  Add kernel-3.8 compatibity patch from upstream (#458508 by Philipp Leonhardt),
+  drop old.
+
+*bbswitch-0.5 (27 Oct 2012)
+
+  27 Oct 2012; Pacho Ramos <pacho@gentoo.org> +bbswitch-0.5.ebuild:
+  Version bump fixing kernel-3.6 regression, bug #439384 by Michele Ciacci.
+
+  04 Jun 2012; Pacho Ramos <pacho@gentoo.org> -bbswitch-0.4.1.ebuild,
+  metadata.xml:
+  Fix metadata, drop old.
+
+*bbswitch-0.4.2 (06 May 2012)
+
+  06 May 2012; Pacho Ramos <pacho@gentoo.org> +bbswitch-0.4.2.ebuild:
+  Version bump.
+
+  23 Apr 2012; Michał Górny <mgorny@gentoo.org> bbswitch-0.4.1.ebuild:
+  Use mirror://github.
+
+*bbswitch-0.4.1 (21 Apr 2012)
+
+  21 Apr 2012; Pacho Ramos <pacho@gentoo.org> +bbswitch-0.4.1.ebuild,
+  +files/bbswitch.modprobe, +metadata.xml:
+  Initial commit from bumblebee overlay, this fixes bug #384083. Thanks a lot to
+  mva and rei4dan for their work.

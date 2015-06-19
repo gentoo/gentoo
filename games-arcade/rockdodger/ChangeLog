@@ -1,0 +1,62 @@
+# ChangeLog for games-arcade/rockdodger
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/rockdodger/ChangeLog,v 1.15 2015/01/05 17:25:49 tupone Exp $
+
+  05 Jan 2015; Tupone Alfredo <tupone@gentoo.org> rockdodger-0.6.0a-r1.ebuild:
+  EAPI 5
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> rockdodger-0.6.0a-r1.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  20 Jun 2011; Tupone Alfredo <tupone@gentoo.org> rockdodger-0.6.0a-r1.ebuild,
+  +files/rockdodger-0.6.0a-underlink.patch:
+  Fix underlink. Bug #370129 by Diego Elio Pettenò
+
+  09 Dec 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  rockdodger-0.6.0a-r1.ebuild:
+  EAPI=2; add use-deps for sdl libs; honor CC and LDFLAGS
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org>
+  rockdodger-0.6.0a-r1.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  24 Apr 2007; Timothy Redaelli <drizzt@gentoo.org>
+  rockdodger-0.6.0a-r1.ebuild:
+  Add ~x86-fbsd keyword.
+  Thanks to Nathan Smith for reporting wrt bug #175779
+
+  12 Mar 2007; Tristan Heaven <nyhm@gentoo.org> rockdodger-0.6.0a-r1.ebuild:
+  Install menu entry, bug #160245
+
+  06 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  rockdodger-0.6.0a-r1.ebuild:
+  Removed sed-4 from *DEPEND.
+
+  20 Sep 2006; <blubb@gentoo.org> rockdodger-0.6.0a-r1.ebuild:
+  stable on amd64
+
+  24 Apr 2006; <Tupone@gentoo.org> +files/rockdodger-0.6.0a-gcc41.patch,
+  rockdodger-0.6.0a-r1.ebuild:
+  Fix for gcc-4.1
+
+*rockdodger-0.6.0a-r1 (01 Dec 2004)
+
+  01 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/0.6.0a-sec.patch, +rockdodger-0.6.0a-r1.ebuild,
+  -rockdodger-0.6.0a.ebuild:
+  security patch to fix possible local exploit from users in the games group
+  (bug #73060); patch from Ulf Harnhammar
+
+  11 Nov 2004; Joseph Jezak <josejx@gentoo.org> rockdodger-0.6.0a.ebuild:
+  Marked ppc stable.
+
+  15 Apr 2004; David Holm <dholm@gentoo.org> rockdodger-0.6.0a.ebuild:
+  Adding to ~ppc.
+
+*rockdodger-0.6.0a (14 Apr 2004)
+
+  14 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> metadata.xml,
+  rockdodger-0.6.0a.ebuild:
+  initial commit; ebuild by Alexandru Toma via bug #47431
+

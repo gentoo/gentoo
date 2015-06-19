@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>cjk</herd>
+  <herd>fonts</herd>
+  <use>
+    <flag name="ipafont">Generates new fonts merged with <pkg>media-fonts/ja-ipafonts</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge-jp">mplus-fonts</remote-id>
+  </upstream>
+</pkgmetadata>

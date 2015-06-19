@@ -1,0 +1,41 @@
+# ChangeLog for x11-plugins/matchbox-desktop-xine
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/matchbox-desktop-xine/ChangeLog,v 1.9 2014/08/10 20:02:38 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  matchbox-desktop-xine-0.4.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  04 Jun 2012; Michael Weber <xmw@gentoo.org> matchbox-desktop-xine-0.4.ebuild:
+  adding ~ppc (bug 309407)
+
+  05 Mar 2012; Thomas Kahle <tomka@gentoo.org>
+  matchbox-desktop-xine-0.4.ebuild:
+  marked x86 per bug 309407
+
+  04 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #112268
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  matchbox-desktop-xine-0.4.ebuild:
+  Stable for amd64, wrt bug #309407
+
+  17 Jun 2009; Angelo Arrifano <miknix@gentoo.org>
+  matchbox-desktop-xine-0.4.ebuild:
+  Force autoreconf, see #274364.
+  Fix typo in dodoc Changelog.
+  Shorten DESCRIPTION and add RDEPEND to make repoman happy.
+
+  14 Mar 2009; <solar@gentoo.org> matchbox-desktop-xine-0.4.ebuild:
+  keyword ~amd64
+
+  27 Feb 2008; Yuri Vasilevski <yvasilev@gentoo.org>
+  matchbox-desktop-xine-0.4.ebuild:
+  Updated HOMEPAGE and SRC_URI to it's new location
+  http://matchbox-project.org/ (Bug #211244).
+
+*matchbox-desktop-xine-0.4 (04 Jun 2006)
+
+  04 Jun 2006; <yvasilev@gentoo.org> +metadata.xml,
+  +matchbox-desktop-xine-0.4.ebuild:
+  Initial Import.

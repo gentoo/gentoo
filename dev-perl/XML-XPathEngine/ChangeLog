@@ -1,0 +1,84 @@
+# ChangeLog for dev-perl/XML-XPathEngine
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-XPathEngine/ChangeLog,v 1.18 2014/08/22 18:34:15 axs Exp $
+
+*XML-XPathEngine-0.130.0-r1 (22 Aug 2014)
+*XML-XPathEngine-0.140.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +XML-XPathEngine-0.130.0-r1.ebuild, +XML-XPathEngine-0.140.0-r1.ebuild,
+  -XML-XPathEngine-0.130.0.ebuild, -XML-XPathEngine-0.140.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 May 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #199047
+
+*XML-XPathEngine-0.140.0 (16 Aug 2013)
+
+  16 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +XML-XPathEngine-0.140.0.ebuild:
+  Bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org>
+  -XML-XPathEngine-0.120.0.ebuild:
+  Cleanup
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  XML-XPathEngine-0.130.0.ebuild:
+  x86 stable wrt bug #400273
+
+  27 Jan 2012; Agostino Sarubbo <ago@gentoo.org>
+  XML-XPathEngine-0.130.0.ebuild:
+  Stable for amd64, wrt bug #400273
+
+*XML-XPathEngine-0.130.0 (17 Oct 2011)
+
+  17 Oct 2011; Torsten Veller <tove@gentoo.org>
+  +XML-XPathEngine-0.130.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -XML-XPathEngine-0.12.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> XML-XPathEngine-0.120.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*XML-XPathEngine-0.120.0 (27 Aug 2011)
+
+  27 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +XML-XPathEngine-0.120.0.ebuild:
+  Change version scheme
+
+  13 May 2009; Kenneth Prugh <ken69267@gentoo.org>
+  XML-XPathEngine-0.12.ebuild:
+  amd64 stable, bug #269585
+
+  12 May 2009; Torsten Veller <tove@gentoo.org> XML-XPathEngine-0.12.ebuild:
+  Stable on x86 (#269585)
+
+  02 May 2009; Torsten Veller <tove@gentoo.org>
+  -XML-XPathEngine-0.11.ebuild:
+  Cleanup
+
+*XML-XPathEngine-0.12 (01 May 2009)
+
+  01 May 2009; Torsten Veller <tove@gentoo.org>
+  +XML-XPathEngine-0.12.ebuild:
+  Version bump
+
+  16 Mar 2009; Torsten Veller <tove@gentoo.org> XML-XPathEngine-0.11.ebuild:
+  Add test dependencies. EAPI=2
+
+  15 Mar 2009; Andrey Kislyuk <weaver@gentoo.org>
+  XML-XPathEngine-0.11.ebuild:
+  fix typo
+
+*XML-XPathEngine-0.11 (15 Mar 2009)
+
+  15 Mar 2009; Andrey Kislyuk <weaver@gentoo.org>
+  +XML-XPathEngine-0.11.ebuild:
+  New package, dependency for dev-perl/XML-DOM-XPath. Ebuild written by me.

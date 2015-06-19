@@ -1,0 +1,105 @@
+# ChangeLog for dev-php/PEAR-Testing_Selenium
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Testing_Selenium/ChangeLog,v 1.18 2015/04/20 14:40:06 grknight Exp $
+
+  20 Apr 2015; Brian Evans <grknight@gentoo.org>
+  -PEAR-Testing_Selenium-0.4.2.ebuild:
+  Drop old
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org>
+  PEAR-Testing_Selenium-0.4.4-r1.ebuild:
+  Stable for amd64/x86, wrt bug #546662
+
+  15 Apr 2015; Jeroen Roovers <jer@gentoo.org>
+  PEAR-Testing_Selenium-0.4.4-r1.ebuild:
+  Stable for HPPA (bug #546662).
+
+*PEAR-Testing_Selenium-0.4.4-r1 (14 Jan 2015)
+
+  14 Jan 2015; Brian Evans <grknight@gentoo.org>
+  +PEAR-Testing_Selenium-0.4.4-r1.ebuild, -PEAR-Testing_Selenium-0.4.3.ebuild,
+  -PEAR-Testing_Selenium-0.4.4.ebuild:
+  EAPI revbump; drop old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-Testing_Selenium-0.4.2.ebuild, PEAR-Testing_Selenium-0.4.3.ebuild,
+  PEAR-Testing_Selenium-0.4.4.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*PEAR-Testing_Selenium-0.4.4 (26 Mar 2011)
+
+  26 Mar 2011; <olemarkus@gentoo.org> PEAR-Testing_Selenium-0.4.2.ebuild,
+  PEAR-Testing_Selenium-0.4.3.ebuild, +PEAR-Testing_Selenium-0.4.4.ebuild:
+  Version bump. Fixed license issue. Bug #360015. Thanks to Denny
+
+  05 Nov 2010; Jeroen Roovers <jer@gentoo.org>
+  PEAR-Testing_Selenium-0.4.2.ebuild:
+  Stable for HPPA (bug #336869).
+
+*PEAR-Testing_Selenium-0.4.3 (22 Jun 2010)
+
+  22 Jun 2010; Matti Bickel <mabi@gentoo.org>
+  -PEAR-Testing_Selenium-0.4.0.ebuild, -PEAR-Testing_Selenium-0.4.1.ebuild,
+  +PEAR-Testing_Selenium-0.4.3.ebuild:
+  version bump (bug #322723) & remove old
+
+  15 Jul 2008; Jeroen Roovers <jer@gentoo.org>
+  PEAR-Testing_Selenium-0.4.2.ebuild:
+  Marked ~hppa too.
+
+  08 Mar 2008; <pva@gentoo.org> PEAR-Testing_Selenium-0.4.2.ebuild:
+  amd64 stable, bug #208848.
+
+  04 Feb 2008; Markus Meier <maekke@gentoo.org>
+  PEAR-Testing_Selenium-0.4.2.ebuild:
+  x86 stable, bug #208848
+
+  17 Jan 2008; Raúl Porcel <armin76@gentoo.org>
+  PEAR-Testing_Selenium-0.4.2.ebuild:
+  Add ~alpha/~ia64/~sparc
+
+*PEAR-Testing_Selenium-0.4.2 (24 Dec 2007)
+
+  24 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  +PEAR-Testing_Selenium-0.4.2.ebuild:
+  Version bump from the php-overlay
+
+  18 Dec 2007; Jakub Moc <jakub@gentoo.org>
+  +PEAR-Testing_Selenium-0.4.2.ebuild:
+  Version bump
+
+*PEAR-Testing_Selenium-0.4.1 (15 Dec 2007)
+
+  15 Dec 2007; Markus Ullmann <jokey@gentoo.org>
+  +PEAR-Testing_Selenium-0.4.1.ebuild:
+  Version bump from project overlay
+
+  06 Dec 2007; Markus Ullmann <jokey@gentoo.org>
+  -PEAR-Testing_Selenium-0.3.2.ebuild, PEAR-Testing_Selenium-0.4.0.ebuild:
+  LICENSE fix from project overlay
+
+  02 Dec 2007; Jakub Moc <jakub@gentoo.org>
+  PEAR-Testing_Selenium-0.4.0.ebuild:
+  Fix LICENSE
+
+*PEAR-Testing_Selenium-0.4.0 (08 Nov 2007)
+
+  08 Nov 2007; Markus Ullmann <jokey@gentoo.org>
+  +PEAR-Testing_Selenium-0.4.0.ebuild:
+  Version bump from project overlay
+
+  28 Oct 2007; Jakub Moc <jakub@gentoo.org>
+  +PEAR-Testing_Selenium-0.4.0.ebuild:
+  Version bump
+
+*PEAR-Testing_Selenium-0.3.1 (20 Jun 2007)
+
+  20 Jun 2007; Christoph Mende <angelos@gentoo.org>
+  +PEAR-Testing_Selenium-0.3.1.ebuild:
+  Version bump to 0.3.1 and added ~amd64
+
+*PEAR-Testing_Selenium-0.2.1 (19 Nov 2006)
+
+  19 Nov 2006; Sebastian Bergmann <sebastian@gentoo.org> +metadata.xml,
+  +PEAR-Testing_Selenium-0.2.1.ebuild:
+  Initial ebuild.

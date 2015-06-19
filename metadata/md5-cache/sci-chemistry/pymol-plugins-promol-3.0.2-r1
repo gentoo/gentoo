@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Fast and accurate regognition of active sites
+EAPI=5
+HOMEPAGE=http://www.rit.edu/cos/ezviz/ProMOL_dl.html
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~x86 ~amd64-linux
+LICENSE=all-rights-reserved
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] virtual/pmw[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] sci-chemistry/pymol[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=http://www.rit.edu/cos/ezviz/ProMOL.zip -> pymol-plugins-promol-3.0.2.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	python-r1	6d3a3cb5705b9fff1aeb7cfa4e3336fe	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=4fc85f31615c1587a6bb3883dfc46ff0

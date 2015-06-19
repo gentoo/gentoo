@@ -1,0 +1,137 @@
+# ChangeLog for app-i18n/ibus-m17n
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-m17n/ChangeLog,v 1.26 2015/04/20 19:20:06 mrueg Exp $
+
+  20 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -ibus-m17n-1.2.0.20091217.ebuild,
+  -ibus-m17n-1.3.1.ebuild:
+  Remove old.
+
+  30 Jul 2013; Mike Frysinger <vapier@gentoo.org> metadata.xml:
+  Add upstream CPE tag (security info) from ChromiumOS.
+
+*ibus-m17n-1.3.4 (15 Jan 2013)
+
+  15 Jan 2013; Naohiro Aota <naota@gentoo.org> +ibus-m17n-1.3.4.ebuild:
+  bumped #451850
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  ibus-m17n-1.2.0.20091217.ebuild, ibus-m17n-1.3.1.ebuild,
+  ibus-m17n-1.3.2.ebuild, ibus-m17n-1.3.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 Dec 2011; Markos Chandras <hwoarang@gentoo.org> ibus-m17n-1.3.2.ebuild:
+  Stable on amd64 wrt bug #391497
+
+  28 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> ibus-m17n-1.3.2.ebuild:
+  x86 stable wrt bug #391497
+
+  11 Sep 2011; Naohiro Aota <naota@gentoo.org> ibus-m17n-1.3.3.ebuild:
+  Add libxml2 dependecy. Fix bug #382571
+
+  04 Sep 2011; Naohiro Aota <naota@gentoo.org> ibus-m17n-1.3.3.ebuild:
+  Fix RDEPEND. Need 1.3.99.20110817 to build. Bug 381741
+
+*ibus-m17n-1.3.3 (31 Aug 2011)
+
+  31 Aug 2011; MATSUU Takuto <matsuu@gentoo.org> +ibus-m17n-1.3.3.ebuild:
+  Version bumped.
+
+  05 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org> ibus-m17n-1.3.2.ebuild,
+  metadata.xml:
+  Fix dependency on m17n-db and m17n-contrib (they are run-time dependencies,
+  not build-time ones); change econf call for gtk USE flag; document gtk USE
+  flag in metadata.xml.
+
+*ibus-m17n-1.3.2 (07 Mar 2011)
+
+  07 Mar 2011; MATSUU Takuto <matsuu@gentoo.org>
+  -ibus-m17n-1.1.0.20090211.ebuild, -ibus-m17n-1.3.0.ebuild,
+  +ibus-m17n-1.3.2.ebuild:
+  Version bumped. Removed old versions.
+
+*ibus-m17n-1.3.1 (20 Sep 2010)
+
+  20 Sep 2010; MATSUU Takuto <matsuu@gentoo.org> +ibus-m17n-1.3.1.ebuild:
+  Version bumped.
+
+  26 May 2010; Pacho Ramos <pacho@gentoo.org>
+  ibus-m17n-1.2.0.20091217.ebuild:
+  stable amd64, bug 305759
+
+  25 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ibus-m17n-1.2.0.20091217.ebuild:
+  x86 stable wrt bug #305759
+
+*ibus-m17n-1.3.0 (13 Apr 2010)
+
+  13 Apr 2010; MATSUU Takuto <matsuu@gentoo.org>
+  -ibus-m17n-1.2.0.20090930.ebuild, -ibus-m17n-1.2.0.20091120.ebuild,
+  ibus-m17n-1.2.0.20091217.ebuild, -ibus-m17n-1.2.99.20100202.ebuild,
+  +ibus-m17n-1.3.0.ebuild:
+  Version bumped. Removed experimental message, bug #305759. Removed old
+  versions.
+
+*ibus-m17n-1.2.99.20100202 (04 Feb 2010)
+
+  04 Feb 2010; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-m17n-1.2.99.20100202.ebuild:
+  Version bumped.
+
+*ibus-m17n-1.2.0.20091217 (17 Dec 2009)
+
+  17 Dec 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-m17n-1.2.0.20091217.ebuild:
+  Version bumped.
+
+*ibus-m17n-1.2.0.20091120 (20 Nov 2009)
+
+  20 Nov 2009; MATSUU Takuto <matsuu@gentoo.org>
+  -ibus-m17n-1.2.0.20090617.ebuild, +ibus-m17n-1.2.0.20091120.ebuild:
+  Version bumped. Removed old version.
+
+*ibus-m17n-1.2.0.20090930 (17 Oct 2009)
+
+  17 Oct 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-m17n-1.2.0.20090930.ebuild:
+  Version bumped.
+
+*ibus-m17n-1.2.0.20090617 (18 Jun 2009)
+
+  18 Jun 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-m17n-1.2.0.20090617.ebuild:
+  Version bumped.
+
+  31 Mar 2009; MATSUU Takuto <matsuu@gentoo.org>
+  -ibus-m17n-0.1.1.20081013.ebuild, -ibus-m17n-1.1.0.20090205.ebuild:
+  Removed old versions.
+
+*ibus-m17n-1.1.0.20090211 (12 Feb 2009)
+
+  12 Feb 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-m17n-1.1.0.20090211.ebuild:
+  Version bumped.
+
+*ibus-m17n-1.1.0.20090205 (05 Feb 2009)
+
+  05 Feb 2009; MATSUU Takuto <matsuu@gentoo.org>
+  -ibus-m17n-0.1.1.20080901.ebuild, -ibus-m17n-0.1.1.20081009.ebuild,
+  ibus-m17n-0.1.1.20081013.ebuild, +ibus-m17n-1.1.0.20090205.ebuild:
+  Version bumped. Fixed dependency. Removed old versions.
+
+*ibus-m17n-0.1.1.20081013 (19 Oct 2008)
+
+  19 Oct 2008; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-m17n-0.1.1.20081013.ebuild:
+  Version bumped.
+
+*ibus-m17n-0.1.1.20081009 (09 Oct 2008)
+
+  09 Oct 2008; MATSUU Takuto <matsuu@gentoo.org>
+  +ibus-m17n-0.1.1.20081009.ebuild:
+  Version bumped. Fixed QA.
+
+*ibus-m17n-0.1.1.20080901 (06 Sep 2008)
+
+  06 Sep 2008; MATSUU Takuto <matsuu@gentoo.org> +metadata.xml,
+  +ibus-m17n-0.1.1.20080901.ebuild:
+  Initial import.

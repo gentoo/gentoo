@@ -1,0 +1,32 @@
+From d42bc7c100de69396a527e90736198f8e4e3000b Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 30 Dec 2012 18:06:15 -0500
+Subject: [PATCH] extensions: fix linking against -lip6tc
+
+The current build forgets to specify a path to find libip6tc which means
+it either fails (if there is no libip6tc in the system), or links against
+an old version (if there is one in the system).
+
+References: https://bugs.gentoo.org/449262
+Reported-by: Mike Gilbert <floppym@gentoo.org>
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ extensions/GNUmakefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/extensions/GNUmakefile.in b/extensions/GNUmakefile.in
+index e71e3ff..a605474 100644
+--- a/extensions/GNUmakefile.in
++++ b/extensions/GNUmakefile.in
+@@ -101,7 +101,7 @@ libxt_state.so: libxt_conntrack.so
+ 	ln -fs $< $@
+ 
+ # Need the LIBADDs in iptables/Makefile.am too for libxtables_la_LIBADD
+-ip6t_NETMAP_LIBADD  = -lip6tc
++ip6t_NETMAP_LIBADD  = -L../libiptc/.libs -lip6tc
+ xt_RATEEST_LIBADD   = -lm
+ xt_statistic_LIBADD = -lm
+ 
+-- 
+1.8.0
+

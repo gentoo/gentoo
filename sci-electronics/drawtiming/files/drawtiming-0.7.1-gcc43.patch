@@ -1,0 +1,10 @@
+--- src/timing.cc.old	2011-06-01 18:27:42.000000000 +0000
++++ src/timing.cc	2011-06-01 18:28:09.000000000 +0000
+@@ -23,6 +23,7 @@
+ #include "timing.h"
+ #include <map>
+ #include <fstream>
++#include <cstring>
+ using namespace std;
+ using namespace timing;
+ using namespace Magick;

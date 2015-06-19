@@ -1,0 +1,103 @@
+# ChangeLog for dev-php/pecl-htscanner
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-htscanner/ChangeLog,v 1.8 2015/04/29 01:07:56 grknight Exp $
+
+*pecl-htscanner-1.0.1-r2 (29 Apr 2015)
+
+  29 Apr 2015; Brian Evans <grknight@gentoo.org>
+  +pecl-htscanner-1.0.1-r2.ebuild, -pecl-htscanner-1.0.1-r1.ebuild:
+  Revbump to make dependencies more specific and silence repoman
+
+*pecl-htscanner-1.0.1-r1 (30 Sep 2014)
+
+  30 Sep 2014; Brian Evans <grknight@gentoo.org>
+  +pecl-htscanner-1.0.1-r1.ebuild, -pecl-htscanner-1.0.1.ebuild:
+  Revbump for current PHP version support; Drop 5.3 support
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  pecl-htscanner-1.0.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  05 Mar 2013; Ole Markus With <olemarkus@gentoo.org>
+  -pecl-htscanner-1.0.0.ebuild:
+  Removed older ebuilds
+
+*pecl-htscanner-1.0.1 (01 Mar 2012)
+
+  01 Mar 2012; Ole Markus With <olemarkus@gentoo.org>
+  +pecl-htscanner-1.0.1.ebuild:
+  Version bump
+
+  15 Jan 2012; Ole Markus With <olemarkus@gentoo.org>
+  -pecl-htscanner-0.9.0-r1.ebuild:
+  Removing PHP 5.2 only ebuilds/packages
+
+*pecl-htscanner-1.0.0 (01 Feb 2011)
+
+  01 Feb 2011; <olemarkus@gentoo.org> +pecl-htscanner-1.0.0.ebuild:
+  Version bump
+
+  04 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  pecl-htscanner-0.9.0-r1.ebuild:
+  Stable on amd64 wrt bug #349659
+
+  04 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  pecl-htscanner-0.9.0-r1.ebuild:
+  stable x86, bug 349659
+
+  04 Nov 2010; Matti Bickel <mabi@gentoo.org>
+  pecl-htscanner-0.9.0-r1.ebuild:
+  fix USE_PHP placement
+
+*pecl-htscanner-0.9.0-r1 (04 Nov 2010)
+
+  04 Nov 2010; Matti Bickel <mabi@gentoo.org>
+  +pecl-htscanner-0.9.0-r1.ebuild:
+  add version that supports minor version slotting
+
+  17 Jun 2010; <mabi@gentoo.org> pecl-htscanner-0.9.0.ebuild:
+  restrict to <php-5.3, as the functionality is included in 5.3 and the
+  package segfaults with 5.3 (tested by Dessa)
+
+*pecl-htscanner-0.9.0 (09 Apr 2009)
+
+  09 Apr 2009; Christian Hoffmann <hoffie@gentoo.org>
+  +pecl-htscanner-0.9.0.ebuild:
+  version bump wrt bug 264216, thanks to Michael Huber <mikki111@gmx.de> for
+  reporting
+
+  09 May 2008; Christian Hoffmann <hoffie@gentoo.org>
+  pecl-htscanner-0.8.1.ebuild:
+  explicitly call phpize, not src_unpack (bug 220519)
+
+  07 May 2008; Christian Hoffmann <hoffie@gentoo.org>
+  pecl-htscanner-0.8.1.ebuild:
+  calling php-ext-source-r1_src_unpack explicitly, bug 220519
+
+  16 Jan 2008; Hanno Boeck <hanno@gentoo.org> pecl-htscanner-0.8.1.ebuild:
+  Stable on amd64.
+
+  09 Jan 2008; Markus Meier <maekke@gentoo.org> pecl-htscanner-0.8.1.ebuild:
+  x86 stable, bug #205110
+
+  06 Dec 2007; Markus Ullmann <jokey@gentoo.org>
+  pecl-htscanner-0.8.1.ebuild:
+  LICENSE fix from project overlay
+
+  03 Dec 2007; Jakub Moc <jakub@gentoo.org> pecl-htscanner-0.8.1.ebuild:
+  Fix LICENSE
+
+  30 Nov 2007; Markus Ullmann <jokey@gentoo.org>
+  pecl-htscanner-0.8.1.ebuild:
+  This is actually cgi only
+
+*pecl-htscanner-0.8.1 (29 Nov 2007)
+
+  29 Nov 2007; Markus Ullmann <jokey@gentoo.org>
+  +files/pecl-htscanner-0.8.1-bug11959.patch, +metadata.xml,
+  +pecl-htscanner-0.8.1.ebuild:
+  Initial import from project overlay
+
+  24 Nov 2007; Jakub Moc <jakub@gentoo.org>
+  +files/pecl-htscanner-0.8.1-bug11959.patch, +pecl-htscanner-0.8.1.ebuild:
+  New ebuild, Bug 200209 by hanno

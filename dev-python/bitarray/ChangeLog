@@ -1,0 +1,41 @@
+# ChangeLog for dev-python/bitarray
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/bitarray/ChangeLog,v 1.9 2015/06/06 20:09:55 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> -bitarray-0.8.0.ebuild,
+  metadata.xml:
+  Add pypi to remote-id in metadata.xml; drop old
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> bitarray-0.8.1.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> bitarray-0.8.1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> bitarray-0.8.1.ebuild:
+  amd64 stable, bug 540290
+
+  03 Apr 2014; Tim Harder <radhermit@gentoo.org> bitarray-0.8.1.ebuild:
+  Add python3_4 support and run tests.
+
+*bitarray-0.8.1 (18 Jul 2013)
+
+  18 Jul 2013; Patrick McLean <chutz@gentoo.org> +bitarray-0.8.1.ebuild,
+  metadata.xml:
+  Version bump, port to distutils-r1.
+
+  17 Oct 2012; Patrick Lauer <patrick@gentoo.org> bitarray-0.8.0.ebuild:
+  Restricting jython
+
+  29 Jun 2012; Justin Lecher <jlec@gentoo.org> +bitarray-0.8.0.ebuild,
+  +metadata.xml:
+  Moved from sci overlay
+
+*bitarray-0.8.0 (29 Jun 2012)
+
+  29 Jun 2012; Justin Lecher <jlec@gentoo.org> +bitarray-0.8.0.ebuild,
+  +metadata.xml:
+  New package requested by jamasi on irc

@@ -1,0 +1,16 @@
+--- commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/rss-example.xml 2006-12-21 23:14:19.000000000 +0100
++++ commons-betwixt-0.8-src/src/test/org/apache/commons/betwixt/rss-example.xml.new     2010-01-11 21:48:59.000000000 +0100
+@@ -15,10 +15,12 @@
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ -->
++
++<!--
+ <!DOCTYPE rss PUBLIC
+  "-//Netscape Communications//DTD RSS 0.91//EN"
+  "http://my.netscape.com/publish/formats/rss-0.91.dtd">
+-
++-->
+ <rss version="0.91">
+
+   <channel>

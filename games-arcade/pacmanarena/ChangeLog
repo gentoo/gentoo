@@ -1,0 +1,68 @@
+# ChangeLog for games-arcade/pacmanarena
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/pacmanarena/ChangeLog,v 1.18 2015/03/31 16:10:36 mr_bones_ Exp $
+
+  31 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> pacmanarena-0.15.ebuild:
+  alpha is unstable
+
+  09 Oct 2014; Michael Sterrett <mr_bones_@gentoo.org> pacmanarena-0.15.ebuild:
+  EAPI=5; add libsdl use dep (bug #524834)
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pacmanarena-0.15.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  24 May 2011; Tupone Alfredo <tupone@gentoo.org> pacmanarena-0.15.ebuild,
+  +files/pacmanarena-0.15-underlink.patch:
+  Fix underlink. Bug #367601 by Diego Elio Pettenò
+
+  13 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  pacmanarena-0.15.ebuild:
+  EAPI=2; add use-based dep (bug #207401)
+
+  14 Feb 2007; Tristan Heaven <nyhm@gentoo.org> pacmanarena-0.15.ebuild:
+  Install menu entry, bug #160241
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  pacmanarena-0.15.ebuild:
+  Removing old virtual/x11 dependency.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-pacmanarena-0.15, Manifest:
+  Fixing SHA256 digest, pass four
+
+  28 Jan 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  pacmanarena-0.15.ebuild:
+  Add modular X dependencies.
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> pacmanarena-0.15.ebuild:
+  Mark 0.15 stable on alpha
+
+  31 May 2005; Marcus D. Hanwell <marcus@gentoo.org>
+  pacmanarena-0.15.ebuild:
+  Stable on amd64.
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org> pacmanarena-0.15.ebuild:
+  Fix typo: pkg_postins -> pkg_postinst
+
+  29 Apr 2004; Aron Griffis <agriffis@gentoo.org> pacmanarena-0.15.ebuild:
+  Add ~alpha
+
+  27 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  pacmanarena-0.15.ebuild:
+  add missing oggvorbis to IUSE
+
+  27 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  pacmanarena-0.01.ebuild:
+  clean older ebuild
+
+*pacmanarena-0.15 (28 Jan 2004)
+
+  28 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  pacmanarena-0.01.ebuild, pacmanarena-0.15.ebuild:
+  version bump (bug 39686)
+
+*pacmanarena-0.01 (25 Sep 2003)
+
+  25 Sep 2003; Michael Sterrett <msterret@gentoo.org> pacmanarena-0.01.ebuild:
+  initial commit; ebuild based on the one submitted by Gustavo Felisberto via
+  bug 29425

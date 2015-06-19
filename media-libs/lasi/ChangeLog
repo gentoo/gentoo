@@ -1,0 +1,135 @@
+# ChangeLog for media-libs/lasi
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/lasi/ChangeLog,v 1.36 2014/03/17 13:06:21 polynomial-c Exp $
+
+  17 Mar 2014; Lars Wendler <polynomial-c@gentoo.org> lasi-1.1.1.ebuild,
+  +files/lasi-1.1.1-freetype251.patch:
+  Added compatibility fix for >=media-libs/freetype-2.5.1 (bug #504888).
+
+  02 Feb 2014; Sergey Popov <pinkbyte@gentoo.org> lasi-1.1.1.ebuild:
+  Add ~mips, wrt bug #499866
+
+  13 Jul 2013; Justin Lecher <jlec@gentoo.org> lasi-1.1.1.ebuild, metadata.xml:
+  Convert to recent changes in cmake-utils.eclass, #476660
+
+  04 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org> lasi-1.1.1.ebuild,
+  metadata.xml:
+  Removed skip rpath stuff, leave it to cmake eclass. Keyword amd64-linux,
+  x86-linux
+
+  17 Jun 2012; Naohiro Aota <naota@gentoo.org> lasi-1.1.1.ebuild:
+  Add ~x86-fbsd. #419621
+
+  29 May 2012; Alexis Ballier <aballier@gentoo.org> lasi-1.1.1.ebuild:
+  keyword ~amd64-fbsd
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> lasi-1.1.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  19 Mar 2012; Justin Lecher <jlec@gentoo.org> -lasi-1.1.0-r2.ebuild:
+  Cleaned old
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> lasi-1.1.1.ebuild:
+  alpha/sparc stable wrt #404789
+
+  02 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> lasi-1.1.1.ebuild:
+  ppc/ppc64 stable wrt #404789
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> lasi-1.1.1.ebuild:
+  x86 stable wrt bug #404789
+
+  21 Feb 2012; Jeroen Roovers <jer@gentoo.org> lasi-1.1.1.ebuild:
+  Stable for HPPA (bug #404789).
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> lasi-1.1.1.ebuild:
+  Stable for amd64, wrt bug #404789
+
+  20 Feb 2012; Justin Lecher <jlec@gentoo.org> lasi-1.1.1.ebuild, metadata.xml:
+  Use PATCHES array and convert mycmakeargs to an array
+
+*lasi-1.1.1 (27 Nov 2011)
+
+  27 Nov 2011; Sébastien Fabbro <bicatali@gentoo.org> -lasi-1.1.0-r1.ebuild,
+  +lasi-1.1.1.ebuild:
+  Version bump
+
+  10 Jan 2011; Brent Baude <ranger@gentoo.org> lasi-1.1.0-r2.ebuild:
+  stable ppc, bug 343521
+
+  05 Dec 2010; Raúl Porcel <armin76@gentoo.org> lasi-1.1.0-r2.ebuild:
+  alpha/sparc stable wrt #343521
+
+  05 Nov 2010; Samuli Suominen <ssuominen@gentoo.org> lasi-1.1.0-r2.ebuild:
+  ppc64 stable wrt #343521
+
+  04 Nov 2010; Jeroen Roovers <jer@gentoo.org> lasi-1.1.0-r2.ebuild:
+  Stable for HPPA (bug #343521).
+
+  04 Nov 2010; Christian Faulhammer <fauli@gentoo.org> lasi-1.1.0-r2.ebuild:
+  stable x86, bug 343521
+
+  31 Oct 2010; Markos Chandras <hwoarang@gentoo.org> lasi-1.1.0-r2.ebuild:
+  Stable on amd64 wrt bug #343521
+
+*lasi-1.1.0-r2 (18 Sep 2010)
+
+  18 Sep 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  +lasi-1.1.0-r2.ebuild, +files/lasi-1.1.0-pkgconfig.patch:
+  Added workaround patch to create a sane pkgconfig file. Fixes bug
+  312799.
+
+  14 Jan 2010; Jeroen Roovers <jer@gentoo.org> lasi-1.1.0-r1.ebuild:
+  Stable for HPPA (bug #284689).
+
+  04 Nov 2009; Raúl Porcel <armin76@gentoo.org> lasi-1.1.0-r1.ebuild:
+  sparc stable wrt #284857
+
+  31 Oct 2009; Brent Baude <ranger@gentoo.org> lasi-1.1.0-r1.ebuild:
+  Marking lasi-1.1.0-r1 ppc64 for bug 284689
+
+  07 Oct 2009; nixnut <nixnut@gentoo.org> lasi-1.1.0-r1.ebuild:
+  ppc stable #284689
+
+  03 Oct 2009; Tobias Klausmann <klausman@gentoo.org> lasi-1.1.0-r1.ebuild:
+  Stable on alpha, bug #284689
+
+  14 Sep 2009; Markus Meier <maekke@gentoo.org> lasi-1.1.0-r1.ebuild:
+  amd64/x86 stable, bug #283965
+
+  30 May 2009; Tiago Cunha <tcunha@gentoo.org> lasi-1.1.0-r1.ebuild:
+  keyworded ~arch for sparc, bug 265013
+
+  12 May 2009; Jeroen Roovers <jer@gentoo.org> lasi-1.1.0-r1.ebuild:
+  Marked ~hppa (bug #265013).
+
+  10 Apr 2009; Brent Baude <ranger@gentoo.org> lasi-1.1.0-r1.ebuild:
+  Marking lasi-1.1.0-r1 ~ppc64 for bug 265013
+
+  07 Apr 2009; Tobias Klausmann <klausman@gentoo.org> lasi-1.1.0-r1.ebuild:
+  Keyworded on alpha, bug #265013
+
+  25 Mar 2009; Sébastien Fabbro <bicatali@gentoo.org> -lasi-1.1.0.ebuild,
+  lasi-1.1.0-r1.ebuild:
+  Adapt to recent changes on cmake_utils eclass (closing bug #263510) and
+  remove forced rpath
+
+*lasi-1.1.0-r1 (04 Nov 2008)
+
+  04 Nov 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/lasi-1.1.0-cmake.patch, +lasi-1.1.0-r1.ebuild:
+  Added doc and examples flags, added missing dependencies and more patches
+  for installation directories
+
+*lasi-1.1.0 (21 Oct 2008)
+
+  25 Oct 2008; Pieter Van den Abeele <pvdabeel@gentoo.org> lasi-1.1.0.ebuild:
+  Keyworded ~ppc. Closes bug #243486
+
+  21 Oct 2008; Sébastien Fabbro <bicatali@gentoo.org> +metadata.xml,
+  +lasi-1.1.0.ebuild:
+  Science overlay -> main tree. Ebuild initially produced by Joshua Rich
+  (bug #214846)
+
+  25 Jun 2008; Markus Dittrich <markusle@gentoo.org> lasi-1.1.0.ebuild:
+  Made ebuild adhere to multi-lib strict.
+

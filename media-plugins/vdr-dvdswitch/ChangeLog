@@ -1,0 +1,150 @@
+# ChangeLog for media-plugins/vdr-dvdswitch
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-dvdswitch/ChangeLog,v 1.32 2015/01/07 15:32:46 hd_brummy Exp $
+
+  07 Jan 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-dvdswitch-0.2.2.ebuild:
+  stable amd64 x86, wrt bug 535480
+
+*vdr-dvdswitch-0.2.2 (08 Oct 2014)
+
+  08 Oct 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-dvdswitch-0.2.2.ebuild:
+  bump
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> vdr-dvdswitch-0.2.1.ebuild:
+  Stable for x86, wrt bug #457388
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> vdr-dvdswitch-0.2.1.ebuild:
+  Stable for amd64, wrt bug #457388
+
+*vdr-dvdswitch-0.2.1 (09 Dec 2012)
+
+  09 Dec 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-dvdswitch-0.2.1.ebuild:
+  bump; eapi=5
+
+  30 Jun 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -files/0.1.3/no-files-crash.diff, -vdr-dvdswitch-0.1.3-r2.ebuild,
+  -vdr-dvdswitch-0.1.6.ebuild, -files/0.1.3/vdr-1.5.4-compatibility.diff:
+  cleanup
+
+  30 Jun 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-dvdswitch-0.2.0.ebuild:
+  vdr-plugin-2.eclass
+
+  20 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-dvdswitch-0.1.6.ebuild, vdr-dvdswitch-0.2.0.ebuild:
+  eapi=4; stable x86 amd64, #bug 404797
+
+*vdr-dvdswitch-0.2.0 (05 Mar 2011)
+
+  05 Mar 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-dvdswitch-0.2.0.ebuild:
+  version bump
+
+  28 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org> -files/0.1.3/series:
+  cleanup
+
+  28 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-dvdswitch-0.1.6.ebuild:
+  eapi=3
+
+*vdr-dvdswitch-0.1.6 (24 Jan 2011)
+
+  24 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-dvdswitch-0.1.6.ebuild:
+  version bump
+
+  23 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-dvdswitch-0.1.3-r2.ebuild:
+  removed unused depend
+
+  26 May 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-dvdswitch-0.1.3-r2.ebuild:
+  Fixed homepage.
+
+  26 May 2008; Matthias Schwarzott <zzam@gentoo.org> -files/confd,
+  -vdr-dvdswitch-0.1.3.ebuild, -vdr-dvdswitch-0.1.3-r1.ebuild:
+  Removed old versions.
+
+  29 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-dvdswitch-0.1.3-r1.ebuild, vdr-dvdswitch-0.1.3-r2.ebuild:
+  Marked 0.1.3-r2 stable on x86. Fixed quoting.
+
+  04 Oct 2007; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-dvdswitch-0.1.3.ebuild, vdr-dvdswitch-0.1.3-r1.ebuild,
+  vdr-dvdswitch-0.1.3-r2.ebuild:
+  Depend on either >=gentoo-vdr-scripts-0.4.1 or vdr-dvd-scripts.
+
+*vdr-dvdswitch-0.1.3-r2 (21 Jul 2007)
+
+  21 Jul 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/0.1.3/confd-r2, +vdr-dvdswitch-0.1.3-r2.ebuild:
+  new conf, with new parameter to make burn-speed configurabel
+
+  27 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-dvdswitch-0.1.3-r1.ebuild:
+  Marked stable on x86.
+
+  26 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/0.1.3/vdr-1.5.4-compatibility.diff, files/0.1.3/series,
+  vdr-dvdswitch-0.1.3-r1.ebuild:
+  Added patch to compile with vdr-1.5.4
+
+*vdr-dvdswitch-0.1.3-r1 (28 May 2007)
+
+  28 May 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/0.1.3/no-files-crash.diff, +files/0.1.3/series,
+  +vdr-dvdswitch-0.1.3-r1.ebuild:
+  Fixed a crash if no image is in the image directory.
+
+  17 Apr 2007; Matthias Schwarzott <zzam@gentoo.org> files/rc-addon.sh:
+  Removed bash specific stuff.
+
+  02 Nov 2006; Matthias Schwarzott <zzam@gentoo.org>
+  -vdr-dvdswitch-0.1.2.ebuild:
+  Removed old ebuild.
+
+  30 Oct 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-dvdswitch-0.1.3.ebuild:
+  Marked stable on x86.
+
+  15 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Assigned to Gentoo VDR Project.
+
+*vdr-dvdswitch-0.1.3 (21 Jul 2006)
+
+  21 Jul 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-dvdswitch-0.1.3.ebuild:
+  Bumped to bugfix release.
+
+  23 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
+  -vdr-dvdswitch-0.1.0.ebuild, -vdr-dvdswitch-0.1.1.ebuild:
+  Removed old versions.
+
+  23 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-dvdswitch-0.1.2.ebuild:
+  Adjusted depend on vdr-dvd-scripts-version. Marked stable on x86.
+
+*vdr-dvdswitch-0.1.2 (01 May 2006)
+
+  01 May 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-dvdswitch-0.1.2.ebuild:
+  version bump
+
+  17 Apr 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-dvdswitch-0.1.0.ebuild, vdr-dvdswitch-0.1.1.ebuild:
+  Added missing IUSE
+
+*vdr-dvdswitch-0.1.1 (10 Mar 2006)
+
+  10 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-dvdswitch-0.1.1.ebuild:
+  version bump
+
+*vdr-dvdswitch-0.1.0 (04 Mar 2006)
+
+  04 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org> +files/confd,
+  +files/rc-addon.sh, +metadata.xml, +vdr-dvdswitch-0.1.0.ebuild:
+  import ebuild from gentoo.de CVS, version bump

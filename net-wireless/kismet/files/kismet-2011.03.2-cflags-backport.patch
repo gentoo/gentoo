@@ -1,0 +1,115 @@
+diff -Naur kismet-2011-03-R2/plugin-autowep/Makefile kismet-2011-03-R2-cflags/plugin-autowep/Makefile
+--- kismet-2011-03-R2/plugin-autowep/Makefile	2012-07-23 12:58:09.961131948 -0400
++++ kismet-2011-03-R2-cflags/plugin-autowep/Makefile	2012-07-23 13:00:04.544135017 -0400
+@@ -12,6 +12,7 @@
+ PLUGINLDFLAGS += -shared -rdynamic
+ LIBS	+= -lstdc++ 
+ CFLAGS 	+= -I/usr/include -I$(KIS_INC_DIR) -g -fPIC
++CXXFLAGS += -I/usr/include -I$(KIS_INC_DIR) -g -fPIC
+ 
+ PLUGOBJS = autowep-kismet.o
+ PLUGOUT = autowep-kismet.so
+@@ -34,9 +35,9 @@
+ 	@-rm -f *.so
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) -c $*.c -o $@ 
++	$(CC) $(CPPFLAGS) $(CFLAGS) -c $*.c -o $@ 
+ 
+ .cc.o:
+-	$(CXX) $(CFLAGS) -c $*.cc -o $@ 
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $*.cc -o $@ 
+ 
+ .SUFFIXES: .c .cc .o
+diff -Naur kismet-2011-03-R2/plugin-btscan/Makefile kismet-2011-03-R2-cflags/plugin-btscan/Makefile
+--- kismet-2011-03-R2/plugin-btscan/Makefile	2012-07-23 12:58:09.962131948 -0400
++++ kismet-2011-03-R2-cflags/plugin-btscan/Makefile	2012-07-23 13:02:33.016138993 -0400
+@@ -12,6 +12,7 @@
+ PLUGINLDFLAGS += -shared -rdynamic
+ LIBS	+= -lstdc++ -lbluetooth -lpthread -lncurses -lpanel
+ CFLAGS 	+= -I/usr/include -I$(KIS_INC_DIR) -g -fPIC
++CXXFLAGS += -I/usr/include -I$(KIS_INC_DIR) -g -fPIC
+ 
+ SRVOBJS = packetsource_linuxbt.o tracker_btscan.o dumpfile_btscantxt.o kismet_btscan.o
+ SRVOUT	= btscan.so
+@@ -44,9 +45,9 @@
+ 	@-rm -f *.so
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) -c $*.c -o $@ 
++	$(CC) $(CPPFLAGS) $(CFLAGS) -c $*.c -o $@ 
+ 
+ .cc.o:
+-	$(CXX) $(CFLAGS) -c $*.cc -o $@ 
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $*.cc -o $@ 
+ 
+ .SUFFIXES: .c .cc .o
+diff -Naur kismet-2011-03-R2/plugin-dot15d4/Makefile kismet-2011-03-R2-cflags/plugin-dot15d4/Makefile
+--- kismet-2011-03-R2/plugin-dot15d4/Makefile	2012-07-23 12:58:09.962131948 -0400
++++ kismet-2011-03-R2-cflags/plugin-dot15d4/Makefile	2012-07-23 13:03:17.209140176 -0400
+@@ -12,6 +12,7 @@
+ PLUGINLDFLAGS += -shared -rdynamic
+ LIBS	+= -lstdc++ -lusb -lpthread
+ CFLAGS 	+= -I/usr/include -I$(KIS_INC_DIR) -g -fPIC
++CXXFLAGS += -I/usr/include -I$(KIS_INC_DIR) -g -fPIC
+ 
+ SRVOBJS = packetsource_raven.o packetsource_serialdev.o \
+ 			packet_dot15d4.o packet_dot15d4_types.o \
+@@ -39,9 +40,9 @@
+ 	@-rm -f *.so
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) -c $*.c -o $@ 
++	$(CC) $(CPPFLAGS) $(CFLAGS) -c $*.c -o $@ 
+ 
+ .cc.o:
+-	$(CXX) $(CFLAGS) -c $*.cc -o $@ 
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $*.cc -o $@ 
+ 
+ .SUFFIXES: .c .cc .o
+diff -Naur kismet-2011-03-R2/plugin-ptw/Makefile kismet-2011-03-R2-cflags/plugin-ptw/Makefile
+--- kismet-2011-03-R2/plugin-ptw/Makefile	2012-07-23 12:58:09.963131948 -0400
++++ kismet-2011-03-R2-cflags/plugin-ptw/Makefile	2012-07-23 13:04:25.764142014 -0400
+@@ -12,6 +12,7 @@
+ PLUGINLDFLAGS += -shared -rdynamic
+ LIBS	+= -lstdc++ -lssl -lpthread -lcrypto
+ CFLAGS 	+= -I/usr/include -I$(KIS_INC_DIR) -g -fPIC
++CXXFLAGS += -I/usr/include -I$(KIS_INC_DIR) -g -fPIC
+ 
+ PLUGOBJS = aircrack-crypto.o aircrack-ptw2-lib.o aircrack-kismet.o
+ PLUGOUT = aircrack-kismet.so
+@@ -34,9 +35,9 @@
+ 	@-rm -f *.so
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) -c $*.c -o $@ 
++	$(CC) $(CPPFLAGS) $(CFLAGS) -c $*.c -o $@ 
+ 
+ .cc.o:
+-	$(CXX) $(CFLAGS) -c $*.cc -o $@ 
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $*.cc -o $@ 
+ 
+ .SUFFIXES: .c .cc .o
+diff -Naur kismet-2011-03-R2/plugin-spectools/Makefile kismet-2011-03-R2-cflags/plugin-spectools/Makefile
+--- kismet-2011-03-R2/plugin-spectools/Makefile	2012-07-23 12:58:09.963131948 -0400
++++ kismet-2011-03-R2-cflags/plugin-spectools/Makefile	2012-07-23 13:05:12.121143257 -0400
+@@ -12,6 +12,7 @@
+ PLUGINLDFLAGS += -shared -rdynamic
+ LIBS	+= -lstdc++ 
+ CFLAGS 	+= -I/usr/include -I$(KIS_INC_DIR) -g -fPIC
++CXXFLAGS += -I/usr/include -I$(KIS_INC_DIR) -g -fPIC
+ 
+ CLIOBJS = spectools_ui.o
+ CLIOUT	= spectools_ui.so
+@@ -44,9 +45,9 @@
+ 	@-rm -f *.so
+ 
+ .c.o:
+-	$(CC) $(CFLAGS) -c $*.c -o $@ 
++	$(CC) $(CPPFLAGS) $(CFLAGS) -c $*.c -o $@ 
+ 
+ .cc.o:
+-	$(CXX) $(CFLAGS) -c $*.cc -o $@ 
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $*.cc -o $@ 
+ 
+ .SUFFIXES: .c .cc .o

@@ -1,0 +1,64 @@
+# ChangeLog for x11-misc/3dfb
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/3dfb/ChangeLog,v 1.14 2014/06/25 06:18:45 pinkbyte Exp $
+
+  25 Jun 2014; Sergey Popov <pinkbyte@gentoo.org> 3dfb-0.6.1-r1.ebuild:
+  Add missing dependency on x11-libs/libXmu, wrt bug #514998. Thanks to Patrick
+  Lauer for discovering this issue
+
+  13 Mar 2014; Sergey Popov <pinkbyte@gentoo.org> -3dfb-0.6.1.ebuild,
+  3dfb-0.6.1-r1.ebuild:
+  Transfer stable keywords from previous revision and drop it, cause it's
+  broken. First-time stabilization on amd64
+
+*3dfb-0.6.1-r1 (13 Mar 2014)
+
+  13 Mar 2014; Sergey Popov <pinkbyte@gentoo.org> +3dfb-0.6.1-r1.ebuild,
+  +files/3dfb-0.6.1-freeglut-compat.patch, metadata.xml:
+  Revision bump: EAPI 5, epatch_user, add ~amd64 keyword, fix work with new
+  media-libs/freeglut, add desktop-effects herd to metadata
+
+  11 Mar 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #53266
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> 3dfb-0.6.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  16 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> 3dfb-0.6.1.ebuild:
+  virtual/glut -> media-libs/glut
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> 3dfb-0.6.1.ebuild:
+  (QA) RESTRICT clean up.
+
+  18 Sep 2006; Sven Wegener <swegener@gentoo.org> +files/0.6.1-gcc41.patch,
+  3dfb-0.6.1.ebuild:
+  Fix building with gcc-4.1, thanks to Ian S. <rhican@gmail.com> in bug #147984.
+
+  08 Sep 2004; Sven Wegener <swegener@gentoo.org> -3dfb-0.5.5.ebuild,
+  3dfb-0.6.1.ebuild:
+  Marked stable on x86. Removed old ebuild.
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> 3dfb-0.5.5.ebuild,
+  3dfb-0.6.1.ebuild:
+  Masked 3dfb-0.6.1.ebuild stable for ppc
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> 3dfb-0.5.5.ebuild:
+  Masked 3dfb-0.5.5.ebuild stable for ppc
+
+  15 Aug 2004; Sven Wegener <swegener@gentoo.org> 3dfb-0.5.5.ebuild,
+  3dfb-0.6.1.ebuild:
+  Added virtual/glut to dependencies. Closes bug #60365.
+
+*3dfb-0.6.1 (06 Aug 2004)
+
+  06 Aug 2004; Sven Wegener <swegener@gentoo.org> +3dfb-0.6.1.ebuild:
+  Version bump.
+
+  16 Jul 2004; David Holm <dholm@gentoo.org> 3dfb-0.5.5.ebuild:
+  Added to ~ppc.
+
+*3dfb-0.5.5 (13 Jul 2004)
+
+  13 Jul 2004; Sven Wegener <swegener@gentoo.org> +metadata.xml,
+  +3dfb-0.5.5.ebuild:
+  Initial import, ebuild written by me.

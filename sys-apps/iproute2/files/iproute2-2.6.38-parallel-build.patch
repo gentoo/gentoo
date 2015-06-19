@@ -1,0 +1,40 @@
+sent upstream already
+
+From f8a783bbe98b0fe5aaedbf623bc70471b88c9187 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 18 Oct 2011 17:36:55 -0400
+Subject: [PATCH] tc: fix parallel build file with lex/yacc
+
+Building iproute2 in parallel might hit the race failure:
+	emp_ematch.l:2:30: fatal error: emp_ematch.yacc.h:
+		No such file or directory
+	make[1]: *** [emp_ematch.lex.o] Error 1
+
+This is because we currently allow the yacc/lex files to generate and
+compile in parallel.  So add a simple dependency to make sure yacc has
+finished before we attempt to compile the lex output.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ tc/Makefile |    5 +++++
+ 1 files changed, 5 insertions(+), 0 deletions(-)
+
+diff --git a/tc/Makefile b/tc/Makefile
+index 08aa4ce..b2ca165 100644
+--- a/tc/Makefile
++++ b/tc/Makefile
+@@ -136,6 +136,11 @@ m_xt_old.so: m_xt_old.c
+ %.lex.c: %.l
+ 	$(LEX) $(LEXFLAGS) -o$@ $<
+ 
++# our lexer includes the header from yacc, so make sure
++# we don't attempt to compile it before the header has
++# been generated as part of the yacc step.
++emp_ematch.lex.o: emp_ematch.yacc.c
++
+ ifneq ($(SHARED_LIBS),y)
+ 
+ tc: static-syms.o
+-- 
+1.7.6.1
+

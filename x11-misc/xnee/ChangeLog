@@ -1,0 +1,168 @@
+# ChangeLog for x11-misc/xnee
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xnee/ChangeLog,v 1.36 2014/10/11 06:38:28 jer Exp $
+
+  11 Oct 2014; Jeroen Roovers <jer@gentoo.org> -xnee-3.17.ebuild,
+  -xnee-3.18.ebuild:
+  Old.
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> xnee-3.19.ebuild:
+  Stable for amd64, wrt bug #521810
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> xnee-3.17.ebuild,
+  xnee-3.18.ebuild, xnee-3.19.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*xnee-3.19 (06 May 2014)
+
+  06 May 2014; Jeroen Roovers <jer@gentoo.org> +xnee-3.19.ebuild:
+  Version bump.
+
+  26 Feb 2014; Jeroen Roovers <jer@gentoo.org> -xnee-3.16.ebuild:
+  Old.
+
+  26 Feb 2014; Jeroen Roovers <jer@gentoo.org> xnee-3.17.ebuild:
+  Fix xnee-3.17 linking too.
+
+*xnee-3.18 (26 Feb 2014)
+
+  26 Feb 2014; Jeroen Roovers <jer@gentoo.org> +xnee-3.18.ebuild,
+  +files/xnee-3.18-linker.patch:
+  Version bump.
+
+*xnee-3.17 (30 Jan 2014)
+
+  30 Jan 2014; Jeroen Roovers <jer@gentoo.org> -xnee-3.15.ebuild,
+  +xnee-3.17.ebuild:
+  Version bump.
+
+*xnee-3.16 (10 Jun 2013)
+
+  10 Jun 2013; Jeroen Roovers <jer@gentoo.org> +xnee-3.16.ebuild,
+  -xnee-3.14.ebuild:
+  Version bump.
+
+*xnee-3.15 (24 Dec 2012)
+
+  24 Dec 2012; Jeroen Roovers <jer@gentoo.org> -xnee-3.13.ebuild,
+  +xnee-3.15.ebuild:
+  Version bump.
+
+*xnee-3.14 (10 Oct 2012)
+
+  10 Oct 2012; Jeroen Roovers <jer@gentoo.org> -xnee-3.12.ebuild,
+  +xnee-3.14.ebuild:
+  Version bump.
+
+*xnee-3.13 (07 Jun 2012)
+
+  07 Jun 2012; Michael Weber <xmw@gentoo.org> +xnee-3.13.ebuild,
+  -xnee-3.10.ebuild, -xnee-3.11.ebuild:
+  Version bump (bug 415657 by df), remove old.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> xnee-3.10.ebuild,
+  xnee-3.11.ebuild, xnee-3.12.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*xnee-3.12 (15 Feb 2012)
+
+  15 Feb 2012; Tim Harder <radhermit@gentoo.org> +xnee-3.12.ebuild:
+  Version bump.
+
+*xnee-3.11 (23 Dec 2011)
+
+  23 Dec 2011; Tim Harder <radhermit@gentoo.org> +xnee-3.11.ebuild:
+  Version bump.
+
+  02 Dec 2011; Samuli Suominen <ssuominen@gentoo.org> xnee-3.10.ebuild:
+  Remove support for building applet for gnome-panel-2.x (because it doesn't
+  build with gnome-panel-3.x)
+
+  02 Dec 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -files/xnee-3.05-asneeded.patch, -xnee-3.07.ebuild, -xnee-3.08.ebuild,
+  -xnee-3.09.ebuild:
+  old
+
+  28 Nov 2011; Tim Harder <radhermit@gentoo.org> xnee-3.09.ebuild,
+  xnee-3.10.ebuild:
+  Remove unused autotools setting.
+
+  27 Nov 2011; Jeroen Roovers <jer@gentoo.org> xnee-3.09.ebuild,
+  xnee-3.10.ebuild:
+  Do not use autotools-utils.eclass (bug #392133).
+
+  27 Nov 2011; Tim Harder <radhermit@gentoo.org> xnee-3.09.ebuild,
+  xnee-3.10.ebuild:
+  Build in the source tree.
+
+*xnee-3.10 (19 Nov 2011)
+
+  19 Nov 2011; Tim Harder <radhermit@gentoo.org> +xnee-3.10.ebuild:
+  Version bump.
+
+*xnee-3.09 (09 Aug 2011)
+
+  09 Aug 2011; Jeroen Roovers <jer@gentoo.org> +xnee-3.09.ebuild:
+  Version bump. Clean up ebuild. Add more library dependencies. Remove obsolete
+  patching. Add IUSE=static-libs.
+
+*xnee-3.08 (01 Feb 2011)
+
+  01 Feb 2011; Jeroen Roovers <jer@gentoo.org> -xnee-3.06.ebuild,
+  +xnee-3.08.ebuild:
+  Version bump.
+
+  11 Jan 2011; Pacho Ramos <pacho@gentoo.org> xnee-3.06.ebuild,
+  xnee-3.07.ebuild:
+  Needs gnome-panel with bonobo support (bug #348185).
+
+*xnee-3.07 (18 Oct 2010)
+
+  18 Oct 2010; Jeroen Roovers <jer@gentoo.org> +xnee-3.07.ebuild:
+  Version bump.
+
+  25 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> xnee-3.06.ebuild:
+  Fix building with make >= 3.82 wrt #333983 by Diego E. Pettenò.
+
+  10 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> xnee-3.06.ebuild:
+  Fix imagemagick vs. graphicsmagick DEPEND wrt #314403.
+
+*xnee-3.06 (06 Jun 2010)
+
+  06 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> +xnee-3.06.ebuild:
+  Version bump.
+
+  13 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> xnee-3.05.ebuild:
+  Use virtualx.eclass for src_test wrt #304945 but because it still needs
+  RECORD extension enabled in X.org server, restrict tests off.
+
+  13 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> xnee-3.05.ebuild,
+  +files/xnee-3.05-asneeded.patch:
+  Fix building with -Wl,--as-needed.
+
+*xnee-3.05 (09 Feb 2010)
+
+  09 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> +xnee-3.05.ebuild:
+  Version bump wrt #300539, thanks to Jeroen Roovers for reporting.
+
+  02 May 2009; Samuli Suominen <ssuominen@gentoo.org> -xnee-3.01.ebuild,
+  -files/xnee-3.01-destdir.patch, xnee-3.02.ebuild:
+  Missing x11-proto/inputproto dep wrt #228233.
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> xnee-3.01.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+*xnee-3.02 (03 Feb 2008)
+
+  03 Feb 2008; Samuli Suominen <ssuominen@gentoo.org>
+  +files/xnee-3.02-destdir.patch, +xnee-3.02.ebuild:
+  Version bump with keyword for ~amd64.
+
+  14 Aug 2007; Samuli Suominen <ssuominen@gentoo.org> xnee-3.01.ebuild:
+  Add desktop entry with icon.
+
+*xnee-3.01 (13 Aug 2007)
+
+  13 Aug 2007; Samuli Suominen <ssuominen@gentoo.org>
+  +files/xnee-3.01-destdir.patch, +xnee-3.01.ebuild:
+  Initial commit for bug 87725. Thanks to Philipp Serr and Florian Steinel.

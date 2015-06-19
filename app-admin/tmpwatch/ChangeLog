@@ -1,0 +1,428 @@
+# ChangeLog for app-admin/tmpwatch
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/tmpwatch/ChangeLog,v 1.115 2015/04/12 19:09:40 mrueg Exp $
+
+  12 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -tmpwatch-2.10.1.ebuild:
+  Remove old.
+
+  02 Nov 2014; Sven Vermeulen <swift@gentoo.org> tmpwatch-2.11-r1.ebuild,
+  tmpwatch-2.11.ebuild:
+  Remove sec-policy/selinux-* dependency from DEPEND but keep in RDEPEND (bug
+  #527698)
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> tmpwatch-2.11.ebuild:
+  Stable for x86, wrt bug #467516
+
+*tmpwatch-2.11-r1 (08 May 2013)
+
+  08 May 2013; Christian Faulhammer <fauli@gentoo.org>
+  +tmpwatch-2.11-r1.ebuild, +files/tmpwatch-2.11-boottime.patch:
+  Make detection of boottime non-fatal and add user patch capability, see bug
+  468444 and bug 468882 by Christophe Perez
+
+  08 May 2013; Christian Faulhammer <fauli@gentoo.org> -tmpwatch-2.10.3.ebuild:
+  clean up
+
+  07 May 2013; Agostino Sarubbo <ago@gentoo.org> tmpwatch-2.11.ebuild:
+  Stable for ppc64, wrt bug #467516
+
+  07 May 2013; Agostino Sarubbo <ago@gentoo.org> tmpwatch-2.11.ebuild:
+  Stable for sparc, wrt bug #467516
+
+  07 May 2013; Agostino Sarubbo <ago@gentoo.org> tmpwatch-2.11.ebuild:
+  Stable for ia64, wrt bug #467516
+
+  05 May 2013; Agostino Sarubbo <ago@gentoo.org> tmpwatch-2.11.ebuild:
+  Stable for alpha, wrt bug #467516
+
+  03 May 2013; Agostino Sarubbo <ago@gentoo.org> tmpwatch-2.11.ebuild:
+  Stable for ppc, wrt bug #467516
+
+  01 May 2013; Chema Alonso <nimiux@gentoo.org> tmpwatch-2.11.ebuild:
+  Stable for amd64 wrt bug #467516
+
+  30 Apr 2013; Christian Faulhammer <fauli@gentoo.org> tmpwatch-2.11.ebuild:
+  use system AR not unconditional call to /usr/bin/ar, bug 468018 by nimiux
+
+  23 Nov 2012; <swift@gentoo.org> tmpwatch-2.10.1.ebuild,
+  tmpwatch-2.10.3.ebuild, tmpwatch-2.11.ebuild:
+  Adding dependency towards selinux policy module tmpreaper
+
+*tmpwatch-2.11 (17 Jul 2012)
+
+  17 Jul 2012; Christian Faulhammer <fauli@gentoo.org> +tmpwatch-2.11.ebuild:
+  version bump
+
+  13 Sep 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #225633
+
+*tmpwatch-2.10.3 (16 Aug 2011)
+
+  16 Aug 2011; Christian Faulhammer <fauli@gentoo.org> +tmpwatch-2.10.3.ebuild:
+  Version bump for bug 377581 by sping
+
+  07 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  -tmpwatch-2.9.15.ebuild:
+  clean up
+
+  06 Nov 2010; Mark Loeser <halcy0n@gentoo.org> tmpwatch-2.10.1.ebuild:
+  Stable for ppc64; bug #325057
+
+  18 Jul 2010; <nixnut@gentoo.org> tmpwatch-2.10.1.ebuild:
+  ppc stable #325057
+
+  10 Jul 2010; Raúl Porcel <armin76@gentoo.org> tmpwatch-2.10.1.ebuild:
+  alpha/ia64/sparc stable wrt #325057
+
+  24 Jun 2010; Pacho Ramos <pacho@gentoo.org> tmpwatch-2.10.1.ebuild:
+  stable amd64, bug 325057
+
+  22 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  tmpwatch-2.10.1.ebuild:
+  stable x86, bug 325057
+
+  30 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  -tmpwatch-2.9.16.ebuild, -tmpwatch-2.9.17.ebuild:
+  clean up
+
+*tmpwatch-2.10.1 (30 Mar 2010)
+
+  30 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  +tmpwatch-2.10.1.ebuild:
+  version bump
+
+  29 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  +tmpwatch-2.9.17.ebuild:
+  version bump
+
+*tmpwatch-2.9.16 (09 Nov 2009)
+
+  09 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  +tmpwatch-2.9.16.ebuild:
+  version bump
+
+  09 Nov 2009; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
+  add myself as maintainer
+
+  09 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  -tmpwatch-2.9.13.2.ebuild:
+  clean up
+
+  09 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  -tmpwatch-2.9.14.ebuild:
+  clean up
+
+  31 Oct 2009; Brent Baude <ranger@gentoo.org> tmpwatch-2.9.15.ebuild:
+  Marking tmpwatch-2.9.15 ppc64 for bug 281353
+
+  06 Sep 2009; Markus Meier <maekke@gentoo.org> tmpwatch-2.9.15.ebuild:
+  amd64 stable, bug #281353
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> tmpwatch-2.9.15.ebuild:
+  ppc stable #281353
+
+  25 Aug 2009; Raúl Porcel <armin76@gentoo.org> tmpwatch-2.9.15.ebuild:
+  alpha/ia64/sparc stable wrt #281353
+
+  18 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  tmpwatch-2.9.15.ebuild:
+  stable x86, bug 281353
+
+*tmpwatch-2.9.15 (09 Jul 2009)
+
+  09 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  +tmpwatch-2.9.15.ebuild:
+  version bump for bug 275884
+
+*tmpwatch-2.9.14 (26 Apr 2009)
+
+  26 Apr 2009; Patrick Lauer <patrick@gentoo.org> +tmpwatch-2.9.14.ebuild:
+  Bump to 2.9.14. Fixes #263628. SRC_URI is now much nicer, and we get a
+  tarball instead of an RPM
+
+  26 Jul 2008; Thomas Anderson <gentoofan23@gentoo.org> metadata.xml:
+  Change Maintainer.
+
+  24 Jul 2008; Christian Faulhammer <opfer@gentoo.org>
+  -tmpwatch-2.9.12.2.ebuild:
+  clean up
+
+  24 Jul 2008; Raúl Porcel <armin76@gentoo.org> tmpwatch-2.9.13.2.ebuild:
+  alpha/ia64 stable wrt #232153
+
+  22 Jul 2008; Markus Rothe <corsair@gentoo.org> tmpwatch-2.9.13.2.ebuild:
+  Stable on ppc64; bug #232153
+
+  21 Jul 2008; nixnut <nixnut@gentoo.org> tmpwatch-2.9.13.2.ebuild:
+  Stable on ppc wrt bug 232153
+
+  21 Jul 2008; Christian Faulhammer <opfer@gentoo.org>
+  tmpwatch-2.9.13.2.ebuild:
+  add note about new URL from soon on
+
+  18 Jul 2008; Santiago M. Mola <coldwind@gentoo.org>
+  tmpwatch-2.9.13.2.ebuild:
+  amd64 stable wrt bug #232153
+
+  18 Jul 2008; Ferris McCormick <fmccor@gentoo.org>
+  tmpwatch-2.9.13.2.ebuild:
+  Sparc stable -- Bug #232153 --- verified on /var/tmp/portage.
+
+  18 Jul 2008; Christian Faulhammer <opfer@gentoo.org>
+  tmpwatch-2.9.13.2.ebuild:
+  stable x86, bug 232153
+
+*tmpwatch-2.9.13.2 (18 Jun 2008)
+
+  18 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  +tmpwatch-2.9.13.2.ebuild:
+  version bump
+
+  01 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  -tmpwatch-2.9.11.2.ebuild:
+  clean up
+
+  01 Mar 2008; Christoph Mende <angelos@gentoo.org>
+  tmpwatch-2.9.12.2.ebuild:
+  Stable on amd64, bug #211071
+
+  24 Feb 2008; Raúl Porcel <armin76@gentoo.org> tmpwatch-2.9.12.2.ebuild:
+  alpha/ia64/sparc stable wrt #211071
+
+  22 Feb 2008; Brent Baude <ranger@gentoo.org> tmpwatch-2.9.12.2.ebuild:
+  stable ppc64, bug 211071
+
+  22 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  tmpwatch-2.9.12.2.ebuild:
+  ppc stable, bug #211071
+
+  22 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  tmpwatch-2.9.12.2.ebuild:
+  shorten DESCRIPTION
+
+  22 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  tmpwatch-2.9.12.2.ebuild:
+  stable x86, bug 211071
+
+*tmpwatch-2.9.12.2 (23 Jan 2008)
+
+  23 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  +tmpwatch-2.9.12.2.ebuild:
+  version bump
+
+  17 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  -tmpwatch-2.9.2.2.ebuild, -tmpwatch-2.9.4.1.ebuild,
+  -tmpwatch-2.9.11.1.ebuild:
+  clean up
+
+  23 Nov 2007; Markus Rothe <corsair@gentoo.org> tmpwatch-2.9.11.2.ebuild:
+  Stable on ppc64; bug #199955
+
+  22 Nov 2007; Christoph Mende <angelos@gentoo.org>
+  tmpwatch-2.9.11.2.ebuild:
+  Stable on amd64 wrt bug #199955
+
+  22 Nov 2007; Raúl Porcel <armin76@gentoo.org> tmpwatch-2.9.11.2.ebuild:
+  alpha/ia64/sparc stable wrt #199955
+
+  22 Nov 2007; nixnut <nixnut@gentoo.org> tmpwatch-2.9.11.2.ebuild:
+  Stable on ppc wrt bug 199955
+
+  22 Nov 2007; Christian Faulhammer <opfer@gentoo.org> metadata.xml,
+  tmpwatch-2.9.11.2.ebuild:
+  adding myself to metadata.xml and stable on x86 per bug 199955
+
+*tmpwatch-2.9.11.2 (22 Nov 2007)
+
+  22 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  +tmpwatch-2.9.11.2.ebuild:
+  version bump
+
+*tmpwatch-2.9.11.1 (15 Oct 2007)
+
+  15 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  +tmpwatch-2.9.11.1.ebuild:
+  version bump (bug 189475)
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove ka0ttic from metadata.xml due to retirement.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  27 Jan 2007; Charlie Shepherd <masterdriverz@gentoo.org>
+  files/tmpwatch.cron, tmpwatch-2.9.4.1.ebuild:
+  Don't clean /var/tmp/portage in the example cron if emerge is running;
+  thanks to Ulf Schaper; bug 146973
+
+  17 Jan 2007; Alec Warner <antarus@gentoo.org> files/tmpwatch.cron:
+  modifiy the cronjob to provide hints about cleaning up portage log files,
+  see bug # 121953
+
+  12 Nov 2005; Jason Wever <weeve@gentoo.org> tmpwatch-2.9.4.1.ebuild:
+  Stable on SPARC.
+
+  28 Aug 2005; Marcus D. Hanwell <cryos@gentoo.org> tmpwatch-2.9.4.1.ebuild:
+  Stable on amd64.
+
+  25 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> -tmpwatch-2.9.0.ebuild,
+  -tmpwatch-2.9.1.1.ebuild, -tmpwatch-2.9.2.1.ebuild,
+  -tmpwatch-2.9.3.1.ebuild, tmpwatch-2.9.4.1.ebuild:
+  Use rpm.eclass instead of rpm2targz, bug #103278. Tidy old ebuilds
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> tmpwatch-2.9.4.1.ebuild:
+  stable on ia64
+
+  08 Aug 2005; Markus Rothe <corsair@gentoo.org> tmpwatch-2.9.4.1.ebuild:
+  Stable on ppc64
+
+  03 Aug 2005; Bryan Østergaard <kloeri@gentoo.org>
+  tmpwatch-2.9.4.1.ebuild:
+  Stable on alpha.
+
+  31 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  tmpwatch-2.9.4.1.ebuild:
+  ppc stable
+
+  30 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> tmpwatch-2.9.4.1.ebuild:
+  Stable on x86.
+
+  26 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  tmpwatch-2.9.3.1.ebuild:
+  Stable on alpha.
+
+*tmpwatch-2.9.4.1 (28 Jun 2005)
+
+  28 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> +tmpwatch-2.9.4.1.ebuild:
+  Version bump.
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> tmpwatch-2.9.3.1.ebuild:
+  Stable on ppc64
+
+  27 May 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  tmpwatch-2.9.3.1.ebuild:
+  Stable on ppc.
+
+  26 May 2005; Aaron Walker <ka0ttic@gentoo.org> tmpwatch-2.9.3.1.ebuild:
+  Stable on x86.
+
+  24 Apr 2005; Markus Rothe <corsair@gentoo.org> tmpwatch-2.9.2.2.ebuild:
+  Stable on ppc64
+
+*tmpwatch-2.9.3.1 (24 Apr 2005)
+
+  24 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> +tmpwatch-2.9.3.1.ebuild:
+  Version bump.
+
+  08 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> tmpwatch-2.9.2.2.ebuild:
+  Marked stable on x86.
+
+  08 Apr 2005; Markus Rothe <corsair@gentoo.org> tmpwatch-2.9.2.1.ebuild:
+  Stable on ppc64
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> tmpwatch-2.9.2.2.ebuild:
+  stable on ia64
+
+*tmpwatch-2.9.2.2 (08 Mar 2005)
+
+  08 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> +tmpwatch-2.9.2.2.ebuild:
+  New patch level from debian.
+
+  03 Mar 2005; Marcus D. Hanwell <cryos@gentoo.org> tmpwatch-2.9.2.1.ebuild:
+  Marked stable on amd64, closes bug 84013.
+
+  06 Feb 2005; Bryan Østergaard <kloeri@gentoo.org>
+  tmpwatch-2.9.2.1.ebuild:
+  Stable on alpha.
+
+  05 Feb 2005; Michael Hanselmann <hansmi@gentoo.org>
+  tmpwatch-2.9.2.1.ebuild:
+  Stable on ppc, added to ~sparc.
+
+  31 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> tmpwatch-2.9.2.1.ebuild:
+  Marked stable on x86.
+
+*tmpwatch-2.9.2.1 (31 Dec 2004)
+
+  31 Dec 2004; Aaron Walker <ka0ttic@gentoo.org> -tmpwatch-2.8.4.ebuild,
+  +tmpwatch-2.9.2.1.ebuild:
+  Version bump; removed old crusty version.
+
+  28 Dec 2004; Aaron Walker <ka0ttic@gentoo.org> tmpwatch-2.8.4.ebuild,
+  tmpwatch-2.9.0.ebuild, tmpwatch-2.9.1.1.ebuild:
+  Tidy up ebuilds.
+
+  18 Dec 2004; Simon Stelling <blubb@gentoo.org> tmpwatch-2.9.1.1.ebuild:
+  was testing for over 3 months, marking stable on amd64
+
+  18 Dec 2004; Michael Hanselmann <hansmi@gentoo.org>
+  tmpwatch-2.9.1.1.ebuild:
+  Stable on ppc.
+
+  09 Nov 2004; Bryan Østergaard <kloeri@gentoo.org>
+  tmpwatch-2.9.1.1.ebuild:
+  Stable on alpha.
+
+  03 Nov 2004; Aaron Walker <ka0ttic@gentoo.org> tmpwatch-2.9.1.1.ebuild:
+  Fix digest; bug #69826
+
+  30 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> tmpwatch-2.9.1.1.ebuild:
+  Marked stable on x86.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  tmpwatch-2.8.4.ebuild:
+  Masked tmpwatch-2.8.4.ebuild stable for ppc
+
+  22 Sep 2004; Aaron Walker <ka0ttic@gentoo.org> tmpwatch-2.9.1.1.ebuild:
+  Re-added src_compile() to fix bug #64872
+
+  20 Sep 2004; Aaron Walker <ka0ttic@gentoo.org> files/tmpwatch.cron:
+  Fixed typo in cron script.
+
+*tmpwatch-2.9.1.1 (18 Sep 2004)
+
+  18 Sep 2004; Aaron Walker <ka0ttic@gentoo.org> metadata.xml,
+  +files/tmpwatch.cron, tmpwatch-2.9.0.ebuild, +tmpwatch-2.9.1.1.ebuild:
+  Version bump; Fixed outdated HOMEPAGE/SRC_URI and cleaned up ebuild. Added
+  cron script (disabled by default) to close bug #54443. Updated metadata info.
+
+  21 Jul 2004; Tom Gall <tgall@gentoo.org> tmpwatch-2.9.0.ebuild:
+  stable on ppc64, bug #57577
+
+  19 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> tmpwatch-2.9.0.ebuild:
+  Marked ~amd64.
+
+  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  tmpwatch-2.8.4.ebuild, tmpwatch-2.9.0.ebuild:
+  QA - IUSE fix
+
+  05 Jun 2004; Michael Hanselmann <hansmi@gentoo.org> tmpwatch-2.9.0.ebuild:
+  Stable on ppc.
+
+  06 Apr 2004; Aron Griffis <agriffis@gentoo.org> tmpwatch-2.9.0.ebuild:
+  Stable on alpha and ia64
+
+  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> :
+  Don't assign default to S; header fix
+
+  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> tmpwatch-2.8.4.ebuild,
+  tmpwatch-2.9.0.ebuild:
+  Don't assign default to S; header fix
+
+*tmpwatch-2.9.0 (08 Aug 2003)
+
+  08 Aug 2003; Daniel Ahlberg <aliz@gentoo.org> tmpwatch-2.9.0.ebuild :
+  Version bump. Also fixes fuser binary location, found by Zack Pearsall <zap4260@yahoo.com> in #23511. 
+
+*tmpwatch-2.8.4 (08 Nov 2002)
+
+  28 Mar 2003; Pieter Van den Abeele <pvdabeel@gentoo.org> tmpwatch-2.8.4.ebuild :
+  Moved to ~ppc - works fine 
+
+  09 Feb 2003; Seemant Kulleen <seemant@gentoo.org> tmpwatch-2.8.4.ebuild :
+
+  Changed sed expression delimiters from / to :, closing bug #15006 by Blu3
+  <david+gentoo.org@blue-labs.org>
+
+  08 Nov 2002; Daniel Ahlberg <aliz@gentooorg> :
+  Initial import. Ebuild contributed by Cory Visi <cory@visi.name> in #9817.

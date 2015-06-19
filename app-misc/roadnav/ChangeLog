@@ -1,0 +1,71 @@
+# ChangeLog for app-misc/roadnav
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/roadnav/ChangeLog,v 1.17 2015/06/09 11:50:30 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  16 Jul 2014; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove unneded useflag descriptions from metadata.xml
+
+*roadnav-0.19-r1 (14 Jul 2014)
+
+  14 Jul 2014; Pacho Ramos <pacho@gentoo.org> +roadnav-0.19-r1.ebuild,
+  -roadnav-0.19.ebuild:
+  Disable flite support as it only works with old flite (#516426)
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  05 Sep 2012; Justin Lecher <jlec@gentoo.org> roadnav-0.19.ebuild:
+  Use domenu instead insinto + doins to install .desktop files
+
+  07 Feb 2010; Ryan Hill <dirtyepic@gentoo.org> roadnav-0.19.ebuild:
+  Remove deprecated use of 'need-wxwidgets gtk2'.
+
+  30 Jan 2010; Ryan Hill <dirtyepic@gentoo.org> roadnav-0.19.ebuild,
+  +files/roadnav-0.19-gcc45.patch:
+  Fix build error w/ gcc-4.5.
+
+  28 Jul 2009; Ryan Hill <dirtyepic@gentoo.org> -roadnav-0.18.ebuild:
+  Remove old.
+
+*roadnav-0.19 (01 Jul 2009)
+
+  01 Jul 2009; Ryan Hill <dirtyepic@gentoo.org> -roadnav-0.16.ebuild,
+  +roadnav-0.19.ebuild:
+  Version bump for bug #208412. Remove old.
+
+  31 Jul 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  26 Dec 2007; Christian Heim <phreak@gentoo.org>
+  -files/digest-roadnav-0.14, -files/digest-roadnav-0.15:
+  Cleaning out unused digest files.
+
+*roadnav-0.18 (08 Oct 2007)
+
+  08 Oct 2007; Ryan Hill <dirtyepic@gentoo.org> -roadnav-0.14.ebuild,
+  -roadnav-0.15.ebuild, +roadnav-0.18.ebuild:
+  Version bump for bug #168960 by Andrew Cremins. Note that maps will have to
+  be recompiled after the upgrade.
+
+  16 Jun 2007; Ryan Hill <dirtyepic@gentoo.org> roadnav-0.16.ebuild:
+  Use wxwidgets.eclass, bug #175632.
+
+  31 May 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove myself as I'm retiring.
+
+*roadnav-0.16 (27 Nov 2006)
+
+  27 Nov 2006; Bryan Østergaard <kloeri@gentoo.org> +roadnav-0.16.ebuild:
+  Version bump, bug 154092. Ebuild by Andrew Cremins.
+
+*roadnav-0.15 (05 Sep 2006)
+
+  05 Sep 2006; Bryan Østergaard <kloeri@gentoo.org> +roadnav-0.15.ebuild:
+  Version bump, bug 144873. Thanks to Andrew Cremins.
+
+  23 Jul 2006; Bryan Østergaard <kloeri@gentoo.org> ChangeLog:
+  Initial import, ebuild by Andrew Cremins <andrew.cremins@gmail.com>, bug
+  138948.

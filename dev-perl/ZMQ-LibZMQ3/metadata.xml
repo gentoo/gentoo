@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>perl</herd>
+	<maintainer>
+		<email>mschiff@gentoo.org</email>
+		<name>Marc Schiffbauer</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan">ZMQ-LibZMQ2</remote-id>
+		<remote-id type="cpan-module">ZMQ::LibZMQ2</remote-id>
+	</upstream>
+</pkgmetadata>

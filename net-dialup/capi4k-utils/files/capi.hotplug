@@ -1,0 +1,189 @@
+#!/bin/bash
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/capi4k-utils/files/capi.hotplug,v 1.10 2005/09/03 20:25:17 sbriesen Exp $
+
+. /etc/conf.d/capi
+
+[ "${CAPI_HOTPLUG_USB}" = "yes" ] || exit 0
+
+# possible firmware locations (list and order taken from 'capiinit')
+FWDIRS=(/lib/firmware/isdn /lib/firmware /usr/share/isdn /usr/lib/isdn /lib/isdn)
+
+# Syslog output
+syslog() {  # <msg>
+	/usr/bin/logger -t "capi-usb" "$@"
+}
+
+# OK beep
+beep_ok() {
+	[ "${CAPI_HOTPLUG_BEEP}" = "yes" ] && \
+	echo -en "\033[10;1200]\a\033[10;262]" > /dev/console
+}
+
+# Error beep
+beep_error() {
+	[ "${CAPI_HOTPLUG_BEEP}" = "yes" ] && \
+	echo -en "\033[10;300]\a\033[10;262]" > /dev/console
+}
+
+# Driver lookup
+cardinfo() {  # <driver>
+	# /proc/capi/controller: <controller> <drivername> <state> <cardname> <controllerinfo>
+	/bin/sed -n "s:^\([1-9][0-9]*\) \+${1} \+\([^ ]\+\) \+\([^ ]\+\) \+\([^ ]\+\):\1 \3 \2 \4:p" \
+		/proc/capi/controller 2>/dev/null
+}
+
+# Firmware search
+findfw() {  # <fw_name>
+	local DIR
+	for DIR in ${FWDIRS[*]}; do
+		if [ -f "${DIR}/${1}" ]; then
+			echo "${DIR}/${1}"; return 0
+		fi
+	done
+	return 1
+}
+
+# AVM firmware loader
+avmusb() {  # <driver> <usbdev> <firmware>
+	local CARD NAME STATUS TYPE VER DEV FIRMWARE
+	while read CARD NAME STATUS TYPE VER DEV; do  # AVM cardinfo
+		if [ "${STATUS}" = "detected" -a ${DEV} -eq ${2} ]; then
+			syslog "loading firmware '${3##*/}' onto controller ${CARD} (${NAME})"
+			/usr/sbin/avmcapictrl load "${3}" "${CARD}" || return 1
+			break
+		fi
+	done < <(cardinfo "${1}")
+	return 0
+}
+
+# Split and normalize product code and device
+IFS="/"
+_D=(${DEVICE})
+_P=(${PRODUCT})
+_N=($(printf "%04x/%04x/%04x" 0x${_P[0]} 0x${_P[1]} 0x${_P[2]}))
+unset IFS
+
+# Setup variables
+VENDID="${_N[0]}/${_N[1]}"
+USBBUS="${_D[4]}"
+USBDEV="${_D[5]}"
+
+# Make sure we're not running multiple instances at once.
+# Try twice to lock, otherwise give up.
+LOCK="/var/run/capi-usb-${USBBUS}-${USBDEV}"
+for ((i = 0; i < 2; i = i + 1)); do
+	/bin/ln 2>/dev/null -sn $$ ${LOCK} && break
+	LOCKPID=$(/bin/readlink 2>/dev/null ${LOCK}) || continue
+	[[ $(</proc/${LOCKPID}/cmdline) == $(</proc/$$/cmdline) ]] 2>/dev/null && exit 0
+	/bin/rm -f ${LOCK}
+done
+
+# Check to make sure locking was successful
+if [ ! -L "${LOCK}" ]; then
+	syslog "could not create lock ${LOCK}"
+	beep_error
+	exit 1
+fi
+
+# Set a trap to remove the lockfile when we're finished
+trap "/bin/rm -f ${LOCK}" 0 1 2 3 15
+
+# Select driver and firmware
+LOADER=""
+DRIVER=""
+FIRMWARE=""
+case "${VENDID}" in
+	"057c/0c00") # FRITZCARD!USB
+		DRIVER="fcusb";;
+	"057c/1000") # FRITZCARD!USB v2.0
+		DRIVER="fcusb2"; LOADER="avmusb"; FIRMWARE="fus2base.frm";;
+	"057c/1900") # FRITZCARD!USB v2.1
+		DRIVER="fcusb2"; LOADER="avmusb"; FIRMWARE="fus3base.frm";;
+	"057c/2000") # FRITZX!USB
+		DRIVER="fxusb";;
+	"057c/2200") # BlueFRITZ!USB
+		DRIVER="bfusb"; LOADER="avmusb"; FIRMWARE="bfubase.frm";;
+	"057c/2300") # FRITZDSL!USB
+		DRIVER="fcdslusb"; LOADER="avmusb"; FIRMWARE="fdsubase.frm";;
+	"057c/2800") # FRITZX!USB OEM
+		DRIVER="fxusb_CZ";;
+	"057c/3500") # FRITZDSL!USB SL
+		DRIVER="fcdslslusb"; LOADER="avmusb"; FIRMWARE="fdlubase.frm";;
+	"0959/2bd0") # ISDN USB TA (Cologne Chip HFC-S USB based)
+		DRIVER="hfcsusb";;
+	"0675/1688") # DrayTek miniVigor 128 USB ISDN TA
+		DRIVER="hfcsusb";;
+	"07b0/0007") # Billion tiny USB ISDN TA 128
+		DRIVER="hfcsusb";;
+	"0742/2008") # Stollmann USB TA
+		DRIVER="hfcsusb";;
+	"0742/2009") # Aceex USB ISDN TA
+		DRIVER="hfcsusb";;
+	"0742/200a") # OEM USB ISDN TA
+		DRIVER="hfcsusb";;
+	"08e3/0301") # Olitec USB RNIS
+		DRIVER="hfcsusb";;
+	"07fa/0846") # Bewan Modem RNIS USB
+		DRIVER="hfcsusb";;
+	"07fa/0847") # Djinn Numeris USB
+		DRIVER="hfcsusb";;
+	"07b0/0006") # Twister ISDN TA
+		DRIVER="hfcsusb";;
+	*) # unknown card
+		syslog "unknown USB product: ${VENDID}"
+		exit 1;;
+esac
+
+if [ "${DRIVER}" = "hfcsusb" -a "${CAPI_HOTPLUG_MISDN}" != "yes" ]; then
+	syslog "ignore mISDN card: ${DRIVER} (${VENDID})"
+	exit 0
+fi
+
+case "${ACTION}" in
+	add)
+		# loading capi
+		if ! ( [ -f /proc/capi/capi20 ] || /sbin/modprobe -sq capi ); then
+			syslog "could not load CAPI!"
+			beep_error; exit 1
+		fi
+	
+		# loading driver
+		if ! /sbin/modprobe -sq ${DRIVER}; then
+			syslog "could not load driver ${DRIVER}!"
+			beep_error; exit 1
+		fi
+	
+		# loading firmware	
+		if [ -n "${LOADER}" -a -n "${FIRMWARE}" ]; then
+			CNT=0  # wait for udev (max 10s)
+			while [ ! -c /dev/capi20 -a ${CNT} -lt 40 ]; do
+				sleep 0.25; : $((CNT++))
+			done
+			FW=$(findfw "${FIRMWARE}")
+			if [ -n "${FW}" ]; then
+				if ! ${LOADER} ${DRIVER} ${USBDEV} ${FW}; then
+					syslog "could not load firmware!"
+					beep_error; exit 1
+				fi
+			else
+				syslog "firmware '${FIRMWARE}' not found in ${FWDIRS[0]}"
+				beep_error; exit 1
+			fi
+		fi
+
+		# loading capidrv (should be loaded *after* card driver)
+		if ! ( [ -f /proc/capi/capidrv -o "${CAPI_LOAD_CAPIDRV}" != "yes" ] \
+			|| /sbin/modprobe -sq capidrv ); then
+			syslog "could not load CAPIDRV!"
+		fi
+		
+		beep_ok
+		;;
+
+	remove)
+		/sbin/modprobe -sqr ${DRIVER}
+		;;
+esac
+exit 0

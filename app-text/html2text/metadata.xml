@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>jazzoslav@gmail.com</email>
+		<name>Jaroslav Rakhmatoullin</name>
+		<description>Proxied maintainer, assign bugs to him</description>
+	</maintainer>
+</pkgmetadata>

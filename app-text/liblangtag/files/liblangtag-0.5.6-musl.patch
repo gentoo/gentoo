@@ -1,0 +1,25 @@
+From 6ebf5709810983dca570d9f8873293b01b4a49bc Mon Sep 17 00:00:00 2001
+From: Akira TAGOH <akira@tagoh.org>
+Date: Mon, 20 Apr 2015 10:28:29 +0900
+Subject: [PATCH] add missing sys/types.h in lt-string.h required to build musl
+ libc to satisfy ssize_t. (fixes issue#12)
+
+---
+ liblangtag/lt-string.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/liblangtag/lt-string.h b/liblangtag/lt-string.h
+index 15724fc..c784430 100644
+--- a/liblangtag/lt-string.h
++++ b/liblangtag/lt-string.h
+@@ -18,6 +18,7 @@
+ #define __LT_STRING_H__
+ 
+ #include <liblangtag/lt-macros.h>
++#include <sys/types.h>
+ 
+ LT_BEGIN_DECLS
+ 
+-- 
+2.4.1
+

@@ -1,0 +1,10 @@
+# Copyright 2013-2014 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/desc/abi_ppc.desc,v 1.1 2014/03/29 03:01:32 vapier Exp $
+
+# This file contains descriptions of ABI_PPC USE_EXPAND flags.
+
+# Keep it sorted. Please do not add anything without prior discussion
+# on gentoo-dev.
+32 - 32-bit (ppc) libraries
+64 - 64-bit (ppc64) libraries

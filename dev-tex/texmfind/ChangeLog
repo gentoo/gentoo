@@ -1,0 +1,80 @@
+# ChangeLog for dev-tex/texmfind
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/texmfind/ChangeLog,v 1.20 2015/05/31 00:27:03 mrueg Exp $
+
+  31 May 2015; Manuel Rüger <mrueg@gentoo.org> -texmfind-2008.1.ebuild,
+  -texmfind-2009.1.ebuild:
+  Remove old.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  17 Apr 2012; Andreas Schuerch <nativemad@gentoo.org> texmfind-2010.1.ebuild:
+  x86 stable, see bug 383919
+
+  15 Apr 2012; Agostino Sarubbo <ago@gentoo.org> texmfind-2010.1.ebuild:
+  Stable for amd64, wrt bug #383919
+
+  13 Jun 2011; Matt Turner <mattst88@gentoo.org> texmfind-2010.1.ebuild:
+  Added ~mips, bug 342513
+
+  14 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  texmfind-2008.1.ebuild, texmfind-2009.1.ebuild, texmfind-2010.1.ebuild:
+  Update description field
+
+*texmfind-2010.1 (14 Nov 2010)
+
+  14 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  +texmfind-2010.1.ebuild:
+  version bump for TeXLive 2010
+
+*texmfind-2009.1 (21 Jan 2010)
+
+  21 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  +texmfind-2009.1.ebuild:
+  version bump for TeXLive 2009 files
+
+  19 Jan 2010; Christian Faulhammer <fauli@gentoo.org> -texmfind-0.1.ebuild:
+  clean up
+
+  20 Sep 2009; Alexis Ballier <aballier@gentoo.org> texmfind-2008.1.ebuild:
+  keyword ~ppc64, working fine on a PowerMac 970
+
+  14 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  texmfind-2008.1.ebuild:
+  stable newer version
+
+  10 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  texmfind-2008.1.ebuild:
+  correct SRC_URI
+
+*texmfind-2008.1 (08 Sep 2009)
+
+  08 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  +texmfind-2008.1.ebuild:
+  version bump for TeXLive 2008
+
+  08 Sep 2009; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
+  add myself as maintainer
+
+  05 Jul 2008; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  texmfind-0.1.ebuild:
+  mark ~ppc
+
+  10 May 2008; Santiago M. Mola <coldwind@gentoo.org> texmfind-0.1.ebuild:
+  amd64 stable
+
+  03 May 2008; Christian Faulhammer <opfer@gentoo.org> texmfind-0.1.ebuild:
+  stable x86
+
+  17 Mar 2008; Ferris McCormick <fmccor@gentoo.org> texmfind-0.1.ebuild:
+  Add sparc keyword, examples work.  Thanks to GMN for the tip and to aballier.
+
+  01 Mar 2008; Christian Faulhammer <opfer@gentoo.org> texmfind-0.1.ebuild:
+  keyword ~x86
+
+*texmfind-0.1 (01 Mar 2008)
+
+  01 Mar 2008; Alexis Ballier <aballier@gentoo.org> +metadata.xml,
+  +texmfind-0.1.ebuild:
+  Initial import, thanks a lot Alexandre

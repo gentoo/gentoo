@@ -1,0 +1,26 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/root/files/proofd.initd,v 1.3 2012/01/21 19:23:26 bicatali Exp $
+
+depend() {
+    need root-file-server
+    use logger
+}
+
+start() {
+    ebegin "Starting parallel ROOT facility server"
+    start-stop-daemon --start --quiet \
+	--pidfile /var/run/proofd.pid \
+	--exec /usr/bin/proofd -- ${PROOFD_OPTS} ${PROOF_DIR}
+    pidof /usr/bin/proofd > /var/run/proofd.pid
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping parallel ROOT facility server"
+    start-stop-daemon --stop --quiet \
+	--pidfile /var/run/proofd.pid \
+	--exec /usr/bin/proofd
+    eend $?
+}

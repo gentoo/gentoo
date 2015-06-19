@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		This provides a much safer semaphore than the QSem, QSemN, SampleVar in base.
+		Those base modules are not exception safe and can be broken by killThread.
+		See &lt;https://github.com/ChrisKuklewicz/SafeSemaphore&gt; for more details.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ChrisKuklewicz/SafeSemaphore</remote-id>
+	</upstream>
+</pkgmetadata>

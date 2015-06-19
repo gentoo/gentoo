@@ -1,0 +1,108 @@
+# ChangeLog for dev-util/shc
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/shc/ChangeLog,v 1.29 2012/10/31 11:29:20 pinkbyte Exp $
+
+  31 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> -shc-3.8.7.ebuild:
+  Drop old version
+
+  15 Oct 2012; Raúl Porcel <armin76@gentoo.org> shc-3.8.9.ebuild:
+  x86 stable wrt #438080
+
+  14 Oct 2012; Raúl Porcel <armin76@gentoo.org> shc-3.8.7.ebuild:
+  Move to ~alpha
+
+  12 Oct 2012; Anthony G. Basile <blueness@gentoo.org> shc-3.8.9.ebuild:
+  stable ppc, bug #438080
+
+  12 Oct 2012; Agostino Sarubbo <ago@gentoo.org> shc-3.8.9.ebuild:
+  Stable for amd64, wrt bug #438080
+
+  05 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Pick up maintainance of package and add changelog info to metadata
+
+*shc-3.8.9 (05 Sep 2012)
+
+  05 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> +shc-3.8.9.ebuild:
+  Version bump wrt bug #433970, thanks to Jan Psota
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -shc-3.6.ebuild,
+  -shc-3.7.ebuild, -shc-3.8.3.ebuild:
+  Remove old
+
+  18 Feb 2012; Tobias Klausmann <klausman@gentoo.org> shc-3.8.7.ebuild:
+  Stable on alpha, bug #363217
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> shc-3.8.7.ebuild:
+  x86 stable wrt bug #363217
+
+  15 Feb 2012; Brent Baude <ranger@gentoo.org> shc-3.8.7.ebuild:
+  Marking shc-3.8.7 ppc for bug 363217
+
+  19 Aug 2011; Markos Chandras <hwoarang@gentoo.org> shc-3.8.7.ebuild:
+  Add ~amd64. Bug #379721
+
+*shc-3.8.7 (12 Apr 2011)
+
+  12 Apr 2011; Jeroen Roovers <jer@gentoo.org> +shc-3.8.7.ebuild:
+  Version bump. Add quoting. Remove anti-stripping sed script since we do not
+  use install anyway. Move tc-getCC call to where it will be used.
+
+  30 Aug 2010; Michael Weber (xmw) <xmw@gentoo.org> shc-3.8.3.ebuild:
+  Respect LDFLAGS, do not strip by intall -s, fixes bug 335333
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> shc-3.6.ebuild,
+  shc-3.7.ebuild:
+  Remove virtual/libc
+
+  13 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org> shc-3.7.ebuild:
+  ppc. stable
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*shc-3.8.3 (19 Feb 2006)
+
+  19 Feb 2006; Marcelo Goes <vanquirius@gentoo.org> -shc-3.4.ebuild,
+  +shc-3.8.3.ebuild:
+  3.8.3 version bump for bug 121534. Thanks to Thomas Eckert <eckert dot
+  thomas at gmx dot net>.
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> shc-3.6.ebuild:
+  Stable on ppc.
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> shc-3.4.ebuild,
+  shc-3.6.ebuild, shc-3.7.ebuild:
+  virtual/glibc -> virtual/libc
+
+  04 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> shc-3.7.ebuild:
+  Stable on alpha.
+
+*shc-3.7 (29 Dec 2003)
+
+  29 Dec 2003; Martin Holzer <mholzer@gentoo.org> shc-3.7.ebuild:
+  Version bumped. Closes 28377
+
+*shc-3.6 (16 May 2003)
+
+  16 May 2003;George Shapovalov <george@gentoo.org> shc-3.6.ebuild :
+  new version (#19969)
+  Thanks to Thomas Eckert <eckert.thomas@gmx.net> for notification
+
+*shc-3.4 (05 Jan 2003)
+
+  08 Jan 2003; Jack Morgan <jmorgan@gentoo.org> shc-3.4.ebuild :
+  Removed sparc64 keyword
+
+  05 Jan 2003; George Shapovalov <george@gentoo.org> ChangeLog, shc-3.4.ebuild, files/digest-shc-3.4 :
+  initial release (#12633)
+  ebuild submitted by Tom <Eckert.Thomas@gmx.net>.
+  shc is a compiler/scrambler for interpreter-languages. As long as the
+  interpreter can read it's script from the command-line you can use shc
+  to hide your code -- well this is not very open-source like, but
+  sometimes this may be wanted. The main-target was shell-code.

@@ -1,0 +1,423 @@
+# ChangeLog for dev-perl/Spreadsheet-WriteExcel
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Spreadsheet-WriteExcel/ChangeLog,v 1.90 2015/01/23 12:03:42 zlogene Exp $
+
+  23 Jan 2015; Mikle Kolyada <zlogene@gentoo.org>
+  Spreadsheet-WriteExcel-2.400.0.ebuild:
+  Stable for all wrt bug #535224
+
+  22 Jan 2015; Markus Meier <maekke@gentoo.org>
+  Spreadsheet-WriteExcel-2.400.0.ebuild:
+  arm stable, bug #535224
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org>
+  Spreadsheet-WriteExcel-2.400.0.ebuild:
+  Stable for amd64, wrt bug #535224
+
+  13 Jan 2015; Jeroen Roovers <jer@gentoo.org>
+  Spreadsheet-WriteExcel-2.400.0.ebuild:
+  Stable for HPPA (bug #535224).
+
+*Spreadsheet-WriteExcel-2.390.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Spreadsheet-WriteExcel-2.390.0-r1.ebuild,
+  -Spreadsheet-WriteExcel-2.390.0.ebuild:
+  bumped current stable ebuild(s) EAPI to 5; committed directly to stable as no
+  other changes present and revbump helps stable systems to keep from dieing on
+  perl-5.18 upgrade
+
+  04 Aug 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Spreadsheet-WriteExcel-2.390.0.ebuild, Spreadsheet-WriteExcel-2.400.0.ebuild:
+  Fix DESCRIPTION
+
+  10 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -Spreadsheet-WriteExcel-2.370.0.ebuild,
+  -Spreadsheet-WriteExcel-2.380.0.ebuild, Spreadsheet-WriteExcel-2.390.0.ebuild:
+  ppc stable wrt bug #495472; Drop old.
+
+  10 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Spreadsheet-WriteExcel-2.390.0.ebuild:
+  ppc64 stable wrt bug #495472
+
+  10 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Spreadsheet-WriteExcel-2.390.0.ebuild:
+  ia64 stable wrt bug #495472
+
+  10 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Spreadsheet-WriteExcel-2.390.0.ebuild:
+  sparc stable wrt bug #495472
+
+  10 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Spreadsheet-WriteExcel-2.390.0.ebuild:
+  arm stable wrt bug #495472
+
+  08 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Spreadsheet-WriteExcel-2.390.0.ebuild:
+  x86 stable wrt bug #495472
+
+  08 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Spreadsheet-WriteExcel-2.390.0.ebuild:
+  amd64 stable wrt bug #495472
+
+  08 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Spreadsheet-WriteExcel-2.390.0.ebuild:
+  alpha stable wrt bug #495472
+
+  04 Feb 2014; Jeroen Roovers <jer@gentoo.org>
+  Spreadsheet-WriteExcel-2.390.0.ebuild:
+  Stable for HPPA (bug #495472).
+
+*Spreadsheet-WriteExcel-2.400.0 (04 Feb 2014)
+
+  04 Feb 2014; Mikle Kolyada <zlogene@gentoo.org>
+  +Spreadsheet-WriteExcel-2.400.0.ebuild:
+  Version bump
+
+*Spreadsheet-WriteExcel-2.390.0 (15 Aug 2013)
+
+  15 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +Spreadsheet-WriteExcel-2.390.0.ebuild:
+  Bump
+
+  22 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  Spreadsheet-WriteExcel-2.370.0.ebuild:
+  Stable for s390, wrt bug #449298
+
+  21 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  Spreadsheet-WriteExcel-2.370.0.ebuild:
+  Stable for arm, wrt bug #449298
+
+  20 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  Spreadsheet-WriteExcel-2.370.0.ebuild:
+  Stable for alpha, wrt bug #449298
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  Spreadsheet-WriteExcel-2.370.0.ebuild:
+  Stable for ppc64, wrt bug #449298
+
+  17 Apr 2013; Jeroen Roovers <jer@gentoo.org>
+  Spreadsheet-WriteExcel-2.380.0.ebuild:
+  Stable for HPPA (bug #449298).
+
+  17 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  Spreadsheet-WriteExcel-2.380.0.ebuild:
+  Add ~ppc64, wrt bug #428248
+
+*Spreadsheet-WriteExcel-2.380.0 (24 Nov 2012)
+
+  24 Nov 2012; Torsten Veller <tove@gentoo.org>
+  +Spreadsheet-WriteExcel-2.380.0.ebuild:
+  Version bump
+
+  11 Sep 2012; Raúl Porcel <armin76@gentoo.org>
+  Spreadsheet-WriteExcel-2.370.0.ebuild:
+  Add ~alpha/~s390/~sh wrt #428248
+
+  08 Aug 2012; Naohiro Aota <naota@gentoo.org>
+  Spreadsheet-WriteExcel-2.370.0.ebuild:
+  Add ~x86-fbsd wrt bug #428248
+
+  06 Aug 2012; Alexis Ballier <aballier@gentoo.org>
+  Spreadsheet-WriteExcel-2.370.0.ebuild:
+  keyword ~amd64-fbsd
+
+  03 Aug 2012; Markus Meier <maekke@gentoo.org>
+  Spreadsheet-WriteExcel-2.370.0.ebuild:
+  add ~arm, bug #428248
+
+  29 Jul 2012; Jeroen Roovers <jer@gentoo.org>
+  Spreadsheet-WriteExcel-2.370.0.ebuild:
+  Marked ~hppa (bug #428248).
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -Spreadsheet-WriteExcel-2.37.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org>
+  Spreadsheet-WriteExcel-2.370.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Spreadsheet-WriteExcel-2.370.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Spreadsheet-WriteExcel-2.370.0.ebuild:
+  Change version scheme
+
+  20 Oct 2010; Torsten Veller <tove@gentoo.org>
+  -Spreadsheet-WriteExcel-2.20.ebuild:
+  Cleanup
+
+  27 Jun 2010; <nixnut@gentoo.org> Spreadsheet-WriteExcel-2.37.ebuild:
+  ppc stable #323529
+
+  09 May 2010; Raúl Porcel <armin76@gentoo.org>
+  Spreadsheet-WriteExcel-2.37.ebuild:
+  Drop sh
+
+  08 May 2010; Raúl Porcel <armin76@gentoo.org>
+  Spreadsheet-WriteExcel-2.37.ebuild:
+  ia64/sh/sparc stable wrt #314467
+
+  17 Apr 2010; Torsten Veller <tove@gentoo.org>
+  Spreadsheet-WriteExcel-2.37.ebuild:
+  Stable on amd64, x86 (#314467)
+
+  09 Apr 2010; Torsten Veller <tove@gentoo.org>
+  -Spreadsheet-WriteExcel-2.31.ebuild, -Spreadsheet-WriteExcel-2.32.ebuild,
+  -Spreadsheet-WriteExcel-2.34.ebuild, -Spreadsheet-WriteExcel-2.35.ebuild,
+  -Spreadsheet-WriteExcel-2.36.ebuild:
+  Cleanup
+
+*Spreadsheet-WriteExcel-2.37 (04 Feb 2010)
+
+  04 Feb 2010; Torsten Veller <tove@gentoo.org>
+  +Spreadsheet-WriteExcel-2.37.ebuild:
+  Version bump
+
+*Spreadsheet-WriteExcel-2.36 (23 Jan 2010)
+
+  23 Jan 2010; Torsten Veller <tove@gentoo.org>
+  +Spreadsheet-WriteExcel-2.36.ebuild:
+  Version bump
+
+*Spreadsheet-WriteExcel-2.35 (12 Jan 2010)
+
+  12 Jan 2010; Torsten Veller <tove@gentoo.org>
+  +Spreadsheet-WriteExcel-2.35.ebuild:
+  Version bump
+
+*Spreadsheet-WriteExcel-2.34 (09 Jan 2010)
+
+  09 Jan 2010; Torsten Veller <tove@gentoo.org>
+  +Spreadsheet-WriteExcel-2.34.ebuild:
+  Version bump
+
+*Spreadsheet-WriteExcel-2.32 (31 Dec 2009)
+
+  31 Dec 2009; Torsten Veller <tove@gentoo.org>
+  +Spreadsheet-WriteExcel-2.32.ebuild:
+  Version bump
+
+  24 Dec 2009; Torsten Veller <tove@gentoo.org>
+  -Spreadsheet-WriteExcel-2.25.ebuild, -Spreadsheet-WriteExcel-2.26.ebuild,
+  -Spreadsheet-WriteExcel-2.28.ebuild, -Spreadsheet-WriteExcel-2.29.ebuild:
+  Cleanup
+
+*Spreadsheet-WriteExcel-2.31 (10 Dec 2009)
+
+  10 Dec 2009; Torsten Veller <tove@gentoo.org>
+  +Spreadsheet-WriteExcel-2.31.ebuild:
+  Version bump
+
+*Spreadsheet-WriteExcel-2.29 (26 Nov 2009)
+
+  26 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Spreadsheet-WriteExcel-2.29.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*Spreadsheet-WriteExcel-2.28 (22 Nov 2009)
+
+  22 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Spreadsheet-WriteExcel-2.28.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*Spreadsheet-WriteExcel-2.26 (13 Nov 2009)
+
+  13 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Spreadsheet-WriteExcel-2.26.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*Spreadsheet-WriteExcel-2.25 (22 Oct 2008)
+
+  22 Oct 2008; Torsten Veller <tove@gentoo.org>
+  +Spreadsheet-WriteExcel-2.25.ebuild:
+  Version bump
+
+  15 Sep 2008; Torsten Veller <tove@gentoo.org>
+  -Spreadsheet-WriteExcel-2.15.ebuild,
+  -Spreadsheet-WriteExcel-2.17-r1.ebuild,
+  -Spreadsheet-WriteExcel-2.18.ebuild:
+  Cleanup
+
+  13 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  Spreadsheet-WriteExcel-2.20.ebuild:
+  ppc. stable
+
+  17 Dec 2007; Samuli Suominen <drac@gentoo.org>
+  Spreadsheet-WriteExcel-2.20.ebuild:
+  amd64 stable
+
+  06 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  Spreadsheet-WriteExcel-2.20.ebuild:
+  ia64/sparc/x86 stable
+
+*Spreadsheet-WriteExcel-2.20 (19 Oct 2007)
+
+  19 Oct 2007; Christian Hartmann <ian@gentoo.org>
+  +Spreadsheet-WriteExcel-2.20.ebuild:
+  Version bump
+
+  13 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  Spreadsheet-WriteExcel-2.18.ebuild:
+  ia64/x86 stable
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Spreadsheet-WriteExcel-2.18.ebuild:
+  ppc stable
+
+  14 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Spreadsheet-WriteExcel-2.18.ebuild:
+  sparc stable
+
+  09 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Spreadsheet-WriteExcel-2.18.ebuild:
+  Marking stable amd64
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org>
+  Spreadsheet-WriteExcel-2.17-r1.ebuild:
+  Stable on x86, bug #169152.
+
+  08 Feb 2007; Michael Cummings <mcummings@gentoo.org>
+  Spreadsheet-WriteExcel-2.15.ebuild:
+  Backported dep for OLE-StoreageLite to 2.15 for x86 folks, bug 164681
+
+*Spreadsheet-WriteExcel-2.18 (21 Jan 2007)
+
+  21 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  +Spreadsheet-WriteExcel-2.18.ebuild:
+  Version bump
+
+  21 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org> Manifest:
+  Digest fix.
+
+  21 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Spreadsheet-WriteExcel-2.17-r1.ebuild:
+  ppc stable
+
+  20 Oct 2006; Aron Griffis <agriffis@gentoo.org>
+  Spreadsheet-WriteExcel-2.17-r1.ebuild:
+  Mark 2.17-r1 stable on ia64
+
+  15 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Spreadsheet-WriteExcel-2.15.ebuild, -Spreadsheet-WriteExcel-2.17.ebuild,
+  Spreadsheet-WriteExcel-2.17-r1.ebuild:
+  Marking amd64, sparc stable; cleaning up stale ebuilds
+
+  18 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Spreadsheet-WriteExcel-2.17-r1.ebuild:
+  Marking -r1 ~amd64
+
+  18 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Spreadsheet-WriteExcel-2.15.ebuild:
+  Marking amd64 stable
+
+  17 Aug 2006; Luca Barbato <lu_zero@gentoo.org>
+  Spreadsheet-WriteExcel-2.17-r1.ebuild:
+  Marked ~ppc
+
+*Spreadsheet-WriteExcel-2.17-r1 (17 Aug 2006)
+
+  17 Aug 2006; Christian Hartmann <ian@gentoo.org>
+  +Spreadsheet-WriteExcel-2.17-r1.ebuild:
+  Added missing dev-perl/OLE-StorageLite and dev-perl/IO-stringy dep; META.yml
+  does not say so but the package needs these packages to work correctly;
+  dropped ppc and amd64 keywords because of dev-perl/OLE-StorageLite
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Spreadsheet-WriteExcel-2.15.ebuild, Spreadsheet-WriteExcel-2.17.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  Spreadsheet-WriteExcel-2.15.ebuild, Spreadsheet-WriteExcel-2.17.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+*Spreadsheet-WriteExcel-2.17 (22 May 2006)
+
+  22 May 2006; Christian Hartmann <ian@gentoo.org>
+  -Spreadsheet-WriteExcel-2.11.ebuild, Spreadsheet-WriteExcel-2.15.ebuild,
+  -Spreadsheet-WriteExcel-2.16.ebuild, +Spreadsheet-WriteExcel-2.17.ebuild:
+  Version bump; house-cleaning; fixed homepage url
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  Spreadsheet-WriteExcel-2.16.ebuild:
+  Mark 2.16 ~ia64
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  Spreadsheet-WriteExcel-2.11.ebuild, Spreadsheet-WriteExcel-2.15.ebuild,
+  Spreadsheet-WriteExcel-2.16.ebuild:
+  Virtuals for perl-core
+
+  15 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  Spreadsheet-WriteExcel-2.15.ebuild:
+  Stable on ppc.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Spreadsheet-WriteExcel-2.15.ebuild:
+  Marking sparc x86 stable
+
+*Spreadsheet-WriteExcel-2.16 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  +Spreadsheet-WriteExcel-2.16.ebuild:
+  Version bump
+
+*Spreadsheet-WriteExcel-2.15 (09 Nov 2005)
+
+  09 Nov 2005; Chris White <chriswhite@gentoo.org>
+  -Spreadsheet-WriteExcel-2.04.ebuild, -Spreadsheet-WriteExcel-2.13.ebuild,
+  +Spreadsheet-WriteExcel-2.15.ebuild:
+  Bump to version 2.15 per bug #111933.  Cleaned out older ebuilds.
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Spreadsheet-WriteExcel-2.13.ebuild:
+  dev-perl/File-Temp => perl-core/File-Temp migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Spreadsheet-WriteExcel-2.11.ebuild:
+  dev-perl/File-Temp => perl-core/File-Temp migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Spreadsheet-WriteExcel-2.04.ebuild:
+  dev-perl/File-Temp => perl-core/File-Temp migration
+
+  16 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Spreadsheet-WriteExcel-2.11.ebuild:
+  Stable on sparc
+
+  30 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Spreadsheet-WriteExcel-2.11.ebuild:
+  Stable on ppc.
+
+*Spreadsheet-WriteExcel-2.13 (29 Apr 2005)
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  Spreadsheet-WriteExcel-2.04.ebuild, Spreadsheet-WriteExcel-2.11.ebuild,
+  +Spreadsheet-WriteExcel-2.13.ebuild:
+  Cleaning up for mirrors; new version on cpan
+
+  25 Mar 2005; <blubb@gentoo.org> Spreadsheet-WriteExcel-2.11.ebuild:
+  added ~amd64
+
+*Spreadsheet-WriteExcel-2.11 (18 Oct 2004)
+
+  18 Oct 2004; Michael Cummings <mcummings@gentoo.org>
+  +Spreadsheet-WriteExcel-2.11.ebuild:
+  New version on cpan; tested and added ~sparc
+
+  02 Sep 2004; David Holm <dholm@gentoo.org>
+  Spreadsheet-WriteExcel-2.04.ebuild:
+  Added to ~ppc.
+
+  28 Aug 2004; Renat Lumpau <rl03@gentoo.org>
+  Spreadsheet-WriteExcel-2.04.ebuild:
+  Missing IUSE
+
+*Spreadsheet-WriteExcel-2.04 (28 Aug 2004)
+
+  28 Aug 2004; Renat Lumpau <rl03@gentoo.org> +metadata.xml,
+  +Spreadsheet-WriteExcel-2.04.ebuild:
+  Initial ebuild. Metadot dependency.

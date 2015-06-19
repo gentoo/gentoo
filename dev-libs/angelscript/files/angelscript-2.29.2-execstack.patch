@@ -1,0 +1,13 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Sun Mar 23 13:45:39 UTC 2014
+Subject: fix RWX sections
+
+--- a/sdk/angelscript/source/as_callfunc_arm_gcc.S
++++ b/sdk/angelscript/source/as_callfunc_arm_gcc.S
+@@ -696,3 +696,6 @@
+ 
+ #endif /* arm */
+ 
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif

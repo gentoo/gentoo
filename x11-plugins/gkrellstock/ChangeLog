@@ -1,0 +1,76 @@
+# ChangeLog for x11-plugins/gkrellstock
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellstock/ChangeLog,v 1.21 2015/04/22 06:50:46 jlec Exp $
+
+  22 Apr 2015; Justin Lecher <jlec@gentoo.org> -gkrellstock-0.5.ebuild:
+  Drop old
+
+  21 Apr 2015; Pacho Ramos <pacho@gentoo.org> gkrellstock-0.5-r1.ebuild:
+  ppc stable wrt bug #543926
+
+  21 Apr 2015; Pacho Ramos <pacho@gentoo.org> gkrellstock-0.5-r1.ebuild:
+  x86 stable wrt bug #543926
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> gkrellstock-0.5-r1.ebuild:
+  Stable for amd64, wrt bug #543926
+
+*gkrellstock-0.5.1 (24 Mar 2015)
+
+  24 Mar 2015; Justin Lecher <jlec@gentoo.org> +gkrellstock-0.5.1.ebuild,
+  gkrellstock-0.5-r1.ebuild:
+  Version Bump, #399619
+
+  24 Mar 2015; Justin Lecher <jlec@gentoo.org>
+  +files/gkrellstock-0.5-ldflags.patch, gkrellstock-0.5-r1.ebuild:
+  Fix build problems due to missing CFLAGS, #544090; respect LDFLAGS, #340957
+
+*gkrellstock-0.5-r1 (20 Mar 2015)
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> +gkrellstock-0.5-r1.ebuild,
+  metadata.xml:
+  Modernize ebuild; respect CC
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #144305
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> gkrellstock-0.5.ebuild:
+  Drop sparc keywords
+
+  12 Mar 2007; Jim Ramsay <lack@gentoo.org> gkrellstock-0.5.ebuild:
+  Updated to use new gkrellm-plugin eclass
+
+  21 Feb 2007; Jim Ramsay <lack@gentoo.org> +metadata.xml,
+  -gkrellstock-0.4.ebuild:
+  Cleaning up old versions for gkrellm-1.2 removal
+
+  04 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> gkrellstock-0.5.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org> gkrellstock-0.5.ebuild:
+  Stable on amd64.
+
+  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org> gkrellstock-0.5.ebuild:
+  multilib fixes
+
+  10 Jul 2004; Tom Martin <slarti@gentoo.org> :
+  Marked ~amd64.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*gkrellstock-0.5 (30 Oct 2002)
+
+  30 Oct 2002; Seemant Kulleen <seemant@gentoo.org> gkrellstock-0.5.ebuild
+  ChangeLog files/digest-gkrellstock-0.5 :
+
+  GKrellM2 plugin to retrieve stock quotes from Yahoo! Finance website.
+  Thanks to: Gustavo Felisberto <gustavo@felisberto.net> in bug #8926.
+
+*gkrellstock-0.4 (30 Oct 2002)
+
+  30 Oct 2002; Seemant Kulleen <seemant@gentoo.org> gkrellstock-0.4.ebuild
+  files/digest-gkrellstock-0.4 :
+
+  Version for gkrellm-1.2 added by me :)

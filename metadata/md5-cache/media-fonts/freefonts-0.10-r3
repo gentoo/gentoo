@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm setup
+DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=A Collection of Free Type1 Fonts
+HOMEPAGE=http://www.gimp.org
+IUSE=X X
+KEYWORDS=alpha amd64 arm ia64 ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~sparc-solaris
+LICENSE=freedist
+SLOT=0
+SRC_URI=mirror://gimp/fonts/freefonts-0.10.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	font	b3239d2dc442d1717b9725e2be7cb5d6	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=00c9d9d2c61c4ce09ded3966c81e554f

@@ -1,0 +1,154 @@
+# ChangeLog for dev-libs/libbsd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libbsd/ChangeLog,v 1.41 2015/04/14 10:10:50 dlan Exp $
+
+  14 Apr 2015; Yixun Lan <dlan@gentoo.org> libbsd-0.7.0.ebuild:
+  add arm64 support, tested on cortex-a53 board
+
+  26 Mar 2015; Agostino Sarubbo <ago@gentoo.org> libbsd-0.7.0.ebuild:
+  Stable for ppc64, wrt bug #532764
+
+  27 Feb 2015; Michael Palimaka <kensington@gentoo.org> -libbsd-0.6.0.ebuild:
+  Remove old.
+
+  27 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libbsd-0.7.0.ebuild:
+  Stable for sparc, wrt bug #534120
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libbsd-0.7.0.ebuild:
+  Stable for alpha, wrt bug #534120
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libbsd-0.7.0.ebuild:
+  Stable for ppc, wrt bug #534120
+
+  01 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libbsd-0.7.0.ebuild:
+  Stable for x86, wrt bug #534120
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org> libbsd-0.7.0.ebuild:
+  Stable for amd64, wrt bug #534120
+
+  17 Jan 2015; Markus Meier <maekke@gentoo.org> libbsd-0.7.0.ebuild:
+  arm stable, bug #534120
+
+  09 Jan 2015; Jeroen Roovers <jer@gentoo.org> libbsd-0.7.0.ebuild:
+  Stable for HPPA (bug #536006).
+
+  03 Dec 2014; Agostino Sarubbo <ago@gentoo.org> libbsd-0.6.0.ebuild:
+  Stable for ppc, wrt bug #480692
+
+  12 Nov 2014; Anthony G. Basile <blueness@gentoo.org> libbsd-0.6.0.ebuild,
+  libbsd-0.7.0.ebuild:
+  Keyword ~ppc ~ppc64, bug #503166
+
+  05 Aug 2014; Raúl Porcel <armin76@gentoo.org> libbsd-0.6.0.ebuild,
+  libbsd-0.7.0.ebuild:
+  sparc stable wrt #480692
+
+*libbsd-0.7.0 (30 Jul 2014)
+
+  30 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> +libbsd-0.7.0.ebuild:
+  Version bump; removing hard requirement for GNU .init_array section support,
+  thus, making the package even more portable.
+
+  20 Jul 2014; Tobias Klausmann <klausman@gentoo.org> libbsd-0.6.0.ebuild:
+  Stable on alpha, bug #510330
+
+  18 Jul 2014; Tobias Klausmann <klausman@gentoo.org> libbsd-0.6.0.ebuild:
+  Keyworded on alpha, bug #503166
+
+  20 Jun 2014; Tobias Klausmann <klausman@gentoo.org> libbsd-0.6.0.ebuild:
+  Stable on alpha, bug #480692
+
+  25 May 2014; Markus Meier <maekke@gentoo.org> libbsd-0.6.0.ebuild:
+  arm stable, bug #480692
+
+  20 Mar 2014; Jeroen Roovers <jer@gentoo.org> libbsd-0.6.0.ebuild:
+  Stable for HPPA (bug #480692).
+
+  02 Mar 2014; Jeroen Roovers <jer@gentoo.org> libbsd-0.6.0.ebuild:
+  Marked ~hppa (bug #503166).
+
+  23 Jan 2014; Rick Farina <zerochaos@gentoo.org> libbsd-0.6.0.ebuild:
+  adding ~arm
+
+  13 Aug 2013; Samuli Suominen <ssuominen@gentoo.org> -libbsd-0.4.2.ebuild,
+  -libbsd-0.5.2.ebuild:
+  old
+
+  12 Aug 2013; Agostino Sarubbo <ago@gentoo.org> libbsd-0.6.0.ebuild:
+  Stable for x86, wrt bug #480692
+
+  12 Aug 2013; Agostino Sarubbo <ago@gentoo.org> libbsd-0.6.0.ebuild:
+  Stable for amd64, wrt bug #480692
+
+*libbsd-0.6.0 (14 Jul 2013)
+
+  14 Jul 2013; Samuli Suominen <ssuominen@gentoo.org> +libbsd-0.6.0.ebuild:
+  Version bump.
+
+*libbsd-0.5.2 (10 Jun 2013)
+
+  10 Jun 2013; Samuli Suominen <ssuominen@gentoo.org> +libbsd-0.5.2.ebuild:
+  Version bump.
+
+  02 Jul 2012; Samuli Suominen <ssuominen@gentoo.org> -libbsd-0.3.0-r1.ebuild,
+  -libbsd-0.4.0.ebuild, -libbsd-0.4.1.ebuild:
+  old
+
+  02 Jul 2012; Jeff Horelick <jdhore@gentoo.org> libbsd-0.4.2.ebuild:
+  marked x86 per bug 423809
+
+  28 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libbsd-0.4.2.ebuild:
+  Stable for amd64, wrt bug #423809
+
+*libbsd-0.4.2 (27 Jun 2012)
+
+  27 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> +libbsd-0.4.2.ebuild:
+  Version bump.
+
+*libbsd-0.4.1 (02 Jun 2012)
+
+  02 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> +libbsd-0.4.1.ebuild:
+  Version bump.
+
+*libbsd-0.4.0 (31 May 2012)
+
+  31 May 2012; Samuli Suominen <ssuominen@gentoo.org> +libbsd-0.4.0.ebuild:
+  Version bump.
+
+  15 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> -libbsd-0.2.0.ebuild,
+  -files/libbsd-0.2.0-arc4random-prototypes.patch,
+  -files/libbsd-0.2.0-move-nlist.patch, -libbsd-0.3.0.ebuild:
+  old
+
+  15 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> libbsd-0.3.0-r1.ebuild:
+  amd64/x86 stable for last commit to prevent widespread breakage
+
+*libbsd-0.3.0-r1 (15 Jan 2012)
+
+  15 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> +libbsd-0.3.0-r1.ebuild:
+  Remove libutil.h (and vis.h) from /usr/include to prevent automagic #include
+  by dev-lang/perl wrt #399001 by Michał Górny
+
+  15 Dec 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #353461
+
+  18 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Introduce "freedesktop" as backup herd.
+
+*libbsd-0.3.0 (18 Nov 2011)
+
+  18 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> +libbsd-0.3.0.ebuild:
+  Version bump wrt #376487 by Agostino Sarubbo
+
+  24 Oct 2011; Markus Meier <maekke@gentoo.org> libbsd-0.2.0.ebuild:
+  x86 stable, bug #387929
+
+  22 Oct 2011; Markos Chandras <hwoarang@gentoo.org> libbsd-0.2.0.ebuild:
+  Stable on amd64 wrt bug #387929
+
+*libbsd-0.2.0 (22 Feb 2011)
+
+  22 Feb 2011; signals <signals@gentoo.org> +libbsd-0.2.0.ebuild,
+  +files/libbsd-0.2.0-arc4random-prototypes.patch,
+  +files/libbsd-0.2.0-move-nlist.patch, +metadata.xml:
+  New ebuild for libbsd. Ebuild by Kevin McCarthy. See bug #354271

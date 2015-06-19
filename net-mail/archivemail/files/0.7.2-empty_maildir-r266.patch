@@ -1,0 +1,15 @@
+http://archivemail.svn.sourceforge.net/viewvc/archivemail?view=rev&revision=266
+Fixed crash when archiving an empty maildir with python 2.5.  
+The incompatible changes in mailbox.Maildir triggered an assertion in
+_archive_dir(); removing that assertion since it looks not useful anyway.
+
+--- trunk/archivemail	2008/03/15 15:59:05	265
++++ trunk/archivemail	2008/03/15 18:42:56	266
+@@ -1287,7 +1287,6 @@
+         original = mailbox.MHMailbox(mailbox_name)
+     else:
+         unexpected_error("unknown type: %s" % type)        
+-    assert(original)
+ 
+     cache = IdentityCache(mailbox_name)
+ 

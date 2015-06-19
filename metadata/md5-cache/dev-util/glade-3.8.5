@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=>=dev-libs/glib-2.8:2 >=x11-libs/gtk+-2.24:2 >=dev-libs/libxml2-2.4:2 gnome? ( >=gnome-base/libgnomeui-2 >=gnome-base/libbonoboui-2 ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=dev-python/pygtk-2.10:2 ) dev-util/gtk-doc-am >=dev-util/intltool-0.35 virtual/pkgconfig sys-devel/gettext >=app-text/gnome-doc-utils-0.9 app-text/docbook-xml-dtd:4.1.2 app-arch/xz-utils >=sys-apps/sed-4
+DESCRIPTION=A user interface designer for GTK+ and GNOME
+EAPI=5
+HOMEPAGE=http://glade.gnome.org/
+IUSE=gnome python debug python_targets_python2_7
+KEYWORDS=alpha amd64 arm ia64 ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=GPL-2+ FDL-1.1+
+RDEPEND=>=dev-libs/glib-2.8:2 >=x11-libs/gtk+-2.24:2 >=dev-libs/libxml2-2.4:2 gnome? ( >=gnome-base/libgnomeui-2 >=gnome-base/libbonoboui-2 ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=dev-python/pygtk-2.10:2 )
+REQUIRED_USE=python? ( python_targets_python2_7 )
+SLOT=3/11
+SRC_URI=mirror://gnome/sources/glade3/3.8/glade3-3.8.5.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	7a178335dbd6ea7f50ed4e3e1c13c1e4	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=7c75796007e5645e3e63cbe3e2b48576

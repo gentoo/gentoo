@@ -1,0 +1,23 @@
+diff -ru picselshow-0.0.2-orig/data.c picselshow-0.0.2/data.c
+--- picselshow-0.0.2-orig/data.c	2009-08-10 10:56:14.657708090 +0200
++++ picselshow-0.0.2/data.c	2009-08-10 11:02:12.287665408 +0200
+@@ -453,7 +453,7 @@
+ 
+ bool cFileSource::Action(eAction act)
+ {
+-  static char *str[] = { "mount", "unmount", "eject", "status" };
++  static const char *str[] = { "mount", "unmount", "eject", "status" };
+ 
+   char *cmd = 0;
+   asprintf(&cmd, "%s %s %s", g_szMountScript, str[act], basedir);
+diff -ru picselshow-0.0.2-orig/imagecache.h picselshow-0.0.2/imagecache.h
+--- picselshow-0.0.2-orig/imagecache.h	2009-08-10 10:56:14.654371019 +0200
++++ picselshow-0.0.2/imagecache.h	2009-08-10 11:01:18.421003775 +0200
+@@ -5,6 +5,7 @@
+ #ifndef VDR_IMAGECACHE_HPP
+ #define VDR_IMAGECACHE_HPP
+ 
++#include <sys/types.h>
+ #include <map>
+ #include <vector>
+ #include <string>

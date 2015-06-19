@@ -1,0 +1,30 @@
+From: Christian Kastner <debian@kvr.at>
+Date: Fri, 4 Jun 2010 23:27:24 +0200
+Subject: [PATCH] Link python-pyfann dynamically instead of statically
+
+Upstream links the pyfann extension against libfann's static library. This
+causes all sorts of troubles on some platforms, most notably amd64, where the
+extension FTBFS because the static library isn't compiled with -fPIC. The
+Debian-specific solution presented here is to link to the shared library and
+let package python-pyfann Depend: on it.
+
+Forwarded: no
+Last-Update: 2010-06-04
+---
+ python/setup.py |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/python/setup.py b/python/setup.py
+index 67cef7e..6b2a3dc 100755
+--- a/python/setup.py
++++ b/python/setup.py
+@@ -42,7 +42,7 @@ setup(
+     py_modules=['pyfann.libfann'],
+     ext_modules=[Extension('pyfann._libfann',['pyfann/pyfann_wrap.cxx'], 
+                             include_dirs=['../src/include'], 
+-                            extra_objects=['../src/doublefann.o'],
++                            extra_objects=['../src/.libs/doublefann.o'],
+                             define_macros=[("SWIG_COMPILE",None)]
+                             ),
+                 ]
+-- 

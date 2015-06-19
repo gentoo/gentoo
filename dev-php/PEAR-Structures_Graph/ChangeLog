@@ -1,0 +1,90 @@
+# ChangeLog for dev-php/PEAR-Structures_Graph
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Structures_Graph/ChangeLog,v 1.20 2015/04/15 02:17:47 grknight Exp $
+
+*PEAR-Structures_Graph-1.0.4-r2 (15 Apr 2015)
+
+  15 Apr 2015; Brian Evans <grknight@gentoo.org>
+  +PEAR-Structures_Graph-1.0.4-r2.ebuild,
+  -PEAR-Structures_Graph-1.0.4-r1.ebuild:
+  Revbump for missing RDEPEND
+
+*PEAR-Structures_Graph-1.0.4-r1 (14 Jan 2015)
+
+  14 Jan 2015; Brian Evans <grknight@gentoo.org>
+  +PEAR-Structures_Graph-1.0.4-r1.ebuild:
+  EAPI revbump
+
+  26 Jan 2014; Ole Markus With <olemarkus@gentoo.org>
+  PEAR-Structures_Graph-1.0.4.ebuild:
+  Removing stable keyword for sh/s390
+
+  10 Feb 2012; Ole Markus With <olemarkus@gentoo.org>
+  -PEAR-Structures_Graph-1.0.2.ebuild:
+  Remove old version
+
+  29 Jan 2012; Raúl Porcel <armin76@gentoo.org>
+  PEAR-Structures_Graph-1.0.4.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable
+
+  19 Jan 2012; Matti Bickel <mabi@gentoo.org>
+  -PEAR-Structures_Graph-1.0.3.ebuild:
+  remove old
+
+  26 Apr 2011; <olemarkus@gentoo.org> PEAR-Structures_Graph-1.0.4.ebuild:
+  Fixed a circular dependency issue. Bug 364943
+
+*PEAR-Structures_Graph-1.0.4 (19 Apr 2011)
+
+  19 Apr 2011; <olemarkus@gentoo.org> +PEAR-Structures_Graph-1.0.4.ebuild:
+  Version bump. Bug #362785. Thanks to Denny
+
+  10 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  PEAR-Structures_Graph-1.0.3.ebuild:
+  ppc stable wrt #294256, #349318, #350908
+
+  06 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  PEAR-Structures_Graph-1.0.3.ebuild:
+  stable for ppc64 wrt #340807
+
+  05 Nov 2010; Jeroen Roovers <jer@gentoo.org>
+  PEAR-Structures_Graph-1.0.3.ebuild:
+  Stable for HPPA (bug #336869).
+
+  20 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  PEAR-Structures_Graph-1.0.3.ebuild:
+  Stable on amd64 wrt bug #336869
+
+  14 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  PEAR-Structures_Graph-1.0.3.ebuild:
+  x86 stable, bug 336869
+
+  01 Oct 2010; Brent Baude <ranger@gentoo.org>
+  PEAR-Structures_Graph-1.0.2.ebuild:
+  Marking PEAR-Structures_Graph-1.0.2 ppc64 for bug 311633
+
+  18 Jul 2010; <nixnut@gentoo.org> PEAR-Structures_Graph-1.0.2.ebuild:
+  ppc stable #311633
+
+*PEAR-Structures_Graph-1.0.3 (17 Jun 2010)
+
+  17 Jun 2010; <mabi@gentoo.org> +PEAR-Structures_Graph-1.0.3.ebuild:
+  version & eapi bump for php-5.3 (bug #298205)
+
+  09 May 2010; Raúl Porcel <armin76@gentoo.org>
+  PEAR-Structures_Graph-1.0.2.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #311633
+
+  15 Apr 2010; Markus Meier <maekke@gentoo.org>
+  PEAR-Structures_Graph-1.0.2.ebuild:
+  amd64 stable, bug #311633
+
+  12 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  PEAR-Structures_Graph-1.0.2.ebuild:
+  x86 stable wrt bug #311633
+
+*PEAR-Structures_Graph-1.0.2 (23 Sep 2009)
+
+  23 Sep 2009; Steve Dibb <beandog@gentoo.org>
+  +PEAR-Structures_Graph-1.0.2.ebuild, +metadata.xml:
+  Initial commit; new split ebuilds for PEAR base install

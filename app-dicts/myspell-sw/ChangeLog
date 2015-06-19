@@ -1,0 +1,70 @@
+# ChangeLog for app-dicts/myspell-sw
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/myspell-sw/ChangeLog,v 1.19 2014/01/05 11:30:20 pacho Exp $
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org> myspell-sw-20060316.ebuild:
+  keyword ~amd64-fbsd
+
+  27 Sep 2010; Mart Raudsepp <leio@gentoo.org> myspell-sw-20060316.ebuild:
+  Add ~mips
+
+  22 May 2010; Raúl Porcel <armin76@gentoo.org> myspell-sw-20060316.ebuild:
+  alpha/arm/ia64/sh/sparc stable
+
+  13 May 2010; Joseph Jezak <josejx@gentoo.org> myspell-sw-20060316.ebuild:
+  Marked ppc64 stable.
+
+  22 Jun 2009; Jeroen Roovers <jer@gentoo.org> myspell-sw-20060316.ebuild:
+  Stable for HPPA too.
+
+  30 Mar 2009; Raúl Porcel <armin76@gentoo.org> myspell-sw-20060316.ebuild:
+  Add ~arm/~sh wrt #261064
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Kevin Quinn (kevquinn, #93689) from metadata.xml.
+
+  06 Jan 2008; Brent Baude <ranger@gentoo.org> myspell-sw-20060316.ebuild:
+  Marking myspell-sw-20060316 ~ppc64 for bug 204587
+
+  02 Jan 2008; Raúl Porcel <armin76@gentoo.org> myspell-sw-20060316.ebuild:
+  Add ~alpha/~ia64
+
+  25 Dec 2007; Jeroen Roovers <jer@gentoo.org> myspell-sw-20060316.ebuild:
+  Marked ~hppa for armin76.
+
+  01 Aug 2006; Simon Stelling <blubb@gentoo.org> myspell-sw-20060316.ebuild:
+  stable on amd64
+
+  16 Jul 2006; Joshua Jackson <tsunam@gentoo.org>
+  myspell-sw-20060316.ebuild:
+  x86 stable; for openoffice-2.0.3
+
+  09 Jul 2006; Kevin F. Quinn <kevquinn@gentoo.org>
+  myspell-sw-20060316.ebuild:
+  rearrange to avoid clobber of DESCRIPTION by multilib.eclass - thanks
+  Mr_Bones_ for the heads-up
+
+  08 Jul 2006; Lars Weiler <pylon@gentoo.org> myspell-sw-20060316.ebuild:
+  Stable on ppc.
+
+  23 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  myspell-sw-20060316.ebuild:
+  Stable on sparc
+
+  22 May 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  myspell-sw-20060316.ebuild:
+  Stick a ~sparc in
+
+  19 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  myspell-sw-20060316.ebuild:
+  Add ~x86-fbsd and ~amd64 keywords.
+
+*myspell-sw-20060316 (01 May 2006)
+
+  01 May 2006; Kevin F. Quinn <kevquinn@gentoo.org> +metadata.xml,
+  +myspell-sw-20060316.ebuild:
+  New ebuild for Kiswahili myspell dictionary

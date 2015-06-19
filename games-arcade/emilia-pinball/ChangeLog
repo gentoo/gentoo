@@ -1,0 +1,121 @@
+# ChangeLog for games-arcade/emilia-pinball
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/emilia-pinball/ChangeLog,v 1.26 2015/01/04 09:24:26 tupone Exp $
+
+  04 Jan 2015; Tupone Alfredo <tupone@gentoo.org>
+  emilia-pinball-0.3.1-r1.ebuild:
+  EAPI 5
+
+  06 Nov 2014; Mike Frysinger <vapier@gentoo.org>
+  emilia-pinball-0.3.1-r1.ebuild:
+  Depend on libltdl rather than libtool by default #528294 by Pacho Ramos.
+
+  18 Dec 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  emilia-pinball-0.3.1-r1.ebuild:
+  add joystick use dep (bug #447758)
+
+  26 Apr 2011; Tupone Alfredo <tupone@gentoo.org>
+  emilia-pinball-0.3.1-r1.ebuild, +files/emilia-pinball-0.3.1-gcc46.patch,
+  +files/emilia-pinball-0.3.1-parallel.patch:
+  Build with gcc-4.6 Bug #364805 by Diego Elio Pettenò
+  Fix parallel make
+
+  25 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  emilia-pinball-0.3.1-r1.ebuild:
+  Fix building with make >= 3.82 by not using "dnl" for commenting lines out
+  from Makefile.am wrt #334899 by Diego E. Pettenò.
+
+  13 Apr 2010; Raúl Porcel <armin76@gentoo.org>
+  emilia-pinball-0.3.1.ebuild, emilia-pinball-0.3.1-r1.ebuild:
+  Drop alpha keyword
+
+  09 Mar 2010; Joseph Jezak <josejx@gentoo.org>
+  emilia-pinball-0.3.1-r1.ebuild:
+  Marked ppc stable for bug #252403.
+
+  06 Mar 2010; Markus Meier <maekke@gentoo.org>
+  emilia-pinball-0.3.1-r1.ebuild:
+  amd64 stable, bug #252403
+
+  06 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  emilia-pinball-0.3.1-r1.ebuild:
+  x86 stable wrt bug #252403
+
+*emilia-pinball-0.3.1-r1 (05 Mar 2010)
+
+  05 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +emilia-pinball-0.3.1-r1.ebuild,
+  +files/emilia-pinball-0.3.1-libtool.patch:
+  Use system libltdl wrt #252403, thanks to Diego E. 'Flameeyes' Pettenò
+  for reporting.
+
+  24 Jun 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/emilia-pinball-0.3.1-glibc210.patch, emilia-pinball-0.3.1.ebuild:
+  EAPI=2; tidy; add patch for building with glibc210 from Martin Väth (bug
+  #274833)
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org>
+  emilia-pinball-0.3.1.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  emilia-pinball-0.3.1.ebuild:
+  Removing old virtual/x11 dependency.
+
+  20 Sep 2006; <blubb@gentoo.org> emilia-pinball-0.3.1.ebuild:
+  stable on amd64
+
+  15 Jun 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  emilia-pinball-0.3.1.ebuild:
+  tidy a bit; add desktop entry
+
+  28 Jan 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  emilia-pinball-0.3.0.ebuild, emilia-pinball-0.3.1.ebuild:
+  Add modular X dependencies.
+
+  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  emilia-pinball-0.3.0.ebuild, emilia-pinball-0.3.1.ebuild:
+  Removed INSTALL file.
+
+  17 Jan 2005; Jason Wever <weeve@gentoo.org> emilia-pinball-0.3.1.ebuild:
+  Added ~sparc keyword.
+
+  08 Nov 2004; Joseph Jezak <josejx@gentoo.org> emilia-pinball-0.3.1.ebuild:
+  Marked ppc stable.
+
+  03 Aug 2004; David Holm <dholm@gentoo.org> emilia-pinball-0.3.1.ebuild:
+  Added to ~ppc.
+
+  21 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  emilia-pinball-0.3.1.ebuild:
+  more error checking/messages
+
+*emilia-pinball-0.3.1 (03 Jan 2004)
+
+  03 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #35900.
+
+*emilia-pinball-0.3.0 (16 Jul 2003)
+
+  06 Oct 2003; Aron Griffis <agriffis@gentoo.org> emilia-pinball-0.3.0.ebuild:
+  Stable on alpha
+
+  16 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump + cleanup #20166.  Thanks to TGL for finishing it off.
+
+*emilia-pinball-0.1.2-r1 (20 Mar 2003)
+
+  20 Mar 2003; Graham Forest <vladimir@gentoo.org>
+  emilia-pinball-0.1.2-r1.ebuild:
+  Removed usage of pic USE flag
+
+  07 Jan 2003; foser <foser@gentoo.org> emilia-pinball-1.2.0.ebuild :
+  Added sdl-mixer and sdl-image dep
+
+  06 Dec 2003; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
+
+*emilia-pinball-0.1.2 (31 Dec 2002)
+
+  31 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me for #6843.

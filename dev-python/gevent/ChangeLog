@@ -1,0 +1,128 @@
+# ChangeLog for dev-python/gevent
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/gevent/ChangeLog,v 1.34 2015/06/07 13:23:33 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*gevent-1.0.2 (23 May 2015)
+
+  23 May 2015; Ultrabug <ultrabug@gentoo.org> +gevent-1.0.2.ebuild:
+  version bump
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> gevent-1.0.1.ebuild,
+  gevent-1.0.ebuild:
+  Drop old Python implementations
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> gevent-1.0.1.ebuild:
+  ppc stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> gevent-1.0.1.ebuild:
+  ppc64 stable, bug 540290
+
+  26 Feb 2015; Markus Meier <maekke@gentoo.org> gevent-1.0.1.ebuild:
+  arm stable, bug #535326
+
+  23 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gevent-1.0.1.ebuild:
+  Stable for ppc64, wrt bug #535326
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gevent-1.0.1.ebuild:
+  Stable for ppc, wrt bug #535326
+
+  07 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gevent-1.0.1.ebuild:
+  Stable for x86, wrt bug #535326
+
+  07 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gevent-1.0.1.ebuild:
+  Stable for amd64, wrt bug #535326
+
+  08 Dec 2014; Agostino Sarubbo <ago@gentoo.org> gevent-1.0.ebuild:
+  Stable for ppc64, wrt bug #530592
+
+*gevent-1.0.1 (01 May 2014)
+
+  01 May 2014; Tim Harder <radhermit@gentoo.org> +gevent-1.0.1.ebuild:
+  Version bump.
+
+  18 Mar 2014; Tim Harder <radhermit@gentoo.org> -gevent-0.13.7.ebuild,
+  -gevent-0.13.8.ebuild, -gevent-1.0_beta2.ebuild, -gevent-1.0_beta2-r1.ebuild,
+  -gevent-1.0_rc2.ebuild, -gevent-1.0_rc3.ebuild:
+  Remove old.
+
+  18 Mar 2014; Tim Harder <radhermit@gentoo.org> gevent-1.0.ebuild:
+  Mark arm stable.
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org> gevent-1.0.ebuild:
+  amd64 stable, bug #500496
+
+  23 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> gevent-1.0.ebuild:
+  x86 stable wrt bug #500496
+
+  16 Feb 2014; Mike Frysinger <vapier@gentoo.org> gevent-1.0_rc3.ebuild:
+  Mark arm stable.
+
+  06 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org> gevent-1.0.ebuild:
+  Keyword amd64-linux and x86-linux
+
+  07 Dec 2013; Pacho Ramos <pacho@gentoo.org> gevent-1.0_rc3.ebuild:
+  x86 stable, bug #488738
+
+  29 Nov 2013; Pacho Ramos <pacho@gentoo.org> gevent-1.0_rc3.ebuild:
+  amd64 stable, bug #488738
+
+*gevent-1.0 (26 Nov 2013)
+
+  26 Nov 2013; Tim Harder <radhermit@gentoo.org> +gevent-1.0.ebuild:
+  Version bump.
+
+*gevent-1.0_rc3 (27 Sep 2013)
+
+  27 Sep 2013; Tim Harder <radhermit@gentoo.org> +gevent-1.0_rc3.ebuild:
+  Version bump.
+
+  11 Jul 2013; Vicente Olivert Riera <vincent@gentoo.org> gevent-1.0_rc2.ebuild:
+  ppc, ppc64 keywords added, bug 467248
+
+*gevent-0.13.8 (22 May 2013)
+
+  22 May 2013; Tim Harder <radhermit@gentoo.org> +gevent-0.13.8.ebuild:
+  Version bump and migrate to distutils-r1.
+
+*gevent-1.0_rc2 (14 Feb 2013)
+
+  14 Feb 2013; Tim Harder <radhermit@gentoo.org> +gevent-1.0_rc2.ebuild:
+  Version bump.
+
+*gevent-1.0_beta2-r1 (05 Feb 2013)
+
+  05 Feb 2013; Michał Górny <mgorny@gentoo.org> +gevent-1.0_beta2-r1.ebuild:
+  Migrate to distutils-r1.
+
+  14 Nov 2012; Ian Delaney <idella4@gentoo.org> metadata.xml:
+  Updating maintainer, metadata.xml
+
+  17 Jul 2012; Mike Frysinger <vapier@gentoo.org> gevent-0.13.7.ebuild,
+  gevent-1.0_beta2.ebuild:
+  Add arm love.
+
+  21 May 2012; Kacper Kowalik <xarthisius@gentoo.org> gevent-0.13.7.ebuild,
+  gevent-1.0_beta2.ebuild:
+  Add missing PYTHON_DEPEND, thanks to Arfrever for reporting
+
+  20 May 2012; Kacper Kowalik <xarthisius@gentoo.org> gevent-0.13.7.ebuild:
+  Add (commented out) tests' dependencies for the daredevil that would want to
+  fix them
+
+*gevent-1.0_beta2 (19 May 2012)
+
+  19 May 2012; Kacper Kowalik <xarthisius@gentoo.org> +gevent-1.0_beta2.ebuild:
+  Version bump with beta release (masked)
+
+  18 May 2012; Kacper Kowalik <xarthisius@gentoo.org> gevent-0.13.7.ebuild:
+  Fix vars order
+
+*gevent-0.13.7 (18 May 2012)
+
+  18 May 2012; Kacper Kowalik <xarthisius@gentoo.org> +gevent-0.13.7.ebuild,
+  +metadata.xml:
+  Initial import, fixes #415589. Ebuild written by Ian Delaney
+  <johneed@hotmail.com>

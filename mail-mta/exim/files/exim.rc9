@@ -1,0 +1,46 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/files/exim.rc9,v 1.1 2015/05/05 12:55:34 grobian Exp $
+
+extra_started_commands="reload"
+
+depend() {
+	need logger
+	use antivirus net
+	provide mta
+}
+
+tidy_dbs() {
+	local spooldir=$(/usr/sbin/exim -C /etc/exim/${SVCNAME}.conf -bP -n spool_directory)
+	local db
+	local ret=0
+	ebegin "Tidying hints databases in ${spooldir}/db"
+	for db in "${spooldir}"/db/* ; do
+		[[ ${db} == *".lockfile" || ${db} == *"*" ]] && continue
+		/usr/sbin/exim_tidydb ${TIDY_OPTS} "${spooldir}" ${db##*/} > /dev/null
+		: $((ret += $?))
+	done
+	eend ${ret}
+}
+
+start() {
+	# if you use multiple instances, make sure you set spool_directory
+	# in the configfile
+	tidy_dbs
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --exec /usr/sbin/exim --pidfile /run/${SVCNAME}.pid -- -C /etc/exim/${SVCNAME}.conf ${EXIM_OPTS:--bd -q15m}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --pidfile /run/${SVCNAME}.pid --name exim
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading ${SVCNAME}"
+	start-stop-daemon --signal HUP --pidfile /run/${SVCNAME}.pid --name exim
+	eend $?
+}

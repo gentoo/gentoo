@@ -1,0 +1,34 @@
+# ChangeLog for sys-libs/libapparmor
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libapparmor/ChangeLog,v 1.7 2015/04/08 18:28:33 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> libapparmor-2.8.3.ebuild:
+  Drop old Python implementations
+
+  09 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  libapparmor-2.8.3.ebuild, libapparmor-2.8.4.ebuild:
+  Replace perlinfo with perl_set_version
+
+*libapparmor-2.8.4 (15 Oct 2014)
+
+  15 Oct 2014; Michael Palimaka <kensington@gentoo.org>
+  +libapparmor-2.8.4.ebuild, -libapparmor-2.8.2.ebuild:
+  Version bump. Remove old.
+
+  14 Jul 2014; Patrick Lauer <patrick@gentoo.org> libapparmor-2.8.3.ebuild:
+  Add ~x86 keyword
+
+*libapparmor-2.8.3 (17 Apr 2014)
+
+  17 Apr 2014; Michael Palimaka <kensington@gentoo.org>
+  +libapparmor-2.8.3.ebuild:
+  Version bump.
+
+  03 Dec 2013; Michael Palimaka <kensington@gentoo.org> metadata.xml:
+  Add hardened herd.
+
+*libapparmor-2.8.2 (03 Dec 2013)
+
+  03 Dec 2013; Michael Palimaka <kensington@gentoo.org>
+  +libapparmor-2.8.2.ebuild, +metadata.xml:
+  New package wrt bug #118779.

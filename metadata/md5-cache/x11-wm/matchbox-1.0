@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=Light weight WM designed for use on PDA computers
+HOMEPAGE=http://matchbox-project.org/
+IUSE=minimal
+KEYWORDS=amd64 ~arm ~hppa ppc x86
+LICENSE=metapackage
+RDEPEND=x11-wm/matchbox-common x11-wm/matchbox-desktop x11-wm/matchbox-panel x11-wm/matchbox-window-manager !minimal? ( x11-misc/matchbox-keyboard x11-themes/matchbox-themes-extra x11-plugins/matchbox-applet-input-manager x11-plugins/matchbox-applet-startup-monitor x11-plugins/matchbox-applet-volume )
+SLOT=0
+_md5_=fe18b0159a6bf19fe5250c42050839c7

@@ -1,0 +1,26 @@
+fix m4 warnings:
+zthread.m4:34: warning: underquoted definition of AM_PATH_ZTHREAD
+pthread.m4:39: warning: underquoted definition of AM_DETECT_PTHREAD
+
+--- a/share/zthread.m4
++++ b/share/zthread.m4
+@@ -31,7 +31,7 @@
+ dnl ZTHREAD_CXXFLAGS
+ dnl ZTHREAD_LIBS
+ dnl 
+-AC_DEFUN(AM_PATH_ZTHREAD,
++AC_DEFUN([AM_PATH_ZTHREAD],
+ [
+ 
+ 
+--- a/share/pthread.m4
++++ b/share/pthread.m4
+@@ -36,7 +36,7 @@
+ GNU Pth can also be used if it was configured with --enable-pthread.
+ EOF
+ 
+-AC_DEFUN(AM_DETECT_PTHREAD,
++AC_DEFUN([AM_DETECT_PTHREAD],
+ [
+ 
+ pthread_explicit="no"

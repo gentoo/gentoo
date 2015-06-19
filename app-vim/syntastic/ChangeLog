@@ -1,0 +1,65 @@
+# ChangeLog for app-vim/syntastic
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/syntastic/ChangeLog,v 1.14 2015/06/06 09:47:17 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  22 Jan 2015; Tim Harder <radhermit@gentoo.org> -syntastic-3.0.0.ebuild,
+  -syntastic-3.1.0.ebuild, -syntastic-3.2.0.ebuild, -syntastic-3.3.0.ebuild,
+  -syntastic-3.4.0.ebuild:
+  Remove old.
+
+  22 Jan 2015; Tim Harder <radhermit@gentoo.org> syntastic-3.5.0.ebuild:
+  Stabilize for amd64/x86.
+
+*syntastic-3.6.0 (22 Jan 2015)
+
+  22 Jan 2015; Tim Harder <radhermit@gentoo.org> +syntastic-3.6.0.ebuild,
+  syntastic-9999.ebuild:
+  Version bump.
+
+*syntastic-3.5.0 (02 Sep 2014)
+
+  02 Sep 2014; Tim Harder <radhermit@gentoo.org> +syntastic-3.5.0.ebuild:
+  Version bump.
+
+*syntastic-3.4.0 (20 Mar 2014)
+
+  20 Mar 2014; Tim Harder <radhermit@gentoo.org> +syntastic-3.4.0.ebuild:
+  Version bump.
+
+*syntastic-3.3.0 (22 Jan 2014)
+
+  22 Jan 2014; Tim Harder <radhermit@gentoo.org> +syntastic-3.3.0.ebuild:
+  Version bump (bug #498964).
+
+  05 Jan 2014; Agostino Sarubbo <ago@gentoo.org> syntastic-3.2.0.ebuild:
+  Stable for x86, wrt bug #495360
+
+  03 Jan 2014; Chema Alonso <nimiux@gentoo.org> syntastic-3.2.0.ebuild:
+  Stable for amd64 wrt bug #495360
+
+  01 Dec 2013; Johannes Huber <johu@gentoo.org> syntastic-3.1.0.ebuild:
+  x86 stable wrt bug #481884
+
+*syntastic-3.2.0 (11 Nov 2013)
+
+  11 Nov 2013; Tim Harder <radhermit@gentoo.org> +syntastic-3.2.0.ebuild:
+  Version bump.
+
+  05 Nov 2013; Tony Vroon <chainsaw@gentoo.org> syntastic-3.1.0.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #481884.
+
+*syntastic-3.1.0 (27 Aug 2013)
+
+  27 Aug 2013; Tim Harder <radhermit@gentoo.org> +syntastic-3.1.0.ebuild:
+  Version bump.
+
+*syntastic-9999 (24 Jul 2013)
+*syntastic-3.0.0 (24 Jul 2013)
+
+  24 Jul 2013; Tim Harder <radhermit@gentoo.org> +syntastic-3.0.0.ebuild,
+  +syntastic-9999.ebuild, +metadata.xml:
+  Initial import (bug #450946 by Rustam Karimov).

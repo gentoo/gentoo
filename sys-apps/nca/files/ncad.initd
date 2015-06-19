@@ -1,0 +1,16 @@
+#!/sbin/runscript
+# Copyright 1999-2007 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/nca/files/ncad.initd,v 1.1 2007/05/25 20:44:52 sbriesen Exp $
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --quiet --exec /sbin/ncad
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --retry 5 --quiet --exec /sbin/ncad
+	eend ${?}
+}

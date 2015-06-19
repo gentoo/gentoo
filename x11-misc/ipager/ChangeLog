@@ -1,0 +1,26 @@
+# ChangeLog for x11-misc/ipager
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/ipager/ChangeLog,v 1.5 2013/06/01 11:24:31 pacho Exp $
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #144305
+
+  03 Mar 2013; Ryan Hill <dirtyepic@gentoo.org> ipager-1.1.0.ebuild,
+  +files/ipager-1.1.0-gcc47.patch:
+  Fix build with GCC 4.7 (bug #423215).
+
+  06 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> ipager-1.1.0.ebuild:
+  Missing USE depend wrt #248571 by Kacper Kowalik.
+
+  09 Sep 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +files/ipager-1.1.0-gcc43.patch, +files/ipager-1.1.0-scons_flags.patch,
+  ipager-1.1.0.ebuild:
+  Fix ipager to actually build.
+
+*ipager-1.1.0 (09 Sep 2008)
+
+  09 Sep 2008; Jim Ramsay <lack@gentoo.org>
+  +files/ipager-1.1.0-scons_imlib2.patch, +metadata.xml,
+  +ipager-1.1.0.ebuild:
+  New package: ipager is a themeable desktop pager for fluxbox and other
+  window managers.

@@ -1,0 +1,534 @@
+# ChangeLog for app-i18n/anthy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/anthy/ChangeLog,v 1.144 2015/06/09 11:17:46 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  20 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -anthy-9100h.ebuild:
+  Remove old.
+
+  04 Jan 2015; Benda Xu <heroxbd@gentoo.org> anthy-9100h-r1.ebuild:
+  keyword ~arm
+
+  30 Dec 2012; Agostino Sarubbo <ago@gentoo.org> anthy-9100h-r1.ebuild:
+  Stable for alpha, wrt bug #441080
+
+  29 Dec 2012; Agostino Sarubbo <ago@gentoo.org> anthy-9100h-r1.ebuild:
+  Stable for sparc, wrt bug #441080
+
+  18 Dec 2012; Agostino Sarubbo <ago@gentoo.org> anthy-9100h-r1.ebuild:
+  Stable for ia64, wrt bug #441080
+
+  10 Dec 2012; Jeroen Roovers <jer@gentoo.org> anthy-9100h-r1.ebuild:
+  Stable for HPPA (bug #441080).
+
+  08 Dec 2012; Agostino Sarubbo <ago@gentoo.org> anthy-9100h-r1.ebuild:
+  Stable for ppc64, wrt bug #441080
+
+  07 Dec 2012; Agostino Sarubbo <ago@gentoo.org> anthy-9100h-r1.ebuild:
+  Stable for ppc, wrt bug #441080
+
+  07 Dec 2012; <ago@gentoo.org> anthy-9100h-r1.ebuild:
+  Stable for x86, wrt bug #441080
+
+  07 Dec 2012; <ago@gentoo.org> anthy-9100h-r1.ebuild:
+  Stable for amd64, wrt bug #441080
+
+  06 Feb 2011; Jonathan Callen <abcd@gentoo.org> anthy-9100h-r1.ebuild:
+  Add prefix keywords
+
+*anthy-9100h-r1 (12 Jan 2011)
+
+  12 Jan 2011; MATSUU Takuto <matsuu@gentoo.org> +anthy-9100h-r1.ebuild,
+  +files/anthy-9100h-anthy_context_t.patch, metadata.xml:
+  Fixed header to work with app-i18n/im-ja. Added static-libs USE flag and
+  canna-2ch local USE flag.
+
+  25 Nov 2010; Akinori Hattori <hattya@gentoo.org>
+  -files/anthy-7500b-asneeded.patch, -files/anthy-mkdic-gcc34.patch,
+  -files/anthy-7900-asneeded.diff:
+  remove unused files. fixes bug #342499.
+
+  23 Jan 2010; MATSUU Takuto <matsuu@gentoo.org> -anthy-9100d.ebuild:
+  Removed old version.
+
+  27 Sep 2009; Brent Baude <ranger@gentoo.org> anthy-9100h.ebuild:
+  Marking anthy-9100h ppc64 for bug 277353
+
+  17 Sep 2009; MATSUU Takuto <matsuu@gentoo.org> -anthy-7500b.ebuild,
+  -anthy-7900.ebuild, anthy-9100d.ebuild, -anthy-9100e.ebuild,
+  -anthy-9100g.ebuild, anthy-9100h.ebuild:
+  Fixed LICENSE. Removed old versions.
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> anthy-9100h.ebuild:
+  ppc stable #275687
+
+  21 Jul 2009; <chainsaw@gentoo.org> anthy-9100h.ebuild:
+  Marked stable on AMD64 as requested by MATSUU Takuto <matsuu@gentoo.org>
+  in bug #275687.
+
+  21 Jul 2009; Jeroen Roovers <jer@gentoo.org> anthy-9100h.ebuild:
+  Stable for HPPA (bug #275687).
+
+  01 Jul 2009; Raúl Porcel <armin76@gentoo.org> anthy-9100h.ebuild:
+  ia64/sparc stable wrt #275687
+
+  30 Jun 2009; Christian Faulhammer <fauli@gentoo.org> anthy-9100h.ebuild:
+  stable x86, bug 275687
+
+  28 Jun 2009; Tobias Klausmann <klausman@gentoo.org> anthy-9100h.ebuild:
+  Stable on alpha, bug #275687
+
+*anthy-9100h (10 Feb 2009)
+
+  10 Feb 2009; MATSUU Takuto <matsuu@gentoo.org> +anthy-9100h.ebuild:
+  Version bumped.
+
+*anthy-9100g (29 Jan 2009)
+
+  29 Jan 2009; MATSUU Takuto <matsuu@gentoo.org> +anthy-9100g.ebuild:
+  Version bumped.
+
+  31 Jul 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56. Add pkg tags in
+  longdescription.
+
+  07 Mar 2008; Steve Dibb <beandog@gentoo.org> anthy-9100d.ebuild:
+  amd64 stable, bug 204758
+
+  29 Feb 2008; Jeroen Roovers <jer@gentoo.org> anthy-9100d.ebuild,
+  anthy-9100e.ebuild:
+  Marked ~hppa (bug #211728).
+
+*anthy-9100e (04 Feb 2008)
+
+  04 Feb 2008; Akinori Hattori <hattya@gentoo.org> +anthy-9100e.ebuild:
+  new upstream release.
+
+  04 Feb 2008; Akinori Hattori <hattya@gentoo.org> -anthy-8700b.ebuild,
+  -anthy-9100.ebuild, -anthy-9100b.ebuild, -anthy-9100c.ebuild:
+  cleaned out old ebuilds.
+
+  26 Jan 2008; Fabian Groffen <grobian@gentoo.org> anthy-7500b.ebuild,
+  anthy-7900.ebuild, anthy-8700b.ebuild, anthy-9100.ebuild,
+  anthy-9100b.ebuild, anthy-9100c.ebuild, anthy-9100d.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  08 Jan 2008; Raúl Porcel <armin76@gentoo.org> anthy-9100d.ebuild:
+  alpha/ia64/sparc stable wrt #204758
+
+  08 Jan 2008; Markus Meier <maekke@gentoo.org> anthy-9100d.ebuild:
+  x86 stable, bug #204758
+
+  08 Jan 2008; Brent Baude <ranger@gentoo.org> anthy-9100d.ebuild:
+  Marking anthy-9100d ppc64 for bug 204758
+
+  08 Jan 2008; Brent Baude <ranger@gentoo.org> anthy-9100d.ebuild:
+  Marking anthy-9100d ppc for bug 204758
+
+*anthy-9100d (22 Nov 2007)
+
+  22 Nov 2007; <matsuu@gentoo.org> +anthy-9100d.ebuild:
+  Version bumped.
+
+*anthy-9100c (08 Oct 2007)
+
+  08 Oct 2007; Akinori Hattori <hattya@gentoo.org> +anthy-9100c.ebuild:
+  new upstream release.
+
+  03 Oct 2007; Tom Gall <tgall@gentoo.org> anthy-9100.ebuild:
+  stable on ppc64
+
+*anthy-9100b (17 Sep 2007)
+
+  17 Sep 2007; Akinori Hattori <hattya@gentoo.org> +anthy-9100b.ebuild:
+  new upstream release.
+
+  09 Sep 2007; Akinori Hattori <hattya@gentoo.org> anthy-9100.ebuild:
+  stable on ia64.
+
+  09 Aug 2007; Akinori Hattori <hattya@gentoo.org> anthy-9100.ebuild:
+  stable on x86.
+
+  12 Jul 2007; Raúl Porcel <armin76@gentoo.org> anthy-8700b.ebuild:
+  alpha stable
+
+  11 Jul 2007; Akinori Hattori <hattya@gentoo.org> -anthy-8300.ebuild,
+  anthy-8700b.ebuild:
+  stable on x86.
+
+*anthy-9100 (11 Jul 2007)
+
+  11 Jul 2007; Akinori Hattori <hattya@gentoo.org> +anthy-9100.ebuild:
+  new upstream release.
+
+  24 Jun 2007; MATSUU Takuto <matsuu@gentoo.org> -anthy-7100b-r1.ebuild,
+  anthy-7500b.ebuild, anthy-7900.ebuild, anthy-8300.ebuild,
+  anthy-8700b.ebuild:
+  Fixed to use the right condition for calling elisp-site-regen, bug #182639.
+  Removed old version.
+
+  06 May 2007; Tobias Scherbaum <dertobi123@gentoo.org> anthy-8700b.ebuild:
+  ppc stable
+
+  24 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> anthy-8700b.ebuild:
+  Stable on sparc
+
+  22 Apr 2007; Markus Rothe <corsair@gentoo.org> anthy-8700b.ebuild:
+  Stable on ppc64
+
+  20 Apr 2007; Raúl Porcel <armin76@gentoo.org> anthy-8700b.ebuild:
+  ia64 stable
+
+  15 Apr 2007; Markus Rothe <corsair@gentoo.org> anthy-8300.ebuild:
+  Stable on ppc64
+
+  11 Mar 2007; Akinori Hattori <hattya@gentoo.org> anthy-8300.ebuild:
+  stable on x86.
+
+*anthy-8700b (11 Mar 2007)
+
+  11 Mar 2007; Akinori Hattori <hattya@gentoo.org> +anthy-8700b.ebuild:
+  new upstream release.
+
+  26 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> anthy-7900.ebuild:
+  Stable on Alpha.
+
+  22 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> anthy-8300.ebuild:
+  Add missing elibtoolize call.
+
+  05 Dec 2006; Jeroen Roovers <jer@gentoo.org> anthy-7900.ebuild:
+  Stable for HPPA (bug #156872).
+
+  03 Dec 2006; Markus Rothe <corsair@gentoo.org> anthy-7900.ebuild:
+  Stable on ppc64
+
+  10 Nov 2006; Akinori Hattori <hattya@gentoo.org> anthy-7900.ebuild:
+  stable on x86 and ia64.
+
+*anthy-8300 (10 Nov 2006)
+
+  10 Nov 2006; Akinori Hattori <hattya@gentoo.org> +anthy-8300.ebuild:
+  new upstream release.
+
+  30 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> anthy-7900.ebuild:
+  Add ~x86-fbsd keyword.
+
+  10 Oct 2006; Jason Huebel <jhuebel@gentoo.org> anthy-7500b.ebuild:
+  stable on amd64
+
+  06 Sep 2006; Akinori Hattori <hattya@gentoo.org>
+  +files/anthy-7900-asneeded.diff, anthy-7900.ebuild:
+  fixes bug #141561.
+
+  19 Aug 2006; Bryan Østergaard <kloeri@gentoo.org> anthy-7500b.ebuild:
+  Stable on alpha.
+
+  16 Aug 2006; Markus Rothe <corsair@gentoo.org> anthy-7500b.ebuild:
+  Stable on ppc64
+
+  18 Jul 2006; Michael Hanselmann <hansmi@gentoo.org> anthy-7500b.ebuild:
+  Stable on ppc.
+
+  12 Jul 2006; Akinori Hattori <hattya@gentoo.org> anthy-7500b.ebuild:
+  stable on ia64.
+
+  12 Jul 2006; Akinori Hattori <hattya@gentoo.org> anthy-7500b.ebuild:
+  stable on x86.
+
+  12 Jul 2006; Akinori Hattori <hattya@gentoo.org> -anthy-6700b.ebuild,
+  anthy-7100b-r1.ebuild, anthy-7500b.ebuild:
+  use emake for install
+
+*anthy-7900 (12 Jul 2006)
+
+  12 Jul 2006; Akinori Hattori <hattya@gentoo.org> +anthy-7900.ebuild:
+  new upstream release.
+
+  27 May 2006; Bryan Østergaard <kloeri@gentoo.org> anthy-7100b-r1.ebuild:
+  Stable on alpha.
+
+  21 May 2006; Simon Stelling <blubb@gentoo.org> anthy-7100b-r1.ebuild:
+  stable on amd64
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-anthy-6700b,
+  files/digest-anthy-7100b-r1, Manifest:
+  Fixing SHA256 digest for real, pass three...
+
+  24 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/anthy-7500b-asneeded.patch, anthy-7500b.ebuild:
+  Add patch to build with --as-needed.
+
+*anthy-7500b (22 Apr 2006)
+
+  22 Apr 2006; Akinori Hattori <hattya@gentoo.org> -anthy-7500.ebuild,
+  +anthy-7500b.ebuild:
+  new upstream release.
+
+  28 Mar 2006; Aron Griffis <agriffis@gentoo.org> anthy-7100b-r1.ebuild:
+  Mark 7100b-r1 stable on ia64
+
+  27 Mar 2006; Markus Rothe <corsair@gentoo.org> anthy-7100b-r1.ebuild:
+  Stable on ppc64
+
+  22 Mar 2006; Michael Hanselmann <hansmi@gentoo.org> anthy-7100b-r1.ebuild:
+  Stable on ppc.
+
+  20 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> anthy-7100b-r1.ebuild:
+  Stable on sparc
+
+*anthy-7500 (20 Mar 2006)
+
+  20 Mar 2006; Akinori Hattori <hattya@gentoo.org> +anthy-7500.ebuild:
+  new upstream release.
+
+  20 Mar 2006; Akinori Hattori <hattya@gentoo.org> anthy-7100b-r1.ebuild:
+  stable on x86.
+
+*anthy-7100b-r1 (18 Dec 2005)
+
+  18 Dec 2005; Akinori Hattori <hattya@gentoo.org> -anthy-7100b.ebuild,
+  +anthy-7100b-r1.ebuild:
+  fixes a problem of anthy.dic generation.
+
+*anthy-7100b (13 Nov 2005)
+
+  13 Nov 2005; Akinori Hattori <hattya@gentoo.org> +anthy-7100b.ebuild:
+  new upstream release.
+
+  23 Sep 2005; MATSUU Takuto <matsuu@gentoo.org> -anthy-5900.ebuild,
+  -anthy-5900-r1.ebuild, -anthy-6300.ebuild, -anthy-6300d.ebuild:
+  Removed old versions.
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> anthy-6700b.ebuild:
+  stable on ia64
+
+  08 Aug 2005; Markus Rothe <corsair@gentoo.org> anthy-6700b.ebuild:
+  Stable on ppc64
+
+  03 Aug 2005; Bryan Østergaard <kloeri@gentoo.org> anthy-6700b.ebuild:
+  Stable on alpha.
+
+  31 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org> anthy-6700b.ebuild:
+  ppc stable
+
+  29 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> anthy-6700b.ebuild:
+  Stable on sparc
+
+  28 Jul 2005; MATSUU Takuto <matsuu@gentoo.org> anthy-6700b.ebuild:
+  Stable on amd64 and x86.
+
+  07 Jul 2005; Markus Rothe <corsair@gentoo.org> anthy-6300.ebuild:
+  Stable on ppc64
+
+*anthy-6700b (04 Jul 2005)
+
+  04 Jul 2005; MATSUU Takuto <matsuu@gentoo.org> -anthy-5100b.ebuild,
+  -anthy-5500.ebuild, +anthy-6700b.ebuild:
+  Version bumped.
+  Removed old versions.
+
+  03 Jul 2005; Michael Hanselmann <hansmi@gentoo.org> anthy-6300.ebuild:
+  Stable on ppc.
+
+  21 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> anthy-6300.ebuild:
+  Stable on sparc
+
+  21 Jun 2005; Markus Rothe <corsair@gentoo.org> anthy-6300.ebuild,
+  anthy-6300d.ebuild:
+  added ~ppc64
+
+  18 Jun 2005; Mamoru KOMACHI <usata@gentoo.org> anthy-6300.ebuild,
+  anthy-6300d.ebuild:
+  Appended -j1 to emake; bug #95164.
+
+  05 May 2005; Aron Griffis <agriffis@gentoo.org> anthy-6300.ebuild:
+  stable on ia64
+
+*anthy-6300d (28 Apr 2005)
+
+  28 Apr 2005; MATSUU Takuto <matsuu@gentoo.org> anthy-6300.ebuild,
+  +anthy-6300d.ebuild:
+  Version bumped.
+  Marked 6300 as stable on amd64.
+
+  08 Apr 2005; Markus Rothe <corsair@gentoo.org> anthy-5900.ebuild:
+  Stable on ppc64
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> anthy-5900-r1.ebuild:
+  stable on ia64
+
+  31 Mar 2005; <blubb@gentoo.org> anthy-5900.ebuild:
+  stable on amd64
+
+  27 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> anthy-5900-r1.ebuild:
+  Stable on ppc.
+
+*anthy-6300 (01 Mar 2005)
+
+  01 Mar 2005; MATSUU Takuto <matsuu@gentoo.org> +anthy-6300.ebuild:
+  Version bumped.
+
+*anthy-5900-r1 (05 Feb 2005)
+
+  05 Feb 2005; Mamoru KOMACHI <usata@gentoo.org>
+  +files/anthy-mkdic-gcc34.patch, +anthy-5900-r1.ebuild:
+  Fixed incorrect conversion problem; bug #73977.
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  14 Dec 2004; Akinori Hattori <hattya@gentoo.org> anthy-5900.ebuild:
+  add ~ia64.
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> anthy-5900.ebuild:
+  Stable on alpha.
+
+  07 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org> anthy-5900.ebuild:
+  Stable on sparc
+
+  07 Dec 2004; Akinori Hattori <hattya@gentoo.org> anthy-5900.ebuild:
+  stable on x86.
+
+  23 Nov 2004; Akinori Hattori <hattya@gentoo.org> anthy-5100b.ebuild,
+  anthy-5500.ebuild, anthy-5900.ebuild:
+  s/einstall/make DESTDIR=${D} install/. fixes bug #72166.
+
+  23 Nov 2004; Akinori Hattori <hattya@gentoo.org> -anthy-4700.ebuild:
+  cleaned out old ebuild.
+
+  16 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> anthy-5500.ebuild:
+  Stable on sparc
+
+  03 Nov 2004; Akinori Hattori <hattya@gentoo.org> -anthy-5100.ebuild:
+  cleaned out old ebuild.
+
+*anthy-5900 (03 Nov 2004)
+
+  03 Nov 2004; Akinori Hattori <hattya@gentoo.org> +anthy-5900.ebuild:
+  new upstream release.
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> anthy-5500.ebuild:
+  Stable on amd64.
+
+  17 Oct 2004; Akinori Hattori <hattya@gentoo.org> anthy-5100b.ebuild:
+  stable on ia64.
+
+  13 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> anthy-5500.ebuild:
+  Added to ~ppc-macos.
+
+  22 Sep 2004; Akinori Hattori <hattya@gentoo.org> anthy-5100b.ebuild:
+  add ~ia64.
+
+  07 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> anthy-5500.ebuild:
+  Stable on ppc.
+
+  13 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> anthy-5500.ebuild:
+  Stable on alpha.
+
+  06 Aug 2004; Akinori Hattori <hattya@gentoo.org> anthy-5500.ebuild:
+  stable on x86.
+
+  18 Jul 2004; Tom Gall <tgall@gentoo.org> anthy-5100b. ebuild:
+  stable on ppct64, bug #57119
+
+  04 Jul 2004; Akinori Hattori <hattya@gentoo.org> -anthy-4300b.ebuild:
+  cleaned out old ebuild.
+
+*anthy-5500 (04 Jul 2004)
+
+  04 Jul 2004; Akinori Hattori <hattya@gentoo.org> +anthy-5500.ebuild:
+  new upstream release.
+
+  23 Jun 2004; <matsuu@gentoo.org> anthy-5100b.ebuild:
+  Marked amd64 as stable.
+
+  14 Jun 2004; <matsuu@gentoo.org> anthy-5100b.ebuild:
+  Added ~amd64 to KEYWORDS.
+
+  23 May 2004; Mamoru KOMACHI <usata@gentoo.org> anthy-5100b.ebuild:
+  Stable on alpha and ppc
+
+  19 Apr 2004; Bryan Østergaard <kloeri@gentoo.org> anthy-5100b.ebuild:
+  Added ~alpha to keywords.
+
+  01 Apr 2004; David Holm <dholm@gentoo.org> anthy-5100b.ebuild:
+  Added to ~ppc.
+
+  28 Mar 2004; Akinori Hattori <hattya@gentoo.org> anthy-4300b.ebuild,
+  anthy-4700.ebuild, anthy-5100.ebuild, anthy-5100b.ebuild:
+  removed unnecessary $S. mark 5100b stable.
+
+  13 Mar 2004; Akinori Hattori <hattya@gentoo.org> anthy-5100.ebuild:
+  marked stable on x86.
+
+*anthy-5100b (13 Mar 2004)
+
+  13 Mar 2004; Akinori Hattori <hattya@gentoo.org> anthy-5100b.ebuild:
+  version bumped.
+
+*anthy-5100 (01 Mar 2004)
+
+  01 Mar 2004; Akinori Hattori <hattya@gentoo.org> anthy-5100.ebuild,
+  metadata.xml:
+  version bumped.
+
+*anthy-4700 (31 Oct 2003)
+
+  24 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> anthy-4300b.ebuild,
+  anthy-4700.ebuild:
+  Marked as stable
+
+  31 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> anthy-4300b.ebuild,
+  anthy-4700.ebuild:
+  New upstream release. Added ~alpha keyword.
+
+  26 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> anthy-4507.ebuild,
+  anthy-4515.ebuild, anthy-4519.ebuild:
+  Moved snapshots to app-i18n/anthy-ss
+
+*anthy-4519 (22 Sep 2003)
+
+  22 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> anthy-4519.ebuild:
+  Version bumped. Thanks to Hattya <hattya@inter7.jp> for reporting
+  the new release. This closes Bug #29190.
+
+  22 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> anthy-4300b.ebuild,
+  anthy-4507.ebuild, anthy-4515.ebuild:
+  Utilised elisp-common.eclass
+
+*anthy-4515 (15 Sep 2003)
+
+  15 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> anthy-4515.ebuild:
+  Version bumped
+
+*anthy-4507 (11 Sep 2003)
+
+  13 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> anthy-4507.ebuild:
+  Added to DEPEND >=app-dicts/canna-cannadict-0.95-r1, which installs
+  gcanna{,f}.ctd and don't require canna if USE="-canna". Thanks to
+  Hattya <hattya@inter7.jp> for reporting the bug in Bug #28530
+
+  11 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> anthy-4507.ebuild:
+  New snapshot branch.  Ebuild submitted by Hattya <hattya@inter7.jp>
+  in Bug #28361.  Now it merges other canna dictionaries into main
+  Anthy dictionary during installation.
+
+*anthy-4300b (20 Aug 2003)
+
+  05 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> anthy-4300b.ebuild,
+  files/50anthy-gentoo.el:
+  Modified 50anthy-gentoo.el to activate anthy.el when you press C-\
+  (It wasn't activated by default if you had (set-language-environment
+  "Japanese") in your ${HOME}/.emacs).  Marked as stable.
+
+  25 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> anthy-4300b.ebuild:
+  Removed undesired emacs dependency when USE="-emacs".  Thanks to
+  Hattya-san <hattya@inter7.jp> in Bug #27175
+
+  20 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> anthy-4300b.ebuild,
+  50anthy-gentoo.el:
+  Initial import.  Ebuild first created by Satoshi Fuktommy
+  <fuktommy@phaeton.cs.uec.ac.jp> and polished by MATSUU Takuto
+  <matsuu@gentoo.org> at GentooJP BugTrack

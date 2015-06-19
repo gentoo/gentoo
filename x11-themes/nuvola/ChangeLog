@@ -1,0 +1,73 @@
+# ChangeLog for x11-themes/nuvola
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/nuvola/ChangeLog,v 1.21 2015/06/04 19:06:19 kensington Exp $
+
+  04 Jun 2015; Michael Palimaka <kensington@gentoo.org> nuvola-1.0-r1.ebuild:
+  Move various kde-base packages to kde-apps.
+
+  14 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> nuvola-1.0-r1.ebuild:
+  Block =kde-base/kdeartwork-iconthemes-4* wrt #250898.
+
+  28 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> nuvola-1.0-r1.ebuild:
+  Remove the dummy src_compile, and use doins instead of cp to copy the icons.
+
+  01 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  nuvola-1.0-r1.ebuild:
+  ppc stable, bug #145689
+
+  23 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> nuvola-1.0-r1.ebuild:
+  Add ~x86-fbsd keyword, add binchecks restrict (installs only icon files),
+  fix installation of documentation files.
+
+  05 May 2006; Markus Rothe <corsair@gentoo.org> nuvola-1.0-r1.ebuild:
+  Stable on ppc64
+
+  03 Apr 2006; Markus Rothe <corsair@gentoo.org> nuvola-1.0-r1.ebuild:
+  Added ~ppc64
+
+  13 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org> nuvola-1.0-r1.ebuild:
+  Stable on sparc
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> nuvola-1.0-r1.ebuild:
+  Mark 1.0-r1 stable on ia64
+
+  18 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> -nuvola-1.0.ebuild:
+  Remove old package dependant on kde as is now stable on every arch it was
+  before.
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> nuvola-1.0-r1.ebuild:
+  Mark 1.0-r1 stable on alpha
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> nuvola-1.0-r1.ebuild:
+  add ~ia64
+
+  15 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> nuvola-1.0-r1.ebuild:
+  Stable on amd64.
+
+  15 Jul 2005; Gregorio Guidi <greg_g@gentoo.org> nuvola-1.0-r1.ebuild:
+  Stable on x86.
+
+*nuvola-1.0-r1 (23 Feb 2005)
+
+  23 Feb 2005; Gregorio Guidi <greg_g@gentoo.org> +nuvola-1.0-r1.ebuild:
+  Make the ebuild independent of kde.
+
+  05 Feb 2005; Dominik Stadler <centic@gentoo.org> nuvola-1.0.ebuild,
+  -nuvola-1.0_beta.ebuild, -nuvola-1.0_rc1.ebuild:
+  Remove beta-versions and mark stable on x86
+
+*nuvola-1.0 (12 Nov 2004)
+
+  12 Nov 2004; Dominik Stadler <centic@gentoo.org> +nuvola-1.0.ebuild:
+  Add Version 1.0, fixes bug 70132
+
+*nuvola-1.0_rc1 (15 Oct 2004)
+
+  15 Oct 2004; Dominik Stadler <centic@gentoo.org> +nuvola-1.0_rc1.ebuild:
+  Add 1.0_rc1, fixes Bug 59877, thanks to Clement Siuchung Cheung for the report.
+
+*nuvola-1.0_beta (30 Apr 2004)
+
+  30 Apr 2004; Dominik Stadler <centic@gentoo.org> +metadata.xml,
+  +nuvola-1.0_beta.ebuild:
+  New ebuild, taken from Bug 24590, but modified somewhat to fit.

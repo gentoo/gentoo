@@ -1,0 +1,13 @@
+# ChangeLog for sys-fs/etcd-fs
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/etcd-fs/ChangeLog,v 1.2 2014/10/17 05:03:58 zmedico Exp $
+
+  17 Oct 2014; Zac Medico <zmedico@gentoo.org> etcd-fs-0_p20140620.ebuild:
+  Fix HOMEPAGE for bug #525568 (thanks to Marcin Mirosław), and use dobin
+  instead of dexe.
+
+*etcd-fs-0_p20140620 (16 Oct 2014)
+
+  16 Oct 2014; Zac Medico <zmedico@gentoo.org> +etcd-fs-0_p20140620.ebuild,
+  +metadata.xml:
+  Add sys-fs/etcd-fs.

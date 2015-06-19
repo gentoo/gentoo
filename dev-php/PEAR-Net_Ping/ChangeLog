@@ -1,0 +1,69 @@
+# ChangeLog for dev-php/PEAR-Net_Ping
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Net_Ping/ChangeLog,v 1.13 2014/11/06 18:27:17 grknight Exp $
+
+*PEAR-Net_Ping-2.4.5-r1 (06 Nov 2014)
+
+  06 Nov 2014; Brian Evans <grknight@gentoo.org> +PEAR-Net_Ping-2.4.5-r1.ebuild,
+  -PEAR-Net_Ping-2.4.5.ebuild:
+  EAPI revbump
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-Net_Ping-2.4.5.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*PEAR-Net_Ping-2.4.5 (24 Nov 2009)
+
+  24 Nov 2009; Steve Dibb <beandog@gentoo.org> -PEAR-Net_Ping-2.4.2.ebuild,
+  -PEAR-Net_Ping-2.4.3.ebuild, -PEAR-Net_Ping-2.4.4.ebuild,
+  +PEAR-Net_Ping-2.4.5.ebuild:
+  Version bump, security bug 294258
+
+*PEAR-Net_Ping-2.4.4 (22 Aug 2009)
+
+  22 Aug 2009; Steve Dibb <beandog@gentoo.org> +PEAR-Net_Ping-2.4.4.ebuild:
+  Version bump
+
+*PEAR-Net_Ping-2.4.3 (30 Dec 2007)
+
+  30 Dec 2007; Markus Ullmann <jokey@gentoo.org>
+  +PEAR-Net_Ping-2.4.3.ebuild:
+  Version bump from project overlay
+
+  28 Dec 2007; Jakub Moc <jakub@gentoo.org> +metadata.xml,
+  +PEAR-Net_Ping-2.4.3.ebuild:
+  Version bump
+
+  06 Dec 2007; Markus Ullmann <jokey@gentoo.org> PEAR-Net_Ping-2.4.2.ebuild:
+  LICENSE fix from project overlay
+
+  02 Dec 2007; Jakub Moc <jakub@gentoo.org> PEAR-Net_Ping-2.4.2.ebuild:
+  Fix LICENSE
+
+  15 Aug 2007; Jakub Moc <jakub@gentoo.org> +metadata.xml,
+  +PEAR-Net_Ping-2.4.2.ebuild:
+  Version bump, Bug 158633
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  25 Nov 2006; Bryan Østergaard <kloeri@gentoo.org>
+  PEAR-Net_Ping-2.4.1.ebuild:
+  Add ~alpha + ~ia64 keywords, bug 134270.
+
+  27 May 2006; Luca Longinotti <chtekk@gentoo.org>
+  PEAR-Net_Ping-2.4.1.ebuild:
+  Added to ~amd64. See bug #134270.
+
+  25 May 2006; Michael Hanselmann <hansmi@gentoo.org>
+  PEAR-Net_Ping-2.4.1.ebuild:
+  Added to ~hppa, ~ppc64, ~sparc. See bug #134270.
+
+  25 May 2006; <nixnut@gentoo.org> PEAR-Net_Ping-2.4.1.ebuild:
+  Added ~ppc. bug #134270
+
+*PEAR-Net_Ping-2.4.1 (18 May 2006)
+
+  18 May 2006; Sebastian Bergmann <sebastian@gentoo.org> +metadata.xml,
+  +PEAR-Net_Ping-2.4.1.ebuild:
+  Initial ebuild.

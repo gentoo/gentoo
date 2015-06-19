@@ -1,0 +1,26 @@
+# ChangeLog for sys-apps/heirloom-tools
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/heirloom-tools/ChangeLog,v 1.6 2013/06/10 05:20:53 ryao Exp $
+
+  10 Jun 2013; Richard Yao <ryao@gentoo.org> heirloom-tools-070715.ebuild:
+  Revert switch to  from : A few binaries contain hard coded absolute paths that
+  will break under prefix in a hard to debug way. It is better to not attempt
+  prefix support than it is to attempt to support prefix incorrectly.
+
+  10 Jun 2013; Richard Yao <ryao@gentoo.org> heirloom-tools-070715.ebuild:
+  Use ${ED} instead of ${D}
+
+  19 May 2013; Patrick Lauer <patrick@gentoo.org> heirloom-tools-070715.ebuild:
+  Cosmetic fixes
+
+  29 Mar 2013; Patrick Lauer <patrick@gentoo.org> heirloom-tools-070715.ebuild:
+  Fix zlib dep #463508
+
+  07 Mar 2013; Patrick Lauer <patrick@gentoo.org> heirloom-tools-070715.ebuild:
+  Make repoman a bit more happy (whitespace)
+
+*heirloom-tools-070715 (07 Mar 2013)
+
+  07 Mar 2013; Patrick Lauer <patrick@gentoo.org> +heirloom-tools-070715.ebuild,
+  +metadata.xml:
+  Initial import, ebuild by me

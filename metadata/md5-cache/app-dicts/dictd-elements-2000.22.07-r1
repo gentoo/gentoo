@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=>=app-text/dictd-1.5.5
+DESCRIPTION=The elements database for dict
+HOMEPAGE=http://www.dict.org
+KEYWORDS=x86 ppc sparc amd64 ppc64
+LICENSE=GPL-2
+RDEPEND=>=app-text/dictd-1.5.5
+SLOT=0
+SRC_URI=ftp://ftp.dict.org/pub/dict/pre/elements-20001107-pre.tar.gz
+_md5_=91ec5b33a0095610352acb36456c19ab

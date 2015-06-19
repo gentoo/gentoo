@@ -1,0 +1,169 @@
+# ChangeLog for app-emacs/bbdb
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/bbdb/ChangeLog,v 1.45 2014/08/02 17:38:12 armin76 Exp $
+
+  02 Aug 2014; Raúl Porcel <armin76@gentoo.org> bbdb-2.35-r1.ebuild:
+  Drop alpha keywords
+
+  02 Aug 2014; Raúl Porcel <armin76@gentoo.org> bbdb-2.35-r1.ebuild:
+  Drop sparc keywords
+
+*bbdb-3.1.2 (28 Jul 2014)
+
+  28 Jul 2014; Ulrich Müller <ulm@gentoo.org> +bbdb-3.1.2.ebuild,
+  +files/bbdb-3.1.2-no-init.patch, +files/50bbdb-gentoo-3.1.2.el, metadata.xml:
+  Version bump, bug 511572.
+
+  25 Sep 2012; Ulrich Müller <ulm@gentoo.org> bbdb-2.35-r1.ebuild:
+  Specify LICENSE more precisely. Bump ebuild to EAPI 4.
+
+  24 Nov 2009; Christian Faulhammer <fauli@gentoo.org> bbdb-2.35-r1.ebuild:
+  import changes from Prefix overlay
+
+  01 Nov 2008; Ulrich Mueller <ulm@gentoo.org> -bbdb-2.35.ebuild:
+  Remove old.
+
+  01 Nov 2008; nixnut <nixnut@gentoo.org> bbdb-2.35-r1.ebuild:
+  Stable on ppc wrt bug 244687
+
+  30 Oct 2008; Raúl Porcel <armin76@gentoo.org> bbdb-2.35-r1.ebuild:
+  alpha stable #244687
+
+  29 Oct 2008; Markus Meier <maekke@gentoo.org> bbdb-2.35-r1.ebuild:
+  amd64/x86 stable, bug #244687
+
+  27 Oct 2008; Ferris McCormick <fmccor@gentoo.org> bbdb-2.35-r1.ebuild:
+  Sparc stable, Bug #244687.
+
+*bbdb-2.35-r1 (23 Sep 2008)
+
+  23 Sep 2008; Ulrich Mueller <ulm@gentoo.org> +bbdb-2.35-r1.ebuild:
+  Install TeX support files under texmf-site/tex/plain. Simplify code for
+  byte-compilation of contributed files.
+
+  28 Jul 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  12 Apr 2008; Ulrich Mueller <ulm@gentoo.org> bbdb-2.35.ebuild:
+  Finally drop tetex USE flag, bug #196745.
+
+  20 Mar 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add longdescription to metadata.
+
+  24 Nov 2007; Ulrich Mueller <ulm@gentoo.org> bbdb-2.35.ebuild:
+  Change RDEPEND from latex-base to tex-base.
+
+  21 Nov 2007; Ulrich Mueller <ulm@gentoo.org> bbdb-2.35.ebuild:
+  Add tex USE flag, bug #196745. Keep tetex flag for a transition period.
+
+  08 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  -files/bbdb-decode-header.diff, -bbdb-2.35_pre20040323-r1.ebuild:
+  clean up
+
+  06 Oct 2007; Ulrich Mueller <ulm@gentoo.org>
+  bbdb-2.35_pre20040323-r1.ebuild, bbdb-2.35.ebuild:
+  Minor QA: quote some variables. Add pkg_postrm.
+
+  08 Jun 2007; Ulrich Mueller <ulm@gentoo.org>
+  -bbdb-2.35_pre20040323.ebuild:
+  Remove old version.
+
+  01 Jun 2007; nixnut <nixnut@gentoo.org> bbdb-2.35.ebuild:
+  Stable on ppc wrt bug 177921
+
+  20 May 2007; Raúl Porcel <armin76@gentoo.org> bbdb-2.35.ebuild:
+  alpha stable wrt #177921
+
+  15 May 2007; Christian Faulhammer <opfer@gentoo.org> bbdb-2.35.ebuild:
+  stable amd64; bug 177921
+
+  12 May 2007; Torsten Veller <tove@gentoo.org> bbdb-2.35.ebuild:
+  Stable on x86 (#177921)
+
+  11 May 2007; Gustavo Zacarias <gustavoz@gentoo.org> bbdb-2.35.ebuild:
+  Stable on sparc wrt #177921
+
+  19 Apr 2007; Bryan Østergaard <kloeri@gentoo.org> bbdb-2.35.ebuild:
+  Add ~alpha keyword, bug 168420.
+
+*bbdb-2.35 (27 Mar 2007)
+
+  27 Mar 2007; Christian Faulhammer <opfer@gentoo.org> +bbdb-2.35.ebuild:
+  version bump, fixes bugs 172277 and 156038: Removed mailcrypt
+  dependency and crypt USE flag; this does not influence the building of
+  the package. Always install bbdb-pgp.el.  Added explanation message to
+  pkg_postinst.
+  Additional die
+  handle SITEFILE the normal way
+  Thanks to Ulrich Mueller <ulm@kph.uni-mainz.de>
+
+  07 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/50bbdb-gentoo.el:
+  add load path correctly, fixes bug 169588, reported by Ulrich Mueller
+  <ulm@kph.uni-mainz.de>
+
+  23 Feb 2007; Christian Faulhammer <opfer@gentoo.org> -bbdb-2.34-r1.ebuild:
+  clean up
+
+  28 Jan 2007; Marius Mauch <genone@gentoo.org> bbdb-2.34-r1.ebuild,
+  bbdb-2.35_pre20040323.ebuild, bbdb-2.35_pre20040323-r1.ebuild:
+  Replacing einfo with elog
+
+*bbdb-2.35_pre20040323-r1 (04 Sep 2006)
+
+  04 Sep 2006; Matthew Kennedy <mkennedy@gentoo.org>
+  +bbdb-2.35_pre20040323-r1.ebuild:
+  Install TeX assets (allows for bbdb-print functionality); Resolevs Bug #145888.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  bbdb-2.35_pre20040323.ebuild:
+  stable on amd64
+
+  31 Oct 2004; Jason Wever <weeve@gentoo.org> bbdb-2.35_pre20040323.ebuild:
+  Stable on sparc.
+
+  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org>
+  bbdb-2.35_pre20040323.ebuild:
+  Stable on x86 and ppc.
+
+  05 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> bbdb-2.34-r1.ebuild:
+  Fixed fresh installation, see bug #52857
+
+  01 Jun 2004; Aron Griffis <agriffis@gentoo.org>
+  bbdb-2.35_pre20040323.ebuild:
+  Fix use invocation
+
+  10 May 2004; Jason Wever <weeve@gentoo.org> bbdb-2.35_pre20040323.ebuild:
+  Added ~sparc keyword to help resolve bug #50695.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org>
+  bbdb-2.35_pre20040323.ebuild:
+  Add inherit eutils
+
+  26 Apr 2004; David Holm <dholm@gentoo.org> bbdb-2.35_pre20040323.ebuild:
+  Added to ~ppc.
+
+*bbdb-2.35_pre20040323 (26 Apr 2004)
+
+  26 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> bbdb-2.34-r1.ebuild,
+  bbdb-2.34.ebuild, bbdb-2.35_pre20040323.ebuild,
+  files/bbdb-decode-header.diff:
+  Added CVS snapshot and decode-header fix patch. Thanks to Markus Knitting
+  <makmaster@arcor.de> for submitting the ebuild. Closing bug #48345
+
+  04 Dec 2003; Jeremy Maitin-Shepard <jbms@gentoo.org> bbdb-2.34-r1.ebuild:
+  bits/bbdb-pgp.el is excluded if crypt USE flag is not specified.
+  Resolves bug #35083.
+
+*bbdb-2.34-r1 (09 Nov 2003)
+
+  09 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> bbdb-2.34-r1.ebuild,
+  files/50bbdb-gentoo.el:
+  Install "bits" elisp as well. Closing bug #13351.
+
+*bbdb-2.34 (01 Jan 2003)
+
+  01 Jan 2002; Matthew Kennedy <mkennedy@gentoo.org> bbdb-2.34.ebuild,
+  ChangeLog, files/digest-bbdb-2.34 :
+	
+  Initial import.  Ebuild submitted by Alexander Kreuzer <a_kreuzer@gmx.de>.

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=The Original Korn Shell, 1993 revision (ksh93)
+EAPI=5
+HOMEPAGE=http://www.kornshell.com/
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux
+LICENSE=CPL-1.0 EPL-1.0
+RDEPEND=!app-shells/pdksh
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~floppym/distfiles/INIT.2014-06-25.tgz http://dev.gentoo.org/~floppym/distfiles/ast-base.2014-06-25.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	prefix	21058c21ca48453d771df15500873ede	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=41eb3e4a73f788e0587dadaf96adf44f

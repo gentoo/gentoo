@@ -1,0 +1,11 @@
+--- Makefile.in.old	2009-02-02 18:04:04.000000000 +0100
++++ Makefile.in	2009-02-02 18:04:37.000000000 +0100
+@@ -78,7 +78,7 @@
+ EXTRA_DIST = *.h CODE BUGS
+ INCLUDES = `sdl-config --cflags` -Wall -O2 -DDATAPATH=\"$(pkgdatadir)\"
+ #LDFLAGS = -lSDL_image -lm
+-LDFLAGS = -lSDL_image -lGL -lGLU -lm
++LDADD = -lSDL_image -lGL -lGLU -lm
+ # LDFLAGS = `sdl-config --libs` -lSDL_image -lm
+ SUBDIRS = audio gfx levels
+ AUTOMAKE_OPTIONS = dist-bzip2

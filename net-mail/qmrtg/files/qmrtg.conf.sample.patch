@@ -1,0 +1,20 @@
+--- a/examples/qmrtg.conf.sample
++++ b/examples/qmrtg.conf.sample
+@@ -6,7 +6,7 @@
+  # this it where qmrtg keeps its dbfiles
+  # dbfiles are a few little files used
+  # to store service informations 
+-QMRTG_DBPATH="/var/db/qmrtg"
++QMRTG_DBPATH="/var/lib/qmrtg"
+ 
+  # use this for debugging qmrtg
+  # the greater the level, the more info you'll get
+@@ -19,7 +19,7 @@
+ DEBUG=$QMRTG_DBPATH/qmrtg.log
+ 
+  # root location for binary files
+-BINPLACE=/usr/local/bin
++BINPLACE=/usr/bin
+ 
+  # this beams "new" lines from log files
+ QFILT=$BINPLACE/qfilt

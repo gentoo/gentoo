@@ -1,0 +1,59 @@
+# ChangeLog for net-irc/cgiirc
+# Copyright 2000-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/cgiirc/ChangeLog,v 1.14 2013/09/03 21:29:18 creffett Exp $
+
+*cgiirc-0.5.10 (03 Sep 2013)
+
+  03 Sep 2013; Chris Reffett <creffett@gentoo.org> +cgiirc-0.5.10.ebuild,
+  -cgiirc-0.5.9.ebuild:
+  Security bump wrt bug 354345
+
+  07 Mar 2008; Benedikt Böhm <hollow@gentoo.org> cgiirc-0.5.9.ebuild:
+  add missing need_httpd_cgi
+
+  07 Mar 2008; Benedikt Böhm <hollow@gentoo.org> metadata.xml,
+  cgiirc-0.5.9.ebuild:
+  fix #212396; ebuild cleanup wrt #208584
+
+*cgiirc-0.5.9 (04 Oct 2006)
+
+  04 Oct 2006; Renat Lumpau <rl03@gentoo.org> -cgiirc-0.5.8.ebuild,
+  +cgiirc-0.5.9.ebuild:
+  Version bump, bug #149621.
+
+  09 Jul 2006; Renat Lumpau <rl03@gentoo.org> cgiirc-0.5.8.ebuild:
+  einfo -> elog
+
+*cgiirc-0.5.8 (01 May 2006)
+
+  01 May 2006; Renat Lumpau <rl03@gentoo.org> -cgiirc-0.5.3.ebuild,
+  -cgiirc-0.5.4.ebuild, -cgiirc-0.5.7.ebuild, +cgiirc-0.5.8.ebuild:
+  Version bump, housekeeping
+
+*cgiirc-0.5.7 (03 Jul 2005)
+
+  03 Jul 2005; Renat Lumpau <rl03@gentoo.org> +cgiirc-0.5.7.ebuild:
+  Version bump per #80003. Install things into MY_CGIBINDIR.
+
+  18 Dec 2004; Simon Stelling <blubb@gentoo.org> cgiirc-0.5.4.ebuild:
+  added ~amd64
+
+  21 Jun 2004; Sven Wegener <swegener@gentoo.org> cgiirc-0.5.3.ebuild:
+  Added IUSE=""
+
+*cgiirc-0.5.4 (31 May 2004)
+
+  31 May 2004; Martin Holzer <mholzer@gentoo.org> cgiirc-0.5.4.ebuild:
+  Version bumped. closes 52392
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  cgiirc-0.5.3.ebuild:
+  Masked cgiirc-0.5.3.ebuild testing for ppc
+
+  19 Apr 2004; Martin Holzer <mholzer@gentoo.org> cgiirc-0.5.3.ebuild:
+  moving webapp-detect to pkg_setup
+
+*cgiirc-0.5.3 (29 Jan 2004)
+
+  29 Jan 2004; Martin Holzer <mholzer@gentoo.org> cgiirc-0.5.3.ebuild:
+  Initial ebuild. Submitted by scootersmk <scootersmk@chartertn.net> in #38852

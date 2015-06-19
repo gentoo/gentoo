@@ -1,0 +1,30 @@
+# ChangeLog for dev-perl/CryptX
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/CryptX/ChangeLog,v 1.6 2015/06/13 21:44:38 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org> CryptX-0.006.ebuild,
+  CryptX-0.012.ebuild, CryptX-0.021.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+  05 Jan 2015; Joerg Bornkessel <hd_brummy@gentoo.org> CryptX-0.021.ebuild:
+  keyworded ~x86
+
+*CryptX-0.021 (05 Jan 2015)
+
+  05 Jan 2015; Joerg Bornkessel <hd_brummy@gentoo.org> +CryptX-0.021.ebuild:
+  bump
+
+  07 Dec 2014; Mikle Kolyada <zlogene@gentoo.org> CryptX-0.006.ebuild,
+  CryptX-0.012.ebuild:
+  Drop dev-lang/perl dependency
+
+*CryptX-0.012 (16 Aug 2013)
+
+  16 Aug 2013; Patrick Lauer <patrick@gentoo.org> +CryptX-0.012.ebuild:
+  Bump
+
+*CryptX-0.006 (22 Apr 2013)
+
+  22 Apr 2013; Tony Vroon <chainsaw@gentoo.org> +CryptX-0.006.ebuild,
+  +metadata.xml:
+  Initial commit, ebuild by g-cpan with some minor modifications by me.

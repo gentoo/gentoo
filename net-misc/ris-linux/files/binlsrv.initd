@@ -1,0 +1,31 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ris-linux/files/binlsrv.initd,v 1.1 2011/05/01 20:06:53 maksbotan Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting binlsrv"
+	if [ -z "$INFILE_PATH" ]; then
+		eerror "Path to devlist.cache not set, please set \$INFILE_PATH in /etc/conf.d/binlsrv"
+		return 1
+	fi
+	if [ ! -e "$INFILE_PATH/devlist.cache" ]; then
+		eerror "devlist.cache not generated, please make it with infparser.py"
+	fi
+
+	start-stop-daemon --start -i --exec /usr/bin/binlsrv.py --background \
+		--make-pidfile --pidfile /var/run/binlsrv.pid --chdir "$INFILE_PATH" \
+		--stdout /var/log/binlsrv.log
+	
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping binlsrv"
+	start-stop-daemon --stop -i --exec /usr/bin/binlsrv.py --pidfile /var/run/binlsrv.pid
+	eend $?
+}

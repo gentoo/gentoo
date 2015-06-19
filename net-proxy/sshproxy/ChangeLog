@@ -1,0 +1,96 @@
+# ChangeLog for net-proxy/sshproxy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/sshproxy/ChangeLog,v 1.19 2015/03/27 08:17:06 idella4 Exp $
+
+*sshproxy-0.6.0_beta2-r2 (27 Mar 2015)
+
+  27 Mar 2015; Ian Delaney <idella4@gentoo.org> +sshproxy-0.6.0_beta2-r2.ebuild,
+  -sshproxy-0.6.0_beta2-r1.ebuild:
+  revbump; conversion -> distutils-r1, rm old ebuild
+
+  07 Jan 2015; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Reassign and cleanup as discussed at https://www.mail-archive.com/gentoo-
+  dev@lists.gentoo.org/msg66357.html
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  sshproxy-0.6.0_beta2-r1.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+  24 Mar 2013; Tom Wijsman <TomWij@gentoo.org> sshproxy-0.6.0_beta2-r1.ebuild:
+  EAPI 5. Removed paramiko version check, fixes bug #453786 reported by
+  flameeyes.
+
+  05 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  sshproxy-0.6.0_beta2-r1.ebuild:
+  Use Python 2 (bug #315879).
+
+  19 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  sshproxy-0.6.0_beta2-r1.ebuild:
+  x11-misc/pssh moved to net-misc/
+
+  07 Feb 2010; Peter Volkov <pva@gentoo.org> -sshproxy-0.6.0_beta2.ebuild:
+  Dropped old. It used epatch but failed to inherit eutils.
+
+*sshproxy-0.6.0_beta2-r1 (23 Jul 2009)
+
+  23 Jul 2009; Alin Năstac <mrness@gentoo.org>
+  +files/sshproxy-0.6.0_beta2-rename-wrappers.patch, -sshproxy-0.5.0.ebuild,
+  +sshproxy-0.6.0_beta2-r1.ebuild:
+  Avoid conflicts with net-misc/putty and x11-terms/pssh by renaming pscp and
+  pssh scripts (#248193 and #278794).
+
+  14 Dec 2008; Alin Năstac <mrness@gentoo.org> sshproxy-0.5.0.ebuild,
+  -sshproxy-0.6.0_beta1.ebuild, sshproxy-0.6.0_beta2.ebuild:
+  Add !net-misc/putty dependency atom (#248193).
+
+  23 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*sshproxy-0.6.0_beta2 (29 Jan 2008)
+
+  29 Jan 2008; Alin Năstac <mrness@gentoo.org>
+  -sshproxy-0.6.0_beta0.ebuild, +sshproxy-0.6.0_beta2.ebuild:
+  Version bump (#207866).
+
+*sshproxy-0.6.0_beta1 (27 Dec 2007)
+
+  27 Dec 2007; Alin Năstac <mrness@gentoo.org>
+  +sshproxy-0.6.0_beta1.ebuild:
+  Version bump (#203168).
+
+*sshproxy-0.6.0_beta0 (11 Dec 2007)
+
+  11 Dec 2007; Alin Năstac <mrness@gentoo.org> files/sshproxy.ini,
+  files/sshproxyd.initd, +sshproxy-0.6.0_beta0.ebuild:
+  Version bump (#201816).
+
+  04 Nov 2007; Alin Năstac <mrness@gentoo.org> sshproxy-0.5.0.ebuild:
+  Remove useless pkg_setup call from pkg_preinst.
+
+  17 Jan 2007; Alin Năstac <mrness@gentoo.org> -sshproxy-0.4.4.ebuild:
+  Remove obsolete version.
+
+*sshproxy-0.5.0 (28 Sep 2006)
+
+  28 Sep 2006; Alin Nastac <mrness@gentoo.org> +files/sshproxy.ini,
+  +files/sshproxyd.confd, files/sshproxyd.initd, -sshproxy-0.4.3.ebuild,
+  +sshproxy-0.5.0.ebuild:
+  Version bump (#147921).
+
+*sshproxy-0.4.4 (25 Aug 2006)
+
+  25 Aug 2006; Alin Nastac <mrness@gentoo.org> -sshproxy-0.4.2.ebuild,
+  +sshproxy-0.4.4.ebuild:
+  Version bump (#141415).
+
+*sshproxy-0.4.3 (15 Jul 2006)
+
+  15 Jul 2006; Alin Nastac <mrness@gentoo.org> +sshproxy-0.4.3.ebuild:
+  Version bump (#140416).
+
+*sshproxy-0.4.2 (03 Jul 2006)
+
+  03 Jul 2006; Alin Nastac <mrness@gentoo.org> +files/sshproxyd.initd,
+  +metadata.xml, +sshproxy-0.4.2.ebuild:
+  Initial import from bug #138058, thanks to David Guerizec
+  <david@guerizec.net> which is also the author of sshproxy.

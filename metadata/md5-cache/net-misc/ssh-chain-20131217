@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=ssh via a chain of intermediary hosts
+EAPI=5
+HOMEPAGE=https://github.com/ryancdotorg/ssh-chain
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=dev-lang/perl virtual/ssh
+SLOT=0
+SRC_URI=https://github.com/ryancdotorg/ssh-chain/archive/c1bd9d82d750bf001d12a9cd41b9b24a3fd84f81.tar.gz -> ssh-chain-20131217.tar.gz
+_eclasses_=vcs-snapshot	58b766562c9fbfb3268b04e33cdf2f66
+_md5_=f0aa7a4272481ef9002550fc17985813

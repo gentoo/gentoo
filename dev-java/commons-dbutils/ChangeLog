@@ -1,0 +1,31 @@
+# ChangeLog for dev-java/commons-dbutils
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-dbutils/ChangeLog,v 1.6 2010/03/20 13:36:24 betelgeuse Exp $
+
+  20 Mar 2010; Petteri Räty <betelgeuse@gentoo.org>
+  -commons-dbutils-1.0.ebuild, commons-dbutils-1.1.ebuild:
+  Remove old version and switch PATCHES to array.
+
+  23 Aug 2008; Markus Meier <maekke@gentoo.org> commons-dbutils-1.1.ebuild:
+  add ~amd64, bug #234375
+
+  20 Feb 2008; Petteri Räty <betelgeuse@gentoo.org>
+  commons-dbutils-1.1.ebuild:
+  Remove Jakarta from DESCRIPTION.
+
+*commons-dbutils-1.1 (13 Feb 2008)
+
+  13 Feb 2008; Petteri Räty <betelgeuse@gentoo.org> +files/1.1-tests.patch,
+  +commons-dbutils-1.1.ebuild:
+  Version bump.
+
+  10 Jan 2008; Vlastimil Babka <caster@gentoo.org>
+  commons-dbutils-1.0.ebuild:
+  Restrict junit dependency.
+
+*commons-dbutils-1.0 (19 Jul 2006)
+
+  19 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org> +metadata.xml,
+  +commons-dbutils-1.0.ebuild:
+  Initial version.
+

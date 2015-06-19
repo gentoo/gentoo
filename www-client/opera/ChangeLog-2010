@@ -1,0 +1,3184 @@
+# ChangeLog for www-client/opera
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-client/opera/ChangeLog-2010,v 1.1 2012/01/01 21:55:35 dilfridge Exp $
+
+  22 Dec 2010; Jeroen Roovers <jer@gentoo.org> opera-11.00.1156.ebuild:
+  Update icon cache and desktop file database by Rick Harris (bug #334993).
+
+  21 Dec 2010; Jeroen Roovers <jer@gentoo.org> opera-11.00.1156.ebuild:
+  Set PaX markings by Paulo Matias (bug #344267).
+
+*opera-11.00.1156 (21 Dec 2010)
+
+  21 Dec 2010; Jeroen Roovers <jer@gentoo.org> +opera-11.00.1156.ebuild:
+  Switch to a hopefully better lasting versioning scheme. Use xz compressed
+  sources.
+
+  18 Dec 2010; Markos Chandras <hwoarang@gentoo.org>
+  opera-11.00_pre1156.ebuild:
+  Stable on amd64 wrt bug #348874
+
+  16 Dec 2010; Thomas Kahle <tomka@gentoo.org> opera-11.00_pre1156.ebuild:
+  x86 stable per bug 348874
+
+  16 Dec 2010; Jeroen Roovers <jer@gentoo.org> -opera-11.00_pre1149.ebuild,
+  -opera-11.00_pre1152.ebuild, opera-11.00_pre1156.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/12/16/opera-11-goes-final (switch
+  to mirrors).
+
+*opera-11.00_pre1156 (15 Dec 2010)
+
+  15 Dec 2010; Jeroen Roovers <jer@gentoo.org> +opera-11.00_pre1156.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/12/15/opera-11-00-release-candidate
+  -3
+
+*opera-11.00_pre1152 (15 Dec 2010)
+
+  15 Dec 2010; Jeroen Roovers <jer@gentoo.org> -opera-11.00_pre1145.ebuild,
+  +opera-11.00_pre1152.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/12/15/you-better-watch-out-you-bett
+  er-not-cry
+
+*opera-11.00_pre1149 (15 Dec 2010)
+
+  15 Dec 2010; Jeroen Roovers <jer@gentoo.org> -opera-11.00_pre1140.ebuild,
+  +opera-11.00_pre1149.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/12/14/rc1
+
+*opera-11.00_pre1145 (14 Dec 2010)
+
+  14 Dec 2010; Jeroen Roovers <jer@gentoo.org> -opera-11.00_pre1128.ebuild,
+  -opera-11.00_pre1133.ebuild, -opera-11.00_pre1136.ebuild,
+  +opera-11.00_pre1145.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/12/14/stacking
+
+*opera-11.00_pre1140 (10 Dec 2010)
+*opera-11.00_pre1136 (10 Dec 2010)
+
+  10 Dec 2010; Jeroen Roovers <jer@gentoo.org> +opera-11.00_pre1136.ebuild,
+  +opera-11.00_pre1140.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/12/10/friday-morning-improvements
+  http://my.opera.com/desktopteam/blog/2010/12/10/friday-evening-improvements
+
+  09 Dec 2010; Jeroen Roovers <jer@gentoo.org> opera-10.63.ebuild,
+  opera-11.00_pre1128.ebuild, opera-11.00_pre1133.ebuild:
+  Do not set OPERA_PERSONALDIR in the wrapper script as opera now defaults to
+  that, by the reporter of bug #348046.
+
+*opera-11.00_pre1133 (08 Dec 2010)
+
+  08 Dec 2010; Jeroen Roovers <jer@gentoo.org> -opera-11.00_pre1104.ebuild,
+  -opera-11.00_pre1111.ebuild, +opera-11.00_pre1133.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/12/08/address-extensions-installer
+
+*opera-11.00_pre1128 (06 Dec 2010)
+
+  06 Dec 2010; Jeroen Roovers <jer@gentoo.org> +opera-11.00_pre1128.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/12/06/extension-improvements-update
+  s-to-core-and-some-other-nice-fixes
+
+*opera-11.00_pre1111 (23 Nov 2010)
+
+  23 Nov 2010; Jeroen Roovers <jer@gentoo.org> +opera-11.00_pre1111.ebuild:
+  http://my.opera.com/desktopteam/blog/tab-stacking-is-here
+
+*opera-11.00_pre1104 (21 Nov 2010)
+
+  21 Nov 2010; Jeroen Roovers <jer@gentoo.org> +opera-11.00_pre1104.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/11/20/one-step-closer-to-beta
+
+  18 Nov 2010; Jeroen Roovers <jer@gentoo.org> -opera-11.00_pre1060.ebuild,
+  opera-11.00_pre1094.ebuild:
+  Readd ~x86-fbsd. Remove old.
+
+*opera-11.00_pre1094 (18 Nov 2010)
+
+  18 Nov 2010; Jeroen Roovers <jer@gentoo.org> -opera-11.00_pre1055.ebuild,
+  +opera-11.00_pre1094.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/11/17/new-and-improved
+
+*opera-11.00_pre1085 (16 Nov 2010)
+
+  16 Nov 2010; Jeroen Roovers <jer@gentoo.org> +opera-11.00_pre1085.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/11/15/search-suggestions
+
+*opera-11.00_pre1060 (11 Nov 2010)
+
+  11 Nov 2010; Jeroen Roovers <jer@gentoo.org> -opera-11.00_pre1029.ebuild,
+  -opera-11.00_pre1045.ebuild, +opera-11.00_pre1060.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/11/11/semicolons-are-cool
+
+*opera-11.00_pre1055 (07 Nov 2010)
+
+  07 Nov 2010; Jeroen Roovers <jer@gentoo.org> +opera-11.00_pre1055.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/11/06/snapshot
+
+*opera-11.00_pre1045 (02 Nov 2010)
+
+  02 Nov 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.70_pre9071.ebuild,
+  +opera-11.00_pre1045.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/11/01/snapshot
+
+  27 Oct 2010; Jeroen Roovers <jer@gentoo.org> opera-10.63.ebuild,
+  opera-10.70_pre9053.ebuild, opera-10.70_pre9067.ebuild,
+  opera-10.70_pre9071.ebuild, opera-11.00_pre1029.ebuild:
+  In the latest license, distribution is specifically allowed, so remove
+  RESTRICT=mirror. Also, use share/opera/defaults/license.txt for symlinks
+  from the locale directories instead of using usr/share/doc/opera (bug
+  #315473).
+
+*opera-11.00_pre1029 (21 Oct 2010)
+
+  21 Oct 2010; Jeroen Roovers <jer@gentoo.org> +opera-11.00_pre1029.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/10/21/an-important-piece-of-the-
+  puzzle
+
+*opera-10.70_pre9071 (15 Oct 2010)
+
+  15 Oct 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.70_pre9071.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/10/15/font-fixes-for-nix-the-las
+  t-10-70-build
+
+  15 Oct 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.61.ebuild,
+  opera-10.63.ebuild, -files/opera:
+  Stable for PPC (bug #340655). Remove old.
+
+  13 Oct 2010; Markos Chandras <hwoarang@gentoo.org> opera-10.63.ebuild:
+  Stable on amd64 wrt bug #340655
+
+  13 Oct 2010; Christian Faulhammer <fauli@gentoo.org> opera-10.63.ebuild:
+  stable x86, security bug 340655
+
+*opera-10.63 (12 Oct 2010)
+
+  12 Oct 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.62.ebuild,
+  -opera-10.63_pre6447.ebuild, -opera-10.63_pre6450.ebuild,
+  +opera-10.63.ebuild:
+  Version bump (bug #340655).
+
+*opera-10.70_pre9067 (11 Oct 2010)
+
+  11 Oct 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.70_pre9047.ebuild,
+  -opera-10.70_pre9050.ebuild, +opera-10.70_pre9067.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/10/11/websockets
+
+*opera-10.63_pre6450 (08 Oct 2010)
+
+  08 Oct 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.63_pre6450.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/10/08/opera-10-63-release-candid
+  ate-2
+
+*opera-10.63_pre6447 (05 Oct 2010)
+
+  05 Oct 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.63_pre6447.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/10/05/opera-10-63-release-candid
+  ate
+
+*opera-10.70_pre9053 (27 Sep 2010)
+
+  27 Sep 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.70_pre9053.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/09/27/hash-tag-operawesome
+
+*opera-10.70_pre9050 (22 Sep 2010)
+
+  22 Sep 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.70_pre9046.ebuild,
+  -opera-10.70_pre9048.ebuild, -opera-10.70_pre9049.ebuild,
+  +opera-10.70_pre9050.ebuild:
+  <http://my.opera.com/desktopteam/blog/2010/09/22/startup-and-shutdown-prof
+  iling>. Remove old except _pre9047 because it is not affected by the paste
+  bug - do not upgrade to 9050 unless you never paste in text fields using
+  the tertiary button.
+
+*opera-10.70_pre9049 (17 Sep 2010)
+
+  17 Sep 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.70_pre9049.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/09/17/seventeen
+
+*opera-10.70_pre9048 (16 Sep 2010)
+
+  16 Sep 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.70_pre9048.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/09/16/unix-love
+
+*opera-10.70_pre9047 (15 Sep 2010)
+
+  15 Sep 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.70_pre9047.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/09/15/hello-bookmarks-bar
+
+*opera-10.70_pre9046 (13 Sep 2010)
+
+  13 Sep 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.70_pre9046.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/09/13/new-presto-update-and-good
+  -news-from-the-desktop-team
+
+*opera-10.62 (09 Sep 2010)
+
+  09 Sep 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.62_pre6437.ebuild,
+  -opera-10.62_pre6438.ebuild, +opera-10.62.ebuild,
+  -opera-10.70_pre9034.ebuild:
+  http://www.opera.com/docs/changelogs/unix/1062/
+
+*opera-10.70_pre9044 (08 Sep 2010)
+
+  08 Sep 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.70_pre9044.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/09/08/mail-panel
+
+*opera-10.62_pre6438 (07 Sep 2010)
+
+  07 Sep 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.62_pre6438.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/09/07/10-62-release-candidate-2
+
+*opera-10.62_pre6437 (03 Sep 2010)
+
+  03 Sep 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.62_pre6437.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/09/03/10-62-release-candidate
+
+*opera-10.70_pre9036 (30 Aug 2010)
+
+  30 Aug 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.70_pre9015.ebuild,
+  +opera-10.70_pre9036.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/08/30/speed-typing
+
+*opera-10.70_pre9034 (25 Aug 2010)
+
+  25 Aug 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.70_pre9013.ebuild,
+  -opera-10.70_pre9013-r1.ebuild, +opera-10.70_pre9034.ebuild:
+  http://my.opera.com/desktopteam/blog/b9034
+
+*opera-10.70_pre9015 (19 Aug 2010)
+
+  19 Aug 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.70_pre6428.ebuild,
+  +opera-10.70_pre9015.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/08/19/content-blocker-synchroniz
+  ation-and-nix-fixes
+
+*opera-10.70_pre9013-r1 (18 Aug 2010)
+
+  18 Aug 2010; Jeroen Roovers <jer@gentoo.org>
+  +opera-10.70_pre9013-r1.ebuild:
+  Make $FILESDIR/opera obsolete.
+
+*opera-10.70_pre9013 (18 Aug 2010)
+
+  18 Aug 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.70_pre9013.ebuild:
+  http://my.opera.com/desktopteam/blog/new-10-70-snapshot-synchronizing-buil
+  d-numbers-almost
+
+  13 Aug 2010; Joseph Jezak <josejx@gentoo.org> opera-10.61.ebuild:
+  Marked ppc stable for bug #332449.
+
+  12 Aug 2010; Christian Faulhammer <fauli@gentoo.org> opera-10.61.ebuild:
+  stable x86, security bug 332449
+
+  12 Aug 2010; Markos Chandras <hwoarang@gentoo.org> opera-10.61.ebuild:
+  Stable on amd64 wrt bug #332449
+
+  12 Aug 2010; Jeroen Roovers <jer@gentoo.org> opera-10.61.ebuild:
+  Restrict mirrorring again.
+
+*opera-10.61 (12 Aug 2010)
+
+  12 Aug 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.61.ebuild:
+  Unannounced yet.
+
+*opera-10.70_pre6428 (09 Aug 2010)
+*opera-10.61_pre6430 (09 Aug 2010)
+
+  09 Aug 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.61_pre6430.ebuild,
+  +opera-10.70_pre6428.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/08/09/new-10-70-snapshot-with-mo
+  re-presto-updates
+  http://my.opera.com/desktopteam/blog/2010/08/09/10-61-release-candidate-rc
+  3
+
+*opera-10.70_pre6425 (05 Aug 2010)
+
+  05 Aug 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.61_pre6415.ebuild,
+  -opera-10.70_pre6416.ebuild, +opera-10.70_pre6425.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/08/05/yet-another-10-70-snapshot
+  -coming-right-up
+
+*opera-10.70_pre6423 (04 Aug 2010)
+
+  04 Aug 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.70_pre6423.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/08/04/opera-10-70-snapshot-with-
+  more-desktop-fixes
+
+*opera-10.70_pre6416 (03 Aug 2010)
+
+  03 Aug 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.70_pre6416.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/08/03/presto-update Move linguas
+  removal to src_install, right before it is needed.
+
+  03 Aug 2010; Jeroen Roovers <jer@gentoo.org> opera-10.60.ebuild,
+  opera-10.61_pre6415.ebuild, opera-10.61_pre6422.ebuild,
+  opera-10.70_pre6395.ebuild, opera-10.70_pre6396.ebuild:
+  Remove unneeded media-libs/glitz from dependencies thanks to Matt Turner
+  (bug #330953).
+
+*opera-10.61_pre6422 (02 Aug 2010)
+
+  02 Aug 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.61_pre6422.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/08/02/second-release-candidate-f
+  or-10-61
+
+  28 Jul 2010; Jeroen Roovers <jer@gentoo.org> opera-10.61_pre6415.ebuild:
+  Whitespace style.
+
+  28 Jul 2010; Jeroen Roovers <jer@gentoo.org> opera-10.61_pre6415.ebuild:
+  Readd PPC build.
+
+*opera-10.61_pre6415 (28 Jul 2010)
+
+  28 Jul 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.61_pre6415.ebuild:
+  http://my.opera.com/desktopteam/blog/10-61-release-candidate-rc1
+
+  16 Jul 2010; Jeroen Roovers <jer@gentoo.org> opera-10.70_pre6396.ebuild:
+  Switch off plugin paths containing `netscape' (bug #326841).
+
+  10 Jul 2010; Jeroen Roovers <jer@gentoo.org> opera-10.70_pre6396.ebuild:
+  Remove share/opera/package. Use O_ instead of MY_ variable prefix. Move
+  opera_linguas function to src_prepare(). Remove unneeded quoting.
+
+*opera-10.70_pre6396 (10 Jul 2010)
+
+  10 Jul 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.70_pre6396.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/07/09/maccrash
+
+*opera-10.70_pre6395 (08 Jul 2010)
+
+  08 Jul 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.70_pre6395.ebuild:
+  Move source mangling to src_prepare. Version bump
+  http://my.opera.com/desktopteam/blog/2010/07/08/network-fixes
+
+  08 Jul 2010; Jeroen Roovers <jer@gentoo.org> opera-10.60.ebuild:
+  Stable for PPC (bug #326413).
+
+*opera-10.60-r1 (08 Jul 2010)
+
+  08 Jul 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60-r1.ebuild:
+  Install libopera(gtk|kde4).so optionally.
+
+  02 Jul 2010; Pacho Ramos <pacho@gentoo.org> opera-10.60.ebuild:
+  stable amd64, security bug 326413
+
+  02 Jul 2010; Jeroen Roovers <jer@gentoo.org> opera-10.60.ebuild:
+  Remove libpng dependency thanks to ssuominen (bug #326583).
+
+  02 Jul 2010; Jeroen Roovers <jer@gentoo.org> opera-10.60.ebuild:
+  The GTK+ interface needs libpng-1.4, not any libpng.
+
+  02 Jul 2010; Jeroen Roovers <jer@gentoo.org> opera-10.60.ebuild:
+  Fix libpng dependency wrt desktop environment.
+
+  01 Jul 2010; Jeroen Roovers <jer@gentoo.org> opera-10.60.ebuild:
+  Make gstreamer support optional but preferred.
+
+  01 Jul 2010; Christian Faulhammer <fauli@gentoo.org> opera-10.60.ebuild:
+  stable x86, security bug 326413
+
+*opera-10.60 (01 Jul 2010)
+
+  01 Jul 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.60_pre6386.ebuild,
+  +opera-10.60.ebuild:
+  http://my.opera.com/desktopteam/blog/2010/07/01/opera-10-60-goes-final
+
+*opera-10.60_pre6386 (30 Jun 2010)
+
+  30 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6386.ebuild:
+  <http://my.opera.com/desktopteam/blog/2010/06/30/opera-10-60-rc3>
+
+*opera-10.60_pre6385 (30 Jun 2010)
+
+  30 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6385.ebuild:
+  <http://my.opera.com/desktopteam/blog/opera-10-60-rc2>.
+
+  29 Jun 2010; Jeroen Roovers <jer@gentoo.org> opera-10.11.ebuild:
+  But only whe USE=qt-static thanks to Rafał Mużyło (bug #325569).
+
+  29 Jun 2010; Jeroen Roovers <jer@gentoo.org> opera-10.11.ebuild:
+  Specifically use =media-libs/libpng-1.2* (bug #325569).
+
+  29 Jun 2010; Jeroen Roovers <jer@gentoo.org> opera-10.11.ebuild:
+  Add media-libs/libpng dependency thanks to Karl-Johan Karlsson (bug
+  #325569).
+
+*opera-10.60_pre6384 (28 Jun 2010)
+
+  28 Jun 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.60_pre6380.ebuild,
+  -opera-10.60_pre6382.ebuild, -opera-10.60_pre6383.ebuild,
+  +opera-10.60_pre6384.ebuild:
+  <http://my.opera.com/desktopteam/blog/2010/06/28/opera-10-60-rc1>.
+
+*opera-10.60_pre6382 (26 Jun 2010)
+
+  26 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6382.ebuild:
+  <http://my.opera.com/desktopteam/blog/2010/06/25/stability-font-work-and-g
+  eolocation-for-linux>
+
+*opera-10.60_pre6383 (26 Jun 2010)
+
+  26 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6383.ebuild:
+  <http://my.opera.com/desktopteam/blog/2010/06/25/unix-fixes-stabillity-and
+  -more-approaching-10-60-final>.
+
+*opera-10.60_pre6380 (24 Jun 2010)
+
+  24 Jun 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.10.ebuild,
+  +opera-10.60_pre6380.ebuild:
+  <http://my.opera.com/desktopteam/blog/2010/06/24/more-stability-work>.
+
+*opera-10.60_pre6379 (23 Jun 2010)
+
+  23 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6379.ebuild:
+  <http://my.opera.com/desktopteam/blog/2010/06/23/stability-work>.
+
+  23 Jun 2010; Christoph Mende <angelos@gentoo.org> opera-10.11.ebuild:
+  Stable on amd64 wrt bug #325199
+
+  23 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> opera-10.11.ebuild:
+  x86 stable wrt security bug #325199
+
+*opera-10.11 (23 Jun 2010)
+
+  23 Jun 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.10-r1.ebuild,
+  +opera-10.11.ebuild:
+  <http://www.opera.com/support/kb/view/955/>.
+
+*opera-10.60_pre6378 (22 Jun 2010)
+
+  22 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6378.ebuild:
+  <http://my.opera.com/desktopteam/blog/2010/06/22/nix-fixes-and-more>.
+
+*opera-10.60_pre6374 (19 Jun 2010)
+
+  19 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6374.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/06/18/weekend-fixes>.
+
+*opera-10.60_pre6372 (17 Jun 2010)
+
+  17 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6372.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2010/06/17/core-fixes>.
+
+  16 Jun 2010; Jeroen Roovers <jer@gentoo.org> opera-10.60_pre6368.ebuild:
+  The beta release candidate went beta
+  <http://my.opera.com/desktopteam/blog/2010/06/16/opera-10-6-beta-released>.
+
+*opera-10.60_pre6368 (15 Jun 2010)
+
+  15 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6368.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/06/15/10-60-beta-rc>.
+
+*opera-10.60_pre6363 (14 Jun 2010)
+
+  14 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6363.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/06/14/html5-and-then-some>.
+
+  13 Jun 2010; Jeroen Roovers <jer@gentoo.org> opera-10.60_pre6355.ebuild:
+  Fix SRC_URI thanks to jmrk_.
+
+*opera-10.60_pre6355 (13 Jun 2010)
+
+  13 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6355.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/06/12/saturday-snapshot>.
+
+*opera-10.60_pre6351 (08 Jun 2010)
+
+  08 Jun 2010; Jeroen Roovers <jer@gentoo.org>
+  -opera-10.54_pre6340-r1.ebuild, -opera-10.60_pre6344.ebuild,
+  -opera-10.60_pre6346.ebuild, +opera-10.60_pre6351.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/06/08/more-bug-fixing>.
+
+*opera-10.60_pre6347 (03 Jun 2010)
+*opera-10.60_pre6346 (03 Jun 2010)
+
+  03 Jun 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6346.ebuild,
+  +opera-10.60_pre6347.ebuild:
+  Version bumps
+  <http://my.opera.com/desktopteam/blog/2010/06/03/further-core-updates-and-
+  fixes>
+  <http://my.opera.com/desktopteam/blog/2010/06/03/unix-like-bugfixes>.
+
+*opera-10.60_pre6344 (31 May 2010)
+
+  31 May 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.60_pre6344.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/05/31/opera-10-60-alpha-1>.
+
+*opera-10.54_pre6340-r1 (26 May 2010)
+*opera-10.53_pre6330-r2 (26 May 2010)
+
+  26 May 2010; Jeroen Roovers <jer@gentoo.org>
+  -opera-10.53_pre6330-r1.ebuild, +opera-10.53_pre6330-r2.ebuild,
+  -opera-10.54_pre6336-r1.ebuild, -opera-10.54_pre6340.ebuild,
+  +opera-10.54_pre6340-r1.ebuild:
+  Set proper libdir in /usr/share/opera/defaults/pluginpath.ini thanks to
+  Henning Schild (bug #321471).
+
+*opera-10.54_pre6340 (21 May 2010)
+
+  21 May 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.54_pre6340.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/05/21/fonts-usability-widgets-o
+  h-my>.
+
+  20 May 2010; Jeroen Roovers <jer@gentoo.org>
+  opera-10.54_pre6336-r1.ebuild, metadata.xml:
+  Improve USE flag description, make none of gtk/kde the default.
+
+  20 May 2010; Jeroen Roovers <jer@gentoo.org>
+  opera-10.54_pre6336-r1.ebuild, metadata.xml:
+  Set better USE flag descriptions than the default ones. Back from gnome ->
+  gtk and enable USE=gtk by default for plugin support.
+
+  20 May 2010; Jeroen Roovers <jer@gentoo.org>
+  opera-10.54_pre6336-r1.ebuild:
+  USE = gtk -> gnome (bug #320513).
+
+  20 May 2010; Jeroen Roovers <jer@gentoo.org>
+  opera-10.54_pre6336-r1.ebuild:
+  Do more multilib stuff (bug #318725). Split RDEPENDs according to
+  toolkit/desktop environment of choice (bug #320513).
+
+  18 May 2010; Jeroen Roovers <jer@gentoo.org>
+  opera-10.53_pre6330-r1.ebuild, opera-10.54_pre6336-r1.ebuild, files/opera:
+  Fix libdir in opera script too.
+
+*opera-10.54_pre6336-r1 (18 May 2010)
+*opera-10.53_pre6330-r1 (18 May 2010)
+
+  18 May 2010; Jeroen Roovers <jer@gentoo.org>
+  +opera-10.53_pre6330-r1.ebuild, -opera-10.54_pre6331.ebuild,
+  -opera-10.54_pre6333.ebuild, -opera-10.54_pre6335.ebuild,
+  +opera-10.54_pre6336-r1.ebuild:
+  Use multilib (bug #319861).
+
+*opera-10.54_pre6336 (12 May 2010)
+
+  12 May 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.54_pre6336.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/05/12/unix-bug-fixes>.
+
+*opera-10.54_pre6335 (11 May 2010)
+
+  11 May 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.54_pre6335.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/05/11/a-couple-of-more-fixes>.
+
+*opera-10.54_pre6333 (08 May 2010)
+
+  08 May 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.54_pre6333.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/05/07/performance-speed-dial-en
+  hancements-and-bug-fixes>.
+
+*opera-10.54_pre6331 (05 May 2010)
+
+  05 May 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.53_pre6326.ebuild,
+  -opera-10.53_pre6328.ebuild, +opera-10.54_pre6331.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/05/05/startup-crashes-be-gone>.
+
+*opera-10.53_pre6330 (30 Apr 2010)
+*opera-10.53_pre6328 (30 Apr 2010)
+
+  30 Apr 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.53_pre6328.ebuild,
+  +opera-10.53_pre6330.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/04/30/fixing-crash-bugs-for-uni
+  x-beta-release>.
+
+*opera-10.53_pre6326 (28 Apr 2010)
+
+  28 Apr 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.52_pre6320.ebuild,
+  -opera-10.52_pre6321.ebuild, -opera-10.52_pre6322.ebuild,
+  -opera-10.52_pre6325.ebuild, +opera-10.53_pre6326.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/04/28/opera-10-53-rc1-for-windo
+  ws-and-mac>.
+
+*opera-10.52_pre6325 (23 Apr 2010)
+
+  23 Apr 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.52_pre6325.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/04/23/windows-and-mac-rc5-plus-
+  unix-fixes>.
+
+*opera-10.52_pre6322 (22 Apr 2010)
+
+  22 Apr 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.52_pre6322.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/04/22/a-couple-of-more-fixes>.
+
+*opera-10.52_pre6321 (21 Apr 2010)
+
+  21 Apr 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.52_pre6312.ebuild,
+  -opera-10.52_pre6317.ebuild, +opera-10.52_pre6321.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/04/21/new-rc-for-windows-and-ma
+  c>.
+
+*opera-10.52_pre6320 (20 Apr 2010)
+
+  20 Apr 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.52_pre6302.ebuild,
+  -opera-10.52_pre6306.ebuild, +opera-10.52_pre6320.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/04/20/evenes-10-52-rc>. Do not
+  install licenses or documentation directory (bug #315473).
+
+*opera-10.52_pre6317 (16 Apr 2010)
+
+  16 Apr 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.52_pre6317.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/04/16/fixing-bugs>.
+
+*opera-10.52_pre6312 (14 Apr 2010)
+
+  14 Apr 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.51_pre6252.ebuild,
+  -opera-10.52_pre6272-r1.ebuild, -opera-10.52_pre6273.ebuild,
+  +opera-10.52_pre6312.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/ppc-and-kde>.
+
+*opera-10.52_pre6306 (08 Apr 2010)
+
+  08 Apr 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.52_pre6306.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/new-snapshot-focus-on-nsl-and-cache>
+  .
+
+*opera-10.52_pre6302 (01 Apr 2010)
+
+  01 Apr 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.52_pre6302.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/04/01/final-fixes-before-the-ea
+  ster-holidays>.
+
+*opera-10.52_pre6273 (30 Mar 2010)
+
+  30 Mar 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.52_pre6273.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/03/30/hello-is-this-thing-on>.
+
+*opera-10.52_pre6272-r1 (28 Mar 2010)
+
+  28 Mar 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.20_pre4744.ebuild,
+  -opera-10.52_pre6272.ebuild, +opera-10.52_pre6272-r1.ebuild:
+  Replace @@[*SUFFIX|PREFIX] in various text files thanks to Andrian Nord
+  (bug #311449).
+
+*opera-10.52_pre6272 (27 Mar 2010)
+
+  27 Mar 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.52_pre6272.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/03/26/snapshots-for-everyone>.
+
+  22 Mar 2010; Jeroen Roovers <jer@gentoo.org> opera-10.51_pre6248.ebuild,
+  opera-10.51_pre6252.ebuild:
+  Fix licenses for Opera 10.50.
+
+*opera-10.51_pre6252 (21 Mar 2010)
+
+  21 Mar 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.50_pre6240.ebuild,
+  -opera-10.50_pre6242.ebuild, +opera-10.51_pre6252.ebuild, +files/opera:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/03/20/new-opera-unix-packages-a
+  rrive-deb-rpm-tar>.
+
+*opera-10.51_pre6248 (12 Mar 2010)
+
+  12 Mar 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.51_pre6248.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/03/11/getting-prettier>.
+
+*opera-10.50_pre6242 (06 Mar 2010)
+
+  06 Mar 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.50_pre6219.ebuild,
+  -opera-10.50_pre6225.ebuild, -opera-10.50_pre6232.ebuild,
+  -opera-10.50_pre6235.ebuild, +opera-10.50_pre6242.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/03/05/new-snapshot>. Remove
+  old.
+
+*opera-10.50_pre6240 (02 Mar 2010)
+
+  02 Mar 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.50_pre6240.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/03/02/windows-10-50-is-released
+  >.
+
+*opera-10.50_pre6235 (25 Feb 2010)
+
+  25 Feb 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.50_pre6235.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2010/02/25/more-fixes>
+  thanks to Christian Faulhammer.
+
+*opera-10.50_pre6232 (24 Feb 2010)
+
+  24 Feb 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.50_pre6232.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/02/23/new-build-for-you-guys>.
+
+*opera-10.50_pre6225 (19 Feb 2010)
+
+  19 Feb 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.50_pre6225.ebuild,
+  +files/opera-10.50-paths.patch:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/02/19/gstreamer-video-on-mac>.
+  Fix more paths thanks to shade (bug #305303).
+
+  17 Feb 2010; Jeroen Roovers <jer@gentoo.org> opera-10.20_pre4744.ebuild:
+  Remove final qt3 dependent thanks to ssuominen.
+
+  16 Feb 2010; Jeroen Roovers <jer@gentoo.org> -opera-10.50_pre6177.ebuild,
+  -opera-10.50_pre6201.ebuild, -opera-10.50_pre6204.ebuild,
+  -opera-10.50_pre6208.ebuild:
+  Remove old.
+
+  16 Feb 2010; Jeroen Roovers <jer@gentoo.org> opera-10.10.ebuild,
+  opera-10.10-r1.ebuild, opera-10.20_pre4744.ebuild:
+  Remove qt3 support and hence ppc and x86-fbsd support (bug #283430).
+  Remove unneeded qt-core dependency (qt-gui is enough).
+
+*opera-10.50_pre6219 (11 Feb 2010)
+
+  11 Feb 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.50_pre6219.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/02/11/windows-beta-released-and
+  -more>.
+
+*opera-10.50_pre6208 (06 Feb 2010)
+
+  06 Feb 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.50_pre6208.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2010/02/05/skin-fixes-unite-and-then
+  -some>.
+
+  01 Feb 2010; Jeroen Roovers <jer@gentoo.org> opera-10.50_pre6201.ebuild,
+  opera-10.50_pre6204.ebuild:
+  Add die() when dobin fails. Use mv again instead of doins to preserve
+  filename permissions thanks to Jochen (bug #303066).
+
+*opera-10.50_pre6204 (01 Feb 2010)
+
+  01 Feb 2010; Jeroen Roovers <jer@gentoo.org> opera-10.50_pre6201.ebuild,
+  +opera-10.50_pre6204.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/new-snapshot>.
+
+  30 Jan 2010; Jeroen Roovers <jer@gentoo.org> opera-10.50_pre6201.ebuild:
+  Use canonical install function instead of mv.
+
+  30 Jan 2010; Jeroen Roovers <jer@gentoo.org> opera-10.50_pre6201.ebuild:
+  Readd locales.
+
+*opera-10.50_pre6201 (30 Jan 2010)
+
+  30 Jan 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.50_pre6201.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/accelerated-process>.
+
+  28 Jan 2010; Jeroen Roovers <jer@gentoo.org> opera-10.10-r1.ebuild,
+  opera-10.20_pre4744.ebuild:
+  Better to just remove the call to md5check altogether.
+
+*opera-10.10-r1 (28 Jan 2010)
+
+  28 Jan 2010; Jeroen Roovers <jer@gentoo.org> +opera-10.10-r1.ebuild:
+  Apply the same enhancement to 10.10.
+
+  28 Jan 2010; Jeroen Roovers <jer@gentoo.org> opera-10.20_pre4744.ebuild:
+  Do not run the md5check in install.sh since we already check the entire
+  tarball ourselves. Do not advise not to worry about it either.
+
+  05 Jan 2010; Jeroen Roovers <jer@gentoo.org> opera-10.50_pre6177.ebuild:
+  LINGUAS=en should not be optional (bug #299444).
+
+  03 Jan 2010; Jeroen Roovers <jer@gentoo.org> opera-10.50_pre6177.ebuild:
+  Fix category: media-plugins.
+
+  03 Jan 2010; Jeroen Roovers <jer@gentoo.org> opera-10.50_pre6177.ebuild:
+  Depend simply on gst-plugins-meta.
+
+  03 Jan 2010; Jeroen Roovers <jer@gentoo.org> opera-10.50_pre6177.ebuild:
+  Sort dependencies. Add gst-plugins-{ogg,theora,vorbis} instead of
+  gst-plugins-base (bug #299444 comment #3).
+
+  03 Jan 2010; Jeroen Roovers <jer@gentoo.org> opera-10.50_pre6177.ebuild:
+  Patch the wrapper instead of relying on the user environment being up to
+  date (bug #299444).
+
+*opera-10.50_pre6177 (02 Jan 2010)
+
+  02 Jan 2010; Jeroen Roovers <jer@gentoo.org> opera-10.10.ebuild,
+  opera-10.20_pre4744.ebuild, +opera-10.50_pre6177.ebuild:
+  License change. Version bump
+  <http://my.opera.com/desktopteam/blog/happy-new-year>.
+
+  15 Dec 2009; Jeroen Roovers <jer@gentoo.org> opera-10.20_pre4744.ebuild:
+  Do not use escape sequences in elog messages (bug #296916).
+
+  09 Dec 2009; Jeroen Roovers <jer@gentoo.org> -opera-10.01.ebuild:
+  Remove old.
+
+  09 Dec 2009; Jeroen Roovers <jer@gentoo.org> opera-10.10.ebuild:
+  Stable for PPC (bug #294208).
+
+  29 Nov 2009; Jeroen Roovers <jer@gentoo.org> opera-10.10.ebuild,
+  opera-10.20_pre4744.ebuild:
+  Expand QA_PRESTRIPPED for amd64 (bug #294948).
+
+  28 Nov 2009; Jeroen Roovers <jer@gentoo.org> opera-10.10.ebuild:
+  Use PN (more consistently).
+
+*opera-10.20_pre4744 (26 Nov 2009)
+
+  26 Nov 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.20_pre4744.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/opera-10-20-goes-alpha>.
+
+  25 Nov 2009; Markus Meier <maekke@gentoo.org> opera-10.10.ebuild:
+  amd64 stable, bug #294208
+
+  25 Nov 2009; Jeroen Roovers <jer@gentoo.org> opera-10.01.ebuild,
+  opera-10.10.ebuild, metadata.xml:
+  Remove IUSE=ia32.
+
+  23 Nov 2009; Christian Faulhammer <fauli@gentoo.org> opera-10.10.ebuild:
+  stable x86, bug 294208
+
+*opera-10.10 (23 Nov 2009)
+
+  23 Nov 2009; Jeroen Roovers <jer@gentoo.org> -opera-10.10_pre4694.ebuild,
+  -opera-10.10_pre4720.ebuild, -opera-10.10_pre4725.ebuild,
+  -opera-10.10_pre4728.ebuild, -opera-10.10_pre4738.ebuild,
+  -opera-10.10_pre4740.ebuild, -opera-10.10_pre4742.ebuild,
+  +opera-10.10.ebuild:
+  Version bump (bug #294208). Remove old.
+
+*opera-10.10_pre4742 (21 Nov 2009)
+
+  21 Nov 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.10_pre4742.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/11/21/something-for-the-weekend
+  >.
+
+*opera-10.10_pre4740 (20 Nov 2009)
+
+  20 Nov 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.10_pre4740.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/11/20/unite-fixes-and-opera-lin
+  k>.
+
+*opera-10.10_pre4738 (20 Nov 2009)
+
+  20 Nov 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.10_pre4738.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/11/19/faster-photo-sharing-and-
+  more>.
+
+  18 Nov 2009; Jeroen Roovers <jer@gentoo.org> opera-10.01.ebuild,
+  opera-10.10_pre4694.ebuild, opera-10.10_pre4720.ebuild,
+  opera-10.10_pre4725.ebuild, opera-10.10_pre4728.ebuild:
+  Do not use RESTRICT=strip but QA_PRESTRIPPED instead (maybe bug #239866).
+
+*opera-10.10_pre4728 (18 Nov 2009)
+
+  18 Nov 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.10_pre4728.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/rc-3>.
+
+*opera-10.10_pre4725 (16 Nov 2009)
+
+  16 Nov 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.10_pre4725.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/sunday-build>.
+
+*opera-10.10_pre4720 (13 Nov 2009)
+
+  13 Nov 2009; Jeroen Roovers <jer@gentoo.org> -opera-10.10_pre4672.ebuild,
+  -opera-10.10_pre4678.ebuild, -opera-10.10_pre4685.ebuild,
+  +opera-10.10_pre4720.ebuild:
+  Remove old. Version bump
+  <http://my.opera.com/desktopteam/blog/2009/11/13/a-lucky-build>.
+
+  09 Nov 2009; Jeroen Roovers <jer@gentoo.org> opera-10.01.ebuild,
+  opera-10.10_pre4672.ebuild, opera-10.10_pre4678.ebuild,
+  opera-10.10_pre4685.ebuild, opera-10.10_pre4694.ebuild:
+  Remove USE=qt-static preference (bug #287905).
+
+  06 Nov 2009; Jeroen Roovers <jer@gentoo.org> opera-10.01.ebuild,
+  opera-10.10_pre4672.ebuild, opera-10.10_pre4678.ebuild,
+  opera-10.10_pre4685.ebuild, opera-10.10_pre4694.ebuild:
+  Remove references to plugin issues thanks to Pacho Ramos (bug #291846).
+
+*opera-10.10_pre4694 (05 Nov 2009)
+
+  05 Nov 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.10_pre4694.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/11/05/key-fixes-and-stability>.
+
+  04 Nov 2009; Jeroen Roovers <jer@gentoo.org> -opera-10.00.ebuild:
+  Remove old.
+
+  04 Nov 2009; Markus Meier <maekke@gentoo.org> opera-10.01.ebuild:
+  amd64 stable, bug #290862
+
+  01 Nov 2009; Jeroen Roovers <jer@gentoo.org> opera-10.01.ebuild,
+  opera-10.10_pre4672.ebuild, opera-10.10_pre4678.ebuild,
+  opera-10.10_pre4685.ebuild:
+  Make USE=qt-static preferable for builds that misbehave with Qt 4.5.3 (bug
+  #287905).
+
+  01 Nov 2009; nixnut <nixnut@gentoo.org> opera-10.01.ebuild:
+  ppc stable #290862
+
+*opera-10.10_pre4685 (29 Oct 2009)
+
+  29 Oct 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.10_pre4685.ebuild:
+  Version bump thanks to Ivan Ivanich (bug #287905 comment #4)
+  <http://my.opera.com/desktopteam/blog/2009/10/29/post-seminar-unite-build>
+  .
+
+  28 Oct 2009; Christian Faulhammer <fauli@gentoo.org> opera-10.01.ebuild:
+  stable x86, security bug 290862
+
+*opera-10.01 (28 Oct 2009)
+
+  28 Oct 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.01.ebuild,
+  -opera-10.10_pre4632.ebuild, -opera-10.10_pre4644.ebuild,
+  -opera-10.10_pre4665.ebuild:
+  Version bump (bug #290862). Remove old.
+
+*opera-10.10_pre4678 (16 Oct 2009)
+
+  16 Oct 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.10_pre4678.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/10/15/opera-widgets-for-desktop
+  -labs-release>.
+
+*opera-10.10_pre4672 (14 Oct 2009)
+
+  14 Oct 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.10_pre4672.ebuild:
+  Version bump <http://www.opera.com/press/releases/2009/10/14/>.
+
+  14 Oct 2009; Jeroen Roovers <jer@gentoo.org> -opera-10.10_pre4594.ebuild,
+  -opera-10.10_pre4609.ebuild, -opera-10.10_pre4624.ebuild:
+  Remove old.
+
+*opera-10.10_pre4665 (10 Oct 2009)
+
+  10 Oct 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.10_pre4665.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/10/09/prompt-reporting>.
+
+*opera-10.10_pre4644 (02 Oct 2009)
+
+  02 Oct 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.10_pre4644.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/10/01/more-unite-builds-2>.
+
+*opera-10.10_pre4632 (25 Sep 2009)
+
+  25 Sep 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.10_pre4632.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/09/25/its-a-new-day>.
+
+*opera-10.10_pre4624 (21 Sep 2009)
+
+  21 Sep 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.10_pre4624.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/09/21/unite-applications>.
+
+  21 Sep 2009; Jeroen Roovers <jer@gentoo.org>
+  -files/opera-9.21-pluginpath.patch,
+  -files/opera-9.23-pluginpath-fbsd.patch:
+  Remove unused patches.
+
+  21 Sep 2009; Jeroen Roovers <jer@gentoo.org>
+  -files/opera-9.50-pluginpath.patch,
+  -files/opera-9.50-pluginpath-fbsd.patch, -opera-9.64.ebuild:
+  Remove old.
+
+  20 Sep 2009; nixnut <nixnut@gentoo.org> opera-10.00.ebuild:
+  ppc stable #283391
+
+  17 Sep 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00.ebuild,
+  opera-10.10_pre4594.ebuild, opera-10.10_pre4609.ebuild:
+  Opera 10 can download, install and select dictionaries entirely without
+  the use of external tools.
+
+  12 Sep 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00.ebuild,
+  opera-10.10_pre4594.ebuild, opera-10.10_pre4609.ebuild:
+  Change spellchecker setup workaround to reflect current builds thanks to
+  Dmitry Ivankov (bug #284552).
+
+  11 Sep 2009; Markus Meier <maekke@gentoo.org> opera-10.00.ebuild:
+  amd64 stable, bug #283391
+
+  10 Sep 2009; Jeroen Roovers <jer@gentoo.org> -opera-10.00_rc4570.ebuild,
+  -opera-10.00_rc4583.ebuild, -opera-10.10_pre4563.ebuild,
+  -opera-10.10_pre4566.ebuild:
+  Remove all 10.* ebuilds pre 4585.
+
+*opera-10.10_pre4609 (10 Sep 2009)
+
+  10 Sep 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.10_pre4609.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2009/09/10/moar-bilds>.
+
+  08 Sep 2009; Christian Faulhammer <fauli@gentoo.org> opera-10.00.ebuild:
+  stable x86, security bug 283391
+
+*opera-10.10_pre4594 (05 Sep 2009)
+
+  05 Sep 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.10_pre4594.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/09/04/10-10-with-unite>.
+
+  01 Sep 2009; Jeroen Roovers <jer@gentoo.org>
+  -files/opera-9.00-install.patch:
+  Remove unused patch.
+
+  01 Sep 2009; Jeroen Roovers <jer@gentoo.org> -opera-9.27.ebuild:
+  Remove opera-9.27 after more than a year.
+
+  01 Sep 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00.ebuild:
+  Switch to mirror://opera now that mirrors should have synced.
+
+  01 Sep 2009; Jeroen Roovers <jer@gentoo.org> -opera-10.00_pre4537.ebuild,
+  -opera-10.00_pre4538.ebuild, -opera-10.00_pre4546.ebuild,
+  -opera-10.00_pre4562.ebuild:
+  Remove old.
+
+*opera-10.00 (01 Sep 2009)
+
+  01 Sep 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00.ebuild:
+  Version bump
+  <http://my.opera.com/community/blog/2009/08/25/the-adventures-of-odd-even>
+  .
+
+  29 Aug 2009; Jeroen Roovers <jer@gentoo.org> opera-10.10_pre4563.ebuild,
+  opera-10.10_pre4566.ebuild, +files/opera-localepath.patch:
+  Set proper locale path (bug #283128).
+
+*opera-10.00_rc4583 (29 Aug 2009)
+
+  29 Aug 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_rc4570.ebuild,
+  +opera-10.00_rc4583.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/08/28/opera-10-0-release-candid
+  ate-2>.
+
+*opera-10.00_rc4570 (25 Aug 2009)
+
+  25 Aug 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_rc4570.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/08/25/opera-10-0-release-candid
+  ate>.
+
+  22 Aug 2009; William Hubbs <williamh@gentoo.org> opera-9.27.ebuild,
+  opera-9.64.ebuild:
+  fixed dependencies for 231870.
+
+*opera-10.10_pre4566 (21 Aug 2009)
+
+  21 Aug 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.10_pre4566.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/08/21/another-unite-round>.
+
+*opera-10.10_pre4563 (20 Aug 2009)
+*opera-10.00_pre4562 (20 Aug 2009)
+
+  20 Aug 2009; Jeroen Roovers <jer@gentoo.org> -opera-10.00_pre4402.ebuild,
+  -opera-10.00_pre4492.ebuild, -opera-10.00_pre4493.ebuild,
+  -opera-10.00_pre4502.ebuild, -opera-10.00_pre4520.ebuild,
+  -opera-10.00_pre4529.ebuild, +opera-10.00_pre4562.ebuild,
+  +opera-10.10_pre4563.ebuild:
+  Remove old. Version bump
+  <http://my.opera.com/desktopteam/blog/2009/08/20/more-snapshots>.
+
+*opera-10.00_pre4546 (14 Aug 2009)
+
+  14 Aug 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4546.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/08/14/much-work-and-lots-of-pla
+  y-makes-unite-a-shiny-feature>.
+
+*opera-10.00_pre4537 (13 Aug 2009)
+
+  13 Aug 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4537.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/08/13/opera-10-0-beta-3>.
+
+*opera-10.00_pre4538 (13 Aug 2009)
+
+  13 Aug 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4538.ebuild:
+  Version bump <http://my.opera.com/unite/blog/show.dml/4239589>.
+
+  12 Aug 2009; Jeroen Roovers <jer@gentoo.org> -opera-10.00_pre4440.ebuild,
+  -opera-10.00_pre4449.ebuild, -opera-10.00_pre4453.ebuild,
+  -opera-10.00_pre4458.ebuild, -opera-10.00_pre4464.ebuild,
+  -opera-10.00_pre4478.ebuild:
+  Remove old.
+
+*opera-10.00_pre4529 (07 Aug 2009)
+
+  07 Aug 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4529.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/08/07/whats-with-the-red-dots-o
+  n-the-tabs>.
+
+*opera-10.00_pre4520 (31 Jul 2009)
+
+  31 Jul 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4520.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/07/31/tab-thumbnails-on-the-sid
+  es-and-opera-unite-improvements>.
+
+*opera-10.00_pre4502 (21 Jul 2009)
+
+  21 Jul 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4502.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/07/21/new-snapshot-new-possibil
+  ities>.
+
+*opera-10.00_pre4492 (17 Jul 2009)
+
+  17 Jul 2009; Jeroen Roovers <jer@gentoo.org> -opera-10.00_pre4340.ebuild,
+  -opera-10.00_pre4345.ebuild, -opera-10.00_pre4394.ebuild,
+  +opera-10.00_pre4492.ebuild:
+  Remove old. Add beta2.
+
+*opera-10.00_pre4493 (16 Jul 2009)
+
+  16 Jul 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4493.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/07/16/more-than-beta-2>.
+
+  15 Jul 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4478.ebuild:
+  Fix SRC_URI for gt-static Qt4 amd64 thanks to James Rowe (bug #277790).
+
+  14 Jul 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4453.ebuild,
+  opera-10.00_pre4458.ebuild, opera-10.00_pre4464.ebuild,
+  opera-10.00_pre4478.ebuild:
+  Ask for emerge --info instead of -vp.
+
+  12 Jul 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4478.ebuild:
+  Fix USE="qt-static -qt3" dependencies, thanks to Andreas Sturmlechner (bug
+  #277325).
+
+  09 Jul 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4478.ebuild:
+  Trivial fixes to OPERABUILD text.
+
+  09 Jul 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4340.ebuild,
+  opera-10.00_pre4345.ebuild, opera-10.00_pre4394.ebuild,
+  opera-10.00_pre4402.ebuild, opera-10.00_pre4440.ebuild,
+  opera-10.00_pre4449.ebuild, opera-10.00_pre4453.ebuild,
+  opera-10.00_pre4458.ebuild, opera-10.00_pre4464.ebuild,
+  opera-10.00_pre4478.ebuild:
+  Refine lazy version bump prevention mechanism. Change license for Opera
+  10.
+
+  09 Jul 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4478.ebuild:
+  Readd IUSE=qt3.
+
+*opera-10.00_pre4478 (09 Jul 2009)
+
+  09 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  +opera-10.00_pre4478.ebuild:
+  version bump: <http://my.opera.com/desktopteam/blog/show.dml/4039395>
+
+*opera-10.00_pre4464 (03 Jul 2009)
+
+  03 Jul 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4464.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/07/03/crash-logging-on-the-mac>
+  .
+
+*opera-10.00_pre4458 (30 Jun 2009)
+
+  30 Jun 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4458.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/06/30/link-fixes-and-unite-sear
+  ch-engine-blocking>.
+
+  30 Jun 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4453.ebuild:
+  Add QA_DT_HASH to prevent QA check for ignored LDFLAGS.
+
+  30 Jun 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4453.ebuild:
+  Compress the faux src_ functions. Add a pkg_setup that describes what to
+  post on bugs.g.o.
+
+  28 Jun 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4453.ebuild:
+  Fix amd64 SRC_URI (patch by Jouni Rinne, bug #275629).
+
+  27 Jun 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4449.ebuild:
+  Fix amd64 SRC_URI (patch by Jouni Rinne, bug #275319).
+
+*opera-10.00_pre4453 (26 Jun 2009)
+
+  26 Jun 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4453.ebuild:
+  Version bump. Add missing media-libs/nas dependency (possibly fixes bug
+  #275401).
+
+*opera-10.00_pre4449 (24 Jun 2009)
+
+  24 Jun 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4449.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/06/24/approaching-the-final-ope
+  ra-10-0-release>.
+
+*opera-10.00_pre4440 (16 Jun 2009)
+
+  16 Jun 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4440.ebuild:
+  Version bump <http://unite.opera.com/>.
+
+  04 Jun 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4402.ebuild:
+  Fix the fix (bug #272496 again).
+
+  04 Jun 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4402.ebuild:
+  Add media-libs/nas dependency for Qt4/static thanks to Piotr Szymaniak
+  (bug #272496).
+
+*opera-10.00_pre4402 (03 Jun 2009)
+
+  03 Jun 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4402.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/06/03/welcome-to-opera-10-beta-
+  1>.
+
+  02 Jun 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4394.ebuild:
+  Add libXinerama dependency for qt4 build thanks to Piotr Szymaniak (bug
+  #271990). Readd x86-fbsd.
+
+  27 May 2009; Jeroen Roovers <jer@gentoo.org> -opera-10.00_pre4205.ebuild,
+  -opera-10.00_pre4214.ebuild, -opera-10.00_pre4268.ebuild:
+  Remove old.
+
+*opera-10.00_pre4394 (27 May 2009)
+
+  27 May 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4394.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/05/27/snapshot-build-with-previ
+  ew-of-the-new-skin>.
+
+  16 May 2009; Jeroen Roovers <jer@gentoo.org> opera-9.64.ebuild:
+  Always install default locale (bug #266280).
+
+  16 May 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4345.ebuild:
+  Always install default locale (bug #266280).
+
+*opera-10.00_pre4345 (14 May 2009)
+
+  14 May 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4345.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/05/13/auto-updated-already>.
+
+  09 May 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4268.ebuild,
+  opera-10.00_pre4340.ebuild:
+  Do not write to /etc/opera6rc any longer as it is no longer used.
+
+  08 May 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4340.ebuild:
+  Marked ~x86-fbsd too.
+
+*opera-10.00_pre4340 (08 May 2009)
+
+  08 May 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4340.ebuild,
+  ChangeLog:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/05/08/skin-debugging-and-more>.
+  Move epatch to src_prepare(). Move opera_cd() into src_unpack() and set S
+  only when not set to a valid directory.
+
+  10 Apr 2009; Ulrich Mueller <ulm@gentoo.org> opera-9.64.ebuild,
+  opera-10.00_pre4205.ebuild, opera-10.00_pre4214.ebuild,
+  opera-10.00_pre4268.ebuild:
+  Update elog message to reflect package move of net-www/netscape-flash to
+  www-plugins/adobe-flash, bug 265569.
+
+  08 Apr 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4268.ebuild:
+  Add late amd64 snapshots (bug #265377).
+
+*opera-10.00_pre4268 (03 Apr 2009)
+
+  03 Apr 2009; Jeroen Roovers <jer@gentoo.org>
+  +files/opera-10.00-pluginpath.patch,
+  +files/opera-10.00-pluginpath-fbsd.patch, +opera-10.00_pre4268.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/04/03/turbo-in-10>.
+
+  20 Mar 2009; Jeroen Roovers <jer@gentoo.org> opera-9.27.ebuild,
+  opera-9.64.ebuild, opera-10.00_pre4205.ebuild, opera-10.00_pre4214.ebuild:
+  Define a dummy src_configure, thanks to Rafal Lalik for reporting (bug
+  #263010).
+
+  18 Mar 2009; Jeroen Roovers <jer@gentoo.org> -opera-10.00_pre4166.ebuild:
+  Remove old.
+
+  18 Mar 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4205.ebuild:
+  Same procedure (bug #227985) so ppc and x86-fbsd users may enjoy this
+  enhancement too.
+
+  18 Mar 2009; Jeroen Roovers <jer@gentoo.org> opera-9.64.ebuild,
+  opera-10.00_pre4214.ebuild:
+  DEPEND on x11-libs/qt-3[-immqt] (bug #227985). Either set -immqt or
+  +immqt-bc for x11-libs/qt-3 in case of USE="!qt-static qt3(-static)".
+
+  15 Mar 2009; Jeroen Roovers <jer@gentoo.org> -opera-10.00_pre4102.ebuild,
+  -opera-10.00_pre4116.ebuild, -opera-10.00_pre4126.ebuild,
+  -opera-10.00_pre4126-r1.ebuild:
+  Remove old.
+
+*opera-10.00_pre4214 (13 Mar 2009)
+
+  13 Mar 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4214.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/03/13/opera-turbo-labs-release>
+  .
+
+  10 Mar 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4205.ebuild:
+  Readd ~ppc. Remove redundant media-libs/libpng dependency.
+
+*opera-10.00_pre4205 (10 Mar 2009)
+
+  10 Mar 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4205.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/03/10/new-peregrine-build>.
+
+  07 Mar 2009; Jeroen Roovers <jer@gentoo.org> -opera-9.63.ebuild:
+  Remove old.
+
+  07 Mar 2009; Christian Faulhammer <fauli@gentoo.org> opera-9.64.ebuild:
+  stable x86, security bug 261032
+
+  04 Mar 2009; Tobias Scherbaum <dertobi123@gentoo.org> opera-9.64.ebuild:
+  ppc stable, bug #261032
+
+  04 Mar 2009; Tobias Heinlein <keytoaster@gentoo.org> opera-9.64.ebuild:
+  amd64 stable wrt security bug #261032
+
+*opera-9.64 (03 Mar 2009)
+
+  03 Mar 2009; Jeroen Roovers <jer@gentoo.org> opera-9.63.ebuild,
+  +opera-9.64.ebuild:
+  Version bump (bug #261032). Fix mirrors SRC_URI for version 9.63.
+
+*opera-10.00_pre4166 (12 Feb 2009)
+
+  12 Feb 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4166.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/show.dml/2975248>. Drop
+  ~ppc because no tar.bz2 has been prepared (yet).
+
+  11 Feb 2009; Jeroen Roovers <jer@gentoo.org>
+  opera-10.00_pre4126-r1.ebuild:
+  I can even do spell checking without spellcheck.ini.
+
+  11 Feb 2009; Jeroen Roovers <jer@gentoo.org>
+  opera-10.00_pre4126-r1.ebuild:
+  Look mom, I can do spell checking without aspell!
+
+*opera-10.00_pre4126-r1 (11 Feb 2009)
+
+  11 Feb 2009; Jeroen Roovers <jer@gentoo.org>
+  +opera-10.00_pre4126-r1.ebuild:
+  Correct spellcheck.so location in spellcheck.ini thanks to MageSlayer (bug
+  #258198). Die when spellcheck.so is not found. Refer to LINGUAS for
+  >app-text/aspell-0.60.5.
+
+  04 Feb 2009; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4126.ebuild:
+  Depend on media-libs/libpng thanks to Constantine D. Kardaris (bug
+  #257437).
+
+*opera-10.00_pre4126 (13 Jan 2009)
+
+  13 Jan 2009; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4126.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2009/01/13/new-year-snapshot>.
+
+  30 Dec 2008; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4116.ebuild:
+  Depend on Qt 4 instead of 3 (bug #252630).
+
+*opera-10.00_pre4116 (24 Dec 2008)
+
+  24 Dec 2008; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4116.ebuild:
+  Cleaned up ebuild and version bump
+  <http://my.opera.com/desktopteam/blog/2008/12/19/the-christmas-edition>.
+
+  20 Dec 2008; Jeroen Roovers <jer@gentoo.org> -opera-9.62.ebuild:
+  Remove old.
+
+  20 Dec 2008; Markus Meier <maekke@gentoo.org> opera-9.63.ebuild:
+  x86 stable, bug #247229
+
+  18 Dec 2008; Tobias Scherbaum <dertobi123@gentoo.org> opera-9.63.ebuild:
+  ppc stable, bug #247229
+
+  16 Dec 2008; Kenneth Prugh <ken69267@gentoo.org> opera-9.63.ebuild:
+  amd64 stable, bug #247229
+
+*opera-9.63 (16 Dec 2008)
+
+  16 Dec 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.63.ebuild:
+  Version bump (bug #251155).
+
+  06 Dec 2008; Jeroen Roovers <jer@gentoo.org> opera-10.00_pre4102.ebuild:
+  Hopefully fix bug #249964.
+
+*opera-10.00_pre4102 (05 Dec 2008)
+
+  05 Dec 2008; Jeroen Roovers <jer@gentoo.org> +opera-10.00_pre4102.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/12/03/peregrine-takes-flight-op
+  era-10-0-alpha-is-here>.
+
+  07 Nov 2008; Jeroen Roovers <jer@gentoo.org> opera-9.62.ebuild:
+  Add x11-libs/libXinerama dependency for USE=qt-static builds (bug
+  #245784).
+
+  02 Nov 2008; Jeroen Roovers <jer@gentoo.org> -opera-9.60.ebuild,
+  -opera-9.61.ebuild:
+  Remove old, vulnerable (bug #244980).
+
+  01 Nov 2008; Markus Meier <maekke@gentoo.org> opera-9.62.ebuild:
+  x86 stable, bug #244980
+
+  30 Oct 2008; Tobias Heinlein <keytoaster@gentoo.org> opera-9.62.ebuild:
+  amd64 stable, security bug #244980
+
+  30 Oct 2008; Tobias Scherbaum <dertobi123@gentoo.org> opera-9.62.ebuild:
+  ppc stable, bug #244980
+
+*opera-9.62 (30 Oct 2008)
+
+  30 Oct 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.62.ebuild:
+  Version bump (bug #244980).
+
+  24 Oct 2008; Markus Meier <maekke@gentoo.org> opera-9.61.ebuild:
+  x86 stable, bug #243060
+
+  24 Oct 2008; Jeroen Roovers <jer@gentoo.org> opera-9.60.ebuild,
+  opera-9.61.ebuild:
+  Improve plugin warning message to reflect version's status.
+
+  24 Oct 2008; Tobias Heinlein <keytoaster@gentoo.org> opera-9.61.ebuild:
+  amd64 stable, security bug #243060
+
+*opera-9.61 (22 Oct 2008)
+
+  22 Oct 2008; Robert Buchholz <rbu@gentoo.org> +opera-9.61.ebuild:
+  Version bump, ebuild by George Wu (bug #243060)
+
+  16 Oct 2008; Jeroen Roovers <jer@gentoo.org> -opera-9.52.ebuild:
+  Remove old version.
+
+  11 Oct 2008; Tobias Scherbaum <dertobi123@gentoo.org> opera-9.60.ebuild:
+  ppc stable, bug #240500
+
+  09 Oct 2008; Markus Meier <maekke@gentoo.org> opera-9.60.ebuild:
+  amd64/x86 stable, bug #240500
+
+  09 Oct 2008; Jeroen Roovers <jer@gentoo.org> opera-9.60.ebuild:
+  Fix static/shared (bug #240578).
+
+  09 Oct 2008; Jeroen Roovers <jer@gentoo.org> -opera-9.60_pre2424.ebuild,
+  -opera-9.60_pre2426.ebuild, -opera-9.60_pre2430.ebuild,
+  -opera-9.60_pre2436.ebuild, -opera-9.60_pre2440.ebuild,
+  -opera-9.60_pre2444.ebuild:
+  Remove the old.
+
+  08 Oct 2008; Jeroen Roovers <jer@gentoo.org> opera-9.60.ebuild:
+  Fix amd64 SRC_URI thanks to Dmitry Ivankov (bug #240536).
+
+*opera-9.60 (08 Oct 2008)
+
+  08 Oct 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.60.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/opera-9-6-released>.
+
+*opera-9.60_pre2444 (06 Oct 2008)
+
+  06 Oct 2008; Jeroen Roovers <jer@gentoo.org> files/opera-gentoo.patch,
+  opera-9.60_pre2440.ebuild, +opera-9.60_pre2444.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/10/04/opera-9-6-rc-2>. Remove
+  sed scripts and improve gentoo patch thanks to Pacho Ramos (bug #239365).
+
+  02 Oct 2008; Jeroen Roovers <jer@gentoo.org> -opera-9.60_pre2405.ebuild,
+  -opera-9.60_pre2410.ebuild, -opera-9.60_pre2415.ebuild:
+  Remove old ebuilds.
+
+*opera-9.60_pre2440 (02 Oct 2008)
+
+  02 Oct 2008; Jeroen Roovers <jer@gentoo.org>
+  +files/opera-freedesktop.patch, +files/opera-gentoo.patch,
+  +files/opera-simplify-desktop.patch, +opera-9.60_pre2440.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/10/01/opera-9-6-rc-1>.
+  Implement install.sh changes thanks to Pacho Ramos (bug #204294).
+
+*opera-9.60_pre2436 (26 Sep 2008)
+
+  26 Sep 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.60_pre2436.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/09/26/9-6-approaching>.
+
+*opera-9.60_pre2430 (19 Sep 2008)
+
+  19 Sep 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.60_pre2430.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/09/19/another-step>.
+
+*opera-9.60_pre2426 (13 Sep 2008)
+
+  13 Sep 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.60_pre2426.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/09/12/a-new-weekly-and-my-first
+  -post-here>.
+
+*opera-9.60_pre2424 (10 Sep 2008)
+
+  10 Sep 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.60_pre2424.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/09/10/opera-9-6-beta-released>.
+
+*opera-9.60_pre2415 (06 Sep 2008)
+
+  06 Sep 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.60_pre2415.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/09/05/9-60-beta-1-rc>.
+
+*opera-9.60_pre2410 (29 Aug 2008)
+
+  29 Aug 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.60_pre2410.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/08/29/opera-9-6-snapshot-bug-
+  fixes>.
+
+*opera-9.60_pre2405 (25 Aug 2008)
+
+  25 Aug 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.60_pre2405.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/08/22/first-9-60-snapshot>.
+
+  25 Aug 2008; Jeroen Roovers <jer@gentoo.org> metadata.xml,
+  -opera-9.51.ebuild:
+  Remove old (bug #235298). Squash metadata.xml tabbing.
+
+  25 Aug 2008; Tobias Scherbaum <dertobi123@gentoo.org> opera-9.52.ebuild:
+  ppc stable, bug #235298
+
+  22 Aug 2008; Markus Meier <maekke@gentoo.org> opera-9.52.ebuild:
+  x86 stable, bug #235298
+
+  22 Aug 2008; Dawid Węgliński <cla@gentoo.org> opera-9.52.ebuild:
+  Stable on amd64 - security bug #235298
+
+  20 Aug 2008; Jeroen Roovers <jer@gentoo.org> -opera-9.52_pre2065.ebuild,
+  -opera-9.52_pre2068.ebuild, -opera-9.52_pre2069.ebuild,
+  -opera-9.52_pre2084.ebuild, -opera-9.52_pre2086.ebuild,
+  -opera-9.52_rc1.ebuild, -opera-9.52_rc2.ebuild:
+  Remove older versions.
+
+*opera-9.52 (20 Aug 2008)
+
+  20 Aug 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.52.ebuild:
+  Version bump.
+
+*opera-9.52_rc2 (16 Aug 2008)
+
+  16 Aug 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.52_rc2.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2008/08/15/opera-9-52-rc-2>.
+
+*opera-9.52_rc1 (14 Aug 2008)
+
+  14 Aug 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.52_rc1.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2008/08/14/9-52-rc1-2>.
+
+*opera-9.52_pre2086 (08 Aug 2008)
+
+  08 Aug 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.52_pre2086.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/08/08/getting-closer-to-9-52>.
+
+*opera-9.52_pre2084 (01 Aug 2008)
+
+  01 Aug 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.52_pre2084.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/08/01/9-52-august-snapshot>.
+
+  29 Jul 2008; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Describe local USE flags for GLEP 56.
+
+*opera-9.52_pre2069 (19 Jul 2008)
+
+  19 Jul 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.52_pre2069.ebuild:
+  Version bump <http://labs.opera.com/news/2008/07/18/>.
+
+*opera-9.52_pre2068 (18 Jul 2008)
+
+  18 Jul 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.52_pre2068.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/07/18/a-peek-under-the-hood>.
+
+*opera-9.52_pre2065 (12 Jul 2008)
+
+  12 Jul 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.52_pre2065.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/07/11/opera-9-52-snapshot-summer-
+  edition>.
+
+  09 Jul 2008; Jeroen Roovers <jer@gentoo.org> opera-9.51.ebuild:
+  Fix src_install() (bug #231131, comment #8).
+
+  09 Jul 2008; Jeroen Roovers <jer@gentoo.org> opera-9.51.ebuild:
+  epatch dies on its own.
+
+  08 Jul 2008; Jeroen Roovers <jer@gentoo.org> opera-9.51.ebuild:
+  Use globbing instead of hardcoded $S.
+
+  05 Jul 2008; Jeroen Roovers <jer@gentoo.org> -opera-9.50.ebuild,
+  -opera-9.50-r1.ebuild, -opera-9.51_pre2061.ebuild:
+  Remove vulnerable versions (bug #230633).
+
+  05 Jul 2008; Tobias Scherbaum <dertobi123@gentoo.org> opera-9.51.ebuild:
+  ppc stable, bug #230633
+
+  04 Jul 2008; Thomas Anderson <gentoofan23@gentoo.org> opera-9.51.ebuild:
+  stable amd64, security bug 230633
+
+  04 Jul 2008; Christian Faulhammer <opfer@gentoo.org> opera-9.51.ebuild:
+  stable x86, security bug 230633
+
+  04 Jul 2008; Jeroen Roovers <jer@gentoo.org> -opera-9.51_pre2050.ebuild,
+  -opera-9.51_pre2052.ebuild, -opera-9.51_pre2059.ebuild:
+  Remove old versions.
+
+  03 Jul 2008; Jeroen Roovers <jer@gentoo.org> opera-9.51.ebuild:
+  Fix SRC_URI for x86-fbsd.
+
+*opera-9.51 (03 Jul 2008)
+
+  03 Jul 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.51.ebuild:
+  Version bump thanks to georgia_tech_swagger (bug #230633). Allow amd64 users
+  to choose any x86 version (bug #227339).
+
+*opera-9.51_pre2061 (01 Jul 2008)
+
+  01 Jul 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.51_pre2061.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2008/07/01/opera-9-51-rc-3>.
+
+*opera-9.51_pre2059 (28 Jun 2008)
+
+  28 Jun 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.51_pre2059.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2008/06/27/opera-9-51-rc-2>.
+
+  25 Jun 2008; Jeroen Roovers <jer@gentoo.org> opera-9.51_pre2052.ebuild:
+  Fix IUSE.
+
+*opera-9.51_pre2052 (25 Jun 2008)
+
+  25 Jun 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.51_pre2052.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2008/06/25/opera-9-51-rc-1>
+  Introduces USE=ia32 for amd64 systems (bug #227339).
+
+  24 Jun 2008; Jeroen Roovers <jer@gentoo.org> opera-9.50-r1.ebuild:
+  Depend on app-emulation/emul-linux-x86-qtlibs for amd64 when USE=ia32 (bug
+  #227339 comment #5).
+
+  23 Jun 2008; Jeroen Roovers <jer@gentoo.org> opera-9.50-r1.ebuild:
+  Change S to reflect USE flag usage (bug #229009, thanks to Branko BAdrljica).
+
+*opera-9.50-r1 (23 Jun 2008)
+
+  23 Jun 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.50-r1.ebuild:
+  Revision bump to add support for the ia32 USE flag to install a 32-bit Opera
+  on AMD64 (bug #227339).
+
+*opera-9.51_pre2050 (23 Jun 2008)
+
+  23 Jun 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.51_pre2050.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2008/06/20/towards-9-51>.
+  Should fix bug #222975.
+
+  17 Jun 2008; Jeroen Roovers <jer@gentoo.org> opera-9.27.ebuild:
+  Drop all keywords except sparc (bug #226079).
+
+  13 Jun 2008; Kenneth Prugh <ken69267@gentoo.org> opera-9.50.ebuild:
+  amd64 stable, bug #226079
+
+  13 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org> opera-9.50.ebuild:
+  ppc stable, bug #226079
+
+  13 Jun 2008; Christian Faulhammer <opfer@gentoo.org> opera-9.50.ebuild:
+  stable x86, security bug 226079
+
+  13 Jun 2008; Jeroen Roovers <jer@gentoo.org> opera-9.50.ebuild:
+  Depend on gcc4 (bug #226139).
+
+  12 Jun 2008; Jeroen Roovers <jer@gentoo.org> opera-9.50.ebuild:
+  Fix SRC_URI for x86 shared-qt.
+
+  12 Jun 2008; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Use DESCRIPTION from opera(1) man page.
+
+  12 Jun 2008; Jeroen Roovers <jer@gentoo.org> opera-9.27.ebuild,
+  opera-9.50.ebuild:
+  Match DESCRIPTION to the opera(1) man page's.
+
+  12 Jun 2008; Jeroen Roovers <jer@gentoo.org> -opera-9.50_beta2.ebuild,
+  -opera-9.50_beta2_p1951.ebuild, -opera-9.50_beta2_p1962.ebuild,
+  -opera-9.50_beta2_p1971.ebuild, -opera-9.50_beta2_p1971-r1.ebuild,
+  -opera-9.50_beta2_p1983.ebuild, -opera-9.50_beta2_p1992.ebuild,
+  -opera-9.50_beta2_p1997.ebuild, -opera-9.50_beta2_p2021.ebuild,
+  -opera-9.50_beta2_p2025.ebuild, -opera-9.50_beta2_p2034.ebuild:
+  Remove betas (maybe bug #226079).
+
+*opera-9.50 (12 Jun 2008)
+
+  12 Jun 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.50.ebuild:
+  Version bump (bug #226069).
+
+*opera-9.50_beta2_p2034 (10 Jun 2008)
+
+  10 Jun 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.50_beta2_p2034.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/06/10/opera-9-5-rc-prepare-for-la
+  unch>.
+
+*opera-9.50_beta2_p2025 (07 Jun 2008)
+
+  07 Jun 2008; Jeroen Roovers <jer@gentoo.org>
+  +opera-9.50_beta2_p2025.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2008/06/06/turtle-wax>.
+
+*opera-9.50_beta2_p2021 (06 Jun 2008)
+
+  06 Jun 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.50_beta2_p2021.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2008/06/05/looking-sharp>.
+
+*opera-9.50_beta2_p1997 (31 May 2008)
+
+  31 May 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.50_beta2_p1997.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/05/30/polish-stability-and-other-
+  things>.
+
+*opera-9.50_beta2_p1992 (29 May 2008)
+
+  29 May 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.50_beta2_p1992.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2008/05/28/busy-busy-busy>.
+
+*opera-9.50_beta2_p1983 (24 May 2008)
+
+  24 May 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.50_beta2_p1983.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2008/05/23/a-lighter-ev>.
+
+  21 May 2008; Jeroen Roovers <jer@gentoo.org>
+  opera-9.50_beta2_p1971-r1.ebuild:
+  Textual corrections.
+
+  20 May 2008; Jeroen Roovers <jer@gentoo.org>
+  opera-9.50_beta2_p1971-r1.ebuild:
+  Change the postinst() blurb about setting a UI language.
+
+*opera-9.50_beta2_p1971-r1 (20 May 2008)
+
+  20 May 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.50_beta2_p1971-r1.ebuild:
+  Implement LINGUAS now that upstream packages .lng files (bug #139508).
+
+  20 May 2008; Jeroen Roovers <jer@gentoo.org> -opera-9.50_beta2_pre1929.ebuild:
+  Remove one old version.
+
+*opera-9.50_beta2_p1971 (20 May 2008)
+
+  20 May 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.50_beta2_p1971.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/05/20/stability-is-this-weeks-wor
+  d>. qt-static defaults to qt4 for now. Qt version support and LINGUAS
+  support to be added soon.
+
+*opera-9.50_beta2_p1962 (10 May 2008)
+
+  10 May 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.50_beta2_p1962.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/05/09/profile-guided-optimizations>.
+
+*opera-9.50_beta2_p1951 (07 May 2008)
+
+  07 May 2008; Jeroen Roovers <jer@gentoo.org> -opera-9.50_pre1951.ebuild,
+  +opera-9.50_beta2_p1951.ebuild:
+  Still a beta2 apparently.
+
+*opera-9.50_pre1951 (07 May 2008)
+
+  07 May 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.50_pre1951.ebuild,
+  -opera-9.50_beta2_pre1904.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/05/06/getting-ready-for-dragonfly>.
+
+  26 Apr 2008; Jeroen Roovers <jer@gentoo.org> -opera-9.50_beta1.ebuild:
+  Should have gone a long time ago (bug #219292, thanks to Jesús Pérez).
+
+  24 Apr 2008; Jeroen Roovers <jer@gentoo.org>
+  -opera-9.50_beta2_p1904.ebuild, -opera-9.50_beta2_p1929.ebuild:
+  Really remove the _p* versions.
+
+*opera-9.50_beta2_pre1929 (24 Apr 2008)
+*opera-9.50_beta2_pre1904 (24 Apr 2008)
+
+  24 Apr 2008; Jeroen Roovers <jer@gentoo.org>
+  +opera-9.50_beta2_pre1904.ebuild, +opera-9.50_beta2_pre1929.ebuild:
+  Fix the versioning scheme once again.
+
+  24 Apr 2008; Jeroen Roovers <jer@gentoo.org> opera-9.50_beta2.ebuild:
+  Add more updates from the latest 9.50_beta2_p*.
+
+  24 Apr 2008; Jeroen Roovers <jer@gentoo.org> opera-9.50_beta2.ebuild:
+  Fix CVS header. Add back x86-fbsd SRC_URI magic.
+
+  24 Apr 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.50_beta2.ebuild,
+  -opera-9.50_beta2_p1766.ebuild, -opera-9.50_beta2_p1772.ebuild,
+  -opera-9.50_beta2_p1786.ebuild, -opera-9.50_beta2_p1800.ebuild,
+  -opera-9.50_beta2_p1823.ebuild, -opera-9.50_beta2_p1834.ebuild,
+  -opera-9.50_beta2_p1875.ebuild, -opera-9.50_beta2_p1887.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/04/24/9-5-beta-2-is-out>, with
+  credits to Opfer for noticing first. Remove some of the older snapshots.
+
+*opera-9.50_beta2_p1929 (17 Apr 2008)
+
+  17 Apr 2008; Jeroen Roovers <jer@gentoo.org>
+  +opera-9.50_beta2_p1929.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/04/17/beta-2-is-coming>.
+
+*opera-9.50_beta2_p1904 (09 Apr 2008)
+
+  09 Apr 2008; Jeroen Roovers <jer@gentoo.org>
+  +opera-9.50_beta2_p1904.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/04/08/ev-and-certificate-updates>
+  . Thanks to Christian Faulhammer.
+
+  07 Apr 2008; Jeroen Roovers <jer@gentoo.org> opera-9.27.ebuild:
+  SPARC and PPC always get qt-static versions. Sorted generic dependencies.
+  Formatted dependency list.
+
+  07 Apr 2008; Jeroen Roovers <jer@gentoo.org> -opera-9.26.ebuild:
+  Remove vulnerable version (bug #216022).
+
+  07 Apr 2008; Jeroen Roovers <jer@gentoo.org> opera-9.27.ebuild:
+  Stable for SPARC (bug #216022).
+
+  06 Apr 2008; Tobias Scherbaum <dertobi123@gentoo.org> opera-9.27.ebuild:
+  ppc stable, bug #216022
+
+  03 Apr 2008; Markus Meier <maekke@gentoo.org> opera-9.27.ebuild:
+  amd64/x86 stable, security bug #216022
+
+*opera-9.27 (03 Apr 2008)
+
+  03 Apr 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.27.ebuild:
+  Version bump (bug #216022).
+
+*opera-9.50_beta2_p1887 (28 Mar 2008)
+
+  28 Mar 2008; Jeroen Roovers <jer@gentoo.org>
+  +opera-9.50_beta2_p1887.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/03/28/painting-performance-fixes>
+  .
+
+*opera-9.50_beta2_p1875 (19 Mar 2008)
+
+  19 Mar 2008; Jeroen Roovers <jer@gentoo.org>
+  +opera-9.50_beta2_p1875.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2008/03/18/happy-easter>.
+
+*opera-9.50_beta2_p1834 (29 Feb 2008)
+
+  29 Feb 2008; Jeroen Roovers <jer@gentoo.org>
+  +opera-9.50_beta2_p1834.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2008/02/29/yet-another-snapshot-build>.
+
+  28 Feb 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.50_beta1.ebuild:
+  Readd because of the p.mask on beta2 (thanks to Cyker for notifying).
+
+  27 Feb 2008; Jeroen Roovers <jer@gentoo.org> -opera-9.50_beta1.ebuild,
+  -opera-9.50_beta2_p1652.ebuild, -opera-9.50_beta2_p1662.ebuild,
+  -opera-9.50_beta2_p1669.ebuild, -opera-9.50_beta2_p1678.ebuild,
+  -opera-9.50_beta2_p1709.ebuild, -opera-9.50_beta2_p1719.ebuild,
+  -opera-9.50_beta2_p1729.ebuild, -opera-9.50_beta2_p1737.ebuild,
+  -opera-9.50_beta2_p1754.ebuild:
+  Remove some old versions.
+
+  26 Feb 2008; Jeroen Roovers <jer@gentoo.org> -opera-9.25.ebuild:
+  Remove vulnerable version.
+
+  25 Feb 2008; Steve Dibb <beandog@gentoo.org> opera-9.26.ebuild:
+  amd64 stable, bug 210260
+
+*opera-9.50_beta2_p1823 (23 Feb 2008)
+
+  23 Feb 2008; Jeroen Roovers <jer@gentoo.org>
+  +opera-9.50_beta2_p1823.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/02/22/plugin-milestone-build-part
+  -ii>.
+
+  22 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org> opera-9.26.ebuild:
+  ppc stable, bug #210260
+
+  21 Feb 2008; Raúl Porcel <armin76@gentoo.org> opera-9.26.ebuild:
+  sparc stable wrt #210260
+
+  20 Feb 2008; Christian Faulhammer <opfer@gentoo.org> opera-9.26.ebuild:
+  stable x86, security bug 210260
+
+*opera-9.26 (20 Feb 2008)
+
+  20 Feb 2008; Jeroen Roovers <jer@gentoo.org> +opera-9.26.ebuild:
+  Version bump (bug #210260).
+
+*opera-9.50_beta2_p1800 (13 Feb 2008)
+
+  13 Feb 2008; Jeroen Roovers <jer@gentoo.org>
+  +opera-9.50_beta2_p1800.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/02/11/introducing-advanced-tab-ac
+  tivation>. Thanks to opfer for noticing.
+
+*opera-9.50_beta2_p1786 (02 Feb 2008)
+
+  02 Feb 2008; Jeroen Roovers <jer@gentoo.org>
+  +opera-9.50_beta2_p1786.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2008/02/01/new-snapshot>.
+
+  28 Jan 2008; Jeroen Roovers <jer@gentoo.org>
+  opera-9.50_beta2_p1766.ebuild:
+  Add sparc builds (thanks to armin76 for noticing).
+
+  26 Jan 2008; Jeroen Roovers <jer@gentoo.org>
+  opera-9.50_beta2_p1772.ebuild:
+  Add more builds.
+
+*opera-9.50_beta2_p1772 (26 Jan 2008)
+
+  26 Jan 2008; Jeroen Roovers <jer@gentoo.org>
+  +opera-9.50_beta2_p1772.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2008/01/25/new-snapshot-experimenting-
+  with-document-all-cloaking>.
+
+*opera-9.50_beta2_p1766 (18 Jan 2008)
+
+  18 Jan 2008; Jeroen Roovers <jer@gentoo.org>
+  +opera-9.50_beta2_p1766.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2008/01/18/new-snapshot-windows-skin-work>.
+
+  15 Jan 2008; Jeroen Roovers <jer@gentoo.org> opera-9.25.ebuild:
+  Add shared Qt version for ppc (bug #204496).
+
+*opera-9.50_beta2_p1754 (12 Jan 2008)
+
+  12 Jan 2008; Jeroen Roovers <jer@gentoo.org>
+  +opera-9.50_beta2_p1754.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2008/01/11/and-another-one>.
+
+*opera-9.50_beta2_p1737 (04 Jan 2008)
+
+  04 Jan 2008; Jeroen Roovers <jer@gentoo.org>
+  +opera-9.50_beta2_p1737.ebuild:
+  Weekly version bump
+  <http://my.opera.com/desktopteam/blog/2008/01/04/new-year-new-build>.
+
+  22 Dec 2007; Jeroen Roovers <jer@gentoo.org> -opera-9.24.ebuild:
+  Remove vulnerable version.
+
+  22 Dec 2007; Peter Weller <welp@gentoo.org> opera-9.25.ebuild:
+  Stable on amd64; bug 202770
+
+*opera-9.50_beta2_p1729 (21 Dec 2007)
+
+  21 Dec 2007; Jeroen Roovers <jer@gentoo.org>
+  +opera-9.50_beta2_p1729.ebuild:
+  Weekly version bump
+  <http://my.opera.com/desktopteam/blog/2007/12/21/when-x-mas-comes-early>.
+
+  21 Dec 2007; Tobias Scherbaum <dertobi123@gentoo.org> opera-9.25.ebuild:
+  ppc stable, bug #202770
+
+  20 Dec 2007; Ferris McCormick <fmccor@gentoo.org> opera-9.25.ebuild:
+  Sparc stable --- security Bug #202770 --- working for me.
+
+  20 Dec 2007; Christian Faulhammer <opfer@gentoo.org> opera-9.25.ebuild:
+  stable x86, security bug 202770
+
+*opera-9.25 (19 Dec 2007)
+
+  19 Dec 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.25.ebuild:
+  Version bump (bug #202770).
+
+*opera-9.50_beta2_p1719 (14 Dec 2007)
+
+  14 Dec 2007; Jeroen Roovers <jer@gentoo.org>
+  +opera-9.50_beta2_p1719.ebuild:
+  Weekly version bump
+  <http://my.opera.com/desktopteam/blog/2007/12/14/new-snapshot>. Removed
+  libflashplayer.so symlink.
+
+  06 Dec 2007; Jeroen Roovers <jer@gentoo.org> -files/opera.desktop,
+  opera-9.24.ebuild, opera-9.50_beta1.ebuild, opera-9.50_beta2_p1652.ebuild,
+  opera-9.50_beta2_p1662.ebuild, opera-9.50_beta2_p1669.ebuild,
+  opera-9.50_beta2_p1678.ebuild, opera-9.50_beta2_p1709.ebuild:
+  Fix .desktop entry (bug #201498).
+
+*opera-9.50_beta2_p1709 (01 Dec 2007)
+
+  01 Dec 2007; Jeroen Roovers <jer@gentoo.org>
+  +opera-9.50_beta2_p1709.ebuild:
+  Weekly version bump
+  <http://my.opera.com/desktopteam/blog/2007/11/30/unix-plugin-milestone>.
+
+*opera-9.50_beta2_p1678 (23 Nov 2007)
+
+  23 Nov 2007; Jeroen Roovers <jer@gentoo.org>
+  +opera-9.50_beta2_p1678.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2007/11/23/new-snapshot>.
+
+*opera-9.50_beta2_p1669 (18 Nov 2007)
+*opera-9.50_beta2_p1662 (18 Nov 2007)
+*opera-9.50_beta2_p1652 (18 Nov 2007)
+
+  18 Nov 2007; Jeroen Roovers <jer@gentoo.org> -opera-9.50_beta2.ebuild,
+  -opera-9.50_beta3.ebuild, -opera-9.50_beta4.ebuild,
+  +opera-9.50_beta2_p1652.ebuild, +opera-9.50_beta2_p1662.ebuild,
+  +opera-9.50_beta2_p1669.ebuild:
+  Fix versioning scheme to match beta numbering vs build numbering.
+
+*opera-9.50_beta4 (16 Nov 2007)
+
+  16 Nov 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.50_beta4.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2007/11/16/even-more-work>.
+
+  09 Nov 2007; Jeroen Roovers <jer@gentoo.org> opera-9.50_beta1.ebuild,
+  opera-9.50_beta2.ebuild, opera-9.50_beta3.ebuild:
+  Add warning about plugin issues (bug #198162).
+
+*opera-9.50_beta3 (09 Nov 2007)
+
+  09 Nov 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.50_beta3.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2007/11/09/work-in-progress>.
+
+  03 Nov 2007; Jeroen Roovers <jer@gentoo.org> opera-9.50_beta2.ebuild:
+  Readd older improvements both generic and specific to fbsd, fix ppc &&
+  qt-static.
+
+  03 Nov 2007; Jeroen Roovers <jer@gentoo.org> opera-9.50_beta2.ebuild:
+  Use the .4 build for FreeBSD.
+
+*opera-9.50_beta2 (03 Nov 2007)
+
+  03 Nov 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.50_beta2.ebuild:
+  Version bump <http://my.opera.com/desktopteam/blog/2007/11/02/beta-plus-plus>.
+
+  30 Oct 2007; Jeroen Roovers <jer@gentoo.org> opera-9.50_beta1.ebuild:
+  Fix spelling error critical for ppc users (thanks to mr_bones).
+
+  28 Oct 2007; Jeroen Roovers <jer@gentoo.org> opera-9.50_beta1.ebuild:
+  Removing emulation libraries for amd64 as Opera 9.50 is native x86_64.
+
+  28 Oct 2007; Jeroen Roovers <jer@gentoo.org> opera-9.50_beta1.ebuild:
+  Fixing Qt dependency for amd64.
+
+  26 Oct 2007; Jeroen Roovers <jer@gentoo.org> opera-9.50_beta1.ebuild:
+  Fixing ${S} for amd64 now.
+
+  26 Oct 2007; Jeroen Roovers <jer@gentoo.org> opera-9.50_beta1.ebuild:
+  Fix SRC_URI (bug #197095).
+
+  26 Oct 2007; Jeroen Roovers <jer@gentoo.org> opera-9.50_beta1.ebuild:
+  Readded notes about failed checksums.
+
+  26 Oct 2007; Jeroen Roovers <jer@gentoo.org> opera-9.50_beta1.ebuild:
+  Readded notes about failed checksums.
+
+  26 Oct 2007; Jeroen Roovers <jer@gentoo.org> opera-9.50_beta1.ebuild:
+  Fix SRC_URI magic (thanks to tomaw).
+
+  25 Oct 2007; Jeroen Roovers <jer@gentoo.org> opera-9.50_beta1.ebuild:
+  Readd x86-fbsd keyword.
+
+*opera-9.50_beta1 (25 Oct 2007)
+
+  25 Oct 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.50_beta1.ebuild:
+  Version bump.
+
+  25 Oct 2007; Jeroen Roovers <jer@gentoo.org> -opera-9.50_rc1629.ebuild,
+  -opera-9.50_rc1633.ebuild, -opera-9.50_rc1636.ebuild:
+  Removing weeklies in preparation for 9.50 beta 1.
+
+  22 Oct 2007; Jeroen Roovers <jer@gentoo.org> -opera-9.23.ebuild:
+  Remove vulnerable stable version.
+
+  22 Oct 2007; Christoph Mende <angelos@gentoo.org> opera-9.24.ebuild:
+  Stable on amd64 wrt security bug #196164
+
+  19 Oct 2007; Jeroen Roovers <jer@gentoo.org> -opera-9.50_rc1589.ebuild,
+  -opera-9.50_rc1600.ebuild:
+  Removing old weeklies.
+
+  18 Oct 2007; Jeroen Roovers <jer@gentoo.org> opera-9.50_rc1636.ebuild:
+  Fix whitespace.
+
+*opera-9.50_rc1636 (18 Oct 2007)
+
+  18 Oct 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.50_rc1636.ebuild:
+  Weekly version bump
+  <http://my.opera.com/desktopteam/blog/2007/10/18/a-snapshot-a-day-keeps-the-
+  bugs-away>.
+
+  18 Oct 2007; Tobias Scherbaum <dertobi123@gentoo.org> opera-9.24.ebuild:
+  ppc stable, bug #196164
+
+  18 Oct 2007; Jeroen Roovers <jer@gentoo.org> opera-9.50_rc1589.ebuild,
+  opera-9.50_rc1600.ebuild, opera-9.50_rc1629.ebuild,
+  opera-9.50_rc1633.ebuild:
+  Removed virtual/libstdc++ from all 9.5* ebuilds (fixing bug #196190).
+
+  18 Oct 2007; Ferris McCormick <fmccor@gentoo.org> opera-9.24.ebuild:
+  Sparc stable --- Security Bug #196164 --- no problems for me.
+
+  18 Oct 2007; Jeroen Roovers <jer@gentoo.org> opera-9.50_rc1589.ebuild,
+  opera-9.50_rc1600.ebuild, opera-9.50_rc1629.ebuild,
+  opera-9.50_rc1633.ebuild:
+  Move virtual/libstdc++-3 dependency back to being x86-fbsd only.
+
+  17 Oct 2007; Christian Faulhammer <opfer@gentoo.org> opera-9.24.ebuild:
+  stable x86, security bug 196164
+
+*opera-9.50_rc1633 (17 Oct 2007)
+
+  17 Oct 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.50_rc1633.ebuild:
+  Weekly version bump
+  <http://my.opera.com/desktopteam/blog/2007/10/17/we-will-rock-you-9-5-beta-c
+  oming>.
+
+*opera-9.24 (17 Oct 2007)
+
+  17 Oct 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.24.ebuild:
+  Version bump (bug #196164, thanks to Marko Steinberger).
+
+  16 Oct 2007; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Add long description.
+
+  15 Oct 2007; Jeroen Roovers <jer@gentoo.org> -opera-9.50_alpha1567.ebuild,
+  -opera-9.50_alpha1581.ebuild, -opera-9.50_rc1581.ebuild:
+  Remove old weeklies.
+
+*opera-9.50_rc1629 (14 Oct 2007)
+
+  14 Oct 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.50_rc1629.ebuild:
+  Weekly version bump
+  <http://my.opera.com/desktopteam/blog/2007/10/12/neat-thumbnails-instant-sea
+  rching-and-more>.
+
+  09 Oct 2007; Jeroen Roovers <jer@gentoo.org> opera-9.23.ebuild,
+  opera-9.50_alpha1567.ebuild, opera-9.50_alpha1581.ebuild,
+  opera-9.50_rc1581.ebuild, opera-9.50_rc1589.ebuild,
+  opera-9.50_rc1600.ebuild:
+  Fix quoting issues caught by latest repoman.
+
+*opera-9.50_rc1600 (28 Sep 2007)
+
+  28 Sep 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.50_rc1600.ebuild:
+  Weekly version bump
+  <http://my.opera.com/desktopteam/blog/2007/09/28/snapshot-extravaganza>.
+
+*opera-9.50_rc1589 (22 Sep 2007)
+
+  22 Sep 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.50_rc1589.ebuild:
+  Version bump
+  <http://my.opera.com/desktopteam/blog/2007/09/21/one-more-snapshot>.
+
+  17 Sep 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.50_alpha1581.ebuild:
+  Readd the alpha build with the unchanged RDEPEND for old times´ sake.
+
+*opera-9.50_rc1581 (17 Sep 2007)
+
+  17 Sep 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.50_rc1581.ebuild:
+  Not really a version bump, just a name change in accordance with upstream´s
+  naming convention, as well as an opportunity to fiddle with the RDEPEND
+  list.
+
+*opera-9.50_alpha1581 (15 Sep 2007)
+
+  15 Sep 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.50_alpha1581.ebuild:
+  Version bump (still a snapshot).
+
+  07 Sep 2007; Jeroen Roovers <jer@gentoo.org> opera-9.50_alpha1567.ebuild:
+  Remove temporary comment.
+
+  07 Sep 2007; Jeroen Roovers <jer@gentoo.org>
+  +files/opera-9.50-pluginpath-fbsd.patch, opera-9.23.ebuild,
+  opera-9.50_alpha1567.ebuild:
+  Apply fbsd pluginpath.ini patch to 9.50. Change 9.23 to use the same
+  conditional scheme.
+
+  06 Sep 2007; Jeroen Roovers <jer@gentoo.org>
+  +files/opera-9.23-pluginpath-fbsd.patch, opera-9.23.ebuild:
+  Apply a different pluginpath.ini patch for elibc_FreeBSD (bug #181300,
+  comment #4).
+
+  06 Sep 2007; Jeroen Roovers <jer@gentoo.org> opera-9.50_alpha1567.ebuild:
+  Remove unneeded amd64? qt-static? for this build.
+
+  06 Sep 2007; Jeroen Roovers <jer@gentoo.org> opera-9.50_alpha1567.ebuild:
+  Changes from bug #191328, comments #5 and #6 applied.
+
+*opera-9.50_alpha1567 (05 Sep 2007)
+
+  05 Sep 2007; Jeroen Roovers <jer@gentoo.org>
+  +files/opera-9.50-pluginpath.patch, +opera-9.50_alpha1567.ebuild:
+  Version bump.
+
+  16 Aug 2007; Jeroen Roovers <jer@gentoo.org> -opera-9.22.ebuild:
+  Remove vulnerable version.
+
+  15 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org> opera-9.23.ebuild:
+  ppc stable, bug #188987
+
+  15 Aug 2007; Christoph Mende <angelos@gentoo.org> opera-9.23.ebuild:
+  Stable on amd64 wrt security bug #188987
+
+  15 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> opera-9.23.ebuild:
+  Stable on sparc wrt security #188987
+
+  15 Aug 2007; Christian Faulhammer <opfer@gentoo.org> opera-9.23.ebuild:
+  stable x86, security bug 188987
+
+  15 Aug 2007; Jeroen Roovers <jer@gentoo.org> -opera-9.23_rc657.ebuild,
+  -opera-9.23_rc660.ebuild:
+  Remove weeklies now the final is out.
+
+*opera-9.23 (15 Aug 2007)
+
+  15 Aug 2007; Jeroen Roovers <jer@gentoo.org> metadata.xml,
+  +opera-9.23.ebuild:
+  Version bump (bug #188987). Removed axxo from metadata.xml.
+
+*opera-9.23_rc660 (09 Aug 2007)
+
+  09 Aug 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.23_rc660.ebuild:
+  Another weekly.
+
+  04 Aug 2007; Jeroen Roovers <jer@gentoo.org> opera-9.22.ebuild:
+  Whitespace.
+
+  04 Aug 2007; Jeroen Roovers <jer@gentoo.org> opera-9.22.ebuild:
+  Trivial changes to HOMEPAGE and DESCRIPTION.
+
+  04 Aug 2007; Jeroen Roovers <jer@gentoo.org> opera-9.22.ebuild,
+  opera-9.23_rc657.ebuild:
+  Backport and forward-port various slight improvements.
+
+*opera-9.23_rc657 (04 Aug 2007)
+
+  04 Aug 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.23_rc657.ebuild:
+  Yet another weekly.
+
+  29 Jul 2007; Jeroen Roovers <jer@gentoo.org> -opera-9.21.ebuild,
+  -opera-9.21-r1.ebuild, -opera-9.22_rc651.ebuild, -opera-9.22_rc652.ebuild:
+  Clean up of vulnerable versions and weeklies.
+
+  28 Jul 2007; Steve Dibb <beandog@gentoo.org> opera-9.22.ebuild:
+  amd64 stable, security bug 185497
+
+  26 Jul 2007; Jeroen Roovers <jer@gentoo.org> -opera-9.22-r1.ebuild:
+  Silly me (bug #127200 comment #23 :).
+
+*opera-9.22-r1 (26 Jul 2007)
+
+  26 Jul 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.22-r1.ebuild:
+  Do not install the libflashplayer symlink any longer (bug #127200
+  comment #19).
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; opera-9.21.ebuild,
+  opera-9.21-r1.ebuild, opera-9.22_rc651.ebuild, opera-9.22_rc652.ebuild,
+  opera-9.22.ebuild:
+  Drop virtual/x11 references.
+
+  21 Jul 2007; Raúl Porcel <armin76@gentoo.org> opera-9.22.ebuild:
+  x86 stable wrt security #185497
+
+  20 Jul 2007; Tobias Scherbaum <dertobi123@gentoo.org> opera-9.22.ebuild:
+  ppc stable, bug #185497
+
+  20 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> opera-9.22.ebuild:
+  Stable on sparc wrt security #185497
+
+  19 Jul 2007; Jeroen Roovers <jer@gentoo.org> opera-9.22.ebuild:
+  Fix patch path.
+
+  19 Jul 2007; Jeroen Roovers <jer@gentoo.org> -opera-9.22.651.ebuild,
+  -opera-9.22.652.ebuild:
+  Really remove old weekly ebuilds too.
+
+*opera-9.22 (19 Jul 2007)
+*opera-9.22_rc652 (19 Jul 2007)
+*opera-9.22_rc651 (19 Jul 2007)
+
+  19 Jul 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.22_rc651.ebuild,
+  +opera-9.22_rc652.ebuild, +opera-9.22.ebuild:
+  Version bump. Move weekly ebuilds to _rc version format.
+
+*opera-9.22.652 (10 Jul 2007)
+
+  10 Jul 2007; Jeroen Roovers <jer@gentoo.org> opera-9.22.651.ebuild,
+  +opera-9.22.652.ebuild:
+  New weekly, intel-* only this time, so no ppc or sparc. Removed sample URIs
+  from weekly ebuilds.
+
+  09 Jul 2007; Mike Frysinger <vapier@gentoo.org> opera-9.21.ebuild,
+  opera-9.21-r1.ebuild, opera-9.22.651.ebuild:
+  Drop setarch depend -- this is handled by the system packages.
+
+*opera-9.22.651 (08 Jul 2007)
+
+  08 Jul 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.22.651.ebuild:
+  http://my.opera.com/desktopteam/blog/yet-another-merlin-build
+
+  07 Jul 2007; Jeroen Roovers <jer@gentoo.org>
+  files/opera-9.21-pluginpath.patch, opera-9.21-r1.ebuild:
+  Fix elog messages wrt bug #183689. Add MANPATH to /etc/env.d/90opera.
+
+  07 Jul 2007; Jeroen Roovers <jer@gentoo.org>
+  -files/opera-9.21-install.patch:
+  Remove deprecated patch.
+
+*opera-9.21-r1 (07 Jul 2007)
+
+  07 Jul 2007; Jeroen Roovers <jer@gentoo.org>
+  +files/opera-9.21-pluginpath.patch, +opera-9.21-r1.ebuild:
+  Revision bump to apply a patch that extends the default site wide plugin
+  paths (bug #181300).
+
+  27 Jun 2007; Jeroen Roovers <jer@gentoo.org> -opera-9.20.ebuild:
+  Removing old version.
+
+  27 Jun 2007; Christian Faulhammer <opfer@gentoo.org> opera-9.21.ebuild:
+  stable x86, bug 183404
+
+  27 Jun 2007; Lars Weiler <pylon@gentoo.org> opera-9.21.ebuild:
+  Stable on ppc; bug #183404.
+
+  27 Jun 2007; Ferris McCormick <fmccor@gentoo.org> opera-9.21.ebuild:
+  Sparc stable --- Bug #183404 --- works fine for me.
+
+  27 Jun 2007; Christoph Mende <angelos@gentoo.org> opera-9.21.ebuild:
+  Stable on amd64 wrt bug 183404
+
+  24 May 2007; Jeroen Roovers <jer@gentoo.org> files/opera.desktop:
+  Updated to meet desktop entry specification, except for the previous GNOME
+  "fix".
+
+  22 May 2007; Jeroen Roovers <jer@gentoo.org> opera-9.21.ebuild:
+  Make the debug USE flag go away. Tx jakub (bug #179393).
+
+  21 May 2007; Jeroen Roovers <jer@gentoo.org> -opera-9.10.ebuild:
+  Removing 9.10 because of security bugs and because it is no longer required
+  for bug #176085.
+
+*opera-9.21 (21 May 2007)
+
+  21 May 2007; Jeroen Roovers <jer@gentoo.org> -opera-9.20-r1.ebuild,
+  +opera-9.21.ebuild, -opera-9.21.641.ebuild:
+  Removed deprecated versions, added 9.21 final (same as the weekly I removed,
+  basically), added patch for bug #179224.
+
+  14 May 2007; Jeroen Roovers <jer@gentoo.org> opera-9.20-r1.ebuild,
+  opera-9.21.641.ebuild:
+  Changed language file URL (not just for Linux anymore). Fixed line lengths.
+
+*opera-9.21.641 (14 May 2007)
+
+  14 May 2007; Jeroen Roovers <jer@gentoo.org>
+  +files/opera-9.21-install.patch, +opera-9.21.641.ebuild:
+  Weekly build 641.
+
+  14 May 2007; Jeroen Roovers <jer@gentoo.org> opera-9.20.ebuild,
+  opera-9.20-r1.ebuild:
+  Fix whitespace.
+
+  14 May 2007; Jeroen Roovers <jer@gentoo.org>
+  files/opera-9.00-install.patch, -files/opera-qt.2.patch:
+  Fix whitespace in install.sh patch. Remove deprecated patch.
+
+*opera-9.20-r1 (13 May 2007)
+
+  13 May 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.20-r1.ebuild:
+  Revision bump. Match *-fbsd´s SRC_URI to other arches, fix bug #127200 with
+  a symlink and an elog hint.
+
+  12 Apr 2007; Christian Faulhammer <opfer@gentoo.org> opera-9.20.ebuild:
+  stable x86, security bug 168484
+
+  11 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org> opera-9.20.ebuild:
+  ppc stable, bug #168484
+
+  11 Apr 2007; Peter Weller <welp@gentoo.org> opera-9.20.ebuild:
+  Stable on amd64 wrt bug 168484
+
+  11 Apr 2007; Ferris McCormick <fmccor@gentoo.org> opera-9.20.ebuild:
+  Sparc stable --- Security Bug #168484 --- appears to work fine.
+
+*opera-9.20 (11 Apr 2007)
+
+  11 Apr 2007; Jeroen Roovers <jer@gentoo.org> +opera-9.20.ebuild:
+  Version bump (fixing bugs #173505 and #168484).
+
+  05 Apr 2007; Jeroen Roovers <jer@gentoo.org> opera-9.10.ebuild:
+  Patch from Toffanin for x86-fbsd (bug #171841).
+
+  06 Feb 2007; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Set myself up as (co)maintainer while axxo is away. You know, just to catch
+  the bugs and such.
+
+  17 Jan 2007; Jeroen Roovers <jer@gentoo.org> -opera-9.02.ebuild:
+  Remove vulnerable version.
+
+  09 Jan 2007; Michael Cummings <mcummings@gentoo.org> opera-9.10.ebuild:
+  Stable amd64 wrt bug 160369
+
+  07 Jan 2007; Tobias Scherbaum <dertobi123@gentoo.org> opera-9.10.ebuild:
+  Stable on ppc wrt bug #160369.
+
+  06 Jan 2007; Christian Faulhammer <opfer@gentoo.org> opera-9.10.ebuild:
+  stable x86, security bug #160369
+
+  06 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org> opera-9.10.ebuild:
+  Stable on sparc wrt security #160369
+
+  19 Dec 2006; Jeroen Roovers <jer@gentoo.org> metadata.xml,
+  opera-9.10.ebuild:
+  Fixed whitespace, gave RESTRICT some valid options, moved around some of the
+  variables for clarity.
+
+  19 Dec 2006; Jeroen Roovers <jer@gentoo.org> opera-9.10.ebuild:
+  Start using the mirror system again, seems to work fine.
+
+*opera-9.10 (18 Dec 2006)
+
+  18 Dec 2006; Jeroen Roovers <jer@gentoo.org> +opera-9.10.ebuild:
+  Version bump (bug #158269).
+
+  23 Sep 2006; Jeroen Roovers <jer@gentoo.org> -opera-9.00.ebuild,
+  -opera-9.01.ebuild, -opera-9.01-r1.ebuild:
+  Remove vulnerable versions (bug #147838).
+
+  23 Sep 2006; <nixnut@gentoo.org> opera-9.02.ebuild:
+  Stable on ppc wrt bug 146702
+
+  22 Sep 2006; <ticho@gentoo.org> opera-9.02.ebuild:
+  Stable on x86. Security bugs #146702 and #147838.
+
+  21 Sep 2006; Jason Wever <weeve@gentoo.org> opera-9.02.ebuild:
+  Stable on SPARC wrt security bug #147838 and bug #146702.
+
+  21 Sep 2006; <blubb@gentoo.org> opera-9.02.ebuild:
+  stable on amd64
+
+*opera-9.02 (21 Sep 2006)
+
+  21 Sep 2006; Jeroen Roovers <jer@gentoo.org> +opera-9.02.ebuild:
+  Security bump (bug #147838), change to elog (bug #146583)
+
+  21 Sep 2006; Konstantin Arkhipov <voxus@gentoo.org> opera-9.01-r1.ebuild:
+  Stable on amd64, bug #146702.
+
+  21 Sep 2006; <ticho@gentoo.org> opera-9.01-r1.ebuild:
+  Stable on x86, bug #146702.
+
+  21 Sep 2006; Jason Wever <weeve@gentoo.org> opera-9.01-r1.ebuild:
+  Stable on SPARC wrt bug #146702.
+
+  03 Sep 2006; Jeroen Roovers <jer@gentoo.org> opera-9.01-r1.ebuild:
+  Removing libstdc++ dep for x86 again. tx to Flameeyes and b33fc0d3 for their
+  kind advice (bug 139407).
+
+  03 Sep 2006; Jeroen Roovers <jer@gentoo.org> opera-9.01-r1.ebuild:
+  Let's not mess with amd64.
+
+  02 Sep 2006; Jeroen Roovers <jer@gentoo.org> opera-9.01-r1.ebuild:
+  einfo to elog (bug #145953).
+
+*opera-9.01-r1 (02 Sep 2006)
+
+  02 Sep 2006; Jeroen Roovers <jer@gentoo.org> +opera-9.01-r1.ebuild:
+  Revision bump wrt bug #139407.
+
+  02 Sep 2006; Jeroen Roovers <jer@gentoo.org>
+  -files/opera-8.54-install.patch, -files/opera-9.00_pre2-install.patch,
+  -opera-8.54.ebuild, -opera-9.00_pre2.ebuild:
+  Removed 8.54 for security vuln <http://secunia.com/advisories/19480/> and
+  9.00_pre2 just because.
+
+  19 Aug 2006; Jeroen Roovers <jer@gentoo.org> opera-9.00_pre2.ebuild,
+  opera-9.00.ebuild, opera-9.01.ebuild:
+  Removed debugging stuff.
+
+  09 Aug 2006; Jeroen Roovers <jer@gentoo.org> -opera-8.51.ebuild,
+  -opera-8.52.ebuild:
+  Cleaning up old versions (bug #140558).
+
+*opera-9.01 (09 Aug 2006)
+
+  09 Aug 2006; Jeroen Roovers <jer@gentoo.org> +opera-9.01.ebuild:
+  Version bump, bug #142548.
+
+  05 Jul 2006; Joshua Jackson <tsunam@gentoo.org> opera-9.00.ebuild:
+  stable x86; bug #137634
+
+  03 Jul 2006; Gustavo Zacarias <gustavoz@gentoo.org> opera-9.00.ebuild:
+  Stable on sparc wrt security #137634
+
+  03 Jul 2006; Thomas Cort <tcort@gentoo.org> opera-9.00.ebuild:
+  Stable on amd64 wrt security Bug #137634.
+
+  01 Jul 2006; Lars Weiler <pylon@gentoo.org> opera-9.00.ebuild:
+  Stable on ppc; security bug #137634.
+
+  01 Jul 2006; Carsten Lohrke <carlo@gentoo.org> opera-9.00.ebuild:
+  Restore previous ebuild.
+
+  30 Jun 2006; Carsten Lohrke <carlo@gentoo.org>
+  files/opera-9.00-install.patch, opera-9.00.ebuild:
+  Version bump. Bug #137634.
+
+*opera-9.00 (25 Jun 2006)
+
+  25 Jun 2006; Thomas Matthijs <axxo@gentoo.org>
+  +files/opera-9.00-install.patch, +opera-9.00.ebuild:
+  version bump
+
+  24 Jun 2006; Doug Goldstein <cardoe@gentoo.org> opera-8.51.ebuild,
+  opera-8.52.ebuild:
+  USE flag qt->qt3/qt4 change bug #137785
+
+  31 May 2006; Thomas Cort <tcort@gentoo.org> opera-8.54.ebuild:
+  Stable on amd64 wrt security Bug #129800.
+
+  30 May 2006; Gustavo Zacarias <gustavoz@gentoo.org> opera-8.54.ebuild:
+  Stable on sparc
+
+*opera-9.00_pre2 (30 May 2006)
+
+  30 May 2006; Thomas Matthijs <axxo@gentoo.org>
+  +files/opera-9.00_pre2-install.patch, +opera-9.00_pre2.ebuild:
+  opera 9 beta ebuild from 122036
+
+  30 May 2006; Thomas Matthijs <axxo@gentoo.org>
+  +files/opera-8.54-install.patch, opera-8.54.ebuild:
+  Fix(hopefully) bug 114302, 134422, 134368. Thanks too Jakub Moc, Paul
+  Varner, Frank Richter
+
+  26 May 2006; Thomas Matthijs <axxo@gentoo.org> files/digest-opera-8.54,
+  Manifest:
+  fix digest of static-qt file, put myself as maintainer
+
+  26 May 2006; Mark Loeser <halcy0n@gentoo.org> opera-8.54.ebuild:
+  Stable on x86; bug #129800
+
+  25 May 2006; Joseph Jezak <josejx@gentoo.org> opera-8.54.ebuild:
+  Marked ppc stable for bug #129800.
+
+*opera-8.54 (25 May 2006)
+
+  25 May 2006; Bryan Østergaard <kloeri@gentoo.org> +opera-8.54.ebuild:
+  Bump opera for bug 129800. Thanks to Aquila <bart.braem@gmail.com> for the
+  ebuild.
+
+  11 Apr 2006; Simon Stelling <blubb@gentoo.org> opera-8.51.ebuild,
+  opera-8.52.ebuild:
+  change depend from linux32 to sys-apps/setarch; bug 129571
+
+  27 Feb 2006; Patrick McLean <chutzpah@gentoo.org> opera-8.52.ebuild:
+  Stable on amd64 (bug #123159).
+
+  26 Feb 2006; Tobias Scherbaum <dertobi123@gentoo.org> opera-8.52.ebuild:
+  ppc stable, bug #123159
+
+  20 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org> opera-8.52.ebuild:
+  Stable on sparc
+
+  20 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org> ChangeLog:
+  Fix digests
+
+  20 Feb 2006; Heinrich Wendel <lanius@gentoo.org> -opera-7.54-r3.ebuild,
+  -opera-8.00.ebuild, -opera-8.01.ebuild, -opera-8.02.ebuild,
+  -opera-8.50.ebuild, +opera-8.52.ebuild:
+  remove old ebuilds
+
+*opera-8.52 (20 Feb 2006)
+
+  20 Feb 2006; Heinrich Wendel <lanius@gentoo.org> +opera-8.52.ebuild:
+  security bump; cleanups
+
+  20 Feb 2006; Heinrich Wendel <lanius@gentoo.org> ChangeLog:
+  security bump
+
+  03 Jan 2006; Karol Wojtaszek <sekretarz@gentoo.org> opera-8.51.ebuild:
+  Add modular X dependencies, bug #115957
+
+  27 Nov 2005; Joseph Jezak <josejx@gentoo.org> opera-8.51.ebuild:
+  Marked ppc stable for bug #113239.
+
+  27 Nov 2005; Chris White <chriswhite@gentoo.org> files/digest-opera-8.51,
+  Manifest:
+  Fixed digest issues that were causing digest failures for USE=static wrt
+  security bug #bug #113239.
+
+  23 Nov 2005; Chris White <chriswhite@gentoo.org> opera-8.51.ebuild:
+  Marked x86 stable for bug #113239.
+
+  22 Nov 2005; Luis Medinas <metalgod@gentoo.org> opera-8.51.ebuild:
+  Stable on amd64. Bug #113239.
+
+  22 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org> opera-8.51.ebuild:
+  Stable on sparc wrt security #113239
+
+*opera-8.51 (22 Nov 2005)
+
+  22 Nov 2005; Jeroen Roovers <jer@gentoo.org> +opera-8.51.ebuild:
+  New Opera 8.51, security release as per bug 113239.
+
+  25 Oct 2005; <dang@gentoo.org> opera-8.50.ebuild:
+  Marked stable on amd64
+
+  24 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org> opera-8.50.ebuild:
+  Stable on sparc
+
+  23 Oct 2005; Mark Loeser <halcy0n@gentoo.org> opera-8.50.ebuild:
+  Stable on x86; bug #109936
+
+  23 Oct 2005; Joseph Jezak <josejx@gentoo.org> opera-8.50.ebuild:
+  Marked ppc stable.
+
+  21 Sep 2005; Thomas Matthijs <axxo@gentoo.org> opera-8.50.ebuild:
+  Updated license
+
+*opera-8.50 (20 Sep 2005)
+
+  20 Sep 2005; Thomas Matthijs <axxo@gentoo.org> +opera-8.50.ebuild:
+  version bump
+
+  11 Aug 2005; Olivier Crête <tester@gentoo.org> opera-8.02.ebuild:
+  Stable on x86 per securitu bug #96273
+
+  10 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> opera-8.02.ebuild:
+  Stable on sparc wrt #96273
+
+  10 Aug 2005; Simon Stelling <blubb@gentoo.org> opera-8.02.ebuild:
+  stable on amd64 wrt bug 96273
+
+*opera-8.02 (04 Aug 2005)
+
+  04 Aug 2005; Heinrich Wendel <lanius@gentoo.org> +files/opera-qt.2.patch,
+  +opera-8.02.ebuild:
+  version bump
+
+  12 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org> opera-8.00.ebuild,
+  opera-8.01.ebuild:
+  Fixed RDEPEND on amd64.
+
+  24 Jun 2005; <dang@gentoo.org> opera-8.01.ebuild:
+  bug #96365 on amd64 too
+
+  17 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> opera-8.01.ebuild:
+  Stable on sparc
+
+*opera-8.01 (16 Jun 2005)
+
+  16 Jun 2005; Heinrich Wendel <lanius@gentoo.org> +opera-8.01.ebuild:
+  security bump, bug #96273, stable on x86 and amd64
+
+  01 Jun 2005; Heinrich Wendel <lanius@gentoo.org> opera-8.00.ebuild:
+  stable on x86
+
+  15 May 2005; Jason Wever <weeve@gentoo.org> opera-8.00.ebuild:
+  Stable on SPARC wrt security bug #81115.
+
+  15 May 2005; Jan Brinkmann <luckyduck@gentoo.org> opera-8.00.ebuild:
+  stable on amd64 wrt #81115
+
+  14 May 2005; Heinrich Wendel <lanius@gentoo.org> +files/opera-qt.patch,
+  opera-8.00.ebuild:
+  add kde/qt style by default, bug #92391
+
+  04 May 2005; Heinrich Wendel <lanius@gentoo.org> opera-8.00.ebuild:
+  bug #90575
+
+  26 Apr 2005; Heinrich Wendel <lanius@gentoo.org> files/opera.desktop:
+  add Application to opera.desktop to show up in GNOME, bug #90508
+
+  23 Apr 2005; Sven Wegener <swegener@gentoo.org> opera-8.00.ebuild:
+  Fixed invalid atoms in *DEPEND. Added missing digest entries.
+
+  24 Apr 2005; Heinrich Wendel <lanius@gentoo.org> opera-8.00.ebuild:
+  add media-libs jpeg to deps
+
+*opera-8.00 (22 Apr 2005)
+
+  22 Apr 2005; Heinrich Wendel <lanius@gentoo.org> -opera-8.00_beta2.ebuild,
+  +opera-8.00.ebuild:
+  version bump
+
+*opera-8.00_beta2 (15 Mar 2005)
+*opera-7.54-r3 (15 Mar 2005)
+
+  15 Mar 2005; Seemant Kulleen <seemant@gentoo.org> +files/opera.desktop,
+  +metadata.xml, +opera-7.54-r3.ebuild, +opera-8.00_beta2.ebuild:
+  Moved from net-www/opera to www-client/opera.
+
+  15 Feb 2005; Sven Wegener <swegener@gentoo.org> :
+  Added missing digest entries.
+
+*opera-8.00_beta2 (02 Mar 2005)
+
+  02 Mar 2005; Heinrich Wendel <lanius@gentoo.org> -opera-7.54-r1.ebuild,
+  -opera-7.54-r2.ebuild, -opera-7.54.ebuild, -opera-7.60_alpha4.ebuild,
+  +opera-8.00_beta2.ebuild:
+  version bump; cleanups
+
+*opera-7.54-r3 (14 Feb 2005)
+
+  14 Feb 2005; Heinrich Wendel <lanius@gentoo.org> +opera-7.54-r3.ebuild:
+  fix plugin search path; bug #81747; stable on all previous arches
+
+  09 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> opera-7.54-r2.ebuild:
+  Stable on sparc wrt #73871
+
+*opera-7.54-r2 (08 Feb 2005)
+
+  08 Feb 2005; Heinrich Wendel <lanius@gentoo.org> +opera-7.54-r2.ebuild:
+  security bump
+
+  18 Dec 2004; Simon Stelling <blubb@gentoo.org> opera-7.54-r1.ebuild:
+  stable on amd64; bug #74076
+
+  14 Dec 2004; Jason Wever <weeve@gentoo.org> opera-7.54-r1.ebuild:
+  Stable on sparc wrt security bug #74076.
+
+*opera-7.54-r1 (13 Dec 2004)
+
+  13 Dec 2004; lanius@gentoo.org +opera-7.54-r1.ebuild:
+  add security revision, bug #74076
+
+  05 Dec 2004; lanius@gentoo.org opera-7.60_alpha4.ebuild:
+  fix src_uri for amd64
+
+*opera-7.60_alpha4 (04 Dec 2004)
+
+  04 Dec 2004; lanius@gentoo.org -opera-7.60_alpha3.ebuild,
+  +opera-7.60_alpha4.ebuild:
+  versino bump
+
+*opera-7.60_alpha3 (18 Nov 2004)
+
+  18 Nov 2004; <heino@gentoo.org> -opera-7.60_alpha2.ebuild,
+  +opera-7.60_alpha3.ebuild:
+  version bump
+
+  03 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  opera-7.60_alpha2.ebuild:
+  Fixed digest and SRC_URI.
+
+*opera-7.60_alpha2 (26 Oct 2004)
+
+  26 Oct 2004; <lanius@gentoo.org> -opera-6.12.ebuild, -opera-7.11-r2.ebuild,
+  -opera-7.23-r1.ebuild, opera-7.54.ebuild, -opera-7.60_alpha1.ebuild,
+  +opera-7.60_alpha2.ebuild:
+  remove old versions; remove ppc shared version, it's built with gcc-2.95; bump
+  to 7.60_alpha
+
+*opera-7.60_alpha1 (26 Aug 2004)
+
+  26 Aug 2004; Heinrich Wendel <lanius@gentoo.org> +opera-7.60_alpha1.ebuild:
+  version bump, bug #61695
+
+  17 Aug 2004; Aron Griffis <agriffis@gentoo.org> opera-7.54.ebuild:
+  Fix USE test in RDEPEND.  Should be !amd64? instead of plain !amd64
+
+  05 Aug 2004; Heinrich Wendel <lanius@gentoo.org> opera-7.53.ebuild:
+  remove vulnerable version
+
+  05 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> opera-7.54.ebuild:
+  Stable on sparc wrt #59503
+
+  05 Aug 2004; Tom Martin <slarti@gentoo.org> opera-7.54.ebuild:
+  Marked stable for bug 59503.
+
+*opera-7.54 (05 Aug 2004)
+
+  05 Aug 2004; Heinrich Wendel <lanius@gentoo.org> opera-7.54.ebuild:
+  version bump; mark stable because of security fixes; bug #59503
+
+  02 Aug 2004; Heinrich Wendel <lanius@gentoo.org> opera-7.53.ebuild:
+  use mirror://
+
+*opera-7.53 (20 Jul 2004)
+
+  20 Jul 2004; Heinrich Wendel <lanius@gentoo.org> opera-7.52.ebuild,
+  opera-7.53.ebuild:
+  version bump, mark stable for security reasons
+
+  08 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> opera-7.52.ebuild:
+  amd64 static only
+
+  08 Jul 2004; Heinrich Wendel <lanius@gentoo.org> opera-7.51-r1.ebuild,
+  opera-7.51.ebuild:
+  remove vulnerable versions
+
+  07 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> opera-7.52.ebuild:
+  Stable sparc, amd64.  sparc only uses the static version.
+
+*opera-7.52 (07 Jul 2004)
+
+  07 Jul 2004; Heinrich Wendel <lanius@gentoo.org> opera-7.52.ebuild:
+  version bump, security update: bug #56311
+
+*opera-7.51-r1 (03 Jul 2004)
+
+  03 Jul 2004; Heinrich Wendel <lanius@gentoo.org> opera-7.50-r1.ebuild,
+  opera-7.51-r1.ebuild:
+  fix sandbox violation, bug #55130
+  fix artsd support with java, bug #54813
+
+  25 Jun 2004; Aron Griffis <agriffis@gentoo.org> opera-6.12.ebuild,
+  opera-7.11-r2.ebuild, opera-7.23-r1.ebuild, opera-7.50-r1.ebuild,
+  opera-7.51.ebuild:
+  QA - fix use invocation
+
+  04 Jun 2004; Jason Wever <weeve@gentoo.org> opera-7.51.ebuild:
+  Marked stable on sparc wrt bug #52867.
+
+*opera-7.51 (03 Jun 2004)
+
+  03 Jun 2004; Heinrich Wendel <lanius@gentoo.org> opera-7.51.ebuild:
+  version bump, add spell use flag, mark stable because of security issues, bug
+  #52867
+
+  28 May 2004; Danny van Dyk <kugelfang@gentoo.org> opera-7.50-r1.ebuild:
+  Refixed dependency problem on amd64 (BUG #51281).
+
+  24 May 2004; Jason Wever <weeve@gentoo.org> opera-7.50-r1.ebuild:
+  Stable on sparc wrt bug #50857.
+
+  23 May 2004; Danny van Dyk <kugelfang@gentoo.org> opera-7.50.ebuild:
+  Fixed BUG #51281: Missing dependency for static version on amd64.
+
+  24 May 2004; Heinrich Wendel <lanius@gentoo.org> opera-7.50-r1.ebuild:
+  fix plugin search path, bug #51070 and spellcheck search path, bug #51183
+
+  14 May 2004; Heinrich Wendel <lanius@gentoo.org> opera-7.50.ebuild:
+  fix bug #51070
+
+*opera-7.50 (14 May 2004)
+
+  14 May 2004; Heinrich Wendel <lanius@gentoo.org> opera-7.50.ebuild:
+  version bump, mark stable because of telnet security vulnerability, bug #50857
+
+*opera-7.50_beta1 (26 Apr 2004)
+
+  26 Apr 2004; Heinrich Wendel <lanius@gentoo.org> opera-7.50_alpha4.ebuild,
+  opera-7.50_beta1.ebuild:
+  version bump, bug #48704
+
+  13 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> opera-7.23-r1.ebuild,
+  opera-7.50_alpha3.ebuild:
+  don't use deprecated ? : use syntax
+
+  13 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> opera-7.23-r1.ebuild,
+  opera-7.50_alpha3:
+  Minor changes to (r)depend for correct packages on amd64, amd64-specific
+  call of install.sh, marked ~amd64
+
+*opera-7.50_alpha4 (17 Apr 2004)
+
+  17 Apr 2004; Heinrich Wendel <lanius@gentoo.org> opera-7.50_alpha3.ebuild,
+  opera-7.50_alpha4.ebuild:
+  new alpha version
+
+  10 Apr 2004; Heinrich Wendel <lanius@gentoo.org> opera-7.50_alpha3.ebuild:
+  exchange static !static, it was in the wrong order, bug #47377
+
+  22 Mar 2004; Heinrich Wendel <lanius@gentoo.org> metadata.xml,
+  opera-7.23-r1.ebuild, opera-7.23.ebuild, opera-7.50_alpha2.ebuild,
+  opera-7.50_alpha3.ebuild:
+  add metadata.xml
+
+*opera-7.50_alpha3 (22 Mar 2004)
+
+  22 Mar 2004; Heinrich Wendel <lanius@gentoo.org> opera-7.23-r1.ebuild,
+  opera-7.23.ebuild, opera-7.50_alpha2.ebuild, opera-7.50_alpha3.ebuild:
+  remove old versions; fix src_uri
+
+  16 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org> opera-7.23-r1.ebuild:
+  stable on sparc
+
+  14 Mar 2004; Heinrich Wendel <lanius@gentoo.org> opera-7.23-r1.ebuild,
+  opera-7.50_alpha1.ebuild:
+  mark 7.23-r1 stable, version bump, bug #44171
+
+*opera-7.23-r1 (21 Feb 2004)
+
+  21 Feb 2004; Heinrich Wendel <lanius@gentoo.org> opera-7.23-r1.ebuild,
+  opera-7.50_alpha2.ebuild:
+  backport 7.50_alpha changes to 7.23
+
+*opera-7.50_alpha2 (21 Feb 2004)
+
+  21 Feb 2004; Heinrich Wendel <lanius@gentoo.org> opera-7.50_alpha1.ebuild,
+  opera-7.50_alpha2.ebuild:
+  version bump, add shared version
+
+  21 Feb 2004; Heinrich Wendel <lanius@gentoo.org> opera-7.50_alpha1.ebuild:
+  fix operanom2 use flag
+
+  04 Feb 2004; Heinrich Wendel <lanius@gentoo.org> opera-7.50_alpha1.ebuild:
+  added operanom2 use flag, bug #40074
+
+  11 Jan 2004; Heinrich Wendel <lanius@gentoo.org> opera-6.12.ebuild,
+  opera-7.11-r2.ebuild, opera-7.21.ebuild, opera-7.22.ebuild,
+  opera-7.23.ebuild, opera-7.50_alpha1.ebuild:
+  fixed motif dep; removed old versions
+
+  29 Dec 2003; Seemant Kulleen <seemant@gentoo.org> opera-7.50_alpha1.ebuild:
+  some cleanups, and switch to virtual/motif instead
+
+  21 Dec 2003; Seemant Kulleen <seemant@gentoo.org> opera-7.50_alpha1.ebuild:
+  SRC_URI fix
+
+  20 Dec 2003; Heinrich Wendel <lanius@gentoo.org> opera-7.50_alpha1.ebuild:
+  fixed src_uri
+
+  19 Dec 2003; Heinrich Wendel <lanius@gentoo.org> files/opera.desktop,
+  opera-7.50_alpha1.ebuild:
+  bump, several cleanups in the ebuild
+
+*opera-7.23 (22 Nov 2003)
+
+  22 Nov 2003; Heinrich Wendel <lanius@gentoo.org> opera-7.23.ebuild:
+  security fixes in 7.23, stable
+
+*opera-7.22 (20 Nov 2003)
+
+  20 Nov 2003; Heinrich Wendel <lanius@gentoo.org> opera-7.22.ebuild:
+  motif again, operamotifwrapper-3 was dropped
+
+  13 Nov 2003; Heinrich Wendel <lanius@gentoo.org> opera-6.12_beta1.ebuild:
+  bump, stable cause of security issues, see opera changelog
+
+  23 Oct 2003; Heinrich Wendel <lanius@gentoo.org> opera-6.12_beta1.ebuild,
+  opera-7.21.ebuild:
+  stable bump, cause of security issues (#31775
+
+*opera-7.21_pre1 (17 Oct 2003)
+
+  17 Oct 2003; Heinrich Wendel <lanius@gentoo.org> opera-7.21.ebuild,
+  opera-7.21_pre1.ebuild, opera-7.21_pre2.ebuild:
+  version bump, motif cleanups
+
+  11 Oct 2003; Heinrich Wendel <lanius@gentoo.org> opera-7.21_pre2.ebuild:
+  bug #10610
+
+*opera-7.21_pre2 (07 Oct 2003)
+
+  07 Oct 2003; Heinrich Wendel <lanius@gentoo.org> opera-7.21_pre2.ebuild:
+  bump
+
+  04 Oct 2003; Heinrich Wendel <lanius@gentoo.org> opera-6.12.ebuild,
+  opera-6.12_beta1.ebuild:
+  added correct motif dep
+
+  04 Oct 2003; Heinrich Wendel <lanius@gentoo.org>:
+  fixed download on ARCH!=i386 and version bump to 7.21_pre1
+
+  29 Sep 2003; Heinrich Wendel <lanius@gentoo.org> opera-7.11-r2.ebuild:
+  stable bump on x86
+
+*opera-7.20_beta9 (06 Sep 2003)
+
+  06 Sep 2003; Heinrich Wendel <lanius@gentoo.org> opera-7.20_beta9.ebuild:
+  beta9
+
+*opera-7.20_beta7 (29 Aug 2003)
+
+  29 Aug 2003; Heinrich Wendel <lanius@gentoo.org> opera-7.20_beta4.ebuild,
+  opera-7.20_beta5.ebuild, opera-7.20_beta7.ebuild:
+  added beta7
+
+*opera-7.20_beta4 (26 Aug 2003)
+
+  26 Aug 2003; Heinrich Wendel <lanius@gentoo.org> opera-7.20_beta3.ebuild,
+  opera-7.20_beta4.ebuild, opera-7.20_beta5.ebuild:
+  added beta5, removed beta3, added support for sparc and ppc in beta4/5
+
+*opera-6.12_beta1 (24 Aug 2003)
+
+  24 Aug 2003; Jason Wever <weeve@gentoo.org> opera-6.12_beta1.ebuild:
+  new opera ebuild contributed by Gustavo Zacarias <gustavo@zacarias.com.ar>,
+  closes bug #26543
+
+  22 Aug 2003; Chuck Short <zul@gentoo.org> opera-6.12_beta1.ebuild:
+  Removed sparc ebuild
+
+*opera-6.12_beta1 (22 Aug 2003)
+
+  22 Aug 2003; Chuck Short <zul@gentoo.org> opera-6.12_beta1.ebuild:
+  new ebuild for sparc.
+
+*opera-7.11-r1 (22 Aug 2003)
+
+  22 Aug 2003; Heinrich Wendel <lanius@gentoo.org> opera-7.10_beta1-r2.ebuild,
+  opera-7.11-r1.ebuild, opera-7.11.ebuild, files/10opera, files/10opera6:
+  - added 7.20_beta4
+  - cleaned out ebuilds
+
+*opera-7.20_beta3 (09 Aug 2003)
+
+  09 Aug 2003; root <root@gentoo.org> opera-7.20_beta3.ebuild:
+  Made an ebuild for 7.2 Beta 3, initial commit (works on my desktop), -*
+
+*opera-7.11-r2 (06 Aug 2003)
+
+  06 Aug 2003; Lisa Seelye <lisa@gentoo.org> opera-7.11-r2.ebuild:
+  added depend for opera 7.11 to lesstif. this resolves bug 25767. openmotif no
+  longer provides a key file. and bump to -r2
+
+*opera-7.11 (15 Jul 2003)
+  
+  15 Jul 2003; Pieter Van den Abeele <pvdabeel@gentoo.org> :
+  Opera PPC version - should also work on x86 (please test)
+  closes bug 
+
+*opera-7.11 (17 May 2003)
+
+  17 May 2003; Arcady Genkin <agenkin@gentoo.org> :
+  New version, thanks to Francois Dupoux <fdbugs_gentoo@partimage.org> for
+  the leg work (bug #20568).
+	
+*opera-7.10_beta1-r2 (20 Apr 2003)
+
+  20 Apr 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Fixed download URL.
+  Added error-checking to the sed invocation in src_compile.
+  Made the ebuild depend on fontconfig-2.1.94-r1 or later to fix display under
+  xfree-4.3 (bug #19330).
+
+*opera-7.10_beta1-r1 (19 Apr 2003)
+
+  19 Apr 2003; Brandon Low <lostlogic@gentoo.org> Manifest,
+  opera-7.10_beta1-r1.ebuild:
+  Various ebuild fixage (actually I've had a 7.10_beta ebuild sitting around for
+  a while, but couldn't get it to runtill we updated fontconfig so didn't merge
+  it), and actually get the release snapshots, not random snapshots.
+
+*opera-7.10_beta1 (15 Apr 2003)
+
+  15 Apr 2003; Arcady Genkin <agenkin@gentoo.org> :
+  New version, thanks to Elsener Adrian <els@gmx.li>.
+
+*opera-6.12 (24 Mar 2003)
+
+  24 Mar 2003; Daniel Robbins <drobbins@gentoo.org> opera-6.12.ebuild:
+  new upstream release. Now hard-coded to be static binaries since we can't
+  put RDEPEND info inside an "if" statement since it breaks metadata caching.
+
+*opera-6.11-r1 (02 Jan 2003)
+
+  21 Feb 2003; Nick Hadaway <raker@gentoo.org> opera-6.11-r1.ebuild :
+  Modifed the OPERA_VARIANT section so the correct file version 
+  is actually downloaded.
+
+  02 Jan 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Improved installation of KDE and Gnome icons.
+  Marked stable on x86.
+ 
+*opera-6.11 (5 Dec 2002)
+  05 Dec 2002; Arcady Genkin <agenkin@gentoo.org> opera-6.11.ebuild :
+  Version bump.
+	
+*opera-6.1-r1 (25 Nov 2002)
+
+  25 Nov 2002; Arcady Genkin <agenkin@gentoo.org> opera-6.1-r1.ebuild :
+  Updated the checksums for the latest tarballs.
+  Incorporated suggestions from Carsten Rietzschel <cr@daRav.de> to enable
+  Java plugin.
+
+*opera-6.1 (31 October 2002)
+
+  31 October 2002; Arcady Genkin <agenkin@gentoo.org> opera-6.1.ebuild :
+  First version of the unified Opera ebuild.
+
+*opera-6.0 (19 August 2002)
+
+  19 August 2002; Sascha Schwabbauer <cybersystem@gentoo.org> ChangeLog, opera-6.0.ebuild :
+
+  Added -ppc to the keywords.
+
+*opera-6.0 (18 May 2002)
+
+  18 May 2002; Arcady Genkin <agenkin@thpoon.com> opera-6.0.ebuild:
+
+  Upgrade to version 6.0 final.
+  Added /opt/opera/bin to PATH in profile.env.
+	
+*opera-6.0_beta2 (12 May 2002)
+
+  12 May 2002; Karl Trygve Kalleberg <karltk@gentoo.org> opera-6.0_beta2.ebuild files/digest-opera-6.0_beta2:
+
+  New upstream version. Spent time moving it all into /opt. Start opera
+  with the /opt/opera/bin/opera script.
+
+*opera-6.0_pre4-r3 (24 Apr 2002)
+
+  24 Apr 2002; Seemant Kulleen <seemant@gentoo.org> opera-6.0_pre4-r3.ebuild files/digest-opera-6.0_pre4-r2 :
+
+*opera-6.0_pre4-r2 (18 Apr 2002)
+
+  18 Apr 2002; Karl Trygve Kalleberg <karltk@gentoo.org> opera-6.0_pre4-r2.ebuild files/digest-opera-6.0_pre4-r2:
+
+  Moved all binaries into /opt, where it belongs. The pixmaps and icons
+  are still installed in /usr.
+
+  Removed opera-6.0_pre4-r1.ebuild files/digest-opera-6.0_pre4-r1
+
+*opera-6.0_pre4-r1 (12 Apr 2002)
+
+  12 Apr 2002; Seemant Kulleen <seemant@gentoo.org> opera-6.0_pre4-r1.ebuild :
+
+  Compile against newer libpng
+
+*opera-6.0_pre4 (3 Apr 2002)
+
+  3 Apr 2002; Seemant Kulleen <seemant@gentoo.org> opera-6.0_pre4.ebuild :
+
+  Version bump, which fixes sandbox violation from pre3-r1 with regards to
+  opera.xpm placement.  The icon files are now installed manually.
+  
+*opera-6.0_pre3-r1 (3 Feb 2002)
+
+  3 Feb 2002; Dan Armak <danarmak@gentoo.org> ChangeLog :
+  
+  Added fix for bug #508 to both 5.0 and 6.0_pre3 ebuilds. This fixes the 
+  incorrect dependency, which installed QT3 instead of QT2.
+
+*opera-6.0_pre3 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

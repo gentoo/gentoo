@@ -1,0 +1,125 @@
+# ChangeLog for net-analyzer/ifstat
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ifstat/ChangeLog,v 1.35 2014/08/10 20:58:00 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> ifstat-1.1-r2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  19 Jan 2014; Jeroen Roovers <jer@gentoo.org> ifstat-1.1-r2.ebuild,
+  +files/ifstat-1.1-hardened.patch:
+  Fix building on hardened (bug #498074 by John Default).
+
+  22 Dec 2013; Jeroen Roovers <jer@gentoo.org> -ifstat-1.1.ebuild,
+  -files/ifstat-1.1-strip_and_cflags.patch:
+  Old.
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> ifstat-1.1-r2.ebuild:
+  Stable for ppc64, wrt bug #486524
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> ifstat-1.1-r2.ebuild:
+  Stable for ppc, wrt bug #486524
+
+  17 Dec 2013; Raúl Porcel <armin76@gentoo.org> ifstat-1.1-r2.ebuild:
+  sparc stable wrt #486524
+
+  10 Oct 2013; Sergey Popov <pinkbyte@gentoo.org> ifstat-1.1-r2.ebuild:
+  Stable on x86, wrt bug #486524
+
+  02 Oct 2013; Jeroen Roovers <jer@gentoo.org> ifstat-1.1-r2.ebuild:
+  Stable for HPPA (bug #486524).
+
+  30 Sep 2013; Richard Freeman <rich0@gentoo.org> ifstat-1.1-r2.ebuild:
+  marked amd64 per bug 486524
+
+  24 Jul 2012; Anthony G. Basile <blueness@gentoo.org> ifstat-1.1-r2.ebuild:
+  Keyword ~mips
+
+*ifstat-1.1-r2 (11 Jul 2012)
+
+  11 Jul 2012; Jeroen Roovers <jer@gentoo.org> -ifstat-1.1-r1.ebuild,
+  +ifstat-1.1-r2.ebuild, files/ifstat-1.1-make.patch:
+  Make USE=snmp fatal when net-snmp is not installed, and make an unreadable
+  /proc/net/dev non-fatal in any case (bug #425608).
+
+*ifstat-1.1-r1 (10 Jul 2012)
+
+  10 Jul 2012; Jeroen Roovers <jer@gentoo.org> +ifstat-1.1-r1.ebuild,
+  +files/ifstat-1.1-make.patch:
+  Bring the ebuild into the 2010s.
+
+  20 Mar 2011; Raúl Porcel <armin76@gentoo.org> ifstat-1.1.ebuild:
+  Add ~alpha
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> ifstat-1.1.ebuild:
+  Remove virtual/libc
+
+  10 Oct 2008; Jeroen Roovers <jer@gentoo.org>
+  files/ifstat-1.1-strip_and_cflags.patch:
+  configure needed no fixing.
+
+  10 Oct 2008; Jeroen Roovers <jer@gentoo.org>
+  +files/ifstat-1.1-strip_and_cflags.patch, ifstat-1.1.ebuild:
+  Do not strip (bug #240764).
+
+  30 Aug 2007; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Pick up maintainership.
+
+  29 Aug 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing gustavoz from metadata due to his retirement (see #36010 for
+  reference).
+
+  19 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  05 Mar 2006; Markus Ullmann <jokey@gentoo.org> ifstat-1.1.ebuild:
+  COPYING/INSTALL cleanup
+
+  29 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> -ifstat-1.0.ebuild,
+  ifstat-1.1.ebuild:
+  Cleanup and ppc stable
+
+  31 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> ifstat-1.1.ebuild:
+  Keyworded ~ppc
+
+  16 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> ifstat-1.1.ebuild:
+  Stable on amd64 and ppc64
+
+  05 Sep 2004; Guy Martin <gmsoft@gentoo.org> ifstat-1.1.ebuild:
+  Marked stable on hppa.
+
+  31 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> ifstat-1.1.ebuild:
+  Keyworded ~amd64 & ~ppc64
+
+  18 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> ifstat-1.1.ebuild:
+  Sparc stable
+
+  16 Aug 2004; Eldad Zack <eldad@gentoo.org> ifstat-1.1.ebuild:
+  x86 stable
+
+  30 Jul 2004; Gustavo Zacarias <gustavoz@gentoo.org> ifstat-1.1.ebuild:
+  Keyworded ~x86
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> ifstat-1.0.ebuild,
+  ifstat-1.1.ebuild:
+  change virtual/glibc to virtual/libc
+
+*ifstat-1.1 (22 Jun 2004)
+
+  22 Jun 2004; Gustavo Zacarias <gustavoz@gentoo.org> +ifstat-1.1.ebuild:
+  Revision bump
+
+  22 Jun 2004; Gustavo Zacarias <gustavoz@gentoo.org> metadata.xml,
+  ifstat-1.0.ebuild:
+  metadata herd fix, keyworded ~ppc and ~amd64
+
+  19 Jan 2004; <gustavoz@gentoo.org> ifstat-1.0.ebuild:
+  marked stable on x86 and sparc, added metadata
+
+*ifstat-1.0 (11 Oct 2003)
+
+  11 Nov 2003; Guy Martin <gmsoft@gentoo.org> ifstat-1.0.ebuild :
+  Marked stable on hppa.
+
+  11 Oct 2003; Martin Holzer <mholzer@gentoo.org> ifstat-1.0.ebuild:
+  Inital ebuild. Submitted by Gustavo Zacarias <gustavo@zacarias.com.ar> in
+  #26070.

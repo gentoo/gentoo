@@ -1,0 +1,175 @@
+# ChangeLog for sys-fs/lufs
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/lufs/ChangeLog,v 1.31 2010/05/23 01:57:36 vapier Exp $
+
+  23 May 2010; Mike Frysinger <vapier@gentoo.org> lufs-0.9.7-r3.ebuild:
+  Clean up ebuild and fix echo/elog usage #294952 by Simeon Maryasin.
+
+  22 May 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove genstef from metadata.xml (#66339)
+
+  05 Feb 2009; Jeremy Olexa <darkside@gentoo.org> lufs-0.9.7-r3.ebuild:
+  (non maintainer commit) [QA] fix HOMEPAGE, bug 230065
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/lufs-0.9.7-enable-gnome-2.patch:
+  Fix patch with absolute paths.
+
+  29 Jun 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/lufs-0.9.7-gcc43.patch, lufs-0.9.7-r3.ebuild:
+  Fix for gcc-4.3 bug #225413, thanks to Marek Miller <mlm@shells.pl>.
+
+  04 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> lufs-0.9.7-r3.ebuild:
+  Fix broken autotools handling.
+
+  29 Jun 2006; Stefan Schweizer <genstef@gentoo.org> lufs-0.9.7-r3.ebuild:
+  remove version from auto[conf,make} depend, thanks to Mike Auty
+  <ikelos@gentoo.org> in bug 138198, thanks to padde in irc for pointing out
+
+  20 Feb 2005; Stefan Schweizer <genstef@gentoo.org>
+  -files/gentoo-gcc332fix-0.9.7.patch, -files/lufs-0.7.0-init,
+  -files/lufs-0.8.0-init, -files/lufs-0.9.3-init, -lufs-0.7.0.ebuild,
+  -lufs-0.8.0-r1.ebuild, -lufs-0.9.5.ebuild, -lufs-0.9.7-r2.ebuild,
+  lufs-0.9.7-r3.ebuild:
+  removing old ebuilds, ~amd64 thanks to lares and cricalix in #gentoo-amd64
+
+  19 Feb 2005; Joseph Jezak <josejx@gentoo.org> lufs-0.9.7-r3.ebuild:
+  Marked ppc stable for bug #78127.
+
+  14 Feb 2005; Stefan Schweizer <genstef@gentoo.org>
+  +files/lufs-no-kernel.patch, lufs-0.9.7-r3.ebuild:
+  Fixing configure to not consider kernel sources thanks to Frank Van Damme
+  <frank.vandamme@student.kuleuven.ac.be> in bug 78790
+
+  02 Feb 2005; Stefan Schweizer <genstef@gentoo.org> lufs-0.9.7-r3.ebuild:
+  Removing autofs stuff, because it has no chance to work, thanks to Michael S
+  <gentoo.bugzilla@mas.ml1.net> in bug 79739 for reporting.
+
+  23 Jan 2005; <avatar@gentoo.org> :
+  Added to ~ppc.
+
+  15 Jan 2005; Stefan Schweizer <genstef@gentoo.org> lufs-0.9.7-r3.ebuild:
+  Version 0.9.7-r3 stable on x86, changed einfo to tell about sshfs-fuse
+
+*lufs-0.9.7-r3 (14 Dec 2004)
+
+  14 Dec 2004; Stefan Schweizer <genstef@gentoo.org> metadata.xml,
+  +files/lufs-0.9.7-enable-gnome-2.patch, +files/lufs-automount-port.diff,
+  +lufs-0.9.7-r3.ebuild:
+  Version bump, removing kernel layer in favour of lufis/fuse, only working
+  filesystems, closes Bug 67212
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  lufs-0.9.7-r2.ebuild:
+  Masked lufs-0.9.7-r2.ebuild stable for ppc
+
+  16 Aug 2004; David Holm <dholm@gentoo.org> lufs-0.9.7-r2.ebuild:
+  Added to ~ppc.
+
+  08 Aug 2004; Mike Frysinger <vapier@gentoo.org> lufs-0.9.7-r2.ebuild:
+  Fix doins for kernel module #56072.
+
+  16 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> -lufs-0.8.0.ebuild,
+  -lufs-0.9.3.ebuild, -lufs-0.9.4.ebuild, -lufs-0.9.6.ebuild,
+  -lufs-0.9.7-r1.ebuild, -lufs-0.9.7.ebuild:
+  prune older ebuilds
+
+  16 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> lufs-0.9.7-r2.ebuild:
+  Sync ebuild code with variables in IUSE
+
+  28 May 2004; <coxj@gentoo.org> lufs-0.9.7-r2.ebuild:
+  Fix Typo
+
+*lufs-0.9.7-r2 (19 May 2004)
+
+  19 May 2004; <coxj@gentoo.org> lufs-0.9.7-r2.ebuild:
+  Fix Broken Ebuild
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> lufs-0.9.7-r1.ebuild,
+  lufs-0.9.7.ebuild:
+  Add inherit eutils
+
+  16 Apr 2004; <coxj@gentoo.org> lufs-0.9.7-r1.ebuild:
+  Enable some more goodies.
+
+  16 Apr 2004; <coxj@gentoo.org> lufs-0.9.7-r1.ebuild:
+  Fix lufs once and for all.
+
+  16 Apr 2004; <coxj@gentoo.org> lufs-0.9.7-r1.ebuild:
+  Fix for build on amd64
+
+*lufs-0.9.7-r1 (26 Mar 2004)
+
+  26 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> lufs-0.9.7-r1.ebuild:
+  Adding support for lufs integrated in kernel. Closing #44835.
+
+*lufs-0.9.7 (26 Nov 2003)
+
+  26 Nov 2003; Wout Mertens <wmertens@gentoo.org> lufs-0.9.7.ebuild :
+  Version bump, gcc 3.3.2 build fix.
+  This should compile properly for Linux 2.6 hosts. Please test.
+
+*lufs-0.9.6 (28 Sep 2003)
+
+  28 Sep 2003; Wout Mertens <wmertens@gentoo.org> lufs-0.9.6.ebuild :
+  Version bump. Also added the local USE flag lufsusermount to allow
+  users to mount. Flagged ~x86 for now, please test.
+  DEPEND isn't going to get better, since it's hard to get the
+  standard configure to not use gnome, for instance.
+  
+*lufs-0.8.0 (15 Sep 2003)
+
+  15 Sep 2003; Seemant Kulleen <seemant@gentoo.org> lufs-0.7.0.ebuild,
+  lufs-0.8.0-r1.ebuild, lufs-0.8.0.ebuild, lufs-0.9.3.ebuild,
+  lufs-0.9.4.ebuild, lufs-0.9.5.ebuild, files/lufs-0.7.0-init,
+  files/lufs-0.8.0-init, files/lufs-0.9.3-init:
+  moved to sys-fs
+
+  26 Apr 2003; Wout Mertens <wmertens@gentoo.org> lufs-0.9.5.ebuild :
+  Fix sandbox failure for kernel 2.5. No revision bump because it just didn't
+  build for 2.5. Fixes #18740, thanks to Jedi/Sector One.
+
+*lufs-0.9.5 (05 Apr 2003)
+
+  05 Apr 2003; Wout Mertens <wmertens@gentoo.org> lufs-0.9.5.ebuild :
+  New upstream version, and it builds and works fine on all my test systems,
+  and nothing depends on it. Only, if you do ldd /usr/bin/lufsd, you
+  get many dependencies, and I want to have them in DEPEND before I
+  declare these ebuilds stable.
+
+*lufs-0.9.4 (18 Mar 2003)
+  18 Mar 2003; Wout Mertens <wmertens@gentoo.org> lufs-0.9.4.ebuild :
+  Turns out there was a new upstream version, and the init script and
+  lufs user don't make sense any more because the daemon was rewritten.
+
+  18 Mar 2003; Wout Mertens <wmertens@gentoo.org> lufs-0.9.3.ebuild :
+  Fixed typo in install, -init was missing from the init script. Didn't
+  bump revision since the people that have it running probably
+  figured that out by themselves.
+
+*lufs-0.9.3 (12 Feb 2003)
+
+  12 Feb 2003; Luca Barbato <lu_zero@gentoo.org> lufs-0.9.3.ebuild
+  files/digest-lufs-0.9.3 lufs-0.9.3-init
+  ebuild submitted by Fred Point <fpoint@club-internet.fr>
+  
+*lufs-0.8.0-r1 (24 Nov 2002)
+
+  24 Nov 2002; Matt Keadle <mkeadle@gentoo.org> lufs-0.8.0-r1.ebuild
+  files/digest-lufs-0.8.0-r1
+
+  Fixed a symlink creation that has it's parameters reversed.
+
+*lufs-0.8.0 (20 Nov 2002)
+
+  20 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Initial import.
+
+*lufs-0.7.0 (01 Nov 2002)
+
+  20 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> lufs-0.7.0.ebuild :
+  Fixed a typo, updated HOMEPAGE. Jan Andersson <janneand@yahoo.com> in #10992 found the typo.
+  Repoman:ed and lintool:ed.
+
+  01 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Initial import. Ebuild submitted by Marko Mikulicic <marko@seul.org> in #7314.

@@ -1,0 +1,104 @@
+# ChangeLog for www-client/netrik
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-client/netrik/ChangeLog,v 1.21 2014/08/10 20:10:36 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> netrik-1.16.1-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  17 May 2013; Sergey Popov <pinkbyte@gentoo.org> netrik-1.16.1-r1.ebuild:
+  Add compatibility with Automake 1.13, wrt bug #467812. Thanks to Guy
+  <no.tellin AT gmail.com> for discovering this issue
+
+  14 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> -netrik-1.16.1.ebuild:
+  Drop old revision
+
+  13 Apr 2013; Agostino Sarubbo <ago@gentoo.org> netrik-1.16.1-r1.ebuild:
+  Stable for x86, wrt bug #459660
+
+  13 Apr 2013; Agostino Sarubbo <ago@gentoo.org> netrik-1.16.1-r1.ebuild:
+  Stable for amd64, wrt bug #459660
+
+  12 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> netrik-1.16.1-r1.ebuild,
+  +files/netrik-1.16.1-configure.patch:
+  Respect CFLAGS, wrt bug #459660, thanks to Agostino Sarubbo
+
+*netrik-1.16.1-r1 (10 Apr 2013)
+
+  10 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> +netrik-1.16.1-r1.ebuild,
+  +files/netrik-1.16.1-ncurses-tinfo.patch:
+  Revision bump: EAPI 5, correct dependency on sys-libs/ncurses, add patch to
+  properly handle tinfo, wrt bug #459660
+
+  26 Sep 2012; Michael Palimaka <kensington@gentoo.org> -netrik-1.15.6.ebuild:
+  Remove old.
+
+  04 Aug 2012; Agostino Sarubbo <ago@gentoo.org> netrik-1.16.1.ebuild:
+  Stable for amd64, wrt bug #428326
+
+  29 Jul 2012; Jeff Horelick <jdhore@gentoo.org> netrik-1.16.1.ebuild:
+  marked x86 per bug 428326
+
+*netrik-1.16.1 (27 Jun 2012)
+
+  27 Jun 2012; Michael Palimaka <kensington@gentoo.org> +netrik-1.16.1.ebuild,
+  metadata.xml:
+  Version bump. Migrate to EAPI 4, correct dependencies, and avoid installation
+  of LICENSE. Drop nls USE flag since it does nothing. Add upstream metadata.
+
+  22 Feb 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> netrik-1.15.6.ebuild:
+  Install docs in the right place, bug #241468 by flameeyes.
+
+  26 Jan 2010; Dawid Węgliński <cla@gentoo.org> netrik-1.15.6.ebuild:
+  Respect user CFLAGS (bug #2414600)
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  27 Mar 2008; Raúl Porcel <armin76@gentoo.org> -netrik-1.15.3.ebuild,
+  netrik-1.15.6.ebuild:
+  x86 stable, remove old
+
+  24 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> netrik-1.15.6.ebuild:
+  amd64 stable
+
+*netrik-1.15.6 (17 Jan 2008)
+
+  17 Jan 2008; Raúl Porcel <armin76@gentoo.org> -netrik-1.6.0.ebuild,
+  -netrik-1.10.2.ebuild, netrik-1.15.3.ebuild, +netrik-1.15.6.ebuild:
+  Version bump, remove old
+
+  11 May 2007; Thilo Bangert <bangert@gentoo.org> +metadata.xml:
+  add metadata.xml
+
+  04 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org> +netrik-1.6.0.ebuild,
+  +netrik-1.10.2.ebuild, +netrik-1.15.3.ebuild:
+  Moved from net-www/netrik to www-client/netrik.
+
+*netrik-1.15.3 (23 Feb 2005)
+
+  23 Feb 2005; Karol Wojtaszek <sekretarz@gentoo.org> +netrik-1.15.3.ebuild:
+  Version bump, bug #61210. Added to ~amd64
+
+  06 Nov 2004; <pyrania@gentoo.org> netrik-1.10.2.ebuild,
+  netrik-1.6.0.ebuild:
+  Marked stable on x86, added nls to IUSE.
+
+  24 Mar 2004; Jason Wever <weeve@gentoo.org> netrik-1.10.2.ebuild:
+  Added ~sparc keyword.
+
+*netrik-1.10.2 (19 JUN 2003)
+
+  19 JUN 2003; Carl Perry <edolnx@gentoo.org> netrik-1.10.2.ebuild:
+  Version bumped, works for me.  Bug #18503
+
+*netrik-1.6.0 (19 Jun 2003)
+ 
+  13 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+  29 Mar 2003; Chuck Short <chuck_short@rogers.com> netrik-1.6.0.ebuild:
+  Initial Release.

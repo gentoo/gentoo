@@ -1,0 +1,9 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/linux/package.use,v 1.1 2014/02/07 20:34:30 grobian Exp $
+
+# Fabian Groffen <grobian@gentoo.org> (07 Feb 2014)
+# Python 3 often fails to compile with crypt and nis support due to
+# GNU/libc being able to be many different versions on a Linux system
+# See for example bug #500116
+dev-lang/python -crypt -nis

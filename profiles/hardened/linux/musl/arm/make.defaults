@@ -1,0 +1,12 @@
+# Copyright 1999-2014 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/musl/arm/make.defaults,v 1.1 2014/02/21 19:44:28 blueness Exp $
+
+ARCH="arm"
+ACCEPT_KEYWORDS="${ARCH}"
+
+CHOST="arm-unknown-linux-musleabi"
+CFLAGS="-O2"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"

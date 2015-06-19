@@ -1,0 +1,110 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Adaption of the original RedHat script
+# Original Copyright (C) 2003 Red Hat, Inc.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/rgmanager/files/rgmanager-2.0x.rc,v 1.1 2008/03/17 17:14:00 xmerlin Exp $
+
+depend() {
+	use net
+	need cman
+}
+
+# We'd like a reload method as well
+opts="${opts} reload"
+
+ID="Cluster Resource Manager"
+RGMGRD=$(which clurgmgrd)
+RMTABD=$(which clurmtabd)
+CFG_FILE="/etc/cluster/cluster.conf"
+
+LOG_ERR=3
+LOG_WARNING=4
+LOG_NOTICE=5
+LOG_INFO=6
+
+#
+# If we're not configured, then don't start anything.
+#
+[ -f "$CFG_FILE" ] || exit 0
+
+
+#
+# log_and_print <level> <message>
+#
+function log_and_print()
+{
+	if [ -z "$1" -o -z "$2" ]; then
+		return 1;
+	fi
+
+	clulog -p $$ -n "rgmanager" -s $1 "$2"
+	echo $2
+
+	return 0;
+}
+
+
+#
+# Bring down the cluster on a node.
+#
+function stop_cluster()
+{
+	kill -TERM $(pidof $RGMGRD)
+
+	while [ 0 ]; do
+		if [ -n "`pidof $RGMGRD`" ]; then
+			while [ -n "`pidof $RGMGRD`" ]; do
+				sleep 1
+			done
+			einfo "Waiting for $(basename ${RGMGRD})"
+		else
+			eend "Services are stopped."
+		fi
+
+		# Ensure all NFS rmtab daemons are dead.
+		killall $(basename ${RMTABD}) &> /dev/null
+		
+		rm -f /var/run/$(basename ${RGMGRD}).pid
+
+		return 0
+	done
+}
+
+
+
+function start() {
+	ebegin "Starting cluster resource manager"
+	start-stop-daemon --start --quiet --exec ${RGMGRD} ${RGMGR_OPTS}
+	ret=$?
+	if [ $ret -eq 0 ]; then
+		touch /var/lock/subsys/rgmanager
+	fi
+	eend $ret
+}
+
+function restart() {
+	pidof ${RGMGRD} &> /dev/null
+	if [ ${?} -ne 1 ]; then
+		svc_stop
+	fi
+	svc_start
+}
+
+function reload() {
+	clulog -p ${LOG_NOTICE} "Reloading Resource Configuration."
+	ebegin "Reloading Resource Configuration "
+	kill -s HUP $(pidof ${RGMGRD} )
+	rv=${?}
+	eend
+	exit ${rv}
+}
+
+function stop() {
+	ebegin "Shutting down cluster resource manager"
+	if [ -n "$(pidof ${RGMGRD})" ]; then
+		stop_cluster
+	fi
+	rm -f /var/lock/subsys/rgmanager
+	eend
+}

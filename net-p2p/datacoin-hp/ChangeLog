@@ -1,0 +1,26 @@
+# ChangeLog for net-p2p/datacoin-hp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/datacoin-hp/ChangeLog,v 1.6 2014/08/28 22:52:09 blueness Exp $
+
+  28 Aug 2014; Anthony G. Basile <blueness@gentoo.org> datacoin-hp-9999.ebuild:
+  Remove USE=bash-completion and fix datacoin-hp.bash-completion, bug #521352
+
+  28 Aug 2014; Michał Górny <mgorny@gentoo.org> datacoin-hp-9999.ebuild:
+  Remove KEYWORDS from live ebuild.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> datacoin-hp-9999.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  25 Feb 2014; Anthony G. Basile <blueness@gentoo.org> files/datacoin.initd:
+  Add imrpoved initd, bug #500602
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> datacoin-hp-9999.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+*datacoin-hp-9999 (28 Dec 2013)
+
+  28 Dec 2013; Anthony G. Basile <blueness@gentoo.org>
+  +datacoin-hp-9999.ebuild, +files/datacoin.conf, +files/datacoin.confd,
+  +files/datacoin.initd, +files/datacoin.logrotate, +files/datacoin.service,
+  +files/datacoin-hp-sys_leveldb.patch, +metadata.xml:
+  Initial commit. Thanks likewhoa\!

@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install unpack
+DEPEND=app-emulation/wine[X,abi_x86_32,pipelight] dev-vcs/git
+DESCRIPTION=Wine-based wrapper for running Windows plugins on POSIX systems
+EAPI=5
+HOMEPAGE=https://launchpad.net/pipelight
+LICENSE=|| ( GPL-2+ LGPL-2.1+ MPL-1.1 )
+RDEPEND=app-emulation/wine[X,abi_x86_32,pipelight] app-arch/cabextract gnome-extra/zenity
+SLOT=0
+_eclasses_=git-2	e28f0d8a9b321431b1e699782851b827	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=3f42651960a44c71cb37847075bd572a

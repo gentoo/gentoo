@@ -1,0 +1,95 @@
+# ChangeLog for dev-perl/MooseX-Types-DateTime-ButMaintained
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/MooseX-Types-DateTime-ButMaintained/ChangeLog,v 1.18 2015/06/13 11:36:49 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  MooseX-Types-DateTime-ButMaintained-0.160.0.ebuild:
+  virtual/perl-Test-Simple has gobbled up Test::use::ok, bug 550990
+
+  10 Oct 2014; Mikle Kolyada <zlogene@gentoo.org>
+  MooseX-Types-DateTime-ButMaintained-0.160.0.ebuild:
+  Bump to EAPI=5
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org>
+  -MooseX-Types-DateTime-ButMaintained-0.140.0.ebuild:
+  Cleanup
+
+*MooseX-Types-DateTime-ButMaintained-0.160.0 (18 Nov 2012)
+
+  18 Nov 2012; Torsten Veller <tove@gentoo.org>
+  +MooseX-Types-DateTime-ButMaintained-0.160.0.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org>
+  -MooseX-Types-DateTime-ButMaintained-0.110.0.ebuild,
+  -MooseX-Types-DateTime-ButMaintained-0.130.0.ebuild:
+  Cleanup
+
+*MooseX-Types-DateTime-ButMaintained-0.140.0 (25 Dec 2011)
+
+  25 Dec 2011; Torsten Veller <tove@gentoo.org>
+  +MooseX-Types-DateTime-ButMaintained-0.140.0.ebuild:
+  Version bump
+
+*MooseX-Types-DateTime-ButMaintained-0.130.0 (19 Dec 2011)
+
+  19 Dec 2011; Torsten Veller <tove@gentoo.org>
+  +MooseX-Types-DateTime-ButMaintained-0.130.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -MooseX-Types-DateTime-ButMaintained-0.11.ebuild:
+  Cleanup
+
+*MooseX-Types-DateTime-ButMaintained-0.110.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +MooseX-Types-DateTime-ButMaintained-0.110.0.ebuild:
+  Change version scheme
+
+  24 Dec 2009; Torsten Veller <tove@gentoo.org>
+  -MooseX-Types-DateTime-ButMaintained-0.09.ebuild:
+  Cleanup
+
+*MooseX-Types-DateTime-ButMaintained-0.11 (10 Nov 2009)
+
+  10 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +MooseX-Types-DateTime-ButMaintained-0.11.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org>
+  -MooseX-Types-DateTime-ButMaintained-0.06.ebuild,
+  -MooseX-Types-DateTime-ButMaintained-0.08.ebuild:
+  Cleanup
+
+*MooseX-Types-DateTime-ButMaintained-0.09 (25 Aug 2009)
+
+  25 Aug 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +MooseX-Types-DateTime-ButMaintained-0.09.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*MooseX-Types-DateTime-ButMaintained-0.08 (17 Jul 2009)
+
+  17 Jul 2009; Torsten Veller <tove@gentoo.org>
+  -MooseX-Types-DateTime-ButMaintained-0.07.ebuild,
+  +MooseX-Types-DateTime-ButMaintained-0.08.ebuild:
+  Version bump. Cleanup
+
+*MooseX-Types-DateTime-ButMaintained-0.07 (16 Jul 2009)
+
+  16 Jul 2009; Torsten Veller <tove@gentoo.org>
+  +MooseX-Types-DateTime-ButMaintained-0.07.ebuild:
+  Version bump
+
+  03 Jul 2009; Torsten Veller <tove@gentoo.org>
+  MooseX-Types-DateTime-ButMaintained-0.06.ebuild:
+  Add ~amd64
+
+*MooseX-Types-DateTime-ButMaintained-0.06 (09 Jun 2009)
+
+  09 Jun 2009; Torsten Veller <tove@gentoo.org>
+  +MooseX-Types-DateTime-ButMaintained-0.06.ebuild, +metadata.xml:
+  Initial commit

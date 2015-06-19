@@ -1,0 +1,11 @@
+--- zhu3d.pro
++++ zhu3d.pro
+@@ -48,7 +48,7 @@
+ CONFIG   += release
+ TARGET    = zhu3d
+ QT       += opengl
+-
++LIBS     += -lGLU
+ 
+ # ============================================================================
+ # Optimisation switches. For both GCC/ICC compilers -O3 is default.

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gstreamer</herd>
+<longdescription lang="en">
+	GStreamer plugin for Wavpack lossless/lossy audio format handling.
+
+	Includes the following elements:
+	* wavpackenc - Encodes audio with the Wavpack lossless/lossy audio codec
+	* wavpackdec - Decodes Wavpack audio data
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,29 @@
+# ChangeLog for app-backup/cdbackup
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/cdbackup/ChangeLog,v 1.6 2013/04/04 08:16:50 patrick Exp $
+
+*cdbackup-0.7.1 (04 Apr 2013)
+
+  04 Apr 2013; Patrick Lauer <patrick@gentoo.org> +cdbackup-0.7.1.ebuild:
+  Bump
+
+  20 Oct 2012; Agostino Sarubbo <ago@gentoo.org> cdbackup-0.7.0.ebuild:
+  Add ~amd64, wrt bug #439068
+
+  10 Sep 2010; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Duplicate <maintainer> block of the herd is pointless.
+
+  15 Oct 2008; Diego Pettenò <flameeyes@gentoo.org> cdbackup-0.7.0.ebuild:
+  Respect CFLAGS, LDFLAGS and CC properly. Avoid sed on the Makefile to set
+  prefix: use dobin and doman instead. Don't install license file.
+
+  14 Oct 2008; Diego Pettenò <flameeyes@gentoo.org> cdbackup-0.7.0.ebuild:
+  Fix dependencies, cdrtools is not linked to and needs not to be around for
+  build.
+
+*cdbackup-0.7.0 (28 May 2006)
+
+  28 May 2006; Lisa Seelye <lisa@gentoo.org> +metadata.xml,
+  +cdbackup-0.7.0.ebuild:
+  New package submitted by Juan J. Garcia de Soria, skandalfo at gmail dot
+  com. Bug 75291

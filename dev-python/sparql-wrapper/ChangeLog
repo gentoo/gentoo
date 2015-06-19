@@ -1,0 +1,68 @@
+# ChangeLog for dev-python/sparql-wrapper
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sparql-wrapper/ChangeLog,v 1.16 2015/06/07 09:52:27 maekke Exp $
+
+  07 Jun 2015; Markus Meier <maekke@gentoo.org> sparql-wrapper-1.6.4.ebuild:
+  arm stable, bug #540290
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> sparql-wrapper-1.6.4.ebuild:
+  Stable for alpha, wrt bug #540290
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> sparql-wrapper-1.5.2.ebuild,
+  sparql-wrapper-1.6.0.ebuild, sparql-wrapper-1.6.1.ebuild,
+  sparql-wrapper-1.6.2.ebuild, sparql-wrapper-1.6.4.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> sparql-wrapper-1.6.4.ebuild:
+  x86 stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> sparql-wrapper-1.6.4.ebuild:
+  ppc stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> sparql-wrapper-1.6.4.ebuild:
+  ppc64 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> sparql-wrapper-1.6.4.ebuild:
+  amd64 stable, bug 540290
+
+  20 Nov 2014; Tobias Klausmann <klausman@gentoo.org>
+  sparql-wrapper-1.6.1.ebuild:
+  Keyworded on alpha, bug 518436
+
+*sparql-wrapper-1.6.4 (15 Oct 2014)
+
+  15 Oct 2014; Ian Delaney <idella4@gentoo.org> +sparql-wrapper-1.6.4.ebuild:
+  bump
+
+*sparql-wrapper-1.6.2 (20 Aug 2014)
+
+  20 Aug 2014; Ian Delaney <idella4@gentoo.org> +sparql-wrapper-1.6.2.ebuild:
+  bump
+
+  13 Aug 2014; Anthony G. Basile <blueness@gentoo.org>
+  sparql-wrapper-1.6.1.ebuild:
+  Keyword ~ppc64, bug #518436
+
+*sparql-wrapper-1.6.1 (29 Jul 2014)
+
+  29 Jul 2014; Ian Delaney <idella4@gentoo.org> +sparql-wrapper-1.6.1.ebuild:
+  bump; add py3.4 support drop keywords alpha ia64 ppc64 sparc to allow adding
+  py3.4
+
+*sparql-wrapper-1.6.0 (20 May 2014)
+
+  20 May 2014; Ian Delaney <idella4@gentoo.org> +sparql-wrapper-1.6.0.ebuild,
+  sparql-wrapper-1.5.2.ebuild:
+  bump; drop py2.6 support
+
+  22 Apr 2014; Ian Delaney <idella4@gentoo.org> sparql-wrapper-1.5.2.ebuild:
+  add missing DEPEND dep
+
+  22 May 2013; Patrick Lauer <patrick@gentoo.org> sparql-wrapper-1.5.2.ebuild:
+  Fix license
+
+*sparql-wrapper-1.5.2 (22 May 2013)
+
+  22 May 2013; Patrick Lauer <patrick@gentoo.org> +metadata.xml,
+  +sparql-wrapper-1.5.2.ebuild:
+  Initial import, ebuild by me, needed by new rdflib

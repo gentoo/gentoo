@@ -1,0 +1,137 @@
+# ChangeLog for sci-visualization/spyview
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/spyview/ChangeLog,v 1.29 2014/01/23 16:12:13 dilfridge Exp $
+
+  23 Jan 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  spyview-20111018.ebuild, spyview-20130823.ebuild:
+  Need fltk with opengl support, bug 499034
+
+  06 Jan 2014; Justin Lecher <jlec@gentoo.org> spyview-20111018.ebuild,
+  spyview-20130823.ebuild, metadata.xml:
+  Punt base.eclass
+
+  03 Dec 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  spyview-20130823.ebuild:
+  Crashes all the time. Something is broken, remove amd64 keyword.
+
+  28 Oct 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  spyview-20130823.ebuild:
+  Add boost subslot dependency
+
+*spyview-20130823 (25 Oct 2013)
+
+  25 Oct 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +spyview-20130823.ebuild, -spyview-20110803.ebuild:
+  Version bump; remove old
+
+  27 Jul 2013; Agostino Sarubbo <ago@gentoo.org> spyview-20111018.ebuild:
+  Stable for x86, wrt bug #477164
+
+  21 Jul 2013; Agostino Sarubbo <ago@gentoo.org> spyview-20111018.ebuild:
+  Stable for amd64, wrt bug #477164
+
+  06 Apr 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  spyview-20110803.ebuild, spyview-20111018.ebuild:
+  Does not actually use libpng
+
+  11 Aug 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  spyview-20111018.ebuild:
+  Fix build with gcc-4.7, bug 425368
+
+*spyview-20111018 (21 Jan 2012)
+
+  21 Jan 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  -spyview-20110329-r1.ebuild, -files/spyview-20110329-xsection_fn.patch,
+  +spyview-20111018.ebuild:
+  Version bump; remove old
+
+  04 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> spyview-20110803.ebuild:
+  x86 stable wrt bug #394799
+
+  15 Dec 2011; Agostino Sarubbo <ago@gentoo.org> spyview-20110803.ebuild:
+  Stable for AMD64, wrt bug #394799
+
+*spyview-20110803 (20 Aug 2011)
+
+  20 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +spyview-20110803.ebuild:
+  Version bump
+
+  13 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -spyview-20100810.ebuild:
+  Remove old
+
+  13 Jul 2011; Markus Meier <maekke@gentoo.org> spyview-20110329-r1.ebuild:
+  x86 stable, bug #371975
+
+  18 Jun 2011; Markos Chandras <hwoarang@gentoo.org>
+  spyview-20110329-r1.ebuild:
+  Stable on amd64 wrt bug #371975
+
+*spyview-20110329-r1 (24 Apr 2011)
+
+  24 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -spyview-20110329.ebuild, +spyview-20110329-r1.ebuild,
+  +files/spyview-20110329-xsection_fn.patch:
+  Fix buffer overflow, bug 339898
+
+*spyview-20110329 (29 Mar 2011)
+
+  29 Mar 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -spyview-20100329-r1.ebuild, +spyview-20110329.ebuild:
+  Version bump; remove old
+
+  20 Mar 2011; Justin Lecher <jlec@gentoo.org> spyview-20100329-r1.ebuild,
+  spyview-20100810.ebuild:
+  x11-libs/fltk SLOTMOVE 1.1 -> 1, corrected ebuild accordingly
+
+  26 Sep 2010; Markus Meier <maekke@gentoo.org> spyview-20100810.ebuild:
+  x86 stable, bug #338250
+
+  21 Sep 2010; Markos Chandras <hwoarang@gentoo.org>
+  spyview-20100810.ebuild:
+  Stable on amd64 wrt bug #338250
+
+  15 Sep 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  -files/spyview-includes.patch, metadata.xml:
+  Proxied maintainer becomes real maintainer; removed unused patch.
+
+*spyview-20100810 (22 Aug 2010)
+
+  22 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  +spyview-20100810.ebuild:
+  Version bump. Thanks to Andreas K. Hüttel (dilfridge) <mail@akhuettel.de>
+  for the ebuild
+
+  06 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  -spyview-20100203.ebuild:
+  Remove old ebuilds
+
+  29 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  spyview-20100329-r1.ebuild:
+  stable x86, bug 325753
+
+  27 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  spyview-20100329-r1.ebuild:
+  Stable on amd64 wrt bug #325753
+
+*spyview-20100329-r1 (26 May 2010)
+
+  26 May 2010; Markos Chandras <hwoarang@gentoo.org>
+  -spyview-20100329.ebuild, +spyview-20100329-r1.ebuild:
+  Revbump which fixes documentation installation wrt bug #316781.
+  Thanks to Andreas K. Huettel <mail@akhuettel.de> for the patch.
+
+*spyview-20100329 (04 Apr 2010)
+
+  04 Apr 2010; Markos Chandras <hwoarang@gentoo.org>
+  +spyview-20100329.ebuild, metadata.xml:
+  Version bump. Fixes bug #313079. Andreas Huettel will be proxy maintainer
+  forit
+
+*spyview-20100203 (05 Mar 2010)
+
+  05 Mar 2010; Markos Chandras <hwoarang@gentoo.org>
+  +spyview-20100203.ebuild, +files/spyview-includes.patch, +metadata.xml:
+  Moved from sunrise overlay. Thanks to Andreas K. Huettel (dilfridge)
+  <mail@akhuettel.de> for the ebuild. Fixes bug #283449

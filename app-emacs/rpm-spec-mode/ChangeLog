@@ -1,0 +1,26 @@
+# ChangeLog for app-emacs/rpm-spec-mode
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/rpm-spec-mode/ChangeLog,v 1.5 2014/02/22 06:45:53 ulm Exp $
+
+*rpm-spec-mode-0.15 (22 Feb 2014)
+
+  22 Feb 2014; Ulrich Müller <ulm@gentoo.org> -rpm-spec-mode-0.12.ebuild,
+  +rpm-spec-mode-0.15.ebuild:
+  Version bump. Remove old.
+
+  04 Jun 2013; Sébastien Fabbro <bicatali@gentoo.org> rpm-spec-mode-0.12.ebuild:
+  Keyword amd64-linux and x86-linux
+
+  28 Feb 2012; Ulrich Müller <ulm@gentoo.org> files/50rpm-spec-mode-gentoo.el,
+  rpm-spec-mode-0.12.ebuild, metadata.xml:
+  Add package to emacs herd. Don't force autoloading of uncompiled lisp file.
+  Fix SRC_URI.
+
+  20 Feb 2012; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Drop no-herd.
+
+*rpm-spec-mode-0.12 (19 Feb 2012)
+
+  19 Feb 2012; Stanislav Ochotnicky <sochotnicky@gentoo.org>
+  +files/50rpm-spec-mode-gentoo.el, +rpm-spec-mode-0.12.ebuild, +metadata.xml:
+  Add rpm-spec-mode to simplify editing of RPM spec files

@@ -1,0 +1,52 @@
+# ChangeLog for dev-haskell/bytestring-show
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/bytestring-show/ChangeLog,v 1.9 2014/07/25 09:16:32 slyfox Exp $
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  bytestring-show-0.3.5.4-r2.ebuild, bytestring-show-0.3.5.5.ebuild,
+  bytestring-show-0.3.5.6.ebuild:
+  Drop trailing '.' from description.
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*bytestring-show-0.3.5.6 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org> +bytestring-show-0.3.5.6.ebuild:
+  Bump bytestring-show to 0.3.5.6
+
+*bytestring-show-0.3.5.5 (11 May 2013)
+
+  11 May 2013; Sergei Trofimovich <slyfox@gentoo.org>
+  +bytestring-show-0.3.5.5.ebuild, -bytestring-show-0.3.5.1.ebuild,
+  -bytestring-show-0.3.5.4-r1.ebuild:
+  Version bump.
+
+*bytestring-show-0.3.5.4-r2 (02 Apr 2013)
+
+  02 Apr 2013; Mark Wright <gienah@gentoo.org>
+  +bytestring-show-0.3.5.4-r2.ebuild:
+  Loosen binary dep in bytestring-show-0.3.5.4-r2
+
+*bytestring-show-0.3.5.4-r1 (22 Dec 2012)
+
+  22 Dec 2012; Sergei Trofimovich <slyfox@gentoo.org>
+  +bytestring-show-0.3.5.4-r1.ebuild, -bytestring-show-0.3.5.ebuild:
+  Version bump.
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org>
+  bytestring-show-0.3.5.1.ebuild, bytestring-show-0.3.5.ebuild:
+  move dev-haskell/bytestring-show/bytestring-show-0.3.5.1.ebuild ebuild to
+  mirror://hackage
+
+*bytestring-show-0.3.5.1 (02 Jun 2012)
+
+  02 Jun 2012; Mark Wright <gienah@gentoo.org> +bytestring-show-0.3.5.1.ebuild:
+  Bump bytestring-show to 0.3.5.1
+
+*bytestring-show-0.3.5 (11 Dec 2011)
+
+  11 Dec 2011; Sergei Trofimovich <slyfox@gentoo.org>
+  +bytestring-show-0.3.5.ebuild, +metadata.xml:
+  Initial version. Efficient conversion of values into readable byte strings.
+  Bug #394343 by zimous.

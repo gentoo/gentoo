@@ -1,0 +1,68 @@
+# ChangeLog for app-eselect/eselect-unison
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-unison/ChangeLog,v 1.1 2015/03/31 16:57:31 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> +eselect-unison-0.1.ebuild,
+  +eselect-unison-0.2.ebuild, +eselect-unison-0.3.ebuild,
+  +files/unison.eselect-0.1, +files/unison.eselect-0.2,
+  +files/unison.eselect-0.3, +metadata.xml:
+  Move package from app-admin to app-eselect category.
+
+  01 Apr 2013; Benda Xu <heroxbd@gentoo.org> eselect-unison-0.3.ebuild:
+  keyword ~arm
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org> eselect-unison-0.3.ebuild:
+  Marking eselect-unison-0.3 ppc for bug 391507
+
+  05 Feb 2012; Raúl Porcel <armin76@gentoo.org> eselect-unison-0.1.ebuild,
+  eselect-unison-0.2.ebuild, eselect-unison-0.3.ebuild:
+  Drop sparc keywords
+
+  28 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  eselect-unison-0.3.ebuild:
+  x86 stable wrt bug #391507
+
+  26 Nov 2011; Markos Chandras <hwoarang@gentoo.org> eselect-unison-0.3.ebuild:
+  Stable on amd64 wrt bug #391507
+
+*eselect-unison-0.3 (28 Feb 2010)
+
+  28 Feb 2010; Jonathan Callen <abcd@gentoo.org> +files/unison.eselect-0.3,
+  +eselect-unison-0.3.ebuild:
+  Version bump to add prefix support
+
+*eselect-unison-0.2 (22 Nov 2009)
+
+  22 Nov 2009; Ulrich Mueller <ulm@gentoo.org> +files/unison.eselect-0.2,
+  +eselect-unison-0.2.ebuild:
+  Version bump: support brief output mode, bug 292115.
+
+  30 Jun 2008; Raúl Porcel <armin76@gentoo.org> eselect-unison-0.1.ebuild:
+  sparc stable wrt #229187
+
+  26 Jun 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  eselect-unison-0.1.ebuild:
+  stable amd64, bug 229187
+
+  25 Jun 2008; nixnut <nixnut@gentoo.org> eselect-unison-0.1.ebuild:
+  Stable on ppc wrt bug 229187
+
+  24 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  eselect-unison-0.1.ebuild:
+  stable x86, bug 229187
+
+  13 Jun 2008; Matti Bickel <mabi@gentoo.org> eselect-unison-0.1.ebuild:
+  ~ppc added (bug #207746)
+
+  14 Apr 2008; Raúl Porcel <armin76@gentoo.org> eselect-unison-0.1.ebuild:
+  Add ~sparc wrt #207746
+
+  10 Apr 2008; Markus Meier <maekke@gentoo.org> eselect-unison-0.1.ebuild:
+  add ~x86, bug #207746
+
+*eselect-unison-0.1 (07 Apr 2008)
+
+  07 Apr 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/unison.eselect-0.1, +metadata.xml, +eselect-unison-0.1.ebuild:
+  Initial import. eselect module for SLOTted net-misc/unison by Martin von
+  Gagern <Martin.vGagern@gmx.net>, bug #207746

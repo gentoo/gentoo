@@ -1,0 +1,28 @@
+# ChangeLog for media-plugins/vdr-span
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-span/ChangeLog,v 1.5 2012/05/01 17:55:42 hd_brummy Exp $
+
+  01 May 2012; Joerg Bornkessel <hd_brummy@gentoo.org> -vdr-span-0.0.3.ebuild,
+  -vdr-span-0.0.6.ebuild, vdr-span-0.0.7.ebuild:
+  cleanup; eapi=4; vdr-plugin-2.eclass
+
+*vdr-span-0.0.7 (14 Aug 2008)
+
+  14 Aug 2008; Matthias Schwarzott <zzam@gentoo.org> +vdr-span-0.0.7.ebuild:
+  Version bumped.
+
+*vdr-span-0.0.6 (13 Dec 2007)
+
+  13 Dec 2007; Matthias Schwarzott <zzam@gentoo.org> +vdr-span-0.0.6.ebuild:
+  Version bumped.
+
+  05 Jan 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-span-0.0.3.ebuild:
+  einfo converted to elog
+
+*vdr-span-0.0.3 (09 Sep 2006)
+
+  09 Sep 2006; Joerg Bornkessel <hd_brummy@gentoo.org> +metadata.xml,
+  +vdr-span-0.0.3.ebuild:
+  intial ebuild; thx to C.Leuschen for ebuild and the plugin sources
+

@@ -1,0 +1,69 @@
+# ChangeLog for media-libs/libclthreads
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libclthreads/ChangeLog,v 1.15 2015/03/18 11:48:09 aballier Exp $
+
+*libclthreads-2.4.0-r1 (18 Mar 2015)
+
+  18 Mar 2015; Alexis Ballier <aballier@gentoo.org>
+  +libclthreads-2.4.0-r1.ebuild, +files/libclthreads-2.4.0-Makefile.patch:
+  update makefile patch to create proper lib symlinks, bug #418065 by Rodrigo
+  Severo
+
+  18 Mar 2015; Alexis Ballier <aballier@gentoo.org> libclthreads-1.0.2.ebuild,
+  libclthreads-2.2.1.ebuild, libclthreads-2.4.0.ebuild:
+  fix homepage & src_uri, bug #385411 by Emery Hemingway
+
+  07 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  25 Jan 2009; Markus Meier <maekke@gentoo.org> libclthreads-2.2.1.ebuild:
+  amd64/x86 stable, bug #256042
+
+*libclthreads-2.4.0 (19 Apr 2008)
+
+  19 Apr 2008; Alexis Ballier <aballier@gentoo.org>
+  +libclthreads-2.4.0.ebuild:
+  version bump, bug #218246
+
+*libclthreads-2.2.1 (19 Apr 2007)
+
+  19 Apr 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/libclthreads-2.2.1-Makefile.patch, +libclthreads-2.2.1.ebuild:
+  Version bump, thanks to  Mike Mattie and    ron widler, bug #156914
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  files/libclthreads-1.0.2-makefile.patch, metadata.xml,
+  -libclthreads-1.0.0.ebuild, libclthreads-1.0.2.ebuild:
+  Respect multilib libdir, don't run ldconfig, use CXX to build, drop
+  virtual/libc dependency.
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> libclthreads-1.0.2.ebuild:
+  Added to ~ppc.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libclthreads-1.0.2.ebuild:
+  Stable amd64, sparc, x86.
+
+*libclthreads-1.0.2 (27 Nov 2004)
+
+  27 Nov 2004; Frank van de Pol <fvdpol@gentoo.org>
+  +files/libclthreads-1.0.2-makefile.patch, +libclthreads-1.0.2.ebuild:
+  Version bump.
+
+  27 Nov 2004; Joseph Jezak <josejx@gentoo.org> libclthreads-1.0.0.ebuild:
+  Marked ~ppc as a dependancy of bug #71979.
+
+  17 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libclthreads-1.0.0.ebuild:
+  Added ~amd64 ~sparc.  Stable x86.
+
+*libclthreads-1.0.0 (09 Oct 2004)
+
+  09 Oct 2004; Christian Parpart <trapni@gentoo.org> +metadata.xml,
+  +files/libclthreads-1.0.0-makefile.patch, +libclthreads-1.0.0.ebuild:
+  Initial import. ebuild submitted by ron widler <ron@einfach.org>
+  as a dependency ongoing media-sound/jaaa (bug #66620)
+

@@ -1,0 +1,37 @@
+# ChangeLog for app-xemacs/ess
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/ess/ChangeLog,v 1.12 2014/08/10 18:59:24 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> ess-1.03.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  19 Mar 2008; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  A herd should not be listed as maintainer
+
+  03 Jun 2007; Hans de Graaff <graaff@gentoo.org> ess-1.03.ebuild:
+  Stable on amd64, ppc, ppc64, sparc, x86 as per #175560
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  26 Nov 2006; Hans de Graaff <graaff@gentoo.org> -ess-1.02.ebuild:
+  Remove old version.
+
+  02 Oct 2004; Robert Coie <rac@gentoo.org> +metadata.xml, ess-1.03.ebuild:
+  eterm -> xemacs-eterm renaming
+
+  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> ess-1.03.ebuild:
+  Stable on alpha
+
+*ess-1.03 (22 Feb 2003)
+
+  22 Feb 2003;  <rendhalver@gentoo.org> ess-1.02.ebuild ess-1.03.ebuild files/digest-ess-1.03 :
+  Add ~alpha to KEYWORDS
+
+  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
+  new stable ebuild
+
+*ess-1.02 (16 Dec 2002)
+
+  16 Dec 2002; Rendhalver [Peter Brown] <rendhalver@gentoo.org> :
+  Initial import.

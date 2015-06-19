@@ -1,0 +1,221 @@
+# ChangeLog for mail-client/alot
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-client/alot/ChangeLog,v 1.22 2014/08/07 19:44:13 aidecoe Exp $
+
+  07 Aug 2014; Amadeusz Żołnowski <aidecoe@gentoo.org> alot-0.3.5.ebuild,
+  alot-0.3.6.ebuild:
+  Removed deprecated call to default pkg_setup.
+
+*alot-0.3.6 (07 Aug 2014)
+
+  07 Aug 2014; Amadeusz Żołnowski <aidecoe@gentoo.org> +alot-0.3.6.ebuild:
+  Version bump.
+
+  NEWS
+  ~~~~
+  * implement vim-style "move last" command (bound to G)
+  * fixes in reply/forwarding
+  * add option "--tags" to taglist command to display only a subset of the tags
+  * fix: safely interrumpt a command sequence
+  * use suffix ".eml" for temporary email files when editing
+  * interpret "compose mailto:foo@bar" commands
+  * new "tomorrow" colour theme
+  * Add some Emacs keybindings for prompts
+
+  16 Feb 2014; Amadeusz Żołnowski <aidecoe@gentoo.org> -alot-0.3.2.ebuild,
+  -alot-0.3.3.ebuild, -alot-0.3.4.ebuild:
+  Removed old versions, only one latest left.
+
+  03 Aug 2013; Michał Górny <mgorny@gentoo.org> alot-0.3.2.ebuild,
+  alot-0.3.3.ebuild, alot-0.3.4.ebuild, alot-0.3.5.ebuild:
+  Move dev-python/twisted to dev-python/twisted-core.
+
+*alot-0.3.5 (26 Jul 2013)
+
+  26 Jul 2013; Amadeusz Żołnowski <aidecoe@gentoo.org> +alot-0.3.5.ebuild,
+  +files/0.3.5-0001-Use-Unicode-strings-when-dealing-with-.patch:
+  Version bump and EAPI bump. Because of configobj it can be installed only
+  with python2_7 target.
+
+  NEWS
+  ~~~~
+  * full support for PGP/MIME [de|en]cryption and signatures
+  * add missing "unattach" command in envelope buffer
+  * honour 'Mail-Followup-To' header and set if for selected mailinglists
+  * better handling of replies to self-sent messages
+  * make auto_remove_unread configurable
+  * rewrite thread buffer
+  * improved global move commands: first/last line, half-page up/down
+  * tree-based movement in threads (first/last reply, next/previous
+    unfolded/sibling, parent)
+  * fold/unfold messages based on query string in thread mode
+  * respect mailcap commands that expect stdin
+  * Support different libmagic APIs
+  * new hooks called before/aftr buffer open/close/focus
+  * new global repeat command
+
+*alot-0.3.4 (18 Apr 2013)
+
+  18 Apr 2013; Amadeusz Żołnowski <aidecoe@gentoo.org> +alot-0.3.4.ebuild:
+  Version bump.
+
+  NEWS
+  ~~~~
+
+  * thread mode: add "tags" pseudo header to message display
+  * case insensitive matching in Addressbook completion
+  * compose: interpret "attach" pseudo header
+  * compose: set initial message tags
+  * envelope: completion for 'From'
+  * reply/forward: more flexible construction of "From" headers (hello
+    plussing!)
+  * thread mode: added bounce command for direct redirection w/o an envelope
+    buffer
+  * thread mode: more robust "pipeto" command
+  * add config option "prefer_plaintext"
+  * prevent multiple 'index locked' notifications
+  * kill some zombies! (#325)
+  * search mode: bulk tagging
+  * less annoying multi-key bindings
+  * add global "move" command for scriptable cursor movement
+  * support for encrypted outgoing mails using PGP/MIME
+
+*alot-0.3.3 (10 Sep 2012)
+
+  10 Sep 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> -alot-0.3.1.ebuild,
+  +alot-0.3.3.ebuild:
+  Version bump.  Removed oldest 0.3 version.
+
+  NEWS
+  ~~~~
+
+  * interpret (semicolon separated) sequences of commands
+  * new input handling: allow for binding sequences of keypresses
+  * add ability to overwrite default bindings
+  * remove tempfiles (email drafts) as late as possible for better error
+  recovery
+  * confirmation prompt when closing unsent envelopes
+  * prevent accidental double sendout of envelopes
+  * fix focus placement after tagcommand on last entry in search buffer
+  * new command 'buffer' that can directly jump to buffer with given number
+  * extra: sup theme
+  * fix tagstring sorting in taglist buffer
+  * update docs
+  * lots of internal cleanups
+  * search buffer theming fixes (alignment of threadline parts)
+  * fix help box theming
+  * comma-separate virtual "Tags" header added before printing mails
+  * fix pipeto command for interactive (foreground) shell commands
+  * handle possible errors occurring while saving mails
+  * indicate (yet uninterpreted) input queue in the status bar
+  * handle python exceptions that occur during 'call' command
+
+  01 Aug 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> -alot-0.3.ebuild:
+  Removed oldest version: 0.3.
+
+  01 Aug 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> alot-0.3.ebuild,
+  alot-0.3.1.ebuild:
+  Remove obsolete warnings from 0.3 and 0.3.1.
+
+*alot-0.3.2 (01 Aug 2012)
+
+  01 Aug 2012; Amadeusz Żołnowski <aidecoe@gentoo.org>
+  +files/0.3.2-subject-fix.patch, +alot-0.3.2.ebuild:
+  Version bump.
+
+  NEWS
+  ~~~~
+  * fix bad GPG signatures for mails with attachments
+  * new theme-files + tags section syntax
+  * re-introduce "highlighting" of thread lines in search mode
+  * new global command "call" to directly call and bind python commands
+  * add new buffers to direct neighbourhood of current one
+  * fix sanitize --spawn for X11-less use
+  * add new hook 'touch_external_cmdlist'
+  * make statusline configurable
+  * fix update result count after tag operations in search mode
+  * add config options and hooks for reply/forward subject generation
+  * add config options and hook for quoting messages in replies/forwards
+  * allow True/False/None values for boolean command parameters
+  * new config option "attachment_prefix"
+  * various small fixes for libmagic, header encoding and decoding
+
+  19 May 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> alot-0.3.1.ebuild:
+  Depend on 0.8.1-r1 version of the pyme, because at earlier the alot crashes.
+
+  19 May 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> alot-0.3.1.ebuild,
+  alot-0.3.ebuild:
+  dev-python/sphinx dependency for 'doc' flag.
+
+  17 May 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> alot-0.3.ebuild:
+  Synced back changes in 0.3.1 to 0.3.
+
+  17 May 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> -alot-0.2.1-r1.ebuild:
+  Removed old version.
+
+  17 May 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> alot-0.3.1.ebuild,
+  metadata.xml:
+  Install the user manual and the API documentation if the 'doc' flag is
+  enabled.
+
+*alot-0.3.1 (17 May 2012)
+
+  17 May 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> +alot-0.3.1.ebuild:
+  Version bump.
+
+  NEWS
+  ~~~~
+  (Copied from NEWS file.)
+
+  * use separate database for each write-queue entry when flushing
+  * fix behaviour of editor spawning
+  * fix opening of attachments in thread buffer
+  * fix pre_edit_translate hook
+  * fix opening of attachments without filename Content-Disposition parm
+  * clean up and complete theming (bindings help/envelope/mainframe body)
+  * fix datetime decoding issues
+  * fix abort commands on pre-hook exceptions
+  * fix correct default sendmail command to 'sendmail -t'
+  * use '> ' instead of '>' to quote in replies/fwds
+  * fix path completer wrt spaces in paths
+  * fix UI when no buffers are open
+  * fix issue with buffer type changing between flushes
+  * support multiple addresses per abook contact when using 'abook' completer
+  * smarter timestamp pretty printer
+  * new hook 'timestamp_format'
+  * merge multiple cc/to headers into one when displaying
+  * respect NOTMUCH_CONFIG env var
+  * smarter parsing of edited header values
+  * allow for singleton lists without trailing comma in config
+  * fix reverse-date sorted content in threadline if displayed
+  * emacs-style C-a and C-E in prompts
+  * added ability to sign outgoing mails via PGP/MIME
+
+  25 Mar 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> alot-0.2.1-r1.ebuild:
+  vcs-snapshot is used in the ebuild instead of custom src_unpack().
+
+*alot-0.2.1-r1 (25 Mar 2012)
+
+  25 Mar 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> +alot-0.2.1-r1.ebuild,
+  alot-0.3.ebuild, -alot-0.21-r1.ebuild:
+  Versioning scheme has been corrected. Previous 0.21 is 0.2.1 now.
+
+*alot-0.3 (24 Mar 2012)
+
+  24 Mar 2012; Amadeusz Żołnowski <aidecoe@gentoo.org> +alot-0.3.ebuild:
+  Version bump. Dependencies has been changed. VERSION file is no longer used
+  by setup. Added postinst warning about change in format of config file.
+  vcs-snapshot is used in the ebuild instead of custom src_unpack().
+
+*alot-0.21-r1 (27 Dec 2011)
+
+  27 Dec 2011; Amadeusz Żołnowski <aidecoe@gentoo.org> -alot-0.21.ebuild,
+  +alot-0.21-r1.ebuild:
+  Added missing dependencies: sys-apps/file[python] and net-mail/mailbase.
+
+*alot-0.21 (26 Dec 2011)
+
+  26 Dec 2011; Amadeusz Żołnowski <aidecoe@gentoo.org> +alot-0.21.ebuild,
+  +metadata.xml:
+  Initial ebuild.
+

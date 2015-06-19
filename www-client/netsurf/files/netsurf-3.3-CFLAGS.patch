@@ -1,0 +1,85 @@
+--- netsurf-3.3/Makefile.defaults
++++ netsurf-3.3/Makefile.defaults
+@@ -91,12 +91,6 @@
+ # Valid options: YES, NO
+ NETSURF_FS_BACKING_STORE := NO
+ 
+-# Initial CFLAGS. Optimisation level etc. tend to be target specific.
+-CFLAGS :=
+-
+-# Initial CXXFLAGS. Optimisation level etc. tend to be target specific.
+-CXXFLAGS :=
+-
+ # Default installation/execution prefix
+ PREFIX ?= /usr/local
+ 
+--- netsurf-3.3/framebuffer/Makefile.defaults
++++ netsurf-3.3/framebuffer/Makefile.defaults
+@@ -2,9 +2,6 @@
+ # Framebuffer-target-specific options
+ # ----------------------------------------------------------------------------
+ 
+-# Optimisation levels
+-CFLAGS += -O2
+-
+ # Framebuffer default surface provider.
+ # Valid values are: x, sdl, linux, vnc, able,
+ NETSURF_FB_FRONTEND := sdl
+--- netsurf-3.3/framebuffer/Makefile.target
++++ netsurf-3.3/framebuffer/Makefile.target
+@@ -42,8 +42,8 @@
+ $(eval $(call pkg_config_find_and_add_enabled,MOZJS,mozjs185,JavaScript))
+ $(eval $(call pkg_config_find_and_add_enabled,JS,mozilla-js,JavaScript))
+ 
+-CFLAGS += -std=c99 -g -Dsmall \
+-	  -D_BSD_SOURCE \
++CFLAGS += -std=c99 -Dsmall \
++	  -D_DEFAULT_SOURCE \
+ 	  -D_XOPEN_SOURCE=600 \
+ 	  -D_POSIX_C_SOURCE=200112L \
+ 	  $(shell $(PKG_CONFIG) --cflags libnsfb libhubbub libcss openssl)
+--- netsurf-3.3/gtk/Makefile.defaults
++++ netsurf-3.3/gtk/Makefile.defaults
+@@ -26,6 +26,3 @@
+ 
+ # Set default GTK version to build for (2 or 3)
+ NETSURF_GTK_MAJOR ?= 2
+-
+-# Optimisation levels
+-CFLAGS += -O2
+--- netsurf-3.3/gtk/Makefile.target
++++ netsurf-3.3/gtk/Makefile.target
+@@ -46,9 +46,9 @@
+ # libsexy currently means we cannot enable this
+ #		-DGDK_DISABLE_DEPRECATED 
+ 
+-GTKCFLAGS := -std=c99 -Dgtk -Dnsgtk -g \
++GTKCFLAGS := -std=c99 -Dgtk -Dnsgtk \
+ 		$(GTKDEPFLAGS) \
+-		-D_BSD_SOURCE \
++		-D_DEFAULT_SOURCE \
+ 		-D_XOPEN_SOURCE=600 \
+ 		-D_POSIX_C_SOURCE=200809L \
+ 		-D_NETBSD_SOURCE \
+--- netsurf-3.3/test/Makefile
++++ netsurf-3.3/test/Makefile
+@@ -1,8 +1,8 @@
+-CFLAGS := -std=c99 -g -O0 -D_BSD_SOURCE -D_POSIX_C_SOURCE -I.. \
++CFLAGS := -std=c99 -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE -I.. \
+ 		$(shell pkg-config --cflags libcurl)
+ LDFLAGS := $(shell pkg-config --libs libcurl) -lz
+ 
+-llcache_CFLAGS := $(shell pkg-config --cflags libparserutils libwapcaplet libdom) -O2
++llcache_CFLAGS := $(shell pkg-config --cflags libparserutils libwapcaplet libdom)
+ llcache_LDFLAGS := $(shell pkg-config --libs libparserutils libwapcaplet libdom)
+ 
+ llcache_SRCS := content/fetch.c content/fetchers/curl.c \
+@@ -19,7 +19,7 @@
+ 		utils/filename.c utils/nsurl.c utils/corestrings.c \
+ 		test/urldbtest.c
+ 
+-urldbtest_CFLAGS := $(shell pkg-config --cflags libwapcaplet libdom) -O2
++urldbtest_CFLAGS := $(shell pkg-config --cflags libwapcaplet libdom)
+ urldbtest_LDFLAGS := $(shell pkg-config --libs libwapcaplet libdom)
+ 
+ nsurl_SRCS := utils/corestrings.c utils/log.c utils/nsurl.c utils/idna.c utils/utf8proc.c test/nsurl.c

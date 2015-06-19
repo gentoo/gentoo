@@ -1,0 +1,43 @@
+# ChangeLog for app-crypt/efitools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/efitools/ChangeLog,v 1.8 2015/01/30 09:21:05 pinkbyte Exp $
+
+  30 Jan 2015; Sergey Popov <pinkbyte@gentoo.org> efitools-1.4.1.ebuild,
+  efitools-1.4.1-r1.ebuild, efitools-1.4.1-r2.ebuild, efitools-1.4.2.ebuild,
+  efitools-1.4.2-r1.ebuild:
+  QA: Fix HOMEPAGE, wrt bug #501148
+
+  15 Mar 2014; Mike Frysinger <vapier@gentoo.org> efitools-1.4.2-r1.ebuild:
+  Require a recent version of gnu-efi #487580 by Frank Krömmelbein.
+
+*efitools-1.4.2-r1 (03 Oct 2013)
+
+  03 Oct 2013; Greg Kroah-Hartman <gregkh@gentoo.org> +efitools-1.4.2-r1.ebuild:
+  add build dependancy for perl script as per bug #486844
+
+*efitools-1.4.2 (02 Oct 2013)
+
+  02 Oct 2013; Greg Kroah-Hartman <gregkh@gentoo.org> +efitools-1.4.2.ebuild:
+  Version bump to 1.4.2
+
+  10 Sep 2013; Patrick Lauer <patrick@gentoo.org> efitools-1.4.1-r1.ebuild,
+  efitools-1.4.1-r2.ebuild, efitools-1.4.1.ebuild:
+  Whitespace
+
+*efitools-1.4.1-r2 (01 Sep 2013)
+
+  01 Sep 2013; Greg Kroah-Hartman <gregkh@gentoo.org> +efitools-1.4.1-r2.ebuild,
+  +files/xxdi.patch:
+  remove vim-core build dependancy by replacing it with a small perl script that
+  has been send upstream.
+
+*efitools-1.4.1-r1 (30 Aug 2013)
+
+  30 Aug 2013; Greg Kroah-Hartman <gregkh@gentoo.org> +efitools-1.4.1-r1.ebuild:
+  add missing DEPEND packages as per bug #483028
+
+*pesign-0.108 (29 Aug 2013)
+
+  29 Aug 2013; Greg Kroah-Hartman <gregkh@gentoo.org> +files/destdir.patch,
+  +metadata.xml, +pesign-0.108.ebuild:
+  0.108 pesign added

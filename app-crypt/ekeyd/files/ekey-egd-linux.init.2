@@ -1,0 +1,23 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/ekeyd/files/ekey-egd-linux.init.2,v 1.1 2011/10/20 11:40:27 flameeyes Exp $
+
+: ${HOST:=localhost}
+: ${PORT:=8888}
+: ${RECONNECTINTERVAL:=10}
+: ${BLOCKS:=2}
+
+description="EntropyKey EGD client"
+
+pidfile=/var/run/$SVCNAME.pid
+
+command=/usr/libexec/ekey-egd-linux
+command_args="-H ${HOST} -p ${PORT} -r ${RECONNECTINTERVAL} -b ${BLOCKS} -D ${pidfile}"
+
+depend() {
+	 use net
+	 after ekeyd
+
+	 provide entropy
+}

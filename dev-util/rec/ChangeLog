@@ -1,0 +1,36 @@
+# ChangeLog for dev-util/rec
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/rec/ChangeLog,v 1.9 2012/12/02 16:54:00 ulm Exp $
+
+  02 Dec 2012; Ulrich Müller <ulm@gentoo.org> rec-1.6.ebuild:
+  Fix LICENSE, "BSD-2 free-noncomm HPND" according to copyrite file.
+
+  14 Aug 2012; Justin Lecher <jlec@gentoo.org> rec-1.6.ebuild:
+  Use QA_PREBUILt for binary packages, #430978
+
+  21 Feb 2010; Patrick Lauer <patrick@gentoo.org> rec-1.6.ebuild:
+  Adding ~amd64 for #302892
+
+  14 Oct 2008; Jeremy Olexa <darkside@gentoo.org> rec-1.6.ebuild:
+  (non maintainer commit) restrict stripping on dev-util/rec because that
+  check is not needed, bug #239882
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing taviso from metadata.xml as per #202471. Assigning to
+  maintainer-needed.
+
+  05 Mar 2007; Marius Mauch <genone@gentoo.org> rec-1.6.ebuild:
+  Replacing einfo with elog
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  16 Dec 2005; Tavis Ormandy <taviso@gentoo.org> rec-1.6.ebuild:
+  missing unzip dep
+
+*rec-1.6 (15 Dec 2005)
+
+  15 Dec 2005; Tavis Ormandy <taviso@gentoo.org> +metadata.xml,
+  +rec-1.6.ebuild:
+  initial import
+

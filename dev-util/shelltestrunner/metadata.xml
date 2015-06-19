@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		shelltestrunner is a cross-platform tool for testing command-line
+		programs (or arbitrary shell commands.)  It reads simple declarative tests
+		specifying a command, some input, and the expected output, error output
+		and exit status.  Tests can be run selectively, in parallel, with a
+		timeout, in color, and/or with differences highlighted.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,19 @@
+--- tcsh-6.14.00/tw.color.c
++++ tcsh-6.14.00/tw.color.c
+@@ -235,13 +235,10 @@
+ 		    if ((Char)variables[i].variable[0] == (v[0] & CHAR) &&
+ 			(Char)variables[i].variable[1] == (v[1] & CHAR))
+ 			break;
+-		if (i < nvariables) {
+-		    v += 3;
++		v += 3;
++		if (i < nvariables)
+ 		    getstring(&c, &v, &variables[i].color, ':');
+-		    continue;
+-		}
+-		else
+-		    stderror(ERR_BADCOLORVAR, v[0], v[1]);
++		continue;
+ 	    }
+ 	    break;
+ 	}

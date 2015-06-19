@@ -1,0 +1,50 @@
+# ChangeLog for gnustep-libs/highlighterkit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-libs/highlighterkit/ChangeLog,v 1.12 2015/02/21 12:15:24 ago Exp $
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> highlighterkit-0.1.3.ebuild:
+  Stable for ppc, wrt bug #535422
+
+  10 Feb 2015; Agostino Sarubbo <ago@gentoo.org> highlighterkit-0.1.3.ebuild:
+  Stable for x86, wrt bug #535422
+
+  01 Feb 2015; Agostino Sarubbo <ago@gentoo.org> highlighterkit-0.1.3.ebuild:
+  Stable for amd64, wrt bug #535422
+
+*highlighterkit-0.1.3 (10 Feb 2014)
+
+  10 Feb 2014; Bernard Cafarelli <voyageur@gentoo.org>
+  -highlighterkit-0.1.ebuild, +highlighterkit-0.1.3.ebuild:
+  Version bump, bugfix release
+
+  07 Jun 2012; Michael Weber <xmw@gentoo.org> highlighterkit-0.1.2.ebuild:
+  ppc stable (bug 410601)
+
+  07 Apr 2012; Markus Meier <maekke@gentoo.org> highlighterkit-0.1.2.ebuild:
+  x86 stable, bug #410601
+
+  05 Apr 2012; Agostino Sarubbo <ago@gentoo.org> highlighterkit-0.1.2.ebuild:
+  Stable for amd64, wrt bug #410601
+
+*highlighterkit-0.1.2 (15 Feb 2012)
+
+  15 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org>
+  +highlighterkit-0.1.2.ebuild, metadata.xml:
+  Version bump with new upstream
+
+  08 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  highlighterkit-0.1.ebuild:
+  amd64 stable wrt bug #207381
+
+  30 Jan 2008; Brent Baude <ranger@gentoo.org> highlighterkit-0.1.ebuild:
+  Marking highlighterkit-0.1 ppc for bug 207381
+
+  25 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  highlighterkit-0.1.ebuild:
+  stable x86, bug 207381
+
+*highlighterkit-0.1 (10 Sep 2007)
+
+  10 Sep 2007; Bernard Cafarelli <voyageur@gentoo.org> +metadata.xml,
+  +highlighterkit-0.1.ebuild:
+  Initial import from the GNUstep overlay

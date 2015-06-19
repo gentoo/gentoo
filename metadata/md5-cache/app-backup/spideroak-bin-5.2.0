@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prepare unpack
+DEPEND=dev-util/patchelf
+DESCRIPTION=An easy, secure and consolidated free online backup, storage, access and sharing system
+EAPI=5
+HOMEPAGE=https://spideroak.com
+IUSE=dbus X
+KEYWORDS=~amd64 ~x86
+LICENSE=spideroak
+RDEPEND=app-crypt/mit-krb5[keyutils] dbus? ( sys-apps/dbus ) X? ( media-libs/fontconfig media-libs/freetype:2 dev-libs/glib:2 x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXext x11-libs/libXmu x11-libs/libXrender x11-libs/libXt )
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=x86? ( https://spideroak.com/getbuild?platform=ubuntu&arch=i386&version=5.2.0 -> spideroak-bin-5.2.0_x86.deb ) amd64? ( https://spideroak.com/getbuild?platform=ubuntu&arch=x86_64&version=5.2.0 -> spideroak-bin-5.2.0_amd64.deb )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=0e32865f336138ab1cdcfd84f0a85f4c

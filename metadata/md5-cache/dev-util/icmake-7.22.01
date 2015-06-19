@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Hybrid between a make utility and a shell scripting language
+EAPI=5
+HOMEPAGE=http://icmake.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=mirror://sourceforge/icmake/icmake_7.22.01.orig.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ff688cd4aa2c7143c8f83933393f2229

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: library for helping with arrays
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=171
+KEYWORDS=alpha amd64 ia64 ~mips ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=|| ( >=app-editors/vim-6.3 >=app-editors/gvim-6.3 ) || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/multvals-3.10.tar.bz2 http://dev.gentoo.org/~radhermit/vim/multvals-3.10.tar.bz2
+_eclasses_=vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=660df23796fb5cd977c4213c1afa6dcc

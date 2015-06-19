@@ -1,0 +1,53 @@
+# ChangeLog for dev-python/wtf-peewee
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/wtf-peewee/ChangeLog,v 1.11 2015/06/07 16:34:26 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  18 Apr 2015; Sven Wegener <swegener@gentoo.org> wtf-peewee-0.2.3.ebuild:
+  Rename distfile to include package name.
+
+  07 Jul 2014; Ian Delaney <idella4@gentoo.org> -wtf-peewee-0.1.3.ebuild,
+  -wtf-peewee-0.1.4.ebuild, -wtf-peewee-0.1.5.ebuild, -wtf-peewee-0.2.0.ebuild,
+  -wtf-peewee-0.2.1.ebuild, -wtf-peewee-0.2.2.ebuild, wtf-peewee-0.2.3.ebuild:
+  set version border to peewee, update test phase, rm old
+
+*wtf-peewee-0.2.3 (04 Jun 2014)
+
+  04 Jun 2014; Ian Delaney <idella4@gentoo.org> +wtf-peewee-0.2.3.ebuild:
+  bump
+
+*wtf-peewee-0.2.2 (26 May 2014)
+
+  26 May 2014; Patrick Lauer <patrick@gentoo.org> +wtf-peewee-0.2.2.ebuild:
+  Bump
+
+  25 May 2014; Ian Delaney <idella4@gentoo.org> wtf-peewee-0.2.1.ebuild:
+  unrestrict & upgrade test phase, add IUSE examples
+
+*wtf-peewee-0.2.1 (20 May 2014)
+
+  20 May 2014; Patrick Lauer <patrick@gentoo.org> +wtf-peewee-0.2.1.ebuild:
+  Bump
+
+*wtf-peewee-0.2.0 (03 May 2014)
+
+  03 May 2014; Patrick Lauer <patrick@gentoo.org> +wtf-peewee-0.2.0.ebuild:
+  Bump
+
+*wtf-peewee-0.1.5 (22 Nov 2013)
+
+  22 Nov 2013; Patrick Lauer <patrick@gentoo.org> +wtf-peewee-0.1.5.ebuild:
+  Bump
+
+*wtf-peewee-0.1.4 (21 Oct 2013)
+
+  21 Oct 2013; Patrick Lauer <patrick@gentoo.org> +wtf-peewee-0.1.4.ebuild:
+  Bump
+
+*wtf-peewee-0.1.3 (17 Aug 2013)
+
+  17 Aug 2013; Patrick Lauer <patrick@gentoo.org> +metadata.xml,
+  +wtf-peewee-0.1.3.ebuild:
+  Initial import, ebuild by me

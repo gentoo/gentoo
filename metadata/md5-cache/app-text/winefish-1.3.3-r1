@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=>=x11-libs/gtk+-2.4:2 >=dev-libs/libpcre-6.3 spell? ( app-text/aspell ) virtual/pkgconfig
+DESCRIPTION=LaTeX editor based on Bluefish
+EAPI=3
+HOMEPAGE=http://winefish.berlios.de/
+IUSE=spell
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=x11-libs/gtk+-2.4:2 >=dev-libs/libpcre-6.3 spell? ( app-text/aspell )
+SLOT=0
+SRC_URI=mirror://berlios/winefish/winefish-1.3.3.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=932b8a100482ddaa7120284b1615fd8d

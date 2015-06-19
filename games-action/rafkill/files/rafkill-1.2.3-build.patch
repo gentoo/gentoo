@@ -1,0 +1,27 @@
+--- SConstruct
++++ SConstruct
+@@ -8,8 +8,8 @@
+ 
+ print "Use 'scons -h' for help"
+ 
+-prefix = '/usr/local/games'
+-bin = '/usr/local/bin'
++prefix = 'data'
++bin = 'src'
+ if sys.platform == 'win32':
+ 	try:
+ 		Execute(Mkdir('gen'))
+@@ -46,7 +46,12 @@
+ # print "Install directory = $prefix"
+ # print "Directory where symlinked binary will go = $bin"
+ 
+-flags = [ '-g3', '-Wall', '-fno-rtti', '-Woverloaded-virtual', '-O2', '-DINSTALL_DIR=\\\"$prefix\\\"' ];
++SConsignFile()
++env.Replace(CXX = os.environ['CXX'])
++if os.environ.get('CXXFLAGS'):
++	env.Replace(CPPFLAGS = os.environ['CXXFLAGS'])
++
++flags = [ '-Wall', '-fno-rtti', '-Woverloaded-virtual' ];
+ env.Append( CCFLAGS = flags, CPPPATH = [ "build" ] )
+ 
+ # SConscript( 'src/SConscript', build_dir='build', exports = 'env' );

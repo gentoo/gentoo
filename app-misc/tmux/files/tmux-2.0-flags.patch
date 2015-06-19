@@ -1,0 +1,18 @@
+ Makefile.am | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 63e20b1..a2fec1e 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -25,9 +25,8 @@ endif
+ # Set flags for gcc. gcc4 whines abouts silly stuff so it needs slightly
+ # different flags.
+ if IS_GCC
+-CFLAGS += -std=gnu99 -O2
++CFLAGS += -std=gnu99
+ if IS_DEBUG
+-CFLAGS += -g
+ CFLAGS += -Wno-long-long -Wall -W -Wnested-externs -Wformat=2
+ CFLAGS += -Wmissing-prototypes -Wstrict-prototypes -Wmissing-declarations
+ CFLAGS += -Wwrite-strings -Wshadow -Wpointer-arith -Wsign-compare

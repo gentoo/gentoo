@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=app-arch/ncompress
+DESCRIPTION=Extract ASCII text from a PostScript or PDF file
+EAPI=3
+HOMEPAGE=http://www.cs.wisc.edu/~ghost/doc/pstotext.htm
+KEYWORDS=amd64 hppa ppc ppc64 x86
+LICENSE=PSTT
+RDEPEND=app-text/ghostscript-gpl
+SLOT=0
+SRC_URI=ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/contrib/pstotext-1.9.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c58b5e74e39c656ec051a3bdead80ae8

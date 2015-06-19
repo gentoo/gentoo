@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst test unpack
+DESCRIPTION=A flexible logging framework for shell scripts
+HOMEPAGE=http://forestent.com/products/log4sh/
+KEYWORDS=~ppc x86
+LICENSE=LGPL-2.1
+RDEPEND=app-shells/bash
+SLOT=0
+SRC_URI=http://forestent.com/dist/log4sh/log4sh-1.2.5.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f37a9d8d7679be0042f8f06f164b1973

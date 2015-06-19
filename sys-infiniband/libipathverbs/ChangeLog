@@ -1,0 +1,32 @@
+# ChangeLog for sys-infiniband/libipathverbs
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-infiniband/libipathverbs/ChangeLog,v 1.6 2014/04/16 08:22:27 alexxy Exp $
+
+*libipathverbs-1.2.1 (16 Apr 2014)
+
+  16 Apr 2014; Alexey Shvetsov <alexxy@gentoo.org> +libipathverbs-1.2.1.ebuild,
+  -libipathverbs-1.2-r1.ebuild:
+  Update ofed stack to 3.12-rc1
+
+  13 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> libipathverbs-1.2-r2.ebuild:
+  [sys-infiniband] Update OFED
+
+*libipathverbs-1.2-r2 (12 Oct 2012)
+
+  12 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> +libipathverbs-1.2-r2.ebuild:
+  [sys-infiniband] OFED 3.5 rc2 update
+
+*libipathverbs-1.2-r1 (18 Apr 2012)
+
+  18 Apr 2012; Alexey Shvetsov <alexxy@gentoo.org> +libipathverbs-1.2-r1.ebuild,
+  -libipathverbs-1.2.ebuild:
+  [sys-infiniband/libipathverbs] Version bump to OFED 1.5.4.1
+
+  02 Jul 2011; Alexey Shvetsov <alexxy@gentoo.org> libipathverbs-1.2.ebuild:
+  Add ~amd64-linux keywrod
+
+*libipathverbs-1.2 (30 Jun 2011)
+
+  30 Jun 2011; Alexey Shvetsov <alexxy@gentoo.org> +libipathverbs-1.2.ebuild,
+  +metadata.xml:
+  Initial import to tree

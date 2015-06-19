@@ -1,0 +1,667 @@
+# ChangeLog for virtual/perl-Module-CoreList
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/perl-Module-CoreList/ChangeLog,v 1.133 2015/06/07 22:31:49 dilfridge Exp $
+
+  07 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  perl-Module-CoreList-5.201.505.200-r2.ebuild:
+  Whitespace
+
+*perl-Module-CoreList-5.201.505.200-r2 (07 Jun 2015)
+
+  07 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Module-CoreList-3.30.0.ebuild, -perl-Module-CoreList-5.20.1.ebuild,
+  -perl-Module-CoreList-5.201.409.140.ebuild,
+  -perl-Module-CoreList-5.201.501.200.ebuild,
+  -perl-Module-CoreList-5.201.505.200-r1.ebuild,
+  +perl-Module-CoreList-5.201.505.200-r2.ebuild:
+  Remove old
+
+*perl-Module-CoreList-5.201.505.200-r1 (04 Jun 2015)
+
+  04 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Module-CoreList-5.201.505.200.ebuild,
+  +perl-Module-CoreList-5.201.505.200-r1.ebuild:
+  No, this version is NOT in 5.20.2 ...
+
+*perl-Module-CoreList-5.201.505.200 (04 Jun 2015)
+
+  04 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +perl-Module-CoreList-5.201.505.200.ebuild:
+  Version bump
+
+  11 Apr 2015; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Module-CoreList-5.201.502.140-r1.ebuild:
+  ppc64 stable wrt bug #545510
+
+  11 Apr 2015; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Module-CoreList-5.201.502.140-r1.ebuild:
+  ppc stable wrt bug #545510
+
+  09 Apr 2015; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Module-CoreList-5.201.502.140-r1.ebuild:
+  ia64 stable wrt bug #545510
+
+  08 Apr 2015; Jeroen Roovers <jer@gentoo.org>
+  perl-Module-CoreList-5.201.502.140-r1.ebuild:
+  Stable for HPPA (bug #545510).
+
+  05 Apr 2015; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Module-CoreList-5.201.502.140-r1.ebuild:
+  sparc stable wrt bug #545510
+
+  05 Apr 2015; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Module-CoreList-5.201.502.140-r1.ebuild:
+  arm stable wrt bug #545510
+
+  05 Apr 2015; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Module-CoreList-5.201.502.140-r1.ebuild:
+  x86 stable wrt bug #545510
+
+  05 Apr 2015; Mike Frysinger <vapier@gentoo.org>
+  perl-Module-CoreList-5.20.1.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  04 Apr 2015; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Module-CoreList-5.201.502.140-r1.ebuild:
+  alpha stable wrt bug #545510
+
+  04 Apr 2015; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Module-CoreList-5.201.502.140-r1.ebuild:
+  amd64 stable wrt bug #545510
+
+  21 Feb 2015; Michał Górny <mgorny@gentoo.org>
+  -perl-Module-CoreList-5.201.502.140.ebuild:
+  Transfer stable keywords and drop old
+
+*perl-Module-CoreList-5.201.502.140-r1 (21 Feb 2015)
+
+  21 Feb 2015; Michał Górny <mgorny@gentoo.org>
+  +perl-Module-CoreList-5.201.502.140-r1.ebuild:
+  Revbump the virtuals where dependencies have been changed
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-5.20.1.ebuild:
+  Stable for alpha, wrt bug #536790
+
+  17 Feb 2015; Markus Meier <maekke@gentoo.org>
+  perl-Module-CoreList-5.20.1.ebuild:
+  arm stable, bug #536790
+
+  17 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-5.20.1.ebuild:
+  Stable for ia64, wrt bug #536790
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-5.20.1.ebuild:
+  Stable for sparc, wrt bug #536790
+
+  15 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-5.20.1.ebuild:
+  Stable for ppc64, wrt bug #536790
+
+  15 Feb 2015; Rick Farina <zerochaos@gentoo.org>
+  perl-Module-CoreList-5.201.502.140.ebuild:
+  qa: up my commit count by fixing the warning patrick left behind
+
+  15 Feb 2015; Patrick Lauer <patrick@gentoo.org>
+  perl-Module-CoreList-5.201.502.140.ebuild:
+  Whitespace
+
+*perl-Module-CoreList-5.201.502.140 (14 Feb 2015)
+
+  14 Feb 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +perl-Module-CoreList-5.201.502.140.ebuild:
+  Add 5.20.2 version
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-5.20.1.ebuild:
+  Stable for ppc, wrt bug #536790
+
+  13 Feb 2015; Jeroen Roovers <jer@gentoo.org>
+  perl-Module-CoreList-5.20.1.ebuild:
+  Stable for HPPA (bug #536790).
+
+  13 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-5.20.1.ebuild:
+  Stable for x86, wrt bug #536790
+
+  08 Feb 2015; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Module-CoreList-5.20.1.ebuild:
+  amd64 stable wrt bug #536790
+
+*perl-Module-CoreList-5.201.501.200 (24 Jan 2015)
+
+  24 Jan 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +perl-Module-CoreList-5.201.501.200.ebuild:
+  Version bump
+
+  08 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Module-CoreList-2.840.0.ebuild, -perl-Module-CoreList-5.21.1-r1.ebuild:
+  Remove old
+
+  08 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Module-CoreList-3.100.0.ebuild:
+  Remove old (Perl 5.20.0 cleanup)
+
+  18 Oct 2014; Mike Frysinger <vapier@gentoo.org>
+  perl-Module-CoreList-3.30.0.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  23 Sep 2014; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-3.30.0.ebuild:
+  Stable for sparc, wrt bug #504786
+
+  22 Sep 2014; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-3.30.0.ebuild:
+  Stable for x86, wrt bug #504786
+
+  22 Sep 2014; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-3.30.0.ebuild:
+  Stable for ia64, wrt bug #504786
+
+  21 Sep 2014; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-3.30.0.ebuild:
+  Stable for ppc, wrt bug #504786
+
+  21 Sep 2014; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-3.30.0.ebuild:
+  Stable for ppc64, wrt bug #504786
+
+  17 Sep 2014; Jeroen Roovers <jer@gentoo.org>
+  perl-Module-CoreList-3.30.0.ebuild:
+  Stable for HPPA (bug #504786).
+
+*perl-Module-CoreList-5.20.1 (16 Sep 2014)
+
+  16 Sep 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +perl-Module-CoreList-5.20.1.ebuild:
+  Add Perl 5.20.1 version
+
+*perl-Module-CoreList-5.201.409.140 (16 Sep 2014)
+
+  16 Sep 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +perl-Module-CoreList-5.201.409.140.ebuild:
+  Version bump
+
+  13 Sep 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  perl-Module-CoreList-3.100.0.ebuild:
+  Fix dependencies, bug 520954
+
+  31 Aug 2014; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Module-CoreList-3.30.0.ebuild:
+  arm stable wrt bug #504786
+
+  28 Jul 2014; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Module-CoreList-3.30.0.ebuild:
+  amd64 stable wrt bug #381424
+
+  24 Jul 2014; Tobias Klausmann <klausman@gentoo.org>
+  perl-Module-CoreList-3.30.0.ebuild:
+  Stable on alpha, bug #381424
+
+*perl-Module-CoreList-5.21.1-r1 (09 Jul 2014)
+*perl-Module-CoreList-3.100.0 (09 Jul 2014)
+*perl-Module-CoreList-3.30.0 (09 Jul 2014)
+
+  09 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Module-CoreList-2.900.0.ebuild, -perl-Module-CoreList-2.940.0.ebuild,
+  -perl-Module-CoreList-2.960.0.ebuild, -perl-Module-CoreList-2.970.0.ebuild,
+  -perl-Module-CoreList-3.0.0.ebuild, +perl-Module-CoreList-3.30.0.ebuild,
+  -perl-Module-CoreList-3.70.0.ebuild, +perl-Module-CoreList-3.100.0.ebuild,
+  -perl-Module-CoreList-3.110.0.ebuild, -perl-Module-CoreList-5.21.1.ebuild,
+  +perl-Module-CoreList-5.21.1-r1.ebuild:
+  Add perl-5.18, 20 version; improve dependencies; remove old
+
+*perl-Module-CoreList-5.21.1 (08 Jul 2014)
+
+  08 Jul 2014; Mikle Kolyada <zlogene@gentoo.org>
+  +perl-Module-CoreList-5.21.1.ebuild:
+  Version bump
+
+  04 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Module-CoreList-2.800.0.ebuild:
+  Remove old
+
+*perl-Module-CoreList-3.110.0 (28 May 2014)
+
+  28 May 2014; Mikle Kolyada <zlogene@gentoo.org>
+  +perl-Module-CoreList-3.110.0.ebuild:
+  Version bump
+
+*perl-Module-CoreList-3.70.0 (11 Mar 2014)
+
+  11 Mar 2014; Mikle Kolyada <zlogene@gentoo.org>
+  +perl-Module-CoreList-3.70.0.ebuild:
+  Version bump
+
+*perl-Module-CoreList-3.0.0 (11 Mar 2014)
+
+  11 Mar 2014; Mikle Kolyada <zlogene@gentoo.org>
+  +perl-Module-CoreList-3.0.0.ebuild, -perl-Module-CoreList-3.000.000.ebuild:
+  Normalize gentoo version scheme
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  perl-Module-CoreList-2.800.0.ebuild, perl-Module-CoreList-2.840.0.ebuild,
+  perl-Module-CoreList-2.900.0.ebuild, perl-Module-CoreList-2.940.0.ebuild,
+  perl-Module-CoreList-2.960.0.ebuild, perl-Module-CoreList-2.970.0.ebuild,
+  perl-Module-CoreList-3.000.000.ebuild:
+  Add arm64 love.
+
+  17 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  perl-Module-CoreList-2.800.0.ebuild, perl-Module-CoreList-2.840.0.ebuild:
+  Mark m68k/s390/sh stable.
+
+  27 Nov 2013; Markus Meier <maekke@gentoo.org>
+  perl-Module-CoreList-2.840.0.ebuild:
+  arm stable, bug #458122
+
+  24 Nov 2013; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Module-CoreList-2.840.0.ebuild:
+  sparc stable wrt bug #458122
+
+  24 Nov 2013; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Module-CoreList-2.840.0.ebuild:
+  ppc64 stable wrt bug #458122
+
+  24 Nov 2013; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Module-CoreList-2.840.0.ebuild:
+  ppc stable wrt bug #458122
+
+  24 Nov 2013; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Module-CoreList-2.840.0.ebuild:
+  ia64 stable wrt bug #458122
+
+  23 Nov 2013; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Module-CoreList-2.840.0.ebuild:
+  amd64 stable wrt bug #458122
+
+  22 Nov 2013; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Module-CoreList-2.840.0.ebuild:
+  x86 stable wrt bug #458122
+
+  21 Nov 2013; Jeroen Roovers <jer@gentoo.org>
+  perl-Module-CoreList-2.840.0.ebuild:
+  Stable for HPPA (bug #458122).
+
+  21 Nov 2013; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Module-CoreList-2.840.0.ebuild:
+  alpha stable wrt bug #458122
+
+*perl-Module-CoreList-3.000.000 (28 Oct 2013)
+
+  28 Oct 2013; Patrick Lauer <patrick@gentoo.org>
+  +perl-Module-CoreList-3.000.000.ebuild:
+  Bump
+
+*perl-Module-CoreList-2.970.0 (27 Aug 2013)
+
+  27 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +perl-Module-CoreList-2.970.0.ebuild, -perl-Module-CoreList-2.38.ebuild,
+  -perl-Module-CoreList-2.41.ebuild, -perl-Module-CoreList-2.430.ebuild,
+  -perl-Module-CoreList-2.440.ebuild, -perl-Module-CoreList-2.450.ebuild,
+  -perl-Module-CoreList-2.460.0.ebuild, -perl-Module-CoreList-2.490.0.ebuild,
+  -perl-Module-CoreList-2.510.0.ebuild, -perl-Module-CoreList-2.540.0.ebuild,
+  -perl-Module-CoreList-2.570.0.ebuild, -perl-Module-CoreList-2.660.0-r1.ebuild,
+  -perl-Module-CoreList-2.700.0.ebuild, -perl-Module-CoreList-2.760.0.ebuild:
+  Bump
+
+*perl-Module-CoreList-2.960.0 (24 Aug 2013)
+
+  24 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +perl-Module-CoreList-2.960.0.ebuild:
+  Bump
+
+*perl-Module-CoreList-2.940.0 (16 Aug 2013)
+
+  16 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +perl-Module-CoreList-2.940.0.ebuild:
+  Bump
+
+*perl-Module-CoreList-2.900.0 (14 Aug 2013)
+
+  14 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +perl-Module-CoreList-2.900.0.ebuild:
+  Bump for perl 5.18
+
+*perl-Module-CoreList-2.840.0 (12 Mar 2013)
+
+  12 Mar 2013; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.840.0.ebuild:
+  Version bump
+
+  02 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-2.800.0.ebuild:
+  Stable for sh, wrt bug #458122
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-2.800.0.ebuild:
+  Stable for sparc, wrt bug #458122
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-2.800.0.ebuild:
+  Stable for ia64, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-2.800.0.ebuild:
+  Stable for arm, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-2.800.0.ebuild:
+  Stable for s390, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-2.800.0.ebuild:
+  Stable for alpha, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-2.800.0.ebuild:
+  Stable for hppa, wrt bug #458122
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org>
+  perl-Module-CoreList-2.760.0.ebuild, perl-Module-CoreList-2.800.0.ebuild:
+  Add ~arm-linux keywords.
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-2.800.0.ebuild:
+  Stable for ppc, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-2.800.0.ebuild:
+  Stable for ppc64, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-2.800.0.ebuild:
+  Stable for x86, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Module-CoreList-2.800.0.ebuild:
+  Stable for amd64, wrt bug #458122
+
+*perl-Module-CoreList-2.800.0 (16 Feb 2013)
+
+  16 Feb 2013; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.800.0.ebuild:
+  Version bump
+
+*perl-Module-CoreList-2.760.0 (04 Nov 2012)
+
+  04 Nov 2012; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.760.0.ebuild:
+  Version bump
+
+*perl-Module-CoreList-2.700.0 (09 Aug 2012)
+
+  09 Aug 2012; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.700.0.ebuild:
+  Version bump
+
+*perl-Module-CoreList-2.660.0-r1 (21 May 2012)
+
+  21 May 2012; Torsten Veller <tove@gentoo.org>
+  -perl-Module-CoreList-2.660.0.ebuild,
+  +perl-Module-CoreList-2.660.0-r1.ebuild:
+  Add perl-5.16 as provider
+
+*perl-Module-CoreList-2.660.0 (21 May 2012)
+
+  21 May 2012; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.660.0.ebuild:
+  Version bump
+
+  28 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  perl-Module-CoreList-2.570.0.ebuild:
+  keyword ~amd64-fbsd
+
+  07 Nov 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  perl-Module-CoreList-2.540.0.ebuild:
+  ppc/ppc64 stable wrt #384593
+
+  23 Oct 2011; Raúl Porcel <armin76@gentoo.org>
+  perl-Module-CoreList-2.540.0.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #384593
+
+*perl-Module-CoreList-2.570.0 (21 Oct 2011)
+
+  21 Oct 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.570.0.ebuild:
+  Version bump
+
+  10 Oct 2011; Markus Meier <maekke@gentoo.org>
+  perl-Module-CoreList-2.540.0.ebuild:
+  arm/x86 stable, bug #384593
+
+  05 Oct 2011; Jeroen Roovers <jer@gentoo.org>
+  perl-Module-CoreList-2.540.0.ebuild:
+  Stable for HPPA (bug #384593).
+
+  27 Sep 2011; Tony Vroon <chainsaw@gentoo.org>
+  perl-Module-CoreList-2.540.0.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Elijah "Armageddon" El Lazkani in bug #384593.
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org>
+  perl-Module-CoreList-2.430.ebuild:
+  Stable on amd64 and x86
+
+*perl-Module-CoreList-2.540.0 (06 Aug 2011)
+
+  06 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.540.0.ebuild:
+  Version bump
+
+  07 Jul 2011; Alexis Ballier <aballier@gentoo.org>
+  perl-Module-CoreList-2.510.0.ebuild:
+  keyword ~x86-fbsd
+
+*perl-Module-CoreList-2.510.0 (21 Jun 2011)
+
+  21 Jun 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.510.0.ebuild:
+  Version bump
+
+  13 Jun 2011; Matt Turner <mattst88@gentoo.org>
+  perl-Module-CoreList-2.490.0.ebuild:
+  Added ~mips, bug 351526
+
+*perl-Module-CoreList-2.490.0 (14 May 2011)
+
+  14 May 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.490.0.ebuild:
+  Version bump
+
+  02 May 2011; Fabian Groffen <grobian@gentoo.org>
+  perl-Module-CoreList-2.460.0.ebuild:
+  Marked ~x64-freebsd
+
+*perl-Module-CoreList-2.460.0 (22 Mar 2011)
+
+  22 Mar 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.460.0.ebuild:
+  Version bump
+
+  27 Feb 2011; Fabian Groffen <grobian@gentoo.org>
+  perl-Module-CoreList-2.450.ebuild:
+  Add Prefix keywords, bug #351526
+
+  27 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  perl-Module-CoreList-2.450.ebuild:
+  Marked ~ppc64 wrt #351526
+
+*perl-Module-CoreList-2.450 (21 Feb 2011)
+
+  21 Feb 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.450.ebuild:
+  Version bump
+
+  29 Jan 2011; Raúl Porcel <armin76@gentoo.org>
+  perl-Module-CoreList-2.440.ebuild:
+  Add ~alpha/~arm/~ia64/~m68k/~s390/~sh/~sparc wrt #351526
+
+  24 Jan 2011; Jeroen Roovers <jer@gentoo.org>
+  perl-Module-CoreList-2.440.ebuild:
+  Marked ~hppa (bug #351526).
+
+*perl-Module-CoreList-2.440 (22 Jan 2011)
+
+  22 Jan 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.440.ebuild:
+  Version bump
+
+*perl-Module-CoreList-2.430 (22 Jan 2011)
+
+  22 Jan 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.430.ebuild:
+  Version bump
+
+  17 Jan 2011; Torsten Veller <tove@gentoo.org>
+  -perl-Module-CoreList-2.33.ebuild, -perl-Module-CoreList-2.37.ebuild,
+  -perl-Module-CoreList-2.39.ebuild, -perl-Module-CoreList-2.40.ebuild:
+  Cleanup
+
+*perl-Module-CoreList-2.41 (22 Nov 2010)
+
+  22 Nov 2010; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.41.ebuild:
+  Version bump
+
+  05 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  perl-Module-CoreList-2.38.ebuild:
+  stable x86, bug 343609
+
+  03 Nov 2010; Markos Chandras <hwoarang@gentoo.org>
+  perl-Module-CoreList-2.38.ebuild:
+  Stable on amd64 wrt bug #343609
+
+*perl-Module-CoreList-2.40 (22 Oct 2010)
+
+  22 Oct 2010; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.40.ebuild:
+  Version bump
+
+*perl-Module-CoreList-2.39 (26 Sep 2010)
+
+  26 Sep 2010; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.39.ebuild:
+  Version bump
+
+*perl-Module-CoreList-2.38 (07 Sep 2010)
+
+  07 Sep 2010; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.38.ebuild:
+  Version bump
+
+  26 Aug 2010; Torsten Veller <tove@gentoo.org>
+  -perl-Module-CoreList-2.18.ebuild, -perl-Module-CoreList-2.24.ebuild,
+  -perl-Module-CoreList-2.25.ebuild, -perl-Module-CoreList-2.26.ebuild,
+  -perl-Module-CoreList-2.29.ebuild, -perl-Module-CoreList-2.31.ebuild,
+  -perl-Module-CoreList-2.34.ebuild, -perl-Module-CoreList-2.36.ebuild:
+  Cleanup
+
+*perl-Module-CoreList-2.37 (26 Aug 2010)
+
+  26 Aug 2010; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.37.ebuild:
+  Version bump
+
+*perl-Module-CoreList-2.36 (20 Aug 2010)
+
+  20 Aug 2010; Robin H. Johnson <robbat2@gentoo.org>
+  +perl-Module-CoreList-2.36.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*perl-Module-CoreList-2.34 (24 May 2010)
+
+  24 May 2010; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.34.ebuild:
+  Version bump
+
+*perl-Module-CoreList-2.33 (17 May 2010)
+
+  17 May 2010; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.33.ebuild:
+  Version bump
+
+*perl-Module-CoreList-2.31 (22 Apr 2010)
+
+  22 Apr 2010; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.31.ebuild:
+  Version bump
+
+*perl-Module-CoreList-2.29 (13 Apr 2010)
+
+  13 Apr 2010; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.29.ebuild:
+  Version bump
+
+*perl-Module-CoreList-2.26 (23 Feb 2010)
+
+  23 Feb 2010; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.26.ebuild:
+  Version bump
+
+*perl-Module-CoreList-2.25 (21 Jan 2010)
+
+  21 Jan 2010; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.25.ebuild:
+  Version bump
+
+  17 Jan 2010; Torsten Veller <tove@gentoo.org>
+  -perl-Module-CoreList-2.17.ebuild, -perl-Module-CoreList-2.20.ebuild,
+  -perl-Module-CoreList-2.22.ebuild, -perl-Module-CoreList-2.23.ebuild:
+  Cleanup
+
+  07 Jan 2010; Torsten Veller <tove@gentoo.org>
+  perl-Module-CoreList-2.17.ebuild, perl-Module-CoreList-2.18.ebuild,
+  perl-Module-CoreList-2.20.ebuild, perl-Module-CoreList-2.22.ebuild,
+  perl-Module-CoreList-2.23.ebuild, perl-Module-CoreList-2.24.ebuild:
+  Set empty HOMEPAGE and LICENSE
+
+*perl-Module-CoreList-2.24 (21 Dec 2009)
+
+  21 Dec 2009; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.24.ebuild:
+  Version bump
+
+  07 Dec 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Add perl herd
+
+*perl-Module-CoreList-2.23 (22 Nov 2009)
+
+  22 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +perl-Module-CoreList-2.23.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  27 Oct 2009; Mounir Lamouri <volkmar@gentoo.org>
+  perl-Module-CoreList-2.22.ebuild:
+  Keywording for ppc.
+
+*perl-Module-CoreList-2.22 (23 Oct 2009)
+
+  23 Oct 2009; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.22.ebuild:
+  Version bump
+
+*perl-Module-CoreList-2.20 (06 Oct 2009)
+
+  06 Oct 2009; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.20.ebuild:
+  Version bump
+
+  25 Aug 2009; Torsten Veller <tove@gentoo.org> ChangeLog:
+  Add support for perl-5.10.1
+
+*perl-Module-CoreList-2.18 (24 Aug 2009)
+
+  24 Aug 2009; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.18.ebuild:
+  Version bump
+
+*perl-Module-CoreList-2.17 (23 Jun 2009)
+
+  23 Jun 2009; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.17.ebuild, +metadata.xml:
+  Initial import from perl-experimental
+
+  20 Feb 2009; Torsten Veller <tove@gentoo.org>
+  +perl-Module-CoreList-2.17.ebuild:
+  Version bump

@@ -1,0 +1,15 @@
+--- nsswitch.ldap	2004-06-08 00:34:09.895330016 -0500
++++ nsswitch.ldap-modified	2004-06-08 00:35:21.518441648 -0500
+@@ -10,10 +10,10 @@
+ passwd:		files ldap
+ group:		files ldap
+ 
+-# consult DNS first, we will need it to resolve the LDAP host. (If we
++# consult files/dns first, we will need it to resolve the LDAP host. (If we
+ # can't resolve it, we're in infinite recursion, because libldap calls
+ # gethostbyname(). Careful!)
+-hosts:		dns ldap
++hosts:		files dns ldap
+ 
+ # LDAP is nominally authoritative for the following maps.
+ services:   ldap [NOTFOUND=return] files

@@ -1,0 +1,34 @@
+# ChangeLog for net-dns/fpdns
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/fpdns/ChangeLog,v 1.6 2015/04/18 06:27:23 mr_bones_ Exp $
+
+  18 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> -fpdns-0.9.1-r1.ebuild:
+  old
+
+*fpdns-0.9.1-r1 (27 Aug 2014)
+*fpdns-0.10.0_pre20130404-r1 (27 Aug 2014)
+
+  27 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +fpdns-0.10.0_pre20130404-r1.ebuild, +fpdns-0.9.1-r1.ebuild,
+  -fpdns-0.10.0_pre20130404.ebuild, -fpdns-0.9.1.ebuild:
+  bumped EAPI to 5 to support upgrades of dev-lang/perl when inheriting perl-
+  module ; bumped EAPI to 4 to avoid deprecated EAPI otherwise.
+
+*fpdns-0.10.0_pre20130404 (26 Apr 2014)
+
+  26 Apr 2014; Wolfram Schlich <wschlich@gentoo.org>
+  +files/fpdns-0.10.0_pre20130404.ro-header.patch,
+  +fpdns-0.10.0_pre20130404.ebuild:
+  version bump, fixes bug #309189
+
+  03 Mar 2013; Wolfram Schlich <wschlich@gentoo.org> metadata.xml:
+  removed myself from metadata.xml, added maintainer-needed@gentoo.org
+
+  05 Feb 2010; Ulrich Mueller <ulm@gentoo.org> fpdns-0.9.1.ebuild:
+  Fix LICENSE, bug 301123.
+
+*fpdns-0.9.1 (16 Apr 2008)
+
+  16 Apr 2008; Wolfram Schlich <wschlich@gentoo.org> +metadata.xml,
+  +fpdns-0.9.1.ebuild:
+  initial import

@@ -1,0 +1,59 @@
+# ChangeLog for app-misc/irtrans-irclient
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/irtrans-irclient/ChangeLog,v 1.10 2013/03/17 15:01:45 hwoarang Exp $
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  07 Feb 2011; Joerg Bornkessel <hd_brummy@gentoo.org> metadata.xml:
+  mail address fixed
+
+  02 Feb 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  irtrans-irclient-6.01.05.ebuild:
+  removed unneeded virtual/libc
+
+*irtrans-irclient-6.01.05 (02 Feb 2011)
+
+  02 Feb 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -files/irtrans-irclient-5.9.01-missing-include.diff,
+  -irtrans-irclient-5.9.04.ebuild, -irtrans-irclient-5.9.07.ebuild,
+  -irtrans-irclient-5.11.04.ebuild, +irtrans-irclient-6.01.05.ebuild,
+  metadata.xml:
+  clean up; version bump bug #235146; fixed bug #3335973; set to valid email
+  adresse
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org>
+  irtrans-irclient-5.9.04.ebuild, irtrans-irclient-5.9.07.ebuild,
+  irtrans-irclient-5.11.04.ebuild:
+  Remove virtual/libc
+
+*irtrans-irclient-5.11.04 (10 Aug 2008)
+
+  10 Aug 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +irtrans-irclient-5.11.04.ebuild:
+  version bump, includes now arm support; thanks to M.Fetka on #232227
+
+  05 Mar 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  irtrans-irclient-5.9.04.ebuild, irtrans-irclient-5.9.07.ebuild:
+  removed quoting marks; bug 211816
+
+*irtrans-irclient-5.9.07 (06 Dec 2007)
+
+  06 Dec 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -irtrans-irclient-5.9.01.ebuild, irtrans-irclient-5.9.04.ebuild,
+  +irtrans-irclient-5.9.07.ebuild:
+  version bump, tanks to M.Fetka on #200224 ; clean up; fix quoting warnings
+  to make repoman happy
+
+*irtrans-irclient-5.9.04 (26 Aug 2007)
+
+  26 Aug 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +irtrans-irclient-5.9.04.ebuild:
+  version bump, thanks to M.Fetka on bug 190274
+
+*irtrans-irclient-5.9.01 (16 Aug 2007)
+
+  16 Aug 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/irtrans-irclient-5.9.01-missing-include.diff, +metadata.xml,
+  +irtrans-irclient-5.9.01.ebuild:
+  initial ebuild, thanks to M.Fetka ( proxied Maintainer ) on bug #187099

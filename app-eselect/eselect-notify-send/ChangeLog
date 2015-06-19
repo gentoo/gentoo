@@ -1,0 +1,43 @@
+# ChangeLog for app-eselect/eselect-notify-send
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-notify-send/ChangeLog,v 1.1 2015/03/31 16:52:10 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> +eselect-notify-send-0.1.ebuild,
+  +files/notify-send.eselect-0.1, +metadata.xml:
+  Move package from app-admin to app-eselect category.
+
+  02 Mar 2015; Yixun Lan <dlan@gentoo.org> eselect-notify-send-0.1.ebuild:
+  add arm64 support, tested on A53 board
+
+  01 May 2013; Agostino Sarubbo <ago@gentoo.org> eselect-notify-send-0.1.ebuild:
+  Stable for sh, wrt bug #466004
+
+  22 Apr 2013; Agostino Sarubbo <ago@gentoo.org> eselect-notify-send-0.1.ebuild:
+  Stable for sparc, wrt bug #466004
+
+  22 Apr 2013; Agostino Sarubbo <ago@gentoo.org> eselect-notify-send-0.1.ebuild:
+  Stable for ppc, wrt bug #466004
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org> eselect-notify-send-0.1.ebuild:
+  Stable for ia64, wrt bug #466004
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org> eselect-notify-send-0.1.ebuild:
+  Stable for alpha, wrt bug #466004
+
+  16 Apr 2013; Agostino Sarubbo <ago@gentoo.org> eselect-notify-send-0.1.ebuild:
+  Stable for arm, wrt bug #466004
+
+  16 Apr 2013; Agostino Sarubbo <ago@gentoo.org> eselect-notify-send-0.1.ebuild:
+  Stable for ppc64, wrt bug #466004
+
+  15 Apr 2013; Agostino Sarubbo <ago@gentoo.org> eselect-notify-send-0.1.ebuild:
+  Stable for x86, wrt bug #466004
+
+  15 Apr 2013; Agostino Sarubbo <ago@gentoo.org> eselect-notify-send-0.1.ebuild:
+  Stable for amd64, wrt bug #466004
+
+*eselect-notify-send-0.1 (19 Mar 2013)
+
+  19 Mar 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +files/notify-send.eselect-0.1, +eselect-notify-send-0.1.ebuild:
+  Initial commit wrt #379941 by Michał Górny

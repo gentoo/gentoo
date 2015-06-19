@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure postinst postrm prepare setup
+DEPEND=>=app-i18n/ibus-1.4 =dev-python/pygobject-2* =dev-python/pygtk-2* >=app-i18n/libhangul-0.1 nls? ( virtual/libintl ) virtual/pkgconfig nls? ( dev-util/intltool >=sys-devel/gettext-0.17 ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
+DESCRIPTION=The Hangul engine for IBus input platform
+EAPI=4
+HOMEPAGE=http://code.google.com/p/ibus/
+IUSE=nls
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=app-i18n/ibus-1.4 =dev-python/pygobject-2* =dev-python/pygtk-2* >=app-i18n/libhangul-0.1 nls? ( virtual/libintl ) || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
+SLOT=0
+SRC_URI=http://ibus.googlecode.com/files/ibus-hangul-1.4.0.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=20756bf4e254a501f854f29ab9c102b9

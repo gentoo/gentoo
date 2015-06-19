@@ -1,0 +1,97 @@
+# ChangeLog for dev-java/jakarta-oro
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jakarta-oro/ChangeLog,v 1.26 2015/06/16 19:16:53 monsieurp Exp $
+
+  16 Jun 2015; Patrice Clement <monsieurp@gentoo.org>
+  jakarta-oro-2.0.8-r3.ebuild:
+  Update SRC_URI. Fix bug 539816.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  jakarta-oro-2.0.8-r3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  03 Aug 2014; Ralph Sennhauser <sera@gentoo.org> -jakarta-oro-2.0.8-r2.ebuild:
+  Remove old
+
+  20 Aug 2012; Christoph Junghans <ottxor@gentoo.org>
+  jakarta-oro-2.0.8-r3.ebuild:
+  added prefix keywords
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> jakarta-oro-2.0.8-r3.ebuild:
+  Marking jakarta-oro-2.0.8-r3 ppc for bug 419195
+
+  05 Jun 2012; Brent Baude <ranger@gentoo.org> jakarta-oro-2.0.8-r3.ebuild:
+  Marking jakarta-oro-2.0.8-r3 ppc64 for bug 419195
+
+  04 Jun 2012; Johannes Huber <johu@gentoo.org> jakarta-oro-2.0.8-r3.ebuild:
+  Stable for x86, wrt bug #419195
+
+  03 Jun 2012; Agostino Sarubbo <ago@gentoo.org> jakarta-oro-2.0.8-r3.ebuild:
+  Stable for amd64, wrt bug #419195
+
+*jakarta-oro-2.0.8-r3 (03 May 2012)
+
+  03 May 2012; Ralph Sennhauser <sera@gentoo.org> +jakarta-oro-2.0.8-r3.ebuild:
+  Fix various qa issues. #317943
+
+  01 Jan 2012; Ralph Sennhauser <sera@gentoo.org> jakarta-oro-2.0.8-r2.ebuild:
+  Drop ia64 support #345433
+
+  03 Jul 2007; Petteri Räty <betelgeuse@gentoo.org>
+  jakarta-oro-2.0.8-r2.ebuild:
+  Use JAVA_PKG_IUSE and general src_compile.
+
+  26 Jan 2007; Vlastimil Babka <caster@gentoo.org>
+  -jakarta-oro-2.0.8-r1.ebuild:
+  Gen-1 punt.
+
+  26 Jan 2007; Steve Dibb <beandog@gentoo.org> jakarta-oro-2.0.8-r2.ebuild:
+  amd64 stable, bug 156988
+
+  17 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  jakarta-oro-2.0.8-r2.ebuild:
+  Stable on ppc wrt bug #156988.
+
+  04 Dec 2006; Markus Rothe <corsair@gentoo.org>
+  jakarta-oro-2.0.8-r2.ebuild:
+  Stable on ppc64; bug #156988
+
+  04 Dec 2006; Christian Faulhammer <opfer@gentoo.org>
+  jakarta-oro-2.0.8-r2.ebuild:
+  stable x86, bug #156988
+
+  03 Dec 2006; Petteri Räty <betelgeuse@gentoo.org> metadata.xml,
+  jakarta-oro-2.0.8-r1.ebuild, jakarta-oro-2.0.8-r2.ebuild:
+  Moved the very long description from ebuilds to metadata.xml.
+
+  17 Oct 2006; Joshua Nichols <nichoj@gentoo.org>
+  jakarta-oro-2.0.8-r2.ebuild:
+  Keyworded ~ia64.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  jakarta-oro-2.0.8-r1.ebuild, jakarta-oro-2.0.8-r2.ebuild:
+  Dropping sparc keywords, see #96229
+
+  23 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  jakarta-oro-2.0.8-r2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  21 Jul 2006; Joshua Nichols <jnichols@gentoo.org>
+  jakarta-oro-2.0.8-r2.ebuild:
+  Added java-ant-2 to inherit.
+
+*jakarta-oro-2.0.8-r2 (20 Jul 2006)
+
+  20 Jul 2006; Joshua Nichols <jnichols@gentoo.org>
+  +jakarta-oro-2.0.8-r2.ebuild:
+  Revision bump to support new Java system.
+
+  02 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> jakarta-oro-2.0.8.ebuild:
+  setting all keywords back to arch, since its only a package move.
+
+*jakarta-oro-2.0.8 (29 Mar 2005)
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> +metadata.xml,
+  +jakarta-oro-2.0.8.ebuild:
+  Initial import, move from dev-java/oro to dev-java/jakarta-oro. see #71337.
+  Introduced support for the examples and source useflag.

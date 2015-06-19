@@ -1,0 +1,702 @@
+# ChangeLog for app-misc/livecd-tools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/livecd-tools/ChangeLog,v 1.133 2015/04/25 16:09:41 floppym Exp $
+
+  25 Apr 2015; Mike Gilbert <floppym@gentoo.org> livecd-tools-2.0.3.ebuild,
+  livecd-tools-2.0.4.ebuild, livecd-tools-9999.ebuild:
+  Replace links pointing at git.overlays.gentoo.org.
+
+  03 Jun 2014; Rick Farina <zerochaos@gentoo.org> livecd-tools-2.0.4.ebuild:
+  remove DEPEND, xz-utils is in @system and not a DEPEND per devmanual
+  http://devmanual.gentoo.org/general-concepts/dependencies/index.html#implicit-
+  system-dependency
+
+  03 Jun 2014; Jeroen Roovers <jer@gentoo.org> livecd-tools-2.0.4.ebuild:
+  Add DEPEND for unpacking.
+
+*livecd-tools-2.0.4 (31 May 2014)
+
+  31 May 2014; Rick Farina <zerochaos@gentoo.org> +livecd-tools-2.0.4.ebuild:
+  fixing bug #511040
+
+  18 Mar 2013; William Hubbs <williamh@gentoo.org> -livecd-tools-2.0.2.ebuild,
+  livecd-tools-2.0.3.ebuild:
+  stabilize 2.0.3 and remove old versions per jmbsvicetto.
+
+  02 Mar 2013; Christoph Junghans <ottxor@gentoo.org> livecd-tools-2.0.2.ebuild,
+  livecd-tools-2.0.3.ebuild, livecd-tools-9999.ebuild:
+  switched to virtual/awk (bug #455644)
+
+  25 Feb 2013; William Hubbs <williamh@gentoo.org>
+  -files/livecd-tools-1.0.42-ttyB0.patch, -livecd-tools-1.0.40.ebuild,
+  -livecd-tools-1.0.42.ebuild:
+  remove old 1.x versions
+
+  25 Feb 2013; William Hubbs <williamh@gentoo.org> -livecd-tools-2.0.1.ebuild,
+  -livecd-tools-2.0.ebuild:
+  remove old 2.x versions
+
+  03 Jan 2013; William Hubbs <williamh@gentoo.org> livecd-tools-9999.ebuild:
+  sync live ebuild
+
+*livecd-tools-2.0.3 (11 Oct 2012)
+
+  11 Oct 2012; William Hubbs <williamh@gentoo.org> +livecd-tools-2.0.3.ebuild:
+  Version bump for #392685 and #408533.
+
+  22 May 2012; William Hubbs <williamh@gentoo.org> livecd-tools-2.0.2.ebuild,
+  livecd-tools-9999.ebuild:
+  add dependency on net-dialup/mingetty
+
+*livecd-tools-2.0.2 (26 Oct 2011)
+
+  26 Oct 2011; William Hubbs <williamh@gentoo.org> +livecd-tools-2.0.2.ebuild:
+  version bump
+
+  25 Oct 2011; William Hubbs <williamh@gentoo.org> livecd-tools-9999.ebuild:
+  drop spind from live ebuild
+
+  29 Aug 2011; Raúl Porcel <armin76@gentoo.org> livecd-tools-2.0.1.ebuild,
+  livecd-tools-9999.ebuild:
+  bashlogin should go to /bin
+
+*livecd-tools-2.0.1 (14 Jul 2011)
+
+  14 Jul 2011; William Hubbs <williamh@gentoo.org> +livecd-tools-2.0.1.ebuild,
+  livecd-tools-9999.ebuild:
+  New release and sync live ebuild.
+  Committing directly to stable per jmbsvicetto.
+
+  30 Jun 2011; William Hubbs <williamh@gentoo.org> livecd-tools-9999.ebuild:
+  re-install bashlogin for serial lines
+
+  30 Jun 2011; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  livecd-tools-9999.ebuild:
+  Dropping the fixinittab symlink as that is going to be taken care of by
+  catalyst.
+
+  30 Jun 2011; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  livecd-tools-9999.ebuild:
+  The package doesn't provide bashlogin any more.
+  Make sure we add fixinittab to the default runlevel.
+  Use git-2 eclass.
+
+  28 Jun 2011; William Hubbs <williamh@gentoo.org> livecd-tools-9999.ebuild:
+  update live ebuild to install conf.d files
+
+  03 May 2011; William Hubbs <williamh@gentoo.org> livecd-tools-2.0.ebuild,
+  livecd-tools-9999.ebuild:
+  add runtime depends on openrc and baselayout-2
+
+*livecd-tools-2.0 (03 May 2011)
+
+  03 May 2011; William Hubbs <williamh@gentoo.org> +livecd-tools-2.0.ebuild:
+  version bump for openrc and baselayout-2 support
+
+*livecd-tools-9999 (01 May 2011)
+
+  01 May 2011; William Hubbs <williamh@gentoo.org> +livecd-tools-9999.ebuild:
+  add live ebuild
+
+  06 Dec 2010; Jeroen Roovers <jer@gentoo.org> livecd-tools-1.0.42.ebuild,
+  +files/livecd-tools-1.0.42-ttyB0.patch:
+  Do not run getty on ttyB0 by default by gmsoft (bug #347917).
+
+*livecd-tools-1.0.42 (29 Jun 2009)
+
+  29 Jun 2009; Andrew Gaffney <agaffney@gentoo.org>
+  +livecd-tools-1.0.42.ebuild:
+  Version bump livecd-tools to 1.0.42
+
+  04 Sep 2008; Ben de Groot <yngwin@gentoo.org> livecd-tools-1.0.40.ebuild:
+  Unmasking and adding warning, on behalf of agaffney
+
+  12 Jun 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.40.ebuild:
+  Changing to ~mips, since it is an experimental arch, now.
+
+  05 Jun 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.40.ebuild:
+  HOMEPAGE fix.
+
+  05 Jun 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.39.ebuild, livecd-tools-1.0.40.ebuild:
+  Changed SRC_URI to point to wolf31o2.org, where I'll be putting all future
+  livecd-tools releases. Also, removing 1.0.39 ebuild.
+
+  29 May 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.40.ebuild:
+  Marking stable for 2008.0's release.
+
+  29 May 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.40_pre3.ebuild, +livecd-tools-1.0.40.ebuild:
+  Version bump to 1.0.40 for release.
+
+  08 Apr 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.40_pre1.ebuild, -livecd-tools-1.0.40_pre2.ebuild,
+  livecd-tools-1.0.40_pre3.ebuild:
+  Stable on all supported arches for 2008.0 Beta 2.
+
+*livecd-tools-1.0.40_pre3 (08 Apr 2008)
+
+  08 Apr 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.40_pre3.ebuild:
+  Version bump to 1.0.40_pre3 for testing.
+
+*livecd-tools-1.0.40_pre2 (26 Mar 2008)
+
+  26 Mar 2008; <solar@gentoo.org> +livecd-tools-1.0.40_pre2.ebuild:
+  - version bump directly to stable by request of wolf31o2
+
+  04 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.40_pre1.ebuild:
+  Marking stable for the 2008.0 release.
+
+*livecd-tools-1.0.40_pre1 (03 Mar 2008)
+
+  03 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.40_pre1.ebuild, -livecd-tools-1.0.40.ebuild:
+  I accidentally added the incorrect version to the tree. Reverting back to
+  1.0.40_pre1, which is what I was supposed to have added. This resolves bug
+  #211906.
+
+  27 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.40.ebuild:
+  Marking stable for 2008.0 snapshot.
+
+*livecd-tools-1.0.40 (27 Feb 2008)
+
+  27 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.40.ebuild:
+  Adding a new version of livecd-tools for 2008.0's release.
+
+  02 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/livecd-tools-1.0.35-umounts.patch, -livecd-tools-1.0.36.ebuild,
+  -livecd-tools-1.0.37.ebuild, -livecd-tools-1.0.38.ebuild,
+  livecd-tools-1.0.39.ebuild:
+  Stable for 2008.0's release and removing the older ebuilds.
+
+*livecd-tools-1.0.39 (20 Nov 2007)
+
+  20 Nov 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.39.ebuild:
+  Version bump.  Fixing syntax errors and also closing bug #198083.
+
+*livecd-tools-1.0.38 (13 Nov 2007)
+
+  13 Nov 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.38.ebuild:
+  Version bump to test a fix for bug #198083.
+
+  01 Nov 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.35.ebuild, -livecd-tools-1.0.35-r1.ebuild,
+  livecd-tools-1.0.36.ebuild:
+  Marking 1.0.36 stable, since it is the minimum version we should be using
+  for 2007.1's release.
+
+*livecd-tools-1.0.37 (30 Oct 2007)
+
+  30 Oct 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.37.ebuild:
+  Version bump for bug #111972.
+
+*livecd-tools-1.0.36 (04 Sep 2007)
+
+  04 Sep 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.36.ebuild:
+  Version bump to close bug #191085 and bug #191087.
+
+  27 Jun 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  livecd-tools-1.0.35-r1.ebuild:
+  x11-base/opengl-update has gone away
+
+  03 May 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.35-r1.ebuild:
+  Marking stable since we used it for the release and we'll need it to build a
+  working CD with newer baselayout versions.
+
+  13 Apr 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/livecd-tools-1.0.33-eselect.patch,
+  -files/livecd-tools-1.0.33-openglify.patch,
+  -livecd-tools-1.0.33-r2.ebuild, -livecd-tools-1.0.34.ebuild:
+  Cleaning up older ebuilds.
+
+*livecd-tools-1.0.35-r1 (03 Apr 2007)
+
+  03 Apr 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/livecd-tools-1.0.35-umounts.patch, +livecd-tools-1.0.35-r1.ebuild:
+  Add a new patch/revision to resolve bug #168325.
+
+  14 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.33-r2.ebuild, livecd-tools-1.0.34.ebuild,
+  livecd-tools-1.0.35.ebuild:
+  Removed opengl-update for bug #170889.
+
+*livecd-tools-1.0.35 (13 Feb 2007)
+
+  13 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.35.ebuild:
+  Version bump to livecd-tools 1.0.35 with only a couple minor changes. First,
+  we always try to return RC_COLDPLUG to its original state at boot. Second,
+  we no longer manually run dhcpcd, but let udev/baselayout take care of it,
+  entirely. Since this is a required fix for 2007.0, I am taking it straight
+  to stable so it can make it into the snapshot in time. It is a very minor
+  change, and I don't think anyone will object to having working release
+  media.
+
+*livecd-tools-1.0.34 (04 Jan 2007)
+
+  04 Jan 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.30.ebuild, +livecd-tools-1.0.34.ebuild:
+  Version bump to my latest 1.0.34 version, which should fix nohotplug for
+  newer udev versions and also should fix some problems with firmware for
+  drivers that require it. This also closes bug #154559.
+
+  08 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.33-r2.ebuild:
+  Marking stable since it was used for 2006.1, adding in PPC/Alpha code that
+  was used.
+
+*livecd-tools-1.0.33-r2 (01 Aug 2006)
+
+  01 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/livecd-tools-1.0.33-eselect.patch, -livecd-tools-1.0.33.ebuild,
+  -livecd-tools-1.0.33-r1.ebuild, +livecd-tools-1.0.33-r2.ebuild:
+  Version bump. This version includes a patch to prefer eselect opengl over
+  opengl-update.
+
+*livecd-tools-1.0.33-r1 (26 Jul 2006)
+
+  26 Jul 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/livecd-tools-1.0.33-openglify.patch,
+  +livecd-tools-1.0.33-r1.ebuild:
+  Added an openglify patch to bring it in line with CVS. This should cause it
+  to work properly, even with either modular X or monolithic X.
+
+*livecd-tools-1.0.33 (19 Jul 2006)
+
+  19 Jul 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.31.ebuild, -livecd-tools-1.0.32.ebuild,
+  +livecd-tools-1.0.33.ebuild:
+  Version bump to fix issues in CPU output for amd64/x86 and also to work
+  around an issue where mkxf86config was not getting started before x-setup
+  when being called from autoconfig.
+
+*livecd-tools-1.0.32 (11 Jul 2006)
+
+  11 Jul 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.32.ebuild:
+  Version bump to add a fix from Roy Marples <uberlord@gentoo.org> to remove
+  some warning messages about read only variables at boot time.
+
+*livecd-tools-1.0.31 (22 Jun 2006)
+
+  22 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.31.ebuild:
+  Version bumped with some patches from Joshua Kinard <kumba@gentoo.org>.
+  Closing bug #135503 and bug #136497.
+
+  21 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.29.ebuild, livecd-tools-1.0.30.ebuild:
+  Rearranged the dependencies since gawk and pciutils are now used outside of
+  just video card detection. Also, cleaned up the X USE flag usage, since only
+  autoconfig uses mkxf86config if USE=-opengl. Cleaning up older ebuilds.
+
+  09 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.30.ebuild:
+  Marking stable for building 2006.1's release.
+
+*livecd-tools-1.0.30 (02 Jun 2006)
+
+  02 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.30.ebuild:
+  Version bump.  Closes bug #133955.
+
+  30 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.29.ebuild:
+  Added dependency on dev-util/dialog for net-setup and closing bug #134486.
+
+  12 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.25.ebuild, -livecd-tools-1.0.28.ebuild,
+  livecd-tools-1.0.29.ebuild:
+  Marking stable to match version used on 2006.0 release.
+
+  10 Feb 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.29.ebuild:
+  Added sed to fix bug #122367.
+
+*livecd-tools-1.0.29 (09 Feb 2006)
+
+  09 Feb 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.29.ebuild:
+  Version bump to 1.0.29 to resolve a bug with serial consoles on sparc.
+
+  20 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.25.ebuild, livecd-tools-1.0.28.ebuild:
+  Removed virtual/x11 as we don't actually require any portions of X.
+
+  17 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.28.ebuild:
+  Marking stable. This has been very well tested and resolves quite a few
+  issues with the release media.
+
+*livecd-tools-1.0.28 (06 Dec 2005)
+
+  06 Dec 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.27.ebuild, +livecd-tools-1.0.28.ebuild:
+  Version bumped to fix a bug in Nvidia detection.
+
+*livecd-tools-1.0.27 (22 Nov 2005)
+
+  22 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.26.ebuild, +livecd-tools-1.0.27.ebuild:
+  Version bumped to 1.0.27 to remove ALSA warnings as it confuses some users.
+
+*livecd-tools-1.0.26 (11 Nov 2005)
+
+  11 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.26.ebuild:
+  Version bumped to 1.0.26 with some added mips support. This resolves bugs
+  #106988 and #106990.
+
+  16 Oct 2005; Joshua Kinard <kumba@gentoo.org> livecd-tools-1.0.25.ebuild:
+  Mark stable on mips.
+
+  10 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.23.ebuild, -livecd-tools-1.0.24.ebuild,
+  livecd-tools-1.0.25.ebuild:
+  Marking 1.0.25 stable and cleaning up older ebuilds.
+
+*livecd-tools-1.0.25 (06 Sep 2005)
+
+  06 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.25.ebuild:
+  Version bumped and closing bugs #103391 and #104020.
+
+  08 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  files/digest-livecd-tools-1.0.24:
+  Fixed digest.
+
+*livecd-tools-1.0.24 (05 Aug 2005)
+
+  05 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.24.ebuild:
+  Added updated version with new alsa detection routines for multiple sound
+  cards.
+
+*livecd-tools-1.0.23 (24 Jul 2005)
+
+  24 Jul 2005; <plasmaroo@gentoo.org> -livecd-tools-1.0.22.ebuild,
+  +livecd-tools-1.0.23.ebuild:
+  Version bump; fix alsasound hardware detection issues.
+
+  11 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.22.ebuild:
+  Added ia64.  Blame plasmaroo.
+
+*livecd-tools-1.0.22 (09 Jul 2005)
+
+  09 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.21.ebuild, +livecd-tools-1.0.22.ebuild:
+  Version bumped to 1.0.22 for proper splash support.
+
+*livecd-tools-1.0.21 (08 Jul 2005)
+
+  08 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.20.ebuild, -livecd-tools-1.0.21_pre9.ebuild,
+  +livecd-tools-1.0.21.ebuild:
+  Version bumped to 1.0.21 and removing older versions.
+
+  05 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.20.ebuild, livecd-tools-1.0.21_pre9.ebuild:
+  Added ia64 to KEYWORDS.  Blame plasmaroo.
+
+*livecd-tools-1.0.21_pre9 (01 Jul 2005)
+
+  01 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.21_pre8.ebuild, +livecd-tools-1.0.21_pre9.ebuild:
+  Version bump to fix /etc/sysconfig/gentoo not being sourced.
+
+*livecd-tools-1.0.21_pre8 (27 Jun 2005)
+
+  27 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.21_pre7.ebuild, +livecd-tools-1.0.21_pre8.ebuild:
+  Version bumped to new version that finally fixes the deaded "No more
+  processes in this runlevel" bug.
+
+*livecd-tools-1.0.21_pre7 (22 Jun 2005)
+
+  22 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.21_pre6.ebuild, +livecd-tools-1.0.21_pre7.ebuild:
+  Version bump.
+
+*livecd-tools-1.0.21_pre6 (21 Jun 2005)
+
+  21 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.21_pre5.ebuild, +livecd-tools-1.0.21_pre6.ebuild:
+  Version bumped to 1.0.21_pre6.
+
+*livecd-tools-1.0.21_pre5 (10 Jun 2005)
+
+  10 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.21_pre4.ebuild, +livecd-tools-1.0.21_pre5.ebuild:
+  Version bumped to new 1.0.21_pre5 for testing.
+
+*livecd-tools-1.0.21_pre4 (10 Jun 2005)
+
+  10 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.21_pre3.ebuild, +livecd-tools-1.0.21_pre4.ebuild:
+  Bumped to testing version 1.0.21_pre4, which should resolve the problem with
+  INIT on LiveCD boot.
+
+*livecd-tools-1.0.21_pre3 (09 Jun 2005)
+
+  09 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.21_pre3.ebuild:
+  Added testing livecd-tools 1.0.21_pre3 version.
+
+*livecd-tools-1.0.20 (13 Apr 2005)
+
+  13 Apr 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.19.ebuild, +livecd-tools-1.0.20.ebuild:
+  Updated to 1.0.20 to fix an error in dhcpcd's hostname sending. This only
+  affected those of you using DDNS.
+
+*livecd-tools-1.0.19 (12 Apr 2005)
+
+  12 Apr 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.18.ebuild, +livecd-tools-1.0.19.ebuild,
+  -livecd-tools-1.0.2.ebuild:
+  Updated to 1.0.19 and removing older versions.
+
+*livecd-tools-1.0.18 (02 Mar 2005)
+
+  02 Mar 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.16.ebuild, +livecd-tools-1.0.18.ebuild:
+  Updated to 1.0.18 release.
+
+  25 Feb 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.16.ebuild:
+  Added mkxf86config to RDEPEND on x86 and closing bug #83307.
+
+  23 Feb 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.16.ebuild:
+  Changed description and marking stable on ppc64 since there was no prior
+  stable on this platform.
+
+*livecd-tools-1.0.16 (23 Feb 2005)
+
+  23 Feb 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.13.ebuild, +livecd-tools-1.0.16.ebuild:
+  Removing 1.0.13 and bumping to 1.0.16 for 2005.0 release. Versions 1.0.14
+  and 1.0.15 were internal-only tests, and not released publicly.
+
+  17 Feb 2005; Markus Rothe <corsair@gentoo.org> livecd-tools-1.0.13.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*livecd-tools-1.0.13 (29 Jan 2005)
+
+  29 Jan 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.12.ebuild, +livecd-tools-1.0.13.ebuild:
+  Updated to latest version which should resolve problems we've been seeing on
+  the LiveCD builds.
+
+*livecd-tools-1.0.12 (28 Jan 2005)
+
+  28 Jan 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.11.ebuild, +livecd-tools-1.0.12.ebuild:
+  Updated to latest version. This fixes some acpi and gpm issues and also is
+  the beginning of making the tools more modular.
+
+  26 Jan 2005; Chris Gianelloni <wolf31o2@gentoo.org> :
+  Fixing digest
+
+*livecd-tools-1.0.11 (26 Jan 2005)
+
+  26 Jan 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.10.ebuild, +livecd-tools-1.0.11.ebuild:
+  Bumping to latest version.
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  23 Dec 2004; Guy Martin <gmsoft@gentoo.org> livecd-tools-1.0.10.ebuild:
+  Stable on hppa.
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org>
+  livecd-tools-1.0.10.ebuild:
+  Stable on alpha.
+
+*livecd-tools-1.0.10 (18 Nov 2004)
+
+  18 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.10.ebuild:
+  Bumping to latest version and closing bug #68440.
+
+  26 Oct 2004; Bryan Østergaard <kloeri@gentoo.org>
+  livecd-tools-1.0.2.ebuild, livecd-tools-1.0.9.ebuild:
+  Alpha keywording.
+
+  23 Oct 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  livecd-tools-1.0.9.ebuild:
+  Sparc stable wrt 2004.3
+
+*livecd-tools-1.0.9 (23 Oct 2004)
+
+  23 Oct 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.8.ebuild, +livecd-tools-1.0.9.ebuild:
+  Changed hwsetup check from /usr/bin/hwsetup to /usr/sbin/hwsetup and closing
+  bug #68621.
+
+  22 Oct 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.8.ebuild:
+  Fixing SRC_URI.
+
+*livecd-tools-1.0.8 (21 Oct 2004)
+
+  21 Oct 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.6.ebuild, -livecd-tools-1.0.7.ebuild,
+  +livecd-tools-1.0.8.ebuild:
+  Updated with latest versions of autoconfig and net-setup to resolve problems
+  with wireless configuration and not forcing hwsetup to be run by autoconfig
+  (for sparc and such that don't support it).
+
+*livecd-tools-1.0.7 (20 Oct 2004)
+
+  20 Oct 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.7.ebuild:
+  Removed extra quotes from net-setup and closing bug #68246.
+
+  13 Oct 2004; Guy Martin <gmsoft@gentoo.org> livecd-tools-1.0.6.ebuild:
+  Stable on hppa.
+
+  12 Oct 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.6.ebuild:
+  Commenting opengl-update line so I can unmask this version of livecd-tools.
+
+*livecd-tools-1.0.6 (07 Oct 2004)
+
+  07 Oct 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  -livecd-tools-1.0.1.ebuild, -livecd-tools-1.0.3.ebuild,
+  -livecd-tools-1.0.4.ebuild, -livecd-tools-1.0.5.ebuild,
+  +livecd-tools-1.0.6.ebuild:
+  Cleanup up older versions and adding new version 1.0.6 for the 2004.3 release.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  livecd-tools-1.0.2.ebuild, livecd-tools-1.0.3.ebuild,
+  livecd-tools-1.0.4.ebuild, livecd-tools-1.0.5.ebuild:
+  Masked livecd-tools-1.0.5.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  livecd-tools-1.0.2.ebuild, livecd-tools-1.0.3.ebuild,
+  livecd-tools-1.0.4.ebuild:
+  Masked livecd-tools-1.0.4.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  livecd-tools-1.0.2.ebuild, livecd-tools-1.0.3.ebuild:
+  Masked livecd-tools-1.0.3.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  livecd-tools-1.0.2.ebuild:
+  Masked livecd-tools-1.0.2.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> :
+  Masked livecd-tools-1.0.1.ebuild stable for ppc
+
+  05 Sep 2004; Bryan Østergaard <kloeri@gentoo.org> livecd-tools-1.0.2.ebuild:
+  Add ~alpha keyword.
+
+*livecd-tools-1.0.5 (27 Jul 2004)
+
+  27 Jul 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.5.ebuild:
+  Updated to new version.  Added spind by plasmaroo.
+
+  12 Jul 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.4.ebuild:
+  Fixing for x86 and removing amd64+X stuff for now until I can test further
+  from home.
+
+*livecd-tools-1.0.4 (12 Jul 2004)
+
+  12 Jul 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.4.ebuild:
+  Added new 1.0.4 version which improves handling of some autoconfig functions
+  and also net-setup. Closing bug #40205 and #51726.
+
+  25 Jun 2004; Guy Martin <gmsoft@gentoo.org> livecd-tools-1.0.2.ebuild:
+  Marked stable on hppa.
+
+  02 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.3.ebuild:
+  QA cleanup and adding ~ppc and ~hppa for testing, since they were in the
+  original incarnation and little has changed since then.
+
+  01 Jun 2004; Aron Griffis <agriffis@gentoo.org> livecd-tools-1.0.1.ebuild,
+  livecd-tools-1.0.2.ebuild:
+  Fix use invocation
+
+  21 May 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.3.ebuild:
+  Stabilizing on x86.
+
+  20 May 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  livecd-tools-1.0.3.ebuild:
+  Moving SRC_URI.
+
+*livecd-tools-1.0.3 (14 May 2004)
+
+  14 May 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  +livecd-tools-1.0.3.ebuild:
+  Added new version which has support for X and OpenGL.
+
+  14 May 2004; Chris Gianelloni <wolf31o2@gentoo.org> metadata.xml:
+  Changing maintainers to newly formed livecd herd.
+
+  12 May 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  livecd-tools-1.0.2.ebuild:
+  Keyworded sparc
+
+  08 May 2004; John Davis <zhen@gentoo.org> livecd-tools-1.0.2.ebuild:
+  bumping to stable
+
+*livecd-tools-1.0.2 (30 Apr 2004)
+
+  30 Apr 2004; John Davis <zhen@gentoo.org> livecd-tools-1.0.0_beta2.ebuild,
+  livecd-tools-1.0.2.ebuild:
+  new version to fix some bugs in autoconfig
+
+  18 Apr 2004; Guy Martin <gmsoft@gentoo.org> livecd-tools-1.0.1.ebuild:
+  Marked stable on hppa.
+
+  24 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  livecd-tools-1.0.1.ebuild:
+  stable on sparc
+
+*livecd-tools-1.0.1 (21 Mar 2004)
+
+  27 Mar 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> livecd-tools-1.0.1:
+  mark as stable on ppc and ppc64
+
+  21 Mar 2004; John Davis <zhen@gentoo.org> livecd-tools-1.0.0_beta1.ebuild,
+  livecd-tools-1.0.0_beta2.ebuild, livecd-tools-1.0.1.ebuild, metadata.xml:
+  fix for bug #43647, #39893
+
+  12 Mar 2004; Seemant Kulleen <seemant@gentoo.org>
+  livecd-tools-1.0.0_beta1.ebuild, livecd-tools-1.0.0_beta2.ebuild:
+  cleaned up syntax and point SRC_URI to gentoo mirrors
+
+*livecd-tools-1.0.0_beta2 (25 Jan 2004)
+
+  27 Mar 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> livecd-tools-1.0.0_beta2.ebuild:
+  mark as incompatible with ppc and ppc64
+
+  25 Jan 2004; Brad House <brad_mssw@gentoo.org>
+  livecd-tools-1.0.0_beta2.ebuild:
+  fixes
+
+*livecd-tools-1.0.0_beta1 (24 Jan 2004)
+
+  24 Jan 2004; Brad House <brad_mssw@gentoo.org>
+  livecd-tools-1.0.0_beta1.ebuild:
+  initial commit

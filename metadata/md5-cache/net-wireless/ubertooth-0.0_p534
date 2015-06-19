@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install
+DEPEND=>=net-libs/libbtbb-0.8
+DESCRIPTION=An open source wireless development platform suitable for Bluetooth experimentation
+EAPI=4
+HOMEPAGE=http://ubertooth.sourceforge.net/
+IUSE=+dfu +specan ubertooth0-firmware +ubertooth1-firmware
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=specan? ( virtual/libusb:1 ) dfu? ( virtual/libusb:1 ) specan? ( >=dev-qt/qtgui-4.7.2:4 >=dev-python/pyside-1.0.2 >=dev-python/numpy-1.3 ) specan? ( >=dev-python/pyusb-1.0.0_alpha1 ) dfu? ( >=dev-python/pyusb-1.0.0_alpha1 ) >=net-libs/libbtbb-0.8
+REQUIRED_USE=ubertooth0-firmware? ( dfu ) ubertooth1-firmware? ( dfu )
+SLOT=0
+SRC_URI=mirror://sourceforge/ubertooth/ubertooth-r534.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=48fab04bd200f6a182e5e4205f07da2b

@@ -1,0 +1,97 @@
+# ChangeLog for app-office/plan
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/plan/ChangeLog,v 1.26 2014/01/25 03:36:00 creffett Exp $
+
+*plan-1.10 (25 Jan 2014)
+
+  25 Jan 2014; Chris Reffett <creffett@gentoo.org> +plan-1.10.ebuild,
+  -files/ldflags.patch, -files/makefile.patch, -files/nostrip.patch,
+  -plan-1.9-r1.ebuild:
+  Version bump. Bump EAPI, move patches to a tarball and respin some, redo
+  install section.
+
+  12 Oct 2013; Pacho Ramos <pacho@gentoo.org> plan-1.9-r1.ebuild:
+  Add missing DEPEND (#457750)
+
+  26 Dec 2012; Ulrich Müller <ulm@gentoo.org> plan-1.9-r1.ebuild:
+  Fix LICENSE, bug 448646.
+
+  24 Oct 2012; Ulrich Müller <ulm@gentoo.org> plan-1.9-r1.ebuild:
+  Update dependency after package move from x11-libs/openmotif to
+  x11-libs/motif.
+
+  10 Oct 2010; Ulrich Mueller <ulm@gentoo.org> plan-1.9-r1.ebuild:
+  Fix openmotif dependency. Change EAPI to 1 to allow for slot dependency.
+  Assign RDEPEND explicitly.
+
+*plan-1.9-r1 (12 Nov 2009)
+
+  12 Nov 2009; Markos Chandras <hwoarang@gentoo.org> -plan-1.9.ebuild,
+  +plan-1.9-r1.ebuild, +files/ldflags.patch, +files/nostrip.patch:
+  Fix pre-stripped files issue ( bug 251868 ) and respect LDFLAGS. Remove old
+  ebuild
+
+  29 Oct 2008; Jeroen Roovers <jer@gentoo.org> plan-1.9.ebuild:
+  Marked ~hppa too.
+
+  29 Oct 2008; Jeroen Roovers <jer@gentoo.org> files/makefile.patch:
+  Fix makefile patch (bug #213902 comment #4) thanks to Evgeny Stambulchik
+  and Chris Slycord.
+
+  31 Aug 2008; Markus Meier <maekke@gentoo.org> plan-1.9.ebuild:
+  add ~amd64, bug #222213
+
+  28 May 2008; Markus Meier <maekke@gentoo.org> +files/makefile.patch,
+  plan-1.9.ebuild:
+  QA cleanup: add quotes, make -> emake, don't hardcode gcc (bug #213902)
+  and add ~amd64 (bug #222213)
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  25 Jan 2007; Marius Mauch <genone@gentoo.org> plan-1.9.ebuild:
+  Replacing einfo with elog
+
+  30 Oct 2006; Jason Wever <weeve@gentoo.org> -plan-1.8.6.ebuild,
+  -plan-1.8.7.ebuild, plan-1.9.ebuild:
+  Stable on SPARC wrt bug #153199.
+
+  28 Jan 2006; Simon Stelling <blubb@gentoo.org>
+  -files/plan-1.8.6-gentoo.tar.bz2, plan-1.8.6.ebuild:
+  move binary files to the mirrors
+
+  20 Jan 2006; Donnie Berkholz <spyderous@gentoo.org>; plan-1.9.ebuild:
+  Fix SRC_URI, reported by Weeve.
+
+*plan-1.9 (18 Jan 2006)
+
+  18 Jan 2006; Donnie Berkholz <spyderous@gentoo.org>; +plan-1.9.ebuild:
+  Fly-by bump, with modular X dependencies added.
+
+  23 May 2005; David Holm <dholm@gentoo.org> plan-1.8.7.ebuild:
+  Fixed bug #63533
+
+  02 Jul 2004; Aron Griffis <agriffis@gentoo.org> plan-1.8.6.ebuild,
+  plan-1.8.7.ebuild:
+  sync IUSE (missing)
+
+  19 Jun 2004; Jason Wever <weeve@gentoo.org> plan-1.8.6.ebuild:
+  Stable on sparc.
+
+*plan-1.8.7 (18 Jun 2004)
+
+  18 Jun 2004; David Holm <dholm@gentoo.org> +plan-1.8.7.ebuild:
+  Version bumped, and added to ~ppc.
+
+  18 Mar 2004; Jason Wever <weeve@gentoo.org> plan-1.8.6.ebuild:
+  Added ~sparc keyword.
+
+  11 Jan 2004; Heinrich Wendel <lanius@gentoo.org> plan-1.8.6.ebuild:
+  fixed motif dep
+
+*plan-1.8.6 (18 Oct 2003)
+
+  18 Oct 2003; Brandy Westcott brandy@gentoo.org plan-1.8.6.ebuild:
+  Initial import. Thanks to Priit Laes <amd@tt.ee> and Mr Bones
+  <mr_bones_@gentoo.org> for providing the ebuilds in Bug #11217.

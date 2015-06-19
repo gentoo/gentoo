@@ -1,0 +1,34 @@
+From 2cf0d7cb7928aac9ec0e21ceaaf09053434a4947 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Tue, 16 Sep 2014 02:58:45 +0200
+Subject: [PATCH] Fix for Estonian locale support (bug #522446)
+
+---
+ configure | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure b/configure
+index 6d2a507..17d4bc1 100755
+--- a/configure
++++ b/configure
+@@ -256,7 +256,7 @@ then
+                 $sed_preconfig_libpng
+                 s|^AR *=.*|AR = $AR|
+                 s|^ARFLAGS *=.*|ARFLAGS = $ARFLAGS|
+-                s|^AR_\([A-Z]*\) *=.*|AR_\1 = $AR $ARFLAGS|
++                s|^AR_\([[:upper:]]*\) *=.*|AR_\1 = $AR $ARFLAGS|
+             "
+         fi
+         if test "$RANLIB"
+@@ -408,7 +408,7 @@ sed_config="
+     s|@LIBPNG_DISTCLEAN_XCMD@|${LIBPNG_DISTCLEAN_XCMD-true}|g
+     s|@ZLIB_MK@|${ZLIB_MK-Makefile}|g
+     s|@ZLIB_DISTCLEAN@|${ZLIB_DISTCLEAN-distclean}|g
+-    s|@[A-Z]*_MK@|Makefile|g
++    s|@[[:upper:]]*_MK@|Makefile|g
+     s| *\$||
+ "
+ 
+-- 
+2.1.0
+

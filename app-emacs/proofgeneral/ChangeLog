@@ -1,0 +1,174 @@
+# ChangeLog for app-emacs/proofgeneral
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/proofgeneral/ChangeLog,v 1.43 2014/06/07 11:40:21 ulm Exp $
+
+  07 Jun 2014; Ulrich Müller <ulm@gentoo.org> -proofgeneral-4.1.ebuild,
+  proofgeneral-4.2.ebuild, -files/proofgeneral-4.1-emacs-24.patch,
+  -files/proofgeneral-4.1-image-load-path.patch:
+  Remove redundant NEED_EMACS assignment. Remove old.
+
+  15 Feb 2014; Ulrich Müller <ulm@gentoo.org> -proofgeneral-3.7.1.ebuild:
+  Remove old.
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> proofgeneral-4.2.ebuild:
+  Stable for x86, wrt bug #490100
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> proofgeneral-4.2.ebuild:
+  amd64 stable, bug #490100
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> proofgeneral-4.2.ebuild:
+  Stable for ppc, wrt bug #490100
+
+*proofgeneral-4.2 (22 Apr 2013)
+
+  22 Apr 2013; Ulrich Müller <ulm@gentoo.org> -proofgeneral-4.0.ebuild,
+  +proofgeneral-4.2.ebuild, +files/proofgeneral-4.2-bytecomp-warn.patch:
+  Version bump, bug 445242. Remove old.
+
+  14 Jul 2012; Ulrich Müller <ulm@gentoo.org> proofgeneral-4.1.ebuild,
+  +files/proofgeneral-4.1-image-load-path.patch:
+  Don't rely on image-load-path always being defined, bug 426646.
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> proofgeneral-4.1.ebuild:
+  x86 stable wrt bug #404605
+
+  01 Mar 2012; Brent Baude <ranger@gentoo.org> proofgeneral-4.1.ebuild:
+  Marking proofgeneral-4.1 ppc for bug 404605
+
+  26 Feb 2012; Agostino Sarubbo <ago@gentoo.org> proofgeneral-4.1.ebuild:
+  Stable for amd64, wrt bug #404605
+
+*proofgeneral-4.1 (08 Dec 2011)
+
+  08 Dec 2011; Ulrich Mueller <ulm@gentoo.org> +proofgeneral-4.1.ebuild,
+  +files/proofgeneral-4.1-emacs-24.patch:
+  Version bump, bug 386465.
+
+  07 Dec 2010; Ulrich Mueller <ulm@gentoo.org> proofgeneral-4.0.ebuild:
+  Require Emacs version 23 at least. Don't compile and install bundled
+  mmm-mode; depend on app-emacs/mmm-mode instead. Bug 347822.
+
+*proofgeneral-4.0 (06 Dec 2010)
+
+  06 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  +proofgeneral-4.0.ebuild:
+  version bump, thanks to Christian D. <ThyrusG AT gmx DOT de> in bug 347822
+  for most of the work
+
+  11 Feb 2010; Ulrich Mueller <ulm@gentoo.org> proofgeneral-3.7.1.ebuild:
+  Fix parallel make issue, install html documentation, bug 304399.
+
+  17 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  -proofgeneral-3.7.ebuild:
+  clean up
+
+  11 Jun 2009; Markus Meier <maekke@gentoo.org> proofgeneral-3.7.1.ebuild:
+  amd64 stable, bug #272471
+
+  06 Jun 2009; nixnut <nixnut@gentoo.org> proofgeneral-3.7.1.ebuild:
+  ppc stable #272471
+
+  04 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  proofgeneral-3.7.1.ebuild:
+  stable x86, bug 272471
+
+*proofgeneral-3.7.1 (30 Jan 2009)
+
+  30 Jan 2009; Ulrich Mueller <ulm@gentoo.org> proofgeneral-3.7.ebuild,
+  +proofgeneral-3.7.1.ebuild:
+  Version bump. Remove missing file from dodoc arguments, bug 256683.
+
+  06 Dec 2008; Christian Faulhammer <fauli@gentoo.org>
+  -files/proofgeneral-3.5_isabelle-non-interactive.patch,
+  -proofgeneral-3.5-r1.ebuild:
+  clean up
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/proofgeneral-3.5_isabelle-non-interactive.patch:
+  Fix patch to apply.
+
+  12 Apr 2008; nixnut <nixnut@gentoo.org> proofgeneral-3.7.ebuild:
+  Stable on ppc wrt bug 215344
+
+  31 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  proofgeneral-3.7.ebuild:
+  stable x86, bug 215344
+
+  30 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  proofgeneral-3.7.ebuild:
+  amd64 stable wrt bug #215344
+
+*proofgeneral-3.7 (27 Feb 2008)
+
+  27 Feb 2008; Ulrich Mueller <ulm@gentoo.org>
+  files/50proofgeneral-gentoo.el, +proofgeneral-3.7.ebuild:
+  Version bump. Use our own site file and install it in the proper location,
+  fixes bug 211658. Some cleanup of the ebuild.
+
+  16 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  proofgeneral-3.5-r1.ebuild:
+  stable amd64, bug 195156
+
+  11 Oct 2007; Ulrich Mueller <ulm@gentoo.org> -proofgeneral-3.5.ebuild:
+  Remove old.
+
+  11 Oct 2007; Lars Weiler <pylon@gentoo.org> proofgeneral-3.5-r1.ebuild:
+  stable ppc, bug #195156
+
+  08 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  proofgeneral-3.5-r1.ebuild:
+  stable x86, bug 195156
+
+  07 Oct 2007; Ulrich Mueller <ulm@gentoo.org> proofgeneral-3.5.ebuild,
+  proofgeneral-3.5-r1.ebuild:
+  Remove redundant SIMPLE_ELISP and DEPEND=virtual/emacs. Quote some variables.
+
+  03 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  proofgeneral-3.5-r1.ebuild:
+  clean-up DEPEND; exchange manual make calls with emake; adjusted
+  DESCRIPTION; removed pkg_postrm
+
+  08 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/50proofgeneral-gentoo.el:
+  add load path correctly, fixes bug 169588, reported by Ulrich Mueller
+  <ulm@kph.uni-mainz.de>
+
+  28 Jan 2007; Marius Mauch <genone@gentoo.org> proofgeneral-3.5.ebuild,
+  proofgeneral-3.5-r1.ebuild:
+  Replacing einfo with elog
+
+*proofgeneral-3.5-r1 (02 Nov 2006)
+
+  02 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  +files/proofgeneral-3.5_isabelle-non-interactive.patch,
+  +proofgeneral-3.5-r1.ebuild:
+  removed question for executable, so this ebuild is not interactive anymore.
+  Reporte in bug #148857 by Patrick Lauer <patrick@gentoo.org>
+
+  28 Aug 2005; Olivier Crête <tester@gentoo.org> proofgeneral-3.5.ebuild:
+  Marked ~amd64, thanks to AT AJ Armstrong <aja@gentoo.org> for testing
+
+  09 Oct 2004; Matthieu Sozeau <mattam@gentoo.org> -proofgeneral-3.4.ebuild,
+  proofgeneral-3.5.ebuild:
+  Move 3.5 to stable, remove old version.
+
+*proofgeneral-3.5 (20 Jun 2004)
+
+  20 Jun 2004; Matthieu Sozeau <mattam@gentoo.org> proofgeneral-3.5.ebuild:
+  New version, we now use their makefile (not always non-interactive) and
+  site file.
+
+  20 Jun 2004; Matthieu Sozeau <mattam@gentoo.org> proofgeneral-3.4.ebuild:
+  Move to stable.
+
+  15 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> proofgeneral-3.4.ebuild:
+  Fixed readonly variable assignment to PN and P. See bug #44712
+
+  22 Jan 2004; Matthieu Sozeau <mattam@gentoo.org> proofgeneral-3.4.ebuild:
+  Fix URI's, site has changed location.
+
+*proofgeneral-3.4 (21 Jan 2004)
+
+  21 Jan 2004; Matthieu Sozeau <mattam@gentoo.org> metadata.xml,
+  proofgeneral-3.4.ebuild, files/50proofgeneral-gentoo.el:
+  Initial version, related bug's #30394.

@@ -1,0 +1,104 @@
+# ChangeLog for dev-perl/Mail-Sendmail
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Mail-Sendmail/ChangeLog,v 1.29 2014/08/22 19:35:34 axs Exp $
+
+*Mail-Sendmail-0.790.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Mail-Sendmail-0.790.0-r1.ebuild, -Mail-Sendmail-0.790.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  29 Apr 2013; Ulrich Müller <ulm@gentoo.org> Mail-Sendmail-0.790.0.ebuild:
+  Fix LICENSE, bug 446164.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Mail-Sendmail-0.79.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Mail-Sendmail-0.790.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Mail-Sendmail-0.790.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org> +Mail-Sendmail-0.790.0.ebuild:
+  Change version scheme
+
+  21 Jan 2010; Torsten Veller <tove@gentoo.org> Mail-Sendmail-0.79.ebuild:
+  Ebuild maintenance. EAPI=2. mips -> ~mips
+
+  07 Dec 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Add perl herd
+
+  29 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Carlos Silva (r3pek) from metadata.xml (as per #80351).
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Mail-Sendmail-0.79.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  21 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Mail-Sendmail-0.79.ebuild:
+  Stable on hppa
+
+  22 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Mail-Sendmail-0.79.ebuild:
+  ~hppa blessing
+
+  09 Feb 2006; Joshua Kinard <kumba@gentoo.org> Mail-Sendmail-0.79.ebuild:
+  Marked stable on mips for Bug #118389.
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> Mail-Sendmail-0.79.ebuild:
+  Mark 0.79 stable on ia64
+
+  15 Jan 2006; Simon Stelling <blubb@gentoo.org> Mail-Sendmail-0.79.ebuild:
+  stable on amd64
+
+  13 Jan 2006; John N. Laliberte <allanonjl@gentoo.org> ChangeLog:
+  stable on x86
+
+  09 Jan 2006; Fernando J. Pereda <ferdy@gentoo.org>
+  Mail-Sendmail-0.79.ebuild:
+  Stable on alpha wrt bug #118389
+
+  09 Jan 2006; Joseph Jezak <josejx@gentoo.org> Mail-Sendmail-0.79.ebuild:
+  Marked ppc stable for bug #118389.
+
+  09 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Mail-Sendmail-0.79.ebuild:
+  Stable on sparc wrt #118389
+
+  30 Nov 2005; Tom Gall <tgall@gentoo.org> Mail-Sendmail-0.79.ebuild:
+  stable on ppc64 (dep for git)
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> Mail-Sendmail-0.79.ebuild:
+  Mark 0.79 ~ia64 #106873
+
+  28 Sep 2005; Ilya A. Volynets-Evenbakh <ilya@total-knowledge.com>
+  Mail-Sendmail-0.79.ebuild:
+  mark ~mips
+
+  22 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Mail-Sendmail-0.79.ebuild:
+  ~sparc wrt #106873
+
+  22 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  Mail-Sendmail-0.79.ebuild:
+  marked ~alpha, wrt bug #106873
+
+  22 Sep 2005; Luca Barbato <lu_zero@gentoo.org> Mail-Sendmail-0.79.ebuild:
+  Marked ~ppc
+
+  22 Sep 2005; Luis Medinas <metalgod@gentoo.org> Mail-Sendmail-0.79.ebuild:
+  Added ~amd64. Bug #106873.
+
+*Mail-Sendmail-0.79 (22 Sep 2005)
+
+  22 Sep 2005; Carlos Silva <r3pek@gentoo.org> +metadata.xml,
+  +Mail-Sendmail-0.79.ebuild:
+  Initial commit. Ebuild by me

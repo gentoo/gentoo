@@ -1,0 +1,63 @@
+# ChangeLog for dev-python/buildutils
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/buildutils/ChangeLog,v 1.15 2015/04/08 08:05:12 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> buildutils-0.3-r1.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> buildutils-0.3-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> buildutils-0.3-r1.ebuild:
+  amd64 stable, bug 540290
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> buildutils-0.3-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> buildutils-0.3-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  22 Oct 2013; Fabian Groffen <grobian@gentoo.org> buildutils-0.3-r1.ebuild:
+  Marked ~x64-macos, bug #487670
+
+*buildutils-0.3-r1 (05 Jun 2013)
+
+  05 Jun 2013; Ian Delaney <idella4@gentoo.org> +buildutils-0.3-r1.ebuild,
+  -buildutils-0.3.ebuild:
+  revbump, migrate -> distutils-r1, remove old, add test phase
+
+  04 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  buildutils-0.3.ebuild:
+  Fix building of documentation (bug #300788).
+
+  10 Oct 2009; Fabian Groffen <grobian@gentoo.org> buildutils-0.3.ebuild:
+  Merge from Prefix
+
+  01 Oct 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  buildutils-0.3.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*buildutils-0.3 (05 Apr 2008)
+
+  05 Apr 2008; Ali Polatel <hawking@gentoo.org>
+  +files/buildutils-0.3-pudge_addcommand.patch, -buildutils-0.1.2.ebuild,
+  +buildutils-0.3.ebuild:
+  Version bump. Dropped old version and removed useless test use flag.
+
+  31 Jul 2007; Tiziano Müller <dev-zero@gentoo.org>
+  buildutils-0.1.2.ebuild:
+  Removed tests since none available
+
+  04 Jul 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  buildutils-0.1.2.ebuild:
+  Removed use_setuptools sed.
+
+  27 Feb 2007; Tiziano Müller <dev-zero@gentoo.org>
+  buildutils-0.1.2.ebuild:
+  Cleanup.
+
+*buildutils-0.1.2 (07 Jan 2007)
+
+  07 Jan 2007; Tiziano Müller <dev-zero@gentoo.org> +metadata.xml,
+  +buildutils-0.1.2.ebuild:
+  New ebuild for bug #155366, thanks to Brad Walker.

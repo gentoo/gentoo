@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=>=sci-geosciences/josm-3695
+DESCRIPTION=Set of plugins for josm
+EAPI=3
+HOMEPAGE=http://josm.openstreetmap.de/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=sci-geosciences/josm-3695
+SLOT=0
+SRC_URI=mirror://gentoo/josm-plugins-20101206.tar.xz
+_md5_=abad906e34cf23fa61f10235d3badd0d

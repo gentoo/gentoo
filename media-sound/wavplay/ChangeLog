@@ -1,0 +1,54 @@
+# ChangeLog for media-sound/wavplay
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/wavplay/ChangeLog,v 1.17 2015/05/06 09:37:57 mrueg Exp $
+
+  06 May 2015; Manuel Rüger <mrueg@gentoo.org> -files/wavplay-1.4-gcc34.patch,
+  -wavplay-1.4.ebuild:
+  Remove old.
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> wavplay-2.0.ebuild:
+  x86 stable wrt bug #397113
+
+*wavplay-2.0 (27 Jun 2011)
+
+  27 Jun 2011; Tim Harder <radhermit@gentoo.org> +wavplay-2.0.ebuild:
+  Version bump. Re-keyword for amd64.
+
+  12 Sep 2006; Thomas Cort <tcort@gentoo.org> wavplay-1.4.ebuild:
+  Fix broken wavrec symlink. Solves Bug #146808.
+
+  07 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> wavplay-1.4.ebuild:
+  Drop virtual/libc dependency. Respect CC, CFLAGS and LDFLAGS.
+
+  19 Feb 2006; Tony Vroon <chainsaw@gentoo.org> -files/wavplay-1.4.patch,
+  wavplay-1.4.ebuild:
+  QA fix: Move 25KB patch to mirrors.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org> wavplay-1.4.ebuild:
+  -amd64, -sparc.
+
+  06 Sep 2004; Karol Wojtaszek <sekretarz@gentoo.org>
+  +files/wavplay-1.4-gcc34.patch, wavplay-1.4.ebuild:
+  Fixed gcc-34 compile issues. Bug #61958
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> wavplay-1.4.ebuild:
+  virtual/glibc -> virtual/libc
+
+  27 Apr 2004; Dylan Carlson <absinthe@gentoo.org> wavplay-1.4.ebuild:
+  Added ~amd64 to KEYWORDS.
+
+  24 Apr 2003; Patrick Kursawe <phosphan@gentoo.org> wavplay-1.4.ebuild :
+  Considered stable for x86
+
+  04 Apr 2003; Patrick Kursawe <phosphan@gentoo.org> wavplay-1.4.ebuild :
+  Trivial change for tracking a repoman problem
+
+  03 Apr 2003; Patrick Kursawe <phosphan@gentoo.org> wavplay-1.4.ebuild :
+  Corrected the copyright line
+
+*wavplay-1.4 (02 Apr 2003)
+
+  02 Apr 2003; Patrick Kursawe <phosphan@gentoo.org> ChangeLog,
+  wavplay-1.4.ebuild, files/digest-wavplay-1.4 :
+  Initial import. Closes bug #660 which was a submission by
+  mikepolniak <mikpolniak@adelphia.net>.

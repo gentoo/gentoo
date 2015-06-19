@@ -1,0 +1,129 @@
+support python-3.x
+
+http://comments.gmane.org/gmane.linux.drivers.i2c/11290
+https://bugs.gentoo.org/492632
+
+--- a/py-smbus/smbusmodule.c
++++ b/py-smbus/smbusmodule.c
+@@ -32,15 +32,18 @@
+ #define I2C_SMBUS_I2C_BLOCK_DATA	8
+ #endif
+ 
+-PyDoc_STRVAR(SMBus_module_doc,
+-	"This module defines an object type that allows SMBus transactions\n"
+-	"on hosts running the Linux kernel.  The host kernel must have I2C\n"
+-	"support, I2C device interface support, and a bus adapter driver.\n"
+-	"All of these can be either built-in to the kernel, or loaded from\n"
+-	"modules.\n"
+-	"\n"
+-	"Because the I2C device interface is opened R/W, users of this\n"
+-	"module usually must have root permissions.\n");
++#define module_doc \
++	"This module defines an object type that allows SMBus transactions\n" \
++	"on hosts running the Linux kernel.  The host kernel must have I2C\n" \
++	"support, I2C device interface support, and a bus adapter driver.\n" \
++	"All of these can be either built-in to the kernel, or loaded from\n" \
++	"modules.\n" \
++	"\n" \
++	"Because the I2C device interface is opened R/W, users of this\n" \
++	"module usually must have root permissions.\n"
++#if PY_MAJOR_VERSION <= 2
++PyDoc_STRVAR(SMBus_module_doc, module_doc);
++#endif
+ 
+ typedef struct {
+ 	PyObject_HEAD
+@@ -91,7 +94,11 @@ SMBus_dealloc(SMBus *self)
+ 	PyObject *ref = SMBus_close(self);
+ 	Py_XDECREF(ref);
+ 
++#if PY_MAJOR_VERSION >= 3
++	Py_TYPE(self)->tp_free((PyObject*)self);
++#else
+ 	self->ob_type->tp_free((PyObject *)self);
++#endif
+ }
+ 
+ #define MAXPATH 16
+@@ -431,11 +438,19 @@ SMBus_list_to_data(PyObject *list, union i2c_smbus_data *data)
+ 
+ 	for (ii = 0; ii < len; ii++) {
+ 		PyObject *val = PyList_GET_ITEM(list, ii);
++#if PY_MAJOR_VERSION >= 3
++		if (!PyLong_Check(val)) {
++#else
+ 		if (!PyInt_Check(val)) {
++#endif
+ 			PyErr_SetString(PyExc_TypeError, msg);
+ 			return 0; /* fail */
+ 		}
++#if PY_MAJOR_VERSION >= 3
++		data->block[ii+1] = (__u8)PyLong_AS_LONG(val);
++#else
+ 		data->block[ii+1] = (__u8)PyInt_AS_LONG(val);
++#endif
+ 	}
+ 
+ 	return 1; /* success */
+@@ -633,9 +648,27 @@ static PyGetSetDef SMBus_getset[] = {
+ 	{NULL},
+ };
+ 
++#if PY_MAJOR_VERSION >= 3
++static struct PyModuleDef SMBusModule = {
++	PyModuleDef_HEAD_INIT,
++	"smbus.SMBus",		/* m_name */
++	module_doc,	/* m_doc */
++	-1,			/* m_size */
++	NULL,			/* m_methods */
++	NULL,			/* m_reload */
++	NULL,			/* m_traverse */
++	NULL,			/* m_clear */
++	NULL,			/* m_free */
++};
++#endif
++
+ static PyTypeObject SMBus_type = {
++#if PY_MAJOR_VERSION >= 3
++	PyVarObject_HEAD_INIT(NULL, 0)
++#else
+ 	PyObject_HEAD_INIT(NULL)
+ 	0,				/* ob_size */
++#endif
+ 	"smbus.SMBus",			/* tp_name */
+ 	sizeof(SMBus),			/* tp_basicsize */
+ 	0,				/* tp_itemsize */
+@@ -683,16 +716,32 @@ static PyMethodDef SMBus_module_methods[] = {
+ #define PyMODINIT_FUNC void
+ #endif
+ PyMODINIT_FUNC
+-initsmbus(void) 
++#if PY_MAJOR_VERSION >= 3
++PyInit_smbus(void)
++#else
++initsmbus(void)
++#endif
+ {
+ 	PyObject* m;
+ 
++#if PY_MAJOR_VERSION >= 3
++	if (PyType_Ready(&SMBus_type) < 0)
++		return NULL;
++
++	m = PyModule_Create(&SMBusModule);
++	if (m == NULL)
++		return NULL;
++#else
+ 	if (PyType_Ready(&SMBus_type) < 0)
+ 		return;
+ 
+ 	m = Py_InitModule3("smbus", SMBus_module_methods, SMBus_module_doc);
++#endif
+ 
+ 	Py_INCREF(&SMBus_type);
+ 	PyModule_AddObject(m, "SMBus", (PyObject *)&SMBus_type);
++#if PY_MAJOR_VERSION >= 3
++	return m;
++#endif
+ }
+ 

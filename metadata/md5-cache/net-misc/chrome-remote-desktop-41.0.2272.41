@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst unpack
+DESCRIPTION=access remote computers via Chrome!
+EAPI=4
+HOMEPAGE=https://support.google.com/chrome/answer/1649523 https://chrome.google.com/remotedesktop
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=google-chrome
+RDEPEND=app-admin/sudo dev-lang/python >=dev-libs/expat-2 dev-libs/glib:2 dev-libs/nspr dev-libs/nss dev-python/psutil gnome-base/gconf:2 media-libs/fontconfig media-libs/freetype:2 sys-devel/gcc sys-libs/glibc sys-libs/pam x11-libs/cairo x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXrandr x11-libs/libXtst x11-libs/pango x11-base/xorg-server[xvfb]
+SLOT=0
+SRC_URI=amd64? ( https://dl.google.com/linux/chrome-remote-desktop/deb/pool/main/c/chrome-remote-desktop/chrome-remote-desktop_41.0.2272.41_amd64.deb ) x86? ( https://dl.google.com/linux/chrome-remote-desktop/deb/pool/main/c/chrome-remote-desktop/chrome-remote-desktop_41.0.2272.41_i386.deb )
+_eclasses_=unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=f52189246062fa1ba1b1f05a97f61f62

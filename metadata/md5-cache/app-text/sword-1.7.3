@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=sys-libs/zlib curl? ( net-misc/curl ) icu? ( dev-libs/icu:= ) virtual/pkgconfig
+DESCRIPTION=Library for Bible reading software
+EAPI=5
+HOMEPAGE=http://www.crosswire.org/sword/
+IUSE=curl debug doc icu static-libs
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib curl? ( net-misc/curl ) icu? ( dev-libs/icu:= )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.crosswire.org/ftpmirror/pub/sword/source/v1.7/sword-1.7.3.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c9f1c32e0ec273e362dad55241fa1ea3

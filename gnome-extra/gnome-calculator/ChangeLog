@@ -1,0 +1,120 @@
+# ChangeLog for gnome-extra/gnome-calculator
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-calculator/ChangeLog,v 1.28 2015/06/13 14:27:29 tranquility Exp $
+
+*gnome-calculator-3.16.2 (13 Jun 2015)
+
+  13 Jun 2015; Ole Reifschneider <tranquility@gentoo.org>
+  +gnome-calculator-3.16.2.ebuild:
+  Version bump
+
+*gnome-calculator-3.16.1 (09 Jun 2015)
+
+  09 Jun 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-calculator-3.12.4.ebuild, +gnome-calculator-3.16.1.ebuild:
+  Version bump for Gnome 3.16. Clean up old revision.
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnome-calculator-3.14.1.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnome-calculator-3.14.1.ebuild:
+  amd64 stable, bug 534012
+
+*gnome-calculator-3.14.1 (22 Dec 2014)
+
+  22 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-calculator-3.12.3.ebuild, +gnome-calculator-3.14.1.ebuild:
+  Version bump for Gnome 3.14. Clean up old revision.
+
+  19 Dec 2014; Pacho Ramos <pacho@gentoo.org> gnome-calculator-3.12.4.ebuild:
+  amd64 stable, bug 529964
+
+  18 Dec 2014; Pacho Ramos <pacho@gentoo.org> gnome-calculator-3.12.4.ebuild:
+  x86 stable, bug 529964
+
+*gnome-calculator-3.12.4 (30 Sep 2014)
+
+  30 Sep 2014; Pacho Ramos <pacho@gentoo.org> +gnome-calculator-3.12.4.ebuild,
+  -gnome-calculator-3.10.2.ebuild:
+  Version bump, drop old
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gnome-calculator-3.12.3.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gnome-calculator-3.12.3.ebuild:
+  Stable for amd64, wrt bug #512912
+
+*gnome-calculator-3.12.3 (26 Jun 2014)
+
+  26 Jun 2014; Pacho Ramos <pacho@gentoo.org> +gnome-calculator-3.12.3.ebuild,
+  -gnome-calculator-3.12.2.ebuild:
+  Version bump, drop old
+
+  24 Jun 2014; Pacho Ramos <pacho@gentoo.org> -gnome-calculator-3.12.1.ebuild:
+  Drop old
+
+*gnome-calculator-3.12.2 (31 May 2014)
+
+  31 May 2014; Pacho Ramos <pacho@gentoo.org> +gnome-calculator-3.12.2.ebuild:
+  Version bump
+
+*gnome-calculator-3.12.1 (27 Apr 2014)
+
+  27 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-calculator-3.12.1.ebuild:
+  Version bump for Gnome 3.12.
+
+  26 Apr 2014; Pacho Ramos <pacho@gentoo.org> -gnome-calculator-3.8.2.ebuild:
+  drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gnome-calculator-3.10.2.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gnome-calculator-3.10.2.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-calculator-3.10.2.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-calculator-3.10.2.ebuild:
+  arch stable, bug 888
+
+*gnome-calculator-3.10.2 (24 Dec 2013)
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org> +gnome-calculator-3.10.2.ebuild,
+  -gnome-calculator-3.8.1.ebuild:
+  Version bump for Gnome 3.10
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> gnome-calculator-3.8.2.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> gnome-calculator-3.8.2.ebuild:
+  amd64 stable, bug #478252
+
+  30 Jun 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-calculator-3.8.2.ebuild:
+  Valac is not used, make sure configure does not pick a random value.
+
+  14 May 2013; Pacho Ramos <pacho@gentoo.org> gnome-calculator-3.8.1.ebuild,
+  gnome-calculator-3.8.2.ebuild:
+  Fix blockers
+
+*gnome-calculator-3.8.2 (14 May 2013)
+
+  14 May 2013; Pacho Ramos <pacho@gentoo.org> +gnome-calculator-3.8.2.ebuild,
+  -gnome-calculator-3.8.0.ebuild:
+  Version bump, drop old
+
+*gnome-calculator-3.8.1 (14 Apr 2013)
+
+  14 Apr 2013; Pacho Ramos <pacho@gentoo.org> +gnome-calculator-3.8.1.ebuild:
+  Version bump
+
+  06 Apr 2013; Pacho Ramos <pacho@gentoo.org> gnome-calculator-3.8.0.ebuild:
+  gnome-calculator deprecates gcalctool (#464544 by Maciej Piechotka)
+
+*gnome-calculator-3.8.0 (29 Mar 2013)
+
+  29 Mar 2013; Pacho Ramos <pacho@gentoo.org> +gnome-calculator-3.8.0.ebuild,
+  +metadata.xml:
+  Version bump for Gnome 3.8 (it's gcalctool renamed and updated for 3.8 cycle)

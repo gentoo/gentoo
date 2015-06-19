@@ -1,0 +1,11 @@
+--- tekram/Makefile.orig	2010-11-02 22:41:43.000000000 +0100
++++ tekram/Makefile	2010-11-02 22:41:53.000000000 +0100
+@@ -38,7 +38,7 @@
+ #
+ # System stuff
+ #
+-SYS_INCLUDES = -I/usr/src/linux/include -I/usr/include -I../include
++SYS_INCLUDES = -I/usr/include -I../include
+ SYS_LIBRARIES = 
+ SYS_LIBPATH = -L/usr/lib -L/usr/local/lib 
+ 

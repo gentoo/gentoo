@@ -1,0 +1,77 @@
+# ChangeLog for sci-libs/libnova
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/libnova/ChangeLog,v 1.19 2014/01/16 00:57:27 bicatali Exp $
+
+  16 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org> libnova-0.15.0.ebuild:
+  Switch to autotools-utils and fixed bug #471960
+
+  06 Jan 2013; Sébastien Fabbro <bicatali@gentoo.org> libnova-0.15.0.ebuild:
+  fixed for doc building, bug #450542
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> libnova-0.15.0.ebuild:
+  Keyword amd64-linux x86-linux
+
+  24 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org> libnova-0.15.0.ebuild:
+  respect user flags, bug #427484
+
+*libnova-0.15.0 (17 Jul 2012)
+
+  17 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org> +libnova-0.15.0.ebuild:
+  Version bump
+
+*libnova-0.14.0 (07 Aug 2011)
+
+  07 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> -libnova-0.7.0.ebuild,
+  -libnova-0.12.1.ebuild, +libnova-0.14.0.ebuild:
+  Version bump, switch to EAPI4
+
+  04 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  Switched herd to sci-astronomy
+
+  19 Jan 2010; Jeroen Roovers <jer@gentoo.org> libnova-0.12.3.ebuild:
+  Stable for HPPA too.
+
+  30 Nov 2009; Joseph Jezak <josejx@gentoo.org> libnova-0.12.3.ebuild:
+  Marked ppc64 stable.
+
+  08 Nov 2009; Jeroen Roovers <jer@gentoo.org> libnova-0.12.3.ebuild:
+  Marked ~hppa (bug #280312).
+
+  17 Oct 2009; Markus Meier <maekke@gentoo.org> libnova-0.12.3.ebuild:
+  x86 stable, bug #288092
+
+  11 Oct 2009; nixnut <nixnut@gentoo.org> libnova-0.12.3.ebuild:
+  ppc stable #288086
+
+  09 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> libnova-0.12.3.ebuild:
+  amd64 stable wrt #288086
+
+*libnova-0.12.3 (21 Mar 2009)
+
+  21 Mar 2009; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml,
+  +libnova-0.12.3.ebuild:
+  Version bump, added longdescription.
+
+  02 Nov 2008; Mike Frysinger <vapier@gentoo.org> libnova-0.12.1.ebuild:
+  Add ppc/ppc64 love for KDE 4.
+
+*libnova-0.12.1 (25 Nov 2007)
+
+  25 Nov 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/libnova-0.12.1-configure.patch, +libnova-0.12.1.ebuild:
+  Version bump, added src_test, doc use flag, and modernized the ebuild.
+  Closing bug #150774.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*libnova-0.7.0 (28 Dec 2004)
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +libnova-0.7.0.ebuild:
+  Moved from app-sci/libnova to sci-libs/libnova.
+
+*libnova-0.7.0 (21 May 2003)
+
+  21 May 2003; Matthew Kennedy <mkennedy@gentoo.org> libnova-0.7.0.ebuild:
+  initial import

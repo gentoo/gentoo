@@ -1,0 +1,16 @@
+ Makefile |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index ae08e60..eee2b46 100644
+--- a/Makefile
++++ b/Makefile
+@@ -62,7 +62,7 @@ all: gabedit
+ gabedit: $(SUBDIRS)
+ 	$(MKDIR) tmp
+ 	cp $(OBJECTS) tmp
+-	$(CC) $(LDFLAGS) tmp/*.o -o gabedit $(GLTOPS) $(X11LIB) $(GTKLIB) $(OGLLIB) $(JPEGLIB) $(LIBPTHREAD) $(WIN32LIB) $(OMPLIB) -g
++	$(CC) $(LDFLAGS) tmp/*.o -o gabedit $(GLTOPS) $(X11LIB) $(GTKLIB) $(OGLLIB) $(JPEGLIB) $(LIBPTHREAD) $(WIN32LIB) $(OMPLIB) -g -lm
+ 	@$(RMTMP) > ptmp
+ 	rmdir tmp
+ 	@$(RM) ptmp

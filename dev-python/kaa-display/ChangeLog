@@ -1,0 +1,53 @@
+# ChangeLog for dev-python/kaa-display
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/kaa-display/ChangeLog,v 1.14 2015/06/09 15:30:32 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> kaa-display-0.1.0-r1.ebuild:
+  Drop old Python implementations
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  kaa-display-0.1.0-r1.ebuild, kaa-display-0.1.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*kaa-display-0.1.0-r1 (02 Jul 2013)
+
+  02 Jul 2013; Ian Delaney <idella4@gentoo.org> +kaa-display-0.1.0-r1.ebuild:
+  revbump; migrate -> distutils-r1
+
+  04 Jun 2012; Michael Weber <xmw@gentoo.org> kaa-display-0.1.0.ebuild:
+  ppc stable (bug 358455)
+
+  23 Feb 2012; Patrick Lauer <patrick@gentoo.org> kaa-display-0.1.0.ebuild:
+  Restricting python
+
+  21 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> kaa-display-0.1.0.ebuild:
+  Pull in media-libs/imlib2 with USE="X" enabled wrt #403397 by Piotr Szymaniak
+
+  24 Mar 2011; Thomas Kahle <tomka@gentoo.org> kaa-display-0.1.0.ebuild:
+  x86 stable per bug 358455
+
+  13 Mar 2011; Markos Chandras <hwoarang@gentoo.org> kaa-display-0.1.0.ebuild:
+  Stable on amd64 wrt bug #358455
+
+  29 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  kaa-display-0.1.0.ebuild:
+  Set PYTHON_DEPEND.
+
+  18 Jan 2010; Robert Buchholz <rbu@gentoo.org> metadata.xml:
+  Dropping maintenance
+
+  30 Nov 2009; Mounir Lamouri <volkmar@gentoo.org> kaa-display-0.1.0.ebuild:
+  Keyworded for ppc, bug 291548
+
+  09 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  kaa-display-0.1.0.ebuild:
+  keyworded ~arch for x86, bug 291548
+
+*kaa-display-0.1.0 (02 Nov 2009)
+
+  02 Nov 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +kaa-display-0.1.0.ebuild, +metadata.xml:
+  Initial addition. Ebuild written by me.

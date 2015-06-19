@@ -1,0 +1,376 @@
+# ChangeLog for dev-perl/Template-Toolkit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Template-Toolkit/ChangeLog,v 1.85 2015/03/17 10:50:32 monsieurp Exp $
+
+*Template-Toolkit-2.260.0 (17 Mar 2015)
+
+  17 Mar 2015; Patrice Clement <monsieurp@gentoo.org>
+  +Template-Toolkit-2.260.0.ebuild:
+  Version bump.
+
+  13 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  Template-Toolkit-2.240.0-r1.ebuild, Template-Toolkit-2.250.0-r1.ebuild:
+  Follow upstream rename from Template-Latex to Template-Plugin-Latex
+
+*Template-Toolkit-2.250.0-r1 (21 Aug 2014)
+*Template-Toolkit-2.240.0-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Template-Toolkit-2.240.0-r1.ebuild, +Template-Toolkit-2.250.0-r1.ebuild,
+  -Template-Toolkit-2.240.0.ebuild, -Template-Toolkit-2.250.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  06 Mar 2014; Agostino Sarubbo <ago@gentoo.org>
+  Template-Toolkit-2.250.0.ebuild:
+  Stable for ppc64, wrt bug #495480
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org>
+  Template-Toolkit-2.250.0.ebuild:
+  Stable for ppc, wrt bug #495480
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> Template-Toolkit-2.250.0.ebuild:
+  amd64 stable, bug #495480
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Template-Toolkit-2.250.0.ebuild:
+  x86 stable wrt bug #495480
+
+*Template-Toolkit-2.250.0 (15 Aug 2013)
+
+  15 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +Template-Toolkit-2.250.0.ebuild:
+  Bump
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org> -Template-Toolkit-2.22.ebuild,
+  -Template-Toolkit-2.220.0.ebuild, -Template-Toolkit-2.230.0.ebuild:
+  Cleanup
+
+  04 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  Template-Toolkit-2.240.0.ebuild:
+  stable ppc64, bug #412953
+
+  02 Sep 2012; Raúl Porcel <armin76@gentoo.org> Template-Toolkit-2.22.ebuild,
+  Template-Toolkit-2.220.0.ebuild, Template-Toolkit-2.230.0.ebuild,
+  Template-Toolkit-2.240.0.ebuild:
+  Drop alpha keywords
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org>
+  Template-Toolkit-2.240.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  21 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Template-Toolkit-2.240.0.ebuild:
+  x86 stable wrt bug #412953
+
+  07 May 2012; Agostino Sarubbo <ago@gentoo.org>
+  Template-Toolkit-2.240.0.ebuild:
+  Stable for amd64, wrt bug #412953
+
+  06 May 2012; Brent Baude <ranger@gentoo.org> Template-Toolkit-2.240.0.ebuild:
+  Marking Template-Toolkit-2.240.0 ppc for bug 412953
+
+  19 Mar 2012; Raúl Porcel <armin76@gentoo.org> Template-Toolkit-2.22.ebuild,
+  Template-Toolkit-2.220.0.ebuild, Template-Toolkit-2.230.0.ebuild,
+  Template-Toolkit-2.240.0.ebuild:
+  Drop ia64/sparc keywords
+
+*Template-Toolkit-2.240.0 (12 Feb 2012)
+
+  12 Feb 2012; Torsten Veller <tove@gentoo.org>
+  +Template-Toolkit-2.240.0.ebuild:
+  Version bump
+
+*Template-Toolkit-2.230.0 (24 Jan 2012)
+
+  24 Jan 2012; Torsten Veller <tove@gentoo.org>
+  +Template-Toolkit-2.230.0.ebuild:
+  Version bump
+
+  01 Dec 2011; Torsten Veller <tove@gentoo.org>
+  Template-Toolkit-2.220.0.ebuild:
+  Add missing RDEPEND. Thanks to Tiziano Müller. Drop src_unpack
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -Template-Toolkit-2.22-r1.ebuild:
+  Cleanup
+
+*Template-Toolkit-2.220.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Template-Toolkit-2.220.0.ebuild:
+  Change version scheme
+
+  03 Dec 2010; Michael Weber <xmw@gentoo.org> Template-Toolkit-2.22-r1.ebuild:
+  add ~arm (bug 302981)
+
+*Template-Toolkit-2.22-r1 (10 Jan 2010)
+
+  10 Jan 2010; Torsten Veller <tove@gentoo.org>
+  +Template-Toolkit-2.22-r1.ebuild:
+  Add app-vim/tt2-syntax dependency (#191500)
+
+  23 Dec 2009; Fabian Groffen <grobian@gentoo.org>
+  Template-Toolkit-2.22.ebuild:
+  Fixed for Prefix and marked ~x86-solaris, bug #296509
+
+  12 Oct 2009; Torsten Veller <tove@gentoo.org>
+  -Template-Toolkit-2.19.ebuild:
+  Cleanup
+
+  27 Sep 2009; Brent Baude <ranger@gentoo.org> Template-Toolkit-2.22.ebuild:
+  Marking Template-Toolkit-2.22 ppc64 for bug 283947
+
+  19 Sep 2009; nixnut <nixnut@gentoo.org> Template-Toolkit-2.22.ebuild:
+  ppc stable #283947
+
+  18 Sep 2009; Torsten Veller <tove@gentoo.org>
+  Template-Toolkit-2.22.ebuild:
+  Stable on amd64 (#283947)
+
+  11 Sep 2009; Raúl Porcel <armin76@gentoo.org>
+  Template-Toolkit-2.22.ebuild:
+  alpha/ia64/sparc stable wrt #283947
+
+  10 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  Template-Toolkit-2.22.ebuild:
+  stable x86, bug 283947
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org>
+  -Template-Toolkit-2.20.ebuild:
+  Cleanup
+
+*Template-Toolkit-2.22 (22 Jul 2009)
+
+  22 Jul 2009; Torsten Veller <tove@gentoo.org>
+  +Template-Toolkit-2.22.ebuild:
+  Version bump
+
+  02 May 2009; Torsten Veller <tove@gentoo.org>
+  -Template-Toolkit-2.15.ebuild:
+  Cleanup
+
+  13 Dec 2008; Alexis Ballier <aballier@gentoo.org>
+  Template-Toolkit-2.20.ebuild:
+  keyword ~x86-fbsd
+
+*Template-Toolkit-2.20 (21 Oct 2008)
+
+  21 Oct 2008; Torsten Veller <tove@gentoo.org>
+  +Template-Toolkit-2.20.ebuild:
+  Version bump (#242992)
+
+  15 Sep 2008; Torsten Veller <tove@gentoo.org>
+  -Template-Toolkit-2.09.ebuild, -Template-Toolkit-2.13.ebuild,
+  -Template-Toolkit-2.14.ebuild, -Template-Toolkit-2.15-r1.ebuild,
+  -Template-Toolkit-2.16.ebuild, -Template-Toolkit-2.18.ebuild:
+  Cleanup
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  Template-Toolkit-2.19.ebuild:
+  amd64 stable
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Template-Toolkit-2.19.ebuild:
+  Stable on ppc.
+
+  13 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  Template-Toolkit-2.19.ebuild:
+  alpha/ia64/x86 stable
+
+  07 Jul 2007; Tom Gall <tgall@gentoo.org> Template-Toolkit-2.19.ebuild:
+  stable on ppc64
+
+  21 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  Template-Toolkit-2.19.ebuild:
+  Marking sparc stable
+
+*Template-Toolkit-2.19 (12 May 2007)
+
+  12 May 2007; Michael Cummings <mcummings@gentoo.org>
+  +Template-Toolkit-2.19.ebuild:
+  Version bump
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Template-Toolkit-2.18.ebuild:
+  ppc stable
+
+  23 Apr 2007; Raúl Porcel <armin76@gentoo.org>
+  Template-Toolkit-2.18.ebuild:
+  ia64 stable
+
+  16 Apr 2007; Markus Rothe <corsair@gentoo.org>
+  Template-Toolkit-2.15-r1.ebuild:
+  Stable on ppc64
+
+  14 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Template-Toolkit-2.18.ebuild:
+  Marking sparc stable
+
+  09 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Template-Toolkit-2.18.ebuild:
+  Marking stable amd64
+
+  13 Mar 2007; Michael Cummings <mcummings@gentoo.org>
+  Template-Toolkit-2.14.ebuild, Template-Toolkit-2.15.ebuild,
+  Template-Toolkit-2.15-r1.ebuild, Template-Toolkit-2.16.ebuild,
+  Template-Toolkit-2.18.ebuild:
+  Removing changes from dodoc call
+
+  04 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  Template-Toolkit-2.15-r1.ebuild:
+  stable x86; bug 141638
+
+*Template-Toolkit-2.18 (17 Feb 2007)
+
+  17 Feb 2007; Michael Cummings <mcummings@gentoo.org>
+  +Template-Toolkit-2.18.ebuild:
+  Version bump
+
+*Template-Toolkit-2.16 (05 Feb 2007)
+
+  05 Feb 2007; Michael Cummings <mcummings@gentoo.org>
+  +Template-Toolkit-2.16.ebuild:
+  Version bump
+
+  23 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  Template-Toolkit-2.15-r1.ebuild:
+  Add ~ia64 keyword.
+
+  04 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  Template-Toolkit-2.15-r1.ebuild:
+  Stable on Alpha.
+
+  21 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Template-Toolkit-2.15-r1.ebuild:
+  ppc stable
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Template-Toolkit-2.15-r1.ebuild:
+  ~alpha keyword.
+
+  15 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Template-Toolkit-2.09.ebuild, Template-Toolkit-2.13.ebuild,
+  Template-Toolkit-2.14.ebuild, Template-Toolkit-2.15.ebuild,
+  Template-Toolkit-2.15-r1.ebuild:
+  Marking amd64, sparc stable
+
+  13 Sep 2006; Christian Hartmann <ian@gentoo.org>
+  Template-Toolkit-2.14.ebuild, Template-Toolkit-2.15.ebuild,
+  Template-Toolkit-2.15-r1.ebuild:
+  Fixed bug #147454
+
+  02 Sep 2006; <nixnut@gentoo.org> Template-Toolkit-2.15-r1.ebuild:
+  ~ppc added. bug 144505
+
+  27 Aug 2006; Jason Wever <weeve@gentoo.org>
+  Template-Toolkit-2.15-r1.ebuild:
+  Added ~sparc keyword wrt bug #144505.
+
+  21 Aug 2006; Markus Rothe <corsair@gentoo.org>
+  Template-Toolkit-2.15-r1.ebuild:
+  Added ~ppc64; bug #144505
+
+  20 Aug 2006; Olivier Crête <tester@gentoo.org>
+  Template-Toolkit-2.15-r1.ebuild:
+  Re-added ~amd64 for bug #144505
+
+*Template-Toolkit-2.15-r1 (20 Aug 2006)
+
+  20 Aug 2006; Yuval Yaari <yuval@gentoo.org>
+  +Template-Toolkit-2.15-r1.ebuild:
+  Revision bump: fixing bug #142297
+
+  18 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Template-Toolkit-2.13.ebuild:
+  Marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Template-Toolkit-2.09.ebuild, Template-Toolkit-2.13.ebuild,
+  Template-Toolkit-2.14.ebuild, Template-Toolkit-2.15.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  Template-Toolkit-2.09.ebuild, Template-Toolkit-2.13.ebuild,
+  Template-Toolkit-2.14.ebuild, Template-Toolkit-2.15.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed header; fixed DEPEND
+
+  01 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  Template-Toolkit-2.15.ebuild:
+  Keywording ~amd64
+
+*Template-Toolkit-2.15 (23 Jun 2006)
+
+  23 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  +Template-Toolkit-2.15.ebuild:
+  Version bump upstream
+
+  24 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  Template-Toolkit-2.14.ebuild:
+  Add ~x86-fbsd keyword.
+
+  04 Apr 2006; Aron Griffis <agriffis@gentoo.org>
+  Template-Toolkit-2.14.ebuild:
+  Mark 2.14 stable on ia64
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  Template-Toolkit-2.14.ebuild:
+  Mark 2.14 ~ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  Template-Toolkit-2.13.ebuild:
+  add ~ia64
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Template-Toolkit-2.14.ebuild:
+  Stable on ppc.
+
+  12 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Template-Toolkit-2.14.ebuild:
+  Stable on sparc
+
+  12 Aug 2005; Michael Cummings <mcummings@gentoo.org>
+  Template-Toolkit-2.14.ebuild:
+  Marking stable x86
+
+  12 Jun 2005; Jason Wever <weeve@gentoo.org> Template-Toolkit-2.09.ebuild:
+  Stable on SPARC.
+
+  18 May 2005; Markus Rothe <corsair@gentoo.org>
+  Template-Toolkit-2.14.ebuild:
+  Stable on ppc64
+
+  09 Mar 2005; Markus Rothe <corsair@gentoo.org> Template-Toolkit-2.14.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*Template-Toolkit-2.14 (19 Oct 2004)
+
+  19 Oct 2004; Michael Cummings <mcummings@gentoo.org>
+  +Template-Toolkit-2.14.ebuild:
+  new version; ARCHS: Check your deps
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  Template-Toolkit-2.09.ebuild:
+  Stable on alpha.
+
+*Template-Toolkit-2.13 (09 Apr 2004)
+
+  09 Apr 2004; Eric Sammer <esammer@gentoo.org> Template-Toolkit-2.09.ebuild,
+  Template-Toolkit-2.13.ebuild:
+  Bumped from 2.09 to 2.13 - closes bug #47257. Updated copyright headers to
+  make repoman happy.
+
+  07 Jun 2003; <rac@gentoo.org> Template-Toolkit-2.09.ebuild:
+  Add IUSE
+
+*Template-Toolkit-2.09 (07 May 2003)
+
+  07 May 2003; <rac@gentoo.org> Template-Toolkit-2.09.ebuild:
+  Initial import. Ebuild submitted by Mark Leverentz <mark-leverentz@bethel.edu>
+  in bug #18236. Thanks also to acme@astray.com in bug #4750.

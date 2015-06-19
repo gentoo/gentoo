@@ -1,0 +1,46 @@
+# ChangeLog for dev-ml/lambda-term
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/lambda-term/ChangeLog,v 1.10 2015/06/06 19:45:33 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*lambda-term-1.8 (09 Jan 2015)
+
+  09 Jan 2015; Alexis Ballier <aballier@gentoo.org> +lambda-term-1.8.ebuild:
+  version bump
+
+*lambda-term-1.7 (29 Oct 2014)
+
+  29 Oct 2014; Alexis Ballier <aballier@gentoo.org> +lambda-term-1.7.ebuild:
+  version bump
+
+  19 Aug 2013; Alexis Ballier <aballier@gentoo.org> -lambda-term-1.3.ebuild:
+  remove old
+
+*lambda-term-1.4 (22 Jul 2013)
+
+  22 Jul 2013; Alexis Ballier <aballier@gentoo.org> +lambda-term-1.4.ebuild:
+  version bump
+
+  03 Mar 2013; Alexis Ballier <aballier@gentoo.org> -lambda-term-1.2.ebuild:
+  remove old
+
+*lambda-term-1.3 (03 Mar 2013)
+
+  03 Mar 2013; Alexis Ballier <aballier@gentoo.org> +lambda-term-1.3.ebuild:
+  version bump, eapi5
+
+  07 Aug 2012; Alexis Ballier <aballier@gentoo.org> -lambda-term-1.1.ebuild:
+  remove old
+
+*lambda-term-1.2 (02 Aug 2012)
+
+  02 Aug 2012; Alexis Ballier <aballier@gentoo.org> +lambda-term-1.2.ebuild:
+  version bump
+
+*lambda-term-1.1 (30 Mar 2012)
+
+  30 Mar 2012; Alexis Ballier <aballier@gentoo.org> +lambda-term-1.1.ebuild,
+  +metadata.xml:
+  initial import, ebuild by Guillaume Horel in bug #406523

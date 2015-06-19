@@ -1,0 +1,39 @@
+# HG changeset patch
+# User Alan Kennedy <alan@xhaus.com>
+# Date 1333300584 -3600
+# Node ID a972112ac1b155ef41b3f8ce195251bc6cc3ebce
+# Parent  920a60f5d5b5fdf46f4f26c75cab42e2a671be2f
+#1537: Fix for classloading issues with MATLAB/OpenJDK
+
+diff --git a/Lib/xml/parsers/expat.py b/Lib/xml/parsers/expat.py
+--- a/Lib/xml/parsers/expat.py
++++ b/Lib/xml/parsers/expat.py
+@@ -47,12 +47,8 @@ from org.xml.sax.helpers import XMLReade
+ from org.xml.sax.ext import DefaultHandler2
+ 
+ # Xerces
+-try:
+-    # Name mangled by jarjar?
+-    import org.python.apache.xerces.parsers.SAXParser
+-    _xerces_parser = "org.python.apache.xerces.parsers.SAXParser"
+-except ImportError:
+-    _xerces_parser = "org.apache.xerces.parsers.SAXParser"
++_mangled_xerces_parser_name = "org.python.apache.xerces.parsers.SAXParser"
++_xerces_parser_name = "org.apache.xerces.parsers.SAXParser"
+ 
+ 
+ # @expat args registry
+@@ -88,7 +84,11 @@ class XMLParser(object):
+                      "not %s" % type(namespace_separator).__name__)
+             raise TypeError(error)
+ 
+-        self._reader = XMLReaderFactory.createXMLReader(_xerces_parser)
++        # See http://bugs.jython.org/issue1537
++        try:
++            self._reader = XMLReaderFactory.createXMLReader(_mangled_xerces_parser_name)
++        except:
++            self._reader = XMLReaderFactory.createXMLReader(_xerces_parser_name)
+ 
+         if self.namespace_separator is None:
+             try:
+

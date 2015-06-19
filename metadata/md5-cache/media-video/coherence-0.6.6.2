@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup
+DEPEND=dev-python/louie dev-python/twisted-core dev-python/twisted-web dev-python/configobj dev-python/gst-python:0.10 dev-python/nevow || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) || ( =dev-lang/python-2.7*[sqlite] =dev-lang/python-2.6*[sqlite] =dev-lang/python-2.5*[sqlite] )
+DESCRIPTION=A framework written in Python for DLNA/UPnP components
+EAPI=2
+HOMEPAGE=https://coherence.beebits.net/
+KEYWORDS=amd64 ppc ppc64 ~sparc x86
+LICENSE=MIT
+RDEPEND=dev-python/louie dev-python/twisted-core dev-python/twisted-web dev-python/configobj dev-python/gst-python:0.10 dev-python/nevow dev-python/axiom dev-python/gdata dev-python/feedparser dev-python/tagpy || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* ) || ( =dev-lang/python-2.7*[sqlite] =dev-lang/python-2.6*[sqlite] =dev-lang/python-2.5*[sqlite] )
+SLOT=0
+SRC_URI=http://coherence.beebits.net/download/Coherence-0.6.6.2.tar.gz
+_eclasses_=distutils	92e738ea29389cb3f34778d7a349ac71	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=79a094a5e099ee9d2d7395b92ae8cb77

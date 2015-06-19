@@ -1,0 +1,46 @@
+--- Makefile.orig	1997-12-08 17:56:05.000000000 +0100
++++ Makefile	2010-10-20 06:16:56.000000000 +0200
+@@ -8,7 +8,7 @@
+ else
+ CFLAGS		+=-O3 -DSUN_AUDIO -DARCH_SPARC
+ endif
+-LDFLAGSX	=-lX11 -L/usr/X11R6/lib -R/usr/X11R6/lib -lsocket -lnsl
++LIBSX	=-lX11 -L/usr/X11R6/lib -R/usr/X11R6/lib -lsocket -lnsl
+ else
+ ifeq ($(DEBUG),y)
+ CFLAGS		+=-g -O -m486 -malign-loops=2 -malign-jumps=2 \
+@@ -17,7 +17,7 @@
+ CFLAGS		+=-O3 -m486 -malign-loops=2 -malign-jumps=2 \
+ 		  -malign-functions=2 -DARCH_I386
+ endif
+-LDFLAGSX	=-lX11 -L/usr/X11R6/lib
++LIBSX	=-lX11 -L/usr/X11R6/lib
+ endif
+ 
+ 
+@@ -28,7 +28,7 @@
+ 
+ AS		=as
+ LD		=ld
+-LDFLAGS		=-lm
++LIBS		=-lm
+ HOSTCC		=gcc
+ CC		=gcc
+ MAKE		=make
+@@ -67,13 +67,13 @@
+ 		$(MKDIR) $(BINDIR)
+ 
+ $(BINDIR)/multimon:	$(OBJ_L2) $(OBJ_L1) $(OBJ_MISC)
+-			$(CC) $^ $(LDFLAGS) $(LDFLAGSX) -o $@
++			$(CC) $(LDFLAGS) $^ $(LIBS) $(LIBSX) -o $@
+ 
+ $(BINDIR)/gen:		$(OBJ_GEN)
+-			$(CC) $^ $(LDFLAGS) -o $@
++			$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+ 
+ $(BINDIR)/mkcostab:	$(BINDIR)/mkcostab.o
+-			$(CC) $^ $(LDFLAGS) -o $@
++			$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+ 
+ costabi.c costabf.c:	$(BINDIR)/mkcostab
+ 			$(BINDIR)/mkcostab

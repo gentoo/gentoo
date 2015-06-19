@@ -1,0 +1,69 @@
+# ChangeLog for dev-libs/iksemel
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/iksemel/ChangeLog,v 1.17 2012/05/04 18:35:47 jdhore Exp $
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> iksemel-1.3.ebuild,
+  iksemel-1.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 Dec 2011; Markos Chandras <hwoarang@gentoo.org> iksemel-1.4.ebuild:
+  Stable on amd64 wrt bug #391463
+
+  01 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> iksemel-1.4.ebuild:
+  x86 stable wrt bug #391463
+
+  13 Oct 2011; Naohiro Aota <naota@gentoo.org> iksemel-1.4.ebuild:
+  Add ~x86-fbsd
+
+*iksemel-1.4 (26 Dec 2009)
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> +iksemel-1.4.ebuild,
+  metadata.xml:
+  Version bump. Use ssl USE flag for tls support.
+
+  30 May 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  iksemel-1.3.ebuild, +files/iksemel-1.3-gnutls-2.8.patch:
+  Fix detection of >=net-libs/gnutls-2.7.1 (bug #268472). Fix automagic
+  dependency on net-libs/gnutls.
+
+  03 May 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  iksemel-1.3.ebuild:
+  Pass --with-libgnutls-prefix option to configure.
+
+  24 Jan 2008; Samuli Suominen <drac@gentoo.org> -iksemel-1.2.ebuild,
+  iksemel-1.3.ebuild:
+  amd64 stable wrt #206919
+
+  24 Jan 2008; nixnut <nixnut@gentoo.org> iksemel-1.3.ebuild:
+  Stable on ppc wrt bug 206919
+
+  22 Jan 2008; Christian Faulhammer <opfer@gentoo.org> iksemel-1.3.ebuild:
+  stable x86, bug 206919
+
+*iksemel-1.3 (11 Nov 2007)
+
+  11 Nov 2007; Samuli Suominen <drac@gentoo.org> +iksemel-1.3.ebuild:
+  Version bump wrt #198838, thanks to Anton Romanov.
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  16 Feb 2007; Harald van Dĳk <truedfx@gentoo.org> iksemel-1.2.ebuild:
+  The license is LGPL, not GPL (#167195)
+
+  03 Feb 2007; Steve Dibb <beandog@gentoo.org> iksemel-1.2.ebuild:
+  add ~amd64, bug 156735
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> iksemel-1.2.ebuild:
+  Stable on ppc.
+
+  17 Sep 2004; Jon Hood <squinky86@gentoo.org> iksemel-1.2.ebuild:
+  Stable on x86.
+
+*iksemel-1.2 (15 Aug 2004)
+
+  15 Aug 2004; Jon Hood <squinky86@gentoo.org> +metadata.xml,
+  +iksemel-1.2.ebuild:
+  Initial import, closes #60370. Thanks to S.Caglar Onur
+  <caglar.onur@tubitak.gov.tr> for the ebuild.
+

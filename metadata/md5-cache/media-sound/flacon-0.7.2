@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile postinst postrm prepare setup
+DEPEND=dev-python/PyQt4[X] dev-python/chardet media-sound/shntool[mac?] flac? ( media-libs/flac ) mac? ( media-sound/mac ) mp3? ( media-sound/lame ) mp4? ( media-libs/faac ) ogg? ( media-sound/vorbis-tools ) tta? ( media-sound/ttaenc ) wavpack? ( media-sound/wavpack ) replaygain? ( mp3? ( media-sound/mp3gain ) ogg? ( media-sound/vorbisgain ) ) =dev-lang/python-2*
+DESCRIPTION=Extracts audio tracks from audio CD image to separate tracks
+EAPI=4
+HOMEPAGE=https://code.google.com/p/flacon/
+IUSE=flac mac mp3 mp4 ogg replaygain tta wavpack
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=dev-python/PyQt4[X] dev-python/chardet media-sound/shntool[mac?] flac? ( media-libs/flac ) mac? ( media-sound/mac ) mp3? ( media-sound/lame ) mp4? ( media-libs/faac ) ogg? ( media-sound/vorbis-tools ) tta? ( media-sound/ttaenc ) wavpack? ( media-sound/wavpack ) replaygain? ( mp3? ( media-sound/mp3gain ) ogg? ( media-sound/vorbisgain ) ) =dev-lang/python-2*
+SLOT=0
+SRC_URI=https://flacon.googlecode.com/files/flacon-0.7.2.tgz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8ca4c16760593051eb89148050f5d6b6

@@ -1,0 +1,59 @@
+From cf2104d4d991361c53f6e2fea93b69de10cd654b Mon Sep 17 00:00:00 2001
+From: Federico Simoncelli <fsimonce@redhat.com>
+Date: Sat, 15 Nov 2014 14:14:04 +0000
+Subject: [PATCH] common: do not unlock rwlock on destruction
+
+According to pthread_rwlock_unlock(3p):
+
+ Results are undefined if the read-write lock rwlock is not held
+ by the calling thread.
+
+and:
+
+ https://sourceware.org/bugzilla/show_bug.cgi?id=17561
+
+ Calling pthread_rwlock_unlock on an rwlock which is not locked
+ is undefined.
+
+calling pthread_rwlock_unlock on RWLock destruction could cause
+an unknown behavior for two reasons:
+
+- the lock is acquired by another thread (undefined)
+- the lock is not acquired (undefined)
+
+Moreover since glibc-2.20 calling pthread_rwlock_unlock on a
+rwlock that is not locked results in a SIGILL that kills the
+application.
+
+This patch removes the pthread_rwlock_unlock call on destruction
+and replaces it with an assertion to check that the RWLock is
+not in use.
+
+Any code that relied on the implicit release is now going to
+break the assertion, e.g.:
+
+ {
+   RWLock l;
+   l.get(for_write);
+ } // implicit release, wrong.
+
+Signed-off-by: Federico Simoncelli <fsimonce@redhat.com>
+---
+ src/common/RWLock.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/common/RWLock.h b/src/common/RWLock.h
+index e647e17..6f0ab8e 100644
+--- a/src/common/RWLock.h
++++ b/src/common/RWLock.h
+@@ -46,7 +46,9 @@ class RWLock
+     return (nwlock.read() > 0);
+   }
+   virtual ~RWLock() {
+-    pthread_rwlock_unlock(&L);
++    // The following check is racy but we are about to destroy
++    // the object and we assume that there are no other users.
++    assert(!is_locked());
+     pthread_rwlock_destroy(&L);
+   }
+ 

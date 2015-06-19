@@ -1,0 +1,53 @@
+https://bugs.gentoo.org/365397
+
+From 10bfb16245ec4b55c1f5b6dc5554913bc9b13c9c Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 16 May 2011 01:59:52 -0400
+Subject: [PATCH] use SHELL from configure
+
+If /bin/sh is not a functional enough shell, configure will select a
+SHELL of /bin/bash or better.  But the current build helpers always
+hardcode /bin/sh, so if libtool itself configures itself for /bin/bash,
+things will fail when it attempts to do:
+	SHELL = /bin/sh
+	LIBTOOL = $(SHELL) .../libtool
+	...
+	eval: 1: base_compile+= -pipe: not found
+	...
+
+So rather than hardcoding SHELL to /bin/sh, set it to @SHELL@ and let
+configure find a good value for us.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ include/builddefs.in |    1 +
+ include/buildmacros  |    1 -
+ 2 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/include/builddefs.in b/include/builddefs.in
+index d054a56..434ce95 100644
+--- a/include/builddefs.in
++++ b/include/builddefs.in
+@@ -46,6 +46,7 @@ MAKE		= @make@
+ ECHO		= @echo@
+ SORT		= @sort@
+ LN_S		= @LN_S@
++SHELL		= @SHELL@
+ LIBTOOL		= @LIBTOOL@
+ MAKEDEPEND	= @makedepend@
+ 
+diff --git a/include/buildmacros b/include/buildmacros
+index ab89182..8efb32e 100644
+--- a/include/buildmacros
++++ b/include/buildmacros
+@@ -42,7 +42,6 @@ OBJECTS = $(ASFILES:.s=.o) \
+ 
+ INSTALL	= $(TOPDIR)/include/install-sh -o $(PKG_USER) -g $(PKG_GROUP)
+ 
+-SHELL = /bin/sh
+ IMAGES_DIR = $(TOPDIR)/all-images
+ DIST_DIR = $(TOPDIR)/dist
+ 
+-- 
+1.7.5.rc3
+

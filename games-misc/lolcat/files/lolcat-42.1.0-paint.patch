@@ -1,0 +1,11 @@
+--- all.orig/lolcat-42.1.0/lolcat.gemspec	2015-05-13 01:21:05.898321678 -0400
++++ all/lolcat-42.1.0/lolcat.gemspec	2015-05-13 02:02:11.987935841 -0400
+@@ -12,7 +12,7 @@
+   s.summary     = %q{Okay, no unicorns. But rainbows!!}
+ 
+   s.add_development_dependency "rake"
+-  s.add_dependency "paint", "~> 0.8.3"
++  s.add_dependency "paint"
+   s.add_dependency "trollop", "~> 1.16.2"
+ 
+   s.files         = `git ls-files`.split("\n")

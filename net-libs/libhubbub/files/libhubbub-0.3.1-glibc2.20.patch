@@ -1,0 +1,17 @@
+--- libhubbub-0.3.1/Makefile
++++ libhubbub-0.3.1/Makefile
+@@ -15,13 +15,7 @@
+ WARNFLAGS := -Wall -W -Wundef -Wpointer-arith -Wcast-align \
+ 	-Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes \
+ 	-Wmissing-declarations -Wnested-externs -pedantic
+-# BeOS/Haiku/AmigaOS have standard library errors that issue warnings.
+-ifneq ($(BUILD),i586-pc-haiku)
+-  ifneq ($(findstring amigaos,$(BUILD)),amigaos)
+-    WARNFLAGS := $(WARNFLAGS) -Werror
+-  endif
+-endif
+-CFLAGS := -D_BSD_SOURCE -I$(CURDIR)/include/ \
++CFLAGS := -D_DEFAULT_SOURCE -I$(CURDIR)/include/ \
+ 	-I$(CURDIR)/src $(WARNFLAGS) $(CFLAGS)
+ ifneq ($(GCCVER),2)
+   CFLAGS := $(CFLAGS) -std=c99

@@ -1,0 +1,48 @@
+# ChangeLog for media-fonts/fs-fonts
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/fs-fonts/ChangeLog,v 1.12 2014/03/02 09:37:33 pacho Exp $
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> fs-fonts-0.1_alpha3.ebuild:
+  amd64 stable, bug #286210
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  fs-fonts-0.1_alpha3.ebuild:
+  Transfer Prefix keywords
+
+  06 Jul 2009; Jeroen Roovers <jer@gentoo.org> fs-fonts-0.1_alpha3.ebuild:
+  Stable for HPPA too.
+
+  24 Feb 2008; Raúl Porcel <armin76@gentoo.org> fs-fonts-0.1_alpha3.ebuild:
+  alpha/sparc stable
+
+  23 Jan 2008; Raúl Porcel <armin76@gentoo.org> fs-fonts-0.1_alpha3.ebuild:
+  Add ~alpha/~sparc, x86 stable
+
+  15 Jan 2008; Fabian Groffen <grobian@gentoo.org>
+  fs-fonts-0.1_alpha3.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  27 Apr 2007; Joseph Jezak <josejx@gentoo.org> fs-fonts-0.1_alpha3.ebuild:
+  Added ~ppc for bug #175597.
+
+  26 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  fs-fonts-0.1_alpha3.ebuild:
+  Add ~x86-fbsd keyword, restrict binchecks and strip.
+
+  11 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  fs-fonts-0.1_alpha3.ebuild:
+  Mark 0.1_alpha3 stable on ia64
+
+  10 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  fs-fonts-0.1_alpha3.ebuild:
+  Added to ~hppa.
+
+  24 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  fs-fonts-0.1_alpha3.ebuild:
+  Marked ~amd64.
+
+*fs-fonts-0.1_alpha3 (22 Oct 2004)
+
+  22 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +fs-fonts-0.1_alpha3.ebuild:
+  Initial import.

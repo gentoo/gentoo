@@ -1,0 +1,8 @@
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-nds/tac_plus/files/tac_plus.confd,v 1.1 2007/01/03 13:09:38 chainsaw Exp $
+
+# Config file for /etc/init.d/tac_plus
+
+TAC_PLUS_OPTS="-d 248"
+

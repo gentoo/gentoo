@@ -1,0 +1,95 @@
+# ChangeLog for x11-libs/libview
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libview/ChangeLog,v 1.21 2014/12/30 12:30:02 pacho Exp $
+
+  30 Dec 2014; Pacho Ramos <pacho@gentoo.org> libview-0.6.6-r2.ebuild:
+  Bump eapi and use gnome2.eclass a bit better
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> libview-0.6.6-r2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  16 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> -libview-0.6.6-r1.ebuild:
+  old
+
+*libview-0.6.6-r2 (16 Oct 2011)
+
+  16 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  files/libview-0.5.6-pcfix.patch, +libview-0.6.6-r2.ebuild:
+  Move @VIEW_LIBS@ to Libs.private from Libs to avoid problems with libpng
+  upgrade.
+
+  14 Sep 2011; Vadim Kuznetsov <vadimk@gentoo.org> -libview-0.6.2.ebuild,
+  -libview-0.6.6.ebuild:
+  remove older ebuilds
+
+  12 Sep 2011; Markus Meier <maekke@gentoo.org> libview-0.6.6-r1.ebuild:
+  x86 stable, bug #382187
+
+  09 Sep 2011; Tony Vroon <chainsaw@gentoo.org> libview-0.6.6-r1.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo in bug
+  #382187 filed by Jared.
+
+*libview-0.6.6-r1 (09 Sep 2011)
+
+  09 Sep 2011; Vadim Kuznetsov <vadimk@gentoo.org> +libview-0.6.6-r1.ebuild:
+  static libs via USE flag; removing la files; fixed debug use flag.
+  Bugs 382279, 382277
+
+  08 Sep 2011; Vadim Kuznetsov <vadimk@gentoo.org> -libview-0.5.6-r1.ebuild,
+  -libview-0.6.1.ebuild:
+  cleanup
+
+  29 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  libview-0.5.6-r1.ebuild, libview-0.6.1.ebuild, libview-0.6.2.ebuild,
+  libview-0.6.6.ebuild:
+  Fix slot-deps on gnome libs
+
+*libview-0.6.6 (02 Sep 2010)
+
+  02 Sep 2010; Vadim Kuznetsov <vadimk@gentoo.org> +libview-0.6.6.ebuild:
+  version bump
+
+  15 Jan 2009; Peter Alfredsen <loki_val@gentoo.org> metadata.xml:
+  Compnerd retired.
+
+  12 Jan 2009; Markus Meier <maekke@gentoo.org> libview-0.6.2.ebuild:
+  amd64/x86 stable, bug #245941
+
+  31 Dec 2008; Mike Auty <ikelos@gentoo.org> libview-0.6.2.ebuild:
+  Fix up deprecation system (bug 239325).
+
+*libview-0.6.2 (31 Dec 2008)
+
+  31 Dec 2008; Mike Auty <ikelos@gentoo.org> metadata.xml,
+  +libview-0.6.2.ebuild:
+  Version bump, and add vmware as herd, since this is mostly used for vmware
+  products.
+
+*libview-0.6.1 (28 Oct 2007)
+
+  28 Oct 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  +libview-0.6.1.ebuild:
+  Version bump from upstream (bug #170683)
+
+  28 Apr 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  -libview-0.5.6.ebuild:
+  Drop unused older ebuild
+
+  28 Apr 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  libview-0.5.6-r1.ebuild:
+  keyword ~amd64 (bug #176382)
+
+*libview-0.5.6-r1 (04 Apr 2007)
+
+  04 Apr 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/libview-0.5.6-pcfix.patch, +libview-0.5.6-r1.ebuild:
+  Fix for pkgconfig file (bug #170681)
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+*libview-0.5.6 (23 Dec 2005)
+
+  23 Dec 2005; Saleem Abdulrasool <compnerd@gentoo.org> +metadata.xml,
+  +libview-0.5.6.ebuild:
+  Initial import of libview

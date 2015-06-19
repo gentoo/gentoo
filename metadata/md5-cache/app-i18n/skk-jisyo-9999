@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=cdb? ( dev-db/cdb ) sys-apps/gawk dev-vcs/cvs
+DESCRIPTION=Jisyo (dictionary) files for the SKK Japanese-input software
+HOMEPAGE=http://openlab.ring.gr.jp/skk/dic.html
+IUSE=cdb
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2 public-domain freedist
+RDEPEND=cdb? ( dev-db/cdb ) !app-i18n/skk-jisyo-extra !app-i18n/skk-jisyo-cdb
+SLOT=0
+_eclasses_=cvs	a4cb8da1bb586b224ade5b54f1d2fda0	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=36a2b07174cc2c539c8fb292dccf1ec2

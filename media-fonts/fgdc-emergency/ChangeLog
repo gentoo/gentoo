@@ -1,0 +1,25 @@
+# ChangeLog for media-fonts/fgdc-emergency
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/fgdc-emergency/ChangeLog,v 1.4 2014/03/02 09:37:10 pacho Exp $
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> fgdc-emergency-2.20.ebuild:
+  amd64 stable, bug #286202
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  fgdc-emergency-2.20.ebuild:
+  x86 stable wrt bug #286202
+
+  14 Jun 2011; Peter Volkov <pva@gentoo.org> fgdc-emergency-2.20.ebuild:
+  Add missing app-arch/unzip dependency, bug 371221, thank Piotr Szymaniak for
+  report.
+
+  08 May 2008; Ryan Hill <dirtyepic@gentoo.org> +metadata.xml,
+  +fgdc-emergency-2.20.ebuild:
+  Initial import of Homeland Security emergency response symbology. (Bug
+  #73409)
+
+*fgdc-emergency-2.20 (08 May 2008)
+
+  08 May 2008; Ryan Hill <dirtyepic@gentoo.org> +fgdc-emergency-2.20.ebuild:
+  Initial import of Homeland Security emergency response symbology. (Bug
+  #73409)

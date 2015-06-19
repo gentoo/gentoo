@@ -1,0 +1,47 @@
+# ChangeLog for media-sound/tapiir
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/tapiir/ChangeLog,v 1.23 2014/12/10 16:35:19 jer Exp $
+
+  10 Dec 2014; Jeroen Roovers <jer@gentoo.org> files/tapiir-0.7.3-acinclude.m4:
+  Fix underlinking (bug #366193).
+
+*tapiir-0.7.3 (10 Dec 2014)
+
+  10 Dec 2014; Jeroen Roovers <jer@gentoo.org> +tapiir-0.7.3.ebuild,
+  +files/tapiir-0.7.3-acinclude.m4:
+  Version bump. Fix FLTK version check (bug #366193).
+
+  20 Mar 2011; Justin Lecher <jlec@gentoo.org> tapiir-0.7.2.ebuild:
+  x11-libs/fltk SLOTMOVE 1.1 -> 1, corrected ebuild accordingly
+
+  03 Jun 2009; Markus Meier <maekke@gentoo.org> tapiir-0.7.2.ebuild:
+  amd64/x86 stable, bug #272134
+
+  19 Dec 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/tapiir-0.7.2-ldflags.patch, tapiir-0.7.2.ebuild:
+  Fix configure that has been generated with a broken AM_PATH_FLTK that
+  causes failures with forced asneeded, bug #247865
+
+  15 Dec 2008; Ben de Groot <yngwin@gentoo.org> tapiir-0.7.1.ebuild,
+  tapiir-0.7.2.ebuild:
+  Pinning fltk dep on slot 1.1, bug 246445
+
+*tapiir-0.7.2 (12 May 2008)
+
+  12 May 2008; Samuli Suominen <drac@gentoo.org> +tapiir-0.7.2.ebuild:
+  Version bump.
+
+  01 Nov 2006; Alexis Ballier <aballier@gentoo.org>
+  +files/tapiir-0.7.1-gcc4.patch, tapiir-0.7.1.ebuild:
+  Gcc 4 fix wrt bug #153361
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> tapiir-0.7.1.ebuild:
+  Added to ~ppc.
+
+  19 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove retired developer from metadata.xml.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  tapiir-0.7.1.ebuild:
+  Added to ~sparc.
+

@@ -1,0 +1,11 @@
+--- a/ignore.csh
++++ b/ignore.csh
+@@ -35,7 +35,7 @@
+ endif
+   
+ # Safe directory 
+-set SENTRYDIR=/usr/local/psionic/portsentry
++set SENTRYDIR=/etc/portsentry
+ set TMPFILE=portsentry.ignore.tmp
+  
+ if (-f $SENTRYDIR/portsentry.ignore) then 

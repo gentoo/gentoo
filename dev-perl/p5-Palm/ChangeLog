@@ -1,0 +1,108 @@
+# ChangeLog for dev-perl/p5-Palm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/p5-Palm/ChangeLog,v 1.32 2014/08/22 19:45:49 axs Exp $
+
+*p5-Palm-1.12.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +p5-Palm-1.12.0-r1.ebuild, -p5-Palm-1.12.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  05 Apr 2012; Torsten Veller <tove@gentoo.org> -p5-Palm-1.003.ebuild:
+  Cleanup
+
+  31 Mar 2012; Raúl Porcel <armin76@gentoo.org> p5-Palm-1.003.ebuild,
+  p5-Palm-1.12.0.ebuild:
+  Drop ia64/sparc keywords
+
+  31 Mar 2012; Tobias Klausmann <klausman@gentoo.org> p5-Palm-1.12.0.ebuild:
+  Stable on alpha, bug #400309
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> p5-Palm-1.12.0.ebuild:
+  x86 stable wrt bug #400309
+
+  28 Feb 2012; Brent Baude <ranger@gentoo.org> p5-Palm-1.12.0.ebuild:
+  Marking p5-Palm-1.12.0 ppc for bug 400309
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> p5-Palm-1.12.0.ebuild:
+  Stable for amd64, wrt bug #400309
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -p5-Palm-1.012.ebuild:
+  Cleanup
+
+*p5-Palm-1.12.0 (27 Aug 2011)
+
+  27 Aug 2011; Torsten Veller <tove@gentoo.org> +p5-Palm-1.12.0.ebuild:
+  Change version scheme
+
+*p5-Palm-1.012 (16 Jul 2010)
+*p5-Palm-1.003 (16 Jul 2010)
+
+  16 Jul 2010; Torsten Veller <tove@gentoo.org> +p5-Palm-1.003.ebuild,
+  -p5-Palm-1.3.0.ebuild, +p5-Palm-1.012.ebuild:
+  Version bump. Move 1.3.0 to 1.003
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -p5-Palm-1.2.4-r1.ebuild, p5-Palm-1.3.0.ebuild:
+  Ebuild maintenance
+
+  18 Aug 2006; Michael Cummings <mcummings@gentoo.org> p5-Palm-1.3.0.ebuild:
+  Marking amd64 stable
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  p5-Palm-1.2.4-r1.ebuild, p5-Palm-1.3.0.ebuild:
+  Adding perl dep; fixed header; fixed DEPEND
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org> p5-Palm-1.3.0.ebuild:
+  Mark 1.3.0 stable on ia64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> p5-Palm-1.3.0.ebuild:
+  Mark 1.3.0 stable on alpha
+
+  15 Jan 2006; Michael Hanselmann <hansmi@gentoo.org> p5-Palm-1.3.0.ebuild:
+  Stable on ppc.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org> p5-Palm-1.3.0.ebuild:
+  Marking sparc x86 stable
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> p5-Palm-1.3.0.ebuild:
+  add ~ia64
+
+  10 May 2005; Michael Cummings <mcummings@gentoo.org> p5-Palm-1.3.0.ebuild:
+  Bug 92090 - upstream uses a different version number than labeled
+
+*p5-Palm-1.3.0 (29 Apr 2005)
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -p5-Palm-1.2.4.ebuild, p5-Palm-1.2.4-r1.ebuild, +p5-Palm-1.3.0.ebuild:
+  Cleaning for mirror syntax
+
+  27 Feb 2004; Michael Cummings <mcummings@gentoo.org>
+  p5-Palm-1.2.4-r1.ebuild, p5-Palm-1.2.4.ebuild:
+  silly double slots again
+
+*p5-Palm-1.2.4-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+
+  forced version bump to install into correct locations
+
+*p5-Palm-1.2.4 (16 Jul 2002)
+
+  1 Aug 2002; Calum Selkirk <cselkirk@gentoo.org> p5-Palm-1.2.4.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  16 Jul 2002; Seemant Kulleen <seemant@gentoo.org> p5-Palm-1.2.4.ebuild
+  ChangeLog files/digest-p5-Palm-1.2.4 :
+
+  Added new package for lbdb to be able to use.

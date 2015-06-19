@@ -1,0 +1,48 @@
+# ChangeLog for media-plugins/vdr-mailbox
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-mailbox/ChangeLog,v 1.9 2014/02/23 20:17:09 hd_brummy Exp $
+
+  23 Feb 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-mailbox-0.6.0.ebuild:
+  eapi=5; converted to vdr-plugin-2.eclass
+
+  22 Sep 2013; Agostino Sarubbo <ago@gentoo.org> vdr-mailbox-0.7.0.ebuild:
+  Stable for x86, wrt bug #484580
+
+  21 Sep 2013; Agostino Sarubbo <ago@gentoo.org> vdr-mailbox-0.7.0.ebuild:
+  Stable for amd64, wrt bug #484580
+
+*vdr-mailbox-0.7.0 (23 Jun 2013)
+
+  23 Jun 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-mailbox-0.7.0.ebuild:
+  bump
+
+  07 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-mailbox-0.4.0.ebuild, -files/vdr-mailbox-0.4.0_vdr-1.5.3.diff,
+  -vdr-mailbox-0.5.0.ebuild, vdr-mailbox-0.6.0.ebuild:
+  cleanup, eapi=3, stable x86 amd64, bug 397081
+
+*vdr-mailbox-0.6.0 (16 Aug 2008)
+
+  16 Aug 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-mailbox-0.6.0.ebuild:
+  Version bumped.
+
+  22 Oct 2007; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-mailbox-0.4.0.ebuild, vdr-mailbox-0.5.0.ebuild:
+  Fix compile problem with missing cxxflag.
+
+*vdr-mailbox-0.5.0 (21 Oct 2007)
+
+  21 Oct 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-mailbox-0.4.0.ebuild, +vdr-mailbox-0.5.0.ebuild:
+  version bump; vdr-mailbox-0.4.0 stable on x86
+
+*vdr-mailbox-0.4.0 (02 Aug 2007)
+
+  02 Aug 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-mailbox-0.4.0_vdr-1.5.3.diff, +metadata.xml,
+  +vdr-mailbox-0.4.0.ebuild:
+  initial ebuild; thanks to rwx @ #gentoo-vdr IRC; older versions on gentoo.de
+  overlay

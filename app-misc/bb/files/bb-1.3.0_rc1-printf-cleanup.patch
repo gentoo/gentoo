@@ -1,0 +1,55 @@
+zoom.c: cleanup protos
+
+x86_64-pc-linux-gnu-gcc -DHAVE_CONFIG_H -I.     -O2 -march=core2 -pipe -I/usr/include -pthread -D_REENTRANT -D SOUNDDIR=\"/usr/share/bb\" -c zoom.c
+zoom.c: In function 'mkrealloc_table':
+zoom.c:245:113: warning: format '%i' expects type 'int', but argument 3 has type 'long unsigned int'
+zoom.c:251:113: warning: format '%i' expects type 'int', but argument 3 has type 'long unsigned int'
+zoom.c:260:113: warning: format '%i' expects type 'int', but argument 3 has type 'long unsigned int'
+zoom.c: In function 'moveoldpoints':
+zoom.c:590:3: warning: format '%i' expects type 'int', but argument 3 has type 'long unsigned int'
+zoom.c:596:3: warning: format '%i' expects type 'int', but argument 3 has type 'long unsigned int'
+diff --git a/zoom.c b/zoom.c
+index 7450095..b86cc8b 100644
+--- a/zoom.c
++++ b/zoom.c
+@@ -241,13 +241,13 @@ static /*INLINE */ void mkrealloc_table(register number_t * pos, realloc_t * rea
+ #endif
+     if (dyndata == NULL) {
+ 	fprintf(stderr, "XaoS fatal error:Could not allocate memory for"
+-		"temporary dynamical data of size:%i\n"
++		"temporary dynamical data of size:%li\n"
+ 		"I am unable to handle this problem so please resize to lower window\n", (size) * (DSIZE + 1) * sizeof(struct dyn_data) + size * sizeof(int) + size * sizeof(int));
+ 	return;
+     }
+     if (best == NULL) {
+ 	fprintf(stderr, "XaoS fatal error:Could not allocate memory for"
+-		"temporary dynamical data of size:%i\n"
++		"temporary dynamical data of size:%li\n"
+ 		"I am unable to handle this problem so please resize to lower window\n", (size) * (DSIZE + 1) * sizeof(struct dyn_data) + size * sizeof(int) + size * sizeof(int));
+ #ifndef HAVE_ALLOCA
+ 	free(dyndata);
+@@ -256,7 +256,7 @@ static /*INLINE */ void mkrealloc_table(register number_t * pos, realloc_t * rea
+     }
+     if (best1 == NULL) {
+ 	fprintf(stderr, "XaoS fatal error:Could not allocate memory for"
+-		"temporary dynamical data of size:%i\n"
++		"temporary dynamical data of size:%li\n"
+ 		"I am unable to handle this problem so please resize to lower window\n", (size) * (DSIZE + 1) * sizeof(struct dyn_data) + size * sizeof(int) + size * sizeof(int));
+ #ifndef HAVE_ALLOCA
+ 	free(dyndata);
+@@ -586,13 +586,13 @@ static /*INLINE */ void moveoldpoints(void)
+ #endif
+     if (size == NULL) {
+ 	fprintf(stderr, "XaoS fratal error:Could not allocate memory for"
+-		"temporary dynamical data of size:%i\n"
++		"temporary dynamical data of size:%li\n"
+ 		"I am unable to handle this problem so please resize to lower window\n", 2 * d->width * sizeof(int));
+ 	return;
+     }
+     if (start == NULL) {
+ 	fprintf(stderr, "XaoS fratal error:Could not allocate memory for"
+-		"temporary dynamical data of size:%i\n"
++		"temporary dynamical data of size:%li\n"
+ 		"I am unable to handle this problem so please resize to lower window\n", 2 * d->width * sizeof(int));
+ #ifndef HAVE_ALLOCA
+ 	free(size);

@@ -1,0 +1,36 @@
+--- configure.in	2010-12-16 21:47:12.000000000 +0000
++++ configure.in	2011-02-03 19:13:29.000000000 +0000
+@@ -48,12 +48,16 @@
+   LDFLAGS="$LDFLAGS -L$prefix/lib"
+ fi)
+ 
+-dnl Check that libgcrypt is available
+-AC_CHECK_LIB(gcrypt,gcry_check_version,
+-  AC_DEFINE([HAVE_LIBGCRYPT], 1, [Defined if we've got libgcrypt])
+-  GCRYPT_LIBS="$LIBS -lgcrypt"
+-  gcrypt=yes
+-)
++dnl Check whether to use libgcrypt
++AC_MSG_CHECKING(whether to use libgcrypt)
++AC_ARG_WITH(libgcrypt,
++[  --without-libgcrypt     don't use libgcrypt],
++if test "$withval" = no; then libgcrypt=no; else libgcrypt=yes; fi,
++libgcrypt=yes)
++AC_MSG_RESULT($libgcrypt)
++if test "$libgcrypt" = yes; then
++  AC_CHECK_HEADERS(gcrypt.h,LIBS="$LIBS -lgcrypt")
++fi
+ AC_SUBST(GCRYPT_LIBS)
+ AM_CONDITIONAL(BUILD_RZXCHECK, test "$gcrypt" = yes)
+ 
+--- audio2tape.h	2010-12-16 21:47:12.000000000 +0000
++++ audio2tape.h	2011-02-03 19:13:02.000000000 +0000
+@@ -26,6 +26,8 @@
+ #ifndef AUDIO2TAPE_H
+ #define AUDIO2TAPE_H
+ 
++#include <string.h>
++
+ class audio2tape_exception : public std::exception
+ {
+   public:

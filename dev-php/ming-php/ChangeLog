@@ -1,0 +1,12 @@
+# ChangeLog for dev-php/ming-php
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/ming-php/ChangeLog,v 1.2 2015/06/09 15:01:06 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*ming-php-0.4.5 (22 Jan 2015)
+
+  22 Jan 2015; Brian Evans <grknight@gentoo.org> +files/ming-php-54.patch,
+  +files/php_ext-config.m4, +metadata.xml, +ming-php-0.4.5.ebuild:
+  Initial commit split from media-libs/ming

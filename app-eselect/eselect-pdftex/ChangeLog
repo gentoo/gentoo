@@ -1,0 +1,84 @@
+# ChangeLog for app-eselect/eselect-pdftex
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-pdftex/ChangeLog,v 1.1 2015/03/31 16:53:36 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> +eselect-pdftex-0.3.ebuild,
+  +files/pdftex.eselect-0.3, +metadata.xml:
+  Move package from app-admin to app-eselect category.
+
+  09 Jun 2010; Alexis Ballier <aballier@gentoo.org>
+  -files/pdftex.eselect-0.1, -eselect-pdftex-0.1.ebuild,
+  -files/pdftex.eselect-0.2, -eselect-pdftex-0.2.ebuild:
+  remove old
+
+  21 May 2010; Peter Volkov <pva@gentoo.org> eselect-pdftex-0.3.ebuild:
+  amd64 stable, bug 302203
+
+  11 Feb 2010; Jeroen Roovers <jer@gentoo.org> eselect-pdftex-0.3.ebuild:
+  Stable for HPPA (bug #302203).
+
+  07 Feb 2010; Raúl Porcel <armin76@gentoo.org> eselect-pdftex-0.3.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #302203
+
+  01 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  eselect-pdftex-0.3.ebuild:
+  stable x86, bug 302203
+
+*eselect-pdftex-0.3 (12 Dec 2009)
+
+  12 Dec 2009; Alexis Ballier <aballier@gentoo.org>
+  +files/pdftex.eselect-0.3, +eselect-pdftex-0.3.ebuild:
+  Fixup fmtutil-sys call and maintainer in the eselect file
+
+*eselect-pdftex-0.2 (06 Nov 2009)
+
+  06 Nov 2009; Ulrich Mueller <ulm@gentoo.org> +files/pdftex.eselect-0.2,
+  +eselect-pdftex-0.2.ebuild:
+  Version bump, bug 292107.
+
+  18 Mar 2009; Raúl Porcel <armin76@gentoo.org> eselect-pdftex-0.1.ebuild:
+  alpha/arm/ia64/s390/sh stable wrt #253551
+
+  11 Mar 2009; Markus Meier <maekke@gentoo.org> eselect-pdftex-0.1.ebuild:
+  amd64 stable, bug #253551
+
+  10 Mar 2009; Raúl Porcel <armin76@gentoo.org> eselect-pdftex-0.1.ebuild:
+  Add ~arm/~s390/~sh
+
+  07 Mar 2009; Christian Faulhammer <fauli@gentoo.org>
+  eselect-pdftex-0.1.ebuild:
+  x86 stable, bug 253551
+
+  06 Mar 2009; Jeroen Roovers <jer@gentoo.org> eselect-pdftex-0.1.ebuild:
+  Stable for HPPA (bug #253551).
+
+  27 Feb 2009; Ferris McCormick <fmccor@gentoo.org>
+  eselect-pdftex-0.1.ebuild:
+  Sparc stable, part of Bug #253551.
+
+  19 Nov 2008; Ferris McCormick <fmccor@gentoo.org>
+  eselect-pdftex-0.1.ebuild:
+  Add ~sparc for testing, cleanup for Bug #237202.
+
+  15 Oct 2008; Jeroen Roovers <jer@gentoo.org> eselect-pdftex-0.1.ebuild:
+  Marked ~hppa too.
+
+  04 Oct 2008; Brent Baude <ranger@gentoo.org> eselect-pdftex-0.1.ebuild:
+  Marking eselect-pdftex-0.1 ~ppc for bug 237202
+
+  24 Sep 2008; Raúl Porcel <armin76@gentoo.org> eselect-pdftex-0.1.ebuild:
+  Add ~alpha/~ia64 wrt #237202
+
+  21 Sep 2008; Brent Baude <ranger@gentoo.org> eselect-pdftex-0.1.ebuild:
+  Marking eselect-pdftex-0.1 ~ppc64 for bug 237202
+
+  11 Sep 2008; Markus Meier <maekke@gentoo.org> eselect-pdftex-0.1.ebuild:
+  add ~x86, bug #237202
+
+*eselect-pdftex-0.1 (09 Sep 2008)
+
+  09 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/pdftex.eselect-0.1, +metadata.xml, +eselect-pdftex-0.1.ebuild:
+  Initial import: manages /usr/bin/pdftex symlinks to allow easy usage of
+  standalone pdftex ebuild.
+

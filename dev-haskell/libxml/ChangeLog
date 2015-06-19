@@ -1,0 +1,12 @@
+# ChangeLog for dev-haskell/libxml
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/libxml/ChangeLog,v 1.2 2014/07/25 08:59:29 slyfox Exp $
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*libxml-0.1.1 (19 Oct 2013)
+
+  19 Oct 2013; Mark Wright <gienah@gentoo.org> +libxml-0.1.1.ebuild,
+  +metadata.xml:
+  Add libxml for test-framework

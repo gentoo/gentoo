@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<longdescription lang="en">Many applications and libraries are unable to write asynchronous code because they are unable to pick an event loop. This is particularly true of libraries who want to be useful to many applications who use loops that do not integrate with one another or which use home-grown loops. libverto provides a loop-neutral async api which allows the library to expose asynchronous interfaces and offload the choice of the main loop to the application.</longdescription>
+<maintainer>
+    <email>eras@gentoo.org</email>
+    <name>Eray Aslan</name>
+</maintainer>
+<use>
+    <flag name="glib">Support event loops using <pkg>dev-libs/glib</pkg></flag>
+    <flag name="libev">Support event loops using <pkg>dev-libs/libev</pkg></flag>
+    <flag name="libevent">Support event loops using <pkg>dev-libs/libevent</pkg></flag>
+    <flag name="tevent">Support event loops using <pkg>sys-libs/tevent</pkg></flag>
+</use>
+</pkgmetadata>

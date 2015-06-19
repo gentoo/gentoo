@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>common-lisp</herd>
+<longdescription>
+The Common Lisp Controller was originally used in the Debian project.  The Common
+Lisp Contoller lets you install and manage common lisp sources and compilers.
+It creates a user-specific cache of compiled objects.  When a library or an
+implementation is upgraded all compiled objects in the cache are flushed.
+</longdescription>
+</pkgmetadata>

@@ -1,0 +1,30 @@
+# ChangeLog for app-misc/btail
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/btail/ChangeLog,v 1.7 2012/10/17 12:05:39 ago Exp $
+
+  17 Oct 2012; Agostino Sarubbo <ago@gentoo.org> btail-0.3.ebuild:
+  Add ~amd64 keyword
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -btail-0.2.ebuild:
+  Remove old
+
+*btail-0.3 (24 Jun 2011)
+
+  24 Jun 2011; Jeroen Roovers <jer@gentoo.org> +btail-0.3.ebuild:
+  Version bump. Clean up ebuild. Fix one compiler warning.
+
+  30 Dec 2008; Christoph Mende <angelos@gentoo.org> btail-0.2.ebuild:
+  QA: Respect CC/CXX (bug 243612) and CFLAGS/LDFLAGS (bug 243616)
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> btail-0.2.ebuild:
+  (QA) RESTRICT clean up.
+
+  11 Jun 2006; Stuart Herbert <stuart@gentoo.org> btail-0.2.ebuild:
+  Added missing DEP, and fixed the makefile (see bug #132444)
+  Thanks to James Rowe (jnrowe@ukfsn.org)
+
+*btail-0.2 (02 Jan 2005)
+
+  02 Jan 2005; Stuart Herbert <stuart@gentoo.org> +metadata.xml,
+  +btail-0.2.ebuild:
+  Initial import

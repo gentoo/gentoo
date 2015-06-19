@@ -1,0 +1,7 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/10.4/x86/package.unmask,v 1.1 2012/09/29 11:15:45 grobian Exp $
+
+# Fabian Groffen <grobian@gentoo.org> (29 Sep 2012)
+# This is the only way to get Java6 here
+dev-java/soylatte-jdk-bin

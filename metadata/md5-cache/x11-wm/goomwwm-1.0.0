@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=x11-libs/libXft x11-libs/libX11 x11-libs/libXinerama virtual/pkgconfig x11-proto/xineramaproto x11-proto/xproto
+DESCRIPTION=Get out of my way, Window Manager!
+EAPI=5
+HOMEPAGE=http://aerosuidae.net/goomwwm/
+IUSE=debug
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=x11-libs/libXft x11-libs/libX11 x11-libs/libXinerama
+SLOT=0
+SRC_URI=http://aerosuidae.net/goomwwm/goomwwm-1.0.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=cc3aa5382310720dbf8a61eb6dcb06a2

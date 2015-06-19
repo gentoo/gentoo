@@ -1,0 +1,11 @@
+--- casa/aipsdef.h.orig	2014-03-06 22:05:25.000000000 +0000
++++ casa/aipsdef.h	2014-03-06 22:06:09.000000000 +0000
+@@ -91,7 +91,7 @@
+ #else
+ #define WHATEVER_SUN_TYPEDEF(X)
+ #define WHATEVER_TYPENAME typename
+-#if defined(AIPS_CRAY_PGI)
++#if defined(AIPS_CRAY_PGI) || defined(AIPS_GCC4)
+ #define WHATEVER_SUN_EXCEPTSPEC(X) throw(X)
+ #else
+ #define WHATEVER_SUN_EXCEPTSPEC(X)

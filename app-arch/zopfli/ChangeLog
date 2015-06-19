@@ -1,0 +1,72 @@
+# ChangeLog for app-arch/zopfli
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/zopfli/ChangeLog,v 1.13 2015/06/05 12:02:12 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> zopfli-1.0.0_p20140705.ebuild,
+  zopfli-1.0.0_p20141006.ebuild:
+  Add missing eclass
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*zopfli-1.0.0_p20141006 (10 Oct 2014)
+
+  10 Oct 2014; Yixun Lan <dlan@gentoo.org> +zopfli-1.0.0_p20141006.ebuild:
+  bump as maintainer request, bug 524766
+
+  14 Aug 2014; Sergey Popov <pinkbyte@gentoo.org>
+  -zopfli-1.0.0_p20131216.ebuild, -zopfli-1.0.0_p20140623.ebuild:
+  Drop old versions
+
+  14 Aug 2014; Sergey Popov <pinkbyte@gentoo.org>
+  zopfli-1.0.0_p20140705.ebuild:
+  Stable on amd64 and x86, wrt bug #519910
+
+  10 Aug 2014; Patrick Lauer <patrick@gentoo.org> zopfli-1.0.0.ebuild,
+  zopfli-1.0.0_p20140623.ebuild:
+  Fix description for more repoman happy
+
+*zopfli-1.0.0_p20140705 (10 Jul 2014)
+*zopfli-1.0.0_p20140623 (10 Jul 2014)
+
+  10 Jul 2014; Yixun Lan <dlan@gentoo.org> -zopfli-1.0.0_p20130508-r1.ebuild,
+  +zopfli-1.0.0_p20140623.ebuild, +zopfli-1.0.0_p20140705.ebuild:
+  version bump, bug 516468, proxy for Alex Xu (Hello71)
+
+  19 Feb 2014; Sergey Popov <pinkbyte@gentoo.org>
+  zopfli-1.0.0_p20131216.ebuild:
+  Stable on x86, wrt bug #498280
+
+  16 Jan 2014; Vicente Olivert Riera <vincent@gentoo.org>
+  zopfli-1.0.0_p20131216.ebuild:
+  amd64 stable, bug #498280
+
+*zopfli-1.0.0_p20131216 (16 Dec 2013)
+
+  16 Dec 2013; Sergey Popov <pinkbyte@gentoo.org>
+  +zopfli-1.0.0_p20131216.ebuild:
+  New upstream snapshot, wrt bug #492608: epatch_user, simplify ebuild cause
+  fixes went directly into buildsystem. Thanks to Alex Xu <alex_y_xu AT
+  yahoo.ca> for fixes
+
+  06 Nov 2013; Sergey Popov <pinkbyte@gentoo.org> zopfli-1.0.0.ebuild,
+  zopfli-1.0.0_p20130508-r1.ebuild:
+  Add ~x86 keyword, wrt bug #490274, thanks to Myckel Habets <myckel AT
+  sdf.lonestar.org>
+
+*zopfli-1.0.0_p20130508-r1 (23 Sep 2013)
+
+  23 Sep 2013; Tom Wijsman <TomWij@gentoo.org>
+  +zopfli-1.0.0_p20130508-r1.ebuild, -zopfli-1.0.0_p20130508.ebuild:
+  Revision bump. Redistributed tarball for 1.0.0_p20130508 version as upstream
+  generates a different unique commit tarball on every download. Discovered by
+  Alex Xu.
+
+*zopfli-1.0.0_p20130508 (18 Sep 2013)
+*zopfli-1.0.0 (18 Sep 2013)
+
+  18 Sep 2013; Tom Wijsman <TomWij@gentoo.org> +metadata.xml,
+  +zopfli-1.0.0.ebuild, +zopfli-1.0.0_p20130508.ebuild:
+  New ebuild for app-arch/zopfli, a compression library programmed in C to
+  perform very good, but slow, deflate or zlib compression. Proxied commit for
+  Alex Xu, which will proxy maintain this package; fixes bug #481492.

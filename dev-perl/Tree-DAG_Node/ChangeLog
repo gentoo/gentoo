@@ -1,0 +1,174 @@
+# ChangeLog for dev-perl/Tree-DAG_Node
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Tree-DAG_Node/ChangeLog,v 1.43 2015/06/13 22:08:36 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Tree-DAG_Node-1.100.0.ebuild, Tree-DAG_Node-1.110.0.ebuild,
+  Tree-DAG_Node-1.130.0.ebuild, Tree-DAG_Node-1.160.0.ebuild,
+  Tree-DAG_Node-1.240.0.ebuild, Tree-DAG_Node-1.90.0-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*Tree-DAG_Node-1.240.0 (13 Mar 2015)
+
+  13 Mar 2015; Patrice Clement <monsieurp@gentoo.org>
+  +Tree-DAG_Node-1.240.0.ebuild:
+  Version bump.
+
+*Tree-DAG_Node-1.60.0-r1 (22 Aug 2014)
+*Tree-DAG_Node-1.90.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Tree-DAG_Node-1.60.0-r1.ebuild, +Tree-DAG_Node-1.90.0-r1.ebuild,
+  -Tree-DAG_Node-1.60.0.ebuild, -Tree-DAG_Node-1.90.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  09 Jun 2014; Mike Frysinger <vapier@gentoo.org> Tree-DAG_Node-1.100.0.ebuild,
+  Tree-DAG_Node-1.110.0.ebuild, Tree-DAG_Node-1.130.0.ebuild,
+  Tree-DAG_Node-1.160.0.ebuild, Tree-DAG_Node-1.60.0.ebuild,
+  Tree-DAG_Node-1.90.0.ebuild:
+  Add arm64 love.
+
+  12 Oct 2013; Mikle Kolyada <zlogene@gentoo.org> Tree-DAG_Node-1.160.0.ebuild:
+  added missing test dependency: dev-perl/File-Slurp
+
+*Tree-DAG_Node-1.160.0 (13 Sep 2013)
+
+  13 Sep 2013; Patrick Lauer <patrick@gentoo.org> +Tree-DAG_Node-1.160.0.ebuild:
+  Bump
+
+*Tree-DAG_Node-1.130.0 (03 Sep 2013)
+
+  03 Sep 2013; Patrick Lauer <patrick@gentoo.org> +Tree-DAG_Node-1.130.0.ebuild:
+  Bump
+
+*Tree-DAG_Node-1.110.0 (08 Feb 2013)
+
+  08 Feb 2013; Torsten Veller <tove@gentoo.org> +Tree-DAG_Node-1.110.0.ebuild:
+  Version bump
+
+*Tree-DAG_Node-1.100.0 (01 Feb 2013)
+
+  01 Feb 2013; Torsten Veller <tove@gentoo.org> +Tree-DAG_Node-1.100.0.ebuild:
+  Version bump
+
+  11 Dec 2012; Agostino Sarubbo <ago@gentoo.org> Tree-DAG_Node-1.60.0.ebuild:
+  Stable for ppc64, wrt bug #441248
+
+*Tree-DAG_Node-1.90.0 (12 Nov 2012)
+
+  12 Nov 2012; Torsten Veller <tove@gentoo.org> +Tree-DAG_Node-1.90.0.ebuild:
+  Version bump
+
+  22 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  Tree-DAG_Node-1.60.0.ebuild:
+  keyword ~ppc64, bug #384677
+
+  08 Aug 2012; Naohiro Aota <naota@gentoo.org> Tree-DAG_Node-1.60.0.ebuild:
+  Add ~x86-fbsd wrt bug #428248
+
+  06 Aug 2012; Alexis Ballier <aballier@gentoo.org>
+  Tree-DAG_Node-1.60.0.ebuild:
+  keyword ~amd64-fbsd
+
+  29 Jul 2012; Torsten Veller <tove@gentoo.org> -Tree-DAG_Node-1.05.ebuild:
+  Cleanup
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  17 Jun 2012; Raúl Porcel <armin76@gentoo.org> Tree-DAG_Node-1.60.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #412985
+
+  25 Apr 2012; Markus Meier <maekke@gentoo.org> Tree-DAG_Node-1.60.0.ebuild:
+  arm stable, bug #412985
+
+  27 Mar 2012; Raúl Porcel <armin76@gentoo.org> Tree-DAG_Node-1.05.ebuild:
+  Revert moving to ~ia64/~sparc
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> Tree-DAG_Node-1.05.ebuild:
+  Move to ~ia64/~sparc
+
+  20 Mar 2012; Jeroen Roovers <jer@gentoo.org> Tree-DAG_Node-1.60.0.ebuild:
+  Stable for HPPA (bug #408579).
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Tree-DAG_Node-1.60.0.ebuild:
+  x86 stable wrt bug #400249
+
+  27 Feb 2012; Brent Baude <ranger@gentoo.org> Tree-DAG_Node-1.60.0.ebuild:
+  Marking Tree-DAG_Node-1.60.0 ppc for bug 400249
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Tree-DAG_Node-1.60.0.ebuild:
+  Stable for amd64, wrt bug #400249
+
+  18 Nov 2011; Fabian Groffen <grobian@gentoo.org> Tree-DAG_Node-1.60.0.ebuild:
+  Marked ~x86-solaris
+
+  11 Oct 2011; Matt Turner <mattst88@gentoo.org> Tree-DAG_Node-1.60.0.ebuild:
+  Added ~mips, bug 384677
+
+  10 Oct 2011; Jeroen Roovers <jer@gentoo.org> Tree-DAG_Node-1.60.0.ebuild:
+  Marked ~hppa (bug #384677).
+
+  09 Oct 2011; Raúl Porcel <armin76@gentoo.org> Tree-DAG_Node-1.05.ebuild,
+  Tree-DAG_Node-1.60.0.ebuild:
+  Add ~alpha/~arm/~s390/~sh wrt #384677
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Tree-DAG_Node-1.06.ebuild:
+  Cleanup
+
+*Tree-DAG_Node-1.60.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +Tree-DAG_Node-1.60.0.ebuild:
+  Change version scheme
+
+  14 Jan 2010; Fabian Groffen <grobian@gentoo.org>
+  Tree-DAG_Node-1.06.ebuild:
+  Transfer Prefix keywords
+
+*Tree-DAG_Node-1.06 (18 Jul 2008)
+
+  18 Jul 2008; Torsten Veller <tove@gentoo.org> +Tree-DAG_Node-1.06.ebuild:
+  Version bump
+
+  13 Jul 2007; Raúl Porcel <armin76@gentoo.org> Tree-DAG_Node-1.05.ebuild:
+  x86 stable
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Tree-DAG_Node-1.05.ebuild:
+  Ebuild maintenance
+
+  18 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Tree-DAG_Node-1.05.ebuild:
+  Marking amd64 stable
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Tree-DAG_Node-1.05.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  16 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Tree-DAG_Node-1.05.ebuild:
+  ppc stable
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> Tree-DAG_Node-1.05.ebuild:
+  Mark 1.05 stable on ia64
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  Tree-DAG_Node-1.05.ebuild:
+  Marking sparc stable
+
+  05 Apr 2006; <mcumming@gentoo.org> Tree-DAG_Node-1.05.ebuild:
+  Marking ~amd64, tested on pitr
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org> Tree-DAG_Node-1.05.ebuild:
+  Mark 1.05 ~ia64
+
+  19 Mar 2006; <nixnut@gentoo.org> Tree-DAG_Node-1.05.ebuild:
+  Added ~ppc. Bug #126745
+
+*Tree-DAG_Node-1.05 (19 Mar 2006)
+
+  19 Mar 2006; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +Tree-DAG_Node-1.05.ebuild:
+  Dep for Test-Warn

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>video</herd>
+<maintainer>
+	<email>media-video@gentoo.org</email>
+</maintainer>
+<longdescription lang="en">
+bbtools is a package of 4 small tools written by Brent Beyeler.
+
+bbdmux: an MPEG-1 or MPEG-2 program/transport stream de-multiplexer
+bbinfo: an MPEG-1 or MPEG-2 program/transport stream analyzer
+bbvinfo: an MPEG-1 or MPEG-2 video stream analyzer
+bbainfo: an MPEG-1 audio stream analyzer
+</longdescription>
+</pkgmetadata>
+

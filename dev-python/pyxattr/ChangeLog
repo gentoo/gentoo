@@ -1,0 +1,265 @@
+# ChangeLog for dev-python/pyxattr
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyxattr/ChangeLog,v 1.78 2015/06/16 08:21:08 jlec Exp $
+
+  16 Jun 2015; Justin Lecher <jlec@gentoo.org> pyxattr-0.5.3.ebuild,
+  pyxattr-0.5.5.ebuild, pyxattr-9999.ebuild:
+  Adjust sphinx version to support new theme names, bug #551950, bug #548486
+
+  21 May 2015; Ian Delaney <idella4@gentoo.org> pyxattr-0.5.3.ebuild,
+  pyxattr-0.5.5.ebuild:
+  fix to theme in conf.py, fixes doc build, fixes bug #548486 by Torsten Kaiser
+
+*pyxattr-0.5.5 (14 May 2015)
+
+  14 May 2015; Ian Delaney <idella4@gentoo.org> +pyxattr-0.5.5.ebuild:
+  bump
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pyxattr-0.5.3.ebuild,
+  pyxattr-9999.ebuild:
+  Drop old Python implementations
+
+  01 Apr 2015; Justin Lecher <jlec@gentoo.org> -pyxattr-0.5.2.ebuild,
+  metadata.xml:
+  Drop old
+
+  01 Apr 2015; Agostino Sarubbo <ago@gentoo.org> pyxattr-0.5.3.ebuild:
+  Stable for sparc, wrt bug #530296
+
+  30 Mar 2015;  <tgall@gentoo.org> pyxattr-0.5.3.ebuild:
+  stable on arm64
+
+  28 Feb 2015; Agostino Sarubbo <ago@gentoo.org> pyxattr-0.5.3.ebuild:
+  Stable for ia64, wrt bug #530296
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> pyxattr-0.5.3.ebuild:
+  Stable for alpha, wrt bug #530296
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pyxattr-0.5.3.ebuild:
+  Stable for x86, wrt bug #530296
+
+  01 Jan 2015; Markus Meier <maekke@gentoo.org> pyxattr-0.5.3.ebuild:
+  arm stable, bug #530296
+
+  01 Jan 2015; Agostino Sarubbo <ago@gentoo.org> pyxattr-0.5.3.ebuild:
+  Stable for ppc64, wrt bug #530296
+
+  31 Dec 2014; Agostino Sarubbo <ago@gentoo.org> pyxattr-0.5.3.ebuild:
+  Stable for ppc, wrt bug #530296
+
+  27 Dec 2014; Agostino Sarubbo <ago@gentoo.org> pyxattr-0.5.3.ebuild:
+  Stable for amd64, wrt bug #530296
+
+  22 Dec 2014; Jeroen Roovers <jer@gentoo.org> pyxattr-0.5.3.ebuild:
+  Stable for HPPA (bug #530296).
+
+  25 Nov 2014; Pacho Ramos <pacho@gentoo.org> pyxattr-9999.ebuild:
+  Support python 3.4
+
+*pyxattr-0.5.3 (03 Jun 2014)
+
+  03 Jun 2014; Ian Delaney <idella4@gentoo.org> +pyxattr-0.5.3.ebuild:
+  bump; drop py2.6 pypy2_0 add py3.4 support, add IUSE doc, dep, doc build
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> pyxattr-0.5.2.ebuild,
+  pyxattr-9999.ebuild:
+  Add support for the new PyPy slotting.
+
+  20 Jan 2014; Mike Gilbert <floppym@gentoo.org> -pyxattr-0.5.0-r1.ebuild,
+  -pyxattr-0.5.0.ebuild, -pyxattr-0.5.1.ebuild:
+  Remove old.
+
+  13 Oct 2013; Pacho Ramos <pacho@gentoo.org> pyxattr-0.5.2.ebuild:
+  Also compatible with python3_3
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> pyxattr-0.5.0-r1.ebuild,
+  pyxattr-0.5.1.ebuild, pyxattr-0.5.2.ebuild, pyxattr-9999.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  14 Apr 2013; Agostino Sarubbo <ago@gentoo.org> pyxattr-0.5.2.ebuild:
+  Stable for ppc64, wrt bug #458436
+
+  14 Apr 2013; Agostino Sarubbo <ago@gentoo.org> pyxattr-0.5.2.ebuild:
+  Stable for ppc, wrt bug #458436
+
+  14 Apr 2013; Agostino Sarubbo <ago@gentoo.org> pyxattr-0.5.2.ebuild:
+  Stable for sh, wrt bug #458436
+
+  13 Apr 2013; Agostino Sarubbo <ago@gentoo.org> pyxattr-0.5.2.ebuild:
+  Stable for s390, wrt bug #458436
+
+  13 Apr 2013; Agostino Sarubbo <ago@gentoo.org> pyxattr-0.5.2.ebuild:
+  Stable for sparc, wrt bug #458436
+
+  12 Apr 2013; Agostino Sarubbo <ago@gentoo.org> pyxattr-0.5.2.ebuild:
+  Stable for ia64, wrt bug #458436
+
+  12 Apr 2013; Agostino Sarubbo <ago@gentoo.org> pyxattr-0.5.2.ebuild:
+  Stable for arm, wrt bug #458436
+
+  12 Apr 2013; Agostino Sarubbo <ago@gentoo.org> pyxattr-0.5.2.ebuild:
+  Stable for alpha, wrt bug #458436
+
+  06 Apr 2013; Agostino Sarubbo <ago@gentoo.org> pyxattr-0.5.2.ebuild:
+  Stable for amd64, wrt bug #458436
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> pyxattr-0.5.2.ebuild:
+  Stable for x86, wrt bug #458436
+
+  22 Mar 2013; Jeroen Roovers <jer@gentoo.org> pyxattr-0.5.0.ebuild,
+  pyxattr-0.5.0-r1.ebuild, pyxattr-0.5.1.ebuild, pyxattr-0.5.2.ebuild:
+  Stable for HPPA (bug #458436).
+
+  22 Feb 2013; Zac Medico <zmedico@gentoo.org> pyxattr-0.5.2.ebuild,
+  pyxattr-9999.ebuild:
+  Add ~arm-linux keywords.
+
+*pyxattr-0.5.2 (03 Jan 2013)
+
+  03 Jan 2013; Michał Górny <mgorny@gentoo.org> +pyxattr-0.5.2.ebuild:
+  Version bump.
+
+*pyxattr-9999 (03 Jan 2013)
+
+  03 Jan 2013; Michał Górny <mgorny@gentoo.org> +pyxattr-9999.ebuild:
+  Introduce a live ebuild to make testing HEAD easier.
+
+  22 Dec 2012; Zac Medico <zmedico@gentoo.org> pyxattr-0.5.1.ebuild:
+  Add pypy{1_9,2_0} to PYTHON_COMPAT, since they appear to work.
+
+  22 Dec 2012; Mike Gilbert <floppym@gentoo.org>
+  +files/pyxattr-0.5.1-test-bytes.patch, pyxattr-0.5.1.ebuild:
+  Add patch to fix tests with pyyhon2.5.
+
+  21 Dec 2012; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Add remote-id to metadata.
+
+*pyxattr-0.5.1 (21 Dec 2012)
+
+  21 Dec 2012; Mike Gilbert <floppym@gentoo.org> +pyxattr-0.5.1.ebuild,
+  pyxattr-0.5.0-r1.ebuild:
+  Version bump, resolves bug 448082. Drop python3.2 from 0.5.0 again.
+
+  21 Dec 2012; Mike Gilbert <floppym@gentoo.org> pyxattr-0.5.0-r1.ebuild,
+  pyxattr-0.5.0.ebuild:
+  Do not need setuptools.
+
+  21 Dec 2012; Mike Gilbert <floppym@gentoo.org> pyxattr-0.5.0-r1.ebuild:
+  Add python3_2 to PYTHON_COMPAT.
+
+*pyxattr-0.5.0-r1 (21 Dec 2012)
+
+  21 Dec 2012; Michał Górny <mgorny@gentoo.org> +pyxattr-0.5.0-r1.ebuild:
+  Migrate to distutils-r1. Partially address xattr-related test failures.
+
+  14 Jun 2012; Anthony G. Basile <blueness@gentoo.org> pyxattr-0.5.0.ebuild:
+  Keyword ~mips, bug #402215
+
+  14 Apr 2012; Zac Medico <zmedico@gentoo.org> pyxattr-0.5.0.ebuild:
+  Add ~amd64-linux keyword.
+
+  08 Apr 2012; Raúl Porcel <armin76@gentoo.org> pyxattr-0.5.0.ebuild:
+  alpha/m68k/s390 stable
+
+  10 Dec 2011; Zac Medico <zmedico@gentoo.org> pyxattr-0.5.0.ebuild:
+  Add ~x86-linux keyword.
+
+  18 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pyxattr-0.5.0.ebuild:
+  Restrict Jython ABIs. Use DISTUTILS_SRC_TEST.
+
+  18 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pyxattr-0.4.0.ebuild:
+  Delete.
+
+  18 Jul 2010; <nixnut@gentoo.org> pyxattr-0.5.0.ebuild:
+  ppc stable #315147
+
+  10 Jul 2010; Markos Chandras <hwoarang@gentoo.org> pyxattr-0.5.0.ebuild:
+  Stable on amd64 wrt bug #315147
+
+  06 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> pyxattr-0.5.0.ebuild:
+  ppc64 stable wrt #315147
+
+  19 May 2010; Raúl Porcel <armin76@gentoo.org> pyxattr-0.5.0.ebuild:
+  arm/ia64/sh/sparc stable wrt #315147
+
+  26 Apr 2010; Christian Faulhammer <fauli@gentoo.org> pyxattr-0.5.0.ebuild:
+  stable x86, bug 315147
+
+*pyxattr-0.5.0 (10 Mar 2010)
+
+  10 Mar 2010; Sebastian Pipping <sping@gentoo.org> +pyxattr-0.5.0.ebuild:
+  Bump to 0.5.0 which introduces Python 3 support
+
+  25 Oct 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pyxattr-0.4.0.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  28 May 2009; Raúl Porcel <armin76@gentoo.org> pyxattr-0.4.0.ebuild:
+  arm/ia64/sh/sparc stable wrt #267212
+
+  23 May 2009; Markus Meier <maekke@gentoo.org> pyxattr-0.4.0.ebuild:
+  amd64/x86 stable, bug #267212
+
+  21 May 2009; Brent Baude <ranger@gentoo.org> pyxattr-0.4.0.ebuild:
+  stable ppc, bug 267212
+
+  19 May 2009; Brent Baude <ranger@gentoo.org> pyxattr-0.4.0.ebuild:
+  stable ppc64, bug 267212
+
+  06 Sep 2008; Jesus Rivero <neurogeek@gentoo.org> pyxattr-0.4.0.ebuild:
+  Added dev-python/setuptools as a dep. Bug #236447
+
+*pyxattr-0.4.0 (01 Sep 2008)
+
+  01 Sep 2008; Ali Polatel <hawking@gentoo.org> -pyxattr-0.2.1.ebuild,
+  +pyxattr-0.4.0.ebuild:
+  Version bump. Change LICENSE to LGPL-2.1. Drop old.
+
+*pyxattr-0.2.1 (11 May 2007)
+
+  11 May 2007; Robin H. Johnson <robbat2@gentoo.org> +pyxattr-0.2.1.ebuild:
+  Version bump per bug #177903.
+
+  14 Sep 2006; Danny van Dyk <kugelfang@gentoo.org> pyxattr-0.2.ebuild:
+  Marked stable on amd64.
+
+  17 Aug 2006; Markus Rothe <corsair@gentoo.org> pyxattr-0.2.ebuild:
+  Stable on ppc64
+
+  12 Jul 2006; Aron Griffis <agriffis@gentoo.org> pyxattr-0.2.ebuild:
+  Mark 0.2 stable on ia64
+
+  06 Jul 2006; Brent Baude <ranger@gentoo.org> pyxattr-0.2.ebuild:
+  Marking pyxattr-0.2 ~ppc64 to satisfy an rdiff-backup broken dep per Mr. Bones
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> pyxattr-0.2.ebuild:
+  Mark 0.2 ~ia64
+
+  17 Feb 2006; Michael Hanselmann <hansmi@gentoo.org> pyxattr-0.2.ebuild:
+  Stable on ppc.
+
+  21 Jan 2006; Michael Hanselmann <hansmi@gentoo.org> pyxattr-0.2.ebuild:
+  Added to ~ppc.
+
+  12 Dec 2005; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Update metadata.
+
+  05 Dec 2005; Gustavo Zacarias <gustavoz@gentoo.org> pyxattr-0.2.ebuild:
+  Stable on sparc
+
+  28 Nov 2005; Marien Zwart <marienz@gentoo.org> +metadata.xml:
+  Add metadata.xml.
+
+  28 Oct 2005; Mark Loeser <halcy0n@gentoo.org> pyxattr-0.2.ebuild:
+  Stable on x86; bug #110332
+
+  25 Sep 2005; Jason Wever <weeve@gentoo.org> pyxattr-0.2.ebuild:
+  Added ~sparc keyword.
+
+*pyxattr-0.2 (21 Sep 2005)
+
+  21 Sep 2005; Robin H. Johnson <robbat2@gentoo.org> +pyxattr-0.2.ebuild:
+  Initial commit, ebuild submitted by Thomas Bettler
+  <bettlertho@sis.unibe.ch>, dependancy for new rdiff-backup.

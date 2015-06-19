@@ -1,0 +1,123 @@
+# ChangeLog for media-video/ushare
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/ushare/ChangeLog,v 1.29 2014/02/14 21:07:28 hwoarang Exp $
+
+  14 Feb 2014; Markos Chandras <hwoarang@gentoo.org> files/ushare.init.d.ng:
+  Fix typo
+
+  14 Feb 2014; Markos Chandras <hwoarang@gentoo.org> files/ushare.init.d.ng:
+  Remove bashisms
+
+  30 Sep 2013; Agostino Sarubbo <ago@gentoo.org> ushare-1.1a-r6.ebuild:
+  Stable for x86, wrt bug #484910
+
+  28 Sep 2013; Agostino Sarubbo <ago@gentoo.org> ushare-1.1a-r6.ebuild:
+  Stable for amd64, wrt bug #484910
+
+*ushare-1.1a-r6 (18 Aug 2013)
+
+  18 Aug 2013; Markos Chandras <hwoarang@gentoo.org> -ushare-1.1a-r4.ebuild,
+  +ushare-1.1a-r6.ebuild, +files/ushare.init.d.ng, +files/ushare.service:
+  Revbump to bring back the sysconf support and migrate away from the
+  /etc/conf.d/ushare file. This also allows easier intergration with systemd.
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> ushare-1.1a-r5.ebuild:
+  Don't show elog messages always (#457596)
+
+  15 Feb 2013; Markos Chandras <hwoarang@gentoo.org>
+  +files/07_all_drop_optimizations.patch, ushare-1.1a-r5.ebuild:
+  Respect CC (#457612). Drop -O3 (#457614)
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> ushare-1.1a-r5.ebuild:
+  Stable for x86, wrt bug #457410
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> ushare-1.1a-r5.ebuild:
+  Stable for amd64, wrt bug #457410
+
+  16 Dec 2012; Kacper Kowalik <xarthisius@gentoo.org> metadata.xml:
+  Drop no-herd from metadata.xml
+
+*ushare-1.1a-r5 (08 Nov 2012)
+
+  08 Nov 2012; Markos Chandras <hwoarang@gentoo.org>
+  +files/06_all_ushare_disable_sysconf.patch, +ushare-1.1a-r5.ebuild:
+  Revbump to disable parsing of the default configuration file.
+  /etc/conf.d/ushare should work for Gentoo users
+
+  16 Sep 2012; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove non-existing maintainer. Take over maintainership
+
+  16 Sep 2012; Markos Chandras <hwoarang@gentoo.org> files/ushare.init.d:
+  Revert my last commit
+
+  16 Sep 2012; Markos Chandras <hwoarang@gentoo.org> files/ushare.init.d:
+  Add missing -c option for shared directories. Bug #434548. Thanks to Robert
+  Meyer <r.meyer@net-wizard.org>
+
+  31 Aug 2012; Markos Chandras <hwoarang@gentoo.org> -ushare-1.1a-r3.ebuild:
+  Remove old
+
+*ushare-1.1a-r4 (18 Aug 2012)
+
+  18 Aug 2012; Markos Chandras <hwoarang@gentoo.org> +ushare-1.1a-r4.ebuild,
+  -ushare-1.1a-r1.ebuild, files/ushare.init.d:
+  Revbump directly to stable to replace -c with -u in the init script. Remove
+  old
+
+  04 Jul 2012; Jeff Horelick <jdhore@gentoo.org> ushare-1.1a-r3.ebuild:
+  marked x86 per bug 423747
+
+  28 Jun 2012; Agostino Sarubbo <ago@gentoo.org> ushare-1.1a-r3.ebuild:
+  Stable for amd64, wrt bug #423747
+
+  09 Jun 2012; Zac Medico <zmedico@gentoo.org> ushare-1.1a-r1.ebuild,
+  ushare-1.1a-r3.ebuild:
+  inherit user for enewuser
+
+*ushare-1.1a-r3 (27 May 2012)
+
+  27 May 2012; Michael Weber <xmw@gentoo.org>
+  +files/05_all_missing_headers.patch, -ushare-1.1a-r2.ebuild,
+  +ushare-1.1a-r3.ebuild:
+  Revbump to include includes patch by Sal Gonzalez (bug 415649)
+
+*ushare-1.1a-r2 (27 May 2012)
+
+  27 May 2012; Michael Weber <xmw@gentoo.org>
+  +files/04_all_ushare_upnp_build_fix.patch, +ushare-1.1a-r2.ebuild:
+  Revbump to support net-libs/libupnp-1.6.14 (thanks Sal Gonzalez, bug 415649)
+
+  25 May 2012; Markos Chandras <hwoarang@gentoo.org> ushare-1.1a-r1.ebuild:
+  Lower libupnp dependency
+
+  22 May 2012; Johannes Huber <johu@gentoo.org> ushare-1.1a-r1.ebuild:
+  Stable for x86, wrt bug #415723
+
+  18 May 2012; Agostino Sarubbo <ago@gentoo.org> ushare-1.1a-r1.ebuild:
+  Stable for amd64, wrt bug #415723
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> ushare-1.1a-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*ushare-1.1a-r1 (02 Apr 2012)
+
+  02 Apr 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/01_all_ushare_build_system.patch,
+  +files/02_all_ushare_build_warnings.patch,
+  +files/03_all_ushare_mp4_video_mime.patch, +ushare-1.1a-r1.ebuild,
+  -ushare-1.1a.ebuild, metadata.xml:
+  Revision bump fixing tons of bugs and with a new maintainer by #403979. Thanks
+  a lot to Sal Gonzalez for his work. Remove old.
+
+  03 Feb 2012; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  orphan package because I am not interested any longer
+
+  29 Dec 2009; Jeremy Olexa <darkside@gentoo.org> ushare-1.1a.ebuild:
+  Fix building with USE=nls, bug 298207
+
+*ushare-1.1a (23 Dec 2009)
+
+  23 Dec 2009; Jeremy Olexa <darkside@gentoo.org> +ushare-1.1a.ebuild,
+  +files/ushare.conf.d, +files/ushare.init.d, +metadata.xml:
+  Initial import. Many thanks to all the contributors on bug 192561. Moved
+  from sunrise overlay with modifications by myself

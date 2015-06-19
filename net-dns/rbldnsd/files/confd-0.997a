@@ -1,0 +1,35 @@
+# A whitespace-separated list of addresses on which to listen. The
+# syntax is "host:port", where the port defaults to 53.
+#
+# Note that by default the rbldnsd init script does not require any
+# interfaces other than lo to be "up" (see bug #439092). So if you
+# LISTEN on a non-loopback interface, you should specify a dependency
+# on that interface using rc_need. An example is given below assuming
+# that net.lan0 provides 192.168.0.1.
+#
+# rc_need="net.lan0"
+#
+# LISTEN="127.0.0.1
+#         192.168.0.1"
+#
+LISTEN="localhost"
+
+
+# A whitespace-separated list of RBL zones. For the correct syntax, please
+# see the rbldnsd(8) man page. The following $ZONES will look for
+# files named "badguys.example.com" and "spammers.example.net" (in the
+# appropriate format) under /var/db/rbldnsd, and use those same names
+# for the blacklists contained therein.
+ZONES="badguys.example.com:ip4set:badguys.example.com
+       spammers.example.net:ip4tset:spammers.example.net"
+
+
+# Add any additional options for the rbldnsd daemon below. The -a and
+# -vv below are suggested for performance/security reasons. They are
+# described in the man page.
+#
+# The rootdir (-r) and PID (-p) options are passed automatically, with
+# rootdir set to /var/db/rbldnsd (where you should put your zone
+# files). The daemon will run as the rbldns user, which was created by
+# portage.
+OPTIONS="-a -vv"

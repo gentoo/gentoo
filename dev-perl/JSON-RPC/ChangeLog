@@ -1,0 +1,75 @@
+# ChangeLog for dev-perl/JSON-RPC
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/JSON-RPC/ChangeLog,v 1.18 2014/08/24 02:04:59 axs Exp $
+
+*JSON-RPC-1.30.0-r1 (24 Aug 2014)
+*JSON-RPC-0.960.0-r1 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +JSON-RPC-0.960.0-r1.ebuild, +JSON-RPC-1.30.0-r1.ebuild,
+  -JSON-RPC-0.960.0.ebuild, -JSON-RPC-1.30.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org> -JSON-RPC-1.10.0.ebuild,
+  -JSON-RPC-1.20.0.ebuild:
+  Cleanup
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*JSON-RPC-1.30.0 (16 Jun 2012)
+
+  16 Jun 2012; Torsten Veller <tove@gentoo.org> +JSON-RPC-1.30.0.ebuild:
+  Version bump
+
+*JSON-RPC-1.20.0 (14 Jun 2012)
+
+  14 Jun 2012; Torsten Veller <tove@gentoo.org> +JSON-RPC-1.20.0.ebuild:
+  Version bump
+
+  19 Feb 2012; Torsten Veller <tove@gentoo.org> JSON-RPC-1.10.0.ebuild:
+  Ignore the default upgrade warning
+
+*JSON-RPC-1.10.0 (14 Feb 2012)
+
+  14 Feb 2012; Torsten Veller <tove@gentoo.org> +JSON-RPC-1.10.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -JSON-RPC-0.96.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> JSON-RPC-0.960.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*JSON-RPC-0.960.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org> +JSON-RPC-0.960.0.ebuild:
+  Change version scheme
+
+  27 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> JSON-RPC-0.96.ebuild:
+  ppc64 stable wrt #346403
+
+  27 Jan 2011; Brent Baude <ranger@gentoo.org> JSON-RPC-0.96.ebuild:
+  Marking JSON-RPC-0.96 ppc stable for bug 346403
+
+  05 Dec 2010; Raúl Porcel <armin76@gentoo.org> JSON-RPC-0.96.ebuild:
+  alpha/ia64/sparc stable wrt #346403
+
+  30 Nov 2010; Markus Meier <maekke@gentoo.org> JSON-RPC-0.96.ebuild:
+  x86 stable, bug #346403
+
+  26 Nov 2010; Markos Chandras <hwoarang@gentoo.org> JSON-RPC-0.96.ebuild:
+  Stable on amd64 wrt bug #346403
+
+  11 Aug 2010; Joseph Jezak <josejx@gentoo.org> JSON-RPC-0.96.ebuild:
+  Marked ~ppc/~ppc64 for bug #315793.
+
+  08 May 2010; Raúl Porcel <armin76@gentoo.org> JSON-RPC-0.96.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #315793
+
+*JSON-RPC-0.96 (14 Apr 2010)
+
+  14 Apr 2010; Christian Ruppert <idl0r@gentoo.org> +JSON-RPC-0.96.ebuild,
+  +metadata.xml:
+  New ebuild dev-perl/JSON-RPC.

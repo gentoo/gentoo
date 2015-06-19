@@ -1,0 +1,30 @@
+From: Martin Pitt <martin.pitt@ubuntu.com>
+Date: Sun, 28 Dec 2014 12:49:35 +0100
+Subject: Don't enable audit by default
+
+It causes flooding of dmesg and syslog, suppressing actually important
+messages.
+
+Don't enable it for now, until a better solution is found:
+http://lists.freedesktop.org/archives/systemd-devel/2014-December/026591.html
+
+Bug-Debian: https://bugs.debian.org/773528
+---
+ src/journal/journald-audit.c | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/src/journal/journald-audit.c b/src/journal/journald-audit.c
+index 69742fa..25ef743 100644
+--- a/src/journal/journald-audit.c
++++ b/src/journal/journald-audit.c
+@@ -542,10 +542,5 @@ int server_open_audit(Server *s) {
+         if (r < 0)
+                 return log_error_errno(r, "Failed to add audit fd to event loop: %m");
+ 
+-        /* We are listening now, try to enable audit */
+-        r = enable_audit(s->audit_fd, true);
+-        if (r < 0)
+-                log_warning_errno(r, "Failed to issue audit enable call: %m");
+-
+         return 0;
+ }

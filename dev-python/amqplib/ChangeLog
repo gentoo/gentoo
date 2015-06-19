@@ -1,0 +1,58 @@
+# ChangeLog for dev-python/amqplib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/amqplib/ChangeLog,v 1.13 2015/04/08 08:05:11 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> amqplib-0.6.1-r1.ebuild,
+  amqplib-1.0.2-r1.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> amqplib-1.0.2-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> amqplib-1.0.2-r1.ebuild:
+  amd64 stable, bug 540290
+
+  01 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -amqplib-0.6.1.ebuild,
+  -amqplib-1.0.2.ebuild:
+  Remove old.
+
+  01 Jan 2015; Michał Górny <mgorny@gentoo.org> amqplib-0.6.1-r1.ebuild,
+  amqplib-1.0.2-r1.ebuild:
+  Backport some improvements from the newer ebuild. Fix python_test(). Do not
+  rely on non-well-defined "foo/" behavior.
+
+  01 Jun 2014; Ian Delaney <idella4@gentoo.org> amqplib-1.0.2-r1.ebuild:
+  drop py2.6 pypy2_0 add py3.4 support
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> amqplib-1.0.2-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> amqplib-0.6.1-r1.ebuild,
+  amqplib-1.0.2-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*amqplib-0.6.1-r1 (16 May 2013)
+
+  16 May 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +amqplib-0.6.1-r1.ebuild:
+  updating amqplib-0.6.1 to r1 for proper quantum support
+
+*amqplib-1.0.2-r1 (19 Jan 2013)
+
+  19 Jan 2013; Michał Górny <mgorny@gentoo.org> +amqplib-1.0.2-r1.ebuild:
+  Migrate to distutils-r1.
+
+  02 Mar 2012; Jesus Rivero <neurogeek@gentoo.org> amqplib-1.0.2.ebuild,
+  +files/amqplib-1.0.2-unicode_tests_py3.patch:
+  Added Python3 support and some patches to the tests
+
+*amqplib-1.0.2 (25 Dec 2011)
+
+  25 Dec 2011; Patrick Lauer <patrick@gentoo.org> +amqplib-1.0.2.ebuild:
+  Bump for #391875
+
+*amqplib-0.6.1 (06 Jul 2011)
+
+  06 Jul 2011; Jesus Rivero <neurogeek@gentoo.org> +amqplib-0.6.1.ebuild,
+  +files/amqplib-0.6.1_disable_socket_tests.patch, +metadata.xml:
+  Initial commit

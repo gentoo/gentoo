@@ -1,0 +1,25 @@
+# ChangeLog for app-admin/fifo-cronolog
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/fifo-cronolog/ChangeLog,v 1.4 2015/04/25 16:24:10 floppym Exp $
+
+  25 Apr 2015; Mike Gilbert <floppym@gentoo.org> fifo-cronolog-1.1.1.ebuild:
+  Replace links pointing at git.overlays.gentoo.org.
+
+  07 Dec 2012; Ulrich Müller <ulm@gentoo.org> fifo-cronolog-1.1.1.ebuild:
+  Fix LICENSE, bug 444320.
+
+  11 Oct 2010; Christian Ruppert <idl0r@gentoo.org>
+  fifo-cronolog-1.1.1.ebuild:
+  Add a symlink and a warning for backward compatibility.
+
+*fifo-cronolog-1.1.1 (11 Oct 2010)
+
+  11 Oct 2010; Christian Ruppert <idl0r@gentoo.org>
+  +fifo-cronolog-1.1.1.ebuild, +metadata.xml:
+  Rename squid-cronolog to fifo-cronolog. Version bump.
+
+*squid-cronolog-1.1 (09 May 2010)
+
+  09 May 2010; Christian Ruppert <idl0r@gentoo.org>
+  +squid-cronolog-1.1.ebuild, +metadata.xml:
+  Initial import of squid-cronolog.

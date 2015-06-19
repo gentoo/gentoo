@@ -1,0 +1,246 @@
+# ChangeLog for mail-client/claws-mail-spam-report
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail-spam-report/ChangeLog,v 1.6 2013/05/08 04:04:39 fauli Exp $
+
+  08 May 2013; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-spam-report-0.3.17.ebuild:
+  prepare plugin for mail-client/claws-mail-3.9.1
+
+  04 Jan 2013; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-spam-report-0.3.16.ebuild:
+  clean up
+
+  03 Jan 2013; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-spam-report-0.3.17.ebuild:
+  reintroduce deletion of .a and .la files
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  claws-mail-spam-report-0.3.17.ebuild:
+  Stable for x86, wrt bug #448968
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  claws-mail-spam-report-0.3.17.ebuild:
+  Stable for amd64, wrt bug #448968
+
+*claws-mail-spam_report-0.3.17 (20 Nov 2012)
+
+  20 Nov 2012; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-spam_report-0.3.17.ebuild:
+  version bump
+
+  20 Nov 2012; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-spam_report-0.3.15.ebuild:
+  clean up
+
+  31 Oct 2012; Andreas Schuerch <nativemad@gentoo.org>
+  claws-mail-spam_report-0.3.16.ebuild:
+  x86 stable, see bug 437814
+
+  24 Oct 2012; Agostino Sarubbo <ago@gentoo.org>
+  claws-mail-spam_report-0.3.16.ebuild:
+  Stable for amd64, wrt bug #437814
+
+*claws-mail-spam_report-0.3.16 (30 Jun 2012)
+
+  30 Jun 2012; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-spam_report-0.3.16.ebuild:
+  version bump
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  claws-mail-spam_report-0.3.15.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  11 Apr 2012; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-spam_report-0.3.14.ebuild:
+  clean up
+
+  07 Apr 2012; Markus Meier <maekke@gentoo.org>
+  claws-mail-spam_report-0.3.15.ebuild:
+  x86 stable, bug #387547
+
+  04 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #206112
+
+  25 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  claws-mail-spam_report-0.3.15.ebuild:
+  Stable for amd64, wrt bug #387547
+
+*claws-mail-spam_report-0.3.15 (26 Dec 2011)
+
+  26 Dec 2011; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-spam_report-0.3.15.ebuild:
+  version bump for bug 395381 by Justin
+
+  26 Dec 2011; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-spam_report-0.3.13.ebuild:
+  clean up
+
+  29 Oct 2011; Markos Chandras <hwoarang@gentoo.org>
+  claws-mail-spam_report-0.3.14.ebuild:
+  Stable on amd64 wrt bug #387547
+
+  24 Oct 2011; Markus Meier <maekke@gentoo.org>
+  claws-mail-spam_report-0.3.14.ebuild:
+  x86 stable, bug #387547
+
+*claws-mail-spam_report-0.3.14 (30 Aug 2011)
+
+  30 Aug 2011; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-spam_report-0.3.14.ebuild:
+  version bump
+
+  31 Jul 2011; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-spam_report-0.3.12.ebuild:
+  clean up
+
+  16 Jul 2011; Markos Chandras <hwoarang@gentoo.org>
+  claws-mail-spam_report-0.3.13.ebuild:
+  Stable on amd64 wrt bug #372957
+
+  29 Jun 2011; Markus Meier <maekke@gentoo.org>
+  claws-mail-spam_report-0.3.13.ebuild:
+  x86 stable, bug #372957
+
+*claws-mail-spam_report-0.3.13 (10 Apr 2011)
+
+  10 Apr 2011; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-spam_report-0.3.13.ebuild:
+  version bump
+
+  22 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-spam_report-0.3.11.ebuild:
+  clean up
+
+  22 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-spam_report-0.3.11.ebuild:
+  clean up
+
+  15 Jan 2011; Markus Meier <maekke@gentoo.org>
+  claws-mail-spam_report-0.3.12.ebuild:
+  x86 stable, bug #350513
+
+  04 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  claws-mail-spam_report-0.3.12.ebuild:
+  Stable on amd64 wrt bug #350513
+
+  23 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-spam_report-0.3.11.ebuild,
+  claws-mail-spam_report-0.3.12.ebuild:
+  add a die after emake and don't install NEWS file (no contents)
+
+*claws-mail-spam_report-0.3.12 (22 Nov 2010)
+
+  22 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-spam_report-0.3.12.ebuild:
+  version bump
+
+  22 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-spam_report-0.3.10.ebuild:
+  clean up
+
+  07 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  claws-mail-spam_report-0.3.11.ebuild:
+  Stable on amd64 wrt bug #331395
+
+  06 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-spam_report-0.3.11.ebuild:
+  stable x86, bug 331395
+
+  20 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-spam_report-0.3.9.ebuild:
+  clean up
+
+*claws-mail-spam_report-0.3.11 (12 Jun 2010)
+
+  12 Jun 2010; Christian Faulhammer <fauli@gentoo.org> +claws-mail-spam_report-0.3.11.ebuild:
+  version bump, bug 319161
+
+  11 Mar 2010; Markus Meier <maekke@gentoo.org>
+  claws-mail-spam_report-0.3.10.ebuild:
+  amd64 stable, bug #304353
+
+  11 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-spam_report-0.3.10.ebuild:
+  stable x86, bug 304353
+
+*claws-mail-spam_report-0.3.10 (08 Jan 2010)
+
+  08 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-spam_report-0.3.10.ebuild:
+  version bump
+
+  26 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-spam_report-0.3.8.ebuild:
+  clean up
+
+  01 Aug 2009; Jeremy Olexa <darkside@gentoo.org>
+  claws-mail-spam_report-0.3.9.ebuild:
+  amd64 stable, bug 278682
+
+  24 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-spam_report-0.3.9.ebuild:
+  stable x86, bug 278682
+
+  06 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-spam_report-0.3.9.ebuild:
+  fix Claws version number
+
+*claws-mail-spam_report-0.3.9 (06 Jul 2009)
+
+  06 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-spam_report-0.3.7.ebuild,
+  +claws-mail-spam_report-0.3.9.ebuild:
+  version bump and clean up
+
+  02 Jul 2009; Markus Meier <maekke@gentoo.org>
+  claws-mail-spam_report-0.3.8.ebuild:
+  amd64 stable, bug #273294
+
+  09 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-spam_report-0.3.8.ebuild:
+  stable x86, bug 273294
+
+*claws-mail-spam_report-0.3.8 (29 Apr 2009)
+
+  29 Apr 2009; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-spam_report-0.3.8.ebuild:
+  version bump, bug 266782 by microbiolog AT gmail.com
+
+  14 Mar 2009; nixnut <nixnut@gentoo.org>
+  claws-mail-spam_report-0.3.7.ebuild:
+  ~ppc'd
+
+  29 Jan 2009; Christian Faulhammer <fauli@gentoo.org>
+  -claws-mail-spam_report-0.3.6.ebuild:
+  clean up
+
+  25 Jan 2009; Markus Meier <maekke@gentoo.org>
+  claws-mail-spam_report-0.3.7.ebuild:
+  amd64/x86 stable, bug #256165
+
+  22 Dec 2008; Christian Faulhammer <fauli@gentoo.org>
+  claws-mail-spam_report-0.3.7.ebuild:
+  raise version on mail-client/claws-mail dependency
+
+*claws-mail-spam_report-0.3.7 (22 Dec 2008)
+
+  22 Dec 2008; Christian Faulhammer <fauli@gentoo.org>
+  +claws-mail-spam_report-0.3.7.ebuild:
+  version bump
+
+  28 Nov 2008; Markus Meier <maekke@gentoo.org>
+  claws-mail-spam_report-0.3.6.ebuild:
+  amd64/x86 stable, bug #248760
+
+  28 Nov 2008; Christian Faulhammer <fauli@gentoo.org> metadata.xml:
+  Change my email address
+
+  25 Oct 2008; Christian Faulhammer <opfer@gentoo.org>
+  claws-mail-spam_report-0.3.6.ebuild:
+  drop ppc, ppc64 and spark KEYWORDS, as they were mistakenly put there
+
+*claws-mail-spam_report-0.3.6 (16 Oct 2008)
+
+  16 Oct 2008; Christian Faulhammer <opfer@gentoo.org> +metadata.xml,
+  +claws-mail-spam_report-0.3.6.ebuild:
+  initial commit for bug 238624

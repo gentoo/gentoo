@@ -1,0 +1,540 @@
+# ChangeLog for sys-fs/squashfs-tools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/squashfs-tools/ChangeLog,v 1.118 2015/05/23 06:22:50 jer Exp $
+
+  23 May 2015; Jeroen Roovers <jer@gentoo.org> squashfs-tools-3.2_p2.ebuild,
+  squashfs-tools-3.4.ebuild, -squashfs-tools-4.2.ebuild,
+  -squashfs-tools-4.2-r1.ebuild, -squashfs-tools-4.2_p20140119.ebuild:
+  EAPI bump.
+
+  17 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> squashfs-tools-4.3.ebuild:
+  sparc stable wrt bug #542226
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> squashfs-tools-4.3.ebuild:
+  Stable for ia64, wrt bug #542226
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> squashfs-tools-4.3.ebuild:
+  Stable for alpha, wrt bug #542226
+
+  02 Apr 2015; Markus Meier <maekke@gentoo.org> squashfs-tools-4.3.ebuild:
+  arm stable, bug #542226
+
+  31 Mar 2015; Agostino Sarubbo <ago@gentoo.org> squashfs-tools-4.3.ebuild:
+  Stable for ppc64, wrt bug #542226
+
+  28 Mar 2015; Agostino Sarubbo <ago@gentoo.org> squashfs-tools-4.3.ebuild:
+  Stable for ppc, wrt bug #542226
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> squashfs-tools-4.3.ebuild:
+  Stable for x86, wrt bug #542226
+
+  10 Mar 2015; Jeroen Roovers <jer@gentoo.org> squashfs-tools-4.3.ebuild:
+  Stable for HPPA (bug #542226).
+
+  09 Mar 2015; Agostino Sarubbo <ago@gentoo.org> squashfs-tools-4.3.ebuild:
+  Stable for amd64, wrt bug #542226
+
+  05 Mar 2015; Jeroen Roovers <jer@gentoo.org> squashfs-tools-4.3.ebuild,
+  -files/squashfs-tools-3.3-posix.patch,
+  -files/squashfs-tools-4.0-progress-bar.patch,
+  -files/squashfs-tools-4.0-read-ret.patch:
+  Remove obsolete pkg_postinst() messages (bug #440586).
+
+  28 Sep 2014; Anthony G. Basile <blueness@gentoo.org>
+  squashfs-tools-4.3.ebuild:
+  Keyword ~ppc ~ppc64, bug #499468
+
+  26 Aug 2014; Raúl Porcel <armin76@gentoo.org> squashfs-tools-4.3.ebuild:
+  Add ~m68k/~sh/~sparc wrt bug #499468
+
+  11 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> squashfs-tools-4.3.ebuild:
+  Add ~s390 keyword
+
+  11 Jul 2014;  <tgall@gentoo.org> squashfs-tools-4.3.ebuild:
+  Keyworded on arm64, bug #499468
+
+  05 Jul 2014; Tobias Klausmann <klausman@gentoo.org>
+  squashfs-tools-4.3.ebuild:
+  Keyworded on alpha, bug #499468
+
+*squashfs-tools-4.3 (08 Jun 2014)
+
+  08 Jun 2014; Jeroen Roovers <jer@gentoo.org>
+  -squashfs-tools-4.2_p20140119-r1.ebuild, +squashfs-tools-4.3.ebuild:
+  Version bump.
+
+  28 Apr 2014; Sergey Popov <pinkbyte@gentoo.org>
+  squashfs-tools-4.2_p20140119-r1.ebuild:
+  Add ~x86 keyword, wrt bug #499468
+
+  28 Apr 2014; Sergey Popov <pinkbyte@gentoo.org>
+  squashfs-tools-4.2_p20140119-r1.ebuild:
+  Add ~mips keyword, wrt bug #499468
+
+  14 Feb 2014; Markus Meier <maekke@gentoo.org>
+  squashfs-tools-4.2_p20140119-r1.ebuild:
+  add ~arm, bug #499468
+
+  08 Feb 2014; Akinori Hattori <hattya@gentoo.org>
+  squashfs-tools-4.2_p20140119-r1.ebuild:
+  keyword ~ia64 wrt bug #499468
+
+  06 Feb 2014; Jeroen Roovers <jer@gentoo.org>
+  squashfs-tools-4.2_p20140119-r1.ebuild:
+  Marked ~hppa (bug #499468).
+
+*squashfs-tools-4.2_p20140119-r1 (27 Jan 2014)
+
+  27 Jan 2014; Jeroen Roovers <jer@gentoo.org>
+  +squashfs-tools-4.2_p20140119-r1.ebuild, metadata.xml:
+  Add lz4 support.
+
+*squashfs-tools-4.2_p20140119 (23 Jan 2014)
+
+  23 Jan 2014; Jeroen Roovers <jer@gentoo.org>
+  -squashfs-tools-4.2_p20121216.ebuild, +squashfs-tools-4.2_p20140119.ebuild,
+  -squashfs-tools-4.3_pre20130621-r2.ebuild,
+  -files/squashfs-tools-4.3_pre20130621-xattr.patch:
+  Version bump.
+
+*squashfs-tools-4.3_pre20130621-r2 (21 Jan 2014)
+
+  21 Jan 2014; Jeroen Roovers <jer@gentoo.org>
+  -squashfs-tools-4.3_pre20130621-r1.ebuild,
+  +squashfs-tools-4.3_pre20130621-r2.ebuild,
+  +files/squashfs-tools-4.3_pre20130621-xattr.patch, metadata.xml:
+  Fix USE=-xattr properly. Restore old USE flag behaviour.
+
+  21 Jan 2014; Jeroen Roovers <jer@gentoo.org>
+  squashfs-tools-4.3_pre20130621-r1.ebuild, metadata.xml:
+  sys-apps/attr is not optional in this build. Describe USE=xattr specially.
+
+*squashfs-tools-4.3_pre20130621-r1 (21 Jan 2014)
+
+  21 Jan 2014; Jeroen Roovers <jer@gentoo.org>
+  -squashfs-tools-4.3_pre20130621.ebuild,
+  +squashfs-tools-4.3_pre20130621-r1.ebuild:
+  Fix USE=-xattr. Drop the horrible use_sed in favour of usex.
+
+*squashfs-tools-4.3_pre20130621 (21 Jan 2014)
+
+  21 Jan 2014; Justin Lecher <jlec@gentoo.org>
+  +squashfs-tools-4.3_pre20130621.ebuild, metadata.xml:
+  Version bump, following Fedora, #479904
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> squashfs-tools-4.2-r1.ebuild,
+  squashfs-tools-4.2.ebuild, squashfs-tools-4.2_p20121216.ebuild:
+  Add arm64 love.
+
+  20 Feb 2013; Zac Medico <zmedico@gentoo.org>
+  squashfs-tools-4.2_p20121216.ebuild:
+  Add ~arm-linux keyword.
+
+*squashfs-tools-4.2_p20121216 (17 Dec 2012)
+
+  17 Dec 2012; Jeroen Roovers <jer@gentoo.org>
+  +squashfs-tools-4.2_p20121216.ebuild:
+  Add snapshot.
+
+  24 Apr 2012; Justin Lecher <jlec@gentoo.org> -squashfs-tools-4.0.ebuild,
+  -squashfs-tools-4.0-r1.ebuild, -squashfs-tools-4.1.ebuild,
+  -squashfs-tools-4.1-r1.ebuild, metadata.xml:
+  Drop old versions, #395201
+
+  19 Apr 2012; Brent Baude <ranger@gentoo.org> squashfs-tools-4.2.ebuild:
+  Marking squashfs-tools-4.2 ppc64 for bug 400937
+
+*squashfs-tools-4.2-r1 (19 Apr 2012)
+
+  19 Apr 2012; Jeroen Roovers <jer@gentoo.org> +squashfs-tools-4.2-r1.ebuild,
+  metadata.xml:
+  Add old LZMA support back by Wicher Minnaard (bug #412575).
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> squashfs-tools-4.2.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #400937
+
+  28 Feb 2012; Brent Baude <ranger@gentoo.org> squashfs-tools-4.2.ebuild:
+  Marking squashfs-tools-4.2 ppc for bug 400937
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  squashfs-tools-4.2.ebuild:
+  x86 stable wrt bug #400937
+
+  10 Feb 2012; Markus Meier <maekke@gentoo.org> squashfs-tools-4.2.ebuild:
+  arm stable, bug #400937
+
+  08 Feb 2012; Jeroen Roovers <jer@gentoo.org> squashfs-tools-4.2.ebuild:
+  Rip out the stuff that makes gzip optional (bug #366607).
+
+  08 Feb 2012; Jeroen Roovers <jer@gentoo.org> squashfs-tools-4.2.ebuild,
+  metadata.xml:
+  Change USE=lzma to USE=xz now that upstream calls it that way (bug #400939).
+
+  08 Feb 2012; Jeroen Roovers <jer@gentoo.org> squashfs-tools-4.2.ebuild:
+  Stable for HPPA (bug #400937).
+
+  27 Jan 2012; Agostino Sarubbo <ago@gentoo.org> squashfs-tools-4.2.ebuild:
+  Stable for amd64, wrt bug #400937
+
+  29 Jul 2011; Zac Medico <zmedico@gentoo.org> squashfs-tools-4.2.ebuild:
+  Add ~x86-linux keyword.
+
+*squashfs-tools-4.2 (15 Mar 2011)
+
+  15 Mar 2011; Justin Lecher <jlec@gentoo.org> +squashfs-tools-4.2.ebuild:
+  Version Bump
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> squashfs-tools-3.4.ebuild:
+  Drop to ~mips
+
+*squashfs-tools-4.1-r1 (31 Jan 2011)
+
+  31 Jan 2011; Jeroen Roovers <jer@gentoo.org> +squashfs-tools-4.1-r1.ebuild:
+  Die sooner (and explain why) when no compression USE flag is set (bug
+  #352861). Fix USE=-lzma case (it tried to fix xz_SUPPORT in the Makefile
+  instead of XZ_SUPPORT, so it would always link against liblzma or die if not
+  found).
+
+  14 Nov 2010; Justin Lecher <jlec@gentoo.org> squashfs-tools-3.2_p2.ebuild,
+  squashfs-tools-3.4.ebuild, squashfs-tools-4.0.ebuild,
+  squashfs-tools-4.0-r1.ebuild, squashfs-tools-4.1.ebuild, metadata.xml:
+  Move local USE lzma to global USE
+
+  07 Oct 2010; Mike Frysinger <vapier@gentoo.org> squashfs-tools-4.1.ebuild:
+  Fix by Martin Väth for IUSE=xattr handling #338671, and clean up general
+  handling of the USE flags.
+
+*squashfs-tools-4.1 (20 Sep 2010)
+
+  20 Sep 2010; Mike Frysinger <vapier@gentoo.org> +squashfs-tools-4.1.ebuild,
+  metadata.xml:
+  Version bump.
+
+*squashfs-tools-4.0-r1 (20 Sep 2010)
+
+  20 Sep 2010; Mike Frysinger <vapier@gentoo.org>
+  +squashfs-tools-4.0-r1.ebuild, +files/squashfs-tools-4.0-progress-bar.patch,
+  +files/squashfs-tools-4.0-read-ret.patch:
+  Add fixes from upstream #292011 by Nicolas Dufresne.
+
+  07 Dec 2009; Mike Frysinger <vapier@gentoo.org> squashfs-tools-4.0.ebuild:
+  Fix building on non-glibc systems #276951 by Ed Wildgoose.
+
+  07 Dec 2009; Mike Frysinger <vapier@gentoo.org>
+  -squashfs-tools-3.1_p2.ebuild, squashfs-tools-3.2_p2.ebuild,
+  -squashfs-tools-3.3.ebuild, squashfs-tools-3.4.ebuild:
+  Slot older versions of squashfs-tools as the filesystem format is not
+  backwards compatible and sometimes we need to easily create older
+  filesystem versions.
+
+  18 Jul 2009; Joseph Jezak <josejx@gentoo.org> squashfs-tools-4.0.ebuild:
+  Marked ppc stable for bug #273131.
+
+  19 Jun 2009; Brent Baude <ranger@gentoo.org> squashfs-tools-4.0.ebuild:
+  stable ppc64, bug 273131
+
+  15 Jun 2009; Jeroen Roovers <jer@gentoo.org> squashfs-tools-4.0.ebuild:
+  Stable for HPPA (bug #273131).
+
+  13 Jun 2009; Andrew Gaffney <agaffney@gentoo.org>
+  squashfs-tools-4.0.ebuild:
+  Change ewarn per bug #263762
+
+  08 Jun 2009; Jeremy Olexa <darkside@gentoo.org> squashfs-tools-4.0.ebuild:
+  amd64 stable, bug 273131
+
+  08 Jun 2009; Raúl Porcel <armin76@gentoo.org> squashfs-tools-4.0.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc/x86 stable wrt #273131
+
+*squashfs-tools-4.0 (01 Jun 2009)
+
+  01 Jun 2009; Andrew Gaffney <agaffney@gentoo.org>
+  +squashfs-tools-4.0.ebuild:
+  Bumping squashfs-tools to 4.0 for bug #272043
+
+*squashfs-tools-4.0_pre20090324 (25 Mar 2009)
+
+  25 Mar 2009; Zac Medico <zmedico@gentoo.org>
+  -squashfs-tools-4.0_pre20080324.ebuild,
+  +squashfs-tools-4.0_pre20090324.ebuild:
+  Rename 4.0_pre20080324 to 4.0_pre20090324 (off by 1 year).
+
+*squashfs-tools-4.0_pre20080324 (25 Mar 2009)
+
+  25 Mar 2009; Zac Medico <zmedico@gentoo.org>
+  +squashfs-tools-4.0_pre20080324.ebuild:
+  Add squashfs-4.0 cvs snapshot, for linux-2.6.29 users.
+
+  15 Oct 2008; Jeroen Roovers <jer@gentoo.org> squashfs-tools-3.1_p2.ebuild,
+  squashfs-tools-3.2_p2.ebuild, squashfs-tools-3.3.ebuild,
+  squashfs-tools-3.4.ebuild:
+  Pick up CFLAGS from the environment instead of "setting them in stone"
+  (bug #242030).
+
+*squashfs-tools-3.4 (28 Aug 2008)
+
+  28 Aug 2008; Jeroen Roovers <jer@gentoo.org> +squashfs-tools-3.4.ebuild:
+  Version bump (bug #235867).
+
+  28 Jun 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  squashfs-tools-3.2_p2.ebuild, squashfs-tools-3.3.ebuild:
+  Marking 3.2_p2 stable for 2.6.23 kernels. Thanks to Kerin Millar
+  <kerframil@gmail.com> for pointing it out in bug #227461. This was used
+  during the 2008.0 release cycle, so it received plenty of testing. Also,
+  changing the elog to ewarn for 3.3 and the 2.6.24 requirement notice.
+
+  19 Jun 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  squashfs-tools-3.3.ebuild:
+  Stable on alpha/amd64/arm/hppa/ia64/ppc/ppc64/sparc/x86 since they all
+  have 2.6.24 versions stable and we want to use this version of
+  squashfs-tools for the release.
+
+  04 Apr 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  squashfs-tools-3.3.ebuild:
+  Added a note about requiring 2.6.24 kernel for 3.3 support.
+
+*squashfs-tools-3.3 (30 Dec 2007)
+
+  30 Dec 2007; <solar@gentoo.org> +files/squashfs-tools-3.3-posix.patch,
+  +squashfs-tools-3.3.ebuild:
+  - Version bump.. get_nprocs() is a glibc only function and there is no
+  reason to use it when sysconf(_SC_NPROCESSORS_CONF) exists. Also fixed some
+  format mistakes.
+
+  06 Nov 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  squashfs-tools-3.2_p2.ebuild:
+  Changing installation of docs so we pull in README-3.2 and not README-3.1
+  and closing bug #196158.
+
+*squashfs-tools-3.2_p2 (16 May 2007)
+
+  16 May 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  +squashfs-tools-3.2_p2.ebuild:
+  Version bump and closing bug #175700. Thanks to Roman Zimmermann
+  <mereandor@gmail.com> for pointing out a simpel copy would work.
+
+  16 May 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  -squashfs-tools-2.2_p2.ebuild, -squashfs-tools-3.0.ebuild,
+  -squashfs-tools-3.1.ebuild:
+  Cleaning up older versions now that 3.1_p2 is stable everywhere.
+
+  15 May 2007; Jeroen Roovers <jer@gentoo.org> squashfs-tools-3.1_p2.ebuild:
+  Stable for HPPA (bug #165289).
+
+  11 May 2007; Joshua Kinard <kumba@gentoo.org>
+  squashfs-tools-3.1_p2.ebuild:
+  Stable on mips, per #165289.
+
+  28 Mar 2007; Raúl Porcel <armin76@gentoo.org>
+  squashfs-tools-3.1_p2.ebuild:
+  ia64 stable wrt bug 165289
+
+  13 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  squashfs-tools-3.1_p2.ebuild:
+  Stable on alpha wrt bug #165289.
+
+  13 Feb 2007; Markus Rothe <corsair@gentoo.org>
+  squashfs-tools-3.1_p2.ebuild:
+  Stable on ppc64; bug #165289
+
+  11 Feb 2007; nixnut <nixnut@gentoo.org> squashfs-tools-3.1_p2.ebuild:
+  Stable on ppc wrt bug 165289
+
+  11 Feb 2007; Steve Dibb <beandog@gentoo.org> squashfs-tools-3.1_p2.ebuild:
+  amd64 stable, bug 165289
+
+  05 Feb 2007; Torsten Veller <tove@gentoo.org>
+  squashfs-tools-3.1_p2.ebuild:
+  Stable on x86 (#165289)
+
+  05 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  squashfs-tools-3.1_p2.ebuild:
+  Stable on sparc wrt #165289
+
+*squashfs-tools-3.1_p2 (05 Sep 2006)
+
+  05 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  squashfs-tools-3.1.ebuild, +squashfs-tools-3.1_p2.ebuild:
+  Version bump.  Closing bug #145676.
+
+*squashfs-tools-3.1 (28 Aug 2006)
+
+  28 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +squashfs-tools-3.1.ebuild:
+  Version bump.  Closing bug #145369.
+
+  28 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  squashfs-tools-3.0.ebuild:
+  Stable on hppa
+
+  09 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  squashfs-tools-3.0.ebuild:
+  Marking stable on amd64 for bug #126992.
+
+  02 May 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  squashfs-tools-3.0.ebuild:
+  Stable on sparc wrt #126992
+
+  01 May 2006; Joseph Jezak <josejx@gentoo.org> squashfs-tools-3.0.ebuild:
+  Marked ppc stable for bug #126992.
+
+  29 Apr 2006; Joshua Kinard <kumba@gentoo.org> squashfs-tools-3.0.ebuild:
+  Marked stable on mips.
+
+  23 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  squashfs-tools-3.0.ebuild:
+  Stable on x86 wrt bug #126992.
+
+  22 Apr 2006; Markus Rothe <corsair@gentoo.org> squashfs-tools-3.0.ebuild:
+  Stable on ppc64; bug #126992
+
+  14 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  squashfs-tools-3.0.ebuild:
+  Added unsquashfs to dobin and closing bug #129875.
+
+  12 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -squashfs-tools-2.1_p2-r1.ebuild:
+  Cleaning up older ebuilds.
+
+  12 Apr 2006; Bryan Østergaard <kloeri@gentoo.org
+  squashfs-tools-2.2_p2.ebuild:
+  Stable on alpha, bug 126542.
+
+  20 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  squashfs-tools-2.2_p2.ebuild:
+  Stable on sparc wrt #126542
+
+  18 Mar 2006; Markus Rothe <corsair@gentoo.org>
+  squashfs-tools-2.2_p2.ebuild:
+  Stable on ppc64; bug #126542
+
+  17 Mar 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  squashfs-tools-2.2_p2.ebuild:
+  ppc stable, bug #126542
+
+*squashfs-tools-3.0 (17 Mar 2006)
+
+  17 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  squashfs-tools-2.2_p2.ebuild, +squashfs-tools-3.0.ebuild:
+  Added squashfs-tools-3.0 and marking 2.2_p2 stable on amd64/x86 wrt bug
+  #126542.
+
+  12 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -squashfs-tools-2.2.ebuild:
+  Cleaning up older ebuilds.
+
+*squashfs-tools-2.2_p2 (09 Sep 2005)
+
+  09 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +squashfs-tools-2.2_p2.ebuild:
+  Version bump and closing bug #99886.
+
+*squashfs-tools-2.2 (22 Jul 2005)
+
+  22 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +squashfs-tools-2.2.ebuild:
+  Version bumped to latest version.
+
+  16 May 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  squashfs-tools-2.1_p2-r1.ebuild:
+  Removed src_test and closing bug #85682.
+
+*squashfs-tools-2.1_p2-r1 (23 Feb 2005)
+
+  23 Feb 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -squashfs-tools-2.0_p2.ebuild, +squashfs-tools-2.1_p2-r1.ebuild,
+  -squashfs-tools-2.1_p2.ebuild:
+  Marking stable and closing bug #82568.
+
+  29 Jan 2005; Markus Rothe <corsair@gentoo.org> squashfs-tools-2.1_p2.ebuild:
+  Stable on ppc64
+
+  06 Jan 2005; Bryan Østergaard <kloeri@gentoo.org>
+  squashfs-tools-2.0_p2.ebuild:
+  Stable on alpha.
+
+*squashfs-tools-2.1_p2 (15 Dec 2004)
+
+  15 Dec 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  -squashfs-tools-1.3.ebuild, -squashfs-tools-2.0.ebuild,
+  -squashfs-tools-2.0_alpha.ebuild, squashfs-tools-2.0_p2.ebuild,
+  +squashfs-tools-2.1_p2.ebuild:
+  Version bumped to 2.1_p2 and closing bug #74509.
+
+  24 Sep 2004; Tom Gall <tgall@gentoo.org> squashfs-tools-2.0.ebuild:
+  stable on ppc64
+
+  07 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  squashfs-tools-2.0_p2.ebuild:
+  Stable on sparc wrt #54103
+
+*squashfs-tools-2.0_p2 (07 Sep 2004)
+
+  07 Sep 2004; Daniel Black <dragonheart@gentoo.org>
+  +squashfs-tools-2.0_p2.ebuild:
+  version bumped as per bug #54103. Thanks Thomas Weidner <3.14159@gmx.net> for
+  initial testing. src_test routine added
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  squashfs-tools-1.3.ebuild, squashfs-tools-2.0.ebuild:
+  Masked squashfs-tools-2.0.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  squashfs-tools-1.3.ebuild:
+  Masked squashfs-tools-1.3.ebuild stable for ppc
+
+  26 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  squashfs-tools-2.0.ebuild:
+  Stable on sparc
+
+  18 Jul 2004; Tom Gall <tgall@gentoo.org> squashfs-tools-2.0.ebuild:
+  stable on ppc64, bug #57487 
+
+  16 Jul 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  squashfs-tools-2.0.ebuild:
+  Marked stable on x86 and amd64.
+
+*squashfs-tools-2.0 (13 Jul 2004)
+
+  04 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>:
+  PPC stable
+
+  13 Jul 2004; Chris Gianelloni <wolf31o2@gentoo.org> metadata.xml,
+  +squashfs-tools-2.0.ebuild:
+  Changed maintainer to livecd and adding squashfs-tools-2.0 for use with the
+  2004.2 livecd.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  squashfs-tools-1.3.ebuild, squashfs-tools-2.0_alpha.ebuild:
+  virtual/glibc -> virtual/libc
+
+  20 Jun 2004; <solar@gentoo.org> :
+  digest fix
+
+*squashfs-tools-2.0_alpha (04 Jun 2004)
+
+  04 Jun 2004; Daniel Black <dragonheart@gentoo.org>
+  +squashfs-tools-2.0_alpha.ebuild:
+  version bump thanks to Stefan Schweizer <stefan-schweizer@gmx.de> in bug #52038
+
+  04 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  +squashfs-tools-1.3.ebuild:
+  Moved from sys-apps/squashfs-tools to sys-fs/squashfs-tools.
+
+  03 May 2004; Mike Frysinger <vapier@gentoo.org> :
+  Clean up ebuild and make it look nice.
+
+  26 Apr 2004; Daniel Black <dragonheart@gentoo.org> metadata.xml:
+  Added embedded to the ownership. version 1.3 is realy 1.3_p3. Can the next
+  version include proper naming. Ref bug #47995
+
+  15 Apr 2004; Michael McCabe <randy@gentoo.org> squashfs-tools-1.3.ebuild:
+  adding s390 to keywords
+
+*squashfs-tools-1.3 (14 Feb 2004)
+
+  14 Feb 2004; Brad House <brad_mssw@gentoo.org> squashfs-tools-1.3.ebuild:
+  Initial commit

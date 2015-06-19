@@ -1,0 +1,275 @@
+# ChangeLog for dev-python/visual
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/visual/ChangeLog,v 1.67 2015/02/19 18:21:27 mrueg Exp $
+
+  19 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -visual-5.72-r2.ebuild:
+  Remove old.
+
+  22 Sep 2013; Agostino Sarubbo <ago@gentoo.org> visual-5.74.ebuild:
+  Stable for x86, wrt bug #460384
+
+  14 Sep 2013; Agostino Sarubbo <ago@gentoo.org> visual-5.74.ebuild:
+  Stable for amd64, wrt bug #460384
+
+  17 Nov 2012; Ian Delaney <idella4@gentoo.org> visual-5.72-r2.ebuild,
+  visual-5.74.ebuild:
+  Licenses update, changed by advice from Ulrich 'ulm' Muller in Bug #440732
+
+  11 Nov 2012; Anthony G. Basile <blueness@gentoo.org> visual-5.72-r2.ebuild,
+  visual-5.74.ebuild:
+  Rapid stabilization to heal tree, bug #442318
+
+  11 Nov 2012; Anthony G. Basile <blueness@gentoo.org> -visual-5.4.ebuild,
+  visual-5.72-r2.ebuild, visual-5.74.ebuild:
+  Keyword ~ppc for 5.74, remove 5.4, bug #442318
+
+  07 Jul 2012; Mike Gilbert <floppym@gentoo.org>
+  +files/visual-5.74-boost-1.50.patch, visual-5.74.ebuild:
+  Fix build failure with Boost 1.50. Patch by Arfrever.
+
+  18 Jun 2012; Mike Gilbert <floppym@gentoo.org> visual-5.74.ebuild:
+  Remove workarounds due to changes in build system upstream. Thanks Arfrever.
+
+*visual-5.74 (18 Jun 2012)
+
+  18 Jun 2012; Patrick Lauer <patrick@gentoo.org> +visual-5.74.ebuild:
+  Bump
+
+  14 Jun 2012; Jeff Horelick <jdhore@gentoo.org> visual-5.72-r2.ebuild:
+  marked x86 per bug 413815
+
+  23 May 2012; Agostino Sarubbo <ago@gentoo.org> visual-5.72-r2.ebuild:
+  Stable for amd64, wrt bug #413815
+
+  04 May 2012; Patrick Lauer <patrick@gentoo.org> visual-5.4.ebuild,
+  visual-5.72-r2.ebuild:
+  Migrating dev-util/pkgconfig -> virtual/pkgconfig
+
+*visual-5.72-r2 (16 Mar 2012)
+
+  16 Mar 2012; Sébastien Fabbro <bicatali@gentoo.org> -visual-5.72.ebuild,
+  -visual-5.72-r1.ebuild, +visual-5.72-r2.ebuild:
+  Dependency on polygon:2 only
+
+  25 Feb 2012; Patrick Lauer <patrick@gentoo.org> visual-5.4.ebuild,
+  visual-5.72-r1.ebuild, visual-5.72.ebuild:
+  Fixing accidental double asterisk
+
+  24 Feb 2012; Patrick Lauer <patrick@gentoo.org> visual-5.72-r1.ebuild,
+  visual-5.72.ebuild:
+  Restricting py 2.5
+
+  20 Feb 2012; Patrick Lauer <patrick@gentoo.org> visual-5.4.ebuild,
+  visual-5.72-r1.ebuild, visual-5.72.ebuild:
+  Fixing pypy restricts to actually work
+
+  01 Feb 2012; Mike Gilbert <floppym@gentoo.org> visual-5.4.ebuild,
+  visual-5.72-r1.ebuild, visual-5.72.ebuild:
+  Inherit multilib.
+
+*visual-5.72-r1 (28 Jan 2012)
+
+  28 Jan 2012; Mike Gilbert <floppym@gentoo.org> +visual-5.72-r1.ebuild,
+  visual-5.4.ebuild, visual-5.72.ebuild:
+  Prepare for PYTHON_ABI-versioned Boost Python libraries in Boost 1.48. Patch
+  by Arfrever.
+
+*visual-5.72 (05 Jan 2012)
+
+  05 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org> +visual-5.72.ebuild:
+  Tentative bump. Dropped ppc with xarthisius blessing
+
+  15 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -visual-5.3.2.ebuild:
+  Delete.
+
+  15 Jan 2011; Markus Meier <maekke@gentoo.org> visual-5.4.ebuild:
+  x86 stable, bug #351023
+
+  14 Jan 2011; Brent Baude <ranger@gentoo.org> visual-5.4.ebuild:
+  stable ppc, bug 351023
+
+  07 Jan 2011; Markos Chandras <hwoarang@gentoo.org> visual-5.4.ebuild:
+  Stable on amd64 wrt bug #351023
+
+*visual-5.4 (08 Dec 2010)
+
+  08 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +visual-5.4.ebuild:
+  Version bump.
+
+  06 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> visual-5.3.2.ebuild:
+  x86 stable wrt bug #319167
+
+  21 May 2010; Markos Chandras <hwoarang@gentoo.org> visual-5.3.2.ebuild:
+  Stable on amd64 wrt bug #319167
+
+  18 Apr 2010; <nixnut@gentoo.org> visual-5.3.2.ebuild:
+  ppc stable #313263
+
+  15 Apr 2010; Markos Chandras <hwoarang@gentoo.org> visual-5.1.3.ebuild:
+  Stable on amd64 wrt bug #313263
+
+  13 Apr 2010; Christian Faulhammer <fauli@gentoo.org> visual-5.1.3.ebuild:
+  stable x86, bug 313263
+
+*visual-5.3.2 (10 Apr 2010)
+
+  10 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +visual-5.3.2.ebuild:
+  Version bump.
+
+*visual-5.3.1 (08 Apr 2010)
+
+  08 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +visual-5.3.1.ebuild:
+  Version bump. Set SUPPORT_PYTHON_ABIS.
+
+*visual-5.1.3 (05 Apr 2010)
+
+  05 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +visual-5.1.3.ebuild, -visual-5.12.ebuild, -visual-5.13.ebuild:
+  Fix versioning.
+
+  08 Feb 2010; Peter Volkov <pva@gentoo.org> visual-3.2.9-r2.ebuild:
+  Add inherit eutils for epatch.
+
+  09 Dec 2009; Andrey Grozin <grozin@gentoo.org> visual-5.12.ebuild,
+  visual-5.13.ebuild:
+  Now the correct boost version is always used (bug #271019, thanks to
+  Sebastian Mingramm <s.mingramm@gmx.de>)
+
+  04 Dec 2009; Andrey Grozin <grozin@gentoo.org> -visual-5.03_rc1.ebuild:
+  Cleaning an old version
+
+*visual-5.13 (20 Oct 2009)
+
+  20 Oct 2009; Andrey Grozin <grozin@gentoo.org> +visual-5.13.ebuild:
+  Version bump
+
+*visual-5.12 (19 Sep 2009)
+
+  19 Sep 2009; Patrick Lauer <patrick@gentoo.org> +visual-5.12.ebuild:
+  Bump to 5.12, fixes #285032
+
+  06 Sep 2009; Christian Ruppert <idl0r@gentoo.org>
+  -files/visual-4_beta26-gcc43.patch:
+  Remove unused patch.
+
+*visual-5.03_rc1 (07 Apr 2009)
+
+  07 Apr 2009; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml,
+  -visual-3.2.9.ebuild, -visual-3.2.9-r1.ebuild, -visual-4_beta26.ebuild,
+  +visual-5.03_rc1.ebuild:
+  Version bump, unmasking. Removed as many old versions as possible,
+  depending on obsoleted numeric and numarray. Dropped ia64 for gtkglextmm
+  keywording.
+
+  03 Mar 2009; Jeremy Olexa <darkside@gentoo.org> visual-3.2.9-r2.ebuild:
+  amd64 stable, bug 259136
+
+  18 Feb 2009; Raúl Porcel <armin76@gentoo.org> visual-3.2.9-r2.ebuild:
+  ia64/x86 stable wrt #259136
+
+  16 Feb 2009; Brent Baude <ranger@gentoo.org> visual-3.2.9-r2.ebuild:
+  stable ppc, bug 259136
+
+*visual-3.2.9-r2 (03 Feb 2009)
+
+  03 Feb 2009; Patrick Lauer <patrick@gentoo.org>
+  +files/visual-3.2.9-gcc43.patch, +visual-3.2.9-r2.ebuild:
+  gcc 4.3 fix, closes bug #237421. Patch from Nikolay Orlyuk
+
+  08 Jan 2009; Patrick Lauer <patrick@gentoo.org> -visual-4_beta0.ebuild:
+  Removing old
+
+*visual-3.2.9-r1 (09 Aug 2008)
+
+  09 Aug 2008; Jesus Rivero <neurogeek@gentoo.org>
+  +files/visual-3.2.9-import_bug143237.patch, +visual-3.2.9-r1.ebuild:
+  Rev bump. Fixes bugs #176431, #143237, #222205 and #172634
+
+  06 Aug 2008; Jesus Rivero <neurogeek@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*visual-4_beta26 (22 May 2008)
+
+  22 May 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/visual-4_beta26-gcc43.patch, +visual-4_beta26.ebuild:
+  Version bump, now depends on numpy
+
+  19 May 2008; Samuli Suominen <drac@gentoo.org> visual-3.2.9.ebuild:
+  Move pkgconfig to DEPEND.
+
+  01 May 2008; Markus Meier <maekke@gentoo.org> visual-3.2.9.ebuild:
+  amd64 stable, bug #211020
+
+  01 May 2008; Markus Meier <maekke@gentoo.org> visual-3.2.9.ebuild,
+  visual-4_beta0.ebuild:
+  fix quoting and make 3.2.9 multilib-strict, bug #213747
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing tercel from metadata.xml as per #88960.
+
+  05 Mar 2007; Marius Mauch <genone@gentoo.org> visual-3.2.9.ebuild,
+  visual-4_beta0.ebuild:
+  Replacing einfo with elog
+
+  24 Sep 2006; <blubb@gentoo.org> visual-3.2.9.ebuild:
+  marked ~amd64
+
+  20 Jul 2006; Simon Stelling <blubb@gentoo.org> visual-3.2.9.ebuild,
+  visual-4_beta0.ebuild:
+  fixup multilib libdir paths
+
+  16 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org> visual-3.2.9.ebuild:
+  ppc stable
+
+  12 Jul 2006; Aron Griffis <agriffis@gentoo.org> visual-3.2.9.ebuild:
+  Mark 3.2.9 stable on ia64
+
+*visual-4_beta0 (24 Jun 2006)
+
+  24 Jun 2006; Colin Kingsley <tercel@gentoo.org> visual-3.2.9.ebuild,
+  +visual-4_beta0.ebuild:
+  Add beta version under package.mask
+
+  23 Apr 2006; <tercel@gentoo.org> -visual-3.2.5.ebuild,
+  -visual-3.2.7.ebuild, visual-3.2.9.ebuild:
+  move version 3.2.9 to stable for x86, and remove old versions.
+
+  20 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org> visual-3.2.9.ebuild:
+  Added to ~ppc, bug #130564
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> visual-3.2.9.ebuild:
+  Mark 3.2.9 ~ia64
+
+  02 Mar 2006; Marien Zwart <marienz@gentoo.org> metadata.xml:
+  Add to the python herd.
+
+*visual-3.2.9 (02 Mar 2006)
+
+  02 Mar 2006; <tercel@gentoo.org> -visual-3.2.1.ebuild, visual-3.2.7.ebuild,
+  +visual-3.2.9.ebuild:
+  remove old stable version, stabilize newer version, add newest version to ~x86
+
+*visual-3.2.7 (13 Feb 2006)
+
+  13 Feb 2006; <tercel@gentoo.org> visual-3.2.5.ebuild, +visual-3.2.7.ebuild:
+  Added version 3.2.7 to ~x86 and moved 3.2.5 to stable.
+
+*visual-3.2.5 (22 Dec 2005)
+
+  22 Dec 2005; <tercel@gentoo.org> +visual-3.2.5.ebuild:
+  commit new version to ~x86
+
+  11 Sep 2005; Jonathan Smith <smithj@gentoo.org> visual-3.2.1.ebuild:
+  fixed dependency... changed >=gtkglarea-1.2 to =1.2*
+
+  13 Jul 2005; <tercel@gentoo.org> visual-3.2.1.ebuild:
+  3.2.1 moved to stable on x86
+
+*visual-3.2.1 (01 Jun 2005)
+
+  01 Jun 2005; <tercel@gentoo.org> +metadata.xml, +visual-3.2.1.ebuild:
+  Initial commit.

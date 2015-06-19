@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/libvirt/files/virtlockd.init-r1,v 1.1 2015/05/24 21:05:42 tamiko Exp $
+
+description="libvirt virtual machine lock manager"
+command="/usr/sbin/virtlockd"
+command_args="-d"
+pidfile="/var/run/virtlockd.pid"
+
+extra_started_commands="reload"
+description_reload="re-exec the daemon, while maintaining locks and clients"
+
+
+depend() {
+    after ntp-client ntpd nfs nfsmount corosync
+}
+
+reload() {
+    ebegin "re-exec() virtlockd"
+
+    start-stop-daemon --signal SIGUSR1 \
+      --exec "${command}" --pidfile "${pidfile}"
+}

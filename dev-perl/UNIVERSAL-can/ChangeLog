@@ -1,0 +1,115 @@
+# ChangeLog for dev-perl/UNIVERSAL-can
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/UNIVERSAL-can/ChangeLog,v 1.21 2015/03/13 16:39:06 monsieurp Exp $
+
+*UNIVERSAL-can-1.201.403.280 (13 Mar 2015)
+
+  13 Mar 2015; Patrice Clement <monsieurp@gentoo.org>
+  +UNIVERSAL-can-1.201.403.280.ebuild:
+  Version bump.
+
+  07 Feb 2015; Mikle Kolyada <zlogene@gentoo.org>
+  UNIVERSAL-can-1.201.401.240.ebuild:
+  Mark stable
+
+*UNIVERSAL-can-1.201.207.260-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +UNIVERSAL-can-1.201.207.260-r1.ebuild, -UNIVERSAL-can-1.201.207.260.ebuild:
+  bumped current stable ebuild(s) EAPI to 5; committed directly to stable as no
+  other changes present and revbump helps stable systems to keep from dieing on
+  perl-5.18 upgrade
+
+*UNIVERSAL-can-1.201.401.240 (15 Feb 2014)
+
+  15 Feb 2014; Tim Harder <radhermit@gentoo.org>
+  +UNIVERSAL-can-1.201.401.240.ebuild:
+  Version bump.
+
+  11 Jun 2013; Markus Meier <maekke@gentoo.org>
+  UNIVERSAL-can-1.201.207.260.ebuild:
+  add ~arm, bug #446958
+
+  22 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  UNIVERSAL-can-1.201.207.260.ebuild:
+  Stable for ppc, wrt bug #462316
+
+  22 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  UNIVERSAL-can-1.201.207.260.ebuild:
+  Stable for x86, wrt bug #462316
+
+  22 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  UNIVERSAL-can-1.201.207.260.ebuild:
+  Stable for amd64, wrt bug #462316
+
+  22 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  UNIVERSAL-can-1.201.207.260.ebuild:
+  Add ~ppc, wrt bug #446958
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org>
+  UNIVERSAL-can-1.201.207.260.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  29 Jul 2012; Torsten Veller <tove@gentoo.org>
+  -UNIVERSAL-can-1.201.106.170.ebuild:
+  Cleanup
+
+*UNIVERSAL-can-1.201.207.260 (27 Jul 2012)
+
+  27 Jul 2012; Torsten Veller <tove@gentoo.org>
+  +UNIVERSAL-can-1.201.207.260.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -UNIVERSAL-can-1.201.106.140.ebuild:
+  Cleanup
+
+*UNIVERSAL-can-1.201.106.170 (06 Aug 2011)
+
+  06 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +UNIVERSAL-can-1.201.106.170.ebuild:
+  Version bump. Only bumped minimum Perl version to 5.8
+
+  29 Jul 2011; Torsten Veller <tove@gentoo.org> -UNIVERSAL-can-1.16.ebuild:
+  Cleanup
+
+*UNIVERSAL-can-1.201.106.140 (17 Jun 2011)
+
+  17 Jun 2011; Torsten Veller <tove@gentoo.org>
+  -UNIVERSAL-can-1.201.106.130.ebuild, +UNIVERSAL-can-1.201.106.140.ebuild:
+  Version bump. Cleanup
+
+*UNIVERSAL-can-1.201.106.130 (13 Jun 2011)
+
+  13 Jun 2011; Torsten Veller <tove@gentoo.org>
+  +UNIVERSAL-can-1.201.106.130.ebuild:
+  Version bump
+
+  10 Apr 2010; Torsten Veller <tove@gentoo.org> -UNIVERSAL-can-1.15.ebuild:
+  Cleanup
+
+*UNIVERSAL-can-1.16 (16 Jan 2010)
+
+  16 Jan 2010; Torsten Veller <tove@gentoo.org> +UNIVERSAL-can-1.16.ebuild:
+  Version bump
+
+  10 Oct 2009; Torsten Veller <tove@gentoo.org> +UNIVERSAL-can-1.15.ebuild,
+  +metadata.xml:
+  Import from perl-experimental
+
+  26 Jun 2009; Kent Fredric <kentfredric@gmail.com>
+  -UNIVERSAL-can-1.12.ebuild, -UNIVERSAL-can-1.14.ebuild:
+  Pruning, gone from upstream mirror
+
+*UNIVERSAL-can-1.15 (26 Jun 2009)
+
+  26 Jun 2009; Kent Fredric <kentfredric@gmail.com>
+  +UNIVERSAL-can-1.15.ebuild:
+  Bumped, Tests, EAPI2
+
+  22 Jun 2009; Michele Beltrame <mb@cattlegrid.info>
+  +UNIVERSAL-can-1.14.ebuild:
+  Bump

@@ -1,0 +1,24 @@
+# ChangeLog for dev-python/myghtyutils
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/myghtyutils/ChangeLog,v 1.5 2014/12/31 04:36:53 idella4 Exp $
+
+*myghtyutils-0.52-r1 (31 Dec 2014)
+
+  31 Dec 2014; Ian Delaney <idella4@gentoo.org> +myghtyutils-0.52-r1.ebuild,
+  -myghtyutils-0.52.ebuild:
+  revbump; conversion -> distutils-r1, rm old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> myghtyutils-0.52.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  01 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  myghtyutils-0.52.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  04 Jul 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  myghtyutils-0.52.ebuild:
+  Removed use_setuptools sed.
+
+  05 Feb 2007; Tiziano Müller <dev-zero@gentoo.org>
+  +myghtyutils-0.52.ebuild, +metadata.xml:
+  Initial ebuild

@@ -1,0 +1,35 @@
+# ChangeLog for sys-infiniband/dapl
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-infiniband/dapl/ChangeLog,v 1.7 2014/04/16 08:22:24 alexxy Exp $
+
+*dapl-2.0.40 (16 Apr 2014)
+
+  16 Apr 2014; Alexey Shvetsov <alexxy@gentoo.org> +dapl-2.0.40.ebuild,
+  -dapl-2.0.34.ebuild:
+  Update ofed stack to 3.12-rc1
+
+  13 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> dapl-2.0.36.ebuild:
+  [sys-infiniband] Update OFED
+
+*dapl-2.0.36 (12 Oct 2012)
+
+  12 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> +dapl-2.0.36.ebuild:
+  [sys-infiniband] OFED 3.5 rc2 update
+
+  18 Apr 2012; Alexey Shvetsov <alexxy@gentoo.org> dapl-2.0.34.ebuild:
+  [sys-infiniband/dapl] Simplyfy ebuild
+
+*dapl-2.0.34 (18 Apr 2012)
+
+  18 Apr 2012; Alexey Shvetsov <alexxy@gentoo.org> +dapl-2.0.34.ebuild,
+  -dapl-2.0.32.ebuild:
+  [sys-infiniband/dapl] Version bump to OFED 1.5.4.1
+
+  02 Jul 2011; Alexey Shvetsov <alexxy@gentoo.org> dapl-2.0.32.ebuild:
+  Add ~amd64-linux keywrod
+
+*dapl-2.0.32 (30 Jun 2011)
+
+  30 Jun 2011; Alexey Shvetsov <alexxy@gentoo.org> +dapl-2.0.32.ebuild,
+  +metadata.xml:
+  Initial import to tree

@@ -1,0 +1,29 @@
+# ChangeLog for media-libs/gluon
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/gluon/ChangeLog,v 1.6 2014/03/21 21:06:52 johu Exp $
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org> -gluon-0.70.0.ebuild,
+  gluon-0.71.0.ebuild:
+  Bump to EAPI 5, remove old.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> gluon-0.71.0.ebuild:
+  Move Qt dependencies to the new category
+
+*gluon-0.71.0 (24 Jun 2012)
+
+  24 Jun 2012; Michael Palimaka <kensington@gentoo.org>
+  +files/gluon-0.71.0-gcc-4.7.patch, +gluon-0.71.0.ebuild:
+  Version bump. Add a patch from upstream to fix build with GCC 4.7, wrt bug
+  #423337.
+
+  28 Oct 2011; Jonathan Callen <abcd@gentoo.org> gluon-0.70.0.ebuild:
+  Bump to EAPI=4
+
+  02 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org> gluon-0.70.0.ebuild:
+  EAPI3, slotmove to 4
+
+*gluon-0.70.0 (06 Jun 2010)
+
+  06 Jun 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +gluon-0.70.0.ebuild, +metadata.xml:
+  [media-libs/gluon] Initial import to the tree of the first alpha release.

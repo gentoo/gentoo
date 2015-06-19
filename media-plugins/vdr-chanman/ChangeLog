@@ -1,0 +1,29 @@
+# ChangeLog for media-plugins/vdr-chanman
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-chanman/ChangeLog,v 1.6 2014/08/10 21:06:07 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> vdr-chanman-0.0.9.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  23 Feb 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-chanman-0.0.6.ebuild:
+  cleanup vdr-plugin.eclass depended ebuild
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*vdr-chanman-0.0.9 (01 Jul 2012)
+
+  01 Jul 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-chanman-0.0.9.ebuild:
+  bump; vdr-plugin-2.eclass; fixed bug 424265
+
+  28 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-chanman-0.0.6.ebuild:
+  eapi=3
+
+*vdr-chanman-0.0.6 (27 Jan 2008)
+
+  27 Jan 2008; Joerg Bornkessel <hd_brummy@gentoo.org> +metadata.xml,
+  +vdr-chanman-0.0.6.ebuild:
+  initial ebuild; thanks to G.Zuliani on bug 207388

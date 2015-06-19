@@ -1,0 +1,45 @@
+Index: monkey-bubble-0.4.0/src/net/message-handler.c
+===================================================================
+--- monkey-bubble-0.4.0.orig/src/net/message-handler.c
++++ monkey-bubble-0.4.0/src/net/message-handler.c
+@@ -28,7 +28,7 @@
+ #include <unistd.h>
+ #include <string.h>
+ #include <arpa/inet.h>
+-#include <glib/gthread.h>
++#include <glib.h>
+ #include <sys/time.h>
+ #include <time.h>
+ 
+Index: monkey-bubble-0.4.0/src/net/simple-server.c
+===================================================================
+--- monkey-bubble-0.4.0.orig/src/net/simple-server.c
++++ monkey-bubble-0.4.0/src/net/simple-server.c
+@@ -31,13 +31,12 @@
+ #include <unistd.h>
+ #include <string.h>
+ #include <arpa/inet.h>
+-#include <glib/gthread.h>
++#include <glib.h>
+ #include <sys/time.h>
+ #include <time.h>
+ 
+ 
+ #include <glib-object.h>
+-#include <glib.h>
+ 
+ #include "simple-server.h"
+ #include "message-handler.h"
+Index: monkey-bubble-0.4.0/src/ui/main.c
+===================================================================
+--- monkey-bubble-0.4.0.orig/src/ui/main.c
++++ monkey-bubble-0.4.0/src/ui/main.c
+@@ -15,7 +15,7 @@
+ #include <gtk/gtk.h>
+ #include <gst/gst.h>
+ #include <bonobo/bonobo-i18n.h>
+-#include <glib/gthread.h>
++#include <glib.h>
+ #include <libgnomeui/gnome-ui-init.h>
+ 
+ #include <math.h>

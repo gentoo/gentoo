@@ -1,0 +1,30 @@
+# ChangeLog for games-fps/quake3-bfp
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-bfp/ChangeLog,v 1.6 2009/10/10 17:22:45 nyhm Exp $
+
+  10 Oct 2009; Tristan Heaven <nyhm@gentoo.org> quake3-bfp-1.2-r1.ebuild:
+  Stable on amd64/x86
+
+  06 Oct 2009; Tristan Heaven <nyhm@gentoo.org> quake3-bfp-1.2-r1.ebuild:
+  EAPI=2; install icon
+
+  15 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-bfp-1.2-r1.ebuild:
+  Shortening DESCRIPTION to shut repoman up.
+
+  24 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-bfp-1.2-r1.ebuild:
+  Updated to have both MOD_BINS and MOD_DIR like it used to do with the
+  games-q3mod eclass so it'll install the wrapper with a different name.
+
+*quake3-bfp-1.2-r1 (23 Oct 2006)
+
+  23 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +quake3-bfp-1.2-r1.ebuild:
+  Added new revision for testing which uses the brand-spankin-new
+  games-mods.eclass to reduce ebuild code.
+
+*quake3-bfp-1.2 (27 Dec 2004)
+
+  27 Dec 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Dirk-Jan Heijs #59642.

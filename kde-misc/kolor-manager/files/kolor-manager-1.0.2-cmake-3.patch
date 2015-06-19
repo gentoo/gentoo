@@ -1,0 +1,15 @@
+INCLUDE is for loading CMake code, and this fails with a fatal error
+in CMake 3 as 'settings' is a directory
+
+Gentoo bug #537138
+--- information/CMakeLists.txt
++++ information/CMakeLists.txt
+@@ -3,8 +3,6 @@
+ find_package(KDE4 REQUIRED)
+ include_directories(${KDE4_INCLUDES} ${kolor_manager_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+ 
+-INCLUDE( "../settings")
+- 
+ set(kminfo_PART_SRCS 
+       kminfo.cpp    
+       )

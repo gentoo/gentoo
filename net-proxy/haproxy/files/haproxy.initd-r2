@@ -1,0 +1,47 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/haproxy/files/haproxy.initd-r2,v 1.1 2012/09/30 22:07:40 idl0r Exp $
+
+extra_commands="checkconfig"
+extra_started_commands="reload"
+
+command="/usr/bin/haproxy"
+pidfile="/var/run/${SVCNAME}.pid"
+
+if [ -z "${CONFFILE}" -a -d "/etc/haproxy" -a -f "/etc/haproxy/${SVCNAME}.cfg" ]; then
+	CONFFILE=/etc/haproxy/${SVCNAME}.cfg
+else
+	CONFFILE=/etc/${SVCNAME}.cfg
+fi
+
+command_args="-D -p ${pidfile} -f ${CONFFILE}"
+
+depend() {
+	need net
+	use dns logger
+}
+
+checkconfig() {
+	if [ ! -f "${CONFFILE}" ]; then
+		eerror "${CONFFILE} does not exist!"
+		return 1
+	fi
+
+	ebegin "Checking ${CONFFILE}"
+	$command -q -c -f "${CONFFILE}"
+	eend $?
+}
+
+stop_pre() {
+	if [ "${RC_CMD}" = "restart" ]; then
+		checkconfig || return 1
+	fi
+}
+
+reload() {
+	ebegin "Reloading ${SVCNAME}"
+	checkconfig || { eerror "Reloading failed, please fix your ${CONFFILE} first"; return 1; }
+	$command -D -p "${pidfile}" -f "${CONFFILE}" -sf $(cat "${pidfile}")
+	eend $?
+}

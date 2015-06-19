@@ -1,0 +1,14 @@
+http://bugs.gentoo.org/510872
+http://bugzilla.xfce.org/show_bug.cgi?id=10968
+
+--- configure
++++ configure
+@@ -13946,7 +13946,7 @@
+ 
+ 
+ 
+-    ALL_LINGUAS="ar ast bg ca cs da de el en_AU en_GB es eu fi fr gl hr hu id is it ja ko lt lv ms nb nl oc pa pl pt_BR pt ru sk sq sr sv th tr ug uk ur_PK ur vi zh_CN zh_TW "
++    ALL_LINGUAS="ar ast ca cs da de el en_GB es eu fi fr gl hu id it ja ko lt lv nb nl pl pt_BR pt ru sq sv tr ur_PK ur vi zh_CN zh_TW "
+ 
+    for ac_header in locale.h
+ do :

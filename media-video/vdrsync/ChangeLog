@@ -1,0 +1,52 @@
+# ChangeLog for media-video/vdrsync
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/vdrsync/ChangeLog,v 1.11 2007/11/27 11:35:34 zzam Exp $
+
+  27 Nov 2007; Matthias Schwarzott <zzam@gentoo.org>
+  vdrsync-0.1.3_pre050322-r1.ebuild:
+  Fixed quoting.
+
+  24 Oct 2006; Matthias Schwarzott <zzam@gentoo.org>
+  -vdrsync-0.1.3_pre050322.ebuild:
+  Removed old and no longer needed ebuild.
+
+  21 Oct 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdrsync-0.1.3_pre050322-r1.ebuild:
+  Marked stable on x86.
+
+  01 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Assigned to VDR-Project.
+
+*vdrsync-0.1.3_pre050322-r1 (28 Jun 2006)
+
+  28 Jun 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdrsync-0.1.3_pre050322-path.diff,
+  +vdrsync-0.1.3_pre050322-r1.ebuild:
+  fix for not founded Path included
+
+  20 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdrsync-0.1.3_pre050322.ebuild:
+  Marked stable on x86
+
+  05 Mar 2006; Mark Loeser <halcy0n@gentoo.org> metadata.xml:
+  Fix metadata: media-video -> video
+
+  05 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdrsync-0.1.3_pre050322.ebuild:
+  added ~amd64
+
+  05 Feb 2006; Ciaran McCreesh <ciaranm@gentoo.org>
+  vdrsync-0.1.3_pre050322.ebuild:
+  Add categories to dep atoms.
+
+  27 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
+  vdrsync-0.1.3_pre050322.ebuild:
+  install dvd-menu.pl only when useflag dvdr is set
+
+*vdrsync-0.1.3_pre050322 (27 Dec 2005)
+
+  27 Dec 2005; Matthias Schwarzott <zzam@gentoo.org> +metadata.xml,
+  +vdrsync-0.1.3_pre050322.ebuild:
+  Initial import of ebuild from gentoo.de (thanks to Ed Hein <tyger at gmx dot
+  de>)
+

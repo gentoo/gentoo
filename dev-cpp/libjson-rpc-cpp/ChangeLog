@@ -1,0 +1,22 @@
+# ChangeLog for dev-cpp/libjson-rpc-cpp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libjson-rpc-cpp/ChangeLog,v 1.4 2015/06/06 09:49:37 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  07 Apr 2015; Michał Górny <mgorny@gentoo.org> libjson-rpc-cpp-9999.ebuild:
+  Drop accidental keywords on -9999. Oops.
+
+*libjson-rpc-cpp-0.5.0 (07 Apr 2015)
+
+  07 Apr 2015; Michał Górny <mgorny@gentoo.org> +libjson-rpc-cpp-0.5.0.ebuild,
+  libjson-rpc-cpp-9999.ebuild:
+  Add a release version now that the build system fixes have made it into the
+  release.
+
+*libjson-rpc-cpp-9999 (04 Apr 2015)
+
+  04 Apr 2015; Michał Górny <mgorny@gentoo.org> +libjson-rpc-cpp-9999.ebuild,
+  +metadata.xml:
+  Introduce a JSON-RPC C++ library, related to bug #465976.

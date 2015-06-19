@@ -1,0 +1,41 @@
+# ChangeLog for x11-plugins/wmlife
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmlife/ChangeLog,v 1.10 2014/11/13 16:18:01 voyageur Exp $
+
+  13 Nov 2014; Bernard Cafarelli <voyageur@gentoo.org> +wmlife-1.0.1.ebuild,
+  +files/wmlife-1.0.0-stringh.patch, +files/wmlife-1.0.1-configure.patch,
+  +metadata.xml:
+  Restore with correct dependencies (gnome2 deps were not needed)
+
+  19 Sep 2014; Bernard Cafarelli <voyageur@gentoo.org> -wmlife-1.0.0.ebuild,
+  wmlife-1.0.1.ebuild, +files/wmlife-1.0.1-configure.patch:
+  Fix compilation, bug #515916. Remove old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> wmlife-1.0.0.ebuild,
+  wmlife-1.0.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  07 Apr 2014; Samuli Suominen <ssuominen@gentoo.org> wmlife-1.0.0.ebuild,
+  wmlife-1.0.1.ebuild:
+  Use EAPI5 instead of EAPI1.
+
+*wmlife-1.0.1 (27 Aug 2012)
+
+  27 Aug 2012; Bernard Cafarelli <voyageur@gentoo.org> +wmlife-1.0.1.ebuild:
+  Version bump and ebuild cleanup. Add sticky option, fix regression causing
+  second window and disable GDK client-side rendering
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> wmlife-1.0.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  28 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> wmlife-1.0.0.ebuild:
+  Fix slot-dep on gtk+
+
+  12 Jan 2008; Markus Meier <maekke@gentoo.org> wmlife-1.0.0.ebuild:
+  add ~x86
+
+*wmlife-1.0.0 (12 Jan 2008)
+
+  12 Jan 2008; Samuli Suominen <drac@gentoo.org>
+  +files/wmlife-1.0.0-stringh.patch, +wmlife-1.0.0.ebuild:
+  Initial commit.

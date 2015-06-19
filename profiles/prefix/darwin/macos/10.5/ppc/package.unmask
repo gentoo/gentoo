@@ -1,0 +1,7 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/10.5/ppc/package.unmask,v 1.1 2012/10/30 20:28:53 grobian Exp $
+
+# Fabian Groffen <grobian@gentoo.org> (30 Oct 2012)
+# This is the only way to get Java7 here (no Java6 possible)
+dev-java/soylatte-jdk-bin

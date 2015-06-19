@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=dev-util/intltool python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=sys-apps/sed-4
+DESCRIPTION=audio library tagger, manager, and player for GTK+
+EAPI=5
+HOMEPAGE=http://quodlibet.readthedocs.org
+IUSE=+dbus gstreamer ipod +udev python_targets_python2_7
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/keybinder:3[introspection] dev-python/feedparser[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygobject:3[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=media-libs/mutagen-1.22[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 media-libs/gst-plugins-good:1.0 media-plugins/gst-plugins-meta:1.0 ) !gstreamer? ( media-libs/xine-lib ) dbus? ( app-misc/media-player-info dev-python/dbus-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) ipod? ( media-libs/libgpod[python,python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) udev? ( virtual/udev ) !media-plugins/quodlibet-plugins python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=ipod? ( dbus ) || ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=https://github.com/quodlibet/quodlibet/archive/release-3.4.1.tar.gz -> quodlibet-3.4.1.tar.gz
+_eclasses_=distutils-r1	c01d5c4af34f4a37a51fc9638299c222	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	python-r1	6d3a3cb5705b9fff1aeb7cfa4e3336fe	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=793623d7d530320e12410c4f1ec724cd

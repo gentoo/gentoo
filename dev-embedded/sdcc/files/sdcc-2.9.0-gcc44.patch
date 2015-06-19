@@ -1,0 +1,15 @@
+like fix already in upstream
+
+* sim/ucsim/cmd.src/cmdlex.cc: regenerated,
+  fix for parch #3038644: Fix for GCC-4.4 compile error
+
+--- trunk/sdcc/sim/ucsim/cmd.src/cmdlex.cc	2010/08/04 15:21:39	5910
++++ trunk/sdcc/sim/ucsim/cmd.src/cmdlex.cc	2010/08/04 17:17:09	5911
+@@ -85,6 +85,7 @@
+ #include <errno.h>
+ #include <cstdlib>
+ #include <cstring>
++#include <cstdio>
+ /* end standard C++ headers. */
+ 
+ #ifdef __cplusplus

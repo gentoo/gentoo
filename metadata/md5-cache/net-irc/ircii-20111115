@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=sys-libs/ncurses virtual/libiconv
+DESCRIPTION=An IRC and ICB client that runs under most UNIX platforms
+EAPI=4
+HOMEPAGE=http://eterna.com.au/ircii/
+IUSE=ipv6
+KEYWORDS=amd64 ~ppc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris
+LICENSE=BSD
+RDEPEND=sys-libs/ncurses virtual/libiconv !!net-irc/irc-client
+SLOT=0
+SRC_URI=ftp://ircii.warped.com/pub/ircII/ircii-20111115.tar.bz2 ftp://ircii.warped.com/pub/ircII/old/ircii-20111115.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=6dd9b404bb097d6ccc89c99a6dad5714

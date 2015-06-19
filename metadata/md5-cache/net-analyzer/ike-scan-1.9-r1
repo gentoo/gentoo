@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=ssl? ( dev-libs/openssl )
+DESCRIPTION=A utility for finding, fingerprinting and testing IKE VPN servers
+EAPI=4
+HOMEPAGE=http://www.nta-monitor.com/ike-scan/
+IUSE=ssl
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=ssl? ( dev-libs/openssl )
+SLOT=0
+SRC_URI=http://www.nta-monitor.com/ike-scan/download/ike-scan-1.9.tar.gz
+_md5_=3d15a03758f628ccb4134654bf8c77e1

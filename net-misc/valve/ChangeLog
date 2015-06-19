@@ -1,0 +1,20 @@
+# ChangeLog for net-misc/valve
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/valve/ChangeLog,v 1.4 2010/03/24 22:11:58 robbat2 Exp $
+
+  24 Mar 2010; Robin H. Johnson <robbat2@gentoo.org> valve-1.0.ebuild:
+  Bug #297065: QA cleanup.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> valve-1.0.ebuild:
+  Remove virtual/libc
+
+  30 Sep 2006; Robin H. Johnson <robbat2@gentoo.org> valve-1.0.ebuild:
+  Add ~amd64 so I can use it.
+
+*valve-1.0 (03 Jun 2006)
+
+  03 Jun 2006; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +valve-1.0.ebuild:
+  Initial commit. Based on submission in bug #78841, thanks to Cl?udio Valente
+  <claudiovalente@yahoo.com>.
+

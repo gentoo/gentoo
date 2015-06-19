@@ -1,0 +1,13 @@
+the SONAME upstream was bumped to try and sort out the 1.19.x/1.20.x mess, but
+since we've always had 1.20.x in our tree, we dont care about that breakage.
+
+http://lists.linux.it/pipermail/gpm/2008-June/001026.html
+http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=473496
+
+--- gpm/configure
++++ gpm/configure
+@@ -1736,2 +1736,2 @@
+-abi_lev="2"
+-abi_age="1"
++abi_lev="1"
++abi_age="20"

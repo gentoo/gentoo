@@ -1,0 +1,32 @@
+--- LibRaw-0.16.0-Alpha2/CMakeLists.txt
++++ LibRaw-0.16.0-Alpha2/CMakeLists.txt
+@@ -65,6 +65,7 @@
+ # Project Options
+ 
+ OPTION(ENABLE_OPENMP               "Build library with OpenMP support               (default=ON)"                 ON)
++OPTION(ENABLE_JASPER               "Build library with RedCine codec support        (default=ON)"                 ON)
+ OPTION(ENABLE_LCMS                 "Build library with LCMS support                 (default=ON)"                 ON)
+ OPTION(ENABLE_EXAMPLES             "Build library with sample command-line programs (default=ON)"                 ON)
+ OPTION(ENABLE_RAWSPEED             "Build library with extra RawSpeed codec support (default=OFF)"                OFF)
+@@ -207,12 +208,16 @@
+ 
+ # Jasper library check
+ 
+-FIND_PACKAGE(Jasper)
++SET(JASPER_FOUND false)
+ 
+-# Flag to use libjasper with LibRaw RedCine codec
+-IF(JASPER_FOUND)
+-    ADD_DEFINITIONS(-DUSE_JASPER)
+-    INCLUDE_DIRECTORIES(${JASPER_INCLUDE_DIR})
++IF(ENABLE_JASPER)
++    FIND_PACKAGE(Jasper)
++
++    # Flag to use libjasper with LibRaw RedCine codec
++    IF(JASPER_FOUND)
++        ADD_DEFINITIONS(-DUSE_JASPER)
++        INCLUDE_DIRECTORIES(${JASPER_INCLUDE_DIR})
++    ENDIF()
+ ENDIF()
+ 
+ # For registration to libraw_config.h

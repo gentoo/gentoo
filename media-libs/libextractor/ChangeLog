@@ -1,0 +1,474 @@
+# ChangeLog for media-libs/libextractor
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libextractor/ChangeLog,v 1.97 2015/03/31 07:51:31 ago Exp $
+
+  31 Mar 2015; Agostino Sarubbo <ago@gentoo.org> libextractor-1.3.ebuild:
+  Stable for ppc64, wrt bug #538898
+
+  29 Mar 2015; Mikle Kolyada <zlogene@gentoo.org> libextractor-1.3.ebuild:
+  x86 stable wrt bug #538898
+
+  28 Mar 2015; Agostino Sarubbo <ago@gentoo.org> libextractor-1.3.ebuild:
+  Stable for ppc, wrt bug #538898
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> libextractor-1.3.ebuild:
+  Stable for amd64, wrt bug #538898
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> libextractor-1.0.1.ebuild:
+  ppc stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> libextractor-1.0.1.ebuild:
+  ppc64 stable, bug 540290
+
+  14 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> libextractor-1.3.ebuild:
+  Punt bogus USE="qt4" (mistakenly forwarded from ebuild of 1.0) wrt #515338 by
+  Patrick Lauer
+
+  05 Jun 2014; Samuli Suominen <ssuominen@gentoo.org> libextractor-1.3.ebuild:
+  Despite ./configure --help telling the flag name is --disable-gnome, it's in
+  reality --disable-gsf-gnome.
+
+*libextractor-1.3 (05 Jun 2014)
+
+  05 Jun 2014; Samuli Suominen <ssuominen@gentoo.org> +libextractor-1.3.ebuild:
+  Version bump wrt #500180 by Lars Wendler. Including upstream fixes for new
+  FFmpeg wrt #510528 by Thomas Beutin and new giflib wrt #497550 by "Vladimir"
+
+  31 Mar 2014; Tom Wijsman <TomWij@gentoo.org> libextractor-1.0.1.ebuild:
+  [QA] Make pkcrack blocker less strict as newer revision moves the file away,
+  for bug #247394.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> libextractor-1.0.1.ebuild:
+  Move Qt dependencies to the new category
+
+  22 Jan 2013; Samuli Suominen <ssuominen@gentoo.org>
+  -libextractor-0.6.3-r1.ebuild:
+  old
+
+  11 Jan 2013; Agostino Sarubbo <ago@gentoo.org> libextractor-1.0.1.ebuild:
+  Stable for x86, wrt bug #451122
+
+  11 Jan 2013; Agostino Sarubbo <ago@gentoo.org> libextractor-1.0.1.ebuild:
+  Stable for amd64, wrt bug #451122
+
+  24 Oct 2012; Samuli Suominen <ssuominen@gentoo.org>
+  libextractor-1.0.1.ebuild:
+  Restore ~ppc64 after keywording media-libs/libsmf wrt #436954
+
+  24 Oct 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -libextractor-1.0.0.ebuild:
+  old
+
+  24 Oct 2012; Samuli Suominen <ssuominen@gentoo.org>
+  libextractor-1.0.1.ebuild:
+  Fix LICENSE from GPL-2 to GPL-3 as per COPYING and NEWS.
+
+*libextractor-1.0.1 (24 Oct 2012)
+
+  24 Oct 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +libextractor-1.0.1.ebuild:
+  Version bump.
+
+  16 Oct 2012; Markus Meier <maekke@gentoo.org> libextractor-1.0.0.ebuild:
+  add ~arm, bug #436954
+
+  14 Oct 2012; Raúl Porcel <armin76@gentoo.org> libextractor-0.6.3-r1.ebuild:
+  Drop sparc keywords
+
+  12 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  libextractor-1.0.0.ebuild:
+  keyword ~ppc, bug #436954
+
+*libextractor-1.0.0 (02 Oct 2012)
+
+  02 Oct 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +libextractor-1.0.0.ebuild, metadata.xml:
+  Version bump wrt #436932. Thanks to Mike Frysinger for reporting.
+
+  15 Sep 2012; Tim Harder <radhermit@gentoo.org> libextractor-0.6.3-r1.ebuild:
+  Remove blocker on csound (bug #247394).
+
+  14 Aug 2012; Samuli Suominen <ssuominen@gentoo.org>
+  libextractor-0.6.3-r1.ebuild:
+  Fix building with recent app-text/poppler wrt #431268 by Mattia Rossi and
+  Rick Harris
+
+  05 Aug 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -libextractor-0.6.3.ebuild:
+  old
+
+  04 Aug 2012; Agostino Sarubbo <ago@gentoo.org> libextractor-0.6.3-r1.ebuild:
+  Stable for amd64, wrt bug #429530
+
+  03 Aug 2012; Jeff Horelick <jdhore@gentoo.org> libextractor-0.6.3-r1.ebuild:
+  marked x86 per bug 429530
+
+  02 Aug 2012; Samuli Suominen <ssuominen@gentoo.org>
+  libextractor-0.6.3-r1.ebuild:
+  Block all of app-crypt/pkcrack, media-sound/csound, sci-biology/glimmer and
+  sci-chemistry/pdb-extract for installing binary called 'extract' wrt #247394
+
+*libextractor-0.6.3-r1 (01 Jun 2012)
+
+  01 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +libextractor-0.6.3-r1.ebuild:
+  USE flags "gtk" and "pdf" for optionalizing app-text/poppler and
+  x11-libs/gtk+:2 wrt #415447 by Thomas Beutin
+
+  11 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -libextractor-0.5.19a.ebuild:
+  old
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> libextractor-0.6.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  30 Apr 2012; Agostino Sarubbo <ago@gentoo.org> libextractor-0.6.3.ebuild:
+  Stable for amd64, wrt bug #413827
+
+  29 Apr 2012; Jeff Horelick <jdhore@gentoo.org> libextractor-0.6.3.ebuild:
+  marked x86 per bug 413827
+
+  29 Feb 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -libextractor-0.5.20c.ebuild, -libextractor-0.6.2.ebuild:
+  old
+
+*libextractor-0.6.3 (29 Feb 2012)
+
+  29 Feb 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +libextractor-0.6.3.ebuild, metadata.xml:
+  Version bump.
+
+  09 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -libextractor-0.5.20a.ebuild, -libextractor-0.5.20b.ebuild:
+  old
+
+  09 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  libextractor-0.5.20c.ebuild:
+  Fix building with zlib >= 1.2.5.1-r1 wrt #383585 by Alexandre Rostovtsev and
+  Mike Frysinger
+
+  09 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  libextractor-0.6.2.ebuild:
+  Drop keywording until we have working net-p2p/gnunet.
+
+*libextractor-0.6.2 (09 Oct 2011)
+
+  09 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +libextractor-0.6.2.ebuild:
+  Version bump wrt #269050 by Arfrever Frehtes Taifersar Arahesis. This one is
+  using external exiv2 wrt #383039 and doesn't fail to build against zlib >=
+  1.2.5.1-r1 wrt #383585.
+
+  29 Dec 2009; Raúl Porcel <armin76@gentoo.org>
+  libextractor-0.5.19a.ebuild, libextractor-0.5.20a.ebuild,
+  libextractor-0.5.20b.ebuild, libextractor-0.5.20c.ebuild:
+  Add ~arm
+
+*libextractor-0.5.20c (07 Aug 2008)
+
+  07 Aug 2008; Raúl Porcel <armin76@gentoo.org>
+  +libextractor-0.5.20c.ebuild:
+  Version bump, bug #234130
+
+*libextractor-0.5.20b (11 Jul 2008)
+
+  11 Jul 2008; Raúl Porcel <armin76@gentoo.org>
+  +libextractor-0.5.20b.ebuild:
+  Version bump
+
+*libextractor-0.5.20a (24 Apr 2008)
+
+  24 Apr 2008; Raúl Porcel <armin76@gentoo.org>
+  -libextractor-0.5.18a.ebuild, +libextractor-0.5.20a.ebuild:
+  Version bump
+
+  28 Feb 2008; Santiago M. Mola <coldwind@gentoo.org>
+  libextractor-0.5.19a.ebuild:
+  amd64 stable wrt bug #211525
+
+  27 Feb 2008; Raúl Porcel <armin76@gentoo.org>
+  libextractor-0.5.19a.ebuild:
+  sparc/x86 stable
+
+*libextractor-0.5.19a (16 Jan 2008)
+
+  16 Jan 2008; Raúl Porcel <armin76@gentoo.org>
+  libextractor-0.5.18a.ebuild, +libextractor-0.5.19a.ebuild:
+  Version bump
+
+  30 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  -libextractor-0.5.15.ebuild, libextractor-0.5.18a.ebuild:
+  sparc/x86 stable
+
+  30 Dec 2007; Samuli Suominen <drac@gentoo.org>
+  libextractor-0.5.18a.ebuild:
+  amd64 stable wrt #202613
+
+*libextractor-0.5.18a (17 Dec 2007)
+
+  17 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  -libextractor-0.5.16.ebuild, -libextractor-0.5.18.ebuild,
+  +libextractor-0.5.18a.ebuild:
+  Version bump, remove old
+
+  14 Oct 2007; Markus Rothe <corsair@gentoo.org> libextractor-0.5.18.ebuild:
+  Added ~ppc64; bug #195605
+
+  16 Sep 2007; Santiago M. Mola <coldwind@gentoo.org>
+  libextractor-0.5.15.ebuild, libextractor-0.5.16.ebuild,
+  libextractor-0.5.18.ebuild:
+  Force --disable-xpdf. Bug #188169
+
+  16 Sep 2007; Santiago M. Mola <coldwind@gentoo.org>
+  libextractor-0.5.15.ebuild, libextractor-0.5.16.ebuild,
+  libextractor-0.5.18.ebuild:
+  Add trailing slash to HOMEPAGE. Bug #192634
+
+*libextractor-0.5.18 (23 Mar 2007)
+
+  23 Mar 2007; Raúl Porcel <armin76@gentoo.org>
+  +libextractor-0.5.18.ebuild:
+  Version bump wrt bug 167680
+
+*libextractor-0.5.16 (21 Feb 2007)
+
+  21 Feb 2007; Raúl Porcel <armin76@gentoo.org>
+  +libextractor-0.5.16.ebuild:
+  Version bump
+
+  11 Feb 2007; Raúl Porcel <armin76@gentoo.org>
+  -libextractor-0.5.14.ebuild:
+  remove old version, fixing bug 165145 and bug 165764
+
+  10 Feb 2007; Simon Stelling <blubb@gentoo.org> libextractor-0.5.15.ebuild:
+  stable on amd64; bug 165145
+
+  08 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  libextractor-0.5.15.ebuild:
+  Stable on sparc wrt #165145
+
+  08 Feb 2007; Raúl Porcel <armin76@gentoo.org> libextractor-0.5.15.ebuild:
+  fix nls depend
+
+  07 Feb 2007; Raúl Porcel <armin76@gentoo.org> libextractor-0.5.15.ebuild:
+  Fix bug 165764, and stable x86
+
+  31 Jan 2007; Raúl Porcel <armin76@gentoo.org> libextractor-0.5.15.ebuild:
+  Fix again the parallel compile issues, bug 164384
+
+  20 Jan 2007; Raúl Porcel <armin76@gentoo.org> libextractor-0.5.15.ebuild:
+  Fix typo, bug 162979
+
+  16 Jan 2007; Raúl Porcel <armin76@gentoo.org> libextractor-0.5.15.ebuild:
+  fix -j1, thanks to Ricardo Lanziano <ricardo.lanziano at gmail dot com> at
+  bug 162146
+
+*libextractor-0.5.15 (12 Jan 2007)
+
+  12 Jan 2007; Raúl Porcel <armin76@gentoo.org>
+  +libextractor-0.5.15.ebuild:
+  Version bump, bug 153105
+
+  28 Jun 2006; Jon Hood <squinky86@gentoo.org> libextractor-0.5.14.ebuild:
+  Stable on amd64.
+
+  21 May 2006; Jon Hood <squinky86@gentoo.org> -libextractor-0.5.9.ebuild,
+  libextractor-0.5.14.ebuild:
+  Remove vulnerable version, add libmpeg2 dependency (#133917- thanks Mark).
+
+  19 May 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  libextractor-0.5.14.ebuild:
+  Stable on sparc wrt security #133570
+
+  19 May 2006; Joshua Jackson <tsunam@gentoo.org>
+  libextractor-0.5.14.ebuild:
+  Stable on x86; Security bug #133570
+
+*libextractor-0.5.14 (18 May 2006)
+
+  18 May 2006; Jon Hood <squinky86@gentoo.org>
+  -files/libextractor-includeorder.patch, -libextractor-0.5.12.ebuild,
+  -libextractor-0.5.13.ebuild, +libextractor-0.5.14.ebuild:
+  Version bump, #133570. Remove some of the old, vulnerable versions.
+
+*libextractor-0.5.13 (14 May 2006)
+
+  14 May 2006; Jon Hood <squinky86@gentoo.org> +libextractor-0.5.13.ebuild:
+  Version bump in preparation of #133240.
+
+  27 Apr 2006; Jon Hood <squinky86@gentoo.org>
+  +files/libextractor-includeorder.patch, libextractor-0.5.12.ebuild:
+  Fix nls compile breakage, #112496.
+
+*libextractor-0.5.12 (25 Apr 2006)
+
+  25 Apr 2006; Jon Hood <squinky86@gentoo.org>
+  -files/libextractor-0.2.2-vorbisfile.patch,
+  -files/libextractor-0.5.0-autotools.patch, -libextractor-0.2.2.ebuild,
+  -libextractor-0.3.3.ebuild, -libextractor-0.3.5.ebuild,
+  -libextractor-0.3.7.ebuild, -libextractor-0.4.2.ebuild,
+  -libextractor-0.5.0.ebuild, -libextractor-0.5.4.ebuild,
+  -libextractor-0.5.6a.ebuild, +libextractor-0.5.12.ebuild:
+  Version bump. Remove old and vulnerable versions.
+
+  17 Jan 2006; Jason Wever <weeve@gentoo.org> libextractor-0.5.9.ebuild:
+  Stable on SPARC wrt security bug #118665.
+
+  16 Jan 2006; Marcin Kryczek <mkay@gentoo.org> libextractor-0.5.9.ebuild:
+  Marked stable on x86
+
+*libextractor-0.5.9 (16 Jan 2006)
+
+  16 Jan 2006; Marcin Kryczek <mkay@gentoo.org> +libextractor-0.5.9.ebuild:
+  Version bump
+
+  26 Dec 2005; Luca Barbato <lu_zero@gentoo.org> libextractor-0.2.2.ebuild,
+  libextractor-0.3.3.ebuild, libextractor-0.3.5.ebuild,
+  libextractor-0.3.7.ebuild, libextractor-0.4.2.ebuild,
+  libextractor-0.5.0.ebuild:
+  oggvorbis Cleanup
+
+  16 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  libextractor-0.5.6a.ebuild:
+  Remove --with-gnu-ld option, bug #108386.
+
+  03 Nov 2005; Mark Loeser <halcy0n@gentoo.org> libextractor-0.5.6a.ebuild:
+  Stable on x86; bug #109760
+
+  02 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  libextractor-0.5.6a.ebuild:
+  Stable on sparc wrt #109760
+
+*libextractor-0.5.6a (29 Oct 2005)
+
+  29 Oct 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  +libextractor-0.5.6a.ebuild:
+  Version bump, bug #109760
+
+*libextractor-0.5.4 (06 Sep 2005)
+
+  06 Sep 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  +libextractor-0.5.4.ebuild:
+  Version bump, thanks Glenn L. McGrath <bug1@iinet.net.au> in bug #104103.
+  Updated homepage and SRC_URI. Switched to vorbis USE flag. Added new use
+  flags
+
+  31 May 2005; Olivier Crête <tester@gentoo.org> libextractor-0.5.0.ebuild:
+  Disabled tests because they break, and marked stable on x86 per security bug
+  #79704
+
+  30 May 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  files/libextractor-0.5.0-autotools.patch:
+  Fixed linking problems, bug #79704
+
+  30 May 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  libextractor-0.5.0.ebuild:
+  Stable on amd64
+
+*libextractor-0.5.0 (29 May 2005)
+
+  29 May 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  +files/libextractor-0.5.0-autotools.patch, +libextractor-0.5.0.ebuild:
+  Version bump, security bug #79704
+
+*libextractor-0.4.2 (27 Feb 2005)
+
+  27 Feb 2005; Jon Hood <squinky86@gentoo.org> +libextractor-0.4.2.ebuild:
+  Security fix, #79704; version bump, #79543.
+
+  03 Oct 2004; Jason Wever <weeve@gentoo.org> libextractor-0.3.5.ebuild:
+  Stable on sparc.
+
+*libextractor-0.3.7 (01 Oct 2004)
+
+  01 Oct 2004; Jon Hood <squinky86@gentoo.org> libextractor-0.3.5.ebuild,
+  +libextractor-0.3.7.ebuild:
+  Mark 0.3.5 stable on x86, version bump ~testing branch.
+
+*libextractor-0.3.5 (30 Aug 2004)
+
+  30 Aug 2004; Jon Hood <squinky86@gentoo.org> +libextractor-0.3.5.ebuild:
+  Version bump.
+
+  18 Aug 2004; Jon Hood <squinky86@gentoo.org> -libextractor-0.3.1.ebuild,
+  -libextractor-0.3.2.ebuild, libextractor-0.3.3.ebuild:
+  Stable on x86, remove old versions.
+
+*libextractor-0.3.3 (19 Jul 2004)
+
+  19 Jul 2004; Jon Hood <squinky86@gentoo.org> libextractor-0.3.2.ebuild,
+  +libextractor-0.3.3.ebuild:
+  version bump for testing and stable x86
+
+*libextractor-0.3.2 (15 Jun 2004)
+
+  15 Jun 2004; Jon Hood <squinky86@gentoo.org> -libextractor-0.2.6.ebuild,
+  -libextractor-0.3.0.ebuild, libextractor-0.3.1.ebuild,
+  +libextractor-0.3.2.ebuild:
+  stable and unstable version bumps, ebuild cleanups
+
+  02 May 2004; David Holm <dholm@gentoo.org> libextractor-0.3.1.ebuild:
+  Added to ~ppc.
+
+*libextractor-0.3.1 (01 May 2004)
+
+  01 May 2004; Jon Hood <squinky86@gentoo.org> +libextractor-0.3.1.ebuild:
+  version bump, closes #49458
+
+  30 Apr 2004; Jon Hood <squinky86@gentoo.org> libextractor-0.2.6.ebuild:
+  stable on x86
+
+*libextractor-0.3.0 (28 Apr 2004)
+
+  28 Apr 2004; Jon Hood <squinky86@gentoo.org> libextractor-0.3.0.ebuild:
+  version bump; closing 48171
+  moved to media-libs category
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> libextractor-0.2.6.ebuild:
+  Add die following econf for bug 48950
+
+  30 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> libextractor-0.2.6.ebuild:
+  Adding amd64 keyword. Closing #44494.
+
+  24 Mar 2004; Jason Wever <weeve@gentoo.org> libextractor-0.2.2.ebuild:
+  Marked stable on sparc.
+
+*libextractor-0.2.6 (20 Oct 2003)
+
+  20 Oct 2003; Heinrich Wendel <lanius@gentoo.org> libextractor-0.2.6.ebuild:
+  bump
+
+  02 Oct 2003; Heinrich Wendel <lanius@gentoo.org> libextractor-0.2.0.ebuild:
+  version bump
+
+  09 Jul 2003; <spider@gentoo.org> libextractor-0.2.2.ebuild:
+  marking as stable
+
+*libextractor-0.2.2 (23 mar 2003)
+
+  01 Apr 2003; Alastair Tse <liquidx@gentoo.org> libextractor-0.2.2.ebuild:
+  another fix for this shoddy library. this time its missing -lvorbisfile.
+
+  28 Mar 2003; Alastair Tse <liquidx@gentoo.org> libextractor-0.2.2.ebuild:
+  elibtoolize
+
+  23 mar 2003; <spider@gentoo.org> libextractor-0.2.2.ebuild:
+  Updated version, this one actually builds on my system
+
+*libextractor-0.2.0 (05 Feb 2003)
+
+  05 Feb 2003; Nick Hadaway <raker@gentoo.org> libextractor-0.2.0.ebuild,
+  files/digest-libextractor-0.2.0 :
+  Version bump.  Some ebuild updates.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*libextractor-0.1.0 (10 Jul 2002)
+
+  10 Jul 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

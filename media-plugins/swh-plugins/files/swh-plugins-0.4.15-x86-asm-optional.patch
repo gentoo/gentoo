@@ -1,0 +1,16 @@
+diff -ur swh-plugins-0.4.15/configure.in swh-plugins-0.4.15-teknohog/configure.in
+--- swh-plugins-0.4.15/configure.in	2006-08-08 18:47:16.000000000 +0300
++++ swh-plugins-0.4.15-teknohog/configure.in	2012-07-04 16:20:19.000000000 +0300
+@@ -87,9 +87,9 @@
+ AC_CHECK_FUNC(shm_open,,[AC_CHECK_LIB(rt,shm_open)])
+ AC_C99_FUNC_LRINTF()
+ 
+-AC_ARG_ENABLE(3dnow, [  --enable-3dnow Enables 3DNow! acceleration], AC_DEFINE_UNQUOTED(ACCEL_3DNOW, ""))
+-AC_ARG_ENABLE(sse, [  --enable-sse Uses SSE instructions where possible, requires gcc3 and a processor with SSE support], USE_SSE="-msse -mfpmath=sse -malign-double")
+-AC_ARG_ENABLE(darwin, [  --enable-darwin Builds plugins that will be shared object in the Darwin OS], DARWIN_CFLAGS="-fno-common -flat_namespace -bundle -undefined suppress -lbundle1.o")
++AC_ARG_ENABLE(3dnow, [  --enable-3dnow Enables 3DNow! acceleration], AS_IF([test "x$enableval" = "xyes"], [AC_DEFINE_UNQUOTED(ACCEL_3DNOW, "")]))
++AC_ARG_ENABLE(sse, [  --enable-sse Uses SSE instructions where possible, requires gcc3 and a processor with SSE support], AS_IF([test "x$enableval" = "xyes"], [USE_SSE="-msse -mfpmath=sse -malign-double"]))
++AC_ARG_ENABLE(darwin, [  --enable-darwin Builds plugins that will be shared object in the Darwin OS], AS_IF([test "x$enableval" = "xyes"], [DARWIN_CFLAGS="-fno-common -flat_namespace -bundle -undefined suppress -lbundle1.o"]))
+ 
+ CFLAGS=$lrintf_save_CFLAGS -I@top_srcdir@/intl -I@top_srcdir@
+ 

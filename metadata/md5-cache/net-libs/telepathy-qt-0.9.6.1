@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=farstream? ( >=net-libs/telepathy-farstream-0.2.2 >=net-libs/telepathy-glib-0.18.0 ) qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtxml:5 ) !net-libs/telepathy-qt4 || ( >=dev-lang/python-2.7.5-r2:2.7 ) virtual/pkgconfig test? ( dev-libs/dbus-glib dev-libs/glib:2 dev-python/dbus-python qt4? ( dev-qt/qttest:4 ) qt5? ( dev-qt/qttest:5 ) ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=Qt bindings for the Telepathy D-Bus protocol
+EAPI=5
+HOMEPAGE=http://telepathy.freedesktop.org/
+IUSE=debug farstream +qt4 qt5 test test
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=LGPL-2.1
+RDEPEND=farstream? ( >=net-libs/telepathy-farstream-0.2.2 >=net-libs/telepathy-glib-0.18.0 ) qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtxml:5 ) !net-libs/telepathy-qt4
+REQUIRED_USE=|| ( qt4 qt5 )
+SLOT=0
+SRC_URI=http://telepathy.freedesktop.org/releases/telepathy-qt/telepathy-qt-0.9.6.1.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	virtualx	73cfc129b4b9ba23aed1abb10c825d86
+_md5_=2ccbad1539e2a09006cfaa9c4c019429

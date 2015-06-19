@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer><email>maintainer-needed@gentoo.org</email></maintainer>
+  <longdescription>VTWM, one of many TWM descendants, implements a Virtual
+  Desktop, meaning that what is currently on screen is just a portion of a
+  larger workspace. What portion of the virtual desktop that is displayed,
+  and whatever windows might be visible within it, are simple
+  point-and-click operations within a scaled representation of the
+  workspace.</longdescription>
+  <use>
+    <flag name="rplay">Enable rplay support, needed for sound.</flag>
+  </use>
+</pkgmetadata>

@@ -1,0 +1,12 @@
+http://bugs.gentoo.org/290034
+
+--- configs/wdm-config.in
++++ configs/wdm-config.in
+@@ -21,6 +21,7 @@
+ DisplayManager*session:         @DMDIR@/Xsession
+ DisplayManager*authComplain:    false
+ DisplayManager*wdmLogin:        @exec_prefix@/bin/wdmLogin
++DisplayManager*terminateServer: true
+ !
+ ! display screen background--if not set or set to none, then the
+ !                            background is not set by wdm.

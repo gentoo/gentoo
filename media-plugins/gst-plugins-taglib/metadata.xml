@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gstreamer</herd>
+<longdescription lang="en">
+	GStreamer plugin for tag writing based on taglib
+
+	Includes the following elements:
+	* id3v2mux - TagLib-based ID3v2 Muxer
+	* apev2mux - TagLib-based APEv2 Muxer
+</longdescription>
+</pkgmetadata>

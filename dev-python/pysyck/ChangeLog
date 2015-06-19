@@ -1,0 +1,35 @@
+# ChangeLog for dev-python/pysyck
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pysyck/ChangeLog,v 1.8 2015/01/05 05:08:34 idella4 Exp $
+
+*pysyck-0.61.2-r1 (05 Jan 2015)
+
+  05 Jan 2015; Ian Delaney <idella4@gentoo.org> +pysyck-0.61.2-r1.ebuild,
+  -pysyck-0.61.2.ebuild:
+  revbump; conversion -> distutils-r1, rm old
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #92799
+
+  09 Nov 2012; Agostino Sarubbo <ago@gentoo.org> pysyck-0.61.2.ebuild:
+  Add ~amd64, wrt bug #442126
+
+  10 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pysyck-0.61.2.ebuild:
+  Set SUPPORT_PYTHON_ABIS (bug #345539).
+
+  08 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pysyck-0.61.2.ebuild:
+  Use PYTHON_DEPEND instead of NEED_PYTHON.
+
+  16 Oct 2007; Stefan Briesenick <sbriesen@gentoo.org> pysyck-0.61.2.ebuild:
+  added NEED_PYTHON
+
+  16 Oct 2007; Stefan Briesenick <sbriesen@gentoo.org> pysyck-0.61.2.ebuild:
+  some cleanups
+
+*pysyck-0.61.2 (05 Oct 2007)
+
+  05 Oct 2007; Stefan Briesenick <sbriesen@gentoo.org> +metadata.xml,
+  +pysyck-0.61.2.ebuild:
+  initial commit.

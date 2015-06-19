@@ -1,0 +1,10 @@
+# ChangeLog for app-accessibility/festival-hts
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/festival-hts/ChangeLog,v 1.1 2010/06/30 16:29:41 neurogeek Exp $
+
+*festival-hts-2.1 (30 Jun 2010)
+
+  30 Jun 2010; Jesus Rivero <neurogeek@gentoo.org> +festival-hts-2.1.ebuild,
+  +metadata.xml:
+  Initial commit.
+

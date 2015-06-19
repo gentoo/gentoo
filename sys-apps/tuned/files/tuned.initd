@@ -1,0 +1,17 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/tuned/files/tuned.initd,v 1.1 2014/08/29 04:08:59 dlan Exp $
+
+TUNED_PIDFILE="/run/tuned.pid"
+TUNED_LOGFILE="/var/log/tuned.log"
+
+command="/usr/sbin/tuned"
+command_args="-d --pid ${TUNED_PIDFILE} --log ${TUNED_LOGFILE}"
+pidfile=${TUNED_PIDFILE}
+
+description="tuned is a daemon for monitoring and adaptive tuning of system devices."
+
+depend() {
+	need dbus
+}

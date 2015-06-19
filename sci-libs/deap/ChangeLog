@@ -1,0 +1,42 @@
+# ChangeLog for sci-libs/deap
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/deap/ChangeLog,v 1.9 2015/06/04 10:54:01 jlec Exp $
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> deap-0.9.1.ebuild,
+  deap-1.0.0.ebuild:
+  Drop old Python implementations
+
+  28 Nov 2014; Pacho Ramos <pacho@gentoo.org> deap-1.0.0.ebuild:
+  Support python 3.4
+
+  23 Feb 2014; Sławek Lis <slis@gentoo.org> deap-0.9.1.ebuild,
+  deap-1.0.0.ebuild:
+  Fixed HOMEPAGE value
+
+*deap-1.0.0 (23 Feb 2014)
+
+  23 Feb 2014; Sławek Lis <slis@gentoo.org> +deap-1.0.0.ebuild,
+  -deap-1.0.0_rc1.ebuild, -deap-1.0.0_rc2.ebuild, metadata.xml:
+  version bump, remove old, metadata update
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> deap-0.9.1.ebuild,
+  deap-1.0.0_rc1.ebuild, deap-1.0.0_rc2.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*deap-1.0.0_rc2 (05 Aug 2013)
+
+  05 Aug 2013; Sławek Lis <slis@gentoo.org> +deap-1.0.0_rc2.ebuild:
+  version bump
+
+*deap-1.0.0_rc1 (08 Jul 2013)
+
+  08 Jul 2013; Sławek Lis <slis@gentoo.org> +deap-1.0.0_rc1.ebuild:
+  Version bump
+
+*deap-0.9.1 (29 May 2013)
+
+  29 May 2013; Sławek Lis <slis@gentoo.org> +deap-0.9.1.ebuild, +metadata.xml:
+  Added deap package

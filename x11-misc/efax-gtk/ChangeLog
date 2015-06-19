@@ -1,0 +1,168 @@
+# ChangeLog for x11-misc/efax-gtk
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/efax-gtk/ChangeLog,v 1.43 2014/09/03 14:08:44 jer Exp $
+
+*efax-gtk-3.2.13 (03 Sep 2014)
+
+  03 Sep 2014; Jeroen Roovers <jer@gentoo.org> +efax-gtk-3.2.13.ebuild:
+  Version bump.
+
+*efax-gtk-3.2.12 (04 Jun 2013)
+
+  04 Jun 2013; Samuli Suominen <ssuominen@gentoo.org> +efax-gtk-3.2.12.ebuild:
+  Version bump to make use of the new series of c++-gtk-utils >= 2.2.0
+
+*efax-gtk-3.2.11 (31 May 2013)
+
+  31 May 2013; Michael Weber <xmw@gentoo.org> +efax-gtk-3.2.11.ebuild:
+  Version bump (bug 467932)
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> efax-gtk-3.2.9.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  09 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> -efax-gtk-3.0.18.ebuild,
+  -efax-gtk-3.2.2.ebuild:
+  old
+
+  09 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> efax-gtk-3.2.9.ebuild:
+  Keyword ~ppc/~ppc64 wrt #398859
+
+  09 Apr 2012; Markus Meier <maekke@gentoo.org> efax-gtk-3.2.9.ebuild:
+  x86 stable, bug #405007
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> efax-gtk-3.2.9.ebuild:
+  Stable for amd64, wrt bug #405007
+
+  28 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> efax-gtk-3.2.9.ebuild:
+  Rename efax.1 to efax-0.9a.1 and efix.1 to efix-0.9a.1 in order to prevent
+  file collision with net-misc/efax wrt #401221 by Fabio Rossi
+
+*efax-gtk-3.2.9 (14 Jan 2012)
+
+  14 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> +efax-gtk-3.2.9.ebuild:
+  Version bump.
+
+  02 Mar 2011; Kevin McCarthy <signals@gentoo.org> efax-gtk-3.0.18.ebuild,
+  efax-gtk-3.2.2.ebuild:
+  Slotted gtk+ and glib deps. EAPI=2 bump to support it.
+
+*efax-gtk-3.2.2 (27 May 2010)
+
+  27 May 2010; Markos Chandras <hwoarang@gentoo.org> +efax-gtk-3.2.2.ebuild:
+  Version bump. Fixes bug #313069
+
+  21 Mar 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  -efax-gtk-3.0.11.ebuild:
+  Remove old versions.
+
+  22 Feb 2009; Raúl Porcel <armin76@gentoo.org> efax-gtk-3.0.18.ebuild:
+  x86 stable wrt #259157
+
+*efax-gtk-3.0.18 (15 Feb 2009)
+
+  15 Feb 2009; Peter Alfredsen <loki_val@gentoo.org>
+  +efax-gtk-3.0.18.ebuild:
+  Fix bug 251779 with ebuild from Michael Mair-Keimberger <miki3@gmx.net>.
+  Also solves bug 193309, thanks to Peter GAAL <pgaal@gmx.net>.
+
+  20 Apr 2007; Joseph Jezak <josejx@gentoo.org> efax-gtk-3.0.11.ebuild:
+  Marked ~ppc for bug #173832.
+
+  09 Apr 2007; Raúl Porcel <armin76@gentoo.org> efax-gtk-3.0.11.ebuild:
+  x86 stable wrt bug 173832
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  27 Dec 2006; Piotr Jaroszyński <peper@gentoo.org> efax-gtk-3.0.11.ebuild:
+  Add ~amd64 wrt bug #141982.
+
+  23 Oct 2006; David Shakaryan <omp@gentoo.org> +efax-gtk-3.0.11.ebuild:
+  Version bump; includes a few fixes to the ebuild.
+
+  11 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org> efax-gtk-3.0.8.ebuild,
+  efax-gtk-3.0.8-r1.ebuild:
+  Add missing dev-util/pkgconfig to DEPEND, see bug #150663.
+
+  28 Apr 2006; Alec Warner <antarus@gentoo.org> files/digest-efax-gtk-2.2.9,
+  files/digest-efax-gtk-2.2.16, Manifest:
+  Fixing SHA256 digest, pass four
+
+*efax-gtk-3.0.8-r1 (18 Mar 2006)
+
+  18 Mar 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +efax-gtk-3.0.8-r1.ebuild:
+  Fix bug 121813, thanks to Antek Grzymala <awaria@chopin.edu.pl>.
+
+  25 Feb 2006; <smithj@gentoo.org> efax-gtk-3.0.8.ebuild:
+  x86 stable
+
+*efax-gtk-3.0.8 (11 Feb 2006)
+
+  11 Feb 2006; Krzysiek Pawlik <nelchael@gentoo.org> +efax-gtk-3.0.8.ebuild:
+  Version bump, ebuild thanks to Antek Grzymala <awaria@chopin.edu.pl>, see
+  bug #121813.
+
+  20 Jun 2005; David Holm <dholm@gentoo.org> efax-gtk-2.2.16.ebuild:
+  Added to ~ppc.
+
+*efax-gtk-2.2.16 (19 Jun 2005)
+
+  19 Jun 2005; Jonathan Smith <smithj@gentoo.org> -efax-gtk-2.0.7.ebuild,
+  -efax-gtk-2.2.4.ebuild, -efax-gtk-2.2.5a.ebuild, efax-gtk-2.2.9.ebuild,
+  +efax-gtk-2.2.16.ebuild:
+  version bump to 2.2.16, marked 2.2.9 stable, and removed old ebuilds
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> efax-gtk-2.0.7.ebuild,
+  efax-gtk-2.2.4.ebuild, efax-gtk-2.2.5a.ebuild, efax-gtk-2.2.9.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+*efax-gtk-2.2.9 (07 Nov 2004)
+
+  07 Nov 2004; <pyrania@gentoo.org> +efax-gtk-2.2.9.ebuild:
+  Version bump.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  efax-gtk-2.2.4.ebuild, efax-gtk-2.2.5a.ebuild:
+  Masked efax-gtk-2.2.5a.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  efax-gtk-2.2.4.ebuild:
+  Masked efax-gtk-2.2.4.ebuild stable for ppc
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> efax-gtk-2.2.5a.ebuild:
+  add sed-4 dep
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> efax-gtk-2.0.7.ebuild,
+  efax-gtk-2.2.4.ebuild:
+  Add die following econf for bug 48950
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> efax-gtk-2.2.5a.ebuild:
+  Marked stable on x86.
+
+  19 Feb 2004; Brad Laue <brad@gentoo.org> efax-gtk-2.2.4.ebuild:
+  Stable on x86
+
+*efax-gtk-2.2.5a (06 Mar 2004)
+
+  06 Mar 2004; Heinrich Wendel <lanius@gentoo.org> efax-gtk-2.2.5a.ebuild:
+  version bump, remove hardcoded version number for efax (bug #42791)
+
+*efax-gtk-2.2.4 (02 Feb 2004)
+
+  02 Feb 2004; Brad Laue <brad@gentoo.org> efax-gtk-2.2.4.ebuild:
+  Bump to 2.2.4, now with CUPS support.
+
+  24 Jan 2004; Brandon Hale <tseng@gentoo.org> metadata.xml:
+  Fix corrupted metadata, bug 39234.
+
+  13 Jul 2003; Martin Holzer <mholzer@gentoo.org> efax-gtk-2.0.7.ebuild:
+  update x11-libs/gtkmm to dev-cpp/gtkmm find *.ebuild | xargs sed -i
+  "s:x11-libs/gtkmm:dev-cpp/gtkmm:" echangelog update x11-libs/gtkmm to
+  dev-cpp/gtkmm
+
+*efax-gtk-2.0.7 (25 May 2003)
+
+  25 May 2003; Jon Portnoy <avenj@gentoo.org> efax-gtk-2.0.7.ebuild :
+  Initial import, submitted by Brad Laue, who will also be maintaining
+  this package futurely.

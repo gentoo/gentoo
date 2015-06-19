@@ -1,0 +1,13 @@
+GRP_STAGE23_USE="ncurses readline zlib uclibc"
+USE="ncurses readline zlib uclibc -fortran -pam -berkdb -ipv6 -pppd"
+CFLAGS="-Os"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"
+PORTAGE_LIBC="uClibc"
+ELIBC=uclibc
+FEATURES="sandbox sfperms strict nodoc noinfo noman"
+
+# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (16 Nov 2011)
+# Rename STAGE1_USE to BOOTSTRAP_USE and stack it to the parent value
+BOOTSTRAP_USE="${BOOTSTRAP_USE} uclibc"

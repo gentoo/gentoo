@@ -1,0 +1,13 @@
+DEFINED_PHASES=install nofetch unpack
+DESCRIPTION=Binary plugins from Google Chrome for use in Chromium
+EAPI=5
+HOMEPAGE=http://www.google.com/chrome
+IUSE=+flash +widevine
+KEYWORDS=~amd64 ~x86
+LICENSE=google-chrome
+RDEPEND=!www-plugins/chrome-binary-plugins:0 !www-plugins/chrome-binary-plugins:beta !www-plugins/chrome-binary-plugins:stable
+RESTRICT=bindist mirror strip
+SLOT=unstable
+SRC_URI=amd64? ( https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_45.0.2431.0-1_amd64.deb ) x86? ( https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_45.0.2431.0-1_i386.deb )
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=c1003255fd57b89b76d3906749846986

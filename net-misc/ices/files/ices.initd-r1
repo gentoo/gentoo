@@ -1,0 +1,14 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ices/files/ices.initd-r1,v 1.1 2015/01/02 10:23:06 polynomial-c Exp $
+
+description="Icecast OGG streaming client"
+pidfile="/var/run/ices.pid"
+command="/usr/bin/ices"
+command_args="/etc/ices2/ices.xml"
+command_background="true"
+
+depend() {
+	need net
+}

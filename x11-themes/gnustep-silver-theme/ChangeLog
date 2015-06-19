@@ -1,0 +1,16 @@
+# ChangeLog for x11-themes/gnustep-silver-theme
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gnustep-silver-theme/ChangeLog,v 1.2 2014/02/12 09:11:43 voyageur Exp $
+
+*gnustep-silver-theme-3.1 (11 Feb 2014)
+
+  11 Feb 2014; Bernard Cafarelli <voyageur@gentoo.org>
+  +gnustep-silver-theme-3.1.ebuild:
+  Version bump
+
+*gnustep-silver-theme-2.5 (22 Feb 2012)
+
+  22 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org>
+  +gnustep-silver-theme-2.5.ebuild, +metadata.xml:
+  Initial commit, move from gnustep overlay
+

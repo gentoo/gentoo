@@ -1,0 +1,9 @@
+# ChangeLog for dev-java/tablelayout
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/tablelayout/ChangeLog,v 1.1 2015/03/22 09:08:07 ercpe Exp $
+
+*tablelayout-20090826 (22 Mar 2015)
+
+  22 Mar 2015; Johann Schmitz <ercpe@gentoo.org> +metadata.xml,
+  +tablelayout-20090826.ebuild:
+  New ebuild for tablelayout

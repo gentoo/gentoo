@@ -1,0 +1,154 @@
+# ChangeLog for media-plugins/gst-plugins-vp8
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-vp8/ChangeLog,v 1.32 2015/05/25 10:44:46 zlogene Exp $
+
+  25 May 2015; Mikle Kolyada <zlogene@gentoo.org>
+  gst-plugins-vp8-0.10.23-r3.ebuild:
+  x86 stable wrt bug #550004
+
+  25 May 2015; Jeroen Roovers <jer@gentoo.org>
+  gst-plugins-vp8-0.10.23-r3.ebuild:
+  Stable for HPPA (bug #550004).
+
+  21 May 2015; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-vp8-0.10.23-r3.ebuild:
+  Stable for amd64, wrt bug #550004
+
+*gst-plugins-vp8-0.10.23-r3 (11 Apr 2015)
+
+  11 Apr 2015; Pacho Ramos <pacho@gentoo.org>
+  +files/gst-plugins-vp8-0.10.23-drop-vpx-compat-defines.patch,
+  +gst-plugins-vp8-0.10.23-r3.ebuild, -gst-plugins-vp8-0.10.23-r1.ebuild:
+  Drop old compat code that makes this break with libvpx-1.4, bug #545958 (from
+  Fedora)
+
+  07 Aug 2014; Jeroen Roovers <jer@gentoo.org>
+  gst-plugins-vp8-0.10.23-r2.ebuild:
+  Stable for HPPA (bug #512012).
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-vp8-0.10.23-r2.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-vp8-0.10.23-r2.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org>
+  gst-plugins-vp8-0.10.23-r2.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+*gst-plugins-vp8-0.10.23-r2 (10 Jun 2014)
+
+  10 Jun 2014; Michał Górny <mgorny@gentoo.org>
+  +gst-plugins-vp8-0.10.23-r2.ebuild:
+  Enable multilib support, bug #493176.
+
+  19 Jun 2013; Jeroen Roovers <jer@gentoo.org>
+  gst-plugins-vp8-0.10.23-r1.ebuild:
+  Stable for HPPA too.
+
+  19 Jun 2013; Jeroen Roovers <jer@gentoo.org>
+  gst-plugins-vp8-0.10.23-r1.ebuild:
+  Marked ~hppa too.
+
+  05 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -gst-plugins-vp8-0.10.22.ebuild, -gst-plugins-vp8-0.10.23.ebuild:
+  Clean up old revisions.
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-vp8-0.10.23-r1.ebuild:
+  Add ~arm, wrt bug #449220
+
+  01 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-vp8-0.10.23-r1.ebuild:
+  Stable for x86, wrt bug #454906
+
+  01 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-vp8-0.10.23-r1.ebuild:
+  Stable for amd64, wrt bug #454906
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-vp8-0.10.23-r1.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-vp8-0.10.23-r1.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-vp8-0.10.23-r1.ebuild:
+  Add ~ia64, wrt bug #449220
+
+*gst-plugins-vp8-0.10.23-r1 (06 Dec 2012)
+
+  06 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +gst-plugins-vp8-0.10.23-r1.ebuild,
+  +files/gst-plugins-vp8-0.10.23-libvpx-1.1.patch:
+  Fix zero-length .webm encodings with libvpx-1.1 (bug #435282, thanks to
+  Alexandre et al.)
+
+  02 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  gst-plugins-vp8-0.10.22.ebuild, gst-plugins-vp8-0.10.23.ebuild:
+  Fix wrong system lib linking fix.
+
+  02 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  gst-plugins-vp8-0.10.22.ebuild:
+  Add src_prepare due to eclass changes.
+
+*gst-plugins-vp8-0.10.23 (02 Dec 2012)
+
+  02 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  +gst-plugins-vp8-0.10.23.ebuild:
+  Version bump.
+
+  02 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  -gst-plugins-vp8-0.10.19.ebuild, -gst-plugins-vp8-0.10.21.ebuild,
+  gst-plugins-vp8-0.10.22.ebuild:
+  Clean up old revisions. EAPI bump stable due to pending eclass changes and
+  slot pinning.
+
+  23 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  gst-plugins-vp8-0.10.22.ebuild:
+  keyword ~ppc, bug #379651
+
+  23 Sep 2012; Anthony G. Basile <blueness@gentoo.org>
+  gst-plugins-vp8-0.10.22.ebuild:
+  keyword ~ppc64, bug #379649
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org>
+  gst-plugins-vp8-0.10.22.ebuild:
+  keyword ~amd64-fbsd
+
+  21 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gst-plugins-vp8-0.10.22.ebuild:
+  x86 stable wrt bug #385703
+
+  15 Oct 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gst-plugins-vp8-0.10.22.ebuild:
+  amd64 stable wrt #385703
+
+*gst-plugins-vp8-0.10.22 (30 Jul 2011)
+
+  30 Jul 2011; Mart Raudsepp <leio@gentoo.org>
+  +gst-plugins-vp8-0.10.22.ebuild:
+  Version bump. Assorted trivial improvements
+
+*gst-plugins-vp8-0.10.21 (13 Apr 2011)
+
+  13 Apr 2011; Mart Raudsepp <leio@gentoo.org>
+  +gst-plugins-vp8-0.10.21.ebuild:
+  Version bump. Multipass encoding and keyframe-only mode supported in the
+  encoder. Many bug fixes and improvements to both encoder and decoder
+
+  24 Dec 2010; Mart Raudsepp <leio@gentoo.org>
+  gst-plugins-vp8-0.10.19.ebuild:
+  Add ~x86 keyword
+
+*gst-plugins-vp8-0.10.19 (30 Jul 2010)
+
+  30 Jul 2010; Mart Raudsepp <leio@gentoo.org> +metadata.xml,
+  +gst-plugins-vp8-0.10.19.ebuild:
+  Initial package for the vp8enc/vp8dec GStreamer elements from
+  gst-plugins-bad for VP8 video encode/decode support

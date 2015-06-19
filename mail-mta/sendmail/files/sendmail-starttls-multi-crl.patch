@@ -1,0 +1,20 @@
+Bug #354611
+--- sendmail/tls.c.orig	2010-05-26 21:54:30.000000000 -0600
++++ sendmail/tls.c	2010-05-26 21:54:36.000000000 -0600
+@@ -723,11 +723,12 @@
+ 		{
+			if (BIO_read_filename(crl_file, CRLFile) >= 0)
+			{
+-				crl = PEM_read_bio_X509_CRL(crl_file, NULL,
+-							NULL, NULL);
++				while((crl = PEM_read_bio_X509_CRL(crl_file, NULL, NULL, NULL)))
++				{
++					X509_STORE_add_crl(store, crl);
++					X509_CRL_free(crl);
++				}
+ 				BIO_free(crl_file);
+-				X509_STORE_add_crl(store, crl);
+-				X509_CRL_free(crl);
+ 				X509_STORE_set_flags(store,
+					X509_V_FLAG_CRL_CHECK|X509_V_FLAG_CRL_CHECK_ALL);
+				X509_STORE_set_verify_cb_func(store,

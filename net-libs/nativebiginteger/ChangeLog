@@ -1,0 +1,59 @@
+# ChangeLog for net-libs/nativebiginteger
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/nativebiginteger/ChangeLog,v 1.9 2012/01/02 15:57:17 sera Exp $
+
+  02 Jan 2012; Ralph Sennhauser <sera@gentoo.org>
+  nativebiginteger-0.8.7.ebuild:
+  Drop ia64 support #345433
+
+  03 Aug 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  nativebiginteger-0.8.7.ebuild:
+  Drop unneeded die calls for EAPI-4, remove some unneeded code for unsupported
+  targets
+
+*nativebiginteger-0.8.7 (31 Jul 2011)
+
+  31 Jul 2011; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +nativebiginteger-0.8.7.ebuild, +files/nativebiginteger-0.8.7-asmfix.patch,
+  +files/nativebiginteger-0.8.7-build-system.patch,
+  +files/nativebiginteger-0.8.7-debug-all.patch,
+  +files/nativebiginteger-0.8.7-jcpuid-build-system.patch,
+  +files/nativebiginteger-0.8.7-non-android-warnings.patch:
+  Version bump, partly based on ebuilds by Dennis Schridde, fixes bug 376971
+
+*nativebiginteger-0.6.4-r3 (28 Dec 2010)
+
+  28 Dec 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -nativebiginteger-0.6.4-r2.ebuild, +nativebiginteger-0.6.4-r3.ebuild,
+  +files/nativebiginteger-0.6.4-asmfix.patch,
+  files/nativebiginteger-0.6.4-ldflags.patch:
+  Revision bump, fix asm code for x86, fix linking order, fixes bug 349784
+
+*nativebiginteger-0.6.4-r2 (12 Sep 2010)
+
+  12 Sep 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  -nativebiginteger-0.6.4-r1.ebuild, +nativebiginteger-0.6.4-r2.ebuild:
+  Filter --as-needed for now, since net-p2p/freenet wont load the lib
+  compiled with it
+
+*nativebiginteger-0.6.4-r1 (04 Sep 2010)
+
+  04 Sep 2010; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +nativebiginteger-0.6.4-r1.ebuild,
+  +files/nativebiginteger-0.6.4-ldflags.patch:
+  Revision bump to fix bug 335682
+
+  09 Mar 2009; Markus Meier <maekke@gentoo.org>
+  nativebiginteger-0.6.4.ebuild:
+  amd64/x86 stable, bug #260964
+
+  29 Jan 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  nativebiginteger-0.6.4.ebuild:
+  Use mirror://gentoo
+
+*nativebiginteger-0.6.4 (29 Jan 2009)
+
+  29 Jan 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +nativebiginteger-0.6.4.ebuild:
+  Initial commit. Fixes bug 238037
+

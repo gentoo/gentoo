@@ -1,0 +1,8 @@
+--- configure.in.orig	2009-09-09 21:18:25.000000000 +0100
++++ configure.in	2009-09-09 21:18:43.000000000 +0100
+@@ -7,4 +7,5 @@
+ AC_C_CONST
+ AC_HEADER_TIME
+ AC_CHECK_FUNCS(gettimeofday)
++AC_CHECK_LIB(m, sin)
+ AC_OUTPUT(Makefile src/Makefile src/include/Makefile fann.pc fann.spec)

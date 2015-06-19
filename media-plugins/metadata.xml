@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The media-plugins category contains plugin packages for various media
+		applications.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie media-plugins enthält Plugins für verschiedene 
+		Multimedia-Anwendungen.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría media-plugins contiene paquetes de extensión para varias
+		aplicaciones de media.
+	</longdescription>
+	<longdescription lang="ja">
+		media-pluginsカテゴリーには様々なメディアプラグイン・パッケージが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De media-plugins categorie bevat uitbreidingen voor multimedia-applicaties.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm media-plugins chứa các gói plugin cho các ứng dụng media khác nhau.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria media-plugins contiene pacchetti di estensione per vari pacchetti
+		delle categorie media-.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria media-plugins contém pacotes de extensão para várias
+		aplicações de mídia.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria media-plugins zawiera rozszerzenia multimedialne dla różnych
+		aplikacji.
+	</longdescription>
+</catmetadata>
+

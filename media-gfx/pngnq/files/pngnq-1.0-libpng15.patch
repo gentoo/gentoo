@@ -1,0 +1,13 @@
+--- src/rwpng.c
++++ src/rwpng.c
+@@ -31,8 +31,9 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <zlib.h>
+ 
+-#include "png.h"        /* libpng header; includes zlib.h */
++#include "png.h"        /* libpng header */
+ #include "rwpng.h"      /* typedefs, common macros, public prototypes */
+ 
+ /* future versions of libpng will provide this macro: */

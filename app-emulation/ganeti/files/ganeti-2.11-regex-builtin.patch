@@ -1,0 +1,15 @@
+diff --git a/configure.ac b/configure.ac
+index d70db62..f94043f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -612,8 +612,8 @@ CONFD_PKG=
+ # if a new confd dependency is needed, add it here like:
+ # AC_GHC_PKG_CHECK([somepkg], [], [HS_NODEV=1; CONFD_PKG="$CONFD_PKG somepkg"])
+ HS_REGEX_PCRE=-DNO_REGEX_PCRE
+-AC_GHC_PKG_CHECK([regex-pcre], [HS_REGEX_PCRE=],
+-                 [HS_NODEV=1; CONFD_PKG="$CONFD_PKG regex-pcre"])
++AC_GHC_PKG_CHECK([regex-pcre-builtin], [HS_REGEX_PCRE=],
++                 [HS_NODEV=1; CONFD_PKG="$CONFD_PKG regex-pcre-builtin"])
+ 
+ has_confd=False
+ if test "$enable_confd" != no; then

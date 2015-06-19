@@ -1,0 +1,67 @@
+# ChangeLog for dev-perl/IO-BufferedSelect
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/IO-BufferedSelect/ChangeLog,v 1.16 2014/08/22 19:26:02 axs Exp $
+
+*IO-BufferedSelect-1.0.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +IO-BufferedSelect-1.0.0-r1.ebuild, -IO-BufferedSelect-1.0.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -IO-BufferedSelect-1.0.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> IO-BufferedSelect-1.0.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+  01 Sep 2011; Torsten Veller <tove@gentoo.org> IO-BufferedSelect-1.0.0.ebuild:
+  Fix S (#381421). Thanks to Todd Goodman
+
+*IO-BufferedSelect-1.0.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +IO-BufferedSelect-1.0.0.ebuild:
+  Change version scheme
+
+  02 Jun 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove hncaldwell from metadata.xml (#230778)
+
+  01 Feb 2009; nixnut <nixnut@gentoo.org> IO-BufferedSelect-1.0.ebuild:
+  ppc stable #256858
+
+  25 Jan 2009; Markus Meier <maekke@gentoo.org>
+  IO-BufferedSelect-1.0.ebuild:
+  amd64 stable, bug #255714
+
+  21 Jan 2009; Heath Caldwell <hncaldwell@gentoo.org> metadata.xml,
+  IO-BufferedSelect-1.0.ebuild:
+  Added explicit RDEPEND and taking over maintainership.
+
+  21 Jan 2009; Ferris McCormick <fmccor@gentoo.org>
+  IO-BufferedSelect-1.0.ebuild:
+  Sparc stable, Bug #255714.
+
+  30 Aug 2008; Markus Ullmann <jokey@gentoo.org>
+  IO-BufferedSelect-1.0.ebuild:
+  Stable on x86
+
+  12 Apr 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  IO-BufferedSelect-1.0.ebuild:
+  Added ~ppc, bug #213713
+
+  27 Mar 2008; Markus Ullmann <jokey@gentoo.org>
+  IO-BufferedSelect-1.0.ebuild:
+  Keyword ~sparc
+
+*IO-BufferedSelect-1.0 (17 Mar 2008)
+
+  17 Mar 2008; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +IO-BufferedSelect-1.0.ebuild:
+  Initial import as dep for new tenshi

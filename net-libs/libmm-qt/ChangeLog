@@ -1,0 +1,45 @@
+# ChangeLog for net-libs/libmm-qt
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libmm-qt/ChangeLog,v 1.10 2014/10/24 16:20:59 mrueg Exp $
+
+  24 Oct 2014; Manuel Rüger <mrueg@gentoo.org> -libmm-qt-1.0.1.ebuild:
+  Cleanup old.
+
+  24 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> libmm-qt-1.0.1-r1.ebuild:
+  x86 stable wrt bug #519600
+
+  08 Oct 2014; Manuel Rüger <mrueg@gentoo.org> libmm-qt-1.0.1-r1.ebuild:
+  Mark stable on amd64. See bug #519600.
+
+*libmm-qt-1.0.1-r1 (25 May 2014)
+
+  25 May 2014; Johannes Huber <johu@gentoo.org>
+  +files/libmm-qt-1.0.1-cxxflags.patch, +libmm-qt-1.0.1-r1.ebuild:
+  Revision bump adds upstream patch to respect CXXFLAGS, bug #508300.
+
+  13 Apr 2014; Johannes Huber <johu@gentoo.org> -libmm-qt-1.0.0.ebuild:
+  Remove old.
+
+  13 Apr 2014; Agostino Sarubbo <ago@gentoo.org> libmm-qt-1.0.1.ebuild:
+  Stable for x86, wrt bug #507526
+
+  13 Apr 2014; Agostino Sarubbo <ago@gentoo.org> libmm-qt-1.0.1.ebuild:
+  Stable for amd64, wrt bug #507526
+
+*libmm-qt-1.0.1 (18 Feb 2014)
+
+  18 Feb 2014; Manuel Rüger <mrueg@gentoo.org> +libmm-qt-1.0.1.ebuild,
+  -libmm-qt-0.5.1.ebuild:
+  Version bump. Cleanup old.
+
+*libmm-qt-1.0.0 (21 Nov 2013)
+
+  21 Nov 2013; Johannes Huber <johu@gentoo.org> +libmm-qt-1.0.0.ebuild:
+  Version bump.
+
+*libmm-qt-0.5.1 (15 Oct 2013)
+
+  15 Oct 2013; Johannes Huber <johu@gentoo.org> +libmm-qt-0.5.1.ebuild,
+  +metadata.xml:
+  New package. Import from kde overlay, Qt modemmanager abstraction library.
+  Will be required for kde-misc/plasma-nm.

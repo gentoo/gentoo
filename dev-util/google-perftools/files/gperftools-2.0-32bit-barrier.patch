@@ -1,0 +1,17 @@
+Atomic64 not available on all architectures.
+Use AtomicWord instead.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+diff -Nuar gperftools-2.0.orig/src/base/spinlock_internal.cc gperftools-2.0/src/base/spinlock_internal.cc
+--- gperftools-2.0.orig/src/base/spinlock_internal.cc	2012-02-02 21:36:23.000000000 +0000
++++ gperftools-2.0/src/base/spinlock_internal.cc	2013-01-20 23:44:01.629077919 +0000
+@@ -80,7 +80,7 @@
+ static int SuggestedDelayNS(int loop) {
+   // Weak pseudo-random number generator to get some spread between threads
+   // when many are spinning.
+-  static base::subtle::Atomic64 rand;
++  static AtomicWord rand;
+   uint64 r = base::subtle::NoBarrier_Load(&rand);
+   r = 0x5deece66dLL * r + 0xb;   // numbers from nrand48()
+   base::subtle::NoBarrier_Store(&rand, r);

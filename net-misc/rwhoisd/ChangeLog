@@ -1,0 +1,43 @@
+# ChangeLog for net-misc/rwhoisd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/rwhoisd/ChangeLog,v 1.8 2015/04/04 06:45:00 mr_bones_ Exp $
+
+  04 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -rwhoisd-1.5.9.5-r1.ebuild:
+  old
+
+  09 Nov 2014; Jeroen Roovers <jer@gentoo.org> rwhoisd-1.5.9.5-r2.ebuild:
+  Add -DNEW_STYLE_BIN_SORT by Joshua Coombs (bug #501924).
+
+  09 Nov 2014; Jeroen Roovers <jer@gentoo.org> rwhoisd-1.5.9.5-r2.ebuild:
+  Set build dependencies. Address parallel make.
+
+*rwhoisd-1.5.9.5-r2 (09 Nov 2014)
+
+  09 Nov 2014; Jeroen Roovers <jer@gentoo.org> +rwhoisd-1.5.9.5-r2.ebuild,
+  files/rwhoisd-destdir-1.5.9.5.patch, files/rwhoisd, files/rwhoisd.conf,
+  -files/rwhoisd-destdir.patch:
+  Separate s-s-d arguments from rwhoisd arguments by Joshua Coombs (bug
+  #501924). Various.
+
+  04 Nov 2014; Pacho Ramos <pacho@gentoo.org> -rwhoisd-1.5.9.5.ebuild,
+  metadata.xml:
+  Cleanup due #65870
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> rwhoisd-1.5.9.5-r1.ebuild,
+  rwhoisd-1.5.9.5.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+*rwhoisd-1.5.9.5-r1 (21 Oct 2009)
+
+  21 Oct 2009; Mike Doty <kingtaco@gentoo.org> +rwhoisd-1.5.9.5-r1.ebuild,
+  +files/rwhoisd-destdir-1.5.9.5.patch:
+  change rwhoisd homedir to /var/rwhoisd and sample data to
+  /var/rwhoisd/samples
+
+*rwhoisd-1.5.9.5 (16 Oct 2009)
+
+  16 Oct 2009; Mike Doty <kingtaco@gentoo.org> +rwhoisd-1.5.9.5.ebuild,
+  +files/rwhoisd, +files/rwhoisd.conf, +files/rwhoisd-destdir.patch,
+  +metadata.xml:
+  Initial version

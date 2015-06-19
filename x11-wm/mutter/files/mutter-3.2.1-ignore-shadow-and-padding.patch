@@ -1,0 +1,91 @@
+Patch author: Timo Kluck <tkluck@infty.nl>  Wed, 21 Sep 2011 17:51:28 +0200
+
+Patch to silently ignore padding and shadow tags in Ubuntu metacity themes.
+
+https://bugs.launchpad.net/bugs/800315
+https://bugs.gentoo.org/show_bug.cgi?id=396673
+
+diff --git a/src/ui/theme-parser.c b/src/ui/theme-parser.c
+index 9063541..63a881f 100644
+--- a/src/ui/theme-parser.c
++++ b/src/ui/theme-parser.c
+@@ -90,7 +90,9 @@ typedef enum
+   STATE_WINDOW,
+   /* things we don't use any more but we can still parse: */
+   STATE_MENU_ICON,
+-  STATE_FALLBACK
++  STATE_FALLBACK,
++  /* an ubuntu specific ignore-this-element state */
++  UBUNTU_STATE_IGNORE  
+ } ParseState;
+ 
+ typedef struct
+@@ -1306,7 +1308,19 @@ parse_toplevel_element (GMarkupParseContext  *context,
+        */
+       push_state (info, STATE_FALLBACK);
+     }
+-   else
++  else if (ELEMENT_IS ("shadow"))
++    {
++       /* ubuntu specific, workaround for light-themes: silently ignore shadow tag.
++        */
++      push_state (info, UBUNTU_STATE_IGNORE);
++    }
++  else if (ELEMENT_IS ("padding"))
++    {
++       /* ubuntu specific, workaround for light-themes: silently ignore padding tag.
++        */
++      push_state (info, UBUNTU_STATE_IGNORE);
++    }
++  else
+     {
+       set_error (error, context,
+                  G_MARKUP_ERROR, G_MARKUP_ERROR_PARSE,
+@@ -3027,6 +3041,18 @@ parse_style_element (GMarkupParseContext  *context,
+       
+       push_state (info, STATE_BUTTON);
+     }
++  else if (ELEMENT_IS ("shadow"))
++    {
++       /* ubuntu specific, workaround for light-themes: silently ignore shadow tag.
++        */
++      push_state (info, UBUNTU_STATE_IGNORE);
++    }
++  else if (ELEMENT_IS ("padding"))
++    {
++       /* ubuntu specific, workaround for light-themes: silently ignore padding tag.
++        */
++      push_state (info, UBUNTU_STATE_IGNORE);
++    }
+   else
+     {
+       set_error (error, context,
+@@ -3671,6 +3697,8 @@ start_element_handler (GMarkupParseContext *context,
+                  _("Element <%s> is not allowed inside a <%s> element"),
+                  element_name, "fallback");
+       break;
++    case UBUNTU_STATE_IGNORE:
++      break;
+     }
+ }
+ 
+@@ -3960,6 +3988,9 @@ end_element_handler (GMarkupParseContext *context,
+       pop_state (info);
+       g_assert (peek_state (info) == STATE_THEME);
+       break;
++    case UBUNTU_STATE_IGNORE:
++      pop_state (info);
++      break;
+     }
+ 
+   pop_required_version (info);
+@@ -4165,6 +4196,9 @@ text_handler (GMarkupParseContext *context,
+     case STATE_FALLBACK:
+       NO_TEXT ("fallback");
+       break;
++    case UBUNTU_STATE_IGNORE:
++      NO_TEXT ("ignored_element");
++      break;
+     }
+ }
+ 

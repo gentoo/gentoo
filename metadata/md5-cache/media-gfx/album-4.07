@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=HTML photo album generator
+EAPI=4
+HOMEPAGE=http://MarginalHacks.com/Hacks/album/
+IUSE=doc ffmpeg plugins themes
+KEYWORDS=amd64 ~ppc ~ppc64 x86
+LICENSE=marginalhacks
+RDEPEND=dev-lang/perl media-gfx/imagemagick media-gfx/jhead ffmpeg? ( virtual/ffmpeg )
+SLOT=0
+SRC_URI=http://marginalhacks.com/bin/album.versions/album-4.07.tar.gz http://marginalhacks.com/bin/album.versions/data-4.05.tar.gz
+_md5_=f073034ac69fa5af3c0c2c6adb4b0078

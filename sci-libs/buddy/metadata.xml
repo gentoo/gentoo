@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <longdescription lang="en">
+  A Binary Decision Diagram library, with :many highly efficient
+  vectorized BDD operations,dynamic variable reordering,automated
+  garbage collection,a C++ interface with automatic reference
+  counting,and much more.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">buddy</remote-id>
+  </upstream>
+</pkgmetadata>

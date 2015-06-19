@@ -1,0 +1,45 @@
+Fix building with libpng-1.5
+
+https://bugs.gentoo.org/show_bug.cgi?id=378353
+
+Patch written by Samuli Suominen <ssuominen@gentoo.org>
+--- a/GL/glpng/glpng.c
++++ b/GL/glpng/glpng.c
+@@ -285,7 +285,7 @@
+     endinfo = png_create_info_struct(png);
+ 
+     // DH: added following lines
+-    if (setjmp(png->jmpbuf))
++    if (setjmp(png_jmpbuf(png)))
+     {
+         png_destroy_read_struct(&png, &info, &endinfo);
+         return 0;
+@@ -390,7 +390,7 @@
+     endinfo = png_create_info_struct(png);
+ 
+     // DH: added following lines
+-    if (setjmp(png->jmpbuf))
++    if (setjmp(png_jmpbuf(png)))
+     {
+         png_destroy_read_struct(&png, &info, &endinfo);
+         return 0;
+@@ -569,7 +569,7 @@
+ #define ALPHA *q
+ 
+                 switch (trans) {
+-                    case PNG_CALLBACK:
++                    case PNG_CALLBACKT:
+                         FORSTART
+                             ALPHA = AlphaCallback((unsigned char) r, (unsigned char) g, (unsigned char) b);
+                         FOREND
+--- a/GL/glpng/glpng.h
++++ b/GL/glpng/glpng.h
+@@ -57,7 +57,7 @@
+ #define PNG_SIMPLEMIPMAP PNG_SIMPLEMIPMAPS
+ 
+     /* Transparency parameters */
+-#define PNG_CALLBACK  -3 /* Call the callback function to generate alpha   */
++#define PNG_CALLBACKT  -3 /* Call the callback function to generate alpha   */
+ #define PNG_ALPHA     -2 /* Use alpha channel in PNG file, if there is one */
+ #define PNG_SOLID     -1 /* No transparency                                */
+ #define PNG_STENCIL    0 /* Sets alpha to 0 for r=g=b=0, 1 otherwise       */

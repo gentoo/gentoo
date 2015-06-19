@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare setup
+DEPEND=jpeg? ( virtual/jpeg:0= ) mpi? ( virtual/mpi ) opengl? ( virtual/glu virtual/opengl ) png? ( media-libs/libpng:0= ) virtual/pkgconfig
+DESCRIPTION=A portable, high performance parallel ray tracing system
+EAPI=5
+HOMEPAGE=http://jedi.ks.uiuc.edu/~johns/raytracer/
+IUSE=doc examples jpeg mpi +opengl png threads
+KEYWORDS=~amd64 ~ppc ~x86 ~x64-macos ~x86-macos
+LICENSE=BSD
+RDEPEND=jpeg? ( virtual/jpeg:0= ) mpi? ( virtual/mpi ) opengl? ( virtual/glu virtual/opengl ) png? ( media-libs/libpng:0= )
+REQUIRED_USE=^^ ( opengl mpi )
+SLOT=0
+SRC_URI=http://jedi.ks.uiuc.edu/~johns/raytracer/files/0.99b6/tachyon-0.99b6.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8a668b141bb5f192eadef3a87f4085f2

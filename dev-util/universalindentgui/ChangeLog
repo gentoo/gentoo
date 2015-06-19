@@ -1,0 +1,81 @@
+# ChangeLog for dev-util/universalindentgui
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/universalindentgui/ChangeLog,v 1.15 2013/03/02 21:07:26 hwoarang Exp $
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org>
+  universalindentgui-1.2.0-r1.ebuild:
+  Move Qt dependencies to the new category
+
+*universalindentgui-1.2.0-r1 (08 Jun 2012)
+
+  08 Jun 2012; Davide Pesavento <pesa@gentoo.org>
+  +universalindentgui-1.2.0-r1.ebuild, -universalindentgui-1.2.0.ebuild:
+  Fix icon installation, bug 420093 by Francesco Riosa. Remove broken version.
+
+  16 Apr 2012; Alex Alexander <wired@gentoo.org>
+  universalindentgui-1.2.0.ebuild:
+  fixed +python emerge failure
+
+*universalindentgui-1.2.0 (10 Apr 2012)
+
+  10 Apr 2012; Davide Pesavento <pesa@gentoo.org>
+  +universalindentgui-1.2.0.ebuild,
+  -files/universalindentgui-1.1.0-astyle_pwd_fix.patch,
+  -files/universalindentgui-1.1.0-gcc45.patch,
+  -universalindentgui-1.1.0-r3.ebuild, metadata.xml:
+  Version bump by Michael (kensington) in bug 410789. Remove old.
+
+  19 Jul 2010; Alex Alexander <wired@gentoo.org>
+  -universalindentgui-1.1.0-r2.ebuild:
+  removed old revision
+
+*universalindentgui-1.1.0-r3 (19 Jul 2010)
+
+  19 Jul 2010; Alex Alexander <wired@gentoo.org>
+  +universalindentgui-1.1.0-r3.ebuild,
+  +files/universalindentgui-1.1.0-astyle_pwd_fix.patch:
+  fixed bug #325811 and bug #326123
+
+  24 May 2010; Alex Alexander <wired@gentoo.org>
+  universalindentgui-1.1.0-r2.ebuild,
+  +files/universalindentgui-1.1.0-gcc45.patch:
+  fixed gcc 4.5 compilation bug #321323, thanks to Kacper Kowalik
+
+  02 Jan 2010; Ben de Groot <yngwin@gentoo.org>
+  universalindentgui-1.1.0-r2.ebuild:
+  Drop no longer needed use dep on qt4
+
+  20 Dec 2009; Alex Alexander <wired@gentoo.org>
+  universalindentgui-1.1.0-r2.ebuild:
+  switched qt4 eclass to qt4-r2
+
+*universalindentgui-1.1.0-r2 (30 Nov 2009)
+
+  30 Nov 2009; Alex Alexander <wired@gentoo.org>
+  -universalindentgui-1.1.0-r1.ebuild, +universalindentgui-1.1.0-r2.ebuild:
+  fixed bug #295097
+
+  22 Oct 2009; Alex Alexander <wired@gentoo.org>
+  universalindentgui-1.1.0-r1.ebuild:
+  fixed qscintilla dependency, bug #290111, thanks to Thomas Beierlein
+
+  18 Jul 2009; Alex Alexander <wired@gentoo.org>
+  -universalindentgui-1.1.0.ebuild:
+  removed old ebuild
+
+*universalindentgui-1.1.0-r1 (18 Jul 2009)
+
+  18 Jul 2009; Alex Alexander <wired@gentoo.org>
+  +universalindentgui-1.1.0-r1.ebuild:
+  added desktop file / menu entry
+
+  18 Jul 2009; Alex Alexander <wired@gentoo.org>
+  universalindentgui-1.1.0.ebuild:
+  minor dep fix
+
+*universalindentgui-1.1.0 (18 Jul 2009)
+
+  18 Jul 2009; Alex Alexander <wired@gentoo.org>
+  +universalindentgui-1.1.0.ebuild, +metadata.xml:
+  ebuild for UniversalIndentGUI. Bug #215565. Thanks to Jiri Tyr, harry.tx
+  and Emil Wojak.

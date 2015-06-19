@@ -1,0 +1,270 @@
+# ChangeLog for sys-process/iotop
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/iotop/ChangeLog,v 1.73 2015/04/08 18:27:48 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> iotop-0.6.ebuild:
+  Drop old Python implementations
+
+  23 Jul 2014; Justin Lecher <jlec@gentoo.org> iotop-0.6.ebuild:
+  Add python 3.4 suport and drop 2.6, #506808
+
+  13 May 2014; Mike Gilbert <floppym@gentoo.org> iotop-0.6.ebuild:
+  Drop pypy support due to bug 465546.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> iotop-0.6.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> iotop-0.6.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  11 Aug 2013; Justin Lecher <jlec@gentoo.org> -iotop-0.4.3.ebuild,
+  -iotop-0.4.4.ebuild, -iotop-0.5.ebuild, -iotop-0.5-r1.ebuild:
+  Drop old
+
+  07 Aug 2013; Agostino Sarubbo <ago@gentoo.org> iotop-0.6.ebuild:
+  Stable for x86, wrt bug #477740
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> iotop-0.6.ebuild:
+  Stable for sparc, wrt bug #477740
+
+  24 Jul 2013; Agostino Sarubbo <ago@gentoo.org> iotop-0.6.ebuild:
+  Stable for amd64, wrt bug #477740
+
+  23 Jul 2013; Agostino Sarubbo <ago@gentoo.org> iotop-0.6.ebuild:
+  Stable for arm, wrt bug #477740
+
+  22 Jul 2013; Agostino Sarubbo <ago@gentoo.org> iotop-0.6.ebuild:
+  Stable for ppc, wrt bug #477740
+
+  22 Jul 2013; Jeroen Roovers <jer@gentoo.org> iotop-0.6.ebuild:
+  Stable for HPPA (bug #477740).
+
+  22 Jul 2013; Michał Górny <mgorny@gentoo.org> iotop-0.4.3.ebuild,
+  iotop-0.4.4.ebuild, iotop-0.5-r1.ebuild, iotop-0.5.ebuild, iotop-0.6.ebuild:
+  Add 'ncurses(+)' USE default for future pypy-bin.
+
+*iotop-0.6 (18 Jun 2013)
+
+  18 Jun 2013; Justin Lecher <jlec@gentoo.org> +iotop-0.6.ebuild,
+  +files/iotop-0.6-setup.py3.patch:
+  Version Bump, #473528
+
+*iotop-0.5-r1 (06 Feb 2013)
+
+  06 Feb 2013; Justin Lecher <jlec@gentoo.org> +iotop-0.5-r1.ebuild:
+  Fix for py3 and install script in /usr/sbin as intended by upstream #455888
+
+*iotop-0.5 (04 Feb 2013)
+
+  04 Feb 2013; Justin Lecher <jlec@gentoo.org> +iotop-0.5.ebuild, metadata.xml:
+  Version Bump, #455392; use new python eclasses; allow installation for py3
+
+  15 Jul 2012; Anthony G. Basile <blueness@gentoo.org> iotop-0.4.4.ebuild:
+  Keyword ~mips
+
+  16 Feb 2012; Justin Lecher <jlec@gentoo.org> iotop-0.4.3.ebuild,
+  iotop-0.4.4.ebuild, metadata.xml:
+  Taken over maintainership
+
+*iotop-0.4.4 (31 Oct 2011)
+
+  31 Oct 2011; Tim Harder <radhermit@gentoo.org> +iotop-0.4.4.ebuild:
+  Version bump.
+
+  23 Jun 2011; Markos Chandras <hwoarang@gentoo.org> -iotop-0.4.1.ebuild,
+  -iotop-0.4.2.ebuild:
+  Remove old ebuilds. Requested by Arfrever
+
+  19 Jun 2011; Raúl Porcel <armin76@gentoo.org> iotop-0.4.3.ebuild:
+  sparc stable wrt #365337
+
+  28 May 2011; Brent Baude <ranger@gentoo.org> iotop-0.4.3.ebuild:
+  Marking iotop-0.4.3 ppc for bug 365337
+
+  20 May 2011; Markus Meier <maekke@gentoo.org> iotop-0.4.3.ebuild:
+  arm stable, bug #365337
+
+  11 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> iotop-0.4.3.ebuild:
+  x86 stable wrt bug #365337
+
+  03 May 2011; Richard Freeman <rich0@gentoo.org> iotop-0.4.3.ebuild:
+  amd64 stable - 365337
+
+  02 May 2011; Jeroen Roovers <jer@gentoo.org> iotop-0.4.3.ebuild:
+  Stable for HPPA (bug #365337).
+
+  11 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> iotop-0.4.2.ebuild:
+  x86 stable wrt bug #361567
+
+  04 Apr 2011; Jeroen Roovers <jer@gentoo.org> iotop-0.4.2.ebuild:
+  Stable for HPPA (bug #361567).
+
+  04 Apr 2011; Michael Weber <xmw@gentoo.org> iotop-0.4.2.ebuild:
+  arm/ppc/sparc stable (bug 361567)
+
+  02 Apr 2011; Christoph Mende <angelos@gentoo.org> iotop-0.4.2.ebuild:
+  Stable on amd64 wrt bug #361567
+
+*iotop-0.4.3 (29 Mar 2011)
+
+  29 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +iotop-0.4.3.ebuild:
+  Version bump (bug #361105).
+
+*iotop-0.4.2 (22 Mar 2011)
+
+  22 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +iotop-0.4.2.ebuild:
+  Version bump (bug #349336).
+
+  29 Dec 2010; Michael Weber <xmw@gentoo.org> iotop-0.4.1.ebuild:
+  arm/sparc stable
+
+  03 Nov 2010; Justin Lecher <jlec@gentoo.org> iotop-0.4.1.ebuild:
+  Keyworded for ~amd64-linux
+
+  19 Sep 2010; Michael Weber <xmw@gentoo.org> iotop-0.4.1.ebuild:
+  Added ~arm keyword
+
+  13 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -iotop-0.4.ebuild:
+  Delete.
+
+  06 Aug 2010; Jeroen Roovers <jer@gentoo.org> iotop-0.4.1.ebuild:
+  Stable for PPC (bug #330263).
+
+  06 Aug 2010; Jeroen Roovers <jer@gentoo.org> iotop-0.4.1.ebuild:
+  Stable for HPPA (bug #330263).
+
+  30 Jul 2010; Markos Chandras <hwoarang@gentoo.org> iotop-0.4.1.ebuild:
+  Stable on amd64 wrt bug #330263
+
+  29 Jul 2010; Christian Faulhammer <fauli@gentoo.org> iotop-0.4.1.ebuild:
+  stable x86, bug 330263
+
+*iotop-0.4.1 (28 Jun 2010)
+
+  28 Jun 2010; Justin Lecher <jlec@gentoo.org> +iotop-0.4.1.ebuild:
+  Version Bump
+
+  23 Mar 2010; Brent Baude <ranger@gentoo.org> iotop-0.4.ebuild:
+  stable ppc, bug 305177
+
+  07 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> iotop-0.4.ebuild:
+  amd64 stable wrt #305177
+
+  04 Mar 2010; Jeroen Roovers <jer@gentoo.org> iotop-0.4.ebuild:
+  Stable for HPPA (bug #305177).
+
+  04 Mar 2010; Christian Faulhammer <fauli@gentoo.org> iotop-0.4.ebuild:
+  stable x86, bug 305177
+
+  01 Mar 2010; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  Arfrever from the python team has agreed to maintain this package
+
+  01 Mar 2010; Jeremy Olexa <darkside@gentoo.org> iotop-0.4.ebuild:
+  Add CONFIG_CHECK for TASK_DELAY_ACCT and remove CONFIG_CHECK for TASKSTATS
+  because the other two being checked depend on it already
+
+  15 Feb 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  iotop-0.4.ebuild:
+  Set SUPPORT_PYTHON_ABIS. Disable installation for Python 3 (bug #304505).
+
+  09 Feb 2010; Pacho Ramos <pacho@gentoo.org> iotop-0.3.2-r1.ebuild:
+  amd64 stable, bug 301259
+
+  05 Feb 2010; Jeremy Olexa <darkside@gentoo.org> iotop-0.3.2-r1.ebuild:
+  Add missing eutils inherit which was implicitly defined by
+  distutils.eclass but changed without warning or testing, apparently. bug
+  303331
+
+  04 Feb 2010; Jeroen Roovers <jer@gentoo.org> iotop-0.3.2-r1.ebuild:
+  Stable for PPC (bug #301259).
+
+  04 Feb 2010; Jeroen Roovers <jer@gentoo.org> iotop-0.3.2-r1.ebuild:
+  Stable for HPPA (bug #301259).
+
+  01 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  iotop-0.3.2-r1.ebuild:
+  stable x86, bug 301259
+
+*iotop-0.4 (15 Jan 2010)
+
+  15 Jan 2010; Patrick Lauer <patrick@gentoo.org> +iotop-0.4.ebuild:
+  Bump for #300667
+
+  26 Nov 2009; Fabian Groffen <grobian@gentoo.org> iotop-0.3.2-r1.ebuild:
+  Marked ~x86-linux, thanks Aaron Kaplan, bug #294699
+
+*iotop-0.3.2-r1 (30 Oct 2009)
+
+  30 Oct 2009; Jeremy Olexa <darkside@gentoo.org> -iotop-0.3.ebuild,
+  -iotop-0.3.1.ebuild, -iotop-0.3.2.ebuild, +iotop-0.3.2-r1.ebuild,
+  +files/iotop-0.3.2-rm-bundled-setuptools.patch:
+  revbump. Remove bundled setuptools and add it as a dep, patch by Kent
+  Fredric in bug 289875. Other small cleanup
+
+*iotop-0.3.2 (02 Oct 2009)
+
+  02 Oct 2009; Jeremy Olexa <darkside@gentoo.org> +iotop-0.3.2.ebuild:
+  Version bump, small fixes: http://guichaz.free.fr/iotop/NEWS
+
+  24 Sep 2009; Raúl Porcel <armin76@gentoo.org> iotop-0.3.1.ebuild:
+  Add ~ia64 wrt #282973
+
+*iotop-0.3.1 (23 Jul 2009)
+
+  23 Jul 2009; Jeremy Olexa <darkside@gentoo.org> +iotop-0.3.1.ebuild:
+  Bug fix version bump, bug 278401
+
+  13 Jul 2009; Joseph Jezak <josejx@gentoo.org> iotop-0.2.1.ebuild,
+  iotop-0.3.ebuild:
+  Marked ~ppc for bug #271069.
+
+*iotop-0.3 (20 May 2009)
+
+  20 May 2009; Jeremy Olexa <darkside@gentoo.org> -iotop-0.2.ebuild,
+  +iotop-0.3.ebuild:
+  Version bump with misc features and bug fixes, bug 269924
+
+  02 Feb 2009; Jeremy Olexa <darkside@gentoo.org> iotop-0.2.1.ebuild:
+  depend on python[ncurses], bug 241200
+
+  31 Jan 2009; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  new metadata, I'll maintain this
+
+  31 Jan 2009; Jeroen Roovers <jer@gentoo.org> iotop-0.2.1.ebuild:
+  Stable for HPPA too.
+
+  31 Jan 2009; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Give up maintainership; reassign to maintainer-needed.
+
+  03 Oct 2008; Jeroen Roovers <jer@gentoo.org> iotop-0.2.1.ebuild:
+  Marked ~hppa too.
+
+  13 Aug 2008; Raúl Porcel <armin76@gentoo.org> iotop-0.2.1.ebuild:
+  x86 stable wrt #234482
+
+  13 Aug 2008; Santiago M. Mola <coldwind@gentoo.org> iotop-0.2.1.ebuild:
+  amd64 stable wrt bug #234482
+
+*iotop-0.2.1 (09 Jul 2008)
+
+  09 Jul 2008; Donnie Berkholz <dberkholz@gentoo.org>; +iotop-0.2.1.ebuild:
+  UTF-8 fixes.
+
+  07 Jul 2008; Donnie Berkholz <dberkholz@gentoo.org>; iotop-0.2.ebuild:
+  (#229985, gregkh) Warn about kernel config instead of dying.
+
+  06 Jul 2008; Friedrich Oslage <bluebird@gentoo.org> iotop-0.2.ebuild:
+  Add ~sparc keyword
+
+  26 Jun 2008; Donnie Berkholz <dberkholz@gentoo.org>; iotop-0.2.ebuild:
+  Also check for CONFIG_TASKSTATS.
+
+*iotop-0.2 (26 Jun 2008)
+
+  26 Jun 2008; Donnie Berkholz <dberkholz@gentoo.org>; +metadata.xml,
+  +iotop-0.2.ebuild:
+  New package: Iotop is a Python program with a top like UI used to show of
+  behalf of which process is the I/O going on.

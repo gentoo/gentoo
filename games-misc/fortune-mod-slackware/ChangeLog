@@ -1,0 +1,67 @@
+# ChangeLog for games-misc/fortune-mod-slackware
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-slackware/ChangeLog,v 1.14 2015/02/05 17:34:48 tupone Exp $
+
+  05 Feb 2015; Tupone Alfredo <tupone@gentoo.org>
+  fortune-mod-slackware-1.15.ebuild:
+  EAPI 5
+
+  12 Dec 2010; Fabian Groffen <grobian@gentoo.org>
+  fortune-mod-slackware-1.15.ebuild:
+  Added Prefix keywords
+
+  12 Jun 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  fortune-mod-slackware-1.15.ebuild:
+  use die to bail out instead of exit which produces confusing error messages
+  (bug #273800)
+
+  04 Aug 2008; Jeroen Roovers <jer@gentoo.org>
+  fortune-mod-slackware-1.15.ebuild:
+  Stable for HPPA (bug #233445).
+
+  02 Aug 2008; Markus Rothe <corsair@gentoo.org>
+  fortune-mod-slackware-1.15.ebuild:
+  Stable on ppc64; bug #233445
+
+  01 Aug 2008; Kenneth Prugh <ken69267@gentoo.org>
+  fortune-mod-slackware-1.15.ebuild:
+  amd64 stable, bug #233445
+
+  01 Aug 2008; Raúl Porcel <armin76@gentoo.org>
+  fortune-mod-slackware-1.15.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #233445
+
+  01 Aug 2008; nixnut <nixnut@gentoo.org> fortune-mod-slackware-1.15.ebuild:
+  Stable on ppc wrt bug 233445
+
+*fortune-mod-slackware-1.15 (03 Nov 2007)
+
+  03 Nov 2007; Tupone Alfredo <tupone@gentoo.org>
+  +fortune-mod-slackware-1.15.ebuild:
+  Version bump
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org>
+  fortune-mod-slackware-1.13.ebuild:
+  Replacing einfo with elog
+
+*fortune-mod-slackware-1.13 (31 Jul 2006)
+
+  31 Jul 2006; Mike Frysinger <vapier@gentoo.org>
+  +fortune-mod-slackware-1.13.ebuild:
+  Version bump #134151 by Peter Hyman.
+
+  19 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  fortune-mod-slackware-1.12.ebuild:
+  Add ~x86-fbsd keyword
+
+*fortune-mod-slackware-1.12 (15 Mar 2006)
+
+  15 Mar 2006; <Tupone@gentoo.org> +fortune-mod-slackware-1.12.ebuild:
+  Version bump, bug #117016 . Thanks to Peter Hyman.
+
+*fortune-mod-slackware-1.10 (11 Oct 2005)
+
+  11 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org> +metadata.xml,
+  +fortune-mod-slackware-1.10.ebuild:
+  initial commit - ebuild supplied by Peter Hyman via bug #108380
+

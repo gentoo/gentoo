@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst prepare unpack
+DEPEND=>=sys-libs/libsepol-9999 >=sys-libs/libsemanage-9999 sys-devel/flex sys-devel/bison >=dev-vcs/git-1.8.2.1
+DESCRIPTION=SELinux policy compiler
+EAPI=5
+HOMEPAGE=http://userspace.selinuxproject.org
+IUSE=debug
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/libsemanage-9999
+SLOT=0
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	3a2bd0ae504c33a50061885480f3def3	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=74203b734d7aad8793b73353b075c2b2

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>gnome</herd>
+<longdescription lang="en">
+Caribou is a text entry and UI navigation application being developed as an
+alternative to the Gnome On-screen Keyboard. The overarching goal for Caribou
+is to create a usable solution for people whose primary way of accessing a
+computer is a switch device. The initial goal is to make an in-place on-screen
+keyboard suitable for people who can use a mouse but not a hardware keyboard.
+</longdescription>
+</pkgmetadata>

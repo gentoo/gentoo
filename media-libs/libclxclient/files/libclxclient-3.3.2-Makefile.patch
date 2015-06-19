@@ -1,0 +1,32 @@
+--- Makefile.orig	2007-01-05 05:21:48.000000000 -0800
++++ Makefile	2007-01-05 05:26:44.000000000 -0800
+@@ -28,8 +28,7 @@
+ DISTDIR = clxclient-$(VERSION)
+ 
+ 
+-CPPFLAGS += -Wall -I. -I/usr/X11R6/include -I/usr/include/freetype2 -fpic -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS -O2 
+-LDFLAGS += -L$(PREFIX)/$(LIBDIR) -L/usr/X11R6/$(LIBDIR)
++CPPFLAGS += -Wall -I. -I/usr/X11R6/include -I/usr/include/freetype2 -fpic -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS
+ LDLIBS +=
+ 
+ 
+@@ -43,15 +42,13 @@
+ 
+ 
+ $(CLXCLIENT_MIN): $(CLXCLIENT_O)
+-	g++ -shared $(LDFLAGS) -Wl,-soname,$(CLXCLIENT_MAJ) -o $(CLXCLIENT_MIN) $(CLXCLIENT_O) $(CLXCLIENT_DEP)
++	$(CXX) -shared $(LDFLAGS) -Wl,-soname,$(CLXCLIENT_MAJ) -o $(CLXCLIENT_MIN) $(CLXCLIENT_O) $(CLXCLIENT_DEP)
+ 
+ 
+ install:	$(CLXCLIENT_MIN)
+-	/usr/bin/install -d $(PREFIX)/$(LIBDIR)
+-	/usr/bin/install -m 644 $(CLXCLIENT_H) $(PREFIX)/include
+-	/usr/bin/install -m 755 $(CLXCLIENT_MIN) $(PREFIX)/$(LIBDIR)
+-	/sbin/ldconfig -n $(PREFIX)/$(LIBDIR)
+-	ln -sf $(CLXCLIENT_MIN) $(PREFIX)/$(LIBDIR)/$(CLXCLIENT_SO)
++	/usr/bin/install -D $(CLXCLIENT_H) $(DESTDIR)usr/include/$(CLXCLIENT_H)
++	/usr/bin/install -D $(CLXCLIENT_MIN) $(DESTDIR)$(CLXCLIENT_LIBDIR)/$(CLXCLIENT_MIN)
++	ln -sf $(CLXCLIENT_MIN) $(DESTDIR)$(CLXCLIENT_LIBDIR)/$(CLXCLIENT_SO)
+ 
+ 
+ clean:

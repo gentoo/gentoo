@@ -1,0 +1,35 @@
+# ChangeLog for sci-chemistry/mrbump
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/mrbump/ChangeLog,v 1.9 2012/04/14 09:52:34 nativemad Exp $
+
+  14 Apr 2012; Andreas Schuerch <nativemad@gentoo.org> mrbump-0.4.4.ebuild:
+  x86 stable, see bug 375917, thanks all.
+
+  16 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> mrbump-0.4.4.ebuild:
+  amd64 restable
+
+  08 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> mrbump-0.4.4.ebuild:
+  Revert back to ~arch for security and libpng porting.
+
+  06 Oct 2011; Tony Vroon <chainsaw@gentoo.org> mrbump-0.4.4.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo in bug
+  #351753.
+
+  18 Jan 2011; Justin Lecher <jlec@gentoo.org> mrbump-0.4.4.ebuild:
+  Rearranged build layout
+
+  16 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> mrbump-0.4.4.ebuild:
+  marked ~ppc wrt #303931
+
+  22 Apr 2010; Justin Lecher <jlec@gentoo.org> mrbump-0.4.4.ebuild:
+  Keyworded for ~*-linux
+
+  22 Apr 2010; Justin Lecher <jlec@gentoo.org> mrbump-0.4.4.ebuild:
+  Support for Python ABIs, #316175
+
+*mrbump-0.4.4 (06 Feb 2010)
+
+  06 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +files/0.4.4-superpose.patch, +mrbump-0.4.4.ebuild, +metadata.xml:
+  Splitted mrbump from ccp4
+

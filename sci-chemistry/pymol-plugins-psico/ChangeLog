@@ -1,0 +1,33 @@
+# ChangeLog for sci-chemistry/pymol-plugins-psico
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pymol-plugins-psico/ChangeLog,v 1.6 2015/05/29 07:01:07 jlec Exp $
+
+*pymol-plugins-psico-3.1-r1 (29 May 2015)
+
+  29 May 2015; Justin Lecher <jlec@gentoo.org>
+  +pymol-plugins-psico-3.1-r1.ebuild, -pymol-plugins-psico-3.0.ebuild,
+  -pymol-plugins-psico-3.1.ebuild, metadata.xml:
+  Move to EAPI=5 and new python eclasses, bug #544720; thanks Ian Delaney for
+  the patch
+
+  06 Nov 2012; Justin Lecher <jlec@gentoo.org> pymol-plugins-psico-3.0.ebuild,
+  pymol-plugins-psico-3.1.ebuild:
+  Correct for moving of mmtk from sci-chemistry to sci-libs
+
+*pymol-plugins-psico-3.1 (09 Sep 2012)
+
+  09 Sep 2012; Justin Lecher <jlec@gentoo.org> +pymol-plugins-psico-3.1.ebuild:
+  Version Bump
+
+  24 Mar 2012; Justin Lecher <jlec@gentoo.org> pymol-plugins-psico-3.0.ebuild:
+  Add sci-chemistry/ccp4-apps to DEPs for dyndom, thanks urcindalo pointing me
+  to this
+
+  22 Mar 2012; Justin Lecher <jlec@gentoo.org> pymol-plugins-psico-3.0.ebuild:
+  Add keywords
+
+*pymol-plugins-psico-3.0 (21 Mar 2012)
+
+  21 Mar 2012; Justin Lecher <jlec@gentoo.org> +pymol-plugins-psico-3.0.ebuild,
+  +metadata.xml:
+  New addition, written by me, #408995

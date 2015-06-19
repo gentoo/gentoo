@@ -1,0 +1,148 @@
+# ChangeLog for dev-java/sun-jai-bin
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jai-bin/ChangeLog,v 1.22 2014/08/10 20:24:29 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  sun-jai-bin-1.1.3-r1.ebuild, sun-jai-bin-1.1.3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  13 Jan 2013; Ralph Sennhauser <sera@gentoo.org> sun-jai-bin-1.1.3.ebuild,
+  sun-jai-bin-1.1.3-r1.ebuild:
+  Add QA_PREBUILT. #440968
+
+  31 Dec 2011; Ralph Sennhauser <sera@gentoo.org> sun-jai-bin-1.1.3.ebuild:
+  Drop ia64 support #345433
+
+  14 Dec 2011; Agostino Sarubbo <ago@gentoo.org> sun-jai-bin-1.1.3-r1.ebuild:
+  Stable for AMD64, wrt bug #393029
+
+  19 Dec 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -sun-jai-bin-1.1.2.01-r1.ebuild, sun-jai-bin-1.1.3.ebuild:
+  Removed gen1 version, quoted var.
+
+  02 Nov 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  sun-jai-bin-1.1.3.ebuild:
+  amd64 stable, bug #197479.
+
+  31 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  sun-jai-bin-1.1.3.ebuild:
+  stable x86, bug 197479
+
+*sun-jai-bin-1.1.3-r1 (24 Oct 2007)
+
+  24 Oct 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +sun-jai-bin-1.1.3-r1.ebuild:
+  Add support for amd64 native binaries so this ebuild is only keyworded for
+  amd64 as it's useless bump for others. Fixes bug #195883.
+
+  24 May 2007; Diego Pettenò <flameeyes@gentoo.org>
+  sun-jai-bin-1.1.3.ebuild:
+  Add ~x86-fbsd keyword, as per bug #173446.
+
+  06 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  sun-jai-bin-1.1.3.ebuild:
+  ppc stable
+
+  03 May 2007; Markus Rothe <corsair@gentoo.org> sun-jai-bin-1.1.3.ebuild:
+  Stable on ppc64; bug #176856
+
+*sun-jai-bin-1.1.3 (03 Apr 2007)
+
+  03 Apr 2007; Miroslav Šulc <fordfrog@gentoo.org>
+  +sun-jai-bin-1.1.3.ebuild:
+  Version bump and migrated to Java generation-2
+
+  22 Jan 2007; Markus Rothe <corsair@gentoo.org>
+  sun-jai-bin-1.1.2.01-r1.ebuild:
+  Added ~ppc64
+
+  05 Jan 2007; Vlastimil Babka <caster@gentoo.org>
+  sun-jai-bin-1.1.2.01-r1.ebuild:
+  Convert einfo to elog.
+
+  22 Dec 2006; Vlastimil Babka <caster@gentoo.org>
+  sun-jai-bin-1.1.2.01-r1.ebuild:
+  Add RESTRICT=mirror to be safe.
+
+  21 Dec 2006; Vlastimil Babka <caster@gentoo.org>
+  sun-jai-bin-1.1.2.01-r1.ebuild:
+  Update HOMEPAGE, SRC_URI and remove fetch restriction wrt bug #158713.
+
+  28 Nov 2006; Joshua Nichols <nichoj@gentoo.org>
+  sun-jai-bin-1.1.2.01-r1.ebuild:
+  Added ~ia64.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  sun-jai-bin-1.1.2.01-r1.ebuild:
+  Dropping sparc keywords, see #96229
+
+*sun-jai-bin-1.1.2.01-r1 (16 Sep 2005)
+
+  16 Sep 2005; Petteri Räty <betelgeuse@gentoo.org>
+  -sun-jai-bin-1.1.2.01.ebuild, +sun-jai-bin-1.1.2.01-r1.ebuild:
+  Version bump so that jai-bin users get the jar from this package and removed
+  the installing of the LISENCE-jai.txt file.
+
+  26 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  sun-jai-bin-1.1.2.01.ebuild:
+  Stable on sparc
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*sun-jai-bin-1.1.2.01 (23 Dec 2004)
+
+  23 Dec 2004; Karl Trygve Kalleberg <karltk@gentoo.org> +metadata.xml,
+  +sun-jai-bin-1.1.2.01.ebuild:
+  Moved from dev-java/jai-bin
+
+  17 Oct 2004; Thomas Matthijs <axxo@gentoo.org> jai-bin-1.1.2.01.ebuild:
+  keyword ~ppc
+
+*jai-bin-1.1.2.01 (17 Oct 2004)
+
+  17 Oct 2004; Thomas Matthijs <axxo@gentoo.org> jai-bin-1.1.2-r3.ebuild,
+  +jai-bin-1.1.2.01.ebuild:
+  version bump, only install *.so on x86
+
+  17 Oct 2004; Bryan Østergaard,,, <kloeri@gentoo.org>
+  jai-bin-1.1.2-r2.ebuild, jai-bin-1.1.2-r3.ebuild:
+  Remove alpha keywords.
+
+*jai-bin-1.1.2-r2 (17 Oct 2004)
+
+  17 Oct 2004; Thomas Matthijs <axxo@gentoo.org> jai-bin-1.1.2-r2.ebuild,
+  jai-bin-1.1.2-r3.ebuild:
+  keyword x86
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+*jai-bin-1.1.2-r3 (31 Jul 2004)
+
+  31 Jul 2004; Thomas Matthijs <axxo@gentoo.org> +jai-bin-1.1.2-r3.ebuild:
+  don't install in jdk dir anymore
+
+  30 Jul 2004; Thomas Matthijs <axxo@gentoo.org> :
+  move dev-java/jai dev-java/jai-bin
+
+  03 Jun 2004; Karl Trygve Kalleberg <karltk@gentoo.org> jai-1.1.2.ebuild,
+  jar-1.1.2-r1.ebuild: Removed. Fixed #52525.
+
+*jai-1.1.2-r2 (19 Mar 2004)
+
+  19 Mar 2004; Brandon Low <lostlogic@gentoo.org> jai-1.1.2-r2.ebuild:
+  Fix the mess created in -r1, now installs to the correct part of the selected
+  JRE or JDK home
+
+*jai-1.1.2-r1 (09 Mar 2004)
+
+  09 Mar 2004; Chris Aniszczyk <zx@gentoo.org> jai-1.1.2-r1.ebuild,
+  jai-1.1.2.ebuild, metadata.xml:
+  Revised ebuild. JAI now installs into the JDK selected by java-config.
+  Closes #33297
+
+*jai-1.1.2 (18 Dec 2003)
+
+  18 Dec 2003; Brandon Low <lostlogic@gentoo.org> jai-1.1.2.ebuild:
+  Initial Import, this ebuild may be a little funky, but it works for now

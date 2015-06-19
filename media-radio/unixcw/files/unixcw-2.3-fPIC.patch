@@ -1,0 +1,60 @@
+--- configure.ac.orig	2009-09-08 22:27:33.000000000 +0200
++++ configure.ac	2009-09-08 22:28:14.000000000 +0200
+@@ -212,7 +212,7 @@
+   cat >conftest.c <<-EOF
+   int so_test() { return 0; }
+ EOF
+-  $CC -c conftest.c >/dev/null 2>/dev/null
++  $CC $CFLAG_PIC -c conftest.c >/dev/null 2>/dev/null
+   $CC -shared -o conftest.so conftest.o >/dev/null 2>/dev/null
+   rm -f conftest.c conftest.o
+   if test -f conftest.so ; then
+@@ -239,7 +239,7 @@
+   cat >conftest.c <<-EOF
+   int so_test() { return 0; }
+ EOF
+-  $CC -c conftest.c >/dev/null 2>/dev/null
++  $CC $CFLAG_PIC -c conftest.c >/dev/null 2>/dev/null
+   $LD -G -o conftest.so conftest.o >/dev/null 2>/dev/null
+   rm -f conftest.c conftest.o
+   if test -f conftest.so ; then
+--- src/cwlib/Makefile.orig	2009-09-08 22:53:31.000000000 +0200
++++ src/cwlib/Makefile	2009-09-08 22:59:31.000000000 +0200
+@@ -19,7 +19,8 @@
+ 
+ include ../../Makefile.inc
+ CC	= $(AC_CC)
+-CFLAGS	= $(AC_CFLAGS) $(AC_CFLAG_PIC) $(AC_DEFS)
++CFLAGS	= $(AC_CFLAGS) $(AC_DEFS)
++CFLAGS_SL = $(AC_CFLAGS) $(AC_CFLAG_PIC) $(AC_DEFS)
+ AWK	= $(AC_AWK)
+ RANLIB	= $(AC_RANLIB)
+ LD	= $(AC_LD)
+@@ -40,14 +41,14 @@
+ 	rm -f libcw.a; ar -cr libcw.a cwlib.o
+ 	$(RANLIB) libcw.a
+ 
+-libcw.so.0.0.0: cwlib.o
++libcw.so.0.0.0: cwlib_sl.o
+ 	if [ "$(CC_LINKS_SO)" = "yes" ]; then				\
+ 		$(CC) $(LDFLAGS) -shared -Wl,-soname,libcw.so.0			\
+-			-o libcw.so.0.0.0 cwlib.o -lm;			\
++			-o libcw.so.0.0.0 cwlib_sl.o -lm;			\
+ 	else								\
+ 		if [ "$(LD_LINKS_SO)" = "yes" ]; then			\
+ 			$(LD) $(LDFLAGS) -G -Wl,-soname,libcw.so.0			\
+-				-o libcw.so.0.0.0 cwlib.o -lm;		\
++				-o libcw.so.0.0.0 cwlib_sl.o -lm;		\
+ 		fi							\
+ 	fi
+ 
+@@ -78,6 +79,9 @@
+ # Define dependencies related to header/include files.
+ cwlib.o: Makefile cwlib.h
+ 
++cwlib_sl.o: Makefile cwlib.h
++	$(CC) $(CFLAGS_SL) -c -o cwlib_sl.o cwlib.c
++
+ cwlibtest.o: Makefile cwlib.h
+ 
+ # Install targets.

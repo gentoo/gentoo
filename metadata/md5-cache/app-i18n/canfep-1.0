@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=app-i18n/canna sys-libs/ncurses
+DESCRIPTION=Canna Japanese kana-kanji frontend processor on console
+EAPI=4
+HOMEPAGE=http://www.geocities.co.jp/SiliconValley-Bay/7584/canfep/
+IUSE=unicode
+KEYWORDS=-alpha ~amd64 ppc ~sparc x86
+LICENSE=canfep
+RDEPEND=app-i18n/canna
+SLOT=0
+SRC_URI=http://www.geocities.co.jp/SiliconValley-Bay/7584/canfep/canfep-1.0.tar.gz unicode? ( http://hp.vector.co.jp/authors/VA020411/patches/canfep_utf8.diff )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=3f4f1b19ca1c7566a939757d702408b3

@@ -1,0 +1,64 @@
+# ChangeLog for media-sound/pavumeter
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/pavumeter/ChangeLog,v 1.16 2012/05/05 08:45:52 mgorny Exp $
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> pavumeter-0.9.3-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  28 Mar 2011; Christoph Mende <angelos@gentoo.org> pavumeter-0.9.3-r1.ebuild:
+  Fixed slot deps
+
+  08 Mar 2010; Markus Meier <maekke@gentoo.org> pavumeter-0.9.3-r1.ebuild:
+  x86 stable, bug #305919
+
+  19 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  pavumeter-0.9.3-r1.ebuild:
+  amd64 stable wrt #305919
+
+*pavumeter-0.9.3-r1 (09 Oct 2008)
+
+  09 Oct 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +pavumeter-0.9.3-r1.ebuild:
+  Update to EAPI=2 and USE deps.
+
+  11 Feb 2008; Olivier Crête <tester@gentoo.org> pavumeter-0.9.3.ebuild:
+  Stable on amd64, bug #204219
+
+  25 Jan 2008; Raúl Porcel <armin76@gentoo.org> pavumeter-0.9.3.ebuild:
+  Add ~sparc wrt #207369
+
+  24 Jan 2008; Diego Pettenò <flameeyes@gentoo.org> pavumeter-0.9.3.ebuild:
+  Add missing inherit for eutils.
+
+  24 Jan 2008; Diego Pettenò <flameeyes@gentoo.org> pavumeter-0.9.3.ebuild:
+  Add check for glib USE flag on pulseaudio for next revision.
+
+  13 Jan 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -pavumeter-0.9.2.ebuild, pavumeter-0.9.3.ebuild:
+  Add missing pkg-config dependency. Thanks Patrick in bug #205614.
+
+  03 Jan 2008; Markus Meier <maekke@gentoo.org> pavumeter-0.9.3.ebuild:
+  x86 stable, bug #204219
+
+  31 Dec 2007; Joseph Jezak <josejx@gentoo.org> pavumeter-0.9.2.ebuild,
+  pavumeter-0.9.3.ebuild:
+  Marked ~ppc for bug #197341.
+
+*pavumeter-0.9.3 (31 Oct 2007)
+
+  31 Oct 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +pavumeter-0.9.3.ebuild:
+  Version bump.
+
+  13 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> pavumeter-0.9.2.ebuild:
+  Remove old version and add missing dependency over gnome-icon-theme.
+
+  10 Oct 2006; Joshua Jackson <tsunam@gentoo.org> pavumeter-0.9.2.ebuild:
+  adding ~x86 as they build per galtgendo
+
+*pavumeter-0.9.2 (02 Sep 2006)
+
+  02 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> +metadata.xml,
+  +pavumeter-0.9.2.ebuild:
+  Initial import, Volume Meter for PulseAudio.
+

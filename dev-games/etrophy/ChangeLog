@@ -1,0 +1,15 @@
+# ChangeLog for dev-games/etrophy
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-games/etrophy/ChangeLog,v 1.3 2014/02/16 14:10:29 tommy Exp $
+
+  16 Feb 2014; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> etrophy-0.5.1.ebuild:
+  Switch to dev-libs/efl
+
+  21 Dec 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org> etrophy-0.5.1.ebuild:
+  Fix license
+
+*etrophy-0.5.1 (21 Dec 2012)
+
+  21 Dec 2012; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  +etrophy-0.5.1.ebuild:
+  Initial commit

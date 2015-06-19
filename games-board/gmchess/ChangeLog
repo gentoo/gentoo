@@ -1,0 +1,37 @@
+# ChangeLog for games-board/gmchess
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/gmchess/ChangeLog,v 1.9 2014/03/20 20:45:50 mr_bones_ Exp $
+
+  20 Mar 2014; Michael Sterrett <mr_bones_@gentoo.org> -gmchess-0.29.6.ebuild:
+  old
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> gmchess-0.29.6-r1.ebuild:
+  Stable for x86, wrt bug #490642
+
+  13 Nov 2013; Tony Vroon <chainsaw@gentoo.org> gmchess-0.29.6-r1.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #490642.
+
+  14 May 2013; Michael Sterrett <mr_bones_@gentoo.org> gmchess-0.29.6-r1.ebuild:
+  use games_get_libdir
+
+*gmchess-0.29.6-r1 (14 May 2013)
+
+  14 May 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gmchess-0.29.6-gentoo.patch, +gmchess-0.29.6-r1.ebuild:
+  EAPI=5; fix file locations (bug #412705)
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> gmchess-0.29.6.ebuild:
+  x86 stable wrt bug #401815
+
+  03 Feb 2012; Markos Chandras <hwoarang@gentoo.org> gmchess-0.29.6.ebuild:
+  Stable on amd64 wrt bug #401815
+
+  03 Feb 2012; Michael Sterrett <mr_bones_@gentoo.org> gmchess-0.29.6.ebuild:
+  test is broken so turn it off for now
+
+*gmchess-0.29.6 (31 Dec 2011)
+
+  31 Dec 2011; Michael Sterrett <mr_bones_@gentoo.org> +gmchess-0.29.6.ebuild,
+  +metadata.xml:
+  initial commit - ebuild submitted by Samuel BAUER via bug #391733

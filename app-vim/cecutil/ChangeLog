@@ -1,0 +1,114 @@
+# ChangeLog for app-vim/cecutil
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/cecutil/ChangeLog,v 1.31 2011/01/07 23:24:25 radhermit Exp $
+
+  07 Jan 2011; Tim Harder <radhermit@gentoo.org> -cecutil-7.ebuild:
+  Remove old
+
+  07 Jan 2011; Brent Baude <ranger@gentoo.org> cecutil-17.ebuild:
+  stable ppc, bug 345041
+
+  14 Nov 2010; Raúl Porcel <armin76@gentoo.org> cecutil-17.ebuild:
+  alpha/ia64/sparc stable
+
+  14 Nov 2010; Markus Meier <maekke@gentoo.org> cecutil-17.ebuild:
+  x86 stable, bug #345041
+
+  11 Nov 2010; Markos Chandras <hwoarang@gentoo.org> cecutil-17.ebuild:
+  Stable on amd64 wrt bug #345041
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org> cecutil-7.ebuild:
+  Drop to ~mips
+
+*cecutil-17 (20 Sep 2008)
+
+  20 Sep 2008; Ali Polatel <hawking@gentoo.org> -cecutil-3.ebuild,
+  -cecutil-4.ebuild, -cecutil-6.ebuild, cecutil-7.ebuild, -cecutil-9.ebuild,
+  -cecutil-14.ebuild, -cecutil-16.ebuild, +cecutil-17.ebuild:
+  Version bump. Quoting. Drop old.
+
+*cecutil-16 (09 May 2007)
+
+  09 May 2007; Mike Kelly <pioto@gentoo.org> +cecutil-16.ebuild:
+  Version bump. Now requires vim 7.0.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  07 Apr 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove ciaranm from metadata.xml.
+
+*cecutil-14 (11 Feb 2006)
+
+  11 Feb 2006; Ciaran McCreesh <ciaranm@gentoo.org> +cecutil-14.ebuild:
+  New version
+
+*cecutil-9 (08 Oct 2005)
+
+  08 Oct 2005; Ciaran McCreesh <ciaranm@gentoo.org> +cecutil-9.ebuild:
+  Version bump, bug #101782
+
+  19 Sep 2005; Marcus D. Hanwell <cryos@gentoo.org> cecutil-7.ebuild:
+  Stable on amd64.
+
+  12 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> cecutil-7.ebuild:
+  Stable on ppc.
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> cecutil-7.ebuild:
+  Mark 7 stable on alpha
+
+  07 Sep 2005; Aron Griffis <agriffis@gentoo.org> cecutil-7.ebuild:
+  Mark 7 stable on ia64
+
+  07 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> cecutil-7.ebuild:
+  x86 sparc mips stable
+
+*cecutil-7 (06 May 2005)
+
+  06 May 2005; Ciaran McCreesh <ciaranm@gentoo.org> +cecutil-7.ebuild:
+  Version bump
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org> cecutil-6.ebuild:
+  Stable on ppc.
+
+  01 Apr 2005; <blubb@gentoo.org> cecutil-6.ebuild:
+  stable on amd64
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> cecutil-6.ebuild:
+  stable on ia64
+
+  27 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> cecutil-6.ebuild:
+  Stable on alpha.
+
+  06 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> cecutil-6.ebuild:
+  x86 sparc mips stable
+
+  18 Feb 2005; Tom Martin <slarti@gentoo.org> cecutil-3.ebuild:
+  amd64 stable.
+
+*cecutil-6 (18 Feb 2005)
+
+  18 Feb 2005; Tom Martin <slarti@gentoo.org> +cecutil-6.ebuild:
+  Version bump for ciaranm.
+
+*cecutil-4 (21 Jan 2005)
+
+  21 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> +cecutil-4.ebuild:
+  New version, bug #78702
+
+  26 Oct 2004; Tom Martin <slarti@gentoo.org> cecutil-3.ebuild:
+  Marked ~amd64.
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> cecutil-3.ebuild:
+  Stable on x86, sparc, mips
+
+  02 Sep 2004; David Holm <dholm@gentoo.org> cecutil-3.ebuild:
+  Added to ~ppc.
+
+*cecutil-3 (25 Aug 2004)
+
+  25 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +cecutil-3.ebuild:
+  New package. This is required by newer versions of some other app-vim
+  packages.
+

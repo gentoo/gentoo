@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>desktop-dock</herd>
+	<longdescription>
+wmnetload is a network interface monitor dockapp  for Window Maker. It is 
+designed to fit well with  dockapps like wmcpuload and wmmemmon. It tracks 
+whether the interface is functioning and displays current network interface 
+throughput, along with an auto-scaling graph of recent network activity (the 
+graph separates upstream and downstream traffic load cleanly without resorting 
+to colors).
+</longdescription>
+	<upstream>
+		<remote-id type="freshmeat">wmnetload</remote-id>
+	</upstream>
+</pkgmetadata>

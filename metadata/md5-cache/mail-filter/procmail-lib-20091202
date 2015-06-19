@@ -1,0 +1,9 @@
+DEFINED_PHASES=install
+DESCRIPTION=Procmail Module Library is a collection of modules for Procmail
+HOMEPAGE=http://freshmeat.net/projects/procmail-lib
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=mail-filter/procmail
+SLOT=0
+SRC_URI=mirror://nongnu/procmail-lib/procmail-lib-2009.1202.tar.gz
+_md5_=039c7f318bd8b6ad3f7a24c924ed3301

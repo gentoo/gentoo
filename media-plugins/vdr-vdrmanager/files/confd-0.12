@@ -1,0 +1,42 @@
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-vdrmanager/files/confd-0.12,v 1.1 2014/06/01 17:09:08 hd_brummy Exp $
+# /etc/conf.d/vdr.vdrmanager
+
+# Parameters for vdr-plugin-vdrmanager
+#
+#   For more details see:
+#   http://projects.vdr-developer.org/projects/vdr-manager/wiki
+
+# Set the port where the plugin is listen on
+#   allowed values: port number
+#   default: 6420
+#   default port on ssl connection is always VDRMANAGER_PORT +1
+#   this means, if you enable ssl support on your android vdrmanager app
+#   add +1 in the app port setup, else it will still the non ssl connection be used
+#   try to remember on this ;)
+#
+#VDRMANAGER_PORT="6420"
+
+# Set the password where the plugin/app is listen on
+#   allowed values: your_password
+#   default:
+#
+VDRMANAGER_PASS=""
+
+# Force check against svdrphosts.conf
+# change this to yes, if you have added a static IP
+# for access outside from your LAN
+#
+#	allowed values: yes | no
+#	default: no
+#
+#SVDRPHOSTS_CHECK="no"
+
+# Compressionsmode for data transfer
+# 'g' for gzip, if you has use-flag gzip enabled on plugin install
+# 'z' for zlib, if you has use-flag zlib enabled on plugin install
+# 'n' for none, if you would like to disable compression
+#
+#	allowed values: g | z | n
+#	default: unset
+#
+#VDRMANAGER_COMPRESSION=""

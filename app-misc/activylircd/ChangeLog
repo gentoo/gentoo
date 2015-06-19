@@ -1,0 +1,22 @@
+# ChangeLog for app-misc/activylircd
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/activylircd/ChangeLog,v 1.5 2013/03/17 15:03:04 hwoarang Exp $
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  22 Oct 2012; Agostino Sarubbo <ago@gentoo.org> activylircd-0.4.ebuild:
+  Respect CC, EAPI4 bump, add missing DEPEND, add ~amd64
+
+  13 Jul 2009; Matthias Schwarzott <zzam@gentoo.org> activylircd-0.4.ebuild,
+  +files/activylircd-0.4-linking.patch:
+  Fix linking issues, Bug #277656.
+
+  13 Jun 2009; Matthias Schwarzott <zzam@gentoo.org> activylircd-0.4.ebuild:
+  Move activylircd to /usr/sbin. Fix manifest for changed tarball.
+
+*activylircd-0.4 (13 Jun 2009)
+
+  13 Jun 2009; Matthias Schwarzott <zzam@gentoo.org>
+  +activylircd-0.4.ebuild, +metadata.xml:
+  Initial import of ebuild by Helmut Auer, proxy maintained by him.

@@ -1,0 +1,30 @@
+# ChangeLog for games-util/vispatch
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-util/vispatch/ChangeLog,v 1.7 2014/09/01 01:08:59 mr_bones_ Exp $
+
+  01 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org> -vispatch-1.4.5.ebuild:
+  old
+
+  29 Aug 2014; Chema Alonso <nimiux@gentoo.org> vispatch-1.4.6.ebuild:
+  Stable for amd64 wrt bug #518446
+
+  14 Aug 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> vispatch-1.4.6.ebuild:
+  x86 stable wrt bug #518446
+
+*vispatch-1.4.6 (27 Jan 2013)
+
+  27 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org> +vispatch-1.4.6.ebuild:
+  version bump (bug #452270)
+
+  12 Jan 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  vispatch-1.4.5.ebuild:
+  no need to inherit games. use toolchain-funcs instead
+
+  19 Sep 2009; Markus Meier <maekke@gentoo.org> vispatch-1.4.5.ebuild:
+  amd64/x86 stable, bug #285388
+
+*vispatch-1.4.5 (16 Aug 2009)
+
+  16 Aug 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +vispatch-1.4.5.ebuild, +metadata.xml:
+  initial commit - ebuild submitted by Piotr Szymaniak via bug #213556

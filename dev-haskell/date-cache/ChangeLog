@@ -1,0 +1,12 @@
+# ChangeLog for dev-haskell/date-cache
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/date-cache/ChangeLog,v 1.2 2014/07/25 08:58:34 slyfox Exp $
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*date-cache-0.3.0-r1 (26 Aug 2013)
+
+  26 Aug 2013; Alexander Vershilov <qnikst@gentoo.org>
+  +date-cache-0.3.0-r1.ebuild, +metadata.xml:
+  dev-haskell/date-cache: initial layout

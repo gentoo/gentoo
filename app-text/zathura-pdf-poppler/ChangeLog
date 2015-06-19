@@ -1,0 +1,134 @@
+# ChangeLog for app-text/zathura-pdf-poppler
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/zathura-pdf-poppler/ChangeLog,v 1.29 2014/06/05 09:41:03 ssuominen Exp $
+
+  05 Jun 2014; Samuli Suominen <ssuominen@gentoo.org>
+  zathura-pdf-poppler-0.2.5.ebuild:
+  amd64/arm/x86 stable
+
+  04 Apr 2014; Samuli Suominen <ssuominen@gentoo.org>
+  -zathura-pdf-poppler-0.2.4.ebuild, metadata.xml:
+  old
+
+*zathura-pdf-poppler-0.2.5 (04 Apr 2014)
+
+  04 Apr 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +zathura-pdf-poppler-0.2.5.ebuild, zathura-pdf-poppler-9999.ebuild:
+  Version bump.
+
+  30 Mar 2014; Samuli Suominen <ssuominen@gentoo.org>
+  -zathura-pdf-poppler-0.2.1.ebuild, -zathura-pdf-poppler-0.2.2.ebuild,
+  -zathura-pdf-poppler-0.2.3.ebuild:
+  old
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org> zathura-pdf-poppler-0.2.3.ebuild:
+  amd64 stable, bug #491962
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  zathura-pdf-poppler-0.2.3.ebuild:
+  x86 stable wrt bug #491962
+
+*zathura-pdf-poppler-0.2.4 (27 Nov 2013)
+
+  27 Nov 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +zathura-pdf-poppler-0.2.4.ebuild:
+  Version bump.
+
+*zathura-pdf-poppler-9999 (23 Jun 2013)
+
+  23 Jun 2013; Michael Weber <xmw@gentoo.org> +zathura-pdf-poppler-9999.ebuild,
+  metadata.xml:
+  Add USE=+deprecated for gtk2 dependency, add live ebuild for gtk3 development.
+
+  19 Jun 2013; Alex Alexander <wired@gentoo.org> metadata.xml:
+  removed myself from maintainer list
+
+  19 Jun 2013; Michael Weber <xmw@gentoo.org> zathura-pdf-poppler-0.2.3.ebuild:
+  Add reference to bug 473378
+
+  19 Jun 2013; Michael Weber <xmw@gentoo.org> zathura-pdf-poppler-0.2.3.ebuild:
+  Make cairo non-optional again.
+
+*zathura-pdf-poppler-0.2.3 (13 Jun 2013)
+
+  13 Jun 2013; Michael Weber <xmw@gentoo.org> +zathura-pdf-poppler-0.2.3.ebuild,
+  metadata.xml:
+  Version bump, adding myself as maint.
+
+  17 Mar 2013; Samuli Suominen <ssuominen@gentoo.org>
+  zathura-pdf-poppler-0.2.2.ebuild:
+  Use subslot dependency for app-text/poppler wrt #462020
+
+*zathura-pdf-poppler-0.2.2 (27 Jan 2013)
+
+  27 Jan 2013; Samuli Suominen <ssuominen@gentoo.org>
+  +zathura-pdf-poppler-0.2.2.ebuild:
+  Version bump.
+
+  11 Jan 2013; Samuli Suominen <ssuominen@gentoo.org>
+  zathura-pdf-poppler-0.2.1.ebuild:
+  Keyword ~arm wrt #368757 (tested with cortex-a8, hardfloat)
+
+  11 Jan 2013; Samuli Suominen <ssuominen@gentoo.org>
+  -zathura-pdf-poppler-0.2.0.ebuild:
+  old
+
+  11 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  zathura-pdf-poppler-0.2.1.ebuild:
+  Stable for x86, wrt bug #450750
+
+  11 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  zathura-pdf-poppler-0.2.1.ebuild:
+  Stable for amd64, wrt bug #450750
+
+*zathura-pdf-poppler-0.2.1 (03 Sep 2012)
+
+  03 Sep 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +zathura-pdf-poppler-0.2.1.ebuild:
+  Version bump wrt #433718 by Simon Kohlmeyer
+
+  11 Jul 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -zathura-pdf-poppler-0.1.1.ebuild:
+  old
+
+  11 Jul 2012; Jeff Horelick <jdhore@gentoo.org>
+  zathura-pdf-poppler-0.2.0.ebuild:
+  marked x86 per bug 425674
+
+  10 Jul 2012; Agostino Sarubbo <ago@gentoo.org>
+  zathura-pdf-poppler-0.2.0.ebuild:
+  Stable for amd64, wrt bug #425674
+
+*zathura-pdf-poppler-0.2.0 (15 Jun 2012)
+
+  15 Jun 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +zathura-pdf-poppler-0.2.0.ebuild:
+  Version bump.
+
+  22 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  zathura-pdf-poppler-0.1.1.ebuild:
+  marked x86 per bug 414985
+
+  07 May 2012; Agostino Sarubbo <ago@gentoo.org>
+  zathura-pdf-poppler-0.1.1.ebuild:
+  Stable for amd64, wrt bug #414985
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  zathura-pdf-poppler-0.1.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  11 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -zathura-pdf-poppler-0.1.0.ebuild:
+  old
+
+*zathura-pdf-poppler-0.1.1 (11 Mar 2012)
+
+  11 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +zathura-pdf-poppler-0.1.1.ebuild:
+  Version bump.
+
+*zathura-pdf-poppler-0.1.0 (08 Mar 2012)
+
+  08 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +zathura-pdf-poppler-0.1.0.ebuild:
+  Initial commit wrt #405289 by Paweł Rumian

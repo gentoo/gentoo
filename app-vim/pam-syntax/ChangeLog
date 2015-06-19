@@ -1,0 +1,96 @@
+# ChangeLog for app-vim/pam-syntax
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/pam-syntax/ChangeLog,v 1.25 2012/12/07 18:40:32 ulm Exp $
+
+  07 Dec 2012; Ulrich Müller <ulm@gentoo.org> pam-syntax-20030818.ebuild:
+  Fix LICENSE, bug 445808.
+
+  27 Nov 2012; Ulrich Müller <ulm@gentoo.org> pam-syntax-20060424.ebuild:
+  Fix LICENSE, distributed under the same terms as Vim itself, bug 444968.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> pam-syntax-20060424.ebuild:
+  keyword ~amd64-fbsd
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org> pam-syntax-20030818.ebuild,
+  pam-syntax-20060424.ebuild:
+  Drop to ~mips
+
+  13 May 2007; Jose Luis Rivero <yoswink@gentoo.org>
+  pam-syntax-20060424.ebuild:
+  Stable on alpha wrt #169089. Tested by Brian Evans <grknight2k@bluebottle.com>
+
+  08 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  pam-syntax-20060424.ebuild:
+  Stable on sparc wrt #169089
+
+  07 Mar 2007; Alexander H. Færøy <eroyf@gentoo.org>
+  pam-syntax-20060424.ebuild:
+  Stable on MIPS; bug #169089
+
+  06 Mar 2007; Markus Rothe <corsair@gentoo.org> pam-syntax-20060424.ebuild:
+  Stable on ppc64; bug #169089
+
+  03 Mar 2007; nixnut <nixnut@gentoo.org> pam-syntax-20060424.ebuild:
+  Stable on ppc wrt bug 169089
+
+  03 Mar 2007; Marcus D. Hanwell <cryos@gentoo.org>
+  pam-syntax-20060424.ebuild:
+  Stable on amd64, bug 169089.
+
+  03 Mar 2007; Andrej Kacian <ticho@gentoo.org> pam-syntax-20060424.ebuild:
+  Stable on x86, bug #169089.
+
+  26 Jan 2007; Jeroen Roovers <jer@gentoo.org> pam-syntax-20060424.ebuild:
+  Stable for HPPA (bug #152713).
+
+*pam-syntax-20060424 (11 Jan 2007)
+
+  11 Jan 2007; Mike Kelly <pioto@gentoo.org> +pam-syntax-20060424.ebuild:
+  Version bump.
+
+  20 Nov 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  pam-syntax-20030818.ebuild:
+  stable on ppc
+
+  30 Oct 2006; Roy Marples <uberlord@gentoo.org> pam-syntax-20030818.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  30 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  pam-syntax-20030818.ebuild:
+  Add ~x86-fbsd keyword.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-pam-syntax-20030818, Manifest:
+  Fixing SHA256 digest, pass four
+
+  07 Apr 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove ciaranm from metadata.xml.
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  pam-syntax-20030818.ebuild:
+  Mark 20030818 stable on alpha
+
+  02 Jun 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  pam-syntax-20030818.ebuild:
+  mark ~ppc
+
+  29 May 2005; Marcus D. Hanwell <marcus@gentoo.org>
+  pam-syntax-20030818.ebuild:
+  Stable on amd64.
+
+  06 Apr 2005; Markus Rothe <corsair@gentoo.org> pam-syntax-20030818.ebuild:
+  Stable on ppc64
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> pam-syntax-20030818.ebuild:
+  stable on ia64
+
+  06 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  pam-syntax-20030818.ebuild:
+  x86 sparc mips stable
+
+*pam-syntax-20030818 (27 Feb 2005)
+
+  27 Feb 2005; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +pam-syntax-20030818.ebuild:
+  New package
+

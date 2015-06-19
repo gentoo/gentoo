@@ -1,0 +1,26 @@
+the alignment of resbuf is not guaranteed, so use memcpy to move
+the bytes in/out.  on arches which can do unaligned accesses, this
+will generate the same code.
+
+patch by Mike Frysinger
+
+--- a/md5.c
++++ b/md5.c
+@@ -74,10 +74,13 @@ md5_read_ctx (ctx, resbuf)
+      const struct md5_ctx *ctx;
+      void *resbuf;
+ {
+-  ((md5_uint32 *) resbuf)[0] = SWAP (ctx->A);
+-  ((md5_uint32 *) resbuf)[1] = SWAP (ctx->B);
+-  ((md5_uint32 *) resbuf)[2] = SWAP (ctx->C);
+-  ((md5_uint32 *) resbuf)[3] = SWAP (ctx->D);
++  md5_uint32 swap;
++#define set(i, c) { swap = SWAP (ctx->c); memcpy (resbuf + (i * 4), &swap, 4); }
++  set (0, A);
++  set (1, B);
++  set (2, C);
++  set (3, D);
++#undef set
+ 
+   return resbuf;
+ }

@@ -1,0 +1,48 @@
+# ChangeLog for app-dicts/dictd-web1913
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/dictd-web1913/ChangeLog,v 1.14 2014/01/05 11:12:52 pacho Exp $
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  02 Apr 2005; Yuta SATOH <nigoro@gentoo.org> dictd-web1913-1.4-r1.ebuild:
+  Stable on ppc64
+
+  27 Feb 2005; Yuta SATOH <nigoro@gentoo.org> dictd-web1913-1.4-r1.ebuild:
+  added ~ppc64
+
+  30 Jul 2004; Anders Rune Jensen <arj@gentoo.org> metadata.xml:
+  QA - IUSE fix and {add missing,correct} metatata.xml.
+
+  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  dictd-web1913-1.4-r1.ebuild:
+  QA - IUSE fix
+
+  09 Feb 2004; Dylan Carlson <absinthe@gentoo.org>
+  dictd-web1913-1.4-r1.ebuild:
+  added amd64 keyword.
+
+  19 Jan 2003; Olivier Reisch <doctomoe@gentoo.org> :
+  Added ~ppc keyword
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*dictd-web1913-1.4-r1 (1 Feb 2002)
+
+  03 Dec 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
+  Moved to app-dicts
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> dictd-web1913-1.4-r1.ebuild :
+  Added DESCRIPTION.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

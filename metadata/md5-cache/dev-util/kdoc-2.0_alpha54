@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/perl
+DESCRIPTION=C++ and IDL Source Documentation System
+HOMEPAGE=http://www.ph.unimelb.edu.au/~ssk/kde/kdoc/
+KEYWORDS=amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://gentoo/kdoc-2.0a54.tar.bz2
+_md5_=2d8c8caa17d7516f240d27ab5ba9ac66

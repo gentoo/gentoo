@@ -1,0 +1,507 @@
+# ChangeLog for media-sound/moc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/moc/ChangeLog,v 1.126 2015/03/16 22:09:00 vapier Exp $
+
+  16 Mar 2015; Mike Frysinger <vapier@gentoo.org> moc-2.5.0.ebuild,
+  moc-2.5.0_beta1-r1.ebuild, moc-2.6_alpha1.ebuild:
+  Depend on libltdl directly #539374 by David Flogeras.
+
+  02 Jan 2015; Mikle Kolyada <zlogene@gentoo.org> moc-2.5.0.ebuild:
+  alpha stable wrt bug #512968
+
+  02 Jan 2015; Agostino Sarubbo <ago@gentoo.org> moc-2.5.0.ebuild:
+  Stable for sparc, wrt bug #512968
+
+  01 Jan 2015; Agostino Sarubbo <ago@gentoo.org> moc-2.5.0.ebuild:
+  Stable for ppc64, wrt bug #512968
+
+  31 Dec 2014; Agostino Sarubbo <ago@gentoo.org> moc-2.5.0.ebuild:
+  Stable for ppc, wrt bug #512968
+
+  28 Dec 2014; Agostino Sarubbo <ago@gentoo.org> moc-2.5.0.ebuild:
+  Stable for x86, wrt bug #512968
+
+  27 Dec 2014; Agostino Sarubbo <ago@gentoo.org> moc-2.5.0.ebuild:
+  Stable for amd64, wrt bug #512968
+
+  11 Dec 2014; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Add myself as maintainer.
+
+*moc-2.6_alpha1 (08 Oct 2014)
+
+  08 Oct 2014; Tim Harder <radhermit@gentoo.org> +moc-2.6_alpha1.ebuild:
+  Version bump.
+
+  01 Sep 2014; Tim Harder <radhermit@gentoo.org> -moc-2.5.0_beta2.ebuild,
+  -moc-2.5.0_beta1_p20130907.ebuild:
+  Remove old.
+
+*moc-2.5.0 (31 Aug 2014)
+
+  31 Aug 2014; Tim Harder <radhermit@gentoo.org> +moc-2.5.0.ebuild:
+  Version bump.
+
+*moc-2.5.0_beta2 (07 Feb 2014)
+
+  07 Feb 2014; Tim Harder <radhermit@gentoo.org> +moc-2.5.0_beta2.ebuild:
+  Version bump.
+
+  07 Sep 2013; Tim Harder <radhermit@gentoo.org>
+  -moc-2.5.0_alpha4_p20111211.ebuild:
+  Remove old.
+
+*moc-2.5.0_beta1_p20130907 (07 Sep 2013)
+
+  07 Sep 2013; Tim Harder <radhermit@gentoo.org>
+  +moc-2.5.0_beta1_p20130907.ebuild:
+  Bump to new snapshot (fixes bug #484048).
+
+  13 Apr 2013; Agostino Sarubbo <ago@gentoo.org> moc-2.5.0_beta1-r1.ebuild:
+  Stable for sparc, wrt bug #464548
+
+  12 Apr 2013; Agostino Sarubbo <ago@gentoo.org> moc-2.5.0_beta1-r1.ebuild:
+  Stable for alpha, wrt bug #464548
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> moc-2.5.0_beta1-r1.ebuild:
+  Stable for ppc64, wrt bug #464548
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> moc-2.5.0_beta1-r1.ebuild:
+  Stable for ppc, wrt bug #464548
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> moc-2.5.0_beta1-r1.ebuild:
+  Stable for x86, wrt bug #464548
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> moc-2.5.0_beta1-r1.ebuild:
+  Stable for amd64, wrt bug #464548
+
+  03 Dec 2012; Tim Harder <radhermit@gentoo.org> -moc-2.5.0_beta1.ebuild,
+  -moc-2.5.0_alpha4_p20120501.ebuild, -moc-2.5.0_alpha4_p20120501-r1.ebuild,
+  -files/moc-libresid-builder.so_not_la.patch:
+  Remove old.
+
+  01 Dec 2012; Raúl Porcel <armin76@gentoo.org> moc-2.5.0_beta1-r1.ebuild:
+  Re-add ~alpha/~sparc wrt #439722
+
+  31 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  moc-2.5.0_beta1-r1.ebuild:
+  Keyword ~ppc64, bug #439722
+
+  31 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  moc-2.5.0_beta1-r1.ebuild:
+  Keyword ~ppc, bug #439722
+
+*moc-2.5.0_beta1-r1 (26 Oct 2012)
+
+  26 Oct 2012; Tim Harder <radhermit@gentoo.org> +moc-2.5.0_beta1-r1.ebuild,
+  +files/moc-2.5.0_beta1-no-automagic-popt.patch, metadata.xml:
+  Revbump to add cache and tremor use flags and drop the unused, automagic popt
+  dep (bug #439638 by Tomasz Golinski).
+
+*moc-2.5.0_beta1 (14 Oct 2012)
+
+  14 Oct 2012; Tim Harder <radhermit@gentoo.org> +moc-2.5.0_beta1.ebuild,
+  metadata.xml:
+  Version bump.
+
+*moc-2.5.0_alpha4_p20120501-r1 (21 May 2012)
+
+  21 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +moc-2.5.0_alpha4_p20120501-r1.ebuild,
+  +files/moc-libresid-builder.so_not_la.patch:
+  Search for libresid-builder.so instead of libresid-builder.la during
+  ./configure wrt #416619 by Stefan Borschtel
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org>
+  moc-2.5.0_alpha4_p20111211.ebuild, moc-2.5.0_alpha4_p20120501.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  01 May 2012; Tim Harder <radhermit@gentoo.org>
+  moc-2.5.0_alpha4_p20120501.ebuild:
+  Revert sorting to use similar order to configure output.
+
+  01 May 2012; Tim Harder <radhermit@gentoo.org>
+  moc-2.5.0_alpha4_p20120501.ebuild:
+  Add build dep on xz-utils and sort configure lines.
+
+*moc-2.5.0_alpha4_p20120501 (01 May 2012)
+
+  01 May 2012; Tim Harder <radhermit@gentoo.org>
+  +moc-2.5.0_alpha4_p20120501.ebuild:
+  Version bump to new snapshot (bug #408639).
+
+  31 Mar 2012; Tim Harder <radhermit@gentoo.org> -moc-2.5.0_alpha4.ebuild:
+  Remove old.
+
+  31 Mar 2012; Raúl Porcel <armin76@gentoo.org>
+  moc-2.5.0_alpha4_p20111211.ebuild:
+  alpha/sparc stable wrt #403747
+
+  09 Mar 2012; Brent Baude <ranger@gentoo.org>
+  moc-2.5.0_alpha4_p20111211.ebuild:
+  Marking moc-2.5.0_alpha4_p20111211 ppc64 for bug 403747
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org>
+  moc-2.5.0_alpha4_p20111211.ebuild:
+  Marking moc-2.5.0_alpha4_p20111211 ppc for bug 403747
+
+  24 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  moc-2.5.0_alpha4_p20111211.ebuild:
+  x86 stable wrt bug #403747
+
+  16 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  moc-2.5.0_alpha4_p20111211.ebuild:
+  Stable for amd64, wrt bug #403747
+
+  11 Dec 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -moc-2.5.0_alpha4_p20110428.ebuild, -files/moc-ffmpeg.patch:
+  old
+
+*moc-2.5.0_alpha4_p20111211 (11 Dec 2011)
+
+  11 Dec 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +moc-2.5.0_alpha4_p20111211.ebuild:
+  New snapshot wrt #369379 by Petr Pisar and Tim Harder
+
+  01 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  moc-2.5.0_alpha4_p20110428.ebuild, +files/moc-ffmpeg.patch:
+  Add patch to compile with new ffmpeg api.
+
+*moc-2.5.0_alpha4_p20110428 (28 Apr 2011)
+
+  28 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +moc-2.5.0_alpha4_p20110428.ebuild:
+  Add new snapshot. Update and clear the ebuild and its dependencies.
+
+  26 Mar 2011; Samuli Suominen <ssuominen@gentoo.org> -moc-9999.ebuild:
+  Remove live version, they don't belong in gentoo-x86.
+
+*moc-9999 (26 Mar 2011)
+
+  26 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> moc-2.5.0_alpha4.ebuild,
+  +moc-9999.ebuild:
+  Depend on virtual/ffmpeg instead of media-video/ffmpeg. Add live version i
+  have around for a long time.
+
+  18 Jul 2010; <nixnut@gentoo.org> moc-2.5.0_alpha4.ebuild:
+  ppc stable #316643
+
+  24 May 2010; Pacho Ramos <pacho@gentoo.org> moc-2.5.0_alpha4.ebuild:
+  stable amd64, bug 316643
+
+  24 May 2010; Raúl Porcel <armin76@gentoo.org> moc-2.5.0_alpha4.ebuild:
+  alpha/sparc stable wrt #316643
+
+  12 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  moc-2.5.0_alpha4.ebuild:
+  x86 stable wrt bug #316643
+
+  11 May 2010; Brent Baude <ranger@gentoo.org> moc-2.5.0_alpha4.ebuild:
+  stable ppc64, bug 316643
+
+  22 Apr 2010; Samuli Suominen <ssuominen@gentoo.org>
+  moc-2.5.0_alpha4.ebuild:
+  TagLib is required for Musepack support wrt #312783 by Christian
+  Glindkamp.
+
+  06 Mar 2010; Raúl Porcel <armin76@gentoo.org> moc-2.5.0_alpha3-r3.ebuild:
+  alpha stable
+
+  05 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  moc-2.5.0_alpha4.ebuild:
+  Missing USE musepack (alpha4 has SV8 API support).
+
+*moc-2.5.0_alpha4 (14 Dec 2009)
+
+  14 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +moc-2.5.0_alpha4.ebuild:
+  Version bump wrt #296910, thanks to Petr Pisar for reporting.
+
+  04 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  moc-2.5.0_alpha3-r3.ebuild, -files/moc-2.5.0_alpha3-libmpcdecsv7.patch:
+  Remove media-libs/libmpcdecsv7 support, because it can't decode SV8 format
+  and doesn't pass ./configure with Autoconf >= 2.65.
+
+  23 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  moc-2.5.0_alpha3-r3.ebuild:
+  Remove media-libs/ao depend wrt #290223.
+
+  25 Sep 2009; Dawid Węgliński <cla@gentoo.org>
+  moc-2.5.0_alpha3-r3.ebuild:
+  Stable on amd64 (bug #281606)
+
+  24 Sep 2009; Raúl Porcel <armin76@gentoo.org> moc-2.5.0_alpha3-r3.ebuild:
+  sparc stable wrt #281606
+
+  31 Aug 2009; Brent Baude <ranger@gentoo.org> moc-2.5.0_alpha3-r3.ebuild:
+  stable ppc64, bug 281606
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> moc-2.5.0_alpha3-r3.ebuild:
+  ppc stable #281606
+
+  16 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  moc-2.5.0_alpha3-r3.ebuild:
+  stable x86, bug 281606
+
+*moc-2.5.0_alpha3-r3 (26 Jul 2009)
+
+  26 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +moc-2.5.0_alpha3-r3.ebuild, +files/moc-2.5.0_alpha3-libmpcdecsv7.patch:
+  Use transition package media-libs/libmpcdecsv7 instead of
+  media-libs/libmpcdec for Musepack support.
+
+  28 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  moc-2.5.0_alpha3-r2.ebuild:
+  Keyworded on alpha, bug #274846
+
+  11 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  files/moc-2.5.0_alpha3-ffmpegheaders.patch:
+  Extend ffmpeg patch wrt #258890, thanks to Mateusz Baran.
+
+  17 Jul 2008; Markus Rothe <corsair@gentoo.org> moc-2.5.0_alpha3-r2.ebuild:
+  Stable on ppc64; bug #230826
+
+  14 Jul 2008; nixnut <nixnut@gentoo.org> moc-2.5.0_alpha3-r2.ebuild:
+  Stable on ppc wrt bug 230826
+
+  06 Jul 2008; Friedrich Oslage <bluebird@gentoo.org>
+  moc-2.5.0_alpha3-r2.ebuild:
+  Stable on sparc, bug #230826
+
+  06 Jul 2008; Dawid Węgliński <cla@gentoo.org>
+  moc-2.5.0_alpha3-r2.ebuild:
+  Stable on x86 (bug #230826)
+
+  05 Jul 2008; Santiago M. Mola <coldwind@gentoo.org>
+  moc-2.5.0_alpha3-r2.ebuild:
+  amd64 stable wrt bug #230826
+
+  05 Jul 2008; Samuli Suominen <ssuominen@gentoo.org>
+  +files/moc-2.5.0_alpha3-fix_default_configuration_layout.patch,
+  moc-2.5.0_alpha3-r2.ebuild:
+  Fix default configuration layout (upstream), thanks to Emil Karlson and
+  Silvence, bug 230395.
+
+*moc-2.5.0_alpha3-r2 (08 May 2008)
+
+  08 May 2008; Samuli Suominen <ssuominen@gentoo.org>
+  +files/moc-2.5.0_alpha3-libtool22.patch, +moc-2.5.0_alpha3-r2.ebuild:
+  Add missing AC_PROG_CXX and use system ltdl for libtool-2.2.
+
+  10 Apr 2008; Samuli Suominen <ssuominen@gentoo.org>
+  moc-2.5.0_alpha3-r1.ebuild:
+  DEPEND dev-util/pkgconfig because eautoreconf fails without pkg.m4 wrt
+  #216940, thanks to bonsaikitten and aballier.
+
+  08 Apr 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/moc-2.5.0_alpha3-ffmpegheaders.patch, moc-2.5.0_alpha3-r1.ebuild:
+  add a patch to build with new ffmpeg headers layout
+
+  08 Apr 2008; Raúl Porcel <armin76@gentoo.org> moc-2.5.0_alpha3-r1.ebuild:
+  sparc stable wrt #215722
+
+  07 Apr 2008; Markus Rothe <corsair@gentoo.org> moc-2.5.0_alpha3-r1.ebuild:
+  Stable on ppc64; bug #215722
+
+  03 Apr 2008; Brent Baude <ranger@gentoo.org> moc-2.5.0_alpha3-r1.ebuild:
+  stable ppc, bug 215722
+
+  02 Apr 2008; Markus Meier <maekke@gentoo.org> moc-2.5.0_alpha3-r1.ebuild:
+  x86 stable, bug #215722
+
+  21 Mar 2008; Samuli Suominen <ssuominen@gentoo.org>
+  -moc-2.5.0_alpha3.ebuild, moc-2.5.0_alpha3-r1.ebuild:
+  amd64 stable
+
+  09 Mar 2008; Alexis Ballier <aballier@gentoo.org>
+  moc-2.5.0_alpha3-r1.ebuild:
+  Include libFLAC.m4 in a separate tarball to avoid autotools failures, bug
+  #212584
+
+*moc-2.5.0_alpha3-r1 (05 Mar 2008)
+
+  05 Mar 2008; Samuli Suominen <ssuominen@gentoo.org>
+  +files/moc-2.5.0_alpha3-faad2.patch, +moc-2.5.0_alpha3-r1.ebuild:
+  aac USE for media-libs/faad2 by Hendrik Iben, bug 211805.
+
+*moc-2.5.0_alpha3 (01 Mar 2008)
+
+  01 Mar 2008; Samuli Suominen <ssuominen@gentoo.org>
+  -files/moc-2.4.1+flac-1.1.3.patch, -moc-2.4.1.ebuild, -moc-2.4.2.ebuild,
+  +moc-2.5.0_alpha3.ebuild:
+  Version bump wrt #211805, thanks to Hendrik Iben.
+
+  05 Dec 2007; Ferris McCormick <fmccor@gentoo.org> moc-2.5.0_alpha2.ebuild:
+  Sparc stable --- Bug #200134 --- works fine.
+
+  24 Nov 2007; nixnut <nixnut@gentoo.org> moc-2.5.0_alpha2.ebuild:
+  Stable on ppc wrt bug 200134
+
+  24 Nov 2007; Dawid Węgliński <cla@gentoo.org> moc-2.5.0_alpha2.ebuild:
+  Stable on x86 (bug #200134)
+
+  24 Nov 2007; Markus Rothe <corsair@gentoo.org> moc-2.5.0_alpha2.ebuild:
+  Stable on ppc64; bug #200134
+
+  24 Nov 2007; Samuli Suominen <ssuominen@gentoo.org> moc-2.5.0_alpha2.ebuild:
+  Timidity plug-in needs Timidity++ installed for timidity.cfg.
+
+  23 Nov 2007; Samuli Suominen <ssuominen@gentoo.org> moc-2.5.0_alpha2.ebuild:
+  amd64 stable wrt #200134
+
+  07 Aug 2007; Samuli Suominen <ssuominen@gentoo.org>
+  +files/moc-2.5.0_alpha2-endianess.patch, moc-2.5.0_alpha2.ebuild:
+  Apply endianess fixes from bug 169785, by Damian Pietras, Elimar Riesebieter
+  and Hendrik Iben.
+
+*moc-2.5.0_alpha2 (30 Jul 2007)
+
+  30 Jul 2007; Samuli Suominen <ssuominen@gentoo.org>
+  +moc-2.5.0_alpha2.ebuild:
+  Version bump for bug 169785, thanks to Hendrik Iben for reporting.
+
+  13 Jun 2007; Alexis Ballier <aballier@gentoo.org> -moc-2.1.4-r1.ebuild,
+  -moc-2.2.0-r1.ebuild:
+  cleanup old versions
+
+*moc-2.4.2 (13 Jun 2007)
+
+  13 Jun 2007; Alexis Ballier <aballier@gentoo.org> +moc-2.4.2.ebuild:
+  version bump, bug #181932
+
+  22 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org> moc-2.4.1.ebuild:
+  ppc stable, bug #175145
+
+  22 Apr 2007; Markus Rothe <corsair@gentoo.org> moc-2.4.1.ebuild:
+  Stable on ppc64; bug #175145
+
+  19 Apr 2007; Daniel Gryniewicz <dang@gentoo.org> moc-2.4.1.ebuild:
+  Marked stable on amd64 for bug #175145
+
+  19 Apr 2007; Christian Faulhammer <opfer@gentoo.org> moc-2.4.1.ebuild:
+  stable x86, bug 175145
+
+  18 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> moc-2.4.1.ebuild:
+  Stable on sparc wrt #175145
+
+  22 Jan 2007; Markus Rothe <corsair@gentoo.org> moc-2.4.1.ebuild:
+  Added ~ppc64
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> moc-2.1.4-r1.ebuild,
+  moc-2.2.0-r1.ebuild, moc-2.3.0.ebuild, moc-2.3.2.ebuild, moc-2.3.3.ebuild,
+  moc-2.4.0.ebuild, moc-2.4.1.ebuild:
+  Convert to use elog.
+
+  18 Nov 2006; Alexis Ballier <aballier@gentoo.org>
+  +files/moc-2.4.1+flac-1.1.3.patch, moc-2.4.1.ebuild:
+  Add patch from Josh Coalson to be able to build with flac 1.1.3
+
+*moc-2.4.1 (07 Nov 2006)
+
+  07 Nov 2006; Alexis Ballier <aballier@gentoo.org> +moc-2.4.1.ebuild:
+  Version bump, wrt to bug #153327
+
+  20 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> moc-2.2.0-r1.ebuild,
+  moc-2.3.0.ebuild, moc-2.3.2.ebuild, moc-2.3.3.ebuild, moc-2.4.0.ebuild:
+  Depend on 1.1.2 version of flac, as the 1.1.3 version changes API.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-moc-2.1.4-r1,
+  files/digest-moc-2.2.0-r1, files/digest-moc-2.3.0, files/digest-moc-2.3.2,
+  files/digest-moc-2.3.3, Manifest:
+  Fixing SHA256 digest, pass four
+
+  11 Mar 2006; <nixnut@gentoo.org> moc-2.4.0.ebuild:
+  Added ~ppc. Bug #104975
+
+  27 Feb 2006; Jason Wever <weeve@gentoo.org> moc-2.4.0.ebuild:
+  Added ~sparc keyword wrt bug #104975.
+
+*moc-2.4.0 (24 Feb 2006)
+
+  24 Feb 2006; Patrick McLean <chutzpah@gentoo.org>
+  +files/2.4.0-endianess.patch, +moc-2.4.0.ebuild:
+  Version bump (bug #123620). Added ffmpeg USE flag. This also should fix bug
+  #121687.
+
+  15 Feb 2006; Diego Pettenò <flameeyes@gentoo.org> moc-2.3.2.ebuild,
+  moc-2.3.3.ebuild:
+  Fix USE flags. Bug #122872.
+
+*moc-2.3.3 (18 Jan 2006)
+
+  18 Jan 2006; Chris White <chriswhite@gentoo.org> +moc-2.3.3.ebuild:
+  Version bump to 2.3.3. Fixes various memory leaks and works towards closing
+  bug #104975.
+
+*moc-2.3.2 (01 Jan 2006)
+
+  01 Jan 2006; Chris White <chriswhite@gentoo.org>
+  +files/moc-2.3.2-configure.patch, +moc-2.3.2.ebuild:
+  Added 2.3.2 with -* keywords for bug #104975.  Marked ~x86 arch.
+
+  02 Dec 2005; Chris White <chriswhite@gentoo.org>
+  -files/moc-2.3.1-configure.patch, -moc-2.3.1.ebuild:
+  Remove 2.3.1.
+
+  14 Jul 2005; David Holm <dholm@gentoo.org> moc-2.3.0.ebuild:
+  Added to ~ppc.
+
+*moc-2.3.0 (13 Jul 2005)
+
+  13 Jul 2005; Jonathan Smith <smithj@gentoo.org> +moc-2.3.0.ebuild:
+  #98736: version bump
+
+*moc-2.2.0-r1 (18 Apr 2005)
+
+  18 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  -files/moc-1.1.0-gcc3.patch, -files/moc-1.1.0-gcc34.patch,
+  -moc-1.1.0.ebuild, +moc-2.1.4-r1.ebuild, -moc-2.1.4.ebuild,
+  +moc-2.2.0-r1.ebuild, -moc-2.2.0.ebuild:
+  neither a binary nor a symlink named moc gets installed any longer, fixes bug
+  #76702. also did some cleanup and moved oggvorbis useflag to vorbis, oggvorbis
+  is deprecated.
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> moc-2.2.0.ebuild:
+  introduced support for the flac useflag, fixes #86226
+
+*moc-2.2.0 (27 Feb 2005)
+
+  27 Feb 2005; Karol Wojtaszek <sekretarz@gentoo.org> +moc-2.2.0.ebuild:
+  Version bump, bug #83402
+
+*moc-2.1.4 (21 Jan 2005)
+
+  21 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> +moc-2.1.4.ebuild:
+  new version released. fixes #76588.
+
+  11 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org> moc-1.1.0.ebuild:
+  Added media-libs/libid3tag to depend to fix bug #74533. Thanks go to Pinky
+  <master_up@post.cz> for the fix.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org> moc-1.1.0.ebuild:
+  Stable amd64, x86.
+
+  23 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org> moc-1.1.0.ebuild:
+  Added to ~sparc.
+
+  16 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/moc-1.1.0-gcc34.patch, moc-1.1.0.ebuild:
+  Ebuild cleanup. Added gcc-3.4 fix thanks to James
+  <James@superbug.demon.co.uk> in bug #71139. Added to ~amd64.
+
+  24 Sep 2004; Sven Wegener <swegener@gentoo.org> moc-1.1.0.ebuild:
+  Fixed CVS keyword replacement.
+
+  31 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> moc-1.1.0.ebuild:
+  Stable x86.  Added inherit eutils and removed explicit S=.
+
+  28 Oct 2003; Martin Holzer <mholzer@gentoo.org> moc-1.1.0.ebuild:
+  more config through IUSE. Closes #31568.
+
+  19 Oct 2003; Martin Holzer <mholzer@gentoo.org> moc-1.1.0.ebuild,
+  files/moc-1.1.0-gcc3.patch:
+  Adding gcc3 patch. Closes #31399.
+
+*moc-1.1.0 (26 Jun 2003)
+
+  26 Jun 2003; robh <robh@gentoo.org> moc-1.1.0.ebuild:
+  Initial version. Thanks to Matthew Rickard, closes #12042

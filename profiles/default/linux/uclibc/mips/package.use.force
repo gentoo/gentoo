@@ -1,0 +1,9 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/uclibc/mips/package.use.force,v 1.1 2014/09/12 19:42:27 vincent Exp $
+
+# Vicente Olivert Riera <vincent@gentoo.org> (12 Sep 2014)
+# If deprecated USE flag is not set, www-client/midori will
+# depend on net-libs/webkit-gtk:3 which fails to compile
+# on MIPS
+www-client/midori deprecated

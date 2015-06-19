@@ -1,0 +1,23 @@
+# ChangeLog for dev-db/vbisam
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/vbisam/ChangeLog,v 1.6 2015/06/09 13:15:30 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #473480
+
+  28 Feb 2012; Brent Baude <ranger@gentoo.org> vbisam-2.0.ebuild:
+  Marking vbisam-2.0 ppc for bug 384499
+
+  05 Oct 2011; Andreas Schuerch <nativemad@gentoo.org> vbisam-2.0.ebuild:
+  x86 stable, see bug 384499
+
+  10 Mar 2010; Joseph Jezak <josejx@gentoo.org> vbisam-2.0.ebuild:
+  Marked ~ppc for bug #301987.
+
+*vbisam-2.0 (23 Jan 2010)
+
+  23 Jan 2010; Patrick Kursawe <phosphan@gentoo.org> +vbisam-2.0.ebuild:
+  Initial version, needed for dev-lang/tinycobol 0.65 up.

@@ -1,0 +1,13 @@
+# ChangeLog for media-fonts/comic-neue
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/comic-neue/ChangeLog,v 1.2 2015/04/28 09:16:34 yngwin Exp $
+
+  28 Apr 2015; Ben de Groot <yngwin@gentoo.org> comic-neue-2.2.ebuild:
+  stable
+
+*comic-neue-2.2 (07 Mar 2015)
+
+  07 Mar 2015; Ben de Groot <yngwin@gentoo.org> +comic-neue-2.2.ebuild,
+  +metadata.xml:
+  Initial commit. Ebuild based on the one provided by Arjanen Loïc in bug
+  #511194.

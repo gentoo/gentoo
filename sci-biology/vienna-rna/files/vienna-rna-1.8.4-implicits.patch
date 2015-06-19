@@ -1,0 +1,47 @@
+Fix implicit function declarations and attempt to free non-heap obj
+
+--- lib/subopt.c
++++ lib/subopt.c
+@@ -80,12 +80,12 @@
+ #include <string.h>
+ #include <math.h>
+ #include "fold.h"
++#include "cofold.h"
+ #include "utils.h"
+ #include "energy_par.h"
+ #include "fold_vars.h"
+ #include "pair_mat.h"
+ #include "list.h"
+-#include "subopt.h"
+ #include "params.h"
+ 
+ #define true	  1
+--- Progs/RNAfold.c
++++ Progs/RNAfold.c
+@@ -20,6 +20,7 @@
+ #include "MEA.h"
+ extern void  read_parameter_file(const char fname[]);
+ extern plist * stackProb(double cutoff);
++extern void init_pf_circ_fold(int length);
+ 
+ /*@unused@*/
+ static char UNUSED rcsid[] = "$Id: vienna-rna-1.8.4-implicits.patch,v 1.1 2010/10/15 07:15:15 xarthisius Exp $";
+--- Cluster/AS_main.c
++++ Cluster/AS_main.c
+@@ -1,6 +1,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ #include "distance_matrix.h"
+ #include "statgeom.h"
+ #include "split.h"
+@@ -226,7 +227,7 @@
+ 	    for(j=0;j<nn[i];j++) free(ss[i][j]);
+ 	    free(ss[i]);
+          }
+-	 free(ss);
++	 // free(ss); 	//  attempt to free a non-heap object ‘ss’
+       }
+       else {
+          printf_taxa_list();

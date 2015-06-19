@@ -1,0 +1,19 @@
+diff -uNr ptlib-2.10.8.orig/src/ptclib/cli.cxx ptlib-2.10.8/src/ptclib/cli.cxx
+--- ptlib-2.10.8.orig/src/ptclib/cli.cxx	2012-10-19 13:45:35.000000000 -0400
++++ ptlib-2.10.8/src/ptclib/cli.cxx	2012-10-22 16:02:58.000000000 -0400
+@@ -858,6 +858,7 @@
+ 
+ ///////////////////////////////////////////////////////////////////////////////
+ 
++#ifdef HAS_TELNET
+ PCLITelnet::PCLITelnet(WORD port, const char * prompt, bool singleThreadForAll)
+   : PCLISocket(port, prompt, singleThreadForAll)
+ {
+@@ -868,6 +869,7 @@
+ {
+   return new PTelnetSocket();
+ }
++#endif
+ 
+ 
+ ///////////////////////////////////////////////////////////////////////////////

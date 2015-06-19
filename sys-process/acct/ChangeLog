@@ -1,0 +1,320 @@
+# ChangeLog for sys-process/acct
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/acct/ChangeLog,v 1.78 2015/05/23 00:24:39 mrueg Exp $
+
+  23 May 2015; Manuel Rüger <mrueg@gentoo.org> -acct-6.5.5-r1.ebuild,
+  -acct-6.5.5-r2.ebuild:
+  Remove old.
+
+*acct-6.6.2 (08 Nov 2014)
+
+  08 Nov 2014; Mike Frysinger <vapier@gentoo.org> +acct-6.6.2.ebuild,
+  +files/acct-6.6.2-cross-compile.patch:
+  Version bump.
+
+  08 Nov 2014; Mike Frysinger <vapier@gentoo.org>
+  files/acct-6.6.1-cross-compile.patch, files/acct-6.6.1-no-gets.patch:
+  Restore proper documentation in patches.
+
+  14 Aug 2014; Mike Frysinger <vapier@gentoo.org> files/acct-6.6.1-math.patch:
+  Fix copy & paste fail #519552 by René Rhéaume.
+
+  13 Aug 2014; Mike Frysinger <vapier@gentoo.org> +files/acct-6.6.1-math.patch,
+  acct-6.6.1.ebuild:
+  Link with -lm when needed #519552 by René Rhéaume.
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> acct-6.5.5-r3.ebuild:
+  Stable for ppc, wrt bug #485338
+
+  17 Dec 2013; Raúl Porcel <armin76@gentoo.org> acct-6.5.5-r3.ebuild:
+  alpha stable wrt #485338
+
+  26 Nov 2013; Pacho Ramos <pacho@gentoo.org> acct-6.5.5-r3.ebuild:
+  x86 stable, bug #485338
+
+  10 Oct 2013; Tony Vroon <chainsaw@gentoo.org> acct-6.5.5-r3.ebuild:
+  Marked stable on AMD64 based on arch tester report by MJJoker in bug #485338.
+
+*acct-6.6.1 (10 Oct 2013)
+
+  10 Oct 2013; Tony Vroon <chainsaw@gentoo.org> +acct-6.6.1.ebuild,
+  +files/acct-6.6.1-cross-compile.patch, +files/acct-6.6.1-no-gets.patch,
+  +files/acct-6.6.1-texi-failure.patch:
+  Version bump as requested by "teidakankan" in bug #483076. Rediffed existing
+  cross-compile & nogets patches. Texi fix is by Dmitrijs Ledkovs and from
+  Debian bug #696204.
+
+  09 Oct 2013; Jeroen Roovers <jer@gentoo.org> acct-6.5.5-r3.ebuild:
+  Stable for HPPA (bug #485338).
+
+*acct-6.5.5-r3 (30 Aug 2013)
+
+  30 Aug 2013; Pacho Ramos <pacho@gentoo.org> +acct-6.5.5-r3.ebuild,
+  +files/acct.service:
+  Add unit file (#479528 by CFuga)
+
+  08 Aug 2013; Michael Sterrett <mr_bones_@gentoo.org> acct-6.5.5-r2.ebuild:
+  EAPI=3 to fix breakage
+
+  07 Aug 2013; Sébastien Fabbro <bicatali@gentoo.org> acct-6.5.5-r2.ebuild:
+  Keyword amd64-linux and x86-linux
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> acct-6.5.5-r2.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> acct-6.5.5-r2.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  16 Dec 2012; Mike Frysinger <vapier@gentoo.org> files/acct.initd:
+  Use [...] rather than [[...]] in init.d #447236 by Alexander Tsoy.
+
+  30 Sep 2012; Raúl Porcel <armin76@gentoo.org> acct-6.5.5-r2.ebuild:
+  alpha stable wrt #400513
+
+  06 Aug 2012; Mike Frysinger <vapier@gentoo.org>
+  +files/acct-6.5.5-no-gets.patch, acct-6.5.5-r2.ebuild:
+  Fix building with glibc-2.16.
+
+  28 Jul 2012; Anthony G. Basile <blueness@gentoo.org> acct-6.5.5-r2.ebuild:
+  Keyword ~mips
+
+  27 Jul 2012; Anthony G. Basile <blueness@gentoo.org> acct-6.5.5-r2.ebuild:
+  Keyword ~ppc64
+
+  01 Feb 2012; Brent Baude <ranger@gentoo.org> acct-6.5.5-r2.ebuild:
+  Marking acct-6.5.5-r2 ppc for bug 400513
+
+  31 Jan 2012; Jeroen Roovers <jer@gentoo.org> acct-6.5.5-r2.ebuild:
+  Stable for HPPA (bug #400513).
+
+  28 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> acct-6.5.5-r2.ebuild:
+  x86 stable wrt bug #400513
+
+  27 Jan 2012; Agostino Sarubbo <ago@gentoo.org> acct-6.5.5-r2.ebuild:
+  Stable for amd64, wrt bug #400513
+
+  31 Dec 2011; Mike Frysinger <vapier@gentoo.org> files/acct.logrotate:
+  Do not always restart acct init.d when rotating logs #395867 by Eugeny
+  Shkrigunov.
+
+*acct-6.5.5-r2 (20 Oct 2011)
+
+  20 Oct 2011; Mike Frysinger <vapier@gentoo.org> +acct-6.5.5-r2.ebuild,
+  +files/acct-6.5.5-cross-compile.patch, files/acct.initd:
+  Add arm love. Add cross-compile fix by Diego Elio Pettenò. Clean up init.d
+  script #367815 by Robert Trace.
+
+  11 Jul 2011; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  "was mistaken in terms of how this works"
+
+  30 May 2011; Jeroen Roovers <jer@gentoo.org> -acct-6.5.5.ebuild,
+  acct-6.5.5-r1.ebuild, -files/acct.initd-r1, -files/acct.logrotate-r1:
+  Move to stable since there was no functional difference anyway.
+
+*acct-6.5.5-r1 (26 Jan 2011)
+
+  26 Jan 2011; Jeroen Roovers <jer@gentoo.org> +acct-6.5.5-r1.ebuild,
+  +files/acct.initd-r1, +files/acct.logrotate-r1, files/acct.initd,
+  files/acct.logrotate:
+  Make logrotate script compatible with both baselayout 1 and 2, by Eugeny
+  Shkrigunov (bug #351428), patches by Robert Trace.
+
+  23 Jan 2011; Raúl Porcel <armin76@gentoo.org> acct-6.5.5.ebuild:
+  alpha stable wrt #350050
+
+  12 Jan 2011; Jeroen Roovers <jer@gentoo.org> acct-6.5.5.ebuild:
+  Stable for HPPA (bug #350050).
+
+  07 Jan 2011; Brent Baude <ranger@gentoo.org> acct-6.5.5.ebuild:
+  stable ppc, bug 350050
+
+  02 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> acct-6.5.5.ebuild:
+  x86 stable wrt bug #350050
+
+  01 Jan 2011; Markos Chandras <hwoarang@gentoo.org> acct-6.5.5.ebuild:
+  Stable on amd64 wrt bug #350050
+
+  05 Dec 2010; Raúl Porcel <armin76@gentoo.org> acct-6.5.4-r2.ebuild:
+  alpha stable wrt #323105
+
+  15 Nov 2010; Jeroen Roovers <jer@gentoo.org> files/acct.logrotate:
+  Whitespace.
+
+  11 Nov 2010; Jeroen Roovers <jer@gentoo.org> files/acct.logrotate:
+  Add missingok by Tom Hendrikx (bug #344963).
+
+  10 Nov 2010; Christian Faulhammer <fauli@gentoo.org> acct-6.5.4-r2.ebuild:
+  stable x86, bug 323105
+
+*acct-6.5.5 (09 Nov 2010)
+
+  09 Nov 2010; Jeroen Roovers <jer@gentoo.org> +acct-6.5.5.ebuild:
+  Version bump.
+
+  08 Nov 2010; Jeroen Roovers <jer@gentoo.org> acct-6.5.4-r2.ebuild:
+  Stable for HPPA PPC (bug #323105).
+
+  06 Nov 2010; Markos Chandras <hwoarang@gentoo.org> acct-6.5.4-r2.ebuild:
+  Stable on amd64 wrt bug #323105
+
+  05 Nov 2010; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Somebody has to maintain this.
+
+*acct-6.5.4-r2 (05 Nov 2010)
+
+  05 Nov 2010; Jeroen Roovers <jer@gentoo.org> -acct-6.5.4-r1.ebuild,
+  +acct-6.5.4-r2.ebuild, +files/acct-6.5.4-nan.patch:
+  Fix division by zero by Robert Trace (bug #323105).
+
+  26 Jun 2010; Raúl Porcel <armin76@gentoo.org> acct-6.5.4.ebuild:
+  alpha stable wrt #316517
+
+  10 Jun 2010; Jeroen Roovers <jer@gentoo.org> acct-6.5.4-r1.ebuild,
+  metadata.xml:
+  Remove IUSE=logrotate (bug #198901).
+
+  10 Jun 2010; Jeroen Roovers <jer@gentoo.org> acct-6.5.4-r1.ebuild,
+  metadata.xml:
+  Add logrotate to RDEPEND. Improve USE flag description.
+
+  28 May 2010; Markus Meier <maekke@gentoo.org> acct-6.5.4.ebuild:
+  x86 stable, bug #316517
+
+  26 May 2010; Pacho Ramos <pacho@gentoo.org> acct-6.5.4.ebuild:
+  stable amd64, bug 316517
+
+  11 May 2010; Jeroen Roovers <jer@gentoo.org> acct-6.5.4.ebuild:
+  Stable for PPC (bug #316517).
+
+  29 Apr 2010; Jeroen Roovers <jer@gentoo.org> acct-6.5.4.ebuild:
+  Stable for HPPA (bug #316517).
+
+*acct-6.5.4-r1 (28 Apr 2010)
+
+  28 Apr 2010; Jeroen Roovers <jer@gentoo.org> acct-6.5.1.ebuild,
+  acct-6.5.3.ebuild, acct-6.5.4.ebuild, +acct-6.5.4-r1.ebuild,
+  +files/acct.initd, +files/acct.logrotate, -files/acct.rc6, metadata.xml:
+  Rename initd script to be more Gentoo like. Bump to add logrotate script
+  thanks to Jeremy Sermersheim (bug #313099).
+
+  28 Apr 2010; Jeroen Roovers <jer@gentoo.org> -acct-6.3.5-r1.ebuild,
+  -acct-6.3.5-r2.ebuild, -files/acct.rc6-6.3.5-r3, -acct-6.3.5-r3.ebuild,
+  files/acct.rc6:
+  Stop accounting properly thanks to Eugeny Shkrigunov (bug #316517).
+
+  11 Mar 2010; Markos Chandras <hwoarang@gentoo.org> acct-6.5.1.ebuild:
+  Stable on amd64 wrt bug #302285
+
+*acct-6.5.4 (15 Feb 2010)
+
+  15 Feb 2010; Jeroen Roovers <jer@gentoo.org> +acct-6.5.4.ebuild:
+  Version bump.
+
+  13 Feb 2010; Raúl Porcel <armin76@gentoo.org> acct-6.5.1.ebuild:
+  alpha stable wrt #302285
+
+  04 Feb 2010; Jeroen Roovers <jer@gentoo.org> acct-6.5.1.ebuild:
+  Stable for PPC (bug #302285).
+
+  04 Feb 2010; Jeroen Roovers <jer@gentoo.org> acct-6.5.1.ebuild:
+  Stable for HPPA (bug #302285).
+
+  01 Feb 2010; Christian Faulhammer <fauli@gentoo.org> acct-6.5.1.ebuild:
+  stable x86, bug 302285
+
+  26 Jan 2010; Jeroen Roovers <jer@gentoo.org> acct-6.5.1.ebuild,
+  acct-6.5.3.ebuild:
+  Fix licenses.
+
+*acct-6.5.3 (26 Jan 2010)
+
+  26 Jan 2010; Jeroen Roovers <jer@gentoo.org> acct-6.5.1.ebuild,
+  +acct-6.5.3.ebuild:
+  Version bump. Use PN and P in SRC_URI.
+
+*acct-6.5.1 (10 Oct 2009)
+
+  10 Oct 2009; Mike Frysinger <vapier@gentoo.org> +acct-6.5.1.ebuild,
+  files/acct.rc6:
+  Version bump #288374 by Markus Gothe. Stop using full paths in init.d
+  script.
+
+*acct-6.3.5-r3 (06 Oct 2008)
+
+  06 Oct 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +files/acct.rc6-6.3.5-r3, +acct-6.3.5-r3.ebuild:
+  Lots of other distros have moved the accton binary over to /sbin, jump in
+  the fire as well so that bootchart can be used when /usr is on a different
+  partition, as reported in bug #239748.
+
+  29 Nov 2007; Christian Faulhammer <opfer@gentoo.org> acct-6.3.5-r2.ebuild:
+  stable x86
+
+  13 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  acct-6.3.5-r2.ebuild:
+  ppc. stable
+
+  04 May 2007; Jeroen Roovers <jer@gentoo.org> acct-6.3.5-r2.ebuild:
+  Stable for HPPA.
+
+  12 Apr 2007; Jeroen Roovers <jer@gentoo.org> acct-6.3.5-r2.ebuild:
+  Marked ~hppa too.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  10 Jan 2006; Mike Frysinger <vapier@gentoo.org> +files/acct.confd,
+  files/acct.rc6, acct-6.3.5-r2.ebuild:
+  Add some custom init.d options by Hubert MERCIER #118399.
+
+*acct-6.3.5-r2 (04 Oct 2005)
+
+  04 Oct 2005; Mike Frysinger <vapier@gentoo.org> +acct-6.3.5-r2.ebuild:
+  Patchset version bump #108110 by Tim Schmielau.
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> acct-6.3.5-r1.ebuild:
+  Stable on ppc.
+
+  19 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> acct-6.3.5-r1.ebuild:
+  Stable on alpha.
+
+*acct-6.3.5-r1 (20 Mar 2005)
+
+  20 Mar 2005; Robin H. Johnson <robbat2@gentoo.org> files/acct.rc6,
+  +acct-6.3.5-r1.ebuild:
+  Bug #79665, provide a new acct build that works with v3 acct format and is
+  also backwards compatible. Also do not provide the "last" binary anymore, as
+  it is provided by sysvinit.
+
+  03 Mar 2005; Mike Frysinger <vapier@gentoo.org> acct-6.3.5.ebuild:
+  Dont install ansi2knr.1 since we dont install ansi2knr #83876 by Mike Nerone.
+
+*acct-6.3.5 (03 Mar 2005)
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +files/acct-6.3.5-gentoo.diff, +files/acct.rc6, +acct-6.3.5.ebuild:
+  Moved from sys-apps/acct to sys-process/acct.
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> acct-6.3.5.ebuild:
+  Masked acct-6.3.5.ebuild stable for ppc
+
+  24 Aug 2004; Sven Wegener <swegener@gentoo.org> acct-6.3.5.ebuild:
+  Changed SRC_URI to use mirror:// syntax.
+
+  14 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> acct-6.3.5.ebuild:
+  inherit eutils; use epatch; error check; tidy
+
+  11 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> acct-6.3.5.ebuild:
+  Stable on alpha.
+
+  14 Apr 2004; <kloeri@gentoo.org> acct-6.3.5.ebuild:
+  Keyworded ~alpha.
+
+*acct-6.3.5 (30 Oct 2002)
+
+  30 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Initial import. Ebuild submitted by Andrwe Minter <gm@masarand.com> 
+  in 6385#.

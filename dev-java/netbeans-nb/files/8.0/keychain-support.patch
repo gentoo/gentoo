@@ -1,0 +1,26 @@
+# HG changeset patch
+# Parent cbf7b2d2851314077b9c1ecd6ec95ce51453daf8
+diff -r cbf7b2d28513 -r 0350861eeabf ide/launcher/unix/netbeans
+--- a/ide/launcher/unix/netbeans	Tue Nov 09 13:44:15 2010 +0100
++++ b/ide/launcher/unix/netbeans	Tue Nov 09 14:21:18 2010 +0100
+@@ -169,6 +169,20 @@
+     then
+         sh=/bin/bash
+     fi
++    keychain=`which keychain`
++    if [ -n "$keychain" ]; then
++        $keychain -q
++        . $HOME/.keychain/$HOSTNAME-sh
++        if [ -e $userdir/keychain-keys.txt ]; then
++            for key in `cat $userdir/keychain-keys.txt`; do
++                SSH_ASKPASS=`which x11-ssh-askpass`
++                export SSH_ASKPASS
++                if [ -n "$key" ]; then
++                    keychain $key
++                fi
++            done
++        fi
++    fi
+     if [ "${founduserdir}" = "yes" ]; then
+         exec $sh "$nbexec" "$@"
+     else

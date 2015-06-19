@@ -1,0 +1,13 @@
+Index: w3m-git/form.c
+===================================================================
+--- w3m-git.orig/form.c	2011-02-28 15:03:36.000000000 +0100
++++ w3m-git/form.c	2011-02-28 15:32:33.000000000 +0100
+@@ -196,7 +196,7 @@
+ 	if (!strcasecmp(typestr, _formtypetbl[i]))
+ 	    return i;
+     }
+-    return FORM_UNKNOWN;
++    return FORM_INPUT_TEXT;
+ }
+ 
+ void

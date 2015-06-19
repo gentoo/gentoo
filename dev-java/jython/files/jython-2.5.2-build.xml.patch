@@ -1,0 +1,27 @@
+--- build.xml.orig	2012-07-13 14:06:40.965992853 +0200
++++ build.xml	2012-07-13 14:07:29.595035840 +0200
+@@ -512,6 +512,7 @@
+         </javac>
+ 
+         <!-- java files used by tests -->
++<!--
+         <javac srcdir="${test.source.dir}"
+                destdir="${compile.dir}"
+                target="${jdk.target.version}"
+@@ -535,6 +536,7 @@
+         <copy file="${source.dir}/org/python/modules/ucnhash.dat"
+               todir="${compile.dir}/org/python/modules"
+               preservelastmodified="true" />
++-->
+ 
+         <copy todir="${compile.dir}" preservelastmodified="true">
+             <fileset dir="${source.dir}">
+@@ -758,7 +762,7 @@
+         <jycompile srcdir="${dist.dir}/Lib" destdir="${dist.dir}/Lib" excludes="test/**"/>
+     </target>
+ 
+-    <target name="copy-lib" depends="init, copy-javalib, copy-cpythonlib">
++    <target name="copy-lib" depends="init">
+         <!-- XXX untested and most likely broken in 2.5
+         <copy todir="${dist.dir}" preservelastmodified="true">
+             <fileset dir="${jython.base.dir}" includes="Tools/**/*.py" />

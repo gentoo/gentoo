@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		A port of the Java library by Terrence Parr.
+	</longdescription>
+	<use>
+		<flag name="quasi-quotation">Build module providing a quasi-quoter</flag>
+		<flag name="syb-with-class">Generic instances for TOSElem</flag>
+	</use>
+</pkgmetadata>

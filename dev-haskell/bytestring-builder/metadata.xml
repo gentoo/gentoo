@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		This is the bytestring builder that is debuting in bytestring-0.10.4.0, which
+		should be shipping with GHC 7.8, probably late in 2013.  This builder has
+		several nice simplifications and improvements, and more out-of-box
+		functionality than the older blaze-builder.
+		
+		Note that this package detects which version of bytestring you are compiling
+		against,  and if you are compiling against bytestring-0.10.4 or later, will
+		be an empty package.
+		
+		This package lets the new interface and implementation be used with most
+		older compilers without upgrading bytestring, which can be rather
+		problematic.  In conjunction with blaze-builder-0.4 or later,  which
+		offers an implementation of blaze-builder in terms of bytestring-builder,
+		this should let most people try the new interface and implementation without
+		causing undue compatibility problems with packages that depend on
+		blaze-builder.
+		
+		GHC 7.6 did debut an almost identical interface and implementation, but with
+		slightly different module names and organization.   Trying to re-export/rename
+		the builder provided with 7.6 did not turn out to be very practical,  because
+		this interface includes new functions that rely on Builder internals,
+		which are not exported in 7.6.  Furthermore, these module names should be
+		deprecated in 7.10.
+	</longdescription>
+</pkgmetadata>

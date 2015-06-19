@@ -1,0 +1,73 @@
+# ChangeLog for net-wireless/rfkill
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/rfkill/ChangeLog,v 1.19 2015/04/29 19:43:59 mrueg Exp $
+
+  29 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -rfkill-0.4.ebuild:
+  Remove old.
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org> rfkill-0.5.ebuild:
+  Stable for arm, wrt bug #474294
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> rfkill-0.5.ebuild:
+  Stable for amd64, wrt bug #474294
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> rfkill-0.5.ebuild:
+  Stable for x86, wrt bug #474294
+
+*rfkill-0.5 (04 May 2013)
+
+  04 May 2013; Rick Farina <zerochaos@gentoo.org> +rfkill-0.5.ebuild:
+  new NFC support
+
+  02 Feb 2013; Rick Farina <zerochaos@gentoo.org> rfkill-0.4.ebuild:
+  upstream moved locations, and I prefer XZ while we are at it
+
+  25 Nov 2012; Rick Farina <zerochaos@gentoo.org> -rfkill-0.1.ebuild,
+  -rfkill-0.2.ebuild:
+  remove old unstable ebuilds
+
+  25 Nov 2012; Rick Farina <zerochaos@gentoo.org> rfkill-0.4.ebuild:
+  fix verbose build by adding V=1 wrt bug #444722
+
+  20 Nov 2012; Rick Farina <zerochaos@gentoo.org> metadata.xml:
+  adding myself as maintainer to assist with bugs
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+  28 Sep 2012; Tony Vroon <chainsaw@gentoo.org> rfkill-0.1.ebuild,
+  rfkill-0.2.ebuild, rfkill-0.4.ebuild:
+  Clarify that this is ISC-licensed, as-is is not sufficiently precise. As per
+  Ulrich Müller in bug #436452.
+
+  05 Aug 2012; Anthony G. Basile <blueness@gentoo.org> rfkill-0.4.ebuild:
+  Keyword ~arm
+
+  31 May 2012; Anthony G. Basile <blueness@gentoo.org> rfkill-0.4.ebuild:
+  Keyword ~mips
+
+  07 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> rfkill-0.4.ebuild:
+  x86 stable wrt bug #339396
+
+  03 Oct 2010; Markos Chandras <hwoarang@gentoo.org> rfkill-0.4.ebuild:
+  Stable on amd64 wrt bug #339396
+
+*rfkill-0.4 (06 Feb 2010)
+
+  06 Feb 2010; <chainsaw@gentoo.org> +rfkill-0.4.ebuild:
+  Major documentation updates and minor bugfixes.
+
+  01 Dec 2009; Christian Faulhammer <fauli@gentoo.org> rfkill-0.2.ebuild:
+  add ~x86, bug 293143
+
+*rfkill-0.2 (26 Aug 2009)
+
+  26 Aug 2009; <chainsaw@gentoo.org> +rfkill-0.2.ebuild:
+  New version, adds a manpage, support for the GPS device type and for
+  block/unblock all switches.
+
+*rfkill-0.1 (21 Jul 2009)
+
+  21 Jul 2009; <chainsaw@gentoo.org> +rfkill-0.1.ebuild, +metadata.xml:
+  Initial commit, ebuild by me. From the announcement on linux-wireless by
+  Johannes Berg; HOMEPAGE to surface soon.

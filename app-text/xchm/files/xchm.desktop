@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=xCHM
+Comment=Compiled HTML Help (CHM) file viewer
+Comment[fr]=Visionneuse de fichiers Compiled HTML Help (CHM)
+Icon=xchm
+TryExec=xchm
+Exec=xchm %f
+MimeType=application/x-chm;
+Categories=Office;Viewer;

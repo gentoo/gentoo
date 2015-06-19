@@ -1,0 +1,84 @@
+# ChangeLog for x11-misc/sunflower
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/sunflower/ChangeLog,v 1.16 2014/12/14 21:44:52 hasufell Exp $
+
+  14 Dec 2014; Julian Ospald <hasufell@gentoo.org>
+  -sunflower-0.1_alpha56.ebuild, -sunflower-0.1_alpha57.ebuild,
+  -sunflower-0.1_alpha58.ebuild, sunflower-0.2_alpha59.ebuild:
+  update HOMEPAGE, rm old
+
+  14 Dec 2014; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  New line at end of file.
+
+  24 Aug 2014; Julian Ospald <hasufell@gentoo.org>
+  sunflower-0.2_alpha59.ebuild, metadata.xml:
+  update HOMEPAGE and metadata.xml
+
+*sunflower-0.2_alpha59 (24 Aug 2014)
+
+  24 Aug 2014; Julian Ospald <hasufell@gentoo.org>
+  +sunflower-0.2_alpha59.ebuild:
+  version bump
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> sunflower-0.1_alpha56.ebuild,
+  sunflower-0.1_alpha57.ebuild, sunflower-0.1_alpha58.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+*sunflower-0.1_alpha58 (06 Mar 2014)
+
+  06 Mar 2014; Julian Ospald <hasufell@gentoo.org>
+  +sunflower-0.1_alpha58.ebuild:
+  version bump
+
+*sunflower-0.1_alpha57 (27 Jan 2014)
+
+  27 Jan 2014; Julian Ospald <hasufell@gentoo.org>
+  +sunflower-0.1_alpha57.ebuild:
+  version bump
+
+  30 Oct 2013; Julian Ospald <hasufell@gentoo.org>
+  -sunflower-0.1_alpha53.ebuild, -sunflower-0.1_alpha54.ebuild,
+  -sunflower-0.1_alpha55.ebuild, sunflower-0.1_alpha56.ebuild:
+  add missing dep wrt #489424, remove old
+
+*sunflower-0.1_alpha56 (14 Jun 2013)
+
+  14 Jun 2013; Julian Ospald <hasufell@gentoo.org>
+  +sunflower-0.1_alpha56.ebuild:
+  version bump
+
+  29 May 2013; Julian Ospald <hasufell@gentoo.org> sunflower-0.1_alpha53.ebuild,
+  sunflower-0.1_alpha54.ebuild, sunflower-0.1_alpha55.ebuild:
+  update REQUIRED_USE to include PYTHON_REQUIRED_USE
+
+*sunflower-0.1_alpha55 (14 Apr 2013)
+
+  14 Apr 2013; Julian Ospald <hasufell@gentoo.org>
+  +sunflower-0.1_alpha55.ebuild:
+  version bump
+
+*sunflower-0.1_alpha54 (30 Mar 2013)
+
+  30 Mar 2013; Julian Ospald <hasufell@gentoo.org>
+  +sunflower-0.1_alpha54.ebuild:
+  version bump, improve LINGUAS handling
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*sunflower-0.1_alpha53 (05 Feb 2013)
+
+  05 Feb 2013; Julian Ospald <hasufell@gentoo.org>
+  -sunflower-0.1_alpha52.ebuild, +sunflower-0.1_alpha53.ebuild:
+  version bump, remove old
+
+  31 Jan 2013; Julian Ospald <hasufell@gentoo.org>
+  sunflower-0.1_alpha52.ebuild:
+  update icon
+
+*sunflower-0.1_alpha52 (31 Jan 2013)
+
+  31 Jan 2013; Julian Ospald <hasufell@gentoo.org>
+  +sunflower-0.1_alpha52.ebuild, +files/sunflower, +metadata.xml:
+  initial import with Henrique Dias wrt #454600

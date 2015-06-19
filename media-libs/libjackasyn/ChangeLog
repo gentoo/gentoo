@@ -1,0 +1,87 @@
+# ChangeLog for media-libs/libjackasyn
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libjackasyn/ChangeLog,v 1.22 2015/05/06 10:00:10 mrueg Exp $
+
+  06 May 2015; Manuel Rüger <mrueg@gentoo.org> -libjackasyn-0.10.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> libjackasyn-0.10.ebuild,
+  libjackasyn-0.13.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  09 Jun 2012; Zac Medico <zmedico@gentoo.org> libjackasyn-0.10.ebuild:
+  inherit multilib for get_libdir
+
+  30 Jan 2010; Raúl Porcel <armin76@gentoo.org> libjackasyn-0.13.ebuild:
+  sparc stable wrt #216897
+
+  02 Jan 2010; Markos Chandras <hwoarang@gentoo.org>
+  libjackasyn-0.13.ebuild:
+  Stable on amd64 wrt bug #216897
+
+  02 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  libjackasyn-0.13.ebuild:
+  stable x86, bug 216897
+
+  20 Apr 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/libjackasyn-0.13-tests.patch, libjackasyn-0.13.ebuild:
+  fix building test
+
+  02 Jul 2007; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Hand to newly-born proaudio herd.
+
+  13 Feb 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/libjackasyn-0.13-execprefix.patch, libjackasyn-0.13.ebuild:
+  Fix to add exec_prefix support, bug #166721
+
+*libjackasyn-0.13 (04 Feb 2007)
+
+  04 Feb 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/libjackasyn-0.13-libdir.patch, +files/libjackasyn-0.13-pic.patch,
+  +files/libjackasyn-0.13-qa.patch, +libjackasyn-0.13.ebuild:
+  Version bump
+
+  03 Feb 2007; Steve Dibb <beandog@gentoo.org> libjackasyn-0.10.ebuild:
+  Update src_uri
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libjackasyn-0.10.ebuild, -libjackasyn-0.8.ebuild:
+  Stable sparc.
+
+  22 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libjackasyn-0.10.ebuild:
+  Fix bug #71506 and added to ~sparc.
+
+  07 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/libjackasyn-0.10-destdir.patch:
+  Patched Makefile for multilib support.
+
+  01 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libjackasyn-0.10.ebuild:
+  Stable amd64.
+
+  24 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libjackasyn-0.10.ebuild:
+  Fixed MAKEOPTS QA issue.  Added ~amd64.
+
+  13 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libjackasyn-0.10.ebuild, libjackasyn-0.8.ebuild:
+  Getting rid of virtual/jack.
+
+  26 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libjackasyn-0.10.ebuild, libjackasyn-0.8.ebuild:
+  Removed implicit S=.  Stable on x86.
+
+  22 Jan 2004; <torbenh@gentoo.org> libjackasyn-0.10.ebuild,
+  libjackasyn-0.8.ebuild:
+  Fixed wrong include file.
+
+*libjackasyn-0.10 (07 Jan 2004)
+
+  07 Jan 2004; Martin Holzer <mholzer@gentoo.org> libjackasyn-0.10.ebuild:
+  Version bumped. Closes 36967
+
+*libjackasyn-0.8 (06 Jun 2003)
+
+  06 Jun 2003; robh <robh@gentoo.org> libjackasyn-0.8.ebuild:
+  Inital version. Thanks to Jonathan Kraut, closes #22221

@@ -1,0 +1,29 @@
+# ChangeLog for net-analyzer/cbm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cbm/ChangeLog,v 1.4 2014/07/10 20:40:23 jer Exp $
+
+*cbm-0.1-r1 (10 Jul 2014)
+
+  10 Jul 2014; Jeroen Roovers <jer@gentoo.org> -cbm-0.1.ebuild,
+  +cbm-0.1-r1.ebuild, +files/cbm-0.1-gcc-4.3.patch,
+  +files/cbm-0.1-gcc-4.7.patch, +files/cbm-0.1-headers-status-line.patch,
+  +files/cbm-0.1-tinfo.patch, -files/cbm-gcc-4.3.patch,
+  -files/cbm-gcc-4.7.patch:
+  EAPI bump. Add Debian patch for missing headers and status line. Fix patch
+  naming. Fix building against sys-libs/ncurses[tinfo].
+
+  07 Nov 2012; Jeroen Roovers <jer@gentoo.org> files/cbm-gcc-4.3.patch,
+  files/cbm-gcc-4.7.patch:
+  Clean up patches.
+
+  03 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> cbm-0.1.ebuild,
+  +files/cbm-gcc-4.7.patch:
+  Fix building with GCC 4.7 wrt bug #441030. Thanks to Diego Elio Pettenò for
+  discovering this issue
+
+*cbm-0.1 (23 Oct 2012)
+
+  23 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> +cbm-0.1.ebuild,
+  +files/cbm-gcc-4.3.patch, +metadata.xml:
+  Initial commit from sunrise overlay wrt bug #246005
+

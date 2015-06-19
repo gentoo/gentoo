@@ -1,0 +1,28 @@
+# ChangeLog for x11-misc/set_opacity
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/set_opacity/ChangeLog,v 1.5 2012/08/30 18:30:25 pinkbyte Exp $
+
+  30 Aug 2012; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Set correct email address, drop proxy maintainer
+
+  11 Jun 2012; Maxim Koltsov <maksbotan@gentoo.org> metadata.xml:
+  Change maintainers' email in metadata
+
+  14 Feb 2012; Ulrich Müller <ulm@gentoo.org> set_opacity-1.0.ebuild,
+  set_opacity-9999.ebuild:
+  QA: Fix ebuild header, bug 398773.
+
+*set_opacity-9999 (21 Jul 2011)
+
+  21 Jul 2011; Maxim Koltsov (maksbotan) <maksbotan@gentoo.org>
+  set_opacity-1.0.ebuild, +set_opacity-9999.ebuild:
+  Change set_opacity-1.0 to use new homepage and SRC_URI, updated to EAPI="4",
+  added live ebuild. See bug #276913
+
+*set_opacity-1.0 (18 Jul 2011)
+
+  18 Jul 2011; Maxim Koltsov (maksbotan) <maksbotan@gentoo.org>
+  +set_opacity-1.0.ebuild, +files/makefile.patch, +metadata.xml:
+  Added ebuild for 1.0 version with pinkbyte@mail.ru as maintainer, bug
+  #276913
+

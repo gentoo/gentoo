@@ -1,0 +1,75 @@
+# ChangeLog for net-misc/nemesis
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/nemesis/ChangeLog,v 1.22 2012/12/11 09:17:07 ulm Exp $
+
+  11 Dec 2012; Ulrich Müller <ulm@gentoo.org> nemesis-1.4.ebuild,
+  nemesis-1.4-r1.ebuild:
+  Fix LICENSE, 3-clause BSD according to LICENSE file, bug 446542. Thanks to
+  rainbow <rainbow@irh.it>.
+
+  14 Jun 2012; Agostino Sarubbo <ago@gentoo.org> -nemesis-1.4_beta3.ebuild:
+  Remove old
+
+  14 Jun 2012; Agostino Sarubbo <ago@gentoo.org> nemesis-1.4.ebuild:
+  stable for amd64
+
+  03 Apr 2012; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Fix metadata typo.
+
+*nemesis-1.4-r1 (23 Mar 2012)
+
+  23 Mar 2012; Markos Chandras <hwoarang@gentoo.org>
+  +files/nemesis-1.4-fileio.patch, +files/nemesis-1.4-libnet-1.0.patch,
+  +files/nemesis-1.4-prototcp.patch, +nemesis-1.4-r1.ebuild, metadata.xml:
+  Revbump. Multiple fixes. EAPI4. Bug #408023. Thanks to rainbow
+  <rainbow@irh.it>
+
+  25 Jan 2008; Raúl Porcel <armin76@gentoo.org> nemesis-1.4.ebuild:
+  alpha/sparc/x86 stable
+
+  04 Feb 2007; Jason Wever <weeve@gentoo.org> +files/1.4-libnet-1.0.patch:
+  Add in patch, fixes bug #165255.
+
+*nemesis-1.4 (03 Feb 2007)
+
+  03 Feb 2007; Jason Wever <weeve@gentoo.org> +nemesis-1.4.ebuild:
+  Version bump.
+
+  20 Feb 2006; Markus Ullmann <jokey@gentoo.org> nemesis-1.4_beta3.ebuild:
+  Removing virtual/libpcap wrt bug #117898
+
+  30 Jan 2005; Daniel Black <dragonheart@gentoo.org> nemesis-1.4_beta3.ebuild:
+  Transition dependancy from net-libs/libpcap to virtual/libpcap
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> nemesis-1.4_beta3.ebuild:
+  change virtual/glibc to virtual/libc
+
+  06 Jun 2004; Daniel Black <dragonheart@gentoo.org> nemesis-1.4_beta3.ebuild:
+  QA - IUSE
+
+  06 May 2004; Daniel Black <dragonheart@gentoo.org>
+  -files/nemesis-1.32-gentoo.diff, -nemesis-1.32.ebuild:
+  Removed old version to fix bug #50070 - thanks to James Cook
+  <james.cook@utoronto.ca>
+
+*nemesis-1.4_beta3 (21 Aug 2003)
+
+  21 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Patch to compile against SLOT-ed libnet-1.0.x #17772 + version bump.
+
+*nemesis-1.32 (23 Apr 2002)
+
+  25 Mar 2003; Aron Griffis <agriffis@gentoo.org> nemesis-1.32.ebuild:
+  Add ~alpha to KEYWORDS
+
+  07 Mar 2003; Martin Holzer <mholzer@gentoo.org> nemesis-1.32.ebuild :
+  Corrected Homepage. Fixed Depend to libnet-1.0*. Closes #17017.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+  08 Jul 2002; phoen][x <phoenix@gentoo.org> nemesis-1.32.ebuild :
+  Added KEYWORDS, LICENSE, SLOT.
+
+  23 Apr 2002; Donny Davies <woodchip@gentoo.org> :  
+  Initial package, thanks goto Alexander Gretencord <arutha@gmx.de>
+  for the contribution.  Thanks Alexander! ;)

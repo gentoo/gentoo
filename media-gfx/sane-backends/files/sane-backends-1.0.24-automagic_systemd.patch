@@ -1,0 +1,40 @@
+diff --git a/configure.in b/configure.in
+index 4365868..7413646 100644
+--- a/configure.in
++++ b/configure.in
+@@ -344,17 +344,24 @@ dnl 	$as_echo "in order to autodetect network scanners in kodakaio."
+ dnl 	with_cups="no"
+ dnl fi
+ 
+-dnl added by llagendijk 12/7/2012 to detect systemd for saned
+-$as_echo_n "Checking for systemd..."
+-if test -e /usr/include/systemd/sd-daemon.h ; then
+-    AC_DEFINE(HAVE_SYSTEMD, 1, [Is /usr/include/systemd/sd-daemon.h available?])
+-    with_systemd="yes"
+-    SYSTEMD_LIBS=" -lsystemd-daemon"
+-    AC_SUBST(SYSTEMD_LIBS)
+-    $as_echo "yes"
+-else
+-    with_systemd="no"
+-    $as_echo "no"
++AC_ARG_WITH(systemd,
++	AC_HELP_STRING([--with-systemd], [enable systemd support @<:@default=yes@:>@]))
++if test "x$with_systemd" != xno ; then
++    dnl added by llagendijk 12/7/2012 to detect systemd for saned
++    $as_echo_n "Checking for systemd..."
++    if test -e /usr/include/systemd/sd-daemon.h ; then
++	AC_DEFINE(HAVE_SYSTEMD, 1, [Is /usr/include/systemd/sd-daemon.h available?])
++	have_systemd="yes"
++	SYSTEMD_LIBS=" -lsystemd-daemon"
++	AC_SUBST(SYSTEMD_LIBS)
++	$as_echo "yes"
++    else
++	have_systemd="no"
++	$as_echo "no"
++	if test "x$with_systemd" = xyes; then
++	    AC_MSG_ERROR([Systemd support was requested but systemd was not found])
++	fi
++    fi
+ fi
+ 
+ dnl ***********

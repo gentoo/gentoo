@@ -1,0 +1,18 @@
+# ChangeLog for app-dicts/sword-ukrainian
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/sword-ukrainian/ChangeLog,v 1.3 2014/01/06 00:53:05 creffett Exp $
+
+  06 Jan 2014; Chris Reffett <creffett@gentoo.org> -sword-ukrainian-1.2.ebuild,
+  sword-ukrainian-1.3.ebuild:
+  Remove old, EAPI bump
+
+*sword-ukrainian-1.3 (10 Jan 2009)
+
+  10 Jan 2009; Steve Dibb <beandog@gentoo.org> +sword-ukrainian-1.3.ebuild:
+  Version bump, bug 251642
+
+*sword-ukrainian-1.2 (17 May 2008)
+
+  17 May 2008; Steve Dibb <beandog@gentoo.org> +metadata.xml,
+  +sword-ukrainian-1.2.ebuild:
+  Initial commit

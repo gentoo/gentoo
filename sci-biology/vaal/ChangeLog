@@ -1,0 +1,79 @@
+# ChangeLog for sci-biology/vaal
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/vaal/ChangeLog,v 1.18 2015/04/07 14:35:35 jlec Exp $
+
+  24 Mar 2015; Justin Lecher <jlec@gentoo.org> -vaal-1.6.ebuild:
+  Drop old
+
+  24 Mar 2015; Agostino Sarubbo <ago@gentoo.org> vaal-46233.ebuild:
+  Stable for amd64, wrt bug #543404
+
+  15 Mar 2015; Justin Lecher <jlec@gentoo.org> -vaal-42179.ebuild,
+  -vaal-45166.ebuild:
+  Drop old
+
+  12 Nov 2013; Justin Lecher <jlec@gentoo.org> vaal-1.6.ebuild,
+  vaal-42179.ebuild, vaal-45166.ebuild, vaal-46233.ebuild:
+  Drop x86 as upstream gives no support and types are not easily fixable,
+  #458488, #472088 & #488550
+
+*vaal-46233 (02 Jun 2013)
+
+  02 Jun 2013; Justin Lecher <jlec@gentoo.org> +vaal-46233.ebuild:
+  Version Bump
+
+  12 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+*vaal-45166 (20 Feb 2013)
+
+  20 Feb 2013; Justin Lecher <jlec@gentoo.org> +vaal-45166.ebuild,
+  metadata.xml:
+  Version Bump
+
+*vaal-42179 (25 Jun 2012)
+
+  25 Jun 2012; Justin Lecher <jlec@gentoo.org> +vaal-42179.ebuild:
+  Version Bump
+
+  25 Jun 2012; Justin Lecher <jlec@gentoo.org> -vaal-1.2-r1.ebuild,
+  vaal-1.6.ebuild, files/vaal-1.6-respect-flags.patch:
+  Drop old, #309127; Handle openmp, don't install license
+
+  25 Jun 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  +files/vaal-1.6-gcc47.patch, files/vaal-1.6-respect-flags.patch,
+  vaal-1.6.ebuild:
+  Fix building with gcc-4.7 wrt #423497 by Diego Elio Pettenò
+  <flameeyes@gentoo.org>, drop -O3 -ggdb from CXXFLAGS
+
+  11 Feb 2011; Markos Chandras <hwoarang@gentoo.org> vaal-1.6.ebuild:
+  Stable on amd64 wrt bug #353572
+
+  24 Sep 2010; Andrey Kislyuk <weaver@gentoo.org> vaal-1.6.ebuild:
+  Drop x86 from keywords
+
+*vaal-1.6 (20 Sep 2010)
+
+  20 Sep 2010; Andrey Kislyuk <weaver@gentoo.org> +vaal-1.6.ebuild,
+  +files/vaal-1.6-respect-flags.patch:
+  Version bump. Addresses boost problems and compilation issues
+
+*vaal-1.2-r1 (14 Feb 2010)
+
+  14 Feb 2010; Andrey Kislyuk <weaver@gentoo.org>
+  +files/vaal-1.2-as-needed.patch, +files/vaal-1.2-respect-flags.patch,
+  -vaal-1.2.ebuild, +vaal-1.2-r1.ebuild:
+  Apply patches, fix bug 294738 and move binaries to libexec
+
+  12 Nov 2009; Andrey Kislyuk <weaver@gentoo.org> vaal-1.2.ebuild:
+  Remove hardcoded version in SRC_URI
+
+  12 Nov 2009; Andrey Kislyuk <weaver@gentoo.org>
+  +files/vaal-1.2-gcc-x86-no-autocast.patch, vaal-1.2.ebuild:
+  Add patch for bug 279087
+
+*vaal-1.2 (07 Jul 2009)
+
+  07 Jul 2009; Andrey Kislyuk <weaver@gentoo.org> +metadata.xml,
+  +vaal-1.2.ebuild:
+  New package, ebuild written by me

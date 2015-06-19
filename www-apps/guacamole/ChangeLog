@@ -1,0 +1,65 @@
+# ChangeLog for www-apps/guacamole
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/guacamole/ChangeLog,v 1.13 2015/06/13 09:29:48 nativemad Exp $
+
+*guacamole-0.9.7 (13 Jun 2015)
+
+  13 Jun 2015; Andreas Schuerch <nativemad@gentoo.org> +guacamole-0.9.7.ebuild:
+  version bump, license change, postgres and noauth support
+
+*guacamole-0.9.3 (28 Oct 2014)
+
+  28 Oct 2014; Andreas Schuerch <nativemad@gentoo.org> +guacamole-0.9.3.ebuild:
+  version bump
+
+*guacamole-0.9.2 (12 Aug 2014)
+
+  12 Aug 2014; Andreas Schuerch <nativemad@gentoo.org> +guacamole-0.9.2.ebuild:
+  version bump
+
+*guacamole-0.9.0 (03 May 2014)
+
+  03 May 2014; Andreas Schuerch <nativemad@gentoo.org> +guacamole-0.9.0.ebuild:
+  version bump.
+
+  25 Feb 2014; Andreas Schuerch <nativemad@gentoo.org> -guacamole-0.6.2.ebuild,
+  -guacamole-0.7.0.ebuild, -guacamole-0.8.0.ebuild:
+  deleted old ebuilds. see bug 497262
+
+*guacamole-0.8.3 (26 Nov 2013)
+
+  26 Nov 2013; Andreas Schuerch <nativemad@gentoo.org> guacamole-0.6.2.ebuild,
+  +guacamole-0.8.3.ebuild:
+  version bump. Added ldap backend and depend on the new guacamole-server
+  instead of guacd and its libs. Also quoted so variables on 0.6.2 to make
+  repoman happy.
+
+  14 Aug 2013; Patrick Lauer <patrick@gentoo.org> guacamole-0.6.2.ebuild:
+  Whitespace
+
+*guacamole-0.8.0 (28 Apr 2013)
+
+  28 Apr 2013; Andreas Schuerch <nativemad@gentoo.org> +guacamole-0.8.0.ebuild:
+  new ebuild for 0.8.0
+
+  28 Apr 2013; Andreas Schuerch <nativemad@gentoo.org> guacamole-0.6.2.ebuild,
+  guacamole-0.7.0.ebuild:
+  mvn-config corrected again... worked with FEATURES=userpriv
+
+  27 Apr 2013; Andreas Schuerch <nativemad@gentoo.org> guacamole-0.6.2.ebuild,
+  guacamole-0.7.0.ebuild:
+  mvn-config-path corrected, see bug 466486
+
+  06 Dec 2012; Andreas Schuerch <nativemad@gentoo.org> guacamole-0.7.0.ebuild:
+  removed some nasty stuff and added some elog about it
+
+*guacamole-0.7.0 (06 Dec 2012)
+
+  06 Dec 2012; Andreas Schuerch <nativemad@gentoo.org> +guacamole-0.7.0.ebuild:
+  version bump
+
+*guacamole-0.6.2 (10 Nov 2012)
+
+  10 Nov 2012; Andreas Schuerch <nativemad@gentoo.org> +guacamole-0.6.2.ebuild,
+  +metadata.xml:
+  New Ebuild for guacamole. Written by me.

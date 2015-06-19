@@ -1,0 +1,93 @@
+# ChangeLog for dev-perl/Readonly
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Readonly/ChangeLog,v 1.27 2015/06/13 21:56:17 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org> Readonly-2.0.0.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+  22 Feb 2015; Andreas K. Huettel <dilfridge@gentoo.org> Readonly-2.0.0.ebuild:
+  Add missing deps
+
+*Readonly-2.0.0 (20 Feb 2015)
+
+  20 Feb 2015; Mikle Kolyada <zlogene@gentoo.org> +Readonly-2.0.0.ebuild:
+  Version bump
+
+  31 Jan 2015; Mikle Kolyada <zlogene@gentoo.org> Readonly-1.30.0-r1.ebuild:
+  Add ~x86-fbsd keyword
+
+*Readonly-1.30.0-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Readonly-1.30.0-r1.ebuild, -Readonly-1.30.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes
+  present and revbump helps stable systems to keep from dieing on perl-5.18
+  upgrade
+
+  26 May 2014; Jeroen Roovers <jer@gentoo.org> Readonly-1.30.0.ebuild:
+  Stable for HPPA too.
+
+  18 Mar 2014; Mikle Kolyada <zlogene@gentoo.org> Readonly-1.30.0.ebuild:
+  Add ~sh keyword wrt bug #484458
+
+  03 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> Readonly-1.30.0.ebuild:
+  Add ~s390 wrt bug #484456
+
+  07 Oct 2013; Sergey Popov <pinkbyte@gentoo.org> Readonly-1.30.0.ebuild:
+  Add ~arm keyword, wrt bug #484458
+
+  06 Oct 2013; Mikle Kolyada <zlogene@gentoo.org> Readonly-1.30.0.ebuild:
+  added ~ppc64 keyword wrt bug #484458
+
+  16 Sep 2013; Mikle Kolyada <zlogene@gentoo.org> Readonly-1.30.0.ebuild:
+  added ~ia64 keyword wrt bug #484458
+
+  13 Sep 2013; Mikle Kolyada <zlogene@gentoo.org> Readonly-1.30.0.ebuild:
+  added ~alpha keyword
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org> Readonly-1.30.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  30 Nov 2011; Jeroen Roovers <jer@gentoo.org> Readonly-1.30.0.ebuild:
+  Marked ~hppa (Dakon).
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Readonly-1.03.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Readonly-1.30.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Readonly-1.30.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org> +Readonly-1.30.0.ebuild:
+  Change version scheme
+
+  11 Jan 2010; Fabian Groffen <grobian@gentoo.org> Readonly-1.03.ebuild:
+  Transfer Prefix keywords
+
+  01 Mar 2009; Tiago Cunha <tcunha@gentoo.org> Readonly-1.03.ebuild:
+  stable amd64, bug 260621
+
+  01 Mar 2009; nixnut <nixnut@gentoo.org> Readonly-1.03.ebuild:
+  ppc stable #260621
+
+  17 Jul 2008; Raúl Porcel <armin76@gentoo.org> Readonly-1.03.ebuild:
+  sparc/x86 stable
+
+  23 May 2008; Samuli Suominen <drac@gentoo.org> Readonly-1.03.ebuild:
+  ~amd64 wrt #219164
+
+  17 May 2008; nixnut <nixnut@gentoo.org> Readonly-1.03.ebuild:
+  Added ~ppc wrt bug 219164
+
+  24 Apr 2008; Ferris McCormick <fmccor@gentoo.org> Readonly-1.03.ebuild:
+  Add ~sparc, part of Bug #219164, all tests pass.
+
+*Readonly-1.03 (24 Apr 2008)
+
+  24 Apr 2008; Yuval Yaari <yuval@gentoo.org> +metadata.xml,
+  +Readonly-1.03.ebuild:
+  Adding Readonly, dependency for Perl-Critic

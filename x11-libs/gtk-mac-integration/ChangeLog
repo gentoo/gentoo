@@ -1,0 +1,14 @@
+# ChangeLog for x11-libs/gtk-mac-integration
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk-mac-integration/ChangeLog,v 1.2 2014/01/23 21:17:20 grobian Exp $
+
+  23 Jan 2014; Fabian Groffen <grobian@gentoo.org>
+  gtk-mac-integration-2.0.5.ebuild:
+  Depend on virtual/pkgconfig like it was initially, repoman seems to always
+  complain about it, either way
+
+*gtk-mac-integration-2.0.5 (23 Jan 2014)
+
+  23 Jan 2014; Fabian Groffen <grobian@gentoo.org>
+  +gtk-mac-integration-2.0.5.ebuild, +metadata.xml:
+  Initial version, ebuild by me

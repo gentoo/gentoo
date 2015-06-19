@@ -1,0 +1,71 @@
+# ChangeLog for net-analyzer/thc-ipv6
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/thc-ipv6/ChangeLog,v 1.11 2015/06/09 13:07:57 xmw Exp $
+
+*thc-ipv6-2.7 (09 Jun 2015)
+
+  09 Jun 2015; Michael Weber <xmw@gentoo.org> +thc-ipv6-2.7.ebuild:
+  Version bump (thanks Moritz Kick, 546472).
+
+*thc-ipv6-2.5 (30 Jul 2014)
+
+  30 Jul 2014; Michael Weber <xmw@gentoo.org> +thc-ipv6-2.5.ebuild,
+  -files/thc-ipv6-1.4-Makefile.patch, -files/thc-ipv6-1.9-Makefile.patch,
+  -files/thc-ipv6-2.0-Makefile.patch, -thc-ipv6-2.0.ebuild,
+  -thc-ipv6-2.1.ebuild:
+  Version bump, drop old.
+
+*thc-ipv6-2.3 (06 May 2013)
+
+  06 May 2013; Michael Weber <xmw@gentoo.org> +thc-ipv6-2.3.ebuild:
+  Version bump
+
+*thc-ipv6-2.1 (05 Jan 2013)
+
+  05 Jan 2013; Michael Weber <xmw@gentoo.org> -thc-ipv6-1.8.ebuild,
+  -thc-ipv6-1.9.ebuild, +thc-ipv6-2.1.ebuild,
+  +files/thc-ipv6-2.1-Makefile.patch:
+  Version bump (thanks euscan), drop old
+
+*thc-ipv6-2.0 (12 Oct 2012)
+
+  12 Oct 2012; Michael Weber <xmw@gentoo.org> +thc-ipv6-2.0.ebuild,
+  +files/thc-ipv6-2.0-Makefile.patch:
+  Version bump (thanks Anton Bolshakov, bug 437866)
+
+*thc-ipv6-1.9 (09 Jul 2012)
+
+  09 Jul 2012; Michael Weber <xmw@gentoo.org>
+  +files/thc-ipv6-1.9-Makefile.patch, +thc-ipv6-1.9.ebuild,
+  -thc-ipv6-1.4.ebuild, -thc-ipv6-1.6.ebuild:
+  Version bump (bug 425400, by Khayyam), drop old.
+
+*thc-ipv6-1.8 (21 Mar 2012)
+
+  21 Mar 2012; Michael Weber <xmw@gentoo.org> +thc-ipv6-1.8.ebuild:
+  Version bump (bug 409151, thanks rainbow)
+
+*thc-ipv6-1.6 (27 Jul 2011)
+
+  27 Jul 2011; Michael Weber <xmw@gentoo.org> -thc-ipv6-1.2.ebuild,
+  -files/thc-ipv6-1.2-Makefile, -files/thc-ipv6-1.2-header.patch,
+  +thc-ipv6-1.6.ebuild:
+  Version bump
+
+  29 Mar 2011; Mike Frysinger <vapier@gentoo.org> thc-ipv6-1.4.ebuild:
+  Add x86 love #360883 by Andrej Kacian.
+
+*thc-ipv6-1.4 (28 Dec 2010)
+
+  28 Dec 2010; Michael Weber <xmw@gentoo.org> +thc-ipv6-1.4.ebuild,
+  +files/thc-ipv6-1.4-Makefile.patch:
+  Version bump, thanks to Alex Legler <a3li@gentoo.org> for his report on bug
+  #349908.
+
+*thc-ipv6-1.2 (15 Sep 2010)
+
+  15 Sep 2010; Michael Weber <xmw@gentoo.org> +thc-ipv6-1.2.ebuild,
+  +files/thc-ipv6-1.2-Makefile, +files/thc-ipv6-1.2-header.patch,
+  +metadata.xml:
+  Initial import, thanks to Christian Neukirchen <chneukirchen@gmail.com>
+  for the Makefile.

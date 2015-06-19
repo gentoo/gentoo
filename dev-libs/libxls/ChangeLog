@@ -1,0 +1,36 @@
+# ChangeLog for dev-libs/libxls
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libxls/ChangeLog,v 1.9 2014/03/07 00:57:55 creffett Exp $
+
+  07 Mar 2014; Chris Reffett <creffett@gentoo.org> -libxls-0.2.0.ebuild:
+  Remove old
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org> libxls-0.3.0_pre107.ebuild:
+  amd64 stable, bug #500642
+
+  23 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  libxls-0.3.0_pre107.ebuild:
+  x86 stable wrt bug #500642
+
+  07 Feb 2014; Chris Reffett <creffett@gentoo.org> libxls-0.3.0_pre107.ebuild:
+  EAPI bump
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> libxls-0.2.0.ebuild,
+  libxls-0.3.0_pre107.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*libxls-0.3.0_pre107 (30 Jun 2010)
+
+  30 Jun 2010; Justin Lecher <jlec@gentoo.org> +libxls-0.3.0_pre107.ebuild:
+  Version Bump
+
+  03 May 2010; Samuli Suominen <ssuominen@gentoo.org> libxls-0.2.0.ebuild:
+  Block <catdoc-0.94.2-r2 wrt #314657.
+
+  26 Apr 2010; Markus Meier <maekke@gentoo.org> libxls-0.2.0.ebuild:
+  amd64/x86 stable, bug #309717
+
+*libxls-0.2.0 (05 Jan 2010)
+
+  05 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> +libxls-0.2.0.ebuild:
+  Initial commit.

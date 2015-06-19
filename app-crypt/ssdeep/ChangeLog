@@ -1,0 +1,30 @@
+# ChangeLog for app-crypt/ssdeep
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/ssdeep/ChangeLog,v 1.6 2015/06/13 20:13:05 radhermit Exp $
+
+*ssdeep-2.13 (13 Jun 2015)
+
+  13 Jun 2015; Tim Harder <radhermit@gentoo.org> +ssdeep-2.13.ebuild:
+  Version bump.
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  16 Mar 2015; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Drop myself as maintainer.
+
+*ssdeep-2.12 (27 Oct 2014)
+
+  27 Oct 2014; Tim Harder <radhermit@gentoo.org> +ssdeep-2.12.ebuild:
+  Version bump.
+
+*ssdeep-2.11.1 (28 Sep 2014)
+
+  28 Sep 2014; Alon Bar-Lev <alonbl@gentoo.org> +ssdeep-2.11.1.ebuild:
+  Version bump, bug#523918
+
+*ssdeep-2.10 (01 Feb 2014)
+
+  01 Feb 2014; Tim Harder <radhermit@gentoo.org> +ssdeep-2.10.ebuild,
+  +files/ssdeep-2.10-shared.patch, +metadata.xml:
+  Initial import (bug #430642 by Evan Teran).

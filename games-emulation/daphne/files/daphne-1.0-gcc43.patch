@@ -1,0 +1,12 @@
+--- Makefile.old        2009-01-19 16:22:07.000000000 +0100
++++ Makefile    2009-01-19 16:22:17.000000000 +0100
+@@ -33,7 +33,7 @@
+ endif
+
+ # Platform specific cflags defined in the Makefile.vars file
+-export CFLAGS = ${PFLAGS} ${DEFINE_STATIC_VLDP} -Wall -Winline -Werror
++export CFLAGS = ${PFLAGS} ${DEFINE_STATIC_VLDP} -Wall -Winline
+
+ OBJS = ldp-out/*.o cpu/*.o game/*.o io/*.o timer/*.o ldp-in/*.o video/*.o \
+        sound/*.o daphne.o cpu/x86/*.o scoreboard/*.o ${VLDP_OBJS}
+

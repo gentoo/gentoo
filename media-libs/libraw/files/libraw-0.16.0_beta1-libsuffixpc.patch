@@ -1,0 +1,24 @@
+diff --git a/cmake/data/libraw.pc.cmake b/cmake/data/libraw.pc.cmake
+index 9d34612..abe6c03 100644
+--- a/cmake/data/libraw.pc.cmake
++++ b/cmake/data/libraw.pc.cmake
+@@ -1,6 +1,6 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+-libdir=${prefix}/lib
++libdir=${prefix}/lib@LIB_SUFFIX@
+ includedir=${prefix}/include/libraw
+ 
+ Name: @PROJECT_NAME@
+diff --git a/cmake/data/libraw_r.pc.cmake b/cmake/data/libraw_r.pc.cmake
+index bf779d9..d74e49a 100644
+--- a/cmake/data/libraw_r.pc.cmake
++++ b/cmake/data/libraw_r.pc.cmake
+@@ -1,6 +1,6 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+-libdir=${prefix}/lib
++libdir=${prefix}/lib@LIB_SUFFIX@
+ includedir=${prefix}/include/libraw
+ 
+ Name: @PROJECT_NAME@

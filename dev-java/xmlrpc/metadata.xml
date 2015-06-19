@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>java</herd>
+<longdescription>
+  Apache XML-RPC (previously known as Helma XML-RPC) is a Java
+  implementation of XML-RPC, a popular protocol that uses XML over
+  HTTP to implement remote procedure calls.
+</longdescription>
+</pkgmetadata>

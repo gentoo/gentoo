@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup test unpack
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
+DESCRIPTION=Hardened kernel sources (kernel series 3.14)
+EAPI=5
+HOMEPAGE=http://www.gentoo.org/proj/en/hardened/
+IUSE=deblob symlink build deblob
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2 !deblob? ( freedist )
+RDEPEND=>=sys-devel/gcc-4.5 !build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
+RESTRICT=binchecks strip
+SLOT=3.14.44
+SRC_URI=mirror://kernel/linux/kernel/v3.x/linux-3.14.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.14-gnu/deblob-3.14 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.14-gnu/deblob-check -> deblob-check-3.14 ) http://dev.gentoo.org/~blueness/hardened-sources/hardened-patches/hardened-patches-3.14.44-1.extras.tar.bz2 mirror://gentoo/genpatches-3.14-50.base.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	4da0de8e87de8d48f4576790a3034be2	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=42b88ba32b8bff4e84e76aa4200ce7b2

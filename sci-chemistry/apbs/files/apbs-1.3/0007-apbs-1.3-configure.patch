@@ -1,0 +1,237 @@
+From b196b6b83a969e6c7ee60e3cdfe03b76eb87bd11 Mon Sep 17 00:00:00 2001
+Message-Id: <b196b6b83a969e6c7ee60e3cdfe03b76eb87bd11.1325691465.git.jlec@gentoo.org>
+In-Reply-To: <89d53654acb88cd8dbd4bc9eb388ca6e76d0d6ea.1325691465.git.jlec@gentoo.org>
+References: <89d53654acb88cd8dbd4bc9eb388ca6e76d0d6ea.1325691465.git.jlec@gentoo.org>
+From: Justin Lecher <jlec@gentoo.org>
+Date: Tue, 3 Jan 2012 20:50:19 +0100
+Subject: [PATCH 07/15] apbs 1.3 configure
+
+---
+ configure.ac |  117 +++++++++++++++------------------------------------------
+ 1 files changed, 31 insertions(+), 86 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 6020fbf..c91abb5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,4 +1,4 @@
+-1.3dnl ##########################################################################
++dnl ##########################################################################
+ dnl APBS -- Adaptive Poisson-Boltzmann Solver
+ dnl 
+ dnl Nathan A. Baker (nathan.baker@pnl.gov)
+@@ -71,6 +71,10 @@ AM_CONFIG_HEADER(src/aaa_inc/apbscfg.h)
+ AC_CONFIG_AUX_DIR(config)
+ AC_PREFIX_DEFAULT(${HOME})
+ AC_CANONICAL_SYSTEM
++LT_INIT
++LT_LANG([Fortran 77])
++AC_F77_DUMMY_MAIN
++AC_F77_LIBRARY_LDFLAGS
+ 
+ dnl ##########################################################################
+ dnl 1. automake initialization (uncomment only if rebuilding Makefile.in's)
+@@ -152,8 +156,7 @@ dnl ##########################################################################
+ AC_MSG_CHECKING([for --enable-python])
+ AC_ARG_ENABLE(
+ 	[python],
+-	AS_HELP_STRING([--enable-python],[enables Python wrapper compilation]),,
+-	[enable_python=no]
++	AS_HELP_STRING([--enable-python],[enables Python wrapper compilation])
+ )
+ if test x"$enable_python" != "xno"; then
+ 	AC_MSG_RESULT([yes])
+@@ -582,6 +585,7 @@ if test x"$enable_python" != "xno"; then
+ 			PY_SHARED="-shared"
+ 			CC="${CC} -fPIC"
+ 			F77="${F77} -fPIC"
++			PY_LDFLAGS="-lpython$PY_VERSION"
+ 			;;
+ 		irix*) 
+ 			PY_SHARED="-shared"
+@@ -717,8 +721,7 @@ if test -z "${USE_FETK}";  then
+ 	AC_MSG_CHECKING([for --disable-maloc-rebuild])
+ 	AC_ARG_ENABLE(
+ 		[maloc-rebuild],
+-		AS_HELP_STRING([--disable-maloc-rebuild], [disable rebuilding maloc]),,
+-		[enable_maloc_rebuild=yes]
++		AS_HELP_STRING([--disable-maloc-rebuild], [disable rebuilding maloc])
+ 	)
+ 	
+ 	if test x"$enable_maloc_rebuild" = "xno"; then
+@@ -981,8 +984,7 @@ dnl # -----------------------
+ AC_MSG_CHECKING([for --disable-tools])
+ AC_ARG_ENABLE(
+ 	[tools],
+-	AS_HELP_STRING([--disable-tools],[disable tool compilation]),,
+-	[enable_tools=yes]
++	AS_HELP_STRING([--disable-tools],[disable tool compilation])
+ )
+ apbs_do_tools=""
+ if test x"$enable_tools" != "xno"; then
+@@ -999,45 +1001,10 @@ AC_SUBST(apbs_do_tools)
+ dnl # -----------------------
+ dnl # HANDLE THE BLAS LIBRARIES
+ dnl # -----------------------
+-blas_lib=""
+-AC_ARG_WITH(
+-	    [blas], 
+-	    AS_HELP_STRING([--with-blas=LDFLAGS], [link to user-specified BLAS (specify flags to pass to ld)])
+-	    )
+-AC_MSG_CHECKING([for --with-blas])
+-if test x"$with_blas" != "xno" -a -n "$with_blas"; then
+-	blas_lib="${with_blas}"
+-	AC_MSG_RESULT([${blas_lib}])
+- 	AC_ARG_WITH(
+-		    [blas_name], 
+-		    AS_HELP_STRING([--with-blas-name=NAME], [name of BLAS library, defaults to blas]),, 
+-		    [with_blas_name="blas"]
+-		    )
+-	if test x"$with_blas_name" != "xno" -a -n "$with_blas_name"; then
+-		blas_name="${with_blas_name}"
+-	fi
+- 	AC_MSG_NOTICE([checking ${blas_name} using ${blas_lib}])
+-	AC_LANG_FORTRAN77
+-	LDFLAGS_SAVE=${LDFLAGS};
+-	CPPFLAGS_SAVE=${CPPFLAGS};
+-	LDFLAGS="-L${maloc_lib_path} ${blas_lib}";
+-	AC_CHECK_LIB(${blas_name},dscal,
+-		[blas_found="yes"],
+-		[blas_found=""],
+-		[${blas_lib} ${socket_lib} ${nsl_lib} ${math_lib}])
+-	LDFLAGS=${LDFLAGS_SAVE};
+-	CPPFLAGS=${CPPFLAGS_SAVE};
+-	if test -z "${blas_found}"; then
+-		AC_MSG_ERROR([BLAS libraries or headers missing:  exiting on error!])
+-	fi
+-	apbs_do_blas=""
+-	AC_LANG_C
+-else
+-	AC_MSG_RESULT([no])
+-	apbs_do_blas="blas"
+-	blas_lib=${contrib_path}/blas/.libs/libapbsblas.a
+-fi
++apbs_do_blas=""
++PKG_CHECK_MODULES([BLAS],[blas])
+ AC_SUBST(apbs_do_blas)
++AC_SUBST([BLAS_LIBS])
+ 
+ dnl # --------------------------------
+ dnl # HANDLE ZLIB COMPILATION
+@@ -1047,13 +1014,12 @@ z_lib=
+ AC_MSG_CHECKING([--disable-zlib])
+ AC_ARG_ENABLE(
+ 	[zlib],
+-	AS_HELP_STRING([--disable-zlib], [disable zlib compilation]),,
+-	[disable_zlib=no]
++	AS_HELP_STRING([--disable-zlib], [disable zlib compilation])
+ )
+-if test x"$disable_zlib" == "xno"; then
++if test x"$disable_zlib" != "xno"; then
+ 	AC_MSG_RESULT([yes])
+ 	zlib="zlib"
+-	z_lib=${contrib_path}/zlib/.libs/libz.a
++	z_lib=-lz
+ 	AC_DEFINE([HAVE_ZLIB], [], [have zlib compression enabled])
+ fi
+ AC_SUBST(zlib)
+@@ -1143,8 +1109,7 @@ dnl # -----------------------
+ AC_MSG_CHECKING([for --enable-abps-quiet])
+ AC_ARG_ENABLE(
+ 	[abps-quiet],
+-	AS_HELP_STRING([--enable-abps-quiet],[prevent APBS diagnostic messages from displaying to stdout]),,
+-	[enable_apbs_quiet=no]
++	AS_HELP_STRING([--enable-abps-quiet],[prevent APBS diagnostic messages from displaying to stdout])
+ )
+ if test x"$enable_apbs_quiet" != "xno"; then
+     AC_MSG_RESULT([yes])
+@@ -1156,36 +1121,7 @@ fi
+ dnl # -----------------------
+ dnl # CHECK WHETHER YOU WANT TO DISABLE OPENMP SUPPORT
+ dnl # -----------------------
+-AC_MSG_CHECKING([for --disable-openmp])
+-AC_ARG_ENABLE(
+-	[openmp],
+-	AS_HELP_STRING([--disable-openmp],[disables OpenMP compiler support]),,
+-	[disable_openmp=yes]
+-)
+-if test x"$disable_openmp" != "xyes"; then
+-    AC_MSG_RESULT([yes])
+-else
+-    AC_MSG_RESULT([no])
+-	if [[ "${CC}" = "icc" ] && [ "${F77}" = "ifort" ]]; then
+-		CFLAGS="${CFLAGS} -openmp"
+-		FFLAGS="${FFLAGS} -openmp -assume cc_omp"
+-		LDFLAGS="${LDFLAGS} -static-intel"
+-	fi
+-	
+-	if [[ "${CC}" = "gcc" ] && [ "${F77}" = "gfortran" ]]; then
+-		gcc_version=`gcc --version`
+-		gcc_complete_version=`echo ${gcc_version} | awk '{printf("%s",$3)}' | awk -F'.' '{print $1$2}'`
+-		
+-		if test ["${gcc_complete_version}" -ge 42]; then
+-			CFLAGS="${CFLAGS} -fopenmp"
+-			FFLAGS="${FFLAGS} -fopenmp"
+-		else
+-		    AC_MSG_RESULT([WARNING])
+-			AC_MSG_RESULT([WARNING Version of gcc/gfortran does not support OpenMP. Disabling.])
+-			AC_MSG_RESULT([WARNING])
+-		fi
+-	fi
+-fi
++AC_OPENMP
+ 
+ dnl # -----------------------
+ dnl # CHECK FOR WINDOWS SPECIFIC LIBRARIES
+@@ -1217,7 +1153,7 @@ dnl # COMPILATIONS
+ dnl # -----------------------
+ top_srcdir="`pwd`"
+ base_list="${FLIBS} ${tree_lib} ${vmetis_lib} ${vor_lib} ${mcx_lib} ${mc_lib} \ 
+-	   ${thread_lib} ${mpi_lib} ${math_lib} ${rl_lib} ${socket_lib} ${nsl_lib} ${blas_lib} ${z_lib}"
++	   ${thread_lib} ${mpi_lib} ${math_lib} ${rl_lib} ${socket_lib} ${nsl_lib} ${BLAS_LIBS} ${z_lib}"
+ 
+ case $host_os in
+ 
+@@ -1284,6 +1220,17 @@ else
+ fi
+ AC_SUBST(apbs_build_libraries)
+ 
++# Additional arguments (and substitutions)
++# Allow the pkg-config directory to be set
++AC_ARG_WITH(pkgconfigdir,
++        AC_HELP_STRING([--with-pkgconfigdir],
++        [Use the specified pkgconfig dir (default is libdir/pkgconfig)]),
++        [pkgconfigdir=${withval}],
++        [pkgconfigdir='${libdir}/pkgconfig'])
++
++AC_SUBST([pkgconfigdir])
++AC_MSG_NOTICE([pkgconfig directory is ${pkgconfigdir}])
++
+ dnl ##########################################################################
+ dnl 11. generate the makefiles
+ dnl ##########################################################################
+@@ -1292,12 +1239,8 @@ AC_CONFIG_FILES([
+     Makefile
+ 
+     contrib/Makefile
+-    contrib/blas/Makefile
+     contrib/pmgZ/Makefile
+     contrib/aqua/Makefile
+-    contrib/opal/Makefile
+-    contrib/opal/ZSI/Makefile
+-    contrib/zlib/Makefile	
+ 	
+     tools/Makefile
+     tools/mesh/Makefile
+@@ -1332,6 +1275,8 @@ AC_CONFIG_FILES([
+     
+     bin/Makefile
+ 
++    apbs.pc:apbs.pc.in
++
+ ])
+ AC_OUTPUT
+ 
+-- 
+1.7.8.2
+

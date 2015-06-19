@@ -1,0 +1,83 @@
+diff -Naur ruby-tcpwrap.orig//tcpwrap.c ruby-tcpwrap//tcpwrap.c
+--- ruby-tcpwrap.orig//tcpwrap.c	2003-08-20 12:30:10.000000000 +0900
++++ ruby-tcpwrap//tcpwrap.c	2010-05-28 08:08:49.000000000 +0900
+@@ -25,7 +25,11 @@
+  */
+ 
+ #include "ruby.h"
++#ifdef HAVE_RUBY_IO_H
++#include "ruby/io.h"
++#else
+ #include "rubyio.h"
++#endif
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+@@ -46,6 +50,10 @@
+ 
+ #define DEFAULT_RFC1413_QUERY_TIMEOUT 30
+ 
++#ifndef RSTRING_PTR
++#define RSTRING_PTR(str) RSTRING(str)->ptr
++#endif
++
+ int allow_severity = 0;
+ int deny_severity = 0;
+ 
+@@ -101,7 +109,7 @@
+     tcp_wrapper_t *tcpd;
+     VALUE sock;
+     int sockfd;
+-    OpenFile *fptr;
++    rb_io_t *fptr;
+     struct sockaddr_storage addr;
+     char client_name[NI_MAXHOST] = STRING_UNKNOWN;
+     char client_addr[NI_MAXHOST] = STRING_UNKNOWN;
+@@ -113,7 +121,11 @@
+  again:
+     sock = rb_funcall(tcpd->server, rb_intern("accept"), 0);
+     GetOpenFile(sock, fptr);
++#ifdef HAVE_RUBY_IO_H
++    sockfd = fileno(fptr->fd);
++#else
+     sockfd = fileno(fptr->f);
++#endif
+     if (getpeername(sockfd, (struct sockaddr*) &addr, &len) < 0)
+ 	rb_sys_fail("getpeername(2)");
+     error = getnameinfo((struct sockaddr*) &addr, len,
+@@ -132,7 +144,7 @@
+     if (tcpd->ident_lookup)
+ 	client_user = ident_id(sockfd, tcpd->ident_timeout);
+ #endif
+-    if (!hosts_ctl(RSTRING(tcpd->daemon)->ptr,
++    if (!hosts_ctl(RSTRING_PTR(tcpd->daemon),
+ 		   client_name,
+ 		   client_addr,
+ 		   (client_user == NULL) ? STRING_UNKNOWN : client_user)) {
+@@ -157,7 +169,7 @@
+     static char hosts_allow[MAXPATHLEN];
+ 
+     Check_SafeStr(s);
+-    snprintf(hosts_allow, sizeof(hosts_allow), "%s", RSTRING(s)->ptr);
++    snprintf(hosts_allow, sizeof(hosts_allow), "%s", RSTRING_PTR(s));
+     if(access(hosts_allow, R_OK) < 0)
+ 	rb_warning("cannot read %s", hosts_allow);
+     hosts_allow_table = hosts_allow;
+@@ -177,7 +189,7 @@
+     static char hosts_deny[MAXPATHLEN];
+ 
+     Check_SafeStr(s);
+-    snprintf(hosts_deny, sizeof(hosts_deny), "%s", RSTRING(s)->ptr);
++    snprintf(hosts_deny, sizeof(hosts_deny), "%s", RSTRING_PTR(s));
+     if(access(hosts_deny, R_OK) < 0)
+ 	rb_warning("cannot read %s", hosts_deny);
+     hosts_deny_table = hosts_deny;
+@@ -196,7 +208,7 @@
+ {
+     if(NIL_P(s)) return STRING_UNKNOWN;
+     Check_Type(s, T_STRING);
+-    return RSTRING(s)->ptr;
++    return RSTRING_PTR(s);
+ }
+ 
+ static VALUE

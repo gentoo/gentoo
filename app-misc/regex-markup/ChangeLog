@@ -1,0 +1,51 @@
+# ChangeLog for app-misc/regex-markup
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/regex-markup/ChangeLog,v 1.15 2012/06/20 12:23:18 jlec Exp $
+
+  20 Jun 2012; Justin Lecher <jlec@gentoo.org> regex-markup-0.10.0.ebuild,
+  +files/regex-markup-0.10.0-locale.patch:
+  Fix missing declerations, #240044; bump EAPI=4; add missing configure options
+
+  11 May 2008; Markus Meier <maekke@gentoo.org> -regex-markup-0.9.0.ebuild:
+  old
+
+  11 May 2008; Markus Meier <maekke@gentoo.org> regex-markup-0.10.0.ebuild:
+  quotes, fix USE=examples, amd64 stable (bug #214940)
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  28 Mar 2008; nixnut <nixnut@gentoo.org> regex-markup-0.10.0.ebuild:
+  Stable on ppc wrt bug 214940
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*regex-markup-0.10.0 (27 Jan 2007)
+
+  27 Jan 2007; Charlie Shepherd <masterdriverz@gentoo.org>
+  +regex-markup-0.10.0.ebuild:
+  Bump to version 0.10.0; thanks to Michael Vogt
+
+  09 Jan 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove retired dev from metadata.xml
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> regex-markup-0.9.0.ebuild:
+  stable on amd64
+
+  21 Jan 2005; Lars Weiler <pylon@gentoo.org> regex-markup-0.9.0.ebuild:
+  Stable on ppc.
+
+  10 Jul 2004; Tom Martin <slarti@gentoo.org> regex-markup-0.9.0.ebuild:
+  Marked ~amd64.
+
+  24 Nov 2003; Chuck Short <zul@gentoo.org> regex-markup-0.9.0.ebuild:
+  Marked stable.
+
+*regex-markup-0.9.0 (12 Oct 2003)
+
+  12 Oct 2003; Chuck Short <zul@gentoo.org> metadata.xml,
+  regex-markup-0.9.0.ebuild:
+  Initial ebuild, originally written by Greg Bowyer <bowyakka@hotmail.com>.
+

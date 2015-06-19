@@ -1,0 +1,15 @@
+# ChangeLog for sys-fs/archivemount
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/archivemount/ChangeLog,v 1.2 2015/02/27 17:42:04 radhermit Exp $
+
+*archivemount-0.8.4 (27 Feb 2015)
+
+  27 Feb 2015; Tim Harder <radhermit@gentoo.org> +archivemount-0.8.4.ebuild:
+  Version bump (bug #541514).
+
+*archivemount-0.8.3 (12 Nov 2013)
+
+  12 Nov 2013; Tim Harder <radhermit@gentoo.org> +archivemount-0.8.3.ebuild,
+  +metadata.xml:
+  Initial import (bug #190000).
+

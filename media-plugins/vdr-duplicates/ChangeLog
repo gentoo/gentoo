@@ -1,0 +1,38 @@
+# ChangeLog for media-plugins/vdr-duplicates
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-duplicates/ChangeLog,v 1.7 2015/02/06 18:59:53 hd_brummy Exp $
+
+*vdr-duplicates-0.0.5-r1 (06 Feb 2015)
+
+  06 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-duplicates-0.0.5-r1.ebuild, +files/duplicates-0.0.5_Makefile-new.diff:
+  patched for new makefile handling
+
+  03 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-duplicates-0.0.4.ebuild:
+  cleanup
+
+  01 Jan 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-duplicates-0.0.5.ebuild:
+  stable amd64 x86
+
+*vdr-duplicates-0.0.5 (22 Dec 2012)
+
+  22 Dec 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-duplicates-0.0.5.ebuild:
+  bump
+
+  01 Jul 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-duplicates-0.0.4.ebuild:
+  fixed broken include on vdr-1.6, bug 422627
+
+  05 Jun 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-duplicates-0.0.4.ebuild:
+  compilefix for >=vdr-1.7.28
+
+*vdr-duplicates-0.0.4 (03 Mar 2012)
+
+  03 Mar 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-duplicates-0.0.4.ebuild, +metadata.xml:
+  initial ebuild, VDR Plugin: show duplicated records
+

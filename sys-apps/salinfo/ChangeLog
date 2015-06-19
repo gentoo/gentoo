@@ -1,0 +1,9 @@
+# ChangeLog for sys-apps/salinfo
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/salinfo/ChangeLog,v 1.1 2014/03/30 06:28:51 vapier Exp $
+
+*salinfo-1.2 (30 Mar 2014)
+
+  30 Mar 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/salinfo-1.2-build.patch, +metadata.xml, +salinfo-1.2.ebuild:
+  New package by me.

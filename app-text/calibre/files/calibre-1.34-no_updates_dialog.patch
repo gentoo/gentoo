@@ -1,0 +1,37 @@
+--- a/src/calibre/gui2/main.py	2014-01-17 11:49:16.000000000 +0800
++++ b/src/calibre/gui2/main.py	2014-01-18 18:28:53.322911344 +0800
+@@ -37,8 +37,9 @@
+                       help=_('Start minimized to system tray.'))
+     parser.add_option('-v', '--verbose', default=0, action='count',
+                       help=_('Ignored, do not use. Present only for legacy reasons'))
+-    parser.add_option('--no-update-check', default=False, action='store_true',
+-            help=_('Do not check for updates'))
++    parser.add_option('--update-check', dest='no_update_check', default=True,
++            action='store_false',
++            help=_('Check for updates'))
+     parser.add_option('--ignore-plugins', default=False, action='store_true',
+             help=_('Ignore custom plugins, useful if you installed a plugin'
+                 ' that is preventing calibre from starting'))
+--- a/src/calibre/gui2/update.py	2014-04-24 22:02:21.000000000 -0400
++++ b/src/calibre/gui2/update.py	2014-05-01 12:02:27.631316967 -0400
+@@ -139,6 +139,8 @@
+             self.update_checker.update_found.connect(self.update_found,
+                     type=Qt.QueuedConnection)
+             self.update_checker.start()
++        else:
++            self.update_checker = None
+ 
+     def recalc_update_label(self, number_of_plugin_updates):
+         self.update_found('%s%s%d'%(self.last_newest_calibre_version, VSEP,
+--- a/src/calibre/gui2/ui.py	2014-04-24 22:02:21.000000000 -0400
++++ b/src/calibre/gui2/ui.py	2014-05-01 11:53:58.371307671 -0400
+@@ -858,7 +858,8 @@
+         if write_settings:
+             self.write_settings()
+         self.check_messages_timer.stop()
+-        self.update_checker.terminate()
++        if self.update_checker is not None:
++            self.update_checker.terminate()
+         self.listener.close()
+         self.job_manager.server.close()
+         self.job_manager.threaded_server.close()

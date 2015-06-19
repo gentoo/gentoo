@@ -1,0 +1,31 @@
+# ChangeLog for sci-mathematics/cvc3
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/cvc3/ChangeLog,v 1.7 2013/05/25 00:52:24 gienah Exp $
+
+  25 May 2013; Mark Wright <gienah@gentoo.org> metadata.xml:
+  fix bug 466776 - typo in email address
+
+  14 Dec 2012; Ulrich Müller <ulm@gentoo.org> cvc3-2.4.1.ebuild:
+  Update LICENSE from as-is to HPND, bug 418455.
+
+  05 Dec 2012; Mark Wright <gienah@gentoo.org> cvc3-2.4.1.ebuild:
+  Remove the static-libs use flag, as upstream do not support static in a way
+  that is suitable for Gentoo (it disables building the shared libraries).
+  EAPI=5 with subslot depends to automatically rebuild cvc3 when isabelle is
+  updated if the isabelle use flag is enabled.
+
+  29 Nov 2012; Mark Wright <gienah@gentoo.org> cvc3-2.4.1.ebuild:
+  Try to fix: bug 442228 - sci-mathematics/cvc3-2.4.1 - QA Notice:
+  //usr/lib/pkgconfig/cvc3.pc installed in ${D}/${D}
+
+  01 Jun 2012; Mark Wright <gienah@gentoo.org> cvc3-2.4.1.ebuild, metadata.xml:
+  Fix bug #418455 - sci-mathematics/cvs3 license issues. Fix typos in sed.
+
+  31 May 2012; Ulrich Müller <ulm@gentoo.org> files/50cvc3-gentoo.el:
+  Remove spurious comment from site-init file for Emacs.
+
+*cvc3-2.4.1 (30 May 2012)
+
+  30 May 2012; Mark Wright <gienah@gentoo.org> +cvc3-2.4.1.ebuild,
+  +files/50cvc3-gentoo.el, +metadata.xml:
+  Add CVC3 automatic theorem prover, with optional Isabelle/HOL integration.

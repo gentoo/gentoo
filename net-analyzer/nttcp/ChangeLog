@@ -1,0 +1,88 @@
+# ChangeLog for net-analyzer/nttcp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nttcp/ChangeLog,v 1.25 2015/01/26 10:14:56 ago Exp $
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> nttcp-1.47-r3.ebuild:
+  Stable for x86, wrt bug #535536
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> nttcp-1.47-r3.ebuild:
+  Stable for amd64, wrt bug #535536
+
+  06 Jan 2015; Jeroen Roovers <jer@gentoo.org>
+  files/nttcp-1.47-format-security.patch:
+  One more for portability.
+
+*nttcp-1.47-r3 (06 Jan 2015)
+
+  06 Jan 2015; Jeroen Roovers <jer@gentoo.org> -nttcp-1.47-r2.ebuild,
+  +nttcp-1.47-r3.ebuild, files/nttcp-1.47-format-security.patch:
+  Fix more format security warnings.
+
+  21 Jul 2014; Jeroen Roovers <jer@gentoo.org>
+  files/nttcp-1.47-format-security.patch:
+  Add newline.
+
+*nttcp-1.47-r2 (15 Jul 2014)
+
+  15 Jul 2014; Jeroen Roovers <jer@gentoo.org> nttcp-1.47-r1.ebuild,
+  +nttcp-1.47-r2.ebuild, +files/nttcp-1.47-format-security.patch:
+  EAPI bump. Add Debian patch.
+
+  24 Jul 2012; Anthony G. Basile <blueness@gentoo.org> nttcp-1.47-r1.ebuild:
+  Keyword ~mips
+
+  22 Jan 2012; Jeroen Roovers <jer@gentoo.org> -nttcp-1.47.ebuild:
+  Old.
+
+  22 Jan 2012; Raúl Porcel <armin76@gentoo.org> nttcp-1.47.ebuild,
+  nttcp-1.47-r1.ebuild:
+  Drop alpha/ia64 keywords
+
+  15 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> nttcp-1.47-r1.ebuild:
+  x86 stable wrt bug #397135
+
+  06 Jan 2012; Agostino Sarubbo <ago@gentoo.org> nttcp-1.47-r1.ebuild:
+  Stable for AMD64, wrt bug #397135
+
+  03 Jan 2012; Jeroen Roovers <jer@gentoo.org> nttcp-1.47-r1.ebuild:
+  Remove empty DEPEND.
+
+*nttcp-1.47-r1 (16 Sep 2010)
+
+  16 Sep 2010; Jeroen Roovers <jer@gentoo.org> +nttcp-1.47-r1.ebuild:
+  Respect LDFLAGS (bug #337552).
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> nttcp-1.47.ebuild:
+  Remove virtual/libc
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  16 Oct 2005; Malcolm Lashley <malc@gentoo.org> nttcp-1.47.ebuild:
+  Stable on amd64 - bug #109462
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> nttcp-1.47.ebuild:
+  Mark 1.47 stable on alpha
+
+  19 Jul 2005; David Holm <dholm@gentoo.org> nttcp-1.47.ebuild:
+  Added to ~ppc.
+
+  15 May 2005; Marcelo Goes <vanquirius@gentoo.org> nttcp-1.47.ebuild:
+  Use toolchain-funcs.eclass instead of gcc.eclass. See bug 92745.
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> nttcp-1.47.ebuild:
+  stable on ia64
+
+  11 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml, nttcp-1.47.ebuild:
+  Marked x86 stable.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> nttcp-1.47.ebuild:
+  change virtual/glibc to virtual/libc
+
+  07 Apr 2004; Travis Tilley <lv@gentoo.org> nttcp-1.47.ebuild:
+  added ~amd64 keyword
+
+*nttcp-1.47 (04 Mar 2004)
+
+  04 Mar 2004; <agriffis@gentoo.org> nttcp-1.47.ebuild:
+  New package for nttcp (New TTCP)

@@ -1,0 +1,35 @@
+--- aacskeys.make.orig	2010-02-16 18:43:07.000000000 -0700
++++ aacskeys.make	2010-02-16 18:44:10.000000000 -0700
+@@ -13,12 +13,12 @@
+   LIBDIR := .
+   OBJDIR := obj/linux/Release
+   OUTDIR := bin/linux
+-  CPPFLAGS := $(DEPFLAGS) -D "_REENTRANT" -I "/usr/local/ssl/include"
+-  CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -Wall -fomit-frame-pointer -O3 -pipe
++  CPPFLAGS := $(DEPFLAGS) -D "_REENTRANT" -I "/usr/ssl/include"
++  CFLAGS += $(CPPFLAGS) $(TARGET_ARCH)
+   CXXFLAGS := $(CFLAGS)
+-  LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -s -L"/usr/local/ssl/lib" -lcrypto
++  LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -L"/usr/ssl/lib" -lcrypto
+   LDDEPS :=
+-  RESFLAGS := -D "_REENTRANT" -I "/usr/local/ssl/include"
++  RESFLAGS := -D "_REENTRANT" -I "/usr/ssl/include"
+   TARGET := aacskeys
+   BLDCMD = $(CXX) -o $(OUTDIR)/$(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(TARGET_ARCH)
+ endif
+@@ -28,12 +28,12 @@
+   LIBDIR := .
+   OBJDIR := obj/linux/Debug
+   OUTDIR := bin/linux/debug
+-  CPPFLAGS := $(DEPFLAGS) -D "_REENTRANT" -D "DEBUG" -I "/usr/local/ssl/include"
+-  CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -g -Wall -pipe
++  CPPFLAGS := $(DEPFLAGS) -D "_REENTRANT" -D "DEBUG" -I "/usr/ssl/include"
++  CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -g
+   CXXFLAGS := $(CFLAGS)
+   LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -L"/usr/local/ssl/lib" -lcrypto
+   LDDEPS :=
+-  RESFLAGS := -D "_REENTRANT" -D "DEBUG" -I "/usr/local/ssl/include"
++  RESFLAGS := -D "_REENTRANT" -D "DEBUG" -I "/usr/ssl/include"
+   TARGET := aacskeys
+   BLDCMD = $(CXX) -o $(OUTDIR)/$(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(TARGET_ARCH)
+ endif

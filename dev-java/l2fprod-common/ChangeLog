@@ -1,0 +1,38 @@
+# ChangeLog for dev-java/l2fprod-common
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/l2fprod-common/ChangeLog,v 1.7 2014/03/08 17:23:06 tomwij Exp $
+
+*l2fprod-common-7.3-r2 (08 Mar 2014)
+
+  08 Mar 2014; Tom Wijsman <TomWij@gentoo.org> +l2fprod-common-7.3-r2.ebuild,
+  -l2fprod-common-7.3-r1.ebuild:
+  Revision bump. EAPI 5.
+
+  13 Apr 2012; Ulrich Müller <ulm@gentoo.org> l2fprod-common-7.3-r1.ebuild:
+  Move EAPI assignment to top of ebuild, bug 411875.
+
+*l2fprod-common-7.3-r1 (21 Jul 2008)
+
+  21 Jul 2008; Serkan Kaba <serkan@gentoo.org>
+  files/l2fprod-common-6.9.1-nodeps.patch, -l2fprod-common-6.9.1.ebuild,
+  -l2fprod-common-7.3.ebuild, +l2fprod-common-7.3-r1.ebuild:
+  Revbump to build sheet component. Remove old version.
+
+*l2fprod-common-7.3 (20 Jul 2008)
+
+  20 Jul 2008; Serkan Kaba <serkan@gentoo.org> +l2fprod-common-7.3.ebuild:
+  Version bump. Fixes bug #216027.
+
+  07 May 2007; Vlastimil Babka <caster@gentoo.org>
+  l2fprod-common-6.9.1.ebuild:
+  Migrate to split-ant.
+
+  03 Dec 2006; Steve Dibb <beandog@gentoo.org> l2fprod-common-6.9.1.ebuild:
+  Add ~amd64, bug 143253
+
+*l2fprod-common-6.9.1 (17 Oct 2006)
+
+  17 Oct 2006; Vlastimil Babka <caster@gentoo.org>
+  +files/l2fprod-common-6.9.1-nodeps.patch, +metadata.xml,
+  +l2fprod-common-6.9.1.ebuild:
+  Initial commit for bug #143253.

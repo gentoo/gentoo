@@ -1,0 +1,31 @@
+commit a29df1ab4ba9f3964ca475c0c727136357ddfb86
+Author: John Lindgren <john.lindgren@aol.com>
+Date:   Mon Apr 2 02:10:32 2012 -0400
+
+    Make check for GMODULE_{CFLAGS,LIBS} unconditional; LADSPA plugin needs it also.
+
+diff --git a/acinclude.m4 b/acinclude.m4
+index 6f6f293..5acb6b7 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -194,6 +194,7 @@ AC_PATH_PROG([WINDRES], [windres])
+ dnl Check for Gtk+/GLib and pals
+ dnl ============================
+ AUD_CHECK_MODULE([GLIB], [glib-2.0], [>= 2.16], [Glib2])
++AUD_CHECK_MODULE([GMODULE], [gmodule-2.0], [>= 2.16], [GModule])
+ AUD_CHECK_MODULE([GTHREAD], [gthread-2.0], [>= 2.16], [GThread])
+ AUD_CHECK_MODULE([PANGO], [pango], [>= 1.20], [Pango])
+ AUD_CHECK_MODULE([CAIRO], [cairo], [>= 1.6], [Cairo])
+diff --git a/configure.ac b/configure.ac
+index d976576..358f841 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -757,8 +757,6 @@ fi
+ 
+ if test "x$enable_amidiplug" = "xyes"; then
+   INPUT_PLUGINS="$INPUT_PLUGINS amidi-plug"
+-  PKG_CHECK_MODULES(GLIB, [glib-2.0 >= 2.6.0],,)
+-  PKG_CHECK_MODULES(GMODULE, [gmodule-2.0 >= 2.6.0],,)
+   AMIDIPLUG_BACKEND_DIR=amidi-plug
+   AC_SUBST(AMIDIPLUG_BACKEND_DIR)
+   if test "x$enable_amidiplug_alsa" = "xauto" -o "x$enable_amidiplug_alsa" = "xyes"; then

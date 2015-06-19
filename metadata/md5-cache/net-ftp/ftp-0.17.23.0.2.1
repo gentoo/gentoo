@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=sys-libs/ncurses-5.2 readline? ( sys-libs/readline ) ssl? ( dev-libs/openssl )
+DESCRIPTION=Standard Linux FTP client
+EAPI=2
+HOMEPAGE=http://www.hcs.harvard.edu/~dholland/computers/netkit.html
+IUSE=ipv6 readline ssl
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=BSD
+RDEPEND=>=sys-libs/ncurses-5.2 readline? ( sys-libs/readline ) ssl? ( dev-libs/openssl )
+SLOT=0
+SRC_URI=ftp://sunsite.unc.edu/pub/Linux/system/network/netkit/netkit-ftp-0.17.tar.gz mirror://debian/pool/main/n/netkit-ftp-ssl/netkit-ftp-ssl_0.17.23+0.2-1.debian.tar.gz mirror://gentoo/netkit-ftp-0.17-patches-2.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=15085c5a34f88000662977f92d3b51b9

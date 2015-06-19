@@ -1,0 +1,37 @@
+--- snd-12.6/configure.ac.orig
++++ snd-12.6/configure.ac
+@@ -1468,7 +1468,7 @@
+         LDSO_FLAGS="-shared"
+         LIBS="$LIBS -lm"
+ 	if test "$ac_cv_header_dlfcn_h" = yes ; then 
+-	  LDFLAGS="$LDFLAGS -ldl" 
++	  LIBS="$LIBS -ldl"
+ 	fi 
+ 	if test "$GCC" = yes ; then
+ 	  SO_FLAGS="-fPIC $SO_FLAGS"
+@@ -1979,7 +1979,7 @@
+ if test "$ac_snd_have_extension_language" = yes ; then
+   if test "$ac_snd_have_gui" = yes ; then
+     if test "$ac_cv_header_pthread_h" = yes ; then
+-      LDFLAGS="$LDFLAGS -lpthread"
++      LIBS="$LIBS -lpthread"
+     fi
+   fi
+ fi
+@@ -1987,14 +1987,14 @@
+ if test "$ac_snd_have_extension_language" = no ; then
+   if test "$ac_snd_have_gui" = no ; then
+     if test "$ac_cv_header_dlfcn_h" = yes ; then
+-      LDFLAGS="$LDFLAGS -ldl"
++      LIBS="$LIBS -ldl"
+     fi
+     AC_MSG_WARN([Snd needs either an extension language (s7, Fth, or Ruby), or a graphics toolkit (Gtk or Motif), or preferably both.  As currently configured, this version of Snd is useless.])
+   fi
+ fi
+ 
+ if test "$ac_snd_have_extension_language" = yes && test "$with_audio" = no && test "$ac_cv_header_dlfcn_h" = yes ; then
+-  LDFLAGS="$LDFLAGS -ldl"
++  LIBS="$LIBS -ldl"
+ fi
+ 
+ 

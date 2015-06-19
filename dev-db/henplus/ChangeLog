@@ -1,0 +1,108 @@
+# ChangeLog for dev-db/henplus
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/henplus/ChangeLog,v 1.29 2015/06/09 13:10:03 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  06 Apr 2015; Patrick Lauer <patrick@gentoo.org> henplus-0.9.8-r1.ebuild:
+  Whitespace
+
+*henplus-0.9.8-r1 (05 Apr 2015)
+
+  05 Apr 2015; Patrice Clement <monsieurp@gentoo.org> +henplus-0.9.8-r1.ebuild:
+  EAPI 5 bump wrt bug 543906.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> henplus-0.9.8.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  03 Aug 2014; Ralph Sennhauser <sera@gentoo.org> -henplus-0.9.7-r1.ebuild:
+  Remove old
+
+  07 Jan 2010; Brent Baude <ranger@gentoo.org> henplus-0.9.8.ebuild:
+  stable ppc, bug 284300
+
+  11 Sep 2009; Markus Meier <maekke@gentoo.org> henplus-0.9.8.ebuild:
+  amd64/x86 stable, bug #284300
+
+*henplus-0.9.8 (01 May 2009)
+
+  01 May 2009; Petteri Räty <betelgeuse@gentoo.org>
+  +files/0.9.8-build.xml.patch, +henplus-0.9.8.ebuild:
+  Version bump. Fixes bug #268125.
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org> files/henplus.patch:
+  Fix patch with absolute paths.
+
+  11 Jun 2007; Daniel Gryniewicz <dang@gentoo.org> henplus-0.9.7-r1.ebuild:
+  Marked stable on amd64 for bug #179562
+
+  02 Jun 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -henplus-0.9.5-r2.ebuild, -henplus-0.9.7.ebuild:
+  Remove generation 1 ebuild.
+
+  02 Jun 2007; nixnut <nixnut@gentoo.org> henplus-0.9.7-r1.ebuild:
+  Stable on ppc wrt bug 179562
+
+  25 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  henplus-0.9.7-r1.ebuild:
+  x86 stable, bug 179562
+
+*henplus-0.9.7-r1 (07 May 2007)
+
+  07 May 2007; Petteri Räty <betelgeuse@gentoo.org> files/henplus.pre,
+  +henplus-0.9.7-r1.ebuild:
+  Make the -pre file behave the same way as upstream wrapper script in
+  populating CLASSPATH.
+
+  26 Apr 2007; Petteri Räty <betelgeuse@gentoo.org> henplus-0.9.7.ebuild:
+  inherit java-ant-2 to make JAVA_PKG_STRICT happy and stylistic cleanup.
+
+*henplus-0.9.7 (17 Oct 2006)
+
+  17 Oct 2006; Vlastimil Babka <caster@gentoo.org>
+  +files/henplus-0.9.7-build.xml.patch, +files/henplus.pre,
+  +henplus-0.9.7.ebuild:
+  Version bump for bug #146572 reported by Ole Langbehn <neurolabs@web.de>.
+  Migrated to gen-2 java eclasses, added doc and source USE flags.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  henplus-0.9.5-r2.ebuild:
+  Dropping sparc keywords, see #96229
+
+  28 Nov 2005; Luis Medinas <metalgod@gentoo.org> henplus-0.9.5-r2.ebuild:
+  Added ~amd64 keyword. Closes bug #112475.
+
+  27 Nov 2005; Joshua Nichols <nichoj@gentoo.org> files/henplus.patch:
+  Updated script's patch to use java-config to get the right values for
+  LD_LIBRARY_PATH.
+
+  26 Nov 2005; Joshua Nichols <nichoj@gentoo.org> files/henplus.patch:
+  Fixed libreadline-java support (bug #109140)
+
+  18 Sep 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  henplus-0.9.5-r2.ebuild:
+  ppc stable, #106194
+
+  23 Aug 2004; Chris Aniszczyk <zx@gentoo.org> henplus-0.9.5-r2.ebuild:
+  Marking stable on x86
+
+*henplus-0.9.5-r2 (23 Jul 2004)
+
+  23 Jul 2004; Thomas Matthijs <axxo@gentoo.org> files/henplus.patch,
+  +henplus-0.9.5-r2.ebuild:
+  Fixed patch to find readline thanks to Ole Langbehn <neurolabs@web.de> in 40197
+
+  19 Jul 2004; David Holm <dholm@gentoo.org> henplus-0.9.5-r1.ebuild:
+  Added to ~ppc.
+
+*henplus-0.9.5-r1 (18 Jul 2004)
+
+  18 Jul 2004; Thomas Matthijs <axxo@gentoo.org> +henplus-0.9.5-r1.ebuild:
+  install wrapper bin script
+
+*henplus-0.9.5 (16 Feb 2004)
+
+  16 Feb 2004; Chris Aniszczyk <zx@gentoo.org> :
+  Initial Import.
+  Thanks to Marco Hennings <m.hennings@gmx.de> for the initial ebuild. Bug #40197

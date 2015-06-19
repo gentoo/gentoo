@@ -1,0 +1,178 @@
+# ChangeLog for x11-misc/gxmessage
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/gxmessage/ChangeLog,v 1.48 2015/05/31 08:02:24 jer Exp $
+
+*gxmessage-3.4.3 (31 May 2015)
+
+  31 May 2015; Jeroen Roovers <jer@gentoo.org> +gxmessage-3.4.3.ebuild:
+  Version bump.
+
+*gxmessage-3.4.2 (23 May 2015)
+*gxmessage-2.20.3 (23 May 2015)
+
+  23 May 2015; Jeroen Roovers <jer@gentoo.org> +gxmessage-2.20.3.ebuild,
+  -gxmessage-3.4.0.ebuild, +gxmessage-3.4.2.ebuild:
+  Version bump.
+
+  14 May 2014; Jeroen Roovers <jer@gentoo.org> -gxmessage-2.12.4.ebuild:
+  Old.
+
+  14 May 2014; Agostino Sarubbo <ago@gentoo.org> gxmessage-2.20.1.ebuild:
+  Stable for sparc, wrt bug #505398
+
+*gxmessage-3.4.0 (04 May 2014)
+
+  04 May 2014; Jeroen Roovers <jer@gentoo.org> +gxmessage-3.4.0.ebuild:
+  Version bump.
+
+  13 Apr 2014; Agostino Sarubbo <ago@gentoo.org> gxmessage-2.20.1.ebuild:
+  Stable for ppc, wrt bug #505398
+
+  12 Apr 2014; Agostino Sarubbo <ago@gentoo.org> gxmessage-2.20.1.ebuild:
+  Stable for x86, wrt bug #505398
+
+  11 Apr 2014; Chema Alonso <nimiux@gentoo.org> gxmessage-2.20.1.ebuild:
+  Stable for amd64 wrt bug #505398
+
+  23 Mar 2014; Jeroen Roovers <jer@gentoo.org> -gxmessage-2.20.0.ebuild:
+  Old.
+
+*gxmessage-2.20.1 (23 Mar 2014)
+
+  23 Mar 2014; Jeroen Roovers <jer@gentoo.org> +gxmessage-2.20.1.ebuild:
+  Version bump.
+
+  29 Jul 2012; Jeroen Roovers <jer@gentoo.org> -gxmessage-2.6.2.ebuild:
+  Ancient.
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> gxmessage-2.12.4.ebuild:
+  sparc stable wrt #391233
+
+  22 May 2012; Brent Baude <ranger@gentoo.org> gxmessage-2.12.4.ebuild:
+  Marking gxmessage-2.12.4 ppc for bug 391233
+
+  18 May 2012; Jeff Horelick <jdhore@gentoo.org> gxmessage-2.12.4.ebuild:
+  marked x86 per bug 391233
+
+*gxmessage-2.20.0 (17 May 2012)
+
+  17 May 2012; Samuli Suominen <ssuominen@gentoo.org> +gxmessage-2.20.0.ebuild:
+  Version bump wrt #416295 by "df"
+
+  08 May 2012; Agostino Sarubbo <ago@gentoo.org> gxmessage-2.12.4.ebuild:
+  Stable for amd64, wrt bug #391233
+
+  08 May 2012; Samuli Suominen <ssuominen@gentoo.org> gxmessage-2.12.4.ebuild:
+  Update hicolor icon cache for gxmessage.png.
+
+  08 May 2012; Samuli Suominen <ssuominen@gentoo.org> gxmessage-2.12.4.ebuild:
+  Remove USE="nls" because dev-util/intltool is always required wrt #374457
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> gxmessage-2.6.2.ebuild,
+  gxmessage-2.12.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 Mar 2011; Kevin McCarthy <signals@gentoo.org> gxmessage-2.6.2.ebuild:
+  Slotted gtk+ depends and EAPI=2 bump to support it.
+
+*gxmessage-2.12.4 (10 Feb 2010)
+
+  10 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +gxmessage-2.12.4.ebuild:
+  Version bump wrt #300556, thanks to Jeroen Roovers for reporting.
+
+  23 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  -gxmessage-2.6.1.ebuild, gxmessage-2.6.2.ebuild:
+  amd64 stable wrt bug #214324 and remove old.
+
+  23 Mar 2008; Ferris McCormick <fmccor@gentoo.org> gxmessage-2.6.2.ebuild:
+  Sparc stable --- Bug #214324 --- seems to work fine.
+
+  23 Mar 2008; nixnut <nixnut@gentoo.org> gxmessage-2.6.2.ebuild:
+  Stable on ppc wrt bug 214324
+
+  23 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  gxmessage-2.6.2.ebuild:
+  stable x86, bug 214324
+
+  02 Aug 2007; Roy Marples <uberlord@gentoo.org> gxmessage-2.6.2.ebuild:
+  Keyworded ~x86-fbsd, #156902 thanks to Marc Kowarsky.
+
+*gxmessage-2.6.2 (07 Jun 2007)
+
+  07 Jun 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  +gxmessage-2.6.2.ebuild:
+  Version bump, see bug #181136.
+
+  23 Oct 2006; David Shakaryan <omp@gentoo.org> gxmessage-2.6.1.ebuild:
+  RDEPEND should not include dev-util/pkgconfig.
+
+  20 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  -gxmessage-2.4.4.ebuild:
+  Remove old version.
+
+  20 Oct 2006; Simon Stelling <blubb@gentoo.org> gxmessage-2.6.1.ebuild:
+  stable on amd64
+
+  12 Oct 2006; Emanuele Giaquinta <exg@gentoo.org> gxmessage-2.6.1.ebuild:
+  Stable on ppc; bug #150821
+
+  11 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gxmessage-2.6.1.ebuild:
+  Stable on sparc wrt #150821
+
+  11 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org> gxmessage-2.6.1.ebuild:
+  Add missing dev-util/pkgconfig to DEPEND, stable on x86. See bug #150821.
+
+*gxmessage-2.6.1 (27 May 2006)
+
+  27 May 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +gxmessage-2.6.1.ebuild:
+  Version bump, see bug #134189.
+
+  12 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> gxmessage-2.4.4.ebuild:
+  Fixed DEPEND for modular X.
+
+  01 Dec 2005; Jason Wever <weeve@gentoo.org> gxmessage-2.4.4.ebuild:
+  Stable on SPARC wrt bug #111131.
+
+  02 Nov 2005; Luis Medinas <metalgod@gentoo.org> gxmessage-2.4.4.ebuild:
+  Marked Stable on amd64. Bug #111131.
+
+  01 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org>
+  -gxmessage-2.0.11.ebuild, gxmessage-2.4.4.ebuild:
+  Fixed dodoc not to install COPYING and/or INSTALL.
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gxmessage-2.4.4.ebuild:
+  Stable on ppc.
+
+  16 Jul 2005; Jonathan Smith <smithj@gentoo.org> gxmessage-2.4.4.ebuild:
+  stable x86
+
+  09 Jul 2005; Jonathan Smith <smithj@gentoo.org> gxmessage-2.4.4.ebuild:
+  added ~sparc
+
+  09 Jul 2005; Jonathan Smith <smithj@gentoo.org> gxmessage-2.4.4.ebuild:
+  added ~amd64
+
+*gxmessage-2.4.4 (15 Jun 2005)
+
+  15 Jun 2005; Jonathan Smith <smithj@gentoo.org> +gxmessage-2.4.4.ebuild:
+  version bump for #89020
+
+  01 Oct 2004; <pyrania@gentoo.org> gxmessage-2.0.11.ebuild:
+  Marked stable on x86.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gxmessage-2.0.11.ebuild:
+  Masked gxmessage-2.0.11.ebuild stable for ppc
+
+  30 Jun 2004; David Holm <dholm@gentoo.org> :
+  Added to ~ppc.
+
+*gxmessage-2.0.11 (29 Jun 2004)
+
+  29 Jun 2004; Ian Leitch <port001@gentoo.org> +metadata.xml,
+  +gxmessage-2.0.11.ebuild:
+  Initial commit, thanks to those in #44187

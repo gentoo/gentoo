@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>x11</herd>
+<use>
+	<flag name="egl">Enable EGL support</flag>
+	<flag name="gbm">Enable support for the Generic Buffer Manager (gbm)</flag>
+	<flag name="wayland">Enable Wayland support</flag>
+</use>
+</pkgmetadata>
+

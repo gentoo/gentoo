@@ -1,0 +1,733 @@
+# ChangeLog for www-apache/mod_perl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_perl/ChangeLog,v 1.124 2015/06/13 17:11:54 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org> mod_perl-2.0.8.ebuild,
+  mod_perl-2.0.8-r1.ebuild, mod_perl-2.0.8-r2.ebuild:
+  The CGI module is no longer part of core Perl and has been moved to dev-perl
+
+  29 May 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/2.0.3/75_mod_perl.2.2.conf, -files/2.0.3/75_mod_perl.conf.2.2:
+  Rename the old mod_perl.conf to match the ebuild #550638 by Vieri.
+
+*mod_perl-2.0.8-r2 (24 May 2015)
+
+  24 May 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/mod_perl-2.0.4-inline.patch, +mod_perl-2.0.8-r2.ebuild:
+  Use inline patch from Fedora to fix build w/gcc-5 #550244.
+
+  24 May 2015; Mike Frysinger <vapier@gentoo.org> mod_perl-2.0.8.ebuild,
+  files/2.0.3/75_mod_perl.conf, +files/2.0.3/75_mod_perl.conf.2.2:
+  Convert mod_perl.conf to apache-2.4 #550246.
+
+  12 May 2015; Pacho Ramos <pacho@gentoo.org> mod_perl-2.0.8-r1.ebuild:
+  Needs apache 2.4 now
+
+*mod_perl-2.0.8-r1 (08 May 2015)
+
+  08 May 2015; Pacho Ramos <pacho@gentoo.org>
+  +files/use-client_ip-client_add-instead-of-remote_ip-remote.patch,
+  +files/use-log.level-instead-of-loglevel.patch, +mod_perl-2.0.8-r1.ebuild,
+  -mod_perl-2.0.7-r1.ebuild:
+  Support apache 2.4 (#410453)
+
+  27 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  mod_perl-2.0.7-r1.ebuild, mod_perl-2.0.8.ebuild:
+  Remove call to perl-module_pkg_postinst, does not do anything outside
+  perl-core
+
+  16 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  mod_perl-2.0.7-r1.ebuild, mod_perl-2.0.8.ebuild:
+  Replace fixlocalpod with perl_delete_localpod
+
+  09 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  mod_perl-2.0.7-r1.ebuild, mod_perl-2.0.8.ebuild:
+  Replace perlinfo with perl_set_version
+
+*mod_perl-2.0.7-r1 (19 Sep 2014)
+
+  19 Sep 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -mod_perl-2.0.7.ebuild, +mod_perl-2.0.7-r1.ebuild:
+  Make an EAPI=5 revbump for hppa where 2.0.8 makes problems, drop old ebuild
+
+  19 Sep 2014; Jeroen Roovers <jer@gentoo.org> mod_perl-2.0.7.ebuild:
+  Marked ~hppa (bug #512504).
+
+  31 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> mod_perl-2.0.8.ebuild:
+  sparc stable wrt bug #512114
+
+  31 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> mod_perl-2.0.8.ebuild:
+  ppc64 stable wrt bug #512114
+
+  31 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> mod_perl-2.0.8.ebuild:
+  ppc stable wrt bug #512114
+
+  31 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> mod_perl-2.0.8.ebuild:
+  ia64 stable wrt bug #512114
+
+  28 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> mod_perl-2.0.8.ebuild:
+  alpha stable wrt bug #512114
+
+  29 Jul 2014; Patrick Lauer <patrick@gentoo.org> mod_perl-2.0.8.ebuild:
+  Stable for amd64 #512114
+
+  26 Jul 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> mod_perl-2.0.8.ebuild:
+  x86 stable wrt bug #512114
+
+*mod_perl-2.0.8 (22 Dec 2013)
+
+  22 Dec 2013; Christian Ruppert <idl0r@gentoo.org> +mod_perl-2.0.8.ebuild,
+  +files/mod_perl-2.0.8-bundled-Apache-Test.patch:
+  Version bump, bug 484038, thanks to Martin von Gagern
+  <Martin.vGagern@gmx.net>
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  13 Nov 2012; Brent Baude <ranger@gentoo.org> mod_perl-2.0.7.ebuild:
+  Marking mod_perl-2.0.7 ppc64 for bug 432610
+
+  30 Oct 2012; Christian Ruppert <idl0r@gentoo.org> -mod_perl-2.0.4-r1.ebuild,
+  -mod_perl-2.0.5.ebuild, -files/mod_perl-2.0.5-bundled-Apache-Test.patch,
+  -files/CVE-2009-0796.patch:
+  Cleanup
+
+  10 Oct 2012; Brent Baude <ranger@gentoo.org> mod_perl-2.0.7.ebuild:
+  Marking mod_perl-2.0.7 ppc for bug 432610
+
+  18 Sep 2012; Jeroen Roovers <jer@gentoo.org> mod_perl-2.0.7.ebuild:
+  Stable for HPPA (bug #432610).
+
+  11 Sep 2012; Raúl Porcel <armin76@gentoo.org> mod_perl-2.0.7.ebuild:
+  alpha/ia64/sparc stable wrt #432610
+
+  27 Aug 2012; Johannes Huber <johu@gentoo.org> mod_perl-2.0.7.ebuild:
+  Stable for x86, wrt bug #432610
+
+  25 Aug 2012; Agostino Sarubbo <ago@gentoo.org> mod_perl-2.0.7.ebuild:
+  Stable for amd64, wrt bug #432610
+
+  07 Jun 2012; Christian Ruppert <idl0r@gentoo.org> mod_perl-2.0.7.ebuild:
+  2.0.7 is still not apache 2.4 ready
+
+*mod_perl-2.0.7 (06 Jun 2012)
+
+  06 Jun 2012; Christian Ruppert <idl0r@gentoo.org> +mod_perl-2.0.7.ebuild,
+  +files/mod_perl-2.0.7-bundled-Apache-Test.patch:
+  Version bump, bug 419839
+
+  03 Apr 2012; Christian Ruppert <idl0r@gentoo.org> mod_perl-2.0.4-r1.ebuild,
+  mod_perl-2.0.5.ebuild:
+  Depend on apache <2.4*
+
+  19 Nov 2011; Christian Ruppert <idl0r@gentoo.org> mod_perl-2.0.5.ebuild:
+  Add debug useflag to enable/disable MP_TRACE and MP_DEBUG.
+
+  09 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> mod_perl-2.0.5.ebuild:
+  Marked ~ppc/~ppc64 wrt #359047
+
+  22 Jul 2011; Jeroen Roovers <jer@gentoo.org> mod_perl-2.0.5.ebuild:
+  Marked ~hppa (bug #359047).
+
+  04 Jul 2011; Christian Ruppert <idl0r@gentoo.org> mod_perl-2.0.5.ebuild:
+  Fix apache/perl dependencies again, bug 373943.
+
+  01 Jul 2011; Christian Ruppert <idl0r@gentoo.org> mod_perl-2.0.5.ebuild:
+  Fix Dependencies. Add threads useflag.
+
+  15 May 2011; Raúl Porcel <armin76@gentoo.org> mod_perl-2.0.5.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #359047
+
+  21 Mar 2011; Christian Ruppert <idl0r@gentoo.org> metadata.xml:
+  Add myself as primary maintainer
+
+*mod_perl-2.0.5 (14 Mar 2011)
+
+  14 Mar 2011; Christian Ruppert <idl0r@gentoo.org> +mod_perl-2.0.5.ebuild,
+  +files/mod_perl-2.0.5-bundled-Apache-Test.patch:
+  Version bump, bug 355303, fixes also bug 352724.
+
+  07 Mar 2010; Benedikt Böhm <hollow@gentoo.org> mod_perl-2.0.4-r1.ebuild:
+  remove duplicate dependency on apache
+
+  12 Jan 2010; Benedikt Böhm <hollow@gentoo.org> mod_perl-2.0.4-r1.ebuild:
+  fix #300730
+
+  11 Jan 2010; Benedikt Böhm <hollow@gentoo.org> mod_perl-2.0.4-r1.ebuild:
+  convert to EAPI2 wrt #296219
+
+  18 Sep 2009; Benedikt Böhm <hollow@gentoo.org> -mod_perl-2.0.3-r2.ebuild,
+  -mod_perl-2.0.4.ebuild, -files/RegistryCooker.patch:
+  remove old ebuilds
+
+  22 Jul 2009; Joseph Jezak <josejx@gentoo.org> mod_perl-2.0.4-r1.ebuild:
+  Marked ppc/ppc64 stable early for bug #266035.
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> mod_perl-2.0.4-r1.ebuild:
+  ~ppc #276593
+
+  19 Jul 2009; Torsten Veller <tove@gentoo.org> mod_perl-2.0.3-r2.ebuild,
+  mod_perl-2.0.4.ebuild, mod_perl-2.0.4-r1.ebuild:
+  IO-Compress replaces Compress-Zlib
+
+  08 Jul 2009; Markus Meier <maekke@gentoo.org> mod_perl-2.0.4-r1.ebuild:
+  amd64 stable, bug #266035
+
+  08 Jul 2009; Raúl Porcel <armin76@gentoo.org> mod_perl-2.0.4-r1.ebuild:
+  alpha/ia64/sparc stable wrt #276593
+
+  07 Jul 2009; Jeroen Roovers <jer@gentoo.org> mod_perl-2.0.4-r1.ebuild:
+  Stable for HPPA (bug #266035).
+
+  07 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  mod_perl-2.0.4-r1.ebuild:
+  stable x86, security bug 266035
+
+  07 Jul 2009; Benedikt Böhm <hollow@gentoo.org> mod_perl-2.0.4-r1.ebuild:
+  fix circular dependencies
+
+  07 Jul 2009; Jeroen Roovers <jer@gentoo.org> mod_perl-2.0.4-r1.ebuild:
+  Marked ~hppa (bug #266035).
+
+  07 Jul 2009; Benedikt Böhm <hollow@gentoo.org> mod_perl-2.0.4-r1.ebuild:
+  add blocker wrt #276707
+
+  05 Jul 2009; Benedikt Böhm <hollow@gentoo.org> mod_perl-2.0.4-r1.ebuild:
+  fix #224985, #243244
+
+*mod_perl-2.0.4-r1 (05 Jul 2009)
+
+  05 Jul 2009; Benedikt Böhm <hollow@gentoo.org>
+  +files/CVE-2009-0796.patch, -mod_perl-2.0.3-r1.ebuild,
+  +mod_perl-2.0.4-r1.ebuild:
+  fix #266035
+
+  26 May 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  mod_perl-2.0.3-r1.ebuild:
+  Add pkg_setup().
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org> mod_perl-2.0.3-r1.ebuild,
+  mod_perl-2.0.3-r2.ebuild, mod_perl-2.0.4.ebuild:
+  New virtuals: Compress-Zlib
+
+  05 Jul 2008; Benedikt Böhm <hollow@gentoo.org> mod_perl-2.0.4.ebuild:
+  fix #227277
+
+  01 Jun 2008; Benedikt Böhm <hollow@gentoo.org> mod_perl-2.0.4.ebuild:
+  fix SRC_URI
+
+*mod_perl-2.0.4 (01 Jun 2008)
+
+  01 Jun 2008; Benedikt Böhm <hollow@gentoo.org> +mod_perl-2.0.4.ebuild:
+  version bump wrt #220909
+
+  28 May 2008; Guy Martin <gmsoft@gentoo.org> ChangeLog:
+  Stable on hppa.
+
+  13 May 2008; Jeroen Roovers <jer@gentoo.org> mod_perl-2.0.3-r2.ebuild:
+  Marked ~hppa (LuckyLuke).
+
+  23 Mar 2008; Benedikt Böhm <hollow@gentoo.org> mod_perl-2.0.3-r2.ebuild:
+  fix depend.apache usage wrt #208033
+
+  22 Mar 2008; Benedikt Böhm <hollow@gentoo.org> mod_perl-2.0.3-r2.ebuild:
+  amd64 stable wrt #209179
+
+  10 Feb 2008; Raúl Porcel <armin76@gentoo.org> mod_perl-2.0.3-r2.ebuild:
+  alpha/ia64/sparc stable wrt #209179
+
+  08 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  mod_perl-2.0.3-r2.ebuild:
+  ppc stable, bug #209179
+
+  07 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  mod_perl-2.0.3-r2.ebuild:
+  stable x86, bug 209179
+
+  07 Feb 2008; Brent Baude <ranger@gentoo.org> mod_perl-2.0.3-r2.ebuild:
+  Marking mod_perl-2.0.3-r2 ppc64 for bug 209179
+
+  06 Feb 2008; Benedikt Böhm <hollow@gentoo.org> mod_perl-2.0.3-r2.ebuild:
+  rename check_apache_threads to has_apache_threads as suggested by dberkholz
+
+  06 Feb 2008; Benedikt Böhm <hollow@gentoo.org> mod_perl-2.0.3-r2.ebuild:
+  use new depend.apache functions to simplify ebuild logic
+
+  29 Jan 2008; Benedikt Böhm <hollow@gentoo.org> mod_perl-2.0.3-r2.ebuild:
+  fix depend.apache usage wrt #208033
+
+  27 Jan 2008; Benedikt Böhm <hollow@gentoo.org>
+  files/2.0.3/75_mod_perl.conf, mod_perl-2.0.3-r2.ebuild:
+  fix #204916
+
+*mod_perl-2.0.3-r2 (06 Jan 2008)
+
+  06 Jan 2008; Benedikt Böhm <hollow@gentoo.org>
+  files/2.0.3/75_mod_perl.conf, +mod_perl-2.0.3-r2.ebuild:
+  fix #182235, #199183
+
+  13 Jun 2007; Luca Longinotti <chtekk@gentoo.org>
+  -files/1.29/75_mod_perl.conf, -files/1.30/75_mod_perl.conf,
+  -files/2.0.2/75_mod_perl.conf, -files/2.0.2/apache2-mod_perl-startup.pl,
+  -files/75_mod_perl.conf, -files/apache2-mod_perl-startup.pl, metadata.xml,
+  -mod_perl-1.27-r4.ebuild, -mod_perl-1.30.ebuild:
+  Remove Apache1. Cleanup filesdir. Update metadata.
+
+  10 Apr 2007; Christian Hartmann <ian@gentoo.org> mod_perl-1.27-r4.ebuild,
+  -mod_perl-1.29.ebuild, -mod_perl-2.0.2.ebuild, -mod_perl-2.0.3.ebuild:
+  Removed vulnerable versions; 1.27-r4 stays for mips only
+
+  10 Apr 2007; Jose Luis Rivero <yoswink@gentoo.org> mod_perl-1.30.ebuild:
+  Stable on alpha wrt security bug #172676
+
+  09 Apr 2007; Michael Cummings <mcummings@gentoo.org> mod_perl-1.30.ebuild:
+  security bug #172676 - also fixed the fperm line at the end for the conf file
+
+  06 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  mod_perl-2.0.3-r1.ebuild:
+  Marking amd64 stable, bug 172676
+
+  06 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  mod_perl-2.0.3-r1.ebuild:
+  stable x86, security bug 172676
+
+  06 Apr 2007; Christian Hartmann <ian@gentoo.org> Manifest:
+  Fix manifest
+
+  04 Apr 2007; Jose Luis Rivero <yoswink@gentoo.org>
+  mod_perl-2.0.3-r1.ebuild:
+  Stable on alpha wrt security bug #172676
+
+  04 Apr 2007; Raúl Porcel <armin76@gentoo.org> mod_perl-1.30.ebuild,
+  mod_perl-2.0.3-r1.ebuild:
+  ia64 stable wrt security bug 172676
+
+  03 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> mod_perl-1.30.ebuild,
+  mod_perl-2.0.3-r1.ebuild:
+  Stable on sparc wrt security #172676
+
+  02 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  mod_perl-1.30.ebuild, mod_perl-2.0.3-r1.ebuild:
+  ppc stable, bug #172676
+
+  02 Apr 2007; Markus Rothe <corsair@gentoo.org> mod_perl-1.30.ebuild,
+  mod_perl-2.0.3-r1.ebuild:
+  Stable on ppc64; bug #172676
+
+  31 Mar 2007; Christian Faulhammer <opfer@gentoo.org> mod_perl-1.30.ebuild:
+  stable x86, security bug 172676
+
+*mod_perl-2.0.3-r1 (30 Mar 2007)
+
+  30 Mar 2007; Michael Cummings <mcummings@gentoo.org>
+  +files/RegistryCooker.patch, +mod_perl-2.0.3-r1.ebuild:
+  Fixes for mod_perl-2.0.3 re: bug 172676
+
+*mod_perl-1.30 (30 Mar 2007)
+
+  30 Mar 2007; Michael Cummings <mcummings@gentoo.org>
+  +files/1.30/75_mod_perl.conf, +mod_perl-1.30.ebuild:
+  Bug 172676
+
+  23 Feb 2007; Michael Cummings <mcummings@gentoo.org>
+  mod_perl-2.0.2.ebuild, mod_perl-2.0.3.ebuild:
+  Removed ROOT per bug 168044
+
+  08 Feb 2007; Michael Cummings <mcummings@gentoo.org>
+  mod_perl-2.0.3.ebuild:
+  Switching from exit to die, thanks to davide angelocola on the ml for
+  pointing this out
+
+  25 Jan 2007; Luca Longinotti <chtekk@gentoo.org>
+  -files/mod_perl-1.99.16-sneak-tmpdir.patch, -files/2.0.1/75_mod_perl.conf,
+  -files/mod_perl-1.99.17-Apache2.pm,
+  -files/2.0.1/apache2-mod_perl-startup.pl, -mod_perl-2.0.1-r2.ebuild,
+  -mod_perl-2.0.1-r3.ebuild:
+  Initial parts of cleanup.
+
+  19 Jan 2007; Markus Rothe <corsair@gentoo.org> mod_perl-2.0.2.ebuild:
+  Stable on ppc64; bug #162244
+
+  17 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  mod_perl-2.0.2.ebuild:
+  stable x86, bug #162244
+
+  16 Jan 2007; Joseph Jezak <josejx@gentoo.org> mod_perl-1.29.ebuild,
+  mod_perl-2.0.2.ebuild:
+  Marked ppc stable for bug #162244.
+
+  12 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  +files/2.0.3/75_mod_perl.conf, +files/2.0.3/apache2-mod_perl-startup.pl:
+  bug 161292, missing 2.0.3 files added :)
+
+*mod_perl-2.0.3 (09 Jan 2007)
+
+  09 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  +mod_perl-2.0.3.ebuild:
+  Version bump
+
+  06 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> mod_perl-2.0.2.ebuild:
+  Stable on Alpha.
+
+*mod_perl-2.0.1-r3 (23 Oct 2006)
+
+  23 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  +mod_perl-2.0.1-r3.ebuild, mod_perl-2.0.2.ebuild:
+  Altered dep for Apache-Test to be >= 1.27 - 1.28 is in the tree and
+  supercedes these versions.
+
+  16 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  -mod_perl-1.27-r1.ebuild, -mod_perl-1.27-r2.ebuild,
+  mod_perl-1.27-r4.ebuild, mod_perl-1.29.ebuild, -mod_perl-1.99.11.ebuild,
+  -mod_perl-1.99.16.ebuild, -mod_perl-2.0.1-r1.ebuild,
+  mod_perl-2.0.1-r2.ebuild:
+  Marking amd64 stable; cleaning up ebuilds
+
+  02 Sep 2006; Bryan Østergaard <kloeri@gentoo.org> mod_perl-2.0.2.ebuild:
+  Stable on ia64.
+
+  25 Jun 2006; Marcus D. Hanwell <cryos@gentoo.org> mod_perl-2.0.2.ebuild:
+  Marked stable on amd64, closes bug 136823.
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  mod_perl-2.0.2.ebuild:
+  Marking sparc stable
+
+  04 Jun 2006; Michael Stewart <vericgar@gentoo.org> mod_perl-1.29.ebuild,
+  mod_perl-2.0.1-r1.ebuild, mod_perl-2.0.1-r2.ebuild, mod_perl-2.0.2.ebuild:
+  Address dependency issues caused by depend.apache. Refer to bug 107127.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org>
+  files/digest-mod_perl-1.27-r1, files/digest-mod_perl-1.27-r2,
+  files/digest-mod_perl-1.27-r4, files/digest-mod_perl-1.29,
+  files/digest-mod_perl-1.99.11, files/digest-mod_perl-1.99.16,
+  files/digest-mod_perl-2.0.1-r1, files/digest-mod_perl-2.0.1-r2,
+  files/digest-mod_perl-2.0.2, Manifest:
+  Fixing SHA256 digest, pass four
+
+  08 Apr 2006; Bryan Østergaard <kloeri@gentoo.org
+  mod_perl-2.0.1-r2.ebuild:
+  Stable on alpha.
+
+  30 Mar 2006; <mcummings@gentoo.org> mod_perl-2.0.1-r2.ebuild:
+  Marking sparc stable, tested and confirmed.
+
+  10 Mar 2006; Michael Hanselmann <hansmi@gentoo.org>
+  mod_perl-2.0.1-r2.ebuild:
+  Stable on ppc.
+
+  10 Mar 2006; Aron Griffis <agriffis@gentoo.org> mod_perl-2.0.1-r2.ebuild:
+  Mark 2.0.1-r2 stable on ia64
+
+  27 Feb 2006; Markus Rothe <corsair@gentoo.org> mod_perl-2.0.1-r2.ebuild:
+  Stable on ppc64
+
+*mod_perl-2.0.2 (26 Feb 2006)
+
+  26 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  +files/2.0.2/75_mod_perl.conf, +files/2.0.2/apache2-mod_perl-startup.pl,
+  +files/1.29/75_mod_perl.conf, mod_perl-1.29.ebuild,
+  mod_perl-2.0.1-r2.ebuild, +mod_perl-2.0.2.ebuild:
+  Bug 77551 and friends: 1.29 unmasked; 2.0.1 unmasked; 2.0.2 added; all
+  should be installing appropritately for new-style apaches. Thanks to  
+  Benedikt Boehm and Yuval Yaari for patches, ebuilds, and patience.
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  mod_perl-1.99.11.ebuild, mod_perl-1.99.16.ebuild,
+  mod_perl-2.0.1-r1.ebuild, mod_perl-2.0.1-r2.ebuild:
+  Virtuals for perl-core
+
+  06 Dec 2005; Aaron Kulbe <superlag@gentoo.org> mod_perl-2.0.1-r2.ebuild:
+  Making ebuild multilib aware, so it will build on AMD64.  Bug #114634
+
+  12 Nov 2005; Michael Cummings <mcummings@gentoo.org>
+  mod_perl-1.27-r1.ebuild, mod_perl-1.27-r2.ebuild, mod_perl-1.27-r4.ebuild,
+  mod_perl-1.29.ebuild:
+  Fixed config syntax, bug 109482
+
+  25 Aug 2005; Michael Cummings <mcummings@gentoo.org>
+  mod_perl-1.99.11.ebuild, mod_perl-1.99.16.ebuild, mod_perl-2.0.1-r1.ebuild,
+  mod_perl-2.0.1-r2.ebuild:
+  Bug 103487, cp -a changed to cp -pPR
+
+  08 Aug 2005; Michael Cummings <mcummings@gentoo.org>
+  mod_perl-2.0.1-r2.ebuild:
+  bug 101292 - note for threaded vs unthreaded apache/perl systems
+
+  08 Aug 2005; Michael Cummings <mcummings@gentoo.org>
+  files/apache2-mod_perl-startup.pl:
+  Corrected apache2-*.pl
+
+*mod_perl-2.0.1-r2 (08 Aug 2005)
+
+  08 Aug 2005; Michael Cummings <mcummings@gentoo.org> files/75_mod_perl.conf,
+  files/apache2-mod_perl-startup.pl, +files/2.0.1/75_mod_perl.conf,
+  +files/2.0.1/apache2-mod_perl-startup.pl, mod_perl-2.0.1-r1.ebuild,
+  +mod_perl-2.0.1-r2.ebuild:
+  With help from rendhalver, split out the mod-perl2 conf/files so that both
+  older and newer versions were available
+
+*mod_perl-2.0.1-r1 (29 Jul 2005)
+
+  29 Jul 2005; Michael Cummings <mcummings@gentoo.org>
+  -files/mod_perl-2.0.1-makefile.patch, -mod_perl-1.99.10.ebuild,
+  -mod_perl-1.99.17-r1.ebuild, -mod_perl-1.99.17.ebuild,
+  -mod_perl-2.0.0.ebuild, +mod_perl-2.0.1-r1.ebuild, -mod_perl-2.0.1.ebuild:
+  Sorry for the version bump, but this is a corrected ebuild (see viewcvs for
+  some bad diffs). The issue with testing has been resolved - if you run sudo
+  emerge and you have !env_reset set in your /etc/sudoers (and have testing
+  enabled), expect to have trouble. sudo su - and then emerging has no problems
+  with the tests (somewhere along the line the uid and euid get muddled). Thanks
+  again to rendhalver for a lot of work and patience.
+
+*mod_perl-2.0.1 (25 Jul 2005)
+
+  25 Jul 2005; Michael Cummings <mcummings@gentoo.org> files/75_mod_perl.conf,
+  files/apache2-mod_perl-startup.pl, +mod_perl-2.0.1.ebuild:
+  Thanks to rendhalver for the legwork here. This installs cleanly and launches
+  w/o issue. Please test.
+
+*mod_perl-2.0.0 (04 Jun 2005)
+
+  04 Jun 2005; Elfyn McBratney <beu@gentoo.org> +mod_perl-2.0.0.ebuild:
+  Version bump; this revision is for current-stable apache _only_, and
+  _will_ not work with the 'refreshed' apache versions in testing - -r1
+  will shortly follow for that.
+
+  29 May 2005; Markus Rothe <corsair@gentoo.org> mod_perl-1.29.ebuild,
+  mod_perl-1.99.17-r1.ebuild:
+  Stable on ppc64; added ~ppc64
+
+  24 May 2005; Michael Cummings <mcummings@gentoo.org>
+  mod_perl-1.99.10.ebuild, mod_perl-1.99.11.ebuild, mod_perl-1.99.16.ebuild,
+  mod_perl-1.99.17-r1.ebuild, mod_perl-1.99.17.ebuild:
+  dev-perl/CGI => perl-core/CGI
+
+*mod_perl-1.99.17-r1 (09 May 2005)
+*mod_perl-1.99.17 (09 May 2005)
+*mod_perl-1.99.16 (09 May 2005)
+*mod_perl-1.99.11 (09 May 2005)
+*mod_perl-1.99.10 (09 May 2005)
+*mod_perl-1.29 (09 May 2005)
+*mod_perl-1.27-r4 (09 May 2005)
+*mod_perl-1.27-r2 (09 May 2005)
+*mod_perl-1.27-r1 (09 May 2005)
+
+  09 May 2005; Elfyn McBratney <beu@gentoo.org>
+  +files/mod_perl-1.99.16-sneak-tmpdir.patch, +files/75_mod_perl.conf,
+  +files/apache2-mod_perl-startup.pl, +files/mod_perl-1.99.17-Apache2.pm,
+  +metadata.xml, +mod_perl-1.27-r1.ebuild, +mod_perl-1.27-r2.ebuild,
+  +mod_perl-1.27-r4.ebuild, +mod_perl-1.29.ebuild, +mod_perl-1.99.10.ebuild,
+  +mod_perl-1.99.11.ebuild, +mod_perl-1.99.16.ebuild,
+  +mod_perl-1.99.17.ebuild, +mod_perl-1.99.17-r1.ebuild:
+  dev-perl/mod_perl -> www-apache/mod_perl
+
+  20 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> mod_perl-1.29.ebuild:
+  Stable on sparc
+
+  11 Apr 2005; Markus Rothe <corsair@gentoo.org> mod_perl-1.29.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  01 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> mod_perl-1.27-r4.ebuild:
+  Stable on ppc.
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> mod_perl-1.99.11.ebuild:
+  stable on ia64
+
+*mod_perl-1.27-r1 (19 Mar 2005)
+
+  19 Mar 2005; Elfyn McBratney <beu@gentoo.org> +mod_perl-1.27-r1.ebuild,
+  +mod_perl-1.27-r2.ebuild, +mod_perl-1.99.10.ebuild,
+  +mod_perl-1.99.11.ebuild:
+  Tree break #1 - re-add.
+
+  16 Mar 2005; Elfyn McBratney <beu@gentoo.org> mod_perl-1.27-r4.ebuild,
+  mod_perl-1.29.ebuild, mod_perl-1.99.16.ebuild, mod_perl-1.99.17-r1.ebuild,
+  mod_perl-1.99.17.ebuild:
+  Drop sys-apps/sed from DEPEND.
+
+  16 Mar 2005; Elfyn McBratney <beu@gentoo.org>
+  -files/mod_perl-1.99.10-nonukes.patch, -mod_perl-1.27-r1.ebuild,
+  -mod_perl-1.27-r2.ebuild, -mod_perl-1.27.ebuild, -mod_perl-1.99.08.ebuild,
+  -mod_perl-1.99.09.ebuild, -mod_perl-1.99.10.ebuild,
+  -mod_perl-1.99.11.ebuild:
+  Remove old versions.
+
+  11 Mar 2005; Elfyn McBratney <beu@gentoo.org>
+  -files/mod_perl-1.27-ipv6.patch, -files/mod_perl-1.29-ipv6.patch,
+  mod_perl-1.27-r2.ebuild, mod_perl-1.27-r4.ebuild, mod_perl-1.29.ebuild:
+  Drop the IPv6 patches (which don't add functionality as Apache 1.3 isn't
+  IPv6-aware).
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*mod_perl-1.99.17-r1 (13 Nov 2004)
+
+  13 Nov 2004; Robert Coie <rac@gentoo.org>
+  +files/mod_perl-1.99.17-Apache2.pm, +mod_perl-1.99.17-r1.ebuild:
+  Replace Apache2.pm to set @INC up properly
+
+*mod_perl-1.99.17 (27 Oct 2004)
+
+  27 Oct 2004; Doug Goldstein <cardoe@gentoo.org> +mod_perl-1.99.17.ebuild:
+  revision bump... works here.. leaving it masked though
+
+*mod_perl-1.99.16 (28 Sep 2004)
+
+  28 Sep 2004; Robert Coie <rac@gentoo.org>
+  +files/mod_perl-1.99.16-sneak-tmpdir.patch, +mod_perl-1.99.16.ebuild:
+  New upstream, maketest has some inconsistent problems, reliability suspect
+
+  21 Sep 2004; Michael Cummings <mcummings@gentoo.org>
+  +files/mod_perl-1.29-ipv6.patch:
+  Added missing patch for 1.29. Still applies cleanly. Closes bug 53094.
+
+  03 Sep 2004; Caleb Tennis <caleb@gentoo.org> -mod_perl-1.27-r3.ebuild:
+  Removing package.masked version
+
+  28 Aug 2004; David Holm <dholm@gentoo.org> mod_perl-1.99.11.ebuild:
+  Added to ~ppc.
+
+  07 Aug 2004; Jason Wever <weeve@gentoo.org> mod_perl-1.99.11.ebuild:
+  Added ~sparc keyword, resolves bug #59331.
+
+  30 May 2004; Bryan Østergaard <kloeri@gentoo.org> mod_perl-1.99.11.ebuild:
+  Stable on alpha.
+
+  20 Apr 2004; Michael Cummings <mcummings@gentoo.org>
+  mod_perl-1.99.09.ebuild, mod_perl-1.99.10.ebuild, mod_perl-1.99.11.ebuild:
+  Syntax fixes from bug 48373.
+
+  16 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  mod_perl-1.27-r3.ebuild, mod_perl-1.27-r4.ebuild, mod_perl-1.29.ebuild:
+  move inherit to the right place
+
+  01 Mar 2004; Michael Cummings <mcummings@gentoo.org> mod_perl-1.29.ebuild:
+  Fixed bad packlist info. This may affect (in a postive way) other problems
+  with mod_perl. Will bump if it proves to be effective.
+
+  29 Feb 2004; Jason Wever <weeve@gentoo.org> mod_perl-1.27-r4.ebuild:
+  Marked stable on sparc.
+
+  24 Feb 2004; <agriffis@gentoo.org> mod_perl-1.29.ebuild:
+  stable on alpha and ia64
+
+  18 Feb 2004; Aron Griffis <agriffis@gentoo.org> mod_perl-1.99.11.ebuild:
+  add ~alpha and ~ia64
+
+  18 Jan 2004; <tuxus@gentoo.org> mod_perl-1.27-r4.ebuild:
+  Added ~mips to KEYWORDS.
+
+*mod_perl-1.29 (23 Dec 2003)
+
+  23 Dec 2003; <rac@gentoo.org> mod_perl-1.29.ebuild:
+  Upstream bump.
+
+*mod_perl-1.99.11 (16 Dec 2003)
+
+  16 Dec 2003; <rac@gentoo.org> mod_perl-1.99.11.ebuild:
+  New upstream bump, fix bug 30257 by disabling parallel make
+
+*mod_perl-1.99.10 (31 Oct 2003)
+*mod_perl-1.27-r4 (14 Oct 2003)
+
+  14 Oct 2003; <rac@gentoo.org> mod_perl-1.27-r4.ebuild:
+  sed-fu to fix deprecated use of tail -1 in a couple of places, solves build
+  problems on machines with new coreutils, including the amd64 port
+
+*mod_perl-1.27-r1 (24 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+  25 Jun 2003; <rac@gentoo.org> mod_perl-1.27-r2.ebuild,
+  mod_perl-1.27-r3.ebuild:
+  Fine-tune ipv6 patch application using has_version because the apache dep has
+  been relaxed.  Addresses bug #23332.
+
+*mod_perl-1.27-r3 (24 Jun 2003)
+
+  24 Jun 2003; <rac@gentoo.org> mod_perl-1.27-r3.ebuild:
+  Move to vendor directory, change how prefixes are defined in an attempt to
+  avoid problems mholzer and others were reporting with inability to find
+  Apache.pm
+
+  22 Jun 2003; <rac@gentoo.org> mod_perl-1.99.08.ebuild,
+  mod_perl-1.99.09.ebuild:
+  revert to ~x86
+
+  10 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  mod_perl-1.27-r2.ebuild:
+  mod-perl-1.27 doesn't work well with apache 2. the lock for apache 1 wasn't
+  carried over to the r2 ebuild - fixed
+
+  06 Jun 2003; <rac@gentoo.org> mod_perl-1.99.09.ebuild:
+  Add sed-4 dependency, make sed die on failure
+
+  20 May 2003; <rac@gentoo.org> mod_perl-1.99.09.ebuild:
+  Eliminate "|| die" from the make test line, to address bug #21325.
+
+*mod_perl-1.99.09 (19 May 2003)
+
+  19 May 2003; <rac@gentoo.org> mod_perl-1.99.09.ebuild:
+  Upstream version bump, enable "make test". Major kudos to Corporate Gadfly
+  <corporate_gadfly@hotmail.com> in bugs #19951 and #20124.
+
+*mod_perl-1.99.08 (24 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*mod_perl-1.27-r2 (01 Mar 2003)
+
+  01 Mar 2003; Robert Coie <rac@gentoo.org> mod_perl-1.27-r2.ebuild,
+  files/mod_perl-1.27-ipv6.patch:
+  Add patch originally from
+  http://pasky.ji.cz/~pasky/dev/apache/mod_perl-1.27+ipv6.patch, to
+  allow building against an IPv6-enabled Apache (bug #6986).  Changed
+  dependency on Apache to be >=1.3.27-r4, as that is the first version
+  in which the ipv6 USE variable is employed by the Apache ebuild, and
+  that is necessary for this patch to operate correctly.
+
+  24 Jan 2003; <woodchip@gentoo.org> mod_perl-1.99.08 : version bump; #14503.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*mod_perl-1.99.07 (29 Nov 2002)
+
+  17 Dec 2002; Brandon Low <lostlogic@gentoo.org> :
+  This should be a new slot. marked slot=1.
+
+  29 Nov 2002; Donny Davies <woodchip@gentoo.org> :
+  New development version for Apache2.
+
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*mod_perl-1.27 (20 Jun 2002)
+
+  15 Sep 2002; Ryan Phillips <rphillips@gentoo.org> mod_perl-1.27.ebuild :
+  Added libwww-perl depedency... Hopefully fixes #7867
+
+  9 Sep 2002; <mcummings@gentoo.org> mod_perl-1.27.ebuild :
+  Corrected build syntax
+
+  1 Aug 2002; Calum Selkirk <cselkirk@gentoo.org> mod_perl-1.27.ebuild :
+  Added ppc to KEYWORDS.
+
+  20 Jun 2002; Thilo Bangert <bangert@gentoo.org> mod_perl-1.27.ebuild :
+  version bump
+
+*mod_perl-1.26 (7 May 2002)
+
+*mod_perl-1.25-r2 (9 Apr 2002)
+
+  9 Apr 2002; Donny Davies <woodchip@gentoo.org> :
+  Small updates to fit in with the reworked apache package.
+
+*mod_perl-1.25-r1 (27 Mar 2002)
+
+  27 Mar 2002; Seemant Kulleen <seemant@gentoo.org> mod_perl-1.25-r1.ebuild :
+  Updated the ebuild to new syntax, and ungzipped HTML documentation.

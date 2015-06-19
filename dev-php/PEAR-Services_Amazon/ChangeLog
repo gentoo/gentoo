@@ -1,0 +1,85 @@
+# ChangeLog for dev-php/PEAR-Services_Amazon
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Services_Amazon/ChangeLog,v 1.16 2015/01/06 21:37:06 grknight Exp $
+
+  06 Jan 2015; Brian Evans <grknight@gentoo.org>
+  -PEAR-Services_Amazon-0.7.0.ebuild, -PEAR-Services_Amazon-0.7.1.ebuild,
+  PEAR-Services_Amazon-0.8.0.ebuild:
+  EAPI bump; drop old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-Services_Amazon-0.7.0.ebuild, PEAR-Services_Amazon-0.7.1.ebuild,
+  PEAR-Services_Amazon-0.8.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*PEAR-Services_Amazon-0.8.0 (22 Aug 2009)
+
+  22 Aug 2009; Steve Dibb <beandog@gentoo.org>
+  +PEAR-Services_Amazon-0.8.0.ebuild:
+  Version bump
+
+*PEAR-Services_Amazon-0.7.1 (24 Dec 2007)
+
+  24 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  +PEAR-Services_Amazon-0.7.1.ebuild:
+  Version bump from the php-overlay
+
+  18 Dec 2007; Jakub Moc <jakub@gentoo.org>
+  +PEAR-Services_Amazon-0.7.1.ebuild:
+  Version bump.
+
+  06 Dec 2007; Markus Ullmann <jokey@gentoo.org>
+  PEAR-Services_Amazon-0.7.0.ebuild:
+  LICENSE fix from project overlay
+
+  02 Dec 2007; Jakub Moc <jakub@gentoo.org>
+  PEAR-Services_Amazon-0.7.0.ebuild:
+  Fix LICENSE
+
+  15 Aug 2007; Jakub Moc <jakub@gentoo.org> +metadata.xml,
+  +PEAR-Services_Amazon-0.7.0.ebuild:
+  Version bump, Bug 158633
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  25 Nov 2006; Bryan Østergaard <kloeri@gentoo.org>
+  PEAR-Services_Amazon-0.4.0.ebuild:
+  Add ~alpha + ~ia64 keywords, bug 134270.
+
+  27 May 2006; Luca Longinotti <chtekk@gentoo.org> ChangeLog:
+  Added to ~amd64. See bug #134270.
+
+  25 May 2006; Michael Hanselmann <hansmi@gentoo.org>
+  PEAR-Services_Amazon-0.4.0.ebuild:
+  Added to ~hppa, ~ppc64, ~sparc. See bug #134270.
+
+  28 Feb 2006; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Services_Amazon-0.4.0.ebuild:
+  Fix RDEPEND.
+
+  24 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Services_Amazon-0.4.0.ebuild:
+  Add ~amd64.
+
+*PEAR-Services_Amazon-0.4.0 (23 Oct 2005)
+
+  23 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-Services_Amazon-0.3.1.ebuild, +PEAR-Services_Amazon-0.4.0.ebuild:
+  Version bump.
+
+*PEAR-Services_Amazon-0.3.1 (10 Oct 2005)
+
+  10 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-Services_Amazon-0.3.0.ebuild, +PEAR-Services_Amazon-0.3.1.ebuild:
+  Version bump.
+
+  08 Oct 2005; Doug Goldstein <cardoe@gentoo.org>
+  PEAR-Services_Amazon-0.3.0.ebuild:
+  adding ~ppc
+
+*PEAR-Services_Amazon-0.3.0 (08 Oct 2005)
+
+  08 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org> +metadata.xml,
+  +PEAR-Services_Amazon-0.3.0.ebuild:
+  Initial ebuild, closes bug 108452.

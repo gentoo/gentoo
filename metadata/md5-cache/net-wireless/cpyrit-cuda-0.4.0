@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup
+DEPEND=dev-libs/openssl net-libs/libpcap dev-util/nvidia-cuda-toolkit || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
+DESCRIPTION=A sub-package that adds CUDA-capability to Pyrit
+EAPI=4
+HOMEPAGE=http://code.google.com/p/pyrit/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+PDEPEND=~net-wireless/pyrit-0.4.0
+RDEPEND=dev-libs/openssl net-libs/libpcap dev-util/nvidia-cuda-toolkit || ( =dev-lang/python-2.7* =dev-lang/python-2.6* =dev-lang/python-2.5* )
+SLOT=0
+SRC_URI=http://pyrit.googlecode.com/files/cpyrit-cuda-0.4.0.tar.gz
+_eclasses_=distutils	92e738ea29389cb3f34778d7a349ac71	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=41fa5c273f38b1cabcc41dc326377783

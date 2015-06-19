@@ -1,0 +1,32 @@
+diff -Naur broadcom-sta-5.100.82.112.orig/amd64/src/wl/sys/wl_linux.c broadcom-sta-5.100.82.112/amd64/src/wl/sys/wl_linux.c
+--- broadcom-sta-5.100.82.112.orig/amd64/src/wl/sys/wl_linux.c	2012-05-24 09:45:02.520119025 +0400
++++ broadcom-sta-5.100.82.112/amd64/src/wl/sys/wl_linux.c	2012-05-24 09:46:52.116121834 +0400
+@@ -1581,11 +1581,7 @@
+ 	}
+ 
+ 	WL_LOCK(wl);
+-	if (!capable(CAP_NET_ADMIN)) {
+-		bcmerror = BCME_EPERM;
+-	} else {
+-		bcmerror = wlc_ioctl(wl->wlc, ioc.cmd, buf, ioc.len, wlif->wlcif);
+-	}
++	bcmerror = wlc_ioctl(wl->wlc, ioc.cmd, buf, ioc.len, wlif->wlcif);
+ 	WL_UNLOCK(wl);
+ 
+ done1:
+
+diff -Naur broadcom-sta-5.100.82.112.orig/amd64/src/wl/sys/wl_cfg80211.c broadcom-sta-5.100.82.112/amd64/src/wl/sys/wl_cfg80211.c
+--- broadcom-sta-5.100.82.112.orig/amd64/src/wl/sys/wl_cfg80211.c	2012-05-24 09:45:33.268119813 +0400
++++ broadcom-sta-5.100.82.112/amd64/src/wl/sys/wl_cfg80211.c	2012-05-24 09:55:30.184135098 +0400
+@@ -1466,7 +1466,10 @@
+ 		scb_val.val = 0;
+ 		err = wl_dev_ioctl(dev, WLC_GET_RSSI, &scb_val, sizeof(scb_val_t));
+ 		if (err) {
+-			WL_ERR(("Could not get rssi (%d)\n", err));
++			if (err != -EINVAL) {
++				// Don't fill syslog with EINVAL error
++				WL_ERR(("Could not get rssi (%d)\n", err));
++			}
+ 			return err;
+ 		}
+ 		rssi = dtoh32(scb_val.val);

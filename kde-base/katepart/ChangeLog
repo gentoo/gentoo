@@ -1,0 +1,608 @@
+# ChangeLog for kde-base/katepart
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-base/katepart/ChangeLog,v 1.160 2015/02/19 01:44:03 kensington Exp $
+
+  19 Feb 2015; Michael Palimaka <kensington@gentoo.org>
+  -files/katepart-4.12.3-crash-fix.patch:
+  Remove unused files.
+
+  18 Feb 2015; Michał Górny <mgorny@gentoo.org> -katepart-4.12.5.ebuild:
+  Remove KDE SC 4.12
+
+  17 Feb 2015; Agostino Sarubbo <ago@gentoo.org> katepart-4.14.3.ebuild:
+  Stable for ppc64 wrt bug #517344
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org> katepart-4.14.3.ebuild:
+  Stable for ppc wrt bug #517344
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org> katepart-4.14.3.ebuild:
+  Stable for x86 wrt bug #517344
+
+  11 Dec 2014; Manuel Rüger <mrueg@gentoo.org> -katepart-4.14.2.ebuild:
+  Remove KDE SC 4.14.2
+
+  11 Dec 2014; Mikle Kolyada <zlogene@gentoo.org> katepart-4.14.3.ebuild:
+  amd64 stable wrt bug #517344
+
+  11 Dec 2014; Mikle Kolyada <zlogene@gentoo.org> katepart-4.14.3.ebuild:
+  amd64 stable wrt bug #517344
+
+*katepart-4.14.3 (16 Nov 2014)
+
+  16 Nov 2014; Alexey Shvetsov <alexxy@gentoo.org> +katepart-4.14.3.ebuild:
+  Version bump KDE SC 4.14.3
+
+  14 Nov 2014; Manuel Rüger <mrueg@gentoo.org> -katepart-4.13.3.ebuild,
+  -katepart-4.14.1.ebuild:
+  Cleanup old.
+
+  25 Oct 2014; Manuel Rüger <mrueg@gentoo.org> -katepart-4.14.0.ebuild:
+  Cleanup KDE SC 4.14.0
+
+*katepart-4.14.2 (25 Oct 2014)
+
+  25 Oct 2014; Michael Palimaka <kensington@gentoo.org>
+  +katepart-4.14.2.ebuild:
+  Version bump KDE SC 4.14.2
+
+*katepart-4.14.1 (16 Sep 2014)
+
+  16 Sep 2014; Johannes Huber <johu@gentoo.org> +katepart-4.14.1.ebuild:
+  Version bump KDE SC 4.14.1
+
+*katepart-4.14.0 (20 Aug 2014)
+
+  20 Aug 2014; Johannes Huber <johu@gentoo.org> +katepart-4.14.0.ebuild:
+  Version bump KDE SC 4.14.0
+
+  23 Jul 2014; Johannes Huber <johu@gentoo.org> -katepart-4.13.2.ebuild:
+  Remove KDE SC 4.13.2
+
+*katepart-4.13.3 (16 Jul 2014)
+
+  16 Jul 2014; Johannes Huber <johu@gentoo.org> +katepart-4.13.3.ebuild:
+  Version bump KDE SC 4.13.3
+
+  19 Jun 2014; Chris Reffett <creffett@gentoo.org> -katepart-4.13.1.ebuild:
+  Remove KDE SC 4.13.1
+
+  19 Jun 2014; Chris Reffett <creffett@gentoo.org> -katepart-4.13.0.ebuild:
+  Remove KDE SC 4.13.0
+
+*katepart-4.13.2 (15 Jun 2014)
+
+  15 Jun 2014; Michael Palimaka <kensington@gentoo.org> +katepart-4.13.2.ebuild:
+  Version bump KDE SC 4.13.2
+
+*katepart-4.13.1 (13 May 2014)
+
+  13 May 2014; Johannes Huber <johu@gentoo.org> +katepart-4.13.1.ebuild:
+  Version bump KDE SC 4.13.1
+
+  08 May 2014; Agostino Sarubbo <ago@gentoo.org> -katepart-4.11.5.ebuild:
+  Remove old
+
+  08 May 2014; Agostino Sarubbo <ago@gentoo.org> katepart-4.12.5.ebuild:
+  Stable for ppc64, wrt bug #504210
+
+  07 May 2014; Agostino Sarubbo <ago@gentoo.org> katepart-4.12.5.ebuild:
+  Stable for ppc, wrt bug #504210
+
+  07 May 2014; Johannes Huber <johu@gentoo.org> -katepart-4.12.3-r1.ebuild:
+  Remove KDE SC 4.12.3
+
+  07 May 2014; Mikle Kolyada <zlogene@gentoo.org> katepart-4.12.5.ebuild:
+  x86 stable wrt bug #504210
+
+  06 May 2014; Mikle Kolyada <zlogene@gentoo.org> katepart-4.12.5.ebuild:
+  amd64 stable wrt bug #504210
+
+  30 Apr 2014; Lars Wendler <polynomial-c@gentoo.org> Manifest:
+  Fixed manifest.
+
+  29 Apr 2014; Johannes Huber <johu@gentoo.org>
+  files/katepart-4.12.3-crash-fix.patch:
+  Remove KDE Workspace 4.11.8
+
+  29 Apr 2014; Johannes Huber <johu@gentoo.org> -katepart-4.12.4.ebuild:
+  Remove KDE SC 4.12.4
+
+  29 Apr 2014; Johannes Huber <johu@gentoo.org>
+  files/katepart-4.12.3-crash-fix.patch:
+  Version bump KDE Workspace 4.11.9
+
+*katepart-4.12.5 (29 Apr 2014)
+
+  29 Apr 2014; Johannes Huber <johu@gentoo.org> +katepart-4.12.5.ebuild:
+  Version bump KDE SC 4.12.5
+
+  16 Apr 2014; Johannes Huber <johu@gentoo.org> katepart-4.13.0.ebuild:
+  Restore KEYWORDS for KDE SC 4.13.0
+
+*katepart-4.13.0 (16 Apr 2014)
+
+  16 Apr 2014; Johannes Huber <johu@gentoo.org> +katepart-4.13.0.ebuild:
+  Version bump KDE SC 4.13.0
+
+  01 Apr 2014; Johannes Huber <johu@gentoo.org>
+  files/katepart-4.12.3-crash-fix.patch:
+  Version bump KDE Workspace 4.11.8
+
+*katepart-4.12.4 (01 Apr 2014)
+
+  01 Apr 2014; Johannes Huber <johu@gentoo.org> +katepart-4.12.4.ebuild:
+  Version bump KDE SC 4.12.4
+
+*katepart-4.12.3-r1 (13 Mar 2014)
+
+  13 Mar 2014; Johannes Huber <johu@gentoo.org>
+  +files/katepart-4.12.3-crash-fix.patch, +katepart-4.12.3-r1.ebuild,
+  -katepart-4.12.3.ebuild:
+  Revision bump adds backported upstream patch by Michael Palimaka
+  <kensington@gentoo.org>, spotted by Thomas <Thomas.Eschenbacher@gmx.de>. Patch
+  fixes crashes in kde-bae/kate and dev-util/kdevelop, bug #502494.
+
+  11 Mar 2014; Johannes Huber <johu@gentoo.org> -katepart-4.12.2.ebuild:
+  Remove KDE SC 4.12.2
+
+*katepart-4.12.3 (04 Mar 2014)
+
+  04 Mar 2014; Johannes Huber <johu@gentoo.org> +katepart-4.12.3.ebuild:
+  Version bump KDE SC 4.12.3
+
+  23 Feb 2014; Agostino Sarubbo <ago@gentoo.org> -katepart-4.11.2.ebuild:
+  Remove old
+
+  23 Feb 2014; Agostino Sarubbo <ago@gentoo.org> katepart-4.11.5.ebuild:
+  Stable for ppc64, wrt bug #493782
+
+  20 Feb 2014; Agostino Sarubbo <ago@gentoo.org> katepart-4.11.5.ebuild:
+  Stable for ppc, wrt bug #493782
+
+  16 Feb 2014; Agostino Sarubbo <ago@gentoo.org> katepart-4.11.5.ebuild:
+  Stable for x86, wrt bug #493782
+
+  14 Feb 2014; Johannes Huber <johu@gentoo.org> -katepart-4.12.1.ebuild:
+  Remove KDE SC 4.12.1
+
+  09 Feb 2014; Agostino Sarubbo <ago@gentoo.org> katepart-4.11.5.ebuild:
+  Stable for amd64, wrt bug #493782
+
+*katepart-4.12.2 (06 Feb 2014)
+
+  06 Feb 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +katepart-4.12.2.ebuild:
+  Version bump KDE SC 4.12.2
+
+  20 Jan 2014; Michael Palimaka <kensington@gentoo.org>
+  -katepart-4.12.0.ebuild:
+  Remove KDE SC 4.12.0
+
+  20 Jan 2014; Michael Palimaka <kensington@gentoo.org> katepart-4.11.5.ebuild:
+  Restore keywords that were accidentally omitted.
+
+*katepart-4.12.1 (18 Jan 2014)
+
+  18 Jan 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +katepart-4.12.1.ebuild:
+  Version bump KDE SC 4.12.1
+
+  10 Jan 2014; Chris Reffett <creffett@gentoo.org> -katepart-4.11.4.ebuild:
+  Remove KDE SC 4.11.4
+
+*katepart-4.11.5 (10 Jan 2014)
+
+  10 Jan 2014; Chris Reffett <creffett@gentoo.org> +katepart-4.11.5.ebuild:
+  Bump KDE SC 4.11.5
+
+*katepart-4.12.0 (18 Dec 2013)
+
+  18 Dec 2013; Johannes Huber <johu@gentoo.org> +katepart-4.12.0.ebuild:
+  Version bump KDE SC 4.12.0
+
+  14 Dec 2013; Johannes Huber <johu@gentoo.org>
+  -files/katepart-4.10.4-crash.patch:
+  Remove unused patch.
+
+  12 Dec 2013; Agostino Sarubbo <ago@gentoo.org> -katepart-4.10.5.ebuild:
+  Remove old
+
+  11 Dec 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.11.2.ebuild:
+  Stable for ppc64, wrt bug #484884
+
+  11 Dec 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.11.2.ebuild:
+  Stable for ppc, wrt bug #484884
+
+  10 Dec 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.11.2.ebuild:
+  Stable for ppc, wrt bug #484884
+
+  09 Dec 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.11.2.ebuild:
+  Stable for x86, wrt bug #484884
+
+  08 Dec 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.11.2.ebuild:
+  Stable for amd64, wrt bug #484884
+
+  04 Dec 2013; Johannes Huber <johu@gentoo.org> -katepart-4.11.3.ebuild:
+  Remove KDE SC 4.11.3
+
+*katepart-4.11.4 (03 Dec 2013)
+
+  03 Dec 2013; Johannes Huber <johu@gentoo.org> +katepart-4.11.4.ebuild:
+  Version bump KDE SC 4.11.4
+
+*katepart-4.11.3 (05 Nov 2013)
+
+  05 Nov 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +katepart-4.11.3.ebuild:
+  Version bump KDE SC 4.11.3
+
+  10 Oct 2013; Chris Reffett <creffett@gentoo.org> -katepart-4.11.1.ebuild:
+  Drop KDE SC 4.11.1
+
+*katepart-4.11.2 (08 Oct 2013)
+
+  08 Oct 2013; Chris Reffett <creffett@gentoo.org> +katepart-4.11.2.ebuild:
+  Version bump KDE SC 4.11.2
+
+  03 Sep 2013; Chris Reffett <creffett@gentoo.org> -katepart-4.11.0.ebuild:
+  Drop KDE 4.11.0
+
+*katepart-4.11.1 (03 Sep 2013)
+
+  03 Sep 2013; Chris Reffett <creffett@gentoo.org> +katepart-4.11.1.ebuild:
+  Bump KDE to 4.1.1
+
+*katepart-4.11.0 (14 Aug 2013)
+
+  14 Aug 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +katepart-4.11.0.ebuild:
+  Version bump KDE SC 4.11.0
+
+  02 Aug 2013; Johannes Huber <johu@gentoo.org> -katepart-4.10.4.ebuild,
+  -katepart-4.10.4-r1.ebuild:
+  Remove KDE SC 4.10.4
+
+  02 Aug 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.5.ebuild:
+  Stable for ppc64, wrt to bug #477634
+
+  30 Jul 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.5.ebuild:
+  Stable for ppc, wrt to bug #477634
+
+  29 Jul 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.5.ebuild:
+  Stable for x86, wrt to bug #477634
+
+  27 Jul 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.5.ebuild:
+  Stable for amd64, wrt to bug #477634
+
+*katepart-4.10.5 (02 Jul 2013)
+
+  02 Jul 2013; Johannes Huber <johu@gentoo.org> +katepart-4.10.5.ebuild:
+  Version bump KDE SC 4.10.5
+
+  02 Jul 2013; Agostino Sarubbo <ago@gentoo.org> -katepart-4.10.3.ebuild:
+  Remove old
+
+  02 Jul 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.4-r1.ebuild:
+  Stable for ppc64, wrt to bug #473942
+
+  01 Jul 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.4-r1.ebuild:
+  Stable for ppc, wrt to bug #473942
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.4-r1.ebuild:
+  Stable for x86, wrt to bug #473942
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.4-r1.ebuild:
+  Stable for amd64, wrt to bug #473942
+
+*katepart-4.10.4-r1 (22 Jun 2013)
+
+  22 Jun 2013; Michael Palimaka <kensington@gentoo.org>
+  +files/katepart-4.10.4-crash.patch, +katepart-4.10.4-r1.ebuild:
+  Backport crash patch from upstream.
+
+  08 Jun 2013; Agostino Sarubbo <ago@gentoo.org> -katepart-4.10.2.ebuild:
+  Remove old
+
+  08 Jun 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.3.ebuild:
+  Stable for ppc64, wrt to bug #471392
+
+  06 Jun 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.3.ebuild:
+  Stable for ppc, wrt to bug #471392
+
+  05 Jun 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.3.ebuild:
+  Stable for x86, wrt to bug #471392
+
+*katepart-4.10.4 (04 Jun 2013)
+
+  04 Jun 2013; Johannes Huber <johu@gentoo.org> +katepart-4.10.4.ebuild:
+  Version bump KDE SC 4.10.4
+
+  04 Jun 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.3.ebuild:
+  Stable for amd64, wrt to bug #471392
+
+*katepart-4.10.3 (06 May 2013)
+
+  06 May 2013; Johannes Huber <johu@gentoo.org> +katepart-4.10.3.ebuild:
+  Version bump KDE SC 4.10.3
+
+  05 May 2013; Agostino Sarubbo <ago@gentoo.org> -katepart-4.10.1.ebuild:
+  Remove old
+
+  05 May 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.2.ebuild:
+  Stable for ppc64, wrt to bug #466074
+
+  01 May 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.2.ebuild:
+  Stable for ppc, wrt to bug #466074
+
+  30 Apr 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.2.ebuild:
+  Stable for x86, wrt to bug #466074
+
+  29 Apr 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.2.ebuild:
+  Stable for amd64, wrt to bug #466074
+
+*katepart-4.10.2 (05 Apr 2013)
+
+  05 Apr 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +katepart-4.10.2.ebuild:
+  Version bump KDE SC 4.10.2
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.1.ebuild:
+  Stable for ppc64, wrt to bug #462890
+
+  02 Apr 2013; Michael Palimaka <kensington@gentoo.org>
+  -files/katepart-4.10.0-plugins.patch:
+  Remove unused patch.
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> -katepart-4.10.0-r1.ebuild,
+  -katepart-4.10.0.ebuild, -katepart-4.9.5.ebuild:
+  Remove old
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.1.ebuild:
+  Stable for ppc, wrt to bug #462890
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.1.ebuild:
+  Stable for x86, wrt bug #462890
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.1.ebuild:
+  Stable for amd64, wrt bug #462890
+
+*katepart-4.10.1 (06 Mar 2013)
+
+  06 Mar 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +katepart-4.10.1.ebuild:
+  Version bump KDE SC 4.10.1
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.10.0.ebuild,
+  katepart-4.9.5.ebuild:
+  Add ~ppc64, wrt bug #455960
+
+*katepart-4.10.0-r1 (11 Feb 2013)
+
+  11 Feb 2013; Michael Palimaka <kensington@gentoo.org>
+  +files/katepart-4.10.0-plugins.patch, +katepart-4.10.0-r1.ebuild:
+  Backport patch from upstream to fix loading of the highlight-selection plugin,
+  wrt bug #456660.
+
+  06 Feb 2013; Naohiro Aota <naota@gentoo.org> katepart-4.9.5.ebuild:
+  Add ~x86-fbsd wrt bug #430072
+
+*katepart-4.10.0 (06 Feb 2013)
+
+  06 Feb 2013; Alexey Shvetsov <alexxy@gentoo.org> +katepart-4.10.0.ebuild:
+  Version bump KDE SC 4.10.0
+
+  28 Jan 2013; Agostino Sarubbo <ago@gentoo.org> -katepart-4.9.3.ebuild,
+  -katepart-4.9.4.ebuild:
+  Remove old
+
+  27 Jan 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.9.5.ebuild:
+  Stable for ppc, wrt bug #450678
+
+  27 Jan 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.9.5.ebuild:
+  Stable for x86, wrt bug #450678
+
+  27 Jan 2013; Agostino Sarubbo <ago@gentoo.org> katepart-4.9.5.ebuild:
+  Stable for amd64, wrt bug #450678
+
+*katepart-4.9.5 (05 Jan 2013)
+
+  05 Jan 2013; <creffett@gentoo.org> +katepart-4.9.5.ebuild:
+  Version bump KDE SC 4.9.5
+
+  08 Dec 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  -katepart-4.8.5.ebuild:
+  Drop KDE 4.8
+
+*katepart-4.9.4 (05 Dec 2012)
+
+  05 Dec 2012; Alexey Shvetsov <alexxy@gentoo.org> +katepart-4.9.4.ebuild:
+  Version bump KDE SC 4.9.4
+
+  30 Nov 2012; <ago@gentoo.org> katepart-4.9.3.ebuild:
+  Stable for ppc, wrt bug #442394
+
+  23 Nov 2012; Agostino Sarubbo <ago@gentoo.org> katepart-4.9.3.ebuild:
+  Stable for x86, wrt bug #442394
+
+  23 Nov 2012; Agostino Sarubbo <ago@gentoo.org> katepart-4.9.3.ebuild:
+  Stable for amd64, wrt bug #442394
+
+  13 Nov 2012; Johannes Huber <johu@gentoo.org> -katepart-4.9.2.ebuild:
+  Remove KDE SC 4.9.2
+
+  13 Nov 2012; Johannes Huber <johu@gentoo.org> -katepart-4.9.1.ebuild:
+  Remove KDE SC 4.9.1
+
+*katepart-4.9.3 (08 Nov 2012)
+
+  08 Nov 2012; <creffett@gentoo.org> +katepart-4.9.3.ebuild:
+  Version bump KDE SC 4.9.3
+
+  17 Oct 2012; Markus Meier <maekke@gentoo.org> katepart-4.9.2.ebuild:
+  add ~arm, bug #430072
+
+*katepart-4.9.2 (02 Oct 2012)
+
+  02 Oct 2012; Johannes Huber <johu@gentoo.org> +katepart-4.9.2.ebuild:
+  Version bump KDE SC 4.9.2
+
+  21 Sep 2012; Johannes Huber <johu@gentoo.org> -katepart-4.9.0.ebuild:
+  Remove KDE SC 4.9.0
+
+  19 Sep 2012; Alexis Ballier <aballier@gentoo.org> katepart-4.9.1.ebuild:
+  keyword ~amd64-fbsd, bug #430072
+
+*katepart-4.9.1 (04 Sep 2012)
+
+  04 Sep 2012; Johannes Huber <johu@gentoo.org> +katepart-4.9.1.ebuild:
+  Version bump KDE SC 4.9.1
+
+  03 Sep 2012; Johannes Huber <johu@gentoo.org> -katepart-4.7.4.ebuild:
+  Remove KDE SC 4.7.4
+
+  03 Sep 2012; Johannes Huber <johu@gentoo.org> -katepart-4.8.3.ebuild:
+  Remove KDE SC 4.8.3
+
+  03 Sep 2012; Tomáš Chvátal <scarabeus@gentoo.org> katepart-4.8.5.ebuild:
+  Stable on ppc wrt bug#431892.
+
+  02 Sep 2012; Agostino Sarubbo <ago@gentoo.org> katepart-4.8.5.ebuild:
+  Stable for x86, wrt bug #431892
+
+  02 Sep 2012; Agostino Sarubbo <ago@gentoo.org> katepart-4.8.5.ebuild:
+  Stable for amd64, wrt bug #431892
+
+  17 Aug 2012; Johannes Huber <johu@gentoo.org> -katepart-4.8.4.ebuild:
+  Remove KDE SC 4.8.4
+
+*katepart-4.8.5 (07 Aug 2012)
+
+  07 Aug 2012; Johannes Huber <johu@gentoo.org> +katepart-4.8.5.ebuild:
+  Version bump KDE SC 4.8.5
+
+*katepart-4.9.0 (01 Aug 2012)
+
+  01 Aug 2012; Johannes Huber <johu@gentoo.org> +katepart-4.9.0.ebuild:
+  Version bump KDE SC 4.9.0
+
+*katepart-4.8.4 (21 Jun 2012)
+
+  21 Jun 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  +katepart-4.8.4.ebuild:
+  Version bump KDE SC 4.8.4
+
+  24 May 2012; Johannes Huber <johu@gentoo.org> -katepart-4.8.1.ebuild:
+  Remove KDE SC 4.8.1
+
+  24 May 2012; Agostino Sarubbo <ago@gentoo.org> katepart-4.8.3.ebuild:
+  Stable for x86, wrt bug #414605
+
+  18 May 2012; Agostino Sarubbo <ago@gentoo.org> katepart-4.8.3.ebuild:
+  Stable for amd64, wrt bug #414605
+
+  18 May 2012; Joseph Jezak <josejx@gentoo.org> katepart-4.8.3.ebuild:
+  Marked ~ppc ~ppc64 for bug #402989.
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org> katepart-4.8.3.ebuild:
+  keyword ~amd64-fbsd
+
+  08 May 2012; Johannes Huber <johu@gentoo.org> -katepart-4.8.2.ebuild:
+  Remove KDE SC 4.8.2
+
+*katepart-4.8.3 (03 May 2012)
+
+  03 May 2012; Johannes Huber <johu@gentoo.org> +katepart-4.8.3.ebuild:
+  Version bump KDE SC 4.8.3
+
+  18 Apr 2012; Markus Meier <maekke@gentoo.org> katepart-4.8.1.ebuild:
+  x86 stable, bug #409403
+
+*katepart-4.8.2 (04 Apr 2012)
+
+  04 Apr 2012; Johannes Huber <johu@gentoo.org> +katepart-4.8.2.ebuild:
+  Version bump KDE SC 4.8.2
+
+  04 Apr 2012; Agostino Sarubbo <ago@gentoo.org> katepart-4.8.1.ebuild:
+  Stable for amd64, wrt bug #409403
+
+  31 Mar 2012; Markus Meier <maekke@gentoo.org> katepart-4.8.1.ebuild:
+  add ~arm, bug #402989
+
+  23 Mar 2012; Johannes Huber <johu@gentoo.org> -katepart-4.8.0.ebuild:
+  Remove KDE SC 4.8.0
+
+*katepart-4.8.1 (06 Mar 2012)
+
+  06 Mar 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  +katepart-4.8.1.ebuild:
+  Version bump KDE SC 4.8.1
+
+  18 Feb 2012; nixnut <nixnut@gentoo.org> katepart-4.7.4.ebuild:
+  ppc stable #396359
+
+*katepart-4.8.0 (25 Jan 2012)
+
+  25 Jan 2012; Johannes Huber <johu@gentoo.org> +katepart-4.8.0.ebuild:
+  Version bump KDE SC 4.8.0
+
+  17 Jan 2012; Johannes Huber <johu@gentoo.org> -katepart-4.7.3.ebuild:
+  Remove KDE SC 4.7.3
+
+  16 Jan 2012; Agostino Sarubbo <ago@gentoo.org> katepart-4.7.4.ebuild:
+  Stable for amd64, wrt bug #396359
+
+  09 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> katepart-4.7.4.ebuild:
+  x86 stable wrt bug #396359
+
+*katepart-4.7.4 (11 Dec 2011)
+
+  11 Dec 2011; Alexey Shvetsov <alexxy@gentoo.org> +katepart-4.7.4.ebuild:
+  Version bump KDE SC 4.7.4
+
+  07 Dec 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -katepart-4.7.2.ebuild:
+  Drop KDE 4.7.2
+
+  07 Dec 2011; Markos Chandras <hwoarang@gentoo.org> katepart-4.7.3.ebuild:
+  Stable on amd64 wrt bug #388279
+
+  07 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> katepart-4.7.3.ebuild:
+  x86 stable wrt bug #388279
+
+  03 Dec 2011; Andreas K. Huettel <dilfridge@gentoo.org> katepart-4.7.3.ebuild:
+  Restrict tests, bug 392993
+
+  05 Nov 2011; Kacper Kowalik <xarthisius@gentoo.org> katepart-4.7.3.ebuild:
+  Marked ~ppc/~ppc64 wrt #379471
+
+*katepart-4.7.3 (02 Nov 2011)
+
+  02 Nov 2011; Alexey Shvetsov <alexxy@gentoo.org> +katepart-4.7.3.ebuild:
+  Version bump KDE SC 4.7.3
+
+  28 Oct 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -katepart-4.7.1.ebuild:
+  Drop KDEpim 4.6.1 and KDE 4.7.1
+
+  15 Oct 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -katepart-4.7.0.ebuild:
+  Drop KDE 4.7.0
+
+*katepart-4.7.2 (06 Oct 2011)
+
+  06 Oct 2011; Alexey Shvetsov <alexxy@gentoo.org> +katepart-4.7.2.ebuild:
+  Version bump KDE SC 4.7.2
+
+*katepart-4.7.1 (07 Sep 2011)
+
+  07 Sep 2011; Alexey Shvetsov <alexxy@gentoo.org> +katepart-4.7.1.ebuild:
+  Version bump KDE SC 4.7.1
+
+  14 Aug 2011; Markus Meier <maekke@gentoo.org> katepart-4.7.0.ebuild:
+  add ~arm, bug #376613
+
+*katepart-4.7.0 (27 Jul 2011)
+
+  27 Jul 2011; Alexey Shvetsov <alexxy@gentoo.org> +katepart-4.7.0.ebuild,
+  +metadata.xml:
+  Version bump KDE SC 4.7.0

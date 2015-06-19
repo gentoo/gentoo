@@ -1,0 +1,188 @@
+# ChangeLog for dev-perl/gtk2-fu
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/gtk2-fu/ChangeLog,v 1.50 2015/06/13 22:21:28 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  gtk2-fu-0.110.0-r2.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+  21 Mar 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  gtk2-fu-0.110.0-r2.ebuild:
+  Fix tests, bug 543474
+
+  19 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> -gtk2-fu-0.110.0.ebuild:
+  Drop old
+
+*gtk2-fu-0.110.0-r2 (25 Aug 2014)
+
+  25 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +gtk2-fu-0.110.0-r2.ebuild, -gtk2-fu-0.110.0-r1.ebuild:
+  bumped current stable ebuild(s) EAPI to 5; committed directly to stable as no
+  other changes present and revbump helps stable systems to keep from dieing on
+  perl-5.18 upgrade
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gtk2-fu-0.110.0-r1.ebuild:
+  Stable for alpha, wrt bug #425282
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gtk2-fu-0.110.0-r1.ebuild:
+  Stable for hppa, wrt bug #425282
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gtk2-fu-0.110.0-r1.ebuild:
+  Stable for ppc64, wrt bug #425282
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gtk2-fu-0.110.0-r1.ebuild:
+  Stable for ppc, wrt bug #425282
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gtk2-fu-0.110.0-r1.ebuild:
+  Stable for x86, wrt bug #425282
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> gtk2-fu-0.110.0-r1.ebuild:
+  Stable for amd64, wrt bug #425282
+
+*gtk2-fu-0.110.0-r1 (10 Jul 2012)
+
+  10 Jul 2012; Torsten Veller <tove@gentoo.org> +gtk2-fu-0.110.0-r1.ebuild:
+  Fix pod encoding (#425282)
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  05 Apr 2012; Torsten Veller <tove@gentoo.org> -gtk2-fu-0.10.ebuild:
+  Cleanup
+
+  31 Mar 2012; Raúl Porcel <armin76@gentoo.org> gtk2-fu-0.10.ebuild,
+  gtk2-fu-0.110.0.ebuild:
+  alpha stable and drop ia64/sparc keywords wrt #400295
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> gtk2-fu-0.110.0.ebuild:
+  x86 stable wrt bug #400295
+
+  03 Mar 2012; Brent Baude <ranger@gentoo.org> gtk2-fu-0.110.0.ebuild:
+  Marking gtk2-fu-0.110.0 ppc64 for bug 400295
+
+  27 Feb 2012; Brent Baude <ranger@gentoo.org> gtk2-fu-0.110.0.ebuild:
+  Marking gtk2-fu-0.110.0 ppc for bug 400295
+
+  24 Feb 2012; Jeroen Roovers <jer@gentoo.org> gtk2-fu-0.110.0.ebuild:
+  Stable for HPPA (bug #400295).
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> gtk2-fu-0.110.0.ebuild:
+  Stable for amd64, wrt bug #400295
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -gtk2-fu-0.11.ebuild:
+  Cleanup
+
+*gtk2-fu-0.110.0 (27 Aug 2011)
+
+  27 Aug 2011; Torsten Veller <tove@gentoo.org> +gtk2-fu-0.110.0.ebuild:
+  Change version scheme
+
+  03 Nov 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Retiring dams from metadata - bug 200330.
+
+*gtk2-fu-0.11 (28 Mar 2010)
+
+  28 Mar 2010; Robin H. Johnson <robbat2@gentoo.org> +gtk2-fu-0.11.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  02 Jul 2009; Jeroen Roovers <jer@gentoo.org> gtk2-fu-0.10.ebuild:
+  Stable for HPPA too.
+
+  09 Jan 2009; Torsten Veller <tove@gentoo.org> gtk2-fu-0.10.ebuild:
+  Remove Module-Build from RDEPEND (#246942)
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org> gtk2-fu-0.10.ebuild:
+  New virtuals: module-build
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org> gtk2-fu-0.10.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  05 Jul 2006; Christian Hartmann <ian@gentoo.org> gtk2-fu-0.10.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed header
+
+  16 Jan 2006; Mark Loeser <halcy0n@gentoo.org> -files/digest-gtk2-fu-0.01,
+  -files/digest-gtk2-fu-0.02, -files/digest-gtk2-fu-0.03,
+  -files/digest-gtk2-fu-0.04, -files/digest-gtk2-fu-0.05,
+  -files/digest-gtk2-fu-0.05-r1, -files/digest-gtk2-fu-0.06,
+  -files/digest-gtk2-fu-0.07, -files/digest-gtk2-fu-0.08, ChangeLog:
+  Clean up stray digests
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org> gtk2-fu-0.10.ebuild:
+  Mark 0.10 stable on ia64
+
+  08 Sep 2005; Aron Griffis <agriffis@gentoo.org> gtk2-fu-0.10.ebuild:
+  Mark 0.10 stable on alpha
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> gtk2-fu-0.10.ebuild:
+  add ~ia64
+
+  18 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> gtk2-fu-0.10.ebuild:
+  Stable on sparc
+
+  12 Jul 2005; Simon Stelling <blubb@gentoo.org> gtk2-fu-0.10.ebuild:
+  stable on amd64
+
+  22 Jun 2005; <dams@gentoo.org> gtk2-fu-0.10.ebuild:
+  added dep on dev-perl/module-build, bug #96720
+
+*gtk2-fu-0.10 (20 Jun 2005)
+
+  20 Jun 2005; <dams@gentoo.org> +gtk2-fu-0.10.ebuild:
+  new version
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> gtk2-fu-0.08.ebuild:
+  Stable on ppc64
+
+*gtk2-fu-0.08 (02 Jun 2005)
+
+  02 Jun 2005; <dams@gentoo.org> +gtk2-fu-0.08.ebuild:
+  new version
+
+  02 Jun 2005; <dams@gentoo.org> gtk2-fu-0.07.ebuild:
+  marked stable on x86 and ppc
+
+*gtk2-fu-0.06 (07 May 2005)
+
+  07 May 2005; <dams@gentoo.org> +gtk2-fu-0.06.ebuild:
+  version bump
+
+  19 Apr 2005; <dams@gentoo.org> gtk2-fu-0.05-r1.ebuild:
+  added dependancy on gtk2-perl
+
+  07 Mar 2005; Markus Rothe <corsair@gentoo.org> gtk2-fu-0.05.ebuild:
+  Stable on ppc64
+
+*gtk2-fu-0.05-r1 (08 Mar 2005)
+
+  08 Mar 2005; <dams@gentoo.org> +gtk2-fu-0.05-r1.ebuild:
+  switching to cpan ebuild
+
+  15 Jan 2005; Markus Rothe <corsair@gentoo.org> gtk2-fu-0.05.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*gtk2-fu-0.05 (09 Jan 2005)
+
+  09 Jan 2005; <dams@gentoo.org> +gtk2-fu-0.05.ebuild:
+  bug correction, minor API change
+
+*gtk2-fu-0.04 (07 Jan 2005)
+
+  07 Jan 2005; <dams@gentoo.org> +gtk2-fu-0.04.ebuild:
+  version 0.04
+
+*gtk2-fu-0.03 (06 Jan 2005)
+
+  06 Jan 2005; <dams@gentoo.org> +gtk2-fu-0.03.ebuild:
+  version 0.03 (MakeMaker)
+  corrected 2005 headers
+
+*gtk2-fu-0.02 (30 Nov 2004)
+
+  30 Nov 2004; <dams@gentoo.org> +gtk2-fu-0.02.ebuild:
+  version 0.02
+
+*gtk2-fu-0.01 (26 Nov 2004)
+
+  26 Nov 2004; <dams@gentoo.org> +metadata.xml, +gtk2-fu-0.01.ebuild:
+  first pre-release, needed for profuse

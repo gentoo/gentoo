@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-proto/xextproto media-sound/mpg123
+DESCRIPTION=Mp3 player dock app for WindowMaker; frontend to mpg123
+HOMEPAGE=http://dockapps.windowmaker.org/file.php/id/60
+KEYWORDS=~amd64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm
+SLOT=0
+SRC_URI=http://dockapps.windowmaker.org/download.php/id/91/wmmp3-0.12.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=25eeaf37a7c8ccea7cd268a4a7d2a26b

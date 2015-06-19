@@ -1,0 +1,270 @@
+# ChangeLog for app-text/sablotron
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/sablotron/ChangeLog,v 1.71 2013/07/24 02:34:53 jer Exp $
+
+  24 Jul 2013; Jeroen Roovers <jer@gentoo.org> sablotron-1.0.3.ebuild:
+  Fix building with automake-1.13 (bug #467612).
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/sgml-herd-has-no-maintainers-
+  again-td259655.html
+
+  25 May 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  sablotron-1.0.3.ebuild:
+  Adding missing base_src_prepare
+
+  06 Apr 2010; Jonathan Callen <abcd@gentoo.org> sablotron-1.0.3.ebuild:
+  Bump to EAPI=3, add prefix keywords
+
+  06 Feb 2010; Torsten Veller <tove@gentoo.org> sablotron-1.0.3.ebuild:
+  Prepare in the correct directory (#300798)
+
+  20 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -sablotron-1.0.1.ebuild:
+  Remove old version (goodbye mips).
+
+  19 Jun 2009; Brent Baude <ranger@gentoo.org> sablotron-1.0.3.ebuild:
+  stable ppc64, bug 272244
+
+  09 Jun 2009; Raúl Porcel <armin76@gentoo.org> sablotron-1.0.3.ebuild:
+  arm/ia64/s390/sh stable wrt #272244
+
+  07 Jun 2009; Jeroen Roovers <jer@gentoo.org> sablotron-1.0.3.ebuild:
+  Stable for HPPA (bug #272244).
+
+  07 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  sablotron-1.0.3.ebuild:
+  Stable on alpha, bug #272088
+
+  06 Jun 2009; nixnut <nixnut@gentoo.org> sablotron-1.0.3.ebuild:
+  ppc stable #272244
+
+  03 Jun 2009; Markus Meier <maekke@gentoo.org> sablotron-1.0.3.ebuild:
+  amd64/x86 stable, bug #272244
+
+  02 Jun 2009; Ferris McCormick <fmccor@gentoo.org> sablotron-1.0.3.ebuild:
+  Sparc stable, Bug #272244.
+
+  02 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -sablotron-1.0.2.ebuild:
+  Remove old version.
+
+  12 Dec 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  sablotron-1.0.3.ebuild:
+  Simplify ebuild, make sure eautoreconf is executed during src_unpack
+  rather than compile, remove doc USE flag since it was automagic, remove
+  old workaround that is not useful right now.
+
+  25 Jan 2008; Fabian Groffen <grobian@gentoo.org> sablotron-1.0.1.ebuild,
+  sablotron-1.0.2.ebuild, sablotron-1.0.3.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  17 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +files/1.0.3-libsablot-expat.patch, sablotron-1.0.3.ebuild:
+  Fix emerging with -Wl,--as-needed. Fixes bug #148412.
+
+*sablotron-1.0.3 (14 Mar 2007)
+
+  14 Mar 2007; Leonardo Boshell <leonardop@gentoo.org>
+  +sablotron-1.0.3.ebuild:
+  Version bump (bug #158131). Updated HOMEPAGE. Replaced einstall with "make
+  install". Fixed the 'doc' flag implementation so no files are installed
+  under /no when USE=-doc.
+
+  12 Mar 2007; Leonardo Boshell <leonardop@gentoo.org> metadata.xml:
+  Replacing text-markup herd with the new sgml herd.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> sablotron-1.0.1.ebuild,
+  sablotron-1.0.1-r1.ebuild, sablotron-1.0.2.ebuild:
+  Remove gnuconfig_update usage, leave it to econf.
+
+  11 Dec 2006; Timothy Redaelli <drizzt@gentoo.org> sablotron-1.0.2.ebuild:
+  Added ~x86-fbsd keyword
+
+*sablotron-1.0.2 (24 Apr 2006)
+
+  24 Apr 2006; Martin Ehmsen <ehmsen@gentoo.org> +sablotron-1.0.2.ebuild:
+  Version bump to 1.0.2 and fixed HOMEPAGE, thanks to F. Steinel,
+  bug #102619.
+  Do not install INSTALL file.
+
+  25 Mar 2006; Caleb Tennis <caleb@gentoo.org> -sablotron-0.97.ebuild,
+  -sablotron-1.0.ebuild:
+  remove old versions
+
+*sablotron-1.0.1-r1 (25 Mar 2006)
+
+  25 Mar 2006; Caleb Tennis <caleb@gentoo.org> +sablotron-1.0.1-r1.ebuild:
+  Add -shared-libgcc option from bug #106667
+
+  06 Feb 2006; Simon Stelling <blubb@gentoo.org> sablotron-1.0.1.ebuild:
+  stable on amd64
+
+  21 Sep 2005; Fabian Groffen <grobian@gentoo.org> sablotron-1.0.1.ebuild:
+  Marking ~ppc-macos (bug #105887)
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> sablotron-1.0.1.ebuild:
+  Mark 1.0.1 stable on alpha
+
+  28 Aug 2005; Guy Martin <gmsoft@gentoo.org> sablotron-1.0.1.ebuild:
+  Stable on hppa.
+
+  12 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  sablotron-1.0.1.ebuild:
+  Stable on sparc
+
+  12 Aug 2005; Caleb Tennis <caleb@gentoo.org> sablotron-1.0.1.ebuild:
+  x86 stable
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> sablotron-1.0.1.ebuild:
+  stable on ia64
+
+  20 Feb 2005; Hardave Riar <hardave@gentoo.org> sablotron-1.0.1.ebuild:
+  Stable on mips
+
+  20 Nov 2004; Daniel Black <dragonheart@gentoo.org> sablotron-1.0.1.ebuild:
+  ppc keyword added
+
+  07 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> sablotron-0.97.ebuild,
+  sablotron-1.0.1.ebuild, sablotron-1.0.ebuild:
+  Require dev-perl/XML-Parser only if doc USE flag is set; bug #69452.
+
+  11 Oct 2004; Guy Martin <gmsoft@gentoo.org> sablotron-1.0.ebuild:
+  Marked stable on hppa.
+
+  01 Aug 2004; Tom Gall <tgall@gentoo.org> sablotron-1.0.1.ebuild:
+  stable on ppc64,bug #57583
+
+  25 May 2004; Ferris McCormick <fmccor@gentoo.org> sablotron-1.0.ebuild:
+  Marked stable on sparc.
+
+  03 May 2004; Joshua Kinard <kumba@gentoo.org> sablotron-1.0.1.ebuild:
+  Added ~mips to keywords and added gnuconfig support.
+
+  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> sablotron-1.0.ebuild :
+  Stable on AMD64.
+
+  26 Apr 2004; Mike Gardiner <obz@gentoo.org> sablotron-0.96.ebuild,
+  sablotron-0.97.ebuild, sablotron-1.0.ebuild:
+  Removed 0.96 version, 1.0 stable on x86
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> sablotron-0.96.ebuild,
+  sablotron-0.97.ebuild:
+  Add die following econf for bug 48950
+
+  01 Apr 2004; <randy@gentoo.org> sablotron-1.0.1.ebuild:
+  adding s390 keywords
+
+*sablotron-1.0.1 (22 Feb 2004)
+
+  22 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> sablotron-0.96.ebuild,
+  sablotron-0.97.ebuild, sablotron-1.0.1.ebuild, sablotron-1.0.ebuild:
+  Version bumped and updated SRC_URI and HOMEPAGE. Thanks to Florian Loitsch
+  <f.loitsch@wootsoft.com> in bug #42075
+
+  31 Jan 2004; Mike Gardiner <obz@gentoo.org> sablotron-1.0.ebuild:
+  Fixed installation of sablot-config, by passing prefix= to einstall instead of
+  econf. See bug #39575 for more
+
+  18 Jan 2004; <tuxus@gentoo.org> sablotron-0.97.ebuild:
+  Added ~mips to KEYWORDS.
+
+  10 Jan 2004; <agriffis@gentoo.org> sablotron-1.0.ebuild:
+  stable on alpha and ia64
+
+  02 Jan 2004; Martin Schlemmer <azarah@gentoo.org> sablotron-0.96.ebuild,
+  sablotron-0.97.ebuild, sablotron-1.0.ebuild:
+  Run elibtoolize, else we get references to PORTAGE_TMPDIR in
+  /usr/lib/libsablot.la ...
+
+  30 Dec 2003; Ilya A. Volynets <iluxa@gentoo.org> sablotron-0.97.ebuild:
+  Mark stable on alpha.
+
+  11 Nov 2003; Rajiv Aaron Manglani <rajiv@gentoo.org> sablotron-0.97.ebuild:
+  stable on ppc.
+
+*sablotron-1.0 (13 Sep 2003)
+
+  13 Sep 2003; Mike Gardiner <obz@gentoo.org> sablotron-0.97.ebuild,
+  sablotron-1.0.ebuild:
+  New version, marked ~ on all archs, stabilise as you can. Added
+  metadata.xml. Thanks to Nicolas GRANDCLAUDE for help with bug #26317.
+
+  18 Jun 2003; Jason Wever <weeve@gentoo.org> sablotron-0.97.ebuild:
+  Changed ~sparc keyword to sparc to fix dependency problem from recent php glsa.
+
+*sablotron-0.97 (09 Mar 2003)
+
+  16 Apr 2003; Guy Martin <gmsoft@gentoo.org> sablotron-0.97.ebuild :
+  Marked stable on hppa.
+
+  16 Apr 2003; Tavis Ormandy <taviso@gentoo.org> sablotron-0.97.ebuild:
+  marking ~alpha.
+
+  20 Mar 2003; Guy Martin <gmsoft@gentoo.org> sablotron-0.97.ebuild :
+  Added ~hppa to KEYWORDS.
+
+  09 Mar 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
+
+  21 Jan 2003; Rajiv Manglani <rajiv@gentoo.org> : added ~ppc.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*sablotron-0.96 (26 Nov 2002)
+
+  20 Mar 2003; Guy Martin <gmsoft@gentoo.org> sablotron-0.96.ebuild :
+  Added hppa to KEYWORDS.
+
+  26 Nov 2002; Michael Cummings <mcummings@gentoo.org> sablotron-0.96.ebuild:
+
+  added patch thanks to rajiv in bug 11085 (rajiv@gentoo.org, that is)
+
+  new version, masked for testing, seeing if it resolves bug 11085
+
+*sablotron-0.95-r1 (13 Jul 2002)
+
+  23 Sep 2002; Ryan Phillips <rphillips@gentoo.org> sablotron-0.95-r1.ebuild :
+
+  Fixed stdc++ linking issue; #3876
+
+  05 Aug 2002; Seemant Kulleen <seemant@gentoo.org> sablotron-0.95-r1.ebuild :
+
+  Fallsafe: emake || make || die.  From bug #6041 by shadow@ines.ro
+
+  13 Jul 2002; Seemant Kulleen <seemant@gentoo.org> sablotron-0.95-r1.ebuild
+  files/digest-sablotron-0.95-r1 files/sablotron-0.95-gentoo.patch :
+
+  gentoo@gonzo.ch (Roman Weber) submitted this after doing some excellent
+  research:
+   Added a patch that PHP compiles with sablotron enabled.
+     Source: http://bugs.php.net/bug.php?id=18184
+
+  Closes bug #4908.
+
+*sablotron-0.95 (10 Jul 2002)
+
+  10 Jul 2002; Seemant Kulleen <seemant@gentoo.org> sablotron-0.95.ebuild
+  files/digest-sablotron-0.95 :
+
+  Version bump thanks to: gentoo@gonzo.ch (Roman Weber) in bug #4798
+
+*sablotron-0.90 (12 Mar 2002)
+
+  12 Mar 2002; Seemant Kulleen <seemant@gentoo.org> sablotron-0.90.ebuild :
+
+  Upgraded version from 0.81.  Updated the copyright info, changed try blocks to
+  death blocks, added documentation and removed unnecessary dodir statements.  
+
+*sablotron-0.81 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

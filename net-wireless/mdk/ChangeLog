@@ -1,0 +1,27 @@
+# ChangeLog for net-wireless/mdk
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/mdk/ChangeLog,v 1.5 2014/08/10 20:35:06 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> mdk-3.6-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*mdk-3.6-r1 (03 May 2014)
+
+  03 May 2014; Rick Farina <zerochaos@gentoo.org> +files/fix_wids_mdk3_v5.patch,
+  +mdk-3.6-r1.ebuild, -mdk-3.6.ebuild:
+  merging in fixes from the pentoo repo so gentoo is the only source of this
+  ebuild
+
+  02 Jun 2013; Rick Farina <zerochaos@gentoo.org> metadata.xml:
+  adding myself as maintainer
+
+  02 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #328951
+
+*mdk-3.6 (22 Feb 2011)
+
+  22 Feb 2011; Dane Smith <c1pher@gentoo.org> +files/3.6-makefile.patch,
+  +mdk-3.6.ebuild, +metadata.xml:
+  Initial commit for mdk. Moved from the Sunrise overlay wrt bug 265280 and
+  bug
+  178561. Thanks to Justin Lecher (jlec@gentoo.org) for the ebuild.

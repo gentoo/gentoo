@@ -1,0 +1,220 @@
+commit c0ae6c3f9f78ae9e9e4c7030e7054dc5c0267e2c
+Author: Simon Morlat <simon.morlat@linphone.org>
+Date:   Mon Apr 11 22:46:37 2011 +0200
+
+    fix SDL output that wasn't compiling anymore and bugfix videodisplay test program
+
+diff --git a/src/msfilter.c b/src/msfilter.c
+index d8d84f3..4b84b8b 100644
+--- a/src/msfilter.c
++++ b/src/msfilter.c
+@@ -169,9 +169,7 @@ int ms_filter_link(MSFilter *f1, int pin1, MSFilter *f2, int pin2){
+ 
+ int ms_filter_unlink(MSFilter *f1, int pin1, MSFilter *f2, int pin2){
+ 	MSQueue *q;
+-	ms_return_val_if_fail(f1, -1);
+-	ms_return_val_if_fail(f2, -1);
+-	ms_message("ms_filter_unlink: %s:%p,%i-->%s:%p,%i",f1->desc->name,f1,pin1,f2->desc->name,f2,pin2);
++	ms_message("ms_filter_unlink: %s:%p,%i-->%s:%p,%i",f1 ? f1->desc->name : "!NULL!",f1,pin1,f2 ? f2->desc->name : "!NULL!",f2,pin2);
+ 	ms_return_val_if_fail(pin1<f1->desc->noutputs, -1);
+ 	ms_return_val_if_fail(pin2<f2->desc->ninputs, -1);
+ 	ms_return_val_if_fail(f1->outputs[pin1]!=NULL,-1);
+diff --git a/src/videoout.c b/src/videoout.c
+index ca36b0f..5bdc6dd 100644
+--- a/src/videoout.c
++++ b/src/videoout.c
+@@ -114,8 +114,6 @@ void ms_display_destroy(MSDisplay *d);
+ }
+ #endif
+ 
+-#include "ffmpeg-priv.h"
+-
+ #define SCALE_FACTOR 4.0f
+ #define SELVIEW_POS_INACTIVE -100.0
+ 
+@@ -462,7 +460,7 @@ void ms_display_desc_set_default_window_id(MSDisplayDesc *desc, long id){
+ 
+ typedef struct VideoOut
+ {
+-	AVRational ratio;
++	struct Rational {int num; int den;} ratio;
+ 	MSPicture fbuf;
+ 	MSPicture fbuf_selfview;
+ 	MSPicture local_pic;
+@@ -474,8 +472,8 @@ typedef struct VideoOut
+ 	float sv_posx,sv_posy;
+ 	int background_color[3];
+ 
+-	struct ms_SwsContext *sws1;
+-	struct ms_SwsContext *sws2;
++	MSScalerContext *sws1;
++	MSScalerContext *sws2;
+ 	MSDisplay *display;
+ 	bool_t own_display;
+ 	bool_t ready;
+@@ -552,11 +550,11 @@ static void video_out_uninit(MSFilter *f){
+ 	if (obj->display!=NULL && obj->own_display)
+ 		ms_display_destroy(obj->display);
+ 	if (obj->sws1!=NULL){
+-		ms_sws_freeContext(obj->sws1);
++		ms_scaler_context_free(obj->sws1);
+ 		obj->sws1=NULL;
+ 	}
+ 	if (obj->sws2!=NULL){
+-		ms_sws_freeContext(obj->sws2);
++		ms_scaler_context_free(obj->sws2);
+ 		obj->sws2=NULL;
+ 	}
+ 	if (obj->local_msg!=NULL) {
+@@ -581,11 +579,11 @@ static void video_out_prepare(MSFilter *f){
+ 		obj->display=NULL;
+ 	}
+ 	if (obj->sws1!=NULL){
+-		ms_sws_freeContext(obj->sws1);
++		ms_scaler_context_free(obj->sws1);
+ 		obj->sws1=NULL;
+ 	}
+ 	if (obj->sws2!=NULL){
+-		ms_sws_freeContext(obj->sws2);
++		 ms_scaler_context_free(obj->sws2);
+ 		obj->sws2=NULL;
+ 	}
+ 	if (obj->local_msg!=NULL) {
+@@ -665,13 +663,12 @@ static void video_out_process(MSFilter *f){
+ 			if (ms_yuv_buf_init_from_mblk(&src,inm)==0){
+ 				
+ 				if (obj->sws2==NULL){
+-					obj->sws2=ms_sws_getContext(src.w,src.h,PIX_FMT_YUV420P,
+-											 obj->fbuf_selfview.w,obj->fbuf_selfview.h,PIX_FMT_YUV420P,
+-											 SWS_FAST_BILINEAR, NULL, NULL, NULL);
++					obj->sws2=ms_scaler_create_context(src.w,src.h,MS_YUV420P,
++											 obj->fbuf_selfview.w,obj->fbuf_selfview.h,MS_YUV420P,
++											 MS_SCALER_METHOD_BILINEAR);
+ 				}
+ 				ms_display_lock(obj->display);
+-				if (ms_sws_scale(obj->sws2,src.planes,src.strides, 0,
+-							  src.h, obj->fbuf_selfview.planes, obj->fbuf_selfview.strides)<0){
++				if (ms_scaler_process(obj->sws2,src.planes,src.strides,obj->fbuf_selfview.planes, obj->fbuf_selfview.strides)<0){
+ 					ms_error("Error in ms_sws_scale().");
+ 				}
+ 				if (!mblk_get_precious_flag(inm)) ms_yuv_buf_mirror(&obj->fbuf_selfview);
+@@ -683,9 +680,9 @@ static void video_out_process(MSFilter *f){
+ 			if (ms_yuv_buf_init_from_mblk(&src,inm)==0){
+ 				
+ 				if (obj->sws2==NULL){
+-					obj->sws2=ms_sws_getContext(src.w,src.h,PIX_FMT_YUV420P,
+-								obj->local_pic.w,obj->local_pic.h,PIX_FMT_YUV420P,
+-								SWS_FAST_BILINEAR, NULL, NULL, NULL);
++					obj->sws2=ms_scaler_create_context(src.w,src.h,MS_YUV420P,
++								obj->local_pic.w,obj->local_pic.h,MS_YUV420P,
++								MS_SCALER_METHOD_BILINEAR);
+ 				}
+ 				if (obj->local_msg==NULL){
+ 					obj->local_msg=ms_yuv_buf_alloc(&obj->local_pic,
+@@ -693,8 +690,7 @@ static void video_out_process(MSFilter *f){
+ 				}
+ 				if (obj->local_pic.planes[0]!=NULL)
+ 				{
+-					if (ms_sws_scale(obj->sws2,src.planes,src.strides, 0,
+-						src.h, obj->local_pic.planes, obj->local_pic.strides)<0){
++					if (ms_scaler_process(obj->sws2,src.planes,src.strides,obj->local_pic.planes, obj->local_pic.strides)<0){
+ 						ms_error("Error in ms_sws_scale().");
+ 					}
+ 					if (!mblk_get_precious_flag(inm)) ms_yuv_buf_mirror(&obj->local_pic);
+@@ -731,13 +727,12 @@ static void video_out_process(MSFilter *f){
+ 				}
+ 			}
+ 			if (obj->sws1==NULL){
+-				obj->sws1=ms_sws_getContext(src.w,src.h,PIX_FMT_YUV420P,
+-				obj->fbuf.w,obj->fbuf.h,PIX_FMT_YUV420P,
+-				SWS_FAST_BILINEAR, NULL, NULL, NULL);
++				obj->sws1=ms_scaler_create_context(src.w,src.h,MS_YUV420P,
++				obj->fbuf.w,obj->fbuf.h,MS_YUV420P,
++				MS_SCALER_METHOD_BILINEAR);
+ 			}
+ 			ms_display_lock(obj->display);
+-			if (ms_sws_scale(obj->sws1,src.planes,src.strides, 0,
+-            			src.h, obj->fbuf.planes, obj->fbuf.strides)<0){
++			if (ms_scaler_process(obj->sws1,src.planes,src.strides,obj->fbuf.planes, obj->fbuf.strides)<0){
+ 				ms_error("Error in ms_sws_scale().");
+ 			}
+ 			if (obj->mirror && !mblk_get_precious_flag(inm)) ms_yuv_buf_mirror(&obj->fbuf);
+@@ -943,3 +938,4 @@ MSFilterDesc ms_video_out_desc={
+ 
+ 
+ MS_FILTER_DESC_EXPORT(ms_video_out_desc)
++
+diff --git a/tests/videodisplay.c b/tests/videodisplay.c
+index 76f67a5..0828c6a 100644
+--- a/tests/videodisplay.c
++++ b/tests/videodisplay.c
+@@ -52,6 +52,7 @@ int main(int argc, char *argv[]){
+ 	for(i=0;i<1;++i){
+ 		int n;
+ 		vs=video_preview_new();
++		/*video_preview_set_display_filter_name(vs,"MSVideoOut");*/
+ 		video_preview_set_size(vs,vsize);
+ 		video_preview_start(vs, cam);
+ 
+@@ -79,11 +80,11 @@ int main(int argc, char *argv[]){
+ 
+ 			    vs->tee = ms_filter_new(MS_TEE_ID);
+ 
+-			    ms_filter_unlink(vs->pixconv,0, vs->output,0);
++			    ms_filter_unlink(vs->pixconv,0, vs->output2,0);
+ 
+ 			    ms_filter_link(vs->pixconv,0,vs->tee,0);
+-			    ms_filter_link(vs->tee,0,vs->output,0);
+-			    ms_filter_link(vs->tee,1,vs->output,1);
++			    ms_filter_link(vs->tee,0,vs->output2,0);
++			    ms_filter_link(vs->tee,1,vs->output2,1);
+ 			    
+ 			    //ms_filter_unlink(vs->tee,0,vs->output,0);
+ 			    ms_ticker_attach (vs->ticker, vs->source);
+@@ -92,34 +93,34 @@ int main(int argc, char *argv[]){
+ 			if (n==500)
+ 			  {
+ 			    int corner=1;
+-			    ms_filter_call_method(vs->output,MS_VIDEO_DISPLAY_SET_LOCAL_VIEW_MODE,&corner);
++			    ms_filter_call_method(vs->output2,MS_VIDEO_DISPLAY_SET_LOCAL_VIEW_MODE,&corner);
+ 			  }
+ 			if (n==600)
+ 			  {
+ 			    int corner=2;
+-			    ms_filter_call_method(vs->output,MS_VIDEO_DISPLAY_SET_LOCAL_VIEW_MODE,&corner);
++			    ms_filter_call_method(vs->output2,MS_VIDEO_DISPLAY_SET_LOCAL_VIEW_MODE,&corner);
+ 			  }
+ 			if (n==700)
+ 			  {
+ 			    int corner=3;
+-			    ms_filter_call_method(vs->output,MS_VIDEO_DISPLAY_SET_LOCAL_VIEW_MODE,&corner);
++			    ms_filter_call_method(vs->output2,MS_VIDEO_DISPLAY_SET_LOCAL_VIEW_MODE,&corner);
+ 			  }
+ 			if (n==800)
+ 			  {
+ 			    int corner=-1;
+-			    ms_filter_call_method(vs->output,MS_VIDEO_DISPLAY_SET_LOCAL_VIEW_MODE,&corner);
++			    ms_filter_call_method(vs->output2,MS_VIDEO_DISPLAY_SET_LOCAL_VIEW_MODE,&corner);
+ 			  }
+ 			if (n==900)
+ 			  {
+ 			    ms_ticker_detach (vs->ticker, vs->source);
+ 
+ 			    ms_filter_unlink(vs->pixconv,0,vs->tee,0);
+-			    ms_filter_unlink(vs->tee,0,vs->output,0);
+-			    ms_filter_unlink(vs->tee,1,vs->output,1);
++			    ms_filter_unlink(vs->tee,0,vs->output2,0);
++			    ms_filter_unlink(vs->tee,1,vs->output2,1);
+ 			    ms_filter_destroy(vs->tee);
+ 			    vs->tee=NULL;
+ 
+-			    ms_filter_link(vs->pixconv,0, vs->output,0);
++			    ms_filter_link(vs->pixconv,0, vs->output2,0);
+ 
+ 			    
+ 			    ms_ticker_attach (vs->ticker, vs->source);
+@@ -129,3 +130,4 @@ int main(int argc, char *argv[]){
+ 	}
+ 	return 0;
+ }
++

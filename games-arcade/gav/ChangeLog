@@ -1,0 +1,67 @@
+# ChangeLog for games-arcade/gav
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/gav/ChangeLog,v 1.16 2015/01/04 15:03:11 tupone Exp $
+
+  04 Jan 2015; Tupone Alfredo <tupone@gentoo.org> gav-0.9.0.ebuild:
+  EAPI 5
+
+  12 Oct 2010; Tupone Alfredo <tupone@gentoo.org> gav-0.9.0.ebuild,
+  +files/gav-0.9.0-ldflags.patch:
+  Respect LDFLAGS. Bug #335697 by flameeyes@gentoo.org
+
+  30 Apr 2008; Tristan Heaven <nyhm@gentoo.org>
+  +files/gav-0.9.0-gcc43.patch, gav-0.9.0.ebuild:
+  Fix building with gcc-4.3
+
+  24 Apr 2007; Timothy Redaelli <drizzt@gentoo.org> gav-0.9.0.ebuild:
+  Add ~x86-fbsd keyword.
+  Thanks to Nathan Smith for reporting wrt bug #175779
+
+  24 Apr 2007; Timothy Redaelli <drizzt@gentoo.org> gav-0.9.0.ebuild:
+  Add ~x86-fbsd keyword.
+  Thanks to Nathan Smith for reporting wrt bug #175779
+
+  24 Apr 2007; Timothy Redaelli <drizzt@gentoo.org> gav-0.9.0.ebuild:
+  Add ~x86-fbsd keyword.
+  Thanks to Nathan Smith for reporting wrt bug #175779
+
+*gav-0.9.0 (04 Jun 2006)
+
+  04 Jun 2006; Michael Sterrett <mr_bones_@gentoo.org> +gav-0.9.0.ebuild:
+  version bump
+
+  04 Apr 2006; <Tupone@gentoo.org> +files/gav-0.8.0-gcc4.patch,
+  gav-0.8.0.ebuild:
+  gcc-4.1 fix, bug #128541 by Robert Marmorstein
+
+  21 May 2005; Jan Brinkmann <luckyduck@gentoo.org> gav-0.8.0.ebuild:
+  stable on amd64
+
+  08 Nov 2004; Joseph Jezak <josejx@gentoo.org> gav-0.8.0.ebuild:
+  Marked ppc stable.
+
+  23 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> gav-0.8.0.ebuild:
+  Stable on sparc
+
+  01 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> gav-0.8.0.ebuild:
+  Keyworded ~sparc
+
+  10 Apr 2004; David Holm <dholm@gentoo.org> gav-0.8.0.ebuild:
+  Added to ~ppc.
+
+*gav-0.8.0 (09 Apr 2004)
+
+  09 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> gav-0.8.0.ebuild:
+  version bump (bug #47214)
+
+  23 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> gav-0.7.3.ebuild:
+  Work around the buggy make files (bug #41530)
+
+  22 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> gav-0.7.3.ebuild:
+  added florindo.tgz theme
+
+*gav-0.7.3 (18 Oct 2003)
+
+  18 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> gav-0.7.3.ebuild:
+  initial commit to address bug 30608
+

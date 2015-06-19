@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=games-misc/fortune-mod dev-vcs/mercurial
+DESCRIPTION=Fortune database of quotes from gentoo.ru forum and gentoo@conference.gentoo.ru
+EAPI=4
+HOMEPAGE=http://fortunes.gentoo.ru
+LICENSE=fairuse
+RDEPEND=games-misc/fortune-mod
+SLOT=0
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	mercurial	2fbda5894dda6392b71334ee9a92de0b	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=bf2881d8dd02b42d461ebb117c818318

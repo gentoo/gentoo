@@ -1,0 +1,66 @@
+# ChangeLog for x11-themes/windowmaker-themes
+# Copyright 2000-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/windowmaker-themes/ChangeLog,v 1.16 2013/07/27 20:25:36 aballier Exp $
+
+  27 Jul 2013; Alexis Ballier <aballier@gentoo.org>
+  windowmaker-themes-0.1.ebuild:
+  keyword ~amd64-fbsd thanks to Yuta SATOH , bug #477644
+
+  24 Sep 2008; Jeroen Roovers <jer@gentoo.org>
+  windowmaker-themes-0.1.ebuild:
+  Stable for HPPA too.
+
+  26 Aug 2008; Jeroen Roovers <jer@gentoo.org>
+  windowmaker-themes-0.1.ebuild:
+  Marked ~hppa too.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  10 Jan 2006; Luis Medinas <metalgod@gentoo.org> metadata.xml:
+  Set myself as maintainer.
+
+  16 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  windowmaker-themes-0.1.ebuild:
+  Remove GNUish cp -d call. Bug #103487.
+
+  11 Jul 2005; Simon Stelling <blubb@gentoo.org>
+  windowmaker-themes-0.1.ebuild:
+  stable on amd64
+
+  12 Dec 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  windowmaker-themes-0.1.ebuild:
+  Added use of "offensive" flag for themes that some have complained might get
+  them in trouble at work
+
+  15 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  windowmaker-themes-0.1.ebuild:
+  Added metadata.xml; assigned herd-ship to "gnustep".
+
+  15 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  windowmaker-themes-0.1.ebuild:
+  Removed some themes that carried artwork that bears copyright at request of
+  the MPAA.
+
+  19 Jun 2004; <pyrania@gentoo.org> windowmaker-themes-0.1.ebuild:
+  Added IUSE.
+
+  11 Jun 2004; Danny van Dyk <kugelfang@gentoo.org>
+  windowmaker-themes-0.1.ebuild:
+  Marked ~amd64.
+
+  07 Dec 2003; Michael Sterrett <mr_bones_@gentoo.org>
+  windowmaker-themes-0.1.ebuild:
+  chown x.y -> chown x:y (bug 35127)
+
+*windowmaker-themes-0.1 (07 Jun 2003)
+
+  30 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Porn now removed per discussion on -core.
+
+  28 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added local USE flag to filter out the pr0n #23635.
+
+  07 Jun 2003; robh <robh@gentoo.org> windowmaker-themes-0.1.ebuild:
+  Initial version. Thanks to Thomas Phipps and A.Sleep. Closes #11879
+

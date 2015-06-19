@@ -1,0 +1,27 @@
+# ChangeLog for app-text/cpdf
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/cpdf/ChangeLog,v 1.6 2015/06/06 07:55:17 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*cpdf-2.1.1-r1 (14 Dec 2014)
+
+  14 Dec 2014; Tim Harder <radhermit@gentoo.org> -cpdf-2.1.1.ebuild,
+  +cpdf-2.1.1-r1.ebuild:
+  Require >=dev-lang/ocaml-4 (bug #532418) and simplify camlpdf dep.
+
+  12 Dec 2014; Tim Harder <radhermit@gentoo.org> cpdf-2.1.1.ebuild:
+  Make DESCRIPTION a bit more descriptive.
+
+  08 Dec 2014; Tim Harder <radhermit@gentoo.org> cpdf-2.1.1.ebuild:
+  Set RESTRICT="mirror bindist" on recommendation of licensing discussion.
+
+  07 Dec 2014; Tim Harder <radhermit@gentoo.org> cpdf-2.1.1.ebuild:
+  Add community site to HOMEPAGE.
+
+*cpdf-2.1.1 (07 Dec 2014)
+
+  07 Dec 2014; Tim Harder <radhermit@gentoo.org> +cpdf-2.1.1.ebuild,
+  +metadata.xml:
+  Initial import.

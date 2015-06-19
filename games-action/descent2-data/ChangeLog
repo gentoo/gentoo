@@ -1,0 +1,42 @@
+# ChangeLog for games-action/descent2-data
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/descent2-data/ChangeLog,v 1.10 2015/05/13 08:03:39 ago Exp $
+
+  13 May 2015; Agostino Sarubbo <ago@gentoo.org> descent2-data-1.0.ebuild:
+  Stable for amd64, wrt bug #549280
+
+  31 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> descent2-data-1.0.ebuild:
+  EAPI=5
+
+  16 Jan 2012; Ulrich Müller <ulm@gentoo.org> descent2-data-1.0.ebuild:
+  Migrate to cdrom.eclass, bug 398809.
+
+  10 Feb 2010; Joseph Jezak <josejx@gentoo.org> descent2-data-1.0.ebuild:
+  Marked ppc stable for bug #294889.
+
+  01 Dec 2009; Markus Meier <maekke@gentoo.org> descent2-data-1.0.ebuild:
+  x86 stable, bug #294889
+
+  16 Feb 2008; Tristan Heaven <nyhm@gentoo.org> descent2-data-1.0.ebuild:
+  Fix RDEPEND
+
+  06 Sep 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  descent2-data-1.0.ebuild:
+  Removed the RDEPEND section since it was causing dependency issues.
+
+  07 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  descent2-data-1.0.ebuild:
+  Change the FILESDIR checks to be DISTDIR, so nobody needs to keep a copy fo
+  this in an overlay to use that functionality.
+
+  07 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  descent2-data-1.0.ebuild:
+  Updated the ebuild with changes from Hendrik Iben <hiben@tzi.de> and Paul
+  Bredbury <brebs@sent.com>. Closing bug #168463.
+
+*descent2-data-1.0 (09 Jan 2007)
+
+  09 Jan 2007; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +descent2-data-1.0.ebuild:
+  Initial import. Ebuild by Paul Bredbury <brebs@sent.com> based loosely on
+  the games-action/d2x ebuild. Closing bug #137307.

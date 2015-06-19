@@ -1,0 +1,216 @@
+# ChangeLog for games-emulation/openmsx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/openmsx/ChangeLog,v 1.52 2015/03/25 15:33:09 jlec Exp $
+
+  25 Mar 2015; Justin Lecher <jlec@gentoo.org> openmsx-0.9.1.ebuild:
+  Fix tcl/tk slotting
+
+  18 Jan 2015; Tupone Alfredo <tupone@gentoo.org> openmsx-0.9.1.ebuild,
+  +files/openmsx-0.9.1-verbose.patch:
+  Verbose build. Bug #444276 by Agostino Sarubbo
+
+  17 Jan 2015; Tupone Alfredo <tupone@gentoo.org> openmsx-0.9.1.ebuild:
+  EAPI 5
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> openmsx-0.9.1.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  24 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/openmsx-0.8.1-libpng15.patch, -openmsx-0.8.1.ebuild:
+  old
+
+  04 Dec 2012; <ago@gentoo.org> openmsx-0.9.1.ebuild:
+  Stable for x86, wrt bug #443894
+
+  22 Nov 2012; Agostino Sarubbo <ago@gentoo.org> openmsx-0.9.1.ebuild:
+  Stable for amd64, wrt bug #443894
+
+  19 Nov 2012; Anthony G. Basile <blueness@gentoo.org> openmsx-0.9.1.ebuild:
+  stable ppc, bug #443894
+
+*openmsx-0.9.1 (19 Oct 2012)
+
+  19 Oct 2012; Michael Sterrett <mr_bones_@gentoo.org> +openmsx-0.9.1.ebuild:
+  version bump
+
+  31 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> -openmsx-0.7.2.ebuild,
+  -openmsx-0.8.0.ebuild:
+  old
+
+  15 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org> openmsx-0.8.1.ebuild:
+  ppc stable wrt #380179
+
+  14 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> openmsx-0.8.1.ebuild,
+  +files/openmsx-0.8.1-libpng15.patch:
+  Fix building with libpng15 wrt #378171 by Diego Elio Pettenò
+
+  24 Aug 2011; Markus Meier <maekke@gentoo.org> openmsx-0.8.1.ebuild:
+  x86 stable, bug #380179
+
+  22 Aug 2011; Tony Vroon <chainsaw@gentoo.org> openmsx-0.8.1.ebuild:
+  Marked stable on AMD64 based on arch testing by Ian "idella4" Delaney in bug
+  #380179.
+
+*openmsx-0.8.1 (20 Jul 2011)
+
+  20 Jul 2011; Michael Sterrett <mr_bones_@gentoo.org> +openmsx-0.8.1.ebuild:
+  version bump (bug #374851)
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> openmsx-0.7.2.ebuild,
+  openmsx-0.8.0.ebuild:
+  Drop sparc keywords
+
+  11 Jan 2011; Brent Baude <ranger@gentoo.org> openmsx-0.8.0.ebuild:
+  Marking openmsx-0.8.0 ppc for bug 344021
+
+  08 Nov 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> openmsx-0.8.0.ebuild:
+  x86 stable wrt bug #344021
+
+  05 Nov 2010; Markos Chandras <hwoarang@gentoo.org> openmsx-0.8.0.ebuild:
+  Stable on amd64 wrt bug #344021
+
+*openmsx-0.8.0 (03 Oct 2010)
+
+  03 Oct 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +openmsx-0.8.0.ebuild:
+  version bump
+
+  28 May 2010; Joseph Jezak <josejx@gentoo.org> openmsx-0.7.2.ebuild:
+  Marked ppc stable, ~ppc64 for bug #320503.
+
+  18 Nov 2009; Raúl Porcel <armin76@gentoo.org> openmsx-0.7.2.ebuild:
+  sparc stable wrt #288817
+
+  25 Oct 2009; Markus Meier <maekke@gentoo.org> openmsx-0.7.2.ebuild:
+  amd64/x86 stable, bug #288817
+
+*openmsx-0.7.2 (08 Sep 2009)
+
+  08 Sep 2009; Michael Sterrett <mr_bones_@gentoo.org> openmsx-0.7.0.ebuild,
+  +openmsx-0.7.2.ebuild:
+  version bump
+
+  10 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> openmsx-0.7.0.ebuild:
+  Missing media-libs/sdl-ttf depend.
+
+*openmsx-0.7.0 (21 Apr 2009)
+
+  21 Apr 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +openmsx-0.7.0.ebuild:
+  version bump (bug #258662)
+
+  20 May 2008; Ferris McCormick <fmccor@gentoo.org> openmsx-0.6.3.ebuild:
+  Sparc stable, Bug #222133.
+
+  15 May 2008; Markus Meier <maekke@gentoo.org> openmsx-0.6.3.ebuild:
+  amd64/x86 stable, bug #222133
+
+  06 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org> openmsx-0.5.2.ebuild:
+  QA cleanup: Fix quoting.
+
+*openmsx-0.6.3 (27 Feb 2008)
+
+  27 Feb 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +openmsx-0.6.3.ebuild:
+  version bump
+
+*openmsx-0.6.2 (11 Jun 2007)
+
+  11 Jun 2007; Tristan Heaven <nyhm@gentoo.org> metadata.xml,
+  +openmsx-0.6.2.ebuild:
+  Version bump, bug #181648
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*openmsx-0.6.1 (07 Aug 2006)
+
+  07 Aug 2006; Tony Vroon <chainsaw@gentoo.org>
+  +files/0.6.1-custom.mk.patch, +openmsx-0.6.1.ebuild:
+  Version bump.
+
+  25 Jun 2006; Tony Vroon <chainsaw@gentoo.org> openmsx-0.6.0.ebuild:
+  Do not strip binaries in the build process, leave this to portage. Quote
+  variables. Both changes by Tristan Heaven <tristanheaven@gmail.com> in bug
+  #137821.
+
+*openmsx-0.6.0 (21 Jan 2006)
+
+  21 Jan 2006; <chainsaw@gentoo.org> +files/0.6.0-custom.mk.patch,
+  +openmsx-0.6.0.ebuild:
+  Version bump.
+
+  21 Jan 2006; <chainsaw@gentoo.org> openmsx-0.3.4.ebuild,
+  openmsx-0.4.0.ebuild, openmsx-0.5.1.ebuild, openmsx-0.5.2.ebuild:
+  Remove redundant virtual/x11 dependency which does not play well with
+  modular X. virtual/opengl & libsdl will drag X in anyway.
+
+  10 Sep 2005; Tony Vroon <chainsaw@gentoo.org> openmsx-0.5.2.ebuild:
+  Marked 0.5.2 stable on amd64 and x86.
+
+  05 Sep 2005; Mark Loeser <halcy0n@gentoo.org>
+  +files/openmsx-0.5.2-gcc4.patch, openmsx-0.5.2.ebuild:
+  Adding upstream patch to fix compilation with GCC4.  Some slight changes were
+  made to the upstream patch, since it broken compilation with gcc-3.3.
+
+  01 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> openmsx-0.5.1.ebuild,
+  openmsx-0.5.2.ebuild:
+  Keyworded sparc stable and -sparc
+
+  09 Aug 2005; Tony Vroon <chainsaw@gentoo.org> openmsx-0.5.1.ebuild:
+  Mark 0.5.1 stable on x86.
+
+  21 Jul 2005; Tony Vroon <chainsaw@gentoo.org>
+  +files/0.5.2-custom.mk.patch, +openmsx-0.5.2.ebuild:
+  Version bump, closes bug #99081.
+
+*openmsx-0.5.2 (18 Jun 2005)
+
+  18 Jun 2005; Tony Vroon <chainsaw@gentoo.org>
+  +files/0.5.2-custom.mk.patch, +openmsx-0.5.2.ebuild:
+  Version bump.
+
+*openmsx-0.5.1 (16 Mar 2005)
+
+  16 Mar 2005; Tony Vroon <chainsaw@gentoo.org>
+  +files/0.5.1-custom.mk.patch, +openmsx-0.5.1.ebuild:
+  Version bump.
+
+  26 Dec 2004; Tony Vroon <chainsaw@gentoo.org> openmsx-0.5.0.ebuild:
+  Added ~amd64. Reported working by Jorrith Schaap.
+
+*openmsx-0.5.0 (19 Dec 2004)
+
+  19 Dec 2004; Tony Vroon <chainsaw@gentoo.org>
+  +files/0.5.0-custom.mk.patch, +openmsx-0.5.0.ebuild:
+  Version bump.
+
+  12 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> openmsx-0.4.0.ebuild:
+  !nomirror
+
+  13 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> openmsx-0.4.0.ebuild:
+  add eutils for epatch; tidy
+
+*openmsx-0.4.0 (12 Jun 2004)
+
+  12 Jun 2004; Tony Vroon <chainsaw@gentoo.org>
+  +files/openmsx-0.4.0-custom.mk.patch, +files/openmsx-0.4.0-symlinking.patch,
+  +openmsx-0.4.0.ebuild:
+  Version bumped. New build system, and compatible with the catapult launcher.
+
+  01 Mar 2004; David Holm <dholm@gentoo.org> openmsx-0.3.4.ebuild:
+  Added to ~ppc.
+
+*openmsx-0.3.4 (27 Jan 2004)
+
+  27 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> openmsx-0.3.4.ebuild:
+  version bump (bug 39370)
+
+  04 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> openmsx-0.3.3.ebuild:
+  replace -Os with -O2 in CFLAGS to fix bug 32745
+
+*openmsx-0.3.3 (04 Nov 2003)
+
+  04 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> openmsx-0.3.3.ebuild:
+  initial commit; ebuild based on the one by Tony Vroon via bug 32397

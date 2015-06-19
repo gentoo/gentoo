@@ -1,0 +1,185 @@
+# ChangeLog for dev-ruby/uglifier
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/uglifier/ChangeLog,v 1.43 2015/06/07 20:06:48 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  12 Apr 2015; Hans de Graaff <graaff@gentoo.org> uglifier-2.7.1.ebuild:
+  Add ruby22.
+
+*uglifier-2.7.1 (03 Mar 2015)
+
+  03 Mar 2015; Manuel Rüger <mrueg@gentoo.org> +uglifier-2.7.1.ebuild:
+  Version bump.
+
+  28 Feb 2015; Manuel Rüger <mrueg@gentoo.org> -uglifier-2.5.3.ebuild,
+  -uglifier-2.6.0.ebuild, -uglifier-2.6.1.ebuild:
+  Remove old.
+
+*uglifier-2.7.0 (11 Jan 2015)
+
+  11 Jan 2015; Manuel Rüger <mrueg@gentoo.org> +uglifier-2.7.0.ebuild:
+  Version bump.
+
+*uglifier-2.6.1 (02 Jan 2015)
+
+  02 Jan 2015; Hans de Graaff <graaff@gentoo.org> +uglifier-2.6.1.ebuild:
+  Version bump.
+
+*uglifier-2.6.0 (09 Dec 2014)
+
+  09 Dec 2014; Manuel Rüger <mrueg@gentoo.org> +uglifier-2.6.0.ebuild:
+  Version bump.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> uglifier-2.5.3.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  01 Aug 2014; Manuel Rüger <mrueg@gentoo.org> -uglifier-2.5.0.ebuild,
+  -uglifier-2.5.1.ebuild:
+  Cleanup old.
+
+*uglifier-2.5.3 (21 Jul 2014)
+
+  21 Jul 2014; Hans de Graaff <graaff@gentoo.org> +uglifier-2.5.3.ebuild:
+  Version bump.
+
+*uglifier-2.5.1 (14 Jun 2014)
+
+  14 Jun 2014; Manuel Rüger <mrueg@gentoo.org> +uglifier-2.5.1.ebuild:
+  Version bump.
+
+  20 Apr 2014; Hans de Graaff <graaff@gentoo.org> uglifier-2.5.0.ebuild:
+  Add ruby21.
+
+  19 Apr 2014; Manuel Rüger <mrueg@gentoo.org> -uglifier-2.3.3.ebuild,
+  -uglifier-2.4.0.ebuild, uglifier-2.5.0.ebuild:
+  Remove ruby18 target. Cleanup old.
+
+*uglifier-2.5.0 (26 Mar 2014)
+
+  26 Mar 2014; Manuel Rüger <mrueg@gentoo.org> +uglifier-2.5.0.ebuild:
+  Version bump.
+
+*uglifier-2.4.0 (21 Dec 2013)
+
+  21 Dec 2013; Manuel Rüger <mrueg@gentoo.org> +uglifier-2.4.0.ebuild,
+  -uglifier-2.2.1.ebuild, -uglifier-2.3.0.ebuild, -uglifier-2.3.1.ebuild,
+  -uglifier-2.3.2.ebuild:
+  Version bump. Cleanup old.
+
+*uglifier-2.3.3 (13 Dec 2013)
+
+  13 Dec 2013; Hans de Graaff <graaff@gentoo.org> +uglifier-2.3.3.ebuild:
+  Version bump with UglifyJS 2.4.7.
+
+*uglifier-2.3.2 (02 Dec 2013)
+
+  02 Dec 2013; Hans de Graaff <graaff@gentoo.org> +uglifier-2.3.2.ebuild:
+  Version bump.
+
+*uglifier-2.3.1 (09 Nov 2013)
+
+  09 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +uglifier-2.3.1.ebuild:
+  Version bump.
+
+*uglifier-2.3.0 (27 Oct 2013)
+
+  27 Oct 2013; Hans de Graaff <graaff@gentoo.org> +uglifier-2.3.0.ebuild:
+  Version bump. Add ruby20.
+
+  27 Oct 2013; Hans de Graaff <graaff@gentoo.org> -uglifier-1.3.0.ebuild,
+  -uglifier-2.1.1.ebuild, -uglifier-2.1.2.ebuild:
+  Cleanup.
+
+*uglifier-2.2.1 (31 Aug 2013)
+
+  31 Aug 2013; Manuel Rüger <mrueg@gentoo.org> +uglifier-2.2.1.ebuild:
+  Version bump. Readd ruby18, tests work again.
+
+  24 Aug 2013; Markus Meier <maekke@gentoo.org> uglifier-2.1.2.ebuild:
+  add ~x86, bug #472892
+
+*uglifier-2.1.2 (23 Aug 2013)
+
+  23 Aug 2013; Hans de Graaff <graaff@gentoo.org> +uglifier-2.1.2.ebuild:
+  Version bump. Drop ruby18 since upstream dropped support for it.
+
+  17 Jul 2013; Markus Meier <maekke@gentoo.org> uglifier-2.1.1.ebuild:
+  add ~arm, bug #472892
+
+*uglifier-2.1.1 (10 Jun 2013)
+
+  10 Jun 2013; Hans de Graaff <graaff@gentoo.org> +uglifier-2.1.1.ebuild:
+  Version bump.
+
+  22 Apr 2013; Hans de Graaff <graaff@gentoo.org> -uglifier-1.2.7.ebuild:
+  Cleanup.
+
+  16 Jan 2013; Rick Farina <zerochaos@gentoo.org> uglifier-1.3.0.ebuild:
+  adding ~arm keywords to net-analyzer/metasploit rdeps
+
+*uglifier-1.3.0 (24 Sep 2012)
+
+  24 Sep 2012; Hans de Graaff <graaff@gentoo.org> +uglifier-1.3.0.ebuild:
+  Version bump.
+
+  24 Sep 2012; Hans de Graaff <graaff@gentoo.org> -uglifier-1.2.5.ebuild,
+  -uglifier-1.2.6.ebuild:
+  Cleanup.
+
+*uglifier-1.2.7 (13 Aug 2012)
+
+  13 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> +uglifier-1.2.7.ebuild:
+  Version bump; simplify as the uglifyjs package is no longer required for
+  testing.
+
+  05 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> uglifier-1.2.6.ebuild:
+  Fix name of the uglifyjs snapshot tarball.
+
+*uglifier-1.2.6 (05 Jul 2012)
+
+  05 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> +uglifier-1.2.6.ebuild:
+  Version bump; enable tests by downloading a snapshot of uglifyjs for testing
+  purposes only.
+
+  05 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> -uglifier-1.2.4.ebuild,
+  uglifier-1.2.5.ebuild:
+  Cleanup old, use the new rspec support.
+
+*uglifier-1.2.5 (28 Jun 2012)
+
+  28 Jun 2012; Hans de Graaff <graaff@gentoo.org> +uglifier-1.2.5.ebuild:
+  Version bump.
+
+  28 Jun 2012; Hans de Graaff <graaff@gentoo.org> -uglifier-1.2.1.ebuild,
+  -uglifier-1.2.2.ebuild:
+  Remove old versions.
+
+*uglifier-1.2.4 (22 Apr 2012)
+
+  22 Apr 2012; Hans de Graaff <graaff@gentoo.org> +uglifier-1.2.4.ebuild:
+  Version bump.
+
+  05 Mar 2012; Thomas Kahle <tomka@gentoo.org> uglifier-1.2.2.ebuild:
+  marked ~x86 per bug 397435
+
+  01 Mar 2012; Fabian Groffen <grobian@gentoo.org> uglifier-1.2.2.ebuild:
+  Marked ~x64-macos
+
+*uglifier-1.2.2 (28 Jan 2012)
+
+  28 Jan 2012; Hans de Graaff <graaff@gentoo.org> +uglifier-1.2.2.ebuild:
+  Version bump.
+
+  03 Jan 2012; Hans de Graaff <graaff@gentoo.org> uglifier-1.2.1.ebuild:
+  Fix extradocs to be installed. Fixes bug 397503.
+
+  30 Dec 2011; Michael Sterrett <mr_bones_@gentoo.org> uglifier-1.2.1.ebuild:
+  whitespace
+
+*uglifier-1.2.1 (30 Dec 2011)
+
+  30 Dec 2011; Hans de Graaff <graaff@gentoo.org> +uglifier-1.2.1.ebuild,
+  +metadata.xml:
+  Initial import. Needed for default Rails 3.1 asset pipeline.

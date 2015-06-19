@@ -1,0 +1,216 @@
+# ChangeLog for gnome-extra/gnome-user-share
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-user-share/ChangeLog,v 1.45 2015/06/02 19:07:16 pacho Exp $
+
+  02 Jun 2015; Pacho Ramos <pacho@gentoo.org>
+  -gnome-user-share-3.10.2-r1.ebuild, gnome-user-share-3.14.2.ebuild,
+  metadata.xml:
+  www-servers/apache[apache2_mpms_prefork] needed (#551012 by Kobboi), stop
+  messing with ITSTOOL value, drop old.
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnome-user-share-3.14.2.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnome-user-share-3.14.2.ebuild:
+  amd64 stable, bug 534012
+
+*gnome-user-share-3.14.2 (22 Dec 2014)
+
+  22 Dec 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-user-share-3.10.2.ebuild, +gnome-user-share-3.14.2.ebuild:
+  Version bump for Gnome 3.14. Clean up old revision.
+
+  19 Dec 2014; Pacho Ramos <pacho@gentoo.org> gnome-user-share-3.10.2-r1.ebuild:
+  amd64 stable, bug 529964
+
+  18 Dec 2014; Pacho Ramos <pacho@gentoo.org> gnome-user-share-3.10.2-r1.ebuild:
+  x86 stable, bug 529964
+
+*gnome-user-share-3.10.2-r1 (05 Dec 2014)
+
+  05 Dec 2014; Pacho Ramos <pacho@gentoo.org>
+  +files/gnome-user-share-3.10.2-launch-obexd.patch,
+  +gnome-user-share-3.10.2-r1.ebuild:
+  Ensure obexd is launched when needed and add missing rdepend on bluez[obex]
+  (#531376 by Chris Mayo)
+
+  13 Nov 2014; Pacho Ramos <pacho@gentoo.org>
+  -files/gnome-user-share-2.30.1-libnotify-0.7.patch,
+  -gnome-user-share-2.30.1.ebuild:
+  Drop old (#508854)
+
+  27 May 2014; Pacho Ramos <pacho@gentoo.org> -gnome-user-share-3.10.1.ebuild,
+  gnome-user-share-3.10.2.ebuild:
+  Needs to be rebuilt with gnome-bluetooth updates, drop old
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org> gnome-user-share-3.10.2.ebuild:
+  x86 stable, bug 508862
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org> gnome-user-share-3.10.2.ebuild:
+  amd64 stable, bug 508862
+
+  02 May 2014; Pacho Ramos <pacho@gentoo.org> gnome-user-share-3.10.2.ebuild:
+  Rely on bluez5 instead of obsolete obex-data-server that is bluez4 only
+
+*gnome-user-share-3.10.2 (29 Mar 2014)
+
+  29 Mar 2014; Pacho Ramos <pacho@gentoo.org> +gnome-user-share-3.10.2.ebuild,
+  -gnome-user-share-3.8.3.ebuild:
+  Version bump, drop old
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gnome-user-share-3.10.1.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gnome-user-share-3.10.1.ebuild:
+  amd64 stable, bug 499954
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-user-share-3.10.1.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gnome-user-share-3.10.1.ebuild:
+  arch stable, bug 888
+
+*gnome-user-share-3.10.1 (24 Dec 2013)
+
+  24 Dec 2013; Pacho Ramos <pacho@gentoo.org> +gnome-user-share-3.10.1.ebuild,
+  -gnome-user-share-3.0.4.ebuild, -gnome-user-share-3.8.0.ebuild:
+  Version bump for Gnome 3.10
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> gnome-user-share-3.8.3.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> gnome-user-share-3.8.3.ebuild:
+  amd64 stable, bug #478252
+
+*gnome-user-share-3.8.3 (17 Jul 2013)
+
+  17 Jul 2013; Pacho Ramos <pacho@gentoo.org> +gnome-user-share-3.8.3.ebuild:
+  Version bump
+
+  29 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-user-share-3.0.2.ebuild, -gnome-user-share-3.0.3.ebuild,
+  gnome-user-share-3.8.0.ebuild:
+  Clean up old revision.
+
+*gnome-user-share-3.8.0 (28 Mar 2013)
+
+  28 Mar 2013; Pacho Ramos <pacho@gentoo.org> +gnome-user-share-3.8.0.ebuild:
+  Version bump for Gnome 3.8
+
+*gnome-user-share-3.0.4 (28 Oct 2012)
+
+  28 Oct 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-user-share-3.0.4.ebuild:
+  Version bump.
+
+*gnome-user-share-3.0.3 (21 Oct 2012)
+
+  21 Oct 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-user-share-3.0.1.ebuild, +gnome-user-share-3.0.3.ebuild:
+  Version bump. Port to GSettings.
+
+*gnome-user-share-3.0.2 (06 May 2012)
+
+  06 May 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gnome-user-share-2.30.1.ebuild, gnome-user-share-3.0.1.ebuild,
+  +gnome-user-share-3.0.2.ebuild:
+  Version bump. Require apache-2.2.x (gnome-user-share will not start with
+  apache-2.4).
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  gnome-user-share-2.30.1.ebuild, gnome-user-share-3.0.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*gnome-user-share-3.0.1 (27 Oct 2011)
+
+  27 Oct 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -gnome-user-share-3.0.0.ebuild, +gnome-user-share-3.0.1.ebuild:
+  Bump and remove old. Fixes "Port must be specified" error on kernel 3.0
+
+*gnome-user-share-3.0.0 (02 Sep 2011)
+
+  02 Sep 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +gnome-user-share-3.0.0.ebuild:
+  Bump to 3.0.0, from gnome overlay for GNOME 3
+
+  25 Apr 2011; Thomas Kahle <tomka@gentoo.org> gnome-user-share-2.30.1.ebuild:
+  x86 stable per bug 361001
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org>
+  gnome-user-share-2.30.1.ebuild:
+  Stable on amd64 wrt bug #361001
+
+  21 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  gnome-user-share-2.30.0.ebuild, gnome-user-share-2.30.1.ebuild:
+  Fix slot-deps on gnome libs
+
+  27 Feb 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-user-share-2.30.1.ebuild:
+  Pin dependency of libunique to slot 1.
+
+  13 Feb 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gnome-user-share-2.30.1.ebuild,
+  +files/gnome-user-share-2.30.1-libnotify-0.7.patch:
+  Fix building with x11-libs/libnotify wrt #354131 (imported Fedora patch) by
+  Diego Elio Pettenò.
+
+  08 Feb 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-user-share-2.30.0.ebuild, gnome-user-share-2.30.1.ebuild:
+  Add missing nautilus dependency, drop unneeded la files. Pin gtk+ dependency
+  to slot 2.
+
+*gnome-user-share-2.30.1 (28 Sep 2010)
+
+  28 Sep 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-user-share-2.28.2.ebuild, +gnome-user-share-2.30.1.ebuild:
+  Vesion bump. Translation update & fix a typo in source code.
+
+  23 Aug 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-user-share-2.26.0.ebuild, -gnome-user-share-2.28.1.ebuild:
+  Clean up old revisions.
+
+  01 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  gnome-user-share-2.30.0.ebuild:
+  x86 stable, bug 324077
+
+  31 Jul 2010; Pacho Ramos <pacho@gentoo.org>
+  gnome-user-share-2.30.0.ebuild:
+  amd64 stable, bug 324077
+
+*gnome-user-share-2.30.0 (13 Jun 2010)
+
+  13 Jun 2010; Pacho Ramos <pacho@gentoo.org>
+  +gnome-user-share-2.30.0.ebuild:
+  Add new version for Gnome 2.30.
+
+*gnome-user-share-2.28.2 (23 Dec 2009)
+
+  23 Dec 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-user-share-2.28.2.ebuild:
+  Version bump. Make preferences a unique app, crash fix.
+
+*gnome-user-share-2.28.1 (29 Oct 2009)
+
+  29 Oct 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-user-share-0.40.ebuild, -gnome-user-share-0.41.ebuild,
+  +gnome-user-share-2.28.1.ebuild:
+  New version for GNOME 2.28. Clean up old revisions.
+
+*gnome-user-share-2.26.0 (03 May 2009)
+
+  03 May 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-user-share-2.26.0.ebuild:
+  New version for GNOME 2.26. Use mod_dnssd instead of working directly with
+  avahi.
+
+*gnome-user-share-0.41 (05 Jan 2009)
+
+  05 Jan 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +gnome-user-share-0.41.ebuild:
+  Bump to 0.41. Make it work with bluez-4 API.
+
+*gnome-user-share-0.40 (12 Oct 2008)
+
+  12 Oct 2008; Gilles Dartiguelongue <eva@gentoo.org> +metadata.xml,
+  +gnome-user-share-0.40.ebuild:
+  initial ebuild by Gad Kadosh, imported from bug #87687.

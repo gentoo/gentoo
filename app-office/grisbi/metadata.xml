@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>gnome-office</herd>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>remi@gentoo.org</email>
+	</maintainer>
+	<maintainer>
+		<email>casta@xwing.info</email>
+		<name>Guillaume Castagnino</name>
+		<description>Third party maintainer, through the gnome-office herd 
+    as a proxy</description>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">grisbi</remote-id>
+	</upstream>
+</pkgmetadata>

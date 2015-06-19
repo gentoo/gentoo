@@ -1,0 +1,43 @@
+# ChangeLog for app-crypt/asedriveiiie-usb
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/asedriveiiie-usb/ChangeLog,v 1.10 2012/09/18 04:41:02 radhermit Exp $
+
+  18 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> asedriveiiie-usb-3.5.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  26 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -asedriveiiie-usb-3.4.ebuild:
+  Wishfully remove 3.4 version.
+
+  14 Oct 2009; Mark Loeser <halcy0n@gentoo.org> asedriveiiie-usb-3.4.ebuild:
+  QA fixes; remove useless dodoc LICENSE
+
+  16 May 2009; Robin H. Johnson <robbat2@gentoo.org>
+  asedriveiiie-usb-3.4.ebuild, asedriveiiie-usb-3.5.ebuild:
+  Migration to virtual/libusb. Verified by code inspection.
+
+*asedriveiiie-usb-3.5 (10 Apr 2009)
+
+  10 Apr 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +asedriveiiie-usb-3.5.ebuild:
+  Version bump (bug #263299).
+
+  01 Jun 2008; Daniel Black <dragonheart@gentoo.org>
+  asedriveiiie-usb-3.4.ebuild:
+  QA - add IUSE - bug #224349 thanks Marek Miller
+
+  14 Feb 2007; Alon Bar-Lev <alonbl@gentoo.org> asedriveiiie-usb-3.4.ebuild:
+  Fixup for pcsc-lite-1.4
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> asedriveiiie-usb-3.4.ebuild:
+  Replacing einfo with elog
+
+*asedriveiiie-usb-3.4 (16 Dec 2006)
+
+  16 Dec 2006; Alon Bar-Lev <alonbl@gentoo.org> +metadata.xml,
+  +asedriveiiie-usb-3.4.ebuild:
+  Initial import
+

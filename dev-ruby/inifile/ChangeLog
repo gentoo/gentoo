@@ -1,0 +1,55 @@
+# ChangeLog for dev-ruby/inifile
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/inifile/ChangeLog,v 1.13 2015/06/07 18:01:49 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  01 Feb 2015; Hans de Graaff <graaff@gentoo.org> inifile-3.0.0.ebuild:
+  Add ruby22.
+
+  03 Nov 2014; Manuel Rüger <mrueg@gentoo.org> inifile-2.0.2-r1.ebuild,
+  inifile-3.0.0.ebuild:
+  Drop jruby.
+
+*inifile-3.0.0 (24 Aug 2014)
+
+  24 Aug 2014; Hans de Graaff <graaff@gentoo.org> +inifile-3.0.0.ebuild:
+  Version bump.
+
+  13 Aug 2014; Manuel Rüger <mrueg@gentoo.org> inifile-2.0.2-r1.ebuild:
+  Add ruby21 support.
+
+  21 May 2014; Manuel Rüger <mrueg@gentoo.org> inifile-2.0.2-r1.ebuild:
+  Remove ruby18 target.
+
+  11 Nov 2013; Manuel Rüger <mrueg@gentoo.org> -inifile-1.1.0.ebuild,
+  -inifile-2.0.2.ebuild:
+  Cleanup old.
+
+*inifile-2.0.2-r1 (30 Oct 2013)
+
+  30 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +inifile-2.0.2-r1.ebuild:
+  Add ruby20 target.
+
+*inifile-2.0.2 (12 Oct 2012)
+
+  12 Oct 2012; Hans de Graaff <graaff@gentoo.org> +inifile-2.0.2.ebuild:
+  Version bump. Handle doc and test directly to drop bones dependency.
+
+  20 Aug 2012; Hans de Graaff <graaff@gentoo.org> -inifile-0.4.1.ebuild:
+  Cleanup.
+
+  13 Mar 2012; Hans de Graaff <graaff@gentoo.org> inifile-1.1.0.ebuild:
+  Fix HOMEPAGE.
+
+*inifile-1.1.0 (13 Mar 2012)
+
+  13 Mar 2012; Hans de Graaff <graaff@gentoo.org> +inifile-1.1.0.ebuild:
+  Version bump.
+
+*inifile-0.4.1 (29 Dec 2011)
+
+  29 Dec 2011; Diego E. Pettenò <flameeyes@gentoo.org> +inifile-0.4.1.ebuild,
+  +metadata.xml:
+  Initial import of ebuild for .ini file reading.

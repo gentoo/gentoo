@@ -1,0 +1,30 @@
+# ChangeLog for dev-libs/libqzeitgeist
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libqzeitgeist/ChangeLog,v 1.7 2015/05/13 18:34:31 kensington Exp $
+
+  13 May 2015; Michael Palimaka <kensington@gentoo.org>
+  libqzeitgeist-0.8.0.ebuild:
+  Fix build when dev-qt/qttest is missing wrt bug #549046. Add missing
+  dependencies. Improve python handling (it's only used at build time).
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> libqzeitgeist-0.8.0.ebuild:
+  Drop old Python implementations
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> libqzeitgeist-0.8.0.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  30 Jun 2013; Johannes Huber <johu@gentoo.org> libqzeitgeist-0.8.0.ebuild:
+  EAPI 5. Migrate to python-single-r1 eclass.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> libqzeitgeist-0.8.0.ebuild:
+  Move Qt dependencies to the new category
+
+  31 Jul 2012; Michael Palimaka <kensington@gentoo.org>
+  libqzeitgeist-0.8.0.ebuild:
+  Add missing dependencies. Always use Python 2 wrt bug #428466.
+
+*libqzeitgeist-0.8.0 (23 Dec 2011)
+
+  23 Dec 2011; Johannes Huber <johu@gentoo.org> +libqzeitgeist-0.8.0.ebuild,
+  +metadata.xml:
+  New package.

@@ -1,0 +1,21 @@
+# ChangeLog for sys-apps/mount-gtk
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/mount-gtk/ChangeLog,v 1.4 2014/06/22 10:13:14 ssuominen Exp $
+
+  22 Jun 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +files/mount-gtk-1.4.2-c++11.patch, mount-gtk-1.4.2.ebuild:
+  Include patch from upstream forums that checks if -std=c++11 is supported or
+  not wrt #484264 by Marc Joliet
+
+  04 Jun 2013; Samuli Suominen <ssuominen@gentoo.org> -mount-gtk-1.4.1.ebuild:
+  old
+
+*mount-gtk-1.4.2 (04 Jun 2013)
+
+  04 Jun 2013; Samuli Suominen <ssuominen@gentoo.org> +mount-gtk-1.4.2.ebuild:
+  Version bump to make use of the new series of c++-gtk-utils >= 2.2.0
+
+*mount-gtk-1.4.1 (11 May 2013)
+
+  11 May 2013; Samuli Suominen <ssuominen@gentoo.org> +mount-gtk-1.4.1.ebuild:
+  Initial commit.

@@ -1,0 +1,232 @@
+# ChangeLog for sci-libs/proj
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/proj/ChangeLog,v 1.45 2015/01/05 15:20:47 aballier Exp $
+
+  05 Jan 2015; Alexis Ballier <aballier@gentoo.org> proj-4.8.0.ebuild:
+  keyword ~arm
+
+  06 Jan 2014; Justin Lecher <jlec@gentoo.org> -proj-4.7.0.ebuild,
+  proj-4.8.0.ebuild:
+  Drop old; punt base.eclass
+
+  22 Jun 2013; Justin Lecher <jlec@gentoo.org> proj-4.8.0.ebuild, metadata.xml:
+  Drop la files
+
+  20 Feb 2013; Agostino Sarubbo <ago@gentoo.org> proj-4.8.0.ebuild:
+  Stable for s390, wrt bug #417453
+
+  02 Jan 2013; Jeroen Roovers <jer@gentoo.org> proj-4.7.0.ebuild,
+  proj-4.8.0.ebuild:
+  Drop HPPA keywording (bug #417453).
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> proj-4.8.0.ebuild:
+  Stable for sparc, wrt bug #417453
+
+  29 Dec 2012; Agostino Sarubbo <ago@gentoo.org> proj-4.8.0.ebuild:
+  Stable for alpha, wrt bug #417453
+
+  08 Dec 2012; Agostino Sarubbo <ago@gentoo.org> proj-4.8.0.ebuild:
+  Stable for ppc64, wrt bug #417453
+
+  25 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> proj-4.8.0.ebuild:
+  Stabilise on amd64, x86 and ppc wrt bug#417453.
+
+  25 May 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/proj-4.7.0-robinson.patch, -proj-4.7.0-r1.ebuild, proj-4.8.0.ebuild:
+  Fix +java build. Resolves bug#413481. Patch by Martin von Gagern. Remove
+  overshadowed.
+
+  25 Apr 2012; Sébastien Fabbro <bicatali@gentoo.org> proj-4.8.0.ebuild:
+  Fixed java automagic dependency
+
+*proj-4.8.0 (25 Apr 2012)
+
+  25 Apr 2012; Sébastien Fabbro <bicatali@gentoo.org> +proj-4.8.0.ebuild:
+  Version bump
+
+  06 Feb 2012; Justin Lecher <jlec@gentoo.org> proj-4.7.0-r1.ebuild:
+  Inherit eutils for epatch, #402435
+
+*proj-4.7.0-r1 (26 Jan 2012)
+
+  26 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org> +proj-4.7.0-r1.ebuild,
+  +files/proj-4.7.0-robinson.patch:
+  Patch for Robinson projections thanks Jean-Claude Repetto bug #394427,
+  switched to EAPI4
+
+  03 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/proj-4.4.7-gentoo.patch, -proj-4.4.9.ebuild, -proj-4.5.0.ebuild,
+  -proj-4.6.0.ebuild, -proj-4.6.1.ebuild, -files/proj-4.6.1-test.patch:
+  Removed obsolete
+
+  21 Jul 2011; Justin Lecher <jlec@gentoo.org> proj-4.4.9.ebuild,
+  proj-4.5.0.ebuild, proj-4.6.0.ebuild, proj-4.6.1.ebuild, proj-4.7.0.ebuild,
+  metadata.xml:
+  Dropped fortran stuff as it is not needed for this package
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #104313
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> proj-4.4.9.ebuild,
+  proj-4.5.0.ebuild, proj-4.6.0.ebuild, proj-4.6.1.ebuild, proj-4.7.0.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> proj-4.4.9.ebuild,
+  proj-4.5.0.ebuild, proj-4.6.0.ebuild, proj-4.6.1.ebuild, proj-4.7.0.ebuild:
+  Added fortran-2.eclass support
+
+  04 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> proj-4.7.0.ebuild:
+  ppc64 stable wrt #317381
+
+  18 Jul 2010; <nixnut@gentoo.org> proj-4.7.0.ebuild:
+  ppc stable #317381
+
+  30 May 2010; Raúl Porcel <armin76@gentoo.org> proj-4.7.0.ebuild:
+  alpha/s390/sparc stable wrt #317381
+
+  16 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> proj-4.7.0.ebuild:
+  x86 stable wrt bug #317381
+
+  15 May 2010; Markos Chandras <hwoarang@gentoo.org> proj-4.7.0.ebuild:
+  Stable on amd64 wrt bug #317381. Thanks to Roeland Douma
+  <roeland@rullzer.com>
+
+  13 May 2010; Jeroen Roovers <jer@gentoo.org> proj-4.7.0.ebuild:
+  Stable for HPPA (bug #317381).
+
+  27 Apr 2010; Tomáš Chvátal <scarabeus@gentoo.org> proj-4.7.0.ebuild:
+  Add missing die to dodoc.
+
+  26 Apr 2010; Tomáš Chvátal <scarabeus@gentoo.org> proj-4.7.0.ebuild:
+  Make static library configureable.
+
+  02 Jan 2010; Christian Faulhammer <fauli@gentoo.org> proj-4.7.0.ebuild:
+  Transfer Prefix keywords
+
+  25 Nov 2009; <djay@gentoo.org> proj-4.6.1.ebuild, proj-4.7.0.ebuild:
+  Update 4.7.0 and 4.6.1 to use datumgrid 1.5
+
+*proj-4.7.0 (03 Oct 2009)
+
+  03 Oct 2009; Patrick Lauer <patrick@gentoo.org> +proj-4.7.0.ebuild:
+  Bump to 4.7.0, fixes #287570
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> proj-4.4.9.ebuild:
+  Remove virtual/libc
+
+  14 Sep 2009; Patrick Lauer <patrick@gentoo.org> proj-4.6.1.ebuild,
+  +files/proj-4.6.1-test.patch:
+  Fixing test failure, closes #284828. Thanks to Kacper Kowalik for
+  extracting the patch from upstream.
+
+*proj-4.6.1 (11 Sep 2008)
+
+  11 Sep 2008; <djay@gentoo.org> +proj-4.6.1.ebuild:
+  Version bump
+
+  08 Jan 2008; Sébastien Fabbro <bicatali@gentoo.org> proj-4.5.0.ebuild:
+  Added unzip dependency (bug #204866)
+
+*proj-4.6.0 (04 Jan 2008)
+
+  04 Jan 2008; Sébastien Fabbro <bicatali@gentoo.org> +proj-4.6.0.ebuild:
+  Version bump
+
+*proj-4.5.0 (24 Nov 2006)
+
+  24 Nov 2006; <djay@gentoo.org> +proj-4.5.0.ebuild:
+  Version bump
+
+  25 May 2006; Jeroen Roovers <jer@gentoo.org> proj-4.4.9.ebuild:
+  Marked stable on hppa (bug #98593).
+
+  16 Sep 2005; Aron Griffis <agriffis@gentoo.org> proj-4.4.9.ebuild:
+  Mark 4.4.9 stable on alpha
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> proj-4.4.9.ebuild:
+  Stable on ppc.
+
+  11 Jul 2005; Markus Rothe <corsair@gentoo.org> proj-4.4.9.ebuild:
+  Stable on ppc64 (bug #98593)
+
+  10 Jul 2005; Steve Arnold <nerdboy@gentoo.org> proj-4.4.7-r1.ebuild,
+  proj-4.4.8.ebuild, proj-4.4.9.ebuild:
+  bumping x86 and sparc to stable
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*proj-4.4.8 (28 Dec 2004)
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +files/proj-4.4.7-gentoo.patch, +proj-4.4.7-r1.ebuild, +proj-4.4.8.ebuild,
+  +proj-4.4.9.ebuild:
+  Moved from dev-libs/proj to sci-libs/proj.
+
+  15 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> proj-4.4.8.ebuild:
+  Stable on alpha.
+
+  12 Dec 2004; Mike Doty <kingtaco@gentoo.org> proj-4.4.9.ebuild:
+  stable on amd64
+
+*proj-4.4.9 (11 Dec 2004)
+
+  11 Dec 2004; Steve Arnold <nerdboy@gentoo.org> proj-4.4.8.ebuild,
+  +proj-4.4.9.ebuild:
+  bumped 4.4.8 to x86 and ppc, and added 4.4.9 with nad 1.2 (~arch)
+
+  05 Oct 2004; Sven Wegener <swegener@gentoo.org> :
+  Removed stray digest.
+
+*proj-4.4.8 (05 Oct 2004)
+
+  05 Oct 2004; Tom Payne <twp@gentoo.org> +proj-4.4.8.ebuild:
+  Version bump. Bug # 65832. Removed old version.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> proj-4.4.7-r1.ebuild,
+  proj-4.4.7.ebuild:
+  virtual/glibc -> virtual/libc
+
+  23 May 2004; Bryan Østergaard <kloeri@gentoo.org> proj-4.4.7-r1.ebuild:
+  Stable on alpha.
+
+  21 Apr 2004; Patrick Kursawe <phosphan@gentoo.org> proj-4.4.7-r1.ebuild:
+  Now really added IUSE, removed RDEPEND="${DEPEND}"
+
+  19 Apr 2004; Patrick Kursawe <phosphan@gentoo.org> proj-4.4.7-r1.ebuild,
+  proj-4.4.7.ebuild:
+  Added "inherit eutils", added IUSE
+
+  15 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> proj-4.4.7-r1.ebuild:
+  marked ~amd64
+
+  12 Jan 2004; <nerdboy@gentoo.org> proj-4.4.7-r1.ebuild, proj-4.4.7.ebuild:
+  Bumped -r1 to x86, updated copyright date and cleaned up ebuild comments
+
+*proj-4.4.7 (05 Nov 2003)
+
+  05 Nov 2003; <nerdboy@gentoo.org> proj-4.4.7.ebuild:
+  bumped original 4.4.7 ebuild to x86
+
+*proj-4.4.7-r1 (05 Nov 2003)
+
+  05 Nov 2003; <nerdboy@gentoo.org> proj-4.4.7-r1.ebuild:
+  added additional grids and test scripts, metadata.xml file
+
+*proj-4.4.7.ebuild (30 Aug 2003)
+
+  30 Aug 2003; Tom Payne <twp@gentoo.org> proj-4.4.7.ebuild :
+  Moved back to dev-libs from app-sci. Sorry!
+
+  30 Aug 2003; Tom Payne <twp@gentoo.org> proj-4.4.7.ebuild :
+  Moved from dev-libs to app-sci.
+
+  30 Aug 2003; Tom Payne <twp@gentoo.org> proj-4.4.7.ebuild :
+  Version bump.
+
+*proj-4.4.5.ebuild (16 Dec 2002)
+
+  16 Dec 2002; George Shapovalov <george@gentoo.org> ChangeLog, proj-4.4.5.ebuild, files/digest-proj-4.4.5 :
+  initial release
+  cartographic projections library
+  ebuild submitted by Nathaniel C. Domingo <nathaniel.domingo@upd.edu.ph>

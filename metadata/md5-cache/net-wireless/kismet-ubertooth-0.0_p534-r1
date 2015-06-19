@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=>=net-wireless/kismet-2011.03.2-r1 >=net-libs/libbtbb-0.8 virtual/libusb:1
+DESCRIPTION=Provides basic bluetooth support in kismet
+EAPI=4
+HOMEPAGE=http://ubertooth.sourceforge.net/
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=>=net-wireless/kismet-2011.03.2-r1 >=net-libs/libbtbb-0.8 virtual/libusb:1
+SLOT=0
+SRC_URI=mirror://sourceforge/ubertooth/ubertooth-r534.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=5955fcd11add2a9797bf8abd49bcc134

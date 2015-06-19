@@ -1,0 +1,103 @@
+# ChangeLog for dev-scheme/guile-gnome-platform
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-scheme/guile-gnome-platform/ChangeLog,v 1.21 2013/02/02 12:33:14 pacho Exp $
+
+  02 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup up due #154183
+
+  27 Aug 2012; Raúl Porcel <armin76@gentoo.org>
+  guile-gnome-platform-2.16.1.ebuild, guile-gnome-platform-2.16.1-r1.ebuild,
+  guile-gnome-platform-2.16.2.ebuild:
+  Drop sparc keywords
+
+*guile-gnome-platform-2.16.2 (26 Jul 2012)
+
+  26 Jul 2012; Justin Lecher <jlec@gentoo.org>
+  +guile-gnome-platform-2.16.2.ebuild:
+  Version Bump, #427468
+
+  21 Jul 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/2.16.1-glib-single-include.patch,
+  guile-gnome-platform-2.16.1-r1.ebuild, guile-gnome-platform-2.16.1.ebuild:
+  Let it compile against glib-2.32
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  guile-gnome-platform-2.16.1.ebuild, guile-gnome-platform-2.16.1-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*guile-gnome-platform-2.16.1-r1 (14 Feb 2012)
+
+  14 Feb 2012; Justin Lecher <jlec@gentoo.org> +files/2.16.1-gdk-color.patch,
+  +guile-gnome-platform-2.16.1-r1.ebuild:
+  Add patch for gdk-color handling, thanks gregory benison; move to EAPI=4 and
+  autotools-utils.eclass, handle static-libs
+
+  12 Feb 2012; Justin Lecher <jlec@gentoo.org>
+  -guile-gnome-platform-2.15.92.ebuild:
+  Drop old
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org>
+  guile-gnome-platform-2.15.92.ebuild, guile-gnome-platform-2.16.1.ebuild:
+  Fixed slot deps
+
+  01 Jul 2010; Tomas Touceda <chiiph@gentoo.org> +files/2.16.1-gcc45.patch,
+  guile-gnome-platform-2.16.1.ebuild:
+  Add patch for gcc-4.5 wrt bug 317747, and port to EAPI 3
+
+  27 Jun 2010; <nixnut@gentoo.org> guile-gnome-platform-2.16.1.ebuild:
+  ppc stable #317159
+
+  24 May 2010; Pacho Ramos <pacho@gentoo.org>
+  guile-gnome-platform-2.16.1.ebuild:
+  stable amd64, bug 317159
+
+  17 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  guile-gnome-platform-2.16.1.ebuild:
+  x86 stable wrt bug #317159
+
+  11 Dec 2009; Ulrich Mueller <ulm@gentoo.org>
+  guile-gnome-platform-2.16.1.ebuild:
+  Doesn't build with parallel make, bug 288235.
+
+  10 Dec 2009; Ulrich Mueller <ulm@gentoo.org>
+  +files/2.16.1-conflicting-types.patch, guile-gnome-platform-2.16.1.ebuild:
+  Fix conflicting types issue with GTK+ 2.18. Patch from Rafael G. Martins
+  <rafael@rafaelmartins.com> in bug 293655. Proxy commit for
+  Tomás Touceda (chiiph).
+
+  17 Jul 2009; Marijn Schouten <hkBst@gentoo.org>
+  guile-gnome-platform-2.16.1.ebuild:
+  disable -Werror to fix bug 277158
+
+  01 Jun 2009; Ferris McCormick <fmccor@gentoo.org>
+  guile-gnome-platform-2.16.1.ebuild:
+  Add ~sparc for testing, part of Bug #272046.
+
+  05 Jul 2008; Samuli Suominen <drac@gentoo.org>
+  -guile-gnome-platform-2.15.95.ebuild:
+  Remove the broken version I introduced, use 2.15.92 or 2.16.1.
+
+*guile-gnome-platform-2.16.1 (03 Jul 2008)
+
+  03 Jul 2008; Marijn Schouten <hkBst@gentoo.org>
+  +guile-gnome-platform-2.16.1.ebuild:
+  bump
+
+*guile-gnome-platform-2.15.95 (25 Nov 2007)
+
+  25 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  +guile-gnome-platform-2.15.95.ebuild:
+  Version bump.
+
+  08 Oct 2007; Denis Dupeyron <calchan@gentoo.org>
+  guile-gnome-platform-2.15.92.ebuild:
+  Added --disable-Werror option to econf.
+
+*guile-gnome-platform-2.15.92 (06 Jun 2007)
+
+  06 Jun 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/2.15.92-add-atk-overrides.patch,
+  +files/2.15.92-add-cairo-fix-from-bzr.patch, +metadata.xml,
+  +guile-gnome-platform-2.15.92.ebuild:
+  Add Guile Scheme code that wraps the GNOME developer platform. The cairo fix
+  is from upstream bzr, but the atk fix hasn't yet made its way upstream.

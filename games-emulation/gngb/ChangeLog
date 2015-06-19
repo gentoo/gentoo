@@ -1,0 +1,90 @@
+# ChangeLog for games-emulation/gngb
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/gngb/ChangeLog,v 1.17 2014/07/30 16:43:44 mr_bones_ Exp $
+
+  30 Jul 2014; Michael Sterrett <mr_bones_@gentoo.org> gngb-20060309.ebuild:
+  EAPI=5; fix compile with newer zlib (bug #494168)
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> gngb-20060309.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  28 Oct 2010; Tupone Alfredo <tupone@gentoo.org> gngb-20060309.ebuild,
+  +files/gngb-20060309-ovflfix.patch:
+  Fix gcc-4.5 overflow warning. Bug #340196 by flameeyes@gentoo.org
+
+  15 Oct 2010; Brent Baude <ranger@gentoo.org> gngb-20060309.ebuild:
+  stable ppc, bug 313789
+
+  13 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> gngb-20060309.ebuild:
+  x86 stable wrt bug #313789
+
+  09 Mar 2010; Michael Sterrett <mr_bones_@gentoo.org> gngb-20060309.ebuild:
+  add use flags for libsdl
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org> gngb-20060309.ebuild:
+  Transfer Prefix keywords
+
+  14 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org> gngb-20060309.ebuild:
+  EAPI=2
+
+*gngb-20060309 (31 Oct 2007)
+
+  31 Oct 2007; Tupone Alfredo <tupone@gentoo.org> +gngb-20060309.ebuild:
+  Version bump
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*gngb-20060204 (23 Feb 2006)
+
+  23 Feb 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/gngb-20060204-gcc34.patch, +gngb-20060204.ebuild:
+  version bump (bug #122910) - includes patch for gcc34 submitted by Tupone
+  Alfredo via bug #120143
+
+  24 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> gngb-20020819.ebuild,
+  gngb-20030809.ebuild:
+  remove older versions
+
+  02 Mar 2004; David Holm <dholm@gentoo.org> gngb-20040115.ebuild:
+  Latest release seems to work on ~ppc. Unmasking.
+
+*gngb-20040115 (05 Feb 2004)
+
+  05 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> gngb-20040115.ebuild:
+  version bump (bug 40432)
+
+*gngb-20030809 (09 Aug 2003)
+
+  09 Aug 2003; Hanno Boeck <hanno@gentoo.org> gngb-20030809.ebuild:
+  Version bump.
+
+*gngb-20020819 (13 Oct 2002)
+
+ 13 Oct 2002; Hanno Boeck <hanno@gentoo.org> gngb-20020819.ebuild :
+
+ Version updated.
+
+*gngb-20020111 (27 Jul 2002)
+
+  03 Sep 2002; Seemant Kulleen <seemant@gentoo.org> gngb-20020111.ebuild :
+
+  HOMEPAGE fix by Rachel Holmes, and modernised syntax to econf.
+
+  06 Aug 2002; Mark Guertin <gerk@gentoo.org> :
+  Added -ppc to keywords
+
+  27 Jul 2002; Stuart Bouyer <stubear@gentoo.org> gngb-20020111.ebuild :
+
+  Added KEYWORS="x86" and SLOT to bring ebuild in line with QA.  
+
+*gngb-20020111 (18 Jun 2002)
+
+  18 Jun 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

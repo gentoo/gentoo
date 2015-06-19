@@ -1,0 +1,107 @@
+# ChangeLog for net-libs/czmq
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/czmq/ChangeLog,v 1.25 2015/06/19 07:14:06 jlec Exp $
+
+*czmq-3.0.2 (19 Jun 2015)
+
+  19 Jun 2015; Justin Lecher <jlec@gentoo.org> +czmq-3.0.2.ebuild,
+  czmq-2.2.0-r2.ebuild:
+  Version Bump; correct dependency version of zeromq, bug #552494
+
+  02 Mar 2015; Justin Lecher <jlec@gentoo.org> -czmq-1.2.0-r1.ebuild,
+  -czmq-1.2.0.ebuild:
+  Drop old
+
+  28 Feb 2015; Markus Meier <maekke@gentoo.org> czmq-2.2.0-r2.ebuild:
+  arm stable, bug #539750
+
+  25 Feb 2015; Agostino Sarubbo <ago@gentoo.org> czmq-2.2.0-r2.ebuild:
+  Stable for x86, wrt bug #539750
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> czmq-2.2.0-r2.ebuild:
+  Stable for amd64, wrt bug #539750
+
+  15 Feb 2015; Jeroen Roovers <jer@gentoo.org> czmq-2.2.0-r2.ebuild:
+  Stable for HPPA (bug #539750).
+
+  11 Feb 2015; Justin Lecher <jlec@gentoo.org> -czmq-1.4.1.ebuild,
+  -czmq-2.0.3.ebuild, -czmq-2.1.0.ebuild, -czmq-2.2.0-r1.ebuild,
+  czmq-2.2.0-r2.ebuild:
+  Drop old
+
+*czmq-2.2.0-r2 (15 Sep 2014)
+
+  15 Sep 2014; Justin Lecher <jlec@gentoo.org> +czmq-2.2.0-r2.ebuild:
+  Avoid file collisions, #500476
+
+  15 Sep 2014; Justin Lecher <jlec@gentoo.org> czmq-2.2.0-r1.ebuild:
+  Avoid @preserved-rebuild usage, #521396
+
+  26 Jun 2014; Justin Lecher <jlec@gentoo.org> Manifest:
+  Fix checksums, #513398
+
+*czmq-2.2.0-r1 (26 Jun 2014)
+
+  26 Jun 2014; Justin Lecher <jlec@gentoo.org> -czmq-2.2.0.ebuild,
+  +czmq-2.2.0-r1.ebuild:
+  Bump to new tarball, fixes missing version.h, #513398
+
+*czmq-2.2.0 (27 May 2014)
+
+  27 May 2014; Justin Lecher <jlec@gentoo.org> czmq-2.1.0.ebuild,
+  +czmq-2.2.0.ebuild:
+  Add missing dep in libsodium, #511612; version Bump
+
+  27 Apr 2014; Justin Lecher <jlec@gentoo.org> czmq-2.0.3.ebuild,
+  czmq-2.1.0.ebuild, +files/version.sh:
+  Fix missing verison number in pkg-config file, #508864
+
+*czmq-2.1.0 (24 Apr 2014)
+
+  24 Apr 2014; Justin Lecher <jlec@gentoo.org> -czmq-1.1.0.ebuild,
+  czmq-1.2.0.ebuild, czmq-1.2.0-r1.ebuild, czmq-1.4.1.ebuild,
+  czmq-2.0.3.ebuild, +czmq-2.1.0.ebuild:
+  Version Bump, #508286
+
+  24 Dec 2013; Justin Lecher <jlec@gentoo.org> czmq-2.0.3.ebuild:
+  Bump to autotools-utils.eclass
+
+*czmq-2.0.3 (24 Dec 2013)
+*czmq-1.4.1 (24 Dec 2013)
+
+  24 Dec 2013; Ultrabug <ultrabug@gentoo.org> czmq-1.1.0.ebuild,
+  czmq-1.2.0.ebuild, czmq-1.2.0-r1.ebuild, +czmq-1.4.1.ebuild,
+  +czmq-2.0.3.ebuild:
+  Version bump wrt #495198, fix deps
+
+  11 Aug 2013; Jeroen Roovers <jer@gentoo.org> czmq-1.2.0-r1.ebuild:
+  Stable for HPPA too.
+
+*czmq-1.2.0-r1 (11 Aug 2013)
+
+  11 Aug 2013; Jeroen Roovers <jer@gentoo.org> +czmq-1.2.0-r1.ebuild:
+  Remove -Werror (bug #475010).
+
+  03 Aug 2013; Sergey Popov <pinkbyte@gentoo.org> czmq-1.1.0.ebuild,
+  czmq-1.2.0.ebuild:
+  Add ~arm keyword, wrt bug #474850
+
+  22 Jul 2013; Dirkjan Ochtman <djc@gentoo.org> metadata.xml:
+  Hand over to jlec.
+
+  27 Jun 2013; Agostino Sarubbo <ago@gentoo.org> czmq-1.2.0.ebuild:
+  Stable for x86, wrt bug #472564
+
+  27 Jun 2013; Agostino Sarubbo <ago@gentoo.org> czmq-1.2.0.ebuild:
+  Stable for amd64, wrt bug #472564
+
+*czmq-1.2.0 (05 Oct 2012)
+
+  05 Oct 2012; Dirkjan Ochtman <djc@gentoo.org> +czmq-1.2.0.ebuild:
+  Version bump to 1.2.0.
+
+*czmq-1.1.0 (24 Nov 2011)
+
+  24 Nov 2011; Dirkjan Ochtman <djc@gentoo.org> +czmq-1.1.0.ebuild,
+  +metadata.xml:
+  Initial version 1.1.0 (bug 390237). Thanks to Philip Kovacs.

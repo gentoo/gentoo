@@ -1,0 +1,13 @@
+diff -Naur yate-bts/configure.in yate-bts-sane/configure.in
+--- yate-bts/configure.in	2014-07-25 10:28:44.000000000 -0400
++++ yate-bts-sane/configure.in	2014-07-25 17:38:23.550069064 -0400
+@@ -36,9 +36,6 @@
+ AC_PROG_CC
+ AC_PROG_AWK
+ 
+-# Delete -g as we handle debug info at build time
+-CFLAGS=`echo "$CFLAGS" | sed 's/-g[[0-9]]* *//' 2>/dev/null`
+-
+ # Helper to check by pkgconfig including local paths
+ function pkgconfig_check()
+ {

@@ -1,0 +1,20 @@
+# ChangeLog for app-emacs/scim-bridge-el
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/scim-bridge-el/ChangeLog,v 1.4 2015/06/09 11:04:02 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  17 Sep 2013; Ulrich Müller <ulm@gentoo.org> scim-bridge-el-0.8.2.ebuild:
+  Remove app-editors/emacs from RDEPEND, elisp.eclass takes care of this.
+  Specify LICENSE more precisely.
+
+  16 Sep 2013; Benda Xu <heroxbd@gentoo.org> scim-bridge-el-0.8.2.ebuild:
+  RDEPEND to scim and emacs.
+
+*scim-bridge-el-0.8.2 (16 Sep 2013)
+
+  16 Sep 2013; Benda Xu <heroxbd@gentoo.org>
+  +files/scim-bridge-el-0.8.2-im-agent.patch, +metadata.xml,
+  +scim-bridge-el-0.8.2.ebuild:
+  initial commit

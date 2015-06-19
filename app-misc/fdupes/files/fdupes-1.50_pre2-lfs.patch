@@ -1,0 +1,21 @@
+diff -urNp fdupes-1.50-PR2.orig/fdupes.c fdupes-1.50-PR2/fdupes.c
+--- fdupes-1.50-PR2.orig/fdupes.c	2009-01-31 20:11:49.577968848 +0530
++++ fdupes-1.50-PR2/fdupes.c	2009-01-31 20:29:17.103220311 +0530
+@@ -643,7 +643,7 @@ void printmatches(file_t *files)
+   while (files != NULL) {
+     if (files->hasdupes) {
+       if (!ISFLAG(flags, F_OMITFIRST)) {
+-	if (ISFLAG(flags, F_SHOWSIZE)) printf("%ld byte%seach:\n", files->size,
++	if (ISFLAG(flags, F_SHOWSIZE)) printf("%lld byte%seach:\n", files->size,
+ 	 (files->size != 1) ? "s " : " ");
+ 	if (ISFLAG(flags, F_DSAMELINE)) escapefilename("\\ ", &files->d_name);
+ 	printf("%s%c", files->d_name, ISFLAG(flags, F_DSAMELINE)?' ':'\n');
+@@ -796,7 +796,7 @@ void deletefiles(file_t *files, int prom
+       do {
+ 	printf("Set %d of %d, preserve files [1 - %d, all]", 
+           curgroup, groups, counter);
+-	if (ISFLAG(flags, F_SHOWSIZE)) printf(" (%ld byte%seach)", files->size,
++	if (ISFLAG(flags, F_SHOWSIZE)) printf(" (%lld byte%seach)", files->size,
+ 	  (files->size != 1) ? "s " : " ");
+ 	printf(": ");
+ 	fflush(stdout);

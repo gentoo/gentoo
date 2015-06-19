@@ -1,0 +1,46 @@
+# ChangeLog for app-doc/linkers-and-loaders
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-doc/linkers-and-loaders/ChangeLog,v 1.11 2014/11/07 01:21:41 vapier Exp $
+
+  07 Nov 2014; Mike Frysinger <vapier@gentoo.org> linkers-and-loaders-1.ebuild:
+  Update SRC_URI/EAPI #528502 by Toralf Förster.
+
+  01 Apr 2013; Ulrich Müller <ulm@gentoo.org> linkers-and-loaders-1.ebuild:
+  Fix LICENSE, bug 463874. Remove lzma-utils from DEPEND.
+
+  17 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  linkers-and-loaders-1.ebuild:
+  QA: add prefix keywords
+
+  10 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  linkers-and-loaders-1.ebuild:
+  Fix xz-utils vs. lzma-utils deps.
+
+  18 Mar 2009; <ricmm@gentoo.org> linkers-and-loaders-1.ebuild:
+  Drop down to ~mips due to unstable deps
+
+  28 Jun 2008; Mike Frysinger <vapier@gentoo.org>
+  linkers-and-loaders-1.ebuild:
+  Add app-arch/lzma-utils to DEPEND #228783.
+
+*linkers-and-loaders-1 (21 Jun 2008)
+
+  21 Jun 2008; Mike Frysinger <vapier@gentoo.org>
+  -linkers-and-loaders-0.ebuild, +linkers-and-loaders-1.ebuild:
+  Fix fetching #228709 by KostyaSha and install pdf/extraneous html files.
+
+  04 Feb 2008; Fabian Groffen <grobian@gentoo.org>
+  linkers-and-loaders-0.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  linkers-and-loaders-0.ebuild:
+  (QA) RESTRICT clean up.
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*linkers-and-loaders-0 (14 Jan 2004)
+
+  14 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

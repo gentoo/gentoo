@@ -1,0 +1,49 @@
+# ChangeLog for app-backup/snapper
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/snapper/ChangeLog,v 1.8 2015/03/01 15:11:43 dlan Exp $
+
+*snapper-0.2.6 (01 Mar 2015)
+
+  01 Mar 2015; Yixun Lan <dlan@gentoo.org> +snapper-0.2.6.ebuild:
+  version bump, bug 539526
+
+*snapper-0.2.4 (15 Nov 2014)
+
+  15 Nov 2014; Yixun Lan <dlan@gentoo.org> +snapper-0.2.4.ebuild,
+  snapper-9999.ebuild:
+  version bump, fix bug 522656
+
+*snapper-0.2.3-r1 (15 Sep 2014)
+
+  15 Sep 2014; Yixun Lan <dlan@gentoo.org> -snapper-0.2.2-r1.ebuild,
+  -snapper-0.2.3.ebuild, +snapper-0.2.3-r1.ebuild:
+  temporarily fix bug 522656, drop old version
+
+  12 Sep 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  snapper-0.2.2-r1.ebuild, snapper-0.2.3.ebuild, snapper-9999.ebuild:
+  Add subslot dependency on dev-libs/icu
+
+*snapper-0.2.3 (09 Jul 2014)
+
+  09 Jul 2014; Yixun Lan <dlan@gentoo.org> +snapper-0.2.3.ebuild:
+  version bump
+
+  30 May 2014; Yixun Lan <dlan@gentoo.org> snapper-0.2.2-r1.ebuild,
+  snapper-9999.ebuild:
+  fix bug #511410, thanks Dainius Masiliūnas,holgersson; combine minor
+  improvement suggested by @jlec
+
+*snapper-0.2.2-r1 (22 May 2014)
+
+  22 May 2014; Yixun Lan <dlan@gentoo.org> -snapper-0.2.2.ebuild,
+  +snapper-0.2.2-r1.ebuild, snapper-9999.ebuild:
+  drop using base.eclass, prune la, minor update
+
+*snapper-9999 (21 May 2014)
+*snapper-0.2.2 (21 May 2014)
+
+  21 May 2014; Yixun Lan <dlan@gentoo.org> +snapper-0.2.2.ebuild,
+  +snapper-9999.ebuild, +files/cron-confd.patch, +metadata.xml:
+  initial version, contributed by Dainius Masiliūnas (GreatEmerald), polished
+  by me
+

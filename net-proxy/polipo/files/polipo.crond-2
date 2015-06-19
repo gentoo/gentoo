@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Loop through all init.d instances
+for f in /etc/init.d/polipo*; do
+    # only proceed if daemon is running
+    "${f}" --quiet status || continue
+
+    myname="${f#/etc/init.d/polipo}"
+    conffile="/etc/polipo/config${myname}"
+    pidfile="/var/run/polipo${myname}.pid"
+
+    # check if disk cache is enabled
+    polipo -v -c "${CONFFILE}" |
+        awk '$1 ~ /diskCacheRoot/ { if ($3 == "(none)") exit 1}' ||
+        continue
+
+    # Expire old cached objects
+    kill -USR1 $(cat "${pidfile}")
+    sleep 1
+    nice -n 15 su -s "/bin/sh" -c "polipo -c ${conffile} -x" polipo > /dev/null
+    kill -USR2 $(cat "${pidfile}")
+done

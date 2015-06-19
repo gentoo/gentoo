@@ -1,0 +1,27 @@
+# ChangeLog for dev-ml/ocaml-gettext
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocaml-gettext/ChangeLog,v 1.6 2014/11/28 18:07:50 aballier Exp $
+
+  28 Nov 2014; Alexis Ballier <aballier@gentoo.org> ocaml-gettext-0.3.5.ebuild:
+  update deps for ocaml 4.02
+
+*ocaml-gettext-0.3.5 (29 Oct 2014)
+
+  29 Oct 2014; Alexis Ballier <aballier@gentoo.org>
+  +ocaml-gettext-0.3.5.ebuild:
+  version bump
+
+  24 Aug 2013; Markus Meier <maekke@gentoo.org> ocaml-gettext-0.3.4.ebuild:
+  add ~x86, bug #462360
+
+  19 Aug 2013; Alexis Ballier <aballier@gentoo.org> ocaml-gettext-0.3.4.ebuild:
+  eapi5, define subslot and add := dep on ocaml packages
+
+  09 Jul 2012; Ulrich Müller <ulm@gentoo.org> ocaml-gettext-0.3.4.ebuild:
+  Update LICENSE, bug 425140.
+
+*ocaml-gettext-0.3.4 (05 Jul 2012)
+
+  05 Jul 2012; Alexis Ballier <aballier@gentoo.org>
+  +ocaml-gettext-0.3.4.ebuild, +metadata.xml:
+  initial import, ebuild by me, bug #408561

@@ -1,0 +1,168 @@
+# ChangeLog for app-emulation/fuse
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/fuse/ChangeLog,v 1.44 2015/06/09 11:08:34 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  17 Aug 2014; Jesus Rivero <neurogeek@gentoo.org>
+  +files/fuse-1.1.1-gold-link-lm.patch:
+  Adding missing patch. Closes bug #518284
+
+*fuse-1.1.1 (23 Jul 2014)
+
+  23 Jul 2014; Jesus Rivero <neurogeek@gentoo.org> +fuse-1.1.1.ebuild:
+  Version bump.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> fuse-1.0.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  16 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> -fuse-0.7.0.ebuild,
+  -files/fuse-0.7.0-gcc4.patch, -fuse-0.10.0.2-r3.ebuild, metadata.xml:
+  old
+
+  15 Oct 2011; Markus Meier <maekke@gentoo.org> fuse-1.0.0.ebuild:
+  x86 stable, bug #385791
+
+  15 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org> fuse-1.0.0.ebuild:
+  ppc stable wrt #385791
+
+  06 Oct 2011; Steve Dibb <beandog@gentoo.org> fuse-1.0.0.ebuild:
+  amd64 stable, bug 385791
+
+  17 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> fuse-1.0.0.ebuild,
+  +files/fuse-1.0.0-libpng15.patch:
+  Fix building with libpng15 (missing zlib.h include) wrt #383223 by Diego Elio
+  Pettenò
+
+*fuse-1.0.0 (02 May 2011)
+
+  02 May 2011; Jesus Rivero <neurogeek@gentoo.org> +fuse-1.0.0.ebuild:
+  Version bump. WRT bug #351726
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> fuse-0.7.0.ebuild,
+  fuse-0.10.0.2-r3.ebuild:
+  Fix slot-dep on gtk+/glib
+
+  28 Mar 2010; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  Drop myself from metadata
+
+  23 Mar 2010; Jesus Rivero <neurogeek@gentoo.org> metadata.xml:
+  Added myself to metadata.xml
+
+  22 Dec 2009; Jeremy Olexa <darkside@gentoo.org> -fuse-0.10.0.2-r2.ebuild:
+  remove old
+
+*fuse-0.10.0.2-r3 (22 Dec 2009)
+
+  22 Dec 2009; Jeremy Olexa <darkside@gentoo.org> +fuse-0.10.0.2-r3.ebuild:
+  New revision to fix dependancy issues. Ebuild by José Manuel Ferrer Ortiz
+
+*fuse-0.10.0.2-r2 (10 Mar 2009)
+
+  10 Mar 2009; Jeremy Olexa <darkside@gentoo.org> -fuse-0.10.0.2-r1.ebuild,
+  +fuse-0.10.0.2-r2.ebuild:
+  remove libdsk use flag and deps, not needed anymore. bug 259855
+
+*fuse-0.10.0.2-r1 (29 Jan 2009)
+
+  29 Jan 2009; Jeremy Olexa <darkside@gentoo.org> -fuse-0.10.0.2.ebuild,
+  +fuse-0.10.0.2-r1.ebuild:
+  fix build issue with missing glib, bug 256640
+
+  25 Jan 2009; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  Update metadata to reflect reality
+
+*fuse-0.10.0.2 (25 Jan 2009)
+
+  25 Jan 2009; Jeremy Olexa <darkside@gentoo.org> -fuse-0.9.0.ebuild,
+  +fuse-0.10.0.2.ebuild:
+  Version bump by José Manuel Ferrer Ortiz, remove old
+
+  28 Jul 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  30 May 2008; Jeremy Olexa <darkside@gentoo.org> fuse-0.7.0.ebuild:
+  changed ebuild to explicitly require libspectrum-0.2.2*. Thanks to Jouni
+  Rinne for reporting in bug #222335
+
+  29 May 2008; Jeremy Olexa <darkside@gentoo.org>; +fuse-0.9.0.ebuild:
+  version bump app-emulation/fuse to 0.9.0. Thanks to José Manuel Ferrer Ortiz
+  for the ebuild, bug #222427. José will also take over maintaining this package
+  and I will be his proxy.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; fuse-0.7.0.ebuild:
+  Drop virtual/x11 references.
+
+  02 Sep 2006; <blubb@gentoo.org> fuse-0.7.0.ebuild:
+  stable on amd64
+
+  06 Jun 2006; Stefan Schweizer <genstef@gentoo.org> metadata.xml,
+  -fuse-0.6.2.1.ebuild, fuse-0.7.0.ebuild:
+  Fix building with -X, bug 113093, xml2->xml, bug 116346, modular X deps, bug
+  123933, merge gtk2 and gtk flags, bug 106560, remove old
+
+  10 Mar 2006; Mark Loeser <halcy0n@gentoo.org>
+  +files/fuse-0.7.0-gcc4.patch, fuse-0.7.0.ebuild:
+  Add patch to fix compilation with gcc-4 by Samuli Suominen <sasuomin AT
+  uusikaupunki DOT fi>; bug #125619
+
+  02 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> fuse-0.7.0.ebuild:
+  Stable on ppc.
+
+  17 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> -fuse-0.6.1.1.ebuild,
+  fuse-0.7.0.ebuild:
+  0.7.0 x86 stable for bug 105808. Thanks to Ooblick <txe_stc at yahoo dot com>.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> fuse-0.6.2.1.ebuild:
+  Stable on ppc.
+
+  21 May 2005; Simon Stelling <blubb@gentoo.org> fuse-0.7.0.ebuild:
+  added ~amd64 keyword
+
+*fuse-0.7.0 (04 Jan 2005)
+
+  04 Jan 2005; Daniel Black <dragonheart@gentoo.org> fuse-0.6.1.1.ebuild,
+  fuse-0.6.2.1.ebuild, +fuse-0.7.0.ebuild:
+  Version bump as per bug #76488 by Ooblick <txe_stc@yahoo.com>. Previous
+  versions QA fix due to deprecated empty target in string (fuse use flag).
+
+  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> fuse-0.6.2.1.ebuild,
+  +metadata.xml:
+  QA - (IUSE) fix, x86 stable
+
+  01 Jun 2004; Aron Griffis <agriffis@gentoo.org> fuse-0.6.1.1.ebuild,
+  fuse-0.6.2.1.ebuild:
+  Fix use invocation
+
+  26 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> fuse-0.6.1.1.ebuild,
+  fuse-0.6.2.1.ebuild:
+  work around portage dep issue (bug #45688)
+
+  20 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> fuse-0.6.1.1.ebuild,
+  fuse-0.6.2.1.ebuild:
+  stop using deprecated ?: use syntax
+
+*fuse-0.6.2.1 (28 Feb 2004)
+
+  28 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump to work with new libspectrum #39904
+
+*fuse-0.6.1.1 (20 Nov 2003)
+
+  24 Dec 2003; David Holm <dholm@gentoo.org> fuse-0.6.1.1.ebuild:
+  Added to ~ppc.
+
+  27 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> fuse-0.6.0.1.ebuild:
+  clean old version of ebuild
+
+  20 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump + DEPEND fixups #31215 #27711.
+
+*fuse-0.6.0.1 (15 Jul 2003)
+
+  15 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Adam Short <ajs@orinoco.homelinux.org> #18523.

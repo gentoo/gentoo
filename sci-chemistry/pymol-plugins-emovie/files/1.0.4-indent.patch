@@ -1,0 +1,22 @@
+diff --git a/eMovie.py b/eMovie.py
+index a865732..8b5b068 100644
+--- a/eMovie.py
++++ b/eMovie.py
+@@ -931,7 +931,7 @@ class Story(tkSimpleDialog.Dialog):
+ 
+         	if self.parent is not None:
+             		self.geometry("+%d+%d" % (parent.winfo_rootx()+50,parent.winfo_rooty()+50))
+-			self.initial_focus.focus_set()
++            		self.initial_focus.focus_set()
+ 
+         	self.wait_window(self)
+ 
+@@ -2041,7 +2041,7 @@ class AddMorph(tkSimpleDialog.Dialog):
+ 
+         	if self.parent is not None:
+             		self.geometry("+%d+%d" % (parent.winfo_rootx()+50,parent.winfo_rooty()+50))
+-		self.initial_focus.focus_set()
++        	self.initial_focus.focus_set()
+ 
+         	self.wait_window(self)
+ 

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=alsa? ( media-libs/alsa-lib ) alstream? ( virtual/ffmpeg ) portaudio? ( >=media-libs/portaudio-19_pre ) pulseaudio? ( media-sound/pulseaudio ) oss? ( virtual/os-headers ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=A software implementation of the OpenAL 3D audio API
+EAPI=5
+HOMEPAGE=http://kcat.strangesoft.net/openal.html
+IUSE=alsa alstream coreaudio debug neon oss portaudio pulseaudio cpu_flags_x86_sse
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux
+LICENSE=LGPL-2
+RDEPEND=alsa? ( media-libs/alsa-lib ) alstream? ( virtual/ffmpeg ) portaudio? ( >=media-libs/portaudio-19_pre ) pulseaudio? ( media-sound/pulseaudio )
+SLOT=0
+SRC_URI=http://kcat.strangesoft.net/openal-releases/openal-soft-1.15.1.tar.bz2
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a30dc7a4f367fd205b1ab89d0011697e

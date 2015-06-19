@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=alsa? ( media-libs/alsa-lib ) nas? ( media-libs/nas ) pulseaudio? ( media-sound/pulseaudio ) virtual/pkgconfig
+DESCRIPTION=The Audio Output library
+EAPI=4
+HOMEPAGE=http://www.xiph.org/ao/
+IUSE=alsa nas mmap pulseaudio static-libs
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~x86-fbsd ~x86-interix ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=alsa? ( media-libs/alsa-lib ) nas? ( media-libs/nas ) pulseaudio? ( media-sound/pulseaudio )
+SLOT=0
+SRC_URI=http://downloads.xiph.org/releases/ao/libao-1.1.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f5c6c2cb62bc6334a1eee4c3f321eb2f

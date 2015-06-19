@@ -1,0 +1,41 @@
+# ChangeLog for dev-ruby/mini_shoulda
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/mini_shoulda/ChangeLog,v 1.10 2015/06/07 18:39:13 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  22 Mar 2015; Hans de Graaff <graaff@gentoo.org> mini_shoulda-0.5.0-r1.ebuild:
+  Document ruby22 status.
+
+  08 Feb 2015; Hans de Graaff <graaff@gentoo.org> mini_shoulda-0.5.0-r1.ebuild:
+  Add ruby21.
+
+  11 Nov 2014; Manuel Rüger <mrueg@gentoo.org> mini_shoulda-0.5.0-r1.ebuild:
+  Drop jruby target.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> mini_shoulda-0.5.0-r1.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  26 May 2014; Manuel Rüger <mrueg@gentoo.org> mini_shoulda-0.5.0-r1.ebuild:
+  Remove ruby18 target.
+
+*mini_shoulda-0.5.0-r1 (10 Mar 2014)
+
+  10 Mar 2014; Manuel Rüger <mrueg@gentoo.org> +mini_shoulda-0.5.0-r1.ebuild,
+  -mini_shoulda-0.5.0.ebuild:
+  Add ruby20. Remove ree18.
+
+  08 Mar 2014; Manuel Rüger <mrueg@gentoo.org> -mini_shoulda-0.4.0.ebuild:
+  Cleanup old.
+
+*mini_shoulda-0.5.0 (26 Aug 2012)
+
+  26 Aug 2012; Hans de Graaff <graaff@gentoo.org> +mini_shoulda-0.5.0.ebuild:
+  Version bump.
+
+*mini_shoulda-0.4.0 (02 Aug 2012)
+
+  02 Aug 2012; Hans de Graaff <graaff@gentoo.org> +mini_shoulda-0.4.0.ebuild,
+  +metadata.xml:
+  Initial import. Dependency of forthcoming dev-ruby/dalli.

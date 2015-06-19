@@ -1,0 +1,30 @@
+# ChangeLog for net-irc/xchat-otr
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/xchat-otr/ChangeLog,v 1.8 2014/09/17 13:49:12 mrueg Exp $
+
+  17 Sep 2014; Manuel Rüger <mrueg@gentoo.org> xchat-otr-0.3.ebuild:
+  Restrict dependency to <net-libs/libotr-4
+
+  01 Mar 2014; Michał Górny <mgorny@gentoo.org> xchat-otr-0.3.ebuild:
+  Update libgcrypt dep to use slot :0.
+
+  21 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> xchat-otr-0.3.ebuild:
+  x86 stable wrt bug #414079
+
+  10 May 2012; Lars Wendler <polynomial-c@gentoo.org> xchat-otr-0.3.ebuild:
+  Fixed repoman warning.
+
+  09 May 2012; Agostino Sarubbo <ago@gentoo.org> xchat-otr-0.3.ebuild:
+  Stable for amd64, wrt bug #414079
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> xchat-otr-0.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  20 Sep 2011; Nathan Phillip Brink <binki@gentoo.org> xchat-otr-0.3.ebuild:
+  Add ~x86 keyword, bug #383709 by Faustus.
+
+*xchat-otr-0.3 (28 Jun 2010)
+
+  28 Jun 2010; Lars Wendler <polynomial-c@gentoo.org> +xchat-otr-0.3.ebuild,
+  +metadata.xml:
+  Initial commit.

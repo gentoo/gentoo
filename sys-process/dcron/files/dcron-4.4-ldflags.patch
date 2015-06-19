@@ -1,0 +1,30 @@
+From 9f4d538a4427240a807b82225080a3ff1fac9d16 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 26 Oct 2010 01:38:18 -0400
+Subject: [PATCH] respect LDFLAGS env var while building
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ Makefile |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 3a89a3b..dc5b78f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -53,10 +53,10 @@ protos.h: $(SRCS) $(TABSRCS)
+ 	fgrep -h Prototype $(SRCS) $(TABSRCS) > protos.h
+ 
+ crond: $(OBJS)
+-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o crond
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LIBS) -o crond
+ 
+ crontab: $(TABOBJS)
+-	$(CC) $(CFLAGS) $(TABOBJS) -o crontab
++	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o crontab
+ 
+ %.o: %.c defs.h $(PROTOS)
+ 	$(CC) -c $(CPPFLAGS) $(CFLAGS) $(DEFS) $< -o $@
+-- 
+1.7.3.1
+

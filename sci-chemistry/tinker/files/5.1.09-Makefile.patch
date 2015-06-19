@@ -1,0 +1,13 @@
+diff --git a/make/Makefile b/make/Makefile
+index 221ab45..7634474 100644
+--- a/make/Makefile
++++ b/make/Makefile
+@@ -607,7 +607,7 @@ clean:
+ listing:
+ 	cat *.i *.f > tinker.txt
+ 
+-rename:
++rename: ${EXEFILES}
+ 	mv  alchemy.x    $(BINDIR)/alchemy
+ 	mv  analyze.x    $(BINDIR)/analyze
+ 	mv  anneal.x     $(BINDIR)/anneal

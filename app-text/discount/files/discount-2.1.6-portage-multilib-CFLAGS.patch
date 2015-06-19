@@ -1,0 +1,58 @@
+From 9b95e9a2dce195a8dfbdbf3206494095b177d405 Mon Sep 17 00:00:00 2001
+From: Nathan Phillip Brink <binki@gentoo.org>
+Date: Thu, 25 Jul 2013 01:14:14 -0400
+Subject: [PATCH] =?UTF-8?q?Fix=20support=20for=20=E2=80=9C$=20CFLAGS=3D-m32=20./configure.sh=E2=80=9D=20by=20using=20CFLAGS=20for=20all=20build=20invokations=20of=20CC.?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ Makefile.in |   14 +++++++-------
+ 1 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 9bb438a..3bda63d 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -64,7 +64,7 @@ $(DESTDIR)$(LIBDIR):
+ 	@INSTALL_DIR@ $(DESTDIR)$(LIBDIR)
+ 
+ version.o: version.c VERSION
+-	$(CC) -DVERSION=\"`cat VERSION`\" -c version.c
++	$(CC) $(CFLAGS) -DVERSION=\"`cat VERSION`\" -c version.c
+ 
+ VERSION:
+ 	@true
+@@ -76,23 +76,23 @@ blocktags: mktags
+ 
+ # example programs
+ @THEME@theme:  theme.o $(MKDLIB) mkdio.h
+-@THEME@	$(CC) $(LFLAGS) -o theme theme.o pgm_options.o -lmarkdown @LIBS@
++@THEME@	$(CC) $(CFLAGS) $(LFLAGS) -o theme theme.o pgm_options.o -lmarkdown @LIBS@
+ 
+ 
+ mkd2html:  mkd2html.o $(MKDLIB) mkdio.h
+-	$(CC) $(LFLAGS) -o mkd2html mkd2html.o -lmarkdown @LIBS@
++	$(CC) $(CFLAGS) $(LFLAGS) -o mkd2html mkd2html.o -lmarkdown @LIBS@
+ 
+ markdown: main.o pgm_options.o $(MKDLIB)
+-	$(CC) $(LFLAGS) -o markdown main.o pgm_options.o -lmarkdown @LIBS@
++	$(CC) $(CFLAGS) $(LFLAGS) -o markdown main.o pgm_options.o -lmarkdown @LIBS@
+ 	
+ makepage:  makepage.c pgm_options.o $(MKDLIB) mkdio.h
+-	$(CC) $(LFLAGS) -o makepage makepage.c pgm_options.o -lmarkdown @LIBS@
++	$(CC) $(CFLAGS) $(LFLAGS) -o makepage makepage.c pgm_options.o -lmarkdown @LIBS@
+ 
+ pgm_options.o: pgm_options.c mkdio.h config.h
+-	$(CC) -I. -c pgm_options.c
++	$(CC) $(CFLAGS) -I. -c pgm_options.c
+ 
+ main.o: main.c mkdio.h config.h
+-	$(CC) -I. -c main.c
++	$(CC) $(CFLAGS) -I. -c main.c
+ 
+ $(MKDLIB): $(OBJS)
+ 	./librarian.sh make $(MKDLIB) VERSION $(OBJS)
+-- 
+1.7.3.4
+

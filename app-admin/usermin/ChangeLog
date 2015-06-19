@@ -1,0 +1,659 @@
+# ChangeLog for app-admin/usermin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/usermin/ChangeLog,v 1.163 2015/06/09 08:46:48 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  14 Nov 2014; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Maintainer needed.
+
+*usermin-1.600 (28 May 2014)
+
+  28 May 2014; Tom Wijsman <TomWij@gentoo.org> +usermin-1.600.ebuild,
+  -usermin-1.430.ebuild, -usermin-1.530.ebuild, -usermin-1.540-r1.ebuild,
+  -usermin-1.540.ebuild, -usermin-1.570.ebuild, -usermin-1.590.ebuild:
+  Version bump to 1.600, remove old; fixes security bug #511626.
+
+*usermin-1.590 (17 Mar 2014)
+
+  17 Mar 2014; Tom Wijsman <TomWij@gentoo.org> +usermin-1.590.ebuild,
+  usermin-1.570.ebuild:
+  Version bump to 1.590; fixes bug #504784, reported by Frank Krömmelbein.
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> usermin-1.540-r1.ebuild,
+  usermin-1.570.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+*usermin-1.570 (21 Nov 2013)
+
+  21 Nov 2013; Patrick Lauer <patrick@gentoo.org> +usermin-1.570.ebuild:
+  Bump
+
+  10 May 2013; Patrick Lauer <patrick@gentoo.org> usermin-1.430.ebuild:
+  Fix inherit
+
+*usermin-1.540-r1 (03 Apr 2013)
+
+  03 Apr 2013; Tom Wijsman <TomWij@gentoo.org> +files/usermin-1.540-r1.init,
+  +usermin-1.540-r1.ebuild, metadata.xml, usermin-1.540.ebuild:
+  Introduced dependencies and USE conditional dependencies that are mentioned
+  through out the usermin code. Make usermin run under the usermin user instead
+  of root to avoid future security issues. EAPI 5, moved code from src_unpack to
+  src_prepare. Cleanup of the src_install function. Bump, updated init script to
+  run under the usermin user.
+
+*usermin-1.540 (13 Mar 2013)
+
+  13 Mar 2013; Tom Wijsman <TomWij@gentoo.org> +usermin-1.540.ebuild:
+  Non-maintainer commit, version bump to 1.540.
+
+*usermin-1.530 (30 Jan 2013)
+
+  30 Jan 2013; Patrick Lauer <patrick@gentoo.org> +usermin-1.530.ebuild:
+  Bump
+
+  12 Jul 2012; Ian Stakenvicius <axs@gentoo.org> usermin-1.430.ebuild:
+  added GPL-2 to LICENSE per bug 425880
+
+  12 Jul 2012; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Add default maintainer tag.
+
+  08 Jan 2010; Alex Legler <a3li@gentoo.org> -usermin-1.330.ebuild,
+  -usermin-1.400.ebuild, -usermin-1.420.ebuild:
+  Non-maintainer commit: Removing vulnerable ebuilds, bug 300208.
+
+*usermin-1.430 (09 Dec 2009)
+
+  09 Dec 2009; Patrick Lauer <patrick@gentoo.org> +usermin-1.430.ebuild:
+  Bump
+
+*usermin-1.420 (24 Sep 2009)
+
+  24 Sep 2009; Patrick Lauer <patrick@gentoo.org> +usermin-1.420.ebuild:
+  Bump
+
+*usermin-1.400 (23 Apr 2009)
+
+  23 Apr 2009; Patrick Lauer <patrick@gentoo.org> +usermin-1.400.ebuild:
+  Bump to 1.400. Fixes second half of #264086
+
+  15 Apr 2008; Steve Dibb <beandog@gentoo.org> usermin-1.330.ebuild:
+  Drop stable keywords, bug 217582
+
+  14 Apr 2008; Jeroen Roovers <jer@gentoo.org> usermin-1.330.ebuild:
+  Revert to ~hppa (bug #217582).
+
+  14 Apr 2008; Markus Rothe <corsair@gentoo.org> usermin-1.330.ebuild:
+  Back to unstable on ppc64; bug #217582
+
+  14 Apr 2008; Steve Dibb <beandog@gentoo.org> usermin-1.330.ebuild:
+  Drop stable keywords for amd64, bug 217582
+
+  12 Mar 2008; Steve Dibb <beandog@gentoo.org> metadata.xml:
+  Take ownership
+
+  20 Feb 2008; Raúl Porcel <armin76@gentoo.org> -files/usermin.pam-include,
+  -usermin-1.280-r1.ebuild, -usermin-1.320.ebuild:
+  old
+
+  20 Feb 2008; Steve Dibb <beandog@gentoo.org> usermin-1.330.ebuild:
+  amd64 stable, security bug 209453
+
+  11 Feb 2008; Jeroen Roovers <jer@gentoo.org> usermin-1.330.ebuild:
+  Stable for HPPA (bug #209453).
+
+  11 Feb 2008; Raúl Porcel <armin76@gentoo.org> usermin-1.330.ebuild:
+  alpha/sparc stable wrt security #209453
+
+  11 Feb 2008; Brent Baude <ranger@gentoo.org> usermin-1.330.ebuild:
+  Marking usermin-1.330 ppc64 for bug 209453
+
+  10 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  usermin-1.330.ebuild:
+  ppc stable, bug #209453
+
+  10 Feb 2008; Markus Meier <maekke@gentoo.org> usermin-1.330.ebuild:
+  x86 stable, security bug #209453
+
+*usermin-1.330 (09 Feb 2008)
+
+  09 Feb 2008; Raúl Porcel <armin76@gentoo.org> -usermin-1.300.ebuild,
+  +usermin-1.330.ebuild:
+  Version bump, remove old
+
+  24 Jan 2008; nixnut <nixnut@gentoo.org> usermin-1.320.ebuild:
+  Stable on ppc wrt bug 207049
+
+  24 Jan 2008; Jeroen Roovers <jer@gentoo.org> usermin-1.320.ebuild:
+  Stable for HPPA (bug #207049).
+
+  22 Jan 2008; Brent Baude <ranger@gentoo.org> usermin-1.320.ebuild:
+  Marking usermin-1.320 ppc64 for bug 207049
+
+  22 Jan 2008; Raúl Porcel <armin76@gentoo.org> usermin-1.320.ebuild:
+  alpha/sparc/x86 stable and add ~ia64
+
+*usermin-1.320 (23 Dec 2007)
+
+  23 Dec 2007; Raúl Porcel <armin76@gentoo.org> +usermin-1.320.ebuild:
+  Version bump wrt #199133
+
+*usermin-1.300 (21 Sep 2007)
+
+  21 Sep 2007; Raúl Porcel <armin76@gentoo.org> -usermin-1.290.ebuild,
+  +usermin-1.300.ebuild:
+  Version bump
+
+*usermin-1.290 (20 Sep 2007)
+
+  20 Sep 2007; Raúl Porcel <armin76@gentoo.org> -usermin-1.270.ebuild,
+  -usermin-1.280.ebuild, +usermin-1.290.ebuild:
+  Version bump, bug #188224
+
+  15 Jul 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Assigning app-admin/usermin to m-needed, as beu is being retired (#66608).
+
+  14 Jul 2007; Christoph Mende <angelos@gentoo.org> usermin-1.280-r1.ebuild:
+  Stable on amd64 wrt bug #183890
+
+  07 Jul 2007; Jeroen Roovers <jer@gentoo.org> usermin-1.280-r1.ebuild:
+  Stable for HPPA (bug #183890).
+
+  05 Jul 2007; Markus Rothe <corsair@gentoo.org> usermin-1.280-r1.ebuild:
+  Stable on ppc64; bug #183890
+
+  02 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  usermin-1.280-r1.ebuild:
+  Stable on sparc wrt #183890
+
+  02 Jul 2007; Raúl Porcel <armin76@gentoo.org> usermin-1.280-r1.ebuild:
+  alpha/x86 stable wrt #183890
+
+  02 Jul 2007; Lars Weiler <pylon@gentoo.org> usermin-1.280-r1.ebuild:
+  Stable on ppc; bug #183890.
+
+*usermin-1.280-r1 (01 Jul 2007)
+
+  01 Jul 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +files/usermin.pam-include.1, +usermin-1.280-r1.ebuild:
+  Fix pam.d file to run pam_nologin as expected.
+
+  28 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  usermin-1.280.ebuild:
+  ppc stable, bug #181385
+
+  27 Jun 2007; Markus Rothe <corsair@gentoo.org> usermin-1.280.ebuild:
+  Stable on ppc64; bug #181385
+
+  25 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org> usermin-1.280.ebuild:
+  Stable on sparc wrt security #181385
+
+  25 Jun 2007; Christoph Mende <angelos@gentoo.org> usermin-1.280.ebuild:
+  Stable on amd64 wrt security bug 181385
+
+  25 Jun 2007; Raúl Porcel <armin76@gentoo.org> usermin-1.280.ebuild:
+  alpha/x86 stable wrt security #181385
+
+  25 Jun 2007; René Nussbaumer <killerfox@gentoo.org> usermin-1.280.ebuild:
+  Stable on hppa. See bug #181385.
+
+*usermin-1.280 (25 Jun 2007)
+
+  25 Jun 2007; Raúl Porcel <armin76@gentoo.org> -usermin-1.220.ebuild,
+  -usermin-1.230.ebuild, +usermin-1.280.ebuild:
+  Version bump wrt #181385 and remove old
+
+  24 Jun 2007; Piotr Jaroszyński <peper@gentoo.org> usermin-1.220.ebuild,
+  usermin-1.230.ebuild, usermin-1.270.ebuild:
+  (QA) Fix ${ROOT} abuse. bug #167240.
+
+  18 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  usermin-1.270.ebuild:
+  ppc stable, bug #168878
+
+  18 Apr 2007; Jose Luis Rivero <yoswink@gentoo.org> usermin-1.270.ebuild:
+  Stable on alpha wrt security #168878
+
+  16 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> usermin-1.270.ebuild:
+  Stable on sparc wrt security #168878
+
+  15 Apr 2007; Markus Rothe <corsair@gentoo.org> usermin-1.270.ebuild:
+  Stable on ppc64; bug #168878
+
+  13 Apr 2007; Jeroen Roovers <jer@gentoo.org> usermin-1.270.ebuild:
+  Stable for HPPA (bug #168878).
+
+  13 Apr 2007; Raúl Porcel <armin76@gentoo.org> usermin-1.270.ebuild:
+  Replace http for https in postinst, thanks to Christoph Mende <ch.mende at
+  gmail dot com> for noticing
+
+  13 Apr 2007; Peter Weller <welp@gentoo.org> usermin-1.270.ebuild:
+  Stable on amd64 wrt bug 168878
+
+  13 Apr 2007; Raúl Porcel <armin76@gentoo.org> usermin-1.270.ebuild:
+  x86 stable wrt security bug 168878
+
+*usermin-1.270 (13 Apr 2007)
+
+  13 Apr 2007; Raúl Porcel <armin76@gentoo.org> +usermin-1.270.ebuild:
+  Version bump, bug 159908, thanks to Conrad Kostecki <ConiKost at gmx dot de>
+  for reporting, and security bug 168878
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> usermin-1.220.ebuild,
+  usermin-1.230.ebuild:
+  Replacing einfo with elog
+
+  24 Oct 2006; Thomas Cort <tcort@gentoo.org> usermin-1.230.ebuild:
+  Stable on alpha wrt security Bug #145829.
+
+  20 Oct 2006; René Nussbaumer <killerfox@gentoo.org> usermin-1.230.ebuild:
+  Stable on hppa. See bug #145829.
+
+  18 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  usermin-1.230.ebuild:
+  ppc stable, bug #145829
+
+  18 Oct 2006; Jason Wever <weeve@gentoo.org> usermin-1.230.ebuild:
+  Stable on SPARC wrt security bug #145829.
+
+  17 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org> usermin-1.230.ebuild:
+  Stable on x86 wrt bug #145829.
+
+  17 Oct 2006; Markus Rothe <corsair@gentoo.org> usermin-1.230.ebuild:
+  Stable on ppc64; bug #145829
+
+  16 Oct 2006; Jeremy Huddleston <eradicator@gentoo.org> -files/usermin.pam,
+  -usermin-1.180.ebuild, -usermin-1.200.ebuild, -usermin-1.210.ebuild:
+  Removing old versions.
+
+*usermin-1.230 (16 Oct 2006)
+
+  16 Oct 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  +usermin-1.230.ebuild:
+  Version bump for security bug #145829.
+
+  01 Aug 2006; Jose Luis Rivero <yoswink@gentoo.org> usermin-1.220.ebuild:
+  Stable on alpha wrt security bug #138552.
+
+  29 Jul 2006; Rene Nussbaumer <killerfox@gentoo.org> usermin-1.220.ebuild:
+  Stable on hppa. See bug #138552.
+
+  27 Jul 2006; Paul Varner <fuzzyray@gentoo.org> usermin-1.220.ebuild:
+  Stable on x86 wrt Bug #138552
+
+  27 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  usermin-1.220.ebuild:
+  ppc stable, bug #138552
+
+*usermin-1.220 (27 Jul 2006)
+
+  27 Jul 2006; Stuart Herbert <stuart@gentoo.org> +usermin-1.220.ebuild:
+  Version bump; fixes security bug #138552
+
+*usermin-1.210 (23 Jun 2006)
+
+  23 Jun 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  +usermin-1.210.ebuild:
+  Version Bump.
+
+  09 Jun 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  usermin-1.200.ebuild:
+  Stable ppc64.
+
+  05 Jun 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  -usermin-1.190.ebuild:
+  Removing old version.
+
+  05 Jun 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  usermin-1.200.ebuild:
+  Stable amd64 and sparc.
+
+*usermin-1.200 (12 Apr 2006)
+
+  12 Apr 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  +usermin-1.200.ebuild:
+  Version bump.
+
+*usermin-1.190 (18 Mar 2006)
+
+  18 Mar 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  +usermin-1.190.ebuild:
+  Version bump.
+
+  03 Jan 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  -usermin-1.160.ebuild:
+  removing insecure version.
+
+  04 Dec 2005; Michael Hanselmann <hansmi@gentoo.org> usermin-1.180.ebuild:
+  Stable on hppa.
+
+  02 Dec 2005; Joseph Jezak <josejx@gentoo.org> usermin-1.180.ebuild:
+  Marked ppc stable for bug #113888.
+
+  01 Dec 2005; Jose Luis Rivero <yoswink@gentoo.org> usermin-1.180.ebuild:
+  Stable on alpha wrt sec bug #113888
+
+  01 Dec 2005; Markus Rothe <corsair@gentoo.org> usermin-1.180.ebuild:
+  Stable on ppc64; bug #113888
+
+*usermin-1.180 (30 Nov 2005)
+
+  30 Nov 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +usermin-1.180.ebuild:
+  Version bump for security bug #113888.
+
+  24 Sep 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -files/usermin-1.100-setup-nocheck.patch, -usermin-1.130-r1.ebuild:
+  Removing insecure versions.
+
+  22 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> usermin-1.160.ebuild:
+  Stable on hppa, ppc.
+
+  22 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org> usermin-1.160.ebuild:
+  stable on alpha wrt bug #106705
+
+  22 Sep 2005; Markus Rothe <corsair@gentoo.org> usermin-1.160.ebuild:
+  Stable on ppc64 (bug #106705)
+
+*usermin-1.160 (21 Sep 2005)
+
+  21 Sep 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -usermin-1.130.ebuild, -usermin-1.150.ebuild, +usermin-1.160.ebuild:
+  Version bump for bug #106705.
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> usermin-1.130-r1.ebuild:
+  Mark 1.130-r1 stable on alpha
+
+*usermin-1.150 (03 Sep 2005)
+
+  03 Sep 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/usermin-1.150-setup-nocheck.patch, -usermin-1.100-r1.ebuild,
+  +usermin-1.150.ebuild:
+  Version bump.
+
+  21 Aug 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  usermin-1.130-r1.ebuild:
+  Stable on hppa.
+
+  17 Aug 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  files/init.d.usermin:
+  Fixed init script.  Bug #102826.
+
+  14 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  usermin-1.130-r1.ebuild:
+  Stable on ppc.
+
+  09 Aug 2005; Markus Rothe <corsair@gentoo.org> usermin-1.130-r1.ebuild:
+  Stable on ppc64
+
+  07 Aug 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  usermin-1.130-r1.ebuild:
+  Stable amd64, sparc, x86.
+
+  10 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org> files/usermin.pam,
+  files/usermin.pam-include:
+  Removing deprecated references to pam_console.so.  Bug #98451.
+
+*usermin-1.130-r1 (19 Jun 2005)
+
+  19 Jun 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/usermin.pam-include, +usermin-1.130-r1.ebuild:
+  Added OpenPAM (and amd64) compatibility as per bug #93174 and cleaned the
+  ebuild up a bit.
+
+  24 Apr 2005; Guy Martin <gmsoft@gentoo.org> usermin-1.130.ebuild:
+  Stable on hppa.
+
+  19 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -usermin-1.090.ebuild, -usermin-1.100.ebuild, -usermin-1.110.ebuild,
+  -usermin-1.120.ebuild:
+  Clearing out most vulnerable versions... waiting on hppa still for 1.100.
+
+  19 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> usermin-1.130.ebuild:
+  Stable on alpha, bug 89141.
+
+  16 Apr 2005; Markus Rothe <corsair@gentoo.org> usermin-1.130.ebuild:
+  Stable on ppc64; bug #89141
+
+  15 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> usermin-1.130.ebuild:
+  Stable on ppc.
+
+  15 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  usermin-1.130.ebuild:
+  Added missing var to export list.
+
+*usermin-1.130 (15 Apr 2005)
+
+  15 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +usermin-1.130.ebuild:
+  Version bump.  Security bug #89141.
+
+*usermin-1.120 (08 Apr 2005)
+
+  08 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +usermin-1.120.ebuild:
+  Version bump.
+
+  08 Apr 2005; Markus Rothe <corsair@gentoo.org> usermin-1.100.ebuild:
+  Stable on ppc64
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> usermin-1.090.ebuild:
+  Dependency update: sys-apps/lsof -> sys-process/lsof.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> usermin-1.110.ebuild:
+  Dependency update: sys-apps/lsof -> sys-process/lsof.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> usermin-1.100-r1.ebuild:
+  Dependency update: sys-apps/lsof -> sys-process/lsof.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> usermin-1.100.ebuild:
+  Dependency update: sys-apps/lsof -> sys-process/lsof.
+
+*usermin-1.110 (27 Jan 2005)
+
+  27 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +usermin-1.110.ebuild:
+  Version bump.
+
+  16 Jan 2005; Guy Martin <gmsoft@gentoo.org> usermin-1.100-r1.ebuild:
+  Stable on hppa.
+
+  13 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  usermin-1.100-r1.ebuild:
+  Updated ebuild to match webmin's update for security bug #7731. usermin
+  isn't affected, but I'm doing this anyway to be safe if behavior changes in
+  the future.
+
+*usermin-1.100-r1 (31 Dec 2004)
+
+  31 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/usermin-1.100-setup-nocheck.patch, +usermin-1.100-r1.ebuild:
+  Config files are now installed with src_install().
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  28 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  usermin-1.100.ebuild:
+  Added ${ROOT}
+
+  19 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> usermin-1.100.ebuild:
+  Stable on alpha.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  usermin-1.100.ebuild:
+  Stable amd64, sparc, x86.
+
+*usermin-1.100 (17 Nov 2004)
+
+  17 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -usermin-1.080-r1.ebuild, +usermin-1.100.ebuild:
+  Version bump.
+
+  09 Oct 2004; Tom Gall <tgall@gentoo.org> usermin-1.090.ebuild:
+  stable on ppc64, bug #63167
+
+  13 Sep 2004; Guy Martin <gmsoft@gentoo.org> usermin-1.090.ebuild:
+  Stable on hppa.
+
+  09 Sep 2004; Bryan Østergaard <kloeri@gentoo.org> usermin-1.090.ebuild:
+  Stable on alpha, bug 63167.
+
+*usermin-1.090 (07 Sep 2004)
+
+  07 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +usermin-1.090.ebuild:
+  Version bump for security release.  See bug #63167.
+
+  29 Aug 2004; Tom Gall <tgall@gentoo.org> usermin-1.080-r1.ebuild:
+  stable on ppc64, bug #60198
+
+  26 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/usermin-1.080-safestop.patch, usermin-1.080-r1.ebuild:
+  Add a test to setup.sh's stop command to fix possible borkage on upgrade.
+
+  08 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  usermin-1.080-r1.ebuild:
+  Stable amd64.
+
+  17 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> usermin-1.080-r1.ebuild:
+  Stable on alpha, bug 54030.
+
+*usermin-1.080-r1 (16 Jun 2004)
+
+  16 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org> files/init.d.usermin,
+  +usermin-1.080-r1.ebuild, -usermin-1.080.ebuild:
+  Revbump to fix init script borkage.
+  Fixed port to be usermin default.
+
+  16 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -files/usermin-1.070-gentoo.patch, -files/patch/setup.sh,
+  -files/patch/usermin, -files/patch/usermin-init, -usermin-1.000.ebuild,
+  -usermin-1.030.ebuild, -usermin-1.060-r1.ebuild, -usermin-1.070-r1.ebuild:
+  Removing insecure versions.
+
+  16 Jun 2004; Luca Barbato <lu_zero@gentoo.org> usermin-1.080.ebuild:
+  Marked ppc
+
+  15 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org> usermin-1.080.ebuild:
+  Fixed for people without /usr/local/bin/perl.
+
+*usermin-1.080 (15 Jun 2004)
+
+  15 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +usermin-1.080.ebuild:
+  Fixes security hole. Upgrade HIGHLY recommended. See bug #54030 for more
+  information. Added ~amd64
+
+  06 Jun 2004; Jason Wever <weeve@gentoo.org> usermin-1.070-r1.ebuild:
+  Stable on sparc.
+
+*usermin-1.070-r1 (22 Apr 2004)
+
+  22 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  usermin-1.070-r1.ebuild:
+  further ebuild cleanup.  Configuration is included in the ebuild.
+
+  22 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> usermin-1.000.ebuild,
+  usermin-1.040.ebuild, usermin-1.051.ebuild, usermin-1.070.ebuild,
+  files/init.d.usermin, files/usermin-1.070-gentoo.patch:
+  init file cleaned up.  Ebuild cleaned up.  Removed old packages.
+
+  10 Apr 2004; Jason Wever <weeve@gentoo.org> usermin-1.060-r1.ebuild:
+  Stable on sparc.
+
+*usermin-1.070 (07 Apr 2004)
+
+  07 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> usermin-1.070.ebuild:
+  Version bump.
+
+*usermin-1.060-r1 (07 Apr 2004)
+
+  07 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  usermin-1.060-r1.ebuild, usermin-1.060.ebuild:
+  Fix bug #46273 and mark stable on x86.
+
+  11 Mar 2004; Jason Wever <weeve@gentoo.org> usermin-1.051.ebuild:
+  Marked stable on sparc.
+
+*usermin-1.060 (10 Mar 2004)
+
+  10 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> usermin-1.051.ebuild,
+  usermin-1.060.ebuild:
+  Version bump.  51 stable on x86.  Adding myself as maintainer
+
+  05 Jan 2004; Jason Wever <weeve@gentoo.org> usermin-1.000.ebuild,
+  usermin-1.030.ebuild, usermin-1.040.ebuild, usermin-1.051.ebuild:
+  Marked 1.040 stable on sparc and adjusted copyright dates on all.
+
+*usermin-1.051 (09 Nov 2003)
+
+  09 Nov 2003; Martin Holzer <mholzer@gentoo.org> usermin-1.051.ebuild:
+  Version bumped
+
+*usermin-1.050 (06 Nov 2003)
+
+  06 Nov 2003; Martin Holzer <mholzer@gentoo.org> usermin-1.050.ebuild:
+  Version bumped.
+
+  03 Oct 2003; Aron Griffis <agriffis@gentoo.org> usermin-1.030.ebuild:
+  Stable on alpha
+
+*usermin-1.040 (15 Sep 2003)
+
+  15 Sep 2003; Martin Holzer <mholzer@gentoo.org> usermin-1.040.ebuild:
+  Version bumped.
+
+*usermin-1.030 (12 Jul 2003)
+
+  12 Jul 2003; Martin Holzer <mholzer@gentoo.org> usermin-1.030.ebuild:
+  Version bumped.
+
+*usermin-1.020 (13 May 2003)
+
+  13 May 2003; Martin Holzer <mholzer@gentoo.org> usermin-1.020.ebuild:
+  Version bumped.
+
+*usermin-1.000 (22 Feb 2003)
+
+  22 Feb 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Security update.
+
+*usermin-0.980 (16 Dec 2002)
+
+  31 Jan 2003; Martin Holzer <mholzer@gentoo.org> usermin-0.980.ebuild :
+  Change SRC_URI to use mirror://sourceforge.
+
+  16 Dec 2002; Seemant Kulleen <Seemant@gentoo.org> usermin-0.980.ebuild
+  files/digest-usermin-0.980 :
+
+  Version bump.
+
+*usermin-0.970 (14 Dec 2002)
+
+  31 Jan 2003; Martin Holzer <mholzer@gentoo.org> usermin-0.970.ebuild :
+  Change SRC_URI to use mirror://sourceforge.
+
+  14 Dec 2002; Seemant Kulleen <seemant@gentoo.org> usermin-0.970.ebuild
+  files/usermin.pam :
+
+  Who did this upgrade?  Please put a ChangeLog entry next time.  Put a
+  usermin.pam file for PAM auths, and also added lsof to DEPEND" Thanks to:
+  flx-linuxnews@ifrance.com (Franc,ois-Xavier LAMARE) in bug #11976.
+
+*usermin-0.940 (8 Nov 2002)
+
+  31 Jan 2003; Martin Holzer <mholzer@gentoo.org> usermin-0.940.ebuild :
+  Change SRC_URI to use mirror://sourceforge.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  12 Nov 2002: S.A.Jones <cretin@gentoo.org> :
+  
+  Added configuration stuff to ebuild and extra files usermin-init and setup.sh.
+  Mods by James <zeurx@hotmail.com>.
+
+  10 Nov 2002; S.A.Jones <cretin@gentoo.org> ChangeLog :
+ 
+  Added ebuild by James <zeurx@hotmail.com>

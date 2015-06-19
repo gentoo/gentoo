@@ -1,0 +1,13 @@
+--- dvdarchive-2.3-beta.sh	2009-10-06 16:23:20.000000000 +0200
++++ dvdarchive-2.3-beta.sh	2009-10-06 17:32:43.000000000 +0200
+@@ -118,6 +118,10 @@
+ DEBUGLOG="/tmp/dvdarchive.sh-debug.log"
+ 
+ #</Configuration>
++
++# read config file
++. /etc/vdr/dvdarchive.conf
++
+ #
+ # No changes needed after this mark
+

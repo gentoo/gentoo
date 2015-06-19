@@ -1,0 +1,15 @@
+# ChangeLog for app-admin/aws-elb-tools
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/aws-elb-tools/ChangeLog,v 1.3 2012/07/08 19:15:44 flameeyes Exp $
+
+  08 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Re-assign to maintainer-needed.
+
+  16 Dec 2011; Fabio Erculiani <lxnay@gentoo.org> metadata.xml:
+  add myself to maintainers
+
+*aws-elb-tools-1.0.15.1 (14 Dec 2011)
+
+  14 Dec 2011; Fabio Erculiani <lxnay@gentoo.org>
+  +aws-elb-tools-1.0.15.1.ebuild, +metadata.xml:
+  new ebuild

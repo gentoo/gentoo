@@ -1,0 +1,28 @@
+ src/Makefile.am |    2 +-
+ src/Makefile.in |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 94f61e0..0ebb561 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -38,5 +38,5 @@ pureadmin_CFLAGS = -std=gnu99 -Wall
+ 
+ pureadmin_LDFLAGS = -export-dynamic
+ 
+-pureadmin_LDADD = @GTK_LIBS@ $(INTLLIBS) @BINRELOC_LIBS@
++pureadmin_LDADD = @GTK_LIBS@ $(INTLLIBS) @BINRELOC_LIBS@ -lm -lX11
+ 
+diff --git a/src/Makefile.in b/src/Makefile.in
+index b2ade45..dd9401c 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -249,7 +249,7 @@ pureadmin_SOURCES = \
+ 
+ pureadmin_CFLAGS = -std=gnu99 -Wall 
+ pureadmin_LDFLAGS = -export-dynamic
+-pureadmin_LDADD = @GTK_LIBS@ $(INTLLIBS) @BINRELOC_LIBS@
++pureadmin_LDADD = @GTK_LIBS@ $(INTLLIBS) @BINRELOC_LIBS@ -lm -lX11
+ all: all-am
+ 
+ .SUFFIXES:

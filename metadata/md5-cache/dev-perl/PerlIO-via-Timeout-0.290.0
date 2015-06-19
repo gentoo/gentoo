@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-perl/Module-Build-Tiny-0.30.0 >=virtual/perl-ExtUtils-MakeMaker-6.300.0 virtual/perl-File-Spec virtual/perl-IO test? ( virtual/perl-Test-Simple dev-perl/Test-TCP ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=PerlIO layer that adds read & write timeout to a handle
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/PerlIO-via-Timeout/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=virtual/perl-Exporter-5.570.0 virtual/perl-Scalar-List-Utils dev-perl/Time-Out dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DA/DAMS/PerlIO-via-Timeout-0.29.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=0d3d971b2c694ac66fda656a9821071a

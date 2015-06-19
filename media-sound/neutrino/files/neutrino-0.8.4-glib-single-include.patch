@@ -1,0 +1,148 @@
+Index: neutrino-0.8.4/id3/nomad-id3-util.c
+===================================================================
+--- neutrino-0.8.4.orig/id3/nomad-id3-util.c
++++ neutrino-0.8.4/id3/nomad-id3-util.c
+@@ -26,15 +26,10 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ 
+-#include <glib/gconvert.h>
+-#include <glib/gunicode.h>
+-#include <glib/gstrfuncs.h>
+-#include <glib/gstring.h>
++#include <glib.h>
+ 
+ #ifndef HAVE_GNOME_VFS
+ 
+-#include <glib/gfileutils.h>
+-#include <glib/gdir.h>
+ 
+ #include <sys/stat.h>
+ #include <sys/types.h>
+Index: neutrino-0.8.4/id3/nomad-id3.c
+===================================================================
+--- neutrino-0.8.4.orig/id3/nomad-id3.c
++++ neutrino-0.8.4/id3/nomad-id3.c
+@@ -30,10 +30,8 @@
+ #include <libgnomevfs/gnome-vfs-file-info.h>
+ #endif
+ 
+-#include <glib/gconvert.h>
+-#include <glib/gunicode.h>
++#include <glib.h>
+ 
+-#include <glib/gtypes.h>
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+Index: neutrino-0.8.4/libnomad/nomad-jukebox.c
+===================================================================
+--- neutrino-0.8.4.orig/libnomad/nomad-jukebox.c
++++ neutrino-0.8.4/libnomad/nomad-jukebox.c
+@@ -27,8 +27,7 @@
+ 
+ #include <string.h>
+ 
+-#include <glib/gqueue.h>
+-#include <glib/gthread.h>
++#include <glib.h>
+ 
+ #include <semaphore.h>
+ 
+Index: neutrino-0.8.4/libnomad/nomad-util.c
+===================================================================
+--- neutrino-0.8.4.orig/libnomad/nomad-util.c
++++ neutrino-0.8.4/libnomad/nomad-util.c
+@@ -31,15 +31,10 @@
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ 
+-#include <glib/gconvert.h>
+-#include <glib/gunicode.h>
+-#include <glib/gstrfuncs.h>
+-#include <glib/gstring.h>
++#include <glib.h>
+ 
+ #ifndef HAVE_GNOME_VFS
+ 
+-#include <glib/gfileutils.h>
+-#include <glib/gdir.h>
+ 
+ #include <sys/stat.h>
+ #include <sys/types.h>
+Index: neutrino-0.8.4/src/neutrino-file-browser.c
+===================================================================
+--- neutrino-0.8.4.orig/src/neutrino-file-browser.c
++++ neutrino-0.8.4/src/neutrino-file-browser.c
+@@ -25,9 +25,7 @@
+ 
+ #include <config.h>
+ 
+-#include <glib/gutils.h>
+-#include <glib/ghash.h>
+-#include <glib/gthread.h>
++#include <glib.h>
+ 
+ #include <libgnomevfs/gnome-vfs-mime-handlers.h>
+ #include <libgnomevfs/gnome-vfs-mime-utils.h>
+Index: neutrino-0.8.4/src/neutrino-jukebox-view.c
+===================================================================
+--- neutrino-0.8.4.orig/src/neutrino-jukebox-view.c
++++ neutrino-0.8.4/src/neutrino-jukebox-view.c
+@@ -27,7 +27,7 @@
+ 
+ #include <gdk/gdk.h>
+ 
+-#include <glib/gmarkup.h>
++#include <glib.h>
+ 
+ #include <string.h>
+ 
+Index: neutrino-0.8.4/src/neutrino-util.c
+===================================================================
+--- neutrino-0.8.4.orig/src/neutrino-util.c
++++ neutrino-0.8.4/src/neutrino-util.c
+@@ -26,16 +26,11 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ 
+-#include <glib/gconvert.h>
+-#include <glib/gunicode.h>
+-#include <glib/gstrfuncs.h>
+-#include <glib/gstring.h>
++#include <glib.h>
+ #include <gtk/gtkwidget.h>
+ 
+ #ifndef HAVE_GNOME_VFS
+ 
+-#include <glib/gfileutils.h>
+-#include <glib/gdir.h>
+ 
+ #include <sys/stat.h>
+ #include <sys/types.h>
+Index: neutrino-0.8.4/src/neutrino-wav.c
+===================================================================
+--- neutrino-0.8.4.orig/src/neutrino-wav.c
++++ neutrino-0.8.4/src/neutrino-wav.c
+@@ -28,7 +28,7 @@
+ #include <libgnomevfs/gnome-vfs-ops.h>
+ #endif
+ 
+-#include <glib/gstrfuncs.h>
++#include <glib.h>
+ 
+ #include <libnjb.h>
+ 
+Index: neutrino-0.8.4/src/neutrino-window.c
+===================================================================
+--- neutrino-0.8.4.orig/src/neutrino-window.c
++++ neutrino-0.8.4/src/neutrino-window.c
+@@ -34,7 +34,7 @@
+ #include <libgnomevfs/gnome-vfs-mime-handlers.h>
+ #include <libgnomevfs/gnome-vfs-utils.h>
+ 
+-#include <glib/grand.h>
++#include <glib.h>
+ 
+ #include <gtk/gtk.h>
+ 

@@ -1,0 +1,161 @@
+# ChangeLog for app-admin/superadduser
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/superadduser/ChangeLog,v 1.42 2014/01/18 09:11:50 vapier Exp $
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> superadduser-1.0.9.ebuild:
+  Add arm64 love.
+
+  11 Oct 2009; Mark Loeser <halcy0n@gentoo.org> superadduser-1.0.9.ebuild:
+  QA fixes; unquoted variables
+
+  24 Apr 2008; <ricmm@gentoo.org> superadduser-1.0.9.ebuild:
+  Drop to ~mips due to unstable deps
+
+  08 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  files/1.0.9/superadduser:
+  Fixing a couple places where I was a bit overzealous in my changes. Thanks
+  to Marcus D. Hanwell <cryos@gentoo.org> for pointing it out.
+
+  07 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  files/1.0.9/superadduser:
+  Change all instances of [ to [[.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  22 Jul 2005; <omkhar@gentoo.org> superadduser-1.0.9.ebuild:
+  Marked stable on ppc64
+
+  18 Mar 2005; Seemant Kulleen <seemant@gentoo.org>
+  -files/1.0.7/superadduser, -superadduser-1.0.7.ebuild:
+  removed crusty old version
+
+  10 Jan 2005; Jason Huebel <jhuebel@gentoo.org> superadduser-1.0.9.ebuild:
+  stable on amd64
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  02 Nov 2004; Bret Curtis,,, <psi@gentoo.org> superadduser-1.0.9.ebuild:
+  stable on mips
+
+  27 Oct 2004; Seemant Kulleen <seemant@gentoo.org>
+  superadduser-1.0.9.ebuild:
+  Stable on ia64, hppa and arm - thanks to SpanKY for testing that
+
+  28 Oct 2004; Bryan Østergaard <kloeri@gentoo.org>
+  superadduser-1.0.9.ebuild:
+  Stable on alpha.
+
+  27 Oct 2004; Jason Wever <weeve@gentoo.org> superadduser-1.0.9.ebuild:
+  Stable on sparc.
+
+  26 Oct 2004; Seemant Kulleen <seemant@gentoo.org>
+  superadduser-1.0.9.ebuild:
+  stabilise for x86 and ppc
+
+*superadduser-1.0.9 (09 Jun 2004)
+
+  09 Jun 2004; Seemant Kulleen <seemant@gentoo.org> +files/superadduser.8,
+  -files/1.0.7/superadduser.8, -files/1.0.8/superadduser,
+  -files/1.0.8/superadduser.8, +files/1.0.9/superadduser,
+  superadduser-1.0.7.ebuild, -superadduser-1.0.8.ebuild,
+  +superadduser-1.0.9.ebuild:
+  since the manpage has never changed, it now resides in files/ rather than in
+  files/1.0.blah. Additionally, the REAL author of this script is now mentioned
+  in the manpage (Stuart Winter). Finally, 1.0.9 is simply an identical version
+  to 1.0.8, except that it has a clear license -- BSD. We had screwed up with
+  prior versions and assumed them to be GPL-2. This was our fault entirely, as
+  the actual implied license was BSD (Slackware's predominant license -- we
+  should have known). This fixes bug #53337 by Mike Valstar
+  <mikevalstar@gentoo-portage.com>
+
+*superadduser-1.0.8 (01 Jun 2004)
+
+  01 Jun 2004; Seemant Kulleen <seemant@gentoo.org> -files/1.0.5/superadduser,
+  -files/1.0.5/superadduser.8, +files/1.0.8/superadduser,
+  +files/1.0.8/superadduser.8, -superadduser-1.0.5.ebuild,
+  +superadduser-1.0.8.ebuild:
+  version bump to latest available version.  Also, removed 1.0.5
+
+  22 May 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  superadduser-1.0.7.ebuild:
+  Stable on hppa
+
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> superadduser-1.0.5.ebuild,
+  superadduser-1.0.7.ebuild:
+  Stable on alpha.
+
+  29 Apr 2004; Jason Wever <weeve@gentoo.org> :
+  Stable on sparc.
+
+  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> superadduser-1.0.7.ebuild :
+  Stable on x86 and AMD64.
+
+  19 Jan 2004; Seemant Kulleen <seemant@gentoo.org>
+  files/1.0.7/superadduser.8 :
+  Removed last line to not have troff message during `man superadduser`.
+  Thanks to: CBke <cb@linux.be> in bug #38764
+
+*superadduser-1.0.7 (16 Jan 2004)
+
+  16 Jan 2004; Seemant Kulleen <seemant@gentoo.org>
+  superadduser-1.0.7.ebuild :
+
+  Version bump - ~arched on all available arches.
+
+  13 Jan 2004; Jon Portnoy <avenj@gentoo.org> superadduser-1.0.5.ebuild :
+  Stable on AMD64.
+
+  02 Oct 2003; Brad House <brad_mssw@gentoo.org> superadduser-1.0.5.ebuild:
+  add ~amd64 flag
+
+  01 Oct 2003; Tavis Ormandy <taviso@gentoo.org> superadduser-1.0.5.ebuild:
+  Stable on alpha
+
+  01 Jul 2003; Jason Wever <weeve@gentoo.org> superadduser-1.0.5.ebuild:
+  Changed ~sparc keyword to sparc.
+
+*superadduser-1.0.5 (18 May 2003)
+
+  18 May 2003; Seemant Kulleen <seemant@gentoo.org> superadduser-1.0.5.ebuild,
+  files/1.0.5/superadduser, files/1.0.5/superadduser.8:
+  version bump, thanks to Rach Holmes
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*superadduser-1.0-r2 (18 Aug 2002)
+
+  12 Feb 2003; Peter Johanson <latexer@gentoo.org> superadduser-1.0-r2.ebuild :
+  moved to stable on alpha
+
+  10 Feb 2003; Peter Johanson <latexer@gentoo.org> superadduser-1.0-r2.ebuild :
+  Added ~alpha to KEYWORDS.
+
+  04 Sep 2002; Karl Trygve Kalleberg <karltk@gentoo.org> superadduser-1.0-r2.ebuild files/digest-superadduser-1.0-r2:
+  Fixed a bug when chowning home directories. Fixes #7464.
+
+  18 Aug 2002; Karl Trygve Kalleberg <karltk@gentoo.org> superadduser-1.0-r2.ebuild files/digest-superadduser-1.0-r2:
+  Fixed script so that the home directories are properly chowned. Script 
+  files moved to files/1.0.
+
+  Removed superadduser-1.0-r1.ebuild files/digest-superadduser-1.0-r1
+
+*superadduser-1.0-r1 (16 Apr 2002)
+
+  30 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> superadduser-1.0-r1 :
+
+  Added ppc to KEYWORDS
+
+  16 Apr 2002; Donny Davies <woodchip@gentoo.org> superadduser-1.0-r1 :
+
+  Fix it so it actually installs :)
+    o s/files/${FILESDIR}/
+    o s/superadduser.1/superadduser.8/
+    o fix shadow dependancy
+
+*superadduser-1.0 (09 Apr 2002)
+
+  09 Apr 2002; Karl Trygve Kalleberg <karltk@gentoo.org> superadduser-1.0.ebuild files/digest-superadduser-1.0 files/superadduser files/superadduser.8:
+
+  An interactive wrapper for shadow's useradd.

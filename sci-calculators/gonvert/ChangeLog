@@ -1,0 +1,76 @@
+# ChangeLog for sci-calculators/gonvert
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-calculators/gonvert/ChangeLog,v 1.15 2015/04/08 18:21:38 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> gonvert-0.2.32.ebuild:
+  Drop old Python implementations
+
+  29 May 2013; Justin Lecher <jlec@gentoo.org> gonvert-0.2.32.ebuild:
+  Fix usage of new python r1 eclasses (missing PYTHON_REQUIRED_USE)
+
+*gonvert-0.2.32 (12 Mar 2013)
+
+  12 Mar 2013; Justin Lecher <jlec@gentoo.org> +gonvert-0.2.32.ebuild,
+  metadata.xml:
+  Version Bump; fix for new python eclasses
+
+  04 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> -files/0.2.12-about.patch,
+  -files/0.2.15-glade.patch, -files/0.2.19-paths.patch,
+  -gonvert-0.2.15-r1.ebuild, -gonvert-0.2.19.ebuild, -gonvert-0.2.23.ebuild,
+  gonvert-0.2.25.ebuild:
+  keyword amd64-linux, x86-linux, removed old
+
+*gonvert-0.2.25 (06 Aug 2011)
+
+  06 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> +gonvert-0.2.25.ebuild,
+  metadata.xml:
+  Bump
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> gonvert-0.2.15-r1.ebuild,
+  gonvert-0.2.19.ebuild, gonvert-0.2.23.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+*gonvert-0.2.23 (02 May 2010)
+
+  02 May 2010; <chainsaw@gentoo.org> +files/0.2.23-paths.patch,
+  +gonvert-0.2.23.ebuild:
+  Version bump, as requested by "Hitachi" in bug #315451.
+
+*gonvert-0.2.19 (14 Sep 2007)
+
+  14 Sep 2007; Tony Vroon <chainsaw@gentoo.org> +files/0.2.19-paths.patch,
+  +gonvert-0.2.19.ebuild:
+  Version bump, as requested by Arfrever Frehtes Taifersar Arahesis
+  <Arfrever.FTA@GMail.Com> in bug #191891.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  06 Jan 2007; Danny van Dyk <kugelfang@gentoo.org> -gonvert-0.2.12.ebuild:
+  QA: Removed unused versions.
+
+*gonvert-0.2.15-r1 (30 Apr 2006)
+
+  30 Apr 2006; Tony Vroon <chainsaw@gentoo.org> +files/0.2.15-glade.patch,
+  -gonvert-0.2.15.ebuild, +gonvert-0.2.15-r1.ebuild:
+  Patch from Markus Dittrich <markusle@gentoo.org> closes bug #127604
+  (glade-related traceback). Revision bump as this does not cause a compile
+  failure on affected systems. Added ~ppc keyword.
+
+*gonvert-0.2.15 (15 Jan 2006)
+
+  15 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org> +gonvert-0.2.15.ebuild:
+  Version bump, bug 116712.
+
+  24 Dec 2005; Mark Loeser <halcy0n@gentoo.org> gonvert-0.2.12.ebuild:
+  Adding ~x86
+
+  24 Dec 2005; <chainsaw@gentoo.org> gonvert-0.2.12.ebuild:
+  No longer necessary to die on USE="-gnome" with pygtk-2.8.2 and up.
+
+*gonvert-0.2.12 (24 Dec 2005)
+
+  24 Dec 2005; <chainsaw@gentoo.org> +files/0.2.12-about.patch,
+  +metadata.xml, +gonvert-0.2.12.ebuild:
+  Initial commit, closes bug #62492 by Marius Konitzer. Ebuild by Yaakov S
+  <yselkowitz@hotmail.com>.

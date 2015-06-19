@@ -1,0 +1,51 @@
+# ChangeLog for media-libs/libggiwmh
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libggiwmh/ChangeLog,v 1.14 2013/07/28 19:21:15 aballier Exp $
+
+  28 Jul 2013; Alexis Ballier <aballier@gentoo.org> libggiwmh-0.3.2.ebuild:
+  keyword ~amd64-fbsd, bug #477750
+
+  19 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  libggiwmh-0.3.2.ebuild:
+  ppc stable, bug #208566
+
+  17 Feb 2008; Christoph Mende <angelos@gentoo.org> libggiwmh-0.3.2.ebuild:
+  Stable on amd64, bug #208566
+
+  15 Feb 2008; Raúl Porcel <armin76@gentoo.org> libggiwmh-0.3.2.ebuild:
+  alpha/ia64 stable wrt security #208566
+
+  15 Feb 2008; Brent Baude <ranger@gentoo.org> libggiwmh-0.3.2.ebuild:
+  libgg gets ppc64 love for mplayer dep
+
+  15 Feb 2008; Jeroen Roovers <jer@gentoo.org> libggiwmh-0.3.2.ebuild:
+  Stable for HPPA (bug #208566).
+
+  14 Feb 2008; Ferris McCormick <fmccor@gentoo.org> libggiwmh-0.3.2.ebuild:
+  Sparc stable, required for security Bug #208566.
+
+  14 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  libggiwmh-0.3.2.ebuild:
+  stable x86, security bug 208566
+
+  26 Jan 2008; Alexis Ballier <aballier@gentoo.org> libggiwmh-0.3.2.ebuild:
+  keyword ~x86-fbsd too
+
+  16 Jan 2008; Raúl Porcel <armin76@gentoo.org> libggiwmh-0.3.2.ebuild:
+  add ~alpha/~ia64/~sparc wrt #205570
+
+  16 Jan 2008; Jeroen Roovers <jer@gentoo.org> libggiwmh-0.3.2.ebuild:
+  Marked ~hppa (bug #205570).
+
+  14 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  libggiwmh-0.3.2.ebuild:
+  keyworded ~x86, bug 205570
+
+  13 Jan 2008; Brent Baude <ranger@gentoo.org> libggiwmh-0.3.2.ebuild:
+  Marking libggiwmh-0.3.2 ~ppc64 for bug 205570
+
+*libggiwmh-0.3.2 (10 Jan 2008)
+
+  10 Jan 2008; Samuli Suominen <drac@gentoo.org> +libggiwmh-0.3.2.ebuild:
+  Initial commit wrt #126400, thanks to Kimura Masaru.
+

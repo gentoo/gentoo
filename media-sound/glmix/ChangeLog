@@ -1,0 +1,48 @@
+# ChangeLog for media-sound/glmix
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/glmix/ChangeLog,v 1.13 2012/09/07 22:08:17 radhermit Exp $
+
+  07 Sep 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> glmix-0.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  12 Mar 2011; Tim Harder <radhermit@gentoo.org> -glmix-0.1.ebuild,
+  glmix-0.3.ebuild:
+  Remove old. Update to EAPI 2 and add slot dep for gtk+.
+
+  25 Jun 2009; Raúl Porcel <armin76@gentoo.org> glmix-0.3.ebuild:
+  sparc stable wrt #272806
+
+  10 Jun 2009; Markus Meier <maekke@gentoo.org> glmix-0.3.ebuild:
+  amd64/x86 stable, bug #272806
+
+*glmix-0.3 (27 Jul 2007)
+
+  27 Jul 2007; Samuli Suominen <drac@gentoo.org> +glmix-0.3.ebuild:
+  Version bump.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  16 Feb 2006; Diego Pettenò <flameeyes@gentoo.org> glmix-0.1.ebuild:
+  Make pkgconfig only a build-time dependency.
+
+  12 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org> glmix-0.1.ebuild:
+  Stable sparc.
+
+  28 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> glmix-0.1.ebuild:
+  Ebuild cleanup.  Added to ~sparc.  Stable on amd64 and x86.
+
+  03 Sep 2004; David Holm <dholm@gentoo.org> glmix-0.1.ebuild:
+  Added to ~ppc.
+
+  23 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> glmix-0.1.ebuild:
+  fix deps; tidy
+
+*glmix-0.1 (22 Aug 2004)
+
+  22 Aug 2004; <frank@gentoo.org> +metadata.xml, +glmix-0.1.ebuild:
+  New ebuild submitted by Ron Widler <ron@einfach.org>. Closes #61105.
+

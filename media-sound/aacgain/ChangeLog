@@ -1,0 +1,56 @@
+# ChangeLog for media-sound/aacgain
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/aacgain/ChangeLog,v 1.14 2015/03/29 22:19:01 mrueg Exp $
+
+  29 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -aacgain-1.8.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> aacgain-1.8.ebuild,
+  aacgain-1.9.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  25 May 2013; Stefan Briesenick <sbriesen@gentoo.org> aacgain-1.8.ebuild,
+  aacgain-1.9.ebuild:
+  $HOMEPAGE changed. solves bug #449646.
+
+  19 Feb 2013; Jason A. Donenfeld <zx2c4@gentoo.org>
+  +files/aacgain-1.9-patch-dotdot.patch, aacgain-1.9.ebuild:
+  Fix for bug #437478.
+
+*aacgain-1.9 (23 Oct 2011)
+
+  23 Oct 2011; Stefan Briesenick <sbriesen@gentoo.org> +aacgain-1.9.ebuild:
+  version bump, solving bug #383151.
+
+  09 Oct 2009; Stefan Briesenick <sbriesen@gentoo.org> +aacgain-1.8.ebuild,
+  +files/aacgain-1.8+glibc-2.10.patch, +metadata.xml:
+  re-import of aacgain-1.8 after fixing compile-errors.
+
+  15 Jul 2009; Christian Faulhammer <fauli@gentoo.org> aacgain-1.7.ebuild:
+  stable x86, bug 256041
+
+  11 Jul 2009; <chainsaw@gentoo.org> aacgain-1.7.ebuild:
+  Marked stable on AMD64 for bug #256041; tested on a dual Opteron 2354.
+
+*aacgain-1.8 (10 Jul 2009)
+
+  10 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> +aacgain-1.8.ebuild,
+  +files/aacgain-1.8+glibc-2.10.patch:
+  Version bump and patch to build with glibc 2.10+ wrt #275817.
+
+  05 Oct 2007; Stefan Briesenick <sbriesen@gentoo.org> -aacgain-1.5.ebuild:
+  removed old version.
+
+*aacgain-1.7 (16 May 2007)
+
+  16 May 2007; Stefan Briesenick <sbriesen@gentoo.org> +aacgain-1.7.ebuild:
+  version bump.
+
+  11 Jun 2006; Stefan Briesenick <sbriesen@gentoo.org> aacgain-1.5.ebuild:
+  added BIG FAT WARNING (see bug #136170)
+
+*aacgain-1.5 (19 Mar 2006)
+
+  19 Mar 2006; Stefan Briesenick <sbriesen@gentoo.org> +metadata.xml,
+  +aacgain-1.5.ebuild:
+  initial commit.

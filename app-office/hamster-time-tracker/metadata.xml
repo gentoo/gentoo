@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>nicolasbock@gentoo.org</email>
+		<name>Nicolas Bock</name>
+	</maintainer>
+	<longdescription lang="en">
+		Project Hamster is time tracking for individuals. It helps you to keep
+		track on how much time you have spent during the day on activities you
+		choose to track.
+	</longdescription>
+</pkgmetadata>

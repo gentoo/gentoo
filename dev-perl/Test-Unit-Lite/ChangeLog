@@ -1,0 +1,55 @@
+# ChangeLog for dev-perl/Test-Unit-Lite
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Unit-Lite/ChangeLog,v 1.12 2015/06/13 21:49:20 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Test-Unit-Lite-0.120.200-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*Test-Unit-Lite-0.120.200-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Test-Unit-Lite-0.120.200-r1.ebuild, -Test-Unit-Lite-0.120.200.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org>
+  -Test-Unit-Lite-0.120.100.ebuild:
+  Cleanup
+
+*Test-Unit-Lite-0.120.200 (25 Dec 2012)
+
+  25 Dec 2012; Torsten Veller <tove@gentoo.org>
+  +Test-Unit-Lite-0.120.200.ebuild:
+  Version bump
+
+  18 Nov 2012; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Drop duplication of myself as a maintainer where there is a herd.
+
+  29 Jul 2012; Torsten Veller <tove@gentoo.org> -Test-Unit-Lite-0.120.0.ebuild:
+  Cleanup
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Test-Unit-Lite-0.120.100 (08 May 2012)
+
+  08 May 2012; Torsten Veller <tove@gentoo.org>
+  +Test-Unit-Lite-0.120.100.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Test-Unit-Lite-0.12.ebuild:
+  Cleanup
+
+*Test-Unit-Lite-0.120.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +Test-Unit-Lite-0.120.0.ebuild:
+  Change version scheme
+
+  22 Oct 2009; Torsten Veller <tove@gentoo.org> Test-Unit-Lite-0.12.ebuild:
+  Depend on Module-Build
+
+*Test-Unit-Lite-0.12 (23 Jun 2009)
+
+  23 Jun 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Test-Unit-Lite-0.12.ebuild, +metadata.xml:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.

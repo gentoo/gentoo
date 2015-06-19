@@ -1,0 +1,68 @@
+# ChangeLog for dev-python/timelib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/timelib/ChangeLog,v 1.17 2015/04/08 08:05:18 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> timelib-0.2.4-r1.ebuild:
+  Drop old Python implementations
+
+  09 Mar 2015; Pacho Ramos <pacho@gentoo.org> timelib-0.2.4-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> timelib-0.2.4-r1.ebuild:
+  amd64 stable, bug 540290
+
+  21 Jan 2015; Ian Delaney <idella4@gentoo.org> -timelib-0.2.2.ebuild,
+  -timelib-0.2.3.ebuild, -timelib-0.2.4.ebuild:
+  rm old
+
+  25 Nov 2014; Pacho Ramos <pacho@gentoo.org> timelib-0.2.4-r1.ebuild:
+  Support python 3.4
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> timelib-0.2.4-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  13 Oct 2013; Pacho Ramos <pacho@gentoo.org> timelib-0.2.4-r1.ebuild:
+  Also compatible with python3_3
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> timelib-0.2.4-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*timelib-0.2.4-r1 (18 Apr 2013)
+
+  18 Apr 2013; Ian Delaney <idella4@gentoo.org> +timelib-0.2.4-r1.ebuild:
+  migration -> distutils-r1
+
+*timelib-0.2.4 (09 Oct 2012)
+
+  09 Oct 2012; Patrick Lauer <patrick@gentoo.org> +timelib-0.2.4.ebuild:
+  Bump
+
+  20 Feb 2012; Patrick Lauer <patrick@gentoo.org> timelib-0.2.2.ebuild,
+  timelib-0.2.3.ebuild:
+  Restricting pypy #404909
+
+  28 Dec 2011; Mike Gilbert <floppym@gentoo.org> timelib-0.2.3.ebuild:
+  Restrict jython and drop CFLAGS override. Another Arfrever sighting.
+
+  28 Dec 2011; Mike Gilbert <floppym@gentoo.org> timelib-0.2.3.ebuild:
+  DEPEND on app-arch/unzip, spotted by Arfrever.
+
+*timelib-0.2.3 (26 Dec 2011)
+
+  26 Dec 2011; Patrick Lauer <patrick@gentoo.org> +timelib-0.2.3.ebuild:
+  Bump for #389327
+
+*timelib-0.2.2 (17 Oct 2010)
+
+  17 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -timelib-0.2.1.ebuild, +timelib-0.2.2.ebuild:
+  Version bump.
+
+  12 Jan 2010; Christian Faulhammer <fauli@gentoo.org> timelib-0.2.1.ebuild:
+  add ~x86, bug 297725
+
+*timelib-0.2.1 (21 Dec 2009)
+
+  21 Dec 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +timelib-0.2.1.ebuild, +metadata.xml:
+  Initial addition. Ebuild written by me.

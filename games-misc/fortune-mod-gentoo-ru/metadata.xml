@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>andreis.vinogradovs@gmail.com</email>
+	</maintainer>
+	<maintainer>
+		<email>qnikst@gentoo.org</email>
+	</maintainer>
+	<longdescription>Fortune database of quotes from gentoo.ru forum and gentoo@conference.gentoo.ru
+and other russian gentoo related resourses.</longdescription>
+	<upstream>
+		<remote-id type="google-code">slepnoga</remote-id>
+	</upstream>
+</pkgmetadata>

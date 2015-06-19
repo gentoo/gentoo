@@ -1,0 +1,9 @@
+diff -ur errorhandler-1.1.1.orig/errorhandler/tests.py errorhandler-1.1.1/errorhandler/tests.py
+--- errorhandler/tests.py	2010-03-01 16:41:46.000000000 +0800
++++ errorhandler/tests.py	2012-04-26 02:28:11.991954681 +0800
+@@ -134,3 +134,5 @@
+                      tearDown=tearDown,
+                      optionflags=options),
+         ))
++if __name__ == "__main__":
++    unittest.main()

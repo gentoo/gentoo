@@ -1,0 +1,24 @@
+From 0a1f22f433addb3317b225c8e26c4268ce6df856 Mon Sep 17 00:00:00 2001
+From: "Andreas K. Huettel (dilfridge)" <dilfridge@gentoo.org>
+Date: Wed, 1 May 2013 23:55:18 +0200
+Subject: [PATCH] Let automake define AR, since it is used for libttsubset.a
+
+---
+ configure.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.in b/configure.in
+index ba827c7..a74f7ef 100644
+--- a/configure.in
++++ b/configure.in
+@@ -9,6 +9,7 @@ AC_ISC_POSIX
+ AC_PROG_CC
+ AM_PROG_CC_STDC
+ AC_PROG_RANLIB
++AM_PROG_AR
+ AC_HEADER_STDC
+ 
+ LDFLAGS="$LDFLAGS -lz -lm"
+-- 
+1.8.2.1
+

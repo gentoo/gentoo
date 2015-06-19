@@ -1,0 +1,36 @@
+diff -Naur pyaimt-0.8.0.1/src/contact.py pyaimt-0.8.0.1-1/src/contact.py
+--- pyaimt-0.8.0.1/src/contact.py	2009-08-24 15:04:03.000000000 +0200
++++ pyaimt-0.8.0.1-1/src/contact.py	2013-09-18 17:57:12.863780595 +0200
+@@ -13,7 +13,7 @@
+ import globals
+ import base64
+ if not config.disableAvatars:
+-	import Image
++	import PIL.Image as Image
+ import StringIO
+ 
+ 
+diff -Naur pyaimt-0.8.0.1/src/imgmanip.py pyaimt-0.8.0.1-1/src/imgmanip.py
+--- pyaimt-0.8.0.1/src/imgmanip.py	2009-08-24 15:04:03.000000000 +0200
++++ pyaimt-0.8.0.1-1/src/imgmanip.py	2013-09-18 17:57:12.863780595 +0200
+@@ -5,7 +5,7 @@
+ 
+ if not config.disableAvatars:
+ 	try:
+-		import Image
++		import PIL.Image as Image
+ 		import StringIO
+ 
+ 		def convertToPNG(imageData):
+diff -Naur pyaimt-0.8.0.1/tools/infodump.py pyaimt-0.8.0.1-1/tools/infodump.py
+--- pyaimt-0.8.0.1/tools/infodump.py	2009-08-24 15:04:03.000000000 +0200
++++ pyaimt-0.8.0.1-1/tools/infodump.py	2013-09-18 17:57:12.864780582 +0200
+@@ -41,7 +41,7 @@
+ 	print "Nevow Version: Unknown or Not Installed"
+ 
+ try:
+-	from Image import VERSION
++	from PIL.Image import VERSION
+ 	print "Python Imaging Library (PIL) Version: " + VERSION
+ except:
+ 	print "Python Imaging Library (PIL) Version: Unknown or Not Installed"

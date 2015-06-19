@@ -1,0 +1,55 @@
+# ChangeLog for www-apache/mod_auth_openid
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_auth_openid/ChangeLog,v 1.11 2014/12/17 11:06:20 pacho Exp $
+
+  17 Dec 2014; Pacho Ramos <pacho@gentoo.org> mod_auth_openid-0.8.ebuild:
+  As seen in Fedora this version is compatible with 2.4 too
+
+  25 Aug 2014; Christopher Reffett <2011creffett@gentoo.org>
+  -mod_auth_openid-0.6.ebuild:
+  Security cleanup wrt bug 417267
+
+*mod_auth_openid-0.8 (26 May 2014)
+
+  26 May 2014; Lars Wendler <polynomial-c@gentoo.org>
+  +mod_auth_openid-0.8.ebuild:
+  non-maintainer commit: Version bump.
+
+  09 Dec 2012; Ulrich Müller <ulm@gentoo.org> mod_auth_openid-0.6.ebuild:
+  Fix LICENSE, MIT (Expat) license according to COPYING.
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> -mod_auth_openid-0.2-r1.ebuild,
+  -mod_auth_openid-0.4.ebuild, metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  16 Oct 2012; Patrick Lauer <patrick@gentoo.org> mod_auth_openid-0.2-r1.ebuild,
+  mod_auth_openid-0.4.ebuild, mod_auth_openid-0.6.ebuild:
+  Restricting to apache 2.2
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> mod_auth_openid-0.6.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*mod_auth_openid-0.6 (30 Mar 2012)
+
+  30 Mar 2012; Patrick Lauer <patrick@gentoo.org> +mod_auth_openid-0.6.ebuild:
+  Bump for #400895
+
+*mod_auth_openid-0.4 (17 Sep 2009)
+
+  17 Sep 2009; Benedikt Böhm <hollow@gentoo.org>
+  -mod_auth_openid-0.2.ebuild, +mod_auth_openid-0.4.ebuild:
+  version bump
+
+*mod_auth_openid-0.2-r1 (08 May 2008)
+
+  08 May 2008; Benedikt Böhm <hollow@gentoo.org>
+  +mod_auth_openid-0.2-r1.ebuild:
+  fix #220595
+
+*mod_auth_openid-0.2 (22 Mar 2008)
+
+  22 Mar 2008; Benedikt Böhm <hollow@gentoo.org>
+  +files/10_mod_auth_openid.conf, +metadata.xml,
+  +mod_auth_openid-0.2.ebuild:
+  initial ebuild wrt #209573

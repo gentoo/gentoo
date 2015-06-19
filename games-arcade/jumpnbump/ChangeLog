@@ -1,0 +1,112 @@
+# ChangeLog for games-arcade/jumpnbump
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/jumpnbump/ChangeLog,v 1.23 2015/06/04 19:02:09 kensington Exp $
+
+  04 Jun 2015; Michael Palimaka <kensington@gentoo.org>
+  jumpnbump-1.50-r1.ebuild:
+  Move various kde-base packages to kde-apps.
+
+  25 Mar 2015; Justin Lecher <jlec@gentoo.org> jumpnbump-1.50-r1.ebuild:
+  Fix tcl/tk slotting
+
+  04 Jan 2015; Tupone Alfredo <tupone@gentoo.org> jumpnbump-1.50-r1.ebuild:
+  EAPI 5
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> jumpnbump-1.50-r1.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  05 Sep 2012; Michael Sterrett <mr_bones_@gentoo.org> jumpnbump-1.50-r1.ebuild:
+  any mod support will do
+
+  29 Dec 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  jumpnbump-1.50-r1.ebuild, metadata.xml:
+  add music use flag to control the dep for playing background music (bug
+  #298129)
+
+  14 Apr 2009; Tristan Heaven <nyhm@gentoo.org> jumpnbump-1.50-r1.ebuild:
+  Run eautoreconf after autotools patch, bug #255858
+
+  25 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  jumpnbump-1.50-r1.ebuild:
+  amd64 stable
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> jumpnbump-1.50-r1.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  05 Nov 2006; Tristan Heaven <nyhm@gentoo.org> jumpnbump-1.50-r1.ebuild:
+  Change "tcltk" USE flag to "tk", bug #17808
+
+  29 Mar 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  jumpnbump-1.50-r1.ebuild:
+  more for kde (bug #127986)
+
+  22 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  jumpnbump-1.50-r1.ebuild:
+  Added modular X dependencies and closing bug #118727.
+
+  17 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  jumpnbump-1.50-r1.ebuild:
+  add desktop entry support (bug #83302)
+
+  25 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  -jumpnbump-1.41-r1.ebuild, jumpnbump-1.50-r1.ebuild, -jumpnbump-1.50.ebuild:
+  clean old ebuilds
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  01 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  jumpnbump-1.50-r1.ebuild:
+  Missed a hardcoded datapath (bug #66010)
+
+*jumpnbump-1.50-r1 (22 Sep 2004)
+
+  22 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +jumpnbump-1.50-r1.ebuild:
+  add autotools patch from Jon Atkins; rework ebuild as a result
+
+  10 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> jumpnbump-1.50.ebuild:
+  Support no-X install (bug #59952)
+
+*jumpnbump-1.50 (08 Aug 2004)
+
+  08 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> +jumpnbump-1.50.ebuild:
+  version bump
+
+  27 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  jumpnbump-1.41-r1.ebuild:
+  IUSE; don't rdepend on sed
+
+  04 Aug 2003; Michael Sterrett <msterret@gentoo.org>
+  jumpnbump-1.41-r1.ebuild:
+  use the selected level from the right location (bug 25901)
+
+*jumpnbump-1.41-r1 (01 Aug 2003)
+
+  01 Aug 2003; Michael Sterrett <msterret@gentoo.org>
+  jumpnbump-1.41-r1.ebuild:
+  use games.eclass location for datafiles and inherit games; tidy
+
+*jumpnbump-1.41 (06 Jun 2003)
+
+  06 Jun 2003; <msterret@gentoo.org> jumpnbump-1.41.ebuild:
+  version bump; had to fix the ebuild to accommodate changes in upstream install.
+
+  06 Jun 2003; <msterret@gentoo.org> jumpnbump-1.39.ebuild:
+  DEPEND on sed >= 4
+
+  05 Jun 2003; Martin Holzer <mholzer@gentoo.org> jumpnbump-1.39.ebuild:
+  Now installs into /usr/games/bin. Closes #18121.
+
+*jumpnbump-1.39.ebuild (18 dec 2002) Bart Verwilst <verwilst@gentoo.org>
+
+*jumpnbump-1.2.ebuild (17 jul 2002)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> jumpnbump-1.2.ebuild :
+  Added KEYWORDS.
+
+*Jump 'n Bump 1.2
+  19 Apr 2002; Bart Verwilst <verwilst@gentoo.org> Changelog:
+  
+  New game, looks quite good and funny :o)

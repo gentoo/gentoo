@@ -1,0 +1,134 @@
+From: Nathan Phillip Brink <binki@gentoo.org>
+Subject: Respect CCASFLAGS (which often defaults to CFLAGS). Fixes
+	compilation for portage-multilib users.
+
+diff -r c090ed619e90 configure.ac
+--- a/configure.ac	Sun Jun 26 16:00:09 2011 -0400
++++ b/configure.ac	Sun Jun 26 20:52:01 2011 -0400
+@@ -47,14 +47,12 @@
+ AC_CANONICAL_TARGET
+ AM_MAINTAINER_MODE
+ 
+-if test -z "$ac_abs_top_srcdir"; then
+-    _AC_SRCPATHS(.)
+-fi
+ if test -r .Conf.settings1; then
+     . ./.Conf.settings1
+ fi
+ 
+ AC_PROG_CC
++AM_PROG_AS
+ AC_PROG_CPP
+ mfx_PROG_CPPFLAGS
+ AC_C_CONST
+@@ -84,13 +82,13 @@
+ if test "X$enable_asm" != Xno; then
+ mfx_compile_S='${CC-cc} -c conftest.S 1>&AS_MESSAGE_LOG_FD'
+ cat > conftest.S <<EOF
+-#include "$ac_abs_top_srcdir/asm/i386/src_gas/crc_asm.S"
++#include "$srcdir/asm/i386/src_gas/crc_asm.S"
+ EOF
+ enable_asm=no
+ if AC_TRY_EVAL(mfx_compile_S); then
+     if AC_TRY_COMMAND([test -s conftest.$ac_objext]); then
+         enable_asm=yes
+-        UCL_ASM_VPATH=":$ac_abs_top_srcdir/asm/i386/src_gas"
++        UCL_ASM_VPATH=":\$(top_srcdir)/asm/i386/src_gas"
+     fi
+ fi
+ if test "X$enable_asm" = Xno; then
+@@ -160,11 +158,6 @@
+ AC_SUBST(UCL_CFLAGS)
+ AC_SUBST(UCL_EXTRA_CFLAGS)
+ 
+-configure_CPPFLAGS=$CPPFLAGS
+-configure_CFLAGS=$CFLAGS
+-AC_SUBST(configure_CPPFLAGS)
+-AC_SUBST(configure_CFLAGS)
+-
+ AC_CONFIG_FILES([Makefile examples/Makefile include/Makefile include/ucl/Makefile src/Makefile])
+ AC_OUTPUT
+ 
+diff -r c090ed619e90 src/Makefile.am
+--- a/src/Makefile.am	Sun Jun 26 16:00:09 2011 -0400
++++ b/src/Makefile.am	Sun Jun 26 20:52:01 2011 -0400
+@@ -4,11 +4,10 @@
+ #
+ 
+ VPATH = @srcdir@@UCL_ASM_VPATH@
+-SUFFIXES = .S
+ 
+ INCLUDES = -I$(top_srcdir)/include -I$(top_srcdir)
+-CPPFLAGS = $(UCL_CPPFLAGS) $(configure_CPPFLAGS) $(UCL_EXTRA_CPPFLAGS)
+-CFLAGS = $(UCL_CFLAGS) $(configure_CFLAGS) $(UCL_EXTRA_CFLAGS)
++AM_CPPFLAGS = $(UCL_CPPFLAGS) $(UCL_EXTRA_CPPFLAGS)
++AM_CFLAGS = $(UCL_CFLAGS) $(UCL_EXTRA_CFLAGS)
+ 
+ lib_LTLIBRARIES = libucl.la
+ 
+@@ -16,51 +15,37 @@
+ 
+ libucl_la_SOURCES = \
+ 	alloc.c \
++	getbit.h \
+ 	n2b_99.c n2b_d.c n2b_ds.c n2b_to.c \
+ 	n2d_99.c n2d_d.c n2d_ds.c n2d_to.c \
+ 	n2e_99.c n2e_d.c n2e_ds.c n2e_to.c \
++	ucl_conf.h \
+ 	ucl_crc.c \
+ 	ucl_init.c \
+-	ucl_ptr.c \
++	ucl_ptr.c ucl_ptr.h \
+ 	ucl_str.c \
+ 	ucl_util.c
+ 
+ EXTRA_DIST = \
+-	getbit.h \
+ 	n2_99.ch \
+-	ucl_conf.h \
+ 	ucl_dll.ch \
+ 	ucl_mchw.ch \
+-	ucl_ptr.h \
+ 	ucl_swd.ch
+ 
+-libucl_la_LIBADD = $(UCL_ASM_OBJECTS)
+-libucl_la_DEPENDENCIES = $(libucl_la_LIBADD)
+-
+-
+ # /***********************************************************************
+ # // assembler support
+ # ************************************************************************/
+ 
+ if UCL_USE_ASM
+-
+-UCL_ASM_OBJECTS = \
+-	cpuid.lo crc_asm.lo crcs_asm.lo rdtsc.lo rdtsca.lo \
+-	n2b_d_f1.lo n2b_d_f2.lo n2b_d_f3.lo n2b_d_f4.lo n2b_d_f5.lo n2b_d_f6.lo \
+-	n2b_d_n1.lo n2b_d_n2.lo n2b_d_n3.lo n2b_d_n4.lo n2b_d_n5.lo n2b_d_n6.lo \
+-	n2b_d_s1.lo n2b_d_s2.lo n2b_d_s3.lo n2b_d_s4.lo n2b_d_s5.lo n2b_d_s6.lo \
+-	n2d_d_f1.lo n2d_d_f2.lo n2d_d_f3.lo n2d_d_f4.lo n2d_d_f5.lo n2d_d_f6.lo \
+-	n2d_d_n1.lo n2d_d_n2.lo n2d_d_n3.lo n2d_d_n4.lo n2d_d_n5.lo n2d_d_n6.lo \
+-	n2d_d_s1.lo n2d_d_s2.lo n2d_d_s3.lo n2d_d_s4.lo n2d_d_s5.lo n2d_d_s6.lo \
+-	n2e_d_f1.lo n2e_d_f2.lo n2e_d_f3.lo n2e_d_f4.lo n2e_d_f5.lo n2e_d_f6.lo \
+-	n2e_d_n1.lo n2e_d_n2.lo n2e_d_n3.lo n2e_d_n4.lo n2e_d_n5.lo n2e_d_n6.lo \
+-	n2e_d_s1.lo n2e_d_s2.lo n2e_d_s3.lo n2e_d_s4.lo n2e_d_s5.lo n2e_d_s6.lo
+-
+-.S.o:
+-	$(CC) -c $<
+-
+-.S.lo:
+-	$(LIBTOOL) --mode=compile $(CC) -c $<
+-
++libucl_la_SOURCES += \
++	cpuid.S crc_asm.S crcs_asm.S rdtsc.S rdtsca.S \
++	n2b_d_f1.S n2b_d_f2.S n2b_d_f3.S n2b_d_f4.S n2b_d_f5.S n2b_d_f6.S \
++	n2b_d_n1.S n2b_d_n2.S n2b_d_n3.S n2b_d_n4.S n2b_d_n5.S n2b_d_n6.S \
++	n2b_d_s1.S n2b_d_s2.S n2b_d_s3.S n2b_d_s4.S n2b_d_s5.S n2b_d_s6.S \
++	n2d_d_f1.S n2d_d_f2.S n2d_d_f3.S n2d_d_f4.S n2d_d_f5.S n2d_d_f6.S \
++	n2d_d_n1.S n2d_d_n2.S n2d_d_n3.S n2d_d_n4.S n2d_d_n5.S n2d_d_n6.S \
++	n2d_d_s1.S n2d_d_s2.S n2d_d_s3.S n2d_d_s4.S n2d_d_s5.S n2d_d_s6.S \
++	n2e_d_f1.S n2e_d_f2.S n2e_d_f3.S n2e_d_f4.S n2e_d_f5.S n2e_d_f6.S \
++	n2e_d_n1.S n2e_d_n2.S n2e_d_n3.S n2e_d_n4.S n2e_d_n5.S n2e_d_n6.S \
++	n2e_d_s1.S n2e_d_s2.S n2e_d_s3.S n2e_d_s4.S n2e_d_s5.S n2e_d_s6.S
+ endif
+-

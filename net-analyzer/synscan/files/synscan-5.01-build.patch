@@ -1,0 +1,79 @@
+diff -ur synscan-5.01.orig/configure.in synscan-5.01/configure.in
+--- synscan-5.01.orig/configure.in	2009-03-31 23:22:46.000000000 +0300
++++ synscan-5.01/configure.in	2010-06-14 00:31:06.000000000 +0300
+@@ -49,7 +49,7 @@
+         owd=`pwd`
+ 	if cd $withval; then withval=`pwd`; cd $owd; fi
+         CFLAGS="$CFLAGS -I$withval -I$withval/bpf"
+-        LDFLAGS="$LDFLAGS -L$withval -lpcap"
++        LIBS="$LIBS -L$withval -lpcap"
+      else
+         AC_ERROR(pcap.h or libpcap.a not found in $withval)
+      fi
+@@ -57,12 +57,12 @@
+   esac ],
+ [ if test -f ${prefix}/include/pcap.h; then
+      CFLAGS="$CFLAGS -I${prefix}/include"
+-     LDFLAGS="$LDFLAGS -L${prefix}/lib -lpcap"
++     LIBS="$LIBS -L${prefix}/lib -lpcap"
+   elif test -f /usr/include/pcap/pcap.h; then
+      CFLAGS="$CFLAGS -I/usr/include/pcap"
+-     LDFLAGS="$LDFLAGS -lpcap"
++     LIBS="$LIBS -lpcap"
+   elif test -f /usr/include/pcap.h; then
+-     LDFLAGS="$LDFLAGS -lpcap"
++     LIBS="$LIBS -lpcap"
+   else
+      AC_MSG_RESULT(no)
+      AC_ERROR(libpcap not found)
+@@ -73,12 +73,15 @@
+ ##
+ ## Check of getoptlong
+ ##
+-AC_CHECK_FUNCS([getopt_long],,
+-  AC_CHECK_LIB([gnugetopt], getopt_long,
+-               [ LDFLAGS="$LDFLAGS -lgnugetopt";
+-                 AC_DEFINE([HAVE_GETOPT_LONG])]
+-               )
+-)
++ac_cv_have_getopt_long="no"
++AC_CHECK_FUNCS([getopt_long],
++ [ac_cv_have_getopt_long="yes"],
++ [AC_CHECK_LIB([gnugetopt], [getopt_long],
++   [ac_cv_have_getopt_long="yes"
++    LIBS="${LIBS} -lgnugetopt"])])
++if test "$ac_cv_have_getopt_long" != "no"; then
++  AC_DEFINE([HAVE_GETOPT_LONG])
++fi
+ 
+ ##
+ ## Output files
+diff -ur synscan-5.01.orig/Makefile.in synscan-5.01/Makefile.in
+--- synscan-5.01.orig/Makefile.in	2009-03-31 23:22:28.000000000 +0300
++++ synscan-5.01/Makefile.in	2010-06-14 00:32:19.000000000 +0300
+@@ -5,7 +5,7 @@
+ 
+ CC = @CC@
+ CFLAGS=@CFLAGS@ @DEFS@ -Wall
+-LDFLAGS = @LDFLAGS@
++LIBS = @LIBS@
+ 
+ OBJS_MINIMAL = \
+ 	common.o net.o obuf.o
+@@ -56,13 +56,13 @@
+ solaris-sparc-gcc:
+ 	$(MAKE) $(PROJ) \
+ 		CFLAGS="$(CFLAGS) -DBSD_COMP -DSOLARIS" \
+-		LDFLAGS="$(LDFLAGS) -lsocket -lresolv -lnsl"
++		LIBS="$(LIBS) -lsocket -lresolv -lnsl"
+ 
+ synscan: synscan.c synscan.h ${OBJS}
+-	${CC} ${CFLAGS} $< ${OBJS} ${LDFLAGS} -o synscan
++	${CC} ${LDFLAGS} ${CFLAGS} $< ${OBJS} ${LIBS} -o synscan
+ 
+ sslog: sslog.c ${OBJS}
+-	${CC} ${CFLAGS} $< ${OBJS} ${LDFLAGS} -o sslog
++	${CC} ${LDFLAGS} ${CFLAGS} $< ${OBJS} ${LIBS} -o sslog
+ 
+ install:
+ 	mkdir -p -m 755 ${bindir}

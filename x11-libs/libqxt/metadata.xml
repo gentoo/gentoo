@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>qt</herd>
+<use>
+	<flag name="berkdb">Build the QxtBerkeley module</flag>
+	<flag name="sql">Build the QxtSql module</flag>
+	<flag name="web">Build the QxtWeb module</flag>
+	<flag name="zeroconf">Build the QxtZeroconf module</flag>
+</use>
+</pkgmetadata>

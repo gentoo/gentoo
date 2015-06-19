@@ -1,0 +1,25 @@
+# ChangeLog for sci-visualization/pythonprop
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/pythonprop/ChangeLog,v 1.4 2015/03/14 05:38:02 tomjbe Exp $
+
+  14 Mar 2015; Thomas Beierlein <tomjbe@gentoo.org> -pythonprop-0.10.ebuild,
+  -pythonprop-0.11.ebuild, pythonprop-0.13.ebuild:
+  Move to EAPI=5 (bug #543172). Remove old
+
+*pythonprop-0.13 (30 Nov 2013)
+
+  30 Nov 2013; Thomas Beierlein <tomjbe@gentoo.org> +pythonprop-0.13.ebuild:
+  Version bump
+
+*pythonprop-0.11 (10 Sep 2012)
+
+  10 Sep 2012; Thomas Beierlein <tomjbe@gentoo.org> +pythonprop-0.11.ebuild:
+  Version bump
+
+*pythonprop-0.10 (06 Feb 2011)
+
+  06 Feb 2011; Thomas Beierlein <tomjbe@gentoo.org> +pythonprop-0.10.ebuild,
+  +metadata.xml:
+  Moved from sunrise (bug #307189)
+
+

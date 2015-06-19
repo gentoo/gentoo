@@ -1,0 +1,10 @@
+http://bugs.gentoo.org/485496
+
+--- src/core/fat.cc
++++ src/core/fat.cc
+@@ -82,4 +82,5 @@
+ 			uint8_t pmagic[2];
+ 		} __attribute__((__packed__)) fat32;
++		char sector[512];       // to make sure the whole struct is at least 512 bytes long 
+ 	} __attribute__((__packed__)) type;
+ } __attribute__((__packed__));

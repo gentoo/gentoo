@@ -1,0 +1,557 @@
+# ChangeLog for kde-misc/tellico
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/tellico/ChangeLog,v 1.138 2015/06/09 16:26:58 johu Exp $
+
+  09 Jun 2015; Johannes Huber <johu@gentoo.org>
+  -files/tellico-2.3.9-build.patch, -tellico-2.3.9.ebuild:
+  Remove old.
+
+  09 Jun 2015; Agostino Sarubbo <ago@gentoo.org> tellico-2.3.10.ebuild:
+  Stable for x86, wrt bug #550750
+
+  08 Jun 2015; Agostino Sarubbo <ago@gentoo.org> tellico-2.3.10.ebuild:
+  Stable for amd64, wrt bug #550750
+
+  04 Jun 2015; Michael Palimaka <kensington@gentoo.org> tellico-2.3.10.ebuild,
+  tellico-2.3.9.ebuild:
+  Move various kde-base packages to kde-apps.
+
+*tellico-2.3.10 (19 Feb 2015)
+
+  19 Feb 2015; Michael Palimaka <kensington@gentoo.org> +tellico-2.3.10.ebuild:
+  Version bump wrt bug #540382.
+
+  14 Feb 2015; Johannes Huber <johu@gentoo.org> -tellico-2.3.8.ebuild:
+  Remove old.
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org> tellico-2.3.9.ebuild:
+  Stable for x86, wrt bug #517344
+
+  05 Feb 2015; Michael Palimaka <kensington@gentoo.org>
+  +files/tellico-2.3.9-build.patch, tellico-2.3.9.ebuild:
+  Add patch to prevent potential build failure wrt bug #538478.
+
+  12 Dec 2014; Mikle Kolyada <zlogene@gentoo.org> tellico-2.3.9.ebuild:
+  amd64 stable wrt bug #517344
+
+  25 Jul 2014; Johannes Huber <johu@gentoo.org> metadata.xml,
+  tellico-2.3.9.ebuild:
+  Add nepomuk USE flag, bug #516236.
+
+  17 Jul 2014; Michael Palimaka <kensington@gentoo.org> tellico-2.3.9.ebuild:
+  Remove workaround now handled in the eclass.
+
+*tellico-2.3.9 (25 Jun 2014)
+
+  25 Jun 2014; Michael Palimaka <kensington@gentoo.org> +tellico-2.3.9.ebuild:
+  Version bump wrt bug #514678.
+
+  28 Aug 2013; Michael Palimaka <kensington@gentoo.org> -tellico-2.3.7.ebuild:
+  Remove old.
+
+  28 Aug 2013; Agostino Sarubbo <ago@gentoo.org> tellico-2.3.8.ebuild:
+  Stable for x86, wrt bug #481010
+
+  17 Aug 2013; Agostino Sarubbo <ago@gentoo.org> tellico-2.3.8.ebuild:
+  Stable for amd64, wrt bug #481010
+
+  11 Jul 2013; Michael Palimaka <kensington@gentoo.org> tellico-2.3.8.ebuild:
+  Remove semantic-desktop USE flag. Remove poppler subslot dependency since this
+  package links against the stable qt4 interface.
+
+*tellico-2.3.8 (11 Jul 2013)
+
+  11 Jul 2013; Manuel Rüger <mrueg@gentoo.org> +tellico-2.3.8.ebuild:
+  Version bump wrt #476544
+
+  17 Mar 2013; Andreas K. Huettel <dilfridge@gentoo.org> tellico-2.3.7.ebuild:
+  poppler subslot dependencies
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> tellico-2.3.7.ebuild:
+  Move Qt dependencies to the new category
+
+  26 Feb 2013; Michael Palimaka <kensington@gentoo.org> -tellico-2.3.6.ebuild:
+  Remove old.
+
+  26 Feb 2013; Agostino Sarubbo <ago@gentoo.org> tellico-2.3.7.ebuild:
+  Stable for x86, wrt bug #459256
+
+  26 Feb 2013; Agostino Sarubbo <ago@gentoo.org> tellico-2.3.7.ebuild:
+  Stable for amd64, wrt bug #459256
+
+*tellico-2.3.7 (28 Jan 2013)
+
+  28 Jan 2013; Michael Palimaka <kensington@gentoo.org> +tellico-2.3.7.ebuild:
+  Version bump wrt bug #454220.
+
+  14 Nov 2012; Johannes Huber <johu@gentoo.org> -tellico-2.3.5.ebuild:
+  Remove old.
+
+  14 Nov 2012; Johannes Huber <johu@gentoo.org> tellico-2.3.6.ebuild:
+  Stable for x86, wrt bug #441344
+
+  06 Nov 2012; Agostino Sarubbo <ago@gentoo.org> tellico-2.3.6.ebuild:
+  Stable for amd64, wrt bug #441344
+
+*tellico-2.3.6 (16 Jul 2012)
+
+  16 Jul 2012; Johannes Huber <johu@gentoo.org> +tellico-2.3.6.ebuild:
+  Version bump.
+
+  18 Apr 2012; Johannes Huber <johu@gentoo.org>
+  -files/tellico-2.3.4-kdepimlibs.patch, -tellico-2.3.4.ebuild:
+  Remove old.
+
+  18 Apr 2012; Markus Meier <maekke@gentoo.org> tellico-2.3.5.ebuild:
+  x86 stable, bug #409403
+
+  04 Apr 2012; Agostino Sarubbo <ago@gentoo.org> tellico-2.3.5.ebuild:
+  Stable for amd64, wrt bug #409403
+
+  15 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> tellico-2.3.4.ebuild,
+  tellico-2.3.5.ebuild:
+  Remove no-op USE="musicbrainz" and depend wrt #405113 by Tomasz Golinski and
+  Michael (kensington)
+
+  21 Feb 2012; Johannes Huber <johu@gentoo.org> tellico-2.3.4.ebuild,
+  tellico-2.3.5.ebuild:
+  Use slot for musicbrainz dep, fixes bug #405113.
+
+*tellico-2.3.5 (17 Jan 2012)
+
+  17 Jan 2012; Johannes Huber <johu@gentoo.org> +tellico-2.3.5.ebuild:
+  Version bump.
+
+  12 Dec 2011; Jonathan Callen <abcd@gentoo.org>
+  -files/tellico-2.3.3-tests.patch, -tellico-2.3.2.ebuild,
+  -tellico-2.3.3.ebuild:
+  rm old
+
+  04 Dec 2011; Markos Chandras <hwoarang@gentoo.org> tellico-2.3.4.ebuild:
+  Stable on amd64 wrt bug #391095
+
+  22 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> tellico-2.3.4.ebuild:
+  x86 stable wrt bug #391095
+
+  20 Nov 2011; Andreas K. Huettel <dilfridge@gentoo.org> tellico-2.3.4.ebuild:
+  Restrict tests as they need network access
+
+*tellico-2.3.4 (17 Oct 2011)
+
+  17 Oct 2011; Andreas K. Huettel <dilfridge@gentoo.org> +tellico-2.3.4.ebuild,
+  +files/tellico-2.3.4-kdepimlibs.patch:
+  Version bump
+
+  31 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org> tellico-2.3.3.ebuild,
+  +files/tellico-2.3.3-tests.patch:
+  Disable all tests that fetch files from the network, should also fix bug
+  329069
+
+  14 May 2011; Andreas K. Huettel <dilfridge@gentoo.org> tellico-2.3.3.ebuild:
+  Raise libv4l version dependency to work around missing v4l-1 support in
+  kernel, bug 364437
+
+*tellico-2.3.3 (15 Apr 2011)
+
+  15 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> +tellico-2.3.3.ebuild:
+  Version bump. Fixes bug #363355.
+
+  27 Feb 2011; Markos Chandras <hwoarang@gentoo.org> tellico-2.3.2.ebuild:
+  Stable on amd64 wrt bug #328583
+
+  25 Feb 2011; Thomas Kahle <tomka@gentoo.org> tellico-2.3.2.ebuild:
+  x86 stable per bug 328583
+
+  31 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> -tellico-2.2.ebuild,
+  -tellico-2.3.ebuild, tellico-2.3.2.ebuild:
+  Remove old
+
+*tellico-2.3.2 (13 Jan 2011)
+
+  13 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> +tellico-2.3.2.ebuild:
+  Version bump, fixes bug 348221 and bug 345461, patch by Mr. Anderson
+
+  13 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> tellico-2.3.ebuild:
+  EAPI3
+
+  13 Nov 2010; Andreas K. Huettel <dilfridge@gentoo.org> tellico-2.2.ebuild,
+  tellico-2.3.ebuild:
+  Restricting tests until someone makes them work (bug 329069)
+
+*tellico-2.3 (09 Aug 2010)
+
+  09 Aug 2010; Tomáš Chvátal <scarabeus@gentoo.org> +tellico-2.3.ebuild:
+  Version bump.
+
+  15 May 2010; Maciej Mrozowski <reavertm@gentoo.org> tellico-2.2.ebuild:
+  Update qimageblitz category, deps cleanup
+
+*tellico-2.2 (15 Feb 2010)
+
+  15 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> +tellico-2.2.ebuild:
+  Version bump.
+
+  10 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> tellico-2.1.1.ebuild:
+  Fix poppler depend.
+
+  11 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org> -tellico-2.0.ebuild:
+  Drop no-longer required ebuild.
+
+*tellico-2.1.1 (21 Nov 2009)
+
+  21 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org> -tellico-2.1.ebuild,
+  +tellico-2.1.1.ebuild:
+  Version bump and remove old.
+
+*tellico-2.1 (08 Nov 2009)
+
+  08 Nov 2009; Samuli Suominen <ssuominen@gentoo.org> +tellico-2.1.ebuild:
+  Version bump wrt #292303, thanks to Allen Brooker for reporting.
+
+  20 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> tellico-2.0.ebuild:
+  Change HOMEPAGE wrt #259755.
+
+*tellico-2.0 (21 Sep 2009)
+
+  21 Sep 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -tellico-2.0_pre2.ebuild, +tellico-2.0.ebuild, metadata.xml:
+  Version bump. Remove old.
+
+*tellico-2.0_pre2 (10 Sep 2009)
+
+  10 Sep 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +tellico-2.0_pre2.ebuild:
+  Version bump.
+
+  22 Feb 2009; Carsten Lohrke <carlo@gentoo.org> tellico-1.3.5.ebuild:
+  Trivial homepage change, bug #259755.
+
+  22 Feb 2009; Carsten Lohrke <carlo@gentoo.org> tellico-1.3.5.ebuild:
+  Trivial homepage change, bug #259755.
+
+*tellico-1.3.5 (15 Feb 2009)
+
+  15 Feb 2009; Carsten Lohrke <carlo@gentoo.org>
+  +files/tellico-1.3.5-test-ldadd.diff, +tellico-1.3.5.ebuild:
+  Version bump. Get rid of invalid aRts dependency. Missing kde.eclass
+  function calls.
+
+*tellico-1.3.4 (06 Dec 2008)
+
+  06 Dec 2008; Patrick Lauer <patrick@gentoo.org> +tellico-1.3.4.ebuild:
+  Bump
+
+*tellico-1.3.3 (26 Jul 2008)
+
+  26 Jul 2008; Timo Gurr <tgurr@gentoo.org>
+  +files/tellico-1.3-releaseflaws.patch, -tellico-1.2.10.ebuild,
+  -tellico-1.2.11.ebuild, +tellico-1.3.3.ebuild:
+  Version bump, thanks everyone at bug #210714.
+
+  30 Jun 2008; nixnut <nixnut@gentoo.org> tellico-1.2.14.ebuild:
+  Stable on ppc wrt bug 216755
+
+  30 Jun 2008; Kenneth Prugh <ken69267@gentoo.org> tellico-1.2.14.ebuild:
+  amd64 stable, bug #216755
+
+  30 Jun 2008; Raúl Porcel <armin76@gentoo.org> tellico-1.2.14.ebuild:
+  sparc stable wrt #216755
+
+  30 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  tellico-1.2.14.ebuild:
+  stable x86, bug 216755
+
+  18 Feb 2008; Ingmar Vanhassel <ingmar@gentoo.org> tellico-1.2.10.ebuild,
+  tellico-1.2.11.ebuild, tellico-1.2.14.ebuild:
+  Update kde-base/* dependencies so that KDE 4 doesn't satisfy it. bug 206528.
+
+  18 Feb 2008; Ingmar Vanhassel <ingmar@gentoo.org> -tellico-1.2.13.ebuild:
+  Old.
+
+*tellico-1.2.14 (24 Sep 2007)
+
+  24 Sep 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  +files/tellico-1.2.14-disable_formattest.patch, +tellico-1.2.14.ebuild:
+  Version bump to 1.2.14.
+
+*tellico-1.2.13 (04 Aug 2007)
+
+  04 Aug 2007; Steve Dibb <beandog@gentoo.org> +tellico-1.2.13.ebuild:
+  Version bump, bug 187521
+
+  26 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> tellico-1.2.11.ebuild:
+  Stable on sparc
+
+  13 Jul 2007; Steve Dibb <beandog@gentoo.org> tellico-1.2.11.ebuild:
+  amd64 stable
+
+*tellico-1.2.11 (11 May 2007)
+
+  11 May 2007; Steve Dibb <beandog@gentoo.org> +tellico-1.2.11.ebuild:
+  Version bump
+
+  30 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> tellico-1.2.10.ebuild:
+  Stable on sparc wrt #176289
+
+  30 Apr 2007; Steve Dibb <beandog@gentoo.org> tellico-1.2.10.ebuild:
+  amd64 stable, bug 176289
+
+  29 Apr 2007; Raúl Porcel <armin76@gentoo.org> tellico-1.2.10.ebuild:
+  x86 stable wrt #176289
+
+  28 Apr 2007; nixnut <nixnut@gentoo.org> tellico-1.2.10.ebuild:
+  Stable on ppc wrt bug 176289
+
+*tellico-1.2.10 (08 Apr 2007)
+
+  08 Apr 2007; Carsten Lohrke <carlo@gentoo.org> +tellico-1.2.10.ebuild:
+  Version bump.
+
+*tellico-1.2.9 (02 Mar 2007)
+
+  02 Mar 2007; Steve Dibb <beandog@gentoo.org> +tellico-1.2.9.ebuild:
+  Version bump
+
+  18 Feb 2007; Simon Stelling <blubb@gentoo.org> tellico-1.2.7.ebuild:
+  stable on amd64; bug 165391
+
+  10 Feb 2007; nixnut <nixnut@gentoo.org> tellico-1.2.7.ebuild:
+  Stable on ppc wrt bug 165391
+
+  05 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org> tellico-1.2.7.ebuild:
+  Stable on sparc wrt #165391
+
+  05 Feb 2007; Raúl Porcel <armin76@gentoo.org> tellico-1.2.7.ebuild:
+  x86 stable wrt bug 165391
+
+  04 Feb 2007; Steve Dibb <beandog@gentoo.org> metadata.xml:
+  Update maintainer
+
+*tellico-1.2.8 (04 Feb 2007)
+
+  04 Feb 2007; Steve Dibb <beandog@gentoo.org> +tellico-1.2.8.ebuild:
+  Version bump
+
+*tellico-1.2.7 (04 Jan 2007)
+
+  04 Jan 2007; Steve Dibb <beandog@gentoo.org> +tellico-1.2.7.ebuild:
+  Version bump
+
+  18 Nov 2006; Matteo Azzali <mattepiu@gentoo.org> -tellico-1.1.6.ebuild,
+  -tellico-1.2.ebuild, -tellico-1.2.2.ebuild, -tellico-1.2.3.ebuild:
+  removed old ebuilds.
+
+  17 Nov 2006; nixnut <nixnut@gentoo.org> tellico-1.2.4.ebuild:
+  Stable on ppc wrt bug 155108
+
+  15 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org> tellico-1.2.4.ebuild:
+  Stable on sparc wrt #155108
+
+  14 Nov 2006; Steve Dibb <beandog@gentoo.org> tellico-1.2.4.ebuild:
+  Stable on amd64, bug 155108
+
+  14 Nov 2006; Andrej Kacian <ticho@gentoo.org> tellico-1.2.4.ebuild:
+  Stable on x86, bug #155108.
+
+*tellico-1.2.6 (14 Nov 2006)
+
+  14 Nov 2006; Matteo Azzali <mattepiu@gentoo.org> +tellico-1.2.6.ebuild:
+  version bump, bug #155007
+
+*tellico-1.2.4 (14 Oct 2006)
+
+  14 Oct 2006; Matteo Azzali <mattepiu@gentoo.org> +tellico-1.2.4.ebuild:
+  version bump
+
+*tellico-1.2.3 (25 Sep 2006)
+
+  25 Sep 2006; Ioannis Aslanidis <deathwing00@gentoo.org>
+  +tellico-1.2.3.ebuild:
+  Version bump. Dependency of libxml2 increased by upstream to 2.6.
+
+  24 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> tellico-1.1.6.ebuild,
+  tellico-1.2.ebuild, tellico-1.2.2.ebuild:
+  Fix DEPEND/RDEPEND.
+
+*tellico-1.2.2 (08 Sep 2006)
+
+  08 Sep 2006; Carsten Lohrke <carlo@gentoo.org> +tellico-1.2.2.ebuild:
+  Version bump.
+
+*tellico-1.2 (01 Sep 2006)
+
+  01 Sep 2006; Carsten Lohrke <carlo@gentoo.org> -tellico-1.1.ebuild,
+  +tellico-1.2.ebuild:
+  Version bump.
+
+  31 May 2006; Carsten Lohrke <carlo@gentoo.org> -tellico-0.13.8.ebuild,
+  -tellico-1.0.1.ebuild, -tellico-1.0.2.ebuild, -tellico-1.1.1.ebuild,
+  -tellico-1.1.2.ebuild, -tellico-1.1.3.ebuild, -tellico-1.1.4.ebuild,
+  -tellico-1.1.5.ebuild:
+  Clean up.
+
+  31 May 2006; Joshua Jackson <tsunam@gentoo.org> tellico-1.1.6.ebuild:
+  Stable on x86; bug #134764
+
+  30 May 2006; Joseph Jezak <josejx@gentoo.org> tellico-1.1.6.ebuild:
+  Marked ppc stable for bug #134764.
+
+  30 May 2006; Jason Wever <weeve@gentoo.org> tellico-1.1.6.ebuild:
+  Stable on SPARC wrt bug #134764.
+
+*tellico-1.1.6 (13 May 2006)
+
+  13 May 2006; Carsten Lohrke <carlo@gentoo.org> +tellico-1.1.6.ebuild:
+  Version bump.
+
+*tellico-1.1.5 (20 Apr 2006)
+
+  20 Apr 2006; Carsten Lohrke <carlo@gentoo.org> +tellico-1.1.5.ebuild:
+  Version bump.
+
+*tellico-1.1.4 (03 Apr 2006)
+
+  03 Apr 2006; Carsten Lohrke <carlo@gentoo.org> +tellico-1.1.4.ebuild:
+  Version bump.
+
+*tellico-1.1.3 (13 Mar 2006)
+
+  13 Mar 2006; Carsten Lohrke <carlo@gentoo.org> +tellico-1.1.3.ebuild:
+  Version bump.
+
+*tellico-1.1.2 (07 Mar 2006)
+
+  07 Mar 2006; Carsten Lohrke <carlo@gentoo.org> +tellico-1.1.2.ebuild:
+  Version bump.
+
+  22 Feb 2006; Mark Loeser <halcy0n@gentoo.org> tellico-1.1.1.ebuild:
+  Back to ~x86
+
+*tellico-1.1.1 (21 Feb 2006)
+
+  21 Feb 2006; Carsten Lohrke <carlo@gentoo.org> +tellico-1.1.1.ebuild:
+  Version bump.
+
+  12 Feb 2006; Mark Loeser <halcy0n@gentoo.org> tellico-1.1.ebuild:
+  Back to ~x86
+
+*tellico-1.1 (12 Feb 2006)
+
+  12 Feb 2006; Carsten Lohrke <carlo@gentoo.org> +tellico-1.1.ebuild:
+  Version bump.
+
+*tellico-1.0.2 (12 Oct 2005)
+
+  12 Oct 2005; Carsten Lohrke <carlo@gentoo.org> +tellico-1.0.2.ebuild:
+  version bump
+
+*tellico-1.0.1 (24 Sep 2005)
+
+  24 Sep 2005; Carsten Lohrke <carlo@gentoo.org> +tellico-1.0.1.ebuild:
+  version bump
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> tellico-0.13.8.ebuild:
+  Stable on ppc.
+
+  22 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> tellico-0.13.8.ebuild:
+  Stable on sparc
+
+  20 Aug 2005; Gregorio Guidi <greg_g@gentoo.org> tellico-0.13.8.ebuild:
+  Stable on x86.
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> tellico-0.13.7.ebuild:
+  Stable on ppc.
+
+*tellico-0.13.8 (03 Jul 2005)
+
+  03 Jul 2005; Carsten Lohrke <carlo@gentoo.org> +tellico-0.13.8.ebuild:
+  version bump
+
+  27 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> tellico-0.13.7.ebuild:
+  Stable on sparc
+
+  27 Jun 2005; Carsten Lohrke <carlo@gentoo.org> tellico-0.13.7.ebuild:
+  stable on x86
+
+  06 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> tellico-0.13.6.ebuild:
+  Stable on sparc
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> tellico-0.13.6.ebuild:
+  Stable on ppc.
+
+  27 May 2005; Carsten Lohrke <carlo@gentoo.org> tellico-0.13.6.ebuild:
+  stable on x86
+
+*tellico-0.13.7 (27 May 2005)
+
+  27 May 2005; Gregorio Guidi <greg_g@gentoo.org> +tellico-0.13.7.ebuild:
+  New version.
+
+  26 Apr 2005; Jason Wever <weeve@gentoo.org> tellico-0.13.5.ebuild:
+  Stable on SPARC.
+
+  21 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> tellico-0.13.5.ebuild:
+  Stable on ppc.
+
+  14 Apr 2005; Carsten Lohrke <carlo@gentoo.org> tellico-0.13.5.ebuild,
+  tellico-0.13.6.ebuild:
+  corrected dependencies
+
+*tellico-0.13.6 (14 Apr 2005)
+
+  14 Apr 2005; Carsten Lohrke <carlo@gentoo.org> tellico-0.13.5.ebuild,
+  +tellico-0.13.6.ebuild:
+  0.13.5 stable on x86, version bump
+
+*tellico-0.13.5 (11 Mar 2005)
+
+  11 Mar 2005; Carsten Lohrke <carlo@gentoo.org> +tellico-0.13.5.ebuild:
+  version bump
+
+*tellico-0.13.4 (01 Mar 2005)
+
+  01 Mar 2005; Carsten Lohrke <carlo@gentoo.org> +tellico-0.13.4.ebuild:
+  version bump
+
+*tellico-0.13.3 (13 Feb 2005)
+
+  13 Feb 2005; Carsten Lohrke <carlo@gentoo.org> +tellico-0.13.3.ebuild:
+  version bump
+
+  25 Jan 2005; Jason Wever <weeve@gentoo.org> tellico-0.13.1.ebuild:
+  Stable on sparc.
+
+  21 Jan 2005; Carsten Lohrke <carlo@gentoo.org> tellico-0.13.1.ebuild:
+  stable on x86
+
+  15 Jan 2005; Dan Armak <danarmak@gentoo.org> tellico-0.12.ebuild,
+  tellico-0.13.1.ebuild:
+  Changed dep on kdemultimedia to accept kdemultimedia-meta, the split 'meta'
+  package. This dep will be narrowed down in the future to the precise split
+  packages required.
+
+*tellico-0.13.1 (12 Dec 2004)
+
+  12 Dec 2004; Carsten Lohrke <carlo@gentoo.org> +tellico-0.13.1.ebuild,
+  -tellico-0.13.ebuild:
+  version bump
+
+*tellico-0.13 (04 Dec 2004)
+
+  04 Dec 2004; Carsten Lohrke <carlo@gentoo.org> +tellico-0.13.ebuild:
+  version bump
+
+  30 Nov 2004; Mike Doty <kingtaco@gentoo.org> tellico-0.12.ebuild:
+  ~amd64 keyword added per #65514
+
+  31 Oct 2004; Lars Weiler <pylon@gentoo.org> tellico-0.12.ebuild:
+  Stable on ppc as requested in bug #65514
+
+  30 Oct 2004; Jason Wever <weeve@gentoo.org> tellico-0.12.ebuild:
+  Stable on sparc wrt bug #65514
+
+*tellico-0.12 (30 Oct 2004)
+
+  30 Oct 2004; Carsten Lohrke <carlo@gentoo.org> +metadata.xml,
+  +tellico-0.12.ebuild:
+  tellico, previously known as app-misc/bookcase

@@ -1,0 +1,529 @@
+# ChangeLog for media-gfx/exiv2
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/exiv2/ChangeLog,v 1.141 2015/05/30 14:22:49 mrueg Exp $
+
+  30 May 2015; Manuel Rüger <mrueg@gentoo.org> -exiv2-0.23-r1.ebuild,
+  -exiv2-0.23-r2.ebuild, -exiv2-0.24.ebuild:
+  Remove old.
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> exiv2-0.23-r2.ebuild:
+  Drop old Python implementations
+
+  23 Feb 2015; Agostino Sarubbo <ago@gentoo.org> exiv2-0.24-r1.ebuild:
+  Stable for ia64, wrt bug #534608
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org> exiv2-0.24-r1.ebuild:
+  Stable for ppc64, wrt bug #534608
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org> exiv2-0.24-r1.ebuild:
+  Stable for sparc, wrt bug #534608
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org> exiv2-0.24-r1.ebuild:
+  Stable for ppc, wrt bug #534608
+
+  25 Jan 2015; Markus Meier <maekke@gentoo.org> exiv2-0.24-r1.ebuild:
+  arm stable, bug #534608
+
+  25 Jan 2015; Agostino Sarubbo <ago@gentoo.org> exiv2-0.24-r1.ebuild:
+  Stable for alpha, wrt bug #534608
+
+  21 Jan 2015; Jeroen Roovers <jer@gentoo.org> exiv2-0.24-r1.ebuild:
+  Stable for HPPA (bug #534608).
+
+  21 Jan 2015; Agostino Sarubbo <ago@gentoo.org> exiv2-0.24-r1.ebuild:
+  Stable for x86, wrt bug #534608
+
+  21 Jan 2015; Agostino Sarubbo <ago@gentoo.org> exiv2-0.24-r1.ebuild:
+  Stable for amd64, wrt bug #534608
+
+*exiv2-0.24-r1 (20 Jan 2015)
+
+  20 Jan 2015; Johannes Huber <johu@gentoo.org> +exiv2-0.24-r1.ebuild,
+  +files/exiv2-0.24-CVE-2014-9449.patch:
+  Revision bump adds patch from fedora to fix CVE-2014-9449, bug #534608. Thanks
+  to Pacho Ramos <pacho@gentoo.org> for spotting the patch.
+
+  20 Dec 2014; Markus Meier <maekke@gentoo.org> exiv2-0.24.ebuild:
+  arm stable, bug #526042
+
+  13 Dec 2014; Mikle Kolyada <zlogene@gentoo.org> exiv2-0.24.ebuild:
+  amd64 stable wrt bug #526042
+
+  12 Dec 2014; Jeroen Roovers <jer@gentoo.org> exiv2-0.24.ebuild:
+  Stable for HPPA (bug #526042).
+
+  12 Dec 2014; Jeroen Roovers <jer@gentoo.org> exiv2-0.24.ebuild:
+  Fix building with USE=doc by Benjamin Southall (bug #512468).
+
+  26 Nov 2014; Ian Delaney <idella4@gentoo.org> exiv2-0.24.ebuild:
+  clean old python impls
+
+  06 Sep 2014; Christoph Junghans <ottxor@gentoo.org> exiv2-0.24.ebuild:
+  add prefix support (bug #518974)
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> exiv2-0.23-r2.ebuild,
+  exiv2-0.24.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  12 Jun 2014; Michał Górny <mgorny@gentoo.org> exiv2-0.24.ebuild:
+  Remove boost compat patch that has been applied upstream, bug #512658.
+
+*exiv2-0.24 (04 Jun 2014)
+
+  04 Jun 2014; Andreas K. Huettel <dilfridge@gentoo.org> +exiv2-0.24.ebuild,
+  +files/exiv2-0.24-python3.patch:
+  Version bump
+
+  30 Apr 2014; Michał Górny <mgorny@gentoo.org> exiv2-0.23-r2.ebuild:
+  Fix multilib and Python support. Bug #474654.
+
+  22 Dec 2013; Johannes Huber <johu@gentoo.org> exiv2-0.23-r2.ebuild:
+  Fix src_install with USE contrib by Rafał Mużyło <galtgendo@o2.pl>, bug
+  #494954.
+
+*exiv2-0.23-r2 (20 Dec 2013)
+
+  20 Dec 2013; Johannes Huber <johu@gentoo.org> +exiv2-0.23-r2.ebuild:
+  Revision bump adds multilib support + converted to python-single-r1 eclass by
+  Michael Weber <xmw@gentoo.org>, bug #474654. Introduces subslot, bug #456794.
+
+  20 Dec 2013; Johannes Huber <johu@gentoo.org> -exiv2-0.19.ebuild,
+  -files/exiv2-0.19-syntax-fix.patch, -files/exiv2-0.21.1-time-fix.patch:
+  Remove old.
+
+  20 Sep 2013; Jeroen Roovers <jer@gentoo.org> exiv2-0.23-r1.ebuild:
+  Stable for HPPA (bug #481934).
+
+  07 Sep 2013; Agostino Sarubbo <ago@gentoo.org> exiv2-0.23-r1.ebuild:
+  Stable for sparc, wrt bug #481934
+
+  03 Sep 2013; Agostino Sarubbo <ago@gentoo.org> exiv2-0.23-r1.ebuild:
+  Stable for ia64, wrt bug #481934
+
+  03 Sep 2013; Agostino Sarubbo <ago@gentoo.org> exiv2-0.23-r1.ebuild:
+  Stable for alpha, wrt bug #481934
+
+  22 Jul 2013; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Add to graphics herd too
+
+  22 Jul 2013; Patrick Lauer <patrick@gentoo.org> exiv2-0.23-r1.ebuild:
+  QA: Restore ~amd64-fbsd keyword to existing version
+
+  21 Jul 2013; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Add to kde herd
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> -exiv2-0.21.1-r1.ebuild,
+  -exiv2-0.21.1-r2.ebuild, -exiv2-0.23.ebuild, metadata.xml:
+  Cleanup due #92799
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> exiv2-0.23-r1.ebuild:
+  Stable for ppc64, wrt bug #462890
+
+  20 Feb 2013; Andreas Schuerch <nativemad@gentoo.org> exiv2-0.23-r1.ebuild:
+  x86 stable, see bug 437432
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> exiv2-0.23-r1.ebuild:
+  Stable for arm, wrt bug #437432
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> exiv2-0.23-r1.ebuild:
+  Stable for ppc, wrt bug #437432
+
+  09 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> exiv2-0.23-r1.ebuild:
+  Stable on amd64, wrt bug #437432
+
+*exiv2-0.23-r1 (24 Jan 2013)
+
+  24 Jan 2013; Stefan Briesenick <sbriesen@gentoo.org> +exiv2-0.23-r1.ebuild,
+  +files/exiv2-0.23-boost-fs-contrib.patch:
+  revbump with patches from Bug #437432.
+
+  02 Jul 2012; Stefan Briesenick <sbriesen@gentoo.org> exiv2-0.19.ebuild,
+  exiv2-0.21.1-r1.ebuild, exiv2-0.21.1-r2.ebuild, exiv2-0.23.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 Jul 2012; Samuli Suominen <ssuominen@gentoo.org> exiv2-0.23.ebuild:
+  Remove useless pkg_postinst() ewarn for running revdep-rebuild.
+
+*exiv2-0.23 (24 Jun 2012)
+
+  24 Jun 2012; Stefan Briesenick <sbriesen@gentoo.org> exiv2-0.19.ebuild,
+  exiv2-0.21.1-r1.ebuild, exiv2-0.21.1-r2.ebuild, +exiv2-0.23.ebuild:
+  version bump (bug #390375), added static-libs support (bug #378205), depend
+  on python2 only with USE=doc and in DEPEND (bug #398959), set
+  dev-util/pkgconfig dependencies again for older ebuilds due to profile-errors
+  during commit (feel free to fix it)
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org> exiv2-0.21.1-r2.ebuild:
+  keyword ~amd64-fbsd
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> exiv2-0.19.ebuild,
+  exiv2-0.21.1-r1.ebuild, exiv2-0.21.1-r2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  10 Jan 2012; Brent Baude <ranger@gentoo.org> exiv2-0.21.1-r2.ebuild:
+  Marking exiv2-0.21.1-r2 ppc for bug 396359
+
+*exiv2-0.21.1-r2 (09 Sep 2011)
+
+  09 Sep 2011; Tomáš Chvátal <scarabeus@gentoo.org> -exiv2-0.20.ebuild,
+  -exiv2-0.21.ebuild, -exiv2-0.21-r1.ebuild, -exiv2-0.21.1.ebuild,
+  exiv2-0.21.1-r1.ebuild, +exiv2-0.21.1-r2.ebuild,
+  -files/exiv2-0.21-xmp-fix.patch:
+  Revision bump to punt libtool archive and static library. Punt older
+  overshadowed versions.
+
+  15 Aug 2011; Markus Meier <maekke@gentoo.org> exiv2-0.21.1-r1.ebuild:
+  x86 stable, bug #377465
+
+  09 Aug 2011; Markos Chandras <hwoarang@gentoo.org> exiv2-0.21.1-r1.ebuild:
+  Stable on amd64 wrt bug #377465
+
+*exiv2-0.21.1-r1 (09 Jul 2011)
+
+  09 Jul 2011; Stefan Briesenick <sbriesen@gentoo.org> +exiv2-0.21.1-r1.ebuild,
+  +files/exiv2-0.21.1-time-fix.patch:
+  added patch for off by 1 hour date error (bug #368419).
+
+*exiv2-0.21.1 (02 Apr 2011)
+
+  02 Apr 2011; Stefan Briesenick <sbriesen@gentoo.org> +exiv2-0.21.1.ebuild:
+  version bump (bug #358161) + boost fixes (bug #357605)
+
+*exiv2-0.21-r1 (21 Dec 2010)
+
+  21 Dec 2010; Stefan Briesenick <sbriesen@gentoo.org> +exiv2-0.21-r1.ebuild,
+  +files/exiv2-0.21-xmp-fix.patch:
+  fixes compile-problems with USE=-xmp, solves (partially) bug #349091.
+
+*exiv2-0.21 (19 Dec 2010)
+
+  19 Dec 2010; Stefan Briesenick <sbriesen@gentoo.org> +exiv2-0.21.ebuild:
+  version bump, apply utf-8 conversion unconditionally.
+
+  20 Jul 2010; Stefan Briesenick <sbriesen@gentoo.org> -exiv2-0.18.1.ebuild:
+  removed old version
+
+*exiv2-0.20 (20 Jul 2010)
+
+  20 Jul 2010; Stefan Briesenick <sbriesen@gentoo.org> +exiv2-0.20.ebuild:
+  version bump. fixed python handling. solving bug #313493.
+
+  18 Apr 2010; Markus Meier <maekke@gentoo.org> exiv2-0.19.ebuild:
+  amd64 stable, bug #306333
+
+  18 Apr 2010; <nixnut@gentoo.org> exiv2-0.19.ebuild:
+  ppc stable #306333
+
+  04 Apr 2010; Raúl Porcel <armin76@gentoo.org> exiv2-0.19.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #306333
+
+  23 Mar 2010; Brent Baude <ranger@gentoo.org> exiv2-0.19.ebuild:
+  stable ppc64, bug 306333
+
+  04 Mar 2010; Jeroen Roovers <jer@gentoo.org> exiv2-0.19.ebuild:
+  Stable for HPPA (bug #306333).
+
+  03 Mar 2010; Christian Faulhammer <fauli@gentoo.org> exiv2-0.19.ebuild:
+  stable x86, bug 306333
+
+  24 Jan 2010; Sven Wegener <swegener@gentoo.org> exiv2-0.19.ebuild,
+  +files/exiv2-0.19-syntax-fix.patch:
+  Include a syntax fix from upstream, bug #302026.
+
+*exiv2-0.19 (23 Jan 2010)
+
+  23 Jan 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +exiv2-0.19.ebuild:
+  Version bump (bug #283626).
+
+  23 Jul 2009; Raúl Porcel <armin76@gentoo.org> exiv2-0.18.1.ebuild:
+  arm/ia64/s390/sh stable wrt #273577
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> exiv2-0.18.1.ebuild:
+  ppc stable #273577
+
+  29 Jun 2009; Brent Baude <ranger@gentoo.org> exiv2-0.18.1.ebuild:
+  Marking exiv2-0.18.1 ppc64 for bug 273577
+
+  15 Jun 2009; Tobias Klausmann <klausman@gentoo.org> exiv2-0.18.1.ebuild:
+  Stable on alpha, bug #273577
+
+  15 Jun 2009; Jeroen Roovers <jer@gentoo.org> exiv2-0.18.1.ebuild:
+  Stable for HPPA (bug #273577).
+
+  15 Jun 2009; Peter Volkov <pva@gentoo.org> exiv2-0.18.1.ebuild:
+  amd64 stable, bug #273577
+
+  11 Jun 2009; Stefan Briesenick <sbriesen@gentoo.org>
+  exiv2-0.18.1-r1.ebuild:
+  restored LINGUAS handling
+
+  11 Jun 2009; Ferris McCormick <fmccor@gentoo.org> exiv2-0.18.1.ebuild:
+  Sparc stable, fast stable for Bug #273577.
+
+  11 Jun 2009; Christian Faulhammer <fauli@gentoo.org> exiv2-0.18.1.ebuild:
+  stable x86, bug 273577
+
+*exiv2-0.18.1-r1 (11 Jun 2009)
+
+  11 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org> exiv2-0.18.1.ebuild,
+  +exiv2-0.18.1-r1.ebuild:
+  Revision bump for stripping out the new boost dep, so package can be
+  fast-stabled. Per bug #273577.
+
+  26 May 2009; Gordon Malm <gengor@gentoo.org> exiv2-0.18.ebuild,
+  exiv2-0.18.1.ebuild:
+  Fix compile on amd64 utilizing gcc-3.4. Bug #78720.
+
+  23 May 2009; Markus Meier <maekke@gentoo.org> exiv2-0.18.ebuild:
+  amd64/x86 stable, bug #262843
+
+  21 May 2009; Brent Baude <ranger@gentoo.org> exiv2-0.18.ebuild:
+  stable ppc, bug 262843
+
+  19 May 2009; Brent Baude <ranger@gentoo.org> exiv2-0.18.ebuild:
+  stable ppc64, bug 262843
+
+  19 May 2009; Jeroen Roovers <jer@gentoo.org> exiv2-0.18.ebuild:
+  Stable for HPPA (bug #262843).
+
+*exiv2-0.18.1 (17 May 2009)
+
+  17 May 2009; Stefan Briesenick <sbriesen@gentoo.org> +exiv2-0.18.1.ebuild,
+  metadata.xml:
+  version bump, solving bug #270110.
+
+  28 Feb 2009; Raúl Porcel <armin76@gentoo.org> exiv2-0.17.1.ebuild:
+  arm/sh stable
+
+  12 Feb 2009; Tobias Klausmann <klausman@gentoo.org> exiv2-0.18.ebuild:
+  Stable on alpha, bug #244230
+
+  12 Feb 2009; Tobias Klausmann <klausman@gentoo.org> ChangeLog:
+  Keyworded on alpha, bug #244230
+
+*exiv2-0.18 (06 Jan 2009)
+
+  06 Jan 2009; Stefan Briesenick <sbriesen@gentoo.org> +exiv2-0.18.ebuild:
+  version bump, solving bug #250046.
+
+  23 Dec 2008; Brent Baude <ranger@gentoo.org> exiv2-0.17.1.ebuild:
+  Marking exiv2-0.17.1 ppc64 for bug 246826
+
+  07 Dec 2008; Mike Frysinger <vapier@gentoo.org> exiv2-0.17.1.ebuild:
+  Use printf for IUSE_LINGUAS and add arm/s390/sh love #242236.
+
+  21 Nov 2008; Jeroen Roovers <jer@gentoo.org> exiv2-0.17.ebuild:
+  Stable for HPPA (bug #246826).
+
+  09 Nov 2008; Peter Volkov <pva@gentoo.org> exiv2-0.17.1.ebuild:
+  ~mips keyworded, bug #242236
+
+  27 Oct 2008; Brent Baude <ranger@gentoo.org> exiv2-0.17.1.ebuild:
+  Marking exiv2-0.17.1 ~ppc64 for bug 242236
+
+*exiv2-0.17.1 (01 Sep 2008)
+
+  01 Sep 2008; Stefan Briesenick <sbriesen@gentoo.org> +exiv2-0.17.1.ebuild:
+  version bump, solves bug #235382.
+
+  01 Sep 2008; Stefan Briesenick <sbriesen@gentoo.org>
+  -files/exiv2-0.16-gcc43.diff, -files/CVE-2007-6353.diff,
+  -exiv2-0.15-r1.ebuild, -exiv2-0.16.ebuild, -exiv2-0.16-r1.ebuild:
+  removed old versions
+
+  22 Aug 2008; Markus Meier <maekke@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  16 Jun 2008; Jeroen Roovers <jer@gentoo.org> exiv2-0.17.ebuild:
+  Marked ~hppa (bug #225357).
+
+  14 Jun 2008; Richard Freeman <rich0@gentoo.org> exiv2-0.17.ebuild:
+  amd64 stable - 225485
+
+  10 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org> exiv2-0.17.ebuild:
+  ppc stable, bug #225485
+
+  10 Jun 2008; Raúl Porcel <armin76@gentoo.org> exiv2-0.17.ebuild:
+  alpha/ia64/sparc stable wrt #225485
+
+  10 Jun 2008; Christian Faulhammer <opfer@gentoo.org> exiv2-0.17.ebuild:
+  stable x86, security bug 225485
+
+*exiv2-0.17 (09 Jun 2008)
+
+  09 Jun 2008; Stefan Briesenick <sbriesen@gentoo.org> +exiv2-0.17.ebuild:
+  version bump (see bug #225485).
+
+  26 Mar 2008; Stefan Briesenick <sbriesen@gentoo.org> -exiv2-0.13.ebuild,
+  -exiv2-0.13-r1.ebuild:
+  removed old versions.
+
+*exiv2-0.16-r1 (26 Mar 2008)
+
+  26 Mar 2008; Stefan Briesenick <sbriesen@gentoo.org>
+  +files/exiv2-0.16-gcc43.diff, +exiv2-0.16-r1.ebuild:
+  added gcc 4.3 patch (see bug #214814)
+
+  10 Feb 2008; Wulf C. Krueger <philantrop@gentoo.org> exiv2-0.15-r1.ebuild:
+  Marked stable on amd64.
+
+  30 Jan 2008; Raúl Porcel <armin76@gentoo.org> exiv2-0.15-r1.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+  29 Jan 2008; nixnut <nixnut@gentoo.org> exiv2-0.15-r1.ebuild,
+  exiv2-0.16.ebuild:
+  stabling 0.15-r1 instead of the too new 0.16
+
+  29 Jan 2008; nixnut <nixnut@gentoo.org> exiv2-0.16.ebuild:
+  Stable on ppc wrt bug 205588
+
+*exiv2-0.16 (26 Jan 2008)
+
+  26 Jan 2008; Stefan Briesenick <sbriesen@gentoo.org> +exiv2-0.16.ebuild:
+  version bump, solving bug #206330.
+
+  23 Dec 2007; Robert Buchholz <rbu@gentoo.org> exiv2-0.13-r1.ebuild:
+  amd64 stable, now for real (bug #202351)
+
+  19 Dec 2007; Peter Weller <welp@gentoo.org> ChangeLog:
+  Stable on amd64; bug 202351
+
+  17 Dec 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  exiv2-0.13-r1.ebuild:
+  ppc stable, bug #202351
+
+  17 Dec 2007; Raúl Porcel <armin76@gentoo.org> exiv2-0.13-r1.ebuild:
+  alpha/ia64 stable wrt security #202351
+
+  16 Dec 2007; Ferris McCormick <fmccor@gentoo.org> exiv2-0.13-r1.ebuild:
+  Sparc stable, security Bug #202351.
+
+  16 Dec 2007; Markus Meier <maekke@gentoo.org> exiv2-0.13-r1.ebuild:
+  x86 stable, security bug #202351
+
+  16 Dec 2007; Stefan Briesenick <sbriesen@gentoo.org> -exiv2-0.15.ebuild:
+  removed unpatched revision.
+
+*exiv2-0.15-r1 (16 Dec 2007)
+*exiv2-0.13-r1 (16 Dec 2007)
+
+  16 Dec 2007; Stefan Briesenick <sbriesen@gentoo.org>
+  +files/CVE-2007-6353.diff, +exiv2-0.13-r1.ebuild, +exiv2-0.15-r1.ebuild:
+  added patch against integer overflow (see bug #202351).
+
+  16 Dec 2007; Stefan Briesenick <sbriesen@gentoo.org> -exiv2-0.14.ebuild:
+  removed old version
+
+*exiv2-0.15 (14 Jul 2007)
+
+  14 Jul 2007; Stefan Briesenick <sbriesen@gentoo.org> +exiv2-0.15.ebuild:
+  version bump
+
+  14 Jul 2007; Stefan Briesenick <sbriesen@gentoo.org> -exiv2-0.9.1.ebuild:
+  removed old version.
+
+  14 Jun 2007; Raúl Porcel <armin76@gentoo.org> exiv2-0.13.ebuild:
+  alpha stable
+
+  01 Jun 2007; Peter Weller <welp@gentoo.org> exiv2-0.13.ebuild:
+  Stable on amd64 wrt bug 178802
+
+  01 Jun 2007; nixnut <nixnut@gentoo.org> exiv2-0.13.ebuild:
+  Stable on ppc wrt bug 178802
+
+  16 May 2007; Stefan Briesenick <sbriesen@gentoo.org>
+  -files/exiv2-0.10-jpgimage.diff, -exiv2-0.10-r1.ebuild,
+  -exiv2-0.11.ebuild, -exiv2-0.12.ebuild:
+  removed (some) old versions.
+
+*exiv2-0.14 (16 May 2007)
+
+  16 May 2007; Stefan Briesenick <sbriesen@gentoo.org> +exiv2-0.14.ebuild:
+  version bump.
+
+  16 May 2007; Raúl Porcel <armin76@gentoo.org> exiv2-0.13.ebuild:
+  Add ~alpha wrt #169164
+
+  11 May 2007; Gustavo Zacarias <gustavoz@gentoo.org> exiv2-0.13.ebuild:
+  Stable on sparc
+
+  08 May 2007; Raúl Porcel <armin76@gentoo.org> exiv2-0.13.ebuild:
+  ia64 stable
+
+  31 Mar 2007; Raúl Porcel <armin76@gentoo.org> exiv2-0.13.ebuild:
+  Add ~ia64 wrt bug 169164
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org> exiv2-0.12.ebuild:
+  x86 stable
+
+*exiv2-0.13 (05 Mar 2007)
+
+  05 Mar 2007; Stefan Briesenick <sbriesen@gentoo.org> metadata.xml,
+  +exiv2-0.13.ebuild:
+  version bump. new version features nls support and iconv is now a mandantory
+  runtime dependency.
+
+  01 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org> exiv2-0.12.ebuild:
+  Stable on sparc
+
+  06 Jan 2007; Stefan Briesenick <sbriesen@gentoo.org> exiv2-0.12.ebuild:
+  added revdep-rebuild warning.
+
+*exiv2-0.12 (08 Dec 2006)
+
+  08 Dec 2006; Stefan Briesenick <sbriesen@gentoo.org> +exiv2-0.12.ebuild:
+  version bump, solving #157515.
+
+  27 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> exiv2-0.11.ebuild:
+  Add ~x86-fbsd keyword.
+
+  27 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> exiv2-0.11.ebuild:
+  Convert iconv to a more portable syntax, and add virtual/libiconv dependency
+  at buildtime for the iconv command.
+
+  17 Oct 2006; Stefan Briesenick <sbriesen@gentoo.org> exiv2-0.9.1.ebuild,
+  exiv2-0.10-r1.ebuild, exiv2-0.11.ebuild:
+  added missing zlib dependency, solving bug #151708.
+
+*exiv2-0.11 (01 Oct 2006)
+
+  01 Oct 2006; Stefan Briesenick <sbriesen@gentoo.org> +exiv2-0.11.ebuild:
+  version bump
+
+  31 Aug 2006; <blubb@gentoo.org> exiv2-0.9.1.ebuild:
+  stable on amd64
+
+  30 Aug 2006; Joshua Jackson <tsunam@gentoo.org> exiv2-0.9.1.ebuild:
+  stable x86; for kphotoalbum #145102
+
+  29 Aug 2006; Tobias Scherbaum <dertobi123@gentoo.org> exiv2-0.9.1.ebuild:
+  ppc stable
+
+  26 Aug 2006; Jason Wever <weeve@gentoo.org> exiv2-0.9.1.ebuild:
+  Stable on SPARC wrt bug #145102.
+
+*exiv2-0.10-r1 (18 Aug 2006)
+
+  18 Aug 2006; Stefan Briesenick <sbriesen@gentoo.org>
+  +files/exiv2-0.10-jpgimage.diff, -exiv2-0.10.ebuild,
+  +exiv2-0.10-r1.ebuild:
+  adding patch for crash in jpgimage.cpp, solving bug #144347.
+
+*exiv2-0.10 (05 Jun 2006)
+
+  05 Jun 2006; Stefan Briesenick <sbriesen@gentoo.org> +exiv2-0.10.ebuild:
+  version bump, solving bug #135502.
+
+  28 Apr 2006; Jason Wever <weeve@gentoo.org> exiv2-0.9.1.ebuild:
+  Added ~sparc keyword wrt bug #130648.
+
+  21 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org> exiv2-0.9.1.ebuild:
+  Added to ~ppc
+
+*exiv2-0.9.1 (22 Mar 2006)
+
+  22 Mar 2006; Stefan Briesenick <sbriesen@gentoo.org> +metadata.xml,
+  +exiv2-0.9.1.ebuild:
+  initial commit, solving bug #109690.

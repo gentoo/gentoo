@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>idl0r@gentoo.org</email>
+		<name>Christian Ruppert</name>
+	</maintainer>
+	<use>
+		<flag name="urandom">Use /dev/urandom instead of /dev/random</flag>
+		<flag name="gssapi">Enable gssapi support</flag>
+		<flag name="gost">Enables gost OpenSSL engine support</flag>
+	</use>
+	<longdescription>ISC's Bind DNS' server tools</longdescription>
+</pkgmetadata>

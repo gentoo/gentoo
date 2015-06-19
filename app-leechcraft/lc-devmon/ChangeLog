@@ -1,0 +1,30 @@
+# ChangeLog for app-leechcraft/lc-devmon
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-leechcraft/lc-devmon/ChangeLog,v 1.6 2014/08/03 18:49:22 maksbotan Exp $
+
+*lc-devmon-0.6.70 (03 Aug 2014)
+
+  03 Aug 2014; Maxim Koltsov <maksbotan@gentoo.org> +lc-devmon-0.6.70.ebuild:
+  Bump LeechCraft to 0.6.70, thanks to 0xd34df00d.
+
+*lc-devmon-0.6.65 (10 Apr 2014)
+
+  10 Apr 2014; Maxim Koltsov <maksbotan@gentoo.org> +lc-devmon-0.6.65.ebuild:
+  Bump LeechCraft to 0.5.65, thanks to 0xd34df00d.
+
+  03 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> lc-devmon-0.6.60.ebuild:
+  x86 stable wrt bug #500914
+
+  02 Apr 2014; Mikle Kolyada <zlogene@gentoo.org> lc-devmon-0.6.60.ebuild:
+  amd64 stable wrt bug #500914
+
+*lc-devmon-0.6.60 (08 Jan 2014)
+
+  08 Jan 2014; Maxim Koltsov <maksbotan@gentoo.org> +lc-devmon-0.6.60.ebuild:
+  Bump to LeecChraft-0.6.60 release, thanks to 0xd34df00d.
+
+*lc-devmon-9999 (18 Aug 2013)
+
+  18 Aug 2013; Maxim Koltsov <maksbotan@gentoo.org> +lc-devmon-9999.ebuild,
+  +metadata.xml:
+  Add lc-devmon-9999, thanks to 0xd34df00d.

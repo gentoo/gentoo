@@ -1,0 +1,209 @@
+# ChangeLog for net-libs/axtls
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/axtls/ChangeLog,v 1.52 2015/05/10 12:16:07 blueness Exp $
+
+  10 May 2015; Anthony G. Basile <blueness@gentoo.org> axtls-1.5.1.ebuild:
+  Stable for arm.  Bug #546560.
+
+  10 May 2015; Anthony G. Basile <blueness@gentoo.org>
+  files/explicit-libdir-r1.patch:
+  Fix bug #534614.
+
+  03 May 2015; Anthony G. Basile <blueness@gentoo.org> -axtls-1.4.8.ebuild,
+  -axtls-1.4.9-r1.ebuild, -axtls-1.4.9.ebuild, -files/explicit-libdir.patch:
+  Remove older stable versions.
+
+*axtls-1.5.3 (03 May 2015)
+
+  03 May 2015; Anthony G. Basile <blueness@gentoo.org> +axtls-1.5.3.ebuild:
+  Version bump.
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> axtls-1.5.1.ebuild:
+  Stable for x86, wrt bug #546560
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> axtls-1.5.1.ebuild:
+  Stable for amd64, wrt bug #546560
+
+  15 Apr 2015; Anthony G. Basile <blueness@gentoo.org> axtls-1.5.1.ebuild:
+  Stable on ppc and ppc64.  Bug #546560.
+
+  15 Apr 2015; Jeroen Roovers <jer@gentoo.org> axtls-1.5.1.ebuild:
+  Stable for HPPA (bug #546560).
+
+*axtls-1.5.2 (14 Apr 2015)
+
+  14 Apr 2015; Anthony G. Basile <blueness@gentoo.org> +axtls-1.5.2.ebuild:
+  Version bump.
+
+*axtls-1.5.1 (21 Jan 2015)
+
+  21 Jan 2015; Anthony G. Basile <blueness@gentoo.org> +axtls-1.5.1.ebuild:
+  Version bump
+
+  01 Jan 2015; Agostino Sarubbo <ago@gentoo.org> axtls-1.5.0.ebuild:
+  Stable for ppc64, wrt bug #533396
+
+  31 Dec 2014; Agostino Sarubbo <ago@gentoo.org> axtls-1.5.0.ebuild:
+  Stable for ppc, wrt bug #533396
+
+  30 Dec 2014; Markus Meier <maekke@gentoo.org> axtls-1.5.0.ebuild:
+  arm stable, bug #533396
+
+  28 Dec 2014; Agostino Sarubbo <ago@gentoo.org> axtls-1.5.0.ebuild:
+  Stable for x86, wrt bug #533396
+
+  26 Dec 2014; Agostino Sarubbo <ago@gentoo.org> axtls-1.5.0.ebuild:
+  Stable for amd64, wrt bug #533396
+
+  25 Dec 2014; Jeroen Roovers <jer@gentoo.org> axtls-1.5.0.ebuild:
+  Stable for HPPA (bug #533396).
+
+*axtls-1.5.0 (01 Nov 2014)
+
+  01 Nov 2014; Anthony G. Basile <blueness@gentoo.org> +axtls-1.5.0.ebuild:
+  Version bump
+
+  21 Oct 2014; Anthony G. Basile <blueness@gentoo.org> axtls-1.4.9-r1.ebuild:
+  Stable for ppc64, bug #522818
+
+  18 Oct 2014; Agostino Sarubbo <ago@gentoo.org> axtls-1.4.9-r1.ebuild:
+  Stable for ppc, wrt bug #522818
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> axtls-1.4.9-r1.ebuild:
+  Stable for x86, wrt bug #522818
+
+  09 Oct 2014; Agostino Sarubbo <ago@gentoo.org> axtls-1.4.9-r1.ebuild:
+  Stable for amd64, wrt bug #522818
+
+  24 Sep 2014; Markus Meier <maekke@gentoo.org> axtls-1.4.9-r1.ebuild:
+  arm stable, bug #522818
+
+  22 Sep 2014; Anthony G. Basile <blueness@gentoo.org> axtls-1.4.9-r1.ebuild:
+  Avoid rebuilding docs for each abi.
+
+  22 Sep 2014; Anthony G. Basile <blueness@gentoo.org> axtls-1.4.9-r1.ebuild:
+  Fix build with USE=doc
+
+  14 Sep 2014; Jeroen Roovers <jer@gentoo.org> axtls-1.4.9-r1.ebuild:
+  Stable for HPPA (bug #522502).
+
+*axtls-1.4.9-r1 (14 Jun 2014)
+
+  14 Jun 2014; Michał Górny <mgorny@gentoo.org> +axtls-1.4.9-r1.ebuild,
+  +files/explicit-libdir-r1.patch:
+  Enable multilib support, needed for net-misc/curl.
+
+  03 Mar 2013; Mike Frysinger <vapier@gentoo.org> axtls-1.4.9.ebuild:
+  Add s390 lovin.
+
+  21 Feb 2013; Jeroen Roovers <jer@gentoo.org> axtls-1.4.9.ebuild:
+  Stable for HPPA (bug #457418).
+
+  18 Feb 2013; Anthony G. Basile <blueness@gentoo.org> axtls-1.4.9.ebuild:
+  Respect AR, bug #457608
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> axtls-1.4.9.ebuild:
+  Stable for arm, wrt bug #457418
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> axtls-1.4.9.ebuild:
+  Stable for ppc, wrt bug #457418
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> axtls-1.4.9.ebuild:
+  Stable for ppc64, wrt bug #457418
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> axtls-1.4.9.ebuild:
+  Stable for x86, wrt bug #457418
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> axtls-1.4.9.ebuild:
+  Stable for amd64, wrt bug #457418
+
+  07 Jan 2013; Anthony G. Basile <blueness@gentoo.org> -axtls-1.4.6-r1.ebuild,
+  -files/bigint_impl.h-add-missing-include.patch:
+  Remove older unstable
+
+*axtls-1.4.9 (07 Jan 2013)
+
+  07 Jan 2013; Anthony G. Basile <blueness@gentoo.org> +axtls-1.4.9.ebuild:
+  Version bump, fixes locations of SSL/TLS version number (RFC5246) to work with
+  Chrome
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> axtls-1.4.8.ebuild:
+  x86 stable wrt bug #429168
+
+  11 Aug 2012; Agostino Sarubbo <ago@gentoo.org> axtls-1.4.8.ebuild:
+  Stable for amd64, wrt bug #429168
+
+  07 Aug 2012; Jeroen Roovers <jer@gentoo.org> axtls-1.4.8.ebuild:
+  Stable for HPPA (bug #429168).
+
+  23 Jul 2012; Anthony G. Basile <blueness@gentoo.org> axtls-1.4.8.ebuild:
+  Stable arm
+
+  20 Jul 2012; Jeff Horelick <jdhore@gentoo.org> axtls-1.4.6-r1.ebuild:
+  marked x86 per bug 421479
+
+  19 Jul 2012; Anthony G. Basile <blueness@gentoo.org> axtls-1.4.8.ebuild:
+  Stable ppc/ppc64
+
+  15 Jul 2012; Anthony G. Basile <blueness@gentoo.org> axtls-1.4.6-r1.ebuild,
+  axtls-1.4.8.ebuild:
+  Keyword ~arm ~mips ~ppc ~ppc64
+
+  11 Jul 2012; Anthony G. Basile <blueness@gentoo.org> axtls-1.4.6-r1.ebuild,
+  axtls-1.4.8.ebuild:
+  Add GPL-2 for init scripts, bug #426040
+
+*axtls-1.4.8 (01 Jul 2012)
+
+  01 Jul 2012; Anthony G. Basile <blueness@gentoo.org> +axtls-1.4.8.ebuild:
+  Version bump, fixes bigint_impl.h missing include
+
+  26 Jun 2012; Anthony G. Basile <blueness@gentoo.org> -axtls-1.4.6.ebuild:
+  Remove version with broken crypto/bigint_impl.h
+
+  21 Jun 2012; Jeroen Roovers <jer@gentoo.org> axtls-1.4.6-r1.ebuild:
+  Stable for HPPA (bug #421479).
+
+  18 Jun 2012; Agostino Sarubbo <ago@gentoo.org> axtls-1.4.6-r1.ebuild:
+  Stable for amd64, wrt bug #421479
+
+  17 Jun 2012; Anthony G. Basile <blueness@gentoo.org> axtls-1.4.6-r1.ebuild,
+  +files/explicit-libdir.patch:
+  Make build system multilib aware, add USE=static-libs, for bug #421479
+
+*axtls-1.4.6-r1 (07 Jun 2012)
+
+  07 Jun 2012; Anthony G. Basile <blueness@gentoo.org> +axtls-1.4.6-r1.ebuild,
+  +files/bigint_impl.h-add-missing-include.patch:
+  Fix crypto/bigint_impl.h so curl can build against axtls
+  https://sourceforge.net/tracker/?func=detail&aid=3515628&group_id=171217&atid
+  =857113
+  https://sourceforge.net/tracker/?func=detail&aid=3532467&group_id=171217&atid
+  =857113
+
+  29 May 2012; Jeroen Roovers <jer@gentoo.org> axtls-1.4.6.ebuild:
+  Marked ~hppa too.
+
+*axtls-1.4.6 (26 May 2012)
+
+  26 May 2012; Anthony G. Basile <blueness@gentoo.org> +axtls-1.4.6.ebuild,
+  +files/axhttpd.confd, +files/axhttpd.initd, +files/config, +metadata.xml:
+  Move from axTLS and version bump
+
+  07 Apr 2012; Anthony G. Basile <blueness@gentoo.org> axTLS-1.4.5.ebuild,
+  +files/axTLS-add-missing-include.patch:
+  Add missing #include header for bigint_impl.h
+  http://sourceforge.net/tracker/?func=detail&aid=3515628&group_id=171217&atid=
+  857113
+
+  07 Apr 2012; Anthony G. Basile <blueness@gentoo.org> files/config:
+  Increase max X509 CA certs and chain length to work with ca-certificates
+
+  07 Apr 2012; Anthony G. Basile <blueness@gentoo.org> axTLS-1.4.5.ebuild:
+  Add missing depend on doxygen if USE=doc
+
+*axTLS-1.4.5 (06 Apr 2012)
+
+  06 Apr 2012; Anthony G. Basile <blueness@gentoo.org> +axTLS-1.4.5.ebuild,
+  +files/axhttpd.confd, +files/axhttpd.initd, +files/config, +metadata.xml:
+  Initial commit

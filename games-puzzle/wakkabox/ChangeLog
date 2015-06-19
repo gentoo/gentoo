@@ -1,0 +1,23 @@
+# ChangeLog for games-puzzle/wakkabox
+# Copyright 2000-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/wakkabox/ChangeLog,v 1.7 2015/02/26 23:07:52 tupone Exp $
+
+  26 Feb 2015; Tupone Alfredo <tupone@gentoo.org> wakkabox-1.1.0.ebuild,
+  +files/wakkabox-1.1.0-gentoo.patch:
+  EAPI 5 - underlinking and buffer overflow
+
+  08 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  29 Dec 2004; Joseph Jezak <josejx@gentoo.org> wakkabox-1.1.0.ebuild:
+  Marked ppc stable.
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> wakkabox-1.1.0.ebuild:
+  Added ~ppc.
+
+*wakkabox-1.1.0 (28 Aug 2003)
+
+  28 Aug 2003; Michael Sterrett <msterret@gentoo.org> wakkabox-1.1.0.ebuild:
+  initial commit. ebuild based on the one provided by Kenn Knowles via bug
+  27341.
+

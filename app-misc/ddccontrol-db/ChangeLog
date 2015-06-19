@@ -1,0 +1,112 @@
+# ChangeLog for app-misc/ddccontrol-db
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/ddccontrol-db/ChangeLog,v 1.23 2015/06/07 08:04:30 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  30 Mar 2014; Manuel Rüger <mrueg@gentoo.org> -ddccontrol-db-20061014.ebuild:
+  Cleanup old. Drop stable ppc keyword.
+
+  09 Mar 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ddccontrol-db-20061014_p20121105.ebuild:
+  x86 stable wrt bug #491922
+
+  08 Mar 2014; Pacho Ramos <pacho@gentoo.org>
+  ddccontrol-db-20061014_p20121105.ebuild:
+  amd64 stable, bug 491922
+
+*ddccontrol-db-20061014_p20121105 (03 Jan 2014)
+
+  03 Jan 2014; Manuel Rüger <mrueg@gentoo.org>
+  +ddccontrol-db-20061014_p20121105.ebuild, -ddccontrol-db-20050715.ebuild,
+  -ddccontrol-db-20050813.ebuild, -ddccontrol-db-20051114.ebuild,
+  -ddccontrol-db-20060308.ebuild, -ddccontrol-db-20060730.ebuild, metadata.xml:
+  Add new snapshot. Take over maintenance.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  29 Jan 2010; Jeroen Roovers <jer@gentoo.org>
+  ddccontrol-db-20050715.ebuild, ddccontrol-db-20050813.ebuild,
+  ddccontrol-db-20051114.ebuild, ddccontrol-db-20060308.ebuild,
+  ddccontrol-db-20060730.ebuild, ddccontrol-db-20061014.ebuild:
+  use_with does not work but use_enable does (thanks to Alexander Miller,
+  bug #284625).
+
+  29 Jan 2010; Jeroen Roovers <jer@gentoo.org>
+  ddccontrol-db-20050715.ebuild, ddccontrol-db-20050813.ebuild,
+  ddccontrol-db-20051114.ebuild, ddccontrol-db-20060308.ebuild,
+  ddccontrol-db-20060730.ebuild, ddccontrol-db-20061014.ebuild:
+  enable_with -> use_with. Use new style subshell syntax.
+
+  17 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  ddccontrol-db-20061014.ebuild:
+  stable x86, bug 162735
+
+  16 Jul 2007; Christoph Mende <angelos@gentoo.org>
+  ddccontrol-db-20061014.ebuild:
+  Stable on amd64 wrt bug #162733
+
+  15 Jul 2007; nixnut <nixnut@gentoo.org> ddccontrol-db-20061014.ebuild:
+  Stable on ppc wrt bug 162735
+
+  01 Mar 2007; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Add metadata.xml note that upstream wishes to be CCd on all bugs for this
+  package.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  04 Jan 2007; Robin H. Johnson <robbat2@gentoo.org>
+  ddccontrol-db-20061014.ebuild:
+  Bug #157659, missing dependancies for build.
+
+*ddccontrol-db-20061014 (13 Nov 2006)
+
+  13 Nov 2006; Robin H. Johnson <robbat2@gentoo.org>
+  +ddccontrol-db-20061014.ebuild:
+  Bug #154660, support for new LCDS.
+
+*ddccontrol-db-20060730 (01 Oct 2006)
+
+  01 Oct 2006; Robin H. Johnson <robbat2@gentoo.org>
+  +ddccontrol-db-20060730.ebuild:
+  Version bump, bug #149760
+
+  06 Jun 2006; Simon Stelling <blubb@gentoo.org>
+  ddccontrol-db-20060308.ebuild:
+  stable on amd64
+
+  24 May 2006; Mark Loeser <halcy0n@gentoo.org>
+  ddccontrol-db-20060308.ebuild:
+  Stable on x86; bug #131283
+
+*ddccontrol-db-20060308 (24 Mar 2006)
+
+  24 Mar 2006; Robin H. Johnson <robbat2@gentoo.org>
+  +ddccontrol-db-20060308.ebuild:
+  Version bump, bug #126882.
+
+*ddccontrol-db-20051114 (12 Dec 2005)
+
+  12 Dec 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +ddccontrol-db-20051114.ebuild:
+  Bug #112917, version bump.
+
+  03 Sep 2005; Robin H. Johnson <robbat2@gentoo.org>
+  ddccontrol-db-20050813.ebuild:
+  Tested ~amd64 using temporary laptop I have.
+
+*ddccontrol-db-20050813 (20 Aug 2005)
+
+  20 Aug 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +ddccontrol-db-20050813.ebuild:
+  Bug #102383, version bump.
+
+*ddccontrol-db-20050715 (03 Aug 2005)
+
+  03 Aug 2005; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +ddccontrol-db-20050715.ebuild:
+  Initial commit, based on ebuild submitted by upstream author Nicolas Boichat
+  <nicolas@boichat.ch>, bug #95326.

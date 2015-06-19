@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=games-emulation/emutos media-libs/libsdl opengl? ( virtual/opengl ) X? ( media-libs/libsdl[X] ) app-arch/unzip
+DESCRIPTION=Atari Running on Any Machine, a VM running Atari ST/TT/Falcon OS and TOS/GEM applications
+EAPI=5
+HOMEPAGE=http://aranym.sourceforge.net/
+IUSE=+fullmmu +lilo opengl usbhost X
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=games-emulation/emutos media-libs/libsdl opengl? ( virtual/opengl ) X? ( media-libs/libsdl[X] )
+SLOT=0
+SRC_URI=mirror://sourceforge/aranym/aranym_0.9.16.orig.tar.gz mirror://sourceforge/aranym/afros812.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=1da62cc334867d42012bdad033399e86

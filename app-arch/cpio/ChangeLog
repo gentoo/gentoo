@@ -1,0 +1,546 @@
+# ChangeLog for app-arch/cpio
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/cpio/ChangeLog,v 1.139 2015/01/16 08:08:14 ago Exp $
+
+  16 Jan 2015; Agostino Sarubbo <ago@gentoo.org> cpio-2.11-r3.ebuild:
+  Stable for ia64, wrt bug #530512
+
+  14 Jan 2015; Sergey Popov <pinkbyte@gentoo.org> cpio-2.11-r3.ebuild:
+  Stable on ppc/ppc64/s390, wrt bug #530512
+
+  13 Jan 2015; Agostino Sarubbo <ago@gentoo.org> cpio-2.11-r3.ebuild:
+  Stable for sparc, wrt bug #530512
+
+  12 Jan 2015; Agostino Sarubbo <ago@gentoo.org> cpio-2.11-r3.ebuild:
+  Stable for amd64, wrt bug #530512
+
+  11 Jan 2015; Markus Meier <maekke@gentoo.org> cpio-2.11-r3.ebuild:
+  arm stable, bug #530512
+
+  09 Jan 2015; Jeroen Roovers <jer@gentoo.org> cpio-2.11-r3.ebuild:
+  Stable for HPPA (bug #530512).
+
+*cpio-2.11-r3 (09 Jan 2015)
+
+  09 Jan 2015; Tony Vroon <chainsaw@gentoo.org> -cpio-2.11-r2.ebuild,
+  +cpio-2.11-r3.ebuild:
+  Run eautoreconf at the appropriate moment, as per Jeroen Roovers in bug
+  #536112. Stable keywords transferred for alpha & x86.
+
+  09 Jan 2015; Tobias Klausmann <klausman@gentoo.org> cpio-2.11-r2.ebuild:
+  Stable on alpha, bug 530512
+
+  09 Jan 2015; Andreas Schuerch <nativemad@gentoo.org> cpio-2.11-r2.ebuild:
+  x86 stable, see bug 530512
+
+*cpio-2.11-r2 (09 Jan 2015)
+
+  09 Jan 2015; Tony Vroon <chainsaw@gentoo.org> +cpio-2.11-r2.ebuild,
+  +files/cpio-2.11-security.patch:
+  Scavenge upstream bug fixes for heap-based buffer overflow and directory
+  traversal through symlinks. For security bugs #530512 and #536010.
+
+  12 Aug 2014; Mike Frysinger <vapier@gentoo.org> cpio-2.11-r1.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  19 Mar 2014; Agostino Sarubbo <ago@gentoo.org> cpio-2.11-r1.ebuild:
+  Stable for alpha, wrt bug #471402
+
+  14 Mar 2014; Agostino Sarubbo <ago@gentoo.org> cpio-2.11-r1.ebuild:
+  Stable for ppc64, wrt bug #471402
+
+  12 Mar 2014; Agostino Sarubbo <ago@gentoo.org> cpio-2.11-r1.ebuild:
+  Stable for sparc, wrt bug #471402
+
+  23 Feb 2014; Agostino Sarubbo <ago@gentoo.org> cpio-2.11-r1.ebuild:
+  Stable for ppc, wrt bug #471402
+
+  22 Feb 2014; Agostino Sarubbo <ago@gentoo.org> cpio-2.11-r1.ebuild:
+  Stable for x86, wrt bug #471402
+
+  14 Feb 2014; Markus Meier <maekke@gentoo.org> cpio-2.11-r1.ebuild:
+  arm stable, bug #471402
+
+  11 Feb 2014; Akinori Hattori <hattya@gentoo.org> cpio-2.11-r1.ebuild:
+  ia64 stable wrt bug #471402
+
+  09 Feb 2014; Chema Alonso <nimiux@gentoo.org> cpio-2.11-r1.ebuild:
+  Stable for amd64 wrt bug #471402
+
+  08 Feb 2014; Jeroen Roovers <jer@gentoo.org> cpio-2.11-r1.ebuild:
+  Stable for HPPA (bug #471402).
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> cpio-2.11-r1.ebuild,
+  cpio-2.11.ebuild:
+  Add arm64 love.
+
+  17 Feb 2013; Zac Medico <zmedico@gentoo.org> cpio-2.11-r1.ebuild:
+  Add ~arm-linux keyword.
+
+*cpio-2.11-r1 (16 Dec 2012)
+
+  16 Dec 2012; Christoph Junghans <ottxor@gentoo.org> +cpio-2.11-r1.ebuild,
+  +files/cpio-2.11-non-gnu-compilers.patch:
+  added prefix support (bug #443860)
+
+  06 Jul 2012; Mike Frysinger <vapier@gentoo.org>
+  +files/cpio-2.11-no-gets.patch, cpio-2.11.ebuild:
+  Fix building with glibc-2.16 #424974 by Stevan Bajić.
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> cpio-2.11.ebuild:
+  keyword ~amd64-fbsd
+
+  10 Oct 2010; Mike Frysinger <vapier@gentoo.org> cpio-2.11.ebuild,
+  +files/cpio-2.11-stat.patch:
+  Add fix from upstream for cross-compiling #328531 by Jacob Godserv.
+
+  18 Jul 2010; Joseph Jezak <josejx@gentoo.org> cpio-2.11.ebuild:
+  Marked ppc stable for bug #314663.
+
+  12 Jul 2010; Markos Chandras <hwoarang@gentoo.org> cpio-2.11.ebuild:
+  Stable on amd64 wrt bug #314663
+
+  08 Jul 2010; Raúl Porcel <armin76@gentoo.org> cpio-2.11.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #314663
+
+  05 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> cpio-2.11.ebuild:
+  ppc64 stable wrt #314663
+
+  05 Jul 2010; Jeroen Roovers <jer@gentoo.org> cpio-2.11.ebuild:
+  Stable for HPPA (bug #314663).
+
+  03 Jul 2010; Christian Faulhammer <fauli@gentoo.org> cpio-2.11.ebuild:
+  stable x86, security bug 314663
+
+  21 May 2010; Markos Chandras <hwoarang@gentoo.org> cpio-2.10-r1.ebuild:
+  Stable on amd64 wrt bug #308827
+
+  31 Mar 2010; Raúl Porcel <armin76@gentoo.org> cpio-2.10-r1.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #308827
+
+  15 Mar 2010; nixnut <nixnut@gentoo.org> cpio-2.10-r1.ebuild:
+  ppc stable #308827
+
+*cpio-2.11 (15 Mar 2010)
+
+  15 Mar 2010; Mike Frysinger <vapier@gentoo.org> +cpio-2.11.ebuild:
+  Version bump.
+
+  13 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> cpio-2.10-r1.ebuild:
+  x86 stable wrt bug #308827
+
+  12 Mar 2010; Brent Baude <ranger@gentoo.org> cpio-2.10-r1.ebuild:
+  Marking cpio-2.10-r1 ppc64 for bug 308827
+
+  12 Mar 2010; Jeroen Roovers <jer@gentoo.org> cpio-2.10-r1.ebuild:
+  Stable for HPPA (bug #308827).
+
+*cpio-2.10-r1 (20 Jan 2010)
+
+  20 Jan 2010; Robin H. Johnson <robbat2@gentoo.org>
+  +files/cpio-2.9-64-bit-wide-inode-fixup.patch, +cpio-2.10-r1.ebuild:
+  Cpio on XFS fails to deal with hardlinks properly, apply fix from upstream
+  mailing list.
+
+*cpio-2.10 (20 Jun 2009)
+
+  20 Jun 2009; Mike Frysinger <vapier@gentoo.org> +cpio-2.10.ebuild:
+  Version bump.
+
+  31 Jan 2009; Jeroen Roovers <jer@gentoo.org> cpio-2.9-r2.ebuild:
+  Stable for HPPA (bug #255288).
+
+  25 Jan 2009; Raúl Porcel <armin76@gentoo.org> cpio-2.9-r2.ebuild:
+  ia64 stable wrt #255288
+
+  23 Jan 2009; Brent Baude <ranger@gentoo.org> cpio-2.9-r2.ebuild:
+  stable ppc64, bug 255288
+
+  19 Jan 2009; Tiago Cunha <tcunha@gentoo.org> cpio-2.9-r2.ebuild:
+  stable sparc, bug 255288
+
+  18 Jan 2009; Markus Meier <maekke@gentoo.org> cpio-2.9-r2.ebuild:
+  amd64/x86 stable, bug #255288
+
+  18 Jan 2009; Tobias Klausmann <klausman@gentoo.org> cpio-2.9-r2.ebuild:
+  Stable on alpha, bug #255280
+
+  18 Jan 2009; Tobias Scherbaum <dertobi123@gentoo.org> cpio-2.9-r2.ebuild:
+  ppc stable, bug #255288
+
+*cpio-2.9-r3 (17 Jan 2009)
+
+  17 Jan 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/cpio-2.9-packed.patch, +cpio-2.9-r3.ebuild:
+  Add fix from Debian for struct packing (i.e. arm) #255096 by Raúl Porcel.
+
+*cpio-2.9-r2 (01 Jun 2008)
+
+  01 Jun 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/cpio-2.9-restore-perms-owners.patch, +cpio-2.9-r2.ebuild:
+  Add fix from upstream for restoring perms/owners properly #218040 by alexsaa.
+
+  18 Nov 2007; Mike Frysinger <vapier@gentoo.org>
+  +files/cpio-2.9-gnu-inline.patch, cpio-2.9-r1.ebuild:
+  Fixes from upstream for changes in "extern inline" #198817 by Ryan Hill.
+
+  06 Nov 2007; Samuli Suominen <drac@gentoo.org> cpio-2.9-r1.ebuild:
+  amd64 stable wrt #196978
+
+  30 Oct 2007; Tobias Scherbaum <dertobi123@gentoo.org> cpio-2.9-r1.ebuild:
+  ppc stable, bug #196978
+
+  30 Oct 2007; Markus Rothe <corsair@gentoo.org> cpio-2.9-r1.ebuild:
+  Stable on ppc64; bug #196978
+
+  30 Oct 2007; Jeroen Roovers <jer@gentoo.org> cpio-2.9-r1.ebuild:
+  Stable for HPPA (bug #196978).
+
+  29 Oct 2007; Raúl Porcel <armin76@gentoo.org> cpio-2.9-r1.ebuild:
+  alpha/ia64/sparc/x86 stable wrt security #196978
+
+  29 Oct 2007; Saleem Abdulrasool <compnerd@gentoo.org> cpio-2.9-r1.ebuild:
+  inherit eutils for epatch
+
+*cpio-2.9-r1 (28 Oct 2007)
+
+  28 Oct 2007; Mike Frysinger <vapier@gentoo.org>
+  +files/cpio-2.9-CVE-2007-4476.patch, +cpio-2.9-r1.ebuild:
+  Add fix for CVE-2007-4476 #196978.
+
+  02 Oct 2007; Tom Gall <tgall@gentoo.org> cpio-2.9.ebuild:
+  stable on ppc64
+
+  28 Sep 2007; Joshua Kinard <kumba@gentoo.org> cpio-2.9.ebuild:
+  Stable on mips.
+
+  18 Sep 2007; Jeroen Roovers <jer@gentoo.org> cpio-2.9.ebuild:
+  Stable for HPPA too.
+
+  01 Sep 2007; Christoph Mende <angelos@gentoo.org> cpio-2.9.ebuild:
+  Stable on amd64
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org> cpio-2.9.ebuild:
+  Stable on ppc.
+
+  02 Aug 2007; Christian Birchinger <joker@gentoo.org> cpio-2.9.ebuild:
+  Added sparc stable keyword
+
+  01 Aug 2007; Raúl Porcel <armin76@gentoo.org> cpio-2.9.ebuild:
+  alpha/ia64/x86 stable
+
+  10 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> cpio-2.8.ebuild:
+  Stable on sparc wrt #184454
+
+  09 Jul 2007; Jeroen Roovers <jer@gentoo.org> cpio-2.8.ebuild:
+  Stable for HPPA (bug #184454).
+
+  08 Jul 2007; Christoph Mende <angelos@gentoo.org> cpio-2.8.ebuild:
+  Stable on amd64 wrt bug #184454
+
+  07 Jul 2007; Lars Weiler <pylon@gentoo.org> cpio-2.8.ebuild:
+  Stable on ppc; bug #184454.
+
+  07 Jul 2007; Raúl Porcel <armin76@gentoo.org> cpio-2.8.ebuild:
+  alpha/ia64/x86 stable wrt #184454
+
+  07 Jul 2007; Markus Rothe <corsair@gentoo.org> cpio-2.8.ebuild:
+  Stable on ppc64; bug #184454
+
+  07 Jul 2007; Joshua Kinard <kumba@gentoo.org> cpio-2.8.ebuild:
+  Stable on mips, per #184454.
+
+*cpio-2.9 (29 Jun 2007)
+
+  29 Jun 2007; Mike Frysinger <vapier@gentoo.org> +cpio-2.9.ebuild:
+  Version bump.
+
+  13 Jun 2007; Christoph Mende <angelos@gentoo.org> cpio-2.7-r2.ebuild:
+  Stable on amd64 wrt bug 181621
+
+  11 Jun 2007; Markus Rothe <corsair@gentoo.org> cpio-2.7-r2.ebuild:
+  Stable on ppc64; bug #181621
+
+  11 Jun 2007; Raúl Porcel <armin76@gentoo.org> cpio-2.7-r2.ebuild:
+  alpha/x86 stable wrt #181621
+
+  11 Jun 2007; nixnut <nixnut@gentoo.org> cpio-2.7-r2.ebuild:
+  Stable on ppc wrt bug 181621
+
+  11 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org> cpio-2.7-r2.ebuild:
+  Stable on sparc wrt #181621
+
+  11 Jun 2007; Jeroen Roovers <jer@gentoo.org> cpio-2.7-r2.ebuild:
+  Stable for HPPA (bug #181621).
+
+  11 Jun 2007; Joshua Kinard <kumba@gentoo.org> cpio-2.7-r2.ebuild:
+  Stable on mips, per #181621.
+
+*cpio-2.8 (11 Jun 2007)
+
+  11 Jun 2007; Mike Frysinger <vapier@gentoo.org> +cpio-2.8.ebuild:
+  Version bump #181516 by teidakankan.
+
+  11 May 2007; Joshua Kinard <kumba@gentoo.org> cpio-2.7-r1.ebuild:
+  Stable on mips.
+
+*cpio-2.7-r2 (18 Apr 2007)
+
+  18 Apr 2007; Mike Frysinger <vapier@gentoo.org>
+  +files/cpio-2.7-copypass.patch, +cpio-2.7-r2.ebuild:
+  Fix from upstream for permission breakage in copy pass through mode #174921
+  by Karl Hakimian.
+
+  15 Apr 2007; Markus Rothe <corsair@gentoo.org> cpio-2.7-r1.ebuild:
+  Stable on ppc64
+
+  11 Apr 2007; Jeroen Roovers <jer@gentoo.org> cpio-2.7-r1.ebuild:
+  Stable for HPPA too.
+
+  01 Apr 2007; Michael Hanselmann <hansmi@gentoo.org> cpio-2.7-r1.ebuild:
+  Stable on ppc.
+
+  30 Mar 2007; Steve Dibb <beandog@gentoo.org> cpio-2.7-r1.ebuild:
+  amd64 stable
+
+  20 Mar 2007; Raúl Porcel <armin76@gentoo.org> cpio-2.7-r1.ebuild:
+  x86 stable
+
+*cpio-2.7-r1 (11 Nov 2006)
+
+  11 Nov 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/cpio-2.7-link-terminate.patch, +cpio-2.7-r1.ebuild:
+  Grab fix from upstream for #153782 by Brian S. Stephan.
+
+*cpio-2.7 (21 Oct 2006)
+
+  21 Oct 2006; Mike Frysinger <vapier@gentoo.org> +cpio-2.7.ebuild:
+  Version bump.
+
+  17 Oct 2006; Roy Marples <uberlord@gentoo.org> cpio-2.6-r5.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  30 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> cpio-2.6-r5.ebuild:
+  Add ~x86-fbsd keyword.
+
+  18 Feb 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/cpio-2.6-stpcpy-hack.patch, cpio-2.6-r5.ebuild:
+  Fix by Benigno B. Junior for building on *BSD systems #123237.
+
+  25 Dec 2005; Joshua Kinard <kumba@gentoo.org> cpio-2.6-r5.ebuild:
+  Marked stable on mips.
+
+  04 Dec 2005; Michael Hanselmann <hansmi@gentoo.org> cpio-2.6-r5.ebuild:
+  Stable on ppc.
+
+  03 Dec 2005; Simon Stelling <blubb@gentoo.org> cpio-2.6-r5.ebuild:
+  stable on amd64 wrt bug 112140
+
+  02 Dec 2005; Fernando J. Pereda <ferdy@gentoo.org> cpio-2.6-r5.ebuild:
+  stable on alpha wrt bug #112140
+
+  02 Dec 2005; Andrej Kacian <ticho@gentoo.org> cpio-2.6-r5.ebuild:
+  Stable on x86, security bug #112140.
+
+  02 Dec 2005; Fabian Groffen <grobian@gentoo.org> cpio-2.6-r5.ebuild:
+  Marked ppc-macos (bug #112140)
+
+  02 Dec 2005; Markus Rothe <corsair@gentoo.org> cpio-2.6-r5.ebuild:
+  Stable on ppc64; bug #112140
+
+  01 Dec 2005; Gustavo Zacarias <gustavoz@gentoo.org> cpio-2.6-r5.ebuild:
+  Stable on sparc wrt #112140
+
+*cpio-2.6-r5 (01 Dec 2005)
+
+  01 Dec 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/cpio-2.6-checksum.patch, +files/cpio-2.6-warnings.patch,
+  +files/cpio-2.6-writeOutHeaderBufferOverflow.patch, +cpio-2.6-r5.ebuild:
+  Grab fixes from Fedora to resolve buffer overflow #112140.
+
+  28 Jun 2005; Joshua Kinard <kumba@gentoo.org> cpio-2.6-r4.ebuild:
+  Marked stable on mips.
+
+  19 Jun 2005; Bryan Østergaard <kloeri@gentoo.org> cpio-2.6-r4.ebuild:
+  Stable on ia64, bug 90619.
+
+  17 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org> cpio-2.6-r4.ebuild:
+  Stable on alpha wrt bug #90619
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> cpio-2.6-r4.ebuild:
+  Stable on ppc.
+
+  17 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org> cpio-2.6-r4.ebuild:
+  Stable on amd64 wrt #90619.
+
+  17 Jun 2005; Rene Nussbaumer <killerfox@gentoo.org> cpio-2.6-r4.ebuild:
+  Stable on hppa. bug #90619
+
+  17 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> cpio-2.6-r4.ebuild:
+  Stable on sparc wrt #90619
+
+  17 Jun 2005; Markus Rothe <corsair@gentoo.org> cpio-2.6-r4.ebuild:
+  Stable on ppc64; bug #90619
+
+*cpio-2.6-r4 (17 Jun 2005)
+
+  17 Jun 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/cpio-2.6-dirTraversal.patch, +cpio-2.6-r4.ebuild:
+  Add patch from Fedora to address directory traversal issues #90619.
+
+  04 May 2005; Bryan Østergaard <kloeri@gentoo.org> cpio-2.6-r3.ebuild:
+  Stable on alpha + ia64, bug 90619.
+
+  03 May 2005; <gongloo@gentoo.org> cpio-2.6-r3.ebuild:
+  Stable on ppc-macos.
+
+  03 May 2005; Michael Hanselmann <hansmi@gentoo.org> cpio-2.6-r3.ebuild:
+  Stable on ppc and hppa.
+
+  03 May 2005; Olivier Crête <tester@gentoo.org> cpio-2.6-r3.ebuild:
+  Stable on x86 per security bug #90619
+
+  03 May 2005; Omkhar Arasaratnam <omkhar@gentoo.org> cpio-2.6-r3.ebuild:
+  Stable on ppc64 wrt #90619
+
+  03 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> cpio-2.6-r3.ebuild:
+  Stable on sparc wrt #90619
+
+  03 May 2005; Jan Brinkmann <luckyduck@gentoo.org> cpio-2.6-r3.ebuild:
+  stable on amd64 wrt #90619
+
+*cpio-2.6-r3 (02 May 2005)
+
+  02 May 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/cpio-2.6-chmodRaceC.patch, +cpio-2.6-r3.ebuild:
+  Add fix from redhat #90619.
+
+  30 Mar 2005; Chris Gianelloni <wolf31o2@gentoo.org> cpio-2.6-r2.ebuild:
+  Marking stable for genkernel.
+
+*cpio-2.6-r2 (09 Feb 2005)
+
+  09 Feb 2005; Mike Frysinger <vapier@gentoo.org> +files/2.6-lstat.patch,
+  +cpio-2.6-r2.ebuild:
+  Add patch by Peter Beutner to fix handling of symlinks #80246 by Yuri Karaban.
+
+  06 Feb 2005; Joshua Kinard <kumba@gentoo.org> cpio-2.6-r1.ebuild:
+  Marked stable on mips.
+
+  06 Feb 2005; Bryan Østergaard <kloeri@gentoo.org> cpio-2.6-r1.ebuild:
+  Stable on alpha.
+
+  29 Jan 2005; Jason Wever <weeve@gentoo.org> cpio-2.6-r1.ebuild:
+  Stable on sparc wrt security bug #79844.
+
+  29 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> cpio-2.6-r1.ebuild:
+  stable on amd64. see #79844
+
+  29 Jan 2005; Michael Hanselmann <hansmi@gentoo.org> cpio-2.6-r1.ebuild:
+  Stable on ppc.
+
+  29 Jan 2005; Markus Rothe <corsair@gentoo.org> cpio-2.6-r1.ebuild:
+  Stable on ppc64; bug #79844
+
+*cpio-2.6-r1 (28 Jan 2005)
+
+  28 Jan 2005; Mike Frysinger <vapier@gentoo.org> 
+  +files/2.6-umask.patch, +cpio-2.6-r1.ebuild:
+  Add a patch from FreeBSD to fix permission issues #79844.
+
+  19 Jan 2005; <gongloo@gentoo.org> +files/2.6-isnumber.patch,
+  cpio-2.6.ebuild:
+  Added doman ${D}/usr/share/man/man1/cpio.1 to properly handle manpage
+  gzipping. Added isnumber patch, replacing isnumber by cpio_isnumber (for
+  compatibility reasons). Closes bug 74929.
+
+  19 Jan 2005; <gongloo@gentoo.org> cpio-2.5.ebuild:
+  Stable on ppc-macos.
+
+*cpio-2.6 (03 Jan 2005)
+
+  03 Jan 2005; Mike Frysinger <vapier@gentoo.org>
+  -files/2.5.90-gnulib.patch, -files/2.5.90-makepath.patch,
+  -files/2.5.90-rili-big-files.patch, +files/2.6-rili-big-files.patch,
+  -cpio-2.5.90.ebuild, +cpio-2.6.ebuild:
+  Version bump.  Magically fixes #74841 by lison.
+
+*cpio-2.5.90 (17 Dec 2004)
+
+  17 Dec 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/2.5.90-gnulib.patch, +files/2.5.90-makepath.patch,
+  +files/2.5.90-rili-big-files.patch, +cpio-2.5.90.ebuild:
+  Version bump.  Also include large file support #68520.
+
+  17 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> cpio-2.5.ebuild:
+  Added to ~ppc-macos.
+
+  27 Sep 2004; Mike Frysinger <vapier@gentoo.org> cpio-2.4.2-r4.ebuild,
+  cpio-2.5.ebuild:
+  FHS says to install into /bin #65534 by will@johnstonclan.net.
+
+  21 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> cpio-2.4.2-r4.ebuild,
+  cpio-2.5.ebuild:
+  header fix; tidy; arm needs deps first
+
+*cpio-2.5 (14 Nov 2003)
+
+  14 Nov 2003; Seemant Kulleen <seemant@gentoo.org> cpio-2.4.2-r4.ebuild,
+  cpio-2.5.ebuild:
+  moved to app-arch from sys-apps
+
+  19 Oct 2003; Martin Holzer <mholzer@gentoo.org> cpio-2.4.2-r4.ebuild,
+  cpio-2.5.ebuild:
+  adding DEPEND="virtual/glibc" Closes #31474.
+
+  23 Jun 2003; Aron Griffis <agriffis@gentoo.org> cpio-2.5.ebuild:
+  Mark stable on alpha
+
+  20 Feb 2003; Zach Welch <zwelch@gentoo.org> :
+  Added arm to keywords
+
+  15 Feb 2003; Jan Seidel <tuxus@gentoo.org> :
+  Added mips to keywords
+
+  09 Feb 2003; Guy Martin <gmsoft@gentoo.org> :
+  Added hppa to keywords.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*cpio-2.5 (19 Nov 2002)
+
+  28 Mar 2003; Christian Birchinger <joker@gentoo.org> cpio-2.5.ebuild:
+  Added stable sparc keyword
+
+  02 Mar 2003; Guy Martin <gmsoft@gentoo.org> cpio-2.5.ebuild :
+  Changed ~hppa in hppa.
+
+  01 Mar 2003; Martin Holzer <mholzer@gentoo.org> cpio-2.5.ebuild :
+  Removed doinfo cause there's no more cpio.info
+
+  01 Mar 2003; Brandon Low <lostlogic@gentoo.org> cpio-2.5.ebuild:
+  Move to stable on x86 (bug 16360), works here, among other places.
+
+  24 Feb 2003; Nicholas Wourms <dragon@gentoo.org> cpio-2.5.ebuild :
+  Marked as stable for mips.
+
+  19 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+  09 Dec 2002; Jon Portnoy <avenj@gentoo.org> :
+  Updated to use icc if USE=icc.
+
+  19 Dec 2002; Jon Portnoy <avenj@gentoo.org> :
+  Pulled out ICC support for now (see bug #12357)
+
+*cpio-2.4.2-r4 (1 Feb 2002)
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> cpio-2.4.2-r4.ebuild :
+  Added KEYWORDS, SLOT.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

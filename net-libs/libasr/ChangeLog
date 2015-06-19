@@ -1,0 +1,29 @@
+# ChangeLog for net-libs/libasr
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libasr/ChangeLog,v 1.5 2015/05/27 10:14:21 zx2c4 Exp $
+
+  27 May 2015; Jason A. Donenfeld <zx2c4@gentoo.org>
+  libasr-1.0.1.201505061057.ebuild:
+  Fix up work dir
+
+*libasr-1.0.1.201505061057 (27 May 2015)
+*libasr-1.0.1 (27 May 2015)
+
+  27 May 2015; Jason A. Donenfeld <zx2c4@gentoo.org>
+  +libasr-1.0.1.201505061057.ebuild, +libasr-1.0.1.ebuild, -libasr-1.0.0.ebuild:
+  Version bump
+
+  08 Jan 2015; Jason A. Donenfeld <zx2c4@gentoo.org> libasr-1.0.0.ebuild:
+  It is very stable
+
+*libasr-1.0.0 (08 Jan 2015)
+
+  08 Jan 2015; Jason A. Donenfeld <zx2c4@gentoo.org> +libasr-1.0.0.ebuild,
+  -libasr-201407111828.ebuild:
+  Bump
+
+*libasr-201407111828 (25 Jul 2014)
+
+  25 Jul 2014; Jason A. Donenfeld <zx2c4@gentoo.org>
+  +libasr-201407111828.ebuild, +metadata.xml:
+  Initial import, for future OpenSMTPD snapshots which will require this.

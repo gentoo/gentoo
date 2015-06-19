@@ -1,0 +1,160 @@
+# ChangeLog for sci-libs/udunits
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/udunits/ChangeLog,v 1.25 2012/10/16 19:34:33 jlec Exp $
+
+  16 Oct 2012; Justin Lecher <jlec@gentoo.org> udunits-2.1.15.ebuild,
+  udunits-2.1.24.ebuild, metadata.xml:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, #24135.
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> -udunits-2.1.21.ebuild,
+  -udunits-2.1.23.ebuild, metadata.xml, udunits-2.1.24.ebuild:
+  keyword amd64-linux x86-linux
+
+  28 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> udunits-2.1.21.ebuild:
+  x86 stable wrt bug #391605
+
+  26 Nov 2011; Markos Chandras <hwoarang@gentoo.org> udunits-2.1.21.ebuild:
+  Stable on amd64 wrt bug #391605
+
+  23 Nov 2011; Justin Lecher <jlec@gentoo.org> +udunits-2.1.21.ebuild:
+  Restore udunits-2.1.21.ebuild
+
+*udunits-2.1.24 (23 Nov 2011)
+
+  23 Nov 2011; Justin Lecher <jlec@gentoo.org> udunits-2.1.15.ebuild,
+  -udunits-2.1.21.ebuild, udunits-2.1.23.ebuild, +udunits-2.1.24.ebuild,
+  metadata.xml:
+  Resorted ebuild, version Bump
+
+*udunits-2.1.23 (29 Jul 2011)
+
+  29 Jul 2011; Sébastien Fabbro <bicatali@gentoo.org> +udunits-2.1.23.ebuild:
+  Version bump
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> udunits-2.1.15.ebuild,
+  udunits-2.1.21.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> udunits-2.1.15.ebuild,
+  udunits-2.1.21.ebuild:
+  Added fortran-2.eclass support
+
+  17 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> udunits-2.1.15.ebuild:
+  ppc stable wrt #326431
+
+*udunits-2.1.21 (08 Mar 2011)
+
+  08 Mar 2011; Sébastien Fabbro <bicatali@gentoo.org> +udunits-2.1.21.ebuild:
+  Version bump
+
+  01 Dec 2010; Sébastien Fabbro <bicatali@gentoo.org> -udunits-1.12.1.ebuild,
+  -udunits-1.12.11.ebuild, -files/udunits-1.12.11-fixingtests.patch,
+  -udunits-2.1.11-r1.ebuild, -files/udunits-2.1.11-autotools.patch,
+  -files/udunits_configure_in.patch, -files/udunits_customize.patch,
+  -files/udunits_lib_make.patch, -files/udunits_master_mk.patch:
+  Remove old
+
+  12 Sep 2010; Tobias Klausmann <klausman@gentoo.org> udunits-2.1.15.ebuild:
+  Stable on alpha, bug #326431
+
+  10 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  udunits-2.1.15.ebuild:
+  stable x86, bug 326431
+
+  09 Aug 2010; Markos Chandras <hwoarang@gentoo.org> udunits-2.1.15.ebuild:
+  Stable on amd64 wrt bug #326431
+
+*udunits-2.1.15 (23 Jun 2010)
+*udunits-1.12.11 (23 Jun 2010)
+
+  23 Jun 2010; Justin Lecher <jlec@gentoo.org> -udunits-1.12.0.ebuild,
+  -udunits-1.12.3.ebuild, -files/udunits-1.12.9-fixingtests.patch,
+  +udunits-1.12.11.ebuild, +files/udunits-1.12.11-fixingtests.patch,
+  +udunits-2.1.15.ebuild, +files/udunits-2.1.15-autotools.patch:
+  Version bump, removed old version
+
+*udunits-2.1.11-r1 (15 Dec 2009)
+
+  15 Dec 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  -udunits-2.1.11.ebuild, +udunits-2.1.11-r1.ebuild,
+  +files/udunits-2.1.11-autotools.patch:
+  Now use system expat library
+
+*udunits-2.1.11 (07 Dec 2009)
+
+  07 Dec 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  udunits-1.12.3.ebuild, +files/udunits-1.12.9-fixingtests.patch,
+  +udunits-2.1.11.ebuild:
+  Version bump and fixed failing tests (bug #295722, thanks Kacper Kowalik)
+
+  25 Nov 2008; Steve Arnold <nerdboy@gentoo.org> udunits-1.12.3.ebuild:
+  Fixed configure and build issues, added manual install commands (closes 
+  bug #246712).
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  28 Nov 2005; <mcumming@gentoo.org> udunits-1.12.0.ebuild:
+  Switched from perl-module to perl-app eclass
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*udunits-1.12.0 (28 Dec 2004)
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +files/udunits_configure_in.patch, +files/udunits_customize.patch,
+  +files/udunits_lib_make.patch, +files/udunits_master_mk.patch,
+  +udunits-1.12.0.ebuild, +udunits-1.12.1.ebuild, +udunits-1.12.3.ebuild:
+  Moved from app-sci/udunits to sci-libs/udunits.
+
+*udunits-1.12.3 (11 Dec 2004)
+
+  11 Dec 2004; Steve Arnold <nerdboy@gentoo.org> +udunits-1.12.3.ebuild:
+  added latest 1.12.3 to ~arch
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> udunits-1.12.1.ebuild:
+  Stable on alpha.
+
+  08 Nov 2004; Steve Arnold <nerdboy@gentoo.org> udunits-1.12.1.ebuild:
+  fixed perl test issues and added ~amd64 to keywords; all udunits libs and
+  language interfaces should be correct now.
+
+  30 Oct 2004; Olivier Fisette <ribosome@gentoo.org> udunits-1.12.0.ebuild:
+  Q.A.: Removed RDEPEND=$DEPEND.
+
+  06 Jun 2004; Steve Arnold <nerdboy@gentoo.org> udunits-1.12.1.ebuild:
+  bump to x86, corrected depend, added einfo
+
+  12 May 2004; Bryan Østergaard <kloeri@gentoo.org> udunits-1.12.0.ebuild:
+  Stable on alpha.
+
+  08 May 2004; Steve Arnold <nerdboy@gentoo.org> udunits-1.12.0.ebuild:
+  back-ported fix for build error (fortran interface still incomplete)
+
+*udunits-1.12.1 (08 May 2004)
+
+  08 May 2004; Steve Arnold <nerdboy@gentoo.org> metadata.xml,
+  udunits-1.12.1.ebuild:
+  new minor source rev bump to fix build error, fixed Fortran interface
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> udunits-1.12.0.ebuild:
+  Add die following econf for bug 48950
+
+  19 Apr 2004; Patrick Kursawe <phosphan@gentoo.org> udunits-1.12.0.ebuild:
+  Corrected IUSE.
+
+  21 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> udunits-1.12.0.ebuild:
+  header fix; inherit eutils for epatch; arm needs deps first
+
+  14 Dec 2003; <nerdboy@gentoo.org> udunits-1.12.0.ebuild:
+  bumped to x86
+
+*udunits-1.12.0 (02 Nov 2003)
+
+  02 Nov 2003; <nerdboy@gentoo.org> udunits-1.12.0.ebuild:
+  new ebuild for the Unidata units library and perl module

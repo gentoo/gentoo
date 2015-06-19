@@ -1,0 +1,31 @@
+# ChangeLog for games-roguelike/wrogue
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-roguelike/wrogue/ChangeLog,v 1.7 2015/02/28 12:31:29 tupone Exp $
+
+  28 Feb 2015; Tupone Alfredo <tupone@gentoo.org> wrogue-0.8.0b.ebuild:
+  EAPI 5
+
+  05 Oct 2012; Michael Sterrett <mr_bones_@gentoo.org> wrogue-0.8.0b.ebuild:
+  upstream went away (bug #420837)
+
+  14 Oct 2010; Tupone Alfredo <tupone@gentoo.org> wrogue-0.8.0b.ebuild,
+  +files/wrogue-0.8.0b-ldflags.patch:
+  Respect LDFLAGS. Bug #335235 by flameeyes@gentoo.org
+
+  16 Dec 2009; Markus Meier <maekke@gentoo.org> wrogue-0.8.0b.ebuild:
+  amd64/x86 stable, bug #296457
+
+*wrogue-0.8.0b (16 Oct 2009)
+
+  16 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org> wrogue-0.7.7b.ebuild,
+  +wrogue-0.8.0b.ebuild:
+  version bump
+
+  02 Jul 2007; Tristan Heaven <nyhm@gentoo.org> wrogue-0.7.7b.ebuild:
+  add ~x86
+
+*wrogue-0.7.7b (01 Jul 2007)
+
+  01 Jul 2007; Tupone Alfredo <tupone@gentoo.org> +metadata.xml,
+  +wrogue-0.7.7b.ebuild:
+  New package, requested with bug #161520 by Wojciech Myrda

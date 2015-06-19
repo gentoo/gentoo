@@ -1,0 +1,240 @@
+# ChangeLog for games-roguelike/nethack
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-roguelike/nethack/ChangeLog,v 1.41 2015/06/09 08:34:25 swift Exp $
+
+*nethack-3.4.3-r4 (09 Jun 2015)
+
+  09 Jun 2015; Sven Vermeulen <swift@gentoo.org> +nethack-3.4.3-r4.ebuild:
+  Move executable from /usr/share/games to /usr/games/bin and fix bug #551176
+
+  20 Feb 2015; Sven Vermeulen <swift@gentoo.org> -nethack-3.4.3-r1.ebuild,
+  -nethack-3.4.3-r2.ebuild:
+  Dropping vulnerable nethack (-r1) and older ebuild (-r2) that did not comply
+  with the policy on gamestats
+
+*nethack-3.4.3-r3 (20 Feb 2015)
+
+  20 Feb 2015; Sven Vermeulen <swift@gentoo.org> +nethack-3.4.3-r3.ebuild:
+  Update ebuild to reflect QA policy on games and gamestats, with thanks to Luis
+  "aranea" Ressel
+
+  20 Feb 2015; Ulrich Müller <ulm@gentoo.org> nethack-3.4.3-r2.ebuild:
+  [QA] Mask package, see bug 125902 comment #102. (Double masked by removing
+  KEYWORDS, since nethack users will have the package unmasked.)
+
+*nethack-3.4.3-r2 (19 Feb 2015)
+
+  19 Feb 2015; Sven Vermeulen <swift@gentoo.org> +nethack-3.4.3-r2.ebuild,
+  metadata.xml:
+  Fix bug #538092 - Move to proxy maintenance by Luis Ressel, fix to remove
+  security vulnerability CVE-2006-1390
+
+  21 Mar 2014; Jeroen Roovers <jer@gentoo.org> nethack-3.4.3-r1.ebuild:
+  Fix building against sys-libs/ncurses[tinfo]. Respect LDFLAGS.
+
+  02 Mar 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/3.4.3-QT-support.patch, nethack-3.4.3-r1.ebuild,
+  +files/nethack-3.4.3-recover.patch:
+  fix naming of recover man page (bug #203556)
+
+  02 Mar 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  nethack-3.4.3-r1.ebuild:
+  punt QT support (bug #301735)
+
+  07 Oct 2009; Tupone Alfredo <tupone@gentoo.org>
+  +files/nethack-3.4.3-gibc210.patch, nethack-3.4.3-r1.ebuild:
+  Fix build with glibc-2.10 Bug #286532 by Andrew Savchenko
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> nethack-3.4.3-r1.ebuild:
+  Remove virtual/libc
+
+  02 Dec 2008; Jeroen Roovers <jer@gentoo.org> nethack-3.4.3-r1.ebuild:
+  Stable for HPPA too.
+
+  05 Jun 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  nethack-3.4.3-r1.ebuild:
+  Small typo fix.
+
+  07 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  nethack-3.4.3-r1.ebuild:
+  QA cleanup: Fix quoting.
+
+  14 Jan 2008; Fabian Groffen <grobian@gentoo.org> nethack-3.4.3-r1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  01 Apr 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  nethack-3.4.3-r1.ebuild:
+  fix deps for bug #172945
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> nethack-3.4.3-r1.ebuild:
+  Replacing einfo with elog
+
+  07 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  nethack-3.4.3-r1.ebuild:
+  Change all instances of [ to [[.
+
+  18 Nov 2006; Saleem Abdulrasool <compnerd@gentoo.org> nethack-3.4.3-r1.ebuild:
+  drop gnome useflag for gnome-1.x removal
+
+  24 Jun 2006; Doug Goldstein <cardoe@gentoo.org> nethack-3.4.3-r1.ebuild:
+  USE flag change qt->qt3/qt4 bug #137785
+
+  22 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  nethack-3.4.3-r1.ebuild:
+  Add ~x86-fbsd keyword, after setting GAMEUID and GAMEGRP (to install clean
+  on FreeBSD) and set CC on last make call (bug #134054).
+
+  24 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  nethack-3.4.3-r1.ebuild:
+  Added modular X dependencies and closing bug #119031.
+
+  22 Nov 2005; Fabian Groffen <grobian@gentoo.org> +files/3.4.3-macos.patch,
+  nethack-3.4.3-r1.ebuild:
+  Adding small patch for OSX and compilation helper.  Marked ~ppc-macos (bug
+  #106117)
+
+  22 Nov 2005; <jer@gentoo.org> nethack-3.4.3-r1.ebuild:
+  Added ~hppa keyword (bug 109191).
+
+  16 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  nethack-3.4.3-r1.ebuild:
+  Added desktop entry using make_desktop_entry and closing bug #100788.
+
+  28 Jul 2005; Caleb Tennis <caleb@gentoo.org> nethack-3.4.3-r1.ebuild:
+  made qt dep qt3 explicit per bug #100235
+
+  17 May 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  nethack-3.4.3-r1.ebuild:
+  Cleanup for bug #92745.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  24 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  nethack-3.4.3-r1.ebuild:
+  Bring the help functionality back when using the external pager (bug #57410)
+  sed patch from Benoit Boissinot
+
+  10 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> -nethack-3.4.2.ebuild,
+  nethack-3.4.3-r1.ebuild, -nethack-3.4.3.ebuild:
+  clean older ebuilds; fix deps
+
+  31 Aug 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/3.4.3-bison.patch, nethack-3.4.3-r1.ebuild:
+  Added bison patch and closing bug #61140.
+
+*nethack-3.4.3-r1 (10 Jul 2004)
+
+  10 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +nethack-3.4.3-r1.ebuild:
+  Work around buggy makefiles so we get to use emake
+  Set DEF_PAGER from $PAGER (bug #52122)
+  Use ${GAMES_STATEDIR} saving code in games.eclass instead of hacking it
+  in the ebuild.
+  Error check ; tidy
+
+  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> nethack-3.4.2.ebuild,
+  nethack-3.4.3.ebuild:
+  virtual/x11; use flag cleanup; error check sed
+
+  20 Jan 2004; Jon Portnoy <avenj@gentoo.org> :
+  AMD64 keywords.
+
+*nethack-3.4.3 (01 Jan 2003)
+
+  01 Jan 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #35558.
+
+*nethack-3.4.2 (15 Sep 2003)
+
+  17 Sep 2003; Chuck Short <zul@gentoo.org> nethack-3.4.2.ebuild:
+  Marked stable for sparc, closes bug #28449.
+
+  15 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #27875 + saved games fix #28104 + new qt ver #23149.
+
+*nethack-3.4.1-r1 (07 Aug 2003)
+
+  07 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Fix file permissions/writable file locations #26085
+
+*nethack-3.4.1 (03 Mar 2003)
+
+  11 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Don't overwrite saved games and stuff ... #16428
+
+  22 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Cleaned up ebuild ... move most sed statements to patches.  #16436 #16827
+
+  05 Mar 2003; Bartosch Pixa <darkspecter@gentoo.org> nethack-3.4.1.ebuild:
+  set ~ppc in keywords
+
+  03 Mar 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
+
+*nethack-3.4.0-r7 (26 Feb 2003)
+
+  26 Feb 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added errno patch to fix #16436 (#16267).
+
+*nethack-3.4.0-r6 (18 Feb 2003)
+
+  18 Feb 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Security update.
+
+*nethack-3.4.0-r5 (22 Dec 2002)
+
+  22 Dec 2002; J.Alberto Suarez L. <bass@gentoo.org> :
+  Fix bug #12576
+
+*nethack-3.4.0-r4 (16 Dec 2002)
+
+  16 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
+  Added games.eclass support and fix for #9147.
+
+*nethack-3.4.0-r3 (23 Apr 2002)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> nethack-3.4.0-r3.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> nethack-3.4.0.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+  23 Apr 2002; Spider <spider@gentoo.org> nethack-3.4.0-r3.ebuild:
+  Fix qt dependency
+
+*nethack-3.4.0-r2 (17 Apr 2002)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> nethack-3.4.0-r2.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+  17 Apr 2002; Spider <spider@gentoo.org> nethack-3.4.0-r2.ebuild:
+  Here is the bulk message from Jason Ritchie <jasonr@myrealbox.com>
+  This version I wrote from scratch, but after I got stuck I got a lot of
+  good info from the existing nethack ebuilds.  I have included a
+  CREDITS.gentoo.
+
+  On to the meat.  This ebuild supports USE flags X, qt, and gnome.  I
+  have also included a default .nethackrc file and a FAQ-ish thing about
+  why I made some decisions.  It removes the need for /usr/games as this is to be avoided
+  from what I hear.  It will emerge with qt2 or 3 installed, but it will only
+  use 2.  I have tested tty, X, qt, and gnome window types and it seems to run very
+  nicely.  
+
+  The whole setup process should be:
+  emerge nethack
+  cp /usr/share/nethackdir/dot.nethackrc ~/.nethackrc
+  nethack
+
+  This was such a fun project.  Let me know if I screwed the pooch.
+
+*nethack-3.4.0-r1 (13 Apr 2002)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> nethack-3.4.0-r1.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+  13 Apr 2002; Spider <spider@gentoo.org> nethack-3.4.0-r1.ebuild :
+  Adding comment on how to get colour support thanks to Ryan Phillips
+  Update dodoc line
+
+  *nethack-3.4.0 (09 Apr 2002)
+  9 Apr 2002; Spider <spider@gentoo.org> nethack-3.4.0.ebuild :
+  Second release of nethack really, only including the 3.4.0 release though.
+  initial commit to cvs/portage

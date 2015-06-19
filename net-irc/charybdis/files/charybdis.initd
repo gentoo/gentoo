@@ -1,0 +1,39 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/charybdis/files/charybdis.initd,v 1.1 2012/03/03 06:14:56 binki Exp $
+
+extra_started_commands="reload"
+
+depend() {
+	use dns net
+	provide ircd
+}
+
+start() {
+	if ! [ -d /var/run/charybdis ]; then
+		ebegin "Creating /var/run/charybdis for ${SVCNAME}"
+		mkdir /var/run/charybdis \
+			&& chown :charybdis /var/run/charybdis \
+			&& chmod 770 /var/run/charybdis
+		eend $?
+	fi
+
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --exec /usr/bin/charybdis-ircd \
+		--user charybdis --pidfile /var/run/charybdis/ircd.pid \
+		${CHARYBDIS_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --pidfile /var/run/charybdis/ircd.pid
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading ${SVCNAME}"
+	start-stop-daemon --signal HUP --pidfile /var/run/charybdis/ircd.pid
+	eend $?
+}

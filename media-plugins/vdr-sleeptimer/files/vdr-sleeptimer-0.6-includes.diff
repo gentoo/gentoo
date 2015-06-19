@@ -1,0 +1,11 @@
+diff -ru sleeptimer-0.6-orig/sleeptimer.c sleeptimer-0.6/sleeptimer.c
+--- sleeptimer-0.6-orig/sleeptimer.c	2005-10-24 20:15:18.000000000 +0200
++++ sleeptimer-0.6/sleeptimer.c	2005-10-24 20:15:30.000000000 +0200
+@@ -8,6 +8,7 @@
+ 
+ #include <vdr/plugin.h>
+ #include <vdr/interface.h>
++#include <vdr/device.h>
+ #include "i18n.h"
+ 
+ static const char *VERSION        = "0.6";

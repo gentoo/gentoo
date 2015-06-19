@@ -1,0 +1,39 @@
+# ChangeLog for app-backup/furball
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/furball/ChangeLog,v 1.6 2013/03/03 12:08:12 ago Exp $
+
+  03 Mar 2013; Agostino Sarubbo <ago@gentoo.org> furball-0.5.ebuild:
+  Stable for amd64, wrt bug #438448
+
+  15 Oct 2012; Agostino Sarubbo <ago@gentoo.org> furball-0.5.ebuild:
+  Add ~amd64 + EAPI4 bump wrt #438448
+
+  15 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> furball-0.5.ebuild:
+  QA: Add missing 'die' statements
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  04 Jul 2005; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +furball-0.5.ebuild:
+  Moved from app-admin/furball to app-backup/furball.
+
+  06 Jun 2004; Daniel Black <dragonheart@gentoo.org> furball-0.5.ebuild,
+  +metadata.xml:
+  QA -IUSE
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : Changed sparc ~sparc keywords.
+ 
+*furball-0.5 (11 Apr 2002)
+
+  29 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> furball-0.5.euild :
+  Added 'ppc' to KEYWORDS.
+
+  11 Mar 2002; Thilo Bangert <bangert@gentoo.org> furball-0.5.euild :
+  Fixed DESCRIPTION.
+
+
+*furball-0.5 (15 Mar 2002)
+
+  15 Mar 2002; Thilo Bangert <thilo.bangert@gmx.net> ChangeLog :
+  Created furball ebuild.

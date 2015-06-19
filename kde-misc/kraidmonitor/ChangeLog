@@ -1,0 +1,12 @@
+# ChangeLog for kde-misc/kraidmonitor
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kraidmonitor/ChangeLog,v 1.2 2014/08/05 16:31:46 mrueg Exp $
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> kraidmonitor-0.5.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+*kraidmonitor-0.5 (18 Jun 2013)
+
+  18 Jun 2013; Chris Reffett <creffett@gentoo.org> +kraidmonitor-0.5.ebuild,
+  +metadata.xml:
+  Add to tree from kde overlay

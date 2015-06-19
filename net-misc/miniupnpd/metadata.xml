@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>gurligebis@gentoo.org</email>
+		<name>Bjarke Istrup Pedersen</name>
+	</maintainer>
+	<longdescription>
+		MiniUPnP Internet Gateway Device Deamon, used to allow UPnP enabled clients to forward ports.
+	</longdescription>
+</pkgmetadata>

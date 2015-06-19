@@ -1,0 +1,234 @@
+# ChangeLog for net-im/prosody
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/prosody/ChangeLog,v 1.56 2015/06/14 19:46:05 maekke Exp $
+
+  14 Jun 2015; Markus Meier <maekke@gentoo.org> prosody-0.9.8.ebuild:
+  arm stable, bug #548256
+
+  13 May 2015; Agostino Sarubbo <ago@gentoo.org> prosody-0.9.8.ebuild:
+  Stable for x86, wrt bug #548256
+
+  12 May 2015; Agostino Sarubbo <ago@gentoo.org> prosody-0.9.8.ebuild:
+  Stable for amd64, wrt bug #548256
+
+  31 Mar 2015; Tobias Klausmann <klausman@gentoo.org> prosody-0.9.8.ebuild:
+  Apparently, only openssl:0 contains the required command line tools
+
+  31 Mar 2015; Tobias Klausmann <klausman@gentoo.org> prosody-0.9.8.ebuild:
+  Avoid rebuilds if OpenSSL is updated (see bug 545156)
+
+  31 Mar 2015; Tobias Klausmann <klausman@gentoo.org> prosody-0.9.8.ebuild:
+  Make sure to use correct PREFIX and install into lib64/
+
+  31 Mar 2015; Tobias Klausmann <klausman@gentoo.org> prosody-0.9.8.ebuild:
+  Make openssl dependency less strict
+
+*prosody-0.9.8 (30 Mar 2015)
+
+  30 Mar 2015; Tobias Klausmann <klausman@gentoo.org> +prosody-0.9.8.ebuild:
+  Add v0.9.8 for bug 545048
+
+  02 Mar 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/prosody-0.8.0-cfg.lua.patch, -files/prosody.initd,
+  -files/prosody.initd.old, -prosody-0.8.2-r1.ebuild, -prosody-0.8.2.ebuild,
+  -prosody-0.9.4.ebuild, -prosody-0.9.5-r2.ebuild, -prosody-0.9.5.ebuild:
+  Remove old.
+
+  26 Feb 2015; Markus Meier <maekke@gentoo.org> prosody-0.9.7.ebuild:
+  arm stable, bug #511532
+
+  11 Jan 2015; Andreas Schuerch <nativemad@gentoo.org> prosody-0.9.7.ebuild:
+  x86 stable, see bug 511532
+
+  11 Jan 2015; Tobias Klausmann <klausman@gentoo.org> prosody-0.9.7.ebuild:
+  Stable on amd64, bug 511532
+
+*prosody-0.9.7 (11 Dec 2014)
+
+  11 Dec 2014; Tobias Klausmann <klausman@gentoo.org> +prosody-0.9.7.ebuild:
+  Version bump to 0.9.7, bug 525782
+
+  14 Nov 2014; Markus Meier <maekke@gentoo.org> prosody-0.9.4.ebuild:
+  arm stable, bug #511532
+
+  15 Oct 2014; Tobias Klausmann <klausman@gentoo.org> prosody-0.9.5-r2.ebuild:
+  Fix referencing old & broken init file
+
+*prosody-0.9.5-r2 (15 Oct 2014)
+
+  15 Oct 2014; Tobias Klausmann <klausman@gentoo.org> -prosody-0.9.5-r1.ebuild,
+  +prosody-0.9.5-r2.ebuild, -files/prosody.initd-r1, +files/prosody.initd-r2:
+  Fix checkpath call to make file, not directory. Bug 525402
+
+*prosody-0.9.5-r1 (14 Oct 2014)
+
+  14 Oct 2014; Tobias Klausmann <klausman@gentoo.org> +prosody-0.9.5-r1.ebuild,
+  +files/prosody.initd-r1:
+  Update initd file to check for file permissions, re-add systemd files and
+  clean up init script a bit
+
+  13 Oct 2014; Tobias Klausmann <klausman@gentoo.org> prosody-0.9.4.ebuild:
+  Stable on amd64, bug 511532
+
+*prosody-0.9.5 (13 Oct 2014)
+
+  13 Oct 2014; Tobias Klausmann <klausman@gentoo.org> -prosody-0.9.1-r1.ebuild,
+  -prosody-0.9.2.ebuild, -prosody-0.9.3.ebuild, +prosody-0.9.5.ebuild:
+  Version bump and cleanup of old versions
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> prosody-0.8.2-r1.ebuild,
+  prosody-0.8.2.ebuild, prosody-0.9.1-r1.ebuild, prosody-0.9.2.ebuild,
+  prosody-0.9.3.ebuild, prosody-0.9.4.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  17 Apr 2014; Jason A. Donenfeld <zx2c4@gentoo.org> prosody-0.9.4.ebuild:
+  Prosody requires newer luaexpat.
+
+*prosody-0.9.4 (16 Apr 2014)
+
+  16 Apr 2014; Jason A. Donenfeld <zx2c4@gentoo.org> +prosody-0.9.4.ebuild:
+  Version bump.
+
+*prosody-0.9.3 (15 Mar 2014)
+
+  15 Mar 2014; Tobias Klausmann <klausman@gentoo.org> +prosody-0.9.3.ebuild,
+  -prosody-0.8.1.ebuild, -prosody-0.9.1.ebuild:
+  Version bump and cleanup
+
+*prosody-0.9.2 (27 Jan 2014)
+
+  27 Jan 2014; Jason A. Donenfeld <zx2c4@gentoo.org>
+  +files/prosody-0.9.2-cfg.lua.patch, +files/prosody.initd.old,
+  +prosody-0.9.2.ebuild, files/prosody.initd, metadata.xml,
+  prosody-0.8.1.ebuild, prosody-0.8.2-r1.ebuild, prosody-0.8.2.ebuild,
+  prosody-0.9.1-r1.ebuild, prosody-0.9.1.ebuild:
+  Version bump and rework init system.
+
+  01 Nov 2013; Julian Ospald <hasufell@gentoo.org> prosody-0.9.1.ebuild,
+  prosody-0.9.1-r1.ebuild:
+  add missing inherit
+
+  22 Sep 2013; Agostino Sarubbo <ago@gentoo.org> prosody-0.8.2-r1.ebuild:
+  Stable for x86, wrt bug #480080
+
+  21 Sep 2013; Agostino Sarubbo <ago@gentoo.org> prosody-0.8.2-r1.ebuild:
+  Stable for amd64, wrt bug #480080
+
+*prosody-0.9.1-r1 (16 Sep 2013)
+
+  16 Sep 2013; Tobias Klausmann <klausman@gentoo.org> +prosody-0.9.1-r1.ebuild:
+  Fix multilib-strict failure of 0.9.1, thanks to mrueg@ for the patch
+
+  16 Sep 2013; Tobias Klausmann <klausman@gentoo.org> prosody-0.9.1.ebuild:
+  Rekeyword prosody-0.9.1 and make luasocket dep USE-conditional
+
+  16 Sep 2013; Tobias Klausmann <klausman@gentoo.org> prosody-0.9.1.ebuild:
+  Dekeyword prosody-0.9.1 due to luasocket mishap (bug 470702)
+
+*prosody-0.9.1 (15 Sep 2013)
+
+  15 Sep 2013; Tobias Klausmann <klausman@gentoo.org> +prosody-0.9.1.ebuild:
+  Add new ebuild for version 0.9.1, provided by Emery Hemingway.
+
+  08 Aug 2013; Markus Meier <maekke@gentoo.org> prosody-0.8.2-r1.ebuild:
+  add ~arm, bug #476264
+
+*prosody-0.8.2-r1 (27 Jul 2013)
+
+  27 Jul 2013; Pacho Ramos <pacho@gentoo.org> +files/prosody.service,
+  +files/prosody.tmpfilesd, +prosody-0.8.2-r1.ebuild:
+  Install unit file #469672
+
+  13 Jul 2013; Agostino Sarubbo <ago@gentoo.org> prosody-0.8.2.ebuild:
+  Stable for amd64, wrt bug #388797
+
+  31 Dec 2012; Dirkjan Ochtman <djc@gentoo.org> metadata.xml:
+  Remove myself as a maintainer.
+
+  27 Nov 2012; Tobias Klausmann <klausman@gentoo.org> files/prosody.initd,
+  metadata.xml:
+  Update init script (for bug 432458) and clean up unused IUSE
+
+  21 Oct 2012; Markus Meier <maekke@gentoo.org> prosody-0.8.2.ebuild:
+  x86 stable, bug #388797
+
+  06 Mar 2012; Tobias Klausmann <klausman@gentoo.org> prosody-0.8.1.ebuild:
+  Revert ill-advised, non-working blocker
+
+  06 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> prosody-0.8.2.ebuild:
+  Remove restriction of dev-lang/lua since it's not slotted wrt #407079
+
+  06 Mar 2012; Tobias Klausmann <klausman@gentoo.org> prosody-0.8.1.ebuild,
+  prosody-0.8.2.ebuild:
+  Prosody is currently not compatible with Lua >=5.2
+
+  04 Jul 2011; Dirkjan Ochtman <djc@gentoo.org> -prosody-0.8.0-r1.ebuild:
+  Remove old version.
+
+*prosody-0.8.2 (04 Jul 2011)
+
+  04 Jul 2011; Dirkjan Ochtman <djc@gentoo.org> +prosody-0.8.2.ebuild:
+  Version bump to 0.8.2 (bug 373869).
+
+  06 Jun 2011; Dirkjan Ochtman <djc@gentoo.org> -prosody-0.7.0.ebuild,
+  -files/prosody-0.7.0-cfg.lua.patch, -prosody-0.8.0.ebuild:
+  Remove old versions.
+
+*prosody-0.8.1 (06 Jun 2011)
+
+  06 Jun 2011; Dirkjan Ochtman <djc@gentoo.org> +prosody-0.8.1.ebuild:
+  Version bump to 0.8.1, change SQL dependencies (bug 369623).
+
+*prosody-0.8.0-r1 (02 May 2011)
+
+  02 May 2011; Dirkjan Ochtman <djc@gentoo.org> +prosody-0.8.0-r1.ebuild:
+  Add optional dependency on lua-zlib, for XMPP compression (bug 360683).
+
+  08 Apr 2011; Dirkjan Ochtman <djc@gentoo.org> -prosody-0.6.2.ebuild,
+  -files/prosody-0.6.2-cfg.lua.patch:
+  Remove old version.
+
+*prosody-0.8.0 (08 Apr 2011)
+
+  08 Apr 2011; Dirkjan Ochtman <djc@gentoo.org> +prosody-0.8.0.ebuild,
+  +files/prosody-0.8.0-cfg.lua.patch, metadata.xml:
+  Version bump to 0.8.0 (bug 352382).
+
+  22 Mar 2011; Ulrich Mueller <ulm@gentoo.org> prosody-0.6.2.ebuild,
+  prosody-0.7.0.ebuild:
+  Drop PROVIDE=virtual/jabber-server, bug 358833.
+
+*prosody-0.7.0 (16 Mar 2011)
+
+  16 Mar 2011; Dirkjan Ochtman <djc@gentoo.org> +prosody-0.7.0.ebuild,
+  +files/prosody-0.7.0-cfg.lua.patch, metadata.xml:
+  Version bump to 0.7.0 (bug 323999).
+
+  05 Nov 2010; Rafael G. Martins <rafaelmartins@gentoo.org>
+  prosody-0.6.2.ebuild:
+  Fixed luafilesystem dependency.
+
+  05 Nov 2010; Rafael G. Martins <rafaelmartins@gentoo.org>
+  prosody-0.6.2.ebuild:
+  Fixed luasocket dependency.
+
+  05 Nov 2010; Rafael G. Martins <rafaelmartins@gentoo.org>
+  prosody-0.6.2.ebuild:
+  Fixed luasec dependency.
+
+  05 Nov 2010; Rafael G. Martins <rafaelmartins@gentoo.org>
+  prosody-0.6.2.ebuild, metadata.xml:
+  Fixed luaexpat dependency. Added myself to metadata.xml.
+
+  13 Jul 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Added missing herd tag to metadata.xml
+
+  27 May 2010; Dirkjan Ochtman <djc@gentoo.org> prosody-0.6.2.ebuild:
+  Add some die statements as needed.
+
+*prosody-0.6.2 (27 May 2010)
+
+  27 May 2010; Dirkjan Ochtman <djc@gentoo.org> +prosody-0.6.2.ebuild,
+  +files/prosody-0.6.2-cfg.lua.patch, +files/prosody.initd, +metadata.xml:
+  Initial version, contributed by jochen@schalanda.de in bug 290594.

@@ -1,0 +1,50 @@
+# ChangeLog for dev-python/inotifyx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/inotifyx/ChangeLog,v 1.12 2015/06/09 15:27:55 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*inotifyx-0.2.2 (01 Jun 2015)
+
+  01 Jun 2015; Patrick Lauer <patrick@gentoo.org> +inotifyx-0.2.2.ebuild:
+  Bump
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> inotifyx-0.2.0-r1.ebuild:
+  Drop old Python implementations
+
+  13 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -inotifyx-0.1.1.ebuild,
+  -inotifyx-0.2.0.ebuild:
+  Remove old.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> inotifyx-0.2.0-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> inotifyx-0.2.0-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*inotifyx-0.2.0-r1 (24 Jun 2013)
+
+  24 Jun 2013; Ian Delaney <idella4@gentoo.org> +inotifyx-0.2.0-r1.ebuild:
+  revbump; migrate -> distutils-r1
+
+  22 Feb 2012; Patrick Lauer <patrick@gentoo.org> inotifyx-0.1.1.ebuild,
+  inotifyx-0.2.0.ebuild:
+  Restricting jython
+
+*inotifyx-0.2.0 (28 Jul 2011)
+
+  28 Jul 2011; Patrick Lauer <patrick@gentoo.org> +inotifyx-0.2.0.ebuild:
+  Bump for #361729
+
+  05 Jan 2010; Sebastian Pipping <sping@gentoo.org> inotifyx-0.1.1.ebuild:
+  Fix test invocation (bug #299767)
+
+  20 Dec 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Fix metadata: maintainer-wanted herd does not exist
+
+*inotifyx-0.1.1 (20 Dec 2009)
+
+  20 Dec 2009; Sebastian Pipping <sping@gentoo.org> +inotifyx-0.1.1.ebuild,
+  +metadata.xml:
+  Initial ebuild, review by Arfrever (bug 296821)

@@ -1,0 +1,27 @@
+# ChangeLog for dev-util/confix-wrapper
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/confix-wrapper/ChangeLog,v 1.5 2012/12/05 09:42:56 haubi Exp $
+
+  05 Dec 2012; Michael Haubenwallner <haubi@gentoo.org>
+  confix-wrapper-0.ebuild:
+  Update LICENSE to 'GPL-2', bug#445646.
+
+  16 Oct 2009; Michael Haubenwallner <haubi@gentoo.org>
+  confix-wrapper-0.ebuild:
+  Added keyword ~amd64.
+  Merged prefix support with keywords ~ppc-aix ~x86-interix ~x86-linux
+  ~x86-solaris.
+
+  16 Jun 2008; Michael Haubenwallner <haubi@gentoo.org>
+  confix-wrapper-0.ebuild:
+  set IUSE to empty (#224359)
+
+  28 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fixing bogus herd tag in metadata.xml.
+
+*confix-wrapper-0 (13 May 2008)
+
+  13 May 2008; Michael Haubenwallner <haubi@gentoo.org> +metadata.xml,
+  +confix-wrapper-0.ebuild:
+  initial import of dev-util/confix-wrapper (ebuild from me).
+

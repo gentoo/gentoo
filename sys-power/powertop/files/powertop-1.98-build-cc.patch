@@ -1,0 +1,28 @@
+From e2a8efc2d349880833215ccbe9ac6cb80cdfe5d0 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 23 Aug 2011 18:03:38 -0400
+Subject: [PATCH] allow control over the build compiler
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ Makefile |    3 ++-
+ 1 files changed, 2 insertions(+), 1 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index f637bfe..75e6e63 100644
+--- a/Makefile
++++ b/Makefile
+@@ -80,8 +80,9 @@ install: powertop
+ 	@(cd po/ && env LOCALESDIR=$(LOCALESDIR) DESTDIR=$(DESTDIR) $(MAKE) $@)
+ 	
+ 
++BUILD_CC ?= gcc
+ csstoh: csstoh.c
+-	gcc -o csstoh csstoh.c
++	$(BUILD_CC) -o csstoh csstoh.c
+ 
+ css.h: csstoh powertop.css
+ 	./csstoh powertop.css css.h
+-- 
+1.7.6
+

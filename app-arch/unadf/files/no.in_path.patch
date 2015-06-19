@@ -1,0 +1,39 @@
+diff -r -u ../unchanged/Lib/Makefile ./Lib/Makefile
+--- ../unchanged/Lib/Makefile	2004-08-26 00:39:58.847605592 +1000
++++ ./Lib/Makefile	2004-08-26 00:41:12.307438000 +1000
+@@ -41,7 +41,7 @@
+ # to define LITT_ENDIAN on little endian machines (intel)
+ # checks for sizeof(long)=4, sizeof(short)=2, sizeof(int)=4
+ defendian.h: myconf 
+-	myconf
++	./myconf
+ 
+ adf_nativ.o: ${NATIV_DIR}/adf_nativ.c ${NATIV_DIR}/adf_nativ.h
+ 	$(CC) ${CFLAGS} -c ${NATIV_DIR}/adf_nativ.c
+Only in ../unchanged/Lib: Makefile.orig
+Only in ../unchanged/Lib: Makefile.rej
+diff -r -u ../unchanged/Lib/myconf ./Lib/myconf
+--- ../unchanged/Lib/myconf	2000-08-19 11:08:08.000000000 +1000
++++ ./Lib/myconf	2004-08-26 00:41:28.344000072 +1000
+@@ -31,17 +31,17 @@
+ gcc myctest.c -o myctest
+ rm myctest.c
+ 
+-if [ `myctest |cut -d' ' -f 1` != 4 ]
++if [ `./myctest |cut -d' ' -f 1` != 4 ]
+     then echo "Error : sizeof(long)!=4"
+ fi
+-if [ `myctest |cut -d' ' -f 2` != 2 ]
++if [ `./myctest |cut -d' ' -f 2` != 2 ]
+     then echo "Error : sizeof(short)!=2"
+ fi
+-if [ `myctest |cut -d' ' -f 3` != 4 ]
++if [ `./myctest |cut -d' ' -f 3` != 4 ]
+     then echo "Error  :sizeof(int)!=4"
+ fi
+ 
+-if [ `myctest |cut -d' ' -f 4` = LITTLE ]
++if [ `./myctest |cut -d' ' -f 4` = LITTLE ]
+     then 
+     echo "#ifndef LITT_ENDIAN" >defendian.h
+     echo "#define LITT_ENDIAN 1" >>defendian.h 

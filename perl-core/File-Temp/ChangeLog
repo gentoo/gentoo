@@ -1,0 +1,378 @@
+# ChangeLog for perl-core/File-Temp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/perl-core/File-Temp/ChangeLog,v 1.92 2015/06/05 23:14:04 dilfridge Exp $
+
+  05 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -File-Temp-0.230.0.ebuild:
+  Remove old
+
+  21 Mar 2015; Mike Frysinger <vapier@gentoo.org> File-Temp-0.230.400-r1.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org> File-Temp-0.230.400-r1.ebuild:
+  Stable for alpha, wrt bug #536790
+
+  17 Feb 2015; Markus Meier <maekke@gentoo.org> File-Temp-0.230.400-r1.ebuild:
+  arm stable, bug #536790
+
+  17 Feb 2015; Agostino Sarubbo <ago@gentoo.org> File-Temp-0.230.400-r1.ebuild:
+  Stable for ia64, wrt bug #536790
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org> File-Temp-0.230.400-r1.ebuild:
+  Stable for sparc, wrt bug #536790
+
+  15 Feb 2015; Agostino Sarubbo <ago@gentoo.org> File-Temp-0.230.400-r1.ebuild:
+  Stable for ppc64, wrt bug #536790
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org> File-Temp-0.230.400-r1.ebuild:
+  Stable for ppc, wrt bug #536790
+
+  13 Feb 2015; Jeroen Roovers <jer@gentoo.org> File-Temp-0.230.400-r1.ebuild:
+  Stable for HPPA (bug #536790).
+
+  13 Feb 2015; Agostino Sarubbo <ago@gentoo.org> File-Temp-0.230.400-r1.ebuild:
+  Stable for x86, wrt bug #536790
+
+  08 Feb 2015; Mikle Kolyada <zlogene@gentoo.org> File-Temp-0.230.400-r1.ebuild:
+  amd64 stable wrt bug #536790
+
+  08 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -File-Temp-0.220.0-r1.ebuild:
+  Remove old
+
+  21 Oct 2014; Mike Frysinger <vapier@gentoo.org> File-Temp-0.230.0.ebuild:
+  Mark arm/arm64/m68k/s390/sh stable.
+
+  18 Oct 2014; Agostino Sarubbo <ago@gentoo.org> File-Temp-0.230.0.ebuild:
+  Stable for sparc, wrt bug #390719
+
+  18 Oct 2014; Agostino Sarubbo <ago@gentoo.org> File-Temp-0.230.0.ebuild:
+  Stable for ia64, wrt bug #390719
+
+  17 Oct 2014; Agostino Sarubbo <ago@gentoo.org> File-Temp-0.230.0.ebuild:
+  Stable for ppc64, wrt bug #390719
+
+  17 Oct 2014; Agostino Sarubbo <ago@gentoo.org> File-Temp-0.230.0.ebuild:
+  Stable for ppc, wrt bug #390719
+
+  16 Oct 2014; Jeroen Roovers <jer@gentoo.org> File-Temp-0.230.0.ebuild:
+  Stable for HPPA (bug #390719).
+
+  16 Oct 2014; Tobias Klausmann <klausman@gentoo.org> File-Temp-0.230.0.ebuild:
+  Stable on alpha, bug 390719
+
+  16 Oct 2014; Agostino Sarubbo <ago@gentoo.org> File-Temp-0.230.0.ebuild:
+  Stable for x86, wrt bug #390719
+
+  16 Oct 2014; Agostino Sarubbo <ago@gentoo.org> File-Temp-0.230.0.ebuild:
+  Stable for amd64, wrt bug #390719
+
+  15 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  File-Temp-0.230.0.ebuild:
+  Arrgh. Drop stable keywords.
+
+  15 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  File-Temp-0.230.0.ebuild:
+  Copy keywords from dev-lang/perl
+
+*File-Temp-0.230.400-r1 (15 Oct 2014)
+*File-Temp-0.230.0 (15 Oct 2014)
+
+  15 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +File-Temp-0.230.0.ebuild, -File-Temp-0.230.400.ebuild,
+  +File-Temp-0.230.400-r1.ebuild,
+  +files/File-Temp-0.230.0-symlink-safety.patch:
+  Add patch for bug 390719
+
+  05 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> File-Temp-0.220.0-r1.ebuild,
+  File-Temp-0.230.400.ebuild:
+  Fix DESCRIPTION
+
+*File-Temp-0.220.0-r1 (25 Jul 2014)
+
+  25 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +File-Temp-0.220.0-r1.ebuild, -File-Temp-0.220.0.ebuild:
+  EAPI bump
+
+  20 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -File-Temp-0.230.100.ebuild:
+  Remove old
+
+  07 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> File-Temp-0.230.100.ebuild,
+  File-Temp-0.230.400.ebuild:
+  Add ~arm keyword
+
+  28 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> File-Temp-0.230.100.ebuild,
+  File-Temp-0.230.400.ebuild:
+  Bump to EAPI=5
+
+  02 Feb 2014; Mike Frysinger <vapier@gentoo.org> File-Temp-0.220.0.ebuild,
+  File-Temp-0.230.100.ebuild, File-Temp-0.230.400.ebuild:
+  Add m68k/sh love.
+
+  19 Jan 2014; Mike Frysinger <vapier@gentoo.org> File-Temp-0.220.0.ebuild,
+  File-Temp-0.230.100.ebuild, File-Temp-0.230.400.ebuild:
+  Add arm64 love.
+
+  08 Dec 2013; Fabian Groffen <grobian@gentoo.org> File-Temp-0.230.400.ebuild:
+  Add missing Prefix keywords
+
+  05 Dec 2013; Michael Haubenwallner <haubi@gentoo.org>
+  File-Temp-0.230.400.ebuild:
+  add ~ppc-aix keyword
+
+*File-Temp-0.230.400 (28 Oct 2013)
+
+  28 Oct 2013; Patrick Lauer <patrick@gentoo.org> +File-Temp-0.230.400.ebuild:
+  Bump
+
+*File-Temp-0.230.100 (24 Aug 2013)
+
+  24 Aug 2013; Patrick Lauer <patrick@gentoo.org> +File-Temp-0.230.100.ebuild:
+  Bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  28 Apr 2012; Alexis Ballier <aballier@gentoo.org> File-Temp-0.220.0.ebuild:
+  keyword ~amd64-fbsd
+
+*File-Temp-0.220.0 (21 May 2011)
+
+  21 May 2011; Torsten Veller <tove@gentoo.org> -File-Temp-0.22.ebuild,
+  +File-Temp-0.220.0.ebuild:
+  Change version scheme
+
+  02 May 2011; Fabian Groffen <grobian@gentoo.org> File-Temp-0.22.ebuild:
+  Marked ~x64-freebsd
+
+  17 Jan 2010; Torsten Veller <tove@gentoo.org> -File-Temp-0.18.ebuild,
+  -File-Temp-0.20.ebuild, -File-Temp-0.21.ebuild:
+  Cleanup
+
+  05 Jan 2010; nixnut <nixnut@gentoo.org> File-Temp-0.22.ebuild:
+  ppc stable #288026
+
+  23 Dec 2009; Fabian Groffen <grobian@gentoo.org>
+  File-Temp-0.21.ebuild, File-Temp-0.22.ebuild:
+  Marked ~x86-solaris, bug #296509
+
+  16 Dec 2009; Jonathan Callen <abcd@gentoo.org> File-Temp-0.18.ebuild,
+  File-Temp-0.20.ebuild, File-Temp-0.21.ebuild, File-Temp-0.22.ebuild:
+  QA: Transfer prefix keywords
+
+  15 Dec 2009; Raúl Porcel <armin76@gentoo.org> File-Temp-0.22.ebuild:
+  s390 stable
+
+  14 Dec 2009; Raúl Porcel <armin76@gentoo.org> File-Temp-0.22.ebuild:
+  alpha/ia64/sparc stable wrt #288026
+
+  10 Dec 2009; Brent Baude <ranger@gentoo.org> File-Temp-0.22.ebuild:
+  Marking File-Temp-0.22 ppc64 stable for bug 288026
+
+  07 Dec 2009; Jeroen Roovers <jer@gentoo.org> File-Temp-0.22.ebuild:
+  Stable for HPPA (bug #288026).
+
+  04 Dec 2009; Torsten Veller <tove@gentoo.org> File-Temp-0.22.ebuild:
+  Stable on amd64 (#288026)
+
+  04 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  File-Temp-0.22.ebuild:
+  x86 stable, bug 288026
+
+  07 Jul 2009; Jeroen Roovers <jer@gentoo.org> File-Temp-0.20.ebuild:
+  Stable for HPPA too.
+
+*File-Temp-0.22 (29 Jun 2009)
+
+  29 Jun 2009; Torsten Veller <tove@gentoo.org> +File-Temp-0.22.ebuild:
+  Version bump
+
+  13 Mar 2009; Torsten Veller <tove@gentoo.org> -File-Temp-0.16.ebuild,
+  -File-Temp-0.17.ebuild:
+  Cleanup
+
+  01 Jan 2009; Raúl Porcel <armin76@gentoo.org> File-Temp-0.21.ebuild:
+  Add ~s390
+
+*File-Temp-0.21 (21 Nov 2008)
+
+  21 Nov 2008; Torsten Veller <tove@gentoo.org> +File-Temp-0.21.ebuild:
+  Version bump
+
+  15 Jul 2008; Raúl Porcel <armin76@gentoo.org> File-Temp-0.20.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+*File-Temp-0.20 (29 Apr 2008)
+
+  29 Apr 2008; Yuval Yaari <yuval@gentoo.org> +File-Temp-0.20.ebuild:
+  Version bump
+
+  28 Mar 2008; Jeroen Roovers <jer@gentoo.org> File-Temp-0.18.ebuild:
+  Stable for HPPA too.
+
+  19 Nov 2007; Joshua Kinard <kumba@gentoo.org> File-Temp-0.18.ebuild:
+  Stable on mips.
+
+  18 Aug 2007; Tom Gall <tgall@gentoo.org>  File-Temp-0.18.ebuild:
+  stable on ppc64
+
+  04 Jul 2007; Raúl Porcel <armin76@gentoo.org> File-Temp-0.18.ebuild:
+  alpha/ia64/x86 stable
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  File-Temp-0.18.ebuild:
+  ppc stable
+
+  23 Apr 2007; Timothy Redaelli <drizzt@gentoo.org> File-Temp-0.18.ebuild:
+  Add ~x86-fbsd keyword, thanks to GurliGebis for reporting.
+
+  17 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> File-Temp-0.18.ebuild:
+  Stable on sparc
+
+  15 Apr 2007; Markus Rothe <corsair@gentoo.org> File-Temp-0.17.ebuild:
+  Stable on ppc64
+
+  09 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  File-Temp-0.18.ebuild:
+  Marking stable amd64
+
+  03 Mar 2007; Andrej Kacian <ticho@gentoo.org> File-Temp-0.17.ebuild:
+  Stable on x86, bug #169153.
+
+*File-Temp-0.18 (05 Feb 2007)
+
+  05 Feb 2007; Michael Cummings <mcummings@gentoo.org>
+  +File-Temp-0.18.ebuild:
+  Version bump
+
+  24 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  File-Temp-0.17.ebuild:
+  Stable on ppc.
+
+  23 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> File-Temp-0.17.ebuild:
+  Stable on hppa
+
+  22 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> File-Temp-0.17.ebuild:
+  Stable on Alpha + ia64.
+
+  20 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  -File-Temp-0.14.ebuild:
+  Cleaning out old ebuild
+
+  20 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  File-Temp-0.17.ebuild:
+  Marking amd64 stable
+
+  20 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  File-Temp-0.17.ebuild:
+  Marking sparc stable
+
+  13 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  File-Temp-0.14.ebuild, File-Temp-0.16.ebuild, File-Temp-0.17.ebuild:
+  Tested on o2k, keywording ~mips
+
+  05 Sep 2006; Joshua Kinard <kumba@gentoo.org> File-Temp-0.16.ebuild,
+  File-Temp-0.17.ebuild:
+  Catchup, stable 0.16, unstable 0.17 for mips.
+
+*File-Temp-0.17 (21 Aug 2006)
+
+  21 Aug 2006; Yuval Yaari <yuval@gentoo.org> +File-Temp-0.17.ebuild:
+  Version bump
+
+  03 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  files/digest-File-Temp-0.14, Manifest:
+  Digests
+
+  03 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  File-Temp-0.14.ebuild, File-Temp-0.16.ebuild:
+  Added perl dep
+
+  07 Feb 2006; Simon Stelling <blubb@gentoo.org> File-Temp-0.16.ebuild:
+  stable on amd64
+
+  04 Feb 2006; <solar@gentoo.org> :
+  - redigest needed due to bad RMD160. bug #121124
+
+  01 Feb 2006; Aron Griffis <agriffis@gentoo.org> File-Temp-0.16.ebuild:
+  Mark 0.16 stable on ia64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> File-Temp-0.16.ebuild:
+  Mark 0.16 stable on alpha
+
+  21 Jan 2006; Markus Rothe <corsair@gentoo.org> File-Temp-0.16.ebuild:
+  Stable on ppc64
+
+  18 Jan 2006; Guy Martin <gmsoft@gentoo.org> File-Temp-0.16.ebuild:
+  Stable on hppa.
+
+  15 Jan 2006; Michael Hanselmann <hansmi@gentoo.org> File-Temp-0.16.ebuild:
+  Stable on ppc.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  File-Temp-0.16.ebuild:
+  Marking sparc x86 stable
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> File-Temp-0.14.ebuild,
+  File-Temp-0.16.ebuild:
+  add ia64 keywords
+
+  27 May 2005; Michael Cummings <mcummings@gentoo.org>
+  File-Temp-0.14.ebuild, File-Temp-0.16.ebuild:
+  Missed the CATEGORY var in this one after the migration. Should close bug 94195
+
+*File-Temp-0.14 (25 May 2005)
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +File-Temp-0.14.ebuild, +File-Temp-0.16.ebuild:
+  dev-perl => perl-core migration
+
+  18 May 2005; Markus Rothe <corsair@gentoo.org> File-Temp-0.14.ebuild:
+  Stable on ppc64
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org> -File-Temp-0.12.ebuild:
+  cleaning
+
+  10 Apr 2005; Simon Stelling <blubb@gentoo.org> File-Temp-0.14.ebuild:
+  stable on amd64
+
+  31 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> File-Temp-0.14.ebuild:
+  Stable on alpha.
+
+  30 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> File-Temp-0.14.ebuild:
+  Stable on sparc
+
+*File-Temp-0.16 (29 Mar 2005)
+
+  29 Mar 2005; Michael Cummings <mcummings@gentoo.org>
+  File-Temp-0.14.ebuild, +File-Temp-0.16.ebuild:
+  New version
+
+  09 Mar 2005; Markus Rothe <corsair@gentoo.org> File-Temp-0.14.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  12 Dec 2004; Jason Wever <weeve@gentoo.org> File-Temp-0.12.ebuild:
+  Stable on sparc.
+
+*File-Temp-0.14 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org> File-Temp-0.14.ebuild:
+  new version on cpan
+
+  05 May 2004; Bryan Østergaard <kloeri@gentoo.org> File-Temp-0.12.ebuild:
+  Stable on alpha.
+
+  08 Jun 2003; <rac@gentoo.org> File-Temp-0.12.ebuild:
+  fix header
+
+*File-Temp-0.12 (21 Dec 2002)
+
+  21 Dec 2002; Michael Cummings <mcummings@gentoo.org>
+  File-Temp-0.12.ebuild: 
+
+  Initial import.  Ebuild submitted by Gontran Zepeda <gontran@gontran.net>
+  Dep for bioperl, bug 11498

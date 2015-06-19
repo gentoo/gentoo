@@ -1,0 +1,428 @@
+# ChangeLog for net-wireless/aircrack-ng
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/aircrack-ng/ChangeLog,v 1.93 2015/05/04 04:24:59 zerochaos Exp $
+
+  04 May 2015; Rick Farina <zerochaos@gentoo.org> aircrack-ng-1.2_rc2.ebuild,
+  aircrack-ng-9999.ebuild, metadata.xml:
+  handle unstable->experimental
+
+*aircrack-ng-1.2_rc2 (04 May 2015)
+
+  04 May 2015; Rick Farina <zerochaos@gentoo.org> +aircrack-ng-1.2_rc2.ebuild,
+  aircrack-ng-9999.ebuild:
+  version bump, minor cleanup
+
+*aircrack-ng-1.2_rc1-r1 (05 Feb 2015)
+
+  05 Feb 2015; Rick Farina <zerochaos@gentoo.org>
+  +aircrack-ng-1.2_rc1-r1.ebuild, -aircrack-ng-1.2_rc1.ebuild:
+  fix deps per depcheck
+
+  12 Nov 2014; Rick Farina <zerochaos@gentoo.org> -aircrack-ng-1.1-r2.ebuild,
+  -aircrack-ng-1.1-r4.ebuild, -aircrack-ng-1.2_beta3-r3.ebuild,
+  -files/aircrack-ng-1.0_rc3-respect_LDFLAGS.patch,
+  -files/aircrack-ng-1.0_rc4-fix_build.patch,
+  -files/aircrack-ng-1.1-CVE-2010-1159.patch,
+  -files/aircrack-ng-1.1-parallelmake.patch,
+  -files/aircrack-ng-1.1-respect_LDFLAGS.patch,
+  -files/aircrack-ng-1.1-sse-pic.patch,
+  -files/aircrack-ng-9999-fix-labels.patch,
+  -files/airodump-ng-oui-update-path-fix.patch,
+  -files/airodump-ng.ignore-negative-one.v4.patch,
+  -files/changeset_r1921_backport.diff,
+  -files/diff-wpa-migration-mode-aircrack-ng.diff, -files/eapol_fix.patch,
+  -files/ignore-channel-1-error.patch, -files/process-group-leader.c:
+  cleanup for security bug #528132
+
+  10 Nov 2014; Agostino Sarubbo <ago@gentoo.org> aircrack-ng-1.2_rc1.ebuild:
+  Stable for ppc, wrt bug #528132
+
+  03 Nov 2014; Rick Farina <zerochaos@gentoo.org> aircrack-ng-1.2_rc1.ebuild:
+  Stable for arm, wrt bug #528132
+
+  03 Nov 2014; Agostino Sarubbo <ago@gentoo.org> aircrack-ng-1.2_rc1.ebuild:
+  Stable for x86, wrt bug #528132
+
+  03 Nov 2014; Agostino Sarubbo <ago@gentoo.org> aircrack-ng-1.2_rc1.ebuild:
+  Stable for amd64, wrt bug #528132
+
+*aircrack-ng-1.2_rc1 (01 Nov 2014)
+
+  01 Nov 2014; Rick Farina <zerochaos@gentoo.org> +aircrack-ng-1.2_rc1.ebuild:
+  bump
+
+*aircrack-ng-1.2_beta3-r3 (03 Aug 2014)
+
+  03 Aug 2014; Rick Farina <zerochaos@gentoo.org>
+  +aircrack-ng-1.2_beta3-r3.ebuild, -aircrack-ng-1.2_beta3-r2.ebuild,
+  aircrack-ng-9999.ebuild:
+  snapshot to fix some issues
+
+*aircrack-ng-1.2_beta3-r2 (18 Jul 2014)
+
+  18 Jul 2014; Rick Farina <zerochaos@gentoo.org>
+  +aircrack-ng-1.2_beta3-r2.ebuild, -aircrack-ng-1.2_beta3-r1.ebuild,
+  -aircrack-ng-1.2_beta3.ebuild, aircrack-ng-9999.ebuild:
+  work-around for http://trac.aircrack-ng.org/ticket/1144
+
+*aircrack-ng-1.2_beta3-r1 (18 Apr 2014)
+
+  18 Apr 2014; Rick Farina <zerochaos@gentoo.org>
+  +aircrack-ng-1.2_beta3-r1.ebuild, aircrack-ng-9999.ebuild:
+  adding distutils-r1, thanks to significant help from mgorny
+
+*aircrack-ng-1.2_beta3 (17 Apr 2014)
+
+  17 Apr 2014; Rick Farina <zerochaos@gentoo.org> +aircrack-ng-1.2_beta3.ebuild,
+  -aircrack-ng-1.2_beta1.ebuild, -aircrack-ng-1.2_beta2.ebuild,
+  aircrack-ng-9999.ebuild:
+  bump to beta3, ebuild fixes
+
+  30 Mar 2014; Rick Farina <zerochaos@gentoo.org> aircrack-ng-9999.ebuild:
+  update live ebuild for pcre
+
+*aircrack-ng-1.2_beta2 (04 Feb 2014)
+
+  04 Feb 2014; Rick Farina <zerochaos@gentoo.org> +aircrack-ng-1.2_beta2.ebuild,
+  +files/aircrack-ng-9999-fix-labels.patch:
+  version bump, bug 499850
+
+  05 Oct 2013; Rick Farina <zerochaos@gentoo.org> aircrack-ng-9999.ebuild:
+  minor cleanup, fix tests
+
+  27 May 2013; Rick Farina <zerochaos@gentoo.org> aircrack-ng-1.2_beta1.ebuild:
+  a few typos, kick me, I'm a jerk
+
+*aircrack-ng-1.2_beta1 (26 May 2013)
+
+  26 May 2013; Rick Farina <zerochaos@gentoo.org> +aircrack-ng-1.2_beta1.ebuild,
+  aircrack-ng-9999.ebuild:
+  new beta release
+
+  26 May 2013; Rick Farina <zerochaos@gentoo.org> aircrack-ng-9999.ebuild:
+  fixing for new svn location, and unhijacking the misguided
+  subversion_src_prepare
+
+  24 Apr 2013; Rick Farina <zerochaos@gentoo.org> aircrack-ng-9999.ebuild:
+  don't install aircrack-ng's tool to update oui file, we already handle that
+  with the package manager
+
+  24 Apr 2013; Rick Farina <zerochaos@gentoo.org> aircrack-ng-9999.ebuild:
+  fix for bug #466270, migrated upstream and ebuild to use hwids instead of
+  ieee-oui package
+
+*aircrack-ng-9999 (12 Apr 2013)
+*aircrack-ng-1.1-r4 (12 Apr 2013)
+
+  12 Apr 2013; Rick Farina <zerochaos@gentoo.org> +aircrack-ng-1.1-r4.ebuild,
+  +aircrack-ng-9999.ebuild, +files/airodump-ng-oui-update-path-fix.patch,
+  +files/airodump-ng.ignore-negative-one.v4.patch,
+  +files/changeset_r1921_backport.diff,
+  +files/diff-wpa-migration-mode-aircrack-ng.diff, +files/eapol_fix.patch,
+  +files/ignore-channel-1-error.patch, -aircrack-ng-0.9.3.ebuild,
+  -aircrack-ng-1.0.ebuild, -aircrack-ng-1.1-r3.ebuild, -aircrack-ng-1.1.ebuild,
+  metadata.xml:
+  some reasonably major improvements to aircrack-ng as I merge pentoo changeset
+  into gentoo
+
+  23 Dec 2012; Markus Meier <maekke@gentoo.org> aircrack-ng-1.1-r2.ebuild:
+  arm stable, bug #311797
+
+*aircrack-ng-1.1-r3 (16 Dec 2012)
+
+  16 Dec 2012; Alon Bar-Lev <alonbl@gentoo.org> +aircrack-ng-1.1-r3.ebuild:
+  respect ar, runlib, bug#447492, thanks to Agostino Sarubbo
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> aircrack-ng-1.1-r2.ebuild:
+  Stable for ppc, wrt bug #311797
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> aircrack-ng-1.1-r2.ebuild:
+  Stable for x86, wrt bug #311797
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> aircrack-ng-1.1-r2.ebuild:
+  Stable for amd64, wrt bug #311797
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> metadata.xml:
+  updated rick mail
+
+*aircrack-ng-1.1-r2 (15 Dec 2012)
+
+  15 Dec 2012; Alon Bar-Lev <alonbl@gentoo.org> +aircrack-ng-1.1-r2.ebuild,
+  +files/aircrack-ng-1.1-CVE-2010-1159.patch, -aircrack-ng-1.1-r1.ebuild:
+  Fix CVE-2010-1159, per bug#311797 by Tim Sammut
+
+  14 Dec 2012; Alon Bar-Lev <alonbl@gentoo.org> -files/aircrack-ng-1.0_rc2-freebsd.patch:
+  remove unused files
+
+*aircrack-ng-1.1-r1 (14 Dec 2012)
+
+  14 Dec 2012; Alon Bar-Lev <alonbl@gentoo.org> +aircrack-ng-1.1-r1.ebuild,
+  +files/aircrack-ng-1.1-sse-pic.patch:
+  Fix hardened toolchain issue, bug#285703, thanks to Rick Farina
+  <zerochaos@gentoo.org>.
+
+  05 Jul 2012; Rick Farina <zerochaos@gentoo.org> metadata.xml:
+  adding myself as maintainer to better keep in sync with upstream
+
+  29 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/aircrack-ng-1.1-parallelmake.patch, aircrack-ng-1.1.ebuild:
+  Fix parallel make (bug #363199).
+
+  17 Oct 2010; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Herds are not the same thing as maintainers.
+
+*aircrack-ng-1.1 (29 Apr 2010)
+
+  29 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -aircrack-ng-1.0_rc3.ebuild, -aircrack-ng-1.0_rc4.ebuild,
+  +aircrack-ng-1.1.ebuild, +files/aircrack-ng-1.1-respect_LDFLAGS.patch:
+  Version bump (bug #311797).
+
+  06 Apr 2010; Jonathan Callen <abcd@gentoo.org> aircrack-ng-1.0.ebuild:
+  Bump to EAPI=3, add prefix keywords
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> aircrack-ng-1.0.ebuild:
+  ppc stable #288613
+
+  15 Oct 2009; Markus Meier <maekke@gentoo.org> aircrack-ng-1.0.ebuild:
+  amd64/arm/x86 stable, bug #288613
+
+  11 Oct 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  aircrack-ng-1.0.ebuild:
+  Filter -fPIE (bug #285703). Add dependency on net-wireless/wireless-tools
+  (bug #285727).
+
+  22 Sep 2009; Markus Meier <maekke@gentoo.org> aircrack-ng-1.0_rc4.ebuild:
+  x86 stable, bug #283062
+
+*aircrack-ng-1.0 (11 Sep 2009)
+
+  11 Sep 2009; Patrick Lauer <patrick@gentoo.org> +aircrack-ng-1.0.ebuild:
+  Bump to 1.0, fixes #284573
+
+  02 Sep 2009; Olivier Crête <tester@gentoo.org>
+  aircrack-ng-1.0_rc4.ebuild:
+  Stable on amd64, bug #283062
+
+  30 Aug 2009; nixnut <nixnut@gentoo.org> aircrack-ng-1.0_rc4.ebuild:
+  ppc stable #283062
+
+  06 Aug 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  aircrack-ng-1.0_rc4.ebuild, +files/aircrack-ng-1.0_rc4-fix_build.patch:
+  Fix building (bug #280573).
+
+  30 Jul 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  aircrack-ng-1.0_rc4.ebuild:
+  Remove probably no longer needed, FreeBSD-specific code.
+
+*aircrack-ng-1.0_rc4 (29 Jul 2009)
+
+  29 Jul 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -aircrack-ng-1.0_rc1.ebuild, -aircrack-ng-1.0_rc2-r1.ebuild,
+  +aircrack-ng-1.0_rc4.ebuild, -files/sha-compile-fix-64bit.patch:
+  Version bump (bug #279609).
+
+  01 Jun 2009; nixnut <nixnut@gentoo.org> aircrack-ng-1.0_rc3.ebuild:
+  ppc stable #268024
+
+  07 May 2009; Raúl Porcel <armin76@gentoo.org> aircrack-ng-1.0_rc3.ebuild:
+  arm stable wrt #268024
+
+  03 May 2009; Markus Meier <maekke@gentoo.org> aircrack-ng-1.0_rc3.ebuild:
+  amd64/x86 stable, bug #268024
+
+  25 Apr 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  aircrack-ng-1.0_rc3:
+  Install unstable tools (bug #267202).
+
+  09 Apr 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +files/aircrack-ng-1.0_rc3-respect_LDFLAGS.patch,
+  aircrack-ng-1.0_rc3.ebuild:
+  Respect LDFLAGS (bug #262959).
+
+*aircrack-ng-1.0_rc3 (29 Mar 2009)
+
+  29 Mar 2009; Patrick Lauer <patrick@gentoo.org>
+  +aircrack-ng-1.0_rc3.ebuild:
+  Bump to 1.0_rc3.
+
+  19 Mar 2009; Joseph Jezak <josejx@gentoo.org>
+  aircrack-ng-1.0_rc2-r1.ebuild:
+  Marked ~ppc for bug #253803.
+
+  15 Mar 2009; Raúl Porcel <armin76@gentoo.org>
+  aircrack-ng-1.0_rc2-r1.ebuild:
+  Add ~arm wrt #253803
+
+*aircrack-ng-1.0_rc2-r1 (12 Mar 2009)
+
+  12 Mar 2009; Robert Buchholz <rbu@gentoo.org>
+  +files/aircrack-ng-1.0_rc2-freebsd.patch, -aircrack-ng-1.0_rc2.ebuild,
+  +aircrack-ng-1.0_rc2-r1.ebuild:
+  Reintroduce iw as a dep on Linux that got dropped in the bump (bug # 260177),
+  Improve support for current FreeBSD (bug #253803): applied some patches and
+  remove airmon-ng application.
+
+*aircrack-ng-1.0_rc2 (01 Mar 2009)
+
+  01 Mar 2009; Patrick Lauer <patrick@gentoo.org>
+  +files/sha-compile-fix-64bit.patch, +aircrack-ng-1.0_rc2.ebuild:
+  Bump to 1.0_rc2, fixes #256545. Patch by toogle <commando2004@yandex.ru>.
+
+*aircrack-ng-1.0_rc1 (05 Jan 2009)
+
+  05 Jan 2009; Robert Buchholz <rbu@gentoo.org> +aircrack-ng-1.0_rc1.ebuild:
+  Version bump, ebuild contributions by Dylan Scott, Alessandro Guido, Roel
+  Aaij and Pierre Guinoiseau, bug #233285.
+
+  22 Dec 2008; Marcelo Goes <vanquirius@gentoo.org>
+  -aircrack-ng-0.9.1.ebuild, -aircrack-ng-0.9.2.ebuild:
+  Remove old ebuilds.
+
+  27 Sep 2008; Raúl Porcel <armin76@gentoo.org> aircrack-ng-0.9.3.ebuild:
+  arm stable wrt #225241
+
+  22 Jun 2008; <welp@gentoo.org> aircrack-ng-0.9.3.ebuild:
+  Stable on amd64; bug 225241
+
+  14 Jun 2008; nixnut <nixnut@gentoo.org> aircrack-ng-0.9.3.ebuild:
+  Stable on ppc wrt bug 225241
+
+  13 Jun 2008; Raúl Porcel <armin76@gentoo.org> aircrack-ng-0.9.3.ebuild:
+  x86 stable wrt #225241
+
+*aircrack-ng-0.9.3 (16 Mar 2008)
+
+  16 Mar 2008; Alon Bar-Lev <alonbl@gentoo.org> +aircrack-ng-0.9.3.ebuild:
+  Version bump, bug#209429
+
+*aircrack-ng-0.9.2 (09 Feb 2008)
+
+  09 Feb 2008; Alon Bar-Lev <alonbl@gentoo.org> -aircrack-ng-0.9.ebuild,
+  +aircrack-ng-0.9.2.ebuild:
+  Version bump, bug#209429
+
+  06 Aug 2007; Raúl Porcel <armin76@gentoo.org> aircrack-ng-0.9.1.ebuild:
+  x86 stable
+
+*aircrack-ng-0.9.1 (05 Jul 2007)
+
+  05 Jul 2007; Alon Bar-Lev <alonbl@gentoo.org> +aircrack-ng-0.9.1.ebuild:
+  Version bump, bug#184285, cleanup.
+
+  21 Jun 2007; Raúl Porcel <armin76@gentoo.org> aircrack-ng-0.9.ebuild:
+  x86 stable
+
+  07 Jun 2007; Raúl Porcel <armin76@gentoo.org> aircrack-ng-0.8.ebuild:
+  x86 stable
+
+*aircrack-ng-0.9 (14 May 2007)
+
+  14 May 2007; Alon Bar-Lev <alonbl@gentoo.org> +aircrack-ng-0.9.ebuild:
+  Version bump
+
+*aircrack-ng-0.8 (03 May 2007)
+
+  03 May 2007; Alon Bar-Lev <alonbl@gentoo.org> +aircrack-ng-0.8.ebuild:
+  Version bump, bug#176933
+
+  13 Apr 2007; Raúl Porcel <armin76@gentoo.org> aircrack-ng-0.7-r2.ebuild:
+  x86 stable wrt security bug 174340
+
+*aircrack-ng-0.7-r2 (13 Apr 2007)
+
+  13 Apr 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/aircrack-ng-0.7-security.patch, +aircrack-ng-0.7-r2.ebuild:
+  Added security patch, downgrade from upstream, bug#174340
+
+  18 Mar 2007; Peter Weller <welp@gentoo.org> aircrack-ng-0.7-r1.ebuild:
+  Keyworded ~x86-fbsd wrt bug 171217
+
+  17 Mar 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  files/process-group-leader.c, aircrack-ng-0.7-r1.ebuild:
+  x86-fbsd fixups, bug#171217, Thanks to ebfe
+
+  16 Mar 2007; Alon Bar-Lev <alonbl@gentoo.org> -aircrack-ng-0.6.2.ebuild,
+  -aircrack-ng-0.7.ebuild:
+  Cleanup
+
+  16 Mar 2007; Raúl Porcel <armin76@gentoo.org> aircrack-ng-0.7-r1.ebuild:
+  Err, stabilize -r1 this time, bug 171188
+
+  16 Mar 2007; Raúl Porcel <armin76@gentoo.org> aircrack-ng-0.7.ebuild:
+  x86 stable wrt bug 171188
+
+*aircrack-ng-0.7-r1 (12 Mar 2007)
+
+  12 Mar 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/aircrack-ng-0.7-make.patch, +aircrack-ng-0.7-r1.ebuild:
+  Added userland only support, bug#170404, thanks to ebfe
+
+*aircrack-ng-0.7 (22 Jan 2007)
+
+  22 Jan 2007; Alon Bar-Lev <alonbl@gentoo.org> +aircrack-ng-0.7.ebuild:
+  Version bump, closes bug#163175, thanks to Maxxer
+
+  02 Nov 2006; Alon Bar-Lev <alonbl@gentoo.org> -aircrack-ng-0.5-r1.ebuild,
+  -aircrack-ng-0.6.ebuild, -aircrack-ng-0.6.1.ebuild:
+  Cleanup old versions
+
+  01 Nov 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  aircrack-ng-0.6.2.ebuild:
+  Stable on x86 wrt bug #148913.
+
+  30 Oct 2006; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/process-group-leader.c, aircrack-ng-0.5-r1.ebuild,
+  aircrack-ng-0.6.ebuild, aircrack-ng-0.6.1.ebuild,
+  aircrack-ng-0.6.2.ebuild:
+  Replace interactive shell with simple C program, since interactive shell is
+  not always interactive (bug#148913)
+
+  23 Oct 2006; Alon Bar-Lev <alonbl@gentoo.org> aircrack-ng-0.5-r1.ebuild,
+  aircrack-ng-0.6.ebuild, aircrack-ng-0.6.1.ebuild,
+  aircrack-ng-0.6.2.ebuild:
+  Modify test to be protected by interactive shell, so signal will not be
+  catched by sandbox, closes bug#138362
+
+*aircrack-ng-0.6.2 (01 Oct 2006)
+
+  01 Oct 2006; Stefan Schweizer <genstef@gentoo.org>
+  +aircrack-ng-0.6.2.ebuild:
+  version bump thanks to ChazeFroy <chazefroy@gmail.com> in bug 149783
+
+*aircrack-ng-0.6.1 (23 Sep 2006)
+
+  23 Sep 2006; Stefan Schweizer <genstef@gentoo.org>
+  +aircrack-ng-0.6.1.ebuild:
+  version bump thanks to David Li <matrixhax0r@gmail.com> in bug 148003
+
+  06 Jul 2006; Joshua Jackson <tsunam@gentoo.org> aircrack-ng-0.5-r1.ebuild:
+  Stable x86; bug #138749
+
+*aircrack-ng-0.6 (01 Jul 2006)
+
+  01 Jul 2006; Marcelo Goes <vanquirius@gentoo.org> -aircrack-ng-0.4.ebuild,
+  +aircrack-ng-0.6.ebuild:
+  0.6 version bump for bug 137838. Thanks to ChazeFroy <chazefroy at gmail dot
+  com>.
+
+*aircrack-ng-0.5-r1 (25 May 2006)
+
+  25 May 2006; Marcelo Goes <vanquirius@gentoo.org>
+  +aircrack-ng-0.5-r1.ebuild:
+  0.5-r1 version bump for bug 133373. Thanks to cygeus <cygeus at gmail dot com>.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+  24 Apr 2006; Joseph Jezak <josejx@gentoo.org> aircrack-ng-0.4.ebuild:
+  Marked ~ppc for bug #127210.
+
+  19 Apr 2006; Daniel Gryniewicz <dang@gentoo.org> aircrack-ng-0.4.ebuild:
+  mark ~amd64 per bug# 127210
+
+*aircrack-ng-0.4 (18 Apr 2006)
+
+  18 Apr 2006; Marcelo Goes <vanquirius@gentoo.org> +metadata.xml,
+  +aircrack-ng-0.4.ebuild:
+  Initial commit for bug 127210. Thanks to <cygeus at gmail dot com>.

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>xfce</herd>
+  <use>
+    <flag name='lxpanel'>Build the applet for <pkg>lxde-base/lxpanel</pkg>, you can set XFCE_PLUGINS="" if you don't want the Xfce dependencies.</flag>
+  </use>
+</pkgmetadata>

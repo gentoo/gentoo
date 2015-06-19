@@ -1,0 +1,279 @@
+# ChangeLog for www-servers/pound
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-servers/pound/ChangeLog,v 1.56 2015/05/23 00:21:41 mrueg Exp $
+
+  23 May 2015; Manuel Rüger <mrueg@gentoo.org> -pound-2.5.ebuild,
+  -pound-2.7a.ebuild:
+  Remove old.
+
+*pound-2.7f (30 Dec 2014)
+
+  30 Dec 2014; Patrick Lauer <patrick@gentoo.org> +pound-2.7f.ebuild:
+  Bump
+
+*pound-2.7d (25 Oct 2014)
+
+  25 Oct 2014; Patrick Lauer <patrick@gentoo.org> +pound-2.7d.ebuild:
+  Bump
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pound-2.5.ebuild,
+  pound-2.6.ebuild, pound-2.7a.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*pound-2.7a (25 Mar 2013)
+
+  25 Mar 2013; Patrick Lauer <patrick@gentoo.org> +pound-2.7a.ebuild:
+  Bump for #462380
+
+  30 Sep 2012; Raúl Porcel <armin76@gentoo.org> pound-2.5.ebuild:
+  Move to ~alpha
+
+  21 Aug 2012; Johannes Huber <johu@gentoo.org> pound-2.6.ebuild:
+  Stable for x86, wrt bug #422245
+
+*pound-2.6 (27 Apr 2012)
+
+  27 Apr 2012; Patrick Lauer <patrick@gentoo.org> +pound-2.6.ebuild,
+  metadata.xml:
+  Bump, taking over from Mr. Maintainer-Needed
+
+  21 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop www-server herd as discussed in gentoo-dev ML.
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #118937
+
+  06 Sep 2010; Raúl Porcel <armin76@gentoo.org> pound-2.5.ebuild:
+  alpha stable wrt #331449
+
+  08 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> pound-2.5.ebuild:
+  x86 stable wrt bug #331449
+
+  06 Aug 2010; Samuli Suominen <ssuominen@gentoo.org> pound-2.5.ebuild,
+  +files/pound-2.5-openssl-1.patch:
+  Fix building with OpenSSL >= 1.0.0 wrt #327721 by Adrian Bassett.
+
+*pound-2.5 (12 Feb 2010)
+
+  12 Feb 2010; Thilo Bangert <bangert@gentoo.org> +pound-2.5.ebuild:
+  version bump
+
+*pound-2.4.5-r1 (14 Oct 2009)
+
+  14 Oct 2009; Thilo Bangert <bangert@gentoo.org> -pound-2.4.3.ebuild,
+  -pound-2.4.4.ebuild, -pound-2.4.5.ebuild, +pound-2.4.5-r1.ebuild:
+  remove old versions - remove static and ssl USE flags (dont work anymore)
+
+*pound-2.4.5 (07 Jul 2009)
+
+  07 Jul 2009; Thilo Bangert <bangert@gentoo.org> +pound-2.4.5.ebuild:
+  version bump
+
+  27 Jan 2009; Thilo Bangert <bangert@gentoo.org> -files/pound-2.cfg,
+  -files/pound.cfg, -pound-1.10.ebuild, -pound-2.4.ebuild,
+  -pound-2.4.2.ebuild:
+  cleanup old versions
+
+*pound-2.4.4 (27 Jan 2009)
+
+  27 Jan 2009; Thilo Bangert <bangert@gentoo.org> +pound-2.4.4.ebuild:
+  version bump
+
+  22 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*pound-2.4.3 (31 May 2008)
+
+  31 May 2008; Thilo Bangert <bangert@gentoo.org> +pound-2.4.3.ebuild:
+  version bump
+
+*pound-2.4.2 (24 Apr 2008)
+
+  24 Apr 2008; Thilo Bangert <bangert@gentoo.org> +pound-2.4.2.ebuild:
+  version bump
+
+  10 Mar 2008; Thilo Bangert <bangert@gentoo.org> pound-2.4.ebuild:
+  reflect license change to GPLv3
+
+*pound-2.4 (11 Feb 2008)
+
+  11 Feb 2008; Thilo Bangert <bangert@gentoo.org> +pound-2.4.ebuild:
+  version bump
+
+  30 Jan 2008; Thilo Bangert <bangert@gentoo.org> -pound-2.0.5.ebuild,
+  -pound-2.1.ebuild, -pound-2.2.ebuild, -pound-2.3.ebuild,
+  -pound-2.3.1.ebuild:
+  remove old versions
+
+  29 Jan 2008; Raúl Porcel <armin76@gentoo.org> pound-2.3.2.ebuild:
+  alpha stable wrt #207552
+
+  26 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org> pound-2.3.2.ebuild:
+  ppc stable, bug #207552
+
+  26 Jan 2008; Thilo Bangert <bangert@gentoo.org> pound-1.10.ebuild,
+  pound-2.0.5.ebuild, pound-2.1.ebuild, pound-2.2.ebuild, pound-2.3.ebuild,
+  pound-2.3.1.ebuild, pound-2.3.2.ebuild:
+  fix quoting
+
+  12 Nov 2007; Raúl Porcel <armin76@gentoo.org> pound-2.3.2.ebuild:
+  x86 stable
+
+*pound-2.3.2 (18 May 2007)
+
+  18 May 2007; Thilo Bangert <bangert@gentoo.org> +pound-2.3.2.ebuild:
+  version bump
+
+*pound-2.3.1 (07 May 2007)
+
+  07 May 2007; Thilo Bangert <bangert@gentoo.org> +pound-2.3.1.ebuild:
+  version bump
+
+*pound-2.3 (11 Apr 2007)
+
+  11 Apr 2007; Thilo Bangert <bangert@gentoo.org> +pound-2.3.ebuild:
+  version bump
+
+  09 Jan 2007; Thilo Bangert <bangert@gentoo.org> pound-1.10.ebuild,
+  pound-2.0.5.ebuild, pound-2.1.ebuild:
+  einfo -> elog transition
+
+*pound-2.2 (08 Jan 2007)
+
+  08 Jan 2007; Thilo Bangert <bangert@gentoo.org> +files/pound-2.2.cfg,
+  +pound-2.2.ebuild:
+  version bump
+
+  10 Dec 2006; Elfyn McBratney <beu@gentoo.org> pound-1.10.ebuild,
+  pound-2.0.5.ebuild, pound-2.1.ebuild:
+  Kill redundant DEPEND on virtual/libc.
+
+*pound-2.1 (06 Sep 2006)
+
+  06 Sep 2006; Thilo Bangert <bangert@gentoo.org> +pound-2.1.ebuild:
+  version bump - fixes #146469 - thanks to Pedro Algarvio
+
+  21 May 2006; Thilo Bangert <bangert@gentoo.org> -files/pound.init,
+  -pound-1.9.ebuild, -pound-2.0.3.ebuild:
+  remove vulnerable, unused and experimental ebuilds/files
+
+  21 May 2006; Mark Loeser <halcy0n@gentoo.org> pound-2.0.5.ebuild:
+  Stable on x86; bug #118541
+
+  19 May 2006; Tobias Scherbaum <dertobi123@gentoo.org> pound-2.0.5.ebuild:
+  ppc stable, bug #118541
+
+  17 May 2006; Thomas Cort <tcort@gentoo.org> pound-2.0.5.ebuild:
+  Stable on alpha wrt security Bug #118541.
+
+  16 May 2006; Thilo Bangert <bangert@gentoo.org> pound-1.10.ebuild:
+  install the init script (fix)
+
+*pound-1.10 (16 May 2006)
+
+  16 May 2006; Thilo Bangert <bangert@gentoo.org> +pound-1.10.ebuild:
+  added old version - has the security fix, but not the incompatible
+  configuration file change (bug #118541)
+
+  16 May 2006; Thilo Bangert <bangert@gentoo.org> -pound-1.7.ebuild,
+  -pound-1.8.3.ebuild:
+  removed first batch of vulnerable versions (bug #118541)
+
+  16 May 2006; Thilo Bangert <bangert@gentoo.org> pound-2.0.5.ebuild:
+  added a warning about incompatible configuration files in newer versions
+
+*pound-2.0.5 (16 May 2006)
+
+  16 May 2006; Thilo Bangert <bangert@gentoo.org> +files/pound-2.cfg,
+  metadata.xml, +pound-2.0.5.ebuild:
+  assumed maintainership - added <longdescription>
+  added working configuration for 2.0.x - bumped to 2.0.5
+
+  01 Apr 2006; <nixnut@gentoo.org> pound-2.0.3.ebuild:
+  Stable on ppc. Bug #118541
+
+  27 Mar 2006; Fernando J. Pereda <ferdy@gentoo.org> pound-2.0.3.ebuild:
+  Stable on alpha wrt security bug #118541. Tested by Thomas Cort
+  <tcort@cs.ubishops.ca>.
+
+*pound-2.0.3 (18 Mar 2006)
+
+  18 Mar 2006; <solar@gentoo.org> +pound-2.0.3.ebuild:
+  - security bump for bug 118541
+
+  21 Aug 2005; Renat Lumpau <rl03@gentoo.org> metadata.xml:
+  Reassigning to www-servers
+
+*pound-1.9 (07 Jul 2005)
+
+  07 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org> +pound-1.9.ebuild:
+  New upstream version; Keywording ~amd64; Resolves Bug #70487; New init.d 
+  file for incompatible changes beginning with 1.9.
+
+  28 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> pound-1.8.3.ebuild:
+  Added static support via USE=static for bug 84482.
+
+  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> pound-1.8.3.ebuild:
+  Stable on alpha, bug 90851.
+
+  29 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> pound-1.8.3.ebuild:
+  Stable on ppc.
+
+*pound-1.8.3 (29 Apr 2005)
+
+  29 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> -pound-1.6.ebuild,
+  +pound-1.8.3.ebuild:
+  Version bump for security bug 90851.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> pound-1.7.ebuild:
+  Masked pound-1.7.ebuild stable for ppc
+
+*pound-1.6 (08 Aug 2004)
+
+  08 Aug 2004; Stuart Herbert <stuart@gentoo.org> +metadata.xml,
+  +files/pound.cfg, +files/pound.init, +pound-1.6.ebuild, +pound-1.7.ebuild:
+  Moved from net-www/pound to www-servers/pound.
+
+  16 Jul 2004; <rob@gentoo.org> files/pound.init:
+  Fix the init script. Closes #57134. Thanks to kuma@legmo.com for the report
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> pound-1.6.ebuild,
+  pound-1.7.ebuild:
+  virtual/glibc -> virtual/libc
+
+  27 Jun 2004; Aron Griffis <agriffis@gentoo.org> pound-1.6.ebuild:
+  QA - fix use invocation
+
+  11 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> pound-1.7.ebuild:
+  Stable on alpha.
+
+  09 May 2004; Stuart Herbert <stuart@gentoo.org> pound-1.7.ebuild:
+  Marked stable on x86; for bug #50421
+
+*pound-1.7 (23 Apr 2004)
+
+  23 Apr 2004; Stuart Herbert <stuart@gentoo.org> pound-1.7.ebuild:
+  Version bump; added 'msdav' and 'unsafe' local USE flags; see bug #45615
+
+*pound-1.6 (27 Jan 2004)
+
+  27 Jan 2004; Martin Holzer <mholzer@gentoo.org> pound-1.6.ebuild:
+  Version bumped. Closes 39491
+
+*pound-1.5 (01 Nov 2003)
+
+  01 Nov 2003; Markus Nigbur <pyrania@gentoo.org> metadata.xml,
+  pound-1.5.ebuild:
+  Version bump. Thanks to Thomas Eckert (#32454).
+
+*pound-1.4 (02 Aug 2003)
+
+  02 Aug 2003; Michael Imhof <tantive@gentoo.org> pound-1.4.ebuild :
+  Initial import.  Ebuild submitted by Tom <Eckert.Thomas@gmx.net>.
+  Should close #19207.

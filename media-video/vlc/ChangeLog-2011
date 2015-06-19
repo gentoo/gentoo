@@ -1,0 +1,3128 @@
+# ChangeLog for media-video/vlc
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/ChangeLog-2011,v 1.1 2012/01/01 20:51:20 dilfridge Exp $
+
+*vlc-1.2.0_pre3 (31 Dec 2011)
+
+  31 Dec 2011; Alexis Ballier <aballier@gentoo.org> -vlc-1.2.0_pre1.ebuild,
+  +vlc-1.2.0_pre3.ebuild:
+  bump to pre3
+
+  27 Dec 2011; Mark Loeser <halcy0n@gentoo.org> vlc-1.1.13.ebuild:
+  Stable for ppc/ppc64; bug #395543
+
+  26 Dec 2011; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.12-r1.ebuild,
+  -vlc-1.1.12-r2.ebuild:
+  remove old
+
+  21 Dec 2011; Agostino Sarubbo <ago@gentoo.org> vlc-1.1.13.ebuild:
+  Stable for X86, wrt security bug #395543
+
+  21 Dec 2011; Agostino Sarubbo <ago@gentoo.org> vlc-1.1.13.ebuild:
+  Stable for AMD64, wrt security bug #395543
+
+*vlc-1.1.13 (21 Dec 2011)
+
+  21 Dec 2011; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.13.ebuild,
+  vlc-1.1.9999.ebuild:
+  version bump and sync with 1.1.9999
+
+*vlc-1.1.12-r2 (17 Dec 2011)
+
+  17 Dec 2011; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.12-r2.ebuild:
+  fix pulseaudio automagic, bug #394249
+
+  16 Dec 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.2.9999.ebuild,
+  vlc-9999.ebuild:
+  bump live dep
+
+*vlc-1.1.12-r1 (09 Dec 2011)
+
+  09 Dec 2011; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.12-r1.ebuild,
+  vlc-1.1.9999.ebuild, vlc-1.2.9999.ebuild, vlc-9999.ebuild:
+  Force using and initialising libX11 for threads in the xosd module. This
+  should fix bug #393439
+
+  09 Dec 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.2.9999.ebuild,
+  vlc-9999.ebuild:
+  pass --without-tuning to configure so that we dont get a -mtune appended to
+  our cflags
+
+*vlc-1.2.9999 (07 Dec 2011)
+
+  07 Dec 2011; Alexis Ballier <aballier@gentoo.org> +vlc-1.2.9999.ebuild:
+  add live ebuild for 1.2 branch
+
+  06 Dec 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  macosx-qtcapture has been renamed to macosx-qtkit
+
+  06 Dec 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  fix libbluray dep
+
+  06 Dec 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.1.12.ebuild,
+  vlc-1.1.9999.ebuild, vlc-1.2.0_pre1.ebuild, vlc-9999.ebuild:
+  improve font deps, by Luke-Jr, bug #392689: use any ttf font when fontconfig
+  is enabled and force dejavu if not because its accessed by path
+
+  11 Nov 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.1.12.ebuild,
+  vlc-1.1.9999.ebuild:
+  libnotify plugin requires gtk+:2 even on 1.1, bug #386743 by
+  paul.wap@gmail.com
+
+  06 Nov 2011; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.11.ebuild:
+  remove old
+
+  05 Nov 2011; Raúl Porcel <armin76@gentoo.org> vlc-1.1.12.ebuild:
+  alpha/sparc stable wrt #385953
+
+*vlc-1.2.0_pre1 (04 Nov 2011)
+
+  04 Nov 2011; Alexis Ballier <aballier@gentoo.org> +vlc-1.2.0_pre1.ebuild,
+  vlc-9999.ebuild:
+  bump pre release and use upstreams .tar.xz tarballs
+
+  31 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> vlc-1.1.11.ebuild,
+  vlc-1.1.12.ebuild, vlc-1.1.9999.ebuild:
+  Rename USE="v4l2" to USE="v4l" while removing support for video4linux 1.x wrt
+  #385241
+
+  09 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org> vlc-1.1.12.ebuild:
+  ppc/ppc64 stable wrt #385953
+
+  09 Oct 2011; Markos Chandras <hwoarang@gentoo.org> vlc-1.1.12.ebuild:
+  Stable on amd64 wrt bug #385953
+
+  08 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> vlc-1.1.12.ebuild:
+  x86 stable wrt bug #385953
+
+  06 Oct 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  remove old libX11 and samba deps
+
+*vlc-1.1.12 (06 Oct 2011)
+
+  06 Oct 2011; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.12.ebuild:
+  version bump
+
+  22 Sep 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.1.11.ebuild,
+  vlc-1.1.9999.ebuild, vlc-9999.ebuild:
+  use minizip from zlib when available: with a or dep for 1.1 and always use it
+  for 1.2, bug #383351
+
+  21 Sep 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.1.11.ebuild:
+  fix zlib dep, bug #383351; for now we will force to use the older version
+  until bug #383179 is sorted out with respective upstreams
+
+  21 Sep 2011; Michał Górny <mgorny@gentoo.org> vlc-1.1.9999.ebuild,
+  vlc-9999.ebuild:
+  Migrate to git-2.
+
+  08 Sep 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  add libsamplerate useflag
+
+  08 Sep 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  v4l2 is now automaticaly built upstream if headers are present, drop the
+  useflag
+
+  08 Sep 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  fix build of -9999 after recent changes
+
+  27 Aug 2011; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.10.ebuild:
+  remove old
+
+  27 Aug 2011; Raúl Porcel <armin76@gentoo.org> vlc-1.1.11.ebuild:
+  alpha/sparc stable wrt #375167
+
+  19 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> vlc-1.1.11.ebuild:
+  x86 stable wrt security bug #375167
+
+  18 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> vlc-1.1.11.ebuild:
+  ppc/ppc64 stable wrt #375167
+
+  17 Aug 2011; Tony Vroon <chainsaw@gentoo.org> vlc-1.1.11.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo in
+  security bug #375167.
+
+*vlc-1.1.11 (21 Jul 2011)
+
+  21 Jul 2011; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.11.ebuild:
+  version bump
+
+  22 Jun 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.1.10.ebuild,
+  vlc-1.1.9999.ebuild:
+  aalib and sdl require X, bug #366815
+
+  22 Jun 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  fix the cachegen patch
+
+  14 Jun 2011; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.9.ebuild,
+  -vlc-1.1.9-r1.ebuild:
+  remove old
+
+  12 Jun 2011; Raúl Porcel <armin76@gentoo.org> vlc-1.1.10.ebuild:
+  alpha/sparc stable wrt #370321
+
+  08 Jun 2011; Kacper Kowalik <xarthisius@gentoo.org> vlc-1.1.10.ebuild:
+  ppc/ppc64 stable wrt #370321
+
+  08 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> vlc-1.1.10.ebuild:
+  x86 stable wrt security bug #370321
+
+  07 Jun 2011; Markos Chandras <hwoarang@gentoo.org> vlc-1.1.10.ebuild:
+  Stable on amd64 wrt bug #370321
+
+*vlc-1.1.10 (06 Jun 2011)
+
+  06 Jun 2011; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.10.ebuild:
+  version bump
+
+  06 Jun 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.1.9999.ebuild:
+  Fix the freetype patch wrt upstream changes
+
+  30 May 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  require libxcb 1.6
+
+  24 May 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.1.9999.ebuild:
+  ffmpeg patch is merged upstream, drop it
+
+*vlc-1.1.9-r1 (17 May 2011)
+
+  17 May 2011; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.9-r1.ebuild,
+  vlc-1.1.9999.ebuild:
+  Fix the ffmpeg compatibility patch, should fix bug #365833
+
+  17 May 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  bump gnutls dep
+
+  12 May 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  update, again and again, the freetype patch
+
+  10 May 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  bluray support needs libxml2
+
+  02 May 2011; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.8.ebuild:
+  remove old
+
+  26 Apr 2011; Kacper Kowalik <xarthisius@gentoo.org> vlc-1.1.9.ebuild:
+  ppc64 stable wrt #363359
+
+  22 Apr 2011; Brent Baude <ranger@gentoo.org> vlc-1.1.9.ebuild:
+  Marking vlc-1.1.9 ppc for bug 363359
+
+  20 Apr 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  libass 0.9.8 is required now
+
+  20 Apr 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  dvb useflag now contros ts muxer/demuxer via dvbpsi
+
+  20 Apr 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  update freetype font patch, bug #360841 again
+
+  20 Apr 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.1.9.ebuild,
+  vlc-1.1.9999.ebuild:
+  fix build after the big libav* version bump, backported by Luca Barbato, bug
+  #364177
+
+  16 Apr 2011; Raúl Porcel <armin76@gentoo.org> vlc-1.1.9.ebuild:
+  alpha/sparc stable wrt #363359
+
+  15 Apr 2011; Christoph Mende <angelos@gentoo.org> vlc-1.1.9.ebuild:
+  Stable on amd64 wrt bug #363359
+
+  15 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> vlc-1.1.9.ebuild:
+  x86 stable wrt security bug #363359
+
+*vlc-1.1.9 (14 Apr 2011)
+
+  14 Apr 2011; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.9.ebuild:
+  version bump
+
+  10 Apr 2011; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.7.ebuild:
+  remove old
+
+  09 Apr 2011; Raúl Porcel <armin76@gentoo.org> vlc-1.1.8.ebuild:
+  alpha/sparc stable wrt #360189
+
+  03 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> vlc-1.1.8.ebuild:
+  x86 stable wrt security bug #360189
+
+  03 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> vlc-1.1.7.ebuild,
+  vlc-1.1.8.ebuild, vlc-1.1.9999.ebuild, vlc-9999.ebuild:
+  Compilation passes with libav and it plays movies. Moving from
+  media-video/ffmpeg to virtual/ffmpeg (unversioned because oldest sattisfy the
+  dependency requirements). Fixes bug #361123.
+
+  02 Apr 2011; Kacper Kowalik <xarthisius@gentoo.org> vlc-1.1.8.ebuild:
+  ppc64 stable wrt #360189
+
+  31 Mar 2011; Brent Baude <ranger@gentoo.org> vlc-1.1.8.ebuild:
+  Marking vlc-1.1.8 ppc for bug 360189
+
+  30 Mar 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  bda and snapshot useflags are gone
+
+  30 Mar 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  remove the blocker on old versions, this seems fine with recent libtools
+
+  30 Mar 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  fix the freetype default font patch, by Artem Karimov, bug #360841
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org> vlc-1.1.8.ebuild:
+  Stable on amd64 wrt bug #360189
+
+*vlc-1.1.8 (29 Mar 2011)
+
+  29 Mar 2011; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.8.ebuild:
+  version bump
+
+  29 Mar 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.1.9999.ebuild,
+  vlc-9999.ebuild:
+  bump schroedinger dep, by Lorenzo Marussi, bug #359813
+
+  21 Mar 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  merge dvb and dvbpsi useflags as per upstream, remove fbcon one
+
+  04 Mar 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  android useflag is gone
+
+  24 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  add android useflag
+
+  22 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  add media-library useflag
+
+  21 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  aalib, sdl and vaapi require X too
+
+  21 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  egl requires X
+
+  21 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Bump xcb/xcb-util requirements
+
+  19 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.1.7.ebuild:
+  Add patch to fix build with libnotify 0.7, by Samuli Suominen, bug #353848
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.1.7.ebuild,
+  vlc-1.1.9999.ebuild:
+  switch libX11 dep to a sane one, bug #348518
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  add neon useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  add libtar useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  add portaudio useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  add an useflag for the snapshot vout plugin
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  split ffmpeg in avcodec, avformat, postproc and swscale useflags as done
+  upstream to allow a more finegrained control on what to install.
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Add fbosd and macosx specific useflags
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  readd some deps for skins useflag that were lost
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  more win32 specific useflags
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  add egl useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  add switcher useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  add dxva2 useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  add omxil useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Allow to build without dvbpsi
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Add bluray useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Add dshow and bda useflags (win32 only)
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Add linsys useflag
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Add growl useflag for growl notification support (over UDP for remote access
+  and native on OSX)
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  libnotify plugin requires gtk+-2.0
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Rename the stream useflag to encode and enable it by default which makes more
+  sense.
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Remove the babysitting line for the qt4 gui, it is well known these days that
+  vlc has a qt4 gui, remove the flag filtering for x86, gcc should be fixed
+  instead.
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Convert to EAPI-4, make use of REQUIRED_USE, simplify and remove useless
+  eclass inherits.
+
+  16 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  remoteosd is now controlled by the gcrypt useflag
+
+  14 Feb 2011; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.4.ebuild,
+  -vlc-1.1.4.1.ebuild, -vlc-1.1.5.ebuild, -vlc-1.1.6.ebuild:
+  remove old
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> vlc-1.1.6.ebuild,
+  vlc-1.1.7.ebuild:
+  sparc stable wrt #353326
+
+  05 Feb 2011; Tobias Klausmann <klausman@gentoo.org> vlc-1.1.7.ebuild:
+  Stable on alpha, bug #353326
+
+  04 Feb 2011; Christian Faulhammer <fauli@gentoo.org> vlc-1.1.7.ebuild:
+  stable x86, security bug 353326
+
+  03 Feb 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.1.7.ebuild:
+  Fix build with libmatroska-1.1.0, by Ambroz Bizjak, bug #353491
+
+  01 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> vlc-1.1.7.ebuild:
+  ppc/ppc64 stable wrt #353326
+
+  01 Feb 2011; Markos Chandras <hwoarang@gentoo.org> vlc-1.1.7.ebuild:
+  Stable on amd64 wrt bug #353326
+
+*vlc-1.1.7 (31 Jan 2011)
+
+  31 Jan 2011; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.7.ebuild:
+  version bump
+
+  26 Jan 2011; <xarth@gentoo.org> vlc-1.1.6.ebuild:
+  ppc/ppc64 stable wrt #352206
+
+  26 Jan 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.1.6.ebuild,
+  vlc-1.1.9999.ebuild:
+  Attempt to fix the pulseaudio vs xlib mess
+
+  26 Jan 2011; Christian Faulhammer <fauli@gentoo.org> vlc-1.1.6.ebuild:
+  stable x86, security bug 352206
+
+  25 Jan 2011; Markos Chandras <hwoarang@gentoo.org> vlc-1.1.6.ebuild:
+  Stable on amd64 wrt bug #352206
+
+  25 Jan 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.1.6.ebuild:
+  backport a patch from upstream to fix build with lirc, bug #352660
+
+*vlc-1.1.6 (24 Jan 2011)
+
+  24 Jan 2011; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.6.ebuild:
+  version bump
+
+  13 Jan 2011; Brent Baude <ranger@gentoo.org> vlc-1.1.5.ebuild:
+  keyworded ~arch for ppc, bug 345329
+
+  02 Jan 2011; Alexis Ballier <aballier@gentoo.org> vlc-1.1.5.ebuild,
+  vlc-1.1.9999.ebuild, vlc-9999.ebuild:
+  bump alsa requirements, bug #344999 by Yang Dehua <yangdh@cableplus.com.cn>
+
+  26 Dec 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Add libsidplay-2 support
+
+  14 Nov 2010; Raúl Porcel <armin76@gentoo.org> vlc-1.1.5.ebuild:
+  Re-add ~sparc wrt #345329
+
+  14 Nov 2010; Markus Meier <maekke@gentoo.org> vlc-1.1.5.ebuild:
+  add ~x86, bug #345329
+
+  14 Nov 2010; Markus Meier <maekke@gentoo.org> vlc-1.1.5.ebuild:
+  add ~arm, bug #345329
+
+*vlc-1.1.5 (13 Nov 2010)
+
+  13 Nov 2010; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.5.ebuild:
+  version bump
+
+  07 Nov 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  use qt4-r2 eclass
+
+  07 Nov 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.9999.ebuild:
+  Add gme support for 1.1 too
+
+  07 Nov 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Add game-music-emu support and bump pulseaudio dep
+
+  04 Nov 2010; Alexis Ballier <aballier@gentoo.org> -vlc-1.0.6.ebuild:
+  remove old
+
+  25 Oct 2010; Mark Loeser <halcy0n@gentoo.org> vlc-1.1.4.ebuild:
+  Mark stable on ppc64; bug #332361
+
+  16 Oct 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Remove useless code and simplify doc handling
+
+  15 Oct 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  nsplugin is gone to a separate repository now, see
+  http://mailman.videolan.org/pipermail/videolan-announce/2010-October/00015
+  8.html , asademux has been long gone, remove both options
+
+  15 Oct 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  bump live version requirement
+
+  15 Oct 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.4.1.ebuild:
+  propagate 1.1.4 keywords to 1.1.4.1, they are very similar and most likely
+  been forgotten when rekeywording
+
+  15 Oct 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  fix cachegen patch, bug #336689
+
+  08 Oct 2010; Brent Baude <ranger@gentoo.org> vlc-1.1.4.ebuild:
+  Marking vlc-1.1.4 ppc for bug 332361
+
+  08 Oct 2010; Brent Baude <ranger@gentoo.org> vlc-1.1.4.ebuild:
+  Marking vlc-1.1.4 ~ppc for bug 325007
+
+  08 Oct 2010; Brent Baude <ranger@gentoo.org> vlc-1.1.4.ebuild:
+  Marking vlc-1.1.4 ~ppc64 for bug 325007
+
+  05 Oct 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  bump ebml and matroska requirements
+
+*vlc-1.1.4.1 (29 Sep 2010)
+
+  29 Sep 2010; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.4.1.ebuild:
+  version bump
+
+  24 Sep 2010; Markos Chandras <hwoarang@gentoo.org> vlc-1.1.4.ebuild:
+  Stable on amd64 wrt bug #332361
+
+  24 Sep 2010; Raúl Porcel <armin76@gentoo.org> vlc-1.1.4.ebuild:
+  sparc stable wrt #332361
+
+  21 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> vlc-1.1.4.ebuild,
+  vlc-1.1.9999.ebuild, vlc-9999.ebuild:
+  Update the dep on libX11 this time using proper version.
+
+  17 Sep 2010; Christian Faulhammer <fauli@gentoo.org> vlc-1.1.4.ebuild:
+  stable x86, security bug 332361
+
+  13 Sep 2010; Tobias Klausmann <klausman@gentoo.org> vlc-1.1.4.ebuild:
+  Stable on alpha, bug #332361
+
+  09 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> vlc-1.1.4.ebuild,
+  vlc-1.1.9999.ebuild, vlc-9999.ebuild:
+  Update deps on libX11[xcb].
+
+  28 Aug 2010; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.2.ebuild,
+  -vlc-1.1.3.ebuild:
+  remove old
+
+*vlc-1.1.4 (28 Aug 2010)
+
+  28 Aug 2010; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.4.ebuild:
+  version bump
+
+*vlc-1.1.3 (19 Aug 2010)
+
+  19 Aug 2010; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.3.ebuild:
+  version bump
+
+  02 Aug 2010; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.1.ebuild:
+  remove old
+
+*vlc-1.1.2 (02 Aug 2010)
+
+  02 Aug 2010; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.2.ebuild:
+  version bump
+
+  26 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  v4l support has been removed in favor of v4l2
+
+  22 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.9999.ebuild,
+  vlc-9999.ebuild:
+  Put keywords inside an if to make bumps even easier
+
+  22 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.1.ebuild,
+  vlc-1.1.9999.ebuild, vlc-9999.ebuild:
+  nsplugin requires xcb, bug #329343 by Johannes Rauh <jarauh@hotmail.com>
+
+  22 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.9999.ebuild:
+  remove patch merged upstream
+
+  21 Jul 2010; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.0.ebuild:
+  remove old
+
+  21 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  bump ffmpeg requirement
+
+*vlc-1.1.1 (21 Jul 2010)
+
+  21 Jul 2010; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.1.ebuild,
+  vlc-1.1.9999.ebuild:
+  version bump and add a fix for stack protector by Tristan Heaven
+  <nyhm@gentoo.org>, bug #328969
+
+  20 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  punt the .la files for 1.2
+
+  20 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  id3tag module has been removed upstream, superseded by taglib
+
+  18 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  block up to 1.1 for master, we still have the relink issue
+
+  18 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  ggi, svga and opengl output modules have been removed
+
+  18 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  update the patchset for master
+
+  17 Jul 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.9999.ebuild,
+  vlc-9999.ebuild:
+  bump libmodplug dep
+
+  03 Jul 2010; Zac Medico <zmedico@gentoo.org> vlc-1.1.0.ebuild,
+  vlc-1.1.9999.ebuild, vlc-9999.ebuild:
+  Bug #326179 - Move vlc blockers to DEPEND and bump to EAPI 3 so that die
+  in pkg_setup is unnecessary.
+
+  27 Jun 2010; Raúl Porcel <armin76@gentoo.org> vlc-1.1.0.ebuild:
+  Re-add ~alpha/~arm/~sparc wrt #325007
+
+  26 Jun 2010; Nirbheek Chauhan <nirbheek@gentoo.org> vlc-1.0.6.ebuild:
+  Increase the minimum dependency of xulrunner to 1.9, remove configure
+  option for 1.8, bug 324953
+
+  25 Jun 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.0.ebuild,
+  vlc-1.1.9999.ebuild, vlc-9999.ebuild:
+  opengl requires libX11[xcb], bug #325259
+
+  25 Jun 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.0.ebuild,
+  vlc-1.1.9999.ebuild, vlc-9999.ebuild:
+  force gcrypt with gnutls, bug #325207
+
+  22 Jun 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.0.ebuild,
+  vlc-1.1.9999.ebuild, vlc-9999.ebuild:
+  remove custom handling of icons; its done properly by upstream's makefiles
+  now, by Rafał Mużyło <galtgendo@o2.pl>, bug #325049
+
+  22 Jun 2010; Christian Faulhammer <fauli@gentoo.org> vlc-1.1.0.ebuild:
+  add ~x86 for bug 325007
+
+*vlc-1.1.0 (22 Jun 2010)
+
+  22 Jun 2010; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.0_rc4.ebuild,
+  +vlc-1.1.0.ebuild:
+  bump to 1.1.0
+
+  18 Jun 2010; Alexis Ballier <aballier@gentoo.org> -vlc-1.0.9999.ebuild:
+  Remove 1.0.9999 ebuild per the announce of end of support by upstream
+
+  16 Jun 2010; Alexis Ballier <aballier@gentoo.org> metadata.xml:
+  Add local description for the matroska useflag, by Sylvain BERTRAND
+  <sylvain.bertrand@gmail.com>, bug #324131
+
+*vlc-1.1.0_rc4 (16 Jun 2010)
+
+  16 Jun 2010; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.0_rc3.ebuild,
+  +vlc-1.1.0_rc4.ebuild:
+  bump to rc4
+
+  11 Jun 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.9999.ebuild,
+  vlc-9999.ebuild:
+  force regeneration of the plugin cache at postinst
+
+  11 Jun 2010; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.0_rc.ebuild:
+  remove old
+
+*vlc-1.1.0_rc3 (11 Jun 2010)
+
+  11 Jun 2010; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.0_rc3.ebuild:
+  bump to rc3
+
+*vlc-1.1.0_rc (25 May 2010)
+
+  25 May 2010; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.0_pre4.ebuild,
+  +vlc-1.1.0_rc.ebuild:
+  bump to rc
+
+  25 May 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.9999.ebuild,
+  vlc-9999.ebuild:
+  Pulseaudio does not require X but we need to have the X useflag enabled if
+  it is enabled on pulseaudio
+
+  19 May 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.0_pre4.ebuild,
+  vlc-1.1.9999.ebuild, vlc-9999.ebuild:
+  mtp 1.0.0 is required by the mtp plugin, bug #319815 by Nikoli
+  <nikoli@lavabit.com>
+
+  19 May 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.0.6.ebuild,
+  vlc-1.0.9999.ebuild, vlc-1.1.0_pre4.ebuild, vlc-1.1.9999.ebuild,
+  vlc-9999.ebuild:
+  pulseaudio requires libX11, bug #319003 by Tobias Jakobi
+  <liquid.acid@gmx.net>
+
+  15 May 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.0_pre4.ebuild,
+  vlc-1.1.9999.ebuild, vlc-9999.ebuild, metadata.xml:
+  Add vaapi useflag and support, by Frank Richter <res@crystalspace3d.org>,
+  bug #317319
+
+  14 May 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.0.6.ebuild,
+  vlc-1.0.9999.ebuild, vlc-1.1.0_pre4.ebuild, vlc-1.1.9999.ebuild,
+  vlc-9999.ebuild:
+  Remove useless dvdplay dep. by Matt Michalowski <me@mattm.id.au>, bug
+  #319477
+
+*vlc-1.1.0_pre4 (10 May 2010)
+
+  10 May 2010; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.0_pre3.ebuild,
+  +vlc-1.1.0_pre4.ebuild:
+  bump to pre4
+
+  05 May 2010; Alexis Ballier <aballier@gentoo.org> -vlc-1.0.4.ebuild,
+  -vlc-1.0.5.ebuild:
+  remove old
+
+  04 May 2010; Raúl Porcel <armin76@gentoo.org> vlc-1.0.6.ebuild:
+  alpha/sparc stable wrt #316709
+
+*vlc-1.1.0_pre3 (01 May 2010)
+
+  01 May 2010; Alexis Ballier <aballier@gentoo.org> -vlc-1.1.0_pre2.ebuild,
+  +vlc-1.1.0_pre3.ebuild:
+  bump to pre3
+
+  30 Apr 2010; Brent Baude <ranger@gentoo.org> vlc-1.0.6.ebuild:
+  Marking vlc-1.0.6 ppc64 for bug 316709
+
+  30 Apr 2010; Brent Baude <ranger@gentoo.org> vlc-1.0.6.ebuild:
+  Marking vlc-1.0.6 ppc for bug 316709
+
+  26 Apr 2010; Markus Meier <maekke@gentoo.org> vlc-1.0.6.ebuild:
+  amd64 stable, bug #316709
+
+  26 Apr 2010; Christian Faulhammer <fauli@gentoo.org> vlc-1.0.6.ebuild:
+  stable x86, security bug 316709
+
+  23 Apr 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.1.0_pre2.ebuild,
+  vlc-1.1.9999.ebuild, vlc-9999.ebuild:
+  Simplify vlc_use_enable_force here too, fix some useflags deps, require
+  dbus on avahi for avahi-client
+
+  23 Apr 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.0.6.ebuild,
+  vlc-1.0.9999.ebuild:
+  Fix some useflag combinations failures reported by andreas schürch
+  <andreas.schuerch@nativenet.ch>, bug #316805 and simplify
+  vlc_use_enable_force
+
+*vlc-1.1.9999 (23 Apr 2010)
+
+  23 Apr 2010; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.9999.ebuild:
+  live ebuild for the 1.1 branch
+
+*vlc-1.1.0_pre2 (22 Apr 2010)
+
+  22 Apr 2010; Alexis Ballier <aballier@gentoo.org> +vlc-1.1.0_pre2.ebuild:
+  push the prerelease of vlc 1.1
+
+*vlc-1.0.6 (22 Apr 2010)
+
+  22 Apr 2010; Alexis Ballier <aballier@gentoo.org> +vlc-1.0.6.ebuild:
+  version bump
+
+  18 Apr 2010; Pacho Ramos <pacho@gentoo.org> vlc-1.0.5.ebuild:
+  amd64 stable, bug 314011
+
+  16 Apr 2010; Brent Baude <ranger@gentoo.org> vlc-1.0.5.ebuild:
+  stable ppc, bug 314011
+
+  12 Apr 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  add kde useflag for installing KDE4 Solid action files
+
+  12 Apr 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Fix the plugin-cache path when generating it
+
+  12 Apr 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  dont try to install inexistant doc file
+
+  12 Apr 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  master now requires xulrunner 1.9.2
+
+  12 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> vlc-1.0.5.ebuild:
+  x86 stable wrt bug #314011
+
+  09 Apr 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Remove patch merged upstream, bug #312347
+
+  07 Apr 2010; Patrick Lauer <patrick@gentoo.org> vlc-1.0.4.ebuild,
+  vlc-1.0.5.ebuild, vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  Fixing samba deps
+
+  10 Mar 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Fix 9999 patchset, bug #308539
+
+  24 Feb 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.0.5.ebuild,
+  vlc-1.0.9999.ebuild:
+  Add a conditional patch for 1.0.x series to build against xulrunner 1.9.2,
+  bug #290318
+
+  24 Feb 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Do not generate the plugin cache at buildtime and do it in postinst
+
+  23 Feb 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  libsysfs code is gone in master
+
+  23 Feb 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.0.5.ebuild,
+  vlc-1.0.9999.ebuild:
+  Backport libpng 1.4 fix from upstream master, by Hanno Boeck, bug #305105
+
+  04 Feb 2010; Alexis Ballier <aballier@gentoo.org> -vlc-1.0.2.ebuild:
+  remove old
+
+  31 Jan 2010; Raúl Porcel <armin76@gentoo.org> vlc-1.0.4.ebuild:
+  sparc stable
+
+*vlc-1.0.5 (31 Jan 2010)
+
+  31 Jan 2010; Alexis Ballier <aballier@gentoo.org> +vlc-1.0.5.ebuild:
+  version bump
+
+  24 Jan 2010; Tobias Klausmann <klausman@gentoo.org> vlc-1.0.4.ebuild:
+  Stable on alpha, bug #297849
+
+  23 Jan 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Match upstream simplifications wrt cdio/vcdinfo/vcdx useflags
+
+  23 Jan 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.0.4.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  nsplugin doesnt build with xulrunner 1.9.2, adjust the dep until properly
+  fixed
+
+  19 Jan 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  vcdinfo -> libvcdinfo use_enable
+
+  12 Jan 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.0.4.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  Add missing libXt and libXpm deps for the mozilla plugin, bug #300152, by
+  Donnie Lunder <speedy@carboncode.com>
+
+  10 Jan 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.0.4.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  Remove seamonkey support, by Lars Wendler (Polynomial-C)
+  <polynomial-c@gentoo.org>, bug #300456; also update -9999 patchset to
+  match recent file moves.
+
+  09 Jan 2010; Christian Faulhammer <fauli@gentoo.org> vlc-1.0.4.ebuild:
+  stable x86, bug 297849
+
+  09 Jan 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Update some dependencies
+
+  07 Jan 2010; Brent Baude <ranger@gentoo.org> vlc-1.0.4.ebuild:
+  Marking vlc-1.0.4 ppc for bug 297849
+
+  04 Jan 2010; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  cddax is gone
+
+  03 Jan 2010; Alexis Ballier <aballier@gentoo.org> -vlc-1.0.3.ebuild:
+  remove old
+
+  03 Jan 2010; Alexis Ballier <aballier@gentoo.org> vlc-1.0.9999.ebuild,
+  vlc-9999.ebuild:
+  Fix fetching of git repositories, by Paul Mulders <info@mld.demon.nl>, bug
+  #299139, plus some modifications by me to allow switching branches easily.
+
+  26 Dec 2009; Brent Baude <ranger@gentoo.org> vlc-1.0.4.ebuild:
+  Marking vlc-1.0.4 ppc64 for bug 297849
+
+  22 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> vlc-1.0.4.ebuild:
+  amd64 stable wrt #297849
+
+  12 Dec 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  remove X useflag, only xcb is available now, enable xcb by default
+
+*vlc-1.0.4 (10 Dec 2009)
+
+  10 Dec 2009; Alexis Ballier <aballier@gentoo.org> +vlc-1.0.4.ebuild:
+  version bump
+
+  05 Dec 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Add sqlite useflag
+
+  05 Dec 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  xvmc is gone
+
+  21 Nov 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Add libv4l useflag and do not dodoc a file that is now removed
+
+  13 Nov 2009; Joseph Jezak <josejx@gentoo.org> vlc-1.0.2.ebuild:
+  Marked ppc64 stable for bug #280393.
+
+  12 Nov 2009; Alexis Ballier <aballier@gentoo.org> -vlc-0.9.10.ebuild:
+  remove old
+
+  11 Nov 2009; Mounir Lamouri <volkmar@gentoo.org> vlc-1.0.2.ebuild:
+  Stable for ppc, bug 285370
+
+  11 Nov 2009; Samuli Suominen <ssuominen@gentoo.org> vlc-0.9.10.ebuild:
+  Remove USE arts (deprecated).
+
+*vlc-1.0.3 (02 Nov 2009)
+
+  02 Nov 2009; Alexis Ballier <aballier@gentoo.org> -vlc-1.0.3_rc.ebuild,
+  +vlc-1.0.3.ebuild:
+  bump to 1.0.3
+
+  27 Oct 2009; Alexis Ballier <aballier@gentoo.org> vlc-0.9.10.ebuild,
+  vlc-1.0.2.ebuild:
+  adjust x264 deps
+
+*vlc-1.0.3_rc (22 Oct 2009)
+
+  22 Oct 2009; Alexis Ballier <aballier@gentoo.org> +vlc-1.0.3_rc.ebuild:
+  bump to 1.0.3 rc
+
+  18 Oct 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  we dont need an m4 tarball anymore for master
+
+  18 Oct 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  hal support is gone in master, udev is preferred.
+
+  18 Oct 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.9999.ebuild,
+  vlc-9999.ebuild:
+  Add udev useflag on 1.0 branch too and require a new enough version
+
+  18 Oct 2009; Raúl Porcel <armin76@gentoo.org> vlc-1.0.2.ebuild:
+  sparc stable wrt #285370
+
+  17 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> vlc-0.9.10.ebuild,
+  vlc-1.0.2.ebuild, vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  Remove libmpcdec (SV7) support. Replaced by musepack-tools (SV7 and SV8)
+  support.
+
+  16 Oct 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.9999.ebuild:
+  remove patch merged upstream
+
+  16 Oct 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  Add udev useflag
+
+  10 Oct 2009; Patrick Lauer <patrick@gentoo.org> vlc-1.0.9999.ebuild,
+  vlc-9999.ebuild:
+  Fixing samba deps in live ebuilds too
+
+  10 Oct 2009; Patrick Lauer <patrick@gentoo.org> vlc-1.0.2.ebuild:
+  Fixing samba deps for samba 3.4, fixes #288381.
+
+  02 Oct 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.9999.ebuild:
+  Remove x264 patch merged upstream
+
+  02 Oct 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.2.ebuild:
+  Add a patch to fix kate build on big endian hosts, by Mounir Lamouri
+  (volkmar) <volkmar@gentoo.org>, bug #287423
+
+  01 Oct 2009; Alexis Ballier <aballier@gentoo.org> -vlc-1.0.1.ebuild:
+  remove old
+
+  30 Sep 2009; Fabio Erculiani <lxnay@gentoo.org> vlc-0.9.10.ebuild,
+  vlc-1.0.2.ebuild, vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  Removing media-libs/lidvdcss from RDEPEND, not directly needed nor used by
+  VLC
+
+  28 Sep 2009; Tobias Klausmann <klausman@gentoo.org> vlc-1.0.2.ebuild:
+  Stable on alpha, bug #286721
+
+  24 Sep 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.2.ebuild,
+  vlc-1.0.9999.ebuild:
+  Fix build at -O0 without fontconfig, bug #281963
+
+  24 Sep 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.2.ebuild:
+  Add a patch to build against latest x264
+
+  23 Sep 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  bump x264 requirements
+
+  22 Sep 2009; Markus Meier <maekke@gentoo.org> vlc-1.0.2.ebuild:
+  amd64 stable, bug #285370
+
+  22 Sep 2009; Christian Faulhammer <fauli@gentoo.org> vlc-1.0.2.ebuild:
+  stable x86, security bug 285370
+
+  20 Sep 2009; Markus Meier <maekke@gentoo.org> vlc-1.0.2.ebuild:
+  add ~arm, bug #276278
+
+*vlc-1.0.2 (20 Sep 2009)
+
+  20 Sep 2009; Alexis Ballier <aballier@gentoo.org> +vlc-1.0.2.ebuild:
+  bump to 1.0.2
+
+  15 Sep 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Warn if xv is requested but xcb is not enabled as xcb is the only xvideo
+  output provider in master
+
+  15 Sep 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.1.ebuild,
+  vlc-1.0.9999.ebuild:
+  Backport a patch from master to allow older xcb-xv versions.
+
+  11 Sep 2009; Alexis Ballier <aballier@gentoo.org> metadata.xml:
+  update live useflag description, by Michael
+  <gen.8.madblock@spamgourmet.com>, bug #283890
+
+  01 Sep 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  update patchset for latest upstream changes, remove pda useflag as its
+  completely gone upstream
+
+  25 Aug 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.1.ebuild:
+  Backport libass fixes from 1.0-bugfix so that we can unmask latest libass
+
+  21 Aug 2009; Alexis Ballier <aballier@gentoo.org> vlc-0.9.10.ebuild,
+  vlc-1.0.1.ebuild:
+  Force libass to be < 0.9.7, vlc 0.9.10 and 1.0.1 will not build against
+  0.9.7, git versions are fine.
+
+  21 Aug 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.1.ebuild,
+  vlc-1.0.9999.ebuild:
+  Disable test_media_list_player on 1.0.x as it deadlocks, bug #281419,
+  fixed for real in master.
+
+  21 Aug 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Add zlib deps for modules that require it, not really needed because we
+  undconditionnally depend on it but its cleaner
+
+  21 Aug 2009; Alexis Ballier <aballier@gentoo.org> vlc-0.9.10.ebuild,
+  vlc-1.0.1.ebuild, vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  Require new enough glibc version when its the C library in use, older
+  versions may cause vlc to crash, bug #282105
+
+  21 Aug 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.1.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  qt4 requires libX11 to be present, skins requires libXext and libX11,
+  fixes bug #279416
+
+  21 Aug 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  libXext is now only used by the skins interface and glx module
+
+  21 Aug 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  xvideo output is now libxcb-xv based, no need to depend on libXv
+
+  19 Aug 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  xinerama is gone in master
+
+  10 Aug 2009; Alexis Ballier <aballier@gentoo.org> -vlc-0.9.9a-r1.ebuild,
+  -vlc-0.9.9999.ebuild:
+  remove old
+
+  10 Aug 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  bump libass requirement
+
+  09 Aug 2009; Raúl Porcel <armin76@gentoo.org> vlc-0.9.10.ebuild:
+  alpha/sparc stable wrt #279340
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> vlc-0.9.10.ebuild:
+  ppc stable #279340
+
+  07 Aug 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  galaktos has been removed in master now, projectm is prefered
+
+  05 Aug 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  csri is gone in master
+
+  29 Jul 2009; Markus Meier <maekke@gentoo.org> vlc-0.9.10.ebuild:
+  amd64/x86 stable, bug #279340
+
+  28 Jul 2009; Alexis Ballier <aballier@gentoo.org> -vlc-1.0.0.ebuild:
+  remove old
+
+*vlc-1.0.1 (28 Jul 2009)
+
+  28 Jul 2009; Alexis Ballier <aballier@gentoo.org> +vlc-1.0.1.ebuild:
+  Bump to 1.0.1
+
+*vlc-0.9.10 (28 Jul 2009)
+
+  28 Jul 2009; Alexis Ballier <aballier@gentoo.org> +vlc-0.9.10.ebuild:
+  bump to 0.9.10, very likely to be the last release in the 0.9 series
+
+  27 Jul 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.0.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  Bump linux-headers dep for v4l2, bug #278765
+
+  26 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> vlc-1.0.0.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  Fix Musepack deps for SV8.
+
+  24 Jul 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.0.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  Disable telx when zvbi is enabled.
+
+  23 Jul 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.0.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  Use DejaVu as default truetype font
+
+  22 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  USE cdda is now global.
+
+  21 Jul 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.0.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  Add !! blockers on old versions
+
+  21 Jul 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Prevent upgrading from 1.0.x to master (1.1) too
+
+  21 Jul 2009; Alexis Ballier <aballier@gentoo.org> -vlc-0.9.8a.ebuild:
+  remove old
+
+  21 Jul 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.0.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  eapi2ify
+
+  13 Jul 2009; Joseph Jezak <josejx@gentoo.org> vlc-0.9.9a-r1.ebuild,
+  vlc-1.0.0.ebuild:
+  Marked 1.0.0 ~ppc/~ppc64 for bug #276278. Marked 0.9.9a-r1 ppc stable for
+  bug #262708.
+
+  13 Jul 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.0.ebuild:
+  Backport a patch from -bugfix to fix a segfault at startup on FreeBSD.
+
+  13 Jul 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild,
+  metadata.xml:
+  add projectm useflag
+
+  13 Jul 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.0.ebuild:
+  Backport a patch to fix build of the XCB module on FreeBSD.
+
+  12 Jul 2009; Tobias Klausmann <klausman@gentoo.org> vlc-1.0.0.ebuild:
+  Keyworded on alpha, bug #276278
+
+  12 Jul 2009; Tobias Klausmann <klausman@gentoo.org> vlc-0.9.9a-r1.ebuild:
+  Stable on alpha, bug #262708
+
+  09 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> vlc-0.9.8a.ebuild,
+  vlc-0.9.9a-r1.ebuild:
+  Force <net-libs/xulrunner-1.9.1 wrt #258917 by nirbheek.
+
+  08 Jul 2009; Markus Meier <maekke@gentoo.org> vlc-0.9.9a-r1.ebuild:
+  amd64 stable, bug #262708
+
+  08 Jul 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.0.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  bump libdvbpsi requirement, bug #276925
+
+*vlc-1.0.0 (07 Jul 2009)
+
+  07 Jul 2009; Alexis Ballier <aballier@gentoo.org> -vlc-1.0.0_rc4.ebuild,
+  +vlc-1.0.0.ebuild:
+  Bump to 1.0.0
+
+  05 Jul 2009; Markus Meier <maekke@gentoo.org> vlc-0.9.8a.ebuild:
+  amd64 stable, bug #262708
+
+  03 Jul 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.0_rc4.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  bump the patchset to include a patch fixing tests when LC_ variables arent
+  set to C
+
+  03 Jul 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  add ieee1394 for the master branch ebuild too and bump deps where needed
+
+  03 Jul 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.0_rc4.ebuild,
+  vlc-1.0.9999.ebuild:
+  add ieee1394 useflag for dv cams, bug #268685
+
+  02 Jul 2009; Christian Faulhammer <fauli@gentoo.org> vlc-0.9.9a-r1.ebuild:
+  stable x86, security bug 262708
+
+  02 Jul 2009; Ferris McCormick <fmccor@gentoo.org> vlc-0.9.9a-r1.ebuild:
+  Sparc stable, security bug #262708.
+
+  02 Jul 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.0_rc4.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild, metadata.xml:
+  add libtiger useflag
+
+  28 Jun 2009; Peter Volkov <pva@gentoo.org> vlc-0.9.8a.ebuild,
+  vlc-0.9.9a-r1.ebuild, vlc-0.9.9999.ebuild, vlc-1.0.0_rc4.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  Sort USE flags alphabetically as requested by Alexis Ballier.
+
+  27 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org> vlc-0.9.8a.ebuild,
+  vlc-0.9.9a-r1.ebuild, vlc-0.9.9999.ebuild, vlc-1.0.0_rc4.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  Unrecognized config option fixed. Reported by Daniel Pielmeier
+
+  26 Jun 2009; Peter Volkov <pva@gentoo.org> vlc-0.9.8a.ebuild,
+  vlc-0.9.9a-r1.ebuild, vlc-0.9.9999.ebuild, vlc-1.0.0_rc4.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild, metadata.xml:
+  Renamed libgcrypt USE flag into gcrypt, bug #274555, thank Tristan Heaven
+  for report.
+
+  25 Jun 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.0_rc4.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild, metadata.xml:
+  Add libproxy support
+
+  20 Jun 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.0_rc4.ebuild,
+  vlc-1.0.9999.ebuild:
+  bump libxcb deps, by Nikoli <nikoli@pochta.ru>, bug #273710, master should
+  be compatible with older versions
+
+  20 Jun 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.0_rc4.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  bump schroedinger deps, by Nikoli <nikoli@pochta.ru>, bug #273710
+
+  18 Jun 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.0_rc4.ebuild,
+  vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  Dont let users upgrade from 0.9.x to >=1.0.x without removing the old
+  version fist; otherwise some plugins are relinked to the old libvlc's and
+  will not work, thanks libtool...
+
+*vlc-1.0.0_rc4 (18 Jun 2009)
+
+  18 Jun 2009; Alexis Ballier <aballier@gentoo.org> -vlc-1.0.0_rc3.ebuild,
+  +vlc-1.0.0_rc4.ebuild:
+  bump to rc4
+
+*vlc-1.0.0_rc3 (07 Jun 2009)
+
+  07 Jun 2009; Alexis Ballier <aballier@gentoo.org> -vlc-1.0.0_rc2.ebuild,
+  +vlc-1.0.0_rc3.ebuild:
+  bump to rc3
+
+  05 Jun 2009; Alexis Ballier <aballier@gentoo.org> vlc-1.0.9999.ebuild,
+  vlc-9999.ebuild:
+  imgresample configure option is gone now, no need to disable it anymore
+
+*vlc-1.0.0_rc2 (27 May 2009)
+
+  27 May 2009; Alexis Ballier <aballier@gentoo.org> -vlc-1.0.0_rc1.ebuild,
+  +vlc-1.0.0_rc2.ebuild, vlc-1.0.9999.ebuild, vlc-9999.ebuild:
+  bump to rc2 and bump pulseaudio requirements
+
+*vlc-1.0.9999 (15 May 2009)
+
+  15 May 2009; Alexis Ballier <aballier@gentoo.org> +vlc-1.0.9999.ebuild:
+  add a live ebuild for the 1.0-bugfix branch
+
+  15 May 2009; Alexis Ballier <aballier@gentoo.org> -vlc-0.9.9a.ebuild:
+  remove unused version
+
+*vlc-0.9.9a-r1 (10 May 2009)
+
+  10 May 2009; Alexis Ballier <aballier@gentoo.org> +vlc-0.9.9a-r1.ebuild:
+  Bump with a new patchset fixing bug #267790 and default acl for the old
+  http interface, refs bug #262708
+
+  10 May 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  bump gnutls requirement
+
+*vlc-1.0.0_rc1 (10 May 2009)
+
+  10 May 2009; Alexis Ballier <aballier@gentoo.org> -vlc-1.0.0_pre2.ebuild,
+  +vlc-1.0.0_rc1.ebuild:
+  bump to rc1
+
+  04 May 2009; Peter Alfredsen <loki_val@gentoo.org> vlc-0.9.8a.ebuild:
+  Adjust deps for x264 for bug 268654. Require <media-libs/x264-0.0.20090502
+  for USE=x264
+
+*vlc-1.0.0_pre2 (17 Apr 2009)
+
+  17 Apr 2009; Alexis Ballier <aballier@gentoo.org> -vlc-1.0.0_pre1.ebuild,
+  +vlc-1.0.0_pre2.ebuild:
+  bump to pre2
+
+  16 Apr 2009; Alexis Ballier <aballier@gentoo.org> vlc-0.9.9999.ebuild,
+  vlc-9999.ebuild:
+  fix breakage due to recent changes in git.eclass...
+
+  16 Apr 2009; Alexis Ballier <aballier@gentoo.org> vlc-0.9.8a.ebuild,
+  vlc-0.9.9a.ebuild, vlc-0.9.9999.ebuild, vlc-1.0.0_pre1.ebuild,
+  vlc-9999.ebuild:
+  require a not so ancient libtheora, by
+  gentoo-bugs.20.masuefke@spamgourmet.com, bug #266293
+
+*vlc-0.9.9a (08 Apr 2009)
+
+  08 Apr 2009; Alexis Ballier <aballier@gentoo.org> -vlc-0.9.9.ebuild,
+  +vlc-0.9.9a.ebuild:
+  bump to 0.9.9a, no big change, mainly for macosx and a build fix for
+  latest x264
+
+  08 Apr 2009; Alexis Ballier <aballier@gentoo.org> vlc-0.9.9.ebuild,
+  vlc-0.9.9999.ebuild, vlc-1.0.0_pre1.ebuild, vlc-9999.ebuild:
+  Allow only qt >=4.4 and simplify qt deps; by Davide Pesavento
+  <davidepesa@gmail.com>, bug #264974
+
+  04 Apr 2009; Alexis Ballier <aballier@gentoo.org> -vlc-0.9.9_rc2.ebuild:
+  remove rc
+
+*vlc-0.9.9 (04 Apr 2009)
+
+  04 Apr 2009; Alexis Ballier <aballier@gentoo.org> +vlc-0.9.9.ebuild:
+  version bump
+
+  29 Mar 2009; <solar@gentoo.org> vlc-0.9.8a.ebuild, vlc-0.9.9_rc2.ebuild,
+  vlc-1.0.0_pre1.ebuild:
+  - keyword ~arm
+
+*vlc-1.0.0_pre1 (19 Mar 2009)
+
+  19 Mar 2009; Alexis Ballier <aballier@gentoo.org> +vlc-1.0.0_pre1.ebuild:
+  add first 1.0.0 pre release
+
+  17 Mar 2009; Alexis Ballier <aballier@gentoo.org> vlc-0.9.8a.ebuild,
+  vlc-0.9.9_rc2.ebuild, vlc-0.9.9999.ebuild, vlc-9999.ebuild:
+  remove redundant WANT_AUTOFOO=latest
+
+  17 Mar 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  Require taglib 1.5.
+
+  08 Mar 2009; Alexis Ballier <aballier@gentoo.org> vlc-9999.ebuild:
+  add xcb useflag
+
+*vlc-0.9.9_rc2 (08 Mar 2009)
+
+  08 Mar 2009; Alexis Ballier <aballier@gentoo.org> -vlc-0.9.9_rc.ebuild,
+  +vlc-0.9.9_rc2.ebuild:
+  bump to 0.9.9 rc2
+
+*vlc-0.9.9_rc (27 Feb 2009)
+
+  27 Feb 2009; Alexis Ballier <aballier@gentoo.org> +vlc-0.9.9_rc.ebuild:
+  Add 0.9.9 release candidate
+
+*vlc-9999 (27 Feb 2009)
+*vlc-0.9.9999 (27 Feb 2009)
+
+  27 Feb 2009; Alexis Ballier <aballier@gentoo.org> metadata.xml,
+  +vlc-0.9.9999.ebuild, +vlc-9999.ebuild:
+  Add live ebuilds for bugfix and master branches, useful for testing
+
+  06 Feb 2009; Alexis Ballier <aballier@gentoo.org> metadata.xml,
+  vlc-0.9.8a.ebuild:
+  Split cdda in cdda/cddax useflags; merge vcd useflag in cdda as that is
+  what currently controls it. Part of bug #257788
+
+  11 Jan 2009; Alexis Ballier <aballier@gentoo.org> metadata.xml,
+  vlc-0.9.8a.ebuild:
+  Add a pda useflag, by Angelo Arrifano <miknix@gentoo.org>, bug #254380
+
+  14 Dec 2008; Alexis Ballier <aballier@gentoo.org> -vlc-0.9.6.ebuild,
+  -vlc-0.9.7.ebuild:
+  remove old
+
+  13 Dec 2008; Friedrich Oslage <bluebird@gentoo.org> vlc-0.9.8a.ebuild:
+  Stable on sparc, security bug #249391
+
+  13 Dec 2008; Tobias Klausmann <klausman@gentoo.org> vlc-0.9.8a.ebuild:
+  Stable on alpha, bug #249391
+
+  13 Dec 2008; Tobias Scherbaum <dertobi123@gentoo.org> vlc-0.9.8a.ebuild:
+  ppc stable, bug #249391
+
+  10 Dec 2008; Markus Meier <maekke@gentoo.org> vlc-0.9.8a.ebuild:
+  amd64/x86 stable, bug #249391
+
+  09 Dec 2008; Alexis Ballier <aballier@gentoo.org> metadata.xml,
+  vlc-0.9.8a.ebuild:
+  Add run-as-root useflag, by Marco Meier <mmeier@badeio.de>, bug #249451
+
+*vlc-0.9.8a (05 Dec 2008)
+
+  05 Dec 2008; Alexis Ballier <aballier@gentoo.org> +vlc-0.9.8a.ebuild:
+  version bump
+
+*vlc-0.9.7 (30 Nov 2008)
+
+  30 Nov 2008; Alexis Ballier <aballier@gentoo.org> metadata.xml,
+  +vlc-0.9.7.ebuild:
+  version bump
+
+  10 Nov 2008; Alexis Ballier <aballier@gentoo.org>
+  -files/0001-Fix-build-with-x264-build-65.patch,
+  -files/embeddedvideo.patch, -vlc-0.9.4-r1.ebuild, -vlc-0.9.5.ebuild:
+  remove unused versions
+
+  09 Nov 2008; Tobias Klausmann <klausman@gentoo.org> vlc-0.9.6.ebuild:
+  Stable on alpha, bug #245774
+
+  09 Nov 2008; Markus Meier <maekke@gentoo.org> vlc-0.9.6.ebuild:
+  amd64/x86 stable, bug #245774
+
+  06 Nov 2008; Ferris McCormick <fmccor@gentoo.org> vlc-0.9.6.ebuild:
+  Sparc stable --- Security Bug #245774 --- works well as always.
+
+  06 Nov 2008; Alexis Ballier <aballier@gentoo.org> vlc-0.9.6.ebuild:
+  make it build with libtool 1.5, bug #245777
+
+*vlc-0.9.6 (06 Nov 2008)
+
+  06 Nov 2008; Alexis Ballier <aballier@gentoo.org> metadata.xml,
+  +vlc-0.9.6.ebuild:
+  version bump
+
+  30 Oct 2008; Tobias Scherbaum <dertobi123@gentoo.org> vlc-0.9.5.ebuild:
+  Added ~ppc, bug #242740
+
+  28 Oct 2008; Brent Baude <ranger@gentoo.org> vlc-0.9.5.ebuild:
+  Marking vlc-0.9.5 ~ppc64 for bug 242740
+
+  25 Oct 2008; Alexis Ballier <aballier@gentoo.org> metadata.xml:
+  add myself explicitly as maintainer
+
+*vlc-0.9.5 (25 Oct 2008)
+
+  25 Oct 2008; Alexis Ballier <aballier@gentoo.org> metadata.xml,
+  +vlc-0.9.5.ebuild:
+  new upstream release
+
+  22 Oct 2008; Alexis Ballier <aballier@gentoo.org> vlc-0.9.4-r1.ebuild:
+  vlc checks if the compiler supports fomit-frame-pointer, no need for the
+  old hack to explicitly remove it.
+
+  19 Oct 2008; Alexis Ballier <aballier@gentoo.org> vlc-0.9.4-r1.ebuild:
+  Add a warning if no gui will be built. This will at least warn people not
+  following closely vlc when upgrading from 0.8.6 to 0.9 that they will not
+  have a GUI if they disabled the qt4 useflag.
+
+  19 Oct 2008; Alexis Ballier <aballier@gentoo.org> -vlc-0.9.0_beta3.ebuild,
+  -vlc-0.9.4.ebuild:
+  remove old
+
+  19 Oct 2008; Alexis Ballier <aballier@gentoo.org> metadata.xml:
+  Improve useflag descriptions, by Douglas Anderson
+  <douglasjanderson@gmail.com>, bug #242584
+
+  19 Oct 2008; Markus Rothe <corsair@gentoo.org> vlc-0.9.4-r1.ebuild:
+  Added ~ppc/~ppc64
+
+*vlc-0.9.4-r1 (15 Oct 2008)
+
+  15 Oct 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/embeddedvideo.patch, +vlc-0.9.4-r1.ebuild:
+  Backport a change from upstream to reenable the qt embedded video output
+  due to numerous requests and jb's explanations. Bug #240714.
+
+  08 Oct 2008; Alexis Ballier <aballier@gentoo.org> -vlc-0.9.3.ebuild:
+  remove old
+
+  08 Oct 2008; Alexis Ballier <aballier@gentoo.org> vlc-0.9.4.ebuild:
+  Add qt4 built with use checks for png useflag when using the qt4
+  interface, bug #239550
+
+*vlc-0.9.4 (08 Oct 2008)
+
+  08 Oct 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/0001-Fix-build-with-x264-build-65.patch, +vlc-0.9.4.ebuild:
+  version bump
+
+  05 Oct 2008; Alexis Ballier <aballier@gentoo.org> -vlc-0.9.2.ebuild:
+  remove unused version
+
+  05 Oct 2008; Tobias Klausmann <klausman@gentoo.org> vlc-0.9.3.ebuild:
+  Keyworded on alpha, bug #237813
+
+  27 Sep 2008; Ferris McCormick <fmccor@gentoo.org> vlc-0.9.3.ebuild:
+  Add back ~sparc --- Bug #237813.
+
+  27 Sep 2008; Alexis Ballier <aballier@gentoo.org> -vlc-0.9.1.ebuild:
+  remove unused version
+
+*vlc-0.9.3 (27 Sep 2008)
+
+  27 Sep 2008; Alexis Ballier <aballier@gentoo.org> metadata.xml,
+  +vlc-0.9.3.ebuild:
+  version bump, add kate useflag
+
+  16 Sep 2008; Alexis Ballier <aballier@gentoo.org> metadata.xml,
+  vlc-0.9.2.ebuild:
+  add zvbi useflag
+
+*vlc-0.9.2 (16 Sep 2008)
+
+  16 Sep 2008; Alexis Ballier <aballier@gentoo.org> +vlc-0.9.2.ebuild:
+  new upstream release
+
+  08 Sep 2008; Alexis Ballier <aballier@gentoo.org> vlc-0.9.1.ebuild:
+  support also older revisions of ffmpeg
+
+  31 Aug 2008; Tobias Klausmann <klausman@gentoo.org> vlc-0.9.1.ebuild:
+  Keyworded on alpha, bug #235636
+
+  28 Aug 2008; Friedrich Oslage <bluebird@gentoo.org> vlc-0.9.1.ebuild:
+  Add ~sparc keyword, bug #235636
+
+  28 Aug 2008; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6i-r2.ebuild:
+  Fix automagic on some X libs, by Natanael Copa <natanael.copa@gmail.com>,
+  bug #235903.
+
+  28 Aug 2008; Alexis Ballier <aballier@gentoo.org> -vlc-0.8.6i.ebuild,
+  -vlc-0.8.6i-r1.ebuild, -vlc-0.9.0.ebuild:
+  remove unused versions
+
+*vlc-0.9.1 (28 Aug 2008)
+
+  28 Aug 2008; Alexis Ballier <aballier@gentoo.org> +vlc-0.9.1.ebuild:
+  version bump, last minute bugfixes
+
+  25 Aug 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  vlc-0.8.6i-r2.ebuild:
+  ppc stable, bug #235589
+
+  25 Aug 2008; Markus Meier <maekke@gentoo.org> vlc-0.8.6i-r2.ebuild:
+  amd64/x86 stable, bug #235589
+
+*vlc-0.9.0 (24 Aug 2008)
+
+  24 Aug 2008; Alexis Ballier <aballier@gentoo.org> metadata.xml,
+  +vlc-0.9.0.ebuild:
+  Bump to final 0.9.0, adding dirac support (via dirac and/or schroedinger)
+  and libass support for subtitles.
+
+  24 Aug 2008; Tobias Klausmann <klausman@gentoo.org> vlc-0.8.6i-r2.ebuild:
+  Stable on alpha, bug #235589
+
+  24 Aug 2008; Friedrich Oslage <bluebird@gentoo.org> vlc-0.8.6i-r2.ebuild:
+  Stable on sparc, security bug #235589
+
+*vlc-0.8.6i-r2 (24 Aug 2008)
+
+  24 Aug 2008; Alexis Ballier <aballier@gentoo.org> +vlc-0.8.6i-r2.ebuild:
+  Import a patch from upstream for bug #235589
+
+  22 Aug 2008; Markus Meier <maekke@gentoo.org> vlc-0.8.6i-r1.ebuild:
+  amd64/x86 stable, bug #235238
+
+  22 Aug 2008; Friedrich Oslage <bluebird@gentoo.org> vlc-0.8.6i-r1.ebuild:
+  Stable on sparc, security bug #235238
+
+*vlc-0.8.6i-r1 (22 Aug 2008)
+
+  22 Aug 2008; Alexis Ballier <aballier@gentoo.org> +vlc-0.8.6i-r1.ebuild:
+  Import fixes from upstream for tta fixes, bug #235238
+
+  06 Aug 2008; Alexis Ballier <aballier@gentoo.org> vlc-0.9.0_beta3.ebuild:
+  enable galaktos visualisation plugin with opengl
+
+  05 Aug 2008; Alexis Ballier <aballier@gentoo.org> -files/vlm.patch,
+  -vlc-0.9.0_beta2.ebuild:
+  remove unused version
+
+  05 Aug 2008; Alexis Ballier <aballier@gentoo.org> vlc-0.9.0_beta3.ebuild:
+  depend on new enough version of media-plugins/live, thanks to R Bar-On
+  <rb6@duke.edu> for reporting in bug #233996
+
+*vlc-0.9.0_beta3 (05 Aug 2008)
+
+  05 Aug 2008; Alexis Ballier <aballier@gentoo.org> +vlc-0.9.0_beta3.ebuild:
+  bump to test3
+
+  27 Jul 2008; Carsten Lohrke <carlo@gentoo.org> vlc-0.9.0_beta2.ebuild:
+  Fix broken split Qt 4.4 dependencies, cf. bug 217161 comment 11.
+
+  19 Jul 2008; Alexis Ballier <aballier@gentoo.org> -vlc-0.8.6g.ebuild:
+  remove old
+
+  19 Jul 2008; Dawid Węgliński <cla@gentoo.org> vlc-0.8.6i.ebuild:
+  Stable on amd64 due tu security bug #230692
+
+  17 Jul 2008; Alexis Ballier <aballier@gentoo.org> +files/vlm.patch,
+  vlc-0.9.0_beta2.ebuild:
+  backport a patch from upstream to fix build without vlm, bug #231918
+
+  17 Jul 2008; Alexis Ballier <aballier@gentoo.org> -vlc-0.8.6h.ebuild,
+  -vlc-0.9.0_beta1.ebuild:
+  remove unused versions
+
+  17 Jul 2008; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6i.ebuild,
+  vlc-0.9.0_beta2.ebuild:
+  Fix deps wrt ffmpeg: 0.4.9_p20070616-r3 to -r20 doesn't have swscaler, -r1
+  and -r2 have it, part of bug #231831.
+
+  15 Jul 2008; Tobias Scherbaum <dertobi123@gentoo.org> vlc-0.8.6i.ebuild:
+  ppc stable, bug #230692
+
+  14 Jul 2008; Tobias Klausmann <klausman@gentoo.org> vlc-0.8.6i.ebuild:
+  Stable on alpha, bug #230692
+
+*vlc-0.9.0_beta2 (14 Jul 2008)
+
+  14 Jul 2008; Alexis Ballier <aballier@gentoo.org> +vlc-0.9.0_beta2.ebuild:
+  bump to test2
+
+  14 Jul 2008; Raúl Porcel <armin76@gentoo.org> vlc-0.8.6i.ebuild:
+  sparc/x86 stable wrt #230692
+
+*vlc-0.8.6i (13 Jul 2008)
+
+  13 Jul 2008; Alexis Ballier <aballier@gentoo.org> +vlc-0.8.6i.ebuild:
+  new upstream release
+
+  03 Jul 2008; Alexis Ballier <aballier@gentoo.org>
+  -vlc-0.9.0_alpha20080625.ebuild:
+  remove unused snapshot
+
+  03 Jul 2008; Alexis Ballier <aballier@gentoo.org> vlc-0.9.0_beta1.ebuild:
+  make libgcrypt optional again
+
+*vlc-0.9.0_beta1 (01 Jul 2008)
+
+  01 Jul 2008; Alexis Ballier <aballier@gentoo.org> +vlc-0.9.0_beta1.ebuild:
+  bump to test1
+
+  29 Jun 2008; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20080625.ebuild:
+  Support also ffmpeg without swscaler
+
+  29 Jun 2008; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20080625.ebuild:
+  add remoteosd useflag
+
+  29 Jun 2008; Alexis Ballier <aballier@gentoo.org>
+  -files/0001-Include-altivec.h-before-any-other-vlc-header-as-inc.patch,
+  -files/0002-Explicitly-check-for-and-link-to-libavutil-since-av_.patch,
+  -vlc-0.9.0_alpha20080524.ebuild:
+  remove old
+
+  28 Jun 2008; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20080625.ebuild:
+  Force qt4 to be enabled instead of having configure to die when enabling
+  skins, bug #229473
+
+  26 Jun 2008; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20080625.ebuild:
+  libgcrypt is not optional in this snapshot, bug #229433
+
+  25 Jun 2008; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20080625.ebuild:
+  bump ffmpeg dep as we require swscaler, bug #229439
+
+  25 Jun 2008; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20080625.ebuild:
+  support xulrunner 1.9 in the deps too as it is fine now, bug #229375 and
+  bug #213467
+
+  25 Jun 2008; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20080625.ebuild:
+  make qt4 a default enabled useflag as most people expect to have a gui and
+  the wx gui is gone
+
+  25 Jun 2008; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20080625.ebuild:
+  disable remoteosd when we don't have gnutls/gcrypt support, bug #229363
+
+*vlc-0.9.0_alpha20080625 (25 Jun 2008)
+
+  25 Jun 2008; Alexis Ballier <aballier@gentoo.org>
+  +vlc-0.9.0_alpha20080625.ebuild:
+  bump a new snapshot
+
+*vlc-0.8.6h (06 Jun 2008)
+
+  06 Jun 2008; Alexis Ballier <aballier@gentoo.org> +vlc-0.8.6h.ebuild:
+  new upstream release
+
+  31 May 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/0002-Explicitly-check-for-and-link-to-libavutil-since-av_.patch,
+  vlc-0.9.0_alpha20080524.ebuild:
+  While I'm at it, backport another patch to fix linking with ffmpeg trunk.
+
+  31 May 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/0001-Include-altivec.h-before-any-other-vlc-header-as-inc.patch,
+  vlc-0.9.0_alpha20080524.ebuild:
+  Add a patch to fix build failures on altivec ppc, thanks to vapier in bug
+  #224289.
+
+  31 May 2008; Alexis Ballier <aballier@gentoo.org>
+  -vlc-0.9.0_alpha20080409.ebuild:
+  remove old
+
+  25 May 2008; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20080524.ebuild:
+  Always enable sout as disabling it will cause vlc to fail to build. Bug
+  #223515
+
+*vlc-0.9.0_alpha20080524 (24 May 2008)
+
+  24 May 2008; Alexis Ballier <aballier@gentoo.org>
+  +vlc-0.9.0_alpha20080524.ebuild:
+  bump a new snapshot, using wx 2.8 now
+
+  22 May 2008; Alexis Ballier <aballier@gentoo.org> -vlc-0.8.6f.ebuild:
+  remove old
+
+  20 May 2008; Tobias Scherbaum <dertobi123@gentoo.org> vlc-0.8.6g.ebuild:
+  ppc stable, bug #221959
+
+  19 May 2008; Raúl Porcel <armin76@gentoo.org> vlc-0.8.6g.ebuild:
+  sparc stable wrt security #221959, thanks to Friedrich Oslage for testing
+
+  19 May 2008; Dawid Węgliński <cla@gentoo.org> vlc-0.8.6g.ebuild:
+  Stable for amd64/x86 (bug #221959)
+
+  18 May 2008; Tobias Klausmann <klausman@gentoo.org> vlc-0.8.6g.ebuild:
+  Stable on alpha, bug #221959
+
+*vlc-0.8.6g (18 May 2008)
+
+  18 May 2008; Alexis Ballier <aballier@gentoo.org> +vlc-0.8.6g.ebuild:
+  New upstream bugfix release with security fixes
+
+  10 Apr 2008; Alexis Ballier <aballier@gentoo.org> -vlc-0.8.6e-r1.ebuild,
+  -vlc-0.9.0_alpha20080319.ebuild:
+  remove old
+
+  10 Apr 2008; Tobias Scherbaum <dertobi123@gentoo.org> vlc-0.8.6f.ebuild:
+  ppc stable, bug #214627
+
+  09 Apr 2008; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20080409.ebuild:
+  make atmo optional
+
+*vlc-0.9.0_alpha20080409 (09 Apr 2008)
+
+  09 Apr 2008; Alexis Ballier <aballier@gentoo.org>
+  +vlc-0.9.0_alpha20080409.ebuild:
+  add a new snapshot
+
+  08 Apr 2008; Raúl Porcel <armin76@gentoo.org> vlc-0.8.6f.ebuild:
+  sparc stable wrt security #214627
+
+  07 Apr 2008; Ben de Groot <yngwin@gentoo.org> vlc-0.8.6e-r1.ebuild,
+  vlc-0.8.6f.ebuild, vlc-0.9.0_alpha20080319.ebuild:
+  Pkgmove x264-svn to x264
+
+  07 Apr 2008; Markus Meier <maekke@gentoo.org> vlc-0.8.6f.ebuild:
+  amd64/x86 stable, security bug #214627
+
+  06 Apr 2008; Tobias Klausmann <klausman@gentoo.org> ChangeLog:
+  Stable on alpha, security bug #214627
+
+*vlc-0.8.6f (06 Apr 2008)
+
+  06 Apr 2008; Alexis Ballier <aballier@gentoo.org> +vlc-0.8.6f.ebuild:
+  version bump for bug #214627, bug #161930 and bug #214550
+
+  27 Mar 2008; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6e-r1.ebuild:
+  Bump patchset to backport a fix from upstream to fix bug #214809
+
+  27 Mar 2008; Alexis Ballier <aballier@gentoo.org> -vlc-0.8.6e.ebuild:
+  remove old
+
+  24 Mar 2008; Tobias Klausmann <klausman@gentoo.org> vlc-0.8.6e-r1.ebuild:
+  Stable on alpha, bug #214277
+
+  23 Mar 2008; Markus Meier <maekke@gentoo.org> vlc-0.8.6e-r1.ebuild:
+  amd64 stable, security bug #214277
+
+  23 Mar 2008; Raúl Porcel <armin76@gentoo.org> vlc-0.8.6e-r1.ebuild:
+  sparc stable wrt security #214277, thanks to Friedrich Oslage for testing
+
+  23 Mar 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  vlc-0.8.6e-r1.ebuild:
+  ppc stable, bug #214277
+
+  22 Mar 2008; Christian Faulhammer <opfer@gentoo.org> vlc-0.8.6e-r1.ebuild:
+  stable x86, security bug 214277
+
+*vlc-0.8.6e-r1 (22 Mar 2008)
+
+  22 Mar 2008; Alexis Ballier <aballier@gentoo.org> +vlc-0.8.6e-r1.ebuild:
+  Rev bump with new patchset for security fixes (bug #214277)
+
+  22 Mar 2008; Alexis Ballier <aballier@gentoo.org>
+  -vlc-0.9.0_alpha20080117.ebuild, -vlc-0.9.0_alpha20080309.ebuild,
+  -vlc-0.9.0_alpha20080314.ebuild:
+  remove old
+
+*vlc-0.9.0_alpha20080319 (19 Mar 2008)
+
+  19 Mar 2008; Alexis Ballier <aballier@gentoo.org>
+  +vlc-0.9.0_alpha20080319.ebuild:
+  add a new snapshot
+
+  17 Mar 2008; Raúl Porcel <armin76@gentoo.org> vlc-0.8.6e.ebuild,
+  vlc-0.9.0_alpha20080117.ebuild, vlc-0.9.0_alpha20080309.ebuild,
+  vlc-0.9.0_alpha20080314.ebuild:
+  Fix deps for net-libs/xulrunner and www-client/mozilla-firefox
+
+  15 Mar 2008; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20080314.ebuild:
+  Restrict tests again... they fail.
+
+*vlc-0.9.0_alpha20080314 (14 Mar 2008)
+
+  14 Mar 2008; Alexis Ballier <aballier@gentoo.org>
+  -vlc-0.9.0_alpha20080228.ebuild, +vlc-0.9.0_alpha20080314.ebuild:
+  bump a new snapshot for bug #213332
+
+  09 Mar 2008; Alexis Ballier <aballier@gentoo.org> -vlc-0.8.6d-r1.ebuild:
+  remove unused version
+
+  09 Mar 2008; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20080309.ebuild:
+  Improve deps for qt4.4 split ebuilds; thanks to Bernd Steinhauser
+  <gentoo@bernd-steinhauser.de>, bug #212746
+
+*vlc-0.9.0_alpha20080309 (09 Mar 2008)
+
+  09 Mar 2008; Alexis Ballier <aballier@gentoo.org>
+  +vlc-0.9.0_alpha20080309.ebuild:
+  bump another snapshot
+
+  07 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> vlc-0.8.6e.ebuild:
+  amd64 stable wrt security bug #211575
+
+  04 Mar 2008; Tobias Scherbaum <dertobi123@gentoo.org> vlc-0.8.6e.ebuild:
+  ppc stable, bug #211575
+
+  02 Mar 2008; Raúl Porcel <armin76@gentoo.org> vlc-0.8.6e.ebuild:
+  alpha stable wrt security #211575, thanks to Tobias Klausmann for testing
+
+  29 Feb 2008; Ferris McCormick <fmccor@gentoo.org> vlc-0.8.6e.ebuild:
+  Sparc stable, security Bug #211575.
+
+  29 Feb 2008; Alexis Ballier <aballier@gentoo.org> -vlc-0.8.6d.ebuild,
+  -vlc-0.9.0_alpha20080128.ebuild:
+  remove unused versions
+
+  29 Feb 2008; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20080228.ebuild:
+  gnutls really requires libgcrypt, merge the useflags, bug #211759
+
+  29 Feb 2008; Christian Faulhammer <opfer@gentoo.org> vlc-0.8.6e.ebuild:
+  stable x86, security bug 211575
+
+*vlc-0.8.6e (28 Feb 2008)
+
+  28 Feb 2008; Alexis Ballier <aballier@gentoo.org> +vlc-0.8.6e.ebuild:
+  version bump, stable candidate for security fixes
+
+*vlc-0.9.0_alpha20080228 (28 Feb 2008)
+
+  28 Feb 2008; Alexis Ballier <aballier@gentoo.org>
+  +vlc-0.9.0_alpha20080228.ebuild:
+  bump new snapshot
+
+  15 Feb 2008; Samuli Suominen <drac@gentoo.org> vlc-0.8.6d.ebuild,
+  vlc-0.8.6d-r1.ebuild:
+  Remove libdts references.
+
+  01 Feb 2008; Raúl Porcel <armin76@gentoo.org> vlc-0.8.6d-r1.ebuild:
+  alpha/sparc stable wrt security #205299
+
+  31 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  vlc-0.8.6d-r1.ebuild:
+  ppc stable, bug #205299
+
+  31 Jan 2008; Peter Weller <welp@gentoo.org> vlc-0.8.6d-r1.ebuild:
+  Stable on amd64; bug 205299
+
+  29 Jan 2008; Christian Faulhammer <opfer@gentoo.org> vlc-0.8.6d-r1.ebuild:
+  stable x86, security bug 205299
+
+*vlc-0.8.6d-r1 (28 Jan 2008)
+
+  28 Jan 2008; Alexis Ballier <aballier@gentoo.org> +vlc-0.8.6d-r1.ebuild:
+  add patches for bug #205299, atighten deps on ffmpeg because it will not
+  work with swscaler
+
+  28 Jan 2008; Alexis Ballier <aballier@gentoo.org> -vlc-0.8.6c.ebuild:
+  remove old
+
+*vlc-0.9.0_alpha20080128 (28 Jan 2008)
+
+  28 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  +vlc-0.9.0_alpha20080128.ebuild:
+  bump a new snapshot
+
+  19 Jan 2008; Raúl Porcel <armin76@gentoo.org> vlc-0.8.6d.ebuild:
+  alpha stable wrt security #203345, thanks to Tobias Klausmann for testing
+
+  19 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  -vlc-0.9.0_alpha20071022.ebuild, -vlc-0.9.0_alpha20080110.ebuild:
+  remove unused versions
+
+  19 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20080117.ebuild:
+  no need to warn anymore with use=-vlm qt4, there are still some issues but
+  this one is fixed
+
+*vlc-0.9.0_alpha20080117 (17 Jan 2008)
+
+  17 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  +vlc-0.9.0_alpha20080117.ebuild:
+  add a new snapshot
+
+  12 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20080110.ebuild:
+  Add a warning when using qt4 and not vlm because qt4 will not work in that case
+
+  11 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org> vlc-0.8.6d.ebuild:
+  ppc stable, bug #203345
+
+  11 Jan 2008; Ferris McCormick <fmccor@gentoo.org> vlc-0.8.6d.ebuild:
+  Sparc stable --- Security Bug #203345 --- works as always.
+
+  11 Jan 2008; Christian Faulhammer <opfer@gentoo.org> vlc-0.8.6d.ebuild:
+  stable x86, security bug 203345
+
+  11 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20080110.ebuild:
+  filter -fforce-addr on x86 because it fails
+
+  11 Jan 2008; Steve Dibb <beandog@gentoo.org> vlc-0.8.6d.ebuild:
+  amd64 stable, bug 203345
+
+*vlc-0.8.6d (10 Jan 2008)
+
+  10 Jan 2008; Alexis Ballier <aballier@gentoo.org> +vlc-0.8.6d.ebuild:
+  bump to 0.8.6d, applying some security patches
+
+*vlc-0.9.0_alpha20080110 (10 Jan 2008)
+
+  10 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  +vlc-0.9.0_alpha20080110.ebuild:
+  bump a new snapshot, enable faad2 support to be closer to upstream, unleash
+  qt4 gui due to numerous requests, should fix a few bugs and hopefuly not
+  trigger a lot
+
+  01 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20071022.ebuild:
+  stick musicbrainz deps to -2*, bug #203784
+
+  01 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  -vlc-0.9.0_alpha20071009.ebuild:
+  remove unused version
+
+  02 Nov 2007; Samuli Suominen <drac@gentoo.org> vlc-0.8.6c.ebuild,
+  vlc-0.9.0_alpha20071009.ebuild, vlc-0.9.0_alpha20071022.ebuild:
+  Change local USE flag mod to global USE flag modplug.
+
+  26 Oct 2007; Steve Dibb <beandog@gentoo.org> vlc-0.8.6c.ebuild,
+  vlc-0.9.0_alpha20071009.ebuild, vlc-0.9.0_alpha20071022.ebuild:
+  Move linux-headers into DEPEND
+
+  22 Oct 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6c.ebuild:
+  backport patch from trunk for 0.8.6c to have a much cleaner directfb
+  detection, closes bug #196144
+
+*vlc-0.9.0_alpha20071022 (22 Oct 2007)
+
+  22 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  +vlc-0.9.0_alpha20071022.ebuild:
+  Version bump, fixing bug #157746, big thanks to Martin Schlemmer and courmisch
+
+  13 Oct 2007; Ryan Hill <dirtyepic@gentoo.org> vlc-0.8.6c.ebuild,
+  vlc-0.9.0_alpha20071009.ebuild:
+  Lock wxGTK to 2.6.
+
+  10 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20071009.ebuild:
+  get back to only one slot, add a check for older versions instead, bug #195424
+
+  10 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20071009.ebuild:
+  actually enable svg module when svg useflag is set
+
+  10 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20071009.ebuild:
+  cosmetics, last part, sort alphabetically by useflag or potential useflag
+  econf args
+
+  10 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20071009.ebuild:
+  cosmetics, part 2, sort alphabetically RDEPENDs
+
+  10 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20071009.ebuild:
+  cosmetics, sort alphabetically IUSEs
+
+  10 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20071009.ebuild:
+  add support to build against xulrunner, thanks to Frittella Laurento
+  <mrfree@infinito.it>, bug #161340
+
+  10 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20071009.ebuild:
+  use get_libdir for locating nsplugin configuration, thanks to Donnie
+  Berkholz for pointing that
+
+  10 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  vlc-0.9.0_alpha20071009.ebuild:
+  make libgcrypt mandatory, build would fail if not present, bug #195322
+
+  10 Oct 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6c.ebuild:
+  add gnome useflag, was automagic, bug #193443
+
+*vlc-0.9.0_alpha20071009 (09 Oct 2007)
+
+  09 Oct 2007; Alexis Ballier <aballier@gentoo.org>
+  +vlc-0.9.0_alpha20071009.ebuild:
+  bump snapshot, blocking older versions cause of bug #157746, closing bug
+  #195019 and bug #183584
+
+  14 Sep 2007; Roy Marples <uberlord@gentoo.org> vlc-0.8.6c.ebuild:
+  elibtoolize now patches install-sh for us.
+
+  15 Aug 2007; Samuli Suominen <drac@gentoo.org> vlc-0.8.6c.ebuild:
+  Flip libdts and libdca deps around, so libdca gets installed over libdts
+  primarily.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; vlc-0.8.6c.ebuild:
+  Drop virtual/x11 references.
+
+  02 Jul 2007; Alexis Ballier <aballier@gentoo.org> -vlc-0.8.6-r1.ebuild,
+  -vlc-0.8.6b.ebuild:
+  remove versions affected by bug #182389
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> vlc-0.8.6-r1.ebuild:
+  (QA) RESTRICT clean up.
+
+  24 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org> vlc-0.8.6c.ebuild:
+  ppc stable, bug #182389
+
+  24 Jun 2007; Raúl Porcel <armin76@gentoo.org> vlc-0.8.6c.ebuild:
+  alpha/x86 stable wrt #182389
+
+  22 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org> vlc-0.8.6c.ebuild:
+  Stable on sparc wrt security #182389
+
+  22 Jun 2007; Christoph Mende <angelos@gentoo.org> vlc-0.8.6c.ebuild:
+  Stable on amd64 wrt security bug 181349
+
+*vlc-0.8.6c (17 Jun 2007)
+
+  17 Jun 2007; Alexis Ballier <aballier@gentoo.org> +vlc-0.8.6c.ebuild:
+  version bump
+
+  07 Jun 2007; Christoph Mende <angelos@gentoo.org> vlc-0.8.6b.ebuild:
+  Stable on amd64 wrt bug 179862
+
+  03 Jun 2007; Lars Weiler <pylon@gentoo.org> vlc-0.8.6b.ebuild:
+  Stable on ppc; bug #179862.
+
+  01 Jun 2007; Bjarke Istrup Pedersen <gurligebis@gentoo.org> vlc-0.8.6b.ebuild,
+  vlc-0.8.6-r1.ebuild:
+  net-misc/upnp has been package.mask'ed, removed dependency
+
+  30 May 2007; Gustavo Zacarias <gustavoz@gentoo.org> vlc-0.8.6b.ebuild:
+  Stable on sparc wrt #179862
+
+  29 May 2007; Christian Faulhammer <opfer@gentoo.org> vlc-0.8.6b.ebuild:
+  stable x86, bug 179862
+
+  07 May 2007; Bjarke Istrup Pedersen <gurligebis@gentoo.org> vlc-0.8.6b.ebuild,
+  vlc-0.8.6-r1.ebuild:
+  net-misc/libupnp moved to net-libs/libupnp, updated dependencies
+
+  24 Apr 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6b.ebuild:
+  Add support for IIDC cameras with dc1394 useflag, thanks to Christopher
+  Hogan, bug #167633
+
+  24 Apr 2007; Alexis Ballier <aballier@gentoo.org>
+  -vlc-0.8.6b_beta1.ebuild:
+  Remove unused ebuild
+
+  19 Apr 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6-r1.ebuild,
+  vlc-0.8.6b_beta1.ebuild, vlc-0.8.6b.ebuild:
+  switch upnp and libupnp in the || to prefer libupnp
+
+  18 Apr 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6b_beta1.ebuild,
+  vlc-0.8.6b.ebuild:
+  remove confcache restricting as it's dead and buried
+
+*vlc-0.8.6b (18 Apr 2007)
+
+  18 Apr 2007; Alexis Ballier <aballier@gentoo.org> +vlc-0.8.6b.ebuild:
+  Bump to 0.8.6b release
+
+  18 Apr 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6-r1.ebuild,
+  vlc-0.8.6b_beta1.ebuild:
+  Set deps for upnp to net-misc/libupnp or net-misc/upnp, bug #169736
+
+  18 Apr 2007; Alexis Ballier <aballier@gentoo.org>
+  -vlc-0.8.6_p18636.ebuild:
+  Remove unused version
+
+  18 Apr 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6b_beta1.ebuild:
+  Patch to be compatible with libdca
+
+*vlc-0.8.6b_beta1 (13 Apr 2007)
+
+  13 Apr 2007; Alexis Ballier <aballier@gentoo.org>
+  +vlc-0.8.6b_beta1.ebuild:
+  Bump to test release of 0.8.6b (bugfix), dropping some patches
+
+  25 Mar 2007; Alexis Ballier <aballier@gentoo.org> ChangeLog, Manifest:
+  Fix typos in Changelog, thanks to Mihai Moldovan <ionic@root24.de>, bug #172057
+
+  11 Mar 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6_p18636.ebuild:
+  upstream fix for fullscreen mode on amd64
+
+  09 Mar 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6-r1.ebuild,
+  vlc-0.8.6_p18636.ebuild:
+  Handling skins useflags dependencies rather than dying and asking for other
+  useflags to be enabled, bug #158095
+
+  05 Mar 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6-r1.ebuild,
+  vlc-0.8.6_p18636.ebuild:
+  Fix compilation issue without altivec, bug #158126
+
+  23 Feb 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6-r1.ebuild,
+  vlc-0.8.6_p18636.ebuild:
+  Dont erase myconf when doing live workaround
+
+  23 Feb 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6_p18636.ebuild:
+  Add x264 useflag
+
+  14 Feb 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6-r1.ebuild,
+  vlc-0.8.6_p18636.ebuild:
+  Really disable altivec if not wanted, bug #158126
+
+  12 Feb 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6-r1.ebuild:
+  Disable also autodetected cflags optimisations in stable vlc
+
+  11 Feb 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6-r1.ebuild,
+  vlc-0.8.6_p18636.ebuild:
+  Fix live detection, bug #160320
+
+  11 Feb 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6-r1.ebuild,
+  vlc-0.8.6_p18636.ebuild:
+  Fix libnotify use_enable
+
+  11 Feb 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6_p18636.ebuild:
+  Disable extra autodetected optimizations
+
+  11 Feb 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6-r1.ebuild,
+  vlc-0.8.6_p18636.ebuild:
+  Add a musepack useflag, was automagic, bug #160999
+
+  10 Feb 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6-r1.ebuild,
+  vlc-0.8.6_p18636.ebuild:
+  Die if skins are wanted but not wxwindows, dont install vlc.desktop if not
+  using wxwindows, bug #158095, remove inexistant docs from dodoc
+
+  10 Feb 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6-r1.ebuild,
+  vlc-0.8.6_p18636.ebuild:
+  Remove duplicate docs when use=-nsplugin, bug #158536, thanks to Chris Mayo
+  <mayo@clara.co.uk>
+
+  10 Feb 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6_p18636.ebuild:
+  Jack useflag, bug #157899
+
+  10 Feb 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6-r1.ebuild:
+  Fix also sdl-image automagic in stable vlc
+
+  10 Feb 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6_p18636.ebuild:
+  Remove sdl-image automagic, added as a useflag, bug #165177
+
+  10 Feb 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6-r1.ebuild,
+  vlc-0.8.6_p18636.ebuild:
+  Remove libtar automagic, bug #154194
+
+  08 Feb 2007; Alexis Ballier <aballier@gentoo.org> vlc-0.8.6-r1.ebuild,
+  vlc-0.8.6_p18636.ebuild:
+  update gnutls dep to >= 1.2.9, bug #165986
+
+  08 Feb 2007; Christian Faulhammer <opfer@gentoo.org> vlc-0.8.6-r1.ebuild:
+  replace flag O0 with O1, inherited flag-o-matic and ordered other eclasses
+  alphabetically
+
+  27 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> -vlc-0.8.4a-r1.ebuild:
+  Remove old versions.
+
+  27 Jan 2007; Joseph Jezak <josejx@gentoo.org> vlc-0.8.6-r1.ebuild:
+  Marked ppc stable for bug #161462.
+
+*vlc-0.8.6_p18636 (26 Jan 2007)
+
+  26 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +vlc-0.8.6_p18636.ebuild:
+  Add a snapshot from the bugfix branch of VLC to fix bug #161828 and other.
+
+  15 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org> vlc-0.8.6-r1.ebuild:
+  Stable on sparc wrt security #159845
+
+  10 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Add missing email address for herd with name != alias.
+
+  10 Jan 2007; <malc@gentoo.org> vlc-0.8.6-r1.ebuild:
+  Stable on amd64 wrt sec. bug #159845
+
+  06 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> -vlc-0.8.5-r3.ebuild,
+  -vlc-0.8.5-r5.ebuild, -vlc-0.8.6.ebuild:
+  Remove old versions.
+
+  06 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> vlc-0.8.6-r1.ebuild:
+  Stable on Alpha.
+
+  04 Jan 2007; Christian Faulhammer <opfer@gentoo.org> vlc-0.8.6-r1.ebuild:
+  stable x86, security bug #159845
+
+  04 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.6-r1.ebuild:
+  Make sure the correct wx-config is used, hopefully closes bug #159674.
+
+*vlc-0.8.6-r1 (03 Jan 2007)
+
+  03 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> +vlc-0.8.6-r1.ebuild:
+  Add patch to fix security bug #159845.
+
+  30 Dec 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.6.ebuild:
+  Update patchlevel to add a patch to build live555 as plugin when using
+  system libraries, use the correct path for the live555 tree when building
+  against old style ebuild, and allow using new-style live555 ebuilds.
+
+  21 Dec 2006; Markus Rothe <corsair@gentoo.org> vlc-0.8.6.ebuild:
+  Added ~ppc64; bug #139252
+
+  16 Dec 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.6.ebuild:
+  Bump libmatroska requirement to 0.8.0 as per stkn report.
+
+*vlc-0.8.6 (10 Dec 2006)
+
+  10 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -vlc-0.8.6_beta2.ebuild, -vlc-0.8.6_rc1.ebuild, +vlc-0.8.6.ebuild:
+  Bump to version 0.8.6 final.
+
+  09 Dec 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.6_rc1.ebuild:
+  Bump patchset with patch for flac 1.1.3 and add dependency over libogg when
+  enabling flac.
+
+  01 Dec 2006; Vlastimil Babka <caster@gentoo.org> vlc-0.8.6_rc1.ebuild:
+  Hopefully fixed the nsplugin building (bug #156067) this time.
+
+*vlc-0.8.6_rc1 (01 Dec 2006)
+
+  01 Dec 2006; Diego Pettenò <flameeyes@gentoo.org> +vlc-0.8.6_rc1.ebuild:
+  Version bump to release candidate, fix the mozilla plugin thanks to the
+  information by Tavin Cole in bug #156067.
+
+  21 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Give this back to video herd.
+
+  17 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.6_beta2.ebuild:
+  Update install-sh script with the libtool copy, and keyword ~x86-fbsd.
+
+  17 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.6_beta2.ebuild:
+  Run emake install in src first so that we don't need to block old versions
+  of VLC.
+
+*vlc-0.8.6_beta2 (17 Nov 2006)
+
+  17 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +vlc-0.8.6_beta2.ebuild:
+  Add the test2a version of VLC, masked. Unfortunately here are troubles with
+  libtool and shared libvlc, and thus you need to remove old version before
+  merging this one.
+
+  11 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.5-r5.ebuild:
+  Ignore patch 230_all_libcdio-0.78.2.patch when using older versions of
+  libcdio. Closes bug #154193.
+
+  04 Nov 2006; Patrick McLean <chutzpah@gentoo.org> vlc-0.8.5-r5.ebuild:
+  Add patch to allow compilation with media-video/vlc-0.8.5-r5 (bug #153931).
+
+  19 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4a-r1.ebuild,
+  vlc-0.8.5-r3.ebuild, vlc-0.8.5-r5.ebuild:
+  Depend on 1.1.2 version of flac, as the 1.1.3 version changes API.
+
+  01 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4a-r1.ebuild,
+  vlc-0.8.5-r3.ebuild, vlc-0.8.5-r5.ebuild:
+  Remove build-time dependency on xproto and/or xextproto.
+
+  22 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4a-r1.ebuild,
+  vlc-0.8.5-r3.ebuild, vlc-0.8.5-r5.ebuild:
+  Force latest version of autotools, and be done with that.
+
+  21 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4a-r1.ebuild,
+  vlc-0.8.5-r3.ebuild, vlc-0.8.5-r5.ebuild:
+  Add dependency on automake 1.8 as per bug #148420. Thanks to Åsmund
+  Grammeltvedt for reporting.
+
+  09 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.5-r5.ebuild:
+  Bump patchset trying to fix bug #139843.
+
+  31 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4a-r1.ebuild,
+  vlc-0.8.5-r3.ebuild, vlc-0.8.5-r5.ebuild:
+  Remove nls and screen useflags that weren't being used. Thanks to Sascha
+  Geschwandtner for noticing in bug #141956.
+
+  09 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4a-r1.ebuild,
+  vlc-0.8.5-r3.ebuild, vlc-0.8.5-r5.ebuild:
+  Pinpoint virtual/x11 version to less than 7.
+
+*vlc-0.8.5-r5 (08 Jul 2006)
+
+  08 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> -vlc-0.8.5-r4.ebuild,
+  +vlc-0.8.5-r5.ebuild:
+  Fix (hopefully) the nsplugin location, thanks to Alex, Caster and Sascha
+  Geschwandtner in bug #139317.
+
+*vlc-0.8.5-r4 (04 Jul 2006)
+
+  04 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> +vlc-0.8.5-r4.ebuild:
+  Re-add nsplugin support with dependency on firefox or seamonkey (use
+  seamonkey useflag). Enable optimise for memory with optimisememory useflag.
+
+  04 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.5-r3.ebuild:
+  Bump patchset to fix the parallel install problem reported in bug #139176.
+
+  01 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> -vlc-0.8.2-r2.ebuild:
+  Remove obsolete version.
+
+  01 Jul 2006; Seemant Kulleen <seemant@gentoo.org> vlc-0.8.4a-r1.ebuild:
+  stable for bug #121558
+
+  01 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> -vlc-0.8.1-r1.ebuild:
+  Remove obsolete version.
+
+  30 Jun 2006; Thomas Cort <tcort@gentoo.org> vlc-0.8.4a-r1.ebuild:
+  Stable on alpha wrt Bug #121558.
+
+  29 Jun 2006; Diego Pettenò <flameeyes@gentoo.org> -vlc-0.8.4a.ebuild:
+  Drop old version.
+
+  29 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> vlc-0.8.4a-r1.ebuild:
+  Stable on x86 wrt bug #136890.
+
+  26 Jun 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  vlc-0.8.4a-r1.ebuild, vlc-0.8.5-r3.ebuild:
+  adding gnome2 to inherit (resolves bug #117158)
+
+  23 Jun 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.2-r2.ebuild,
+  vlc-0.8.4a.ebuild, vlc-0.8.4a-r1.ebuild, -vlc-0.8.5-r2.ebuild,
+  vlc-0.8.5-r3.ebuild:
+  Remove nsplugin support as per bug #137665.
+
+  18 Jun 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.1-r1.ebuild,
+  vlc-0.8.2-r2.ebuild, vlc-0.8.4a.ebuild, vlc-0.8.4a-r1.ebuild,
+  vlc-0.8.5-r2.ebuild, vlc-0.8.5-r3.ebuild:
+  Restrict confcache as per bugs #1371445 and #137023.
+
+*vlc-0.8.5-r3 (18 Jun 2006)
+
+  18 Jun 2006; Diego Pettenò <flameeyes@gentoo.org> +vlc-0.8.5-r3.ebuild:
+  Add new version with patchset to fix strict aliasing and make wx build
+  without permissive.
+
+*vlc-0.8.5-r2 (16 Jun 2006)
+
+  16 Jun 2006; Diego Pettenò <flameeyes@gentoo.org> -vlc-0.8.5-r1.ebuild,
+  +vlc-0.8.5-r2.ebuild:
+  Remove aac useflag and use ffmpeg decoding instead. Fixes AAC playing.
+
+  16 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org> vlc-0.8.4a-r1.ebuild:
+  Stable on sparc
+
+  05 Jun 2006; Diego Pettenò <flameeyes@gentoo.org> -vlc-0.8.5.ebuild,
+  vlc-0.8.5-r1.ebuild:
+  Depend on version 1.2 of upnp or it won't work correctly. THanks to Colin
+  Carle for reporting and Samuli Suominen for finding the solution. Closes bug
+  #135681.
+
+*vlc-0.8.5-r1 (02 Jun 2006)
+
+  02 Jun 2006; Diego Pettenò <flameeyes@gentoo.org> +vlc-0.8.5-r1.ebuild:
+  Add new revision with a fix for stream containing ' character.
+
+  28 May 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.5.ebuild:
+  Bump patchlevel to add a patch to support ffmpeg with (experimental) hidden
+  visibility.
+
+  09 May 2006; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Sign manifest after key expiration.
+
+  09 May 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.5.ebuild:
+  Bump patchset to fix bug #132809.
+
+  09 May 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.5.ebuild:
+  Bump patchlevel to fix bugs #132776 and #132780.
+
+  08 May 2006; Markus Rothe <corsair@gentoo.org> vlc-0.8.5.ebuild:
+  Added ~ppc64
+
+  07 May 2006; <tcort@gentoo.org> vlc-0.8.5.ebuild:
+  Added ~alpha keyword.
+
+*vlc-0.8.5 (06 May 2006)
+
+  06 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -vlc-0.8.5_beta4.ebuild, +vlc-0.8.5.ebuild:
+  Update to 0.8.5, dropped ~alpha keyword.
+
+  04 May 2006; Mark Loeser <halcy0n@gentoo.org> vlc-0.8.4a.ebuild:
+  Stable on x86; bug #121558
+
+  02 May 2006; Diego Pettenò <flameeyes@gentoo.org> -vlc-0.8.4.ebuild:
+  Drop old version.
+
+*vlc-0.8.5_beta4 (02 May 2006)
+
+  02 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -vlc-0.8.5_beta2.ebuild, -vlc-0.8.5_beta3.ebuild, +vlc-0.8.5_beta4.ebuild:
+  Update to last test version.
+
+  20 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.5_beta3.ebuild:
+  Bump patchset to fix directfb support, and make ebuild handle that, too.
+
+*vlc-0.8.5_beta3 (20 Apr 2006)
+
+  20 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +vlc-0.8.5_beta3.ebuild:
+  Bump to latest test version from upstream.
+
+  15 Apr 2006; Thomas Cort <tcort@gentoo.org> vlc-0.8.5_beta2.ebuild:
+  Added ~alpha keyword.
+
+  12 Apr 2006; Thomas Cort <tcort@gentoo.org> vlc-0.8.4a-r1.ebuild:
+  Added ~alpha keyword wrt Bug #121558.
+
+  11 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org> vlc-0.8.4a.ebuild:
+  Stable on sparc wrt #121558
+
+  11 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4.ebuild,
+  vlc-0.8.4a.ebuild, vlc-0.8.4a-r1.ebuild, vlc-0.8.5_beta2.ebuild:
+  Rename real useflag to rtsp as real usually involves realplayer/helixplayer
+  and thus is masked on non-x86 profiles.
+
+*vlc-0.8.5_beta2 (02 Apr 2006)
+
+  02 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +vlc-0.8.5_beta2.ebuild:
+  New beta version from upstream, please try it out if you can. New in this
+  release the directfb support and Intel UPnP stack support.
+
+  21 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4a-r1.ebuild:
+  Bump patchset to fix bug #125071.
+
+  15 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.2-r2.ebuild,
+  vlc-0.8.4.ebuild, vlc-0.8.4a.ebuild, vlc-0.8.4a-r1.ebuild:
+  Replace xml2 useflag with xml useflag.
+
+  14 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4a-r1.ebuild:
+  Bump patchset to allow building with GCC 4.1, see bug #126202.
+
+  02 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4a-r1.ebuild:
+  Cleanup modular x deps.
+
+*vlc-0.8.4a-r1 (01 Mar 2006)
+
+  01 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> +vlc-0.8.4a-r1.ebuild:
+  New patchset with a patch to build against libcddb 1.2 finally. This allows
+  to remove cddb and libcdio from unmask.
+
+  28 Feb 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4a.ebuild:
+  Enable streamout support when vlm is enabled also if stream is not. Thanks
+  to Robert Lippmann <rlippmann@hotmail.com> for pointing this out in bug
+  #124356.
+
+  12 Feb 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4a.ebuild:
+  Make cddb an useflag so that people can decide whether to use it or not,
+  allowing to stop the up/down cycle with libcdio 0.76 that requires newer
+  cddb.
+
+  04 Feb 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4a.ebuild:
+  Change dep on wxGTK 2.6.2-r1 as per bug #118631. Drop autotools dependencies.
+
+  12 Jan 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4a.ebuild:
+  Add xinerama useflag and make it optional, after bumping patchset to version
+  13.
+
+  04 Jan 2006; Simon Stelling <blubb@gentoo.org> vlc-0.8.2-r2.ebuild:
+  stable on amd64 wrt bug 116181
+
+  04 Jan 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4a.ebuild:
+  Bump patchset to include the patch to fix textrels provided by PaX team.
+
+  04 Jan 2006; Diego Pettenò <flameeyes@gentoo.org> -vlc-0.8.2-r1.ebuild,
+  -vlc-0.8.4-r1.ebuild:
+  Drop old versions.
+
+  03 Jan 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4a.ebuild:
+  Filter out --as-needed when using wxwindows, it makes ld segfault.
+
+  03 Jan 2006; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4-r1.ebuild,
+  vlc-0.8.4a.ebuild:
+  Make domenu conditional to use wxwindows as the desktop file is specifically
+  for wxvlc command.
+
+  02 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org> vlc-0.8.4.ebuild:
+  Stable on sparc wrt #116181
+
+  02 Jan 2006; Mark Loeser <halcy0n@gentoo.org> vlc-0.8.2-r2.ebuild:
+  Stable on x86; bug #116181
+
+  30 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.1-r1.ebuild:
+  Fix the last version still using freetype useflag instead of truetype.
+
+  27 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.2-r1.ebuild,
+  vlc-0.8.2-r2.ebuild, vlc-0.8.4.ebuild, vlc-0.8.4-r1.ebuild,
+  vlc-0.8.4a.ebuild:
+  Change freetype useflag to truetype.
+
+  17 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.1-r1.ebuild,
+  vlc-0.8.2-r1.ebuild, vlc-0.8.2-r2.ebuild, vlc-0.8.4.ebuild,
+  vlc-0.8.4-r1.ebuild, vlc-0.8.4a.ebuild:
+  Fix the dependency, for alsa is over alsa-lib, not virtual/alsa that points
+  to the drivers. Close bug #115857.
+
+*vlc-0.8.4a (13 Dec 2005)
+
+  13 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> +vlc-0.8.4a.ebuild:
+  Updated VLC to 0.8.4a as released by upstream. Avahi and HAL patches are now
+  part of vanilla sources.
+
+  10 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4-r1.ebuild:
+  Made modular-friendly.
+
+  08 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4.ebuild,
+  vlc-0.8.4-r1.ebuild:
+  As per bug #113449, disable ability to build vlc with wxGTK built without
+  unicode, as 2.6 version has non-experimental support, and vlc 0.8.4 seems to
+  require it strictly.
+
+  02 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4-r1.ebuild:
+  Added patch from Giandomenico De Tullio for enabing avahi support on 0.6
+  version and later, now bonjour support can be enabled on avahi greater than
+  0.3. Install the (patched) desktop file from debian directory instead of
+  creating a new one.
+
+  01 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.1-r1.ebuild:
+  Changing dep for ffmpeg to any revision of 20050226 snapshot to avoid dummy
+  people to use newer ffmpeg and filing tons of bugs without looking.
+
+  30 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.1-r1.ebuild:
+  Completely remove nsplugin logic in vlc 0.8.1, too bugged.
+
+  29 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4-r1.ebuild:
+  Die if skins are requested but freetype is not enabled. Don't remove the
+  default skin when using skins. Thanks to Gergan Penkov in bug #113860.
+
+  28 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Take over maintainership directly.
+
+  28 Nov 2005; Chris White <chriswhite@gentoo.org> vlc-0.8.1-r1.ebuild:
+  Re-fixed bug #77153.
+
+*vlc-0.8.4-r1 (27 Nov 2005)
+
+  27 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> +vlc-0.8.4-r1.ebuild:
+  Added new testing version (not yet stable candidate). This version uses
+  ffmpeg as a plugin instead of builtin, reducing the linking on vlc binary.
+  Also backports HAL changes from upstream to allow using HAL 0.5 with it.
+
+*vlc-0.8.4 (27 Nov 2005)
+
+  27 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -vlc-0.8.4_beta3.ebuild, +vlc-0.8.4.ebuild:
+  New version, 0.8.4 final: closed bug #113590; applied formats patch by
+  solar; transformed sed lines in patches; fixed tests for avahi and hal to
+  avoid misunderstanding if someone tries to enable them; build DTS support as
+  plugin instead of builtin; removed comments inside the code as the
+  maintainer's guide carry all the needed informations; old for deprecated
+  interfaces are removed from upstream's package.
+
+  27 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4_beta3.ebuild:
+  Remove bonjour support or vlc would fail if avahi 0.6 is installed. See bug
+  #113665.
+
+  24 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.1-r1.ebuild,
+  vlc-0.8.2-r1.ebuild, vlc-0.8.2-r2.ebuild, vlc-0.8.4_beta3.ebuild:
+  Remove comments about missing useflags as they are now reported on the
+  maintainer's guide.
+
+*vlc-0.8.4_beta3 (23 Nov 2005)
+
+  23 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -vlc-0.8.4_beta1.ebuild, -vlc-0.8.4_beta2.ebuild, +vlc-0.8.4_beta3.ebuild:
+  Update to latest test version before final release.
+
+  22 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.1-r1.ebuild,
+  vlc-0.8.2-r1.ebuild, vlc-0.8.2-r2.ebuild, vlc-0.8.4_beta1.ebuild,
+  vlc-0.8.4_beta2.ebuild:
+  Use mirror://gentoo/ for patchsets.
+
+  16 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.1-r1.ebuild,
+  vlc-0.8.2-r1.ebuild, vlc-0.8.2-r2.ebuild, vlc-0.8.4_beta1.ebuild,
+  vlc-0.8.4_beta2.ebuild:
+  Forcefully disable x264 support, so that installed x264 library does not get
+  detected and the build does not fail. See bug #112670.
+
+*vlc-0.8.4_beta2 (05 Nov 2005)
+
+  05 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +vlc-0.8.4_beta2.ebuild:
+  Added last beta version. Requires testing.
+
+  30 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.1-r1.ebuild,
+  vlc-0.8.2-r1.ebuild:
+  Don't allow to enable hal, as it anyways does not work fine and has bad
+  behavior when hal 0.5 is being used.
+
+  30 Oct 2005; Mark Loeser <halcy0n@gentoo.org> vlc-0.8.2-r1.ebuild,
+  vlc-0.8.2-r2.ebuild, vlc-0.8.4_beta1.ebuild:
+  Add back logic to strip -fomit-frame-pointer only when using gcc-2; fixes bug
+  #99813
+
+  14 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.4_beta1.ebuild:
+  Remove comments that are no more needed here as they are on the project page
+  documentation.
+
+  12 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.2-r2.ebuild:
+  Remove gtk1 support from latest 0.8.2 version as wxGTK 2.6 nos just supports
+  GTK2.
+
+*vlc-0.8.2-r2 (03 Oct 2005)
+
+  03 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> +vlc-0.8.2-r2.ebuild:
+  Added new revision for vlc 0.8.2 with hal disabled, as it seems not to be so
+  reliable.
+
+*vlc-0.8.4_beta1 (03 Oct 2005)
+
+  03 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +vlc-0.8.4_beta1.ebuild:
+  Added 0.8.4-test1 version. Most of the patches are applied upstream for now.
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> vlc-0.8.1-r1.ebuild:
+  Mark 0.8.1-r1 stable on alpha
+
+  10 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.1-r1.ebuild,
+  vlc-0.8.2-r1.ebuild:
+  Don't install ABOUT-NLS file.
+
+  02 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.2-r1.ebuild:
+  Added patch to compile with samba 3.0.20 (and also previous versions).
+
+  30 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> -vlc-0.8.1-r2.ebuild,
+  -vlc-0.8.1-r3.ebuild, -vlc-0.8.2.ebuild:
+  Removed old versions.
+
+  13 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.1-r1.ebuild:
+  Disabled threads from stable version as it's for 0.8.1-r2 and following.
+  Threads support isn't safe with some external libraries.
+
+  13 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.2-r1.ebuild:
+  Add patch to build vlc fine when +debug is enabled in wxGTK. Closes #97169.
+
+  12 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -files/mpeg2dec-20030612-configure.in-fpic.patch,
+  -files/0.6.2-mozilla-fix.patch, -files/glide.patch, -vlc-0.6.2.ebuild,
+  -vlc-0.6.2-r1.ebuild, -vlc-0.7.2.ebuild, vlc-0.8.1-r1.ebuild,
+  vlc-0.8.1-r2.ebuild, vlc-0.8.1-r3.ebuild, vlc-0.8.2.ebuild:
+  Rename mozilla useflag into nsplugin. Removed old (bugged) versions.
+
+*vlc-0.8.2-r1 (11 Jul 2005)
+
+  11 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> +vlc-0.8.2-r1.ebuild:
+  Added nsplugin flag to build the mozilla-compatible plugin (depends on
+  gecko-sdk).
+
+  10 Jul 2005; Jason Wever <weeve@gentoo.org> vlc-0.8.2.ebuild:
+  Added ~sparc keyword wrt bug #95625.
+
+  27 Jun 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.2.ebuild:
+  Disabled also slp support as upstream still uses an older API which breaks
+  with current version. See bug #97169.
+
+  27 Jun 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -vlc-0.8.2_beta2.ebuild, vlc-0.8.2.ebuild:
+  Removed vlc-0.8.2_beta2. Disabled mozilla support waiting for new gecko-sdk,
+  see bug #97164.
+
+*vlc-0.8.2 (26 Jun 2005)
+
+  26 Jun 2005; Diego Pettenò <flameeyes@gentoo.org> +vlc-0.8.2.ebuild:
+  New upstream version, missing ~sparc keyword until daap dependency is fixed.
+  Uses the same patches as 0.8.2_beta2 minus the sap one.
+
+  10 Jun 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.1-r3.ebuild,
+  vlc-0.8.2_beta2.ebuild:
+  Fixed mp3/mad params for 0.8.1 and 0.8.2_beta2. Added patch to compile clean
+  with latest GCC 4.0.1 for 0.8.2_beta2.
+
+  08 Jun 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.2_beta2.ebuild:
+  Fixed checks for ffmpeg features.
+
+*vlc-0.8.2_beta2 (08 Jun 2005)
+
+  08 Jun 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +vlc-0.8.2_beta2.ebuild:
+  New version (test version from upstream's snapshots. Cleaned up useflags,
+  added new dependencies, fixed dependencies which changed with latest
+  version, removed a few useflag. Now vcd and cdda enables also the extended
+  versions (requiring libcdio).
+
+  26 May 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.1-r3.ebuild:
+  Renamed mad flag into mp3 for latest version.
+
+  22 May 2005; Jason Wever <weeve@gentoo.org> vlc-0.8.1-r1.ebuild:
+  Stable on SPARC.
+
+  18 May 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.1-r3.ebuild:
+  Added new patches to make vlc work with wxGTK 2.6. Need more testing before
+  unmasking.
+
+  17 May 2005; Fernando J. Pereda <ferdy@gentoo.org> vlc-0.8.1-r1.ebuild:
+  keyworded ~alpha, wrt #90506
+
+*vlc-0.8.1-r3 (14 May 2005)
+
+  14 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -files/vlc-0.8.1-bool.patch, -files/vlc-0.8.1-matroska-shared.patch,
+  -files/vlc-0.8.1-time.patch, vlc-0.6.2.ebuild, vlc-0.6.2-r1.ebuild,
+  vlc-0.7.2.ebuild, vlc-0.8.1-r1.ebuild, vlc-0.8.1-r2.ebuild,
+  +vlc-0.8.1-r3.ebuild:
+  New revision which now uses wxGTK 2.6 instead of 2.4. Added patch to disable
+  hal support in configure (just for -r3 for now). Moved patches into patchset
+  tarball and removed from files. Converted from gcc to toolchain-funcs
+  eclass.
+
+  09 May 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.1-r1.ebuild,
+  vlc-0.8.1-r2.ebuild:
+  Fixed hal dependency to 0.4, fixes bug #91913. Removed !amd64 check on 3dfx
+  (use.masked).
+
+  07 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/vlc-0.8.1-bool.patch, vlc-0.8.1-r1.ebuild, vlc-0.8.1-r2.ebuild:
+  Added patch to compile ncurses support on -r2. Fixes #91603. Removed ncurses
+  useflag and disabled it on -r1 as it's stable and better not add patches to
+  it.
+
+  02 May 2005; Diego Pettenò <flameeyes@gentoo.org> -files/vlc.desktop,
+  -vlc-0.8.1.ebuild, vlc-0.8.1-r1.ebuild:
+  Marked 0.8.1-r1 stable on amd64 and x86, and removed the old 0.8.1 with its
+  files.
+
+  25 Apr 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.1-r2.ebuild:
+  Added build-time dependencies on autotools, pkgconfig, gettext and cvs
+  (needed by gettext's autopoint). Fixes #90321.
+
+*vlc-0.8.1-r2 (24 Apr 2005)
+
+  24 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/vlc-0.8.1-matroska-shared.patch, vlc-0.8.1-r1.ebuild,
+  +vlc-0.8.1-r2.ebuild:
+  Removed portaudio useflag, vlc needs portaudio v19 (development branch) 
+  which is not in portage.
+  Added 0.8.1-r2 version which depends in a recent libmatroska (0.7.3-r1 
+  at least) which builds .so version of the library, so to build a dynamic 
+  plugin instead of a static module (with the newly added patch to 
+  configure).
+  Disabled threads useflag from 0.8.1-r2 as it seems not mess up vlc with
+  at least latest ffmpeg and libmatroska.
+
+  20 Apr 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.6.2.ebuild,
+  vlc-0.6.2-r1.ebuild, vlc-0.7.2.ebuild, vlc-0.8.1.ebuild,
+  vlc-0.8.1-r1.ebuild:
+  Removed deprecated oggvorbis useflag. Made vlc-0.8.1-r1 install all the docs
+  by dodoc instead of installing it on /usr/share/doc/vlc.
+
+  18 Apr 2005; Diego Pettenò <flameeyes@gentoo.org> metadata.xml,
+  -vlc-0.6.0-r1.ebuild, -vlc-0.6.1.ebuild, vlc-0.6.2.ebuild,
+  -vlc-0.7.1.ebuild, -vlc-0.7.1-r1.ebuild, -vlc-0.7.2-r1.ebuild,
+  -vlc-0.8.0.ebuild:
+  Pruned old ebuilds, as many bugs are fixed in recent ~arch ebuilds, and 
+  0.8.1-r1 is the wannabe-stable. Fixed dependency on libmpeg2-0.3* 
+  for vlc-0.6.2 (fixes #60696). Updated metadata, ChrisWhite is retired :/
+
+  18 Apr 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.6.0-r1.ebuild,
+  vlc-0.6.1.ebuild, vlc-0.6.2.ebuild, vlc-0.6.2-r1.ebuild:
+  VLC 0.6.x needs xvid .9.x, can't build with 1.0.
+
+  17 Apr 2005; Diego Pettenò <flameeyes@gentoo.org> vlc-0.8.1-r1.ebuild:
+  Add check for wxwindows before request it (fixex #89436).
+
+  13 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +files/vlc-0.8.1-time.patch, vlc-0.8.1-r1.ebuild:
+  added patch to include missing time.h, fixes #88378. patch grabbed from
+  upstream cvs.
+
+  04 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> vlc-0.8.1-r1.ebuild:
+  introduced support for several useflags, implemented enhancement suggestions
+  which were made by Diego Pettenò <dgp85@users.sourceforge.net>. Fixes #87289
+
+*vlc-0.8.1-r1 (28 Mar 2005)
+
+  28 Mar 2005; Chris White <chriswhite@gentoo.org> +vlc-0.8.1-r1.ebuild:
+  Revbump to -r1. Fixes detailed in bug #86419. Thanks to Diego Pettenò for
+  the ebuild cleanup.
+
+  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org> vlc-0.6.0-r1.ebuild,
+  vlc-0.6.1.ebuild, vlc-0.6.2.ebuild, vlc-0.6.2-r1.ebuild, vlc-0.7.1.ebuild,
+  vlc-0.7.1-r1.ebuild, vlc-0.7.2.ebuild, vlc-0.7.2-r1.ebuild,
+  vlc-0.8.0.ebuild, vlc-0.8.1.ebuild:
+  change dep from net-www/mozilla to www-client/mozilla
+
+  10 Mar 2005; Chris White <chriswhite@gentoo.org> vlc-0.8.1.ebuild:
+  Fixed bug #77611.
+
+  03 Mar 2005; Chris White <chriswhite@gentoo.org> vlc-0.8.1.ebuild:
+  Fixed bug #83880.
+
+  27 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org> vlc-0.8.1.ebuild:
+  Back to using oggvorbis in IUSE.
+
+  29 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> vlc-0.8.1.ebuild:
+  removed unnecessary line from DEPEND, see #78830
+
+  09 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> vlc-0.8.1.ebuild:
+  added missing faad? dependency. fixes #77200.
+
+  09 Jan 2005; Chris White <chriswhite@gentoo.org> vlc-0.8.1.ebuild:
+  Fixed mozilla plugin not working because it was looking in the wrong place
+  for a file :).
+
+  08 Jan 2005; Chris White <chriswhite@gentoo.org> vlc-0.8.1.ebuild:
+  Fixed #77119.  Also fixed 2 syntax errors located in #60696.
+
+  08 Jan 2005; Chris White <chriswhite@gentoo.org> vlc-0.8.1.ebuild:
+  Fixing MOZILLA_CONFIG errors that I'll surely be getting in about 30 minutes.
+
+  08 Jan 2005; Chris White <chriswhite@gentoo.org> +files/vlc.desktop,
+  vlc-0.8.1.ebuild:
+  Fixing bug #39213.  Thanks to Keith Lea for providing the vlc.desktop file.
+
+*vlc-0.8.1 (08 Jan 2005)
+
+  08 Jan 2005; Chris White <chriswhite@gentoo.org> +vlc-0.8.1.ebuild:
+  Bump to version 0.8.1. This is a nice cleanup of the ebuild for deps and
+  all. Should run alot better than previous versions. Fixes bug #72338.
+
+  14 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org> vlc-0.6.1.ebuild,
+  vlc-0.6.2-r1.ebuild, vlc-0.6.2.ebuild, vlc-0.7.1-r1.ebuild,
+  vlc-0.7.1.ebuild, vlc-0.7.2-r1.ebuild, vlc-0.7.2.ebuild, vlc-0.8.0.ebuild:
+  Changed USE flag to aac.
+
+  11 Nov 2004; Luca Barbato <lu_zero@gentoo.org> vlc-0.8.0.ebuild:
+  Temporary removed slp
+
+*vlc-0.8.0 (09 Nov 2004)
+
+  09 Nov 2004; Luca Barbato <lu_zero@gentoo.org> +vlc-0.8.0.ebuild:
+  New release
+
+  23 Oct 2004; Jason Wever <weeve@gentoo.org> vlc-0.7.2-r1.ebuild:
+  Added ~sparc keyword.
+
+  01 Sep 2004; Martin Holzer <mholzer@gentoo.org> vlc-0.7.2-r1.ebuild,
+  vlc-0.7.2.ebuild:
+  adding theora support through IUSE. closes 41383
+
+  20 Aug 2004; Chris White <chriswhite@gentoo.org> vlc-0.7.2-r1.ebuild:
+  Fixed LIVE version.
+
+*vlc-0.7.2-r1 (10 Aug 2004)
+
+  10 Aug 2004; Chris White <chriswhite@gentoo.org> metadata.xml,
+  +files/vlc-0.7.2-live.patch, vlc-0.7.2-r1.ebuild:
+  Removed CFLAGS unsetting, disabled broken interfaces, added myself as
+  maintainer, and stopped the live downgrading issue.
+
+  01 Jul 2004; Joel Martin <kanaka@gentoo.org>:
+  Add dts use flag, update dependancy version requirements to more closely match
+  official requirements, integrate some ebuild changes from ebuild included in
+  the source tree, fix default font file location.
+
+  25 Jun 2004; Joel Martin <kanaka@gentoo.org> vlc-0.7.2.ebuild:
+  Add depend on automake 1.7.9 to close bug 54498. No version bump necessary,
+  this is a getting it to build type fix
+
+  09 Jun 2004; Aron Griffis <agriffis@gentoo.org> vlc-0.6.0-r1.ebuild,
+  vlc-0.6.1.ebuild, vlc-0.6.2-r1.ebuild, vlc-0.6.2.ebuild, vlc-0.7.1.ebuild:
+  Fix use invocation
+
+*vlc-0.7.2 (07 Jun 2004)
+
+  07 Jun 2004; Travis Tilley <lv@gentoo.org> +vlc-0.7.2.ebuild:
+  version bump. this version contains improved interfaces with support for
+  embedded video outputs, new formats support, an improved DVB input, subtitles
+  improvements, major stream output improvements, a VideoLAN manager to manage
+  several streams with only one instance of VLC, and (most importantly, at least
+  here) numerous fixes for compiling with gcc 3.4.
+
+  07 Jun 2004; Travis Tilley <lv@gentoo.org> vlc-0.7.1-r1.ebuild:
+  stable on amd64
+
+  03 May 2004; Jeremy Huddleston <eradicator@gentoo.org> vlc-0.6.0-r1.ebuild,
+  vlc-0.6.1.ebuild, vlc-0.6.2-r1.ebuild, vlc-0.6.2.ebuild:
+  Changing mad dep to madplay.
+
+  09 Apr 2004; Travis Tilley <lv@gentoo.org> vlc-0.7.1-r1.ebuild:
+  added ~amd64 keyword
+
+*vlc-0.7.1-r1 (26 Mar 2004)
+
+  26 Mar 2004; David Holm <dholm@gentoo.org> vlc-0.7.1-r1.ebuild:
+  Added to ~ppc. AltiVec is broken in 0.7.1, disabled.
+
+  20 Mar 2004; Joel Martin <kanaka@gentoo.org>:
+  Changed to live.com ebuild rather than importing source. Disabled qt and kde
+  interfaces and xvid since they are deprecated, added libdvdnav dependency,
+  restructured configuration of dvd and dvb features, synchronized the format
+  of the ebuild with the one by Derk-Jan Hartman.
+
+  17 Mar 2004; Joel Martin <kanaka@gentoo.org> vlc-0.6.2-r1.ebuild,
+  vlc-0.7.1.ebuild:
+  Fix svga dep in 0.7.1, remove ~ia64 from 0.6.2-r1 because of bad deps
+
+  15 Mar 2004; Luca Barbato <lu_zero@gentoo.org> vlc-0.7.1.ebuild:
+  Marked -ppc the ffmpeg req has issues
+
+*vlc-0.7.1 (11 Mar 2004)
+
+  11 Mar 2004; Joel Martin <kanaka@gentoo.org> vlc-0.7.1.ebuild,
+  files/live-gcc3-3.patch:
+  Merged latest unstable vlc-0.6.2-r1, and vlc provided ebuild by Derk-Jan
+  Hartman. Depend on new ffmpeg ebuild instead of pulling down ffmpeg directly.
+  Add LiveMedia, libcaca support. No implicit mplayer dependency. Bump faad2
+  requirement. General cleanup. Removed other arches because or arch dependency
+  issues.
+
+  23 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> vlc-0.6.0-r1.ebuild,
+  vlc-0.6.1.ebuild, vlc-0.6.2-r1.ebuild, vlc-0.6.2.ebuild:
+  fix KEYWORDS to match available deps
+
+  07 Jan 2004; Daniel Ahlberg <aliz@gentoo.org> vlc-0.6.2-r1.ebuild,
+  files/mpeg2dec-20030612-configure.in-fpic.patch:
+  Patch configure.in instead of configure
+
+*vlc-0.6.2-r1 (13 Dec 2003)
+
+  13 Dec 2003; Seemant Kulleen <seemant@gentoo.org> vlc-0.6.2-r1.ebuild:
+  Switch to using internal ffmpeg and mpeg2dec becausethat means that mplayer
+  does not have to be a dependency any more. Thanks to the ebuild enclosed
+  within the tarball for the clues
+
+  12 Dec 2003; Seemant Kulleen <seemant@gentoo.org> metadata.xml,
+  vlc-0.4.4.ebuild, vlc-0.4.5.ebuild, vlc-0.5.2-r1.ebuild, vlc-0.5.2.ebuild,
+  vlc-0.6.0.ebuild, vlc-0.6.2.ebuild:
+  remove crufty ebuilds and move to use_enable syntax for configure options
+
+  22 Nov 2003; Luca Barbato <lu_zero@gentoo.org> vlc-0.6.2.ebuild,
+  files/0.6.2-mozilla-fix.patch:
+  Patch to build mozilla plugin on mozilla-1.5*
+
+  21 Nov 2003; Nick Hadaway <raker@gentoo.org> vlc-0.6.2.ebuild:
+  The Mozilla plugin only works with Mozilla 1.4 currently.
+
+  19 Oct 2003; Max Kalika <max@gentoo.org> vlc-0.6.2.ebuild:
+  Revert location of libdvd, it belongs in media-libs but was only 
+  partly moved there previously.
+
+  17 Oct 2003; Nick Hadaway <raker@gentoo.org> vlc-0.6.2.ebuild:
+  Fixed portage location of libdvb.  Marked stable for x86.
+
+  17 Aug 2003; Nick Hadaway <raker@gentoo.org> vlc-0.6.2.ebuild:
+  Made minor change as suggested by brandy@gentoo.org on bug #24119
+
+  16 Aug 2003; Nick Hadaway <raker@gentoo.org> vlc-0.6.2.ebuild,
+  files/glide.patch:
+  Glide works now possibly.  See bug #24119.  Also added the touch stuff
+  from the videolan cvs ebuild.
+
+  15 Aug 2003; Nick Hadaway <raker@gentoo.org> vlc-0.6.2.ebuild:
+  Stripping -fomit-frame-pointer if gcc-major-version -eq 2.  See bug
+  #24678.
+
+*vlc-0.6.2 (13 Aug 2003)
+
+  13 Aug 2003; Nick Hadaway <raker@gentoo.org> vlc-0.6.2.ebuild:
+  Version bump.  Removed 0.6.1 related workarounds.  Added support
+  for the altivec USE variable.  Up to 34 USE variables now. :)
+
+*vlc-0.6.1 (01 Aug 2003)
+
+  01 Aug 2003; Nick Hadaway <raker@gentoo.org> vlc-0.6.1.ebuild,
+  files/buildorder.patch:
+  The "elusive math equation" release.
+  Version bump.  Re-organized the ebuild to coincide with the listing
+  of configure options outputted by ./configure --help.  Added support
+  for USE variables faad, xosd, and matroska.  Added a patch based on
+  upstream cvs which allows the mozilla plugin to compile properly.
+  I have updated the dependancies to the new ebuilds of libdvdcss-1.2.8
+  and libdvbpsi-0.1.3 as upstream authors suggest these versions.
+  We are now weighing in at 33 use variables folks. :)  Presently, 
+  perhaps the most prolific package in Portage. :)
+
+  21 Jul 2003; Nick Hadaway <raker@gentoo.org> vlc-0.6.0-r1.ebuild:
+  Removed the matrox use variable and forced disable-mga as the
+  module is known not to work, slower than other rendering, and will
+  not be updated upstream anymore.
+
+  20 Jul 2003; Nick Hadaway <raker@gentoo.org> vlc-0.6.0-r1.ebuild:
+  Added support for the debug USE variable.  Added the matroska
+  local USE variable.
+
+  19 Jul 2003; Nick Hadaway <raker@gentoo.org> vlc-0.6.0-r1.ebuild:
+  Added the dvb USE variable.  Added a comment re: truetype for 0.6.1
+  Now showing the whole list of IUSE variables.  Updated
+  wxwindows dependancy to >=wxGTK-2.4.1 as 2.4.0 has problems.
+  Added -i to kde-related sed statements.  Re-worded some comments.
+  General ebuild beautification.
+
+  19 Jul 2003; Nick Hadaway <raker@gentoo.org>:
+  Removed unneeded vlc-0.6.0-r2.ebuild.
+
+*vlc-0.6.0-r2 (17 Jul 2003)
+
+  17 Jul 2003; Nick Hadaway <raker@gentoo.org> vlc-0.6.0-r2.ebuild:
+  Changed "mad" depends to the new libmad/libid3tag
+
+*vlc-0.6.0-r1 (16 Jul 2003)
+
+  16 Jul 2003; Nick Hadaway <raker@gentoo.org> vlc-0.6.0-r1.ebuild,
+  files/mozplugin.patch:
+  Now utilizes the mozilla USE variable to install a way cool
+  mozilla plugin.  The code has been tested with mozilla 1.4
+  and may work with 1.3.
+
+  16 Jul 2003; Nick Hadaway <raker@gentoo.org> vlc-0.6.0.ebuild:
+  Adding mplayer as a dependancy until the libpostproc issue is
+  figured out.  See bug #22811
+
+  09 Jul 2003; Nick Hadaway <raker@gentoo.org> vlc-0.6.0.ebuild:
+  A little sed to change glide location from /usr/include/glide to
+  /usr/include/glide3
+
+  06 Jul 2003; Nick Hadaway <raker@gentoo.org> vlc-0.6.0.ebuild:
+  Marked stable for x86
+
+*vlc-0.6.0 (25 Jun 2003)
+
+  25 Jun 2003; Nick Hadaway <raker@gentoo.org> vlc-0.6.0.ebuild:
+  Lots more IUSE madness.  More proper enabling/disabling of configure
+  options.  Some portions of this ebuild were inspired from the 
+  videolan.org official ebuild.
+
+*vlc-0.5.2-r1 (29 Mar 2003)
+
+  29 Mar 2003; Martin Holzer <mholzer@gentoo.org> vlc-0.5.2-r1.ebuild:
+  Added some IUSE vars and option flags. Closes #18321.
+
+*vlc-0.5.2 (13 Mar 2003)
+
+  13 Mar 2003; Seemant Kulleen <seemant@gentoo.org> vlc-0.5.2.ebuild:
+  version bump
+
+*vlc-0.4.5 (09 Nov 2002)
+
+  22 Dec 2002; Martin Holzer <mholzer@gentoo.org> vlc-0.4.4.ebuild files/digest-vlc-0.4.4 Changelog:
+  Changed .tar.gz to .tar.bz2, removed --disable-a52
+
+  09 Nov 2002; Seemant Kulleen <seemant@gentoo.org>  vlc-0.4.5.ebuild
+  files/digest-vlc-0.4.5:
+
+  Version bump, thanks to: mholzer@gentoo.org (Martin Holzer) in bug #10426
+
+*vlc-0.4.4 (13 Aug 2002)
+
+  22 Dec 2002; Martin Holzer <mholzer@gentoo.org> vlc-0.4.4.ebuild files/digest-vlc-0.4.4 Changelog:
+  Changed .tar.gz to .tar.bz2, removed --disable-a52
+
+  28 Sep 2002; Nick Hadaway <raker@gentoo.org> vlc-0.4.4.ebuild:
+  Removed redundant configure options.  Changed to einstall.
+
+  17 Aug 2002; Dan Armak <danarmak@gentoo.org> ChangeLog:
+  Use kde-functions.eclass to determine kdelibs, arts locations.
+
+  15 Aug 2002; Mark Guertin <gerk@gentoo.org> vlc-0.4.4.ebuild:
+  Added ppc to keywords
+
+  13 Aug 2002; Seemant Kulleen <seemant@gentoo.org> vlc-0.4.4.ebuild:
+  Version bump.
+
+*vlc-0.4.3 (25 Jul 2002)
+
+  02 Aug 2002; Nick Hadaway <raker@gentoo.org> vlc-0.4.3.ebuild:
+  Added support for libdvbpsi.
+
+  29 Jul 2002; Nick Hadaway <raker@gentoo.org>:
+  Added support for a52dec by default as it is marked as enabled by
+  default in vlc's configure options and the a52dec author says we
+  should give it a try.  :)  I have it set to depend on
+  >=media-libs/a52dec-0.7.4 as previous versions were not thread
+  safe.
+
+  25 Jul 2002; Seemant Kulleen <seemant@gentoo.org>  vlc-0.4.3.ebuild:
+  Version bump.
+
+*vlc-0.4.2 (13 Jul 2002)
+
+  13 Jul 2002; Nick Hadaway <raker@gentoo.org> 
+  vlc-0.4.2.ebuild files/digest-vlc-0.4.2:
+  Version bump.
+
+*vlc-0.4.1 (09 Jul 2002)
+
+  09 Jul 2002; Nick Hadaway <raker@gentoo.org> vlc-0.4.1.ebuild
+  files/digest-vlc-0.4.1:
+  Version bump.  Added required dependancy for mad (MPEG audio library)
+  which allows vlc to read divx files.  Updated configure options.
+  Special thanks to to the vlc support team for the quick response
+  to my inquiry.
+
+*vlc-0.4.0 (17 Jun 2002)
+
+  17 Jun 2002; Seemant Kulleen <seemant@gentoo.org> vlc-0.4.0-r1.ebuild
+  files/digest-vlc-0.4.0-r1:
+  This now works with Qt2 and Qt3, depending on which is reflected in
+  $QTDIR.  Thanks to BradPritt@gmx.de (Markus Mohr) in bug #3678 for
+  providing this fix.
+
+*vlc-0.4.0 (24 May 2002)
+
+  24 May 2002; Seemant Kulleen <seemant@gentoo.org> vlc-0.4.0.ebuild
+  files/digest-vlc-0.4.0:
+  Version bump.
+
+*vlc-0.3.1-r1 (19 May 2002)
+
+  19 May 2002; Seemant Kulleen <seemant@gentoo.org> vlc-0.3.1-r1.ebuild
+  files/digest-vlc-0.3.1-r1:
+  Added USE dependent ALSA support, since gentoo now defaults to alsa-0.9
+
+*vlc-0.3.1 (07 May 2002)
+
+  07 May 2002; Karl Trygve Kalleberg <karltk@gentoo.org> vlc-0.3.1.ebuild files/digest-vlc-0.3.1:
+  New upstream version.
+
+
+*vlc-0.2.91 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog:
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,133 @@
+From 4ad89230ee0cd035d3d05f3745382212bbf552a2 Mon Sep 17 00:00:00 2001
+From: MacJariel <MacJariel@gmail.com>
+Date: Mon, 14 Mar 2011 13:21:12 +0100
+Subject: [PATCH] Updated scripts to work with kdesu 4.6.
+
+---
+ scripts/depClean.sh        |    2 +-
+ scripts/dispatchConf.sh    |    2 +-
+ scripts/editFile.sh        |    2 +-
+ scripts/etcUpdate.sh       |    2 +-
+ scripts/merge.sh           |    2 +-
+ scripts/revdepRebuild.sh   |    2 +-
+ scripts/syncPortageTree.sh |    2 +-
+ scripts/unmerge.sh         |    2 +-
+ scripts/upgrade.sh         |    2 +-
+ scripts/upgradePortage.sh  |    2 +-
+ 10 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/scripts/depClean.sh b/scripts/depClean.sh
+index 14d2425..7805feb 100755
+--- a/scripts/depClean.sh
++++ b/scripts/depClean.sh
+@@ -5,5 +5,5 @@
+ # Script called to execute dep-clean process.
+ # It performs a emerge -va --depclean on a console.
+ 
+-kdesu "konsole --noclose -p LocalTabTitleFormat=%w -e emerge -va --depclean"
++kdesu -- konsole --noclose -p LocalTabTitleFormat=%w -e emerge -va --depclean
+ 
+diff --git a/scripts/dispatchConf.sh b/scripts/dispatchConf.sh
+index 1d9fbbe..49a2167 100755
+--- a/scripts/dispatchConf.sh
++++ b/scripts/dispatchConf.sh
+@@ -5,5 +5,5 @@
+ # Script called to execute dispatch-conf.
+ # It runs dispatch-conf on a console.
+ 
+-kdesu "konsole --noclose -p LocalTabTitleFormat=%w -e dispatch-conf"
++kdesu -- konsole --noclose -p LocalTabTitleFormat=%w -e dispatch-conf
+ 
+diff --git a/scripts/editFile.sh b/scripts/editFile.sh
+index 8c28d7b..3d1abd2 100755
+--- a/scripts/editFile.sh
++++ b/scripts/editFile.sh
+@@ -20,5 +20,5 @@ then
+ 	exit 1
+ fi
+ 
+-kdesu "konsole --noclose -p LocalTabTitleFormat=%w -e ${EDITOR} $1"
++kdesu -- konsole --noclose -p LocalTabTitleFormat=%w -e ${EDITOR} $1
+ 
+diff --git a/scripts/etcUpdate.sh b/scripts/etcUpdate.sh
+index 3de1654..78061a0 100755
+--- a/scripts/etcUpdate.sh
++++ b/scripts/etcUpdate.sh
+@@ -5,5 +5,5 @@
+ # Script called to execute etc-update.
+ # It performs a etc-update on a console.
+ 
+-kdesu "konsole --noclose -p LocalTabTitleFormat=%w -e etc-update"
++kdesu -- konsole --noclose -p LocalTabTitleFormat=%w -e etc-update
+ 
+diff --git a/scripts/merge.sh b/scripts/merge.sh
+index cb18d32..e81e68c 100755
+--- a/scripts/merge.sh
++++ b/scripts/merge.sh
+@@ -11,5 +11,5 @@ then
+ 	exit 1
+ fi
+ 
+-kdesu "konsole --noclose -p LocalTabTitleFormat=%w -e emerge -va $@"
++kdesu -- konsole --noclose -p LocalTabTitleFormat=%w -e emerge -va $@
+ 
+diff --git a/scripts/revdepRebuild.sh b/scripts/revdepRebuild.sh
+index f466c3b..51ecb79 100755
+--- a/scripts/revdepRebuild.sh
++++ b/scripts/revdepRebuild.sh
+@@ -5,5 +5,5 @@
+ # Script called to execute revdep-rebuild process.
+ # It performs a revdep-rebuild on a console.
+ 
+-kdesu "konsole --noclose -p LocalTabTitleFormat=%w -e revdep-rebuild -i"
++kdesu -- konsole --noclose -p LocalTabTitleFormat=%w -e revdep-rebuild -i
+ 
+diff --git a/scripts/syncPortageTree.sh b/scripts/syncPortageTree.sh
+index 8825be1..a4f67f1 100755
+--- a/scripts/syncPortageTree.sh
++++ b/scripts/syncPortageTree.sh
+@@ -15,7 +15,7 @@ TMP_FILE=$1
+ # Create the temporary file.
+ touch ${TMP_FILE}
+ 
+-kdesu -t 'emerge --sync --color=y 2>&1 && cp -v /var/cache/eix /var/cache/eix.previous && eix-update 2>&1 && echo "Process Finished"' >> ${TMP_FILE}
++kdesu -t -c 'emerge --sync --color=y 2>&1 && cp -v /var/cache/eix /var/cache/eix.previous && eix-update 2>&1 && echo "Process Finished"' >> ${TMP_FILE}
+ 
+ # Remove the temporary file.
+ rm ${TMP_FILE}
+diff --git a/scripts/unmerge.sh b/scripts/unmerge.sh
+index b0c0882..133ff7a 100755
+--- a/scripts/unmerge.sh
++++ b/scripts/unmerge.sh
+@@ -11,5 +11,5 @@ then
+ 	exit 1
+ fi
+ 
+-kdesu "konsole --noclose -p LocalTabTitleFormat=%w -e emerge -va --unmerge $@"
++kdesu -- konsole --noclose -p LocalTabTitleFormat=%w -e emerge -va --unmerge $@
+ 
+diff --git a/scripts/upgrade.sh b/scripts/upgrade.sh
+index da14027..3691587 100755
+--- a/scripts/upgrade.sh
++++ b/scripts/upgrade.sh
+@@ -5,5 +5,5 @@
+ # Script called to upgrade the world set.
+ # It performs a emerge -vaNDU world on a console.
+ 
+-kdesu "konsole --noclose -p LocalTabTitleFormat=%w -e emerge -vaNDu world"
++kdesu -- konsole --noclose -p LocalTabTitleFormat=%w -e emerge -vaNDu world
+ 
+diff --git a/scripts/upgradePortage.sh b/scripts/upgradePortage.sh
+index cac5bb2..aaea771 100755
+--- a/scripts/upgradePortage.sh
++++ b/scripts/upgradePortage.sh
+@@ -5,5 +5,5 @@
+ # Script called to upgrade the portage.
+ # It performs a emerge -va portage on a console.
+ 
+-kdesu "konsole --noclose -p LocalTabTitleFormat=%w -e emerge -va portage"
++kdesu -- konsole --noclose -p LocalTabTitleFormat=%w -e emerge -va portage
+ 
+-- 
+1.7.9.2
+

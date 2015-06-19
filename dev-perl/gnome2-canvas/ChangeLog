@@ -1,0 +1,163 @@
+# ChangeLog for dev-perl/gnome2-canvas
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/gnome2-canvas/ChangeLog,v 1.39 2015/05/01 12:16:44 dilfridge Exp $
+
+  01 May 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  gnome2-canvas-1.2.0-r1.ebuild:
+  dev-perl/extutils-depends just became dev-perl/ExtUtils-Depends
+
+*gnome2-canvas-1.2.0-r1 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +gnome2-canvas-1.2.0-r1.ebuild, -gnome2-canvas-1.2.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> gnome2-canvas-1.2.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -gnome2-canvas-1.002.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> gnome2-canvas-1.2.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*gnome2-canvas-1.2.0 (27 Aug 2011)
+
+  27 Aug 2011; Torsten Veller <tove@gentoo.org> +gnome2-canvas-1.2.0.ebuild:
+  Change version scheme
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org> gnome2-canvas-1.002.ebuild:
+  Fixed slot deps
+
+  03 Aug 2010; Jeroen Roovers <jer@gentoo.org> gnome2-canvas-1.002.ebuild:
+  Remove HPPA keywording (bug 324511).
+
+  22 Sep 2008; Torsten Veller <tove@gentoo.org> gnome2-canvas-1.002.ebuild:
+  Fix LICENSE. Move extutils-{pkgconfig,depends} to DEPEND only (#223075)
+
+  20 Apr 2008; Samuli Suominen <drac@gentoo.org> gnome2-canvas-1.002.ebuild:
+  Move pkgconfig from RDEPEND to DEPEND.
+
+  30 Mar 2007; Michael Cummings <mcummings@gentoo.org>
+  gnome2-canvas-1.002.ebuild:
+  Bug 152206, deps updated
+
+  15 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  -gnome2-canvas-1.00.ebuild, gnome2-canvas-1.002.ebuild:
+  Ebuild maintenance
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  gnome2-canvas-1.00.ebuild, gnome2-canvas-1.002.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  05 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  gnome2-canvas-1.00.ebuild, gnome2-canvas-1.002.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed header; fixed DEPEND
+
+  06 Feb 2006; Simon Stelling <blubb@gentoo.org> gnome2-canvas-1.002.ebuild:
+  stable on amd64
+
+  04 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  gnome2-canvas-1.002.ebuild:
+  Mark 1.002 stable on ia64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org>
+  gnome2-canvas-1.002.ebuild:
+  Mark 1.002 stable on alpha
+
+  17 Jan 2006; Guy Martin <gmsoft@gentoo.org> gnome2-canvas-1.002.ebuild:
+  Stable on hppa.
+
+  16 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gnome2-canvas-1.002.ebuild:
+  Stable on sparc
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  gnome2-canvas-1.002.ebuild:
+  marking stable x86
+
+*gnome2-canvas-1.002 (28 Nov 2005)
+
+  28 Nov 2005; <mcumming@gentoo.org> +gnome2-canvas-1.002.ebuild:
+  Version bump
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org> gnome2-canvas-1.00.ebuild:
+  Mark 1.00 stable on ia64
+
+  08 Sep 2005; Aron Griffis <agriffis@gentoo.org> gnome2-canvas-1.00.ebuild:
+  Mark 1.00 stable on alpha
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> gnome2-canvas-1.00.ebuild:
+  add ~ia64
+
+  09 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  gnome2-canvas-1.00.ebuild:
+  Stable on sparc
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> gnome2-canvas-1.00.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> gnome2-canvas-1.00.ebuild:
+  Stable on amd64.
+
+  01 May 2005; Guy Martin <gmsoft@gentoo.org> gnome2-canvas-1.00.ebuild:
+  Stable on hppa.
+
+  28 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -gnome2-canvas-0.32.ebuild, -gnome2-canvas-0.34.ebuild,
+  gnome2-canvas-1.00.ebuild:
+  Cleaning
+
+*gnome2-canvas-1.00 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  gnome2-canvas-1.00.ebuild:
+  new version on cpan
+
+  30 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
+  gnome2-canvas-0.28.ebuild, gnome2-canvas-0.30.ebuild,
+  No longer available from CPAN
+
+  30 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
+  gnome2-canvas-0.32.ebuild, gnome2-canvas-0.34.ebuild:
+  Corrected SRC URI to point to CPAN
+
+*gnome2-canvas-0.34 (30 Dec 2003)
+*gnome2-canvas-0.32 (30 Dec 2003)
+
+  30 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
+  gnome2-canvas-0.32.ebuild, gnome2-canvas-0.34.ebuild:
+  0.32 is being marked stable. 0.34 is marked for stable testing, it is the
+  current version available on CPAN.
+
+*gnome2-canvas-0.30 (08 Sep 2003)
+
+  08 Sep 2003; Michael Cummings <mcummings@gentoo.org>
+  gnome2-canvas-0.26.ebuild, gnome2-canvas-0.30.ebuild:
+  Removed .26 - no longer available
+
+*gnome2-canvas-0.30 (08 Sep 2003)
+
+  08 Sep 2003; Michael Cummings <mcummings@gentoo.org>
+  gnome2-canvas-0.30.ebuild:
+  new version from sourceforge
+
+  04 Aug 2003; Michael Cummings <mcummings@gentoo.org>
+  gnome2-canvas-0.26.ebuild, gnome2-canvas-0.28.ebuild:
+  changed ref to glib-perl
+
+*gnome2-canvas-0.28 (22 Jul 2003)
+
+  22 Jul 2003; Michael Cummings <mcummings@gentoo.org>
+  gnome2-canvas-0.26.ebuild, gnome2-canvas-0.28.ebuild:
+  CPAN version bump
+
+*gnome2-canvas-0.26 (20 Jul 2003)
+
+  20 Jul 2003; Michael Cummings <mcummings@gentoo.org>
+  gnome2-canvas-0.26.ebuild:
+  submitted by Rigo Ketelings <rigo@home.nl> in bug 24036

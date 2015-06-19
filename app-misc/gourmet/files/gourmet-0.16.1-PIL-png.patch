@@ -1,0 +1,29 @@
+From 4eb110bbbc58af97fd6994b96d9482783037058d Mon Sep 17 00:00:00 2001
+From: Bernhard Reiter <ockham@raz.or.at>
+Date: Wed, 13 Nov 2013 15:24:09 +0100
+Subject: [PATCH] Fix another PIL import.
+
+Reported at https://answers.launchpad.net/gourmet/+question/238352#comment-6
+---
+ gourmet/gtk_extras/thumbnail.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/gourmet/gtk_extras/thumbnail.py b/gourmet/gtk_extras/thumbnail.py
+index d096126..ea7e72c 100644
+--- a/gourmet/gtk_extras/thumbnail.py
++++ b/gourmet/gtk_extras/thumbnail.py
+@@ -81,7 +81,10 @@ def create_thumbnail (path, thumbpath, uri, type="large"):
+     info['Software']='Gourmet Recipe Manager'
+     info['URI']=str(uri)
+     # now we must create our image guy
+-    import PngImagePlugin
++    try:
++        from PIL import PngImagePlugin
++    except ImportError:
++        import PngImagePlugin
+     pnginfo = PngImagePlugin.PngInfo()
+ 
+     for k,v in info.items():
+-- 
+1.8.4
+

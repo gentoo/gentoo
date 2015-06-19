@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install nofetch postinst prepare setup unpack
+DEPEND=app-shells/tcsh mpi? ( virtual/mpi ) virtual/blas virtual/pkgconfig virtual/fortran
+DESCRIPTION=A powerful quantum chemistry package
+EAPI=4
+HOMEPAGE=http://www.msg.chem.iastate.edu/GAMESS/GAMESS.html
+IUSE=mpi neo pax_kernel qmmm-tinker
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=gamess
+RDEPEND=app-shells/tcsh mpi? ( virtual/mpi ) virtual/blas net-misc/openssh virtual/fortran
+RESTRICT=fetch
+SLOT=0
+SRC_URI=gamess-20110811.1.tar.gz qmmm-tinker? ( tinker.tar.Z )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	multilib	62927b3db3a589b0806255f3a002d5d3	pax-utils	dfe060cb70d89757fde5c1ff8405e950	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=7332d237e9d9a9319144b67e323f9def

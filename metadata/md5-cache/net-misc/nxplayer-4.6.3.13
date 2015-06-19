@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=Client for NoMachine remote servers
+EAPI=5
+HOMEPAGE=http://www.nomachine.com
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=nomachine
+RDEPEND=dev-libs/glib:2 dev-libs/openssl:0
+RESTRICT=strip
+SLOT=0
+SRC_URI=amd64? ( http://download.nomachine.com/download/4.6/Linux/nomachine-enterprise-client_4.6.3_13_x86_64.tar.gz ) x86? ( http://download.nomachine.com/download/4.6/Linux/nomachine-enterprise-client_4.6.3_13_i686.tar.gz )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=e06bdce8633930d256e42ff2880963d4

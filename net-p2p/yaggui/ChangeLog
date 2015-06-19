@@ -1,0 +1,40 @@
+# ChangeLog for net-p2p/yaggui
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/yaggui/ChangeLog,v 1.9 2007/08/29 13:58:19 betelgeuse Exp $
+
+  29 Aug 2007; Petteri Räty <betelgeuse@gentoo.org> -yaggui-0.9.ebuild:
+  Remove generation 1 ebuild.
+
+  14 Aug 2007; Christian Faulhammer <opfer@gentoo.org> yaggui-0.9.2.ebuild:
+  stable x86, bug 187627; filter jikes
+
+*yaggui-0.9.2 (09 Jun 2007)
+
+  09 Jun 2007; Vlastimil Babka <caster@gentoo.org> metadata.xml,
+  +yaggui-0.9.2.ebuild:
+  Version bump and gen-2 migration, based on ebuild from Serkan Kaba
+  <serkan_kaba@yahoo.com> in bug #176361. Add java as second herd to
+  metadata.xml
+
+  21 Feb 2007; Raúl Porcel <armin76@gentoo.org> files/digest-yaggui-0.9,
+  Manifest:
+  Convert to Manifest2
+
+  20 Mar 2006; Mark Loeser <halcy0n@gentoo.org> yaggui-0.9.ebuild:
+  Add DEPEND on app-arch/unzip
+
+  20 Jan 2006; Karol Wojtaszek <sekretarz@gentoo.org> yaggui-0.9.ebuild:
+  There's no need to have virtual/x11 dep because it's forced by jdk
+
+  01 Oct 2004; Jon Hood <squinky86@gentoo.org> yaggui-0.9.ebuild:
+  Stable on x86.
+
+  03 Sep 2004; David Holm <dholm@gentoo.org> yaggui-0.9.ebuild:
+  Added to ~ppc.
+
+*yaggui-0.9 (30 Aug 2004)
+
+  30 Aug 2004; Jon Hood <squinky86@gentoo.org> +metadata.xml,
+  +files/yaggui.sh, +yaggui-0.9.ebuild:
+  Initial import.
+

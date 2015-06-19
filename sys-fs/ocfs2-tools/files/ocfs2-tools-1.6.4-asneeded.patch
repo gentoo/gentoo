@@ -1,0 +1,78 @@
+--- configure.in.orig	2011-01-19 20:43:35.000000000 +0100
++++ configure.in	2012-02-21 11:14:51.047974999 +0100
+@@ -265,7 +265,6 @@
+         cpg_package=openais
+     fi
+     TRY_PATH="$AIS_TRY_PATH"
+-    AC_MSG_CHECKING([for cpg_initialize in -lcpg])
+     while test "x$TRY_PATH" != "x"; do
+         TRY="`echo $TRY_PATH | cut -f1 -d:`"
+         NEW_TRY_PATH="`echo $TRY_PATH | cut -f2- -d:`"
+@@ -281,9 +280,8 @@
+         # TRY="$TRY"
+ 
+         saved_LDFLAGS="$LDFLAGS"
+-        LDFLAGS="$LDFLAGS $TRY -lcpg"
+-        AC_LINK_IFELSE([AC_LANG_CALL([], [cpg_initialize])],
+-        	       cpg_found=yes)
++        LDFLAGS="$LDFLAGS $TRY"
++        AC_SEARCH_LIBS([cpg_initialize], [cpg], [cpg_found=yes], [], [])
+         LDFLAGS="$saved_LDFLAGS"
+ 
+         if test "x$cpg_found" = "xyes"; then
+@@ -292,10 +290,7 @@
+         fi
+     done
+ fi
+-if test "x$cpg_found" = "xyes"; then
+-    AC_MSG_RESULT(yes)
+-else
+-    AC_MSG_RESULT(no)
++if test "x$cpg_found" = "xno"; then
+     AC_MSG_WARN([libcpg not found, ocfs2_controld will not be built])
+ fi
+ AC_SUBST(CPG_LDFLAGS)
+@@ -309,7 +304,6 @@
+ if test "x$ckpt_found" = "xyes"; then
+     ckpt_found=
+     TRY_PATH="$AIS_TRY_PATH"
+-    AC_MSG_CHECKING([for saCkptInitialize in -lSaCkpt])
+     while test "x$TRY_PATH" != "x"; do
+         TRY="`echo $TRY_PATH | cut -f1 -d:`"
+         NEW_TRY_PATH="`echo $TRY_PATH | cut -f2- -d:`"
+@@ -325,9 +319,8 @@
+         # TRY="$TRY"
+ 
+         saved_LDFLAGS="$LDFLAGS"
+-        LDFLAGS="$LDFLAGS $TRY -lSaCkpt"
+-        AC_LINK_IFELSE([AC_LANG_CALL([], [saCkptInitialize])],
+-        	       ckpt_found=yes)
++        LDFLAGS="$LDFLAGS $TRY"
++        AC_SEARCH_LIBS([saCkptInitialize], [SaCkpt], [ckpt_found=yes], [], [])
+         LDFLAGS="$saved_LDFLAGS"
+ 
+         if test "x$ckpt_found" = "xyes"; then
+@@ -336,10 +329,7 @@
+         fi
+     done
+ fi
+-if test "x$ckpt_found" = "xyes"; then
+-    AC_MSG_RESULT(yes)
+-else
+-    AC_MSG_RESULT(no)
++if test "x$ckpt_found" = "xno"; then
+     AC_MSG_WARN([libSaCkpt not found, ocfs2_controld will not be built])
+ fi
+ AC_SUBST(AIS_LDFLAGS)
+
+--- ocfs2_controld/Makefile.orig	2012-02-21 11:49:36.248974932 +0100
++++ ocfs2_controld/Makefile	2012-02-21 11:49:47.943974980 +0100
+@@ -14,7 +14,7 @@
+ ifneq ($(BUILD_PCMK_SUPPORT),)
+ SBIN_PROGRAMS += ocfs2_controld.pcmk
+ # Some pacemaker headers which pacemaker.c includes want this.
+-PCMK_INCLUDES = -I/usr/include/pacemaker -I/usr/include/heartbeat/ $(GLIB_CFLAGS)
++PCMK_INCLUDES = -I/usr/include/pacemaker -I/usr/include/heartbeat/ `pkg-config --cflags libxml-2.0` $(GLIB_CFLAGS)
+ endif
+ 
+ INCLUDES = -I$(TOPDIR)/include -I. $(PCMK_INCLUDES)

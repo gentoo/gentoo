@@ -1,0 +1,65 @@
+# ChangeLog for sys-fs/arm-fdisk
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/arm-fdisk/ChangeLog,v 1.18 2012/10/05 19:33:35 ago Exp $
+
+  05 Oct 2012; Agostino Sarubbo <ago@gentoo.org> arm-fdisk-3.0.6-r1.ebuild:
+  Respect CC,AR, wrt to bug #401937
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> arm-fdisk-3.0.6-r1.ebuild:
+  ia64/m68k/s390/sh/sparc stable wrt #397223
+
+  02 Mar 2012; Tobias Klausmann <klausman@gentoo.org>
+  arm-fdisk-3.0.6-r1.ebuild:
+  Stable on alpha, bug #397223
+
+  22 Feb 2012; Brent Baude <ranger@gentoo.org> arm-fdisk-3.0.6-r1.ebuild:
+  Marking arm-fdisk-3.0.6-r1 ppc for bug 397223
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  arm-fdisk-3.0.6-r1.ebuild:
+  x86 stable wrt bug #397223
+
+  10 Feb 2012; Markus Meier <maekke@gentoo.org> arm-fdisk-3.0.6-r1.ebuild:
+  arm stable, bug #397223
+
+  07 Feb 2012; Jeroen Roovers <jer@gentoo.org> arm-fdisk-3.0.6-r1.ebuild:
+  Stable for HPPA (bug #397223).
+
+  02 Feb 2012; Agostino Sarubbo <ago@gentoo.org> arm-fdisk-3.0.6-r1.ebuild:
+  Stable for amd64, wrt bug #397223
+
+  12 Nov 2010; Markus Meier <maekke@gentoo.org> arm-fdisk-3.0.6-r1.ebuild:
+  respect LDFLAGS, bug #337247
+
+*arm-fdisk-3.0.6-r1 (14 Jan 2009)
+
+  14 Jan 2009; Mike Frysinger <vapier@gentoo.org>
+  +arm-fdisk-3.0.6-r1.ebuild:
+  Update debian patchset.
+
+  14 Oct 2008; Diego Pettenò <flameeyes@gentoo.org> arm-fdisk-3.0.6.ebuild:
+  Let CFLAGS be respected during src_compile rather than being set in stone.
+
+  02 Mar 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  arm-fdisk-3.0.6.ebuild:
+  Marked stable on amd64 as per bug 191241.
+
+  20 Feb 2008; Raúl Porcel <armin76@gentoo.org> arm-fdisk-3.0.6.ebuild:
+  alpha/ia64/sparc stable
+
+  11 Jan 2008; Joseph Jezak <josejx@gentoo.org> arm-fdisk-3.0.6.ebuild:
+  Marked ppc stable for bug #191241.
+
+  10 Jan 2008; Markus Meier <maekke@gentoo.org> arm-fdisk-3.0.6.ebuild:
+  x86 stable, bug #191241
+
+  10 Jan 2008; Jeroen Roovers <jer@gentoo.org> arm-fdisk-3.0.6.ebuild:
+  Stable for HPPA (bug #191241).
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*arm-fdisk-3.0.6 (24 May 2005)
+
+  24 May 2005; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

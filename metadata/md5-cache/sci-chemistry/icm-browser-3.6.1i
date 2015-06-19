@@ -1,0 +1,13 @@
+DEFINED_PHASES=install nofetch postinst unpack
+DEPEND=>=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=MolSoft LCC ICM Browser
+EAPI=5
+HOMEPAGE=http://www.molsoft.com/icm_browser.html
+KEYWORDS=~amd64 ~x86
+LICENSE=MolSoft
+RDEPEND=!sci-chemistry/icm virtual/libstdc++:3.3 >=app-arch/bzip2-1.0.6-r4[abi_x86_32(-)] >=media-libs/freetype-2.5.0.1[abi_x86_32(-)] media-libs/libmng[abi_x86_32(-)] >=media-libs/mesa-9.1.6[osmesa,abi_x86_32(-)] >=media-libs/tiff-3.9.7-r1:3[abi_x86_32(-)] >=sys-apps/keyutils-1.5.9-r1[abi_x86_32(-)] virtual/jpeg:62[abi_x86_32(-)] virtual/krb5[abi_x86_32(-)] virtual/opengl[abi_x86_32(-)] x11-libs/libICE[abi_x86_32(-)] x11-libs/libSM[abi_x86_32(-)] x11-libs/libX11[abi_x86_32(-)] x11-libs/libXau[abi_x86_32(-)] x11-libs/libXdamage[abi_x86_32(-)] x11-libs/libXdmcp[abi_x86_32(-)] x11-libs/libXext[abi_x86_32(-)] x11-libs/libXfixes[abi_x86_32(-)] x11-libs/libXmu[abi_x86_32(-)] x11-libs/libXrender[abi_x86_32(-)] x11-libs/libXt[abi_x86_32(-)] x11-libs/libXxf86vm[abi_x86_32(-)] x11-libs/libdrm[abi_x86_32(-)] x11-libs/libxcb[abi_x86_32(-)]
+RESTRICT=fetch
+SLOT=0
+SRC_URI=icm-browser-3.6-1i.i386.rpm
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	rpm	b94b54b44f14d6bee3e966c8f5c86fba	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=b72cc86e4586c701ef3a84a5460c6602

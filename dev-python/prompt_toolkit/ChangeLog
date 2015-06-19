@@ -1,0 +1,39 @@
+# ChangeLog for dev-python/prompt_toolkit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/prompt_toolkit/ChangeLog,v 1.8 2015/06/07 15:18:45 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*prompt_toolkit-0.39 (07 Jun 2015)
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> +prompt_toolkit-0.39.ebuild:
+  Version Bump
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+*prompt_toolkit-0.38 (03 Jun 2015)
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> +prompt_toolkit-0.38.ebuild,
+  -prompt_toolkit-0.31.ebuild, -prompt_toolkit-0.34.ebuild:
+  Version Bump
+
+*prompt_toolkit-0.37 (15 May 2015)
+
+  15 May 2015; Justin Lecher <jlec@gentoo.org> +prompt_toolkit-0.37.ebuild:
+  Version Bump
+
+*prompt_toolkit-0.34 (05 May 2015)
+
+  05 May 2015; Justin Lecher <jlec@gentoo.org> +prompt_toolkit-0.34.ebuild:
+  Version Bump
+
+  27 Feb 2015; Justin Lecher <jlec@gentoo.org> prompt_toolkit-0.31.ebuild:
+  Add missing dep
+
+*prompt_toolkit-0.31 (27 Feb 2015)
+
+  27 Feb 2015; Justin Lecher <jlec@gentoo.org> +metadata.xml,
+  +prompt_toolkit-0.31.ebuild:
+  New addition, written by me

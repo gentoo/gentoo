@@ -1,0 +1,36 @@
+# ChangeLog for dev-python/mkpythonproj
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/mkpythonproj/ChangeLog,v 1.7 2015/01/26 15:36:53 mrueg Exp $
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org>
+  -files/mkpythonproj_licenses.patch, -mkpythonproj-1.7.ebuild,
+  -mkpythonproj-1.8.ebuild:
+  Remove old.
+
+*mkpythonproj-1.9 (13 Aug 2014)
+
+  13 Aug 2014; Ian Delaney <idella4@gentoo.org> +mkpythonproj-1.9.ebuild:
+  bump
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> mkpythonproj-1.7.ebuild,
+  mkpythonproj-1.8.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*mkpythonproj-1.8 (20 Apr 2012)
+
+  20 Apr 2012; Jesus Rivero <neurogeek@gentoo.org> +mkpythonproj-1.8.ebuild:
+  Version bump
+
+  08 Nov 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  mkpythonproj-1.7.ebuild:
+  Update EAPI. Fix dependencies. Set SUPPORT_PYTHON_ABIS. Set PYTHON_MODNAME.
+
+  08 Feb 2010; Peter Volkov <pva@gentoo.org> mkpythonproj-1.7.ebuild:
+  Add inherit eutils for epatch.
+
+*mkpythonproj-1.7 (12 Jul 2009)
+
+  12 Jul 2009; Jesus Rivero <neurogeek@gentoo.org>
+  +files/mkpythonproj_licenses.patch, +metadata.xml,
+  +mkpythonproj-1.7.ebuild:
+  Initial commit.

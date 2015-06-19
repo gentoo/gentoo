@@ -1,0 +1,190 @@
+# ChangeLog for sys-fs/inotify-tools
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/inotify-tools/ChangeLog,v 1.40 2014/04/19 13:23:40 polynomial-c Exp $
+
+  19 Apr 2014; Lars Wendler <polynomial-c@gentoo.org>
+  inotify-tools-3.14.ebuild:
+  Added ~sparc keyword.
+
+  04 Mar 2014; Vicente Olivert Riera <vincent@gentoo.org>
+  inotify-tools-3.14.ebuild:
+  Add ~mips keyword.
+
+  16 Jan 2014; Markus Meier <maekke@gentoo.org> inotify-tools-3.14.ebuild:
+  arm stable, bug #497782
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> inotify-tools-3.14.ebuild:
+  Stable for x86, wrt bug #497782
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> inotify-tools-3.14.ebuild:
+  amd64 stable, bug #497782
+
+  12 Jan 2014; Jeroen Roovers <jer@gentoo.org> inotify-tools-3.14.ebuild:
+  Stable for HPPA (bug #497782).
+
+  05 Jan 2014; Lars Wendler <polynomial-c@gentoo.org>
+  inotify-tools-3.13-r1.ebuild, inotify-tools-3.14.ebuild, metadata.xml:
+  Added myself as maintainer. Converted ebuilds to EAPI-5.
+
+  15 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> -inotify-tools-3.12.ebuild,
+  -inotify-tools-3.13.ebuild, inotify-tools-3.13-r1.ebuild,
+  inotify-tools-3.14.ebuild:
+  Change HOMEPAGE, wrt bug #457858, drop old versions
+
+  03 Mar 2013; Wolfram Schlich <wschlich@gentoo.org> metadata.xml:
+  removed myself from metadata.xml, added maintainer-needed@gentoo.org
+
+*inotify-tools-3.14 (15 Jun 2010)
+
+  15 Jun 2010; Lars Wendler <polynomial-c@gentoo.org>
+  +inotify-tools-3.14.ebuild:
+  non-maintainer commit: Version bump (bug #315135)
+
+  26 Nov 2009; Markus Meier <maekke@gentoo.org>
+  inotify-tools-3.13-r1.ebuild:
+  arm stable, bug #275057
+
+  18 Nov 2009; Jeroen Roovers <jer@gentoo.org> inotify-tools-3.13-r1.ebuild:
+  Stable for HPPA (bug #275057).
+
+  04 Nov 2009; Markus Meier <maekke@gentoo.org>
+  inotify-tools-3.13-r1.ebuild:
+  amd64/x86 stable, bug #275057
+
+*inotify-tools-3.13-r1 (28 Oct 2009)
+
+  28 Oct 2009; Mike Frysinger <vapier@gentoo.org>
+  +inotify-tools-3.13-r1.ebuild:
+  Fix implicit doxygen handling, broken autotools, and install more doc
+  files #177054 by Mart Raudsepp.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> inotify-tools-3.12.ebuild,
+  inotify-tools-3.13.ebuild:
+  Remove virtual/libc
+
+  19 Sep 2009; Robin H. Johnson <robbat2@gentoo.org>
+  inotify-tools-3.13.ebuild:
+  Adding ~arm support. Tested on mv78100.arm.dev.gentoo.org thanks to
+  Marvell.
+
+  07 Jul 2009; Jeroen Roovers <jer@gentoo.org> inotify-tools-3.12.ebuild:
+  Stable for HPPA too.
+
+  01 Jun 2008; Wolfram Schlich <wschlich@gentoo.org>
+  -inotify-tools-3.11.ebuild, inotify-tools-3.12.ebuild,
+  inotify-tools-3.13.ebuild:
+  add missing IUSE as per bug #224375, remove old versions
+
+*inotify-tools-3.13 (02 Jan 2008)
+
+  02 Jan 2008; Wolfram Schlich <wschlich@gentoo.org>
+  +inotify-tools-3.13.ebuild:
+  version bump
+
+  29 Nov 2007; Jeroen Roovers <jer@gentoo.org> inotify-tools-3.12.ebuild:
+  Marked ~hppa too.
+
+  25 Nov 2007; Dawid Węgliński <cla@gentoo.org> inotify-tools-3.12.ebuild:
+  Remove src_compile() since it only does econf and emake without arguments
+
+  25 Nov 2007; Dawid Węgliński <cla@gentoo.org> inotify-tools-3.12.ebuild:
+  Stable on x86 (bug #198544)
+
+  24 Nov 2007; Samuli Suominen <drac@gentoo.org> inotify-tools-3.12.ebuild:
+  amd64 stable wrt #198544
+
+*inotify-tools-3.12 (24 Nov 2007)
+
+  24 Nov 2007; Wolfram Schlich <wschlich@gentoo.org>
+  +inotify-tools-3.12.ebuild:
+  version bump
+
+  20 Sep 2007; Wolfram Schlich <wschlich@gentoo.org>
+  -inotify-tools-3.5.ebuild, -inotify-tools-3.6.ebuild,
+  -inotify-tools-3.7.ebuild, -inotify-tools-3.8.ebuild,
+  -inotify-tools-3.9.ebuild, -inotify-tools-3.10.ebuild:
+  removed old versions
+
+*inotify-tools-3.11 (20 Sep 2007)
+
+  20 Sep 2007; Wolfram Schlich <wschlich@gentoo.org>
+  +inotify-tools-3.11.ebuild:
+  version bump wrt bug #193173
+
+*inotify-tools-3.10 (22 Jul 2007)
+
+  22 Jul 2007; Wolfram Schlich <wschlich@gentoo.org>
+  +inotify-tools-3.10.ebuild:
+  version bump
+
+*inotify-tools-3.9 (01 May 2007)
+
+  01 May 2007; Wolfram Schlich <wschlich@gentoo.org>
+  +inotify-tools-3.9.ebuild:
+  version bump
+
+*inotify-tools-3.8 (26 Feb 2007)
+
+  26 Feb 2007; Wolfram Schlich <wschlich@gentoo.org>
+  +inotify-tools-3.8.ebuild:
+  version bump
+
+*inotify-tools-3.7 (06 Feb 2007)
+
+  06 Feb 2007; Wolfram Schlich <wschlich@gentoo.org>
+  +inotify-tools-3.7.ebuild:
+  version bump
+
+  17 Dec 2006; Wolfram Schlich <wschlich@gentoo.org> metadata.xml:
+  fix longdescription
+
+  17 Dec 2006; Wolfram Schlich <wschlich@gentoo.org>
+  -inotify-tools-2.2.ebuild, -inotify-tools-2.4.ebuild,
+  -inotify-tools-2.6.ebuild, -inotify-tools-3.1.ebuild,
+  -inotify-tools-3.3.ebuild:
+  remove old versions
+
+*inotify-tools-3.6 (17 Dec 2006)
+
+  17 Dec 2006; Wolfram Schlich <wschlich@gentoo.org>
+  +inotify-tools-3.6.ebuild:
+  version bump
+
+*inotify-tools-3.5 (07 Dec 2006)
+
+  07 Dec 2006; Wolfram Schlich <wschlich@gentoo.org>
+  +inotify-tools-3.5.ebuild:
+  version bump
+
+*inotify-tools-3.3 (02 Nov 2006)
+
+  02 Nov 2006; Wolfram Schlich <wschlich@gentoo.org>
+  +inotify-tools-3.3.ebuild:
+  version bump
+
+*inotify-tools-3.1 (28 Oct 2006)
+
+  28 Oct 2006; Wolfram Schlich <wschlich@gentoo.org>
+  +inotify-tools-3.1.ebuild:
+  version bump
+
+*inotify-tools-2.6 (08 Oct 2006)
+
+  08 Oct 2006; Wolfram Schlich <wschlich@gentoo.org>
+  +inotify-tools-2.6.ebuild:
+  version bump
+
+*inotify-tools-2.4 (10 Sep 2006)
+
+  10 Sep 2006; Wolfram Schlich <wschlich@gentoo.org>
+  +inotify-tools-2.4.ebuild:
+  version bump
+
+  19 Aug 2006; Olivier Crête <tester@gentoo.org> inotify-tools-2.2.ebuild:
+  Marked ~amd64 per bug #144428
+
+*inotify-tools-2.2 (30 Jul 2006)
+
+  30 Jul 2006; Wolfram Schlich <wschlich@gentoo.org> +metadata.xml,
+  +inotify-tools-2.2.ebuild:
+  Initial import

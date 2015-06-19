@@ -1,0 +1,28 @@
+# ChangeLog for sys-boot/raincoat
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/raincoat/ChangeLog,v 1.6 2012/12/16 13:51:04 ago Exp $
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> raincoat-0.11.ebuild:
+  Stable for x86, wrt bug #441522
+
+*raincoat-0.11 (08 Mar 2009)
+
+  08 Mar 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/raincoat-0.11-build.patch, +raincoat-0.11.ebuild:
+  Version bump.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  06 Oct 2005; Edgar Hucek <gimli@gentoo.org> ChangeLog,
+  +raincoat-20051004.ebuild:
+  New CVS snapshoot
+
+  16 Oct 2004; Chris Bainbridge <chrb@gentoo.org> raincoat-0.5.ebuild:
+  mark stable
+
+*raincoat-0.5 (30 Jun 2004)
+
+  30 Jun 2004; Chris Bainbridge <chrb@gentoo.org> +metadata.xml,
+  +raincoat-0.5.ebuild:
+  This package was submitted by Chris Bainbridge in bug #44695

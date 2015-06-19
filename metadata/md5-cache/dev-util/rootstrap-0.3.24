@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DEPEND=dev-util/debootstrap dev-lang/python app-arch/dpkg app-text/docbook-sgml-utils
+DESCRIPTION=A tool for building complete Linux filesystem images
+HOMEPAGE=http://packages.qa.debian.org/rootstrap
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-util/debootstrap dev-lang/python app-arch/dpkg
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://debian/pool/main/r/rootstrap/rootstrap_0.3.24.orig.tar.gz mirror://debian/pool/main/r/rootstrap/rootstrap_0.3.24-3.diff.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ebd2efe082d3b4e0498a97d4a58d677d

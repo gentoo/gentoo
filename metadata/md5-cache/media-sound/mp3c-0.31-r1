@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=console based mp3 ripper, with cddb support
+HOMEPAGE=http://wspse.de/WSPse/Linux-MP3c.php3
+IUSE=mp3 vorbis linguas_de linguas_es linguas_it linguas_pl linguas_pt
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=mp3? ( media-sound/lame >=media-sound/mp3info-0.8.4-r1 ) virtual/cdrtools vorbis? ( media-sound/vorbis-tools )
+SLOT=0
+SRC_URI=ftp://ftp.wspse.de/pub/linux/wspse/mp3c-0.31.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a9a83b09cf600955dc94819b9d9d8f66

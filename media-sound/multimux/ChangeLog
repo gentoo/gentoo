@@ -1,0 +1,70 @@
+# ChangeLog for media-sound/multimux
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/multimux/ChangeLog,v 1.17 2014/08/10 21:09:12 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> multimux-0.2.5.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  06 Jul 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  multimux-0.2.5.2.ebuild:
+  stable amd64, bug 228449
+
+  05 Jul 2008; Markus Meier <maekke@gentoo.org> multimux-0.2.5.2.ebuild:
+  x86 stable, bug #228449
+
+  06 Oct 2007; Stefan Briesenick <sbriesen@gentoo.org>
+  multimux-0.2.5.2.ebuild:
+  don't install LICENSE
+
+  05 Oct 2007; Stefan Briesenick <sbriesen@gentoo.org>
+  multimux-0.2.5.2.ebuild:
+  changed append-lfs-flags to append-flags, since append-lfs-flags doesn't
+  work as expected (adds to CXXFLAGS instead of CFLAGS).
+
+*multimux-0.2.5.2 (05 Oct 2007)
+
+  05 Oct 2007; Stefan Briesenick <sbriesen@gentoo.org>
+  +multimux-0.2.5.2.ebuild:
+  version bump.
+
+  24 Feb 2007; Alexis Ballier <aballier@gentoo.org> multimux-0.2.4.ebuild:
+  add flag-o-matic inheritance for append-lfs-flags call, thanks to Chris
+  Kehler <cbkehler@sympatico.ca>, bug #141651
+
+  24 Feb 2007; Alexis Ballier <aballier@gentoo.org> -multimux-0.1.ebuild,
+  -multimux-0.2.3.ebuild:
+  Cleanup old versions
+
+*multimux-0.2.5.1 (24 Feb 2007)
+
+  24 Feb 2007; Alexis Ballier <aballier@gentoo.org>
+  +multimux-0.2.5.1.ebuild:
+  Version bump
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  07 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/multimux-0.2.4-makefiles.patch, metadata.xml,
+  multimux-0.2.4.ebuild:
+  Drop virtual/libc dependency. Respect CC, CFLAGS and LDFLAGS.
+
+*multimux-0.2.4 (31 Oct 2005)
+
+  31 Oct 2005; MATSUU Takuto <matsuu@gentoo.org> +multimux-0.2.4.ebuild:
+  Version bumped.
+  Cleanup ebuild.
+
+  27 Aug 2005; Pieter Van den Abeele <pvdabeel@gentoo.org> multimux-0.2.3.ebuild:
+  Ebuild submitted by Davy Van Nieuwenborgh. Version bump, new src_uri
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> multimux-0.1.ebuild:
+  Added to ~ppc.
+
+  07 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  multimux-0.1.ebuild:
+  Added to ~amd64 and ~sparc.
+
+  07 Oct 2004; Christian Parpart <trapni@gentoo.org> :
+  EBuild submitted by Stefan Briesenick <sbriesen@gmx.de>
+  I just adapted to meet ebuild policies.

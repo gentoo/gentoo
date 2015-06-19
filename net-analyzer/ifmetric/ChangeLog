@@ -1,0 +1,40 @@
+# ChangeLog for net-analyzer/ifmetric
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ifmetric/ChangeLog,v 1.9 2014/07/12 17:00:00 jer Exp $
+
+  12 Jul 2014; Jeroen Roovers <jer@gentoo.org> +ifmetric-0.3-r1.ebuild,
+  +files/ifmetric-0.3-ul.patch:
+  EAPI bump. Fix fprintf format warning.
+
+*ifmetric-0.3-r1 (12 Jul 2014)
+
+  12 Jul 2014; Jeroen Roovers <jer@gentoo.org> +ifmetric-0.3-r1.ebuild,
+  +files/ifmetric-0.3-ul.patch:
+  EAPI bump. Fix fprintf format warning.
+
+  06 Nov 2013; Patrick Lauer <patrick@gentoo.org> ifmetric-0.3.ebuild:
+  Shorten description, make repoman happier
+
+  26 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> ifmetric-0.3.ebuild:
+  Bump to EAPI 4 + small cosmetic changes
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove ka0ttic from metadata.xml due to retirement.
+
+  04 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  11 Sep 2005; Luis Medinas <metalgod@gentoo.org> ifmetric-0.3.ebuild:
+  Added ~amd64 keyword.
+
+  19 Jul 2005; David Holm <dholm@gentoo.org> ifmetric-0.3.ebuild:
+  Added to ~ppc.
+
+  09 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> ifmetric-0.3.ebuild:
+  Stable on x86.
+
+*ifmetric-0.3 (27 Apr 2005)
+
+  27 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml,
+  +ifmetric-0.3.ebuild:
+  Initial commit for bug 90262.

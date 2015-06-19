@@ -1,0 +1,119 @@
+# ChangeLog for app-misc/rl
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/rl/ChangeLog,v 1.36 2011/01/05 16:30:03 jlec Exp $
+
+  05 Jan 2011; Justin Lecher <jlec@gentoo.org> rl-0.2.7.ebuild:
+  Some Clean up
+
+  14 Nov 2009; Sven Wegener <swegener@gentoo.org> -rl-0.2.6.ebuild:
+  Cleanup.
+
+  03 Nov 2009; Raúl Porcel <armin76@gentoo.org> rl-0.2.7.ebuild:
+  s390 stable wrt #279842
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> rl-0.2.7.ebuild:
+  ppc stable #279842
+
+  03 Aug 2009; Tiago Cunha <tcunha@gentoo.org> rl-0.2.7.ebuild:
+  stable sparc, bug 279842
+
+  02 Aug 2009; Markus Meier <maekke@gentoo.org> rl-0.2.7.ebuild:
+  amd64/x86 stable, bug #279842
+
+*rl-0.2.7 (04 Oct 2008)
+
+  04 Oct 2008; Sven Wegener <swegener@gentoo.org> +rl-0.2.7.ebuild:
+  Version bump.
+
+  29 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> rl-0.2.6.ebuild:
+  amd64 stable
+
+  26 Mar 2008; Raúl Porcel <armin76@gentoo.org> rl-0.2.6.ebuild:
+  Add ~ia64
+
+  14 Jan 2008; Sven Wegener <swegener@gentoo.org> -rl-0.2.4.ebuild:
+  Cleanup.
+
+  05 Jan 2008; Raúl Porcel <armin76@gentoo.org> rl-0.2.6.ebuild:
+  sparc stable wrt #194329
+
+  04 Jan 2008; nixnut <nixnut@gentoo.org> rl-0.2.6.ebuild:
+  Stable on ppc wrt bug 194329
+
+  03 Jan 2008; Christian Faulhammer <opfer@gentoo.org> rl-0.2.6.ebuild:
+  stable x86, bug 194329
+
+*rl-0.2.6 (17 Jul 2007)
+
+  17 Jul 2007; Sven Wegener <swegener@gentoo.org> +rl-0.2.6.ebuild:
+  Version bump.
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  02 Oct 2005; Sven Wegener <swegener@gentoo.org> rl-0.2.4.ebuild:
+  Update HOMEPAGE and SRC_URI.
+
+  16 Jul 2005; Sven Wegener <swegener@gentoo.org> -rl-0.2.2.ebuild,
+  -rl-0.2.3.ebuild:
+  Removed old ebuilds.
+
+  08 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> rl-0.2.4.ebuild:
+  Stable on sparc
+
+  07 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org> rl-0.2.4.ebuild:
+  ppc stable
+
+  07 Jul 2005; Sven Wegener <swegener@gentoo.org> rl-0.2.4.ebuild:
+  Marked stable on x86.
+
+*rl-0.2.4 (28 May 2005)
+
+  28 May 2005; Sven Wegener <swegener@gentoo.org> +rl-0.2.4.ebuild:
+  Version bump.
+
+  27 May 2005; Tobias Scherbaum <dertobi123@gentoo.org> rl-0.2.3.ebuild:
+  Stable on ppc.
+
+  16 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> rl-0.2.3.ebuild:
+  Stable on sparc
+
+  16 May 2005; Sven Wegener <swegener@gentoo.org> rl-0.2.3.ebuild:
+  Marked stable on x86.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> rl-0.2.2.ebuild:
+  Stable on ppc.
+
+*rl-0.2.3 (02 Apr 2005)
+
+  02 Apr 2005; Sven Wegener <swegener@gentoo.org> +rl-0.2.3.ebuild:
+  Version bump.
+
+  17 Dec 2004; Joseph Jezak <josejx@gentoo.org> rl-0.2.2.ebuild:
+  Marked ~ppc for bug #74719.
+
+  13 Dec 2004; Jason Wever <weeve@gentoo.org> rl-0.2.2.ebuild:
+  Stable on sparc.
+
+  13 Oct 2004; Sven Wegener <swegener@gentoo.org> metadata.xml:
+  Added to the shell-tools herd.
+
+  15 Jul 2004; Sven Wegener <swegener@gentoo.org> +metadata.xml,
+  rl-0.2.2.ebuild:
+  Added metadata.xml and marked stable on x86.
+
+  10 Jul 2004; Tom Martin <slarti@gentoo.org> rl-0.2.2.ebuild:
+  Marked ~amd64.
+
+  28 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> rl-0.2.2.ebuild:
+  Added ~sparc, ~mips
+
+  15 Apr 2004; Michael McCabe <randy@gentoo.org> rl-0.2.2.ebuild:
+  adding s390 keywords
+
+*rl-0.2.2 (20 Oct 2003)
+
+  20 Oct 2003; Brandy Westcott brandy@gentoo.org rl-0.2.2.ebuild:
+  Initial import. Thanks to Sven Wegener <sven.wegener@stealer.net> for
+  submitting the ebuild. Closes #31518.
+

@@ -1,0 +1,157 @@
+# ChangeLog for dev-haskell/arrows
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/arrows/ChangeLog,v 1.43 2013/03/31 10:01:52 ago Exp $
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> arrows-0.4.4.1-r1.ebuild:
+  Stable for sparc, wrt bug #456484
+
+  30 Mar 2013; Agostino Sarubbo <ago@gentoo.org> arrows-0.4.4.1-r1.ebuild:
+  Stable for alpha, wrt bug #456484
+
+  28 Mar 2013; Agostino Sarubbo <ago@gentoo.org> arrows-0.4.4.1-r1.ebuild:
+  Stable for ia64, wrt bug #456484
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> arrows-0.4.4.1-r1.ebuild:
+  Stable for ppc, wrt bug #456484
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> arrows-0.4.4.1-r1.ebuild:
+  Stable for x86, wrt bug #456484
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> arrows-0.4.4.1-r1.ebuild:
+  Stable for amd64, wrt bug #456484
+
+  20 Jan 2013; Agostino Sarubbo <ago@gentoo.org> arrows-0.4.4.1.ebuild:
+  Stable for alpha, wrt bug #441150
+
+  05 Jan 2013; Agostino Sarubbo <ago@gentoo.org> arrows-0.4.4.1.ebuild:
+  Stable for ia64, wrt bug #441150
+
+  29 Dec 2012; Agostino Sarubbo <ago@gentoo.org> arrows-0.4.4.1.ebuild:
+  Stable for sparc, wrt bug #441150
+
+  22 Dec 2012; Sergei Trofimovich <slyfox@gentoo.org> -arrows-0.2.1.ebuild,
+  -arrows-0.4.2.0.ebuild:
+  Removed old.
+
+  07 Dec 2012; Agostino Sarubbo <ago@gentoo.org> arrows-0.4.4.1.ebuild:
+  Stable for ppc, wrt bug #441150
+
+  07 Dec 2012; <ago@gentoo.org> arrows-0.4.4.1.ebuild:
+  Stable for x86, wrt bug #441150
+
+  07 Dec 2012; <ago@gentoo.org> arrows-0.4.4.1.ebuild:
+  Stable for amd64, wrt bug #441150
+
+*arrows-0.4.4.1-r1 (24 Nov 2012)
+
+  24 Nov 2012; Mark Wright <gienah@gentoo.org> +arrows-0.4.4.1-r1.ebuild:
+  Add EAPI=5 arrows-0.4.4.1-r1
+
+*arrows-0.4.4.1 (14 Sep 2012)
+
+  14 Sep 2012; Mark Wright <gienah@gentoo.org> +arrows-0.4.4.1.ebuild:
+  Bump arrows to 0.4.4.1
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org> arrows-0.4.2.0.ebuild,
+  arrows-0.4.4.0.ebuild:
+  move dev-haskell/arrows/arrows-0.4.4.0.ebuild ebuild to mirror://hackage
+
+  09 Aug 2012; Sergei Trofimovich <slyfox@gentoo.org> arrows-0.4.4.0.ebuild:
+  Stable on alpha/ia64/sparc (bug #418681)
+
+  08 Aug 2012; Brent Baude <ranger@gentoo.org> arrows-0.4.4.0.ebuild:
+  Marking arrows-0.4.4.0 ppc for bug 418681
+
+  08 Aug 2012; Andreas Schuerch <nativemad@gentoo.org> arrows-0.4.4.0.ebuild:
+  x86 stable, see bug 418681
+
+  03 Aug 2012; Markos Chandras <hwoarang@gentoo.org> arrows-0.4.4.0.ebuild:
+  Stable on amd64 wrt bug #418681
+
+  02 Jun 2012; Mark Wright <gienah@gentoo.org> arrows-0.4.4.0.ebuild:
+  EAPI=4 on line 5, [profile?] on haskell library deps (part of fix for bug
+  #341795)
+
+  01 Aug 2011; Sergei Trofimovich <slyfox@gentoo.org> -arrows-0.2.ebuild:
+  Removed old.
+
+*arrows-0.4.4.0 (01 Aug 2011)
+
+  01 Aug 2011; Sergei Trofimovich <slyfox@gentoo.org> +arrows-0.4.4.0.ebuild:
+  Version bump.
+
+  30 Jun 2011; Thomas Kahle <tomka@gentoo.org> arrows-0.4.2.0.ebuild:
+  x86 stable per bug 338985
+
+  12 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> arrows-0.4.2.0.ebuild:
+  Marked ~ppc wrt #328121
+
+  07 Nov 2010; Mark Loeser <halcy0n@gentoo.org> arrows-0.4.2.0.ebuild:
+  Mark ~ppc64; bug #328121
+
+  11 Oct 2010; Markos Chandras <hwoarang@gentoo.org> arrows-0.4.2.0.ebuild:
+  Stable on amd64 wrt bug #338985
+
+  12 Sep 2010; Sergei Trofimovich <slyfox@gentoo.org> arrows-0.4.2.0.ebuild:
+  Marked ~sparc (bug #328121)
+
+  07 Aug 2010; Lennart Kolmodin <kolmodin@gentoo.org> arrows-0.4.2.0.ebuild:
+  Remove the CABAL_FEATURES flag hscolour as it's not yet supported in
+  portage.
+
+*arrows-0.4.2.0 (13 Jul 2010)
+
+  13 Jul 2010; Sergei Trofimovich <slyfox@gentoo.org> arrows-0.2.ebuild,
+  arrows-0.2.1.ebuild, +arrows-0.4.2.0.ebuild:
+  Version bump. Fixed build failre on ghc-6.10+ (bug #296530). Thanks to
+  Diego E. 'Flameeyes' Pettenò <flameeyes@gentoo.org> for the report.
+
+  16 Dec 2007; Samuli Suominen <drac@gentoo.org> arrows-0.2.1.ebuild:
+  amd64 stable wrt #201984
+
+  16 Dec 2007; nixnut <nixnut@gentoo.org> arrows-0.2.1.ebuild:
+  Stable on ppc wrt bug 201984
+
+  13 Dec 2007; Duncan Coutts <dcoutts@gentoo.org> arrows-0.2.ebuild,
+  arrows-0.2.1.ebuild:
+  Fixes for compatability with cabal-1.2 and ghc-6.8.
+
+  12 Dec 2007; Ferris McCormick <fmccor@gentoo.org> arrows-0.2.1.ebuild:
+  Sparc stable --- part of Bug #201984.
+
+  12 Dec 2007; Christian Faulhammer <opfer@gentoo.org> arrows-0.2.1.ebuild:
+  quote variable
+
+  12 Dec 2007; Christian Faulhammer <opfer@gentoo.org> arrows-0.2.1.ebuild:
+  stable x86, bug 201984
+
+  11 Jul 2007; Duncan Coutts <dcoutts@gentoo.org> arrows-0.2.1.ebuild:
+  Marked ~ia64.
+
+  09 Jul 2007; Duncan Coutts <dcoutts@gentoo.org> arrows-0.2.1.ebuild:
+  Fix building arrows-0.2.1 with current Cabal.
+
+*arrows-0.2.1 (08 Jul 2007)
+
+  08 Jul 2007; Duncan Coutts <dcoutts@gentoo.org> +arrows-0.2.1.ebuild:
+  New version from ghc-6.6.1 extralibs collection.
+
+*arrows-0.2 (08 Jul 2007)
+
+  08 Jul 2007; Duncan Coutts <dcoutts@gentoo.org> +arrows-0.2.ebuild,
+  -arrows-2.0.ebuild:
+  Version number was incorrect, should be 0.2 not 2.0. Fortunately this
+  package is still p.masked so we can get away with making this fix.
+  Also, use dev-lang/ghc rather than virtual/ghc.
+
+  06 Apr 2007; Chris Parrott <cparrott@gentoo.org> arrows-2.0.ebuild:
+  added ~ppc and ~sparc keywords
+
+  04 Apr 2007; Chris Parrott <cparrott@gentoo.org> arrows-2.0.ebuild:
+  added ~alpha keyword
+
+*arrows-2.0 (17 Mar 2007)
+
+  17 Mar 2007; Lennart Kolmodin <kolmodin@gentoo.org> +metadata.xml,
+  +arrows-2.0.ebuild:
+  Add modular lib to ghc 6.6. See bug 151012

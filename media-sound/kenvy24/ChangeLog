@@ -1,0 +1,17 @@
+# ChangeLog for media-sound/kenvy24
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/kenvy24/ChangeLog,v 1.4 2014/03/21 19:48:56 johu Exp $
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org> kenvy24-1.2.ebuild:
+  Bump to EAPI 5.
+
+  28 Oct 2011; Jonathan Callen <abcd@gentoo.org> kenvy24-1.2.ebuild:
+  Bump to EAPI=4
+
+  02 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org> kenvy24-1.2.ebuild:
+  EAPI3, use array for DOCS
+
+*kenvy24-1.2 (12 Nov 2009)
+
+  12 Nov 2009; Samuli Suominen <ssuominen@gentoo.org> +kenvy24-1.2.ebuild:
+  Initial commit (and move from media-sound/kenvy24gui).

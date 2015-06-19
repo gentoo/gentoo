@@ -1,0 +1,51 @@
+# ChangeLog for media-libs/libtaginfo
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libtaginfo/ChangeLog,v 1.11 2014/07/27 10:40:01 phajdan.jr Exp $
+
+  26 Jul 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> libtaginfo-0.2.1.ebuild:
+  x86 stable wrt bug #509524
+
+  08 Jul 2014; Chema Alonso <nimiux@gentoo.org> libtaginfo-0.2.1.ebuild:
+  Stable for amd64 wrt bug #509524
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> libtaginfo-0.1.6.ebuild,
+  libtaginfo-0.2.0.ebuild, libtaginfo-0.2.1.ebuild:
+  Replace obsolete mirror://bitbucket with the real URI.
+
+  27 Jun 2014; Christoph Mende <angelos@gentoo.org> libtaginfo-0.1.6.ebuild,
+  libtaginfo-0.2.0.ebuild, libtaginfo-0.2.1.ebuild:
+  Fix SRC_URI
+
+*libtaginfo-0.2.1 (17 Mar 2014)
+
+  17 Mar 2014; Tim Harder <radhermit@gentoo.org> +libtaginfo-0.2.1.ebuild:
+  Version bump, use autotool-utils to automatically run prune_libtool_files on
+  install.
+
+*libtaginfo-0.2.0 (13 Dec 2013)
+
+  13 Dec 2013; Christoph Mende <angelos@gentoo.org> +libtaginfo-0.2.0.ebuild,
+  -libtaginfo-0.1.5.ebuild:
+  Version bump, remove old
+
+*libtaginfo-0.1.6 (20 Apr 2013)
+
+  20 Apr 2013; Christoph Mende <angelos@gentoo.org> +libtaginfo-0.1.6.ebuild,
+  -libtaginfo-0.1.4.ebuild:
+  Version bump, remove old
+
+*libtaginfo-0.1.5 (09 Apr 2013)
+
+  09 Apr 2013; Christoph Mende <angelos@gentoo.org> +libtaginfo-0.1.5.ebuild,
+  -libtaginfo-0.1.3.ebuild:
+  Version bump, remove old
+
+*libtaginfo-0.1.4 (24 Mar 2013)
+
+  24 Mar 2013; Christoph Mende <angelos@gentoo.org> +libtaginfo-0.1.4.ebuild:
+  Version bump
+
+*libtaginfo-0.1.3 (16 Mar 2013)
+
+  16 Mar 2013;  <angelos@gentoo.org> +libtaginfo-0.1.3.ebuild, +metadata.xml:
+  Initial import (bug #461340)

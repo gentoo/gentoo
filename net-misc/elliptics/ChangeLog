@@ -1,0 +1,24 @@
+# ChangeLog for net-misc/elliptics
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/elliptics/ChangeLog,v 1.5 2015/04/18 12:35:44 swegener Exp $
+
+  18 Apr 2015; Sven Wegener <swegener@gentoo.org> elliptics-2.19.2.6.ebuild:
+  Rename distfile to include package name.
+
+  28 Jan 2013; Patrick Lauer <patrick@gentoo.org> elliptics-2.19.2.6.ebuild:
+  Add forgotten dependency
+
+*elliptics-2.19.2.6 (28 Jan 2013)
+
+  28 Jan 2013; Patrick Lauer <patrick@gentoo.org> +elliptics-2.19.2.6.ebuild,
+  -elliptics-2.9.6.ebuild:
+  Bump, new version has lots of differences
+
+  24 Oct 2012; Patrick Lauer <patrick@gentoo.org> elliptics-2.9.6.ebuild:
+  Fixing header
+
+*elliptics-2.9.6 (24 Oct 2012)
+
+  24 Oct 2012; Patrick Lauer <patrick@gentoo.org> +elliptics-2.9.6.ebuild,
+  +files/elliptics.confd, +files/elliptics.initd, +metadata.xml:
+  Initial commit, updated versions to follow

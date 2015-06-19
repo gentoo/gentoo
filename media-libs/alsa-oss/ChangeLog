@@ -1,0 +1,544 @@
+# ChangeLog for media-libs/alsa-oss
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/alsa-oss/ChangeLog,v 1.138 2015/03/28 17:32:20 dlan Exp $
+
+  28 Mar 2015; Yixun Lan <dlan@gentoo.org> alsa-oss-1.0.28.ebuild:
+  keyword ~arm, bug 544684, thanks Vincent Hardy for reporting
+
+  23 Nov 2014; Agostino Sarubbo <ago@gentoo.org> alsa-oss-1.0.28.ebuild:
+  Stable for sparc, wrt bug #522038
+
+  23 Nov 2014; Agostino Sarubbo <ago@gentoo.org> alsa-oss-1.0.28.ebuild:
+  Stable for ia64, wrt bug #522038
+
+  21 Nov 2014; Tobias Klausmann <klausman@gentoo.org> alsa-oss-1.0.28.ebuild:
+  Stable on alpha, bug 522038
+
+  08 Nov 2014; Samuli Suominen <ssuominen@gentoo.org> alsa-oss-1.0.28.ebuild:
+  ppc/ppc64 stable wrt #522038
+
+  23 Oct 2014; Pacho Ramos <pacho@gentoo.org> alsa-oss-1.0.28.ebuild:
+  amd64/x86 stable, bug #522038
+
+  04 Sep 2014; Jeroen Roovers <jer@gentoo.org> alsa-oss-1.0.28.ebuild:
+  Stable for HPPA (bug #522038).
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> alsa-oss-1.0.25-r1.ebuild,
+  alsa-oss-1.0.25.ebuild, alsa-oss-1.0.28.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*alsa-oss-1.0.28 (23 Jun 2014)
+
+  23 Jun 2014; Samuli Suominen <ssuominen@gentoo.org> +alsa-oss-1.0.28.ebuild:
+  Version bump wrt #513670 by "PG"
+
+*alsa-oss-1.0.25-r1 (09 May 2014)
+
+  09 May 2014; Michał Górny <mgorny@gentoo.org> +alsa-oss-1.0.25-r1.ebuild:
+  Introduce multilib support.
+
+  14 Jul 2013; Samuli Suominen <ssuominen@gentoo.org> -alsa-oss-1.0.17.ebuild:
+  old
+
+  12 Apr 2013; Agostino Sarubbo <ago@gentoo.org> alsa-oss-1.0.25.ebuild:
+  Stable for ia64, wrt bug #463451
+
+  12 Apr 2013; Jeroen Roovers <jer@gentoo.org> alsa-oss-1.0.25.ebuild:
+  Stable for HPPA (bug #463451).
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> alsa-oss-1.0.25.ebuild:
+  Stable for ppc64, wrt bug #463451
+
+  05 Apr 2013; Agostino Sarubbo <ago@gentoo.org> alsa-oss-1.0.25.ebuild:
+  Stable for ppc, wrt bug #463451
+
+  01 Apr 2013; Agostino Sarubbo <ago@gentoo.org> alsa-oss-1.0.25.ebuild:
+  Stable for alpha, wrt bug #463451
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> alsa-oss-1.0.25.ebuild:
+  Stable for sparc, wrt bug #463451
+
+  30 Mar 2013; Agostino Sarubbo <ago@gentoo.org> alsa-oss-1.0.25.ebuild:
+  Stable for x86, wrt bug #463451
+
+  30 Mar 2013; Agostino Sarubbo <ago@gentoo.org> alsa-oss-1.0.25.ebuild:
+  Stable for amd64, wrt bug #463451
+
+*alsa-oss-1.0.25 (26 Jan 2012)
+
+  26 Jan 2012; Tony Vroon <chainsaw@gentoo.org> +alsa-oss-1.0.25.ebuild:
+  Version bump, as requested by Mart "leio" Raudsepp on #gentoo-dev.
+  Installation of static libraries is now optional and libtool archives are no
+  longer installed. Please file a bug if either change breaks your application.
+
+  02 Jul 2009; Brent Baude <ranger@gentoo.org> alsa-oss-1.0.17.ebuild:
+  Marking alsa-oss-1.0.17 ppc64 for bug 272682
+
+  25 Jun 2009; Raúl Porcel <armin76@gentoo.org> alsa-oss-1.0.17.ebuild:
+  ia64/sparc stable wrt #272285
+
+  09 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  alsa-oss-1.0.17.ebuild:
+  stable x86, bug 272285
+
+  07 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  alsa-oss-1.0.17.ebuild:
+  Stable on alpha, bug #272285
+
+  06 Jun 2009; nixnut <nixnut@gentoo.org> alsa-oss-1.0.17.ebuild:
+  ppc stable #272285
+
+  02 Jun 2009; Jeroen Roovers <jer@gentoo.org> alsa-oss-1.0.17.ebuild:
+  Stable for HPPA (bug #272285).
+
+  02 Jun 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  alsa-oss-1.0.17.ebuild:
+  stable amd64, bug 272285
+
+  01 Sep 2008; Petteri Räty <betelgeuse@gentoo.org>
+  -alsa-oss-1.0.12.ebuild, -alsa-oss-1.0.14.ebuild:
+  Remove old versions.
+
+*alsa-oss-1.0.17 (02 Aug 2008)
+
+  02 Aug 2008; Petteri Räty <betelgeuse@gentoo.org>
+  +alsa-oss-1.0.17.ebuild:
+  Version bump. Fixes bug #227043. Thanks to chutzpah for the help.
+
+  13 Jul 2008; Joseph Jezak <josejx@gentoo.org> alsa-oss-1.0.15.ebuild:
+  Marked ppc stable for bug #217075.
+
+  13 Jun 2008; Tobias Klausmann <klausman@gentoo.org>
+  alsa-oss-1.0.15.ebuild:
+  Stable on alpha, bug #217075
+
+  09 Jun 2008; Raúl Porcel <armin76@gentoo.org> alsa-oss-1.0.15.ebuild:
+  ia64/x86 stable wrt #217075
+
+  06 Jun 2008; Steve Dibb <beandog@gentoo.org> alsa-oss-1.0.15.ebuild:
+  amd64 stable, bug 217075
+
+  06 Jun 2008; Jeroen Roovers <jer@gentoo.org> alsa-oss-1.0.15.ebuild:
+  Stable for HPPA (bug #217075).
+
+  12 May 2008; Markus Rothe <corsair@gentoo.org> alsa-oss-1.0.15.ebuild:
+  Stable on ppc64
+
+  18 Apr 2008; Ferris McCormick <fmccor@gentoo.org> alsa-oss-1.0.15.ebuild:
+  Sparc stable, Bug #217075.
+
+  22 Oct 2007; Raúl Porcel <armin76@gentoo.org> alsa-oss-1.0.14.ebuild:
+  alpha/ia64 stable wrt #189155
+
+  20 Oct 2007; Christoph Mende <angelos@gentoo.org> alsa-oss-1.0.14.ebuild:
+  Stable on amd64 wrt bug #189155
+
+  20 Oct 2007; Christian Heim <phreak@gentoo.org>
+  -alsa-oss-1.0.14_rc4.ebuild:
+  Removing some of the older ebuilds.
+
+*alsa-oss-1.0.15 (18 Oct 2007)
+
+  18 Oct 2007; Christian Heim <phreak@gentoo.org> +alsa-oss-1.0.15.ebuild:
+  Version bump, finally at 1.0.15.
+
+  10 Sep 2007; Jeroen Roovers <jer@gentoo.org> alsa-oss-1.0.14.ebuild:
+  Stable for HPPA (bug #189155).
+
+  08 Sep 2007; Joseph Jezak <josejx@gentoo.org> alsa-oss-1.0.14.ebuild:
+  Marked ppc/ppc64 for bug #189155.
+
+  26 Aug 2007; Jurek Bartuszek <jurek@gentoo.org> alsa-oss-1.0.14.ebuild:
+  x86 stable (bug #189155)
+
+  16 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  alsa-oss-1.0.14.ebuild:
+  Stable on sparc
+
+*alsa-oss-1.0.14 (27 Jun 2007)
+
+  27 Jun 2007; Tony Vroon <chainsaw@gentoo.org> +alsa-oss-1.0.14.ebuild:
+  Version bump to 1.0.14 final as requested in bug #181042.
+
+*alsa-oss-1.0.14_rc4 (07 May 2007)
+
+  07 May 2007; Stefan Schweizer <genstef@gentoo.org>
+  +alsa-oss-1.0.14_rc4.ebuild:
+  version bump
+
+  21 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -alsa-oss-1.0.10-r1.ebuild, -alsa-oss-1.0.11.ebuild:
+  Winter cleaning, so to let arch teams know that they need to hurry up on
+  cleaning after themselves.
+
+  24 Oct 2006; Simon Stelling <blubb@gentoo.org> alsa-oss-1.0.12.ebuild:
+  stable on amd64
+
+  18 Oct 2006; Joshua Jackson <tsunam@gentoo.org> alsa-oss-1.0.12.ebuild:
+  Stable x86;bug #150540
+
+  14 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> alsa-oss-1.0.12.ebuild:
+  Stable on Alpha.
+
+  14 Oct 2006; Aron Griffis <agriffis@gentoo.org> alsa-oss-1.0.12.ebuild:
+  Mark 1.0.12 stable on ia64. #150540
+
+  11 Oct 2006; Markus Rothe <corsair@gentoo.org> alsa-oss-1.0.12.ebuild:
+  Stable on ppc64; bug #150540
+
+  10 Oct 2006; Jeroen Roovers <jer@gentoo.org> alsa-oss-1.0.12.ebuild:
+  Stable for HPPA (bug #150540).
+
+  09 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  alsa-oss-1.0.12.ebuild:
+  Stable on sparc wrt #150540
+
+  09 Oct 2006; Luca Barbato <lu_zero@gentoo.org> alsa-oss-1.0.12.ebuild:
+  Marked ppc
+
+  02 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Move maintainership over to new alsa herd.
+
+  02 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/alsa-oss-1.0.12-hardened.patch, alsa-oss-1.0.12.ebuild:
+  Add patch to allow test to build on PIC architectures and Hardened compiler,
+  thanks to Attila Stehr for reporting in bug #133316. Reported upstream.
+
+  03 Sep 2006; Jeroen Roovers <jer@gentoo.org> alsa-oss-1.0.12.ebuild:
+  Marked ~hppa (bug #146108).
+
+  03 Sep 2006; Markus Rothe <corsair@gentoo.org> alsa-oss-1.0.12.ebuild:
+  Added ~ppc64; bug #146108
+
+  31 Aug 2006; Diego Pettenò <flameeyes@gentoo.org> alsa-oss-1.0.12.ebuild:
+  Don't go directly stable, not yet.
+
+*alsa-oss-1.0.12 (31 Aug 2006)
+
+  31 Aug 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +alsa-oss-1.0.12.ebuild:
+  Version bump to latest version, and remove release candidate.
+
+  14 May 2006; Luis Medinas <metalgod@gentoo.org> alsa-oss-1.0.11.ebuild:
+  Stable on amd64. Bug #130535.
+
+  01 May 2006; Joseph Jezak <josejx@gentoo.org> alsa-oss-1.0.11.ebuild:
+  Marked ppc stable for bug #130535.
+
+  26 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  alsa-oss-1.0.11.ebuild:
+  Stable on sparc
+
+  22 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  alsa-oss-1.0.11.ebuild:
+  Stable on x86 wrt bug #130535.
+
+  19 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -alsa-oss-1.0.11_rc3.ebuild:
+  Drop release candidate versions.
+
+*alsa-oss-1.0.11 (19 Apr 2006)
+
+  19 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +alsa-oss-1.0.11.ebuild:
+  Version bump. This version will replace all the old release candidates.
+
+  06 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  alsa-oss-1.0.10-r1.ebuild:
+  Drop dependency in virtual/libc.
+
+*alsa-oss-1.0.11_rc3 (02 Feb 2006)
+
+  02 Feb 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +alsa-oss-1.0.11_rc3.ebuild:
+  Bump to new release candidate.
+
+  02 Feb 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -alsa-oss-1.0.8-r1.ebuild, -alsa-oss-1.0.9.ebuild:
+  Cleanup old verisons.
+
+  22 Jan 2006; Joseph Jezak <josejx@gentoo.org> alsa-oss-1.0.10-r1.ebuild:
+  Marked ppc stable.
+
+  10 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  alsa-oss-1.0.10-r1.ebuild:
+  Stable on sparc wrt #111968
+
+  02 Jan 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-oss-1.0.9.ebuild, -alsa-oss-1.0.10_rc2.ebuild,
+  -alsa-oss-1.0.10_rc3.ebuild, -alsa-oss-1.0.10.ebuild:
+  1.0.9 stable sparc.  Cleaned out old versions.
+
+  27 Dec 2005; Bryan Østergaard <kloeri@gentoo.org
+  alsa-oss-1.0.10-r1.ebuild:
+  Stable on alpha.
+
+  20 Dec 2005; Petteri Räty <betelgeuse@gentoo.org>
+  alsa-oss-1.0.10-r1.ebuild:
+  Marked stable on x86 for bug #115982.
+
+  19 Dec 2005; Luis Medinas <metalgod@gentoo.org> alsa-oss-1.0.10-r1.ebuild:
+  Stable on amd64. See bug #115982.
+
+*alsa-oss-1.0.10-r1 (18 Dec 2005)
+
+  18 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +alsa-oss-1.0.10-r1.ebuild:
+  Make sure that LD_PRELOAD is not specifying a path for the libaoss.so
+  library, to make it work on multilib setups.
+
+  23 Nov 2005; Luis Medinas <metalgod@gentoo.org> alsa-oss-1.0.10.ebuild:
+  Stable on amd64. See bug #111968.
+
+*alsa-oss-1.0.10 (16 Nov 2005)
+
+  16 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +alsa-oss-1.0.10.ebuild:
+  Bump to latest upstream version.
+
+  15 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  alsa-oss-1.0.10_rc3.ebuild:
+  Stable on x86 wrt bug #112442.
+
+  13 Nov 2005; Petteri Räty <betelgeuse@gentoo.org>
+  alsa-oss-1.0.10_rc2.ebuild:
+  Marked stable on x86 for bug #111968.
+
+*alsa-oss-1.0.10_rc3 (08 Nov 2005)
+
+  08 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +alsa-oss-1.0.10_rc3.ebuild:
+  Bump to latest version.
+
+*alsa-oss-1.0.10_rc2 (11 Oct 2005)
+
+  11 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -alsa-oss-1.0.10_rc1.ebuild, +alsa-oss-1.0.10_rc2.ebuild:
+  Bumped to newer rc.
+
+  13 Sep 2005; Aron Griffis <agriffis@gentoo.org> alsa-oss-1.0.8-r1.ebuild:
+  Mark 1.0.8-r1 stable on alpha
+
+*alsa-oss-1.0.10_rc1 (25 Aug 2005)
+
+  25 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +alsa-oss-1.0.10_rc1.ebuild:
+  Added ebuild for alsa 1.0.10_rc1.
+
+*alsa-oss-1.0.9 (27 May 2005)
+
+  27 May 2005; Jan Brinkmann <luckyduck@gentoo.org> +alsa-oss-1.0.9.ebuild:
+  New upstream version released, see #94196.
+
+  12 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -alsa-oss-0.9.8.ebuild, -alsa-oss-1.0.7.ebuild:
+  Removing old versions.
+
+  20 Mar 2005; Lars Weiler <pylon@gentoo.org> alsa-oss-1.0.8-r1.ebuild:
+  Readded ppc to a 1.x version.
+
+  16 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -alsa-oss-1.0.6.ebuild:
+  Removing old versions.
+
+*alsa-oss-1.0.8-r1 (08 Mar 2005)
+
+  08 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +alsa-oss-1.0.8-r1.ebuild, -alsa-oss-1.0.8.ebuild:
+  Make aoss multilib friendly.  Stable amd64, sparc, x86.
+
+*alsa-oss-1.0.8 (23 Jan 2005)
+
+  23 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +alsa-oss-1.0.8.ebuild:
+  Version bump.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-oss-1.0.7.ebuild:
+  Stable amd64, sparc, x86.
+
+  22 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-oss-1.0.7.ebuild:
+  Added to ~sparc.
+
+  12 Nov 2004; <SeJo@gentoo.org> alsa-oss-1.0.6.ebuild:
+  stable on ppc asked by eradicator
+
+*alsa-oss-1.0.7 (12 Nov 2004)
+
+  12 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-oss-1.0.6.ebuild, +alsa-oss-1.0.7.ebuild:
+  Version bump.
+
+  12 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -alsa-oss-1.0.5.ebuild:
+  Removing old versions.
+
+  02 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -alsa-oss-0.9.0_rc1.ebuild:
+  Removing old versions.
+
+  23 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-oss-1.0.6.ebuild:
+  Stable amd64, x86.
+
+*alsa-oss-1.0.6 (23 Aug 2004)
+
+  23 Aug 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +alsa-oss-1.0.6.ebuild:
+  Version bump.
+
+  17 Aug 2004; Aron Griffis <agriffis@gentoo.org> alsa-oss-1.0.5.ebuild:
+  add ~alpha #60071
+
+  04 Aug 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -alsa-oss-1.0.2.ebuild, -alsa-oss-1.0.3a.ebuild, -alsa-oss-1.0.4.ebuild:
+  Removing old versions.
+
+  24 Jul 2004; Lars Weiler <pylon@gentoo.org> alsa-oss-1.0.5.ebuild:
+  Stable on ppc.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-oss-0.9.0_rc1.ebuild, alsa-oss-0.9.8.ebuild, alsa-oss-1.0.2.ebuild,
+  alsa-oss-1.0.3a.ebuild, alsa-oss-1.0.4.ebuild, alsa-oss-1.0.5.ebuild:
+  virtual/glibc -> virtual/libc
+
+  24 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-oss-1.0.5.ebuild:
+  Stable x86 amd64.
+
+*alsa-oss-1.0.5 (30 May 2004)
+
+  30 May 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-oss-1.0.5.ebuild:
+  Version Bump.
+
+  14 May 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-oss-1.0.2.ebuild, alsa-oss-1.0.3a.ebuild, alsa-oss-1.0.4.ebuild:
+  Fixed alsa-lib dep to close bug #51052.
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-oss-0.9.0_rc1.ebuild, alsa-oss-0.9.8.ebuild:
+  Added IUSE.
+
+*alsa-oss-1.0.4 (04 Apr 2004)
+
+  04 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-oss-1.0.3a.ebuild, alsa-oss-1.0.4.ebuild:
+  1.0.3 stable on x86.  Version bump.
+
+  31 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-oss-0.9.8.ebuild:
+  Removing explicit S=
+
+  26 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-oss-0.9.0_rc8.ebuild, alsa-oss-0.9.1.ebuild, alsa-oss-0.9.4.ebuild,
+  alsa-oss-0.9.6.ebuild, alsa-oss-1.0.0_rc2.ebuild, alsa-oss-1.0.1.ebuild,
+  alsa-oss-1.0.2.ebuild, alsa-oss-1.0.3a.ebuild:
+  Removing old ebuilds.
+
+*alsa-oss-1.0.3a (04 Mar 2004)
+
+  04 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-oss-1.0.3a.ebuild:
+  Version bump
+
+*alsa-oss-1.0.3 (01 Mar 2004)
+
+  01 Mar 2004; Martin Holzer <mholzer@gentoo.org> alsa-oss-1.0.3.ebuild:
+  Version bumped.
+
+*alsa-oss-1.0.2 (27 Jan 2004)
+
+  27 Jan 2004; Martin Holzer <mholzer@gentoo.org> alsa-oss-1.0.2.ebuild:
+  Version bumped.
+
+  17 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> alsa-oss-0.9.8.ebuild:
+  manifest fix
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> alsa-oss-0.9.8.ebuild:
+  set ppc in keywords
+
+*alsa-oss-1.0.1 (10 Jan 2004)
+
+  10 Jan 2004; Martin Holzer <mholzer@gentoo.org> alsa-oss-1.0.1.ebuild:
+  Version bumped.
+
+  26 Dec 2003; Jason Wever <weeve@gentoo.org> alsa-oss-0.9.0_rc1.ebuild,
+  alsa-oss-0.9.0_rc8.ebuild, alsa-oss-0.9.1.ebuild, alsa-oss-0.9.4.ebuild,
+  alsa-oss-0.9.6.ebuild, alsa-oss-0.9.8.ebuild, alsa-oss-1.0.0_rc1.ebuild,
+  alsa-oss-1.0.0_rc2.ebuild:
+  Masked on sparc as dependency on alsa-lib cannot be met currently.
+
+*alsa-oss-1.0.0_rc2 (07 Dec 2003)
+
+  07 Dec 2003; Martin Holzer <mholzer@gentoo.org> alsa-oss-1.0.0_rc2.ebuild:
+  Version bumped.
+
+*alsa-oss-1.0.0_rc1 (01 Dec 2003)
+
+  01 Dec 2003; Martin Holzer <mholzer@gentoo.org> alsa-oss-1.0.0_rc1.ebuild:
+  Version bumped.
+
+  26 Nov 2003; Martin Holzer <mholzer@gentoo.org> alsa-oss-0.9.8.ebuild:
+  marked x86 stable.
+
+  16 Nov 2003; Brad House <brad_mssw@gentoo.org> alsa-oss-0.9.8.ebuild:
+  mark stable on amd64
+
+*alsa-oss-0.9.8 (25 Oct 2003)
+
+  25 Oct 2003; Martin Holzer <mholzer@gentoo.org> alsa-oss-0.9.8.ebuild:
+  Version bumped.
+
+*alsa-oss-0.9.6 (29 Jul 2003)
+
+  29 Jul 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Version update.
+
+*alsa-oss-0.9.4 (03 Jun 2003)
+
+  03 Jun 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Version update.
+
+*alsa-oss-0.9.1 (12 Mar 2003)
+
+  15 Apr 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Marking stable on x86.
+
+  12 Mar 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Update to version 0.9.1.
+
+*alsa-oss-0.9.0_rc8 (03 Mar 2003)
+
+  03 Mar 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Quick update to rc8.
+
+*alsa-oss-0.9.0_rc1 (27 Apr 2002)
+   
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc
+	keywords
+
+  20 Oct 2002; Calum Selkirk <cselkirk@gentoo.org> alsa-oss-0.9.0_rc1.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  22 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> alsa-oss-0.9.0_rc1.ebuild :
+  
+  Fixed typo.
+
+  22 May 2002; Arcady Genkin <agenkin@thpoon.com>
+	alsa-oss-0.9.0_rc1.ebuild :
+
+  Now installs the man pages under /usr/share/man.
+
+  17 Feb 2002; Arcady Genkin <agenkin@thpoon.com>
+	alsa-oss-0.9.0_rc1.ebuild :
+
+  Quick update to version 0.9.0rc1.
+
+*alsa-oss-0.9.0.1_beta10 (17 Feb 2002)
+
+  17 Feb 2002; Arcady Genkin <agenkin@thpoon.com> alsa-oss-0.9.0.1_beta10 :
+
+  First version of this package.

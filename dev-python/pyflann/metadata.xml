@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>sci</herd>
+<longdescription lang="en">
+  FLANN is a library for performing fast approximate nearest neighbor
+  searches in high dimensional spaces. It contains a collection of
+  algorithms we found to work best for nearest neighbor search and a
+  system for automatically choosing the best algorithm and optimum
+  parameters depending on the dataset.
+  This is the python binding package split from the main package.
+</longdescription>
+</pkgmetadata>

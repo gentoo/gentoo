@@ -1,0 +1,99 @@
+# ChangeLog for app-pda/libopensync-plugin-irmc
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-pda/libopensync-plugin-irmc/ChangeLog,v 1.18 2014/03/09 03:42:51 rhill Exp $
+
+  09 Mar 2014; Ryan Hill <rhill@gentoo.org> metadata.xml:
+  Change my email.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  libopensync-plugin-irmc-0.22.ebuild, libopensync-plugin-irmc-9999.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  19 Mar 2011; Ryan Hill <dirtyepic@gentoo.org>
+  +libopensync-plugin-irmc-0.22.ebuild, -libopensync-plugin-irmc-0.36.ebuild,
+  libopensync-plugin-irmc-9999.ebuild, metadata.xml:
+  Resurrect 0.22, port to EAPI 4, fix dependencies, etc. Drop 0.36.
+
+  11 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  libopensync-plugin-irmc-0.36.ebuild, libopensync-plugin-irmc-9999.ebuild:
+  Drop bluez-libs support wrt #301630.
+
+  27 Sep 2009; Mart Raudsepp <leio@gentoo.org>
+  libopensync-plugin-irmc-9999.ebuild:
+  Make bluetooth DEPEND satisfied by net-wireless/bluez too, as it is
+  claimed to work in release version, so live SVN version ought to work with
+  it too
+
+  19 Sep 2009; Petteri Räty <betelgeuse@gentoo.org>
+  libopensync-plugin-irmc-0.36.ebuild:
+  Turn on bluetooth by default so the ebuild doesn't fail with default
+  settings. Fixes bug #254724.
+
+  19 Sep 2009; Petteri Räty <betelgeuse@gentoo.org>
+  -libopensync-plugin-irmc-0.21.ebuild,
+  -libopensync-plugin-irmc-0.22.ebuild,
+  -libopensync-plugin-irmc-0.35.ebuild:
+  Remove old versions that use built_with_use.
+
+  19 Sep 2009; Petteri Räty <betelgeuse@gentoo.org>
+  libopensync-plugin-irmc-0.36.ebuild:
+  Migrate to EAPI 2 in order to remove built_with_use usage. Make bluetooth
+  DEPEND satisfied by net-wireless/bluez too. Fixes bug #272737.
+
+  04 Dec 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  libopensync-plugin-irmc-0.21.ebuild, libopensync-plugin-irmc-0.22.ebuild,
+  libopensync-plugin-irmc-0.35.ebuild, libopensync-plugin-irmc-0.36.ebuild,
+  libopensync-plugin-irmc-9999.ebuild:
+  Fix typo in die message.
+
+  03 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+*libopensync-plugin-irmc-0.36 (27 Jan 2008)
+
+  27 Jan 2008; Piotr Jaroszyński <peper@gentoo.org>
+  +libopensync-plugin-irmc-0.36.ebuild:
+  Add 0.36.
+
+*libopensync-plugin-irmc-0.35 (21 Dec 2007)
+
+  21 Dec 2007; Piotr Jaroszyński <peper@gentoo.org>
+  +libopensync-plugin-irmc-0.35.ebuild:
+  Add 0.35.
+
+*libopensync-plugin-irmc-9999 (26 Nov 2007)
+
+  26 Nov 2007; Piotr Jaroszyński <peper@gentoo.org>
+  +libopensync-plugin-irmc-9999.ebuild:
+  Add live svn ebuild.
+
+*libopensync-plugin-irmc-0.22 (28 Mar 2007)
+
+  28 Mar 2007; Piotr Jaroszyński <peper@gentoo.org>
+  -libopensync-plugin-irmc-0.20.ebuild,
+  +libopensync-plugin-irmc-0.22.ebuild:
+  Version bump.
+
+  04 Mar 2007; Marius Mauch <genone@gentoo.org>
+  libopensync-plugin-irmc-0.21.ebuild:
+  Replacing einfo with elog
+
+*libopensync-plugin-irmc-0.21 (12 Feb 2007)
+
+  12 Feb 2007; Piotr Jaroszyński <peper@gentoo.org>
+  -libopensync-plugin-irmc-0.19.ebuild,
+  +libopensync-plugin-irmc-0.21.ebuild:
+  Version bump.
+
+*libopensync-plugin-irmc-0.20 (10 Nov 2006)
+
+  10 Nov 2006; Piotr Jaroszyński <peper@gentoo.org>
+  libopensync-plugin-irmc-0.19.ebuild, +libopensync-plugin-irmc-0.20.ebuild:
+  Version bump.
+
+*libopensync-plugin-irmc-0.19 (23 Oct 2006)
+
+  23 Oct 2006; Piotr Jaroszyński <peper@gentoo.org> +metadata.xml,
+  +libopensync-plugin-irmc-0.19.ebuild:
+  New package.
+

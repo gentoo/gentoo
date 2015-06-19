@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure
+DESCRIPTION=Reiserfs Utilities
+EAPI=5
+HOMEPAGE=http://www.kernel.org/pub/linux/utils/fs/reiserfs/
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 -sparc x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://kernel/linux/utils/fs/reiserfs/reiserfsprogs-3.6.24.tar.xz mirror://kernel/linux/kernel/people/jeffm/reiserfsprogs/v3.6.24/reiserfsprogs-3.6.24.tar.xz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=4c51e7fc0dd90f40762510f47d4d2d26

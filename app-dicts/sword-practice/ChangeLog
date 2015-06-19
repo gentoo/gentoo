@@ -1,0 +1,15 @@
+# ChangeLog for app-dicts/sword-practice
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/sword-practice/ChangeLog,v 1.3 2014/01/05 23:42:53 creffett Exp $
+
+  05 Jan 2014; Chris Reffett <creffett@gentoo.org> sword-practice-1.0.ebuild:
+  EAPI bump
+
+  27 Dec 2013; Chris Reffett <creffett@gentoo.org> sword-practice-1.0.ebuild:
+  shorten DESCRIPTION to make repoman happy
+
+*sword-practice-1.0 (17 May 2008)
+
+  17 May 2008; Steve Dibb <beandog@gentoo.org> +metadata.xml,
+  +sword-practice-1.0.ebuild:
+  Initial commit

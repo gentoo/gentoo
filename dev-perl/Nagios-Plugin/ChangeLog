@@ -1,0 +1,80 @@
+# ChangeLog for dev-perl/Nagios-Plugin
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Nagios-Plugin/ChangeLog,v 1.18 2014/08/24 01:45:08 axs Exp $
+
+*Nagios-Plugin-0.360.0-r1 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Nagios-Plugin-0.360.0-r1.ebuild, -Nagios-Plugin-0.360.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  06 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Nagios-Plugin-0.360.0.ebuild:
+  x86 stable wrt bug #444462
+
+  29 Nov 2012; Jeroen Roovers <jer@gentoo.org> Nagios-Plugin-0.360.0.ebuild:
+  Stable for HPPA (bug #444462).
+
+  25 Nov 2012; <ago@gentoo.org> Nagios-Plugin-0.360.0.ebuild:
+  Stable for amd64, wrt bug #444462
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  21 Apr 2012; Torsten Veller <tove@gentoo.org> -Nagios-Plugin-0.350.0.ebuild:
+  Cleanup
+
+  09 Feb 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #85926
+
+*Nagios-Plugin-0.360.0 (25 Dec 2011)
+
+  25 Dec 2011; Torsten Veller <tove@gentoo.org> +Nagios-Plugin-0.360.0.ebuild:
+  Version bump
+
+  30 Nov 2011; Jeroen Roovers <jer@gentoo.org> Nagios-Plugin-0.350.0.ebuild:
+  Marked ~hppa (Dakon).
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Nagios-Plugin-0.350.ebuild:
+  Cleanup
+
+*Nagios-Plugin-0.350.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org> +Nagios-Plugin-0.350.0.ebuild:
+  Change version scheme
+
+  29 Jul 2011; Torsten Veller <tove@gentoo.org> -Nagios-Plugin-0.33.ebuild,
+  -Nagios-Plugin-0.34.ebuild:
+  Cleanup
+
+*Nagios-Plugin-0.350 (12 Jan 2011)
+
+  12 Jan 2011; Torsten Veller <tove@gentoo.org> +Nagios-Plugin-0.350.ebuild:
+  Version bump
+
+*Nagios-Plugin-0.34 (17 Apr 2010)
+
+  17 Apr 2010; Torsten Veller <tove@gentoo.org> +Nagios-Plugin-0.34.ebuild:
+  Version bump
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org> -Nagios-Plugin-0.31.ebuild,
+  -Nagios-Plugin-0.32.ebuild:
+  Cleanup
+
+*Nagios-Plugin-0.33 (07 Jun 2009)
+
+  07 Jun 2009; Torsten Veller <tove@gentoo.org> +Nagios-Plugin-0.33.ebuild:
+  Version bump
+
+*Nagios-Plugin-0.32 (08 Mar 2009)
+
+  08 Mar 2009; Torsten Veller <tove@gentoo.org> metadata.xml,
+  +Nagios-Plugin-0.32.ebuild:
+  Version bump. Add perl to metadata.
+
+*Nagios-Plugin-0.31 (15 Feb 2009)
+
+  15 Feb 2009; Tobias Scherbaum <dertobi123@gentoo.org> +metadata.xml,
+  +Nagios-Plugin-0.31.ebuild:
+  Initial Import, based on an ebuild by Christian Kauhaus (#257580)

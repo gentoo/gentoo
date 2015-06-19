@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=app-arch/unzip
+DESCRIPTION=Genome-scale comparison of biological sequences
+EAPI=4
+HOMEPAGE=http://last.cbrc.jp/
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=http://last.cbrc.jp/archive/last-230.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=21140b38a4843beb99bf81939b7ef065

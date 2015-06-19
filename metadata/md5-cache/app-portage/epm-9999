@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=>=dev-lang/perl-5 dev-vcs/git
+DESCRIPTION=rpm workalike for Gentoo Linux
+EAPI=4
+HOMEPAGE=https://github.com/fuzzyray/epm
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/perl-5
+SLOT=0
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8e854452fa1494605ec19190738c8850

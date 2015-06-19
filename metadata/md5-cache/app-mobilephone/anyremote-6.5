@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=dev-libs/glib:2 x11-libs/libX11 x11-libs/libXtst avahi? ( net-dns/avahi ) bluetooth? ( net-wireless/bluez ) dbus? ( dev-libs/dbus-glib sys-apps/dbus ) virtual/pkgconfig
+DESCRIPTION=Bluetooth, infrared or cable remote control service
+EAPI=5
+HOMEPAGE=http://anyremote.sourceforge.net/
+IUSE=avahi bluetooth dbus
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 x11-libs/libX11 x11-libs/libXtst avahi? ( net-dns/avahi ) bluetooth? ( net-wireless/bluez ) dbus? ( dev-libs/dbus-glib sys-apps/dbus )
+SLOT=0
+SRC_URI=mirror://sourceforge/anyremote/anyremote-6.5.tar.gz
+_md5_=7c90e5ace53d1ec50eb0d6c19549d81b

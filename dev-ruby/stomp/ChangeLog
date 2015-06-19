@@ -1,0 +1,175 @@
+# ChangeLog for dev-ruby/stomp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/stomp/ChangeLog,v 1.42 2015/06/07 19:53:59 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*stomp-1.3.4 (19 Apr 2015)
+
+  19 Apr 2015; Manuel Rüger <mrueg@gentoo.org> +stomp-1.3.4.ebuild,
+  -stomp-1.2.16.ebuild, stomp-1.3.2-r1.ebuild, stomp-1.3.2.ebuild:
+  Version bump. Remove old. Update Homepage.
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> stomp-1.3.2.ebuild:
+  Stable for x86, wrt bug #546972
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> stomp-1.3.2.ebuild:
+  Stable for amd64, wrt bug #546972
+
+*stomp-1.3.2-r1 (18 Apr 2015)
+
+  18 Apr 2015; Hans de Graaff <graaff@gentoo.org> stomp-1.3.2.ebuild,
+  +stomp-1.3.2-r1.ebuild:
+  Create stable candidate.
+
+  25 Mar 2015; Hans de Graaff <graaff@gentoo.org> stomp-1.3.2.ebuild:
+  Add ruby22.
+
+  11 Nov 2014; Manuel Rüger <mrueg@gentoo.org> stomp-1.2.16.ebuild,
+  stomp-1.3.2.ebuild:
+  Drop jruby target.
+
+  06 Aug 2014; Manuel Rüger <mrueg@gentoo.org> stomp-1.3.2.ebuild:
+  Add ruby21 target.
+
+  19 Apr 2014; Manuel Rüger <mrueg@gentoo.org> -stomp-1.3.1.ebuild,
+  stomp-1.2.16.ebuild, stomp-1.3.2.ebuild:
+  Remove ruby18 target. Cleanup old.
+
+  20 Jan 2014; Manuel Rüger <mrueg@gentoo.org> -stomp-1.2.7.ebuild:
+  Cleanup old.
+
+  19 Jan 2014; Pacho Ramos <pacho@gentoo.org> stomp-1.2.16.ebuild:
+  amd64 stable, bug #490020
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> stomp-1.2.16.ebuild:
+  Stable for x86, wrt bug #490020
+
+*stomp-1.3.2 (09 Dec 2013)
+
+  09 Dec 2013; Hans de Graaff <graaff@gentoo.org> +stomp-1.3.2.ebuild:
+  Version bump.
+
+*stomp-1.3.1 (01 Nov 2013)
+
+  01 Nov 2013; Hans de Graaff <graaff@gentoo.org> +stomp-1.3.1.ebuild:
+  Version bump. Add ruby20.
+
+  01 Nov 2013; Hans de Graaff <graaff@gentoo.org> -stomp-1.2.14.ebuild:
+  Cleanup.
+
+*stomp-1.2.16 (13 Sep 2013)
+
+  13 Sep 2013; Manuel Rüger <mrueg@gentoo.org> +stomp-1.2.16.ebuild:
+  Version bump.
+
+*stomp-1.2.14 (22 Aug 2013)
+
+  22 Aug 2013; Manuel Rüger <mrueg@gentoo.org> +stomp-1.2.14.ebuild,
+  -stomp-1.2.12.ebuild, -stomp-1.2.13.ebuild, -stomp-1.2.9.ebuild:
+  Version bump. Cleanup old.
+
+*stomp-1.2.13 (18 Aug 2013)
+
+  18 Aug 2013; Manuel Rüger <mrueg@gentoo.org> +stomp-1.2.13.ebuild:
+  Version bump
+
+*stomp-1.2.12 (17 Aug 2013)
+
+  17 Aug 2013; Hans de Graaff <graaff@gentoo.org> +stomp-1.2.12.ebuild:
+  Version bump.
+
+  17 Aug 2013; Hans de Graaff <graaff@gentoo.org> -stomp-1.2.5.ebuild:
+  Cleanup.
+
+  20 Apr 2013; Agostino Sarubbo <ago@gentoo.org> stomp-1.2.7.ebuild:
+  Stable for x86, wrt bug #466532
+
+  20 Apr 2013; Agostino Sarubbo <ago@gentoo.org> stomp-1.2.7.ebuild:
+  Stable for amd64, wrt bug #466532
+
+*stomp-1.2.9 (20 Apr 2013)
+
+  20 Apr 2013; Hans de Graaff <graaff@gentoo.org> +stomp-1.2.9.ebuild:
+  Version bump.
+
+  20 Apr 2013; Hans de Graaff <graaff@gentoo.org> -stomp-1.2.6.ebuild:
+  Cleanup.
+
+*stomp-1.2.7 (09 Dec 2012)
+
+  09 Dec 2012; Hans de Graaff <graaff@gentoo.org> +stomp-1.2.7.ebuild:
+  Version bump.
+
+  09 Dec 2012; Hans de Graaff <graaff@gentoo.org> -stomp-1.1.7.ebuild:
+  Remove old version.
+
+*stomp-1.2.6 (16 Oct 2012)
+
+  16 Oct 2012; Hans de Graaff <graaff@gentoo.org> +stomp-1.2.6.ebuild:
+  Version bump.
+
+  01 Oct 2012; Johannes Huber <johu@gentoo.org> stomp-1.2.5.ebuild:
+  Stable for x86, wrt bug #436554
+
+  01 Oct 2012; Agostino Sarubbo <ago@gentoo.org> stomp-1.2.5.ebuild:
+  Stable for amd64, wrt bug #436554
+
+  23 Sep 2012; Hans de Graaff <graaff@gentoo.org> -stomp-1.2.2.ebuild,
+  -stomp-1.2.4.ebuild:
+  Cleanup.
+
+*stomp-1.2.5 (13 Aug 2012)
+
+  13 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> +stomp-1.2.5.ebuild:
+  Version bump.
+
+*stomp-1.2.4 (05 Jul 2012)
+
+  05 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> +stomp-1.2.4.ebuild,
+  -stomp-1.2.0.ebuild, stomp-1.2.2.ebuild:
+  Version bump; use the new rspec support in 1.2.2 as well; remove 1.2.0.
+
+*stomp-1.2.2 (21 Apr 2012)
+
+  21 Apr 2012; Hans de Graaff <graaff@gentoo.org> +stomp-1.2.2.ebuild:
+  Version bump.
+
+  21 Apr 2012; Hans de Graaff <graaff@gentoo.org> -stomp-1.1.8.ebuild,
+  -stomp-1.1.9.ebuild:
+  Remove old versions.
+
+*stomp-1.2.0 (25 Dec 2011)
+
+  25 Dec 2011; Hans de Graaff <graaff@gentoo.org> +stomp-1.2.0.ebuild:
+  Version bump.
+
+  19 Sep 2011; Markus Meier <maekke@gentoo.org> stomp-1.1.7.ebuild:
+  x86 stable, bug #368825
+
+  07 Aug 2011; Markos Chandras <hwoarang@gentoo.org> stomp-1.1.7.ebuild:
+  Stable on amd64 wrt bug #368825
+
+*stomp-1.1.9 (17 Jun 2011)
+
+  17 Jun 2011; Hans de Graaff <graaff@gentoo.org> +stomp-1.1.9.ebuild:
+  Version bump.
+
+  31 May 2011; Hans de Graaff <graaff@gentoo.org> stomp-1.1.7.ebuild,
+  stomp-1.1.8.ebuild:
+  Depend on the right version of rspec, fixes bug 368907.
+
+  27 May 2011; Hans de Graaff <graaff@gentoo.org> stomp-1.1.7.ebuild:
+  Drop ruby19 to create a stable candidate for bug 368825.
+
+*stomp-1.1.8 (18 Mar 2011)
+
+  18 Mar 2011; Hans de Graaff <graaff@gentoo.org> +stomp-1.1.8.ebuild:
+  Version bump.
+
+*stomp-1.1.7 (28 Feb 2011)
+
+  28 Feb 2011; Hans de Graaff <graaff@gentoo.org> +stomp-1.1.7.ebuild,
+  +metadata.xml:
+  Initial import based on ebuild from ramereth in bug 351475.

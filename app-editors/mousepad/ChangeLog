@@ -1,0 +1,25 @@
+# ChangeLog for app-editors/mousepad
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/mousepad/ChangeLog,v 1.32 2015/03/09 17:21:18 zerochaos Exp $
+
+  09 Mar 2015; Rick Farina <zerochaos@gentoo.org> mousepad-0.4.0.ebuild:
+  fix repoman warning
+
+*mousepad-0.4.0 (09 Mar 2015)
+
+  09 Mar 2015; Michał Górny <mgorny@gentoo.org> +mousepad-0.4.0.ebuild,
+  metadata.xml:
+  Version bump. Upstream added optional GTK+3 support, started using GSettings
+  and improved GUI configurability.
+
+  11 Apr 2013; Agostino Sarubbo <ago@gentoo.org> mousepad-0.3.0.ebuild:
+  Stable for x86, wrt bug #465286
+
+  11 Apr 2013; Agostino Sarubbo <ago@gentoo.org> mousepad-0.3.0.ebuild:
+  Stable for amd64, wrt bug #465286
+
+*mousepad-0.3.0 (30 Dec 2012)
+
+  30 Dec 2012; Samuli Suominen <ssuominen@gentoo.org> +mousepad-0.3.0.ebuild,
+  +files/mousepad-0.3.0-validate.patch:
+  Initial commit.

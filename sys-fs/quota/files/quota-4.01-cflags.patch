@@ -1,0 +1,58 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Mon Apr 21 10:36:28 UTC 2014
+Subject: respect CFLAGS in linking command wrt #446281
+
+--- quota-tools/Makefile.in
++++ quota-tools/Makefile.in
+@@ -105,37 +105,47 @@
+ 	-$(INSTALL) -m $(DEF_MAN_MODE) *.8 $(ROOTDIR)$(mandir)/man8
+ 
+ quotaon: quotaon.o quotaon_xfs.o $(LIBOBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ quotacheck: quotacheck.o quotacheck_v1.o quotacheck_v2.o quotaops.o $(LIBOBJS)
+-	$(CC) $(LDFLAGS) -o $@ $^ $(EXT2LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(EXT2LIBS)
+ 
+ quota: quota.o quotaops.o $(LIBOBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ quotasync: quotasync.o $(LIBOBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ quot: quot.o $(LIBOBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ repquota: repquota.o $(LIBOBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ warnquota: warnquota.o $(LIBOBJS)
+-	$(CC) $(LDFLAGS) -o $@ $^ $(LDAPLIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LDAPLIBS)
+ 
+ quotastats: quotastats.o common.o pot.o
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ xqmstats: xqmstats.o common.o pot.o
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ edquota: edquota.o quotaops.o $(LIBOBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ setquota: setquota.o quotaops.o $(LIBOBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ convertquota: convertquota.o $(LIBOBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+ 
+ rpc.rquotad: rquota_server.o rquota_svc.o svc_socket.o $(LIBOBJS)
+-	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ ifneq ($(NETLINKLIBS),)
+ quota_nld: quota_nld.o $(LIBOBJS)
+-	$(CC) $(LDFLAGS) -o $@ $^ $(NETLINKLIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(NETLINKLIBS)
+ endif
+ 
+ pot.o: pot.c pot.h

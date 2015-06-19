@@ -1,0 +1,37 @@
+#!/sbin/runscript
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/pnp4nagios/files/npcd,v 1.2 2010/10/20 16:37:27 dertobi123 Exp $
+
+opts="${opts} reload"
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting npcd"
+	start-stop-daemon --start --exec /usr/bin/npcd \
+		-- -f /etc/pnp/npcd.cfg \
+		-d
+	eend $? "Failed to Start npcd"
+}
+
+stop() {
+	ebegin "Stopping npcd"
+	start-stop-daemon --stop --quiet -n npcd
+	eend $? "Failed to Stop npcd"
+}
+
+reload() {
+        ebegin "Reloading npcd"
+        kill -HUP `pgrep npcd`
+        eend $? "Failed to reload npcd"
+}
+
+restart() {
+	ebegin "Restarting npcd"
+	svc_stop
+	svc_start
+	eend $? "Failed to Restart npcd"
+}

@@ -1,0 +1,348 @@
+# ChangeLog for sys-devel/binutils-config
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/binutils-config/ChangeLog,v 1.79 2015/05/25 06:07:20 vapier Exp $
+
+*binutils-config-4-r3 (25 May 2015)
+
+  25 May 2015; Mike Frysinger <vapier@gentoo.org> +binutils-config-4-r3.ebuild,
+  files/binutils-config-4:
+  Do not delete native ld.so.conf.d fragment when uninstalling cross binutils
+  #549708 by Alexander Tsoy.
+
+  25 May 2015; Mike Frysinger <vapier@gentoo.org> binutils-config-4-r2.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  26 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> binutils-config-4-r2.ebuild:
+  ia64 stable wrt bug #547330
+
+  26 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> binutils-config-4-r2.ebuild:
+  alpha stable wrt bug #547330
+
+  26 Apr 2015; Pacho Ramos <pacho@gentoo.org> binutils-config-4-r2.ebuild:
+  ppc stable wrt bug #547330
+
+  24 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> binutils-config-4-r2.ebuild:
+  arm stable wrt bug #547330
+
+  23 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> binutils-config-4-r2.ebuild:
+  sparc stable wrt bug #547330
+
+  23 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> binutils-config-4-r2.ebuild:
+  x86 stable wrt bug #547330
+
+  22 Apr 2015; Jeroen Roovers <jer@gentoo.org> binutils-config-4-r2.ebuild:
+  Stable for PPC64 (bug #547330).
+
+  22 Apr 2015; Jeroen Roovers <jer@gentoo.org> binutils-config-4-r2.ebuild:
+  Stable for HPPA (bug #547330).
+
+  22 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> binutils-config-4-r2.ebuild:
+  amd64 stable wrt bug #547330
+
+*binutils-config-4-r2 (09 Feb 2015)
+
+  09 Feb 2015; Mike Frysinger <vapier@gentoo.org> +binutils-config-4-r2.ebuild,
+  files/binutils-config-4:
+  Fix by Ruud Koolen for ROOT handling with man/info paths #532610 by Ruud
+  Koolen.
+
+*binutils-config-4-r1 (30 Dec 2014)
+
+  30 Dec 2014; Anthony G. Basile <blueness@gentoo.org>
+  +binutils-config-4-r1.ebuild, -binutils-config-4.ebuild,
+  files/binutils-config-4:
+  Address bug #504120
+
+*binutils-config-4 (29 Jul 2014)
+
+  29 Jul 2014; Mike Frysinger <vapier@gentoo.org> +binutils-config-4.ebuild,
+  +files/binutils-config-4, files/binutils-config.8:
+  Drop FAKE_TARGETS support as gcc dropped it a while ago too #467488.
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> binutils-config-3-r3.ebuild:
+  Add arm64 love.
+
+  05 May 2013; Mike Frysinger <vapier@gentoo.org> files/binutils-config-3:
+  Also try to rmdir target bin/libexec paths when uninstalling.
+
+  18 Nov 2012; Mike Frysinger <vapier@gentoo.org> files/binutils-config-3:
+  Add elfedit and ld.{bfd,gold} to uninstall list.
+
+  18 Aug 2012; Mike Frysinger <vapier@gentoo.org> files/binutils-config-3:
+  Fix relative ROOT handling #431104 by Greg Turner.
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> binutils-config-3-r3.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #420355
+
+  03 Jul 2012; Brent Baude <ranger@gentoo.org> binutils-config-3-r3.ebuild:
+  Marking binutils-config-3-r3 ppc for bug 420355
+
+  22 Jun 2012; Brent Baude <ranger@gentoo.org> binutils-config-3-r3.ebuild:
+  Marking binutils-config-3-r3 ppc64 for bug 420355
+
+  17 Jun 2012; Markus Meier <maekke@gentoo.org> binutils-config-3-r3.ebuild:
+  arm stable, bug #420355
+
+  14 Jun 2012; Jeroen Roovers <jer@gentoo.org> binutils-config-3-r3.ebuild:
+  Stable for HPPA (bug #420355).
+
+  11 Jun 2012; Agostino Sarubbo <ago@gentoo.org> binutils-config-3-r3.ebuild:
+  Stable for amd64, wrt bug #420355
+
+  09 Jun 2012; Jeff Horelick <jdhore@gentoo.org> binutils-config-3-r3.ebuild:
+  marked x86 per bug 420355
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  binutils-config-3-r3.ebuild:
+  keyword ~amd64-fbsd
+
+*binutils-config-3-r3 (02 Mar 2012)
+
+  02 Mar 2012; Mike Frysinger <vapier@gentoo.org> files/binutils-config-3,
+  -binutils-config-3-r2.ebuild, +binutils-config-3-r3.ebuild:
+  Fix uninstall handling to work even after most files are removed.
+
+*binutils-config-3-r2 (01 Mar 2012)
+
+  01 Mar 2012; Mike Frysinger <vapier@gentoo.org> files/binutils-config-3,
+  -binutils-config-3-r1.ebuild, +binutils-config-3-r2.ebuild:
+  Drop old upgrade logic that is only there for systems 4.5+ years old as it is
+  causing issues with newer ones, and 4.5+ upgrade time is plenty #381633 by
+  Tim Harder.
+
+  05 Dec 2011; Mike Frysinger <vapier@gentoo.org> binutils-config-3-r1.ebuild:
+  Use a blocker dep to avoid pulling in packages we do not need.
+
+*binutils-config-3-r1 (29 Sep 2011)
+
+  29 Sep 2011; Mike Frysinger <vapier@gentoo.org> files/binutils-config-3,
+  -binutils-config-3.ebuild, +binutils-config-3-r1.ebuild:
+  Make linker switching more general, and add a `die` helper.
+
+  29 Aug 2011; Mike Frysinger <vapier@gentoo.org> files/binutils-config-3:
+  Make profile switching more atomic #380759.
+
+  23 Aug 2011; Mike Frysinger <vapier@gentoo.org> files/binutils-config-3:
+  Make sure all the profile specs still work after previous rework.
+
+  12 Aug 2011; Mike Frysinger <vapier@gentoo.org> files/binutils-config-3,
+  files/binutils-config.8:
+  Add support for profile selection based on the active version of a specified
+  target.
+
+  12 Aug 2011; Mike Frysinger <vapier@gentoo.org> files/binutils-config-3:
+  Also support linker switching for current profile, and add some helpful user
+  output so they can see what is going on.
+
+*binutils-config-3 (12 Aug 2011)
+
+  12 Aug 2011; Mike Frysinger <vapier@gentoo.org> +files/binutils-config-3,
+  +binutils-config-3.ebuild, files/binutils-config.8:
+  Add options to switch the linker on the fly between gold and bfd, and clean
+  up the tangled profile/target logic.
+
+  10 Jul 2011; Mark Loeser <halcy0n@gentoo.org> binutils-config-2-r1.ebuild:
+  Stable for ppc64; bug #361849
+
+  23 Apr 2011; Raúl Porcel <armin76@gentoo.org> binutils-config-2-r1.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc/x86 stable wrt #361849
+
+  13 Apr 2011; Brent Baude <ranger@gentoo.org> binutils-config-2-r1.ebuild:
+  Marking binutils-config-2-r1 ppc for bug 361849
+
+  12 Apr 2011; Markus Meier <maekke@gentoo.org> binutils-config-2-r1.ebuild:
+  arm stable, bug #361849
+
+  08 Apr 2011; Jeroen Roovers <jer@gentoo.org> binutils-config-2-r1.ebuild:
+  Stable for HPPA (bug #361849).
+
+  05 Apr 2011; Christoph Mende <angelos@gentoo.org>
+  binutils-config-2-r1.ebuild:
+  Stable on amd64 wrt bug #361849
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> binutils-config-1.9-r4.ebuild:
+  Drop to ~mips
+
+*binutils-config-2-r1 (15 Aug 2010)
+
+  15 Aug 2010; Mike Frysinger <vapier@gentoo.org> files/binutils-config-2,
+  +binutils-config-2-r1.ebuild:
+  Fix incorrect header deletion when switching profiles #330299 by Pinky.
+
+*binutils-config-2 (20 Dec 2009)
+
+  20 Dec 2009; Mike Frysinger <vapier@gentoo.org> +files/binutils-config-2,
+  +binutils-config-2.ebuild:
+  Touch up code a bit and add support for /etc/ld.so.conf.d/.
+
+*binutils-config-1.9-r4 (06 May 2007)
+
+  06 May 2007; Mike Frysinger <vapier@gentoo.org> files/binutils-config-1.9,
+  +binutils-config-1.9-r4.ebuild:
+  Fix ldscript symlink generation #171486 by Alan Hourihane.
+
+*binutils-config-1.9-r3 (26 Nov 2006)
+
+  26 Nov 2006; Mike Frysinger <vapier@gentoo.org> files/binutils-config-1.9,
+  +binutils-config-1.9-r3.ebuild:
+  Fix from James Le Cuirot for handling of $ROOT in ldscript cleanup #156118.
+
+  19 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  binutils-config-1.9-r2.ebuild:
+  Make findutils a dep only on GNU userland.
+
+  19 Oct 2006; Mike Frysinger <vapier@gentoo.org> files/binutils-config-1.9,
+  binutils-config-1.9-r2.ebuild:
+  Force newer findutils and use portable options #150352.
+
+  18 Oct 2006; Roy Marples <uberlord@gentoo.org>
+  binutils-config-1.9-r2.ebuild:
+  Added ~sparc-fbsd keyword.
+
+  02 Oct 2006; Daniel Gryniewicz <dang@gentoo.org>
+  binutils-config-1.9-r2.ebuild:
+  Marked stable on amd64 for bug #149050
+
+  27 Sep 2006; Fernando J. Pereda <ferdy@gentoo.org>
+  binutils-config-1.9-r2.ebuild:
+  Stable on alpha as per bug #149050
+
+  26 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  binutils-config-1.9-r2.ebuild:
+  Stable on sparc wrt #149050
+
+  26 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  binutils-config-1.9-r2.ebuild:
+  Stable on hppa wrt #149050
+
+  26 Sep 2006; Joshua Jackson <tsunam@gentoo.org>
+  binutils-config-1.9-r2.ebuild:
+  Stable x86; bug #149050
+
+  25 Sep 2006; <nixnut@gentoo.org> binutils-config-1.9-r2.ebuild:
+  Stable on ppc wrt bug 149050
+
+  25 Sep 2006; Markus Rothe <corsair@gentoo.org>
+  binutils-config-1.9-r2.ebuild:
+  Stable on ppc64; bug #149050
+
+*binutils-config-1.9-r2 (17 Sep 2006)
+
+  17 Sep 2006; Mike Frysinger <vapier@gentoo.org> files/binutils-config-1.9,
+  -binutils-config-1.9-r1.ebuild, +binutils-config-1.9-r2.ebuild:
+  Symlink ldscripts into gcc-exec path #147155 by Heiko Rosemann.
+
+*binutils-config-1.9-r1 (27 Aug 2006)
+
+  27 Aug 2006; Mike Frysinger <vapier@gentoo.org> files/binutils-config-1.9,
+  -binutils-config-1.9.ebuild, +binutils-config-1.9-r1.ebuild:
+  Now that we have moved binutils stuff, make sure the binaries can still be
+  found automatically by the gcc cross-compiler.
+
+*binutils-config-1.9 (27 Aug 2006)
+
+  27 Aug 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/binutils-config-1.9, +binutils-config-1.9.ebuild:
+  Keep cross-compiler files in /usr/CHOST/CTARGET/ #144700.
+
+*binutils-config-1.8-r7 (10 Apr 2006)
+
+  10 Apr 2006; Mike Frysinger <vapier@gentoo.org> files/binutils-config-1.8,
+  -binutils-config-1.8-r6.ebuild, +binutils-config-1.8-r7.ebuild:
+  Use sysroot-ed path for the include dir.
+
+  30 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  binutils-config-1.8-r6.ebuild:
+  Add ~x86-fbsd keyword.
+
+*binutils-config-1.8-r6 (20 Nov 2005)
+
+  20 Nov 2005; Mike Frysinger <vapier@gentoo.org> files/binutils-config-1.8,
+  -binutils-config-1.8-r5.ebuild, +binutils-config-1.8-r6.ebuild:
+  Allow people to select profiles via version only.
+
+*binutils-config-1.8-r5 (27 Aug 2005)
+
+  27 Aug 2005; Mike Frysinger <vapier@gentoo.org> files/binutils-config-1.8,
+  -binutils-config-1.8-r4.ebuild, +binutils-config-1.8-r5.ebuild:
+  Ooops, last change removed a cd line by accident.
+
+*binutils-config-1.8-r3 (13 Jun 2005)
+
+  13 Jun 2005; Mike Frysinger <vapier@gentoo.org> files/binutils-config-1.8,
+  +binutils-config-1.8-r3.ebuild:
+  When uninstalling, clean out a few more dirs if they are empty.
+
+*binutils-config-1.8-r2 (03 Apr 2005)
+
+  03 Apr 2005; Mike Frysinger <vapier@gentoo.org> files/binutils-config-1.8,
+  -binutils-config-1.8-r1.ebuild, +binutils-config-1.8-r2.ebuild:
+  Touch up the unistall so it works with the eclass again.
+
+*binutils-config-1.8-r1 (22 Feb 2005)
+
+  22 Feb 2005; Mike Frysinger <vapier@gentoo.org>
+  +binutils-config-1.8-r1.ebuild:
+  Make sure manpage gets installed #81553 by Aron Griffis.
+
+*binutils-config-1.8 (30 Jan 2005)
+
+  30 Jan 2005; Mike Frysinger <vapier@gentoo.org> +files/binutils-config-1.8,
+  files/binutils-config.8, +binutils-config-1.8.ebuild:
+  Add support for generating fake arm/mips little/big targets. Also make it so
+  the user can select which profile to fake against.
+
+*binutils-config-1.7 (13 Jan 2005)
+
+  13 Jan 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/binutils-config-1.7, +files/binutils-config.8,
+  +binutils-config-1.7.ebuild:
+  Allow users to install fake x86/amd64 symlinks easily and add a manpage.
+
+*binutils-config-1.6 (01 Jan 2005)
+
+  01 Jan 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/binutils-config-1.6, +binutils-config-1.6.ebuild:
+  Upgrade support for FAKE_TARGETS.
+
+*binutils-config-1.5-r1 (31 Dec 2004)
+
+  31 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  files/binutils-config-1.5:
+  Fixed syntax error in binutils-condif-1.5.
+
+*binutils-config-1.5 (30 Dec 2004)
+
+  30 Dec 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/binutils-config-1.5, +binutils-config-1.5.ebuild:
+  New version to support extra symlink generation for multilib systems.
+
+*binutils-config-1.4 (26 Dec 2004)
+
+  26 Dec 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/binutils-config-1.4, +binutils-config-1.4.ebuild:
+  Fill out {INFO,LD,MAN}PATH variables to fix #74726 and #75636.
+
+*binutils-config-1.3 (15 Dec 2004)
+
+  15 Dec 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/binutils-config-1.3, +binutils-config-1.3.ebuild:
+  Support $(get_libdir) for funky arches.
+
+*binutils-config-1.2 (15 Dec 2004)
+
+  15 Dec 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/binutils-config-1.2, +binutils-config-1.2.ebuild:
+  Version bump to resolve upgrade issues #74348.
+
+*binutils-config-1.1 (08 Dec 2004)
+
+  08 Dec 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/binutils-config-1.1, +binutils-config-1.1.ebuild:
+  Support unmerging of targets and move the symlink generation out of packages
+  and into binutils.
+
+*binutils-config-1.0 (14 Nov 2004)
+
+  14 Nov 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

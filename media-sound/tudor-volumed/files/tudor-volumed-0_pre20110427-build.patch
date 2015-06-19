@@ -1,0 +1,43 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Tue May 29 11:49:50 UTC 2012
+Subject: build system
+
+respect LDFLAGs, CXXFLAGs and CXX
+
+--- Makefile
++++ Makefile
+@@ -3,12 +3,12 @@
+ all: $(BIN)
+ 
+ $(BIN): $(OBJECTS)
+-	$(CXX) $(CXXFLAGS) $^ -o $(BIN) $(LIBS) -ggdb
++	$(CXX) $(CXXFLAGS) $^ -o $(BIN) $(LDFLAGS) $(LIBS)
+ 
+ %.o: %.cpp
+-	$(CXX) $(CXXFLAGS) -c $^ -o $@ -ggdb
++	$(CXX) $(CXXFLAGS) -c $^ -o $@
+ 
+ clean:
+ 	rm -f $(BIN) $(OBJECTS)
+ 
+-.PHONY: clean all
+\ No newline at end of file
++.PHONY: clean all
+--- config.mk
++++ config.mk
+@@ -2,7 +2,7 @@
+ 
+ NAME := tudor-volumed
+ OS   := $(shell uname -o)
+-CXX  := gcc
++CXX  ?= gcc
+ 
+ LIBS    := -lX11 -lstdc++
+ BIN     := $(NAME)
+@@ -17,4 +17,4 @@
+ ifdef OSSLIBDIR
+ 	CXXFLAGS += -DUSE_OSS -I${OSSLIBDIR}/include/sys
+ 	OBJECTS  += ossmixer.o
+-endif
+\ No newline at end of file
++endif

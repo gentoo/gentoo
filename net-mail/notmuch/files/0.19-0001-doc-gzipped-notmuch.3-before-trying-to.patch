@@ -1,0 +1,28 @@
+From a95173249ae8811241da7640814934837abce53b Mon Sep 17 00:00:00 2001
+From: David Bremner <david@tethera.net>
+Date: Sun, 25 Jan 2015 15:04:51 +0100
+Subject: [PATCH] doc: gzipped notmuch.3 before trying to install notmuch.3.gz
+
+If HAVE_SPHINX=0 but HAVE_DOXYGEN=1, then the previous version was
+trying to install notmuch.3.gz but only got as far as creating
+notmuch.3
+---
+ doc/Makefile.local | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/Makefile.local b/doc/Makefile.local
+index e7d0bac..a719d8b 100644
+--- a/doc/Makefile.local
++++ b/doc/Makefile.local
+@@ -63,7 +63,7 @@ install-man: install-apidocs
+ ifeq ($(HAVE_DOXYGEN),1)
+ MAN_GZIP_FILES += ${APIMAN}.gz
+ apidocs: $(APIMAN)
+-install-apidocs: apidocs
++install-apidocs: ${APIMAN}.gz
+ 	mkdir -p "$(DESTDIR)$(mandir)/man3"
+ 	install -m0644  $(DOCBUILDDIR)/man/man3/*.3.gz  $(DESTDIR)/$(mandir)/man3
+ 
+-- 
+2.2.2
+

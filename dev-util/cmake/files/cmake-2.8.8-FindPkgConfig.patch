@@ -1,0 +1,18 @@
+diff --git a/Modules/FindPkgConfig.cmake b/Modules/FindPkgConfig.cmake
+index c47f583..5783d37 100644
+--- a/Modules/FindPkgConfig.cmake
++++ b/Modules/FindPkgConfig.cmake
+@@ -87,7 +87,12 @@
+ set(PKG_CONFIG_VERSION 1)
+ set(PKG_CONFIG_FOUND   0)
+ 
+-find_program(PKG_CONFIG_EXECUTABLE NAMES pkg-config DOC "pkg-config executable")
++if(NOT PKG_CONFIG_EXECUTABLE)
++	set(PKG_CONFIG_EXECUTABLE $ENV{PKG_CONFIG})
++	if(NOT PKG_CONFIG_EXECUTABLE)
++		find_program(PKG_CONFIG_EXECUTABLE NAMES pkg-config DOC "pkg-config executable")
++	endif(NOT PKG_CONFIG_EXECUTABLE)
++endif(NOT PKG_CONFIG_EXECUTABLE)
+ mark_as_advanced(PKG_CONFIG_EXECUTABLE)
+ 
+ if(PKG_CONFIG_EXECUTABLE)

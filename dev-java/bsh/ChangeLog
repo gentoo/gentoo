@@ -1,0 +1,234 @@
+# ChangeLog for dev-java/bsh
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/bsh/ChangeLog,v 1.61 2014/03/08 17:31:23 tomwij Exp $
+
+  08 Mar 2014; Tom Wijsman <TomWij@gentoo.org> -bsh-2.0_beta4-r3.ebuild:
+  Remove old.
+
+  08 Dec 2012; Agostino Sarubbo <ago@gentoo.org> bsh-2.0_beta4-r4.ebuild:
+  Stable for ppc64, wrt bug #436564
+
+  07 Dec 2012; Agostino Sarubbo <ago@gentoo.org> bsh-2.0_beta4-r4.ebuild:
+  Stable for ppc, wrt bug #436564
+
+  01 Oct 2012; Johannes Huber <johu@gentoo.org> bsh-2.0_beta4-r4.ebuild:
+  Stable for x86, wrt bug #436564
+
+  01 Oct 2012; Agostino Sarubbo <ago@gentoo.org> bsh-2.0_beta4-r4.ebuild:
+  Stable for amd64, wrt bug #436564
+
+*bsh-2.0_beta4-r4 (23 Jan 2012)
+
+  23 Jan 2012; Ralph Sennhauser <sera@gentoo.org> +bsh-2.0_beta4-r4.ebuild:
+  Revbump, switch dep dev-java/servletapi to java-virtuals/servlet-api. #398689
+
+  31 Dec 2011; Ralph Sennhauser <sera@gentoo.org> bsh-2.0_beta4-r3.ebuild:
+  Drop ia64 support #345433
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  bsh-2.0_beta4-r3.ebuild:
+  Transfer Prefix keywords
+
+  17 Oct 2008; Markus Meier <maekke@gentoo.org> metadata.xml:
+  bsf USE-flag is global now
+
+  22 Sep 2008; Serkan Kaba <serkan@gentoo.org> files/bsh2.0b4-build.patch,
+  bsh-2.0_beta4-r3.ebuild:
+  Updated patch to fix bug #238402 reported by André Terpstra
+  <andre@terpstra.nu>. Fixed quoting of variables. Added necessary calls to
+  die.
+
+  15 Feb 2008; Petteri Räty <betelgeuse@gentoo.org>
+  bsh-2.0_beta4-r3.ebuild:
+  Use EAPI=1 for slot deps.
+
+  11 Jan 2008; William L. Thomson Jr. <wltjr@gentoo.org>
+  -bsh-2.0_beta4-r2.ebuild:
+  Removed older version
+
+  25 Nov 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  bsh-2.0_beta4-r3.ebuild:
+  Stable on ppc, bug #199237.
+
+  18 Nov 2007; Markus Rothe <corsair@gentoo.org> bsh-2.0_beta4-r3.ebuild:
+  Stable on ppc64; bug #199237
+
+  17 Nov 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  bsh-2.0_beta4-r3.ebuild:
+  amd64 stable, bug #199237.
+
+  17 Nov 2007; Markus Meier <maekke@gentoo.org> bsh-2.0_beta4-r3.ebuild:
+  x86 stable, bug #199237
+
+*bsh-2.0_beta4-r3 (27 May 2007)
+
+  27 May 2007; Vlastimil Babka <caster@gentoo.org> -files/bsh.Console,
+  -files/bsh.Interpreter, bsh-2.0_beta4-r2.ebuild, +bsh-2.0_beta4-r3.ebuild:
+  Revbump to add proper optional BSF support via USE flag. Cleanup.
+
+*bsh-2.0_beta4-r2 (18 May 2007)
+
+  18 May 2007; Vlastimil Babka <caster@gentoo.org> -bsh-2.0_beta4-r1.ebuild,
+  +bsh-2.0_beta4-r2.ebuild:
+  Revbump without change to make the removed bsf dep visible in package.env.
+  Fixes bug #178142.
+
+  08 May 2007; Vlastimil Babka <caster@gentoo.org> -files/bsh2-build.patch,
+  -files/beanshell.desktop, -bsh-1.3.0.ebuild, -bsh-2.0_beta1-r1.ebuild,
+  bsh-2.0_beta4-r1.ebuild:
+  Remove unused bsf dep; cleanup old versions.
+
+  12 Apr 2007; <welp@gentoo.org> bsh-2.0_beta4-r1.ebuild:
+  Stable on amd64 wrt bug 171026
+
+  17 Mar 2007; nixnut <nixnut@gentoo.org> bsh-2.0_beta4-r1.ebuild:
+  Stable on ppc wrt bug 171026
+
+  15 Mar 2007; Markus Rothe <corsair@gentoo.org> bsh-2.0_beta4-r1.ebuild:
+  Stable on ppc64; bug #171026
+
+  15 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  bsh-2.0_beta4-r1.ebuild:
+  stable x86, bug 171026
+
+  14 Mar 2007; Petteri Räty <betelgeuse@gentoo.org> -bsh-2.0_beta4.ebuild:
+  Cleanup.
+
+  09 Jan 2007; Petteri Räty <betelgeuse@gentoo.org>
+  bsh-2.0_beta4-r1.ebuild:
+  Ebuild cleanup. Fixes javadocs to install to the standard location.
+
+  05 Jan 2007; Vlastimil Babka <caster@gentoo.org> bsh-1.3.0.ebuild,
+  bsh-2.0_beta1-r1.ebuild:
+  Convert einfo to elog.
+
+  07 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  bsh-2.0_beta4-r1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  17 Oct 2006; Joshua Nichols <nichoj@gentoo.org> bsh-2.0_beta4-r1.ebuild:
+  Keyworded ~ia64.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> bsh-1.3.0.ebuild,
+  bsh-2.0_beta1-r1.ebuild:
+  Dropping sparc keywords, see #96229
+
+  13 Sep 2006; <nichoj@gentoo.org> bsh-2.0_beta4-r1.ebuild:
+  Restored ~ppc64 keyword.
+
+  06 Aug 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  bsh-2.0_beta4-r1.ebuild:
+  Fix classpath.
+
+  22 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  bsh-2.0_beta4-r1.ebuild:
+  ant_src_unpack -> src_unpack
+
+*bsh-2.0_beta4-r1 (04 Jul 2006)
+
+  04 Jul 2006; Joshua Nichols <nichoj@gentoo.org> +bsh-2.0_beta4-r1.ebuild:
+  Revision bump to support new Java system.
+
+  11 Sep 2005; Thomas Matthijs <axxo@gentoo.org> bsh-2.0_beta4.ebuild:
+  fix icon
+
+  09 Jul 2005; Thomas Matthijs <axxo@gentoo.org> -bsh-2.0_beta2.ebuild,
+  bsh-2.0_beta4.ebuild:
+  fix deps, some cleanups
+
+  23 Jun 2005; Thomas Matthijs <axxo@gentoo.org>
+  +files/bsh2.0b4-build.patch, bsh-2.0_beta4.ebuild:
+  fix 96799, sorry commited wrong ebuild
+
+*bsh-2.0_beta4 (22 Jun 2005)
+
+  22 Jun 2005; Thomas Matthijs <axxo@gentoo.org> +bsh-2.0_beta4.ebuild:
+  version bump
+
+  08 Apr 2005; Markus Rothe <corsair@gentoo.org> bsh-2.0_beta1-r1.ebuild:
+  Stable on ppc64
+
+  11 Mar 2005; Sven Wegener <swegener@gentoo.org> bsh-2.0_beta2.ebuild:
+  Fixed invalid atoms in *DEPEND.
+
+*bsh-2.0_beta2 (10 Mar 2005)
+
+  10 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> files/bsh.Console,
+  files/bsh.Interpreter, +files/bsh2-build.patch, +files/bsh2-readline.patch,
+  +bsh-2.0_beta2.ebuild:
+  new version, improvements, build from source, generall cleanup and much more.
+  fixes #62664 and #81879. Ebuild based on the contribution by Saleem A.
+  <compnerd@gentoo.org>, thanks to Diego Pettenò <dgp85@users.sourceforge.net>
+  for the patch.
+
+  26 Jan 2005; Markus Rothe <corsair@gentoo.org> bsh-1.3.0.ebuild:
+  Stable on ppc64
+
+  18 Dec 2004; Markus Rothe <corsair@gentoo.org> bsh-1.3.0.ebuild:
+  added ~ppc64 to KEYWORDS
+
+  16 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> bsh-2.0_beta1-r1.ebuild:
+  Stable on sparc
+
+  01 Nov 2004; Lars Weiler <pylon@gentoo.org> bsh-2.0_beta1-r1.ebuild:
+  Stable on ppc for PHP5, Bug #60442.
+
+  28 Oct 2004; Jason Wever <weeve@gentoo.org> bsh-2.0_beta1-r1.ebuild:
+  Added ~sparc keyword.
+
+*bsh-2.0_beta1-r1 (17 Sep 2004)
+
+  17 Sep 2004; Thomas Matthijs <axxo@gentoo.org> +bsh-2.0_beta1-r1.ebuild,
+  -bsh-2.0_beta1.ebuild:
+  named the jar ${PN}.jar to its usable with java-pkg_jar-from
+
+  17 Sep 2004; Thomas Matthijs <axxo@gentoo.org> -files/beanshell-icon.png,
+  bsh-2.0_beta1.ebuild:
+  moved beanshell-icon.png to mirrors, so repoman is nice to me
+
+  27 Jun 2004; Chris Aniszczyk <zx@gentoo.org> bsh-1.3.0.ebuild,
+  bsh-2.0_beta1.ebuild:
+  Stability bumps
+
+  02 Jun 2004; Aron Griffis <agriffis@gentoo.org> bsh-2.0_beta1.ebuild:
+  Fix use invocation
+
+  09 May 2004; Jason Wever <weeve@gentoo.org> bsh-1.3.0.ebuild:
+  Added ~sparc keyword to resolve bug #50405.
+
+  06 May 2004; Chris Aniszczyk <zx@gentoo.org> bsh-2.0_beta1.ebuild:
+  Marking stable on x86
+
+  06 May 2004; Chris Aniszczyk <zx@gentoo.org> +files/beanshell-icon.png,
+  +files/beanshell.desktop, bsh-2.0_beta1.ebuild:
+  Closes #49418.
+  Thanks to Keith Lea <keith@cs.oswego.edu> for the pretty icon and desktop file.
+
+  18 Mar 2004; Chris Aniszczyk <zx@gentoo.org> bsh-1.3.0.ebuild:
+  Marking stable on x86
+
+*bsh-2.0_beta1 (18 Feb 2004)
+
+  18 Feb 2004; Chris Aniszczyk <zx@gentoo.org> bsh-2.0_beta1.ebuild:
+  Bug fix #37506
+
+  15 Feb 2004; David Holm <dholm@gentoo.org> bsh-1.3.0.ebuild:
+  Added to ~ppc.
+
+  10 Feb 2004; Adrian Almenar <strider@gentoo.org> bsh-1.2-r7.ebuild:
+  Removed alpha keyword.
+
+  19 Jan 2004; Adrian Almenar <strider@gentoo.org> bsh-1.3.0.ebuild:
+  Added amd64 keyword.
+
+*bsh-1.3.0 (10 Jan 2004)
+
+  10 Jan 2004; Adrian Almenar <strider@gentoo.org> bsh-1.3.0.ebuild,bsh-1.2-r7.ebuild:
+  Version Bump.
+  Removed keywords for arm,hppa,mips, since there's no JVM on those ARCH's.
+
+*bsh-1.2-r7 (14 May 2003)
+
+  14 May 2003; Dylan Carlson <absinthe@gentoo.org> bsh-1.2-r7.ebuild,
+  files/bsh.Console, files/bsh.Interpreter:
+  Initial import.

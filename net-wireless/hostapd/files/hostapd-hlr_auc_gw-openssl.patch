@@ -1,0 +1,43 @@
+From 58e115b86928000475b734a4345862afe11d6352 Mon Sep 17 00:00:00 2001
+From: Jouni Malinen <jouni@qca.qualcomm.com>
+Date: Fri, 20 Mar 2015 12:56:31 +0000
+Subject: Fix hlr_auc_gw build with OpenSSL
+
+Commit 983c6a606bc839248ea0c69090e60c095a655bc6 ('OpenSSL: Replace
+internal HMAC-MD5 implementation') forgot to make inclusion of md5.o
+conditional for hlr_auc_gw build.
+
+Signed-off-by: Jouni Malinen <jouni@qca.qualcomm.com>
+---
+diff --git a/hostapd/Android.mk b/hostapd/Android.mk
+index 5c69bd1..54b139c 100644
+--- a/hostapd/Android.mk
++++ b/hostapd/Android.mk
+@@ -795,8 +795,10 @@ OBJS += src/crypto/random.c
+ HOBJS += src/crypto/random.c
+ HOBJS += src/utils/eloop.c
+ HOBJS += $(SHA1OBJS)
++ifneq ($(CONFIG_TLS), openssl)
+ HOBJS += src/crypto/md5.c
+ endif
++endif
+ 
+ ifdef CONFIG_RADIUS_SERVER
+ L_CFLAGS += -DRADIUS_SERVER
+diff --git a/hostapd/Makefile b/hostapd/Makefile
+index 520ae89..d718c15 100644
+--- a/hostapd/Makefile
++++ b/hostapd/Makefile
+@@ -792,8 +792,10 @@ OBJS += ../src/crypto/random.o
+ HOBJS += ../src/crypto/random.o
+ HOBJS += ../src/utils/eloop.o
+ HOBJS += $(SHA1OBJS)
++ifneq ($(CONFIG_TLS), openssl)
+ HOBJS += ../src/crypto/md5.o
+ endif
++endif
+ 
+ ifdef CONFIG_RADIUS_SERVER
+ CFLAGS += -DRADIUS_SERVER
+--
+cgit v0.9.2

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
+DEPEND=x11-libs/gtk+:3 >=dev-libs/glib-2.31.18:2 >=net-libs/libvncserver-0.9.8.2 x11-libs/libxkbfile x11-themes/gnome-icon-theme avahi? ( net-dns/avahi[gtk3] ) ayatana? ( dev-libs/libappindicator ) crypt? ( dev-libs/libgcrypt:0 ) freerdp? ( >=net-misc/freerdp-1.1.0_beta1_p20130710 ) gnome-keyring? ( gnome-base/libgnome-keyring ) ssh? ( net-libs/libssh[sftp] ) telepathy? ( net-libs/telepathy-glib ) vte? ( x11-libs/vte:2.90 ) dev-util/intltool virtual/pkgconfig nls? ( sys-devel/gettext ) >=sys-apps/sed-4 sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=A GTK+ RDP, VNC, XDMCP and SSH client
+EAPI=4
+HOMEPAGE=http://remmina.sourceforge.net/
+IUSE=ayatana avahi crypt debug freerdp gnome-keyring nls ssh telepathy vte
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:3 >=dev-libs/glib-2.31.18:2 >=net-libs/libvncserver-0.9.8.2 x11-libs/libxkbfile x11-themes/gnome-icon-theme avahi? ( net-dns/avahi[gtk3] ) ayatana? ( dev-libs/libappindicator ) crypt? ( dev-libs/libgcrypt:0 ) freerdp? ( >=net-misc/freerdp-1.1.0_beta1_p20130710 ) gnome-keyring? ( gnome-base/libgnome-keyring ) ssh? ( net-libs/libssh[sftp] ) telepathy? ( net-libs/telepathy-glib ) vte? ( x11-libs/vte:2.90 ) !net-misc/remmina-plugins
+SLOT=0
+SRC_URI=https://github.com/FreeRDP/Remmina/archive/b6a55ae6f4633d55f8f03e7ce2eeb5899514a8fc.tar.gz -> remmina-1.0.0_p20130723.tar.gz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vcs-snapshot	58b766562c9fbfb3268b04e33cdf2f66
+_md5_=2a8835b88ecaed78fac32256cc9050f3

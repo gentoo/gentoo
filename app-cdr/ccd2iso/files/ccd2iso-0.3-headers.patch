@@ -1,0 +1,10 @@
+--- src/ccd2iso.c.orig	2007-04-01 03:00:14.000000000 -0400
++++ src/ccd2iso.c	2007-04-01 03:00:57.000000000 -0400
+@@ -27,6 +27,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ #include "clonecd.h"
+ 

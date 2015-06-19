@@ -1,0 +1,20 @@
+# ChangeLog for dev-haskell/hoauth2
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hoauth2/ChangeLog,v 1.4 2015/06/06 11:27:14 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*hoauth2-0.4.6 (05 Apr 2015)
+
+  05 Apr 2015; Mark Wright <gienah@gentoo.org> +hoauth2-0.4.6.ebuild:
+  Bump hoauth2 to 0.4.6
+
+  05 Mar 2015; Sergei Trofimovich <slyfox@gentoo.org> hoauth2-0.4.5.ebuild:
+  Fix description (noticed by mrueg)
+
+*hoauth2-0.4.5 (05 Mar 2015)
+
+  05 Mar 2015; Sergei Trofimovich <slyfox@gentoo.org> +hoauth2-0.4.5.ebuild,
+  +metadata.xml:
+  New package for OAUTH2 (a depend of www-apps/gitit).

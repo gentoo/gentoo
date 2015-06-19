@@ -1,0 +1,45 @@
+https://bitbucket.org/nikratio/python-dugong/issue/13/test_aborted_write-failures-in-latest
+diff --git a/test/test_dugong.py b/test/test_dugong.py
+--- a/test/test_dugong.py
++++ b/test/test_dugong.py
+@@ -540,7 +540,7 @@
+     conn.readall()
+ 
+ def test_aborted_write1(conn, monkeypatch):
+-    BUFSIZE = 64*1024
++    BUFSIZE = 640*1024
+ 
+     # Monkeypatch request handler
+     def do_PUT(self):
+@@ -561,8 +561,9 @@
+ 
+     # Try to write data
+     with pytest.raises(ConnectionClosed):
+-        for _ in range(50):
++        for _ in range(5000):
+             conn.write(b'f' * BUFSIZE)
++            time.sleep(0.1)
+ 
+     # Nevertheless, try to read response
+     resp = conn.read_response()
+@@ -570,7 +571,7 @@
+     assert resp.reason == 'Please stop!'
+ 
+ def test_aborted_write2(conn, monkeypatch):
+-    BUFSIZE = 64*1024
++    BUFSIZE = 640*1024
+ 
+     # Monkeypatch request handler
+     def do_PUT(self):
+@@ -589,8 +590,9 @@
+ 
+     # Try to write data
+     with pytest.raises(ConnectionClosed):
+-        for _ in range(50):
++        for _ in range(5000):
+             conn.write(b'f' * BUFSIZE)
++            time.sleep(0.1)
+ 
+     # Nevertheless, try to read response
+     assert_raises(ConnectionClosed, conn.read_response)
+

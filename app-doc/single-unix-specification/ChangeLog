@@ -1,0 +1,87 @@
+# ChangeLog for app-doc/single-unix-specification
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-doc/single-unix-specification/ChangeLog,v 1.20 2013/10/20 20:17:38 grobian Exp $
+
+  20 Oct 2013; Fabian Groffen <grobian@gentoo.org>
+  single-unix-specification-4-r1.ebuild:
+  Marked ~x64-macos, bug #486818
+
+  30 Mar 2013; Ulrich Müller <ulm@gentoo.org>
+  single-unix-specification-3.ebuild:
+  Fix LICENSE.
+
+  01 Jul 2012; Ryan Hill <dirtyepic@gentoo.org> metadata.xml:
+  Maintainer -> app-doc.
+
+  19 Oct 2010; Mart Raudsepp <leio@gentoo.org>
+  single-unix-specification-3.ebuild:
+  Drop to ~mips
+
+  06 Mar 2010; Ryan Hill <dirtyepic@gentoo.org>
+  single-unix-specification-4-r1.ebuild:
+  Fix Manifest and remove mirror restriction.
+
+  03 Nov 2009; Raúl Porcel <armin76@gentoo.org>
+  single-unix-specification-4-r1.ebuild:
+  arm/ia64/s390/sparc stable wrt #289002
+
+  31 Oct 2009; Brent Baude <ranger@gentoo.org>
+  single-unix-specification-4-r1.ebuild:
+  Marking single-unix-specification-4-r1 ppc64 for bug 289002
+
+  24 Oct 2009; Tobias Klausmann <klausman@gentoo.org>
+  single-unix-specification-4-r1.ebuild:
+  Stable on alpha, bug #289002
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org>
+  single-unix-specification-4-r1.ebuild:
+  ppc stable #289002
+
+  23 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  single-unix-specification-4-r1.ebuild:
+  amd64 stable wrt #289002
+
+  21 Oct 2009; Jeroen Roovers <jer@gentoo.org>
+  single-unix-specification-4-r1.ebuild:
+  Stable for HPPA (bug #289002).
+
+  16 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  single-unix-specification-4-r1.ebuild:
+  stable x86, bug 289002
+
+*single-unix-specification-4-r1 (12 Sep 2009)
+
+  12 Sep 2009; Ryan Hill <dirtyepic@gentoo.org>
+  -single-unix-specification-4.ebuild,
+  +single-unix-specification-4-r1.ebuild:
+  Move to new SLOT. Fix license.
+
+*single-unix-specification-4 (11 Sep 2009)
+
+  11 Sep 2009; Patrick Lauer <patrick@gentoo.org>
+  +single-unix-specification-4.ebuild:
+  Bump, fixes #284032. Thanks to Constantin Baranov.
+
+  15 Jul 2007; Ryan Hill <dirtyepic@gentoo.org> metadata.xml:
+  Take maintainership.
+
+  15 Jul 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Assigning app-doc/single-unix-specification to m-needed, as beu is being
+  retired (#66608).
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  single-unix-specification-3.ebuild:
+  (QA) RESTRICT clean up.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  16 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> +metadata.xml,
+  single-unix-specification-3.ebuild:
+  Regenerated digest for bug 106081. Thanks to Jan Gutter <gentoo at jangutter
+  dot com>.
+
+*single-unix-specification-3 (02 May 2005)
+
+  02 May 2005; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

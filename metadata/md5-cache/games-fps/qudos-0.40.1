@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=alsa? ( media-libs/alsa-lib ) opengl? ( virtual/opengl virtual/glu ) sdl? ( media-libs/libsdl ) virtual/jpeg media-libs/libogg media-libs/libpng media-libs/libvorbis sys-libs/zlib x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86dga x11-libs/libXxf86vm
+DESCRIPTION=Enhanced Quake 2 engine
+EAPI=5
+HOMEPAGE=http://qudos.quakedev.com/
+IUSE=alsa cdinstall debug dedicated demo dga ipv6 joystick mods opengl qmax oss sdl textures
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=alsa? ( media-libs/alsa-lib ) opengl? ( virtual/opengl virtual/glu ) sdl? ( media-libs/libsdl ) virtual/jpeg media-libs/libogg media-libs/libpng media-libs/libvorbis sys-libs/zlib x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86dga x11-libs/libXxf86vm cdinstall? ( games-fps/quake2-data ) demo? ( games-fps/quake2-demodata ) textures? ( games-fps/quake2-textures ) games-misc/games-envd
+SLOT=0
+SRC_URI=http://qudos.quakedev.com/linux/quake2/engines/QuDos/QuDos-0.40.1-src.tar.bz2 http://qudos.quakedev.com/linux/quake2/engines/QuDos/QuDos-0.40.1.pk3
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=24e78ceee96d118daebc163c675c75d4

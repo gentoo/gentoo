@@ -1,0 +1,108 @@
+# ChangeLog for www-client/dwb
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-client/dwb/ChangeLog,v 1.24 2014/12/06 06:04:30 radhermit Exp $
+
+*dwb-2014.03.07-r1 (06 Dec 2014)
+
+  06 Dec 2014; Tim Harder <radhermit@gentoo.org> +dwb-2014.03.07-r1.ebuild,
+  +files/dwb-2014.03.07-makefile.patch:
+  Respect CFLAGS (bug #531750).
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> dwb-2013.03.30.ebuild,
+  dwb-2014.03.07.ebuild:
+  Replace obsolete mirror://bitbucket with the real URI.
+
+  26 Jun 2014; Tim Harder <radhermit@gentoo.org> dwb-9999.ebuild, metadata.xml:
+  Add libsecret use flag and update libsoup dep.
+
+*dwb-2014.03.07 (17 Mar 2014)
+
+  17 Mar 2014; Tim Harder <radhermit@gentoo.org> +dwb-2014.03.07.ebuild,
+  dwb-9999.ebuild, +files/dwb-2014.03.07-verbose-build.patch:
+  Version bump.
+
+  10 May 2013; Tim Harder <radhermit@gentoo.org> dwb-9999.ebuild:
+  Drop workaround for uclibc build that's been fixed upstream.
+
+  30 Apr 2013; Tim Harder <radhermit@gentoo.org> -dwb-2012.08.22.ebuild,
+  -dwb-2012.10.28-r1.ebuild, -files/dwb-2012.10.28-search-engine.patch,
+  -files/dwb-2012.10.28-verbose-build.patch, -dwb-2012.12.03.ebuild:
+  Remove old.
+
+  30 Apr 2013; Tim Harder <radhermit@gentoo.org> dwb-2013.03.30.ebuild,
+  +files/dwb-2013.03.30-json-c.patch, dwb-9999.ebuild:
+  Fix compile with >=json-c-0.11 (bug #467940), fix compile on uclibc and other
+  systems without execinfo.h (bug #465170), and add dep on gnutls.
+
+*dwb-2013.03.30 (08 Apr 2013)
+
+  08 Apr 2013; Tim Harder <radhermit@gentoo.org> +dwb-2013.03.30.ebuild,
+  +files/dwb-2013.03.30-verbose-build.patch:
+  Version bump.
+
+  08 Apr 2013; Tim Harder <radhermit@gentoo.org> dwb-9999.ebuild:
+  Upstream switched to git repo (bug #465072 by Lukas Durdak).
+
+  05 Mar 2013; Tim Harder <radhermit@gentoo.org> dwb-9999.ebuild:
+  Add dep on json-c (bug #460380 by Nikolaj Sjujskij).
+
+  02 Jan 2013; Tim Harder <radhermit@gentoo.org> dwb-9999.ebuild:
+  Update live ebuild deps, simplify sed line, and bump EAPI.
+
+*dwb-2012.12.03 (02 Jan 2013)
+
+  02 Jan 2013; Tim Harder <radhermit@gentoo.org> +dwb-2012.12.03.ebuild:
+  Version bump (bug #449346).
+
+  14 Dec 2012; Tim Harder <radhermit@gentoo.org> dwb-9999.ebuild:
+  Fix install location.
+
+  01 Nov 2012; Tim Harder <radhermit@gentoo.org> -dwb-2012.05.11.ebuild,
+  -dwb-2012.10.28.ebuild:
+  Remove old.
+
+*dwb-2012.10.28-r1 (01 Nov 2012)
+
+  01 Nov 2012; Tim Harder <radhermit@gentoo.org> +dwb-2012.10.28-r1.ebuild,
+  +files/dwb-2012.10.28-search-engine.patch:
+  Revision bump. Apply fix for search engine adding issue (bug #440692 by John
+  Brendler).
+
+  28 Oct 2012; Tim Harder <radhermit@gentoo.org> dwb-2012.10.28.ebuild:
+  LDFLAGS are now respected.
+
+*dwb-2012.10.28 (28 Oct 2012)
+
+  28 Oct 2012; Tim Harder <radhermit@gentoo.org> +dwb-2012.10.28.ebuild,
+  +files/dwb-2012.10.28-verbose-build.patch:
+  Version bump.
+
+*dwb-2012.08.22 (26 Aug 2012)
+
+  26 Aug 2012; Tim Harder <radhermit@gentoo.org> +dwb-2012.08.22.ebuild:
+  Version bump. Respect LDFLAGS (bug #432676 by xmw).
+
+  19 Aug 2012; Anthony G. Basile <blueness@gentoo.org> dwb-2012.05.11.ebuild:
+  Keyword ~ppc, bug #431822
+
+  10 Jun 2012; Tim Harder <radhermit@gentoo.org> -dwb-2012.02.01.ebuild:
+  Remove old.
+
+*dwb-2012.05.11 (12 May 2012)
+
+  12 May 2012; Tim Harder <radhermit@gentoo.org> +dwb-2012.05.11.ebuild:
+  Version bump.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> dwb-2012.02.01.ebuild,
+  dwb-9999.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  17 Apr 2012; Michał Górny <mgorny@gentoo.org> dwb-2012.02.01.ebuild:
+  Use mirror://bitbucket.
+
+*dwb-9999 (18 Feb 2012)
+*dwb-2012.02.01 (18 Feb 2012)
+
+  18 Feb 2012; Tim Harder <radhermit@gentoo.org> +dwb-2012.02.01.ebuild,
+  +dwb-9999.ebuild, +metadata.xml:
+  Initial import. Ebuild by me.

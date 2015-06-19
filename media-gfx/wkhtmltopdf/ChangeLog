@@ -1,0 +1,40 @@
+# ChangeLog for media-gfx/wkhtmltopdf
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/wkhtmltopdf/ChangeLog,v 1.8 2015/03/21 21:28:18 radhermit Exp $
+
+  21 Mar 2015; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Add to graphics herd and drop myself as maintainer.
+
+  28 Feb 2015; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Update upstream metadata to github.
+
+  20 Jan 2015; Tim Harder <radhermit@gentoo.org>
+  -wkhtmltopdf-0.10.0_rc2.ebuild, -wkhtmltopdf-0.11.0_rc1.ebuild:
+  Remove old.
+
+*wkhtmltopdf-0.12.2.1 (20 Jan 2015)
+
+  20 Jan 2015; Tim Harder <radhermit@gentoo.org> +wkhtmltopdf-0.12.2.1.ebuild:
+  Version bump.
+
+*wkhtmltopdf-0.12.1.2 (27 Nov 2014)
+
+  27 Nov 2014; Tim Harder <radhermit@gentoo.org> +wkhtmltopdf-0.12.1.2.ebuild,
+  +files/wkhtmltopdf-0.12.1.2-manpages.patch:
+  Version bump (bug #513164).
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org>
+  wkhtmltopdf-0.10.0_rc2.ebuild, wkhtmltopdf-0.11.0_rc1.ebuild:
+  Move Qt dependencies to the new category
+
+*wkhtmltopdf-0.11.0_rc1 (03 Nov 2011)
+
+  03 Nov 2011; Tim Harder <radhermit@gentoo.org>
+  +wkhtmltopdf-0.11.0_rc1.ebuild:
+  Version bump.
+
+*wkhtmltopdf-0.10.0_rc2 (05 Jul 2011)
+
+  05 Jul 2011; Tim Harder <radhermit@gentoo.org>
+  +wkhtmltopdf-0.10.0_rc2.ebuild, +metadata.xml:
+  Initial import.

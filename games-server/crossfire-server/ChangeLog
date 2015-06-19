@@ -1,0 +1,155 @@
+# ChangeLog for games-server/crossfire-server
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-server/crossfire-server/ChangeLog,v 1.35 2015/03/25 13:52:21 ago Exp $
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> crossfire-server-1.71.0.ebuild:
+  Stable for x86, wrt bug #543986
+
+  24 Mar 2015; Agostino Sarubbo <ago@gentoo.org> crossfire-server-1.71.0.ebuild:
+  Stable for amd64, wrt bug #543986
+
+  19 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  crossfire-server-1.71.0.ebuild:
+  no need for static plug-ins (bug #457514)
+
+*crossfire-server-1.71.0 (19 Feb 2015)
+
+  19 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +crossfire-server-1.71.0.ebuild:
+  version bump
+
+  28 Aug 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  -crossfire-server-1.60.0.ebuild, -files/crossfire-server-1.60.0-curl.patch:
+  old
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> crossfire-server-1.70.0.ebuild:
+  Stable for ppc, wrt bug #457118
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> crossfire-server-1.70.0.ebuild:
+  Stable for x86, wrt bug #457118
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> crossfire-server-1.70.0.ebuild:
+  Stable for amd64, wrt bug #457118
+
+*crossfire-server-1.70.0 (10 Jan 2013)
+
+  10 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  +crossfire-server-1.70.0.ebuild, -files/crossfire-server-1.11.0-curl.patch,
+  -files/crossfire-server-1.11.0-libpng15.patch:
+  version bump (bug #410219)
+
+  30 May 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  -crossfire-server-1.11.0.ebuild:
+  old
+
+  29 May 2012; Brent Baude <ranger@gentoo.org> crossfire-server-1.60.0.ebuild:
+  Marking crossfire-server-1.60.0 ppc for bug 412669
+
+  21 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  crossfire-server-1.60.0.ebuild:
+  x86 stable wrt bug #412669
+
+  05 May 2012; Mike Frysinger <vapier@gentoo.org>
+  crossfire-server-1.60.0.ebuild:
+  Drop unused autotools.eclass inherit.
+
+  26 Apr 2012; Agostino Sarubbo <ago@gentoo.org>
+  crossfire-server-1.60.0.ebuild:
+  Stable for amd64, wrt bug #412669
+
+  23 Apr 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  crossfire-server-1.60.0.ebuild:
+  restrict tests since they try to read the installed location for datafiles
+  (bug #413109)
+
+*crossfire-server-1.60.0 (12 Mar 2012)
+
+  12 Mar 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  +crossfire-server-1.60.0.ebuild, +files/crossfire-server-1.60.0-curl.patch:
+  version bump
+
+  10 Oct 2011; Tupone Alfredo <tupone@gentoo.org>
+  crossfire-server-1.11.0.ebuild, +files/crossfire-server-1.11.0-curl.patch:
+  Build with newer net-misc/curl. Bug #383217 by Diego Elio Pettenò
+
+  21 Feb 2011; Tupone Alfredo <tupone@gentoo.org>
+  crossfire-server-1.11.0.ebuild,
+  +files/crossfire-server-1.11.0-libpng15.patch:
+  Fix build with media-libs/libpng-1.5 Bug #355123 by Lars Wendler
+
+  24 Mar 2010; Brent Baude <ranger@gentoo.org>
+  crossfire-server-1.11.0.ebuild:
+  stable ppc, bug 302840
+
+  23 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  crossfire-server-1.11.0.ebuild:
+  stable x86, bug 302840
+
+  30 Jan 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  crossfire-server-1.11.0.ebuild:
+  Skip install of combine.pl (bug #236205)
+
+  31 Dec 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  crossfire-server-1.11.0.ebuild:
+  EAPI=2; fix parallel build
+
+*crossfire-server-1.11.0 (11 Feb 2008)
+
+  11 Feb 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +crossfire-server-1.11.0.ebuild:
+  version bump
+
+*crossfire-server-1.10.0 (25 Aug 2007)
+
+  25 Aug 2007; Tupone Alfredo <tupone@gentoo.org>
+  +crossfire-server-1.10.0.ebuild:
+  Version bumped to 1.10.0. bug #179705 by Epicanis.
+  Keyword ~amd64 added
+
+  06 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  crossfire-server-1.9.0.ebuild:
+  Remove old virtual/x11 dependency.
+
+*crossfire-server-1.9.1 (16 Sep 2006)
+
+  16 Sep 2006; <tupone@gentoo.org> +crossfire-server-1.9.1.ebuild:
+  Version bumped. Bug #139574 by Eddward
+
+  16 Apr 2006; Michael Hanselmann <hansmi@gentoo.org>
+  crossfire-server-1.9.0.ebuild:
+  Stable on ppc.
+
+  28 Mar 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  crossfire-server-1.9.0.ebuild:
+  stable for x86
+
+*crossfire-server-1.9.0 (02 Mar 2006)
+
+  02 Mar 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  +crossfire-server-1.9.0.ebuild:
+  version bump
+
+  24 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  crossfire-server-1.6.0.ebuild, crossfire-server-1.8.0.ebuild:
+  Added modular X dependencies and closing bug #120077.
+
+*crossfire-server-1.8.0 (19 Oct 2005)
+
+  19 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +crossfire-server-1.8.0.ebuild:
+  version bump (bug #104626)
+
+*crossfire-server-1.7.0 (26 Jul 2005)
+
+  26 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +crossfire-server-1.7.0.ebuild:
+  Version bumped to version 1.7.0 and closing bug #84120.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  crossfire-server-1.6.0.ebuild:
+  virtual/glibc -> virtual/libc
+
+*crossfire-server-1.6.0 (30 May 2004)
+
+  30 May 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me for #36507 by Clemens Schwaighofer.

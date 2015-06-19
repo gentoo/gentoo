@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst prepare unpack
+DEPEND=dev-vcs/git
+DESCRIPTION=quilt patch manager
+EAPI=5
+HOMEPAGE=http://savannah.nongnu.org/projects/quilt
+IUSE=graphviz
+LICENSE=GPL-2
+RDEPEND=dev-util/diffstat mail-mta/sendmail sys-apps/ed >=sys-apps/coreutils-8.5 graphviz? ( media-gfx/graphviz )
+SLOT=0
+_eclasses_=bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d98d94c41805e5c677d802abf378679f

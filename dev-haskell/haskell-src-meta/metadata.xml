@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		The translation from haskell-src-exts abstract syntax
+		to template-haskell abstract syntax isn&#39;t 100% complete yet.
+	</longdescription>
+</pkgmetadata>

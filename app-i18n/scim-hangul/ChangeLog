@@ -1,0 +1,149 @@
+# ChangeLog for app-i18n/scim-hangul
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-hangul/ChangeLog,v 1.35 2015/06/09 11:30:52 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  05 Apr 2013; Naohiro Aota <naota@gentoo.org>
+  +files/scim-hangul-0.4.0+gtk.patch, scim-hangul-0.4.0.ebuild:
+  Add patch to support >=gtk-2.24.0. #460714
+
+*scim-hangul-0.4.0 (04 Mar 2013)
+
+  04 Mar 2013; Naohiro Aota <naota@gentoo.org> +scim-hangul-0.4.0.ebuild:
+  version bump
+
+  30 Jun 2012; Naohiro Aota <naota@gentoo.org>
+  +files/scim-hangul-0.3.2+gcc-4.7.patch, scim-hangul-0.3.2.ebuild:
+  Add patch to include unistd.h #423943
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> scim-hangul-0.3.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org> scim-hangul-0.3.2.ebuild:
+  Drop alpha keywords
+
+  21 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  scim-hangul-0.3.2.ebuild:
+  Remove KDE3 support.
+
+  16 Nov 2008; MATSUU Takuto <matsuu@gentoo.org> -scim-hangul-0.2.2.ebuild,
+  -scim-hangul-0.3.1.ebuild:
+  Removed old versions.
+
+  15 Nov 2008; Raúl Porcel <armin76@gentoo.org> scim-hangul-0.3.2.ebuild:
+  alpha/x86 stable wrt #245178
+
+  13 Nov 2008; Jeremy Olexa <darkside@gentoo.org> scim-hangul-0.3.2.ebuild:
+  amd64 stable, bug 245178
+
+  08 Nov 2008; nixnut <nixnut@gentoo.org> scim-hangul-0.3.2.ebuild:
+  Stable on ppc wrt bug 245178
+
+  09 Jun 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +files/scim-hangul-0.3.2+gcc-4.3.patch, scim-hangul-0.3.2.ebuild:
+  Add patch to build with GCC 4.3. Thanks to Steve Warren in bug #222557.
+
+*scim-hangul-0.3.2 (31 Dec 2007)
+
+  31 Dec 2007; MATSUU Takuto <matsuu@gentoo.org> +scim-hangul-0.3.2.ebuild:
+  Version bumped.
+
+  22 Sep 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  scim-hangul-0.3.1.ebuild:
+  Marked stable on amd64 as per bug 188190.
+
+  01 Sep 2007; nixnut <nixnut@gentoo.org> scim-hangul-0.3.1.ebuild:
+  Added ~ppc wrt bug 188190
+
+  24 Aug 2007; Raúl Porcel <armin76@gentoo.org> scim-hangul-0.3.1.ebuild:
+  alpha stable wrt #188190
+
+  17 Aug 2007; Christian Faulhammer <opfer@gentoo.org>
+  scim-hangul-0.3.1.ebuild:
+  stable x86, bug 188190
+
+  18 Feb 2007; MATSUU Takuto <matsuu@gentoo.org> -scim-hangul-0.1.2.ebuild,
+  -scim-hangul-0.2.1.ebuild, -scim-hangul-0.3.0.ebuild:
+  Removed old versions.
+
+  26 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  scim-hangul-0.2.2.ebuild, scim-hangul-0.3.1.ebuild:
+  Stable on Alpha.
+
+*scim-hangul-0.3.1 (15 Jan 2007)
+
+  15 Jan 2007; MATSUU Takuto <matsuu@gentoo.org> +scim-hangul-0.3.1.ebuild:
+  Version bumped, bug #162174.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  scim-hangul-0.1.2.ebuild, scim-hangul-0.2.1.ebuild,
+  scim-hangul-0.2.2.ebuild, scim-hangul-0.3.0.ebuild:
+  Convert to use elog.
+
+  23 Nov 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  scim-hangul-0.2.2.ebuild:
+  ppc stable, bug #153994
+
+  23 Nov 2006; <blubb@gentoo.org> scim-hangul-0.2.2.ebuild:
+  stable on amd64
+
+  05 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  scim-hangul-0.2.2.ebuild:
+  stabled x86, bug #153994
+
+*scim-hangul-0.3.0 (04 Nov 2006)
+
+  04 Nov 2006; MATSUU Takuto <matsuu@gentoo.org> +scim-hangul-0.3.0.ebuild:
+  Version bumped.
+  Removed ~alpha and ~ppc for dependency.
+
+*scim-hangul-0.2.2 (03 Jun 2006)
+
+  03 Jun 2006; MATSUU Takuto <matsuu@gentoo.org> +scim-hangul-0.2.2.ebuild:
+  Version bumped, Bug 133912.
+  Added to ~amd64.
+
+*scim-hangul-0.2.1 (06 Nov 2005)
+
+  06 Nov 2005; MATSUU Takuto <matsuu@gentoo.org> +scim-hangul-0.2.1.ebuild:
+  Version bumped.
+  Fixed HOMEPAGE and SRC_URI.
+
+  27 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> -scim-hangul-0.1.0.ebuild,
+  -scim-hangul-0.1.1.ebuild, scim-hangul-0.1.2.ebuild:
+  Marked 0.1.2 stable on x86, alpha and ppc. Removed old ebuilds.
+
+*scim-hangul-0.1.2 (30 Aug 2004)
+
+  30 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> scim-hangul-0.1.0.ebuild,
+  +scim-hangul-0.1.2.ebuild:
+  Version bumped. Marked 0.1.0 stable on x86.
+
+*scim-hangul-0.1.1 (23 Aug 2004)
+
+  23 Aug 2004; Mamoru KOMACHI <usata@gentoo.org>
+  -files/scim-hangul-0.0.3-gentoo.patch, -scim-hangul-0.0.2.ebuild,
+  -scim-hangul-0.0.3.ebuild, +scim-hangul-0.1.1.ebuild:
+  Version bumped. Removed old unstable versions.
+
+*scim-hangul-0.1.0 (17 Aug 2004)
+
+  17 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> +scim-hangul-0.1.0.ebuild:
+  Version bumped.
+
+*scim-hangul-0.0.3 (14 Aug 2004)
+
+  14 Aug 2004; Mamoru KOMACHI <usata@gentoo.org>
+  +files/scim-hangul-0.0.3-gentoo.patch, +scim-hangul-0.0.3.ebuild:
+  Version bumped.
+
+  04 Aug 2004; David Holm <dholm@gentoo.org> scim-hangul-0.0.2.ebuild:
+  Added to ~ppc.
+
+*scim-hangul-0.0.2 (03 Aug 2004)
+
+  03 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +scim-hangul-0.0.2.ebuild:
+  Initial import.

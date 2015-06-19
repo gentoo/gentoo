@@ -1,0 +1,63 @@
+# ChangeLog for app-vim/nerdcommenter
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/nerdcommenter/ChangeLog,v 1.13 2014/08/10 18:39:27 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  nerdcommenter-2.3.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  30 Nov 2013; Johannes Huber <johu@gentoo.org> nerdcommenter-2.3.0.ebuild:
+  x86 stable wrt bug #481842
+
+  05 Nov 2013; Tony Vroon <chainsaw@gentoo.org> nerdcommenter-2.3.0.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #481842.
+
+  14 May 2013; Tim Harder <radhermit@gentoo.org> -nerdcommenter-2.2.2.ebuild:
+  Remove old.
+
+*nerdcommenter-2.3.0 (09 Dec 2010)
+
+  09 Dec 2010; Tim Harder <radhermit@gentoo.org> -nerdcommenter-2.1.18.ebuild,
+  +nerdcommenter-2.3.0.ebuild:
+  Version bump and drop old.
+
+*nerdcommenter-2.2.2 (03 Jun 2010)
+
+  03 Jun 2010; Dror Levin <spatz@gentoo.org> +nerdcommenter-2.2.2.ebuild:
+  Version bump, bug 254493.
+
+  17 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  nerdcommenter-2.1.18.ebuild:
+  QA: add prefix keywords
+
+*nerdcommenter-2.1.18 (21 Sep 2008)
+
+  21 Sep 2008; Ali Polatel <hawking@gentoo.org> -nerdcommenter-2.1.3.ebuild,
+  -nerdcommenter-2.1.6.ebuild, -nerdcommenter-2.1.11.ebuild,
+  +nerdcommenter-2.1.18.ebuild:
+  Version bump. Drop old.
+
+*nerdcommenter-2.1.11 (21 Mar 2008)
+
+  21 Mar 2008; Ali Polatel <hawking@gentoo.org>
+  +nerdcommenter-2.1.11.ebuild:
+  Version bump.
+
+  25 Jan 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  nerdcommenter-2.1.6.ebuild:
+  Keyworded ~amd64 as per bug 201804.
+
+*nerdcommenter-2.1.6 (29 Nov 2007)
+
+  29 Nov 2007; Ali Polatel <hawking@gentoo.org> +nerdcommenter-2.1.6.ebuild:
+  Version bump
+
+  07 Sep 2007; Ali Polatel <hawking@gentoo.org> nerdcommenter-2.1.3.ebuild:
+  corrected license s/as-is/public-domain/
+
+*nerdcommenter-2.1.3 (07 Sep 2007)
+
+  07 Sep 2007; Ali Polatel <hawking@gentoo.org> +metadata.xml,
+  +nerdcommenter-2.1.3.ebuild:
+  initial commit

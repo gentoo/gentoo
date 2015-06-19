@@ -1,0 +1,15 @@
+diff -u -r openntpd-5.7p1-orig/ntpd.conf openntpd-5.7p1/ntpd.conf
+--- openntpd-5.7p1-orig/ntpd.conf	2015-01-01 21:00:03.000000000 -0800
++++ openntpd-5.7p1/ntpd.conf	2015-01-09 18:59:46.404092984 -0800
+@@ -8,4 +8,10 @@
+ 
+ # use a random selection of NTP Pool Time Servers
+ # see http://support.ntp.org/bin/view/Servers/NTPPoolServers
+-servers pool.ntp.org
++#servers pool.ntp.org
++
++# Choose servers announced from Gentoo NTP Pool
++servers 0.gentoo.pool.ntp.org
++servers 1.gentoo.pool.ntp.org
++servers 2.gentoo.pool.ntp.org
++servers 3.gentoo.pool.ntp.org

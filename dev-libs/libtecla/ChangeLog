@@ -1,0 +1,113 @@
+# ChangeLog for dev-libs/libtecla
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libtecla/ChangeLog,v 1.25 2014/07/25 04:56:28 zerochaos Exp $
+
+  25 Jul 2014; Rick Farina <zerochaos@gentoo.org> libtecla-1.6.1-r2.ebuild,
+  libtecla-1.6.2.ebuild:
+  adding ~arm
+
+  14 Dec 2012; Ulrich Müller <ulm@gentoo.org> libtecla-1.6.1-r2.ebuild,
+  libtecla-1.6.2.ebuild:
+  Fix LICENSE, icu according to LICENSE.TERMS file.
+
+*libtecla-1.6.2 (09 Aug 2012)
+
+  09 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> +libtecla-1.6.2.ebuild,
+  metadata.xml:
+  Version bump
+
+  05 Aug 2012; Justin Lecher <jlec@gentoo.org> -libtecla-1.6.1.ebuild,
+  -libtecla-1.6.1-r1.ebuild:
+  Drop old
+
+  04 Aug 2012; Anthony G. Basile <blueness@gentoo.org>
+  libtecla-1.6.1-r2.ebuild:
+  Stable ppc, bug #422033
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> libtecla-1.6.1-r2.ebuild:
+  Stable for amd64, wrt bug #422033
+
+  03 Aug 2012; Jeff Horelick <jdhore@gentoo.org> libtecla-1.6.1-r2.ebuild:
+  marked x86 per bug 422033
+
+*libtecla-1.6.1-r2 (08 May 2012)
+
+  08 May 2012; Justin Lecher <jlec@gentoo.org> +libtecla-1.6.1-r2.ebuild,
+  +files/libtecla-1.6.1-LDFLAGS2.patch,
+  +files/libtecla-1.6.1-parallel_build2.patch,
+  +files/libtecla-1.6.1-prll-install.patch, metadata.xml:
+  Move to EAPI=4, respect LDFLAGS, #334641; fix parallel install, #377987
+
+*libtecla-1.6.1-r1 (14 Oct 2010)
+
+  14 Oct 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  -libtecla-1.6.0-r1.ebuild, libtecla-1.6.1.ebuild,
+  +libtecla-1.6.1-r1.ebuild, +files/libtecla-1.6.1-ldflags.patch,
+  +files/libtecla-1.6.1-parallel_build.patch:
+  Respect LDFLAGS wrt bug 334641. Thanks to Diego for the report. Fix
+  parallel build, add missing dies and explicit RDEPEND. Drop old.
+
+  18 Jul 2010; <nixnut@gentoo.org> libtecla-1.6.1.ebuild:
+  ppc stable #325201
+
+  10 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  libtecla-1.6.1.ebuild:
+  stable x86, bug 325201
+
+  24 Jun 2010; Pacho Ramos <pacho@gentoo.org> libtecla-1.6.1.ebuild:
+  stable amd64, bug 325201
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> libtecla-1.6.0-r1.ebuild,
+  libtecla-1.6.1.ebuild:
+  Remove virtual/libc
+
+  17 Nov 2008; Markus Dittrich <markusle@gentoo.org> libtecla-1.6.1.ebuild:
+  Added -j1 to emake install as a temporary fix for parallel install
+  problems (see bug #247046).
+
+  07 Oct 2008; Markus Dittrich <markusle@gentoo.org>
+  +files/libtecla-1.6.1-LDFLAGS.patch, +files/libtecla-1.6.1-no-strip.patch,
+  libtecla-1.6.1.ebuild:
+  Added patches to prevent stripping of binaries and repect LDFLAGS 
+  (see bug #239877).
+
+  03 Jun 2008; Markus Dittrich <markusle@gentoo.org>
+  +files/libtecla-1.6.1-install.patch, libtecla-1.6.0-r1.ebuild,
+  libtecla-1.6.1.ebuild:
+  Cleaned up ebuild and fixes QA issues. Added amd64 keyword.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  02 Apr 2006; Olivier Fisette <ribosome@gentoo.org> -libtecla-1.6.0.ebuild:
+  Removed vulnerable version (insecure RUNPATHs, see bug #119477).
+
+  20 Jan 2006; Joshua Jackson <tsunam@gentoo.org> libtecla-1.6.0-r1.ebuild:
+  Stable on x86 to fix security bug #119477
+
+*libtecla-1.6.1 (20 Jan 2006)
+
+  20 Jan 2006; Markus Dittrich <markusle@gentoo.org> +libtecla-1.6.1.ebuild:
+  Revision bump to latest release.
+
+*libtecla-1.6.0-r1 (20 Jan 2006)
+
+  20 Jan 2006; Markus Dittrich <markusle@gentoo.org>
+  +libtecla-1.6.0-r1.ebuild:
+  Applied small patch to ebuild to get rid of insecure RUNPATHs in 
+  enhance. This fixes bug #119477.
+
+  28 Aug 2004; David Holm <dholm@gentoo.org> libtecla-1.6.0.ebuild:
+  Added to ~ppc.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libtecla-1.6.0.ebuild:
+  virtual/glibc -> virtual/libc
+
+*libtecla-1.6.0 (27 May 2004)
+
+  27 May 2004; Patrick Kursawe <phosphan@gentoo.org> libtecla-1.6.0.ebuild,
+  metadata.xml:
+  Initial import, by Peter Simons <simons+gentoo@cryp.to> and 
+  olivier.fisette@sympatico.ca, slightly modified by me
+  See bug #39393

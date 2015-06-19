@@ -1,0 +1,9 @@
+# ChangeLog for dev-perl/POE-Component-Resolver
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/POE-Component-Resolver/ChangeLog,v 1.1 2014/12/12 22:12:10 dilfridge Exp $
+
+*POE-Component-Resolver-0.921.0 (12 Dec 2014)
+
+  12 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +POE-Component-Resolver-0.921.0.ebuild, +metadata.xml:
+  New package, imported from Perl overlay, bug 311009

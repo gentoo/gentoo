@@ -1,0 +1,55 @@
+# ChangeLog for sys-fs/ocfs2-tools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/ocfs2-tools/ChangeLog,v 1.16 2015/04/07 16:37:33 ultrabug Exp $
+
+*ocfs2-tools-1.8.2-r1 (07 Apr 2015)
+
+  07 Apr 2015; Ultrabug <ultrabug@gentoo.org> -ocfs2-tools-1.6.4.ebuild,
+  -ocfs2-tools-1.6.4-r1.ebuild, -ocfs2-tools-1.8.2.ebuild,
+  +ocfs2-tools-1.8.2-r1.ebuild:
+  drop old, fix ncurses detection and drop old pacemaker dependency
+
+  04 Feb 2015; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Drop maintainer-needed as there is a herd.
+
+  14 Apr 2014; Alexey Shvetsov <alexxy@gentoo.org> metadata.xml:
+  Set maintainer to maintainer-needed
+
+  29 May 2012; Kacper Kowalik <xarthisius@gentoo.org> ocfs2-tools-1.6.4.ebuild,
+  ocfs2-tools-1.8.2.ebuild:
+  Add missing dependency on dev-libs/libaio wrt #417455. Thanks to victor
+  romanchuk <rom@persimplex.net> and László Szalma <dblaci@dblaci.hu> for the
+  report and confirmation respectively
+
+  24 May 2012; Mike Frysinger <vapier@gentoo.org> ocfs2-tools-1.6.4-r1.ebuild:
+  Inherit eutils for epatch.
+
+  21 May 2012; Kacper Kowalik <xarthisius@gentoo.org> ocfs2-tools-1.8.2.ebuild:
+  Add missing inheritance of eutils.eclass
+
+  05 May 2012; Alexey Shvetsov <alexxy@gentoo.org> ocfs2-tools-1.8.2.ebuild:
+  [sys-fs/ocfs2-tools] Ohh git genearted snapshots may have different
+  checksumms. So mirror it in my devspace
+
+*ocfs2-tools-1.8.2 (05 May 2012)
+
+  05 May 2012; Alexey Shvetsov <alexxy@gentoo.org> +ocfs2-tools-1.8.2.ebuild:
+  [sys-fs/ocfs2-tools] Version bump. Since 1.6.4 doesnt work with ocfs in 3.3+
+  kernels
+
+  05 May 2012; Alexey Shvetsov <alexxy@gentoo.org>
+  +files/ocfs2-tools-recent-kernels.patch, ocfs2-tools-1.6.4-r1.ebuild,
+  ocfs2-tools-1.6.4.ebuild:
+  [sys-fs/ocfs2-tools] Fix building with recent kernels
+
+*ocfs2-tools-1.6.4-r1 (21 Feb 2012)
+
+  21 Feb 2012; Ultrabug <ultrabug@gentoo.org> +ocfs2-tools-1.6.4-r1.ebuild,
+  +files/ocfs2-tools-1.6.4-asneeded.patch:
+  EAPI4, updated RDEPEND, fix build wrt #399077
+
+*ocfs2-tools-1.6.4 (31 Aug 2011)
+
+  31 Aug 2011; Alexey Shvetsov <alexxy@gentoo.org> +files/ocfs2.confd,
+  +ocfs2-tools-1.6.4.ebuild, +files/ocfs2.initd, +metadata.xml:
+  reimport to tree

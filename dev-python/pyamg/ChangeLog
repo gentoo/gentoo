@@ -1,0 +1,66 @@
+# ChangeLog for dev-python/pyamg
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyamg/ChangeLog,v 1.14 2015/05/17 15:33:40 mrueg Exp $
+
+  17 May 2015; Manuel Rüger <mrueg@gentoo.org> pyamg-2.1.0.ebuild:
+  Fix unquoted variable.
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pyamg-2.1.0.ebuild:
+  Drop old Python implementations
+
+  26 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -pyamg-2.0.5.ebuild:
+  Remove old.
+
+*pyamg-2.1.0 (17 Sep 2013)
+
+  17 Sep 2013; Sébastien Fabbro <bicatali@gentoo.org> +pyamg-2.1.0.ebuild,
+  -pyamg-2.0.4.ebuild, metadata.xml:
+  Version bump
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> pyamg-2.0.5.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*pyamg-2.0.5 (07 Feb 2013)
+
+  07 Feb 2013; Justin Lecher <jlec@gentoo.org> +pyamg-2.0.5.ebuild,
+  metadata.xml:
+  Version Bump; move to new python eclasses
+
+  19 Dec 2012; Sébastien Fabbro <bicatali@gentoo.org> -pyamg-2.0.0.ebuild,
+  metadata.xml, pyamg-2.0.4.ebuild:
+  Keyword amd64-linux and x86-linux
+
+  14 Aug 2012; Justin Lecher <jlec@gentoo.org> pyamg-2.0.4.ebuild,
+  +files/pyamg-2.0.4-gcc-4.7.patch:
+  Back port upstream commit 850 to fix compilation with gcc-4.7, #431112
+
+*pyamg-2.0.4 (23 Apr 2012)
+
+  23 Apr 2012; Sébastien Fabbro <bicatali@gentoo.org> +pyamg-2.0.4.ebuild:
+  Version bump
+
+  23 Feb 2012; Patrick Lauer <patrick@gentoo.org> pyamg-2.0.0.ebuild:
+  Restricting python
+
+  08 Aug 2011; Markos Chandras <hwoarang@gentoo.org> pyamg-2.0.0.ebuild:
+  Fix dependencies. Patch by Arfrever.
+
+  06 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/2.0.0-stencil.patch, pyamg-2.0.0.ebuild:
+  upstream patch for newer numpy, bug #376597
+
+  26 Jul 2011; Sébastien Fabbro <bicatali@gentoo.org> +pyamg-2.0.0.ebuild,
+  +metadata.xml:
+  Initial import to the main tree. Fixed tests, added doc.
+
+*pyamg-2.0.0 (21 Mar 2011)
+
+  21 Mar 2011; Nico Schlömer <nico.schloemer@gmail.com>
+  +pyamg-2.0.0.ebuild:
+  bumped to 2.0.0
+
+*pyamg-1.0.0 (13 Dec 2010)
+
+  13 December 2010; Nico Schlömer <nico.schloemer@gmail.com>
+  +metadata.xml, +pyamg-1.0.0.ebuild:
+  Initial import.

@@ -1,0 +1,36 @@
+commit d8ab7f31dd819f7b3e0d460a2fa4261aaae87b98
+Author: Anthoine Bourgeois <anthoine.bourgeois@gmail.com>
+Date:   Wed Apr 9 12:18:32 2014 +0200
+
+    avcodec/dirac_arith: Fix build with PIC and stack-check options
+    
+    Fixes Ticket3540
+    
+    The function dirac_get_arith_bit in libavcodec/dirac_arith.h can't be
+    built with PIC and check-stack because the asm code needs 6 registers
+    and PIC and check-stack options take 1 each and x86 is quite limited
+    in this area.
+    
+    Signed-off-by: Michael Niedermayer <michaelni@gmx.at>
+
+diff --git a/libavcodec/dirac_arith.h b/libavcodec/dirac_arith.h
+index f9a8bba..089c71a 100644
+--- a/libavcodec/dirac_arith.h
++++ b/libavcodec/dirac_arith.h
+@@ -28,6 +28,7 @@
+ #ifndef AVCODEC_DIRAC_ARITH_H
+ #define AVCODEC_DIRAC_ARITH_H
+ 
++#include "libavutil/x86/asm.h"
+ #include "bytestream.h"
+ #include "get_bits.h"
+ 
+@@ -134,7 +135,7 @@ static inline int dirac_get_arith_bit(DiracArith *c, int ctx)
+ 
+     range_times_prob = (c->range * prob_zero) >> 16;
+ 
+-#if HAVE_FAST_CMOV && HAVE_INLINE_ASM
++#if HAVE_FAST_CMOV && HAVE_INLINE_ASM && HAVE_6REGS
+     low   -= range_times_prob << 16;
+     range -= range_times_prob;
+     bit = 0;

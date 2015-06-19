@@ -1,0 +1,13 @@
+# ChangeLog for dev-java/jsr93
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jsr93/ChangeLog,v 1.2 2007/08/11 21:46:30 nelchael Exp $
+
+  11 Aug 2007; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml:
+  Remove myself from <maintainer>.
+
+*jsr93-1.0 (01 May 2007)
+
+  01 May 2007; Krzysiek Pawlik <nelchael@gentoo.org> +files/build.xml-1.0,
+  +metadata.xml, +jsr93-1.0.ebuild:
+  Initial commit of jsr93.
+

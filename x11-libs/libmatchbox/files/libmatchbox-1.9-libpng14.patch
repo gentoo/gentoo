@@ -1,0 +1,13 @@
+http://projects.archlinux.org/svntogit/community.git/tree/libmatchbox/trunk/PKGBUILD?id=43f68b59fb790eb685d18a2f189c7e3055c77b30
+
+--- libmb/mbpixbuf.c
++++ libmb/mbpixbuf.c
+@@ -228,7 +228,7 @@
+   if ((fd = fopen( file, "rb" )) == NULL) return NULL;
+ 
+   fread( header, 1, 8, fd );
+-  if ( ! png_check_sig( header, 8 ) ) 
++  if ( ! png_sig_cmp( header, 0, 8 ) == 0 ) 
+     {
+       fclose(fd);
+       return NULL;

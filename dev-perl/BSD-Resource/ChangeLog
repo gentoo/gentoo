@@ -1,0 +1,215 @@
+# ChangeLog for dev-perl/BSD-Resource
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/BSD-Resource/ChangeLog,v 1.47 2013/12/25 17:40:09 zlogene Exp $
+
+  25 Dec 2013; Mikle Kolyada <zlogene@gentoo.org>
+  -BSD-Resource-1.290.400.ebuild, BSD-Resource-1.290.700-r1.ebuild:
+  ia64 stable wrt bug #492076; Drop old.
+
+  25 Dec 2013; Mikle Kolyada <zlogene@gentoo.org>
+  BSD-Resource-1.290.700-r1.ebuild:
+  alpha stable wrt bug #492076
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org>
+  BSD-Resource-1.290.700-r1.ebuild:
+  Stable for x86, wrt bug #492076
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org>
+  BSD-Resource-1.290.700-r1.ebuild:
+  Stable for sparc, wrt bug #492076
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org> BSD-Resource-1.290.700-r1.ebuild:
+  amd64 stable, bug #492076
+
+*BSD-Resource-1.290.700-r1 (04 Sep 2013)
+
+  04 Sep 2013; Ian Delaney <idella4@gentoo.org>
+  +BSD-Resource-1.290.700-r1.ebuild, -BSD-Resource-1.290.700.ebuild:
+  rebump -> EAPI 5, remove old
+
+*BSD-Resource-1.290.700 (25 Aug 2013)
+
+  25 Aug 2013; Patrick Lauer <patrick@gentoo.org>
+  +BSD-Resource-1.290.700.ebuild:
+  Bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*BSD-Resource-1.290.400 (14 Jan 2011)
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -BSD-Resource-1.28.ebuild,
+  -BSD-Resource-1.29.03.ebuild, -BSD-Resource-1.29.04.ebuild,
+  +BSD-Resource-1.290.400.ebuild:
+  Convert ebuild version. Cleanup
+
+  13 Nov 2010; Raúl Porcel <armin76@gentoo.org>
+  BSD-Resource-1.29.04.ebuild:
+  alpha/ia64/sparc stable wrt #341865
+
+  05 Nov 2010; Markos Chandras <hwoarang@gentoo.org>
+  BSD-Resource-1.29.04.ebuild:
+  Stable on amd64 wrt bug #341865
+
+  04 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  BSD-Resource-1.29.04.ebuild:
+  x86 stable, bug 341865
+
+*BSD-Resource-1.29.04 (15 Mar 2010)
+
+  15 Mar 2010; Torsten Veller <tove@gentoo.org>
+  +BSD-Resource-1.29.04.ebuild:
+  Version bump
+
+  16 Aug 2009; Torsten Veller <tove@gentoo.org>
+  -files/portage_niceness.patch:
+  Remove unused patch
+
+  02 May 2009; Torsten Veller <tove@gentoo.org>
+  -BSD-Resource-1.29.02.ebuild:
+  Cleanup
+
+*BSD-Resource-1.29.03 (03 Apr 2009)
+
+  03 Apr 2009; Torsten Veller <tove@gentoo.org>
+  +BSD-Resource-1.29.03.ebuild:
+  Version bump
+
+  13 Mar 2009; Torsten Veller <tove@gentoo.org> -BSD-Resource-1.24.ebuild,
+  -BSD-Resource-1.29.01.ebuild:
+  Cleanup
+
+*BSD-Resource-1.29.02 (31 Dec 2008)
+
+  31 Dec 2008; Torsten Veller <tove@gentoo.org>
+  +BSD-Resource-1.29.02.ebuild:
+  Version bump
+
+*BSD-Resource-1.29.01 (08 Dec 2008)
+
+  08 Dec 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +BSD-Resource-1.29.01.ebuild:
+  Version bump.
+
+  29 Aug 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing agriffis from metadata due to his retirement (see #182294 for
+  reference).
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> BSD-Resource-1.28.ebuild:
+  Stable on x86, bug #169152.
+
+  14 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  BSD-Resource-1.24.ebuild, -BSD-Resource-1.25.ebuild,
+  -BSD-Resource-1.26.ebuild, BSD-Resource-1.28.ebuild:
+  Ebuild maintenance
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  BSD-Resource-1.28.ebuild:
+  Stable on Alpha.
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  BSD-Resource-1.28.ebuild:
+  Stable on ia64.
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  BSD-Resource-1.28.ebuild:
+  Marking stable amd64, sparc
+
+  04 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  BSD-Resource-1.24.ebuild, BSD-Resource-1.25.ebuild,
+  BSD-Resource-1.26.ebuild, BSD-Resource-1.28.ebuild:
+  Adding perl dep; fixed header; fixed DEPEND
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> BSD-Resource-1.25.ebuild:
+  Mark 1.25 stable on ia64
+
+*BSD-Resource-1.28 (23 Jun 2006)
+
+  23 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  +BSD-Resource-1.28.ebuild:
+  Version bump upstream
+
+  11 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  BSD-Resource-1.25.ebuild:
+  Marking stable sparc
+
+*BSD-Resource-1.26 (22 May 2006)
+
+  22 May 2006; <mcummings@gentoo.org> +BSD-Resource-1.26.ebuild:
+  Version bump
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-BSD-Resource-1.24, Manifest:
+  Fixing SHA256 digest, pass four
+
+*BSD-Resource-1.25 (24 Apr 2006)
+
+  24 Apr 2006; <mcummings@gentoo.org> +BSD-Resource-1.25.ebuild:
+  Version bump of BSD-Resource
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> BSD-Resource-1.24.ebuild:
+  Mark 1.24 stable on ia64
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> BSD-Resource-1.24.ebuild:
+  add ~ia64
+
+  24 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -BSD-Resource-1.23.ebuild:
+  cleaning
+
+  01 Apr 2005; Simon Stelling <blubb@gentoo.org> BSD-Resource-1.24.ebuild:
+  stable on amd64
+
+  06 Feb 2005; Michael Cummings <mcummings@gentoo.org>
+  +files/portage_niceness.patch, BSD-Resource-1.24.ebuild:
+  This update is to include a patch to deal with users employing the
+  PORTAGE_NICENESS variable. The getpriority tests that the module uses assume
+  that there is a priority of 0 for these tests - but if you've used niceness,
+  then that isn't the case and they will fail. Instead, we leave the old
+  values and adjust them to the niceness level if PORTAGE_NICENESS has been
+  set. Bug 79329.
+
+  22 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  BSD-Resource-1.24.ebuild:
+  Stable on sparc
+
+  22 Jan 2005; Bryan Østergaard <kloeri@gentoo.org>
+  BSD-Resource-1.24.ebuild:
+  Stable on alpha.
+
+  21 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  BSD-Resource-1.24.ebuild:
+  Unmasking for x86
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*BSD-Resource-1.24 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  BSD-Resource-1.24.ebuild:
+  new version on cpan
+
+  24 May 2004; Bryan Østergaard <kloeri@gentoo.org> BSD-Resource-1.23.ebuild:
+  Stable on alpha.
+
+  07 May 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  BSD-Resource-1.23.ebuild:
+  Stable on sparc
+
+*BSD-Resource-1.23 (24 Dec 2003)
+
+  24 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
+  BSD-Resource-1.23.ebuild:
+  No longer available on CPAN - removed
+
+*BSD-Resource-1.23 (24 Dec 2003)
+
+  24 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
+  BSD-Resource-1.23.ebuild:
+  New version on CPAN
+
+*BSD-Resource-1.22 (06 May 2003)
+
+  06 May 2003; Aron Griffis <agriffis@gentoo.org> BSD-Resource-1.22.ebuild:
+  New ebuild for Perl BSD::Resource module

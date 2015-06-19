@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/games-server/monopd/files/monopd.in,v 1.1 2014/12/16 23:22:35 mr_bones_ Exp $
+
+depend() {
+    use net
+}
+
+start() {
+    ebegin "Starting monopd server"
+    start-stop-daemon --start -q -b --exec GENTOO_DIR/monopd
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping monopd server"
+    start-stop-daemon --stop -q --exec GENTOO_DIR/monopd
+    eend $?
+}

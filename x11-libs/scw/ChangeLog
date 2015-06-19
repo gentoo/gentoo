@@ -1,0 +1,48 @@
+# ChangeLog for x11-libs/scw
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/scw/ChangeLog,v 1.11 2014/08/10 20:06:45 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> scw-0.4.7.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> scw-0.4.7.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  28 Mar 2011; Christoph Mende <angelos@gentoo.org> scw-0.4.7.ebuild:
+  Bump to EAPI3 and fixed gtk+ dep
+
+  30 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Andrej Kacian (Ticho) from metadata.xml (as per #59986). Assigning
+  to maintainer-needed.
+
+  18 May 2008; Samuli Suominen <drac@gentoo.org> scw-0.4.7.ebuild:
+  Move pkgconfig to DEPEND.
+
+  27 Dec 2007; Andrej Kacian <ticho@gentoo.org> -scw-0.4.3.ebuild,
+  scw-0.4.7.ebuild:
+  0.4.7 stable on x86. Removing 0.4.3.
+
+*scw-0.4.7 (06 Mar 2007)
+
+  06 Mar 2007; Andrej Kacian <ticho@gentoo.org> scw-0.4.3.ebuild,
+  -scw-0.4.4.ebuild, +scw-0.4.7.ebuild:
+  Version bump and HOMEPAGE+SRC_URI update. Closes bug #169606, by Priit Laes
+  <amd at store20.com>. Removed ebuild for 0.4.4.
+
+  26 Jun 2006; Andrej Kacian <ticho@gentoo.org> scw-0.4.3.ebuild:
+  Stable on x86.
+
+*scw-0.4.4 (09 Jun 2006)
+
+  09 Jun 2006; Andrej Kacian <ticho@gentoo.org> +scw-0.4.4.ebuild:
+  Version bump, and licence fix. Closes bug #136101, by Ali Sabil <hybrid at
+  tuxfamily.org>.
+
+  28 Apr 2006; Alec Warner <antarus@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+*scw-0.4.3 (10 Apr 2006)
+
+  10 Apr 2006; Andrej Kacian <ticho@gentoo.org> +metadata.xml,
+  +scw-0.4.3.ebuild:
+  Initial commit.

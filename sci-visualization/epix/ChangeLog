@@ -1,0 +1,284 @@
+# ChangeLog for sci-visualization/epix
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-visualization/epix/ChangeLog,v 1.51 2014/10/22 08:46:45 jlec Exp $
+
+*epix-1.2.11-r1 (22 Oct 2014)
+
+  22 Oct 2014; Justin Lecher <jlec@gentoo.org> epix-1.2.10.ebuild,
+  epix-1.2.11.ebuild, +epix-1.2.11-r1.ebuild, metadata.xml:
+  Fix bashcomp installation, #526322
+
+*epix-1.2.11 (16 Jul 2013)
+
+  16 Jul 2013; Sébastien Fabbro <bicatali@gentoo.org> +epix-1.2.11.ebuild,
+  metadata.xml:
+  Version bump
+
+  05 Dec 2012; Justin Lecher <jlec@gentoo.org> -epix-1.2.6.ebuild,
+  metadata.xml:
+  Drop old
+
+  04 Dec 2012; <ago@gentoo.org> epix-1.2.10.ebuild:
+  Stable for x86, wrt bug #442570
+
+  30 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> epix-1.2.10.ebuild,
+  files/epix-1.2.10-autotools.patch, metadata.xml:
+  Respect AR (bug #443136) and rename bash-completion file
+
+  14 Nov 2012; Agostino Sarubbo <ago@gentoo.org> epix-1.2.10.ebuild:
+  Stable for amd64, wrt bug #442570
+
+  10 Nov 2012; Anthony G. Basile <blueness@gentoo.org> epix-1.2.10.ebuild:
+  stable ppc, bug #442570
+
+  10 Nov 2012; Justin Lecher <jlec@gentoo.org> epix-1.2.6.ebuild,
+  +files/epix-1.2.6-automake.patch, -epix-1.2.9.ebuild, epix-1.2.10.ebuild,
+  metadata.xml:
+  Drop old; backport patch for automake-1.11.6 compatibility, #442476
+
+  06 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> epix-1.2.10.ebuild:
+  keyword amd64-linux, x86-linux
+
+  21 May 2012; Kacper Kowalik <xarthisius@gentoo.org> epix-1.2.10.ebuild,
+  epix-1.2.6.ebuild, epix-1.2.9.ebuild:
+  Add missing inheritance of eutils.eclass
+
+*epix-1.2.10 (25 Apr 2012)
+
+  25 Apr 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  files/epix-1.2.9-autotools.patch, +epix-1.2.10.ebuild,
+  +files/epix-1.2.10-autotools.patch:
+  Version bump
+
+  19 Feb 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/epix-1.2.7-doc-gentoo.patch, -epix-1.2.8.ebuild, epix-1.2.9.ebuild,
+  -files/epix-1.2.9-automake.patch, +files/epix-1.2.9-autotools.patch:
+  More recent autotools update fixes, remove old
+
+  30 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org> epix-1.2.9.ebuild,
+  +files/epix-1.2.9-automake.patch:
+  Fixed for automake-1.11.2, bug #401195
+
+*epix-1.2.9 (27 Nov 2011)
+
+  27 Nov 2011; Sébastien Fabbro <bicatali@gentoo.org> -epix-1.2.7.ebuild,
+  +epix-1.2.9.ebuild:
+  Version bump
+
+  05 Oct 2011; Alexis Ballier <aballier@gentoo.org> epix-1.2.6.ebuild,
+  epix-1.2.7.ebuild, epix-1.2.8.ebuild:
+  remove ptex dep as it is going away
+
+  27 Jul 2011; Sébastien Fabbro <bicatali@gentoo.org> epix-1.2.8.ebuild:
+  Small prefix change
+
+*epix-1.2.8 (27 Jul 2011)
+
+  27 Jul 2011; Sébastien Fabbro <bicatali@gentoo.org> +epix-1.2.8.ebuild:
+  Version bump
+
+*epix-1.2.7 (04 May 2010)
+
+  04 May 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/epix-1.1.17-doc-gentoo.patch, -epix-1.2.1.ebuild,
+  -epix-1.2.5.ebuild, +epix-1.2.7.ebuild,
+  +files/epix-1.2.7-doc-gentoo.patch:
+  Version bump
+
+  20 Jan 2010; Markus Meier <maekke@gentoo.org> epix-1.2.6.ebuild:
+  amd64/x86 stable, bug #299845
+
+  12 Jan 2010; nixnut <nixnut@gentoo.org> epix-1.2.6.ebuild:
+  ppc stable #299845
+
+  30 May 2009; Ulrich Mueller <ulm@gentoo.org> epix-1.2.1.ebuild,
+  epix-1.2.5.ebuild, epix-1.2.6.ebuild:
+  Remove app-text/tetex from dependencies, bug 227443.
+
+*epix-1.2.6 (13 Apr 2009)
+
+  13 Apr 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/epix-1.1.15-doc-gentoo.patch, +files/epix-1.2.6-doc-gentoo.patch,
+  -files/epix-doc-gentoo.patch, metadata.xml, -epix-1.2.4.ebuild,
+  +epix-1.2.6.ebuild:
+  Bump and cleaning
+
+  08 Nov 2008; Markus Meier <maekke@gentoo.org> epix-1.2.5.ebuild:
+  amd64/x86 stable, bug #245713
+
+  08 Nov 2008; nixnut <nixnut@gentoo.org> epix-1.2.5.ebuild:
+  Stable on ppc wrt bug 245713
+
+*epix-1.2.5 (12 Aug 2008)
+
+  12 Aug 2008; Markus Dittrich <markusle@gentoo.org> -epix-1.2.2.ebuild,
+  +epix-1.2.5.ebuild:
+  Version bump and removed old ebuild.
+
+*epix-1.2.4 (15 Jun 2008)
+
+  15 Jun 2008; Markus Dittrich <markusle@gentoo.org> -epix-1.0.7.ebuild,
+  -epix-1.0.24.ebuild, +epix-1.2.4.ebuild:
+  Version bump (fixes gcc4.3 issues reported in #226965) and removed
+  old ebuilds.
+
+  17 Mar 2008; Kenneth Prugh <ken69267@gentoo.org> epix-1.2.1.ebuild:
+  amd64 stable, bug #205779
+
+  16 Jan 2008; Brent Baude <ranger@gentoo.org> epix-1.2.1.ebuild:
+  Marking epix-1.2.1 ppc for bug 205779
+
+  14 Jan 2008; Christian Faulhammer <opfer@gentoo.org> epix-1.2.1.ebuild:
+  stable x86, bug 205779
+
+*epix-1.2.2 (14 Jan 2008)
+
+  14 Jan 2008; Markus Dittrich <markusle@gentoo.org> -epix-1.2.0.2.ebuild,
+  +epix-1.2.2.ebuild:
+  Version bump and removed old version.
+
+  11 Jan 2008; Markus Dittrich <markusle@gentoo.org> epix-1.2.1.ebuild:
+  Updated epix to the new latex-base virtual. Thanks much to Alexis
+  Ballier <aballier@gentoo.org> for his help with figuring out the
+  required latex dependencies.
+
+*epix-1.2.1 (05 Oct 2007)
+
+  05 Oct 2007; Markus Dittrich <markusle@gentoo.org> -epix-1.1.15.ebuild,
+  -epix-1.1.17.ebuild, +epix-1.2.1.ebuild:
+  Version bump and removed old versions.
+
+*epix-1.2.0.2 (28 Sep 2007)
+
+  28 Sep 2007; Markus Dittrich <markusle@gentoo.org> +epix-1.2.0.2.ebuild:
+  Version bump (see bug #194061).
+
+*epix-1.1.17 (15 Sep 2007)
+
+  15 Sep 2007; Markus Dittrich <markusle@gentoo.org> +files/epix-1.1.17-doc-gentoo.patch, +epix-1.1.17.ebuild:
+  Version bump. Thanks much to the maintainer Andrew D. Hwang
+  <ahwang@mathcs.holycross.edu> for his efforts to making the epix
+  install on gentoo even smoother!
+
+  13 Sep 2007; Markus Dittrich <markusle@gentoo.org>
+  +files/50epix-gentoo.el:
+  Added missing site file (fixes bug #192283).
+
+  11 Sep 2007; Markus Dittrich <markusle@gentoo.org> epix-1.1.15.ebuild:
+  Moved emacs dependencies into DEPEND.
+
+  11 Sep 2007; Markus Dittrich <markusle@gentoo.org> epix-1.1.15.ebuild:
+  Added emacs support (see bug #182056). Thanks much to
+  <opfer@gentoo.org> for his patch.
+
+*epix-1.1.15 (09 Sep 2007)
+
+  09 Sep 2007; Markus Dittrich <markusle@gentoo.org>
+  +files/epix-1.1.15-doc-gentoo.patch, +epix-1.1.15.ebuild:
+  Version bump (bug #191798).
+
+  11 Jun 2007; Marcus D. Hanwell <cryos@gentoo.org> -epix-1.0.0.ebuild,
+  -epix-1.0.20.ebuild, epix-1.0.24.ebuild:
+  Marked stable on amd64, removed old versions.
+
+*epix-1.0.24 (07 Apr 2007)
+
+  07 Apr 2007; Marcus D. Hanwell <cryos@gentoo.org> +epix-1.0.24.ebuild:
+  Version bump.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  18 Nov 2006; Markus Dittrich <markusle@gentoo.org> epix-1.0.20.ebuild:
+  Added logic to redirect all output to /dev/null to avoid problems
+  in the sandbox.
+
+*epix-1.0.20 (09 Nov 2006)
+
+  09 Nov 2006; Markus Dittrich <markusle@gentoo.org> +epix-1.0.20.ebuild:
+  Version bump.
+
+  29 Aug 2006; Tobias Scherbaum <dertobi123@gentoo.org> epix-1.0.7.ebuild:
+  ppc stable, bug #144275
+
+  28 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org> epix-1.0.7.ebuild:
+  Stable on amd64/x86 wrt bug #144275.
+
+  24 Jun 2006; Markus Dittrich <markusle@gentoo.org> epix-1.0.7.ebuild:
+  Force MAKEOPTS="-j1" since the makefile breaks for parallel builds.
+  This closes bugs #135266 and #137762.
+
+  07 Jun 2006; Patrick Kursawe <phosphan@gentoo.org>
+  files/epix-doc-gentoo.patch:
+  Fixed the last fix - removing '-v' was not enough, adding '-q' helped.
+
+  06 Jun 2006; Markus Dittrich <markusle@gentoo.org>
+  files/epix-doc-gentoo.patch:
+  Fix makefile patch to address sandbox issues when building the docs
+  (see bug #135266).
+
+*epix-1.0.7 (03 Jun 2006)
+
+  03 Jun 2006; Markus Dittrich <markusle@gentoo.org>
+  +files/epix-doc-gentoo.patch, +epix-1.0.7.ebuild:
+  Bump to the most recent version which compiles fine with gcc-4.1
+  (see bug #135266).
+
+  29 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org> +metadata.xml,
+  +epix-1.0.0.ebuild:
+  Moved from media-gfx/epix to sci-visualization/epix.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> epix-1.0.0.ebuild:
+  Stable on ppc.
+
+  09 May 2005; David Holm <dholm@gentoo.org> epix-1.0.0.ebuild:
+  Added to ~ppc.
+
+  09 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org> -epix-0.8.10a-r1.ebuild:
+  Removed old ebuild.
+
+  04 Feb 2005; Marcus D. Hanwell <cryos@gentoo.org> epix-1.0.0.ebuild:
+  Marked stable on amd64 and x86.
+
+*epix-1.0.0 (23 Dec 2004)
+
+  23 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +epix-0.8.10a-r1.ebuild, +epix-1.0.0.ebuild:
+  Moved from app-sci/epix to media-gfx/epix.
+
+  23 Nov 2004; Olivier Fisette <ribosome@gentoo.org> epix-0.8.10a-r1.ebuild,
+  epix-1.0.0.ebuild:
+  Added "virtual/tetex" dependency. Required to build the documentation.
+
+*epix-1.0.0 (23 Nov 2004)
+
+  23 Nov 2004; Olivier Fisette <ribosome@gentoo.org> +epix-1.0.0.ebuild:
+  New version. Credits go to Marcus Hanwell <gentoo@cryos.net>.
+
+  22 Nov 2004; Patrick Kursawe <phosphan@gentoo.org> epix-0.8.10a-r1.ebuild:
+  Using tc-getCXX now (bug #71849). Cleanup.
+
+  06 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> epix-0.8.10a-r1.ebuild:
+  Marked stable on amd64.
+
+  22 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> epix-0.8.10a-r1.ebuild:
+  marked ~amd64
+
+*epix-0.8.10a-r1 (20 Nov 2003)
+
+  20 Nov 2003; Patrick Kursawe <phosphan@gentoo.org> epix-0.8.10a-r1.ebuild:
+  Installing tutorial aswell.
+
+*epix-0.8.10a (19 Jun 2003)
+
+  19 Jun 2003; Peter Johanson <latexer@gentoo.org> epix-0.8.10a.ebuild,
+  epix-0.8.8a.ebuild:
+  Bump, and marking 0.8.8a as stable
+
+  09 May 2003; Peter Johanson <latexer@gentoo.org> epix-0.8.8a.ebuild:
+  Add some sedding for bug #20633
+
+*epix-0.8.8a (14 Feb 2003)
+
+  14 Feb 2003; Peter Johanson <latexer@gentoo.org> epix-0.8.8a.ebuild files/digest-epix-0.8.8a :
+  Initial import. Ebuilds by me.

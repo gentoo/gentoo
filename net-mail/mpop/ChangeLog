@@ -1,0 +1,57 @@
+# ChangeLog for net-mail/mpop
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/mpop/ChangeLog,v 1.12 2015/04/08 18:18:33 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> mpop-1.0.29.ebuild:
+  Drop old Python implementations
+
+*mpop-1.2.2 (24 Jan 2015)
+
+  24 Jan 2015; Tim Harder <radhermit@gentoo.org> +mpop-1.2.2.ebuild:
+  Version bump.
+
+  04 Jan 2015; Tim Harder <radhermit@gentoo.org> -mpop-1.0.26.ebuild,
+  -mpop-1.0.27.ebuild, -mpop-1.0.28.ebuild:
+  Remove old.
+
+*mpop-1.2.0 (04 Jan 2015)
+
+  04 Jan 2015; Tim Harder <radhermit@gentoo.org> +mpop-1.2.0.ebuild,
+  metadata.xml:
+  Version bump, gnome-keyring use flag replaced with libsecret.
+
+*mpop-1.0.29 (09 Mar 2014)
+
+  09 Mar 2014; Tim Harder <radhermit@gentoo.org> +mpop-1.0.29.ebuild:
+  Version bump.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> mpop-1.0.28.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*mpop-1.0.28 (23 Apr 2013)
+
+  23 Apr 2013; Tim Harder <radhermit@gentoo.org> +mpop-1.0.28.ebuild:
+  Version bump, migrate to python-single-r1.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> mpop-1.0.26.ebuild,
+  mpop-1.0.27.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 May 2012; Tim Harder <radhermit@gentoo.org> -mpop-1.0.25.ebuild:
+  Remove old.
+
+*mpop-1.0.27 (02 May 2012)
+
+  02 May 2012; Tim Harder <radhermit@gentoo.org> +mpop-1.0.27.ebuild:
+  Version bump.
+
+*mpop-1.0.26 (08 Jan 2012)
+
+  08 Jan 2012; Tim Harder <radhermit@gentoo.org> +mpop-1.0.26.ebuild:
+  Version bump.
+
+*mpop-1.0.25 (17 Oct 2011)
+
+  17 Oct 2011; Tim Harder <radhermit@gentoo.org> +mpop-1.0.25.ebuild,
+  +metadata.xml:
+  Initial import.

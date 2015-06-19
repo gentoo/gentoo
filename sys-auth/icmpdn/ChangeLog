@@ -1,0 +1,18 @@
+# ChangeLog for sys-auth/icmpdn
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/icmpdn/ChangeLog,v 1.3 2009/01/14 05:35:27 vapier Exp $
+
+  14 Jan 2009; Mike Frysinger <vapier@gentoo.org> icmpdn-0.4.ebuild:
+  Cleanup multilib handling and fix building with newer glibc #241318 by
+  Diego E. Pettenò.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+*icmpdn-0.4 (10 Feb 2006)
+
+  10 Feb 2006; Robin H. Johnson <robbat2@gentoo.org> +files/conf.d-icmpdnd,
+  +files/init.d-icmpdnd, +metadata.xml, +icmpdn-0.4.ebuild:
+  Initial commit. Original ebuild submitted by Fredrik Tolf
+  <fredrik@dolda2000.com>, bug #93870.
+

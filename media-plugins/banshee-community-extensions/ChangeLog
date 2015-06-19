@@ -1,0 +1,164 @@
+# ChangeLog for media-plugins/banshee-community-extensions
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/banshee-community-extensions/ChangeLog,v 1.31 2014/07/23 15:20:27 ago Exp $
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  banshee-community-extensions-2.4.0-r1.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  banshee-community-extensions-2.4.0-r1.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  07 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  banshee-community-extensions-2.4.0.ebuild:
+  x86 stable wrt bug #435202
+
+  16 Sep 2012; Agostino Sarubbo <ago@gentoo.org>
+  banshee-community-extensions-2.4.0.ebuild:
+  Stable for amd64, wrt bug #435202
+
+*banshee-community-extensions-2.4.0-r1 (16 Sep 2012)
+
+  16 Sep 2012; Pacho Ramos <pacho@gentoo.org>
+  +banshee-community-extensions-2.4.0-r1.ebuild,
+  banshee-community-extensions-2.4.0.ebuild:
+  Disable zeitgeist in version to stabilize.
+
+*banshee-community-extensions-2.4.0 (15 Jun 2012)
+
+  15 Jun 2012; Pacho Ramos <pacho@gentoo.org>
+  +banshee-community-extensions-2.4.0.ebuild,
+  -banshee-community-extensions-2.2.0-r1.ebuild:
+  Version bump, drop old.
+
+*banshee-community-extensions-2.2.0-r1 (06 Feb 2012)
+
+  06 Feb 2012; Justin Lecher <jlec@gentoo.org>
+  +banshee-community-extensions-2.2.0-r1.ebuild, metadata.xml:
+  Enable support for zeitgeist plugin
+
+  22 Jan 2012; Pacho Ramos <pacho@gentoo.org>
+  -banshee-community-extensions-2.0.0.ebuild,
+  -banshee-community-extensions-2.0.1.ebuild:
+  Drop old.
+
+  05 Nov 2011; Markos Chandras <hwoarang@gentoo.org>
+  banshee-community-extensions-2.2.0.ebuild:
+  Stable on amd64 wrt bug #389181
+
+  04 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  banshee-community-extensions-2.2.0.ebuild:
+  x86 stable wrt bug #389181
+
+  24 Sep 2011; Pacho Ramos <pacho@gentoo.org>
+  banshee-community-extensions-2.2.0.ebuild:
+  Fix typo in configure option, bug #384255 by Travis Hansen.
+
+*banshee-community-extensions-2.2.0 (22 Sep 2011)
+
+  22 Sep 2011; Pacho Ramos <pacho@gentoo.org>
+  +banshee-community-extensions-2.2.0.ebuild:
+  Version bump.
+
+*banshee-community-extensions-2.0.1 (08 Jul 2011)
+
+  08 Jul 2011; Pacho Ramos <pacho@gentoo.org>
+  -banshee-community-extensions-1.8.0.ebuild,
+  +banshee-community-extensions-2.0.1.ebuild:
+  Version bump (bug #374359 by Trevor Bowen). Remove old.
+
+  30 Jun 2011; Christoph Mende <angelos@gentoo.org>
+  banshee-community-extensions-2.0.0.ebuild:
+  Stable on amd64 wrt bug #371163
+
+  21 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  banshee-community-extensions-2.0.0.ebuild:
+  x86 stable wrt bug #371163
+
+  27 Apr 2011; Christoph Mende <angelos@gentoo.org>
+  banshee-community-extensions-1.8.0.ebuild,
+  banshee-community-extensions-2.0.0.ebuild:
+  Fixed gstreamer slot deps
+
+  13 Apr 2011; Pacho Ramos <pacho@gentoo.org>
+  banshee-community-extensions-2.0.0.ebuild, metadata.xml:
+  Fix LastfmFingerprint dependencies, bug #362437 by Andy Botting.
+
+*banshee-community-extensions-2.0.0 (07 Apr 2011)
+
+  07 Apr 2011; Pacho Ramos <pacho@gentoo.org>
+  +banshee-community-extensions-2.0.0.ebuild:
+  Version bump with new features and lots of bugfixes.
+
+  27 Feb 2011; Pacho Ramos <pacho@gentoo.org>
+  -files/banshee-community-extensions-1.5.5-magnatune-build-fix.patch,
+  -banshee-community-extensions-1.6.1.ebuild:
+  Remove old.
+
+  17 Nov 2010; Markos Chandras <hwoarang@gentoo.org>
+  banshee-community-extensions-1.8.0.ebuild:
+  Stable on amd64 wrt bug #345567
+
+  15 Nov 2010; Thomas Kahle <tomka@gentoo.org>
+  banshee-community-extensions-1.8.0.ebuild:
+  x86 stable per bug #345567
+
+  15 Nov 2010; Thomas Kahle <tomka@gentoo.org>
+  banshee-community-extensions-1.8.0.ebuild:
+  adding missing dep in lirc as per bug #345567
+
+*banshee-community-extensions-1.8.0 (23 Oct 2010)
+
+  23 Oct 2010; Pacho Ramos <pacho@gentoo.org>
+  +banshee-community-extensions-1.8.0.ebuild:
+  Version bump: Add a Copy button to the lyrics window, fix up the label in
+  LyricsPanel, use Banshee.WebBrowser instead of webkit-sharp, user help is
+  now available and automatically integrated into the Banshee help pages,
+  lots of bugfixes and translation updates. Also drop useless .la files and
+  install docs.
+
+  12 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  banshee-community-extensions-1.6.1.ebuild:
+  stable x86, bug 324241
+
+  09 Jul 2010; Pacho Ramos <pacho@gentoo.org>
+  banshee-community-extensions-1.6.1.ebuild:
+  amd64 stable, bug 324241
+
+  05 Jul 2010; Pacho Ramos <pacho@gentoo.org>
+  -banshee-community-extensions-1.6.0.ebuild:
+  Remove old.
+
+*banshee-community-extensions-1.6.1 (18 Jun 2010)
+
+  18 Jun 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  +banshee-community-extensions-1.6.1.ebuild:
+  Bump to 1.6.1. Just a bunch of bug fixes.
+
+  01 Apr 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  -banshee-community-extensions-1.5.4.ebuild,
+  -banshee-community-extensions-1.5.5.ebuild:
+  Clean up pre-release ebuilds.
+
+*banshee-community-extensions-1.6.0 (01 Apr 2010)
+
+  01 Apr 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  +banshee-community-extensions-1.6.0.ebuild:
+  Bump to 1.6.0. Mostly bug fixes, and a new plugin we don't care about.
+
+*banshee-community-extensions-1.5.5 (25 Mar 2010)
+
+  25 Mar 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  +banshee-community-extensions-1.5.5.ebuild,
+  +files/banshee-community-extensions-1.5.5-magnatune-build-fix.patch:
+  Bump to 1.5.5. Adds CoverWallpaper, LiveRadio, Magnatune, and Telepathy
+  plugins, and some bug fixes.
+
+*banshee-community-extensions-1.5.4 (26 Feb 2010)
+
+  26 Feb 2010; Arun Raghavan <ford_prefect@gentoo.org>
+  +banshee-community-extensions-1.5.4.ebuild, +metadata.xml:
+  Initial commit. This brings in several community extensions for Banshee
+  and supercedes media-plugins/banshee-lyrics and
+  media-plugins/banshee-mirage for the 1.5.x series.

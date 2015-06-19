@@ -1,0 +1,22 @@
+ Makefile |    8 --------
+ 1 files changed, 0 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 2a5c626..cab4102 100644
+--- a/Makefile
++++ b/Makefile
+@@ -238,14 +238,6 @@ install:  all $(INSTALL_PREFIX) $(INSTALL_PREFIX)/lib $(INSTALL_PREFIX)/include
+ 		  chmod 644 $(INSTALL_PREFIX)/include/CNearTree.h
+ 		  chmod 644 $(INSTALL_PREFIX)/include/rhrand.h
+ 		  chmod 644 $(INSTALL_PREFIX)/include/triple.h
+-		  echo "Testing final install dynamic"
+-		  $(BUILD_COMMAND_DYNAMIC) $(INCLUDES) $(EXAMPLES)/CNearTreeTest.c \
+-		  -L$(INSTALL_PREFIX)/lib -lCNearTree $(CLIBRARIES) -o $(BIN)/CNearTreeTest_dynamic
+-		  $(BIN)/CNearTreeTest_dynamic 
+-		  echo "Testing final install static"
+-		  $(BUILD_COMMAND_STATIC) $(INCLUDES) $(EXAMPLES)/CNearTreeTest.c \
+-		  -L$(INSTALL_PREFIX)/lib -lCNearTree $(CLIBRARIES) -o $(BIN)/CNearTreeTest_static
+-		  $(BIN)/CNearTreeTest_static 
+ 			
+ 		  
+ 		  

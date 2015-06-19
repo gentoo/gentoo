@@ -1,0 +1,30 @@
+# ChangeLog for sys-cluster/hpx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/hpx/ChangeLog,v 1.6 2015/04/18 18:15:24 ottxor Exp $
+
+  18 Apr 2015; Christoph Junghans <ottxor@gentoo.org> hpx-0.9.10.ebuild:
+  drop old python version, fixed deps
+
+*hpx-0.9.10 (14 Apr 2015)
+
+  14 Apr 2015; Sławek Lis <slis@gentoo.org> +hpx-0.9.10.ebuild:
+  version bump (#546300)
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> hpx-0.9.8.ebuild,
+  hpx-0.9.9.ebuild:
+  Drop old Python implementations
+
+  24 Dec 2014; Christoph Junghans <ottxor@gentoo.org> hpx-0.9.9.ebuild:
+  fixed deps (bug #529066)
+
+*hpx-0.9.9 (05 Nov 2014)
+
+  05 Nov 2014; Sławek Lis <slis@gentoo.org> +hpx-0.9.9.ebuild:
+  version bump
+
+*hpx-0.9.8 (31 Jul 2014)
+
+  31 Jul 2014; Sławek Lis <slis@gentoo.org> +files/hpx-0.9.8-cmake_dir.patch,
+  +files/hpx-0.9.8-install-path.patch, +files/hpx-0.9.8-multilib.patch,
+  +hpx-0.9.8.ebuild, +metadata.xml:
+  added hpx package

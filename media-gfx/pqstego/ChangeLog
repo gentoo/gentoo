@@ -1,0 +1,12 @@
+# ChangeLog for media-gfx/pqstego
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/pqstego/ChangeLog,v 1.2 2010/11/08 22:57:45 maekke Exp $
+
+  08 Nov 2010; Markus Meier <maekke@gentoo.org> pqstego-0.0.1.ebuild:
+  change jpeg dep to virtual/jpeg
+
+*pqstego-0.0.1 (02 Mar 2010)
+
+  02 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> +pqstego-0.0.1.ebuild:
+  Initial commit wrt #253154 by Christian Kuka.
+

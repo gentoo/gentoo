@@ -1,0 +1,49 @@
+# ChangeLog for dev-php/stringparser_bbcode
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/stringparser_bbcode/ChangeLog,v 1.8 2014/08/10 21:05:52 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  stringparser_bbcode-0.3.3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  26 Jan 2012; Matti Bickel <mabi@gentoo.org> stringparser_bbcode-0.3.3.ebuild:
+  remove unneeded php-lib-r1.php reference, EAPI bump
+
+  01 May 2010; <mabi@gentoo.org> -stringparser_bbcode-0.3.2a.ebuild,
+  -stringparser_bbcode-0.3.2b.ebuild:
+  remove old version
+
+*stringparser_bbcode-0.3.3 (01 May 2010)
+
+  01 May 2010; <mabi@gentoo.org> +stringparser_bbcode-0.3.3.ebuild:
+  version bump
+
+*stringparser_bbcode-0.3.2b (04 Jan 2008)
+
+  04 Jan 2008; Markus Ullmann <jokey@gentoo.org>
+  +stringparser_bbcode-0.3.2b.ebuild:
+  Version bump from project overlay
+
+  03 Jan 2008; Jakub Moc <jakub@gentoo.org>
+  +stringparser_bbcode-0.3.2b.ebuild:
+  Version bump, fix docs install location
+
+*stringparser_bbcode-0.3.2a (15 Dec 2007)
+
+  15 Dec 2007; Markus Ullmann <jokey@gentoo.org>
+  -stringparser_bbcode-0.3.1.ebuild, +stringparser_bbcode-0.3.2a.ebuild:
+  Version bump from project overlay
+
+  28 Oct 2007; Markus Ullmann <jokey@gentoo.org>
+  stringparser_bbcode-0.3.1.ebuild:
+  Whitespace fix
+
+*stringparser_bbcode-0.3.1 (28 Oct 2007)
+
+  28 Oct 2007; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +stringparser_bbcode-0.3.1.ebuild:
+  Initial import from php project overlay
+
+  15 Aug 2007; Jakub Moc <jakub@gentoo.org> +metadata.xml,
+  +stringparser_bbcode-0.3.1.ebuild:
+  New ebuild for Bug 169913

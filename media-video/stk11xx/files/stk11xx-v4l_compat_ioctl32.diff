@@ -1,0 +1,15 @@
+Patch fixing compilation on amd64, thanks to Krzysztof Magusiak.
+Upstream accepted and applied into r95:
+	http://syntekdriver.svn.sourceforge.net/viewvc/syntekdriver?view=rev&revision=95
+
+--- stk11xx-2.1.0/stk11xx-v4l.c.old	2009-07-03 19:27:15.882898391 +0200
++++ stk11xx-2.1.0/stk11xx-v4l.c	2009-07-03 19:27:40.246883049 +0200
+@@ -1733,7 +1733,7 @@
+ 	.poll = v4l_stk11xx_poll,
+ 	.mmap = v4l_stk11xx_mmap,
+ 	.ioctl = v4l_stk11xx_ioctl,
+-#ifdef CONFIG_COMPAT
++#if defined(CONFIG_COMPAT) && defined(v4l_compat_ioctl32)
+ 	.compat_ioctl = v4l_compat_ioctl32,
+ #endif
+ };

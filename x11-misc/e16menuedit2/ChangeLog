@@ -1,0 +1,36 @@
+# ChangeLog for x11-misc/e16menuedit2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/e16menuedit2/ChangeLog,v 1.10 2014/11/21 10:00:39 pacho Exp $
+
+  21 Nov 2014; Pacho Ramos <pacho@gentoo.org> e16menuedit2-0.0.3.ebuild:
+  Bump to latest eapi as this was one of the last eapi0 consumers of
+  gnome2.eclass (#530022 ACKed by vapier)
+
+  28 Dec 2012; Ulrich Müller <ulm@gentoo.org> e16menuedit2-0.0.3.ebuild:
+  Fix LICENSE, see COPYING file, bug 448652.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> e16menuedit2-0.0.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  17 Jan 2010; Mike Frysinger <vapier@gentoo.org> e16menuedit2-0.0.3.ebuild:
+  Fix implicit decls with g_vprintf.
+
+  28 Jun 2008; Mike Frysinger <vapier@gentoo.org> e16menuedit2-0.0.3.ebuild:
+  Add missing libglade to RDEPEND #227727.
+
+  26 Mar 2008; Samuli Suominen <drac@gentoo.org> e16menuedit2-0.0.3.ebuild:
+  amd64 stable wrt #203752
+
+  13 Jan 2008; Mike Frysinger <vapier@gentoo.org> e16menuedit2-0.0.3.ebuild:
+  Add pkg-config to DEPEND #204977.
+
+  05 Jan 2008; Raúl Porcel <armin76@gentoo.org> e16menuedit2-0.0.3.ebuild:
+  sparc stable wrt #203752
+
+  01 Jan 2008; Markus Meier <maekke@gentoo.org> e16menuedit2-0.0.3.ebuild:
+  x86 stable, bug #203752
+
+*e16menuedit2-0.0.3 (23 Sep 2006)
+
+  23 Sep 2006; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by bware #119192.

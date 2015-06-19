@@ -1,0 +1,43 @@
+# ChangeLog for dev-haskell/crypto-cipher-types
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/crypto-cipher-types/ChangeLog,v 1.9 2015/06/06 10:51:43 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org>
+  crypto-cipher-types-0.0.9.ebuild:
+  Stable for x86, wrt bug #502664
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> crypto-cipher-types-0.0.9.ebuild:
+  amd64 stable, bug #502664
+
+*crypto-cipher-types-0.0.9 (11 Dec 2013)
+
+  11 Dec 2013; Mark Wright <gienah@gentoo.org>
+  +crypto-cipher-types-0.0.9.ebuild:
+  Bump crypto-cipher-types to 0.0.9
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org>
+  crypto-cipher-types-0.0.5.ebuild:
+  Stable for x86, wrt bug #488750
+
+  05 Nov 2013; Tony Vroon <chainsaw@gentoo.org>
+  crypto-cipher-types-0.0.5.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #488750.
+
+  13 Sep 2013; Mark Wright <gienah@gentoo.org>
+  -crypto-cipher-types-0.0.4.ebuild:
+  Remove obsolete crypto-cipher-types-0.0.4
+
+*crypto-cipher-types-0.0.4 (13 Sep 2013)
+*crypto-cipher-types-0.0.5 (13 Sep 2013)
+
+  13 Sep 2013; Mark Wright <gienah@gentoo.org>
+  +crypto-cipher-types-0.0.4.ebuild, +crypto-cipher-types-0.0.5.ebuild,
+  +metadata.xml:
+  Add crypto-cipher-types

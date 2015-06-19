@@ -1,0 +1,1228 @@
+# ChangeLog for app-backup/bacula
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/bacula/ChangeLog,v 1.179 2015/06/09 09:01:25 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  06 May 2015; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.0.3-r4.ebuild,
+  bacula-5.2.13-r3.ebuild, -bacula-7.0.5.ebuild, bacula-7.0.5-r1.ebuild:
+  Migrate to USE=sqlite (bug #548646)
+
+  06 May 2015; Thomas Beierlein <tomjbe@gentoo.org> -bacula-5.0.3-r3.ebuild,
+  -bacula-5.2.13.ebuild:
+  Remove old versions depending on old python.eclass, but keep unstable
+  revisions depending on the new python-single-r1 for users which need an old
+  bacula client.
+
+  19 Apr 2015; Pacho Ramos <pacho@gentoo.org> bacula-7.0.5-r1.ebuild:
+  x86 stable wrt bug #529394
+
+  17 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> bacula-7.0.5-r1.ebuild:
+  sparc stable wrt bug #529394
+
+  02 Mar 2015; Agostino Sarubbo <ago@gentoo.org> bacula-7.0.5-r1.ebuild:
+  Stable for ppc, wrt bug #529394
+
+  23 Feb 2015; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.0.3-r3.ebuild,
+  bacula-5.0.3-r4.ebuild, bacula-5.2.13.ebuild, bacula-5.2.13-r3.ebuild,
+  bacula-7.0.5.ebuild, bacula-7.0.5-r1.ebuild:
+  Update bundled libtools (bug #466696)
+
+*bacula-5.2.13-r3 (23 Feb 2015)
+*bacula-5.0.3-r4 (23 Feb 2015)
+
+  23 Feb 2015; Thomas Beierlein <tomjbe@gentoo.org> +bacula-5.0.3-r4.ebuild,
+  -bacula-5.2.12.ebuild, -bacula-5.2.13-r2.ebuild, +bacula-5.2.13-r3.ebuild,
+  -bacula-7.0.2.ebuild, -bacula-7.0.4.ebuild:
+  Move to python-single-r1. Drop old
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org> bacula-7.0.5-r1.ebuild:
+  Stable for amd64, wrt bug #529394
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org> bacula-5.0.3-r3.ebuild,
+  bacula-5.2.12.ebuild, bacula-5.2.13.ebuild, bacula-5.2.13-r2.ebuild,
+  bacula-7.0.2.ebuild, bacula-7.0.4.ebuild, bacula-7.0.5.ebuild,
+  bacula-7.0.5-r1.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+*bacula-7.0.5-r1 (28 Nov 2014)
+
+  28 Nov 2014; Thomas Beierlein <tomjbe@gentoo.org> +bacula-7.0.5-r1.ebuild:
+  Fixes systemd tmpfile for bacula-clientonly (bug #528398). Thanks for
+  reporting to D. Griffin
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org> bacula-5.0.3-r3.ebuild,
+  bacula-5.2.12.ebuild, bacula-5.2.13.ebuild, bacula-5.2.13-r2.ebuild,
+  bacula-7.0.2.ebuild, bacula-7.0.4.ebuild, bacula-7.0.5.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+*bacula-7.0.5 (16 Aug 2014)
+
+  16 Aug 2014; Thomas Beierlein <tomjbe@gentoo.org> +bacula-7.0.5.ebuild:
+  Bugfix release
+
+*bacula-7.0.4 (21 Jun 2014)
+
+  21 Jun 2014; Thomas Beierlein <tomjbe@gentoo.org> +bacula-7.0.4.ebuild:
+  Bugfix release
+
+*bacula-7.0.2 (10 Apr 2014)
+
+  10 Apr 2014; Thomas Beierlein <tomjbe@gentoo.org> +bacula-7.0.2.ebuild,
+  +files/7.0.2/bacula-7.0.2-depend.patch,
+  +files/7.0.2/bacula-7.0.2-fix-static.patch:
+  Major version bump
+
+  05 Apr 2014; Pacho Ramos <pacho@gentoo.org> bacula-5.2.13-r2.ebuild:
+  Alias value is not really needed here, bug #504370 by Fabian Koster
+
+*bacula-5.2.13-r2 (01 Feb 2014)
+
+  01 Feb 2014; Pacho Ramos <pacho@gentoo.org> +bacula-5.2.13-r2.ebuild,
+  -bacula-5.2.13-r1.ebuild:
+  Fix systemd unit files, bug #497748
+
+*bacula-5.2.13-r1 (11 Jan 2014)
+
+  11 Jan 2014; Pacho Ramos <pacho@gentoo.org> +bacula-5.2.13-r1.ebuild:
+  Install upstream unit files (#497748 by Khumba)
+
+  20 May 2013; Jeroen Roovers <jer@gentoo.org> bacula-5.0.3-r3.ebuild,
+  bacula-5.2.12.ebuild, bacula-5.2.13.ebuild:
+  Remove HPPA keywording (bug #409229).
+
+  01 May 2013; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.2.13.ebuild:
+  Fix logrotate config file (bug 258187, comment #4). Thanks Ortwin.
+
+  23 Apr 2013; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.2.13.ebuild:
+  Fix desktop file category (bug #466688). Use CXXFLAGS instead CFLAGS (bug
+  466694). Thanks ago for reporting
+
+  22 Apr 2013; Agostino Sarubbo <ago@gentoo.org> bacula-5.2.13.ebuild:
+  Stable for sparc, wrt bug #466636
+
+  22 Apr 2013; Agostino Sarubbo <ago@gentoo.org> bacula-5.2.13.ebuild:
+  Stable for ppc, wrt bug #466636
+
+  21 Apr 2013; Agostino Sarubbo <ago@gentoo.org> bacula-5.2.13.ebuild:
+  Stable for x86, wrt bug #466636
+
+  21 Apr 2013; Agostino Sarubbo <ago@gentoo.org> bacula-5.2.13.ebuild:
+  Stable for amd64, wrt bug #466636
+
+*bacula-5.2.13 (14 Mar 2013)
+
+  14 Mar 2013; Thomas Beierlein <tomjbe@gentoo.org> +bacula-5.2.13.ebuild:
+  Version bump.
+  Add USE=examples as requested by bug #457504.
+  Add info about state of SQLite support (bug #445540).
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> bacula-5.0.3-r3.ebuild,
+  bacula-5.2.12.ebuild:
+  Move Qt dependencies to the new category
+
+  13 Jan 2013; Agostino Sarubbo <ago@gentoo.org> bacula-5.0.3-r3.ebuild:
+  Stable for x86, wrt bug #447608
+
+  30 Dec 2012; Agostino Sarubbo <ago@gentoo.org> bacula-5.0.3-r3.ebuild:
+  Stable for sparc, wrt bug #447608
+
+  22 Dec 2012; Agostino Sarubbo <ago@gentoo.org> bacula-5.0.3-r3.ebuild:
+  Stable for ppc, wrt bug #447608
+
+  21 Dec 2012; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.0.3-r3.ebuild,
+  bacula-5.2.12.ebuild:
+  Make build log verbose - simplified version (bug 447806). Thanks hasufell.
+
+  20 Dec 2012; Agostino Sarubbo <ago@gentoo.org> bacula-5.0.3-r3.ebuild:
+  Stable for amd64, wrt bug #447608
+
+  20 Dec 2012; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.0.3-r3.ebuild:
+  Fix to respect CXX and CXXFLAGS (bug #447728 and 447730). Make build log
+  verbose (bug #447806). Fix problems with USE=static. Switch to EAPI=5 and
+  REQUIRED_USE. Thanks ago and peratu
+
+  18 Dec 2012; Jeroen Roovers <jer@gentoo.org> bacula-5.0.3-r3.ebuild:
+  Stable for HPPA (bug #447608).
+
+  10 Oct 2012; Thomas Beierlein <tomjbe@gentoo.org> +bacula-5.0.3-r3.ebuild,
+  +files/5.0.3/bacula-5.0.3-cve.patch:
+  Readd bacula-5.0.3 including fix for CVE-2012-4430 to enable use with older
+  bacula directors.
+
+  23 Sep 2012; Agostino Sarubbo <ago@gentoo.org> -bacula-5.0.3-r2.ebuild,
+  -bacula-5.2.5.ebuild:
+  Remove old
+
+  23 Sep 2012; Raúl Porcel <armin76@gentoo.org> bacula-5.2.12.ebuild:
+  sparc/x86 stable wrt #434878
+
+  23 Sep 2012; Jeroen Roovers <jer@gentoo.org> bacula-5.0.3-r2.ebuild:
+  Marked ~hppa (bug #434878).
+
+  22 Sep 2012; Agostino Sarubbo <ago@gentoo.org> -bacula-5.0.3-r1.ebuild,
+  -bacula-5.0.3-r3.ebuild, -bacula-5.2.10.ebuild, -bacula-5.2.9.ebuild:
+  Remove old
+
+  22 Sep 2012; Agostino Sarubbo <ago@gentoo.org> bacula-5.2.12.ebuild:
+  Stable for amd64, wrt bug #434878
+
+  22 Sep 2012; Thomas Beierlein <tomjbe@gentoo.org>
+  files/5.2.10/bacula-5.2.10-fix-static.patch, bacula-5.2.12.ebuild:
+  Fix build with USE=static (bug #435798). Thanks peratu
+
+  22 Sep 2012; Anthony G. Basile <blueness@gentoo.org> bacula-5.2.12.ebuild:
+  stable ppc, bug #434878
+
+  20 Sep 2012; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.2.12.ebuild,
+  +files/5.2.12/bacula-5.2.12-depend.patch:
+  fix file not found error during make depend
+
+*bacula-5.2.12 (16 Sep 2012)
+
+  16 Sep 2012; Thomas Beierlein <tomjbe@gentoo.org> -bacula-5.2.11.ebuild,
+  +bacula-5.2.12.ebuild:
+  Bug fix version bump. Drop version 5.2.11 withdrawn by upstream. Thanks
+  Andrea
+
+*bacula-5.2.11 (12 Sep 2012)
+
+  12 Sep 2012; Thomas Beierlein <tomjbe@gentoo.org> +bacula-5.2.11.ebuild:
+  Version bump
+
+  05 Sep 2012; Justin Lecher <jlec@gentoo.org> bacula-5.0.3-r3.ebuild,
+  bacula-5.2.10.ebuild, bacula-5.2.5.ebuild, bacula-5.2.9.ebuild:
+  Don't install license
+
+  05 Sep 2012; Justin Lecher <jlec@gentoo.org> bacula-5.0.3-r1.ebuild,
+  bacula-5.0.3-r2.ebuild, bacula-5.0.3-r3.ebuild, bacula-5.2.10.ebuild,
+  bacula-5.2.5.ebuild, bacula-5.2.9.ebuild:
+  Use doicon instead insinto + doins to install icon files
+
+  05 Sep 2012; Justin Lecher <jlec@gentoo.org> bacula-5.0.3-r1.ebuild,
+  bacula-5.0.3-r2.ebuild, bacula-5.0.3-r3.ebuild, bacula-5.2.10.ebuild,
+  bacula-5.2.5.ebuild, bacula-5.2.9.ebuild:
+  Use domenu instead insinto + doins to install .desktop files
+
+  17 Aug 2012; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.2.5.ebuild,
+  bacula-5.2.9.ebuild, bacula-5.2.10.ebuild:
+  Fix wrong service dependency (Bug 431704). Thanks Andrea
+
+*bacula-5.2.10 (16 Aug 2012)
+
+  16 Aug 2012; Thomas Beierlein <tomjbe@gentoo.org> +bacula-5.2.10.ebuild,
+  +files/5.2.10/bacula-5.2.10-fix-static.patch:
+  Version bump
+
+  07 Aug 2012; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.2.5.ebuild,
+  -bacula-5.2.6.ebuild, bacula-5.2.9.ebuild:
+  Fix generation of init script (Bug 426374). Thanks Koreth. Drop old
+
+*bacula-5.2.9 (24 Jun 2012)
+
+  24 Jun 2012; Thomas Beierlein <tomjbe@gentoo.org> +bacula-5.2.9.ebuild:
+  Version bump
+
+  30 May 2012; Thomas Beierlein <tomjbe@gentoo.org> -bacula-5.0.2-r1.ebuild,
+  -files/5.0.2/bacula-5.0.2-Makefile.patch,
+  -files/5.0.2/bacula-5.0.2-as-needed.patch,
+  -files/5.0.2/bacula-5.0.2-ldflags.patch,
+  -files/5.0.2/bacula-5.0.2-lib-search-path.patch,
+  -files/5.0.2/bacula-5.0.2-openssl-1.patch, -bacula-5.2.3-r1.ebuild,
+  -bacula-5.2.4.ebuild:
+  Cleanup old
+
+  24 May 2012; Mike Frysinger <vapier@gentoo.org> bacula-5.0.2-r1.ebuild,
+  bacula-5.0.3-r1.ebuild, bacula-5.0.3-r2.ebuild, bacula-5.0.3-r3.ebuild,
+  bacula-5.2.3-r1.ebuild, bacula-5.2.4.ebuild, bacula-5.2.5.ebuild,
+  bacula-5.2.6.ebuild:
+  Inherit user for enewuser/etc...
+
+  01 Apr 2012; Raúl Porcel <armin76@gentoo.org> bacula-5.2.5.ebuild:
+  sparc/x86 stable wrt #407453
+
+  23 Mar 2012; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.2.5.ebuild,
+  bacula-5.2.6.ebuild:
+  Fix correct usage of eqmake4 (bug #409429). Thanks for reporting Marcin
+
+  23 Mar 2012; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.2.5.ebuild,
+  bacula-5.2.6.ebuild:
+  Building bat respects CXX now (bug #409221). Thanks jer_at_gentoo.org
+
+*bacula-5.2.6 (18 Mar 2012)
+
+  18 Mar 2012; Thomas Beierlein <tomjbe@gentoo.org> +bacula-5.2.6.ebuild:
+  Version bump
+
+  13 Mar 2012; Brent Baude <ranger@gentoo.org> bacula-5.2.5.ebuild:
+  Marking bacula-5.2.5 ppc for bug 407453
+
+  08 Mar 2012; Markos Chandras <hwoarang@gentoo.org> bacula-5.2.5.ebuild:
+  Stable on amd64 wrt bug #407453
+
+*bacula-5.2.5 (06 Feb 2012)
+
+  06 Feb 2012; Thomas Beierlein <tomjbe@gentoo.org> -bacula-5.2.3.ebuild,
+  +bacula-5.2.5.ebuild:
+  Fixes bug introduced by 5.2.4. Drop old
+
+*bacula-5.2.4 (22 Jan 2012)
+
+  22 Jan 2012; Thomas Beierlein <tomjbe@gentoo.org> +bacula-5.2.4.ebuild:
+  Bug fix release
+
+*bacula-5.2.3-r1 (04 Jan 2012)
+
+  04 Jan 2012; Thomas Beierlein <tomjbe@gentoo.org> +bacula-5.2.3-r1.ebuild:
+  Change REQUIRED_USE (see bug #397555). Thanks for reporting
+  waa-gentoo@revpol.com
+
+*bacula-5.2.3 (02 Jan 2012)
+
+  02 Jan 2012; Thomas Beierlein <tomjbe@gentoo.org> +bacula-5.2.3.ebuild,
+  +files/5.2.3/bacula-5.2.3-Makefile.patch,
+  +files/5.2.3/bacula-5.2.3-as-needed.patch,
+  +files/5.2.3/bacula-5.2.3-doc.patch,
+  +files/5.2.3/bacula-5.2.3-fix-static.patch,
+  +files/5.2.3/bacula-5.2.3-ldflags.patch,
+  +files/5.2.3/bacula-5.2.3-lib-search-path.patch,
+  +files/5.2.3/bacula-5.2.3-openssl-1.patch:
+  Version bump
+
+  02 Nov 2011; Mike Frysinger <vapier@gentoo.org> bacula-5.0.2-r1.ebuild,
+  bacula-5.0.3-r1.ebuild, bacula-5.0.3-r2.ebuild, bacula-5.0.3-r3.ebuild:
+  Drop "die" from enew{user,group} since these have always taken care of
+  calling it when necessary.
+
+  14 May 2011; Thomas Beierlein <tomjbe@gentoo.org>
+  -files/5.0.1/bacula-5.0.1-as-needed.patch,
+  -files/5.0.1/bacula-5.0.1-lib-search-path.patch,
+  -files/5.0.1/bacula-5.0.1-ncurses.patch, -bacula-5.0.3.ebuild,
+  -files/5.0.1/bacula-dir.confd, bacula-5.0.3-r3.ebuild,
+  -files/5.0.1/bacula-dir.initd, -files/5.0.1/bacula-fd.confd,
+  -files/5.0.1/bacula-fd.initd, -files/5.0.1/bacula-sd.confd,
+  -files/5.0.1/bacula-sd.initd, -files/5.0.2/bacula-dir.confd,
+  -files/5.0.2/bacula-dir.initd, -files/5.0.2/bacula-fd.confd,
+  -files/5.0.2/bacula-fd.initd, -files/5.0.2/bacula-sd.confd,
+  -files/5.0.2/bacula-sd.initd, -files/5.0.3/bacula-dir.confd,
+  -files/5.0.3/bacula-dir.initd, -files/5.0.3/bacula-fd.confd,
+  -files/5.0.3/bacula-fd.initd, -files/5.0.3/bacula-sd.confd,
+  -files/5.0.3/bacula-sd.initd, -bacula-5.0.1-r2.ebuild,
+  bacula-5.0.2-r1.ebuild, -bacula-5.0.2-r2.ebuild, bacula-5.0.3-r1.ebuild,
+  bacula-5.0.3-r2.ebuild, +files/bacula-dir.confd, +files/bacula-dir.initd,
+  +files/bacula-fd.confd, +files/bacula-fd.initd, +files/bacula-sd.confd,
+  +files/bacula-sd.initd:
+  Prune FILESDIR (BUG #344011) from redundant files. Drop old unstable
+  versions.
+
+  06 Mar 2011; Justin Lecher <jlec@gentoo.org> bacula-5.0.1-r2.ebuild,
+  bacula-5.0.2-r1.ebuild, bacula-5.0.2-r2.ebuild, bacula-5.0.3.ebuild,
+  bacula-5.0.3-r1.ebuild, bacula-5.0.3-r2.ebuild, bacula-5.0.3-r3.ebuild:
+  Moved to slotted qwt
+
+*bacula-5.0.3-r3 (26 Feb 2011)
+
+  26 Feb 2011; Thomas Beierlein <tomjbe@gentoo.org> +bacula-5.0.3-r3.ebuild,
+  +files/5.0.3/bacula-5.0.3-doc.patch:
+  Drop use of 'ecompress'(bug #356499). Thanks for reporting Ulrich (ulm@g.o)
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> bacula-5.0.3-r1.ebuild:
+  sparc stable wrt #341471
+
+  30 Dec 2010; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.0.3-r2.ebuild:
+  Fix installation of 'bat' console (bug #350168). Finally correct.
+
+  30 Dec 2010; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.0.3-r2.ebuild:
+  Fix installation of 'bat' console (bug #350168). Thanks for reporting Phil
+  <alaric@caerllewys.net>
+
+  29 Dec 2010; Thomas Kahle <tomka@gentoo.org> bacula-5.0.3-r1.ebuild:
+  x86 stable per bug 341471
+
+*bacula-5.0.3-r2 (29 Dec 2010)
+
+  29 Dec 2010; Thomas Beierlein <tomjbe@gentoo.org> +bacula-5.0.3-r2.ebuild,
+  +files/5.0.3/bacula-5.0.3-fix-static.patch:
+  Fix USE=static - only supported for bacula-clientonly now. bug #341983.
+  Thanks dabbott@gentoo.org for reporting
+
+  27 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  bacula-5.0.3-r1.ebuild:
+  Use Python 2 (bug #308309).
+
+  04 Nov 2010; Thomas Beierlein <tomjbe@gentoo.org>
+  -files/2.4.1/2.4.1-mount.patch, -files/2.4.1/2.4.1-mysql-timeout.patch,
+  -files/2.4.1/2.4.1-sd-crash.patch,
+  -files/2.4.1/bacula-default-configs.patch, -files/2.4.1/bacula-dir-conf,
+  -files/2.4.1/bacula-dir-init, -files/2.4.1/bacula-fd-conf,
+  -files/2.4.1/bacula-fd-init, -files/2.4.1/bacula-gnomesu2gksu.diff,
+  -files/2.4.1/bacula-sd-conf, -files/2.4.1/bacula-sd-init,
+  -files/3.0.3/bacula-3.0.3-openssl-1.patch,
+  -files/3.0.3/bacula-default-configs.patch, -files/3.0.3/bacula-dir-conf,
+  -files/3.0.3/bacula-dir-init, -files/3.0.3/bacula-fd-conf,
+  -files/3.0.3/bacula-fd-init, -files/3.0.3/bacula-gnomesu2gksu.diff,
+  -files/3.0.3/bacula-sd-conf, -files/3.0.3/bacula-sd-init,
+  -bacula-2.4.1-r1.ebuild, -bacula-3.0.3.ebuild, metadata.xml:
+  Cleanup old versions.
+
+  02 Nov 2010; Jeroen Roovers <jer@gentoo.org> bacula-5.0.3-r1.ebuild:
+  Stable for PPC (bug #341471).
+
+  02 Nov 2010; Jeroen Roovers <jer@gentoo.org> bacula-5.0.3-r1.ebuild:
+  Stable for HPPA (bug #341471).
+
+  31 Oct 2010; Markos Chandras <hwoarang@gentoo.org> bacula-5.0.3-r1.ebuild:
+  Stable on amd64 wrt bug #341471
+
+*bacula-5.0.3-r1 (23 Aug 2010)
+
+  23 Aug 2010; Thomas Beierlein <tomjbe@gentoo.org> +bacula-5.0.3-r1.ebuild,
+  +files/5.0.3/bacula-5.0.3-as-needed.patch:
+  Fix as-needed problem, bug #334029
+
+*bacula-5.0.3 (21 Aug 2010)
+
+  21 Aug 2010; Thomas Beierlein <tomjbe@gentoo.org>
+  -files/2.4.4/bacula-default-configs.patch, -files/2.4.4/bacula-dir-conf,
+  -files/2.4.4/bacula-dir-init, -files/2.4.4/bacula-fd-conf,
+  -files/2.4.4/bacula-fd-init, -files/2.4.4/bacula-gnomesu2gksu.diff,
+  -files/2.4.4/bacula-sd-conf, -files/2.4.4/bacula-sd-init,
+  -files/3.0.2/bacula-default-configs.patch, -files/3.0.2/bacula-dir-conf,
+  -files/3.0.2/bacula-dir-init, -files/3.0.2/bacula-fd-conf,
+  -files/3.0.2/bacula-fd-init, -files/3.0.2/bacula-gnomesu2gksu.diff,
+  -files/3.0.2/bacula-sd-conf, -files/3.0.2/bacula-sd-init,
+  +files/5.0.3/bacula-5.0.3-Makefile.patch,
+  +files/5.0.3/bacula-5.0.3-ldflags.patch,
+  +files/5.0.3/bacula-5.0.3-lib-search-path.patch,
+  +files/5.0.3/bacula-5.0.3-openssl-1.patch, +files/5.0.3/bacula-dir.confd,
+  +files/5.0.3/bacula-dir.initd, +files/5.0.3/bacula-fd.confd,
+  +files/5.0.3/bacula-fd.initd, +files/5.0.3/bacula-sd.confd,
+  +files/5.0.3/bacula-sd.initd, -bacula-2.4.4.ebuild, -bacula-3.0.2.ebuild,
+  -bacula-5.0.2.ebuild, +bacula-5.0.3.ebuild:
+  Version bump to 5.0.3. Cleanup of old versions.
+
+  23 Jul 2010; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.0.2-r2.ebuild:
+  drop leftover comment
+
+  22 Jul 2010; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.0.2-r2.ebuild:
+  Make sqlite3 the default database if none or to many database backends are
+  selected. Thanks darkside for pointing it out
+
+  22 Jul 2010; Thomas Beierlein <tomjbe@gentoo.org> bacula-5.0.2-r2.ebuild:
+  revert batch-insert to always enabled
+
+*bacula-5.0.2-r2 (22 Jul 2010)
+
+  22 Jul 2010; Thomas Beierlein <tomjbe@gentoo.org> +bacula-5.0.2-r2.ebuild,
+  +files/5.0.2/bacula-5.0.2-Makefile.patch,
+  +files/5.0.2/bacula-5.0.2-ldflags.patch:
+  - fix for bug #291160, #322181 and #326333
+  - add vimfiles
+  - make 'bat' respect LDFLAGS
+  - let 'make' fail if some error emerges in a subdir build
+
+  19 Jul 2010; Thomas Beierlein <tomjbe@gentoo.org>
+  files/5.0.2/bacula-5.0.2-openssl-1.patch:
+  Fix openssl-1 patch to work for openssl<1.0.0. See Bug #328785
+
+  17 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> bacula-3.0.3.ebuild,
+  +files/3.0.3/bacula-3.0.3-openssl-1.patch:
+  Fix building with OpenSSL >= 1.0.0 wrt #328701 by Thomas Beierlein.
+
+  17 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  bacula-5.0.2-r1.ebuild, +files/5.0.2/bacula-5.0.2-openssl-1.patch:
+  Fix building with OpenSSL >= 1.0.0 wrt #328701 by Thomas Beierlein.
+
+  14 Jul 2010; Jeroen Roovers <jer@gentoo.org> bacula-5.0.2-r1.ebuild:
+  Stable for HPPA (bug #282020).
+
+  03 Jul 2010; Raúl Porcel <armin76@gentoo.org> bacula-5.0.2-r1.ebuild:
+  sparc stable wrt #282020
+
+  24 Jun 2010; Christian Faulhammer <fauli@gentoo.org>
+  bacula-5.0.2-r1.ebuild:
+  stable x86, bug 282020
+
+  24 Jun 2010; Christoph Mende <angelos@gentoo.org> bacula-5.0.2-r1.ebuild:
+  Stable on amd64 wrt bug #282020
+
+  17 Jun 2010; Patrick Lauer <patrick@gentoo.org> bacula-2.4.1-r1.ebuild,
+  bacula-2.4.4.ebuild, bacula-3.0.2.ebuild, bacula-3.0.3.ebuild,
+  bacula-5.0.1-r2.ebuild, bacula-5.0.2.ebuild, bacula-5.0.2-r1.ebuild:
+  Migrating away from deprecated postgres virtuals
+
+  04 Jun 2010; Thomas Beierlein <tomjbe@gentoo.org> metadata.xml:
+  Taking over maintainership.
+
+*bacula-5.0.2-r1 (19 May 2010)
+
+  19 May 2010; Thomas Beierlein <tomjbe@gentoo.org> +bacula-5.0.2-r1.ebuild,
+  metadata.xml:
+  * fix for bug #299639
+  * drop unneeded test for qwt<5 
+  * no (GUI) console programs gets installed if USE=bacula-clientonly 
+    (see bug #311123)
+  * cleanup description for local USE flags
+
+  14 May 2010; Wolfram Schlich <wschlich@gentoo.org> bacula-5.0.2.ebuild:
+  fix bug #311099
+
+  12 May 2010; Thomas Beierlein <tomjbe@gentoo.org>
+  +files/5.0.1/bacula-5.0.1-lib-search-path.patch:
+  add missing patch file
+
+*bacula-5.0.2 (11 May 2010)
+
+  11 May 2010; Wolfram Schlich <wschlich@gentoo.org>
+  +files/5.0.2/bacula-dir.confd, +files/5.0.2/bacula-fd.confd,
+  +files/5.0.2/bacula-dir.initd, +files/5.0.2/bacula-fd.initd,
+  +files/5.0.2/bacula-5.0.2-as-needed.patch, +files/5.0.2/bacula-sd.confd,
+  +files/5.0.2/bacula-5.0.2-lib-search-path.patch,
+  +files/5.0.2/bacula-sd.initd, bacula-5.0.1-r2.ebuild,
+  +bacula-5.0.2.ebuild:
+  version bump
+
+*bacula-5.0.1-r2 (23 Mar 2010)
+
+  23 Mar 2010; Wolfram Schlich <wschlich@gentoo.org>
+  +files/5.0.1/bacula-dir.initd, +files/5.0.1/bacula-fd.initd,
+  +files/5.0.1/bacula-5.0.1-as-needed.patch, +files/5.0.1/bacula-fd.confd,
+  +files/5.0.1/bacula-sd.confd, +files/5.0.1/bacula-5.0.1-ncurses.patch,
+  +files/5.0.1/bacula-dir.confd, +files/5.0.1/bacula-sd.initd,
+  +bacula-5.0.1-r2.ebuild:
+  version bump, fix bugs #310087 and #309975, drop USE=gnome, USE=wxwindows
+  and USE=bacula-console (now only using USE=qt4 and USE=X)
+
+  10 Feb 2010; Ryan Hill <dirtyepic@gentoo.org> bacula-2.4.1-r1.ebuild,
+  bacula-2.4.4.ebuild, bacula-3.0.2.ebuild, bacula-3.0.3.ebuild:
+  Make conditional so we don't die w/ USE="-wxwidgets" when wxGTK
+  was built with USE="-X".
+
+  10 Feb 2010; Ryan Hill <dirtyepic@gentoo.org> bacula-2.4.1-r1.ebuild,
+  bacula-2.4.4.ebuild, bacula-3.0.2.ebuild, bacula-3.0.3.ebuild:
+  Fix the wxGTK stuff (bug #236621). wxwindows->wxwidgets
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> bacula-2.4.1-r1.ebuild,
+  bacula-2.4.4.ebuild, bacula-3.0.2.ebuild, bacula-3.0.3.ebuild:
+  virtual/ghostscript->app-text/ghostscript-gpl: -gpl is the only
+  implementation in the tree.
+
+*bacula-3.0.3 (08 Nov 2009)
+
+  08 Nov 2009; Wolfram Schlich <wschlich@gentoo.org>
+  +files/3.0.3/bacula-default-configs.patch, +files/3.0.3/bacula-dir-conf,
+  +files/3.0.3/bacula-dir-init, +files/3.0.3/bacula-fd-conf,
+  +files/3.0.3/bacula-fd-init, +files/3.0.3/bacula-gnomesu2gksu.diff,
+  +files/3.0.3/bacula-sd-conf, +files/3.0.3/bacula-sd-init,
+  +bacula-3.0.3.ebuild:
+  version bump
+
+  30 Sep 2009; Dominik Kapusta <ayoy@gentoo.org> bacula-2.4.1-r1.ebuild,
+  bacula-2.4.4.ebuild, bacula-3.0.2.ebuild:
+  Removed dependency on Qt metapackage
+
+  17 Sep 2009; Patrick Lauer <patrick@gentoo.org> bacula-3.0.2.ebuild:
+  Adding dodir call for logwatch, fixes #284256
+
+*bacula-3.0.2 (09 Sep 2009)
+
+  09 Sep 2009; Wolfram Schlich <wschlich@gentoo.org>
+  +files/3.0.2/bacula-default-configs.patch, +files/3.0.2/bacula-dir-conf,
+  +files/3.0.2/bacula-dir-init, +files/3.0.2/bacula-fd-conf,
+  +files/3.0.2/bacula-fd-init, +files/3.0.2/bacula-gnomesu2gksu.diff,
+  +files/3.0.2/bacula-sd-conf, +files/3.0.2/bacula-sd-init,
+  +bacula-3.0.2.ebuild:
+  version bump, (also) fixes bugs #280048, #272282, #265647, #258187, #257016,
+  #254743, #235515
+
+  19 Aug 2009; Petteri Räty <betelgeuse@gentoo.org> bacula-2.4.4.ebuild:
+  Migrate to EAPI 2 in order to get rid of built_with_use.
+
+  03 Feb 2009; Wolfram Schlich <wschlich@gentoo.org>
+  -files/2.0.3/bacula-all-init, -files/2.0.3/bacula-dir-init,
+  -files/bacula-2.0.3-default-configs.patch, -files/2.0.3/bacula-dir-conf,
+  -files/2.0.3/bacula-fd-conf, -files/bacula-2.0.3-gnomesu2gksu.diff,
+  -files/2.0.3/bacula-all-conf, -files/2.0.3/bacula-fd-init,
+  -files/2.0.3/bacula-sd-conf, -files/2.0.3/bacula-sd-init,
+  -bacula-2.0.3.ebuild:
+  removed old versions
+
+*bacula-2.4.4 (26 Jan 2009)
+
+  26 Jan 2009; Wolfram Schlich <wschlich@gentoo.org>
+  -files/2.4.2/bacula-default-configs.patch, -files/2.4.2/bacula-dir-conf,
+  -files/2.4.2/bacula-dir-init, -files/2.4.2/bacula-fd-conf,
+  -files/2.4.2/bacula-fd-init, -files/2.4.2/bacula-gnomesu2gksu.diff,
+  -files/2.4.2/bacula-sd-conf, -files/2.4.2/bacula-sd-init,
+  -files/2.4.3/2.4.3-cancel-after-network-outage.patch,
+  -files/2.4.3/2.4.3-orphaned-jobs.patch,
+  -files/2.4.3/2.4.3-update-slots.patch,
+  -files/2.4.3/bacula-default-configs.patch, -files/2.4.3/bacula-dir-conf,
+  -files/2.4.3/bacula-dir-init, -files/2.4.3/bacula-fd-conf,
+  -files/2.4.3/bacula-fd-init, -files/2.4.3/bacula-gnomesu2gksu.diff,
+  -files/2.4.3/bacula-sd-conf, -files/2.4.3/bacula-sd-init,
+  +files/2.4.4/bacula-default-configs.patch, +files/2.4.4/bacula-dir-conf,
+  +files/2.4.4/bacula-dir-init, +files/2.4.4/bacula-fd-conf,
+  +files/2.4.4/bacula-fd-init, +files/2.4.4/bacula-gnomesu2gksu.diff,
+  +files/2.4.4/bacula-sd-conf, +files/2.4.4/bacula-sd-init,
+  -bacula-2.4.1.ebuild, -bacula-2.4.2.ebuild, -bacula-2.4.3.ebuild,
+  +bacula-2.4.4.ebuild:
+  version bump, removed old versions
+
+  11 Jan 2009; Markus Meier <maekke@gentoo.org> bacula-2.4.1-r1.ebuild:
+  amd64 stable, bug #254071
+
+*bacula-2.4.3 (07 Nov 2008)
+
+  07 Nov 2008; Wolfram Schlich <wschlich@gentoo.org>
+  +files/2.4.3/2.4.3-cancel-after-network-outage.patch,
+  +files/2.4.3/2.4.3-orphaned-jobs.patch,
+  +files/2.4.3/2.4.3-update-slots.patch,
+  +files/2.4.3/bacula-default-configs.patch, +files/2.4.3/bacula-dir-conf,
+  +files/2.4.3/bacula-dir-init, +files/2.4.3/bacula-fd-conf,
+  +files/2.4.3/bacula-fd-init, +files/2.4.3/bacula-gnomesu2gksu.diff,
+  +files/2.4.3/bacula-sd-conf, +files/2.4.3/bacula-sd-init,
+  +bacula-2.4.3.ebuild:
+  version bump
+
+  11 Aug 2008; Ben de Groot <yngwin@gentoo.org> bacula-2.4.1.ebuild,
+  bacula-2.4.1-r1.ebuild, bacula-2.4.2.ebuild:
+  Fix split qt4 deps wrt bug 217161.
+
+  01 Aug 2008; nixnut <nixnut@gentoo.org> bacula-2.4.1-r1.ebuild:
+  Stable on ppc wrt bug 232828
+
+*bacula-2.4.2 (29 Jul 2008)
+
+  29 Jul 2008; Wolfram Schlich <wschlich@gentoo.org>
+  +files/2.4.2/bacula-default-configs.patch, +files/2.4.2/bacula-dir-conf,
+  +files/2.4.2/bacula-dir-init, +files/2.4.2/bacula-fd-conf,
+  +files/2.4.2/bacula-fd-init, +files/2.4.2/bacula-gnomesu2gksu.diff,
+  +files/2.4.2/bacula-sd-conf, +files/2.4.2/bacula-sd-init,
+  +bacula-2.4.2.ebuild:
+  version bump
+
+  24 Jul 2008; Raúl Porcel <armin76@gentoo.org> bacula-2.4.1-r1.ebuild:
+  x86 stable wrt #232828
+
+  24 Jul 2008; Jeroen Roovers <jer@gentoo.org> bacula-2.4.1-r1.ebuild:
+  Stable for HPPA (bug #232828).
+
+  24 Jul 2008; Ferris McCormick <fmccor@gentoo.org> bacula-2.4.1-r1.ebuild:
+  Sparc stable, critical/P2 Bug #232828.
+
+*bacula-2.4.1-r1 (24 Jul 2008)
+
+  24 Jul 2008; Wolfram Schlich <wschlich@gentoo.org>
+  +files/2.4.1/2.4.1-mount.patch, +files/2.4.1/2.4.1-mysql-timeout.patch,
+  +files/2.4.1/2.4.1-sd-crash.patch, +bacula-2.4.1-r1.ebuild:
+  add (critical) upstream patches
+
+  23 Jul 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  14 Jul 2008; Christian Faulhammer <opfer@gentoo.org> bacula-2.4.1.ebuild:
+  stable x86, security bug 196834
+
+  14 Jul 2008; Jeroen Roovers <jer@gentoo.org> bacula-2.4.1.ebuild:
+  Stable for HPPA (bug #196834).
+
+  13 Jul 2008; Tobias Scherbaum <dertobi123@gentoo.org> bacula-2.4.1.ebuild:
+  ppc stable, bug #196834
+
+  11 Jul 2008; Ferris McCormick <fmccor@gentoo.org> bacula-2.4.1.ebuild:
+  Sparc stable, security bug #196834, everything as expected.
+
+  11 Jul 2008; Wolfram Schlich <wschlich@gentoo.org>
+  -files/2.4.0/bacula-all-conf, -files/2.4.0/bacula-all-init,
+  -files/2.4.0/bacula-default-configs.patch, -files/2.4.0/bacula-dir-conf,
+  -files/2.4.0/bacula-dir-init, -files/2.4.0/bacula-fd-conf,
+  -files/2.4.0/bacula-fd-init, -files/2.4.0/bacula-gnomesu2gksu.diff,
+  -files/2.4.0/bacula-sd-conf, -files/2.4.0/bacula-sd-init,
+  -bacula-2.4.0.ebuild:
+  removed old version
+
+*bacula-2.4.1 (09 Jul 2008)
+
+  09 Jul 2008; Wolfram Schlich <wschlich@gentoo.org>
+  +files/2.4.1/bacula-all-conf, +files/2.4.1/bacula-all-init,
+  +files/2.4.1/bacula-default-configs.patch, +files/2.4.1/bacula-dir-conf,
+  +files/2.4.1/bacula-dir-init, +files/2.4.1/bacula-fd-conf,
+  +files/2.4.1/bacula-fd-init, +files/2.4.1/bacula-gnomesu2gksu.diff,
+  +files/2.4.1/bacula-sd-conf, +files/2.4.1/bacula-sd-init,
+  +bacula-2.4.1.ebuild:
+  version bump, add warning wrt bug #196834
+
+*bacula-2.4.0 (07 Jun 2008)
+
+  07 Jun 2008; Wolfram Schlich <wschlich@gentoo.org>
+  -files/2.2.8/2.2.8-jobmedia.patch, -files/2.2.8/2.2.8-jobmedia-fix.patch,
+  -files/2.2.8/2.2.8-bacula-conf.patch,
+  -files/2.2.8/2.2.8-pool-source.patch, -files/2.2.8/2.2.8-strip-path.patch,
+  -files/2.2.8/bacula-all-conf, -files/2.2.8/bacula-all-init,
+  -files/2.2.8/bacula-default-configs.patch, -files/2.2.8/bacula-dir-conf,
+  -files/2.2.8/bacula-dir-init, -files/2.2.8/bacula-fd-conf,
+  -files/2.2.8/bacula-fd-init, -files/2.2.8/bacula-gnomesu2gksu.diff,
+  -files/2.2.8/bacula-sd-conf, -files/2.2.8/bacula-sd-init,
+  +files/2.4.0/bacula-all-conf, +files/2.4.0/bacula-all-init,
+  +files/2.4.0/bacula-default-configs.patch, +files/2.4.0/bacula-dir-conf,
+  +files/2.4.0/bacula-dir-init, +files/2.4.0/bacula-fd-conf,
+  +files/2.4.0/bacula-fd-init, +files/2.4.0/bacula-gnomesu2gksu.diff,
+  +files/2.4.0/bacula-sd-conf, +files/2.4.0/bacula-sd-init,
+  -bacula-2.2.8.ebuild, -bacula-2.2.8-r1.ebuild, +bacula-2.4.0.ebuild:
+  version bump
+
+  21 May 2008; Tiziano Müller <dev-zero@gentoo.org> bacula-2.0.3.ebuild,
+  bacula-2.2.8.ebuild, bacula-2.2.8-r1.ebuild:
+  Changed dependency for postgresql from dev-db/postgresql to
+  virtual/postgresql-server
+
+*bacula-2.2.8-r1 (29 Apr 2008)
+
+  29 Apr 2008; Wolfram Schlich <wschlich@gentoo.org>
+  +files/2.2.8/2.2.8-bacula-conf.patch, +files/2.2.8/2.2.8-jobmedia.patch,
+  +files/2.2.8/2.2.8-jobmedia-fix.patch,
+  +files/2.2.8/2.2.8-pool-source.patch, +files/2.2.8/2.2.8-strip-path.patch,
+  +bacula-2.2.8-r1.ebuild:
+  incorporate upstream release patches
+
+  22 Mar 2008; Wolfram Schlich <wschlich@gentoo.org> bacula-2.2.8.ebuild:
+  depend on latex2html emerged with USE=png (bug #200562)
+
+  22 Mar 2008; Wolfram Schlich <wschlich@gentoo.org>
+  files/2.0.3/bacula-all-init, files/2.0.3/bacula-dir-init:
+  fixed wrong quoting
+
+  19 Mar 2008; Wolfram Schlich <wschlich@gentoo.org>
+  -files/bacula-1.36.3-cdrecord-configure.patch,
+  -files/bacula-1.36.3-default-configs.patch,
+  -files/bacula-doc-1.36.3-latex-icons.patch,
+  -files/bacula-1.36.3-mtxtmpfile.patch, -files/1.36.3/bacula-sd-init,
+  -files/bacula-2.0.2-default-configs.patch, files/2.0.3/bacula-all-init,
+  -files/bacula-2.0.2-gnomesu2gksu.diff, files/2.0.3/bacula-dir-init,
+  files/2.2.8/bacula-all-init, files/2.2.8/bacula-dir-init,
+  -files/bacula-conf, -files/bacula-init3, -files/randpass-1.37.40,
+  -files/1.36.3/bacula-all-conf, -files/1.36.3/bacula-all-init,
+  -files/1.36.3/bacula-dir-conf, -files/1.36.3/bacula-dir-init,
+  -files/1.36.3/bacula-fd-conf, -files/1.36.3/bacula-fd-init,
+  -files/1.36.3/bacula-sd-conf, metadata.xml, -bacula-1.36.3-r2.ebuild:
+  removed old versions
+
+  11 Mar 2008; Wolfram Schlich <wschlich@gentoo.org>
+  -files/2.2.4/bacula-all-conf, -files/2.2.4/bacula-all-init,
+  -files/2.2.4/bacula-default-configs.patch, -files/2.2.4/bacula-dir-conf,
+  -files/2.2.4/bacula-dir-init, -files/2.2.4/bacula-fd-conf,
+  -files/2.2.4/bacula-fd-init, -files/2.2.4/bacula-gnomesu2gksu.diff,
+  -files/2.2.4/bacula-sd-conf, -files/2.2.4/bacula-sd-init,
+  -files/2.2.5/bacula-all-conf, -files/2.2.5/bacula-all-init,
+  -files/2.2.5/bacula-default-configs.patch, -files/2.2.5/bacula-dir-conf,
+  -files/2.2.5/bacula-dir-init, -files/2.2.5/bacula-fd-conf,
+  -files/2.2.5/bacula-fd-init, -files/2.2.5/bacula-gnomesu2gksu.diff,
+  -files/2.2.5/bacula-sd-conf, -files/2.2.5/bacula-sd-init,
+  -files/2.2.5/fix-nextvol.patch, -files/2.2.6/bacula-all-conf,
+  -files/2.2.6/bacula-all-init, -files/2.2.6/bacula-default-configs.patch,
+  -files/2.2.6/bacula-dir-conf, -files/2.2.6/bacula-dir-init,
+  -files/2.2.6/bacula-fd-conf, -files/2.2.6/bacula-fd-init,
+  -files/2.2.6/bacula-gnomesu2gksu.diff, -files/2.2.6/bacula-sd-conf,
+  -files/2.2.6/bacula-sd-init, -files/2.2.7/bacula-all-conf,
+  -files/2.2.7/bacula-all-init, -files/2.2.7/bacula-default-configs.patch,
+  -files/2.2.7/bacula-dir-conf, -files/2.2.7/bacula-dir-init,
+  -files/2.2.7/bacula-fd-conf, -files/2.2.7/bacula-fd-init,
+  -files/2.2.7/bacula-gnomesu2gksu.diff, -files/2.2.7/bacula-sd-conf,
+  -files/2.2.7/bacula-sd-init, -bacula-2.2.4.ebuild, -bacula-2.2.5.ebuild,
+  -bacula-2.2.5-r1.ebuild, -bacula-2.2.6.ebuild, -bacula-2.2.7.ebuild:
+  removed old versions
+
+*bacula-2.2.8 (28 Jan 2008)
+
+  28 Jan 2008; Wolfram Schlich <wschlich@gentoo.org>
+  +files/2.2.8/bacula-all-conf, +files/2.2.8/bacula-all-init,
+  +files/2.2.8/bacula-default-configs.patch, +files/2.2.8/bacula-dir-conf,
+  +files/2.2.8/bacula-dir-init, +files/2.2.8/bacula-fd-conf,
+  +files/2.2.8/bacula-fd-init, +files/2.2.8/bacula-gnomesu2gksu.diff,
+  +files/2.2.8/bacula-sd-conf, +files/2.2.8/bacula-sd-init,
+  +bacula-2.2.8.ebuild:
+  version bump
+
+  01 Jan 2008; Matti Bickel <mabi@gentoo.org> bacula-2.2.7.ebuild:
+  ~ppc readded (bug #195682)
+
+*bacula-2.2.7 (29 Dec 2007)
+
+  29 Dec 2007; Wolfram Schlich <wschlich@gentoo.org>
+  +files/2.2.7/bacula-all-conf, +files/2.2.7/bacula-all-init,
+  +files/2.2.7/bacula-default-configs.patch, +files/2.2.7/bacula-dir-conf,
+  +files/2.2.7/bacula-dir-init, +files/2.2.7/bacula-fd-conf,
+  +files/2.2.7/bacula-fd-init, +files/2.2.7/bacula-gnomesu2gksu.diff,
+  +files/2.2.7/bacula-sd-conf, +files/2.2.7/bacula-sd-init,
+  +bacula-2.2.7.ebuild:
+  version bump
+
+  15 Nov 2007; Wolfram Schlich <wschlich@gentoo.org>
+  +files/2.2.6/bacula-all-conf, +files/2.2.6/bacula-all-init,
+  +files/2.2.6/bacula-default-configs.patch, +files/2.2.6/bacula-dir-conf,
+  +files/2.2.6/bacula-dir-init, +files/2.2.6/bacula-fd-conf,
+  +files/2.2.6/bacula-fd-init, +files/2.2.6/bacula-gnomesu2gksu.diff,
+  +files/2.2.6/bacula-sd-conf, +files/2.2.6/bacula-sd-init,
+  bacula-2.2.6.ebuild:
+  add missing files subdir for 2.2.6, remove unsuitable patch
+
+*bacula-2.2.6 (14 Nov 2007)
+
+  14 Nov 2007; Wolfram Schlich <wschlich@gentoo.org> +bacula-2.2.6.ebuild:
+  version bump
+
+  15 Oct 2007; Ferris McCormick <fmccor@gentoo.org> bacula-2.2.5-r1.ebuild:
+  Re-add ~sparc --- Bug #195682
+
+  14 Oct 2007; Jeroen Roovers <jer@gentoo.org> bacula-2.2.5.ebuild,
+  bacula-2.2.5-r1.ebuild:
+  Marked ~hppa (bug #195682).
+
+*bacula-2.2.5-r1 (14 Oct 2007)
+
+  14 Oct 2007; Wolfram Schlich <wschlich@gentoo.org>
+  +files/2.2.5/fix-nextvol.patch, +bacula-2.2.5-r1.ebuild:
+  fix bug #195794
+
+  13 Oct 2007; Jeroen Roovers <jer@gentoo.org> bacula-2.2.5.ebuild:
+  Fix quoting issues found by repoman.
+
+*bacula-2.2.5 (12 Oct 2007)
+
+  12 Oct 2007; Wolfram Schlich <wschlich@gentoo.org>
+  +files/2.2.5/bacula-all-conf, +files/2.2.5/bacula-all-init,
+  +files/2.2.5/bacula-default-configs.patch, +files/2.2.5/bacula-dir-conf,
+  +files/2.2.5/bacula-dir-init, +files/2.2.5/bacula-fd-conf,
+  +files/2.2.5/bacula-fd-init, +files/2.2.5/bacula-gnomesu2gksu.diff,
+  +files/2.2.5/bacula-sd-conf, +files/2.2.5/bacula-sd-init,
+  +bacula-2.2.5.ebuild:
+  version bump
+
+*bacula-2.2.4 (10 Oct 2007)
+
+  10 Oct 2007; Wolfram Schlich <wschlich@gentoo.org>
+  +files/2.2.4/bacula-all-conf, +files/2.2.4/bacula-all-init,
+  +files/2.2.4/bacula-default-configs.patch, +files/2.2.4/bacula-dir-conf,
+  +files/2.2.4/bacula-dir-init, +files/2.2.4/bacula-fd-conf,
+  +files/2.2.4/bacula-fd-init, +files/2.2.4/bacula-gnomesu2gksu.diff,
+  +files/2.2.4/bacula-sd-conf, +files/2.2.4/bacula-sd-init,
+  +bacula-2.2.4.ebuild:
+  version bump
+
+  21 Aug 2007; Ferris McCormick <fmccor@gentoo.org> bacula-2.0.3.ebuild:
+  Sparc stable --- Bug #153189 --- (requires ghostscript upgrade for USE=doc:
+    Bug #187280).
+
+  21 Aug 2007; Jeroen Roovers <jer@gentoo.org> bacula-2.0.3.ebuild:
+  Stable for HPPA (bug #153189).
+
+  04 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org> bacula-2.0.3.ebuild:
+  ppc stable, bug #153189
+
+  03 Aug 2007; Christian Faulhammer <opfer@gentoo.org> bacula-2.0.3.ebuild:
+  stable x86, bug 153189
+
+  29 Apr 2007; Ryan Hill <dirtyepic@gentoo.org> bacula-2.0.3.ebuild:
+  Fix wxGTK dep for bug #164139
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org> bacula-1.36.3-r2.ebuild,
+  bacula-2.0.3.ebuild:
+  Fix *initd and *envd calls, bug #173884.
+
+  22 Apr 2007; Wolfram Schlich <wschlich@gentoo.org> bacula-2.0.3.ebuild:
+  fixup wrt bug #174266, fix docs build issue
+
+  27 Mar 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/bacula-1.38.5-default-configs.patch,
+  -files/bacula-1.38.9-default-configs.patch, -files/1.38.5/bacula-all-conf,
+  -files/1.38.5/bacula-all-init, -files/1.38.5/bacula-dir-conf,
+  -files/1.38.5/bacula-dir-init, -files/1.38.5/bacula-fd-conf,
+  -files/1.38.5/bacula-fd-init, -files/1.38.5/bacula-sd-conf,
+  -files/1.38.5/bacula-sd-init, -files/2.0.2/bacula-all-conf,
+  -files/2.0.2/bacula-all-init, -files/2.0.2/bacula-dir-conf,
+  -files/2.0.2/bacula-dir-init, -files/2.0.2/bacula-fd-conf,
+  -files/2.0.2/bacula-fd-init, -files/2.0.2/bacula-sd-conf,
+  -files/2.0.2/bacula-sd-init, -bacula-1.36.3-r3.ebuild,
+  -bacula-1.38.5.ebuild, -bacula-1.38.9.ebuild, -bacula-2.0.2.ebuild:
+  clean out old versions with keywords overshadowed by newer ebuilds per lisa
+
+  25 Mar 2007; <genstef@gentoo.org> ChangeLog:
+  Remove virtual/x11 depend
+
+  23 Mar 2007; René Nussbaumer <killerfox@gentoo.org> bacula-2.0.3.ebuild:
+  Added to ~hppa, ~ppc. Requested by Mr_Bones_.
+
+*bacula-2.0.3 (10 Mar 2007)
+
+  10 Mar 2007; Wolfram Schlich <wschlich@gentoo.org>
+  +files/2.0.3/bacula-all-init, +files/2.0.3/bacula-dir-init,
+  +files/bacula-2.0.3-default-configs.patch, +files/2.0.3/bacula-dir-conf,
+  +files/2.0.3/bacula-fd-conf, +files/bacula-2.0.3-gnomesu2gksu.diff,
+  +files/2.0.3/bacula-all-conf, +files/2.0.3/bacula-fd-init,
+  +files/2.0.3/bacula-sd-conf, +files/2.0.3/bacula-sd-init,
+  +bacula-2.0.3.ebuild:
+  version bump
+
+  08 Mar 2007; Lisa Seelye <lisa@gentoo.org> bacula-2.0.2.ebuild:
+  Change src_compile so --with-$mydbtype as per bug 169698
+
+  07 Mar 2007; <genstef@gentoo.org> bacula-1.36.3-r2.ebuild,
+  bacula-1.36.3-r3.ebuild, bacula-1.38.5.ebuild, bacula-1.38.9.ebuild:
+  move from gnomesu to gksu wrt bug #147550
+
+  02 Mar 2007; Wolfram Schlich <wschlich@gentoo.org> bacula-2.0.2.ebuild:
+  remove prepall (already called by install_qa_check)
+
+  28 Feb 2007; Wolfram Schlich <wschlich@gentoo.org>
+  +files/bacula-2.0.2-gnomesu2gksu.diff, bacula-2.0.2.ebuild:
+  move from gnomesu to gksu wrt bug #147550
+
+*bacula-2.0.2 (28 Feb 2007)
+
+  28 Feb 2007; Wolfram Schlich <wschlich@gentoo.org>
+  +files/2.0.2/bacula-all-conf, +files/2.0.2/bacula-dir-conf,
+  +files/2.0.2/bacula-fd-conf, +files/bacula-2.0.2-default-configs.patch,
+  +files/2.0.2/bacula-all-init, +files/2.0.2/bacula-dir-init,
+  +files/2.0.2/bacula-fd-init, +files/2.0.2/bacula-sd-conf,
+  +files/2.0.2/bacula-sd-init, +bacula-2.0.2.ebuild:
+  version bump
+
+  15 Feb 2007; Daniel Black <dragonheart@gentoo.org>
+  bacula-1.36.3-r3.ebuild, bacula-1.38.5.ebuild, bacula-1.38.9.ebuild:
+  no more prep all as per bug #140699
+
+  24 Jan 2007; Marius Mauch <genone@gentoo.org> bacula-1.36.3-r2.ebuild,
+  bacula-1.36.3-r3.ebuild, bacula-1.38.5.ebuild, bacula-1.38.9.ebuild:
+  Replacing einfo with elog
+
+  02 Dec 2006; Fabian Groffen <grobian@gentoo.org> bacula-1.38.9.ebuild:
+  Grab config scripts from 1.38.5, as there is no directory for the current
+  version.
+
+  23 Nov 2006; Francesco Riosa <vivo@gentoo.org> bacula-1.36.3-r2.ebuild,
+  bacula-1.36.3-r3.ebuild, bacula-1.38.5.ebuild, bacula-1.38.9.ebuild:
+  dev-db/mysql => virtual/mysql
+
+  07 Nov 2006; Andrew Ross <aross@gentoo.org> metadata.xml:
+  Remove labmonkey from metadata.xml, as he's no longer bacula's maintainer.
+  bacula.
+
+  04 Nov 2006; Fabian Groffen <grobian@gentoo.org> bacula-1.38.9.ebuild:
+  Quoted some variables, and fixed use of USE-flags, see bug #153995
+
+  21 Sep 2006; <blubb@gentoo.org> bacula-1.38.9.ebuild:
+  added ~amd64
+
+  14 Jun 2006; Lisa Seelye <lisa@gentoo.org> ChangeLog, Manifest:
+  Typo in the ChangeLog about the bug number. Oops. bacula-1.38.9 deals with
+  bug #125729 not #12529.
+
+*bacula-1.38.9 (14 Jun 2006)
+
+  14 Jun 2006; Lisa Seelye <lisa@gentoo.org> files/1.38.5/bacula-all-conf,
+  +files/bacula-1.38.9-default-configs.patch, files/1.38.5/bacula-dir-conf,
+  +bacula-1.38.9.ebuild:
+  For bug #125729. Version bump, fix the issues, and to deal with comment #9: I've
+  fixed sqlite vs. sqlite3 support as well as NOT defaulting to any database if
+  two or more database USE flags are set. Likewise, the ebuild will die if the
+  user hasn't set any database USE flags (or it'll fail in econf).
+
+  27 Mar 2006; Chris Lee <labmonkey@gentoo.org> bacula-1.36.3-r2.ebuild,
+  bacula-1.36.3-r3.ebuild, bacula-1.38.5.ebuild:
+  Fixed einfo wrt #124745
+
+  19 Feb 2006; Chris Lee <labmonkey@gentoo.org> bacula-1.38.5.ebuild:
+  Fixed enewuser invocation wrt #123152
+
+  17 Feb 2006; Chris Lee <labmonkey@gentoo.org>
+  +files/bacula-1.38.5-default-configs.patch:
+  Last commit neglected to add bacula-1.38.5-default-configs.patch
+
+*bacula-1.38.5 (17 Feb 2006)
+*bacula-1.36.3-r3 (17 Feb 2006)
+
+  17 Feb 2006; Chris Lee <labmonkey@gentoo.org>
+  +files/bacula-1.36.3-default-configs.patch,
+  +files/bacula-doc-1.36.3-latex-icons.patch, +files/1.36.3/bacula-all-conf,
+  +files/1.36.3/bacula-all-init, +files/1.36.3/bacula-dir-conf,
+  +files/1.36.3/bacula-dir-init, +files/1.36.3/bacula-fd-conf,
+  +files/1.36.3/bacula-fd-init, +files/1.36.3/bacula-sd-conf,
+  +files/1.36.3/bacula-sd-init, +files/1.38.5/bacula-all-conf,
+  +files/1.38.5/bacula-all-init, +files/1.38.5/bacula-dir-conf,
+  +files/1.38.5/bacula-dir-init, +files/1.38.5/bacula-fd-conf,
+  +files/1.38.5/bacula-fd-init, +files/1.38.5/bacula-sd-conf,
+  +files/1.38.5/bacula-sd-init, +bacula-1.36.3-r3.ebuild,
+  +bacula-1.38.5.ebuild:
+  Revision bump. Modular X fix, docs handling, single/multiple init scripts
+  USE controlled. Added 1.38.5 ebuild.
+
+  11 Oct 2005; Daniel Black <dragonheart@gentoo.org> -files/bacula-init,
+  -bacula-1.34.4.ebuild:
+  remove vulnerable version
+
+  11 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  bacula-1.36.3-r2.ebuild:
+  Stable on sparc wrt #104986
+
+  09 Oct 2005; Mark Loeser <halcy0n@gentoo.org> bacula-1.36.3-r2.ebuild:
+  Stable on x86; bug #104986
+
+  07 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  bacula-1.36.3-r2.ebuild:
+  Stable on hppa, ppc.
+
+  07 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  bacula-1.36.3-r2.ebuild:
+  Stable on hppa, ppc.
+
+  06 Oct 2005; Daniel Black <dragonheart@gentoo.org>
+  +files/bacula-1.36.3-mtxtmpfile.patch, bacula-1.36.3-r2.ebuild:
+  opps last minute patch
+
+*bacula-1.36.3-r2 (06 Oct 2005)
+
+  06 Oct 2005; Daniel Black <dragonheart@gentoo.org>
+  -files/bacula-1.36.2-cdrecord-configure.patch,
+  -files/bacula-1.36.2-nocdrecord.patch,
+  -files/bacula-1.36.3-init-depends.patch,
+  -files/bacula-1.36.3-rescue-makefile.patch, +files/randpass-1.37.40,
+  -files/bacula-3.6.0-configure.diff, -files/bacula-init2,
+  -bacula-1.34.5.ebuild, -bacula-1.34.6.ebuild, -bacula-1.36.0.ebuild,
+  -bacula-1.36.3.ebuild, -bacula-1.36.3-r1.ebuild, +bacula-1.36.3-r2.ebuild:
+  randpass insecure file creation - bug #104986. Old version cleanout. Thanks
+  to Romang <zataz@zataz.net> for the bug report
+
+  04 Jul 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +files/bacula-1.36.2-cdrecord-configure.patch,
+  +files/bacula-1.36.2-nocdrecord.patch,
+  +files/bacula-1.36.3-cdrecord-configure.patch,
+  +files/bacula-1.36.3-init-depends.patch,
+  +files/bacula-1.36.3-rescue-makefile.patch,
+  +files/bacula-3.6.0-configure.diff, +files/bacula-conf,
+  +files/bacula-init, +files/bacula-init2, +files/bacula-init3,
+  +metadata.xml, +bacula-1.34.4.ebuild, +bacula-1.34.5.ebuild,
+  +bacula-1.34.6.ebuild, +bacula-1.36.0.ebuild, +bacula-1.36.3.ebuild,
+  +bacula-1.36.3-r1.ebuild:
+  Moved from app-admin/bacula to app-backup/bacula.
+
+*bacula-1.36.3-r1 (03 Jul 2005)
+
+  03 Jul 2005; Fernando Serboncini <fserb@gentoo.org>
+  +files/bacula-1.36.3-cdrecord-configure.patch,
+  -files/1.32f/1.32f-1-weekofmonth.patch,
+  -files/1.32f/1.32f-2-eom-nextvol.patch, +files/bacula-conf,
+  +files/bacula-init3, metadata.xml, -bacula-1.32f.ebuild,
+  -bacula-1.32f-r5.ebuild, -bacula-1.34.1.ebuild, +bacula-1.36.3-r1.ebuild:
+  removed old versions.
+  Completely rewritten ebuild.
+
+*bacula-1.36.3 (01 Jul 2005)
+
+  01 Jul 2005; Brian Jackson <iggy@gentoo.org>
+  +files/bacula-1.36.2-cdrecord-configure.patch,
+  +files/bacula-1.36.2-nocdrecord.patch,
+  +files/bacula-1.36.3-init-depends.patch,
+  +files/bacula-1.36.3-rescue-makefile.patch, +bacula-1.36.3.ebuild:
+  version bump and cleanups, ebuilds courtesy of bug #74953, thanks to
+  barningerATfairfieldcomputers.com
+
+  05 May 2005; Sven Wegener <swegener@gentoo.org> bacula-1.34.1.ebuild:
+  Fixed [<>]=cat/pkg-ver* dependencies.
+
+  15 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> bacula-1.32f.ebuild,
+  bacula-1.32f-r5.ebuild, bacula-1.34.1.ebuild, bacula-1.34.4.ebuild,
+  bacula-1.34.5.ebuild, bacula-1.34.6.ebuild, bacula-1.36.0.ebuild:
+  Dependency update: sys-apps/mtx -> sys-block/mtx.
+
+  09 Jan 2005; Sven Wegener <swegener@gentoo.org> bacula-1.32f-r5.ebuild,
+  bacula-1.32f.ebuild:
+  Added missing parentheses in SRC_URI/*DEPEND/LICENSE.
+
+  30 Dec 2004; Sven Wegener <swegener@gentoo.org> bacula-1.36.0.ebuild:
+  Moved inherit to the top.
+
+*bacula-1.36.0 (18 Dec 2004)
+
+  18 Dec 2004; Martin Holzer <mholzer@gentoo.org>
+  +files/bacula-3.6.0-configure.diff, +files/bacula-init2,
+  +bacula-1.36.0.ebuild:
+  Version bumped. Ebuild submitted by D. Scott Barninger
+  <barninger@fairfieldcomputers.com> in #68707.
+
+*bacula-1.34.6 (27 Nov 2004)
+
+  27 Nov 2004; Martin Holzer <mholzer@gentoo.org> +bacula-1.34.6.ebuild:
+  Version bumped.
+
+  17 Oct 2004; Jason Wever <weeve@gentoo.org> bacula-1.34.4.ebuild:
+  Stable on sparc.
+
+  16 Oct 2004; Mike Frysinger <vapier@gentoo.org> bacula-1.32f-r5.ebuild,
+  bacula-1.32f.ebuild, bacula-1.34.1.ebuild, bacula-1.34.4.ebuild,
+  bacula-1.34.5.ebuild:
+  Fix stupid dependency on sys-libs/libtermcap-compat (i.e. remove it) #64212.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  bacula-1.32f-r5.ebuild, bacula-1.32f.ebuild, bacula-1.34.1.ebuild,
+  bacula-1.34.4.ebuild:
+  Masked bacula-1.34.4.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  bacula-1.32f-r5.ebuild, bacula-1.32f.ebuild, bacula-1.34.1.ebuild:
+  Masked bacula-1.34.1.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  bacula-1.32f-r5.ebuild, bacula-1.32f.ebuild:
+  Masked bacula-1.32f.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  bacula-1.32f-r5.ebuild:
+  Masked bacula-1.32f-r5.ebuild stable for ppc
+
+  05 Aug 2004; Anders Rune Jensen <arj@gentoo.org> bacula-1.34.5.ebuild, 
+  bacula-1.34.4.ebuild, bacula-1.34.1.ebuild, bacula-1.32f.ebuild, 
+  bacula-1.32f-r5.ebuild:
+  Depend on version 2 of sqlite.
+
+  02 Aug 2004; Chuck Short <zul@gentoo.org> bacula-1.34.5.ebuild:
+  Added mysql switch. Closes #49122.
+
+  02 Aug 2004; Chuck Short <zul@gentoo.org> bacula-1.34.4.ebuild,
+  bacula-1.34.5.ebuild:
+  Changed bindir path for sqllite. Closes #57146.
+
+  21 Jul 2004; Chuck Short <zul@gentoo.org> bacula-1.34.5.ebuild:
+  Fixed wxwindows support. Closes #57350.
+  Fixed client support. Closes #57302.
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> bacula-1.34.1.ebuild:
+  sync IUSE (-postgres)
+
+*bacula-1.34.5 (26 Jun 2004)
+
+  26 Jun 2004; Chuck Short <zul@gentoo.org> bacula-1.34.5.ebuild:
+  Version bump, closes #54766.
+
+  26 Jun 2004; Chuck Short <zul@gentoo.org> bacula-1.29.ebuild,
+  bacula-1.31.ebuild:
+  Removed old versions.
+
+  26 Jun 2004; Chuck Short <zul@gentoo.org> bacula-1.34.4.ebuild:
+  Marked stable for x86.
+
+*bacula-1.34.4 (19 Jun 2004)
+
+  19 Jun 2004; Chuck Short <zul@gentoo.org> bacula-1.34.4.ebuild:
+  Version bump, closes #54097.
+
+  26 Apr 2004; Jason Wever <weeve@gentoo.org> bacula-1.34.1.ebuild:
+  Stable on sparc wrt bug #48969.
+
+  26 Apr 2004; Chuck Short <zul@gentoo.org> bacula-1.34.1.ebuild:
+  Marked stable for x86.
+
+*bacula-1.34.1 (26 Apr 2004)
+
+  26 Apr 2004; Chuck Short <zul@gentoo.org> bacula-1.34.1.ebuild:
+  Version bump, closes #48969.
+
+  26 Apr 2004; Chuck Short <zul@gentoo.org> bacula-1.34.0.ebuild:
+  Removed 1.34.0 becuase of race condition.
+
+  22 Apr 2004; Chuck Short <zul@gentoo.org> bacula-1.34.0.ebuild:
+  Force mysql to be used if sqlite and mysql are both in use flags. Closes
+  #47836.
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> bacula-1.32f.ebuild:
+  Removed S=, inherit eutils for epatch.
+
+*bacula-1.34.0 (13 Apr 2004)
+
+  13 Apr 2004; Chuck Short <zul@gentoo.org> bacula-1.34.0.ebuild:
+  Version bump, closes #47240.
+
+  09 Apr 2004; Chuck Short <zul@gentoo.org> bacula-1.32f-r5.ebuild:
+  Marked stable on x86.
+
+  09 Apr 2004; Chuck Short <zul@gentoo.org> bacula-1.32f.ebuild:
+  Removed patch, it was not applying cleanly. Closes #46790.
+
+  23 Mar 2004; <chuck@gentoo.org> bacula-1.32f.ebuild:
+  Marked stable for x86.
+
+  21 Mar 2004; Chuck Short <zul@gentoo.org> bacula-1.32f-r5.ebuild,
+  bacula-1.32f.ebuild:
+  Fixed broken static support. Closes #23998.
+
+  16 Mar 2004; Chuck Short <zul@gentoo.org> bacula-1.32f.ebuild:
+  Added ~sparc keyword
+
+  19 Mar 2004; Chuck Short <zul@gentoo.org> bacula-1.32f-r5.ebuild:
+  Fix for proper detection of sqlite. Closes #45152.
+
+*bacula-1.32f-r5 (16 Mar 2004)
+
+  16 Mar 2004; Chuck Short <zul@gentoo.org> bacula-1.32f-r5.ebuild,
+  bacula-1.32f.ebuild:
+  Version bump, closes #44580.
+  
+  Bacula 1.32f-r5 is 1.32f-5 and bacula 1.32f is 1.32f. The 
+  next release 1.32f-6 will be 1.32f-r6.
+
+  14 Mar 2004; Chuck Short <zul@gentoo.org> bacula-1.32f.ebuild:
+  Marked stable for x86.
+
+  11 Feb 2004; Chuck Short <zul@gentoo.org> bacula-1.29.ebuild:
+  For some reason console does not get installed to /usr/sbin. Added depend on
+  libtermcap-compat.
+
+*bacula-1.32f (10 Feb 2004)
+
+  10 Feb 2004; Chuck Short <zul@gentoo.org> bacula-1.32f.ebuild,
+  files/1.32f/1.32f-patchlist.txt:
+  Fixed way of using patches. Closes #4122.
+
+  02 Feb 2004; Chuck Short <zul@gentoo.org> bacula-1.31.ebuild:
+  bacula 1.31 now uses bacula 1.31a rather than the 04Jun03 snapshot.
+  Closes #25858.
+
+  02 Feb 2004; Chuck Short <zul@gentoo.org> :
+  Version bump.
+
+  29 Jan 2004; Chuck Short <zul@gentoo.org> bacula-1.31.ebuild:
+  Force the user to use mysql if they have both sqlite and mysql as use flags.
+  Closes #39764.
+
+  28 Jan 2004; Chuck Short <zul@gentoo.org> bacula-1.29.ebuild,
+  bacula-1.31.ebuild, metadata.xml:
+  Added metadata.xml
+  Updated headers
+  Fixed mysql issues when using mysql in USE. Closes #38547.
+
+  05 Dec 2003; Chuck Short <zul@gentoo.org> bacula-1.29.ebuild,
+  bacula-1.31.ebuild:
+  Chown fixes.
+
+  19 Oct 2003; Martin Holzer <mholzer@gentoo.org> bacula-1.29.ebuild,
+  bacula-1.31.ebuild: Backports...
+
+*bacula-1.31 (11 Jun 2003)
+
+  11 Jun 2003; Donny Davies <woodchip@gentoo.org> bacula-1.31.ebuild,
+  files/bacula-init:
+
+  Update to latest release. Thanks to Rob de Beir <wakunga@hotmail.com>
+  for fixing various bugs, including: #17059, #21607.
+
+*bacula-1.29 (29 Jan 2003)
+
+  28 Mar 2003; Pieter Van den Abeele <pvdabeel@gentoo.org> bacula-1.29.ebuild :
+  Ready for some testing on ppc: ~ppc
+
+  12 Feb 2003; Yannick Koehler <ykoehler@gentoo.org> bacula-1.29.ebuild :
+  Added the static flag to IUSE.
+
+  29 Jan 2003; Donny Davies <woodchip@gentoo.org> :
+  Initial import of Bacula; initscript and ebuild written by me.

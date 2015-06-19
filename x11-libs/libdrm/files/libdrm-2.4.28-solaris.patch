@@ -1,0 +1,111 @@
+Index: libdrm-2.4.23/include/drm/drm.h
+===================================================================
+--- libdrm-2.4.23.orig/include/drm/drm.h
++++ libdrm-2.4.23/include/drm/drm.h
+@@ -54,7 +54,11 @@ typedef int32_t  __s32;
+ typedef uint32_t __u32;
+ typedef int64_t  __s64;
+ typedef uint64_t __u64;
++#if defined(__sun)
++typedef unsigned long long drm_handle_t;
++#else
+ typedef unsigned long drm_handle_t;
++#endif
+ 
+ #endif
+ 
+@@ -210,12 +214,22 @@ struct drm_ctx_priv_map {
+  * \sa drmAddMap().
+  */
+ struct drm_map {
++#ifdef __sun
++	unsigned long long offset;
++                               /**< Requested physical address (0 for SAREA)*/
++	unsigned long long handle;
++                               /**< User-space: "Handle" to pass to mmap() */
++                               /**< Kernel-space: kernel-virtual address */
++#else
+ 	unsigned long offset;	 /**< Requested physical address (0 for SAREA)*/
++#endif
+ 	unsigned long size;	 /**< Requested physical size (bytes) */
+ 	enum drm_map_type type;	 /**< Type of memory to map */
+ 	enum drm_map_flags flags;	 /**< Flags */
++#ifndef __sun
+ 	void *handle;		 /**< User-space: "Handle" to pass to mmap() */
+ 				 /**< Kernel-space: kernel-virtual address */
++#endif
+ 	int mtrr;		 /**< MTRR slot used */
+ 	/*   Private data */
+ };
+@@ -379,6 +393,9 @@ struct drm_buf_map {
+ 	void *virtual;		/**< Mmap'd area in user-virtual */
+ #endif
+ 	struct drm_buf_pub *list;	/**< Buffer information */
++#ifdef __sun
++	int fd;
++#endif
+ };
+ 
+ /**
+Index: libdrm-2.4.23/radeon/radeon_bo_gem.c
+===================================================================
+--- libdrm-2.4.23.orig/radeon/radeon_bo_gem.c
++++ libdrm-2.4.23/radeon/radeon_bo_gem.c
+@@ -38,6 +38,13 @@
+ #include <string.h>
+ #include <sys/mman.h>
+ #include <errno.h>
++
++/* On solaris unistd.h and stropts.h are needed for ioctl */
++#ifdef __sun
++#include <unistd.h>
++#include <stropts.h>
++#endif
++
+ #include "xf86drm.h"
+ #include "xf86atomic.h"
+ #include "drm.h"
+Index: libdrm-2.4.23/xf86drm.c
+===================================================================
+--- libdrm-2.4.23.orig/xf86drm.c
++++ libdrm-2.4.23/xf86drm.c
+@@ -972,7 +972,11 @@ int drmRmMap(int fd, drm_handle_t handle
+ {
+     drm_map_t map;
+ 
++#ifdef __sun
++    map.handle = handle;
++#else
+     map.handle = (void *)(uintptr_t)handle;
++#endif
+ 
+     if(drmIoctl(fd, DRM_IOCTL_RM_MAP, &map))
+ 	return -errno;
+@@ -1210,6 +1214,9 @@ drmBufMapPtr drmMapBufs(int fd)
+     bufs.count = 0;
+     bufs.list  = NULL;
+     bufs.virtual = NULL;
++#ifdef __sun
++    bufs.fd = fd;
++#endif
+     if (drmIoctl(fd, DRM_IOCTL_MAP_BUFS, &bufs))
+ 	return NULL;
+ 
+Index: libdrm-2.4.23/xf86drm.h
+===================================================================
+--- libdrm-2.4.23.orig/xf86drm.h
++++ libdrm-2.4.23/xf86drm.h
+@@ -64,6 +64,13 @@
+ 
+ #endif
+ 
++#if defined(__sun) && !defined(_IOC)
++#define _IOC(dir, group, nr, size)                             \
++    (dir == DRM_IOC_READWRITE ? _IOWRN(group, nr, size) :      \
++      (dir == DRM_IOC_WRITE ? _IOWN(group, nr, size) :         \
++       /* dir == DRM_IOC_READ */  _IORN(group, nr, size) ))
++#endif
++
+ 				/* Defaults, if nothing set in xf86config */
+ #define DRM_DEV_UID	 0
+ #define DRM_DEV_GID	 0

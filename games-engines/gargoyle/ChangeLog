@@ -1,0 +1,108 @@
+# ChangeLog for games-engines/gargoyle
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-engines/gargoyle/ChangeLog,v 1.26 2015/02/22 10:20:34 mgorny Exp $
+
+  22 Feb 2015; Michał Górny <mgorny@gentoo.org> gargoyle-2011.1.ebuild:
+  Fix libertine-ttf dependency after pkgmove to media-fonts/libertine.
+
+  02 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup up due #48914
+
+  25 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org> -gargoyle-2010.1.ebuild:
+  old
+
+  23 Sep 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> gargoyle-2011.1.ebuild:
+  x86 stable wrt bug #432098
+
+  05 Sep 2012; Justin Lecher <jlec@gentoo.org> gargoyle-2010.1.ebuild:
+  Use domenu instead insinto + doins to install .desktop files
+
+  22 Aug 2012; Agostino Sarubbo <ago@gentoo.org> gargoyle-2011.1.ebuild:
+  Stable for amd64, wrt bug #432098
+
+  22 Aug 2012; Julian Ospald <hasufell@gentoo.org> gargoyle-2011.1.ebuild:
+  rework ebuild, also fix #432304 and #432306
+
+  21 Aug 2012; Julian Ospald <hasufell@gentoo.org> gargoyle-2011.1.ebuild,
+  +files/gargoyle-2011.1-desktopfile.patch:
+  make build output verbose, fix build wrt #432178, fix desktop file wrt
+  #432222
+
+  15 Jun 2012; Michael Sterrett <mr_bones_@gentoo.org> gargoyle-2011.1.ebuild:
+  games goes last on inherit line
+
+  07 Jun 2012; Mike Frysinger <vapier@gentoo.org> gargoyle-2011.1.ebuild:
+  Inherit new multiprocessing for makeopts_jobs.
+
+*gargoyle-2010.1 (04 May 2012)
+
+  07 May 2012; Michele Noberasco <s4t4n@gentoo.org> gargoyle-2011.1.ebuild:
+  Version bump. Closes bug #398535.
+
+*gargoyle-2010.1 (04 May 2012)
+
+  04 May 2012; Michele Noberasco <s4t4n@gentoo.org> gargoyle-2010.1.ebuild:
+  Renamed old 20100930 ebuild to 2010.1 for naming consistency. See bug #398535.
+
+  gargoyle-20100930.ebuild:
+  Removed ebuild with incorrect version number. See bug #398535.
+
+  13 Apr 2012; Ulrich Müller <ulm@gentoo.org> gargoyle-20100930.ebuild:
+  Move EAPI assignment to top of ebuild, bug 411875.
+
+  25 Feb 2011; Kevin McCarthy <signals@gentoo.org> gargoyle-20100930.ebuild:
+  Updated depends from media-libs/jpeg to virtual/jpeg
+
+  17 Nov 2010; Markus Meier <maekke@gentoo.org> gargoyle-20100930.ebuild:
+  x86 stable, bug #345363
+
+*gargoyle-20100930 (14 Oct 2010)
+
+  14 Oct 2010; Michele Noberasco <s4t4n@gentoo.org> gargoyle-20100930.ebuild:
+  Version bump. Closes bug #253098.
+
+  31 Aug 2010; Michele Noberasco <s4t4n@gentoo.org> gargoyle-20060917-r1.ebuild:
+  Honour Gentoo LDFLAGS. Closes bug #333653.
+
+  05 Aug 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  gargoyle-20060917-r1.ebuild:
+  build against glibc210 with sed patch from Arttu Valo via bug #273530
+
+  21 Nov 2007; Ryan Hill <dirtyepic@gentoo.org> gargoyle-20060917-r1.ebuild:
+  Allow building with ftjam for bug #188194
+
+  27 Apr 2007; Michele Noberasco <s4t4n@gentoo.org> gargoyle-20060917-r1.ebuild:
+  Stable for x86.
+
+*gargoyle-20060917-r1 (26 Jan 2007)
+
+  26 Jan 2007; Michele Noberasco <s4t4n@gentoo.org> gargoyle-20060917-r1.ebuild:
+  Revision bump, with patch to fix level9 interpreter compilation. Closes bug #163374.
+  gargoyle-20060917.ebuild:
+  Wiped out previous revision.
+
+*gargoyle-20060917 (22 Jan 2007)
+
+  22 Jan 2007; Michele Noberasco <s4t4n@gentoo.org> gargoyle-20060917.ebuild:
+  Version bump, with updated filenames patch. Also, added missing sdl-sound and
+  sdl-mixer dependancies, and fixed gtk+ detection. Closes bug #157207.
+  gargoyle-20060703:
+  Wiped out previous version.
+
+  24 Aug 2006; Michele Noberasco <s4t4n@gentoo.org> gargoyle-20060703.ebuild:
+  Removed duplicate 'inherit eutils' entry.. Closes bug #144950.
+
+*gargoyle-20060703 (23 Aug 2006)
+
+  23 Aug 2006; Michele Noberasco <s4t4n@gentoo.org> gargoyle-20060703.ebuild:
+  Version bump, with filenames fix. Closes bug #144280.
+  gargoyle-20051002.ebuild:
+  Wiped out older version.
+
+  19 Mar 2006; Mark Loeser <halcy0n@gentoo.org> gargoyle-20051002.ebuild:
+  Add DEPEND on app-arch/unzip
+
+*gargoyle-20051002 (26 Jan 2006)
+
+  26 Jan 2006; Michele Noberasco <s4t4n@gentoo.org> gargoyle-20051002.ebuild:
+  Initial import. Closes bug #116406, submitted by Rafal Rzepecki.

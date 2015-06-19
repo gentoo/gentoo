@@ -1,0 +1,72 @@
+# ChangeLog for net-p2p/mktorrent
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/mktorrent/ChangeLog,v 1.16 2015/05/23 13:53:09 pacho Exp $
+
+  23 May 2015; Pacho Ramos <pacho@gentoo.org> -mktorrent-1.0.ebuild:
+  Drop old
+
+  23 May 2015; Pacho Ramos <pacho@gentoo.org> mktorrent-1.0-r1.ebuild:
+  x86 stable, bug #540794
+
+  22 May 2015; Agostino Sarubbo <ago@gentoo.org> mktorrent-1.0-r1.ebuild:
+  Stable for amd64, wrt bug #540794
+
+  02 May 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  mktorrent-1.0-r1.ebuild:
+  Fix openssl slot
+
+*mktorrent-1.0-r1 (02 May 2015)
+
+  02 May 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +mktorrent-1.0-r1.ebuild:
+  Port to EAPI=5
+
+  20 May 2011; Justin Lecher <jlec@gentoo.org> mktorrent-1.0.ebuild,
+  metadata.xml:
+  Default to largefile support, #358279
+
+  10 Oct 2010; Christian Faulhammer <fauli@gentoo.org> mktorrent-1.0.ebuild:
+  stable x86, bug 339937
+
+  08 Oct 2010; Markos Chandras <hwoarang@gentoo.org> mktorrent-1.0.ebuild:
+  Stable on amd64 wrt bug #339937
+
+  06 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> -mktorrent-0.7.ebuild,
+  mktorrent-1.0.ebuild, metadata.xml:
+  Rename invalid USE flag "openssl" to "ssl".
+
+*mktorrent-1.0 (20 Apr 2010)
+
+  20 Apr 2010; Stanislav Ochotnicky <sochotnicky@gentoo.org>
+  +mktorrent-1.0.ebuild:
+  Version bump, bug #307319
+
+*mktorrent-0.7 (17 Aug 2009)
+
+  17 Aug 2009; Robert Buchholz <rbu@gentoo.org> metadata.xml,
+  mktorrent-0.4.ebuild, +mktorrent-0.7.ebuild:
+  0.4: amd64 stable, 0.7: version bump
+
+  29 Jan 2008; Samuli Suominen <drac@gentoo.org> mktorrent-0.4.ebuild:
+  Link to libcrypto instead of libssl for required symbols. Keyword ~amd64 wrt
+  #207845.
+
+  28 Jan 2008; Dawid Węgliński <cla@gentoo.org> mktorrent-0.4.ebuild:
+  Stable on x86 (bug #207845)
+
+*mktorrent-0.4 (30 Dec 2007)
+
+  30 Dec 2007; Raúl Porcel <armin76@gentoo.org> -mktorrent-0.2.ebuild,
+  +mktorrent-0.4.ebuild:
+  Version bump, remove old
+
+  26 Dec 2007; Christian Heim <phreak@gentoo.org>
+  +files/digest-mktorrent-0.2, Manifest:
+  Adding the missing digest.
+
+*mktorrent-0.2 (16 Oct 2007)
+
+  16 Oct 2007; Raúl Porcel <armin76@gentoo.org> +metadata.xml,
+  +mktorrent-0.2.ebuild:
+  New package, initial ebuild by Kalidarn <dcecchin at gmail dot com>, bug
+  #195934

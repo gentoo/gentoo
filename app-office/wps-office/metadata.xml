@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>pacho@gentoo.org</email>
+	<name>Pacho Ramos</name>
+</maintainer>
+<use>
+	<flag name="corefonts">Ensure <pkg>media-fonts/corefonts</pkg> is present</flag>
+	<flag name="sharedfonts">Preserve fonts from WPS</flag>
+</use>
+</pkgmetadata>

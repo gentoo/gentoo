@@ -1,0 +1,9 @@
+# ChangeLog for media-sound/retrovol
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/retrovol/ChangeLog,v 1.1 2012/10/03 05:47:56 yngwin Exp $
+
+*retrovol-0.12 (03 Oct 2012)
+
+  03 Oct 2012; Ben de Groot <yngwin@gentoo.org> +metadata.xml,
+  +retrovol-0.12.ebuild:
+  Initial commit. Ebuild by Nicolas and Serget Popov in bug #436404.

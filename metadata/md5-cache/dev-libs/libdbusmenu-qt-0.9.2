@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-qt/qtcore-4.6.3:4 >=dev-qt/qtdbus-4.6.3:4 >=dev-qt/qtgui-4.6.3:4 doc? ( app-doc/doxygen ) test? ( dev-libs/qjson >=dev-qt/qttest-4.6.3:4 ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DESCRIPTION=A library providing Qt implementation of DBusMenu specification
+EAPI=4
+HOMEPAGE=https://launchpad.net/libdbusmenu-qt/
+IUSE=debug doc test
+KEYWORDS=amd64 ~arm ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=LGPL-2
+RDEPEND=>=dev-qt/qtcore-4.6.3:4 >=dev-qt/qtdbus-4.6.3:4 >=dev-qt/qtgui-4.6.3:4
+RESTRICT=test
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~creffett/libdbusmenu-qt-0.9.2.tar.xz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	virtualx	73cfc129b4b9ba23aed1abb10c825d86
+_md5_=7e7ce5c4e942a1e8b586f01b223bc38e

@@ -1,0 +1,8 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Generic file-preprocessor with a CPP-like syntax
+HOMEPAGE=http://www.cabaret.demon.co.uk/filepp/
+KEYWORDS=~mips ppc s390 sparc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.cabaret.demon.co.uk/filepp/filepp-1.6.0.tar.gz
+_md5_=1b1bff891128676303eaf7941487214b

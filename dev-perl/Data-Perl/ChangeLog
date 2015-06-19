@@ -1,0 +1,18 @@
+# ChangeLog for dev-perl/Data-Perl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Data-Perl/ChangeLog,v 1.4 2015/04/05 13:02:35 zlogene Exp $
+
+  05 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> Data-Perl-0.2.9.ebuild:
+  Add ~ppc keyword wrt bug #543312
+
+  03 Apr 2015; Mikle Kolyada <zlogene@gentoo.org> Data-Perl-0.2.9.ebuild:
+  Add more keywords wrt bug #543312
+
+  29 Mar 2015; Jeroen Roovers <jer@gentoo.org> Data-Perl-0.2.9.ebuild:
+  Marked ~hppa (bug #543312).
+
+*Data-Perl-0.2.9 (14 Mar 2015)
+
+  14 Mar 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Data-Perl-0.2.9.ebuild, +metadata.xml:
+  New package, needed for dev-perl/GnuPG-Interface

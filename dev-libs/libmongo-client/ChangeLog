@@ -1,0 +1,27 @@
+# ChangeLog for dev-libs/libmongo-client
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmongo-client/ChangeLog,v 1.7 2014/10/05 07:24:57 ago Exp $
+
+  05 Oct 2014; Agostino Sarubbo <ago@gentoo.org> libmongo-client-0.1.7.ebuild:
+  Stable for x86, wrt bug #524290
+
+  05 Oct 2014; Agostino Sarubbo <ago@gentoo.org> libmongo-client-0.1.7.ebuild:
+  Stable for amd64, wrt bug #524290
+
+  01 Oct 2014; Jeroen Roovers <jer@gentoo.org> libmongo-client-0.1.7.ebuild:
+  Stable for HPPA (bug #524058).
+
+  31 Dec 2013; Markus Meier <maekke@gentoo.org> libmongo-client-0.1.7.ebuild:
+  add ~arm, bug #495230
+
+  25 Dec 2013; Jeroen Roovers <jer@gentoo.org> libmongo-client-0.1.7.ebuild:
+  Marked ~hppa (bug #495230).
+
+  24 Dec 2013; Ultrabug <ultrabug@gentoo.org> libmongo-client-0.1.7.ebuild:
+  add x86 to KEYWORDS
+
+*libmongo-client-0.1.7 (14 Dec 2013)
+
+  14 Dec 2013; Vadim Kuznetsov vadimk@gentoo.org +libmongo-client-0.1.7.ebuild,
+  +metadata.xml:
+  libmongo-client new ebuild

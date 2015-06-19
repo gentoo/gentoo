@@ -1,0 +1,30 @@
+# ChangeLog for media-gfx/kfax
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/kfax/ChangeLog,v 1.7 2014/03/21 20:43:06 johu Exp $
+
+  21 Mar 2014; Johannes Huber <johu@gentoo.org> kfax-3.3.6-r1.ebuild:
+  Bump to EAPI 5.
+
+  29 Oct 2011; Jonathan Callen <abcd@gentoo.org> kfax-3.3.6-r1.ebuild:
+  Bump to EAPI=4; set KDE_HANDBOOK
+
+  11 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org> kfax-3.3.6-r1.ebuild,
+  +files/kfax-3.3.6-underlinking.patch:
+  Fix underlinking, bug 369645
+
+  02 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org> -kfax-3.3.6.ebuild:
+  remove old
+
+*kfax-3.3.6-r1 (13 Nov 2010)
+
+  13 Nov 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  +kfax-3.3.6-r1.ebuild, +files/kfax-3.3.6-kde45.patch:
+  EAPI bump, fixed link failiure with kde-4.5 (bug 338580)
+
+  09 Aug 2010; Maciej Mrozowski <reavertm@gentoo.org> kfax-3.3.6.ebuild:
+  Remove unnecessary KDE_MINIMAL
+
+*kfax-3.3.6 (21 Feb 2010)
+
+  21 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> +kfax-3.3.6.ebuild:
+  Initial commit.

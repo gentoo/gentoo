@@ -1,0 +1,167 @@
+diff -Naur extrecmenu-1.2.2.orig/mymenueditrecording.c extrecmenu-1.2.2/mymenueditrecording.c
+--- extrecmenu-1.2.2.orig/mymenueditrecording.c	2013-10-23 13:14:38.010071212 +0200
++++ extrecmenu-1.2.2/mymenueditrecording.c	2013-10-23 13:21:12.560096164 +0200
+@@ -76,7 +76,11 @@
+ 
+       if(isdir)
+       {
++#if APIVERSNUM > 20101
++        if(-1==asprintf(&oldname,"%s%s%s/%s",cVideoDirectory::Name(),tmppath?"/":"",dirbase?dirbase:"",dirname))
++#else
+         if(-1==asprintf(&oldname,"%s%s%s/%s",VideoDirectory,tmppath?"/":"",dirbase?dirbase:"",dirname))
++#endif
+           oldname=NULL;
+       }
+       else
+@@ -84,7 +88,11 @@
+ 
+       if(oldname)
+       {
++#if APIVERSNUM > 20101
++        if(-1==asprintf(&newname,"%s%s%s/%s%s",cVideoDirectory::Name(),tmppath?"/":"",tmppath?tmppath:"",tmpname,isdir?"":strrchr(recording->FileName(),'/')))
++#else
+         if(-1==asprintf(&newname,"%s%s%s/%s%s",VideoDirectory,tmppath?"/":"",tmppath?tmppath:"",tmpname,isdir?"":strrchr(recording->FileName(),'/')))
++#endif
+           newname=NULL;
+ 
+         if(newname)
+@@ -305,7 +313,11 @@
+ 
+   if(dirname)
+   {
++#if APIVERSNUM > 20101
++    if(-1==asprintf(&oldname,"%s%s%s/%s",cVideoDirectory::Name(),dirbase?"/":"",tmpdirbase?tmpdirbase:"",tmpdirname))
++#else
+     if(-1==asprintf(&oldname,"%s%s%s/%s",VideoDirectory,dirbase?"/":"",tmpdirbase?tmpdirbase:"",tmpdirname))
++#endif
+       oldname=NULL;
+   }
+   else
+@@ -357,7 +369,11 @@
+     if(dir)
+       dir=ExchangeChars(dir,true);
+ 
++#if APIVERSNUM > 20101
++    if(-1==asprintf(&_newname,"%s%s%s%s",cVideoDirectory::Name(),dir?"/":"",dir?dir:"",strrchr(dirname?oldname:recording->FileName(),'/')))
++#else
+     if(-1==asprintf(&_newname,"%s%s%s%s",VideoDirectory,dir?"/":"",dir?dir:"",strrchr(dirname?oldname:recording->FileName(),'/')))
++#endif
+       _newname=NULL;
+ 
+     if(_newname)
+@@ -424,7 +440,11 @@
+                 {
+                   if(!strncmp(oldname,rec->FileName(),strlen(oldname)))
+                   {
++#if APIVERSNUM > 20101
++                    char *_buf=ExchangeChars(strdup(oldname+strlen(cVideoDirectory::Name())+1),false);
++#else
+                     char *_buf=ExchangeChars(strdup(oldname+strlen(VideoDirectory)+1),false);
++#endif
+ 
+                     if(strcmp(rec->Name(),_buf))
+                     {
+diff -Naur extrecmenu-1.2.2.orig/mymenurecordings.c extrecmenu-1.2.2/mymenurecordings.c
+--- extrecmenu-1.2.2.orig/mymenurecordings.c	2013-10-23 13:14:38.010071212 +0200
++++ extrecmenu-1.2.2/mymenurecordings.c	2013-10-23 13:27:17.916785937 +0200
+@@ -590,7 +590,11 @@
+ {
+   if(mysetup.FileSystemFreeMB)
+   {
++#if APIVERSNUM > 20101
++    string path=cVideoDirectory::Name();
++#else
+     string path=VideoDirectory;
++#endif
+     path+="/";
+     char *tmpbase=base?ExchangeChars(strdup(base),true):NULL;
+     if(base)
+@@ -634,7 +638,11 @@
+   else
+   {
+     int freemb;
++#if APIVERSNUM > 20101
++    cVideoDirectory::VideoDiskSpace(&freemb);
++#else
+     VideoDiskSpace(&freemb);
++#endif
+     return freemb;
+   }
+ 
+@@ -747,7 +755,11 @@
+   for(cRecording *recording=Recordings.First();recording;recording=Recordings.Next(recording))
+     list->Add(new myRecListItem(recording));
+   // sort my recordings list
++#if APIVERSNUM > 20101
++  string path=cVideoDirectory::Name();
++#else
+   string path=VideoDirectory;
++#endif
+   path+="/";
+   if(base)
+     path+=base;
+@@ -1211,7 +1223,11 @@
+       {
+         char *strBase=base?ExchangeChars(strdup(base), true):NULL;
+         char *strName=ExchangeChars(strdup(item->Name()), true);
++#if APIVERSNUM > 20101
++        if(-1==asprintf(&parameter,"\"%s/%s/%s\"",cVideoDirectory::Name(),strBase?strBase:"", strName))
++#else
+         if(-1==asprintf(&parameter,"\"%s/%s/%s\"",VideoDirectory,strBase?strBase:"", strName))
++#endif
+           parameter=NULL;
+         free(strBase);
+         free(strName);
+@@ -1235,7 +1251,11 @@
+ // change sorting
+ eOSState myMenuRecordings::ChangeSorting()
+ {
++#if APIVERSNUM > 20101
++  string path=cVideoDirectory::Name();
++#else
+   string path=VideoDirectory;
++#endif
+   path+="/";
+   if(base)
+     path+=base;
+diff -Naur extrecmenu-1.2.2.orig/tools.c extrecmenu-1.2.2/tools.c
+--- extrecmenu-1.2.2.orig/tools.c	2013-10-23 13:14:38.010071212 +0200
++++ extrecmenu-1.2.2/tools.c	2013-10-23 13:36:56.026822499 +0200
+@@ -152,7 +152,11 @@
+     {
+       if(!strncmp(OldName,item->recording->FileName(),strlen(OldName)))
+       {
++#if APIVERSNUM > 20101
++        buf=strdup(OldName+strlen(cVideoDirectory::Name())+1);
++#else
+         buf=strdup(OldName+strlen(VideoDirectory)+1);
++#endif
+         if(buf)
+         {
+           buf=ExchangeChars(buf,false);
+@@ -240,8 +244,13 @@
+ {
+   myRecListItem *item=(myRecListItem*)&ListObject;
+ 
++#if APIVERSNUM > 20101
++ char *s1=StripEpisodeName(strdup(filename+strlen(cVideoDirectory::Name())));
++ char *s2=StripEpisodeName(strdup(item->filename+strlen(cVideoDirectory::Name())));
++#else
+   char *s1=StripEpisodeName(strdup(filename+strlen(VideoDirectory)));
+   char *s2=StripEpisodeName(strdup(item->filename+strlen(VideoDirectory)));
++#endif
+ 
+   int compare;
+   if(mysetup.DescendSorting)
+@@ -699,7 +708,11 @@
+ 
+                   isyslog("[extrecmenu] moving canceled");
+ 
++#if APIVERSNUM > 20101
++                  cVideoDirectory::RemoveVideoFile(To.c_str());
++#else
+                   RemoveVideoFile(To.c_str());
++#endif
+ 
+                   return true;
+                 }

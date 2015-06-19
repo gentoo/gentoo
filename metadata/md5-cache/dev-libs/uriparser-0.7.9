@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=virtual/pkgconfig doc? ( >=app-doc/doxygen-1.5.8 qt4? ( dev-qt/qthelp:4 ) ) test? ( >=dev-util/cpptest-1.1.1 )
+DESCRIPTION=Uriparser is a strictly RFC 3986 compliant URI parsing library in C
+EAPI=4
+HOMEPAGE=http://uriparser.sourceforge.net/
+IUSE=doc qt4 test unicode
+KEYWORDS=amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+LICENSE=BSD
+REQUIRED_USE=test? ( unicode )
+SLOT=0
+SRC_URI=mirror://sourceforge/uriparser/uriparser-0.7.9.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a174dbbb90d2f9717219c77bdc6af844

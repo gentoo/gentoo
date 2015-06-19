@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>emacs</herd>
+<longdescription>
+  Ersatz Emacs is a very minimal imitation of the famous GNU Emacs editor.
+  Unlike most popular Emacs derivatives, Ersatz strives to use as little
+  system resources as possible and be simple enough for the casual programmer
+  to understand, yet still include all the functionality required for most
+  text editing jobs.
+</longdescription>
+</pkgmetadata>

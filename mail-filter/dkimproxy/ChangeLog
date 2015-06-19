@@ -1,0 +1,21 @@
+# ChangeLog for mail-filter/dkimproxy
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/dkimproxy/ChangeLog,v 1.5 2014/08/10 21:16:06 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> dkimproxy-1.4.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  06 Jul 2013; Agostino Sarubbo <ago@gentoo.org> dkimproxy-1.4.1.ebuild:
+  Stable for x86, wrt bug #462826
+
+  06 Jul 2013; Agostino Sarubbo <ago@gentoo.org> dkimproxy-1.4.1.ebuild:
+  Stable for amd64, wrt bug #462826
+
+  02 Mar 2013; Jason A. Donenfeld <zx2c4@gentoo.org> dkimproxy-1.4.1.ebuild:
+  Use the correct Net-Server package.
+
+*dkimproxy-1.4.1 (28 Feb 2013)
+
+  28 Feb 2013; Jason A. Donenfeld <zx2c4@gentoo.org> +dkimproxy-1.4.1.ebuild,
+  +files/dkimproxy.in.initd, +files/dkimproxy.out.initd, +metadata.xml:
+  Initial import.

@@ -1,0 +1,38 @@
+diff --git a/docs/index.txt b/docs/index.txt
+index f472102..1edf711 100644
+--- a/docs/index.txt
++++ b/docs/index.txt
+@@ -271,7 +271,7 @@ Then you can submit:
+     >>> res = form.submit()
+     >>> # Or submit a button:
+     >>> res = form.submit('submit')
+-    >>> print(res)
++    >>> print(res) # doctest:+ELLIPSIS
+     Response: 200 OK
+     Content-Type: text/plain
+     ...
+@@ -331,7 +331,7 @@ Examples:
+     <class 'BeautifulSoup.BeautifulSoup'>
+     >>> res.html.body.div.string
+     u'hey!'
+-    >>> res.lxml
++    >>> res.lxml # doctest:+ELLIPSIS
+     <Element html at ...>
+     >>> res.lxml.xpath('//body/div')[0].text
+     'hey!'
+@@ -343,13 +343,13 @@ Examples:
+     >>> res = TestResponse(content_type='application/xml',
+     ...                    body='<xml><message>hey!</message></xml>')
+     >>> res.request = TestRequest.blank('/')
+-    >>> res.xml
++    >>> res.xml # doctest:+ELLIPSIS
+     <Element ...>
+     >>> res.xml[0].tag
+     'message'
+     >>> res.xml[0].text
+     'hey!'
+-    >>> res.lxml
++    >>> res.lxml # doctest:+ELLIPSIS
+     <Element xml at ...>
+     >>> res.lxml[0].tag
+     'message'

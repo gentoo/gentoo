@@ -1,0 +1,139 @@
+# ChangeLog for dev-perl/Spiffy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Spiffy/ChangeLog,v 1.38 2015/02/28 18:21:41 grobian Exp $
+
+  28 Feb 2015; Fabian Groffen <grobian@gentoo.org> Spiffy-0.460.0.ebuild:
+  Added some Prefix keywords, bug #541380
+
+*Spiffy-0.460.0 (21 Feb 2015)
+
+  21 Feb 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Spiffy-0.460.0.ebuild:
+  Version bump
+
+*Spiffy-0.310.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Spiffy-0.310.0-r1.ebuild, -Spiffy-0.310.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org> -Spiffy-0.300.0.ebuild:
+  Cleanup
+
+  27 Dec 2012; Raúl Porcel <armin76@gentoo.org> Spiffy-0.310.0.ebuild:
+  alpha/s390/sh/sparc stable wrt #441252
+
+  13 Dec 2012; Agostino Sarubbo <ago@gentoo.org> Spiffy-0.310.0.ebuild:
+  Stable for ia64, wrt bug #441252
+
+  09 Dec 2012; Markus Meier <maekke@gentoo.org> Spiffy-0.310.0.ebuild:
+  arm stable, bug #441252
+
+  08 Dec 2012; Jeroen Roovers <jer@gentoo.org> Spiffy-0.310.0.ebuild:
+  Stable for HPPA (bug #441252).
+
+  06 Dec 2012; Agostino Sarubbo <ago@gentoo.org> Spiffy-0.310.0.ebuild:
+  Stable for ppc, wrt bug #441252
+
+  06 Dec 2012; <ago@gentoo.org> Spiffy-0.310.0.ebuild:
+  Stable for x86, wrt bug #441252
+
+  06 Dec 2012; <ago@gentoo.org> Spiffy-0.310.0.ebuild:
+  Stable for amd64, wrt bug #441252
+
+*Spiffy-0.310.0 (05 Aug 2012)
+
+  05 Aug 2012; Torsten Veller <tove@gentoo.org> +Spiffy-0.310.0.ebuild,
+  metadata.xml:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Spiffy-0.30.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Spiffy-0.300.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Spiffy-0.300.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +Spiffy-0.300.0.ebuild:
+  Change version scheme
+
+  05 Feb 2010; Torsten Veller <tove@gentoo.org> Spiffy-0.30.ebuild:
+  Fix LICENSE (#301969). Maintenance
+
+  11 Jan 2010; Fabian Groffen <grobian@gentoo.org> Spiffy-0.30.ebuild:
+  Transfer Prefix keywords
+
+  27 Dec 2007; Andrej Kacian <ticho@gentoo.org> Spiffy-0.30.ebuild:
+  Stable on x86.
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org> -Spiffy-0.26.ebuild,
+  -Spiffy-0.29.ebuild, Spiffy-0.30.ebuild:
+  Ebuild maintenance
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org> Spiffy-0.30.ebuild:
+  ppc stable
+
+  18 Aug 2006; Michael Cummings <mcummings@gentoo.org> Spiffy-0.30.ebuild:
+  Marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org> Spiffy-0.26.ebuild,
+  Spiffy-0.29.ebuild, Spiffy-0.30.ebuild:
+  Added perl dep
+
+  18 Jul 2006; Bryan Østergaard <kloeri@gentoo.org> Spiffy-0.30.ebuild:
+  Stable on alpha.
+
+  29 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org> Spiffy-0.30.ebuild:
+  Stable on hppa
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org> Spiffy-0.26.ebuild,
+  Spiffy-0.29.ebuild, Spiffy-0.30.ebuild:
+  Marking sparc stable
+
+  24 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> Spiffy-0.30.ebuild:
+  Add ~x86-fbsd keyword.
+
+  20 Apr 2006; Thomas Cort <tcort@gentoo.org> Spiffy-0.30.ebuild:
+  Added ~amd64 keyword wrt Bug #119199.
+
+  20 Apr 2006; Thomas Cort <tcort@gentoo.org> Spiffy-0.30.ebuild:
+  Added ~alpha keyword wrt Bug #119199.
+
+  10 Mar 2006; Aron Griffis <agriffis@gentoo.org> Spiffy-0.30.ebuild:
+  Mark 0.30 ~ia64
+
+  26 Feb 2006; Joshua Kinard <kumba@gentoo.org> Spiffy-0.30.ebuild:
+  Added ~mips to KEYWORDS.
+
+*Spiffy-0.30 (20 Feb 2006)
+
+  20 Feb 2006; Michael Cummings <mcummings@gentoo.org> +Spiffy-0.30.ebuild:
+  Version bump upstream
+
+  23 Jan 2006; Markus Rothe <corsair@gentoo.org> Spiffy-0.29.ebuild:
+  Added ~ppc64; bug #119199
+
+  22 Jan 2006; Michael Cummings <mcummings@gentoo.org> Spiffy-0.29.ebuild:
+  Commited before updating, adding lost ~hppa
+
+*Spiffy-0.29 (22 Jan 2006)
+
+  22 Jan 2006; Michael Cummings <mcummings@gentoo.org> +Spiffy-0.29.ebuild:
+  Version bump upstream
+
+  21 Jan 2006; Jeroen Roovers <jer@gentoo.org> Spiffy-0.26.ebuild:
+  Marked ~hppa (bug #119199).
+
+  17 Jan 2006; <nixnut@gentoo.org> Spiffy-0.26.ebuild:
+  Added ~ppc keyword. bug 119199
+
+*Spiffy-0.26 (16 Jan 2006)
+
+  16 Jan 2006; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +Spiffy-0.26.ebuild:
+  New dep for yaml

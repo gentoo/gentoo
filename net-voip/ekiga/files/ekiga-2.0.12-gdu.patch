@@ -1,0 +1,111 @@
+--- configure.in 2008-03-12 21:20:29.925476633 +0000
++++ configure.in 2008-03-12 21:22:29.000000000 +0000
+@@ -60,8 +60,8 @@
+ if test ${enable_gnome} = yes && test ${enable_doc} = yes; then
+ GNOME_DOC_INIT
+ else
+-ENABLE_SK_TRUE="#"
+-ENABLE_SK_FALSE=""
++dnl Do not care if GDU is not found
++GNOME_DOC_INIT(,,[:])
+ fi
+      
+ AM_CONDITIONAL(DISABLE_DOC, test ${enable_doc} = no) 
+--- configure	2008-03-21 00:47:35.000000000 +0100
++++ configure	2008-03-21 00:47:48.000000000 +0100
+@@ -2968,8 +2966,93 @@
+ 
+ 
+ else
+-ENABLE_SK_TRUE="#"
+-ENABLE_SK_FALSE=""
++
++gdu_cv_version_required=0.3.2
++
++if test -n "$PKG_CONFIG" && \
++    { (echo "$as_me:$LINENO: \$PKG_CONFIG --exists --print-errors \"gnome-doc-utils >= \$gdu_cv_version_required\"") >&5
++  ($PKG_CONFIG --exists --print-errors "gnome-doc-utils >= $gdu_cv_version_required") 2>&5
++  ac_status=$?
++  echo "$as_me:$LINENO: \$? = $ac_status" >&5
++  (exit $ac_status); }; then
++  gdu_cv_have_gdu=yes
++else
++  gdu_cv_have_gdu=no
++fi
++
++if test "$gdu_cv_have_gdu" = "yes"; then
++	:
++else
++	:
++fi
++
++
++
++# Check whether --with-help-dir was given.
++if test "${with_help_dir+set}" = set; then
++  withval=$with_help_dir;
++else
++  with_help_dir='${datadir}/gnome/help'
++fi
++
++HELP_DIR="$with_help_dir"
++
++
++
++# Check whether --with-omf-dir was given.
++if test "${with_omf_dir+set}" = set; then
++  withval=$with_omf_dir;
++else
++  with_omf_dir='${datadir}/omf'
++fi
++
++OMF_DIR="$with_omf_dir"
++
++
++
++# Check whether --with-help-formats was given.
++if test "${with_help_formats+set}" = set; then
++  withval=$with_help_formats;
++else
++  with_help_formats=''
++fi
++
++DOC_USER_FORMATS="$with_help_formats"
++
++
++# Check whether --enable-scrollkeeper was given.
++if test "${enable_scrollkeeper+set}" = set; then
++  enableval=$enable_scrollkeeper;
++else
++  enable_scrollkeeper=yes
++fi
++
++
++
++if test "$gdu_cv_have_gdu" = "yes" -a "$enable_scrollkeeper" = "yes"; then
++  ENABLE_SK_TRUE=
++  ENABLE_SK_FALSE='#'
++else
++  ENABLE_SK_TRUE='#'
++  ENABLE_SK_FALSE=
++fi
++
++
++DISTCHECK_CONFIGURE_FLAGS="--disable-scrollkeeper $DISTCHECK_CONFIGURE_FLAGS"
++
++
++
++
++if test "$gdu_cv_have_gdu" = "yes"; then
++  HAVE_GNOME_DOC_UTILS_TRUE=
++  HAVE_GNOME_DOC_UTILS_FALSE='#'
++else
++  HAVE_GNOME_DOC_UTILS_TRUE='#'
++  HAVE_GNOME_DOC_UTILS_FALSE=
++fi
++
++
++
+ fi
+ 
+ 

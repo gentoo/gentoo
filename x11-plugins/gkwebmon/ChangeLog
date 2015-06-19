@@ -1,0 +1,46 @@
+# ChangeLog for x11-plugins/gkwebmon
+# Copyright 2002-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkwebmon/ChangeLog,v 1.12 2013/06/01 11:39:07 pacho Exp $
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #144305
+
+  27 May 2009; Jim Ramsay <lack@gentoo.org> -gkwebmon-0.1b.ebuild:
+  Version cleanup
+
+  12 Mar 2007; Jim Ramsay <lack@gentoo.org> gkwebmon-0.1b.ebuild,
+  gkwebmon-0.2.ebuild:
+  Updated to use new gkrellm-plugin eclass
+
+  22 Feb 2007; Jim Ramsay <lack@gentoo.org> +metadata.xml:
+  Accepting maintainership
+
+  05 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> gkwebmon-0.2.ebuild:
+  Mark 0.2 stable on alpha
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gkwebmon-0.2.ebuild:
+  Masked gkwebmon-0.2.ebuild stable for ppc
+
+  19 Jun 2004; <pyrania@gentoo.org> gkwebmon-0.2.ebuild:
+  Stable on x86.
+
+  12 May 2004; Daniel Ahlberg <aliz@gentoo.org> gkwebmon-0.2.ebuild:
+  Removed S=.
+
+*gkwebmon-0.2 (25 Mar 2004)
+
+  25 Mar 2004; Markus Nigbur <pyrania@gentoo.org> gkwebmon-0.2.ebuild:
+  Version bump. Closing bug #38336.
+
+*gkwebmon-0.1b (12 Feb 2003)
+
+  12 Feb 2003; Seemant Kulleen <seemant@gentoo.org> gkwebmon-0.1b.ebuild
+  ChangeLog files/digest-gkwebmon-0.1b :
+
+  New GKrellM2 plugin to monitor web pages and notifies you when they
+  change.  Ebuild submitted by: Erik Waling <ewaling@ccitt5.net> in bug
+  #13941.

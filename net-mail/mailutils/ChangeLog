@@ -1,0 +1,292 @@
+# ChangeLog for net-mail/mailutils
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/mailutils/ChangeLog,v 1.74 2014/12/28 16:37:50 titanofold Exp $
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  mailutils-2.99.98.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  06 Nov 2014; Mike Frysinger <vapier@gentoo.org> mailutils-2.99.98.ebuild:
+  Depend on libltdl rather than libtool by default #528294 by Pacho Ramos.
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  mailutils-2.99.98.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> mailutils-2.99.98.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  03 Aug 2014;  <tgall@gentoo.org> mailutils-2.99.98.ebuild:
+  arm64, initial support
+
+  10 Mar 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/mailutils-2.99.98-readline-6.3.patch, mailutils-2.99.98.ebuild:
+  Fix by Martin von Gagern for building w/readline-6.3 #503954.
+
+  28 Oct 2013; Eray Aslan <eras@gentoo.org>
+  -files/mailutils-2.99.97-gsasl.patch, -mailutils-2.99.97.ebuild:
+  Remove old
+
+  22 Sep 2013; Agostino Sarubbo <ago@gentoo.org> mailutils-2.99.98.ebuild:
+  Stable for x86, wrt bug #485358
+
+  21 Sep 2013; Agostino Sarubbo <ago@gentoo.org> mailutils-2.99.98.ebuild:
+  Stable for amd64, wrt bug #485358
+
+*mailutils-2.99.98 (22 Mar 2013)
+
+  22 Mar 2013; Eray Aslan <eras@gentoo.org>
+  +files/mailutils-2.99.98-array_bounds.patch, +mailutils-2.99.98.ebuild:
+  Version bump
+
+  28 Feb 2013; Eray Aslan <eras@gentoo.org> mailutils-2.99.97.ebuild:
+  Use tc-getPKG_CONFIG instead of calling pkg-config directly
+
+  28 Feb 2013; Eray Aslan <eras@gentoo.org> mailutils-2.99.97.ebuild:
+  Fix building with ncurses[tinfo] - bug #459526
+
+  16 Feb 2013; Eray Aslan <eras@gentoo.org> -files/mail.rc,
+  -files/mailutils-2.1-python.patch, -files/mailutils-2.2-gets.patch,
+  -mailutils-2.2.ebuild:
+  Remove old
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> mailutils-2.99.97.ebuild:
+  Stable for x86, wrt bug #457692
+
+  15 Feb 2013; Eray Aslan <eras@gentoo.org> mailutils-2.99.97.ebuild:
+  Drop ggdb from CFLAGS - bug #457718
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> mailutils-2.99.97.ebuild:
+  Stable for amd64, wrt bug #457692
+
+  15 Feb 2013; Eray Aslan <eras@gentoo.org>
+  +files/mailutils-2.99.97-gsasl.patch, mailutils-2.99.97.ebuild:
+  Fix QA warning
+
+  20 Oct 2012; Jeroen Roovers <jer@gentoo.org> mailutils-2.99.97.ebuild:
+  Marked ~hppa (bug #439040).
+
+*mailutils-2.99.97 (20 Oct 2012)
+
+  20 Oct 2012; Eray Aslan <eras@gentoo.org> +files/comsatd.initd,
+  +files/imap4d.initd, +files/mail, +files/mailutils.rc, +files/pop3d.initd,
+  +mailutils-2.99.97.ebuild, metadata.xml:
+  Version bump
+
+  20 Oct 2012; Eray Aslan <eras@gentoo.org>
+  -files/mailutils-0.6-imap4d-format-string.patch,
+  -files/mailutils-0.6-imap4d-gcc4.0-ftbfs.patch,
+  -files/mailutils-0.6-mh-Makefile.in.patch,
+  -files/mailutils-IDEF0954-IDEF0955.patch, -files/mailutils-IDEF0956.patch,
+  -files/mailutils-IDEF0957.patch, -files/mailutils-SQLinjection.patch,
+  -files/mailutils-getline.diff:
+  Remove unnecessary patch files
+
+  11 Aug 2012; Jeroen Roovers <jer@gentoo.org> mailutils-2.2.ebuild,
+  +files/mailutils-2.2-gets.patch:
+  Fix building against sys-libs/glibc-2.16 by Diego Elio Pettenò (bug
+  #426188).
+
+  24 Apr 2012; Michał Górny <mgorny@gentoo.org> mailutils-2.2.ebuild:
+  Update to use mirror://.
+
+  21 Nov 2011; Eray Aslan <eras@gentoo.org> -mailutils-0.6-r3.ebuild:
+  drop old
+
+  25 Sep 2011; Raúl Porcel <armin76@gentoo.org> mailutils-0.6-r3.ebuild,
+  mailutils-2.2.ebuild:
+  Drop alpha/sparc keywords
+
+  20 Aug 2011; Eray Aslan <eras@gentoo.org> mailutils-2.2.ebuild:
+  Use Python 2. Don't install *.pyc, *.pyo, *.a and *.la files in Python
+  site-packages directories. Properly call python_mod_optimize() and
+  python_mod_cleanup() (bug #377215). Patch by Arfrever.
+
+  29 Jul 2011; Fabian Groffen <grobian@gentoo.org> mailutils-2.2.ebuild:
+  Marked ~*-macos
+
+  14 Jun 2011; Markus Meier <maekke@gentoo.org> mailutils-2.2.ebuild:
+  x86 stable, bug #370319
+
+  08 Jun 2011; Markos Chandras <hwoarang@gentoo.org> mailutils-2.2.ebuild:
+  Stable on amd64 wrt bug #370319
+
+  20 Mar 2011; Eray Aslan <eras@gentoo.org> mailutils-0.6-r3.ebuild,
+  mailutils-2.2.ebuild:
+  move to new style virtual/mailx - bug 350792
+
+  20 Mar 2011; Eray Aslan <eras@gentoo.org> -mailutils-1.2.ebuild,
+  -mailutils-2.1.ebuild:
+  remove old versions.
+
+*mailutils-2.2 (10 Sep 2010)
+
+  10 Sep 2010; Jeroen Roovers <jer@gentoo.org> +mailutils-2.2.ebuild:
+  Version bump.
+
+  17 Jun 2010; Patrick Lauer <patrick@gentoo.org> mailutils-0.6-r3.ebuild,
+  mailutils-1.2.ebuild, mailutils-2.1.ebuild:
+  Migrating away from deprecated postgres virtuals
+
+  25 Jan 2010; Jeroen Roovers <jer@gentoo.org> mailutils-2.1.ebuild,
+  metadata.xml:
+  Add ldap and tokyocabinet USE flags.
+
+  24 Jan 2010; Jeroen Roovers <jer@gentoo.org> mailutils-2.1.ebuild:
+  USE=bidi support thanks to Martin von Gagern (bug #261155).
+
+  21 Jan 2010; Jeroen Roovers <jer@gentoo.org> mailutils-2.1.ebuild:
+  Actually do something with the python eclass too.
+
+*mailutils-2.1 (21 Jan 2010)
+
+  21 Jan 2010; Jeroen Roovers <jer@gentoo.org> +mailutils-2.1.ebuild,
+  +files/mailutils-2.1-python.patch:
+  Version bump thanks to Arfrever Frehtes Taifersar Arahesis (bug #252749).
+
+  16 Mar 2009; Thilo Bangert <bangert@gentoo.org> mailutils-0.6-r3.ebuild,
+  mailutils-1.2.ebuild:
+  add blocker on mail-filter/libsieve due to filecollision - bug #248097
+
+  15 Feb 2009; Torsten Veller <tove@gentoo.org> mailutils-0.6-r3.ebuild,
+  mailutils-1.2.ebuild:
+  Remove mail-client/elm blocker as elm was removed
+
+  15 Jul 2008; Ryan Hill <dirtyepic@gentoo.org> mailutils-0.6-r3.ebuild,
+  mailutils-1.2.ebuild:
+  Add test USE flag with dependency on dejagnu for part of bug #172970 by
+  James Rowe.
+
+  21 May 2008; Tiziano Müller <dev-zero@gentoo.org>
+  mailutils-0.6-r3.ebuild:
+  Changed dependency for postgresql from dev-db/postgresql to
+  virtual/postgresql-server
+
+  19 May 2008; Tiziano Müller <dev-zero@gentoo.org> mailutils-1.2.ebuild:
+  Changed dependency for postgresql to virtual/postgresql-base
+
+*mailutils-1.2 (03 Mar 2008)
+
+  03 Mar 2008; Jeroen Roovers <jer@gentoo.org> mailutils-0.6-r3.ebuild,
+  +mailutils-1.2.ebuild:
+  Version bump with removed mailwrapper magic (bug #158501). Marked ~hppa.
+
+  27 Jan 2007; Olivier Crête <tester@gentoo.org> mailutils-0.6-r3.ebuild:
+  Added ~amd64 keyword for bug #158295
+
+  10 Jan 2007; Piotr Jaroszyński <peper@gentoo.org> Manifest:
+  Fix Manifest.
+
+  10 Jan 2007; Marijn Schouten <hkBst@gentoo.org> mailutils-0.6-r3.ebuild:
+  Dependency update: dev-util/guile -> dev-scheme/guile.
+
+  06 Jan 2007; Fernando J. Pereda <ferdy@gentoo.org>
+  -mailutils-0.6-r2.ebuild:
+  QA: Clean unused versions.
+
+  23 Nov 2006; Francesco Riosa <vivo@gentoo.org> mailutils-0.6-r2.ebuild,
+  mailutils-0.6-r3.ebuild:
+  dev-db/mysql => virtual/mysql
+
+  04 Nov 2006; Bryan Østergaard <kloeri@gentoo.org>
+  mailutils-0.6-r3.ebuild:
+  Stable on Alpha.
+
+  09 Sep 2006; <ticho@gentoo.org> mailutils-0.6-r3.ebuild:
+  Stable on x86, bug #141396.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org>
+  files/digest-mailutils-0.6-r2, Manifest:
+  Fixing SHA256 digest, pass four
+
+*mailutils-0.6-r3 (16 Feb 2006)
+
+  16 Feb 2006; Tuấn Văn <langthang@gentoo.org>
+  +files/mailutils-0.6-imap4d-gcc4.0-ftbfs.patch, +mailutils-0.6-r3.ebuild:
+  gcc4.0 patch. Thanks to Thomas Chik <tshchik@gmail.com>. Bug #122985.
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> mailutils-0.6-r2.ebuild:
+  Mark 0.6-r2 stable on alpha
+
+  10 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  -mailutils-0.6-r1.ebuild:
+  remove vulnerable version. forgot to do it earlier
+
+*mailutils-0.6-r2 (10 Sep 2005)
+
+  10 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/mailutils-0.6-imap4d-format-string.patch, +mailutils-0.6-r2.ebuild:
+  Applied security patch wrt bug #105458. Stable on x86
+
+  27 May 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/mailutils-SQLinjection.patch, +files/mailutils-getline.diff,
+  mailutils-0.6-r1.ebuild:
+  Added two patches (security and fixes compiling on alpha). Readded ~alpha so
+
+  26 May 2005; Fernando J. Pereda <ferdy@gentoo.org> ChangeLog:
+  added security patches backported from 0.6.90, wrt #94053. Dropped ~alpha
+  keyword, doesn't compile. Removed vulnerable ebuilds
+
+  14 May 2005; Fernando J. Pereda <ferdy@gentoo.org> mailutils-0.5.ebuild,
+  mailutils-0.6.ebuild:
+  keyworded ~alpha
+
+  10 Mar 2005; Tom Martin <slarti@gentoo.org> mailutils-0.6.ebuild:
+  Initial ~sparc.
+
+*mailutils-0.6 (01 Feb 2005)
+
+  01 Feb 2005; Tuấn Văn <langthang@gentoo.org>
+  +files/mailutils-0.6-mh-Makefile.in.patch, +mailutils-0.6.ebuild:
+  Version bump.
+
+  29 Sep 2004; Tuan Van <langthang@gentoo.org> :
+  stable on x86. Remove old ebuild.
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> mailutils-0.5.ebuild:
+  Switch to use epause and ebeep, bug #62950
+
+  26 Jul 2004; Tuan Van <langthang@gentoo.org> mailutils-0.5.ebuild:
+  add virtual/mailx, wrt bug #58164.
+  default to 'mysql', wrt bug #58162.
+
+  14 Jul 2004; Tuan Van <langthang@gentoo.org> mailutils-0.5.ebuild:
+  stay away from awk.
+
+  10 Jul 2004; Tuan Van <langthang@gentoo.org> mailutils-0.5.ebuild:
+  Added mail.rc to resolved bug #37302.
+  It looks like people using postfix as virtual/mta having problem with 
+  --disable-sendmail, add logic to enable-sendmail if postfix is MTA, 
+  resolved bug #44249.
+
+*mailutils-0.5 (08 Jul 2004)
+
+  08 Jul 2004; Tuan Van<langthang@gentoo.org> +mailutils-0.5.ebuild:
+  Version bump.
+
+  08 Jul 2004; Tuan Van<langthang@gentoo.org> mailutils-0.3.1-r1.ebuild:
+  mark mailutils-0.3.1-r1 stable. mailutils-0.3.1 doesn't compile with gcc-3.3.
+  Resolve bug #53807.
+
+*mailutils-0.3.1-r1 (30 Jun 2004)
+
+  30 Jun 2004; Cory Visi <merlin@gentoo.org> mailutils-0.3.1-r1.ebuild,
+  files/mailutils-0.3.1-mh-Makefile.in.patch:
+  Some cleanup, add support for postgres, add mh-utils, address Bug 22864
+
+  30 May 2004; Robin H. Johnson <robbat2@gentoo.org> mailutils-0.3.1.ebuild,
+  mailutils-0.3.ebuild:
+  mailx move
+
+*mailutils-0.3.1 (08 Jun 2003)
+
+  08 Jun 2003; Jon Portnoy <avenj@gentoo.org> mailutils-0.3.1.ebuild :
+  Version bump.
+
+*mailutils-0.3 (26 Mar 2003)
+
+  26 Mar 2003; Jon Portnoy <avenj@gentoo.org> mailutils-0.3.ebuild, 
+	digest-mailutils-0.3 :
+  Initial import of GNU mailutils, a suite of mail-related tools
+  including POP3/IMAP servers, parsing tools, and a mailx
+  replacement.

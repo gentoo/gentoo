@@ -1,0 +1,26 @@
+diff -Naur aide-0.14.orig//src/Makefile.am aide-0.14//src/Makefile.am
+--- aide-0.14.orig//src/Makefile.am	2010-02-20 04:23:08.000000000 +0900
++++ aide-0.14//src/Makefile.am	2010-05-26 23:56:47.000000000 +0900
+@@ -26,7 +26,7 @@
+ LEX_OUTPUT_ROOT = lex.yy
+ 
+ LDADD = -lm @CRYPTLIB@ @ACLLIB@ @SELINUXLIB@ @AUDITLIB@ @ATTRLIB@ @ELFLIB@
+-AM_CFLAGS = @AIDE_DEFS@ -W -Wall -g
++AM_CFLAGS = -DLOCALEDIR=\"$(localedir)\" @AIDE_DEFS@ -W -Wall -g
+ 
+ CLEANFILES = conf_yacc.h conf_yacc.c conf_lex.c db_lex.c *~
+ 
+diff -Naur aide-0.14.orig//src/db.c aide-0.14//src/db.c
+--- aide-0.14.orig//src/db.c	2010-02-18 05:06:57.000000000 +0900
++++ aide-0.14//src/db.c	2010-05-27 00:16:07.000000000 +0900
+@@ -26,6 +26,10 @@
+ #include "db_file.h"
+ #include "db_disk.h"
+ 
++#ifdef WITH_CURL
++#include "fopen.h"
++#endif
++
+ #ifdef WITH_PSQL
+ #include "db_sql.h"
+ #endif

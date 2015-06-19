@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>qt</herd>
+	<upstream>
+		<remote-id type="sourceforge">cimg</remote-id>
+		<bugs-to>http://sourceforge.net/tracker/?group_id=96492</bugs-to>
+	</upstream>
+</pkgmetadata>

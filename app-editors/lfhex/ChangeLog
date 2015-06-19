@@ -1,0 +1,125 @@
+# ChangeLog for app-editors/lfhex
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/lfhex/ChangeLog,v 1.31 2013/03/02 19:21:33 hwoarang Exp $
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> lfhex-0.42.ebuild:
+  Move Qt dependencies to the new category
+
+  16 Sep 2012; Pacho Ramos <pacho@gentoo.org> +files/01-abs-llabs.dpatch,
+  +files/02-gcc-4.7.dpatch, lfhex-0.42.ebuild:
+  Apply debian patches to fix compilation errors like gcc-4.7 compat issues,
+  also install a desktop entry.
+
+  26 Mar 2010; Ben de Groot <yngwin@gentoo.org> lfhex-0.42.ebuild:
+  Use qt4-r2.eclass (bug #311481). Formatting.
+
+  09 Dec 2009; nixnut <nixnut@gentoo.org> lfhex-0.42.ebuild:
+  ppc stable #288112
+
+  01 Dec 2009; Markus Meier <maekke@gentoo.org> lfhex-0.42.ebuild:
+  x86 stable, bug #288112
+
+  28 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org> lfhex-0.42.ebuild:
+  Stable on amd64.
+
+  28 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/lfhex-gcc3-inline-fix.patch, -lfhex-0.3.7.2.ebuild,
+  -lfhex-0.4-r1.ebuild, lfhex-0.42.ebuild, -files/ndebug.patch,
+  metadata.xml:
+  QA: move to maintainer-needed since there is 0 interest around from former
+  dev aparently.
+  Drop all old ebuilds including STABLE one (better to have no non-working
+  ebuild in stable than pretend that we have stable).
+  Clear latest ebuild.
+
+  05 Oct 2009; Dominik Kapusta <ayoy@gentoo.org> lfhex-0.4-r1.ebuild,
+  lfhex-0.42.ebuild:
+  Removed alternative dependency on Qt metapackage
+
+*lfhex-0.42 (16 Nov 2008)
+
+  16 Nov 2008; Daniel Black <dragonheart@gentoo.org> +lfhex-0.42.ebuild:
+  version bump
+
+  27 Jul 2008; Carsten Lohrke <carlo@gentoo.org> lfhex-0.4-r1.ebuild:
+  Fix broken split Qt 4.4 dependencies, cf. bug 217161 comment 11.
+
+  01 May 2008; Daniel Black <dragonheart@gentoo.org> -lfhex-0.4.ebuild,
+  lfhex-0.4-r1.ebuild:
+  dependency fix as per bug #217197
+
+*lfhex-0.4-r1 (01 Apr 2008)
+
+  01 Apr 2008; Daniel Black <dragonheart@gentoo.org> +files/ndebug.patch,
+  -lfhex-0.3.7-r1.ebuild, -lfhex-0.3.7.1.ebuild, +lfhex-0.4-r1.ebuild:
+  patch to work with NDEBUG thanks to Guenther Brunthaler bug #205269. QA
+  improvements thanks to Jakub. removed old versions
+
+  22 Jul 2007; David Shakaryan <omp@gentoo.org> lfhex-0.3.7-r1.ebuild,
+  lfhex-0.3.7.1.ebuild, lfhex-0.3.7.2.ebuild, lfhex-0.4.ebuild:
+  Remove virtual/x11 from dependencies.
+
+*lfhex-0.4 (06 Nov 2006)
+
+  06 Nov 2006; Daniel Black <dragonheart@gentoo.org> +lfhex-0.4.ebuild:
+  version bump
+
+  05 Oct 2006; <sjl@gentoo.org> lfhex-0.3.7.2.ebuild:
+  stable on ppc (Bug #146103)
+
+  04 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org> lfhex-0.3.7.2.ebuild:
+  Stable on amd64/x86 wrt bug #146103.
+
+*lfhex-0.3.7.2 (12 Jul 2006)
+
+  12 Jul 2006; Daniel Black <dragonheart@gentoo.org> lfhex-0.3.7-r1.ebuild,
+  +lfhex-0.3.7.2.ebuild:
+  version bump + modular X happyness
+
+  22 Jan 2006; Marcelo Goes <vanquirius@gentoo.org> lfhex-0.3.7.1.ebuild:
+  Make modular X friendly.
+
+*lfhex-0.3.7.1 (25 Sep 2005)
+
+  25 Sep 2005; Daniel Black <dragonheart@gentoo.org> +lfhex-0.3.7.1.ebuild:
+  version bump
+
+  07 Jul 2005; Caleb Tennis <caleb@gentoo.org> -lfhex-0.3.7.ebuild,
+  lfhex-0.3.7-r1.ebuild:
+  Remove stale version, fix qt dep
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> lfhex-0.3.7-r1.ebuild:
+  stable on amd64
+
+  10 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> lfhex-0.3.7-r1.ebuild:
+  added ~amd64 to KEYWORDS. fixes #69598.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  lfhex-0.3.7-r1.ebuild:
+  Masked lfhex-0.3.7-r1.ebuild stable for ppc
+
+  12 Sep 2004; Daniel Black <dragonheart@gentoo.org> lfhex-0.3.7-r1.ebuild:
+  x86 keyword
+
+  01 Aug 2004; David Holm <dholm@gentoo.org> lfhex-0.3.7-r1.ebuild:
+  Added to ~ppc.
+
+*lfhex-0.3.7-r1 (23 Jul 2004)
+
+  23 Jul 2004; Daniel Black <dragonheart@gentoo.org>
+  +files/lfhex-gcc3-inline-fix.patch, +lfhex-0.3.7-r1.ebuild:
+  Added patch by Jon Oberheide <jon@oberheide.org> (via email). Uses different
+  inline method for >=gcc-3.1 compilers.
+
+  18 Jul 2004; Daniel Black <dragonheart@gentoo.org> lfhex-0.3.7.ebuild:
+  x86 stable
+
+  15 Jun 2004; Daniel Black <dragonheart@gentoo.org> lfhex-0.3.7.ebuild:
+  QA - default S=
+
+*lfhex-0.3.7 (14 Jun 2004)
+
+  14 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  +lfhex-0.3.7.ebuild:
+  Initial import. Ebuild thanks to CJ Kucera <gentoo@apocalyptech.com> in bug
+  #52295

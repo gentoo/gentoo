@@ -1,0 +1,47 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/irker/files/irkerd.initd,v 1.1 2014/06/12 03:16:00 patrick Exp $
+
+: ${pidfile:=/run/${RC_SVCNAME}.pid}
+
+: ${IRKERD_NICK:=}
+: ${IRKERD_PASSWORD:=}
+: ${IRKERD_LOGFILE:=/var/log/${RC_SVCNAME}.log}
+: ${IRKERD_LOGLEVEL:=0}
+: ${IRKERD_USER:=nobody}
+
+depend() {
+        use net
+}
+
+start () {
+	if [[ ${IRKERD_LOGLEVEL} ]] ; then
+		IRKERD_OPTS="${IRKERD_OPTS} -d ${IRKERD_LOGLEVEL}"
+
+		ewarn "IRKERD_LOGLEVEL is intended to be used for debugging purpose only"
+		ewarn "No logrotate can handle ${IRKERD_LOGFILE}"
+
+		checkpath -f \
+			-o "${IRKERD_USER}" \
+			"${IRKERD_LOGFILE}" \
+			|| return 1
+	fi
+
+	if [[ -z "${IRKERD_USER}" ]] ; then
+		die "IRKERD_USER is mandatory"
+	fi
+
+	[[ -n "${IRKERD_LOGFILE}"  ]] && IRKERD_OPTS="${IRKERD_OPTS} -l ${IRKERD_LOGFILE}"
+	[[ -n "${IRKERD_NICK}"     ]] && IRKERD_OPTS="${IRKERD_OPTS} -n ${IRKERD_NICK}"
+	[[ -n "${IRKERD_PASSWORD}" ]] && IRKERD_OPTS="${IRKERD_OPTS} -p ${IRKERD_PASSWORD}"
+
+        ebegin "Starting ${RC_SVCNAME}"
+        start-stop-daemon --start \
+                --quiet --background \
+                --user "${IRKERD_USER}" \
+                --make-pidfile --pidfile "${pidfile}" \
+                --exec /usr/bin/irkerd \
+                -- ${IRKERD_OPTS} < /dev/null
+        eend $?
+}

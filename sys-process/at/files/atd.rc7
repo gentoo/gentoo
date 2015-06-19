@@ -1,0 +1,13 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/at/files/atd.rc7,v 1.3 2014/03/03 14:09:19 polynomial-c Exp $
+
+pidfile="/var/run/atd.pid"
+command="/usr/sbin/atd"
+command_args="${ATD_OPTS}"
+start_stop_daemon_args="--pidfile ${pidfile}"
+
+depend() {
+	need clock logger
+}

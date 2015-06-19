@@ -1,0 +1,87 @@
+Description: Avoid double free of connection pointers
+ .
+ libapache2-mod-auth-pgsql (2.0.3-6.1) unstable; urgency=medium
+ .
+   * Non-maintainer upload.
+   * Apply patch from Launchpad to set freed pointers to NULL before
+     subsequent checks against NULL. (Closes: #774313)
+Author: Neil Williams <codehelp@debian.org>
+Bug-Debian: https://bugs.debian.org/774313
+Origin: ubuntu, https://launchpadlibrarian.net/177475074/doublefree.patch
+
+---
+
+--- libapache2-mod-auth-pgsql-2.0.3.orig/mod_auth_pgsql.c
++++ libapache2-mod-auth-pgsql-2.0.3/mod_auth_pgsql.c
+@@ -489,6 +489,7 @@ PGconn *pg_connect(pg_auth_config_rec *s
+ 						 "mod_auth_pgsql database connection error reset failed %s",
+ 						 PQerrorMessage(conn));
+ 			PQfinish(conn);
++			conn = NULL;
+ 			return NULL;
+ 		}
+ 	}
+@@ -562,6 +563,7 @@ char *do_pg_query(request_rec * r, char
+ 						 "mod_auth_pgsql database character set encoding %s",
+ 						 check);
+ 			PQfinish(pg_conn);
++			pg_conn = NULL;
+ 			return NULL;
+ 		}
+ 	}
+@@ -573,12 +575,15 @@ char *do_pg_query(request_rec * r, char
+ 					 "PGSQL 2: %s -- Query: %s ",
+ 					 PQerrorMessage(pg_conn), query);
+ 		PQfinish(pg_conn);
++		pg_conn = NULL;
+ 		return NULL;
+ 	}
+ 
+ 	if (PQresultStatus(pg_result) == PGRES_EMPTY_QUERY) {
+ 		PQclear(pg_result);
++		pg_result = NULL;
+ 		PQfinish(pg_conn);
++		pg_conn = NULL;
+ 		return NULL;
+ 	}
+ 
+@@ -586,7 +591,9 @@ char *do_pg_query(request_rec * r, char
+ 		apr_snprintf(pg_errstr, MAX_STRING_LEN, "PGSQL 3: %s -- Query: %s",
+ 					 PQerrorMessage(pg_conn), query);
+ 		PQclear(pg_result);
++		pg_result = NULL;
+ 		PQfinish(pg_conn);
++		pg_conn = NULL;
+ 		return NULL;
+ 	}
+ 
+@@ -596,7 +603,9 @@ char *do_pg_query(request_rec * r, char
+ 			apr_snprintf(pg_errstr, MAX_STRING_LEN, "PGSQL 4: %s",
+ 						 PQerrorMessage(pg_conn));
+ 			PQclear(pg_result);
++			pg_result = NULL;
+ 			PQfinish(pg_conn);
++			pg_conn = NULL;
+ 			return NULL;
+ 		}
+ 
+@@ -604,7 +613,9 @@ char *do_pg_query(request_rec * r, char
+ 			apr_snprintf(pg_errstr, MAX_STRING_LEN,
+ 						 "Could not get memory for Postgres query.");
+ 			PQclear(pg_result);
++			pg_result = NULL;
+ 			PQfinish(pg_conn);
++			pg_conn = NULL;
+ 			return NULL;
+ 		}
+ 
+@@ -613,7 +624,9 @@ char *do_pg_query(request_rec * r, char
+ 
+ 	/* ignore errors here ! */
+ 	PQclear(pg_result);
++	pg_result = NULL;
+ 	PQfinish(pg_conn);
++	pg_conn = NULL;
+ 	return result;
+ }
+ 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci</herd>
+  <longdescription lang="en">
+LAPACK is a comprehensive library that does linear algebra
+operations including matrix inversions, least squared solutions to
+linear sets of equations, eigenvector analysis, singular value
+decomposition, etc. It is a very comprehensive and reputable package
+that has found extensive use in the scientific community.
+This package installs the reference FORTRAN 77 implementation from Netlib.
+</longdescription>
+</pkgmetadata>

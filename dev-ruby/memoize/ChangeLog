@@ -1,0 +1,33 @@
+# ChangeLog for dev-ruby/memoize
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/memoize/ChangeLog,v 1.8 2015/06/07 18:32:03 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  22 Mar 2015; Hans de Graaff <graaff@gentoo.org> memoize-1.3.1-r1.ebuild:
+  Add ruby22.
+
+  03 Nov 2014; Manuel Rüger <mrueg@gentoo.org> memoize-1.3.1-r1.ebuild:
+  Drop jruby.
+
+  02 Aug 2014; Manuel Rüger <mrueg@gentoo.org> memoize-1.3.1-r1.ebuild:
+  Add ruby21 support.
+
+  21 May 2014; Manuel Rüger <mrueg@gentoo.org> memoize-1.3.1-r1.ebuild:
+  Remove ruby18 target.
+
+  03 Nov 2013; Manuel Rüger <mrueg@gentoo.org> -memoize-1.3.1.ebuild:
+  Cleanup old.
+
+*memoize-1.3.1-r1 (30 Oct 2013)
+
+  30 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +memoize-1.3.1-r1.ebuild:
+  Add ruby20 target.
+
+*memoize-1.3.1 (10 Mar 2013)
+
+  10 Mar 2013; Naohiro Aota <naota@gentoo.org> +memoize-1.3.1.ebuild,
+  +metadata.xml:
+  New package dev-ruby/memoize written by Tomoh K. <ichelm610x@gmail.com>.
+  #460854

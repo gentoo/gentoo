@@ -1,0 +1,98 @@
+# ChangeLog for x11-plugins/gkrellflynn
+# Copyright 2002-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellflynn/ChangeLog,v 1.27 2013/08/31 14:48:45 pacho Exp $
+
+  31 Aug 2013; Pacho Ramos <pacho@gentoo.org>
+  +files/gkrellflynn-0.8-makefile.patch, gkrellflynn-0.8.ebuild:
+  Fix gcc-4.7 building (#427414), respect LDFLAGS/CFLAGS (#334813)
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #144305
+
+  18 Nov 2008; Jim Ramsay <lack@gentoo.org> gkrellflynn-0.8.ebuild:
+  Updated dead HOMEPAGE (Bug 214631)
+
+  12 Jun 2007; Jim Ramsay <lack@gentoo.org> -gkrellflynn-0.6.ebuild,
+  -gkrellflynn-0.7.ebuild:
+  Old version cleanup
+
+  02 Jun 2007; Raúl Porcel <armin76@gentoo.org> gkrellflynn-0.8.ebuild:
+  alpha stable wrt #176144
+
+  26 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  gkrellflynn-0.8.ebuild:
+  amd64 stable, bug 176144
+
+  07 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  gkrellflynn-0.8.ebuild:
+  ppc stable, bug #176144
+
+  26 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gkrellflynn-0.8.ebuild:
+  Stable on sparc wrt #176144
+
+  26 Apr 2007; Raúl Porcel <armin76@gentoo.org> gkrellflynn-0.8.ebuild:
+  x86 stable wrt #176144
+
+  04 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gkrellflynn-0.7.ebuild:
+  Stable on sparc
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org> gkrellflynn-0.7.ebuild:
+  x86 stable
+
+  09 Mar 2007; Jim Ramsay <lack@gentoo.org> gkrellflynn-0.6.ebuild,
+  gkrellflynn-0.7.ebuild, gkrellflynn-0.8.ebuild:
+  Updated to use new gkrellm-plugin eclass
+
+*gkrellflynn-0.8 (22 Feb 2007)
+
+  22 Feb 2007; Jim Ramsay <lack@gentoo.org> +gkrellflynn-0.8.ebuild:
+  Version bump to 0.8 (bug 88469)
+
+  22 Feb 2007; Jim Ramsay <lack@gentoo.org> metadata.xml,
+  gkrellflynn-0.6.ebuild, gkrellflynn-0.7.ebuild:
+  Removed unneccessary gkrellm-1 cases
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  06 May 2006; Jason Wever <weeve@gentoo.org> gkrellflynn-0.6.ebuild:
+  Stable on SPARC.
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> gkrellflynn-0.7.ebuild:
+  Mark 0.7 stable on alpha
+
+  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org> gkrellflynn-0.6.ebuild:
+  Stable on amd64.
+
+  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org> gkrellflynn-0.7.ebuild:
+  multilib fixes closes bug #88539
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gkrellflynn-0.7.ebuild:
+  Masked gkrellflynn-0.7.ebuild stable for ppc
+
+*gkrellflynn-0.7 (22 Jun 2004)
+
+  22 Jun 2004; Martin Holzer <mholzer@gentoo.org> gkrellflynn-0.7.ebuild,
+  metadata.xml:
+  Version bumped.
+
+  19 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> gkrellflynn-0.6.ebuild:
+  marked ~amd64
+
+  15 Jan 2004; Aron Griffis <agriffis@gentoo.org> gkrellflynn-0.6.ebuild:
+  stable on alpha
+
+*gkrellflynn-0.6 (31 Oct 2002)
+
+  14 Mar 2003; Jason Wever <weeve@gentoo.org> gkrellflynn-0.6.ebuild:
+  Added ~sparc to keywords.
+
+  31 Oct 2002; Seemant Kulleen <seemant@gentoo.org> gkrellflynn-0.6.ebuild
+  ChangeLog files/digest-gkrellflynn-0.6 :
+
+  A load monitor plugin for GKrellM1 and/or GKrellM2 which shows the Doom
+  guy's face.  Ebuild submitted by: matthieu.codron@laposte.net (Matthieu
+  Codron) in bug #9224

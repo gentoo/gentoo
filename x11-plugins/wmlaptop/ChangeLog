@@ -1,0 +1,54 @@
+# ChangeLog for x11-plugins/wmlaptop
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmlaptop/ChangeLog,v 1.13 2015/03/20 07:59:04 jlec Exp $
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> files/wmlaptop.desktop:
+  Fix desktop file
+
+  05 Sep 2012; Justin Lecher <jlec@gentoo.org> wmlaptop-1.3.ebuild,
+  wmlaptop-1.4.ebuild:
+  Use domenu instead insinto + doins to install .desktop files
+
+  15 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org> wmlaptop-1.3.ebuild,
+  wmlaptop-1.4.ebuild:
+  Update HOMEPAGE and SRC_URI, thanks Lorenz in bug #394607
+
+  26 May 2011; Michele Noberasco <s4t4n@gentoo.org> wmlaptop-1.4.ebuild,
+  wmlaptop-1.3.ebuild:
+  Added patch to check for /proc/acpi instead of /proc/acpi/info. Partially fixes bug #348124.
+
+*wmlaptop-1.4 (26 May 2011)
+
+  26 May 2011; Michele Noberasco <s4t4n@gentoo.org> wmlaptop-1.4.ebuild:
+  Version bump.
+
+  09 Sep 2010; Michele Noberasco <s4t4n@gentoo.org>; wmlaptop-1.3.ebuild,
+  +files/wmlaptop-1.3-Makefile.patch:
+  Patched Makefile to make it at least decent. Closes bug #336547.
+
+  14 Jan 2009; Michele Noberasco <s4t4n@gentoo.org>; wmlaptop-1.3.ebuild:
+  Prevent automatic stripping of binaries. Closes bug #252109.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; wmlaptop-1.3.ebuild:
+  Drop virtual/x11 references.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  31 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> wmlaptop-1.3.ebuild:
+  Fixed DEPEND for modular X.
+
+  01 Dec 2005; Luis Medinas <metalgod@gentoo.org> wmlaptop-1.3.ebuild:
+  Added ~amd64 keyword. Closes bug #114143.
+
+  28 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  wmlaptop-1.3.ebuild:
+  mark ~ppc
+
+  06 Sep 2004; Michele Noberasco <s4t4n@gentoo.org> wmlaptop-1.3.ebuild:
+  Stable for x86.
+
+*wmlaptop-1.3 (17 Jul 2004)
+
+  17 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmlaptop-1.3.ebuild:
+  Initial import. Thanks to Przemyslaw Maciag. Closes #54562.

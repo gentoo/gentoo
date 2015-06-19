@@ -1,0 +1,26 @@
+# ChangeLog for sci-electronics/gsmc
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gsmc/ChangeLog,v 1.5 2012/05/04 07:10:20 jdhore Exp $
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> gsmc-1.1-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> gsmc-1.1-r1.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  12 Jan 2011; Rafael G. Martins <rafaelmartins@gentoo.org>
+  files/gsmc-1.1-autotools.patch:
+  Fixed gsmc-1.1-autotools.patch. GTK_LDFLAGS is not defined.
+
+*gsmc-1.1-r1 (12 Jan 2011)
+
+  12 Jan 2011; Rafael G. Martins <rafaelmartins@gentoo.org> -gsmc-1.1.ebuild,
+  +gsmc-1.1-r1.ebuild, +files/gsmc-1.1-autotools.patch:
+  Revision bump. Fixed bug #351471, thanks to flameeyes.
+
+*gsmc-1.1 (02 Jan 2011)
+
+  02 Jan 2011; Thomas Beierlein <tomjbe@gentoo.org> +gsmc-1.1.ebuild,
+  +metadata.xml:
+  Initial import of gsmc (moved from sci overlay)
+

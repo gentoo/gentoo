@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=fits? ( sci-libs/cfitsio:0= ) pgplot? ( sci-libs/pgplot:0= ) sys-devel/flex virtual/pkgconfig fortran? ( virtual/fortran )
+DESCRIPTION=Astronomical World Coordinate System transformations library
+EAPI=5
+HOMEPAGE=http://www.atnf.csiro.au/people/mcalabre/WCS/
+IUSE=doc fortran fits pgplot static-libs
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=LGPL-3
+RDEPEND=fits? ( sci-libs/cfitsio:0= ) pgplot? ( sci-libs/pgplot:0= ) fortran? ( virtual/fortran )
+SLOT=0/4
+SRC_URI=ftp://ftp.atnf.csiro.au/pub/software/wcslib/wcslib-4.22.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=20c47b6810431684300907ead3db6038

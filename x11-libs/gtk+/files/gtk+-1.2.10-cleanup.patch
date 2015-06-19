@@ -1,0 +1,13 @@
+pull in string prototypes
+
+--- gdk/gdkinputcommon.h
++++ gdk/gdkinputcommon.h
+@@ -24,6 +24,8 @@
+  * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+  */
+ 
++#include <string.h>
++
+ #if defined(XINPUT_GXI) || defined(XINPUT_XFREE)
+ 
+ /* Forward declarations */

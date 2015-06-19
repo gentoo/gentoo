@@ -1,0 +1,26 @@
+--- src/gtkmulticol.c	2009-01-21 16:37:39.000000000 +0800
++++ src/gtkmulticol.c	2012-02-21 09:47:21.680512626 +0800
+@@ -45,9 +45,9 @@
+ static void gtk_multicol_size_request(GtkWidget *widget, GtkRequisition *requisition);
+ static void gtk_multicol_size_allocate(GtkWidget *widget, GtkAllocation *allocation);
+ 
+-guint gtk_multicol_get_type(void)
++GType gtk_multicol_get_type(void)
+ {
+-    static guint multicol_type = 0;
++    static GType multicol_type = 0;
+ 
+     if (!multicol_type)
+     {
+
+--- src/gtkmulticol.h	2009-01-21 16:37:40.000000000 +0800
++++ src/gtkmulticol.h	2012-02-21 09:47:42.880514545 +0800
+@@ -41,7 +41,7 @@
+     GtkBoxClass parent_class;
+ };
+ 
+-guint gtk_multicol_get_type(void);
++GType gtk_multicol_get_type(void);
+ GtkWidget *gtk_multicol_new(gint nrows);
+ void gtk_multicol_set_number_of_rows(GtkMultiCol *multicol, gint nrows);
+ void gtk_multicol_set_spacing(GtkMultiCol *multicol, gint hspacing, gint vspacing);

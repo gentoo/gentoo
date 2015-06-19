@@ -1,0 +1,85 @@
+# ChangeLog for sci-chemistry/icm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/icm/ChangeLog,v 1.18 2015/06/14 18:06:29 ulm Exp $
+
+  14 Jun 2015; Ulrich Müller <ulm@gentoo.org> icm-3.7.2e.ebuild,
+  icm-3.7.3b.ebuild:
+  [QA] Remove emul-linux-x86-* from dependencies.
+
+  15 Oct 2014; Pacho Ramos <pacho@gentoo.org> icm-3.7.2e.ebuild,
+  icm-3.7.3b.ebuild:
+  Support multilib providers for deps. Bump to EAPI=5.
+
+  07 Sep 2014; Ulrich Müller <ulm@gentoo.org> icm-3.7.2e.ebuild,
+  icm-3.7.3b.ebuild:
+  Replace emul-linux-x86-compat dependency by virtual/libstdc++, bug 522218.
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> icm-3.7.2e.ebuild,
+  icm-3.7.3b.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  01 Aug 2013; Samuli Suominen <ssuominen@gentoo.org> icm-3.7.2e.ebuild,
+  icm-3.7.3b.ebuild:
+  Fix libjpeg.so.62 dependency.
+
+*icm-3.7.3b (07 Jul 2013)
+
+  07 Jul 2013; Alexey Shvetsov <alexxy@gentoo.org> +icm-3.7.3b.ebuild,
+  -icm-3.7.2d.ebuild:
+  Version bump
+
+  21 Apr 2013; Michał Górny <mgorny@gentoo.org> icm-3.7.2d.ebuild,
+  icm-3.7.2e.ebuild:
+  Support multilib libraries alternatively to emul-linux-x86-xlibs.
+
+*icm-3.7.2e (20 Feb 2013)
+
+  20 Feb 2013; Alexey Shvetsov <alexxy@gentoo.org> +icm-3.7.2e.ebuild,
+  -icm-3.7.2b.ebuild, -icm-3.7.2c.ebuild:
+  Update version and clean up old
+
+*icm-3.7.2d (19 Oct 2012)
+
+  19 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> +icm-3.7.2d.ebuild,
+  icm-3.7.2c.ebuild:
+  [sci-chemistry/icm] Version bump
+
+*icm-3.7.2c (27 Feb 2012)
+
+  27 Feb 2012; Alexey Shvetsov <alexxy@gentoo.org> +icm-3.7.2c.ebuild:
+  Version bump
+
+  05 Feb 2012; Mike Frysinger <vapier@gentoo.org> icm-3.7.2b.ebuild:
+  Move to new unpacker eclass for unpack_makeself.
+
+  10 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> icm-3.7.2b.ebuild:
+  Replace removed media-libs/tiff-compat:3 depend with =media-libs/tiff-3*
+
+*icm-3.7.2b (12 Jul 2011)
+
+  12 Jul 2011; Alexey Shvetsov <alexxy@gentoo.org> -icm-3.6.1i.ebuild,
+  +icm-3.7.2b.ebuild, +files/icm.xpm, -files/icm.png, metadata.xml:
+  Version bump. Also fix to bugs #370917 #372159
+
+*icm-3.6.1i (21 May 2010)
+
+  21 May 2010; Alexey Shvetsov <alexxy@gentoo.org> -icm-3.6.1h.ebuild,
+  +icm-3.6.1i.ebuild:
+  Version bump
+
+  09 Mar 2010; Jonathan Callen <abcd@gentoo.org> icm-3.6.1h.ebuild:
+  QA: When not using an absolute path, you MUST NOT use a file extension
+  (.png, .svg, or .xpm) on the icon name for make_desktop_entry
+
+*icm-3.6.1h (14 Feb 2010)
+
+  14 Feb 2010; Alexey Shvetsov <alexxy@gentoo.org> -icm-3.6.1g.ebuild,
+  +icm-3.6.1h.ebuild:
+  Version bump
+
+*icm-3.6.1g (05 Nov 2009)
+
+  05 Nov 2009; Alexey Shvetsov <alexxy@gentoo.org> +files/90icm,
+  +icm-3.6.1g.ebuild, +files/icm.png, +metadata.xml:
+  Initial import

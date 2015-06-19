@@ -1,0 +1,15 @@
+# ChangeLog for net-misc/gvrpcd
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/gvrpcd/ChangeLog,v 1.2 2012/09/23 12:53:34 pinkbyte Exp $
+
+  23 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> gvrpcd-1.3.ebuild:
+  Fix minor QA issues
+
+*gvrpcd-1.3 (23 Sep 2012)
+
+  23 Sep 2012; Sergey Popov <pinkbyte@gentoo.org> +gvrpcd-1.3.ebuild,
+  +files/conf.gvrpcd, +files/gvrpcd-respect-ldflags.patch, +files/init.gvrpcd,
+  +metadata.xml:
+  Initial commit wrt bug #356411. Thanks to Azamat H. Hackimov for ebuild. He
+  will maintain this package through proxy maintainers
+

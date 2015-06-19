@@ -1,0 +1,7 @@
+# Copyright 1999-2014 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/uclibc/mips/use.mask,v 1.1 2014/08/16 20:43:29 blueness Exp $
+
+# Unmask the flag which corresponds to arch/abi, bug #515130
+-mips
+-abi_mips_o32

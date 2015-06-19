@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/perl virtual/perl-Term-ANSIColor >=dev-perl/PortageXS-0.02.04
+DESCRIPTION=Tool to gather relevant perl data useful for bugreports; 'emerge --info' for perl
+HOMEPAGE=http://www.gentoo.org/proj/en/perl/
+KEYWORDS=alpha amd64 hppa ~ia64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl virtual/perl-Term-ANSIColor >=dev-perl/PortageXS-0.02.04
+SLOT=0
+SRC_URI=mirror://gentoo/perl-info-0.16.tar.gz http://dev.gentoo.org/~tove/files/perl-info-0.16.tar.gz
+_md5_=037f9478429d6ba1aa190dde93f1501f

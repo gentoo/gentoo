@@ -1,0 +1,53 @@
+--- configure.ac.old	2015-02-26 23:25:34.146334845 +0100
++++ configure.ac	2015-02-26 23:25:47.978312858 +0100
+@@ -17,6 +17,7 @@
+ CFLAGS="$CFLAGS $SDL_CFLAGS"
+-LIBS="$LIBS $SDL_LIBS"
++LIBS="$LIBS -lm $SDL_LIBS"
+ 
+-AC_SUBST(CFLAGS LIBS)
++AC_SUBST(CFLAGS)
++AC_SUBST(LIBS)
+ 
+ AC_OUTPUT(	Makefile  )
+--- configure.ac.old	2015-02-26 23:33:25.801552821 +0100
++++ configure.ac	2015-02-26 23:33:47.509542361 +0100
+@@ -1,4 +1,4 @@
+-AC_INIT( wakkabox.c )
++AC_INIT([[wakkabox.c]])
+ AC_CANONICAL_HOST
+ AC_CANONICAL_TARGET
+ 
+--- wakkabox.c.old	2015-02-26 23:43:26.146386413 +0100
++++ wakkabox.c	2015-02-26 23:44:39.647389816 +0100
+@@ -249,22 +249,22 @@
+ 	printf("Loading bmp files from %s...", DATADIR);
+ 	
+ 	smallblockFname = (char*)malloc( strlen("smallblock.bmp") 
+-									 + strlen(DATADIR) );
++									 + strlen(DATADIR) + 2);
+ 	medblockhFname = (char*)malloc( strlen("medblockh.bmp") 
+-									+ strlen(DATADIR) );
++									+ strlen(DATADIR) + 2);
+ 	medblockvFname = (char*)malloc( strlen("medblockv.bmp") 
+-									+ strlen(DATADIR) );
++									+ strlen(DATADIR) + 2);
+ 	bigblockFname = (char*)malloc( strlen("bigblock.bmp") 
+-								   + strlen(DATADIR) );
++								   + strlen(DATADIR) + 2);
+ 
+ 	smallblockLocalName = (char*)malloc( strlen("smallblock.bmp") 
+-										 + strlen(".") );
++										 + strlen(".") + 2);
+ 	medblockhLocalName = (char*)malloc( strlen("medblockh.bmp") 
+-										+ strlen(".") );
++										+ strlen(".") + 2);
+ 	medblockvLocalName = (char*)malloc( strlen("medblockv.bmp") 
+-										+ strlen(".") );
++										+ strlen(".") + 2);
+ 	bigblockLocalName = (char*)malloc( strlen("bigblock.bmp") 
+-									   + strlen(".") );
++									   + strlen(".") + 2);
+ 	
+ 
+ 	sprintf( smallblockFname, "%s/smallblock.bmp", DATADIR );

@@ -1,0 +1,5 @@
+--- interfaces/emacs/Makefile.am.orig	2010-02-01 22:11:44.809941160 +1300
++++ interfaces/emacs/Makefile.am	2010-02-01 22:12:06.608062346 +1300
+@@ -1 +1 @@
+-SUBDIRS = emaxima misc imaxima
++SUBDIRS = emaxima misc

@@ -1,0 +1,415 @@
+# ChangeLog for virtual/perl-Compress-Raw-Bzip2
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/perl-Compress-Raw-Bzip2/ChangeLog,v 1.83 2015/06/04 17:01:43 dilfridge Exp $
+
+*perl-Compress-Raw-Bzip2-2.68.0 (04 Jun 2015)
+
+  04 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Compress-Raw-Bzip2-2.60.0-r2.ebuild,
+  +perl-Compress-Raw-Bzip2-2.68.0.ebuild:
+  Add Perl 5.22 version, remove old
+
+  05 Apr 2015; Mike Frysinger <vapier@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.60.0-r2.ebuild,
+  perl-Compress-Raw-Bzip2-2.64.0.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.64.0.ebuild:
+  Stable for alpha, wrt bug #536790
+
+  17 Feb 2015; Markus Meier <maekke@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.64.0.ebuild:
+  arm stable, bug #536790
+
+  17 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.64.0.ebuild:
+  Stable for ia64, wrt bug #536790
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.64.0.ebuild:
+  Stable for sparc, wrt bug #536790
+
+  15 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.64.0.ebuild:
+  Stable for ppc64, wrt bug #536790
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.64.0.ebuild:
+  Stable for ppc, wrt bug #536790
+
+  13 Feb 2015; Jeroen Roovers <jer@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.64.0.ebuild:
+  Stable for HPPA (bug #536790).
+
+  13 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.64.0.ebuild:
+  Stable for x86, wrt bug #536790
+
+  08 Feb 2015; Mikle Kolyada <zlogene@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.64.0.ebuild:
+  amd64 stable wrt bug #536790
+
+*perl-Compress-Raw-Bzip2-2.60.0-r2 (18 Jul 2014)
+
+  18 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Compress-Raw-Bzip2-2.60.0-r1.ebuild,
+  +perl-Compress-Raw-Bzip2-2.60.0-r2.ebuild,
+  perl-Compress-Raw-Bzip2-2.64.0.ebuild:
+  Improve dependencies
+
+*perl-Compress-Raw-Bzip2-2.60.0-r1 (06 Jul 2014)
+
+  06 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Compress-Raw-Bzip2-2.60.0.ebuild,
+  +perl-Compress-Raw-Bzip2-2.60.0-r1.ebuild:
+  Revision bump for added provider
+
+*perl-Compress-Raw-Bzip2-2.64.0 (05 Jul 2014)
+
+  05 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-Compress-Raw-Bzip2-2.024.ebuild, -perl-Compress-Raw-Bzip2-2.33.ebuild,
+  -perl-Compress-Raw-Bzip2-2.35.0.ebuild,
+  -perl-Compress-Raw-Bzip2-2.36.0.ebuild,
+  -perl-Compress-Raw-Bzip2-2.37.0.ebuild,
+  -perl-Compress-Raw-Bzip2-2.40.0.ebuild,
+  -perl-Compress-Raw-Bzip2-2.43.0.ebuild,
+  -perl-Compress-Raw-Bzip2-2.49.0.ebuild,
+  -perl-Compress-Raw-Bzip2-2.52.0.ebuild,
+  -perl-Compress-Raw-Bzip2-2.55.0.ebuild,
+  -perl-Compress-Raw-Bzip2-2.59.0.ebuild,
+  perl-Compress-Raw-Bzip2-2.60.0.ebuild,
+  +perl-Compress-Raw-Bzip2-2.64.0.ebuild:
+  Add perl-5.20 version; remove old
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.33.ebuild, perl-Compress-Raw-Bzip2-2.35.0.ebuild,
+  perl-Compress-Raw-Bzip2-2.36.0.ebuild, perl-Compress-Raw-Bzip2-2.37.0.ebuild,
+  perl-Compress-Raw-Bzip2-2.40.0.ebuild, perl-Compress-Raw-Bzip2-2.43.0.ebuild,
+  perl-Compress-Raw-Bzip2-2.49.0.ebuild, perl-Compress-Raw-Bzip2-2.52.0.ebuild,
+  perl-Compress-Raw-Bzip2-2.55.0.ebuild, perl-Compress-Raw-Bzip2-2.59.0.ebuild,
+  perl-Compress-Raw-Bzip2-2.60.0.ebuild:
+  Add arm64 love.
+
+  17 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.60.0.ebuild:
+  Mark m68k stable.
+
+  02 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.60.0.ebuild:
+  Stable for sh, wrt bug #458122
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.60.0.ebuild:
+  Stable for sparc, wrt bug #458122
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.60.0.ebuild:
+  Stable for ia64, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.60.0.ebuild:
+  Stable for arm, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.60.0.ebuild:
+  Stable for s390, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.60.0.ebuild:
+  Stable for alpha, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.60.0.ebuild:
+  Stable for hppa, wrt bug #458122
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.60.0.ebuild:
+  Add ~arm-linux keyword.
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.60.0.ebuild:
+  Stable for ppc, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.60.0.ebuild:
+  Stable for ppc64, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.60.0.ebuild:
+  Stable for x86, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.60.0.ebuild:
+  Stable for amd64, wrt bug #458122
+
+*perl-Compress-Raw-Bzip2-2.60.0 (19 Jan 2013)
+
+  19 Jan 2013; Torsten Veller <tove@gentoo.org>
+  +perl-Compress-Raw-Bzip2-2.60.0.ebuild:
+  Version bump
+
+*perl-Compress-Raw-Bzip2-2.59.0 (08 Dec 2012)
+
+  08 Dec 2012; Torsten Veller <tove@gentoo.org>
+  +perl-Compress-Raw-Bzip2-2.59.0.ebuild:
+  Version bump
+
+*perl-Compress-Raw-Bzip2-2.55.0 (06 Aug 2012)
+
+  06 Aug 2012; Torsten Veller <tove@gentoo.org>
+  +perl-Compress-Raw-Bzip2-2.55.0.ebuild:
+  Version bump
+
+*perl-Compress-Raw-Bzip2-2.52.0 (02 May 2012)
+
+  02 May 2012; Torsten Veller <tove@gentoo.org>
+  +perl-Compress-Raw-Bzip2-2.52.0.ebuild:
+  Version bump
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.49.0.ebuild:
+  keyword ~amd64-fbsd
+
+*perl-Compress-Raw-Bzip2-2.49.0 (21 Feb 2012)
+
+  21 Feb 2012; Torsten Veller <tove@gentoo.org>
+  +perl-Compress-Raw-Bzip2-2.49.0.ebuild:
+  Version bump
+
+*perl-Compress-Raw-Bzip2-2.43.0 (23 Nov 2011)
+
+  23 Nov 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Compress-Raw-Bzip2-2.43.0.ebuild:
+  Version bump
+
+*perl-Compress-Raw-Bzip2-2.40.0 (31 Oct 2011)
+
+  31 Oct 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Compress-Raw-Bzip2-2.40.0.ebuild:
+  Version bump
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.024.ebuild, perl-Compress-Raw-Bzip2-2.33.ebuild,
+  perl-Compress-Raw-Bzip2-2.35.0.ebuild, perl-Compress-Raw-Bzip2-2.36.0.ebuild,
+  perl-Compress-Raw-Bzip2-2.37.0.ebuild:
+  Drop ~sparc-fbsd KEYWORD
+
+  28 Jun 2011; Torsten Veller <tove@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.024.ebuild:
+  Add perl-5.12.4 virtual
+
+*perl-Compress-Raw-Bzip2-2.37.0 (23 Jun 2011)
+
+  23 Jun 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Compress-Raw-Bzip2-2.37.0.ebuild:
+  Version bump
+
+*perl-Compress-Raw-Bzip2-2.36.0 (21 Jun 2011)
+
+  21 Jun 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Compress-Raw-Bzip2-2.36.0.ebuild:
+  Version bump
+
+*perl-Compress-Raw-Bzip2-2.35.0 (12 May 2011)
+
+  12 May 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Compress-Raw-Bzip2-2.35.0.ebuild:
+  Version bump
+
+  02 May 2011; Fabian Groffen <grobian@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.33.ebuild:
+  Marked ~x64-freebsd
+
+  22 Jan 2011; Torsten Veller <tove@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.024.ebuild:
+  Add perl-5.12.3 as provider
+
+  17 Jan 2011; Torsten Veller <tove@gentoo.org>
+  -perl-Compress-Raw-Bzip2-2.021.ebuild, -perl-Compress-Raw-Bzip2-2.025.ebuild,
+  -perl-Compress-Raw-Bzip2-2.026.ebuild, -perl-Compress-Raw-Bzip2-2.027.ebuild,
+  -perl-Compress-Raw-Bzip2-2.030.ebuild:
+  Cleanup
+
+*perl-Compress-Raw-Bzip2-2.33 (13 Jan 2011)
+
+  13 Jan 2011; Torsten Veller <tove@gentoo.org>
+  +perl-Compress-Raw-Bzip2-2.33.ebuild:
+  Version bump
+
+  22 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.024.ebuild:
+  ppc64 stable wrt #333421
+
+  22 Oct 2010; Jeroen Roovers <jer@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.024.ebuild:
+  Stable for HPPA (bug #333421).
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.024.ebuild:
+  Marking perl-Compress-Raw-Bzip2-2.024 ppc stable for bug 333421
+
+  12 Sep 2010; Raúl Porcel <armin76@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.024.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #333421
+
+  07 Sep 2010; Torsten Veller <tove@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.024.ebuild:
+  Add perl-5.12.2 as provider
+
+  23 Aug 2010; Markus Meier <maekke@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.024.ebuild:
+  arm stable, bug #333421
+
+  20 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.024.ebuild:
+  stable x86, bug 333421
+
+  19 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.024.ebuild:
+  Stable on amd64 wrt bug #333421
+
+*perl-Compress-Raw-Bzip2-2.030 (26 Jul 2010)
+
+  26 Jul 2010; Torsten Veller <tove@gentoo.org>
+  +perl-Compress-Raw-Bzip2-2.030.ebuild:
+  Version bump
+
+  14 Jul 2010; Torsten Veller <tove@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.024.ebuild:
+  Add perl-5.12 as provider
+
+*perl-Compress-Raw-Bzip2-2.027 (25 Apr 2010)
+
+  25 Apr 2010; Torsten Veller <tove@gentoo.org>
+  +perl-Compress-Raw-Bzip2-2.027.ebuild:
+  Version bump
+
+*perl-Compress-Raw-Bzip2-2.026 (08 Apr 2010)
+
+  08 Apr 2010; Torsten Veller <tove@gentoo.org>
+  +perl-Compress-Raw-Bzip2-2.026.ebuild:
+  Version bump
+
+*perl-Compress-Raw-Bzip2-2.025 (07 Apr 2010)
+
+  07 Apr 2010; Torsten Veller <tove@gentoo.org>
+  +perl-Compress-Raw-Bzip2-2.025.ebuild:
+  Version bump
+
+  25 Jan 2010; Torsten Veller <tove@gentoo.org>
+  -perl-Compress-Raw-Bzip2-2.020.ebuild,
+  -perl-Compress-Raw-Bzip2-2.023.ebuild:
+  Cleanup
+
+*perl-Compress-Raw-Bzip2-2.024 (12 Jan 2010)
+
+  12 Jan 2010; Torsten Veller <tove@gentoo.org>
+  +perl-Compress-Raw-Bzip2-2.024.ebuild:
+  Version bump
+
+  07 Jan 2010; Torsten Veller <tove@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.020.ebuild,
+  perl-Compress-Raw-Bzip2-2.021.ebuild,
+  perl-Compress-Raw-Bzip2-2.023.ebuild:
+  Empty HOMEPAGE and LICENSE
+
+  05 Jan 2010; nixnut <nixnut@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.021.ebuild:
+  ppc stable #288026
+
+  15 Dec 2009; Jonathan Callen <abcd@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.020.ebuild,
+  perl-Compress-Raw-Bzip2-2.021.ebuild,
+  perl-Compress-Raw-Bzip2-2.023.ebuild:
+  QA: Add prefix keywords
+
+  14 Dec 2009; Raúl Porcel <armin76@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.021.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #288026
+
+  10 Dec 2009; Brent Baude <ranger@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.021.ebuild:
+  Marking perl-Compress-Raw-Bzip2-2.021 ppc64 stable for bug 288026
+
+  07 Dec 2009; Markus Meier <maekke@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.021.ebuild:
+  arm stable, bug #288026
+
+  07 Dec 2009; Jeroen Roovers <jer@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.021.ebuild:
+  Stable for HPPA (bug #288026).
+
+  04 Dec 2009; Torsten Veller <tove@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.021.ebuild:
+  Stable on amd64 (#288026)
+
+  04 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.021.ebuild:
+  x86 stable, bug 288026
+
+*perl-Compress-Raw-Bzip2-2.023 (10 Nov 2009)
+
+  10 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +perl-Compress-Raw-Bzip2-2.023.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*perl-Compress-Raw-Bzip2-2.021 (31 Aug 2009)
+
+  31 Aug 2009; Torsten Veller <tove@gentoo.org>
+  +perl-Compress-Raw-Bzip2-2.021.ebuild:
+  Version bump
+
+  25 Aug 2009; Torsten Veller <tove@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.020.ebuild:
+  Add support for perl-5.10.1
+
+  18 Aug 2009; Torsten Veller <tove@gentoo.org>
+  -perl-Compress-Raw-Bzip2-2.015.ebuild,
+  -perl-Compress-Raw-Bzip2-2.019.ebuild:
+  Cleanup
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.020.ebuild:
+  ppc stable #273141
+
+  22 Jun 2009; Torsten Veller <tove@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.020.ebuild:
+  Stable on amd64 (#273141)
+
+  19 Jun 2009; Brent Baude <ranger@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.020.ebuild:
+  Marking perl-Compress-Raw-Bzip2-2.020 ppc64 for bug 273141
+
+  14 Jun 2009; Jeroen Roovers <jer@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.020.ebuild:
+  Stable for HPPA (bug #273141).
+
+  14 Jun 2009; Raúl Porcel <armin76@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.020.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc/x86 stable wrt #273141
+
+*perl-Compress-Raw-Bzip2-2.020 (03 Jun 2009)
+
+  03 Jun 2009; Torsten Veller <tove@gentoo.org>
+  +perl-Compress-Raw-Bzip2-2.020.ebuild:
+  Version bump
+
+  05 May 2009; Torsten Veller <tove@gentoo.org>
+  perl-Compress-Raw-Bzip2-2.019.ebuild:
+  Add ~mips (#268615)
+
+*perl-Compress-Raw-Bzip2-2.019 (04 May 2009)
+
+  04 May 2009; Torsten Veller <tove@gentoo.org>
+  -perl-Compress-Raw-Bzip2-2.017.ebuild,
+  +perl-Compress-Raw-Bzip2-2.019.ebuild:
+  Version bump
+
+*perl-Compress-Raw-Bzip2-2.017 (18 Apr 2009)
+*perl-Compress-Raw-Bzip2-2.015 (18 Apr 2009)
+
+  18 Apr 2009; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +perl-Compress-Raw-Bzip2-2.015.ebuild,
+  +perl-Compress-Raw-Bzip2-2.017.ebuild:
+  New virtual for Compress-Raw-Bzip2

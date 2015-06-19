@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install setup test
+DEPEND=abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r9 !app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] ) doc? ( app-text/docbook-sgml-utils >=app-text/docbook-sgml-dtd-4.1 app-text/docbook-dsssl-stylesheets dev-perl/XML-RegExp ) python? ( =dev-lang/python-2* )
+DESCRIPTION=Library to query devices using IEEE1284
+EAPI=4
+HOMEPAGE=http://cyberelk.net/tim/libieee1284/index.html
+IUSE=doc python static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=amd64 ppc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20130224-r9 !app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] ) python? ( =dev-lang/python-2* )
+SLOT=0
+SRC_URI=mirror://sourceforge/libieee1284/libieee1284-0.2.11.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multibuild	6d4858dc00f8bc51caf3f957f8430eb0	multilib	62927b3db3a589b0806255f3a002d5d3	multilib-build	0983c7893df461213a05f791cc7dea6d	multilib-minimal	13dd976916c35a1e2c8d170e840c7018	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=eab66c8ac7abfe03ed39ca8be406b3ec

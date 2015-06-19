@@ -1,0 +1,32 @@
+# ChangeLog for x11-wm/subtle
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/subtle/ChangeLog,v 1.6 2012/09/18 23:02:48 radhermit Exp $
+
+  18 Sep 2012; Tim Harder <radhermit@gentoo.org>
+  files/subtle-0.11.3224-flags.patch:
+  Respect proper user flags.
+
+  20 Jun 2012; Tim Harder <radhermit@gentoo.org> subtle-9999.ebuild:
+  Update live ebuild.
+
+*subtle-0.11.3224 (20 Jun 2012)
+
+  20 Jun 2012; Tim Harder <radhermit@gentoo.org> +subtle-0.11.3224.ebuild,
+  +files/subtle-0.11.3224-flags.patch:
+  Version bump.
+
+  29 Oct 2011; Tim Harder <radhermit@gentoo.org> subtle-0.10.3008.ebuild,
+  subtle-9999.ebuild:
+  Remove unused test use flag.
+
+  19 Sep 2011; Tim Harder <radhermit@gentoo.org> subtle-0.10.3008.ebuild,
+  subtle-9999.ebuild:
+  Remove unused test setup.
+
+*subtle-9999 (13 Sep 2011)
+*subtle-0.10.3008 (13 Sep 2011)
+
+  13 Sep 2011; Tim Harder <radhermit@gentoo.org> +subtle-0.10.3008.ebuild,
+  +subtle-9999.ebuild, +metadata.xml:
+  Initial import (fixes bug #280043 by Tommie).
+

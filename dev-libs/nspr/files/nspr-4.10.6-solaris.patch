@@ -1,0 +1,32 @@
+* drop Solaris linker stuff
+
+--- nspr-4.7.4/mozilla/nsprpub/configure.in
++++ nspr-4.7.4/mozilla/nsprpub/configure.in
+@@ -1988,26 +1988,14 @@
+     CPU_ARCH=`uname -p`
+     MDCPUCFG_H=_solaris.cfg
+     PR_MD_CSRCS=solaris.c
+-    LD=/usr/ccs/bin/ld
+     MKSHLIB='$(CC) $(DSO_LDOPTS) -o $@'
+     RESOLVE_LINK_SYMBOLS=1
+-    case "${OS_RELEASE}" in
+-    5.8|5.9)
+-        ;;
+-    *)
+-        # It is safe to use the -Bdirect linker flag on Solaris 10 or later.
+-        USE_B_DIRECT=1
+-        ;;
+-    esac
+     if test -n "$GNU_CC"; then
+         DSO_CFLAGS=-fPIC
+         if `$CC -print-prog-name=ld` -v 2>&1 | grep -c GNU >/dev/null; then
+             GCC_USE_GNU_LD=1
+         fi
+-        DSO_LDOPTS='-shared -Wl,-h,$(notdir $@),-z,combreloc,-z,defs,-z,ignore' 
+-        if test -n "$USE_B_DIRECT"; then
+-            DSO_LDOPTS="$DSO_LDOPTS,-Bdirect"
+-        fi
++		DSO_LDOPTS='-shared -Wl,-soname -Wl,$(notdir $@)'
+     else
+         DSO_CFLAGS=-KPIC
+         DSO_LDOPTS='-G -h $(notdir $@) -z combreloc -z defs -z ignore'

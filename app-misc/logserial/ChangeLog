@@ -1,0 +1,31 @@
+# ChangeLog for app-misc/logserial
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/logserial/ChangeLog,v 1.9 2014/08/10 18:06:37 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> logserial-0.4.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  31 Aug 2010; Markos Chandras <hwoarang@gentoo.org> logserial-0.4.2.ebuild:
+  Stable on amd64 wrt bug #335344
+
+  21 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  logserial-0.4.2.ebuild, +files/logserial-0.4.2-gentoo.patch:
+  Fix Makefile to respect environment.
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  20 Feb 2006; <malverian@gentoo.org> logserial-0.4.2.ebuild:
+  Minor ebuild cleanup
+
+  20 Feb 2006; <malverian@gentoo.org> logserial-0.4.2.ebuild:
+  Fixed bug #71906, added AMD64 keyword
+
+*logserial-0.4.2 (26 Oct 2004)
+
+  26 Oct 2004; Philip Walls <malverian@gentoo.org> +logserial-0.4.2.ebuild:
+  New ebuild

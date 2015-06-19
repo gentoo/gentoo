@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>desktop-misc</herd>
+  <longdescription>
+  Vnc2swf is a cross-platform screen recording tool for ShockWave Flash (swf)
+  format. Vnc2swf comes with two different implementations, a Python one
+  (pyvnc2swf) and C one (vnc2swf).
+  </longdescription>
+  <use>
+    <flag name="x11vnc">Install script that depends on x11vnc</flag>
+  </use>
+</pkgmetadata>

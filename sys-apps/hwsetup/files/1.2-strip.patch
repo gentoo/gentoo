@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -3,7 +3,7 @@
+ # define BLACKLIST to avoid loading potentially dangerous modules
+ CFLAGS=-DBLACKLIST -Wall -fPIC
+ OPT=-O2
+-LDFLAGS=-s
++#LDFLAGS=-s
+ LIBS=-lkudzu -lpci
+ CC=gcc
+ 

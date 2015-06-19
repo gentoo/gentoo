@@ -1,0 +1,653 @@
+# ChangeLog for net-print/gutenprint
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-print/gutenprint/ChangeLog,v 1.51 2014/05/30 02:26:09 mrueg Exp $
+
+*gutenprint-5.2.10 (30 May 2014)
+
+  30 May 2014; Manuel Rüger <mrueg@gentoo.org>
+  +files/gutenprint-5.2.10-genppd.patch, +gutenprint-5.2.10.ebuild:
+  Version bump. Fixes bug #511062.
+
+  10 Mar 2014; Manuel Rüger <mrueg@gentoo.org>
+  -files/gutenprint-5.2.7-genppd.patch, -files/gutenprint-5.2.7-stdio.patch,
+  -gutenprint-5.2.8.ebuild:
+  Cleanup old.
+
+  25 Apr 2013; Tim Harder <radhermit@gentoo.org> gutenprint-5.2.9.ebuild:
+  Fix autoreconf failures with automake-1.13 (bug #467206).
+
+  30 Dec 2012; Agostino Sarubbo <ago@gentoo.org> gutenprint-5.2.9.ebuild:
+  Stable for alpha, wrt bug #442448
+
+  29 Dec 2012; Jeroen Roovers <jer@gentoo.org> gutenprint-5.2.9.ebuild:
+  Stable for HPPA (bug #442448).
+
+  29 Dec 2012; Agostino Sarubbo <ago@gentoo.org> gutenprint-5.2.9.ebuild:
+  Stable for sparc, wrt bug #442448
+
+  26 Dec 2012; Jeff Horelick <jdhore@gentoo.org> gutenprint-5.2.9.ebuild:
+  marked x86 per bug 442448
+
+  26 Dec 2012; Agostino Sarubbo <ago@gentoo.org> gutenprint-5.2.9.ebuild:
+  Stable for ia64, wrt bug #442448
+
+  23 Dec 2012; Agostino Sarubbo <ago@gentoo.org> gutenprint-5.2.9.ebuild:
+  Stable for ppc64, wrt bug #442448
+
+  22 Dec 2012; Agostino Sarubbo <ago@gentoo.org> gutenprint-5.2.9.ebuild:
+  Stable for ppc, wrt bug #442448
+
+  22 Dec 2012; Agostino Sarubbo <ago@gentoo.org> gutenprint-5.2.9.ebuild:
+  Stable for amd64, wrt bug #442448
+
+*gutenprint-5.2.9 (09 Jul 2012)
+
+  09 Jul 2012; Tim Harder <radhermit@gentoo.org> +gutenprint-5.2.9.ebuild:
+  Version bump.
+
+*gutenprint-5.2.8 (14 Jun 2012)
+
+  14 Jun 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/gutenprint-5.2.8-genppd.patch, +gutenprint-5.2.8.ebuild:
+  Version bump wrt bug#420829.
+
+  29 May 2012; Tim Harder <radhermit@gentoo.org> -gutenprint-5.2.6.ebuild:
+  Remove old.
+
+  18 May 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  gutenprint-5.2.6.ebuild, gutenprint-5.2.7-r1.ebuild:
+  Make readline dependency really optional, bug 407721
+
+  08 May 2012; Brent Baude <ranger@gentoo.org> gutenprint-5.2.7-r1.ebuild:
+  Marking gutenprint-5.2.7-r1 ppc64 for bug 388639
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> gutenprint-5.2.6.ebuild,
+  gutenprint-5.2.7-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org> gutenprint-5.2.7-r1.ebuild:
+  Marking gutenprint-5.2.7-r1 ppc for bug 388639
+
+  26 Nov 2011; Raúl Porcel <armin76@gentoo.org> gutenprint-5.2.7-r1.ebuild:
+  alpha/ia64/sparc stable wrt #388639
+
+  02 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gutenprint-5.2.7-r1.ebuild:
+  x86 stable wrt bug #388639
+
+  01 Nov 2011; Jeroen Roovers <jer@gentoo.org> gutenprint-5.2.7-r1.ebuild:
+  Stable for HPPA (bug #388639).
+
+  27 Oct 2011; Markos Chandras <hwoarang@gentoo.org> gutenprint-5.2.7-r1.ebuild:
+  Stable on amd64 wrt bug #388639
+
+  27 Oct 2011; Tim Harder <radhermit@gentoo.org>
+  files/gutenprint-5.2.7-genppd.patch:
+  Drop library patch portion that pollutes pkgconfig files.
+
+  27 Oct 2011; Tim Harder <radhermit@gentoo.org> -gutenprint-5.1.4.ebuild,
+  -gutenprint-5.2.5-r1.ebuild, -files/gutenprint-5.2.5-Makefile.patch:
+  Remove old.
+
+  27 Oct 2011; Tim Harder <radhermit@gentoo.org> gutenprint-5.2.7-r1.ebuild,
+  +files/gutenprint-5.2.7-stdio.patch:
+  Fix build issue due to missing header (bug #385037, patch by Rafał
+  Mużyło).
+
+*gutenprint-5.2.7-r1 (15 Sep 2011)
+
+  15 Sep 2011; Tim Harder <radhermit@gentoo.org> -gutenprint-5.2.7.ebuild,
+  +gutenprint-5.2.7-r1.ebuild, +files/gutenprint-5.2.7-genppd.patch:
+  Revision bump and remove old. Fixes bug #382927 with help from Martin von
+  Gagern and Rafał Mużyło.
+
+  11 Sep 2011; Tim Harder <radhermit@gentoo.org> gutenprint-5.2.7.ebuild:
+  Respect CFLAGS and build genppd statically (fixes bug #382027).
+
+*gutenprint-5.2.7 (05 Sep 2011)
+
+  05 Sep 2011; Tim Harder <radhermit@gentoo.org> +gutenprint-5.2.7.ebuild:
+  Version bump (bug #377895 by Raphaël Droz). Add nls and static-libs USE
+  flags.
+
+  09 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> gutenprint-5.2.6.ebuild:
+  ppc64 stable wrt #276421
+
+  30 Jun 2011; Brent Baude <ranger@gentoo.org> gutenprint-5.2.6.ebuild:
+  Marking gutenprint-5.2.6 ppc for bug 276421
+
+  24 Jun 2011; Raúl Porcel <armin76@gentoo.org> gutenprint-5.2.6.ebuild:
+  ia64/sparc stable wrt #276421
+
+  21 Jun 2011; Tobias Klausmann <klausman@gentoo.org> gutenprint-5.2.6.ebuild:
+  Stable on alpha, bug #276421
+
+  08 Jun 2011; Markos Chandras <hwoarang@gentoo.org> gutenprint-5.2.6.ebuild:
+  Stable on amd64 wrt bug #276421
+
+  07 Jun 2011; Thomas Kahle <tomka@gentoo.org> gutenprint-5.2.6.ebuild:
+  x86 stable per bug 276421
+
+  06 Jun 2011; Jeroen Roovers <jer@gentoo.org> gutenprint-5.2.6.ebuild:
+  Stable for HPPA (bug #276421).
+
+  02 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  gutenprint-5.2.6.ebuild:
+  EAPI bump; remove unrecognized configure options; dont try to install
+  non-existent files (bug 297337)
+
+  24 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  gutenprint-5.2.6.ebuild:
+  QA: fix build (bug #362943) by removing a stray libtool file.
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org> gutenprint-5.1.4.ebuild,
+  gutenprint-5.2.5-r1.ebuild, gutenprint-5.2.6.ebuild:
+  Fixed slot deps
+
+*gutenprint-5.2.6 (25 Nov 2010)
+
+  25 Nov 2010; Alexey Shvetsov <alexxy@gentoo.org> -gutenprint-5.1.7.ebuild,
+  -files/gutenprint-5.1.7-parallel-build.patch, -gutenprint-5.2.3.ebuild,
+  -files/gutenprint-5.2.3-CFLAGS.patch,
+  -files/gutenprint-5.2.3-parallel-build.patch, -gutenprint-5.2.4.ebuild,
+  -gutenprint-5.2.5.ebuild, +gutenprint-5.2.6.ebuild:
+  Version bump per bug #333791. Remove old
+
+  09 Nov 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  gutenprint-5.2.5-r1.ebuild:
+  Added ~arm, works fine here
+
+  09 Jul 2010; Jeroen Roovers <jer@gentoo.org> gutenprint-5.2.5-r1.ebuild,
+  +files/gutenprint-5.2.5-Makefile.patch:
+  Do not install sequence.h twice by Dominik Köppl, patch by Fabian Henze
+  (bug #317985).
+
+*gutenprint-5.2.5-r1 (23 Feb 2010)
+
+  23 Feb 2010; Alexey Shvetsov <alexxy@gentoo.org>
+  +gutenprint-5.2.5-r1.ebuild:
+  Revbump to EAPI2
+
+  23 Feb 2010; Alexey Shvetsov <alexxy@gentoo.org> gutenprint-5.2.5.ebuild:
+  Fix typo in ebuild
+
+*gutenprint-5.2.5 (22 Feb 2010)
+
+  22 Feb 2010; Alexey Shvetsov <alexxy@gentoo.org> +gutenprint-5.2.5.ebuild:
+  Version bump
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> gutenprint-5.1.4.ebuild,
+  gutenprint-5.1.7.ebuild, gutenprint-5.2.3.ebuild, gutenprint-5.2.4.ebuild:
+  virtual/ghostscript->app-text/ghostscript-gpl: ghostscript-gpl is the only
+  implementation left in the tree.
+
+*gutenprint-5.2.4 (14 Sep 2009)
+
+  14 Sep 2009; Alexey Shvetsov <alexxy@gentoo.org> +gutenprint-5.2.4.ebuild,
+  +files/gutenprint-5.2.4-CFLAGS.patch:
+  Version bump bug #276421
+
+*gutenprint-5.2.3 (04 Mar 2009)
+
+  04 Mar 2009; Ryan Hill <dirtyepic@gentoo.org>
+  +files/gutenprint-5.1.7-parallel-build.patch,
+  +files/gutenprint-5.2.3-CFLAGS.patch,
+  +files/gutenprint-5.2.3-parallel-build.patch, gutenprint-5.1.7.ebuild,
+  +gutenprint-5.2.3.ebuild:
+  Version bump.
+    Don't install libtool scripts from the package testsuite (?) (bug #217354)*
+    Fix parallel make error (patch by Martin van Gagern) (bug #254008)*
+    Fixes nasty color regression on Canon Pixma's (bug #223731)
+    Removes stupid CFLAGS from Makefile.
+  * fixed in 5.1.7 too
+
+  05 Apr 2008; Tobias Klausmann <klausman@gentoo.org>
+  gutenprint-5.1.4.ebuild:
+  Stable on alpha, bug #144623
+
+  05 Apr 2008; Stefan Schweizer <genstef@gentoo.org>
+  gutenprint-5.1.4.ebuild, gutenprint-5.1.7.ebuild:
+  fix description typo thanks Toralf Foerster in bug 216353
+
+*gutenprint-5.1.7 (05 Apr 2008)
+*gutenprint-5.1.4 (05 Apr 2008)
+
+  05 Apr 2008; Stefan Schweizer <genstef@gentoo.org> +metadata.xml,
+  +gutenprint-5.1.4.ebuild, +gutenprint-5.1.7.ebuild:
+  move media-gfx/gimp-print to net-print/gutenprint
+
+  27 Mar 2008; Jeroen Roovers <jer@gentoo.org> gimp-print-5.1.4.ebuild:
+  Stable for HPPA (bug #144623).
+
+  26 Mar 2008; Brent Baude <ranger@gentoo.org> gimp-print-5.1.4.ebuild:
+  Marking gimp-print-5.1.4 ppc for bug 144623
+
+  24 Mar 2008; Raúl Porcel <armin76@gentoo.org> gimp-print-5.1.4.ebuild:
+  ia64 stable wrt #144623
+
+  22 Mar 2008; Brent Baude <ranger@gentoo.org> gimp-print-5.1.4.ebuild:
+  Marking gimp-print-5.1.4 ppc64 for bug 144623
+
+  21 Mar 2008; Markus Meier <maekke@gentoo.org> gimp-print-5.1.4.ebuild:
+  amd64/x86 stable, bug #144623
+
+  21 Mar 2008; Ferris McCormick <fmccor@gentoo.org> gimp-print-5.1.4.ebuild:
+  Sparc stable, Bug #144623 --- gimp, at least can print with "Print with
+  Gutenprint".
+
+*gimp-print-5.1.7 (21 Mar 2008)
+
+  21 Mar 2008; Stefan Schweizer <genstef@gentoo.org>
+  +gimp-print-5.1.7.ebuild:
+  version bump, bug 212821
+
+  02 Jan 2008; Raúl Porcel <armin76@gentoo.org> gimp-print-5.1.4.ebuild:
+  Re-add ~ia64
+
+*gimp-print-5.1.4 (22 Dec 2007)
+
+  22 Dec 2007; Stefan Schweizer <genstef@gentoo.org>
+  +gimp-print-5.1.4.ebuild:
+  version bump, thanks Pacho Ramos <pacho@condmat1.ciencias.uniovi.es> in bug
+  201876
+
+  14 Oct 2007; Stefan Schweizer <genstef@gentoo.org>
+  gimp-print-5.1.3.ebuild:
+  Update installed printer queues automatically thanks to Bruce
+  <halfcat@exemail.com.au> and Jon Severinsson <jon@severinsson.net> in bug
+  180957
+
+  10 Oct 2007; Stefan Schweizer <genstef@gentoo.org>
+  -files/gimp-print-5.1.0-nonls.patch, -gimp-print-5.1.0.ebuild,
+  -gimp-print-5.1.1.ebuild, -gimp-print-5.1.2.ebuild,
+  gimp-print-5.1.3.ebuild:
+  Remove old, fix parallel install, bug 188759 thanks to Arthur Hagen
+  <art-gt@broomstick.com>
+
+  30 Sep 2007; Stefan Schweizer <genstef@gentoo.org>
+  +gimp-print-5.1.3.ebuild:
+  version bump thanks Nils Kneuper <crazy-ivanovic@gmx.net>, Martin von Gagern
+  <Martin.vGagern@gmx.net> and Jon Severinsson <jon@severinsson.net> in bug
+  182582 and Michael <hippo@webhippo.org> by mail
+
+*gimp-print-5.1.3 (30 Sep 2007)
+
+  30 Sep 2007; Stefan Schweizer <genstef@gentoo.org>
+  +gimp-print-5.1.3.ebuild:
+  version bump thanks Nils Kneuper <crazy-ivanovic@gmx.net>, Martin von Gagern
+  <Martin.vGagern@gmx.net> and Jon Severinsson <jon@severinsson.net> in bug
+  182582 and <hippo@webhippo.org> by mail
+
+*gimp-print-5.1.2 (04 Jun 2007)
+
+  04 Jun 2007; Stefan Schweizer <genstef@gentoo.org>
+  +gimp-print-5.1.2.ebuild:
+  version bump
+
+  23 May 2007; Stefan Schweizer <genstef@gentoo.org>
+  gimp-print-5.1.1.ebuild:
+  restrict tests thanks to Paolo Pedroni <paolo.pedroni@iol.it> in bug 179486
+
+  22 May 2007; Stefan Schweizer <genstef@gentoo.org>
+  gimp-print-5.1.1.ebuild:
+  hard-enable USE=nls to avoid compile problems thanks Neil Bothwick
+  <neil@digimed.co.uk> in bug 179449
+
+*gimp-print-5.1.1 (21 May 2007)
+
+  21 May 2007; Stefan Schweizer <genstef@gentoo.org>
+  +gimp-print-5.1.1.ebuild:
+  version bump
+
+  25 Apr 2007; Stefan Schweizer <genstef@gentoo.org>
+  gimp-print-5.1.0.ebuild:
+  Fix gimp-print for gimp-2.2 collision by renaming and add a gimp use flag to
+  control the gimp printing plug-in creation
+
+  25 Apr 2007; Stefan Schweizer <genstef@gentoo.org>
+  -gimp-print-5.0.0.ebuild, gimp-print-5.1.0.ebuild:
+  Fix collision thanks to jakub in bug 175943
+
+  07 Apr 2007; Stefan Schweizer <genstef@gentoo.org>
+  +files/gimp-print-5.1.0-nonls.patch, gimp-print-5.1.0.ebuild:
+  Fix USE=-nls, bug 171190
+
+*gimp-print-5.1.0 (14 Mar 2007)
+
+  14 Mar 2007; <genstef@gentoo.org> +gimp-print-5.1.0.ebuild:
+  Version bump, bug 169321 also solves bug 148439
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> Manifest:
+  Transition to Manifest2.
+
+  14 Sep 2006; Stefan Schweizer <genstef@gentoo.org>
+  gimp-print-5.0.0.ebuild:
+  fix built_with_use check, thanks zzam and jakub
+
+  19 Aug 2006; Stefan Schweizer <genstef@gentoo.org>
+  -files/gutenprint-5.0.0-rc2-asneeded.patch, -gimp-print-5.0.0_rc2.ebuild,
+  -gimp-print-5.0.0_rc3.ebuild, gimp-print-5.0.0.ebuild:
+  remove old, remove imagemagick DEP thanks to valli <gentoo@valli.org> in bug
+  144386
+
+*gimp-print-5.0.0 (16 Aug 2006)
+
+  16 Aug 2006; Stefan Schweizer <genstef@gentoo.org>
+  +gimp-print-5.0.0.ebuild:
+  version bump thanks to Francisco Lloret <fcolloret@terra.es> and Matej Laitl
+  <strohel@gmail.com> in bug 143248
+
+  01 Jun 2006; Stefan Schweizer <genstef@gentoo.org>
+  gimp-print-5.0.0_rc3.ebuild:
+  disable translated ppds thanks to Roman Polach <rpolach@atlas.cz> in bug 133462
+
+  20 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  gimp-print-5.0.0_rc3.ebuild:
+  Add elibtoolize call.
+
+*gimp-print-5.0.0_rc3 (19 May 2006)
+
+  19 May 2006; Stefan Schweizer <genstef@gentoo.org>
+  +gimp-print-5.0.0_rc3.ebuild:
+  version bump
+
+  23 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/gimp-print-4.2.7-asneeded.patch, gimp-print-4.2.7.ebuild:
+  Add patch to link correctly while using --as-needed. Thanks to Mike Auty
+  (ikelos) in bug #128480.
+
+  23 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  gimp-print-5.0.0_rc2.ebuild:
+  Update patch to install pkg.m4 file (for pkg-config), see bug #129627.
+  Thanks to Antoine Pouch for reporting. Also depend on pkgconfig when asking
+  for gtk.
+
+  02 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  gimp-print-5.0.0_rc2.ebuild:
+  Add little workaround for imperfect patch, bug #125002.
+
+  28 Jan 2006; Diego Pettenò <flameeyes@gentoo.org>
+  gimp-print-5.0.0_rc2.ebuild:
+  Add patch to add missing glib.m4 file required by gtk.m4 file. See bug #120527.
+
+  25 Jan 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/gutenprint-5.0.0-rc2-asneeded.patch, gimp-print-5.0.0_rc2.ebuild:
+  Add new patch for --as-needed support.
+
+  24 Jan 2006; Stefan Schweizer <genstef@gentoo.org>
+  -files/gimp-print-5.0.0_rc1-asneeded.patch, -gimp-print-4.2.6.ebuild,
+  -gimp-print-5.0.0_beta4.ebuild, -gimp-print-5.0.0_rc1.ebuild,
+  gimp-print-5.0.0_rc2.ebuild:
+  Fix use-flag check thanks to flameeyes, remove old versions
+
+*gimp-print-5.0.0_rc2 (24 Jan 2006)
+
+  24 Jan 2006; Stefan Schweizer <genstef@gentoo.org>
+  gimp-print-4.2.7.ebuild, +gimp-print-5.0.0_rc2.ebuild:
+  Version bump, fix bugs #95358, #110742, #118962
+
+  04 Jan 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/gimp-print-5.0.0_rc1-asneeded.patch, gimp-print-5.0.0_rc1.ebuild:
+  Add patch to allowing build with --as-needed (bug #117707).
+
+*gimp-print-5.0.0_rc1 (02 Nov 2005)
+
+  02 Nov 2005; Luis Medinas <metalgod@gentoo.org>
+  +gimp-print-5.0.0_rc1.ebuild:
+  Version Bump.
+
+  26 Sep 2005; <dang@gentoo.org> gimp-print-5.0.0_beta4.ebuild:
+  Add ppds to IUSE
+
+  13 Sep 2005; Aron Griffis <agriffis@gentoo.org> gimp-print-4.2.7.ebuild:
+  Mark 4.2.7 stable on alpha
+
+  12 Jul 2005; Stephen P. Becker <geoman@gentoo.org>
+  gimp-print-4.2.7.ebuild:
+  stable on mips
+
+*gimp-print-5.0.0_beta4 (31 May 2005)
+
+  31 May 2005; Heinrich Wendel <lanius@gentoo.org>
+  -gimp-print-4.2.5-r2.ebuild, -gimp-print-5.0.0_beta2.ebuild,
+  -gimp-print-5.0.0_beta3.ebuild, +gimp-print-5.0.0_beta4.ebuild:
+  version bump, cleanups
+
+  18 May 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  gimp-print-4.2.7.ebuild:
+  stable on hppa
+
+  08 May 2005; Aron Griffis <agriffis@gentoo.org> gimp-print-4.2.7.ebuild:
+  stable on ia64
+
+  22 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  gimp-print-4.2.7.ebuild:
+  ~ia64 keyword, bug 89768.
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org>
+  gimp-print-5.0.0_beta3.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  08 Apr 2005; Markus Rothe <corsair@gentoo.org> gimp-print-4.2.7.ebuild:
+  Stable on ppc64
+
+  24 Mar 2005; Joseph Jezak <josejx@gentoo.org> gimp-print-4.2.7.ebuild:
+  Marked ppc stable for bug #84666.
+
+  21 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> gimp-print-4.2.7.ebuild:
+  Stable on sparc
+
+*gimp-print-5.0.0_beta3 (20 Feb 2005)
+
+  20 Feb 2005; Heinrich Wendel <lanius@gentoo.org> gimp-print-4.2.6.ebuild,
+  gimp-print-4.2.7.ebuild, +gimp-print-5.0.0_beta3.ebuild:
+  version bump
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  26 Nov 2004; Hardave Riar <hardave@gentoo.org> gimp-print-4.2.6.ebuild:
+  Stable on mips.
+
+  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org> gimp-print-4.2.6.ebuild:
+  stable on amd64.
+
+*gimp-print-5.0.0_beta2 (26 Aug 2004)
+
+  26 Aug 2004; Heinrich Wendel <lanius@gentoo.org>
+  -gimp-print-5.0.0_beta1.ebuild, +gimp-print-5.0.0_beta2.ebuild:
+  version bump
+
+*gimp-print-4.2.7 (21 Aug 2004)
+
+  21 Aug 2004; Heinrich Wendel <lanius@gentoo.org> +gimp-print-4.2.7.ebuild:
+  version bump
+
+  17 Jul 2004; Tom Gall <tgall@gentoo.org> gimp-print-4.2.6.ebuild:
+  stable on ppc64, bug #55802
+
+*gimp-print-5.0.0_beta1 (05 Jul 2004)
+
+  05 Jul 2004; Heinrich Wendel <lanius@gentoo.org>
+  gimp-print-5.0.0_alpha2.ebuild, gimp-print-5.0.0_beta1.ebuild:
+  version bump, bug #51428
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org> gimp-print-4.2.5-r2.ebuild,
+  gimp-print-4.2.6.ebuild, gimp-print-5.0.0_alpha2.ebuild:
+  Fix use invocation
+
+  05 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> gimp-print-4.2.6.ebuild:
+  Stable on alpha.
+
+  03 May 2004; Gustavo Zacarias <gustavoz@gentoo.org> gimp-print-4.2.6.ebuild:
+  Stable on sparc
+
+  19 Apr 2004; Guy Martin <gmsoft@gentoo.org> gimp-print-4.2.6.ebuild:
+  Marked stable on hppa.
+
+  15 Apr 2004; Stephen P. Becker <geoman@gentoo.org> gimp-print-4.2.6.ebuild:
+  Added ~mips keyword.
+
+  12 Apr 2004; Heinrich Wendel <lanius@gentoo.org> :
+  remove old version
+
+*gimp-print-5.0.0_alpha2 (17 Apr 2004)
+
+  17 Apr 2004; Heinrich Wendel <lanius@gentoo.org>
+  gimp-print-5.0.0_alpha1.ebuild, gimp-print-5.0.0_alpha2.ebuild:
+  version bump
+
+  09 Apr 2004; Heinrich Wendel <lanius@gentoo.org> gimp-print-4.2.6.ebuild,
+  gimp-print-5.0.0_alpha1.ebuild:
+  build with gimp-2.0.0, bug #46407 and #47305
+
+  08 Apr 2004; Heinrich Wendel <lanius@gentoo.org> gimp-print-4.2.6.ebuild,
+  gimp-print-4.3.25.ebuild:
+  mark 4.2.6 x86, remove 4.3.25
+
+  02 Mar 2004; Heinrich Wendel <lanius@gentoo.org> gimp-print-4.2.5-r2.ebuild,
+  gimp-print-4.2.6.ebuild, gimp-print-4.3.25.ebuild,
+  gimp-print-5.0.0_alpha1.ebuild:
+  sed -i
+
+  12 Feb 2004; Heinrich Wendel <lanius@gentoo.org> gimp-print-4.2.5-r2.ebuild,
+  gimp-print-4.2.6.ebuild, gimp-print-4.3.25.ebuild,
+  gimp-print-5.0.0_alpha1.ebuild:
+  fix linking issues, bug #35414
+
+*gimp-print-4.2.6 (10 Feb 2004)
+
+  10 Feb 2004; Heinrich Wendel <lanius@gentoo.org> gimp-print-4.2.6.ebuild,
+  gimp-print-4.3.25.ebuild, gimp-print-5.0.0_alpha1.ebuild:
+  added the new stable and the new development version
+
+  09 Dec 2003; Heinrich Wendel <lanius@gentoo.org> gimp-print-4.2.5-r2.ebuild,
+  gimp-print-4.3.21.ebuild, gimp-print-4.3.25.ebuild:
+  changed app-text/ghostscript to virtual/ghostscript
+
+  08 Dec 2003; Heinrich Wendel <lanius@gentoo.org> gimp-print-4.3.25.ebuild:
+  better fix for the cflags problem, thx to brandy
+
+  07 Dec 2003; Heinrich Wendel <lanius@gentoo.org> gimp-print-4.3.25.ebuild:
+  won't compile with -O3
+
+*gimp-print-4.3.25 (06 Dec 2003)
+
+  06 Dec 2003; Heinrich Wendel <lanius@gentoo.org> gimp-print-4.3.25.ebuild:
+  bump
+
+  11 Oct 2003; Heinrich Wendel <lanius@gentoo.org> gimp-print-4.2.5-r2.ebuild,
+  gimp-print-4.3.18.ebuild, gimp-print-4.3.19.ebuild,
+  gimp-print-4.3.20.ebuild, gimp-print-4.3.21.ebuild:
+  bug #25747
+
+  03 Oct 2003; Heinrich Wendel <lanius@gentoo.org> gimp-print-4.3.21.ebuild:
+  stable  bump
+
+  28 Sep 2003; Markus Nigbur <pyrania@gentoo.org> gimp-print-4.2.5-r2.ebuild,
+  gimp-print-4.3.18.ebuild, gimp-print-4.3.19.ebuild,
+  gimp-print-4.3.20.ebuild, gimp-print-4.3.21.ebuild:
+  Removed block of merged media-gfx/gimp-print-cups
+
+*gimp-print-4.3.21 (26 Sep 2003)
+
+  26 Sep 2003; Heinrich Wendel <lanius@gentoo.org> gimp-print-4.3.21.ebuild:
+  version bump
+
+*gimp-print-4.3.20 (03 Sep 2003)
+
+  03 Sep 2003; Heinrich Wendel <lanius@gentoo.org> gimp-print-4.3.18.ebuild,
+  gimp-print-4.3.20.ebuild:
+  version bump
+
+*gimp-print-4.3.19 (11 Aug 2003)
+
+  11 Aug 2003; lanius@gentoo.org gimp-print-4.2.2.ebuild,
+  gimp-print-4.2.5-r1.ebuild, gimp-print-4.2.5.ebuild,
+  gimp-print-4.3.19.ebuild:
+  version bump
+
+*gimp-print-4.2.5-r2 (31 Jul 2003)
+
+  31 Jul 2003; lanius@gentoo.org gimp-print-4.2.5-r2.ebuild:
+  backport of 4.3.18 ebuild to stable series
+
+  29 Jul 2003; lanius@gentoo.org gimp-print-4.3.18.ebuild:
+  stable bump
+
+  20 Jul 2003; lanius@gentoo.org gimp-print-4.3.18.ebuild:
+  fixed cups use flag (bug #24873)
+
+*gimp-print-4.3.18 (16 Jul 2003)
+
+  16 Jul 2003; Heinrich Wendel <lanius@gentoo.org> gimp-print-4.3.18.ebuild:
+  fixed missing libgimpprint.so.1 (#20016) and merged gimp-print-cups and
+  gimp-print
+
+*gimp-print-4.2.5-r1 (04 Jul 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*gimp-print-4.2.5 (28 Jan 2003)
+
+  03 Jul 2003; Guy Martin <gmsoft@gentoo.org> gimp-print-4.2.5-r1.ebuild :
+  Added hppa to KEYWORDS.
+
+  08 Mar 2003; Thomas Raschbacher <lordvan@gentoo.org> *.ebuild:
+  added dep for !net-print/gimp-print-cups because of conflicts
+
+  07 Mar 2003; Thomas Raschbacher <lordvan@gentoo.org> gimp-print-4.2.5.ebuild:
+  Mark stable on x86
+
+  07 Mar 2003; Thomas Raschbacher <lordvan@gentoo.org> gimp-print-4.2.5-r1.ebuild:
+  should now work with gimp-1.3 only too - please test (bug #14909)
+	
+  21 Feb 2003; Aron Griffis <agriffis@gentoo.org> gimp-print-4.2.5.ebuild :
+  Mark stable on Alpha
+
+  28 Jan 2003; Thomas Raschbacher <lordvan@gentoo.org> gimp-print-4.2.5.ebuild:
+  new version (bug #14660)
+
+*gimp-print-4.2.4 (30 Sept 2002)
+  27 Dec 2002; Thomas Raschbacher <lordvan@gentoo.org gimp-print-4.2.4.ebuild:
+  added new version
+  30 Dec 2002; Thomas Raschbacher <lordvan@gentoo.org gimp-print-4.2.4.ebuild:
+  unmasked for x86
+	
+*gimp-print-4.2.2 (25 Sep 2002)
+  
+  29 Dec 2002; Jack Morgan <jmorgan@gentoo.org> gimp-print-4.2*.ebuild :
+  Added sparc keywords
+
+  17 Oct 2002; Nick Hadaway <raker@gentoo.org> gimp-print-4.2.2.ebuild :
+  Added dependancy on foomatic and it now installs with a much simpler
+  make install routine.  Should fix bug #9014
+
+  29 Sep 2002; Nick Hadaway <raker@gentoo.org> gimp-print-4.2.2.ebuild :
+  Tightened gimp dependancy to the 1.2* series.
+
+  25 Sep 2002; Nick Hadaway <raker@gentoo.org> gimp-print-4.2.2.ebuild,
+  files/digest-gimp-pring-4.2.2 :
+  Version bump.  Lots of fixes. See...
+  http://sourceforge.net/project/shownotes.php?release_id=110475
+  for a complete list of changes.
+
+*gimp-print-4.2.1 (29 Apr 2002)
+
+  29 Sep 2002; Nick Hadaway <raker@gentoo.org> gimp-print-4.2.1.ebuild :
+  Tightened gimp dependancy to the 1.2* series.
+
+*gimp-print-4.1.99_beta4-r1 (2 Apr 2002)
+
+  2 Apr 2002; Seemant Kulleen <seemant@gentoo.org> gimp-print-4.1.99_beta4-r1.ebuild :
+  Fixed sandbox violations and some dependency issues as well.
+
+*gimp-print-4.1.99_beta4 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

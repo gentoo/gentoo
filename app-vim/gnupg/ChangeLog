@@ -1,0 +1,40 @@
+# ChangeLog for app-vim/gnupg
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/gnupg/ChangeLog,v 1.9 2013/08/12 09:30:49 xmw Exp $
+
+  12 Aug 2013; Michael Weber <xmw@gentoo.org> gnupg-2.5.ebuild:
+  Add ~arm keyword
+
+  21 Apr 2013; Tim Harder <radhermit@gentoo.org> -gnupg-2.3.ebuild:
+  Remove old.
+
+  04 Jan 2013; Agostino Sarubbo <ago@gentoo.org> gnupg-2.5.ebuild:
+  Stable for x86, wrt bug #449158
+
+  04 Jan 2013; Agostino Sarubbo <ago@gentoo.org> gnupg-2.5.ebuild:
+  Stable for amd64, wrt bug #449158
+
+  03 Aug 2012; Tim Harder <radhermit@gentoo.org> -gnupg-2.1.ebuild,
+  -gnupg-2.2.ebuild:
+  Remove old.
+
+*gnupg-2.5 (03 Aug 2012)
+
+  03 Aug 2012; Tim Harder <radhermit@gentoo.org> +gnupg-2.5.ebuild:
+  Version bump.
+
+*gnupg-2.3 (29 Nov 2011)
+
+  29 Nov 2011; Tim Harder <radhermit@gentoo.org> +gnupg-2.3.ebuild:
+  Version bump.
+
+*gnupg-2.2 (17 Aug 2011)
+
+  17 Aug 2011; Tim Harder <radhermit@gentoo.org> +gnupg-2.2.ebuild:
+  Version bump
+
+*gnupg-2.1 (11 Aug 2011)
+
+  11 Aug 2011; Tim Harder <radhermit@gentoo.org> +gnupg-2.1.ebuild,
+  +metadata.xml:
+  Initial import.

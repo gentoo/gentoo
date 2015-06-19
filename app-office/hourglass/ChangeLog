@@ -1,0 +1,43 @@
+# ChangeLog for app-office/hourglass
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/hourglass/ChangeLog,v 1.10 2015/06/09 11:56:53 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  26 Jul 2014; Manuel Rüger <mrueg@gentoo.org>
+  -files/hourglass-0.7.1-build.xml.patch, -hourglass-0.7.1.ebuild,
+  hourglass-0.7.2.ebuild:
+  Apply EAPI=5 fixes from 0.7.1. Cleanup old.
+
+  14 May 2014; Tom Wijsman <TomWij@gentoo.org> hourglass-0.7.1.ebuild:
+  [QA] EAPI 1 -> 5. Make use of java_prepare.
+
+  16 Dec 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due retirement, #169737
+
+  13 Apr 2012; Ulrich Müller <ulm@gentoo.org> hourglass-0.7.1.ebuild,
+  hourglass-0.7.2.ebuild:
+  Move EAPI assignment to top of ebuild, bug 411875.
+
+  11 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  hourglass-0.7.2.ebuild:
+  stable x86, bug 273003
+
+  04 Apr 2009; Alistair Bush <ali_bush@gentoo.org> hourglass-0.7.2.ebuild:
+  Stabilise amd64 and keyword ~x86
+
+*hourglass-0.7.2 (07 Jan 2009)
+
+  07 Jan 2009; Alistair Bush <ali_bush@gentoo.org> +hourglass-0.7.2.ebuild:
+  Version Update.
+
+  06 Jan 2009; Alistair Bush <ali_bush@gentoo.org> metadata.xml:
+  Add java herd to metadata.xml
+
+*hourglass-0.7.1 (06 Jan 2009)
+
+  06 Jan 2009; Alistair Bush <ali_bush@gentoo.org>
+  +files/hourglass-0.7.1-build.xml.patch, +metadata.xml,
+  +hourglass-0.7.1.ebuild:
+  Adding hourglass.

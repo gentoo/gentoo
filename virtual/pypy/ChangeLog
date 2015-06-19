@@ -1,0 +1,81 @@
+# ChangeLog for virtual/pypy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/pypy/ChangeLog,v 1.17 2015/06/04 21:19:46 mgorny Exp $
+
+*pypy-2.6.0 (04 Jun 2015)
+
+  04 Jun 2015; Michał Górny <mgorny@gentoo.org> +pypy-2.6.0.ebuild:
+  Version bump (p.masked).
+
+*pypy-2.5.1 (12 Apr 2015)
+
+  12 Apr 2015; Michał Górny <mgorny@gentoo.org> +pypy-2.5.1.ebuild:
+  Update for 2.5.1 version bump.
+
+  08 Nov 2014; Michał Górny <mgorny@gentoo.org> -pypy-2.0.2-r1.ebuild,
+  -pypy-2.2.1.ebuild:
+  Drop old.
+
+  08 Nov 2014; Michał Górny <mgorny@gentoo.org> pypy-2.4.0.ebuild:
+  Restore keywords now that pypy-bin packages are built.
+
+  04 Nov 2014; Michał Górny <mgorny@gentoo.org> pypy-2.3.1.ebuild,
+  pypy-2.4.0.ebuild:
+  Add USE=gdbm to match updated PyPy ebuilds.
+
+*pypy-2.4.0 (21 Oct 2014)
+
+  21 Oct 2014; Mike Gilbert <floppym@gentoo.org> +pypy-2.4.0.ebuild:
+  Add 2.4.0 without keywords to match dev-python/pypy.
+
+*pypy-2.3.1 (12 Jul 2014)
+
+  12 Jul 2014; Michał Górny <mgorny@gentoo.org> +pypy-2.3.1.ebuild,
+  -pypy-2.3.ebuild:
+  Version bump for pypy{,-bin}-2.3.1.
+
+  16 May 2014; Michał Górny <mgorny@gentoo.org> -pypy-2.0.2.ebuild,
+  -pypy-2.0.ebuild:
+  Remove old (slotted) version.
+
+*pypy-2.3 (15 May 2014)
+
+  15 May 2014; Mike Gilbert <floppym@gentoo.org> +pypy-2.3.ebuild:
+  Version bump.
+
+  09 May 2014; Michał Górny <mgorny@gentoo.org> pypy-2.2.1.ebuild:
+  Add USE=tk for tkinter modules. Bug #509794.
+
+*pypy-2.0.2-r1 (30 Mar 2014)
+
+  30 Mar 2014; Michał Górny <mgorny@gentoo.org> +pypy-2.0.2-r1.ebuild,
+  pypy-2.2.1.ebuild:
+  Backport the :0 slot switch to pypy-2.0.2 since we have binpackages for this
+  version.
+
+  12 Mar 2014; Michał Górny <mgorny@gentoo.org> pypy-2.2.1.ebuild:
+  Add the subslot.
+
+*pypy-2.2.1 (12 Mar 2014)
+
+  12 Mar 2014; Michał Górny <mgorny@gentoo.org> +pypy-2.2.1.ebuild:
+  Add virtual for the new pypy.
+
+*pypy-2.0.2 (09 Oct 2013)
+
+  09 Oct 2013; Michał Górny <mgorny@gentoo.org> +pypy-2.0.2.ebuild:
+  Add virtual version for PyPy 2.0.2.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> -pypy-1.9.ebuild:
+  Remove PyPy 1.9.
+
+  28 Jul 2013; Michał Górny <mgorny@gentoo.org> pypy-1.9.ebuild,
+  pypy-2.0.ebuild:
+  Require USE=ssl on old versions of PyPy for compatibility. Drop HOMEPAGE.
+
+*pypy-1.9 (27 Jul 2013)
+*pypy-2.0 (27 Jul 2013)
+
+  27 Jul 2013; Michał Górny <mgorny@gentoo.org> +metadata.xml, +pypy-1.9.ebuild,
+  +pypy-2.0.ebuild:
+  Introduce a virtual for pypy and pypy-bin.

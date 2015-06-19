@@ -1,0 +1,264 @@
+# ChangeLog for app-arch/lbzip2
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/lbzip2/ChangeLog,v 1.70 2015/06/05 11:47:08 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*lbzip2-2.5 (05 May 2014)
+
+  05 May 2014; Justin Lecher <jlec@gentoo.org> +lbzip2-2.5.ebuild:
+  Version Bump, #509436
+
+  27 Jan 2014; Justin Lecher <jlec@gentoo.org> -lbzip2-2.2-r1.ebuild,
+  -lbzip2-2.3.ebuild, -files/lbzip2-2.2-assertion.patch,
+  -files/lbzip2-2.2-s_isreg.patch:
+  Drop old
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> lbzip2-2.3-r1.ebuild:
+  Stable for sparc, wrt bug #495322
+
+  19 Jan 2014; Agostino Sarubbo <ago@gentoo.org> lbzip2-2.3-r1.ebuild:
+  Stable for ppc64, wrt bug #495322
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> lbzip2-2.3-r1.ebuild:
+  Stable for alpha, wrt bug #495322
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> lbzip2-2.3-r1.ebuild:
+  Add arm64 love.
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> lbzip2-2.3-r1.ebuild:
+  Mark m68k/s390/sh stable.
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> lbzip2-2.3-r1.ebuild:
+  Stable for ia64, wrt bug #495322
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> lbzip2-2.3-r1.ebuild:
+  Stable for ppc, wrt bug #495322
+
+  09 Jan 2014; Lars Wendler <polynomial-c@gentoo.org> lbzip2-2.3-r1.ebuild:
+  amd64 stable (bug #495322).
+
+  09 Jan 2014; Lars Wendler <polynomial-c@gentoo.org> lbzip2-2.3-r1.ebuild:
+  x86 stable (bug #495322).
+
+  29 Dec 2013; Markus Meier <maekke@gentoo.org> lbzip2-2.3-r1.ebuild:
+  arm stable, bug #495322
+
+  25 Dec 2013; Jeroen Roovers <jer@gentoo.org> lbzip2-2.3-r1.ebuild:
+  Stable for HPPA (bug #495322).
+
+  25 Dec 2013; Justin Lecher <jlec@gentoo.org> lbzip2-2.3-r1.ebuild:
+  Resort some lines
+
+*lbzip2-2.3-r1 (10 Nov 2013)
+
+  10 Nov 2013; Justin Lecher <jlec@gentoo.org> +lbzip2-2.3-r1.ebuild:
+  Also install bunzip2 symlink
+
+  10 Oct 2013; Justin Lecher <jlec@gentoo.org> -lbzip2-2.2.ebuild:
+  Drop old
+
+*lbzip2-2.3 (23 Sep 2013)
+
+  23 Sep 2013; Justin Lecher <jlec@gentoo.org> +lbzip2-2.3.ebuild,
+  -files/0.23-Makefile.patch, +files/lbzip2-2.3-s_isreg.patch,
+  -files/0.23-s_isreg.patch, -files/0.23-test.sh.patch,
+  -files/2.1-crc-missmatch.patch:
+  Version Bump; clean old patches
+
+  02 Jun 2013; Agostino Sarubbo <ago@gentoo.org> lbzip2-2.2-r1.ebuild:
+  Stable for sh, wrt bug #457218
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> lbzip2-2.2-r1.ebuild:
+  Stable for sparc, wrt bug #457218
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> lbzip2-2.2-r1.ebuild:
+  Stable for s390, wrt bug #457218
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> lbzip2-2.2-r1.ebuild:
+  Stable for x86, wrt bug #457218
+
+  18 May 2013; Agostino Sarubbo <ago@gentoo.org> lbzip2-2.2-r1.ebuild:
+  Stable for alpha, wrt bug #457218
+
+  17 May 2013; Agostino Sarubbo <ago@gentoo.org> lbzip2-2.2-r1.ebuild:
+  Stable for ia64, wrt bug #457218
+
+  17 May 2013; Jeroen Roovers <jer@gentoo.org> lbzip2-2.2-r1.ebuild:
+  Stable for HPPA (bug #457218).
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> lbzip2-2.2-r1.ebuild:
+  Stable for arm, wrt bug #457218
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> lbzip2-2.2-r1.ebuild:
+  Stable for ppc64, wrt bug #457218
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> lbzip2-2.2-r1.ebuild:
+  Stable for ppc, wrt bug #457218
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> lbzip2-2.2-r1.ebuild:
+  Stable for amd64, wrt bug #457218
+
+*lbzip2-2.2-r1 (12 Jan 2013)
+
+  12 Jan 2013; Justin Lecher <jlec@gentoo.org> +lbzip2-2.2-r1.ebuild,
+  +files/lbzip2-2.2-assertion.patch, metadata.xml:
+  Backport fix from upstream git for Assertion failure, #436382
+
+  07 Oct 2012; Justin Lecher <jlec@gentoo.org> -lbzip2-0.23-r2.ebuild,
+  -lbzip2-2.1.ebuild, -lbzip2-2.1-r2.ebuild, lbzip2-2.2.ebuild:
+  Block other packages installing the /usr/bin/bzip2 symlink, #436354; drop old
+
+  30 Sep 2012; Raúl Porcel <armin76@gentoo.org> lbzip2-2.2.ebuild:
+  ia64/m68k/s390/sh/sparc stable wrt #435228
+
+  25 Sep 2012; Matt Turner <mattst88@gentoo.org> lbzip2-2.2.ebuild:
+  Stable on alpha, bug 435228.
+
+  18 Sep 2012; Anthony G. Basile <blueness@gentoo.org> lbzip2-2.2.ebuild:
+  stable arm, bug #435228
+
+  18 Sep 2012; Jeroen Roovers <jer@gentoo.org> lbzip2-2.2.ebuild:
+  Stable for HPPA (bug #435228).
+
+  18 Sep 2012; Johannes Huber <johu@gentoo.org> lbzip2-2.2.ebuild:
+  Stable for x86, wrt bug #435228
+
+  18 Sep 2012; Anthony G. Basile <blueness@gentoo.org> lbzip2-2.2.ebuild:
+  stable ppc ppc64, bug #435228
+
+  17 Sep 2012; Agostino Sarubbo <ago@gentoo.org> lbzip2-2.2.ebuild:
+  Stable for amd64, wrt bug #435228
+
+*lbzip2-2.2 (06 Aug 2012)
+
+  06 Aug 2012; Justin Lecher <jlec@gentoo.org> +lbzip2-2.2.ebuild,
+  +files/lbzip2-2.2-s_isreg.patch:
+  Version Bump
+
+  14 Feb 2012; Jeroen Roovers <jer@gentoo.org> lbzip2-0.23-r2.ebuild:
+  Stable for HPPA (bug #370685).
+
+*lbzip2-2.1-r2 (05 Dec 2011)
+
+  05 Dec 2011; Justin Lecher <jlec@gentoo.org> files/2.1-crc-missmatch.patch,
+  -lbzip2-2.1-r1.ebuild, +lbzip2-2.1-r2.ebuild:
+  Correct working fix for crc mismatch, upstream
+  b0808cade3a7554bf7c0a00314218feccc8398f5; #393155
+
+*lbzip2-2.1-r1 (28 Nov 2011)
+
+  28 Nov 2011; Justin Lecher <jlec@gentoo.org> +files/2.1-crc-missmatch.patch,
+  +lbzip2-2.1-r1.ebuild:
+  Fixes crc missmatch, https://github.com/kjn/lbzip2/issues/5
+
+  28 Nov 2011; Justin Lecher <jlec@gentoo.org> lbzip2-2.1.ebuild:
+  Keyworded for prefix, tested by me
+
+*lbzip2-2.1 (24 Nov 2011)
+
+  24 Nov 2011; Justin Lecher <jlec@gentoo.org> -lbzip2-2.0.ebuild,
+  +lbzip2-2.1.ebuild:
+  Version Bump, fixes https://github.com/kjn/lbzip2/issues/4 which was rated to
+  be a security lack in addition to the function loss.
+
+  20 Nov 2011; Kacper Kowalik <xarthisius@gentoo.org> lbzip2-0.23-r2.ebuild:
+  ppc64 stable wrt #370685
+
+  06 Nov 2011; Brent Baude <ranger@gentoo.org> lbzip2-0.23-r2.ebuild:
+  Marking lbzip2-0.23-r2 ppc for bug 370685
+
+*lbzip2-2.0 (03 Nov 2011)
+
+  03 Nov 2011; Justin Lecher <jlec@gentoo.org> +lbzip2-2.0.ebuild,
+  metadata.xml:
+  Version Bump, #389389; thanks Tim Harder for the updated ebuild
+
+  23 Oct 2011; Raúl Porcel <armin76@gentoo.org> lbzip2-0.23-r2.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #370685
+
+  13 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> lbzip2-0.23-r2.ebuild:
+  x86 stable wrt bug #370685
+
+  13 Oct 2011; Tony Vroon <chainsaw@gentoo.org> lbzip2-0.23-r2.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Elijah "Armageddon" El Lazkani in bug #370685.
+
+  06 Sep 2011; Naohiro Aota <naota@gentoo.org> lbzip2-0.23-r2.ebuild:
+  Add ~x86-fbsd. Bug #370685
+
+  15 Aug 2011; Matt Turner <mattst88@gentoo.org> -files/0.20-Makefile.patch,
+  -lbzip2-0.20.ebuild, -lbzip2-0.22.ebuild, -lbzip2-0.23.ebuild,
+  -lbzip2-0.23-r1.ebuild, -files/0.22-Makefile.patch, lbzip2-0.23-r2.ebuild:
+  Remove old versions.
+
+  14 Aug 2011; Matt Turner <mattst88@gentoo.org> +files/0.23-test.sh.patch,
+  lbzip2-0.23-r2.ebuild:
+  Don't use lfs.sh from test.sh. Should help BSD.
+
+*lbzip2-0.23-r2 (06 Aug 2011)
+
+  06 Aug 2011; Matt Turner <mattst88@gentoo.org> +files/0.23-Makefile.patch,
+  +lbzip2-0.23-r2.ebuild:
+  BSD fixes: Replaced dependency on app-shells/dash with app-shells/bash; Added
+  option to use freebsd-ubin instead of sys-process/time. Removed
+  _X_OPEN_SOURCE from Makefile. Thanks to Alexis Ballier, Laszlo Ersek, and
+  Naohiro Aota for their suggestions in bug 370685.
+
+  06 Aug 2011; Matt Turner <mattst88@gentoo.org> metadata.xml:
+  Add myself as a maintainer.
+
+  10 Jul 2011; Raúl Porcel <armin76@gentoo.org> lbzip2-0.23-r1.ebuild:
+  Add ~ia64/~m68k/~s390/~sh/~sparc wrt #370685
+
+  12 Jun 2011; Markus Meier <maekke@gentoo.org> lbzip2-0.23-r1.ebuild:
+  add ~arm, bug #370685
+
+  10 Jun 2011; Justin Lecher <jlec@gentoo.org> lbzip2-0.20.ebuild,
+  lbzip2-0.22.ebuild, lbzip2-0.23.ebuild, lbzip2-0.23-r1.ebuild, metadata.xml:
+  Adopted DESCRIPTION as sugested in bug 370685
+
+  09 Jun 2011; Jeroen Roovers <jer@gentoo.org> lbzip2-0.23-r1.ebuild:
+  Marked ~hppa (bug #370685).
+
+  08 Jun 2011; Kacper Kowalik <xarthisius@gentoo.org> lbzip2-0.23-r1.ebuild:
+  Marked ~ppc/~ppc64 wrt #370685
+
+  08 Jun 2011; Matt Turner <mattst88@gentoo.org> lbzip2-0.23-r1.ebuild:
+  Add ~alpha and ~mips, bug 370685
+
+  08 Jun 2011; Matt Turner <mattst88@gentoo.org> lbzip2-0.23-r1.ebuild:
+  Add missing sys-devel/bc dependency for USE=test
+
+*lbzip2-0.23-r1 (27 Mar 2010)
+
+  27 Mar 2010; Justin Lecher <jlec@gentoo.org>
+  +files/0.23-s_isreg.patch, +lbzip2-0.23-r1.ebuild:
+  Add support for symlink decompression #309683
+
+*lbzip2-0.23 (04 Mar 2010)
+
+  04 Mar 2010; Justin Lecher <jlec@gentoo.org>
+  +lbzip2-0.23.ebuild:
+  Version Bump
+
+*lbzip2-0.22 (19 Feb 2010)
+
+  19 Feb 2010; Justin Lecher <jlec@gentoo.org>
+  -files/0.21-Makefile.patch, -lbzip2-0.21.ebuild,
+  +files/0.22-Makefile.patch, +lbzip2-0.22.ebuild:
+  Version Bump
+
+*lbzip2-0.21 (18 Feb 2010)
+
+  18 Feb 2010; Justin Lecher <jlec@gentoo.org>
+  +files/0.21-Makefile.patch, +lbzip2-0.21.ebuild:
+  Version Bump
+
+*lbzip2-0.20 (09 Feb 2010)
+
+  09 Feb 2010; Justin Lecher <jlec@gentoo.org>
+  +files/0.20-Makefile.patch, +lbzip2-0.20.ebuild, +metadata.xml:
+  Added on request of bug 264002
+  thanks Daniel Lin for initial ebuild

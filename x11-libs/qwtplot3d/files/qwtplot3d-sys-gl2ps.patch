@@ -1,0 +1,31 @@
+--- qwtplot3d.pro.orig	2009-04-07 19:45:29.985645378 +0100
++++ qwtplot3d.pro	2009-04-07 19:46:50.095747068 +0100
+@@ -80,13 +80,11 @@
+            include/qwt3d_graphplot.h \
+            include/qwt3d_multiplot.h
+ 
+-# gl2ps support
+-HEADERS+=3rdparty/gl2ps/gl2ps.h \
+-         include/qwt3d_io_gl2ps.h
++# gl2ps support taken from system libs
++HEADERS+=include/qwt3d_io_gl2ps.h
+          
+-SOURCES+=src/qwt3d_io_gl2ps.cpp \
+-         3rdparty/gl2ps/gl2ps.c
+-
++SOURCES+=src/qwt3d_io_gl2ps.cpp
++unix:LIBS += -lgl2ps
+ # zlib support for gl2ps
+ zlib {
+   DEFINES += GL2PS_HAVE_ZLIB
+--- src/qwt3d_io_gl2ps.cpp.orig	2009-04-07 19:44:38.536418391 +0100
++++ src/qwt3d_io_gl2ps.cpp	2009-04-07 19:45:03.685133854 +0100
+@@ -4,7 +4,7 @@
+ 
+ #include <time.h>
+ #include "qwt3d_openglhelper.h"
+-#include "../3rdparty/gl2ps/gl2ps.h"
++#include <gl2ps.h>
+ #include "qwt3d_io_gl2ps.h"
+ #include "qwt3d_plot.h"
+ 

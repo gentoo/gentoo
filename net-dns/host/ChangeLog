@@ -1,0 +1,123 @@
+# ChangeLog for net-dns/host
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/host/ChangeLog,v 1.24 2013/04/14 18:06:00 ulm Exp $
+
+  14 Apr 2013; Ulrich Müller <ulm@gentoo.org> host-20070128-r1.ebuild:
+  Fix LICENSE, bug 465140.
+
+  06 Oct 2012; Jeroen Roovers <jer@gentoo.org> -host-991529.ebuild,
+  -host-20070128.ebuild:
+  Old.
+
+  05 Oct 2012; Brent Baude <ranger@gentoo.org> host-20070128-r1.ebuild:
+  Marking host-20070128-r1 ppc64 for bug 434036
+
+  02 Oct 2012; Anthony G. Basile <blueness@gentoo.org> host-20070128-r1.ebuild:
+  keyword ~mips, bug #434036
+
+  02 Oct 2012; Anthony G. Basile <blueness@gentoo.org> host-20070128-r1.ebuild:
+  rekeyword ~ppc64, bug #434036
+
+  24 Sep 2012; Raúl Porcel <armin76@gentoo.org> host-20070128-r1.ebuild:
+  alpha/sparc stable wrt #434036
+
+  14 Sep 2012; Jeroen Roovers <jer@gentoo.org> host-20070128-r1.ebuild:
+  Stable for HPPA (bug #434036).
+
+  08 Sep 2012; Anthony G. Basile <blueness@gentoo.org> host-20070128-r1.ebuild:
+  Stable ppc, bug #434036
+
+  07 Sep 2012; Johannes Huber <johu@gentoo.org> host-20070128-r1.ebuild:
+  Stable for x86, wrt bug #434036
+
+  07 Sep 2012; Agostino Sarubbo <ago@gentoo.org> host-20070128-r1.ebuild:
+  Stable for amd64, wrt bug #434036
+
+  05 Sep 2012; Jeroen Roovers <jer@gentoo.org> host-20070128.ebuild,
+  host-20070128-r1.ebuild:
+  Update SRC_URI.
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> host-991529.ebuild:
+  Drop to ~mips
+
+*host-20070128-r1 (06 Aug 2010)
+
+  06 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  +host-20070128-r1.ebuild, +files/host-20070128-Makefile.patch:
+  Repect LDFLAGS + QA fixes from Doktor Notor <notordoktor@gmail.com>. Bug
+  #309153
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> host-20070128.ebuild:
+  Remove virtual/libc
+
+  13 May 2008; Jeroen Roovers <jer@gentoo.org> host-20070128.ebuild:
+  Stable for HPPA (LuckyLuke).
+
+  18 Nov 2007; Matti Bickel <mabi@gentoo.org> host-20070128.ebuild:
+  ~ppc readded (bug #199077)
+
+  13 Nov 2007; Jeroen Roovers <jer@gentoo.org> host-20070128.ebuild:
+  Marked ~hppa. Fixed one quoting issue.
+
+  13 Nov 2007; Raúl Porcel <armin76@gentoo.org> host-20070128.ebuild:
+  Add ~alpha
+
+  03 Oct 2007; Ferris McCormick <fmccor@gentoo.org> host-20070128.ebuild:
+  Add ~sparc keyword --- Bug #194653 --- builds and host-woods works.
+
+*host-20070128 (28 Aug 2007)
+
+  28 Aug 2007; George Shapovalov <george@gentoo.org> +host-20070128.ebuild:
+  A long awaited update. Big thanks to Thomas S. Howard for fixing linking
+  issue (#67973)
+
+  11 Jun 2006; George Shapovalov <george@gentoo.org> host-991529.ebuild:
+  changed RESTRICT=maketest to test
+
+  15 Jul 2005; George Shapovalov <george@gentoo.org> host-991529.ebuild:
+  moved the package to net-dns from net-misc (#80805)
+  as new "maketest" feature became available for portage, disabled it for this package
+  (causes problems here, see #91515)
+
+  02 Oct 2004; Sven Wegener <swegener@gentoo.org> +metadata.xml:
+  Moved maintainer from ChangeLog to metadata.xml.
+
+  02 Mar 2004; Tom Gall <tgall@gentoo.org> host-991529.ebuild:
+  stable on ppc64
+
+  13 Jan 2004; Chuck Short <zul@gentoo.org> host-991529.ebuild:
+  Marked stable on amd64, closes #37063.
+
+  24 Dec 2003; Chuck Short <zul@gentoo.org> host-991529.ebuild:
+  Added ~amd64 keyword, closes #35854.
+
+  10 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> host-991529.ebuild:
+  remove DEPEND on bind-tools;  The whole point of this ebuild is that it
+  supplies an independent host command; use sed >= 4; more error messages;
+  tidy Prompted by bug 30741
+
+  28 Jun 2003; Tavis Ormandy <taviso@gentoo.org> host-991529.ebuild:
+  stable on alpha
+
+  01 Mar 2003; Brandon Low <lostlogic@gentoo.org> host-991529.ebuild:
+  Switch to emake and make use CC/CXX environment variables
+
+  27 Feb 2003; Guy Martin <gmsoft@gentoo.org> host-991529.ebuild :
+  Added hppa to keywords.
+
+  24 Feb 2003; Nicholas Wourms <dragon@gentoo.org> host-991529.ebuild :
+  Added stable mips keyword to the ebuild.
+
+  21 Jan 2003; Will Woods <wwoods@gentoo.org> host-991529.ebuild :
+  added ~alpha keyword
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> host-991529.ebuild :
+  changed sparc ~sparc keywords
+
+  06 Jul 2002; phoen][x <phoenix@gentoo.org> host-991529.ebuild :
+  Added KEYWORDS, LICENSE, SLOT.
+
+*host-991529 (11 May 2002)
+
+  11 May 2002; G Shapovalov <george@gentoo.org> host-991529.ebuild :
+  initial release

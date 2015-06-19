@@ -1,0 +1,84 @@
+# ChangeLog for sys-apps/dnotify
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/dnotify/ChangeLog,v 1.24 2010/09/10 05:06:06 ssuominen Exp $
+
+  10 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> dnotify-0.18.0.ebuild,
+  +files/dnotify-0.18.0-glibc-212.patch:
+  Fix building with recent glibc wrt #336649 by Jochen Schlick.
+
+  10 Jan 2008; Mike Frysinger <vapier@gentoo.org> dnotify-0.18.0.ebuild:
+  Update HOMEPAGE #205167 and touchup ebuild.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  27 Jan 2006; Simon Stelling <blubb@gentoo.org>
+  +files/dnotify-0.18.0-nls.patch, dnotify-0.18.0.ebuild:
+  fix problem stated in bug 118108 comment 6
+
+  27 Jan 2006; Simon Stelling <blubb@gentoo.org> dnotify-0.18.0.ebuild:
+  stable on amd64
+
+  17 Jan 2006; Stuart Longland <redhatter@gentoo.org> dnotify-0.18.0.ebuild:
+  Marked stable on MIPS as per bug #118108
+
+  07 Jan 2006; Luca Barbato <lu_zero@gentoo.org> dnotify-0.18.0.ebuild:
+  Marked ppc
+
+  06 Jan 2006; Mark Loeser <halcy0n@gentoo.org> dnotify-0.18.0.ebuild:
+  Stable on x86; bug #118108
+
+  19 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> dnotify-0.17.1.ebuild:
+  Stable on ppc.
+
+*dnotify-0.18.0 (17 Jul 2005)
+
+  17 Jul 2005; Mike Frysinger <vapier@gentoo.org> +dnotify-0.18.0.ebuild:
+  Version bump.
+
+  03 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> dnotify-0.16.0.ebuild,
+  dnotify-0.17.1.ebuild, dnotify-0.5.0.ebuild:
+  Keyworded -sparc, they're b0rked
+
+  01 Nov 2004; Joshua Kinard <kumba@gentoo.org> dnotify-0.17.1.ebuild:
+  Marked stable on mips.
+
+  26 Sep 2004; Danny van Dyk <kugelfang@gentoo.org> dnotify-0.16.0.ebuild:
+  Marked stable on amd64.
+
+*dnotify-0.17.1 (18 Sep 2004)
+
+  18 Sep 2004; Sven Wegener <swegener@gentoo.org> dnotify-0.16.0.ebuild,
+  +dnotify-0.17.1.ebuild, dnotify-0.5.0.ebuild:
+  Version bump. Marked 0.16.0 stable on x86. Updated HOMEPAGE in all ebuilds.
+
+*dnotify-0.16.0 (18 Jul 2004)
+
+  18 Jul 2004; Daniel Black <dragonheart@gentoo.org> +dnotify-0.16.0.ebuild,
+  dnotify-0.5.0.ebuild:
+  0.5.0 - QA fix S= is default, SRC_URI doesn't exist - changed to
+  mirror://gentoo/. 0.16.0 - version bump
+
+  30 Jun 2004; Aron Griffis <agriffis@gentoo.org> dnotify-0.5.0.ebuild:
+  sync IUSE (missing)
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*dnotify-0.5.0 (14 June 2002)
+
+  24 Feb 2003; Nicholas Wourms <dragon@gentoo.org> dnotify-0.5.0.ebuild :
+  Marked as stable for mips.
+
+  21 Jul 2002; Mark Guertin <gerk@gentoo.org>:
+  updated keywords (ppc)
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> dnotify-0.5.0.ebuild :
+  Added KEYWORDS, SLOT.
+
+  14 June 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

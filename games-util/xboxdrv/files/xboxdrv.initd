@@ -1,0 +1,19 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/games-util/xboxdrv/files/xboxdrv.initd,v 1.1 2013/05/14 19:11:14 swegener Exp $
+
+PIDFILE="/var/run/${SVCNAME}.pid"
+
+start() {
+	ebegin "Starting xboxdrv"
+	start-stop-daemon --start --pidfile "${PIDFILE}" --exec /usr/bin/xboxdrv -- \
+		--daemon --detach --pid-file "${PIDFILE}" ${XBOXDRV_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping xboxdrv"
+	start-stop-daemon --stop --pidfile "${PIDFILE}"
+	eend $?
+}

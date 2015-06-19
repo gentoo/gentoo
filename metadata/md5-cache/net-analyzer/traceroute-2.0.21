@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Utility to trace the route of IP packets
+EAPI=5
+HOMEPAGE=http://traceroute.sourceforge.net/
+IUSE=static
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux
+LICENSE=GPL-2 LGPL-2.1
+RDEPEND=!<net-misc/iputils-20121221-r1 !net-misc/iputils[traceroute]
+SLOT=0
+SRC_URI=mirror://sourceforge/traceroute/traceroute-2.0.21.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=51da482849e37897f13fdd3ca278c6aa

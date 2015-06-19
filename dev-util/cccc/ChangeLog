@@ -1,0 +1,68 @@
+# ChangeLog for dev-util/cccc
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cccc/ChangeLog,v 1.18 2012/12/25 13:54:24 pacho Exp $
+
+  25 Dec 2012; Pacho Ramos <pacho@gentoo.org> -cccc-3.1.4-r1.ebuild:
+  Remove version depending on now treecleaner pccts
+
+  05 Sep 2012; Samuli Suominen <ssuominen@gentoo.org> cccc-3.1.4.ebuild:
+  Apply gcc-4.7 patch for -r0 because -r1 was masked wrt #255699
+
+*cccc-3.1.4-r1 (11 Aug 2012)
+
+  11 Aug 2012; Michael Palimaka <kensington@gentoo.org> +cccc-3.1.4-r1.ebuild,
+  +files/cccc-3.1.4-gcc-4.7.patch, +files/cccc-3.1.4-unbundle-pccts.patch,
+  metadata.xml:
+  Revision bump to unbundle dev-util/pccts and build with GCC 4.7. Thanks to
+  h0nk for the patches.
+
+  06 Aug 2012; Christoph Junghans <ottxor@gentoo.org> cccc-3.1.4.ebuild:
+  EAPI bumped to 4 and added prefix tweaks
+
+  18 Nov 2009; Víctor Ostorga <vostorga@gentoo.org> cccc-3.1.4.ebuild:
+  Adding web documentation, bug #293608
+
+  31 Aug 2009; Víctor Ostorga <vostorga@gentoo.org> -cccc-3.0_pre63.ebuild,
+  -cccc-3.0_pre84.ebuild, -files/cccc-3.0_pre84-gcc34.patch,
+  cccc-3.1.4.ebuild:
+  Respecting CFLAGS and LDFLAGS, bug #240272
+  Respecting CC variable, bug #243976
+  Fixing build, patch thanks to Gary Stein <gstein@ucf.edu> bug #277941
+  Cleaning out old ebuilds
+
+  29 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Philippe Trottier (tchiwam) from metadata.xml (as per #52828).
+  Assigning to maintainer-needed.
+
+  30 Jun 2006; Philippe Trottier <tchiwam@gentoo.org> :
+  No bugs for >30 days. I am using this on amd64, marked stable.
+
+  15 Apr 2006; Philippe Trottier <tchiwam@gentoo.org> :
+  Added myself as a maintainer.
+
+  15 Apr 2006; Mark Loeser <halcy0n@gentoo.org> +metadata.xml:
+  Adding metadata
+
+  15 Apr 2006; Mark Loeser <halcy0n@gentoo.org> cccc-3.0_pre63.ebuild:
+  This version doesn't compile with a stable system, and the new version still
+  needs testing before marking it stable
+
+*cccc-3.1.4 (15 Apr 2006)
+
+  15 Apr 2006; Mike Frysinger <vapier@gentoo.org> +cccc-3.1.4.ebuild:
+  Version bump #124916 by Patrizio Bassi.
+
+  09 Jun 2005; David Holm <dholm@gentoo.org> cccc-3.0_pre84.ebuild:
+  Added to ~ppc.
+
+*cccc-3.0_pre84 (08 Jun 2005)
+
+  08 Jun 2005; Daniel Black <dragonheart@gentoo.org>
+  +files/cccc-3.0_pre84-gcc34.patch, +cccc-3.0_pre84.ebuild:
+  Version bump/gcc-3.4 patch thanks to halcy0n@gentoo.org in bug #64740 by
+  Roland Bramm
+
+*cccc-3.0_pre63 (14 Feb 2003)
+    
+  14 Feb 2003 Luca Barbato <lu_zero@gentoo.org>
+  First commit

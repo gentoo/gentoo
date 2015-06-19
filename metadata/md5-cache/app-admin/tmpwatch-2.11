@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Files which haven't been accessed in a given period of time are removed from specified directories
+EAPI=5
+HOMEPAGE=https://fedorahosted.org/tmpwatch/
+IUSE=selinux
+KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=selinux? ( sec-policy/selinux-tmpreaper )
+SLOT=0
+SRC_URI=https://fedorahosted.org/releases/t/m/tmpwatch/tmpwatch-2.11.tar.bz2
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=88c0a84dee1eb24a31b0ef4386bd43c0

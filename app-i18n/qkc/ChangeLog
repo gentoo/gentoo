@@ -1,0 +1,37 @@
+# ChangeLog for app-i18n/qkc
+# Copyright 2002-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/qkc/ChangeLog,v 1.13 2012/07/14 06:15:08 hattya Exp $
+
+  14 Jul 2012; Akinori Hattori <hattya@gentoo.org> metadata.xml:
+  format metadata.xml
+
+  14 Jul 2012; Akinori Hattori <hattya@gentoo.org> qkc-1.00.ebuild:
+  respect LDFLAGS wrt bug #335737
+
+  16 May 2007; MATSUU Takuto <matsuu@gentoo.org> qkc-1.00.ebuild:
+  Fixed doman locale.
+
+  03 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  26 Oct 2004; Tom Gall <tgall@gentoo.org> qkc-1.00.ebuild:
+  stable on ppc64 bug #66880
+
+*qkc-1.00 (27 Nov 2002)
+
+  18 Jan 2004; MATSUU Takuto <matsuu@gentoo.org> qkc-1.00.ebuild:
+  Marked as stable for amd64.
+
+  30 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> qkc-1.00.ebuild:
+  Marked as stable for ppc, sparc and alpha
+
+  31 Jul 2003; Mamoru KOMACHI <usata@gentoo.org> qkc-1.00.ebuild:
+  Added ~alpha, ~sparc and ~ppc keywords
+
+  03 Dec 2002; Masatomo Nakano <nakano@gentoo.org> qkc-1.00.ebuild ChangeLog :
+  changed KEYWORD from ~x86 to x86.
+
+  27 Nov 2002; Masatomo Nakano <nakano@gentoo.org> qkc-1.00.ebuild files/digest-qkc-1.00 ChangeLog :
+
+  Initial import. #11076
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>qt</herd>
+  <maintainer>
+    <email>polynomial-c@gentoo.org</email>
+    <name>Lars Wendler</name>
+  </maintainer>
+  <use>
+    <flag name="kde">Enable KDE4 support. This adds a QtCurve configuration
+      module to KDE's SystemSettings</flag>
+    <flag name="windeco">Enable window decoration for KWin</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">QtCurve/qtcurve</remote-id>
+  </upstream>
+</pkgmetadata>

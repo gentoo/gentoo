@@ -1,0 +1,110 @@
+# ChangeLog for games-fps/quake3-demo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-demo/ChangeLog,v 1.30 2015/06/14 19:49:39 ulm Exp $
+
+  14 Jun 2015; Ulrich Müller <ulm@gentoo.org> quake3-demo-1.11-r1.ebuild:
+  [QA] Remove emul-linux-x86-* from dependencies.
+
+  05 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> -quake3-demo-1.11.ebuild:
+  old
+
+  01 Feb 2015; Mikle Kolyada <zlogene@gentoo.org> quake3-demo-1.11-r1.ebuild:
+  x86 stable wrt bug #535908
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org> quake3-demo-1.11-r1.ebuild:
+  Stable for amd64, wrt bug #535908
+
+*quake3-demo-1.11-r1 (08 Jul 2014)
+
+  08 Jul 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +quake3-demo-1.11-r1.ebuild, metadata.xml:
+  bumped EAPI to 5, adjustd deps for gx86-multilib, dropped useless use flags,
+  made USE=dedicated install only the dedicated server, as it should
+
+  25 Dec 2012; Tupone Alfredo <tupone@gentoo.org> quake3-demo-1.11.ebuild:
+  Use QA_PREBUILT. Bug #430374 by Diego Elio Pettenò
+
+  08 Feb 2012; Mike Frysinger <vapier@gentoo.org> quake3-demo-1.11.ebuild:
+  Move to new unpacker eclass for unpack_makeself.
+
+  14 Dec 2011; Mike Frysinger <vapier@gentoo.org> quake3-demo-1.11.ebuild:
+  The games.eclass has dropped GAMES_CHECK_LICENSE support (since portage now
+  has ACCEPT_LICENSE), so drop it here too.
+
+  26 Sep 2008; Zac Medico <zmedico@gentoo.org> quake3-demo-1.11.ebuild:
+  Set PROPERTIES=interactive since GAMES_CHECK_LICENSE=yes is set.
+
+  04 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org> -files/q3demo,
+  -files/q3demo-ded, quake3-demo-1.11.ebuild:
+  Change to use more built-in functions and to be a little cleaner.
+
+  15 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-demo-1.11.ebuild:
+  Fix quoting.
+
+  31 Jul 2007; Doug Goldstein <cardoe@gentoo.org> quake3-demo-1.11.ebuild:
+  nvidia-legacy-drivers has merged with nvidia-drivers
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> quake3-demo-1.11.ebuild:
+  Replacing einfo with elog
+
+  05 Jan 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-demo-1.11.ebuild:
+  Fixed the q3demo-ded symlink. Thanks to Costin Stroie
+  <costinstroie@gmail.com> for pointing it out.
+
+  05 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-demo-1.11.ebuild:
+  Removed references to nvidia-glx, since it is no longer in the tree.
+
+  19 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-demo-1.11.ebuild:
+  Adding strip to RESTRICT for bug #137819.
+
+  07 Jul 2006; Kristopher Kersey <augustus@gentoo.org>
+  quake3-demo-1.11.ebuild:
+  Added RDEPEND for new x11-drivers/nvidia-drivers or
+  x11-drivers/nvidia-legacy-drivers.
+
+  06 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-demo-1.11.ebuild:
+  Added >=app-emulation/emul-linux-x86-xlibs-7.0 to the list of valid 32-bit
+  opengl providers for amd64 per bug #135643.
+
+  13 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-demo-1.11.ebuild:
+  Changed to use GAMES_CHECK_LICENSE and removing redundant pkg_setup.
+
+  24 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-demo-1.11.ebuild:
+  Moved games_pkg_postinst to beginning of pkg_postinst.
+
+  15 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-demo-1.11.ebuild:
+  Changed to use idsoftware thirdpartymirror.
+
+  21 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-demo-1.11.ebuild:
+  Changed check_license to explicitly list license to check.
+
+  30 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-demo-1.11.ebuild:
+  Changed to match new 3dgamers mirrors structure in thirdpartymirrors.
+
+  17 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-demo-1.11.ebuild:
+  Removed calls to specific 3dgamers mirrors and changed to use
+  mirror://3dgamers instead.
+
+  12 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> quake3-demo-1.11.ebuild:
+  Removing redundant inherit eutils.
+
+  18 Jul 2003; Chris Gianelloni <wolf31o2@gentoo.org> quake3-demo-1.11.ebuild,
+  files/q3ded-demo, files/q3demo-ded:
+  Fixed LICENSE, changed dedicated server script to better match the rest of the
+  app-games ebuilds, and removed X USE variable, due to it being redundant.
+
+*quake3-demo-1.11 (07 Jul 2003)
+
+  07 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

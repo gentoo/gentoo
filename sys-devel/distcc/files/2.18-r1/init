@@ -1,0 +1,39 @@
+#!/sbin/runscript
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/distcc/files/2.18-r1/init,v 1.1 2008/01/04 03:53:15 betelgeuse Exp $
+
+depend() {
+	local avahi
+#ifdef AVAHI
+	[ ${DISTCCD_AVAHI} = yes ] && avahi="avahi-daemon"
+#endif
+	need net ${avahi}
+	use ypbind
+}
+
+start() {
+	[ -e "${DISTCCD_PIDFILE}" ] && rm -f ${DISTCCD_PIDFILE} &>/dev/null
+	
+	local args
+#ifdef AVAHI
+	[ ${DISTCCD_AVAHI} = yes ] && args="--zeroconf"
+#endif
+	
+	ebegin "Starting distccd"
+	chown distcc `dirname ${DISTCCD_PIDFILE}` &>/dev/null
+	TMPDIR="${TMPDIR}" \
+	PATH="$(gcc-config --get-bin-path):${PATH}" \
+	/sbin/start-stop-daemon --start --quiet --startas ${DISTCCD_EXEC} \
+	--pidfile ${DISTCCD_PIDFILE} -- \
+	--pid-file ${DISTCCD_PIDFILE} -N ${DISTCCD_NICE} --user distcc \
+	${args} ${DISTCCD_OPTS}
+
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping distccd"
+	start-stop-daemon --stop --quiet --pidfile "${DISTCCD_PIDFILE}"
+	rm -f "${DISTCCD_PIDFILE}"
+	eend $?
+}
+

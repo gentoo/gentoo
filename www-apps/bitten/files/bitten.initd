@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/www-apps/bitten/files/bitten.initd,v 1.1 2012/08/27 11:01:40 xarthisius Exp $
+
+start() {
+   ebegin "Starting Bitten slave"
+   start-stop-daemon --start --user ${BITTEN_USER:-bitten} --group ${BITTEN_GROUP:-tracd} \
+      --pidfile /var/run/bitten.pid --make-pidfile --background \
+      --exec /usr/bin/bitten-slave -- \
+      ${BITTEN_SERVER} -d ${BITTEN_TMPDIR:-/var/tmp/bitten} -l ${BITTEN_LOG:-/var/log/bitten.log} \
+      ${BITTEN_OPTS}
+   eend $?
+}
+
+stop() {
+   ebegin "Stopping Bitten slave"
+   start-stop-daemon --stop --quiet --pidfile /var/run/bitten.pid
+   eend $?
+}

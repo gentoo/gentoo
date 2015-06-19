@@ -1,0 +1,15 @@
+Run ranlib before installation of the libary.
+
+--- ./cctools-855/cbtlibs/Makefile.ranlib	2014-04-05 00:42:22.000000000 +0200
++++ ./cctools-855/cbtlibs/Makefile	2014-08-29 14:49:41.000000000 +0200
+@@ -61,9 +61,9 @@
+ 
+ lib_ofiles_install: lib_ofiles
+ 	$(MKDIRS) $(DSTROOT)$(LOCLIBDIR)
++	$(RANLIB) $(SYMROOT)/libsyminfo.a
+ 	install -p -c -m 444 $(SYMROOT)/libsyminfo.a \
+ 		$(DSTROOT)$(LOCLIBDIR)/libsyminfo.a
+-	$(RANLIB) $(DSTROOT)$(LOCLIBDIR)/libsyminfo.a
+ 
+ $(OFILE_DIR) $(SYMROOT):
+ 	$(MKDIRS) $@

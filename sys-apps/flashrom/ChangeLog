@@ -1,0 +1,203 @@
+# ChangeLog for sys-apps/flashrom
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/flashrom/ChangeLog,v 1.48 2015/04/25 11:07:15 swegener Exp $
+
+  25 Apr 2015; Sven Wegener <swegener@gentoo.org> flashrom-9999.ebuild:
+  Drop missing ChangeLog from dodoc.
+
+*flashrom-0.9.8 (18 Apr 2015)
+
+  18 Apr 2015; Mike Frysinger <vapier@gentoo.org> +flashrom-0.9.8.ebuild,
+  flashrom-9999.ebuild, metadata.xml:
+  Version bump.
+
+  04 Aug 2014; Mike Frysinger <vapier@gentoo.org> flashrom-0.9.7.ebuild,
+  flashrom-9999.ebuild:
+  Add mips love.
+
+  31 May 2014; Sven Wegener <swegener@gentoo.org> flashrom-0.9.6.1.ebuild,
+  flashrom-0.9.7.ebuild, flashrom-9999.ebuild:
+  Update ESVN_REPO_URI to flashrom.org.
+
+  05 Apr 2014; Agostino Sarubbo <ago@gentoo.org> flashrom-0.9.7.ebuild:
+  Stable for x86, wrt bug #504112
+
+  31 Mar 2014; Chema Alonso <nimiux@gentoo.org> flashrom-0.9.7.ebuild:
+  Stable for amd64 wrt bug #504112
+
+  26 Mar 2014; Markus Meier <maekke@gentoo.org> flashrom-0.9.7.ebuild:
+  arm stable, bug #504112
+
+  14 Feb 2014; Sven Wegener <swegener@gentoo.org> flashrom-9999.ebuild:
+  Drop ChangeLog.
+
+  20 Dec 2013; Mike Frysinger <vapier@gentoo.org> flashrom-0.9.7.ebuild,
+  flashrom-9999.ebuild, metadata.xml:
+  Add support for USE=static from ChromiumOS.  Kill off USE=doc as it only
+  installs already generated txt files.
+
+  01 Dec 2013; Mike Frysinger <vapier@gentoo.org> flashrom-0.9.7.ebuild,
+  flashrom-9999.ebuild:
+  Change back to virtual/libusb:0 as that is what the source explicitly checks
+  for.
+
+  28 Nov 2013; Mike Frysinger <vapier@gentoo.org> flashrom-0.9.7.ebuild,
+  flashrom-9999.ebuild:
+  Sync the 9999 and non-9999 ebuilds.
+
+  09 Nov 2013; Christian Ruppert <idl0r@gentoo.org> -flashrom-0.9.4.ebuild,
+  -flashrom-0.9.5.2.ebuild, -flashrom-0.9.6.ebuild:
+  Cleanup
+
+*flashrom-0.9.7 (09 Nov 2013)
+
+  09 Nov 2013; Christian Ruppert <idl0r@gentoo.org> +flashrom-0.9.7.ebuild,
+  flashrom-9999.ebuild, metadata.xml:
+  Bump, bug 488220
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> flashrom-0.9.6.1.ebuild:
+  Stable for arm, wrt bug #454024
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup after talking with leio
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> flashrom-0.9.6.1.ebuild:
+  Stable for x86, wrt bug #454024
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> flashrom-0.9.6.1.ebuild:
+  Stable for amd64, wrt bug #454024
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org> flashrom-0.9.6.ebuild:
+  Stable for x86, wrt bug #439552
+
+  28 Oct 2012; Markos Chandras <hwoarang@gentoo.org> flashrom-0.9.6.ebuild:
+  Stable on amd64 wrt bug #439552
+
+*flashrom-0.9.6.1 (25 Oct 2012)
+
+  25 Oct 2012; Christian Ruppert <idl0r@gentoo.org> +flashrom-0.9.6.1.ebuild:
+  Version bump
+
+  25 Oct 2012; Anthony G. Basile <blueness@gentoo.org> flashrom-0.9.6.ebuild:
+  stable arm, bug #439552
+
+*flashrom-0.9.6 (03 Aug 2012)
+
+  03 Aug 2012; Christian Ruppert <idl0r@gentoo.org> +flashrom-0.9.6.ebuild,
+  flashrom-9999.ebuild, metadata.xml:
+  Version bump. Also disable some unsupported programmers by default.
+
+  16 Jun 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Leio is second maintainer as talked with him.
+
+  22 May 2012; Johannes Huber <johu@gentoo.org> flashrom-0.9.5.2.ebuild:
+  Stable for x86, wrt bug #416435
+
+  20 May 2012; Agostino Sarubbo <ago@gentoo.org> flashrom-0.9.5.2.ebuild:
+  Stable for amd64, wrt bug #416435
+
+*flashrom-0.9.5.2 (13 Mar 2012)
+
+  13 Mar 2012; Christian Ruppert <idl0r@gentoo.org> -flashrom-0.9.5.1.ebuild,
+  +flashrom-0.9.5.2.ebuild:
+  Version bump.
+
+*flashrom-0.9.5.1 (02 Mar 2012)
+
+  02 Mar 2012; Christian Ruppert <idl0r@gentoo.org> -flashrom-0.9.5.ebuild,
+  +flashrom-0.9.5.1.ebuild, flashrom-9999.ebuild:
+  Version bump. Sync with the live ebuild.
+
+*flashrom-0.9.5 (18 Feb 2012)
+
+  18 Feb 2012; Christian Ruppert <idl0r@gentoo.org> -flashrom-0.9.3.ebuild,
+  +flashrom-0.9.5.ebuild:
+  Version bump
+
+*flashrom-9999 (14 Oct 2011)
+
+  14 Oct 2011; Mike Frysinger <vapier@gentoo.org> +flashrom-9999.ebuild:
+  Add a live svn ebuild.
+
+  20 Sep 2011; Andreas Schuerch <nativemad@gentoo.org> flashrom-0.9.4.ebuild:
+  x86 stable, bug 383401
+
+  19 Sep 2011; Christian Ruppert <idl0r@gentoo.org> flashrom-0.9.3.ebuild,
+  flashrom-0.9.4.ebuild:
+  Remove ebeep/sleep.
+
+  18 Sep 2011; Christian Ruppert <idl0r@gentoo.org> flashrom-0.9.4.ebuild:
+  Use sleep instead of ebeep.
+
+  18 Sep 2011; Markos Chandras <hwoarang@gentoo.org> flashrom-0.9.4.ebuild:
+  Stable on amd64 wrt bug #383401
+
+*flashrom-0.9.4 (30 Jul 2011)
+
+  30 Jul 2011; Christian Ruppert <idl0r@gentoo.org> +flashrom-0.9.4.ebuild,
+  metadata.xml:
+  Version bump to 0.9.4.
+
+  06 Mar 2011; Mike Frysinger <vapier@gentoo.org> flashrom-0.9.3.ebuild:
+  Enable all programmers that dont require extra external deps since the
+  combined size is tiny. Simplify code in the process.
+
+  06 Mar 2011; Mike Frysinger <vapier@gentoo.org> -flashrom-0.9.2.ebuild:
+  Old; punt.
+
+  24 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  flashrom-0.9.3.ebuild:
+  x86 stable wrt bug #351943
+
+  20 Jan 2011; Markos Chandras <hwoarang@gentoo.org> flashrom-0.9.3.ebuild:
+  Stable on amd64 wrt bug #351943
+
+  06 Dec 2010; Christian Ruppert <idl0r@gentoo.org> flashrom-0.9.3.ebuild:
+  Disable -Werror, bug 347879.
+
+*flashrom-0.9.3 (03 Dec 2010)
+
+  03 Dec 2010; Christian Ruppert <idl0r@gentoo.org> +flashrom-0.9.3.ebuild,
+  metadata.xml:
+  Version bump to 0.9.3. Add new useflags/features.
+
+  10 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  flashrom-0.9.2.ebuild:
+  stable x86, bug 326843
+
+  06 Jul 2010; Markos Chandras <hwoarang@gentoo.org> flashrom-0.9.2.ebuild:
+  Stable on amd64 wrt bug #326843
+
+  03 Jun 2010; Christian Ruppert <idl0r@gentoo.org> flashrom-0.9.2.ebuild:
+  Fix wiki flag.
+
+*flashrom-0.9.2 (03 Jun 2010)
+
+  03 Jun 2010; Christian Ruppert <idl0r@gentoo.org> -flashrom-0.9.1.ebuild,
+  +flashrom-0.9.2.ebuild, metadata.xml:
+  Version bump to 0.9.2. Add several new useflags. Use internal
+  _flashrom_enable() function to enable/disable features. Update
+  metadata.xml. Add myself as maintainer.
+
+*flashrom-0.9.1 (28 Jan 2010)
+
+  28 Jan 2010; Christian Ruppert <idl0r@gentoo.org> -flashrom-0.9.0.ebuild,
+  +flashrom-0.9.1.ebuild, metadata.xml:
+  Version bump, bug 284543.
+  Add ftdi and serprog useflag.
+  Update longdesc in metadata.xml.
+
+  08 May 2009; Mart Raudsepp <leio@gentoo.org> flashrom-0.9.0.ebuild:
+  Fix homepage, pointed out by Anton Bolshakov
+
+*flashrom-0.9.0 (05 May 2009)
+
+  05 May 2009; Mart Raudsepp <leio@gentoo.org> +metadata.xml,
+  +flashrom-0.9.0.ebuild:
+  Initial import of flashrom - a utility for reading, writing, verifying and
+  erasing flash ROM chips. It's used to flash BIOS/coreboot/firmware images.
+  Roughly based on ebuilds from Peter Stuge and Christian Ruppert. Closes bug
+  196945

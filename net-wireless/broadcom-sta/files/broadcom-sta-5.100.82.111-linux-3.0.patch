@@ -1,0 +1,21 @@
+diff -Naur broadcom-sta-5.100.82.111.orig/Makefile broadcom-sta-5.100.82.111/Makefile
+--- broadcom-sta-5.100.82.111.orig/Makefile	2011-10-06 08:16:10.000000000 +0900
++++ broadcom-sta-5.100.82.111/Makefile	2011-10-24 08:54:26.000000000 +0900
+@@ -16,7 +16,7 @@
+ ifneq ($(KERNELRELEASE),)
+ 
+   LINUXVER_GOODFOR_CFG80211:=$(strip $(shell \
+-    if [ "$(VERSION)" -ge "2" -a "$(PATCHLEVEL)" -ge "6" -a "$(SUBLEVEL)" -ge "32" ]; then \
++    if [ "$(VERSION)" -ge "3" -o "$(VERSION)" -eq "2" -a "$(PATCHLEVEL)" -ge "6" -a "$(SUBLEVEL)" -ge "32" ]; then \
+       echo TRUE; \
+     else \
+       echo FALSE; \
+@@ -24,7 +24,7 @@
+   ))
+ 
+     LINUXVER_WEXT_ONLY:=$(strip $(shell \
+-    if [ "$(VERSION)" -ge "2" -a "$(PATCHLEVEL)" -ge "6" -a "$(SUBLEVEL)" -ge "17" ]; then \
++    if [ "$(VERSION)" -ge "3" -o "$(VERSION)" -eq "2" -a "$(PATCHLEVEL)" -ge "6" -a "$(SUBLEVEL)" -ge "17" ]; then \
+       echo FALSE; \
+     else \
+       echo TRUE; \

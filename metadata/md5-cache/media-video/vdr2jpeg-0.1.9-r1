@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=virtual/ffmpeg virtual/pkgconfig
+DESCRIPTION=Addon needed for XXV - WWW Admin for the Video Disk Recorder
+EAPI=5
+HOMEPAGE=http://projects.vdr-developer.org/projects/xxv
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=virtual/ffmpeg
+RESTRICT=strip
+SLOT=0
+SRC_URI=mirror://vdr-developerorg/717/vdr2jpeg-0.1.9.tgz mirror://gentoo/vdr2jpeg-0.1.9.tgz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f540cc50758a8cc7685525346048d9b3

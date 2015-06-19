@@ -1,0 +1,312 @@
+# ChangeLog for media-libs/t1lib
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/t1lib/ChangeLog,v 1.84 2012/08/22 03:20:50 ottxor Exp $
+
+  22 Aug 2012; Christoph Junghans <ottxor@gentoo.org> t1lib-5.1.2.ebuild:
+  added prefix keywords
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> t1lib-5.1.2.ebuild:
+  keyword ~amd64-fbsd
+
+  23 Oct 2011; Tomáš Chvátal <scarabeus@gentoo.org> t1lib-5.1.2.ebuild:
+  Remove useless blank lines.
+
+  23 Oct 2011; Tomáš Chvátal <scarabeus@gentoo.org> -t1lib-5.0.2-r1.ebuild,
+  -files/t1lib-5.0.2-SA26241_buffer_overflow.patch,
+  -files/t1lib-5.0.2-asneeded.patch, -files/t1lib-5.0.2-gentoo.diff,
+  t1lib-5.1.2.ebuild:
+  Update to eapi4, punt static libs and libtool archive.
+
+  31 Jan 2010; Raúl Porcel <armin76@gentoo.org> t1lib-5.1.2.ebuild:
+  ia64/s390/sh/sparc stable wrt #297690
+
+  23 Jan 2010; Tobias Klausmann <klausman@gentoo.org> t1lib-5.1.2.ebuild:
+  Stable on alpha, bug #297690
+
+  06 Jan 2010; Jeroen Roovers <jer@gentoo.org> t1lib-5.1.2.ebuild:
+  Stable for PPC (bug #297690).
+
+  02 Jan 2010; Markus Meier <maekke@gentoo.org> t1lib-5.1.2.ebuild:
+  amd64/arm stable, bug #297690
+
+  02 Jan 2010; Christian Faulhammer <fauli@gentoo.org> t1lib-5.1.2.ebuild:
+  stable x86, bug 297690
+
+  31 Dec 2009; Jeroen Roovers <jer@gentoo.org> t1lib-5.1.2.ebuild:
+  Stable for HPPA (bug #297690).
+
+  31 Dec 2009; Brent Baude <ranger@gentoo.org> t1lib-5.1.2.ebuild:
+  Marking t1lib-5.1.2 ppc64 for bug 297690
+
+  05 Jun 2009; Peter Volkov <pva@gentoo.org> -t1lib-5.0.2.ebuild:
+  Removed vulnerable version, bug #271692, thank Robert Buchholz for report.
+
+  28 May 2009; Jeroen Roovers <jer@gentoo.org> t1lib-5.0.2-r1.ebuild:
+  Stable for HPPA (bug #193437).
+
+  02 Sep 2008; Alexis Ballier <aballier@gentoo.org> t1lib-5.1.2.ebuild:
+  run elibtoolize to fix so versionning on fbsd and also the build.
+
+  24 May 2008; Ryan Hill <dirtyepic@gentoo.org> t1lib-5.1.1.ebuild,
+  t1lib-5.1.2.ebuild:
+  Change addwrite to VARTEXFONTS for bug #221921.
+
+*t1lib-5.1.2 (04 May 2008)
+
+  04 May 2008; Peter Volkov <pva@gentoo.org>
+  +files/t1lib-do-not-install-t1lib_doc.patch, +t1lib-5.1.2.ebuild:
+  Version bump, bug #214010 reported by Craig; fixed installation of docs
+  into /etc, bug #216778 reported by Jens Rutschmann.
+
+  08 Dec 2007; Ryan Hill <dirtyepic@gentoo.org> -t1lib-1.3.1.ebuild:
+  Remove old vulnerable version (bug #198053).
+
+  15 Oct 2007; Alexis Ballier <aballier@gentoo.org> t1lib-5.0.2.ebuild,
+  t1lib-5.0.2-r1.ebuild, t1lib-5.1.1.ebuild:
+  virtual/tetex -> virtual/latex-base, bug #195894
+
+  05 Oct 2007; Ryan Hill <dirtyepic@gentoo.org>
+  +files/t1lib-5.1.1-parallel.patch, t1lib-5.1.1.ebuild:
+  Fix parallel build for bug #194720.
+
+  27 Sep 2007; Hanno Boeck <hanno@gentoo.org> +files/t1lib-5.1.1-qa.diff,
+  t1lib-5.1.1.ebuild:
+  QA: Fix compile warnings.
+
+  26 Sep 2007; Christoph Mende <angelos@gentoo.org> t1lib-5.0.2-r1.ebuild,
+  t1lib-5.1.1.ebuild:
+  Fixed amd64 keywords
+
+  26 Sep 2007; Christoph Mende <angelos@gentoo.org> t1lib-5.1.1.ebuild:
+  Stable on amd64 wrt security bug #193437
+
+  25 Sep 2007; Fabian Groffen <grobian@gentoo.org> t1lib-5.0.2.ebuild,
+  t1lib-5.0.2-r1.ebuild, t1lib-5.1.1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  25 Sep 2007; Raúl Porcel <armin76@gentoo.org> t1lib-5.0.2-r1.ebuild:
+  sparc stable wrt security #193437
+
+  25 Sep 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  t1lib-5.0.2-r1.ebuild:
+  ppc stable, bug #193437
+
+  24 Sep 2007; Markus Rothe <corsair@gentoo.org> t1lib-5.0.2-r1.ebuild:
+  Stable on ppc64; bug #193437
+
+  23 Sep 2007; Raúl Porcel <armin76@gentoo.org> t1lib-5.0.2-r1.ebuild:
+  alpha/ia64 stable wrt security #193143
+
+  22 Sep 2007; Jurek Bartuszek <jurek@gentoo.org> t1lib-5.0.2-r1.ebuild:
+  x86 stable (bug #193437)
+
+*t1lib-5.1.1 (22 Sep 2007)
+*t1lib-5.0.2-r1 (22 Sep 2007)
+
+  22 Sep 2007; Ryan Hill <dirtyepic@gentoo.org>
+  +files/t1lib-5.0.2-SA26241_buffer_overflow.patch, +t1lib-5.0.2-r1.ebuild,
+  +t1lib-5.1.1.ebuild:
+  Revision bump for Secunia SA26241, bug #193437.  Version bump for bug #130362.
+
+  22 Jul 2007; Samuli Suominen <drac@gentoo.org> t1lib-5.0.2.ebuild:
+  Remove virtual/x11 references.
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> t1lib-1.3.1.ebuild,
+  t1lib-5.0.2.ebuild:
+  Remove gnuconfig_update usage, leave it to econf.
+
+  07 Dec 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  -t1lib-5.0.0-r2.ebuild, -t1lib-5.0.1.ebuild:
+  clean out old ebuilds
+
+  28 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>; t1lib-5.0.2.ebuild:
+  (#131802) Fix cross-compilation (Josu López Fernández).
+
+  28 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>; t1lib-5.0.2.ebuild:
+  Remove redundant modular X deps, and remove virtual/x11.
+
+  28 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>; t1lib-1.3.1.ebuild:
+  (#148375) Port to modular X.
+
+  28 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/t1lib-1.3.1-asneeded.patch, t1lib-1.3.1.ebuild:
+  Fix for --as-needed, taken from 5.0.2 patch.
+
+  05 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/t1lib-5.0.2-asneeded.patch, t1lib-5.0.2.ebuild:
+  Added patch for adding missing link to libm, thanks to Hanno Boeck in bug
+  #130362.
+
+  09 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> t1lib-5.0.2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  02 Feb 2006; Diego Pettenò <flameeyes@gentoo.org> t1lib-5.0.2.ebuild:
+  Add tetex dependency for doc useflag, and make it decide whether to build
+  documentation or not, instead of only deciding on install. Fix sed
+  invokation to use -i option. Use emake instead of make.
+
+  08 Nov 2005; <dang@gentoo.org> t1lib-5.0.2.ebuild:
+  Modular X deps
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> t1lib-5.0.2.ebuild:
+  Stable on ppc.
+
+  22 May 2005; Rene Nussbaumer <killerfox@gentoo.org> t1lib-5.0.2.ebuild:
+  Stable on hppa
+
+  09 May 2005; Aron Griffis <agriffis@gentoo.org> t1lib-5.0.2.ebuild:
+  stable on ia64
+
+  20 Feb 2005; Hardave Riar <hardave@gentoo.org> t1lib-5.0.2.ebuild:
+  Stable on mips
+
+  19 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> t1lib-5.0.2.ebuild:
+  Stable on alpha.
+
+  16 Dec 2004; Dylan Carlson <absinthe@gentoo.org> t1lib-5.0.2.ebuild:
+  Stable on amd64.
+
+  03 Nov 2004; Bret Curtis <psi29a@gentoo.org> t1lib-1.3.1.ebuild,
+  t1lib-5.0.2.ebuild:
+  added to ~mips for testing
+
+  01 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> t1lib-5.0.2.ebuild:
+  Stable on sparc
+
+  25 Oct 2004; Heinrich Wendel <lanius@gentoo.org> t1lib-5.0.2.ebuild:
+  stable on x86
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> t1lib-5.0.0-r2.ebuild,
+  t1lib-5.0.1.ebuild:
+  Stable on amd64.
+
+  18 Oct 2004; Gustavo Zacarias <gustavoz@gentoo.org> t1lib-5.0.1.ebuild:
+  Stable on sparc
+
+  17 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> t1lib-5.0.2.ebuild:
+  Added to ppc-macos.
+
+  16 Oct 2004; Mamoru KOMACHI <usata@gentoo.org>
+  +files/t1lib-5.0.2-gentoo.diff, t1lib-5.0.0-r2.ebuild, t1lib-5.0.1.ebuild,
+  t1lib-5.0.2.ebuild:
+  Simplified ebuilds with epatch.
+
+  06 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> t1lib-1.3.1.ebuild,
+  t1lib-5.0.2.ebuild:
+  get_libdir fixes.
+
+  30 Jul 2004; Tom Gall <tgall@gentoo.org> t1lib-5.0.2.ebuild:
+  stable on ppc64
+
+  12 Jul 2004; Tom Gall <tgall@gentoo.org> t1lib-5.0.2.ebuild:
+  add ~ppc64, bug #55965
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org> t1lib-5.0.0-r2.ebuild:
+  Fix use invocation
+
+  11 May 2004; Michael McCabe <randy@gentoo.org> t1lib-5.0.2.ebuild:
+  Added s390 keywords
+
+*t1lib-5.0.2 (28 Apr 2004)
+
+  28 Apr 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump to close #44122 by Michaelian Ennis and gcc-3.4 issues
+  #49237 by Robert Moss.
+
+*t1lib-5.0.1 (22 Feb 2004)
+
+  22 Feb 2004; <matsuu@gentoo.org> t1lib-5.0.1.ebuild:
+  new version.
+  Added "--datadir=/etc" to econf for T1LIB_CONF_DIR.
+  Added "dobin xglyph" and dobin "type1afm".
+
+  10 Feb 2004; Gustavo Zacarias <gustavoz@gentoo.org> t1lib-5.0.0-r2.ebuild:
+  stable on sparc
+
+  08 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> metadata.xml,
+  t1lib-5.0.0-r2.ebuild:
+  Marked stable on x86, removed me from maintainer position and
+  assigned it to fonts herd.
+
+  10 Jan 2004; <agriffis@gentoo.org> t1lib-5.0.0-r2.ebuild:
+  stable on alpha and ia64
+
+  22 Dec 2003; <plasmaroo@gentoo.org> t1lib-1.3.1.ebuild,
+  t1lib-5.0.0-r1.ebuild, t1lib-5.0.0-r2.ebuild:
+  Changed slotting for t1lib-1 and t1lib-5 since some applications may still
+  depend on the old version.
+
+  30 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> metadata.xml,
+  t1lib-1.3.1.ebuild, t1lib-5.0.0-r1.ebuild, t1lib-5.0.0-r2.ebuild:
+  Added metadata.xml and inserted "Font" to DESCRIPTION.
+
+  06 Oct 2003; Aron Griffis <agriffis@gentoo.org> t1lib-5.0.0-r2.ebuild:
+  Use -mieee on alpha
+
+  25 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> t1lib-1.3.1.ebuild,
+  t1lib-5.0.0-r1.ebuild, t1lib-5.0.0-r2.ebuild:
+  Removed virtual/tetex since it pulls app-text/tetex in when no
+  virtual/tetex candidate is installed. If you want to install
+  app-text/ptex, it will install t1lib (as app-text/ptex PDEPENDs on
+  app-text/xdvik and xdvik DEPENDs on t1lib) and want app-text/tetex
+  since no virtual/tetex will have been installed (app-text/tetex is
+  the first candidate of virtual/tetex if nothing installed).
+
+*t1lib-5.0.0-r2 (09 Aug 2003)
+
+  09 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> t1lib-5.0.0-r2.ebuild:
+  Fixed incorrect doc location.  Added doc IUSE flag.  Thanks to
+  Tristan Henderson <T.Henderson@cs.ucl.ac.uk>.  This closes #26226
+
+*t1lib-5.0.0-r1 (03 Aug 2003)
+
+  05 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> t1lib-5.0.0-r1.ebuild,
+  t1lib-5.0.0.ebuild:
+  Added warnings to make sure users rebuild packages depending on it.
+  Removed t1lib-5.0.0.ebuild in order to encourage people to upgrade to
+  t1lib-5.0.0-r1.ebuild.  See #25863
+
+  03 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> t1lib-5.0.0-r1.ebuild:
+  Fixed hardcoded t1lib library filename (which referred to 1.3.1
+  and therefore failed to install).  Changed DEPEND to virtual/tetex.
+
+*t1lib-5.0.0 (31 Jul 2003)
+
+  31 Jul 2003; Ryan Phillips <rphillips@gentoo.org> t1lib-5.0.0.ebuild :
+  new version
+ 
+*t1lib-1.3.1 (1 May 2002)
+
+  15 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> t1lib-1.3.1.ebuild:
+  Changed DEPEND to virtual/tetex
+
+  28 Apr 2003; Martin Holzer <mholzer@gentoo.org> t1lib-1.3.1.ebuild:
+  Pointing SRC_URI to mirror://gentoo.
+
+  20 Mar 2003; Guy Martin <gmsoft@gentoo.org> t1lib-1.3.1.ebuild :
+  Added hppa to KEYWORDS.
+
+  13 Jan 2003; Aron Griffis <agriffis@gentoo.org> t1lib-1.3.1.ebuild :
+  Add alpha to KEYWORDS
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  1 May 2002; Roman Weber <gentoo@gonzo.ch> t1lib-1.3.1.ebuild :
+  
+  Update to new version and fixed libtool bug. Fixes #2316
+
+*t1lib-1.3 (15 Apr 2002)
+
+  15 Apr 2002; Seemant Kulleen <seemant@gentoo.org> t1lib-1.3.ebuild :
+
+  oops at me!  Matt Keadle from bug #1778 pointed this error out.
+
+*t1lib-1.3 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

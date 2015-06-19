@@ -1,0 +1,26 @@
+# ChangeLog for x11-libs/libgxim
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libgxim/ChangeLog,v 1.6 2015/05/30 14:24:03 mrueg Exp $
+
+  30 May 2015; Manuel Rüger <mrueg@gentoo.org> -libgxim-0.3.3.ebuild:
+  Remove old.
+
+  07 Nov 2014; Naohiro Aota <naota@gentoo.org> libgxim-0.5.0.ebuild:
+  Add missing dependency
+
+*libgxim-0.5.0 (08 Apr 2014)
+
+  08 Apr 2014; Naohiro Aota <naota@gentoo.org> +libgxim-0.5.0.ebuild:
+  version bump
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> libgxim-0.3.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  22 Apr 2011; Naohiro Aota <naota@elisp.net> libgxim-0.3.3.ebuild:
+  Add dev-lang/ruby to DEPEND. Fix bug #364233.
+
+*libgxim-0.3.3 (08 Jan 2011)
+
+  08 Jan 2011; MATSUU Takuto <matsuu@gentoo.org> +libgxim-0.3.3.ebuild,
+  +metadata.xml:
+  Initial import.

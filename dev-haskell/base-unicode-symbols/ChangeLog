@@ -1,0 +1,54 @@
+# ChangeLog for dev-haskell/base-unicode-symbols
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/base-unicode-symbols/ChangeLog,v 1.10 2013/11/24 19:34:18 ago Exp $
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org>
+  base-unicode-symbols-0.2.2.4.ebuild:
+  Stable for x86, wrt bug #488750
+
+  05 Nov 2013; Tony Vroon <chainsaw@gentoo.org>
+  base-unicode-symbols-0.2.2.4.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #488750.
+
+  28 Sep 2013; Mark Wright <gienah@gentoo.org>
+  base-unicode-symbols-0.2.2.3.ebuild:
+  Thanks to nao for reporting, loosen the base dep in base-unicode-
+  symbols-0.2.2.3 to allow ghc 7.6.3
+
+  21 Jul 2013; Christoph Junghans <ottxor@gentoo.org>
+  base-unicode-symbols-0.2.2.4.ebuild:
+  added ~amd64-linux (tested by me)
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*base-unicode-symbols-0.2.2.4 (24 Nov 2012)
+
+  24 Nov 2012; Mark Wright <gienah@gentoo.org>
+  +base-unicode-symbols-0.2.2.4.ebuild:
+  Bump base-unicode-symbols to 0.2.2.4
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org>
+  base-unicode-symbols-0.2.2.3.ebuild:
+  move dev-haskell/base-unicode-symbols/base-unicode-symbols-0.2.2.3.ebuild
+  ebuild to mirror://hackage
+
+  02 Jun 2012; Mark Wright <gienah@gentoo.org>
+  +files/base-unicode-symbols-0.2.2.3-ghc-7.5.patch,
+  base-unicode-symbols-0.2.2.3.ebuild:
+  EAPI=4 on line 5, patch for ghc 7.5 dev snapshot
+
+*base-unicode-symbols-0.2.2.3 (02 Apr 2012)
+
+  02 Apr 2012; Sergei Trofimovich <slyfox@gentoo.org>
+  +base-unicode-symbols-0.2.2.3.ebuild, -base-unicode-symbols-0.2.2.2.ebuild:
+  Version bump. Fixes build failure against ghc-7.4 (bug #410539 by Julien
+  Sanchez). Removed old as the loosening dep range was the sole change upstream.
+
+*base-unicode-symbols-0.2.2.2 (04 Dec 2011)
+
+  04 Dec 2011; Sergei Trofimovich <slyfox@gentoo.org>
+  +base-unicode-symbols-0.2.2.2.ebuild, +metadata.xml:
+  Initial version. Unicode alternatives for common functions and operators (dev-
+  haskell/monad-control depend)

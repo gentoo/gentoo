@@ -1,0 +1,10 @@
+# ChangeLog for media-libs/assimp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/assimp/ChangeLog,v 1.1 2015/06/16 08:57:08 slis Exp $
+
+*assimp-3.0.1270 (16 Jun 2015)
+*assimp-3.1.1 (16 Jun 2015)
+
+  16 Jun 2015;  <slis@gentoo.org> +assimp-3.0.1270.ebuild, +assimp-3.1.1.ebuild,
+  +metadata.xml:
+  moving from media-gfx/assimp to media-libs/assimp

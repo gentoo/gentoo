@@ -1,0 +1,11 @@
+--- libosmocore-0.6.0/configure.ac
++++ libosmocore-0.6.0/configure.ac
+@@ -77,7 +77,7 @@
+ CHECK_TM_INCLUDES_TM_GMTOFF
+ 
+ dnl Generate the output
+-AC_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ 
+ AC_ARG_ENABLE(talloc,
+ 	[AS_HELP_STRING(

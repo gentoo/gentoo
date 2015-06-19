@@ -1,0 +1,40 @@
+# ChangeLog for games-fps/quake2-demodata
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake2-demodata/ChangeLog,v 1.9 2015/03/27 06:40:26 mr_bones_ Exp $
+
+  27 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  quake2-demodata-3.14.ebuild:
+  add ia64 support (bug #509212)
+
+  31 Jan 2015; Tupone Alfredo <tupone@gentoo.org> quake2-demodata-3.14.ebuild:
+  EAPI 5
+
+  29 Mar 2013; Julian Ospald <hasufell@gentoo.org> quake2-demodata-3.14.ebuild:
+  use unpack_zip from unpacker.eclass instead of unzip
+
+  19 Nov 2009; Raúl Porcel <armin76@gentoo.org>
+  quake2-demodata-3.14.ebuild:
+  sparc stable
+
+  11 Nov 2009; Mounir Lamouri <volkmar@gentoo.org>
+  quake2-demodata-3.14.ebuild:
+  Stable for ppc, bug 275507
+
+  30 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  quake2-demodata-3.14.ebuild:
+  stable x86, bug 275507
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org> quake2-demodata-3.14.ebuild:
+  Replacing einfo with elog
+
+  27 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake2-demodata-3.14.ebuild:
+  Added a few more architectures for testing. This is data-only, so should be
+  safe on all of them.
+
+*quake2-demodata-3.14 (27 Jun 2006)
+
+  27 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +quake2-demodata-3.14.ebuild:
+  Initial import. Ebuild by Paul Bredbury <brebs@sent.com>. Closing bug
+  #137519.

@@ -1,0 +1,125 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/ocfs2-tools/files/ocfs2.initd,v 1.1 2011/08/31 17:15:18 alexxy Exp $
+
+depend() {
+	need net localmount
+	before netmount 
+}
+
+check_modules_config() {
+	local MODULES=$1
+	local CONFIGS=$2
+	local MODULE
+	local retval=0
+	
+	for MODULE in ${MODULES}; do
+		if ! ls -1 /sys/module | egrep -q "^${MODULE}$"; then
+			retval=1
+		fi
+	done
+	if [ ${retval} -eq 1 ] && [ -e /proc/config.gz ]; then
+		retval=0
+		for MODULE in ${CONFIGS}; do
+			if ! gzip -dc /proc/config.gz | egrep -q "^CONFIG_${MODULE}=y$"; then
+				retval=1
+			fi
+		done
+	fi
+	return ${retval}
+}
+
+check_modules() {
+	check_modules_config "ocfs2_dlmfs ocfs2 ocfs2_dlm ocfs2_nodemanager" "OCFS2_FS OCFS2_FS_O2CB" && check_modules_config configfs CONFIGFS_FS && return 0
+	if ! egrep -q '\s*ocfs2\s*$' /proc/filesystems || ! egrep -q '\s*ocfs2_dlmfs\s*$' /proc/filesystems; then 
+		ewarn "One or more required modules are not loaded."
+                ewarn "Make sure you have "
+                ewarn " - placed ocfs, dlmfs and configfs into /etc/modules.autoload.d/kernel-2.6 or built directly into the kernel."
+                ewarn "For a (in)complete documentation, read /usr/share/doc/ocfs-<version>/INSTALL.GENTOO.bz2"
+	fi
+	return 1
+}
+
+check_pseudofs() { 
+	local retval=0
+	local HASMOUNT="mount -l -t"
+	if [ -z "`${HASMOUNT} configfs`" ] ; then
+		retval=1
+	fi
+	if [ -z "`${HASMOUNT} ocfs2_dlmfs`" ] ; then
+		retval=1
+	fi
+
+	if [ ${retval} -eq 1 ]; then
+		ewarn "One or more pseudo-filesystes are not mounted."
+		ewarn "Make sure you have following lines in your /etc/fstab:"
+		ewarn "none         /sys/kernel/config         configfs        defaults                0 0"
+		ewarn "none         /sys/kernel/dlm            ocfs2_dlmfs     defaults                0 0"
+	fi
+	return ${retval}
+}
+
+
+
+start() {
+	check_modules || return $? 
+	check_pseudofs || return $?
+	
+	einfo "Starting OCFS2 cluster"
+	for cluster in ${OCFS2_CLUSTER}; do
+		ebegin " - ${cluster}"
+		/sbin/o2cb_ctl -H -n ${cluster} -t cluster -a online=yes >/dev/null 2>&1
+		eend $?
+
+		# Some heartbeat tweaks to prevent self-fencing quite so much during heavy load.
+		# http://oss.oracle.com/projects/ocfs2/dist/documentation/ocfs2_faq.html
+
+		# How long to wait before a node is considered dead from lack of network activity.
+		echo $OCFS2_IDLE_TIMEOUT_MS > /sys/kernel/config/cluster/${cluster}/idle_timeout_ms
+		# How often we should attempt to send heartbeats.
+		echo $OCFS2_KEEPALIVE_DELAY_MS > /sys/kernel/config/cluster/${cluster}/keepalive_delay_ms
+		echo $OCFS2_RECONNECT_DELAY_MS > /sys/kernel/config/cluster/${cluster}/reconnect_delay_ms
+		# How many interations before a node is considered dead from lack of IO activity.
+		# (dead_threshold - 1) * 2s
+		echo $OCFS2_DEAD_THRESHOLD > /sys/kernel/config/cluster/${cluster}/heartbeat/dead_threshold
+	done
+	sleep 2
+}
+
+stop() {
+	# Shamelesly stolen from netmount
+        local ret
+        ebegin "Unmounting OCFS2 filesystems"
+        [ -z "$(umount -art ocfs2 2>&1)" ]
+        ret=$?
+        eend ${ret} "Failed to simply unmount filesystems"
+        [ ${ret} -eq 0 ] && return 0
+
+        declare -a siglist=( "TERM" "KILL" "KILL" )
+        local retry=0
+        local remaining="go"
+
+        while [ -n "${remaining}" -a ${retry} -lt 3 ]
+        do
+                remaining="$(awk '$3 ~ /'ocfs2'/ { if ($2 != "/") print $2 }' /proc/mounts | sort -r)"
+                IFS=$'\n'
+                set -- ${remaining//\\040/ }
+                unset IFS
+                [ -z "${remaining}" ] && break
+
+                ebegin $'\t'"Unmounting ocfs2 filesystems (retry #$((retry+1)))"
+                /bin/fuser -k -${siglist[$((retry++))]} -m "$@" &>/dev/null
+                sleep 5
+                umount "$@" &>/dev/null
+                eend $? $'\t'"Failed to unmount filesystems"
+        done
+
+	
+	einfo "Stopping OCFS2 cluster" 
+	for cluster in ${OCFS_CLUSTERS}; do
+		ebegin " - ${cluster}"
+		/sbin/o2cb_ctl -H -n ${cluster} -t cluster -a online=no >/dev/null 2>&1
+		eend $?
+	done
+}

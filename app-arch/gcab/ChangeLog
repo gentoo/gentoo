@@ -1,0 +1,11 @@
+# ChangeLog for app-arch/gcab
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/gcab/ChangeLog,v 1.1 2015/06/09 02:40:49 tetromino Exp $
+
+*gcab-0.6 (09 Jun 2015)
+
+  09 Jun 2015; Alexandre Rostovtsev <tetromino@gentoo.org> +gcab-0.6.ebuild,
+  +metadata.xml:
+  Library and tool for dealing with Microsoft CAB files, needed for some Gnome
+  components; bug #528256, thanks to M8R-u38wij for the ebuild.
+

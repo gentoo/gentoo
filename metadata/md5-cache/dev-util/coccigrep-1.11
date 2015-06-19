@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup unpack
+DEPEND=doc? ( dev-python/sphinx ) emacs? ( virtual/emacs ) =dev-lang/python-2*
+DESCRIPTION=A semantic grep for the C language
+EAPI=4
+HOMEPAGE=http://home.regit.org/software/coccigrep/
+IUSE=doc emacs vim
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-util/coccinelle[python] emacs? ( virtual/emacs ) vim? ( || ( app-editors/vim app-editors/gvim ) ) =dev-lang/python-2*
+SLOT=0
+SRC_URI=https://github.com/regit/coccigrep/tarball/v1.11 -> coccigrep-1.11.tar.gz
+_eclasses_=distutils	92e738ea29389cb3f34778d7a349ac71	elisp-common	9a16929c1a6aec7e1c903289983e114c	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vcs-snapshot	58b766562c9fbfb3268b04e33cdf2f66
+_md5_=a3a23e9782aa75d8e6513ea6fb04e3ad

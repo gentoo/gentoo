@@ -1,0 +1,61 @@
+# ChangeLog for dev-libs/qrosscore
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/qrosscore/ChangeLog,v 1.15 2015/06/06 19:36:36 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  19 Apr 2015; Michael Palimaka <kensington@gentoo.org> -qrosscore-0.2.2.ebuild:
+  Remove old.
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> qrosscore-0.3.1.ebuild:
+  Stable for x86, wrt bug #545524
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> qrosscore-0.3.1.ebuild:
+  Stable for amd64, wrt bug #545524
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> qrosscore-9999.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  14 Jul 2014; Sergey Popov <pinkbyte@gentoo.org> qrosscore-0.3.1.ebuild,
+  qrosscore-9999.ebuild:
+  Bump EAPI to 5, migrate live ebuild to git-r3 eclass
+
+*qrosscore-0.3.1 (08 Jan 2014)
+
+  08 Jan 2014; Maxim Koltsov <maksbotan@gentoo.org> +qrosscore-0.3.1.ebuild:
+  Bump to 0.3.1, thanks to 0xd34df00d
+
+  27 Dec 2013; Maxim Koltsov <maksbotan@gentoo.org> -qrosscore-0.2.0.ebuild,
+  qrosscore-0.2.2.ebuild, qrosscore-9999.ebuild:
+  Add dev-qt/designer dependency, bug #493248. Clean old.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> qrosscore-0.2.0.ebuild,
+  qrosscore-0.2.2.ebuild, qrosscore-9999.ebuild:
+  Move Qt dependencies to the new category
+
+  19 Jul 2012; Michael Palimaka <kensington@gentoo.org> qrosscore-0.2.0.ebuild,
+  qrosscore-0.2.2.ebuild, qrosscore-9999.ebuild:
+  Add missing slot dependencies on Qt.
+
+  23 Apr 2012; Michał Górny <mgorny@gentoo.org> qrosscore-0.2.0.ebuild,
+  qrosscore-0.2.2.ebuild:
+  Use mirror://github.
+
+  07 Apr 2012; Markus Meier <maekke@gentoo.org> qrosscore-0.2.2.ebuild:
+  x86 stable, bug #400605
+
+  04 Feb 2012; Agostino Sarubbo <ago@gentoo.org> qrosscore-0.2.2.ebuild:
+  Stable for amd64, wrt bug #400605
+
+*qrosscore-0.2.2 (04 Feb 2012)
+
+  04 Feb 2012; Maxim Koltsov <maksbotan@gentoo.org> +qrosscore-0.2.2.ebuild:
+  Bump to 0.2.2, fixes bug 402117
+
+*qrosscore-9999 (22 Aug 2011)
+*qrosscore-0.2.0 (22 Aug 2011)
+
+  22 Aug 2011; Maxim Koltsov <maksbotan@gentoo.org> +qrosscore-0.2.0.ebuild,
+  +qrosscore-9999.ebuild, +metadata.xml:
+  Copy dev-libs/qrosscore from rion-overlay, thanks to 0xd34df00d

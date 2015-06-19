@@ -1,0 +1,66 @@
+# ChangeLog for sci-chemistry/votca-csgapps
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/votca-csgapps/ChangeLog,v 1.16 2015/03/16 08:23:53 ago Exp $
+
+  16 Mar 2015; Agostino Sarubbo <ago@gentoo.org> votca-csgapps-1.2.4.ebuild:
+  Stable for x86, wrt bug #526968
+
+  02 Jan 2015; Chema Alonso <nimiux@gentoo.org> votca-csgapps-1.2.4.ebuild:
+  Stable for amd64 wrt bug #526968
+
+  25 Oct 2014; Patrick Lauer <patrick@gentoo.org> votca-csgapps-1.2.4.ebuild:
+  Adjust dependencies to be a bit more tolerant since votca-csg now only has a
+  -r1 ebuild
+
+*votca-csgapps-1.2.4 (31 Aug 2014)
+
+  31 Aug 2014; Christoph Junghans <ottxor@gentoo.org>
+  +votca-csgapps-1.2.4.ebuild, -votca-csgapps-1.2.3.ebuild:
+  version bump
+
+  26 Dec 2012; Christoph Junghans <ottxor@gentoo.org>
+  votca-csgapps-1.2.2.ebuild, votca-csgapps-1.2.3.ebuild:
+  use new mercurial.eclass defaults
+
+*votca-csgapps-1.2.3 (17 Aug 2012)
+
+  17 Aug 2012; Christoph Junghans <ottxor@gentoo.org>
+  +votca-csgapps-1.2.3.ebuild:
+  version bump
+
+  05 Feb 2012; Christoph Junghans <ottxor@gentoo.org>
+  -votca-csgapps-1.2.1.ebuild:
+  remove old
+
+  25 Jan 2012; Thomas Kahle <tomka@gentoo.org> Manifest:
+  fix manifest
+
+  25 Jan 2012; Thomas Kahle <tomka@gentoo.org> votca-csgapps-1.2.2.ebuild:
+  x86 stable per bug 389681
+
+  25 Jan 2012; Christoph Junghans <ottxor@gentoo.org>
+  votca-csgapps-1.2.2.ebuild:
+  keyword ~x86-macos
+
+  17 Jan 2012; Agostino Sarubbo <ago@gentoo.org> votca-csgapps-1.2.2.ebuild:
+  Stable for amd64, wrt bug #389681
+
+  14 Jan 2012; Christoph Junghans <ottxor@gentoo.org>
+  votca-csgapps-1.2.2.ebuild:
+  keyword ~amd64-linux
+
+  13 Jan 2012; Christoph Junghans <ottxor@gentoo.org>
+  votca-csgapps-1.2.2.ebuild, +files/votca-csgapps-1.2.2-dso.patch:
+  fixes for amd64-linux
+
+*votca-csgapps-1.2.2 (11 Jan 2012)
+
+  11 Jan 2012; Christoph Junghans <ottxor@gentoo.org>
+  +votca-csgapps-1.2.2.ebuild:
+  version bump
+
+  14 Dec 2011; Agostino Sarubbo <ago@gentoo.org> votca-csgapps-1.2.1.ebuild:
+  Stable for AMD64, wrt bug #389681
+
+  25 Aug 2011; Christoph Junghans <ottxor@gentoo.org> +metadata.xml:
+  initial commit

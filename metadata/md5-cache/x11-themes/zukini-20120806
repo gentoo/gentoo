@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Unified look for GTK+ 2.x, GTK+ 3.x, gnome-shell, metacity and more
+EAPI=4
+HOMEPAGE=http://lassekongo83.deviantart.com/#/d4ic1u2
+KEYWORDS=amd64 ~ppc ~ppc64 x86
+LICENSE=GPL-3
+RDEPEND=>=x11-themes/gtk-engines-murrine-0.98.2 >=x11-themes/gtk-engines-unico-1.0.2
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=http://www.deviantart.com/download/272660042/zukini_by_lassekongo83-d4ic1u2.zip -> zukini-20120806.zip
+_md5_=f3ef4fa377fb0384a0e68dfb3c9c8a6d

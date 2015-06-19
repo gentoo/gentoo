@@ -1,0 +1,49 @@
+--- backintime-1.0.4/common/Makefile.template
++++ backintime-1.0.4/common/Makefile.template
+@@ -17,10 +17,6 @@
+ 	install -d $(DEST)/share/backintime/plugins
+ 	install --mode=644 plugins/*.py $(DEST)/share/backintime/plugins
+ 	
+-	#install copyright file
+-	install -d $(DEST)/share/doc/backintime-common
+-	install --mode=644 debian_specific/copyright $(DEST)/share/doc/backintime-common
+-	
+ 	#install doc file(s)
+ 	install -d $(DEST)/share/doc/backintime
+ 	install --mode=644 ../AUTHORS $(DEST)/share/doc/backintime
+--- backintime-1.0.24/common/Makefile.template
++++ backintime-1.0.24/common/Makefile.template
+@@ -20,7 +20,6 @@
+ 	#install doc file(s)
+ 	install -d $(DEST)/share/doc/backintime
+ 	install --mode=644 ../AUTHORS $(DEST)/share/doc/backintime
+-	install --mode=644 ../LICENSE $(DEST)/share/doc/backintime
+ 	install --mode=644 ../README $(DEST)/share/doc/backintime
+ 	install --mode=644 ../TRANSLATIONS $(DEST)/share/doc/backintime
+ 	install --mode=644 ../VERSION $(DEST)/share/doc/backintime
+--- backintime-1.0.4/gnome/Makefile.template
++++ backintime-1.0.4/gnome/Makefile.template
+@@ -15,10 +15,6 @@
+ 	install -d $(DEST)/share/backintime/plugins
+ 	install --mode=644 plugins/*.py $(DEST)/share/backintime/plugins
+ 	
+-	#install copyright file
+-	install -d $(DEST)/share/doc/backintime-gnome
+-	install --mode=644 ../common/debian_specific/copyright $(DEST)/share/doc/backintime-gnome
+-	
+ 	#install man file(s)
+ 	install -d $(DEST)/share/man/man1
+ 	install --mode=644 man/C/*.gz $(DEST)/share/man/man1
+--- backintime-1.0.4/kde4/Makefile.template
++++ backintime-1.0.4/kde4/Makefile.template
+@@ -19,10 +19,6 @@
+ 	install -d $(DEST)/bin
+ 	install backintime-kde4 $(DEST)/bin
+ 	
+-	#install copyright file
+-	install -d $(DEST)/share/doc/backintime-kde4
+-	install --mode=644 ../common/debian_specific/copyright $(DEST)/share/doc/backintime-kde4
+-	
+ 	#install .desktop file(s)
+ 	install -d $(DEST)/share/applications/kde4
+ 	install --mode=644 *.desktop $(DEST)/share/applications/kde4

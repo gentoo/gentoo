@@ -1,0 +1,12 @@
+# ChangeLog for dev-python/python-discid
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-discid/ChangeLog,v 1.2 2015/06/07 15:39:44 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*python-discid-1.1.0 (15 Mar 2015)
+
+  15 Mar 2015; Ben de Groot <yngwin@gentoo.org> +metadata.xml,
+  +python-discid-1.1.0.ebuild:
+  initial import from bug #535746

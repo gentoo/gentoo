@@ -1,0 +1,35 @@
+# ChangeLog for app-vim/reload
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/reload/ChangeLog,v 1.8 2015/06/07 08:15:53 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  13 Apr 2015; Tim Harder <radhermit@gentoo.org> -reload-0.6.4.ebuild,
+  -reload-0.6.8.ebuild:
+  Remove old.
+
+  30 Nov 2013; Johannes Huber <johu@gentoo.org> reload-0.6.17.ebuild:
+  x86 stable wrt bug #481864
+
+  12 Nov 2013; Chema Alonso <nimiux@gentoo.org> reload-0.6.17.ebuild:
+  Stable for amd64 wrt bug #481864
+
+  01 Sep 2013; Tim Harder <radhermit@gentoo.org> reload-0.6.17.ebuild:
+  Remove unnecessary vcs-snapshot eclass usage and unwanted addon file.
+
+*reload-0.6.17 (01 Sep 2013)
+
+  01 Sep 2013; Tim Harder <radhermit@gentoo.org> +reload-0.6.17.ebuild:
+  Version bump.
+
+*reload-0.6.8 (03 Aug 2012)
+
+  03 Aug 2012; Tim Harder <radhermit@gentoo.org> +reload-0.6.8.ebuild:
+  Version bump.
+
+*reload-0.6.4 (05 Sep 2011)
+
+  05 Sep 2011; Tim Harder <radhermit@gentoo.org> +reload-0.6.4.ebuild,
+  +metadata.xml:
+  Initial import.

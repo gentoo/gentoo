@@ -1,0 +1,459 @@
+# ChangeLog for dev-java/jdbc-mysql
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc-mysql/ChangeLog,v 1.90 2014/10/18 15:00:14 ago Exp $
+
+  18 Oct 2014; Agostino Sarubbo <ago@gentoo.org> jdbc-mysql-5.1.26.ebuild:
+  Stable for ppc, wrt bug #488268
+
+  19 Sep 2014; Agostino Sarubbo <ago@gentoo.org> jdbc-mysql-5.1.26.ebuild:
+  Stable for ppc64, wrt bug #488268
+
+  20 Jul 2014; Pacho Ramos <pacho@gentoo.org> jdbc-mysql-5.1.26.ebuild:
+  x86 stable, bug #488268
+
+  20 Jul 2014; Pacho Ramos <pacho@gentoo.org> jdbc-mysql-5.1.26.ebuild:
+  amd64 stable, bug #488268
+
+  30 May 2014; Tom Wijsman <TomWij@gentoo.org> jdbc-mysql-5.1.14.ebuild,
+  jdbc-mysql-5.1.18.ebuild, jdbc-mysql-5.1.23.ebuild, jdbc-mysql-5.1.26.ebuild:
+  Change DEPEND to >=virtual/jdk-1.6 for version 5.1.23 and 5.1.26; fixes bug
+  #488268, reported by Dmitry Pak and a fix contributed by David Heidelberger
+  (okias).
+
+*jdbc-mysql-5.1.26 (14 Sep 2013)
+
+  14 Sep 2013; Tom Wijsman <TomWij@gentoo.org> +jdbc-mysql-5.1.26.ebuild:
+  Version bump to 5.1.26. Fixes bug #484710, reported by Michael Orlitzky.
+
+  14 Aug 2013; Patrick Lauer <patrick@gentoo.org> jdbc-mysql-5.1.23.ebuild:
+  Whitespace
+
+*jdbc-mysql-5.1.23 (16 Jul 2013)
+
+  16 Jul 2013; Tom Wijsman <TomWij@gentoo.org> +jdbc-mysql-5.1.23.ebuild:
+  Version bump to 5.1.23.
+
+  28 Sep 2012; Johannes Huber <johu@gentoo.org> jdbc-mysql-5.1.18.ebuild:
+  Stable for x86, wrt bug #418713
+
+  28 Sep 2012; Agostino Sarubbo <ago@gentoo.org> jdbc-mysql-5.1.18.ebuild:
+  Stable for amd64, wrt bug #418713
+
+*jdbc-mysql-5.1.18 (25 Dec 2011)
+
+  25 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org> +jdbc-mysql-5.1.18.ebuild:
+  Version bump
+
+  25 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org> -jdbc-mysql-5.1.11.ebuild,
+  jdbc-mysql-5.1.14.ebuild:
+  Restricted compilation to JDK 1.6 because of JDBC incompatibility with JDK
+  1.7 (bug #395321). Also removed old version.
+
+  24 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> jdbc-mysql-5.1.14.ebuild:
+  ppc/ppc64 stable wrt #356803
+
+  21 Mar 2011; Thomas Kahle <tomka@gentoo.org> jdbc-mysql-5.1.14.ebuild:
+  x86 stable per bug 356803
+
+  28 Feb 2011; Markos Chandras <hwoarang@gentoo.org> jdbc-mysql-5.1.14.ebuild:
+  Stable on amd64 wrt bug #356803
+
+*jdbc-mysql-5.1.14 (28 Jan 2011)
+
+  28 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org> +files/5.1.14-java6.patch,
+  +jdbc-mysql-5.1.14.ebuild:
+  Version bump
+
+  17 Oct 2010; Vlastimil Babka <caster@gentoo.org> -jdbc-mysql-5.1.6.ebuild:
+  Remove old.
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org> jdbc-mysql-5.1.11.ebuild:
+  stable ppc, bug 309109
+
+  30 Jun 2010; Vlastimil Babka <caster@gentoo.org> -jdbc-mysql-5.0.8.ebuild,
+  jdbc-mysql-5.1.6.ebuild, -jdbc-mysql-5.1.10.ebuild,
+  -files/do-not-filter-png.diff:
+  Cleanup.
+
+  16 May 2010; Markus Meier <maekke@gentoo.org> jdbc-mysql-5.1.11.ebuild:
+  amd64/x86 stable, bug #309109
+
+  11 May 2010; Brent Baude <ranger@gentoo.org> jdbc-mysql-5.1.11.ebuild:
+  stable ppc64, bug 309109
+
+*jdbc-mysql-5.1.11 (12 Feb 2010)
+
+  12 Feb 2010; Vlastimil Babka <caster@gentoo.org>
+  +files/5.1.11-java6.patch, +jdbc-mysql-5.1.11.ebuild:
+  Version bump. Remove dependency on 1.5 JDK using bootclasspath magic,
+  fixes bug #283848.
+
+  12 Feb 2010; Vlastimil Babka <caster@gentoo.org>
+  -files/5.1.6-java6-detection.patch, jdbc-mysql-5.1.10.ebuild:
+  Do the same with 5.1.10, might help bug #292876 as well.
+
+  12 Feb 2010; Vlastimil Babka <caster@gentoo.org> jdbc-mysql-5.1.6.ebuild:
+  Fix compilation with ibm-jdk-bin-1.6, mentioned in bug #284299.
+
+  07 Jan 2010; Brent Baude <ranger@gentoo.org> jdbc-mysql-5.1.6.ebuild:
+  stable ppc, bug 284299
+
+  28 Dec 2009; Petteri Räty <betelgeuse@gentoo.org>
+  jdbc-mysql-5.1.10.ebuild:
+  silence missing dependency warnings with JAVA_PKG_STRICT. Fixes bug
+  #298688.
+
+*jdbc-mysql-5.1.10 (03 Nov 2009)
+
+  03 Nov 2009; Vlastimil Babka <caster@gentoo.org>
+  -files/compile-without-log4j.patch, -jdbc-mysql-3.1.13-r5.ebuild,
+  -jdbc-mysql-5.0.6.ebuild, +jdbc-mysql-5.1.10.ebuild,
+  -files/no-testsuite.diff:
+  Version bump, bug #290456. Remove old.
+
+  11 Sep 2009; Markus Meier <maekke@gentoo.org> jdbc-mysql-5.1.6.ebuild:
+  amd64/x86 stable, bug #284299
+
+*jdbc-mysql-5.1.6 (08 Jul 2008)
+
+  08 Jul 2008; Petteri Räty <betelgeuse@gentoo.org>
+  +files/5.1.6-java6-detection.patch, +jdbc-mysql-5.1.6.ebuild:
+  Version bump. Provides a jdbc4 driver that is always built but optional at
+  runtime so DEPEND on two different JDK versions. Fixes bug #215858.
+
+  21 Mar 2008; Kenneth Prugh <ken69267@gentoo.org> jdbc-mysql-5.0.8.ebuild:
+  amd64 stable, bug #212649
+
+  15 Mar 2008; Markus Rothe <corsair@gentoo.org> jdbc-mysql-5.0.8.ebuild:
+  Stable on ppc64; bug #212649
+
+  09 Mar 2008; nixnut <nixnut@gentoo.org> jdbc-mysql-5.0.8.ebuild:
+  Stable on ppc wrt bug 212649
+
+  08 Mar 2008; Markus Meier <maekke@gentoo.org> jdbc-mysql-5.0.8.ebuild:
+  x86 stable, bug #212649
+
+*jdbc-mysql-5.0.8 (07 Dec 2007)
+
+  07 Dec 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +jdbc-mysql-5.0.8.ebuild:
+  Version bump.
+
+  15 Nov 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -jdbc-mysql-5.0.5.ebuild:
+  Delete old version.
+
+  07 Oct 2007; Christoph Mende <angelos@gentoo.org> jdbc-mysql-5.0.6.ebuild:
+  Stable on amd64 wrt bug #190664
+
+  05 Oct 2007; Tom Gall <tgall@gentoo.org> jdbc-mysql-5.0.6.ebuild:
+  stable on ppc64
+
+  08 Sep 2007; Joseph Jezak <josejx@gentoo.org> jdbc-mysql-5.0.6.ebuild:
+  Marked ppc stable for bug #190664.
+
+  03 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  jdbc-mysql-5.0.6.ebuild:
+  stable x86, bug 190664
+
+  07 Jun 2007; Markus Rothe <corsair@gentoo.org> jdbc-mysql-5.0.6.ebuild:
+  Added ~ppc64; bug #180467
+
+  02 Jun 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -jdbc-mysql-3.1.13-r4.ebuild:
+  Remove ebuild using jdbc2-stdext.
+
+  02 Jun 2007; Petteri Räty <betelgeuse@gentoo.org>
+  jdbc-mysql-3.1.13-r5.ebuild:
+  Marked stable on ppc64 for bug #179939.
+
+  02 Jun 2007; nixnut <nixnut@gentoo.org> jdbc-mysql-3.1.13-r5.ebuild:
+  Stable on ppc wrt bug 179939
+
+  31 May 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -jdbc-mysql-3.1.10.ebuild, jdbc-mysql-3.1.13-r5.ebuild:
+  Stable on amd64, bug #179939. Removed older gen 1 version.
+
+  31 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  jdbc-mysql-3.1.13-r5.ebuild:
+  stable x86, bug 179939
+
+  31 May 2007; Petteri Räty <betelgeuse@gentoo.org>
+  jdbc-mysql-5.0.5.ebuild, jdbc-mysql-5.0.6.ebuild:
+  Drop ~ppc64 keywords because this needs dev-java/ant-contrib that isn't
+  keyworded. Didn't see this because I had some local eclass modifications
+  hiding it.
+
+*jdbc-mysql-5.0.6 (18 May 2007)
+
+  18 May 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +jdbc-mysql-5.0.6.ebuild:
+  Version bump.
+
+  09 May 2007; Petteri Räty <betelgeuse@gentoo.org>
+  jdbc-mysql-5.0.5.ebuild:
+  Add missing DEPEND on dev-java/ant-contrib. Fixes bug #177814.
+
+*jdbc-mysql-5.0.5 (07 May 2007)
+
+  07 May 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +files/5.0.5-dist-target-depends.patch,
+  +files/5.0.5-remove-jboss-dependency-from-tests.patch,
+  +jdbc-mysql-5.0.5.ebuild:
+  Version bump. Make log4j support optional via the log4j use flag. Fixes bug
+  #156765. Thanks to Johan Bergström <bugs@bergstroem.nu>.
+
+*jdbc-mysql-3.1.13-r5 (06 May 2007)
+
+  06 May 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +jdbc-mysql-3.1.13-r5.ebuild:
+  Drop jdbc2-stdext dependency because it's only needed with virtual/jdk-1.3
+  which we don't support any more.
+
+  06 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  jdbc-mysql-3.1.13-r4.ebuild:
+  ppc stable
+
+  26 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  jdbc-mysql-3.1.13-r4.ebuild:
+  stable x86, bug 175993
+
+  25 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  jdbc-mysql-3.1.13-r4.ebuild:
+  Junit is not needed because we are not building the testcases and general
+  ebuild cleanup.
+
+  18 Feb 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -jdbc-mysql-3.1.12.ebuild, -jdbc-mysql-3.1.13-r1.ebuild,
+  -jdbc-mysql-3.1.13-r2.ebuild, -jdbc-mysql-3.1.13-r3.ebuild:
+  Removed old versions/revisions.
+
+  11 Jan 2007; Markus Rothe <corsair@gentoo.org>
+  jdbc-mysql-3.1.13-r4.ebuild:
+  Stable on ppc64
+
+*jdbc-mysql-3.1.13-r4 (04 Oct 2006)
+
+  04 Oct 2006; Joshua Nichols <nichoj@gentoo.org>
+  +files/do-not-filter-png.diff, +files/no-testsuite.diff,
+  +jdbc-mysql-3.1.13-r4.ebuild:
+  Merged changes with gcj-overlay, bug #145765.
+
+*jdbc-mysql-3.1.13-r3 (11 Aug 2006)
+
+  11 Aug 2006; Joshua Nichols <nichoj@gentoo.org>
+  +jdbc-mysql-3.1.13-r3.ebuild:
+  Now uses jars from dependencies explicitly, instead of relying on /usr/
+  bin/ant adding them to the classpath.
+
+  05 Aug 2006; Petteri Räty <betelgeuse@gentoo.org>
+  -jdbc-mysql-3.0.11.ebuild, -jdbc-mysql-3.0.16.ebuild,
+  -jdbc-mysql-3.0.17.ebuild:
+  Removed old versions.
+
+  02 Aug 2006; Joshua Nichols <nichoj@gentoo.org>
+  jdbc-mysql-3.1.13-r2.ebuild:
+  Added missing commons-logging dependency, bug #142186
+
+*jdbc-mysql-3.1.13-r2 (29 Jul 2006)
+
+  29 Jul 2006; Joshua Nichols <nichoj@gentoo.org>
+  +jdbc-mysql-3.1.13-r2.ebuild:
+  Added source useflag, for bug #141885
+
+*jdbc-mysql-3.1.13-r1 (22 Jul 2006)
+
+  22 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  -jdbc-mysql-3.1.13.ebuild, +jdbc-mysql-3.1.13-r1.ebuild:
+  ant_src_unpack -> src_unpack
+
+*jdbc-mysql-3.1.13 (18 Jul 2006)
+
+  18 Jul 2006; Joshua Nichols <nichoj@gentoo.org> jdbc-mysql-3.0.11.ebuild,
+  jdbc-mysql-3.0.16.ebuild, jdbc-mysql-3.0.17.ebuild,
+  jdbc-mysql-3.1.10.ebuild, jdbc-mysql-3.1.12.ebuild,
+  +jdbc-mysql-3.1.13.ebuild:
+  Version bump (bug #138421), which fixes bug #128290. Updated to use new Java
+  system.
+
+  14 Mar 2006; Joshua Nichols <nichoj@gentoo.org> jdbc-mysql-3.1.10.ebuild:
+  Stable on amd64.
+
+  14 Mar 2006; <nichoj@gentoo.org> jdbc-mysql-3.1.12.ebuild:
+  Added missing dependency on dev-java/junit (bug #120255).
+
+  17 Feb 2006; Michael Hanselmann <hansmi@gentoo.org>
+  jdbc-mysql-3.1.10.ebuild:
+  Stable on ppc.
+
+  23 Dec 2005; Joshua Nichols <nichoj@gentoo.org> jdbc-mysql-3.0.17.ebuild,
+  jdbc-mysql-3.1.10.ebuild, jdbc-mysql-3.1.12.ebuild:
+  Removed uneeded jta dependency (bug #102915).
+
+*jdbc-mysql-3.1.12 (20 Dec 2005)
+
+  20 Dec 2005; Joshua Nichols <nichoj@gentoo.org> +jdbc-mysql-3.1.12.ebuild:
+  Version bump (bug #109927) and some cleanup.
+
+  03 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  jdbc-mysql-3.0.17.ebuild:
+  Stable on ppc.
+
+  12 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  jdbc-mysql-3.0.17.ebuild:
+  Stable on sparc
+
+  25 Jul 2005; Thomas Matthijs <axxo@gentoo.org> jdbc-mysql-3.0.16.ebuild,
+  jdbc-mysql-3.0.17.ebuild, jdbc-mysql-3.1.10.ebuild:
+  keyword x86
+
+  15 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  jdbc-mysql-3.0.16.ebuild, jdbc-mysql-3.0.17.ebuild:
+  To ~sparc
+
+*jdbc-mysql-3.0.16 (10 Jul 2005)
+
+  10 Jul 2005; Thomas Matthijs <axxo@gentoo.org> +jdbc-mysql-3.0.16.ebuild:
+  moving connectorj into jdbc-mysql as they are the same package
+
+  10 Jul 2005; Thomas Matthijs <axxo@gentoo.org>
+  -jdbc-mysql-3.0.11-r1.ebuild, -jdbc-mysql-3.0.15.ebuild,
+  -jdbc-mysql-3.1.7.ebuild:
+  remove older
+
+*jdbc-mysql-3.1.10 (10 Jul 2005)
+*jdbc-mysql-3.0.17 (10 Jul 2005)
+
+  10 Jul 2005; Thomas Matthijs <axxo@gentoo.org> +jdbc-mysql-3.0.17.ebuild,
+  +jdbc-mysql-3.1.10.ebuild:
+  version bump
+
+  10 Jul 2005; Thomas Matthijs <axxo@gentoo.org>
+  jdbc-mysql-3.0.11-r1.ebuild, jdbc-mysql-3.1.7.ebuild:
+  add dep on log4j thanks hollow + small cleanups
+
+  17 Jun 2005; Thomas Matthijs <axxo@gentoo.org> jdbc-mysql-3.0.11.ebuild,
+  jdbc-mysql-3.0.11-r1.ebuild, jdbc-mysql-3.0.15.ebuild,
+  jdbc-mysql-3.1.7.ebuild:
+  license fix, gpl not lgpl
+
+*jdbc-mysql-3.1.7 (06 Mar 2005)
+
+  06 Mar 2005; Thomas Matthijs <axxo@gentoo.org> +jdbc-mysql-3.1.7.ebuild:
+  version bump
+
+  23 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  jdbc-mysql-3.0.11-r1.ebuild:
+  Keywords ~amd64.
+
+*jdbc-mysql-3.0.15 (20 Oct 2004)
+
+  20 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  +jdbc-mysql-3.0.15.ebuild:
+  Version bump.
+
+  28 Sep 2004; Thomas Matthijs <axxo@gentoo.org>
+  jdbc-mysql-3.0.11-r1.ebuild:
+  depend on ant
+
+*jdbc-mysql-3.0.11-r1 (26 Sep 2004)
+
+  26 Sep 2004; Thomas Matthijs <axxo@gentoo.org> +jdbc-mysql-3.0.11-r1.ebuild:
+  Now builds from source, Ebuild submitted by Hendrik Sticher
+  <hendrik_sticher@gmx.de> Thanks, bug 63280
+
+*jdbc-mysql-3.0.11 (22 Mar 2004)
+
+  22 Mar 2004; Chris Aniszczyk <zx@gentoo.org> jdbc-mysql-2.0.14.ebuild,
+  jdbc-mysql-3.0.11.ebuild, jdbc-mysql-3.0.8.ebuild, jdbc-mysql-3.0.9.ebuild:
+  Clean up + QA fixes
+
+  25 Feb 2004; Dylan Carlson <absinthe@gentoo.org> jdbc-mysql-3.0.9.ebuild:
+  Added amd64 keyword.
+
+  10 Feb 2004; Adrian Almenar <strider@gentoo.org> jdbc-mysql-2.0.14.ebuild,
+  jdbc-mysql-3.0.8.ebuild, jdbc-mysql-3.0.9.ebuild:
+  Removed alpha keyword.
+
+  17 Jan 2004; Adrian Almenar <strider@gentoo.org> jdbc-mysql-2.0.14.ebuild,
+  jdbc-mysql-3.0.8.ebuild, jdbc-mysql-3.0.9.ebuild:
+  Removed keywords with non-java support. Moved Version 3.0.9 to stable.
+
+*jdbc-mysql-3.0.9 (24 Dec 2003)
+
+  24 Dec 2003; Martin Holzer <mholzer@gentoo.org> jdbc-mysql-3.0.9.ebuild:
+  Version bumped. Closes 34116
+
+*jdbc-mysql-3.0.8 (04 Jun 2003)
+
+  04 Jun 2003; Dylan Carlson <absinthe@gentoo.org> jdbc-mysql-3.0.8.ebuild:
+  Bugfix version bump. Closes #22178.
+  
+  Changes in this version:
+  * Allow bogus URLs in Driver.getPropertyInfo().
+  * Return list of generated keys when using multi-value INSERTS with
+    Statement.getGeneratedKeys().
+  * Use JVM charset with filenames and 'LOAD DATA [LOCAL] INFILE'
+  * Fix infinite loop with Connection.cleanup().
+  * Changed Ant target 'compile-core' to 'compile-driver', and made testsuite
+    compilation a separate target.
+  * Fixed result set not getting set for Statement.executeUpdate(), which 
+    affected getGeneratedKeys() and getUpdateCount() in some cases.
+  * Unicode character 0xFFFF in a string would cause the driver to throw an
+    ArrayOutOfBoundsException
+  * Return correct amount of generated keys when using 'REPLACE' statements.
+  * Fix problem detecting server character set in some cases.
+  * Fix row data decoding error when using _very_ large packets.
+  * Optimized row data decoding.
+  * Issue exception when operating on an already-closed prepared statement.
+  * Fixed SJIS encoding bug, thanks to Naoto Sato.
+  * Optimized usage of EscapeProcessor.
+  * Fixed numbering of KEY_SEQ column in DBMD.getImported/Exported keys 
+  * Allow multiple calls to Statement.close()
+  * Use hex escaping for PreparedStatement.setBytes()/setBinaryStream() when 
+    the character set is Shift_JIS, workaround for parsing bug in server.
+  * Added whitespace insensitivity to EscapeProcessor.
+
+*jdbc-mysql-2.0.14 (14 May 2003)
+
+  14 May 2003; Dylan Carlson <absinthe@gentoo.org> jdbc-mysql-2.0.14.ebuild,
+  jdbc-mysql-3.0.7.ebuild:
+  "mmmysql" has been retired from Sourceforge, and is now officially part of
+  MySQL's family, now known as Connector/J. In an effort to also keep the naming
+  consistent with other jdbc offerings, this port is being renamed to
+  jdbc-mysql. 
+  
+  The name of the JAR file has changed as well, so please make a note of it.
+
+*mysql-jdbc-3.07 (26 Apr 2003)
+
+  08 May 2003; Robin Johnson <robbat2@gentoo.org> mysql-jdbc-3.07.ebuild:
+  mark as stable for x86
+
+  26 Apr 2003; Robin Johnson <robbat2@gentoo.org> mysql-jdbc-3.07.ebuild,
+  files/21mysqlconnector:
+  added new version in unstable
+
+*mysql-jdbc-2.0.14 (08 Jul 2002)
+
+  08 Jul 2002; Maik Schreiber <blizzy@gentoo.org> :
+
+  New version, closes bug #3760.
+
+*mysql-jdbc-1.2.3-r1 (01 Feb 2002)
+
+  20 Sep 2002; Mike Frysinger <vapier@gentoo.org> :
+
+  Updated HOMEPAGE variable
+
+  01 Aug 2002; Karl Trygve Kalleberg <karltk@gentoo.org> mysql-jdbc-1.2.3-r1.ebuild :
+
+  Added LICENSE, SLOT and KEYWORDS.
+
+  01 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

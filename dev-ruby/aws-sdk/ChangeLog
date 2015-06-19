@@ -1,0 +1,143 @@
+# ChangeLog for dev-ruby/aws-sdk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/aws-sdk/ChangeLog,v 1.25 2015/06/07 16:49:24 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  06 Jun 2015; Hans de Graaff <graaff@gentoo.org> -aws-sdk-1.8.3.1.ebuild:
+  Cleanup.
+
+*aws-sdk-1.8.4 (01 Dec 2014)
+
+  01 Dec 2014; Peter Wilmott <p8952@gentoo.org> +aws-sdk-1.8.4.ebuild:
+  Version bump; add ruby targets; skip failing test
+
+  26 May 2014; Manuel Rüger <mrueg@gentoo.org> aws-sdk-1.8.3.1.ebuild:
+  Remove ruby18 target.
+
+*aws-sdk-1.8.3.1 (22 Feb 2013)
+
+  22 Feb 2013; Diego E. Pettenò <flameeyes@gentoo.org> +aws-sdk-1.8.3.1.ebuild,
+  -aws-sdk-1.8.1.3.ebuild, -aws-sdk-1.8.2.ebuild, -aws-sdk-1.8.3.ebuild:
+  Version bump.
+
+*aws-sdk-1.8.3 (19 Feb 2013)
+
+  19 Feb 2013; Diego E. Pettenò <flameeyes@gentoo.org> +aws-sdk-1.8.3.ebuild:
+  Version bump.
+
+*aws-sdk-1.8.2 (16 Feb 2013)
+
+  16 Feb 2013; Diego E. Pettenò <flameeyes@gentoo.org> +aws-sdk-1.8.2.ebuild:
+  Version bump.
+
+*aws-sdk-1.8.1.3 (12 Feb 2013)
+
+  12 Feb 2013; Diego E. Pettenò <flameeyes@gentoo.org> +aws-sdk-1.8.1.3.ebuild,
+  -aws-sdk-1.7.1.ebuild, -aws-sdk-1.8.1.1.ebuild:
+  Version bump; remove old.
+
+*aws-sdk-1.8.1.1 (30 Jan 2013)
+
+  30 Jan 2013; Diego E. Pettenò <flameeyes@gentoo.org> +aws-sdk-1.8.1.1.ebuild,
+  aws-sdk-1.7.1.ebuild:
+  Version bump; drop dependency on httparty; drop ree18 support; use the new
+  github fetch URL so that RUBY_S is easier.
+
+*aws-sdk-1.7.1 (07 Nov 2012)
+
+  07 Nov 2012; Diego E. Pettenò <flameeyes@gentoo.org> +aws-sdk-1.7.1.ebuild,
+  -aws-sdk-1.6.9.ebuild, -aws-sdk-1.7.0.ebuild,
+  -files/aws-sdk-1.5.3-disabletest.patch:
+  Version bump; remove old.
+
+*aws-sdk-1.7.0 (03 Nov 2012)
+
+  03 Nov 2012; Diego E. Pettenò <flameeyes@gentoo.org> +aws-sdk-1.7.0.ebuild:
+  Version bump; this time without any patch needed.
+
+*aws-sdk-1.6.9 (05 Oct 2012)
+
+  05 Oct 2012; Diego E. Pettenò <flameeyes@gentoo.org> +aws-sdk-1.6.9.ebuild,
+  -aws-sdk-1.6.3.ebuild, -aws-sdk-1.6.8.ebuild,
+  -files/aws-sdk-1.6.3-no-simplecov.patch, -files/aws-sdk.gemspec:
+  Version bump; remove old; remove gemspec as now they ship with one.
+
+*aws-sdk-1.6.8 (02 Oct 2012)
+
+  02 Oct 2012; Diego E. Pettenò <flameeyes@gentoo.org> +aws-sdk-1.6.8.ebuild,
+  -aws-sdk-1.6.7-r1.ebuild, -files/aws-sdk-1.6.7.patch:
+  Version bump, this includes my patch.
+
+*aws-sdk-1.6.7-r1 (02 Oct 2012)
+
+  02 Oct 2012; Diego E. Pettenò <flameeyes@gentoo.org> +aws-sdk-1.6.7-r1.ebuild,
+  -aws-sdk-1.6.7.ebuild, files/aws-sdk-1.6.7.patch:
+  Revision bump to fix broken base64 value.
+
+*aws-sdk-1.6.7 (02 Oct 2012)
+
+  02 Oct 2012; Diego E. Pettenò <flameeyes@gentoo.org> +aws-sdk-1.6.7.ebuild,
+  +files/aws-sdk-1.6.7.patch:
+  Version bump (finally) with a patch to support Ruby 1.8 syntax for a while
+  still.
+
+*aws-sdk-1.6.3 (10 Aug 2012)
+
+  10 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> +aws-sdk-1.6.3.ebuild,
+  +files/aws-sdk-1.6.3-no-simplecov.patch, -aws-sdk-1.5.6.ebuild,
+  -aws-sdk-1.5.8.ebuild, -aws-sdk-1.6.0.ebuild, -aws-sdk-1.6.2.ebuild:
+  Version bump, remove old. This adds a patch to make simplecov optional.
+
+*aws-sdk-1.6.2 (08 Aug 2012)
+
+  08 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> +aws-sdk-1.6.2.ebuild,
+  -aws-sdk-1.6.1.ebuild:
+  Version bump.
+
+*aws-sdk-1.6.1 (08 Aug 2012)
+
+  08 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> +aws-sdk-1.6.1.ebuild:
+  Version bump.
+
+*aws-sdk-1.6.0 (31 Jul 2012)
+
+  31 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> +aws-sdk-1.6.0.ebuild:
+  Version bump.
+
+*aws-sdk-1.5.8 (27 Jul 2012)
+
+  27 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> +aws-sdk-1.5.8.ebuild,
+  -aws-sdk-1.5.7.ebuild, -files/aws-sdk-1.5.7-specs.patch:
+  Version bump (my patch has been merged).
+
+*aws-sdk-1.5.7 (13 Jul 2012)
+
+  13 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> +aws-sdk-1.5.7.ebuild,
+  +files/aws-sdk-1.5.7-specs.patch:
+  Version bump; fix new specs.
+
+  05 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> -aws-sdk-1.5.3.ebuild,
+  -aws-sdk-1.5.5.ebuild, -files/aws-sdk-1.5.3+httparty-0.8.patch,
+  -files/aws-sdk-1.5.3.gemspec, aws-sdk-1.5.6.ebuild:
+  Remove old; fix wrong LICENSE variable; use the new rspec test support.
+
+*aws-sdk-1.5.6 (30 Jun 2012)
+
+  30 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org> +aws-sdk-1.5.6.ebuild:
+  Version bump.
+
+*aws-sdk-1.5.5 (27 Jun 2012)
+
+  27 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org> +aws-sdk-1.5.5.ebuild,
+  +files/aws-sdk.gemspec:
+  Version bump.
+
+*aws-sdk-1.5.3 (15 Jun 2012)
+
+  15 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org> +aws-sdk-1.5.3.ebuild,
+  +files/aws-sdk-1.5.3+httparty-0.8.patch,
+  +files/aws-sdk-1.5.3-disabletest.patch, +files/aws-sdk-1.5.3.gemspec,
+  +metadata.xml:
+  Initial import of Amazon's official SDK for Ruby.

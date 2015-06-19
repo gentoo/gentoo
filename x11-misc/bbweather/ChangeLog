@@ -1,0 +1,149 @@
+# ChangeLog for x11-misc/bbweather
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/bbweather/ChangeLog,v 1.39 2013/10/19 15:05:07 pacho Exp $
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> -bbweather-0.6.2.ebuild,
+  -bbweather-0.6.3.ebuild, metadata.xml:
+  Cleanup due desktop-wm removal
+
+  06 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  bbweather-0.6.3-r1.ebuild:
+  x86 stable wrt bug #397261
+
+  29 Nov 2012; Anthony G. Basile <blueness@gentoo.org>
+  bbweather-0.6.3-r1.ebuild:
+  stable ppc, bug #397261
+
+  28 Nov 2012; Agostino Sarubbo <ago@gentoo.org> bbweather-0.6.3-r1.ebuild:
+  Stable for amd64, wrt bug #397261
+
+  27 Nov 2012; Jeroen Roovers <jer@gentoo.org> bbweather-0.6.3-r1.ebuild:
+  Stable for HPPA (bug #397261).
+
+*bbweather-0.6.3-r1 (26 Nov 2012)
+
+  26 Nov 2012; Jeroen Roovers <jer@gentoo.org> +bbweather-0.6.3-r1.ebuild:
+  Unset helvetica font in default configuration (bug #402713).
+
+  25 Nov 2012; Kacper Kowalik <xarthisius@gentoo.org> bbweather-0.6.2.ebuild,
+  bbweather-0.6.3.ebuild:
+  Add missing dependency on helvetica font wrt #402713 by Jeroen Roovers
+  <jer@gentoo.org>. Thanks to James Cloos <cloos@jhcloos.com> for providing
+  solution
+
+  24 Mar 2012; Jeroen Roovers <jer@gentoo.org> bbweather-0.6.3.ebuild:
+  Fix man page installation (bug #402709).
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> bbweather-0.6.2.ebuild,
+  bbweather-0.6.3.ebuild:
+  Drop alpha/sparc keywords
+
+  03 Feb 2012; Brent Baude <ranger@gentoo.org> bbweather-0.6.3.ebuild:
+  Marking bbweather-0.6.3 ppc for bug 397261
+
+  16 Apr 2011; Ulrich Mueller <ulm@gentoo.org> bbweather-0.6.2.ebuild,
+  bbweather-0.6.3.ebuild:
+  Remove bogus dependency on virtual/blackbox, bug 358825.
+
+  25 Aug 2010; Jim Ramsay <lack@gentoo.org> bbweather-0.6.2.ebuild,
+  bbweather-0.6.3.ebuild:
+  Block x11-plugins/gkrellweather for file collision (Bug #333289)
+
+*bbweather-0.6.3 (30 May 2010)
+
+  30 May 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  +bbweather-0.6.3.ebuild, +files/bbweather-asneeded.patch:
+  Version bump, also fixing build with as-needed wrt bug 248556. Thanks
+  Diego for reporting
+
+  27 Dec 2008; Santiago M. Mola <coldwind@gentoo.org> -bbweather-0.5.ebuild,
+  -bbweather-0.6.ebuild, bbweather-0.6.2.ebuild:
+  Fix quoting and useless COPYING, remove old.
+
+  22 Sep 2008; David Shakaryan <omp@gentoo.org> metadata.xml:
+  Change herd from commonbox to desktop-wm.
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove ka0ttic from metadata.xml due to retirement.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  27 Mar 2005; Guy Martin <gmsoft@gentoo.org> bbweather-0.6.2.ebuild:
+  Stable on hppa.
+
+  19 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> bbweather-0.6.2.ebuild:
+  Stable on alpha.
+
+  17 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> bbweather-0.6.2.ebuild:
+  Stable on ppc.
+
+  24 Feb 2005; Jason Wever <weeve@gentoo.org> bbweather-0.6.2.ebuild:
+  Stable on sparc.
+
+  19 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> bbweather-0.6.2.ebuild:
+  Marked stable on x86.
+
+  18 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> bbweather-0.5.ebuild,
+  bbweather-0.6.2.ebuild, bbweather-0.6.ebuild:
+  Install example bbtoolsrc file in /usr/share/doc/${PF} since a lot of bb*
+  tools provide it; fixes file collision on /usr/share/bbtools/bbtoolsrc.in.
+
+*bbweather-0.6.2 (18 Jan 2005)
+
+  18 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> metadata.xml,
+  +bbweather-0.6.2.ebuild:
+  Version bump.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  11 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> bbweather-0.6.ebuild:
+  Stable on alpha.
+
+  13 May 2004; Ferris McCormick <fmccor@gentoo.org> bbweather-0.6.ebuild:
+  Marked stable for sparc.
+
+  06 May 2004; Brandon Hale <tseng@gentoo.org> bbweather-0.6.ebuild:
+  Stable on x86
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> bbweather-0.5.ebuild,
+  bbweather-0.6.ebuild:
+  Removed S=, added IUSE=
+
+  05 Apr 2004; Chris Aniszczyk <zx@gentoo.org> bbweather-0.6.ebuild:
+  Marking stable on hppa
+
+  30 Oct 2003; Brandon Hale <tseng@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+*bbweather-0.6 (19 Jun 2003)
+
+  19 Jun 2003; mkeadle <mkeadle@gentoo.org> bbweather-0.3-r2.ebuild,
+  bbweather-0.3-r2.ebuild, bbweather-0.6.ebuild:
+  bump to latest upstream stable. remove old versions.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*bbweather-0.5 (07 Jul 2002)
+
+  07 Jul 2002; Seemant Kulleen <seemant@gentoo.org> bbweather-0.5.ebuild
+  files/digest-bbweather-0.5 :
+
+  Version bump.
+
+*bbweather-0.3-r2 (15 Mar 2002)
+
+  15 Mar 2002; S.Kulleen <seemant@gentoo.org> bbweather-0.3-r2.ebuild :
+
+  Updated DEPENDS to reflect virtual/blackbox.
+
+*bbweather-0.3-r1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

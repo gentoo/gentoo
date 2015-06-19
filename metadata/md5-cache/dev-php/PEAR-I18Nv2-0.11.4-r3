@@ -1,0 +1,12 @@
+DEFINED_PHASES=install setup
+DEPEND=dev-lang/php:*[iconv,pcre(+)] dev-lang/php:* >=dev-php/pear-1.8.1
+DESCRIPTION=Internationalization - basic support to localize your application
+EAPI=5
+HOMEPAGE=http://pear.php.net/I18Nv2
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=PHP-3
+RDEPEND=dev-lang/php:*[iconv,pcre(+)] dev-lang/php:* >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=http://pear.php.net/get/I18Nv2-0.11.4.tgz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	php-pear-r1	6199074ba0005674c2291a5a8d0274e2	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=955133b793b611ece1a60800b68af0d8

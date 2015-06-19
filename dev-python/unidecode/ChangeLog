@@ -1,0 +1,147 @@
+# ChangeLog for dev-python/unidecode
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/unidecode/ChangeLog,v 1.41 2015/06/16 04:26:23 jer Exp $
+
+*unidecode-0.04.18 (16 Jun 2015)
+
+  16 Jun 2015; Jeroen Roovers <jer@gentoo.org> +unidecode-0.04.18.ebuild:
+  Version bump.
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  13 Apr 2015; Justin Lecher <jlec@gentoo.org> -unidecode-0.04.16.ebuild,
+  metadata.xml:
+  Drop old
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> unidecode-0.04.17.ebuild:
+  Stable for alpha, wrt bug #543476
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> unidecode-0.04.16.ebuild,
+  unidecode-0.04.17.ebuild:
+  Drop old Python implementations
+
+  02 Apr 2015; Markus Meier <maekke@gentoo.org> unidecode-0.04.17.ebuild:
+  arm stable, bug #543476
+
+  01 Apr 2015; Agostino Sarubbo <ago@gentoo.org> unidecode-0.04.17.ebuild:
+  Stable for sparc, wrt bug #543476
+
+  28 Mar 2015; Agostino Sarubbo <ago@gentoo.org> unidecode-0.04.17.ebuild:
+  Stable for ppc, wrt bug #543476
+
+  25 Mar 2015; Agostino Sarubbo <ago@gentoo.org> unidecode-0.04.17.ebuild:
+  Stable for x86, wrt bug #543476
+
+  24 Mar 2015; Agostino Sarubbo <ago@gentoo.org> unidecode-0.04.17.ebuild:
+  Stable for amd64, wrt bug #543476
+
+  19 Mar 2015; Jeroen Roovers <jer@gentoo.org> unidecode-0.04.17.ebuild:
+  Stable for HPPA (bug #543476).
+
+  16 Mar 2015; Jeroen Roovers <jer@gentoo.org> -unidecode-0.04.14.ebuild:
+  Old.
+
+  27 Feb 2015; Agostino Sarubbo <ago@gentoo.org> unidecode-0.04.16.ebuild:
+  Stable for sparc, wrt bug #530110
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> unidecode-0.04.16.ebuild:
+  Stable for alpha, wrt bug #530110
+
+  15 Feb 2015; Jeroen Roovers <jer@gentoo.org> unidecode-0.04.17.ebuild:
+  Marked ~ppc too.
+
+  28 Jan 2015; Agostino Sarubbo <ago@gentoo.org> unidecode-0.04.16.ebuild:
+  Stable for ppc, wrt bug #530110
+
+  02 Jan 2015; Mikle Kolyada <zlogene@gentoo.org> unidecode-0.04.16.ebuild:
+  x86 stable wrt bug #530110
+
+  27 Dec 2014; Agostino Sarubbo <ago@gentoo.org> unidecode-0.04.16.ebuild:
+  Stable for amd64, wrt bug #530110
+
+*unidecode-0.04.17 (20 Dec 2014)
+
+  20 Dec 2014; Jeroen Roovers <jer@gentoo.org> +unidecode-0.04.17.ebuild:
+  Version bump.
+
+  16 Dec 2014; Markus Meier <maekke@gentoo.org> unidecode-0.04.16.ebuild:
+  arm stable, bug #530110
+
+  22 Nov 2014; Jeroen Roovers <jer@gentoo.org> unidecode-0.04.16.ebuild:
+  Stable for HPPA (bug #530110).
+
+  01 Aug 2014; Raúl Porcel <armin76@gentoo.org> unidecode-0.04.14.ebuild,
+  unidecode-0.04.16.ebuild:
+  Add ~sparc wrt #505998
+
+  20 Jul 2014; Tobias Klausmann <klausman@gentoo.org> unidecode-0.04.14.ebuild:
+  Stable on alpha, bug #509790
+
+  19 Jul 2014; Tobias Klausmann <klausman@gentoo.org> unidecode-0.04.16.ebuild:
+  Keyworded on alpha, bug #505998
+
+  27 Jun 2014; Jeroen Roovers <jer@gentoo.org> unidecode-0.04.16.ebuild:
+  Marked ~arm too.
+
+  15 May 2014; Markus Meier <maekke@gentoo.org> unidecode-0.04.14.ebuild:
+  add ~arm, bug #505998
+
+*unidecode-0.04.16 (13 May 2014)
+
+  13 May 2014; Jeroen Roovers <jer@gentoo.org> -unidecode-0.04.9-r1.ebuild,
+  +unidecode-0.04.16.ebuild:
+  Version bump.
+
+  09 May 2014; Jeroen Roovers <jer@gentoo.org> unidecode-0.04.14.ebuild:
+  Stable for HPPA (bug #509790).
+
+  07 May 2014; Jeroen Roovers <jer@gentoo.org> unidecode-0.04.14.ebuild,
+  metadata.xml:
+  Add python 3.4 support.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> unidecode-0.04.14.ebuild,
+  unidecode-0.04.9-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  13 Feb 2014; Jeroen Roovers <jer@gentoo.org> unidecode-0.04.14.ebuild:
+  Marked ~hppa too.
+
+*unidecode-0.04.14 (13 Feb 2014)
+
+  13 Feb 2014; Jeroen Roovers <jer@gentoo.org> -unidecode-0.04.9.ebuild,
+  +unidecode-0.04.14.ebuild, metadata.xml:
+  Version bump.
+
+  16 Jan 2014; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Spelling.
+
+  20 Oct 2013; Stanislav Ochotnicky <sochotnicky@gentoo.org> metadata.xml:
+  Move to maintainer-needed
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> unidecode-0.04.9-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  29 May 2013; Ian Delaney <idella4@gentoo.org> unidecode-0.04.9-r1.ebuild:
+  add py3.3 support
+
+*unidecode-0.04.9-r1 (08 Apr 2013)
+
+  08 Apr 2013; Ian Delaney <idella4@gentoo.org> +unidecode-0.04.9-r1.ebuild:
+  migration revbump
+
+  30 May 2012; Kacper Kowalik <xarthisius@gentoo.org> unidecode-0.04.9.ebuild:
+  Restrict not working ABIs, add proper PYTHON_DEPEND, drop empty (R)DEPEND
+
+  28 May 2012; Jeff Horelick <jdhore@gentoo.org> unidecode-0.04.9.ebuild:
+  Keyword ~x86.
+
+  27 May 2012; Stanislav Ochotnicky <sochotnicky@gentoo.org>
+  unidecode-0.04.9.ebuild:
+  Fix a typo in description of dev-python/unidecode
+
+*unidecode-0.04.9 (27 May 2012)
+
+  27 May 2012; Stanislav Ochotnicky <sochotnicky@gentoo.org>
+  +unidecode-0.04.9.ebuild, +metadata.xml:
+  New ebuild for unidecode python module

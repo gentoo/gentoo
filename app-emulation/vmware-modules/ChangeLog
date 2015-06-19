@@ -1,0 +1,710 @@
+# ChangeLog for app-emulation/vmware-modules
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/vmware-modules/ChangeLog,v 1.124 2015/02/14 08:37:35 jer Exp $
+
+  14 Feb 2015; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Remove short <longdescription>.
+
+*vmware-modules-279.3 (16 Oct 2014)
+
+  16 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +vmware-modules-279.3.ebuild:
+  Version bump, bug 516044
+
+  09 Jun 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  vmware-modules-271.3.ebuild, vmware-modules-279.1-r1.ebuild,
+  vmware-modules-279.2.ebuild:
+  Apply filldir patch really only from 3.11 on, bug 512830
+
+  07 Jun 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -files/264-3.2.0.patch, -files/264-d-make-root.patch,
+  -files/264-makefile-include.patch, -files/264-3.8.0.patch,
+  -files/264-jobserver.patch, -files/264-makefile-kernel-dir.patch,
+  -files/264-3.10.0.patch, -files/264-apic.patch, -files/264-netdevice.patch,
+  -files/264-newline.patch, -files/264-putname.patch:
+  Clean up
+
+  07 Jun 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  vmware-modules-271.3.ebuild, vmware-modules-279.1-r1.ebuild,
+  vmware-modules-279.2.ebuild, +files/271-vfsfollowlink.patch,
+  +files/279-vfsfollowlink.patch:
+  Conditionally add patch for kernel 3.12, bug 488072
+
+  07 Jun 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  vmware-modules-271.3.ebuild, vmware-modules-279.1-r1.ebuild,
+  vmware-modules-279.2.ebuild:
+  Apply patch already for 3.10.25, bug 483410
+
+  07 Jun 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  vmware-modules-271.3.ebuild, vmware-modules-279.1-r1.ebuild,
+  vmware-modules-279.2.ebuild, +files/271-filldir.patch,
+  +files/279-filldir.patch:
+  Conditionally add patch for kernel 3.11, bug 483410
+
+*vmware-modules-279.2 (19 Apr 2014)
+
+  19 Apr 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -vmware-modules-279.0.ebuild, -vmware-modules-279.1.ebuild,
+  +vmware-modules-279.2.ebuild:
+  Version bump; remove old
+
+*vmware-modules-279.1-r1 (12 Apr 2014)
+
+  12 Apr 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +vmware-modules-279.1-r1.ebuild, metadata.xml:
+  Version bump to make some modules optional, bug 501536
+
+*vmware-modules-271.3 (12 Apr 2014)
+
+  12 Apr 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -vmware-modules-264.5.ebuild, -vmware-modules-271.2.ebuild,
+  +vmware-modules-271.3.ebuild:
+  Version bump, bug 497816; remove old
+
+  27 Dec 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +files/264-newline.patch, vmware-modules-264.5.ebuild:
+  Add cosmetic patch for bug 439280
+
+  23 Nov 2013; Magnus Granberg <zorry@gentoo.org> vmware-modules-279.0.ebuild,
+  vmware-modules-279.1.ebuild, +files/279-hardened.patch:
+  Update hardned patch for 279.X #491342
+
+*vmware-modules-279.1 (06 Nov 2013)
+
+  06 Nov 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +vmware-modules-279.1.ebuild:
+  Version bump
+
+  02 Nov 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  -files/279-3.10.0.patch, vmware-modules-279.0.ebuild:
+  Re-add keywords after testing
+
+  02 Nov 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  files/279-vmblock.patch, vmware-modules-279.0.ebuild:
+  Apply proper patches. Tested with 3.10.7-gentoo-r1.
+
+  22 Oct 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  -files/238-2.6.39.patch, -files/238-makefile-kernel-dir.patch,
+  -files/238-3.2.0.patch, -files/238-d-make-root.patch,
+  -files/238-jobserver.patch, -files/238-makefile-include.patch,
+  -files/238-netdevice.patch, -files/238-sema.patch,
+  -files/238-unlocked_ioctl.patch, -vmware-modules-238.6.ebuild:
+  Drop old
+
+*vmware-modules-279.0 (19 Oct 2013)
+
+  19 Oct 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +files/279-3.10.0.patch, +files/279-apic.patch,
+  +files/279-makefile-include.patch, +files/279-makefile-kernel-dir.patch,
+  +files/279-netdevice.patch, +files/279-putname.patch,
+  +files/279-vmblock.patch, +vmware-modules-279.0.ebuild:
+  Version bump, added without keywords for testing. Bug 484098. Thanks to Billy
+  DeVincentis for the files.
+
+  11 Aug 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +files/264-3.10.0.patch, +files/271-3.10.0.patch,
+  vmware-modules-264.5.ebuild, vmware-modules-271.2.ebuild:
+  Add contributed patches for kernel 3.10.0, see bug 470896
+
+  23 Jun 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  +files/264-3.8.0.patch, -vmware-modules-264.4.ebuild,
+  vmware-modules-264.5.ebuild:
+  Remove old; add patch to build 264 with kernel 3.8, bug 458228
+
+  21 Jun 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  vmware-modules-238.6.ebuild, vmware-modules-264.5.ebuild,
+  vmware-modules-271.2.ebuild:
+  Add support for epatch_user, bug 459182
+
+  16 Jun 2013; Vadim Kuznetsov vadimk@gentoo.org metadata.xml:
+  dropped myself as a maintainer. maintainer needed
+
+*vmware-modules-271.2 (10 Mar 2013)
+
+  10 Mar 2013; Vadim Kuznetsov vadimk@gentoo.org +vmware-modules-271.2.ebuild,
+  -vmware-modules-271.1-r1.ebuild, -vmware-modules-271.1.ebuild:
+  vmware desktop 9.0.2 version bump. Bugs 459566, 458228, 460908.
+
+*vmware-modules-264.5 (07 Jan 2013)
+
+  07 Jan 2013; Vadim Kuznetsov vadimk@gentoo.org +files/264-putname.patch,
+  +vmware-modules-264.5.ebuild:
+  vmware desktop 8.0.5 version bump
+
+  22 Dec 2012; Vadim Kuznetsov vadimk@gentoo.org vmware-modules-271.1-r1.ebuild:
+  apply patch to kernel gte 3.7.0
+
+*vmware-modules-271.1-r1 (16 Dec 2012)
+
+  16 Dec 2012; Vadim Kuznetsov vadimk@gentoo.org +files/271-putname.patch,
+  +vmware-modules-271.1-r1.ebuild:
+  putname patch. Bug 447154.
+
+  12 Dec 2012; Samuli Suominen <ssuominen@gentoo.org>
+  vmware-modules-238.6.ebuild, vmware-modules-264.4.ebuild,
+  vmware-modules-271.1.ebuild:
+  Use udev.eclass and udev_dorules to install rules into correct directory wrt
+  #433912 by Martin von Gagern
+
+*vmware-modules-271.1 (09 Dec 2012)
+
+  09 Dec 2012; Vadim Kuznetsov vadimk@gentoo.org +files/271-apic.patch,
+  +files/271-makefile-include.patch, +files/271-makefile-kernel-dir.patch,
+  +files/271-netdevice.patch, +files/271-vmmon.patch,
+  +vmware-modules-271.1.ebuild:
+  vmware desktop 9.0.1 version bump.bugs 432918, 443022
+
+*vmware-modules-238.6 (17 Jun 2012)
+*vmware-modules-264.4 (17 Jun 2012)
+
+  17 Jun 2012; Vadim Kuznetsov vadimk@gentoo.org +vmware-modules-238.6.ebuild,
+  +vmware-modules-264.4.ebuild, -vmware-modules-238.5-r1.ebuild,
+  -vmware-modules-264.3.ebuild:
+  bump vmware desktop. bug 421269
+
+  01 Jun 2012; Zac Medico <zmedico@gentoo.org> vmware-modules-238.5-r1.ebuild,
+  vmware-modules-264.3.ebuild:
+  inherit user for enewgroup
+
+  24 May 2012; Vadim Kuznetsov vadimk@gentoo.org +files/238-d-make-root.patch,
+  vmware-modules-238.5-r1.ebuild:
+  Andrew Dean's patch of 238 vmware modules for 3.4.0 kernel. Bug 411853
+
+  22 May 2012; Vadim Kuznetsov vadimk@gentoo.org +files/264-d-make-root.patch,
+  vmware-modules-264.3.ebuild:
+  d_make_root patch for 3.4 kernel. Bug 411853.
+
+  07 May 2012; Vadim Kuznetsov vadimk@gentoo.org +files/264-apic.patch:
+  missing patch. Bug 414831
+
+*vmware-modules-264.3 (05 May 2012)
+
+  05 May 2012; Vadim Kuznetsov vadimk@gentoo.org +vmware-modules-264.3.ebuild,
+  -files/264.2-3.2.0.patch, -vmware-modules-264.2-r1.ebuild,
+  files/264-3.2.0.patch, metadata.xml:
+  VMware desktop build 703057
+
+*vmware-modules-264.2-r1 (26 Mar 2012)
+*vmware-modules-238.5-r1 (26 Mar 2012)
+
+  26 Mar 2012; Vadim Kuznetsov vadimk@gentoo.org
+  +vmware-modules-238.5-r1.ebuild, +vmware-modules-264.2-r1.ebuild,
+  -vmware-modules-238.5.ebuild, -vmware-modules-264.2.ebuild:
+  udev rules moved to /lib/udev/rules.d
+
+  24 Mar 2012; Vadim Kuznetsov <vadimk@gentoo.org> +files/hardened.patch,
+  -vmware-modules-264.1.ebuild, vmware-modules-264.2.ebuild:
+  patch for hardened
+
+  12 Mar 2012; Vadim Kuznetsov <vadimk@gentoo.org> +files/264.2-3.2.0.patch:
+  missing patch
+
+*vmware-modules-264.2 (10 Mar 2012)
+
+  10 Mar 2012; Vadim Kuznetsov <vadimk@gentoo.org> +vmware-modules-264.2.ebuild:
+  vmware desktop version bump
+
+  10 Jan 2012; Vadim Kuznetsov <vadimk@gentoo.org> +files/238-3.2.0.patch,
+  +files/238-netdevice.patch, vmware-modules-238.5.ebuild:
+  patches for 3.1.x and 3.2 kernels. Bug 395305
+
+  06 Jan 2012; Vadim Kuznetsov <vadimk@gentoo.org> files/264-3.2.0.patch:
+  fixed patch for 3.2.0 kernel . Bug 397733.
+
+  06 Jan 2012; Vadim Kuznetsov <vadimk@gentoo.org> +files/264-3.2.0.patch,
+  vmware-modules-264.1.ebuild:
+  added patch for 3.2 kernel
+
+  05 Dec 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -files/1.0.0.25-autoconf-generated.patch,
+  -files/1.0.0.25-makefile-include.patch,
+  -files/1.0.0.25-makefile-kernel-dir.patch, -files/1.0.0.25-sema.patch,
+  -vmware-modules-1.0.0.25-r3.ebuild, -files/1.0.0.25-sk_sleep.patch,
+  -vmware-modules-1.0.0.25-r4.ebuild, -files/1.0.0.25-unlocked_ioctl.patch,
+  -files/sched_h-2.6.32.patch, -files/apic.patch:
+  removed old version. bug 385727.
+
+*vmware-modules-264.1 (03 Dec 2011)
+
+  03 Dec 2011; Vadim Kuznetsov <vadimk@gentoo.org> +files/264-jobserver.patch,
+  +files/264-makefile-include.patch, +files/264-netdevice.patch,
+  +vmware-modules-264.1.ebuild, +files/264-makefile-kernel-dir.patch:
+  vmware desktop version bump
+
+  19 Oct 2011; Vadim Kuznetsov <vadimk@gentoo.org> -files/208-sema.patch,
+  -files/208-sk_sleep.patch, -files/208-unlocked_ioctl.patch,
+  -vmware-modules-208.2.ebuild:
+  208 vmware modules removed
+
+  17 Oct 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -vmware-modules-238.4.ebuild, -vmware-modules-238.4-r1.ebuild:
+  cleanup
+
+*vmware-modules-238.5 (08 Oct 2011)
+
+  08 Oct 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  +vmware-modules-238.5.ebuild:
+  version bump
+
+*vmware-modules-238.4-r1 (04 Sep 2011)
+
+  04 Sep 2011; Vadim Kuznetsov <vadimk@gentoo.org> +files/238-2.6.39.patch,
+  +vmware-modules-238.4-r1.ebuild:
+  Bug 368139
+
+  18 Jul 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -vmware-modules-238.3-r8.ebuild:
+  bug 374599
+
+*vmware-modules-238.4 (15 Apr 2011)
+
+  15 Apr 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  +vmware-modules-238.4.ebuild:
+  version bump
+
+  09 Apr 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -files/1.0.0.24-autoconf-generated.patch,
+  -files/1.0.0.24-kernel-2.6.29.patch, -files/1.0.0.24-kernel-2.6.30.patch,
+  -files/1.0.0.24-makefile-kernel-dir.patch, -files/1.0.0.24-sema.patch,
+  -files/1.0.0.24-sk_sleep.patch, -files/1.0.0.24-vmnet-2.6.31.patch,
+  -files/1.0.0.24-unlocked_ioctl.patch, -vmware-modules-1.0.0.24-r3.ebuild:
+  1.0.0.24 is replaced by 208.2
+
+  30 Mar 2011; Vadim Kuznetsov <vadimk@gentoo.org> files/208-sema.patch:
+  corrected sema patch
+
+*vmware-modules-208.2 (27 Mar 2011)
+
+  27 Mar 2011; Vadim Kuznetsov <vadimk@gentoo.org> +files/208-sema.patch,
+  +files/208-sk_sleep.patch, +files/208-unlocked_ioctl.patch,
+  +vmware-modules-208.2.ebuild:
+  vmware kernel modules for vmware server 2 host
+
+*vmware-modules-238.3-r8 (27 Mar 2011)
+
+  27 Mar 2011; Vadim Kuznetsov <vadimk@gentoo.org> +files/238-jobserver.patch,
+  +files/238-makefile-include.patch, +files/238-makefile-kernel-dir.patch,
+  +files/238-sema.patch, +files/238-unlocked_ioctl.patch,
+  +vmware-modules-238.3-r8.ebuild:
+  vmware kernel modules of the vmware player 3.1.3 or workstation 7.1.3 host
+
+*vmware-modules-1.0.0.25-r4 (18 Mar 2011)
+
+  18 Mar 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  +vmware-modules-1.0.0.25-r4.ebuild:
+  BKL check, updated udev rules, better sed 
+
+  16 Mar 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  vmware-modules-1.0.0.24-r3.ebuild, vmware-modules-1.0.0.25-r3.ebuild:
+  patched for 2.6.38
+
+  16 Mar 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -vmware-modules-1.0.0.25-r1.ebuild,
+  cleanup
+
+  16 Mar 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -files/patches/000_all_makefile-include-directory.patch,
+  -files/patches/020_all_epoll-def-warnings.patch,
+  -vmware-modules-1.0.0.15-r2.ebuild,
+  -files/patches/vmmon/035_all_kernel-2.6.25.patch,
+  -files/patches/vmmon/040_all_kernel-2.6.27.patch,
+  -files/patches/vmnet/021_all_wireless_fix.patch,
+  -files/patches/vmblock/010_all_kernel-2.6.25.patch,
+  -files/patches/vmnet/025_all_kernel-2.6.25.patch,
+  -files/patches/vmnet/030_all_kernel-2.6.27.patch,
+  -files/patches/vmmon/030_all_fix-linux-headers.patch:
+  Bug 354383
+
+  17 Feb 2011; Thomas Kahle <tomka@gentoo.org>
+  vmware-modules-1.0.0.25-r3.ebuild:
+  x86 stable per bug 352421
+
+  11 Feb 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  vmware-modules-1.0.0.15-r2.ebuild:
+  back to testing
+
+  11 Feb 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -vmware-modules-1.0.0.24-r1.ebuild, -vmware-modules-1.0.0.24-r2.ebuild,
+  -vmware-modules-1.0.0.25-r2.ebuild:
+  clean up
+
+  11 Feb 2011; Vadim Kuznetsov <vadimk@gentoo.org>
+  -vmware-modules-1.0.0.15-r1.ebuild:
+  clean up
+
+  25 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  vmware-modules-1.0.0.25-r3.ebuild:
+  Stable on amd64 wrt bug #352421
+
+*vmware-modules-1.0.0.24-r3 (15 Jan 2011)
+
+  15 Jan 2011; Vadim Kuznetsov <vadimk@gentoo.org> +files/1.0.0.24-sema.patch,
+  +vmware-modules-1.0.0.24-r3.ebuild:
+  Bugs 345145, 351592.
+  Thanks Mateusz Dziadko, c1pher.
+
+*vmware-modules-1.0.0.25-r3 (13 Jan 2011)
+
+  13 Jan 2011; Vadim Kuznetsov <vadimk@gentoo.org> +files/1.0.0.25-sema.patch,
+  +vmware-modules-1.0.0.25-r3.ebuild:
+  Bug 345145 and 349649 and 351592
+  Thanks to Mateusz Dziadko, Dane Smith and bugs et al.
+
+*vmware-modules-1.0.0.24-r2 (21 Nov 2010)
+
+  21 Nov 2010; Vadim Kuznetsov <vadimk@gentoo.org>
+  +files/1.0.0.24-unlocked_ioctl.patch, +vmware-modules-1.0.0.24-r2.ebuild,
+  vmware-modules-1.0.0.25-r2.ebuild:
+  unlocked_ioctl patch
+
+*vmware-modules-1.0.0.25-r2 (21 Nov 2010)
+
+  21 Nov 2010; Vadim Kuznetsov <vadimk@gentoo.org>
+  +files/1.0.0.25-unlocked_ioctl.patch, +vmware-modules-1.0.0.25-r2.ebuild:
+  updated unlocked_ioctl patch
+
+  21 Nov 2010; Vadim Kuznetsov <vadimk@gentoo.org>
+  -files/1.0.0.26-ioctl-2.6.36.patch, -files/1.0.0.26-iommu_map.patch,
+  -files/1.0.0.26-makefile-include.patch,
+  -files/1.0.0.26-makefile-kernel-dir.patch, -files/1.0.0.26-sk_sleep.patch,
+  -vmware-modules-1.0.0.26.ebuild:
+  replaced by vmware-modules-235 (in overlay)
+
+  05 Nov 2010; Fabio Erculiani <lxnay@gentoo.org>
+  vmware-modules-1.0.0.25-r1.ebuild, vmware-modules-1.0.0.26.ebuild,
+  +files/1.0.0.26-ioctl-2.6.36.patch:
+  add 2.6.36 Linux kernel support
+
+  04 Aug 2010; Vadim Kuznetsov <vadimk@gentoo.org>
+  +files/1.0.0.24-sk_sleep.patch, vmware-modules-1.0.0.24-r1.ebuild,
+  +files/1.0.0.25-sk_sleep.patch, vmware-modules-1.0.0.25-r1.ebuild,
+  +files/1.0.0.26-iommu_map.patch, vmware-modules-1.0.0.26.ebuild,
+  +files/1.0.0.26-sk_sleep.patch:
+  patches for 2.6.35 kernel. Bug 322245, Bug 330019
+
+  03 May 2010; Vadim Kuznetsov <vadimk@gentoo.org>
+  vmware-modules-1.0.0.25-r1.ebuild, vmware-modules-1.0.0.26.ebuild,
+  +files/apic.patch:
+  Bugs 274529, 317583
+  Thanks to Mikhail Zolotaryov for the patch.
+
+*vmware-modules-1.0.0.26 (28 Feb 2010)
+
+  28 Feb 2010; Vadim Kuznetsov <vadimk@gentoo.org>
+  +files/1.0.0.26-makefile-include.patch, -vmware-modules-1.0.0.25.ebuild,
+  +files/1.0.0.26-makefile-kernel-dir.patch,
+  +vmware-modules-1.0.0.26.ebuild:
+  vmware-modules for VMware Workstation 7.0.x and Player 3.0.x
+
+  26 Feb 2010; Vadim Kuznetsov <vadimk@gentoo.org>
+  +files/1.0.0.24-autoconf-generated.patch,
+  vmware-modules-1.0.0.24-r1.ebuild,
+  +files/1.0.0.25-autoconf-generated.patch,
+  vmware-modules-1.0.0.25-r1.ebuild:
+  Bug 301320
+
+*vmware-modules-1.0.0.25-r1 (13 Feb 2010)
+
+  13 Feb 2010; Patrick Lauer <patrick@gentoo.org>
+  +vmware-modules-1.0.0.25-r1.ebuild:
+  Small fix for header changes in 2.6.33 and later
+
+  02 Jan 2010; Vadim Kuznetsov <vadimk@gentoo.org>
+  -vmware-modules-1.0.0.24.ebuild, vmware-modules-1.0.0.24-r1.ebuild,
+  vmware-modules-1.0.0.25.ebuild, +files/sched_h-2.6.32.patch:
+  Bug 295955
+
+  30 Oct 2009; Vadim Kuznetsov vadimk@gentoo.org
+  -files/1.0.0.23-makefile-kernel-dir.patch,
+  -vmware-modules-1.0.0.23.ebuild, -vmware-modules-1.0.0.23-r1.ebuild,
+  -files/1.0.0.23-r1-kernel-2.6.29.patch:
+  cleanup
+
+  25 Sep 2009; Markus Meier <maekke@gentoo.org>
+  vmware-modules-1.0.0.25.ebuild:
+  amd64 stable, bug #282213
+
+*vmware-modules-1.0.0.24-r1 (22 Sep 2009)
+
+  22 Sep 2009; Vadim Kuznetsov vadimk@gentoo.org
+  +vmware-modules-1.0.0.24-r1.ebuild, +files/1.0.0.24-vmnet-2.6.31.patch:
+  vmnet patch for 2.6.31 kernel. Bug 274173, comment 15.
+
+  02 Sep 2009; Vadim Kuznetsov vadimk@gentoo.org
+  -files/patches/vmmon/050_all_kernel-2.6.29.patch,
+  -files/patches/vmnet/040_all_kernel-2.6.29.patch:
+  revert previous commit. Bug 273173
+
+  28 Aug 2009; Vadim Kuznetsov vadimk@gentoo.org
+  +files/patches/vmmon/050_all_kernel-2.6.29.patch,
+  +files/patches/vmnet/040_all_kernel-2.6.29.patch:
+  bugs 264098, 273173. 1.0.0.15-r2 patches suggested in 272173
+
+  25 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  vmware-modules-1.0.0.25.ebuild:
+  stable x86, security bug 282213
+
+*vmware-modules-1.0.0.25 (22 Aug 2009)
+
+  22 Aug 2009; Vadim Kuznetsov vadimk@gentoo.org
+  +files/1.0.0.25-makefile-include.patch, +vmware-modules-1.0.0.25.ebuild,
+  +files/1.0.0.25-makefile-kernel-dir.patch:
+  Version bump. modules for vmware-{workstation,player}-{6.2}.5.3
+
+  03 Jul 2009; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Fix e-mail address.
+
+*vmware-modules-1.0.0.24 (14 Jun 2009)
+
+  14 Jun 2009; Vadim Kuznetsov vadimk@gentoo.org
+  +vmware-modules-1.0.0.24.ebuild, +files/1.0.0.24-kernel-2.6.29.patch,
+  +files/1.0.0.24-kernel-2.6.30.patch,
+  +files/1.0.0.24-makefile-kernel-dir.patch, metadata.xml:
+  Bugs 268099, 270150, 273750. New ebuild without vmware-mod eclass.
+
+*vmware-modules-1.0.0.23-r1 (16 May 2009)
+
+  16 May 2009; Mike Auty <ikelos@gentoo.org>
+  +vmware-modules-1.0.0.23-r1.ebuild,
+  +files/1.0.0.23-r1-kernel-2.6.29.patch:
+  Version bump vmware-modules for 2.6.29 support.
+
+  22 Feb 2009; Mike Auty <ikelos@gentoo.org>
+  -files/1.0.0.20-vmblock-2.6.26-2.patch,
+  -files/1.0.0.20-makefile-kernel-dir.patch,
+  -files/1.0.0.20-vmblock-2.6.26-1.patch,
+  -files/1.0.0.20-vmmon-2.6.26.patch, -files/1.0.0.20-vmnet-2.6.26.patch,
+  -files/1.0.0.22-makefile-kernel-dir.patch,
+  -vmware-modules-1.0.0.20.ebuild, -vmware-modules-1.0.0.22.ebuild:
+  Clear out old versions of vmware-modules that are no longer needed due to
+  the removal of insecure versions of vmware products (bug 245941).
+
+  14 Jan 2009; Mike Auty <ikelos@gentoo.org>
+  files/patches/vmnet/030_all_kernel-2.6.27.patch:
+  Third time lucky, more patches for < 2.6.26 kernels.
+
+  14 Jan 2009; Mike Auty <ikelos@gentoo.org>
+  files/patches/vmnet/030_all_kernel-2.6.27.patch:
+  Add patch to try and fix bug 254768.
+
+  12 Jan 2009; Mike Auty <ikelos@gentoo.org> Manifest:
+  Fix up vmware-modules-1.0.0.15 patches for kernels older than 2.6.27.
+
+  12 Jan 2009; Markus Meier <maekke@gentoo.org>
+  vmware-modules-1.0.0.23.ebuild:
+  amd64/x86 stable, bug #245941
+
+  11 Jan 2009; Markus Meier <maekke@gentoo.org>
+  vmware-modules-1.0.0.15-r2.ebuild:
+  amd64/x86 stable, bug #236167
+
+  10 Jan 2009; Mike Auty <ikelos@gentoo.org>
+  -files/1.0.0.17-update115-nasty-hack.patch,
+  -vmware-modules-1.0.0.16-r1.ebuild, -vmware-modules-1.0.0.17.ebuild,
+  -vmware-modules-1.0.0.17-r1.ebuild:
+  Clear out old modules for products no longer in the tree.
+
+*vmware-modules-1.0.0.15-r2 (10 Jan 2009)
+
+  10 Jan 2009; Mike Auty <ikelos@gentoo.org>
+  +files/patches/vmmon/040_all_kernel-2.6.27.patch,
+  +files/patches/vmnet/030_all_kernel-2.6.27.patch,
+  +vmware-modules-1.0.0.15-r2.ebuild:
+  Add in vmware-modules-1.0.0.15-r2. Should compile on kernels up to and
+  including 2.6.28, big thanks go to Tim Yamin for help with the patches.
+
+*vmware-modules-1.0.0.23 (09 Nov 2008)
+
+  09 Nov 2008; Mike Auty <ikelos@gentoo.org>
+  +files/1.0.0.23-makefile-kernel-dir.patch, vmware-modules-1.0.0.20.ebuild,
+  vmware-modules-1.0.0.22.ebuild, +vmware-modules-1.0.0.23.ebuild:
+  Add in vmware-modules-1.0.0.23 for vmware-workstation-6.5 and
+  vmware-player-2.5.
+
+*vmware-modules-1.0.0.22 (30 Sep 2008)
+
+  30 Sep 2008; Mike Auty <ikelos@gentoo.org>
+  +files/1.0.0.20-vmblock-2.6.26-1.patch,
+  +files/1.0.0.20-vmblock-2.6.26-2.patch,
+  +files/1.0.0.20-vmmon-2.6.26.patch,
+  +files/1.0.0.22-makefile-kernel-dir.patch,
+  +files/1.0.0.20-vmnet-2.6.26.patch, -vmware-modules-1.0.0.11-r1.ebuild,
+  -vmware-modules-1.0.0.13-r1.ebuild, vmware-modules-1.0.0.20.ebuild,
+  +vmware-modules-1.0.0.22.ebuild:
+  Remove old unused versions, fix up 1.0.0.20 bugs and put in a new version
+  for workstation 6.0.5 and player 2.0.5.
+
+  18 Jun 2008; Mike Auty <ikelos@gentoo.org>
+  +files/1.0.0.20-makefile-kernel-dir.patch, vmware-modules-1.0.0.20.ebuild:
+  Fix kernel build directories (bug 227941).
+
+*vmware-modules-1.0.0.20 (14 Jun 2008)
+
+  14 Jun 2008; Mike Auty <ikelos@gentoo.org> +vmware-modules-1.0.0.20.ebuild:
+  Add in vmware-modules-1.0.0.20 for workstation 6.0.4 and player 2.0.4.
+
+  26 Apr 2008; Mike Auty <ikelos@gentoo.org>
+  +files/patches/vmblock/010_all_kernel-2.6.25.patch,
+  +files/patches/vmmon/035_all_kernel-2.6.25.patch,
+  +files/patches/vmnet/025_all_kernel-2.6.25.patch:
+  Add patches for -r1 ebuilds to ensure they work on 2.6.25 and older
+  kernels.
+
+  31 Jan 2008; Mike Auty <ikelos@gentoo.org> ChangeLog:
+  Re-sign digestless manifest.
+
+*vmware-modules-1.0.0.17-r1 (26 Jan 2008)
+
+  26 Jan 2008; Mike Auty <ikelos@gentoo.org>
+  +files/1.0.0.17-update115-nasty-hack.patch,
+  +files/patches/vmmon/030_all_fix-linux-headers.patch,
+  +files/patches/vmnet/021_all_wireless_fix.patch,
+  +vmware-modules-1.0.0.17-r1.ebuild:
+  Bump vmware-modules to any-any115, and apply fixes for wireless and 2.6.24.
+
+  25 Nov 2007; Mike Auty <ikelos@gentoo.org>
+  -files/1.0.0.16-kernel-2.6.22.patch, -vmware-modules-1.0.0.16.ebuild,
+  vmware-modules-1.0.0.17.ebuild:
+  Bump to vmware-any-any-update114. Also update 1.0.0.17 to use the latest
+  vmware-player package.
+
+  14 Oct 2007; Mike Auty <ikelos@gentoo.org>
+  vmware-modules-1.0.0.16-r1.ebuild:
+  Add vmblock module building to vmware-modules-1.0.0.16-r1
+
+*vmware-modules-1.0.0.17 (14 Oct 2007)
+
+  14 Oct 2007; Mike Auty <ikelos@gentoo.org> vmware-modules-1.0.0.16.ebuild,
+  +vmware-modules-1.0.0.17.ebuild:
+  Add the latest modules for vmware-workstation-6.0.1
+
+*vmware-modules-1.0.0.16-r1 (16 Sep 2007)
+
+  16 Sep 2007; Mike Auty <ikelos@gentoo.org>
+  -files/1.0.0.15-gcc4-ignore-pedantic-errors.patch,
+  +vmware-modules-1.0.0.16-r1.ebuild:
+  Adding in vmware-modules-1.0.0.16-r1, now that vmware-any-any-update can
+  handle workstation 6. Also cleaned out an old patch for 1.0.0.15.
+
+  28 Jul 2007; Mike Auty <ikelos@gentoo.org>
+  +files/1.0.0.16-kernel-2.6.22.patch, vmware-modules-1.0.0.16.ebuild:
+  Redigest for vmware-any-any-update112.
+
+  12 Jul 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  -vmware-modules-1.0.0.11.ebuild, vmware-modules-1.0.0.11-r1.ebuild,
+  -vmware-modules-1.0.0.13.ebuild, vmware-modules-1.0.0.13-r1.ebuild:
+  Marking 1.0.0.11-r1 and 1.0.0.13-r1 stable on amd64/x86 since the changes
+  from the previous ebuilds is just the placement of a variable, and the
+  current stable versions didn't work properly.
+
+*vmware-modules-1.0.0.16 (24 Jun 2007)
+
+  24 Jun 2007; Mike Auty <ikelos@gentoo.org>
+  +vmware-modules-1.0.0.16.ebuild:
+  Add in the latest modules for vmware-player-2 and vmware-workstation-6.
+
+  28 Apr 2007; Mike Auty <ikelos@gentoo.org>
+  -files/patches/010_all_makefile-vm-build-no-unused-warnings.patch:
+  Remove unnecessary patch, that's now part of any-any109.
+
+  28 Apr 2007; Mike Auty <ikelos@gentoo.org>
+  files/digest-vmware-modules-1.0.0.11,
+  files/digest-vmware-modules-1.0.0.11-r1,
+  files/digest-vmware-modules-1.0.0.13,
+  files/digest-vmware-modules-1.0.0.13-r1,
+  files/digest-vmware-modules-1.0.0.15-r1, Manifest:
+  Redigest for vmware-any-any109.
+
+  04 Mar 2007; Mike Auty <ikelos@gentoo.org>
+  -vmware-modules-1.0.0.15.ebuild:
+  Bump vmware-any-any to 108.  Remove old vmware-server module ebuild.
+
+  05 Feb 2007; Mike Auty <ikelos@gentoo.org>
+  vmware-modules-1.0.0.15-r1.ebuild:
+  Vmware-any-any bump to support 2.6.20 and fix a copyright date.
+
+  17 Dec 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/patches/010_all_makefile-vm-build-no-unused-warnings.patch,
+  +files/patches/020_all_epoll-def-warnings.patch:
+  Fix building with newer kernels #146004.
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-modules-1.0.0.15-r1.ebuild:
+  Stable on amd64/x86 for vmware-workstation-5.5.3.
+
+  01 Dec 2006; Mike Auty <ikelos@gentoo.org>
+  files/digest-vmware-modules-1.0.0.11,
+  files/digest-vmware-modules-1.0.0.11-r1,
+  files/digest-vmware-modules-1.0.0.13,
+  files/digest-vmware-modules-1.0.0.13-r1,
+  files/digest-vmware-modules-1.0.0.15-r1, Manifest:
+  Redigest for vmware-any-any105.
+
+  30 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -vmware-modules-1.0.0.8.ebuild:
+  Removed verion 0.0.8 since we have removed the only VMware product (VMware
+  Workstation 3.2.1) that used it.
+
+*vmware-modules-1.0.0.15-r1 (17 Oct 2006)
+*vmware-modules-1.0.0.13-r1 (17 Oct 2006)
+*vmware-modules-1.0.0.11-r1 (17 Oct 2006)
+
+  17 Oct 2006; Mike Auty <ikelos@gentoo.org>
+  +vmware-modules-1.0.0.11-r1.ebuild, +vmware-modules-1.0.0.13-r1.ebuild,
+  +vmware-modules-1.0.0.15-r1.ebuild:
+  Version bump for all vmware-modules to fix for bug 149679, thanks to Jason
+  Urbank.
+
+  22 Sep 2006; Mike Auty <ikelos@gentoo.org>
+  files/patches/000_all_makefile-include-directory.patch:
+  Updated patch fixing bug #148613, thanks to Alon Bar-Lev.
+
+  13 Sep 2006; Mike Auty <ikelos@gentoo.org>
+  +files/1.0.0.15-gcc4-ignore-pedantic-errors.patch,
+  vmware-modules-1.0.0.15.ebuild:
+  Add a patch to fix compilation against kernels <= 2.6.16 with gcc-4.1.
+  Closes bug #146004.
+
+  28 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-modules-1.0.0.8.ebuild:
+  Stable on x86 for vmware-workstation.
+
+  27 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-modules-1.0.0.11.ebuild:
+  Stable on amd64 and x86 for vmware-workstation.
+
+  25 Aug 2006; Mike Auty <ikelos@gentoo.org>
+  files/digest-vmware-modules-1.0.0.8, files/digest-vmware-modules-1.0.0.11,
+  files/digest-vmware-modules-1.0.0.13, Manifest:
+  Redigested for vmware-any-any-update104.
+
+  22 Aug 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  vmware-modules-1.0.0.13.ebuild:
+  Stable on amd64 and x86 for vmware-workstation and vmware-player.
+
+  19 Aug 2006; Mike Auty <ikelos@gentoo.org> vmware-modules-1.0.0.15.ebuild:
+  Update vmware-modules to use the latest vmware-server package.
+
+  08 Aug 2006; Mike Auty <ikelos@gentoo.org>
+  files/digest-vmware-modules-1.0.0.8, files/digest-vmware-modules-1.0.0.11,
+  files/digest-vmware-modules-1.0.0.13, Manifest:
+  Make use of vmware-any-any103, which fixes kernel problems on 2.6.18, and
+  also two patches for problems with the kernel build system, thanks to Georgi
+  Georgiev <chutz (at) gg3.net> and Alon Bar-Lev <alon.barlev (at) gmail.com>.
+  Closes bug #142855.
+
+*vmware-modules-1.0.0.13 (31 Jul 2006)
+*vmware-modules-1.0.0.11 (31 Jul 2006)
+*vmware-modules-1.0.0.8 (31 Jul 2006)
+
+  31 Jul 2006; Mike Auty <ikelos@gentoo.org> +vmware-modules-1.0.0.8.ebuild,
+  +vmware-modules-1.0.0.11.ebuild, +vmware-modules-1.0.0.13.ebuild,
+  vmware-modules-1.0.0.15.ebuild:
+  Add in vmware-modules for workstation and player products.
+
+*vmware-modules-1.0.0.15 (31 Jul 2006)
+
+  31 Jul 2006; Mike Auty <ikelos@gentoo.org>
+  +files/patches/000_all_makefile-include-directory.patch, +metadata.xml,
+  +vmware-modules-1.0.0.15.ebuild:
+  Initial commit of vmware-modules, as used by several vmware-packages.

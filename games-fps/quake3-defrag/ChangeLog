@@ -1,0 +1,67 @@
+# ChangeLog for games-fps/quake3-defrag
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-defrag/ChangeLog,v 1.14 2013/01/31 00:39:43 mr_bones_ Exp $
+
+  31 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -quake3-defrag-1.91.08-r1.ebuild:
+  old
+
+*quake3-defrag-1.91.21 (26 Jan 2013)
+
+  26 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  +quake3-defrag-1.91.21.ebuild:
+  version bump (bug #452260)
+
+  26 Jan 2012; Agostino Sarubbo <ago@gentoo.org> quake3-defrag-1.91.20.ebuild:
+  Stable for AMD64, wrt bug #390789
+
+  26 Jan 2012; Thomas Kahle <tomka@gentoo.org> quake3-defrag-1.91.20.ebuild:
+  x86 stable per bug 390789
+
+*quake3-defrag-1.91.20 (17 Oct 2011)
+
+  17 Oct 2011; Michael Sterrett <mr_bones_@gentoo.org>
+  +quake3-defrag-1.91.20.ebuild:
+  version bump (bug #386927)
+
+  10 Oct 2009; Tristan Heaven <nyhm@gentoo.org>
+  quake3-defrag-1.91.08-r1.ebuild:
+  Stable on amd64/x86
+
+  07 Oct 2009; Tristan Heaven <nyhm@gentoo.org>
+  quake3-defrag-1.91.08-r1.ebuild:
+  EAPI=2
+
+  22 Aug 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  quake3-defrag-1.91.08-r1.ebuild:
+  update SRC_URI (bug #282300)
+
+  23 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake3-defrag-1.91.08-r1.ebuild:
+  Added KEYWORDS and RDEPEND so it'll work on PPC.
+
+*quake3-defrag-1.91.08-r1 (23 Oct 2006)
+
+  23 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +quake3-defrag-1.91.08-r1.ebuild:
+  Added new revision for testing which uses the brand-spankin-new
+  games-mods.eclass to reduce ebuild code.
+
+*quake3-defrag-1.91.08 (31 Mar 2006)
+
+  31 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  -quake3-defrag-1.9.ebuild, -quake3-defrag-1.91.ebuild,
+  +quake3-defrag-1.91.08.ebuild:
+  Version bump to 1.91.08 and closing bug #121303. Thanks to Sascha
+  Geschwandtner <s.geschwandtner@gmx.de> for the ebuild.
+
+*quake3-defrag-1.91 (27 Dec 2004)
+
+  27 Dec 2004; Mike Frysinger <vapier@gentoo.org>
+  +quake3-defrag-1.91.ebuild:
+  Version bump #53579 by Jan Brinkmann.
+
+*quake3-defrag-1.9 (30 Nov 2003)
+
+  30 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Simon Hastie <zyklon@gmx.net> #33885.

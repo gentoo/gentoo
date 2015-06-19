@@ -1,0 +1,18 @@
+diff -ur m4.orig/httpd.m4 m4/httpd.m4
+--- m4.orig/httpd.m4	2009-10-25 14:10:24.398721002 +0200
++++ m4/httpd.m4	2009-10-25 14:12:54.463219758 +0200
+@@ -58,12 +58,12 @@
+     *) APACHE22= ;;
+ esac
+ 
+-httpdconf=${httpd_root}/${httpd_conf_rel}
++httpdconf=/etc/apache2/httpd.conf
+ 
+ mimemagic=`grep MIMEMagicFile $httpdconf|grep -v \^# | awk '{print $2}'`
+ if test ! -f "$mimemagic" ; then
+ # assume relative to root
+-    mimemagic=${httpd_root}/${mimemagic}
++    mimemagic=/etc/apache2/magic 
+ fi
+ 
+ # check for mime.types file

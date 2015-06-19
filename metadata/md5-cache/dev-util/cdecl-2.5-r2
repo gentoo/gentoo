@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=readline? ( sys-libs/ncurses sys-libs/readline ) || ( dev-util/yacc sys-devel/bison ) !<dev-util/cutils-1.6-r2
+DESCRIPTION=Turn English phrases to C or C++ declarations
+HOMEPAGE=http://www.boutell.com/lsm/lsmbyid.cgi/002103
+IUSE=readline
+KEYWORDS=amd64 ~mips ppc x86
+LICENSE=public-domain
+RDEPEND=readline? ( sys-libs/ncurses sys-libs/readline )
+SLOT=0
+SRC_URI=ftp://ftp.netsw.org/softeng/lang/c/tools/cdecl/cdecl-2.5.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=0552872afbe9904480e8411106f1829f

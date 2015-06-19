@@ -1,0 +1,22 @@
+From 489acd2ee62eb5fbff95f8220dc8958c14871931 Mon Sep 17 00:00:00 2001
+From: keithgg <concentricpuddle@gmail.com>
+Date: Tue, 16 Jun 2015 20:47:19 +0200
+Subject: [PATCH] Fixes #261
+
+---
+ source/puddlestuff/puddleobjects.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/source/puddlestuff/puddleobjects.py b/source/puddlestuff/puddleobjects.py
+index ffc6bf7..436b7b8 100644
+--- a/source/puddlestuff/puddleobjects.py
++++ b/source/puddlestuff/puddleobjects.py
+@@ -1418,7 +1418,7 @@ def __init__(self, *args, **kwargs):
+         super(ArtworkLabel, self).__init__(*args, **kwargs)
+ 
+         pal = self.palette()
+-        pal.setBrush(self.backgroundRole(), QBrush(QPalette.Window))
++        pal.setBrush(self.backgroundRole(), QBrush(pal.window()))
+         self.setAutoFillBackground(True)
+         self.setPalette(pal)
+ 

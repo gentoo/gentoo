@@ -1,0 +1,122 @@
+--- configure
++++ configure
+@@ -301,7 +301,7 @@ fi
+ if [ "$CFG_XSPF" != "" ]
+ then
+ 	CFLAGS="$CFLAGS -DBUILD_XSPF"
+-	LDFLAGS="$LDFLAGS -lspiff"
++	test_pkgconfig "libxspf" "xspf" "_vfs_xspf"
+ 	SRCS="$SRCS util vfs_xspf"
+ 	PLAYQ_DUMPFILE="autosave.xspf"
+ else
+--- src/conftest.c
++++ src/conftest.c
+@@ -56,16 +56,10 @@
+ #include <vorbis/codec.h>
+ #include <vorbis/vorbisfile.h>
+ #endif /* BUILD_VORBIS */
+-#ifdef BUILD_XSPF
+-#include <spiff/spiff_c.h>
+-#endif /* BUILD_XSPF */
+ 
+ int
+ main(int argc, char *argv[])
+ {
+-#ifdef BUILD_XSPF
+-	spiff_write(NULL, NULL, NULL);
+-#endif /* BUILD_XSPF */
+ 
+ 	return (0);
+ }
+--- src/vfs_xspf.c
++++ src/vfs_xspf.c
+@@ -30,7 +30,7 @@
+ 
+ #include "stdinc.h"
+ 
+-#include <spiff/spiff_c.h>
++#include <xspf_c.h>
+ 
+ #include "util.h"
+ #include "vfs.h"
+@@ -50,22 +50,22 @@ vfs_xspf_match(struct vfsent *ve, int isdir)
+ int
+ vfs_xspf_populate(struct vfsent *ve)
+ {
+-	struct spiff_list *slist;
+-	struct spiff_track *strack;
+-	struct spiff_mvalue *sloc;
++	struct xspf_list *slist;
++	struct xspf_track *strack;
++	struct xspf_mvalue *sloc;
+ 	char *dirname, *baseuri, *filename;
+ 	struct vfsref *vr;
+ 
+ 	baseuri = url_escape(ve->filename);
+-	slist = spiff_parse(ve->filename, baseuri);
++	slist = xspf_parse(ve->filename, baseuri);
+ 	g_free(baseuri);
+ 	if (slist == NULL)
+ 		return (-1);
+ 
+ 	dirname = g_path_get_dirname(ve->filename);
+ 
+-	SPIFF_LIST_FOREACH_TRACK(slist, strack) {
+-		SPIFF_TRACK_FOREACH_LOCATION(strack, sloc) {
++	XSPF_LIST_FOREACH_TRACK(slist, strack) {
++		XSPF_TRACK_FOREACH_LOCATION(strack, sloc) {
+ 			/* Skip file:// part */
+ 			filename = url_unescape(sloc->value);
+ 
+@@ -77,40 +77,40 @@ vfs_xspf_populate(struct vfsent *ve)
+ 	}
+ 	
+ 	g_free(dirname);
+-	spiff_free(slist);
++	xspf_free(slist);
+ 	return (0);
+ }
+ 
+ int
+ vfs_xspf_write(const struct vfslist *vl, const char *filename)
+ {
+-	struct spiff_list *list;
+-	struct spiff_track *track;
+-	struct spiff_mvalue *location;
++	struct xspf_list *list;
++	struct xspf_track *track;
++	struct xspf_mvalue *location;
+ 	char *fn, *baseuri;
+ 	struct vfsref *vr;
+ 	int ret;
+ 
+-	list = spiff_new();
++	list = xspf_new();
+ 
+ 	VFS_LIST_FOREACH_REVERSE(vl, vr) {
+ 		/* Add a new track to the beginning of the list */
+-		track = spiff_new_track_before(&list->tracks);
++		track = xspf_new_track_before(&list->tracks);
+ 
+ 		/* Make sure we don't write non-UTF-8 titles to disk */
+ 		if (g_utf8_validate(vfs_name(vr), -1, NULL))
+-			spiff_setvalue(&track->title, vfs_name(vr));
++			xspf_setvalue(&track->title, vfs_name(vr));
+ 
+-		location = spiff_new_mvalue_before(&track->locations);
++		location = xspf_new_mvalue_before(&track->locations);
+ 		fn = url_escape(vfs_filename(vr));
+-		spiff_setvalue(&location->value, fn);
++		xspf_setvalue(&location->value, fn);
+ 		g_free(fn);
+ 	}
+ 
+ 	baseuri = url_escape(filename);
+-	ret = spiff_write(list, filename, baseuri);
++	ret = xspf_write(list, filename, baseuri);
+ 	g_free(baseuri);
+-	spiff_free(list);
++	xspf_free(list);
+ 
+ 	return (ret);
+ }

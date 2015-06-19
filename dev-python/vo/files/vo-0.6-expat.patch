@@ -1,0 +1,19 @@
+--- defsetup.py.orig	2010-07-21 17:35:59.000000000 +0100
++++ defsetup.py	2010-07-21 17:37:06.000000000 +0100
+@@ -17,14 +17,9 @@
+ 
+ iterparse_ext = Extension(
+     "vo.iterparser",
+-    ["src/iterparse.c",
+-     "src/expat/xmlparse.c",
+-     "src/expat/xmlrole.c",
+-     "src/expat/xmltok.c",
+-     "src/expat/xmltok_impl.c"
+-     ],
++    ["src/iterparse.c"],
+     define_macros=defines,
+-    include_dirs=["src", "src/expat"])
++    libraries=["expat"])
+ 
+ pkg = ['vo', 'vo.tests']
+ # Python < 2.6 doesn't have the json module

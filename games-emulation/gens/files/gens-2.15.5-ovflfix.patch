@@ -1,0 +1,13 @@
+--- src/gens/gens_core/cpu/68k/cpu_68k.c.old	2010-10-28 09:34:52.000000000 +0200
++++ src/gens/gens_core/cpu/68k/cpu_68k.c	2010-10-28 09:35:53.000000000 +0200
+@@ -239,8 +239,8 @@
+   memset (Ram_Word_2M, 0, 256 * 1024);
+   memset (Ram_Word_1M, 0, 256 * 1024);
+ 
+-  memset (COMM.Command, 0, 8 * 5);
+-  memset (COMM.Status, 0, 8 * 5);
++  memset (COMM.Command, 0, sizeof (COMM.Command));
++  memset (COMM.Status, 0, sizeof (COMM.Status));
+ 
+   LED_Status = S68K_State = S68K_Mem_WP = S68K_Mem_PM = Ram_Word_State = 0;
+   COMM.Flag = Init_Timer_INT3 = Timer_INT3 = Int_Mask_S68K = 0;

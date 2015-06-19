@@ -1,0 +1,32 @@
+# ChangeLog for sys-block/whdd
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/whdd/ChangeLog,v 1.6 2014/11/02 15:39:08 maksbotan Exp $
+
+*whdd-2.2 (02 Nov 2014)
+
+  02 Nov 2014; Maxim Koltsov <maksbotan@gentoo.org> +whdd-2.2.ebuild,
+  -whdd-1.0.ebuild, -whdd-2.0.ebuild:
+  Bump to 2.2, fixes bug #527316. Thanks to Andrey Utkin.
+
+*whdd-2.1 (09 Dec 2013)
+
+  09 Dec 2013; Maxim Koltsov <maksbotan@gentoo.org> +whdd-2.1.ebuild:
+  Bump to 2.1
+
+  30 Jun 2013; Maxim Koltsov <maksbotan@gentoo.org> whdd-2.0.ebuild:
+  Create correct VERSION file for release versions
+
+*whdd-2.0 (29 Jun 2013)
+
+  29 Jun 2013; Maxim Koltsov <maksbotan@gentoo.org> +whdd-2.0.ebuild:
+  Bump to 2.0, thanks to Andrey Utkin.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*whdd-9999 (08 Mar 2012)
+*whdd-1.0 (08 Mar 2012)
+
+  08 Mar 2012; Maxim Koltsov <maksbotan@gentoo.org> +metadata.xml,
+  +whdd-1.0.ebuild, +whdd-9999.ebuild:
+  Add sys-apps/whdd, thanks to Andrey Utkin <andrey.krieger.utkin@gmail.com>

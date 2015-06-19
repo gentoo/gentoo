@@ -1,0 +1,19 @@
+--- doc/Makefile.in.orig	2008-05-04 17:55:52.000000000 +0400
++++ doc/Makefile.in	2008-05-04 17:55:58.000000000 +0400
+@@ -89,16 +89,6 @@
+ 
+ 
+ install: dummy
+-	if (test -f t1lib_doc.ps) \
+-	then \
+-	  $(MKINSTALLDIRS) $(DESTDIR)@T1LIB_DATA_DIR@/doc; \
+-	  $(INSTALL_DATA) t1lib_doc.ps $(DESTDIR)@T1LIB_DATA_DIR@/doc; \
+-	fi;
+-	if (test -f t1lib_doc.pdf) \
+-	then \
+-	  $(MKINSTALLDIRS) $(DESTDIR)@T1LIB_DATA_DIR@/doc; \
+-	  $(INSTALL_DATA) t1lib_doc.pdf $(DESTDIR)@T1LIB_DATA_DIR@/doc; \
+-	fi;
+ 
+ 
+ uninstall: dummy

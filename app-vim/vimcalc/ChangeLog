@@ -1,0 +1,34 @@
+# ChangeLog for app-vim/vimcalc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/vimcalc/ChangeLog,v 1.8 2015/02/19 20:16:31 radhermit Exp $
+
+  19 Feb 2015; Tim Harder <radhermit@gentoo.org> -vimcalc-1.3-r1.ebuild:
+  Remove old.
+
+  09 Feb 2015; Tim Harder <radhermit@gentoo.org> vimcalc-1.3-r2.ebuild:
+  Fix test file removal.
+
+*vimcalc-1.3-r2 (09 Feb 2015)
+
+  09 Feb 2015; Tim Harder <radhermit@gentoo.org> +vimcalc-1.3-r2.ebuild:
+  Run tests and don't install test file (bug #535790).
+
+*vimcalc-1.3-r1 (06 Jan 2015)
+
+  06 Jan 2015; Michał Górny <mgorny@gentoo.org> +vimcalc-1.3-r1.ebuild:
+  Convert to python-single-r1, enforce a match on Python version used by vim.
+
+  11 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> vimcalc-1.3.ebuild:
+  x86 stable wrt bug #393145
+
+  09 Dec 2011; Markos Chandras <hwoarang@gentoo.org> vimcalc-1.3.ebuild:
+  Stable on amd64 wrt bug #393145
+
+  07 Dec 2011; Tim Harder <radhermit@gentoo.org> vimcalc-1.3.ebuild:
+  Restrict to python-2* rdep.
+
+*vimcalc-1.3 (04 May 2011)
+
+  04 May 2011; Tim Harder <radhermit@gentoo.org> +vimcalc-1.3.ebuild,
+  +metadata.xml:
+  Initial import.

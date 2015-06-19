@@ -1,0 +1,143 @@
+# ChangeLog for app-text/pstotext
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/pstotext/ChangeLog,v 1.41 2015/04/14 23:50:53 mrueg Exp $
+
+  14 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -pstotext-1.9-r2.ebuild:
+  Remove old.
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> pstotext-1.9-r2.ebuild,
+  pstotext-1.9-r3.ebuild:
+  Drop sparc keywords
+
+  08 Mar 2012; Brent Baude <ranger@gentoo.org> pstotext-1.9-r3.ebuild:
+  Marking pstotext-1.9-r3 ppc64 for bug 396845
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> pstotext-1.9-r3.ebuild:
+  Marking pstotext-1.9-r3 ppc for bug 396845
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> pstotext-1.9-r3.ebuild:
+  x86 stable wrt bug #396845
+
+  08 Feb 2012; Jeroen Roovers <jer@gentoo.org> pstotext-1.9-r3.ebuild:
+  Stable for HPPA (bug #396845).
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org> pstotext-1.9-r3.ebuild:
+  Stable for amd64, wrt bug #396845
+
+*pstotext-1.9-r3 (03 Oct 2010)
+
+  03 Oct 2010; Justin Lecher <jlec@gentoo.org> +files/1.9-flags.patch,
+  -pstotext-1.8g-r1.ebuild, -files/pstotext-1.8g-dsafer.patch,
+  pstotext-1.9-r2.ebuild, +pstotext-1.9-r3.ebuild:
+  QA, removed old, respecting LDFLAGS/CFLAGS/CC, 335595
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> pstotext-1.8g-r1.ebuild,
+  pstotext-1.9-r2.ebuild:
+  virtual/ghostscript->app-text/ghostscript-gpl: ghostscript-gpl is the only
+  implementation left in the tree.
+
+  21 Jun 2007; Jeroen Roovers <jer@gentoo.org> pstotext-1.9-r2.ebuild:
+  Stable for HPPA (bug #182403).
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  29 Oct 2006; Alexandre Buisse <nattfodd@gentoo.org> -pstotext-1.8g.ebuild:
+  Security cleanup (bug #140507).
+
+  21 May 2006; Mark Loeser <halcy0n@gentoo.org> pstotext-1.9-r2.ebuild:
+  Stable on x86; bug #132662
+
+  19 May 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  pstotext-1.9-r2.ebuild:
+  ppc stable, bug #132662
+
+  19 May 2006; Markus Rothe <corsair@gentoo.org> pstotext-1.9-r2.ebuild:
+  Stable on ppc64; bug #132662
+
+  19 May 2006; Jon Hood <squinky86@gentoo.org> pstotext-1.9-r2.ebuild:
+  Stable on amd64, #132662.
+
+  19 May 2006; Ferris McCormick <fmccor@gentoo.org> Manifest:
+  Remove pstotext-1.9-r1 at developer request --- Bug #132662 .
+
+  19 May 2006; Ferris McCormick <fmccor@gentoo.org> pstotext-1.9-r2.ebuild:
+  Stable on sparc (Security Bug #132662 + stdin problems fixed).
+
+  19 May 2006; Martin Ehmsen <ehmsen@gentoo.org> +pstotext-1.9-r1.ebuild,
+  pstotext-1.9-r2.ebuild:
+  Forgot sparc marked 1.9-r1 stable, so readding it and changing -r2 to ~sparc
+  (argh!).
+
+*pstotext-1.9-r2 (19 May 2006)
+
+  19 May 2006; Martin Ehmsen <ehmsen@gentoo.org>
+  files/pstotext-1.9-quote-chars-fix.patch, -pstotext-1.9-r1.ebuild,
+  +pstotext-1.9-r2.ebuild:
+  Fixed pstotext-1.9-quote-chars-fix.patch so input from stdin works.
+
+  08 May 2006; Ferris McCormick <fmccor@gentoo.org> pstotext-1.9-r1.ebuild:
+  Stable for sparc, Bug #132662 --- builds without incident and seems fine.
+
+*pstotext-1.9-r1 (08 May 2006)
+
+  08 May 2006; Martin Ehmsen <ehmsen@gentoo.org>
+  +files/pstotext-1.9-quote-chars-fix.patch, metadata.xml,
+  -pstotext-1.9.ebuild, +pstotext-1.9-r1.ebuild:
+  Added text-markup as herd (taking over maintainership).
+  Fixed security bug #132662, by using Debian supplied patch.
+
+*pstotext-1.9 (08 Oct 2005)
+
+  08 Oct 2005; Marcelo Goes <vanquirius@gentoo.org> +metadata.xml,
+  +pstotext-1.9.ebuild:
+  1.9 version bump for bug 108084. Thanks to Thomas Fischer <fischer at
+  unix-ag dot uni-kl dot de>.
+
+  30 Jul 2005; <solar.@gentoo.org> pstotext-1.8g-r1.ebuild:
+  - bump to stable for bug #100245
+
+  27 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  pstotext-1.8g-r1.ebuild:
+  Stable on sparc wrt #100245
+
+  27 Jul 2005; Markus Rothe <corsair@gentoo.org> pstotext-1.8g-r1.ebuild:
+  Stable on ppc64 (bug #100245)
+
+  27 Jul 2005; Jory A. Pratt <anarchy@gentoo.org> pstotext-1.8g-r1.ebuild:
+  Stable on ppc wrt bug #100245
+
+*pstotext-1.8g-r1 (27 Jul 2005)
+
+  27 Jul 2005; <solar.@gentoo.org> +files/pstotext-1.8g-dsafer.patch,
+  +pstotext-1.8g-r1.ebuild:
+  - add patch from bug #100245 discovered by Max Vozeler to prevent arbitrary
+  code execution by pstotext
+
+  16 Jul 2005; Joseph Jezak <josejx@gentoo.org> pstotext-1.8g.ebuild:
+  Marked ppc stable for bug #99218.
+
+  02 Jun 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  pstotext-1.8g.ebuild:
+  mark ~ppc
+
+  07 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> pstotext-1.8g.ebuild:
+  added ~amd64 to KEYWORDS. fixes #81023
+
+  11 Oct 2004; Tom Gall <tgall@gentoo.org> pstotext-1.8g.ebuild:
+  stable on ppc64, bug#64275
+
+  09 Dec 2003; Heinrich Wendel <lanius@gentoo.org> pstotext-1.8g.ebuild:
+  changed app-text/ghostscript to virtual/ghostscript
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+
+*pstotext-1.8g (16 July 2002)
+
+  16 July 2002; Sascha Schwabbauer <cybersystem@gentoo.org> ChangeLog, pstotext-1.8g.ebuild, files/digest-pstotext-1.8g  :
+  
+  Intial version in Portage.. Enjoy!

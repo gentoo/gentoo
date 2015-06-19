@@ -1,0 +1,18 @@
+#!/sbin/runscript
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting asniff"
+	start-stop-daemon -o --quiet --start --exec /usr/sbin/aimsniff -- \
+	    -C=/etc/aimsniff/aimsniff.config
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping asniff"
+	start-stop-daemon -o --stop  -p /var/run/aimsniff_parent.pid -s QUIT
+	eend $?
+}

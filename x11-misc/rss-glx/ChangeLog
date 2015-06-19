@@ -1,0 +1,374 @@
+# ChangeLog for x11-misc/rss-glx
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/rss-glx/ChangeLog,v 1.82 2014/11/04 10:44:04 jer Exp $
+
+  04 Nov 2014; Jeroen Roovers <jer@gentoo.org>
+  files/rss-glx-0.9.1-asneeded.patch, files/rss-glx-0.9.1-quesoglc.patch:
+  Clean up patches.
+
+  04 Nov 2014; Jeroen Roovers <jer@gentoo.org>
+  files/rss-glx-0.9.1-quesoglc.patch:
+  Remove bashism (bug #527236).
+
+  28 Apr 2013; Jeroen Roovers <jer@gentoo.org> -rss-glx-0.9.0.ebuild,
+  rss-glx-0.9.1.ebuild:
+  Fix building with automake-1.13 (bug #467770 by Guy).
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> rss-glx-0.9.0.ebuild,
+  rss-glx-0.9.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org> rss-glx-0.9.1.ebuild:
+  stable ppc, bug 330349
+
+  18 Sep 2010; Raúl Porcel <armin76@gentoo.org> rss-glx-0.9.1.ebuild:
+  sparc stable wrt #330349
+
+  31 Jul 2010; Markos Chandras <hwoarang@gentoo.org> rss-glx-0.9.1.ebuild:
+  Stable on amd64 wrt bug #330349
+
+  30 Jul 2010; Christian Faulhammer <fauli@gentoo.org> rss-glx-0.9.1.ebuild:
+  stable x86, bug 330349
+
+  30 May 2010; Kacper Kowalik <xarthisius@gentoo.org> rss-glx-0.9.1.ebuild,
+  +files/rss-glx-0.9.1-asneeded.patch, +files/rss-glx-0.9.1-quesoglc.patch,
+  metadata.xml:
+  Fixing build with forced --as-needed and automagic dependency on
+  media-libs/quesoglc wrt bug 313837. Thanks Diego for reporting.
+
+*rss-glx-0.9.1 (08 Feb 2010)
+
+  08 Feb 2010; Dawid Węgliński <cla@gentoo.org> +rss-glx-0.9.1.ebuild:
+  Version bump (bug #301188)
+
+  10 Oct 2009; Raúl Porcel <armin76@gentoo.org> rss-glx-0.9.0.ebuild:
+  sparc stable wrt #279638
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> rss-glx-0.9.0.ebuild:
+  ppc stable #279638
+
+  02 Aug 2009; Markus Meier <maekke@gentoo.org> rss-glx-0.9.0.ebuild:
+  amd64/x86 stable, bug #279638
+
+*rss-glx-0.9.0 (20 Jun 2009)
+
+  20 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> +rss-glx-0.9.0.ebuild:
+  Version bump.
+
+  21 Mar 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  -files/rss-glx-0.8.1-r4-gentoo.patch,
+  -files/rss-glx-0.8.1-r4-imagemagick.patch, -rss-glx-0.8.1-r4.ebuild:
+  Remove old versions.
+
+  19 Mar 2009; Brent Baude <ranger@gentoo.org> rss-glx-0.8.1-r5.ebuild:
+  stable ppc, bug 260088
+
+  03 Mar 2009; Jeremy Olexa <darkside@gentoo.org> rss-glx-0.8.1-r5.ebuild:
+  amd64 stable, bug 260088
+
+  26 Feb 2009; Raúl Porcel <armin76@gentoo.org> rss-glx-0.8.1-r5.ebuild:
+  x86 stable wrt #260088
+
+  24 Feb 2009; Ferris McCormick <fmccor@gentoo.org> rss-glx-0.8.1-r5.ebuild:
+  Sparc stable --- Bug #260088 which see for brief comments.
+
+  24 Feb 2009; Ryan Hill <dirtyepic@gentoo.org> rss-glx-0.8.1-r5.ebuild:
+  Lock kde deps to 3
+
+*rss-glx-0.8.1-r5 (01 Feb 2009)
+
+  01 Feb 2009; Ryan Hill <dirtyepic@gentoo.org>
+  +files/rss-glx-0.8.1-gcc43.patch, +files/rss-glx-0.8.1-gentoo.patch,
+  +files/rss-glx-0.8.1-imagemagick.patch, +rss-glx-0.8.1-r5.ebuild:
+  Revision bump.
+    Bug #220825 - configure error w/ >=libtool-2
+    Bug #221286 - install into /usr/lib instead of /usr/lib64
+    Bug #227071 - GCC 4.3 compile error
+    Should also fix bug #245415 (libtool again).
+    Drop 3dnow and sse USE flags (were removed upstream in 0.8.1)
+
+  04 Apr 2008; Jeff Gardner <je_fro@gentoo.org>
+  -files/rss-glx-0.8.1-r1-gentoo.patch,
+  +files/rss-glx-0.8.1-r4-gentoo.patch,
+  +files/rss-glx-0.8.1-r4-imagemagick.patch, rss-glx-0.8.1-r4.ebuild:
+  Fix compile with new imagemagick. Thanks to Mark Peloquin for reporting
+  and Ian Abbott for the patch.
+
+  07 Jan 2008; David Shakaryan <omp@gentoo.org> rss-glx-0.8.1-r4.ebuild:
+  Add dev-util/pkgconfig to DEPEND. (bug #204594)
+
+  16 Aug 2007; Mike Frysinger <vapier@gentoo.org>
+  files/rss-glx-0.8.1-r1-gentoo.patch, rss-glx-0.8.1-r4.ebuild:
+  Fix broken patch which caused autotools to be needlessly re-run.
+
+  06 Apr 2007; Peter Weller <welp@gentoo.org> rss-glx-0.8.1-r4.ebuild:
+  Stable on amd64 wrt bug 167688
+
+  24 Feb 2007; nixnut <nixnut@gentoo.org> rss-glx-0.8.1-r4.ebuild:
+  Stable on ppc wrt bug 167688
+
+  22 Feb 2007; Jason Wever <weeve@gentoo.org> rss-glx-0.8.1-r4.ebuild:
+  Stable on SPARC wrt bug #167688.
+
+  20 Feb 2007; Markus Rothe <corsair@gentoo.org> rss-glx-0.8.1-r4.ebuild:
+  Added ~ppc64
+
+  20 Feb 2007; Raúl Porcel <armin76@gentoo.org> rss-glx-0.8.1-r4.ebuild:
+  x86 stable wrt bug 167688
+
+*rss-glx-0.8.1-r4 (19 Feb 2007)
+
+  19 Feb 2007; Samuli Suominen <ssuominen@gentoo.org>
+  +rss-glx-0.8.1-r4.ebuild:
+  Change location of XScreenSaver file for >=xscreensaver-5. Remove
+  virtual/x11 usage.
+
+  03 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  rss-glx-0.8.1-r3.ebuild:
+  Add ~alpha keyword, bug 138935.
+
+  23 Oct 2006; Simon Stelling <blubb@gentoo.org> rss-glx-0.8.1-r3.ebuild:
+  no longer hard-enable asm flags on amd64
+
+  11 Sep 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  rss-glx-0.8.1-r3.ebuild:
+  Fix bug #143287.
+
+*rss-glx-0.8.1-r3 (03 Sep 2006)
+
+  03 Sep 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  -rss-glx-0.8.1-r2.ebuild, +rss-glx-0.8.1-r3.ebuild:
+  Fix bug #142197 - install location of desktop files.
+
+  26 Aug 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  rss-glx-0.8.0-r2.ebuild:
+  modX deps from rss-glx-0.8.0-r3
+
+  08 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  rss-glx-0.8.1-r2.ebuild:
+  Fix patch name.
+
+*rss-glx-0.8.1-r2 (08 Jul 2006)
+
+  08 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/rss-glx-0.8.1-hyperspace-viewport.patch, +rss-glx-0.8.1-r2.ebuild:
+  Fix bug #138935, thanks to Calvin Walton <calvinwalton@gmail.com>.
+
+  03 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  files/digest-rss-glx-0.8.0-r2, files/digest-rss-glx-0.8.0-r3, Manifest:
+  Fix digest - see bug #138984.
+
+*rss-glx-0.8.1-r1 (03 Jul 2006)
+
+  03 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  -files/rss-glx-0.8.1-gentoo.patch, +files/rss-glx-0.8.1-r1-gentoo.patch,
+  -rss-glx-0.8.1.ebuild, +rss-glx-0.8.1-r1.ebuild:
+  Added back patch to install .desktop files correctly. See bug #138900.
+
+*rss-glx-0.8.1 (01 Jul 2006)
+
+  01 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/rss-glx-0.8.1-gentoo.patch, +rss-glx-0.8.1.ebuild:
+  Version bump, see bug #134164.
+
+  28 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-rss-glx-0.8.0-r2, files/digest-rss-glx-0.8.0-r3, Manifest:
+  Fix SHA256 digest.
+
+  14 Feb 2006; Aron Griffis <agriffis@gentoo.org> rss-glx-0.8.0-r3.ebuild:
+  Mark 0.8.0-r3 ~alpha
+
+  21 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  rss-glx-0.8.0-r3.ebuild:
+  Fixed DEPEND for modular X.
+
+*rss-glx-0.8.0-r3 (18 Dec 2005)
+
+  18 Dec 2005; Krzysiek Pawlik <nelchael@gentoo.org>
+  -files/rss-glx-0.7.4-kdedesktop.patch,
+  -files/rss-glx-0.8.0-kdedesktop.patch, -rss-glx-0.7.6.ebuild,
+  +rss-glx-0.8.0-r3.ebuild:
+  Support modular X in DEPEND. Removed old ebuild and patches.
+
+  02 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org>
+  rss-glx-0.8.0-r2.ebuild:
+  Fixed dodoc not to install COPYING and/or INSTALL.
+
+  26 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  rss-glx-0.8.0-r2.ebuild:
+  Stable on sparc wrt #100298
+
+  27 Jul 2005; Joseph Jezak <josejx@gentoo.org> rss-glx-0.8.0-r2.ebuild:
+  Marked ppc stable for bug #100288.
+
+  25 Jul 2005; Herbie Hopkins <herbs@gentoo.org> rss-glx-0.8.0-r2.ebuild:
+  Stable on amd64 wrt bug #100298.
+
+  25 Jul 2005; Jonathan Smith <smithj@gentoo.org> -rss-glx-0.7.6-r1.ebuild,
+  -rss-glx-0.8.0.ebuild, rss-glx-0.8.0-r2.ebuild:
+  x86 stable. other archs, please read bug #100298 before marking stable
+
+*rss-glx-0.8.0-r2 (01 Jul 2005)
+
+  01 Jul 2005; Jonathan Smith <smithj@gentoo.org>
+  +files/rss-glx-0.8.0-hyperspace-install-fix.patch,
+  +files/rss-glx-0.8.0-kdedesktop-r2.patch, -rss-glx-0.8.0-r1.ebuild,
+  +rss-glx-0.8.0-r2.ebuild:
+  #97245: fixed some kde bugs
+
+*rss-glx-0.8.0-r1 (25 Jun 2005)
+
+  25 Jun 2005; Jonathan Smith <smithj@gentoo.org>
+  +files/rss-glx-0.8.0-configure.in.patch, +rss-glx-0.8.0-r1.ebuild:
+  allows user-cflags for #89963; installs all screensavers for #89908; fixed
+  hackdir so that it works with xscreensaver 4.22-r1
+
+  25 Jun 2005; Jonathan Smith <smithj@gentoo.org> metadata.xml:
+  removed vapier and liquidx as maintainer
+
+  24 Jun 2005; Jonathan Smith <smithj@gentoo.org> metadata.xml:
+  added desktop-misc as herd
+
+  25 Apr 2005; Alastair Tse <liquidx@gentoo.org>
+  +files/rss-glx-0.8.0-assert.patch, rss-glx-0.8.0.ebuild:
+  patches for missing assert headers, plus typo fix in ebuild. thanks to Peter
+  Karlsson (#90177)
+
+*rss-glx-0.8.0 (20 Apr 2005)
+
+  20 Apr 2005; Alastair Tse <liquidx@gentoo.org>
+  +files/rss-glx-0.8.0-kdedesktop.patch, +files/jwz-vroot.h,
+  +rss-glx-0.8.0.ebuild:
+  version bump (#88982) and jwz vroot for xinerama support (#79579)
+
+  15 Apr 2005; Mike Frysinger <vapier@gentoo.org> rss-glx-0.7.6-r1.ebuild:
+  Add a check for kde screensaver support #88212 Olaf Freyer.
+
+*rss-glx-0.7.6-r1 (02 Feb 2005)
+
+  02 Feb 2005; Gregorio Guidi <greg_g@gentoo.org>
+  -files/rss-glx-0.7.4-gcc33.patch, +rss-glx-0.7.6-r1.ebuild:
+  Corrected kde dependencies. The kde eclass should not be needed anymore.
+
+  15 Jan 2005; Dan Armak <danarmak@gentoo.org> rss-glx-0.7.6.ebuild:
+  Changed dep on a kde-base monolithic package to accept the equivalent split
+  or -meta package. KDE 3.4 has 'split' packages as well as monolithic, and
+  either alternative may provide the same files. This dep may have to be
+  narrowed down in the future to the precise split packages required.
+
+  21 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  -rss-glx-0.7.4-r1.ebuild:
+  clean older buggy ebuild
+
+  04 Oct 2004; Alastair Tse <liquidx@gentoo.org> rss-glx-0.7.6.ebuild:
+  removed kde-env dep, but the package will still depend on it due to kde eclass.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  rss-glx-0.7.6.ebuild:
+  Masked rss-glx-0.7.6.ebuild stable for ppc
+
+  24 Jul 2004; Alastair Tse <liquidx@gentoo.org> rss-glx-0.7.6.ebuild:
+  fixing xscreensaver installation for KDE 3.2 (#43173)
+
+  23 Jun 2004; Aron Griffis <agriffis@gentoo.org> rss-glx-0.7.4-r1.ebuild,
+  rss-glx-0.7.6.ebuild:
+  QA - fix use invocation
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> rss-glx-0.7.4-r1.ebuild,
+  rss-glx-0.7.6.ebuild:
+  Add inherit eutils
+
+  14 Apr 2004; Jason Wever <weeve@gentoo.org> rss-glx-0.7.6.ebuild:
+  Added ~sparc keyword.
+
+  24 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  rss-glx-0.7.4-r1.ebuild:
+  don't use deprecated ?: use syntax
+
+  10 Mar 2004; Philip Walls <malverian@gentoo.org> rss-glx-0.7.6.ebuild:
+  Added ~amd64 keyword.
+
+  22 Nov 2003; Alastair Tse <liquidx@gentoo.org> rss-glx-0.7.6.ebuild:
+  add openal support and cleanup postinst/rm code (#33722)
+
+  29 Sep 2003; Alastair Tse <liquidx@gentoo.org> rss-glx-0.6.8.ebuild,
+  rss-glx-0.7.4-r1.ebuild, rss-glx-0.7.5.ebuild, rss-glx-0.7.6.ebuild,
+  files/rss-glx-0.7.5-kdedesktop.patch, files/rss-glx-0.7.6-kdedesktop.patch:
+  cleanup and whitespace fixes
+
+  29 Sep 2003; Alastair Tse <liquidx@gentoo.org> metadata.xml:
+  rearrange metadata.xml
+
+  08 Sep 2003; Martin Holzer <mholzer@gentoo.org> rss-glx-0.7.6.ebuild:
+  Imagemagick version dependency. Closes #28208.
+
+*rss-glx-0.7.6 (06 Sep 2003)
+
+  06 Sep 2003; Alastair Tse <liquidx@gentoo.org> rss-glx-0.7.6.ebuild,
+  files/rss-glx-0.7.6-kdedesktop.patch:
+  version bump. thanks to rizzo@gentoo.org
+
+  02 Sep 2003; Alastair Tse <liquidx@gentoo.org> rss-glx-0.7.5.ebuild:
+  added imagemagick dep (#27720)
+
+*rss-glx-0.7.5 (17 Aug 2003)
+
+  18 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Remove -fPIC from CFLAGS #26885.
+
+  17 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump + fix auto-removing of xscreensaver stuff from config file.
+
+*rss-glx-0.7.4-r1 (04 Jun 2003)
+
+  18 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Remove -fPIC from CFLAGS #26885.
+
+  13 Jun 2003; Alastair Tse <liquidx@gentoo.org> rss-glx-0.7.4-r1.ebuild:
+  added kde symlink for kxs* things
+
+  07 Jun 2003; Alastair Tse <liquidx@gentoo.org> rss-glx-0.7.4-r1.ebuild:
+  added sed-4 deps
+
+  03 Jun 2003; Alastair Tse <liquidx@gentoo.org> rss-glx-0.7.4-r1.ebuild,
+  files/rss-glx-0.7.4-gcc33.patch, files/rss-glx-0.7.4-kdedesktop.patch:
+  - added gcc3.3 patch, thanks to Jason Rhinelander (#22034).
+  - automatically adds itself to xscreensaver config. 
+  - fix kde screensaver Makefile issues.
+  - added kde .desktop patches and 3dnow/sse useflags. thanks to Daniel Black
+    (#18675)
+
+*rss-glx-0.7.4 (30 May 2003)
+
+  30 May 2003; Seemant Kulleen <seemant@gentoo.org> rss-glx-0.7.4.ebuild:
+  version bump, thanks to: Alex <alex.fore@verizon.net> in bug #20351
+
+*rss_glx-0.7.3 (29 May 2003)
+
+  29 May 2003; Seemant Kulleen <seemant@gentoo.org> rss_glx-0.6.8.ebuild,
+  rss_glx-0.7.3.ebuild:
+  renamed
+
+*rss_glx-0.7.3 (23 Feb 2003)
+
+  23 Feb 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump for #16226.
+
+*rss_glx-0.6.8 (17 Nov 2002)
+
+  17 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
+  Version bump + files now go in /usr/lib/xscreensaver #12316.
+
+*rss_glx-0.6.7 (27 Nov 2002)
+
+  27 Nov 2002; Matt Keadle <mkeadle@gentoo.org> rss_glx-0.6.7.ebuild
+  files/digest-rss_glx-0.6.7
+
+  Bump to latest release and added IUSE="". Problems with plasma in full
+  screen have been fixed, as well as other things. Please see
+  http://rss-glx.sourceforge.net/ for the full rss_glx 0.6.7 ChangeLog.
+
+*rss_glx-0.6.6 (22 Nov 2002)
+
+  22 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Benjamin Ritcey <gentoo@ritcey.com>.

@@ -1,0 +1,61 @@
+# ChangeLog for dev-tex/translator
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/translator/ChangeLog,v 1.18 2010/01/03 11:43:48 fauli Exp $
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  translator-1.00.ebuild:
+  Transfer Prefix keywords
+
+  18 Mar 2009; Raúl Porcel <armin76@gentoo.org> translator-1.00.ebuild:
+  arm/s390/sh stable wrt #253551
+
+  11 Mar 2009; Raúl Porcel <armin76@gentoo.org> translator-1.00.ebuild:
+  Add ~arm/~s390/~sh
+
+  16 Feb 2009; Brent Baude <ranger@gentoo.org> translator-1.00.ebuild:
+  stable ppc, bug 254788
+
+  25 Jan 2009; Raúl Porcel <armin76@gentoo.org> translator-1.00.ebuild:
+  ia64 stable wrt #254788
+
+  18 Jan 2009; Markus Meier <maekke@gentoo.org> translator-1.00.ebuild:
+  amd64/x86 stable, bug #254788
+
+  18 Jan 2009; Tobias Klausmann <klausman@gentoo.org>
+  translator-1.00.ebuild:
+  Stable on alpha, bug #254788
+
+  14 Jan 2009; Brent Baude <ranger@gentoo.org> translator-1.00.ebuild:
+  stable ppc64, bug 254788
+
+  14 Jan 2009; Jeroen Roovers <jer@gentoo.org> translator-1.00.ebuild:
+  Stable for HPPA (bug #254788).
+
+  13 Jan 2009; Ferris McCormick <fmccor@gentoo.org> translator-1.00.ebuild:
+  Sparc stable, Bug #254788.
+
+  04 Oct 2008; Brent Baude <ranger@gentoo.org> translator-1.00.ebuild:
+  Marking translator-1.00 ~ppc for bug 237202
+
+  15 Jul 2008; Jeroen Roovers <jer@gentoo.org> translator-1.00.ebuild:
+  Marked ~hppa (bug #229249).
+
+  28 Jun 2008; Raúl Porcel <armin76@gentoo.org> translator-1.00.ebuild:
+  Add ~alpha/~ia64 wrt #229249
+
+  25 Jun 2008; Markus Rothe <corsair@gentoo.org> translator-1.00.ebuild:
+  Added ~ppc64; bug #229249
+
+  24 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  translator-1.00.ebuild:
+  keyworded ~x86, bug 229249
+
+  24 Jun 2008; Ferris McCormick <fmccor@gentoo.org> translator-1.00.ebuild:
+  Add ~sparc for texlive 2008, Bug #229249.
+
+*translator-1.00 (30 May 2008)
+
+  30 May 2008; Alexis Ballier <aballier@gentoo.org> +metadata.xml,
+  +translator-1.00.ebuild:
+  Initial import, ebuild by me.
+

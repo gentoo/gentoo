@@ -1,0 +1,45 @@
+# ChangeLog for media-tv/v4l-dvb-saa716x
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-tv/v4l-dvb-saa716x/ChangeLog,v 1.7 2015/03/03 13:56:26 hd_brummy Exp $
+
+*v4l-dvb-saa716x-0.0.1_p20141109-r1 (03 Mar 2015)
+
+  03 Mar 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +v4l-dvb-saa716x-0.0.1_p20141109-r1.ebuild,
+  +files/v4l-dvb-saa716x-3.19-set_gpio.patch:
+  compile fix with KV 3.19, thx to ??? on wrt bug 541642
+
+*v4l-dvb-saa716x-0.0.1_p20141109 (15 Feb 2015)
+
+  15 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -v4l-dvb-saa716x-0.0.1_p20130224.ebuild,
+  -v4l-dvb-saa716x-0.0.1_p20130802.ebuild,
+  +v4l-dvb-saa716x-0.0.1_p20141109.ebuild:
+  bump, new snapshot, ebuild provided by M.Dummer, thx; cleanup
+
+  03 Jan 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  v4l-dvb-saa716x-0.0.1_p20140322.ebuild:
+  stable amd64 x86
+
+*v4l-dvb-saa716x-0.0.1_p20140322 (04 May 2014)
+
+  04 May 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +v4l-dvb-saa716x-0.0.1_p20140322.ebuild:
+  bump, thx to M.Dummer for providing and testing
+
+*v4l-dvb-saa716x-0.0.1_p20130802 (03 Oct 2013)
+
+  03 Oct 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +v4l-dvb-saa716x-0.0.1_p20130802.ebuild:
+  bump, adappted to the latest kernel API changes; thanks to J.Stutte, M.Dummer
+  on wrt bug #486220
+
+  27 Sep 2013; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Added missing proxy-maintainers herd to metadata.xml.
+
+*v4l-dvb-saa716x-0.0.1_p20130224 (31 Mar 2013)
+
+  31 Mar 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/OSD_RAW_CMD_patch_2.diff, +v4l-dvb-saa716x-0.0.1_p20130224.ebuild,
+  +files/v4l-dvb-saa716x-Makefilepatch-2.diff, +metadata.xml:
+  initial ebuild, taken from vdr-devel overlay

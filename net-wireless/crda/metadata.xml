@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>gurligebis@gentoo.org</email>
+		<name>Bjarke Istrup Pedersen</name>
+	</maintainer>
+	<maintainer>
+		<email>zerochaos@gentoo.org</email>
+		<name>Rick Farina</name>
+	</maintainer>
+	<use>
+		<flag name='gcrypt'>Use libgcrypt instead of openssl for key checking</flag>
+	</use>
+</pkgmetadata>
+

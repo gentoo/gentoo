@@ -1,0 +1,195 @@
+# ChangeLog for app-text/fbreader
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/fbreader/ChangeLog,v 1.43 2014/10/10 11:02:29 ago Exp $
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> fbreader-0.99.4-r2.ebuild:
+  Stable for x86, wrt bug #522710
+
+  09 Oct 2014; Agostino Sarubbo <ago@gentoo.org> fbreader-0.99.4-r2.ebuild:
+  Stable for amd64, wrt bug #522710
+
+  06 Aug 2014; Patrick Lauer <patrick@gentoo.org> fbreader-0.99.4-r1.ebuild,
+  fbreader-0.99.4-r2.ebuild:
+  Make description more repoman-happy
+
+*fbreader-0.99.4-r2 (10 Jul 2014)
+
+  10 Jul 2014; Andrey Grozin <grozin@gentoo.org> -fbreader-0.99.4.ebuild,
+  +fbreader-0.99.4-r2.ebuild, +files/fbreader-0.99.4-mimetypes.patch,
+  +files/fbreader-0.99.4-qreal-cast.patch:
+  Added casts to qreal (bug #515698), thanks to William Throwe
+  <wtt6@cornell.edu>; added mimetypes to .desktop (bug #516794); depend on
+  qtcore[ssl] (bug #462044); added -j1 (bug #484516)
+
+  14 Apr 2014; Andrey Grozin <grozin@gentoo.org> metadata.xml:
+  Set maintainer to grozin
+
+  14 Apr 2014; Alexey Shvetsov <alexxy@gentoo.org> metadata.xml:
+  Set maintainer to maintainer-needed
+
+  12 May 2013; Johannes Huber <johu@gentoo.org> metadata.xml:
+  Drop kde from maintainer as it has no references to kde technology.
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> fbreader-0.99.4-r1.ebuild:
+  Stable for x86, wrt bug #462890
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> fbreader-0.99.4-r1.ebuild:
+  Stable for amd64, wrt bug #462890
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> fbreader-0.99.4-r1.ebuild,
+  fbreader-0.99.4.ebuild:
+  Move Qt dependencies to the new category
+
+*fbreader-0.99.4-r1 (21 Feb 2013)
+
+  21 Feb 2013; Andrey Grozin <grozin@gentoo.org> -fbreader-0.99.2.ebuild,
+  +fbreader-0.99.4-r1.ebuild, +files/fbreader-0.99.4.patch:
+  Fixed #452636
+
+  19 Jan 2013; Andrey Grozin <grozin@gentoo.org> +fbreader-0.99.2.ebuild:
+  Added 0.99.2 back, see bug #452636
+
+  12 Jan 2013; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/fbreader-0.12.10-gcc45.patch:
+  Drop unused patch.
+
+  12 Jan 2013; Tomáš Chvátal <scarabeus@gentoo.org> -fbreader-0.12.10.ebuild,
+  fbreader-0.99.4.ebuild:
+  Stabilise latest on amd64 and x86. Drop older.
+
+*fbreader-0.99.4 (12 Jan 2013)
+
+  12 Jan 2013; Tomáš Chvátal <scarabeus@gentoo.org> +fbreader-0.99.4.ebuild,
+  -fbreader-0.99.1.ebuild, -fbreader-0.99.2.ebuild:
+  Version bump to latest.
+
+  02 Dec 2012; Markus Meier <maekke@gentoo.org> fbreader-0.99.2.ebuild:
+  add ~arm, bug #431244
+
+  17 Oct 2012; Michael Palimaka <kensington@gentoo.org> fbreader-0.99.2.ebuild:
+  Add missing dependency on virtual/pkgconfig, thanks to Nikoli.
+
+*fbreader-0.99.2 (17 Oct 2012)
+
+  17 Oct 2012; Michael Palimaka <kensington@gentoo.org> +fbreader-0.99.2.ebuild:
+  Version bump. This release drops support for GTK (bug #436490), fixes a build
+  failure (bug #417043) and respects CFLAGS (bug #438408).
+
+*fbreader-0.99.1 (04 Sep 2012)
+
+  04 Sep 2012; Alexey Shvetsov <alexxy@gentoo.org> +fbreader-0.99.1.ebuild:
+  [app-text/fbreader] Version bump. Thanks to yury Puhalsky
+
+  02 Jun 2012; Zac Medico <zmedico@gentoo.org> fbreader-0.12.10.ebuild:
+  inherit multilib for get_libdir
+
+  04 Oct 2011; Andreas Schuerch <nativemad@gentoo.org> fbreader-0.12.10.ebuild:
+  x86 stable, bug 384479
+
+  01 Oct 2011; Markos Chandras <hwoarang@gentoo.org> fbreader-0.12.10.ebuild:
+  Stable on amd64 wrt bug #384479
+
+  19 Apr 2011; Samuli Suominen <ssuominen@gentoo.org> -fbreader-0.12.20.ebuild:
+  Punt invalid version bump wrt #364059.
+
+*fbreader-0.12.20 (18 Apr 2011)
+
+  18 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +fbreader-0.12.20.ebuild:
+  Version bump.
+
+  27 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  fbreader-0.12.10.ebuild:
+  Fix slot-dep on gtk+
+
+  13 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org> -fbreader-0.12.7.ebuild,
+  fbreader-0.12.10.ebuild:
+  Remove older. Update to eapi4 and use REQUIRED_USE
+
+  26 Apr 2010; Dror Levin <spatz@gentoo.org> fbreader-0.12.10.ebuild,
+  +files/fbreader-0.12.10-gcc45.patch:
+  Add patch for building with gcc-4.5, bug 317189. Thanks to Azamat H.
+  Hackimov for the patch.
+
+*fbreader-0.12.10 (08 Apr 2010)
+
+  08 Apr 2010; Dror Levin <spatz@gentoo.org> -fbreader-0.12.5.1.ebuild,
+  fbreader-0.12.7.ebuild, +fbreader-0.12.10.ebuild:
+  Version bump (bug 311411), respect LDFLAGS. Remove old.
+
+*fbreader-0.12.7 (06 Mar 2010)
+
+  06 Mar 2010; Dror Levin <spatz@gentoo.org> +fbreader-0.12.7.ebuild:
+  Version bump, bug 307877.
+
+*fbreader-0.12.5.1 (27 Feb 2010)
+
+  27 Feb 2010; Alexey Shvetsov <alexxy@gentoo.org> -fbreader-0.12.2.ebuild,
+  +fbreader-0.12.5.1.ebuild:
+  Version bump. Fix bug #306787
+
+  22 Feb 2010; Alexey Shvetsov <alexxy@gentoo.org> fbreader-0.12.2.ebuild:
+  Add missing dep per bug #305387
+
+*fbreader-0.12.2 (06 Feb 2010)
+
+  06 Feb 2010; Alexey Shvetsov <alexxy@gentoo.org> -fbreader-0.12.1.ebuild,
+  +fbreader-0.12.2.ebuild:
+  Version bump per bug #303343
+
+*fbreader-0.12.1 (21 Dec 2009)
+
+  21 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -fbreader-0.12.0.ebuild, +fbreader-0.12.1.ebuild:
+  Version bump. Drop old. Per bug #297762.
+
+*fbreader-0.12.0 (10 Dec 2009)
+
+  10 Dec 2009; Alexey Shvetsov <alexxy@gentoo.org>
+  -fbreader-0.10.7-r2.ebuild, +fbreader-0.12.0.ebuild:
+  Version bump per bug #296445
+
+*fbreader-0.10.7-r2 (31 Oct 2009)
+
+  31 Oct 2009; Alexey Shvetsov <alexxy@gentoo.org>
+  -fbreader-0.10.7-r1.ebuild, +fbreader-0.10.7-r2.ebuild:
+  fix issue with prestripped binaries
+
+*fbreader-0.10.7-r1 (30 Oct 2009)
+
+  30 Oct 2009; Alexey Shvetsov <alexxy@gentoo.org> -fbreader-0.10.7.ebuild,
+  +fbreader-0.10.7-r1.ebuild:
+  Fix bug #267051. thanks to Mikhail I. Izmestev
+
+  26 Apr 2009; Brent Baude <ranger@gentoo.org> fbreader-0.10.7.ebuild:
+  Marking fbreader-0.10.7 ~ppc for bug 264733
+
+*fbreader-0.10.7 (04 Apr 2009)
+
+  04 Apr 2009; Alexey Shvetsov <alexxy@gentoo.org> -fbreader-0.10.5.ebuild,
+  +fbreader-0.10.7.ebuild:
+  Version bump per bug #264781
+
+*fbreader-0.10.5 (21 Mar 2009)
+
+  21 Mar 2009; Alexey Shvetsov <alexxy@gentoo.org> -fbreader-0.10.3.ebuild,
+  +fbreader-0.10.5.ebuild:
+  version Bump
+
+  09 Mar 2009; Alexey Shvetsov <alexxy@gentoo.org> fbreader-0.10.3.ebuild:
+  set default toolkit to qt4 (close bug #260233)
+
+  09 Feb 2009; Alexey Shvetsov <alexxy@gentoo.org> fbreader-0.10.3.ebuild:
+  Some stylistyc changes
+
+*fbreader-0.10.3 (06 Feb 2009)
+
+  06 Feb 2009; Alexey Shvetsov <alexxy@gentoo.org> -fbreader-0.10.2.ebuild,
+  +fbreader-0.10.3.ebuild:
+  Version Bump, bug #257883
+
+*fbreader-0.10.2 (02 Feb 2009)
+
+  02 Feb 2009; Alexey Shvetsov <alexxy@gentoo.org> +metadata.xml,
+  +fbreader-0.10.2.ebuild:
+  Initial import of fbreader; this fixes bug #117021

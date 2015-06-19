@@ -1,0 +1,137 @@
+# ChangeLog for net-analyzer/nepenthes
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nepenthes/ChangeLog,v 1.26 2014/10/25 12:09:09 jer Exp $
+
+  25 Oct 2014; Jeroen Roovers <jer@gentoo.org> nepenthes-0.2.2-r1.ebuild,
+  -files/nepenthes-0.2.2-gcc44.patch:
+  Use a remote patch to work around CVS header changes.
+
+*nepenthes-0.2.2-r1 (25 Oct 2014)
+
+  25 Oct 2014; Jeroen Roovers <jer@gentoo.org> +nepenthes-0.2.2-r1.ebuild,
+  +files/nepenthes-0.2.2-Werror.patch, +files/nepenthes-0.2.2-cachedir.patch,
+  +files/nepenthes-0.2.2-curl_types_h.patch, files/nepenthes-0.2.2-gcc4.patch,
+  +files/nepenthes-0.2.2-gcc44.patch, +files/nepenthes-0.2.2-libdir.patch,
+  +files/nepenthes-0.2.2-sysconfdir.patch:
+  EAPI bump. einstall -> default (bug #521574). Replace sed scripts with
+  patches. Do not install static plugins. Bring sub-20k patch into the tree.
+
+  02 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> nepenthes-0.2.2.ebuild:
+  Fix for building with newer curl wrt bug #426482
+
+  12 Jun 2012; Zac Medico <zmedico@gentoo.org> nepenthes-0.2.2.ebuild:
+  inherit user for enewgroup and enewuser
+
+  14 Dec 2011; Jeroen Roovers <jer@gentoo.org> nepenthes-0.2.2.ebuild:
+  Drop -R/... altogether by Fabian Groffen.
+
+  14 Dec 2011; Jeroen Roovers <jer@gentoo.org> nepenthes-0.2.2.ebuild:
+  Fix gcc: error: unrecognized option -R (bug #365115).
+
+  07 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  nepenthes-0.2.2.ebuild, -files/nepenthes-0.2.2-gcc44.patch:
+  Move patch to mirrors because CVS commit breaks it wrt #273845.
+
+  25 Jul 2009; Mark Loeser <halcy0n@gentoo.org> nepenthes-0.2.2.ebuild,
+  +files/nepenthes-0.2.2-gcc44.patch:
+  Fix compilation with gcc-4.4. Thanks to Victor Ostorga <vostorga AT gentoo
+  DOT org>; bug #273845
+
+  03 Feb 2009; Peter Volkov <pva@gentoo.org>
+  +files/nepenthes-0.2.2-gcc4.patch, nepenthes-0.2.2.ebuild:
+  Fixed build issue with newer compiler, bug #251437, thank Diego E.
+  'Flameeyes' Pettenò for report and Michael Mair-Keimberger for making us
+  reopen and finally fix bug.
+
+  27 Aug 2008; Jeremy Olexa <darkside@gentoo.org> -nepenthes-0.2.0.ebuild:
+  remove old, bug #199168
+
+*nepenthes-0.2.2 (13 May 2008)
+
+  13 May 2008; Marcelo Goes <vanquirius@gentoo.org> metadata.xml,
+  +nepenthes-0.2.2.ebuild:
+  0.2.2 version bump for bug 213857. Thanks to Toei Rei <gbugs at stargazer
+  dot at>. Added netmon as a herd.
+
+  29 Aug 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing kaiowas from metadata due to his retirement (see #61930 for
+  reference).
+
+  20 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+*nepenthes-0.2.0 (15 Nov 2006)
+
+  15 Nov 2006; Petre Rodan <kaiowas@gentoo.org> -nepenthes-0.1.6.ebuild,
+  +nepenthes-0.2.0.ebuild:
+  version bump
+
+*nepenthes-0.1.7-r1 (03 May 2006)
+
+  03 May 2006; petre rodan <kaiowas@gentoo.org>
+  +files/mydoom_bagle_endless_loop.patch, +nepenthes-0.1.7-r1.ebuild:
+  added patch from sourceforge tracker #1479288
+
+  26 Apr 2006; Jon Hood <squinky86@gentoo.org> nepenthes-0.1.7.ebuild:
+  Add ~amd64, #131064.
+
+*nepenthes-0.1.7 (23 Apr 2006)
+
+  23 Apr 2006; petre rodan <kaiowas@gentoo.org> +nepenthes-0.1.7.ebuild:
+  version bump
+
+  23 Mar 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  nepenthes-0.1.6.ebuild:
+  mark ~ppc (Bug #123787)
+
+*nepenthes-0.1.6 (16 Jan 2006)
+
+  16 Jan 2006; petre rodan <kaiowas@gentoo.org> -nepenthes-0.1.4.ebuild,
+  +nepenthes-0.1.6.ebuild:
+  version bump
+
+*nepenthes-0.1.5 (20 Dec 2005)
+
+  20 Dec 2005; petre rodan <kaiowas@gentoo.org>
+  -files/nepenthes-0.1.3_logger_path.diff,
+  -files/nepenthes-0.1.3_xor_and_additional_bindshell_patch.diff.bz2,
+  -nepenthes-0.1.3-r1.ebuild, -nepenthes-0.1.3-r2.ebuild,
+  +nepenthes-0.1.5.ebuild:
+  version bump
+
+*nepenthes-0.1.4 (02 Dec 2005)
+
+  02 Dec 2005; petre rodan <kaiowas@gentoo.org> -nepenthes-0.1.2.ebuild,
+  +nepenthes-0.1.4.ebuild:
+  version bump
+
+*nepenthes-0.1.3-r2 (28 Nov 2005)
+
+  28 Nov 2005; petre rodan <kaiowas@gentoo.org>
+  +files/nepenthes-0.1.3_xor_and_additional_bindshell_patch.diff.bz2,
+  +nepenthes-0.1.3-r2.ebuild:
+  yet another patch from the sf.net tracker
+
+*nepenthes-0.1.3-r1 (24 Nov 2005)
+
+  24 Nov 2005; petre rodan <kaiowas@gentoo.org>
+  +files/nepenthes-0.1.3_logger_path.diff, -nepenthes-0.1.3.ebuild,
+  +nepenthes-0.1.3-r1.ebuild:
+  added one patch from sf.net tracker
+
+*nepenthes-0.1.3 (23 Nov 2005)
+
+  23 Nov 2005; petre rodan <kaiowas@gentoo.org> -files/magic.patch,
+  -nepenthes-0.1.1.ebuild, +nepenthes-0.1.3.ebuild:
+  version bump
+
+  14 Sep 2005; petre rodan <kaiowas@gentoo.org> +nepenthes-0.1.2.ebuild:
+  version bump
+
+*nepenthes-0.1.1 (09 Sep 2005)
+
+  09 Sep 2005; petre rodan <kaiowas@gentoo.org> +files/magic.patch,
+  +files/nepenthes.confd, +files/nepenthes.initd, +metadata.xml,
+  +nepenthes-0.1.1.ebuild:
+  initial commit
+

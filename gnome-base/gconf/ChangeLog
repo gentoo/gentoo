@@ -1,0 +1,1201 @@
+# ChangeLog for gnome-base/gconf
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gconf/ChangeLog,v 1.309 2015/04/08 18:13:25 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> gconf-3.2.6-r3.ebuild:
+  Drop old Python implementations
+
+  13 Nov 2014; Pacho Ramos <pacho@gentoo.org> -gconf-2.32.4-r1.ebuild,
+  -gconf-3.2.6-r1.ebuild, -gconf-3.2.6-r2.ebuild, metadata.xml:
+  Drop old (#508854)
+
+  11 Oct 2014; Markus Meier <maekke@gentoo.org> gconf-3.2.6-r3.ebuild:
+  arm stable, bug #512012
+
+  15 Sep 2014; Agostino Sarubbo <ago@gentoo.org> gconf-3.2.6-r3.ebuild:
+  Stable for sparc, wrt bug #512012
+
+  25 Aug 2014; Agostino Sarubbo <ago@gentoo.org> gconf-3.2.6-r3.ebuild:
+  Stable for alpha, wrt bug #512012
+
+  23 Aug 2014; Agostino Sarubbo <ago@gentoo.org> gconf-3.2.6-r3.ebuild:
+  Stable for ia64, wrt bug #512012
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org> gconf-3.2.6-r3.ebuild:
+  Stable for ppc64, wrt bug #512012
+
+  28 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gconf-3.2.6-r3.ebuild:
+  Stable for ppc, wrt bug #512012
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gconf-3.2.6-r3.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gconf-3.2.6-r3.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  24 Jun 2014; Michał Górny <mgorny@gentoo.org> gconf-3.2.6-r3.ebuild:
+  Lower dev-libs/glib dep to first known EAPI=5 version, requested by Funtoo for
+  GNOME 3.6.
+
+  20 Jun 2014; Agostino Sarubbo <ago@gentoo.org> gconf-3.2.6-r2.ebuild:
+  Stable for arm, wrt bug #508862
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> gconf-3.2.6-r3.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+*gconf-3.2.6-r3 (11 Jun 2014)
+
+  11 Jun 2014; Michał Górny <mgorny@gentoo.org> +gconf-3.2.6-r3.ebuild:
+  Enable multilib support.
+
+  17 May 2014; Agostino Sarubbo <ago@gentoo.org> gconf-3.2.6-r2.ebuild:
+  Stable for alpha, wrt bug #508862
+
+  14 May 2014; Agostino Sarubbo <ago@gentoo.org> gconf-3.2.6-r2.ebuild:
+  Stable for sparc, wrt bug #508862
+
+  13 May 2014; Agostino Sarubbo <ago@gentoo.org> gconf-3.2.6-r2.ebuild:
+  Stable for ia64, wrt bug #508862
+
+  11 May 2014; Agostino Sarubbo <ago@gentoo.org> gconf-3.2.6-r2.ebuild:
+  Stable for ppc64, wrt bug #508862
+
+  10 May 2014; Agostino Sarubbo <ago@gentoo.org> gconf-3.2.6-r2.ebuild:
+  Stable for ppc, wrt bug #508862
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org> gconf-3.2.6-r2.ebuild:
+  x86 stable, bug 508862
+
+  04 May 2014; Pacho Ramos <pacho@gentoo.org> gconf-3.2.6-r2.ebuild:
+  amd64 stable, bug 508862
+
+*gconf-3.2.6-r2 (05 Apr 2014)
+
+  05 Apr 2014; Pacho Ramos <pacho@gentoo.org>
+  +files/gconf-3.2.6-gsettings-data-convert-paths.patch,
+  +files/gconf-3.2.6-mconvert-crasher.patch,
+  +files/gconf-3.2.6-spew-console-error.patch, +gconf-3.2.6-r2.ebuild,
+  -gconf-2.32.4.ebuild, -gconf-3.2.6.ebuild:
+  gtk is not really needed (#505444 by Rafal Muzylo), drop orbit as it's dead
+  for ages, nothing needs it in the tree and we really want people to not use
+  that and, instead, use dbus for GConf's IPC. Also apply patches from upstream
+  master branch. Drop old.
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gconf-3.2.6-r1.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gconf-3.2.6-r1.ebuild:
+  arch stable, bug 888
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> gconf-3.2.6-r1.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> gconf-3.2.6-r1.ebuild:
+  amd64 stable, bug #478252
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> gconf-3.2.6-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  02 Jun 2013; Jonathan Callen <abcd@gentoo.org> gconf-3.2.6-r1.ebuild:
+  Force non-empty PYTHON_TARGETS to ensure that build always succeeds; ensure
+  that the proper version(s) of python is/are installed at runtime as well as
+  compile-time
+
+  10 May 2013; Gilles Dartiguelongue <eva@gentoo.org> +gconf-2.32.4-r1.ebuild:
+  Stable bump: apply prefix fixes to stable ebuild, bug #469240. 
+
+*gconf-2.32.4-r1 (10 May 2013)
+
+  10 May 2013; Gilles Dartiguelongue <eva@gentoo.org> +gconf-2.32.4-r1.ebuild:
+  Stable bump: apply prefix fixes to stable ebuild, bug #469240.
+
+*gconf-3.2.6-r1 (07 Apr 2013)
+
+  07 Apr 2013; Gilles Dartiguelongue <eva@gentoo.org> +gconf-3.2.6-r1.ebuild:
+  Make gsettings-schema-convert support multiple python, needed for correct
+  build of ibus-1.5.
+
+  03 Apr 2013; Fabian Groffen <grobian@gentoo.org> gconf-3.2.6.ebuild:
+  No EPREFIX in CONFIG_PROTECT*
+
+  07 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org> -gconf-3.2.5.ebuild:
+  Clean up old revision.
+
+  25 Feb 2013; Zac Medico <zmedico@gentoo.org> gconf-3.2.5.ebuild,
+  gconf-3.2.6.ebuild:
+  Fix for prefix and add ~arm-linux + ~x86-linux keywords.
+
+*gconf-3.2.6 (22 Jan 2013)
+
+  22 Jan 2013; Alexandre Rostovtsev <tetromino@gentoo.org> +gconf-3.2.6.ebuild:
+  Version bump with various bugfixes.
+
+  17 Jan 2013; Pacho Ramos <pacho@gentoo.org> gconf-2.32.4.ebuild,
+  gconf-3.2.5.ebuild:
+  Previous form still fails when EPREFIX contains >= spaced (#452170#c4 by
+  Arfrever Frehtes Taifersar Arahesis)
+
+  17 Jan 2013; Pacho Ramos <pacho@gentoo.org> gconf-2.32.4.ebuild,
+  gconf-3.2.5.ebuild:
+  Stop setting unexpanded , bug #452170 by Arfrever Frehtes Taifersar Arahesis
+
+  27 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org> gconf-2.32.4.ebuild,
+  gconf-3.2.5.ebuild:
+  Move kill_gconf to pkg_setup in an attempt to fix access violations
+  experienced by some users (bug #448952; thanks to iamben for the suggested
+  solution).
+
+  27 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org> gconf-2.32.4.ebuild,
+  gconf-3.2.5.ebuild, metadata.xml:
+  Make gtk dependency optional (bug #448868, thanks to wbrana). Drop useless
+  doc USE flag. Switch to global introspection flag. Update to EAPI5, update
+  license.
+
+  06 Oct 2012; Pacho Ramos <pacho@gentoo.org>
+  -files/gconf-3.2.3-shutdown-crash.patch, -gconf-3.2.3-r1.ebuild,
+  -gconf-3.2.3.ebuild, gconf-2.32.4.ebuild:
+  Stop using EXTRA_EMAKE, bug #437342 by Michał Górny. Drop old.
+
+  22 May 2012; Justin Lecher <jlec@gentoo.org> gconf-3.2.5.ebuild:
+  Add small prefix fix, drop unnecessary die
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> gconf-3.2.5.ebuild:
+  keyword ~amd64-fbsd
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> gconf-2.32.4.ebuild,
+  gconf-3.2.3.ebuild, gconf-3.2.3-r1.ebuild, gconf-3.2.5.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*gconf-3.2.5 (12 Apr 2012)
+
+  12 Apr 2012; Gilles Dartiguelongue <eva@gentoo.org> -gconf-2.32.3.ebuild,
+  +gconf-3.2.5.ebuild:
+  Version bump. Drop old revisions.
+
+  11 Apr 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gconf-3.2.3-r1.ebuild:
+  Add warning message to pkg_postinst() asking users to restart their desktop
+  session after upgrading to gconf-3.2.3-r1 to prevent 'Method ... on interface
+  "org.gnome.GConf.Server" doesn't exist' errors (bug #411587, thanks to
+  Juergen Rose and Rafał Mużyło).
+
+*gconf-3.2.3-r1 (11 Apr 2012)
+
+  11 Apr 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +gconf-3.2.3-r1.ebuild, +files/gconf-3.2.3-shutdown-crash.patch:
+  Have USE=-orbit by default to work around bug #411237 (enormously overgrown
+  ~/.gconfd/saved_state). Fix a crash when USE=-orbit.
+
+*gconf-3.2.3 (07 Nov 2011)
+
+  07 Nov 2011; Alexandre Rostovtsev <tetromino@gentoo.org> +gconf-3.2.3.ebuild:
+  Bump to 3.2.3 from the gnome overlay. Notable changes: optional support for
+  the new dbus-based IPC (build with USE=-orbit to enable it). Note that the
+  traditional orbit IPC is still the default choice since it has received far
+  more testing.
+
+  30 Oct 2011; Raúl Porcel <armin76@gentoo.org> gconf-2.32.4.ebuild:
+  alpha/ia64/sh/sparc stable wrt #385699
+
+  28 Oct 2011; Markus Meier <maekke@gentoo.org> gconf-2.32.4.ebuild:
+  arm stable, bug #385699
+
+  21 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> gconf-2.32.4.ebuild:
+  x86 stable wrt bug #385699
+
+  16 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org> gconf-2.32.4.ebuild:
+  ppc/ppc64 stable wrt #385699
+
+  14 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> gconf-2.32.4.ebuild:
+  amd64 stable wrt #385699
+
+  10 Oct 2011; Pacho Ramos <pacho@gentoo.org> -gconf-2.32.0-r1.ebuild,
+  gconf-2.32.4.ebuild:
+  Drop .la files, bug #386665 by Ago. Drop old.
+
+  05 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org> gconf-2.32.3.ebuild:
+  ppc/ppc64 stable wrt #369909
+
+  13 Aug 2011; Raúl Porcel <armin76@gentoo.org> gconf-2.32.3.ebuild:
+  alpha/ia64/sh/sparc stable wrt #369909
+
+  17 Jul 2011; Markus Meier <maekke@gentoo.org> gconf-2.32.3.ebuild:
+  arm stable, bug #369909
+
+  14 Jul 2011; Thomas Kahle <tomka@gentoo.org> gconf-2.32.3.ebuild:
+  x86 stable per bug 369909
+
+  01 Jul 2011; Markos Chandras <hwoarang@gentoo.org> gconf-2.32.3.ebuild:
+  Stable on amd64 wrt bug #278255
+
+*gconf-2.32.4 (20 Jun 2011)
+
+  20 Jun 2011; Pacho Ramos <pacho@gentoo.org> -gconf-2.32.2.ebuild,
+  +gconf-2.32.4.ebuild:
+  Version bump, remove old.
+
+*gconf-2.32.3 (29 Apr 2011)
+
+  29 Apr 2011; Nirbheek Chauhan <nirbheek@gentoo.org> +gconf-2.32.3.ebuild:
+  Bump to 2.32.3
+
+*gconf-2.32.2 (10 Apr 2011)
+
+  10 Apr 2011; Pacho Ramos <pacho@gentoo.org> -gconf-2.28.1.ebuild,
+  +gconf-2.32.2.ebuild:
+  Version bump with bugfixes and translation updates, remove old.
+
+  08 Apr 2011; Mart Raudsepp <leio@gentoo.org> -gconf-2.26.2-r1.ebuild,
+  gconf-2.32.0-r1.ebuild:
+  Re-add ~mips keyword for newest version, bug 296548. Remove old ~mips version
+
+  22 Mar 2011; Brent Baude <ranger@gentoo.org> gconf-2.32.0-r1.ebuild:
+  Marking gconf-2.32.0-r1 ppc stable for bug 353436
+
+  21 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> gconf-2.32.0-r1.ebuild:
+  ppc64 stable wrt #353436
+
+  18 Mar 2011; Gilles Dartiguelongue <eva@gentoo.org> gconf-2.32.0-r1.ebuild:
+  Adapt to new gnome.org features.
+
+  16 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  gconf-2.26.2-r1.ebuild, gconf-2.28.1.ebuild, -gconf-2.32.0.ebuild,
+  gconf-2.32.0-r1.ebuild:
+  Fix slot-deps on gtk+ and other libs, remove old, drop keywords on
+  2.26.2-r1
+
+  12 Mar 2011; Raúl Porcel <armin76@gentoo.org> gconf-2.32.0-r1.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #353436
+
+  12 Mar 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Improve 'ldap' USE description (bug #352358 by Dean Matzkov).
+
+  24 Feb 2011; Thomas Kahle <tomka@gentoo.org> gconf-2.32.0-r1.ebuild:
+  x86 stable per bug 353436
+
+  23 Feb 2011; Markos Chandras <hwoarang@gentoo.org> gconf-2.32.0-r1.ebuild:
+  Stable on amd64 wrt bug #353436
+
+  18 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> gconf-2.26.2-r1.ebuild:
+  Remove USE="policykit" for sys-auth/policykit wrt #340335.
+
+*gconf-2.32.0-r1 (16 Dec 2010)
+
+  16 Dec 2010; Gilles Dartiguelongue <eva@gentoo.org> +gconf-2.32.0-r1.ebuild:
+  Version bump. Add env variable to make sure GSettings use gconf in the
+  absence of dconf so user settings are not lost on each reboot.
+
+  22 Oct 2010; Gilles Dartiguelongue <eva@gentoo.org> gconf-2.32.0.ebuild:
+  Pin glib/gtk+ dependencies to slot 2.
+
+*gconf-2.32.0 (12 Oct 2010)
+
+  12 Oct 2010; Pacho Ramos <pacho@gentoo.org> +gconf-2.32.0.ebuild:
+  Version bump for Gnome 2.32: libgconf-2 was ported to the DBus bindings in
+  gio, and no longer links to libdbus, allow external orbit-idl-2 compiler
+  for cross-compiling, add a GSettings backend to ease the transition from
+  GConf to GSettings/DConf, bugfixes and translation updates. Added
+  introspection support.
+
+  08 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> gconf-2.28.1.ebuild:
+  ppc64 stable wrt #324077
+
+  11 Sep 2010; Joseph Jezak <josejx@gentoo.org> gconf-2.28.1.ebuild:
+  Marked ppc for bug #324077.
+
+  18 Aug 2010; Markus Meier <maekke@gentoo.org> gconf-2.28.1.ebuild:
+  arm stable, bug #314899
+
+  14 Aug 2010; Raúl Porcel <armin76@gentoo.org> gconf-2.28.1.ebuild:
+  alpha/ia64/sh/sparc stable wrt #314899
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org> gconf-2.26.2-r1.ebuild:
+  Drop HPPA keywording (bug #324511).
+
+  04 Jun 2010; Markus Meier <maekke@gentoo.org> gconf-2.28.1.ebuild:
+  x86 stable, bug #314899
+
+  31 May 2010; Gilles Dartiguelongue <eva@gentoo.org> -gconf-2.24.0.ebuild,
+  -files/gconf-2.24.0-automagic-ldap.patch, -gconf-2.28.0.ebuild,
+  -gconf-2.28.0-r1.ebuild:
+  Clean up old revisions.
+
+  22 May 2010; Raúl Porcel <armin76@gentoo.org> gconf-2.28.0.ebuild,
+  gconf-2.28.0-r1.ebuild, gconf-2.28.1.ebuild:
+  Add ~sh
+
+  03 May 2010; Olivier Crête <tester@gentoo.org> gconf-2.28.1.ebuild:
+  amd64 stable, bug #314899
+
+  13 Apr 2010; Alexis Ballier <aballier@gentoo.org> gconf-2.28.1.ebuild:
+  keyword ~x86-fbsd
+
+*gconf-2.28.1 (03 Apr 2010)
+
+  03 Apr 2010; Romain Perier <mrpouet@gentoo.org> +gconf-2.28.1.ebuild:
+  Version bump, bugsfixes + translations updated.
+
+  10 Mar 2010; Joseph Jezak <josejx@gentoo.org> gconf-2.28.0-r1.ebuild:
+  Marked ~ppc/~ppc64 for bug #296548.
+
+  28 Feb 2010; Raúl Porcel <armin76@gentoo.org> gconf-2.28.0.ebuild,
+  gconf-2.28.0-r1.ebuild:
+  Add ~alpha/~arm/~ia64/~sparc
+
+  16 Jan 2010; Raúl Porcel <armin76@gentoo.org> gconf-2.26.2-r1.ebuild:
+  sh stable
+
+  14 Jan 2010; Jeroen Roovers <jer@gentoo.org> gconf-2.26.2-r1.ebuild:
+  Stable for HPPA (bug #281427).
+
+  03 Dec 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking gconf-2.26.2-r1 ppc64 stable for bug 281427
+
+  28 Nov 2009; Raúl Porcel <armin76@gentoo.org> gconf-2.26.2-r1.ebuild:
+  alpha/ia64/sparc stable wrt #281427
+
+  05 Nov 2009; Markus Meier <maekke@gentoo.org> gconf-2.26.2-r1.ebuild:
+  arm stable, bug #281427
+
+*gconf-2.28.0-r1 (04 Nov 2009)
+
+  04 Nov 2009; Romain Perier <mrpouet@gentoo.org>
+  +gconf-2.28.0-r1.ebuild,
+  +files/gconf-2.28.0-entry-set-value-sigsegv.patch:
+  Do not crash in gconf_entry_set_value() when entry is NULL.
+
+*gconf-2.28.0 (29 Oct 2009)
+
+  29 Oct 2009; Gilles Dartiguelongue <eva@gentoo.org> -gconf-2.26.0.ebuild,
+  -gconf-2.26.2.ebuild, +gconf-2.28.0.ebuild:
+  New version for GNOME 2.28. Clean up old revision.
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> gconf-2.26.2-r1.ebuild:
+  ppc stable #281427
+
+  16 Oct 2009; Markus Meier <maekke@gentoo.org> gconf-2.26.2-r1.ebuild:
+  x86 stable, bug #281427
+
+  08 Oct 2009; Olivier Crête <tester@gentoo.org> gconf-2.26.2-r1.ebuild:
+  Stable on amd64, bug #281427
+
+*gconf-2.26.2-r1 (16 Jun 2009)
+
+  16 Jun 2009; <mrpouet@gentoo.org> +gconf-2.26.2-r1.ebuild:
+  Prevent totaly disabling debug mode, some apps can crash in the worst case
+
+*gconf-2.26.2 (16 May 2009)
+
+  16 May 2009; Gilles Dartiguelongue <eva@gentoo.org> +gconf-2.26.2.ebuild:
+  Bump to 2.26.2. Speed improvments to markup backend.
+
+  01 May 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -files/gconf-2.20.1-automagic-ldap.patch,
+  -files/gconf-2.20.1-drop-gtk-doc.patch,
+  -files/gconf-2.22.0-automagic-ldap.patch, -gconf-2.20.1-r1.ebuild,
+  -gconf-2.22.0.ebuild, gconf-2.24.0.ebuild, gconf-2.26.0.ebuild:
+  Make gconf cross-compilable, bug #262747. Kill gconf-2.26 warning, bug
+  #268070. Clean up old revisions.
+
+  28 Apr 2009; Raúl Porcel <armin76@gentoo.org> gconf-2.24.0.ebuild:
+  sh stable
+
+  27 Apr 2009; Jeroen Roovers <jer@gentoo.org> gconf-2.24.0:
+  Stable for HPPA (bug #260063).
+
+  27 Apr 2009; Raúl Porcel <armin76@gentoo.org> gconf-2.24.0.ebuild:
+  arm stable
+
+*gconf-2.26.0 (19 Apr 2009)
+
+  19 Apr 2009; Mart Raudsepp <leio@gentoo.org> +gconf-2.26.0.ebuild:
+  New version: --toggle and --search-key-regexp support in gconftool-2; size
+  and parsing speed improvements in saved gconf setting trees; bug fixes
+
+  12 Apr 2009; Friedrich Oslage <bluebird@gentoo.org> gconf-2.24.0.ebuild:
+  Stable on sparc, bug #260063
+
+  18 Mar 2009; Raúl Porcel <armin76@gentoo.org> gconf-2.24.0.ebuild:
+  alpha/ia64 stable wrt #260063
+
+  15 Mar 2009; Markus Meier <maekke@gentoo.org> gconf-2.24.0.ebuild:
+  x86 stable, bug #260063
+
+  11 Mar 2009; Daniel Gryniewicz <dang@gentoo.org> gconf-2.24.0.ebuild:
+  Marked stable on amd64
+
+  06 Mar 2009; Brent Baude <ranger@gentoo.org> gconf-2.24.0.ebuild:
+  Marking gconf-2.24.0 ppc stable for bug 260063
+
+  05 Mar 2009; Brent Baude <ranger@gentoo.org> gconf-2.24.0.ebuild:
+  Marking gconf-2.24.0 ppc64 stable for bug 260063
+
+  13 Nov 2008; Brent Baude <ranger@gentoo.org> gconf-2.22.0.ebuild:
+  Marking gconf-2.22.0 ppc64 stable for bug 236971
+
+*gconf-2.24.0 (20 Oct 2008)
+
+  20 Oct 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/gconf-2.24.0-automagic-ldap.patch,
+  +files/gconf-2.24.0-no-gconfd.patch, +gconf-2.24.0.ebuild:
+  New version for GNOME 2.24. Integrates with dbus, optional policykit
+  support.
+
+  25 Sep 2008; Jeroen Roovers <jer@gentoo.org> gconf-2.22.0.ebuild:
+  Stable for HPPA (bug #236971).
+
+  12 Aug 2008; Raúl Porcel <armin76@gentoo.org> gconf-2.22.0.ebuild:
+  alpha/ia64/sparc stable wrt #229709
+
+  10 Aug 2008; Markus Meier <maekke@gentoo.org> gconf-2.22.0.ebuild:
+  x86 stable, bug #229709
+
+  30 Jul 2008; Brent Baude <ranger@gentoo.org> gconf-2.22.0.ebuild:
+  Marking gconf-2.22.0 ppc stable for bug 229709
+
+  26 Jul 2008; Olivier Crête <tester@gentoo.org> gconf-2.22.0.ebuild:
+  Stable on amd64, bug #229709
+
+  07 Jun 2008; Gilles Dartiguelongue <eva@gentoo.org> gconf-2.22.0.ebuild:
+  revert errorneous commit, fix bug #193442.
+
+  18 May 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  -gconf-2.18.0.1.ebuild, gconf-2.22.0.ebuild:
+  Add openldap to RDEPEND again, bug #222617.
+
+  31 Mar 2008; <ricmm@gentoo.org> gconf-2.18.0.1.ebuild:
+  Drop to ~mips due to unstable deps
+
+*gconf-2.22.0 (22 Mar 2008)
+
+  22 Mar 2008; Mart Raudsepp <leio@gentoo.org>
+  +files/gconf-2.22.0-automagic-ldap.patch, +gconf-2.22.0.ebuild:
+  New version for GNOME-2.22 with various code cleanups, string fixes and more
+
+  03 Mar 2008; Gilles Dartiguelongue <eva@gentoo.org> -gconf-2.20.1.ebuild,
+  gconf-2.20.1-r1.ebuild:
+  add openldap dependency, fix bug #193442 (again)
+
+  04 Feb 2008; Jeroen Roovers <jer@gentoo.org> gconf-2.20.1-r1.ebuild:
+  Stable for HPPA (bug #208366).
+
+  03 Feb 2008; Raúl Porcel <armin76@gentoo.org> gconf-2.20.1-r1.ebuild:
+  alpha/ia64/sparc stable wrt #208366
+
+  02 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  gconf-2.20.1-r1.ebuild:
+  Stable on amd64 wrt bug #208366.
+
+  01 Feb 2008; Brent Baude <ranger@gentoo.org> gconf-2.20.1-r1.ebuild:
+  Marking gconf-2.20.1-r1 ppc64 and ppc stable for bug 208366
+
+  01 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  gconf-2.20.1-r1.ebuild:
+  stable x86, bug 208366
+
+  26 Jan 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/gconf-2.20.1-drop-gtk-doc.patch, -gconf-2.14.0.ebuild,
+  gconf-2.20.1-r1.ebuild:
+  fix bug #207114 and clean up old revision
+
+  02 Jan 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  gconf-2.20.1-r1.ebuild:
+  actually add the ldap use
+
+*gconf-2.20.1-r1 (01 Jan 2008)
+
+  01 Jan 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/gconf-2.20.1-automagic-ldap.patch, -gconf-2.16.0.ebuild,
+  -gconf-2.20.0.ebuild, +gconf-2.20.1-r1.ebuild:
+  prune old releases
+  add a patch to remove automagic dependency on ldap
+
+  29 Nov 2007; Jeroen Roovers <jer@gentoo.org> gconf-2.20.1.ebuild:
+  Stable for HPPA (bug #199740).
+
+  26 Nov 2007; Markus Rothe <corsair@gentoo.org> gconf-2.20.1.ebuild:
+  Stable on ppc64; bug #199740
+
+  24 Nov 2007; Brent Baude <ranger@gentoo.org> gconf-2.20.1.ebuild:
+  Marking gconf-2.20.1 ppc stable for bug 199740
+
+  22 Nov 2007; Raúl Porcel <armin76@gentoo.org> gconf-2.20.1.ebuild:
+  alpha/ia64/sparc stable wrt #199740
+
+  21 Nov 2007; Dawid Węgliński <cla@gentoo.org> gconf-2.20.1.ebuild:
+  Stable on x86 (bug #199740)
+
+  20 Nov 2007; Samuli Suominen <drac@gentoo.org> gconf-2.20.1.ebuild:
+  amd64 stable wrt #199740
+
+*gconf-2.20.1 (17 Oct 2007)
+
+  17 Oct 2007; Gilles Dartiguelongue <eva@gentoo.org> +gconf-2.20.1.ebuild:
+  bump to 2.20.1
+
+  25 Sep 2007; Daniel Gryniewicz <dang@gentoo.org> ChangeLog:
+  New series for Gnome 2.20
+
+  22 Sep 2007; Tom Gall <tgall@gentoo.org> gconf-2.18.0.1.ebuild:
+  stable on ppc64
+
+  28 Aug 2007; Jeroen Roovers <jer@gentoo.org> gconf-2.18.0.1.ebuild:
+  Stable for HPPA (bug #185823).
+
+  11 Aug 2007; Andrej Kacian <ticho@gentoo.org> gconf-2.18.0.1.ebuild:
+  Stable on x86, bug #185823.
+
+  10 Aug 2007; Christoph Mende <angelos@gentoo.org> gconf-2.18.0.1.ebuild:
+  Stable on amd64 wrt bug #185823
+
+  08 Aug 2007; Raúl Porcel <armin76@gentoo.org> gconf-2.18.0.1.ebuild:
+  alpha/ia64 stable wrt #185823
+
+  07 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  gconf-2.18.0.1.ebuild:
+  Stable on ppc wrt bug #185823.
+
+  07 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> gconf-2.18.0.1.ebuild:
+  Stable on sparc wrt #185823
+
+  06 Aug 2007; Joshua Kinard <kumba@gentoo.org> gconf-2.18.0.1.ebuild:
+  Stable on mips, per #185823.
+
+  30 Apr 2007; Daniel Gryniewicz <dang@gentoo.org> gconf-2.16.0.ebuild:
+  Something was wrong with the CVS header...
+
+*gconf-2.18.0.1 (30 Mar 2007)
+
+  30 Mar 2007; Remi Cardona <remi@gentoo.org> +gconf-2.18.0.1.ebuild:
+  bumping to 2.18.0.1 for gnome 2.18.0
+
+  23 Mar 2007; Daniel Gryniewicz <dang@gentoo.org> +gconf-2.16.0.ebuild:
+  add gnome 2.18.0
+
+  16 Jan 2007; Roy Marples <uberlord@gentoo.org> gconf-2.14.0.ebuild:
+  Added ~x86-fbsd keyword.
+
+  21 Dec 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  -files/gconf-1.0.9-gcc4.patch, -files/gconf-1.0.9-linguas.patch,
+  -files/gconf-1.0.9-locallock_mdk.patch, -files/gconfd-2-fix.patch,
+  -gconf-1.0.9.ebuild:
+  gnome-1.x removal
+
+  20 Nov 2006; Mart Raudsepp <leio@gentoo.org>
+  -files/gconf-2.12.1-gconf_unescape_key.patch, -gconf-2.10.1-r1.ebuild,
+  -gconf-2.12.1.ebuild, -gconf-2.12.1-r1.ebuild:
+  Remove old versions
+
+  20 Oct 2006; Aron Griffis <agriffis@gentoo.org> gconf-2.14.0.ebuild:
+  Mark 2.14.0 stable on alpha
+
+  13 Sep 2006; Aron Griffis <agriffis@gentoo.org> gconf-2.14.0.ebuild:
+  Mark 2.14.0 stable on ia64. #139612
+
+  06 Sep 2006; Joshua Kinard <kumba@gentoo.org> gconf-2.14.0.ebuild:
+  Re-keywording latest stable to fix mips dependencies for eliminating gnome
+  support.
+
+  05 Sep 2006; Joshua Kinard <kumba@gentoo.org> gconf-1.0.9.ebuild,
+  gconf-2.10.1-r1.ebuild, gconf-2.12.1.ebuild, gconf-2.12.1-r1.ebuild,
+  gconf-2.14.0.ebuild:
+  Removing mips keywords as gnome is no longer supported on mips.
+
+  16 Aug 2006; Markus Rothe <corsair@gentoo.org> gconf-2.14.0.ebuild:
+  Stable on ppc64
+
+  17 Jul 2006; Daniel Gryniewicz <dang@gentoo.org> gconf-2.14.0.ebuild:
+  Marked stable on amd64 for bug #139612
+
+  16 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org> gconf-2.14.0.ebuild:
+  hppa stable, bug #139612
+
+  14 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org> gconf-2.14.0.ebuild:
+  ppc stable, bug #139612
+
+  12 Jul 2006; Chris Gianelloni <wolf31o2@gentoo.org> gconf-2.14.0.ebuild:
+  Stable on x86 wrt bug #139612.
+
+  10 Jul 2006; Gustavo Zacarias <gustavoz@gentoo.org> gconf-2.14.0.ebuild:
+  Stable on sparc wrt #139612
+
+  18 May 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  -gconf-1.0.8-r3.ebuild, -gconf-1.0.8-r5.ebuild:
+  Pruning old gconf ebuilds (bug #124016)
+
+  17 May 2006; Thomas Cort <tcort@gentoo.org> gconf-1.0.9.ebuild:
+  Stable on alpha wrt Bug #124016.
+
+  23 Mar 2006; Saleem Abdulrasool <compnerd@gentoo.org> gconf-2.14.0.ebuild:
+  Fixing the glib dep as per the configure.in. Thanks to phreak for pointing
+  this out.  Fixing GTK+ dep (bug #126820).
+
+*gconf-2.14.0 (18 Mar 2006)
+
+  18 Mar 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  -gconf-2.13.5.ebuild, +gconf-2.14.0.ebuild:
+  Version bump from upstream, dropping the 2.13 series
+
+*gconf-2.13.5 (16 Mar 2006)
+
+  16 Mar 2006; John N. Laliberte <allanonjl@gentoo.org>
+  +gconf-2.13.5.ebuild:
+  remove makeopts -j1 ( fixed upstream ), adding in ${G2CONF} when setting
+  --enable-gtk. patch from 2.12.1-r1 has been applied in this release.
+
+  05 Mar 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  gconf-2.12.1-r1.ebuild:
+  Fixing typo in dir
+
+  04 Mar 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  gconf-2.12.1-r1.ebuild:
+  fixing missing inherit and patch (bug #124964)
+
+*gconf-2.12.1-r1 (01 Mar 2006)
+
+  01 Mar 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/gconf-2.12.1-gconf_unescape_key.patch, +gconf-2.12.1-r1.ebuild:
+  Adding patch to prevent clobbering of the last character (bug #120398)
+
+  27 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org> gconf-1.0.9.ebuild:
+  Stable on sparc wrt #124016
+
+  25 Feb 2006; John N. Laliberte <allanonjl@gentoo.org>
+  gconf-1.0.8-r3.ebuild, gconf-1.0.8-r5.ebuild, gconf-1.0.9.ebuild,
+  -gconf-2.12.0.ebuild:
+  qa: fix various issues
+
+  22 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  +files/gconf-1.0.9-gcc4.patch, +files/gconf-1.0.9-linguas.patch,
+  gconf-1.0.9.ebuild:
+  Fix compilation with gcc-4. Add patch to fix compilation when LINGUAS
+  contains zh #114805
+
+  03 Feb 2006; Guy Martin <gmsoft@gentoo.org> gconf-2.12.1.ebuild:
+  Stable on hppa.
+
+  02 Feb 2006; Aron Griffis <agriffis@gentoo.org> gconf-2.12.1.ebuild:
+  Mark 2.12.1 stable on alpha
+
+  02 Feb 2006; Aron Griffis <agriffis@gentoo.org> gconf-2.12.1.ebuild:
+  Mark 2.12.1 stable on ia64
+
+  22 Jan 2006; Markus Rothe <corsair@gentoo.org> gconf-2.12.1.ebuild:
+  Stable on ppc64
+
+  22 Jan 2006; <dang@gentoo.org> gconf-2.12.1.ebuild:
+  Marked stable on amd64 per bug #119634
+
+  22 Jan 2006; Tobias Scherbaum <dertobi123@gentoo.org> gconf-2.12.1.ebuild:
+  Marked ppc stable for bug #119634; Stabilize Gnome-2.12.2
+
+  22 Jan 2006; Joshua Jackson <tsunam@gentoo.org> gconf-2.12.1.ebuild:
+  Stable on x86 for bug #119634; Stabilize Gnome-2.12.2
+
+  20 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org> gconf-2.12.1.ebuild:
+  Stable on sparc wrt #119634
+
+*gconf-2.12.1 (15 Nov 2005)
+
+  15 Nov 2005; Leonardo Boshell <leonardop@gentoo.org> +gconf-2.12.1.ebuild:
+  New version.
+
+  13 Oct 2005; Hardave Riar <hardave@gentoo.org> gconf-2.10.1-r1.ebuild:
+  Stable on mips.
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> gconf-2.10.1-r1.ebuild:
+  Mark 2.10.1-r1 stable on alpha
+
+*gconf-2.12.0 (09 Sep 2005)
+
+  09 Sep 2005; John N. Laliberte <allanonjl@gentoo.org>
+  -gconf-2.11.92.ebuild, +gconf-2.12.0.ebuild:
+  2.12 release vbump
+
+  03 Sep 2005; Markus Rothe <corsair@gentoo.org> gconf-2.10.1-r1.ebuild:
+  Stable on ppc64
+
+  03 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gconf-2.10.1-r1.ebuild:
+  Stable on ppc.
+
+  31 Aug 2005; Herbie Hopkins <herbs@gentoo.org> gconf-2.10.1-r1.ebuild:
+  Stable on amd64.
+
+  29 Aug 2005; Guy Martin <gmsoft@gentoo.org> gconf-2.10.1-r1.ebuild:
+  Stable on hppa.
+
+*gconf-2.11.92 (28 Aug 2005)
+
+  28 Aug 2005; John N. Laliberte <allanonjl@gentoo.org>
+  -gconf-2.11.90.ebuild, +gconf-2.11.92.ebuild:
+  new version 2.11.92
+
+  26 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  gconf-2.10.1-r1.ebuild:
+  Stable on sparc
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> gconf-2.10.1-r1.ebuild:
+  stable on ia64
+
+  25 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  gconf-2.10.1-r1.ebuild:
+  Stable on x86.
+
+*gconf-2.11.90 (17 Aug 2005)
+
+  17 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  +gconf-2.11.90.ebuild:
+  New version.
+
+*gconf-2.10.1-r1 (25 Jul 2005)
+
+  25 Jul 2005; Leonardo Boshell <leonardop@gentoo.org> gconf-2.10.1-r1.ebuild:
+  Once again, making Gtk+ an optional dependency breaks compilation of other
+  applications (bug #100238).
+
+*gconf-2.10.1 (20 Jul 2005)
+
+  20 Jul 2005; Leonardo Boshell <leonardop@gentoo.org> gconf-2.10.1.ebuild:
+  New version. Added 'static' and 'gtk' USE flags.
+
+  12 Jul 2005; Stephen P. Becker <geoman@gentoo.org> gconf-2.10.0.ebuild:
+  stable on mips
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> gconf-2.10.0.ebuild:
+  Stable on alpha.
+
+  25 Jun 2005; Guy Martin <gmsoft@gentoo.org> gconf-2.10.0.ebuild:
+  Stable on hppa.
+
+  24 Jun 2005; Aron Griffis <agriffis@gentoo.org> gconf-2.4.0.1.ebuild,
+  gconf-2.6.0.ebuild, gconf-2.6.1.ebuild, gconf-2.6.2.ebuild,
+  gconf-2.8.0.1.ebuild, gconf-2.8.1-r1.ebuild, gconf-2.9.91.ebuild,
+  gconf-2.10.0.ebuild:
+  Don't call dodir in pkg_*; it breaks binary packages. Also use $IMAGE
+  instead of $D in pkg_*
+
+  12 Jun 2005; Olivier Crête <tester@gentoo.org> gconf-1.0.9.ebuild:
+  Stable on amd64
+
+  12 Jun 2005; Olivier Crête <tester@gentoo.org> gconf-2.10.0.ebuild:
+  Stable on amd64
+
+  12 Jun 2005; Tobias Scherbaum <dertobi123@gentoo.org> gconf-2.10.0.ebuild:
+  Stable on ppc.
+
+  09 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> gconf-2.10.0.ebuild:
+  Stable on sparc
+
+  09 Jun 2005; Markus Rothe <corsair@gentoo.org> gconf-2.10.0.ebuild:
+  Stable on ppc64
+
+  02 Apr 2005; Stephen P. Becker <geoman@gentoo.org> gconf-2.8.1-r1.ebuild:
+  stable on mips
+
+*gconf-2.10.0 (11 Mar 2005)
+
+  11 Mar 2005; Joe McCann <joem@gentoo.org> +gconf-2.10.0.ebuild:
+  gnome-2.10 release
+
+  08 Jan 2005; Tom Martin <slarti@gentoo.org> gconf-2.8.1-r1.ebuild:
+  Stable on amd64.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  24 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> gconf-2.8.1-r1.ebuild:
+  Stable on alpha.
+
+  23 Dec 2004; Guy Martin <gmsoft@gentoo.org> gconf-2.8.1-r1.ebuild:
+  Stable on hppa.
+
+  21 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org> gconf-2.8.1-r1.ebuild:
+  Stable on sparc
+
+  19 Dec 2004; Mike Gardiner <obz@gentoo.org> gconf-2.8.1-r1.ebuild:
+  Keyworded x86 and ppc for GNOME 2.8.1
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> gconf-1.0.9.ebuild:
+  Stable on ppc64
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> gconf-2.8.0.1.ebuild:
+  Stable on alpha.
+
+*gconf-2.8.1-r1 (29 Nov 2004)
+
+  29 Nov 2004; Mike Gardiner <obz@gentoo.org> +files/gconf-2-locale-c.patch,
+  +gconf-2.8.1-r1.ebuild, -gconf-2.8.1.ebuild:
+  Included the c-locale patch see bug #72416, and removed the unpatched 2.8.1
+  version in favour of the new revision
+
+*gconf-2.8.1 (25 Nov 2004)
+
+  25 Nov 2004; Mike Gardiner <obz@gentoo.org> +gconf-2.8.1.ebuild:
+  New version
+
+  11 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> gconf-2.8.0.1.ebuild:
+  Stable on sparc
+
+  11 Nov 2004; Mike Gardiner <obz@gentoo.org> gconf-2.8.0.1.ebuild:
+  Keyworded ppc for GNOME 2.8
+
+  05 Nov 2004; Markus Rothe <corsair@gentoo.org> gconf-1.0.9.ebuild:
+  Marked ~ppc64; bug #69450
+
+  01 Oct 2004; Stephen P. Becker <geoman@gentoo.org> gconf-2.6.2.ebuild:
+  stable on mips
+
+*gconf-2.8.0.1 (15 Sep 2004)
+
+  15 Sep 2004; foser <foser@gentoo.org> gconf-2.8.0.1.ebuild :
+  Gnome 2.8 release
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> gconf-2.6.2.ebuild:
+  Stable on alpha.
+
+  07 Aug 2004; Travis Tilley <lv@gentoo.org> gconf-2.6.2.ebuild:
+  stable on amd64
+
+  05 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> gconf-2.6.2.ebuild:
+  Stable on sparc
+
+  05 Aug 2004; Guy Martin <gmsoft@gentoo.org> gconf-2.6.2.ebuild:
+  Stable on hppa.
+
+  31 Jul 2004; <spider@gentoo.org> gconf-2.6.2.ebuild:
+  dodir and touch concatenated some
+
+  31 Jul 2004; <spider@gentoo.org> gconf-1.0.9.ebuild, gconf-2.4.0.1.ebuild,
+  gconf-2.6.0.ebuild, gconf-2.6.1.ebuild, gconf-2.6.2.ebuild:
+  Removed a lot of sed expressions from global scope
+
+  31 Jul 2004; <spider@gentoo.org> gconf-2.6.2.ebuild:
+  stable on x86 for gnome 2.6.2
+
+  27 Jul 2004; Tom Gall <tgall@gentoo.org> gconf-2.6.2.ebuild:
+  stable on ppc64, bug #58191
+
+*gconf-2.6.2 (11 Jul 2004)
+
+  11 Jul 2004; <spider@gentoo.org> :
+  versionbump, removed gcc 2.95.x patch as it doesn't apply anymore.
+
+  05 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> gconf-2.6.0.ebuild:
+  Stable on alpha.
+
+  01 Jul 2004; Tom Gall <tgall@gentoo.org> gconf-2.6.1.ebuild:
+  ~ppc64, bug #54804
+
+  03 Jun 2004; Stephen P. Becker <geoman@gentoo.org> gconf-2.6.0.ebuild:
+  Stable on mips.
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gconf-1.0.8-r5.ebuild, gconf-1.0.9.ebuild, gconf-2.6.0.ebuild:
+  Masked gconf-2.6.0.ebuild stable for ppc
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gconf-1.0.8-r5.ebuild, gconf-1.0.9.ebuild:
+  Masked gconf-1.0.9.ebuild stable for ppc
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gconf-1.0.8-r5.ebuild:
+  Masked gconf-1.0.8-r5.ebuild stable for ppc
+
+  25 May 2004; Guy Martin <gmsoft@gentoo.org> gconf-2.6.0.ebuild:
+  Marked stable on hppa.
+
+  13 May 2004; Stephen P. Becker <geoman@gentoo.org> gconf-1.0.9.ebuild:
+  Keyworded mips to satisfy repoman deps for xmms.
+
+  13 May 2004; Stephen P. Becker <geoman@gentoo.org> gconf-2.4.0.1.ebuild:
+  Stable on mips.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> gconf-1.0.8-r5.ebuild,
+  gconf-1.0.9.ebuild:
+  Add inherit eutils
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> gconf-1.0.9.ebuild:
+  Add die following econf for bug 48950
+
+  22 Apr 2004; L. Boshell <leonardop@gentoo.org> gconf-2.6.1.ebuild,
+  files/GConf-2.6.1-gcc2_fix.patch:
+  Added patch to remove syntax problems, causing compilation to fail under
+  gcc-2. Resolves bug #48670, thanks to Tristan Henderson.
+
+*gconf-2.6.1 (20 Apr 2004)
+
+  20 Apr 2004; foser <foser@gentoo.org> gconf-2.6.1.ebuild :
+  Version bump.
+
+  31 Mar 2004; L. Boshell <leonardop@gentoo.org> gconf-2.4.0.1.ebuild:
+  Added DEPEND entry for =app-text/docbook-sgml-dtd-3.0* if the `doc' USE
+  flag is active. Closes bug #46071.
+
+*gconf-2.6.0 (23 Mar 2004)
+
+  23 Mar 2004; foser <foser@gentoo.org> gconf-2.6.0.ebuild :
+  Gnome 2.6 final
+
+*gconf-2.5.90 (19 Mar 2004)
+
+  19 Mar 2004; foser <foser@gentoo.org> gconf-2.5.90.ebuild :
+  Gnome 2.6 commit
+  
+  15 Mar 2004; <spider@gentoo.org> gconf-2.2.0.ebuild, gconf-2.2.1.ebuild:
+  fixing bug #44712 , assignment to P and PN
+
+  09 Mar 2004; Stephen P. Becker <geoman@gentoo.org> gconf-2.4.0.1.ebuild:
+  Added ~mips keyword.
+
+  06 Feb 2004; Alastair Tse <liquidx@gentoo.org> gconf-1.0.9.ebuild:
+  put mkdir intl stuff in src_unpack()
+
+*gconf-1.0.9 (04 Feb 2004)
+
+  04 Feb 2004; Alastair Tse <liquidx@gentoo.org> gconf-1.0.9.ebuild,
+  files/gconf-1.0.9-locallock_mdk.patch:
+  add new version with patch from mandrake rpms (#28787).
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> gconf-2.4.0.1.ebuild:
+  Stable on ia64
+
+  12 Nov 2003; L. Boshell <leonardop@gentoo.org> gconf-2.2.1.ebuild:
+  Patch to add missing stdio.h. Closes bug #33279.
+
+  08 Nov 2003; Todd Sunderlin <todd@gentoo.org> gconf-2.4.0.1.ebuild:
+  added sparc keyword
+
+  22 Oct 2003; Bartosch Pixa <darkspecter@gentoo.org> gconf-2.4.0.1.ebuild:
+  set ppc in keywords
+
+  17 Oct 2003; Aron Griffis <agriffis@gentoo.org> gconf-2.4.0.1.ebuild:
+  Stable on alpha
+
+  12 Oct 2003; foser <foser@gentoo.org> gconf-1.0.5*.ebuild :
+  Add gtk+1 dep for (#29708)
+
+  05 Oct 2003; Mike Gardiner <obz@gentoo.org> gconf-2.4.0.1.ebuild:
+  Marked stable on x86
+
+  05 Oct 2003; Mike Gardiner <obz@gentoo.org> gconf-2.4.0.1.ebuild:
+  Added gtk+-2 dependency re bug: 29536
+
+  23 Sep 2003; Bartosch Pixa <darkspecter@gentoo.org> gconf-2.2.1.ebuild:
+  set ppc in keywords
+
+*gconf-2.4.0.1 (11 Sep 2003)
+
+  15 Nov 2003; Guy Martin <gmsoft@gentoo.org> gconf-2.4.0.1.ebuild :
+  Marked stable on hppa.
+
+  20 Sep 2003; foser <foser@gentoo.org> gconf-2.4.0.1.ebuild :
+  Fix SLOT back to 2
+  Fix incorrect env.d path (#28842)
+
+  11 Sep 2003; foser <foser@gentoo.org> gconf-2.4.0.1.ebuild :
+  Removed gtk+ dep, added popt
+
+*gconf-2.3.3 (08 Sep 2003)
+
+  08 Sep 2003; foser <foser@gentoo.org> gconf-2.3.3.ebuild :
+  Fix the fixed redefined SRC_URI (#28280)
+
+  08 Sep 2003; foser <foser@gentoo.org> gconf-2.3.3.ebuild :
+  Gnome 2.4 rc1 , fix redefinition of ${P} in the ebuild (#28169)
+
+  25 Aug 2003; Mike Gardiner <obz@gentoo.org> gconf-2.2.1.ebuild:
+  Removed gnome2_pkg_postinst as it is unneeded, see bug #27262
+
+  25 Aug 2003; Mike Gardiner <obz@gentoo.org> gconf-2.2.1.ebuild:
+  Moved to stable on x86
+
+  27 Jun 2003; foser <foser@gentoo.org> gconf-1.0.8-r{3,4,5}.ebuild :
+  Removed db dep (#23582) 
+  removed guile dep as well in r5 and fixed R(DEP) order
+
+*gconf-1.0.8-r5 (20 Jun 2003)
+
+  06 Jul 2003; Guy Martin <gmsoft@gentoo.org> gconf-1.0.8-r5.ebuild :
+  Added hppa to KEYWORDS.
+
+  20 Jun 2003; <spider@gentoo.org> gconf-1.0.8-r5.ebuild,
+  files/gconfd-2-fix.patch:
+  A fix for the problem with "gconf started before gconf2" , added an extra
+  searchpath.
+
+*gconf-2.2.1 (03 Jun 2003)
+
+  01 Jul 2003; Guy Martin <gmsoft@gentoo.org> gconf-2.2.1.ebuild :
+  Added ~hppa to KEYWORDS.
+
+  03 Jun 2003; foser <foser@gentoo.org> gconf-2.2.1.ebuild :
+  New version, minor ebuild cleanups
+
+  07 Feb 2003; Aron Griffis <agriffis@gentoo.org> gconf-2.2.0.ebuild :
+  Add ~alpha to KEYWORDS
+
+  04 Feb 2003; Aron Griffis <agriffis@gentoo.org> gconf-1.0.8-r4.ebuild :
+  Mark stable on alpha
+
+*gconf-2.2.0 (30 Jan 2003)
+
+  01 Jul 2003; Guy Martin <gmsoft@gentoo.org> gconf-2.2.0.ebuild :
+  Added hppa to KEYWORDS.
+
+  08 Apr 2003; Todd Sunderlin <todd@gentoo.org> gconf-2.2.0.ebuild:
+  Marked stable for sparc.
+
+  27 Mar 2003; Alastair Tse <liquidx@gentoo.org> gconf-1.0.8-r4.ebuild,
+  gconf-2.2.0.ebuild:
+  fix keepdir problems with gconf.xml.mandatory and others. bug #17645.
+
+  11 Mar 2003; Jason Wever <weeve@gentoo.org> gconf-2.2.0.ebuild:
+  Added ~sparc to keywords.
+
+  04 Mar 2003; foser <foser@gentoo.org> gconf-[1.2.1,2.2.0].ebuild :
+  Multiple job fix for all arches (#16807)
+
+  21 Feb 2003; Aron Griffis <agriffis@gentoo.org> gconf-2.2.0.ebuild :
+  Mark stable on alpha
+
+  04 Feb 2003; foser <foser@gentoo.org> gconf-2.2.0.ebuild,gconf-1.2.1.ebuild :
+  Alpha multiple job fix (#14280)
+
+  30 Jan 2003; foser <foser@gentoo.org> gconf-2.2.0.ebuild :
+  GNOME 2.2 rc2 commit
+
+  16 Dec 2002; Aron Griffis <agriffis@gentoo.org> gconf-1.0.8-r4.ebuild :
+  Added ~alpha to KEYWORDS
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+*gconf-1.0.8-r4 (24 Oct 2002)
+
+  08 Dec 2002; Martin Holzer <mholzer@gentoo.org>  gconf-1.0.8-r4.ebuild Changelog :	
+  Fixed SRC_URI.
+
+  24 Oct 2002; Spider <spider@gentoo.org>  gconf-1.0.8-r4.ebuild : I made some 
+  Changes to the ebuild, libtool and others. the previous version broke during
+  galeon install on some clean 1.4 systems, where this version works. test on
+  other systems but it should be ok.
+  
+  
+*gconf-1.2.0-r5 (05 Aug 2002)
+  05 Aug 2002; Leonardo Boshell <leonardop@gentoo.org> gconf-1.2.0-r5.ebuild:
+  Fix sandbox violations affecting the installation under certain
+  circumstances. Closes bug #5797.
+  
+*gconf-1.2.1 (05 Aug 2002)
+  05 Aug 2002 ; Spider <spider@gentoo.org> gconf-1.2.1.ebuild :
+  new version, updated deps
+  
+*gconf-1.2.0-r4 (18 Jul 2002)
+  18 Jul 2002; Spider <spider@gentoo.org> gconf-1.2.0-r4.ebuild :
+  added the dep on gtk+, fixed to use mirror:// 
+  
+
+gconf-1.2.0-r3 (06 Jul 2002)
+  06 Jul 2002; Spider <spider@gentoo.org> gconf-1.2.0-r3.ebuild :
+  added a hack to parse all installed gconf files and fix permissions.
+  killing gconfd  almost everywhere installing  
+  
+  a quick addendum to create /root/.gconfd as well
+
+  07 Jul 2002; Spider <spider@gentoo.org> 
+  changed a typo'd 1 to 2 in gconftool-2 check. 
+  http://bugs.gentoo.org/show_bug.cgi?id=4665
+
+gconf-1.2.0-r2 (28 jun 2002)
+  28 Jun 2002; Spider <spider@gentoo.org> gconf-1.2.0-r2.ebuild :
+  added a dep for gtk-doc to see if it helps
+  
+gconf-1.2.0-r1 (14 Jun 2002)
+  14 Jun 2002; Spider <spider@gentoo.org> gconf-1.2.0-r1.ebuild :
+  add a /etc/env.d/50gconf entry with config_protect_mask
+
+*gconf-1.2.0 (12 Jun 2002)
+  12 Jun 2002; Spider <spider@gentoo.org> gconf-1.2.0.ebuild :
+  new stable version
+  
+*gconf-1.1.11-r3 (11 Jun 2002)
+  11 Jun 2002; Spider <spider@gentoo.org> gconf-1.1.11-r3.ebuild:
+  hack around a directory fcreation thing x2    
+
+*gconf-1.1.11-r2 (10 Jun 2002)
+  10 Jun 2002; Spider <spider@gentoo.org> gconf-1.1.11-r2.ebuild:
+  hack around a directory fcreation thing
+  
+*gconf-1.1.11-r1 (04 Jun 2002)
+
+  04 Jun 2002; Bruce A. Locke <blocke@shivan.org> gconf-1.1.11-r1.ebuild:
+
+  Converted to gnome2.eclass
+
+*gconf-1.1.11 (3 June 2002)
+
+  3 june 2002; Gabriele Giorgetti <stroke@gentoo.org> gconf-1.1.11.ebuild : 
+
+  New version
+
+
+  30 May 2002; Bruce A. Locke <blocke@shivan.org> gconf-1.1.10-r1.ebuild,gconf-1.0.8-r3.ebuild:
+
+  Added SLOTS to gconf 1.0.x and 1.1.x... Merging gconf 1.1.x and doing
+  an "emerge clean" would result in gconf 1.0.x being unmerged and breaking
+  many Gnome 1.4 applications (such as Galeon)
+
+*gconf-1.1.10-r1 (24 May 2002)
+  24 May 2002; Spider <spider@gentoo.org> gconf-1.1.10-r1.ebuild :
+  Removed the install schemas, this version of gconf doesn't have any
+schemas, so this caused a bug when you didn't have an older gconf
+version installed
+
+
+*gconf-1.1.10 (22 May 2002)
+  22 May 2002; Spider <spider@gentoo.org>  gconf-1.1.10.ebuild :
+  popping in the gnome2 branch
+  
+*gconf-1.0.8-r3 (24 Apr 2002)
+
+  08 Dec 2002; Martin Holzer <mholzer@gentoo.org> gconf-1.0.8-r3.ebuild Changelog :	
+  Fixed SRC_URI.
+
+  24 Apr 2002; Seemant Kulleen <seemant@gentoo.org> gconf-1.0.8-r3.ebuild :
+
+  Updated DEPEND and RDEPEND info to be more accurate.
+  
+
+  13 Apr 2002; M.Schlemmer <azarah@gentoo.org> : gconf-1.0.8-r2.ebuild
+
+  Fix pkg_postinst() to create /etc/gconf/gconf.xml.mandatory, as the directory
+  is empty, and gets removed on unmerge of older revisions.  The chmod then
+  fails, causing the build to fail.
+
+*gconf-1.0.8-r2 (17 Mar 2002)
+
+  12 Mar 2002; Seemant Kulleen <seemant@gentoo.org> :
+  dev-util/indent is needed for a successful compilation, so it has been
+  added to DEPEND flags. Reported by arpen@home.se 
+
+*gconf-1.0.8-r1 (22 Feb 2002)
+
+  22 Feb 2002; Daniel Robbins <drobbins@gentoo.org>: fixed perms on
+  /etc/gconf/gconf.xml.mandatory; this closes bug #803.  Added a pkg_postinst()
+  fix so that upgraders can benefit from this fix as well.
+
+*gconf-1.0.8 (13 Feb 2002)
+
+  13 Feb 2002; G. Goodyear <g2boojum@gentoo.org>: Removed gnome-libs dependency
+  (not needed).
+
+*gconf-1.0.7-r2 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

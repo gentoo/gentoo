@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez/files/bluetooth-init.d-r3,v 1.2 2014/01/09 13:24:42 joker Exp $
+
+depend() {
+	after coldplug
+	need dbus localmount hostname
+}
+
+start() {
+   	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --background --exec /usr/libexec/bluetooth/bluetoothd
+	eend $?
+}
+
+stop() {
+	ebegin "Shutting down ${SVCNAME}"
+	start-stop-daemon --stop --quiet --exec /usr/libexec/bluetooth/bluetoothd
+	eend $?
+}

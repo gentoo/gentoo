@@ -1,0 +1,27 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ccs/files/ccsd.rc,v 1.5 2005/03/25 02:12:26 xmerlin Exp $
+
+depend() {
+	use net
+	provide ccs
+}
+
+exefile=/sbin/ccsd
+
+start() {
+	ebegin "Starting ccsd"
+	start-stop-daemon --start --quiet \
+		--exec ${exefile} -- ${CCSD_OPTS}
+	sleep 2s
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ccsd"
+	start-stop-daemon --stop --quiet \
+		-s 9 --exec ${exefile}
+	eend $?
+}
+

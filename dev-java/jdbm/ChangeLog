@@ -1,0 +1,51 @@
+# ChangeLog for dev-java/jdbm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbm/ChangeLog,v 1.13 2015/06/09 13:43:58 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  23 Oct 2008; Markus Meier <maekke@gentoo.org> jdbm-0.12-r2.ebuild:
+  add empty IUSE to make repoman happy
+
+  23 Oct 2008; Markus Meier <maekke@gentoo.org> jdbm-0.12-r2.ebuild:
+  amd64/x86 stable, bug #243134
+
+*jdbm-0.12-r2 (03 Aug 2008)
+
+  03 Aug 2008; Petteri Räty <betelgeuse@gentoo.org> +jdbm-0.12-r2.ebuild:
+  Remove unneeded dependency on jta and xerces.
+
+  12 Jul 2007; Petteri Räty <betelgeuse@gentoo.org> jdbm-0.12-r1.ebuild:
+  Javadoc in sun-jdk-1.6 starting with u2 works fine so removing the work
+  around from DEPEND.
+
+  04 Feb 2007; Vlastimil Babka <caster@gentoo.org> -jdbm-0.12.ebuild:
+  Cleanup.
+
+  03 Feb 2007; Steve Dibb <beandog@gentoo.org> jdbm-0.12-r1.ebuild:
+  amd64 stable, bug 163811
+
+  26 Jan 2007; Christian Faulhammer <opfer@gentoo.org> jdbm-0.12-r1.ebuild:
+  stable x86; bug #163811
+
+*jdbm-0.12-r1 (21 Dec 2006)
+
+  21 Dec 2006; Petteri Räty <betelgeuse@gentoo.org> +jdbm-0.12-r1.ebuild:
+  Revision bump for generation 2 migration.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> jdbm-0.12.ebuild:
+  Dropping sparc keywords, see #96229
+
+  18 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> jdbm-0.12.ebuild:
+  Stable on sparc
+
+  01 May 2005; Jan Brinkmann <luckyduck@gentoo.org> jdbm-0.12.ebuild:
+  stable on amd64 and x86, added ~ppc to KEYWORDS. introduced support for the
+  source useflag
+
+*jdbm-0.12 (06 Feb 2005)
+
+  06 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> +metadata.xml,
+  +files/jdbm-0.12-buildfile.patch, +jdbm-0.12.ebuild:
+  Initial import, package needed as a indirect dependency of openjms.

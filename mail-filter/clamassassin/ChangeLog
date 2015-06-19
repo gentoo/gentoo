@@ -1,0 +1,119 @@
+# ChangeLog for mail-filter/clamassassin
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/clamassassin/ChangeLog,v 1.30 2013/11/06 04:46:01 patrick Exp $
+
+  06 Nov 2013; Patrick Lauer <patrick@gentoo.org> clamassassin-1.2.4.ebuild:
+  Shorten description, make repoman happier
+
+  10 Jun 2011; Eray Aslan <eras@gentoo.org> -clamassassin-1.2.1.ebuild,
+  -clamassassin-1.2.2.ebuild, -clamassassin-1.2.3.ebuild:
+  Remove old - bug #300298
+
+  23 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  15 Aug 2008; Markus Meier <maekke@gentoo.org> clamassassin-1.2.4.ebuild:
+  amd64/x86 stable, bug #185498
+
+  11 Aug 2007; Steve Dibb <beandog@gentoo.org> clamassassin-1.2.3.ebuild:
+  amd64 stable, bug 184307
+
+*clamassassin-1.2.4 (22 Apr 2007)
+
+  22 Apr 2007; Andrej Kacian <ticho@gentoo.org> clamassassin-1.2.1.ebuild,
+  clamassassin-1.2.2.ebuild, clamassassin-1.2.3.ebuild,
+  +clamassassin-1.2.4.ebuild:
+  Version bump, as reported by Yoann Pannier <gentoo-bugs at umsar.org> in bug
+  #170432. Updated HOMEPAGE and SRC_URI.
+
+  11 Apr 2007; Andrej Kacian <ticho@gentoo.org> clamassassin-1.2.3.ebuild:
+  addpredict whole DatabaseDirectory, as clamav tries multiple locations of
+  database lockfile.
+
+  09 Apr 2007; Andrej Kacian <ticho@gentoo.org> clamassassin-1.2.3.ebuild:
+  Inform sandbox that configure process will try to touch clamd's database
+  lock, so it doesn't error out. Bug #168716, reported by Yoann Pannier
+  <gentoo-bugs at umsar.org>.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  13 Mar 2006; <ticho@gentoo.org> clamassassin-1.2.3.ebuild:
+  Stable on x86.
+
+*clamassassin-1.2.3 (12 Jan 2006)
+
+  12 Jan 2006; Tom Martin <slarti@gentoo.org> +clamassassin-1.2.3.ebuild:
+  Version bump, resolves bug #118620
+
+  31 Jul 2005; Michael Cummings <mcummings@gentoo.org>
+  clamassassin-1.2.2.ebuild:
+  Keywording sparc
+
+  17 May 2005; Tom Martin <slarti@gentoo.org> clamassassin-1.2.2.ebuild:
+  Add missing IUSE.
+
+  30 Apr 2005; Tom Martin <slarti@gentoo.org> clamassassin-1.2.2.ebuild:
+  Added in support for clamd via a local USE flag.
+
+  26 Apr 2005; Andrej Kacian <ticho@gentoo.org> clamassassin-1.2.2.ebuild:
+  Stable on x86.
+
+  20 Apr 2005; Tom Martin <slarti@gentoo.org> -clamassassin-1.2.0-r1.ebuild,
+  clamassassin-1.2.2.ebuild:
+  1.2.2 stable on amd64, purge 1.2.0-r1. Resolves bug 89639.
+
+  14 Dec 2004; Andrej Kacian <ticho@gentoo.org> clamassassin-1.2.1.ebuild:
+  Stable on x86.
+
+  09 Dec 2004; Tom Martin <slarti@gentoo.org> :
+  Fix ChangeLog - SuperLag was using my ECHANGELOG_USER.
+
+*clamassassin-1.2.2 (09 Dec 2004)
+
+  09 Dec 2004; Aaron Kulbe <superlag@gentoo.org> +clamassassin-1.2.2.ebuild:
+  Version bump -> 1.2.2 for Tom Martin <slarti@gentoo.org>
+
+  01 Nov 2004; Tom Martin <slarti@gentoo.org> clamassassin-1.2.1.ebuild:
+  Stable on amd64.
+
+  16 Oct 2004; Andrej Kacian <ticho@gentoo.org>
+  clamassassin-1.2.0-r1.ebuild:
+  Stable on x86.
+
+  25 Sep 2004; Tom Martin <slarti@gentoo.org> clamassassin-1.2.0-r1.ebuild:
+  Stable on amd64, fix DEPEND to point to mail-filter/procmail rather than
+  virtual/mda, as in clamassassin-1.2.1.ebuild.
+
+  22 Sep 2004; Andrej Kacian <ticho@gentoo.org> -clamassassin-1.2.0.ebuild:
+  Removed faulty ebuild.
+
+  20 Sep 2004; Tom Martin <slarti@gentoo.org> clamassassin-1.2.1.ebuild:
+  DEPEND on mail-filter/procmail rather than virtual/mda, bug 64609. Thanks to
+  Kenny Bentley <seriousmoose@yahoo.com> for reporting.
+
+*clamassassin-1.2.1 (31 Aug 2004)
+
+  31 Aug 2004; <ticho@gentoo.org> +clamassassin-1.2.1.ebuild:
+  Version bump, closes #62108. Also updated DEPEND to require clamav-0.75.1
+
+  28 Aug 2004; David Holm <dholm@gentoo.org> clamassassin-1.2.0-r1.ebuild:
+  Added to ~ppc.
+
+*clamassassin-1.2.0-r1 (28 Aug 2004)
+
+  28 Aug 2004; Tom Martin <slarti@gentoo.org> +clamassassin-1.2.0-r1.ebuild:
+  Fix issues with Portage exporting $TMP and breaking the script - $TMP was
+  going inside /var/tmp/portage/clamassassin-${VER}/temp, which is not
+  writeable by anyone so caused data loss. Thanks to Andrej Kacian
+  <andrej@kacian.sk> for the fix, and spider <spider@gentoo.org> for
+  reporting. Bug 61806.
+
+  06 Aug 2004; Tom Martin <slarti@gentoo.org> clamassassin-1.2.0.ebuild:
+  Use $() instead of ``, replace use_enable subject_rewrite with subject-rewrite.
+
+*clamassassin-1.2.0 (05 Aug 2004)
+
+  05 Aug 2004; Tom Martin <slarti@gentoo.org> +clamassassin-1.2.0.ebuild:
+  Initial import. Ebuild submitted by Frank Benkstein <benkstein@gmx.de>
+  (bug #59186).

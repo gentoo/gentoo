@@ -1,0 +1,74 @@
+# ChangeLog for dev-java/cpptasks
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/cpptasks/ChangeLog,v 1.15 2015/06/09 13:32:48 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  02 Jan 2014; Tom Wijsman <TomWij@gentoo.org> cpptasks-1.0_beta4-r2.ebuild:
+  Shortened DESCRIPTION.
+
+*cpptasks-1.0_beta5 (14 May 2012)
+
+  14 May 2012; Ralph Sennhauser <sera@gentoo.org> +cpptasks-1.0_beta5.ebuild:
+  Version bump. #409933
+
+  04 Jan 2008; Vlastimil Babka <caster@gentoo.org>
+  -cpptasks-1.0_beta4.ebuild, -cpptasks-1.0_beta4-r1.ebuild:
+  Clean old versions.
+
+  17 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  cpptasks-1.0_beta4-r2.ebuild:
+  stable x86, bug 199244
+
+  17 Nov 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  cpptasks-1.0_beta4-r2.ebuild:
+  amd64 stable, bug #199244.
+
+  16 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  cpptasks-1.0_beta4-r2.ebuild:
+  Added ~ppc, bug #179790
+
+*cpptasks-1.0_beta4-r2 (28 Feb 2007)
+
+  28 Feb 2007; Petteri Räty <betelgeuse@gentoo.org> +files/antlib.xml,
+  +cpptasks-1.0_beta4-r2.ebuild:
+  Add net/sf/antcontrib/cpptasks/antlib.xml from upstream svn because
+  dev-java/jogl needs this file.
+
+*cpptasks-1.0_beta4-r1 (10 Feb 2007)
+
+  10 Feb 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +files/1.0b4-profiling.patch, +cpptasks-1.0_beta4-r1.ebuild:
+  Added patch to make cpptasks work with profiling (bug #156596) and changed
+  to use split ant features and latest eclass features. Thanks to Martijn
+  Hijdra <hijdra@imst.de> for the patch.
+
+  20 Dec 2006; Petteri Räty <betelgeuse@gentoo.org>
+  cpptasks-1.0_beta4.ebuild:
+  Made the ebuild call java-pkg_getjars with the proper argument format.
+
+  30 Nov 2006; Vlastimil Babka <caster@gentoo.org>
+  cpptasks-1.0_beta4.ebuild:
+  Update xerces dep for upcoming 2.6 slotmove.
+
+  05 Nov 2006; Daniel Gryniewicz <dang@gentoo.org>
+  cpptasks-1.0_beta4.ebuild:
+  Marked stable on amd64 for bug #151743
+
+  04 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  cpptasks-1.0_beta4.ebuild:
+  stabled x86, bug #151743
+
+*cpptasks-1.0_beta4 (10 Sep 2006)
+
+  10 Sep 2006; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml,
+  -cpptasks-1.0_beta3.ebuild, +cpptasks-1.0_beta4.ebuild:
+  Version bump, migrated to new Java build system.
+
+*cpptasks-1.0_beta3 (19 Dec 2005)
+
+  19 Dec 2005; Joshua Nichols <nichoj@gentoo.org> +metadata.xml,
+  +cpptasks-1.0_beta3.ebuild:
+  Initial commit. Ebuild contributed by support@obsidian-studios.com (bug
+  #115894).

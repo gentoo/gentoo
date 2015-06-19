@@ -1,0 +1,524 @@
+# ChangeLog for media-gfx/jhead
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/jhead/ChangeLog,v 1.151 2015/02/15 02:56:52 radhermit Exp $
+
+*jhead-3.00 (15 Feb 2015)
+
+  15 Feb 2015; Tim Harder <radhermit@gentoo.org> +jhead-3.00.ebuild:
+  Version bump.
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> jhead-2.97.ebuild:
+  Stable for hppa, wrt bug #463094
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> jhead-2.97.ebuild:
+  Stable for sparc, wrt bug #463094
+
+  30 Mar 2013; Agostino Sarubbo <ago@gentoo.org> jhead-2.97.ebuild:
+  Stable for alpha, wrt bug #463094
+
+  28 Mar 2013; Agostino Sarubbo <ago@gentoo.org> jhead-2.97.ebuild:
+  Stable for ia64, wrt bug #463094
+
+  27 Mar 2013; Agostino Sarubbo <ago@gentoo.org> jhead-2.97.ebuild:
+  Stable for ppc64, wrt bug #463094
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> jhead-2.97.ebuild:
+  Stable for ppc, wrt bug #463094
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> jhead-2.97.ebuild:
+  Stable for x86, wrt bug #463094
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> jhead-2.97.ebuild:
+  Stable for amd64, wrt bug #463094
+
+*jhead-2.97 (15 Feb 2013)
+
+  15 Feb 2013; Tim Harder <radhermit@gentoo.org> +jhead-2.97.ebuild:
+  Version bump.
+
+  08 Sep 2012; Tim Harder <radhermit@gentoo.org> -jhead-2.95.ebuild:
+  Remove old.
+
+  08 Sep 2012; Tim Harder <radhermit@gentoo.org> jhead-2.96.ebuild:
+  Actually mark stable for sparc.
+
+  02 Sep 2012; Raúl Porcel <armin76@gentoo.org> jhead-2.96.ebuild:
+  alpha/ia64/sparc stable wrt #429118
+
+  14 Aug 2012; Johannes Huber <johu@gentoo.org> jhead-2.96.ebuild:
+  Stable for x86, wrt bug #429118
+
+  08 Aug 2012; Brent Baude <ranger@gentoo.org> jhead-2.96.ebuild:
+  Marking jhead-2.96 ppc for bug 429118
+
+  06 Aug 2012; Brent Baude <ranger@gentoo.org> jhead-2.96.ebuild:
+  Marking jhead-2.96 ppc64 for bug 429118
+
+  05 Aug 2012; Jeroen Roovers <jer@gentoo.org> jhead-2.96.ebuild:
+  Stable for HPPA (bug #429118).
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> jhead-2.96.ebuild:
+  Stable for amd64, wrt bug #429118
+
+  11 Jul 2012; Tim Harder <radhermit@gentoo.org> -jhead-2.90.ebuild,
+  -jhead-2.94.ebuild:
+  Remove old.
+
+  08 Jul 2012; Raúl Porcel <armin76@gentoo.org> jhead-2.95.ebuild:
+  alpha/ia64/sparc stable wrt #419067
+
+*jhead-2.96 (25 Jun 2012)
+
+  25 Jun 2012; Tim Harder <radhermit@gentoo.org> +jhead-2.96.ebuild:
+  Version bump.
+
+  14 Jun 2012; Jeroen Roovers <jer@gentoo.org> jhead-2.95.ebuild:
+  Stable for HPPA (bug #419067).
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> jhead-2.95.ebuild:
+  x86 stable wrt bug #419067
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> jhead-2.95.ebuild:
+  Marking jhead-2.95 ppc for bug 419067
+
+  05 Jun 2012; Brent Baude <ranger@gentoo.org> jhead-2.95.ebuild:
+  Marking jhead-2.95 ppc64 for bug 419067
+
+  02 Jun 2012; Agostino Sarubbo <ago@gentoo.org> jhead-2.95.ebuild:
+  Stable for amd64, wrt bug #419067
+
+*jhead-2.95 (17 Mar 2012)
+
+  17 Mar 2012; Tim Harder <radhermit@gentoo.org> +jhead-2.95.ebuild:
+  Version bump.
+
+  07 Mar 2012; Tim Harder <radhermit@gentoo.org> -jhead-2.86.ebuild:
+  Remove old.
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> jhead-2.90.ebuild:
+  Marking jhead-2.90 ppc64 for bug 393075
+
+  01 Mar 2012; Tim Harder <radhermit@gentoo.org> -jhead-2.87.ebuild,
+  -files/jhead-2.87-mkstemp.patch, -files/jhead-2.87-respect_flags.patch,
+  -jhead-2.93.ebuild:
+  Remove old.
+
+*jhead-2.94 (01 Mar 2012)
+
+  01 Mar 2012; Tim Harder <radhermit@gentoo.org> +jhead-2.94.ebuild:
+  Version bump (fixes bug #396419).
+
+  09 Jan 2012; Brent Baude <ranger@gentoo.org> jhead-2.90.ebuild:
+  Marking jhead-2.90 ppc for bug 393075
+
+  14 Dec 2011; Agostino Sarubbo <ago@gentoo.org> jhead-2.90.ebuild:
+  Stable for AMD64, wrt bug #393075
+
+  11 Dec 2011; Raúl Porcel <armin76@gentoo.org> jhead-2.90.ebuild:
+  alpha/ia64/sparc stable wrt #393075
+
+  11 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> jhead-2.90.ebuild:
+  x86 stable wrt bug #393075
+
+  04 Dec 2011; Jeroen Roovers <jer@gentoo.org> jhead-2.90.ebuild:
+  Stable for HPPA (bug #393075).
+
+  04 Dec 2011; Tim Harder <radhermit@gentoo.org> jhead-2.90.ebuild:
+  Add quotes for toolchain prefix.
+
+*jhead-2.93 (04 Dec 2011)
+
+  04 Dec 2011; Tim Harder <radhermit@gentoo.org> +jhead-2.93.ebuild:
+  Version bump.
+
+  22 Nov 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #82110
+
+  24 May 2011; Tim Harder <radhermit@gentoo.org> jhead-2.90.ebuild:
+  Update to EAPI 4, remove unused flag-o-matic eclass, and respect CC and
+  CFLAGS (bug #368575).
+
+*jhead-2.90 (12 Feb 2011)
+
+  12 Feb 2011; Marcelo Goes <vanquirius@gentoo.org> +jhead-2.90.ebuild,
+  +files/jhead-2.90-mkstemp_respect_flags.patch:
+  2.90 version bump.
+
+  07 Jan 2010; Christian Faulhammer <fauli@gentoo.org> jhead-2.87.ebuild:
+  Transfer Prefix keywords
+
+*jhead-2.87 (28 Jun 2009)
+
+  28 Jun 2009; Marcelo Goes <vanquirius@gentoo.org>
+  +files/jhead-2.87-mkstemp.patch, +files/jhead-2.87-respect_flags.patch,
+  +jhead-2.87.ebuild:
+  2.87 version bump, patch to respect flags and change mktemp to mkstemp for
+  bug 275200. Thanks to Zeev Tarantov <zeev dot tarantov at gmail dot com>.
+
+  21 May 2009; Markus Meier <maekke@gentoo.org> -jhead-2.84-r1.ebuild,
+  -files/jhead-2.84-bug243238.patch:
+  old
+
+  20 May 2009; Raúl Porcel <armin76@gentoo.org> jhead-2.86.ebuild:
+  ia64/sparc stable wrt #268864
+
+  16 May 2009; nixnut <nixnut@gentoo.org> jhead-2.86.ebuild:
+  ppc stable #268864
+
+  13 May 2009; Markus Meier <maekke@gentoo.org> jhead-2.86.ebuild:
+  amd64/x86 stable, bug #268864
+
+  11 May 2009; Brent Baude <ranger@gentoo.org> jhead-2.86.ebuild:
+  stable ppc64, bug 268864
+
+  09 May 2009; Tobias Klausmann <klausman@gentoo.org> jhead-2.86.ebuild:
+  Stable on alpha, bug #268864
+
+  07 May 2009; Jeroen Roovers <jer@gentoo.org> jhead-2.86.ebuild:
+  Stable for HPPA (bug #268864).
+
+*jhead-2.86 (14 Mar 2009)
+
+  14 Mar 2009; Markus Meier <maekke@gentoo.org> -jhead-2.84.ebuild,
+  +jhead-2.86.ebuild:
+  version bump to 2.86, remove old
+
+  01 Dec 2008; Brent Baude <ranger@gentoo.org> jhead-2.84-r1.ebuild:
+  Marking jhead-2.84-r1 ppc64 for bug 243238
+
+  30 Nov 2008; Markus Meier <maekke@gentoo.org> jhead-2.84-r1.ebuild:
+  amd64 stable, bug #243238
+
+  29 Nov 2008; Raúl Porcel <armin76@gentoo.org> jhead-2.84-r1.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #243238
+
+  29 Nov 2008; Jeroen Roovers <jer@gentoo.org> jhead-2.84-r1.ebuild:
+  Stable for HPPA (bug #243238).
+
+  28 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  jhead-2.84-r1.ebuild:
+  ppc stable, bug #243238
+
+*jhead-2.84-r1 (28 Nov 2008)
+
+  28 Nov 2008; Markus Meier <maekke@gentoo.org>
+  +files/jhead-2.84-bug243238.patch, +jhead-2.84-r1.ebuild:
+  bump for security bug #243238
+
+  09 Nov 2008; Marcelo Goes <vanquirius@gentoo.org> -jhead-2.82.ebuild,
+  -jhead-2.82-r1.ebuild:
+  Remove old ebuilds.
+
+  23 Oct 2008; Tobias Scherbaum <dertobi123@gentoo.org> jhead-2.84.ebuild:
+  ppc stable, bug #242702
+
+  22 Oct 2008; Raúl Porcel <armin76@gentoo.org> jhead-2.84.ebuild:
+  ia64 stable wrt #242702
+
+  21 Oct 2008; Markus Rothe <corsair@gentoo.org> jhead-2.84.ebuild:
+  Stable on ppc64; bug #242702
+
+  20 Oct 2008; Ferris McCormick <fmccor@gentoo.org> jhead-2.84.ebuild:
+  Sparc stable, Security Bug #242702.
+
+  20 Oct 2008; Jose Luis Rivero <yoswink@gentoo.org> jhead-2.84.ebuild:
+  alpha stable wrt security #242702
+
+  19 Oct 2008; Guy Martin <gmsoft@gentoo.org> jhead-2.84.ebuild:
+  hppa stable, #242702
+
+  19 Oct 2008; Markus Meier <maekke@gentoo.org> jhead-2.84.ebuild:
+  amd64/x86 stable, bug #242702
+
+  18 Oct 2008; Raúl Porcel <armin76@gentoo.org> jhead-2.82-r1.ebuild:
+  alpha/ia64/sparc stable wrt #242382
+
+  18 Oct 2008; Brent Baude <ranger@gentoo.org> jhead-2.82-r1.ebuild:
+  stable ppc, bug 242382
+
+  18 Oct 2008; Jeroen Roovers <jer@gentoo.org> jhead-2.82-r1.ebuild:
+  Stable for HPPA (bug #242382).
+
+*jhead-2.84 (17 Oct 2008)
+
+  17 Oct 2008; Markus Meier <maekke@gentoo.org> -jhead-2.8.ebuild,
+  +jhead-2.84.ebuild:
+  bump to 2.84, remove old
+
+  16 Oct 2008; Markus Meier <maekke@gentoo.org> jhead-2.82-r1.ebuild:
+  amd64/x86 stable, bug #242382
+
+*jhead-2.82-r1 (30 Aug 2008)
+
+  30 Aug 2008; Markus Meier <maekke@gentoo.org> +jhead-2.82-r1.ebuild:
+  respect LDFLAGS, bug #235662
+
+  17 Jul 2008; Markus Rothe <corsair@gentoo.org> jhead-2.82.ebuild:
+  Stable on ppc64; bug #231629
+
+  17 Jul 2008; Olivier Crête <tester@gentoo.org> jhead-2.82.ebuild:
+  Stable on amd64, bug #231629
+
+  14 Jul 2008; nixnut <nixnut@gentoo.org> jhead-2.82.ebuild:
+  Stable on ppc wrt bug 231629
+
+  14 Jul 2008; Raúl Porcel <armin76@gentoo.org> jhead-2.82.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #231629
+
+  14 Jul 2008; Jeroen Roovers <jer@gentoo.org> jhead-2.82.ebuild:
+  Stable for HPPA (bug #231629).
+
+  09 Apr 2008; Markus Meier <maekke@gentoo.org> -jhead-2.7.ebuild:
+  old
+
+  09 Apr 2008; nixnut <nixnut@gentoo.org> jhead-2.8.ebuild:
+  Stable on ppc wrt bug #216570
+
+  08 Apr 2008; Raúl Porcel <armin76@gentoo.org> jhead-2.8.ebuild:
+  ia64/sparc stable wrt #216570
+
+  07 Apr 2008; Tobias Klausmann <klausman@gentoo.org> jhead-2.8.ebuild:
+  Stable on alpha, bug #216570
+
+  07 Apr 2008; Brent Baude <ranger@gentoo.org> jhead-2.8.ebuild:
+  stable ppc64, bug 216570
+
+  07 Apr 2008; Samuli Suominen <drac@gentoo.org> jhead-2.8.ebuild,
+  jhead-2.82.ebuild:
+  Marked 2.8 stable for amd64 wrt #216570. Modified 2.82 so it doesn't dep. on
+  media-libs/jpeg because it doesn't use it as per NEEDED entries, makefile
+  and headers. Use toolchain-funcs correctly and stop inheriting unused
+  eutils.
+
+  07 Apr 2008; Jeroen Roovers <jer@gentoo.org> jhead-2.8.ebuild:
+  Stable for HPPA (bug #216570).
+
+  07 Apr 2008; Dawid Węgliński <cla@gentoo.org> jhead-2.8.ebuild:
+  Stable on x86 (bug #216570)
+
+*jhead-2.82 (06 Apr 2008)
+
+  06 Apr 2008; Markus Meier <maekke@gentoo.org> +jhead-2.82.ebuild:
+  version bump, reported in bug #216290
+
+*jhead-2.8 (22 Feb 2008)
+
+  22 Feb 2008; Markus Meier <maekke@gentoo.org> +jhead-2.8.ebuild:
+  version bump, reported in bug #211064
+
+  02 Feb 2008; Markus Meier <maekke@gentoo.org> -files/jhead-2.4-gcc4.diff,
+  -files/jhead-2.5-gcc4.diff, -jhead-2.4.ebuild, -jhead-2.5.ebuild,
+  -jhead-2.6.ebuild:
+  old
+
+  27 Jan 2008; Christoph Mende <angelos@gentoo.org> jhead-2.7.ebuild:
+  Stable on amd64, bug #206182
+
+  15 Jan 2008; Fabian Groffen <grobian@gentoo.org> jhead-2.4.ebuild,
+  jhead-2.5.ebuild, jhead-2.6.ebuild, jhead-2.7.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  13 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org> jhead-2.7.ebuild:
+  ppc. stable
+
+  25 Jul 2007; Raúl Porcel <armin76@gentoo.org> jhead-2.7.ebuild:
+  alpha stable
+
+  21 Apr 2007; Raúl Porcel <armin76@gentoo.org> jhead-2.7.ebuild:
+  ia64 stable
+
+  16 Apr 2007; Markus Rothe <corsair@gentoo.org> jhead-2.7.ebuild:
+  Stable on ppc64
+
+  28 Mar 2007; Jeroen Roovers <jer@gentoo.org> :
+  Stable for HPPA too.
+
+  26 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org> jhead-2.7.ebuild:
+  Stable on sparc
+
+  24 Mar 2007; Marcelo Goes <vanquirius@gentoo.org> jhead-2.7.ebuild:
+  Mark 2.7 x86 stable.
+
+  16 Mar 2007; Jeroen Roovers <jer@gentoo.org> jhead-2.6.ebuild:
+  Stable for HPPA too.
+
+  10 Feb 2007; Lars Weiler <pylon@gentoo.org> jhead-2.6.ebuild:
+  Stable on ppc.
+
+*jhead-2.7 (25 Jan 2007)
+
+  25 Jan 2007; Marcelo Goes <vanquirius@gentoo.org> +jhead-2.7.ebuild:
+  2.7 version bump.
+
+  11 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> jhead-2.6.ebuild:
+  Stable on sparc
+
+  09 Dec 2006; Marcelo Goes <vanquirius@gentoo.org> jhead-2.6.ebuild:
+  Mark 2.6 x86 stable.
+
+  25 Nov 2006; <blubb@gentoo.org> jhead-2.5.ebuild:
+  stable on amd64
+
+*jhead-2.6 (21 Jul 2006)
+
+  21 Jul 2006; Marcelo Goes <vanquirius@gentoo.org> -jhead-2.2.ebuild,
+  +jhead-2.6.ebuild:
+  2.6 version bump.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-jhead-2.2,
+  files/digest-jhead-2.4, files/digest-jhead-2.5, Manifest:
+  Fixing SHA256 digest, pass four
+
+  09 Mar 2006; Aron Griffis <agriffis@gentoo.org> jhead-2.5.ebuild:
+  Mark 2.5 stable on ia64
+
+  21 Feb 2006; Jeroen Roovers <jer@gentoo.org> jhead-2.5.ebuild:
+  Stable on hppa.
+
+  20 Feb 2006; Markus Rothe <corsair@gentoo.org> jhead-2.5.ebuild:
+  Stable on ppc64
+
+  17 Feb 2006; Michael Hanselmann <hansmi@gentoo.org> jhead-2.5.ebuild:
+  Stable on ppc.
+
+  15 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org> jhead-2.5.ebuild:
+  Stable on sparc
+
+  14 Feb 2006; Marcelo Goes <vanquirius@gentoo.org> jhead-2.5.ebuild:
+  Mark 2.5 x86 stable.
+
+  07 Feb 2006; Aron Griffis <agriffis@gentoo.org> jhead-2.4.ebuild:
+  Mark 2.4 stable on alpha
+
+  19 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org> jhead-2.4.ebuild:
+  Stable on amd64.
+
+  18 Jan 2006; Jeroen Roovers <jer@gentoo.org> jhead-2.4.ebuild:
+  Stable on hppa.
+
+  13 Jan 2006; Marcelo Goes <vanquirius@gentoo.org> jhead-2.4.ebuild,
+  jhead-2.5.ebuild:
+  Do not use HOMEPAGE in SRC_URI.
+
+  11 Jan 2006; Marcelo Goes <vanquirius@gentoo.org>
+  +files/jhead-2.5-gcc4.diff, jhead-2.5.ebuild:
+  Add gcc4 patch for bug 118706. Thanks to Bernard Cafarelli <voyageur at
+  operamail dot com>.
+
+*jhead-2.5 (10 Jan 2006)
+
+  10 Jan 2006; Marcelo Goes <vanquirius@gentoo.org> -jhead-2.0.ebuild,
+  +jhead-2.5.ebuild:
+  2.5 version bump.
+
+  02 Jan 2006; Michael Hanselmann <hansmi@gentoo.org> jhead-2.4.ebuild:
+  Stable on ppc.
+
+  18 Dec 2005; Markus Rothe <corsair@gentoo.org> jhead-2.4.ebuild:
+  Stable on ppc64
+
+  16 Dec 2005; Gustavo Zacarias <gustavoz@gentoo.org> jhead-2.4.ebuild:
+  Stable on sparc
+
+  15 Dec 2005; Michele Noberasco <s4t4n@gentoo.org> jhead-2.4.ebuild:
+  Stable for x86.
+
+  27 Nov 2005; Jeroen Roovers <jer@gentoo.org> jhead-2.2.ebuild:
+  Marked stable for hppa as per bug #110242
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> jhead-2.2.ebuild:
+  Stable on ppc.
+
+  10 Nov 2005; Luis Medinas <metalgod@gentoo.org> jhead-2.2.ebuild:
+  Marked Stable on amd64. Bug #110242.
+
+  10 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org> jhead-2.2.ebuild:
+  Stable on sparc wrt #110242
+
+  10 Nov 2005; Marcelo Goes <vanquirius@gentoo.org> jhead-2.2.ebuild,
+  jhead-2.4.ebuild:
+  Inherit toolchain-funcs to get CC for 2.2 and 2.4. Marking 2.2 x86 stable
+  for bug 110242, on Renat Lumpau's <rl03 at gentoo dot org> request.
+
+  13 Sep 2005; Aron Griffis <agriffis@gentoo.org> jhead-2.2.ebuild:
+  Mark 2.2 stable on alpha
+
+*jhead-2.4 (10 Sep 2005)
+
+  10 Sep 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +files/jhead-2.4-gcc4.diff, +metadata.xml, -jhead-2.1.ebuild,
+  +jhead-2.4.ebuild:
+  Version bump for bug 105492, thanks to Jonathan Stimmel <jstimmel at gmail
+  dot com>. Adding gcc4 patch to avoid compile warnings, adding myself as a
+  maintainer and graphics as its herd.
+
+  08 Jul 2005; <gongloo@gentoo.org> jhead-2.2.ebuild:
+  Keyworded ~ppc-macos. Closes bug 93977.
+
+  08 May 2005; Aron Griffis <agriffis@gentoo.org> jhead-2.2.ebuild:
+  stable on ia64
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> jhead-2.2.ebuild:
+  Stable on ppc64
+
+  02 Nov 2004; Markus Rothe <corsair@gentoo.org> jhead-2.2.ebuild:
+  Marked ~ppc64; dependency of bug #49688
+
+*jhead-2.2 (23 Sep 2004)
+
+  23 Sep 2004; Karol Wojtaszek <sekretarz@gentoo.org> -jhead-1.6.ebuild,
+  -jhead-1.9.ebuild, +jhead-2.2.ebuild:
+  Ebuild cleanup. Version bump
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> jhead-1.6.ebuild,
+  jhead-1.9.ebuild, jhead-2.0.ebuild, jhead-2.1.ebuild:
+  virtual/glibc -> virtual/libc
+
+  17 Apr 2004; Guy Martin <gmsoft@gentoo.org> jhead-2.0.ebuild,
+  jhead-2.1.ebuild:
+  Marked stable on hppa.
+
+*jhead-2.1 (25 Feb 2004)
+
+  25 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> jhead-2.1.ebuild:
+  Version bump. Closing #38980.
+
+  16 Feb 2004; Aron Griffis <agriffis@gentoo.org> jhead-2.0.ebuild:
+  stable on alpha and ia64
+
+  14 Dec 2003; Guy Martin <gmsoft@gentoo.org> jhead-1.6.ebuild:
+  Marked stable on hppa.
+
+  11 Dec 2003; Rajiv Aaron Manglani <rajiv@gentoo.org> jhead-2.0.ebuild:
+  stable on ppc.
+
+  07 Dec 2003; Rajiv Aaron Manglani <rajiv@gentoo.org> jhead-2.0.ebuild:
+  marked ~ppc.
+
+  22 Oct 2003; Christian Birchinger <joker@gentoo.org> jhead-2.0.ebuild:
+  Added sparc stable keyword
+
+  05 Oct 2003; Todd Sunderlin <todd@gentoo.org> jhead-1.6.ebuild:
+  added ~sparc keyword
+
+*jhead-2.0 (28 May 2003)
+
+  28 May 2003; Caleb Tennis <caleb@gentoo.org> jhead-2.0.ebuild:
+  Version bump, submitted by Shardik@gmx.net.  Closes bug #20335
+
+*jhead-1.9 (20 Feb 2003)
+
+  17 Apr 2003; Graham Forest <vladimir@gentoo.org> jhead-1.9.ebuild:
+  set ~ppc in keywords
+
+  20 Feb 2003; Alastair Tse <liquidx@gentoo.org> ChangeLog, jhead-1.9.ebuild:
+  Version bump and license correction. Resolves bug #11917
+
+*jhead-1.6 (14 April 2002)
+
+  04 Apr 2003; Graham Forest <vladimir@gentoo.org> jhead-1.6.ebuild:
+  set ~ppc in keywords
+
+  14 April 2002; Bart Verwilst <verwilst@gentoo.org> Changelog :
+
+  Initial ebuild.  Enjoy!

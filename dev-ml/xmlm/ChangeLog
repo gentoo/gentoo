@@ -1,0 +1,43 @@
+# ChangeLog for dev-ml/xmlm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/xmlm/ChangeLog,v 1.10 2014/10/30 17:28:10 aballier Exp $
+
+*xmlm-1.2.0 (30 Oct 2014)
+
+  30 Oct 2014; Alexis Ballier <aballier@gentoo.org> +xmlm-1.2.0.ebuild:
+  version bump
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  03 Mar 2013; Alexis Ballier <aballier@gentoo.org> xmlm-1.1.1.ebuild:
+  eapi5, define subslot and use slot deps
+
+  03 Mar 2013; Alexis Ballier <aballier@gentoo.org> -xmlm-1.1.0.ebuild:
+  remove old
+
+*xmlm-1.1.1 (13 Aug 2012)
+
+  13 Aug 2012; Alexis Ballier <aballier@gentoo.org> +xmlm-1.1.1.ebuild:
+  version bump
+
+  05 May 2012; Alexis Ballier <aballier@gentoo.org> -xmlm-1.0.2.ebuild:
+  remove old
+
+  27 Mar 2012; Alexis Ballier <aballier@gentoo.org> xmlm-1.1.0.ebuild:
+  use OASIS_BUILD_TESTS
+
+*xmlm-1.1.0 (27 Mar 2012)
+
+  27 Mar 2012; Alexis Ballier <aballier@gentoo.org> +xmlm-1.1.0.ebuild:
+  version bump
+
+  10 Apr 2011; Torsten Veller <tove@gentoo.org> xmlm-1.0.2.ebuild:
+  Add missing die: || "..." -> || die "..."
+
+*xmlm-1.0.2 (21 Feb 2011)
+
+  21 Feb 2011; Alexis Ballier <aballier@gentoo.org> +xmlm-1.0.2.ebuild,
+  +metadata.xml:
+  Initial import, ebuild by Vladimir Ivanov <v.ivanov@ymail.com> who will be
+  proxy-maintaining it, bug #353959

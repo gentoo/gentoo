@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=A chess client and library for Emacs
+EAPI=5
+HOMEPAGE=http://emacs-chess.sourceforge.net/
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2+ FDL-1.1+
+RDEPEND=|| ( games-board/gnuchess games-board/crafty games-board/phalanx games-board/sjeng ) >=virtual/emacs-23
+SLOT=0
+SRC_URI=mirror://sourceforge/emacs-chess/chess-2.0b6.tar.gz mirror://gentoo/emacs-chess-sounds-2.0.tar.bz2 mirror://gentoo/emacs-chess-pieces-2.0.tar.bz2
+_eclasses_=elisp	d13b0507622afb8ac9e3f54e91d58614	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c8b8c6b5a8f483b5c413a6fd8ac73dbe

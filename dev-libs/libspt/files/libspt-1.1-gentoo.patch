@@ -1,0 +1,21 @@
+diff -Naur libspt-1.1.orig/Makefile.in libspt-1.1/Makefile.in
+--- libspt-1.1.orig/Makefile.in	2003-12-07 15:42:15.000000000 +0900
++++ libspt-1.1/Makefile.in	2009-09-15 00:16:50.000000000 +0900
+@@ -9,7 +9,7 @@
+ libexecdir = @libexecdir@
+ includedir = @includedir@
+ #docdir = $(prefix)/doc
+-mandir = $(prefix)/man
++mandir = @mandir@
+ 
+ EXEEXT = @EXEEXT@
+ 
+@@ -48,7 +48,7 @@
+ AGENTOBJS = sptagent.o sptconn.$lo cfuncs.$lo
+ LIBOBJS = libspt.$lo sptconn.$lo cfuncs.$lo error.$lo utilapi.$lo termios.$lo
+ OBJS = test.o $(LIBOBJS)
+-AGENT_MODE = -m 4755 -o root -g wheel
++AGENT_MODE =
+ 
+ .SUFFIXES: .c .o .cc .lo
+ .c.lo:

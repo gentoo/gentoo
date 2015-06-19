@@ -1,0 +1,135 @@
+# ChangeLog for media-video/isight-firmware-tools
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/isight-firmware-tools/ChangeLog,v 1.21 2014/03/01 22:17:56 mgorny Exp $
+
+  01 Mar 2014; Michał Górny <mgorny@gentoo.org>
+  isight-firmware-tools-1.6-r1.ebuild:
+  Update libgcrypt dep to use slot :0.
+
+  10 Feb 2013; Samuli Suominen <ssuominen@gentoo.org>
+  isight-firmware-tools-1.6-r1.ebuild:
+  amd64/x86 stable; use /lib/firmware instead of multilib directory.
+
+  11 Dec 2012; Samuli Suominen <ssuominen@gentoo.org>
+  isight-firmware-tools-1.6-r1.ebuild:
+  Use virtual/udev and udev.eclass.
+
+  13 Aug 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -isight-firmware-tools-1.6.ebuild:
+  old
+
+*isight-firmware-tools-1.6-r1 (12 Aug 2012)
+
+  12 Aug 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +isight-firmware-tools-1.6-r1.ebuild:
+  Read udev.pc pkg-config file and install ift-load and 70-isight.rules to
+  correct directory.
+
+  15 Apr 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  -isight-firmware-tools-1.5.92.ebuild, -isight-firmware-tools-1.5.93.ebuild:
+  Clean up old revision.
+
+*isight-firmware-tools-1.6 (18 Dec 2011)
+
+  18 Dec 2011; Gilles Dartiguelongue <eva@gentoo.org>
+  +isight-firmware-tools-1.6.ebuild:
+  Version bump, thanks to Davide Pesavento for reporting bug #393015.
+
+*isight-firmware-tools-1.5.93 (05 Nov 2010)
+
+  05 Nov 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -isight-firmware-tools-1.5.90-r1.ebuild,
+  +isight-firmware-tools-1.5.93.ebuild:
+  Version bump. Handle new firmwares and enhance UVC specs compliance. Drop
+  old revision.
+
+  22 May 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove genstef from metadata.xml (#66339)
+
+*isight-firmware-tools-1.5.92 (14 May 2010)
+
+  14 May 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -isight-firmware-tools-1.5.90.ebuild,
+  +isight-firmware-tools-1.5.92.ebuild:
+  Version bump. Support for new firwares. Clean up old revision.
+
+*isight-firmware-tools-1.5.90-r1 (05 May 2010)
+
+  05 May 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  -files/isight-firmware-tools-1.2-ift-ldadd.patch,
+  -files/isight-firmware-tools-1.2-rules.patch,
+  -isight-firmware-tools-1.4.2.ebuild,
+  -files/isight-firmware-tools-1.4.2-hal-disable.patch,
+  isight-firmware-tools-1.5.90.ebuild,
+  +isight-firmware-tools-1.5.90-r1.ebuild,
+  +files/isight-firmware-tools-1.5.90-build-O0.patch:
+  Fix udev rules, bug #316027. Fix build problem with -O0, bug #306803.
+
+*isight-firmware-tools-1.5.90 (24 Feb 2010)
+
+  24 Feb 2010; Gilles Dartiguelongue <eva@gentoo.org>
+  +isight-firmware-tools-1.5.90.ebuild:
+  Version bump, bug #297480. Add translations, support for X.{5.7,5.8,6}.
+  Drop HAL support.
+
+*isight-firmware-tools-1.4.2 (28 Jun 2009)
+
+  28 Jun 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -isight-firmware-tools-1.2-r1.ebuild, -isight-firmware-tools-1.4.1.ebuild,
+  +isight-firmware-tools-1.4.2.ebuild,
+  +files/isight-firmware-tools-1.4.2-hal-disable.patch:
+  Bump to 1.4.2. Make it buildable without hal installed, bug #259015. Use
+  virtual/libusb:0, bug #270039.
+
+*isight-firmware-tools-1.4.1 (15 Feb 2009)
+
+  15 Feb 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  -isight-firmware-tools-1.2.ebuild, -isight-firmware-tools-1.4.ebuild,
+  +isight-firmware-tools-1.4.1.ebuild:
+  Bump to 1.4.1. Add more hash for firmware extraction.
+
+*isight-firmware-tools-1.4 (15 Feb 2009)
+
+  15 Feb 2009; Gilles Dartiguelongue <eva@gentoo.org>
+  +isight-firmware-tools-1.4.ebuild:
+  Bump to 1.4. Relies on udev information to load firwmare. Closes bug
+  #258728.
+
+*isight-firmware-tools-1.2-r1 (24 Dec 2008)
+
+  24 Dec 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/isight-firmware-tools-1.2-ift-ldadd.patch,
+  +files/isight-firmware-tools-1.2-rules.patch, -files/ift-ldadd.diff,
+  -isight-firmware-tools-0.5.1.1.ebuild, -isight-firmware-tools-1.0.ebuild,
+  -isight-firmware-tools-1.0.2.ebuild, +isight-firmware-tools-1.2-r1.ebuild:
+  Fixed forced --as-needed issue, was already in itf-ldadd patch, bug
+  #247904. Fix udev rules and make it mutlilib aware. Clean up old
+  revisions.
+
+  03 Aug 2008; Gilles Dartiguelongue <eva@gentoo.org> ChangeLog:
+  remove hal from RDEPEND since it's not used
+
+*isight-firmware-tools-1.2 (03 Aug 2008)
+
+  03 Aug 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  +isight-firmware-tools-1.2.ebuild:
+  bump to 1.2, bug #232161.
+
+*isight-firmware-tools-1.0.2 (18 Feb 2008)
+
+  18 Feb 2008; Gilles Dartiguelongue <eva@gentoo.org> metadata.xml,
+  isight-firmware-tools-1.0.ebuild, +isight-firmware-tools-1.0.2.ebuild:
+  bump to 1.0.2, add myself to maintainer (bug #210632)
+  fix quoting
+
+*isight-firmware-tools-1.0 (29 Dec 2007)
+
+  29 Dec 2007; Stefan Schweizer <genstef@gentoo.org> +files/ift-ldadd.diff,
+  +isight-firmware-tools-1.0.ebuild:
+  version bump
+
+*isight-firmware-tools-0.5.1.1 (19 Dec 2007)
+
+  19 Dec 2007; Stefan Schweizer <genstef@gentoo.org> +metadata.xml,
+  +isight-firmware-tools-0.5.1.1.ebuild:
+  new ebuild

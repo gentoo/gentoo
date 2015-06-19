@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>python</herd>
+  <use>
+    <flag name="redland">enable support for Redland triplestore</flag>
+  </use>
+  <upstream>
+    <remote-id type="pypi">rdflib</remote-id>
+    <remote-id type="github">RDFLib/rdflib</remote-id>
+  </upstream>
+</pkgmetadata>

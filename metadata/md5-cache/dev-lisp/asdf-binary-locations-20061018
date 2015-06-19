@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm preinst
+DEPEND=dev-lisp/asdf dev-lisp/common-lisp-controller
+DESCRIPTION=An ASDF-Extension to specify where your Common Lisp binaries (FASL files) should go
+EAPI=3
+HOMEPAGE=http://common-lisp.net/project/cl-containers/asdf-binary-locations/
+KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
+LICENSE=MIT
+RDEPEND=dev-lisp/asdf
+SLOT=0
+SRC_URI=http://common-lisp.net/project/portage-overlay/distfiles/asdf-binary-locations_20061018.tar.gz
+_eclasses_=common-lisp	c0762703d46ef354d2354f7d73b80008	common-lisp-common	cc88c2e76410141434593a63f108303b	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=6e0744c2efdbdef3f88b0468edf2a880

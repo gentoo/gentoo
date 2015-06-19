@@ -1,0 +1,12 @@
+diff -Naur kismet-2011-03-R2-orig/kis_panel_windows.cc kismet-2011-03-R2/kis_panel_windows.cc
+--- kismet-2011-03-R2-orig/kis_panel_windows.cc	2011-03-02 17:04:05.000000000 -0500
++++ kismet-2011-03-R2/kis_panel_windows.cc	2012-02-07 11:53:39.634360668 -0500
+@@ -1936,7 +1936,7 @@
+ 
+ 	// Import the existing console
+ 	constext->SetFollowTail(1);
+-	constext->SetMaxText(50);
++	constext->SetMaxText(250);
+ 	if (kpinterface->FetchServerFramework() == NULL)  {
+ 		constext->SetText("Kismet server not started (or not started via this client)");
+ 		textcb = -1;

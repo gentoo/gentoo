@@ -1,0 +1,231 @@
+# ChangeLog for app-admin/augeas
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/augeas/ChangeLog,v 1.60 2015/04/10 00:14:26 blueness Exp $
+
+  10 Apr 2015; Anthony G. Basile <blueness@gentoo.org> augeas-0.10.0-r1.ebuild,
+  augeas-0.10.0-r2.ebuild, augeas-0.10.0.ebuild, augeas-1.1.0.ebuild,
+  augeas-1.3.0.ebuild:
+  Keyword ~ppc64.  Bug #540540.
+
+*augeas-1.3.0 (05 Jan 2015)
+
+  05 Jan 2015; Matthew Thode <prometheanfire@gentoo.org> +augeas-1.3.0.ebuild:
+  bumping for fix CVE-2012-0786 (CVE-2013-6412) bug 534448
+
+  15 Aug 2014; Raúl Porcel <armin76@gentoo.org> augeas-1.1.0.ebuild:
+  ia64 stable wrt #506464
+
+  24 May 2014; Agostino Sarubbo <ago@gentoo.org> augeas-1.1.0.ebuild:
+  Stable for x86, wrt bug #506464
+
+  17 May 2014; Agostino Sarubbo <ago@gentoo.org> augeas-1.1.0.ebuild:
+  Stable for alpha, wrt bug #506464
+
+  14 May 2014; Agostino Sarubbo <ago@gentoo.org> augeas-1.1.0.ebuild:
+  Stable for sparc, wrt bug #506464
+
+  10 May 2014; Agostino Sarubbo <ago@gentoo.org> augeas-1.1.0.ebuild:
+  Stable for ppc, wrt bug #506464
+
+  07 May 2014; Chema Alonso <nimiux@gentoo.org> augeas-1.1.0.ebuild:
+  Stable for amd64 wrt bug #506464
+
+  05 Apr 2014; Jeroen Roovers <jer@gentoo.org> augeas-1.1.0.ebuild:
+  Stable for HPPA (bug #506464).
+
+  14 Dec 2013; Agostino Sarubbo <ago@gentoo.org> augeas-0.10.0-r2.ebuild:
+  Stable for sparc, wrt bug #492528
+
+  13 Dec 2013; Agostino Sarubbo <ago@gentoo.org> augeas-0.10.0-r2.ebuild:
+  Stable for ppc, wrt bug #492528
+
+  13 Dec 2013; Agostino Sarubbo <ago@gentoo.org> augeas-0.10.0-r2.ebuild:
+  Stable for alpha, wrt bug #492528
+
+  11 Dec 2013; Jeroen Roovers <jer@gentoo.org> augeas-0.10.0-r2.ebuild:
+  Stable for HPPA (bug #492528).
+
+  11 Dec 2013; Agostino Sarubbo <ago@gentoo.org> augeas-0.10.0-r2.ebuild:
+  Stable for x86, wrt bug #492528
+
+  11 Dec 2013; Agostino Sarubbo <ago@gentoo.org> augeas-0.10.0-r2.ebuild:
+  Stable for amd64, wrt bug #492528
+
+*augeas-0.10.0-r2 (11 Dec 2013)
+
+  11 Dec 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +augeas-0.10.0-r2.ebuild, +files/cve-bunch-of-them-symlink.patch:
+  initial fix for bug 492528 CVE-2012-{0786,0787,6607}
+
+  18 Sep 2013; Jeroen Roovers <jer@gentoo.org> augeas-0.10.0-r1.ebuild:
+  Stable for HPPA too.
+
+*augeas-1.1.0 (12 Sep 2013)
+
+  12 Sep 2013; Matthew Thode <prometheanfire@gentoo.org> +augeas-1.1.0.ebuild:
+  bump to 1.1.0 for bug 477700
+
+  03 Feb 2013; Matthew Thode <prometheanfire@gentoo.org>
+  augeas-0.10.0-r1.ebuild, metadata.xml:
+  taking maintership
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> -augeas-0.7.1.ebuild,
+  -augeas-0.7.4.ebuild, -augeas-0.9.0.ebuild,
+  -files/augeas-0.9.0-gnulib-test.patch, metadata.xml:
+  Cleanup due #22900
+
+  18 Dec 2012; Agostino Sarubbo <ago@gentoo.org> augeas-0.10.0-r1.ebuild:
+  Stable for ia64, wrt bug #439732
+
+*augeas-0.10.0-r1 (07 Nov 2012)
+
+  07 Nov 2012; Justin Lecher <jlec@gentoo.org> +augeas-0.10.0-r1.ebuild,
+  +files/augeas-0.10.0-gets.patch,
+  +files/augeas-0.10.0-libxml2-pkgconfig.patch,
+  +files/augeas-0.10.0-test.patch, +files/augeas-0.10.0-test2.patch,
+  metadata.xml:
+  Import two patches for tests (hopefully fixing #421907), pkgconfig file fix
+  from upstream; add fix for glibc-2.16 gets drop, #428312
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> augeas-0.10.0.ebuild:
+  alpha/sparc stable wrt #418483
+
+  05 Aug 2012; Raúl Porcel <armin76@gentoo.org> augeas-0.9.0.ebuild:
+  alpha/sparc stable wrt #391565
+
+  03 Aug 2012; Jeff Horelick <jdhore@gentoo.org> augeas-0.10.0.ebuild:
+  marked x86 per bug 418483
+
+  02 Aug 2012; Markos Chandras <hwoarang@gentoo.org> augeas-0.10.0.ebuild:
+  Stable on amd64 wrt bug #418483
+
+  02 Aug 2012; Jeroen Roovers <jer@gentoo.org> augeas-0.10.0.ebuild:
+  Stable for HPPA (bug #418483).
+
+  02 Aug 2012; Anthony G. Basile <blueness@gentoo.org> augeas-0.10.0.ebuild:
+  Stable ppc, bug #418483
+
+  04 Jul 2012; Jeroen Roovers <jer@gentoo.org> augeas-0.9.0.ebuild:
+  Stable for HPPA (bug #391565).
+
+  03 Jun 2012; Michael Weber <xmw@gentoo.org> augeas-0.9.0.ebuild:
+  ppc stable (bug 391565)
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> augeas-0.10.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*augeas-0.10.0 (17 Apr 2012)
+
+  17 Apr 2012; MATSUU Takuto <matsuu@gentoo.org> -augeas-0.5.2.ebuild,
+  -augeas-0.7.3.ebuild, -augeas-0.8.1.ebuild, +augeas-0.10.0.ebuild:
+  Version bumped. Removed old versions.
+
+  14 Dec 2011; Agostino Sarubbo <ago@gentoo.org> augeas-0.9.0.ebuild:
+  Stable for AMD64, wrt bug #391565
+
+  14 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> augeas-0.9.0.ebuild:
+  x86 stable wrt bug #391565
+
+*augeas-0.9.0 (24 Aug 2011)
+
+  24 Aug 2011; MATSUU Takuto <matsuu@gentoo.org> +augeas-0.9.0.ebuild,
+  +files/augeas-0.9.0-gnulib-test.patch:
+  Version bumped, bug #380239.
+
+  30 Jun 2011; Brent Baude <ranger@gentoo.org> augeas-0.7.1.ebuild:
+  Marking augeas-0.7.1 ppc for bug 325111
+
+*augeas-0.8.1 (11 May 2011)
+
+  11 May 2011; MATSUU Takuto <matsuu@gentoo.org> +augeas-0.8.1.ebuild:
+  Version bumped, bug #366013. Added static-libs USE flag.
+
+  10 Apr 2011; Tobias Klausmann <klausman@gentoo.org> augeas-0.7.4.ebuild:
+  Stable on alpha, bug #359233
+
+*augeas-0.7.4 (01 Jan 2011)
+
+  01 Jan 2011; MATSUU Takuto <matsuu@gentoo.org> -augeas-0.5.0.ebuild,
+  -augeas-0.5.0-r1.ebuild, -augeas-0.7.0.ebuild, +augeas-0.7.4.ebuild:
+  Version bumped, bug #346829. Removed old versions.
+
+  12 Oct 2010; Raúl Porcel <armin76@gentoo.org> augeas-0.7.1.ebuild:
+  sparc stable wrt #325111
+
+  17 Sep 2010; Christian Faulhammer <fauli@gentoo.org> augeas-0.7.1.ebuild:
+  stable x86, bug 325111
+
+  10 Sep 2010; Jeroen Roovers <jer@gentoo.org> augeas-0.7.1.ebuild:
+  Stable for HPPA (bug #325111).
+
+  08 Sep 2010; Markos Chandras <hwoarang@gentoo.org> augeas-0.7.1.ebuild:
+  Stable on amd64 wrt bug #325111
+
+*augeas-0.7.3 (06 Sep 2010)
+
+  06 Sep 2010; MATSUU Takuto <matsuu@gentoo.org> +augeas-0.7.3.ebuild:
+  Version bumped, bug #325125.
+
+  21 Jun 2010; Guy Martin <gmsoft@gentoo.org> augeas-0.7.1.ebuild:
+  added ~hppa to KEYWORDS
+
+*augeas-0.7.1 (25 May 2010)
+
+  25 May 2010; MATSUU Takuto <matsuu@gentoo.org> +augeas-0.7.1.ebuild:
+  Version bumped.
+
+*augeas-0.7.0 (04 Feb 2010)
+
+  04 Feb 2010; MATSUU Takuto <matsuu@gentoo.org> +augeas-0.7.0.ebuild:
+  Version bumped, bug #303261.
+
+  10 Oct 2009; Raúl Porcel <armin76@gentoo.org> augeas-0.5.2.ebuild:
+  sparc stable wrt #282759
+
+  05 Sep 2009; Markus Meier <maekke@gentoo.org> augeas-0.5.0.ebuild:
+  amd64 stable, bug #270432
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> augeas-0.5.2.ebuild:
+  ppc stable #282759
+
+  27 Aug 2009; Christian Faulhammer <fauli@gentoo.org> augeas-0.5.2.ebuild:
+  stable x86, bug 282759
+
+*augeas-0.5.2 (21 Jul 2009)
+
+  21 Jul 2009; MATSUU Takuto <matsuu@gentoo.org> +augeas-0.5.2.ebuild:
+  Version bumped.
+
+*augeas-0.5.0-r1 (14 Jun 2009)
+
+  14 Jun 2009; MATSUU Takuto <matsuu@gentoo.org> +augeas-0.5.0-r1.ebuild:
+  Remove doc USE flag and always depends on NaturalDocs. bug #272504
+
+  19 May 2009; Ferris McCormick <fmccor@gentoo.org> augeas-0.5.0.ebuild:
+  Sparc stable, required for Bug #270432 (huge test suite runs successfully).
+
+  19 May 2009; MATSUU Takuto <matsuu@gentoo.org> -augeas-0.4.0.ebuild,
+  -augeas-0.4.1.ebuild:
+  Removed old versions.
+
+  12 Apr 2009; Friedrich Oslage <bluebird@gentoo.org> augeas-0.5.0.ebuild:
+  Add ~sparc keyword, bug #263622
+
+*augeas-0.5.0 (29 Mar 2009)
+
+  29 Mar 2009; MATSUU Takuto <matsuu@gentoo.org> +augeas-0.5.0.ebuild:
+  Version bumped. Fixed NaturalDocs related issue, bug #264063.
+
+  24 Mar 2009; Joseph Jezak <josejx@gentoo.org> augeas-0.4.1.ebuild:
+  Marked ~ppc for bug #263622.
+
+*augeas-0.4.1 (09 Mar 2009)
+
+  09 Mar 2009; MATSUU Takuto <matsuu@gentoo.org> +augeas-0.4.1.ebuild:
+  Version bumped.
+
+*augeas-0.4.0 (24 Feb 2009)
+
+  24 Feb 2009; MATSUU Takuto <matsuu@gentoo.org> +metadata.xml,
+  +augeas-0.4.0.ebuild:
+  Initial import, bug #229361.

@@ -1,0 +1,27 @@
+# ChangeLog for media-gfx/iscan-plugin-esdip
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/iscan-plugin-esdip/ChangeLog,v 1.5 2014/08/10 21:14:27 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  iscan-plugin-esdip-1.0.0.5-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  26 Feb 2013; Diego E. Pettenò <flameeyes@gentoo.org>
+  -iscan-plugin-esdip-1.0.0.5.ebuild:
+  Remove old unfetchable version.
+
+*iscan-plugin-esdip-1.0.0.5-r1 (18 Feb 2013)
+
+  18 Feb 2013; Diego E. Pettenò <flameeyes@gentoo.org>
+  +iscan-plugin-esdip-1.0.0.5-r1.ebuild:
+  Version bump with new SRC_URI. Thanks to Jared in bug #455776.
+
+  03 Nov 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  iscan-plugin-esdip-1.0.0.5.ebuild:
+  Make sure to use QA_PREBUILT.
+
+*iscan-plugin-esdip-1.0.0.5 (04 Jun 2012)
+
+  04 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +iscan-plugin-esdip-1.0.0.5.ebuild, +metadata.xml:
+  Initial import of the new image manipulation plugin for iscan.

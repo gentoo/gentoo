@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>perl</herd>
+	<longdescription>
+		Libwhisker is a Perl library useful for HTTP testing scripts.  It
+		contains a pure-Perl implementation of functionality found in the LWP,
+		URI, Digest::MD5, Digest::MD4, Data::Dumper, Authen::NTLM, HTML::Parser,
+		HTML::FormParser, CGI::Upload, MIME::Base64, and GetOpt::Std modules.
+		Libwhisker is designed to be portable (a single perl file), fast
+		(general benchmarks show libwhisker is faster than LWP), and flexible
+		(great care was taken to ensure the library does exactly what you want
+		to do, even if it means breaking the protocol).
+	</longdescription>
+</pkgmetadata>

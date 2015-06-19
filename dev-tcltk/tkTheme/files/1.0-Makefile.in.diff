@@ -1,0 +1,29 @@
+ Makefile.in |   11 +++++------
+ 1 files changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 7cf8b1e..c2c7d3b 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -428,16 +428,15 @@ mostlyclean distclean maintainer-clean
+ 
+ 
+ install-exec-hook:
+-	$(mkinstalldirs) @PKG_TCL@ @PKG_TCL@/demo
++	$(mkinstalldirs) $(DESTDIR)@PKG_TCL@
+ 	echo	"package ifneeded tkTheme"				   \
+ 		`echo $(VERSION) | awk -F. '{ printf "%s.%s", $$1, $$2 }'` \
+-		"[list load $(DESTDIR)$(libdir)/libtkTheme.so]"	   \
+-	    > @PKG_TCL@/pkgIndex.tcl
++		"[list load $(libdir)/libtkTheme.so]"	   \
++	    > $(DESTDIR)@PKG_TCL@/pkgIndex.tcl
+ 	sed -e 's%load .libs/libtkTheme.so%package require tkTheme%' \
+-	    < test.tcl      					     \
++	    < $(srcdir)/test.tcl      					     \
+ 	    | sed -e 's%cd demo/%cd @PKG_TCL@/demo/%'                \
+-	    > @PKG_TCL@/test.tcl
+-	cp demo/* @PKG_TCL@/demo
++	    > $(DESTDIR)@PKG_TCL@/test.tcl
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.

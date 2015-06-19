@@ -1,0 +1,24 @@
+# ChangeLog for x11-misc/whaw
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/whaw/ChangeLog,v 1.4 2014/05/15 08:21:07 pinkbyte Exp $
+
+*whaw-0.2 (15 May 2014)
+
+  15 May 2014; Sergey Popov <pinkbyte@gentoo.org> -whaw-0.1.2.ebuild,
+  +whaw-0.2.ebuild, +files/whaw-0.2-fix-implicit-declaration-warning.patch,
+  metadata.xml:
+  Version bump: EAPI 5, epatch_user, fix compilation warning. Took
+  maintainership, add upstream information to metadata. Drop old version
+
+  08 May 2014; Alex Alexander <wired@gentoo.org> metadata.xml:
+  maintainer-needed
+
+  26 Jul 2009; Alex Alexander <wired@gentoo.org> metadata.xml:
+  fixed metadata.xml wrt bug 279152
+
+*whaw-0.1.2 (19 Jul 2009)
+
+  19 Jul 2009; Alex Alexander <wired@gentoo.org> +whaw-0.1.2.ebuild,
+  +metadata.xml:
+  new ebuild for whaw. bug #256318.
+

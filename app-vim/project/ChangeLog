@@ -1,0 +1,18 @@
+# ChangeLog for app-vim/project
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/project/ChangeLog,v 1.4 2012/12/16 14:55:58 pacho Exp $
+
+  16 Dec 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due retirement, #260683
+
+  07 Dec 2012; Ulrich Müller <ulm@gentoo.org> project-1.4.1.ebuild:
+  Fix LICENSE, bug 445808.
+
+  25 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Set herd as primary maintainer as told with volkmar.
+
+*project-1.4.1 (16 Apr 2009)
+
+  16 Apr 2009; Mounir Lamouri <volkmar@gentoo.org> +metadata.xml,
+  +project-1.4.1.ebuild:
+  Initial commit. See bug 255591.

@@ -1,0 +1,40 @@
+# ChangeLog for dev-libs/antlr-c
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/antlr-c/ChangeLog,v 1.9 2015/06/06 18:55:13 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Fix GH project
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  14 May 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -antlr-c-3.3_pre20110403.ebuild, -antlr-c-3.4.ebuild,
+  -files/antlr-c-3.1.4-doxygen.patch:
+  old
+
+  01 Sep 2013; Agostino Sarubbo <ago@gentoo.org> antlr-c-3.5.ebuild:
+  Add ~ppc, wrt bug #483246
+
+*antlr-c-3.5 (28 Mar 2013)
+*antlr-c-3.4 (28 Mar 2013)
+
+  28 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> +antlr-c-3.4.ebuild,
+  +antlr-c-3.5.ebuild:
+  Version bump, wrt bug #428214
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #333419
+
+  05 Mar 2012; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove betelgeuse
+
+  09 Feb 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Reorder maintainers per their availability.
+
+*antlr-c-3.3_pre20110403 (10 Jun 2011)
+
+  10 Jun 2011; Mu Qiao <qiaomuf@gentoo.org> +files/antlr-c-3.1.4-doxygen.patch,
+  +antlr-c-3.3_pre20110403.ebuild, +files/antlr-c-3.3-cflags.patch,
+  +metadata.xml:
+  Initial commit for antlr-c

@@ -1,0 +1,200 @@
+# ChangeLog for app-text/active-dvi
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/active-dvi/ChangeLog,v 1.50 2014/01/26 19:42:26 ottxor Exp $
+
+  26 Jan 2014; Christoph Junghans <ottxor@gentoo.org> -active-dvi-1.10.2.ebuild:
+  remove old to have EAPI>=3
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> active-dvi-1.10.2-r1.ebuild:
+  Stable for x86, wrt bug #486024
+
+  22 Oct 2013; Alexis Ballier <aballier@gentoo.org>
+  active-dvi-1.10.2-r1.ebuild:
+  do not compress .dvi files as they are used by advi and unreadable compressed
+
+  17 Oct 2013; Christoph Junghans <ottxor@gentoo.org>
+  active-dvi-1.10.2-r1.ebuild:
+  fixed build (bug #486066)
+
+*active-dvi-1.10.2-r1 (25 Sep 2013)
+
+  25 Sep 2013; Christoph Junghans <ottxor@gentoo.org>
+  +active-dvi-1.10.2-r1.ebuild:
+  EAPI bump + prefix support (bug #485986)
+
+  07 Aug 2012; Alexis Ballier <aballier@gentoo.org>
+  -files/active-dvi-1.7.3-asneeded.patch, -active-dvi-1.8.ebuild,
+  -active-dvi-1.9.ebuild:
+  remove old
+
+  24 Jul 2012; Johannes Huber <johu@gentoo.org> active-dvi-1.10.2.ebuild:
+  Stable for x86, wrt bug #416525
+
+  16 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> active-dvi-1.8.ebuild,
+  active-dvi-1.9.ebuild, active-dvi-1.10.2.ebuild:
+  Use global USE flag "postscript" instead of local USE flag "gs" for
+  PostScript support
+
+*active-dvi-1.10.2 (10 Apr 2012)
+
+  10 Apr 2012; Alexis Ballier <aballier@gentoo.org> +active-dvi-1.10.2.ebuild:
+  version bump
+
+  05 Oct 2011; Alexis Ballier <aballier@gentoo.org> active-dvi-1.8.ebuild,
+  active-dvi-1.9.ebuild:
+  remove ptex dep as it is going away
+
+  24 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> active-dvi-1.9.ebuild:
+  Marked ~ppc wrt #316131
+
+  04 Apr 2011; Thomas Kahle <tomka@gentoo.org> active-dvi-1.9.ebuild:
+  keyworded ~x86 per bug 316131
+
+  29 Mar 2011; Alexis Ballier <aballier@gentoo.org> active-dvi-1.9.ebuild:
+  depend on tl-latexextra for fullpage.sty, bug #316131
+
+*active-dvi-1.9 (15 Feb 2011)
+
+  15 Feb 2011; Alexis Ballier <aballier@gentoo.org> +active-dvi-1.9.ebuild,
+  +files/active-dvi-1.9-htmlcflags.patch:
+  version bump, bug #316131
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> active-dvi-1.8.ebuild:
+  virtual/ghostscript->app-text/ghostscript-gpl: ghostscript-gpl is the only
+  implementation left in the tree.
+
+  22 Dec 2009; Alexis Ballier <aballier@gentoo.org> active-dvi-1.8.ebuild:
+  Fix SRC_URI and homepage
+
+  07 Dec 2009; Alexis Ballier <aballier@gentoo.org>
+  -active-dvi-1.7.3-r1.ebuild:
+  remove old
+
+  27 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  active-dvi-1.8.ebuild:
+  stable x86, security bug 294678
+
+*active-dvi-1.8 (12 Nov 2009)
+
+  12 Nov 2009; Alexis Ballier <aballier@gentoo.org> +active-dvi-1.8.ebuild:
+  version bump
+
+  04 Aug 2009; Alexis Ballier <aballier@gentoo.org>
+  -active-dvi-1.7.3.ebuild:
+  remove old
+
+  29 Jul 2009; Markus Meier <maekke@gentoo.org> active-dvi-1.7.3-r1.ebuild:
+  x86 stable, bug #276235
+
+*active-dvi-1.7.3-r1 (27 Jul 2009)
+
+  27 Jul 2009; Alexis Ballier <aballier@gentoo.org>
+  +active-dvi-1.7.3-r1.ebuild:
+  rev bump to add missing usedeps on camlimages 3.0.1, spotted by maekke
+
+  30 May 2009; Ulrich Mueller <ulm@gentoo.org> active-dvi-1.7.3.ebuild:
+  Remove app-text/tetex from dependencies, bug 227443. Move epatch to
+  src_prepare to make repoman happy.
+
+  07 Mar 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  active-dvi-1.7.3.ebuild:
+  Transition to eapi 2 use deps
+
+  05 Oct 2008; Alexis Ballier <aballier@gentoo.org> active-dvi-1.7.3.ebuild:
+  Add missing findlib dep, thanks Patrick, bug #239607
+
+  02 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  -files/active-dvi-1.6.0-warn-error.patch, -active-dvi-1.6.0-r1.ebuild:
+  remove old
+
+  17 Aug 2008; Markus Meier <maekke@gentoo.org> active-dvi-1.7.3.ebuild:
+  x86 stable, bug #234566
+
+  17 Aug 2008; Alexis Ballier <aballier@gentoo.org> active-dvi-1.7.3.ebuild:
+  Amend previous commit... texlive-pictures is also missing.
+
+  17 Aug 2008; Alexis Ballier <aballier@gentoo.org> active-dvi-1.7.3.ebuild:
+  Add missing deps on pstricks, spotted by Markus Meier.
+
+  07 Aug 2008; Alexis Ballier <aballier@gentoo.org> active-dvi-1.7.3.ebuild:
+  hevea is required at buildtime
+
+  09 Jul 2008; Alexis Ballier <aballier@gentoo.org> active-dvi-1.7.3.ebuild:
+  bump camlimages requirement to have the fix for bug #227291
+
+  09 Jul 2008; Alexis Ballier <aballier@gentoo.org>
+  -active-dvi-1.4.0.ebuild, -active-dvi-1.6.0.ebuild:
+  remove old
+
+*active-dvi-1.7.3 (07 Jun 2008)
+
+  07 Jun 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/active-dvi-1.7.3-asneeded.patch, +active-dvi-1.7.3.ebuild:
+  Version bump for bug #225005, give it ocamlopt optional support, fix bug
+  #174232, and add ~amd64
+
+  05 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  active-dvi-1.6.0-r1.ebuild:
+  stable x86, bug 224893
+
+  05 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  active-dvi-1.6.0-r1.ebuild:
+  put man page in correct directory, see bug 168542 by Horst Prote
+  <prote AT fmi DOT uni-stuttgart DOT de>; quote variables
+
+  05 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  active-dvi-1.6.0-r1.ebuild:
+  stable x86, bug 224893
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  28 Jan 2007; Marius Mauch <genone@gentoo.org> active-dvi-1.4.0.ebuild,
+  active-dvi-1.6.0.ebuild, active-dvi-1.6.0-r1.ebuild:
+  Replacing einfo with elog
+
+  28 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  active-dvi-1.4.0.ebuild, active-dvi-1.6.0.ebuild,
+  active-dvi-1.6.0-r1.ebuild:
+  moved tcltk USE flag over to separate tk and tcl flags, see bug #17808
+
+*active-dvi-1.6.0-r1 (08 Jul 2006)
+
+  08 Jul 2006; Alexandre Buisse <nattfodd@gentoo.org>
+  +files/active-dvi-1.6.0-warn-error.patch, +active-dvi-1.6.0-r1.ebuild:
+  Fix the compile failures with -warn-error and ocaml-3.09 (bug #139617).
+
+  18 Mar 2005; Matthieu Sozeau <mattam@gentoo.org> active-dvi-1.6.0.ebuild:
+  Add ~ppc keyword.
+
+  18 Feb 2005; Matthieu Sozeau <mattam@gentoo.org> active-dvi-1.6.0.ebuild:
+  Get the tex files location right.
+
+*active-dvi-1.6.0 (08 Feb 2005)
+
+  08 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> active-dvi-1.4.0.ebuild,
+  +active-dvi-1.6.0.ebuild:
+  Version bumped. Ebuild submitted by Johannes Bruegmann
+  <johannes@jottbee.org>; bug #76325.
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> active-dvi-1.4.0.ebuild:
+  Switch to use epause and ebeep, bug #62950
+
+  02 Jun 2004; Aron Griffis <agriffis@gentoo.org> active-dvi-1.4.0.ebuild:
+  Fix use invocation
+
+  26 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> active-dvi-1.4.0.ebuild:
+  Marked stable on x86
+
+  09 Dec 2003; Heinrich Wendel <lanius@gentoo.org> active-dvi-1.4.0.ebuild:
+  changed app-text/ghostscript to virtual/ghostscript
+
+*active-dvi-1.4.0 (06 Nov 2003)
+
+  07 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> active-dvi-1.4.0.ebuild:
+  RDEPENDs on kochi-substitute if cjk is enabled.
+
+  06 Nov 2003; Mike Gardiner <obz@gentoo.org> active-dvi-1.4.0.ebuild,
+  metadata.xml:
+  First version of active-dvi in the tree. This has been requested in bug
+  #22549, and thanks to <mattam@altern.org> for his ebuild submission.

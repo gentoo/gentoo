@@ -1,0 +1,14 @@
+#!/sbin/runscript
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/x11-base/xorg-server/files/xdm-setup.initd-1,v 1.1 2010/04/13 10:07:39 scarabeus Exp $
+
+depend() {
+	need localmount
+}
+
+start() {
+	if get_bootparam "nox" ; then
+		touch /etc/.noxdm
+	fi
+}

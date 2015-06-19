@@ -1,0 +1,100 @@
+# ChangeLog for dev-ruby/sparklines
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/sparklines/ChangeLog,v 1.24 2015/04/14 23:19:33 mrueg Exp $
+
+  14 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -sparklines-0.5.2-r3.ebuild:
+  Remove old.
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> sparklines-0.5.2-r4.ebuild:
+  Stable for x86, wrt bug #546242
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> sparklines-0.5.2-r4.ebuild:
+  Stable for amd64, wrt bug #546242
+
+  11 Apr 2015; Hans de Graaff <graaff@gentoo.org> sparklines-0.5.2-r5.ebuild:
+  Add ruby22.
+
+*sparklines-0.5.2-r5 (11 Apr 2015)
+
+  11 Apr 2015; Hans de Graaff <graaff@gentoo.org> sparklines-0.5.2-r4.ebuild,
+  +sparklines-0.5.2-r5.ebuild:
+  Create stable candidate.
+
+  11 Oct 2014; Manuel Rüger <mrueg@gentoo.org> sparklines-0.5.2-r4.ebuild:
+  Add ruby21 target.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> sparklines-0.5.2-r3.ebuild,
+  sparklines-0.5.2-r4.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  19 Apr 2014; Manuel Rüger <mrueg@gentoo.org> sparklines-0.5.2-r3.ebuild,
+  sparklines-0.5.2-r4.ebuild:
+  Remove ruby18 target.
+
+*sparklines-0.5.2-r4 (11 Nov 2013)
+
+  11 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +sparklines-0.5.2-r4.ebuild:
+  Add ruby20 target.
+
+  04 Sep 2013; Manuel Rüger <mrueg@gentoo.org> -sparklines-0.5.2-r2.ebuild:
+  Cleanup old.
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> sparklines-0.5.2-r3.ebuild:
+  Stable for x86, wrt bug #475580
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> sparklines-0.5.2-r3.ebuild:
+  Stable for amd64, wrt bug #475580
+
+*sparklines-0.5.2-r3 (29 Jul 2012)
+
+  29 Jul 2012; Hans de Graaff <graaff@gentoo.org> +sparklines-0.5.2-r3.ebuild:
+  Add ruby19.
+
+  07 Jan 2011; Hans de Graaff <graaff@gentoo.org>
+  sparklines-0.5.2-r2.ebuild:
+  Keyword ~x86-macos.
+
+  21 Aug 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/sparklines.gemspec:
+  Remove unused file.
+
+  21 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  sparklines-0.5.2-r2.ebuild:
+  stable x86, bug 321217
+
+  29 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  sparklines-0.5.2-r2.ebuild:
+  Stable on amd64 wrt bug #321217
+
+  28 Feb 2010; Hans de Graaff <graaff@gentoo.org>
+  -sparklines-0.5.2-r1.ebuild:
+  Remove old version.
+
+*sparklines-0.5.2-r2 (12 Jan 2010)
+
+  12 Jan 2010; Hans de Graaff <graaff@gentoo.org>
+  +sparklines-0.5.2-r2.ebuild:
+  Convert to ruby-fakegem.
+
+  25 Aug 2009; Hans de Graaff <graaff@gentoo.org> -sparklines-0.5.2.ebuild:
+  Remove old version.
+
+*sparklines-0.5.2-r1 (21 Jun 2009)
+
+  21 Jun 2009; Hans de Graaff <graaff@gentoo.org>
+  +sparklines-0.5.2-r1.ebuild:
+  Fix fakegem code to also work with ruby 1.8.6.
+
+  27 May 2009; Hans de Graaff <graaff@gentoo.org> sparklines-0.5.2.ebuild:
+  Also works on x86, keywording.
+
+  04 May 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  sparklines-0.5.2.ebuild:
+  Fix src_test when Ruby 1.9 is not present.
+
+*sparklines-0.5.2 (25 Apr 2009)
+
+  25 Apr 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/sparklines.gemspec, +metadata.xml, +sparklines-0.5.2.ebuild:
+  Initial import of the sparklines graph generator, with fake gemspec and
+  running testsuite.

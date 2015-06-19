@@ -1,0 +1,38 @@
+# ChangeLog for dev-ruby/omniauth
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/omniauth/ChangeLog,v 1.8 2015/06/07 18:55:26 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  17 Oct 2014; Manuel Rüger <mrueg@gentoo.org> omniauth-1.2.2.ebuild:
+  Add ruby21 target.
+
+*omniauth-1.2.2 (23 Jul 2014)
+
+  23 Jul 2014; Manuel Rüger <mrueg@gentoo.org> +omniauth-1.2.2.ebuild:
+  Version bump.
+
+  07 May 2014; Manuel Rüger <mrueg@gentoo.org> -omniauth-1.1.4-r1.ebuild,
+  omniauth-1.2.1.ebuild:
+  Remove ruby18 target. Cleanup old.
+
+*omniauth-1.2.1 (17 Jan 2014)
+
+  17 Jan 2014; Hans de Graaff <graaff@gentoo.org> +omniauth-1.2.1.ebuild:
+  Version bump.
+
+  22 Nov 2013; Patrick Lauer <patrick@gentoo.org> omniauth-1.1.4-r1.ebuild:
+  Whitespace
+
+*omniauth-1.1.4-r1 (22 Nov 2013)
+
+  22 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +omniauth-1.1.4-r1.ebuild,
+  -omniauth-1.1.4.ebuild:
+  Add improvements from dev-zero's overlay.
+
+*omniauth-1.1.4 (20 Nov 2013)
+
+  20 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +metadata.xml,
+  +omniauth-1.1.4.ebuild:
+  Initial ebuild.

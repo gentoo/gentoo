@@ -1,0 +1,61 @@
+# ChangeLog for app-emulation/docker-compose
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/docker-compose/ChangeLog,v 1.12 2015/06/03 11:29:38 jlec Exp $
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  22 May 2015; Patrick Lauer <patrick@gentoo.org> -docker-compose-1.2.0.ebuild,
+  -docker-compose-1.2.0_rc4.ebuild:
+  Remove old versions with unsatisfiable dependencies
+
+  02 May 2015; Alex Brandt <alunduil@gentoo.org>
+  -docker-compose-1.2.0_rc3.ebuild:
+  remove version 1.2.0_rc3
+
+*docker-compose-1.2.0-r1 (02 May 2015)
+
+  02 May 2015; Alex Brandt <alunduil@gentoo.org>
+  +docker-compose-1.2.0-r1.ebuild, +files/requests-requirements.patch:
+  add version 1.2.0-r1  * relax requirement on dev-python/requests
+
+  18 Apr 2015; Alex Brandt <alunduil@gentoo.org>
+  -docker-compose-1.1.0_rc2.ebuild:
+  remove version 1.1.0_rc2
+
+*docker-compose-1.2.0 (18 Apr 2015)
+
+  18 Apr 2015; Alex Brandt <alunduil@gentoo.org> +docker-compose-1.2.0.ebuild:
+  add version 1.2.0
+
+  11 Apr 2015; Alex Brandt <alunduil@gentoo.org> -docker-compose-1.1.0.ebuild:
+  remove version 1.1.0
+
+*docker-compose-1.2.0_rc4 (11 Apr 2015)
+
+  11 Apr 2015; Alex Brandt <alunduil@gentoo.org>
+  +docker-compose-1.2.0_rc4.ebuild:
+  add version 1.2.0_rc4
+
+*docker-compose-1.2.0_rc3 (05 Apr 2015)
+
+  05 Apr 2015; Alex Brandt <alunduil@gentoo.org>
+  +docker-compose-1.2.0_rc3.ebuild:
+  add version 1.2.0_rc3
+
+  05 Apr 2015; Alex Brandt <alunduil@gentoo.org>
+  -docker-compose-1.1.0_rc1.ebuild:
+  remove 1.1.0_rc1
+
+*docker-compose-1.1.0 (02 Mar 2015)
+
+  02 Mar 2015; Alex Brandt <alunduil@gentoo.org> +docker-compose-1.1.0.ebuild:
+  add version 1.1.0
+
+*docker-compose-1.1.0_rc2 (31 Jan 2015)
+*docker-compose-1.1.0_rc1 (31 Jan 2015)
+
+  31 Jan 2015; Alex Brandt <alunduil@gentoo.org>
+  +docker-compose-1.1.0_rc1.ebuild, +docker-compose-1.1.0_rc2.ebuild,
+  +metadata.xml:
+  add ebuild for docker-compose (the software formerly known as fig)

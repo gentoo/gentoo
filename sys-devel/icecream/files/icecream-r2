@@ -1,0 +1,45 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/icecream/files/icecream-r2,v 1.1 2013/04/13 07:55:45 scarabeus Exp $
+
+depend() {
+        need net
+}
+
+start() {
+	local basedir=${ICECREAM_BASEDIR:-"/var/cache/icecream"}
+	local netname=${ICECREAM_NETNAME:+"-n ${ICECREAM_NETNAME}"}
+	local logfile=${ICECREAM_LOG_FILE:+"-l ${ICECREAM_LOG_FILE}"}
+	local nice=${ICECREAM_NICE_LEVEL:+"--nice ${ICECREAM_NICE_LEVEL}"}
+	local scheduler=${ICECREAM_SCHEDULER_HOST:+"-s ${ICECREAM_SCHEDULER_HOST}"}
+	local maxjobs=${ICECREAM_MAX_JOBS:+"-m ${ICECREAM_MAX_JOBS}"}
+	local verbosity=${ICECREAM_VERBOSITY:-"-v"}
+
+	[[ ! -d /var/log/icecream/ ]] && mkdir -p /var/log/icecream/ && chown icecream:icecream /var/log/icecream/
+	if [[ "${ICECREAM_RUN_SCHEDULER}" == "yes" ]]; then
+		local slogfile=${ICECREAM_SCHEDULER_LOG_FILE:-"/var/log/icecc_scheduler"}
+		touch ${slogfile} && chown icecream:icecream ${slogfile}
+		slogfile=${slogfile:+"-l ${slogfile}"}
+		ebegin "Starting Distributed Compiler Scheduler"
+		start-stop-daemon -u icecream --start --quiet --exec /usr/sbin/icecc-scheduler -- -d ${slogfile} ${netname} ${verbosity}
+		eend ${?}
+	fi
+
+	[[ ! -d ${basedir} ]] && mkdir -p ${basedir} && chown icecream:icecream ${basedir}
+	ebegin "Starting Distributed Compiler Daemon"
+	start-stop-daemon --start --quiet --exec /usr/sbin/iceccd -- -d ${logfile} ${nice} ${scheduler} ${netname} -u icecream -b "${basedir}" ${maxjobs} ${verbosity}
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping Distributed Compiler Daemon"
+	start-stop-daemon --stop --quiet --name iceccd
+	eend ${?}
+
+	if [[ "${ICECREAM_RUN_SCHEDULER}" == "yes" ]]; then
+		ebegin "Stopping Distributed Compiler Scheduler"
+		start-stop-daemon --stop --quiet --name icecc-scheduler
+		eend ${?}
+	fi
+}

@@ -1,0 +1,191 @@
+diff -Naurp wxPython-src-2.8.9.2-orig/wxPython/distrib/PyAlaMode.desktop wxPython-src-2.8.9.2/wxPython/distrib/PyAlaMode.desktop
+--- wxPython-src-2.8.9.2-orig/wxPython/distrib/PyAlaMode.desktop	2007-07-18 16:33:55.000000000 -0600
++++ wxPython-src-2.8.9.2/wxPython/distrib/PyAlaMode.desktop	2009-02-21 15:04:55.000000000 -0600
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+-Name=PyAlaMode
++Name=PyAlaMode (2.8)
+ Comment=GUI Python Shell with Filling and editor windows
+-Exec=pyalamode
+-Icon=PyCrust.png
++Exec=pyalamode-2.8
++Icon=/usr/share/pixmaps/PyCrust.png
+ Terminal=false
+ Type=Application
+ Categories=Application;Development;
+diff -Naurp wxPython-src-2.8.9.2-orig/wxPython/distrib/PyCrust.desktop wxPython-src-2.8.9.2/wxPython/distrib/PyCrust.desktop
+--- wxPython-src-2.8.9.2-orig/wxPython/distrib/PyCrust.desktop	2007-07-18 16:33:55.000000000 -0600
++++ wxPython-src-2.8.9.2/wxPython/distrib/PyCrust.desktop	2009-02-21 15:06:42.000000000 -0600
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+-Name=PyCrust
++Name=PyCrust (2.8)
+ Comment=GUI Python Shell with Filling
+-Exec=pycrust
+-Icon=PyCrust.png
++Exec=pycrust-2.8
++Icon=/usr/share/pixmaps/PyCrust.png
+ Terminal=false
+ Type=Application
+ Categories=Application;Development;
+diff -Naurp wxPython-src-2.8.9.2-orig/wxPython/distrib/PyShell.desktop wxPython-src-2.8.9.2/wxPython/distrib/PyShell.desktop
+--- wxPython-src-2.8.9.2-orig/wxPython/distrib/PyShell.desktop	2007-07-18 16:33:55.000000000 -0600
++++ wxPython-src-2.8.9.2/wxPython/distrib/PyShell.desktop	2009-02-21 15:08:19.000000000 -0600
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+-Name=PyShell
++Name=PyShell (2.8)
+ Comment=GUI Python Shell
+-Exec=pyshell
+-Icon=PyCrust.png
++Exec=pyshell-2.8
++Icon=/usr/share/pixmaps/PyCrust.png
+ Terminal=false
+ Type=Application
+ Categories=Application;Development;
+diff -Naurp wxPython-src-2.8.9.2-orig/wxPython/distrib/XRCed.desktop wxPython-src-2.8.9.2/wxPython/distrib/XRCed.desktop
+--- wxPython-src-2.8.9.2-orig/wxPython/distrib/XRCed.desktop	2007-07-18 16:33:55.000000000 -0600
++++ wxPython-src-2.8.9.2/wxPython/distrib/XRCed.desktop	2009-02-21 15:09:22.000000000 -0600
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+-Name=XRCed
++Name=XRCed (2.8)
+ Comment=wxPython XRC resource editor
+-Exec=xrced
+-Icon=XRCed.png
++Exec=xrced-2.8
++Icon=/usr/share/pixmaps/XRCed.png
+ Terminal=false
+ Type=Application
+ Categories=Application;Development;
+diff -Naurp wxPython-src-2.8.9.2-orig/wxPython/scripts/editra wxPython-src-2.8.9.2/wxPython/scripts/editra
+--- wxPython-src-2.8.9.2-orig/wxPython/scripts/editra	2008-02-29 14:32:17.000000000 -0600
++++ wxPython-src-2.8.9.2/wxPython/scripts/editra	2009-02-21 15:03:24.000000000 -0600
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("2.8")
+ 
+ from wx.tools.Editra.launcher import main
+ main()
+diff -Naurp wxPython-src-2.8.9.2-orig/wxPython/scripts/genaxmodule wxPython-src-2.8.9.2/wxPython/scripts/genaxmodule
+--- wxPython-src-2.8.9.2-orig/wxPython/scripts/genaxmodule	2008-02-29 14:32:17.000000000 -0600
++++ wxPython-src-2.8.9.2/wxPython/scripts/genaxmodule	2009-02-21 15:03:24.000000000 -0600
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("2.8")
+ 
+ from wx.tools.genaxmodule import main
+ main()
+diff -Naurp wxPython-src-2.8.9.2-orig/wxPython/scripts/helpviewer wxPython-src-2.8.9.2/wxPython/scripts/helpviewer
+--- wxPython-src-2.8.9.2-orig/wxPython/scripts/helpviewer	2007-07-18 16:33:55.000000000 -0600
++++ wxPython-src-2.8.9.2/wxPython/scripts/helpviewer	2009-02-21 15:03:24.000000000 -0600
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("2.8")
+ 
+ from wx.tools.helpviewer import main
+ main()
+diff -Naurp wxPython-src-2.8.9.2-orig/wxPython/scripts/img2png wxPython-src-2.8.9.2/wxPython/scripts/img2png
+--- wxPython-src-2.8.9.2-orig/wxPython/scripts/img2png	2007-07-18 16:33:55.000000000 -0600
++++ wxPython-src-2.8.9.2/wxPython/scripts/img2png	2009-02-21 15:03:24.000000000 -0600
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("2.8")
+ 
+ from wx.tools.img2png import main
+ main()
+diff -Naurp wxPython-src-2.8.9.2-orig/wxPython/scripts/img2py wxPython-src-2.8.9.2/wxPython/scripts/img2py
+--- wxPython-src-2.8.9.2-orig/wxPython/scripts/img2py	2008-02-29 14:32:17.000000000 -0600
++++ wxPython-src-2.8.9.2/wxPython/scripts/img2py	2009-02-21 15:03:24.000000000 -0600
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("2.8")
+ 
+ from wx.tools.img2py import main
+ main()
+diff -Naurp wxPython-src-2.8.9.2-orig/wxPython/scripts/img2xpm wxPython-src-2.8.9.2/wxPython/scripts/img2xpm
+--- wxPython-src-2.8.9.2-orig/wxPython/scripts/img2xpm	2007-07-18 16:33:55.000000000 -0600
++++ wxPython-src-2.8.9.2/wxPython/scripts/img2xpm	2009-02-21 15:03:24.000000000 -0600
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("2.8")
+ 
+ from wx.tools.img2xpm import main
+ main()
+diff -Naurp wxPython-src-2.8.9.2-orig/wxPython/scripts/pyalacarte wxPython-src-2.8.9.2/wxPython/scripts/pyalacarte
+--- wxPython-src-2.8.9.2-orig/wxPython/scripts/pyalacarte	2007-07-18 16:33:55.000000000 -0600
++++ wxPython-src-2.8.9.2/wxPython/scripts/pyalacarte	2009-02-21 15:03:24.000000000 -0600
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("2.8")
+ 
+ from wx.py.PyAlaCarte import main
+ main()
+diff -Naurp wxPython-src-2.8.9.2-orig/wxPython/scripts/pyalamode wxPython-src-2.8.9.2/wxPython/scripts/pyalamode
+--- wxPython-src-2.8.9.2-orig/wxPython/scripts/pyalamode	2007-07-18 16:33:55.000000000 -0600
++++ wxPython-src-2.8.9.2/wxPython/scripts/pyalamode	2009-02-21 15:03:24.000000000 -0600
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("2.8")
+ 
+ from wx.py.PyAlaMode import main
+ main()
+diff -Naurp wxPython-src-2.8.9.2-orig/wxPython/scripts/pycrust wxPython-src-2.8.9.2/wxPython/scripts/pycrust
+--- wxPython-src-2.8.9.2-orig/wxPython/scripts/pycrust	2007-07-18 16:33:55.000000000 -0600
++++ wxPython-src-2.8.9.2/wxPython/scripts/pycrust	2009-02-21 15:03:24.000000000 -0600
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("2.8")
+ 
+ from wx.py.PyCrust import main
+ main()
+diff -Naurp wxPython-src-2.8.9.2-orig/wxPython/scripts/pyshell wxPython-src-2.8.9.2/wxPython/scripts/pyshell
+--- wxPython-src-2.8.9.2-orig/wxPython/scripts/pyshell	2007-07-18 16:33:55.000000000 -0600
++++ wxPython-src-2.8.9.2/wxPython/scripts/pyshell	2009-02-21 15:03:24.000000000 -0600
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("2.8")
+ 
+ from wx.py.PyShell import main
+ main()
+diff -Naurp wxPython-src-2.8.9.2-orig/wxPython/scripts/pywrap wxPython-src-2.8.9.2/wxPython/scripts/pywrap
+--- wxPython-src-2.8.9.2-orig/wxPython/scripts/pywrap	2007-07-18 16:33:55.000000000 -0600
++++ wxPython-src-2.8.9.2/wxPython/scripts/pywrap	2009-02-21 15:03:24.000000000 -0600
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("2.8")
+ 
+ from wx.py.PyWrap import main
+ main()
+diff -Naurp wxPython-src-2.8.9.2-orig/wxPython/scripts/pywxrc wxPython-src-2.8.9.2/wxPython/scripts/pywxrc
+--- wxPython-src-2.8.9.2-orig/wxPython/scripts/pywxrc	2008-02-29 14:32:17.000000000 -0600
++++ wxPython-src-2.8.9.2/wxPython/scripts/pywxrc	2009-02-21 15:09:58.000000000 -0600
+@@ -1,5 +1,7 @@
+ #!/usr/bin/env python
+ 
++import wxversion
++wxversion.select("2.8")
+ from wx.tools.pywxrc import main
+ main()
+ 
+diff -Naurp wxPython-src-2.8.9.2-orig/wxPython/scripts/xrced wxPython-src-2.8.9.2/wxPython/scripts/xrced
+--- wxPython-src-2.8.9.2-orig/wxPython/scripts/xrced	2007-07-18 16:33:55.000000000 -0600
++++ wxPython-src-2.8.9.2/wxPython/scripts/xrced	2009-02-21 15:03:24.000000000 -0600
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env python
++import wxversion
++wxversion.select("2.8")
+ 
+ from wx.tools.XRCed.xrced import main
+ main()

@@ -1,0 +1,115 @@
+# ChangeLog for dev-perl/cdk-perl
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/cdk-perl/ChangeLog,v 1.32 2014/12/13 23:09:46 dilfridge Exp $
+
+*cdk-perl-20141106 (13 Dec 2014)
+
+  13 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -cdk-perl-20130816.ebuild, +cdk-perl-20141106.ebuild:
+  Version bump, drop to ~arch because of bug 531132
+
+  02 Nov 2014; Mikle Kolyada <zlogene@gentoo.org> -cdk-perl-20120324.ebuild,
+  cdk-perl-20130816.ebuild:
+  stable for all wrt bug #527900; Drop old.
+
+*cdk-perl-20130816 (25 Aug 2014)
+
+  25 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +cdk-perl-20130816.ebuild:
+  version bump, fixes bug 508410
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org> -cdk-perl-20031210.ebuild:
+  Cleanup
+
+  02 Oct 2012; Anthony G. Basile <blueness@gentoo.org> cdk-perl-20120324.ebuild:
+  stable ppc, bug #429016
+
+  15 Sep 2012; Raúl Porcel <armin76@gentoo.org> cdk-perl-20031210.ebuild,
+  cdk-perl-20120324.ebuild:
+  Drop alpha/ia64/s390/sparc keywords
+
+  12 Sep 2012; Johannes Huber <johu@gentoo.org> cdk-perl-20120324.ebuild:
+  Stable for x86, wrt bug #429016
+
+  12 Sep 2012; Agostino Sarubbo <ago@gentoo.org> cdk-perl-20120324.ebuild:
+  Stable for amd64, wrt bug #429016
+
+*cdk-perl-20120324 (08 Jun 2012)
+
+  08 Jun 2012; Torsten Veller <tove@gentoo.org> +cdk-perl-20120324.ebuild:
+  Version bump. Fixes bug #420171
+
+  13 Mar 2007; Michael Cummings <mcummings@gentoo.org>
+  cdk-perl-20031210.ebuild:
+  Removing changes from dodoc call
+
+  09 Mar 2007; Michael Cummings <mcummings@gentoo.org>
+  -cdk-perl-20010421-r1.ebuild:
+  Cleaning out old ebuild
+
+  16 Jan 2007; Jose Luis Rivero <yoswink@gentoo.org>
+  cdk-perl-20031210.ebuild:
+  Stable on alpha wrt bug #152669
+
+  25 Oct 2006; Joshua Jackson <tsunam@gentoo.org> cdk-perl-20031210.ebuild:
+  Stable x86; bug #152669
+
+  24 Oct 2006; Chris White <chriswhite@gentoo.org> cdk-perl-20031210.ebuild:
+  ppc stable for bug #152669.
+
+  24 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  cdk-perl-20031210.ebuild:
+  sparc stable
+
+  20 Oct 2006; Aron Griffis <agriffis@gentoo.org> cdk-perl-20031210.ebuild:
+  Mark 20031210 stable on ia64
+
+  20 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  -cdk-perl-20010421.ebuild, cdk-perl-20010421-r1.ebuild,
+  cdk-perl-20031210.ebuild:
+  Marking amd64 stable; cleaning up ebuilds
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  cdk-perl-20010421.ebuild, cdk-perl-20010421-r1.ebuild,
+  cdk-perl-20031210.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  05 Jul 2006; Christian Hartmann <ian@gentoo.org> cdk-perl-20010421.ebuild,
+  cdk-perl-20010421-r1.ebuild, cdk-perl-20031210.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed DEPEND
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org> cdk-perl-20031210.ebuild:
+  Mark 20031210 ~ia64
+
+  14 Oct 2004; David Holm <dholm@gentoo.org> cdk-perl-20031210.ebuild:
+  Added to ~ppc.
+
+*cdk-perl-20031210 (20 Sep 2004)
+
+  20 Sep 2004; Michael Cummings <mcummings@gentoo.org>
+  +cdk-perl-20031210.ebuild:
+  Newer version of the perl module for newer version of cdk. Ebuild submitted in
+  bug 49659 by Marcin Kryczek <aye@gentoo.pl>
+
+  17 Apr 2004; Michael McCabe <randy@gentoo.org>
+  cdk-perl-20010421-r1.ebuild:
+  added s390 to keywords
+
+*cdk-perl-20010421-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+
+  forced version bump to install into correct locations
+
+*cdk-perl-20010421 (08 Jun 2002)
+
+  11 Jun 2002; Seemant Kulleen <seemant@gentoo.org>
+  cdk-perl-20010421.ebuild, ChangeLog, files/digest-cdk-perl-20010421 :
+ 
+  Initial version submitted by  markus-krainer@chello.at (Markus Krainer) in
+  bug # 3530

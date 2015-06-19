@@ -1,0 +1,29 @@
+http://bugs.gentoo.org/337329
+
+do not interpret \\1 as an octal sequence.  require it to start with \\0.
+
+--- a/src/bltin/printf.c
++++ b/src/bltin/printf.c
+@@ -247,18 +247,10 @@ conv_escape_str(char *str)
+ 		 * They start with a \0, and are followed by 0, 1, 2, 
+ 		 * or 3 octal digits. 
+ 		 */
+-		if (ch == '0') {
+-			unsigned char i;
+-			i = 3;
+-			ch = 0;
+-			do {
+-				unsigned k = octtobin(*str);
+-				if (k > 7)
+-					break;
+-				str++;
+-				ch <<= 3;
+-				ch += k;
+-			} while (--i);
++		if (ch >= '1' && ch <= '9') {
++			/* Filter \1...\9; let \0 fall to conv_escape(). */
++			ch = '\\';
++			--str;
+ 			continue;
+ 		}
+ 

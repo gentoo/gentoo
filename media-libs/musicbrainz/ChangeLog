@@ -1,0 +1,457 @@
+# ChangeLog for media-libs/musicbrainz
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/musicbrainz/ChangeLog,v 1.120 2013/11/24 18:46:48 ago Exp $
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> musicbrainz-5.0.1.ebuild:
+  Stable for sparc, wrt bug #481900
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> musicbrainz-5.0.1.ebuild:
+  Stable for arm, wrt bug #481900
+
+  23 Sep 2013; Agostino Sarubbo <ago@gentoo.org> musicbrainz-5.0.1.ebuild:
+  Stable for alpha, wrt bug #481900
+
+  14 Sep 2013; Agostino Sarubbo <ago@gentoo.org> musicbrainz-5.0.1.ebuild:
+  Stable for ia64, wrt bug #481900
+
+  01 Jun 2013; Chris Reffett <creffett@gentoo.org> musicbrainz-3.0.2.ebuild,
+  musicbrainz-3.0.3.ebuild:
+  EAPI bump wrt bug 460572
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> musicbrainz-5.0.1.ebuild:
+  Stable for ppc64, wrt bug #462890
+
+  30 Nov 2012; <ago@gentoo.org> musicbrainz-5.0.1.ebuild:
+  Stable for ppc, wrt bug #442394
+
+  23 Nov 2012; Agostino Sarubbo <ago@gentoo.org> musicbrainz-5.0.1.ebuild:
+  Stable for x86, wrt bug #442394
+
+  23 Nov 2012; Agostino Sarubbo <ago@gentoo.org> musicbrainz-5.0.1.ebuild:
+  Stable for amd64, wrt bug #442394
+
+  17 Jun 2012; Raúl Porcel <armin76@gentoo.org> musicbrainz-3.0.3.ebuild:
+  alpha/ia64/sparc stable wrt #413241
+
+*musicbrainz-5.0.1 (19 May 2012)
+
+  19 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +musicbrainz-5.0.1.ebuild:
+  Version bump.
+
+  19 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -musicbrainz-4.0.0.ebuild, -musicbrainz-4.0.1.ebuild:
+  old
+
+*musicbrainz-4.0.3 (19 May 2012)
+
+  19 May 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +musicbrainz-4.0.3.ebuild:
+  Version bump.
+
+  06 May 2012; Brent Baude <ranger@gentoo.org> musicbrainz-3.0.3.ebuild:
+  Marking musicbrainz-3.0.3 ppc for bug 413241
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> musicbrainz-2.1.5.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  29 Apr 2012; Markus Meier <maekke@gentoo.org> musicbrainz-3.0.3.ebuild:
+  arm stable, bug #413241
+
+  26 Apr 2012; Jeroen Roovers <jer@gentoo.org> musicbrainz-3.0.3.ebuild:
+  Stable for HPPA (bug #413241).
+
+  24 Apr 2012; Jeff Horelick <jdhore@gentoo.org> musicbrainz-3.0.3.ebuild:
+  marked x86 per bug 413241
+
+  23 Apr 2012; Brent Baude <ranger@gentoo.org> musicbrainz-3.0.3.ebuild:
+  Marking musicbrainz-3.0.3 ppc64 for bug 413241
+
+  23 Apr 2012; Agostino Sarubbo <ago@gentoo.org> musicbrainz-3.0.3.ebuild:
+  Stable for amd64, wrt bug #413241
+
+*musicbrainz-4.0.1 (23 Apr 2012)
+
+  23 Apr 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +musicbrainz-4.0.1.ebuild:
+  Version bump.
+
+*musicbrainz-4.0.0 (21 Feb 2012)
+
+  21 Feb 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +musicbrainz-4.0.0.ebuild:
+  Version bump.
+
+*musicbrainz-3.0.3 (07 Nov 2010)
+
+  07 Nov 2010; Alexis Ballier <aballier@gentoo.org>
+  +musicbrainz-3.0.3.ebuild:
+  version bump, by Gordon Pettey <petteyg359@gmail.com>, bug #342411
+
+  22 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  musicbrainz-3.0.2.ebuild:
+  net-misc/neon renamed to net-libs/neon.
+
+  11 Mar 2010; Sebastian Pipping <sping@gentoo.org>
+  musicbrainz-2.1.5.ebuild, musicbrainz-3.0.2.ebuild:
+  Fix homepage (bug #294729)
+
+  21 Jan 2010; Jonathan Callen <abcd@gentoo.org> musicbrainz-2.1.5.ebuild,
+  musicbrainz-3.0.2.ebuild:
+  Keyword ~amd64-linux/~x86-linux
+
+  07 May 2009; Peter Alfredsen <loki_val@gentoo.org>
+  musicbrainz-3.0.2.ebuild, +files/musicbrainz-3.0.2-gcc44.patch:
+  Add patch for GCC 4.4 compatibility, bug 268430. Thanks to Daniel J.
+  <sleeperseven@hotmail.com> for the patch.
+
+  15 Dec 2008; Jeroen Roovers <jer@gentoo.org> musicbrainz-3.0.2.ebuild:
+  Stable for HPPA (bug #249746).
+
+  14 Dec 2008; Raúl Porcel <armin76@gentoo.org> musicbrainz-3.0.2.ebuild:
+  alpha/arm/ia64/sparc/x86 stable wrt #249746
+
+  09 Dec 2008; Brent Baude <ranger@gentoo.org> musicbrainz-3.0.2.ebuild:
+  stable ppc64, bug 249746
+
+  06 Dec 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  musicbrainz-3.0.2.ebuild:
+  stable amd64, bug 249746
+
+  06 Dec 2008; nixnut <nixnut@gentoo.org> musicbrainz-3.0.2.ebuild:
+  Stable on ppc wrt bug 249746
+
+*musicbrainz-3.0.2 (27 Oct 2008)
+
+  27 Oct 2008; Alexis Ballier <aballier@gentoo.org>
+  +musicbrainz-3.0.2.ebuild:
+  version bump
+
+  29 Sep 2008; Raúl Porcel <armin76@gentoo.org> musicbrainz-2.1.5.ebuild,
+  musicbrainz-3.0.1.ebuild:
+  arm stable wrt #237048, add ~arm wrt #203784
+
+  18 Sep 2008; Brent Baude <ranger@gentoo.org> musicbrainz-2.1.5.ebuild:
+  stable ppc64, bug 237048
+
+  15 Sep 2008; Raúl Porcel <armin76@gentoo.org> musicbrainz-2.1.5.ebuild:
+  alpha/ia64 stable wrt #237048
+
+  13 Sep 2008; nixnut <nixnut@gentoo.org> musicbrainz-2.1.5.ebuild:
+  Stable on ppc wrt bug 237048
+
+  12 Sep 2008; Jeroen Roovers <jer@gentoo.org> musicbrainz-2.1.5.ebuild:
+  Stable for HPPA (bug #237048).
+
+  11 Sep 2008; Markus Meier <maekke@gentoo.org> musicbrainz-2.1.5.ebuild:
+  amd64/x86 stable, bug #237048
+
+  08 Sep 2008; Ferris McCormick <fmccor@gentoo.org>
+  musicbrainz-2.1.5.ebuild:
+  Sparc stable, Bug #237048.
+
+  09 Aug 2008; Alexis Ballier <aballier@gentoo.org>
+  musicbrainz-3.0.1.ebuild:
+  keyword ~x86-fbsd, bug #203784
+
+  10 Mar 2008; nixnut <nixnut@gentoo.org> musicbrainz-3.0.1.ebuild:
+  Added ~ppc wrt bug 203784
+
+  09 Jan 2008; Jeroen Roovers <jer@gentoo.org> musicbrainz-3.0.1.ebuild:
+  Marked ~hppa (bug #203784).
+
+  05 Jan 2008; Brent Baude <ranger@gentoo.org> musicbrainz-3.0.1.ebuild:
+  Marking musicbrainz-3.0.1 ~ppc64 for bug 203784
+
+  03 Jan 2008; Raúl Porcel <armin76@gentoo.org> musicbrainz-3.0.1.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #203784
+
+  03 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/musicbrainz-3.0.1-gcc-4.3-includes.patch, musicbrainz-3.0.1.ebuild:
+  Add patch to fix build with gcc 4.3 for musicbrainz3, by Ryan Hill
+  <dirtyepic@gentoo.org>, bug #204152
+
+  02 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  +files/musicbrainz-2.1.5-gcc43-includes.patch, musicbrainz-2.1.5.ebuild:
+  Add a patch from Ryan Hill <dirtyepic@gentoo.org> to allow building with gcc
+  4.3, really fix bug #202472 this time
+
+*musicbrainz-3.0.1 (02 Jan 2008)
+
+  02 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  +musicbrainz-3.0.1.ebuild:
+  version bump, thanks to Juan Aguado <juantxorena@gmail.com>, bug #203784
+
+*musicbrainz-2.1.5 (01 Jan 2008)
+
+  01 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  +musicbrainz-2.1.5.ebuild:
+  version bump, should fix bug #202472
+
+  04 Nov 2006; Bryan Østergaard <kloeri@gentoo.org>
+  musicbrainz-2.1.4.ebuild:
+  Stable on ia64.
+
+  20 Oct 2006; René Nussbaumer <killerfox@gentoo.org>
+  musicbrainz-2.1.4.ebuild:
+  Stable on hppa. See bug #144089.
+
+  18 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  musicbrainz-2.1.4.ebuild:
+  ppc stable, bug #144089
+
+  17 Oct 2006; Thomas Cort <tcort@gentoo.org> musicbrainz-2.1.4.ebuild:
+  Stable on alpha wrt security Bug #144089.
+
+  17 Oct 2006; Markus Rothe <corsair@gentoo.org> musicbrainz-2.1.4.ebuild:
+  Stable on ppc64; bug #144089
+
+  16 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  musicbrainz-2.1.4.ebuild:
+  Stable on amd64/x86 wrt bug #144089.
+
+  16 Oct 2006; Jason Wever <weeve@gentoo.org> musicbrainz-2.1.4.ebuild:
+  Stable on SPARC wrt security bug #144089.
+
+*musicbrainz-2.1.4 (15 Oct 2006)
+
+  15 Oct 2006; Stefan Schweizer <genstef@gentoo.org>
+  +musicbrainz-2.1.4.ebuild:
+  version bump, bug 144089
+
+  03 Sep 2006; Thomas Cort <tcort@gentoo.org>
+  -files/musicbrainz-2.1.1-gcc2.patch, -files/musicbrainz-2.1.1-gcc4.patch:
+  Remove old patches.
+
+  03 Sep 2006; Thomas Cort <tcort@gentoo.org> -musicbrainz-2.1.1.ebuild,
+  -musicbrainz-2.1.1-r1.ebuild, musicbrainz-2.1.2.ebuild:
+  Stable on alpha wrt Bug #141755. Clean up old ebuilds.
+
+  02 Sep 2006; Jeroen Roovers <jer@gentoo.org> musicbrainz-2.1.2.ebuild:
+  Stable for HPPA (bug #141755).
+
+  28 Aug 2006; Joshua Kinard <kumba@gentoo.org> musicbrainz-2.1.2.ebuild:
+  Marked stable on mips.
+
+  11 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  musicbrainz-2.1.2.ebuild:
+  Stable on sparc wrt #141755
+
+  11 Aug 2006; Joshua Jackson <tsunam@gentoo.org> musicbrainz-2.1.2.ebuild:
+  Stable x86; bug #141755
+
+  08 Aug 2006; Thomas Cort <tcort@gentoo.org> musicbrainz-2.1.2.ebuild:
+  Stable on amd64.
+
+  13 Jul 2006; Aron Griffis <agriffis@gentoo.org> musicbrainz-2.1.2.ebuild:
+  Mark 2.1.2 stable on ia64
+
+  30 Jun 2006; Lars Weiler <pylon@gentoo.org> ChangeLog:
+  Stable on ppc; gcc-4 related; bug #138099.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org> musicbrainz-2.1.2.ebuild:
+  Stable on ppc64
+
+  27 Jun 2006; Emanuele Giaquinta <exg@gentoo.org> musicbrainz-2.1.2.ebuild:
+  Stable on ppc.
+
+  24 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  musicbrainz-2.1.2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  24 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  musicbrainz-2.1.2.ebuild:
+  Add elibtoolize call.
+
+  08 May 2006; Thomas Cort <tcort@gentoo.org> musicbrainz-2.1.1.ebuild:
+  Removed INSTALL from dodoc.
+
+  01 Apr 2006; Patrick McLean <chutzpah@gentoo.org>
+  musicbrainz-2.1.1.ebuild, musicbrainz-2.1.1-r1.ebuild:
+  Update einfo messages to say revdep-rebuild --library=blah rather than
+  --soname blah (bug #125506)
+
+*musicbrainz-2.1.2 (13 Feb 2006)
+
+  13 Feb 2006; Luis Medinas <metalgod@gentoo.org> +musicbrainz-2.1.2.ebuild:
+  Version Bump. Closes bug #122702.
+
+  02 Jul 2005; Hardave Riar <hardave@gentoo.org> musicbrainz-2.1.1.ebuild:
+  Stable on mips
+
+*musicbrainz-2.1.1-r1 (27 Apr 2005)
+
+  27 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/musicbrainz-2.1.1-gcc4.patch, +musicbrainz-2.1.1-r1.ebuild:
+  Added patch to compile with gcc 4.0, fixes #90478. Revision bump because the
+  previous was stable and this can change the behaviour on 64-bit systems.
+
+  22 Feb 2005; Hardave Riar <hardave@gentoo.org> musicbrainz-2.1.1.ebuild:
+  Marked ~mips
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  18 Dec 2004; Markus Rothe <corsair@gentoo.org> musicbrainz-2.1.1.ebuild:
+  Stable on ppc64
+
+  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -files/musicbrainz-2.0.2.patch, -musicbrainz-2.0.2-r2.ebuild:
+  Removing old version.
+
+  02 Sep 2004; Tom Gall <tgall@gentoo.org> musicbrainz-2.1.1.ebuild:
+  added ~ppc64, bug #62682
+
+  29 Aug 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  musicbrainz-2.1.1.ebuild, +files/musicbrainz-2.1.1-gcc2.patch:
+  Fix non-ANSI C which will cause gcc2 to die.  Closes bug #61568.
+
+  07 Aug 2004; <agriffis@gentoo.org> musicbrainz-2.1.1.ebuild:
+  stable on ia64 #54287
+
+  07 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> musicbrainz-2.1.1.ebuild:
+  Stable on alpha.
+
+  01 Jul 2004; Aron Griffis <agriffis@gentoo.org> musicbrainz-2.0.2-r2.ebuild,
+  musicbrainz-2.1.1.ebuild:
+  add ia64 keywords
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  musicbrainz-2.0.2-r2.ebuild:
+  virtual/glibc -> virtual/libc
+
+  29 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  musicbrainz-2.1.1.ebuild:
+  Stable x86 and sparc.
+
+  28 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -musicbrainz-2.0.1.ebuild:
+  Removing old, broken version.
+
+  22 Jun 2004; Bryan Østergaard <kloeri@gentoo.org>
+  musicbrainz-2.0.2-r2.ebuild:
+  Stable on alpha.
+
+  17 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  musicbrainz-2.0.2-r2.ebuild:
+  Running auto* tools to fix a problem discussed in bug #54009.
+
+  17 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  musicbrainz-2.1.1.ebuild:
+  Slottage since this version's library has a different version number. Added
+  einfo to recommend revdep-rebuild.
+
+  17 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  musicbrainz-2.0.1.ebuild, musicbrainz-2.0.2-r2.ebuild,
+  musicbrainz-2.1.1.ebuild:
+  2.1.1 stable amd64 as it is the only working version for this arc. 2.0.2-r2
+  stable sparc. Masking my arcs in 2.0.1 to force upgrade to newer versions to
+  fix linking errors.
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org> musicbrainz-2.0.2-r2.ebuild:
+  Fix use invocation
+
+*musicbrainz-2.1.1 (31 May 2004)
+
+  31 May 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  musicbrainz-2.0.2-r1.ebuild, musicbrainz-2.1.1.ebuild:
+  Version bump.  Removed old version.
+
+  26 May 2004; Guy Martin <gmsoft@gentoo.org> musicbrainz-2.0.2-r2.ebuild:
+  Marked stable on hppa.
+
+  23 May 2004; Daniel Ostrow <dostrow@gentoo.org> musicbrianz-2.0.2-r2.ebuild:
+  Stable on ppc.
+
+  22 May 2004; Jeremy Huddleston <eradicator@gentoo.org> metadata.xml,
+  musicbrainz-2.0.2-r2.ebuild:
+  Added metadata.  Stable on x86.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> musicbrainz-2.0.2-r2.ebuild:
+  Add inherit eutils
+
+  25 Feb 2004; Guy Martin <gmsoft@gentoo.org> musicbrainz-2.0.2-r1.ebuild:
+  Marked stable on hppa.
+
+  19 Feb 2004; Bryan Østergaard,,, <kloeri@gentoo.org>
+  files/musicbrainz-2.0.2.patch:
+  Add missing patch.
+
+  19 Feb 2004; Bryan Østergaard,,, <kloeri@gentoo.org>
+  musicbrainz-2.0.2-r2.ebuild:
+  Python module didn't build correctly on new installs. Closes bug #41976.
+
+*musicbrainz-2.0.2-r2 (16 Feb 2004)
+
+  16 Feb 2004; <kloeri@gentoo.org> musicbrainz-2.0.2-r2.ebuild:
+  Add python USE flag. Closes bug #27634.
+
+  15 Feb 2004; Jason Wever <weeve@gentoo.org> musicbrainz-2.0.1.ebuild:
+  Marked stable on sparc.
+
+  10 Feb 2004; Lars Weiler <pylon@gentoo.org> musicbrainz-2.0.2-r1.ebuild:
+  Stable on ppc
+
+*musicbrainz-2.0.2-r1 (06 Feb 2004)
+
+  06 Feb 2004; <spider@gentoo.org> musicbrainz-2.0.2-r1.ebuild,
+  musicbrainz-2.0.2.ebuild:
+  versionbump musicbrainz, remove old one, all to get DEPEND correct.
+
+  06 Feb 2004; <spider@gentoo.org> musicbrainz-2.0.2.ebuild:
+  RDEPEND and DEPEND were confused
+
+*musicbrainz-2.0.2 (17 Aug 2003)
+
+  17 Aug 2003; Nick Hadaway <raker@gentoo.org> musicbrainz-2.0.2.ebuild:
+  Refreshed the ebuild a bit and gave the version a little bump.
+  Thanks to Andrew Snare on bug #26774 for the heads up.
+
+  20 Jul 2003; jje <jje@gentoo.org> musicbrainz-1.0.1-r1.ebuild,
+  musicbrainz-1.1.0.ebuild:
+  Removing old versions. Closes #20927.
+
+*musicbrainz-2.0.1 (23 Mar 2003)
+
+  16 Apr 2003; Martin Holzer <mholzer@gentoo.org> musicbrainz-2.0.1.ebuild:
+  Added export WANT_AUTOCONF_2_5=1. Closes #19418
+
+  30 Mar 2003; Martin Schlemmer <azarah@gentoo.org> musicbrainz-2.0.1.ebuild :
+  - Regen autoconf/make stuff to fix problems with newer versions of automake.
+  - Do not try to install non-existing doc 'NEWS'.
+  - Remove CC stuff, as it is not distcc friendly, but rather get it to build
+    with our CFLAGS by unsetting the hard-coded ones in configure.in.
+
+  23 Mar 2003; jje <jje@gentoo.org> musicbrainz-2.0.1.ebuild :
+  New ebuild for Music Brainz 2.0.1.
+  
+  Submitted by: John Steele Scott <toojays@toojays.net>
+
+  10 Jan 2003; Aron Griffis <agriffis@gentoo.org> musicbrainz-1.0.1-r1.ebuild :
+  add alpha to KEYWORDS
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*musicbrainz-1.1.0 (07 Feb 2003)
+
+  07 Feb 2003; Ryan Phillips <rphillips@gentoo.org>
+  new version
+ 
+*musicbrainz-1.0.1-r1 (3 May 2002)
+  
+  06 Dec 2002; Jon Nall <nall@gentoo.org> :
+  keyworded ~ppc
+
+  3 May 2002; Donny Davies <woodchip@gentoo.org> :
+  
+  Added LICENSE, SLOT.
+
+*musicbrainz-1.0.1 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

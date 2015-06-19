@@ -1,0 +1,51 @@
+# ChangeLog for sci-libs/netcdf-cxx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/netcdf-cxx/ChangeLog,v 1.11 2015/02/22 10:58:15 pacho Exp $
+
+  22 Feb 2015; Pacho Ramos <pacho@gentoo.org> netcdf-cxx-4.2-r300.ebuild:
+  amd64/x86 stable, bug #540494
+
+  24 Oct 2014; Alexis Ballier <aballier@gentoo.org> netcdf-cxx-4.2-r300.ebuild:
+  keyword ~arm
+
+  24 Oct 2014; Alexis Ballier <aballier@gentoo.org> netcdf-cxx-4.2.1.ebuild:
+  keyword ~arm
+
+  27 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org> netcdf-cxx-4.2.1.ebuild:
+  More cleaning
+
+  27 Feb 2014; Sébastien Fabbro <bicatali@gentoo.org> -netcdf-cxx-4.2-r1.ebuild,
+  metadata.xml, netcdf-cxx-4.2.1.ebuild:
+  Cleaning ebuilds, sub-slots
+
+*netcdf-cxx-4.2-r300 (01 Jan 2014)
+
+  01 Jan 2014; Justin Lecher <jlec@gentoo.org> +netcdf-cxx-4.2-r300.ebuild:
+  Add legacy version in SLOT=3
+
+*netcdf-cxx-4.2.1 (01 Jan 2014)
+
+  01 Jan 2014; Justin Lecher <jlec@gentoo.org> +netcdf-cxx-4.2.1.ebuild,
+  metadata.xml:
+  Version Bump
+
+  20 Feb 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  files/netcdf-cxx-4.2-config.patch:
+  Avoid infinite loop with netcdf (bug #456916)
+
+*netcdf-cxx-4.2-r1 (10 Jan 2013)
+
+  10 Jan 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/netcdf-cxx-4.2-config.patch, +netcdf-cxx-4.2-r1.ebuild,
+  -netcdf-cxx-4.2.ebuild:
+  Fixed pkg-config file and ncxx4-config script to include netcdf C libraries
+  for as-needed problems
+
+  02 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> netcdf-cxx-4.2.ebuild:
+  Keyword amd64-linux x86-linux
+
+*netcdf-cxx-4.2 (18 Apr 2012)
+
+  18 Apr 2012; Sébastien Fabbro <bicatali@gentoo.org> +netcdf-cxx-4.2.ebuild,
+  +metadata.xml:
+  Initial import

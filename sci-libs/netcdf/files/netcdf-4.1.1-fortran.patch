@@ -1,0 +1,15 @@
+Default to gfortran if cannot figure out F77 compiler
+
+https://bugs.gentoo.org/show_bug.cgi?id=348922
+
+--- netcdf-4.1.1/configure.ac
++++ netcdf-4.1.1/configure.ac
+@@ -973,7 +973,7 @@
+              *)
+                 # If it's a gnu compiler, guess f2c.
+                 if test "x$ac_cv_fc_compiler_gnu" = xyes; then
+-                   AC_DEFINE(f2cFortran, [1], [Turned on by netCDF configure.])
++                   AC_DEFINE(gFortran, [1], [Turned on by netCDF configure.])
+                 fi
+                 ;;
+          esac

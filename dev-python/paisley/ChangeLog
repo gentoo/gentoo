@@ -1,0 +1,76 @@
+# ChangeLog for dev-python/paisley
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/paisley/ChangeLog,v 1.20 2015/06/09 15:51:17 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  02 Jan 2015; Michał Górny <mgorny@gentoo.org> paisley-0.3.1-r1.ebuild:
+  Remove obsolete DISTUTILS_SRC_TEST.
+
+*paisley-0.3.1-r1 (31 Dec 2014)
+
+  31 Dec 2014; Ian Delaney <idella4@gentoo.org> +paisley-0.3.1-r1.ebuild:
+  revbump; conversion -> distutils-r1
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> paisley-0.3.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  03 Aug 2013; Michał Górny <mgorny@gentoo.org> paisley-0.3.1.ebuild:
+  Move dev-python/twisted to dev-python/twisted-core.
+
+  12 Sep 2011; Dirkjan Ochtman <djc@gentoo.org> metadata.xml:
+  Remove myself as maintainer.
+
+  01 Jul 2011; Markos Chandras <hwoarang@gentoo.org> -paisley-0.1.ebuild:
+  Remove old ebuilds. Requested by Arfrever
+
+  24 Jun 2011; Brent Baude <ranger@gentoo.org> paisley-0.3.1.ebuild:
+  Marking paisley-0.3.1 ppc for bug 362777
+
+  07 May 2011; Thomas Kahle <tomka@gentoo.org> paisley-0.3.1.ebuild:
+  x86 stable per bug 362777
+
+  15 Apr 2011; Christoph Mende <angelos@gentoo.org> paisley-0.3.1.ebuild:
+  Stable on amd64 wrt bug #362777
+
+*paisley-0.3.1 (10 Mar 2011)
+
+  10 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -paisley-0.3.ebuild, +paisley-0.3.1.ebuild:
+  Version bump.
+
+*paisley-0.3 (08 Mar 2011)
+
+  08 Mar 2011; Dirkjan Ochtman <djc@gentoo.org> +paisley-0.3.ebuild:
+  Version bump to 0.3.
+
+  18 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  paisley-0.1.ebuild:
+  Update EAPI. Fix dependencies. Use DISTUTILS_SRC_TEST.
+
+  22 Dec 2009; Markus Meier <maekke@gentoo.org> paisley-0.1.ebuild:
+  amd64 stable, bug #295233
+
+  17 Dec 2009; Christian Faulhammer <fauli@gentoo.org> paisley-0.1.ebuild:
+  stable x86, bug 295233
+
+  08 Dec 2009; nixnut <nixnut@gentoo.org> paisley-0.1.ebuild:
+  ppc stable #295233
+
+  08 Dec 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  paisley-0.1.ebuild:
+  Add missing dependencies. Add "test" USE flag and fix src_test(). Set
+  PYTHON_MODNAME.
+
+  30 Nov 2009; Dirkjan Ochtman <djc@gentoo.org> paisley-0.1.ebuild:
+  Add src_test phase.
+
+  30 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> paisley-0.1.ebuild:
+  Keywording for ppc.
+
+*paisley-0.1 (23 Oct 2009)
+
+  23 Oct 2009; Dirkjan Ochtman <djc@gentoo.org> +paisley-0.1.ebuild,
+  +metadata.xml:
+  Initial version of paisley (0.1).

@@ -1,0 +1,114 @@
+# ChangeLog for gnustep-apps/preferences
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/preferences/ChangeLog,v 1.19 2014/08/10 21:19:56 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  preferences-1.3.0_pre20061204-r1.ebuild, preferences-1.3.0_pre20100523.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  13 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  preferences-1.3.0_pre20061204-r1.ebuild,
+  preferences-1.3.0_pre20100523.ebuild:
+  Dropped ppc keywords wrt #360969
+
+  25 Apr 2011; Thomas Kahle <tomka@gentoo.org>
+  preferences-1.3.0_pre20100523.ebuild:
+  x86 stable per bug 360969
+
+  09 Apr 2011; Christoph Mende <angelos@gentoo.org>
+  preferences-1.3.0_pre20100523.ebuild:
+  Stable on amd64 wrt bug #360969
+
+*preferences-1.3.0_pre20100523 (14 Jul 2010)
+
+  14 Jul 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  +preferences-1.3.0_pre20100523.ebuild:
+  Version bump, cleaned ebuild, also fixes bug #328195
+
+  08 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  preferences-1.3.0_pre20061204-r1.ebuild:
+  amd64 stable wrt bug #207381
+
+  30 Jan 2008; Brent Baude <ranger@gentoo.org>
+  preferences-1.3.0_pre20061204-r1.ebuild:
+  Marking preferences-1.3.0_pre20061204-r1 ppc for bug 207381
+
+  25 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  preferences-1.3.0_pre20061204-r1.ebuild:
+  stable x86, bug 207381
+
+  06 Nov 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  +files/preferences-gnustep-make2.patch,
+  preferences-1.3.0_pre20061204-r1.ebuild:
+  Add missing patch for gnustep-make 2, bug #197777
+
+*preferences-1.3.0_pre20061204-r1 (11 Sep 2007)
+
+  11 Sep 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  -preferences-1.3.0_pre20061204.ebuild,
+  +preferences-1.3.0_pre20061204-r1.ebuild:
+  Port to new GNUstep eclasses, use tarball instead of CVS checkout
+  Remove old versions
+
+  22 Aug 2007; Christoph Mende <angelos@gentoo.org>
+  preferences-1.3.0_pre20061204.ebuild:
+  Added ~amd64 wrt bug #170433
+
+*preferences-1.3.0_pre20061204 (05 Dec 2006)
+
+  05 Dec 2006; Fabian Groffen <grobian@gentoo.org>
+  -preferences-1.3.0_pre20050315.ebuild,
+  -preferences-1.3.0_pre20060324.ebuild,
+  +preferences-1.3.0_pre20061204.ebuild:
+  Bumped and added fix for bug #154155, removed old
+
+*preferences-1.3.0_pre20060324 (25 Mar 2006)
+
+  25 Mar 2006; Fabian Groffen <grobian@gentoo.org>
+  -preferences-1.3.0_pre20050110.ebuild,
+  preferences-1.3.0_pre20050315.ebuild,
+  +preferences-1.3.0_pre20060324.ebuild:
+  Removed old ebuild and ported latest to nongnu CVS server.  Version bump.
+
+*preferences-1.3.0_pre20050315 (17 Mar 2005)
+
+  17 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -preferences-1.3.0_pre20041116.ebuild,
+  +preferences-1.3.0_pre20050315.ebuild:
+  ebuild updates for GNUstep base, libs, and apps across the board; proper
+  versions (to be stabilized, in due time) added where apropos, cvs-pull
+  versions updated where needed
+
+*preferences-1.3.0_pre20050110 (12 Jan 2005)
+
+  12 Jan 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -preferences-1.3.0_pre20040927.ebuild,
+  +preferences-1.3.0_pre20050110.ebuild:
+  Version bump
+
+*preferences-1.3.0_pre20041116 (04 Dec 2004)
+
+  04 Dec 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +preferences-1.3.0_pre20041116.ebuild:
+  General version bump
+
+  11 Nov 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  -preferences-1.3.0_pre20040909.ebuild, preferences-1.3.0_pre20040927.ebuild:
+  Mass Update: gnustep.eclass revamped to allow configurable root install;
+  gnustep-base/libs/apps updated to utilize new gnustep.eclass (only versions
+  bumped where files would change); some KEYWORDS were accidentally dropped
+  between version bumps of packages -- this has been resolved; windowmaker
+  correctly supports gnustep now
+
+*preferences-1.3.0_pre20040927 (28 Sep 2004)
+
+  28 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +preferences-1.3.0_pre20040927.ebuild:
+  Version bump; pre release date specd live cvs pull.
+
+*preferences-1.3.0_pre20040909 (09 Sep 2004)
+
+  09 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +files/Preferences-nocreate-extra-dirs.patch,
+  +preferences-1.3.0_pre20040909.ebuild:
+  Added package

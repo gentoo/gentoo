@@ -1,0 +1,156 @@
+# ChangeLog for media-sound/terminatorx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/terminatorx/ChangeLog,v 1.40 2015/02/06 15:37:53 pacho Exp $
+
+  06 Feb 2015; Pacho Ramos <pacho@gentoo.org> -terminatorx-3.82.ebuild:
+  Drop old
+
+  05 Feb 2015; Jeroen Roovers <jer@gentoo.org>
+  files/terminatorx-3.84-new-zlib.patch:
+  Clean up patch (maybe bug #538906).
+
+  01 Feb 2015; Agostino Sarubbo <ago@gentoo.org> terminatorx-3.84-r1.ebuild:
+  Stable for x86, wrt bug #530024
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org> terminatorx-3.84-r1.ebuild:
+  Stable for amd64, wrt bug #530024
+
+*terminatorx-3.84-r1 (29 Jan 2015)
+
+  29 Jan 2015; Pacho Ramos <pacho@gentoo.org>
+  +files/terminatorx-3.84-new-zlib.patch, +terminatorx-3.84-r1.ebuild,
+  -terminatorx-3.83.ebuild, -terminatorx-3.84.ebuild:
+  Use gnome2.eclass properly, fix compilation with current zlib (#413623), drop
+  old
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> terminatorx-3.82.ebuild,
+  terminatorx-3.83.ebuild, terminatorx-3.84.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*terminatorx-3.84 (21 Nov 2011)
+
+  21 Nov 2011; Tim Harder <radhermit@gentoo.org> +terminatorx-3.84.ebuild:
+  Version bump.
+
+*terminatorx-3.83 (29 Mar 2011)
+
+  29 Mar 2011; Tim Harder <radhermit@gentoo.org> +terminatorx-3.83.ebuild:
+  Version bump.
+
+  29 Mar 2011; Tim Harder <radhermit@gentoo.org> terminatorx-3.82.ebuild:
+  Remove unnecessary explicit gnome2_omf_fix call.
+
+  29 Mar 2011; Tim Harder <radhermit@gentoo.org> terminatorx-3.82.ebuild:
+  Update to EAPI 2 and use slot deps for gtk+ and glib.
+
+  24 Oct 2010; Raúl Porcel <armin76@gentoo.org> terminatorx-3.82.ebuild:
+  Drop sparc keywords
+
+  17 May 2008; Samuli Suominen <drac@gentoo.org> terminatorx-3.82.ebuild:
+  Use virtual/mpg123.
+
+  20 Apr 2008; Raúl Porcel <armin76@gentoo.org> terminatorx-3.82.ebuild:
+  sparc stable
+
+  10 Apr 2008; Alexis Ballier <aballier@gentoo.org> terminatorx-3.81.ebuild,
+  terminatorx-3.82.ebuild:
+  add missing pkgconfig dep, thanks to Patrick, bug #216931
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> ChangeLog:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  13 Jan 2008; Alexis Ballier <aballier@gentoo.org> terminatorx-3.81.ebuild,
+  terminatorx-3.82.ebuild:
+  add xinputproto missing dep, bug #205592
+
+  22 Jul 2007; Samuli Suominen <drac@gentoo.org> terminatorx-3.81.ebuild,
+  terminatorx-3.82.ebuild:
+  Remove virtual/x11 references, and more.
+
+  02 Jul 2007; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Hand to newly-born proaudio herd.
+
+  15 Feb 2007; Alexis Ballier <aballier@gentoo.org> terminatorx-3.82.ebuild:
+  add desktop entry, bug #94667
+
+  15 Feb 2007; Alexis Ballier <aballier@gentoo.org> terminatorx-3.82.ebuild:
+  depend on mpg123 or mpg321 when using sox, bug #99500
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  terminatorx-3.81.ebuild:
+  Convert to use elog.
+
+  23 Oct 2006; Simon Stelling <blubb@gentoo.org> terminatorx-3.82.ebuild:
+  remove bogus 3dnow use flag
+
+  11 Feb 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  terminatorx-3.81.ebuild, terminatorx-3.82.ebuild:
+  Add modular X dependencies (bug #120871).
+
+  07 Jan 2006; <chainsaw@gentoo.org> terminatorx-3.81.ebuild,
+  terminatorx-3.82.ebuild:
+  Update homepage & SRC_URI, closes bug #118224.
+
+  28 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  -files/terminatorx-3.80.GNOMEpresent.patch,
+  -files/terminatorx-3.80.fixGnomeMakefile.patch, terminatorx-3.81.ebuild,
+  terminatorx-3.82.ebuild:
+  Dont make use of the deprecated oggvorbis useflag any longer, see #94254.
+  Marked 3.82 stable on amd64 and x86. Removed unnecessary patches.
+
+*terminatorx-3.82 (20 Feb 2005)
+
+  20 Feb 2005; Tony Vroon <chainsaw@gentoo.org> +terminatorx-3.82.ebuild:
+  Version bump, closes bug #82666. Ebuild cleaned up and oss USE-flag dropped.
+  Package pretends to support disabling of OSS but doesn't.
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  terminatorx-3.81.ebuild:
+  Stable amd64, sparc.
+
+  14 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  terminatorx-3.81.ebuild:
+  ~sparc
+
+  03 May 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  terminatorx-3.81.ebuild:
+  Changing mad dep to madplay.
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> terminatorx-3.81.ebuild:
+  Add die following econf for bug 48950
+
+  24 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> terminatorx-3.81.ebuild:
+  marked ~amd64
+
+  03 Apr 2004; Donnie Berkholz <spyderous@gentoo.org>;
+  terminatorx-3.81.ebuild:
+  Change x11-base/xfree dependency to virtual/x11.
+
+  01 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  terminatorx-3.81.ebuild:
+  Stable on x86.
+
+  28 Oct 2003; Martin Holzer <mholzer@gentoo.org> terminatorx-3.81.ebuild:
+  adding sox config option. Closes #30464.
+
+*terminatorx-3.81 (20 Sep 2003)
+
+  20 Sep 2003; jje <jje@gentoo.org> terminatorx-3.80.ebuild,
+  terminatorx-3.81.ebuild:
+  Version bump. Fixes 26781 and 27431.
+
+  19 Jul 2003; Nick Hadaway <raker@gentoo.org>:
+  Reverted mad changes
+
+*terminatorx-3.80-r1 (17 Jul 2003)
+
+  17 Jul 2003; Nick Hadaway <raker@gentoo.org> terminatorx-3.80.ebuild:
+  Changed media-sound/mad depend to media-libs/{libmad,libid3tag}
+
+*terminatorx-3.80 (08 Jul 2003)
+
+  08 Jul 2003; torbenh <torbenh@gentoo.org> terminatorx-3.80.ebuild files/terminatorx-3.80.GNOMEpresent.patch files/terminatorx-3.80.fixGnomeMakefile.patch :
+  so... finally i managed to commit this.
+  
+  Submitted by Dietrich Heise <dietrich@pegestorf.de>
+  Thanks Dietrich

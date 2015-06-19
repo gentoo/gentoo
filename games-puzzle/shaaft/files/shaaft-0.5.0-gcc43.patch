@@ -1,0 +1,23 @@
+--- utils/ResourceManager.cpp
++++ utils/ResourceManager.cpp
+@@ -17,6 +17,7 @@
+ #include <dirent.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <cstring>
+ 
+ #include <Trace.hpp>
+ #include <ResourceManager.hpp>
+--- utils/Value.hpp
++++ utils/Value.hpp
+@@ -15,8 +15,9 @@
+ #ifndef _Value_hpp_
+ #define _Value_hpp_
+ 
+-#include <stdio.h>
++#include <cstdio>
+ #include <string>
++#include <cstdlib>
+ 
+ #include <Trace.hpp>
+ 

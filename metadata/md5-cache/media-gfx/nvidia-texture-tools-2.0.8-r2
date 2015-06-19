@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=media-libs/libpng:0 media-libs/ilmbase media-libs/tiff:0 sys-libs/zlib virtual/jpeg virtual/opengl x11-libs/libX11 cg? ( media-gfx/nvidia-cg-toolkit ) cuda? ( dev-util/nvidia-cuda-toolkit ) glew? ( media-libs/glew ) glut? ( media-libs/freeglut ) openexr? ( media-libs/openexr ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=A set of cuda-enabled texture tools and compressors
+EAPI=4
+HOMEPAGE=http://developer.nvidia.com/object/texture_tools.html
+IUSE=cg cuda glew glut openexr
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=media-libs/libpng:0 media-libs/ilmbase media-libs/tiff:0 sys-libs/zlib virtual/jpeg virtual/opengl x11-libs/libX11 cg? ( media-gfx/nvidia-cg-toolkit ) cuda? ( dev-util/nvidia-cuda-toolkit ) glew? ( media-libs/glew ) glut? ( media-libs/freeglut ) openexr? ( media-libs/openexr )
+SLOT=0
+SRC_URI=http://nvidia-texture-tools.googlecode.com/files/nvidia-texture-tools-2.0.8-1.tar.gz http://dev.gentoo.org/~ssuominen/nvidia-texture-tools-2.0.8-patchset-1.tar.xz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=60b2adf80564aa5ef07541989e23644c

@@ -1,0 +1,255 @@
+# ChangeLog for app-shells/ksh
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-shells/ksh/ChangeLog,v 1.66 2015/04/15 20:02:54 floppym Exp $
+
+  15 Apr 2015; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Drop inactive proxy maintainer.
+
+*ksh-93.20140625 (29 Sep 2014)
+
+  29 Sep 2014; Mike Gilbert <floppym@gentoo.org> +ksh-93.20140625.ebuild:
+  Version bump.
+
+*ksh-93.20140606 (25 Jun 2014)
+
+  25 Jun 2014; Mike Gilbert <floppym@gentoo.org> +ksh-93.20140606.ebuild:
+  Version bump.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  01 Jul 2012; Raúl Porcel <armin76@gentoo.org> ksh-93.20120229.ebuild:
+  alpha/ia64/s390/sparc stable wrt #418633
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> ksh-93.20120229.ebuild:
+  Marking ksh-93.20120229 ppc for bug 418633
+
+  06 Jun 2012; Markus Meier <maekke@gentoo.org> ksh-93.20120229.ebuild:
+  arm stable, bug #418633
+
+  06 Jun 2012; Jeff Horelick <jdhore@gentoo.org> ksh-93.20120229.ebuild:
+  marked x86 per bug 418633
+
+  05 Jun 2012; Agostino Sarubbo <ago@gentoo.org> ksh-93.20120229.ebuild:
+  Stable for amd64, wrt bug #418633
+
+  01 Jun 2012; Mike Gilbert <floppym@gentoo.org> files/ksh-prefix.patch,
+  ksh-93.20120229.ebuild:
+  Fix prefix patch, bug 418693.
+
+  01 Jun 2012; Mike Gilbert <floppym@gentoo.org> ksh-93.20120229.ebuild:
+  Drop prefix patch; fails to apply. Bug 418693.
+
+  24 May 2012; Mike Frysinger <vapier@gentoo.org> ksh-93.20120229.ebuild:
+  Inherit eutils for epatch.
+
+  21 May 2012; Jeremy Olexa <darkside@gentoo.org> ksh-93.20120229.ebuild,
+  +files/ksh-prefix.patch:
+  Import Gentoo Prefix modifications. offset patch, KEYWORDS, and build
+  argument. Signed off my maintainer
+
+  01 Apr 2012; Mike Gilbert <floppym@gentoo.org> -ksh-93.20071105.ebuild:
+  Drop old version.
+
+  01 Apr 2012; Raúl Porcel <armin76@gentoo.org> ksh-93.20110208.ebuild:
+  alpha/ia64/s390/sparc stable wrt #408675
+
+  28 Mar 2012; Markus Meier <maekke@gentoo.org> ksh-93.20110208.ebuild:
+  arm stable, bug #408675
+
+  25 Mar 2012; Brent Baude <ranger@gentoo.org> ksh-93.20110208.ebuild:
+  Marking ksh-93.20110208 ppc for bug 408675
+
+  23 Mar 2012; Jeff Horelick <jdhore@gentoo.org> ksh-93.20110208.ebuild:
+  marked x86 per bug 408675
+
+  20 Mar 2012; Agostino Sarubbo <ago@gentoo.org> ksh-93.20110208.ebuild:
+  Stable for amd64, wrt bug #408675
+
+*ksh-93.20071105 (18 Mar 2012)
+
+  18 Mar 2012; Mike Gilbert <floppym@gentoo.org> +ksh-93.20071105.ebuild:
+  Restore last version with stable keywords.
+
+*ksh-93.20120229 (18 Mar 2012)
+
+  18 Mar 2012; Mike Gilbert <floppym@gentoo.org> +ksh-93.20120229.ebuild,
+  -ksh-93.20071105.ebuild, -ksh-93.20081104.ebuild, -ksh-93.20090505.ebuild:
+  Version bump. Remove old.
+
+  13 Feb 2012; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Add Dan Douglas as a maintainer.
+
+  13 Feb 2012; Mike Gilbert <floppym@gentoo.org> ksh-93.20110208.ebuild:
+  Build from the ast-base sources. Enable /etc/ksh.kshrc (SHOPT_SYSRC).
+
+*ksh-93.20110208 (13 Feb 2012)
+
+  13 Feb 2012; Mike Gilbert <floppym@gentoo.org> +ksh-93.20110208.ebuild:
+  Version bump / rewrite for bug 386339. Should also resolve bug 238906.
+
+  12 Feb 2012; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Add myself as maintainer.
+
+  24 Jan 2010; Mike Frysinger <vapier@gentoo.org> ksh-93.20071105.ebuild,
+  ksh-93.20081104.ebuild, ksh-93.20090505.ebuild:
+  Run helper script through /bin/sh #294817.
+
+*ksh-93.20090505 (22 Jan 2010)
+
+  22 Jan 2010; Dawid Węgliński <cla@gentoo.org> +ksh-93.20090505.ebuild:
+  Version bump
+
+  06 Sep 2009; Christian Ruppert <idl0r@gentoo.org>
+  -files/ksh-93.20030724-libs.diff, ksh-93.20071105.ebuild,
+  ksh-93.20081104.ebuild, -files/ksh-build-problems.diff:
+  Remove unused patches. Fix repoman complains.
+
+*ksh-93.20081104 (10 Nov 2008)
+
+  10 Nov 2008; Jeremy Olexa <darkside@gentoo.org> -ksh-93.20080725.ebuild,
+  +ksh-93.20081104.ebuild:
+  (non maintainer commit) version bump and remove old
+
+  10 Nov 2008; Jeremy Olexa <darkside@gentoo.org> ksh-93.20071105.ebuild:
+  amd64 stable
+
+*ksh-93.20080725 (02 Oct 2008)
+
+  02 Oct 2008; Jeremy Olexa <darkside@gentoo.org> -ksh-93.20040229.ebuild,
+  +ksh-93.20080725.ebuild:
+  (non-maintainer commit) version bump app-shells/ksh for bug 230097, simple
+  rename. remove old
+
+  06 Feb 2008; nixnut <nixnut@gentoo.org> ksh-93.20071105.ebuild:
+  stable on ppc wrt bug #140705
+
+  29 Jan 2008; Raúl Porcel <armin76@gentoo.org>
+  -files/ksh-20050202-uname.patch, -files/ksh-20060124-syntax.patch,
+  -files/ksh-20060214-ed.patch, -ksh-93.20030724.ebuild,
+  -ksh-93.20050202.ebuild, -ksh-93.20060214.ebuild,
+  -ksh-93.20060214-r1.ebuild, -ksh-93.20070628.ebuild,
+  ksh-93.20071105.ebuild:
+  alpha/ia64/sparc/x86 stable, remove old
+
+*ksh-93.20071105 (28 Jan 2008)
+
+  28 Jan 2008; Raúl Porcel <armin76@gentoo.org> +ksh-93.20071105.ebuild:
+  Version bump, fix bug #145400
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing taviso from metadata.xml as per #202471. Assigning to
+  maintainer-needed.
+
+  05 Jul 2007; Tavis Ormandy <taviso@gentoo.org> ksh-93.20070628.ebuild:
+  sync releases correctly #184231
+
+*ksh-93.20070628 (02 Jul 2007)
+
+  02 Jul 2007; Tavis Ormandy <taviso@gentoo.org> +ksh-93.20070628.ebuild:
+  bump
+
+  29 Apr 2007; Ryan Hill <dirtyepic@gentoo.org>
+  +files/ksh-20060214-ed.patch, ksh-93.20060214-r1.ebuild:
+  Add patch from kevquinn for bug #165982.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  13 Oct 2006; Markus Rothe <corsair@gentoo.org> ksh-93.20060214-r1.ebuild:
+  Added ~ppc64
+
+*ksh-93.20060214-r1 (12 May 2006)
+
+  12 May 2006; Stefan Jones <cretin@gentoo.org>
+  +files/ksh-20041225-gcc4.patch, +files/ksh-20050202-uname.patch,
+  +files/ksh-20060124-syntax.patch, +ksh-93.20060214-r1.ebuild:
+  Bump with compile fixes for #50000 #97795 #120724 #130740 hopefully
+
+*ksh-93.20060214 (21 Apr 2006)
+
+  21 Apr 2006; Tavis Ormandy <taviso@gentoo.org> +ksh-93.20060214.ebuild:
+  bump
+
+  26 Aug 2005; Carlos Silva <r3pek@gentoo.org> ksh-93.20040229.ebuild:
+  Marking ksh-93.20040229 ~amd64
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  ksh-93.20040229.ebuild:
+  Stable on ppc.
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> ksh-93.20040229.ebuild:
+  stable on ia64
+
+*ksh-93.20050202 (27 Mar 2005)
+
+  27 Mar 2005; Tavis Ormandy <taviso@gentoo.org> +ksh-93.20050202.ebuild:
+  bump
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  01 Jan 2005; Joseph Jezak <josejx@gentoo.org> ksh-93.20040229.ebuild:
+  Marked ~ppc.
+
+  26 Oct 2004; Tavis Ormandy <taviso@gentoo.org> ksh-93.20040229.ebuild:
+  use toolchain-funcs to determine compiler
+
+  23 Oct 2004; Akinori Hattori <hattya@gentoo.org> ksh-93.20040229.ebuild:
+  add ~ia64, bug #68321.
+
+  05 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> ksh-93.20040229.ebuild:
+  Stable on alpha.
+
+  23 Sep 2004; Tavis Ormandy <taviso@gentoo.org>
+  +files/ksh-build-problems.diff, ksh-93.20040229.ebuild:
+  attempting to fix #50000
+
+  14 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> ksh-93.20040229.ebuild:
+  Stable on sparc
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> ksh-93.20030724.ebuild,
+  ksh-93.20040229.ebuild:
+  Add flag-o-matic for bug 49179
+
+  15 Apr 2004; Michael McCabe <randy@gentoo.org> ksh-93.20040229.ebuild:
+  adding s390 keywords
+
+*ksh-93.20040229 (10 Apr 2004)
+
+  10 Apr 2004; Tavis Ormandy <taviso@gentoo.org> ksh-93.20040229.ebuild:
+  new release
+
+  06 Dec 2003; Jason Wever <weeve@gentoo.org> ksh-93.20030724.ebuild:
+  Marked stable on sparc, closes #25668
+
+  02 Dec 2003; Tavis Ormandy <taviso@gentoo.org> ksh-93.20030724.ebuild:
+  die if build script fails, no longer required to fail first.
+
+  11 Oct 2003; Jason Wever <weeve@gentoo.org> ksh-93.20030724.ebuild:
+  Added ~sparc keyword, resolves bug #25668.
+
+  22 Sep 2003; <paul@gentoo.org> metadata.xml:
+  Fix metadata.xml
+
+  17 Sep 2003; Tavis Ormandy <taviso@gentoo.org> ksh-93.20030422.ebuild:
+  removing old ebuilds.
+
+*ksh-93.20030724 (10 Sep 2003)
+
+  10 Sep 2003; Tavis Ormandy <taviso@gentoo.org> ksh-93.20030724.ebuild:
+  --> stable
+
+  06 Sep 2003; Tavis Ormandy <taviso@gentoo.org> :
+  New version of ast-ksh and INIT, testing a patch that seems to 
+  stop linking errors.
+  some syntax changes.
+  make repomans whitespace checker happy.
+
+  20 Jul 2003; Tavis Ormandy <taviso@gentoo.org> ksh-93.20030422.ebuild:
+  save some bandwidth, and mark stable on Alpha
+
+*ksh-93.20030422 (29 May 2003)
+
+  29 May 2003; Tavis Ormandy <taviso@gentoo.org> ksh-93.20030422.ebuild:
+  Initial import of David Korn's original shell.

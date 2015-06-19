@@ -1,0 +1,32 @@
+# ChangeLog for net-misc/slimrat
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/slimrat/ChangeLog,v 1.7 2013/03/17 15:06:19 hwoarang Exp $
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  11 Nov 2011; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Drop me from maint.
+
+  31 May 2011; Tomáš Chvátal <scarabeus@gentoo.org> -slimrat-1.0.ebuild,
+  slimrat-9999.ebuild:
+  Migrate to eapi4, drop release that was no longer working with most services.
+  The app is developed, but they don't do any releases.
+
+  13 Jul 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Added missing herd tag to metadata.xml
+
+  19 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org> slimrat-9999.ebuild:
+  Fixing #321595 and added dependency for plugin.
+
+*slimrat-9999 (26 May 2010)
+
+  26 May 2010; Tomáš Chvátal <scarabeus@gentoo.org> +slimrat-9999.ebuild:
+  Add also live version.
+
+*slimrat-1.0 (10 Mar 2010)
+
+  10 Mar 2010; Tomáš Chvátal <scarabeus@gentoo.org> +slimrat-1.0.ebuild,
+  +metadata.xml:
+  Initial commit. Per bug #247580.

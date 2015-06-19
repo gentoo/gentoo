@@ -1,0 +1,403 @@
+# ChangeLog for kde-misc/networkmanagement
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/networkmanagement/ChangeLog,v 1.52 2015/03/13 14:49:41 kensington Exp $
+
+  13 Mar 2015; Michael Palimaka <kensington@gentoo.org>
+  -networkmanagement-0.9.0.11.ebuild:
+  Remove old.
+
+  13 Mar 2015; Agostino Sarubbo <ago@gentoo.org>
+  networkmanagement-0.9.0.12.ebuild:
+  Stable for x86, wrt bug #531304
+
+  13 Mar 2015; Agostino Sarubbo <ago@gentoo.org>
+  networkmanagement-0.9.0.12.ebuild:
+  Stable for amd64, wrt bug #531304
+
+*networkmanagement-0.9.0.12 (07 Mar 2015)
+
+  07 Mar 2015; Johannes Huber <johu@gentoo.org>
+  +networkmanagement-0.9.0.12.ebuild,
+  -files/networkmanagement-0.9.0.11-openconnect7.patch,
+  -networkmanagement-0.9.0.11-r1.ebuild, networkmanagement-0.9.0.11.ebuild:
+  Version bump, fixes bug #531304.
+
+*networkmanagement-0.9.0.11-r1 (20 Jan 2015)
+
+  20 Jan 2015; Johannes Huber <johu@gentoo.org>
+  +files/networkmanagement-0.9.0.11-openconnect7.patch,
+  +networkmanagement-0.9.0.11-r1.ebuild:
+  Revision bump adds upstream patch to fix build with openconnect-7, bug
+  #532382.
+
+  14 Aug 2014; Johannes Huber <johu@gentoo.org>
+  -networkmanagement-0.9.0.10.ebuild:
+  Remove old.
+
+  14 Aug 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  networkmanagement-0.9.0.11.ebuild:
+  x86 stable wrt bug #518426
+
+  13 Aug 2014; Manuel Rüger <mrueg@gentoo.org>
+  networkmanagement-0.9.0.11.ebuild:
+  Stable for amd64, bug #518426.
+
+  28 Jul 2014; Johannes Huber <johu@gentoo.org>
+  -networkmanagement-0.9.0.10-r1.ebuild:
+  Remove old.
+
+  24 Apr 2014; Patrick Lauer <patrick@gentoo.org>
+  networkmanagement-0.9.0.11.ebuild:
+  Whitespace
+
+*networkmanagement-0.9.0.11 (23 Apr 2014)
+
+  23 Apr 2014; Manuel Rüger <mrueg@gentoo.org>
+  +networkmanagement-0.9.0.11.ebuild, networkmanagement-0.9.0.10-r1.ebuild,
+  networkmanagement-0.9.0.10.ebuild:
+  Version bump. Fixes bug #503898. Restrict to <net-misc/openconnect-5.99 on
+  earlier versions.
+
+*networkmanagement-0.9.0.10-r1 (10 Apr 2014)
+
+  10 Apr 2014; Johannes Huber <johu@gentoo.org>
+  +networkmanagement-0.9.0.10-r1.ebuild:
+  Revision bump DEPENDs on net-misc/networkmanager-openconnect, bug #503378.
+
+  09 Dec 2013; Johannes Huber <johu@gentoo.org>
+  -networkmanagement-0.9.0.8.ebuild, -networkmanagement-0.9.0.9.ebuild:
+  Remove old.
+
+  09 Dec 2013; Agostino Sarubbo <ago@gentoo.org>
+  networkmanagement-0.9.0.10.ebuild:
+  Stable for x86, wrt bug #484884
+
+  08 Dec 2013; Agostino Sarubbo <ago@gentoo.org>
+  networkmanagement-0.9.0.10.ebuild:
+  Stable for amd64, wrt bug #484884
+
+*networkmanagement-0.9.0.10 (29 Nov 2013)
+
+  29 Nov 2013; Johannes Huber <johu@gentoo.org>
+  +networkmanagement-0.9.0.10.ebuild:
+  Version bump.
+
+  15 Oct 2013; Johannes Huber <johu@gentoo.org>
+  networkmanagement-0.9.0.8.ebuild, networkmanagement-0.9.0.9.ebuild:
+  Block kde-misc/plasma-nm to prevent file collisions.
+
+  12 Oct 2013; Johannes Huber <johu@gentoo.org>
+  networkmanagement-0.9.0.9.ebuild:
+  Raise minimal kde version and block kde-base/solid to prevent file collision
+  wrt bug #487572.
+
+*networkmanagement-0.9.0.9 (16 Jun 2013)
+
+  16 Jun 2013; Johannes Huber <johu@gentoo.org>
+  +networkmanagement-0.9.0.9.ebuild, networkmanagement-0.9.0.8.ebuild:
+  Version bump. Update HOMEPAGE.
+
+  02 May 2013; Johannes Huber <johu@gentoo.org>
+  -networkmanagement-0.9.0.7.ebuild:
+  Remove old.
+
+  30 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  networkmanagement-0.9.0.8.ebuild:
+  Stable for x86, wrt bug #466074
+
+  29 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  networkmanagement-0.9.0.8.ebuild:
+  Stable for amd64, wrt bug #466074
+
+  08 Apr 2013; Michael Palimaka <kensington@gentoo.org>
+  -networkmanagement-0.9.0.6.ebuild:
+  Remove old.
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  networkmanagement-0.9.0.7.ebuild:
+  Stable for x86, wrt bug #462890
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  networkmanagement-0.9.0.7.ebuild:
+  Stable for amd64, wrt bug #462890
+
+*networkmanagement-0.9.0.8 (24 Mar 2013)
+
+  24 Mar 2013; Pavlos Ratis <dastergon@gentoo.org>
+  +networkmanagement-0.9.0.8.ebuild:
+  version bump, bug #462142. Thanks to Manuel Rüger
+
+  11 Feb 2013; <creffett@gentoo.org> ChangeLog:
+  Correction (mixed up my commit messages between this and KDE overlay):
+  Version bump to 0.9.0.7
+
+*networkmanagement-0.9.0.7 (11 Feb 2013)
+
+  11 Feb 2013; Chris Reffett <creffett@gentoo.org>
+  +networkmanagement-0.9.0.7.ebuild, metadata.xml:
+  [kde-misc/networkmanagement] Sync live version with tree
+
+  28 Jan 2013; Michael Palimaka <kensington@gentoo.org>
+  -networkmanagement-0.9.0.5.ebuild:
+  Remove old.
+
+  27 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  networkmanagement-0.9.0.6.ebuild:
+  Stable for x86, wrt bug #450678
+
+  27 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  networkmanagement-0.9.0.6.ebuild:
+  Stable for amd64, wrt bug #450678
+
+  18 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  networkmanagement-0.9.0.6.ebuild:
+  Add linguas ro/ru, wrt to bug #447742
+
+*networkmanagement-0.9.0.6 (11 Dec 2012)
+
+  11 Dec 2012; Michael Palimaka <kensington@gentoo.org>
+  +networkmanagement-0.9.0.6.ebuild, -networkmanagement-0.9.0.4.ebuild:
+  Version bump wrt bug #446804. Remove old.
+
+  07 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  networkmanagement-0.9.0.5.ebuild:
+  Stable for x86, wrt bug #441336
+
+  07 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  networkmanagement-0.9.0.5.ebuild:
+  Stable for amd64, wrt bug #441336
+
+*networkmanagement-0.9.0.5 (02 Oct 2012)
+
+  02 Oct 2012; Johannes Huber <johu@gentoo.org>
+  +networkmanagement-0.9.0.5.ebuild:
+  Version bump.
+
+  17 Aug 2012; Johannes Huber <johu@gentoo.org>
+  -networkmanagement-0.8_p20110714.ebuild, metadata.xml:
+  Remove old.
+
+  17 Aug 2012; Johannes Huber <johu@gentoo.org>
+  networkmanagement-0.9.0.4.ebuild:
+  Stable for x86, wrt bug #430370
+
+  16 Aug 2012; Agostino Sarubbo <ago@gentoo.org>
+  networkmanagement-0.9.0.4.ebuild:
+  Stable for amd64, wrt bug #430370
+
+*networkmanagement-0.9.0.4 (30 Jul 2012)
+
+  30 Jul 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  +networkmanagement-0.9.0.4.ebuild, -networkmanagement-0.9.0.3.ebuild:
+  Version bump, remove older.
+
+*networkmanagement-0.9.0.3 (19 Jun 2012)
+
+  19 Jun 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  +networkmanagement-0.9.0.3.ebuild, -networkmanagement-0.9.0.1.ebuild,
+  -networkmanagement-0.9.0.2.ebuild:
+  Version bump to latest. Drop older.
+
+*networkmanagement-0.9.0.2 (07 May 2012)
+
+  07 May 2012; Johannes Huber <johu@gentoo.org>
+  +networkmanagement-0.9.0.2.ebuild, -networkmanagement-0.9.0.ebuild:
+  Version bump, remove old.
+
+*networkmanagement-0.9.0.1 (11 Apr 2012)
+
+  11 Apr 2012; Johannes Huber <johu@gentoo.org>
+  +networkmanagement-0.9.0.1.ebuild:
+  Version bump.
+
+  27 Mar 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  networkmanagement-0.8_p20110714.ebuild:
+  Does not work with networkmanager-0.9
+
+  27 Feb 2012; Theo Chatzimichos <tampakrap@gentoo.org>
+  -networkmanagement-0.8.98.ebuild, -networkmanagement-0.8.99.ebuild:
+  Remove old betas
+
+*networkmanagement-0.9.0 (27 Feb 2012)
+
+  27 Feb 2012; Johannes Huber <johu@gentoo.org> +networkmanagement-0.9.0.ebuild:
+  Version bump.
+
+  16 Feb 2012; Johannes Huber <johu@gentoo.org> networkmanagement-0.8.99.ebuild:
+  Remove consolekit use flag. Its not needed anymore. Dbus policy file is
+  removed by upstream. Fixes bug #403891.
+
+*networkmanagement-0.8.99 (22 Jan 2012)
+
+  22 Jan 2012; Johannes Huber <johu@gentoo.org>
+  +networkmanagement-0.8.99.ebuild:
+  Version bump.
+
+*networkmanagement-0.8.98 (22 Dec 2011)
+
+  22 Dec 2011; Johannes Huber <johu@gentoo.org>
+  +networkmanagement-0.8.98.ebuild, -networkmanagement-0.8.95.ebuild:
+  Version bump. Remove old. Add missing dep on kde-base/solid. Fix #395485.
+
+*networkmanagement-0.8.95 (04 Nov 2011)
+
+  04 Nov 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -networkmanagement-0.8.80.ebuild, -networkmanagement-0.8.90.ebuild,
+  +networkmanagement-0.8.95.ebuild:
+  Bump to rc2. Cleanup older masked ones.
+
+*networkmanagement-0.8.90 (30 Oct 2011)
+
+  30 Oct 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +networkmanagement-0.8.90.ebuild:
+  Version bump
+
+*networkmanagement-0.8.80 (30 Oct 2011)
+*networkmanagement-0.8_p20110714 (30 Oct 2011)
+
+  30 Oct 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +networkmanagement-0.8_p20110714.ebuild, +networkmanagement-0.8.80.ebuild,
+  +metadata.xml:
+  Renamed to kde-misc/networkmanagement to follow upstream
+
+  14 Oct 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/knetworkmanager-nm09version.patch, knetworkmanager-0.8.80.ebuild:
+  Remove unused patch file and add linguas
+
+*knetworkmanager-0.8.80 (14 Oct 2011)
+*knetworkmanager-0.8_p20110714 (14 Oct 2011)
+
+  14 Oct 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +knetworkmanager-0.8_p20110714.ebuild, +knetworkmanager-0.8.80.ebuild,
+  -knetworkmanager-4.4.0_p20110415.ebuild,
+  -knetworkmanager-4.4.0_p20110513.ebuild,
+  -knetworkmanager-4.4.0_p20110714.ebuild,
+  -knetworkmanager-4.4.0_p30110815.ebuild,
+  -knetworkmanager-4.4.0_p30110909.ebuild:
+  Add knetworkmanager release, reversion to have 0.8 series as older version.
+
+*knetworkmanager-4.4.0_p30110909 (08 Sep 2011)
+
+  08 Sep 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +knetworkmanager-4.4.0_p30110909.ebuild:
+  Version bump, should fix bug 381603
+
+  07 Sep 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +files/knetworkmanager-nm09version.patch,
+  knetworkmanager-4.4.0_p30110815.ebuild:
+  Try to blindly fix the networkmanager version problem from bug 381603
+
+*knetworkmanager-4.4.0_p30110815 (15 Aug 2011)
+
+  15 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +knetworkmanager-4.4.0_p30110815.ebuild:
+  Add a snapshot from the nm09 branch for networkmanager-0.9 support. The 3 in
+  the patchlevel is NOT a typo.
+
+  16 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  knetworkmanager-4.4.0_p20110714.ebuild:
+  Re-added keywords after positive feedback
+
+*knetworkmanager-4.4.0_p20110714 (14 Jul 2011)
+
+  14 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +knetworkmanager-4.4.0_p20110714.ebuild:
+  Blind version bump without keywords, bug 374189
+
+  22 May 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  knetworkmanager-4.4.0_p20110513.ebuild:
+  Raise networkmanager version dependency, bug 367099
+
+*knetworkmanager-4.4.0_p20110513 (13 May 2011)
+
+  13 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +knetworkmanager-4.4.0_p20110513.ebuild:
+  Version bump to new snapshot.
+
+  13 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -knetworkmanager-4.4.0_p20100820.ebuild:
+  remove old
+
+  09 May 2011; Markos Chandras <hwoarang@gentoo.org>
+  knetworkmanager-4.4.0_p20110415.ebuild:
+  Stable on amd64 wrt bug #354033
+
+  09 May 2011; Thomas Kahle <tomka@gentoo.org>
+  knetworkmanager-4.4.0_p20110415.ebuild:
+  x86 stable per bug 354033
+
+*knetworkmanager-4.4.0_p20110415 (15 Apr 2011)
+
+  15 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -knetworkmanager-4.4.0_p20101012.ebuild,
+  -knetworkmanager-4.4.0_p20110204.ebuild,
+  -knetworkmanager-4.4.0_p20110410.ebuild,
+  +knetworkmanager-4.4.0_p20110415.ebuild:
+  Add new tarball that allows setting system wide connections. Drop older. Sync
+  with live ebuild.
+
+*knetworkmanager-4.4.0_p20110410 (10 Apr 2011)
+
+  10 Apr 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  +knetworkmanager-4.4.0_p20110410.ebuild:
+  New snapshot
+
+*knetworkmanager-4.4.0_p20110204 (04 Feb 2011)
+
+  04 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  +knetworkmanager-4.4.0_p20110204.ebuild:
+  New snapshot
+
+  03 Nov 2010; Markus Meier <maekke@gentoo.org>
+  knetworkmanager-4.4.0_p20100820.ebuild:
+  x86 stable, bug #340771
+
+  13 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  knetworkmanager-4.4.0_p20100820.ebuild:
+  Stable on amd64 wrt bug #340771
+
+*knetworkmanager-4.4.0_p20101012 (12 Oct 2010)
+
+  12 Oct 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  knetworkmanager-4.4.0_p20100820.ebuild,
+  +knetworkmanager-4.4.0_p20101012.ebuild:
+  New snapshot, cleanup: use add_kdebase_dep, merge with live ebuild, EAPI3
+
+  08 Sep 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  -knetworkmanager-4.4.0_p20100331.ebuild:
+  remove old snapshot
+
+*knetworkmanager-4.4.0_p20100820 (20 Aug 2010)
+
+  20 Aug 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  +knetworkmanager-4.4.0_p20100820.ebuild:
+  New snapshot. I wanted to unmask this version, but first it needs some
+  testing (with both KDE 4.4.5 and 4.5.0 for compile and runtime issues), as
+  it has a sed to make it compile with KDE 4.4.5
+  The sed reverts upstream commit
+  http://websvn.kde.org/trunk/extragear/base/networkmanagement/applet/CMakeL
+  ists.txt?r1=1164217&r2=1164216&pathrev=1164217
+
+*knetworkmanager-4.4.0_p20100331 (31 Mar 2010)
+
+  31 Mar 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  -knetworkmanager-4.4.0_p20100307.ebuild,
+  +knetworkmanager-4.4.0_p20100331.ebuild:
+  New snapshot
+
+*knetworkmanager-4.4.0_p20100307 (07 Mar 2010)
+
+  07 Mar 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  -knetworkmanager-4.4.0_p20100225.ebuild,
+  +knetworkmanager-4.4.0_p20100307.ebuild:
+  New snapshot, remove old
+
+  26 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  knetworkmanager-4.4.0_p20100225.ebuild:
+  Instead of || die, force networkmanager enabled if wicd is disabled.
+
+*knetworkmanager-4.4.0_p20100225 (26 Feb 2010)
+
+  26 Feb 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  +knetworkmanager-4.4.0_p20100225.ebuild, +metadata.xml:
+  Add knetworkmanager snapshot

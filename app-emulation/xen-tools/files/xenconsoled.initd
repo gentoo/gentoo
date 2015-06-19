@@ -1,0 +1,34 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/xen-tools/files/xenconsoled.initd,v 1.6 2014/02/13 07:59:09 dlan Exp $
+
+depend() {
+	need xenstored
+	after lvm
+}
+
+# bug #498720
+shutdown_all_domU() {
+	# Note: shutdown all domU, including manually started ones
+	local V=$(xl info| awk "/xen_minor/ { print \$3 }")
+	# 4.2.2 do not support "-a" option
+	[ $V -gt 2 ] && xl shutdown -a -w >/dev/null
+}
+
+start() {
+	ebegin "Starting xenconsoled daemon"
+	start-stop-daemon --start --exec /usr/sbin/xenconsoled \
+		--pidfile /run/xenconsoled.pid \
+		-- --pid-file=/run/xenconsoled.pid \
+		${XENCONSOLED_OPTS}
+	eend $*
+}
+
+stop() {
+	ebegin "Stopping xenconsoled daemon"
+	shutdown_all_domU
+	start-stop-daemon --stop --exec /usr/sbin/xenconsoled \
+		--pidfile /run/xenconsoled.pid
+	eend $*
+}

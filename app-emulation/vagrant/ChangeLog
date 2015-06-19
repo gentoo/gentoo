@@ -1,0 +1,197 @@
+# ChangeLog for app-emulation/vagrant
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/vagrant/ChangeLog,v 1.42 2015/06/07 07:54:49 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  26 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -vagrant-1.0.7.ebuild:
+  Remove old.
+
+  14 Dec 2014; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Reassigning to maintainer-needed.
+
+  14 Aug 2014; Manuel Rüger <mrueg@gentoo.org> vagrant-1.0.7.ebuild:
+  Remove ruby18 from USE_RUBY.
+
+  21 Apr 2014; Tim Harder <radhermit@gentoo.org> -vagrant-1.4.3-r1.ebuild:
+  Remove old.
+
+  02 Apr 2014; Vikraman Choudhury (vikraman) <vikraman@gentoo.org>
+  vagrant-1.4.3-r2.ebuild:
+  Add ~x86 for 1.4.3-r2
+
+*vagrant-1.4.3-r2 (06 Feb 2014)
+
+  06 Feb 2014; Tim Harder <radhermit@gentoo.org> +vagrant-1.4.3-r2.ebuild:
+  Loosen net-ssh dep (bug #500466) and move to ruby20.
+
+  22 Jan 2014; Tim Harder <radhermit@gentoo.org> -vagrant-1.4.1.ebuild,
+  -vagrant-1.4.3.ebuild:
+  Remove old.
+
+*vagrant-1.4.3-r1 (22 Jan 2014)
+
+  22 Jan 2014; Tim Harder <radhermit@gentoo.org> +vagrant-1.4.3-r1.ebuild:
+  Add libarchive dep (bug #497376 by Peter Wilmott).
+
+  04 Jan 2014; Tim Harder <radhermit@gentoo.org> -vagrant-1.2.4.ebuild,
+  -vagrant-1.2.6.ebuild, -vagrant-1.2.7.ebuild, -vagrant-1.3.1.ebuild,
+  -vagrant-1.3.3.ebuild, -vagrant-1.3.4.ebuild, -vagrant-1.3.5.ebuild,
+  -vagrant-1.4.0.ebuild, -files/vagrant-1.3.5-rubygems2.patch:
+  Remove old.
+
+*vagrant-1.4.3 (04 Jan 2014)
+
+  04 Jan 2014; Tim Harder <radhermit@gentoo.org> +vagrant-1.4.3.ebuild:
+  Version bump.
+
+*vagrant-1.4.1 (21 Dec 2013)
+
+  21 Dec 2013; Tim Harder <radhermit@gentoo.org> +vagrant-1.4.1.ebuild:
+  Version bump.
+
+*vagrant-1.4.0 (11 Dec 2013)
+
+  11 Dec 2013; Tim Harder <radhermit@gentoo.org> +vagrant-1.4.0.ebuild:
+  Version bump.
+
+*vagrant-1.3.5 (18 Oct 2013)
+
+  18 Oct 2013; Tim Harder <radhermit@gentoo.org> +vagrant-1.3.5.ebuild,
+  +files/vagrant-1.3.5-rubygems2.patch:
+  Version bump, fix rubygems2 compat (bug #486096, patch by Tiago Macedo).
+
+*vagrant-1.3.4 (03 Oct 2013)
+
+  03 Oct 2013; Tim Harder <radhermit@gentoo.org> +vagrant-1.3.4.ebuild:
+  Version bump.
+
+*vagrant-1.3.3 (23 Sep 2013)
+
+  23 Sep 2013; Tim Harder <radhermit@gentoo.org> +vagrant-1.3.3.ebuild:
+  Version bump.
+
+*vagrant-1.3.1 (07 Sep 2013)
+
+  07 Sep 2013; Tim Harder <radhermit@gentoo.org> +vagrant-1.3.1.ebuild:
+  Version bump.
+
+*vagrant-1.2.7 (31 Jul 2013)
+
+  31 Jul 2013; Tim Harder <radhermit@gentoo.org> +vagrant-1.2.7.ebuild:
+  Version bump.
+
+*vagrant-1.2.6 (27 Jul 2013)
+
+  27 Jul 2013; Tim Harder <radhermit@gentoo.org> +vagrant-1.2.6.ebuild:
+  Version bump.
+
+  21 Jul 2013; Tim Harder <radhermit@gentoo.org> -vagrant-1.2.1-r1.ebuild,
+  -vagrant-1.2.2.ebuild, -vagrant-1.2.2-r1.ebuild, -vagrant-1.2.3.ebuild:
+  Remove old.
+
+*vagrant-1.2.4 (17 Jul 2013)
+
+  17 Jul 2013; Tim Harder <radhermit@gentoo.org> +vagrant-1.2.4.ebuild:
+  Version bump.
+
+*vagrant-1.2.3 (10 Jul 2013)
+
+  10 Jul 2013; Tim Harder <radhermit@gentoo.org> +vagrant-1.2.3.ebuild:
+  Version bump.
+
+*vagrant-1.2.2-r1 (08 Jul 2013)
+
+  08 Jul 2013; Tim Harder <radhermit@gentoo.org> +vagrant-1.2.2-r1.ebuild,
+  +files/vagrant-1.2.2-rvm.patch:
+  Revision bump. Fix rvm issue (bug #474476 by Benedikt Böhm) and loosen json
+  dep (bug #476080 by Simon Kohlmeyer).
+
+*vagrant-1.2.2 (24 Apr 2013)
+
+  24 Apr 2013; Tim Harder <radhermit@gentoo.org> +vagrant-1.2.2.ebuild:
+  Version bump.
+
+*vagrant-1.2.1-r1 (18 Apr 2013)
+
+  18 Apr 2013; Tim Harder <radhermit@gentoo.org> -vagrant-1.2.1.ebuild,
+  +vagrant-1.2.1-r1.ebuild, +files/vagrant-1.2.1-no-warning.patch:
+  Revbump and remove old. Patch out official install warning instead of setting
+  environment variable so curl uses system ca-certs by default.
+
+  18 Apr 2013; Tim Harder <radhermit@gentoo.org> -vagrant-1.0.6.ebuild,
+  -vagrant-1.1.0.ebuild, -vagrant-1.1.5.ebuild:
+  Remove old.
+
+*vagrant-1.2.1 (18 Apr 2013)
+
+  18 Apr 2013; Tim Harder <radhermit@gentoo.org> +vagrant-1.2.1.ebuild:
+  Version bump.
+
+*vagrant-1.1.5 (16 Apr 2013)
+
+  16 Apr 2013; Tim Harder <radhermit@gentoo.org> +vagrant-1.1.5.ebuild:
+  Version bump.
+
+*vagrant-1.1.0 (18 Mar 2013)
+
+  18 Mar 2013; Tim Harder <radhermit@gentoo.org> +vagrant-1.1.0.ebuild:
+  Version bump.
+
+*vagrant-1.0.7 (18 Mar 2013)
+
+  18 Mar 2013; Tim Harder <radhermit@gentoo.org> -vagrant-1.0.3.ebuild,
+  -vagrant-1.0.4.ebuild, -vagrant-1.0.5.ebuild, +vagrant-1.0.7.ebuild:
+  Version bump and remove old.
+
+*vagrant-1.0.6 (03 Jan 2013)
+
+  03 Jan 2013; Tim Harder <radhermit@gentoo.org> +vagrant-1.0.6.ebuild:
+  Version bump.
+
+*vagrant-1.0.5 (21 Sep 2012)
+
+  21 Sep 2012; Tim Harder <radhermit@gentoo.org> +vagrant-1.0.5.ebuild:
+  Version bump.
+
+*vagrant-1.0.4 (15 Sep 2012)
+
+  15 Sep 2012; Tim Harder <radhermit@gentoo.org> +vagrant-1.0.4.ebuild:
+  Version bump.
+
+  02 Jun 2012; Tim Harder <radhermit@gentoo.org> vagrant-1.0.3.ebuild:
+  Don't try to generate docs (fixes bug #417577).
+
+  31 May 2012; Tim Harder <radhermit@gentoo.org> -vagrant-1.0.2.ebuild:
+  Remove old.
+
+  02 May 2012; Tim Harder <radhermit@gentoo.org> -vagrant-1.0.1.ebuild:
+  Remove old.
+
+*vagrant-1.0.3 (02 May 2012)
+
+  02 May 2012; Tim Harder <radhermit@gentoo.org> +vagrant-1.0.3.ebuild:
+  Version bump.
+
+*vagrant-1.0.2 (25 Mar 2012)
+
+  25 Mar 2012; Tim Harder <radhermit@gentoo.org> +vagrant-1.0.2.ebuild:
+  Version bump.
+
+  22 Mar 2012; Tim Harder <radhermit@gentoo.org> -vagrant-1.0.0.ebuild:
+  Remove old.
+
+  22 Mar 2012; Tim Harder <radhermit@gentoo.org> vagrant-1.0.1.ebuild:
+  Add ~x64-macos keyword.
+
+*vagrant-1.0.1 (21 Mar 2012)
+
+  21 Mar 2012; Tim Harder <radhermit@gentoo.org> +vagrant-1.0.1.ebuild:
+  Version bump.
+
+*vagrant-1.0.0 (21 Mar 2012)
+
+  21 Mar 2012; Tim Harder <radhermit@gentoo.org> +vagrant-1.0.0.ebuild,
+  +metadata.xml:
+  Initial import (bug #391367). Ebuild by me.

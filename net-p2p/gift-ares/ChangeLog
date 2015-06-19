@@ -1,0 +1,83 @@
+# ChangeLog for net-p2p/gift-ares
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/gift-ares/ChangeLog,v 1.21 2012/10/22 10:14:37 radhermit Exp $
+
+  22 Oct 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> gift-ares-0.3.0-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  02 May 2008; Raúl Porcel <armin76@gentoo.org> gift-ares-0.3.0-r1.ebuild:
+  Fix SRC_URI, bug #218657
+
+  12 Jul 2007; Petteri Räty <betelgeuse@gentoo.org> metadata.xml,
+  gift-ares-0.3.0-r1.ebuild:
+  Remove redundant src_compile and fix indentation in metadata.xml.
+
+  12 Jul 2007; Petteri Räty <betelgeuse@gentoo.org>
+  gift-ares-0.3.0-r1.ebuild:
+  Add net-p2p/gift to DEPEND for bug #184927.
+
+  24 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  gift-ares-0.3.0-r1.ebuild:
+  amd64 stable, bug 174858
+
+  23 May 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gift-ares-0.3.0-r1.ebuild:
+  Stable on sparc
+
+  15 May 2007; Matti Bickel <mabi@gentoo.org> gift-ares-0.3.0-r1.ebuild:
+  keyworded ~ppc (bug #174858)
+
+  22 Apr 2007; Bryan Østergaard <kloeri@gentoo.org>
+  gift-ares-0.3.0-r1.ebuild:
+  Stable on Alpha, bug 174858.
+
+  20 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gift-ares-0.3.0-r1.ebuild:
+  Keyworded ~sparc wrt #174858
+
+  20 Apr 2007; Raúl Porcel <armin76@gentoo.org> gift-ares-0.3.0-r1.ebuild:
+  ia64 + x86 stable
+
+  25 Mar 2007; Raúl Porcel <armin76@gentoo.org> gift-ares-0.3.0-r1.ebuild:
+  Add ~ia64 wrt bug 132197
+
+  21 Jan 2007; Raúl Porcel <armin76@gentoo.org> -gift-ares-0.3.0.ebuild:
+  Drop old
+
+  10 Sep 2006; Javier Villavicencio <the_paya@gentoo.org>
+  gift-ares-0.3.0-r1.ebuild:
+  Added ~x86-fbsd keyword.
+
+  27 Jun 2006; Thomas Cort <tcort@gentoo.org> gift-ares-0.3.0-r1.ebuild:
+  Added ~alpha keyword wrt Bug #132197.
+
+*gift-ares-0.3.0-r1 (20 Jun 2006)
+
+  20 Jun 2006; Jon Hood <squinky86@gentoo.org>
+  -files/gift-ares-0.2.2-gentoo.patch, -gift-ares-0.2.1.ebuild,
+  -gift-ares-0.2.2.ebuild, +gift-ares-0.3.0-r1.ebuild:
+  Fix data install path, thanks Thomas Cort <tcort@gentoo.org> wrt bug
+  #132197. Remove old versions. Also resolves #134043.
+
+  05 May 2006; Jon Hood <squinky86@gentoo.org> gift-ares-0.3.0.ebuild:
+  Install into /usr/lib64 for amd64 systems.
+
+*gift-ares-0.3.0 (19 Apr 2006)
+
+  19 Apr 2006; Jon Hood <squinky86@gentoo.org> +gift-ares-0.3.0.ebuild:
+  Version bump wrt #125694 (Thanks Gregor <gregorprivat@gmail.com>)
+
+*gift-ares-0.2.2 (27 Apr 2005)
+
+  27 Apr 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  +files/gift-ares-0.2.2-gentoo.patch, +gift-ares-0.2.2.ebuild:
+  Version bump, bug #88656
+
+*gift-ares-0.2.1 (02 Feb 2005)
+
+  02 Feb 2005; Jon Hood <squinky86@gentoo.org> +gift-ares-0.2.1.ebuild:
+  Initial commit, #78265. Thanks Sveinung Kvilhaugsvik <sveinung@HotPOP.com>.
+

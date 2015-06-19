@@ -1,0 +1,80 @@
+From 0e4b1d2127957459b79f41a96f1fa0061d399b3b Mon Sep 17 00:00:00 2001
+From: Michael Stahl <mstahl@redhat.com>
+Date: Sat, 14 Feb 2015 00:17:06 +0100
+Subject: tdf#78174: toolkit: work around GCC 4.9 -Os link failure
+
+A build with gcc (GCC) 4.9.2 20141101 (Red Hat 4.9.2-1) for 32-bit x86
+fails because of these undefined symbols:
+
+> nm --demangle workdir/CxxObject/svx/source/fmcomp/fmgridif.o | grep
+ \\bWindowListenerMultiplexer::acquire
+         U non-virtual thunk to WindowListenerMultiplexer::acquire()
+
+They should probably be generated inline.  Work around by out-lining the
+definition of the methods.
+
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=64812
+
+Change-Id: I318f7c39bdf1243be385bc6dc0a47862b22e92c5
+(cherry picked from commit 6b3aa0fe4094e87290bd33a30bd6cd99ee78ce38)
+Reviewed-on: https://gerrit.libreoffice.org/14509
+Reviewed-by: Miklos Vajna <vmiklos@collabora.co.uk>
+Tested-by: Miklos Vajna <vmiklos@collabora.co.uk>
+
+diff --git a/include/toolkit/helper/macros.hxx b/include/toolkit/helper/macros.hxx
+index e048e75..b212dff 100644
+--- a/include/toolkit/helper/macros.hxx
++++ b/include/toolkit/helper/macros.hxx
+@@ -112,8 +112,8 @@ class ClassName : public ListenerMultiplexerBase, public InterfaceName \
+ public: \
+     ClassName( ::cppu::OWeakObject& rSource ); \
+     ::com::sun::star::uno::Any  SAL_CALL queryInterface( const ::com::sun::star::uno::Type & rType ) throw(::com::sun::star::uno::RuntimeException, std::exception) SAL_OVERRIDE; \
+-    void                        SAL_CALL acquire() throw() SAL_OVERRIDE  { ListenerMultiplexerBase::acquire(); } \
+-    void                        SAL_CALL release() throw() SAL_OVERRIDE  { ListenerMultiplexerBase::release(); } \
++    void                        SAL_CALL acquire() throw() SAL_OVERRIDE; \
++    void                        SAL_CALL release() throw() SAL_OVERRIDE; \
+     void                        SAL_CALL disposing( const ::com::sun::star::lang::EventObject& Source ) throw(::com::sun::star::uno::RuntimeException, std::exception) SAL_OVERRIDE;
+ 
+ 
+@@ -124,8 +124,8 @@ class TOOLKIT_DLLPUBLIC ClassName : public ListenerMultiplexerBase, public Inter
+ public: \
+     ClassName( ::cppu::OWeakObject& rSource ); \
+     ::com::sun::star::uno::Any  SAL_CALL queryInterface( const ::com::sun::star::uno::Type & rType ) throw(::com::sun::star::uno::RuntimeException, std::exception) SAL_OVERRIDE; \
+-    void                        SAL_CALL acquire() throw() SAL_OVERRIDE  { ListenerMultiplexerBase::acquire(); } \
+-    void                        SAL_CALL release() throw() SAL_OVERRIDE  { ListenerMultiplexerBase::release(); } \
++    void                        SAL_CALL acquire() throw() SAL_OVERRIDE; \
++    void                        SAL_CALL release() throw() SAL_OVERRIDE; \
+     void                        SAL_CALL disposing( const ::com::sun::star::lang::EventObject& Source ) throw(::com::sun::star::uno::RuntimeException, std::exception) SAL_OVERRIDE;
+ 
+ 
+@@ -140,6 +140,8 @@ ClassName::ClassName( ::cppu::OWeakObject& rSource ) \
+     : ListenerMultiplexerBase( rSource ) \
+ { \
+ } \
++void SAL_CALL ClassName::acquire() throw() { ListenerMultiplexerBase::acquire(); } \
++void SAL_CALL ClassName::release() throw() { ListenerMultiplexerBase::release(); } \
+ ::com::sun::star::uno::Any ClassName::queryInterface( const ::com::sun::star::uno::Type & rType ) throw(::com::sun::star::uno::RuntimeException, std::exception) \
+ { \
+     ::com::sun::star::uno::Any aRet = ::cppu::queryInterface( rType, \
+diff --git a/toolkit/source/helper/listenermultiplexer.cxx b/toolkit/source/helper/listenermultiplexer.cxx
+index 797fad2..b109c5f 100644
+--- a/toolkit/source/helper/listenermultiplexer.cxx
++++ b/toolkit/source/helper/listenermultiplexer.cxx
+@@ -47,6 +47,15 @@ EventListenerMultiplexer::EventListenerMultiplexer( ::cppu::OWeakObject& rSource
+ {
+ }
+ 
++void SAL_CALL EventListenerMultiplexer::acquire() throw ()
++{
++    return ListenerMultiplexerBase::acquire();
++}
++void SAL_CALL EventListenerMultiplexer::release() throw ()
++{
++    return ListenerMultiplexerBase::release();
++}
++
+ // ::com::sun::star::uno::XInterface
+ ::com::sun::star::uno::Any EventListenerMultiplexer::queryInterface( const ::com::sun::star::uno::Type & rType ) throw(::com::sun::star::uno::RuntimeException, std::exception)
+ {
+-- 
+cgit v0.10.2

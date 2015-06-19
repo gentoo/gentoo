@@ -1,0 +1,30 @@
+# ChangeLog for dev-python/wsaccel
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/wsaccel/ChangeLog,v 1.8 2015/06/07 16:33:02 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  07 Jun 2015; Markus Meier <maekke@gentoo.org> wsaccel-0.6.2.ebuild:
+  arm stable, bug #540290
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  09 Mar 2015; Pacho Ramos <pacho@gentoo.org> wsaccel-0.6.2.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> wsaccel-0.6.2.ebuild:
+  amd64 stable, bug 540290
+
+  05 Jan 2015; Alexis Ballier <aballier@gentoo.org> wsaccel-0.6.2.ebuild:
+  keyword ~arm
+
+  24 Nov 2014; Justin Lecher <jlec@gentoo.org> wsaccel-0.6.2.ebuild:
+  Add support for python-3.4
+
+*wsaccel-0.6.2 (27 Jan 2014)
+
+  27 Jan 2014; Justin Lecher <jlec@gentoo.org> +wsaccel-0.6.2.ebuild,
+  +metadata.xml:
+  New addition, written by me

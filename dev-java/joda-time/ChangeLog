@@ -1,0 +1,196 @@
+# ChangeLog for dev-java/joda-time
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/joda-time/ChangeLog,v 1.51 2015/06/06 18:49:39 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*joda-time-2.7 (23 Mar 2015)
+
+  23 Mar 2015; Patrice Clement <monsieurp@gentoo.org>
+  +files/joda-time-2.7-build.xml, +joda-time-2.7.ebuild, joda-time-2.3.ebuild:
+  Version bump courtesy of Andreas Sturmlechner
+  <andreas.sturmlechner@gmail.com>. Drop ppc+ppc64 keyword. Fix bug 544140.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> joda-time-1.6.ebuild,
+  joda-time-2.2.ebuild, joda-time-2.3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  17 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -joda-time-1.5.1.ebuild,
+  -joda-time-1.5.2.ebuild:
+  NM: Cleanup superseeded ebuilds.
+
+*joda-time-2.3 (25 Jan 2014)
+
+  25 Jan 2014; Tim Harder <radhermit@gentoo.org> +joda-time-2.3.ebuild,
+  +files/joda-time-2.3-build.xml:
+  Version bump.
+
+  09 May 2013; Tim Harder <radhermit@gentoo.org> joda-time-2.2.ebuild:
+  Fix source and doc install.
+
+*joda-time-2.2 (09 May 2013)
+
+  09 May 2013; Tom Wijsman <TomWij@gentoo.org> +files/joda-time-2.2-build.xml,
+  +joda-time-2.2.ebuild:
+  Version bump to 2.2. Fixes bug #469186 reported by Andreas Sturmlechner aka
+  genstorm. Thanks to genstorm and sera for helping.
+
+  24 Apr 2010; Fabian Groffen <grobian@gentoo.org> joda-time-1.6.ebuild:
+  Marked ~sparc-solaris ~x86-solaris, bug #314093
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org> joda-time-1.6.ebuild:
+  Transfer Prefix keywords
+
+  15 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> joda-time-1.6.ebuild:
+  Stabilizing for ppc, bug 261142
+
+  04 Jul 2009; Brent Baude <ranger@gentoo.org> joda-time-1.6.ebuild:
+  Marking joda-time-1.6 ppc64 for bug 261142
+
+  09 Mar 2009; Markus Meier <maekke@gentoo.org> joda-time-1.6.ebuild:
+  amd64/x86 stable, bug #261142
+
+  04 Feb 2009; Markus Meier <maekke@gentoo.org> joda-time-1.5.2.ebuild:
+  amd64/x86 stable, bug #257642
+
+*joda-time-1.6 (04 Feb 2009)
+
+  04 Feb 2009; Petteri Räty <betelgeuse@gentoo.org> +joda-time-1.6.ebuild:
+  Version bump.
+
+  04 Feb 2009; Petteri Räty <betelgeuse@gentoo.org>
+  -joda-time-1.4-r1.ebuild, -joda-time-1.5.ebuild:
+  Remove old versions.
+
+*joda-time-1.5.2 (13 Apr 2008)
+
+  13 Apr 2008; Petteri Räty <betelgeuse@gentoo.org>
+  +joda-time-1.5.2.ebuild:
+  Version bump.
+
+  30 Mar 2008; Markus Rothe <corsair@gentoo.org> joda-time-1.5.1.ebuild:
+  Added ~ppc64
+
+  08 Mar 2008; Krzysiek Pawlik <nelchael@gentoo.org> joda-time-1.5.1.ebuild:
+  Stable on ppc.
+
+  25 Jan 2008; Samuli Suominen <drac@gentoo.org> joda-time-1.5.1.ebuild:
+  amd64 stable wrt #187616
+
+  21 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  joda-time-1.5.1.ebuild:
+  stable x86, bug 187616
+
+  20 Dec 2007; Petteri Räty <betelgeuse@gentoo.org> +files/1.5.1-ecj.patch,
+  joda-time-1.5.1.ebuild:
+  Add patch so that tests compile with ecj. Pointed out in bug #187616.
+
+*joda-time-1.5.1 (19 Dec 2007)
+
+  19 Dec 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +joda-time-1.5.1.ebuild:
+  Version bump.
+
+  19 Dec 2007; Petteri Räty <betelgeuse@gentoo.org> -joda-time-1.4.ebuild:
+  Remove old ebuild.
+
+  01 Nov 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  joda-time-1.4-r1.ebuild:
+  amd64 stable, bug #187616.
+
+*joda-time-1.5 (30 Oct 2007)
+
+  30 Oct 2007; Petteri Räty <betelgeuse@gentoo.org> +joda-time-1.5.ebuild:
+  Version bump.
+
+  14 Aug 2007; Christian Faulhammer <opfer@gentoo.org>
+  joda-time-1.4-r1.ebuild:
+  stable x86, bug 187616
+
+  26 May 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  joda-time-1.4-r1.ebuild:
+  Add ~ppc.
+
+*joda-time-1.4-r1 (07 May 2007)
+
+  07 May 2007; Vlastimil Babka <caster@gentoo.org> +joda-time-1.4-r1.ebuild:
+  Revbump to migrate to split-ant; improve style; add examples flag. Restrict
+  tests to 1.4 jdk, but they still like to fail.
+
+  11 Mar 2007; Petteri Räty <betelgeuse@gentoo.org> -joda-time-1.3.ebuild:
+  Remove old version that is not optimal with the DST changes.
+
+  11 Mar 2007; Petteri Räty <betelgeuse@gentoo.org> joda-time-1.4.ebuild:
+  Marked stable on x86 wrt bug #156814.
+
+  10 Mar 2007; Petteri Räty <betelgeuse@gentoo.org> joda-time-1.4.ebuild:
+  Add a depend on >=sys-libs/timezone-data-2007c when elibc is glibc.
+
+  10 Mar 2007; Petteri Räty <betelgeuse@gentoo.org> joda-time-1.4.ebuild:
+  Add a note about tests most likely failing with <sys-libs/timezone-data-2007c.
+
+  09 Mar 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  joda-time-1.4.ebuild:
+  Stable on amd64 per bug # 170189
+
+  04 Feb 2007; Vlastimil Babka <caster@gentoo.org> -joda-time-0.95.ebuild:
+  Cleanup.
+
+  03 Feb 2007; Steve Dibb <beandog@gentoo.org> joda-time-1.3.ebuild:
+  amd64 stable, bug 161760
+
+  16 Jan 2007; Christian Faulhammer <opfer@gentoo.org> joda-time-1.3.ebuild:
+  stable x86, bug #161760
+
+  13 Jan 2007; Petteri Räty <betelgeuse@gentoo.org> joda-time-1.3.ebuild:
+  Removed test code from the build because we have RESTRICT="test". The code
+  is working in 1.4.
+
+*joda-time-1.4 (12 Jan 2007)
+
+  12 Jan 2007; Petteri Räty <betelgeuse@gentoo.org> +joda-time-1.4.ebuild:
+  Version bump.
+
+  12 Jan 2007; Petteri Räty <betelgeuse@gentoo.org> -joda-time-1.0.ebuild,
+  -joda-time-1.2.ebuild:
+  Removed ununused versions.
+
+*joda-time-1.3 (30 Sep 2006)
+
+  30 Sep 2006; Vlastimil Babka <caster@gentoo.org> +joda-time-1.3.ebuild:
+  Version bump, using gen-2 eclases. Added source USE flag and src_test() but
+  it's disabled because testcases fail to compile with 1.5+ JDK.
+
+*joda-time-1.2 (23 Dec 2005)
+
+  23 Dec 2005; Joshua Nichols <nichoj@gentoo.org> +joda-time-1.2.ebuild:
+  Version bump (bug #116446).
+
+*joda-time-1.0 (15 Jul 2005)
+
+  15 Jul 2005; Thomas Matthijs <axxo@gentoo.org> joda-time-0.95.ebuild,
+  +joda-time-1.0.ebuild:
+  version bump
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> joda-time-0.95.ebuild:
+  stable on amd64
+
+  20 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> joda-time-0.95.ebuild:
+  added missing jikes dependency. see #78819.
+
+  22 Oct 2004; Dylan Carlson <absinthe@gentoo.org> joda-time-0.95.ebuild:
+  Keywords ~amd64.
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> joda-time-0.95.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  22 Mar 2004; Chris Aniszczyk <zx@gentoo.org> joda-time-0.95.ebuild:
+  Stable on x86. Fixes according to #45398
+
+*joda-time-0.95 (28 Feb 2004)
+
+  28 Feb 2004; Chris Aniszczyk <zx@gentoo.org> metadata.xml:
+  Initial Import.
+  Thanks to Pavel <hlobil@sympatico.ca> for the initial ebuild. Closes #42553

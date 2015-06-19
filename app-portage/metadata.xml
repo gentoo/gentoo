@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-portage category contains software which works with portage or
+		ebuilds.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-portage enthält Programme für das Arbeiten mit Portage
+		oder Ebuilds.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-portage contiene programas para trabajar con portage
+		o con ebuilds.
+	</longdescription>
+	<longdescription lang="ja">
+		app-portageカテゴリにはportageかebuildと使うソフトウェアが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De app-portage categorie bevat applicaties die samenwerken met portage of
+		direct met ebuilds te maken hebben.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-portage chứa các ứng dụng liên quan đến
+		portage.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-portage contiene programmi per portage o per le ebuilds.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-portage contém programas que funcionam com o portage
+		ou ebuilds.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-portage zawiera dodatkowe programy do pracy z systemem
+		Portage oraz ebuildami.
+	</longdescription>
+</catmetadata>
+

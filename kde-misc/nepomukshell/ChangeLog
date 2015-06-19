@@ -1,0 +1,17 @@
+# ChangeLog for kde-misc/nepomukshell
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/nepomukshell/ChangeLog,v 1.3 2014/08/14 20:59:34 johu Exp $
+
+  14 Aug 2014; Johannes Huber <johu@gentoo.org> -nepomukshell-0.8.0.ebuild:
+  Remove old.
+
+*nepomukshell-0.8.0-r1 (13 May 2014)
+
+  13 May 2014; Johannes Huber <johu@gentoo.org> +nepomukshell-0.8.0-r1.ebuild:
+  Revision bump adapts USE flag changes made in KDE SC 4.13.1, bug #508350.
+
+*nepomukshell-0.8.0 (19 Jun 2013)
+
+  19 Jun 2013; Chris Reffett <creffett@gentoo.org> +metadata.xml,
+  +nepomukshell-0.8.0.ebuild:
+  Add to tree from KDE overlay

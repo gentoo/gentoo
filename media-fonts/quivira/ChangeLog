@@ -1,0 +1,9 @@
+# ChangeLog for media-fonts/quivira
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/quivira/ChangeLog,v 1.1 2014/06/30 12:36:16 chithanh Exp $
+
+*quivira-4.0 (30 Jun 2014)
+
+  30 Jun 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> +metadata.xml,
+  +quivira-4.0.ebuild:
+  Initial commit, ebuild written by me.

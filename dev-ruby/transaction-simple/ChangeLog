@@ -1,0 +1,171 @@
+# ChangeLog for dev-ruby/transaction-simple
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/transaction-simple/ChangeLog,v 1.38 2015/06/07 20:03:29 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  14 Apr 2015; Manuel Rüger <mrueg@gentoo.org>
+  -transaction-simple-1.4.0.2.ebuild:
+  Remove old.
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org>
+  transaction-simple-1.4.0.2-r1.ebuild:
+  Stable for x86, wrt bug #546240
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org>
+  transaction-simple-1.4.0.2-r1.ebuild:
+  Stable for amd64, wrt bug #546240
+
+*transaction-simple-1.4.0.2-r2 (11 Apr 2015)
+
+  11 Apr 2015; Hans de Graaff <graaff@gentoo.org>
+  transaction-simple-1.4.0.2-r1.ebuild, +transaction-simple-1.4.0.2-r2.ebuild:
+  Create stable candidate.
+
+  26 Mar 2015; Hans de Graaff <graaff@gentoo.org>
+  transaction-simple-1.4.0.2-r1.ebuild:
+  Add ruby22.
+
+  18 Jul 2014; Hans de Graaff <graaff@gentoo.org>
+  transaction-simple-1.4.0.2.ebuild, transaction-simple-1.4.0.2-r1.ebuild:
+  Update HOMEPAGE. Avoid hoe for documentation building due to
+  incompatabilities. Add ruby21.
+
+  19 Apr 2014; Manuel Rüger <mrueg@gentoo.org>
+  transaction-simple-1.4.0.2-r1.ebuild, transaction-simple-1.4.0.2.ebuild:
+  Remove ruby18 target.
+
+*transaction-simple-1.4.0.2-r1 (30 Oct 2013)
+
+  30 Oct 2013; Manuel Rüger <mrueg@gentoo.org>
+  +transaction-simple-1.4.0.2-r1.ebuild:
+  Add ruby20 target.
+
+  02 Jul 2013; Hans de Graaff <graaff@gentoo.org>
+  -transaction-simple-1.4.0-r1.ebuild:
+  Cleanup.
+
+  26 May 2013; Agostino Sarubbo <ago@gentoo.org>
+  transaction-simple-1.4.0.2.ebuild:
+  Stable for x86, wrt bug #470898
+
+  23 May 2013; Agostino Sarubbo <ago@gentoo.org>
+  transaction-simple-1.4.0.2.ebuild:
+  Stable for amd64, wrt to bug #470898
+
+  21 May 2013; Hans de Graaff <graaff@gentoo.org>
+  transaction-simple-1.4.0.2.ebuild:
+  Remove obsolete ree18.
+
+  27 Sep 2012; Samuli Suominen <ssuominen@gentoo.org>
+  transaction-simple-1.4.0.2.ebuild:
+  Keyword ~ppc64 wrt #417513
+
+*transaction-simple-1.4.0.2 (13 Aug 2012)
+
+  13 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +transaction-simple-1.4.0.2.ebuild, -transaction-simple-1.4.0-r2.ebuild:
+  Version bump; use test-unit-2 for testing to avoid hoe.
+
+  01 May 2012; Raúl Porcel <armin76@gentoo.org>
+  transaction-simple-1.4.0-r1.ebuild, transaction-simple-1.4.0-r2.ebuild:
+  Drop ia64/sparc keywords
+
+*transaction-simple-1.4.0-r2 (18 Sep 2011)
+
+  18 Sep 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +transaction-simple-1.4.0-r2.ebuild:
+  Add support for ree18.
+
+  02 Feb 2011; Hans de Graaff <graaff@gentoo.org>
+  -transaction-simple-1.4.0.ebuild:
+  Remove old version.
+
+  02 Feb 2011; Markos Chandras <hwoarang@gentoo.org>
+  transaction-simple-1.4.0-r1.ebuild:
+  Stable on amd64 wrt bug #352394
+
+  29 Jan 2011; Raúl Porcel <armin76@gentoo.org>
+  transaction-simple-1.4.0-r1.ebuild:
+  ia64 stable wrt #352394
+
+  26 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  transaction-simple-1.4.0-r1.ebuild:
+  stable x86, bug 352394
+
+*transaction-simple-1.4.0-r1 (26 Jun 2010)
+
+  26 Jun 2010; Hans de Graaff <graaff@gentoo.org>
+  +transaction-simple-1.4.0-r1.ebuild:
+  Convert to ruby-fakegem.
+
+  07 Aug 2009; Hans de Graaff <graaff@gentoo.org>
+  -transaction-simple-1.3.0.ebuild:
+  Remove old version.
+
+  31 May 2009; Raúl Porcel <armin76@gentoo.org>
+  transaction-simple-1.4.0.ebuild:
+  ia64 stable wrt #265435
+
+  31 May 2009; Markus Meier <maekke@gentoo.org>
+  transaction-simple-1.4.0.ebuild:
+  amd64/x86 stable, bug #265435
+
+  14 Apr 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  transaction-simple-1.4.0.ebuild:
+  stable amd64, bug 265435
+
+  14 Apr 2009; Hans de Graaff <graaff@gentoo.org>
+  transaction-simple-1.4.0.ebuild:
+  Fix deprecated USE_RUBY="any" as reported in #265435.
+
+  28 Jan 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -transaction-simple-1.1.1.ebuild:
+  Remove version 1.1.1, solving bug #207772. The only package depending on
+  transaction-simple (pdf-writer) requires at least 1.3.0 version.
+
+  16 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  transaction-simple-1.4.0.ebuild:
+  Added ~ppc, bug #178925
+
+*transaction-simple-1.4.0 (17 May 2007)
+
+  17 May 2007; Richard Brown <rbrown@gentoo.org>
+  +transaction-simple-1.4.0.ebuild:
+  Version bump
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  11 Nov 2006; Piotr Jaroszyński <peper@gentoo.org>
+  transaction-simple-1.3.0.ebuild:
+  Add ~amd64 wrt bug #154624.
+
+  20 Oct 2006; Aron Griffis <agriffis@gentoo.org>
+  transaction-simple-1.3.0.ebuild:
+  Mark 1.3.0 stable on ia64
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  transaction-simple-1.3.0.ebuild:
+  Mark 1.3.0 ~ia64
+
+  04 Nov 2005; Mark Loeser <halcy0n@gentoo.org>
+  transaction-simple-1.3.0.ebuild:
+  Stable on x86; bug #111220
+
+*transaction-simple-1.3.0 (15 Aug 2005)
+
+  15 Aug 2005; Michael Kohl <citizen428@gentoo.org>
+  transaction-simple-1.1.1.ebuild, +transaction-simple-1.3.0.ebuild:
+  Marked 1.1.1 stable on x86. Added 1.3.0 and changed the ebuild to use the gem.
+
+  05 Sep 2004; David Holm <dholm@gentoo.org> transaction-simple-1.1.1.ebuild:
+  Added to ~ppc.
+
+*transaction-simple-1.1.1 (02 Sep 2004)
+
+  02 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +transaction-simple-1.1.1.ebuild:
+  Initial import. Ebuild submitted by awk <glawk01@awks.org>,
+  closing bug #59048.

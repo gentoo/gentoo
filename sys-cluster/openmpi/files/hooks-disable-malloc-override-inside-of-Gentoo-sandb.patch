@@ -1,0 +1,42 @@
+From 3bd5897c7ca8ab61fb024957aeae891e204b3e3f Mon Sep 17 00:00:00 2001
+From: Justin Bronder <jsbronder@gmail.com>
+Date: Mon, 1 Jul 2013 20:37:17 -0400
+Subject: [PATCH] hooks:  disable malloc override inside of Gentoo sandbox
+
+As described in the comments in the source, Gentoo's own version of
+fakeroot, sandbox, also runs into hangs when malloc is overridden.
+Sandbox environments can easily be detected by looking for SANDBOX_PID
+in the environment.  When detected, employ the same fix used for
+fakeroot.
+
+See https://bugs.gentoo.org/show_bug.cgi?id=462602
+---
+ opal/mca/memory/linux/hooks.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/opal/mca/memory/linux/hooks.c b/opal/mca/memory/linux/hooks.c
+index 6a1646f..5ded08c 100644
+--- a/opal/mca/memory/linux/hooks.c
++++ b/opal/mca/memory/linux/hooks.c
+@@ -747,9 +747,16 @@ static void opal_memory_linux_malloc_init_hook(void)
+        "fakeroot" build environment that allocates memory during
+        stat() (see http://bugs.debian.org/531522).  It may not be
+        necessary any more since we're using access(), not stat().  But
+-       we'll leave the check, anyway. */
++       we'll leave the check, anyway.
++
++       This is also an issue when using Gentoo's version of 'fakeroot',
++       sandbox v2.5.  Sandbox environments can also be detected fairly
++       easily by looking for SANDBOX_ON.
++    */
++
+     if (getenv("FAKEROOTKEY") != NULL ||
+-        getenv("FAKED_MODE") != NULL) {
++        getenv("FAKED_MODE") != NULL ||
++        getenv("SANDBOX_ON") != NULL ) {
+         return;
+     }
+ 
+-- 
+1.8.1.5
+

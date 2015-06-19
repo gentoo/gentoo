@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-libs/boehm-gc >=dev-libs/glib-2.0 sys-libs/readline
+DESCRIPTION=High-level lexically-scoped implicitly-parallel dialect of Scheme and Common LISP
+EAPI=2
+HOMEPAGE=http://schemik.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/boehm-gc >=dev-libs/glib-2.0 sys-libs/readline
+SLOT=0
+SRC_URI=mirror://sourceforge/schemik/schemik-1.2.40.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=a8c91eb1cbf28eefded1321e657f4074

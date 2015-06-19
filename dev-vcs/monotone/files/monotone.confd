@@ -1,0 +1,26 @@
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/monotone/files/monotone.confd,v 1.1 2010/03/05 16:49:36 sping Exp $
+
+# The commented variables in this file are the defaults that are used
+
+# in the init-script.  You don't need to uncomment them except to
+# customize them to different values.
+
+# Location of the served database
+#MTN_DB="/var/lib/monotone/default.mtn"
+
+# Server identification
+#MTN_KEY="monotone@`hostname --fqdn`"
+#MTN_PWD=""
+
+# User and group as which to run monotone
+#MTN_USER="monotone"
+#MTN_GROUP="monotone"
+
+# The address and or port (ADDRESS[:PORT]) monotone should listen on
+#MTN_ADDRESS=0.0.0.0
+
+# Advanced options
+#MTN_CONFDIR=/etc/monotone
+#MTN_KEYDIR=/var/lib/monotone/keys

@@ -1,0 +1,153 @@
+# ChangeLog for x11-drivers/xf86-video-v4l
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-v4l/ChangeLog,v 1.35 2010/10/17 03:19:38 leio Exp $
+
+  17 Oct 2010; Mart Raudsepp <leio@gentoo.org> -xf86-video-v4l-0.1.1.ebuild:
+  Remove old
+
+  15 Dec 2009; Brent Baude <ranger@gentoo.org> xf86-video-v4l-0.2.0.ebuild:
+  Marking xf86-video-v4l-0.2.0 ppc64 stable for bug 294958
+
+  11 Oct 2009; nixnut <nixnut@gentoo.org> xf86-video-v4l-0.2.0.ebuild:
+  ppc stable #282290
+
+  23 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  xf86-video-v4l-0.2.0.ebuild:
+  Stable on alpha for xorg-server-1.5/xorg-x11-7.4
+
+  15 May 2009; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-v4l-0.2.0.ebuild:
+  arm stable
+
+  15 Apr 2009; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-v4l-0.2.0.ebuild:
+  ia64/sh stable wrt #251832
+
+  06 Apr 2009; Friedrich Oslage <bluebird@gentoo.org>
+  xf86-video-v4l-0.2.0.ebuild:
+  Stable on sparc, bug #251832
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org> xf86-video-v4l-0.2.0.ebuild:
+  x86 stable, bug #251832
+
+  05 Apr 2009; Olivier Crête <tester@gentoo.org>
+  xf86-video-v4l-0.2.0.ebuild:
+  Stable on amd64, bug #251832
+
+*xf86-video-v4l-0.2.0 (10 Jun 2008)
+
+  10 Jun 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-video-v4l-0.2.0.ebuild:
+  Bump to latest. Should all be compatible with xorg-server-1.5.
+
+  24 Feb 2008; Donnie Berkholz <dberkholz@gentoo.org>; ChangeLog:
+  Update my email.
+
+  24 Jan 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-video-v4l-0.0.1.5.ebuild:
+  Stop supporting Xorg 7.0.
+
+  13 Oct 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  xf86-video-v4l-0.1.1.ebuild:
+  AMD64/x86 stable for bug #144549 (X7.1).
+
+  11 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-v4l-0.0.1.5.ebuild, xf86-video-v4l-0.1.1.ebuild:
+  Update description to be less generic.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  xf86-video-v4l-0.1.1.ebuild:
+  Mark 0.1.1 stable on ia64
+
+  01 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-v4l-0.1.1.ebuild:
+  ppc/sparc/mips/alpha/arm/sh stable
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org>
+  xf86-video-v4l-0.1.1.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  xf86-video-v4l-0.0.1.5.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org>
+  xf86-video-v4l-0.0.1.5.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-v4l-0.0.1.5.ebuild:
+  x86 stable.
+
+  21 Jun 2006; Stephen P. Becker <geoman@gentoo.org>
+  xf86-video-v4l-0.1.1.ebuild:
+  added ~mips keyword
+
+*xf86-video-v4l-0.1.1 (14 Apr 2006)
+
+  14 Apr 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-v4l-0.1.1.ebuild:
+  Bump for 7.1 RC1.
+
+  21 Mar 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-v4l-0.0.1.5.ebuild:
+  Keyword a few last drivers ~sparc.
+
+  05 Mar 2006; Stefaan De Roeck <stefaan@gentoo.org>
+  xf86-video-v4l-0.0.1.5.ebuild:
+  Marked ~alpha (bug #122726)
+
+  15 Feb 2006; Markus Rothe <corsair@gentoo.org>
+  xf86-video-v4l-0.0.1.5.ebuild:
+  Added ~ppc64
+
+  05 Feb 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-v4l-0.0.1.5.ebuild:
+  Keyword needed drivers ~ppc.
+
+  02 Feb 2006; Luis Medinas <metalgod@gentoo.org>
+  xf86-video-v4l-0.0.1.5.ebuild:
+  Added ~amd64 keyword.
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xf86-video-v4l-0.0.1.3.ebuild, -xf86-video-v4l-0.0.1.4.ebuild:
+  Pull old versions.
+
+*xf86-video-v4l-0.0.1.5 (23 Dec 2005)
+
+  23 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-v4l-0.0.1.5.ebuild:
+  Bump for 7.0.
+
+*xf86-video-v4l-0.0.1.4 (18 Dec 2005)
+
+  18 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-v4l-0.0.1.4.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  files/digest-xf86-video-v4l-0.0.1.3, Manifest:
+  Update digest to match patch introduced by x-modular.eclass changes.
+
+  09 Dec 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-video-v4l-0.0.1.1.ebuild, -xf86-video-v4l-0.0.1.2.ebuild:
+  Pull old versions.
+
+*xf86-video-v4l-0.0.1.3 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-v4l-0.0.1.3.ebuild:
+  Bump for 7.0RC3.
+
+*xf86-video-v4l-0.0.1.2 (11 Nov 2005)
+
+  11 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-v4l-0.0.1.2.ebuild:
+  Bump for 7.0RC2.
+
+*xf86-video-v4l-0.0.1.1 (20 Oct 2005)
+
+  20 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org> +metadata.xml,
+  +xf86-video-v4l-0.0.1.1.ebuild:
+  New package for 7.0 RC1.
+

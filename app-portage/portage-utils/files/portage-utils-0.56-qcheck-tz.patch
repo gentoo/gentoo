@@ -1,0 +1,31 @@
+From 359fe5097ca531291a2cbb878dc6940351a7a358 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 11 Jun 2015 09:51:22 +0000
+Subject: [PATCH] tests: qcheck: fix timezone handling
+
+Make sure the stamps are pinned to UTC rather than using the active TZ.
+
+URL: https://bugs.gentoo.org/551718
+Reported-by: Jeroen Roovers <jer@gentoo.org>
+---
+ tests/qcheck/dotest | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/qcheck/dotest b/tests/qcheck/dotest
+index 965a5b5..9122321 100755
+--- a/tests/qcheck/dotest
++++ b/tests/qcheck/dotest
+@@ -10,8 +10,8 @@ export Q_VDB=/
+ # This is the "valid" mtime the test packages have hardcoded in the CONTENTS
+ # files.  The stamp is the CONTENTS while the touch date is the corresponding
+ # unpacked date.
+-STAMP=1398954900 DATE=201405011035
+-find "${ROOT}" -exec touch -h -t "${DATE}" {} +
++STAMP=1398954900 DATE='2014-05-01T14:35:00Z'
++find "${ROOT}" -exec touch -h -d "${DATE}" {} +
+ 
+ mktmpdir
+ 
+-- 
+2.4.1
+

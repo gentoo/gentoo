@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Convert atom names for common amino acids and nucleic acid bases from PDB format to CNS or back
+EAPI=4
+HOMEPAGE=http://www.mybiosoftware.com/3d-molecular-model/314/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~jlec/distfiles/pdbcns.2.0.010504.perl.tgz
+_md5_=95cef4a763ef99ccfb79e5ce8162fc00

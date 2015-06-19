@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>php</herd>
+	<use>
+		<flag name="postgres">Send postgres LOBs without buffering</flag>
+		<flag name="minimal">Do not include support for PEAR-MIME_Type</flag>
+	</use>
+</pkgmetadata>

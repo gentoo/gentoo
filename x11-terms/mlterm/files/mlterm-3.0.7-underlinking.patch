@@ -1,0 +1,13 @@
+diff --git a/xwindow/Makefile.in b/xwindow/Makefile.in
+index 50137e0..1e83104 100644
+--- a/xwindow/Makefile.in
++++ b/xwindow/Makefile.in
+@@ -32,7 +32,7 @@ OBJ = $(OBJ1) $(OBJ2@WIN32TAG@)
+ 
+ LKIK = @LKIK@
+ LMKF = @LMKF@
+-LMLTERM = ../mlterm/libmlterm.a ../mlterm/@LMLTERM_CORE@
++LMLTERM = ../mlterm/libmlterm.a ../mlterm/@LMLTERM_CORE@ -lm
+ LKIK_DEB = -lkik_deb
+ LMKF_DEB = -lmkf_deb
+ 

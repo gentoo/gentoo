@@ -1,0 +1,28 @@
+Index: gpac/modules/ffmpeg_in/ffmpeg_demux.c
+===================================================================
+--- gpac.orig/modules/ffmpeg_in/ffmpeg_demux.c
++++ gpac/modules/ffmpeg_in/ffmpeg_demux.c
+@@ -614,7 +614,7 @@ static GF_Err FFD_ConnectService(GF_Inpu
+ 			}
+ 			/*setup downloader*/
+ 			av_in->flags |= AVFMT_NOFILE;
+-#if (LIBAVFORMAT_VERSION_MAJOR < 55) /*commit ffmpeg 603b8bc2a109978c8499b06d2556f1433306eca7*/
++#if (LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(53,4,0)) /*commit ffmpeg 603b8bc2a109978c8499b06d2556f1433306eca7*/
+ 			res = avformat_open_input(&ffd->ctx, szName, av_in, NULL);
+ #else
+ 			res = av_open_input_stream(&ffd->ctx, &ffd->io, szName, av_in, NULL);
+Index: gpac/modules/ffmpeg_in/ffmpeg_in.h
+===================================================================
+--- gpac.orig/modules/ffmpeg_in/ffmpeg_in.h
++++ gpac/modules/ffmpeg_in/ffmpeg_in.h
+@@ -96,6 +96,10 @@ void gf_av_vlog(void* avcl, int level, c
+ #endif
+ 
+ 
++#ifndef AVCODEC_MAX_AUDIO_FRAME_SIZE
++#define AVCODEC_MAX_AUDIO_FRAME_SIZE 192000 // 1 second of 48khz 32bit audio
++#endif
++
+ 
+ 
+ /*FFMPEG decoder module */

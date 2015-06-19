@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install prepare
+DESCRIPTION=Standard kernel module utilities for linux-2.4 and older
+EAPI=4
+HOMEPAGE=http://www.kernel.org/pub/linux/utils/kernel/modutils/
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
+LICENSE=GPL-2
+RDEPEND=!sys-apps/module-init-tools !sys-apps/kmod
+SLOT=0
+SRC_URI=mirror://kernel/linux/utils/kernel/modutils/v2.4/modutils-2.4.27.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=a009060edf2e4b0a130e51739e304c67

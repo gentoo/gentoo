@@ -1,0 +1,25 @@
+# ChangeLog for games-rpg/nwn-penultima
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/nwn-penultima/ChangeLog,v 1.5 2014/04/17 16:31:35 ulm Exp $
+
+  17 Apr 2014; Ulrich Müller <ulm@gentoo.org> nwn-penultima-1.ebuild,
+  nwn-penultima-1-r1.ebuild:
+  Update LICENSE, bug 505736.
+
+  05 Feb 2012; Thomas Kahle <tomka@gentoo.org> nwn-penultima-1-r1.ebuild:
+  marked x86 per bug 392869
+
+*nwn-penultima-1-r1 (19 May 2011)
+
+  19 May 2011; Denis Dupeyron <calchan@gentoo.org> +nwn-penultima-1-r1.ebuild:
+  Undo my file renaming which breaks launching modules from Penultima City.
+
+  28 Jun 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  nwn-penultima-1.ebuild:
+  stable for x86 and amd64 (bug #307375)
+
+*nwn-penultima-1 (25 Jan 2010)
+
+  25 Jan 2010; Denis Dupeyron <calchan@gentoo.org> +nwn-penultima-1.ebuild:
+  Initial commit.
+

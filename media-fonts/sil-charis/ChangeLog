@@ -1,0 +1,131 @@
+# ChangeLog for media-fonts/sil-charis
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/sil-charis/ChangeLog,v 1.14 2015/03/07 08:07:56 yngwin Exp $
+
+*sil-charis-5.000 (07 Mar 2015)
+
+  07 Mar 2015; Ben de Groot <yngwin@gentoo.org> +sil-charis-5.000.ebuild:
+  version bump
+
+  21 Oct 2013; Fabian Groffen <grobian@gentoo.org> sil-charis-4.110.ebuild:
+  Marked ~x64-macos, bug #486818
+
+  27 May 2012; Ben de Groot <yngwin@gentoo.org> -sil-charis-4.106.ebuild,
+  sil-charis-4.110.ebuild:
+  Mark 4.110 stable. Remove old.
+
+*sil-charis-4.110 (07 Jan 2012)
+
+  07 Jan 2012; Ryan Hill <dirtyepic@gentoo.org> +sil-charis-4.110.ebuild:
+  Version bump.
+
+  25 May 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -sil-charis-4.100.ebuild, -sil-charis-4.104.ebuild, sil-charis-4.106.ebuild:
+  QA: avoid runtime dependency on app-arch/unzip; drop old ebuilds.
+
+  27 Sep 2009; Mounir Lamouri <volkmar@gentoo.org> sil-charis-4.106.ebuild:
+  Stable for ppc. Fix bug 283913
+
+  17 Sep 2009; Jeroen Roovers <jer@gentoo.org> sil-charis-4.106.ebuild:
+  Stable for HPPA (bug #283913).
+
+  12 Sep 2009; Raúl Porcel <armin76@gentoo.org> sil-charis-4.106.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #283913
+
+  11 Sep 2009; Markus Meier <maekke@gentoo.org> sil-charis-4.106.ebuild:
+  amd64/x86 stable, bug #283913
+
+  07 Sep 2009; Brent Baude <ranger@gentoo.org> sil-charis-4.106.ebuild:
+  Marking sil-charis-4.106 ppc64 for bug 283913
+
+*sil-charis-4.106 (28 Jun 2009)
+
+  28 Jun 2009; Patrick Lauer <patrick@gentoo.org> +sil-charis-4.106.ebuild,
+  metadata.xml:
+  Bump to 4.106. Fixes #273873, ebuild improvements by Nikos Chantziaras
+
+  20 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing joslwah as a maintainer since he was retired.
+
+*sil-charis-4.104 (19 May 2008)
+
+  19 May 2008; Ryan Hill <dirtyepic@gentoo.org> +sil-charis-4.104.ebuild:
+  Version bump.
+
+*sil-charis-4.100 (19 May 2008)
+
+  19 May 2008; Ryan Hill <dirtyepic@gentoo.org> +metadata.xml,
+  +sil-charis-4.100.ebuild:
+  Move ttf-sil-charis -> sil-charis.
+
+  24 Feb 2008; Raúl Porcel <armin76@gentoo.org>
+  ttf-sil-charis-4.100.ebuild:
+  alpha stable
+
+  11 Feb 2008; Santiago M. Mola <coldwind@gentoo.org>
+  ttf-sil-charis-4.100.ebuild:
+  amd64 stable wrt bug #197220
+
+  19 Jan 2008; Ryan Hill <dirtyepic@gentoo.org> ttf-sil-charis-4.100.ebuild:
+  Ebuild touchup.
+
+  16 Jan 2008; Raúl Porcel <armin76@gentoo.org>
+  ttf-sil-charis-4.100.ebuild:
+  ia64 stable wrt #197220 and add ~alpha
+
+  16 Jan 2008; Jeroen Roovers <jer@gentoo.org> ttf-sil-charis-4.100.ebuild:
+  Stable for HPPA (bug #197220).
+
+  16 Jan 2008; Ferris McCormick <fmccor@gentoo.org>
+  ttf-sil-charis-4.100.ebuild:
+  Sparc stable, Bug #197220 --- I've been using this for 2 months.
+
+  16 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  ttf-sil-charis-4.100.ebuild:
+  stable x86, bug 197220
+
+  16 Jan 2008; Luca Barbato <lu_zero@gentoo.org>
+  ttf-sil-charis-4.100.ebuild:
+  Marked ~ppc and ~ppc64
+
+  16 Jan 2008; Ryan Hill <dirtyepic@gentoo.org> ttf-sil-charis-4.100.ebuild:
+  Add missing app-arch/unzip DEPEND for bug #205857.
+
+*ttf-sil-charis-4.100 (04 Sep 2007)
+
+  04 Sep 2007; Ryan Hill <dirtyepic@gentoo.org>
+  +ttf-sil-charis-4.100.ebuild:
+  Version bump.  Bug #172109 by Yang Zhao.
+
+  25 Mar 2007; Raúl Porcel <armin76@gentoo.org>
+  ttf-sil-charis-4.0.2.ebuild:
+  Add ~ia64 wrt bug 154086
+
+  26 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  ttf-sil-charis-4.0.2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  05 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  ttf-sil-charis-4.0.2.ebuild:
+  keyworded ~x86, bug #154086
+
+  05 Nov 2006; Jeroen Roovers <jer@gentoo.org> ttf-sil-charis-4.0.2.ebuild:
+  Marked ~hppa (bug #154086).
+
+  05 Nov 2006; Ferris McCormick <fmccor@gentoo.org>
+  ttf-sil-charis-4.0.2.ebuild:
+  Add ~sparc keyword --- Bug #154086 --- works fine with xelatex.
+
+  05 Nov 2006; nixnut <nixnut@gentoo.org> ChangeLog:
+  Added ~ppc keyword wrt bug 154086
+
+  05 Nov 2006; Olivier Crête <tester@gentoo.org>
+  ttf-sil-charis-4.0.2.ebuild:
+  Mark ~amd64, bug #154086
+
+*ttf-sil-charis-4.0.2 (04 Nov 2006)
+
+  04 Nov 2006; Joshua <joslwah@gentoo.org> +metadata.xml,
+  +ttf-sil-charis-4.0.2.ebuild:
+  Initial commit of Charis Typeface.

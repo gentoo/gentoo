@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=media-libs/flac media-libs/libogg media-libs/libsdl[X,joystick,opengl?,video] media-libs/libvorbis media-libs/sdl-mixer[timidity] sys-libs/zlib gtk? ( x11-libs/gtk+:2 ) opengl? ( virtual/glu virtual/opengl vpx? ( media-libs/libvpx ) ) png? ( media-libs/libpng:0= sys-libs/zlib ) app-arch/unzip app-arch/xz-utils x86? ( dev-lang/nasm ) >=sys-apps/sed-4
+DESCRIPTION=Port of Duke Nukem 3D for SDL
+EAPI=5
+HOMEPAGE=http://www.eduke32.com/ http://hrp.duke4.net/
+IUSE=cdinstall debug demo gtk offensive +opengl opl-musicpack +png samples sc55-musicpack +server textures tools +vpx
+KEYWORDS=amd64 x86
+LICENSE=GPL-2 BUILDLIC textures? ( hrp_art )
+PDEPEND=cdinstall? ( games-fps/duke3d-data ) demo? ( games-fps/duke3d-demodata )
+RDEPEND=media-libs/flac media-libs/libogg media-libs/libsdl[X,joystick,opengl?,video] media-libs/libvorbis media-libs/sdl-mixer[timidity] sys-libs/zlib gtk? ( x11-libs/gtk+:2 ) opengl? ( virtual/glu virtual/opengl vpx? ( media-libs/libvpx ) ) png? ( media-libs/libpng:0= sys-libs/zlib ) games-misc/games-envd
+REQUIRED_USE=?? ( opl-musicpack sc55-musicpack )
+SLOT=0
+SRC_URI=http://dukeworld.duke4.net/eduke32/synthesis/20131119-4169/eduke32_src_20131119-4169.tar.xz http://dev.gentoo.org/~hasufell/distfiles/eduke32-icons.tar textures? ( http://www.duke4.org/files/nightfright/duke3d_hrp.zip -> duke3d_hrp_5.2.zip ) sc55-musicpack? ( http://www.duke4.org/files/nightfright/music/duke3d_mus.zip -> duke3d_mus_3.0.zip ) opl-musicpack? ( http://www.duke4.org/files/nightfright/music/duke3d_musopl.zip -> duke3d_musopl_2.0.zip ) offensive? ( http://www.duke4.org/files/nightfright/duke3d_xxx.zip -> duke3d_xxx_1.33.zip )
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=fdab2848b29d0cb14dab5aa35d530985

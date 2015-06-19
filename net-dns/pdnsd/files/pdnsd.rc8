@@ -1,0 +1,28 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/pdnsd/files/pdnsd.rc8,v 1.1 2014/04/05 08:23:37 pacho Exp $
+
+pidfile="/run/pdnsd.pid"
+command="/usr/sbin/pdnsd"
+command_args="-s -t -d -p ${pidfile} ${PDNSDCONFIG}"
+extra_started_commands="reload"
+
+depend() {
+	use net
+	provide dns
+}
+
+start_pre() {
+	if [ ! -e /etc/pdnsd/pdnsd.conf ] ; then
+		eerror "You need an /etc/pdnsd/pdnsd.conf file first."
+		eerror "There is a sample in /etc/pdnsd/pdnsd.conf.sample"
+		return 1
+	fi
+}
+
+reload() {
+	ebegin "Reloading pdnsd.conf"
+	/usr/sbin/pdnsd-ctl config
+	eend $?
+}

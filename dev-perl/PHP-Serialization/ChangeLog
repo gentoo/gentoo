@@ -1,0 +1,94 @@
+# ChangeLog for dev-perl/PHP-Serialization
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/PHP-Serialization/ChangeLog,v 1.18 2014/08/26 15:34:00 axs Exp $
+
+*PHP-Serialization-0.340.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +PHP-Serialization-0.340.0-r1.ebuild, -PHP-Serialization-0.340.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  05 Aug 2014; Mikle Kolyada <zlogene@gentoo.org>
+  PHP-Serialization-0.340.0.ebuild:
+  Fix DESCRIPTION
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -PHP-Serialization-0.34.ebuild:
+  Cleanup
+
+*PHP-Serialization-0.340.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +PHP-Serialization-0.340.0.ebuild:
+  Change version scheme
+
+  11 Jun 2010; Torsten Veller <tove@gentoo.org>
+  -PHP-Serialization-0.33.ebuild:
+  Cleanup
+
+*PHP-Serialization-0.34 (19 Mar 2010)
+
+  19 Mar 2010; Torsten Veller <tove@gentoo.org>
+  +PHP-Serialization-0.34.ebuild:
+  Version bump
+
+  17 Nov 2009; Mounir Lamouri <volkmar@gentoo.org>
+  PHP-Serialization-0.33.ebuild:
+  Keywording for ppc. Needed by www-misc/zoneminder.
+
+  16 Jul 2009; Torsten Veller <tove@gentoo.org>
+  -PHP-Serialization-0.31.ebuild, -PHP-Serialization-0.32.ebuild:
+  Cleanup
+
+*PHP-Serialization-0.33 (15 Jul 2009)
+
+  15 Jul 2009; Torsten Veller <tove@gentoo.org>
+  +PHP-Serialization-0.33.ebuild:
+  Version bump
+
+*PHP-Serialization-0.32 (21 Jun 2009)
+
+  21 Jun 2009; Torsten Veller <tove@gentoo.org>
+  +PHP-Serialization-0.32.ebuild:
+  Version bump
+
+*PHP-Serialization-0.31 (15 Apr 2009)
+
+  15 Apr 2009; Torsten Veller <tove@gentoo.org>
+  -PHP-Serialization-0.29.ebuild, -PHP-Serialization-0.30.ebuild,
+  +PHP-Serialization-0.31.ebuild:
+  Version bump. Cleanup
+
+  17 Jan 2009; Robin H. Johnson <robbat2@gentoo.org>
+  PHP-Serialization-0.30.ebuild:
+  Emerge on an empty system (without perl) failed due to lack of perl dep.
+
+*PHP-Serialization-0.30 (13 Jan 2009)
+
+  13 Jan 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +PHP-Serialization-0.30.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  30 Dec 2008; Torsten Veller <tove@gentoo.org>
+  -PHP-Serialization-0.27.ebuild, -PHP-Serialization-0.28.ebuild:
+  Cleanup
+
+*PHP-Serialization-0.29 (08 Dec 2008)
+
+  08 Dec 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +PHP-Serialization-0.29.ebuild:
+  Version bump.
+
+*PHP-Serialization-0.28 (13 Sep 2008)
+
+  13 Sep 2008; Torsten Veller <tove@gentoo.org>
+  +PHP-Serialization-0.28.ebuild:
+  Version bump
+
+*PHP-Serialization-0.27 (23 Feb 2008)
+
+  23 Feb 2008; Benedikt Böhm <hollow@gentoo.org> +metadata.xml,
+  +PHP-Serialization-0.27.ebuild:
+  initial ebuild, #204307

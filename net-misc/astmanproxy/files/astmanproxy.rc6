@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/astmanproxy/files/astmanproxy.rc6,v 1.1 2005/07/13 02:47:55 stkn Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting astmanproxy"
+	start-stop-daemon --start --exec /usr/sbin/astmanproxy
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping astmanproxy"
+	start-stop-daemon --stop --exec /usr/sbin/astmanproxy
+	eend $?
+}

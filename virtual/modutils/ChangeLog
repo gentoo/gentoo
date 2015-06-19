@@ -1,0 +1,30 @@
+# ChangeLog for virtual/modutils
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/modutils/ChangeLog,v 1.7 2014/01/18 04:58:28 vapier Exp $
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> modutils-0.ebuild:
+  Add arm64 love.
+
+  23 Jul 2013; Samuli Suominen <ssuominen@gentoo.org> modutils-0.ebuild:
+  Remove sys-apps/module-init-tools from the || ( ).
+
+  09 May 2012; Mike Frysinger <vapier@gentoo.org> modutils-0.ebuild:
+  Require kmod provide the tools that the virtual implies #409351 by nzqr.
+
+  19 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> modutils-0.ebuild:
+  Move sys-apps/kmod before sys-apps/module-init-tools in the RDEPEND wrt
+  #408911
+
+  25 Feb 2012; Robin H. Johnson <robbat2@gentoo.org> modutils-0.ebuild:
+  sys-apps/modutils still exists for those on 2.4.x kernels.
+
+  25 Feb 2012; Robin H. Johnson <robbat2@gentoo.org> modutils-0.ebuild:
+  Per Bug #405687 migration to the virtual, some of the deps were version-
+  specific to an old version, so lets just upgrade everybody on older module-
+  init-tools anyway.
+
+*modutils-0 (03 Feb 2012)
+
+  03 Feb 2012; William Hubbs <williamh@gentoo.org> +metadata.xml,
+  +modutils-0.ebuild:
+  initial import for bug #401899

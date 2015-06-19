@@ -1,0 +1,51 @@
+# ChangeLog for dev-perl/MooseX-Types-Path-Class
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/MooseX-Types-Path-Class/ChangeLog,v 1.9 2014/10/12 15:32:49 zlogene Exp $
+
+  12 Oct 2014; Mikle Kolyada <zlogene@gentoo.org>
+  MooseX-Types-Path-Class-0.60.0.ebuild:
+  Bump to EAPI=5
+
+  29 Jun 2013; Mikle Kolyada <zlogene@gentoo.org>
+  MooseX-Types-Path-Class-0.60.0.ebuild:
+  Remove dev-perl/Class-MOP dependency
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  21 Apr 2012; Torsten Veller <tove@gentoo.org>
+  -MooseX-Types-Path-Class-0.50.0.ebuild:
+  Cleanup
+
+*MooseX-Types-Path-Class-0.60.0 (29 Mar 2012)
+
+  29 Mar 2012; Torsten Veller <tove@gentoo.org>
+  +MooseX-Types-Path-Class-0.60.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -MooseX-Types-Path-Class-0.05.ebuild:
+  Cleanup
+
+*MooseX-Types-Path-Class-0.50.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +MooseX-Types-Path-Class-0.50.0.ebuild:
+  Change version scheme
+
+  14 Apr 2011; Torsten Veller <tove@gentoo.org>
+  MooseX-Types-Path-Class-0.05.ebuild:
+  Class-MOP was merge with Moose-2
+
+  06 Jun 2010; Torsten Veller <tove@gentoo.org>
+  +MooseX-Types-Path-Class-0.05.ebuild, +metadata.xml:
+  Import from perl-experimental for dev-perl/DBIx-Class
+
+  19 Aug 2009; Kent Fredric <kentfredric@gmail.com> Manifest:
+  Fixed manifest
+
+*MooseX-Types-Path-Class-0.05 (11 May 2009)
+
+  11 May 2009; Kent Fredric <kentfredric@gmail.com> +metadata.xml,
+  +MooseX-Types-Path-Class-0.05.ebuild:
+  Adding for Dist::Zilla

@@ -1,0 +1,36 @@
+# ChangeLog for dev-lang/niecza-bin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/niecza-bin/ChangeLog,v 1.7 2015/06/06 18:52:07 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> niecza-bin-20.ebuild,
+  niecza-bin-21.ebuild, niecza-bin-22.ebuild, niecza-bin-24.ebuild:
+  QA: Fix unquoted 'D' variable.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> niecza-bin-20.ebuild,
+  niecza-bin-21.ebuild, niecza-bin-22.ebuild, niecza-bin-24.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> niecza-bin-20.ebuild,
+  niecza-bin-21.ebuild, niecza-bin-22.ebuild, niecza-bin-24.ebuild:
+  QA: Move download URL to mirror://github/.
+
+*niecza-bin-24 (05 Dec 2012)
+
+  05 Dec 2012; Patrick Lauer <patrick@gentoo.org> +niecza-bin-24.ebuild:
+  Bump
+
+*niecza-bin-21 (05 Oct 2012)
+*niecza-bin-22 (05 Oct 2012)
+
+  05 Oct 2012; Patrick Lauer <patrick@gentoo.org> +niecza-bin-21.ebuild,
+  +niecza-bin-22.ebuild:
+  Bump
+
+*niecza-bin-20 (22 Aug 2012)
+
+  22 Aug 2012; Patrick Lauer <patrick@gentoo.org> +metadata.xml,
+  +niecza-bin-20.ebuild:
+  Initial import, ebuilds by me

@@ -1,0 +1,79 @@
+--- configure.ac
++++ configure.ac
+@@ -1,10 +1,10 @@
+ # -*- autoconf -*-
+ # Process this file with autoconf to produce a configure script.
+ 
+-AC_INIT(configure.ac)
+-AM_INIT_AUTOMAKE(specimen, 0.5.2-rc3)
+-AM_CONFIG_HEADER(src/config.h)
+-
++AC_INIT([specimen], [0.5.2-rc3])
++AC_CONFIG_HEADERS([src/config.h])
++AM_INIT_AUTOMAKE
++m4_include([acx_pthread.m4])
+ 
+ # compilation
+ with_debug="no"
+@@ -13,9 +13,7 @@
+         [enable debugging information, accepting a performance penalty (default is NO)])],
+     [if test x$enable_debug = xyes; then with_debug=yes ; fi])
+ 
+-if test x$with_debug = xno; then
+-    CFLAGS="-O3"
+-else
++if test x$with_debug != xno; then
+     AC_DEFINE(DEBUG, 1, [[whether to display debugging output or not]])
+ fi
+ 
+@@ -48,13 +46,14 @@
+ AC_FUNC_MALLOC
+ AC_CHECK_FUNCS([floor gettimeofday pow strchr strdup])
+ 
++dnl Check for libm for sin()
++AC_SEARCH_LIBS([sin], [m], [], [
++	AC_MSG_ERROR([unable to find the sin() function])
++])
++
+ # pthreads
+ ACX_PTHREAD
+ 
+-SPECIMEN_CFLAGS="-Wall -Werror"
+-AC_SUBST(SPECIMEN_CFLAGS)
+-CFLAGS="$SPECIMEN_CFLAGS $CFLAGS" 
+-
+ config_error="no"
+ 
+ # gtk			   
+
+--- src/Makefile.am
++++ src/Makefile.am
+@@ -11,7 +11,7 @@
+ specimen_SOURCES += lashdriver.c lashdriver.h                                                                                                                           
+ endif
+ 
+-INCLUDES = \
++AM_CPPFLAGS = \
+ 	@ALSA_CFLAGS@ \
+ 	@JACK_CFLAGS@ \
+ 	@LIBSAMPLERATE_CFLAGS@ \
+
+--- src/gui/Makefile.am
++++ src/gui/Makefile.am
+@@ -12,14 +12,14 @@
+ paramselector.c paramselector.h patchlist.c patchlist.h midisection.c	\
+ midisection.h channelsection.c channelsection.h
+ 
+-INCLUDES = \
++AM_CPPFLAGS = \
+ 	-l.. \
+ 	@GTK_CFLAGS@ \
+ 	@LIBGNOMECANVAS_CFLAGS@ \
+ 	@PHAT_CFLAGS@
+ 
+ if HAVE_LASH
+-INCLUDES += @LASH_CFLAGS@
++AM_CPPFLAGS += @LASH_CFLAGS@
+ endif
+ 
+ libgui_a_CFLAGS = $(CFLAGS) -I.. -DINSTALLDIR=\"$(datadir)\"

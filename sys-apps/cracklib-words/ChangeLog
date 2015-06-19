@@ -1,0 +1,136 @@
+# ChangeLog for sys-apps/cracklib-words
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/cracklib-words/ChangeLog,v 1.32 2011/07/11 20:45:34 aballier Exp $
+
+  11 Jul 2011; Alexis Ballier <aballier@gentoo.org>
+  cracklib-words-20080507.ebuild:
+  keyword ~x86-fbsd thanks to Johan Hattne, bug #319453
+
+  21 May 2010; Mike Frysinger <vapier@gentoo.org>
+  cracklib-words-20080507.ebuild:
+  Only run cracklib updater when it is installed #319451 by Johan Hattne.
+
+  26 Oct 2008; Jeroen Roovers <jer@gentoo.org>
+  cracklib-words-20080507.ebuild:
+  Stable for HPPA (bug #241644).
+
+  16 Oct 2008; Markus Meier <maekke@gentoo.org>
+  cracklib-words-20080507.ebuild:
+  amd64 stable, bug #241644
+
+  14 Oct 2008; Brent Baude <ranger@gentoo.org>
+  cracklib-words-20080507.ebuild:
+  stable ppc, bug 241644
+
+  14 Oct 2008; Brent Baude <ranger@gentoo.org>
+  cracklib-words-20080507.ebuild:
+  stable ppc64, bug 241644
+
+  09 Jul 2008; Raúl Porcel <armin76@gentoo.org>
+  cracklib-words-20080507.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+  11 May 2008; Markus Rothe <corsair@gentoo.org>
+  cracklib-words-20080401.ebuild:
+  Stable on ppc64; bug #220849
+
+  11 May 2008; Richard Freeman <rich0@gentoo.org>
+  cracklib-words-20080401.ebuild:
+  amd64 stable - 220849
+
+  10 May 2008; nixnut <nixnut@gentoo.org> cracklib-words-20080401.ebuild:
+  Stable on ppc wrt bug 220849
+
+  08 May 2008; Jeroen Roovers <jer@gentoo.org>
+  cracklib-words-20080401.ebuild:
+  Stable for HPPA (bug #220849).
+
+  08 May 2008; Raúl Porcel <armin76@gentoo.org>
+  cracklib-words-20080401.ebuild:
+  alpha/ia64/x86 stable wrt #220849
+
+  08 May 2008; Ferris McCormick <fmccor@gentoo.org>
+  cracklib-words-20080401.ebuild:
+  Sparc stable --- Bug #220849 --- dictionary builds and looks fine.
+
+*cracklib-words-20080507 (08 May 2008)
+
+  08 May 2008; Mike Frysinger <vapier@gentoo.org>
+  +cracklib-words-20080507.ebuild:
+  Version bump.
+
+  04 Apr 2008; Brent Baude <ranger@gentoo.org>
+  cracklib-words-20080301.ebuild:
+  stable ppc64, bug 215811
+
+  03 Apr 2008; Brent Baude <ranger@gentoo.org>
+  cracklib-words-20080301.ebuild:
+  stable ppc, bug 215811
+
+  02 Apr 2008; Jeroen Roovers <jer@gentoo.org>
+  cracklib-words-20080301.ebuild:
+  Stable for HPPA (bug #215811).
+
+  02 Apr 2008; Raúl Porcel <armin76@gentoo.org>
+  cracklib-words-20080301.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #215811
+
+*cracklib-words-20080401 (02 Apr 2008)
+
+  02 Apr 2008; Mike Frysinger <vapier@gentoo.org>
+  +cracklib-words-20080401.ebuild:
+  Version bump.
+
+  06 Mar 2008; Christoph Mende <angelos@gentoo.org>
+  cracklib-words-20080301.ebuild:
+  Stable on amd64, bug #212017
+
+  04 Mar 2008; Brent Baude <ranger@gentoo.org>
+  cracklib-words-20080203.ebuild:
+  stable ppc64, bug 212017
+
+  03 Mar 2008; Raúl Porcel <armin76@gentoo.org>
+  cracklib-words-20080203.ebuild:
+  alpha/ia64/sparc stable wrt #212017
+
+  03 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  cracklib-words-20080203.ebuild:
+  stable x86, bug 212017
+
+  02 Mar 2008; Jeroen Roovers <jer@gentoo.org>
+  cracklib-words-20080203.ebuild:
+  Stable for HPPA (bug #212017).
+
+  02 Mar 2008; Lars Weiler <pylon@gentoo.org>
+  cracklib-words-20080203.ebuild:
+  stable ppc, bug 212017
+
+*cracklib-words-20080301 (01 Mar 2008)
+
+  01 Mar 2008; Mike Frysinger <vapier@gentoo.org>
+  +cracklib-words-20080301.ebuild:
+  Version bump.
+
+*cracklib-words-20080203 (09 Feb 2008)
+
+  09 Feb 2008; Mike Frysinger <vapier@gentoo.org>
+  +cracklib-words-20080203.ebuild:
+  Version bump #209233.
+
+  07 Feb 2008; Raúl Porcel <armin76@gentoo.org> cracklib-words-1.2.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+*cracklib-words-1.2 (04 Jan 2008)
+
+  04 Jan 2008; Mike Frysinger <vapier@gentoo.org>
+  +cracklib-words-1.2.ebuild:
+  Version bump.
+
+  30 Dec 2006; Mike Frysinger <vapier@gentoo.org> cracklib-words-1.1.ebuild:
+  Regenerate the cracklib dictionary in pkg_postinst from all dict files
+  #114690 by Philippe Troin.
+
+*cracklib-words-1.1 (12 Feb 2004)
+
+  12 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

@@ -1,0 +1,117 @@
+# ChangeLog for net-libs/libeXosip
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libeXosip/ChangeLog,v 1.27 2013/10/27 09:40:05 pacho Exp $
+
+  27 Oct 2013; Pacho Ramos <pacho@gentoo.org> -libeXosip-3.6.0.ebuild,
+  metadata.xml:
+  Cleanup due voip herd removal:
+  http://article.gmane.org/gmane.linux.gentoo.devel/88434
+
+*libeXosip-4.0.0 (05 Mar 2013)
+
+  05 Mar 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libeXosip-4.0.0.ebuild, -libeXosip-3.3.0.ebuild, libeXosip-3.5.0.ebuild,
+  libeXosip-3.6.0.ebuild:
+  Version bump.
+
+*libeXosip-3.6.0 (07 Oct 2012)
+
+  07 Oct 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libeXosip-3.6.0.ebuild:
+  Version bump.
+
+  06 Jan 2012; Brent Baude <ranger@gentoo.org> libeXosip-3.5.0.ebuild:
+  Marking libeXosip-3.5.0 ppc stable for bug 363311
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #34534
+
+  14 May 2011; Thomas Kahle <tomka@gentoo.org> libeXosip-3.5.0.ebuild:
+  x86 stable per bug 363311
+
+  01 May 2011; Markos Chandras <hwoarang@gentoo.org> libeXosip-3.5.0.ebuild:
+  Stable on amd64 wrt bug #363311
+
+  07 Jan 2011; Peter Volkov <pva@gentoo.org> libeXosip-3.5.0.ebuild:
+  Fix minor QA issues.
+
+*libeXosip-3.5.0 (07 Jan 2011)
+
+  07 Jan 2011; Peter Volkov <pva@gentoo.org> +libeXosip-3.5.0.ebuild:
+  Version bump.
+
+  04 Dec 2010; Peter Volkov <pva@gentoo.org> -libeXosip-3.0.3.3.ebuild,
+  -libeXosip-3.1.0.ebuild, -libeXosip-3.2.0.ebuild:
+  Drop old.
+
+  18 Jul 2010; <nixnut@gentoo.org> libeXosip-3.3.0.ebuild:
+  ppc stable #317235
+
+  10 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  libeXosip-3.3.0.ebuild:
+  x86 stable wrt bug #317235
+
+  20 May 2010; Peter Volkov <pva@gentoo.org> libeXosip-3.3.0.ebuild:
+  amd64 stable, bug 317235.
+
+  19 Mar 2010; Fabian Groffen <grobian@gentoo.org> libeXosip-3.3.0.ebuild:
+  Marked ~x86-macos
+
+  19 Mar 2010; Fabian Groffen <grobian@gentoo.org> libeXosip-3.3.0.ebuild:
+  Marked ~ppc-macos
+
+*libeXosip-3.3.0 (14 Feb 2010)
+
+  14 Feb 2010; Peter Volkov <pva@gentoo.org> +libeXosip-3.3.0.ebuild,
+  +files/libeXosip-3.3.0-automagic-openssl.patch:
+  Version bump, bug #304611.
+
+*libeXosip-3.2.0 (12 Dec 2008)
+
+  12 Dec 2008; Mike Frysinger <vapier@gentoo.org> +libeXosip-3.2.0.ebuild:
+  Version bump.
+
+  01 Aug 2008; nixnut <nixnut@gentoo.org> libeXosip-3.1.0.ebuild:
+  Stable on ppc wrt bug 210740
+
+  23 Apr 2008; Markus Meier <maekke@gentoo.org> libeXosip-3.1.0.ebuild:
+  amd64/x86 stable, bug #210740
+
+  21 Feb 2008; Mike Frysinger <vapier@gentoo.org> libeXosip-3.1.0.ebuild:
+  Depend on libosip-3.1.0+ #210684 by Mikael Magnusson.
+
+*libeXosip-3.1.0 (18 Feb 2008)
+
+  18 Feb 2008; Mike Frysinger <vapier@gentoo.org> +libeXosip-3.1.0.ebuild:
+  Version bump.
+
+*libeXosip-3.0.3.3 (14 Jan 2008)
+
+  14 Jan 2008; Mike Frysinger <vapier@gentoo.org> +libeXosip-3.0.3.3.ebuild:
+  Version bump.
+
+  22 Sep 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  libeXosip-2.2.3.ebuild:
+  Keyworded ~amd64 as per bug 187040.
+
+*libeXosip-2.2.3 (08 Jun 2006)
+
+  08 Jun 2006; Daniel Black <dragonheart@gentoo.org>
+  +libeXosip-2.2.3.ebuild:
+  version bump because genstef asked for it
+
+  14 Jan 2006; Stefan Schweizer <genstef@gentoo.org> libeXosip-2.2.2.ebuild:
+  Tell configure that we do not want josua with permission from dragonheart
+
+*libeXosip-2.2.2 (08 Jan 2006)
+
+  08 Jan 2006; Daniel Black <dragonheart@gentoo.org>
+  +libeXosip-2.2.2.ebuild:
+  version bump
+
+*libeXosip-1.9.1_pre16 (21 Aug 2005)
+*libeXosip-0.9.0 (21 Aug 2005)
+
+  21 Aug 2005; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  +libeXosip-0.9.0.ebuild, +libeXosip-1.9.1_pre16.ebuild:
+  Initial import as per bug #94919. Thanks to Christoph Mockenhaupt

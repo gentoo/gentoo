@@ -1,0 +1,300 @@
+# ChangeLog for x11-wm/pekwm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/pekwm/ChangeLog,v 1.76 2014/10/23 21:03:38 jer Exp $
+
+  23 Oct 2014; Jeroen Roovers <jer@gentoo.org> -pekwm-0.1.15.ebuild,
+  -pekwm-0.1.16.ebuild, -files/pekwm-0.1.11-libpng14.patch, metadata.xml:
+  Old.
+
+  01 Aug 2014; Raúl Porcel <armin76@gentoo.org> pekwm-0.1.15.ebuild,
+  pekwm-0.1.16.ebuild, pekwm-0.1.17.ebuild:
+  Drop sparc keyword
+
+  13 Jul 2014; Agostino Sarubbo <ago@gentoo.org> pekwm-0.1.17.ebuild:
+  Stable for ppc, wrt bug #509342
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> pekwm-0.1.17.ebuild:
+  x86 stable wrt bug #509342
+
+  08 Jun 2014; Chema Alonso <nimiux@gentoo.org> pekwm-0.1.17.ebuild:
+  Stable for amd64 wrt bug #509342
+
+  02 May 2014; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Update e-mail address.
+
+  02 May 2014; Jeroen Roovers <jer@gentoo.org> pekwm-0.1.17.ebuild:
+  Grammar.
+
+*pekwm-0.1.17 (10 Mar 2014)
+
+  10 Mar 2014; Jeroen Roovers <jer@gentoo.org> +pekwm-0.1.17.ebuild,
+  metadata.xml:
+  Version bump by Andreas (bug #471340). Make themes optional.
+
+  02 Feb 2014; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Added Andreas Schlick (ninox+pmg) to metadata.xml, whom will proxy maintain
+  this package.
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> -pekwm-0.1.11.ebuild,
+  -pekwm-0.1.14.ebuild, metadata.xml:
+  Cleanup due desktop-wm removal
+
+  06 Feb 2013; Agostino Sarubbo <ago@gentoo.org> pekwm-0.1.15.ebuild:
+  Stable for sparc, wrt bug #453558
+
+  26 Jan 2013; Agostino Sarubbo <ago@gentoo.org> pekwm-0.1.15.ebuild:
+  Stable for ppc, wrt bug #453558
+
+  25 Jan 2013; Agostino Sarubbo <ago@gentoo.org> pekwm-0.1.15.ebuild:
+  Stable for amd64, wrt bug #453558
+
+  25 Jan 2013; Agostino Sarubbo <ago@gentoo.org> pekwm-0.1.15.ebuild:
+  Stable for x86, wrt bug #453558
+
+*pekwm-0.1.16 (22 Jan 2013)
+
+  22 Jan 2013; Jeroen Roovers <jer@gentoo.org> +pekwm-0.1.16.ebuild:
+  Version bump.
+
+*pekwm-0.1.15 (23 Aug 2012)
+
+  23 Aug 2012; Kacper Kowalik <xarthisius@gentoo.org> +pekwm-0.1.15.ebuild:
+  Version bump wrt #430918 by <theodor@suremail.info>
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> pekwm-0.1.14.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  13 Mar 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  -files/pekwm-0.1.12-configure.patch, -pekwm-0.1.12.ebuild:
+  Drop old
+
+*pekwm-0.1.14 (13 Mar 2012)
+
+  13 Mar 2012; Kacper Kowalik <xarthisius@gentoo.org> +pekwm-0.1.14.ebuild:
+  Version bump. Fixes bug 393033 by theodor@suremail.info and bug 374017 by
+  Walther <walther.md@gmail.com>
+
+  08 Nov 2010; Kacper Kowalik <xarthisius@gentoo.org> pekwm-0.1.11.ebuild,
+  pekwm-0.1.12.ebuild:
+  media-libs/jpeg -> virtual/jpeg
+
+  08 Jul 2010; Raúl Porcel <armin76@gentoo.org> pekwm-0.1.11.ebuild:
+  sparc stable wrt #319551
+
+  04 Jul 2010; Kacper Kowalik <xarthisius@gentoo.org> pekwm-0.1.12.ebuild,
+  +files/pekwm-0.1.12-configure.patch:
+  Properly detect libpng if USE="-truetype" wrt bug 326803. Thanks to Carlo
+  Marcelo Arenas Belon <carenas@sajinet.com.pe> for report and patch.
+
+*pekwm-0.1.12 (02 Jun 2010)
+
+  02 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org> +pekwm-0.1.12.ebuild:
+  Version bump, fixes bug 316727. Thanks to Michal Fojtik
+  <mfojtik@redhat.com> for ebuild and report.
+
+  25 May 2010; Pacho Ramos <pacho@gentoo.org> pekwm-0.1.11.ebuild:
+  stable amd64, bug 319551
+
+  24 May 2010; <nixnut@gentoo.org> pekwm-0.1.11.ebuild:
+  ppc stable #319551
+
+  21 May 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> pekwm-0.1.11.ebuild:
+  x86 stable wrt bug #319551
+
+  09 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> pekwm-0.1.11.ebuild,
+  +files/pekwm-0.1.11-libpng14.patch:
+  Fix building with libpng14.
+
+  22 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> pekwm-0.1.11.ebuild:
+  Require SLOT="0" of media-libs/jpeg for headers.
+
+*pekwm-0.1.11 (11 Jul 2009)
+
+  11 Jul 2009; <omp@gentoo.org> +pekwm-0.1.11.ebuild:
+  Version bump. (bug #272127)
+
+  11 Jul 2009; <omp@gentoo.org> -pekwm-0.1.5.ebuild, -pekwm-0.1.6.ebuild,
+  -files/pekwm-0.1.6-gcc-4.3.patch, -pekwm-0.1.8.ebuild,
+  -files/pekwm-0.1.8-mplayer.patch:
+  Remove older versions.
+
+*pekwm-0.1.10 (17 Feb 2009)
+
+  17 Feb 2009; Jim Ramsay <lack@gentoo.org> +pekwm-0.1.10.ebuild:
+  Version bump - 0.1.10 is released
+
+  09 Jan 2009; Rémi Cardona <remi@gentoo.org> pekwm-0.1.5.ebuild,
+  pekwm-0.1.6.ebuild, pekwm-0.1.7.ebuild, pekwm-0.1.8.ebuild:
+  Change virtual/xft dependency to x11-libs/libXft, bug 253771.
+
+*pekwm-0.1.8 (10 Dec 2008)
+
+  10 Dec 2008; Ben de Groot <yngwin@gentoo.org>
+  +files/pekwm-0.1.8-mplayer.patch, +pekwm-0.1.8.ebuild:
+  Version bump, with added upstream patch for mplayer fullscreen, see bug 246356
+
+  30 Nov 2008; Raúl Porcel <armin76@gentoo.org> pekwm-0.1.7.ebuild:
+  sparc stable wrt #245246
+
+  20 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org> pekwm-0.1.7.ebuild:
+  ppc stable, bug #245246
+
+  19 Nov 2008; Markus Meier <maekke@gentoo.org> pekwm-0.1.7.ebuild:
+  amd64/x86 stable, bug #245246
+
+*pekwm-0.1.7 (20 Sep 2008)
+
+  20 Sep 2008; Ben de Groot <yngwin@gentoo.org> +pekwm-0.1.7.ebuild:
+  Version bump. Drop no longer needed gcc-4.3 patch. Update SRC_URI.
+
+  24 Apr 2008; David Shakaryan <omp@gentoo.org>
+  +files/pekwm-0.1.6-gcc-4.3.patch, pekwm-0.1.6.ebuild:
+  Compile with GCC 4.3; patch from Debian modified by Peter Alfredsen. (bug
+  #218956)
+
+  09 Sep 2007; Santiago M. Mola <coldwind@gentoo.org> pekwm-0.1.5.ebuild,
+  pekwm-0.1.6.ebuild:
+  Remove vim swap file which got into themes tarball. Bug #190264
+
+  20 Aug 2007; Stuart Longland <redhatter@gentoo.org> pekwm-0.1.6.ebuild:
+  Tested and working on MIPS.  Keyworded ~mips as per bug #114498.
+
+*pekwm-0.1.6 (03 Jun 2007)
+
+  03 Jun 2007; David Shakaryan <omp@gentoo.org> +pekwm-0.1.6.ebuild:
+  Version bump. (bug #180369)
+
+  06 Mar 2007; Timothy Redaelli <drizzt@gentoo.org> pekwm-0.1.5.ebuild:
+  Add ~x86-fbsd keyword.
+  Thanks to Rex for reporting wrt bug #169597.
+
+  23 Dec 2006; David Shakaryan <omp@gentoo.org>
+  -files/pekwm-manpath-gentoo.diff, -pekwm-0.1.3-r2.ebuild:
+  Remove older version. (bug #150608)
+
+  23 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org> pekwm-0.1.5.ebuild:
+  Stable on ppc wrt bug #150608.
+
+  18 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> pekwm-0.1.5.ebuild:
+  Stable on sparc wrt #150608
+
+  16 Dec 2006; David Shakaryan <omp@gentoo.org> pekwm-0.1.5.ebuild:
+  Add x11-apps/xprop to RDEPEND. (bug #158191)
+
+  14 Dec 2006; Peter Weller <welp@gentoo.org> pekwm-0.1.5.ebuild:
+  Added amd64 keyword wrt bug #150608
+
+  14 Dec 2006; Christian Faulhammer <opfer@gentoo.org> pekwm-0.1.5.ebuild:
+  stable x86, bug #150608
+
+  14 Dec 2006; David Shakaryan <omp@gentoo.org> pekwm-0.1.5.ebuild:
+  Remove imlib2 dependency and fix support for jpeg/png images. (bug #157749)
+
+  14 Nov 2006; David Shakaryan <omp@gentoo.org> pekwm-0.1.3-r2.ebuild:
+  Fix HOMEPAGE in older ebuild.
+
+  28 Oct 2006; David Shakaryan <omp@gentoo.org> pekwm-0.1.5.ebuild:
+  Remove monolithic X support, move USE checking to pkg_setup(), change make
+  to emake and use cleaner code.
+
+  28 Oct 2006; David Shakaryan <omp@gentoo.org> -pekwm-0.1.4_pre2.ebuild,
+  -pekwm-0.1.4.ebuild:
+  Remove older versions.
+
+  10 Sep 2006; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove fserb from metadata.xml.
+
+*pekwm-0.1.5 (01 Jul 2006)
+
+  01 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org> +pekwm-0.1.5.ebuild:
+  Version bump, see bug #133621.
+
+*pekwm-0.1.4 (11 Apr 2006)
+
+  11 Apr 2006; Fernando Serboncini <fserb@gentoo.org> pekwm-0.1.3-r2.ebuild,
+  pekwm-0.1.4_pre2.ebuild, +pekwm-0.1.4.ebuild:
+  Version bump. Should work with new modular X.
+
+  26 Dec 2005; Jason Wever <weeve@gentoo.org> pekwm-0.1.3-r2.ebuild:
+  Stable on SPARC.
+
+*pekwm-0.1.4_pre2 (22 May 2005)
+
+  22 May 2005; Fernando Serboncini <fserb@gentoo.org>
+  -files/pekwm-20050227-dialog_fix.patch, metadata.xml,
+  +pekwm-0.1.4_pre2.ebuild, -pekwm-20050129.2.ebuild,
+  -pekwm-20050227.ebuild, -pekwm-20050227-r1.ebuild:
+  Version bump.
+  Removed old development versions, to keep a more sane version numbering
+
+*pekwm-20050227-r1 (09 Apr 2005)
+
+  09 Apr 2005; Fernando Serboncini <fserb@gentoo.org>
+  +files/pekwm-20050227-dialog_fix.patch, +pekwm-20050227-r1.ebuild:
+  Added patch to fix decorations. Closes #86970.
+
+*pekwm-20050227 (01 Mar 2005)
+
+  01 Mar 2005; Fernando Serboncini <fserb@gentoo.org>
+  pekwm-20050129.2.ebuild, +pekwm-20050227.ebuild:
+  Version bump. Change theme pack filename.
+
+  08 Feb 2005; Fernando Serboncini <fserb@gentoo.org>
+  pekwm-20050129.2.ebuild:
+  ebuild cleanup
+
+  02 Feb 2005; Fernando Serboncini <fserb@gentoo.org>
+  pekwm-20050129.2.ebuild:
+  Forced imlib2 and themes
+
+*pekwm-20050129.2 (01 Feb 2005)
+
+  01 Feb 2005; Fernando Serboncini <fserb@gentoo.org>
+  +pekwm-20050129.2.ebuild:
+  DEV Version bump. Added themes and imlib2 support
+
+  06 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> -pekwm-0.1.2.ebuild,
+  -pekwm-0.1.3-r1.ebuild, -pekwm-0.1.3.ebuild:
+  Removed old ebuilds.
+
+  07 May 2004; Brandon Hale <tseng@gentoo.org> pekwm-0.1.3-r2.ebuild:
+  Remove S=
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> pekwm-0.1.3-r2.ebuild:
+  Add inherit eutils
+
+  10 Dec 2003; Jon Portnoy <avenj@gentoo.org> pekwm-0.1.3-r2.ebuild :
+  AMD64 keyworded.
+
+  04 Nov 2003; Brandon Hale <tseng@gentoo.org> metadata.xml,
+  pekwm-0.1.3-r2.ebuild:
+  Marked 0.1.3-r2 stable on x86, added metadata
+
+*pekwm-0.1.3-r2 (30 Jul 2003)
+
+  13 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> pekwm-0.1.3-r2.ebuild,
+  files/pekwm-manpath-gentoo.diff:
+  Fixed man location and html docoment. Added truetype, xinerama and
+  perl IUSE flag.
+
+  30 Jul 2003; Brad Cowan <bcowan@gentoo.org> pekwm-0.1.3-r2.ebuild:
+  Moved config files to /etc per upstream request.
+
+*pekwm-0.1.3-r1 (27 Jul 2003)
+
+  27 Jul 2003; Brad Cowan <bcowan@gentoo.org> pekwm-0.1.3-r1.ebuild:
+  Fixes.
+
+  08 Jun 2003; Seemant Kulleen <seemant@gentoo.org> :
+  version bump
+
+*pekwm-0.1.2 (19 Nov 2002)
+
+  16 Feb 2002; Brad Cowan <bcowan@gentoo.org>:
+
+  added pkgconfig dependency to check for xft bug# 14664.
+
+  19 Nov 2002; Brad Cowan <bcowan@gentoo.org> pekwm-0.1.2.ebuild,
+  ChangeLog, files/digest-pekwm-0.1.2 :
+
+  Initial import.

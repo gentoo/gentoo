@@ -1,0 +1,13 @@
+# Copyright 2011-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/mips/mipsel/mips64el/multilib/n64/make.defaults,v 1.4 2014/06/30 15:10:10 mgorny Exp $
+
+MULTILIB_ABIS="n32 o32 n64"
+DEFAULT_ABI="n64"
+ABI="${DEFAULT_ABI}"
+
+CHOST_n32="mips64el-unknown-linux-gnuabin32"
+CHOST_o32="mipsel-unknown-linux-gnu"
+
+ABI_MIPS="n64"
+IUSE_IMPLICIT="abi_mips_n64"

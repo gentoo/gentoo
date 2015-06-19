@@ -1,0 +1,152 @@
+# ChangeLog for media-sound/sonic-visualiser
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/sonic-visualiser/ChangeLog,v 1.30 2015/03/29 19:06:02 zlogene Exp $
+
+  29 Mar 2015; Mikle Kolyada <zlogene@gentoo.org> sonic-visualiser-2.3.ebuild,
+  sonic-visualiser-2.4.1.ebuild:
+  Add missing dev-qt/qttest dependency wrt bug #531214
+
+*sonic-visualiser-2.4.1 (11 Mar 2015)
+
+  11 Mar 2015; Alexis Ballier <aballier@gentoo.org>
+  +sonic-visualiser-2.4.1.ebuild:
+  version bump
+
+*sonic-visualiser-2.3 (09 Mar 2014)
+
+  09 Mar 2014; Alexis Ballier <aballier@gentoo.org>
+  +sonic-visualiser-2.3.ebuild:
+  version bump
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org>
+  sonic-visualiser-1.9.ebuild:
+  Move Qt dependencies to the new category
+
+  24 Jun 2012; Tim Harder <radhermit@gentoo.org> -sonic-visualiser-1.8.ebuild:
+  Remove old.
+
+  24 Jun 2012; Tim Harder <radhermit@gentoo.org> sonic-visualiser-1.9.ebuild:
+  Enable portaudio backend by default (fixes bug #422809).
+
+  31 May 2012; Tim Harder <radhermit@gentoo.org> sonic-visualiser-1.9.ebuild,
+  +files/sonic-visualiser-1.9-gcc47.patch:
+  Fix build with gcc-4.7 (bug #417367 by David Kredba).
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> sonic-visualiser-1.8.ebuild,
+  sonic-visualiser-1.9.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*sonic-visualiser-1.9 (07 Jan 2012)
+
+  07 Jan 2012; Alexis Ballier <aballier@gentoo.org>
+  +sonic-visualiser-1.9.ebuild:
+  version bump
+
+  11 Sep 2011; Samuli Suominen <ssuominen@gentoo.org>
+  -sonic-visualiser-1.7.2.ebuild:
+  [This is a placeholder. Please ignore.]
+
+  29 Jul 2011; Samuli Suominen <ssuominen@gentoo.org>
+  sonic-visualiser-1.8.ebuild:
+  Remove check for raptor and let liblrdf, or redland pull it for us. This
+  allows raptor2 to be used.
+
+*sonic-visualiser-1.8 (21 May 2011)
+
+  21 May 2011; Tim Harder <radhermit@gentoo.org> +sonic-visualiser-1.8.ebuild,
+  +files/sonic-visualiser-1.8-configure.patch,
+  +files/sonic-visualiser-1.8-gcc46.patch:
+  Version bump. Update to EAPI 4.
+
+*sonic-visualiser-1.7.2 (06 Oct 2010)
+
+  06 Oct 2010; Michael Weber <xmw@gentoo.org>
+  +sonic-visualiser-1.7.2.ebuild:
+  Version bump (bug 339797)
+
+*sonic-visualiser-1.7.1 (04 Nov 2009)
+
+  04 Nov 2009; Alexis Ballier <aballier@gentoo.org>
+  +sonic-visualiser-1.7.1.ebuild,
+  +files/sonic-visualiser-1.7.1-liboggz11.patch:
+  version bump
+
+*sonic-visualiser-1.7 (12 Oct 2009)
+
+  12 Oct 2009; Alexis Ballier <aballier@gentoo.org>
+  +sonic-visualiser-1.7.ebuild:
+  version bump
+
+  06 Oct 2009; Dominik Kapusta <ayoy@gentoo.org>
+  sonic-visualiser-1.6.ebuild:
+  Removed alternative dependency on Qt metapackage
+
+  25 Jul 2009; Alexis Ballier <aballier@gentoo.org>
+  -sonic-visualiser-1.5.ebuild:
+  remove old
+
+  25 Jul 2009; Alexis Ballier <aballier@gentoo.org>
+  sonic-visualiser-1.6.ebuild, +files/sonic-visualiser-1.6-gcc44.patch:
+  fix build with gcc 4.4, bug #278551
+
+*sonic-visualiser-1.6 (20 Jul 2009)
+
+  20 Jul 2009; Alexis Ballier <aballier@gentoo.org>
+  +sonic-visualiser-1.6.ebuild:
+  version bump
+
+  14 May 2009; Alexis Ballier <aballier@gentoo.org>
+  -sonic-visualiser-1.3.ebuild, -sonic-visualiser-1.4.ebuild:
+  punt old
+
+*sonic-visualiser-1.5 (26 Mar 2009)
+
+  26 Mar 2009; Alexis Ballier <aballier@gentoo.org>
+  +sonic-visualiser-1.5.ebuild:
+  version bump
+
+*sonic-visualiser-1.4 (13 Dec 2008)
+
+  13 Dec 2008; Alexis Ballier <aballier@gentoo.org>
+  +sonic-visualiser-1.4.ebuild:
+  version bump
+
+  07 Aug 2008; Alexis Ballier <aballier@gentoo.org>
+  -sonic-visualiser-1.2.ebuild:
+  remove old
+
+  27 Jul 2008; Carsten Lohrke <carlo@gentoo.org>
+  sonic-visualiser-1.2.ebuild, sonic-visualiser-1.3.ebuild:
+  Fix broken split Qt 4.4 dependencies, cf. bug 217161 comment 11.
+
+*sonic-visualiser-1.3 (11 Jul 2008)
+
+  11 Jul 2008; Alexis Ballier <aballier@gentoo.org>
+  +sonic-visualiser-1.3.ebuild:
+  version bump
+
+  13 Apr 2008; Alexis Ballier <aballier@gentoo.org>
+  sonic-visualiser-1.2.ebuild:
+  libfishsound isnt mandatory and already controlled by the ogg useflag,
+  allow split qt4 deps
+
+  21 Mar 2008; Alexis Ballier <aballier@gentoo.org>
+  -files/sonic-visualiser-1.0-loarg.patch, -sonic-visualiser-1.0.ebuild:
+  remove old
+
+*sonic-visualiser-1.2 (28 Feb 2008)
+
+  28 Feb 2008; Alexis Ballier <aballier@gentoo.org>
+  +sonic-visualiser-1.2.ebuild:
+  version bump
+
+  04 Jan 2008; Stefan Briesenick <sbriesen@gentoo.org>
+  sonic-visualiser-1.0.ebuild:
+  added ~x86 keyword
+
+*sonic-visualiser-1.0 (18 Nov 2007)
+
+  18 Nov 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/sonic-visualiser-1.0-loarg.patch, +metadata.xml,
+  +sonic-visualiser-1.0.ebuild:
+  initial import, ebuild greatly inspired from the proaudio overlay

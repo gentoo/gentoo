@@ -1,0 +1,132 @@
+# ChangeLog for x11-misc/piedock
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/piedock/ChangeLog,v 1.25 2014/08/15 08:42:41 jer Exp $
+
+*piedock-1.6.6 (15 Aug 2014)
+
+  15 Aug 2014; Jeroen Roovers <jer@gentoo.org> -piedock-1.6.3.ebuild,
+  +piedock-1.6.6.ebuild, -files/piedock-1.6.2-mem.patch:
+  Version bump.
+
+*piedock-1.6.4 (05 May 2014)
+
+  05 May 2014; Jeroen Roovers <jer@gentoo.org> -piedock-1.6.2.ebuild,
+  +piedock-1.6.4.ebuild, -files/piedock-1.6.1-gcc47.patch,
+  -files/piedock-1.6.1-mem.patch:
+  Version bump.
+
+*piedock-1.6.3 (20 Oct 2013)
+
+  20 Oct 2013; Jeroen Roovers <jer@gentoo.org> +piedock-1.6.3.ebuild,
+  -piedock-1.6.0.ebuild, -piedock-1.6.1.ebuild:
+  Version bump.
+
+  06 Jun 2013; Jeroen Roovers <jer@gentoo.org> piedock-1.6.2.ebuild,
+  +files/piedock-1.6.2-mem.patch:
+  Fix building against media-libs/libpng-1.6* (bug #471460).
+
+*piedock-1.6.2 (03 Jun 2013)
+
+  03 Jun 2013; Jeroen Roovers <jer@gentoo.org> +piedock-1.6.2.ebuild:
+  Version bump by Markus Fisch (bug #471460).
+
+  01 Jun 2013; Samuli Suominen <ssuominen@gentoo.org> piedock-1.6.1.ebuild,
+  +files/piedock-1.6.1-mem.patch:
+  Fix building with libpng16 which doesn't implicitly pull in string.h through
+  png.h anymore wrt #471460 by F. Delente
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> piedock-1.6.1.ebuild:
+  Move Qt dependencies to the new category
+
+  06 Jan 2013; Michael Palimaka <kensington@gentoo.org> piedock-1.6.1.ebuild:
+  Add missing Qt and KDE slots.
+
+  24 Dec 2012; Markos Chandras <hwoarang@gentoo.org>
+  +files/piedock-1.6.1-gcc47.patch, piedock-1.6.1.ebuild:
+  Apply upstream patch to fix building with gcc-4.7. Bug #448422
+
+  08 Nov 2012; Jeroen Roovers <jer@gentoo.org> -piedock-1.4.2.ebuild,
+  -piedock-1.4.3.ebuild, -piedock-1.5.0.ebuild:
+  Old.
+
+*piedock-1.6.1 (08 Nov 2012)
+
+  08 Nov 2012; Jeroen Roovers <jer@gentoo.org> +piedock-1.6.1.ebuild,
+  +files/piedock-1.6.1-signals.patch:
+  Version bump.
+
+*piedock-1.6.0 (10 Apr 2012)
+
+  10 Apr 2012; Markos Chandras <hwoarang@gentoo.org> +piedock-1.6.0.ebuild,
+  piedock-1.5.0.ebuild:
+  Version bump
+
+*piedock-1.5.0 (22 Mar 2012)
+
+  22 Mar 2012; Markos Chandras <hwoarang@gentoo.org> +piedock-1.5.0.ebuild:
+  version bump
+
+*piedock-1.4.3 (24 Dec 2011)
+
+  24 Dec 2011; Markos Chandras <hwoarang@gentoo.org> +piedock-1.4.3.ebuild,
+  -piedock-1.4.0.ebuild, -piedock-1.4.1.ebuild:
+  version bump. remove old
+
+*piedock-1.4.2 (04 Nov 2011)
+
+  04 Nov 2011; Markos Chandras <hwoarang@gentoo.org> +piedock-1.4.2.ebuild,
+  -piedock-1.3.2.ebuild, -piedock-1.3.3.ebuild:
+  version bump remove old
+
+*piedock-1.4.1 (07 Oct 2011)
+
+  07 Oct 2011; Markos Chandras <hwoarang@gentoo.org> +piedock-1.4.1.ebuild:
+  Version bump
+
+*piedock-1.4.0 (03 Aug 2011)
+
+  03 Aug 2011; Markos Chandras <hwoarang@gentoo.org> +piedock-1.4.0.ebuild:
+  Version bump
+
+*piedock-1.3.3 (22 Jul 2011)
+
+  22 Jul 2011; Markos Chandras <hwoarang@gentoo.org> -piedock-1.3.0.ebuild,
+  -piedock-1.3.1.ebuild, +piedock-1.3.3.ebuild:
+  Version bump, remove old
+
+*piedock-1.3.2 (24 Jun 2011)
+
+  24 Jun 2011; Jeroen Roovers <jer@gentoo.org> +piedock-1.3.2.ebuild:
+  Version bump. Update dependencies. Remove unused eclass.
+
+*piedock-1.3.1 (20 Jun 2011)
+
+  20 Jun 2011; Markos Chandras <hwoarang@gentoo.org> +piedock-1.3.1.ebuild:
+  version bump
+
+*piedock-1.3.0 (09 Jun 2011)
+
+  09 Jun 2011; Markos Chandras <hwoarang@gentoo.org> -piedock-0.2.3.ebuild,
+  -piedock-1.0.0.ebuild, -piedock-1.2.1.ebuild, -piedock-1.2.2.ebuild,
+  +piedock-1.3.0.ebuild:
+  Version bump. Remove old
+
+*piedock-1.2.2 (08 Apr 2011)
+
+  08 Apr 2011; Markos Chandras <hwoarang@gentoo.org> +piedock-1.2.2.ebuild:
+  Version bump
+
+*piedock-1.2.1 (06 Apr 2011)
+
+  06 Apr 2011; Markos Chandras <hwoarang@gentoo.org> +piedock-1.2.1.ebuild:
+  Version bump
+
+*piedock-1.0.0 (03 Dec 2010)
+
+  03 Dec 2010; Markos Chandras <hwoarang@gentoo.org> +piedock-1.0.0.ebuild:
+  Version bump. Thanks to Markus Fisch <mf@markusfisch.de>. Bug #346387
+
+*piedock-0.2.3 (08 Nov 2009)
+
+  08 Nov 2009; Samuli Suominen <ssuominen@gentoo.org> +piedock-0.2.3.ebuild:
+  Initial commit.

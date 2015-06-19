@@ -1,0 +1,82 @@
+# ChangeLog for dev-python/ttfquery
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ttfquery/ChangeLog,v 1.21 2015/04/08 08:05:15 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> ttfquery-1.0.5-r1.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -ttfquery-1.0.5.ebuild:
+  Remove old.
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> ttfquery-1.0.5-r1.ebuild:
+  ppc stable, bug 540290
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> ttfquery-1.0.5-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> ttfquery-1.0.5-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> ttfquery-1.0.5-r1.ebuild:
+  Stable for x86, wrt bug #470470
+
+  19 May 2013; Agostino Sarubbo <ago@gentoo.org> ttfquery-1.0.5-r1.ebuild:
+  Stable for amd64, wrt bug #470470
+
+*ttfquery-1.0.5-r1 (11 Apr 2013)
+
+  11 Apr 2013; Ian Delaney <idella4@gentoo.org> +ttfquery-1.0.5-r1.ebuild:
+  revbump, migration to distutils-r1
+
+  24 Aug 2012; Michael Weber <xmw@gentoo.org> ttfquery-1.0.5.ebuild:
+  add ~ppc keyword (bug 413815)
+
+  14 Jun 2012; Jeff Horelick <jdhore@gentoo.org> ttfquery-1.0.5.ebuild:
+  marked x86 per bug 413815
+
+  23 May 2012; Agostino Sarubbo <ago@gentoo.org> ttfquery-1.0.5.ebuild:
+  Stable for amd64, wrt bug #413815
+
+*ttfquery-1.0.5 (08 Mar 2012)
+
+  08 Mar 2012; Tomáš Chvátal <scarabeus@gentoo.org> +ttfquery-1.0.5.ebuild,
+  -ttfquery-1.0.4.ebuild:
+  Bump to latest. Drop overshadowed.
+
+*ttfquery-1.0.4 (10 Apr 2010)
+
+  10 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -ttfquery-1.0.0-r1.ebuild, +ttfquery-1.0.4.ebuild:
+  Version bump. Set SUPPORT_PYTHON_ABIS.
+
+  23 Jan 2008; Ali Polatel <hawking@gentoo.org> -ttfquery-1.0.0.ebuild:
+  Drop old.
+
+*ttfquery-1.0.0-r1 (18 Jul 2007)
+
+  18 Jul 2007; Ali Polatel <hawking@gentoo.org> +ttfquery-1.0.0-r1.ebuild:
+  revbump, adapted to use numpy.oldnumeric instead of numeric, changed numeric
+  to numpy in DEPEND
+
+  21 Feb 2007; Lukasz Strzygowski <lucass@gentoo.org>
+  files/digest-ttfquery-1.0.0, Manifest:
+  Convert to Manifest2.
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> ttfquery-1.0.0.ebuild:
+  Mark 1.0.0 ~ia64
+
+  02 May 2005; Carsten Lohrke <carlo@gentoo.org> ttfquery-1.0.0.ebuild:
+  QA: fixed typo, removed unneeded variable usage
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> ttfquery-1.0.0.ebuild:
+  added ~amd64
+
+  17 Jul 2004; David Holm <dholm@gentoo.org> ttfquery-1.0.0.ebuild:
+  Added to ~ppc.
+
+*ttfquery-1.0.0 (10 Jul 2004)
+
+  10 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +ttfquery-1.0.0.ebuild:
+  Initial import. Ebuild submitted by Mike C. Fletcher <mcfletch@rogers.com>,
+  closing bug #54866

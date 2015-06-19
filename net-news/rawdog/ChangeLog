@@ -1,0 +1,242 @@
+# ChangeLog for net-news/rawdog
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-news/rawdog/ChangeLog,v 1.63 2015/03/29 04:13:48 mrueg Exp $
+
+  29 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -rawdog-2.18.ebuild:
+  Remove old.
+
+  11 Nov 2014; Agostino Sarubbo <ago@gentoo.org> rawdog-2.19.ebuild:
+  Stable for ia64, wrt bug #525038
+
+  04 Nov 2014; Agostino Sarubbo <ago@gentoo.org> rawdog-2.19.ebuild:
+  Stable for sparc, wrt bug #525038
+
+  02 Nov 2014; Agostino Sarubbo <ago@gentoo.org> rawdog-2.19.ebuild:
+  Stable for alpha, wrt bug #525038
+
+  01 Nov 2014; Agostino Sarubbo <ago@gentoo.org> rawdog-2.19.ebuild:
+  Stable for ppc, wrt bug #525038
+
+  30 Oct 2014; Agostino Sarubbo <ago@gentoo.org> rawdog-2.19.ebuild:
+  Stable for x86, wrt bug #525038
+
+  29 Oct 2014; Agostino Sarubbo <ago@gentoo.org> rawdog-2.19.ebuild:
+  Stable for amd64, wrt bug #525038
+
+  11 Oct 2014; Jeroen Roovers <jer@gentoo.org> rawdog-2.19.ebuild:
+  Stable for HPPA (bug #525038).
+
+*rawdog-2.20 (11 Oct 2014)
+
+  11 Oct 2014; Ian Delaney <idella4@gentoo.org> +rawdog-2.20.ebuild,
+  -rawdog-2.18-r1.ebuild, rawdog-2.19.ebuild:
+  bump; add test phase to run prepared shell script to run tests
+
+* rawdog-2.18-r1.ebuild (24 Apr 2014)
+
+  24 Apr 2014: Ian Delaney <idella4@gentoo.org> +rawdog-2.18-r1.ebuild,
+  rawdog-2.19.ebuild:
+  revbump to stable 2.18 due to addition of ~hppa, 2.19 already set '~'
+
+* rawdog-2.19.ebuild (16 Apr 2014)
+
+  16 Apr 2014: Ian Delaney <idella4@gentoo.org> +rawdog-2.19.ebuild,
+  -rawdog-2.13.ebuild, -rawdog-2.14.ebuild,
+  -rawdog-2.16.ebuild, -rawdog-2.17.ebuild:
+  Bump; rm old
+
+  19 Mar 2014; Agostino Sarubbo <ago@gentoo.org> rawdog-2.18.ebuild:
+  Stable for alpha, wrt bug #495892
+
+  12 Mar 2014; Agostino Sarubbo <ago@gentoo.org> rawdog-2.18.ebuild:
+  Stable for sparc, wrt bug #495892
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> rawdog-2.18.ebuild:
+  Stable for ppc, wrt bug #495892
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> rawdog-2.18.ebuild:
+  amd64 stable, bug #495892
+
+  23 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> rawdog-2.18.ebuild:
+  x86 stable wrt bug #495892
+
+  15 Feb 2014; Akinori Hattori <hattya@gentoo.org> rawdog-2.18.ebuild:
+  ia64 stable wrt bug #495892
+
+  11 Feb 2014; Jeroen Roovers <jer@gentoo.org> rawdog-2.18.ebuild:
+  Stable for HPPA (bug #495892).
+
+*rawdog-2.18 (17 Sep 2013)
+
+  17 Sep 2013; Patrick Lauer <patrick@gentoo.org> +rawdog-2.18.ebuild:
+  Bump
+
+*rawdog-2.17 (26 Aug 2013)
+
+  26 Aug 2013; Patrick Lauer <patrick@gentoo.org> +rawdog-2.17.ebuild:
+  Bump
+
+*rawdog-2.16 (22 Jul 2013)
+
+  22 Jul 2013; Patrick Lauer <patrick@gentoo.org> +rawdog-2.16.ebuild:
+  Bump
+
+*rawdog-2.14 (25 Jun 2013)
+
+  25 Jun 2013; Patrick Lauer <patrick@gentoo.org> +rawdog-2.14.ebuild:
+  Bump
+
+  07 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -rawdog-2.12.ebuild:
+  Delete.
+
+  07 Jan 2011; Brent Baude <ranger@gentoo.org> rawdog-2.13.ebuild:
+  Marking rawdog-2.13 ppc for bug 345485
+
+  06 Jan 2011; Raúl Porcel <armin76@gentoo.org> rawdog-2.13.ebuild:
+  ia64/s390/sparc stable wrt #345485
+
+  22 Dec 2010; Tobias Klausmann <klausman@gentoo.org> rawdog-2.13.ebuild:
+  Stable on alpha, bug #345485
+
+  22 Dec 2010; Markos Chandras <hwoarang@gentoo.org> rawdog-2.13.ebuild:
+  Stable on amd64 wrt bug #345485
+
+  16 Dec 2010; Thomas Kahle <tomka@gentoo.org> rawdog-2.13.ebuild:
+  x86 stable per bug 345485
+
+  26 Nov 2010; Jeroen Roovers <jer@gentoo.org> rawdog-2.13.ebuild:
+  Stable for HPPA (bug #345485).
+
+  21 Nov 2010; Markos Chandras <hwoarang@gentoo.org> rawdog-2.13.ebuild:
+  Revert my last commit
+
+  21 Nov 2010; Markos Chandras <hwoarang@gentoo.org> rawdog-2.13.ebuild:
+  Stable on amd64 wrt bug #345485
+
+*rawdog-2.13 (16 Oct 2010)
+
+  16 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +rawdog-2.13.ebuild:
+  Version bump.
+
+  16 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  rawdog-2.12.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  17 Jul 2009; nixnut <nixnut@gentoo.org> rawdog-2.12.ebuild:
+  ppc stable #274903
+
+  01 Jul 2009; Raúl Porcel <armin76@gentoo.org> rawdog-2.12.ebuild:
+  ia64/s390/sparc stable wrt #274903
+
+  30 Jun 2009; Christian Faulhammer <fauli@gentoo.org> rawdog-2.12.ebuild:
+  stable x86, bug 274903
+
+  29 Jun 2009; Jeremy Olexa <darkside@gentoo.org> rawdog-2.12.ebuild:
+  amd64 stable, bug 274903
+
+  28 Jun 2009; Tobias Klausmann <klausman@gentoo.org> rawdog-2.12.ebuild:
+  Stable on alpha, bug #274903
+
+  22 Jun 2009; Jeroen Roovers <jer@gentoo.org> rawdog-2.12.ebuild:
+  Stable for HPPA (bug #274903).
+
+*rawdog-2.12 (18 May 2009)
+
+  18 May 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -rawdog-2.6.ebuild, -files/rawdog-2.11-system-feedparser.patch,
+  +rawdog-2.12.ebuild:
+  Version bump.
+
+  13 May 2008; Ali Polatel <hawking@gentoo.org> rawdog-2.11.ebuild:
+  The feedparser rawdog uses has many tweaks and therefore system feedparser
+  can't be used. Removed feedparser DEPEND and readded hppa and s390
+  KEYWORDS.
+
+*rawdog-2.11 (13 May 2008)
+
+  13 May 2008; Ali Polatel <hawking@gentoo.org>
+  +files/rawdog-2.11-system-feedparser.patch, +rawdog-2.11.ebuild:
+  Version bump. Added patch to use system feedparser. Dropped hppa and s390
+  keywords due to feedparser lacking those keywords.
+
+  17 Apr 2008; Jeroen Roovers <jer@gentoo.org> rawdog-2.10.ebuild:
+  Stable for HPPA (bug #206091).
+
+  17 Feb 2008; Christoph Mende <angelos@gentoo.org> rawdog-2.10.ebuild:
+  Stable on amd64, bug #206091
+
+  17 Feb 2008; Raúl Porcel <armin76@gentoo.org> rawdog-2.10.ebuild:
+  alpha/ia64/sparc stable wrt #206091
+
+  16 Feb 2008; Markus Meier <maekke@gentoo.org> rawdog-2.10.ebuild:
+  x86 stable, bug #206091
+
+  15 Feb 2008; nixnut <nixnut@gentoo.org> rawdog-2.10.ebuild:
+  Stable on ppc wrt bug 206091
+
+  04 Mar 2007; Lukasz Strzygowski <lucass@gentoo.org> rawdog-2.6.ebuild,
+  -rawdog-2.7.ebuild, -rawdog-2.9.ebuild, rawdog-2.10.ebuild:
+  Replaced einfo with elog in pkg_postinst in 2.6. Dropped 2.7 and 2.9. Added
+  NEED_PYTHON to 2.10.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*rawdog-2.10 (07 Sep 2006)
+
+  07 Sep 2006; Lukasz Strzygowski <lucass@gentoo.org> +rawdog-2.10.ebuild:
+  Version bump.
+
+*rawdog-2.9 (21 Jun 2006)
+
+  21 Jun 2006; Lukasz Strzygowski <lucass@gentoo.org> -rawdog-1.12.ebuild,
+  -rawdog-2.4.ebuild, +rawdog-2.9.ebuild:
+  Version bump, removed info about upgrading from 1.x, removed older versions.
+
+  02 May 2006; Jason Wever <weeve@gentoo.org> rawdog-2.6.ebuild:
+  Stable on SPARC.
+
+  10 Mar 2006; Aron Griffis <agriffis@gentoo.org> rawdog-2.6.ebuild:
+  Mark 2.6 stable on ia64
+
+*rawdog-2.7 (07 Mar 2006)
+
+  07 Mar 2006; Lukasz Strzygowski <lucass@gentoo.org> metadata.xml,
+  +rawdog-2.7.ebuild:
+  Version bump. Removed trailing spaces from metadata.
+
+  07 Feb 2006; Aron Griffis <agriffis@gentoo.org> rawdog-2.6.ebuild:
+  Mark 2.6 stable on alpha
+
+  05 Feb 2006; <antarus@gentoo.org> rawdog-2.6.ebuild:
+  stable on x86 bug #121655
+
+*rawdog-2.6 (11 Nov 2005)
+
+  11 Nov 2005; Lukasz Strzygowski <lucass@gentoo.org> +rawdog-2.6.ebuild:
+  Version bump. Closing bug #111653.
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> rawdog-1.12.ebuild:
+  Mark 1.12 stable on alpha
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> rawdog-1.12.ebuild:
+  stable on ia64
+
+*rawdog-2.4 (25 Jul 2005)
+
+  25 Jul 2005; Lukasz Strzygowski <lucass@gentoo.org> rawdog-1.12.ebuild,
+  +rawdog-2.4.ebuild:
+  Version bump. rawdog-1.12 marked stable on x86.
+
+  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org> +metadata.xml,
+  +rawdog-1.12.ebuild:
+  Moved from net-www/rawdog to net-news/rawdog.
+
+*rawdog-1.12 (08 Jun 2004)
+
+  08 Jun 2004; Lukasz Strzygowski <lucass@gentoo.org> :
+  Initial commit. Closing bug #35673. Thanks for David Dorward.
+  Marked testing on all architectures, because it should work
+  everywhere where python does.

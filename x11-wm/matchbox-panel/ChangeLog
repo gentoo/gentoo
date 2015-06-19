@@ -1,0 +1,68 @@
+# ChangeLog for x11-wm/matchbox-panel
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/matchbox-panel/ChangeLog,v 1.16 2015/04/14 20:20:28 mrueg Exp $
+
+  14 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -matchbox-panel-0.9.2.ebuild,
+  -matchbox-panel-0.9.3.ebuild:
+  Remove old.
+
+  06 May 2013; Patrick Lauer <patrick@gentoo.org>
+  matchbox-panel-0.9.3-r1.ebuild:
+  Automake 1.13 fix
+
+  04 Jun 2012; Michael Weber <xmw@gentoo.org> matchbox-panel-0.9.3-r1.ebuild:
+  ppc stable (bug 309407)
+
+  05 Mar 2012; Thomas Kahle <tomka@gentoo.org> matchbox-panel-0.9.3-r1.ebuild:
+  marked x86 per bug 309407
+
+  04 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #112268
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  matchbox-panel-0.9.3-r1.ebuild:
+  Stable for amd64, wrt bug #309407
+
+*matchbox-panel-0.9.3-r1 (18 May 2010)
+
+  18 May 2010; Yuri Vasilevski <yvasilev@gentoo.org>
+  +matchbox-panel-0.9.3-r1.ebuild, +files/matchbox-panel-0.9.3-wifi.patch:
+  Made building mb-applet-wireless deterministic, bug #320023
+
+  14 Mar 2009; <solar@gentoo.org> matchbox-panel-0.9.2.ebuild,
+  matchbox-panel-0.9.3.ebuild:
+  keyword ~amd64
+
+  13 Jul 2008; Joseph Jezak <josejx@gentoo.org> matchbox-panel-0.9.3.ebuild:
+  Marked ~ppc for bug #211803.
+
+  27 Feb 2008; Yuri Vasilevski <yvasilev@gentoo.org>
+  matchbox-panel-0.9.2.ebuild, matchbox-panel-0.9.3.ebuild:
+  Updated HOMEPAGE and SRC_URI to it's new location
+  http://matchbox-project.org/ (Bug #211244).
+
+  26 Sep 2007; Jeroen Roovers <jer@gentoo.org> matchbox-panel-0.9.3.ebuild:
+  Marked ~hppa too.
+
+  07 Aug 2006; <yvasilev@gentoo.org> matchbox-panel-0.9.3.ebuild:
+  Added ~arm keyword.
+
+  20 Jun 2006; <yvasilev@gentoo.org>
+  +files/matchbox-panel-0.9.3-gcc4-no-nested-functions.patch,
+  matchbox-panel-0.9.3.ebuild:
+  Fixed gcc4 compile issues and removed nested c functions, fixes bug #137026.
+
+*matchbox-panel-0.9.3 (04 Jun 2006)
+
+  04 Jun 2006; <yvasilev@gentoo.org> +matchbox-panel-0.9.3.ebuild:
+  Version dump.
+
+  28 Apr 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+*matchbox-panel-0.9.2 (13 Mar 2006)
+
+  13 Mar 2006; <yvasilev@gentoo.org> +metadata.xml,
+  +matchbox-panel-0.9.2.ebuild:
+  - Initial import. Original ebuild by Priit Laes, modifications by Björn
+  Ruberg and Yuri Vasilevski.

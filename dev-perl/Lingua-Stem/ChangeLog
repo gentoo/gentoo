@@ -1,0 +1,129 @@
+# ChangeLog for dev-perl/Lingua-Stem
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Lingua-Stem/ChangeLog,v 1.32 2015/06/13 22:11:51 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Lingua-Stem-0.840.0-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*Lingua-Stem-0.840.0-r1 (23 Aug 2014)
+
+  23 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Lingua-Stem-0.840.0-r1.ebuild, -Lingua-Stem-0.840.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -Lingua-Stem-0.83.ebuild:
+  Cleanup
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> Lingua-Stem-0.83.ebuild,
+  Lingua-Stem-0.840.0.ebuild:
+  Drop ia64/sparc keywords
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Lingua-Stem-0.840.0.ebuild:
+  x86 stable wrt bug #400159
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Lingua-Stem-0.840.0.ebuild:
+  Stable for amd64, wrt bug #400159
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Lingua-Stem-0.84.ebuild:
+  Cleanup
+
+*Lingua-Stem-0.840.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org> +Lingua-Stem-0.840.0.ebuild:
+  Change version scheme
+
+*Lingua-Stem-0.84 (30 Apr 2010)
+
+  30 Apr 2010; Torsten Veller <tove@gentoo.org> +Lingua-Stem-0.84.ebuild:
+  Version bump
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org> Lingua-Stem-0.83.ebuild:
+  New virtuals: module-build
+
+  30 Sep 2008; Torsten Veller <tove@gentoo.org> -Lingua-Stem-0.81.ebuild,
+  -Lingua-Stem-0.82.ebuild, Lingua-Stem-0.83.ebuild:
+  Cleanup
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org> Lingua-Stem-0.83.ebuild:
+  amd64 stable
+
+  09 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  Lingua-Stem-0.83.ebuild:
+  Stable on sparc
+
+  29 Jul 2007; Raúl Porcel <armin76@gentoo.org> Lingua-Stem-0.83.ebuild:
+  ia64/x86 stable
+
+*Lingua-Stem-0.83 (25 Jun 2007)
+
+  25 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  +Lingua-Stem-0.83.ebuild:
+  Version bump
+
+  13 Mar 2007; Andrej Kacian <ticho@gentoo.org> Lingua-Stem-0.82.ebuild:
+  Stable on x86, bug #169152.
+
+  16 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Lingua-Stem-0.81.ebuild, Lingua-Stem-0.82.ebuild:
+  Ebuild maintenance
+
+  25 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Lingua-Stem-0.82.ebuild:
+  Stable on sparc
+
+  21 Oct 2006; Aron Griffis <agriffis@gentoo.org> Lingua-Stem-0.82.ebuild:
+  Mark 0.82 stable on ia64
+
+  21 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Lingua-Stem-0.82.ebuild:
+  Marking amd64 stable
+
+  17 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Lingua-Stem-0.81.ebuild:
+  Marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Lingua-Stem-0.81.ebuild, Lingua-Stem-0.82.ebuild:
+  Adding perl dep; fixed DEPEND
+
+*Lingua-Stem-0.82 (30 Jul 2006)
+
+  30 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  +Lingua-Stem-0.82.ebuild:
+  Version bump
+
+  13 Jul 2006; Aron Griffis <agriffis@gentoo.org> Lingua-Stem-0.81.ebuild:
+  Mark 0.81 stable on ia64
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org> Lingua-Stem-0.81.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+  01 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  Lingua-Stem-0.81.ebuild:
+  Keywording ~amd64
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org> Lingua-Stem-0.81.ebuild:
+  Mark 0.81 ~ia64
+
+  05 Aug 2005; David Holm <dholm@gentoo.org> Lingua-Stem-0.81.ebuild:
+  Added to ~ppc.
+
+  17 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Lingua-Stem-0.81.ebuild:
+  Stable on sparc
+
+  22 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  Lingua-Stem-0.81.ebuild:
+  Unmasking for x86
+
+*Lingua-Stem-0.81 (06 Oct 2004)
+
+  06 Oct 2004; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +Lingua-Stem-0.81.ebuild:
+  Dep for Plucene - perl port of lucene

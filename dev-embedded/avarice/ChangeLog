@@ -1,0 +1,50 @@
+# ChangeLog for dev-embedded/avarice
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/avarice/ChangeLog,v 1.10 2015/06/09 13:18:00 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*avarice-2.13 (15 Feb 2014)
+
+  15 Feb 2014; Tim Harder <radhermit@gentoo.org> +avarice-2.13.ebuild:
+  Version bump.
+
+*avarice-2.12 (23 Dec 2011)
+
+  23 Dec 2011; Tim Harder <radhermit@gentoo.org> +avarice-2.12.ebuild:
+  Version bump.
+
+  15 Sep 2011; Tim Harder <radhermit@gentoo.org> -avarice-2.6.ebuild,
+  -avarice-2.9.ebuild, -avarice-2.10.ebuild, -files/avarice-2.10-gcc44.patch:
+  Remove old.
+
+*avarice-2.11 (15 Sep 2011)
+
+  15 Sep 2011; Tim Harder <radhermit@gentoo.org> +avarice-2.11.ebuild:
+  Version bump.
+
+*avarice-2.10 (07 Aug 2009)
+
+  07 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> +avarice-2.10.ebuild,
+  +files/avarice-2.10-gcc44.patch:
+  Version bump. Fix building with GCC 4.4+ and GLIBC 2.10+ wrt #277315.
+
+*avarice-2.9 (16 Mar 2009)
+
+  16 Mar 2009; Raúl Porcel <armin76@gentoo.org> -avarice-2.3.ebuild,
+  +avarice-2.9.ebuild:
+  Version bump wrt #261449
+
+*avarice-2.6 (29 Jul 2007)
+
+  29 Jul 2007; Denis Dupeyron <calchan@gentoo.org> +avarice-2.6.ebuild:
+  Version bump (bug #159978).
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*avarice-2.3 (07 Sep 2005)
+
+  07 Sep 2005; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Sandro #86697.

@@ -1,0 +1,289 @@
+# ChangeLog for net-libs/liblockfile
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/liblockfile/ChangeLog,v 1.78 2015/05/01 03:14:45 mrueg Exp $
+
+  01 May 2015; Manuel Rüger <mrueg@gentoo.org> -files/1.08-stale_lock.patch,
+  -liblockfile-1.08.ebuild:
+  Remove old.
+
+  01 Aug 2014;  <tgall@gentoo.org> liblockfile-1.09.ebuild:
+  arm64, initial support
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> liblockfile-1.08.ebuild,
+  liblockfile-1.09.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+  20 Feb 2013; Zac Medico <zmedico@gentoo.org> liblockfile-1.09.ebuild:
+  Add ~arm-linux keyword.
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> liblockfile-1.09.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #419261
+
+  03 Jul 2012; Jeroen Roovers <jer@gentoo.org> liblockfile-1.09.ebuild:
+  Stable for HPPA (bug #419261).
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> liblockfile-1.09.ebuild:
+  Marking liblockfile-1.09 ppc for bug 419261
+
+  06 Jun 2012; Markus Meier <maekke@gentoo.org> liblockfile-1.09.ebuild:
+  arm stable, bug #419261
+
+  06 Jun 2012; Jeff Horelick <jdhore@gentoo.org> liblockfile-1.09.ebuild:
+  marked x86 per bug 419261
+
+  05 Jun 2012; Brent Baude <ranger@gentoo.org> liblockfile-1.09.ebuild:
+  Marking liblockfile-1.09 ppc64 for bug 419261
+
+  02 Jun 2012; Agostino Sarubbo <ago@gentoo.org> liblockfile-1.09.ebuild:
+  Stable for amd64, wrt bug #419261
+
+  02 Jun 2012; Eray Aslan <eras@gentoo.org> liblockfile-1.09.ebuild:
+  QA - fix quoting
+
+  06 May 2012; Alexis Ballier <aballier@gentoo.org> liblockfile-1.09.ebuild:
+  keyword ~amd64-fbsd
+
+  23 Feb 2012; Jeremy Olexa <darkside@gentoo.org> liblockfile-1.09.ebuild:
+  (Gentoo Prefix only) Use id -g instead of id -gn, bug 350763 by Francois
+  Bissey
+
+  11 Feb 2012; Fabian Groffen <grobian@gentoo.org> liblockfile-1.09.ebuild:
+  Fix double Prefix that did not occur with 1.08
+
+  10 Feb 2012; Fabian Groffen <grobian@gentoo.org> +files/Makefile.Darwin.in,
+  liblockfile-1.09.ebuild:
+  Fixed for Prefix and Darwin, transferred Prefix keywords
+
+*liblockfile-1.09 (18 Dec 2011)
+
+  18 Dec 2011; Eray Aslan <eras@gentoo.org>
+  -files/liblockfile-1.06-glibc24.patch, +liblockfile-1.09.ebuild:
+  version bump and remove old patches
+
+  08 Jun 2011; Eray Aslan <eras@gentoo.org> -liblockfile-1.06-r2.ebuild:
+  Remove old
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> liblockfile-1.06-r2.ebuild:
+  Drop to ~mips
+
+  08 Apr 2010; Jeroen Roovers <jer@gentoo.org> liblockfile-1.08.ebuild:
+  Stable for HPPA (bug #302016).
+
+  13 Feb 2010; Raúl Porcel <armin76@gentoo.org> liblockfile-1.08.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #302016
+
+  10 Feb 2010; Joseph Jezak <josejx@gentoo.org> liblockfile-1.08.ebuild:
+  Marked ppc stable for bug #302016.
+
+  07 Feb 2010; Markus Meier <maekke@gentoo.org> liblockfile-1.08.ebuild:
+  amd64/arm/x86 stable, bug #302016
+
+  24 Jan 2010; Tom Gall <tgall@gentoo.org> liblockfile-1.08.ebuild:
+  stable on ppc64, bug #302016
+
+  28 Apr 2009; Torsten Veller <tove@gentoo.org> liblockfile-1.08.ebuild:
+  Check for mail group (#236317)
+
+*liblockfile-1.08 (28 Apr 2009)
+
+  28 Apr 2009; Torsten Veller <tove@gentoo.org>
+  +files/1.08-stale_lock.patch, +liblockfile-1.08.ebuild:
+  Version bump. Thanks Peter Alfredsen (#218619)
+
+  21 Sep 2008; Mike Frysinger <vapier@gentoo.org>
+  liblockfile-1.06-r2.ebuild:
+  Drop bindnow-flags usage #227005.
+
+  28 Dec 2007; <welp@gentoo.org> liblockfile-1.06-r2.ebuild:
+  Keyworded ~sparc-fbsd; bug 203630
+
+  03 Sep 2007; Roy Marples <uberlord@gentoo.org> liblockfile-1.06-r2.ebuild:
+  Rename internal function eaccess to egidaccess so as not to conflict with
+  libc's function.
+  Keyworded ~x86-fbsd, #191101
+
+  20 Jun 2007; Raúl Porcel <armin76@gentoo.org> liblockfile-1.06-r2.ebuild:
+  alpha stable wrt #160759
+
+  12 May 2007; Joshua Kinard <kumba@gentoo.org> liblockfile-1.06-r2.ebuild:
+  Stable on mips.
+
+  04 Feb 2007; Steve Dibb <beandog@gentoo.org> liblockfile-1.06-r2.ebuild:
+  amd64 stable, bug 160759
+
+  31 Jan 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  liblockfile-1.06-r2.ebuild:
+  Stable on ppc wrt bug #160759.
+
+  19 Jan 2007; Jeroen Roovers <jer@gentoo.org> liblockfile-1.06-r2.ebuild:
+  Stable for HPPA (bug #160759).
+
+  09 Jan 2007; Markus Rothe <corsair@gentoo.org> liblockfile-1.06-r2.ebuild:
+  Stable on ppc64; bug #160759
+
+  09 Jan 2007; Andrej Kacian <ticho@gentoo.org> liblockfile-1.06-r2.ebuild:
+  Stable on x86, bug #160759.
+
+  08 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  liblockfile-1.06-r2.ebuild:
+  Stable on sparc wrt #160759
+
+*liblockfile-1.06-r2 (20 Dec 2006)
+
+  20 Dec 2006; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/liblockfile-orphan-file.patch, +liblockfile-1.06-r2.ebuild:
+  Add patch from bug #145450
+
+  21 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  liblockfile-1.06-r1.ebuild:
+  Stable on Alpha, bug 140793.
+
+  17 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  liblockfile-1.06-r1.ebuild:
+  Add missing WANT_AUTOCONF/WANT_AUTOMAKE variables.
+
+  22 Jul 2006; Daniel Gryniewicz <dang@gentoo.org>
+  liblockfile-1.06-r1.ebuild:
+  Marked stable on amd64 for bug #140793
+
+  20 Jul 2006; Markus Rothe <corsair@gentoo.org> liblockfile-1.06-r1.ebuild:
+  Stable on ppc64; bug #140793
+
+  20 Jul 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  liblockfile-1.06-r1.ebuild:
+  Stable on sparc wrt #140793
+
+  20 Jul 2006; Joshua Jackson <tsunam@gentoo.org>
+  liblockfile-1.06-r1.ebuild:
+  Stable x86; bug #140793
+
+  18 Jul 2006; Jeroen Roovers <jer@gentoo.org> liblockfile-1.06-r1.ebuild:
+  Stable on HPPA (bug #140793).
+
+  13 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  liblockfile-1.06-r1.ebuild:
+  Mark 1.06-r1 stable on ia64
+
+  08 Jul 2006; Lars Weiler <pylon@gentoo.org> liblockfile-1.06-r1.ebuild:
+  Stable on ppc; glibc-2.4 related.
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org>
+  files/digest-liblockfile-1.06, Manifest:
+  Fixing SHA256 digest, pass four
+
+  06 Apr 2006; Tuấn Văn <langthang@gentoo.org>
+  +files/liblockfile-1.06-respectflags.patch, liblockfile-1.06-r1.ebuild:
+  respect LDFLAGS. Bug #126827 by Diego Pettenò <flameeyes@gentoo.org>
+
+*liblockfile-1.06-r1 (14 Mar 2006)
+
+  14 Mar 2006; Tuấn Văn <langthang@gentoo.org>
+  +files/liblockfile-1.06-glibc24.patch, +liblockfile-1.06-r1.ebuild:
+  glic-2.4 support. Bugs #126042 reported by Jose daLuz <jdaluz@gmail.com>.
+  patch by Diego Pettenò <flameeyes@gentoo.org>.
+
+  25 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  liblockfile-1.06.ebuild:
+  Use bindnow-flags function instead of -Wl,-z,now.
+
+  10 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> liblockfile-1.06.ebuild:
+  Stable on mips.
+
+  23 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  -files/liblockfile-1.03-gcc33.patch, -liblockfile-1.03-r1.ebuild,
+  -liblockfile-1.03-r2.ebuild:
+  remove older versions
+
+  23 Jun 2005; <plasmaroo@gentoo.org> liblockfile-1.06.ebuild:
+  Stable on IA64.
+
+  19 Jun 2005; Simon Stelling <blubb@gentoo.org> liblockfile-1.06.ebuild:
+  stable on amd64
+
+  18 Jun 2005; Markus Rothe <corsair@gentoo.org> liblockfile-1.06.ebuild:
+  Stable on ppc64
+
+  18 Jun 2005; Markus Rothe <corsair@gentoo.org> liblockfile-1.06.ebuild:
+  Stable on ppc64
+
+  18 Jun 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  liblockfile-1.06.ebuild:
+  stable on ppc, bug #96349
+
+  17 Jun 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  liblockfile-1.06.ebuild:
+  Stable on hppa. bug #96349
+
+  15 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  liblockfile-1.06.ebuild:
+  Stable on sparc
+
+  10 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  liblockfile-1.06.ebuild:
+  x86 and alpha stable
+
+  30 May 2005; Sven Wegener <swegener@gentoo.org>
+  liblockfile-1.03-r1.ebuild, liblockfile-1.03-r2.ebuild:
+  Moved from gcc.eclass to toolchain-funcs.eclass, bug #92745.
+
+  23 May 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  liblockfile-1.06.ebuild:
+  Don't use lazy bindings on dotlockfile
+
+*liblockfile-1.06 (18 May 2005)
+
+  18 May 2005; Fernando J. Pereda <ferdy@gentoo.org> +metadata.xml,
+  -liblockfile-1.03.ebuild, liblockfile-1.03-r2.ebuild,
+  +liblockfile-1.06.ebuild:
+  version bump wrt #66617. remove 1.03. Add missing metadata.
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> liblockfile-1.03-r2.ebuild:
+  stable on ia64
+
+  19 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  liblockfile-1.03-r1.ebuild, liblockfile-1.03-r2.ebuild:
+  Marking 1.03-r2 stable amd64.  See bug #82304.
+
+*liblockfile-1.03-r2 (26 Jan 2005)
+
+  26 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +liblockfile-1.03-r2.ebuild:
+  Revbump for get_libdir fix and building shared lib.
+
+  15 Jul 2004; Tom Gall <tgall@gentoo.org> liblockfile-1.03-r1.ebuild:
+  stable on ppc64, bug #55668
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  liblockfile-1.03-r1.ebuild, liblockfile-1.03.ebuild:
+  virtual/glibc -> virtual/libc
+
+  25 Mar 2004; Joshua Kinard <kumba@gentoo.org> liblockfile-1.03-r1.ebuild,
+  liblockfile-1.03.ebuild:
+  Added ~mips to KEYWORDS.
+
+*liblockfile-1.03-r1 (28 Jul 2003)
+
+  03 Jul 2003; Guy Martin <gmsoft@gentoo.org> liblockfile-1.03-r1.ebuild :
+  Added hppa to KEYWORDS.
+
+  28 Jul 2003; Martin Schlemmer <azarah@gentoo.org>
+  liblockfile-1.03-r1.ebuild, files/liblockfile-1.03-gcc33.patch:
+  Fix gcc-3.3 issues.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*liblockfile-1.03 (1 Feb 2002)
+
+  14 Apr 2003; Aron Griffis <agriffis@gentoo.org> liblockfile-1.03.ebuild:
+  Mark stable on alpha
+
+  28 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

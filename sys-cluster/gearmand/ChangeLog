@@ -1,0 +1,117 @@
+# ChangeLog for sys-cluster/gearmand
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/gearmand/ChangeLog,v 1.24 2014/12/28 16:57:22 titanofold Exp $
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  gearmand-0.34-r1.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  gearmand-0.34-r1.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  04 Mar 2013; Diego E. Pettenò <flameeyes@gentoo.org> gearmand-0.34-r1.ebuild:
+  Inherit user eclass.
+
+*gearmand-0.34-r1 (04 Mar 2013)
+
+  04 Mar 2013; Diego E. Pettenò <flameeyes@gentoo.org> +gearmand-0.34-r1.ebuild,
+  -files/gearmand-0.33+gcc-4.7.patch, -gearmand-0.33.ebuild,
+  -gearmand-0.34.ebuild:
+  Remove old; bump to use autotools-utils and use sub-slot dependency on boost.
+
+  22 Nov 2012; Diego E. Pettenò <flameeyes@gentoo.org> gearmand-0.34.ebuild:
+  Depend on a multithread-safe version of boost if available.
+
+  31 Oct 2012; Diego E. Pettenò <flameeyes@gentoo.org> gearmand-0.34.ebuild:
+  Add a missing dependency over boost 1.39 or later (thanks to Steffen Weber in
+  bug #433413). Also depend on pkgconfig.
+
+*gearmand-0.34 (13 Jul 2012)
+
+  13 Jul 2012; Diego E. Pettenò <flameeyes@gentoo.org> +gearmand-0.34.ebuild,
+  files/gearmand.init.d.2:
+  Re-license init script as stated by Pavel in bug #426158. Version bump.
+
+  24 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata, helps my own bug templating script.
+
+  21 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org> -files/gearmand.init.d,
+  -gearmand-0.12.ebuild, -gearmand-0.14.ebuild, -gearmand-0.24.ebuild:
+  Remove old and fix append-cppflags.
+
+  21 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +files/gearmand-0.33+gcc-4.7.patch, gearmand-0.33.ebuild:
+  Add patch to fix building with GCC 4.7 (fix bug #422553).
+
+*gearmand-0.33 (04 Jun 2012)
+
+  04 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org> +files/gearmand.init.d.2,
+  +gearmand-0.33.ebuild:
+  Version bump by Pavel; also update to EAPI=4. Init script update to use
+  default stop() function and checkpath.
+
+  14 Jan 2012; Kacper Kowalik <xarthisius@gentoo.org> metadata.xml:
+  tcmalloc is now global
+
+*gearmand-0.24 (22 Oct 2011)
+
+  22 Oct 2011; Diego E. Pettenò <flameeyes@gentoo.org> +gearmand-0.24.ebuild:
+  Version bump, thanks to Pavel.
+
+  15 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  gearmand-0.12.ebuild, gearmand-0.14.ebuild:
+  Simplify dependencies (changed versioning scheme).
+
+*gearmand-0.14 (16 Sep 2010)
+
+  16 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +gearmand-0.14.ebuild, files/gearmand.init.d:
+  Version bump; also update init script to (re-)create run and log
+  directories if missing, with the proper permissions.
+
+  06 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -gearmand-0.11-r2.ebuild, gearmand-0.12.ebuild:
+  Remove old version and use the new drizzle with libdrizzle.
+
+  17 Apr 2010; Robin H. Johnson <robbat2@gentoo.org> gearmand-0.12.ebuild:
+  x86 support.
+
+*gearmand-0.12 (23 Feb 2010)
+
+  23 Feb 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +gearmand-0.12.ebuild, files/gearmand.conf.d, files/gearmand.init.d,
+  metadata.xml:
+  Version bump. Update init scripts. Proxy commit for Pavel Stratil.
+
+  09 Feb 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  gearmand-0.11-r2.ebuild:
+  Force disabled the PostgreSQL support as it currently fails to build
+  automagically. Thanks to Francesco Riosa for reporting in bug #304157.
+
+  20 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  gearmand-0.11-r2.ebuild:
+  Add elog information at postinst, from Pavel.
+
+  23 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  gearmand-0.11-r2.ebuild:
+  Disable static libraries by default and remove .la files.
+
+*gearmand-0.11-r2 (20 Dec 2009)
+
+  20 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -gearmand-0.11-r1.ebuild, +gearmand-0.11-r2.ebuild, metadata.xml:
+  Revision bump, add support for dev-db/libdrizzle, sqlite and write the
+  code to support postgresql (albeit non-working yet).
+
+*gearmand-0.11-r1 (20 Dec 2009)
+
+  20 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +gearmand-0.11-r1.ebuild, +files/gearmand.conf.d, +files/gearmand.init.d,
+  +metadata.xml:
+  Initial import of gearmand, thanks to Pavel Stratil (who's co-maintaining
+  the package) who wrote the basic ebuild and init script. Closes bug
+  #279413, reported by Rob Peck (who also wrote an alternative ebuild).

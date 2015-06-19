@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst setup
+DEPEND=dev-lang/perl sys-apps/sed
+DESCRIPTION=A streaming server for MP3, OGG vorbis and other streamable files
+HOMEPAGE=http://www.gnu.org/software/gnump3d/
+IUSE=sox
+KEYWORDS=alpha amd64 ~ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl sox? ( media-sound/sox )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://savannah.gnu.org/download/gnump3d/gnump3d-3.0.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=cc7a1f67f6bff8c45523fa378dd7f70e

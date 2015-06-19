@@ -1,0 +1,12 @@
+Index: projectM-2.0.1-Source/libprojectM.pc.in
+===================================================================
+--- projectM-2.0.1-Source.orig/libprojectM.pc.in
++++ projectM-2.0.1-Source/libprojectM.pc.in
+@@ -1,6 +1,6 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=@LIB_INSTALL_DIR@
++libdir=${exec_prefix}/lib@LIB_SUFFIX@
+ includedir=@CMAKE_INSTALL_PREFIX@/include
+ pkgdatadir=@CMAKE_INSTALL_PREFIX@/@RESOURCE_PREFIX@
+ sysconfdir=@CMAKE_INSTALL_PREFIX@/@RESOURCE_PREFIX@

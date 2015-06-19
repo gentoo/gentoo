@@ -1,0 +1,457 @@
+# ChangeLog for www-misc/awstats
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-misc/awstats/ChangeLog,v 1.36 2014/08/10 20:10:20 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> awstats-7.1.1.ebuild,
+  awstats-7.1_p20121017.ebuild, awstats-7.3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*awstats-7.3 (26 Apr 2014)
+
+  26 Apr 2014; Diego E. Pettenò <flameeyes@gentoo.org> +awstats-7.3.ebuild:
+  Version bump.
+
+*awstats-7.1.1 (03 Apr 2013)
+
+  03 Apr 2013; Diego E. Pettenò <flameeyes@gentoo.org> +awstats-7.1.1.ebuild,
+  -awstats-7.1-r2.ebuild:
+  Version bump; remove old.
+
+  15 Nov 2012; Anthony G. Basile <blueness@gentoo.org>
+  awstats-7.1_p20121017.ebuild:
+  stable ppc, bug #440764
+
+  13 Nov 2012; Andreas Schuerch <nativemad@gentoo.org>
+  awstats-7.1_p20121017.ebuild:
+  x86 stable, see bug 440764
+
+  12 Nov 2012; Jeroen Roovers <jer@gentoo.org> awstats-7.1_p20121017.ebuild:
+  Stable for HPPA (bug #440764).
+
+  11 Nov 2012; <ago@gentoo.org> awstats-7.1_p20121017.ebuild:
+  Stable for amd64, wrt bug #440764
+
+*awstats-7.1_p20121017 (01 Nov 2012)
+
+  01 Nov 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +awstats-7.1_p20121017.ebuild, -awstats-7.0_p20101205-r3.ebuild,
+  -files/awstats-6.3-gentoo.diff, -files/awstats-7.0_p20101205-nofollow.patch:
+  Remove old; bump to a new snapshot as per bug #440764.
+
+  01 Feb 2012; Brent Baude <ranger@gentoo.org> awstats-7.1-r2.ebuild:
+  Marking awstats-7.1-r2 ppc for bug 384237
+
+  15 Nov 2011; Jeroen Roovers <jer@gentoo.org> awstats-7.1-r2.ebuild:
+  Stable for HPPA (bug #384237).
+
+  15 Nov 2011; Tony Vroon <chainsaw@gentoo.org> awstats-7.1-r2.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Elijah "Armageddon" El Lazkani in security bug #384237.
+
+  13 Nov 2011; Markus Meier <maekke@gentoo.org> awstats-7.1-r2.ebuild:
+  x86 stable, bug #384237
+
+*awstats-7.1-r2 (11 Nov 2011)
+
+  11 Nov 2011; Diego E. Pettenò <flameeyes@gentoo.org> +awstats-7.1-r2.ebuild,
+  -awstats-7.1-r1.ebuild:
+  Properly fix the mistake.
+
+*awstats-7.1-r1 (11 Nov 2011)
+
+  11 Nov 2011; Diego E. Pettenò <flameeyes@gentoo.org> +awstats-7.1-r1.ebuild,
+  -awstats-7.1.ebuild:
+  Fix bug #353716.
+
+*awstats-7.1 (11 Nov 2011)
+
+  11 Nov 2011; Diego E. Pettenò <flameeyes@gentoo.org> +awstats-7.1.ebuild,
+  +files/awstats-7.1-gentoo.diff:
+  Version bump; new version is beta but solves some security issues.
+
+  06 Jun 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/postinst-en-r1.txt, -awstats-6.95.ebuild,
+  -awstats-7.0_p20101205.ebuild, awstats-7.0_p20101205-r3.ebuild:
+  Remove old; remove unused file; remove versionator inheritance.
+
+  30 Jan 2011; Raúl Porcel <armin76@gentoo.org> awstats-6.95.ebuild:
+  Move to ~alpha
+
+  26 Jan 2011; <xarth@gentoo.org> awstats-7.0_p20101205-r3.ebuild:
+  ppc stable wrt #352600
+
+  25 Jan 2011; Jeroen Roovers <jer@gentoo.org> awstats-7.0_p20101205-r3.ebuild:
+  Stable for HPPA (bug #352600).
+
+  25 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  awstats-7.0_p20101205-r3.ebuild:
+  stable x86, security bug 352600
+
+  25 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  awstats-7.0_p20101205-r3.ebuild:
+  Stable on amd64 wrt bug #352600
+
+*awstats-7.0_p20101205-r3 (10 Jan 2011)
+
+  10 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -awstats-7.0_p20101205-r2.ebuild, +awstats-7.0_p20101205-r3.ebuild:
+  Yet another last-minute fix (to paths).
+
+*awstats-7.0_p20101205-r2 (10 Jan 2011)
+
+  10 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  -awstats-7.0_p20101205-r1.ebuild, +awstats-7.0_p20101205-r2.ebuild:
+  Polish rough edges left by the transition away from webapp-config, now
+  install all the tools in the path (and all prefixed with awstats_), and make
+  the cgi-bin executable. Also don't install extraneous data in /usr/share.
+
+  10 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  awstats-7.0_p20101205-r1.ebuild:
+  Avoid repeating the same LoadPlugin too many times.
+
+*awstats-7.0_p20101205-r1 (10 Jan 2011)
+
+  10 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +awstats-7.0_p20101205-r1.ebuild,
+  +files/awstats-7.0_p20101205-nofollow.patch:
+  Simplify ebuild by dropping apache.depend and webapp eclasses; this version
+  no longer users webapp-config for setup, instead it relies on stable paths
+  for configuration (suggested method), as it doesn't slot and it requires
+  global paths to save data. Also, patch in rel=nofollow attribute on external
+  links to avoid boosting spammers' pagerank.
+
+*awstats-7.0_p20101205 (09 Jan 2011)
+
+  09 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org> -awstats-6.9-r1.ebuild,
+  -awstats-7.0.ebuild, -awstats-7.0_p20100929.ebuild,
+  +awstats-7.0_p20101205.ebuild:
+  Version bump since upstream changed the tarball; now use stored versioned
+  tarballs as upstream seem to re-release it even when no actual changes are in
+  the code.
+
+*awstats-7.0_p20100929 (15 Oct 2010)
+
+  15 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +awstats-7.0_p20100929.ebuild:
+  Version bump since upstream changed tarball without changing version.
+
+*awstats-7.0 (08 Sep 2010)
+
+  08 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/awstats-6.3-gentoo.diff, +awstats-7.0.ebuild, metadata.xml:
+  Version bump to latest beta that seem to fix some security concerns. Take
+  co-maintainership of package.
+
+  12 Mar 2010; Jeroen Roovers <jer@gentoo.org> awstats-6.95.ebuild:
+  Stable for HPPA (bug #293981).
+
+  09 Mar 2010; Joseph Jezak <josejx@gentoo.org> awstats-6.95.ebuild:
+  Marked ppc stable for bug #293981.
+
+  07 Mar 2010; Raúl Porcel <armin76@gentoo.org> awstats-6.95.ebuild:
+  alpha stable wrt #293981
+
+  06 Mar 2010; Markus Meier <maekke@gentoo.org> awstats-6.95.ebuild:
+  amd64/x86 stable, bug #293981
+
+  06 Mar 2010; Markus Meier <maekke@gentoo.org> awstats-6.95.ebuild:
+  amd64/x86 stable, bug #293981
+
+*awstats-6.95 (21 Nov 2009)
+
+  21 Nov 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +awstats-6.95.ebuild:
+  Version bump; thanks to Tom Hendriks in bug #293981 (also for ipv6 USE
+  flag).
+
+  26 May 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  awstats-6.9-r1.ebuild:
+  Call depend.apache_pkg_setup() in pkg_setup() (bug #268371).
+
+  09 Apr 2009; Ulrich Mueller <ulm@gentoo.org>
+  +files/awstats-6.3-gentoo.diff, +files/postinst-en-r1.txt, +metadata.xml,
+  +awstats-6.9-r1.ebuild:
+  Package moved from net-www to www-misc, bug 265569.
+
+*awstats-6.9-r1 (24 Jan 2009)
+
+  24 Jan 2009; Benedikt Böhm <hollow@gentoo.org> -awstats-6.9.ebuild,
+  +awstats-6.9-r1.ebuild:
+  fix manifest wrt #252964, fix library search path wrt #250215
+
+  04 Dec 2008; Gunnar Wrobel <wrobel@gentoo.org> Manifest:
+  Bug #246977 again.
+
+  17 Nov 2008; Benedikt Böhm <hollow@gentoo.org> awstats-6.9.ebuild:
+  add symlinks to awstats.pl and htdocs (bug #220407); fix manifest (bug #246977)
+
+  08 Nov 2008; Gunnar Wrobel <wrobel@gentoo.org> -awstats-6.7-r2.ebuild:
+  Removed vulnerable awstats-6.7-r2.ebuild (#235225).
+
+  16 Oct 2008; Tobias Scherbaum <dertobi123@gentoo.org> awstats-6.9.ebuild:
+  ppc stable, bug #235225
+
+  13 Oct 2008; Jeroen Roovers <jer@gentoo.org> awstats-6.9.ebuild:
+  Stable for HPPA (bug #235225).
+
+  12 Oct 2008; Raúl Porcel <armin76@gentoo.org> awstats-6.9.ebuild:
+  alpha stable wrt #235225
+
+  12 Oct 2008; Markus Meier <maekke@gentoo.org> awstats-6.9.ebuild:
+  amd64/x86 stable, bug #235225
+
+*awstats-6.9 (11 Oct 2008)
+
+  11 Oct 2008; Gunnar Wrobel <wrobel@gentoo.org> +awstats-6.9.ebuild:
+  Added awstats-6.9 in response to sec issue #235225.
+
+  19 Feb 2008; Benedikt Böhm <hollow@gentoo.org>
+  -files/awstats-6.5-CVE-2006-2237-CVE-2006-1945.diff,
+  -files/postinst-en.txt, -awstats-6.5-r1.ebuild:
+  remove broken ebuild
+
+  19 Feb 2008; Richard Freeman <rich0@gentoo.org> awstats-6.7-r2.ebuild:
+  amd64 stable - #208615
+
+  08 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  awstats-6.7-r2.ebuild:
+  ppc stable, bug #208615
+
+  06 Feb 2008; Raúl Porcel <armin76@gentoo.org> awstats-6.7-r2.ebuild:
+  alpha stable wrt #208615
+
+  05 Feb 2008; Benedikt Böhm <hollow@gentoo.org> -awstats-6.7.ebuild,
+  -awstats-6.7-r1.ebuild:
+  remove old versions
+
+  04 Feb 2008; Jeroen Roovers <jer@gentoo.org> awstats-6.7-r2.ebuild:
+  Stable for HPPA (bug #208615).
+
+  02 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  awstats-6.7-r2.ebuild:
+  stable x86, bug #208615
+
+  19 Jan 2008; Benedikt Böhm <hollow@gentoo.org> awstats-6.7-r2.ebuild:
+  remove bogus USE=-cgi
+
+*awstats-6.7-r2 (23 Dec 2007)
+
+  23 Dec 2007; Dawid Węgliński <cla@gentoo.org> +awstats-6.7-r2.ebuild:
+  Fix bug #203187
+
+  20 Dec 2007; Benedikt Böhm <hollow@gentoo.org> awstats-6.7-r1.ebuild:
+  fix #202676
+
+*awstats-6.7-r1 (15 Dec 2007)
+
+  15 Dec 2007; Benedikt Böhm <hollow@gentoo.org> +files/postinst-en-r1.txt,
+  +awstats-6.7-r1.ebuild:
+  fix #125779, #195098
+
+  08 Sep 2007; Benedikt Böhm <hollow@gentoo.org> -awstats-6.5-r2.ebuild,
+  awstats-6.7.ebuild:
+  do not use USE_APACHE2; whitespace cleanup
+
+  07 Sep 2007; Jeroen Roovers <jer@gentoo.org> awstats-6.7.ebuild:
+  Marked ~hppa (bug #191525).
+
+*awstats-6.7 (06 Sep 2007)
+
+  06 Sep 2007; Benedikt Böhm <hollow@gentoo.org>
+  files/awstats-6.5-CVE-2006-2237-CVE-2006-1945.diff, -awstats-6.6.ebuild,
+  +awstats-6.7.ebuild:
+  fix bug #187994, #187811
+
+  05 Aug 2007; Renat Lumpau <rl03@gentoo.org> files/digest-awstats-6.5-r1,
+  files/digest-awstats-6.5-r2, Manifest:
+  Fix digests, bug #185151
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org> awstats-6.5-r1.ebuild:
+  Fixing the DEPEND/RDEPEND for the move of net-www/apache to
+  www-servers/apache (#78622).
+
+  29 May 2007; Renat Lumpau <rl03@gentoo.org> awstats-6.6.ebuild:
+  Add geoip support per bug #103663.
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove ka0ttic from metadata.xml due to retirement.
+
+  12 Mar 2007; Renat Lumpau <rl03@gentoo.org> files/digest-awstats-6.6,
+  Manifest:
+  Regen digest, bug 170513
+
+  03 Jan 2007; Renat Lumpau <rl03@gentoo.org> awstats-6.6.ebuild:
+  Minor cleanups to 6.6
+
+  27 Oct 2006; Renat Lumpau <rl03@gentoo.org> awstats-6.5-r2.ebuild,
+  awstats-6.6.ebuild:
+  Fix postinstall instructions, bug #135233.
+
+  09 Jul 2006; Renat Lumpau <rl03@gentoo.org> awstats-6.5-r1.ebuild,
+  awstats-6.5-r2.ebuild, awstats-6.6.ebuild:
+  einfo -> elog
+
+*awstats-6.5-r2 (15 Jun 2006)
+
+  15 Jun 2006; Luca Longinotti <chtekk@gentoo.org> -awstats-6.4.ebuild,
+  -awstats-6.5.ebuild, +awstats-6.5-r2.ebuild, awstats-6.6.ebuild:
+  Remove old vunlnerable versions 6.4 and 6.5. Add 6.5-r2 which fixes bug
+  #131027, it now uses apache/apache2 USE flags to determine if you want
+  Apache support directly (it anyway only influences the DEPENDs and the
+  default logpath). It also fixes var quotation in the ebuild. The same
+  changes were ported to 6.6 too.
+
+  01 Jun 2006; Thomas Cort <tcort@gentoo.org> awstats-6.5-r1.ebuild:
+  Stable on alpha and amd64 wrt security Bug #130487.
+
+  01 Jun 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  awstats-6.5-r1.ebuild:
+  ppc stable, bug #130487
+
+  31 May 2006; Joshua Jackson <tsunam@gentoo.org> awstats-6.5-r1.ebuild:
+  stable on x86; security bug #130487
+
+*awstats-6.5-r1 (30 May 2006)
+
+  30 May 2006; Luca Longinotti <chtekk@gentoo.org>
+  -files/awstats-6.3-CAN-2005-0363.diff,
+  +files/awstats-6.5-CVE-2006-2237-CVE-2006-1945.diff,
+  -awstats-6.3-r2.ebuild, +awstats-6.5-r1.ebuild, awstats-6.6.ebuild:
+  Fixed security bug #130487 and bug #122913. Drop awstats 6.3 release
+  (mirrors seem to not have the patchset needed for it anymore, and it's old).
+  Dropped keywords for awstats 6.6 back to testing, as it should not be stable
+  and will remain p.masked anyway for now.
+
+  21 May 2006; Mark Loeser <halcy0n@gentoo.org> awstats-6.6.ebuild:
+  Stable on x86; bug #130487
+
+  19 May 2006; Tobias Scherbaum <dertobi123@gentoo.org> awstats-6.6.ebuild:
+  ppc stable, bug #130487
+
+  19 May 2006; Thomas Cort <tcort@gentoo.org> awstats-6.6.ebuild:
+  Stable on alpha wrt security Bug #130487.
+
+  19 May 2006; Daniel Gryniewicz <dang@gentoo.org> awstats-6.6.ebuild:
+  Marked stable on amd64 Per bug #130487
+
+  19 May 2006; Renat Lumpau <rl03@gentoo.org> awstats-6.6.ebuild:
+  Set SLOT explicitly, thanks to jakub
+
+*awstats-6.6 (19 May 2006)
+
+  19 May 2006; Renat Lumpau <rl03@gentoo.org> +awstats-6.6.ebuild:
+  Version bump wrt security bug #130487 ; primary maintainer unavailable.
+
+  23 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> awstats-6.5.ebuild:
+  Add ~x86-fbsd keyword.
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  awstats-6.3-r2.ebuild, awstats-6.4.ebuild, awstats-6.5.ebuild:
+  Virtuals for perl-core
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> awstats-6.5.ebuild:
+  Mark 6.5 stable on alpha
+
+  14 Sep 2005; <dang@gentoo.org> awstats-6.5.ebuild:
+  Marked stable on amd64
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> awstats-6.5.ebuild:
+  Stable on ppc and added to ~hppa.
+
+*awstats-6.5 (12 Aug 2005)
+
+  12 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> +awstats-6.5.ebuild:
+  Version bump for security bug #102145.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> awstats-6.4.ebuild:
+  Stable on ppc.
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> awstats-6.4.ebuild:
+  dev-perl/Time-Local => perl-core/Time-Local migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> awstats-6.3-r2.ebuild:
+  dev-perl/Time-Local => perl-core/Time-Local migration
+
+  11 May 2005; Aaron Walker <ka0ttic@gentoo.org> awstats-6.3-r2.ebuild,
+  awstats-6.4.ebuild:
+  Fix bash param expansion that broke on versions with a revision; bug 91529
+
+  23 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> awstats-6.4.ebuild:
+  Marked stable on x86.
+
+*awstats-6.4 (21 Mar 2005)
+
+  21 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> files/postinst-en.txt,
+  awstats-6.3-r2.ebuild, +awstats-6.4.ebuild:
+  Version bump; cleaned up sed and apachever stuff for bug 83978. Added
+  enhanced postinst-en.txt written by Jakub Moc in bug 81978.
+
+  23 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> awstats-6.3-r2.ebuild:
+  Upstream strikes again. Fix digest for bug 83085.
+
+*awstats-6.3-r2 (13 Feb 2005)
+
+  13 Feb 2005; Aaron Walker <ka0ttic@gentoo.org>
+  -files/awstats-6.3-CAN-2005-0016.diff,
+  +files/awstats-6.3-CAN-2005-0363.diff, -awstats-6.3-r1.ebuild,
+  +awstats-6.3-r2.ebuild:
+  Revision bump (again). More security fixes.
+
+  12 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> files/postinst-en.txt,
+  awstats-6.3-r1.ebuild:
+  Fix postinst-en.txt for bug 81802.
+
+*awstats-6.3-r1 (12 Feb 2005)
+
+  12 Feb 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/awstats-6.3-CAN-2005-0016.diff, +awstats-6.3-r1.ebuild,
+  -awstats-6.3.ebuild:
+  Revision bump for sec bug 81775.
+
+  05 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> -files/awstats-6.1-r1.diff,
+  -awstats-6.1.ebuild, awstats-6.3.ebuild:
+  Tidy old vulnerable version.
+
+  25 Jan 2005; Michael Hanselmann <hansmi@gentoo.org> awstats-6.3.ebuild:
+  Stable on ppc.
+
+  24 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> awstats-6.3.ebuild:
+  Fix SRC_URI for bug 79400.
+
+*awstats-6.3 (24 Jan 2005)
+
+  24 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> metadata.xml,
+  +files/awstats-6.3-gentoo.diff, +files/postinst-en.txt,
+  +awstats-6.3.ebuild:
+  Version bump for sec bug 77963. Also fixes bugs 63200, 63198, 63197, and 70996.
+
+  04 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> awstats-6.1.ebuild:
+  Masked awstats-6.1.ebuild stable for ppc
+
+  27 Aug 2004; Seemant Kulleen <seemant@gentoo.org> awstats-6.1.ebuild:
+  Typo in pkg_postinst. propert->proper. Thanks to: Kurt McKee
+  <kurtmckee@northwestern.edu> in bug #61993
+
+  27 Jul 2004; Chuck Short <zul@gentoo.org> awstats-6.1.ebuild:
+  Marked stable for x86.
+
+  27 May 2004; Stuart Herbert <stuart@gentoo.org> awstats-6.1.ebuild:
+  Fix for bug #51850
+
+  27 May 2004; <zul@gentoo.org> awstats-6.1.ebuild:
+  Removed arm keyword.
+
+*awstats-6.1 (22 May 2004)
+
+  22 May 2004; Chuck Short <zul@gentoo.org> awstats-6.1.ebuild, metadata.xml,
+  files/awstats-6.1-r1.diff:
+  Initial version, ebuild written/modified by the following:
+  Brian Arledge < trogdor45 @ go.com >
+  Daniel Seyffer < gentoo-bugs @ seyffer.com >
+  Federico Moro < zayer @ frikis.org >
+  Markus Luisser < mluisser @ mail.zserv.tuwien.ac.at >
+  Richard Freeman < freemanrich @ yahoo.com > 
+  Michael Schmid < meschmid @ gmx.net > 
+  Perolo Silantico < per.sil @ gmx.it >
+  and me < zul @ gentoo.org >
+  Finally closes # 19382.

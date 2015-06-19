@@ -1,0 +1,13 @@
+# ChangeLog for sci-libs/orocos-bfl
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/orocos-bfl/ChangeLog,v 1.2 2014/11/25 17:02:03 aballier Exp $
+
+  25 Nov 2014; Alexis Ballier <aballier@gentoo.org> orocos-bfl-0.8.0.ebuild:
+  keyword ~arm
+
+*orocos-bfl-0.8.0 (25 Nov 2014)
+
+  25 Nov 2014; Alexis Ballier <aballier@gentoo.org> +orocos-bfl-0.8.0.ebuild,
+  +metadata.xml:
+  initial import, ebuild by me
+

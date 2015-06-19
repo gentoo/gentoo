@@ -1,0 +1,286 @@
+# ChangeLog for dev-perl/SQL-Statement
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/SQL-Statement/ChangeLog,v 1.71 2014/10/12 15:25:22 zlogene Exp $
+
+  12 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> -SQL-Statement-1.402.0.ebuild:
+  Drop old.
+
+  04 Sep 2014; Mikle Kolyada <zlogene@gentoo.org> -SQL-Statement-1.330.0.ebuild:
+  Drop old.
+
+*SQL-Statement-1.405.0-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +SQL-Statement-1.405.0-r1.ebuild, -SQL-Statement-1.405.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  06 Mar 2014; Agostino Sarubbo <ago@gentoo.org> SQL-Statement-1.405.0.ebuild:
+  Stable for ppc64, wrt bug #495464
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> SQL-Statement-1.405.0.ebuild:
+  Stable for ppc, wrt bug #495464
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> SQL-Statement-1.405.0.ebuild:
+  amd64 stable, bug #495464
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  SQL-Statement-1.405.0.ebuild:
+  x86 stable wrt bug #495464
+
+*SQL-Statement-1.405.0 (15 Aug 2013)
+
+  15 Aug 2013; Patrick Lauer <patrick@gentoo.org> +SQL-Statement-1.405.0.ebuild:
+  Bump
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> SQL-Statement-1.402.0.ebuild:
+  Stable for ppc64, wrt bug #457316
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> SQL-Statement-1.402.0.ebuild:
+  Stable for ppc, wrt bug #457316
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> SQL-Statement-1.402.0.ebuild:
+  Stable for x86, wrt bug #457316
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> SQL-Statement-1.402.0.ebuild:
+  Stable for amd64, wrt bug #457316
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org> -SQL-Statement-1.31.ebuild,
+  -SQL-Statement-1.401.0.ebuild:
+  Cleanup
+
+*SQL-Statement-1.402.0 (25 Dec 2012)
+
+  25 Dec 2012; Torsten Veller <tove@gentoo.org> +SQL-Statement-1.402.0.ebuild:
+  Version bump
+
+*SQL-Statement-1.401.0 (03 Nov 2012)
+
+  03 Nov 2012; Torsten Veller <tove@gentoo.org> +SQL-Statement-1.401.0.ebuild:
+  Version bump
+
+  09 Sep 2012; Raúl Porcel <armin76@gentoo.org> SQL-Statement-1.31.ebuild,
+  SQL-Statement-1.330.0.ebuild:
+  Drop alpha/ia64/sparc keywords
+
+  05 Aug 2012; Johannes Huber <johu@gentoo.org> SQL-Statement-1.330.0.ebuild:
+  Stable for x86, wrt bug #418847
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> SQL-Statement-1.330.0.ebuild:
+  Stable for amd64, wrt bug #418847
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  03 Mar 2012; Brent Baude <ranger@gentoo.org> SQL-Statement-1.330.0.ebuild:
+  Marking SQL-Statement-1.330.0 ppc64 for bug 400225
+
+  25 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  SQL-Statement-1.31.ebuild:
+  Stable on alpha, bug #400225
+
+  24 Feb 2012; Brent Baude <ranger@gentoo.org> SQL-Statement-1.330.0.ebuild:
+  Marking SQL-Statement-1.330.0 ppc for bug 400225
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -SQL-Statement-1.330.ebuild:
+  Cleanup
+
+*SQL-Statement-1.330.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org> +SQL-Statement-1.330.0.ebuild:
+  Change version scheme
+
+  07 Jul 2011; Alexis Ballier <aballier@gentoo.org> SQL-Statement-1.330.ebuild:
+  keyword ~x86-fbsd
+
+  02 Apr 2011; Torsten Veller <tove@gentoo.org> -SQL-Statement-1.320.ebuild:
+  Cleanup
+
+*SQL-Statement-1.330 (07 Feb 2011)
+
+  07 Feb 2011; Robin H. Johnson <robbat2@gentoo.org>
+  +SQL-Statement-1.330.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*SQL-Statement-1.320 (19 Jan 2011)
+
+  19 Jan 2011; Torsten Veller <tove@gentoo.org> +SQL-Statement-1.320.ebuild:
+  Version bump
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -SQL-Statement-1.25.ebuild:
+  Cleanup
+
+  03 Dec 2010; Michael Weber <xmw@gentoo.org> SQL-Statement-1.25.ebuild,
+  SQL-Statement-1.31.ebuild:
+  add ~arm (bug 302981)
+
+  13 Nov 2010; Raúl Porcel <armin76@gentoo.org> SQL-Statement-1.31.ebuild:
+  ia64/sparc stable wrt #341865
+
+  05 Nov 2010; Markos Chandras <hwoarang@gentoo.org>
+  SQL-Statement-1.31.ebuild:
+  Stable on amd64 wrt bug #341865
+
+  04 Nov 2010; Christian Faulhammer <fauli@gentoo.org>
+  SQL-Statement-1.31.ebuild:
+  x86 stable, bug 341865
+
+  23 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  SQL-Statement-1.31.ebuild:
+  Keyword ~ppc64 wrt #330301
+
+  20 Oct 2010; Torsten Veller <tove@gentoo.org> -SQL-Statement-1.27.ebuild,
+  -SQL-Statement-1.28.ebuild, -SQL-Statement-1.30.ebuild:
+  Cleanup
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org> SQL-Statement-1.31.ebuild:
+  Marking SQL-Statement-1.31 ~ppc for bug 330301
+
+  10 Oct 2010; Tobias Klausmann <klausman@gentoo.org>
+  SQL-Statement-1.31.ebuild:
+  Keyworded on alpha, bug #330301
+
+*SQL-Statement-1.31 (17 Aug 2010)
+
+  17 Aug 2010; Torsten Veller <tove@gentoo.org> +SQL-Statement-1.31.ebuild:
+  Version bump
+
+*SQL-Statement-1.30 (04 Aug 2010)
+
+  04 Aug 2010; Torsten Veller <tove@gentoo.org> +SQL-Statement-1.30.ebuild:
+  Version bump
+
+*SQL-Statement-1.28 (22 Jul 2010)
+
+  22 Jul 2010; Torsten Veller <tove@gentoo.org> +SQL-Statement-1.28.ebuild:
+  Version bump
+
+  11 Jun 2010; Torsten Veller <tove@gentoo.org> -SQL-Statement-1.22.ebuild,
+  -SQL-Statement-1.23.ebuild, -SQL-Statement-1.26.ebuild:
+  Cleanup
+
+  08 May 2010; Raúl Porcel <armin76@gentoo.org> SQL-Statement-1.25.ebuild:
+  ia64/sparc stable wrt #314467
+
+*SQL-Statement-1.27 (07 May 2010)
+
+  07 May 2010; Torsten Veller <tove@gentoo.org> +SQL-Statement-1.27.ebuild:
+  Version bump
+
+  17 Apr 2010; Torsten Veller <tove@gentoo.org> SQL-Statement-1.25.ebuild:
+  Stable on amd64, x86 (#314467)
+
+*SQL-Statement-1.26 (11 Apr 2010)
+
+  11 Apr 2010; Torsten Veller <tove@gentoo.org> +SQL-Statement-1.26.ebuild:
+  Version bump
+
+*SQL-Statement-1.25 (16 Mar 2010)
+
+  16 Mar 2010; Torsten Veller <tove@gentoo.org> +SQL-Statement-1.25.ebuild:
+  Version bump
+
+  24 Dec 2009; Torsten Veller <tove@gentoo.org> -SQL-Statement-1.15.ebuild,
+  -SQL-Statement-1.20.ebuild:
+  Cleanup
+
+  15 Dec 2009; Raúl Porcel <armin76@gentoo.org> SQL-Statement-1.22.ebuild:
+  ia64 stable wrt #278409
+
+  03 Dec 2009; Tiago Cunha <tcunha@gentoo.org> SQL-Statement-1.22.ebuild:
+  stable sparc, bug 278409
+
+  01 Dec 2009; Markus Meier <maekke@gentoo.org> SQL-Statement-1.22.ebuild:
+  amd64 stable, bug #278409
+
+  01 Dec 2009; Markus Meier <maekke@gentoo.org> SQL-Statement-1.22.ebuild:
+  x86 stable, bug #278409
+
+*SQL-Statement-1.23 (22 Nov 2009)
+
+  22 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +SQL-Statement-1.23.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  19 Oct 2009; Torsten Veller <tove@gentoo.org> SQL-Statement-1.22.ebuild:
+  Fix upgrade killer feature (#289723)
+
+*SQL-Statement-1.22 (12 Oct 2009)
+
+  12 Oct 2009; Torsten Veller <tove@gentoo.org> +SQL-Statement-1.22.ebuild:
+  Version bump
+
+  03 Jun 2009; Torsten Veller <tove@gentoo.org> -SQL-Statement-1.19.ebuild:
+  Cleanup
+
+*SQL-Statement-1.20 (06 Mar 2009)
+
+  06 Mar 2009; Torsten Veller <tove@gentoo.org> metadata.xml,
+  +SQL-Statement-1.20.ebuild:
+  Version bump
+
+*SQL-Statement-1.19 (08 Feb 2009)
+
+  08 Feb 2009; Torsten Veller <tove@gentoo.org> +SQL-Statement-1.19.ebuild:
+  Version bump
+
+  30 Sep 2008; Torsten Veller <tove@gentoo.org> -SQL-Statement-1.09.ebuild,
+  -SQL-Statement-1.14.ebuild, SQL-Statement-1.15.ebuild:
+  Cleanup
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> SQL-Statement-1.15.ebuild:
+  Stable on x86, bug #169152.
+
+  24 Nov 2006; Michael Cummings <mcummings@gentoo.org>
+  SQL-Statement-1.09.ebuild, SQL-Statement-1.14.ebuild,
+  SQL-Statement-1.15.ebuild:
+  amd64 stable
+
+  12 Sep 2006; Michael Cummings <mcummings@gentoo.org>
+  SQL-Statement-1.15.ebuild:
+  Keywording ~amd64
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  SQL-Statement-1.09.ebuild, SQL-Statement-1.14.ebuild,
+  SQL-Statement-1.15.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> SQL-Statement-1.15.ebuild:
+  Mark 1.15 stable on ia64
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  SQL-Statement-1.14.ebuild, SQL-Statement-1.15.ebuild:
+  Marking sparc stable
+
+*SQL-Statement-1.15 (01 May 2006)
+
+  01 May 2006; <mcumming@gentoo.org> +SQL-Statement-1.15.ebuild:
+  Version bump
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-SQL-Statement-1.09, files/digest-SQL-Statement-1.14,
+  Manifest:
+  Fixing SHA256 digest, pass four
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org> SQL-Statement-1.14.ebuild:
+  Mark 1.14 ~ia64
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  SQL-Statement-1.09.ebuild:
+  marking sparc x86 stable
+
+*SQL-Statement-1.14 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  +SQL-Statement-1.14.ebuild:
+  Version bump upstream
+
+  07 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  SQL-Statement-1.09.ebuild:
+  Keyworded ~sparc
+
+*SQL-Statement-1.09 (07 Feb 2005)
+
+  07 Feb 2005; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +SQL-Statement-1.09.ebuild:
+  Bug 59148

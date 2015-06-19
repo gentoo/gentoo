@@ -1,0 +1,11 @@
+divert(-1)
+divert(0)dnl
+include(`/usr/share/sendmail-cf/m4/cf.m4')dnl
+VERSIONID(`$Id: sendmail.mc-r1,v 1.1 2012/12/27 09:59:44 eras Exp $')dnl
+OSTYPE(linux)dnl
+DOMAIN(generic)dnl
+FEATURE(`smrsh',`/usr/sbin/smrsh')dnl
+FEATURE(`local_lmtp',`/usr/sbin/mail.local')dnl
+define(`confTRUSTED_USER', `smmsp')dnl
+MAILER(local)dnl
+MAILER(smtp)dnl

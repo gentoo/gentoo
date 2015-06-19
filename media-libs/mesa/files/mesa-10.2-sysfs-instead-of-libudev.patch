@@ -1,0 +1,378 @@
+From 85b6f36ca5238dd3fec7c5fcacb8b7074ce53c8e Mon Sep 17 00:00:00 2001
+From: Gary Wong <gtw@gnu.org>
+Date: Wed, 21 May 2014 21:07:42 -0600
+Subject: loader: add optional /sys filesystem method for PCI identification.
+
+Introduce a simple PCI identification method of looking up the answer
+the /sys filesystem (available on Linux).  Attempted after libudev, but
+before DRM.
+
+Disabled by default (available only when the --enable-sysfs configure
+option is specified).
+
+Signed-off-by: Gary Wong <gtw@gnu.org>
+Acked-by: Emil Velikov <emil.l.velikov@gmail.com>
+
+Backported to mesa-10.2.8 by Ian Stakenvicius <axs@gentoo.org>
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -870,14 +870,21 @@ fi
+ 
+ case "$host_os" in
+ linux*)
+-    need_libudev=yes ;;
++    need_pci_id=yes ;;
+ *)
+-    need_libudev=no ;;
++    need_pci_id=no ;;
+ esac
+ 
+ PKG_CHECK_MODULES([LIBUDEV], [libudev >= $LIBUDEV_REQUIRED],
+                   have_libudev=yes, have_libudev=no)
+ 
++AC_ARG_ENABLE([sysfs],
++    [AS_HELP_STRING([--enable-sysfs],
++        [enable /sys PCI identification @<:@default=disabled@:>@])],
++    [have_sysfs="$enableval"],
++    [have_sysfs=no]
++)
++
+ if test "x$enable_dri" = xyes; then
+     if test "$enable_static" = yes; then
+         AC_MSG_ERROR([Cannot use static libraries for DRI drivers])
+@@ -973,8 +980,15 @@ xyesno)
+     ;;
+ esac
+ 
++have_pci_id=no
+ if test "$have_libudev" = yes; then
+     DEFINES="$DEFINES -DHAVE_LIBUDEV"
++    have_pci_id=yes
++fi
++
++if test "$have_sysfs" = yes; then
++    DEFINES="$DEFINES -DHAVE_SYSFS"
++    have_pci_id=yes
+ fi
+ 
+ # This is outside the case (above) so that it is invoked even for non-GLX
+@@ -1076,8 +1090,8 @@ if test "x$enable_dri" = xyes; then
+             DEFINES="$DEFINES -DHAVE_DRI3"
+         fi
+ 
+-        if test "x$have_libudev" != xyes; then
+-            AC_MSG_ERROR([libudev-dev required for building DRI])
++        if test "x$have_pci_id" != xyes; then
++            AC_MSG_ERROR([libudev-dev or sysfs required for building DRI])
+         fi
+ 
+         case "$host_cpu" in
+@@ -1252,8 +1266,8 @@ if test "x$enable_gbm" = xauto; then
+     esac
+ fi
+ if test "x$enable_gbm" = xyes; then
+-    if test "x$need_libudev$have_libudev" = xyesno; then
+-        AC_MSG_ERROR([gbm requires udev >= $LIBUDEV_REQUIRED])
++    if test "x$need_pci_id$have_pci_id" = xyesno; then
++        AC_MSG_ERROR([gbm requires udev >= $LIBUDEV_REQUIRED or sysfs])
+     fi
+ 
+     if test "x$enable_dri" = xyes; then
+@@ -1271,7 +1285,7 @@ if test "x$enable_gbm" = xyes; then
+     fi
+ fi
+ AM_CONDITIONAL(HAVE_GBM, test "x$enable_gbm" = xyes)
+-if test "x$need_libudev" = xyes; then
++if test "x$need_pci_id$have_libudev" = xyesyes; then
+     GBM_PC_REQ_PRIV="libudev >= $LIBUDEV_REQUIRED"
+ else
+     GBM_PC_REQ_PRIV=""
+@@ -1560,9 +1574,9 @@ for plat in $egl_platforms; do
+ 		;;
+ 	esac
+ 
+-        case "$plat$need_libudev$have_libudev" in
++        case "$plat$need_pci_id$have_pci_id" in
+                 waylandyesno|drmyesno)
+-                    AC_MSG_ERROR([cannot build $plat platform without udev >= $LIBUDEV_REQUIRED]) ;;
++                    AC_MSG_ERROR([cannot build $plat platform without udev >= $LIBUDEV_REQUIRED or sysfs]) ;;
+         esac
+ done
+ 
+@@ -1843,8 +1857,8 @@ gallium_require_llvm() {
+ 
+ gallium_require_drm_loader() {
+     if test "x$enable_gallium_loader" = xyes; then
+-        if test "x$need_libudev$have_libudev" = xyesno; then
+-            AC_MSG_ERROR([Gallium drm loader requires libudev >= $LIBUDEV_REQUIRED])
++        if test "x$need_pci_id$have_pci_id" = xyesno; then
++            AC_MSG_ERROR([Gallium drm loader requires libudev >= $LIBUDEV_REQUIRED or sysfs])
+         fi
+         if test "x$have_libdrm" != xyes; then
+             AC_MSG_ERROR([Gallium drm loader requires libdrm >= $LIBDRM_REQUIRED])
+--- a/src/loader/loader.c	2014-09-19 13:03:22.000000000 -0400
++++ b/src/loader/loader.c	2014-11-25 12:46:51.412249717 -0500
+@@ -71,6 +71,10 @@
+ #include <assert.h>
+ #include <dlfcn.h>
+ #endif
++#ifdef HAVE_SYSFS
++#include <sys/stat.h>
++#include <sys/types.h>
++#endif
+ #include "loader.h"
+ 
+ #ifndef __NOT_HAVE_DRM_H
+@@ -113,8 +117,8 @@
+          udev_handle = dlopen("libudev.so.0", RTLD_LOCAL | RTLD_LAZY);
+ 
+          if (!udev_handle) {
+-            log_(_LOADER_FATAL, "Couldn't dlopen libudev.so.1 or libudev.so.0, "
+-                 "driver detection may be broken.\n");
++            log_(_LOADER_WARNING, "Couldn't dlopen libudev.so.1 or "
++                 "libudev.so.0, driver detection may be broken.\n");
+          }
+       }
+    }
+@@ -122,16 +126,19 @@
+    return udev_handle;
+ }
+ 
++static int dlsym_failed = 0;
++
+ static void *
+-asserted_dlsym(void *dlopen_handle, const char *name)
++checked_dlsym(void *dlopen_handle, const char *name)
+ {
+    void *result = dlsym(dlopen_handle, name);
+-   assert(result);
++   if (!result)
++      dlsym_failed = 1;
+    return result;
+ }
+ 
+ #define UDEV_SYMBOL(ret, name, args) \
+-   ret (*name) args = asserted_dlsym(udev_dlopen_handle(), #name);
++   ret (*name) args = checked_dlsym(udev_dlopen_handle(), #name);
+ 
+ 
+ static inline struct udev_device *
+@@ -142,6 +149,9 @@
+    UDEV_SYMBOL(struct udev_device *, udev_device_new_from_devnum,
+                (struct udev *udev, char type, dev_t devnum));
+ 
++   if (dlsym_failed)
++      return NULL;
++
+    if (fstat(fd, &buf) < 0) {
+       log_(_LOADER_WARNING, "MESA-LOADER: failed to stat fd %d\n", fd);
+       return NULL;
+@@ -157,8 +167,8 @@
+    return device;
+ }
+ 
+-int
+-loader_get_pci_id_for_fd(int fd, int *vendor_id, int *chip_id)
++static int
++libudev_get_pci_id_for_fd(int fd, int *vendor_id, int *chip_id)
+ {
+    struct udev *udev = NULL;
+    struct udev_device *device = NULL, *parent;
+@@ -174,6 +184,9 @@
+ 
+    *chip_id = -1;
+ 
++   if (dlsym_failed)
++      return 0;
++
+    udev = udev_new();
+    device = udev_device_new_from_fd(udev, fd);
+    if (!device)
+@@ -201,16 +214,76 @@
+ 
+    return (*chip_id >= 0);
+ }
++#endif
++
++#if defined(HAVE_SYSFS)
++static int
++dev_node_from_fd(int fd, unsigned int *maj, unsigned int *min)
++{
++   struct stat buf;
++
++   if (fstat(fd, &buf) < 0) {
++      log_(_LOADER_WARNING, "MESA-LOADER: failed to stat fd %d\n", fd);
++      return -1;
++   }
++
++   if (!S_ISCHR(buf.st_mode)) {
++      log_(_LOADER_WARNING, "MESA-LOADER: fd %d not a character device\n", fd);
++      return -1;
++   }
++
++   *maj = major(buf.st_rdev);
++   *min = minor(buf.st_rdev);
++
++   return 0;
++}
++
++static int
++sysfs_get_pci_id_for_fd(int fd, int *vendor_id, int *chip_id)
++{
++   unsigned int maj, min;
++   FILE *f;
++   char buf[0x40];
+ 
+-#elif !defined(__NOT_HAVE_DRM_H)
++   if (dev_node_from_fd(fd, &maj, &min) < 0) {
++      *chip_id = -1;
++      return 0;
++   }
+ 
++   snprintf(buf, sizeof(buf), "/sys/dev/char/%d:%d/device/vendor", maj, min);
++   if (!(f = fopen(buf, "r"))) {
++      *chip_id = -1;
++      return 0;
++   }
++   if (fscanf(f, "%x", vendor_id) != 1) {
++      *chip_id = -1;
++      fclose(f);
++      return 0;
++   }
++   fclose(f);
++   snprintf(buf, sizeof(buf), "/sys/dev/char/%d:%d/device/device", maj, min);
++   if (!(f = fopen(buf, "r"))) {
++      *chip_id = -1;
++      return 0;
++   }
++   if (fscanf(f, "%x", chip_id) != 1) {
++      *chip_id = -1;
++      fclose(f);
++      return 0;
++   }
++   fclose(f);
++   return 1;
++}
++#endif
++
++#if !defined(__NOT_HAVE_DRM_H)
+ /* for i915 */
+ #include <i915_drm.h>
+ /* for radeon */
+ #include <radeon_drm.h>
+ 
+-int
+-loader_get_pci_id_for_fd(int fd, int *vendor_id, int *chip_id)
++static int
++drm_get_pci_id_for_fd(int fd, int *vendor_id, int *chip_id)
+ {
+    drmVersionPtr version;
+ 
+@@ -272,23 +345,33 @@
+ 
+    return (*chip_id >= 0);
+ }
++#endif
+ 
+-#else
+ 
+ int
+ loader_get_pci_id_for_fd(int fd, int *vendor_id, int *chip_id)
+ {
++#if HAVE_LIBUDEV
++   if (libudev_get_pci_id_for_fd(fd, vendor_id, chip_id))
++      return 1;
++#endif
++#if HAVE_SYSFS
++   if (sysfs_get_pci_id_for_fd(fd, vendor_id, chip_id))
++      return 1;
++#endif
++#if !defined(__NOT_HAVE_DRM_H)
++   if (drm_get_pci_id_for_fd(fd, vendor_id, chip_id))
++      return 1;
++#endif
+    return 0;
+ }
+ 
+-#endif
+-
+ 
+-char *
+-loader_get_device_name_for_fd(int fd)
++#ifdef HAVE_LIBUDEV
++static char *
++libudev_get_device_name_for_fd(int fd)
+ {
+    char *device_name = NULL;
+-#ifdef HAVE_LIBUDEV
+    struct udev *udev;
+    struct udev_device *device;
+    const char *const_device_name;
+@@ -312,9 +395,66 @@
+ out:
+    udev_device_unref(device);
+    udev_unref(udev);
++   return device_name;
++}
+ #endif
++
++
++#if HAVE_SYSFS
++static char *
++sysfs_get_device_name_for_fd(int fd)
++{
++   char *device_name = NULL;
++   unsigned int maj, min;
++   FILE *f;
++   char buf[0x40];
++   static const char match[9] = "\0DEVNAME=";
++   int expected = 1;
++
++   if (dev_node_from_fd(fd, &maj, &min) < 0)
++      return NULL;
++
++   snprintf(buf, sizeof(buf), "/sys/dev/char/%d:%d/uevent", maj, min);
++   if (!(f = fopen(buf, "r")))
++       return NULL;
++
++   while (expected < sizeof(match)) {
++      int c = getc(f);
++
++      if (c == EOF) {
++         fclose(f);
++         return NULL;
++      } else if (c == match[expected] )
++         expected++;
++      else
++         expected = 0;
++   }
++
++   strcpy(buf, "/dev/");
++   if (fgets(buf + 5, sizeof(buf) - 5, f))
++      device_name = strdup(buf);
++
++   fclose(f);
+    return device_name;
+ }
++#endif
++
++
++char *
++loader_get_device_name_for_fd(int fd)
++{
++   char *result = NULL;
++
++#if HAVE_LIBUDEV
++   if ((result = libudev_get_device_name_for_fd(fd)))
++      return result;
++#endif
++#if HAVE_SYSFS
++   if ((result = sysfs_get_device_name_for_fd(fd)))
++      return result;
++#endif
++   return result;
++}
+ 
+ char *
+ loader_get_driver_for_fd(int fd, unsigned driver_types)

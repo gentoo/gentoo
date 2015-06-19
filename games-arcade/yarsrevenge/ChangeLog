@@ -1,0 +1,50 @@
+# ChangeLog for games-arcade/yarsrevenge
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/yarsrevenge/ChangeLog,v 1.13 2015/01/06 09:58:33 tupone Exp $
+
+  06 Jan 2015; Tupone Alfredo <tupone@gentoo.org> yarsrevenge-0.99.ebuild:
+  EAPI 5
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> yarsrevenge-0.99.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  04 Dec 2009; Tupone Alfredo <tupone@gentoo.org> files/0.99-math.patch,
+  yarsrevenge-0.99.ebuild:
+  Fix build with sys-devel/patch-2.6 Bug #295304 by flameeyes@gentoo.org
+
+  18 Jun 2009; Tristan Heaven <nyhm@gentoo.org> yarsrevenge-0.99.ebuild,
+  +files/yarsrevenge-0.99-gcc44.patch:
+  Fix building with gcc-4.4, bug #273500
+
+  30 Apr 2008; Tristan Heaven <nyhm@gentoo.org>
+  +files/yarsrevenge-0.99-gcc43.patch, yarsrevenge-0.99.ebuild:
+  Fix building with gcc-4.3
+
+  25 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  yarsrevenge-0.99.ebuild:
+  amd64 stable
+
+  24 Apr 2007; Timothy Redaelli <drizzt@gentoo.org> yarsrevenge-0.99.ebuild:
+  Add ~x86-fbsd keyword.
+  Thanks to Nathan Smith for reporting wrt bug #175779
+
+  04 Jun 2004; David Holm <dholm@gentoo.org> yarsrevenge-0.99.ebuild:
+  Added to ~ppc.
+
+*yarsrevenge-0.99 (02 Jun 2004)
+
+  02 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  yarsrevenge-0.99.ebuild:
+  version bump
+
+  30 May 2004; Gustavo Zacarias <gustavoz@gentoo.org> yarsrevenge-0.98.ebuild:
+  Stable on sparc
+
+  07 May 2004; Ciaran McCreesh <ciaranm@gentoo.org> yarsrevenge-0.98.ebuild:
+  Added ~sparc, #50394
+
+*yarsrevenge-0.98 (25 Oct 2003)
+
+  25 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

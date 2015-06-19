@@ -1,0 +1,64 @@
+From 4b504e760e0c994e676b55bfaca731d74841f1f4 Mon Sep 17 00:00:00 2001
+From: David Jarvie <djarvie@kde.org>
+Date: Tue, 26 Apr 2011 23:29:19 +0100
+Subject: [PATCH 3/6] Bug 271580: Fix crash displaying New Alarm dialog from
+ system tray
+
+Fixes a crash on some systems when the New Alarm dialog is displayed
+from the system tray icon menu.
+---
+ kalarm/Changelog        |    4 +++-
+ kalarm/lib/spinbox2.cpp |    9 +++++----
+ 2 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/kalarm/Changelog b/kalarm/Changelog
+index fab5edf..7caf1dd 100644
+--- a/kalarm/Changelog
++++ b/kalarm/Changelog
+@@ -1,6 +1,8 @@
+ KAlarm Change Log
+ 
+-=== Version 2.4.12 --- 22 April 2011 ===
++=== Version 2.4.12 --- 26 April 2011 ===
++- Fix crash on some systems when New Alarm dialogue is displayed from system tray
++  icon menu.
+ - Fix KAlarm button in alarm window not always showing main window and not
+   highlighting the alarm in the main window.
+ 
+diff --git a/kalarm/lib/spinbox2.cpp b/kalarm/lib/spinbox2.cpp
+index cc10882..f1e8ab9 100644
+--- a/kalarm/lib/spinbox2.cpp
++++ b/kalarm/lib/spinbox2.cpp
+@@ -1,7 +1,7 @@
+ /*
+  *  spinbox2.cpp  -  spin box with extra pair of spin buttons (for Qt 3)
+  *  Program:  kalarm
+- *  Copyright © 2001-2009 by David Jarvie <djarvie@kde.org>
++ *  Copyright © 2001-2009,2011 by David Jarvie <djarvie@kde.org>
+  *
+  *  This program is free software; you can redistribute it and/or modify
+  *  it under the terms of the GNU General Public License as published by
+@@ -28,7 +28,7 @@
+ #include <QMouseEvent>
+ #include <QStyleOptionSpinBox>
+ #include <QGraphicsPixmapItem>
+-#include <QPaintEngine>
++#include <QPainter>
+ #include <QTimer>
+ #include <QFrame>
+ #include <QBrush>
+@@ -588,8 +588,9 @@ void SpinMirror::setFrame()
+ 		p = grabWidget(mMainSpinbox, QRect(x, 0, 1, height()));
+ 		// Blot out edit field stuff from the middle of the slice
+ 		QPixmap dot = grabWidget(mMainSpinbox, QRect(x, editOffsetY, 1, 1));
+-		QPaintEngine* pe = p.paintEngine();
+-		pe->drawTiledPixmap(QRectF(0, editOffsetY, 1, height() - 2*editOffsetY), dot, QPointF(0, 0));
++		QPainter painter(&p);
++		painter.drawTiledPixmap(0, editOffsetY, 1, height() - 2*editOffsetY, dot, 0, 0);
++		painter.end();
+ 		// Horizontally fill the mirror widget with the vertical slice
+ 		p = p.scaled(size());
+ 		// Grab the left hand border of the main spinbox, and draw it into the mirror widget.
+-- 
+1.7.9.2
+

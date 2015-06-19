@@ -1,0 +1,13 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/supervisor/files/init.d-r1,v 1.1 2013/06/11 07:48:47 dev-zero Exp $
+
+description="client/server system that allows its users to monitor and control a number of processes on UNIX-like operating systems"
+
+command="/usr/bin/supervisord"
+pidfile="/var/run/supervisord.pid"
+command_args="--nodaemon --pidfile ${pidfile} ${SUPD_OPTS}"
+command_background="yes"
+
+required_files="/etc/supervisord.conf"

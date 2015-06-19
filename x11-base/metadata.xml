@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The x11-base category contains various X11 base implementations.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie x11-base enthält verschiedene X11 Implementierungen.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría x11-base contiene varias implementaciones base de X11.
+	</longdescription>
+	<longdescription lang="ja">
+		x11-baseカテゴリーには様々なX11を基本とした実行環境が含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De x11-base categorie bevat verschillende implementaties van X11.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm x11-base chứa các bản cài đặt X11 cơ sở.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria x11-base contiene varie implementazioni base di X11.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria x11-base contém várias implementações de base de
+		X11.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria x11-base zawiera podstawowe implementacje X11.
+	</longdescription>
+</catmetadata>
+

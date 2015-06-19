@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>pinkbyte@gentoo.org</email>
+		<name>Sergey Popov</name>
+	</maintainer>
+	<longdescription lang="en">
+		bgpq allows to generate different config entries with prefix lists, useful for Cisco/Juniper routers and their software analogs, such as Quagga.
+	</longdescription>
+	<longdescription lang="ru">
+		bgpq позволяет создавать различные чaсти конфигурационных файлов со списком сетей для маршрутизаторов Cisco/Juniper и их программных аналогов,
+		таких как Quagga.
+	</longdescription>
+</pkgmetadata>

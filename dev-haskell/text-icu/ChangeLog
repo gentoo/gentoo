@@ -1,0 +1,61 @@
+# ChangeLog for dev-haskell/text-icu
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/text-icu/ChangeLog,v 1.14 2015/06/06 17:58:55 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*text-icu-0.7.0.1 (11 Mar 2015)
+
+  11 Mar 2015; Mark Wright <gienah@gentoo.org> +text-icu-0.7.0.1.ebuild:
+  Bump text-icu to 0.7.0.1
+
+  25 Feb 2015; Agostino Sarubbo <ago@gentoo.org> text-icu-0.6.3.7-r1.ebuild:
+  Stable for x86, wrt bug #502696
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> text-icu-0.6.3.7-r1.ebuild:
+  Stable for amd64, wrt bug #502696
+
+  03 Jan 2015; Mark Wright <gienah@gentoo.org>
+  +files/text-icu-0.7.0.0-ghc-7.10.patch, text-icu-0.7.0.0.ebuild:
+  Patch text-icu-0.7.0.0 for ghc 7.10
+
+  25 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  text-icu-0.6.3.7-r1.ebuild, text-icu-0.7.0.0.ebuild:
+  Add slot operator to ICU dependency
+
+*text-icu-0.7.0.0 (14 Dec 2014)
+
+  14 Dec 2014; Mark Wright <gienah@gentoo.org> +text-icu-0.7.0.0.ebuild:
+  Bump text-icu to 0.7.0.0
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*text-icu-0.6.3.7-r1 (04 Mar 2014)
+
+  04 Mar 2014; Alexander Vershilov <qnikst@gentoo.org>
+  +text-icu-0.6.3.7-r1.ebuild, -text-icu-0.6.3.7.ebuild:
+  update dependencies
+
+  02 Mar 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  text-icu-0.6.3.7.ebuild:
+  Add subslot dependency on dev-libs/icu
+
+*text-icu-0.6.3.7 (10 Dec 2013)
+
+  10 Dec 2013; Mark Wright <gienah@gentoo.org> +text-icu-0.6.3.7.ebuild:
+  Bump text-icu to 0.6.3.7
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> text-icu-0.6.3.5.ebuild:
+  Stable for x86, wrt bug #488750
+
+  05 Nov 2013; Tony Vroon <chainsaw@gentoo.org> text-icu-0.6.3.5.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #488750.
+
+*text-icu-0.6.3.5 (26 Aug 2013)
+
+  26 Aug 2013; Alexander Vershilov <qnikst@gentoo.org> +metadata.xml,
+  +text-icu-0.6.3.5.ebuild:
+  dev-haskell/text-icu: initial layout

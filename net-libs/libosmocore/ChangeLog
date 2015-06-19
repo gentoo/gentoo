@@ -1,0 +1,83 @@
+# ChangeLog for net-libs/libosmocore
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libosmocore/ChangeLog,v 1.14 2015/04/15 14:25:49 chithanh Exp $
+
+*libosmocore-0.8.0 (15 Apr 2015)
+
+  15 Apr 2015; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libosmocore-0.8.0.ebuild, -libosmocore-0.6.3.ebuild,
+  -libosmocore-0.6.4.ebuild, libosmocore-9999.ebuild, metadata.xml:
+  Version bump. Unify live and non-live ebuilds.
+
+  03 Nov 2014; Rick Farina <zerochaos@gentoo.org> libosmocore-0.6.6.ebuild,
+  libosmocore-9999.ebuild:
+  fix for bug 527964, upstream says it will be an optional dep but not yet
+
+*libosmocore-0.6.6 (26 Apr 2014)
+
+  26 Apr 2014; Jason A. Donenfeld <zx2c4@gentoo.org> +libosmocore-0.6.6.ebuild:
+  Version bump.
+
+  05 Nov 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -libosmocore-0.6.0.ebuild, -libosmocore-0.6.2.ebuild:
+  Remove old.
+
+*libosmocore-0.6.4 (05 Nov 2013)
+
+  05 Nov 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libosmocore-0.6.4.ebuild, libosmocore-9999.ebuild:
+  Version bump.
+
+*libosmocore-0.6.3 (26 Aug 2013)
+
+  26 Aug 2013; Rick Farina <zerochaos@gentoo.org> +libosmocore-0.6.3.ebuild,
+  libosmocore-0.6.2.ebuild:
+  version bump for bug 482236 and adding ~arm for me
+
+*libosmocore-0.6.2 (08 Jul 2013)
+
+  08 Jul 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libosmocore-0.6.2.ebuild, -files/libosmocore-0.5.3-automake-1.13.patch,
+  -libosmocore-0.5.3.ebuild:
+  Version bump, drop old.
+
+*libosmocore-0.6.0 (24 May 2013)
+
+  24 May 2013; Michael Weber <xmw@gentoo.org>
+  +files/libosmocore-0.5.3-automake-1.13.patch,
+  +files/libosmocore-0.6.0-automake-1.13.patch, +libosmocore-0.6.0.ebuild,
+  libosmocore-0.5.3.ebuild, libosmocore-9999.ebuild:
+  Version bump, automake-1.13 patches.
+
+  11 Aug 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -files/libosmocore-0.5.2-gcc-4.6.patch:
+  Drop unneeded patch.
+
+*libosmocore-0.5.3 (11 Aug 2012)
+
+  11 Aug 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libosmocore-0.5.3.ebuild, -libosmocore-0.5.2-r1.ebuild:
+  Version bump.
+
+*libosmocore-0.5.2-r1 (01 Aug 2012)
+
+  01 Aug 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/libosmocore-0.5.2-gcc-4.6.patch, +libosmocore-0.5.2-r1.ebuild,
+  -libosmocore-0.4.2.ebuild, -libosmocore-0.5.2.ebuild, libosmocore-9999.ebuild:
+  Build and pkgconfig files fixes. Drop old.
+
+*libosmocore-0.5.2 (05 Jul 2012)
+
+  05 Jul 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libosmocore-0.5.2.ebuild, libosmocore-9999.ebuild:
+  Version bump.
+
+  05 Jul 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> metadata.xml:
+  Assign maintainership to radio herd.
+
+*libosmocore-0.4.2 (15 Jun 2012)
+*libosmocore-9999 (15 Jun 2012)
+
+  15 Jun 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libosmocore-0.4.2.ebuild, +libosmocore-9999.ebuild, +metadata.xml:
+  Initial commit, based in part on ebuild by Peter Stuge.

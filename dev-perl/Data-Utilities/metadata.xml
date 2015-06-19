@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>perl</herd>
+  <upstream>
+    <remote-id type="cpan">Data-Utilities</remote-id>
+    <remote-id type="cpan-module">Data::Comparator</remote-id>
+    <remote-id type="cpan-module">Data::Differences</remote-id>
+    <remote-id type="cpan-module">Data::Merger</remote-id>
+    <remote-id type="cpan-module">Data::Transformator</remote-id>
+    <remote-id type="cpan-module">Data::Utilities</remote-id>
+  </upstream>
+</pkgmetadata>

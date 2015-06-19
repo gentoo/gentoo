@@ -1,0 +1,70 @@
+# ChangeLog for sci-calculators/hcalc
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-calculators/hcalc/ChangeLog,v 1.17 2015/04/07 14:35:56 jlec Exp $
+
+  04 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> hcalc-1.2.ebuild,
+  metadata.xml:
+  keyword amd64-linux, x86-linux
+
+*hcalc-1.2 (07 Jul 2012)
+
+  07 Jul 2012; Justin Lecher <jlec@gentoo.org> +hcalc-1.2.ebuild:
+  Version Bump including code from Theodore Kilgore, #424960
+
+  01 Mar 2012; Justin Lecher <jlec@gentoo.org> -hcalc-1.0.ebuild, metadata.xml:
+  Dropped old
+
+  01 Mar 2012; Brent Baude <ranger@gentoo.org> hcalc-1.0-r1.ebuild:
+  Marking hcalc-1.0-r1 ppc for bug 394049
+
+  22 Dec 2011; Markus Meier <maekke@gentoo.org> hcalc-1.0-r1.ebuild:
+  x86 stable, bug #394049
+
+  15 Dec 2011; Agostino Sarubbo <ago@gentoo.org> hcalc-1.0-r1.ebuild:
+  Stable for AMD64, wrt bug #394049
+
+  15 Dec 2011; Justin Lecher <jlec@gentoo.org> hcalc-1.0-r1.ebuild:
+  Removed additional die and quoting
+
+*hcalc-1.0-r1 (23 Feb 2011)
+
+  23 Feb 2011; Justin Lecher <jlec@gentoo.org> +files/1.0-gentoo.patch,
+  hcalc-1.0.ebuild, +hcalc-1.0-r1.ebuild:
+  Respect LDFLAGS, #335339
+
+  24 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> hcalc-1.0.ebuild:
+  amd64 stable
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; hcalc-1.0.ebuild:
+  Drop virtual/x11 references.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  21 Jan 2006; Joseph Jezak <josejx@gentoo.org> hcalc-1.0.ebuild:
+  Marked ppc stable.
+
+  19 Jan 2006; Donnie Berkholz <spyderous@gentoo.org>; hcalc-1.0.ebuild:
+  Add modular X deps.
+
+  19 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org> hcalc-1.0.ebuild:
+  marked ~ppc
+
+*hcalc-1.0 (24 Dec 2004)
+
+  24 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +hcalc-1.0.ebuild:
+  Moved from app-sci/hcalc to sci-calculators/hcalc.
+
+  08 Sep 2004; <blubb@gentoo.org> hcalc-1.0.ebuild:
+  added ~amd64 keyword
+
+*hcalc-1.0 (22 Jun 2004)
+
+  22 Jun 2004; Olivier Fisette <ribosome@gentoo.org>; hcalc-1.0.ebuild
+  Removed superfluous RDEPEND="${DEPEND}"
+
+*hcalc-1.0 (16 Jul 2003)
+
+  16 Jul 2003; Don Seiler <rizzo@gentoo.org>; hcalc-1.0.ebuild:
+  ebuild submitted by damjan.bole(at)studioproteus.si

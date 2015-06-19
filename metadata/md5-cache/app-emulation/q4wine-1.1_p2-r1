@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsingleapplication[qt4(+),X] dev-qt/qtsql:4[sqlite] dbus? ( dev-qt/qtdbus:4 ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Qt4 GUI configuration tool for Wine
+EAPI=5
+HOMEPAGE=http://q4wine.brezblock.org.ua/
+IUSE=+dbus debug +icoutils +wineappdb linguas_af_ZA linguas_cs_CZ linguas_de_DE linguas_en_US linguas_es_ES linguas_fa_IR linguas_he_IL linguas_it_IT linguas_pl_PL linguas_pt_BR linguas_ru_RU linguas_uk_UA
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtsingleapplication[qt4(+),X] dev-qt/qtsql:4[sqlite] dbus? ( dev-qt/qtdbus:4 ) app-admin/sudo app-emulation/wine >=sys-apps/which-2.19 sys-fs/fuseiso icoutils? ( >=media-gfx/icoutils-0.26.0 )
+SLOT=0
+SRC_URI=mirror://sourceforge/q4wine/q4wine/q4wine%201.1-r2/q4wine-1.1-r2.tar.bz2
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	l10n	33bde4fb0cfd3a21a277b66bfd837e19	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=163b4b0a8bcb1db97d27fcde2ec63d82

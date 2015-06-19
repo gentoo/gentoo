@@ -1,0 +1,45 @@
+From 8867e6a0b3b84b41b5a61c5194fa1300c5c39d8c Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Fri, 25 Apr 2014 22:59:01 +0200
+Subject: [PATCH] test connection is not PKCS#11 related
+
+Avoids silly test failure:
+
+CCLD     connection
+/usr/lib/gcc/x86_64-pc-linux-gnu/4.8.2/../../../../lib64/Scrt1.o: In
+function `_start':
+(.text+0x20): undefined reference to `main'
+collect2: error: ld returned 1 exit status
+Makefile:897: recipe for target 'connection' failed
+make[4]: *** [connection] Error 1
+---
+ tls/tests/Makefile.am | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tls/tests/Makefile.am b/tls/tests/Makefile.am
+index 6287b9c..009b388 100644
+--- a/tls/tests/Makefile.am
++++ b/tls/tests/Makefile.am
+@@ -15,6 +15,9 @@ test_programs =       \
+ 	connection    \
+ 	$(NULL)
+ 
++connection_SOURCES = connection.c \
++	mock-interaction.c mock-interaction.h
++
+ if HAVE_PKCS11
+ 
+ test_programs +=           \
+@@ -33,9 +36,6 @@ pkcs11_slot_SOURCES = pkcs11-slot.c \
+ 	mock-pkcs11.c mock-pkcs11.h \
+ 	mock-interaction.c mock-interaction.h
+ 
+-connection_SOURCES = connection.c \
+-	mock-interaction.c mock-interaction.h
+-
+ endif
+ 
+ testfiles_data =				\
+-- 
+1.9.0
+

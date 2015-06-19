@@ -1,0 +1,104 @@
+# ChangeLog for sci-biology/qrna
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/qrna/ChangeLog,v 1.25 2012/12/06 10:14:12 jlec Exp $
+
+  06 Dec 2012; Justin Lecher <jlec@gentoo.org> -qrna-2.0.3c.ebuild:
+  Drop old
+
+  06 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> qrna-2.0.3c-r1.ebuild:
+  x86 stable wrt bug #441020
+
+  10 Nov 2012; <ago@gentoo.org> qrna-2.0.3c-r1.ebuild:
+  Stable for amd64, wrt bug #441020
+
+  09 Nov 2012; Justin Lecher <jlec@gentoo.org> qrna-2.0.3c-r1.ebuild:
+  Move to EAPI=4
+
+*qrna-2.0.3c-r1 (10 Mar 2010)
+
+  10 Mar 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +qrna-2.0.3c-r1.ebuild, +files/qrna-2.0.3c-ldflags.patch:
+  Respecting LDFLAGS, rebuilding all libs instead of using upstreams bundled
+  ones, #308703
+
+  05 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> qrna-2.0.3c.ebuild,
+  +files/qrna-2.0.3c-glibc-2.10.patch:
+  Fix building with GLIBC 2.10+ wrt #277098.
+
+  07 Sep 2008; Markus Dittrich <markusle@gentoo.org> qrna-2.0.3c.ebuild:
+  Fixed bad HOMEPAGE and formatting in ebuild.
+
+  22 Jun 2008; Jeff Gardner <je_fro@gentoo.org> qrna-2.0.3c.ebuild:
+  Do not install shuffle, it comes from hmmer.
+
+  22 Jun 2008; Jeff Gardner <je_fro@gentoo.org> qrna-2.0.3c.ebuild:
+  No longer compiling files in squid02 because they are newer in hmmer and
+  we avoid collisions. qrna now depends on hmmer. See bug #208462.
+
+  22 May 2007; Olivier Fisette <ribosome@gentoo.org> qrna-2.0.3c.ebuild:
+  Updated home page.
+
+  09 Apr 2007; Jeff Gardner <je_fro@gentoo.org> qrna-2.0.3c.ebuild:
+  Fixed to use doenvd wrt bug #173884
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  14 Sep 2006; Olivier Fisette <ribosome@gentoo.org> metadata.xml:
+  Stepping down from maintaining this package.
+
+  15 Mar 2006; Olivier Fisette <ribosome@gentoo.org> qrna-2.0.3c.ebuild:
+  Correctly rename README file (fixes bug #125502).
+
+  21 Jan 2006; Olivier Fisette <ribosome@gentoo.org> qrna-2.0.3c.ebuild:
+  Ebuild clean-up.
+
+  04 Jan 2006; Olivier Fisette <ribosome@gentoo.org> qrna-2.0.3c.ebuild:
+  Do not depend on "virtual/libc" (package not in system target).
+
+  17 Oct 2005; Olivier Fisette <ribosome@gentoo.org> -qrna-2.0.3b.ebuild:
+  Pruning old version.
+
+  17 Oct 2005; Joseph Jezak <josejx@gentoo.org> qrna-2.0.3c.ebuild:
+  Marked ppc stable for bug #108336.
+
+  11 Oct 2005; Luis Medinas <metalgod@gentoo.org> qrna-2.0.3c.ebuild:
+  Marked Stable on amd64.
+
+  09 Oct 2005; Mark Loeser <halcy0n@gentoo.org> qrna-2.0.3c.ebuild:
+  Stable on x86
+
+*qrna-2.0.3c (07 Aug 2005)
+
+  07 Aug 2005; Olivier Fisette <ribosome@gentoo.org> -qrna-2.0.2c.ebuild,
+  qrna-2.0.3b.ebuild, +qrna-2.0.3c.ebuild:
+  New version. Added 2.0.3b to x86. Removed old version.
+
+*qrna-2.0.3b (13 May 2005)
+
+  13 May 2005; Olivier Fisette <ribosome@gentoo.org> +qrna-2.0.3b.ebuild:
+  New version.
+
+*qrna-2.0.2c (23 Dec 2004)
+
+  23 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +files/26qrna, +qrna-2.0.2c.ebuild:
+  Moved from app-sci/qrna to sci-biology/qrna.
+
+  22 Nov 2004; Olivier Fisette <ribosome@gentoo.org> :
+  Jason Huebel <jhuebel@gentoo.org> added qrna-2.0.2c to ~amd64.
+
+  31 Oct 2004; Olivier Fisette <ribosome@gentoo.org> qrna-2.0.2c.ebuild:
+  Added to x86.
+
+  23 Jul 2004; Jon Hood <squinky86@gentoo.org> qrna-2.0.2c.ebuild:
+  Change virtual/glibc -> virtual/libc.
+
+  21 Jul 2004; David Holm <dholm@gentoo.org> qrna-2.0.2c.ebuild:
+  Added to ~ppc.
+
+*qrna-2.0.2c (20 Jul 2004)
+
+  20 Jul 2004; Olivier Fisette <ribosome@gentoo.org>
+  qrna-2.0.2c.ebuild, metadata.xml, ChangeLog:
+  Initial import.

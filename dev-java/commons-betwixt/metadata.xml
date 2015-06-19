@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>java</herd>
+
+<longdescription>
+	The Betwixt library provides an XML introspection mechanism for mapping
+	beans to XML in a flexible way. It is implemented using an XMLIntrospector
+	and XMLBeanInfo classes which are similar to the standard Introspector and
+	BeanInfo from the Java Beans specification.
+
+	Betwixt provides a way of turning beans into XML as well as automatically
+	generating digester rules in a way that can be customized on a per type
+	manner in the same way that the BeanInfo mechanism can be used to customize
+	the default introspection on a java object.
+</longdescription>
+
+</pkgmetadata>

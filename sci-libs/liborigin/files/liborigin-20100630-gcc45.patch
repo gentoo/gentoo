@@ -1,0 +1,13 @@
+Index: OriginDefaultParser.cpp
+===================================================================
+--- OriginDefaultParser.cpp	(revision 1751)
++++ OriginDefaultParser.cpp	(working copy)
+@@ -73,7 +73,7 @@
+ 	int i;
+ 	FILE *f, *debug;
+ 	if((f=fopen(fileName.c_str(),"rb")) == NULL ) {
+-		printf("Could not open %s!\n",fileName);
++		printf("Could not open %s!\n",fileName.c_str());
+ 		return false;
+ 	}
+ 

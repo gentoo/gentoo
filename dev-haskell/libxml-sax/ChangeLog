@@ -1,0 +1,86 @@
+# ChangeLog for dev-haskell/libxml-sax
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/libxml-sax/ChangeLog,v 1.24 2015/02/28 13:27:02 ago Exp $
+
+  28 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libxml-sax-0.7.5.ebuild:
+  Stable for ia64, wrt bug #534988
+
+  27 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libxml-sax-0.7.5.ebuild:
+  Stable for sparc, wrt bug #534988
+
+  23 Feb 2015; Agostino Sarubbo <ago@gentoo.org> libxml-sax-0.7.5.ebuild:
+  Stable for ppc64, wrt bug #534988
+
+  28 Jan 2015; Agostino Sarubbo <ago@gentoo.org> libxml-sax-0.7.5.ebuild:
+  Stable for ppc, wrt bug #534988
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> libxml-sax-0.7.5.ebuild:
+  Stable for x86, wrt bug #534988
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org> libxml-sax-0.7.5.ebuild:
+  Stable for amd64, wrt bug #534988
+
+  06 Dec 2014; Agostino Sarubbo <ago@gentoo.org> libxml-sax-0.7.4.ebuild:
+  Stable for ia64, wrt bug #502672
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+  18 Jul 2014; Tobias Klausmann <klausman@gentoo.org> libxml-sax-0.7.5.ebuild:
+  Stable on alpha, bug #502672
+
+*libxml-sax-0.7.5 (09 Mar 2014)
+
+  09 Mar 2014; Mark Wright <gienah@gentoo.org> +libxml-sax-0.7.5.ebuild:
+  Bump libxml-sax to 0.7.5
+
+  02 Feb 2014; Agostino Sarubbo <ago@gentoo.org> libxml-sax-0.7.4.ebuild:
+  Stable for sparc, wrt bug #488808
+
+  19 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libxml-sax-0.7.4.ebuild:
+  Stable for ppc64, wrt bug #488808
+
+  19 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libxml-sax-0.7.4.ebuild:
+  Stable for ppc, wrt bug #488808
+
+  07 Dec 2013; Pacho Ramos <pacho@gentoo.org> libxml-sax-0.7.4.ebuild:
+  x86 stable, bug #488808
+
+  24 Nov 2013; Pacho Ramos <pacho@gentoo.org> libxml-sax-0.7.4.ebuild:
+  amd64 stable, bug #488808
+
+*libxml-sax-0.7.4 (02 Apr 2013)
+
+  02 Apr 2013; Mark Wright <gienah@gentoo.org> +libxml-sax-0.7.4.ebuild:
+  Bump libxml-sax to 0.7.4
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> libxml-sax-0.7.3-r1.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> libxml-sax-0.7.3-r1.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> libxml-sax-0.7.3-r1.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> libxml-sax-0.7.3-r1.ebuild:
+  Add ~ppc64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> libxml-sax-0.7.3-r1.ebuild:
+  Add ~ppc, wrt bug #449220
+
+*libxml-sax-0.7.3-r1 (23 Dec 2012)
+
+  23 Dec 2012; Sergei Trofimovich <slyfox@gentoo.org>
+  +libxml-sax-0.7.3-r1.ebuild:
+  Version bump.
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org> libxml-sax-0.7.2.ebuild:
+  move dev-haskell/libxml-sax/libxml-sax-0.7.2.ebuild ebuild to mirror://hackage
+
+*libxml-sax-0.7.2 (12 Jan 2012)
+
+  12 Jan 2012; Sergei Trofimovich <slyfox@gentoo.org> +libxml-sax-0.7.2.ebuild,
+  +metadata.xml:
+  Initial import. Haskell library. Bindings for the libXML2 SAX interface.
+  Depend for dev-util/bustle-0.3.1.

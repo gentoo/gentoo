@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>kde</herd>
+<use>
+	<flag name="phonon">Compile bindings for Phonon.</flag>
+	<flag name="qscintilla">Compile bindings for <pkg>x11-libs/qscintilla</pkg>.</flag>
+	<flag name="webkit">Compile bindings for <pkg>dev-qt/qtwebkit</pkg>.</flag>
+</use>
+</pkgmetadata>

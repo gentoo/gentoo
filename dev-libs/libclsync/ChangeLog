@@ -1,0 +1,21 @@
+# ChangeLog for dev-libs/libclsync
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libclsync/ChangeLog,v 1.4 2015/06/06 19:04:55 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  25 May 2015; Andrew Savchenko <bircoph@gentoo.org> -libclsync-0.4.ebuild,
+  libclsync-0.4.1.ebuild, -files/libclsync-0.4-version.patch:
+  Remove old, eutils eclass is no longer needed.
+
+*libclsync-0.4.1 (25 May 2015)
+
+  25 May 2015; Andrew Savchenko <bircoph@gentoo.org> +libclsync-0.4.1.ebuild:
+  Version bump. Add extra debugging support.
+
+*libclsync-0.4 (11 Feb 2015)
+
+  11 Feb 2015; Andrew Savchenko <bircoph@gentoo.org> +libclsync-0.4.ebuild,
+  +files/libclsync-0.4-version.patch, +metadata.xml:
+  Initial version ported from bircoph overlay

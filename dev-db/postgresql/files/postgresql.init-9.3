@@ -1,0 +1,143 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/files/postgresql.init-9.3,v 1.1 2015/06/04 19:34:58 titanofold Exp $
+
+extra_started_commands="reload"
+
+get_config() {
+    [ -f ${PGDATA%/}/postgresql.conf ] || return 1
+
+    eval echo $(sed -e 's:#.*::' ${PGDATA%/}/postgresql.conf \
+        | awk '$1 == "'$1'" { print ($2 == "=" ? $3 : $2) }')
+}
+
+depend() {
+    use net
+    provide postgresql
+
+    if [ "$(get_config log_destination)" = "syslog" ]; then
+        use logger
+    fi
+}
+
+configured_port=$(get_config port)
+: ${configured_port:=${PGPORT}}
+socket_paths=$(get_config unix_socket_directories)
+: ${socket_paths:=/run/postgresql}
+
+checkconfig() {
+    # Check that DATA_DIR has been set
+    if [ -z ${DATA_DIR} ] ; then
+        eerror "DATA_DIR not set"
+        eerror "HINT: Perhaps you need to update /etc/conf.d/postgresql-@SLOT@"
+        return 1
+    fi
+
+    # Check that DATA_DIR exists
+    if [ ! -d ${DATA_DIR} ] ; then
+        eerror "Directory not found: ${DATA_DIR}"
+        eerror "HINT: Ensure that DATA_DIR points to the right path."
+        eerror "HINT: Or perhaps you need to create the database cluster:"
+        eerror "    emerge --config dev-db/postgresql:@SLOT@"
+        return 1
+    fi
+
+    # Check for the existence of PostgreSQL's config files, and set the
+    # proper mode and ownership.
+    # Only three files should be checked as potentially other files
+    # may be in PGDATA that should not be touched.
+    local file
+    for file in postgresql pg_hba pg_ident ; do
+        file="${PGDATA%/}/${file}.conf"
+        if [ -f ${file} ] ; then
+            checkpath -f -m 0600 -o postgres:postgres ${file}
+        else
+            eerror "${file} not found"
+            eerror "HINT: mv ${DATA_DIR%/}/*.conf ${PGDATA}"
+            return 1
+        fi
+    done
+
+    # Set the proper permission for the socket paths and create it if
+    # it doesn't exist.
+	set -f; IFS=','
+	local s
+	for s in ${socket_paths}; do
+		checkpath -d -m 1775 -o postgres:postgres ${s}
+		if [ -e ${s%/}/.s.PGSQL.${configured_port} ] ; then
+			eerror "Socket conflict."
+			eerror "A server is already listening on:"
+			eerror "    ${s%/}/.s.PGSQL.${configured_port}"
+			eerror "HINT: Change PGPORT to listen on a different socket."
+			return 1
+		fi
+	done
+	set +f; unset IFS
+}
+
+start() {
+    checkconfig || return 1
+
+    ebegin "Starting PostgreSQL"
+
+    rm -f ${DATA_DIR%/}/postmaster.pid
+
+    local extraenv
+    local x
+    for x in ${PG_EXTRA_ENV} ; do
+        extraenv="${extraenv} --env ${x}"
+    done
+
+    start-stop-daemon --start \
+        --user postgres \
+        --env "PGPORT=${configured_port}" \
+        ${extraenv} \
+        --pidfile ${DATA_DIR%/}/postmaster.pid \
+        --exec /usr/@LIBDIR@/postgresql-@SLOT@/bin/pg_ctl \
+        -- start -s -w -t ${START_TIMEOUT} -l ${DATA_DIR%/}/postmaster.log \
+                 -D ${PGDATA} -o "--data-directory=${DATA_DIR} ${PGOPTS}"
+    local retval=$?
+
+    if [ $retval -ne 0 ] ; then
+        eerror "Check the log for a possible explanation of the above error. The log may be"
+        eerror "    ${DATA_DIR%/}/postmaster.log"
+        eerror "Or wherever you configured PostgreSQL @SLOT@ log messages to be sent."
+        eend $retval
+        return $retval
+    fi
+
+    eend $retval
+}
+
+stop() {
+    local seconds=$(( ${NICE_TIMEOUT} + ${RUDE_TIMEOUT} + ${FORCE_TIMEOUT} ))
+    ebegin "Stopping PostgreSQL (this can take up to ${seconds} seconds)"
+
+    local retval
+    local retries=SIGTERM/${NICE_TIMEOUT}
+
+    if [ "${RUDE_QUIT}" != "NO" ] ; then
+        einfo "RUDE_QUIT enabled."
+        retries="${retries}/SIGINT/${RUDE_TIMEOUT}"
+    fi
+    if [ "${FORCE_QUIT}" = "YES" ] ; then
+        einfo "FORCE_QUIT enabled."
+        ewarn "A recover-run might be executed on next startup."
+        retries="${retries}/SIGQUIT/${FORCE_TIMEOUT}"
+    fi
+
+    # Loops through nice, rude, and force quit in one go.
+    start-stop-daemon --stop \
+        --exec /usr/@LIBDIR@/postgresql-@SLOT@/bin/postgres \
+        --retry ${retries} \
+        --pidfile ${DATA_DIR%/}/postmaster.pid
+
+    eend
+}
+
+reload() {
+    ebegin "Reloading PostgreSQL configuration"
+    kill -HUP $(head -n1 ${DATA_DIR%/}/postmaster.pid)
+    eend $?
+}

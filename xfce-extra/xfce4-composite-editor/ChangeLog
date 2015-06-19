@@ -1,0 +1,11 @@
+# ChangeLog for xfce-extra/xfce4-composite-editor
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-composite-editor/ChangeLog,v 1.1 2012/12/11 12:07:42 ssuominen Exp $
+
+*xfce4-composite-editor-0 (11 Dec 2012)
+
+  11 Dec 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +xfce4-composite-editor-0.ebuild,
+  +files/xfce4-composite-editor-0-validate.patch:
+  Initial commit.
+

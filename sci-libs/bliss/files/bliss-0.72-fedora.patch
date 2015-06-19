@@ -1,0 +1,648 @@
+Pulled on 28-04-13 from
+http://pkgs.fedoraproject.org/cgit/bliss.git/tree/
+
+- Man page written by Jerry James using text borrowed from the sources.
+  The man page therefore has the same copyright and license as the sources.
+- Don't call exit() in library code.
+- Patch from Thomas Rehn, also sent upstream.  Fix one bug and add one
+   performance enhancement.
+
+diff -Naur bliss-0.72.orig/bliss.1 bliss-0.72/bliss.1
+--- bliss-0.72.orig/bliss.1	1969-12-31 17:00:00.000000000 -0700
++++ bliss-0.72/bliss.1	2013-04-28 14:35:37.000000000 -0600
+@@ -0,0 +1,55 @@
++.TH "BLISS" "1" "@VERSION@" "Tommi Junttila & Petteri Kaski" "User Commands"
++.SH "NAME"
++bliss \- Compute automorphism groups and canonical labelings of graphs
++.SH "SYNOPSIS"
++.B bliss
++[\fIOPTIONS\fR] [<\fIGRAPH FILE\fR>]
++.SH "DESCRIPTION"
++.PP
++Bliss is an open source tool for computing automorphism groups and
++canonical forms of graphs.  The graphs are specified in DIMACS format.
++.TP
++\fB\-directed\fR
++the input graph is directed
++.TP
++\fB\-can\fR
++compute canonical form
++.TP
++\fB\-ocan\fR=\fIf\fR
++compute canonical form and output it in file \fIf\fR
++.TP
++\fB\-v\fR=\fIN\fR
++set verbosity level to N [N >= 0, default: 1]
++.TP
++\fB\-sh\fR=\fIX\fR
++select splitting heuristics, where X is:
++.TS
++tab(;);
++R L.
++f;first non-singleton cell
++fl;first largest non-singleton cell
++fs;first smallest non-singleton cell
++fm;first maximally non-trivially connected non-singleton cell
++flm;first largest maximally non-trivially connected
++;non-singleton cell
++fsm;first smallest maximally non-trivially connected
++;non-singleton cell (default)
++.TE
++.TP
++\fB\-fr\fR=\fIX\fR
++use failure recording? [X=y/n, default: y]
++.TP
++\fB\-cr\fR=\fIX\fR
++use component recursion? [X=y/n, default: y]
++.TP
++\fB\-version\fR
++print the version number and exit
++.TP
++\fB\-help\fR
++print this help and exit
++.SH "AUTHORS"
++Bliss was written by Tommi Junttila <Tommi.Junttila@tkk.fi> and
++Petteri Kaski <petteri.kaski@aalto.fi>.
++.PP
++This man page was written by Jerry James <loganjerry@gmail.com>.
++It is distributed under the same terms as bliss.
+diff -Naur bliss-0.72.orig/bliss.cc bliss-0.72/bliss.cc
+--- bliss-0.72.orig/bliss.cc	2013-04-28 14:35:20.582085167 -0600
++++ bliss-0.72/bliss.cc	2013-04-28 14:36:28.792330603 -0600
+@@ -276,13 +276,16 @@
+   if(opt_canonize == false)
+     {
+       /* No canonical labeling, only automorphism group */
+-      g->find_automorphisms(stats, &report_aut, stdout);
++      if (!g->find_automorphisms(stats, &report_aut, stdout))
++	exit(1);
+     }
+   else
+     {
+       /* Canonical labeling and automorphism group */
+       const unsigned int* cl = g->canonical_form(stats, &report_aut, stdout);
+ 
++      if (!cl)
++	exit(1);
+       fprintf(stdout, "Canonical labeling: ");
+       bliss::print_permutation(stdout, g->get_nof_vertices(), cl, 1);
+       fprintf(stdout, "\n");
+@@ -290,6 +293,8 @@
+       if(opt_output_can_file)
+ 	{
+ 	  bliss::AbstractGraph* cf = g->permute(cl);
++	  if (!cf)
++	    exit(1);
+ 	  FILE* const fp = fopen(opt_output_can_file, "w");
+ 	  if(!fp)
+ 	    _fatal("Cannot open '%s' for outputting the canonical form, aborting", opt_output_can_file);
+diff -Naur bliss-0.72.orig/bliss_C.cc bliss-0.72/bliss_C.cc
+--- bliss-0.72.orig/bliss_C.cc	2013-04-28 14:35:20.582085167 -0600
++++ bliss-0.72/bliss_C.cc	2013-04-28 14:36:28.792330603 -0600
+@@ -131,7 +131,7 @@
+ }
+ 
+ extern "C"
+-void
++int
+ bliss_find_automorphisms(BlissGraph *graph,
+ 			 void (*hook)(void *user_param,
+ 				      unsigned int n,
+@@ -142,7 +142,8 @@
+   bliss::Stats s;
+   assert(graph);
+   assert(graph->g);
+-  graph->g->find_automorphisms(s, hook, hook_user_param);
++  if (!graph->g->find_automorphisms(s, hook, hook_user_param))
++    return 0;
+ 
+   if(stats)
+     {
+@@ -154,6 +155,7 @@
+       stats->nof_generators = s.get_nof_generators();
+       stats->max_level = s.get_max_level();
+     }
++  return 1;
+ }
+ 
+ 
+@@ -173,7 +175,7 @@
+   
+   canonical_labeling = graph->g->canonical_form(s, hook, hook_user_param);
+ 
+-  if(stats)
++  if(canonical_labeling && stats)
+     {
+       stats->group_size_approx = s.get_group_size_approx();
+       stats->nof_nodes = s.get_nof_nodes();
+diff -Naur bliss-0.72.orig/bliss_C.h bliss-0.72/bliss_C.h
+--- bliss-0.72.orig/bliss_C.h	2013-04-28 14:35:20.582085167 -0600
++++ bliss-0.72/bliss_C.h	2013-04-28 14:36:28.792330603 -0600
+@@ -156,6 +156,7 @@
+  * The argument \a perm should be an array of
+  * N=bliss::bliss_get_nof_vertices(\a graph) elements describing
+  * a bijection on {0,...,N-1}.
++ * Returns NULL if insufficient memory or internal error.
+  */
+ BlissGraph *bliss_permute(BlissGraph *graph, const unsigned int *perm);
+ 
+@@ -174,8 +175,9 @@
+  * if you want to use the automorphism later, you have to take a copy of it.
+  * Do not call bliss_* functions in the hook.
+  * If \a stats is non-null, then some search statistics are copied there.
++ * \return nonzero if successful, zero if insufficient memory or internal error
+  */
+-void
++int
+ bliss_find_automorphisms(BlissGraph *graph,
+ 			 void (*hook)(void *user_param,
+ 				      unsigned int N,
+@@ -194,6 +196,7 @@
+  * then bliss_permute() with the returned canonical labeling.
+  * Note that the computed canonical version may depend on the applied version
+  * of bliss.
++ * Returns NULL if insufficient memory or internal error.
+  */
+ const unsigned int *
+ bliss_find_canonical_labeling(BlissGraph *graph,
+diff -Naur bliss-0.72.orig/defs.cc bliss-0.72/defs.cc
+--- bliss-0.72.orig/defs.cc	2013-04-28 14:35:20.582085167 -0600
++++ bliss-0.72/defs.cc	2013-04-28 14:36:28.792330603 -0600
+@@ -33,7 +33,6 @@
+   vfprintf(stderr, fmt, ap);
+   fprintf(stderr, "\nAborting!\n");
+   va_end(ap);
+-  exit(1);
+ }
+ 
+ }
+diff -Naur bliss-0.72.orig/graph.cc bliss-0.72/graph.cc
+--- bliss-0.72.orig/graph.cc	2013-04-28 14:35:20.582085167 -0600
++++ bliss-0.72/graph.cc	2013-04-28 14:37:16.162501050 -0600
+@@ -34,7 +34,10 @@
+ namespace bliss {
+ 
+ #define _INTERNAL_ERROR() fatal_error("%s:%d: internal error",__FILE__,__LINE__)
+-#define _OUT_OF_MEMORY() fatal_error("%s:%d: out of memory",__FILE__,__LINE__)
++#define _OUT_OF_MEMORY(label) do {				\
++    fatal_error("%s:%d: out of memory",__FILE__,__LINE__);	\
++    goto label;							\
++  } while (0)
+ 
+ /*-------------------------------------------------------------------------
+  *
+@@ -279,20 +282,6 @@
+     *perm = i;
+ }
+ 
+-bool
+-AbstractGraph::is_automorphism(unsigned int* const perm)
+-{
+-  _INTERNAL_ERROR();
+-  return false;
+-}
+-
+-bool
+-AbstractGraph::is_automorphism(const std::vector<unsigned int>& perm) const
+-{
+-  _INTERNAL_ERROR();
+-  return false;
+-}
+-
+ 
+ 
+ 
+@@ -608,17 +597,7 @@
+ };
+ 
+ 
+-
+-
+-typedef struct {
+-  unsigned int splitting_element;
+-  unsigned int certificate_index;
+-  unsigned int subcertificate_length;
+-  UintSeqHash eqref_hash;
+-} PathInfo;
+-
+-
+-void
++bool
+ AbstractGraph::search(const bool canonical, Stats& stats)
+ {
+   const unsigned int N = get_nof_vertices();
+@@ -658,7 +637,7 @@
+   if(N == 0)
+     {
+       /* Nothing to do, return... */
+-      return;
++      return true;
+     }
+ 
+   /* Initialize the partition ... */
+@@ -696,10 +675,10 @@
+    */
+   if(first_path_labeling) free(first_path_labeling);
+   first_path_labeling = (unsigned int*)calloc(N, sizeof(unsigned int));
+-  if(!first_path_labeling) _OUT_OF_MEMORY();
++  if(!first_path_labeling) _OUT_OF_MEMORY(oom1);
+   if(best_path_labeling) free(best_path_labeling);
+   best_path_labeling = (unsigned int*)calloc(N, sizeof(unsigned int));
+-  if(!best_path_labeling) _OUT_OF_MEMORY();
++  if(!best_path_labeling) _OUT_OF_MEMORY(oom2);
+ 
+   /*
+    * Is the initial partition discrete?
+@@ -710,7 +689,7 @@
+       update_labeling(best_path_labeling);
+       /* Update statistics */
+       stats.nof_leaf_nodes = 1;
+-      return;
++      return true;
+     }
+ 
+   /*
+@@ -718,20 +697,39 @@
+    */
+   if(first_path_labeling_inv) free(first_path_labeling_inv);
+   first_path_labeling_inv = (unsigned int*)calloc(N, sizeof(unsigned int));
+-  if(!first_path_labeling_inv) _OUT_OF_MEMORY();
++  if(!first_path_labeling_inv) _OUT_OF_MEMORY(oom3);
+   if(best_path_labeling_inv) free(best_path_labeling_inv);
+   best_path_labeling_inv = (unsigned int*)calloc(N, sizeof(unsigned int));
+-  if(!best_path_labeling_inv) _OUT_OF_MEMORY();
++  if(!best_path_labeling_inv) _OUT_OF_MEMORY(oom4);
+ 
+   /*
+    * Allocate space for the automorphisms
+    */
+   if(first_path_automorphism) free(first_path_automorphism);
+   first_path_automorphism = (unsigned int*)malloc(N * sizeof(unsigned int));
+-  if(!first_path_automorphism) _OUT_OF_MEMORY();
++  if(!first_path_automorphism) _OUT_OF_MEMORY(oom5);
+   if(best_path_automorphism) free(best_path_automorphism);
+   best_path_automorphism = (unsigned int*)malloc(N * sizeof(unsigned int));
+-  if(!best_path_automorphism) _OUT_OF_MEMORY();
++  if(!best_path_automorphism) {
++    _OUT_OF_MEMORY(oom6);
++  oom6:
++    free(first_path_automorphism);
++    first_path_automorphism = NULL;
++  oom5:
++    free(best_path_labeling_inv);
++    best_path_labeling_inv = NULL;
++  oom4:
++    free(first_path_labeling_inv);
++    first_path_labeling_inv = NULL;
++  oom3:
++    free(best_path_labeling);
++    best_path_labeling = NULL;
++  oom2:
++    free(first_path_labeling);
++    first_path_labeling = NULL;
++  oom1:
++    return false;
++  }
+ 
+   /*
+    * Initialize orbit information so that all vertices are in their own orbits
+@@ -745,7 +743,6 @@
+   initialize_certificate();
+ 
+   std::vector<TreeNode> search_stack;
+-  std::vector<PathInfo> first_path_info;
+   std::vector<PathInfo> best_path_info;
+ 
+   search_stack.clear();
+@@ -974,7 +971,6 @@
+        */
+       {
+ 	unsigned int  next_split_element = UINT_MAX;
+-	unsigned int* next_split_element_pos = 0;
+ 	unsigned int* ep = p.elements + cell->first;
+ 	if(current_node.fp_on)
+ 	  {
+@@ -985,7 +981,6 @@
+ 		 *ep < next_split_element and
+ 		 first_path_orbits.is_minimal_representative(*ep)) {
+ 		next_split_element = *ep;
+-		next_split_element_pos = ep;
+ 	      }
+ 	    }
+ 	  }
+@@ -1001,7 +996,6 @@
+ 		  current_node.long_prune_redundant.find(*ep) ==
+ 		  current_node.long_prune_redundant.end())) {
+ 		next_split_element = *ep;
+-		next_split_element_pos = ep;
+ 	      }
+ 	    }
+ 	  }
+@@ -1015,7 +1009,6 @@
+ 		  current_node.long_prune_redundant.find(*ep) ==
+ 		  current_node.long_prune_redundant.end())) {
+ 		next_split_element = *ep;
+-		next_split_element_pos = ep;
+ 	      }
+ 	    }
+ 	  }
+@@ -1203,8 +1196,10 @@
+ 
+ #if defined(BLISS_VERIFY_EQUITABLEDNESS)
+       /* The new partition should be equitable */
+-      if(!is_equitable())
++      if(!is_equitable()) {
+ 	fatal_error("consistency check failed - partition after refinement is not equitable");
++	return false;
++      }
+ #endif
+ 
+       /*
+@@ -1366,6 +1361,7 @@
+ 			  goto handle_first_path_automorphism;
+ 			/* Should never get here because of CR:FP */
+ 			_INTERNAL_ERROR();
++			return false;
+ 		      }
+ 		  }
+ 
+@@ -1598,8 +1594,10 @@
+ 	
+ #if defined(BLISS_VERIFY_AUTOMORPHISMS)
+ 	/* Verify that it really is an automorphism */
+-	if(!is_automorphism(best_path_automorphism))
++	if(!is_automorphism(best_path_automorphism)) {
+ 	  fatal_error("Best path automorhism validation check failed");
++	  return false;
++	}
+ #endif
+ 	
+ 	unsigned int gca_level_with_first = 0;
+@@ -1666,6 +1664,7 @@
+ 
+ 
+       _INTERNAL_ERROR();
++      return false;
+ 
+       
+     handle_first_path_automorphism:
+@@ -1701,8 +1700,10 @@
+ 
+ #if defined(BLISS_VERIFY_AUTOMORPHISMS)
+       /* Verify that it really is an automorphism */
+-      if(!is_automorphism(first_path_automorphism))
++      if(!is_automorphism(first_path_automorphism)) {
+ 	fatal_error("First path automorphism validation check failed");
++	return false;
++      }
+ #endif
+       
+       if(opt_use_long_prune)
+@@ -1749,12 +1750,13 @@
+   /* Release component recursion data in partition */
+   if(opt_use_comprec)
+     p.cr_free();
++  return true;
+ }
+ 
+ 
+ 
+ 
+-void
++bool
+ AbstractGraph::find_automorphisms(Stats& stats,
+ 				  void (*hook)(void *user_param,
+ 					       unsigned int n,
+@@ -1764,7 +1766,8 @@
+   report_hook = hook;
+   report_user_param = user_param;
+ 
+-  search(false, stats);
++  if (!search(false, stats))
++    return false;
+ 
+   if(first_path_labeling)
+     {
+@@ -1776,6 +1779,7 @@
+       free(best_path_labeling);
+       best_path_labeling = 0;
+     }
++  return true;
+ }
+ 
+ 
+@@ -1790,7 +1794,8 @@
+   report_hook = hook;
+   report_user_param = user_param;
+ 
+-  search(true, stats);
++  if (!search(true, stats))
++    return NULL;
+ 
+   return best_path_labeling;
+ }
+@@ -3480,15 +3485,17 @@
+  * Check whether perm is an automorphism.
+  * Slow, mainly for debugging and validation purposes.
+  */
+-bool
++int
+ Digraph::is_automorphism(unsigned int* const perm)
+ {
+   std::set<unsigned int, std::less<unsigned int> > edges1;
+   std::set<unsigned int, std::less<unsigned int> > edges2;
+ 
+ #if defined(BLISS_CONSISTENCY_CHECKS)
+-  if(!is_permutation(get_nof_vertices(), perm))
++  if(!is_permutation(get_nof_vertices(), perm)) {
+     _INTERNAL_ERROR();
++    return -1;
++  }
+ #endif
+ 
+   for(unsigned int i = 0; i < get_nof_vertices(); i++)
+@@ -3507,7 +3514,7 @@
+ 	  ei++)
+ 	edges2.insert(*ei);
+       if(!(edges1 == edges2))
+-	return false;
++	return 0;
+ 
+       edges1.clear();
+       for(std::vector<unsigned int>::iterator ei = v1.edges_out.begin();
+@@ -3520,10 +3527,10 @@
+ 	  ei++)
+ 	edges2.insert(*ei);
+       if(!(edges1 == edges2))
+-	return false;
++	return 0;
+     }
+ 
+-  return true;
++  return 1;
+ }
+ 
+ bool
+@@ -4330,8 +4337,10 @@
+ Graph::permute(const unsigned int* perm) const
+ {
+ #if defined(BLISS_CONSISTENCY_CHECKS)
+-  if(!is_permutation(get_nof_vertices(), perm))
++  if(!is_permutation(get_nof_vertices(), perm)) {
+     _INTERNAL_ERROR();
++    return NULL;
++  }
+ #endif
+ 
+   Graph* const g = new Graph(get_nof_vertices());
+@@ -5270,15 +5279,17 @@
+  *
+  *-------------------------------------------------------------------------*/
+ 
+-bool
++int
+ Graph::is_automorphism(unsigned int* const perm)
+ {
+   std::set<unsigned int, std::less<unsigned int> > edges1;
+   std::set<unsigned int, std::less<unsigned int> > edges2;
+ 
+ #if defined(BLISS_CONSISTENCY_CHECKS)
+-  if(!is_permutation(get_nof_vertices(), perm))
++  if(!is_permutation(get_nof_vertices(), perm)) {
+     _INTERNAL_ERROR();
++    return -1;
++  }
+ #endif
+ 
+   for(unsigned int i = 0; i < get_nof_vertices(); i++)
+@@ -5298,10 +5309,10 @@
+ 	edges2.insert(*ei);
+ 
+       if(!(edges1 == edges2))
+-	return false;
++	return 0;
+     }
+ 
+-  return true;
++  return 1;
+ }
+ 
+ 
+@@ -5444,7 +5455,7 @@
+   component.clear();
+   component_elements = 0;
+   sh_return = 0;
+-  unsigned int sh_first  = 0;
++  unsigned int sh_first  = 1 << 31;
+   unsigned int sh_size   = 0;
+   unsigned int sh_nuconn = 0;
+ 
+diff -Naur bliss-0.72.orig/graph.hh bliss-0.72/graph.hh
+--- bliss-0.72.orig/graph.hh	2013-04-28 14:35:20.582085167 -0600
++++ bliss-0.72/graph.hh	2013-04-28 14:37:16.162501050 -0600
+@@ -109,9 +109,12 @@
+   unsigned long int get_max_level() const {return max_level;}
+ };
+ 
+-
+-
+-
++typedef struct {
++  unsigned int splitting_element;
++  unsigned int certificate_index;
++  unsigned int subcertificate_length;
++  UintSeqHash eqref_hash;
++} PathInfo;
+ 
+ 
+ /**
+@@ -270,7 +273,7 @@
+   void reset_permutation(unsigned int *perm);
+ 
+   /* Mainly for debugging purposes */
+-  virtual bool is_automorphism(unsigned int* const perm);
++  virtual int is_automorphism(unsigned int* const perm) = 0;
+ 
+   std::vector<unsigned int> certificate_current_path;
+   std::vector<unsigned int> certificate_first_path;
+@@ -284,7 +287,11 @@
+   virtual Partition::Cell* find_next_cell_to_be_splitted(Partition::Cell *cell) = 0;
+ 
+ 
+-  void search(const bool canonical, Stats &stats);
++  /**
++   * \return true if successful, false if insufficient memory to complete or
++   * other internal error
++   */
++  bool search(const bool canonical, Stats &stats);
+ 
+ 
+   void (*report_hook)(void *user_param,
+@@ -351,7 +358,7 @@
+    */
+   unsigned int cr_component_elements;
+ 
+-
++  std::vector<PathInfo> first_path_info;
+ 
+ 
+ public:
+@@ -362,7 +369,7 @@
+    * Check whether \a perm is an automorphism of this graph.
+    * Unoptimized, mainly for debugging purposes.
+    */
+-  virtual bool is_automorphism(const std::vector<unsigned int>& perm) const;
++  virtual bool is_automorphism(const std::vector<unsigned int>& perm) const = 0;
+ 
+ 
+ 
+@@ -427,8 +434,10 @@
+    * if you want to use the automorphism later, you have to take a copy of it.
+    * Do not call any member functions in the hook.
+    * The search statistics are copied in \a stats.
++   * \return true if successful, false if insufficient memory to search or
++   * other internal error.
+    */
+-  void find_automorphisms(Stats& stats,
++  bool find_automorphisms(Stats& stats,
+ 			  void (*hook)(void* user_param,
+ 				       unsigned int n,
+ 				       const unsigned int* aut),
+@@ -448,6 +457,8 @@
+    * Note that the computed canonical version may depend on the applied version
+    * of bliss as well as on some other options (for instance, the splitting
+    * heuristic selected with bliss::Graph::set_splitting_heuristic()).
++   * This function returns NULL if there is insufficient memory, or another
++   * internal error occurs.
+    */
+   const unsigned int* canonical_form(Stats& stats,
+ 				     void (*hook)(void* user_param,
+@@ -500,6 +511,10 @@
+     opt_use_long_prune = active;
+   }
+ 
++  /**
++   * Get an information vector about the first path.
++   */
++  std::vector<PathInfo> get_first_path_info() { return first_path_info; }
+ };
+ 
+ 
+@@ -615,7 +630,7 @@
+ 
+   void initialize_certificate();
+   
+-  bool is_automorphism(unsigned int* const perm);
++  int is_automorphism(unsigned int* const perm);
+ 
+ 
+   bool nucr_find_first_component(const unsigned int level);
+@@ -856,7 +871,7 @@
+ 
+   void initialize_certificate();
+ 
+-  bool is_automorphism(unsigned int* const perm);
++  int is_automorphism(unsigned int* const perm);
+ 
+   void sort_edges();
+ 

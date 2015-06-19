@@ -1,0 +1,50 @@
+# ChangeLog for x11-plugins/wmSun
+# Copyright 2002-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmSun/ChangeLog,v 1.15 2012/02/15 09:54:07 voyageur Exp $
+
+  15 Feb 2012; Bernard Cafarelli <voyageur@gentoo.org> wmSun-1.03-r1.ebuild:
+  Update HOMEPAGE and SRC_URI, thanks Lorenz in bug #394607
+
+  04 Jun 2009; Tiago Cunha <tcunha@gentoo.org> wmSun-1.03-r1.ebuild:
+  stable sparc, bug 215651
+
+  02 Dec 2008; Michele Noberasco <s4t4n@gentoo.org> files/wmSun-1.03-makefile.patch:
+  Fixed LDFLAGS ordering. See bug #248616.
+  wmSun-1.03.ebuild:
+  wiped out oldest release.
+
+  28 Jun 2008; Markus Meier <maekke@gentoo.org> wmSun-1.03-r1.ebuild:
+  x86 stable, bug #229593
+
+  26 Jun 2008; nixnut <nixnut@gentoo.org> wmSun-1.03-r1.ebuild:
+  Stable on ppc wrt bug 229593
+
+  26 Jun 2008; Santiago M. Mola <coldwind@gentoo.org> wmSun-1.03-r1.ebuild:
+  amd64 stable wrt bug #229593
+
+*wmSun-1.03-r1 (15 Feb 2008)
+
+  15 Feb 2008; Michele Noberasco <s4t4n@gentoo.org> wmSun-1.03-r1.ebuid:
+  Revision bump, see bug #207898.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; wmSun-1.03.ebuild:
+  Drop virtual/x11 references.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  22 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml,
+  wmSun-1.03.ebuild:
+  Fixed DEPEND for modular X.
+
+  23 Nov 2004; Jason Wever <weeve@gentoo.org> wmSun-1.03.ebuild:
+  Added ~sparc keyword.
+
+  13 Mar 2004; Stephen P. Becker <geoman@gentoo.org> wmSun-1.03.ebuild:
+  Added ~mips keyword.
+
+*wmSun-1.03 (08 Oct 2002)
+
+  08 Oct 2002; Nick Hadaway <raker@gentoo.org> wmSun-1.03.ebuid,
+  files/digest-wmSun-1.03 :
+  New ebuild.  See bug #5036

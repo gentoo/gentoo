@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prepare unpack
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: Perl-IDE - Write and run Perl scripts using menus and hotkeys
+EAPI=4
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=556
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x86-macos
+LICENSE=GPL-2 GPL-2+
+RDEPEND=dev-perl/Perl-Tags dev-perl/Perl-Critic || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=https://github.com/vim-scripts/perl-support.vim/tarball/4.14 -> perl-support-4.14.tar.gz
+_eclasses_=vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=880ebb2999b2d8a8115a41bc4d11de78

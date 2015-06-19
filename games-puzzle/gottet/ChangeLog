@@ -1,0 +1,53 @@
+# ChangeLog for games-puzzle/gottet
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/gottet/ChangeLog,v 1.13 2015/03/12 19:30:04 mr_bones_ Exp $
+
+  12 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> -gottet-1.0.4.ebuild:
+  old
+
+  25 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gottet-1.0.6.ebuild:
+  Stable for x86, wrt bug #539710
+
+  19 Feb 2015; Agostino Sarubbo <ago@gentoo.org> gottet-1.0.6.ebuild:
+  Stable for amd64, wrt bug #539710
+
+*gottet-1.0.6 (18 May 2014)
+
+  18 May 2014; Tupone Alfredo <tupone@gentoo.org> +gottet-1.0.6.ebuild,
+  +files/gottet-1.0.6-gentoo.patch:
+  Version bump to 1.0.6
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> gottet-1.0.4.ebuild:
+  Move Qt dependencies to the new category
+
+  22 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org> -gottet-1.0.3.ebuild:
+  old
+
+  30 May 2012; Jeff Horelick <jdhore@gentoo.org> gottet-1.0.4.ebuild:
+  marked x86 per bug 418087
+
+  29 May 2012; Agostino Sarubbo <ago@gentoo.org> gottet-1.0.4.ebuild:
+  Stable for amd64, wrt bug #418087
+
+  20 Apr 2012; Michael Sterrett <mr_bones_@gentoo.org> gottet-1.0.3.ebuild,
+  gottet-1.0.4.ebuild:
+  tidy
+
+*gottet-1.0.4 (20 Apr 2012)
+
+  20 Apr 2012; Johannes Huber <johu@gentoo.org> +gottet-1.0.4.ebuild:
+  Non maintainer commit. Version bump by by Michael (kensington)
+  <gentoo@scribeofthenile.com> and me wrt bug #395557.
+
+  20 Apr 2012; Johannes Huber <johu@gentoo.org> gottet-1.0.3.ebuild:
+  Non maintainer commit. Move from deprecated qt4 eclass to qt4-r2, add missing
+  dep, declare RDEPEND explicitly by Michael (kensington)
+  <gentoo@scribeofthenile.com> and me. Wrt bug #311481.
+
+  08 Feb 2010; Christian Faulhammer <fauli@gentoo.org> gottet-1.0.3.ebuild:
+  stable x86, bug 302947
+
+*gottet-1.0.3 (31 Dec 2009)
+
+  31 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> +gottet-1.0.3.ebuild:
+  Initial commit.

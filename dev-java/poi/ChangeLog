@@ -1,0 +1,218 @@
+# ChangeLog for dev-java/poi
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/poi/ChangeLog,v 1.54 2011/12/19 11:08:31 sera Exp $
+
+  19 Dec 2011; Ralph Sennhauser <sera@gentoo.org> poi-3.0.2-r1.ebuild,
+  poi-3.2.ebuild:
+  Fix homepage wrt #202445
+
+  06 Sep 2009; Brent Baude <ranger@gentoo.org> poi-3.2.ebuild:
+  Marking poi-3.2 ppc64 for bug 274052
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> poi-3.2.ebuild:
+  ppc stable #274052
+
+  01 Jul 2009; Markus Meier <maekke@gentoo.org> poi-3.2.ebuild:
+  amd64 stable, bug #258723
+
+  16 Jun 2009; Christian Faulhammer <fauli@gentoo.org> poi-3.2.ebuild:
+  stable x86, bug 258723
+
+  15 Feb 2009; Vlastimil Babka <caster@gentoo.org>
+  -files/poi-3.0.1-src-isDateFormat.patch, -poi-3.0.1-r1.ebuild:
+  Cleanup.
+
+  24 Oct 2008; Markus Meier <maekke@gentoo.org> poi-3.0.2-r1.ebuild:
+  amd64/x86 stable, bug #219664
+
+*poi-3.2 (22 Oct 2008)
+
+  22 Oct 2008; Miroslav Šulc <fordfrog@gentoo.org> +poi-3.2.ebuild:
+  Version bump. Packages depending on dev-java/poi are not compatible with
+  this release so this release is slotted 3.2.
+
+  01 May 2008; Brent Baude <ranger@gentoo.org> poi-3.0.2-r1.ebuild:
+  stable ppc64, bug 219664
+
+  29 Apr 2008; Brent Baude <ranger@gentoo.org> poi-3.0.2-r1.ebuild:
+  stable ppc, bug 219664
+
+  20 Feb 2008; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/poi-3.0.2-isADateFormatTest.patch, poi-3.0.2-r1.ebuild:
+  Fixed error in tests caused by applying patch that fixes determination of
+  date/time formats in cells
+
+*poi-3.0.2-r1 (07 Feb 2008)
+
+  07 Feb 2008; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/poi-3.0.2-isADateFormat.patch, -poi-3.0.2.ebuild,
+  +poi-3.0.2-r1.ebuild:
+  Added patch that fixes detection of custom dates and datetimes in
+  HSSFDateUtil.isADateFormat() method
+
+*poi-3.0.2 (06 Feb 2008)
+
+  06 Feb 2008; Miroslav Šulc <fordfrog@gentoo.org> +poi-3.0.2.ebuild:
+  Version bump
+
+  10 Jan 2008; Vlastimil Babka <caster@gentoo.org>
+  -files/poi-2.5-jikes-fix.patch, -files/poi-3.0-src-isDateFormat.patch,
+  -poi-2.5.1-r1.ebuild, poi-3.0.1-r1.ebuild:
+  Version dump.
+
+  11 Oct 2007; Markus Rothe <corsair@gentoo.org> poi-3.0.1-r1.ebuild:
+  Stable on ppc64; bug #190303
+
+  05 Sep 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  poi-3.0.1-r1.ebuild:
+  amd64 stable, bug #190303.
+
+  02 Sep 2007; Christian Faulhammer <opfer@gentoo.org> poi-3.0.1-r1.ebuild:
+  filter jikes
+
+  01 Sep 2007; nixnut <nixnut@gentoo.org> poi-3.0.1-r1.ebuild:
+  Stable on ppc wrt bug 190303
+
+  01 Sep 2007; Christian Faulhammer <opfer@gentoo.org> poi-3.0.1-r1.ebuild:
+  stable x86, bug 190303
+
+  26 Aug 2007; Petteri Räty <betelgeuse@gentoo.org> -poi-3.0-r1.ebuild,
+  poi-3.0.1-r1.ebuild:
+  Remove unused revision and relax commons-lang dependency atom to match 2.3.
+
+*poi-3.0.1-r1 (05 Aug 2007)
+
+  05 Aug 2007; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/poi-3.0.1-src-isDateFormat.patch, -poi-3.0.1.ebuild,
+  +poi-3.0.1-r1.ebuild:
+  Added patch that enables better detection of whether cell is formatted as date.
+
+  04 Aug 2007; Miroslav Šulc <fordfrog@gentoo.org> poi-3.0.1.ebuild:
+  Fixed SRC_URI, bug #187722.
+
+*poi-3.0.1 (05 Aug 2007)
+
+  04 Aug 2007; Miroslav Šulc <fordfrog@gentoo.org> +poi-3.0.1.ebuild:
+  Version bump.
+
+  23 May 2007; Petteri Räty <betelgeuse@gentoo.org> -poi-3.0.ebuild:
+  Remove broken ebuild.
+
+*poi-3.0-r1 (23 May 2007)
+
+  23 May 2007; Petteri Räty <betelgeuse@gentoo.org> poi-3.0.ebuild,
+  +poi-3.0-r1.ebuild:
+  Use commons-lang-2.1 so that dependencies and ebuild usage are in sync.
+
+  22 May 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +files/poi-3.0-src-isDateFormat.patch:
+  Add missing patch.
+
+*poi-3.0 (22 May 2007)
+
+  22 May 2007; Petteri Räty <betelgeuse@gentoo.org> +poi-3.0.ebuild:
+  Version bump. Adds examples use flag support and src_test.
+
+  28 Apr 2007; Krzysiek Pawlik <nelchael@gentoo.org> poi-2.5.1-r1.ebuild:
+  Fix building with Java strict mode.
+
+  11 Mar 2007; Petteri Räty <betelgeuse@gentoo.org> -poi-2.5.1.ebuild:
+  Remove generation 1 ebuild.
+
+  11 Mar 2007; Petteri Räty <betelgeuse@gentoo.org> poi-2.5.1-r1.ebuild:
+  Marked stable on amd64 wrt bug #166742.
+
+  18 Feb 2007; nixnut <nixnut@gentoo.org> ChangeLog:
+  Stable on ppc wrt bug 166742
+
+  14 Feb 2007; Christian Faulhammer <opfer@gentoo.org> poi-2.5.1-r1.ebuild:
+  stable x86; bug 166742
+
+  11 Jan 2007; Markus Rothe <corsair@gentoo.org> poi-2.5.1-r1.ebuild:
+  Stable on ppc64
+
+  10 Jan 2007; Vlastimil Babka <caster@gentoo.org> -poi-2.5-r2.ebuild:
+  Remove old version.
+
+  10 Jan 2007; Steve Dibb <beandog@gentoo.org> poi-2.5.1.ebuild:
+  amd64 stable, bug 159426
+
+  07 Jan 2007; Tobias Scherbaum <dertobi123@gentoo.org> poi-2.5.1.ebuild:
+  ppc stable, bug #159426
+
+  01 Jan 2007; Andrej Kacian <ticho@gentoo.org> poi-2.5.1.ebuild:
+  Stable on x86, bug #159426.
+
+*poi-2.5.1-r1 (29 Dec 2006)
+
+  29 Dec 2006; Petteri Räty <betelgeuse@gentoo.org> +poi-2.5.1-r1.ebuild:
+  Migrated to generation 2 and fixed dependencies.
+
+  30 Nov 2006; Vlastimil Babka <caster@gentoo.org> poi-2.5-r2.ebuild,
+  poi-2.5.1.ebuild:
+  Update xerces dep for upcoming 2.6 slotmove.
+
+  16 Dec 2005; Petteri Räty <betelgeuse@gentoo.org> poi-2.5-r2.ebuild,
+  poi-2.5.1.ebuild:
+  Added java-pkg_jar-from calls for log4j back because poi directly uses
+  log4j. The ebuilds worked because of LOCALCLASSPATH path in /usr/bin/ant.
+
+  15 Dec 2005; Joshua Nichols <nichoj@gentoo.org> poi-2.5-r2.ebuild,
+  poi-2.5.1.ebuild:
+  Removed log4j dependency, as per bug #100275.
+
+  11 Dec 2005; Joshua Nichols <nichoj@gentoo.org> poi-2.5-r2.ebuild,
+  poi-2.5.1.ebuild:
+  Removed a jar that isn't needed at build-time.
+
+*poi-2.5.1 (07 Oct 2005)
+
+  07 Oct 2005; Petteri Räty <betelgeuse@gentoo.org> +poi-2.5.1.ebuild:
+  Version bump with added support for doc and source use flags. Also, poi now
+  only depends on ant-core instead of full ant.
+
+*poi-2.5-r2 (14 May 2005)
+
+  14 May 2005; Jan Brinkmann <luckyduck@gentoo.org> -poi-2.5-r1.ebuild,
+  +poi-2.5-r2.ebuild:
+  updated commons-beanutils dependency to reflect new slotting. see #71952
+
+  04 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  -files/poi-2.0-jikes-fix.patch, -poi-2.0.ebuild, poi-2.5-r1.ebuild:
+  stable on ppc
+
+  06 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> poi-2.5-r1.ebuild,
+  -poi-2.5.ebuild:
+  latest revision stable on x86 and amd64, removed old version.
+
+  22 Oct 2004; Dylan Carlson <absinthe@gentoo.org> poi-2.0.ebuild,
+  poi-2.5-r1.ebuild, poi-2.5.ebuild:
+  Keywords ~amd64.
+
+*poi-2.5-r1 (19 Sep 2004)
+
+  19 Sep 2004; Thomas Matthijs <axxo@gentoo.org> +poi-2.5-r1.ebuild:
+  Doesn't use packed jars anymore, thanks too Mark Wolfe
+  <mwolfe@netspace.net.au>. The ebuild also evilly fetched other jars it then
+  used, i corrected those. closes #63263
+
+*poi-2.5 (22 Jul 2004)
+
+  22 Jul 2004; Thomas Matthijs <axxo@gentoo.org>
+  +files/poi-2.0-jikes-fix.patch, +files/poi-2.5-jikes-fix.patch,
+  poi-2.0.ebuild, +poi-2.5.ebuild:
+  added junit use flag: run junit tests
+  new upstream version + patch to fix compilation with jikes (closes 57863)
+  added depend on jikes
+
+  20 Apr 2004; Martin Holzer <mholzer@gentoo.org> poi-2.0.ebuild:
+  src_uri now uses mirror://apache
+
+  22 Mar 2004; Chris Aniszczyk <zx@gentoo.org> poi-2.0.ebuild:
+  Stable on x86. Fixes according to #45398
+
+*poi-2.0 (27 Feb 2004)
+
+  27 Feb 2004; Chris Aniszczyk <zx@gentoo.org> metadata.xml, poi-2.0.ebuild:
+  Initial Import. Closes #41175
+

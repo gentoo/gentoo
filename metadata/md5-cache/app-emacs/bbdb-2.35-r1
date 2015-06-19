@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=The Insidious Big Brother Database
+EAPI=4
+HOMEPAGE=http://bbdb.sourceforge.net/
+IUSE=tex
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris
+LICENSE=GPL-2+ Texinfo-manual
+RDEPEND=tex? ( virtual/tex-base ) >=virtual/emacs-23
+SLOT=0
+SRC_URI=http://bbdb.sourceforge.net/bbdb-2.35.tar.gz http://www.mit.edu/afs/athena/contrib/emacs-contrib/Fin/point-at.el http://www.mit.edu/afs/athena/contrib/emacs-contrib/Fin/dates.el
+_eclasses_=elisp	d13b0507622afb8ac9e3f54e91d58614	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=00c490c751320bdeb00ef66da81d14d3

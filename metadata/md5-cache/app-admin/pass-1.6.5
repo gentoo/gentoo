@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm prepare
+DESCRIPTION=Stores, retrieves, generates, and synchronizes passwords securely using gpg, pwgen, and git
+EAPI=5
+HOMEPAGE=http://www.passwordstore.org/
+IUSE=+git X zsh-completion fish-completion emacs dmenu importers elibc_Darwin
+KEYWORDS=~amd64 ~x86 ~x86-macos
+LICENSE=GPL-2
+RDEPEND=app-crypt/gnupg app-admin/pwgen >=app-text/tree-1.7.0 git? ( dev-vcs/git ) X? ( x11-misc/xclip ) elibc_Darwin? ( app-misc/getopt ) zsh-completion? ( app-shells/gentoo-zsh-completions ) fish-completion? ( app-shells/fish ) dmenu? ( x11-misc/dmenu x11-misc/xdotool ) emacs? ( virtual/emacs )
+SLOT=0
+SRC_URI=http://git.zx2c4.com/password-store/snapshot/password-store-1.6.5.tar.xz
+_eclasses_=bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	elisp-common	9a16929c1a6aec7e1c903289983e114c	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ad15f6e3be2837dd58117270ea15c4a7

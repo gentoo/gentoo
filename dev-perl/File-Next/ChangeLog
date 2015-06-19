@@ -1,0 +1,111 @@
+# ChangeLog for dev-perl/File-Next
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-Next/ChangeLog,v 1.29 2014/08/28 17:40:52 zlogene Exp $
+
+  28 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> -File-Next-1.100.0.ebuild:
+  Drop old.
+
+*File-Next-1.120.0-r1 (23 Aug 2014)
+
+  23 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +File-Next-1.120.0-r1.ebuild, -File-Next-1.120.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  19 Jun 2014; Tobias Klausmann <klausman@gentoo.org> File-Next-1.120.0.ebuild:
+  Keyworded on alpha
+
+  18 Jun 2013; Jeroen Roovers <jer@gentoo.org> File-Next-1.120.0.ebuild:
+  Marked ~hppa too.
+
+  16 Apr 2013; Vicente Olivert Riera <vincent@gentoo.org>
+  File-Next-1.120.0.ebuild:
+  Adding ~ppc keyword for dev-perl/PDL and his dependences, wrt bug #449762
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> File-Next-1.120.0.ebuild:
+  Stable for x86, wrt bug #457304
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> File-Next-1.120.0.ebuild:
+  Stable for amd64, wrt bug #457304
+
+  13 Jan 2013; Markus Meier <maekke@gentoo.org> File-Next-1.120.0.ebuild:
+  add ~arm, bug #449762
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org> -File-Next-1.60.0.ebuild,
+  -File-Next-1.80.0.ebuild:
+  Cleanup
+
+*File-Next-1.120.0 (26 Dec 2012)
+
+  26 Dec 2012; Torsten Veller <tove@gentoo.org> +File-Next-1.120.0.ebuild:
+  Version bump
+
+  12 Sep 2012; Johannes Huber <johu@gentoo.org> File-Next-1.100.0.ebuild:
+  Stable for x86, wrt bug #428982
+
+  12 Sep 2012; Agostino Sarubbo <ago@gentoo.org> File-Next-1.100.0.ebuild:
+  Stable for amd64, wrt bug #428982
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*File-Next-1.100.0 (16 Jun 2012)
+
+  16 Jun 2012; Torsten Veller <tove@gentoo.org> +File-Next-1.100.0.ebuild:
+  Version bump
+
+*File-Next-1.80.0 (23 May 2012)
+
+  23 May 2012; Torsten Veller <tove@gentoo.org> +File-Next-1.80.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -File-Next-1.06.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> File-Next-1.60.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*File-Next-1.60.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org> +File-Next-1.60.0.ebuild:
+  Change version scheme
+
+  09 Jan 2010; Fabian Groffen <grobian@gentoo.org> File-Next-1.06.ebuild:
+  Transfer Prefix keywords
+
+  09 Jan 2010; Fabian Groffen <grobian@gentoo.org> File-Next-1.06.ebuild:
+  Transfer Prefix keywords
+
+  12 Oct 2009; Torsten Veller <tove@gentoo.org> -File-Next-1.02.ebuild:
+  Cleanup
+
+  18 Sep 2009; Torsten Veller <tove@gentoo.org> File-Next-1.06.ebuild:
+  Stable on amd64 (#283969)
+
+  10 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  File-Next-1.06.ebuild:
+  x86 stable, bug 283969
+
+  07 Sep 2009; Torsten Veller <tove@gentoo.org> -File-Next-1.04.ebuild:
+  Cleanup
+
+*File-Next-1.06 (12 Aug 2009)
+
+  12 Aug 2009; Torsten Veller <tove@gentoo.org> +File-Next-1.06.ebuild:
+  Version bump
+
+*File-Next-1.04 (02 Aug 2009)
+
+  02 Aug 2009; Torsten Veller <tove@gentoo.org> +File-Next-1.04.ebuild:
+  Version bump
+
+  06 Sep 2008; Raúl Porcel <armin76@gentoo.org> File-Next-1.02.ebuild:
+  x86 stable
+
+  05 Sep 2008; Santiago M. Mola <coldwind@gentoo.org> File-Next-1.02.ebuild:
+  amd64 stable
+
+*File-Next-1.02 (15 May 2008)
+
+  15 May 2008; Samuli Suominen <drac@gentoo.org> +File-Next-1.02.ebuild:
+  Initial commit. Ebuild by René Neumann wrt 220639.

@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=M4 Macros for Electric circuit diagrams in TeX or LaTeX
+EAPI=5
+HOMEPAGE=https://ece.uwaterloo.ca/~aplevich/Circuit_macros/
+IUSE=doc examples +script
+KEYWORDS=~amd64 ~x86
+LICENSE=LPPL-1.3c
+RDEPEND=|| ( app-text/texlive[graphics] app-text/texlive[pstricks] ) media-gfx/dpic sys-devel/m4 script? ( app-text/texlive[graphics] dev-texlive/texlive-latexextra )
+SLOT=0
+SRC_URI=https://ece.uwaterloo.ca/~aplevich/Circuit_macros/Circuit_macros.tar.gz -> circuit_macros-8.04.tar.gz
+_eclasses_=texlive-common	8bd0f2143e4bb5fa3bb0bb56aa08006f
+_md5_=e23f4783477f29b1e7fc6cd77d36dbfe

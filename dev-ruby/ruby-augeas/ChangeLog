@@ -1,0 +1,197 @@
+# ChangeLog for dev-ruby/ruby-augeas
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-augeas/ChangeLog,v 1.53 2015/06/14 06:48:26 graaff Exp $
+
+  14 Jun 2015; Hans de Graaff <graaff@gentoo.org> -ruby-augeas-0.5.0.ebuild:
+  Cleanup.
+
+  26 Apr 2015; Pacho Ramos <pacho@gentoo.org> ruby-augeas-0.5.0-r2.ebuild:
+  ppc stable wrt bug #536168
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> ruby-augeas-0.5.0-r2.ebuild:
+  Stable for sparc, wrt bug #536168
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> ruby-augeas-0.5.0-r2.ebuild:
+  Stable for ia64, wrt bug #536168
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> ruby-augeas-0.5.0-r2.ebuild:
+  Stable for x86, wrt bug #536168
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> ruby-augeas-0.5.0-r2.ebuild:
+  Stable for amd64, wrt bug #536168
+
+  25 Mar 2015; Hans de Graaff <graaff@gentoo.org> ruby-augeas-0.5.0-r3.ebuild:
+  Add ruby22.
+
+  19 Jan 2015; Jeroen Roovers <jer@gentoo.org> ruby-augeas-0.5.0-r2.ebuild:
+  Stable for HPPA (bug #536168).
+
+  04 Nov 2014; Manuel Rüger <mrueg@gentoo.org> -ruby-augeas-0.4.1.ebuild:
+  Cleanup old.
+
+  04 Nov 2014; Agostino Sarubbo <ago@gentoo.org> ruby-augeas-0.5.0.ebuild:
+  Stable for ppc, wrt bug #516934
+
+  01 Nov 2014; Hans de Graaff <graaff@gentoo.org> -ruby-augeas-0.5.0-r1.ebuild:
+  Cleanup.
+
+  25 Aug 2014; Manuel Rüger <mrueg@gentoo.org> ruby-augeas-0.5.0.ebuild:
+  Mark amd64 stable. Bug #516934.
+
+  15 Aug 2014; Raúl Porcel <armin76@gentoo.org> ruby-augeas-0.5.0.ebuild:
+  ia64/sparc stable wrt #516934
+
+*ruby-augeas-0.5.0-r3 (12 Aug 2014)
+
+  12 Aug 2014; Hans de Graaff <graaff@gentoo.org> +ruby-augeas-0.5.0-r3.ebuild:
+  Make sure that the last revision does have ruby21.
+
+*ruby-augeas-0.5.0-r2 (11 Aug 2014)
+
+  11 Aug 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +ruby-augeas-0.5.0-r2.ebuild:
+  removing ruby21 from 0.5.0 for bug 513284
+
+  09 Aug 2014; Jeroen Roovers <jer@gentoo.org> ruby-augeas-0.5.0.ebuild:
+  Stable for HPPA (bug #516934).
+
+  26 Jul 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ruby-augeas-0.5.0.ebuild:
+  x86 stable wrt bug #516934
+
+  25 Apr 2014; Patrick Lauer <patrick@gentoo.org> ruby-augeas-0.5.0.ebuild:
+  Whitespace
+
+  24 Apr 2014; Manuel Rüger <mrueg@gentoo.org> ruby-augeas-0.5.0-r1.ebuild,
+  ruby-augeas-0.5.0.ebuild:
+  EAPI bump.
+
+  05 Apr 2014; Manuel Rüger <mrueg@gentoo.org> ruby-augeas-0.4.1.ebuild,
+  ruby-augeas-0.5.0-r1.ebuild, ruby-augeas-0.5.0.ebuild:
+  Remove ree18 and ruby18 target.
+
+*ruby-augeas-0.5.0-r1 (23 Feb 2014)
+
+  23 Feb 2014; Hans de Graaff <graaff@gentoo.org> +ruby-augeas-0.5.0-r1.ebuild:
+  EAPI=5. Add ruby20 and ruby21, drop deprecated ree18. Bug 487264.
+
+*ruby-augeas-0.5.0 (15 Sep 2013)
+
+  15 Sep 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +ruby-augeas-0.5.0.ebuild:
+  final fix for bug 427970 via verbumping to 0.5.0
+
+  07 Feb 2013; Matthew Thode <prometheanfire@gentoo.org> metadata.xml:
+  taking maintainership (along with ruby herd) :D
+
+  06 Feb 2013; Jeroen Roovers <jer@gentoo.org> -ruby-augeas-0.3.0-r1.ebuild,
+  ruby-augeas-0.4.1.ebuild:
+  Stable for HPPA (bug #439732).
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml,
+  ruby-augeas-0.3.0-r1.ebuild:
+  Cleanup due #22900
+
+  30 Dec 2012; Agostino Sarubbo <ago@gentoo.org> ruby-augeas-0.4.1.ebuild:
+  Stable for sparc, wrt bug #439732
+
+  18 Dec 2012; Agostino Sarubbo <ago@gentoo.org> ruby-augeas-0.4.1.ebuild:
+  Stable for ia64, wrt bug #439732
+
+  04 Dec 2012;  <ago@gentoo.org> ruby-augeas-0.4.1.ebuild:
+  Stable for x86, wrt bug #439732
+
+  30 Oct 2012; Anthony G. Basile <blueness@gentoo.org> ruby-augeas-0.4.1.ebuild:
+  stable ppc, bug #439732
+
+  30 Oct 2012; Agostino Sarubbo <ago@gentoo.org> ruby-augeas-0.4.1.ebuild:
+  Stable for amd64, wrt bug #439732
+
+  26 Oct 2012; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  Add to the ruby herd so that we get notified of issues.
+
+  26 Oct 2012; Hans de Graaff <graaff@gentoo.org> ruby-augeas-0.4.1.ebuild,
+  +files/ruby-augeas-0.4.1-libxml2.patch:
+  Add upstream patch to properly compile with augeas 0.10.0.
+
+  26 Oct 2012; Hans de Graaff <graaff@gentoo.org> ruby-augeas-0.3.0-r1.ebuild,
+  ruby-augeas-0.4.1.ebuild:
+  Adjust dependencies to make clear that these versions will not build with the
+  lastest version.
+
+  16 Sep 2012; Hans de Graaff <graaff@gentoo.org> ruby-augeas-0.4.1.ebuild:
+  Revert dependencies to actually work with ruby-ng eclass dependencies setup.
+
+  30 Jun 2011; Hans de Graaff <graaff@gentoo.org> -ruby-augeas-0.2.0.ebuild,
+  -ruby-augeas-0.3.0.ebuild:
+  Remove old versions.
+
+  30 Jun 2011; Brent Baude <ranger@gentoo.org> ruby-augeas-0.3.0-r1.ebuild:
+  Marking ruby-augeas-0.3.0-r1 ppc for bug 353213
+
+*ruby-augeas-0.4.1 (11 May 2011)
+
+  11 May 2011; MATSUU Takuto <matsuu@gentoo.org> +ruby-augeas-0.4.1.ebuild:
+  Version bumped.
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org> ruby-augeas-0.3.0-r1.ebuild:
+  sparc stable wrt #353213
+
+  10 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ruby-augeas-0.3.0-r1.ebuild:
+  x86 stable wrt bug #353213
+
+  02 Feb 2011; Jeroen Roovers <jer@gentoo.org> ruby-augeas-0.3.0-r1.ebuild:
+  Stable for HPPA (bug #353213).
+
+  30 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  ruby-augeas-0.3.0-r1.ebuild:
+  Stable on amd64 wrt bug #353213
+
+  20 Sep 2010; Guy Martin <gmsoft@gentoo.org> ruby-augeas-0.3.0.ebuild:
+  hppa stable.
+
+*ruby-augeas-0.3.0-r1 (03 Jul 2010)
+
+  03 Jul 2010; Hans de Graaff <graaff@gentoo.org>
+  +ruby-augeas-0.3.0-r1.ebuild:
+  Convert to ruby-fakegem. Make dependencies more specific to avoid
+  compilation problems.
+
+  21 Jun 2010; Guy Martin <gmsoft@gentoo.org> ruby-augeas-0.3.0.ebuild:
+  added ~hppa to KEYWORDS
+
+  10 Oct 2009; Raúl Porcel <armin76@gentoo.org> ruby-augeas-0.3.0.ebuild:
+  sparc stable wrt #282759
+
+  05 Sep 2009; Markus Meier <maekke@gentoo.org> ruby-augeas-0.2.0.ebuild:
+  amd64 stable, bug #270432
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> ruby-augeas-0.2.0.ebuild:
+  ppc stable #282759
+
+  27 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  ruby-augeas-0.2.0.ebuild:
+  stable x86, bug 282759
+
+*ruby-augeas-0.3.0 (25 Aug 2009)
+
+  25 Aug 2009; MATSUU Takuto <matsuu@gentoo.org> +ruby-augeas-0.3.0.ebuild:
+  Version bumped.
+
+  19 May 2009; Ferris McCormick <fmccor@gentoo.org>
+  ruby-augeas-0.2.0.ebuild:
+  Sparc stable, required for Bug #270432.
+
+  12 Apr 2009; Friedrich Oslage <bluebird@gentoo.org>
+  ruby-augeas-0.2.0.ebuild:
+  Add ~sparc keyword, bug #263622
+
+  24 Mar 2009; Joseph Jezak <josejx@gentoo.org> ruby-augeas-0.2.0.ebuild:
+  Marked ~ppc for bug #263622.
+
+*ruby-augeas-0.2.0 (24 Feb 2009)
+
+  24 Feb 2009; MATSUU Takuto <matsuu@gentoo.org> +metadata.xml,
+  +ruby-augeas-0.2.0.ebuild:
+  Initial import, bug #229361.

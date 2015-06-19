@@ -1,0 +1,20 @@
+# ChangeLog for dev-scheme/elk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-scheme/elk/ChangeLog,v 1.4 2015/01/22 08:06:35 jer Exp $
+
+  22 Jan 2015; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Whitespace.
+
+*elk-3.99.8 (07 Nov 2012)
+
+  07 Nov 2012; Marijn Schouten <hkBst@gentoo.org> +elk-3.99.8.ebuild:
+  bump
+
+  31 Jan 2010; Torsten Veller <tove@gentoo.org> elk-3.99.7.ebuild:
+  Change vecho to echo
+
+*elk-3.99.7 (17 Jan 2007)
+
+  17 Jan 2007; Marijn Schouten <hkBst@gentoo.org> +metadata.xml,
+  +elk-3.99.7.ebuild:
+  Initial ebuild. Thanks to Ales Najmann <ales.najmann@gmail.com>

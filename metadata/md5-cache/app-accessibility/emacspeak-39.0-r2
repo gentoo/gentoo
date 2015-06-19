@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=espeak? ( app-accessibility/espeak ) >=virtual/emacs-24
+DESCRIPTION=the emacspeak audio desktop
+EAPI=5
+HOMEPAGE=http://emacspeak.sourceforge.net/
+IUSE=+espeak
+KEYWORDS=amd64 ppc x86
+LICENSE=BSD GPL-2
+RDEPEND=espeak? ( app-accessibility/espeak ) >=dev-tcltk/tclx-8.4 >=virtual/emacs-24
+SLOT=0
+SRC_URI=http://emacspeak.googlecode.com/files/emacspeak-39.0.tar.bz2
+_eclasses_=elisp	d13b0507622afb8ac9e3f54e91d58614	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	readme.gentoo	106edea5533517715013de909a333abd	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=af59c81c6c7bed31006f3bcd5003b732

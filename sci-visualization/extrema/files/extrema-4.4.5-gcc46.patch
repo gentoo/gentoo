@@ -1,0 +1,15 @@
+Fix building with gcc-4.6
+
+https://bugs.gentoo.org/show_bug.cgi?id=363467
+
+Patch written by Kacper Kowalik <xarthisius@gentoo.org>
+--- a/src/Graphics/GRA_thiessenTriangulation.h
++++ b/src/Graphics/GRA_thiessenTriangulation.h
+@@ -19,6 +19,7 @@
+ #define GRA_THIESSENTRIANGULATION
+ 
+ #include <vector>
++#include <cstddef>
+ 
+ class GRA_thiessenTriangulation
+ {

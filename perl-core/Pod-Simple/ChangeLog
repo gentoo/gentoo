@@ -1,0 +1,398 @@
+# ChangeLog for perl-core/Pod-Simple
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/perl-core/Pod-Simple/ChangeLog,v 1.61 2014/11/08 16:38:00 dilfridge Exp $
+
+  08 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -Pod-Simple-3.230.0-r1.ebuild:
+  Remove old
+
+*Pod-Simple-3.230.0-r1 (26 Jul 2014)
+
+  26 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Pod-Simple-3.230.0-r1.ebuild, -Pod-Simple-3.230.0.ebuild:
+  EAPI bump
+
+  20 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -Pod-Simple-3.260.0.ebuild:
+  Remove old
+
+  11 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -Pod-Simple-3.14.ebuild, -Pod-Simple-3.15.ebuild, -Pod-Simple-3.160.0.ebuild,
+  -Pod-Simple-3.170.0.ebuild, -Pod-Simple-3.180.0.ebuild,
+  -Pod-Simple-3.190.0.ebuild, -Pod-Simple-3.200.0.ebuild,
+  -Pod-Simple-3.210.0.ebuild, -Pod-Simple-3.220.0.ebuild:
+  Remove old
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org> Pod-Simple-3.230.0.ebuild,
+  Pod-Simple-3.260.0.ebuild, Pod-Simple-3.280.0.ebuild:
+  Add arm64 love.
+
+*Pod-Simple-3.280.0 (14 Aug 2013)
+
+  14 Aug 2013; Patrick Lauer <patrick@gentoo.org> +Pod-Simple-3.280.0.ebuild:
+  Bump
+
+*Pod-Simple-3.260.0 (13 Mar 2013)
+
+  13 Mar 2013; Torsten Veller <tove@gentoo.org> +Pod-Simple-3.260.0.ebuild:
+  Version bump
+
+  02 Mar 2013; Agostino Sarubbo <ago@gentoo.org> Pod-Simple-3.230.0.ebuild:
+  Stable for sh, wrt bug #458122
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Pod-Simple-3.230.0.ebuild:
+  Stable for sparc, wrt bug #458122
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Pod-Simple-3.230.0.ebuild:
+  Stable for ia64, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Pod-Simple-3.230.0.ebuild:
+  Stable for arm, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Pod-Simple-3.230.0.ebuild:
+  Stable for s390, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Pod-Simple-3.230.0.ebuild:
+  Stable for alpha, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Pod-Simple-3.230.0.ebuild:
+  Stable for hppa, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Pod-Simple-3.230.0.ebuild:
+  Stable for ppc, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Pod-Simple-3.230.0.ebuild:
+  Stable for ppc64, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Pod-Simple-3.230.0.ebuild:
+  Stable for x86, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> Pod-Simple-3.230.0.ebuild:
+  Stable for amd64, wrt bug #458122
+
+*Pod-Simple-3.230.0 (22 Aug 2012)
+
+  22 Aug 2012; Torsten Veller <tove@gentoo.org> +Pod-Simple-3.230.0.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+*Pod-Simple-3.220.0 (28 May 2012)
+
+  28 May 2012; Torsten Veller <tove@gentoo.org> +Pod-Simple-3.220.0.ebuild:
+  Version bump
+
+*Pod-Simple-3.210.0 (26 May 2012)
+
+  26 May 2012; Torsten Veller <tove@gentoo.org> +Pod-Simple-3.210.0.ebuild:
+  Version bump
+
+  28 Apr 2012; Alexis Ballier <aballier@gentoo.org> Pod-Simple-3.200.0.ebuild:
+  keyword ~amd64-fbsd
+
+  07 Mar 2012; Brent Baude <ranger@gentoo.org> Pod-Simple-3.160.0.ebuild:
+  Marking Pod-Simple-3.160.0 ppc64 for bug 391499
+
+*Pod-Simple-3.200.0 (04 Mar 2012)
+
+  04 Mar 2012; Torsten Veller <tove@gentoo.org> +Pod-Simple-3.200.0.ebuild:
+  Version bump
+
+  02 Feb 2012; Brent Baude <ranger@gentoo.org> Pod-Simple-3.160.0.ebuild:
+  Marking Pod-Simple-3.160.0 ppc for bug 391499
+
+  17 Dec 2011; Raúl Porcel <armin76@gentoo.org> Pod-Simple-3.160.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #391499
+
+  14 Dec 2011; Agostino Sarubbo <ago@gentoo.org> Pod-Simple-3.160.0.ebuild:
+  Stable for AMD64, wrt bug #391499
+
+  14 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Pod-Simple-3.160.0.ebuild:
+  x86 stable wrt bug #391499
+
+  04 Dec 2011; Markus Meier <maekke@gentoo.org> Pod-Simple-3.160.0.ebuild:
+  arm stable, bug #391499
+
+  30 Nov 2011; Jeroen Roovers <jer@gentoo.org> Pod-Simple-3.160.0.ebuild:
+  Stable for HPPA (bug #391499).
+
+*Pod-Simple-3.190.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org> +Pod-Simple-3.190.0.ebuild:
+  Version bump
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org> Pod-Simple-3.14.ebuild,
+  Pod-Simple-3.15.ebuild, Pod-Simple-3.160.0.ebuild, Pod-Simple-3.170.0.ebuild,
+  Pod-Simple-3.180.0.ebuild:
+  Drop ~sparc-fbsd KEYWORD
+
+*Pod-Simple-3.180.0 (17 Jul 2011)
+
+  17 Jul 2011; Torsten Veller <tove@gentoo.org> +Pod-Simple-3.180.0.ebuild:
+  Version bump
+
+*Pod-Simple-3.170.0 (10 Jul 2011)
+
+  10 Jul 2011; Torsten Veller <tove@gentoo.org> +Pod-Simple-3.170.0.ebuild:
+  Version bump
+
+*Pod-Simple-3.160.0 (15 Mar 2011)
+
+  15 Mar 2011; Torsten Veller <tove@gentoo.org> +Pod-Simple-3.160.0.ebuild:
+  Version bump
+
+  17 Jan 2011; Torsten Veller <tove@gentoo.org> -Pod-Simple-3.07.ebuild,
+  -Pod-Simple-3.13.ebuild:
+  Cleanup
+
+  15 Nov 2010; Fabian Groffen <grobian@gentoo.org> Pod-Simple-3.15.ebuild:
+  Marked ~ppc-macos and ~x86-solaris, bug #345435
+
+*Pod-Simple-3.15 (15 Nov 2010)
+
+  15 Nov 2010; Torsten Veller <tove@gentoo.org> +Pod-Simple-3.15.ebuild:
+  Version bump
+
+  22 Oct 2010; Samuli Suominen <ssuominen@gentoo.org>
+  Pod-Simple-3.14.ebuild:
+  ppc64 stable wrt #333421
+
+  22 Oct 2010; Jeroen Roovers <jer@gentoo.org> Pod-Simple-3.14.ebuild:
+  Stable for HPPA (bug #333421).
+
+  12 Sep 2010; Raúl Porcel <armin76@gentoo.org> Pod-Simple-3.14.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #333421
+
+  23 Aug 2010; Markus Meier <maekke@gentoo.org> Pod-Simple-3.14.ebuild:
+  arm stable, bug #333421
+
+  20 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  Pod-Simple-3.14.ebuild:
+  stable x86, bug 333421
+
+  19 Aug 2010; Markos Chandras <hwoarang@gentoo.org> Pod-Simple-3.14.ebuild:
+  Stable on amd64 wrt bug #333421
+
+*Pod-Simple-3.14 (29 Apr 2010)
+
+  29 Apr 2010; Torsten Veller <tove@gentoo.org> +Pod-Simple-3.14.ebuild:
+  Version bump
+
+  17 Jan 2010; Torsten Veller <tove@gentoo.org> -Pod-Simple-3.05.ebuild,
+  -Pod-Simple-3.08.ebuild, -Pod-Simple-3.09.ebuild, -Pod-Simple-3.10.ebuild,
+  -Pod-Simple-3.11.ebuild:
+  Cleanup
+
+  05 Jan 2010; nixnut <nixnut@gentoo.org> Pod-Simple-3.07.ebuild:
+  ppc stable #288026
+
+*Pod-Simple-3.13 (18 Dec 2009)
+
+  18 Dec 2009; Torsten Veller <tove@gentoo.org> +Pod-Simple-3.13.ebuild:
+  Version bump
+
+  16 Dec 2009; Jonathan Callen <abcd@gentoo.org> Pod-Simple-3.07.ebuild,
+  Pod-Simple-3.08.ebuild, Pod-Simple-3.10.ebuild, Pod-Simple-3.11.ebuild:
+  QA: Transfer prefix keywords
+
+  14 Dec 2009; Raúl Porcel <armin76@gentoo.org> Pod-Simple-3.07.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #288026
+
+  10 Dec 2009; Brent Baude <ranger@gentoo.org> Pod-Simple-3.07.ebuild:
+  Marking Pod-Simple-3.07 ppc64 stable for bug 288026
+
+*Pod-Simple-3.11 (10 Dec 2009)
+
+  10 Dec 2009; Torsten Veller <tove@gentoo.org> +Pod-Simple-3.11.ebuild:
+  Version bump
+
+  07 Dec 2009; Markus Meier <maekke@gentoo.org> Pod-Simple-3.07.ebuild:
+  arm stable, bug #288026
+
+  07 Dec 2009; Jeroen Roovers <jer@gentoo.org> Pod-Simple-3.07.ebuild:
+  Stable for HPPA (bug #288026).
+
+  04 Dec 2009; Torsten Veller <tove@gentoo.org> Pod-Simple-3.07.ebuild:
+  Stable on amd64 (#288026)
+
+  04 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  Pod-Simple-3.07.ebuild:
+  x86 stable, bug 288026
+
+*Pod-Simple-3.10 (13 Nov 2009)
+
+  13 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Pod-Simple-3.10.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*Pod-Simple-3.09 (10 Nov 2009)
+
+  10 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Pod-Simple-3.09.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*Pod-Simple-3.08 (18 Jul 2009)
+
+  18 Jul 2009; Torsten Veller <tove@gentoo.org> +Pod-Simple-3.08.ebuild:
+  Version bump
+
+  01 Nov 2008; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +Pod-Simple-3.05.ebuild, +Pod-Simple-3.07.ebuild:
+  dev-perl => perl-core migration
+
+  01 Nov 2008; Torsten Veller <tove@gentoo.org> Pod-Simple-3.05.ebuild,
+  Pod-Simple-3.07.ebuild:
+  New virtuals: Pod-Escapes
+
+  01 Nov 2008; Torsten Veller <tove@gentoo.org> -Pod-Simple-3.04.ebuild:
+  Cleanup
+
+*Pod-Simple-3.07 (01 Aug 2008)
+
+  01 Aug 2008; Torsten Veller <tove@gentoo.org> +Pod-Simple-3.07.ebuild:
+  Version bump
+
+  06 Jun 2008; Alexis Ballier <aballier@gentoo.org> Pod-Simple-3.05.ebuild:
+  keyword ~sparc-fbsd
+
+  27 Apr 2008; Alexis Ballier <aballier@gentoo.org> Pod-Simple-3.05.ebuild:
+  keyword ~x86-fbsd
+
+  23 Feb 2008; Jeroen Roovers <jer@gentoo.org> Pod-Simple-3.05.ebuild:
+  Stable for HPPA too.
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Pod-Simple-3.05.ebuild:
+  Stable on ppc.
+
+  13 Jul 2007; Raúl Porcel <armin76@gentoo.org> Pod-Simple-3.05.ebuild:
+  alpha/ia64/x86 stable
+
+  07 Jul 2007; Tom Gall <tgall@gentoo.org> Pod-Simple-3.05.ebuild:
+  stable on ppc64
+
+  21 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  Pod-Simple-3.05.ebuild:
+  Marking sparc stable
+
+  15 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  Pod-Simple-3.05.ebuild:
+  Marking amd64 stable
+
+  05 May 2007; Christian Hartmann <ian@gentoo.org> -Pod-Simple-3.02.ebuild,
+  -Pod-Simple-3.03.ebuild:
+  Cleanup
+
+  24 Apr 2007; Bryan Østergaard <kloeri@gentoo.org> Pod-Simple-3.05.ebuild:
+  Add ~mips keyword, bug 173295.
+
+  16 Apr 2007; Markus Rothe <corsair@gentoo.org> Pod-Simple-3.04.ebuild:
+  Stable on ppc64
+
+*Pod-Simple-3.05 (11 Mar 2007)
+
+  11 Mar 2007; Michael Cummings <mcummings@gentoo.org>
+  +Pod-Simple-3.05.ebuild:
+  Version bump
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> Pod-Simple-3.04.ebuild:
+  Stable on x86, bug #169152.
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Pod-Simple-3.02.ebuild, Pod-Simple-3.03.ebuild, Pod-Simple-3.04.ebuild:
+  Ebuild maintenance
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  Pod-Simple-3.04.ebuild:
+  ppc stable
+
+  18 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Pod-Simple-3.04.ebuild:
+  Marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Pod-Simple-3.02.ebuild, Pod-Simple-3.03.ebuild, Pod-Simple-3.04.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  02 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Pod-Simple-3.04.ebuild:
+  Stable on hppa
+
+  19 Jul 2006; Bryan Østergaard <kloeri@gentoo.org> Pod-Simple-3.04.ebuild:
+  Stable on alpha.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> Pod-Simple-3.04.ebuild:
+  Mark 3.04 stable on ia64
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org> Pod-Simple-3.02.ebuild,
+  Pod-Simple-3.03.ebuild, Pod-Simple-3.04.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+  29 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Pod-Simple-3.04.ebuild:
+  Keyworded ~hppa
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  Pod-Simple-3.03.ebuild, Pod-Simple-3.04.ebuild:
+  Marking sparc stable
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-Pod-Simple-3.02, files/digest-Pod-Simple-3.03,
+  files/digest-Pod-Simple-3.04, Manifest:
+  Fixing SHA256 digest, pass four
+
+*Pod-Simple-3.04 (26 Apr 2006)
+
+  26 Apr 2006; <mcumming@gentoo.org> +Pod-Simple-3.04.ebuild:
+  Version bump
+
+*Pod-Simple-3.03 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  +Pod-Simple-3.03.ebuild:
+  Version bump upstream
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> Pod-Simple-3.02.ebuild:
+  Mark 3.02 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> Pod-Simple-3.02.ebuild:
+  add ~ia64
+
+  10 May 2005; Yuta SATOH <nigoro@gentoo.org> Pod-Simple-3.02.ebuild:
+  Stable on ppc64
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Pod-Simple-2.05.ebuild:
+  cleaning for mirror syntax
+
+  07 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Pod-Simple-3.02.ebuild:
+  Stable on ppc.
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  23 Dec 2004; Yuta SATOH <nigoro@gentoo.org> Pod-Simple-3.02.ebuild:
+  added ~ppc64
+
+  19 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> Pod-Simple-3.02.ebuild:
+  Stable on alpha.
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> Pod-Simple-3.02.ebuild:
+  Stable on amd64.
+
+  03 Oct 2004; Michael Cummings <mcummings@gentoo.org> Pod-Simple-3.02.ebuild:
+  Marking stable on x86 and sparc
+
+*Pod-Simple-3.02 (06 Jun 2004)
+
+  06 Jun 2004; Michael Cummings <mcummings@gentoo.org> Pod-Simple-3.02.ebuild:
+  new version on cpan
+
+*Pod-Simple-2.05 (16 Feb 2004)
+
+  16 Feb 2004; Michael Cummings,,, <mcummings@gentoo.org>
+  Pod-Simple-2.05.ebuild, metadata.xml:
+  Dep for Test::Pod, dep for XML::Twig

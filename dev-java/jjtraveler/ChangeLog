@@ -1,0 +1,65 @@
+# ChangeLog for dev-java/jjtraveler
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jjtraveler/ChangeLog,v 1.16 2010/12/02 16:45:13 flameeyes Exp $
+
+  02 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  jjtraveler-0.4.3-r2.ebuild:
+  Avoid using eautomake with automake 1.7, instead use eautoreconf (works fine
+  with 1.11).
+
+  10 Jan 2008; Vlastimil Babka <caster@gentoo.org>
+  jjtraveler-0.4.3-r2.ebuild:
+  Restrict junit dependency.
+
+  06 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -jjtraveler-0.4.3.ebuild, -jjtraveler-0.4.3-r1.ebuild:
+  Cleanup.
+
+  06 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  jjtraveler-0.4.3-r2.ebuild:
+  Mark 0.4.3-r2 stable on amd64 and x86 as it is identical to -r1 and makes
+  sure jjtraveler-config is in order (bug #168466).
+
+  06 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  jjtraveler-0.4.3-r1.ebuild:
+  stable x86, bug 168466
+
+*jjtraveler-0.4.3-r2 (05 Apr 2007)
+
+  05 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  jjtraveler-0.4.3-r1.ebuild, +jjtraveler-0.4.3-r2.ebuild:
+  Fix the installed jjtraveler-config script.
+
+  03 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  jjtraveler-0.4.3-r1.ebuild:
+  Remove cp for build.xml as it is not used any more.
+
+*jjtraveler-0.4.3-r1 (02 Apr 2007)
+
+  02 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  +files/0.4.3-makefile.am.patch, +jjtraveler-0.4.3-r1.ebuild:
+  Migrate to generation 2 and make this compile again. Thanks to Mike Smith
+  <mas3f@alumni.virginia.edu>.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> jjtraveler-0.4.3.ebuild:
+  stable on amd64
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> jjtraveler-0.4.3.ebuild:
+  Keywords ~amd64.
+
+  28 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Gentoo Technologies, Inc. -> Gentoo Foundation
+
+  23 Aug 2004; Chris Aniszczyk <zx@gentoo.org> jjtraveler-0.4.3.ebuild:
+  Marking x86
+
+  20 Jul 2004; David Holm <dholm@gentoo.org> jjtraveler-0.4.3.ebuild:
+  Added to ~ppc.
+
+*jjtraveler-0.4.3 (20 Jul 2004)
+
+  20 Jul 2004; Karl Trygve Kalleberg <karltk@gentoo.org> jjtraveler-0.4.3.ebuild:
+  Initial import. Ebuild submitted by myself.

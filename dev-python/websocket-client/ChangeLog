@@ -1,0 +1,94 @@
+# ChangeLog for dev-python/websocket-client
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/websocket-client/ChangeLog,v 1.18 2015/06/07 20:04:01 alunduil Exp $
+
+  07 Jun 2015; Alex Brandt <alunduil@gentoo.org>
+  -websocket-client-0.25.0.ebuild:
+  remove version 0.25.0
+
+*websocket-client-0.32.0 (07 Jun 2015)
+
+  07 Jun 2015; Alex Brandt <alunduil@gentoo.org>
+  +websocket-client-0.32.0.ebuild:
+  add version 0.32.0
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  23 May 2015; Alex Brandt <alunduil@gentoo.org>
+  -websocket-client-0.20.0.ebuild, metadata.xml:
+  remove version 0.20.0
+
+*websocket-client-0.31.0 (23 May 2015)
+
+  23 May 2015; Alex Brandt <alunduil@gentoo.org>
+  +websocket-client-0.31.0.ebuild, metadata.xml:
+  add version 0.31.0
+
+  05 Apr 2015; Alex Brandt <alunduil@gentoo.org>
+  -websocket-client-0.17.0.ebuild:
+  remove version 0.17.0
+
+  05 Apr 2015; Alex Brandt <alunduil@gentoo.org>
+  -websocket-client-0.11.0.ebuild:
+  remove version 0.11.0
+
+*websocket-client-0.29.0 (05 Apr 2015)
+
+  05 Apr 2015; Alex Brandt <alunduil@gentoo.org>
+  +websocket-client-0.29.0.ebuild:
+  add version 0.29.0
+
+  09 Mar 2015; Pacho Ramos <pacho@gentoo.org> websocket-client-0.21.0.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> websocket-client-0.21.0.ebuild:
+  amd64 stable, bug 540290
+
+*websocket-client-0.25.0 (28 Feb 2015)
+
+  28 Feb 2015; Alex Brandt <alunduil@gentoo.org>
+  +websocket-client-0.25.0.ebuild:
+  add version 0.25.0
+
+*websocket-client-0.11.0 (26 Oct 2014)
+
+  26 Oct 2014; Alex Brandt <alunduil@gentoo.org>
+  +websocket-client-0.11.0.ebuild:
+  re-add version 0.11.0.  Seems fig still requires a particular version of
+  websocket-client.  Re-adding it until fig dependences can be verified.
+
+  26 Oct 2014; Alex Brandt <alunduil@gentoo.org>
+  -websocket-client-0.11.0.ebuild:
+  remove 0.11.0, keep three
+
+*websocket-client-0.21.0 (19 Oct 2014)
+
+  19 Oct 2014; Alex Brandt <alunduil@gentoo.org>
+  +websocket-client-0.21.0.ebuild:
+  add version 0.21.0
+
+*websocket-client-0.20.0 (13 Oct 2014)
+
+  13 Oct 2014; Alex Brandt <alunduil@gentoo.org>
+  +websocket-client-0.20.0.ebuild:
+  add version 0.20.0
+
+  31 Aug 2014; Alex Brandt <alunduil@gentoo.org> websocket-client-0.11.0.ebuild,
+  websocket-client-0.17.0.ebuild:
+  fix minor style issues and add missing environment items  idella4 provided
+  cross testing on other pythons (python 3.4 and pypy) and x86 arch as well as
+  feedback on certain style issues.  These have been incorporated into the
+  ebuilds.
+
+*websocket-client-0.17.0 (31 Aug 2014)
+*websocket-client-0.11.0 (31 Aug 2014)
+
+  31 Aug 2014; Alex Brandt <alunduil@gentoo.org>
+  +websocket-client-0.11.0.ebuild, +websocket-client-0.17.0.ebuild,
+  +metadata.xml:
+  New ebuild for websocket-client. Ebuild written by me. Partial fix for bug
+  #520912

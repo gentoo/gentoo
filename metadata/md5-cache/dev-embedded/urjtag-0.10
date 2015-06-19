@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=!dev-embedded/jtag ftdi? ( dev-embedded/libftdi ) readline? ( sys-libs/readline )
+DESCRIPTION=tool for communicating over JTAG with flash chips, CPUs, and many more (fork of openwince jtag)
+HOMEPAGE=http://urjtag.sourceforge.net/
+IUSE=ftdi readline
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=!dev-embedded/jtag ftdi? ( dev-embedded/libftdi ) readline? ( sys-libs/readline )
+SLOT=0
+SRC_URI=mirror://sourceforge/urjtag/urjtag-0.10.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=51694e271e5aaf5af3063684f4b3fd0f

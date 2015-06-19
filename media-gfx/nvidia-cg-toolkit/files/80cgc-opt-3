@@ -1,0 +1,9 @@
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/nvidia-cg-toolkit/files/80cgc-opt-3,v 1.1 2012/11/16 09:43:27 jlec Exp $
+
+# Configures the CG Runtime environment for Bourne shell and compatible shells
+CG_COMPILER_EXE=@GENTOO_PORTAGE_EPREFIX@/opt/bin/cgc
+CG_INC_PATH=@GENTOO_PORTAGE_EPREFIX@/opt/nvidia-cg-toolkit/include
+CG_LIB_PATH="ELDPATH"
+
+PATH="@GENTOO_PORTAGE_EPREFIX@/opt/nvidia-cg-toolkit/bin"
+ROOTPATH="@GENTOO_PORTAGE_EPREFIX@/opt/nvidia-cg-toolkit/bin"

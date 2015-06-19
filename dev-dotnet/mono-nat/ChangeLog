@@ -1,0 +1,63 @@
+# ChangeLog for dev-dotnet/mono-nat
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/mono-nat/ChangeLog,v 1.15 2014/08/10 20:03:14 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> mono-nat-1.1.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  16 Jun 2012; Agostino Sarubbo <ago@gentoo.org> -mono-nat-1.0.2.ebuild:
+  Remove old as requested by Pacho Ramos, <pacho@gentoo.org>
+
+  22 May 2012; Agostino Sarubbo <ago@gentoo.org> mono-nat-1.1.0.ebuild:
+  Stable for amd64, wrt bug #407701
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> mono-nat-1.0.2.ebuild,
+  mono-nat-1.1.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  09 Apr 2012; Markus Meier <maekke@gentoo.org> mono-nat-1.1.0.ebuild:
+  x86 stable, bug #407701
+
+*mono-nat-1.1.0 (22 Jan 2012)
+
+  22 Jan 2012; Pacho Ramos <pacho@gentoo.org> +mono-nat-1.1.0.ebuild:
+  Version bump.
+
+  07 Oct 2010; Pacho Ramos <pacho@gentoo.org> -mono-nat-1.0.1.ebuild:
+  Remove old.
+
+  12 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  mono-nat-1.0.2.ebuild:
+  stable x86, bug 327279
+
+  09 Jul 2010; Pacho Ramos <pacho@gentoo.org> mono-nat-1.0.2.ebuild:
+  amd64 stable, bug 327279
+
+*mono-nat-1.0.2 (31 Aug 2009)
+
+  31 Aug 2009; Peter Alfredsen <loki_val@gentoo.org> -mono-nat-1.0.ebuild,
+  mono-nat-1.0.1.ebuild, +mono-nat-1.0.2.ebuild, -files/mono.snk:
+  Use mono.snk.bz2 from mirrors, bump to 1.0.2. Compatibility fixes and more
+  goodness.
+
+  21 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  mono-nat-1.0.1.ebuild:
+  stable x86, bug 273254
+
+  20 Jul 2009; Jeremy Olexa <darkside@gentoo.org> mono-nat-1.0.1.ebuild:
+  amd64 stable, bug 273254
+
+  06 May 2009; Peter Alfredsen <loki_val@gentoo.org> mono-nat-1.0.ebuild,
+  mono-nat-1.0.1.ebuild:
+  Update HOMEPAGE and SRC_URI
+
+*mono-nat-1.0.1 (27 Apr 2009)
+
+  27 Apr 2009; Peter Alfredsen <loki_val@gentoo.org> +mono-nat-1.0.1.ebuild:
+  Bump
+
+*mono-nat-1.0 (05 Apr 2009)
+
+  05 Apr 2009; Peter Alfredsen <loki_val@gentoo.org> +files/mono.snk,
+  +files/mono-nat.pc.in, +metadata.xml, +mono-nat-1.0.ebuild:
+  Initial commit, ebuild by me.

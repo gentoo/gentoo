@@ -1,0 +1,13 @@
+# ChangeLog for dev-java/jackson-dataformat-yaml
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jackson-dataformat-yaml/ChangeLog,v 1.2 2015/06/06 18:42:28 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*jackson-dataformat-yaml-2.5.1 (05 Mar 2015)
+
+  05 Mar 2015; James Le Cuirot <chewi@gentoo.org>
+  +jackson-dataformat-yaml-2.5.1.ebuild, +metadata.xml:
+  New package required by Log4j 2. It would be optional but we cannot yet skip
+  dependencies at build time.

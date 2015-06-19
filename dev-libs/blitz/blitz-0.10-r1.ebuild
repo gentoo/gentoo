@@ -1,0 +1,66 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/blitz/blitz-0.10-r1.ebuild,v 1.1 2013/08/01 18:30:06 pinkbyte Exp $
+
+EAPI=5
+
+AUTOTOOLS_AUTORECONF=1
+inherit autotools-utils
+
+DESCRIPTION="High-performance C++ numeric library"
+HOMEPAGE="http://blitz.sourceforge.net"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+
+LICENSE="|| ( LGPL-3 Artistic-2 BSD )"
+SLOT="0"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~ppc-macos ~x86-linux ~x86-macos"
+
+IUSE="boost debug doc examples static-libs"
+
+RDEPEND="boost? ( >=dev-libs/boost-1.40 )"
+DEPEND="${RDEPEND}
+	doc? ( app-doc/doxygen[dot] )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-docs.patch"
+	"${FILESDIR}/${P}-gcc47.patch"
+	"${FILESDIR}/${P}-set-default-arg-value.patch"
+)
+
+src_configure() {
+	# blas / fortran only needed for benchmarks
+	use doc && doxygen -u doc/doxygen/Doxyfile.in
+	local myeconfargs=(
+		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html"
+		--enable-shared
+		--disable-cxx-flags-preset
+		--disable-fortran
+		--without-blas
+		$(use_enable boost serialization)
+		$(use_enable debug)
+		$(use_enable doc doxygen)
+		$(use_enable doc html-docs)
+		$(use_with boost boost "${EPREFIX}/usr")
+		$(use_with boost boost-serialization)
+	)
+	autotools-utils_src_configure
+}
+
+src_compile() {
+	autotools-utils_src_compile LDFLAGS="${LDFLAGS}" lib
+	use doc && autotools-utils_src_compile info html pdf
+}
+
+src_test() {
+	pushd ${AUTOTOOLS_BUILD_DIR} > /dev/null
+	emake check-testsuite check-examples
+	popd > /dev/null
+}
+
+src_install () {
+	autotools-utils_src_install $(use doc && echo install-html install-pdf)
+	if use examples; then
+		insinto /usr/share/doc/${PF}/examples
+		doins examples/*.{cpp,f}
+	fi
+}

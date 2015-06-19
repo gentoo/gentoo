@@ -1,0 +1,332 @@
+# ChangeLog for app-vim/colorschemes
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/colorschemes/ChangeLog,v 1.85 2015/02/09 00:38:16 radhermit Exp $
+
+  09 Feb 2015; Tim Harder <radhermit@gentoo.org> -colorschemes-20130124.ebuild:
+  Remove old.
+
+  09 Feb 2015; Tim Harder <radhermit@gentoo.org>
+  colorschemes-20140623-r1.ebuild:
+  Stabilize for all.
+
+*colorschemes-20140623-r1 (22 Oct 2014)
+
+  22 Oct 2014; Tim Harder <radhermit@gentoo.org> -colorschemes-20140623.ebuild,
+  +colorschemes-20140623-r1.ebuild:
+  Fix line endings.
+
+*colorschemes-20140623 (12 Oct 2014)
+
+  12 Oct 2014; Tim Harder <radhermit@gentoo.org> +colorschemes-20140623.ebuild:
+  Version bump.
+
+  20 Apr 2014; Ulrich Müller <ulm@gentoo.org> colorschemes-20130124.ebuild:
+  Add vim.org to LICENSE, bug 448324.
+
+  21 Oct 2013; Fabian Groffen <grobian@gentoo.org> colorschemes-20130124.ebuild:
+  Marked ~x64-macos, bug #486818
+
+  17 Jun 2013; Tim Harder <radhermit@gentoo.org> -colorschemes-20111107.ebuild:
+  Remove old.
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> colorschemes-20130124.ebuild:
+  Stable for sparc, wrt bug #469780
+
+  18 May 2013; Agostino Sarubbo <ago@gentoo.org> colorschemes-20130124.ebuild:
+  Stable for alpha, wrt bug #469780
+
+  18 May 2013; Agostino Sarubbo <ago@gentoo.org> colorschemes-20130124.ebuild:
+  Stable for ia64, wrt bug #469780
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> colorschemes-20130124.ebuild:
+  Stable for ppc64, wrt bug #469780
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> colorschemes-20130124.ebuild:
+  Stable for ppc, wrt bug #469780
+
+  15 May 2013; Jeroen Roovers <jer@gentoo.org> colorschemes-20130124.ebuild:
+  Stable for HPPA (bug #469780).
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> colorschemes-20130124.ebuild:
+  Stable for x86, wrt bug #469780
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> colorschemes-20130124.ebuild:
+  Stable for amd64, wrt bug #469780
+
+*colorschemes-20130124 (24 Jan 2013)
+
+  24 Jan 2013; Tim Harder <radhermit@gentoo.org> +colorschemes-20130124.ebuild:
+  Version bump, update LICENSE.
+
+  04 Mar 2012; Tim Harder <radhermit@gentoo.org>
+  -colorschemes-20110506-r1.ebuild:
+  Remove old.
+
+  03 Mar 2012; Brent Baude <ranger@gentoo.org> colorschemes-20111107.ebuild:
+  Marking colorschemes-20111107 ppc64 for bug 393567
+
+  01 Feb 2012; Brent Baude <ranger@gentoo.org> colorschemes-20111107.ebuild:
+  Marking colorschemes-20111107 ppc for bug 393567
+
+  17 Dec 2011; Raúl Porcel <armin76@gentoo.org> colorschemes-20111107.ebuild:
+  alpha/ia64/sparc stable wrt #393567
+
+  14 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  colorschemes-20111107.ebuild:
+  x86 stable wrt bug #393567
+
+  13 Dec 2011; Jeroen Roovers <jer@gentoo.org> colorschemes-20111107.ebuild:
+  Stable for HPPA (bug #393567).
+
+  12 Dec 2011; Agostino Sarubbo <ago@gentoo.org> colorschemes-20111107.ebuild:
+  Stable for AMD64, wrt bug #393567
+
+*colorschemes-20111107 (07 Nov 2011)
+
+  07 Nov 2011; Tim Harder <radhermit@gentoo.org> +colorschemes-20111107.ebuild:
+  Version bump.
+
+  18 Oct 2011; Tim Harder <radhermit@gentoo.org> -colorschemes-20100218.ebuild,
+  -colorschemes-20101121.ebuild:
+  Remove old.
+
+  18 Oct 2011; Jeroen Roovers <jer@gentoo.org> colorschemes-20110506-r1.ebuild:
+  Stable for HPPA (bug #374193).
+
+*colorschemes-20110506-r1 (25 Jul 2011)
+
+  25 Jul 2011; Tim Harder <radhermit@gentoo.org> -colorschemes-20110506.ebuild,
+  +colorschemes-20110506-r1.ebuild:
+  Revbump to fix line endings (bug #376193). Remove old.
+
+  23 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  colorschemes-20110506.ebuild:
+  ppc/ppc64 stable wrt #374193
+
+  23 Jul 2011; Raúl Porcel <armin76@gentoo.org> colorschemes-20110506.ebuild:
+  alpha/ia64/sparc stable wrt #374193
+
+  17 Jul 2011; Markus Meier <maekke@gentoo.org> colorschemes-20110506.ebuild:
+  x86 stable, bug #374193
+
+  07 Jul 2011; Markos Chandras <hwoarang@gentoo.org>
+  colorschemes-20110506.ebuild:
+  Stable on amd64 wrt bug #374193
+
+*colorschemes-20110506 (07 May 2011)
+
+  07 May 2011; Tim Harder <radhermit@gentoo.org> +colorschemes-20110506.ebuild:
+  Version bump.
+
+*colorschemes-20101121 (21 Nov 2010)
+
+  21 Nov 2010; Tim Harder <radhermit@gentoo.org> -colorschemes-20101119.ebuild,
+  +colorschemes-20101121.ebuild:
+  Version bump to fixed tarball and remove old.
+
+*colorschemes-20101119 (20 Nov 2010)
+
+  20 Nov 2010; Tim Harder <radhermit@gentoo.org> +colorschemes-20101119.ebuild:
+  Version bump.
+
+  23 May 2010; Dror Levin <spatz@gentoo.org> -colorschemes-20090118.ebuild:
+  Remove old version.
+
+  23 May 2010; Pacho Ramos <pacho@gentoo.org> colorschemes-20100218.ebuild:
+  stable amd64, bug 310067
+
+  28 Apr 2010; Jeroen Roovers <jer@gentoo.org> colorschemes-20100218.ebuild:
+  Stable for HPPA (bug #310067).
+
+  11 Apr 2010; <nixnut@gentoo.org> colorschemes-20100218.ebuild:
+  ppc stable #310067
+
+  07 Apr 2010; Javier Villavicencio <the_paya@gentoo.org>
+  colorschemes-20100218.ebuild:
+  Keyword ~x86-fbsd.
+
+  29 Mar 2010; Raúl Porcel <armin76@gentoo.org>
+  colorschemes-20100218.ebuild:
+  alpha/ia64 stable wrt #310067
+
+  27 Mar 2010; Tiago Cunha <tcunha@gentoo.org> colorschemes-20100218.ebuild:
+  stable sparc, bug 310067
+
+  25 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  colorschemes-20100218.ebuild:
+  stable x86, bug 310067
+
+  22 Mar 2010; Brent Baude <ranger@gentoo.org> colorschemes-20100218.ebuild:
+  Marking colorschemes-20100218 ppc64 for bug 310067
+
+*colorschemes-20100218 (19 Feb 2010)
+
+  19 Feb 2010; Dror Levin <spatz@gentoo.org> -colorschemes-20070707.ebuild,
+  +colorschemes-20100218.ebuild:
+  Version bump, remove old.
+
+  17 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  colorschemes-20070707.ebuild, colorschemes-20090118.ebuild:
+  QA: add prefix keywords
+
+  13 Jul 2009; Joseph Jezak <josejx@gentoo.org>
+  colorschemes-20090118.ebuild:
+  Marked ppc stable for bug #275056. Marked ~ppc64.
+
+  05 Jul 2009; Markus Meier <maekke@gentoo.org>
+  colorschemes-20090118.ebuild:
+  amd64 stable, bug #275056
+
+  24 Jun 2009; Raúl Porcel <armin76@gentoo.org>
+  colorschemes-20090118.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #275056
+
+  23 Jun 2009; Jeroen Roovers <jer@gentoo.org> colorschemes-20090118.ebuild:
+  Stable for HPPA (bug #275056).
+
+  22 Jun 2009; Jeroen Roovers <jer@gentoo.org> colorschemes-20070707.ebuild:
+  Stable for HPPA too.
+
+  02 Feb 2009; Krzysiek Pawlik <nelchael@gentoo.org> ChangeLog:
+  Fix ChangeLog entries.
+
+*colorschemes-20090118 (18 Jan 2009)
+
+  18 Jan 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  +colorschemes-20090118.ebuild:
+  New snapshot of available color schemes.
+
+  09 Mar 2008; Krzysiek Pawlik <nelchael@gentoo.org>
+  -colorschemes-20050321.ebuild, -colorschemes-20051207.ebuild:
+  Remove old versions.
+
+  09 Mar 2008; Raúl Porcel <armin76@gentoo.org>
+  colorschemes-20070707.ebuild:
+  alpha/ia64 stable wrt #205337
+
+  09 Mar 2008; Markus Meier <maekke@gentoo.org>
+  colorschemes-20070707.ebuild:
+  x86 stable, bug #205337
+
+  08 Mar 2008; Ferris McCormick <fmccor@gentoo.org>
+  colorschemes-20070707.ebuild:
+  Sparc stable --- Bug #205337 --- thanks to Tiago Cunha for testing.
+
+  08 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  colorschemes-20070707.ebuild:
+  amd64 stable wrt bug #205337 (and ppc).
+
+  08 Mar 2008; nixnut <nixnut@gentoo.org> ChangeLog:
+  Stable on ppc wrt bug 205337
+
+*colorschemes-20070707 (10 Jul 2007)
+
+  10 Jul 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  +colorschemes-20070707.ebuild:
+  Version bump.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  07 Apr 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove ciaranm from metadata.xml.
+
+  07 Dec 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  -colorschemes-20031113.ebuild, -colorschemes-20040821.ebuild:
+  Tidy up old versions
+
+*colorschemes-20051207 (07 Dec 2005)
+
+  07 Dec 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  +colorschemes-20051207.ebuild:
+  New tarball, made by me.
+
+  29 Nov 2005; Jeroen Roovers <jer@gentoo.org> colorschemes-20040821.ebuild,
+  colorschemes-20050321.ebuild:
+  Marked ~hppa wrt bug 109182.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  colorschemes-20050321.ebuild:
+  Stable on ppc.
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org>
+  colorschemes-20050321.ebuild:
+  stable on ia64
+
+  31 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  colorschemes-20050321.ebuild:
+  Stable on alpha.
+
+  28 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  colorschemes-20050321.ebuild:
+  x86 sparc mips stable
+
+*colorschemes-20050321 (21 Mar 2005)
+
+  21 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  -colorschemes-20050226.ebuild, -colorschemes-20050226-r1.ebuild,
+  +colorschemes-20050321.ebuild:
+  New version, prune older releases
+
+*colorschemes-20050226-r1 (03 Mar 2005)
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  +colorschemes-20050226-r1.ebuild:
+  Fix dos line endings
+
+*colorschemes-20050226 (26 Feb 2005)
+
+  26 Feb 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  +colorschemes-20050226.ebuild:
+  New version made by your friendly Gentoo Vim team
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  19 Sep 2004; Bryan Østergaard,,, <kloeri@gentoo.org>
+  colorschemes-20040821.ebuild:
+  Stable on alpha.
+
+  09 Sep 2004; Danny van Dyk <kugelfang@gentoo.org>
+  colorschemes-20040821.ebuild:
+  Marked stable on amd64.
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  colorschemes-20040821.ebuild:
+  Stable on x86, sparc, mips
+
+  03 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  colorschemes-20040821.ebuild:
+  Help text, bug #62559
+
+  25 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  colorschemes-20031113.ebuild, colorschemes-20040821.ebuild:
+  Normalised HOMEPAGE to www.vim.org
+
+*colorschemes-20040821 (21 Aug 2004)
+
+  21 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  +colorschemes-20040821.ebuild:
+  Version bump. Thanks to MetaCosm for doing most of the hard work.
+
+  04 Apr 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  colorschemes-20031113.ebuild:
+  Stable on mips
+
+  06 Feb 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  colorschemes-20031113.ebuild:
+  Added ~mips
+
+  23 Jan 2004; Aron Griffis <agriffis@gentoo.org>
+  colorschemes-20031113.ebuild:
+  stable on alpha and ia64
+
+  10 Dec 2003; Ciaran McCreesh <ciaranm@gentoo.org>
+  colorschemes-20031113.ebuild:
+  Moving to stable on x86 and sparc
+
+*colorschemes-20031113 (13 Nov 2003)
+
+  13 Nov 2003; Ciaran McCreesh <ciaranm@gentoo.org>
+  colorschemes-20031113.ebuild, metadata.xml:
+  New ebuild

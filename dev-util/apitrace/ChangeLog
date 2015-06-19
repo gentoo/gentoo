@@ -1,0 +1,140 @@
+# ChangeLog for dev-util/apitrace
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/apitrace/ChangeLog,v 1.26 2015/01/17 01:36:26 radhermit Exp $
+
+*apitrace-6.1 (17 Jan 2015)
+
+  17 Jan 2015; Tim Harder <radhermit@gentoo.org> +apitrace-6.1.ebuild:
+  Version bump.
+
+*apitrace-6.0 (11 Jan 2015)
+
+  11 Jan 2015; Tim Harder <radhermit@gentoo.org> +apitrace-6.0.ebuild,
+  +files/apitrace-6.0-disable-multiarch.patch:
+  Version bump.
+
+*apitrace-5.0 (07 Dec 2014)
+
+  07 Dec 2014; Matt Turner <mattst88@gentoo.org> +apitrace-5.0.ebuild,
+  +files/apitrace-5.0-disable-multiarch.patch,
+  +files/apitrace-5.0-glxtrace-only.patch:
+  Version bump to 5.0, bug 523718.
+
+  30 Nov 2014; Tim Harder <radhermit@gentoo.org> -apitrace-3.0-r1.ebuild,
+  -apitrace-3.0-r2.ebuild, -files/apitrace-3.0-gcc47.patch,
+  -files/apitrace-3.0-glxtrace-only.patch, -files/apitrace-3.0-memcpy.patch,
+  -files/apitrace-3.0-system-libs.patch:
+  Remove old.
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> apitrace-4.0.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  28 Apr 2014; Michał Górny <mgorny@gentoo.org> apitrace-4.0.ebuild:
+  Replace multilib_build_binaries with multilib_is_native_abi. The two are
+  equivalent now, and the team has decided to use the old name as being less
+  confusing.
+
+  05 Apr 2014; Mike Frysinger <vapier@gentoo.org>
+  files/apitrace-4.0-glxtrace-only.patch:
+  Do not re-add snappy subdir for lib-only builds #506714 by Matt Turner.
+
+*apitrace-4.0 (03 Apr 2014)
+
+  03 Apr 2014; Mike Frysinger <vapier@gentoo.org> +apitrace-4.0.ebuild,
+  +files/apitrace-4.0-disable-multiarch.patch,
+  +files/apitrace-4.0-glext-texture-storage.patch,
+  +files/apitrace-4.0-glxcopysubbuffermesa.patch,
+  +files/apitrace-4.0-glxtrace-only.patch, +files/apitrace-4.0-memcpy.patch,
+  +files/apitrace-4.0-multilib.patch, +files/apitrace-4.0-system-libs.patch,
+  metadata.xml:
+  Version bump #468254#14 by David Heidelberger.  Should fix OpenGL compilation
+  #493008 by Michał Górny.  Switches to cmake-multilib #468250 by Patrick Lauer.
+
+*apitrace-3.0-r2 (21 Mar 2014)
+
+  21 Mar 2014; Mike Frysinger <vapier@gentoo.org> +apitrace-3.0-r2.ebuild:
+  Convert to python-any-r1 eclass.
+
+  17 Jul 2013; Tim Harder <radhermit@gentoo.org> apitrace-3.0-r1.ebuild:
+  Use cmake-utils_src_prepare instead of base_src_prepare (bug #477228) and
+  replace CMAKE_BUILD_DIR with BUILD_DIR.
+
+  11 Apr 2013; Samuli Suominen <ssuominen@gentoo.org> apitrace-3.0-r1.ebuild,
+  +files/apitrace-3.0-memcpy.patch:
+  Include string.h for memcpy() function in common/image_png.cpp wrt #465504 by
+  Michael Palimaka
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> apitrace-3.0-r1.ebuild:
+  Move Qt dependencies to the new category
+
+  13 Dec 2012; Tim Harder <radhermit@gentoo.org> -apitrace-2.0-r1.ebuild,
+  -files/apitrace-2.0-glxtrace-only.patch,
+  -files/apitrace-2.0-system-libs.patch, -files/apitrace-2.0-zlib-1.2.6.patch:
+  Remove old.
+
+  04 Sep 2012; Tim Harder <radhermit@gentoo.org> apitrace-3.0-r1.ebuild:
+  Use vcs-snapshot eclass.
+
+  07 Aug 2012; Tim Harder <radhermit@gentoo.org> apitrace-3.0-r1.ebuild,
+  +files/apitrace-3.0-gcc47.patch:
+  Fix build with gcc-4.7 (bug #424731).
+
+  18 Mar 2012; Tim Harder <radhermit@gentoo.org> -apitrace-3.0.ebuild:
+  Remove old.
+
+*apitrace-3.0-r1 (18 Mar 2012)
+
+  18 Mar 2012; Tim Harder <radhermit@gentoo.org> +apitrace-3.0-r1.ebuild,
+  files/apitrace-3.0-glxtrace-only.patch:
+  Revbump to fixing missing symbol issue with multilib target and conditionally
+  build egl support for multilib target.
+
+  18 Mar 2012; Tim Harder <radhermit@gentoo.org> apitrace-2.0-r1.ebuild,
+  +files/apitrace-2.0-zlib-1.2.6.patch:
+  Fix build with zlib-1.2.6.
+
+  16 Mar 2012; Tim Harder <radhermit@gentoo.org> -apitrace-1.0-r1.ebuild,
+  -files/apitrace-1.0-automagic-qt.patch,
+  -files/apitrace-1.0-glxtrace-only.patch, -files/apitrace-1.0-libpng15.patch:
+  Remove old.
+
+*apitrace-3.0 (16 Mar 2012)
+
+  16 Mar 2012; Tim Harder <radhermit@gentoo.org> +apitrace-3.0.ebuild,
+  +files/apitrace-3.0-glxtrace-only.patch,
+  +files/apitrace-3.0-system-libs.patch, metadata.xml:
+  Version bump. Add egl use flag.
+
+*apitrace-2.0-r1 (15 Dec 2011)
+
+  15 Dec 2011; Tim Harder <radhermit@gentoo.org> -apitrace-2.0.ebuild,
+  +apitrace-2.0-r1.ebuild, files/apitrace-2.0-glxtrace-only.patch:
+  Revbump and remove old. Update to EAPI 4 and fix multilib missing symbols
+  issue.
+
+*apitrace-2.0 (01 Oct 2011)
+
+  01 Oct 2011; Tim Harder <radhermit@gentoo.org> +apitrace-2.0.ebuild,
+  +files/apitrace-2.0-glxtrace-only.patch,
+  +files/apitrace-2.0-system-libs.patch:
+  Version bump.
+
+  13 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> apitrace-1.0-r1.ebuild,
+  +files/apitrace-1.0-libpng15.patch:
+  Fix building with libpng15 wrt #378533 by Diego Elio Pettenò
+
+  10 Sep 2011; Tim Harder <radhermit@gentoo.org> -apitrace-1.0.ebuild:
+  Remove old.
+
+*apitrace-1.0-r1 (10 Jun 2011)
+
+  10 Jun 2011; Tim Harder <radhermit@gentoo.org> +apitrace-1.0-r1.ebuild,
+  +files/apitrace-1.0-glxtrace-only.patch:
+  Revision bump to add multilib support (bug #370795).
+
+*apitrace-1.0 (09 Jun 2011)
+
+  09 Jun 2011; Tim Harder <radhermit@gentoo.org> +apitrace-1.0.ebuild,
+  +files/apitrace-1.0-automagic-qt.patch, +metadata.xml:
+  Initial import.

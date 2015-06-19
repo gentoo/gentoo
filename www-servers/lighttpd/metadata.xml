@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>wired@gentoo.org</email>
+		<name>Alex Alexander</name>
+	</maintainer>
+	<maintainer>
+		<email>hwoarang@gentoo.org</email>
+		<name>Markos Chandras</name>
+	</maintainer>
+	<longdescription lang="en">
+		lighttpd a secure, fast, compliant and very flexible web-server
+		which has been optimized for high-performance environments. It has a very
+		low memory footprint compared to other webservers and takes care of cpu-load.
+		Its advanced feature-set (FastCGI, CGI, Auth, Output-Compression,
+		URL-Rewriting and many more) make lighttpd the perfect webserver-software
+		for every server that is suffering load problems.
+	</longdescription>
+	<use>
+		<flag name='libev'>Enable fdevent handler</flag>
+		<flag name='memcache'>Enable memcache support for mod_cml and
+			mod_trigger_b4_dl</flag>
+		<flag name='mmap'>Use mmap with files owned by lighttpd. This is a dangerous option as it may allow local users to trigger SIGBUS crashes.</flag>
+		<flag name='rrdtool'>Enable rrdtool support via mod_rrdtool</flag>
+		<flag name='uploadprogress'>Apply experimental patch for upload progress module</flag>
+		<flag name='webdav'>Enable webdav properties</flag>
+	</use>
+</pkgmetadata>
+

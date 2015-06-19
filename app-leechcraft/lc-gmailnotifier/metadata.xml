@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>leechcraft</herd>
+	<use>
+		<flag name="quark">Pull in a plugin to show GMail Notifier's quark</flag>
+		<flag name="notify">Pull in a plugin to show notifications from GMail Notiifer</flag>
+	</use>
+</pkgmetadata>

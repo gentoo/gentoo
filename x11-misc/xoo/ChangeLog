@@ -1,0 +1,20 @@
+# ChangeLog for x11-misc/xoo
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xoo/ChangeLog,v 1.4 2012/03/04 11:45:45 pacho Exp $
+
+  04 Mar 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #112268
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; xoo-0.7.ebuild:
+  Drop virtual/x11 references.
+
+  13 Mar 2007; <yvasilev@gentoo.org> xoo-0.7.ebuild:
+  Made the s/witch/type -P/ change as suggested by vapier
+  (http://archives.gentoo.org/gentoo-dev/msg_143424.xml).
+
+*xoo-0.7 (14 Jun 2006)
+
+  14 Jun 2006; <yvasilev@gentoo.org> +metadata.xml, +xoo-0.7.ebuild:
+  New ebuild thanks to James Rowe <jnrowe@ukfsn.org>. Obsoletes
+  x11-misc/matchbox-nest, bug #136692.
+

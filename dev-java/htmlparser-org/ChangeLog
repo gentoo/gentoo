@@ -1,0 +1,13 @@
+# ChangeLog for dev-java/htmlparser-org
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/htmlparser-org/ChangeLog,v 1.2 2015/06/09 13:38:06 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*htmlparser-org-1.6 (11 Jul 2014)
+
+  11 Jul 2014; Johann Schmitz <ercpe@gentoo.org> +htmlparser-org-1.6.ebuild,
+  +metadata.xml:
+  New ebuild for htmlparser.  Note: this is a different one as dev-
+  java/htmlparser! (the one from htmlparser.org)

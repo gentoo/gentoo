@@ -1,0 +1,53 @@
+# ChangeLog for dev-python/crumbs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/crumbs/ChangeLog,v 1.12 2015/06/07 12:39:40 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> crumbs-1.2.2-r1.ebuild,
+  crumbs-2.0.0.ebuild:
+  Drop old Python implementations
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> crumbs-2.0.1.ebuild:
+  amd64 stable, bug 540290
+
+  21 Dec 2014; Alex Brandt <alunduil@gentoo.org> -crumbs-9999.ebuild:
+  remove live ebuild
+
+  28 Nov 2014; Pacho Ramos <pacho@gentoo.org> crumbs-9999.ebuild:
+  Support python 3.4
+
+  24 Nov 2014; Pacho Ramos <pacho@gentoo.org> crumbs-2.0.1.ebuild:
+  Support python 3.4
+
+*crumbs-2.0.1 (09 Nov 2014)
+
+  09 Nov 2014; Alex Brandt <alunduil@gentoo.org> +crumbs-2.0.1.ebuild,
+  crumbs-9999.ebuild:
+  add version 2.0.1
+
+  21 Sep 2014; Alex Brandt <alunduil@gentoo.org> -crumbs-1.2.2.ebuild:
+  remove old version
+
+*crumbs-2.0.0 (02 Sep 2014)
+
+  02 Sep 2014; Alex Brandt <alunduil@gentoo.org> +crumbs-2.0.0.ebuild,
+  crumbs-9999.ebuild:
+  bump crumbs version to 2.0.0
+
+*crumbs-1.2.2-r1 (25 Aug 2014)
+
+  25 Aug 2014; Alex Brandt <alunduil@gentoo.org> +crumbs-1.2.2-r1.ebuild,
+  crumbs-9999.ebuild:
+  add missing setuptools dependency
+
+*crumbs-9999 (25 Aug 2014)
+*crumbs-1.2.2 (25 Aug 2014)
+
+  25 Aug 2014; Alex Brandt <alunduil@gentoo.org> +crumbs-1.2.2.ebuild,
+  +crumbs-9999.ebuild, +metadata.xml:
+  New ebuild for crumbs. Ebuild written by me.

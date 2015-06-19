@@ -1,0 +1,741 @@
+# ChangeLog for media-libs/flac
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/flac/ChangeLog,v 1.196 2015/03/03 08:22:55 dlan Exp $
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> flac-1.3.1-r1.ebuild:
+  add arm64 support, tested on A53 board
+
+  29 Jan 2015; Michał Górny <mgorny@gentoo.org> flac-1.3.1-r1.ebuild:
+  Switch to CPU_FLAGS_X86.
+
+  24 Dec 2014; Tim Harder <radhermit@gentoo.org> -flac-1.2.1-r3.ebuild,
+  -flac-1.2.1-r4.ebuild, -flac-1.2.1-r5.ebuild, -flac-1.3.0.ebuild,
+  -flac-1.3.0-r1.ebuild, -files/flac-1.2.1-asm.patch,
+  -files/flac-1.2.1-asneeded.patch, -files/flac-1.2.1-cflags.patch,
+  -files/flac-1.2.1-dontbuild-examples.patch,
+  -files/flac-1.2.1-dontbuild-tests.patch,
+  -files/flac-1.2.1-gcc-4.3-includes.patch, -files/flac-1.2.1-ogg-m4.patch,
+  -files/flac-1.3.0-metaflac_strcat.patch:
+  Remove old.
+
+  24 Dec 2014; Agostino Sarubbo <ago@gentoo.org> flac-1.3.1-r1.ebuild:
+  Stable for ppc64, wrt bug #530288
+
+  23 Dec 2014; Agostino Sarubbo <ago@gentoo.org> flac-1.3.1-r1.ebuild:
+  Stable for alpha, wrt bug #530288
+
+  12 Dec 2014; Agostino Sarubbo <ago@gentoo.org> flac-1.3.1-r1.ebuild:
+  Stable for x86, wrt bug #530288
+
+  12 Dec 2014; Agostino Sarubbo <ago@gentoo.org> flac-1.3.1-r1.ebuild:
+  Stable for amd64, wrt bug #530288
+
+  06 Dec 2014; Agostino Sarubbo <ago@gentoo.org> flac-1.3.1-r1.ebuild:
+  Stable for ia64, wrt bug #530288
+
+  03 Dec 2014; Agostino Sarubbo <ago@gentoo.org> flac-1.3.1-r1.ebuild:
+  Stable for ppc, wrt bug #530288
+
+  03 Dec 2014; Tim Harder <radhermit@gentoo.org> flac-1.3.1-r1.ebuild:
+  Apply cross-compile fix (bug #521446 by James Le Cuirot).
+
+  02 Dec 2014; Markus Meier <maekke@gentoo.org> flac-1.3.1-r1.ebuild:
+  arm stable, bug #530288
+
+  01 Dec 2014; Agostino Sarubbo <ago@gentoo.org> flac-1.3.1-r1.ebuild:
+  Stable for sparc, wrt bug #530288
+
+  29 Nov 2014; Christoph Junghans <ottxor@gentoo.org> flac-1.3.1-r1.ebuild:
+  added prefix keywords
+
+  29 Nov 2014; Jeroen Roovers <jer@gentoo.org> flac-1.3.1-r1.ebuild:
+  Stable for HPPA (bug #530288).
+
+*flac-1.3.1-r1 (28 Nov 2014)
+
+  28 Nov 2014; Tim Harder <radhermit@gentoo.org> -flac-1.3.1.ebuild,
+  +flac-1.3.1-r1.ebuild, +files/flac-1.3.1-cflags.patch:
+  Respect CFLAGS (fixes bug #530920).
+
+  27 Nov 2014; Tim Harder <radhermit@gentoo.org> flac-1.3.1.ebuild:
+  3dnow support was removed in this release.
+
+*flac-1.3.1 (27 Nov 2014)
+
+  27 Nov 2014; Tim Harder <radhermit@gentoo.org> +flac-1.3.1.ebuild:
+  Version bump (bug #530848) and fix prefix support (bug #529566).
+
+*flac-1.3.0-r1 (27 Sep 2014)
+
+  27 Sep 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +files/flac-1.3.0-metaflac_strcat.patch, +flac-1.3.0-r1.ebuild:
+  Apply upstream patch wrt #512432 by Jason Miller
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> flac-1.2.1-r5.ebuild,
+  flac-1.3.0.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  14 May 2014; Agostino Sarubbo <ago@gentoo.org> flac-1.3.0.ebuild:
+  Stable for sparc, wrt bug #507006
+
+  13 May 2014; Agostino Sarubbo <ago@gentoo.org> flac-1.3.0.ebuild:
+  Stable for ia64, wrt bug #507006
+
+  10 May 2014; Agostino Sarubbo <ago@gentoo.org> flac-1.3.0.ebuild:
+  Stable for ppc, wrt bug #507006
+
+  04 May 2014; Agostino Sarubbo <ago@gentoo.org> flac-1.3.0.ebuild:
+  Stable for x86, wrt bug #507006
+
+  20 Apr 2014; Agostino Sarubbo <ago@gentoo.org> flac-1.3.0.ebuild:
+  Stable for ppc64, wrt bug #507006
+
+  19 Apr 2014; Agostino Sarubbo <ago@gentoo.org> flac-1.3.0.ebuild:
+  Stable for alpha, wrt bug #507006
+
+  18 Apr 2014; Pacho Ramos <pacho@gentoo.org> flac-1.3.0.ebuild:
+  amd64 stable, bug #507006
+
+  18 Apr 2014; Markus Meier <maekke@gentoo.org> flac-1.3.0.ebuild:
+  arm stable, bug #507006
+
+  08 Apr 2014; Jeroen Roovers <jer@gentoo.org> flac-1.3.0.ebuild:
+  Stable for HPPA (bug #507006).
+
+  19 Mar 2014; Agostino Sarubbo <ago@gentoo.org> flac-1.2.1-r4.ebuild:
+  Stable for alpha, wrt bug #450814
+
+  12 Mar 2014; Agostino Sarubbo <ago@gentoo.org> flac-1.2.1-r4.ebuild:
+  Stable for sparc, wrt bug #450814
+
+  06 Mar 2014; Agostino Sarubbo <ago@gentoo.org> flac-1.2.1-r4.ebuild:
+  Stable for ppc64, wrt bug #450814
+
+  24 Feb 2014; Chema Alonso <nimiux@gentoo.org> flac-1.2.1-r4.ebuild:
+  Stable for amd64 wrt bug #450814
+
+  23 Feb 2014; Agostino Sarubbo <ago@gentoo.org> flac-1.2.1-r4.ebuild:
+  Stable for ppc, wrt bug #450814
+
+  22 Feb 2014; Agostino Sarubbo <ago@gentoo.org> flac-1.2.1-r4.ebuild:
+  Stable for x86, wrt bug #450814
+
+  14 Feb 2014; Markus Meier <maekke@gentoo.org> flac-1.2.1-r4.ebuild:
+  arm stable, bug #450814
+
+  14 Feb 2014; Akinori Hattori <hattya@gentoo.org> flac-1.2.1-r4.ebuild:
+  ia64 stable wrt bug #450814
+
+  11 Feb 2014; Jeroen Roovers <jer@gentoo.org> flac-1.2.1-r4.ebuild:
+  Stable for HPPA (bug #450814).
+
+  02 Dec 2013; Tim Harder <radhermit@gentoo.org> flac-1.2.1-r3.ebuild,
+  flac-1.2.1-r4.ebuild, flac-1.2.1-r5.ebuild, flac-1.3.0.ebuild:
+  Run tests serially (bug #490160 by Nikoli).
+
+  26 Jun 2013; Alexis Ballier <aballier@gentoo.org> flac-1.2.1-r5.ebuild,
+  flac-1.3.0.ebuild:
+  update emul-linux blocker
+
+*flac-1.3.0 (29 May 2013)
+
+  29 May 2013; Tim Harder <radhermit@gentoo.org> +flac-1.3.0.ebuild,
+  +files/flac-1.3.0-asneeded.patch, +files/flac-1.3.0-dontbuild-examples.patch,
+  +files/flac-1.3.0-dontbuild-tests.patch:
+  Version bump (bug #471598).
+
+  07 May 2013; Michał Górny <mgorny@gentoo.org> flac-1.2.1-r5.ebuild:
+  Restore doc-install in build system, applying a fix for out-of-source install
+  of docs. Requested by aballier in bug #464490.
+
+  01 May 2013; Michał Górny <mgorny@gentoo.org> flac-1.2.1-r5.ebuild:
+  Port the lost automake-1.13 fix. Improve doc-issue comment. Prune all libtool
+  files.
+
+*flac-1.2.1-r5 (01 May 2013)
+
+  01 May 2013; Michał Górny <mgorny@gentoo.org> +flac-1.2.1-r5.ebuild:
+  Convert to multilib, wrt bug #464490. Add doc hack thanks to Karl Lindén. Add
+  USE=doc to control doc install.
+
+  25 Apr 2013; Tim Harder <radhermit@gentoo.org> flac-1.2.1-r4.ebuild:
+  Fix autoreconf failures with automake-1.13 (bug #466990).
+
+  15 May 2012; Alexis Ballier <aballier@gentoo.org> flac-1.2.1-r4.ebuild:
+  keyword ~amd64-fbsd
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> flac-1.2.1-r3.ebuild,
+  flac-1.2.1-r4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*flac-1.2.1-r4 (28 Mar 2011)
+
+  28 Mar 2011; Arun Raghavan <ford_prefect@gentoo.org> +flac-1.2.1-r4.ebuild,
+  +files/flac-1.2.1-ogg-m4.patch:
+  Update the shipped version of ogg.m4 so that users of libflac don't get a ton
+  of libtool warnings while linking.
+
+  16 Sep 2010; Samuli Suominen <ssuominen@gentoo.org> flac-1.2.1-r3.ebuild:
+  USE="static-libs" and punt .la files. Fix LICENSE. Remove USE="doc" as it
+  doesn't bring in any external dependencies. Revert useless base.eclass
+  usage.
+
+  23 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> flac-1.2.1-r3.ebuild:
+  Fix eautoreconf (missing AM_ICONV) for embedded wrt #173464, thanks to
+  Natanael Copa.
+
+  02 Dec 2008; Brent Baude <ranger@gentoo.org> flac-1.2.1-r3.ebuild:
+  stable ppc64, bug 245085
+
+  03 Nov 2008; Raúl Porcel <armin76@gentoo.org> flac-1.2.1-r3.ebuild:
+  alpha/arm/ia64/sh/sparc/x86 stable wrt #245085
+
+  01 Nov 2008; nixnut <nixnut@gentoo.org> flac-1.2.1-r3.ebuild:
+  Stable on ppc wrt bug 245085
+
+  01 Nov 2008; Jeroen Roovers <jer@gentoo.org> flac-1.2.1-r3.ebuild:
+  Stable for HPPA (bug #245085).
+
+  01 Nov 2008; Richard Freeman <rich0@gentoo.org> flac-1.2.1-r3.ebuild:
+  amd64 stable - 245085
+
+  03 Jul 2008; Alexis Ballier <aballier@gentoo.org> flac-1.2.1-r3.ebuild:
+  Dont needlessly restrict tests, just disable them if running as root as
+  they are expected to fail in that case.
+
+  16 Jun 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +files/flac-1.2.1-dontbuild-examples.patch,
+  +files/flac-1.2.1-dontbuild-tests.patch,
+  -files/flac-1.2.1-tests-optional.patch, flac-1.2.1-r3.ebuild:
+  Replace the patch to disable tests with two, one disable examples and one
+  makes the test build during 'make check'.
+
+*flac-1.2.1-r3 (13 Jun 2008)
+
+  13 Jun 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/flac-1.2.1-tests-optional.patch, +flac-1.2.1-r3.ebuild:
+  Don't build tests and examples which aren't installed anyway wrt bug
+  226301.
+
+  15 May 2008; Samuli Suominen <drac@gentoo.org> flac-1.2.1-r2.ebuild:
+  Revert commit for bug 173464, it doesn't solve the entire problem. Stop
+  wasting time with this too long, and known to fail testsuite wrt #197122.
+
+  12 May 2008; Markus Rothe <corsair@gentoo.org> flac-1.2.1-r2.ebuild:
+  Stable on ppc64
+
+  16 Mar 2008; Samuli Suominen <drac@gentoo.org> -flac-1.1.2-r8.ebuild,
+  flac-1.2.1-r2.ebuild:
+  amd64 stable. remove old for repoman, has unstable mips deps.
+
+  21 Feb 2008; Samuli Suominen <drac@gentoo.org> flac-1.2.1-r2.ebuild:
+  Use copy of m4 directory from gettext-0.17 to provide AM_ICONV for
+  eautoreconf wrt #173464, thanks to Natanael Copa for reporting.
+
+  10 Jan 2008; Samuli Suominen <drac@gentoo.org> flac-1.1.2-r8.ebuild,
+  -flac-1.1.4.ebuild:
+  Remove vulnerable version but leave one ebuild behind for mips wrt #195700
+
+  18 Nov 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/flac-1.2.1-gcc-4.3-includes.patch, flac-1.2.1-r2.ebuild:
+  fix building with gcc 4.3, thanks to Ryan Hill <dirtyepic@gentoo.org>, bug
+  #199579
+
+*flac-1.2.1-r2 (18 Nov 2007)
+
+  18 Nov 2007; Alexis Ballier <aballier@gentoo.org> +flac-1.2.1-r2.ebuild:
+  Make FLAC++ optional, enabled by default thanks to EAPI=1
+
+  01 Nov 2007; Raúl Porcel <armin76@gentoo.org> flac-1.2.1-r1.ebuild:
+  sparc stable, thanks to Alex Maclean for testing
+
+  24 Oct 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  flac-1.2.1-r1.ebuild:
+  ppc stable, bug #195700
+
+  23 Oct 2007; Markus Rothe <corsair@gentoo.org> flac-1.2.1-r1.ebuild:
+  Stable on ppc64; bug #195700
+
+  22 Oct 2007; Raúl Porcel <armin76@gentoo.org> flac-1.2.1-r1.ebuild:
+  alpha/ia64 stable wrt #195700
+
+  22 Oct 2007; Jeroen Roovers <jer@gentoo.org> flac-1.2.1-r1.ebuild:
+  Reverting sparc stabilisation due to reverse dependencies I cannot test.
+
+  22 Oct 2007; Jeroen Roovers <jer@gentoo.org> flac-1.2.1-r1.ebuild:
+  Stable for HPPA and SPARC (bug #195700).
+
+  21 Oct 2007; Steve Dibb <beandog@gentoo.org> flac-1.2.1-r1.ebuild:
+  Add test restriction, amd64 stable
+
+  21 Oct 2007; Markus Meier <maekke@gentoo.org> flac-1.2.1-r1.ebuild:
+  x86 stable, security bug #195700
+
+  13 Oct 2007; Markus Rothe <corsair@gentoo.org> flac-1.1.4.ebuild:
+  Stable on ppc64; bug #191280
+
+  29 Sep 2007; Christian Birchinger <joker@gentoo.org> flac-1.1.4.ebuild:
+  Added sparc stable keyword
+
+*flac-1.2.1-r1 (28 Sep 2007)
+
+  28 Sep 2007; Samuli Suominen <drac@gentoo.org>
+  +files/flac-1.2.1-asm.patch, +flac-1.2.1-r1.ebuild:
+  Fix TEXTRELs using patch from PaX Team from bug 193222 and while at it,
+  attempt to clean up ebuild a bit. Revert last commit restoring elibtoolize
+  for fbsd since eautoreconf allready does libtoolize.
+
+  26 Sep 2007; Raúl Porcel <armin76@gentoo.org> flac-1.1.4.ebuild:
+  alpha/ia64 stable wrt #191280
+
+  20 Sep 2007; Samuli Suominen <drac@gentoo.org> flac-1.2.1.ebuild:
+  Use elibtoolize for fbsd.
+
+  20 Sep 2007; <solar@gentoo.org> flac-1.2.1.ebuild:
+  - fix improper use of hardened flag when pic should be used
+
+*flac-1.2.1 (20 Sep 2007)
+
+  20 Sep 2007; Samuli Suominen <drac@gentoo.org>
+  +files/flac-1.2.1-asneeded.patch, +files/flac-1.2.1-cflags.patch,
+  +flac-1.2.1.ebuild:
+  Version bump.
+
+  20 Sep 2007; Lars Weiler <pylon@gentoo.org> flac-1.1.4.ebuild:
+  Stable on ppc; bug #191280.
+
+  15 Sep 2007; Samuli Suominen <drac@gentoo.org> flac-1.2.0.ebuild:
+  Changed SRC_URI to gentoo mirrors.
+
+  10 Sep 2007; Jeroen Roovers <jer@gentoo.org> flac-1.1.4.ebuild:
+  Stable for HPPA (bug #191280).
+
+  09 Sep 2007; Christian Faulhammer <opfer@gentoo.org> flac-1.1.4.ebuild:
+  stable x86, bug 191280
+
+  06 Aug 2007; Samuli Suominen <drac@gentoo.org> flac-1.2.0.ebuild:
+  Fix visibility patch.
+
+  06 Aug 2007; Samuli Suominen <drac@gentoo.org> flac-1.2.0.ebuild:
+  Apply patch from upstream to fix bug 187882, thanks to Marty Rosenberg for
+  reporting.
+
+  06 Aug 2007; Joshua Kinard <kumba@gentoo.org> flac-1.1.2-r8.ebuild:
+  Stable on mips, per #136490.
+
+  05 Aug 2007; Samuli Suominen <drac@gentoo.org> files/digest-flac-1.1.2-r3,
+  files/digest-flac-1.1.2-r8, Manifest:
+  Fix digests.
+
+*flac-1.2.0 (05 Aug 2007)
+
+  05 Aug 2007; Samuli Suominen <drac@gentoo.org> +flac-1.2.0.ebuild:
+  Version bump for bug 187199, thanks to Matthew Matts for reporting.
+
+  21 May 2007; Raúl Porcel <armin76@gentoo.org> flac-1.1.2-r8.ebuild:
+  alpha stable wrt #136490
+
+  24 Feb 2007; Alexis Ballier <aballier@gentoo.org> flac-1.1.2-r3.ebuild,
+  flac-1.1.2-r8.ebuild, flac-1.1.3.ebuild, flac-1.1.4.ebuild:
+  Push libogg deps to 1.1.2, bug #167868
+
+  17 Feb 2007; Fabian Groffen <grobian@gentoo.org> flac-1.1.2-r3.ebuild,
+  flac-1.1.2-r8.ebuild, flac-1.1.3.ebuild, flac-1.1.4.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+*flac-1.1.4 (14 Feb 2007)
+
+  14 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> +flac-1.1.4.ebuild:
+  Version bump, hopefully this time API and ABI are the same as 1.1.3 at least.
+
+  05 Feb 2007; Alexis Ballier <aballier@gentoo.org> flac-1.1.3.ebuild:
+  Add gettext build depend, bug #159596
+
+  04 Feb 2007; Steve Dibb <beandog@gentoo.org> flac-1.1.2-r8.ebuild:
+  amd64 stable, bug 136490
+
+  16 Jan 2007; Jeroen Roovers <jer@gentoo.org> flac-1.1.2-r8.ebuild:
+  Stable for HPPA (bug #136490).
+
+  12 Jan 2007; nixnut <nixnut@gentoo.org> flac-1.1.2-r8.ebuild:
+  Stable on ppc wrt bug 136490
+
+  11 Jan 2007; Christian Faulhammer <opfer@gentoo.org> flac-1.1.2-r8.ebuild:
+  stable x86, bug #136490
+
+  11 Jan 2007; Markus Rothe <corsair@gentoo.org> flac-1.1.2-r8.ebuild:
+  Stable on ppc64; bug #136490
+
+  10 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org> flac-1.1.2-r8.ebuild:
+  Stable on sparc wrt #136490
+
+*flac-1.1.3 (03 Dec 2006)
+
+  03 Dec 2006; Diego Pettenò <flameeyes@gentoo.org> flac-1.1.2-r3.ebuild,
+  flac-1.1.2-r8.ebuild, -flac-1.1.3_beta2.ebuild, +flac-1.1.3.ebuild:
+  Bump to flac-1.1.3 final, fix AM_PATH_XMMS removal.
+
+  25 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> flac-1.1.2-r3.ebuild,
+  flac-1.1.2-r8.ebuild, flac-1.1.3_beta2.ebuild:
+  Force the XMMS plugin disabled, now that XMMS is removed, see bug #156187.
+
+  07 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> flac-1.1.2-r3.ebuild,
+  flac-1.1.2-r8.ebuild, flac-1.1.3_beta2.ebuild:
+  Remove xmms useflag in view of the removal of xmms later this month.
+
+  19 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/flac-1.1.1-libtool.patch, -files/flac-1.1.1-m4.patch,
+  -flac-1.1.1.ebuild, -flac-1.1.2-r7.ebuild:
+  Remove old versions.
+
+*flac-1.1.3_beta2 (19 Oct 2006)
+
+  19 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +flac-1.1.3_beta2.ebuild:
+  Add latest beta, package.masked as almost every package breaks with it.
+
+*flac-1.1.2-r8 (26 Sep 2006)
+
+  26 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> +flac-1.1.2-r8.ebuild:
+  Add a new revision with an improved visibility patch.
+
+  24 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> flac-1.1.2-r3.ebuild,
+  -flac-1.1.2-r4.ebuild, -flac-1.1.2-r6.ebuild, flac-1.1.2-r7.ebuild:
+  Remove unneeded versions, fix autotools mess in -r3 and -r7. Thanks to
+  Seemant for reporting.
+
+  28 Aug 2006; Joshua Kinard <kumba@gentoo.org> flac-1.1.2-r3.ebuild:
+  Marked stable on mips.
+
+*flac-1.1.2-r7 (18 Jun 2006)
+
+  18 Jun 2006; Diego Pettenò <flameeyes@gentoo.org> +flac-1.1.2-r7.ebuild:
+  Add patch to fix strict-aliasing breakage.
+
+*flac-1.1.2-r6 (29 May 2006)
+
+  29 May 2006; Diego Pettenò <flameeyes@gentoo.org> -flac-1.1.2-r5.ebuild,
+  +flac-1.1.2-r6.ebuild:
+  Bump patchset with patch to fix bug #134666. Thanks to cuicui for reporting.
+
+  28 May 2006; Diego Pettenò <flameeyes@gentoo.org> flac-1.1.2-r5.ebuild:
+  Bump patchlevel to fix side problem, not much.
+
+*flac-1.1.2-r5 (28 May 2006)
+
+  28 May 2006; Diego Pettenò <flameeyes@gentoo.org> +flac-1.1.2-r5.ebuild:
+  Add new revision that allows use of hidden visibility with GCC 4.1.
+
+  26 May 2006; Diego Pettenò <flameeyes@gentoo.org> flac-1.1.2-r4.ebuild:
+  Don't force -j1 for every user, but only if xmms is enabled, so to minimise
+  the impact.
+
+  24 May 2006; Diego Pettenò <flameeyes@gentoo.org> flac-1.1.2-r4.ebuild:
+  Add ~x86-fbsd keyword.
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-flac-1.1.1,
+  files/digest-flac-1.1.2-r3, files/digest-flac-1.1.2-r4, Manifest:
+  Fixing SHA256 digest, pass four
+
+  07 Feb 2006; Aron Griffis <agriffis@gentoo.org> flac-1.1.2-r3.ebuild:
+  Mark 1.1.2-r3 stable on alpha
+
+  28 Jan 2006; Simon Stelling <blubb@gentoo.org>
+  -files/flac-1.1.1-altivec.patch.gz, flac-1.1.1.ebuild:
+  move compressed patches to the mirrors
+
+  24 Dec 2005; Michael Hanselmann <hansmi@gentoo.org> flac-1.1.2-r3.ebuild:
+  Stable on ppc.
+
+  09 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> flac-1.1.2-r4.ebuild:
+  Added patch to fix executable stack on x86 as per bug #114984, provided by
+  Kevin F. Quinn. Remove the -p1 trick, as now the m4 file uses -p0 that works
+  as a charm.
+
+*flac-1.1.2-r4 (28 Nov 2005)
+
+  28 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> +flac-1.1.2-r4.ebuild:
+  New version, that does not invalidate the configure cache (and adds a
+  --disable-doc configure option). Also installs the user documentation in the
+  right directory for Gentoo. Use eautoreconf to rebuild autotools support,
+  and add the m4 file via patch instead than copying it. Install man page
+  shipped with the package (and don't regenerate them).
+
+  26 Nov 2005; Mark Loeser <halcy0n@gentoo.org> flac-1.1.2-r3.ebuild:
+  Stable on x86; bug #113519
+
+  25 Nov 2005; Markus Rothe <corsair@gentoo.org> flac-1.1.2-r3.ebuild:
+  Stable on ppc64; bug #113519
+
+  25 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org> flac-1.1.2-r3.ebuild:
+  Stable on sparc wrt #113519
+
+  25 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> -flac-1.1.2-r2.ebuild:
+  Remove old revision.
+
+  22 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> flac-1.1.2-r2.ebuild,
+  flac-1.1.2-r3.ebuild:
+  Use mirror://gentoo/ for patchsets.
+
+  19 Oct 2005; Luis Medinas <metalgod@gentoo.org> flac-1.1.2-r3.ebuild:
+  Marked Stable on amd64.
+
+*flac-1.1.2-r3 (25 Aug 2005)
+
+  25 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> +flac-1.1.2-r3.ebuild:
+  Added largefile support to flac as per bug #103578.
+
+  25 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -files/flac-1.1.2-gas.patch, -files/flac-1.1.2-libtool.patch,
+  -files/flac-1.1.2-m4.patch, -files/flac-1.1.2-makefile.patch,
+  -files/flac-1.1.2-noogg.patch, -files/flac-1.1.2-xmms-config.patch,
+  flac-1.1.2-r2.ebuild:
+  Cleanup of flac ebuild, using patchset tarball instead of $FILESDIR. Removed
+  XMMS hack (provided m4). Don't add extra flags that are not requested.
+
+  25 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -files/flac-1.1.0-libtool.patch, -files/flac-1.1.0-m4.patch,
+  -flac-1.1.0.ebuild, -flac-1.1.0-r2.ebuild, -flac-1.1.2-r1.ebuild:
+  Removed 1.1.0 series and 1.1.2-r1 ebuild.
+
+  06 Aug 2005; Kito <kito@gentoo.org> files/flac-1.1.2-gas.patch:
+  change default as check to not drop an a.out and wait for stdin on Darwin
+  systems
+
+  12 Jul 2005; Stephen P. Becker <geoman@gentoo.org> flac-1.1.1.ebuild:
+  stable on mips
+
+  12 Jun 2005; Chris White <chriswhite@gentoo.org> flac-1.1.2-r2.ebuild:
+  And now we add the pkg-config dep...
+
+  12 Jun 2005; Chris White <chriswhite@gentoo.org>
+  files/flac-1.1.2-noogg.patch:
+  Fixed the patch _again_ and made sure it worked 3 times over. This will
+  still fail I bet...
+
+  12 Jun 2005; Chris White <chriswhite@gentoo.org> :
+  Patch reversion until compile error I just found gets fixed...
+
+*flac-1.1.2-r2 (12 Jun 2005)
+
+  12 Jun 2005; Chris White <chriswhite@gentoo.org> +flac-1.1.2-r2.ebuild:
+  Fixed noogg patch to actually work when libogg is not installed.
+
+  23 May 2005; Aron Griffis <agriffis@gentoo.org> flac-1.1.1.ebuild:
+  stable on alpha
+
+  15 May 2005; Guy Martin <gmsoft@gentoo.org> flac-1.1.1.ebuild:
+  Stable on hppa.
+
+  15 May 2005; Diego Pettenò <flameeyes@gentoo.org> flac-1.1.0-r2.ebuild,
+  flac-1.1.1.ebuild, flac-1.1.2-r1.ebuild:
+  Moved to use toolchain-funcs and removed gcc inheritance on latest version.
+
+  08 May 2005; Aron Griffis <agriffis@gentoo.org> flac-1.1.1.ebuild:
+  stable on ia64
+
+  07 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/flac-1.1.2-noogg.patch, flac-1.1.2-r1.ebuild:
+  Remove XMMS requests, fixes #82721. Added configure param to disable ogg,
+  fixes #91513.
+
+*flac-1.1.2-r1 (03 May 2005)
+
+  03 May 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/flac-1.1.2-xmms-config.patch, -flac-1.1.0-r1.ebuild,
+  -flac-1.1.2.ebuild, +flac-1.1.2-r1.ebuild:
+  Revbump to fix xmms bug.  Closes bug #82622.
+
+  30 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> flac-1.1.1.ebuild:
+  Stable on ppc.
+
+  25 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org> flac-1.1.1.ebuild:
+  Stable amd64, sparc, and x86.
+
+  15 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> flac-1.1.2.ebuild:
+  introduced more useflag to get more control over the resulting binaries.
+  enhancements suggested by Diego Pettenò <dgp85@users.sourceforge.net>, fixes
+  #82741
+
+  08 Apr 2005; Markus Rothe <corsair@gentoo.org> flac-1.1.1.ebuild:
+  Stable on ppc64
+
+  08 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> flac-1.1.1.ebuild:
+  marked ~arch
+
+  07 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> flac-1.1.1.ebuild:
+  stable on amd64 and x86
+
+  21 Feb 2005; Luca Barbato <lu_zero@gentoo.org> flac-1.1.2.ebuild:
+  Minor workaround
+
+  19 Feb 2005; Tony Vroon <chainsaw@gentoo.org> flac-1.1.2.ebuild:
+  Undo slotting, fails to work correctly.
+
+  19 Feb 2005; Luca Barbato <lu_zero@gentoo.org>
+  +files/flac-1.1.2-gas.patch, +files/flac-1.1.2-makefile.patch,
+  flac-1.1.2.ebuild:
+  ppc related fixes
+
+*flac-1.1.2 (18 Feb 2005)
+
+  18 Feb 2005; Tony Vroon <chainsaw@gentoo.org>
+  +files/flac-1.1.2-libtool.patch, +files/flac-1.1.2-m4.patch,
+  +flac-1.1.2.ebuild:
+  Version bump to 1.1.2; slotted to avoid breakage. PPC keywords temporarily
+  dropped until the Altivec-on-non-Darwin patches are ported. Closes bug
+  #81291.
+
+  05 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> flac-1.1.0-r1.ebuild,
+  flac-1.1.0-r2.ebuild, flac-1.1.0.ebuild, flac-1.1.1.ebuild:
+  added a dummy src_test to remove excessive testing. see #59482
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  06 Nov 2004; Luca Barbato <lu_zero@gentoo.org>
+  +files/flac-1.1.1-altivec.patch.gz, flac-1.1.1.ebuild:
+  Altivec related fixes by John Steele Scott <toojays@toojays.net>
+
+  19 Oct 2004; Kito Danya <keetz@gentoo.org> flac-1.1.1.ebuild:
+  added ~ppc-macos
+
+  22 Oct 2004; Luca Barbato <lu_zero@gentoo.org>
+  +files/flac-1.1.1-altivec.patch, flac-1.1.1.ebuild:
+  Altivec related fixes by John Steele Scott <toojays@toojays.net>
+
+  05 Oct 2004; Luca Barbato <lu_zero@gentoo.org> flac-1.1.1.ebuild:
+  The "ppc" improvement, just broke everything, -ppc till they are fixed"
+
+  03 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> flac-1.1.1.ebuild:
+  Using preserve_old_lib to cut down on clutter.
+
+  02 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> flac-1.1.1.ebuild:
+  Added in ${ROOT} and fixed up backwards compatibility...
+
+  02 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> :
+  Version bump.
+
+  08 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> flac-1.1.0-r2.ebuild:
+  Stable on alpha.
+
+  08 Aug 2004; Guy Martin <gmsoft@gentoo.org> flac-1.1.0-r2.ebuild:
+  Stable on hppa.
+
+  28 Jul 2004; Tom Gall <tgall@gentoo.org> flac-1.1.0-r2.ebuild:
+  stable on ppc64, bug #55076
+
+  19 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> flac-1.1.0-r2.ebuild:
+  Stable sparc, x86, amd64.
+
+  14 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> flac-1.1.0-r1.ebuild:
+  Stable on alpha.
+
+*flac-1.1.0-r2 (14 Jun 2004)
+
+  14 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/flac-1.1.0-libtool.patch, +files/flac-1.1.0-m4.patch,
+  +flac-1.1.0-r2.ebuild:
+  Added patches to fix bugs #41042 and #50137. XMMS plugin should now build
+  correctly and -fPIC is in the patch now instead of the ebuild.
+
+  26 May 2004; Guy Martin <gmsoft@gentoo.org> flac-1.1.0-r1.ebuild:
+  Marked stable on hppa.
+
+  23 May 2004; Daniel Ostrow <dostrow@gentoo.org> flac-1.1.0-r1.ebuild:
+  Stable on ppc.
+
+  15 May 2004; Gustavo Zacarias <gustavoz@gentoo.org> flac-1.1.0-r1.ebuild:
+  Sparc me up baby
+
+  14 May 2004; Stephen P. Becker <geoman@gentoo.org> flac-1.1.0.ebuild:
+  Stable on mips.
+
+  07 May 2004; Jeremy Huddleston <eradicator@gentoo.org> flac-1.1.0-r1.ebuild:
+  Stable x86.
+
+  18 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> flac-1.1.0-r1.ebuild:
+  -fPIC CFLAGS addition to all (not just hppa) CFLAGS. --with-pic isn't
+  enough... see bug #42732.
+
+*flac-1.1.0-r1 (07 Apr 2004)
+
+  07 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> flac-1.1.0-r1.ebuild:
+  Enable PIC on all architectures.  Added missing depend on id3lib.
+
+  15 Mar 2004; Stephen P. Becker <geoman@gentoo.org> flac-1.1.0.ebuild:
+  Added ~mips keyword.
+
+  28 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org> flac-1.1.0.ebuild,
+  metadata.xml:
+  Removing DEPEND on id3lib.  Closes bug #42792.
+
+  28 Jan 2004; Aron Griffis <agriffis@gentoo.org> flac-1.1.0.ebuild:
+  stable on ia64
+
+  29 Dec 2003; Martin Holzer <mholzer@gentoo.org> flac-1.0.3.ebuild,
+  flac-1.0.4.ebuild, flac-1.1.0.ebuild:
+  adding RESTRICT=nomirror
+
+  29 Oct 2003; Guy Martin <gmsoft@gentoo.org> flac-1.1.0.ebuild :
+  Added -fPIC to CFLAGS when USE="+X +xmms" on hppa to fix a compilation error.
+
+  26 Sep 2003; Jason Wever <weeve@gentoo.org> flac-1.1.0.ebuild:
+  Added sparc keyword.
+
+  02 Jun 2003; Daniel Robbins <drobbins@gentoo.org> flac-1.1.0.ebuild: xmms USE
+  won't be considered if X USE isn't set (to help people who like to do -X and
+  be safe;) moved libtool eclass inherit line to later in the ebuild so it's
+  after the DEPEND/RDEPEND defs. Also unmasking on Alpha.
+  
+  14 Mar 2003; Daniel Robbins <drobbins@gentoo.org> flac-1.1.0.ebuild: added
+  dependency on id3lib to (R)DEPEND.
+  
+  10 Feb 2003; Aron Griffis <agriffis@gentoo.org> flac-1.1.0.ebuild : Add
+  ~alpha to KEYWORDS
+
+*flac-1.1.0 (29 Jan 2003)
+
+  29 Jan 2003; Phil Bordelon <sunflare@lsu.edu> flac-1.1.0.ebuild :
+  Version bump.  Also removed the commented-out 3DNOW! stuff, since
+  3DNOW is now enabled by default if the processor supports it.
+  Masked for testing.
+
+*flac-1.0.4 (31 Oct 2002)
+
+  12 Jan 2003; Seemant Kulleen <seemant@gentoo.org> flac-1.0.4.ebuild :
+
+  Added a fix if -xmms is in USE.  The clever sed'ing thanks to:
+  thompson@pobox.com (Paul Thompson) in bug #12355.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  06 Dec 2002; Phil Bordelon <sunflare@gentoo.org> flac-1.0.4.ebuild :
+  Marking stable for x86.
+
+  16 Nov 2002; Jon Nall <nall@gentoo.org> flac-1.0.4.ebuild :
+
+  added --reverse-deps to the elibtoolize command. this fixes bug
+  #10808
+  
+  31 Oct 2002; Seemant Kulleen <seemant@gentoo.org> flac-1.0.4.ebuild
+  files/digest-flac-1.0.4 :
+
+  Version bump, from a request by: nisharfi@csupomona.edu (Nathan Sharfi) in
+  bug #8655.  Note that: tagith1394@hotmail.com (Evan Cortens) had submitted
+  an ebuild for 1.0.3 in bug #6966
+
+*flac-1.0.3 (08 Jul 2002) 
+
+  16 Nov 2002; Jon Nall <nall@gentoo.org> flac-1.0.3.ebuild :
+  added --reverse-deps to the elibtoolize command. 
+
+  11 Sep 2002; Mark Guertin <gerk@gentoo.org> flac-1.0.3.ebuild :
+  set nasm as x86 only dependancy
+
+  18 Aug 2002; Daniel Ahlberg <aliz@gentoo.org> flac-1.0.3.ebuild :
+  Fixed installation of xmms plugin. Closes #5760.
+
+  08 Jul 2002; Daniel Robbins <drobbins@gentoo.org> : New version of FLAC with
+  better faster decoding and new C++ API.

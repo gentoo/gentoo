@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare
+DEPEND=>=net-libs/libnetfilter_conntrack-0.0.100 >=net-libs/libnetfilter_queue-1.0.0 net-libs/libnfnetlink
+DESCRIPTION=Userspace utilities for layer 7 iptables QoS
+EAPI=4
+HOMEPAGE=http://l7-filter.clearfoundation.com/
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=>=net-libs/libnetfilter_conntrack-0.0.100 >=net-libs/libnetfilter_queue-1.0.0 net-libs/libnfnetlink net-misc/l7-protocols
+SLOT=0
+SRC_URI=http://download.clearfoundation.com/l7-filter/l7-filter-userspace-0.12-beta1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=59606538e0a61e3259db88419579eb1e

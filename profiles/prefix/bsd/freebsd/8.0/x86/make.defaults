@@ -1,0 +1,9 @@
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/bsd/freebsd/8.0/x86/make.defaults,v 1.1 2009/12/21 20:38:29 grobian Exp $
+
+# retain backwards compatability for freebsd keywords/conditionals
+ARCH="x86-fbsd"
+CHOST="i686-pc-freebsd8.0"
+ACCEPT_KEYWORDS="~x86-freebsd"
+

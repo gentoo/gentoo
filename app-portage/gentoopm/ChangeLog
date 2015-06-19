@@ -1,0 +1,256 @@
+# ChangeLog for app-portage/gentoopm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/gentoopm/ChangeLog,v 1.60 2015/06/07 19:06:35 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add bitbucket to remote-id in metadata.xml
+
+  25 Apr 2015; Mike Gilbert <floppym@gentoo.org> gentoopm-9999.ebuild:
+  Replace links pointing at git.overlays.gentoo.org.
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> gentoopm-0.2.6.ebuild,
+  gentoopm-0.2.8.ebuild, gentoopm-0.2.9.ebuild, gentoopm-9999.ebuild:
+  Remove old Python implementations
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org> gentoopm-0.2.6.ebuild,
+  gentoopm-0.2.8.ebuild, gentoopm-0.2.9.ebuild, gentoopm-9999.ebuild:
+  Update dependency after package move of eselect modules to app-eselect.
+
+  08 Dec 2014; Mikle Kolyada <zlogene@gentoo.org> gentoopm-0.2.9.ebuild:
+  x86 stable wrt bug #517812
+
+  05 Oct 2014; Manuel Rüger <mrueg@gentoo.org> gentoopm-0.2.9.ebuild:
+  Mark stable on amd64. Bug #517812
+
+  13 Sep 2014; Markus Meier <maekke@gentoo.org> gentoopm-0.2.9.ebuild:
+  arm stable, bug #517812
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> gentoopm-0.2.6.ebuild,
+  gentoopm-0.2.8.ebuild, gentoopm-0.2.9.ebuild, gentoopm-9999.ebuild:
+  Replace obsolete mirror://bitbucket with the real URI.
+
+  09 Apr 2014; Michał Górny <mgorny@gentoo.org> gentoopm-0.2.9.ebuild:
+  Enable 3.4 in release as well.
+
+  06 Apr 2014; Michał Górny <mgorny@gentoo.org> gentoopm-0.2.9.ebuild,
+  gentoopm-9999.ebuild:
+  Add support for PYTHON_TARGETS=pypy.
+
+  29 Mar 2014; Mike Gilbert <floppym@gentoo.org> gentoopm-9999.ebuild:
+  Add python3.4.
+
+  27 Oct 2013; Michał Górny <mgorny@gentoo.org> gentoopm-0.2.6.ebuild,
+  gentoopm-0.2.8.ebuild, gentoopm-0.2.9.ebuild, gentoopm-9999.ebuild:
+  Remove redundant python_export_best (done by the eclass).
+
+  14 Oct 2013; Michał Górny <mgorny@gentoo.org> gentoopm-9999.ebuild:
+  Switch to git-r3. Clean up a bit.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> gentoopm-0.2.6.ebuild,
+  gentoopm-0.2.8.ebuild, gentoopm-0.2.9.ebuild, gentoopm-9999.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  18 Aug 2013; Agostino Sarubbo <ago@gentoo.org> gentoopm-0.2.8.ebuild:
+  Stable for x86, wrt bug #479482
+
+  10 Aug 2013; Agostino Sarubbo <ago@gentoo.org> gentoopm-0.2.8.ebuild:
+  Stable for arm, wrt bug #479482
+
+*gentoopm-0.2.9 (08 Aug 2013)
+
+  08 Aug 2013; Michał Górny <mgorny@gentoo.org> +gentoopm-0.2.9.ebuild:
+  Version bump. Brings bugfixes for Python 3 support and environment file
+  sourcing.
+
+  07 Aug 2013; Michał Górny <mgorny@gentoo.org> gentoopm-0.2.8.ebuild,
+  gentoopm-9999.ebuild:
+  Drop removed Python implementations from PYTHON_COMPAT.
+
+  05 Aug 2013; Michał Górny <mgorny@gentoo.org> gentoopm-0.2.8.ebuild,
+  gentoopm-9999.ebuild:
+  Enable pypy2.0. Add USEDEP for portage since it supports PYTHON_TARGETS now.
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> gentoopm-0.2.8.ebuild:
+  Stable for amd64, wrt bug #479482
+
+  22 Jul 2013; Michał Górny <mgorny@gentoo.org> -files/pkgcore-0.8.1-api.patch,
+  -gentoopm-0.2.5-r2.ebuild, -gentoopm-0.2.7.ebuild:
+  Drop old.
+
+*gentoopm-0.2.8 (16 Feb 2013)
+
+  16 Feb 2013; Michał Górny <mgorny@gentoo.org> +gentoopm-0.2.8.ebuild:
+  Version bump. The new version fixes portage dependency parsing and package
+  list sorting.
+
+  26 Jan 2013; Agostino Sarubbo <ago@gentoo.org> gentoopm-0.2.6.ebuild:
+  Stable for arm, wrt bug #453846
+
+  09 Jan 2013; Rick Farina <zerochaos@gentoo.org> gentoopm-0.2.6.ebuild,
+  gentoopm-0.2.7.ebuild, gentoopm-9999.ebuild:
+  adding ~arm keywords
+
+  17 Dec 2012; Michał Górny <mgorny@gentoo.org> gentoopm-0.2.6.ebuild,
+  gentoopm-0.2.7.ebuild, gentoopm-9999.ebuild:
+  Bump to EAPI=5 to make Paludis happy, bug #447524.
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> gentoopm-0.2.6.ebuild:
+  Stable for x86, wrt bug #445178
+
+*gentoopm-9999 (15 Dec 2012)
+
+  15 Dec 2012; Michał Górny <mgorny@gentoo.org> +gentoopm-9999.ebuild:
+  Import the live ebuild.
+
+*gentoopm-0.2.7 (10 Dec 2012)
+
+  10 Dec 2012; Michał Górny <mgorny@gentoo.org> +gentoopm-0.2.7.ebuild:
+  Version bump. The new version fixes compatibility issues with PyPy and Python
+  3.3.
+
+  02 Dec 2012; <ago@gentoo.org> gentoopm-0.2.6.ebuild:
+  Stable for amd64, wrt bug #445178
+
+  02 Nov 2012; Michał Górny <mgorny@gentoo.org> gentoopm-0.2.6.ebuild:
+  Spawn docbuilding using best Python version. The setup.py code is just
+  spawning subprocess, so there's no need to force Python2 here.
+
+  26 Oct 2012; Michał Górny <mgorny@gentoo.org> gentoopm-0.2.6.ebuild:
+  Re-enable tests.
+
+  21 Oct 2012; Michał Górny <mgorny@gentoo.org> gentoopm-0.2.6.ebuild:
+  Re-add ~x86-fbsd & ~amd64-fbsd after keywording python-exec.
+
+*gentoopm-0.2.6 (15 Oct 2012)
+
+  15 Oct 2012; Michał Górny <mgorny@gentoo.org> +gentoopm-0.2.6.ebuild:
+  Version bump.
+
+  14 Oct 2012; Brian Harring <ferringb@gentoo.org> gentoopm-0.2.5-r2.ebuild:
+  Fix deps since I missed it in the quick update; specifically limit pkgcore to
+  >=0.8
+
+*gentoopm-0.2.5-r2 (14 Oct 2012)
+
+  14 Oct 2012; Brian Harring <ferringb@gentoo.org> -gentoopm-0.2.5-r1.ebuild,
+  +gentoopm-0.2.5-r2.ebuild, +files/pkgcore-0.8.1-api.patch:
+  Restore pkgcore support, while removing daft blockers.  Bug #438392.
+
+  05 Oct 2012; Michał Górny <mgorny@gentoo.org> gentoopm-0.2.5-r1.ebuild:
+  Add a blocker on new pkgcore to avoid breakage.
+
+  05 Oct 2012; Michał Górny <mgorny@gentoo.org> gentoopm-0.2.5-r1.ebuild:
+  Update pkgcore dependency.
+
+  31 Aug 2012; Michał Górny <mgorny@gentoo.org> -gentoopm-0.2.1.ebuild,
+  -gentoopm-0.2.5.ebuild, gentoopm-0.2.5-r1.ebuild, metadata.xml:
+  Sync to the live ebuild (URIs), drop old.
+
+  07 Aug 2012; Alexis Ballier <aballier@gentoo.org> gentoopm-0.2.5-r1.ebuild:
+  keyword ~amd64-fbsd, bug #393183
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> gentoopm-0.2.5-r1.ebuild:
+  Stable for amd64, wrt bug #428896
+
+  01 Aug 2012; Jeff Horelick <jdhore@gentoo.org> gentoopm-0.2.5-r1.ebuild:
+  marked x86 per bug 428896
+
+*gentoopm-0.2.5-r1 (26 May 2012)
+
+  26 May 2012; Michał Górny <mgorny@gentoo.org> +gentoopm-0.2.5-r1.ebuild:
+  Use python-distutils-ng. Re-enable Python 3 support.
+
+  09 Feb 2012; Matt Turner <mattst88@gentoo.org> gentoopm-0.2.5.ebuild:
+  Added ~mips, bug 393183.
+
+*gentoopm-0.2.5 (09 Jan 2012)
+
+  09 Jan 2012; Michał Górny <mgorny@gentoo.org> -gentoopm-0.2.4.ebuild,
+  +gentoopm-0.2.5.ebuild:
+  Version bump. The new version updates Paludis API support.
+
+*gentoopm-0.2.4 (24 Dec 2011)
+
+  24 Dec 2011; Michał Górny <mgorny@gentoo.org> -gentoopm-0.2.3.ebuild,
+  +gentoopm-0.2.4.ebuild, metadata.xml:
+  Version bump. The new version fixes tests on *BSD, supports Paludis API
+  changes and fixes environment* file sorting.
+
+  09 Dec 2011; Naohiro Aota <naota@gentoo.org> gentoopm-0.2.3.ebuild:
+  Add ~x86-fbsd. Bug #393183
+
+*gentoopm-0.2.3 (15 Nov 2011)
+
+  15 Nov 2011; Michał Górny <mgorny@gentoo.org> -gentoopm-0.2.2.ebuild,
+  +gentoopm-0.2.3.ebuild:
+  Version bump. The new version fixes package sorting with pkgcore-0.7.5.
+
+*gentoopm-0.2.2 (14 Nov 2011)
+
+  14 Nov 2011; Michał Górny <mgorny@gentoo.org> -gentoopm-0.1.6.ebuild,
+  +gentoopm-0.2.2.ebuild:
+  Version bump. The new version fixes support for pkgcore-0.7.5, and mistaken
+  stderr output of `gentoopmq repositories`.
+
+  02 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> gentoopm-0.2.1.ebuild:
+  x86 stable wrt bug #388511
+
+  28 Oct 2011; Tony Vroon <chainsaw@gentoo.org> gentoopm-0.2.1.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani, Tomáš "Mepho" Pružina & Agostino "ago" Sarubbo in bug #388511.
+
+  26 Oct 2011; Michał Górny <mgorny@gentoo.org> gentoopm-0.2.1.ebuild:
+  Restrict Python 3 due to bugs in it, use mirror://github.
+
+*gentoopm-0.2.1 (15 Aug 2011)
+
+  15 Aug 2011; Michał Górny <mgorny@gentoo.org> -gentoopm-0.2.ebuild,
+  +gentoopm-0.2.1.ebuild:
+  Version bump with a few fixes and API improvements.
+
+*gentoopm-0.2 (13 Aug 2011)
+*gentoopm-0.1.6 (13 Aug 2011)
+
+  13 Aug 2011; Michał Górny <mgorny@gentoo.org> -gentoopm-0.1.5.ebuild,
+  +gentoopm-0.1.6.ebuild, +gentoopm-0.2.ebuild:
+  Version bump. 0.1.6 is a bugfix, 0.2 drops deprecated APIs.
+
+*gentoopm-0.1.5 (12 Aug 2011)
+
+  12 Aug 2011; Michał Górny <mgorny@gentoo.org> -gentoopm-0.1.4.ebuild,
+  +gentoopm-0.1.5.ebuild:
+  Version bump. The new version introduces PM version getting and
+  re-implemented keyword-argument filtering.
+
+*gentoopm-0.1.4 (02 Aug 2011)
+
+  02 Aug 2011; Michał Górny <mgorny@gentoo.org> -gentoopm-0.1.3.ebuild,
+  +gentoopm-0.1.4.ebuild:
+  Version bump.
+
+*gentoopm-0.1.3 (22 Jul 2011)
+
+  22 Jul 2011; Michał Górny <mgorny@gentoo.org> -gentoopm-0.1.2.ebuild,
+  +gentoopm-0.1.3.ebuild:
+  Version bump. The new version introduces new package property API.
+
+  18 Jul 2011; Michał Górny <mgorny@gentoo.org> gentoopm-0.1.2.ebuild:
+  DEPEND on epydoc only when building doc. Thanks to Николай
+  Шуйский for reporting.
+
+*gentoopm-0.1.2 (17 Jul 2011)
+
+  17 Jul 2011; Michał Górny <mgorny@gentoo.org> -gentoopm-0.1.ebuild,
+  -gentoopm-0.1.1.ebuild, +gentoopm-0.1.2.ebuild:
+  Version bump. Fixes bug #375463.
+
+*gentoopm-0.1.1 (17 Jul 2011)
+
+  17 Jul 2011; Michał Górny <mgorny@gentoo.org> +gentoopm-0.1.1.ebuild:
+  Version bump. The new version introduces an API for getting atom parts.
+
+*gentoopm-0.1 (15 Jul 2011)
+
+  15 Jul 2011; Michał Górny <mgorny@gentoo.org> +gentoopm-0.1.ebuild,
+  +metadata.xml:
+  Introduce the first version of gentoopm, the common PM API.

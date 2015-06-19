@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>yngwin@gentoo.org</email>
+    <name>Ben de Groot</name>
+  </maintainer>
+  <use>
+    <flag name="luajit">
+      Use the lua just-in-time compiler <pkg>dev-lang/luajit</pkg> instead of
+      <pkg>dev-lang/lua</pkg>
+    </flag>
+  </use>
+</pkgmetadata>

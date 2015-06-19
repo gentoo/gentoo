@@ -1,0 +1,14 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/zip
+DESCRIPTION=A new Android development environment based on IntelliJ IDEA
+EAPI=5
+HOMEPAGE=http://developer.android.com/sdk/installing/studio.html
+IUSE=selinux
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=virtual/jdk-1.7 selinux? ( sec-policy/selinux-android ) >=app-arch/bzip2-1.0.6-r4[abi_x86_32(-)] >=dev-libs/expat-2.1.0-r3[abi_x86_32(-)] >=dev-libs/libffi-3.0.13-r1[abi_x86_32(-)] >=media-libs/fontconfig-2.10.92[abi_x86_32(-)] >=media-libs/freetype-2.5.5[abi_x86_32(-)] >=media-libs/libpng-1.2.51[abi_x86_32(-)] >=media-libs/mesa-10.2.8[abi_x86_32(-)] >=sys-libs/ncurses-5.9-r3[abi_x86_32(-)] >=sys-libs/zlib-1.2.8-r1[abi_x86_32(-)] >=x11-libs/libX11-1.6.2[abi_x86_32(-)] >=x11-libs/libXau-1.0.7-r1[abi_x86_32(-)] >=x11-libs/libXdamage-1.1.4-r1[abi_x86_32(-)] >=x11-libs/libXdmcp-1.1.1-r1[abi_x86_32(-)] >=x11-libs/libXext-1.3.2[abi_x86_32(-)] >=x11-libs/libXfixes-5.0.1[abi_x86_32(-)] >=x11-libs/libXrender-0.9.8[abi_x86_32(-)] >=x11-libs/libXxf86vm-1.1.3[abi_x86_32(-)] >=x11-libs/libdrm-2.4.46[abi_x86_32(-)] >=x11-libs/libxcb-1.9.1[abi_x86_32(-)] >=x11-libs/libxshmfence-1.1[abi_x86_32(-)]
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://dl.google.com/dl/android/studio/ide-zips/1.2.1.1/android-studio-ide-141.1903250-linux.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=78189b2b8ade8d555a82aa15df4391ad

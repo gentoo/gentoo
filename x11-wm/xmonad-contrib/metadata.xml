@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<maintainer>
+		<email>haskell@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		Third party tiling algorithms, configurations and scripts to xmonad,
+		a tiling window manager for X.
+		
+		For an introduction to building, configuring and using xmonad
+		extensions, see &quot;XMonad.Doc&quot;. In particular:
+		
+		&quot;XMonad.Doc.Configuring&quot;, a guide to configuring xmonad
+		
+		&quot;XMonad.Doc.Extending&quot;, using the contributed extensions library
+		
+		&quot;XMonad.Doc.Developing&quot;, introduction to xmonad internals and writing
+		your own extensions.
+		
+	</longdescription>
+</pkgmetadata>

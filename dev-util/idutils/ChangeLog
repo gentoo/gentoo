@@ -1,0 +1,27 @@
+# ChangeLog for dev-util/idutils
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/idutils/ChangeLog,v 1.5 2013/11/24 08:17:42 pacho Exp $
+
+  24 Nov 2013; Pacho Ramos <pacho@gentoo.org>
+  +files/idutils-4.6-glibc-2.16.patch, idutils-4.6.ebuild:
+  Fix build with glibc-2.16 (#426792)
+
+*idutils-4.6 (11 May 2012)
+
+  11 May 2012; Samuli Suominen <ssuominen@gentoo.org> +idutils-4.6.ebuild:
+  Version bump.
+
+*idutils-4.5 (21 Feb 2012)
+
+  21 Feb 2012; Robin H. Johnson <robbat2@gentoo.org> +idutils-4.5.ebuild:
+  Version bump.
+
+  03 Dec 2010; Ulrich Mueller <ulm@gentoo.org> idutils-4.2.ebuild:
+  Fix configure test for Emacs, bug 336731.
+
+*idutils-4.2 (26 Nov 2007)
+
+  26 Nov 2007; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +idutils-4.2.ebuild:
+  New package. Vaguely based on ebuild submission in bug #150339 by CPUShare
+  <cpushare@cpushare.com>.

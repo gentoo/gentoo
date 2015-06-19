@@ -1,0 +1,64 @@
+# ChangeLog for dev-python/python-gnupg
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-gnupg/ChangeLog,v 1.13 2015/06/07 15:41:35 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  05 Feb 2015; Ian Delaney <idella4@gentoo.org> python-gnupg-0.3.7.ebuild:
+  minor tidy to test phase
+
+*python-gnupg-0.3.7 (05 Feb 2015)
+
+  05 Feb 2015; Ian Delaney <idella4@gentoo.org>
+  +files/python-gnupg-0.3.7-msg-handle.patch, +python-gnupg-0.3.7.ebuild,
+  -files/python-gnupg-0.3.2-fast-random.patch, -python-gnupg-0.3.6.ebuild:
+  bump; update HOMEPAGE & SRC_URI, rm disused patch and 0.3.6. required by bug
+  #534534
+
+  25 Jun 2014; Ian Delaney <idella4@gentoo.org> python-gnupg-0.3.6.ebuild:
+  drop py2.6 pypy2_0 add py3.4 supp.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> python-gnupg-0.3.6.ebuild:
+  Add support for the new PyPy slotting.
+
+  25 Mar 2014; Ian Delaney <idella4@gentoo.org> -python-gnupg-0.3.1-r1.ebuild,
+  -python-gnupg-0.3.2.ebuild:
+  rm old versions wrt sec Bug #500244 by hanno
+
+*python-gnupg-0.3.6 (10 Feb 2014)
+
+  10 Feb 2014; Tim Harder <radhermit@gentoo.org> +python-gnupg-0.3.6.ebuild,
+  +files/python-gnupg-0.3.6-skip-search-keys-tests.patch:
+  Version bump.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> python-gnupg-0.3.1-r1.ebuild,
+  python-gnupg-0.3.2.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  27 Feb 2013; Pacho Ramos <pacho@gentoo.org> -python-gnupg-0.3.0.ebuild,
+  -python-gnupg-0.3.1.ebuild:
+  Drop old versions still needing pypy:1.8, thanks to Mr. Bones for reporting.
+
+*python-gnupg-0.3.2 (20 Jan 2013)
+
+  20 Jan 2013; Michał Górny <mgorny@gentoo.org>
+  +files/python-gnupg-0.3.2-fast-random.patch, +python-gnupg-0.3.2.ebuild:
+  Version bump. Fix running tests in parallel. Use fast random source to make
+  tests finish in a reasonable time.
+
+*python-gnupg-0.3.1-r1 (08 Jan 2013)
+
+  08 Jan 2013; Michał Górny <mgorny@gentoo.org> +python-gnupg-0.3.1-r1.ebuild:
+  Migrate to distutils-r1. Restrict tests because of bug #449638.
+
+*python-gnupg-0.3.1 (29 Sep 2012)
+
+  29 Sep 2012; Tim Harder <radhermit@gentoo.org> +python-gnupg-0.3.1.ebuild:
+  Version bump.
+
+*python-gnupg-0.3.0 (10 Jun 2012)
+
+  10 Jun 2012; Mike Gilbert <floppym@gentoo.org> +metadata.xml,
+  +python-gnupg-0.3.0.ebuild:
+  New package requested by hwoarang.

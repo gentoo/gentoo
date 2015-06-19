@@ -1,0 +1,33 @@
+# ChangeLog for net-print/lm1100
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-print/lm1100/ChangeLog,v 1.7 2014/03/05 07:47:20 kensington Exp $
+
+  05 Mar 2014; Michael Palimaka <kensington@gentoo.org> -lm1100-1.0.2a.ebuild:
+  Remove old.
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> lm1100-1.0.2a-r1.ebuild:
+  Stable for x86, wrt bug #502908
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> lm1100-1.0.2a-r1.ebuild:
+  amd64 stable, bug #502908
+
+*lm1100-1.0.2a-r1 (16 Aug 2013)
+
+  16 Aug 2013; Manuel Rüger <mrueg@gentoo.org> +lm1100-1.0.2a-r1.ebuild:
+  Various ebuild fixes
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #151880
+
+  18 Mar 2007; Christian Faulhammer <opfer@gentoo.org> lm1100-1.0.2a.ebuild:
+  stable x86, bug 171263
+
+*lm1100-1.0.2a (02 Dec 2006)
+
+  02 Dec 2006; Cedric Krier <cedk@gentoo.org>
+  +files/lm1100-1.0.2a-class.patch,
+  +files/lm1100-1.0.2a-fix-compile-gcc-3.4.patch,
+  +files/lm1100-1.0.2a-fix-compile-gcc-4.1.patch,
+  +files/lm1100maint-firmware.patch, +files/lm1100-1.0.2a-makefile.patch,
+  +metadata.xml, +lm1100-1.0.2a.ebuild:
+  New Ebuild for bug #73441

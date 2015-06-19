@@ -1,0 +1,167 @@
+# ChangeLog for kde-misc/magneto-kde
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/magneto-kde/ChangeLog,v 1.40 2013/12/18 05:13:49 lxnay Exp $
+
+  18 Dec 2013; Fabio Erculiani <lxnay@gentoo.org> -magneto-kde-216.ebuild:
+  drop older version 216
+
+*magneto-kde-254 (18 Dec 2013)
+
+  18 Dec 2013; Fabio Erculiani <lxnay@gentoo.org> +magneto-kde-254.ebuild:
+  version bump
+
+  22 Aug 2013; Fabio Erculiani <lxnay@gentoo.org> -magneto-kde-189.ebuild:
+  drop older version 189
+
+  22 Aug 2013; Fabio Erculiani <lxnay@gentoo.org> -magneto-kde-183.ebuild:
+  drop older version 183
+
+  22 Aug 2013; Fabio Erculiani <lxnay@gentoo.org> -magneto-kde-144.ebuild:
+  drop older version 144
+
+  22 Aug 2013; Fabio Erculiani <lxnay@gentoo.org> -magneto-kde-136.ebuild:
+  drop older version 136
+
+*magneto-kde-216 (22 Aug 2013)
+
+  22 Aug 2013; Fabio Erculiani <lxnay@gentoo.org> +magneto-kde-216.ebuild:
+  version bump
+
+*magneto-kde-189 (02 Apr 2013)
+
+  02 Apr 2013; Fabio Erculiani <lxnay@gentoo.org> +magneto-kde-189.ebuild:
+  version bump
+
+*magneto-kde-183 (14 Mar 2013)
+
+  14 Mar 2013; Fabio Erculiani <lxnay@gentoo.org> +magneto-kde-183.ebuild:
+  version bump
+
+*magneto-kde-144 (27 Sep 2012)
+
+  27 Sep 2012; Fabio Erculiani <lxnay@gentoo.org> +magneto-kde-144.ebuild:
+  version bump
+
+  24 Aug 2012; Fabio Erculiani <lxnay@gentoo.org> -magneto-kde-1.0_rc90.ebuild:
+  drop older version 1.0_rc90
+
+  24 Aug 2012; Fabio Erculiani <lxnay@gentoo.org> -magneto-kde-1.0_rc87.ebuild:
+  drop older version 1.0_rc87
+
+  24 Aug 2012; Fabio Erculiani <lxnay@gentoo.org> -magneto-kde-1.0_rc80.ebuild:
+  drop older version 1.0_rc80
+
+  24 Aug 2012; Fabio Erculiani <lxnay@gentoo.org> -magneto-kde-1.0_rc77.ebuild:
+  drop older version 1.0_rc77
+
+  24 Aug 2012; Fabio Erculiani <lxnay@gentoo.org> -magneto-kde-1.0_rc76.ebuild:
+  drop older version 1.0_rc76
+
+  24 Aug 2012; Fabio Erculiani <lxnay@gentoo.org> -magneto-kde-1.0_rc59.ebuild:
+  drop older version 1.0_rc59
+
+  24 Aug 2012; Fabio Erculiani <lxnay@gentoo.org> -magneto-kde-1.0_rc53.ebuild:
+  drop older version 1.0_rc53
+
+  24 Aug 2012; Fabio Erculiani <lxnay@gentoo.org> -magneto-kde-1.0_rc43.ebuild:
+  drop older version 1.0_rc43
+
+  24 Aug 2012; Fabio Erculiani <lxnay@gentoo.org> -magneto-kde-1.0_rc38.ebuild:
+  drop older version 1.0_rc38
+
+  24 Aug 2012; Fabio Erculiani <lxnay@gentoo.org>
+  -magneto-kde-1.0_rc124.ebuild:
+  drop older version 1.0_rc124
+
+*magneto-kde-136 (24 Aug 2012)
+
+  24 Aug 2012; Fabio Erculiani <lxnay@gentoo.org> +magneto-kde-136.ebuild:
+  version bump
+
+*magneto-kde-1.0_rc124 (11 Jul 2012)
+
+  11 Jul 2012; Fabio Erculiani <lxnay@gentoo.org>
+  +magneto-kde-1.0_rc124.ebuild:
+  version bump
+
+*magneto-kde-1.0_rc90 (23 Mar 2012)
+
+  23 Mar 2012; Fabio Erculiani <lxnay@gentoo.org> +magneto-kde-1.0_rc90.ebuild:
+  version bump
+
+*magneto-kde-1.0_rc87 (12 Feb 2012)
+
+  12 Feb 2012; Fabio Erculiani <lxnay@gentoo.org> +magneto-kde-1.0_rc87.ebuild:
+  version bump
+
+*magneto-kde-1.0_rc80 (22 Dec 2011)
+
+  22 Dec 2011; Fabio Erculiani <lxnay@gentoo.org> +magneto-kde-1.0_rc80.ebuild:
+  version bump
+
+*magneto-kde-1.0_rc77 (23 Nov 2011)
+
+  23 Nov 2011; Fabio Erculiani <lxnay@gentoo.org> +magneto-kde-1.0_rc77.ebuild:
+  version bump
+
+*magneto-kde-1.0_rc76 (13 Nov 2011)
+
+  13 Nov 2011; Fabio Erculiani <lxnay@gentoo.org> +magneto-kde-1.0_rc76.ebuild:
+  version bump
+
+*magneto-kde-1.0_rc59 (09 Oct 2011)
+
+  09 Oct 2011; Fabio Erculiani <lxnay@gentoo.org> +magneto-kde-1.0_rc59.ebuild:
+  version bump
+
+*magneto-kde-1.0_rc53 (18 Sep 2011)
+
+  18 Sep 2011; Fabio Erculiani <lxnay@gentoo.org> +magneto-kde-1.0_rc53.ebuild:
+  version bump
+
+*magneto-kde-1.0_rc43 (23 Aug 2011)
+
+  23 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> +magneto-kde-1.0_rc43.ebuild:
+  version bump
+
+  12 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> -magneto-kde-1.0_rc37.ebuild:
+  drop older version 1.0_rc37
+
+  12 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> -magneto-kde-1.0_rc34.ebuild:
+  drop older version 1.0_rc34
+
+  12 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> -magneto-kde-1.0_rc29.ebuild:
+  drop older version 1.0_rc29
+
+  12 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> -magneto-kde-1.0_rc27.ebuild:
+  drop older version 1.0_rc27
+
+*magneto-kde-1.0_rc38 (12 Aug 2011)
+
+  12 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> +magneto-kde-1.0_rc38.ebuild:
+  version bump
+
+*magneto-kde-1.0_rc37 (11 Aug 2011)
+
+  11 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> +magneto-kde-1.0_rc37.ebuild:
+  version bump
+
+*magneto-kde-1.0_rc34 (07 Aug 2011)
+
+  07 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> +magneto-kde-1.0_rc34.ebuild:
+  version bump
+
+*magneto-kde-1.0_rc29 (02 Aug 2011)
+
+  02 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> +magneto-kde-1.0_rc29.ebuild:
+  version bump
+
+  19 Jul 2011; Fabio Erculiani <lxnay@gentoo.org> magneto-kde-1.0_rc27.ebuild:
+  update DESCRIPTION
+
+*magneto-kde-1.0_rc27 (19 Jul 2011)
+
+  19 Jul 2011; Fabio Erculiani <lxnay@gentoo.org> +magneto-kde-1.0_rc27.ebuild,
+  +metadata.xml:
+  new ebuild
+

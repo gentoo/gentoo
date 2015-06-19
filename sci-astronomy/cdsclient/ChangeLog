@@ -1,0 +1,100 @@
+# ChangeLog for sci-astronomy/cdsclient
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/cdsclient/ChangeLog,v 1.15 2013/07/08 17:22:15 bicatali Exp $
+
+*cdsclient-3.7.2 (08 Jul 2013)
+
+  08 Jul 2013; Sébastien Fabbro <bicatali@gentoo.org> +cdsclient-3.7.2.ebuild,
+  +files/cdsclient-makefile.patch, -cdsclient-3.7.1.ebuild,
+  -files/cdsclient-gentoo.diff, metadata.xml:
+  Version bump and changed licensed to all-right-reserved (bug #470776)
+
+  04 Mar 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  files/cdsclient-gentoo.diff:
+  Respect CFLAGS for exec wwwget
+
+  04 Jul 2012; Sébastien Fabbro <bicatali@gentoo.org> cdsclient-3.7.1.ebuild:
+  respect prefix bindir
+
+*cdsclient-3.7.1 (15 Jun 2012)
+
+  15 Jun 2012; Sébastien Fabbro <bicatali@gentoo.org> -cdsclient-3.6b.ebuild,
+  -cdsclient-3.7-r1.ebuild, +cdsclient-3.7.1.ebuild:
+  Version bump. A Moved execs to /usr/bin/cdsclient. Update ROOTPATH as well.
+
+*cdsclient-3.7-r1 (08 May 2012)
+
+  08 May 2012; Kacper Kowalik <xarthisius@gentoo.org> +cdsclient-3.7-r1.ebuild,
+  -cdsclient-3.7.ebuild:
+  Keep scripts in /usr/share rather than /usr/bin
+
+*cdsclient-3.7 (06 May 2012)
+
+  06 May 2012; Kacper Kowalik <xarthisius@gentoo.org> +cdsclient-3.7.ebuild:
+  Version bump
+
+*cdsclient-3.6b (23 Sep 2011)
+
+  23 Sep 2011; Kacper Kowalik <xarthisius@gentoo.org> -cdsclient-3.6.ebuild,
+  -cdsclient-3.6a.ebuild, +cdsclient-3.6b.ebuild, +files/cdsclient-gentoo.diff,
+  -files/cdsclient-makefile.in.patch:
+  Version bump, EAPI4, fix install phase via patch instead of using helpers.
+  Drop old
+
+  04 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  Switched herd to sci-astronomy
+
+*cdsclient-3.6a (25 Jul 2011)
+
+  25 Jul 2011; Sébastien Fabbro <bicatali@gentoo.org> -cdsclient-3.5.ebuild,
+  +cdsclient-3.6a.ebuild:
+  Version bump
+
+*cdsclient-3.6 (01 Oct 2010)
+
+  01 Oct 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  -cdsclient-3.3.ebuild, -cdsclient-3.4.ebuild, +cdsclient-3.6.ebuild:
+  Bump
+
+*cdsclient-3.5 (13 Jul 2010)
+
+  13 Jul 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +cdsclient-3.5.ebuild:
+  Bump
+
+*cdsclient-3.4 (04 Nov 2009)
+
+  04 Nov 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  -cdsclient-3.2.ebuild, +cdsclient-3.4.ebuild:
+  Version bump
+
+*cdsclient-3.3 (17 Aug 2009)
+
+  17 Aug 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  +cdsclient-3.3.ebuild:
+  Version bump
+
+  17 Feb 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/cdsclient-makefile.in.patch, cdsclient-3.2.ebuild:
+  Now propagate LDFLAGS, and merge fixes in patch
+
+*cdsclient-3.2 (17 Feb 2009)
+
+  17 Feb 2009; Sébastien Fabbro <bicatali@gentoo.org> +metadata.xml,
+  +cdsclient-3.2.ebuild:
+  Initial import to the main tree from the sci overlay
+
+  28 Mar 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +cdsclient-2.90.ebuild:
+  Bump
+
+  07 Nov 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  -cdsclient-2.87.ebuild, +cdsclient-2.89.ebuild:
+  Version bump
+
+  26 Mar 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  +cdsclient-2.87.ebuild:
+  Version bump.
+
+  19 Sep 2006; Sebastien Fabbro <seb@ist.utl.pt> cdsclient-2.85.ebuild
+  Initial import.

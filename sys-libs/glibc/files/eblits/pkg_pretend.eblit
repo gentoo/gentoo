@@ -1,0 +1,157 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/files/eblits/pkg_pretend.eblit,v 1.2 2015/05/27 14:02:58 vapier Exp $
+
+glibc_compile_test() {
+	local ret save_cflags=${CFLAGS}
+	CFLAGS+=" $1"
+	shift
+
+	pushd "${T}" >/dev/null
+
+	rm -f glibc-test*
+	printf '%b' "$*" > glibc-test.c
+
+	_nonfatal emake -s glibc-test
+	ret=$?
+
+	popd >/dev/null
+
+	CFLAGS=${save_cflags}
+	return ${ret}
+}
+
+glibc_run_test() {
+	local ret
+
+	if [[ ${EMERGE_FROM} == "binary" ]] ; then
+		# ignore build failures when installing a binary package #324685
+		glibc_compile_test "" "$@" 2>/dev/null || return 0
+	else
+		if ! glibc_compile_test "" "$@" ; then
+			ewarn "Simple build failed ... assuming this is desired #324685"
+			return 0
+		fi
+	fi
+
+	pushd "${T}" >/dev/null
+
+	./glibc-test
+	ret=$?
+	rm -f glibc-test*
+
+	popd >/dev/null
+
+	return ${ret}
+}
+
+check_devpts() {
+	# Make sure devpts is mounted correctly for use w/out setuid pt_chown.
+
+	# If merely building the binary package, then there's nothing to verify.
+	[[ ${MERGE_TYPE} == "buildonly" ]] && return
+
+	# Only sanity check when installing the native glibc.
+	[[ ${ROOT} != "/" ]] && return
+
+	# Older versions always installed setuid, so no need to check.
+	in_iuse suid || return
+
+	# If they're opting in to the old suid code, then no need to check.
+	use suid && return
+
+	if awk '$3 == "devpts" && $4 ~ /[, ]gid=5[, ]/ { exit 1 }' /proc/mounts ; then
+		eerror "In order to use glibc with USE=-suid, you must make sure that"
+		eerror "you have devpts mounted at /dev/pts with the gid=5 option."
+		eerror "Openrc should do this for you, so you should check /etc/fstab"
+		eerror "and make sure you do not have any invalid settings there."
+		# Do not die on older kernels as devpts did not export these settings #489520.
+		if version_is_at_least 2.6.25 $(uname -r) ; then
+			die "mount & fix your /dev/pts settings"
+		fi
+	fi
+}
+
+eblit-glibc-pkg_pretend() {
+	# For older EAPIs, this is run in pkg_preinst.
+	if [[ ${EAPI:-0} != [0123] ]] ; then
+		check_devpts
+	fi
+
+	# prevent native builds from downgrading ... maybe update to allow people
+	# to change between diff -r versions ? (2.3.6-r4 -> 2.3.6-r2)
+	if [[ ${MERGE_TYPE} != "buildonly" ]] && \
+	   [[ ${ROOT} == "/" ]] && \
+	   [[ ${CBUILD} == ${CHOST} ]] && \
+	   [[ ${CHOST} == ${CTARGET} ]] ; then
+		if has_version '>'${CATEGORY}/${PF} ; then
+			eerror "Sanity check to keep you from breaking your system:"
+			eerror " Downgrading glibc is not supported and a sure way to destruction"
+			die "aborting to save your system"
+		fi
+
+		if ! glibc_run_test '#include <pwd.h>\nint main(){return getpwuid(0)==0;}\n'
+		then
+			eerror "Your patched vendor kernel is broken.  You need to get an"
+			eerror "update from whoever is providing the kernel to you."
+			eerror "http://sourceware.org/bugzilla/show_bug.cgi?id=5227"
+			eerror "http://bugs.gentoo.org/262698"
+			die "keeping your system alive, say thank you"
+		fi
+
+		if ! glibc_run_test '#include <unistd.h>\n#include <sys/syscall.h>\nint main(){return syscall(1000)!=-1;}\n'
+		then
+			eerror "Your old kernel is broken.  You need to update it to"
+			eerror "a newer version as syscall(<bignum>) will break."
+			eerror "http://bugs.gentoo.org/279260"
+			die "keeping your system alive, say thank you"
+		fi
+	fi
+
+	# users have had a chance to phase themselves, time to give em the boot
+	if [[ -e ${EROOT}/etc/locale.gen ]] && [[ -e ${EROOT}/etc/locales.build ]] ; then
+		eerror "You still haven't deleted ${EROOT}/etc/locales.build."
+		eerror "Do so now after making sure ${EROOT}/etc/locale.gen is kosher."
+		die "lazy upgrader detected"
+	fi
+
+	if [[ ${CTARGET} == i386-* ]] ; then
+		eerror "i386 CHOSTs are no longer supported."
+		eerror "Chances are you don't actually want/need i386."
+		eerror "Please read http://www.gentoo.org/doc/en/change-chost.xml"
+		die "please fix your CHOST"
+	fi
+
+	if [[ -e /proc/xen ]] && [[ $(tc-arch) == "x86" ]] && ! is-flag -mno-tls-direct-seg-refs ; then
+		ewarn "You are using Xen but don't have -mno-tls-direct-seg-refs in your CFLAGS."
+		ewarn "This will result in a 50% performance penalty when running with a 32bit"
+		ewarn "hypervisor, which is probably not what you want."
+	fi
+
+	use hardened && ! gcc-specs-pie && \
+		ewarn "PIE hardening not applied, as your compiler doesn't default to PIE"
+
+	# Make sure host system is up to date #394453
+	if has_version '<sys-libs/glibc-2.13' && \
+	   [[ -n $(scanelf -qys__guard -F'#s%F' "${EROOT}"/lib*/l*-*.so) ]]
+	then
+		ebegin "Scanning system for __guard to see if you need to rebuild first ..."
+		local files=$(
+			scanelf -qys__guard -F'#s%F' \
+				"${EROOT}"/*bin/ \
+				"${EROOT}"/lib* \
+				"${EROOT}"/usr/*bin/ \
+				"${EROOT}"/usr/lib* | \
+				egrep -v \
+					-e "^${EROOT}/lib.*/(libc|ld)-2.*.so$" \
+					-e "^${EROOT}/sbin/(ldconfig|sln)$"
+		)
+		[[ -z ${files} ]]
+		if ! eend $? ; then
+			eerror "Your system still has old SSP __guard symbols.  You need to"
+			eerror "rebuild all the packages that provide these files first:"
+			eerror "${files}"
+			die "old __guard detected"
+		fi
+	fi
+}

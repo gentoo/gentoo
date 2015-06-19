@@ -1,0 +1,11 @@
+# ChangeLog for media-libs/libmpris2client
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libmpris2client/ChangeLog,v 1.1 2014/08/20 11:43:38 ssuominen Exp $
+
+*libmpris2client-0.1.0 (20 Aug 2014)
+
+  20 Aug 2014; Samuli Suominen <ssuominen@gentoo.org>
+  +libmpris2client-0.1.0.ebuild:
+  Initial commit (required reverse dependency for
+  xfce-extra/xfce4-soundmenu-plugin >= 0.7.0)
+

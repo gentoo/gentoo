@@ -1,0 +1,228 @@
+# ChangeLog for media-gfx/k3d
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/k3d/ChangeLog,v 1.58 2013/08/31 14:07:29 pacho Exp $
+
+  31 Aug 2013; Pacho Ramos <pacho@gentoo.org> +files/k3d-0.7.11.0-gcc47.patch,
+  k3d-0.7.11.0-r1.ebuild:
+  Build with gcc47 (#421951 by Peter Asplund)
+
+  18 Aug 2013; Patrick Lauer <patrick@gentoo.org> k3d-0.7.11.0-r1.ebuild:
+  Whitespace
+
+  08 Jun 2012; Zac Medico <zmedico@gentoo.org> k3d-0.7.11.0-r1.ebuild:
+  inherit flag-o-matic for append-cxxflags
+
+  01 Jun 2012; Ian Stakenvicius <axs@gentoo.org> k3d-0.7.11.0-r1.ebuild,
+  +files/k3d-0.7.11.0-gtk-liststore-vs-treemodel.patch:
+  fixed compilation issue described in bug 384011, and added a missing config
+  switch related to python
+
+  01 Jun 2012; Ian Stakenvicius <axs@gentoo.org> k3d-0.7.11.0-r1.ebuild:
+  k3d needs boost to have USE=python, fixes bug 403029
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> k3d-0.7.11.0-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  29 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org>
+  k3d-0.7.11.0-r1.ebuild:
+  Fix slot-dep on gnome-mm libs
+
+  08 Nov 2010; Markus Meier <maekke@gentoo.org> k3d-0.7.11.0-r1.ebuild:
+  change jpeg dep to virtual/jpeg
+
+  12 May 2010; Samuli Suominen <ssuominen@gentoo.org>
+  k3d-0.7.11.0-r1.ebuild, +files/k3d-0.7.11.0-libpng14.patch:
+  Fix building with libpng14 wrt #319339 by Vladimir <v_2e AT ukr.net>.
+
+  01 Jan 2010; Raúl Porcel <armin76@gentoo.org> k3d-0.6.7.0-r1.ebuild:
+  Drop sparc keywords
+
+  07 Nov 2009; Mounir Lamouri <volkmar@gentoo.org> k3d-0.7.11.0-r1.ebuild:
+  Re-Keywording for ppc, bug 267264
+
+  06 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  k3d-0.7.11.0-r1.ebuild, +files/k3d-0.7.11.0-gcc44.patch:
+  Fix building with GCC 4.4 and BOOST by applying a Fedora patch wrt
+  #276660, thanks to Diego E. Pettenò for reporting.
+
+*k3d-0.7.11.0-r1 (23 Apr 2009)
+
+  23 Apr 2009; Markus Meier <maekke@gentoo.org>
+  +files/k3d-0.7.11.0-cuda.patch, +k3d-0.7.11.0-r1.ebuild:
+  revision bump to fix building with cuda USE-flag, bug #263811
+
+  24 Mar 2009; Gordon Malm <gengor@gentoo.org> k3d-0.7.11.0.ebuild:
+  Add dropped C++ stack-protector filtering.
+
+*k3d-0.7.11.0 (23 Mar 2009)
+
+  23 Mar 2009; Markus Meier <maekke@gentoo.org>
+  +files/k3d-0.7.11.0-fix-potfiles.patch, metadata.xml,
+  +k3d-0.7.11.0.ebuild:
+  version bump by Ryoichiro Suzuki in bug #263245
+
+  15 Mar 2009; Markus Meier <maekke@gentoo.org> k3d-0.6.7.0-r1.ebuild:
+  drop librsvg dep, only needed if you call "make icons" wrt bug #258065
+
+  27 Jan 2009; Gordon Malm <gengor@gentoo.org> k3d-0.6.7.0-r1.ebuild:
+  Disable stack-protector on C++ for <gcc-4, bug #230119.
+
+  05 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org> -k3d-0.6.7.0.ebuild:
+  remove old, dep-broken ebuild
+
+  22 Aug 2008; Markus Meier <maekke@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*k3d-0.6.7.0-r1 (13 May 2008)
+
+  13 May 2008; Samuli Suominen <drac@gentoo.org>
+  +files/k3d-0.6.7.0-gcc43.patch, +files/k3d-0.6.7.0-sigc2.patch,
+  +k3d-0.6.7.0-r1.ebuild:
+  Fix compability with libsigc++-2.2 wrt #218763 and building with GCC 4.3
+  wrt #218760, thanks to Peter Alfredsen.
+
+  15 Jan 2008; Markus Meier <maekke@gentoo.org>
+  -files/k3d-0.5.0.34-nls.patch, -files/k3d-0.5.0.37-nls.patch,
+  -k3d-0.5.0.37-r1.ebuild, -k3d-0.6.2.0.ebuild, k3d-0.6.7.0.ebuild:
+  add missing pkgconfig dep (bug #205839) and remove old
+
+*k3d-0.6.7.0 (31 Aug 2007)
+
+  31 Aug 2007; Luca Barbato <lu_zero@gentoo.org> +k3d-0.6.7.0.ebuild:
+  New version
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  k3d-0.5.0.37-r1.ebuild, k3d-0.6.2.0.ebuild:
+  Drop virtual/x11 references.
+
+  09 Apr 2007; Petteri Räty <betelgeuse@gentoo.org> -k3d-0.4.5.0.ebuild:
+  Removed old ebuild with broken autotools handling for bug #160014.
+
+  04 Jan 2007; Steve Dibb <beandog@gentoo.org> k3d-0.4.5.0.ebuild,
+  k3d-0.5.0.37-r1.ebuild, k3d-0.6.2.0.ebuild:
+  Fix graphviz deps, bug 142726
+
+  18 Oct 2006; Luca Barbato <lu_zero@gentoo.org> k3d-0.6.2.0.ebuild:
+  fix useflag
+
+*k3d-0.6.2.0 (16 Oct 2006)
+
+  16 Oct 2006; Luca Barbato <lu_zero@gentoo.org> +k3d-0.6.2.0.ebuild:
+  New version, thanks to Mohamed M. Hagag <mohamedhagag1981@gmail.com> for
+  keeping the ebuild updated
+
+  05 Jul 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  k3d-0.5.0.37-r1.ebuild:
+  xml2 use flag changed to xml
+
+  18 Feb 2006; Marcelo Goes <vanquirius@gentoo.org> k3d-0.5.0.37-r1.ebuild:
+  Make librsvg a hard dependency for bug 123269. Thanks to Mike Bonar <mwbonar
+  at mts dot net>.
+
+*k3d-0.5.0.37-r1 (09 Feb 2006)
+*k3d-0.4.5.0 (09 Feb 2006)
+
+  09 Feb 2006; Marcelo Goes <vanquirius@gentoo.org> +k3d-0.4.5.0.ebuild,
+  -k3d-0.5.0.33.ebuild, -k3d-0.5.0.34.ebuild, -k3d-0.5.0.37.ebuild,
+  +k3d-0.5.0.37-r1.ebuild:
+  Add 0.4.5.0, which is the latest stable version. In 0.5.0.37-r1, drop qt and
+  javascript as recommended by upstream. Also, add a keepdir to
+  /usr/share/k3d/shaders/layered for bug 121678, reported by Daniel Fort <dan
+  at digiola dot com>.
+
+*k3d-0.5.0.37 (02 Feb 2006)
+
+  02 Feb 2006; Marcelo Goes <vanquirius@gentoo.org>
+  +files/k3d-0.5.0.37-nls.patch, +k3d-0.5.0.37.ebuild:
+  0.5.0.37 version bump.
+
+  02 Feb 2006; Marcelo Goes <vanquirius@gentoo.org> k3d-0.5.0.34.ebuild:
+  Make modular X friendly.
+
+  30 Jan 2006; Marcelo Goes <vanquirius@gentoo.org> k3d-0.5.0.34.ebuild:
+  Depend on >=x11-libs/gtkglext-1.0.6-r3, since earlier versions do not link
+  correctly against pangox.
+
+  30 Jan 2006; Marcelo Goes <vanquirius@gentoo.org>
+  +files/k3d-0.5.0.34-nls.patch, k3d-0.5.0.34.ebuild:
+  Add Flameeyes's patch to fix nls compilation for bug 112144.
+
+  30 Jan 2006; Marcelo Goes <vanquirius@gentoo.org> -files/va_copy.patch,
+  -k3d-0.2.5.4.ebuild, -k3d-0.4.4.0.ebuild, -k3d-0.4.4.2.ebuild,
+  k3d-0.5.0.34.ebuild:
+  Add missing flags to IUSE, depend conditionally on gnome-base/librsvg. Fixes
+  bug 115725. Thanks to Jeroen Roovers <jer at gentoo dot org>. Remove old
+  ebuilds.
+
+  15 Jan 2006; Marcelo Goes <vanquirius@gentoo.org> k3d-0.2.5.4.ebuild:
+  Take my devspace out of SRC_URI.
+
+*k3d-0.5.0.34 (10 Dec 2005)
+
+  10 Dec 2005; Marcelo Goes <vanquirius@gentoo.org> +k3d-0.5.0.34.ebuild:
+  0.5.0.34 version bump for bug 114152. Thanks to Moritz Kaufmann <physaro at
+  gmail dot com>.
+
+  03 Nov 2005; Luca Barbato <lu_zero@gentoo.org> k3d-0.5.0.33.ebuild:
+  Made ngui the default, fixed the js subsystem, thanks to Patrizio Bassi
+  <hetfield666@gmail.com>
+
+  02 Nov 2005; Luca Barbato <lu_zero@gentoo.org> k3d-0.5.0.33.ebuild:
+  minor change to support the former gui
+
+*k3d-0.5.0.33 (01 Nov 2005)
+
+  01 Nov 2005; Mike Frysinger <vapier@gentoo.org> +k3d-0.5.0.33.ebuild:
+  Version bumpage.
+
+  17 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> k3d-0.2.5.4.ebuild:
+  Add my devspace as fall back for patch.
+
+  17 Sep 2005; Marcelo Goes <vanquirius@gentoo.org>
+  -files/k3d-0.2.5.4-gentoo.patch.tar.bz2, k3d-0.2.5.4.ebuild:
+  Move patch to mirrors, do not dodoc INSTALL. See bug 106150.
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  02 Apr 2005; Luca Barbato <lu_zero@gentoo.org> k3d-0.4.4.2.ebuild:
+  Ruby support removed
+
+  25 Mar 2005; Luca Barbato <lu_zero@gentoo.org> k3d-0.4.4.2.ebuild:
+  Fix myconf
+
+*k3d-0.4.4.2 (15 Mar 2005)
+
+  15 Mar 2005; Luca Barbato <lu_zero@gentoo.org> +k3d-0.4.4.2.ebuild:
+  New version, thanks Timothy M. Shead <tshead@k-3d.com> for the notice
+
+  22 Jan 2005; Jason Wever <weeve@gentoo.org> k3d-0.4.4.0.ebuild:
+  Added ~sparc keyword as it was dropped in the version bump and no one ever
+  contacted us about it.
+
+  14 Jan 2005; Luca Barbato <lu_zero@gentoo.org> k3d-0.4.4.0.ebuild:
+  Missing dep added, fix bug #77955
+
+*k3d-0.4.4.0 (13 Jan 2005)
+
+  13 Jan 2005; Luca Barbato <lu_zero@gentoo.org> +files/va_copy.patch,
+  +k3d-0.4.4.0.ebuild:
+  New version, marked just ~x86 since has known issue at least on ppc.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> k3d-0.2.5.4.ebuild:
+  Add inherit eutils
+
+  12 Apr 2004; Jason Wever <weeve@gentoo.org> k3d-0.2.5.4.ebuild:
+  Added ~sparc to keywords.
+
+  12 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> k3d-0.2.5.4.ebuild:
+  virtual/ruby fix
+
+  10 Mar 2004; Bryan Østergaard,,, <kloeri@gentoo.org> k3d-0.2.5.4.ebuild:
+  Fix python compilation, bug #42822.
+
+*k3d-0.2.5.4 (10 Nov 2003)
+
+  10 Nov 2003; Brandy Westcott brandy@gentoo.org k3d-0.2.5.4.ebuild:
+  Initial import. Thanks to Marc-Éric Dupuis <baal@megaoctet.net> and Carlo
+  <current@myrealbox.com> for submitting ebuilds. Closes bug #27101.

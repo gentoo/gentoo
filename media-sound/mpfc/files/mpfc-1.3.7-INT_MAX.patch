@@ -1,0 +1,20 @@
+--- plugins/input/audiocd/audiocd.c
++++ plugins/input/audiocd/audiocd.c
+@@ -21,6 +21,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <limits.h> /* cdrom.h and INT_MAX */
+ #include <linux/cdrom.h>
+ #include <errno.h>
+ #include <string.h>
+--- plugins/input/audiocd/audiocd.h
++++ plugins/input/audiocd/audiocd.h
+@@ -23,6 +23,7 @@
+ #ifndef __SG_MPFC_AUDIOCD_H__
+ #define __SG_MPFC_AUDIOCD_H__
+ 
++#include <limits.h> /* cdrom.h and INT_MAX */
+ #include <linux/cdrom.h>
+ #include "types.h"
+ #include "logger.h"

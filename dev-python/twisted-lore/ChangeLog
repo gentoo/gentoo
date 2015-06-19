@@ -1,0 +1,380 @@
+# ChangeLog for dev-python/twisted-lore
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/twisted-lore/ChangeLog,v 1.96 2015/06/02 05:14:25 jmorgan Exp $
+
+  02 Jun 2015; Jack Morgan <jmorgan@gentoo.org> twisted-lore-13.2.0.ebuild:
+  sparc stable wrt bug #540290
+
+*twisted-lore-15.2.1 (26 May 2015)
+
+  26 May 2015; Patrick Lauer <patrick@gentoo.org> +twisted-lore-15.2.1.ebuild:
+  Bump
+
+*twisted-lore-15.1.0 (13 May 2015)
+
+  13 May 2015; Patrick Lauer <patrick@gentoo.org> +twisted-lore-15.1.0.ebuild:
+  Bump
+
+  14 Apr 2015; Agostino Sarubbo <ago@gentoo.org> twisted-lore-13.2.0.ebuild:
+  Stable for ia64, wrt bug #540290
+
+  13 Apr 2015; Agostino Sarubbo <ago@gentoo.org> twisted-lore-13.2.0.ebuild:
+  Stable for alpha, wrt bug #540290
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> twisted-lore-13.0.0-r1.ebuild,
+  twisted-lore-13.2.0.ebuild, twisted-lore-14.0.0.ebuild:
+  Drop old Python implementations
+
+  09 Mar 2015; Pacho Ramos <pacho@gentoo.org> twisted-lore-13.2.0.ebuild:
+  x86 stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> twisted-lore-13.2.0.ebuild:
+  ppc stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> twisted-lore-13.2.0.ebuild:
+  ppc64 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> twisted-lore-13.2.0.ebuild:
+  amd64 stable, bug 540290
+
+  21 Nov 2014; Mike Gilbert <floppym@gentoo.org> -twisted-lore-12.3.0.ebuild,
+  -twisted-lore-13.0.0.ebuild:
+  Remove ebuilds using twisted.eclass.
+
+*twisted-lore-14.0.2 (18 Nov 2014)
+
+  18 Nov 2014; Patrick Lauer <patrick@gentoo.org> +twisted-lore-14.0.2.ebuild:
+  Bump
+
+*twisted-lore-14.0.1 (12 Nov 2014)
+
+  12 Nov 2014; Ian Delaney <idella4@gentoo.org> +twisted-lore-14.0.1.ebuild:
+  bump, drop py2.6
+
+  15 Sep 2014; Agostino Sarubbo <ago@gentoo.org> twisted-lore-13.0.0-r1.ebuild:
+  Stable for sparc, wrt bug #512012
+
+  25 Aug 2014; Agostino Sarubbo <ago@gentoo.org> twisted-lore-13.0.0-r1.ebuild:
+  Stable for alpha, wrt bug #512012
+
+  23 Aug 2014; Agostino Sarubbo <ago@gentoo.org> twisted-lore-13.0.0-r1.ebuild:
+  Stable for ia64, wrt bug #512012
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org> twisted-lore-13.0.0-r1.ebuild:
+  Stable for ppc64, wrt bug #512012
+
+  28 Jul 2014; Agostino Sarubbo <ago@gentoo.org> twisted-lore-13.0.0-r1.ebuild:
+  Stable for ppc, wrt bug #512012
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> twisted-lore-13.0.0-r1.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> twisted-lore-13.0.0-r1.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  28 May 2014; Ian Delaney <idella4@gentoo.org> twisted-lore-14.0.0.ebuild:
+  re-keyword ~arm, tested on armv7, cubieboard2
+
+*twisted-lore-14.0.0 (20 May 2014)
+
+  20 May 2014; Patrick Lauer <patrick@gentoo.org> +twisted-lore-14.0.0.ebuild:
+  Bump
+
+  21 Jan 2014; Patrick Lauer <patrick@gentoo.org> -twisted-lore-10.2.0.ebuild,
+  -twisted-lore-11.0.0.ebuild, -twisted-lore-11.1.0.ebuild,
+  -twisted-lore-12.0.0.ebuild, -twisted-lore-12.2.0.ebuild:
+  Remove old
+
+*twisted-lore-13.2.0 (20 Jan 2014)
+
+  20 Jan 2014; Ian Delaney <idella4@gentoo.org> +twisted-lore-13.2.0.ebuild:
+  bump
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> twisted-lore-12.3.0.ebuild:
+  Stable for arm, wrt bug #468150
+
+  06 Sep 2013; Agostino Sarubbo <ago@gentoo.org> twisted-lore-12.3.0.ebuild:
+  Stable for sparc, wrt bug #468150
+
+  05 Sep 2013; Agostino Sarubbo <ago@gentoo.org> twisted-lore-12.3.0.ebuild:
+  Stable for ppc64, wrt bug #468150
+
+  04 Sep 2013; Agostino Sarubbo <ago@gentoo.org> twisted-lore-12.3.0.ebuild:
+  Stable for ppc, wrt bug #468150
+
+  03 Sep 2013; Agostino Sarubbo <ago@gentoo.org> twisted-lore-12.3.0.ebuild:
+  Stable for ia64, wrt bug #468150
+
+  01 Sep 2013; Agostino Sarubbo <ago@gentoo.org> twisted-lore-12.3.0.ebuild:
+  Stable for alpha, wrt bug #468150
+
+  01 Sep 2013; Agostino Sarubbo <ago@gentoo.org> twisted-lore-12.3.0.ebuild:
+  Stable for x86, wrt bug #468150
+
+  01 Sep 2013; Agostino Sarubbo <ago@gentoo.org> twisted-lore-12.3.0.ebuild:
+  Stable for amd64, wrt bug #468150
+
+*twisted-lore-13.0.0-r1 (09 Aug 2013)
+
+  09 Aug 2013; Michał Górny <mgorny@gentoo.org> +twisted-lore-13.0.0-r1.ebuild:
+  Migrate to twisted-r1.
+
+  03 Aug 2013; Michał Górny <mgorny@gentoo.org> twisted-lore-10.2.0.ebuild,
+  twisted-lore-11.0.0.ebuild, twisted-lore-11.1.0.ebuild,
+  twisted-lore-12.0.0.ebuild, twisted-lore-12.2.0.ebuild,
+  twisted-lore-12.3.0.ebuild, twisted-lore-13.0.0.ebuild:
+  Move dev-python/twisted to dev-python/twisted-core.
+
+*twisted-lore-13.0.0 (08 Apr 2013)
+
+  08 Apr 2013; Patrick Lauer <patrick@gentoo.org> +twisted-lore-13.0.0.ebuild:
+  Bump
+
+*twisted-lore-12.3.0 (14 Jan 2013)
+
+  14 Jan 2013; Patrick Lauer <patrick@gentoo.org> +twisted-lore-12.3.0.ebuild:
+  Bump
+
+  08 Oct 2012; Marien Zwart <marienz@gentoo.org> twisted-lore-12.2.0.ebuild:
+  Fix python dependency to match dev-python/twisted's, spotted by Arfrever.
+
+  05 Oct 2012; Marien Zwart <marienz@gentoo.org> twisted-lore-10.2.0.ebuild,
+  twisted-lore-11.0.0.ebuild:
+  Restrict pypy in twisted < 11.1.0 (bug #420653).
+
+*twisted-lore-12.2.0 (27 Sep 2012)
+
+  27 Sep 2012; Marien Zwart <marienz@gentoo.org> +twisted-lore-12.2.0.ebuild:
+  Bump to 12.2.0 (bug #423789)
+
+*twisted-lore-12.0.0 (22 Mar 2012)
+
+  22 Mar 2012; Patrick Lauer <patrick@gentoo.org> +twisted-lore-12.0.0.ebuild:
+  Bump
+
+*twisted-lore-11.1.0 (27 Dec 2011)
+
+  27 Dec 2011; Mike Gilbert <floppym@gentoo.org> +twisted-lore-11.1.0.ebuild:
+  Version bump.
+
+  17 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  twisted-lore-11.0.0.ebuild:
+  ppc64 stable wrt #366131
+
+  12 Jun 2011; Raúl Porcel <armin76@gentoo.org> twisted-lore-11.0.0.ebuild:
+  alpha/ia64/sparc stable wrt #366131
+
+  03 Jun 2011; Brent Baude <ranger@gentoo.org> twisted-lore-11.0.0.ebuild:
+  Marking twisted-lore-11.0.0 ppc stable for bug 366131
+
+  26 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  twisted-lore-11.0.0.ebuild:
+  x86 stable wrt bug #366131
+
+  09 May 2011; Markos Chandras <hwoarang@gentoo.org>
+  twisted-lore-11.0.0.ebuild:
+  Stable on amd64 wrt bug #366131
+
+*twisted-lore-11.0.0 (04 Apr 2011)
+
+  04 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +twisted-lore-11.0.0.ebuild:
+  Version bump.
+
+  21 Jan 2011; Thomas Kahle <tomka@gentoo.org> twisted-lore-10.2.0.ebuild:
+  x86 stable per bug 350894
+
+  12 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  twisted-lore-10.2.0.ebuild:
+  Stable on amd64 wrt bug #350894
+
+  06 Jan 2011; Brent Baude <ranger@gentoo.org> twisted-lore-10.2.0.ebuild:
+  Marking twisted-lore-10.2.0 ppc stable for bug 350894
+
+  06 Jan 2011; Raúl Porcel <armin76@gentoo.org> twisted-lore-10.2.0.ebuild:
+  alpha/ia64/sparc stable wrt #333211
+
+  28 Dec 2010; Brent Baude <ranger@gentoo.org> twisted-lore-10.2.0.ebuild:
+  Marking twisted-lore-10.2.0 ppc64 for bug 333211
+
+  23 Dec 2010; Thomas Kahle <tomka@gentoo.org> twisted-lore-10.1.0.ebuild:
+  x86 stable per bug 333389
+
+*twisted-lore-10.2.0 (22 Dec 2010)
+
+  22 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +twisted-lore-10.2.0.ebuild:
+  Version bump.
+
+  18 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  twisted-lore-10.1.0.ebuild:
+  Stable on amd64 wrt bug #333211
+
+*twisted-lore-10.1.0 (09 Jul 2010)
+
+  09 Jul 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +twisted-lore-10.1.0.ebuild:
+  Version bump.
+
+*twisted-lore-10.0.0 (17 Mar 2010)
+
+  17 Mar 2010; Patrick Lauer <patrick@gentoo.org>
+  +twisted-lore-10.0.0.ebuild:
+  Bump
+
+  13 Feb 2010; Raúl Porcel <armin76@gentoo.org> twisted-lore-9.0.0.ebuild:
+  alpha/ia64/sparc stable wrt #300702
+
+  17 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  twisted-lore-9.0.0.ebuild:
+  stable x86, bug 300702
+
+  20 Dec 2009; Raúl Porcel <armin76@gentoo.org> twisted-lore-8.2.0.ebuild:
+  alpha/ia64/sparc stable wrt #289680
+
+  16 Dec 2009; Brent Baude <ranger@gentoo.org> twisted-lore-8.2.0.ebuild:
+  Marking twisted-lore-8.2.0 ppc64 stable for bug 289680
+
+  01 Dec 2009; Markus Meier <maekke@gentoo.org> twisted-lore-8.2.0.ebuild:
+  amd64/x86 stable, bug #289680
+
+*twisted-lore-9.0.0 (30 Nov 2009)
+
+  30 Nov 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +twisted-lore-9.0.0.ebuild:
+  Version bump (bug #294924).
+
+  29 Nov 2009; Mounir Lamouri <volkmar@gentoo.org>
+  twisted-lore-8.2.0.ebuild:
+  Stable for ppc, bug 289680
+
+  30 Oct 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  twisted-lore-8.2.0.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  06 Sep 2009; Christian Ruppert <idl0r@gentoo.org>
+  -files/twisted-lore-0.1.0-which.patch, twisted-lore-8.1.0.ebuild,
+  twisted-lore-8.2.0.ebuild:
+  Remove unused patch. Fix repoman complains.
+
+*twisted-lore-8.2.0 (08 Jan 2009)
+
+  08 Jan 2009; Patrick Lauer <patrick@gentoo.org>
+  -twisted-lore-0.1.0-r1.ebuild, -twisted-lore-0.1.0-r2.ebuild,
+  -twisted-lore-0.2.0.ebuild, -twisted-lore-0.3.0.ebuild,
+  -twisted-lore-8.0.0.ebuild, +twisted-lore-8.2.0.ebuild:
+  Bump to 8.2.0, remove old
+
+  20 Dec 2008; nixnut <nixnut@gentoo.org> twisted-lore-8.1.0.ebuild:
+  Stable on ppc wrt bug 231675
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/twisted-lore-0.1.0-which.patch:
+  Fix patch with absolute paths.
+
+  24 Aug 2008; Markus Rothe <corsair@gentoo.org> twisted-lore-8.1.0.ebuild:
+  Stable on ppc64; bug #231675
+
+  13 Aug 2008; Santiago M. Mola <coldwind@gentoo.org>
+  twisted-lore-8.1.0.ebuild:
+  amd64 stable wrt bug #231675
+
+  12 Aug 2008; Raúl Porcel <armin76@gentoo.org> twisted-lore-8.1.0.ebuild:
+  alpha/ia64/x86 stable wrt #231675
+
+  11 Aug 2008; Ferris McCormick <fmccor@gentoo.org>
+  twisted-lore-8.1.0.ebuild:
+  Sparc stable, all tests good (part of Bug #231675).
+
+*twisted-lore-8.1.0 (25 May 2008)
+
+  25 May 2008; Thomas Raschbacher <lordvan@gentoo.org>
+  +twisted-lore-8.1.0.ebuild:
+  Version bump
+
+*twisted-lore-8.0.0 (13 May 2008)
+
+  13 May 2008; Ali Polatel <hawking@gentoo.org> +twisted-lore-8.0.0.ebuild:
+  Version bump.
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Marien Zwart (marienz, #107204) from metadata.xml.
+
+  12 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  twisted-lore-0.2.0.ebuild:
+  Stable on sparc
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org> twisted-lore-0.2.0.ebuild:
+  x86 stable
+
+*twisted-lore-0.3.0 (11 Jan 2007)
+
+  11 Jan 2007; Marien Zwart <marienz@gentoo.org> twisted-lore-0.2.0.ebuild,
+  +twisted-lore-0.3.0.ebuild:
+  Version bump, make twisted dependency stricter.
+
+  21 Oct 2006; Aron Griffis <agriffis@gentoo.org> twisted-lore-0.2.0.ebuild:
+  Mark 0.2.0 stable on ia64
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  twisted-lore-0.2.0.ebuild:
+  Stable on Alpha.
+
+  01 Aug 2006; Simon Stelling <blubb@gentoo.org> twisted-lore-0.2.0.ebuild:
+  stable on amd64
+
+  01 Aug 2006; Simon Stelling <blubb@gentoo.org>
+  twisted-lore-0.1.0-r1.ebuild:
+  stable on amd64
+
+  30 Jun 2006; Thomas Cort <tcort@gentoo.org> twisted-lore-0.2.0.ebuild:
+  Added ~alpha keyword.
+
+  30 Jun 2006; Thomas Cort <tcort@gentoo.org> twisted-lore-0.1.0-r2.ebuild:
+  Stable on alpha wrt Bug #128688.
+
+*twisted-lore-0.1.0-r2 (26 Jun 2006)
+
+  26 Jun 2006; Marien Zwart <marienz@gentoo.org>
+  +files/twisted-lore-0.1.0-which.patch, +twisted-lore-0.1.0-r2.ebuild:
+  Do not call "which" to check for dia (bug #128688).
+
+*twisted-lore-0.2.0 (26 May 2006)
+
+  26 May 2006; Marien Zwart <marienz@gentoo.org> +twisted-lore-0.2.0.ebuild:
+  Version bump.
+
+  26 May 2006; Marien Zwart <marienz@gentoo.org>
+  twisted-lore-0.1.0-r1.ebuild:
+  This version runs but does not install with twisted 2.4, so add a < dep.
+
+  04 May 2006; Jon Hood <squinky86@gentoo.org> twisted-lore-0.1.0-r1.ebuild:
+  Add ~amd64, #128688.
+
+  03 May 2006; Mark Loeser <halcy0n@gentoo.org>
+  twisted-lore-0.1.0-r1.ebuild:
+  Stable on x86; bug #128688
+
+  08 Apr 2006; <nixnut@gentoo.org> twisted-lore-0.1.0-r1.ebuild:
+  Added ~ppc. bug #128688
+
+  03 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  twisted-lore-0.1.0-r1.ebuild:
+  Stable on sparc wrt #128688
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org>
+  twisted-lore-0.1.0-r1.ebuild:
+  Mark 0.1.0-r1 ~ia64
+
+  30 Nov 2005; Marien Zwart <marienz@gentoo.org> -twisted-lore-0.1.0.ebuild:
+  Remove old ebuild.
+
+*twisted-lore-0.1.0-r1 (27 Nov 2005)
+
+  27 Nov 2005; Marien Zwart <marienz@gentoo.org> metadata.xml,
+  +twisted-lore-0.1.0-r1.ebuild:
+  Revbump to use the new eclass (bug #80639). Set myself as maintainer.
+
+  08 Apr 2005; Thomas Raschbacher <lordvan@gentoo.org> twisted-lore-0.1.0:
+  initial import
+  twisted-lore was part of the main twisted release

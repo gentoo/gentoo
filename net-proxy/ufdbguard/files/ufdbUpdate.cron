@@ -1,0 +1,14 @@
+#!/bin/sh
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/ufdbguard/files/ufdbUpdate.cron,v 1.2 2011/01/31 05:37:32 jer Exp $
+
+# cron.daily file to update the ufdb database
+
+# Avoid doing anything if no download user is set in the configuration
+# file
+( . /etc/conf.d/ufdb ; [ -z "${DOWNLOAD_USER}" ]; ) && exit
+
+/usr/sbin/ufdbUpdate
+
+/etc/init.d/squid rotate

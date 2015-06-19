@@ -1,0 +1,30 @@
+Install non-documentation files in the correct directory
+
+--- task-2.0.0.beta4.orig/CMakeLists.txt
++++ task-2.0.0.beta4/CMakeLists.txt
+@@ -9,6 +9,7 @@
+ SET (TASK_MAN1DIR share/man/man1 CACHE STRING "Installation directory for man pages, section 1")
+ SET (TASK_MAN5DIR share/man/man5 CACHE STRING "Installation directory for man pages, section 5")
+ SET (TASK_DOCDIR  share/doc/task CACHE STRING "Installation directory for doc files")
++SET (TASK_RCDIR  share/task CACHE STRING "Installation directory for rc files")
+ SET (TASK_BINDIR  bin            CACHE STRING "Installation directory for the binary")
+ 
+ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+--- task-2.0.0.beta4.orig/doc/CMakeLists.txt
++++ task-2.0.0.beta4/doc/CMakeLists.txt
+@@ -11,6 +11,6 @@
+                                                       FILES_MATCHING PATTERN "*.1")
+ install (DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/man/   DESTINATION ${TASK_MAN5DIR}
+                                                       FILES_MATCHING PATTERN "*.5")
+-install (DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/rc     DESTINATION ${TASK_DOCDIR})
++install (DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/rc     DESTINATION ${TASK_RCDIR})
+ 
+ install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/ref/task-ref.pdf DESTINATION ${TASK_DOCDIR})
+--- task-2.0.0.beta4.orig/i18n/CMakeLists.txt
++++ task-2.0.0.beta4/i18n/CMakeLists.txt
+@@ -1,4 +1,4 @@
+ cmake_minimum_required (VERSION 2.8)
+-install (DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ DESTINATION ${TASK_DOCDIR}/i18n
++install (DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ DESTINATION ${TASK_RCDIR}/i18n
+                                                 FILES_MATCHING REGEX "tips.*"
+                                                                PATTERN "CMakeFiles" EXCLUDE)

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm prepare setup unpack
+DEPEND=>=app-editors/gvim-7.0 app-arch/unzip || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=An easy-to-use configuration of the GVim text editor
+EAPI=4
+HOMEPAGE=http://cream.sourceforge.net
+IUSE=linguas_en linguas_fr linguas_es linguas_de
+KEYWORDS=alpha amd64 ia64 ~mips ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=>=app-editors/gvim-7.0 dev-util/ctags || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://sourceforge/cream/cream-0.43.tar.gz linguas_en? ( http://cream.sourceforge.net/cream-spell-dict-eng_2.0.2.zip ) linguas_fr? ( http://cream.sourceforge.net/cream-spell-dict-fre_2.1.zip ) linguas_es? ( http://cream.sourceforge.net/cream-spell-dict-spa_3.0.zip ) linguas_de? ( http://cream.sourceforge.net/cream-spell-dict-ger_2.0.1.zip )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=49567cf8aa5cf84f4f48c54c5ce26aad

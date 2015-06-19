@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>video</herd>
+  <use>
+    <flag name="aften">Enable A/52 (AC-3) audio encoder support.</flag>
+    <flag name="amr">Enable Adaptive Multi-Rate format support via <pkg>media-libs/opencore-amr</pkg>.</flag>
+    <flag name="vpx">Enable VP8 codec support via <pkg>media-libs/libvpx</pkg>.</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">avidemux</remote-id>
+  </upstream>
+</pkgmetadata>

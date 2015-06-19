@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>emacs</herd>
+<herd>net-mail</herd>
+<use>
+  <flag name="bbdb">Include support for <pkg>app-emacs/bbdb</pkg></flag>
+</use>
+<upstream>
+  <remote-id type="github">wanderlust/wanderlust</remote-id>
+</upstream>
+</pkgmetadata>

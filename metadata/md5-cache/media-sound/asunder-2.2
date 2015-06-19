@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DEPEND=>=media-libs/libcddb-0.9.5 media-sound/cdparanoia x11-libs/gtk+:2 dev-util/intltool virtual/pkgconfig sys-devel/gettext
+DESCRIPTION=A graphical Audio CD ripper and encoder with support for WAV, MP3, OggVorbis and FLAC
+EAPI=4
+HOMEPAGE=http://littlesvr.ca/asunder/
+IUSE=flac mp3 vorbis wavpack
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/libcddb-0.9.5 media-sound/cdparanoia x11-libs/gtk+:2 flac? ( media-libs/flac ) mp3? ( media-sound/lame ) vorbis? ( media-sound/vorbis-tools ) wavpack? ( media-sound/wavpack )
+SLOT=0
+SRC_URI=http://littlesvr.ca/asunder/releases/asunder-2.2.tar.bz2
+_md5_=6066ee574d92506865a7eddb18ca99c3

@@ -1,0 +1,82 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/shorewall-lite/files/4.5.21.10-r1/shorewall-lite.initd,v 1.1 2014/11/18 11:15:05 xmw Exp $
+
+description='The Shoreline Firewall Lite, more commonly known as "Shorewall Lite", is'
+description="${description} a high-level tool for configuring Netfilter."
+
+extra_commands="clear"
+extra_started_commands="reset"
+
+description_clear="Clear will remove all rules and chains installed by"
+description_clear="${description_clear} Shorewall Lite. The firewall is"
+description_clear="${description_clear} then wide open and unprotected."
+
+description_reset="All the packet and byte counters in the firewall are reset."
+
+depend() {
+	need net
+	provide firewall
+	after ulogd
+}
+
+status() {
+	local _retval
+	/sbin/shorewall-lite status 1>/dev/null
+	_retval=$?
+	if [ ${_retval} = '0' ]; then
+		einfo 'status: started'
+		mark_service_started "${SVCNAME}"
+		return 0
+	else
+		einfo 'status: stopped'	
+		mark_service_stopped "${SVCNAME}"
+		return 3
+	fi
+}
+
+start() {
+	ebegin "Starting shorewall-lite"
+	/sbin/shorewall-lite ${OPTIONS} start ${STARTOPTIONS} 1>/dev/null
+	eend $? 
+}
+
+stop() {
+	ebegin "Stopping shorewall-lite"
+	/sbin/shorewall-lite ${OPTIONS} stop ${STOPOPTIONS} 1>/dev/null
+	eend $?
+}
+
+restart() {
+	# shorewall comes with its own control script that includes a
+	# restart function, so refrain from calling svc_stop/svc_start
+	# here.  Note that this comment is required to fix bug 55576;
+	# runscript.sh greps this script...  (09 Jul 2004 agriffis)
+
+	ebegin "Restarting shorewall-lite"
+	/sbin/shorewall-lite status 1>/dev/null
+	if [ $? != 0 ] ; then
+		svc_start
+	else
+		/sbin/shorewall-lite ${OPTIONS} restart ${RESTARTOPTIONS} 1>/dev/null
+	fi
+	eend $?
+}
+
+clear() {
+	# clear will remove all the rules and bring the system to an unfirewalled
+	# state. (21 Nov 2004 eldad)
+
+	ebegin "Clearing all shorewall-lite rules and setting policy to ACCEPT"
+	/sbin/shorewall-lite ${OPTIONS} clear 1>/dev/null
+	eend $?
+}
+
+reset() {
+	# reset the packet and byte counters in the firewall
+
+	ebegin "Resetting the packet and byte counters in shorewall-lite"
+	/sbin/shorewall-lite ${OPTIONS} reset 1>/dev/null
+	eend $?
+}

@@ -1,0 +1,251 @@
+# ChangeLog for app-portage/demerge
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/demerge/ChangeLog,v 1.59 2013/02/01 00:26:15 mr_bones_ Exp $
+
+  01 Feb 2013; Michael Sterrett <mr_bones_@gentoo.org> demerge-0.047-r1.ebuild:
+  don't quote $A
+
+  05 Jan 2013; Michael Palimaka <kensington@gentoo.org> -demerge-0.047.ebuild:
+  Remove old.
+
+  04 Jan 2013; Agostino Sarubbo <ago@gentoo.org> demerge-0.047-r1.ebuild:
+  Stable for amd64, wrt bug #449324
+
+  04 Jan 2013; Agostino Sarubbo <ago@gentoo.org> demerge-0.047-r1.ebuild:
+  Add ~ppc64, wrt bug #449324
+
+  04 Jan 2013; Agostino Sarubbo <ago@gentoo.org> demerge-0.047-r1.ebuild:
+  Stable for ppc, wrt bug #449324
+
+  03 Jan 2013; Raúl Porcel <armin76@gentoo.org> demerge-0.047-r1.ebuild:
+  Adjust to newer PortageXS which contains a fix for the path profile
+
+  30 Dec 2012; Raúl Porcel <armin76@gentoo.org> demerge-0.047-r1.ebuild:
+  alpha/arm/ia64/sh/sparc/x86 stable wrt #449324
+
+  15 Dec 2012; Raúl Porcel <armin76@gentoo.org> demerge-0.047-r1.ebuild:
+  Actually move back to ~arch, fix depend so it uses the new PortageXS which
+  also uses the new path
+
+*demerge-0.047-r1 (15 Dec 2012)
+
+  15 Dec 2012; Raúl Porcel <armin76@gentoo.org> +demerge-0.047-r1.ebuild:
+  Revbump to fix new make.conf patch, straight to stable
+
+  14 Dec 2011; Pacho Ramos <pacho@gentoo.org> -demerge-0.043.ebuild,
+  -demerge-0.044.ebuild, -demerge-0.045.ebuild, -demerge-0.046.ebuild,
+  metadata.xml:
+  Drop maintainer due move to staffer, bug #99016; remove old.
+
+  02 Apr 2010; Raúl Porcel <armin76@gentoo.org> demerge-0.043.ebuild,
+  demerge-0.044.ebuild, demerge-0.045.ebuild, demerge-0.046.ebuild,
+  demerge-0.047.ebuild:
+  Add ~arm/~sh, alpha stable
+
+  18 Jan 2009; Markus Meier <maekke@gentoo.org> demerge-0.047.ebuild:
+  amd64 stable, bug #254984
+
+  17 Jan 2009; nixnut <nixnut@gentoo.org> demerge-0.047.ebuild:
+  ppc stable #254984
+
+  15 Jan 2009; Raúl Porcel <armin76@gentoo.org> demerge-0.047.ebuild:
+  ia64/sparc/x86 stable wrt #254984
+
+*demerge-0.047 (01 Dec 2008)
+
+  01 Dec 2008; Christian Hartmann <ian@gentoo.org> +demerge-0.047.ebuild:
+  Version bump
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org> demerge-0.043.ebuild,
+  demerge-0.044.ebuild, demerge-0.045.ebuild, demerge-0.046.ebuild:
+  New virtuals: Term-ANSIColor
+
+  16 May 2008; nixnut <nixnut@gentoo.org> demerge-0.046.ebuild:
+  Stable on ppc wrt bug 214792
+
+  14 May 2008; Markus Meier <maekke@gentoo.org> demerge-0.046.ebuild:
+  amd64 stable, bug #214792
+
+  13 May 2008; Raúl Porcel <armin76@gentoo.org> demerge-0.046.ebuild:
+  ia64 stable wrt #214792
+
+  12 May 2008; Ferris McCormick <fmccor@gentoo.org> demerge-0.046.ebuild:
+  Sparc stable, Bug #214792, looks good.
+
+  12 May 2008; Christian Faulhammer <opfer@gentoo.org> demerge-0.046.ebuild:
+  stable x86, bug 214792
+
+*demerge-0.046 (21 Feb 2008)
+
+  21 Feb 2008; Christian Hartmann <ian@gentoo.org> +demerge-0.046.ebuild:
+  Version bump
+
+  14 Jan 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  demerge-0.045.ebuild:
+  ppc. stable
+
+  08 Jan 2008; Raúl Porcel <armin76@gentoo.org> demerge-0.045.ebuild:
+  ia64/sparc/x86 stable
+
+  21 Nov 2007; Raúl Porcel <armin76@gentoo.org> demerge-0.045.ebuild:
+  Add ~sparc
+
+*demerge-0.045 (20 Nov 2007)
+
+  20 Nov 2007; Christian Hartmann <ian@gentoo.org> +demerge-0.045.ebuild:
+  Version bump
+
+  25 Aug 2007; Steve Dibb <beandog@gentoo.org> demerge-0.044.ebuild:
+  amd64 stable
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  demerge-0.044.ebuild:
+  Stable on ppc.
+
+  01 Jul 2007; Raúl Porcel <armin76@gentoo.org> demerge-0.044.ebuild:
+  ia64/x86 stable
+
+*demerge-0.044 (20 May 2007)
+
+  20 May 2007; Christian Hartmann <ian@gentoo.org> +demerge-0.044.ebuild:
+  Version bump
+
+  13 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  fix herd
+
+  12 May 2007; Raúl Porcel <armin76@gentoo.org> demerge-0.043.ebuild:
+  Add ~alpha
+
+  25 Apr 2007; Christian Faulhammer <opfer@gentoo.org> demerge-0.043.ebuild:
+  stable amd64, bug 175842
+
+  24 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  demerge-0.043.ebuild:
+  ppc stable, bug #175842
+
+  24 Apr 2007; Raúl Porcel <armin76@gentoo.org> demerge-0.043.ebuild:
+  ia64 + x86 stable wrt #175842
+
+*demerge-0.043 (18 Apr 2007)
+
+  18 Apr 2007; Christian Hartmann <ian@gentoo.org> -demerge-0.041.ebuild,
+  -demerge-0.042.ebuild, +demerge-0.043.ebuild:
+  Version bump; cleanup
+
+*demerge-0.042 (18 Apr 2007)
+
+  18 Apr 2007; Christian Hartmann <ian@gentoo.org> +demerge-0.042.ebuild:
+  Version bump
+
+*demerge-0.041 (16 Apr 2007)
+
+  16 Apr 2007; Christian Hartmann <ian@gentoo.org> -demerge-0.035.ebuild,
+  -demerge-0.040.ebuild, +demerge-0.041.ebuild:
+  Version bump; cleanup
+
+*demerge-0.040 (12 Apr 2007)
+
+  12 Apr 2007; Christian Hartmann <ian@gentoo.org> +demerge-0.040.ebuild:
+  Version bump
+
+*demerge-0.035 (10 Apr 2007)
+
+  10 Apr 2007; Christian Hartmann <ian@gentoo.org> -demerge-0.034.ebuild,
+  +demerge-0.035.ebuild:
+  Version bump; cleanup
+
+*demerge-0.034 (09 Apr 2007)
+
+  09 Apr 2007; Christian Hartmann <ian@gentoo.org> -demerge-0.033.ebuild,
+  +demerge-0.034.ebuild:
+  Version bump; cleanup
+
+*demerge-0.033 (09 Apr 2007)
+
+  09 Apr 2007; Christian Hartmann <ian@gentoo.org> -demerge-0.031.ebuild,
+  -demerge-0.032.ebuild, +demerge-0.033.ebuild:
+  Version bump; cleanup
+
+  04 Apr 2007; Christian Hartmann <ian@gentoo.org> demerge-0.032.ebuild:
+  Added missing DEP
+
+*demerge-0.032 (04 Apr 2007)
+
+  04 Apr 2007; Christian Hartmann <ian@gentoo.org> +demerge-0.032.ebuild:
+  Version bump
+
+*demerge-0.031 (30 Mar 2007)
+
+  30 Mar 2007; Christian Hartmann <ian@gentoo.org> -demerge-0.030.ebuild,
+  +demerge-0.031.ebuild:
+  Version bump
+
+*demerge-0.030 (29 Mar 2007)
+
+  29 Mar 2007; Christian Hartmann <ian@gentoo.org> -demerge-0.029-r1.ebuild,
+  +demerge-0.030.ebuild:
+  Version bump
+
+  25 Mar 2007; Raúl Porcel <armin76@gentoo.org> demerge-0.029-r1.ebuild:
+  Add ~ia64
+
+*demerge-0.029-r1 (11 Mar 2007)
+
+  11 Mar 2007; Christian Hartmann <ian@gentoo.org> -demerge-0.029.ebuild,
+  +demerge-0.029-r1.ebuild:
+  Depend on PortageXS-0.02.04
+
+  27 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> demerge-0.029.ebuild:
+  Add ~amd64 wrt bug #167623.
+
+*demerge-0.029 (24 Feb 2007)
+
+  24 Feb 2007; Christian Hartmann <ian@gentoo.org> -demerge-0.028.ebuild,
+  +demerge-0.029.ebuild:
+  Bump
+
+*demerge-0.028 (23 Feb 2007)
+
+  23 Feb 2007; Christian Hartmann <ian@gentoo.org> -demerge-0.027.ebuild,
+  +demerge-0.028.ebuild:
+  Bump
+
+  23 Feb 2007; Christian Hartmann <ian@gentoo.org> demerge-0.027.ebuild:
+  un-ROOTing
+
+*demerge-0.027 (22 Feb 2007)
+
+  22 Feb 2007; Christian Hartmann <ian@gentoo.org> -demerge-0.024.ebuild,
+  -demerge-0.025.ebuild, -demerge-0.026.ebuild, +demerge-0.027.ebuild:
+  bump & cleanup
+
+*demerge-0.026 (21 Feb 2007)
+
+  21 Feb 2007; Christian Hartmann <ian@gentoo.org> +demerge-0.026.ebuild:
+  bump
+
+*demerge-0.025 (21 Feb 2007)
+
+  21 Feb 2007; Christian Hartmann <ian@gentoo.org> +demerge-0.025.ebuild:
+  Version bump
+
+*demerge-0.024 (19 Feb 2007)
+
+  19 Feb 2007; Christian Hartmann <ian@gentoo.org> -demerge-0.022.ebuild,
+  -demerge-0.023.ebuild, +demerge-0.024.ebuild:
+  Bump & cleanup
+
+*demerge-0.023 (19 Feb 2007)
+
+  19 Feb 2007; Christian Hartmann <ian@gentoo.org> +demerge-0.023.ebuild:
+  Version bump
+
+  19 Feb 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  demerge-0.022.ebuild:
+  added ~ppc
+
+*demerge-0.022 (18 Feb 2007)
+
+  18 Feb 2007; Christian Hartmann <ian@gentoo.org> +metadata.xml,
+  +demerge-0.022.ebuild:
+  New package

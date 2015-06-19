@@ -1,0 +1,33 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/glusterfs/files/glusterd-r2.initd,v 1.1 2015/03/23 12:12:44 ultrabug Exp $
+
+description="Gluster elastic volume management daemon"
+command="/usr/sbin/glusterd"
+pidfile="/var/run/${SVCNAME}.pid"
+command_args="-N"
+
+command_background="yes"
+
+depend() {
+	need net
+	before netmount
+}
+
+start_pre() {
+	# Ensure that the GlusterFS auxiliary mount parent directory exists
+	checkpath --directory --owner root:root --mode 0700 /var/run/gluster
+}
+
+start_post() {
+	local c=0
+	ebegin "Waiting for glusterd to start up"
+	while ! /usr/sbin/gluster volume list &>/dev/null && [ "${c}" -lt "${glusterd_max_wait_start-60}" ]; do
+		(( ++c ))
+	done
+	[ "${c}" -lt "${glusterd_max_wait_start-60}" ]
+	eend $?
+
+	return 0
+}

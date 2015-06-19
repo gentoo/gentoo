@@ -1,0 +1,22 @@
+From d9685bb69c581489ef1c4278df8990fe02b0728d Mon Sep 17 00:00:00 2001
+From: Arjan van de Ven <arjan@linux.intel.com>
+Date: Tue, 28 Apr 2009 14:44:34 +0100
+Subject: [PATCH] mkdir /usr/sbin as well
+
+---
+
+diff --git a/src/Makefile b/src/Makefile
+index fdf1616..de24551 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -30,6 +30,7 @@
+ 
+ install: latencytop
+ 	mkdir -p $(DESTDIR)/usr/share/latencytop
++	mkdir -p $(DESTDIR)/$(SBINDIR)
+ 	install -m 0644 latencytop.trans $(DESTDIR)/usr/share/latencytop/latencytop.trans
+ 	install -m 0644 *.png $(DESTDIR)/usr/share/latencytop/
+ 	install -m 0755 latencytop $(DESTDIR)$(SBINDIR)/
+-- 
+1.6.5.4
+

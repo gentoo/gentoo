@@ -1,0 +1,56 @@
+# ChangeLog for dev-util/nvidia-cuda-toolkit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/nvidia-cuda-toolkit/ChangeLog,v 1.103 2015/05/12 11:06:19 jlec Exp $
+
+*nvidia-cuda-toolkit-7.0.28 (12 May 2015)
+
+  12 May 2015; Justin Lecher <jlec@gentoo.org>
+  +nvidia-cuda-toolkit-7.0.28.ebuild, nvidia-cuda-toolkit-6.5.14.ebuild,
+  nvidia-cuda-toolkit-6.5.19-r1.ebuild, nvidia-cuda-toolkit-6.5.19.ebuild:
+  Version Bump; thanks Marius Brehler for the work https://github.com/gentoo
+  /gentoo-portage-rsync-mirror/pull/1119
+
+*nvidia-cuda-toolkit-6.5.19-r1 (19 Feb 2015)
+
+  19 Feb 2015; Justin Lecher <jlec@gentoo.org>
+  +nvidia-cuda-toolkit-6.5.19-r1.ebuild:
+  Create convinience symlink lib32 -> lib
+
+  15 Feb 2015; Mike Frysinger <vapier@gentoo.org>
+  nvidia-cuda-toolkit-5.5.22.ebuild:
+  Switch to matching gcc versions as the SLOT in older versions is changing.
+
+*nvidia-cuda-toolkit-5.5.22 (08 Feb 2015)
+
+  08 Feb 2015; Justin Lecher <jlec@gentoo.org>
+  +nvidia-cuda-toolkit-5.5.22.ebuild:
+  Readd old version on user request
+
+  26 Jan 2015; Justin Lecher <jlec@gentoo.org>
+  nvidia-cuda-toolkit-6.5.14.ebuild, nvidia-cuda-toolkit-6.5.19.ebuild:
+  Restrict nvidia-drivers dependency for x86 to <346.35 because of missing uvm
+  support, #534156
+
+  26 Dec 2014; Justin Lecher <jlec@gentoo.org>
+  -nvidia-cuda-toolkit-4.2.9-r2.ebuild, -nvidia-cuda-toolkit-5.5.22.ebuild,
+  -nvidia-cuda-toolkit-6.0.37-r3.ebuild, -nvidia-cuda-toolkit-6.0.37-r4.ebuild:
+  Drop old, fixes #525214
+
+  26 Dec 2014; Agostino Sarubbo <ago@gentoo.org>
+  nvidia-cuda-toolkit-6.5.14.ebuild:
+  Stable for x86, wrt bug #525226
+
+  15 Dec 2014; Chema Alonso <nimiux@gentoo.org>
+  nvidia-cuda-toolkit-6.5.14.ebuild:
+  Stable for amd64 wrt bug #525226
+
+  17 Nov 2014; Justin Lecher <jlec@gentoo.org>
+  nvidia-cuda-toolkit-6.5.14.ebuild, nvidia-cuda-toolkit-6.5.19.ebuild:
+  Fix installation problems due to arch specific differences in tarballs
+
+*nvidia-cuda-toolkit-6.5.19 (17 Nov 2014)
+
+  17 Nov 2014; Justin Lecher <jlec@gentoo.org>
+  nvidia-cuda-toolkit-6.5.14.ebuild, +nvidia-cuda-toolkit-6.5.19.ebuild:
+  Import Version Bump from sci overlay, thanks Marius Brehler for the work; Add
+  warning for reduced 32bit support, #529320

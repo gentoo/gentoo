@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=emboss? ( sci-biology/emboss )
+DESCRIPTION=Codon usage tables calculated from GenBank
+EAPI=5
+HOMEPAGE=http://www.kazusa.or.jp/codon/
+IUSE=emboss minimal
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris
+LICENSE=public-domain
+RDEPEND=emboss? ( sci-biology/emboss )
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~jlec/distfiles/cutg-160.tar.xz
+_md5_=8ee614f1069ce4ca98c3ad383bb837c4

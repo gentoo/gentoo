@@ -1,0 +1,74 @@
+# ChangeLog for x11-misc/menumaker
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/menumaker/ChangeLog,v 1.13 2012/02/05 02:03:35 floppym Exp $
+
+  05 Feb 2012; Mike Gilbert <floppym@gentoo.org> menumaker-0.99.7.ebuild:
+  Inherit multilib.
+
+  24 Apr 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  menumaker-0.99.7.ebuild:
+  Call python_need_rebuild() (bug #364585).
+
+  28 May 2010; Markus Meier <maekke@gentoo.org> menumaker-0.99.7.ebuild:
+  x86 stable, bug #316721
+
+  24 May 2010; Pacho Ramos <pacho@gentoo.org> menumaker-0.99.7.ebuild:
+  Drop duplicated ~amd64 keyword
+
+  24 May 2010; Pacho Ramos <pacho@gentoo.org> menumaker-0.99.7.ebuild:
+  stable amd64, bug 316721
+
+  22 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  menumaker-0.99.7.ebuild:
+  Use Python 2.
+
+*menumaker-0.99.7 (25 Feb 2009)
+
+  25 Feb 2009; <neurogeek@gentoo.org> +menumaker-0.99.7.ebuild:
+  Version bump
+
+  17 Sep 2008; Santiago M. Mola <coldwind@gentoo.org>
+  -menumaker-0.15.ebuild, menumaker-0.17.ebuild:
+  Remove old version, don't install COPYING and fix quoting.
+
+  08 Nov 2007; Grant Goodyear <g2boojum@gentoo.org> metadata.xml:
+  -m removed myself as maintainer
+
+  02 Aug 2007; Roy Marples <uberlord@gentoo.org> menumaker-0.17.ebuild:
+  Keyworded ~x86-fbsd, #156902 thanks to Marc Kowarsky.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  14 Jun 2005; Jonathan Smith <smithj@gentoo.org> +metadata.xml,
+  +menumaker-0.12.ebuild, +menumaker-0.15.ebuild, +menumaker-0.17.ebuild:
+  Moved from dev-python/menumaker to x11-misc/menumaker.
+
+  24 Apr 2005; Simon Stelling <blubb@gentoo.org> menumaker-0.17.ebuild:
+  stable on amd64
+
+  07 Aug 2004; Malcolm Lashley <malc@gentoo.org> menumaker-0.17.ebuild:
+  ~amd64 closes bug #58432
+
+*menumaker-0.17 (03 Jun 2004)
+
+  03 Jun 2004; David Holm <dholm@gentoo.org> menumaker-0.17.ebuild:
+  Added to ~ppc.
+
+  01 Jun 2004; Grant Goodyear <g2boojum@gentoo.org> :
+  Version bump.  Thanks to teedog@myrealbox.com (Bug # 51692).
+
+*menumaker-0.12 (29 Dec 2003)
+
+  29 Dec 2003; Grant Goodyear <g2boojum@gentoo.org> menumaker-0.12.ebuild,
+  menumaker-0.15.ebuild:
+  Marked all ebuilds as x86.
+
+*menumaker-0.15 (25 Nov 2003)
+
+  25 Nov 2003; Alastair Tse <liquidx@gentoo.org> menumaker-0.15.ebuild:
+  version bump (#34230)
+
+  29 Jul 2003; Grant Goodyear <g2boojum@gentoo.org> :
+  New package.
+

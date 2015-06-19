@@ -1,0 +1,47 @@
+# ChangeLog for games-action/tuxkart
+# Copyright 2002-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/tuxkart/ChangeLog,v 1.13 2015/01/02 11:04:35 tupone Exp $
+
+  02 Jan 2015; Tupone Alfredo <tupone@gentoo.org> tuxkart-0.4.0.ebuild:
+  EAPI 4
+
+  01 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> tuxkart-0.4.0.ebuild:
+  Removing old virtual/x11 dependency.
+
+  20 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org> tuxkart-0.4.0.ebuild:
+  Added modular X dependencies and closing bug #119096.
+
+*tuxkart-0.4.0 (19 Jun 2004)
+
+  19 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> tuxkart-0.2.0.ebuild,
+  tuxkart-0.4.0.ebuild:
+  version bump (bug #49206)
+  Fix plib link for version 0.2.0 (bug #46372) - patch from Joe Burks
+
+  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> tuxkart-0.2.0.ebuild:
+  Added IUSE.
+
+  31 Dec 2003; Michael Sterrett <mr_bones_@gentoo.org> tuxkart-0.2.0.ebuild:
+  fix hard-coded CFLAGS; more error checking/messages
+
+  14 Dec 2003; Michael Sterrett <mr_bones_@gentoo.org> tuxkart-0.2.0.ebuild:
+  more error checking/messages
+
+  12 Dec 2003; Jon Portnoy <avenj@gentoo.org> tuxkart-0.2.0.ebuild :
+  AMD64 keywords.
+
+  06 Oct 2003; Aron Griffis <agriffis@gentoo.org> tuxkart-0.2.0.ebuild,
+  files/tuxkart-0.2.0-alpha.patch:
+  Add patch for alpha, and mark stable
+
+  02 Aug 2003; Chris Gianelloni <wolf31o2@gentoo.org> tuxkart-0.2.0.ebuild:
+  Fixed to use mirror://sourceforge
+
+  02 Aug 2003; Michael Sterrett <msterret@gentoo.org> tuxkart-0.2.0.ebuild:
+  use media-libs/plib instead of just plib
+
+*tuxkart-0.2.0 (15 May 2003)
+
+  15 May 2003; Martin Holzer <mholzer@gentoo.org> tuxkart-0.2.0.ebuild :
+  Initial import. Ebuild submitted by Michael Fizpatrick <leahcim@ntlworld.com>
+  in #18698

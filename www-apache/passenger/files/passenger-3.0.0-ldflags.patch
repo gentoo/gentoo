@@ -1,0 +1,13 @@
+--- build/config.rb.~1~	2010-11-07 11:46:22.257690348 +0100
++++ build/config.rb	2010-11-07 12:41:40.601438803 +0100
+@@ -25,7 +25,7 @@
+ 
+ # Extra linker flags that should always be passed to the linker.
+ # Should be included last in the command string, even after PlatformInfo.portability_ldflags.
+-EXTRA_LDFLAGS  = ""
++EXTRA_LDFLAGS  = "#{ENV['LDFLAGS']}"
+ 
+ # Whether to use the vendored libev or the system one.
+-USE_VENDORED_LIBEV = boolean_option("USE_VENDORED_LIBEV", true)
+\ No newline at end of file
++USE_VENDORED_LIBEV = boolean_option("USE_VENDORED_LIBEV", true)

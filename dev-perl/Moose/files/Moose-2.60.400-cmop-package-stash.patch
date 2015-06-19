@@ -1,0 +1,12 @@
+diff -Naur t/cmop/methods.t t/cmop/methods.t
+--- t/cmop/methods.t	2012-09-19 21:11:42.000000000 +0000
++++ t/cmop/methods.t	2013-12-23 11:19:58.758708726 +0000
+@@ -413,7 +413,7 @@
+     my $baz_meta = Class::MOP::Class->initialize('Baz');
+     $baz_meta->add_method(foo => sub { });
+     my $stash = Package::Stash->new('Baz');
+-    $stash->remove_package_symbol('&foo');
++    $stash->remove_symbol('&foo');
+     is_deeply([$baz_meta->get_method_list], [], "method is deleted");
+     ok(!Baz->can('foo'), "Baz can't foo");
+ }

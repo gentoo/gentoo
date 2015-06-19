@@ -1,0 +1,15 @@
+# ChangeLog for sys-kernel/cryptodev
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/cryptodev/ChangeLog,v 1.2 2015/04/24 21:52:54 hwoarang Exp $
+
+  24 Apr 2015; Markos Chandras <hwoarang@gentoo.org> cryptodev-1.7.ebuild:
+  export KERNEL_DIR to prevent the Makefile from trying to detect the kernel
+  source itself which might break chroots and containers. Bug #547028. Thanks to
+  Toralf Förster for the report and testing
+
+*cryptodev-1.7 (11 Apr 2015)
+
+  11 Apr 2015; Markos Chandras <hwoarang@gentoo.org> +cryptodev-1.7.ebuild,
+  +metadata.xml:
+  Initial commit. Thanks to LABBE Corentin <clabbe.montjoie@gmail.com>. Bug
+  #366709

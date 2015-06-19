@@ -1,0 +1,38 @@
+# ChangeLog for app-text/antixls
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/antixls/ChangeLog,v 1.10 2014/08/06 07:09:32 patrick Exp $
+
+  06 Aug 2014; Patrick Lauer <patrick@gentoo.org> antixls-0.3b.ebuild:
+  Make description more repoman-happy
+
+  10 May 2012; Agostino Sarubbo <ago@gentoo.org> -antixls-0.2b.ebuild:
+  Remove old
+
+  08 Aug 2011; Fabian Groffen <grobian@gentoo.org> antixls-0.3b.ebuild:
+  Marked ~x64-macos
+
+  23 Sep 2010; Fabian Groffen <grobian@gentoo.org> antixls-0.3b.ebuild:
+  Marked ~{ppc,x86}-macos ~{x86,x64}-solaris
+
+*antixls-0.3b (07 Dec 2008)
+
+  07 Dec 2008; Patrick Lauer <patrick@gentoo.org> +antixls-0.3b.ebuild:
+  Bump to 0.3b, closes #250180
+
+  16 Aug 2008; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove pclouds from metadata.xml (#49680)
+
+  27 Aug 2007; Christoph Mende <angelos@gentoo.org> antixls-0.2b.ebuild:
+  Added ~amd64 wrt bug #189025
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  13 Mar 2007; Leonardo Boshell <leonardop@gentoo.org> metadata.xml:
+  Removing text-markup herd, leaving pclouds as maintainer.
+
+*antixls-0.2b (24 Sep 2006)
+
+  24 Sep 2006; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org> +metadata.xml,
+  +antixls-0.2b.ebuild:
+  Initial ebuild. A great companion to antiword :)

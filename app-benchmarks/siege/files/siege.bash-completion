@@ -1,0 +1,25 @@
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/siege/files/siege.bash-completion,v 1.1 2004/11/21 10:00:20 ka0ttic Exp $
+# siege completion
+
+_siege() {
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="-V --version -h --help -C --config -v --verbose -g --get \
+    -c --concurrent -i --internet -d --delay -b --benchmark -r --reps \
+    -t --time -l --log -m --mark -H --header -R --rc -f --file -u --url"
+
+    if [[ "${cur}" == -* ]] || [ ${COMP_CWORD} -eq 1 ]; then
+		COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
+    fi
+
+    case "${prev}" in
+		-R|--rc|-f|--file)
+			COMPREPLY=($(compgen -o filenames -A file -- ${cur}))
+			;;
+    esac		
+}
+complete -F _siege siege
+
+# vim: set ft=sh tw=80 ts=4 sw=4 :

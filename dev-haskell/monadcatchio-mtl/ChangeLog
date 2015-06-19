@@ -1,0 +1,52 @@
+# ChangeLog for dev-haskell/monadcatchio-mtl
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/monadcatchio-mtl/ChangeLog,v 1.11 2014/07/02 11:37:53 gienah Exp $
+
+*monadcatchio-mtl-0.3.1.0-r1 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org>
+  +monadcatchio-mtl-0.3.1.0-r1.ebuild:
+  Bump monadcatchio-mtl to 0.3.1.0-r1
+
+  07 Sep 2013; Agostino Sarubbo <ago@gentoo.org>
+  monadcatchio-mtl-0.3.0.5.ebuild:
+  Stable for sparc, wrt bug #480558
+
+  05 Sep 2013; Agostino Sarubbo <ago@gentoo.org>
+  monadcatchio-mtl-0.3.0.5.ebuild:
+  Stable for x86, wrt bug #480558
+
+  04 Sep 2013; Agostino Sarubbo <ago@gentoo.org>
+  monadcatchio-mtl-0.3.0.5.ebuild:
+  Stable for ppc, wrt bug #480558
+
+  03 Sep 2013; Agostino Sarubbo <ago@gentoo.org>
+  monadcatchio-mtl-0.3.0.5.ebuild:
+  Stable for alpha, wrt bug #480558
+
+  31 Aug 2013; Agostino Sarubbo <ago@gentoo.org>
+  monadcatchio-mtl-0.3.0.5.ebuild:
+  Stable for amd64, wrt bug #480558
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  18 Nov 2012; Mark Wright <gienah@gentoo.org> monadcatchio-mtl-0.3.0.5.ebuild:
+  rdep cgi has ~ppc ~sparc ~x86 keywords
+
+*monadcatchio-mtl-0.3.0.5 (18 Nov 2012)
+
+  18 Nov 2012; Mark Wright <gienah@gentoo.org> +monadcatchio-mtl-0.3.0.5.ebuild:
+  Bump monadcatchio-mtl to 0.3.0.5
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org>
+  monadcatchio-mtl-0.3.0.4.ebuild:
+  move dev-haskell/monadcatchio-mtl/monadcatchio-mtl-0.3.0.4.ebuild ebuild to
+  mirror://hackage
+
+*monadcatchio-mtl-0.3.0.4 (11 Apr 2012)
+
+  11 Apr 2012; Sergei Trofimovich <slyfox@gentoo.org> +metadata.xml,
+  +monadcatchio-mtl-0.3.0.4.ebuild:
+  Initial version. Monad-transformer version of the Control.Exception module. A
+  depend of new dev-haskell/cgi-3001.1.8.2.

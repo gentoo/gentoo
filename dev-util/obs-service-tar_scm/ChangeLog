@@ -1,0 +1,29 @@
+# ChangeLog for dev-util/obs-service-tar_scm
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/obs-service-tar_scm/ChangeLog,v 1.5 2013/11/02 09:35:47 scarabeus Exp $
+
+*obs-service-tar_scm-0.3.1 (02 Nov 2013)
+
+  02 Nov 2013; Tomáš Chvátal <scarabeus@gentoo.org>
+  +obs-service-tar_scm-0.3.1.ebuild, -obs-service-tar_scm-0.2.3.ebuild:
+  Update the repacker to working version again.
+
+  21 Jun 2013; Tomáš Chvátal <scarabeus@gentoo.org>
+  -obs-service-tar_scm-20121101.ebuild, obs-service-tar_scm-0.2.3.ebuild:
+  Stable on x86 and amd64. Drop older.
+
+*obs-service-tar_scm-0.2.3 (18 Mar 2013)
+
+  18 Mar 2013; Michal Hrusecky <miska@gentoo.org>
+  +obs-service-tar_scm-0.2.3.ebuild:
+  Adding ebuild with real version (and fixed bug#446074)
+
+  15 Nov 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  obs-service-tar_scm-20121101.ebuild:
+  Stabilise on amd64 and x86 as it is just few files around.
+
+*obs-service-tar_scm-20121101 (15 Nov 2012)
+
+  15 Nov 2012; Tomáš Chvátal <scarabeus@gentoo.org> +metadata.xml,
+  +obs-service-tar_scm-20121101.ebuild:
+  Add service to download directly from scm.

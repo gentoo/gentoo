@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=dev-vcs/git doc? ( app-text/asciidoc app-text/xmlto )
+DESCRIPTION=A series of bash scripts which add a quilt-like interface to git
+HOMEPAGE=http://www.kernel.org/pub/linux/kernel/people/jsipek/guilt/
+IUSE=doc
+KEYWORDS=~amd64 ~ia64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-vcs/git
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://kernel/linux/kernel/people/jsipek/guilt/guilt-0.34.tar.bz2 mirror://gentoo/guilt-manpages-0.34.tar.bz2
+_md5_=d67f817ae0896eb1475f2440ba8359b7

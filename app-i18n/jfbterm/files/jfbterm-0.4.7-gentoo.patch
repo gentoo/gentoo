@@ -1,0 +1,144 @@
+diff -Naur jfbterm-0.4.7.orig/fbcommon.c jfbterm-0.4.7/fbcommon.c
+--- jfbterm-0.4.7.orig/fbcommon.c	2003-09-03 00:23:17.000000000 +0900
++++ jfbterm-0.4.7/fbcommon.c	2007-08-18 10:55:30.000000000 +0900
+@@ -46,7 +46,6 @@
+ #endif
+ #include <linux/vt.h>
+ #include <linux/fb.h>
+-#include <asm/page.h>
+ 
+ #include "mytypes.h"
+ #include "fbcommon.h"
+@@ -475,6 +474,9 @@
+ 			perror("ioctl FBIOGET_CON2FBMAP");
+ 			c2m.framebuffer = 0;
+ 		}
++		if (-1 == c2m.framebuffer) {
++			c2m.framebuffer = 0;
++		}
+ 		close(fd);
+ 		snprintf(fbdn, 15, "/dev/fb%d", c2m.framebuffer);
+ 	}
+diff -Naur jfbterm-0.4.7.orig/jfbterm.conf.sample jfbterm-0.4.7/jfbterm.conf.sample
+--- jfbterm-0.4.7.orig/jfbterm.conf.sample	2003-09-16 00:16:35.000000000 +0900
++++ jfbterm-0.4.7/jfbterm.conf.sample	2007-08-18 10:19:00.000000000 +0900
+@@ -19,29 +19,29 @@
+ #	Absolute path or relative path to PWD
+ #
+ ###############################################################################
+-fontset : iso646-1973irv,pcf,L,/usr/X11R6/lib/X11/fonts/misc/8x16.pcf.gz
++fontset : iso646-1973irv,pcf,L,/usr/share/fonts/misc/8x16.pcf.gz
+ +fontset: ansix3.4-1968,alias,L,iso646-1973irv
+-+fontset: jisc6226-1978,pcf,L,/usr/X11R6/lib/X11/fonts/misc/jiskan16.pcf.gz
+++fontset: jisc6226-1978,pcf,L,/usr/share/fonts/misc/jiskan16.pcf.gz
+ +fontset: jisx0208-1983,alias,L,jisc6226-1978
+-+fontset: jisc6220-1969roman,pcf,L,/usr/X11R6/lib/X11/fonts/misc/a18rk.pcf.gz
+++fontset: jisc6220-1969roman,pcf,L,/usr/share/fonts/intlfonts/a18rk.pcf.gz
+ +fontset: jisc6220-1969kana,alias,R,jisc6220-1969roman
+-+fontset: jisx0212-1990,pcf,L,/usr/X11R6/lib/X11/fonts/misc/jksp16.pcf.gz
+-+fontset: gb2312-80,pcf,L,/usr/X11R6/lib/X11/fonts/misc/gb16fs.pcf.gz
+-+fontset: ksc5601-1987,pcf,L,/usr/X11R6/lib/X11/fonts/misc/hanglg16.pcf.gz
+-+fontset: iso8859.1-1987,pcf,R,/usr/X11R6/lib/X11/fonts/misc/8x16.pcf.gz
+-+fontset: iso8859.2-1987,pcf,R,/usr/X11R6/lib/X11/fonts/misc/lt2-16-etl.pcf.gz
+-+fontset: iso8859.3-1988,pcf,R,/usr/X11R6/lib/X11/fonts/misc/lt3-16-etl.pcf.gz
+-+fontset: iso8859.4-1988,pcf,R,/usr/X11R6/lib/X11/fonts/misc/lt4-16-etl.pcf.gz
+-+fontset: iso8859.5-1988,pcf,R,/usr/X11R6/lib/X11/fonts/misc/cyr16-etl.pcf.gz
+-+fontset: iso8859.7-1987,pcf,R,/usr/X11R6/lib/X11/fonts/misc/grk16-etl.pcf.gz
+-+fontset: iso8859.8-1988,pcf,R,/usr/X11R6/lib/X11/fonts/misc/heb16-etl.pcf.gz
+-+fontset: iso8859.9-1989,pcf,R,/usr/X11R6/lib/X11/fonts/misc/lt5-16-etl.pcf.gz
+-+fontset: iso8859.10-1992,pcf,R,/usr/X11R6/lib/X11/fonts/misc/8x13-ISO8859-10.pcf.gz
+-+fontset: iso8859.13-1998,pcf,R,/usr/X11R6/lib/X11/fonts/misc/8x13-ISO8859-13.pcf.gz
+-+fontset: iso8859.14-1998,pcf,R,/usr/X11R6/lib/X11/fonts/misc/8x13-ISO8859-14.pcf.gz
+-+fontset: iso8859.15-1999,pcf,R,/usr/X11R6/lib/X11/fonts/misc/8x13-ISO8859-15.pcf.gz
+++fontset: jisx0212-1990,pcf,L,/usr/share/fonts/intlfonts/jksp16.pcf.gz
+++fontset: gb2312-80,pcf,L,/usr/share/fonts/misc/gb16fs.pcf.gz
+++fontset: ksc5601-1987,pcf,L,/usr/share/fonts/misc/hanglg16.pcf.gz
+++fontset: iso8859.1-1987,pcf,R,/usr/share/fonts/misc/8x16.pcf.gz
+++fontset: iso8859.2-1987,pcf,R,/usr/share/fonts/intlfonts/lt2-16-etl.pcf.gz
+++fontset: iso8859.3-1988,pcf,R,/usr/share/fonts/intlfonts/lt3-16-etl.pcf.gz
+++fontset: iso8859.4-1988,pcf,R,/usr/share/fonts/intlfonts/lt4-16-etl.pcf.gz
+++fontset: iso8859.5-1988,pcf,R,/usr/share/fonts/intlfonts/cyr16-etl.pcf.gz
+++fontset: iso8859.7-1987,pcf,R,/usr/share/fonts/intlfonts/grk16-etl.pcf.gz
+++fontset: iso8859.8-1988,pcf,R,/usr/share/fonts/intlfonts/heb16-etl.pcf.gz
+++fontset: iso8859.9-1989,pcf,R,/usr/share/fonts/intlfonts/lt5-16-etl.pcf.gz
+++fontset: iso8859.10-1992,pcf,R,/usr/share/fonts/misc/8x13-ISO8859-10.pcf.gz
+++fontset: iso8859.13-1998,pcf,R,/usr/share/fonts/misc/8x13-ISO8859-13.pcf.gz
+++fontset: iso8859.14-1998,pcf,R,/usr/share/fonts/misc/8x13-ISO8859-14.pcf.gz
+++fontset: iso8859.15-1999,pcf,R,/usr/share/fonts/misc/8x13-ISO8859-15.pcf.gz
+ +fontset: vt100-graphics,pcf,L,/usr/share/fonts/jfbterm/vt100-graphics.pcf.gz
+-+fontset: iso10646.1,pcf,U,/usr/X11R6/lib/X11/fonts/misc/unifont.pcf.gz
+++fontset: iso10646.1,pcf,U,/usr/share/fonts/unifont/unifont.pcf.gz
+ 
+ 
+ ###############################################################################
+diff -Naur jfbterm-0.4.7.orig/jfbterm.conf.sample.ja jfbterm-0.4.7/jfbterm.conf.sample.ja
+--- jfbterm-0.4.7.orig/jfbterm.conf.sample.ja	2003-09-16 00:16:35.000000000 +0900
++++ jfbterm-0.4.7/jfbterm.conf.sample.ja	2007-08-18 10:19:11.000000000 +0900
+@@ -25,29 +25,29 @@
+ #	絶対パス or PWDからの相対パス
+ #
+ ################################################################################
+-fontset : iso646-1973irv,pcf,L,/usr/X11R6/lib/X11/fonts/misc/8x16.pcf.gz
++fontset : iso646-1973irv,pcf,L,/usr/share/fonts/misc/8x16.pcf.gz
+ +fontset: ansix3.4-1968,alias,L,iso646-1973irv
+-+fontset: jisc6226-1978,pcf,L,/usr/X11R6/lib/X11/fonts/misc/jiskan16.pcf.gz
+++fontset: jisc6226-1978,pcf,L,/usr/share/fonts/misc/jiskan16.pcf.gz
+ +fontset: jisx0208-1983,alias,L,jisc6226-1978
+-+fontset: jisc6220-1969roman,pcf,L,/usr/X11R6/lib/X11/fonts/misc/a18rk.pcf.gz
+++fontset: jisc6220-1969roman,pcf,L,/usr/share/fonts/intlfonts/a18rk.pcf.gz
+ +fontset: jisc6220-1969kana,alias,R,jisc6220-1969roman
+-+fontset: jisx0212-1990,pcf,L,/usr/X11R6/lib/X11/fonts/misc/jksp16.pcf.gz
+-+fontset: gb2312-80,pcf,L,/usr/X11R6/lib/X11/fonts/misc/gb16fs.pcf.gz
+-+fontset: ksc5601-1987,pcf,L,/usr/X11R6/lib/X11/fonts/misc/hanglg16.pcf.gz
+-+fontset: iso8859.1-1987,pcf,R,/usr/X11R6/lib/X11/fonts/misc/8x16.pcf.gz
+-+fontset: iso8859.2-1987,pcf,R,/usr/X11R6/lib/X11/fonts/misc/lt2-16-etl.pcf.gz
+-+fontset: iso8859.3-1987,pcf,R,/usr/X11R6/lib/X11/fonts/misc/lt3-16-etl.pcf.gz
+-+fontset: iso8859.4-1988,pcf,R,/usr/X11R6/lib/X11/fonts/misc/lt4-16-etl.pcf.gz
+-+fontset: iso8859.5-1988,pcf,R,/usr/X11R6/lib/X11/fonts/misc/cyr16-etl.pcf.gz
+-+fontset: iso8859.7-1987,pcf,R,/usr/X11R6/lib/X11/fonts/misc/grk16-etl.pcf.gz
+-+fontset: iso8859.8-1988,pcf,R,/usr/X11R6/lib/X11/fonts/misc/heb16-etl.pcf.gz
+-+fontset: iso8859.9-1989,pcf,R,/usr/X11R6/lib/X11/fonts/misc/lt5-16-etl.pcf.gz
+-+fontset: iso8859.10-1992,pcf,R,/usr/X11R6/lib/X11/fonts/misc/8x13-ISO8859-10.pcf.gz
+-+fontset: iso8859.13-1998,pcf,R,/usr/X11R6/lib/X11/fonts/misc/8x13-ISO8859-13.pcf.gz
+-+fontset: iso8859.14-1998,pcf,R,/usr/X11R6/lib/X11/fonts/misc/8x13-ISO8859-14.pcf.gz
+-+fontset: iso8859.15-1999,pcf,R,/usr/X11R6/lib/X11/fonts/misc/8x13-ISO8859-15.pcf.gz
+++fontset: jisx0212-1990,pcf,L,/usr/share/fonts/intlfonts/jksp16.pcf.gz
+++fontset: gb2312-80,pcf,L,/usr/share/fonts/misc/gb16fs.pcf.gz
+++fontset: ksc5601-1987,pcf,L,/usr/share/fonts/misc/hanglg16.pcf.gz
+++fontset: iso8859.1-1987,pcf,R,/usr/share/fonts/misc/8x16.pcf.gz
+++fontset: iso8859.2-1987,pcf,R,/usr/share/fonts/intlfonts/lt2-16-etl.pcf.gz
+++fontset: iso8859.3-1987,pcf,R,/usr/share/fonts/intlfonts/lt3-16-etl.pcf.gz
+++fontset: iso8859.4-1988,pcf,R,/usr/share/fonts/intlfonts/lt4-16-etl.pcf.gz
+++fontset: iso8859.5-1988,pcf,R,/usr/share/fonts/intlfonts/cyr16-etl.pcf.gz
+++fontset: iso8859.7-1987,pcf,R,/usr/share/fonts/intlfonts/grk16-etl.pcf.gz
+++fontset: iso8859.8-1988,pcf,R,/usr/share/fonts/intlfonts/heb16-etl.pcf.gz
+++fontset: iso8859.9-1989,pcf,R,/usr/share/fonts/intlfonts/lt5-16-etl.pcf.gz
+++fontset: iso8859.10-1992,pcf,R,/usr/share/fonts/misc/8x13-ISO8859-10.pcf.gz
+++fontset: iso8859.13-1998,pcf,R,/usr/share/fonts/misc/8x13-ISO8859-13.pcf.gz
+++fontset: iso8859.14-1998,pcf,R,/usr/share/fonts/misc/8x13-ISO8859-14.pcf.gz
+++fontset: iso8859.15-1999,pcf,R,/usr/share/fonts/misc/8x13-ISO8859-15.pcf.gz
+ +fontset: vt100-graphics,pcf,L,/usr/share/fonts/jfbterm/vt100-graphics.pcf.gz
+-+fontset: iso10646.1,pcf,L,/usr/X11R6/lib/X11/fonts/misc/unifont.pcf.gz
+++fontset: iso10646.1,pcf,L,/usr/share/fonts/unifont/unifont.pcf.gz
+ 
+ ################################################################################
+ #
+diff -Naur jfbterm-0.4.7.orig/util.h jfbterm-0.4.7/util.h
+--- jfbterm-0.4.7.orig/util.h	2003-09-16 00:45:31.000000000 +0900
++++ jfbterm-0.4.7/util.h	2007-08-18 08:48:49.000000000 +0900
+@@ -31,6 +31,7 @@
+ 
+ #include <sys/types.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ 
+ void util_privilege_init();
+ void util_privilege_on();
+@@ -49,4 +50,7 @@
+ 
+ int util_search_string(const char* s, const char** array);
+ 
++#define PAGE_SIZE (sysconf(_SC_PAGESIZE))
++#define PAGE_MASK (~(PAGE_SIZE-1))
++
+ #endif /* INCLUDE_UTIL_H */

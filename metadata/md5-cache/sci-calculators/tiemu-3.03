@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=sci-libs/libticables2 sci-libs/libticalcs2 sci-libs/libtifiles2 sci-libs/libticonv gnome-base/libglade:2.0 x11-libs/gtk+:2 dbus? ( >=dev-libs/dbus-glib-0.60 ) nls? ( virtual/libintl ) sdl? ( media-libs/libsdl ) xinerama? ( x11-libs/libXinerama ) virtual/pkgconfig nls? ( sys-devel/gettext ) xinerama? ( x11-proto/xineramaproto )
+DESCRIPTION=Texas Instruments hand-helds emulator
+EAPI=4
+HOMEPAGE=http://lpg.ticalc.org/prj_tiemu/
+IUSE=dbus nls sdl threads xinerama
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=sci-libs/libticables2 sci-libs/libticalcs2 sci-libs/libtifiles2 sci-libs/libticonv gnome-base/libglade:2.0 x11-libs/gtk+:2 dbus? ( >=dev-libs/dbus-glib-0.60 ) nls? ( virtual/libintl ) sdl? ( media-libs/libsdl ) xinerama? ( x11-libs/libXinerama )
+SLOT=0
+SRC_URI=http://repo.calcforge.org/debian/source/tiemu_3.03.orig.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c55e3578f18e5c87f301516a7924bd4f

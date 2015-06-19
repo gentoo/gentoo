@@ -1,0 +1,42 @@
+# ChangeLog for media-sound/dvda-author
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/dvda-author/ChangeLog,v 1.9 2014/05/10 14:04:54 tomwij Exp $
+
+*dvda-author-10.06-r1 (10 May 2014)
+
+  10 May 2014; Tom Wijsman <TomWij@gentoo.org> +dvda-author-10.06-r1.ebuild:
+  [QA] Revision bump. EAPI 5. Support --as-needed specification by reordering
+  the linker command; fixes bug #336597, filed by Diego (flameeyes), with help
+  from Samuli (ssuominen).
+
+*dvda-author-10.06 (30 Aug 2010)
+
+  30 Aug 2010; Tim Harder <radhermit@gentoo.org> -dvda-author-09.05.ebuild,
+  -files/dvda-author-09.05-sandbox.patch, +dvda-author-10.06.ebuild:
+  Version bump for bug #333121. Remove old, broken version; closes bugs
+  #321203 and #321829.
+
+  17 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  dvda-author-09.05.ebuild:
+  Remove AT_NO_RECURSIVE wrt #279670.
+
+  08 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  dvda-author-09.05.ebuild:
+  Force >=libtool-2 instead of trying to fix it for 1.x wrt #279670.
+
+*dvda-author-09.05 (23 Jul 2009)
+
+  23 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +dvda-author-09.05.ebuild, +files/dvda-author-09.05-sandbox.patch:
+  Version bump.
+
+  02 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  dvda-author-20050703.ebuild, +files/dvda-author-20050703-asneeded.patch:
+  Add patch to build with --as-needed, closes bug #247834.
+
+*dvda-author-20050703 (06 Jan 2008)
+
+  06 Jan 2008; Stefan Briesenick <sbriesen@gentoo.org>
+  +files/dvda-author-20050703-flac113.diff, +metadata.xml,
+  +dvda-author-20050703.ebuild:
+  initial commit, using own patch to use system flac-libs >= 1.1.3

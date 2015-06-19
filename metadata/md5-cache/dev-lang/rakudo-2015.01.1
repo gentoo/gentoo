@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=parrot? ( >=dev-lang/parrot-6.7.0:=[unicode] ) >=dev-lang/nqp-2015.01[parrot?,java?,moar?] dev-lang/perl
+DESCRIPTION=A Perl 6 implementation built on the Parrot virtual machine
+EAPI=5
+HOMEPAGE=http://rakudo.org/
+IUSE=doc +parrot java moar
+KEYWORDS=~amd64 ~x86
+LICENSE=Artistic-2
+RDEPEND=parrot? ( >=dev-lang/parrot-6.7.0:=[unicode] ) >=dev-lang/nqp-2015.01[parrot?,java?,moar?]
+SLOT=0
+SRC_URI=http://rakudo.org/downloads/rakudo/rakudo-2015.01.1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=0e95ff1f98c08b20af3dd160713ef328

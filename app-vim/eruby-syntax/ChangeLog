@@ -1,0 +1,70 @@
+# ChangeLog for app-vim/eruby-syntax
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/eruby-syntax/ChangeLog,v 1.18 2013/05/14 05:20:31 radhermit Exp $
+
+  14 May 2013; Tim Harder <radhermit@gentoo.org> -eruby-syntax-2.0.ebuild:
+  Remove old.
+
+  14 May 2013; Tim Harder <radhermit@gentoo.org> eruby-syntax-2.0-r1.ebuild:
+  Fix quoting QA warning.
+
+  07 Dec 2012; Ulrich Müller <ulm@gentoo.org> eruby-syntax-2.0.ebuild,
+  eruby-syntax-2.0-r1.ebuild:
+  Fix LICENSE, bug 445808.
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org> eruby-syntax-2.0-r1.ebuild:
+  Drop to ~mips
+
+  13 Oct 2007; Tom Gall <tgall@gentoo.org> eruby-syntax-2.0-r1.ebuild:
+  stable on ppc64
+
+  03 May 2007; Richard Brown <rbrown@gentoo.org> eruby-syntax-2.0-r1.ebuild:
+  stable mips wrt #156963
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove ka0ttic from metadata.xml due to retirement.
+
+  10 Mar 2007; Peter Weller <welp@gentoo.org> eruby-syntax-2.0-r1.ebuild:
+  Keyworded ~x86-fbsd
+
+  20 Dec 2006; Jeroen Roovers <jer@gentoo.org> eruby-syntax-2.0-r1.ebuild:
+  Stable for HPPA (bug #156963).
+
+  08 Dec 2006; Christian Faulhammer <opfer@gentoo.org>
+  eruby-syntax-2.0-r1.ebuild:
+  stable x86, bug #156963
+
+  27 Nov 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  eruby-syntax-2.0-r1.ebuild:
+  stable on ppc
+
+  20 Aug 2006; <malc@gentoo.org> eruby-syntax-2.0-r1.ebuild:
+  Stable on amd64
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  eruby-syntax-2.0-r1.ebuild:
+  Mark 2.0-r1 stable on alpha
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  eruby-syntax-2.0-r1.ebuild:
+  Mark 2.0-r1 stable on ia64
+
+  28 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  eruby-syntax-2.0-r1.ebuild:
+  Added ~mips, stable on sparc
+
+*eruby-syntax-2.0-r1 (10 Aug 2005)
+
+  10 Aug 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  +eruby-syntax-2.0-r1.ebuild:
+  Don't use hi link, bug #101799
+
+  12 Jun 2005; David Holm <dholm@gentoo.org> eruby-syntax-2.0.ebuild:
+  Added to ~ppc.
+
+*eruby-syntax-2.0 (11 Jun 2005)
+
+  11 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml,
+  +eruby-syntax-2.0.ebuild:
+  New syntax package, requested by nathanegge@yahoo.com in bug 95639.
+

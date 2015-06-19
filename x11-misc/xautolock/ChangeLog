@@ -1,0 +1,101 @@
+# ChangeLog for x11-misc/xautolock
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xautolock/ChangeLog,v 1.31 2014/10/20 17:34:43 jer Exp $
+
+  20 Oct 2014; Jeroen Roovers <jer@gentoo.org> xautolock-2.2.ebuild:
+  Add alternative dependency on x11-misc/slim (remove x11-misc/slimlock) by
+  eroen (bug #489018). EAPI bump.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> xautolock-2.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  17 Dec 2012; Jeroen Roovers <jer@gentoo.org> -xautolock-2.1-r1.ebuild:
+  Old.
+
+  16 Dec 2012; Raúl Porcel <armin76@gentoo.org> xautolock-2.2.ebuild:
+  sparc stable wrt #440288
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org> xautolock-2.2.ebuild:
+  Stable for x86, wrt bug #440288
+
+  31 Oct 2012; Kenneth Prugh <ken69267@gentoo.org> xautolock-2.2.ebuild:
+  amd64 stable, bug #440288
+
+  31 Oct 2012; Anthony G. Basile <blueness@gentoo.org> xautolock-2.2.ebuild:
+  stable ppc, bug #440288
+
+  30 Oct 2012; Jeroen Roovers <jer@gentoo.org> xautolock-2.2.ebuild:
+  RDEPEND on x11-misc/slimlock too by Ihar Hrachyshka (bug #440276).
+
+  11 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> xautolock-2.1-r1.ebuild,
+  xautolock-2.2.ebuild:
+  Fix dependecy on libXScrnSaver wrt bug 378825 by Mark Tomich
+  <mstomich@gmail.com>
+
+  08 Aug 2011; Markos Chandras <hwoarang@gentoo.org> xautolock-2.1-r1.ebuild,
+  xautolock-2.2.ebuild:
+  Add missing xlock applications. Bug #377965 and bug #347729
+
+  09 Aug 2010; Kacper Kowalik <xarthisius@gentoo.org>
+  xautolock-2.1-r1.ebuild, xautolock-2.2.ebuild:
+  Respect CC, CCFLAGS and LDFLAGS. Fixes bug 331789. Thanks Diego for the
+  report
+
+  24 May 2008; Markus Meier <maekke@gentoo.org> xautolock-2.1-r1.ebuild:
+  amd64 stable, bug #220643
+
+*xautolock-2.2 (23 Mar 2008)
+
+  23 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> +xautolock-2.2.ebuild:
+  Version bump.
+
+  24 Jun 2007; Samuli Suominen <drac@gentoo.org> xautolock-2.1-r1.ebuild:
+  Add missing dep of x11-proto/scrnsaverproto and remove virtual/x11 usage.
+
+  12 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org> -xautolock-2.1.ebuild:
+  Remove old version.
+
+  12 Oct 2006; Emanuele Giaquinta <exg@gentoo.org> xautolock-2.1-r1.ebuild:
+  Stable on ppc; bug #150819
+
+  11 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  xautolock-2.1-r1.ebuild:
+  Stable on sparc wrt #150819
+
+  11 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  xautolock-2.1-r1.ebuild:
+  Stable on x86 to fix bug #150819.
+
+  13 May 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  xautolock-2.1-r1.ebuild:
+  Fixed DEPEND, see bug #132738.
+
+*xautolock-2.1-r1 (06 May 2006)
+
+  06 May 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +xautolock-2.1-r1.ebuild:
+  Add missing deps for modular X. See bug #132399.
+
+  21 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> xautolock-2.1.ebuild:
+  Fixed DEPEND for modular X.
+
+  17 Jun 2005; Jonathan Smith <smithj@gentoo.org> xautolock-2.1.ebuild:
+  fixed dependencies again
+
+  14 Jun 2005; Jonathan Smith <smithj@gentoo.org> xautolock-2.1.ebuild:
+  added xlockmore as a dependency for #95246
+
+  24 Feb 2005; Karol Wojtaszek <sekretarz@gentoo.org> xautolock-2.1.ebuild:
+  Added to ~amd64, bug #83053
+
+  01 Jun 2004; Brandon Hale <tseng@gentoo.org> xautolock-2.1.ebuild:
+  Add IUSE=
+
+  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*xautolock-2.1 (13 Apr 2002)
+  13 Apr 2002; Spider <spider@gentoo.org> xautolock-2.1.ebuild:
+  initial ebuild.  for use with xlockmore

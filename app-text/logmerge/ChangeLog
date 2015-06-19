@@ -1,0 +1,19 @@
+# ChangeLog for app-text/logmerge
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/logmerge/ChangeLog,v 1.4 2014/11/14 01:21:25 tomwij Exp $
+
+  14 Nov 2014; Tom Wijsman <TomWij@gentoo.org> metadata.xml:
+  Maintainer needed.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> logmerge-0.4_beta.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  04 May 2013; Tom Wijsman <TomWij@gentoo.org> logmerge-0.4_beta.ebuild:
+  Removed PN from HOMEPAGE. Added missing unzip and perl dependencies which are
+  not base packages. Tested.
+
+*logmerge-0.4_beta (26 Mar 2013)
+
+  26 Mar 2013; Tom Wijsman <TomWij@gentoo.org> +logmerge-0.4_beta.ebuild,
+  +metadata.xml:
+  New ebuild for logmerge, suggested by Grant. Fixes bug #461316.

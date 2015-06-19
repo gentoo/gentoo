@@ -1,0 +1,40 @@
+# ChangeLog for app-backup/cpdup
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/cpdup/ChangeLog,v 1.8 2015/04/19 22:42:26 mrueg Exp $
+
+  19 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -cpdup-1.17.ebuild:
+  Remove old.
+
+*cpdup-1.18 (23 Apr 2014)
+
+  23 Apr 2014; Naohiro Aota <naota@gentoo.org> +cpdup-1.18.ebuild:
+  version bump
+
+  24 Nov 2012; Alexis Ballier <aballier@gentoo.org> cpdup-1.17.ebuild:
+  LICENSE is BSD-2 as for FreeBSD, bug #444410 by Ulrich Müller
+
+  24 Nov 2012; Alexis Ballier <aballier@gentoo.org> -cpdup-1.07.ebuild,
+  -cpdup-1.11.ebuild, -files/cpdup-1.11-explicit_sizes.patch:
+  remove old
+
+*cpdup-1.17 (17 May 2011)
+
+  17 May 2011; Naohiro Aota <naota@gentoo.org> +cpdup-1.17.ebuild:
+  Version bump.
+
+  25 Oct 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove drizzt from metadata.xml (#149111)
+
+*cpdup-1.11 (05 Feb 2009)
+
+  05 Feb 2009; Timothy Redaelli <drizzt@gentoo.org>
+  +files/cpdup-1.11-explicit_sizes.patch, +files/cpdup-1.11-unused.patch,
+  +files/Makefile.linux, +cpdup-1.11.ebuild:
+  Version bump, add a patch to fix 64bit platforms (from Fedora bug #435508)
+  Add compatibility with Linux and add ~amd64 keyword
+
+*cpdup-1.07 (14 Nov 2006)
+
+  14 Nov 2006; Timothy Redaelli <drizzt@gentoo.org> +metadata.xml,
+  +cpdup-1.07.ebuild:
+  Initial version, imported from transition overlay.

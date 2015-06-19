@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=phpBB is an open-source bulletin board package
+EAPI=5
+HOMEPAGE=http://www.phpbb.com/
+IUSE=vhosts
+KEYWORDS=~alpha ~amd64 ~arm64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/httpd-php >=app-admin/webapp-config-1.50.15
+SLOT=3.0.12
+SRC_URI=http://download.phpbb.com/pub/release/3.0/3.0.12/phpBB-3.0.12.tar.bz2
+_eclasses_=webapp	6621f8b5df9f14800054a5953065efeb
+_md5_=ecebda3e620182ec96fbdf0bdbf35a33

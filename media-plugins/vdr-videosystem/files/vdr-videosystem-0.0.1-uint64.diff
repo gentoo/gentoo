@@ -1,0 +1,12 @@
+diff -ru videosystem-0.0.1-orig/videosystem.c videosystem-0.0.1/videosystem.c
+--- videosystem-0.0.1-orig/videosystem.c	2006-12-03 16:03:23.386105568 +0100
++++ videosystem-0.0.1/videosystem.c	2006-12-03 16:03:31.716095700 +0100
+@@ -45,7 +45,7 @@
+ 	eVideoSystem GetVideoSystem(void);
+ 	
+ 	bool doexit;
+-	uint64 time;
++	uint64_t time;
+ 	eVideoSystem curVidSys;
+ 	bool initialized;
+ 	tOsdSettings pal;

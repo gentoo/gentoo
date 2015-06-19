@@ -1,0 +1,1 @@
+#*/20 * * * * /usr/bin/prey &>/dev/null

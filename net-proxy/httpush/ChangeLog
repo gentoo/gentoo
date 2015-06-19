@@ -1,0 +1,34 @@
+# ChangeLog for net-proxy/httpush
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/httpush/ChangeLog,v 1.7 2015/01/07 13:58:42 pacho Exp $
+
+  07 Jan 2015; Pacho Ramos <pacho@gentoo.org> -httpush-0.9_beta11.ebuild,
+  metadata.xml:
+  Reassign as and cleanup discussed at https://www.mail-archive.com/gentoo-
+  dev@lists.gentoo.org/msg66357.html
+
+*httpush-0.9_beta11-r1 (14 Dec 2008)
+
+  14 Dec 2008; Alin Năstac <mrness@gentoo.org>
+  +httpush-0.9_beta11-r1.ebuild:
+  Rename reindex script as httpush-reindex (#248176).
+
+  06 Mar 2006; Alin Nastac <mrness@gentoo.org> httpush-0.9_beta11.ebuild:
+  Replace xml2 USE flag with xml.
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org>
+  httpush-0.9_beta11.ebuild:
+  Virtuals for perl-core
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  httpush-0.9_beta11.ebuild:
+  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
+
+  22 Apr 2005; Alin Nastac <mrness@gentoo.org> :
+  Rename category & herd www-proxy to net-proxy
+
+*httpush-0.9_beta11 (01 Apr 2005)
+
+  01 Apr 2005; Alin Nastac <mrness@gentoo.org> +metadata.xml,
+  +httpush-0.9_beta11.ebuild:
+  Initial import from bug #87307.

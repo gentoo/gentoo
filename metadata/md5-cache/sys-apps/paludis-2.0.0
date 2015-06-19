@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst prepare pretend setup test
+DEPEND=>=app-admin/eselect-1.2.13 >=app-shells/bash-3.2 dev-libs/libpcre[cxx] sys-apps/file pbins? ( >=app-arch/libarchive-3.1.2 ) python? ( >=dev-lang/python-2.7.5-r2:2.7 dev-lang/python-exec:2[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=dev-libs/boost-1.41.0[python,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) ruby? ( dev-lang/ruby:1.9 ) search-index? ( >=dev-db/sqlite-3 ) xml? ( >=dev-libs/libxml2-2.6 ) >=app-text/asciidoc-8.6.3 app-text/htmltidy app-text/xmlto >=sys-devel/gcc-4.7 doc? ( || ( >=app-doc/doxygen-1.5.3 <=app-doc/doxygen-1.5.1 ) python? ( dev-python/sphinx[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) ruby? ( dev-ruby/syntax ) ) virtual/pkgconfig test? ( >=dev-cpp/gtest-1.6.0-r1 )
+DESCRIPTION=paludis, the other package mangler
+EAPI=4
+HOMEPAGE=http://paludis.exherbo.org/
+IUSE=doc pbins pink python ruby search-index test xml python_targets_python2_7
+KEYWORDS=~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86
+LICENSE=GPL-2 vim
+PDEPEND=app-eselect/eselect-package-manager
+RDEPEND=>=app-admin/eselect-1.2.13 >=app-shells/bash-3.2 dev-libs/libpcre[cxx] sys-apps/file pbins? ( >=app-arch/libarchive-3.1.2 ) python? ( >=dev-lang/python-2.7.5-r2:2.7 dev-lang/python-exec:2[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=dev-libs/boost-1.41.0[python,python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] ) ruby? ( dev-lang/ruby:1.9 ) search-index? ( >=dev-db/sqlite-3 ) xml? ( >=dev-libs/libxml2-2.6 ) sys-apps/sandbox
+REQUIRED_USE=python? ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=http://paludis.exherbo.org/download/paludis-2.0.0.tar.bz2
+_eclasses_=bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	7a178335dbd6ea7f50ed4e3e1c13c1e4	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=82fd25f8e33db3924ddf9a5a03756870

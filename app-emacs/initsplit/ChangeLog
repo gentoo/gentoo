@@ -1,0 +1,55 @@
+# ChangeLog for app-emacs/initsplit
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/initsplit/ChangeLog,v 1.13 2014/03/24 18:55:09 ulm Exp $
+
+  24 Mar 2014; Ulrich Müller <ulm@gentoo.org> -initsplit-1.6-r1.ebuild,
+  -files/51initsplit-gentoo.el:
+  Remove old.
+
+  24 Mar 2014; Agostino Sarubbo <ago@gentoo.org>
+  initsplit-1.7_pre20140203.ebuild:
+  Stable for x86, wrt bug #505452
+
+  24 Mar 2014; Agostino Sarubbo <ago@gentoo.org>
+  initsplit-1.7_pre20140203.ebuild:
+  Stable for amd64, wrt bug #505452
+
+*initsplit-1.7_pre20140203 (20 Feb 2014)
+
+  20 Feb 2014; Ulrich Müller <ulm@gentoo.org>
+  +initsplit-1.7_pre20140203.ebuild, +files/50initsplit-gentoo.el:
+  Version bump. Snapshot of upstream repository.
+
+  29 Jan 2009; Christian Faulhammer <fauli@gentoo.org>
+  -files/50initsplit-gentoo.el, -initsplit-1.6.ebuild:
+  clean up
+
+  01 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  initsplit-1.6-r1.ebuild:
+  stable x86/amd64
+
+*initsplit-1.6-r1 (14 Oct 2007)
+
+  14 Oct 2007; Ulrich Mueller <ulm@gentoo.org> +files/51initsplit-gentoo.el,
+  +initsplit-1.6-r1.ebuild:
+  Use autoload mechanism. Don't enable initsplit as site default.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  24 Oct 2005; Joseph Jezak <josejx@gentoo.org> initsplit-1.6.ebuild:
+  Marked ~ppc.
+
+  11 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  files/50initsplit-gentoo.el:
+  Add site-lisp path to load-path; Enables non-Portage Emacs builds to use
+  /usr/share/emacs/site-lisp/
+
+  29 Jun 2005; Matthew Kennedy <mkennedy@gentoo.org> initsplit-1.6.ebuild:
+  Keywording ~amd64; Clean up ebuild.
+
+*initsplit-1.6 (17 Nov 2004)
+
+  17 Nov 2004; Matthew Kenendy <mkennedy@gentoo.org> +metadata.xml,
+  +files/50initsplit-gentoo.el, +initsplit-1.6.ebuild:
+  Initial port.  Ebuild contributed by Matthew Kennedy <mkennedy@gentoo.org>

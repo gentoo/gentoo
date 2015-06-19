@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>joker@gentoo.org</email>
+		<name>Christian Birchinger</name>
+	</maintainer>
+	<longdescription>This tool lets you programatically (or manually) simulate keyboard input and
+mouse activity, move and resize windows, etc. It does this using X11's XTEST
+extension and other Xlib functions. </longdescription>
+	<upstream>
+		<remote-id type="google-code">semicomplete</remote-id>
+	</upstream>
+</pkgmetadata>

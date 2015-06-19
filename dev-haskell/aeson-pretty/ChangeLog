@@ -1,0 +1,35 @@
+# ChangeLog for dev-haskell/aeson-pretty
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/aeson-pretty/ChangeLog,v 1.8 2015/06/09 07:09:50 ago Exp $
+
+  09 Jun 2015; Agostino Sarubbo <ago@gentoo.org> aeson-pretty-0.7.1.ebuild:
+  Stable for x86, wrt bug #550390
+
+  08 Jun 2015; Agostino Sarubbo <ago@gentoo.org> aeson-pretty-0.7.1.ebuild:
+  Stable for amd64, wrt bug #550390
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*aeson-pretty-0.7.2 (14 Dec 2014)
+
+  14 Dec 2014; Mark Wright <gienah@gentoo.org> +aeson-pretty-0.7.2.ebuild:
+  Bump aeson-pretty to 0.7.2
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> aeson-pretty-0.7.1.ebuild,
+  aeson-pretty-0.7.ebuild:
+  Drop trailing '.' from description.
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*aeson-pretty-0.7.1 (09 Mar 2014)
+
+  09 Mar 2014; Mark Wright <gienah@gentoo.org> +aeson-pretty-0.7.1.ebuild:
+  Bump aeson-pretty to 0.7.1
+
+*aeson-pretty-0.7 (20 Nov 2013)
+
+  20 Nov 2013; Sergei Trofimovich <slyfox@gentoo.org> +aeson-pretty-0.7.ebuild,
+  +metadata.xml:
+  Initial commit. JSON pretty-printing library and command-line tool.

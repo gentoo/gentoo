@@ -1,0 +1,38 @@
+# ChangeLog for app-text/psiconv
+# Copyright 2000-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/psiconv/ChangeLog,v 1.12 2014/03/10 10:57:14 ssuominen Exp $
+
+  10 Mar 2014; Samuli Suominen <ssuominen@gentoo.org> -psiconv-0.8.3.ebuild:
+  old
+
+  10 Mar 2014; Samuli Suominen <ssuominen@gentoo.org> psiconv-0.8.3-r1.ebuild,
+  psiconv-0.8.3.ebuild:
+  Punt virtual/libc dependency.
+
+*psiconv-0.8.3-r1 (28 Oct 2012)
+
+  28 Oct 2012; Agostino Sarubbo <ago@gentoo.org> +psiconv-0.8.3-r1.ebuild:
+  EAPI4, drop unused doc IUSE, add ~amd64, add static-libs IUSE, respect AR
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> psiconv-0.8.3.ebuild:
+  virtual/glibc -> virtual/libc
+
+  13 May 2004; Bryan Østergaard <kloeri@gentoo.org> psiconv-0.8.3.ebuild:
+  Stable on alpha.
+
+*psiconv-0.8.3 (14 Sep 2003)
+
+  14 Sep 2003; Seemant Kulleen <seemant@gentoo.org> psiconv-0.8.3.ebuild:
+  Psiconv is a standalone tool for the reading and conversion of Psion
+  documents.  It also provides a lib used by AbiWord to read same with a
+  plugin.  Ebuild submitted by: MG <markgilbert@hotpop.com> in bug #28717

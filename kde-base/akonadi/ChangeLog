@@ -1,0 +1,410 @@
+# ChangeLog for kde-base/akonadi
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-base/akonadi/ChangeLog,v 1.105 2015/02/16 19:53:41 johu Exp $
+
+  16 Feb 2015; Johannes Huber <johu@gentoo.org> -akonadi-4.4.11.1.ebuild:
+  Remove old.
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org> akonadi-4.4.11.1-r1.ebuild:
+  Stable for ppc wrt bug #517344
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org> akonadi-4.4.11.1-r1.ebuild:
+  Stable for x86 wrt bug #517344
+
+  12 Dec 2014; Mikle Kolyada <zlogene@gentoo.org> akonadi-4.4.11.1-r1.ebuild:
+  amd64 stable wrt bug #517344
+
+*akonadi-4.4.11.1-r1 (13 May 2014)
+
+  13 May 2014; Johannes Huber <johu@gentoo.org> +akonadi-4.4.11.1-r1.ebuild:
+  Revision bump adapts USE flag changes made in KDE SC 4.13.1, bug #508350.
+
+  21 Apr 2014; Johannes Huber <johu@gentoo.org> akonadi-4.4.11.1.ebuild:
+  Add use dep on app-office/akonadi-server[soprano].
+
+  05 Apr 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  akonadi-4.4.11.1.ebuild:
+  EAPI bump, clean up blockers
+
+*akonadi-4.4.11.1 (10 Oct 2013)
+
+  10 Oct 2013; Chris Reffett <creffett@gentoo.org> +akonadi-4.4.11.1.ebuild:
+  Actually add 4.4.11.1 this time.
+
+  10 Oct 2013; Chris Reffett <creffett@gentoo.org> -akonadi-4.4.11.1.ebuild:
+  Drop KDE SC 4.11.1
+
+  31 Jul 2013; Johannes Huber <johu@gentoo.org> akonadi-4.4.11.1.ebuild:
+  Update HOMEPAGE wrt bug #478884.
+
+  31 May 2013; Michael Palimaka <kensington@gentoo.org> akonadi-4.4.11.1.ebuild:
+  Add USE dependency default in preparation for the removal of the semantic-
+  desktop USE flag.
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org> akonadi-4.4.11.1.ebuild:
+  Add ~ppc64, wrt bug #455960
+
+  08 Dec 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  akonadi-4.4.11.1.ebuild:
+  Drop ppc64 as in rest of KDE
+
+  26 Jul 2012; Johannes Huber <johu@gentoo.org> akonadi-4.4.11.1.ebuild:
+  Block kde-base/akonadiconsole to prevent file collisions, bug #428182.
+
+  02 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org> -akonadi-4.4.9.ebuild,
+  -akonadi-4.4.10.ebuild:
+  Drop kdepim 4.4.9 and 4.4.10
+
+  01 Jun 2011; Brent Baude <ranger@gentoo.org> akonadi-4.4.11.1.ebuild:
+  Marking akonadi-4.4.11.1 ppc stable for bug 354033
+
+  09 May 2011; Markos Chandras <hwoarang@gentoo.org> akonadi-4.4.11.1.ebuild:
+  Stable on amd64 wrt bug #354033
+
+  09 May 2011; Thomas Kahle <tomka@gentoo.org> akonadi-4.4.11.1.ebuild:
+  x86 stable per bug 354033
+
+  22 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  akonadi-4.4.11.1.ebuild:
+  Correctly depend on kde-4.6
+
+*akonadi-4.4.11.1 (21 Apr 2011)
+
+  21 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +akonadi-4.4.11.1.ebuild:
+  Version bump
+
+  24 Mar 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -akonadi-4.4.5.ebuild:
+  Cleanup
+
+  24 Mar 2011; Brent Baude <ranger@gentoo.org> akonadi-4.4.9.ebuild:
+  Marking akonadi-4.4.9 ppc stable for bug 351345
+
+  13 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org> -akonadi-4.4.6.ebuild,
+  -akonadi-4.4.7.ebuild, -akonadi-4.4.8.ebuild:
+  Drop older KDEPIM releases
+
+  28 Jan 2011; Thomas Kahle <tomka@gentoo.org> akonadi-4.4.9.ebuild:
+  x86 stable per bug 351345
+
+  28 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> +akonadi-4.4.10.ebuild:
+  Version bump KDEPIM 4.4.10
+
+*akonadi-4.4.10 (28 Jan 2011)
+
+  28 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> +akonadi-4.4.10.ebuild:
+  Version bump KDEPIM 4.4.10
+
+  26 Jan 2011; Markos Chandras <hwoarang@gentoo.org> akonadi-4.4.9.ebuild:
+  Stable on amd64 wrt bug #351345
+
+  12 Jan 2011; Markos Chandras <hwoarang@gentoo.org> akonadi-4.4.8.ebuild:
+  Stable on amd64 wrt bug #351345
+
+*akonadi-4.4.9 (29 Dec 2010)
+
+  29 Dec 2010; Theo Chatzimichos <tampakrap@gentoo.org> +akonadi-4.4.9.ebuild:
+  Version bump KDEPIM 4.4.9
+
+*akonadi-4.4.8 (06 Dec 2010)
+
+  06 Dec 2010; Theo Chatzimichos <tampakrap@gentoo.org> +akonadi-4.4.8.ebuild:
+  Version bump KDE SC 4.4.8
+
+  06 Nov 2010; Christian Faulhammer <fauli@gentoo.org> akonadi-4.4.7.ebuild:
+  stable x86, bug 343969
+
+  03 Nov 2010; Markos Chandras <hwoarang@gentoo.org> akonadi-4.4.7.ebuild:
+  Stable on amd64 wrt bug #343969
+
+*akonadi-4.4.7 (24 Oct 2010)
+
+  24 Oct 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  +akonadi-4.4.7.ebuild:
+  Version bump KDEPIM 4.4.7
+
+*akonadi-4.4.6 (11 Sep 2010)
+
+  11 Sep 2010; Maciej Mrozowski <reavertm@gentoo.org> +akonadi-4.4.6.ebuild:
+  Version bump kdepim-4.4.6
+
+  09 Aug 2010; Tomáš Chvátal <scarabeus@gentoo.org> akonadi-4.4.5.ebuild:
+  Drop alpha ia64 and sparc per the AT Lead permission.
+
+  09 Aug 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -akonadi-4.3.5.ebuild, -akonadi-4.4.4.ebuild:
+  rm
+
+  09 Aug 2010; Christian Faulhammer <fauli@gentoo.org> akonadi-4.4.5.ebuild:
+  x86 stable, bug 322791
+
+  09 Aug 2010; Joseph Jezak <josejx@gentoo.org> akonadi-4.4.5.ebuild:
+  Marked ppc stable for bug #322791.
+
+  03 Aug 2010; Markos Chandras <hwoarang@gentoo.org> akonadi-4.4.5.ebuild:
+  Stable on amd64 wrt bug #322791
+
+  03 Jul 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  akonadi-4.4.5.ebuild:
+  [kde-base/akonadi-4.4.5] Synced keywords from 4.4.4 ebuilds dropping
+  ~alpha and ~ia64 keywords as these arches don't have semantic-desktop
+  support.
+
+*akonadi-4.4.5 (30 Jun 2010)
+
+  30 Jun 2010; Alexey Shvetsov <alexxy@gentoo.org> +akonadi-4.4.5.ebuild:
+  Version bump
+
+  27 Jun 2010; Christian Faulhammer <fauli@gentoo.org> akonadi-4.4.4.ebuild:
+  x86 stable, bug 322791
+
+  24 Jun 2010; Christoph Mende <angelos@gentoo.org> akonadi-4.4.4.ebuild:
+  Stable on amd64 wrt bug #322791
+
+  21 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -akonadi-4.3.3.ebuild, akonadi-4.3.5.ebuild, akonadi-4.4.4.ebuild:
+  Drop 4.3.3. Drop hppa keywords per bug #304363
+
+  06 Jun 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  akonadi-4.4.4.ebuild:
+  [kde-base/akonadi-4.4.4] Dropped ~alpha and ~ia64 keywords as they require
+  arches to unmask the semantic-desktop use flag.
+
+*akonadi-4.4.4 (06 Jun 2010)
+
+  06 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -akonadi-4.4.2.ebuild, -akonadi-4.4.3.ebuild, +akonadi-4.4.4.ebuild:
+  Remove old. Version bump.
+
+  05 Jun 2010; Maciej Mrozowski <reavertm@gentoo.org> akonadi-4.4.2.ebuild,
+  akonadi-4.4.3.ebuild:
+  Rename USE flag akonadi->semantic-desktop
+
+  03 May 2010; Alexey Shvetsov <alexxy@gentoo.org> -akonadi-4.4.1.ebuild:
+  Drop KDE SC 4.4.1
+
+  03 May 2010; Alexey Shvetsov <alexxy@gentoo.org> akonadi-4.4.3.ebuild:
+  Version bump
+
+*akonadi-4.4.3 (03 May 2010)
+
+  03 May 2010; Alexey Shvetsov <alexxy@gentoo.org> +akonadi-4.4.3.ebuild:
+  Version bump
+
+  31 Mar 2010; Dror Levin <spatz@gentoo.org> -akonadi-4.3.4.ebuild,
+  -akonadi-4.4.0.ebuild:
+  Remove old KDE versions.
+
+*akonadi-4.4.2 (30 Mar 2010)
+
+  30 Mar 2010; Dror Levin <spatz@gentoo.org> +akonadi-4.4.2.ebuild:
+  Version bump
+
+  11 Mar 2010; Brent Baude <ranger@gentoo.org> akonadi-4.3.5.ebuild:
+  Marking akonadi-4.3.5 ppc stable for bug 300393
+
+*akonadi-4.4.1 (02 Mar 2010)
+
+  02 Mar 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  +akonadi-4.4.1.ebuild:
+  Version bump
+
+  20 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> akonadi-4.3.5.ebuild:
+  amd64/x86 stable wrt #300393
+
+*akonadi-4.4.0 (08 Feb 2010)
+
+  08 Feb 2010; Alexey Shvetsov <alexxy@gentoo.org> +akonadi-4.4.0.ebuild:
+  Version bump to KDE SC 4.4.0
+
+*akonadi-4.3.5 (25 Jan 2010)
+
+  25 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +akonadi-4.3.5.ebuild:
+  Version bump
+
+  23 Jan 2010; Jonathan Callen <abcd@gentoo.org> akonadi-4.3.4.ebuild:
+  Keyword ~amd64-linux/~x86-linux
+
+  19 Jan 2010; Jeroen Roovers <jer@gentoo.org> akonadi-4.3.3.ebuild:
+  Stable for HPPA too.
+
+  23 Dec 2009; Fabian Groffen <grobian@gentoo.org> akonadi-4.3.4.ebuild:
+  Fix accidential rm from root filesystem, ED is not defined here
+
+  22 Dec 2009; Jonathan Callen <abcd@gentoo.org> akonadi-4.3.4.ebuild:
+  Pull in changes from overlay and prefix support
+
+  10 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -akonadi-4.3.1.ebuild:
+  Drop KDE SC-4.3.1.
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org> akonadi-4.3.3.ebuild:
+  x86 stable, bug 292455
+
+*akonadi-4.3.4 (01 Dec 2009)
+
+  01 Dec 2009; Alex Alexander <wired@gentoo.org> +akonadi-4.3.4.ebuild:
+  Version bump
+
+  30 Nov 2009; Joseph Jezak <josejx@gentoo.org> akonadi-4.3.3.ebuild:
+  Marked ppc/ppc64 stable for bug #292455.
+
+  29 Nov 2009; Raúl Porcel <armin76@gentoo.org> akonadi-4.3.3.ebuild:
+  Add ~sparc
+
+  29 Nov 2009; Samuli Suominen <ssuominen@gentoo.org> akonadi-4.3.3.ebuild:
+  amd64 stable wrt #292455
+
+  08 Nov 2009; Alexey Shvetsov <alexxy@gentoo.org> -akonadi-4.3.2.ebuild:
+  Drop KDE 4.3.2
+
+  08 Nov 2009; Alexey Shvetsov <alexxy@gentoo.org> -akonadi-4.2.4.ebuild:
+  Drop KDE 4.2.4
+
+*akonadi-4.3.3 (02 Nov 2009)
+
+  02 Nov 2009; Alex Alexander <wired@gentoo.org> +akonadi-4.3.3.ebuild:
+  Version bump
+
+  18 Oct 2009; Markus Meier <maekke@gentoo.org> akonadi-4.3.1.ebuild:
+  x86 stable, bug #287697
+
+  17 Oct 2009; Jonathan Callen <abcd@gentoo.org> akonadi-4.3.1.ebuild,
+  akonadi-4.3.2.ebuild:
+  Disable src_test
+
+  10 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> akonadi-4.3.1.ebuild:
+  amd64 stable wrt #287697
+
+  08 Oct 2009; Alexey Shvetsov <alexxy@gentoo.org> -akonadi-4.3.0.ebuild:
+  Drop KDE 4.3.0
+
+*akonadi-4.3.2 (06 Oct 2009)
+
+  06 Oct 2009; Alexey Shvetsov <alexxy@gentoo.org> +akonadi-4.3.2.ebuild:
+  Version bump
+
+  21 Sep 2009; Dominik Kapusta <ayoy@gentoo.org> akonadi-4.3.1.ebuild:
+  Fixed failing tests by removing X server dependency where unnecessary
+
+  04 Sep 2009; Tomáš Chvátal <scarabeus@gentoo.org> akonadi-4.3.1.ebuild:
+  Move the dep fix from overlay to tree.
+
+*akonadi-4.3.1 (01 Sep 2009)
+
+  01 Sep 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  +akonadi-4.3.1.ebuild:
+  Version bump
+
+  04 Aug 2009; Alex Alexander <wired@gentoo.org> ChangeLog:
+  manifest update (upstream tarball changed)
+
+  03 Aug 2009; Alex Alexander <wired@gentoo.org> akonadi-4.3.0.ebuild:
+  4.3 keywords update
+
+*akonadi-4.3.0 (03 Aug 2009)
+
+  03 Aug 2009; Alex Alexander <wired@gentoo.org> +akonadi-4.3.0.ebuild:
+  Version bump
+
+  14 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org> -akonadi-4.2.3.ebuild:
+  Drop KDE 4.2.3
+
+  04 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org> ChangeLog:
+  Fix accidently added keywords
+
+*akonadi-4.2.4 (04 Jun 2009)
+
+  04 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org> +akonadi-4.2.4.ebuild:
+  Version bump
+
+  03 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org> -akonadi-4.2.2.ebuild:
+  Drop KDE 4.2.2
+
+*akonadi-4.2.3 (06 May 2009)
+
+  06 May 2009; Tomas Chvatal <scarabeus@gentoo.org> +akonadi-4.2.3.ebuild:
+  Version bump
+
+  17 Apr 2009; Alexey Shvetsov <alexxy@gentoo.org> akonadi-4.2.2:
+  Restore ~hppa keywords
+
+  16 Apr 2009; Alexey Shvetsov <alexxy@gentoo.org> -akonadi-4.2.1.ebuild:
+  Drop KDE 4.2.1
+
+*akonadi-4.2.2 (11 Apr 2009)
+
+  11 Apr 2009; Alexey Shvetsov <alexxy@gentoo.org> +akonadi-4.2.2.ebuild:
+  Add KDE 4.2.2
+
+  11 Apr 2009; Raúl Porcel <armin76@gentoo.org> akonadi-4.2.1.ebuild:
+  Add ~alpha/~ia64 wrt #260777
+
+  13 Mar 2009; Tomas Chvatal <scarabeus@gentoo.org> akonadi-4.2.1.ebuild:
+  Hm revert dep on kdepim-kresources. It should be directly inverse.
+  Kdepim-kresources depends on akonadi.
+
+  12 Mar 2009; Tomas Chvatal <scarabeus@gentoo.org> akonadi-4.2.1.ebuild:
+  Add missing dep. Per bug #251906. And krytzz request :]
+
+  08 Mar 2009; Alexey Shvetsov <alexxy@gentoo.org> -akonadi-4.2.0.ebuild:
+  Drop KDE 4.2.0
+
+  08 Mar 2009; Tomas Chvatal <scarabeus@gentoo.org> akonadi-4.2.1.ebuild:
+  Semi-automatic merge, Update deps.
+
+*akonadi-4.2.1 (04 Mar 2009)
+
+  04 Mar 2009; Alexey Shvetsov <alexxy@gentoo.org> +akonadi-4.2.1.ebuild:
+  Bump KDE 4.2.1
+
+  28 Feb 2009; Markus Meier <maekke@gentoo.org> metadata.xml:
+  semantic-desktop is a global USE-flag
+
+  17 Feb 2009; Alexey Shvetsov <alexxy@gentoo.org> -akonadi-4.1.4.ebuild:
+  Drop KDE 4.1.4
+
+  03 Feb 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Commented the opensync use flag description has it's disable until a new
+  version hits portage.
+
+  01 Feb 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  akonadi-4.2.0.ebuild:
+  Restored ~ppc and ~ppc64 keywords to KDE-4.2.0
+
+*akonadi-4.2.0 (27 Jan 2009)
+
+  27 Jan 2009; Alexey Shvetsov <alexxy@gentoo.org> +akonadi-4.2.0.ebuild:
+  Bump KDE-4.2.0
+
+  14 Jan 2009; Alexey Shvetsov <alexxy@gentoo.org> -akonadi-4.1.2.ebuild,
+  -akonadi-4.1.3.ebuild:
+  Drop KDE 4.1.2 and 4.1.3
+
+  13 Jan 2009; Alexey Shvetsov <alexxy@gentoo.org> +akonadi-4.1.4.ebuild:
+  Bump to 4.1.4
+
+*akonadi-4.1.4 (13 Jan 2009)
+
+  13 Jan 2009; Alexey Shvetsov <alexxy@gentoo.org> +akonadi-4.1.4.ebuild:
+  Bump to 4.1.4
+
+  15 Nov 2008; Mike Frysinger <vapier@gentoo.org> akonadi-4.1.3.ebuild:
+  Add ppc/ppc64 love #244306.
+
+*akonadi-4.1.3 (09 Nov 2008)
+
+  09 Nov 2008; Tomas Chvatal <scarabeus@gentoo.org> +akonadi-4.1.3.ebuild:
+  Version bump.
+
+  17 Oct 2008; Markus Meier <maekke@gentoo.org> metadata.xml:
+  plasma USE-flag is global now
+
+*akonadi-4.1.2 (02 Oct 2008)
+
+  02 Oct 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +metadata.xml, +akonadi-4.1.2.ebuild:
+  Add kde-4.1.2 into the tree from the kde-testing overlay.

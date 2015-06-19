@@ -1,0 +1,20 @@
+# ChangeLog for sci-chemistry/pymol-plugins-bni-tools
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pymol-plugins-bni-tools/ChangeLog,v 1.4 2013/07/15 11:57:15 jlec Exp $
+
+*pymol-plugins-bni-tools-0.27 (15 Jul 2013)
+
+  15 Jul 2013; Justin Lecher <jlec@gentoo.org>
+  +pymol-plugins-bni-tools-0.27.ebuild, metadata.xml:
+  Version Bump; move to new python eclasses
+
+  27 Feb 2010; Justin Lecher <jlec@gentoo.org>
+  pymol-plugins-bni-tools-0.25.1.ebuild:
+  keyworded for ~amd64-linux ~x86-linux
+
+*pymol-plugins-bni-tools-0.25.1 (27 Feb 2010)
+
+  27 Feb 2010; Justin Lecher <jlec@gentoo.org>
+  +pymol-plugins-bni-tools-0.25.1.ebuild, +metadata.xml:
+  Imported from sci overlay
+

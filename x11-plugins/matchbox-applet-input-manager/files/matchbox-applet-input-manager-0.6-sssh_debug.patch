@@ -1,0 +1,22 @@
+Index: mb-applet-input-manager-0.6/mbinputmgr-tray.c
+===================================================================
+--- mb-applet-input-manager-0.6/mbinputmgr-tray.c	{cset 0f2cc092-505c-44d3-bcdf-2b07f6f6942d}
++++ mb-applet-input-manager-0.6/mbinputmgr-tray.c	{local clone}
+@@ -257,13 +257,17 @@ xevent_callback (MBTrayApp *app, XEvent 
+ {
+   if (ev->type == ClientMessage)
+     {
++#ifdef DEBUG
+       printf("beep\n");
++#endif
+ 
+       XClientMessageEvent *cmev = (XClientMessageEvent *)&ev->xconfigure;
+ 
+       if (cmev->message_type == AtomIMActivate)
+ 	{
++#ifdef DEBUG
+ 	  printf("beep\n");
++#endif
+ 
+ 	  /* De Activate */
+ 	  if (cmev->data.l[0] == 0 && mbinputmgr_method_active(Inpmgr_state))

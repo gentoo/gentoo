@@ -1,0 +1,29 @@
+# ChangeLog for x11-misc/dsx
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/dsx/ChangeLog,v 1.8 2010/06/06 10:05:59 ssuominen Exp $
+
+  06 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> dsx-0.1.ebuild:
+  Force Python 2.x wrt #317009.
+
+  22 Jul 2007; Santiago M. Mola <coldwind@gentoo.org> dsx-0.1.ebuild:
+  virtual/x11 removed.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  21 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> dsx-0.1.ebuild:
+  Fixed DEPEND for modular X.
+
+  27 May 2004; Michael Sterrett <mr_bones_@gentoo.org> dsx-0.1.ebuild:
+  x11-base/xfree -> virtual/x11
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> dsx-0.1.ebuild:
+  Marked stable.
+
+*dsx-0.1 (14 Nov 2003)
+
+  14 Nov 2003; Abhishek Amit <abhishek@gentoo.org> dsx-0.1.ebuild,
+  files/dsx-0.1:
+  Inital import. Thanks to Ryan Grange <ryangrange@netscape.net> for porting
+  Xstart. Xtart is (c) 2001 civilme@mandrakesoft, released under GPL v2
+

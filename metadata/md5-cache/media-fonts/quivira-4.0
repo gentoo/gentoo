@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prepare setup
+DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=Unicode font for alphabetic writing systems and elder scripts like Runes, Gothic and ancient Greek
+EAPI=5
+HOMEPAGE=http://www.quivira-font.com/
+IUSE=doc X
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=freedist
+SLOT=0
+SRC_URI=http://www.quivira-font.com/files/Quivira.otf -> quivira-4.0.otf doc? ( http://www.quivira-font.com/files/Quivira.pdf -> quivira-4.0.pdf http://www.quivira-font.com/files/QuiviraTestpage.pdf -> quivira-4.0-Testpage.pdf http://www.quivira-font.com/files/QuiviraCombining.pdf -> quivira-4.0-Combining.pdf http://www.quivira-font.com/files/QuiviraPUA.pdf -> quivira-4.0-PUA.pdf )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	font	b3239d2dc442d1717b9725e2be7cb5d6	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b43b7bf581621c0e8435070b354da5f0

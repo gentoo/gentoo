@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>proxy-maintainers</herd>
+  <maintainer>
+    <email>aballier@gentoo.org</email>
+    <name>Alexis Ballier</name>
+  </maintainer>
+  <maintainer>
+	<email>jekarlson@gmail.com</email>
+	<name>Emil Karlson</name>
+  </maintainer>
+	<use>
+		<flag name='drm'>Enables VA/DRM API support.</flag>
+    </use>
+</pkgmetadata>

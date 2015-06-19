@@ -1,0 +1,734 @@
+# ChangeLog for x11-libs/fox
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/fox/ChangeLog,v 1.191 2015/06/11 14:16:57 ago Exp $
+
+  11 Jun 2015; Agostino Sarubbo <ago@gentoo.org> fox-1.7.49.ebuild:
+  Stable for ppc, wrt bug #535832
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> fox-1.7.49.ebuild:
+  Stable for x86, wrt bug #535832
+
+  27 May 2015; Agostino Sarubbo <ago@gentoo.org> fox-1.7.49.ebuild:
+  Stable for amd64, wrt bug #535832
+
+*fox-1.7.49 (11 Nov 2014)
+
+  11 Nov 2014; Matti Bickel <mabi@gentoo.org> +files/jpeg-9.patch,
+  +fox-1.7.49.ebuild:
+  version bump, includes jpeg-9 patch from jer@gentoo.org (bug #520674)
+
+  04 Jul 2014; Matti Bickel <mabi@gentoo.org> -fox-1.7.44.ebuild:
+  remove old
+
+*fox-1.7.47 (04 Jul 2014)
+
+  04 Jul 2014; Matti Bickel <mabi@gentoo.org> +fox-1.7.47.ebuild:
+  version bump
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> fox-1.6.49.ebuild:
+  Stable for alpha, wrt bug #487034
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> fox-1.6.49.ebuild:
+  Stable for ia64, wrt bug #487034
+
+*fox-1.7.45 (10 Jan 2014)
+
+  10 Jan 2014; Matti Bickel <mabi@gentoo.org> +fox-1.7.45.ebuild,
+  -fox-1.6.40.ebuild, -fox-1.7.42.ebuild, -fox-1.7.43.ebuild:
+  version bump, cleanup
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> fox-1.6.49.ebuild:
+  Stable for x86, wrt bug #487034
+
+  23 Dec 2013; Agostino Sarubbo <ago@gentoo.org> fox-1.6.49.ebuild:
+  Stable for sparc, wrt bug #487034
+
+  22 Dec 2013; Agostino Sarubbo <ago@gentoo.org> fox-1.6.49.ebuild:
+  Stable for ppc64, wrt bug #487034
+
+  21 Dec 2013; Agostino Sarubbo <ago@gentoo.org> fox-1.6.49.ebuild:
+  Stable for ppc, wrt bug #487034
+
+*fox-1.7.44 (13 Dec 2013)
+
+  13 Dec 2013; Matti Bickel <mabi@gentoo.org> +fox-1.7.44.ebuild:
+  version bump
+
+*fox-1.7.43 (13 Nov 2013)
+
+  13 Nov 2013; Matti Bickel <mabi@gentoo.org> +fox-1.7.43.ebuild,
+  -fox-1.7.40.ebuild, -fox-1.7.41.ebuild:
+  version bump; remove old
+
+  01 Nov 2013; Agostino Sarubbo <ago@gentoo.org> fox-1.6.49.ebuild:
+  Stable for amd64, wrt bug #487034
+
+  29 Oct 2013; Anthony G. Basile <blueness@gentoo.org> fox-1.7.40.ebuild,
+  fox-1.7.41.ebuild, fox-1.7.42.ebuild:
+  Keyword ~arm
+
+  10 Oct 2013; Jeroen Roovers <jer@gentoo.org> fox-1.6.49.ebuild:
+  Stable for HPPA (bug #487034).
+
+*fox-1.7.42 (05 Oct 2013)
+
+  05 Oct 2013; Matti Bickel <mabi@gentoo.org> +fox-1.7.42.ebuild:
+  version bump
+
+*fox-1.7.41 (13 Sep 2013)
+
+  13 Sep 2013; Matti Bickel <mabi@gentoo.org> +fox-1.7.41.ebuild,
+  -fox-1.7.37.ebuild, -fox-1.7.39.ebuild:
+  version bump
+
+*fox-1.7.40 (26 Aug 2013)
+
+  26 Aug 2013; Patrick Lauer <patrick@gentoo.org> +fox-1.7.40.ebuild:
+  Bump
+
+  03 Aug 2013; Agostino Sarubbo <ago@gentoo.org> fox-1.6.45.ebuild:
+  Stable for sparc, wrt bug #475654
+
+  07 Jul 2013; Agostino Sarubbo <ago@gentoo.org> fox-1.6.45.ebuild:
+  Stable for ia64, wrt bug #475654
+
+  06 Jul 2013; Agostino Sarubbo <ago@gentoo.org> fox-1.6.45.ebuild:
+  Stable for alpha, wrt bug #475654
+
+  05 Jul 2013; Jeroen Roovers <jer@gentoo.org> fox-1.6.45.ebuild:
+  Stable for HPPA (bug #475654).
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> fox-1.6.45.ebuild:
+  Stable for ppc64, wrt bug #475654
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> fox-1.6.45.ebuild:
+  Stable for ppc, wrt bug #475654
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> fox-1.6.45.ebuild:
+  Stable for x86, wrt bug #475654
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> fox-1.6.45.ebuild:
+  Stable for amd64, wrt bug #475654
+
+*fox-1.6.49 (03 Jul 2013)
+*fox-1.7.39 (03 Jul 2013)
+
+  03 Jul 2013; Matti Bickel <mabi@gentoo.org> +fox-1.6.49.ebuild,
+  +fox-1.7.39.ebuild, -fox-1.7.32.ebuild, -fox-1.7.33.ebuild:
+  version bump, remove outdated dev builds
+
+  23 Dec 2012; Matti Bickel <mabi@gentoo.org> fox-1.6.40.ebuild,
+  fox-1.6.45.ebuild:
+  add explicit link to libfontconfig (covered by DEPEND libXft), already fixed
+  upstream in 1.7, fixes bug #368887
+
+*fox-1.7.37 (22 Dec 2012)
+
+  22 Dec 2012; Matti Bickel <mabi@gentoo.org> +fox-1.7.37.ebuild,
+  -fox-1.6.43.ebuild, fox-1.6.40.ebuild, fox-1.6.45.ebuild, fox-1.7.32.ebuild,
+  fox-1.7.33.ebuild:
+  version bump & remove old. also add default USE for the common stuff. also
+  fixed bug #438914 (fox requires BOTH opengl and glu to be installed when
+  opengl is to be used)
+
+  29 Sep 2012; Fabian Groffen <grobian@gentoo.org> fox-1.7.33.ebuild:
+  Fix for Prefix, partial fix for bug #433531
+
+  06 Jul 2012; Matti Bickel <mabi@gentoo.org> fox-1.7.33.ebuild:
+  still need to call fox_src_prepare here
+
+  06 Jul 2012; Matti Bickel <mabi@gentoo.org> fox-1.7.33.ebuild:
+  backport compile fix for x86 (bug #425032)
+
+*fox-1.6.45 (04 Jul 2012)
+
+  04 Jul 2012; Matti Bickel <mabi@gentoo.org> +fox-1.6.45.ebuild:
+  version bump
+
+*fox-1.7.33 (04 Jul 2012)
+
+  04 Jul 2012; Matti Bickel <mabi@gentoo.org> +fox-1.7.33.ebuild:
+  version bump
+
+  08 Mar 2012; Naohiro Aota <naota@gentoo.org> fox-1.6.43.ebuild:
+  Add ~x86-fbsd.
+
+*fox-1.7.32 (12 Feb 2012)
+
+  12 Feb 2012; Matti Bickel <mabi@gentoo.org> +fox-1.7.32.ebuild,
+  -fox-1.7.23.ebuild, fox-1.6.43.ebuild:
+  version bump (thanks to James Broadhead in bug #376239 for providing much of
+  the code), add media-libs/mesa dep (bug #379725)
+
+*fox-1.6.43 (25 Aug 2011)
+
+  25 Aug 2011; Matti Bickel <mabi@gentoo.org> +fox-1.6.43.ebuild:
+  version bump, mainly fixes compiling against libpng15
+
+  05 Aug 2011; Samuli Suominen <ssuominen@gentoo.org> fox-1.6.40.ebuild,
+  +files/fox-1.6.40-libpng15.patch:
+  Fix building with libpng15.
+
+  26 Feb 2011; Kevin McCarthy <signals@gentoo.org> fox-1.6.40.ebuild,
+  fox-1.7.23.ebuild:
+  Updated depends from media-libs/jpeg to virtual/jpeg
+
+*fox-1.7.23 (31 Oct 2010)
+
+  31 Oct 2010; Matti Bickel <mabi@gentoo.org> -fox-1.6.36.ebuild,
+  -fox-1.7.21.ebuild, +fox-1.7.23.ebuild:
+  cleanup, new upstream version
+
+  29 Oct 2010; Jeroen Roovers <jer@gentoo.org> fox-1.6.40.ebuild:
+  Stable for HPPA (bug #338510).
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org> fox-1.6.40.ebuild:
+  stable ppc, bug 338510
+
+  09 Oct 2010; Raúl Porcel <armin76@gentoo.org> fox-1.6.40.ebuild:
+  alpha/ia64/sparc stable wrt #338510
+
+  30 Sep 2010; Brent Baude <ranger@gentoo.org> fox-1.6.40.ebuild:
+  stable ppc64, bug 338510
+
+  26 Sep 2010; Markus Meier <maekke@gentoo.org> fox-1.6.40.ebuild:
+  x86 stable, bug #338510
+
+  24 Sep 2010; Markos Chandras <hwoarang@gentoo.org> fox-1.6.40.ebuild:
+  Stable on amd64 wrt bug #338510
+
+*fox-1.7.21 (23 Sep 2010)
+*fox-1.6.40 (23 Sep 2010)
+
+  23 Sep 2010; Matti Bickel <mabi@gentoo.org> -fox-1.6.34.ebuild,
+  -fox-1.6.35.ebuild, -fox-1.6.37.ebuild, +fox-1.6.40.ebuild,
+  -fox-1.7.19.ebuild, +fox-1.7.21.ebuild:
+  cleanup, version bump (bug #336216)
+
+  17 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org> fox-1.6.34.ebuild,
+  fox-1.6.35.ebuild, fox-1.6.36.ebuild, fox-1.6.37.ebuild,
+  fox-1.7.19.ebuild:
+  Remove virtual/glu where already virtual/opengl is stated.
+
+  25 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  -files/1.4.34-gcc4-fix-includes.patch, -fox-1.4.34-r1.ebuild:
+  Remove old version wrt #257611.
+
+*fox-1.6.37 (12 Mar 2010)
+
+  12 Mar 2010; <mabi@gentoo.org> +fox-1.6.37.ebuild:
+  version bump, some minor fixes
+
+  12 Mar 2010; <mabi@gentoo.org> -files/1.4.34-gcc4-fix-includes.patch,
+  -fox-1.4.34-r1.ebuild:
+  remove old 1.4 slot (bug #257611)
+
+  20 Jan 2010; Brent Baude <ranger@gentoo.org> fox-1.6.36.ebuild:
+  Marking fox-1.6.36 ppc64 for bug 276854
+
+  18 Sep 2009; Jeroen Roovers <jer@gentoo.org> fox-1.6.36.ebuild:
+  Stable for HPPA (bug #276854).
+
+  31 Jul 2009; <chainsaw@gentoo.org> fox-1.6.36.ebuild:
+  Marked stable on AMD64 as requested by Jeroen Roovers <jer@gentoo.org> in
+  bug #276854. Compile-tested on a Core2 Duo.
+
+  10 Apr 2009; Raúl Porcel <armin76@gentoo.org> fox-1.6.35.ebuild,
+  fox-1.6.36.ebuild:
+  alpha/ia64/sparc/x86 stable wrt #263795
+
+  04 Apr 2009; Markus Meier <maekke@gentoo.org> fox-1.6.35.ebuild:
+  amd64/x86 stable, bug #263795
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> fox-1.6.35.ebuild:
+  Marking fox-1.6.35 ppc64 stable for bug 263795
+
+  31 Mar 2009; Jeroen Roovers <jer@gentoo.org> fox-1.6.35.ebuild:
+  Stable for HPPA (bug #263795).
+
+  30 Mar 2009; Brent Baude <ranger@gentoo.org> fox-1.6.35.ebuild:
+  Marking fox-1.6.35 ppc for bug 263795
+
+  27 Mar 2009; Brent Baude <ranger@gentoo.org> fox-1.6.36.ebuild:
+  Marking fox-1.6.36 ppc for bug 263795
+
+*fox-1.6.36 (20 Mar 2009)
+
+  20 Mar 2009; Matti Bickel <mabi@gentoo.org> +fox-1.6.36.ebuild:
+  version bump
+
+*fox-1.7.19 (01 Mar 2009)
+
+  01 Mar 2009; Matti Bickel <mabi@gentoo.org> +fox-1.7.19.ebuild:
+  add new testing branch 1.7 in a new slot
+
+  01 Mar 2009; Peter Alfredsen <loki_val@gentoo.org> fox-1.6.35.ebuild:
+  virtual/xft no longer exists but somehow got re-introduced with bump.
+  Replacing with x11-libs/libXft. Bug 260734.
+
+*fox-1.6.35 (01 Mar 2009)
+
+  01 Mar 2009; Matti Bickel <mabi@gentoo.org> -fox-1.6.30.ebuild,
+  -fox-1.6.31.ebuild, +fox-1.6.35.ebuild:
+  version bump, fixes string and font issues
+
+  09 Jan 2009; Rémi Cardona <remi@gentoo.org> fox-1.4.34-r1.ebuild,
+  fox-1.6.30.ebuild, fox-1.6.31.ebuild, fox-1.6.34.ebuild:
+  Change virtual/xft dependency to x11-libs/libXft, bug 253771.
+
+  05 Dec 2008; Raúl Porcel <armin76@gentoo.org> fox-1.6.34.ebuild:
+  alpha/ia64/sparc stable wrt #249286
+
+  02 Dec 2008; Brent Baude <ranger@gentoo.org> fox-1.6.34.ebuild:
+  stable ppc64, bug 249286
+
+  02 Dec 2008; Jeroen Roovers <jer@gentoo.org> fox-1.6.34.ebuild:
+  Stable for HPPA (bug #249286).
+
+  30 Nov 2008; Markus Meier <maekke@gentoo.org> fox-1.6.34.ebuild:
+  amd64/x86 stable, bug #249286
+
+  29 Nov 2008; Matti Bickel <mabi@gentoo.org> fox-1.6.34.ebuild:
+  ppc stable
+
+  29 Nov 2008; Matti Bickel <mabi@gentoo.org>
+  -files/1.2.18-gcc4-fix-includes.patch, -fox-1.2.18-r1.ebuild:
+  cleanup (solves bug #249023)
+
+*fox-1.6.34 (03 Oct 2008)
+
+  03 Oct 2008; Matti Bickel <mabi@gentoo.org> +fox-1.6.34.ebuild:
+  version bump
+
+  25 Feb 2008; Matti Bickel <mabi@gentoo.org> -fox-1.6.27.ebuild:
+  bug 210543 done, cleaning up
+
+  20 Feb 2008; Matti Bickel <mabi@gentoo.org> -fox-1.6.25.ebuild,
+  +fox-1.6.27.ebuild:
+  resurrect -1.6.27 until bug 210543 is solved
+
+  17 Feb 2008; Matti Bickel <mabi@gentoo.org> +fox-1.6.25.ebuild:
+  resurrect 1.6.25 until bug #210538 is solved
+
+*fox-1.6.31 (17 Feb 2008)
+
+  17 Feb 2008; Matti Bickel <mabi@gentoo.org> -fox-1.6.25.ebuild,
+  -fox-1.6.27.ebuild, -fox-1.6.29.ebuild, +fox-1.6.31.ebuild:
+  version bump, cleanups
+
+  23 Nov 2007; Markus Rothe <corsair@gentoo.org> fox-1.6.30.ebuild:
+  Stable on ppc64; bug #199853
+
+  22 Nov 2007; Raúl Porcel <armin76@gentoo.org> fox-1.6.30.ebuild:
+  alpha/ia64 stable wrt #199853
+
+  21 Nov 2007; nixnut <nixnut@gentoo.org> fox-1.6.30.ebuild:
+  Stable on ppc wrt bug 198932
+
+  21 Nov 2007; Jeroen Roovers <jer@gentoo.org> fox-1.6.30.ebuild:
+  Stable for HPPA (bug #199853).
+
+  21 Nov 2007; Markus Meier <maekke@gentoo.org> fox-1.6.30.ebuild:
+  x86 stable, bug #199853
+
+  21 Nov 2007; Samuli Suominen <drac@gentoo.org> fox-1.6.30.ebuild:
+  amd64 stable wrt #199853
+
+  21 Nov 2007; Ferris McCormick <fmccor@gentoo.org> fox-1.6.30.ebuild:
+  Sparc stable --- Bug #199853 --- builds as expected and checks out fine with
+  fxruby-1.6.13.
+
+  18 Oct 2007; Christoph Mende <angelos@gentoo.org> fox-1.6.27.ebuild:
+  Stable on amd64 wrt bug #194813
+
+  15 Oct 2007; Markus Rothe <corsair@gentoo.org> fox-1.6.29.ebuild:
+  Stable on ppc64
+
+  14 Oct 2007; Markus Rothe <corsair@gentoo.org> fox-1.6.27.ebuild:
+  Stable on ppc64; bug #194813
+
+*fox-1.6.30 (09 Oct 2007)
+
+  09 Oct 2007; Matti Bickel <mabi@gentoo.org> +fox-1.6.30.ebuild:
+  version bump
+
+  09 Oct 2007; Jeroen Roovers <jer@gentoo.org> fox-1.6.27.ebuild:
+  Stable for HPPA (bug #194813).
+
+  06 Oct 2007; Raúl Porcel <armin76@gentoo.org> fox-1.6.27.ebuild:
+  alpha/ia64 stable wrt #194813
+
+  05 Oct 2007; Christian Faulhammer <opfer@gentoo.org> fox-1.6.27.ebuild:
+  stable x86, bug 194813
+
+  05 Oct 2007; Ferris McCormick <fmccor@gentoo.org> fox-1.6.27.ebuild:
+  Sparc stable --- Bug #194813 --- good for four months now.
+
+  05 Oct 2007; Matti Bickel <mabi@gentoo.org> fox-1.6.29.ebuild:
+  ppc stable (bug #194813)
+
+*fox-1.6.29 (30 Sep 2007)
+
+  30 Sep 2007; Matti Bickel <mabi@gentoo.org> -fox-1.6.19.ebuild,
+  +fox-1.6.29.ebuild:
+  version bump and cleanup
+
+  13 Jun 2007; Christoph Mende <angelos@gentoo.org> fox-1.6.25.ebuild:
+  Stable on amd64 wrt bug 181017
+
+  07 Jun 2007; Markus Rothe <corsair@gentoo.org> fox-1.6.25.ebuild:
+  Stable on ppc64; bug #181017
+
+  06 Jun 2007; Raúl Porcel <armin76@gentoo.org> fox-1.6.25.ebuild:
+  alpha/ia64/x86 stable wrt #181017
+
+  06 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org> fox-1.6.25.ebuild:
+  Stable on sparc wrt #181017
+
+  06 Jun 2007; Matti Bickel <mabi@gentoo.org> fox-1.6.25.ebuild:
+  ppc stable (bug #181017)
+
+  06 Jun 2007; Jeroen Roovers <jer@gentoo.org> fox-1.6.25.ebuild:
+  Stable for HPPA (bug #181017).
+
+*fox-1.6.27 (05 Jun 2007)
+
+  05 Jun 2007; Matti Bickel <mabi@gentoo.org> +fox-1.6.27.ebuild:
+  version bump.
+
+  19 May 2007; Matti Bickel <mabi@gentoo.org> -fox-1.5.4.ebuild:
+  clean dated dev releases
+
+  23 Apr 2007; Raúl Porcel <armin76@gentoo.org> fox-1.6.19.ebuild:
+  ia64 stable
+
+  19 Apr 2007; Matti Bickel <mabi@gentoo.org> -fox-1.0.53.ebuild:
+  cleanup
+
+*fox-1.6.25 (28 Mar 2007)
+
+  28 Mar 2007; Matti Bickel <mabi@gentoo.org> +fox-1.6.25.ebuild:
+  Version bump
+
+  26 Mar 2007; Raúl Porcel <armin76@gentoo.org> fox-1.2.18-r1.ebuild:
+  ia64 stable, again
+
+  26 Mar 2007; Matti Bickel <mabi@gentoo.org> -fox-1.2.6-r2.ebuild:
+  cleanup (bug #168328)
+
+  26 Mar 2007; Raúl Porcel <armin76@gentoo.org> fox-1.4.34-r1.ebuild,
+  fox-1.6.19.ebuild:
+  ia64 stable and ~ia64 wrt bug 168328
+
+  23 Feb 2007; Matti Bickel <mabi@gentoo.org> -fox-1.2.18.ebuild,
+  -fox-1.4.34.ebuild, -fox-1.6.16.ebuild:
+  spring cleanup
+
+  03 Feb 2007; Steve Dibb <beandog@gentoo.org> fox-1.6.19.ebuild:
+  amd64 stable, bug 161956
+
+  21 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> fox-1.6.19.ebuild:
+  Stable on Alpha, bug 161956.
+
+  16 Jan 2007; Matti Bickel <mabi@gentoo.org> fox-1.6.19.ebuild:
+  ppc stable (bug #161956)
+
+  15 Jan 2007; Paul Varner <fuzzyray@gentoo.org> fox-1.6.19.ebuild:
+  Stable on x86 wrt #161956
+
+  15 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org> fox-1.6.19.ebuild:
+  Stable on sparc wrt #161956
+
+  15 Jan 2007; Jeroen Roovers <jer@gentoo.org> fox-1.6.19.ebuild:
+  Stable for HPPA (bug #161956).
+
+  14 Jan 2007; Markus Rothe <corsair@gentoo.org> fox-1.6.19.ebuild:
+  Stable on ppc64; bug #161956
+
+  07 Jan 2007; Bryan Østergaard <kloeri@gentoo.org> fox-1.6.16.ebuild:
+  Stable on Alpha.
+
+*fox-1.0.53 (18 Dec 2006)
+
+  18 Dec 2006; Michael Sterrett <mr_bones_@gentoo.org> +fox-1.0.53.ebuild:
+  resurrect fox-1.0.53.ebuild which is also still in use
+
+*fox-1.5.4 (18 Dec 2006)
+
+  18 Dec 2006; Michael Sterrett <mr_bones_@gentoo.org> +fox-1.5.4.ebuild:
+  resurrect fox-1.5.4.ebuild which is still quite in use.
+
+  17 Dec 2006; Matti Bickel <mabi@gentoo.org> -fox-1.2.6-r3.ebuild,
+  fox-1.6.16.ebuild:
+  more cleanup and ppc stable for 1.6
+
+  17 Dec 2006; Bryan Østergaard <kloeri@gentoo.org> fox-1.2.18-r1.ebuild,
+  fox-1.4.34-r1.ebuild:
+  Add ~ia64 keyword.
+
+  17 Dec 2006; Bryan Østergaard <kloeri@gentoo.org> fox-1.2.18-r1.ebuild,
+  fox-1.4.34-r1.ebuild:
+  Stable on Alpha, bug 145046.
+
+  10 Dec 2006; Matti Bickel <mabi@gentoo.org> -fox-1.0.49.ebuild,
+  -fox-1.0.53.ebuild, -fox-1.5.4.ebuild:
+  Cleanup (bug #153234)
+
+  05 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> fox-1.2.18-r1.ebuild,
+  fox-1.4.34-r1.ebuild:
+  Stable on sparc
+
+  24 Nov 2006; Markus Rothe <corsair@gentoo.org> fox-1.2.18-r1.ebuild,
+  fox-1.4.34-r1.ebuild:
+  Stable on ppc64; bug #145046
+
+*fox-1.6.19 (14 Nov 2006)
+
+  14 Nov 2006; Matti Bickel <mabi@gentoo.org> -fox-1.6.14.ebuild,
+  +fox-1.6.19.ebuild:
+  Version bump, remove old version
+
+  14 Nov 2006; Guy Martin <gmsoft@gentoo.org> fox-1.2.18-r1.ebuild:
+  Stable on hppa.
+
+  12 Nov 2006; Guy Martin <gmsoft@gentoo.org> ChangeLog:
+  Stable on hppa.
+
+  05 Nov 2006; Daniel Gryniewicz <dang@gentoo.org> fox-1.4.34-r1.ebuild:
+  Marked stable on amd64 for bug #145046
+
+  05 Nov 2006; Daniel Gryniewicz <dang@gentoo.org> fox-1.2.18-r1.ebuild:
+  Marked stable on amd64 for bug #145046
+
+  31 Oct 2006; Christian Faulhammer <opfer@gentoo.org> fox-1.2.18-r1.ebuild,
+  fox-1.4.34-r1.ebuild:
+  stabled on x86 due to bug #145046
+
+  28 Oct 2006; Matti Bickel <mabi@gentoo.org> fox-1.2.18-r1.ebuild,
+  fox-1.4.34-r1.ebuild:
+  Stable on ppc (bug #145046)
+
+*fox-1.6.16 (28 Oct 2006)
+
+  28 Oct 2006; Matti Bickel <mabi@gentoo.org> +fox-1.6.16.ebuild:
+  Version bump
+
+  24 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>; fox-1.0.53.ebuild,
+  fox-1.2.6-r3.ebuild, fox-1.2.18.ebuild, fox-1.2.18-r1.ebuild,
+  fox-1.4.34.ebuild, fox-1.4.34-r1.ebuild, fox-1.5.4.ebuild,
+  fox-1.6.14.ebuild:
+  Remove virtual/x11 option from modular X deps.
+
+*fox-1.4.34-r1 (24 Sep 2006)
+*fox-1.2.18-r1 (24 Sep 2006)
+
+  24 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/1.2.18-gcc4-fix-includes.patch,
+  +files/1.4.34-gcc4-fix-includes.patch, +fox-1.2.18-r1.ebuild,
+  +fox-1.4.34-r1.ebuild:
+  (#145800) Allow gcc4 to compile apps against fox. Patches from Debian,
+  courtesy of Travis Tilley.
+
+  05 Sep 2006; Michael Sterrett <mr_bones_@gentoo.org> -fox-1.0.40.ebuild,
+  -fox-1.0.43.ebuild, -fox-1.2.4.ebuild, -fox-1.2.15.ebuild,
+  -fox-1.4.11.ebuild, -fox-1.4.12.ebuild:
+  thin out unnecessary ebuilds
+
+  23 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>; fox-1.0.53.ebuild:
+  Same gcc-4 fix as for 1.2
+
+*fox-1.6.14 (23 Aug 2006)
+*fox-1.4.34 (23 Aug 2006)
+*fox-1.2.18 (23 Aug 2006)
+
+  23 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>; +fox-1.2.18.ebuild,
+  +fox-1.4.34.ebuild, +fox-1.6.14.ebuild:
+  (#128917) Bump to latest versions, so everything works with gcc-4. For 1.2
+  series, the ebuild also needs -ffriend-injection (Martin von Gagern).
+
+  19 Aug 2006; Thomas Cort <tcort@gentoo.org> fox-1.2.6-r3.ebuild:
+  Stable on amd64 wrt Bug #138871.
+
+  19 Aug 2006; Jason Wever <weeve@gentoo.org> fox-1.2.6-r3.ebuild:
+  Stable on SPARC wrt bug #138871.
+
+  18 Jul 2006; Michael Hanselmann <hansmi@gentoo.org> fox-1.2.6-r3.ebuild:
+  Stable on ppc.
+
+  15 Jul 2006; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove rphillips from metadata.xml as he's retired.
+
+  06 Jul 2006; Markus Rothe <corsair@gentoo.org> fox-1.2.6-r3.ebuild:
+  Stable on ppc64
+
+  05 Jul 2006; Joshua Jackson <tsunam@gentoo.org> fox-1.2.6-r3.ebuild:
+  Stable x86; bug #138871
+
+  25 Jan 2006; Donnie Berkholz <spyderous@gentoo.org>; fox-1.0.53.ebuild,
+  fox-1.2.6-r3.ebuild, fox-1.2.15.ebuild, fox-1.4.11.ebuild,
+  fox-1.4.12.ebuild, fox-1.5.4.ebuild:
+  (#119028) Add modular X deps.
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> fox-1.2.6-r2.ebuild:
+  stable on ia64
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> fox-1.2.6-r2.ebuild:
+  Stable on ppc.
+
+  01 Jun 2005; Mike Frysinger <vapier@gentoo.org> fox-1.2.15.ebuild,
+  fox-1.4.11.ebuild, fox-1.4.12.ebuild, fox-1.5.4.ebuild:
+  Change USE=bzlib to USE=bzip2.
+
+  13 May 2005; Bryan Østergaard <kloeri@gentoo.org> fox-1.2.6-r2.ebuild:
+  ~ia64 keyword.
+
+*fox-1.2.15 (07 May 2005)
+
+  07 May 2005; <rphillips@gentoo.org> +fox-1.0.53.ebuild, +fox-1.2.15.ebuild,
+  +fox-1.4.12.ebuild, +fox-1.5.4.ebuild:
+  Added Yaakov Selkowitz's eclass based fox ebuilds for testing.
+  Fixes #88924
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> fox-1.4.11.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*fox-1.2.6-r3 (02 Apr 2005)
+
+  02 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +fox-1.2.6-r3.ebuild, fox-1.4.11.ebuild:
+  Updated to use econf and make DESTDIR="${D}" install
+
+  01 Apr 2005; <rphillips@gentoo.org> fox-1.4.11.ebuild:
+  Updated ebuild to use emake and einstall.  Thanks to Diego. Fixes #74872
+
+*fox-1.4.11 (31 Mar 2005)
+
+  31 Mar 2005; <rphillips@gentoo.org> +fox-1.4.11.ebuild:
+  Version bump
+
+  19 Feb 2005; Markus Rothe <corsair@gentoo.org> fox-1.2.6-r2.ebuild:
+  Stable on ppc64
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  27 Dec 2004; <rphillips@gentoo.org> fox-1.2.6-r2.ebuild:
+  changed freetye USE var to truetype
+
+  31 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> fox-1.2.6-r2.ebuild:
+  Stable on alpha.
+
+  23 Oct 2004; Tom Martin <slarti@gentoo.org> fox-1.2.6-r2.ebuild:
+  Stable on amd64.
+
+  23 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> fox-1.2.6-r2.ebuild:
+  ~alpha keyword.
+
+  13 Oct 2004; Michele Noberasco <s4t4n@gentoo.org> fox-1.2.6.ebuild,
+  fox-1.2.6-r1.ebuild:
+  Remove these older revisions...
+
+  12 Oct 2004; Guy Martin <gmsoft@gentoo.org> fox-1.2.6-r2.ebuild:
+  Stable on hppa.
+
+  10 Oct 2004; Jason Wever <weeve@gentoo.org> fox-1.2.6-r2.ebuild:
+  Stable on sparc.
+
+*fox-1.2.6-r2 (05 Oct 2004)
+
+  05 Oct 2004; Michele Noberasco <s4t4n@gentoo.org> fox-1.2.6-r2.ebuild:
+  Fixed freetype2 detection for xorg-x11 users. Closes #61694. Stable for x86.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> fox-1.0.49.ebuild:
+  Masked fox-1.0.49.ebuild stable for ppc
+
+  27 Aug 2004; Tom Gall <tgall@gentoo.org> fox-1.0.49.ebuild:
+  stable on ppc64, bug #59384
+
+*fox-1.2.6-r1 (23 Aug 2004)
+
+  23 Aug 2004; Michele Noberasco <s4t4n@gentoo.org> fox-1.2.6-r1.ebuild:
+  New revision which adds support for freetype library, thus allowing for
+  antialiased fonts...
+
+  09 Jul 2004; Ferris McCormick <fmccor@gentoo.org> fox-1.2.6.ebuild:
+  Add ~sparc keyword.
+
+*fox-1.2.6 (07 Jul 2004)
+
+  07 Jul 2004; <rphillips@gentoo.org> fox-1.2.6.ebuild:
+  version bump
+
+  29 Jun 2004; David Holm <dholm@gentoo.org> fox-1.2.4.ebuild:
+  Added to ~ppc.
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> fox-1.0.40.ebuild,
+  fox-1.0.43.ebuild, fox-1.0.49.ebuild, fox-1.2.4.ebuild:
+  glibc -> libc
+
+  23 Jun 2004; Ferris McCormick <fmccor@gentoo.org> fox-1.0.49.ebuild:
+  Marked stable for sparc.
+
+  19 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> fox-1.2.4.ebuild:
+  Marked ~amd64.
+
+*fox-1.2.4 (13 Jun 2004)
+
+  13 Jun 2004; <pyrania@gentoo.org> fox-1.0.40.ebuild, fox-1.0.43.ebuild,
+  fox-1.0.49.ebuild, +fox-1.2.4.ebuild:
+  Version bump, ebuild cleanups, added debug useflag.
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> fox-1.0.43.ebuild,
+  fox-1.0.49.ebuild:
+  Added IUSE=
+
+  10 Apr 2004; David Holm <dholm@gentoo.org> fox-1.0.49.ebuild:
+  Added to ~ppc.
+
+  23 Mar 2004; Dylan Carlson <absinthe@gentoo.org> fox-1.0.49.ebuild:
+  Added amd64 to KEYWORDS.
+
+  18 Feb 2004; Guy Martin <gmsoft@gentoo.org> fox-1.0.49.ebuild :
+  Marked stable on hppa.
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> fox-1.0.49.ebuild:
+  stable on alpha and ia64 for the sake of dev-ruby/fxruby
+
+  15 Feb 2004; Jason Wever <weeve@gentoo.org> fox-1.0.43.ebuild:
+  Marked stable on sparc to fix dev-ruby/fxruby's broken deps.
+
+*fox-1.0.49 (07 Feb 2004)
+
+  07 Feb 2004; Markus Nigbur <pyrania@gentoo.org> fox-1.0.17.ebuild,
+  fox-1.0.26.ebuild, fox-1.0.29.ebuild, fox-1.0.40.ebuild, fox-1.0.43.ebuild,
+  fox-1.0.49.ebuild:
+  Version bump, removed older ebuilds and fixed a DESC typo.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+*fox-1.0.43 (01 Aug 2003)
+
+  01 Aug 2003; Ryan Phillips <rphillips@gentoo.org> fox-1.0.43-ebuild:
+  version bump
+ 
+*fox-1.0.40 (10 Jun 2003)
+
+  10 Jun 2003; Ryan Phillips <rphillips@gentoo.org> :
+  Version bump. Fixes bug #21618
+
+*fox-1.0.29 (26 Dec 2002)
+
+  26 Dec 2002; Ryan Phillips <rphillips@gentoo.org> :
+  Version bump.
+ 
+*fox-1.0.26 (05 Nov 2002)
+
+  05 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
+
+*fox-1.0.17.ebuild (29 Jul 2002)
+
+  29 Jul 2002; Gabriele Giorgetti <stroke@gentoo.org> fox-1.0.17.ebuild:
+
+  Initial cvs import.
+  Ebuild submitted by Brian Olsen <bnolsen@attbi.com> (bug #3969)

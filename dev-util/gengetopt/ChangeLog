@@ -1,0 +1,17 @@
+# ChangeLog for dev-util/gengetopt
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/gengetopt/ChangeLog,v 1.3 2015/01/19 16:49:45 radhermit Exp $
+
+  19 Jan 2015; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Drop myself from metadata.
+
+  02 May 2013; Patrick Lauer <patrick@gentoo.org> gengetopt-2.22.6.ebuild:
+  Automake 1.13 fix
+
+*gengetopt-2.22.6 (24 Nov 2012)
+
+  24 Nov 2012; Tim Harder <radhermit@gentoo.org> +gengetopt-2.22.6.ebuild,
+  +files/gengetopt-2.22.6-docdirs.patch,
+  +files/gengetopt-2.22.6-makefile.patch,
+  +files/gengetopt-2.22.6-no-docs.patch, +metadata.xml:
+  Initial import, ebuild by me (bug #115541).

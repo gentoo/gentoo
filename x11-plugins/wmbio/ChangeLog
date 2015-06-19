@@ -1,0 +1,58 @@
+# ChangeLog for x11-plugins/wmbio
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmbio/ChangeLog,v 1.16 2010/09/01 07:16:26 s4t4n Exp $
+
+  01 Sep 2010; Michele Noberasco <s4t4n@gentoo.org> wmbio-1.02.ebuild,
+  -files/wmbio-Makefile.patch:
+  Honour Gentoo LDFLAGS. Closes bug #335425.
+  Removed old Makedile patch relying on sed instead.
+
+  09 Feb 2010; Ben de Groot <yngwin@gentoo.org> wmbio-1.02.ebuild:
+  Fix typo (bug 299547). Migrate to eapi-2.
+
+  25 Nov 2008; Tiago Cunha <tcunha@gentoo.org> wmbio-1.02.ebuild:
+  stable sparc, bug 215651
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; wmbio-1.02.ebuild:
+  Drop virtual/x11 references.
+
+  08 Jul 2006; Jon Hood <squinky86@gentoo.org> wmbio-1.02.ebuild:
+  Adding ~amd64, bug #120555.
+
+  24 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> wmbio-1.02.ebuild:
+  Fixed DEPEND for modular X.
+
+  23 Nov 2004; Jason Wever <weeve@gentoo.org> wmbio-1.02.ebuild:
+  Added ~sparc keyword.
+
+  04 Sep 2004; Michele Noberasco <s4t4n@gentoo.org> wmbio-1.02.ebuild:
+  Stable for x86.
+  wmbio-1.01.ebuild:
+  Remove older ebuild...
+
+  02 Sep 2004; Tom Gall <tgall@gentoo.org> wmbio-1.02.ebuild:
+  stable on ppc64, bug #62249
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> wmbio-1.02.ebuild:
+  Masked wmbio-1.02.ebuild stable for ppc
+
+*wmbio-1.02 (23 Aug 2004)
+
+  23 Aug 2004; Michele Noberasc <s4t4n@gentoo.org> wmbio-1.02.ebuild:
+  Version Bump. General ebuild cleanup. Closes #61309
+  wmbio-1.01.ebuild:
+  Fox HOMEPAGE and SRC_URI...
+
+  25 Jan 2004; Markus Nigbur <pyrania@gentoo.org> wmbio-1.01.ebuild:
+  Marked stable on x86.
+
+  04 Jan 2004; Markus Nigbur <pyrania@gentoo.org> wmbio-1.01.ebuild:
+  ebuild fixes
+
+*wmbio-1.01 (02 Nov 2003)
+*wmbio-1.0 (02 Nov 2003)
+
+  02 Nov 2003; Markus Nigbur <pyrania@gentoo.org> wmbio-1.0.ebuild,
+  wmbio-1.01.ebuild:
+  Initial import.
+

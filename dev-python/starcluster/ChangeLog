@@ -1,0 +1,53 @@
+# ChangeLog for dev-python/starcluster
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/starcluster/ChangeLog,v 1.12 2015/06/03 21:56:33 jlec Exp $
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  25 Oct 2014; Ian Delaney <idella4@gentoo.org> starcluster-0.93.3-r2.ebuild:
+  correct install phase
+
+*starcluster-0.93.3-r2 (22 Oct 2014)
+
+  22 Oct 2014; Ian Delaney <idella4@gentoo.org> +starcluster-0.93.3-r2.ebuild,
+  -starcluster-0.93.3-r1.ebuild, -starcluster-0.93.3.ebuild:
+  revbump; substitute dobashcomp with newbashcomp, fixes Bug #526274, rm prior
+  ebuilds
+
+  28 Aug 2014; Michał Górny <mgorny@gentoo.org> starcluster-0.93.3-r1.ebuild,
+  starcluster-0.93.3.ebuild:
+  Remove mistakenly left USE=bash-completion.
+
+*starcluster-0.93.3-r1 (19 Apr 2013)
+
+  19 Apr 2013; Ian Delaney <idella4@gentoo.org> +starcluster-0.93.3-r1.ebuild:
+  migration -> distutils-r1
+
+  04 Mar 2013; Ian Delaney <idella4@gentoo.org> starcluster-0.93.3.ebuild:
+  Update dep jinja, prompt from quantumsummers & jtriley
+
+  04 Mar 2013; Ian Delaney <idella4@gentoo.org> starcluster-0.93.3.ebuild:
+  Update dep jinja, prompt from quantumsummers
+
+  01 Dec 2012; Ian Delaney <idella4@gentoo.org>
+  files/starcluster-0.93.3-requires.patch:
+  Replacement -requires.patch, thanks to initial ebuild author J. T. Riley,
+  fixes Bug #437912
+
+  13 Nov 2012; Ian Delaney <idella4@gentoo.org>
+  +files/starcluster-0.93.3-requires.patch, starcluster-0.93.3.ebuild:
+  added patch to requires.txt, edited deps, both wrt to Bug #437912, fixed
+  metadata file
+
+  29 May 2012; Kacper Kowalik <xarthisius@gentoo.org> metadata.xml:
+  Fix metadata.xml to have only bugzilla related email for proxy maintainer
+
+  29 May 2012; Kacper Kowalik <xarthisius@gentoo.org> starcluster-0.93.3.ebuild:
+  Fix SRC_URI (s->S), drop unnecessary quotes
+
+*starcluster-0.93.3 (28 May 2012)
+
+  28 May 2012; Theo Chatzimichos <tampakrap@gentoo.org> +metadata.xml,
+  +starcluster-0.93.3.ebuild:
+  Initial commit, ebuilds by idella4 and jtriley

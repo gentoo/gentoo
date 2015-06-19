@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>tetromino@gentoo.org</email>
+<name>Alexandre Rostovtsev</name>
+</maintainer>
+<maintainer>
+<email>leio@gentoo.org</email>
+<description>Backup maintainer, CC on bugs and assign to remaining</description>
+</maintainer>
+<longdescription lang="en">
+	Sysprof is a sampling CPU profiler for Linux that profiles the entire system,
+	not just a single application.
+	Sysprof handles shared libraries and applications do not need to be recompiled.
+	In fact they don't even have to be restarted.
+</longdescription>
+</pkgmetadata>

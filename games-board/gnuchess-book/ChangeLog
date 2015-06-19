@@ -1,0 +1,74 @@
+# ChangeLog for games-board/gnuchess-book
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/gnuchess-book/ChangeLog,v 1.20 2015/01/03 07:00:19 mr_bones_ Exp $
+
+  03 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  gnuchess-book-1.02.ebuild:
+  tidy
+
+  11 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  gnuchess-book-1.02.ebuild:
+  EAPI=5
+
+  30 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -gnuchess-book-1.01.ebuild:
+  old
+
+  30 Sep 2012; Raúl Porcel <armin76@gentoo.org> gnuchess-book-1.01.ebuild,
+  gnuchess-book-1.02.ebuild:
+  Drop alpha keywords
+
+  17 Apr 2012; Brent Baude <ranger@gentoo.org> gnuchess-book-1.02.ebuild:
+  Marking gnuchess-book-1.02 ppc64 for bug 411769
+
+  16 Apr 2012; Brent Baude <ranger@gentoo.org> gnuchess-book-1.02.ebuild:
+  Marking gnuchess-book-1.02 ppc for bug 411769
+
+  15 Apr 2012; Markus Meier <maekke@gentoo.org> gnuchess-book-1.02.ebuild:
+  x86 stable, bug #411769
+
+  14 Apr 2012; Agostino Sarubbo <ago@gentoo.org> gnuchess-book-1.02.ebuild:
+  Stable for amd64, wrt bug #411769
+
+  04 Mar 2012; Sebastian Pipping <sping@gentoo.org> gnuchess-book-1.02.ebuild:
+  Migrate book 1.02 to gnuchess 6.x
+
+  04 Mar 2012; Sebastian Pipping <sping@gentoo.org> gnuchess-book-1.01.ebuild:
+  Book 1.01 crashes gnuchess 5.9.91/6.0.2 in contrast to book 1.02. So I adjust
+  depencencies of book 1.01 so it cannot be used with these versions of
+  gnuchess
+
+*gnuchess-book-1.02 (04 Mar 2012)
+
+  04 Mar 2012; Sebastian Pipping <sping@gentoo.org> +gnuchess-book-1.02.ebuild:
+  Bump to 1.02
+
+  13 Apr 2007; <welp@gentoo.org> gnuchess-book-1.01.ebuild:
+  Stable on amd64 wrt bug 174415
+
+*gnuchess-book-1.01 (30 Mar 2007)
+
+  30 Mar 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  +gnuchess-book-1.01.ebuild:
+  version bump
+
+  08 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  21 May 2006; Markus Rothe <corsair@gentoo.org> gnuchess-book-1.00.ebuild:
+  Stable on ppc64
+
+  23 Jan 2006; Markus Rothe <corsair@gentoo.org> gnuchess-book-1.00.ebuild:
+  Added ~ppc64; bug #120092
+
+  18 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  gnuchess-book-1.00.ebuild:
+  Work around build issue with userpriv (bug #112898)
+
+  06 Jul 2005; Herbie Hopkins <herbs@gentoo.org> gnuchess-book-1.00.ebuild:
+  Marked ~amd64 wrt bug #93676.
+
+*gnuchess-book-1.00 (22 Feb 2004)
+
+  22 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by andrey kartashov #40925.

@@ -1,0 +1,14 @@
+Unbreak x86_64-pc-solaris2.1[01], it IS 64-bits too.  Without this,
+libtool thinks the linker is called ld_sol2.
+
+--- configure
++++ configure
+@@ -1383,7 +1383,7 @@
+       case $lt_cv_prog_gnu_ld in
+       yes*)
+         case $host in
+-        i?86-*-solaris*)
++        i?86-*-solaris*|x86_64-*-solaris*)
+           LD="${LD-ld} -m elf_x86_64"
+           ;;
+         sparc*-*-solaris*)

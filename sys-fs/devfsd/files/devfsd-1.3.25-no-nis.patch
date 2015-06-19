@@ -1,0 +1,69 @@
+--- devfsd/devfsd.c.mps	2003-12-04 15:54:03.000000000 +0100
++++ devfsd/devfsd.c	2003-12-04 16:05:32.000000000 +0100
+@@ -283,8 +283,10 @@
+ #include <regex.h>
+ #include <errno.h>
+ #include <dlfcn.h>
++#ifdef HAVE_NIS
+ #include <rpcsvc/ypclnt.h>
+ #include <rpcsvc/yp_prot.h>
++#endif
+ #include <karma.h>
+ #include "devfsd.h"
+ #include "version.h"
+@@ -414,9 +416,11 @@
+ 			      unsigned long *event_mask);
+ static void process_config_line (CONST char *line, unsigned long *event_mask);
+ static void *dlsym_nofail (const char *file, void *handle, char *symbol);
++#ifdef HAVE_NIS
+ static int process_yp_line (int instatus, char *inkey, int inkeylen,
+ 			    char *inval, int invallen, char *indata);
+ static void load_libnsl (void);
++#endif
+ static flag do_servicing (int fd, unsigned long event_mask);
+ static void service_name (const struct devfsd_notify_struct *info);
+ static void action_permissions (const struct devfsd_notify_struct *info,
+@@ -486,9 +490,11 @@
+     {"fd/2", "stderr"},
+     {NULL, NULL},
+ };
++#ifdef HAVE_NIS
+ static int (*my_yp_all) (char *domain, char *map,
+ 			 struct ypall_callback *callback); /* = NULL */
+ static int (*my_yp_get_default_domain) (char **domainptr); /* = NULL */
++#endif
+ static struct event_type
+ {
+     unsigned int type;        /*  The DEVFSD_NOTIFY_* value                  */
+@@ -714,6 +720,7 @@
+     [RETURNS] Nothing.
+ */
+ {
++#ifdef HAVE_NIS
+     if (location[0] == '+')
+     {
+ 	/*  It's a YP map  */
+@@ -736,6 +743,7 @@
+ 	SYSLOG (LOG_ERR, "error reading map: \"%s\"\n", location + 1);
+ 	exit (1);
+     }
++#endif
+     read_config_file (location, optional, event_mask);
+ }   /*  End Function read_config   */
+ 
+@@ -1006,6 +1014,7 @@
+     return (result);
+ }   /*  End Function dlsym_nofail  */
+ 
++#ifdef HAVE_NIS
+ static void load_libnsl (void)
+ {
+ #ifdef LIBNSL  /*  It comes from a shared object  */
+@@ -1034,6 +1043,7 @@
+     if (invallen > 0) process_config_line (inval, (unsigned long *) indata);
+     return (0);
+ }   /*  End Function process_yp_line  */
++#endif
+ 
+ static flag do_servicing (int fd, unsigned long event_mask)
+ /*  [SUMMARY] Service devfs changes until a signal is received.

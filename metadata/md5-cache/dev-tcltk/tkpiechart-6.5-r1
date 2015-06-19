@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=>=dev-lang/tk-8.3 dev-tcltk/tcllib
+DESCRIPTION=create and update 2D or 3D pie charts in a Tcl/Tk application
+HOMEPAGE=http://jfontain.free.fr/piechart6.htm
+KEYWORDS=amd64 ~ppc x86
+LICENSE=jfontain
+RDEPEND=>=dev-lang/tk-8.3 dev-tcltk/tcllib
+SLOT=0
+SRC_URI=http://jfontain.free.fr/tkpiechart-6.5.tar.bz2
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=46a52eb7d6add72d02fafc7707c915a4

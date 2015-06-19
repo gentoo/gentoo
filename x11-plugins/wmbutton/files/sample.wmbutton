@@ -1,0 +1,43 @@
+# Buttons are numbered as follows 
+# 	Left	1 2 3	Middle	11 12 13	Right	21 22 23
+# 	button	4 5 6	button	14 15 16	button	24 25 26
+#		7 8 9		17 18 19		27 28 29
+#
+
+1	mozilla &
+11	firefox &
+21	opera &
+
+2	evolution &
+12	mozilla -mail &
+22	gftp &
+
+3	xterm -T 'xterm' &
+13	Eterm -T 'Eterm' &
+23	aterm -T 'Aterm' &
+
+4	psi &
+14	gaim &
+24	kadu &
+
+5	gentoo &
+15	xterm -T 'Midnight Commander' -e mc &
+25	xffm &
+
+6	ooffice &
+16	gnumeric &
+26	acroread &
+
+7	xmms &
+17	gmplayer &
+27	audacity &
+
+8	gimp-2.0 &
+18	sodipodi &
+28	kpaint &
+
+9       kghostview &
+19      ggv &
+29      xpdf &
+# The above don't need to be in any particular order.
+# Repeated entries should be ignored

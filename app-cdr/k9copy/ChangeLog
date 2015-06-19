@@ -1,0 +1,371 @@
+# ChangeLog for app-cdr/k9copy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/k9copy/ChangeLog,v 1.80 2015/02/01 15:38:27 kensington Exp $
+
+  01 Feb 2015; Michael Palimaka <kensington@gentoo.org> -k9copy-2.3.8.ebuild:
+  Remove old.
+
+  01 Feb 2015; Agostino Sarubbo <ago@gentoo.org> k9copy-2.3.8-r1.ebuild:
+  Stable for x86, wrt bug #538082
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org> k9copy-2.3.8-r1.ebuild:
+  Stable for amd64, wrt bug #538082
+
+  10 Aug 2014; Patrick Lauer <patrick@gentoo.org> k9copy-2.3.8-r1.ebuild,
+  k9copy-2.3.8.ebuild:
+  Fix description for more repoman happy
+
+  04 Apr 2014; Johannes Huber <johu@gentoo.org>
+  +files/k9copy-2.3.8-ffmpeg-2.1.patch, k9copy-2.3.8-r1.ebuild:
+  Add patch to fix build with ffmpeg-2.2 by eroen <eroen@faith.eroen.eu>, bug
+  #505196.
+
+*k9copy-2.3.8-r1 (19 Mar 2014)
+
+  19 Mar 2014; Johannes Huber <johu@gentoo.org> +k9copy-2.3.8-r1.ebuild:
+  Revision bump to EAPI 5.
+
+  26 Feb 2014; Michael Palimaka <kensington@gentoo.org> k9copy-2.3.8.ebuild:
+  Depend on media-video/ffmpeg instead of virtual/ffmpeg wrt bug #474394.
+
+  03 Mar 2013; Alexis Ballier <aballier@gentoo.org> k9copy-2.3.8.ebuild,
+  +files/k9copy-2.3.8-ffmpeg-0.11.patch,
+  +files/k9copy-2.3.8-includepaths.patch:
+  Import slackware patch to build with recent ffmpeg versions and port the
+  patch from backlite to properly include ffmpeg headers, bug #459980
+
+  12 Jul 2012; Michael Palimaka <kensington@gentoo.org> metadata.xml:
+  Cleanup metadata.
+
+  23 Apr 2012; Agostino Sarubbo <ago@gentoo.org> k9copy-2.3.8.ebuild:
+  Stable for amd64, wrt bug #412803
+
+  08 Mar 2012; Sebastian Pipping <sping@gentoo.org> k9copy-2.3.8.ebuild:
+  Guard optional mplayer runtime dependency behind mplayer use flag so that
+  people who (1) have mplayer2 installed (which conflicts with mplayer) and (2)
+  use the internal preview of k9copy can still install k9copy without problems
+
+*k9copy-2.3.8 (12 Jan 2012)
+
+  12 Jan 2012; Johannes Huber <johu@gentoo.org> +k9copy-2.3.8.ebuild,
+  -files/k9copy-2.3.6-return.patch, -k9copy-2.3.6.ebuild:
+  Version bump, remove old.
+
+  07 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> k9copy-2.3.7.ebuild:
+  x86 stable wrt bug #391611
+
+  29 Nov 2011; Andreas K. Huettel <dilfridge@gentoo.org> k9copy-2.3.6.ebuild,
+  k9copy-2.3.7.ebuild:
+  Fix handbook dependencies, bug 391999
+
+  25 Nov 2011; Markos Chandras <hwoarang@gentoo.org> k9copy-2.3.7.ebuild:
+  Stable on amd64 wrt bug #391611
+
+  28 Apr 2011; Alexis Ballier <aballier@gentoo.org> k9copy-2.3.7.ebuild,
+  +files/k9copy-2.3.7-ffmpeg.patch:
+  fix build with ffmpeg/libav latest git
+
+*k9copy-2.3.7 (27 Apr 2011)
+
+  27 Apr 2011; Theo Chatzimichos <tampakrap@gentoo.org> +k9copy-2.3.7.ebuild:
+  Version bump
+
+  26 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> k9copy-2.3.6.ebuild:
+  Depend on virtual/ffmpeg instead of media-video/ffmpeg.
+
+  26 Feb 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -files/k9copy-2.3.5-gcc45.patch, k9copy-2.3.6.ebuild,
+  +files/k9copy-2.3.6-return.patch:
+  Add upstream patch to fix compilation with kde-4.6, bug 350352
+
+  30 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org> -k9copy-2.3.5.ebuild:
+  Remove old
+
+  30 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> k9copy-2.3.6.ebuild:
+  x86 stable wrt bug #353039
+
+  28 Jan 2011; Markos Chandras <hwoarang@gentoo.org> k9copy-2.3.6.ebuild:
+  Stable on amd64 wrt bug #353039
+
+  06 Oct 2010; Theo Chatzimichos <tampakrap@gentoo.org> k9copy-2.3.6.ebuild:
+  Cleanup: EAPI3, merge with live ebuild
+
+*k9copy-2.3.6 (15 Aug 2010)
+
+  15 Aug 2010; Tomáš Chvátal <scarabeus@gentoo.org> +k9copy-2.3.6.ebuild:
+  Version bump.
+
+  29 Jul 2010; Markos Chandras <hwoarang@gentoo.org> k9copy-2.3.5.ebuild:
+  Stable on amd64 wrt bug #329687
+
+  24 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> k9copy-2.3.5.ebuild:
+  x86 stable wrt bug #329687
+
+  16 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> k9copy-2.3.5.ebuild,
+  +files/k9copy-2.3.5-gcc45.patch:
+  Fix building with GCC 4.5 wrt #304755 by Kacper Kowalik.
+
+*k9copy-2.3.5 (12 Feb 2010)
+
+  12 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> +k9copy-2.3.5.ebuild:
+  Version bump.
+
+  08 Dec 2009; Daniel Pielmeier <billie@gentoo.org> k9copy-2.3.4.ebuild:
+  Remove x11-libs/qt-dbus from DEPEND as it is already handled by the
+  kde4-base eclass.
+
+*k9copy-2.3.4 (08 Dec 2009)
+
+  08 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org> -k9copy-2.3.3.ebuild,
+  +k9copy-2.3.4.ebuild:
+  Version bump. Drop old.
+
+*k9copy-2.3.3 (20 Aug 2009)
+
+  20 Aug 2009; Tomáš Chvátal <scarabeus@gentoo.org> +k9copy-2.3.3.ebuild:
+  Version bump.
+
+  04 Jun 2009; Tomas Chvatal <scarabeus@gentoo.org> k9copy-2.3.2.ebuild,
+  +files/k9copy-2.3.2-gcc44.patch:
+  Add gcc44 patch. Per bug #272567. Thx to Martin Jansa for patch.
+
+*k9copy-2.3.2 (27 May 2009)
+
+  27 May 2009; Tomáš Chvátal <scarabeus@gentoo.org> -k9copy-2.3.1.ebuild,
+  +k9copy-2.3.2.ebuild:
+  Version bump. Remove old.
+
+*k9copy-1.2.4-r1 (25 May 2009)
+
+  25 May 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  -k9copy-1.2.3-r2.ebuild, +k9copy-1.2.4-r1.ebuild:
+  Revision bump, EAPI 2 and slot change to :3.5, remove old
+
+*k9copy-2.3.1 (06 Apr 2009)
+
+  06 Apr 2009; Tomas Chvatal <scarabeus@gentoo.org> -k9copy-2.1.0-r1.ebuild,
+  -k9copy-2.2.0.ebuild, +k9copy-2.3.1.ebuild:
+  Version bump. Remove old.
+
+  25 Feb 2009; Tomas Chvatal <scarabeus@gentoo.org> k9copy-2.2.0.ebuild:
+  Add missed libmpeg2 dependency. Per bug #260277.
+
+*k9copy-2.2.0 (20 Feb 2009)
+
+  20 Feb 2009; Tomas Chvatal <scarabeus@gentoo.org> +k9copy-2.2.0.ebuild:
+  Version bump.
+
+*k9copy-2.1.0-r1 (05 Feb 2009)
+
+  05 Feb 2009; Tomas Chvatal <scarabeus@gentoo.org> -k9copy-2.1.0.ebuild,
+  +k9copy-2.1.0-r1.ebuild:
+  Fix ebuild to work nicely with new eclass. Remove old broken one, so we
+  force everybody to update.
+
+  04 Jan 2009; Tomas Chvatal <scarabeus@gentoo.org> k9copy-2.1.0.ebuild:
+  Every kde4 ebuild needs to be EAPI=2.
+
+  17 Dec 2008; Markus Meier <maekke@gentoo.org> k9copy-2.1.0.ebuild:
+  add ~x86, bug #251256
+
+*k9copy-2.1.0 (16 Dec 2008)
+
+  16 Dec 2008; Timo Gurr <tgurr@gentoo.org> +k9copy-2.1.0.ebuild:
+  Version bump adding KDE4 release of K9Copy and fixing bug #223909 (thanks
+  Daniel Pielmeier, Theo Chatzimichos and Chris Mayo).
+
+*k9copy-1.2.4 (15 Dec 2008)
+
+  15 Dec 2008; Timo Gurr <tgurr@gentoo.org> +k9copy-1.2.4.ebuild:
+  Version bump, fixing bug #245320.
+
+  04 Oct 2008; Tobias Heinlein <keytoaster@gentoo.org>
+  k9copy-1.2.3-r2.ebuild:
+  s/errror/eerror/, bug 239639
+
+*k9copy-1.2.3-r2 (06 Jul 2008)
+
+  06 Jul 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/k9copy-1.2.3-new-ffmpeg.patch, -k9copy-1.2.3-r1.ebuild,
+  +k9copy-1.2.3-r2.ebuild:
+  Fix for newer ffmpeg. Bug 230143.
+
+*k9copy-1.2.3-r1 (30 Jun 2008)
+
+  30 Jun 2008; Carsten Lohrke <carlo@gentoo.org>
+  -files/k9copy-1.1.2_p2-desktop-entry.diff,
+  -files/k9copy-1.2.2-desktop-entry.diff,
+  -files/k9copy-1.2.3-desktop-entry.diff,
+  +files/k9copy-1.2.3-desktop-entry-2.diff, -k9copy-1.2.3.ebuild,
+  +k9copy-1.2.3-r1.ebuild:
+  Assorted fixes, triggered by bug #223765.
+
+  28 Mar 2008; Wulf C. Krueger <philantrop@gentoo.org>
+  +files/k9copy-1.2.3-gcc43.patch, k9copy-1.2.3.ebuild:
+  Added a patch for gcc 4.3 compatibility as kindly provided by Peter
+  Alfredsen on bug 214272. Added a missing dependency on ffmpeg.
+
+*k9copy-1.2.3 (20 Jan 2008)
+
+  20 Jan 2008; Carsten Lohrke <carlo@gentoo.org>
+  +files/k9copy-1.2.3-desktop-entry.diff, +k9copy-1.2.3.ebuild:
+  Version bump.
+
+  09 Jan 2008; Tobias Heinlein <keytoaster@gentoo.org> k9copy-1.2.1.ebuild,
+  k9copy-1.2.2.ebuild:
+  s/errror/eerror/g; Fixes bug #205024
+
+*k9copy-1.2.2 (01 Jan 2008)
+
+  01 Jan 2008; Carsten Lohrke <carlo@gentoo.org>
+  +files/k9copy-1.2.2-desktop-entry.diff, +k9copy-1.2.2.ebuild:
+  Version bump.
+
+  22 Dec 2007; Carsten Lohrke <carlo@gentoo.org> k9copy-1.2.1.ebuild:
+  Check Qt 3 being built with OpenGL support.
+
+*k9copy-1.2.1 (08 Dec 2007)
+
+  08 Dec 2007; Matteo Azzali <mattepiu@gentoo.org> +k9copy-1.2.1.ebuild:
+  Version Bump.
+
+  01 Nov 2007; Tobias Heinlein <keytoaster@gentoo.org>
+  -k9copy-1.0.3b.ebuild, -k9copy-1.1.0.ebuild, -k9copy-1.1.1_p2.ebuild,
+  -k9copy-1.1.1_p3.ebuild, -k9copy-1.1.2.ebuild:
+  Cleaning out old versions.
+
+*k9copy-1.2.0 (01 Nov 2007)
+
+  01 Nov 2007; Tobias Heinlein <keytoaster@gentoo.org> +k9copy-1.2.0.ebuild:
+  Version bump.
+
+  22 Aug 2007; Tobias Heinlein <keytoaster@gentoo.org> k9copy-1.0.3b.ebuild,
+  k9copy-1.0.4.ebuild, k9copy-1.1.0.ebuild, k9copy-1.1.1_p2.ebuild,
+  k9copy-1.1.1_p3.ebuild, k9copy-1.1.2.ebuild:
+  Adding a fix to the desktop file for compliance with the spec.
+
+*k9copy-1.1.3 (22 Aug 2007)
+
+  22 Aug 2007; Tobias Heinlein <keytoaster@gentoo.org> +k9copy-1.1.3.ebuild:
+  Version bump, see bug 189866
+
+  08 Aug 2007; Tobias Heinlein <keytoaster@gentoo.org> k9copy-1.0.3b.ebuild,
+  k9copy-1.0.4.ebuild, k9copy-1.1.0.ebuild, k9copy-1.1.1_p2.ebuild,
+  k9copy-1.1.1_p3.ebuild, k9copy-1.1.2.ebuild:
+  Small typo fix in all DESCRIPTIONs and adjusting copyright line.
+
+*k9copy-1.1.2 (08 Aug 2007)
+
+  08 Aug 2007; Tobias Heinlein <keytoaster@gentoo.org> +k9copy-1.1.2.ebuild:
+  Version bump, see bug 188045
+
+  09 Jul 2007; Joseph Jezak <josejx@gentoo.org> k9copy-1.1.1_p3.ebuild:
+  Marked ~ppc for bug #184362.
+
+*k9copy-1.1.1_p3 (01 Apr 2007)
+
+  01 Apr 2007; Carsten Lohrke <carlo@gentoo.org> +k9copy-1.1.1_p3.ebuild:
+  Version bump.
+
+*k9copy-1.1.1_p2 (31 Mar 2007)
+
+  31 Mar 2007; Carsten Lohrke <carlo@gentoo.org>
+  +files/k9copy-1.1.2_p2-desktop-entry.diff, +k9copy-1.1.1_p2.ebuild:
+  Version bump.
+
+  15 Feb 2007; Matteo Azzali <mattepiu@gentoo.org>
+  -k9copy-1.1.0_beta1.ebuild, -k9copy-1.1.0_beta2.ebuild:
+  Removed beta versions.
+
+  15 Feb 2007; Matteo Azzali <mattepiu@gentoo.org> k9copy-1.1.0.ebuild:
+  Fixed ebuild preparing to unmask.
+
+*k9copy-1.1.0 (13 Feb 2007)
+
+  13 Feb 2007; Matteo Azzali <mattepiu@gentoo.org> +k9copy-1.1.0.ebuild:
+  Version Bump.
+
+  10 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Add email addresses for herds (so that media-video is properly found, and
+  not considered main maintiner).
+
+*k9copy-1.1.0_beta2 (11 Oct 2006)
+
+  11 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +k9copy-1.1.0_beta2.ebuild:
+  Version bump.
+
+  30 Aug 2006; Matthias Schwarzott <zzam@gentoo.org> k9copy-1.0.4.ebuild,
+  k9copy-1.1.0_beta1.ebuild:
+  Added a missing newline before appending Category to desktop-file, thanks to
+  Jon duSaint <jon@rockgeeks.net> for reporting, bug #140260.
+
+*k9copy-1.1.0_beta1 (05 Jul 2006)
+
+  05 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +k9copy-1.1.0_beta1.ebuild:
+  Bump to latest beta.
+
+  20 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> k9copy-1.0.4.ebuild:
+  Add Categories to the .desktop file to make it appear on the right menu.
+
+*k9copy-1.0.4 (18 Apr 2006)
+
+  18 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -k9copy-1.0.4_beta2.ebuild, -k9copy-1.0.4_beta3.ebuild,
+  +k9copy-1.0.4.ebuild:
+  Version bump and remove beta versions.
+
+  09 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> k9copy-1.0.3b.ebuild,
+  k9copy-1.0.4_beta2.ebuild, k9copy-1.0.4_beta3.ebuild:
+  Fix homepage as per bug #129342, thanks to J. C. Wren.
+
+*k9copy-1.0.4_beta3 (25 Mar 2006)
+
+  25 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +k9copy-1.0.4_beta3.ebuild:
+  Version bump.
+
+*k9copy-1.0.4_beta2 (21 Mar 2006)
+
+  21 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +k9copy-1.0.4_beta2.ebuild:
+  Add latest beta version.
+
+  21 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/k9copy-1.0.2-switch.patch, -k9copy-1.0.1b.ebuild,
+  -k9copy-1.0.2.ebuild, -k9copy-1.0.2-r1.ebuild:
+  Drop old versions.
+
+  21 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Takeover of k9copy from media-optical herd to video and kde herds.
+
+*k9copy-1.0.3b (01 Mar 2006)
+
+  01 Mar 2006; Luis Medinas <metalgod@gentoo.org> +k9copy-1.0.3b.ebuild:
+  Version bump. Closes bug #123493.
+
+  07 Jan 2006; Carsten Lohrke <carlo@gentoo.org> k9copy-1.0.1b.ebuild,
+  k9copy-1.0.2.ebuild, k9copy-1.0.2-r1.ebuild:
+  QA: aRts use flag provided by kde.eclass. need-kde() needs to be called
+  after R/DEPEND.
+
+*k9copy-1.0.2-r1 (07 Jan 2006)
+
+  07 Jan 2006; Luis Medinas <metalgod@gentoo.org>
+  +files/k9copy-1.0.2-switch.patch, +k9copy-1.0.2-r1.ebuild:
+  Added a patch to fix some code issues thanks to Geoffrey Clements
+  <geoff@electron.me.uk>. Closes bug #117386.
+
+  28 Dec 2005; Luis Medinas <metalgod@gentoo.org> k9copy-1.0.2.ebuild:
+  Changing vamps dependency to 0.98 version to avoid troubles.
+
+*k9copy-1.0.2 (21 Dec 2005)
+
+  21 Dec 2005; Luis Medinas <metalgod@gentoo.org> +k9copy-1.0.2.ebuild:
+  Version Bump. Closes bug #116245.
+
+*k9copy-1.0.1b (13 Dec 2005)
+
+  13 Dec 2005; Luis Medinas <metalgod@gentoo.org> +k9copy-1.0.1b.ebuild:
+  New package. Thanks to all people involved in bug #92854.

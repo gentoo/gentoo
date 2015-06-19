@@ -1,0 +1,114 @@
+# ChangeLog for media-video/miro
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/miro/ChangeLog,v 1.23 2013/05/08 23:50:22 jdhore Exp $
+
+  08 May 2013; Jeff Horelick <jdhore@gentoo.org> miro-6.0.ebuild:
+  Drop ffmpeg patch applied by upstream in 6.0
+
+*miro-6.0 (07 May 2013)
+
+  07 May 2013; Jeff Horelick <jdhore@gentoo.org> +miro-6.0.ebuild,
+  -miro-5.0.1.ebuild:
+  Version bump
+
+  26 Jan 2013; Alexis Ballier <aballier@gentoo.org> miro-5.0.4.ebuild,
+  +files/miro-5.0.4-ffmpeg-1.patch:
+  Add patch from upstream to fix build with ffmpeg-0.11, part of bug #443212
+
+*miro-5.0.4 (26 Dec 2012)
+
+  26 Dec 2012; Jeff Horelick <jdhore@gentoo.org> +miro-5.0.4.ebuild:
+  Version bump. Closes bug #448668
+
+  17 Jun 2012; Jeff Horelick <jdhore@gentoo.org> miro-5.0.1.ebuild:
+  Depend on the avahi mdnsresponder-compat USE flag being set, not JUST avahi.
+
+*miro-5.0.1 (17 Jun 2012)
+
+  17 Jun 2012; Jeff Horelick <jdhore@gentoo.org> +miro-5.0.1.ebuild:
+  Version bump with a few fixes.
+
+  16 Jun 2012; Jeff Horelick <jdhore@gentoo.org> metadata.xml:
+  Take over maintainership.
+
+  16 Jun 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer as he is not able to maintain this anymore.
+
+  16 May 2012; Tomáš Chvátal <scarabeus@gentoo.org> -files/4.0.1-ffmpeg.patch,
+  -files/miro-2.5.3-disable-xine-hack.patch,
+  -files/miro-2.5.3-dont-install-test-files.patch,
+  -files/miro-2.5.3-fix-debug.patch,
+  -files/miro-2.5.3-remove-pkg-config-list-all.patch,
+  -files/miro-2.5.3-remove-unittest-option.patch, -miro-4.0.1-r1.ebuild,
+  -miro-4.0.1.ebuild:
+  Remove versions I was unable to build.
+
+*miro-4.0.6 (16 Feb 2012)
+
+  16 Feb 2012; Jeff Horelick <jdhore@gentoo.org> +miro-4.0.6.ebuild:
+  Version bump. OK'd by volkmar.
+
+  29 Jan 2012; Mike Gilbert <floppym@gentoo.org> miro-4.0.1-r1.ebuild,
+  miro-4.0.1.ebuild:
+  Per Arfrever, remove dependency on dev-libs/boost[python].
+
+*miro-4.0.1-r1 (17 Dec 2011)
+
+  17 Dec 2011; Maxim Koltsov <maksbotan@gentoo.org> +miro-4.0.1-r1.ebuild:
+  Fixed issue with python versions, bug 383637
+
+  26 Sep 2011; Pacho Ramos <pacho@gentoo.org> -miro-2.5.4.ebuild,
+  miro-4.0.1.ebuild:
+  Rekeyword on ppc now that xvid USE is masked on powerpc profile and there is
+  no reason to get it dropped anymore, allowing us to be able to drop
+  gtkmozembed stuff sooner, bug #372243. Remove old.
+
+*miro-4.0.1 (25 May 2011)
+
+  25 May 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +files/4.0.1-ffmpeg.patch, +miro-4.0.1.ebuild, metadata.xml:
+  Add new version. Fixes bug #342093. Also add patch to build with latest
+  ffmpeg (patch not submitted upstream).
+
+  11 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  miro-2.5.4.ebuild:
+  Use Python 2 (bug #315055).
+
+  11 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -miro-2.5.3.ebuild, -files/miro-2.5.3-fix-locale.patch:
+  Delete.
+
+  26 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> miro-2.5.3.ebuild,
+  miro-2.5.4.ebuild:
+  Remove net-libs/xulrunner:1.8 support wrt #324953.
+
+*miro-2.5.4 (05 Mar 2010)
+
+  05 Mar 2010; Mounir Lamouri <volkmar@gentoo.org> +miro-2.5.4.ebuild:
+  Version bump to 2.5.4, fix bug 301569
+
+  05 Mar 2010; Mounir Lamouri <volkmar@gentoo.org> miro-2.5.3.ebuild:
+  Fix src_prepare when gstreamer USE flag is disabled, bug 295359
+
+  28 Nov 2009; Mounir Lamouri <volkmar@gentoo.org> miro-2.5.3.ebuild,
+  +files/miro-2.5.3-remove-pkg-config-list-all.patch:
+  Remove 'pkg-config --list-all' call, bug 294183
+
+  20 Nov 2009; Tomáš Chvátal <scarabeus@gentoo.org> miro-2.5.3.ebuild:
+  keyword with ~amd64. Per bug #291673.
+
+  30 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> miro-2.5.3.ebuild:
+  Add references to upstream bugs.
+
+  30 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> miro-2.5.3.ebuild:
+  Add ~x86 keyword (maintainer keywording).
+
+*miro-2.5.3 (30 Oct 2009)
+
+  30 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> +miro-2.5.3.ebuild,
+  +files/miro-2.5.3-disable-xine-hack.patch,
+  +files/miro-2.5.3-dont-install-test-files.patch,
+  +files/miro-2.5.3-fix-debug.patch, +files/miro-2.5.3-fix-locale.patch,
+  +files/miro-2.5.3-remove-unittest-option.patch, +metadata.xml:
+  Initial commit. Fix bug 131527
+  Thanks to wayne work on the bug.

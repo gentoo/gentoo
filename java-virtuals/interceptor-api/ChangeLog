@@ -1,0 +1,18 @@
+# ChangeLog for java-virtuals/interceptor-api
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/java-virtuals/interceptor-api/ChangeLog,v 1.4 2015/06/14 17:56:07 monsieurp Exp $
+
+  14 Jun 2015; Patrice Clement <monsieurp@gentoo.org> interceptor-api-0.ebuild:
+  Stable for x86 via ALLARCHES. Fix bug 549604.
+
+  19 May 2015; Agostino Sarubbo <ago@gentoo.org> interceptor-api-0.ebuild:
+  Stable for amd64, wrt bug #549604
+
+  10 Mar 2014; Johannes Huber <johu@gentoo.org> interceptor-api-0.ebuild:
+  ~x86 added, bug #491036
+
+*interceptor-api-0 (23 Oct 2013)
+
+  23 Oct 2013; Tom Wijsman <TomWij@gentoo.org> +interceptor-api-0.ebuild,
+  +metadata.xml:
+  New virtual for the Interceptor API, a dependency of spring-context.

@@ -1,0 +1,92 @@
+# ChangeLog for media-libs/opengtl
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/opengtl/ChangeLog,v 1.22 2014/01/11 09:14:50 mgorny Exp $
+
+  11 Jan 2014; Michał Górny <mgorny@gentoo.org> opengtl-0.9.18.ebuild:
+  Depend on llvm < 3.4, since 3.4 is not supported.
+
+  20 Aug 2013; Chris Reffett <creffett@gentoo.org> opengtl-0.9.18.ebuild:
+  Add conditional patch for building with llvm-3.3, bug 474818
+
+  20 Apr 2013; Johannes Huber <johu@gentoo.org>
+  -files/opengtl-0.9.17-gcc-4.7.patch, -files/opengtl-0.9.17-ldflags.patch,
+  -opengtl-0.9.17.ebuild:
+  Remove old.
+
+  15 Apr 2013; Agostino Sarubbo <ago@gentoo.org> opengtl-0.9.18.ebuild:
+  Stable for x86, wrt bug #465994
+
+  15 Apr 2013; Agostino Sarubbo <ago@gentoo.org> opengtl-0.9.18.ebuild:
+  Stable for amd64, wrt bug #465994
+
+  15 Apr 2013; Michael Palimaka <kensington@gentoo.org>
+  +files/opengtl-0.9.18-memcpy.patch, opengtl-0.9.18.ebuild:
+  Fix build with libpng-1.6. Add subslot dependency on libpng.
+
+*opengtl-0.9.18 (14 Mar 2013)
+
+  14 Mar 2013; Michael Palimaka <kensington@gentoo.org>
+  +files/opengtl-0.9.18-underlinking.patch, +opengtl-0.9.18.ebuild,
+  -opengtl-0.9.16.ebuild, opengtl-0.9.17.ebuild:
+  Version bump wrt bug #460930, fixing bug #453420. Fix underlinking wrt bug
+  #450160. Don't strip RPATH created after linking since LLVM libraries are not
+  in the standard search path. Restrict tests wrt bug #377995. Remove old.
+
+  19 Feb 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  opengtl-0.9.17.ebuild:
+  Keyword ~arm
+
+  04 Dec 2012; <ago@gentoo.org> opengtl-0.9.17.ebuild:
+  Stable for x86, wrt bug #443540
+
+  28 Nov 2012; Agostino Sarubbo <ago@gentoo.org> opengtl-0.9.17.ebuild:
+  Stable for amd64, wrt bug #443540
+
+  24 Sep 2012; Johannes Huber <johu@gentoo.org> -opengtl-0.9.15.2.ebuild:
+  Remove old.
+
+  24 Sep 2012; Andreas Schuerch <nativemad@gentoo.org> opengtl-0.9.16.ebuild:
+  x86 stable, see bug 417027. Thanks Myckel Habets.
+
+  24 Aug 2012; Agostino Sarubbo <ago@gentoo.org> opengtl-0.9.16.ebuild:
+  Stable for amd64, wrt bug #417027
+
+*opengtl-0.9.17 (07 Jun 2012)
+
+  07 Jun 2012; Michael Palimaka <kensington@gentoo.org>
+  +files/opengtl-0.9.17-gcc-4.7.patch, +files/opengtl-0.9.17-ldflags.patch,
+  +opengtl-0.9.17.ebuild:
+  Version bump wrt bug #419977. Drop unused dep on zlib. Respect LDFLAGS when
+  tests are enabled. Add patch from Fedora to fix build with GCC 4.7.
+
+  30 May 2012; Johannes Huber <johu@gentoo.org> opengtl-0.9.16.ebuild:
+  Pin llvm version by Franz Fellner <alpine.art.de@googlemail.com> wrt bug
+  #418091.
+
+  27 May 2012; Agostino Sarubbo <ago@gentoo.org> opengtl-0.9.15.2.ebuild:
+  Stable for X86, wrt bug #415749
+
+  27 May 2012; Agostino Sarubbo <ago@gentoo.org> -opengtl-0.9.15.1.ebuild:
+  Remove old
+
+  20 May 2012; Agostino Sarubbo <ago@gentoo.org> opengtl-0.9.15.2.ebuild:
+  Stable for amd64, wrt bug #415749
+
+*opengtl-0.9.16 (17 Jan 2012)
+
+  17 Jan 2012; Johannes Huber <johu@gentoo.org> +opengtl-0.9.16.ebuild:
+  Version bump wrt bug #398745.
+
+*opengtl-0.9.15.2 (12 Jan 2012)
+
+  12 Jan 2012; Johannes Huber <johu@gentoo.org> +opengtl-0.9.15.2.ebuild:
+  Version bump.
+
+  11 Jan 2012; Johannes Huber <johu@gentoo.org> opengtl-0.9.15.1.ebuild:
+  Fix dep on llvm, bug #398263.
+
+*opengtl-0.9.15.1 (22 Jul 2011)
+
+  22 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +opengtl-0.9.15.1.ebuild, +metadata.xml:
+  New library, dependency of app-office/calligra

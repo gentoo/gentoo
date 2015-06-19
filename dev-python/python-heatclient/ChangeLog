@@ -1,0 +1,114 @@
+# ChangeLog for dev-python/python-heatclient
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-heatclient/ChangeLog,v 1.21 2015/06/03 21:21:30 jlec Exp $
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  12 May 2015; Matthew Thode <prometheanfire@gentoo.org>
+  python-heatclient-0.6.0.ebuild:
+  added py34 support, tested through tox
+
+*python-heatclient-0.6.0 (12 May 2015)
+
+  12 May 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +python-heatclient-0.6.0.ebuild:
+  bup
+
+*python-heatclient-0.5.0 (22 Apr 2015)
+
+  22 Apr 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +python-heatclient-0.5.0.ebuild, -python-heatclient-9999.ebuild:
+  bup
+
+*python-heatclient-0.4.0 (01 Apr 2015)
+
+  01 Apr 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +python-heatclient-0.4.0.ebuild:
+  bup
+
+*python-heatclient-0.3.0 (27 Feb 2015)
+
+  27 Feb 2015; Alex Brandt <alunduil@gentoo.org>
+  +python-heatclient-0.3.0.ebuild:
+  add version 0.3.0
+
+  28 Sep 2014; Alex Brandt <alunduil@gentoo.org> python-heatclient-9999.ebuild:
+  add python3_3 target
+
+*python-heatclient-0.2.12 (28 Sep 2014)
+
+  28 Sep 2014; Alex Brandt <alunduil@gentoo.org>
+  +python-heatclient-0.2.12.ebuild:
+  bump version and add python3_3 target
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> python-heatclient-0.2.9.ebuild,
+  python-heatclient-9999.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+  13 Jun 2014; Patrick Lauer <patrick@gentoo.org> python-heatclient-9999.ebuild:
+  Remove keywords from live ebuild
+
+*python-heatclient-0.2.9 (27 Apr 2014)
+
+  27 Apr 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +python-heatclient-0.2.9.ebuild, -python-heatclient-0.2.4-r1.ebuild,
+  -python-heatclient-0.2.5.ebuild, -python-heatclient-0.2.6.ebuild,
+  -python-heatclient-0.2.8.ebuild, python-heatclient-9999.ebuild:
+  updating clients
+
+  27 Mar 2014; Matthew Thode <prometheanfire@gentoo.org>
+  python-heatclient-9999.ebuild:
+  fixing versions
+
+*python-heatclient-0.2.8 (27 Mar 2014)
+
+  27 Mar 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +python-heatclient-0.2.8.ebuild, -python-heatclient-0.2.2-r1.ebuild:
+  bump
+
+  19 Mar 2014; Sébastien Fabbro <bicatali@gentoo.org>
+  python-heatclient-0.2.6.ebuild:
+  Keyword ~amd64-linux ~x86-linux
+
+*python-heatclient-0.2.6 (04 Jan 2014)
+
+  04 Jan 2014; Ian Delaney <idella4@gentoo.org> +python-heatclient-0.2.6.ebuild,
+  python-heatclient-0.2.5.ebuild:
+  tidy to DESCRIPTION, bump; update to deps, add IUSE doc, doc build & install,
+  update to test phase
+
+  04 Dec 2013; Ian Delaney <idella4@gentoo.org> metadata.xml:
+  add herd
+
+  03 Dec 2013; Ian Delaney <idella4@gentoo.org> python-heatclient-0.2.5.ebuild:
+  fix to test phase, thx to Chicago for reporting flaw
+
+*python-heatclient-0.2.5 (23 Oct 2013)
+
+  23 Oct 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +python-heatclient-0.2.5.ebuild, python-heatclient-0.2.4-r1.ebuild:
+  fixing dep issues and a version bump
+
+*python-heatclient-0.2.2-r1 (13 Sep 2013)
+*python-heatclient-0.2.4-r1 (13 Sep 2013)
+
+  13 Sep 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +python-heatclient-0.2.2-r1.ebuild, +python-heatclient-0.2.4-r1.ebuild,
+  -python-heatclient-0.2.2.ebuild, -python-heatclient-0.2.4.ebuild,
+  python-heatclient-9999.ebuild:
+  distutils-r1 compliance
+
+*python-heatclient-0.2.4 (11 Aug 2013)
+
+  11 Aug 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +python-heatclient-0.2.4.ebuild:
+  just updating heatclient, nothing to see here
+
+*python-heatclient-9999 (09 Jun 2013)
+*python-heatclient-0.2.2 (09 Jun 2013)
+
+  09 Jun 2013; Matthew Thode <prometheanfire@gentoo.org> +metadata.xml,
+  +python-heatclient-0.2.2.ebuild, +python-heatclient-9999.ebuild:
+  initial commit of python-heatclient

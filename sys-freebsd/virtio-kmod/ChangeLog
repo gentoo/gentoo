@@ -1,0 +1,22 @@
+# ChangeLog for sys-freebsd/virtio-kmod
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/virtio-kmod/ChangeLog,v 1.4 2014/08/10 20:19:29 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  virtio-kmod-0.228301-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  14 Jul 2013; Richard Yao <ryao@gentoo.org> virtio-kmod-0.228301-r1.ebuild:
+  Add app-arch/cpio to DEPEND, bug #471890
+
+*virtio-kmod-0.228301-r1 (14 Jun 2012)
+
+  14 Jun 2012; Richard Yao <ryao@gentoo.org> +virtio-kmod-0.228301-r1.ebuild,
+  -virtio-kmod-0.228301.ebuild:
+  Add missing pkg_postrm() function
+
+*virtio-kmod-0.228301 (19 May 2012)
+
+  19 May 2012;  <richard@gentoo.org> +files/pkg-message, +metadata.xml,
+  +virtio-kmod-0.228301.ebuild:
+  New package.

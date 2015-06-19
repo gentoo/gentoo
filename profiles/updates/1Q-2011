@@ -1,0 +1,75 @@
+move dev-php5/PEAR-File_Iterator dev-php/file-iterator
+move dev-php5/phpunit dev-php/phpunit
+move dev-php5/PEAR-PHP_TokenStream dev-php/php-tokenstream
+move net-im/silc-plugin net-im/silc-client
+move dev-php5/PEAR-PHP_CodeCoverage dev-php/php-codecoverage
+move dev-php5/PEAR-DbUnit dev-php/dbunit
+move dev-php5/eaccelerator dev-php/eaccelerator
+move dev-php5/doctrine dev-php/doctrine
+move dev-php5/agavi dev-php/agavi
+move dev-php5/phing dev-php/phing
+move dev-php5/phptal dev-php/phptal
+move dev-php5/ZendFramework dev-php/ZendFramework
+move dev-php5/xdebug dev-php/xdebug
+move app-arch/upx app-arch/upx-bin
+move app-emulation/virtualbox-ose-additions app-emulation/virtualbox-additions
+move app-emulation/virtualbox-ose app-emulation/virtualbox
+slotmove kde-misc/kdiff3 1 4
+slotmove dev-libs/libgweather 0 2
+slotmove =dev-java/maven-bin-1.1 1.0 1.1
+move x11-terms/pssh net-misc/pssh
+move x11-terms/clusterssh net-misc/clusterssh
+move kde-misc/kcm_tablet kde-misc/wacomtablet
+move games-strategy/wormux games-strategy/warmux
+move app-vim/latexsuite app-vim/vim-latex
+move sci-biology/allpaths sci-biology/allpathslg
+slotmove gnome-base/gnome-applets 2 0
+slotmove games-mud/kmuddy 0 4
+slotmove kde-mis/bkodama 0 4
+slotmove kde-misc/customizable-weather 0 4
+slotmove kde-misc/kcaldav 0 4
+slotmove kde-misc/kcometen4 0 4
+slotmove kde-misc/kdmthemegenerator 0 4
+slotmove kde-misc/kgrubeditor 0 4
+slotmove kde-misc/kgtk 0 4
+slotmove kde-misc/kopete-antispam 0 4
+slotmove kde-misc/kvkbd 0 4
+slotmove kde-misc/openofficeorg-thumbnail 0 4
+slotmove kde-misc/plasmatvgr 0 4
+slotmove kde-misc/quickaccess 0 4
+slotmove kde-misc/plasma-applet-daisy 0 4
+slotmove media-libs/gluon 0 4
+slotmove media-sound/audex 0 4
+slotmove media-video/kplayer 0 4
+slotmove media-video/kplayer 0.7 4
+slotmove net-misc/guidedog 0 4
+slotmove x11-themes/skulpture 0 4
+slotmove media-gfx/wally 0 4
+slotmove x11-libs/libwnck 2.90 3
+slotmove dev-libs/libunique 0 1
+slotmove x11-libs/libwnck 0 1
+move dev-util/easygit dev-vcs/easygit
+move dev-util/qgit dev-vcs/qgit
+move dev-util/rapidsvn dev-vcs/rapidsvn
+move dev-util/rcsi dev-vcs/rcsi
+move dev-util/svn2cl dev-vcs/svn2cl
+move app-emulation/qemu-softmmu app-emulation/qemu
+slotmove sci-mathematics/rkward 0 4
+move app-pda/synce-libsynce dev-libs/libsynce
+slotmove dev-libs/gdl 0 1
+move dev-perl/Thread-Queue perl-core/Thread-Queue
+move dev-perl/Thread-Semaphore perl-core/Thread-Semaphore
+move dev-dotnet/dbus-glib-sharp dev-dotnet/ndesk-dbus-glib
+move dev-ruby/ruby-serialport dev-ruby/serialport
+move sci-chemistry/caver sci-chemistry/pymol-plugins-caver
+slotmove =x11-libs/fltk-1* 1.1 1
+slotmove dev-libs/libgweather 3 2
+move media-sound/phonon media-libs/phonon
+slotmove dev-cpp/pangomm 2.4 1.4
+move media-sound/phonon-gstreamer media-libs/phonon-gstreamer
+move sci-misc/brlcad media-gfx/brlcad
+move media-sound/phonon-vlc media-libs/phonon-vlc
+move media-sound/phonon-xine media-libs/phonon-xine
+move app-pda/jpilot-Mail app-pda/jpilot-mail
+move sys-apps/eject sys-block/eject
+move dev-php5/symfony dev-php/symfony

@@ -1,0 +1,18 @@
+diff -Naur awesome-3.4.2.orig/awesomeConfig.cmake awesome-3.4.2/awesomeConfig.cmake
+--- awesome-3.4.2.orig/awesomeConfig.cmake	2009-11-27 04:03:25.000000000 +0900
++++ awesome-3.4.2/awesomeConfig.cmake	2009-11-28 01:17:01.639797168 +0900
+@@ -167,6 +167,14 @@
+ # Check for libev
+ a_find_library(LIB_EV ev)
+ 
++# Check for backtrace
++include(CheckFunctionExists)
++CHECK_FUNCTION_EXISTS(backtrace HAVE_BACKTRACE)
++if(NOT HAVE_BACKTRACE)
++    a_find_library(LIB_EXECINFO execinfo)
++    set(AWESOME_REQUIRED_LIBRARIES ${AWESOME_REQUIRED_LIBRARIES} ${LIB_EXECINFO})
++endif()
++
+ # Error check
+ if(NOT LUA51_FOUND AND NOT LUA50_FOUND) # This is a workaround to a cmake bug
+     message(FATAL_ERROR "lua library not found")

@@ -1,0 +1,96 @@
+# ChangeLog for app-emacs/boxquote
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/boxquote/ChangeLog,v 1.27 2012/09/08 18:06:02 ulm Exp $
+
+  08 Sep 2012; Ulrich Müller <ulm@gentoo.org> boxquote-1.23.ebuild:
+  Change EAPI to 4.
+
+  17 Nov 2009; Ulrich Mueller <ulm@gentoo.org> -boxquote-1.21.ebuild:
+  Remove old.
+
+  17 Nov 2009; Brent Baude <ranger@gentoo.org> boxquote-1.23.ebuild:
+  Marking boxquote-1.23 ppc64 for bug 290655
+
+  01 Nov 2009; nixnut <nixnut@gentoo.org> boxquote-1.23.ebuild:
+  ppc stable #290655
+
+  30 Oct 2009; Markus Meier <maekke@gentoo.org> boxquote-1.23.ebuild:
+  amd64/x86 stable, bug #290655
+
+*boxquote-1.23 (27 Sep 2009)
+
+  27 Sep 2009; Ulrich Mueller <ulm@gentoo.org> +files/50boxquote-gentoo.el,
+  boxquote-1.21.ebuild, -files/51boxquote-gentoo.el, +boxquote-1.23.ebuild:
+  Version bump. Rename site-init file to canonical name.
+
+  21 Jun 2008; Ulrich Mueller <ulm@gentoo.org> -boxquote-1.18-r1.ebuild:
+  Remove old.
+
+  21 Jun 2008; Markus Rothe <corsair@gentoo.org> boxquote-1.21.ebuild:
+  Stable on ppc64; bug #228687
+
+  21 Jun 2008; nixnut <nixnut@gentoo.org> boxquote-1.21.ebuild:
+  Stable on ppc wrt bug 228687
+
+  21 Jun 2008; Christian Faulhammer <opfer@gentoo.org> boxquote-1.21.ebuild:
+  stable x86/amd64, bug 228687
+
+  14 Jun 2008; Ulrich Mueller <ulm@gentoo.org> boxquote-1.21.ebuild:
+  Do not assign SIMPLE_ELISP since elisp.eclass now detects this case
+  automatically.
+
+*boxquote-1.21 (21 May 2008)
+
+  21 May 2008; Ulrich Mueller <ulm@gentoo.org> +boxquote-1.21.ebuild:
+  Version bump.
+
+  01 Jun 2007; nixnut <nixnut@gentoo.org> boxquote-1.18-r1.ebuild:
+  Stable on ppc wrt bug 178722
+
+  19 May 2007; Markus Rothe <corsair@gentoo.org> boxquote-1.18-r1.ebuild:
+  Stable on ppc64; bug #178722
+
+  16 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  boxquote-1.18-r1.ebuild:
+  stable x86/amd64, bug 178722
+
+*boxquote-1.18-r1 (16 Apr 2007)
+
+  16 Apr 2007; Ulrich Mueller <ulm@gentoo.org> +files/51boxquote-gentoo.el,
+  +boxquote-1.18-r1.ebuild:
+  Generate autoload file for package initialisation, using new function
+  elisp-make-autoload-file of elisp-common.eclass.
+
+  07 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/50boxquote-gentoo.el:
+  add load path correctly, fixes bug 169588, reported by Ulrich Mueller
+  <ulm@kph.uni-mainz.de>
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  09 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  -boxquote-1.14.ebuild:
+  clean up
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> boxquote-1.18.ebuild:
+  Stable on ppc.
+
+  20 Aug 2004; Tom Gall <tgall@gentoo.org> boxquote-1.18.ebuild:
+  stable on ppc64 bug #58500
+
+  22 Apr 2004; David Holm <dholm@gentoo.org> boxquote-1.18.ebuild:
+  Added to ~ppc.
+
+*boxquote-1.18 (20 Nov 2003)
+
+  20 Nov 2003; <mkennedy@gentoo.org> boxquote-1.18.ebuild:
+  minor version bump
+
+*boxquote-1.14 (31 Oct 2002)
+
+  31 Oct 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  boxquote-1.14.ebuild, files/50boxquote-gentoo.el,
+  files/digest-boxquote-1.14 :
+
+  Initial import.

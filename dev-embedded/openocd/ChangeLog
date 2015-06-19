@@ -1,0 +1,251 @@
+# ChangeLog for dev-embedded/openocd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/openocd/ChangeLog,v 1.56 2015/06/09 13:22:47 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  01 Jun 2015; Mike Frysinger <vapier@gentoo.org> openocd-9999.ebuild:
+  Require texinfo-5 for 9999 ebuilds #549946 by Alexander Stein.
+
+*openocd-0.9.0 (20 May 2015)
+
+  20 May 2015; Mike Frysinger <vapier@gentoo.org> +openocd-0.9.0.ebuild,
+  openocd-9999.ebuild:
+  Version bump from Chromium OS.
+
+  20 May 2015; Mike Frysinger <vapier@gentoo.org> openocd-0.8.0.ebuild,
+  openocd-9999.ebuild:
+  Fix typo in usb blaster configure flag #524932 by Marek Czerski.
+
+  17 Jun 2014; Mike Frysinger <vapier@gentoo.org> openocd-0.8.0.ebuild,
+  openocd-9999.ebuild:
+  Add arm love.
+
+  17 May 2014; Markos Chandras <hwoarang@gentoo.org> openocd-0.8.0.ebuild,
+  openocd-9999.ebuild:
+  Fix typo for --enable-usb_blaster_libftdi thanks to Paul Fertser
+  <fercerpav@gmail.com>
+
+*openocd-0.8.0 (09 May 2014)
+
+  09 May 2014; Markos Chandras <hwoarang@gentoo.org>
+  +files/openocd-0.8.0-jimtcl-0.75.patch, +openocd-0.8.0.ebuild,
+  -openocd-0.8.0_rc2.ebuild, openocd-9999.ebuild:
+  Version bump. Bump jimtcl dependency to 0.75
+
+  04 May 2014; Markos Chandras <hwoarang@gentoo.org> metadata.xml,
+  openocd-0.8.0_rc2.ebuild, openocd-9999.ebuild:
+  Fix typo. Remove sed for version.texi. Add Paul Fertser <fercerpav@gmail.com>
+  to metadata.xml so he is CC'd on bugs
+
+  03 May 2014; Markos Chandras <hwoarang@gentoo.org> metadata.xml,
+  openocd-0.8.0_rc2.ebuild, openocd-9999.ebuild:
+  Massive ebuild improvements and clean up thanks to Paul Fertser
+  <fercerpav@gmail.com> on bug #500350. No need for revbump as this will be
+  removed soon in favor of final 0.8.0
+
+*openocd-0.8.0_rc2 (26 Apr 2014)
+
+  26 Apr 2014; Markos Chandras <hwoarang@gentoo.org> +openocd-0.8.0_rc2.ebuild,
+  -openocd-0.8.0_rc1.ebuild, openocd-9999.ebuild:
+  Version bump. Drop versaloon use flag and merge it to the usb one. Update live
+  ebuild
+
+*openocd-0.8.0_rc1 (06 Apr 2014)
+
+  06 Apr 2014; Markos Chandras <hwoarang@gentoo.org> +openocd-0.8.0_rc1.ebuild,
+  openocd-9999.ebuild:
+  Add initial ebuild for openocd-0.8.0-rc1
+
+  21 Dec 2013; Markos Chandras <hwoarang@gentoo.org> -openocd-0.3.1-r1.ebuild,
+  -openocd-0.4.0.ebuild:
+  Remove old ebuilds
+
+  08 Sep 2013; Markos Chandras <hwoarang@gentoo.org> openocd-0.6.1.ebuild,
+  openocd-0.7.0-r1.ebuild, openocd-9999.ebuild:
+  Add stlink support to 0.6.1 ebuild per #482162
+
+*openocd-0.7.0-r1 (11 Jun 2013)
+
+  11 Jun 2013; Markos Chandras <hwoarang@gentoo.org> +openocd-0.7.0-r1.ebuild,
+  -openocd-0.7.0.ebuild, openocd-0.6.1.ebuild, openocd-9999.ebuild:
+  Enable the new ftdi interface when using the ftdi useflag. Bug #472622 thanks
+  to Stuart Longland
+
+  27 May 2013; Markos Chandras <hwoarang@gentoo.org> openocd-0.7.0.ebuild:
+  Sync ebuild with 9999. Fixes bug 471382
+
+*openocd-0.7.0 (25 May 2013)
+
+  25 May 2013; Markos Chandras <hwoarang@gentoo.org> +openocd-0.7.0.ebuild,
+  metadata.xml, openocd-0.6.1.ebuild:
+  Version bump. Bug #469592
+
+  24 May 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml,
+  openocd-0.6.1.ebuild, openocd-9999.ebuild:
+  remove redundant second argument for use_enable
+
+  24 May 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml,
+  openocd-0.6.1.ebuild:
+  typo
+
+  24 May 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml,
+  openocd-0.6.1.ebuild, openocd-9999.ebuild:
+  updated 9999 ebuild. Partially fixes #403841. EAPI5, enable most of the
+  adapters by default
+
+  24 May 2013; Markos Chandras <hwoarang@gentoo.org> openocd-9999.ebuild:
+  Switch to new git repo
+
+  24 May 2013; Markos Chandras <hwoarang@gentoo.org> openocd-9999.ebuild:
+  add epatch_user
+
+  23 Apr 2013; Mike Frysinger <vapier@gentoo.org> openocd-0.6.1.ebuild,
+  openocd-9999.ebuild:
+  Clean up the ebuild a bit and fix building against either libftdi-0.x or
+  libftdi-1.x #460916 by Marcin Sporysz.
+
+*openocd-0.6.1 (09 Nov 2012)
+
+  09 Nov 2012; Markos Chandras <hwoarang@gentoo.org> +openocd-0.6.1.ebuild,
+  -openocd-0.6.0_rc2.ebuild:
+  Version bump. Bug #441856
+
+*openocd-0.6.0_rc2 (29 Aug 2012)
+
+  29 Aug 2012; Markos Chandras <hwoarang@gentoo.org> +openocd-0.6.0_rc2.ebuild,
+  -openocd-0.6.0_rc1.ebuild, openocd-9999.ebuild:
+  Version bump. Fix jimtcl dependency on live ebuild
+
+  22 Aug 2012; Markos Chandras <hwoarang@gentoo.org> openocd-0.5.0.ebuild:
+  Fix dependency for jimtcl
+
+*openocd-0.6.0_rc1 (17 Aug 2012)
+
+  17 Aug 2012; Markos Chandras <hwoarang@gentoo.org> +openocd-0.6.0_rc1.ebuild,
+  openocd-0.4.0.ebuild, openocd-0.5.0.ebuild:
+  Bump to 0.6.0_rc1
+
+  01 Jun 2012; Zac Medico <zmedico@gentoo.org> openocd-0.3.1-r1.ebuild,
+  openocd-0.4.0.ebuild, openocd-0.5.0.ebuild, openocd-9999.ebuild:
+  inherit multilib for get_libdir
+
+  25 May 2012; Samuli Suominen <ssuominen@gentoo.org> openocd-0.3.1-r1.ebuild,
+  openocd-0.4.0.ebuild, openocd-0.5.0.ebuild, openocd-9999.ebuild:
+  Restrict virtual/libusb to SLOT="0" because libusb-1 is not supported yet.
+
+  22 May 2012; Samuli Suominen <ssuominen@gentoo.org> openocd-0.3.1-r1.ebuild,
+  openocd-0.4.0.ebuild, openocd-0.5.0.ebuild, openocd-9999.ebuild:
+  Use virtual/libusb instead of dev-libs/libusb.
+
+  31 Mar 2012; Sven Wegener <swegener@gentoo.org> openocd-9999.ebuild:
+  Also apply the USB Blaster configure changes to live git version.
+
+  11 Mar 2012; Sven Wegener <swegener@gentoo.org> openocd-0.5.0.ebuild:
+  Fix configure options for USB Blaster FTDI devices.
+
+  15 Feb 2012; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  remove myself from metadata
+
+  15 Nov 2011; Mike Frysinger <vapier@gentoo.org> openocd-0.5.0.ebuild,
+  openocd-9999.ebuild:
+  Inherit autotools for eautoreconf #390605 by Alexander Stein.
+
+  31 Oct 2011; Mike Frysinger <vapier@gentoo.org> openocd-0.5.0.ebuild,
+  openocd-9999.ebuild:
+  Clean up style a bit.
+
+  25 Oct 2011; Markos Chandras <hwoarang@gentoo.org> openocd-9999.ebuild:
+  Bring back src_prepare. Thanks to Alexander Stein <alexander.stein@informatik
+  .tu-chemnitz.de>. Bug #388455
+
+  19 Oct 2011; Markos Chandras <hwoarang@gentoo.org> openocd-0.5.0.ebuild,
+  openocd-9999.ebuild:
+  Fix REQUIRED_USE thanks to Ulrich Mueller <ulm@gentoo.org>
+
+*openocd-0.5.0 (10 Oct 2011)
+
+  10 Oct 2011; Markos Chandras <hwoarang@gentoo.org> -openocd-0.3.1.ebuild,
+  openocd-0.3.1-r1.ebuild, openocd-0.4.0.ebuild,
+  -openocd-0.5.0_pre20110317.ebuild, -openocd-0.5.0_pre20110427.ebuild,
+  +openocd-0.5.0.ebuild, openocd-9999.ebuild, metadata.xml:
+  Version bump. Remove snapshots. Update metadata and homepage
+
+  20 Sep 2011; Michał Górny <mgorny@gentoo.org> openocd-9999.ebuild:
+  Migrate to git-2.
+
+  12 May 2011; Markos Chandras <hwoarang@gentoo.org> openocd-9999.ebuild:
+  Remove broken version.texi file from live ebuild
+
+*openocd-0.5.0_pre20110427 (28 Apr 2011)
+
+  28 Apr 2011; Markos Chandras <hwoarang@gentoo.org>
+  +openocd-0.5.0_pre20110427.ebuild:
+  Add new snapshot
+
+  17 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  openocd-0.5.0_pre20110317.ebuild, openocd-9999.ebuild:
+  Fix typo. Backport fixes to live ebuild
+
+*openocd-0.5.0_pre20110317 (17 Mar 2011)
+
+  17 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  +openocd-0.5.0_pre20110317.ebuild, openocd-9999.ebuild, metadata.xml:
+  Add openocd snapshot and refactor live ebuild. Bug #346473. Thanks to Peter
+  Stuge <peter@stuge.se> for the initial ebuilds
+
+  14 Mar 2011; Sergei Trofimovich <slyfox@gentoo.org> openocd-9999.ebuild:
+  Fixed build failure (now upstream uses submodules)
+
+*openocd-0.4.0 (22 Feb 2011)
+*openocd-0.3.1-r1 (22 Feb 2011)
+
+  22 Feb 2011; Markos Chandras <hwoarang@gentoo.org> +openocd-0.3.1-r1.ebuild,
+  +openocd-0.4.0.ebuild, metadata.xml:
+  Detect ftd2xx library correctly. Bug #355563. Version bump thanks to Stephen
+  Bridges <widget@stdin.co.uk>. Bug #320045
+
+  07 Mar 2010; Mike Frysinger <vapier@gentoo.org> openocd-0.3.1.ebuild,
+  openocd-9999.ebuild:
+  Have USE=parport control parallel port functionality and not autodetected
+  windows-specific features #305805 by Peter Abrahamsen.
+
+  12 Feb 2010; Raúl Porcel <armin76@gentoo.org> openocd-0.3.1.ebuild,
+  openocd-9999.ebuild:
+  Add ~amd64
+
+*openocd-0.3.1 (26 Dec 2009)
+
+  26 Dec 2009; Raúl Porcel <armin76@gentoo.org> +openocd-0.3.1.ebuild,
+  openocd-9999.ebuild:
+  Version bump wrt #281139, build without -Werror wrt #268238, update 9999
+  to git wrt #296139, fix building of docs in 9999 wrt #277358
+
+  17 Jun 2009; Mike Frysinger <vapier@gentoo.org> openocd-0.1.0.ebuild,
+  openocd-9999.ebuild, metadata.xml:
+  Now that libftd2xx supports amd64, split the ftdi/ftd2xx USE flags #255309
+  by Andrej Gelenberg.
+
+*openocd-0.1.0 (23 Feb 2009)
+
+  23 Feb 2009; Markus Meier <maekke@gentoo.org> +openocd-0.1.0.ebuild,
+  openocd-9999.ebuild:
+  bumb to first openocd release, also tweak the live ebuild, bug #259938
+
+  29 Nov 2008; Mike Frysinger <vapier@gentoo.org> openocd-9999.ebuild:
+  Make usb support optional #249211 by Scott.
+
+  26 Oct 2008; Mike Frysinger <vapier@gentoo.org> openocd-9999.ebuild:
+  Add support for ft2232 with amd64 multilib by Jason.
+
+  05 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  04 Jun 2008; Diego Pettenò <flameeyes@gentoo.org> openocd-9999.ebuild:
+  Use eautoreconf, not the bootstrap script.
+
+*openocd-9999 (19 Apr 2008)
+
+  19 Apr 2008; Mike Frysinger <vapier@gentoo.org> +openocd-9999.ebuild:
+  Initial ebuild by Claes Mogren and Kliakhandler Kosta and me #200689.

@@ -1,0 +1,250 @@
+# ChangeLog for dev-java/commons-beanutils
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-beanutils/ChangeLog,v 1.57 2015/03/19 13:32:20 pacho Exp $
+
+  19 Mar 2015; Pacho Ramos <pacho@gentoo.org>
+  -commons-beanutils-1.6.1-r3.ebuild:
+  Drop old slot (#316303)
+
+  31 Dec 2011; Ralph Sennhauser <sera@gentoo.org>
+  commons-beanutils-1.6.1-r3.ebuild, commons-beanutils-1.8.0.ebuild,
+  commons-beanutils-1.8.3.ebuild:
+  Drop ia64 support #345433
+
+  19 Dec 2011; Ralph Sennhauser <sera@gentoo.org>
+  commons-beanutils-1.6.1-r3.ebuild:
+  Fix homepage wrt #202445.
+
+  30 Nov 2011; Fabian Groffen <grobian@gentoo.org>
+  commons-beanutils-1.8.3.ebuild:
+  Marked ~x64-macos
+
+*commons-beanutils-1.8.3 (26 Jan 2011)
+
+  26 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +commons-beanutils-1.8.3.ebuild:
+  Version bump. Cleaned up obsolete restrictions from dependencies.
+  MemoryLeakTestCase is enabled again as it works for me, though it takes
+  around 10 minutes to finish.
+
+  16 Feb 2010; Vlastimil Babka <caster@gentoo.org>
+  -commons-beanutils-1.7.0-r2.ebuild, -commons-beanutils-1.7.0-r3.ebuild:
+  Remove old.
+
+  15 Feb 2010; Joseph Jezak <josejx@gentoo.org>
+  commons-beanutils-1.8.0.ebuild:
+  Marked ppc/ppc64 stable for bug #262529.
+
+  09 Feb 2010; Pacho Ramos <pacho@gentoo.org>
+  commons-beanutils-1.8.0.ebuild:
+  amd64 stable, bug 262529
+
+  16 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  commons-beanutils-1.8.0.ebuild:
+  stable x86, bug 262529
+
+  16 Jan 2010; Petteri Räty <betelgeuse@gentoo.org>
+  commons-beanutils-1.8.0.ebuild:
+  rm MemoryLeakTestCase.java because upstream acknowledges it failing.
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  commons-beanutils-1.6.1-r3.ebuild, commons-beanutils-1.7.0-r2.ebuild,
+  commons-beanutils-1.7.0-r3.ebuild:
+  Transfer Prefix keywords for all SLOTs
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  commons-beanutils-1.8.0.ebuild:
+  Transfer Prefix keywords
+
+*commons-beanutils-1.8.0 (15 Feb 2009)
+
+  15 Feb 2009; Vlastimil Babka <caster@gentoo.org>
+  +commons-beanutils-1.8.0.ebuild:
+  Version bump. Includes now commons-beanutils-bean-collections.jar fixing
+  bug #178898.
+
+  12 Apr 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  commons-beanutils-1.7.0-r3.ebuild:
+  ppc stable, bug #216265
+
+  10 Apr 2008; Petteri Räty <betelgeuse@gentoo.org>
+  commons-beanutils-1.7.0-r3.ebuild:
+  Add a blocker to commons-betwixt versions that haven't been updated to work
+  with commons-collections classes removed.
+
+  07 Apr 2008; Markus Rothe <corsair@gentoo.org>
+  commons-beanutils-1.7.0-r3.ebuild:
+  Stable on ppc64; bug #216265
+
+  05 Mar 2008; Petteri Räty <betelgeuse@gentoo.org>
+  commons-beanutils-1.6.1-r3.ebuild:
+  RESTRICT tests so that the ebuild works with the upcoming generic src_test.
+
+  05 Mar 2008; Petteri Räty <betelgeuse@gentoo.org>
+  commons-beanutils-1.7.0-r3.ebuild:
+  Prepare ebuild for upcoming generic src_test.
+
+*commons-beanutils-1.7.0-r3 (13 Feb 2008)
+
+  13 Feb 2008; Petteri Räty <betelgeuse@gentoo.org>
+  +commons-beanutils-1.7.0-r3.ebuild:
+  Don't use bundled commons-collections classes. Compile to 1.4 bytecode
+  instead of 1.3. Fixes bug #205999.
+
+  17 May 2007; Petteri Räty <betelgeuse@gentoo.org>
+  commons-beanutils-1.7.0-r2.ebuild:
+  Fix LICENSE to Apache-2.0.
+
+  17 May 2007; Petteri Räty <betelgeuse@gentoo.org>
+  commons-beanutils-1.6.1-r3.ebuild:
+  Use EANT_GENTOO_CLASSPATH so that emerge doesn't fail when
+  commons-collections has more than one jar.
+
+  11 Feb 2007; Vlastimil Babka <caster@gentoo.org>
+  -commons-beanutils-1.6.1-r2.ebuild, -commons-beanutils-1.7.0-r1.ebuild:
+  Cleanup.
+
+  10 Feb 2007; nixnut <nixnut@gentoo.org> commons-beanutils-1.6.1-r3.ebuild:
+  Stable on ppc wrt bug 163951
+
+  03 Feb 2007; Steve Dibb <beandog@gentoo.org>
+  commons-beanutils-1.6.1-r3.ebuild, commons-beanutils-1.7.0-r2.ebuild:
+  amd64 stable, bug 163951
+
+  30 Jan 2007; Christian Faulhammer <opfer@gentoo.org>
+  commons-beanutils-1.6.1-r3.ebuild, commons-beanutils-1.7.0-r2.ebuild:
+  stable x86; bug #163951
+
+  26 Jan 2007; Petteri Räty <betelgeuse@gentoo.org>
+  commons-beanutils-1.6.1-r3.ebuild, commons-beanutils-1.7.0-r2.ebuild:
+  Ebuild cleanup. Use dojavadoc.
+
+  11 Jan 2007; Markus Rothe <corsair@gentoo.org>
+  commons-beanutils-1.6.1-r3.ebuild, commons-beanutils-1.7.0-r2.ebuild:
+  Stable on ppc64
+
+  07 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  commons-beanutils-1.6.1-r3.ebuild:
+  Add ~x86-fbsd keyword.
+
+  07 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  commons-beanutils-1.7.0-r2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  17 Oct 2006; Joshua Nichols <nichoj@gentoo.org>
+  commons-beanutils-1.6.1-r3.ebuild, commons-beanutils-1.7.0-r2.ebuild:
+  Keyworded ~ia64.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  commons-beanutils-1.6.1-r2.ebuild, commons-beanutils-1.6.1-r3.ebuild,
+  commons-beanutils-1.7.0-r1.ebuild, commons-beanutils-1.7.0-r2.ebuild:
+  Dropping sparc keywords, see #96229
+
+  22 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  commons-beanutils-1.6.1-r3.ebuild, commons-beanutils-1.7.0-r2.ebuild:
+  ant_src_unpack -> src_unpack
+
+*commons-beanutils-1.7.0-r2 (07 Jul 2006)
+*commons-beanutils-1.6.1-r3 (07 Jul 2006)
+
+  07 Jul 2006; Joshua Nichols <nichoj@gentoo.org>
+  +commons-beanutils-1.6.1-r3.ebuild, +commons-beanutils-1.7.0-r2.ebuild:
+  Revision bump to add support for new Java system.
+
+  09 Jul 2005; Thomas Matthijs <axxo@gentoo.org>
+  commons-beanutils-1.6.1-r2.ebuild, commons-beanutils-1.7.0-r1.ebuild:
+  fix deps, some cleanups
+
+*commons-beanutils-1.7.0-r1 (14 May 2005)
+*commons-beanutils-1.6.1-r2 (14 May 2005)
+
+  14 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  -commons-beanutils-1.6.1-r1.ebuild, +commons-beanutils-1.6.1-r2.ebuild,
+  -commons-beanutils-1.7.0.ebuild, +commons-beanutils-1.7.0-r1.ebuild:
+  slotted correctly, see #71952
+
+  05 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  commons-beanutils-1.7.0.ebuild:
+  Stable on sparc
+
+  04 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  commons-beanutils-1.7.0.ebuild:
+  marked stable on amd64, ppc and x86. introduced support for the 
+  source useflag.
+
+  26 Jan 2005; Markus Rothe <corsair@gentoo.org>
+  commons-beanutils-1.7.0.ebuild:
+  Stable on ppc64
+
+  20 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  commons-beanutils-1.6.1-r1.ebuild, commons-beanutils-1.7.0.ebuild:
+  added missing jikes dependency. see #78819.
+
+  18 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  commons-beanutils-1.6.1-r1.ebuild:
+  removed junit test to fix bug #71952.
+
+  18 Dec 2004; Markus Rothe <corsair@gentoo.org>
+  commons-beanutils-1.7.0.ebuild:
+  added ~ppc64 to KEYWORDS
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org>
+  commons-beanutils-1.6.1-r1.ebuild, commons-beanutils-1.7.0.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  10 Sep 2004; Thomas Matthijs <axxo@gentoo.org>
+  commons-beanutils-1.6.1-r1.ebuild, commons-beanutils-1.7.0.ebuild:
+  changed dependenciess to ant-core
+
+*commons-beanutils-1.7.0 (03 Aug 2004)
+
+  03 Aug 2004; Thomas Matthijs <axxo@gentoo.org>
+  +commons-beanutils-1.7.0.ebuild:
+  version bump
+
+  02 Jun 2004; Aron Griffis <agriffis@gentoo.org>
+  commons-beanutils-1.6.1-r1.ebuild:
+  Fix use invocation
+
+*commons-beanutils-1.6.1-r1 (20 Jan 2004)
+
+  20 Jan 2004; Adrian Almenar <strider@gentoo.org>
+  commons-beanutils-1.6.1-r1.ebuild:
+  Moved to old style compiling, not using eclass cause its a little buggy.
+
+  19 Jan 2004; Adrian Almenar <strider@gentoo.org>
+  commons-beanutils-1.6.1.ebuild:
+  Added amd64 keyword.
+
+*commons-beanutils-1.6.1 (22 Mar 2003)
+
+  26 Apr 2003; Adrian Almenar <strider@gentoo.org> commons-beanutils-1.6.1.ebuild:
+  Updated SRC_URI so this ebuild uses apache mirrors.
+
+  06 Apr 2003; Dylan Carlson <absinthe@gentoo.org>
+  commons-beanutils-1.6.1.ebuild:
+  x86 ppc sparc moved to stable.
+
+  22 Mar 2003; Dylan Carlson <absinthe@gentoo.org>
+  commons-beanutils-1.6.1.ebuild:
+  Version bump; thanks to Lim Swee Tat <st_lim@stlim.net> for his contributions
+  to this effort. Now uses the jakarta-commons eclass.
+
+*commons-beanutils-1.5-r1 (24 Nov 2002)
+
+  08 Dec 2002; Adrian Almenar <strider@gentoo.org> commons-beanutils-1.5-r1.ebuild:
+  Fixed DEPEND from virtual/jdk-1.4 to virtual/jdk-1.3.
+
+  24 Nov 2002; Adrian Almenar <strider@gentoo.org> commons-beanutils-1.5-r1.ebuild files/digest-commons-beanutils-1.5-r1:
+  Just a minor fix, but needed to bump revision cause changed name of the jar 
+  to avoid conflicts in future. Releasing it, since it has been tested a lot and
+  works very well.
+
+*commons-beanutils-1.5 (06 Nov 2002)
+
+  07 Nov 2002; Adrian Almenar <strider@gentoo.org> commons-beanutils-1.5.ebuild:
+  Fixed USE of junit flag now its working.
+
+  06 Nov 2002; Adrian Almenar <strider@gentoo.org> ChangeLog commons-beanutils-1.5.ebuild files/digest-commons-beanutils-1.5:
+  Initial import.

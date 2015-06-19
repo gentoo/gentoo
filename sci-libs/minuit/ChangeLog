@@ -1,0 +1,84 @@
+# ChangeLog for sci-libs/minuit
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/minuit/ChangeLog,v 1.16 2011/03/07 05:28:28 bicatali Exp $
+
+*minuit-5.28.00 (07 Mar 2011)
+
+  07 Mar 2011; Sébastien Fabbro <bicatali@gentoo.org> -minuit-5.27.02.ebuild,
+  +minuit-5.28.00.ebuild:
+  Version bump. Added static-libs flag.
+
+  14 Nov 2010; Justin Lecher <jlec@gentoo.org> minuit-5.27.02.ebuild:
+  Keyworded for ~-linux prefix
+
+  01 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  files/minuit-5.27.02-asneeded.patch:
+  Update -Wl,--as-needed patch with OpenMP library finding code from
+  ImageMagick's configure.ac wrt #314095.
+
+  02 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org> minuit-5.27.02.ebuild:
+  Use tc-has-openmp rather than built_with_use
+
+  02 Jun 2010; Kacper Kowalik <xarthisius@gentoo.org> minuit-5.27.02.ebuild,
+  +files/minuit-5.27.02-asneeded.patch:
+  Adding workaround for bug 314095
+
+*minuit-5.27.02 (10 May 2010)
+
+  10 May 2010; Justin Lecher <jlec@gentoo.org> +minuit-5.27.02.ebuild:
+  Version Bump
+
+  04 Dec 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  -minuit-5.16.00.ebuild, -files/minuit-5.16.00-gcc4.3.patch,
+  -minuit-5.20.00.ebuild, -files/minuit-5.20.00-gcc43.patch,
+  -minuit-5.22.00.ebuild, -files/minuit-5.22.00-as-needed.patch,
+  minuit-5.24.00.ebuild, -files/minuit-5.24.00-as-needed.patch:
+  Removed as needed patch, seems to be bugyy and not needed (included in
+  recent autoconf?)
+
+*minuit-5.24.00 (24 Sep 2009)
+
+  24 Sep 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  +minuit-5.24.00.ebuild, +files/minuit-5.24.00-as-needed.patch:
+  Version bump
+
+*minuit-5.22.00 (23 Jan 2009)
+
+  23 Jan 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/minuit-5.22.00-as-needed.patch, +minuit-5.22.00.ebuild:
+  Version bump
+
+*minuit-5.20.00 (03 Jul 2008)
+
+  03 Jul 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/minuit-5.20.00-gcc43.patch, metadata.xml, +minuit-5.20.00.ebuild:
+  Version bump.
+
+  01 Jun 2008; Markus Dittrich <markusle@gentoo.org>
+  +files/minuit-5.16.00-gcc4.3.patch, minuit-5.16.00.ebuild:
+  Added gcc-4.3 compatibility patch.
+
+  17 May 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  minuit-5.16.00.ebuild:
+  Fixed runtime depend on doxygen (bug #221691)
+
+  15 Sep 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  -minuit-5.15.02.ebuild:
+  removed older version
+
+  01 Aug 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/minuit-5.16.00-test.patch:
+  Removed unused patch
+
+*minuit-5.16.00 (01 Aug 2007)
+
+  01 Aug 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/minuit-5.16.00-test.patch, +minuit-5.16.00.ebuild:
+  Version bump. Added proper src_test
+
+*minuit-5.15.02 (23 Feb 2007)
+
+  23 Feb 2007; Sébastien Fabbro <bicatali@gentoo.org> +metadata.xml,
+  +minuit-5.15.02.ebuild:
+  Initial import. Close bug #65672.
+

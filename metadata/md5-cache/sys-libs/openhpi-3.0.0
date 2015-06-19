@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=>=dev-libs/glib-2.12:2 sys-fs/e2fsprogs sys-fs/sysfsutils >=sys-libs/openipmi-1.4.20 snmp? ( >=net-analyzer/net-snmp-5.07 ) >=sys-devel/autoconf-2.57 >=sys-devel/automake-1.8 >=sys-devel/gcc-3.2.0 virtual/os-headers
+DESCRIPTION=Open source implementation of the Service Availability Forum (SAF) Hardware Platform Interface (HPI)
+EAPI=4
+HOMEPAGE=http://www.openhpi.org/
+IUSE=snmp
+KEYWORDS=~x86 ~amd64
+LICENSE=BSD GPL-2
+RDEPEND=>=dev-libs/glib-2.12:2 sys-fs/e2fsprogs sys-fs/sysfsutils >=sys-libs/openipmi-1.4.20 snmp? ( >=net-analyzer/net-snmp-5.07 )
+SLOT=0
+SRC_URI=mirror://sourceforge/openhpi/openhpi-3.0.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=17a7ed2b1f06418e5adc40aee01df282

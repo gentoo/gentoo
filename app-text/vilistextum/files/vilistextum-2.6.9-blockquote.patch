@@ -1,0 +1,113 @@
+Many clients seem to use blockquote tags to flag quotes these days, so
+write them out as quotes, so they remain readable.
+
+--- vilistextum-2.6.9/src/html_tag.c
++++ vilistextum-2.6.9/src/html_tag.c
+@@ -87,8 +87,8 @@
+ 
+ 		else if CMP("P", str)  { start_p(); }
+ 		else if CMP("/P", str) { paragraphen_ende(); }
+-		else if CMP("BLOCKQUOTE", str)  { start_p(); }
+-		else if CMP("/BLOCKQUOTE", str) { paragraphen_ende(); }
++		else if CMP("BLOCKQUOTE", str)  { start_p(); quote++; }
++		else if CMP("/BLOCKQUOTE", str) { paragraphen_ende(); if (quote>0) quote--;}
+ 		else if CMP("Q", str)  { wort_plus_ch('"'); }
+ 		else if CMP("/Q", str) { wort_plus_ch('"'); }
+ 
+--- vilistextum-2.6.9/src/multibyte.h
++++ vilistextum-2.6.9/src/multibyte.h
+@@ -16,6 +16,7 @@
+  #define ATOI(n) wcstoi(n)
+ 
+  #define ONESPACE L" "
++ #define QUOTE L">"
+  #define WORT_PLUS_STRING(str) wort_plus_string(L##str)
+ 
+  #define STRSTR(haystack, needle) wcsstr(haystack, L##needle)
+@@ -40,6 +41,7 @@
+  #define ATOI(n) atoi(n)
+ 
+  #define ONESPACE " "
++ #define QUOTE ">"
+  #define WORT_PLUS_STRING(str) wort_plus_string(str)
+ 
+  #define STRSTR(haystack, needle) strstr(haystack, needle)
+--- vilistextum-2.6.9/src/text.h
++++ vilistextum-2.6.9/src/text.h
+@@ -26,6 +26,7 @@
+ 
+ int tab;
+ int spaces;  
++int quote;
+ 
+ void print_zeile();
+ int is_zeile_empty();
+--- vilistextum-2.6.9/src/text.c
++++ vilistextum-2.6.9/src/text.c
+@@ -28,6 +28,7 @@
+ int breite=76,
+ 	hr_breite=76,
+ 	paragraph=0,
++	quote=0,
+ 
+ 	tab=4,         /* tabulator */
+ 	spaces=0,      /* spaces at beginning of line */
+@@ -325,6 +326,12 @@
+       printf(" z0: zeilen_pos: %d\n",zeilen_pos);
+ #endif
+       print_zeile();
++      if (quote > 0)
++      {
++        i=0;
++        while (i<quote) { zeile_plus_wort(QUOTE,1,1); i++; }
++        zeile_plus_wort(ONESPACE,1,1);
++      }
+       i=0;
+       while (i<spaces) { zeile_plus_wort(ONESPACE,1,1); i++; }
+ 			if (orderedlist>0) { zeile_plus_wort(ONESPACE,1,1); }
+@@ -345,6 +352,12 @@
+       printf(" z2: zeilen_len: %d\n",zeilen_len);
+       printf(" z2: zeilen_pos: %d\n",zeilen_pos);
+ #endif
++      if (quote > 0)
++      {
++        i=0;
++        while (i<quote) { zeile_plus_wort(QUOTE,1,1); i++; }
++        zeile_plus_wort(ONESPACE,1,1);
++      }
+       i=0;
+       while (i<spaces) { zeile_plus_wort(ONESPACE,1,1); i++; }
+ 			if (orderedlist>0) { zeile_plus_wort(ONESPACE,1,1); }
+--- vilistextum-2.6.9/tests/check_utf8
++++ vilistextum-2.6.9/tests/check_utf8
+@@ -9,5 +9,6 @@
+ rm -f utf-8-sampler.output.test
+ ../src/vilistextum utf-8-sampler.html utf-8-sampler.output.test
+ 
+-diff >/dev/null utf-8-sampler.output utf-8-sampler.output.test
++sed 's/^> //' utf-8-sampler.output.test | \
++diff >/dev/null utf-8-sampler.output -
+ 
+--- vilistextum-2.6.9/tests/utf-8-sampler.output
++++ vilistextum-2.6.9/tests/utf-8-sampler.output
+@@ -100,8 +100,8 @@
+ ვეპხის ტყაოსანი შოთა რუსთაველი
+ 
+ ღმერთსი შემვედრე, ნუთუ კვლა დამხსნას სოფლისა შრომასა, ცეცხლს, წყალსა და
+-მიწასა, ჰაერთა თანა მრომასა; მომცნეს ფრთენი და აღვფრინდე, მივჰხვდე მას ჩემსა
+-ნდომასა, დღისით და ღამით ვჰხედვიდე მზისა ელვათა კრთომაასა.
++მიწასა, ჰაერთა თანა მრომასა; მომცნეს ფრთენი და აღვფრინდე, მივჰხვდე მას
++ჩემსა ნდომასა, დღისით და ღამით ვჰხედვიდე მზისა ელვათა კრთომაასა.
+ 
+ Tamil poetry of Cupiramaniya Paarathiyar: சுப்ரமணிய பாரதியார் (1882-1921)
+ 
+@@ -446,7 +446,8 @@
+ д, п, and/or т:
+ 
+  Bulgarian:    [ бгдпт ]    [ бгдпт ]     Мога да ям стъкло и не ме боли.
+- Russian:  [ бгдпт ]    [ бгдпт ]    Я могу есть стекло, это мне не вредит.
++ Russian:  [ бгдпт ]    [ бгдпт ]    Я могу есть стекло, это мне не
++вредит.
+  Serbian:  [ бгдпт ]    [ бгдпт ]     Могу јести стакло а да ми не шкоди.
+ 
+   ------------------------------------------------------------------------

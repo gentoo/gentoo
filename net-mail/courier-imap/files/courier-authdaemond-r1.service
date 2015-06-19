@@ -1,0 +1,11 @@
+[Unit]
+Description=Courier Authentification Daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/courierlogger -pid=/var/run/authdaemon.pid -start /usr/lib/courier/courier-authlib/authdaemond
+ExecStop=/usr/sbin/courierlogger -pid=/var/run/authdaemon.pid -stop /usr/lib/courier/courier-authlib/authdaemond
+PIDFile=/var/run/authdaemon.pid
+
+[Install]
+WantedBy=multi-user.target

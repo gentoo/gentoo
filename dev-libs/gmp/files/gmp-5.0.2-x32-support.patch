@@ -1,0 +1,41 @@
+Upstream-Status: Pending
+
+Add X32 support in gmp configure.
+
+Patch Originator: H J Lu @ Intel
+Patch modified for Yocto by Nitin Kamble
+Signed Off By: Nitin A Kamble <nitin.a.kamble@intel.com> 2011/11/21
+
+--- gmp-4.3.2/configure
++++ gmp-4.3.2/configure
+@@ -1499,6 +1499,21 @@
+ 	    path_64="x86_64/atom x86_64"
+ 	    ;;
+ 	esac
++
++	# X32 support.
++	case x"$path_64" in
++	  xx86_64*)
++		abilist="x32 64 32"
++		path_x32="$path_64"
++		limb_x32=longlong
++		cclist_x32="gcc"
++		gcc_x32_cflags="-O2 -mx32"
++		any_x32_testlist="sizeof-long-4"
++		CALLING_CONVENTIONS_OBJS_x32='amd64call.lo amd64check$U.lo'
++		SPEED_CYCLECOUNTER_OBJ_x32=x86_64.lo
++		cyclecounter_size_x32=2
++	    ;;
++	esac
+ 	;;
+     esac
+     ;;
+@@ -3039,7 +3058,7 @@
+  ;;
+ 	  esac
+           ;;
+-        64)
++        64|x32)
+ 
+ echo "include_mpn(\`x86_64/x86_64-defs.m4')" >> $gmp_tmpconfigm4i
+ 

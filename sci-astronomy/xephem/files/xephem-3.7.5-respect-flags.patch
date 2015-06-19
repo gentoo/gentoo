@@ -1,0 +1,57 @@
+Respect AR, RANLIB
+
+https://bugs.gentoo.org/show_bug.cgi?id=436646
+
+Patch written by Kacper Kowalik <xarthisius@gentoo.org>
+--- a/libastro/Makefile
++++ b/libastro/Makefile
+@@ -79,8 +79,8 @@ OBJS =			\
+ 	vsop87_data.o
+ 
+ libastro.a: $(HS) $(OBJS)
+-	ar rv $@ $(OBJS)
+-	ranlib $@
++	$(AR) rv $@ $(OBJS)
++	$(RANLIB) $@
+ 
+ libastro.so: $(HS) $(OBJS)
+ 	$(CC) $(LDFLAGS) -shared -o $@ $(OBJS)
+--- a/libip/Makefile
++++ b/libip/Makefile
+@@ -35,8 +35,8 @@ OBJS =	\
+ HS = ip.h fsmatch.h
+ 
+ libip.a: $(HS)	$(OBJS)
+-	ar rv $@ $(OBJS)
+-	ranlib $@
++	$(AR) rv $@ $(OBJS)
++	$(RANLIB) $@
+ 
+ libip.so:    $(OBJS)
+ 	$(CC) $(LDFLAGS) -shared -o $@ $(OBJS)
+--- a/libjpegd/Makefile
++++ b/libjpegd/Makefile
+@@ -62,8 +62,8 @@ OBJS = \
+ 	jutils.o
+ 
+ libjpegd.a: $(HS) $(OBJS)
+-	ar r $@ $(OBJS)
+-	ranlib $@
++	$(AR) r $@ $(OBJS)
++	$(RANLIB) $@
+ 
+ clobber:
+ 	touch x.o x.a
+--- a/liblilxml/Makefile
++++ b/liblilxml/Makefile
+@@ -24,8 +24,8 @@ HS = lilxml.h
+ OBJS = lilxml.o base64.o
+ 
+ liblilxml.a: $(HS) $(OBJS)
+-	ar r $@ $(OBJS)
+-	ranlib $@
++	$(AR) r $@ $(OBJS)
++	$(RANLIB) $@
+ 
+ liltest: liltest.o liblilxml.a
+ 	$(CC) $(LDFLAGS) -o liltest liltest.o liblilxml.a

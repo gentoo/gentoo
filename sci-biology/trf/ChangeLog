@@ -1,0 +1,40 @@
+# ChangeLog for sci-biology/trf
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/trf/ChangeLog,v 1.9 2014/04/17 21:08:54 ulm Exp $
+
+  17 Apr 2014; Ulrich Müller <ulm@gentoo.org> trf-4.04.ebuild:
+  Fix LICENSE, add mirror and bindist restrictions, update SRC_URI, bug 470778.
+
+  12 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+  04 Mar 2013; Justin Lecher <jlec@gentoo.org> trf-4.04.ebuild, metadata.xml:
+  What happens in /opt, stays in /opt
+
+  06 Oct 2012; Justin Lecher <jlec@gentoo.org> -trf-4.0.ebuild,
+  trf-4.04.ebuild:
+  Drop old; move to EAPI=4; use QA_PREBUILT, #436718
+
+  05 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> trf-4.04.ebuild:
+  x86 stable wrt bug #311833
+
+  29 Mar 2010; Pacho Ramos <pacho@gentoo.org> trf-4.04.ebuild:
+  amd64 stable, bug 311833
+
+*trf-4.04 (29 Jan 2010)
+
+  29 Jan 2010; Andrey Kislyuk <weaver@gentoo.org> +trf-4.04.ebuild:
+  Version bump
+
+  23 Apr 2009; Markus Meier <maekke@gentoo.org> trf-4.0:
+  amd64/x86 stable, bug #266871
+
+*trf-4.0 (26 Feb 2009)
+
+  26 Feb 2009; Andrey Kislyuk <weaver@gentoo.org> +metadata.xml,
+  +trf-4.0.ebuild:
+  Import from Science overlay
+
+  19 Feb 2009; weaver <weaver@gentoo.org> ChangeLog:
+  New package sci-biology/trf, ebuild written by me
+

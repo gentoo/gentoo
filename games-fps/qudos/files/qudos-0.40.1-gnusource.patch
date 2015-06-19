@@ -1,0 +1,12 @@
+--- src/unix/qsh_unix.c.orig	2011-10-22 17:46:37.665993357 -0500
++++ src/unix/qsh_unix.c	2011-10-22 17:46:40.965972209 -0500
+@@ -17,6 +17,9 @@
+  * Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+  *
+  */
++#if !defined(_GNU_SOURCE)
++	#define _GNU_SOURCE
++#endif
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/time.h>

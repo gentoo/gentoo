@@ -1,0 +1,52 @@
+--- a/kernel/nv-linux.h
++++ b/kernel/nv-linux.h
+@@ -757,16 +757,16 @@
+ 
+ #if defined(NV_KMEM_CACHE_CREATE_PRESENT)
+ #if (NV_KMEM_CACHE_CREATE_ARGUMENT_COUNT == 6)
+-#define NV_KMEM_CACHE_CREATE(kmem_cache, name, type)            \
++#define NV_KMEM_CACHE_CREATE(kmem_cache, name, type, flags)     \
+     {                                                           \
+         kmem_cache = kmem_cache_create(name, sizeof(type),      \
+-                        0, 0, NULL, NULL);                      \
++                        0, flags, NULL, NULL);                  \
+     }
+ #elif (NV_KMEM_CACHE_CREATE_ARGUMENT_COUNT == 5)
+-#define NV_KMEM_CACHE_CREATE(kmem_cache, name, type)            \
++#define NV_KMEM_CACHE_CREATE(kmem_cache, name, type, flags)     \
+     {                                                           \
+         kmem_cache = kmem_cache_create(name, sizeof(type),      \
+-                        0, 0, NULL);                            \
++                        0, flags, NULL);                        \
+     }
+ #else
+ #error "NV_KMEM_CACHE_CREATE_ARGUMENT_COUNT value unrecognized!"
+--- a/kernel/nv.c
++++ b/kernel/nv.c
+@@ -794,7 +794,7 @@
+     NV_SPIN_LOCK_INIT(&km_lock);
+ #endif
+ 
+-    NV_KMEM_CACHE_CREATE(nv_stack_t_cache, NV_STACK_CACHE_STR, nv_stack_t);
++    NV_KMEM_CACHE_CREATE(nv_stack_t_cache, NV_STACK_CACHE_STR, nv_stack_t, SLAB_USERCOPY);
+     if (nv_stack_t_cache == NULL)
+     {
+         nv_printf(NV_DBG_ERRORS, "NVRM: stack cache allocation failed!\n");
+@@ -924,7 +924,7 @@
+     nv->os_state = (void *) &nv_ctl_device;
+     nv_lock_init_locks(nv);
+ 
+-    NV_KMEM_CACHE_CREATE(nv_pte_t_cache, NV_PTE_CACHE_STR, nv_pte_t);
++    NV_KMEM_CACHE_CREATE(nv_pte_t_cache, NV_PTE_CACHE_STR, nv_pte_t, 0);
+     if (nv_pte_t_cache == NULL)
+     {
+         rc = -ENOMEM;
+@@ -935,7 +935,7 @@
+     if (NV_BUILD_MODULE_INSTANCES == 0)
+     {
+         NV_KMEM_CACHE_CREATE(nvidia_p2p_page_t_cache, "nvidia_p2p_page_t",
+-                             nvidia_p2p_page_t);
++                             nvidia_p2p_page_t, 0);
+         if (nvidia_p2p_page_t_cache == NULL)
+         {
+             rc = -ENOMEM;

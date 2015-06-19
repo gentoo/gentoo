@@ -1,0 +1,19 @@
+--- Imakefile	1999-08-24 00:09:41.000000000 -0400
++++ Imakefile	2005-02-21 01:40:20.000000000 -0500
+@@ -22,7 +22,6 @@
+ 
+ CAT		= cat
+ CP		= cp -df
+-GZIP		= gzip
+ MKDIR		= mkdir -p
+ MV		= mv -f
+ RM		= rm -f
+@@ -438,7 +437,7 @@
+ 	done
+ 	-$(RM) $(TARBALL)$(BACKUP_SUFFIX)
+ 	-$(MV) $(TARBALL) $(TARBALL)$(BACKUP_SUFFIX)
+-	$(TAR) -cvf - $(TARBALL_DIR) | $(GZIP) -9 -c >$(TARBALL)
++	$(TAR) -cvf - $(TARBALL_DIR) | gzip -9 -c >$(TARBALL)
+ 	-$(RM) -r $(TARBALL_DIR)
+ 
+ clean::

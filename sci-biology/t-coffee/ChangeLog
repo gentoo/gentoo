@@ -1,0 +1,243 @@
+# ChangeLog for sci-biology/t-coffee
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/t-coffee/ChangeLog,v 1.58 2015/05/05 13:40:54 jlec Exp $
+
+  05 May 2015; Justin Lecher <jlec@gentoo.org> -files/8.69-flags.patch,
+  -files/8.69-test.patch, -t-coffee-8.69.ebuild:
+  Drop old
+
+  26 Apr 2015; Pacho Ramos <pacho@gentoo.org> t-coffee-9.03.1318-r1.ebuild:
+  ppc stable wrt bug #544930
+
+  19 Apr 2015; Agostino Sarubbo <ago@gentoo.org> t-coffee-9.03.1318-r1.ebuild:
+  Stable for x86, wrt bug #544930
+
+  08 Apr 2015; Agostino Sarubbo <ago@gentoo.org> t-coffee-9.03.1318-r1.ebuild:
+  Stable for amd64, wrt bug #544930
+
+*t-coffee-11.00 (29 Mar 2015)
+
+  29 Mar 2015; Justin Lecher <jlec@gentoo.org> +t-coffee-11.00.ebuild,
+  -t-coffee-8.93.ebuild:
+  Version Bump; drop old
+
+  09 Feb 2015; Anthony G. Basile <blueness@gentoo.org> t-coffee-8.69.ebuild,
+  t-coffee-8.93.ebuild, t-coffee-9.03.1318-r1.ebuild:
+  Keyword ~ppc64, bug #452010.
+
+  12 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+  03 Feb 2013; Agostino Sarubbo <ago@gentoo.org> t-coffee-9.03.1318-r1.ebuild:
+  Add ~ppc, wrt bug #452010
+
+*t-coffee-9.03.1318-r1 (14 Jan 2013)
+
+  14 Jan 2013; Justin Lecher <jlec@gentoo.org> -t-coffee-9.03.1318.ebuild,
+  +t-coffee-9.03.1318-r1.ebuild, metadata.xml:
+  Don't build TMalign, but depend on sci-chemistry/tm-align; fixes #451802 and
+  #451804
+
+*t-coffee-9.03.1318 (11 Dec 2012)
+
+  11 Dec 2012; Justin Lecher <jlec@gentoo.org> t-coffee-8.69.ebuild,
+  t-coffee-8.93.ebuild, +t-coffee-9.03.1318.ebuild,
+  +files/t-coffee-9.03.1318-flags.patch:
+  Version Bump
+
+  15 Oct 2010; Justin Lecher <jlec@gentoo.org> -t-coffee-5.65.ebuild,
+  -t-coffee-8.14.ebuild:
+  Clean old
+
+  15 Oct 2010; Brent Baude <ranger@gentoo.org> t-coffee-8.69.ebuild:
+  stable ppc, bug 339575
+
+  10 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> t-coffee-8.69.ebuild:
+  x86 stable wrt bug #339575
+
+  04 Oct 2010; Markos Chandras <hwoarang@gentoo.org> t-coffee-8.69.ebuild:
+  Stable on amd64 wrt bug #339575
+
+  03 Oct 2010; Justin Lecher <jlec@gentoo.org> t-coffee-5.65.ebuild,
+  -t-coffee-7.54.ebuild:
+  QA
+
+*t-coffee-8.93 (03 Oct 2010)
+
+  03 Oct 2010; Justin Lecher <jlec@gentoo.org> +t-coffee-8.93.ebuild:
+  Version Bump, 338199
+
+  18 Jun 2010; Justin Lecher <jlec@gentoo.org> t-coffee-8.69.ebuild:
+  Fix installation, #324307
+
+*t-coffee-8.69 (15 Jun 2010)
+
+  15 Jun 2010; Justin Lecher <jlec@gentoo.org> +files/8.69-flags.patch,
+  +t-coffee-8.69.ebuild, +files/8.69-test.patch:
+  Version bump, included test, respecting LDFLAGS and keyworded for linux
+  prefix
+
+  03 Jan 2010; Pacho Ramos <pacho@gentoo.org> t-coffee-8.14.ebuild:
+  amd64 stable, bug 298765
+
+  29 Dec 2009; Christian Faulhammer <fauli@gentoo.org> t-coffee-8.14.ebuild:
+  stable x86, bug 298765
+
+  24 Nov 2009; Andrey Kislyuk <weaver@gentoo.org> -t-coffee-5.31.ebuild,
+  -t-coffee-6.82.ebuild:
+  Drop old versions
+
+*t-coffee-8.14 (24 Nov 2009)
+
+  24 Nov 2009; Andrey Kislyuk <weaver@gentoo.org> metadata.xml,
+  +t-coffee-8.14.ebuild:
+  Version bump, assume maintainership
+
+  24 Mar 2009; Olivier Fisette <ribosome@gentoo.org> metadata.xml:
+  Giving up maintainership of this package.
+
+*t-coffee-7.54 (01 Mar 2009)
+
+  01 Mar 2009; Patrick Lauer <patrick@gentoo.org> +t-coffee-7.54.ebuild:
+  Bump to 7.54. Closes #258081.
+
+*t-coffee-6.82 (06 Sep 2008)
+
+  06 Sep 2008; Markus Dittrich <markusle@gentoo.org> -t-coffee-4.96.ebuild,
+  -t-coffee-5.05.ebuild, +t-coffee-6.82.ebuild:
+  Version bump and removed old ebuilds (fixes bug #232323). According 
+  to the website and docs, t-coffee is now released under the GPL-2,
+  hence changed the license info and uploaded the tarball to our
+  mirrors.
+
+  14 Jul 2008; nixnut <nixnut@gentoo.org> t-coffee-5.65.ebuild:
+  Stable on ppc wrt bug 221165
+
+  08 Jul 2008; Christian Faulhammer <opfer@gentoo.org> t-coffee-5.65.ebuild:
+  stable x86, bug 221165
+
+  06 Jul 2008; Olivier Fisette <ribosome@gentoo.org> t-coffee-5.65.ebuild:
+  Stable on amd64.
+
+  27 May 2008; Jeff Gardner <je_fro@gentoo.org> Manifest:
+  Fix Manifest for bug #223717
+
+*t-coffee-5.65 (14 Apr 2008)
+
+  14 Apr 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +t-coffee-5.65.ebuild:
+  Bump.
+
+  17 Feb 2008; Christian Faulhammer <opfer@gentoo.org> t-coffee-5.31.ebuild:
+  stable x86/amd64, bug 208416
+
+  15 Feb 2008; nixnut <nixnut@gentoo.org> t-coffee-5.31.ebuild:
+  Stable on ppc wrt bug 208416
+
+  31 Dec 2007; Jeff Gardner <je_fro@gentoo.org> ChangeLog:
+  Fixing my email address.
+
+  08 Dec 2007; <je_fro@gentoo.org> t-coffee-5.31.ebuild:
+  Adding ~amd64
+
+*t-coffee-5.31 (07 Dec 2007)
+
+  07 Dec 2007; Jeff Gardner <je_fro@gentoo.org> +t-coffee-5.31.ebuild:
+  Latest version - thanks to Martin Mokrejs on bug #201495
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org> t-coffee-4.96.ebuild,
+  t-coffee-5.05.ebuild:
+  (QA) RESTRICT clean up.
+
+  01 Jul 2007; Olivier Fisette <ribosome@gentoo.org> -t-coffee-3.84.ebuild:
+  Removed old version (sources are no longer available). There is no stable
+  PPC version any longer (see bug #179327).
+
+  22 May 2007; Christian Faulhammer <opfer@gentoo.org> t-coffee-4.96.ebuild:
+  x86 stable, bug 179327
+
+*t-coffee-5.05 (21 May 2007)
+
+  21 May 2007; Olivier Fisette <ribosome@gentoo.org> -t-coffee-4.45.ebuild,
+  +t-coffee-5.05.ebuild:
+  New upstream version (5.05). Removed 4.45 as sources are no longer available.
+
+*t-coffee-4.96 (09 Mar 2007)
+
+  09 Mar 2007; Olivier Fisette <ribosome@gentoo.org> +t-coffee-4.96.ebuild:
+  New upstream version.
+
+*t-coffee-4.45 (13 Sep 2006)
+
+  13 Sep 2006; Olivier Fisette <ribosome@gentoo.org> +t-coffee-4.45.ebuild:
+  New upstream version.
+
+  09 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>; t-coffee-3.84.ebuild:
+  x86/ppc stable.
+
+  16 Mar 2006; Olivier Fisette <ribosome@gentoo.org> -t-coffee-2.66.ebuild,
+  -t-coffee-3.27.ebuild, t-coffee-3.84.ebuild:
+  Add fno-unit-at-a-time when using GCC 3.4. Removed old versions.
+
+*t-coffee-3.84 (07 Mar 2006)
+
+  07 Mar 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  +t-coffee-3.84.ebuild:
+  Bump.
+
+  08 Dec 2005; Olivier Fisette <ribosome@gentoo.org> -t-coffee-3.18.ebuild:
+  Pruning old version.
+
+  08 Dec 2005; Olivier Fisette <ribosome@gentoo.org> t-coffee-3.27.ebuild:
+  Added a warning regarding an internal compiler error (see bug #114745).
+
+*t-coffee-3.27 (08 Dec 2005)
+
+  08 Dec 2005; Olivier Fisette <ribosome@gentoo.org> +t-coffee-3.27.ebuild:
+  New version.
+
+*t-coffee-3.18 (19 Oct 2005)
+
+  19 Oct 2005; Olivier Fisette <ribosome@gentoo.org> +t-coffee-3.18.ebuild:
+  New version.
+
+  17 Oct 2005; Olivier Fisette <ribosome@gentoo.org> -t-coffee-2.50.ebuild:
+  Pruning old version.
+
+  17 Oct 2005; Joseph Jezak <josejx@gentoo.org> t-coffee-2.66.ebuild:
+  Marked ppc stable for bug #108340.
+
+  13 Oct 2005; Mark Loeser <halcy0n@gentoo.org> t-coffee-2.66.ebuild:
+  Stable on x86
+
+  08 Aug 2005; David Holm <dholm@gentoo.org> t-coffee-2.66.ebuild:
+  Added to ~ppc.
+
+*t-coffee-2.66 (07 Aug 2005)
+
+  07 Aug 2005; Olivier Fisette <ribosome@gentoo.org> -t-coffee-2.26.ebuild,
+  t-coffee-2.50.ebuild, +t-coffee-2.66.ebuild:
+  New version. Added 2.50 to x86. Removed old version.
+
+*t-coffee-2.50 (12 May 2005)
+
+  12 May 2005; Olivier Fisette <ribosome@gentoo.org> -t-coffee-2.03.ebuild,
+  t-coffee-2.26.ebuild, +t-coffee-2.50.ebuild:
+  Removed obsolete version.
+
+*t-coffee-2.50 (12 May 2005)
+
+  12 May 2005; Olivier Fisette <ribosome@gentoo.org> t-coffee-2.26.ebuild,
+  +t-coffee-2.50.ebuild:
+  New version: 2.50. Added 2.26 to x86.
+
+*t-coffee-2.26 (30 Mar 2005)
+
+  30 Mar 2005; Olivier Fisette <ribosome@gentoo.org> +t-coffee-2.26.ebuild:
+  New version.
+
+*t-coffee-2.03 (03 Mar 2005)
+
+  03 Mar 2005; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +t-coffee-2.03.ebuild:
+  Initial import.

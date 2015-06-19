@@ -1,0 +1,8 @@
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=Measures the speed of stdin/stdout communication
+HOMEPAGE=http://www.habets.pp.se/synscan/programs.php?prog=pipebench
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=ftp://ftp.habets.pp.se/pub/synscan/pipebench-0.40.tar.gz
+_md5_=bf0432e9949e2d470ab5f6453a6967cc

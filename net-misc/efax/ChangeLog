@@ -1,0 +1,85 @@
+# ChangeLog for net-misc/efax
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/efax/ChangeLog,v 1.24 2012/11/21 13:01:52 kensington Exp $
+
+  21 Nov 2012; Michael Palimaka <kensington@gentoo.org> -efax-0.9a-r3.ebuild,
+  -files/efax-0.9a-segfault.patch:
+  Remove old.
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> efax-0.9a-r4.ebuild:
+  Stable for x86, wrt bug #441470
+
+  06 Nov 2012; <ago@gentoo.org> efax-0.9a-r4.ebuild:
+  Stable for amd64, wrt bug #441470
+
+  04 Nov 2012; Anthony G. Basile <blueness@gentoo.org> efax-0.9a-r4.ebuild:
+  stable ppc, bug #441470
+
+*efax-0.9a-r4 (16 Sep 2012)
+
+  16 Sep 2012; Pacho Ramos <pacho@gentoo.org> +efax-0.9a-r4.ebuild:
+  Don't collide with mgetty, bug #429808 by flameeyes.
+
+  27 Jun 2012; Michael Palimaka <kensington@gentoo.org> -efax-0.9a-r2.ebuild,
+  -efax-0.9a.ebuild:
+  Remove old.
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> efax-0.9a-r3.ebuild:
+  x86 stable wrt bug #419299
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> efax-0.9a-r3.ebuild:
+  Marking efax-0.9a-r3 ppc for bug 419299
+
+  03 Jun 2012; Agostino Sarubbo <ago@gentoo.org> efax-0.9a-r3.ebuild:
+  Stable for amd64, wrt bug #419299
+
+  03 Mar 2012; Pacho Ramos <pacho@gentoo.org> efax-0.9a-r3.ebuild:
+  Really apply debian patches.
+
+*efax-0.9a-r3 (03 Mar 2012)
+
+  03 Mar 2012; Pacho Ramos <pacho@gentoo.org> +efax-0.9a-r3.ebuild,
+  +files/efax-0.9a-fax-command.patch, -efax-0.9a-r1.ebuild:
+  Apply debian patches, fix fax command (bug #327737 by John Hardin), drop old.
+
+  21 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> efax-0.9a-r2.ebuild:
+  x86 stable wrt bug #394029
+
+  16 Dec 2011; Agostino Sarubbo <ago@gentoo.org> efax-0.9a-r2.ebuild:
+  Stable for AMD64, wrt bug #394029
+
+*efax-0.9a-r2 (10 Oct 2010)
+
+  10 Oct 2010; <gurligebis@gentoo.org> +efax-0.9a-r2.ebuild:
+  Fixing LDFLAGS problem wrt. bug #335609
+
+  30 Dec 2008; Mike Pagano <mpagano@gentoo.org> efax-0.9a-r1.ebuild:
+  Respect compiler and cflags as per bug #241062
+
+  30 Dec 2008; Mike Pagano <mpagano@gentoo.org> efax-0.9a-r1.ebuild:
+  Removed strip command as per bug #240932
+
+  24 Jan 2008; Raúl Porcel <armin76@gentoo.org> efax-0.9a-r1.ebuild:
+  x86 stable
+
+*efax-0.9a-r1 (04 Nov 2007)
+
+  04 Nov 2007; Charlie Shepherd <masterdriverz@gentoo.org>
+  +files/efax-0.9a-segfault.patch, +efax-0.9a-r1.ebuild:
+  Fix some QA problems in the ebuild and add a patch by Keef Aragon to fix bug
+  141235
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> efax-0.9a.ebuild:
+  added ~amd64 to KEYWORDS, fixes #82877
+
+*efax-0.9a (25 May 2003)
+
+  25 May 2003; Jon Portnoy <avenj@gentoo.org> efax-0.9a.ebuild :
+  Initial import, submitted by Brad Laue, who will also be maintaining
+  this package futurely.

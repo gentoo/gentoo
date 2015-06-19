@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DESCRIPTION=Quake III Team Arena - data portion
+EAPI=5
+HOMEPAGE=http://icculus.org/quake3/
+IUSE=cdinstall
+KEYWORDS=amd64 ~ia64 ~ppc x86 ~x86-fbsd
+LICENSE=Q3AEULA
+PROPERTIES=cdinstall? ( interactive )
+RDEPEND=|| ( games-fps/quake3 games-fps/quake3-bin ) games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://idsoftware/quake3/linux/linuxq3apoint-1.32b-3.x86.run
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	cdrom	49b4b952fb5c83fac6c616b532723e60	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	portability	a45c088f246ef5091e029f6285d7ce42	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=b2fc164b369bd845d97c8236e59b6611

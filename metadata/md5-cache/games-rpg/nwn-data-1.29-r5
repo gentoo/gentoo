@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=cdinstall? ( games-util/biounzip app-arch/unshield ) app-arch/unzip app-arch/p7zip
+DESCRIPTION=Neverwinter Nights Data Files
+EAPI=5
+HOMEPAGE=http://nwn.bioware.com/downloads/linuxclient.html
+IUSE=cdinstall hou nowin sou videos linguas_fr linguas_it linguas_es linguas_de linguas_en cdinstall
+KEYWORDS=amd64 x86
+LICENSE=NWN-EULA
+PROPERTIES=cdinstall? ( interactive )
+RDEPEND=games-misc/games-envd
+RESTRICT=strip mirror
+SLOT=0
+SRC_URI=http://nwdownloads.bioware.com/neverwinternights/linux/129/nwclient129.tar.gz nowin? ( http://files.bioware.com/neverwinternights/updates/linux/nwresources129.tar.gz http://bsd.mikulas.com/nwresources129.tar.gz http://163.22.12.40/FreeBSD/distfiles/nwresources129.tar.gz linguas_fr? ( http://files.bioware.com/neverwinternights/updates/linux/nwfrench129.tar.gz ) linguas_it? ( http://files.bioware.com/neverwinternights/updates/linux/nwitalian129.tar.gz ) linguas_es? ( http://files.bioware.com/neverwinternights/updates/linux/nwspanish129.tar.gz ) linguas_de? ( http://files.bioware.com/neverwinternights/updates/linux/nwgerman129.tar.gz ) ) !nowin? ( cdinstall? ( linguas_fr? ( http://files.bioware.com/neverwinternights/updates/linux/nwfrench129.tar.gz ) linguas_it? ( http://files.bioware.com/neverwinternights/updates/linux/nwitalian129.tar.gz ) linguas_es? ( http://files.bioware.com/neverwinternights/updates/linux/nwspanish129.tar.gz ) linguas_de? ( http://files.bioware.com/neverwinternights/updates/linux/nwgerman129.tar.gz ) ) ) mirror://gentoo/nwn.png
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	cdrom	49b4b952fb5c83fac6c616b532723e60	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	portability	a45c088f246ef5091e029f6285d7ce42	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=b7aac1b69c806679a14f9754a8e8f205

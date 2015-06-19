@@ -1,0 +1,37 @@
+--- a/makefiles/makefile
++++ b/makefiles/makefile
+@@ -5,6 +5,7 @@
+ -include ../makefile.init
+ 
+ RM := rm -rf
++CXX ?= g++
+ 
+ # All of the sources participating in the build are defined here
+ -include sources.mk
+@@ -44,7 +45,7 @@
+ mandelbulber: $(OBJS) $(USER_OBJS)
+ 	@echo 'Building target: $@'
+ 	@echo 'Invoking: GCC C++ Linker'
+-	g++ -o"mandelbulber" -L/usr/lib/x86_64-linux-gnu/ $(OBJS) $(USER_OBJS) $(LIBS)  `pkg-config --libs gtk+-2.0 gthread-2.0`
++	$(CXX) $(LDFLAGS) -o"mandelbulber" -L/usr/lib/x86_64-linux-gnu/ $(OBJS) $(USER_OBJS) $(LIBS)  `pkg-config --libs gtk+-2.0 gthread-2.0`
+ 	@echo 'Finished building target: $@'
+ 	@echo ' '
+ 
+--- a/makefiles/src/subdir.mk
++++ b/makefiles/src/subdir.mk
+@@ -63,12 +63,14 @@
+ ./src/undo.d \
+ ./src/cl_support.d 
+ 
++CXX ?= g++
++CXXFLAGS ?= -O2 -fast-math
+ 
+ # Each subdirectory must supply rules for building sources it contributes
+ src/%.o: ../src/%.cpp
+ 	@echo 'Building file: $<'
+ 	@echo 'Invoking: GCC C++ Compiler'
+-	g++ -O2 -ffast-math -Wall -c -fmessage-length=0 `pkg-config --cflags gtk+-2.0 gthread-2.0;` -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
++	$(CXX) $(CXXFLAGS) -Wall -c -fmessage-length=0 `pkg-config --cflags gtk+-2.0 gthread-2.0;` -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+ 	@echo 'Finished building: $<'
+ 	@echo ' '
+ 

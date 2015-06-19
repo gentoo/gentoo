@@ -1,0 +1,158 @@
+# ChangeLog for dev-ruby/columnize
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/columnize/ChangeLog,v 1.38 2015/06/07 17:30:36 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  31 Jan 2015; Hans de Graaff <graaff@gentoo.org> columnize-0.9.0.ebuild:
+  Add ruby22.
+
+*columnize-0.9.0 (07 Dec 2014)
+
+  07 Dec 2014; Manuel Rüger <mrueg@gentoo.org> +columnize-0.9.0.ebuild:
+  Version bump.
+
+  29 Oct 2014; Manuel Rüger <mrueg@gentoo.org> -columnize-0.3.6-r1.ebuild,
+  columnize-0.8.9.ebuild:
+  Update Homepage. Cleanup old.
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> columnize-0.3.6-r1.ebuild,
+  columnize-0.8.9.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  24 Apr 2014; Manuel Rüger <mrueg@gentoo.org> columnize-0.3.6-r1.ebuild:
+  Remove ruby18 support.
+
+*columnize-0.8.9 (24 Apr 2014)
+
+  24 Apr 2014; Hans de Graaff <graaff@gentoo.org> +columnize-0.8.9.ebuild:
+  Version bump. Drop ruby18. Drop jruby due to 1.9-syntax.
+
+  28 Dec 2013; Hans de Graaff <graaff@gentoo.org> columnize-0.3.6-r1.ebuild:
+  Add ruby21.
+
+  03 Nov 2013; Manuel Rüger <mrueg@gentoo.org> -columnize-0.3.6.ebuild:
+  Cleanup old.
+
+*columnize-0.3.6-r1 (30 Oct 2013)
+
+  30 Oct 2013; Manuel Rüger <mrueg@gentoo.org> +columnize-0.3.6-r1.ebuild:
+  Add ruby20 target.
+
+  05 Aug 2012; Hans de Graaff <graaff@gentoo.org> -columnize-0.3.4.ebuild,
+  -columnize-0.3.5.ebuild:
+  Cleanup.
+
+  01 May 2012; Raúl Porcel <armin76@gentoo.org> columnize-0.3.4.ebuild,
+  columnize-0.3.5.ebuild, columnize-0.3.6.ebuild:
+  Drop ia64/sparc keywords
+
+*columnize-0.3.6 (19 Dec 2011)
+
+  19 Dec 2011; Hans de Graaff <graaff@gentoo.org> +columnize-0.3.6.ebuild:
+  Version bump.
+
+  27 Nov 2011; Hans de Graaff <graaff@gentoo.org> -columnize-0.3.2.ebuild,
+  -columnize-0.3.3.ebuild:
+  Remove old versions.
+
+*columnize-0.3.5 (27 Nov 2011)
+
+  27 Nov 2011; Hans de Graaff <graaff@gentoo.org> +columnize-0.3.5.ebuild:
+  Version bump.
+
+  31 Jul 2011; Raúl Porcel <armin76@gentoo.org> columnize-0.3.2.ebuild,
+  columnize-0.3.3.ebuild, columnize-0.3.4.ebuild:
+  Add ~ia64
+
+*columnize-0.3.4 (06 Jul 2011)
+
+  06 Jul 2011; Hans de Graaff <graaff@gentoo.org> +columnize-0.3.4.ebuild:
+  Version bump.
+
+*columnize-0.3.3 (12 Jun 2011)
+
+  12 Jun 2011; Hans de Graaff <graaff@gentoo.org> +columnize-0.3.3.ebuild:
+  Version bump.
+
+  24 Jan 2011; Hans de Graaff <graaff@gentoo.org>
+  -columnize-0.3.1-r2.ebuild:
+  Remove old version.
+
+  23 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  columnize-0.3.2.ebuild:
+  Marked ~ppc64 wrt #322053
+
+*columnize-0.3.2 (07 Nov 2010)
+
+  07 Nov 2010; Hans de Graaff <graaff@gentoo.org> +columnize-0.3.2.ebuild:
+  Version bump. Actually install the documentation files if USE=doc.
+
+  07 Nov 2010; Hans de Graaff <graaff@gentoo.org>
+  -columnize-0.3.1-r1.ebuild:
+  Remove old version.
+
+  25 Oct 2010; Jeroen Roovers <jer@gentoo.org> columnize-0.3.1-r2.ebuild:
+  Marked ~hppa (bug #337956).
+
+*columnize-0.3.1-r2 (24 Sep 2010)
+
+  24 Sep 2010; Hans de Graaff <graaff@gentoo.org>
+  +columnize-0.3.1-r2.ebuild:
+  Add ree18 target.
+
+  17 Jul 2010; Raúl Porcel <armin76@gentoo.org> columnize-0.3.1-r1.ebuild:
+  Add ~sparc wrt #322053
+
+  14 Jun 2010; Hans de Graaff <graaff@gentoo.org> -columnize-0.3.1.ebuild:
+  Remove old version.
+
+  22 May 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  columnize-0.3.1-r1.ebuild:
+  Various cleanups.
+
+  24 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  columnize-0.3.1-r1.ebuild:
+  Add ruby19 and jruby support.
+
+  04 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  columnize-0.3.1-r1.ebuild:
+  Transfer Prefix keywords
+
+*columnize-0.3.1-r1 (22 Dec 2009)
+
+  22 Dec 2009; Hans de Graaff <graaff@gentoo.org>
+  +columnize-0.3.1-r1.ebuild:
+  Convert to use ruby-fakegem.
+
+  22 Aug 2009; Hans de Graaff <graaff@gentoo.org> -columnize-0.3.0.ebuild:
+  Remove old version.
+
+*columnize-0.3.1 (01 Aug 2009)
+
+  01 Aug 2009; Hans de Graaff <graaff@gentoo.org> +columnize-0.3.1.ebuild:
+  Version bump: optional lineprefix and Ruby 1.9 fixes.
+
+  18 Jun 2009; Hans de Graaff <graaff@gentoo.org> -columnize-0.2.ebuild,
+  -columnize-0.2.1.ebuild:
+  Remove old versions.
+
+  20 Mar 2009; Joseph Jezak <josejx@gentoo.org> columnize-0.3.0.ebuild:
+  Marked ~ppc for bug #252815.
+
+*columnize-0.3.0 (04 Mar 2009)
+
+  04 Mar 2009; Hans de Graaff <graaff@gentoo.org> +columnize-0.3.0.ebuild:
+  Version bump: Fix bad bug in arranging horizontally
+
+*columnize-0.2.1 (02 Jan 2009)
+
+  02 Jan 2009; Hans de Graaff <graaff@gentoo.org> +columnize-0.2.1.ebuild:
+  Version bump: Add ability to run columns horizontally
+
+*columnize-0.2 (28 Dec 2008)
+
+  28 Dec 2008; Hans de Graaff <graaff@gentoo.org> +metadata.xml,
+  +columnize-0.2.ebuild:
+  Initial import. New dependency of dev-ruby/ruby-debug.

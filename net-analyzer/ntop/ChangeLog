@@ -1,0 +1,486 @@
+# ChangeLog for net-analyzer/ntop
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ntop/ChangeLog,v 1.122 2015/04/08 18:01:21 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> ntop-5.0.1-r1.ebuild:
+  Drop old Python implementations
+
+  02 Feb 2015; Jeroen Roovers <jer@gentoo.org> ntop-4.0.3.ebuild,
+  ntop-4.1.0.ebuild, ntop-5.0.1-r1.ebuild:
+  Fix LICENSE.
+
+  16 Jul 2014; Jeroen Roovers <jer@gentoo.org> ntop-5.0.1-r1.ebuild,
+  +files/ntop-5.0.1-INCS.patch, +files/ntop-5.0.1-includes.patch:
+  Fix missing includes for standard functions. Stop running autotools in
+  src_install(). Use python-config --includes, not --cflags. Do not "clean up"
+  INCS (INCLUDES).
+
+  15 Jul 2014; Jeroen Roovers <jer@gentoo.org> files/ntop-4.0.3-gentoo.patch,
+  files/ntop-4.1.0-gentoo.patch, files/ntop-5.0.1-gentoo.patch:
+  Clean up patches.
+
+  15 Jul 2014; Jeroen Roovers <jer@gentoo.org> ntop-4.0.3.ebuild,
+  ntop-4.1.0.ebuild, ntop-5.0.1-r1.ebuild:
+  Set USE=graph dependency on net-analyzer/rrdtool (bug #509682).
+
+*ntop-5.0.1-r1 (06 Aug 2013)
+
+  06 Aug 2013; Lars Wendler <polynomial-c@gentoo.org> -ntop-5.0.1.ebuild,
+  +ntop-5.0.1-r1.ebuild, +files/ntop-initd-r1:
+  Non-maintainer commit: Revbump to make use of rewritten init script.
+
+*ntop-5.0.1 (04 Jul 2013)
+
+  04 Jul 2013; Lars Wendler <polynomial-c@gentoo.org> -ntop-4.0.1.ebuild,
+  +ntop-5.0.1.ebuild, -files/ntop-4.0.1-gentoo.patch,
+  +files/ntop-5.0.1-gentoo.patch:
+  Non-maintainer commit: Version bump (fixes bug #430428). Removed old.
+
+  10 Mar 2013; Christoph Junghans <ottxor@gentoo.org> ntop-4.0.1.ebuild,
+  ntop-4.0.3.ebuild, ntop-4.1.0.ebuild:
+  switch to virtual/awk (bug #455664)
+
+  10 Feb 2013; Pacho Ramos <pacho@gentoo.org> ntop-4.1.0.ebuild:
+  Drop gdome2 dep, #415743
+
+  13 Dec 2012; Sergey Popov <pinkbyte@gentoo.org> ntop-4.1.0.ebuild:
+  Add dev-python/mako to runtime deps, wrt bug #410255
+
+  12 Jun 2012; Zac Medico <zmedico@gentoo.org> ntop-4.0.1.ebuild,
+  ntop-4.0.3.ebuild, ntop-4.1.0.ebuild:
+  inherit user for enewgroup and enewuser
+
+  06 Apr 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #63588
+
+  06 Jan 2012; Mark Loeser <halcy0n@gentoo.org> ntop-4.0.3.ebuild:
+  Stable for ppc/ppc64; bug #382091
+
+*ntop-4.1.0 (08 Nov 2011)
+
+  08 Nov 2011; Alin Năstac <mrness@gentoo.org> +ntop-4.1.0.ebuild,
+  +files/ntop-4.1.0-gentoo.patch:
+  Version bump with added snmp support (#378333). Drop ipv6 USE flag (no longer
+  possible to disable IPv6 support). Remove static libraries (#382093).
+
+  11 Oct 2011; Jeroen Roovers <jer@gentoo.org> ntop-4.0.3.ebuild:
+  Stable for HPPA (bug #382091).
+
+  09 Oct 2011; Raúl Porcel <armin76@gentoo.org> ntop-4.0.3.ebuild:
+  ia64/s390/sh/sparc stable wrt #382091
+
+  18 Sep 2011; Markus Meier <maekke@gentoo.org> ntop-4.0.3.ebuild:
+  arm stable, bug #382091
+
+  11 Sep 2011; Christian Ruppert <idl0r@gentoo.org> ntop-4.0.3.ebuild:
+  Fix HOMEPAGE.
+
+  11 Sep 2011; Markus Meier <maekke@gentoo.org> ntop-4.0.3.ebuild:
+  x86 stable, bug #382091
+
+  07 Sep 2011; Tony Vroon <chainsaw@gentoo.org> ntop-4.0.3.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani & Tomáš "Mepho" Pružina in bug #382091 filed by Markos "hwoarang"
+  Chandras.
+
+  10 Aug 2011; Lars Wendler <polynomial-c@gentoo.org>
+  files/ntop-4.0.3-gentoo.patch:
+  non-maintainer commit: Added missing gunzip line for GeoIPASNum.dat file (bug
+  #376453). Fixed patch committed with kind permission from hwoarang.
+
+  07 Aug 2011; Jeroen Roovers <jer@gentoo.org> -ntop-3.3.10-r2.ebuild,
+  -files/ntop-3.3.10-CVE-2009-2732.patch, -files/ntop-3.3.10-gentoo.patch:
+  ^
+
+  07 Aug 2011; Raúl Porcel <armin76@gentoo.org> ntop-4.0.1.ebuild:
+  ia64/s390/sh/sparc stable wrt #376057
+
+  07 Aug 2011; Markus Meier <maekke@gentoo.org> ntop-4.0.1.ebuild:
+  arm stable, bug #376057
+
+  26 Jul 2011; Markus Meier <maekke@gentoo.org> ntop-4.0.1.ebuild:
+  amd64/x86 stable, bug #376057
+
+  26 Jul 2011; Jeroen Roovers <jer@gentoo.org> ntop-4.0.1.ebuild:
+  Stable for HPPA (bug #376057).
+
+  26 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> ntop-4.0.1.ebuild:
+  ppc/ppc64 stable wrt #376057
+
+*ntop-4.0.3 (26 May 2011)
+
+  26 May 2011; Markos Chandras <hwoarang@gentoo.org> +ntop-4.0.3.ebuild,
+  +files/ntop-4.0.3-gentoo.patch:
+  Version bump. Bug #347393
+
+*ntop-4.0.1 (24 Sep 2010)
+
+  24 Sep 2010; Alin Năstac <mrness@gentoo.org> +ntop-4.0.1.ebuild,
+  +files/ntop-4.0.1-gentoo.patch:
+  Version bump (#329577).
+
+  31 Jan 2010; Richard Freeman <rich0@gentoo.org> ntop-3.3.10-r2.ebuild:
+  amd64 stable - 281956
+
+  22 Jan 2010; Raúl Porcel <armin76@gentoo.org> ntop-3.3.10-r2.ebuild:
+  arm/ia64/s390/sh/sparc stable wrt #281956
+
+  19 Jan 2010; Jeroen Roovers <jer@gentoo.org> ntop-3.3.10-r2.ebuild:
+  Stable for HPPA (bug #281956).
+
+  19 Jan 2010; Brent Baude <ranger@gentoo.org> ntop-3.3.10-r2.ebuild:
+  Marking ntop-3.3.10-r2 ppc64 and ppc for bug 281956
+
+  19 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  ntop-3.3.10-r2.ebuild:
+  stable x86, security bug 281956
+
+*ntop-3.3.10-r2 (18 Jan 2010)
+
+  18 Jan 2010; Jeroen Roovers <jer@gentoo.org> +ntop-3.3.10-r2.ebuild,
+  +files/ntop-3.3.10-CVE-2009-2732.patch:
+  Bump to apply security fix (bug #281956).
+
+  27 Sep 2009; Brent Baude <ranger@gentoo.org> ntop-3.3.10-r1.ebuild:
+  Marking ntop-3.3.10-r1 ppc64 for bug 282063
+
+  13 Sep 2009; Raúl Porcel <armin76@gentoo.org> ntop-3.3.10-r1.ebuild:
+  arm/ia64/s390/sh/sparc stable wrt #282063
+
+  06 Sep 2009; Markus Meier <maekke@gentoo.org> ntop-3.3.10-r1.ebuild:
+  amd64/x86 stable, bug #282063
+
+  30 Aug 2009; nixnut <nixnut@gentoo.org> ntop-3.3.10-r1.ebuild:
+  ppc stable #282063
+
+  27 Aug 2009; Jeroen Roovers <jer@gentoo.org> ntop-3.3.10-r1.ebuild:
+  Stable for HPPA (bug #282063).
+
+  12 Aug 2009; Mike Frysinger <vapier@gentoo.org>
+  files/ntop-update-geoip-db:
+  Run wget with -nv so it doesnt spam logs so much.
+
+*ntop-3.3.10-r1 (18 Jun 2009)
+
+  18 Jun 2009; Alin Năstac <mrness@gentoo.org>
+  -files/ntop-3.3.10-external-geoip.patch, files/ntop-3.3.10-gentoo.patch,
+  -ntop-3.3.10.ebuild, +ntop-3.3.10-r1.ebuild:
+  Add missing lua dependency (#274447).
+
+*ntop-3.3.10 (14 Jun 2009)
+
+  14 Jun 2009; Alin Năstac <mrness@gentoo.org>
+  +files/ntop-3.3.10-external-geoip.patch, +files/ntop-3.3.10-gentoo.patch,
+  +ntop-3.3.10.ebuild:
+  Version bump (#271453).
+
+  09 May 2009; Alin Năstac <mrness@gentoo.org> metadata.xml,
+  ntop-3.3.9-r2.ebuild:
+  Change package description (#268400).
+
+  02 May 2009; Alin Năstac <mrness@gentoo.org> -files/ntop-3.2-build.patch,
+  -files/ntop-3.2-snmp.patch, -files/ntop-3.3.6-gentoo.patch,
+  -files/ntop-3.3.8-gentoo.patch, -files/globals-core.c.diff,
+  -ntop-3.2-r3.ebuild, -ntop-3.3.6.ebuild, -ntop-3.3.8.ebuild,
+  ntop-3.3.9-r2.ebuild:
+  Remove nls USE flag and correct tcpd configure argument (#267660).
+
+  27 Apr 2009; Jeroen Roovers <jer@gentoo.org> ntop-3.3.9-r2:
+  Stable for HPPA (bug #265704).
+
+  26 Apr 2009; Raúl Porcel <armin76@gentoo.org> ntop-3.3.9-r2.ebuild:
+  arm/ia64/s390/sh/sparc stable wrt #265704
+
+*ntop-3.3.9-r2 (25 Apr 2009)
+
+  25 Apr 2009; Alin Năstac <mrness@gentoo.org>
+  +files/ntop-3.3.9-accesslog-umask.patch, -ntop-3.3.9-r1.ebuild,
+  +ntop-3.3.9-r2.ebuild:
+  Fix insecure log file creation (#266947).
+
+  22 Apr 2009; Markus Meier <maekke@gentoo.org> ntop-3.3.9-r1:
+  x86 stable, bug #265704
+
+  16 Apr 2009; Richard Freeman <rich0@gentoo.org> ntop-3.3.9-r1.ebuild:
+  amd64 stable - 265704
+
+  12 Apr 2009; Brent Baude <ranger@gentoo.org> ntop-3.3.9-r1.ebuild:
+  stable ppc64, bug 265704
+
+  11 Apr 2009; nixnut <nixnut@gentoo.org> ntop-3.3.9-r1.ebuild:
+  ppc stable #265704
+
+  10 Apr 2009; Alin Năstac <mrness@gentoo.org> ntop-3.3.9-r1.ebuild:
+  Fix geoip dependency atom (#264524). Migrate to EAPI 2.
+
+  08 Mar 2009; Dawid Węgliński <cla@gentoo.org> ntop-3.2-r3.ebuild:
+  Migrate to EAPI 2
+
+*ntop-3.3.9-r1 (18 Feb 2009)
+
+  18 Feb 2009; Alin Năstac <mrness@gentoo.org>
+  files/ntop-3.3.9-external-geoip.patch, +files/ntop-update-geoip-db,
+  -ntop-3.3.9.ebuild, +ntop-3.3.9-r1.ebuild:
+  Update GeoIP databases through a cron job (#259394).
+
+*ntop-3.3.9 (16 Feb 2009)
+
+  16 Feb 2009; Alin Năstac <mrness@gentoo.org>
+  +files/ntop-3.3.9-external-geoip.patch, +files/ntop-3.3.9-gentoo.patch,
+  +ntop-3.3.9.ebuild:
+  Version bump. Install /var/lib/ntop with the right owner (#254868).
+
+*ntop-3.3.8 (05 Oct 2008)
+
+  05 Oct 2008; Alin Năstac <mrness@gentoo.org>
+  +files/ntop-3.3.8-gentoo.patch, -files/ntop-3.3-build.patch,
+  files/ntop-initd, -ntop-3.3.ebuild, +ntop-3.3.8.ebuild:
+  Version bump. Fix QA warnings (#237812). Add corefonts run-time dependency
+  (#231705).
+
+  05 Jul 2008; Peter Alfredsen <loki_val@gentoo.org> ntop-3.3.6.ebuild:
+  Fix for libtool-2.2, bug #230853.
+
+*ntop-3.3.6 (04 Jul 2008)
+
+  04 Jul 2008; Alin Năstac <mrness@gentoo.org>
+  +files/ntop-3.3.6-gentoo.patch, files/ntop-initd, metadata.xml,
+  ntop-3.2-r3.ebuild, ntop-3.3.ebuild, +ntop-3.3.6.ebuild:
+  Version bump. Fix init script (#191576). Fix broken ebuild when locales use
+  other chars than ASCII (#205382). Fix libtool dependency (#221623).
+
+  09 Jun 2008; Mike Frysinger <vapier@gentoo.org> ntop-3.3.ebuild:
+  Remove stale libtool macros from local m4 files #220819 by Paul Hartman.
+
+  13 Nov 2007; Michael Sterrett <mr_bones_@gentoo.org> ntop-3.3.ebuild:
+  take snmp out of deps since it's disabled for now
+
+  06 Sep 2007; Mike Frysinger <vapier@gentoo.org> ntop-3.3.ebuild:
+  Force --disable-snmp so it isnt detected automatically.
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org> ntop-3.3.ebuild:
+  Disabling snmp as it doesn't compile, see bug #190448
+
+*ntop-3.3 (26 Aug 2007)
+
+  26 Aug 2007; Cédric Krier <cedk@gentoo.org> +files/ntop-3.3-build.patch,
+  +ntop-3.3.ebuild:
+  Version bump
+
+  24 Jul 2007; Markus Ullmann <jokey@gentoo.org> -files/ntop-confd-2,
+  -files/ntop-init-2, files/ntop-confd, -files/ntop-init, +files/ntop-initd,
+  -ntop-3.0.ebuild, -ntop-3.1.ebuild, -ntop-3.2-r1.ebuild,
+  -ntop-3.2-r2.ebuild, ntop-3.2-r3.ebuild:
+  Clean out old versions
+
+  14 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org> ntop-3.2-r3.ebuild:
+  ppc stable, bug #180561
+
+  14 Jun 2007; Christoph Mende <angelos@gentoo.org> ntop-3.2-r3.ebuild:
+  Stable on amd64 wrt bug 180561
+
+  13 Jun 2007; Markus Ullmann <jokey@gentoo.org> ntop-3.2-r3.ebuild:
+  Stable on x86
+
+  13 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org> ntop-3.2-r3.ebuild:
+  Stable on sparc wrt #180561
+
+  13 Jun 2007; Jeroen Roovers <jer@gentoo.org> ntop-3.2-r3.ebuild:
+  Stable for HPPA (bug #180561).
+
+  01 May 2007; Marius Mauch <genone@gentoo.org> ntop-3.0.ebuild,
+  ntop-3.2-r2.ebuild, ntop-3.2-r3.ebuild:
+  Replacing einfo with elog
+
+  22 Apr 2007; <pva@gentoo.org> ntop-3.0.ebuild, ntop-3.1.ebuild:
+  Use do{conf,init}d, bug #174266.
+
+*ntop-3.2-r3 (27 Mar 2007)
+
+  27 Mar 2007; Markus Ullmann <jokey@gentoo.org> +files/ntop-confd-2,
+  +files/ntop-init-2, +ntop-3.2-r3.ebuild:
+  Add fixes from bug #136983, look at the confd file in case you experience
+  lockups
+
+  05 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> ntop-3.0.ebuild,
+  ntop-3.1.ebuild:
+  Remove gnuconfig_update usage, leave it to econf.
+
+  20 Nov 2006; Cedric Krier <cedk@gentoo.org> ntop-3.2-r2.ebuild:
+  fix sslwatchdog and add einfo about pwd
+
+*ntop-3.2-r2 (17 Nov 2006)
+
+  17 Nov 2006; Cedric Krier <cedk@gentoo.org> +ntop-3.2-r2.ebuild:
+  Add RDEPEND for media-gfx/graphviz for bug #150739
+
+  15 Feb 2006; Markus Ullmann <jokey@gentoo.org> ntop-3.0.ebuild,
+  ntop-3.1.ebuild, ntop-3.2-r1.ebuild:
+  Removing virtual/libpcap wrt bug #117898
+
+  07 Feb 2006; Peter Volkov <pva@gentoo.org> ntop-3.2-r1.ebuild:
+  Fix for bug 121497.
+
+*ntop-3.2-r1 (01 Feb 2006)
+
+  01 Feb 2006; Markus Ullmann <jokey@gentoo.org> +files/ntop-3.2-snmp.patch,
+  -ntop-3.2.ebuild, +ntop-3.2-r1.ebuild:
+  Added fix for snmp compile issue, thanks to Jan Boysen
+  (trekkie@media-mission.de) bug #120954
+
+  27 Jan 2006; Mike Frysinger <vapier@gentoo.org>
+  files/ntop-3.2-build.patch:
+  Make sure the inverted options are handled properly #111557.
+
+  12 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org> ntop-3.0.ebuild:
+  Stable on amd64.
+
+*ntop-3.2 (30 Dec 2005)
+
+  30 Dec 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/ntop-3.2-build.patch, files/ntop-confd, +ntop-3.2.ebuild:
+  Version bump #111389 by Eric Brown. Also fix up dependencies #111557 by
+  Carsten Lohrke, broken configure option passing #113819 by Henrik Sankala,
+  and uclibc support #117082 by Natanael Copa.
+
+  15 Sep 2005; Carlos Silva <r3pek@gentoo.org> ntop-3.0.ebuild:
+  Marking ntop-3.0 ~x86 since it have some memory leak problems
+
+  24 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> ntop-3.1.ebuild:
+  FreeBSD fix: root:root -> root:0.
+
+  23 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> ntop-3.1.ebuild:
+  Use -1 instead of /bin/false, bug #103421.
+
+  29 Jul 2005; Daniel Black <dragonheart@gentoo.org> ntop-3.1.ebuild:
+  removed die from epatch || die.
+
+  09 May 2005; Eldad Zack <eldad@gentoo.org> ntop-3.1.ebuild:
+  Fixed ACCESS VIOLATION that occurs if there is no /var/lib/ntop.
+
+  19 Feb 2005; Daniel Black <dragonheart@gentoo.org> ntop-3.1.ebuild:
+  Quoted NTOP_OPTS in /etc/conf.d/ntop to fix bug #80663. Thanks to\ Alan McNeil
+  <alanmcneil@mac.com>
+
+  10 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> ntop-3.1.ebuild:
+  Install internal html files to the correct place for bug 81449.
+
+  31 Jan 2005; Daniel Black <dragonheart@gentoo.org> ntop-3.0.ebuild,
+  ntop-3.1.ebuild:
+  virtual/libpcap transition
+
+*ntop-3.1 (16 Jan 2005)
+
+  16 Jan 2005; Daniel Black <dragonheart@gentoo.org>
+  -files/gd-1.8.3-fpic.patch, -files/gdchart0.94c-fpic.patch,
+  +files/globals-core.c.diff, -files/libpng-1.2.4-fpic.patch,
+  -files/tcpwrap.patch, -files/zlib-1.1.4-build-fPIC.patch,
+  -files/zlib-1.1.4-build-static-with-fpic.patch,
+  -files/zlib-1.1.4-glibc.patch, -files/zlib-1.1.4-gzprintf.patch,
+  -files/zlib-1.1.4-mapfile.patch, -ntop-2.2c.ebuild, +ntop-3.1.ebuild:
+  Cleanout and Version bump as per bug #75812
+
+  27 Oct 2004; Eldad Zack <eldad@gentoo.org> ntop-3.0.ebuild:
+  Removed dep on ncurses since intop was removed at 3.0.
+
+  25 Sep 2004; Tom Gall <tgall@gentoo.org> ntop-3.0.ebuild:
+  added ~ppc64, bug #64101
+
+  14 Sep 2004; Guy Martin <gmsoft@gentoo.org> ntop-3.0.ebuild:
+  Stable on hppa.
+
+  19 Aug 2004; Jason Wever <weeve@gentoo.org> ntop-3.0.ebuild:
+  Stable on sparc.
+
+  17 Aug 2004; Eldad Zack <eldad@gentoo.org> ntop-3.0.ebuild:
+  x86 stable
+
+  25 Jul 2004; Eldad Zack <eldad@gentoo.org> ntop-3.0.ebuild:
+  Fixed sandbox violation. Thanks to Dennis Freise <cat@final-frontier.ath.cx>.
+  Closes #58271.
+
+  24 Jul 2004; Eldad Zack <eldad@gentoo.org> ntop-3.0.ebuild:
+  chown /var/lib/ntop to ntop's running user (nobody). Closes #46969.
+
+  09 Jun 2004; Aron Griffis <agriffis@gentoo.org> ntop-2.0.99_rc2-r2.ebuild,
+  ntop-2.2.ebuild, ntop-2.2c.ebuild, ntop-3.0.ebuild:
+  Fix use invocation
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> ntop-2.2c.ebuild:
+  Add inherit eutils
+
+*ntop-3.0 (31 Mar 2004)
+
+  14 Apr 2004; Jon Hood <squinky86@gentoo.org> ntop-3.0.ebuild:
+  added libgd and libpng to dependencies, closes bug 46469.
+
+  31 Mar 2004; Michael Boman <mboman@gentoo.org> metadata.xml,
+  ntop-3.0.ebuild:
+  New upstream version. Closes bug 45372.
+
+  10 Mar 2004; Jason Wever <weeve@gentoo.org> ntop-2.2c.ebuild:
+  Stable on sparc.
+
+  05 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> ntop-2.2c.ebuild:
+  Added fpic patches to make it compile on amd64. Also compile everything with our preferred cflags.
+
+  11 Jan 2004; Seemant Kulleen <seemant@gentoo.org> ntop-2.0.99_rc2-r2.ebuild:
+  sed -i
+
+  11 Jan 2004; Seemant Kulleen <seemant@gentoo.org> ntop-2.2.ebuild,
+  ntop-2.2c.ebuild:
+  Changed dodir to keepdir, otherwise a subsequent install removes
+  /var/lib/ntop. Closes bug #37914 by Carlo <current@myrealbox.com>
+
+  26 Sep 2003; Martin Holzer <mholzer@gentoo.org> ntop-2.2.ebuild,
+  ntop-2.2c.ebuild:
+  Added more docs and marked x86 stable.
+
+  02 Aug 2003; Todd Sunderlin <todd@gentoo.org> ntop-2.2.ebuild:
+  Marked stable on sparc
+
+*ntop-2.2c (12 Jul 2003)
+
+  09 Jan 2004; Guy Martin <gmsoft@gentoo.org> ntop-2.2c.ebuild :
+  Added -fPIC for zlib and libpng on hppa. Marked stable on hppa.
+
+  12 Jul 2003; Martin Holzer <mholzer@gentoo.org> ntop-2.2c.ebuild:
+  Version bumped.
+
+  29 Jun 2003; Martin Holzer <mholzer@gentoo.org> ntop-2.2.ebuild:
+  Marked stable on x86.
+
+*ntop-2.2 (04 May 2003)
+
+  04 May 2003; Daniel Ahlberg <aliz@gentoo.org> ntop-2.2.ebuild :
+  Version bump. Contributions by Rigo Ketelings <rigo@home.nl> and 
+  Ross Dougherty <theklone@optusnet.com.au> in #19354.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*ntop-2.0.99_rc2-r2 (11 Jul 2002)
+
+  11 Jul 2002; Maik Schreiber <blizzy@gentoo.org> :
+
+  Applied tcp-wrappers patch from Markus Krainer
+  <markus-krainer@chello.at>, closes bugs #4774, #4772
+  and #4832.
+
+*ntop-2.0.99_rc2-r1 (09 Jul 2002)
+
+  09 Jul 2002; Maik Schreiber <blizzy@gentoo.org> :
+
+  Quick fix for bug #4678.
+
+*ntop-2.0.99_rc2 (14 Jun 2002)
+
+  14 Jun 2002; Ryan Phillips <rphillips@gentoo.org> :
+
+  updated revision
+
+*ntop-2.0-r1 (25 Apr 2002)
+
+  25 Apr 2002; Pete Michaleas <tutor@gentoo.org> ntop-2.0-r1.ebuild :
+
+  Included patch to fix vulnerability with syslog() call, found in
+  util.c.

@@ -1,0 +1,36 @@
+commit 871bd23e4c41bb0fb94b72832b270766de540dea
+Author: Alexis Ballier <alexis.ballier@gmail.com>
+Date:   Sat May 12 15:45:13 2012 -0400
+
+    Allow target autodetection to work when cross-compiling.
+    
+    Allow CHOST to override the gcc -dumpmachine output. This allows to
+    use the target autodetection code when cross compiling by setting the
+    CHOST variable.
+    
+    On Gentoo, we would like to support easy cross-compilation, and for
+    libvpx this would basically mean copying the code in
+    build/make/configure.sh to setup the right --target option. It seems a
+    lot easier to let it guess by itself.
+    
+    Another option I considered was using CROSS-gcc instead but this would
+    not work for our multilib setups: They use gcc -m32 to build 32bits
+    binaries and gcc -m32 -dumpmachine will output the 64bits version,
+    which would then make libvpx wrongly believe it is building for a
+    64bits architecture.
+    
+    Change-Id: I05a19be402228f749e23be7473ca53ae74fd2186
+
+diff --git a/build/make/configure.sh b/build/make/configure.sh
+index 3c772e5..3118c0a 100755
+--- a/build/make/configure.sh
++++ b/build/make/configure.sh
+@@ -549,7 +549,7 @@ setup_gnu_toolchain() {
+ 
+ process_common_toolchain() {
+     if [ -z "$toolchain" ]; then
+-        gcctarget="$(gcc -dumpmachine 2> /dev/null)"
++        gcctarget="${CHOST:-$(gcc -dumpmachine 2> /dev/null)}"
+ 
+         # detect tgt_isa
+         case "$gcctarget" in

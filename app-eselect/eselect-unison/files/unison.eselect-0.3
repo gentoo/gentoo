@@ -1,0 +1,146 @@
+# -*-eselect-*-  vim: ft=eselect
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-unison/files/unison.eselect-0.3,v 1.1 2015/03/31 16:57:32 ulm Exp $
+
+DESCRIPTION="Manage /usr/bin/unison versions"
+MAINTAINER="ml@gentoo.org"
+VERSION="0.3"
+
+# find a list of unison symlink targets, best first
+find_targets() {
+	local f
+	for f in "${EROOT}"/usr/bin/unison-[0-9]*; do
+		if [[ -f ${f} ]] ; then
+			echo "${f##*/unison-}"
+		fi
+	done | tac
+}
+
+# find version number of currently symlinked version
+identify_target() {
+	local f
+	f="$(canonicalise "${EROOT}"/usr/bin/unison)"
+	echo "${f##*/unison-}"
+}
+
+# try to remove the unison symlink
+remove_symlinks() {
+	rm -f "${EROOT}"/usr/bin/unison &>/dev/null
+}
+
+# set the unison symlink
+set_symlinks() {
+	local target="${1}" targets
+	if is_number "${target}" && [[ ${target} -ge 1 ]] ; then
+		targets=( $(find_targets) )
+		target=${targets[target - 1]}
+	fi
+	if [[ -f "${EROOT}/usr/bin/unison-${target}" ]] ; then
+		remove_symlinks
+		ln -s "unison-${target}" "${EROOT}/usr/bin/unison" || \
+			die "Could not set ${target} /usr/bin/unison symlink"
+	else
+		die -q "Target \"${target}\" doesn't appear to be valid!"
+	fi
+}
+
+### show action ###
+
+describe_show() {
+	echo "Show the current unison version"
+}
+
+do_show() {
+	[[ -z "${@}" ]] || die -q "Too many parameters"
+
+	write_list_start "Current unison verson:"
+	if [[ -L "${EROOT}/usr/bin/unison" ]] ; then
+		write_kv_list_entry "$(identify_target)" ""
+	elif [[ -e "${EROOT}/usr/bin/unison" ]] ; then
+		write_kv_list_entry "(not a symlink)" ""
+	else
+		write_kv_list_entry "(unset)" ""
+	fi
+}
+
+### list action ###
+
+describe_list() {
+	echo "List available unison versions"
+}
+
+do_list() {
+	[[ $# -eq 0 ]] || die -q "Too many parameters"
+
+	local i targets current
+	targets=( $(find_targets ) )
+	current=$(identify_target)
+	for (( i = 0; i < ${#targets[@]}; i++ )); do
+		[[ ${targets[i]} = ${current} ]] \
+			&& targets[i]=$(highlight_marker "${targets[i]}")
+	done
+	write_list_start "Available unison versions:"
+	write_numbered_list -m "(none found)" "${targets[@]}"
+}
+
+### set action ###
+
+describe_set() {
+	echo "Set a new unison version"
+}
+
+describe_set_options() {
+	echo "target : Target version number or index from 'list' action"
+}
+
+describe_set_parameters() {
+	echo "<target>"
+}
+
+do_set() {
+	if [[ -z "${1}" ]] ; then
+		die -q "You didn't give me a version number"
+
+	elif [[ -n "${2}" ]] ; then
+		die -q "Too many parameters"
+
+	elif [[ -L "${EROOT}/usr/bin/unison" ]] ; then
+		if ! remove_symlinks ; then
+			die -q "Can't remove existing version symlink"
+		elif ! set_symlinks "${1}" ; then
+			die -q "Can't set new version"
+		fi
+
+	elif [[ -e "${EROOT}/usr/bin/unison" ]] ; then
+		die -q "${EROOT}/usr/bin/unison seems to be from an old ebuild, please remove manually"
+
+	else
+		set_symlinks "${1}" || die -q "Can't set new version"
+	fi
+}
+
+### update action ###
+
+describe_update() {
+	echo "Automatically update the unison version number"
+}
+
+describe_update_options() {
+	echo "--if-unset : Do not override currently selected version"
+}
+
+do_update() {
+	[[ -z "${1}" ]] || ( [[ -z "${2}" ]] && [[ "${1}" == "--if-unset" ]] ) || \
+		die -q "Usage error"
+
+	if [[ -L "${EROOT}/usr/bin/unison" ]] ; then
+		[[ ${1} == "--if-unset" ]] && return
+		remove_symlinks || die -q "Can't remove existing symlink"
+	fi
+	if [[ -e "${EROOT}/usr/bin/unison" ]] ; then
+		die -q "${EROOT}/usr/bin/unison seems to be from an old ebuild, please remove manually"
+	elif ! [[ -z $(find_targets ) ]] ; then
+		set_symlinks 1 || die -q "Can't set a new version"
+	fi
+}

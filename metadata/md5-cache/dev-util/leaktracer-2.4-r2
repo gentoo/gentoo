@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=>=dev-lang/perl-5 sys-devel/gdb
+DESCRIPTION=trace and analyze memory leaks in C++ programs
+HOMEPAGE=http://www.andreasen.org/LeakTracer/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=public-domain
+RDEPEND=>=dev-lang/perl-5 sys-devel/gdb
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://gentoo/leaktracer-2.4-gentoo_p2.tbz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9aba92abde4c14bbf5eb2a5504dfdca0

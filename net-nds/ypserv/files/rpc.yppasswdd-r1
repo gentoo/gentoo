@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-nds/ypserv/files/rpc.yppasswdd-r1,v 1.4 2004/07/24 06:26:28 eradicator Exp $
+
+depend() {
+	need net portmap ypserv
+}
+
+start() {
+	ebegin "Starting rpc.yppasswdd"
+	YOPTS=""
+	if [ -n "${YPPASSWDD_OPTS}" ]; then YOPTS="-- ${YPPASSWDD_OPTS}"; fi
+	start-stop-daemon --start --quiet --exec /usr/sbin/rpc.yppasswdd ${YOPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping rpc.yppasswdd"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/rpc.yppasswdd
+	eend $?
+}

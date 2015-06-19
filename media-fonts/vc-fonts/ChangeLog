@@ -1,0 +1,109 @@
+# ChangeLog for media-fonts/vc-fonts
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/vc-fonts/ChangeLog,v 1.26 2009/09/07 19:39:02 dirtyepic Exp $
+
+  07 Sep 2009; Ryan Hill <dirtyepic@gentoo.org>
+  -vc-fonts-20020207-r1.ebuild:
+  Remove old.
+
+  26 Sep 2007; Brent Baude <ranger@gentoo.org> vc-fonts-20020207-r2.ebuild:
+  Marking vc-fonts-20020207-r2 ppc64 for bug 192060
+
+  25 Sep 2007; Raúl Porcel <armin76@gentoo.org>
+  vc-fonts-20020207-r2.ebuild:
+  sparc stable wrt #192060
+
+  16 Sep 2007; Ryan Hill <dirtyepic@gentoo.org> vc-fonts-20020207-r2.ebuild:
+  Install bdf if USE="-X".
+
+  14 Sep 2007; nixnut <nixnut@gentoo.org> vc-fonts-20020207-r2.ebuild:
+  Stable on ppc wrt bug 192060
+
+  12 Sep 2007; Raúl Porcel <armin76@gentoo.org>
+  vc-fonts-20020207-r2.ebuild:
+  alpha/ia64/x86 stable wrt #192060
+
+  11 Sep 2007; Christoph Mende <angelos@gentoo.org>
+  vc-fonts-20020207-r2.ebuild:
+  Stable on amd64 wrt bug #192060
+
+*vc-fonts-20020207-r2 (29 Jul 2007)
+
+  29 Jul 2007; Ryan Hill <dirtyepic@gentoo.org> -vc-fonts-20020207.ebuild,
+  +vc-fonts-20020207-r2.ebuild:
+  Rev bump using font.eclass. Contains a newer version of bleed that includes
+  a slashed zero.
+
+  22 Jul 2007; Ryan Hill <dirtyepic@gentoo.org> vc-fonts-20020207.ebuild,
+  vc-fonts-20020207-r1.ebuild:
+  Remove virtual/x11.
+
+  18 Mar 2007; Simon Stelling <blubb@gentoo.org>
+  vc-fonts-20020207-r1.ebuild:
+  stable on amd64; bug 171063
+
+  17 Mar 2007; Markus Rothe <corsair@gentoo.org>
+  vc-fonts-20020207-r1.ebuild:
+  Stable on ppc64; bug #171063
+
+  17 Mar 2007; nixnut <nixnut@gentoo.org> vc-fonts-20020207-r1.ebuild:
+  Stable on ppc wrt bug 171063
+
+  12 Mar 2007; Raúl Porcel <armin76@gentoo.org>
+  vc-fonts-20020207-r1.ebuild:
+  x86 stable
+
+  27 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  vc-fonts-20020207-r1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  vc-fonts-20020207-r1.ebuild:
+  Stable on Alpha.
+
+  07 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  vc-fonts-20020207-r1.ebuild:
+  Stable on sparc
+
+  12 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  vc-fonts-20020207-r1.ebuild:
+  Mark 20020207-r1 stable on ia64
+
+  23 Mar 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  vc-fonts-20020207.ebuild:
+  Port to modular X.
+
+*vc-fonts-20020207-r1 (11 Jan 2006)
+
+  11 Jan 2006; Robin H. Johnson <robbat2@gentoo.org>
+  +vc-fonts-20020207-r1.ebuild:
+  Fix DEPEND/RDEPEND for modular-X.
+
+  23 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  vc-fonts-20020207.ebuild:
+  Stable on sparc
+
+  23 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  vc-fonts-20020207.ebuild:
+  Added ~sparc
+
+  15 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  vc-fonts-20020207.ebuild:
+  Stable on amd64.
+
+  04 Jan 2005; Markus Rothe <corsair@gentoo.org> vc-fonts-20020207.ebuild:
+  Stable on ppc64
+
+  29 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> vc-fonts-20020207.ebuild:
+  Stable on x86, alpha and ppc.
+
+  29 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> vc-fonts-20020207.ebuild:
+  Marked ~amd64.
+
+*vc-fonts-20020207 (05 Jul 2004)
+
+  05 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +vc-fonts-20020207.ebuild:
+  Initial import. Ebuild submitted by Joost Hillen <neeneelaatmaar@gmx.net>,
+  closing bug #45170
+

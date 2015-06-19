@@ -1,0 +1,701 @@
+# ChangeLog for dev-java/swt
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/swt/ChangeLog,v 1.155 2014/03/14 10:50:34 ago Exp $
+
+  14 Mar 2014; Agostino Sarubbo <ago@gentoo.org> swt-3.7.2-r1.ebuild:
+  Stable for ppc64, wrt bug #499478
+
+*swt-3.8.2 (09 Mar 2014)
+
+  09 Mar 2014; Ryan Hill <rhill@gentoo.org> +swt-3.8.2.ebuild,
+  +files/swt-3.8.2-gthread.patch,
+  +files/swt-3.8-as-needed-and-flag-fixes.patch, +files/swt-3.8-manifest:
+  Version bump for vuze-5.3.0.0 (bug #502100).
+
+  08 Mar 2014; Tom Wijsman <TomWij@gentoo.org> -swt-3.4-r4.ebuild:
+  Remove old.
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> swt-3.7.2-r1.ebuild:
+  amd64 stable, bug #499478
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> swt-3.7.2-r1.ebuild:
+  x86 stable wrt bug #499478
+
+  02 Feb 2014; Agostino Sarubbo <ago@gentoo.org> swt-3.7.2-r1.ebuild:
+  Stable for ppc, wrt bug #499478
+
+  21 Sep 2013; Tom Wijsman <TomWij@gentoo.org> swt-4.2-r1.ebuild,
+  swt-4.2-r2.ebuild, swt-4.2.ebuild:
+  Updated download URL to use archive URL, fixes bug #482562 reported by Frank
+  Steinmetzger.
+
+  24 Aug 2013; Ryan Hill <dirtyepic@gentoo.org> swt-3.7.2-r1.ebuild,
+  +files/swt-3.7.2-gio_launch-URI-x86.patch:
+  Fix gio_launch patch on 32bit.
+
+*swt-3.7.2-r1 (21 Aug 2013)
+
+  21 Aug 2013; Ryan Hill <dirtyepic@gentoo.org> +swt-3.7.2-r1.ebuild,
+  +files/swt-3.7.2-gio_launch-URI.patch:
+  Add patch for bug #424151 (gio_launch fails when opening by URI, causing
+  unnecessary dependencies on gnome libs).
+
+*swt-4.2-r2 (15 May 2013)
+
+  15 May 2013; Tom Wijsman <TomWij@gentoo.org> +swt-4.2-r2.ebuild:
+  Revision bump. Define missing g_thread_supported() to be 0, reported by
+  Thev00d00, as per http://git.eclipse.org/c/platform/eclipse.platform.swt.git/c
+  ommit/?id=b76decdda2aff36d926293d1567c3b04f7c91d1c
+
+*swt-4.2-r1 (10 May 2013)
+
+  10 May 2013; Tom Wijsman <TomWij@gentoo.org> +swt-4.2-r1.ebuild:
+  EAPI 5. Revision bump, depend on glib-2.32 and remove deprecated g_thread_init
+  call. Fixes bug #461784.
+
+*swt-4.2 (09 Jul 2012)
+
+  09 Jul 2012; Ralph Sennhauser <sera@gentoo.org> +swt-4.2.ebuild,
+  +files/swt-4.2-as-needed-and-flag-fixes.patch, +files/swt-4.2-manifest:
+  Version bump. Thanks to Carlos Silva <r3pek@r3pek.org> for the ebuild.
+  #424455
+
+  01 Jun 2012; Jeff Horelick <jdhore@gentoo.org> swt-3.7.2.ebuild:
+  marked x86 per bug 418043
+
+  29 May 2012; Agostino Sarubbo <ago@gentoo.org> swt-3.7.2.ebuild:
+  Stable for amd64, wrt bug #418043
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> swt-3.4-r4.ebuild,
+  swt-3.5.2.ebuild, swt-3.6.1.ebuild, swt-3.7.1.ebuild, swt-3.7.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  17 Apr 2012; Samuli Suominen <ssuominen@gentoo.org> swt-3.4-r4.ebuild,
+  swt-3.5.2.ebuild, swt-3.6.1.ebuild, metadata.xml:
+  Remove obsolete USE="xulrunner" and net-libs/xulrunner dependency since
+  nothing is using it in tree and 3.7.x series has webkit replacement wrt
+  #409299
+
+*swt-3.7.2 (03 Mar 2012)
+
+  03 Mar 2012; Vlastimil Babka <caster@gentoo.org> +swt-3.7.2.ebuild:
+  Version bump.
+
+*swt-3.7.1 (17 Nov 2011)
+
+  17 Nov 2011; Vlastimil Babka <caster@gentoo.org> +swt-3.7.1.ebuild,
+  +files/swt-3.7-manifest, metadata.xml:
+  Version bump. Replaces xulrunner integration and respective USE flag with
+  webkit. Fixes bug #335165 and #358773. Includes OSGi manifest improvements by
+  Christoph Brill (egore) <egore@gmx.de> from bug #335165.
+
+  06 Sep 2011; Vlastimil Babka <caster@gentoo.org> -swt-3.3.1.1-r1.ebuild,
+  -files/swt-3.3-manifest, -swt-3.6.ebuild:
+  Remove swt-3.3, bug #362213.
+
+  29 Mar 2011; Vlastimil Babka <caster@gentoo.org> swt-3.3.1.1-r1.ebuild,
+  swt-3.4-r4.ebuild, swt-3.5.2.ebuild, swt-3.6.ebuild, swt-3.6.1.ebuild:
+  Slot GTK+ deps.
+
+  23 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> swt-3.6.1.ebuild:
+  ppc/ppc64 stable wrt #349740
+
+  24 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> swt-3.5.2.ebuild:
+  ppc/ppc64 stable wrt #316565
+
+  11 Jan 2011; Markus Meier <maekke@gentoo.org> swt-3.6.1.ebuild:
+  x86 stable, bug #349740
+
+  08 Jan 2011; Markos Chandras <hwoarang@gentoo.org> swt-3.6.1.ebuild:
+  Stable on amd64 wrt bug #349740
+
+  03 Jan 2011; Vlastimil Babka <caster@gentoo.org> swt-3.3.1.1-r1.ebuild,
+  swt-3.4-r4.ebuild, swt-3.5.2.ebuild, swt-3.6.ebuild, swt-3.6.1.ebuild:
+  Add QA_SONAME to suppress warnings about missing SONAME, which JNI libraries
+  don't need. Fixes bug #253756.
+
+  27 Nov 2010; Vlastimil Babka <caster@gentoo.org> swt-3.5.2.ebuild,
+  swt-3.6.ebuild, swt-3.6.1.ebuild:
+  Restrict xulrunner dep also for 3.5.2. Hopefully fix ppc64, #344309.
+
+*swt-3.6.1 (26 Nov 2010)
+
+  26 Nov 2010; Vlastimil Babka <caster@gentoo.org> swt-3.6.ebuild,
+  +swt-3.6.1.ebuild, metadata.xml:
+  Version bump. Fixes bug #342931. Xulrunner dep restricted to 1.9 as 2.0 is
+  not supported anymore. Disable the flag if you have xulrunner-2.0. In
+  future versions, swt should use webkit instead. Bug #335165.
+
+*swt-3.6 (16 Aug 2010)
+
+  16 Aug 2010; Alistair Bush <ali_bush@gentoo.org> +swt-3.6.ebuild,
+  +files/swt-3.6-manifest, +files/as-needed-and-flag-fixes-3.6.patch:
+  Version Bump. Thanks to Matt Whitlock <matt@whitlock.name>
+
+  26 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> swt-3.3.1.1-r1.ebuild:
+  Comment out support for vulnerable firefox and xulrunner (only in deps).
+
+  26 Jun 2010; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +swt-3.3.1.1-r1.ebuild, +files/swt-3.3-manifest:
+  Revert swt:3 removal; bug 282289 was outdated, two new packages depend on
+  it now
+
+  26 Jun 2010; Nirbheek Chauhan <nirbheek@gentoo.org>
+  -swt-3.3.1.1-r1.ebuild, -files/swt-3.3-manifest:
+  Remove swt:3 as per bug 282289 and bug 324953
+
+  13 Apr 2010; Vlastimil Babka <caster@gentoo.org> -swt-3.5.1.ebuild:
+  remove old
+
+  13 Apr 2010; Christian Faulhammer <fauli@gentoo.org> swt-3.5.2.ebuild:
+  stable x86, bug 310181
+
+  20 Mar 2010; Pacho Ramos <pacho@gentoo.org> swt-3.5.2.ebuild:
+  amd64 stable, bug 310181
+
+*swt-3.5.2 (19 Mar 2010)
+
+  19 Mar 2010; Vlastimil Babka <caster@gentoo.org> -swt-3.5.2_rc1.ebuild,
+  +swt-3.5.2.ebuild:
+  Version bump.
+
+*swt-3.5.2_rc1 (22 Jan 2010)
+
+  22 Jan 2010; Vlastimil Babka <caster@gentoo.org> swt-3.3.1.1-r1.ebuild,
+  -swt-3.5.ebuild, +swt-3.5.2_rc1.ebuild:
+  Version bump that should fix button clicking problems with gtk+-2.18.*.
+  Remove seamonkey support from 3.3.1.1 for bug #300433.
+
+  09 Dec 2009; Markus Meier <maekke@gentoo.org> swt-3.5.1.ebuild:
+  amd64/x86 stable, bug #295893
+
+  12 Nov 2009; Vlastimil Babka <caster@gentoo.org> -swt-3.3.1.1.ebuild,
+  -swt-3.4-r2.ebuild:
+  Cleanup old.
+
+  11 Nov 2009; Mounir Lamouri <volkmar@gentoo.org> swt-3.4-r4.ebuild:
+  Stable for ppc, bug 282159
+
+  11 Nov 2009; Mounir Lamouri <volkmar@gentoo.org> swt-3.3.1.1-r1.ebuild:
+  Stable for ppc, bug 275287
+
+  07 Nov 2009; Vlastimil Babka <caster@gentoo.org> swt-3.3.1.1-r1.ebuild,
+  swt-3.4-r4.ebuild, swt-3.5.ebuild, swt-3.5.1.ebuild:
+  Update the deps to make sure there's XTest.h - bug #292244.
+
+  07 Nov 2009; Vlastimil Babka <caster@gentoo.org> swt-3.5.ebuild,
+  swt-3.5.1.ebuild:
+  Use java_prepare.
+
+*swt-3.5.1 (05 Nov 2009)
+
+  05 Nov 2009; Vlastimil Babka <caster@gentoo.org> +swt-3.5.1.ebuild:
+  Version bump.
+
+  04 Nov 2009; Markus Meier <maekke@gentoo.org> swt-3.5.ebuild:
+  amd64/x86 stable, bug #291631
+
+  03 Nov 2009; Vlastimil Babka <caster@gentoo.org> swt-3.3.1.1-r1.ebuild,
+  -swt-3.4-r3.ebuild, swt-3.4-r4.ebuild, swt-3.5.ebuild:
+  Add x11-libs/libXtst also to DEPEND, as it now provides the required
+  headers in new xorg, bug #288412.
+
+  22 Sep 2009; Romain Perier <mrpouet@gentoo.org>
+  swt-3.4-r4.ebuild:
+  Stable for amd64 per bug #282159.
+
+  16 Sep 2009; Christian Faulhammer <fauli@gentoo.org> swt-3.4-r4.ebuild:
+  stable x86, bug 282159
+
+  06 Sep 2009; Brent Baude <ranger@gentoo.org> swt-3.4-r4.ebuild:
+  Marking swt-3.4-r4 ppc64 for bug 282159
+
+  20 Jul 2009; Vlastimil Babka <caster@gentoo.org> swt-3.5.ebuild:
+  Remove useless blocker with bad syntax, thanks to darkside. Fixes bug
+  278368.
+
+  20 Jul 2009; Vlastimil Babka <caster@gentoo.org> swt-3.5.ebuild:
+  Remove useless blocker with bad syntax, thanks to darkside.
+
+*swt-3.5 (19 Jul 2009)
+*swt-3.4-r4 (19 Jul 2009)
+
+  19 Jul 2009; Vlastimil Babka <caster@gentoo.org> swt-3.4-r2.ebuild,
+  swt-3.4-r3.ebuild, +swt-3.4-r4.ebuild,
+  +files/swt-3.4-xulrunner-1.9.1-amd64.patch,
+  +files/swt-3.4-xulrunner-1.9.1.patch, +swt-3.5.ebuild,
+  +files/swt-3.5-manifest:
+  Version bump to 3.5, new slot, bug #277704. Revbump 3.4-r4 fixes missing
+  symbol issue and adds backported upstream patch for xulrunner-1.9.1
+  support, both discussed in bug #241400. Older 3.4 versions restrict
+  xulrunner dependency to 1.9.0*.
+
+  05 Jul 2009; Markus Meier <maekke@gentoo.org> swt-3.3.1.1-r1.ebuild:
+  amd64 stable, bug #275287
+
+  05 Jul 2009; Markus Meier <maekke@gentoo.org> swt-3.4-r3.ebuild:
+  amd64 stable, bug #275285
+
+  04 Jul 2009; Brent Baude <ranger@gentoo.org> swt-3.4-r3.ebuild:
+  Marking swt-3.4-r3 ppc64 for bug 275285
+
+  30 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  swt-3.3.1.1-r1.ebuild:
+  stable x86, bug 275287
+
+  30 Jun 2009; Christian Faulhammer <fauli@gentoo.org> swt-3.4-r3.ebuild:
+  stable x86, bug 275285
+
+  22 Jun 2009; Serkan Kaba <serkan@gentoo.org> swt-3.3.1.1.ebuild,
+  swt-3.3.1.1-r1.ebuild, swt-3.4-r2.ebuild, swt-3.4-r3.ebuild:
+  Add postinst message about MOZILLA_FIVE_HOME handling for custom
+  applications wrt bug #274514.
+
+  17 Jun 2009; Petteri Räty <betelgeuse@gentoo.org> swt-3.3.1.1-r1.ebuild,
+  swt-3.4-r3.ebuild:
+  Add DEPEND on dev-util/pkg-config reported in bug #274542.
+
+*swt-3.4-r3 (24 May 2009)
+*swt-3.3.1.1-r1 (24 May 2009)
+
+  24 May 2009; Serkan Kaba <serkan@gentoo.org> +swt-3.3.1.1-r1.ebuild,
+  +swt-3.4-r3.ebuild, +files/as-needed-and-flag-fixes.patch:
+  Revbump to respect LDFLAGS and work with --as-needed. Fixes bug #263115
+  and bug #255656
+
+  18 Mar 2009; Brent Baude <ranger@gentoo.org> swt-3.4-r2.ebuild:
+  stable ppc, bug 252875
+
+  07 Jan 2009; Brent Baude <ranger@gentoo.org> swt-3.4-r2.ebuild:
+  Marking swt-3.4-r2 ppc64 for bug 252875
+
+  04 Jan 2009; Markus Meier <maekke@gentoo.org> swt-3.4-r2.ebuild:
+  x86 stable, bug #252875
+
+  31 Dec 2008; Kenneth Prugh <ken69267@gentoo.org> swt-3.4-r2.ebuild:
+  amd64 stable, bug #252875
+
+  09 Oct 2008; Jean-Noël Rivasseau <elvanor@gentoo.org> Manifest:
+  Remove old swt-3.4 ebuilds, bug #237973.
+
+*swt-3.4-r2 (14 Sep 2008)
+
+  14 Sep 2008; Vlastimil Babka <caster@gentoo.org> +swt-3.4-r2.ebuild:
+  Hopefully fix xulrunner issue (bug #234934) this time, thanks to geki and
+  Serkan. Please report results on the bug. Also fix building on ppc64 - bug
+  #237101 with patch by Greg Trigg <trigggl@yahoo.com>.
+
+*swt-3.4-r1 (16 Aug 2008)
+
+  16 Aug 2008; Vlastimil Babka <caster@gentoo.org> +swt-3.4-r1.ebuild:
+  Revbump to hopefully fix bug #234934. Also dropped mozilla flag - use
+  xulrunner lag to build the embedded browser.
+
+*swt-3.4 (31 Jul 2008)
+
+  31 Jul 2008; Jean-Noël Rivasseau <elvanor@gentoo.org> swt-3.3.1.1.ebuild,
+  swt-3.4_pre6-r1.ebuild, +swt-3.4.ebuild:
+  Added swt-3.4 final. Mozilla/Gecko support is now only provided via xulrunner
+  (this matches upstream policy as Firefox 3 needs xulrunner-1.9 for example).
+
+  20 May 2008; Petteri Räty <betelgeuse@gentoo.org> swt-3.4_pre6-r1.ebuild:
+  Add ppc64 support. Fixes bug #222971. Thanks to Andrew John Hughes
+  <gnu_andrew@member.fsf.org>.
+
+  11 Apr 2008; Petteri Räty <betelgeuse@gentoo.org> swt-3.4_pre6-r1.ebuild:
+  Use a blocker instead of dying in pkg_setup.
+
+  05 Apr 2008; Vlastimil Babka <caster@gentoo.org> ChangeLog:
+  Correct bug numbers in previous log.
+
+*swt-3.4_pre6-r1 (03 Apr 2008)
+
+  03 Apr 2008; Vlastimil Babka <caster@gentoo.org> -swt-3.4_pre6.ebuild,
+  +swt-3.4_pre6-r1.ebuild:
+  Revbump to change slot to 3.4 so that eclipse-3.3 still works, bug
+  #216195 and #214012 comment 3. Swt 3.4_pre6 in slot 3 has to be downgraded
+  or uninstalled first. Add x11-proto/inputproto to DEPEND, bug #215998.
+
+  03 Apr 2008; Vlastimil Babka <caster@gentoo.org> swt-3.4_pre6.ebuild:
+  Add a pkg_postinst elog about possibility of having to run eclipse-3.3
+  -clean after swt upgrade.
+
+*swt-3.4_pre6 (02 Apr 2008)
+
+  02 Apr 2008; Vlastimil Babka <caster@gentoo.org> +files/swt-3.4-manifest,
+  +swt-3.4_pre6.ebuild:
+  Version bump, bug #214012.
+
+  19 Mar 2008; Vlastimil Babka <caster@gentoo.org> -swt-3.3.ebuild,
+  swt-3.3.1.1.ebuild:
+  Update mozilla packages deps wrt xulrunner slotting, using EAPI=1 slot dep
+  for xulrunner:1.8. Remove old version.
+
+  11 Mar 2008; Kenneth Prugh <ken69267@gentoo.org> swt-3.3.1.1.ebuild:
+  amd64 stable, bug #212660
+
+  08 Mar 2008; Markus Meier <maekke@gentoo.org> swt-3.3.1.1.ebuild:
+  x86 stable, bug #212660
+
+  08 Mar 2008; nixnut <nixnut@gentoo.org> swt-3.3.1.1.ebuild:
+  Stable on ppc wrt bug 212660
+
+*swt-3.3.1.1 (15 Jan 2008)
+
+  15 Jan 2008; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  +files/swt-3.3-manifest, +swt-3.3.1.1.ebuild:
+  OSGi compliant version, bump to 3.3.1.1
+
+  09 Jan 2008; Vlastimil Babka <caster@gentoo.org>
+  -files/swt-3.2-cairo-signedness-x86_64.patch, -files/swt-3.2.1-fbsd.patch,
+  -files/swt-3.2-cairo-signedness-x86.patch,
+  -files/swt-3.2-gcc-4.x-warning-fix.patch,
+  -files/swt-3.2-remove-stripping.patch, -swt-3.2-r2.ebuild,
+  -swt-3.2.2.ebuild, -swt-3.2.2-r1.ebuild:
+  Clean up 3.2* versions.
+
+  06 Jan 2008; Petteri Räty <betelgeuse@gentoo.org> swt-3.3.ebuild:
+  Add DEPEND on dev-util/pkgconfig. Fixes bug #204618.
+
+  26 Dec 2007; Samuli Suominen <drac@gentoo.org> swt-3.3.ebuild:
+  amd64 stable wrt #202458
+
+  22 Dec 2007; nixnut <nixnut@gentoo.org> swt-3.3.ebuild:
+  Stable on ppc wrt bug 202458
+
+  16 Dec 2007; Markus Meier <maekke@gentoo.org> swt-3.3.ebuild:
+  x86 stable, bug #202458
+
+  16 Dec 2007; Vlastimil Babka <caster@gentoo.org> -swt-3.3_rc4.ebuild,
+  swt-3.3.ebuild:
+  Rewrite of the code that determines AWT_LIB_PATH, based on upstream's
+  build.sh. The old way broke with the new ibm-jdk-bin-1.6. Remove rc4.
+
+*swt-3.3 (20 Aug 2007)
+
+  20 Aug 2007; Vlastimil Babka <caster@gentoo.org>
+  +files/swt-3.3-callback-pointer-dereferencing.patch,
+  -files/swt-3.3_rc4-callback-pointer-dereferencing.patch,
+  swt-3.3_rc4.ebuild, +swt-3.3.ebuild:
+  Version bump, bug #189617.
+
+  22 Jul 2007; Hans de Graaff <graaff@gentoo.org> swt-3.2-r2.ebuild:
+  Drop virtual/x11 references.
+
+  26 Jun 2007; Lars Weiler <pylon@gentoo.org> swt-3.2.2.ebuild:
+  Stable on ppc; bug #179815.
+
+  20 Jun 2007; Petteri Räty <betelgeuse@gentoo.org> -swt-3.2.1.ebuild:
+  Remove old version.
+
+*swt-3.3_rc4 (18 Jun 2007)
+
+  18 Jun 2007; Vlastimil Babka <caster@gentoo.org>
+  +files/swt-3.3_rc4-callback-pointer-dereferencing.patch,
+  +swt-3.3_rc4.ebuild:
+  Version bump, adds firefox USE flag as it now works too, without need for
+  patchset.
+
+  14 Jun 2007; Christoph Mende <angelos@gentoo.org> swt-3.2.2.ebuild:
+  Stable on amd64 wrt bug 179815
+
+  28 May 2007; Vlastimil Babka <caster@gentoo.org> swt-3.2.2.ebuild,
+  swt-3.2.2-r1.ebuild:
+  Use new patchset with amd64 patch for building mozilla component, ported
+  from x86 patch. Fixes bug #172325.
+
+  26 May 2007; Christian Faulhammer <opfer@gentoo.org> swt-3.2.2.ebuild:
+  x86 stable, bug 179815
+
+*swt-3.2.2-r1 (25 May 2007)
+
+  25 May 2007; Vlastimil Babka <caster@gentoo.org> +swt-3.2.2-r1.ebuild:
+  Revbump that adds MOZILLA_FIVE_HOME to package.env using new java-config's
+  functionality.
+
+  27 Apr 2007; Matti Bickel <mabi@gentoo.org> swt-3.2.2.ebuild:
+  ~ppc readded (bug #169456)
+
+  09 Apr 2007; Peter Weller <welp@gentoo.org> swt-3.2.2.ebuild:
+  Keyworded ~x86-fbsd
+
+  09 Apr 2007; Peter Weller <welp@gentoo.org> swt-3.2.2.ebuild:
+  Keyworded ~amd64 wrt bug 169456
+
+*swt-3.2.2 (05 Mar 2007)
+
+  05 Mar 2007; Petteri Räty <betelgeuse@gentoo.org> +swt-3.2.2.ebuild:
+  Version bump. Adds xulrunner use flag to compile browser support against
+  that (bug #155969). Because of that I dropped amd64 and ppc keywords because
+  I am not sure if it works there. Also silenced cairo signedness warnings
+  with a patch from Hanno Meyer-Thurow <h.mth@web.de> (bug #157826). x86-fbsd
+  I had to drop because they don't have xulrunner keyworded. Version bump is
+  bug #169254.
+
+  10 Feb 2007; nixnut <nixnut@gentoo.org> swt-3.2-r2.ebuild:
+  Stable on ppc wrt bug 151358
+
+  07 Dec 2006; Diego Pettenò <flameeyes@gentoo.org> swt-3.2.1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  07 Dec 2006; Petteri Räty <betelgeuse@gentoo.org>
+  +files/swt-3.2.1-fbsd.patch, swt-3.2.1.ebuild:
+  Added patches to build swt on Gentoo/FreeBSD. Fixes bug #157465. Thanks to
+  Diego Pettenò <flameeyes@gentoo.org>.
+
+  07 Dec 2006; Vlastimil Babka <caster@gentoo.org> swt-3.2.1.ebuild:
+  Fix unpacking, thanks to Flameeyes for noticing.
+
+  06 Dec 2006; Vlastimil Babka <caster@gentoo.org>
+  -files/patches-3.2.1/*, swt-3.2.1.ebuild:
+  Apply the seamonkey patches to fix bug #155725 for ppc (same patches as x86).
+  Thanks to David Gurvich <david.gurvich@verizon.net> for testing them. Patches
+  are now packed in a distfile.
+
+  01 Dec 2006; Vlastimil Babka <caster@gentoo.org>
+  -files/swt-3.2.1-firefox.patch, -files/swt-3.2.1-libswt-xpcomgcc4.patch,
+  -files/swt-3.2.1-remove-stripping.patch, +files/patches-3.2.1/*,
+  swt-3.2.1.ebuild:
+  Fixed building on amd64 with seamonkey useflag - bugs #156716 and #155725.
+  Thanks to  Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> for adjusting
+  the x86 patches for amd64, and Ron Widler <ron@einfach.org> and William
+  Thomson  <wltjr@gentoo.org> for testing them. Now using dir-based epatch to
+  apply them.
+
+  20 Nov 2006; Vlastimil Babka <caster@gentoo.org> swt-3.2.1.ebuild:
+  Apply previous patches only on x86 as a workaround for bug #155725.
+
+  19 Nov 2006; Petteri Räty <betelgeuse@gentoo.org>
+  +files/swt-3.2.1-firefox.patch, +files/swt-3.2.1-libswt-xpcomgcc4.patch,
+  swt-3.2.1.ebuild:
+  Added patches to fix compiling with the seamonkey use flag. Thanks to
+  Federico Fissore <federico@fsfe.org>.
+
+*swt-3.2.1 (19 Nov 2006)
+
+  19 Nov 2006; Petteri Räty <betelgeuse@gentoo.org>
+  +files/swt-3.2.1-remove-stripping.patch, -swt-3.2-r1.ebuild,
+  +swt-3.2.1.ebuild:
+  Version bump and removed old revision. Fixes bug #155649.
+
+  26 Oct 2006; Vlastimil Babka <caster@gentoo.org>
+  -files/SWTMessages.properties, -swt-3.1-r1.ebuild, -swt-3.2.ebuild:
+  Remove old versions/revisions that were using obsolete firefox/mozilla USE
+  flag to comply with bug #137665.
+
+  22 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org> swt-3.2-r2.ebuild:
+  Revert ppc keyword to ~ppc, bug #151358
+
+  21 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org> swt-3.2-r2.ebuild:
+  ppc stable, bug #151358
+
+  20 Oct 2006; Simon Stelling <blubb@gentoo.org> swt-3.2-r2.ebuild:
+  stable on amd64
+
+  17 Oct 2006; Joshua Jackson <tsunam@gentoo.org> swt-3.2-r2.ebuild:
+  Stable x86; bug #151358
+
+*swt-3.2-r2 (15 Oct 2006)
+
+  15 Oct 2006; Petteri Räty <betelgeuse@gentoo.org>
+  +files/swt-3.2-remove-stripping.patch, +swt-3.2-r2.ebuild:
+  Does not automatically strip shared libraries any more.
+
+  14 Oct 2006; Joshua Nichols <nichoj@gentoo.org> swt-3.1-r1.ebuild:
+  Added call to java-pkg_pkg_setup, for bug #142708
+
+  23 Sep 2006; Joshua Nichols <nichoj@gentoo.org> swt-3.2-r1.ebuild:
+  Lowered dependency down to >=jdk-1.4. Added java-ant-2 to ensure class
+  version compatibility.
+
+  14 Sep 2006; Joshua Nichols <nichoj@gentoo.org> swt-3.2-r1.ebuild:
+  Removed forced dependency on 1.4. Cleaned up whitespace.
+
+  28 Aug 2006; Saleem Abdulrasool <compnerd@gentoo.org> swt-3.2-r1.ebuild:
+  Use distributed version.txt and SWTMessages.properties
+
+  27 Aug 2006; Saleem Abdulrasool <compnerd@gentoo.org> files/build.xml,
+  swt-3.2-r1.ebuild:
+  migrate mozilla to seamonkey in useflags, update build.xml
+
+  27 Aug 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  -files/swt-cairo-0.9.2-amd64.patch, -files/swt-cairo-0.9.2.patch,
+  -swt-3.2_pre1.ebuild, -swt-3.2_rc2.ebuild:
+  pruning old files
+
+*swt-3.2-r1 (27 Aug 2006)
+
+  27 Aug 2006; Saleem Abdulrasool <compnerd@gentoo.org> +swt-3.2-r1.ebuild:
+  revbump to hard enable accessiblity for azerus; migrated to generation 2 eclass
+
+  19 Jul 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  -files/swt-3.2-cairo-signedness.patch,
+  +files/swt-3.2-cairo-signedness-x86_64.patch,
+  +files/swt-3.2-cairo-signedness-x86.patch, swt-3.2.ebuild:
+  Fix cairo signededness patch for x86_64
+
+  19 Jul 2006; Saleem Abdulrasool <compnerd@gentoo.org> swt-3.2.ebuild:
+  Remove extraneous JAVA_HOME declaration
+
+*swt-3.2 (17 Jul 2006)
+
+  17 Jul 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/swt-3.2-cairo-signedness.patch,
+  +files/swt-3.2-gcc-4.x-warning-fix.patch, files/SWTMessages.properties,
+  +swt-3.2.ebuild:
+  Version bump from upstream, dropping mozilla support in favor of seamonkey
+
+*swt-3.2_rc2 (07 May 2006)
+
+  07 May 2006; Saleem Abdulrasool <compnerd@gentoo.org> +swt-3.2_rc2.ebuild:
+  Version bump from upstream
+
+  04 Feb 2006; Saleem Abdulrasool <compnerd@gentoo.org> swt-3.1-r1.ebuild,
+  swt-3.2_pre1.ebuild:
+  Dropping Firefox 1.5 support as it is known to be broken
+
+  13 Dec 2005; Saleem Abdulrasool <compnerd@gentoo.org> swt-3.1-r1.ebuild,
+  swt-3.2_pre1.ebuild:
+  Fixing X11 lib dir reference as noticed by Betelgeuse
+
+  29 Nov 2005; Saleem Abdulrasool <compnerd@gentoo.org> swt-3.1-r1.ebuild:
+  Fixing multilib issues.  Minor cleanup
+
+  23 Nov 2005; Luis Medinas <metalgod@gentoo.org> swt-3.2_pre1.ebuild:
+  Fix package to be able to build with multilib-strict on amd64. Closes bug
+  #113395.
+
+  25 Oct 2005; Saleem Abdulrasool <compnerd@gentoo.org> swt-3.2_pre1.ebuild:
+  Fixing GTK+ dependency to the lower version which it builds against.
+
+  24 Oct 2005; Saleem Abdulrasool <compnerd@gentoo.org> swt-3.2_pre1.ebuild:
+  Updating CAIRO depend.  Minor ebuild cleanup.
+
+  23 Oct 2005; Saleem Abdulrasool <compnerd@gentoo.org> swt-3.2_pre1.ebuild:
+  Fixing dependency on GTK+  Resolves bug #109267
+
+  23 Oct 2005; Saleem Abdulrasool <compnerd@gentoo.org> swt-3.1-r1.ebuild:
+  Adding dep for GTK on SWT-3.1
+
+  12 Sep 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  files/swt-cairo-0.9.2-amd64.patch:
+  Fixing AMD64 patch
+
+  10 Sep 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/swt-cairo-0.9.2-amd64.patch, files/swt-cairo-0.9.2.patch,
+  swt-3.2_pre1.ebuild:
+  Fixed patch for 32-bit world.  Added a modified patch for amd64.  Resolves
+  bug #105453.
+
+*swt-3.2_pre1 (17 Aug 2005)
+
+  17 Aug 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/swt-cairo-0.9.2.patch, -files/build-3.1_pre7.xml,
+  -files/build-3.1.xml, files/build.xml, -files/cairo.patch, metadata.xml,
+  -swt-3.1.ebuild, swt-3.1-r1.ebuild, +swt-3.2_pre1.ebuild:
+  Clean up the old version cruft.  Add new version from upstream.  Support for
+  CAIRO 0.9.2
+
+*swt-3.1-r1 (06 Aug 2005)
+
+  06 Aug 2005; Saleem Abdulrasool <compnerd@gentoo.org> +swt-3.1-r1.ebuild:
+  Fix dependencies, change the way the Gecko libraries are found so as to
+  prevent future breaking when changes occur.
+
+  05 Jul 2005; Saleem Abdulrasool <compnerd@gentoo.org> swt-3.1_pre7.ebuild:
+  Backporting IBM JDK fix to _pre7
+
+  05 Jul 2005; Saleem Abdulrasool <compnerd@gentoo.org> swt-3.1.ebuild:
+  Fixing $ARCH == 'amd64'; Resolves bug #98025
+
+  05 Jul 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/build-3.1.xml:
+  Adding in missing build-3.1.xml file.
+
+  04 Jul 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  files/SWTMessages.properties, +swt-3.1.ebuild:
+  Version bump; Changing AWT_LIB_PATH handling as IBM JDk is not liking the new
+  setup.
+
+  26 May 2005; Saleem Abdulrasool <compnerd@gentoo.org> swt-3.1_pre7.ebuild:
+  Fixing the extraction for amd64
+
+*swt-3.1_pre7 (24 May 2005)
+
+  24 May 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/build-3.1_pre7.xml, +files/SWTMessages.properties,
+  +swt-3.1_pre7.ebuild:
+  New version upstream, version bumping.  Added ~ppc
+
+  24 May 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  swt-3.1_pre5-r1.ebuild:
+  Fixing incorrect slotting
+
+*swt-3.1_pre5-r1 (24 May 2005)
+
+  24 May 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  -files/build-3.0.xml, -files/build-3.1_pre2.xml,
+  -files/build-3.1_pre5.xml, +files/build.xml, +files/cairo.patch,
+  -swt-3.0.ebuild, -swt-3.0-r1.ebuild, -swt-3.0-r2.ebuild,
+  -swt-3.1_pre2.ebuild, -swt-3.1_pre5.ebuild, +swt-3.1_pre5-r1.ebuild:
+  Dropped ALL versions prior to swt-3.1_pre5.  The compiled files were corrupt!
+  Ebuild rewritten to conform to upstream build and to build all files properly.
+  Builds on x86 and amd64.
+
+*swt-3.1_pre5 (04 May 2005)
+
+  04 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +files/build-3.1_pre5.xml, swt-3.1_pre2.ebuild, +swt-3.1_pre5.ebuild:
+  new upstream version. also fixed segfault problem on amd64, the wrong
+  distfile was used for amd64. thanks to Ricardo Correia
+  <gentoo-bugs@wizy.org> for his effort.
+
+*swt-3.1_pre2 (09 Apr 2005)
+
+  09 Apr 2005; Karl Trygve Kalleberg <karltk@gentoo.org>
+  +files/build-3.1_pre2.xml, -files/build-3.1.xml, +swt-3.1_pre2.ebuild,
+  -swt-3.1.ebuild:
+  Fixed version number for swt 3.1. It should be 3.1_pre2, since it's an M2
+  drop, not the final release. This may sting our users a bit.
+
+  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org> swt-3.0.ebuild,
+  swt-3.0-r1.ebuild, swt-3.0-r2.ebuild, swt-3.1.ebuild:
+  change dep from net-www/mozilla to www-client/mozilla
+
+  19 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> swt-3.0-r1.ebuild,
+  swt-3.0-r2.ebuild, swt-3.0.ebuild, swt-3.1.ebuild:
+  fixed little typo which broke gnome support to fix #82596. added ~amd64 to
+  KEYWORDS.
+
+*swt-3.0-r2 (20 Dec 2004)
+
+  20 Dec 2004; Karl Trygve Kalleberg <karltk@gentoo.org> +swt-3.0-r2.ebuild:
+  SLOT=3 instead of SLOT=0, to be future-compatible.
+
+  20 Nov 2004; <SeJo@gentoo.org> swt-3.1.ebuild:
+  changed the use mozilla && cp library/*.cpp to if use mozilla; then blabla
+
+*swt-3.1 (16 Nov 2004)
+
+  16 Nov 2004; Karl Trygve Kalleberg <karltk@gentoo.org> +files/build-3.1.xml, +swt-3.1.ebuild:
+  New upstream version. Ebuild by Saleem A. <compnerd@compnerd.org>.
+
+*swt-3.0-r1 (31 Oct 2004)
+
+  31 Oct 2004; Karl Trygve Kalleberg <karltk@gentoo.org> swt-3.0-r1.ebuild:
+  Now install *.so in /usr/lib. Can be built without mozilla in USE. 
+  Works with 1.5. 
+
+  22 Oct 2004; Dylan Carlson <absinthe@gentoo.org> swt-3.0.ebuild:
+  Keywords ~amd64.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Aug 2004; David Holm <dholm@gentoo.org> swt-3.0.ebuild:
+  Added to ~ppc.
+
+*swt-3.0 (01 Aug 2004)
+
+  01 Aug 2004; Karl Trygve Kalleberg <karltk@gentoo.org> swt-3.0.ebuild:
+  Initial import. Ebuild submitted by Ming Zhao <zhaoming@tsinghua.org.cn>.

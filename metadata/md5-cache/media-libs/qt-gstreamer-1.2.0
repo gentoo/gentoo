@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/glib:2 >=dev-libs/boost-1.40:= >=dev-qt/qtcore-4.7.0:4 >=dev-qt/qtdeclarative-4.7.0:4 >=dev-qt/qtgui-4.7.0:4 >=dev-qt/qtopengl-4.7.0:4 media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 test? ( >=dev-qt/qttest-4.7.0:4 ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=QtGStreamer provides C++ bindings for GStreamer with a Qt-style API
+EAPI=5
+HOMEPAGE=http://gstreamer.freedesktop.org/modules/qt-gstreamer.html
+IUSE=test
+KEYWORDS=amd64 ~arm ppc ppc64 x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/glib:2 >=dev-libs/boost-1.40:= >=dev-qt/qtcore-4.7.0:4 >=dev-qt/qtdeclarative-4.7.0:4 >=dev-qt/qtgui-4.7.0:4 >=dev-qt/qtopengl-4.7.0:4 media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0
+RESTRICT=test
+SLOT=0
+SRC_URI=http://gstreamer.freedesktop.org/src/qt-gstreamer/qt-gstreamer-1.2.0.tar.xz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9dc48b88e6ebf223f400de02607e70f8

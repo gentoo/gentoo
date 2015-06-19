@@ -1,0 +1,120 @@
+# ChangeLog for media-libs/gavl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/gavl/ChangeLog,v 1.29 2015/01/26 10:09:54 ago Exp $
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> gavl-1.4.0-r1.ebuild:
+  Stable for x86, wrt bug #526044
+
+  31 Dec 2014; Agostino Sarubbo <ago@gentoo.org> gavl-1.4.0-r1.ebuild:
+  Stable for ppc, wrt bug #526044
+
+  27 Dec 2014; Agostino Sarubbo <ago@gentoo.org> gavl-1.4.0-r1.ebuild:
+  Stable for amd64, wrt bug #526044
+
+  11 Dec 2014; Jeroen Roovers <jer@gentoo.org> gavl-1.4.0-r1.ebuild:
+  Stable for HPPA (bug #526044).
+
+*gavl-1.4.0-r1 (10 Aug 2013)
+
+  10 Aug 2013; Alexis Ballier <aballier@gentoo.org> +gavl-1.4.0-r1.ebuild:
+  convert to multilib
+
+  15 May 2013; Samuli Suominen <ssuominen@gentoo.org> gavl-1.2.0.ebuild:
+  Pull in virtual/pkgconfig (at least for now) because of how
+  autotools-utils.eclass works wrt #432796. Backport change
+  AC_CONFIG_HEADERS update wrt #467736
+
+  15 May 2013; Samuli Suominen <ssuominen@gentoo.org> gavl-1.4.0.ebuild:
+  Use AC_CONFIG_HEADERS instead of AM_CONFIG_HEADER for automake-1.13
+  compability wrt #467736
+
+  25 Sep 2012; Tim Harder <radhermit@gentoo.org> -gavl-1.1.0.ebuild,
+  -gavl-1.1.0-r1.ebuild:
+  Remove old.
+
+*gavl-1.4.0 (25 Sep 2012)
+
+  25 Sep 2012; Tim Harder <radhermit@gentoo.org> +gavl-1.4.0.ebuild:
+  Version bump.
+
+  14 Jun 2012; Michael Weber <xmw@gentoo.org> gavl-1.2.0.ebuild:
+  ppc stable (bug 394291)
+
+  26 Dec 2011; Markus Meier <maekke@gentoo.org> gavl-1.2.0.ebuild:
+  x86 stable, bug #394291
+
+  15 Dec 2011; Agostino Sarubbo <ago@gentoo.org> gavl-1.2.0.ebuild:
+  Stable for AMD64, wrt bug #394291
+
+  12 Dec 2011; Jeroen Roovers <jer@gentoo.org> gavl-1.2.0.ebuild:
+  Stable for HPPA (bug #394291).
+
+  10 Dec 2011; Samuli Suominen <ssuominen@gentoo.org> gavl-1.2.0.ebuild:
+  Use autotools-utils.eclass in order to drop libtool archive(s).
+
+  26 Jun 2011; Brent Baude <ranger@gentoo.org> gavl-1.1.0.ebuild:
+  Marking gavl-1.1.0 ppc for bug 365273
+
+  16 Jun 2011; Jeroen Roovers <jer@gentoo.org> gavl-1.1.0-r1.ebuild:
+  Stable for HPPA (bug #365273).
+
+*gavl-1.2.0 (04 May 2011)
+
+  04 May 2011; Alexis Ballier <aballier@gentoo.org> +gavl-1.2.0.ebuild:
+  version bump
+
+  25 Nov 2010; Jeroen Roovers <jer@gentoo.org> gavl-1.1.0-r1.ebuild:
+  Marked ~hppa (bug #340269).
+
+*gavl-1.1.0-r1 (25 Nov 2010)
+
+  25 Nov 2010; Jeroen Roovers <jer@gentoo.org> +gavl-1.1.0-r1.ebuild:
+  Respect LDFLAGS (bug #338174).
+
+  06 Jan 2010; Joseph Jezak <josejx@gentoo.org> gavl-1.1.0.ebuild:
+  Marked ~ppc/~ppc64.
+
+  11 Sep 2009; Markus Meier <maekke@gentoo.org> gavl-1.1.0.ebuild:
+  amd64/x86 stable, bug #283899
+
+*gavl-1.1.0 (09 Jun 2009)
+
+  09 Jun 2009; Samuli Suominen <ssuominen@gentoo.org> +gavl-1.1.0.ebuild:
+  Version bump wrt #263292, thanks to Marcin Deranek for reporting.
+
+*gavl-1.0.1 (25 Nov 2008)
+
+  25 Nov 2008; Samuli Suominen <ssuominen@gentoo.org>
+  +files/gavl-1.0.1-cflags.patch, +gavl-1.0.1.ebuild:
+  Version bump for bug 238810, thanks to yngwin for reporting.
+
+  24 Nov 2008; Samuli Suominen <ssuominen@gentoo.org> -gavl-0.2.7-r2.ebuild,
+  gavl-1.0.0.ebuild:
+  Remove unused version and keyword for ~x86.
+
+*gavl-1.0.0 (18 May 2008)
+
+  18 May 2008; Samuli Suominen <ssuominen@gentoo.org> +gavl-1.0.0.ebuild:
+  Version bump.
+
+*gavl-0.2.7-r2 (26 Jan 2008)
+
+  26 Jan 2008; Samuli Suominen <ssuominen@gentoo.org>
+  files/gavl-0.2.7-cflags-and-includedir.patch, -gavl-0.2.7-r1.ebuild,
+  +gavl-0.2.7-r2.ebuild:
+  Fix gavlconfig.h include location for real, should be in /usr/include not
+  /usr/include/gavl because /usr/include/gavl/gavl.h is including
+  <gavlconfig.h> and used by gmerlin-avdecoder.
+
+*gavl-0.2.7-r1 (25 Jan 2008)
+
+  25 Jan 2008; Samuli Suominen <ssuominen@gentoo.org>
+  +files/gavl-0.2.7-cflags-and-includedir.patch, -gavl-0.2.7.ebuild,
+  +gavl-0.2.7-r1.ebuild:
+  Fix gavlconfig.h include location.
+
+*gavl-0.2.7 (21 Jan 2008)
+
+  21 Jan 2008; Samuli Suominen <ssuominen@gentoo.org> +gavl-0.2.7.ebuild:
+  Initial commit wrt #124503, thanks to Gorazd Bizjak for reporting and
+  Kenneth Prugh for writing the ebuild.

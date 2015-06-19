@@ -1,0 +1,34 @@
+# ChangeLog for games-arcade/betna
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/betna/ChangeLog,v 1.10 2015/01/03 14:40:57 tupone Exp $
+
+  03 Jan 2015; Tupone Alfredo <tupone@gentoo.org> betna-0.9.7.ebuild:
+  EAPI 4
+
+  08 Sep 2010; Michael Sterrett <mr_bones_@gentoo.org> betna-0.9.7.ebuild:
+  honor LDFLAGS (bug #336452); honor CXX; EAPI=2; tidy
+
+  09 Apr 2007; Peter Weller <welp@gentoo.org> betna-0.9.7.ebuild:
+  Keyworded ~x86-fbsd wrt bug 173405
+
+  13 Mar 2007; Tristan Heaven <nyhm@gentoo.org> betna-0.9.7.ebuild:
+  Install menu entry, bug #159746
+
+  05 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> betna-0.9.7.ebuild:
+  Removed sed-4 from *DEPEND.
+
+  20 Sep 2006; <blubb@gentoo.org> betna-0.9.7.ebuild:
+  stable on amd64
+
+  17 Jan 2005; Jason Wever <weeve@gentoo.org> betna-0.9.7.ebuild:
+  Added ~sparc keyword.
+
+  03 Jun 2004; David Holm <dholm@gentoo.org> betna-0.9.7.ebuild:
+  Added to ~ppc.
+
+*betna-0.9.7 (01 Jun 2004)
+
+  01 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> betna-0.9.7.ebuild,
+  metadata.xml:
+  initial commit - ebuild from Alexandru Toma via bug #52685
+

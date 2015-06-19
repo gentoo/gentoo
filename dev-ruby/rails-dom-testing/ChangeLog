@@ -1,0 +1,27 @@
+# ChangeLog for dev-ruby/rails-dom-testing
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rails-dom-testing/ChangeLog,v 1.6 2015/06/07 19:10:51 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*rails-dom-testing-1.0.6 (19 Mar 2015)
+
+  19 Mar 2015; Hans de Graaff <graaff@gentoo.org>
+  +rails-dom-testing-1.0.6.ebuild:
+  Version bump.
+
+  08 Jan 2015; Markus Meier <maekke@gentoo.org> rails-dom-testing-1.0.5.ebuild:
+  add ~arm, bug #534186
+
+  01 Jan 2015; Agostino Sarubbo <ago@gentoo.org> rails-dom-testing-1.0.5.ebuild:
+  Stable for ~ppc64, wrt bug #534186
+
+  01 Jan 2015; Agostino Sarubbo <ago@gentoo.org> rails-dom-testing-1.0.5.ebuild:
+  Stable for ~ppc, wrt bug #534186
+
+*rails-dom-testing-1.0.5 (01 Jan 2015)
+
+  01 Jan 2015; Hans de Graaff <graaff@gentoo.org>
+  +rails-dom-testing-1.0.5.ebuild, +metadata.xml:
+  Initial import. New dependency for Rails 4.2.

@@ -1,0 +1,272 @@
+# ChangeLog for x11-drivers/xf86-video-chips
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-chips/ChangeLog,v 1.64 2013/10/08 05:05:49 ago Exp $
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-chips-1.2.5-r1.ebuild:
+  Stable for x86, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-chips-1.2.5-r1.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-chips-1.2.5-r1.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-chips-1.2.5-r1.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*xf86-video-chips-1.2.5-r1 (11 Mar 2013)
+
+  11 Mar 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/xf86-video-chips-1.2.5-remove-mibstore_h.patch,
+  +xf86-video-chips-1.2.5-r1.ebuild:
+  Fix building against xorg-server-1.14, bug #461236.
+
+  28 Dec 2012; Agostino Sarubbo <ago@gentoo.org> xf86-video-chips-1.2.5.ebuild:
+  Stable for ia64, wrt bug #440872
+
+  28 Nov 2012; Brent Baude <ranger@gentoo.org> xf86-video-chips-1.2.5.ebuild:
+  Marking xf86-video-chips-1.2.5 ppc stable for bug 440872
+
+  18 Nov 2012; Agostino Sarubbo <ago@gentoo.org> xf86-video-chips-1.2.5.ebuild:
+  Stable for x86, wrt bug #440872
+
+  16 Nov 2012; Agostino Sarubbo <ago@gentoo.org> xf86-video-chips-1.2.5.ebuild:
+  Stable for amd64, wrt bug #440872
+
+  17 Sep 2012; Alexis Ballier <aballier@gentoo.org>
+  xf86-video-chips-1.2.5.ebuild:
+  keyword ~amd64-fbsd, compile tested only.
+
+*xf86-video-chips-1.2.5 (21 Jul 2012)
+
+  21 Jul 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-chips-1.2.5.ebuild:
+  Version bump.
+
+  18 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86-video-chips-1.2.3.ebuild:
+  old
+
+  16 Apr 2011; Raúl Porcel <armin76@gentoo.org> xf86-video-chips-1.2.4.ebuild:
+  ia64 stable wrt #359059
+
+  26 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  xf86-video-chips-1.2.4.ebuild:
+  x86 stable, bug 359059
+
+  21 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  xf86-video-chips-1.2.4.ebuild:
+  Stable on amd64 wrt bug #359059
+
+  15 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  xf86-video-chips-1.2.4.ebuild:
+  ppc stable wrt #359059
+
+  28 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  xf86-video-chips-1.2.4.ebuild:
+  Example ebuild cleanup how drivers should look nowdays, rest ~ ones should be
+  updated right away.
+
+*xf86-video-chips-1.2.4 (28 Feb 2011)
+
+  28 Feb 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-chips-1.2.4.ebuild:
+  Version bump.
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  xf86-video-chips-1.2.3.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> xf86-video-chips-1.2.3.ebuild:
+  ia64 stable wrt #344827
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  xf86-video-chips-1.2.3.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org>
+  xf86-video-chips-1.2.3.ebuild:
+  amd64 stable wrt #344827
+
+*xf86-video-chips-1.2.3 (24 Jul 2010)
+
+  24 Jul 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +xf86-video-chips-1.2.3.ebuild, -files/chips.xinf:
+  Version bump.
+
+  23 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86-video-chips-1.2.1.ebuild:
+  rm
+
+  27 Dec 2009; Joseph Jezak <josejx@gentoo.org>
+  xf86-video-chips-1.2.2.ebuild:
+  Marked ppc stable for bug #294958.
+
+  15 Dec 2009; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-chips-1.2.2.ebuild:
+  ia64 stable
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  xf86-video-chips-1.2.2.ebuild:
+  x86 stable, bug 294958
+
+  10 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  xf86-video-chips-1.2.2.ebuild:
+  amd64 stable wrt #294958
+
+  11 Oct 2009; nixnut <nixnut@gentoo.org> ChangeLog:
+  ppc stable #282290
+
+*xf86-video-chips-1.2.2 (22 Sep 2009)
+
+  22 Sep 2009; Rémi Cardona <remi@gentoo.org>
+  xf86-video-chips-1.2.1.ebuild, +xf86-video-chips-1.2.2.ebuild:
+  bump to 1.2.2, add missing IUSE
+
+  22 Sep 2009; Rémi Cardona <remi@gentoo.org>
+  -xf86-video-chips-1.1.1.ebuild, -xf86-video-chips-1.2.0.ebuild:
+  drop old ebuilds
+
+  15 Apr 2009; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-chips-1.2.1.ebuild:
+  ia64 stable wrt #251832
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org>
+  xf86-video-chips-1.2.1.ebuild:
+  x86 stable, bug #251832
+
+  05 Apr 2009; Olivier Crête <tester@gentoo.org>
+  xf86-video-chips-1.2.1.ebuild:
+  Stable on amd64, bug #251832
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking xf86-video-chips-1.2.1 ppc stable for bug 251832
+
+  14 Mar 2009; Raúl Porcel <armin76@gentoo.org>
+  xf86-video-chips-1.1.1.ebuild, xf86-video-chips-1.2.0.ebuild,
+  xf86-video-chips-1.2.1.ebuild:
+  Drop ~arm/~sh, its not available there
+
+*xf86-video-chips-1.2.1 (13 Jan 2009)
+
+  13 Jan 2009; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-video-chips-1.2.1.ebuild:
+  Version bump.
+
+*xf86-video-chips-1.2.0 (10 Jun 2008)
+
+  10 Jun 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-video-chips-1.2.0.ebuild:
+  Bump to latest. Should all be compatible with xorg-server-1.5.
+
+  24 Feb 2008; Donnie Berkholz <dberkholz@gentoo.org>; ChangeLog:
+  Update my email.
+
+  24 Jan 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-video-chips-1.0.1.3.ebuild:
+  Stop supporting Xorg 7.0.
+
+  13 Oct 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  xf86-video-chips-1.1.1.ebuild:
+  AMD64/x86 stable for bug #144549 (X7.1).
+
+  11 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-chips-1.0.1.3.ebuild, xf86-video-chips-1.1.1.ebuild:
+  Update description to be less generic.
+
+  05 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>; +files/chips.xinf:
+  Add hwdata files for system-config-display.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  xf86-video-chips-1.1.1.ebuild:
+  Mark 1.1.1 stable on ia64
+
+  01 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-chips-1.1.1.ebuild:
+  stable on ppc arm sh
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  xf86-video-chips-1.0.1.3.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-chips-1.0.1.3.ebuild:
+  x86 stable.
+
+  05 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xf86-video-chips-1.1.1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  16 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  xf86-video-chips-1.0.1.3.ebuild:
+  Add ~x86-fbsd keyword.
+
+*xf86-video-chips-1.1.1 (14 Apr 2006)
+
+  14 Apr 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-chips-1.1.1.ebuild:
+  Bump for 7.1 RC1.
+
+  05 Feb 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  xf86-video-chips-1.0.1.3.ebuild:
+  Keyword needed drivers ~ppc.
+
+  02 Feb 2006; Luis Medinas <metalgod@gentoo.org>
+  xf86-video-chips-1.0.1.3.ebuild:
+  Added ~amd64 keyword.
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xf86-video-chips-1.0.1.1.ebuild, -xf86-video-chips-1.0.1.2.ebuild:
+  Pull old versions.
+
+*xf86-video-chips-1.0.1.3 (23 Dec 2005)
+
+  23 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-chips-1.0.1.3.ebuild:
+  Bump for 7.0.
+
+*xf86-video-chips-1.0.1.2 (18 Dec 2005)
+
+  18 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-chips-1.0.1.2.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  files/digest-xf86-video-chips-1.0.1.1, Manifest:
+  Update digest to match patch introduced by x-modular.eclass changes.
+
+  09 Dec 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  -xf86-video-chips-1.0.0.ebuild, -xf86-video-chips-1.0.0.1.ebuild,
+  -xf86-video-chips-1.0.1.ebuild:
+  Pull old versions.
+
+*xf86-video-chips-1.0.1.1 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-chips-1.0.1.1.ebuild:
+  Bump for 7.0RC3.
+
+*xf86-video-chips-1.0.1 (11 Nov 2005)
+
+  11 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-chips-1.0.1.ebuild:
+  Bump for 7.0RC2.
+
+*xf86-video-chips-1.0.0.1 (20 Oct 2005)
+
+  20 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-chips-1.0.0.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <dberkholz@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+*xf86-video-chips-1.0.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +xf86-video-chips-1.0.0.ebuild:
+  Initial commit for modular X.

@@ -1,0 +1,56 @@
+# ChangeLog for dev-php/PEAR-HTTP_Session2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-HTTP_Session2/ChangeLog,v 1.8 2014/11/06 17:29:49 grknight Exp $
+
+*PEAR-HTTP_Session2-0.7.3-r1 (06 Nov 2014)
+
+  06 Nov 2014; Brian Evans <grknight@gentoo.org>
+  +PEAR-HTTP_Session2-0.7.3-r1.ebuild, -PEAR-HTTP_Session2-0.7.3.ebuild:
+  EAPI revbump
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-HTTP_Session2-0.7.3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  18 Jan 2012; Matti Bickel <mabi@gentoo.org> -PEAR-HTTP_Session2-0.6.1.ebuild,
+  PEAR-HTTP_Session2-0.7.3.ebuild:
+  fix description & remove missed old package
+
+*PEAR-HTTP_Session2-0.7.3 (18 Jan 2012)
+
+  18 Jan 2012; Matti Bickel <mabi@gentoo.org> +PEAR-HTTP_Session2-0.7.3.ebuild,
+  -PEAR-HTTP_Session2-0.7.0.ebuild, -PEAR-HTTP_Session2-0.7.1.ebuild,
+  -PEAR-HTTP_Session2-0.7.2.ebuild:
+  version bump & remove old
+
+*PEAR-HTTP_Session2-0.7.2 (22 Aug 2009)
+
+  22 Aug 2009; Steve Dibb <beandog@gentoo.org>
+  +PEAR-HTTP_Session2-0.7.2.ebuild:
+  Version bump
+
+*PEAR-HTTP_Session2-0.7.1 (26 Feb 2008)
+
+  26 Feb 2008; Raúl Porcel <armin76@gentoo.org>
+  +PEAR-HTTP_Session2-0.7.1.ebuild:
+  Version bump, import from the php overlay
+
+  20 Feb 2008; Jakub Moc <jakub@gentoo.org>
+  +PEAR-HTTP_Session2-0.7.1.ebuild:
+  Version bump
+
+*PEAR-HTTP_Session2-0.7.0 (11 Feb 2008)
+
+  11 Feb 2008; Raúl Porcel <armin76@gentoo.org>
+  +PEAR-HTTP_Session2-0.7.0.ebuild:
+  Version bump, from the php overlay
+
+*PEAR-HTTP_Session2-0.6.1 (24 Dec 2007)
+
+  24 Dec 2007; Raúl Porcel <armin76@gentoo.org> +metadata.xml,
+  +PEAR-HTTP_Session2-0.6.1.ebuild:
+  New ebuild, from the php-overlay
+
+  22 Dec 2007; Jakub Moc <jakub@gentoo.org>
+  +PEAR-HTTP_Session2-0.6.1.ebuild:
+  New ebuild

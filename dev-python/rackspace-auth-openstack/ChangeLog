@@ -1,0 +1,32 @@
+# ChangeLog for dev-python/rackspace-auth-openstack
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/rackspace-auth-openstack/ChangeLog,v 1.6 2015/06/07 15:49:44 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org>
+  rackspace-auth-openstack-1.0.ebuild, rackspace-auth-openstack-1.3.ebuild,
+  rackspace-auth-openstack-9999.ebuild:
+  Drop old Python implementations
+
+*rackspace-auth-openstack-1.3 (12 May 2014)
+
+  12 May 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +rackspace-auth-openstack-1.3.ebuild:
+  upgrade!
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org>
+  rackspace-auth-openstack-1.0.ebuild, rackspace-auth-openstack-9999.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*rackspace-auth-openstack-9999 (04 Mar 2013)
+*rackspace-auth-openstack-1.0 (04 Mar 2013)
+
+  04 Mar 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +rackspace-auth-openstack-1.0.ebuild, +rackspace-auth-openstack-9999.ebuild,
+  +metadata.xml:
+  initial add of rackspace-auth-openstack

@@ -1,0 +1,45 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/obfsproxy/files/obfsproxy.confd,v 1.1 2013/01/19 16:00:49 blueness Exp $
+
+# protocols ofbsproxy will obfuscate = obfs2 | dummy
+PROTOCOL="obfs2"
+
+#options for PROTOCOLE="dummy"
+# dummy <mode> <listen_address> [<target_address>]
+# mode ~ server|client|socks
+# listen_address, target_address ~ host:port
+# target_address is required for server and client mode, and forbidden for socks mode.
+# Examples:
+#	obfsproxy dummy socks 127.0.0.1:5000
+#	obfsproxy dummy client 127.0.0.1:5000 192.168.1.99:11253
+#	obfsproxy dummy server 192.168.1.99:11253 127.0.0.1:9005
+
+#MODE="socks"
+#LISTEN="127.0.0.1:5000"
+#TARGET="127.0.0.1:9005"
+
+
+#options for PROTOCOL="obfs2"
+#	obfs2 [obfs2_args] obfs2_opts
+#	'obfs2_opts':
+#		mode ~ server|client|socks
+#		listen address ~ host:port
+#	'obfs2_args':
+#		Destination Address ~ --dest=host:port
+#		Shared Secret ~ --shared-secret=<secret>
+#	Example:
+#	obfsproxy obfs2 --dest=127.0.0.1:666 --shared-secret=himitsu server 127.0.0.1:1026
+
+MODE="server"
+DESTINATION="127.0.0.1:666"
+SECRET="changeme"
+LISTEN="127.0.0.1:1026"
+
+#Logging
+# --log-file=<file> ~ set logfile
+# --log-min-severity=warn|notice|info|debug ~ set minimum logging severity (default: notice)
+# --no-log ~ disable logging
+# --no-safe-logging ~ disable safe (scrubbed address) logging
+
+LOGGING="--log-file=/var/log/obfsproxy.log --log-min-severity=warn"

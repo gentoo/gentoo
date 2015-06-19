@@ -1,0 +1,40 @@
+From 0e93784410db711eef67fa2a56b0ec4bc4b5e08d Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Sun, 15 Feb 2015 18:43:49 +0100
+Subject: [PATCH] Add a note about ISO image magic
+
+And the fact that we cannot implement it here.
+---
+ HACKING                | 3 +++
+ freedesktop.org.xml.in | 1 +
+ 2 files changed, 4 insertions(+)
+
+diff --git a/HACKING b/HACKING
+index 260025b..370fb68 100644
+--- a/HACKING
++++ b/HACKING
+@@ -10,6 +10,9 @@ A few ground rules for people interested in adding new mime-types.
+ * Mime-types/file formats proprietary to one application should only
+   be added to a private .xml file and be bundled with the application
+   itself
++* Magic offset must be as small as possible. For example, the worst case
++  scenario for ISO images is 32k inside the file. This is too big for a sniff
++  buffer, especially on remote locations. Avoid those.
+ * No commits should be done that break the test suite, or the test suite
+   test in question should be amended, and reason for the changes clearly
+   documented in the commit message
+diff --git a/freedesktop.org.xml.in b/freedesktop.org.xml.in
+index 7321d40..093c260 100644
+--- a/freedesktop.org.xml.in
++++ b/freedesktop.org.xml.in
+@@ -1514,6 +1514,7 @@ command to generate the output files.
+     <_comment>raw CD image</_comment>
+     <sub-class-of type="application/x-raw-disk-image"/>
+     <alias type="application/x-iso9660-image"/>
++    <!-- No magic, see https://bugs.freedesktop.org/show_bug.cgi?id=10049 -->
+     <glob pattern="*.iso"/>
+     <glob pattern="*.iso9660"/>
+   </mime-type>
+-- 
+2.4.1
+

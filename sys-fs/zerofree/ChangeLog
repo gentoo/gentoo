@@ -1,0 +1,26 @@
+# ChangeLog for sys-fs/zerofree
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/zerofree/ChangeLog,v 1.5 2014/08/10 20:20:31 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> zerofree-1.0.1.ebuild,
+  zerofree-1.0.3.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*zerofree-1.0.3 (22 Jul 2013)
+
+  22 Jul 2013; Joshua Kinard <kumba@gentoo.org> +zerofree-1.0.3.ebuild:
+  Update to 1.0.3 from upstream.
+
+  06 Mar 2013; Steev Klimaszewski <steev@gentoo.org> zerofree-1.0.1.ebuild:
+  Add ~arm keyword, tested on cortex a15,a9 and a8 machines.
+
+  19 Apr 2012; Robin H. Johnson <robbat2@gentoo.org> zerofree-1.0.1.ebuild:
+  Fix linking with as-needed.
+
+*zerofree-1.0.1 (11 Mar 2012)
+
+  11 Mar 2012; Joshua Kinard <kumba@gentoo.org> +zerofree-1.0.1.ebuild,
+  +metadata.xml:
+  Initial import of zerofree, a small utility to zero-out the freespace on a
+  filesystem. Perfect for guests running on a virtual machine prior to
+  compacting their disk images.

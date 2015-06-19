@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>graphics</herd>
+  <upstream>
+    <maintainer status="active">
+      <email>glennrp@gmail.com</email>
+      <name>Glenn Randers-Pehrson</name>
+    </maintainer>
+    <bugs-to>http://sourceforge.net/tracker/?group_id=1689</bugs-to>
+    <remote-id type="sourceforge">pmt</remote-id>
+  </upstream>
+  <use>
+    <flag name="system-libs">Use libpng and libz provided by system</flag>
+  </use>
+</pkgmetadata>

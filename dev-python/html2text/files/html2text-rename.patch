@@ -1,0 +1,15 @@
+Naming conflict with app-text/html2text, bug 421647.
+
+diff --git a/setup.py b/setup.py
+index dd3d9bc..cd28b49 100644
+--- a/setup.py
++++ b/setup.py
+@@ -26,7 +26,7 @@ setup(
+      ],
+     entry_points="""
+         [console_scripts]
+-        html2text=html2text:main
++        pyhtml2text=html2text:main
+     """,
+    license='GNU GPL 3',
+    packages=find_packages(),

@@ -1,0 +1,46 @@
+From 80c9532e39fac397960fc59eb407e596d9e8d2e4 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Mon, 2 Jun 2014 22:41:14 -0400
+Subject: [PATCH] build: Explicitly link libgladeui with libm
+
+Fixes underlinking failure with ld.gold.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=724104
+---
+ configure.ac        | 6 ++++++
+ gladeui/Makefile.am | 2 +-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index c86e947..7bf65e5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -133,6 +133,12 @@ AC_TRY_LINK([#include <stdarg.h>], [va_list ap1, ap2; va_copy(ap1, ap2);],
+         ])
+ 
+ dnl ================================================================
++dnl libm
++dnl ================================================================
++AC_CHECK_LIBM
++AC_SUBST(LIBM)
++
++dnl ================================================================
+ dnl Check for gtk-doc
+ dnl ================================================================
+ GTK_DOC_CHECK([1.13],[--flavour no-tmpl])
+diff --git a/gladeui/Makefile.am b/gladeui/Makefile.am
+index c63b6a3..77af09c 100644
+--- a/gladeui/Makefile.am
++++ b/gladeui/Makefile.am
+@@ -145,7 +145,7 @@ libgladeui_2_la_CFLAGS =    \
+ 	$(AM_CFLAGS)
+ 
+ libgladeui_2_la_LDFLAGS = -version-info $(GLADE_CURRENT):$(GLADE_REVISION):$(GLADE_AGE) $(AM_LDFLAGS)
+-libgladeui_2_la_LIBADD = $(GTK_LIBS) $(GTK_MAC_LIBS)
++libgladeui_2_la_LIBADD = $(GTK_LIBS) $(GTK_MAC_LIBS) $(LIBM)
+ 
+ libgladeuiincludedir=$(includedir)/libgladeui-2.0/gladeui
+ libgladeuiinclude_HEADERS = \
+-- 
+2.0.0
+

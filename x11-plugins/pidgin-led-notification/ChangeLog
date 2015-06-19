@@ -1,0 +1,31 @@
+# ChangeLog for x11-plugins/pidgin-led-notification
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/pidgin-led-notification/ChangeLog,v 1.6 2013/02/08 17:11:08 xmw Exp $
+
+  08 Feb 2013; Michael Weber <xmw@gentoo.org>
+  pidgin-led-notification-0.1.ebuild:
+  adding keywords (bug 456152)
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  pidgin-led-notification-0.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  14 Aug 2011; Michael Weber <xmw@gentoo.org>
+  pidgin-led-notification-0.1.ebuild:
+  Added use dep net-im/pidgin[gtk], thanks to Piotr Szymaniak (bug 373045)
+
+  02 May 2011; Mark Loeser <halcy0n@gentoo.org>
+  pidgin-led-notification-0.1.ebuild:
+  insinto already has EPREFIX prepended
+
+  07 Nov 2010; Michael Weber <xmw@gentoo.org>
+  pidgin-led-notification-0.1.ebuild:
+  Updating DESCRIPTION
+
+*pidgin-led-notification-0.1 (07 Nov 2010)
+
+  07 Nov 2010; Michael Weber <xmw@gentoo.org>
+  +pidgin-led-notification-0.1.ebuild,
+  +files/pidgin-led-notification-0.1-hardware.patch, +metadata.xml:
+  Initial import with patch to support more led hardware
+

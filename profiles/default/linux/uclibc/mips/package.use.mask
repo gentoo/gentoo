@@ -1,0 +1,23 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/uclibc/mips/package.use.mask,v 1.4 2014/12/24 17:29:53 tamiko Exp $
+
+# Matthias Maier <tamiko@gentoo.org> (24 Dec 2014)
+# sys-devel/clang is not keyworded on mips.
+app-doc/doxygen clang
+
+# Matthias Maier <tamiko@gentoo.org> (17 Oct 2014)
+# virtual/jre is not keyworded on mips.
+net-print/cups java
+
+# Davide Pesavento <pesa@gentoo.org> (17 Sep 2014)
+# dev-qt/qtdeclarative:4 and net-misc/{connman,networkmanager}
+# are not keyworded on mips.
+dev-qt/designer:4 declarative
+dev-qt/qtbearer:4 connman networkmanager
+
+# Vicente Olivert Riera <vincent@gentoo.org> (11 Sep 2014)
+# www-client/midori[jit] depends on net-libs/webkit-gtk[jit]
+# which is masked on base/package.use.mask and not unmasked
+# on arch/mips/package.use.mask by "net-libs/webkit-gtk -jit"
+www-client/midori jit

@@ -1,0 +1,25 @@
+# ChangeLog for x11-plugins/pidgin-gpg
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/pidgin-gpg/ChangeLog,v 1.5 2015/05/29 19:04:34 mrueg Exp $
+
+*pidgin-gpg-0.9.3 (29 May 2015)
+
+  29 May 2015; Manuel Rüger <mrueg@gentoo.org> +pidgin-gpg-0.9.3.ebuild:
+  Version bump. Proxy commit for Azamat H. Hackimov. Thanks to Daniel
+  Kenzelmann. Fixes bug #537118.
+
+  08 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> pidgin-gpg-0.9.ebuild:
+  Remove unneeded libtool files
+
+  08 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> pidgin-gpg-0.9.ebuild:
+  Fix SRC_URI
+
+  08 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> pidgin-gpg-0.9.ebuild:
+  Add missing pkgconfig dependency
+
+*pidgin-gpg-0.9 (08 Oct 2012)
+
+  08 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> +pidgin-gpg-0.9.ebuild,
+  +metadata.xml:
+  Initial commit wrt bug #437544. Ebuild is from rion overlay and will be
+  maintained by Azamat H. Hackimov through proxy maintainers

@@ -1,0 +1,73 @@
+# ChangeLog for media-video/vcdgear
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/vcdgear/ChangeLog,v 1.24 2014/04/17 15:47:59 ulm Exp $
+
+  17 Apr 2014; Ulrich Müller <ulm@gentoo.org> vcdgear-1.76-r2.ebuild:
+  Fix LICENSE, add mirror and bindist restrictions, bug 446220.
+
+  24 Sep 2012; Mike Frysinger <vapier@gentoo.org> vcdgear-1.76-r2.ebuild:
+  QA_DT_HASH (old/deprecated) -> QA_FLAGS_IGNORED (new hotness).
+
+  18 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  vcdgear-1.76-r2.ebuild:
+  amd64 stable wrt #277513
+
+  15 Jul 2009; Christian Faulhammer <fauli@gentoo.org>
+  vcdgear-1.76-r2.ebuild:
+  stable x86, bug 277513
+
+  12 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  vcdgear-1.76-r2.ebuild:
+  QA_DT_HASH to avoid printing QA message of ignored LDFLAGS since this is a
+  binary package.
+
+  12 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> vcdgear-1.6e.ebuild,
+  vcdgear-1.76-r2.ebuild:
+  Missing virtual/libstdc++:3.3 RDEPEND since this is a binary package wrt
+  #276800.
+
+  12 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  vcdgear-1.76-r2.ebuild:
+  Avoid reporting pre-stripped file, prebuilt binary.
+
+  27 Nov 2007; Matthias Schwarzott <zzam@gentoo.org> vcdgear-1.6e.ebuild:
+  Fixed quoting.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*vcdgear-1.76-r2 (17 Apr 2006)
+
+  17 Apr 2006; Marcin Kryczek <mkay@gentoo.org> -vcdgear-1.76-r1.ebuild,
+  +vcdgear-1.76-r2.ebuild:
+  Changing dobin into dodir in line 24
+
+*vcdgear-1.76-r1 (16 Oct 2005)
+
+  16 Oct 2005; Mike Frysinger <vapier@gentoo.org> -vcdgear-1.76.ebuild,
+  +vcdgear-1.76-r1.ebuild:
+  Dont use wrapper script cause that breaks vcdgear usage.
+
+*vcdgear-1.76 (25 Sep 2005)
+
+  25 Sep 2005; Mike Frysinger <vapier@gentoo.org> +vcdgear-1.76.ebuild:
+  Version bump #77250.
+
+  06 Aug 2005; Danny van Dyk <kugelfang@gentoo.org> vcdgear-1.6e.ebuild:
+  Marked stable on amd64.
+
+  13 Aug 2004; Chris White <chriswhite@gentoo.org> +metadata.xml:
+  Adding missing metadata.xml.
+
+  03 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> vcdgear-1.6e.ebuild:
+  Marked ~amd64.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> vcdgear-1.6e.ebuild:
+  virtual/glibc -> virtual/libc
+
+*vcdgear-1.6e (23 Oct 2002)
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+  23 Oct 2002; Mike Frysinger <vapier@gentoo.org> :
+  Initial import. Ebuild submitted by me.

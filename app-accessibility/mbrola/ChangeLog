@@ -1,0 +1,245 @@
+# ChangeLog for app-accessibility/mbrola
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/mbrola/ChangeLog,v 1.60 2015/03/29 03:49:33 mrueg Exp $
+
+  29 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -mbrola-3.0.1h-r5.ebuild:
+  Remove old.
+
+  06 Aug 2014; Patrick Lauer <patrick@gentoo.org> mbrola-3.0.1h-r5.ebuild,
+  mbrola-3.0.1h-r6.ebuild:
+  Make description more repoman-happy
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> mbrola-3.0.1h-r6.ebuild:
+  Marking mbrola-3.0.1h-r6 ppc64 for bug 391419
+
+  14 Feb 2012; Brent Baude <ranger@gentoo.org> mbrola-3.0.1h-r6.ebuild:
+  Marking mbrola-3.0.1h-r6 ppc for bug 391419
+
+  14 Dec 2011; Agostino Sarubbo <ago@gentoo.org> mbrola-3.0.1h-r6.ebuild:
+  Stable for AMD64, wrt bug #391419
+
+  04 Dec 2011; Raúl Porcel <armin76@gentoo.org> mbrola-3.0.1h-r6.ebuild:
+  alpha/ia64/sparc stable wrt #391419
+
+  28 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> mbrola-3.0.1h-r6.ebuild:
+  x86 stable wrt bug #391419
+
+  23 Nov 2011; Jeroen Roovers <jer@gentoo.org> mbrola-3.0.1h-r6.ebuild:
+  Stable for HPPA (bug #391419).
+
+  13 Sep 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #353756
+
+*mbrola-3.0.1h-r6 (23 Mar 2011)
+
+  23 Mar 2011; Christopher Brannon <cbrannon@gentoo.org>
+  +mbrola-3.0.1h-r6.ebuild, metadata.xml:
+  Change the location in which mbrola is installed.
+  We used to install in /opt/mbrola. We now install under
+  /usr/share/mbrola. Fixes bug #346869
+
+  Add the mbrola binary to QA_PREBUILT. This is the correct fix,
+  because the binary is closed-source. Fixes bug #340319
+
+  Add myself as maintainer to metadata.xml.
+
+  08 Jan 2009; William Hubbs <williamh@gentoo.org> -mbrola-3.0.1h-r4.ebuild:
+  Removed old version.
+
+  07 Jan 2009; Brent Baude <ranger@gentoo.org> mbrola-3.0.1h-r5.ebuild:
+  stable ppc64, bug 236403
+
+  21 Dec 2008; William Hubbs <williamh@gentoo.org> mbrola-3.0.1h-r5.ebuild:
+  Added the Sweedish voices for #240574, thanks to wslnptc@gmail.com.
+
+  21 Dec 2008; William Hubbs <williamh@gentoo.org> mbrola-3.0.1h-r5.ebuild:
+  Added restrict=strip for #251851; thanks to flameeyes@gentoo.org.
+
+  17 Sep 2008; Jeroen Roovers <jer@gentoo.org> mbrola-3.0.1h-r5.ebuild:
+  Stable for HPPA (bug #236403).
+
+  15 Sep 2008; Tobias Klausmann <klausman@gentoo.org>
+  mbrola-3.0.1h-r5.ebuild:
+  Stable on alpha, bug #236403
+
+  11 Sep 2008; Deedra Waters <dmwaters@gentoo.org> mbrola-3.0.1h-r5.ebuild:
+  Stable on amd64.
+
+  06 Sep 2008; nixnut <nixnut@gentoo.org> mbrola-3.0.1h-r5.ebuild:
+  Stable on ppc wrt bug 236403
+
+  03 Sep 2008; Raúl Porcel <armin76@gentoo.org> mbrola-3.0.1h-r5.ebuild:
+  ia64/x86 stable wrt #236403
+
+  02 Sep 2008; Ferris McCormick <fmccor@gentoo.org> mbrola-3.0.1h-r5.ebuild:
+  Sparc stable, Bug #236403.
+
+  21 May 2008; nixnut <nixnut@gentoo.org> mbrola-3.0.1h-r5.ebuild:
+  Added ~ppc wrt bug 222787
+
+*mbrola-3.0.1h-r5 (21 May 2008)
+
+  21 May 2008; William Hubbs <williamh@gentoo.org> +mbrola-3.0.1h-r5.ebuild:
+  Rev bump for bug #222787. Added Latin and Polish voices for bug #197837.
+
+  27 Jan 2008; William Hubbs <williamh@gentoo.org> -mbrola-3.0.1h-r1.ebuild,
+  -mbrola-3.0.1h-r3.ebuild:
+  Removed old versions.
+
+  06 Jul 2007; Roy Marples <uberlord@gentoo.org> mbrola-3.0.1h-r4.ebuild:
+  Keyworded ~x86-fbsd
+
+  21 Feb 2007; <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  23 Jan 2007; Marius Mauch <genone@gentoo.org> mbrola-3.0.1h-r1.ebuild,
+  mbrola-3.0.1h-r3.ebuild, mbrola-3.0.1h-r4.ebuild:
+  Replacing einfo with elog
+
+  19 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  mbrola-3.0.1h-r4.ebuild:
+  Stable on Alpha.
+
+  12 Oct 2006; Guy Martin <gmsoft@gentoo.org> mbrola-3.0.1h-r4.ebuild:
+  Stable on hppa.
+
+  24 Sep 2006; Markus Rothe <corsair@gentoo.org> mbrola-3.0.1h-r4.ebuild:
+  Stable on ppc64; bug #148986
+
+  21 Sep 2006; <ticho@gentoo.org> mbrola-3.0.1h-r4.ebuild:
+  Stable on x86, bug #146897.
+
+  19 Jul 2006; <psi29a@gentoo.org> mbrola-3.0.1h-r3.ebuild,
+  mbrola-3.0.1h-r4.ebuild:
+  stable on mips
+
+  12 Jul 2006; Aron Griffis <agriffis@gentoo.org> mbrola-3.0.1h-r4.ebuild:
+  Mark 3.0.1h-r4 stable on ia64
+
+  16 Jun 2006; Jon Hood <squinky86@gentoo.org> mbrola-3.0.1h-r3.ebuild,
+  mbrola-3.0.1h-r4.ebuild:
+  Add missing IUSE linguas wrt #136953.
+
+  05 Jun 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  mbrola-3.0.1h-r4.ebuild:
+  Stable amd64 and sparc.
+
+  19 May 2006; <psi29a@gentoo.org> mbrola-3.0.1h-r4.ebuild:
+  added to ~mips for testing
+
+  28 Apr 2006; Joseph Jezak <josejx@gentoo.org> mbrola-3.0.1h-r1.ebuild,
+  mbrola-3.0.1h-r3.ebuild, mbrola-3.0.1h-r4.ebuild:
+  Marked -ppc due to unavailable libraries.  See bug #84322.
+
+  02 Apr 2006; William Hubbs <williamh@gentoo.org> metadata.xml:
+  Marking myself as Maintainer.
+
+*mbrola-3.0.1h-r4 (02 Apr 2006)
+
+  02 Apr 2006; William Hubbs <williamh@gentoo.org> +mbrola-3.0.1h-r4.ebuild:
+  Added Italian and Romanian language support.
+  Closes #123251 and #125355.
+
+  03 Mar 2006; Simon Stelling <blubb@gentoo.org> mbrola-3.0.1h-r1.ebuild,
+  mbrola-3.0.1h-r3.ebuild:
+  remove the dependency on app-emulation/emul-linux-x86-glibc since 2004.3 has
+  been deprecated a while ago
+
+  16 Feb 2006; Diego Pettenò <flameeyes@gentoo.org>
+  mbrola-3.0.1h-r1.ebuild, mbrola-3.0.1h-r3.ebuild:
+  Make unzip a build-time depenndency.
+
+  24 Aug 2005; Aron Griffis <agriffis@gentoo.org> mbrola-3.0.1h-r3.ebuild:
+  add ~alpha ~ia64
+
+  28 Jul 2005; Guy Martin <gmsoft@gentoo.org> mbrola-3.0.1h-r3.ebuild:
+  Added ~hppa to KEYWORDS.
+
+*mbrola-3.0.1h-r3 (25 Jul 2005)
+
+  25 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -mbrola-3.0.1h-r2.ebuild, +mbrola-3.0.1h-r3.ebuild:
+  Cleaned up ebuild, and install binary into /opt/mbrola for compatibility
+  with freetts.
+
+  24 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  mbrola-3.0.1h-r2.ebuild:
+  Changing tts USE flags to linguas_.
+
+*mbrola-3.0.1h-r2 (24 Jul 2005)
+
+  24 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +mbrola-3.0.1h-r2.ebuild:
+  Revision bump with many cleanups thanks to Vincent Poinot
+  <vincent.poinot@wanadoo.fr>. Closes bug #87972.
+
+  09 Jun 2005; Markus Rothe <corsair@gentoo.org> mbrola-3.0.1h-r1.ebuild:
+  Stable on ppc64
+
+  24 May 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  mbrola-3.0.1h-r1.ebuild:
+  Fixed SRC_URI.
+
+  06 May 2005; Markus Rothe <corsair@gentoo.org> mbrola-3.0.1h-r1.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  11 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  mbrola-3.0.1h-r1.ebuild:
+  emul-linux-x86 update
+
+  18 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mbrola-3.0.1h-r1.ebuild:
+  Stable sparc.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  mbrola-3.0.1h-r1.ebuild:
+  Masked mbrola-3.0.1h-r1.ebuild stable for ppc
+
+  28 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mbrola-3.0.1h-r1.ebuild:
+  Added sparc, ppc, and alpha support.  Keyworded ~sparc.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  14 Aug 2004; Chris Aniszczyk <zx@gentoo.org> mbrola-3.0.1h-r1.ebuild:
+  ~ppc
+
+  14 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mbrola-3.0.1h-r1.ebuild:
+  Stable amd64.
+
+  24 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mbrola-3.0.1h-r1.ebuild:
+  Added IUSE.
+
+  17 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mbrola-3.0.1h-r1.ebuild, metadata.xml:
+  Moved from media-sound/mbrola to app-accessibility/mbrola.
+
+  16 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mbrola-3.0.1h-r1.ebuild:
+  festival went to app-accessibility
+
+  12 Nov 2003; Ciaran McCreesh <ciaranm@gentoo.org> mbrola-3.0.1h-r1.ebuild:
+  Made -sparc as the binary will not work. Thanks to gust4voz in #gentoo-sparc
+
+  12 Jun 2003; <msterret@gentoo.org> mbrola-3.0.1h-r1.ebuild:
+  fix Header
+
+*mbrola-3.0.1h-r1 (29 May 2002)
+
+  30 Dec 2002; Martin Holzer <mholzer@gentoo.org> mbrola-3.0.1h-r1.ebuild ChangeLog :
+  Added unzip dependency. Fixes #12929.
+
+  3 Jun 2002; Michael Nazaroff <naz@gentoo.org> mbrola-3.0.1h-r1.ebuild : 
+  update fix's a incorrect intall path for
+  the previous ebuild version of mbrola.  Which made festial unable to detect
+  the voices.
+
+*mbrola-3.0.1h (29 May 2002)
+
+  29 May 2002; Michael Nazaroff <naz@gentoo.org> mbrola-3.0.1h.ebuild : 
+  This is initial release of this package which provides speech synthesizers for
+  many diffirent languages. It depends on festival.
+ 

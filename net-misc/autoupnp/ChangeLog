@@ -1,0 +1,36 @@
+# ChangeLog for net-misc/autoupnp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/autoupnp/ChangeLog,v 1.7 2014/07/06 13:20:48 mgorny Exp $
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> autoupnp-0.4.6.ebuild,
+  autoupnp-9999.ebuild:
+  Replace obsolete mirror://bitbucket with the real URI.
+
+  16 Oct 2013; Michał Górny <mgorny@gentoo.org> autoupnp-9999.ebuild:
+  Switch to git-r3. Add SLOT operators to dependencies.
+
+*autoupnp-9999 (15 Dec 2012)
+
+  15 Dec 2012; Michał Górny <mgorny@gentoo.org> +autoupnp-9999.ebuild:
+  Import the live ebuild.
+
+  31 Aug 2012; Michał Górny <mgorny@gentoo.org> autoupnp-0.4.6.ebuild,
+  metadata.xml:
+  Sync to the live ebuild, use prune_libtool_files().
+
+  23 Apr 2012; Michał Górny <mgorny@gentoo.org> autoupnp-0.4.6.ebuild:
+  Use mirror:// in SRC_URI.
+
+*autoupnp-0.4.6 (15 Sep 2011)
+
+  15 Sep 2011; Michał Górny <mgorny@gentoo.org> -autoupnp-0.4.5.ebuild,
+  +autoupnp-0.4.6.ebuild:
+  Version bump. The new version fixes pthread optionality and uses
+  libtinynotify.
+
+*autoupnp-0.4.5 (27 Jul 2011)
+
+  27 Jul 2011; Michał Górny <mgorny@gentoo.org> +autoupnp-0.4.5.ebuild,
+  +metadata.xml:
+  Introduce an ebuild for autoupnp, automatic UPnP port forwarder (bug
+  #322057).

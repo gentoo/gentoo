@@ -1,0 +1,20 @@
+# Global config file for VDR systeminfo plugin
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-systeminfo/files/confd,v 1.1 2008/11/17 17:56:13 hd_brummy Exp $
+
+# I most cases here is no user activity needed
+# Yust if you get wrong or no output in OSD of plugin
+# you have something to change on next parameter
+# Get right parameter by run 'sensors' on Konsole
+
+CPU_TEMP="temp2"
+
+MOBO_TEMP="temp1"
+
+FAN_1="fan2"
+
+FAN_2="fan1"
+
+DISK_1="/dev/hda"
+
+#DISK_2="/dev/hdc"
+

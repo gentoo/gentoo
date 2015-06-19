@@ -1,0 +1,70 @@
+--- oyranos-0.4.0/configure
++++ oyranos-0.4.0/configure
+@@ -30,7 +30,7 @@
+ PKGC=$TARGET.pc
+ VERS_H="$TARGET"_version.h
+ zeile="$0 $@"
+-MAKEFILE_DIR=". fl_i18n libXNVCtrl yajl"; export MAKEFILE_DIR
++MAKEFILE_DIR=". fl_i18n libXNVCtrl"; export MAKEFILE_DIR
+ 
+ if [ `uname` = "Linux" ]; then
+   v=-v
+@@ -68,7 +68,7 @@
+ OY_DEVEL_MONTH=03
+ OYRANOS_DEVEL_MONTH=3 # numeric
+ OY_DEVEL_YEAR=2012
+-OY_GIT_MASTER="`cat $ROOT_DIR/.git/refs/heads/master`"
++OY_GIT_MASTER=""
+ time="`date +%y%m%d.%H%M%S`"
+ DATE="$OY_START_MONTH $OY_START_YEAR - $OY_DEVEL_MONTH $OY_DEVEL_YEAR"
+ VERSION=$VERSION_A.$VERSION_B.$VERSION_C
+@@ -120,7 +120,7 @@
+ fi
+ IFS=$old_IFS
+ 
+-STRIPOPT="sed s/-O.//"
++STRIPOPT="cat"
+ 
+ if [ $# -gt 0 ]; then
+   prefix=""
+--- oyranos-0.4.0/configure_tests.sh
++++ oyranos-0.4.0/configure_tests.sh
+@@ -3,7 +3,7 @@
+ set > testset.txt
+ ERROR=0
+ WARNING=0
+-STRIPOPT='s/-O.// ; s/-isysroot [[:graph:]]*// ; s/-arch ppc// ; s/-arch i386//'
++STRIPOPT='s/-isysroot [[:graph:]]*// ; s/-arch ppc// ; s/-arch i386//'
+ 
+ mkdir -p tests
+ 
+--- oyranos-0.4.0/oforms/oyranos_xforms.makefile
++++ oyranos-0.4.0/oforms/oyranos_xforms.makefile
+@@ -1,5 +1,6 @@
+ INCL    = $(INCLUDE) -I../ -I./ $(DEBUG)
+-CC      = gcc
++CC      ?= gcc
++CXX	?= c++
+ DEBUG  = -Wall -g -O0
+ LDFLAGS_ = $$LDFLAGS -L../fl_i18n
+ OY_LIBS := $(shell pkg-config oyranos libxml-2.0 --libs --cflags)
+ FLTK_FLAGS := $(shell fltk-config --ldflags --cxxflags | sed s/-O2//) -lpthread
+@@ -16,15 +17,15 @@
+ 
+ oyranos-xforms:	$(SRCDIR)oyranos_xforms.c
+ 	echo "Compiling $(SRCDIR)$< + Linking $@ ..."
+-	gcc -Wall -g $(CFLAGS) $(INCL)  $(SRCDIR)oyranos_xforms.c -o oyranos-xforms -pedantic $(OY_FLAGS) $(LDFLAGS_)
++	$(CC) -Wall -g $(CFLAGS) $(INCL)  $(SRCDIR)oyranos_xforms.c -o oyranos-xforms -pedantic $(OY_FLAGS) $(LDFLAGS_)
+ 
+ oyranos-xforms-modules:	$(SRCDIR)oyranos_xforms_modules.c
+ 	echo "Compiling $(SRCDIR)$< + Linking $@ ..."
+-	gcc -Wall -g $(CFLAGS) $(INCL)  $< -o $@ -pedantic $(OY_FLAGS) $(LDFLAGS_)
++	$(CC) -Wall -g $(CFLAGS) $(INCL)  $< -o $@ -pedantic $(OY_FLAGS) $(LDFLAGS_)
+ 
+ oyranos-xforms-fltk:	$(SRCDIR)oyranos_xforms_fltk.cxx $(SRCDIR)oyranos_forms_fltk.cxx $(SRCDIR)oyranos_widgets_fltk.cxx $(SRCDIR)oyranos_widgets_fltk.h
+ 	echo "Compiling $(SRCDIR)$< + Linking $@ ..."
+-	-c++ $(LDFLAGS_) -Wall -g $(CXXFLAGS) $(INCL)  $(SRCDIR)oyranos_xforms_fltk.cxx -o oyranos-xforms-fltk -pedantic -loyforms_fltk -lfl_i18n $(FLTK_FLAGS) $(OY_FLAGS)
++	$(CXX) $(LDFLAGS) -Wall -g $(CXXFLAGS) $(INCL)  $(SRCDIR)oyranos_xforms_fltk.cxx -o oyranos-xforms-fltk -pedantic -loyforms_fltk -lfl_i18n $(FLTK_FLAGS) $(OY_FLAGS_)
+ 
+ 
+ # Build commands and filename extensions...

@@ -1,0 +1,5 @@
+#!/bin/sh
+cd /var/www/bugzilla/
+./collectstats.pl
+./whineatnews.pl
+echo "*** Bugzilla nighlty flush has done! ***"

@@ -1,0 +1,8 @@
+DEFINED_PHASES=install
+DESCRIPTION=Organ stops for aeolus by Fons Adriaensen <fons.adriaensen@skynet.be>
+HOMEPAGE=http://www.kokkinizita.net/linuxaudio/aeolus/index.html
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://users.skynet.be/solaris/linuxaudio/downloads/stops-0.3.0.tar.bz2
+_md5_=1fb303daf7da95b661ca2f8ce5ab84b5

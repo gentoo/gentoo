@@ -1,0 +1,104 @@
+#!/sbin/runscript
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# (Written  by Phillip Berndt <phillip.berndt at gmail dot com>)
+# (Modified by Steven Brudenell <steven dot brudenell at gmail>)
+# $Header: /var/cvsroot/gentoo-x86/net-misc/nstx/files/nstxcd.init,v 1.1 2009/12/06 19:37:38 robbat2 Exp $
+
+depend() {
+    local iface
+
+    for iface in ${NEED_INTERFACES} ; do
+        need net.${iface}
+    done
+
+    # If the user set TUNTAP_INTERFACE, they probably have a net script
+    # configuring that interface. nstxcd is responsible for actually creating
+    # the stupid thing, so we need to run before the config.
+    if [ ! -z ${TUNTAP_INTERFACE} ] ; then
+        if [ -x /etc/init.d/net.${TUNTAP_INTERFACE} ] ; then 
+            before net.${TUNTAP_INTERFACE}
+        fi
+    fi
+}
+
+loadtun() {
+	if [ ! -e /dev/net/tun ]
+	then
+		ebegin "Loading TUN/TAP kernel module"
+		modprobe -q tun
+		eend $?
+	fi
+
+	if [ ! -e /dev/net/tun ]
+	then
+		eend 1 "Failed to load TUN driver! (did you compile your kernel with TUN/TAP support?)"
+		return 1
+	fi
+
+	return 0
+}
+
+checkconfig() {
+	if [ -z "${DOMAIN}" ] ; then
+        eerror "DOMAIN must be set"
+        return 1
+    fi
+
+    [ -z "${TUNTAP_INTERFACE}" ] || NSTXCD_OPTS="${NSTXCD_OPTS} -I ${TUNTAP_INTERFACE}"
+    [ -z "${TUNTAP_DEVICE}" ]    || NSTXCD_OPTS="${NSTXCD_OPTS} -d ${TUNTAP_DEVICE}"
+
+    case "${MODE}" in
+    TUN)
+        NSTXCD_OPTS="${NSTXCD_OPTS} -t"
+        ;;
+    TAP)
+        NSTXCD_OPTS="${NSTXCD_OPTS} -T"
+        ;;
+    *)
+        eerror "MODE must be either TUN or TAP"
+        return 1
+        ;;
+    esac
+
+    if [ -z "${DNS_SERVER}" ] ; then
+        DNS_SERVER=`awk '/^nameserver/{ print $2; exit; }' /etc/resolv.conf`
+
+        if [ -z "${DNS_SERVER}" ] ; then
+            eerror "DNS_SERVER not set, and couldn't determine a nameserver from /etc/resolv.conf"
+            return 1
+        fi
+		export DNS_SERVER
+    fi
+
+    return 0
+}
+
+start() {
+    checkconfig || return 1
+
+    loadtun || return 1
+
+	ebegin "Starting nstxcd"
+
+	start-stop-daemon \
+        --start \
+        --background \
+        --make-pidfile \
+        --exec /usr/sbin/nstxcd \
+        --pidfile "/var/run/nstxcd.pid" \
+        -- ${NSTXCD_OPTS} ${DOMAIN} ${DNS_SERVER}
+
+    eend $?
+}
+
+stop() {
+	ebegin "Stopping nstxcd"
+
+	start-stop-daemon \
+        --stop \
+        --exec /usr/sbin/nstxcd \
+        --pidfile "/var/run/nstxcd.pid"
+
+	eend $?
+}

@@ -1,0 +1,160 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Fri Oct  5 13:33:05 UTC 2012
+
+make build system gentoo-compatible
+provide options for SDL and GLFW video drivers
+
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -19,12 +19,19 @@
+ 
+ ################################################################################
+ 
+-INCLUDE(cmake/crosscompile.cmake)
+-
+ PROJECT(s25client)
+ 
+ ################################################################################
+ 
++# options
++OPTION(BUILD_GLFW_DRIVER "Build the GLFW video driver" 0)
++OPTION(BUILD_SDL_DRIVER "Build the sdl video driver" 1)
++IF (UNIX)
++	IF (NOT BUILD_SDL_DRIVER AND NOT BUILD_GLFW_DRIVER)
++		MESSAGE(FATAL_ERROR "No video driver selected! Either use SDL or GLFW.")
++	ENDIF (NOT BUILD_SDL_DRIVER AND NOT BUILD_GLFW_DRIVER)
++ENDIF (UNIX)
++
+ SET(PREFIX ${PREFIX} CACHE STRING "Path prefix")
+ SET(BINDIR ${BINDIR} CACHE STRING "Directory for the binaries")
+ SET(DATADIR ${DATADIR} CACHE STRING "Data directory")
+@@ -106,38 +113,6 @@
+ 			   build_paths.h)
+ CONFIGURE_FILE("${CMAKE_CURRENT_SOURCE_DIR}/build_version.h.cmake"
+ 			   build_version.h)
+-CONFIGURE_FILE("${CMAKE_CURRENT_SOURCE_DIR}/build/preinstall.sh.cmake"
+-			   preinstall.sh @ONLY)
+-CONFIGURE_FILE("${CMAKE_CURRENT_SOURCE_DIR}/build/postinstall.sh.cmake"
+-			   postinstall.sh @ONLY)
+-
+-################################################################################
+-
+-ADD_SUBDIRECTORY(version)
+-
+-ADD_CUSTOM_TARGET(updateversion ALL
+-				  COMMAND "${CMAKE_BINARY_DIR}/version/src/version" "${CMAKE_SOURCE_DIR}"
+-				  DEPENDS version
+-				  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
+-)
+-
+-ADD_CUSTOM_TARGET(mrproper
+-				  COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/build/cleanup.sh"
+-				  WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+-)
+-
+-ADD_CUSTOM_TARGET(create_nightly
+-				  COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/release/create_release.sh" "nightly" "${CMAKE_SOURCE_DIR}"
+-				  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
+-)
+-
+-ADD_CUSTOM_TARGET(create_stable
+-				  COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/release/create_release.sh" "stable" "${CMAKE_SOURCE_DIR}"
+-				  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
+-)
+-
+-# preinstall script
+-INSTALL(SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/cmake/preinstall.cmake")
+ 
+ ################################################################################
+ 
+@@ -148,7 +123,6 @@
+ ADD_SUBDIRECTORY(libutil)
+ ADD_SUBDIRECTORY(liblobby)
+ ADD_SUBDIRECTORY(s-c)
+-ADD_SUBDIRECTORY(s25update)
+ ADD_SUBDIRECTORY(src)
+ 
+ ################################################################################
+@@ -157,7 +131,6 @@
+ INSTALL(CODE "INCLUDE(driver/cmake_install.cmake)")
+ INSTALL(CODE "INCLUDE(libsiedler2/cmake_install.cmake)")
+ INSTALL(CODE "INCLUDE(s-c/cmake_install.cmake)")
+-INSTALL(CODE "INCLUDE(s25update/cmake_install.cmake)")
+ INSTALL(CODE "INCLUDE(src/cmake_install.cmake)")
+ 
+ # and then dont let him install anything
+--- driver/video/CMakeLists.txt
++++ driver/video/CMakeLists.txt
+@@ -3,7 +3,11 @@
+ #################################################################################
+ 
+ ADD_SUBDIRECTORY( WinAPI )
+-ADD_SUBDIRECTORY( GLFW )
+-ADD_SUBDIRECTORY( SDL )
++IF(BUILD_GLFW_DRIVER)
++	ADD_SUBDIRECTORY( GLFW )
++ENDIF(BUILD_GLFW_DRIVER)
++IF(BUILD_SDL_DRIVER)
++	ADD_SUBDIRECTORY( SDL )
++ENDIF(BUILD_SDL_DRIVER)
+ 
+ #################################################################################
+--- driver/video/SDL/src/CMakeLists.txt
++++ driver/video/SDL/src/CMakeLists.txt
+@@ -30,9 +30,9 @@
+ 	ADD_CUSTOM_COMMAND(TARGET videoSDL POST_BUILD COMMAND ln -fvs SDL/src/${SL_PREFIX}videoSDL${CMAKE_SHARED_LIBRARY_SUFFIX} ../../videoSDL${CMAKE_SHARED_LIBRARY_SUFFIX})
+ 	
+ 	INSTALL(TARGETS videoSDL 
+-		RUNTIME DESTINATION ${LIBDIR}/driver/video 
+-		LIBRARY DESTINATION ${LIBDIR}/driver/video
+-		ARCHIVE DESTINATION ${LIBDIR}/driver/video
++		RUNTIME DESTINATION ${LIBDIR} 
++		LIBRARY DESTINATION ${LIBDIR}
++		ARCHIVE DESTINATION ${LIBDIR}
+ 	)
+ ELSE (SDL_FOUND)
+ 	MESSAGE(WARNING ": SDL library not found: Not building SDL videodriver")
+--- driver/video/GLFW/src/CMakeLists.txt
++++ driver/video/GLFW/src/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ ### $Id: s25rttr-0.8.1-cmake.patch,v 1.1 2013/12/23 13:45:08 hasufell Exp $
+ #################################################################################
+ 
+-IF ("${COMPILEFOR}/${COMPILEARCH}" STREQUAL "linux/i386" )
++IF ("${COMPILEFOR}" STREQUAL "linux" )
+ 	FIND_LIBRARY(GLFW_LIBRARY glfw) 
+ 	
+ 	IF (GLFW_LIBRARY)
+@@ -21,6 +21,6 @@
+ 	ELSE (GLFW_LIBRARY)
+ 		MESSAGE(WARNING ": GLFW library not found: Not building GLFW videodriver")
+ 	ENDIF (GLFW_LIBRARY)
+-ENDIF ("${COMPILEFOR}/${COMPILEARCH}" STREQUAL "linux/i386" )
++ENDIF ("${COMPILEFOR}" STREQUAL "linux" )
+ 
+ #################################################################################
+--- driver/audio/SDL/src/CMakeLists.txt
++++ driver/audio/SDL/src/CMakeLists.txt
+@@ -34,9 +34,9 @@
+         ADD_CUSTOM_COMMAND(TARGET audioSDL POST_BUILD COMMAND ln -fvs SDL/src/${SL_PREFIX}audioSDL${CMAKE_SHARED_LIBRARY_SUFFIX} ../../audioSDL${CMAKE_SHARED_LIBRARY_SUFFIX})
+ 
+         INSTALL(TARGETS audioSDL 
+-            RUNTIME DESTINATION ${LIBDIR}/driver/audio 
+-            LIBRARY DESTINATION ${LIBDIR}/driver/audio
+-            ARCHIVE DESTINATION ${LIBDIR}/driver/audio
++            RUNTIME DESTINATION ${LIBDIR} 
++            LIBRARY DESTINATION ${LIBDIR}
++            ARCHIVE DESTINATION ${LIBDIR}
+         )
+     ELSE (SDLMIXER_FOUND)
+         MESSAGE(WARNING ": SDL_mixer library not found: Not building SDL audiodriver")
+--- build_paths.h.cmake
++++ build_paths.h.cmake
+@@ -41,6 +41,7 @@
+ 
+ //	set game directory (normal $(datadir)/s25rttr/S2)
+ //#define GAMEDIR DATADIR"/S2"
++#cmakedefine GAMEDIR "${GAMEDIR}"
+ 
+ //	set driver directory (normal $(libdir)/driver)
+ //#define DRIVERDIR LIBDIR"/driver"

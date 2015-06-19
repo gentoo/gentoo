@@ -1,0 +1,145 @@
+# ChangeLog for gnustep-apps/easydiff
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/easydiff/ChangeLog,v 1.25 2015/05/31 12:07:03 mrueg Exp $
+
+  31 May 2015; Manuel Rüger <mrueg@gentoo.org>
+  -easydiff-0.3.1_pre20061115.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  easydiff-0.3.1_pre20061115.ebuild, easydiff-0.4.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  07 Jun 2012; Michael Weber <xmw@gentoo.org> easydiff-0.4.0.ebuild:
+  ppc stable (bug 410601)
+
+  07 Apr 2012; Markus Meier <maekke@gentoo.org> easydiff-0.4.0.ebuild:
+  x86 stable, bug #410601
+
+  04 Feb 2012; Agostino Sarubbo <ago@gentoo.org> easydiff-0.4.0.ebuild:
+  Stable for amd64, wrt bug #397045
+
+  22 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  easydiff-0.3.1_pre20061115.ebuild:
+  dev-util/subversion renamed to dev-vcs/subversion.
+
+  19 Jun 2010; Jonathan Callen <abcd@gentoo.org> easydiff-0.4.0.ebuild:
+  Moving dev-util/cvs* to dev-vcs/cvs*
+
+*easydiff-0.4.0 (11 Mar 2009)
+
+  11 Mar 2009; Bernard Cafarelli <voyageur@gentoo.org>
+  +easydiff-0.4.0.ebuild:
+  New release, by GNUstep team. Cleaned and updated ebuild
+
+  08 Mar 2008; Santiago M. Mola <coldwind@gentoo.org>
+  easydiff-0.3.1_pre20061115.ebuild:
+  amd64 stable wrt bug #207381
+
+  30 Jan 2008; Brent Baude <ranger@gentoo.org>
+  easydiff-0.3.1_pre20061115.ebuild:
+  Marking easydiff-0.3.1_pre20061115 ppc for bug 207381
+
+  25 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  easydiff-0.3.1_pre20061115.ebuild:
+  stable x86, bug 207381
+
+*easydiff-0.3.1_pre20061115 (11 Sep 2007)
+
+  11 Sep 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  -easydiff-0.3.1_pre20050312-r1.ebuild, -easydiff-0.3.1_pre20050614.ebuild,
+  +easydiff-0.3.1_pre20061115.ebuild:
+  Use tarball instead of live CVS checkout
+  Works with gnustep-make-2
+  Remove old versions
+
+  18 Aug 2007; Christoph Mende <angelos@gentoo.org>
+  easydiff-0.3.1_pre20050614.ebuild:
+  Added ~amd64 wrt bug #170433
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*easydiff-0.3.1_pre20050614 (25 Mar 2006)
+*easydiff-0.3.1_pre20050312-r1 (25 Mar 2006)
+
+  25 Mar 2006; Fabian Groffen <grobian@gentoo.org>
+  -easydiff-0.3.1_pre20041203.ebuild, -easydiff-0.3.1_pre20050106.ebuild,
+  -easydiff-0.3.1_pre20050312.ebuild, +easydiff-0.3.1_pre20050312-r1.ebuild,
+  +easydiff-0.3.1_pre20050614.ebuild:
+  Removed non-working CVS ebuilds, added new SVN ebuilds (including bump)
+
+*easydiff-0.3.1_pre20050312 (17 Mar 2005)
+
+  17 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  +easydiff-0.3.1_pre20050312.ebuild:
+  ebuild updates for GNUstep base, libs, and apps across the board; proper
+  versions (to be stabilized, in due time) added where apropos, cvs-pull
+  versions updated where needed
+
+*easydiff-0.3.1_pre20050106 (10 Jan 2005)
+
+  10 Jan 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -easydiff-0.3.1_pre20040927-r1.ebuild, -easydiff-0.3.1_pre20040927.ebuild,
+  +easydiff-0.3.1_pre20050106.ebuild:
+  cvs snapshot version bumps; cleaned out old cvs versioned ebuilds; fixed
+  date spec on ebuild headers as repoman was complaining
+
+*easydiff-0.3.1_pre20041203 (03 Dec 2004)
+
+  03 Dec 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +easydiff-0.3.1_pre20041203.ebuild:
+  General version bump
+
+*easydiff-0.3.1_pre20040927-r1 (11 Nov 2004)
+
+  11 Nov 2004; Armando Di Cianno <fafhrd@gentoo.org> -easydiff-0.1.ebuild,
+  -easydiff-0.3.1_pre20040920.ebuild, +easydiff-0.3.1_pre20040927-r1.ebuild,
+  easydiff-0.3.1_pre20040927.ebuild:
+  Mass Update: gnustep.eclass revamped to allow configurable root install;
+  gnustep-base/libs/apps updated to utilize new gnustep.eclass (only versions
+  bumped where files would change); some KEYWORDS were accidentally dropped
+  between version bumps of packages -- this has been resolved; windowmaker
+  correctly supports gnustep now
+
+  17 Oct 2004; David Holm <dholm@gentoo.org>
+  easydiff-0.3.1_pre20040927.ebuild:
+  Added to ~ppc.
+
+*easydiff-0.3.1_pre20040927 (28 Sep 2004)
+
+  28 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +easydiff-0.3.1_pre20040927.ebuild:
+  Version bump; pre release date specd live cvs pull.
+
+*easydiff-0.3.1_pre20040920 (21 Sep 2004)
+
+  21 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org> metadata.xml,
+  +easydiff-0.3.1_pre20040920.ebuild:
+  Version bump; keyworded for ~x86.
+
+*easydiff-0.1 (22 Jul 2004)
+
+  25 Jul 2004; Lina Pezzella <j4rg0n@gentoo.org>
+  Fixed Manifest.
+
+  22 Jul 2004; Armando Di Ciannog <fafhrd@gentoo.org> +metadata.xml,
+  +easydiff-0.1.ebuild:
+  Moved from app-gnustep/easydiff to gnustep-apps/easydiff.
+
+  22 Jul 2004; Armando Di Ciannog <fafhrd@gentoo.org> easydiff-0.1.ebuild:
+  Changing the eclass to gnustep-old
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> easydiff-0.1.ebuild:
+  Added IUSE=
+
+  18 Feb 2004; David Holm <dholm@gentoo.org> easydiff-0.1.ebuild:
+  Added to ~ppc.
+
+*easydiff-0.1 (15 Jul 2003)
+  
+  16 Jul 2003; Michele Balistreri <brain@gentoo.org> easydiff-0.1.ebuild:
+  Changing license to GPL-2 as "GPL" doesnt exist
+
+  15 Jul 2003; Nick Hadaway <raker@gentoo.org> easydiff-0.1.ebuild:
+  New ebuild.

@@ -1,0 +1,130 @@
+# ChangeLog for app-text/vlna
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/vlna/ChangeLog,v 1.42 2013/03/17 15:47:23 hwoarang Exp $
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> vlna-1.5.ebuild:
+  keyword ~amd64-fbsd
+
+  19 Mar 2012; Mart Raudsepp <leio@gentoo.org> vlna-1.5.ebuild:
+  Add ~mips keyword, needed by app-text/texlive[linguas_cs]
+
+  30 Jun 2011; Alexis Ballier <aballier@gentoo.org> -vlna-1.3.ebuild,
+  -vlna-1.4.ebuild:
+  remove old
+
+  30 Jun 2011; Brent Baude <ranger@gentoo.org> vlna-1.5.ebuild:
+  Marking vlna-1.5 ppc for bug 349799
+
+  29 Jan 2011; Raúl Porcel <armin76@gentoo.org> vlna-1.5.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #349799
+
+  24 Jan 2011; Jeroen Roovers <jer@gentoo.org> vlna-1.5.ebuild:
+  Stable for HPPA (bug #349799).
+
+  08 Jan 2011; Markus Meier <maekke@gentoo.org> vlna-1.5.ebuild:
+  arm stable, bug #349799
+
+  07 Jan 2011; Christian Faulhammer <fauli@gentoo.org> vlna-1.5.ebuild:
+  stable x86, bug 349799
+
+  04 Jan 2011; Markos Chandras <hwoarang@gentoo.org> vlna-1.5.ebuild:
+  Stable on amd64 wrt bug #349799
+
+  29 Dec 2010; Brent Baude <ranger@gentoo.org> vlna-1.5.ebuild:
+  stable ppc64, bug 349799
+
+*vlna-1.5 (23 Oct 2010)
+
+  23 Oct 2010; Alexis Ballier <aballier@gentoo.org> +vlna-1.5.ebuild:
+  version bump
+
+  02 Feb 2010; Jonathan Callen <abcd@gentoo.org> vlna-1.4.ebuild:
+  Add ~amd64-linux/~x86-linux keywords
+
+*vlna-1.4 (13 Nov 2009)
+
+  13 Nov 2009; Alexis Ballier <aballier@gentoo.org> +vlna-1.4.ebuild:
+  version bump
+
+  04 Aug 2009; Alexis Ballier <aballier@gentoo.org> -vlna-1.2.ebuild:
+  remove old
+
+  18 Mar 2009; Raúl Porcel <armin76@gentoo.org> vlna-1.3.ebuild:
+  arm/s390/sh stable wrt #253551
+
+  11 Mar 2009; Raúl Porcel <armin76@gentoo.org> vlna-1.3.ebuild:
+  Add ~arm/~s390/~sh
+
+  11 Jan 2009; Markus Meier <maekke@gentoo.org> vlna-1.3.ebuild:
+  amd64 stable, bug #254078
+
+  10 Jan 2009; Raúl Porcel <armin76@gentoo.org> vlna-1.3.ebuild:
+  ia64/sparc/x86 stable wrt #254078
+
+  10 Jan 2009; Tobias Klausmann <klausman@gentoo.org> vlna-1.3.ebuild:
+  Stable on alpha, bug #254078
+
+  09 Jan 2009; Joseph Jezak <josejx@gentoo.org> vlna-1.3.ebuild:
+  Marked ppc stable for bug #254078.
+
+  08 Jan 2009; Jeroen Roovers <jer@gentoo.org> vlna-1.3.ebuild:
+  Stable for HPPA (bug #254078).
+
+  07 Jan 2009; Brent Baude <ranger@gentoo.org> vlna-1.3.ebuild:
+  stable ppc64, bug 254078
+
+  06 Oct 2008; Jeroen Roovers <jer@gentoo.org> vlna-1.3.ebuild:
+  Marked ~hppa (bug #237202).
+
+  04 Oct 2008; Brent Baude <ranger@gentoo.org> vlna-1.3.ebuild:
+  Marking vlna-1.3 ~ppc for bug 237202
+
+  23 Sep 2008; Raúl Porcel <armin76@gentoo.org> vlna-1.3.ebuild:
+  Add ~alpha/~ia64 wrt #237202
+
+  22 Sep 2008; Ferris McCormick <fmccor@gentoo.org> vlna-1.3.ebuild:
+  Add ~sparc keyword, part of Bug #237202.
+
+  21 Sep 2008; Brent Baude <ranger@gentoo.org> vlna-1.3.ebuild:
+  Marking vlna-1.3 ~ppc64 for bug 237202
+
+  02 Sep 2008; Alexis Ballier <aballier@gentoo.org> vlna-1.3.ebuild:
+  keyword ~x86-fbsd
+
+  22 Aug 2008; Alexis Ballier <aballier@gentoo.org> metadata.xml:
+  add tex back in metadata instead of noherd
+
+*vlna-1.3 (22 Aug 2008)
+
+  22 Aug 2008; Alexis Ballier <aballier@gentoo.org> +vlna-1.3.ebuild:
+  version bump
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  13 Mar 2007; Leonardo Boshell <leonardop@gentoo.org> metadata.xml:
+  Removing text-markup herd, leaving Jaromir Malenko as maintainer.
+
+  05 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> vlna-1.2.ebuild:
+  stable on amd64
+
+  06 Jan 2005; Karol Wojtaszek <sekretarz@gentoo.org> vlna-1.2.ebuild:
+  Added to ~amd64, bug #75342
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> vlna-1.2.ebuild:
+  virtual/glibc -> virtual/libc
+
+  05 May 2004; Mamoru KOMACHI <usata@gentoo.org> vlna-1.2.ebuild:
+  Stable on x86
+
+*vlna-1.2 (27 Feb 2004)
+
+  27 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> vlna-1.2.ebuild:
+  Initial import. Thanks to Jaromir Malenko <malenko@email.cz>,
+  see bug #31657

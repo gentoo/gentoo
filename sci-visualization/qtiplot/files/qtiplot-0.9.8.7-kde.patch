@@ -1,0 +1,16 @@
+ qtiplot/src/plot2D/Graph.cpp |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/qtiplot/src/plot2D/Graph.cpp b/qtiplot/src/plot2D/Graph.cpp
+index 626172a..d4eab1b 100755
+--- a/qtiplot/src/plot2D/Graph.cpp
++++ b/qtiplot/src/plot2D/Graph.cpp
+@@ -73,7 +73,8 @@
+ #include <PatternBox.h>
+ #include <SymbolBox.h>
+ #include <LinearColorMap.h>
+ 
++#include <QPaintEngine>
+ #include <QApplication>
+ #include <QBitmap>
+ #include <QClipboard>

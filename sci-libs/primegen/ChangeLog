@@ -1,0 +1,68 @@
+# ChangeLog for sci-libs/primegen
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/primegen/ChangeLog,v 1.14 2012/08/03 22:30:40 bicatali Exp $
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> primegen-0.97-r1.ebuild:
+  keyword amd64-linux x86-linux
+
+  21 Dec 2011; Justin Lecher <jlec@gentoo.org> -primegen-0.97.ebuild:
+  Cleaned old
+
+  21 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> primegen-0.97-r1.ebuild:
+  x86 stable wrt bug #393857
+
+  16 Dec 2011; Thomas Kahle <tomka@gentoo.org> primegen-0.97-r1.ebuild:
+  amd64 stable per bug 393857
+
+  29 Sep 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  primegen-0.97-r1.ebuild:
+  Respect LDFLAGS
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> primegen-0.97.ebuild:
+  Remove virtual/libc
+
+*primegen-0.97-r1 (11 Sep 2009)
+
+  11 Sep 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  +primegen-0.97-r1.ebuild, +files/primegen-0.97-missing-headers.patch,
+  metadata.xml:
+  Fixed missing headers QA, added a test, and included the uint32.h and
+  uint64.h in primegen.h to avoid collision with dev-db/cdb. Closing bug
+  #248327 and bug #279295
+
+  23 Jul 2008; Michał Januszewski <spock@gentoo.org>
+  +files/primegen-0.97-man.patch, primegen-0.97.ebuild:
+  Fix bug #200935.
+
+  06 Apr 2008; Benedikt Böhm <hollow@gentoo.org> primegen-0.97.ebuild:
+  fix LICENSE, bug #204327
+
+  02 Dec 2007; Markus Dittrich <markusle@gentoo.org> primegen-0.97.ebuild:
+  Disabled installation of error man pages since they collide with 
+  the ones from man and we don't actually install primegen's error
+  library anyway (fixes bug #200932).
+
+  14 Jan 2007; Joseph Jezak <josejx@gentoo.org> primegen-0.97.ebuild:
+  Added ~ppc for bug #161015.  Added -fsigned-char to produce correct results.
+
+  15 May 2005; Danny van Dyk <kugelfang@gentoo.org> primegen-0.97.ebuild:
+  Inherits toolchain-funcs now instead of deprecated gcc eclass.
+
+*primegen-0.97 (28 Dec 2004)
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +primegen-0.97.ebuild:
+  Moved from app-sci/primegen to sci-libs/primegen.
+
+  21 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org> primegen-0.97.ebuild:
+  Added to ~amd64, bug #71866
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> primegen-0.97.ebuild:
+  virtual/glibc -> virtual/libc
+
+*primegen-0.97 (13 Mar 2003)
+
+  13 Mar 2003; George Shapovalov <george@gentoo.org> ChangeLog, primegen-0.97.ebuild, files/{digest-primegen-0.97} :
+  initial release (#16300)
+  A small, fast library to generate primes in order
+  ebuild submitted by Tom Payne <gentoo@tompayne.org>

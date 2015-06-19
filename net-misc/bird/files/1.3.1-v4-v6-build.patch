@@ -1,0 +1,109 @@
+diff -uNr bird-1.3.1.ORIG//tools/Makefile-top.in bird-1.3.1/tools/Makefile-top.in
+--- bird-1.3.1.ORIG//tools/Makefile-top.in	2011-05-02 12:57:26.799971384 +0100
++++ bird-1.3.1/tools/Makefile-top.in	2011-05-02 12:57:42.587971260 +0100
+@@ -3,16 +3,19 @@
+ 
+ objdir=@objdir@
+ 
+-all depend tags install install-docs:
++all depend tags install install-docs install-bin install-bin6:
+ 	$(MAKE) -C $(objdir) $@
+ 
+ docs userdocs progdocs:
+ 	$(MAKE) -C doc $@
+ 
+-clean:
+-	$(MAKE) -C $(objdir) clean
++almost-clean:
++	$(MAKE) -C $(objdir) almost-clean
+ 	find . -name "*~" -or -name "*.[oa]" -or -name "\#*\#" -or -name TAGS -or -name core -or -name depend -or -name ".#*" | xargs rm -f
+ 
++clean: almost-clean
++	$(MAKE) -C $(objdir) clean
++
+ distclean: clean
+ 	$(MAKE) -C doc distclean
+ 	rm -rf $(objdir) autom4te.cache
+diff -uNr bird-1.3.1.ORIG//tools/Makefile.in bird-1.3.1/tools/Makefile.in
+--- bird-1.3.1.ORIG//tools/Makefile.in	2011-05-02 12:57:26.799971384 +0100
++++ bird-1.3.1/tools/Makefile.in	2011-05-02 12:57:42.588971277 +0100
+@@ -3,13 +3,13 @@
+ 
+ include Rules
+ 
+-.PHONY: all daemon client subdir depend clean distclean tags docs userdocs progdocs
++.PHONY: all daemon client subdir depend clean distclean tags docs userdocs progdocs almost-clean
+ 
+ all: sysdep/paths.h .dep-stamp subdir daemon @CLIENT@
+ 
+-daemon: $(exedir)/bird
++daemon: $(exedir)/bird@SUFFIX6@
+ 
+-client: $(exedir)/birdc
++client: $(exedir)/birdc@SUFFIX6@
+ 
+ bird-dep := $(addsuffix /all.o, $(static-dirs)) conf/all.o lib/birdlib.a
+ 
+@@ -27,10 +27,10 @@
+ 	set -e ; for a in $(dynamic-dirs) ; do $(MAKE) -C $$a $@ ; done
+ 	set -e ; for a in $(static-dirs) $(client-dirs) ; do $(MAKE) -C $$a -f $(srcdir_abs)/$$a/Makefile $@ ; done
+ 
+-$(exedir)/bird: $(bird-dep)
++$(exedir)/bird@SUFFIX6@: $(bird-dep)
+ 	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+-$(exedir)/birdc: $(birdc-dep)
++$(exedir)/birdc@SUFFIX6@: $(birdc-dep)
+ 	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS) $(CLIENT_LIBS)
+ 
+ .dir-stamp: sysdep/paths.h
+@@ -55,25 +55,42 @@
+ tags:
+ 	cd $(srcdir) ; etags -lc `find $(static-dirs) $(addprefix $(objdir)/,$(dynamic-dirs)) $(client-dirs) -name *.[chY]`
+ 
+-install: all
++install-gen:
+ 	$(INSTALL) -d $(DESTDIR)/$(sbindir) $(DESTDIR)/$(sysconfdir) $(DESTDIR)/$(localstatedir)/run
+-	$(INSTALL_PROGRAM) -s $(exedir)/bird $(DESTDIR)/$(sbindir)/bird@SUFFIX6@
++
++install-bin: install-gen
++	$(INSTALL_PROGRAM) $(exedir)/bird $(DESTDIR)/$(sbindir)/
++	if test -n "@CLIENT@" ; then                                                            \
++		$(INSTALL_PROGRAM) $(exedir)/birdc $(DESTDIR)/$(sbindir)/ ;                          \
++	fi
++	if ! test -f $(DESTDIR)/$(sysconfdir)/bird.conf ; then                                          \
++		$(INSTALL_DATA) $(srcdir)/doc/bird.conf.example $(DESTDIR)/$(sysconfdir)/bird.conf ;    \
++	else                                                                                    \
++		echo "Not overwriting old bird.conf" ;                                          \
++	fi
++
++install-bin6: install-gen
++	$(INSTALL_PROGRAM) $(exedir)/bird $(DESTDIR)/$(sbindir)/
+ 	if test -n "@CLIENT@" ; then								\
+-		$(INSTALL_PROGRAM) -s $(exedir)/birdc $(DESTDIR)/$(sbindir)/birdc@SUFFIX6@ ;				\
++		$(INSTALL_PROGRAM) $(exedir)/birdc6 $(DESTDIR)/$(sbindir)/birdc ;				\
+ 	fi
+-	if ! test -f $(DESTDIR)/$(sysconfdir)/bird@SUFFIX6@.conf ; then						\
+-		$(INSTALL_DATA) $(srcdir)/doc/bird.conf.example $(DESTDIR)/$(sysconfdir)/bird@SUFFIX6@.conf ;	\
++	if ! test -f $(DESTDIR)/$(sysconfdir)/bird6.conf ; then						\
++		$(INSTALL_DATA) $(srcdir)/doc/bird.conf.example $(DESTDIR)/$(sysconfdir)/bird6.conf ;	\
+ 	else											\
+-		echo "Not overwriting old bird@SUFFIX@.conf" ;						\
++		echo "Not overwriting old bird6.conf" ;						\
+ 	fi
+ 
++install: all install-bin@SUFFIX6@
++
+ install-docs:
+ 	$(INSTALL) -d $(DESTDIR)/$(docdir)
+ 	$(INSTALL_DATA) $(srcdir)/doc/{bird,prog}{,-*}.html $(DESTDIR)/$(docdir)/
+ 
+-clean:
++almost-clean:
+ 	find . -name "*.[oa]" -o -name core -o -name depend -o -name "*.html" | xargs rm -f
+ 	rm -f conf/cf-lex.c conf/cf-parse.* conf/commands.h conf/keywords.h
++
++clean: almost-clean
+ 	rm -f $(exedir)/bird $(exedir)/birdc $(exedir)/bird.ctl $(exedir)/bird6.ctl .dep-stamp
+ 
+ distclean: clean

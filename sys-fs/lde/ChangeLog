@@ -1,0 +1,24 @@
+# ChangeLog for sys-fs/lde
+# Copyright 1999-2006 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/lde/ChangeLog,v 1.6 2006/12/21 16:56:13 vapier Exp $
+
+  21 Dec 2006; Mike Frysinger <vapier@gentoo.org> lde-2.6.1.ebuild:
+  Add amd64 love for Makis Marmaridis.
+
+*lde-2.6.1 (30 Jul 2006)
+
+  30 Jul 2006; Mike Frysinger <vapier@gentoo.org>
+  +files/lde-2.6.1-no-shadowing.patch, +lde-2.6.1.ebuild:
+  Version bump and fix building with gcc-4 #141881 by Martin Mokrejs.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> lde-2.6.0.ebuild:
+  Add inherit eutils
+
+*lde-2.6.0 (26 Sep 2003)
+
+  11 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  Small gcc3 patch ... some one had the bright idea to name a variable the same
+  thing as a struct ... gcc2 doesnt care but gcc3 does ;) #33150.
+
+  26 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me.

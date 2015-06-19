@@ -1,0 +1,11 @@
+--- src/Elf.cpp	2010-05-14 01:40:27.000000000 +0200
++++ src/Elf.cpp	2010-05-14 01:46:06.000000000 +0200
+@@ -579,7 +579,7 @@
+ std::string Section::find_string(istream &is, int index)
+ {
+     if (!is_string_table() || index < 0) {
+-	return false;
++	return NULL;
+     }
+ 
+     int offset = _sectstruct->offset() + index;

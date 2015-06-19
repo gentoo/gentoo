@@ -1,0 +1,11 @@
+diff -Naur pari-2.3.2/config/arch-osname pari-2.3.2.new/config/arch-osname
+--- pari-2.3.2/config/arch-osname	2006-02-15 05:12:59.000000000 -0500
++++ pari-2.3.2.new/config/arch-osname	2007-11-26 00:17:17.000000000 -0500
+@@ -30,6 +30,7 @@
+   osf1)     case "$5" in alpha) arch=alpha;; esac;;
+   linux)    arch=`uname -m`
+ 	    case $arch in
++		ppc) arch=powerpc;;
+ 		sparc64) arch=sparcv9;;
+ 		parisc*) arch=hppa;;
+ 		sparc) case "`cat /proc/cpuinfo`" in

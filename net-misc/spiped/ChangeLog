@@ -1,0 +1,13 @@
+# ChangeLog for net-misc/spiped
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/spiped/ChangeLog,v 1.4 2015/04/26 16:11:18 pacho Exp $
+
+  26 Apr 2015; Pacho Ramos <pacho@gentoo.org> spiped-1.5.0.ebuild:
+  x86 stable wrt bug #547112
+
+  20 Apr 2015; Agostino Sarubbo <ago@gentoo.org> spiped-1.5.0.ebuild:
+  Stable for amd64, wrt bug #547112
+
+  05 Mar 2015; Patrice Clement <monsieurp@gentoo.org> ChangeLog:
+  Adding spiped-1.5.0 to Portage courtesy of Tomas Mozes
+  <hydrapolic@gmail.com>. Fix 542216.

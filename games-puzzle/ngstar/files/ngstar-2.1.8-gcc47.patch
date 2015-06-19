@@ -1,0 +1,11 @@
+--- src/Ncurses_UI.cc.old	2012-07-21 22:25:16.421521521 +0200
++++ src/Ncurses_UI.cc	2012-07-21 22:26:01.008390914 +0200
+@@ -23,6 +23,8 @@
+ /* includes */
+ #include "Ncurses_UI.hh"
+ 
++#include <unistd.h>
++
+ using namespace ngstar2;
+ 
+ Ncurses_UI::Ncurses_UI( NGStar2 *engine, Configuration* config, Scores *scores )

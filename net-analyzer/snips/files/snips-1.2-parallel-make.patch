@@ -1,0 +1,23 @@
+diff -uNr snips-1.2.ORIG/Makefile.mid snips-1.2/Makefile.mid
+--- snips-1.2.ORIG/Makefile.mid	2012-06-26 15:53:26.724829432 +0100
++++ snips-1.2/Makefile.mid	2012-06-26 15:55:18.298836689 +0100
+@@ -46,7 +46,7 @@
+ 	  CHECK DONE TODO
+ 
+ all:	Init
+-	 @echo "BUILDING SNIPS revision $(REV) for $(OS) $$OS" ;\
++	 @+echo "BUILDING SNIPS revision $(REV) for $(OS) $$OS" ;\
+ 	 for i in $(SRCS); do \
+ 	  if [ -d $$i ]; then \
+ 	    (echo "" ; echo "MAKING IN $$i" ; echo "----------" ; \
+@@ -74,8 +74,8 @@
+ 	  echo "Else prefix your shell PATH with BSD style install" ;\
+ 	  rm -f  SniPpet /tmp/SniPpet ; exit 1 ; fi)
+ 
+-	@echo make $(MFLAGS) install ;
+-	@-for i in $(SRCS); do \
++	@+echo make $(MFLAGS) install ;
++	@+-for i in $(SRCS); do \
+ 	  ( echo "" ; echo "MAKING IN $$i" ; echo "----------" ; cd $$i ; \
+ 		make $(MFLAGS) install ; make $(MFLAGS) init ) ;\
+ 	done

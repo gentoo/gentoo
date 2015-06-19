@@ -1,0 +1,112 @@
+# ChangeLog for dev-java/jna
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jna/ChangeLog,v 1.22 2015/06/06 18:45:37 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  07 Mar 2015; James Le Cuirot <chewi@gentoo.org>
+  -files/3.2.4-makefile-flags.patch, -files/makefile-flags.patch,
+  -jna-3.0.3-r1.ebuild, -jna-3.2.4.ebuild:
+  Remove old versions.
+
+  11 Jun 2012; Michał Górny <mgorny@gentoo.org> jna-3.4.0-r1.ebuild,
+  jna-3.4.0.ebuild:
+  Use matching name for download & S to make the ebuild forward-proof to vcs-
+  snapshot API.
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> jna-3.4.0.ebuild:
+  Marking jna-3.4.0 ppc for bug 413157
+
+*jna-3.4.0-r1 (13 May 2012)
+
+  13 May 2012; Ralph Sennhauser <sera@gentoo.org> +jna-3.4.0-r1.ebuild,
+  +files/jna-3.4.0-makefile-flags.patch:
+  Respect CC. #413277
+  Register optional dependency emul-linux-x86-jna for use with 32bit JVMs.
+  #313209
+  Cleanup.
+
+  07 May 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> jna-3.4.0.ebuild:
+  x86 stable wrt bug #413157
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> jna-3.0.3-r1.ebuild,
+  jna-3.2.4.ebuild, jna-3.4.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Apr 2012; Agostino Sarubbo <ago@gentoo.org> jna-3.4.0.ebuild:
+  Stable for amd64, wrt bug #413157
+
+  25 Mar 2012; Miroslav Šulc <fordfrog@gentoo.org>
+  -files/3.2.7-build.xml.patch, -files/3.2.7-makefile-flags.patch,
+  -files/3.3.0-build.xml.patch, -jna-3.2.7.ebuild,
+  -files/3.3.0-makefile-flags.patch, -jna-3.3.0.ebuild:
+  Removed obsolete versions
+
+  23 Mar 2012; Ralph Sennhauser <sera@gentoo.org> jna-3.4.0.ebuild:
+  Fix running tests. #294289
+
+  23 Mar 2012; Ralph Sennhauser <sera@gentoo.org> jna-3.4.0.ebuild:
+  Use vcs-snapshot eclass for github download.
+  Don't use xargs and also remove bundled libffi.
+  Drop libffi symlink workaround.
+
+  22 Mar 2012; Ralph Sennhauser <sera@gentoo.org> jna-3.0.3-r1.ebuild,
+  jna-3.2.4.ebuild, jna-3.2.7.ebuild, jna-3.3.0.ebuild, jna-3.4.0.ebuild:
+  Add missing build dep dev-util/pkgconfig. #403577
+
+*jna-3.4.0 (25 Dec 2011)
+
+  25 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/3.4.0-build.xml.patch, +jna-3.4.0.ebuild,
+  +files/3.4.0-makefile-flags.patch, metadata.xml:
+  Version bump. Added new USE flags, awt and nio-buffers. awt USE flag should
+  require X USE flag on used JDK/JRE but we do not have this flag on virtuals
+  yet.
+
+*jna-3.3.0 (13 Dec 2011)
+
+  13 Dec 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/3.3.0-build.xml.patch, +files/3.3.0-makefile-flags.patch,
+  +jna-3.3.0.ebuild:
+  Version bump
+
+  18 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> jna-3.2.4.ebuild:
+  ppc stable wrt #311105
+
+*jna-3.2.7 (25 Jan 2011)
+
+  25 Jan 2011; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/3.2.7-build.xml.patch, +files/3.2.7-makefile-flags.patch,
+  +jna-3.2.7.ebuild:
+  Version bump. Switched to EAPI4, sources are now downloaded directly from
+  upstream, build.xml patches moved to patch file, also added building of
+  platform.jar.
+
+  23 May 2010; Pacho Ramos <pacho@gentoo.org> jna-3.2.4.ebuild:
+  stable amd64, bug 311105
+
+  24 Mar 2010; Christian Faulhammer <fauli@gentoo.org> jna-3.2.4.ebuild:
+  stable x86, bug 311105
+
+*jna-3.2.4 (30 Dec 2009)
+
+  30 Dec 2009; Alistair Bush <ali_bush@gentoo.org>
+  +files/3.2.4-makefile-flags.patch, +jna-3.2.4.ebuild:
+  Version Bump.
+
+  25 Oct 2009; Mounir Lamouri <volkmar@gentoo.org> jna-3.0.3-r1.ebuild:
+  Keywording for ppc, bug 270910
+
+*jna-3.0.3-r1 (03 Jun 2009)
+
+  03 Jun 2009; Vlastimil Babka <caster@gentoo.org> +jna-3.0.3-r1.ebuild,
+  +files/makefile-flags.patch:
+  Revbump to switch to virtual/libffi, bug #272054.
+
+*jna-3.0.3 (22 May 2009)
+
+  22 May 2009; Vlastimil Babka <caster@gentoo.org> +jna-3.0.3.ebuild,
+  +metadata.xml:
+  New package, jruby dependency, bug #244785. Ebuild provided by serkan and
+  chewi in java-overlay.

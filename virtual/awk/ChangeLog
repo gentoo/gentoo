@@ -1,0 +1,42 @@
+# ChangeLog for virtual/awk
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/awk/ChangeLog,v 1.12 2014/02/18 20:55:12 ottxor Exp $
+
+  18 Feb 2014; Christoph Junghans <ottxor@gentoo.org> awk-1.ebuild:
+  stable on all gawk archs (bug #455696)
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> awk-0.ebuild, awk-1.ebuild:
+  Add arm64 love.
+
+  17 Jan 2014; Mike Frysinger <vapier@gentoo.org> awk-0.ebuild:
+  Mark m68k stable.
+
+*awk-1 (24 Dec 2013)
+
+  24 Dec 2013; Christoph Junghans <ottxor@gentoo.org> +awk-1.ebuild:
+  version bump due to bug #455696
+
+  21 Mar 2013; Justin Lecher <jlec@gentoo.org> awk-0.ebuild, metadata.xml:
+  Keyword for ~-linux
+
+  25 Feb 2013; Zac Medico <zmedico@gentoo.org> awk-0.ebuild:
+  Add ~arm-linux and ~x86-linux keywords.
+
+  11 Feb 2013; Samuli Suominen <ssuominen@gentoo.org> awk-0.ebuild:
+  sh/s390 stable to match sys-apps/gawk keywording wrt #456762
+
+  06 Feb 2013; Christoph Junghans <ottxor@gentoo.org> awk-0.ebuild:
+  added ~amd64-fbsd as sys-apps/gawk has it
+
+  22 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> awk-0.ebuild:
+  QA: mark stable on all arches, since there is bound to be a stable version of
+  gawk or busybox in each one of them.
+
+  06 Jul 2012; Christoph Junghans <ottxor@gentoo.org> awk-0.ebuild:
+  add ~x86-macos
+
+*awk-0 (04 Jun 2012)
+
+  04 Jun 2012; Christoph Junghans <ottxor@gentoo.org> +awk-0.ebuild,
+  +metadata.xml:
+  initial commit

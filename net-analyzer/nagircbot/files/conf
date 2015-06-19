@@ -1,0 +1,2 @@
+# Put nagircbot arguments here
+# BOTCONF="-f /var/nagios/status.dat -s irc.freenode.net:6667 -c channel -k password -n name"

@@ -1,0 +1,174 @@
+# ChangeLog for dev-php/jpgraph
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/jpgraph/ChangeLog,v 1.32 2014/10/09 20:14:00 grknight Exp $
+
+*jpgraph-3.0.7-r2 (07 Oct 2014)
+
+  07 Oct 2014; Brian Evans <grknight@gentoo.org> +jpgraph-3.0.7-r2.ebuild:
+  Revbump to fix truetype issues wrt bug 524120
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> jpgraph-3.0.7-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  02 Sep 2012; Matti Bickel <mabi@gentoo.org> -jpgraph-2.3.ebuild:
+  remove old
+
+  21 Aug 2012; Michael Weber <xmw@gentoo.org> jpgraph-3.0.7-r1.ebuild:
+  ppc stable (303745)
+
+  15 Jul 2012; Raúl Porcel <armin76@gentoo.org> jpgraph-3.0.7-r1.ebuild:
+  alpha/sparc stable wrt #303745
+
+  18 Jun 2012; Jeroen Roovers <jer@gentoo.org> jpgraph-3.0.7-r1.ebuild:
+  Stable for HPPA (bug #303745).
+
+  17 Jun 2012; Jeff Horelick <jdhore@gentoo.org> jpgraph-3.0.7-r1.ebuild:
+  marked x86 per bug 303745
+
+  17 Jun 2012; Agostino Sarubbo <ago@gentoo.org> jpgraph-3.0.7-r1.ebuild:
+  Stable for amd64, wrt bug #303745
+
+*jpgraph-3.0.7-r1 (11 Jun 2012)
+
+  11 Jun 2012; Matti Bickel <mabi@gentoo.org> +files/cve-2009-4422.patch,
+  +jpgraph-3.0.7-r1.ebuild, -jpgraph-3.0.7.ebuild:
+  bump to fix security issue (bug #303745), also move jpgraph install path to
+  /usr/share/php/jpgraph (losing the src part)
+
+  28 Jan 2012; Matti Bickel <mabi@gentoo.org> jpgraph-3.0.7.ebuild:
+  EAPI bump
+
+  21 Apr 2010; <mabi@gentoo.org> -jpgraph-2.1.3.ebuild, -jpgraph-2.2.ebuild:
+  remove old versions
+
+*jpgraph-3.0.7 (21 Apr 2010)
+
+  21 Apr 2010; <mabi@gentoo.org> +jpgraph-3.0.7.ebuild:
+  bump (bug #299054), provided by Ole Markus With
+
+  08 Mar 2008; <pva@gentoo.org> jpgraph-2.3.ebuild:
+  amd64 stable, bug #208284.
+
+  01 Feb 2008; Raúl Porcel <armin76@gentoo.org> jpgraph-2.3.ebuild:
+  alpha/sparc/x86 stable wrt #208284
+
+  31 Jan 2008; Jeroen Roovers <jer@gentoo.org> jpgraph-2.3.ebuild:
+  Stable for HPPA (bug #208284).
+
+  31 Jan 2008; nixnut <nixnut@gentoo.org> jpgraph-2.3.ebuild:
+  Stable on ppc wrt bug 208284
+
+*jpgraph-2.3 (24 Dec 2007)
+
+  24 Dec 2007; Raúl Porcel <armin76@gentoo.org> +jpgraph-2.3.ebuild:
+  Version bump from the php-overlay
+
+  21 Dec 2007; Jakub Moc <jakub@gentoo.org> +jpgraph-2.3.ebuild:
+  Version bump
+
+  14 Nov 2007; Jeroen Roovers <jer@gentoo.org> jpgraph-2.2.ebuild:
+  Stable for HPPA (bug #198564).
+
+  12 Nov 2007; Raúl Porcel <armin76@gentoo.org> jpgraph-2.2.ebuild:
+  alpha/sparc stable wrt #198564
+
+  11 Nov 2007; Samuli Suominen <drac@gentoo.org> jpgraph-2.2.ebuild:
+  amd64 stable wrt #198564
+
+  11 Nov 2007; Dawid Węgliński <cla@gentoo.org> jpgraph-2.2.ebuild:
+  Stable on x86 (bug #198564)
+
+  10 Nov 2007; nixnut <nixnut@gentoo.org> jpgraph-2.2.ebuild:
+  Stable on ppc wrt bug 198564
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org> -jpgraph-2.1.4.ebuild:
+  Cleanup
+
+*jpgraph-2.2 (31 Aug 2007)
+
+  31 Aug 2007; Markus Ullmann <jokey@gentoo.org> +jpgraph-2.2.ebuild:
+  Port from project overlay
+
+  30 Aug 2007; Jakub Moc <jakub@gentoo.org> jpgraph-2.2.ebuild:
+  Make HTTPD_{USER,GROUP} configurable.
+
+  30 Aug 2007; Jakub Moc <jakub@gentoo.org> +jpgraph-2.2.ebuild:
+  Version bump
+
+  29 Jul 2007; Christian Heim <phreak@gentoo.org> jpgraph-2.1.3.ebuild,
+  jpgraph-2.1.4.ebuild:
+  Fixing the DEPEND/RDEPEND for the move of net-www/apache to
+  www-servers/apache (#78622).
+
+*jpgraph-2.1.4 (08 Mar 2007)
+
+  08 Mar 2007; Luca Longinotti <chtekk@gentoo.org> -jpgraph-2.0.ebuild,
+  jpgraph-2.1.3.ebuild, +jpgraph-2.1.4.ebuild:
+  Version bump, cleanup.
+
+  06 Mar 2007; Jose Luis Rivero <yoswink@gentoo.org> jpgraph-2.1.3.ebuild:
+  Stable on alpha wrt bug #143376
+
+  10 Feb 2007; nixnut <nixnut@gentoo.org> jpgraph-2.1.3.ebuild:
+  Stable on ppc wrt bug 143376
+
+  10 Feb 2007; Steve Dibb <beandog@gentoo.org> jpgraph-2.1.3.ebuild:
+  amd64 stable, bug 143376
+
+  08 Feb 2007; Christian Faulhammer <opfer@gentoo.org> jpgraph-2.1.3.ebuild:
+  stable x86; bug #143376
+
+  06 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org> jpgraph-2.1.3.ebuild:
+  Stable on sparc wrt #143376
+
+  24 Jan 2007; Jeroen Roovers <jer@gentoo.org> jpgraph-2.1.3.ebuild:
+  Stable for HPPA (bug #143378).
+
+*jpgraph-2.1.3 (25 Sep 2006)
+
+  25 Sep 2006; Sebastian Bergmann <sebastian@gentoo.org>
+  -jpgraph-2.1.1.ebuild, -jpgraph-2.1.2.ebuild, +jpgraph-2.1.3.ebuild:
+  Version bump.
+
+*jpgraph-2.1.2 (07 Aug 2006)
+
+  07 Aug 2006; Sebastian Bergmann <sebastian@gentoo.org>
+  +jpgraph-2.1.2.ebuild:
+  Version bump, closes bug #143074.
+
+  29 Jun 2006; Guy Martin <gmsoft@gentoo.org> jpgraph-2.1.1.ebuild:
+  Added ~hppa to KEYWORDS.
+
+  21 Apr 2006; Thomas Cort <tcort@gentoo.org> jpgraph-2.1.1.ebuild:
+  Added ~alpha keyword wrt Bug #121023.
+
+*jpgraph-2.1.1 (20 Feb 2006)
+
+  20 Feb 2006; Sebastian Bergmann <sebastian@gentoo.org>
+  +jpgraph-2.1.1.ebuild:
+  Version bump.
+
+*jpgraph-2.0 (11 Feb 2006)
+
+  11 Feb 2006; Sebastian Bergmann <sebastian@gentoo.org>
+  -jpgraph-2.0_beta.ebuild, +jpgraph-2.0.ebuild:
+  Version bump.
+
+  03 Feb 2006; <nixnut@gentoo.org> jpgraph-2.0_beta.ebuild:
+  Added ~ppc keyword. bug 121023
+
+  01 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  jpgraph-2.0_beta.ebuild:
+  Keyworded ~sparc wrt #121023
+
+  26 Nov 2005; Luca Longinotti <chtekk@gentoo.org> jpgraph-2.0_beta.ebuild:
+  Sync with PHP overlay.
+
+  24 Sep 2005; Marcus D. Hanwell <cryos@gentoo.org> jpgraph-2.0_beta.ebuild:
+  Marked ~amd64.
+
+*jpgraph-2.0_beta (18 Sep 2005)
+
+  18 Sep 2005; Benedikt Boehm <hollow@gentoo.org> +metadata.xml,
+  +jpgraph-2.0_beta.ebuild:
+  initial version

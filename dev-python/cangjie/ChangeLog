@@ -1,0 +1,25 @@
+# ChangeLog for dev-python/cangjie
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cangjie/ChangeLog,v 1.5 2015/06/07 10:53:26 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> cangjie-1.1.ebuild,
+  cangjie-1.2.ebuild:
+  Drop old Python implementations
+
+*cangjie-1.2 (01 Mar 2015)
+
+  01 Mar 2015; Yixun Lan <dlan@gentoo.org> +cangjie-1.2.ebuild,
+  +files/cangjie-1.2-cython-022.patch, metadata.xml:
+  version bump, bug 541390, fix cython-0.22 err, thanks Brendan Horan
+
+  08 Jul 2014; Naohiro Aota <naota@gentoo.org> cangjie-1.1.ebuild:
+  Restrict cython version #514638
+
+*cangjie-1.1 (16 Apr 2014)
+
+  16 Apr 2014; Naohiro Aota <naota@gentoo.org> +cangjie-1.1.ebuild,
+  +metadata.xml:
+  Add dev-python/cangjie written by Brendan Horan. #506722

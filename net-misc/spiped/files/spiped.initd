@@ -1,0 +1,46 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/spiped/files/spiped.initd,v 1.1 2015/03/05 16:24:03 monsieurp Exp $
+
+KEYFILE=${KEYFILE:="/etc/spiped/keyfile"}
+SPIPED_USER=${SPIPED_USER:="nobody"}
+PIDFILE="/run/spiped/spiped.pid"
+
+command="spiped"
+command_args="${OPTS} -s [${SRCHOST}]:${SRCPORT} -t ${TARGETHOST}:${TARGETPORT} -k ${KEYFILE} -p ${PIDFILE}"
+
+depend() {
+	use net
+	before logger
+}
+
+checkconfig() {
+  if [[ ! "$IS_CONFIGURED" == "yes" ]]; then
+    eerror "You need to setup /etc/conf.d/spiped first!"
+    return 1
+  fi
+}
+
+start() {
+	checkconfig || return 1
+
+	ebegin "Starting ${SVCNAME}"
+	checkpath -d -o "${SPIPED_USER}" -m750 "$(dirname "${PIDFILE}")"
+
+	start-stop-daemon --start \
+		--user ${SPIPED_USER} \
+		--pidfile ${PIDFILE} \
+		--exec $command -- $command_args
+        
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+        
+	start-stop-daemon --stop \
+		--pidfile ${PIDFILE}
+        
+	eend $?
+}

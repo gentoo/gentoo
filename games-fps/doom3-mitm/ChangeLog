@@ -1,0 +1,35 @@
+# ChangeLog for games-fps/doom3-mitm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/doom3-mitm/ChangeLog,v 1.7 2014/04/03 19:56:55 ulm Exp $
+
+  03 Apr 2014; Ulrich Müller <ulm@gentoo.org> doom3-mitm-20070129.ebuild:
+  Fix LICENSE, bug 505634.
+
+  10 Oct 2009; Tristan Heaven <nyhm@gentoo.org> doom3-mitm-20070129.ebuild:
+  Stable on amd64/x86
+
+*doom3-mitm-20070129 (07 Oct 2009)
+
+  07 Oct 2009; Tristan Heaven <nyhm@gentoo.org> +doom3-mitm-20070129.ebuild:
+  Version bump
+
+  24 Jul 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  doom3-mitm-20060328.ebuild:
+  EAPI=2; replace built_with_use with use-based deps
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> doom3-mitm-20060328.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  15 Feb 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  doom3-mitm-20060328.ebuild:
+  Marking stable on amd64/x86 as there's no code differences, just ebuild
+  differences, and this has been in the tree for a long time with no bugs
+  filed.
+
+*doom3-mitm-20060328 (15 Nov 2006)
+
+  15 Nov 2006; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +doom3-mitm-20060328.ebuild:
+  Initial import. Ebuild by Paul Bredbury <brebs@sent.com> and ported to the
+  new games-mods eclass by me. Closing bug #129130.
+

@@ -1,0 +1,9 @@
+# ChangeLog for dev-java/reflections
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/reflections/ChangeLog,v 1.1 2015/03/19 23:25:25 chewi Exp $
+
+*reflections-0.9.9 (19 Mar 2015)
+
+  19 Mar 2015; James Le Cuirot <chewi@gentoo.org> +metadata.xml,
+  +reflections-0.9.9.ebuild:
+  New package. Required for testing the latest dev-java/jna.

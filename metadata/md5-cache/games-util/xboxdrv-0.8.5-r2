@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare setup
+DEPEND=dev-libs/boost dev-libs/dbus-glib:= virtual/libudev:= sys-apps/dbus:= dev-libs/glib:2= virtual/libusb:1= x11-libs/libX11:= virtual/pkgconfig dev-util/scons virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Userspace Xbox 360 Controller driver
+EAPI=5
+HOMEPAGE=http://pingus.seul.org/~grumbel/xboxdrv/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/boost dev-libs/dbus-glib:= virtual/libudev:= sys-apps/dbus:= dev-libs/glib:2= virtual/libusb:1= x11-libs/libX11:=
+SLOT=0
+SRC_URI=http://pingus.seul.org/~grumbel/xboxdrv/xboxdrv-linux-0.8.5.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	scons-utils	988e24b9e2e4642189b4e97c03e5ae71	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	udev	da001465a2e939c93f7ae16947ce3438	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=21c20b033341f7e0d64929954adc806d

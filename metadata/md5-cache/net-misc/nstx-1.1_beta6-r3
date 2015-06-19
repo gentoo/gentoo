@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst setup unpack
+DEPEND=virtual/os-headers
+DESCRIPTION=IP over DNS tunnel
+HOMEPAGE=http://dereference.de/nstx/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=virtual/os-headers
+SLOT=0
+SRC_URI=http://dereference.de/nstx/nstx-1.1-beta6.tgz mirror://debian/pool/main/n/nstx/nstx_1.1-beta6-5.diff.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=62cde64c3cdb57881290c0c9ba67c054

@@ -1,0 +1,14 @@
+DEFINED_PHASES=install nofetch setup unpack
+DEPEND=>=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=ICA Client for Citrix Presentation servers
+EAPI=5
+HOMEPAGE=http://www.citrix.com/
+IUSE=nsplugin linguas_de linguas_ja
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=icaclient
+RDEPEND=x11-terms/xterm media-fonts/font-adobe-100dpi media-fonts/font-misc-misc media-fonts/font-cursor-misc media-fonts/font-xfree86-type1 media-fonts/font-misc-ethiopic amd64? ( nsplugin? ( www-plugins/nspluginwrapper ) ) >=app-crypt/mit-krb5-1.12.1-r2[abi_x86_32(-)] >=dev-libs/atk-2.10.0[abi_x86_32(-)] >=dev-libs/glib-2.38.2-r1:2[abi_x86_32(-)] >=media-libs/alsa-lib-1.0.27.2[abi_x86_32(-)] >=media-libs/gst-plugins-base-0.10.36:0.10[abi_x86_32(-)] >=media-libs/gstreamer-0.10.36-r2:0.10[abi_x86_32(-)] >=media-libs/libogg-1.3.0[abi_x86_32(-)] >=media-libs/libvorbis-1.3.3-r1[abi_x86_32(-)] >=media-libs/speex-1.2_rc1-r1[abi_x86_32(-)] >=virtual/ffmpeg-9-r1[abi_x86_32(-)] >=x11-libs/cairo-1.12.14-r4[abi_x86_32(-)] >=x11-libs/gdk-pixbuf-2.30.7:2[abi_x86_32(-)] >=x11-libs/gtk+-2.24.23:2[abi_x86_32(-)] >=x11-libs/libICE-1.0.8-r1[abi_x86_32(-)] >=x11-libs/libSM-1.2.1-r1[abi_x86_32(-)] >=x11-libs/libX11-1.6.2[abi_x86_32(-)] >=x11-libs/libXaw-1.0.11-r2[abi_x86_32(-)] >=x11-libs/libXext-1.3.2[abi_x86_32(-)] >=x11-libs/libXinerama-1.1.3[abi_x86_32(-)] >=x11-libs/libXmu-1.1.1-r1[abi_x86_32(-)] >=x11-libs/libXp-1.0.2[abi_x86_32(-)] >=x11-libs/libXpm-3.5.10-r1[abi_x86_32(-)] >=x11-libs/libXrender-0.9.8[abi_x86_32(-)] >=x11-libs/libXt-1.1.4[abi_x86_32(-)] >=x11-libs/motif-2.3.4-r1:0[abi_x86_32(-)] >=x11-libs/pango-1.36.3[abi_x86_32(-)] media-libs/flac[abi_x86_32(-)]
+RESTRICT=mirror strip userpriv fetch
+SLOT=0
+SRC_URI=x86? ( ICAClient-12.1.0-0.i386.rpm ) amd64? ( ICAClient_12.1.0-0.x86_64.rpm )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	rpm	b94b54b44f14d6bee3e966c8f5c86fba	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=c63399ef38500d0aea8e7a4ee37c8d7d

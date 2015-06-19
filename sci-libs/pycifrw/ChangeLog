@@ -1,0 +1,37 @@
+# ChangeLog for sci-libs/pycifrw
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/pycifrw/ChangeLog,v 1.8 2015/06/04 10:58:25 jlec Exp $
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+*pycifrw-4.1.1 (22 Feb 2015)
+
+  22 Feb 2015; Justin Lecher <jlec@gentoo.org> +pycifrw-4.1.1.ebuild,
+  -pycifrw-3.3-r1.ebuild:
+  Version Bump, #540834; Improve DESCRIPTION, #540836
+
+*pycifrw-3.6.2 (06 Jul 2014)
+
+  06 Jul 2014; Justin Lecher <jlec@gentoo.org> pycifrw-3.3-r1.ebuild,
+  +pycifrw-3.6.2.ebuild, metadata.xml:
+  Add missing dep on setuptools, #514782; Version Bump
+
+  25 Feb 2012; Patrick Lauer <patrick@gentoo.org> pycifrw-3.3-r1.ebuild:
+  Restricting pypy and jython
+
+  10 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pycifrw-3.3-r1.ebuild:
+  Update EAPI. Fix dependencies.
+
+*pycifrw-3.3-r1 (29 Apr 2010)
+
+  29 Apr 2010; Justin Lecher <jlec@gentoo.org> -pycifrw-3.3.ebuild,
+  +pycifrw-3.3-r1.ebuild:
+  Corrected usage of PYTHON_MODNAME, restrict to <python-3
+
+*pycifrw-3.3 (28 Apr 2010)
+
+  28 Apr 2010; Justin Lecher <jlec@gentoo.org> +pycifrw-3.3.ebuild,
+  +metadata.xml:
+  Initial commit

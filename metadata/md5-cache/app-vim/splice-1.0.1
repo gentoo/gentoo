@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm prepare setup
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: resolve conflicts during three-way merges
+EAPI=5
+HOMEPAGE=http://sjl.bitbucket.org/splice.vim/ http://vim.sourceforge.net/scripts/script.php?script_id=4026
+IUSE=python_targets_python2_7
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=|| ( app-editors/vim[python] app-editors/gvim[python] ) || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=mirror://gentoo/splice-1.0.1.tar.bz2 http://dev.gentoo.org/~radhermit/vim/splice-1.0.1.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	7a178335dbd6ea7f50ed4e3e1c13c1e4	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=66c953bd84e76ed6f8f89bb3c8a8f7e4

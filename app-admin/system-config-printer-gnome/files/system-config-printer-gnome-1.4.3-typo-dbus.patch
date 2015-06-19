@@ -1,0 +1,21 @@
+From 27b6803432fcbf3593f96d85645485766c1f1d0f Mon Sep 17 00:00:00 2001
+From: Tim Waugh <twaugh@redhat.com>
+Date: Fri, 25 Oct 2013 15:27:30 +0000
+Subject: Fixed typo in D-Bus signature decorator (bug #1023449).
+
+---
+diff --git a/scp-dbus-service.py b/scp-dbus-service.py
+index 28b3c15..00a084e 100644
+--- a/scp-dbus-service.py
++++ b/scp-dbus-service.py
+@@ -367,7 +367,7 @@ class ConfigPrintingNewPrinterDialog(dbus.service.Object):
+         pass
+ 
+     @dbus.service.signal(dbus_interface=CONFIG_NEWPRINTERDIALOG_IFACE,
+-                         signature='a{s}')
++                         signature='a(s)')
+     def DriverDownloadChecked(self, installed_files):
+         pass
+ 
+--
+cgit v0.9.2

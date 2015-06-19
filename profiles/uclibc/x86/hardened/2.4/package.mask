@@ -1,0 +1,4 @@
+>=sys-kernel/linux-headers-2.5
+>=sys-kernel/gentoo-sources-2.5
+>=sys-kernel/hardened-sources-2.5
+>=sys-kernel/vanilla-sources-2.5

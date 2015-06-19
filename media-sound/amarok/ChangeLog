@@ -1,0 +1,2210 @@
+# ChangeLog for media-sound/amarok
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/amarok/ChangeLog,v 1.479 2015/06/04 19:04:14 kensington Exp $
+
+  04 Jun 2015; Michael Palimaka <kensington@gentoo.org> amarok-2.8.0-r3.ebuild:
+  Move various kde-base packages to kde-apps.
+
+  16 Feb 2015; Johannes Huber <johu@gentoo.org> -amarok-2.8.0.ebuild:
+  Remove old.
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org> amarok-2.8.0-r3.ebuild:
+  Stable for ppc, wrt bug #517344
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org> amarok-2.8.0-r3.ebuild:
+  Stable for x86, wrt bug #517344
+
+  29 Jan 2015; Johannes Huber <johu@gentoo.org> -amarok-2.8.0-r1.ebuild,
+  -amarok-2.8.0-r2.ebuild, amarok-2.8.0-r3.ebuild, amarok-2.8.0.ebuild:
+  Adjust use dependencies to handle >=app-crypt/qca-2.1. Remove old.
+
+  13 Dec 2014; Manuel Rüger <mrueg@gentoo.org> amarok-2.8.0-r3.ebuild:
+  Add support for kde applications dependency.
+
+  12 Dec 2014; Mikle Kolyada <zlogene@gentoo.org> amarok-2.8.0-r3.ebuild:
+  amd64 stable wrt bug #517344
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> amarok-2.8.0-r1.ebuild,
+  amarok-2.8.0-r2.ebuild, amarok-2.8.0-r3.ebuild, amarok-2.8.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*amarok-2.8.0-r3 (30 Jul 2014)
+
+  30 Jul 2014; Brian Evans <grknight@gentoo.org> +amarok-2.8.0-r3.ebuild,
+  +files/amarok-2.8.0-mysqld-rpath.patch:
+  Revision bump to fix libmysqld rpath.  Patch by Gabriel Marcano
+  <gabemarcano@yahoo.com> from bug 508824. Ack by  jmbsvicetto
+
+  17 Jul 2014; Michael Palimaka <kensington@gentoo.org> amarok-2.8.0-r2.ebuild:
+  Remove workaround now handled in the eclass.
+
+*amarok-2.8.0-r2 (13 May 2014)
+
+  13 May 2014; Johannes Huber <johu@gentoo.org> +amarok-2.8.0-r2.ebuild,
+  metadata.xml:
+  Revision bump introduces USE flag nepomuk, bug #508350.
+
+*amarok-2.8.0-r1 (14 Mar 2014)
+
+  14 Mar 2014; Johannes Huber <johu@gentoo.org> +amarok-2.8.0-r1.ebuild,
+  +files/amarok-2.8.0-gmock-1.7.patch:
+  Revision bump marks pax on /usr/bin/amarok, bug #481592. Adds a patch to
+  unbreak build of tests with gmock-1.7.
+
+  13 Dec 2013; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove unneeded useflag from metadata.xml
+
+  12 Dec 2013; Patrick Lauer <patrick@gentoo.org> -amarok-2.7.1-r1.ebuild:
+  Remove old version with unsatisfied dependencies
+
+  10 Dec 2013; Agostino Sarubbo <ago@gentoo.org> amarok-2.8.0.ebuild:
+  Stable for ppc, wrt bug #484884
+
+  09 Dec 2013; Agostino Sarubbo <ago@gentoo.org> amarok-2.8.0.ebuild:
+  Stable for x86, wrt bug #484884
+
+  08 Dec 2013; Agostino Sarubbo <ago@gentoo.org> amarok-2.8.0.ebuild:
+  Stable for amd64, wrt bug #484884
+
+  23 Nov 2013; Johannes Huber <johu@gentoo.org> amarok-2.8.0.ebuild:
+  Restore USE semantic-desktop. Add virtual dbus for test.
+
+  21 Aug 2013; Michael Palimaka <kensington@gentoo.org> -amarok-2.5.0-r4.ebuild,
+  -amarok-2.6.0.ebuild, -amarok-2.7.0.ebuild, -amarok-2.7.1.ebuild,
+  -files/amarok-2.5.0-fix-context-view-on-startup.patch,
+  -files/amarok-2.5.0-kde48.patch, -files/amarok-2.5.0-qtdebug.patch:
+  Remove old.
+
+*amarok-2.7.1-r1 (19 Aug 2013)
+
+  19 Aug 2013; Manuel Rüger <mrueg@gentoo.org> +amarok-2.7.1-r1.ebuild:
+  Straight to stable revision bump, as KDE SC 4.11.0 and <amarok-2.8 don't work
+  well together
+
+  18 Aug 2013; Manuel Rüger <mrueg@gentoo.org> amarok-2.8.0.ebuild:
+  Style fixes
+
+*amarok-2.8.0 (18 Aug 2013)
+
+  18 Aug 2013; Manuel Rüger <mrueg@gentoo.org> +amarok-2.8.0.ebuild:
+  Version bump
+
+  01 Jul 2013; Agostino Sarubbo <ago@gentoo.org> amarok-2.7.1.ebuild:
+  Stable for ppc, wrt bug #473942
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> amarok-2.7.1.ebuild:
+  Stable for x86, wrt bug #473942
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> amarok-2.7.1.ebuild:
+  Stable for amd64, wrt bug #473942
+
+  30 May 2013; Michael Palimaka <kensington@gentoo.org> amarok-2.7.1.ebuild:
+  Remove semantic-desktop USE flag from testing version.
+
+*amarok-2.7.1 (30 May 2013)
+
+  30 May 2013; Tomáš Chvátal <scarabeus@gentoo.org> +amarok-2.7.1.ebuild:
+  Update to 2.7.1.
+
+  30 May 2013; Michael Palimaka <kensington@gentoo.org> amarok-2.5.0-r4.ebuild,
+  amarok-2.6.0.ebuild, amarok-2.7.0.ebuild:
+  Add USE dependency default in preparation for the removal of the semantic-
+  desktop USE flag.
+
+  10 Apr 2013; Agostino Sarubbo <ago@gentoo.org> amarok-2.7.0.ebuild:
+  Stable for x86, wrt bug #455312
+
+  10 Apr 2013; Agostino Sarubbo <ago@gentoo.org> amarok-2.7.0.ebuild:
+  Stable for ppc, wrt bug #455312
+
+  10 Apr 2013; Agostino Sarubbo <ago@gentoo.org> amarok-2.7.0.ebuild:
+  Stable for amd64, wrt bug #455312
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> amarok-2.5.0-r4.ebuild,
+  amarok-2.6.0.ebuild, amarok-2.7.0.ebuild:
+  Move Qt dependencies to the new category
+
+  10 Feb 2013; Agostino Sarubbo <ago@gentoo.org> amarok-2.6.0.ebuild:
+  Stable for ppc, wrt bug #441392
+
+  08 Feb 2013; Agostino Sarubbo <ago@gentoo.org> amarok-2.6.0.ebuild:
+  Stable for x86, wrt bug #441392
+
+  08 Feb 2013; Agostino Sarubbo <ago@gentoo.org> amarok-2.6.0.ebuild:
+  Stable for amd64, wrt bug #441392
+
+  08 Feb 2013; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.7.0.ebuild:
+  [media-sound/amarok-2.7.0] Add virtualx dependency to fix tests. This fixes
+  all but one test (#1) - bug 455446.
+
+  18 Jan 2013; Tomáš Chvátal <scarabeus@gentoo.org> amarok-2.7.0.ebuild:
+  One more language is available.
+
+*amarok-2.7.0 (18 Jan 2013)
+
+  18 Jan 2013; Tomáš Chvátal <scarabeus@gentoo.org> +amarok-2.7.0.ebuild,
+  -amarok-2.6.90.ebuild, -files/amarok-2.6.90-fix-crash-lastfm.patch:
+  Version bump to 2.7.0. Wrt Matej request on irc.
+
+  14 Jan 2013; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +files/amarok-2.6.90-fix-crash-lastfm.patch, amarok-2.6.90.ebuild:
+  Applied reworked upstream patch by Matěj Laitl to fix a crash on startup
+  related to the lastfm port - fixes bug 451476.
+
+*amarok-2.6.90 (06 Jan 2013)
+
+  06 Jan 2013; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-2.6.90.ebuild:
+  Move amarok-2.7 beta 1 from the overlay.
+
+  10 Dec 2012; Michael Palimaka <kensington@gentoo.org> amarok-2.5.0-r4.ebuild,
+  amarok-2.6.0.ebuild:
+  Drop ppc64 keyword due to unkeyworded required dependencies.
+
+  17 Sep 2012; Johannes Huber <johu@gentoo.org> amarok-2.6.0.ebuild:
+  Raise deps on taglib wrt bug #435268.
+
+  24 Aug 2012; Chris Reffett <creffett@gentoo.org> metadata.xml:
+  Update metadata.xml to remove leading space in "equery uses", wrt bug 432506
+
+  22 Aug 2012; Johannes Huber <johu@gentoo.org> -amarok-2.4.3-r1.ebuild,
+  -files/amarok-2.3.2-fix-qt-regression.patch,
+  -files/amarok-2.3.2-flac-fix.patch,
+  -files/amarok-2.4.0.90-fix-plugin-detection.patch,
+  -files/amarok-fix-upnp-dep.patch:
+  Remove old.
+
+  22 Aug 2012; Michael Weber <xmw@gentoo.org> amarok-2.5.0-r4.ebuild:
+  ppc stable (bug 418321).
+
+*amarok-2.6.0 (11 Aug 2012)
+
+  11 Aug 2012; Tomáš Chvátal <scarabeus@gentoo.org> +amarok-2.6.0.ebuild,
+  -amarok-2.5.0-r3.ebuild, -amarok-2.5.90-r1.ebuild, -amarok-2.5.96.ebuild:
+  Add the final release. Remove RCs and overshadowed.
+
+*amarok-2.5.96 (03 Aug 2012)
+
+  03 Aug 2012; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-2.5.96.ebuild:
+  [media-sound/amarok] Version bump (2.6 RC).
+
+  19 Jul 2012; Michael Palimaka <kensington@gentoo.org> amarok-2.4.3-r1.ebuild,
+  amarok-2.5.0-r3.ebuild, amarok-2.5.0-r4.ebuild, amarok-2.5.90-r1.ebuild:
+  Add missing slot dependencies on Qt.
+
+  14 Jul 2012; Johannes Huber <johu@gentoo.org> amarok-2.5.0-r4.ebuild:
+  Stable for x86, wrt bug #418321
+
+  14 Jul 2012; Agostino Sarubbo <ago@gentoo.org> amarok-2.5.0-r4.ebuild:
+  Stable for amd64, wrt bug #418321
+
+*amarok-2.5.90-r1 (08 Jul 2012)
+*amarok-2.5.0-r4 (08 Jul 2012)
+
+  08 Jul 2012; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-2.5.0-r4.ebuild, +amarok-2.5.90-r1.ebuild,
+  +files/amarok-2.5.0-fix-context-view-on-startup.patch, amarok-2.5.0-r3.ebuild,
+  metadata.xml:
+  [media-sound/amarok-2.5.0-r3] Fix whitespace. [media-sound/amarok-2.5.0-r4]
+  revision bump to add the patch to fix clipped context view - bug 424261.
+  [media-sound/amarok-2.5.90-r1] Move from the overlay the 2.6.0-beta1 - bug
+  419509.
+
+  08 Jul 2012; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.4.3-r1.ebuild, amarok-2.5.0-r3.ebuild:
+  [media-sound/amarok] Fix media-libs/liblastfm dependency - bug 423391.
+
+  03 Jul 2012; Johannes Huber <johu@gentoo.org> amarok-2.5.0-r3.ebuild:
+  Stable for x86, wrt bug #418321
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> amarok-2.5.0-r3.ebuild:
+  Stable for amd64, wrt bug #418321
+
+*amarok-2.5.0-r3 (22 Jun 2012)
+
+  22 Jun 2012; <creffett@gentoo.org> -amarok-2.5.0-r2.ebuild,
+  +amarok-2.5.0-r3.ebuild, +files/amarok-2.5.0-qtdebug.patch:
+  Rev bump, added patch to fix Amarok crashing for bug 395575. Remove old.
+
+  26 May 2012; Alexey Shvetsov <alexxy@gentoo.org> amarok-2.5.0-r2.ebuild,
+  metadata.xml:
+  [media-sound/amarok] Allow installing with KDE SC 4.9
+
+  04 May 2012; Johannes Huber <johu@gentoo.org> -amarok-2.4.0.ebuild,
+  -amarok-2.4.3.ebuild, -amarok-2.5.0-r1.ebuild, -amarok-2.5.0.ebuild,
+  amarok-2.4.3-r1.ebuild, amarok-2.5.0-r2.ebuild:
+  Remove old. Migrate to virtual/pkgconfig.
+
+  17 Apr 2012; Brent Baude <ranger@gentoo.org> amarok-2.4.3-r1.ebuild:
+  Marking amarok-2.4.3-r1 ppc for bug 389997
+
+  16 Apr 2012; Brent Baude <ranger@gentoo.org> amarok-2.4.3.ebuild:
+  Marking amarok-2.4.3 ppc for bug 389997
+
+*amarok-2.5.0-r2 (09 Feb 2012)
+
+  09 Feb 2012; Johannes Huber <johu@gentoo.org> +amarok-2.5.0-r2.ebuild,
+  +files/amarok-2.5.0-kde48.patch:
+  Rev bump, adds upstream patch for gui issues with kde 4.8, fixes bug #402131.
+
+  14 Jan 2012; Thomas Kahle <tomka@gentoo.org> amarok-2.4.3-r1.ebuild:
+  x86 stable per bug 389997
+
+  31 Dec 2011; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.5.0-r1.ebuild:
+  [media-sound/amarok-2.5.0-r1] Added missing libofa dependency and configure
+  switch. Thanks to Matěj Laitl again - bug 395369.
+
+  28 Dec 2011; Agostino Sarubbo <ago@gentoo.org> amarok-2.4.3-r1.ebuild:
+  Stable for AMD64, wrt bug #389997
+
+*amarok-2.5.0-r1 (28 Dec 2011)
+*amarok-2.4.3-r1 (28 Dec 2011)
+
+  28 Dec 2011; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-2.4.3-r1.ebuild, +amarok-2.5.0-r1.ebuild, metadata.xml:
+  [media-sound/amarok] Drop the player use flag until upstream allows to
+  disable the player again. Apply Matěj Laitl's patch to amarok-2.5.0.
+
+*amarok-2.5.0 (20 Dec 2011)
+
+  20 Dec 2011; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.4.0.ebuild, amarok-2.4.3.ebuild, +amarok-2.5.0.ebuild:
+  [media-sound/amarok] Bump to the 2.5.0 release.
+  Dropped ~ppc64 keywords as all KDE versions are masked on the ppc64 arch.
+
+  08 Nov 2011; Andreas K. Huettel <dilfridge@gentoo.org> amarok-2.4.3.ebuild:
+  No use-deps on strigi, bug 386259
+
+  28 Oct 2011; Jonathan Callen <abcd@gentoo.org> -amarok-2.4.1.ebuild,
+  -amarok-2.3.2-r1.ebuild:
+  remove old
+
+  24 Oct 2011; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.4.3.ebuild:
+  [media-sound/amarok] Replace the mysql dependency - bug 388059.
+
+  23 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org> amarok-2.4.0.ebuild,
+  amarok-2.4.1.ebuild, amarok-2.4.3.ebuild:
+  Add dependency on kde-base/kdebase-kioslaves, bug 374399
+
+*amarok-2.4.3 (01 Aug 2011)
+
+  01 Aug 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  -amarok-2.4.0.90.ebuild, +amarok-2.4.3.ebuild:
+  Version bump, remove old
+
+  01 Jun 2011; Brent Baude <ranger@gentoo.org> amarok-2.4.0.ebuild:
+  Marking amarok-2.4.0 ppc stable for bug 354033
+
+  09 May 2011; Markos Chandras <hwoarang@gentoo.org> amarok-2.4.0.ebuild:
+  Stable on amd64 wrt bug #354033
+
+  09 May 2011; Thomas Kahle <tomka@gentoo.org> amarok-2.4.0.ebuild:
+  x86 stable per bug 354033
+
+*amarok-2.4.1 (08 May 2011)
+
+  08 May 2011; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.4.0.90.ebuild, +amarok-2.4.1.ebuild,
+  +files/amarok-fix-upnp-dep.patch:
+  Bumped amarok to the 2.4.1 release.
+  Renamed the patch to fix the upnp detection.
+
+  26 Apr 2011; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.4.0.90.ebuild:
+  [media-sound/amarok-2.4.0.90] Added keywords back to ebuild.
+
+  20 Apr 2011; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.3.2-r1.ebuild, amarok-2.4.0.ebuild, amarok-2.4.0.90.ebuild:
+  Dropped the dev-db/{mysql,mariadb} dep for use flag embedded and unified it
+  on the virtual/mysql dep.
+  Moved from the dev-db/mysql[minimal] check on pkg_postinst to
+  virtual/mysql[minimal] now that I've added the minimal use flag to the
+  virtual/mysql ebuilds.
+  Added the handbook use flag which should fix bug 354035. Thanks to Andreas
+  Hüttel for the help.
+
+  20 Apr 2011; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.4.0.90.ebuild, +files/amarok-2.4.0.90-fix-plugin-detection.patch:
+  Added upstream patch to fix the plugin detection at startup.
+
+  20 Apr 2011; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  files/amarok-2.4.0.90-fix-upnp-dep.patch:
+  Updated upnp patch so cmake can find the HUpnp include dir.
+
+*amarok-2.4.0.90 (19 Apr 2011)
+
+  19 Apr 2011; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.3.2-r1.ebuild, amarok-2.4.0.ebuild, +amarok-2.4.0.90.ebuild,
+  +files/amarok-2.4.0.90-fix-upnp-dep.patch, metadata.xml:
+  Bumped amarok to the 2.4.0.90 release (2.4.1 beta 1).
+  Added a patch to get upnp support - not working yet.
+
+  02 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org> amarok-2.3.2-r1.ebuild,
+  amarok-2.4.0.ebuild:
+  EAPI3, sync with live ebuild about git eclass handling, use add_kdebase_dep
+
+  14 Jan 2011; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.4.0.ebuild:
+  [media-sound/amarok-2.4.0] Fix SRC_URI. Fixes bug 351618 - thanks to
+  ScytheMan (scytheman666 AT gmail DOT com).
+
+*amarok-2.4.0 (12 Jan 2011)
+
+  12 Jan 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  -amarok-2.3.1-r2.ebuild, -amarok-2.3.1.90.ebuild,
+  -files/amarok-2.3.1-fix-trayicon.patch, +amarok-2.4.0.ebuild,
+  -files/amarok-fix-accessibility-dep.patch:
+  Version bump, remove old ebuilds and patches
+
+  21 Nov 2010; Thomas Kahle <tomka@gentoo.org> amarok-2.3.2-r1.ebuild:
+  x86 stable per bug 346233
+
+  21 Nov 2010; Markos Chandras <hwoarang@gentoo.org> amarok-2.3.2-r1.ebuild:
+  Stable on amd64 wrt bug #346233
+
+  06 Oct 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.3.2-r1.ebuild:
+  [media-sound/amarok-2.3.2-r1] If we want to build amarok with embedded
+  support, we have to depend on mysql/maria[embedded].
+
+  06 Oct 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  -amarok-2.3.2.ebuild:
+  b0rk3d
+
+  06 Oct 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.3.2-r1.ebuild:
+  [media-sound/amarok-2.3.2-r1] If we want to build amarok with embedded
+  support, we have to depend on mysql/maria[embedded].
+
+  06 Oct 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.3.2-r1.ebuild:
+  [media-sound/amarok-2.3.2-r1] Updated the EGIT_REPO_URI as upstream
+  changed the git location.
+
+*amarok-2.3.2-r1 (27 Sep 2010)
+
+  27 Sep 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-2.3.2-r1.ebuild, +files/amarok-2.3.2-fix-qt-regression.patch:
+  [media-sound/amarok-2.3.2-r1] Now that we finally have working patches for
+  mariadb and mysql 5.1.50,
+  fixed the embedded deps and added embedded to IUSE defaults.
+  Added an upstream patch to fix issues with the collection scanning caused
+  by a QT bug/regression -
+  https://bugs.kde.org/show_bug.cgi?id=251762#c10
+
+  19 Sep 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.3.1.90.ebuild:
+  [media-sound/amarok-2.3.1.90] Revert the unintentional drop of the
+  embedded USE flag dependencies.
+
+*amarok-2.3.2 (19 Sep 2010)
+
+  19 Sep 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.3.1.90.ebuild, +amarok-2.3.2.ebuild,
+  +files/amarok-2.3.2-flac-fix.patch:
+  [media-sound/amarok-2.3.2] Bumped amarok to the 2.3.2 release - masked
+  until the public release.
+  Applied commit ce57e426 from the git tree to fix a BMP tag bug related to
+  flac files - thanks to Jeff Mitchell <mitchell AT kde DOT org>.
+
+  24 Aug 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.3.1-r2.ebuild:
+  Fixed amarok-2.3.1-r2 SRC_URI: unstable -> stable.
+
+*amarok-2.3.1.90 (24 Aug 2010)
+
+  24 Aug 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-2.3.1.90.ebuild:
+  Added amarok 2.3.1.90 (2.3.2 Beta1).
+
+  10 Aug 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -amarok-2.2.2-r1.ebuild, -files/amarok-2.2.2-nodebug.patch,
+  -files/amarok-2.2-mysql-libs.patch,
+  -files/amarok-2.3.0-crash_fix_info_applet.patch, -amarok-2.3.1.ebuild,
+  -amarok-2.3.1-r1.ebuild, -files/amarok-qtscriptcheck.patch:
+  Cleanup old stuff.
+
+  30 Jul 2010; Markos Chandras <hwoarang@gentoo.org> amarok-2.3.1-r2.ebuild:
+  Stable on amd64 wrt bug #329853
+
+  27 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  amarok-2.3.1-r2.ebuild:
+  stable x86, bug 329853
+
+  11 Jul 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.3.1-r2.ebuild, files/amarok-2.3.1-fix-trayicon.patch:
+  Updated the fix-trayicon patch to include all the 4 commits by Kevin Funk
+  available from http://krf.kollide.net/files/work/amarok/
+
+*amarok-2.3.1-r2 (11 Jul 2010)
+
+  11 Jul 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-2.3.1-r2.ebuild, +files/amarok-2.3.1-fix-trayicon.patch:
+  Added missing deps for dev-util/automoc and dev-util/pkgconfig. Thanks to
+  Nikoli <nikoli@lavabit.com> - fixes bug 324883.
+  Added a patch to fix the missing tray icon in non-KDE environments. Thanks
+  to Rex Dieter for the heads up in the amarok-packagers ml and Kevin Funk
+  for the patch - fixes bug 325371.
+  Fixed the available linguas list. Thanks to MarisN <maris.gis@gmail.com> -
+  fixes bug 326147.
+
+  07 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  amarok-2.3.1-r1.ebuild:
+  Keyword ~ppc64 wrt #280552, thanks to Andreas Thalhammer and Jorge Manuel
+  B. S. Vicetto.
+
+  19 Jun 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.3.1-r1.ebuild:
+  [media-sound/amarok-2.3.1-r1] Synced some changes from the live ebuild in
+  the overlay:
+  updated the git repo now that amarok moved from gitorious to kde and
+  dropped a comment.
+
+  13 Jun 2010; Maciej Mrozowski <reavertm@gentoo.org>
+  amarok-2.3.1-r1.ebuild:
+  Amarok utils require Qt4, drop implicit Qt dep caused by OPENGL_REQUIRED
+  and replace it by explicit dependency, nepomuk is pulled by
+  kdelibs[semantic-desktop] already
+
+  12 Jun 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.3.1-r1.ebuild:
+  [media-sound/amarok-2.3.1-r1] Moved media-sound/amarok-utils block to
+  RDEPEND.
+
+  12 Jun 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  -amarok-2.2.0.ebuild, -amarok-2.2.2.ebuild, -amarok-2.2.2.90.ebuild,
+  -amarok-2.3.0.ebuild, -amarok-2.3.0-r1.ebuild, -amarok-2.3.0.90.ebuild:
+  [media-sound/amarok] Dropped old ebuilds.
+
+  12 Jun 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.3.1-r1.ebuild:
+  [media-sound/amarok-2.3.1-r1] Fix cmake call for utils - utilities !=
+  utils.
+
+*amarok-2.3.1-r1 (12 Jun 2010)
+
+  12 Jun 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-2.3.1-r1.ebuild, +files/amarok-fix-accessibility-dep.patch,
+  metadata.xml:
+  [media-sound/amarok-2.3.1-r1] Merged amarok and amarok-utils. Applied
+  patch to drop the accessibility requirement - should fix bug 319803.
+  Reviewed mysql deps to allow for mariadb - fixes bug 320807. Applied
+  minimal-toc cflag to avoid issues on ppc64 - should fix bug 280552.
+  Testing for this masked version is welcomed.
+
+  09 Jun 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.3.1.ebuild:
+  [media-sound/amarok-2.3.1] Added a hard dep on
+  x11-libs/qt-gui[accessibility] to fix the build issues as some UI dialogs
+  require it. Should fix bug 319803.
+
+*amarok-2.3.1 (28 May 2010)
+
+  28 May 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-2.3.1.ebuild:
+  [media-sound/amarok] Bumped to the 2.3.1 release.
+
+  18 May 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.3.0.90.ebuild:
+  Sort dependency order.
+
+  19 Apr 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.3.0.90.ebuild:
+  [media-sound/amarok-2.3.0.90] Fixing SRC_URI as betas are in the unstable
+  tree - thanks to Torsten (tove).
+
+*amarok-2.3.0.90 (17 Apr 2010)
+
+  17 Apr 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-2.3.0.90.ebuild:
+  [media-sound/amarok] Bumped to the 2.3.1 Beta 1 (2.3.0.90) release.
+
+*amarok-2.3.0-r1 (28 Mar 2010)
+
+  28 Mar 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-2.3.0-r1.ebuild, +files/amarok-2.3.0-crash_fix_info_applet.patch:
+  Applied upstream patch to fix a crash on startup on the info applet caused
+  by a Qt bug.
+
+*amarok-2.3.0 (15 Mar 2010)
+
+  15 Mar 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-2.3.0.ebuild:
+  Bumped amarok to the 2.3.0 release.
+
+  01 Mar 2010; Dror Levin <spatz@gentoo.org> amarok-2.2.2-r1.ebuild,
+  amarok-2.2.2.90.ebuild:
+  Fix !use space issue, bug 306681.
+
+  27 Feb 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  amarok-2.2.2.90.ebuild:
+  Disable + from embedded USE flag (it's not the default recommended in
+  2.3pre releases)
+
+  25 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  amarok-2.2.2-r1.ebuild:
+  stable x86, bug 305909
+
+  23 Feb 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.2.2-r1.ebuild, amarok-2.2.2.90.ebuild:
+  Reviewed mysql deps and added a few postinst warnings.
+
+  23 Feb 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.2.2-r1.ebuild, amarok-2.2.2.90.ebuild:
+  Fixed mysql deps and dropped support for mysql-community - fixes bug
+  306155.
+
+  23 Feb 2010; Joseph Jezak <josejx@gentoo.org> amarok-2.2.2-r1.ebuild,
+  amarok-2.2.2.90.ebuild:
+  Marked ~ppc for bug #280552.
+
+  22 Feb 2010; Robin H. Johnson <robbat2@gentoo.org> amarok-2.2.0.ebuild,
+  amarok-2.2.2.ebuild, amarok-2.2.2-r1.ebuild, amarok-2.2.2.90.ebuild:
+  Bug #306155 workaround: Update MySQL dep to prevent MySQL 5.1 from being
+  considered as a dep solution, due to the lack of a functional
+  shared-embedded patch at this time.
+
+  20 Feb 2010; Samuli Suominen <ssuominen@gentoo.org>
+  amarok-2.2.2-r1.ebuild:
+  amd64 stable wrt #305909
+
+  20 Feb 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.2.2.90.ebuild:
+  Restricted tests for amarok-2.2.2.90 as we don't have a required dep in
+  the tree ( gmock - http://code.google.com/p/gmock/ ).
+  Fixes bug 305979 - thanks to Ryan for reporting.
+
+*amarok-2.2.2-r1 (19 Feb 2010)
+
+  19 Feb 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-2.2.2-r1.ebuild:
+  Rev-bumped amarok-2.2.2 to fix the deps and to ask for a quick
+  stabilization.
+  Fixed strigi deps (bug 304883) - thanks to Samuli.
+  Dropped the bindist use flag and added a hard dep on taglib[asf,mp4] (bug
+  299899) - thanks to Jeff Mitchell (jefferai).
+
+  19 Feb 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  -amarok-2.2.1.ebuild, -amarok-2.2.1-r1.ebuild, -amarok-2.2.1-r2.ebuild,
+  -amarok-2.2.1.90.ebuild:
+  Cleaned old versions.
+
+*amarok-2.2.2.90 (19 Feb 2010)
+
+  19 Feb 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-2.2.2.90.ebuild:
+  Bumped amarok to the 2.2.2.90 release (2.3 Beta 1).
+  Fixed strigi deps (bug 304883) - thanks to Samuli.
+  Dropped the bindist use flag and added a hard dep on taglib[asf,mp4] (bug
+  299899) - thanks to Jeff Mitchell (jefferai).
+
+  16 Feb 2010; Jonathan Callen <abcd@gentoo.org>
+  -files/amarok-1.4.9.1-libmtp-0.3.0-API.patch,
+  -files/amarok-1.4.10-gcc-4.3.patch, -files/amarok-1.4.10-gcc44.patch,
+  -files/amarok-libmp4v2.patch:
+  Drop old patches
+
+  10 Jan 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  files/amarok-2.2.2-nodebug.patch:
+  Added updated patch by Jeff Mitchell.
+
+*amarok-2.2.2 (08 Jan 2010)
+
+  08 Jan 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-2.2.2.ebuild, +files/amarok-2.2.2-nodebug.patch:
+  Bumped amarok to 2.2.2 (should be out next Monday).
+  Dropped semantic-desktop from IUSE defaults and added Jeff Mitchell patch
+  to fix some scanning issues.
+
+  23 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  -amarok-1.4.10_p20090130-r3.ebuild:
+  Drop 1.4 series amarok.
+
+*amarok-2.2.1.90 (16 Dec 2009)
+
+  16 Dec 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  +amarok-2.2.1.90.ebuild:
+  Version bump
+
+*amarok-2.2.1-r2 (01 Dec 2009)
+
+  01 Dec 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-2.2.1-r2.ebuild, +files/amarok-2.2-mysql-libs.patch:
+  Updated taglib dependency - fixes bug 293950.
+  Patched mysqlecollection to fix the build with >=binutils-2.20 - fixes bug
+  290662.
+  Should fix bug 277785.
+
+  20 Nov 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.2.1-r1.ebuild:
+  Really added kdemultimedia-kioslaves dep this time.
+
+*amarok-2.2.1-r1 (20 Nov 2009)
+
+  20 Nov 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-2.2.1-r1.ebuild:
+  Added missing app-crypt/qca:2 dep. Fixes bug #293509 - thanks to Rafael
+  <rktspm@gmail.com>.
+  Added missing kde-base/kdemultimedia-kioslaves. Fixes bug #292216 - thanks
+  to Hubert Lee <oboe-nerd@hotmail.com>.
+  Bumped revision to avoid dep tree issues.
+
+  14 Nov 2009; Theo Chatzimichos <tampakrap@gentoo.org> amarok-2.2.0.ebuild,
+  amarok-2.2.1.ebuild, +files/amarok-qtscriptcheck.patch:
+  after a long time, fix qtscript check, bug 270923, kde bug 189367
+
+*amarok-2.2.1 (14 Nov 2009)
+
+  14 Nov 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-2.2.1.ebuild:
+  Bumped amarok to release 2.2.1.
+  This release like 2.2.0 segfauls on start if built with binutils-2.20
+  (bug 290662).
+
+  09 Nov 2009; Christian Faulhammer <fauli@gentoo.org> amarok-2.2.0.ebuild:
+  stable x86, bug 290483
+
+  07 Nov 2009; Samuli Suominen <ssuominen@gentoo.org>
+  amarok-1.4.10_p20090130-r3.ebuild:
+  Remove kde-base/konqueror:3.5 support.
+
+  26 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> amarok-2.2.0.ebuild:
+  amd64 stable wrt #290483
+
+  10 Oct 2009; Raúl Porcel <armin76@gentoo.org>
+  amarok-1.4.10_p20090130-r3.ebuild:
+  sparc stable wrt #280797
+
+*amarok-2.2.0 (02 Oct 2009)
+
+  02 Oct 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-2.2.0.ebuild, metadata.xml:
+  Bumped amarok to version 2.2.0.
+
+  27 Sep 2009; Brent Baude <ranger@gentoo.org>
+  amarok-1.4.10_p20090130-r3.ebuild:
+  Marking amarok-1.4.10_p20090130-r3 ppc64 for bug 280797
+
+  29 Aug 2009; nixnut <nixnut@gentoo.org> amarok-1.4.10_p20090130-r3.ebuild:
+  ppc stable #280797
+
+  15 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  amarok-1.4.10_p20090130-r3.ebuild, +files/amarok-libmp4v2-2.patch:
+  Include string.h for strcmp wrt #281217.
+
+  15 Aug 2009; Markus Meier <maekke@gentoo.org>
+  amarok-1.4.10_p20090130-r3.ebuild:
+  amd64/x86 stable, bug #280797
+
+  22 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> amarok-2.1.ebuild,
+  amarok-2.1.1.ebuild, metadata.xml:
+  Rename USE cdaudio to USE cdda.
+
+*amarok-1.4.10_p20090130-r3 (10 Jul 2009)
+
+  10 Jul 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +files/amarok-libmp4v2.patch, +amarok-1.4.10_p20090130-r3.ebuild:
+  Added a patch to amarok-1.4.10_p20090130-r3 to support the new libmp4v2 -
+  thanks to Samuli Suominen <ssuominen@gentoo.org> for the patch.
+
+  04 Jul 2009; Raúl Porcel <armin76@gentoo.org>
+  amarok-1.4.10_p20090130-r2.ebuild:
+  sparc stable wrt #272554
+
+*amarok-2.1.1 (26 Jun 2009)
+
+  26 Jun 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  -files/2.0.1.1-ipod.patch, -amarok-2.0.2-r2.ebuild,
+  -amarok-2.0.2-r3.ebuild, -files/amarok-2.0.2-lastfm-authentication.patch,
+  +amarok-2.1.1.ebuild, -files/amarok-ipod.patch:
+  Version bump, remove old, bug 275467
+
+  13 Jun 2009; Tomáš Chvátal <scarabeus@gentoo.org> amarok-2.1.ebuild:
+  Enable KDE_LINGUAS.
+
+  11 Jun 2009; Markus Meier <maekke@gentoo.org>
+  amarok-1.4.10_p20090130-r2.ebuild:
+  amd64 stable, bug #272554
+
+  10 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  amarok-1.4.10_p20090130-r2.ebuild:
+  stable x86, bug 272554
+
+  06 Jun 2009; nixnut <nixnut@gentoo.org> amarok-1.4.10_p20090130-r2.ebuild:
+  ppc stable #272554
+
+*amarok-2.1 (04 Jun 2009)
+
+  04 Jun 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  amarok-2.0.2-r2.ebuild, amarok-2.0.2-r3.ebuild, +amarok-2.1.ebuild,
+  +files/disable_bindings_test.patch:
+  Version bump to 2.1, slot change to 4
+
+  04 Jun 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  amarok-1.4.10_p20090130-r2.ebuild:
+  Correct path by adding ${KDEDIR}
+
+  25 May 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  amarok-1.4.10_p20090130-r2.ebuild:
+  Fix typo
+
+  25 May 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  amarok-1.4.10_p20090130-r2.ebuild:
+  Fix bug 269774
+
+  13 May 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  amarok-2.0.2-r2.ebuild, amarok-2.0.2-r3.ebuild:
+  remove block for amarok-1.4
+
+*amarok-1.4.10_p20090130-r2 (13 May 2009)
+
+  13 May 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  +amarok-1.4.10_p20090130-r2.ebuild:
+  Revision bump, EAPI-2'ed, slotted and prefixed
+
+*amarok-2.0.2-r3 (24 Apr 2009)
+
+  24 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +files/amarok-2.0.2-lastfm-authentication.patch, +amarok-2.0.2-r3.ebuild:
+  Bumped amarok-2.0.2 to include a lastfm patch. Thanks to Gustavo Henrique
+  Nihei for poking me about it.
+
+  23 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  -amarok-2.0.1.1.ebuild, -amarok-2.0.2-r1.ebuild:
+  Removed old amarok-2 ebuilds now that 2.0.2-r2 is finally working for
+  everyone. Removing 2.0.1.1 should also prevent the phonon blocks.
+
+*amarok-2.0.2-r2 (22 Apr 2009)
+
+  22 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-2.0.2-r2.ebuild:
+  In order to get amarok-2.0.2 to build, I've appended --as-needed to the
+  ldflags.
+
+  15 Apr 2009; Tomas Chvatal <scarabeus@gentoo.org> amarok-2.0.2-r1.ebuild:
+  Fix typo.
+
+  15 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.0.2-r1.ebuild:
+  Adjusted minimum mysql deps.
+
+  15 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  amarok-2.0.2-r1.ebuild:
+  Disabled building the included qtscriptgenerator and added dep to the
+  separate package.
+
+  15 Apr 2009; Ryan Hill <dirtyepic@gentoo.org>
+  +files/amarok-1.4.10-gcc44.patch, amarok-1.4.10_p20090130-r1.ebuild:
+  Fix building w/ GCC 4.4 for bug #264464.
+
+*amarok-2.0.2-r1 (14 Apr 2009)
+
+  14 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +files/amarok-ipod.patch, metadata.xml, +amarok-2.0.2-r1.ebuild:
+  Added amarok-2.0.2.
+
+*amarok-1.4.10-r3 (14 Apr 2009)
+
+  14 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml, -amarok-1.4.8.ebuild, -amarok-1.4.9.1.ebuild,
+  -amarok-1.4.9.1-r1.ebuild, -amarok-1.4.10.ebuild,
+  -amarok-1.4.10-r1.ebuild, +amarok-1.4.10-r3.ebuild,
+  -amarok-1.4.10_p20090130.ebuild, amarok-1.4.10_p20090130-r1.ebuild,
+  -amarok-1.4.9999-r2.ebuild, amarok-2.0.1.1.ebuild:
+  Removed old versions of amarok-1.4 and the 1.4.9999 version as upstream
+  work on 1.4 has been stopped. Added blockers for other versions of amarok
+  to prevent the merge process from dying for colisions - fixes bug 241134.
+
+  19 Mar 2009; Brent Baude <ranger@gentoo.org> amarok-1.4.10-r2.ebuild:
+  Marking amarok-1.4.10-r2 ppc for bug 254896
+
+  16 Mar 2009; Tomas Chvatal <scarabeus@gentoo.org> amarok-2.0.1.1.ebuild:
+  Remove redundant dep. Already handled by kdelibs.
+
+  11 Mar 2009; Brent Baude <ranger@gentoo.org> amarok-1.4.10-r2.ebuild:
+  Marking amarok-1.4.10-r2 ppc64 for bug 254896
+
+  07 Mar 2009; Raúl Porcel <armin76@gentoo.org> amarok-1.4.10-r2.ebuild:
+  sparc stable wrt #254896
+
+  07 Mar 2009; Markus Meier <maekke@gentoo.org> amarok-1.4.10-r2.ebuild:
+  amd64/x86 stable, bug #254896
+
+*amarok-1.4.10-r2 (04 Mar 2009)
+
+  04 Mar 2009; Theo Chatzimichos <tampakrap@gentoo.org>
+  +files/amarok-1.4.10-audibletag.patch, +amarok-1.4.10-r2.ebuild:
+  apply audibletag.patch, security bug 254896
+
+  02 Mar 2009; Alexey Shvetsov <alexxy@gentoo.org> amarok-2.0.1.1.ebuild:
+  Fix typo
+
+  01 Mar 2009; Alexey Shvetsov <alexxy@gentoo.org> amarok-2.0.1.1.ebuild:
+  Adjust deps
+
+  01 Mar 2009; Alexey Shvetsov <alexxy@gentoo.org> amarok-2.0.1.1.ebuild:
+  Ajust deps
+
+  28 Feb 2009; Markus Meier <maekke@gentoo.org> metadata.xml:
+  semantic-desktop is a global USE-flag
+
+  10 Feb 2009; Tomas Chvatal <scarabeus@gentoo.org>
+  +files/2.0.1.1-ipod.patch, amarok-2.0.1.1.ebuild:
+  Fix ipod issue with amarok 2.0. Per bug #255730.
+
+*amarok-1.4.10_p20090130-r1 (30 Jan 2009)
+*amarok-1.4.10_p20090130 (30 Jan 2009)
+
+  30 Jan 2009; Carsten Lohrke <carlo@gentoo.org>
+  +amarok-1.4.10_p20090130.ebuild, +amarok-1.4.10_p20090130-r1.ebuild:
+  Sync to stable branch, fixing bug #256389. Desktop entry fixes.
+
+  25 Jan 2009; <jokey@gentoo.org> amarok-2.0.1.1.ebuild:
+  Revert keyword per #gentoo-dev talk
+
+  13 Jan 2009; Alexey Shvetsov <alexxy@gentoo.org> amarok-2.0.1.1.ebuild:
+  Add big fat warning about building amarok 2.0.1.1 on amd64.
+
+  13 Jan 2009; Alexey Shvetsov <alexxy@gentoo.org> amarok-2.0.1.1.ebuild:
+  Add block to mysql builded with USE=minimal. That solves bug #254820
+
+  13 Jan 2009; Alexey Shvetsov <alexxy@gentoo.org> -amarok-1.90-r1.ebuild,
+  -amarok-2.0.ebuild:
+  Drop old amarok:2 versions
+
+  13 Jan 2009; Alexey Shvetsov <alexxy@gentoo.org> amarok-2.0.1.1.ebuild:
+  cdaudio support removed from amarok by upstream
+
+*amarok-2.0.1.1 (12 Jan 2009)
+
+  12 Jan 2009; Alexey Shvetsov <alexxy@gentoo.org> +amarok-2.0.1.1.ebuild:
+  Version bump to 2.0.1.1
+
+  14 Dec 2008; Tomas Chvatal <scarabeus@gentoo.org> amarok-2.0.ebuild:
+  Block mysql compiled with minimal useflag. Fixes bug #250702.
+
+  10 Dec 2008; Tomas Chvatal <scarabeus@gentoo.org> amarok-2.0.ebuild:
+  Block amarok:0 correctly (since it was not done before at all i think it
+  does not need revbump).
+
+*amarok-2.0 (10 Dec 2008)
+
+  10 Dec 2008; Tomas Chvatal <scarabeus@gentoo.org> metadata.xml, +amarok-2.0.ebuild:
+  Version bump.
+
+  08 Dec 2008; Tomas Chvatal <scarabeus@gentoo.org> amarok-1.90-r1.ebuild:
+  Make amarok optionaly depend on qt-opengl
+
+  01 Nov 2008; Tomas Chvatal <scarabeus@gentoo.org> metadata.xml,
+  -amarok-1.90.ebuild, amarok-1.90-r1.ebuild:
+  Disabling ipod for amarok 1.9 (Bug 245112). Removing gentoofan23 from
+  maintainers.
+
+  13 Oct 2008; Thomas Anderson <gentoofan23@gentoo.org> amarok-1.90.ebuild,
+  amarok-1.90-r1.ebuild:
+  Depend on a more recent libmtp version; Amarok won't compile with
+  <media-libs/libmtp-0.3.3
+
+*amarok-1.90-r1 (11 Oct 2008)
+
+  11 Oct 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-1.90-r1.ebuild:
+  Made a revision bump for 1.90 to ensure everyone gets the fixes in
+  kde4-base.eclass that make the pkg install under KDEDIR.
+
+  10 Oct 2008; Thomas Anderson <gentoofan23@gentoo.org> amarok-1.90.ebuild:
+  Amarok needs sqlite[threadsafe], adding it.
+
+*amarok-1.90 (10 Oct 2008)
+
+  10 Oct 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +amarok-1.90.ebuild:
+  Bumped amarok to version 1.90. Version 1.92 will remain masked in the
+  ovelay due to the dep in mysql[embedded].
+
+  04 Oct 2008; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Remove duplicate flags from metadata. Some were alreay well explained in
+  length before.
+
+  03 Oct 2008; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Remove myself as maintainer.
+
+  03 Oct 2008; Thomas Anderson <gentoofan23@gentoo.org> metadata.xml:
+  Add myself as maintainer.
+
+  31 Aug 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/amarok-1.4.10-gcc-4.3.patch, amarok-1.4.10.ebuild,
+  amarok-1.4.10-r1.ebuild:
+  Fix for gcc-4.3. Bug 234784. Thanks to Martin Väth
+  <vaeth@mathematik.uni-wuerzburg.de>.
+
+  19 Aug 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  amarok-1.4.10.ebuild:
+  ppc stable, bug #234689
+
+  16 Aug 2008; Markus Rothe <corsair@gentoo.org> amarok-1.4.10.ebuild:
+  Stable on ppc64; bug #234689
+
+  15 Aug 2008; Friedrich Oslage <bluebird@gentoo.org> amarok-1.4.10.ebuild:
+  Stable on sparc, security bug #234689
+
+  15 Aug 2008; Raúl Porcel <armin76@gentoo.org> amarok-1.4.10.ebuild:
+  x86 stable wrt #234689
+
+  15 Aug 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  amarok-1.4.10.ebuild:
+  stable amd64, security bug 234689
+
+*amarok-1.4.10-r1 (14 Aug 2008)
+
+  14 Aug 2008; Carsten Lohrke <carlo@gentoo.org> +amarok-1.4.10-r1.ebuild:
+  Revision with libmtp patch...
+
+  14 Aug 2008; Carsten Lohrke <carlo@gentoo.org> amarok-1.4.10.ebuild:
+  Adjust libmtp dependency.
+
+*amarok-1.4.10 (14 Aug 2008)
+
+  14 Aug 2008; Carsten Lohrke <carlo@gentoo.org> +amarok-1.4.10.ebuild:
+  Version bump.
+
+  17 Jul 2008; Markus Rothe <corsair@gentoo.org> amarok-1.4.9.1.ebuild:
+  Stable on ppc64; bug #231061
+
+  14 Jul 2008; nixnut <nixnut@gentoo.org> amarok-1.4.9.1.ebuild:
+  Stable on ppc wrt bug 231061
+
+  08 Jul 2008; Raúl Porcel <armin76@gentoo.org> amarok-1.4.9.1.ebuild:
+  sparc stable wrt #231061
+
+  08 Jul 2008; Christian Faulhammer <opfer@gentoo.org>
+  amarok-1.4.9.1.ebuild:
+  stable x86, bug 231061
+
+  07 Jul 2008; Dawid Węgliński <cla@gentoo.org> amarok-1.4.9.1.ebuild:
+  Stable on amd64 (bug #231061)
+
+  07 Jul 2008; Diego Pettenò <flameeyes@gentoo.org> amarok-1.4.9.1.ebuild,
+  amarok-1.4.9.1-r1.ebuild:
+  Remove old and no more pertinent configure options from myconf.
+
+*amarok-1.4.9.1-r1 (05 Jul 2008)
+
+  05 Jul 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/amarok-1.4.9.1-libmtp-0.3.0-API.patch, amarok-1.4.9.1.ebuild,
+  +amarok-1.4.9.1-r1.ebuild:
+  Rev bump for libmtp-0.3.0 compat. Bug #230885.
+
+  27 May 2008; Ingmar Vanhassel <ingmar@gentoo.org>
+  files/amarok-1.4.9.1-helix+gcc-4.3.patch:
+  Fix a typo in amarok-1.4.9.1-helix+gcc-4.3.patch, as noted by Rick Harris
+  in bug 223287.
+
+  20 May 2008; Diego Pettenò <flameeyes@gentoo.org>
+  files/amarok-1.4.9.1-helix+gcc-4.3.patch:
+  Fix patch to complete building on GCC 4.3.
+
+  19 May 2008; Tiziano Müller <dev-zero@gentoo.org> amarok-1.4.8.ebuild,
+  amarok-1.4.9.1.ebuild, amarok-1.4.9999-r2.ebuild:
+  Changed dependency for postgresql to virtual/postgresql-base
+
+  15 May 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +files/amarok-1.4.9.1-helix+gcc-4.3.patch, amarok-1.4.9.1.ebuild:
+  Add patch to fix building with GCC 4.3 with the Helix engine enabled.
+  Closes bug #214278.
+
+  15 May 2008; Diego Pettenò <flameeyes@gentoo.org> amarok-1.4.9.1.ebuild,
+  amarok-1.4.9999-r2.ebuild:
+  Depend on alsa-lib when using the Helix engine, as ALSA is checked for and
+  build fails without it. As we don't support HelixPlayer itself but just
+  RealPlayer, this is no concern for non-Linux systems.
+
+*amarok-1.4.9.1 (10 Apr 2008)
+
+  10 Apr 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -amarok-1.4.7-r2.ebuild, amarok-1.4.8.ebuild, +amarok-1.4.9.1.ebuild:
+  Remove old version, disable Amazon support in 1.4.8 version as the
+  protocol is not working anymore, and add a new pre-release ebuild for
+  1.4.9.1 that is yet to be officially released.
+
+  19 Feb 2008; Ingmar Vanhassel <ingmar@gentoo.org> amarok-1.4.7-r2.ebuild,
+  amarok-1.4.8.ebuild, amarok-1.4.9999-r2.ebuild:
+  Update kde-base/* dependencies so that KDE 4 doesn't satisfy it. bug 206528.
+
+  08 Jan 2008; Raúl Porcel <armin76@gentoo.org> amarok-1.4.8.ebuild:
+  sparc stable wrt #204046, thanks to Alex Maclean for testing
+
+  05 Jan 2008; Diego Pettenò <flameeyes@gentoo.org> amarok-1.4.8.ebuild,
+  amarok-1.4.9999-r2.ebuild:
+  Require at least libgpod 0.5.2, fixes bug #204332.
+
+  04 Jan 2008; Richard Freeman <rich0@gentoo.org> amarok-1.4.8.ebuild:
+  amd64 stable - bug #204046
+
+  02 Jan 2008; Brent Baude <ranger@gentoo.org> amarok-1.4.8.ebuild:
+  Marking amarok-1.4.8 ppc for bug 204046
+
+  02 Jan 2008; Brent Baude <ranger@gentoo.org> amarok-1.4.8.ebuild:
+  Marking amarok-1.4.8 ppc64 for bug 204046
+
+  02 Jan 2008; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking amarok-1.4.7-r2 ppc64 for bug 204046
+
+  02 Jan 2008; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking amarok-1.4.7-r2 ppc for bug 204046
+
+  02 Jan 2008; Markus Meier <maekke@gentoo.org> amarok-1.4.8.ebuild:
+  x86 stable, bug #204046
+
+  30 Dec 2007; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Clarify that RealPlayer is GPL-incompatible.
+
+*amarok-1.4.8 (17 Dec 2007)
+
+  17 Dec 2007; Diego Pettenò <flameeyes@gentoo.org> +amarok-1.4.8.ebuild:
+  Version bump.
+
+  23 Nov 2007; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Add proper documentation of some of the possibly ambiguous USE flags.
+
+*amarok-1.4.9999-r2 (23 Nov 2007)
+
+  23 Nov 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -amarok-1.4.7-r1.ebuild, amarok-1.4.7-r2.ebuild,
+  -amarok-1.4.9999-r1.ebuild, +amarok-1.4.9999-r2.ebuild:
+  Remove old version, sync amarok-1.4.9999 to the current amarok release ebuild.
+
+  22 Nov 2007; nixnut <nixnut@gentoo.org> amarok-1.4.7-r2.ebuild:
+  Stable on ppc wrt bug 199547
+
+  22 Nov 2007; Raúl Porcel <armin76@gentoo.org> amarok-1.4.7-r2.ebuild:
+  sparc stable, thanks to Alex Maclean for testing
+
+  19 Nov 2007; Wulf C. Krueger <philantrop@gentoo.org>
+  amarok-1.4.7-r2.ebuild:
+  Marked stable on amd64 as per bug 199547.
+
+  18 Nov 2007; Markus Rothe <corsair@gentoo.org> amarok-1.4.7-r2.ebuild:
+  Stable on ppc64; bug #199547
+
+  18 Nov 2007; Dawid Węgliński <cla@gentoo.org> amarok-1.4.7-r2.ebuild:
+  Stable on x86 (bug #199547)
+
+*amarok-1.4.7-r2 (18 Nov 2007)
+
+  18 Nov 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +files/amarok-1.4.7-svn148317.patch, -amarok-1.4.6-r1.ebuild,
+  -amarok-1.4.7.ebuild, +amarok-1.4.7-r2.ebuild:
+  Version bump, add the patch of upstream SVN rev. 148317, to fix KDE bug
+  #148317.
+
+  17 Nov 2007; Samuli Suominen <drac@gentoo.org> amarok-1.4.7-r1.ebuild:
+  amd64 stable wrt #198711
+
+  11 Nov 2007; nixnut <nixnut@gentoo.org> amarok-1.4.7-r1.ebuild:
+  Stable on ppc wrt bug 198711
+
+  10 Nov 2007; Markus Rothe <corsair@gentoo.org> amarok-1.4.7-r1.ebuild:
+  Stable on ppc64; bug #198711
+
+  10 Nov 2007; Dawid Węgliński <cla@gentoo.org> amarok-1.4.7-r1.ebuild:
+  Stable on x86 (bug #198711)
+
+  10 Nov 2007; Raúl Porcel <armin76@gentoo.org> amarok-1.4.7-r1.ebuild:
+  sparc stable wrt #192678, thanks to Alex Maclean for testing
+
+*amarok-1.4.7-r1 (10 Nov 2007)
+
+  10 Nov 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -files/amarok-1.4.5-magnatune.patch,
+  +files/amarok-1.4.7+xine-lib-1.1.8-lastfm.patch, -amarok-1.4.5-r1.ebuild,
+  -amarok-1.4.6.ebuild, +amarok-1.4.7-r1.ebuild:
+  Remove old version, revision bump to blacklist xine-lib-1.1.8 direct last.fm
+  playback as it's broken by server change, 1.1.9 will work again.
+
+  04 Nov 2007; Christoph Mende <angelos@gentoo.org> amarok-1.4.7.ebuild:
+  Stable on amd64 wrt bug #192678
+
+  03 Nov 2007; Lars Weiler <pylon@gentoo.org> amarok-1.4.7.ebuild:
+  stable ppc, bug #192678
+
+  30 Oct 2007; Markus Rothe <corsair@gentoo.org> amarok-1.4.7.ebuild:
+  Stable on ppc64; bug #192678
+
+  29 Oct 2007; Dawid Węgliński <cla@gentoo.org> amarok-1.4.7.ebuild:
+  Stable on x86 (bug #192678)
+
+  11 Oct 2007; Samuli Suominen <drac@gentoo.org> amarok-1.4.5-r1.ebuild,
+  amarok-1.4.6.ebuild, amarok-1.4.6-r1.ebuild, amarok-1.4.7.ebuild,
+  amarok-1.4.9999-r1.ebuild:
+  Replace noamazon USE flag with amazon and add it to base/package.use for bug
+  134493.
+
+*amarok-1.4.7 (30 Aug 2007)
+
+  30 Aug 2007; Wulf C. Krueger <philantrop@gentoo.org> +amarok-1.4.7.ebuild:
+  Version bump to 1.4.7 as per bug 189236.
+
+  13 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  amarok-1.4.6-r1.ebuild:
+  ppc. stable
+
+  31 Jul 2007; Christoph Mende <angelos@gentoo.org> amarok-1.4.6-r1.ebuild:
+  Stable on amd64 wrt bug #186324
+
+  30 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  amarok-1.4.6-r1.ebuild:
+  Stable on sparc wrt #186324
+
+  30 Jul 2007; Markus Rothe <corsair@gentoo.org> amarok-1.4.6-r1.ebuild:
+  Stable on ppc64; bug #186324
+
+  29 Jul 2007; Raúl Porcel <armin76@gentoo.org> amarok-1.4.6-r1.ebuild:
+  x86 stable wrt #186324
+
+*amarok-1.4.6-r1 (23 Jun 2007)
+
+  23 Jun 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +amarok-1.4.6-r1.ebuild:
+  Disable system sqlite usage again, produces freezes for some people, it's
+  better avoiding it again.
+
+*amarok-1.4.6 (21 Jun 2007)
+
+  21 Jun 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -amarok-1.4.6_rc2.ebuild, +amarok-1.4.6.ebuild:
+  Bump to 1.4.6 final; same tarball, but the ebuild replaced aac useflag with
+  the more descriptive mp4 useflag.
+
+*amarok-1.4.6_rc2 (17 Jun 2007)
+
+  17 Jun 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -files/amarok-1.4.4+libgpod-0.4.0.patch,
+  -files/amarok-1.4.5-lyrc-script.patch, -amarok-1.4.5-r2.ebuild,
+  -amarok-1.4.6_pre20070608.ebuild, -amarok-1.4.6_pre20070608-r1.ebuild,
+  +amarok-1.4.6_rc2.ebuild:
+  Version bump to 1.4.6_rc2 tarball.
+
+*amarok-1.4.9999-r1 (14 Jun 2007)
+*amarok-1.4.6_pre20070608-r1 (14 Jun 2007)
+
+  14 Jun 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +amarok-1.4.6_pre20070608-r1.ebuild, -amarok-1.4.9999.ebuild,
+  +amarok-1.4.9999-r1.ebuild:
+  Nowadays sqlite3 should be pretty much stable, so use it external again.
+  (both 1.4.6 pre-release snapshot and live svn).
+
+*amarok-1.4.9999 (14 Jun 2007)
+
+  14 Jun 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +amarok-1.4.9999.ebuild, -amarok-9999-r2.ebuild:
+  Rename amarok-9999-r2 to amarok-1.4.9999 to make explicit that it's a live
+  subversion for the current stable (1.4) branch. Frees up the 9999 slot for
+  2.0 when it will be feasible.
+
+*amarok-9999-r2 (10 Jun 2007)
+
+  10 Jun 2007; Diego Pettenò <flameeyes@gentoo.org> -amarok-9999-r1.ebuild,
+  +amarok-9999-r2.ebuild:
+  Bump the live Subversion ebuild to abide to the changes added in 1.4.5-r2
+  (python useflag).
+
+*amarok-1.4.6_pre20070608 (08 Jun 2007)
+
+  08 Jun 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +amarok-1.4.6_pre20070608.ebuild:
+  Add a snapshot of amarok from SVN to avoid having to backport all the fixes.
+
+*amarok-1.4.5-r2 (07 Jun 2007)
+
+  07 Jun 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +files/amarok-1.4.5-lyrc-script.patch, +amarok-1.4.5-r2.ebuild:
+  Revision bump: add patch to fix lyrc script, thanks to Jan Spitalnik in bug
+  #166050 and add a python useflag to depend on PyQT as per bug #179472.
+
+  07 Jun 2007; Diego Pettenò <flameeyes@gentoo.org> metadata.xml,
+  -amarok-1.4.4-r3.ebuild:
+  Remove old version and take over package again.
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove flameeyes from metadata.xml due to retirement.
+
+  24 Feb 2007; Markus Rothe <corsair@gentoo.org> amarok-1.4.5-r1.ebuild:
+  Stable on ppc64; bug #166901
+
+  21 Feb 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  amarok-1.4.5-r1.ebuild:
+  Stable on ppc wrt bug #166901.
+
+  19 Feb 2007; <malc@gentoo.org> amarok-1.4.5-r1.ebuild:
+  Stable on amd64 wrt security bug #166901
+
+  17 Feb 2007; Markus Rothe <corsair@gentoo.org> amarok-1.4.5-r1.ebuild:
+  Added ~ppc64
+
+  15 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  amarok-1.4.5-r1.ebuild:
+  Stable on sparc wrt security #166901
+
+  15 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  amarok-1.4.5-r1.ebuild:
+  stable x86; security bug 166901
+
+  14 Feb 2007; Diego Pettenò <flameeyes@gentoo.org>
+  files/amarok-1.4.5-magnatune.patch:
+  Fix the patch, use the proper one.
+
+*amarok-1.4.5-r1 (14 Feb 2007)
+
+  14 Feb 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -files/amarok-1.4.3-playlist-encoding.patch,
+  +files/amarok-1.4.5-magnatune.patch, -amarok-1.4.4-r4.ebuild,
+  -amarok-1.4.5.ebuild, +amarok-1.4.5-r1.ebuild:
+  Version bump, adding a patch to fix a possible security flaw in the
+  magnatune store support (KDE BUG #138499). Also add unzip as runtime
+  dependency as it is used for the magnatune shop.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> amarok-1.4.5.ebuild:
+  Fix dependency for amarok 1.4.5, libgpod 0.4.2 is needed at least.
+
+  05 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> amarok-1.4.5.ebuild:
+  Add ~ppc as requested by lu_zero in bug #164242.
+
+  05 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org> amarok-1.4.5.ebuild:
+  Rekeyworded ~sparc wrt #164242
+
+  05 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Update digest.
+
+  05 Feb 2007; Jeroen Roovers <jer@gentoo.org> files/digest-amarok-1.4.5,
+  Manifest:
+  Fix the 1.4.5 digest for mabi.
+
+  04 Feb 2007; Matti Bickel <mabi@gentoo.org> amarok-1.4.4-r4.ebuild:
+  readd ~ppc (bug #164242)
+
+  01 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> amarok-9999-r1.ebuild:
+  Update not to use trunk anymore for Live SVN.
+
+*amarok-1.4.5 (01 Feb 2007)
+
+  01 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> +amarok-1.4.5.ebuild,
+  amarok-9999-r1.ebuild:
+  Version bump (pre-release), and update also 9999-r1 to have a daap useflag
+  to disable mongrel dependency.
+
+  31 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  amarok-1.4.4-r4.ebuild:
+  Keyworded ~sparc wrt #164242
+
+*amarok-9999-r1 (28 Jan 2007)
+*amarok-1.4.4-r4 (28 Jan 2007)
+
+  28 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  -amarok-1.4.3-r1.ebuild, amarok-1.4.4-r3.ebuild, +amarok-1.4.4-r4.ebuild,
+  -amarok-9999.ebuild, +amarok-9999-r1.ebuild:
+  Remove old version; revision bump fo both 1.4.4 release and live Subversion
+  ebuild to depend on mongrel rather than building and installing its own
+  copy. This drops ~ppc ~ppc64 and ~sparc keywords.
+
+  25 Jan 2007; Diego Pettenò <flameeyes@gentoo.org> amarok-9999.ebuild:
+  Replace -* keyword with empty keywords.
+
+  19 Jan 2007; Diego Pettenò <flameeyes@gentoo.org>
+  +files/amarok-1.4.4+libgpod-0.4.0.patch, amarok-1.4.4-r3.ebuild:
+  Add patch to fix building with newer versions of libgpod; closes bug
+  #162725; thanks to Alessio Cassiba for reporting, and Olivier Crete for
+  pointing out the problem.
+
+  31 Dec 2006; Diego Pettenò <flameeyes@gentoo.org> amarok-9999.ebuild:
+  As the current SVN version requires a newer libmtp, make the 9999 ebuild
+  require it too, even if it's not in portage.
+
+*amarok-9999 (28 Dec 2006)
+
+  28 Dec 2006; Diego Pettenò <flameeyes@gentoo.org> +amarok-9999.ebuild:
+  Add a live SVN version of Amarok. Although not supported and a bad idea in
+  general, it would save me from supporting people with old and broken
+  unofficial amarok-svn ebuilds that usually waste my time.
+
+  26 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  files/digest-amarok-1.4.4-r3, Manifest:
+  Fix digest.
+
+  26 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  amarok-1.4.4-r3.ebuild:
+  Stable on sparc wrt #158836
+
+  25 Dec 2006; Andrej Kacian <ticho@gentoo.org> amarok-1.4.4-r3.ebuild:
+  Stable on x86, bug #158836.
+
+  23 Dec 2006; Matti Bickel <mabi@gentoo.org> amarok-1.4.4-r3.ebuild:
+  ppc stable (bug #158836)
+
+  23 Dec 2006; Markus Rothe <corsair@gentoo.org> amarok-1.4.4-r3.ebuild:
+  Stable on ppc64; bug #158836
+
+*amarok-1.4.4-r3 (22 Dec 2006)
+
+  22 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/amarok-1.4.4-asneeded.patch,
+  -files/amarok-1.4.4-lastfm+xine-lib-1.1.3.patch,
+  -files/amarok-1.4.4-musicbrainz.patch,
+  -files/amarok-1.4.4-podcast-fix.patch, -files/amarok-1.4.4-sparc.patch,
+  amarok-1.4.3-r1.ebuild, -amarok-1.4.4.ebuild, -amarok-1.4.4-r1.ebuild,
+  -amarok-1.4.4-r2.ebuild, +amarok-1.4.4-r3.ebuild:
+  Add patch to fix bug #157752 thanks to Grant McDorman for reporting; correct
+  dependency for postgresql/libpq, thanks to Julien Allanos in bug #158812;
+  remove old version, move patches on their own tarball to reduce size of
+  filesdir.
+
+  01 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  amarok-1.4.4-r2.ebuild:
+  Keyworded ~sparc wrt #156599
+
+  01 Dec 2006; Markus Rothe <corsair@gentoo.org> amarok-1.4.4-r2.ebuild:
+  Added ~ppc64; bug #156599
+
+  01 Dec 2006; Diego Pettenò <flameeyes@gentoo.org>
+  files/digest-amarok-1.4.3-r1, Manifest:
+  Fix digest, see bug #156834.
+
+  30 Nov 2006; Matti Bickel <mabi@gentoo.org> amarok-1.4.4-r2.ebuild:
+  Rekeyworded ~ppc (bug #156599)
+
+*amarok-1.4.4-r2 (30 Nov 2006)
+
+  30 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/amarok-1.4.4-lastfm+xine-lib-1.1.3.patch, +amarok-1.4.4-r2.ebuild:
+  Add patch to fix Last.FM playback with xine-lib 1.1.3.
+
+*amarok-1.4.4-r1 (29 Nov 2006)
+
+  29 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/amarok-1.4.4-musicbrainz.patch, +amarok-1.4.4-r1.ebuild:
+  Add patch to fix musicbrainz support, and add the useflag back now that it
+  does work when cancelling.
+
+  23 Nov 2006; Francesco Riosa <vivo@gentoo.org> amarok-1.4.3-r1.ebuild,
+  amarok-1.4.4.ebuild:
+  dev-db/mysql => virtual/mysql
+
+  22 Nov 2006; Joseph Jezak <josejx@gentoo.org> amarok-1.4.4.ebuild:
+  Marked ~ppc for bug #153024.
+
+  19 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/amarok-1.4.4-asneeded.patch, amarok-1.4.4.ebuild:
+  Add patch to fix building with libgpod and --as-needed (bug #154022). Thanks
+  to Timothy (drizzt) who gave me the patch.
+
+  15 Nov 2006; Markus Rothe <corsair@gentoo.org> amarok-1.4.4.ebuild:
+  Added ~ppc64; bug #153024
+
+  09 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org> amarok-1.4.4.ebuild:
+  Rekeywording ~sparc wrt #153024
+
+  08 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/amarok-1.4.4-sparc.patch, amarok-1.4.4.ebuild:
+  Add patch to allow building on SPARC, see bug #153024. Thanks to Jason Wever
+  for reporting and Jurij Smakov for the patch.
+
+  06 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> amarok-1.4.3-r1.ebuild,
+  amarok-1.4.4.ebuild:
+  Remove xmms useflag (upstream is going to remove it on their own releases
+  soon anyway).
+
+  02 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/amarok-1.4.4-podcast-fix.patch, amarok-1.4.4.ebuild:
+  Add micro-fix for podcasts, as reported by jaervosz.
+
+*amarok-1.4.4 (27 Oct 2006)
+
+  27 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/amarok-1.4.0a-strict-aliasing.patch, -amarok-1.3.8.ebuild,
+  -amarok-1.4.0a-r1.ebuild, +amarok-1.4.4.ebuild:
+  Remove old versions, and add the new 1.4.4 not released yet.
+
+  21 Oct 2006; Diego Pettenò <flameeyes@gentoo.org> amarok-1.4.3-r1.ebuild:
+  Allow using libgpod 0.4 with 1.4.3 version.
+
+  20 Oct 2006; Simon Stelling <blubb@gentoo.org> amarok-1.4.3-r1.ebuild:
+  stable on amd64
+
+  18 Oct 2006; Joshua Jackson <tsunam@gentoo.org> amarok-1.4.3-r1.ebuild:
+  Stable x86; bug #150988
+
+  14 Oct 2006; Joseph Jezak <josejx@gentoo.org> amarok-1.4.3-r1.ebuild:
+  Marked ppc stable for bug #150988.
+
+  14 Oct 2006; Markus Rothe <corsair@gentoo.org> amarok-1.4.3-r1.ebuild:
+  Stable on ppc64; bug #150988
+
+  14 Oct 2006; Jason Wever <weeve@gentoo.org> amarok-1.4.3-r1.ebuild:
+  Stable on SPARC wrt bug #150988.
+
+  12 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/amarok-1.4.1-libvisual.patch, -files/amarok-1.4.2-20restarts.patch,
+  -files/amarok-1.4.2-audiocd-freeze.patch,
+  -files/amarok-1.4.2-collection-sqlite.patch,
+  -files/amarok-1.4.2-libmtp.patch, amarok-1.4.0a-r1.ebuild,
+  -amarok-1.4.1-r3.ebuild, -amarok-1.4.2-r1.ebuild, -amarok-1.4.3.ebuild,
+  amarok-1.4.3-r1.ebuild:
+  Fix libgpod dependency on 0.3 version as 0.4 is not supported (see bug
+  #150983); remove old versions as the new target stable is 1.4.3-r1.
+
+*amarok-1.4.3-r1 (15 Sep 2006)
+
+  15 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/amarok-1.4.3-playlist-encoding.patch, +amarok-1.4.3-r1.ebuild:
+  Add patch from upstream to fix playlist encoding problems.
+
+  05 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> amarok-1.4.3.ebuild:
+  Disable libmtp for now, avoid automagic dependency.
+
+  05 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org> amarok-1.4.3.ebuild:
+  Rekeyworded ~sparc
+
+*amarok-1.4.3 (05 Sep 2006)
+
+  05 Sep 2006; Diego Pettenò <flameeyes@gentoo.org> +amarok-1.4.3.ebuild:
+  Version bump.
+
+*amarok-1.4.2-r1 (31 Aug 2006)
+
+  31 Aug 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/amarok-1.4.2-20restarts.patch,
+  +files/amarok-1.4.2-audiocd-freeze.patch,
+  +files/amarok-1.4.2-collection-sqlite.patch,
+  +files/amarok-1.4.2-libmtp.patch, -amarok-1.4.1-r1.ebuild,
+  -amarok-1.4.1-r2.ebuild, -amarok-1.4.2_beta1.ebuild,
+  +amarok-1.4.2-r1.ebuild:
+  Version bump (-r1 as this is not a vanilla version and I want to bump who
+  has already a local 1.4.2 copy for sure). Remove old versions.
+
+  08 Aug 2006; Simon Stelling <blubb@gentoo.org> amarok-1.4.0a-r1.ebuild:
+  stable on amd64
+
+  05 Aug 2006; Jason Wever <weeve@gentoo.org> amarok-1.4.1-r3.ebuild:
+  Re-added ~sparc keyword wrt bug #140243.
+
+*amarok-1.4.2_beta1 (30 Jul 2006)
+
+  30 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +amarok-1.4.2_beta1.ebuild:
+  Version bump (beta version).
+
+*amarok-1.4.1-r3 (27 Jul 2006)
+
+  27 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/amarok-1.4.1-libvisual.patch, +amarok-1.4.1-r3.ebuild:
+  Add patch t fix libvisual 0.4 support, thanks to Ian Monroe for providing
+  the commit diff. Closes bug #140563.
+
+  26 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> amarok-1.4.1-r2.ebuild:
+  Remove special case for automake 1.9, the ebuild forces that already when
+  needed.
+
+  25 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> amarok-1.3.8.ebuild,
+  amarok-1.4.0a-r1.ebuild, amarok-1.4.1-r1.ebuild, amarok-1.4.1-r2.ebuild:
+  Remove musicbrainz support as per bug #140184.
+
+  20 Jul 2006; Markus Rothe <corsair@gentoo.org> amarok-1.4.1-r2.ebuild:
+  Added ~ppc64; bug #140243
+
+  18 Jul 2006; Joshua Jackson <tsunam@gentoo.org> amarok-1.4.0a-r1.ebuild:
+  Stable x86; bug #139095
+
+*amarok-1.4.1-r2 (13 Jul 2006)
+
+  13 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +amarok-1.4.1-r2.ebuild:
+  Add njb useflag to enable device support, as per bug #140240.
+
+  08 Jul 2006; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  amarok-1.4.0a-r1.ebuild:
+  stable on ppc (Bug #139095)
+
+  05 Jul 2006; Joshua Jackson <tsunam@gentoo.org> amarok-1.4.0a-r1.ebuild:
+  Stable x86; bug #139095
+
+  04 Jul 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  amarok-1.4.0a-r1.ebuild:
+  Stable on sparc wrt #139095
+
+  04 Jul 2006; Markus Rothe <corsair@gentoo.org> amarok-1.4.0a-r1.ebuild:
+  Stable on ppc64; bug #139095
+
+  03 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> amarok-1.4.1-r1.ebuild:
+  Remove pl docs, as they were broken on release.
+
+*amarok-1.4.1-r1 (03 Jul 2006)
+
+  03 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> -amarok-1.4.1.ebuild,
+  +amarok-1.4.1-r1.ebuild:
+  Rename lastfm.protocol file to amaroklasfm.protocol to avoid collisions with
+  lastfmplayer. Thanks to Michael Weyershäuser in bug #139032.
+
+*amarok-1.4.1 (03 Jul 2006)
+
+  03 Jul 2006; Diego Pettenò <flameeyes@gentoo.org> -amarok-1.4.0a.ebuild,
+  -amarok-1.4.1_beta1.ebuild, +amarok-1.4.1.ebuild:
+  Bump to latest version and remove old ones.
+
+*amarok-1.4.1_beta1 (18 Jun 2006)
+
+  18 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +amarok-1.4.1_beta1.ebuild:
+  Add new version (beta).
+
+*amarok-1.4.0a-r1 (18 Jun 2006)
+
+  18 Jun 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/amarok-1.4.0a-strict-aliasing.patch, +amarok-1.4.0a-r1.ebuild:
+  Add patch to fix strict-aliasing breakage.
+
+  08 Jun 2006; Diego Pettenò <flameeyes@gentoo.org> amarok-1.4.0a.ebuild:
+  Update description line for 1.4.0a ebuild as now it's Amarok rather than
+  amaroK.
+
+  28 May 2006; Diego Pettenò <flameeyes@gentoo.org> amarok-1.3.8.ebuild,
+  amarok-1.4.0a.ebuild:
+  Fix libvisual-plugins dependency on the 0.2 slot.
+
+  25 May 2006; Diego Pettenò <flameeyes@gentoo.org> amarok-1.4.0a.ebuild:
+  Remove xx value for translation.
+
+  24 May 2006; Diego Pettenò <flameeyes@gentoo.org> amarok-1.4.0a.ebuild:
+  Add ~x86-fbsd keyword.
+
+*amarok-1.4.0a (18 May 2006)
+
+  18 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/amarok-1.4.0-audiocd.patch, -files/amarok-1.4.0-collectiondb.patch,
+  -amarok-1.4.0-r2.ebuild, +amarok-1.4.0a.ebuild:
+  New upstream release to fix issues when migrating from 1.3 version, should
+  also fix bug #133647.
+
+*amarok-1.4.0-r2 (16 May 2006)
+
+  16 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/amarok-1.4.0-collectiondb.patch, -amarok-1.4.0-r1.ebuild,
+  +amarok-1.4.0-r2.ebuild:
+  Add patch to fix leaks on connection db.
+
+*amarok-1.4.0-r1 (15 May 2006)
+
+  15 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/amarok-1.4.0-audiocd.patch, -amarok-1.4.0.ebuild,
+  +amarok-1.4.0-r1.ebuild:
+  Add patch from Markus Kaufhold in KDE bug #127388 to fix audiocd playing
+  with xine engine.
+
+  15 May 2006; Diego Pettenò <flameeyes@gentoo.org> amarok-1.4.0.ebuild:
+  Force usage of gentoo mirrors.
+
+*amarok-1.4.0 (14 May 2006)
+
+  14 May 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -amarok-1.4_beta3-r2.ebuild, +amarok-1.4.0.ebuild:
+  Update to 1.4.0 release (still not officially announced). This version
+  intentionally drops GStreamer support. It might return in 1.4.1, but please
+  don't bug me about that, talk with upstream.
+
+  08 May 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  amarok-1.4_beta3-r2.ebuild:
+  Added to ~ppc
+
+  05 May 2006; Diego Pettenò <flameeyes@gentoo.org> -amarok-1.3.6.ebuild,
+  -amarok-1.3.9.ebuild:
+  Drop old versions.
+
+  28 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-amarok-1.3.6,
+  files/digest-amarok-1.3.8, Manifest:
+  Fixing SHA256 digest, pass four
+
+  17 Apr 2006; Markus Rothe <corsair@gentoo.org> amarok-1.4_beta3-r2.ebuild:
+  Added ~ppc64; bug #129409
+
+  12 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  amarok-1.4_beta3-r2.ebuild:
+  Drop akode dep (the engine is no more already) and kioslaves support. Thanks
+  to eean for noticing this.
+
+*amarok-1.4_beta3-r2 (11 Apr 2006)
+
+  11 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -amarok-1.4_beta3-r1.ebuild, +amarok-1.4_beta3-r2.ebuild:
+  Update to 1.4-beta3c and re-enable helix.
+
+  11 Apr 2006; Jason Wever <weeve@gentoo.org> amarok-1.4_beta3-r1.ebuild:
+  Added ~sparc keyword wrt bug #129409.
+
+  11 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  amarok-1.4_beta3-r1.ebuild:
+  Disable helix engine until the missing include file is fixed.
+
+  10 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Make myself direct maintaner of amarok.
+
+*amarok-1.4_beta3-r1 (10 Apr 2006)
+
+  10 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -amarok-1.4_beta3.ebuild, +amarok-1.4_beta3-r1.ebuild:
+  Add 1.4_beta3b (as -r1).
+
+  10 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  amarok-1.4_beta3.ebuild:
+  Make xine the default backend always enabled. gstreamer can be added as extra.
+
+*amarok-1.4_beta3 (10 Apr 2006)
+
+  10 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -amarok-1.4_beta2-r1.ebuild, +amarok-1.4_beta3.ebuild:
+  Version bump, dropped ~ppc ~ppc64 and ~sparc keywords because of missing
+  dependencies. This version will go in ~arch.
+
+  27 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> amarok-1.3.9.ebuild:
+  Restrict mirroring of 1.3.9 release and update digest as the tarball was
+  changed upstream.
+
+  26 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> amarok-1.3.9.ebuild:
+  Remove Polish doc as it's broken in 1.3.9 package.
+
+*amarok-1.3.9 (26 Mar 2006)
+
+  26 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> +amarok-1.3.9.ebuild:
+  Version bump.
+
+  15 Mar 2006; Luis Medinas <metalgod@gentoo.org> amarok-1.3.8.ebuild:
+  Stable on amd64. Bug #122609.
+
+  15 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  amarok-1.4_beta2-r1.ebuild:
+  Drop --without-ifp line, was an artifact.
+
+  07 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -amarok-1.4_beta2.ebuild, amarok-1.4_beta2-r1.ebuild:
+  Add ifp useflag to enable iRiver access; thanks to Gabriel Devenyi in bug
+  #122634.
+
+*amarok-1.4_beta2-r1 (05 Mar 2006)
+
+  05 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +amarok-1.4_beta2-r1.ebuild:
+  Add -r1 which installs itself in /usr, finally avoid installing in kde's
+  prefix.
+
+*amarok-1.4_beta2 (05 Mar 2006)
+
+  05 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -amarok-1.4_beta1.ebuild, -amarok-1.4_beta1-r1.ebuild,
+  +amarok-1.4_beta2.ebuild:
+  Add amarok 1.4_beta2.
+
+*amarok-1.4_beta1-r1 (03 Mar 2006)
+
+  03 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +amarok-1.4_beta1-r1.ebuild:
+  Add new revision using gstreamer 0.10. Test required.
+
+  20 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org> amarok-1.3.8.ebuild:
+  Stable on sparc wrt #122609
+
+  19 Feb 2006; Diego Pettenò <flameeyes@gentoo.org>
+  amarok-1.4_beta1.ebuild:
+  Add optional support for helix engine (only with realplayer at the moment).
+
+  19 Feb 2006; Chris White <chriswhite@gentoo.org> amarok-1.3.8.ebuild:
+  x86 stable per bug #122609.
+
+  17 Feb 2006; Joseph Jezak <josejx@gentoo.org> amarok-1.3.8.ebuild:
+  Marked ppc stable for bug #122609.
+
+  17 Feb 2006; Markus Rothe <corsair@gentoo.org> amarok-1.3.8.ebuild:
+  Stable on ppc64; bug #122609
+
+  13 Feb 2006; Hanno Boeck <hanno@gentoo.org> amarok-1.4_beta1.ebuild:
+  Moodbar / exscalibar support added.
+
+  13 Feb 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/amarok-1.4_beta1-parallelmake.patch, amarok-1.4_beta1.ebuild:
+  The patch for parallel make wasn't enough as configure file should be
+  removed to recreate autotools (was already if using $LINGUAS). Instead of
+  using it, uncomment the sed line fixing it.
+
+  12 Feb 2006; Diego Pettenò <flameeyes@gentoo.org>
+  -files/amarok-1.3.7-lyrc.patch, -amarok-1.3.7-r1.ebuild:
+  Drop old 1.3.7-r1 version, foreseeing 1.3.8 as future stable.
+
+*amarok-1.4_beta1 (12 Feb 2006)
+
+  12 Feb 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/amarok-1.4_beta1-parallelmake.patch, +amarok-1.4_beta1.ebuild:
+  Add 1.4_beta1 under package.mask, with patch to fix parallel make issues.
+
+  05 Feb 2006; Diego Pettenò <flameeyes@gentoo.org> amarok-1.3.8.ebuild:
+  Move the $LINGUAS handling to kde eclass.
+
+  31 Jan 2006; Diego Pettenò <flameeyes@gentoo.org> amarok-1.3.8.ebuild:
+  Make kioslaves an optional dependency on kde useflag, and add a notice about
+  it on postinst.
+
+  30 Jan 2006; Diego Pettenò <flameeyes@gentoo.org> amarok-1.3.8.ebuild:
+  Add dependency over kdemultimedia or kdemultimedia-kioslaves, for audiocd:/
+  support.
+
+  26 Jan 2006; Diego Pettenò <flameeyes@gentoo.org> -files/amarok-gcc4.gz,
+  -amarok-1.2.4.ebuild:
+  Drop old, unsupported version, and compressed gcc4 patch.
+
+  19 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org> amarok-1.3.6.ebuild:
+  Stable on amd64, bug 114493.
+
+*amarok-1.3.8 (15 Jan 2006)
+
+  15 Jan 2006; Diego Pettenò <flameeyes@gentoo.org> +amarok-1.3.8.ebuild:
+  Version bump, add support for honouring LINGUAS, avoid building and
+  installing extraneous data.
+
+  11 Jan 2006; Diego Pettenò <flameeyes@gentoo.org> -amarok-1.3.7.ebuild:
+  Drop old version.
+
+  09 Jan 2006; Diego Pettenò <flameeyes@gentoo.org> amarok-1.3.7-r1.ebuild:
+  Drop kdeenablefinal useflag, it used to work back in 1.2 series but it's not
+  unsupported, and next release line will use unsermake so...
+
+  04 Jan 2006; Diego Pettenò <flameeyes@gentoo.org> amarok-1.3.7-r1.ebuild:
+  Add kdeenablefinal flag that can be used to actually build amaroK using
+  --enable-final.
+
+*amarok-1.3.7-r1 (25 Dec 2005)
+
+  25 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/amarok-1.3.7-lyrc.patch, +amarok-1.3.7-r1.ebuild:
+  Add patch to fix lyrics display, thanks to Ian Monroe for letting me know.
+
+  24 Dec 2005; Michael Hanselmann <hansmi@gentoo.org> amarok-1.3.6.ebuild:
+  Stable on ppc.
+
+  23 Dec 2005; Markus Rothe <corsair@gentoo.org> amarok-1.3.7.ebuild:
+  Added ~ppc64
+
+  15 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> amarok-1.3.6.ebuild:
+  Fix dependency on tunepimp to 0.3, as 0.4 breaks API.
+
+  15 Dec 2005; Chris White <chriswhite@gentoo.org> amarok-1.3.6.ebuild:
+  x86 stable for bug #114493.
+
+  13 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> amarok-1.3.7.ebuild:
+  Append -fno-inline to fix saltuary crashes on -O3 builds.
+
+*amarok-1.3.7 (07 Dec 2005)
+
+  07 Dec 2005; Diego Pettenò <flameeyes@gentoo.org> +amarok-1.3.7.ebuild:
+  Update to latest upstream version.
+
+  05 Dec 2005: Zaheer Merali <zaheerm@gentoo.org> amarok-1.3.6.ebuild,
+  amarok-1.2.4.ebuild:
+  Fix GStreamer dependencies
+  
+  29 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> amarok-1.3.6.ebuild:
+  Move icons in global prefix to close bug #113886.
+
+  29 Nov 2005; Gregorio Guidi <greg_g@gentoo.org> amarok-1.2.4.ebuild:
+  Change oggvorbis flag into vorbis (#94254).
+
+*amarok-1.3.6 (08 Nov 2005)
+
+  08 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> -amarok-1.3.5.ebuild,
+  +amarok-1.3.6.ebuild:
+  Update to 1.3.6 (and removal of 1.3.5) that seems to fix the crash at startup.
+
+  05 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -files/amarok-1.3.2-playlist.patch, -amarok-1.2.3.ebuild,
+  -amarok-1.3.2-r1.ebuild, -amarok-1.3.3.ebuild:
+  Remove old versions.
+
+  28 Oct 2005; Jason Wever <weeve@gentoo.org> amarok-1.3.5.ebuild:
+  Changed -sparc keyword to ~sparc.
+
+*amarok-1.3.5 (25 Oct 2005)
+
+  25 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> -amarok-1.3.4.ebuild,
+  +amarok-1.3.5.ebuild:
+  Update to 1.3.5, as 1.3.4 seemed to have problems.
+
+*amarok-1.3.4 (24 Oct 2005)
+
+  24 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> +amarok-1.3.4.ebuild:
+  Bumped to 1.3.4.
+
+  19 Oct 2005; Gregorio Guidi <greg_g@gentoo.org> amarok-1.3.3.ebuild:
+  Do not force arts plugins, avoiding complications due to the fact that
+  kde-base/artsplugins-akode will be providing them in KDE 3.5.
+
+  11 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> amarok-1.3.3.ebuild:
+  Cleanup configure parameters, make sure musicbrainz is disabled when
+  required, and forcefully disable extra engines.
+
+*amarok-1.3.3 (09 Oct 2005)
+
+  09 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> +amarok-1.3.3.ebuild:
+  Version bump following upstream.
+
+*amarok-1.3.2-r1 (22 Sep 2005)
+
+  22 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -files/amarok-1.3.1-gst-alsaagain.patch,
+  -files/amarok-1.3.1-gst-onlyoss.patch, -files/amarok-1.3.1-qt-3.3.5.patch,
+  +files/amarok-1.3.2-playlist.patch, -amarok-1.3.ebuild,
+  -amarok-1.3.1-r1.ebuild, -amarok-1.3.1-r2.ebuild, -amarok-1.3.2.ebuild,
+  +amarok-1.3.2-r1.ebuild:
+  Added patch to fix crashes on startup with 1.3 series. Thanks to Mark
+  Kretschmann for the patch. Purged old 1.3 ebuilds as they are not stable
+  enough.
+
+*amarok-1.3.2 (20 Sep 2005)
+
+  20 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> +amarok-1.3.2.ebuild:
+  Version bump.
+
+  18 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/amarok-1.3.1-qt-3.3.5.patch, amarok-1.3.1-r2.ebuild:
+  Added patch to compile with qt 3.3.5 from amaroK's SVN repository. Closes
+  bug #106366.
+
+*amarok-1.3.1-r2 (11 Sep 2005)
+
+  11 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/amarok-1.3.1-gst-alsaagain.patch, +amarok-1.3.1-r2.ebuild:
+  Added patch to re-add support for alsasink with gstreamer engine. Thanks to
+  Mark Kretschmann for submitting it.
+
+  08 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> amarok-1.3.1-r1.ebuild:
+  Don't force using gst-plugins-oss, let the uesrs select what they want.
+  Close #105298. The sed for libpq-fe is no more needed. Make musicbrainz
+  optional with musicbrainz useflag. Close #105298.
+
+*amarok-1.3.1-r1 (08 Sep 2005)
+
+  08 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/amarok-1.3.1-gst-onlyoss.patch, -amarok-1.3.1.ebuild,
+  +amarok-1.3.1-r1.ebuild:
+  Added patch to avoid using autodetection with gstreamer (crashes when using
+  alsa). Added a note for gstreamer users and a dependency over oss plugin.
+  Consider using xine backend if you want alsa output.
+
+*amarok-1.3.1 (06 Sep 2005)
+
+  06 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> +amarok-1.3.1.ebuild:
+  Added amarok 1.3.1, masked due to problems with gstreamer and alsa.
+
+*amarok-1.3 (15 Aug 2005)
+
+  15 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -amarok-1.3_beta3.ebuild, +amarok-1.3.ebuild:
+  Updated to amarok-1.3 final.
+
+  08 Aug 2005; Gregorio Guidi <greg_g@gentoo.org> amarok-1.2.3.ebuild,
+  amarok-1.2.4.ebuild, amarok-1.3_beta3.ebuild:
+  Raise dependency on mysql for bug #101717.
+
+  07 Aug 2005; Carsten Lohrke <carlo@gentoo.org> amarok-1.3_beta3.ebuild:
+  fix build with postgres
+
+*amarok-1.3_beta3 (01 Aug 2005)
+
+  01 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +amarok-1.3_beta3.ebuild:
+  New upstream version. Closes #101001. Still in package.mask being a beta.
+
+  31 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> amarok-1.2.3.ebuild,
+  amarok-1.2.4.ebuild, amarok-1.3_beta1.ebuild, amarok-1.3_beta2.ebuild:
+  Use ${KDEDIR} instead of kde-config to set PREFIX as it's not in path during
+  src_compile().
+
+  30 Jul 2005; Simon Stelling <blubb@gentoo.org> amarok-1.2.4.ebuild:
+  stable on amd64
+
+  10 Jul 2005; Joseph Jezak <josejx@gentoo.org> amarok-1.2.4.ebuild:
+  Marked ppc stable.
+
+  08 Jul 2005; Carsten Lohrke <carlo@gentoo.org> amarok-1.2.4.ebuild:
+  stable on x86
+
+  09 Jul 2005; Gregorio Guidi <greg_g@gentoo.org> amarok-1.3_beta2.ebuild:
+  Move amarok.desktop in /usr/share/applications (#77515).
+
+*amarok-1.3_beta2 (27 Jun 2005)
+
+  27 Jun 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +amarok-1.3_beta2.ebuild:
+  New upstream beta.
+
+  22 Jun 2005; Hanno Boeck <hanno@gentoo.org> +files/amarok-gcc4.gz,
+  amarok-1.2.4.ebuild:
+  Fix for gcc4.
+
+  17 Jun 2005; Joseph Jezak <josejx@gentoo.org> amarok-1.2.3.ebuild:
+  Marked ppc stable.
+
+  16 Jun 2005; Diego Pettenò <flameeyes@gentoo.org>
+  amarok-1.3_beta1.ebuild:
+  Amarok 1.3 depends on kde 3.3 not 3.4.
+
+  08 Jun 2005; Gregorio Guidi <greg_g@gentoo.org> amarok-1.3_beta1.ebuild:
+  Change flag 'oggvorbis' into 'vorbis' (#89592). Change 'mad' into 'mp3'. Add
+  missing configure switches.
+
+*amarok-1.3_beta1 (06 Jun 2005)
+
+  06 Jun 2005; Heinrich Wendel <lanius@gentoo.org> +amarok-1.3_beta1.ebuild:
+  version bump
+
+*amarok-1.2.4 (21 May 2005)
+
+  21 May 2005; Heinrich Wendel <lanius@gentoo.org> -amarok-1.2.ebuild,
+  -amarok-1.2.1.ebuild, -amarok-1.2.2.ebuild, amarok-1.2.3.ebuild,
+  +amarok-1.2.4.ebuild:
+  version bump, cleanups
+
+  14 May 2005; Heinrich Wendel <lanius@gentoo.org> amarok-1.2.3.ebuild:
+  stable on amd64 and x86
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> amarok-1.2.1.ebuild:
+  stable on amd64
+
+*amarok-1.2.3 (29 Mar 2005)
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> +amarok-1.2.3.ebuild:
+  new upstream version, thanks to Diego Pettenò <dgp85@users.sourceforge.net>
+
+  21 Mar 2005; Gregorio Guidi <greg_g@gentoo.org> amarok-1.2.1.ebuild:
+  Stable on x86.
+
+*amarok-1.2.2 (18 Mar 2005)
+
+  18 Mar 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +files/amarok-1.2.2-contextbrowser-cpu-fix.patch, +amarok-1.2.2.ebuild:
+  New version (#85284). Correct gstreamer dependencies (#84663). Add support for
+  visualization plugins through libvisual (#82165). Warn that aRts support is
+  deprecated (as requested in bug #85542). Add patch to fix kde bug 101524.
+
+*amarok-1.2.1 (01 Mar 2005)
+
+  01 Mar 2005; Carsten Lohrke <carlo@gentoo.org> +amarok-1.2.1.ebuild:
+  version bump
+
+*amarok-1.2 (13 Feb 2005)
+
+  13 Feb 2005; Gregorio Guidi <greg_g@gentoo.org> +amarok-1.2.ebuild:
+  Version bump.
+
+  02 Feb 2005; Gregorio Guidi <greg_g@gentoo.org> -files/amarok-1.0-cjk.diff,
+  amarok-1.2_beta4.ebuild:
+  Removed cjk patch, it does not apply anymore.
+
+*amarok-1.2_beta4 (01 Feb 2005)
+
+  01 Feb 2005; Gregorio Guidi <greg_g@gentoo.org> -amarok-1.2_beta2.ebuild,
+  -amarok-1.2_beta3.ebuild, +amarok-1.2_beta4.ebuild:
+  Version bump.
+
+  30 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> amarok-1.1.1.ebuild:
+  added missing libsdl dependency. fixes #72395
+
+  15 Jan 2005; Dan Armak <danarmak@gentoo.org> amarok-1.0.2.ebuild,
+  amarok-1.1.1.ebuild, amarok-1.2_beta2.ebuild, amarok-1.2_beta3.ebuild:
+  Changed deps on kdebase, kdemultimedia to accept kdebase-meta and
+  kdemultimedia-meta, the split 'meta' packages. This dep will be narrowed
+  down in the future to the precise split packages required.
+
+*amarok-1.2_beta3 (11 Jan 2005)
+
+  11 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +amarok-1.2_beta3.ebuild:
+  Version bump closes bug #77185.
+
+  04 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  amarok-1.1.1.ebuild, amarok-1.2_beta2.ebuild:
+  Updating version on xine dependency per bug #70260.
+
+  13 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -amarok-1.2_beta1.ebuild, amarok-1.2_beta2.ebuild:
+  Added mysql support.
+
+*amarok-1.2_beta2 (12 Dec 2004)
+
+  12 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +amarok-1.2_beta2.ebuild:
+  Version bump.
+
+  04 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  amarok-1.1.1.ebuild, amarok-1.2_beta1.ebuild:
+  Relaxing the arts dependency.  Closes bug #72869.
+
+  30 Nov 2004; Sven Wegener <swegener@gentoo.org> amarok-1.1.1.ebuild,
+  amarok-1.2_beta1.ebuild:
+  Fixed invalid atoms in *DEPEND.
+
+*amarok-1.2_beta1 (29 Nov 2004)
+
+  29 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  amarok-1.1.1.ebuild, +amarok-1.2_beta1.ebuild:
+  Version bump (package.mask'd beta) and fix missing depend on
+  media-sound/kdemultimedia for CD playback.
+
+  22 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  amarok-1.1.1.ebuild:
+  -sparc
+
+  12 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org> -amarok-0.9.ebuild,
+  amarok-1.1.1.ebuild:
+  Cleanup.
+
+  07 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  amarok-1.1.1.ebuild:
+  Readded gstreamer support forcing the mad plugin to be installed for
+  gstreamer support as the ffmpeg plugin won't work (see bug #66902).
+
+  05 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  amarok-1.1.1.ebuild:
+  Removing gstreamer support as it is horribly broken and uses 100% CPU under
+  some circumstances... see bug #65434 comment #3.
+
+  26 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  amarok-1.1.1.ebuild:
+  Changing dep to =libvisual-0.1.6 to close bug #68731.
+
+*amarok-1.1.1 (09 Oct 2004)
+
+  09 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +amarok-1.1.1.ebuild, -amarok-1.1.ebuild:
+  Version bump for bug #66902.
+
+  30 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> amarok-1.1.ebuild:
+  Removed noamazon support as it is broken in this version. Fixed upstream for
+  next release.
+
+  28 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> amarok-1.1.ebuild:
+  Added noamazon USE flag to turn off support for downloading covers from
+  amazon.com
+
+*amarok-1.0.1 (27 Sep 2004)
+
+  27 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> -amarok-1.0.1.ebuild,
+  -amarok-1.0.ebuild, -amarok-1.1_beta2.ebuild:
+  Version bump and cleanup.
+
+  22 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  amarok-1.1_beta2.ebuild:
+  Added arts to IUSE.
+
+*amarok-1.1_beta2 (15 Sep 2004)
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +amarok-1.1_beta2.ebuild:
+  Version bump closes bug #61723.
+
+  03 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -amarok-1.0_beta3.ebuild, -amarok-1.0_beta4.ebuild:
+  1.0.2 stable amd64, x86.  Removing old ebuilds.
+
+*amarok-1.0.2 (09 Aug 2004)
+
+  09 Aug 2004; Patrick Dawson <pkdawson@gentoo.org> amarok-1.0.2.ebuild:
+  Version bump, closes bug #59600. Added a xine USE flag.
+  Thanks to Andrew Cooks <andrew@expertron.co.za>
+
+  06 Jul 2004; Frank van de Pol <fvdpol@gentoo.org> :
+  Version bump, closes bug #55898.
+
+  03 Jul 2004; Carsten Lohrke <carlo@gentoo.org> amarok-1.0.ebuild:
+  QA: need-kde after R/DEPEND
+
+  18 Jun 2004; Dominik Stadler <centic@gentoo.org> amarok-1.0.ebuild:
+  According to the README we should require gstreamer 0.8.1
+
+*amarok-1.0 (18 Jun 2004)
+
+  18 Jun 2004; Dominik Stadler <centic@gentoo.org>
+  +files/amarok-1.0-cjk-a.diff, +amarok-1.0.ebuild:
+  Add Version 1.0, fixes Bug 54251 and add ~amd64, fixes Bug 54305
+
+*amarok-1.0_beta4 (15 Jun 2004)
+
+  15 Jun 2004; Jon Hood <squinky86@gentoo.org> +files/amarok-1.0-cjk.diff,
+  amarok-1.0_beta3.ebuild, +amarok-1.0_beta4.ebuild:
+  adding cjk patch and version bump from Jackey Yang <043936y@acadiau.ca>,
+  closes #52930
+
+*amarok-1.0_beta3 (22 May 2004)
+
+  22 May 2004; Jon Hood <squinky86@gentoo.org> -amarok-0.7.0.ebuild,
+  -amarok-0.8.3.ebuild, +amarok-1.0_beta3.ebuild:
+  version bump, closes #51133
+
+  25 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> amarok-0.9.ebuild:
+  marked ~amd64.
+
+  24 Apr 2004; Heinrich Wendel <lanius@gentoo.org> amarok-0.7.0.ebuild,
+  amarok-0.8.3.ebuild, amarok-0.9.ebuild, amarok-1.0_beta1.ebuild:
+  fix depend
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> amarok-0.7.0.ebuild,
+  amarok-0.8.3.ebuild:
+  Added IUSE.
+
+*amarok-1.0_beta1 (12 Apr 2004)
+
+  12 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  amarok-1.0_beta1.ebuild:
+  Version bump closes bug #47539.
+
+  14 Apr 2004; Heinrich Wendel <lanius@gentoo.org> amarok-0.7.0.ebuild,
+  amarok-0.8.3.ebuild, amarok-0.9.ebuild:
+  fix depend, mark 0.9 stable
+
+  17 Mar 2004; David Holm <dholm@gentoo.org> amarok-0.9.ebuild:
+  Added to ~ppc.
+
+*amarok-0.9 (16 Mar 2004)
+
+  16 Mar 2004; Heinrich Wendel <lanius@gentoo.org> amarok-0.9.ebuild,
+  amarok-0.9_beta2.ebuild:
+  version bump
+
+  23 Feb 2004; Heinrich Wendel <lanius@gentoo.org> amarok-0.8.3.ebuild:
+  mark x86
+
+  23 Feb 2004; Heinrich Wendel <lanius@gentoo.org> amarok-0.9_beta2.ebuild:
+  version bump
+
+*amarok-0.7.0 (22 Jan 2004)
+*amarok-0.8.3 (22 Jan 2004)
+
+  22 Jan 2004; Heinrich Wendel <lanius@gentoo.org> amarok-0.6.0.ebuild,
+  amarok-0.6.91.ebuild, amarok-0.7.0.ebuild, amarok-0.8.3.ebuild:
+  version bump; mark 0.7.0 x86
+
+  15 Nov 2003; Heinrich Wendel <lanius@gentoo.org> :
+  bump
+
+*amarok-0.6.91 (30 Oct 2003)
+
+  30 Oct 2003; Heinrich Wendel <lanius@gentoo.org> amarok-0.6.91.ebuild:
+  bump
+
+  26 Sep 2003; Alex Veber <coronalvr@gentoo.org> amarok-0.6.0.ebuild:
+  added a missing dep on kdemultimedia
+
+*amarok-0.6.0 (21 Sep 2003)
+
+  21 Sep 2003; jje <jje@gentoo.org> amarok-0.6.0.ebuild:
+  Initial revision.
+  
+  Submitted by: Okrain Genady <mafteah@mafteah.co.il>

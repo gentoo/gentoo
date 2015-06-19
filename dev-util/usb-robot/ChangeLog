@@ -1,0 +1,36 @@
+# ChangeLog for dev-util/usb-robot
+# Copyright 1999-2009 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/usb-robot/ChangeLog,v 1.10 2009/08/01 01:24:23 vostorga Exp $
+
+  01 Aug 2009; <vostorga@gentoo.org> usb-robot-0.2.0.ebuild:
+  Respecting CC variable, closes bug #244044
+
+  30 Jun 2009; Robin H. Johnson <robbat2@gentoo.org> usb-robot-0.2.0.ebuild:
+  Bug #270159 said that libusb-compat should be ok, so really reflect that.
+  If it's actually broken, please file a bug.
+
+  28 Jun 2009; Patrick Lauer <patrick@gentoo.org> usb-robot-0.2.0.ebuild:
+  EAPI2ification, nailing libusb dep to slot 0, fixes #270159
+
+  21 Dec 2007; nixnut <nixnut@gentoo.org> usb-robot-0.2.0.ebuild:
+  Stable on ppc wrt bug 202736
+
+  10 Aug 2007; Steve Dibb <beandog@gentoo.org> usb-robot-0.2.0.ebuild:
+  amd64 stable, bug 184332
+
+  06 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  usb-robot-0.2.0.ebuild:
+  x86 stable, bug 184332
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  07 May 2005; David Holm <dholm@gentoo.org> usb-robot-0.2.0.ebuild:
+  Added to ~ppc.
+
+*usb-robot-0.2.0 (06 Mar 2004)
+
+  06 Mar 2004; Markus Nigbur <pyrania@gentoo.org> usb-robot-0.2.0.ebuild:
+  Initial import. Thanks to Julien TIERNY <julien.tierny@wanadoo.fr> (bug
+  #42247).
+

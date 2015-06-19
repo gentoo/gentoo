@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test
+DEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] dev-ml/findlib dev-ml/opam
+DESCRIPTION=OCaml module for functional reactive programming
+EAPI=5
+HOMEPAGE=http://erratique.ch/software/react
+IUSE=doc +ocamlopt
+KEYWORDS=~amd64 ~x86-fbsd
+LICENSE=BSD
+RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?]
+SLOT=0/1.2.0
+SRC_URI=http://erratique.ch/software/react/releases/react-1.2.0.tbz
+_md5_=bda407abcc017065dbdf2a93c9fb0bff

@@ -1,0 +1,20 @@
+# ChangeLog for dev-python/cliff-tablib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cliff-tablib/ChangeLog,v 1.4 2015/06/07 11:08:25 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  02 Jun 2015; Matthew Thode <prometheanfire@gentoo.org>
+  cliff-tablib-1.1.ebuild:
+  expanding tested python versions
+
+*cliff-tablib-1.1 (23 Nov 2013)
+
+  23 Nov 2013; Ian Delaney <idella4@gentoo.org> +cliff-tablib-1.1.ebuild,
+  +metadata.xml:
+  new dep of test pahse of python-neutronclient, req'd for openstack, ebuild
+  prepped by me

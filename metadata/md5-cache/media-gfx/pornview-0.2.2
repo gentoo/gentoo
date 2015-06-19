@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm preinst
+DEPEND=dev-libs/glib:2 media-libs/libpng:0 virtual/jpeg x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXinerama exif? ( media-gfx/exiv2 ) virtual/pkgconfig nls? ( sys-devel/gettext ) >=sys-apps/sed-4
+DESCRIPTION=Image viewer/manager with optional support for MPEG movies
+EAPI=4
+HOMEPAGE=http://pornview.sourceforge.net
+IUSE=exif nls
+KEYWORDS=amd64 -hppa ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2 media-libs/libpng:0 virtual/jpeg x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXinerama exif? ( media-gfx/exiv2 )
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~hasufell/distfiles/pornview-0.2.2.tar.xz mirror://github/gentoo/pornview/pornview-0.2.2.tar.xz
+_eclasses_=gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=41fe655ce667603356c848dc80957c38

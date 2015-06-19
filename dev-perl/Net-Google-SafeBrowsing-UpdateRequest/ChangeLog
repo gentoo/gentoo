@@ -1,0 +1,51 @@
+# ChangeLog for dev-perl/Net-Google-SafeBrowsing-UpdateRequest
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Google-SafeBrowsing-UpdateRequest/ChangeLog,v 1.10 2014/08/24 02:06:02 axs Exp $
+
+*Net-Google-SafeBrowsing-UpdateRequest-1.60.0-r1 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Net-Google-SafeBrowsing-UpdateRequest-1.60.0-r1.ebuild,
+  -Net-Google-SafeBrowsing-UpdateRequest-1.60.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -Net-Google-SafeBrowsing-UpdateRequest-1.06.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org>
+  Net-Google-SafeBrowsing-UpdateRequest-1.60.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Net-Google-SafeBrowsing-UpdateRequest-1.60.0 (29 Aug 2011)
+
+  29 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +Net-Google-SafeBrowsing-UpdateRequest-1.60.0.ebuild:
+  Change version scheme
+
+  25 Jan 2008; Samuli Suominen <drac@gentoo.org>
+  Net-Google-SafeBrowsing-UpdateRequest-1.06.ebuild:
+  amd64 stable wrt #206892
+
+  22 Jan 2008; Brent Baude <ranger@gentoo.org>
+  Net-Google-SafeBrowsing-UpdateRequest-1.06.ebuild:
+  Marking Net-Google-SafeBrowsing-UpdateRequest-1.06 ppc for bug 206892
+
+  21 Jan 2008; Markus Meier <maekke@gentoo.org>
+  Net-Google-SafeBrowsing-UpdateRequest-1.06.ebuild:
+  x86 stable, bug #206892
+
+  20 Oct 2007; Robin H. Johnson <robbat2@gentoo.org>
+  Net-Google-SafeBrowsing-UpdateRequest-1.06.ebuild:
+  Fix missing dep found by flameeyes.
+
+*Net-Google-SafeBrowsing-UpdateRequest-1.06 (17 Oct 2007)
+
+  17 Oct 2007; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +Net-Google-SafeBrowsing-UpdateRequest-1.06.ebuild:
+  Initial commit. Dep for Mail-SpamAssassin-Plugin-GoogleSafeBrowsing. Ebuild
+  by Robin H. Johnnson <robbat2@gentoo.org>

@@ -1,0 +1,11 @@
+--- common.mk
++++ common.mk
+@@ -50,7 +50,7 @@
+ 	guile-snarf $(GUILE_SNARF_CFLAGS) $< > $@ \
+ 	|| { rm $@; false; }
+ .c.doc:
+-	$(CPP) -DSCM_MAGIC_SNARF_DOCS $(GUILE_SNARF_CFLAGS) $< \
++	$(CPP) -P -DSCM_MAGIC_SNARF_DOCS $(GUILE_SNARF_CFLAGS) $< \
+ 	  | grep -E '^\^\^ {.*\^\^ }' > $@ || { rm $@; false; }
+ 
+ %.scm guile-gnome-gw-%.c: %-spec.scm

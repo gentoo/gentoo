@@ -1,0 +1,10 @@
+--- demo/demo.org	2005-04-28 03:00:13.431583384 +0000
++++ demo/demo.py	2005-04-28 03:00:31.886777768 +0000
+@@ -1,4 +1,7 @@
+ #!/usr/bin/env python
+ 
++import wxversion
++wxversion.select("2.8")
++
+ import Main
+ Main.main()

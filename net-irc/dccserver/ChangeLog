@@ -1,0 +1,67 @@
+# ChangeLog for net-irc/dccserver
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/dccserver/ChangeLog,v 1.17 2015/04/29 20:21:08 mrueg Exp $
+
+  29 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -dccserver-0.4.ebuild:
+  Remove old.
+
+  08 Jun 2014; Agostino Sarubbo <ago@gentoo.org> dccserver-0.5.ebuild:
+  Stable for ppc, wrt bug #502878
+
+  24 May 2014; Agostino Sarubbo <ago@gentoo.org> dccserver-0.5.ebuild:
+  Stable for x86, wrt bug #502878
+
+  13 May 2014; Chema Alonso <nimiux@gentoo.org> dccserver-0.5.ebuild:
+  Stable for amd64 wrt bug #502878
+
+*dccserver-0.5 (14 Jan 2014)
+
+  14 Jan 2014; Patrick Lauer <patrick@gentoo.org> +dccserver-0.5.ebuild:
+  Bump
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> dccserver-0.4.ebuild:
+  Remove virtual/libc
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> dccserver-0.4.ebuild:
+  Stable on ppc.
+
+  05 Dec 2004; Sven Wegener <swegener@gentoo.org> -dccserver-0.3.ebuild:
+  Removed old ebuild.
+
+  13 Jul 2004; Sven Wegener <swegener@gentoo.org> dccserver-0.3.ebuild,
+  dccserver-0.4.ebuild:
+  Removed unnecessary src_compile() and marked 0.4 stable on x86.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> dccserver-0.3.ebuild,
+  dccserver-0.4.ebuild:
+  virtual/glibc -> virtual/libc
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  dccserver-0.3.ebuild, dccserver-0.4.ebuild:
+  Masked dccserver-0.4.ebuild testing for ppc
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  dccserver-0.3.ebuild:
+  Masked dccserver-0.3.ebuild testing for ppc
+
+*dccserver-0.4 (03 Jan 2004)
+
+  03 Jan 2004; Chuck Short <zul@gentoo.org> dccserver-0.3.ebuild,
+  dccserver-0.4.ebuild:
+  Header updates.
+
+  21 Nov 2003; Chuck Short <zul@gentoo.org> :
+  Updated SRC_URI, new release.
+
+  21 Nov 2003; Chuck Short <zul@gentoo.org> dccserver-0.3.ebuild:
+  Marked stable for x86.
+
+*dccserver-0.3 (26 Jul 2003)
+
+  26 Jul 2003; Greg Fitzgerald <gregf@gentoo.org> dccserver-0.3.ebuild,
+  metadata.xml:
+  Initial Release. Closes bug #21610 submitted by Frank Zschockelt
+  <gentoo@freakysoft.de>

@@ -1,0 +1,165 @@
+#!/usr/bin/env python
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/distcc/files/distcc-config,v 1.1 2004/08/27 11:05:10 pyrania Exp $
+
+import os, re, signal, sys, commands, pwd
+from string import rstrip
+
+options=[
+	'--get-hosts',
+	'--set-hosts',
+	'--get-verbose',
+	'--set-verbose',
+	'--get-log',
+	'--set-log',
+	'--install',
+	'--help',
+	'--get-env',
+	'--set-env'
+]
+
+tmpcmdline=sys.argv[1:]
+cmdline=[]
+envfile = '/etc/env.d/02distcc'
+
+def exithandler(foo,bar):
+	os.kill(0,signal.SIGKILL)
+	sys.exit(1)
+
+signal.signal(signal.SIGINT,exithandler)
+
+def isroot(ret=0):
+	if os.getuid() != 0:
+		if ret == 0:
+			print '!!!',sys.argv[:1][0],tmpcmdline[0],'must be run as root'
+			sys.exit(1)
+		else:
+			retval = 0
+	else:
+		retval = 1
+	return retval
+
+def writeenv(var,value):
+	isroot()
+	distcc_env    = []
+	distcc_env    = open(envfile, 'r').readlines()
+	distcc_env_new = open(envfile, 'w')
+	for i in range(len(distcc_env)):
+		if re.compile(var+'="(.*)"').match(distcc_env[i]):
+			distcc_env[i] = var+'="'+value+'"\n'
+		distcc_env_new.write(distcc_env[i])
+	#print 'Set',var,'to:',value
+	os.popen('/usr/sbin/env-update')
+	print 'If you want to use these new settings in an existing shell,'
+	print 'you need to "source /etc/profile" to get the changes.'
+
+def readenv(var):
+	distcc_env = open(envfile, 'r').read()
+	match = re.compile(var+'="(.*)"').search(distcc_env)
+	if match:
+		print var+'='+match.group(1)
+	else:
+		print var,'not set.'
+
+def permissions(path,user,group):
+	for file in os.listdir(path):
+		#print 'Configuring',path+file+'...'
+		os.chown(path+file,user,group)
+
+def installlinks(chost=''):
+	for file in ['gcc', 'cc', 'c++', 'g++']:
+		path = '/usr/lib/distcc/bin/'
+		if not chost == '':
+			file = chost+'-'+file
+		if os.path.exists('/usr/bin/'+file):
+			#print 'Creating',path+file,'symlink...'
+			if not os.path.exists(path+file):
+				os.symlink('/usr/bin/distcc',path+file)
+			#else:
+			#	print 'Already exists. Skipping...'
+
+def createdistccdir(dir):
+	if not os.path.exists(dir):
+		os.mkdir(dir)
+		os.chmod(dir, 1777)
+
+for x in tmpcmdline:
+	if not x:
+		continue
+	if x[0:2]=="--":
+		if not x in options:
+			print "!!! Error:",x,"is an invalid option."
+			sys.exit(1)
+	else:
+		cmdline = x
+
+if '--get-hosts' in tmpcmdline:
+	HOSTS_ENV  = os.environ.get('DISTCC_HOSTS')
+	HOSTS_HOME = os.environ.get('HOME')+'/hosts'
+	if HOSTS_ENV:
+		print HOSTS_ENV
+	elif os.path.isfile(HOSTS_HOME) and os.path.getsize(HOSTS_HOME) != 0:
+		print HOSTS_HOME
+	elif os.path.exists('/etc/distcc/hosts'):
+		print rstrip(open('/etc/distcc/hosts', 'r').read())
+	else:
+		print 'No configuration file found. Setup your hosts with --set-hosts.'
+elif '--set-hosts' in tmpcmdline:
+	if isroot(1):
+		PATH = '/etc/distcc'		
+	else:
+		PATH = os.environ.get('HOME')
+	createdistccdir(PATH)
+	open(PATH+'/hosts', 'w').write(cmdline + '\n')
+elif '--get-verbose' in tmpcmdline:
+	readenv('DISTCC_VERBOSE')
+elif '--set-verbose' in tmpcmdline:
+	writeenv('DISTCC_VERBOSE',tmpcmdline[1])
+elif '--get-log' in tmpcmdline:
+	readenv('DISTCC_LOG')
+elif '--set-log' in tmpcmdline:
+	writeenv('DISTCC_LOG',tmpcmdline[1])
+elif '--install' in tmpcmdline:
+	isroot()
+	print 'Creating',envfile+'...'
+	distcc_env = open(envfile, 'w')
+	distcc_env.write('# This file is managed by distcc-config; use it to change these settings.\n')
+	distcc_env.write('DISTCC_LOG=""\n')
+	distcc_env.write('DCCC_PATH="/usr/lib/distcc/bin"\n')
+	distcc_env.write('DISTCC_VERBOSE="0"\n')
+	
+	if os.WEXITSTATUS(commands.getstatusoutput('/usr/sbin/useradd -u 240 -g daemon -s /bin/false -d /dev/null -c "distccd" distcc')[0]) == 9:
+		os.WEXITSTATUS(commands.getstatusoutput('/usr/sbin/usermod -g daemon -s /bin/false -d /dev/null -c "distccd" distcc')[0])
+
+	foobar = pwd.getpwnam('distcc')
+	user   = foobar[2]
+	group  = foobar[3]
+
+	makeconf = open('/etc/make.conf', 'r').read()
+	chost = re.compile('CHOST="(.*)"').search(makeconf).group(1)
+	print 'Creating symlinks...'
+	installlinks()
+	installlinks(chost)
+
+	print 'Checking permissions...'
+	permissions('/usr/lib/distcc/bin/',user,group)
+	permissions('/var/run/distccd/',user,group)
+elif '--get-env' in tmpcmdline:
+	if len(tmpcmdline) == 1:
+		print rstrip(open(envfile, 'r').read())
+	elif len(tmpcmdline) == 2:
+		readenv(tmpcmdline[1])
+	else:
+		print '!!! Error: Specify only one variable.'
+elif '--set-env' in tmpcmdline:
+	if len(tmpcmdline) > 2 and len(tmpcmdline) <= 3:
+		isroot()
+		writeenv(tmpcmdline[1],tmpcmdline[2])
+	else:
+		print '!!! Error: Awaiting two parameters.'
+else:
+	print 'Usage: /usr/bin/distcc-config --set-hosts DISTCC_HOSTS | --get-hosts'
+	print '       /usr/bin/distcc-config --set-verbose { 0 | 1 }  | --get-verbose'
+	print '       /usr/bin/distcc-config --set-log FILE           | --get-log'
+	print '       /usr/bin/distcc-config --set-env VARIABLE VALUE | --get-env [VARIABLE]'

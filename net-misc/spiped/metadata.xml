@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>monsieurp@gentoo.org</email>
+	</maintainer>
+	<longdescription> 
+		Spiped (pronounced "ess-pipe-dee") is a utility for creating symmetrically
+		encrypted and authenticated pipes between socket addresses, so that one may
+		connect to one address (e.g., a UNIX socket on localhost) and transparently
+		have a connection established to another address (e.g., a UNIX socket on a
+		different system). This is similar to 'ssh -L' functionality, but does not
+		use SSH and requires a pre-shared symmetric key.
+	</longdescription>
+</pkgmetadata>

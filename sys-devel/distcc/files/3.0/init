@@ -1,0 +1,32 @@
+#!/sbin/runscript
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/distcc/files/3.0/init,v 1.4 2008/11/16 16:36:37 matsuu Exp $
+
+depend() {
+	need net
+	use avahi-daemon ypbind
+}
+
+start() {
+	ebegin "Starting distccd"
+
+	if [ ! -e /var/run/distccd ] ; then
+		mkdir -p /var/run/distccd
+		chown distcc:daemon /var/run/distccd
+	fi
+
+	# Load GCC_SPECS from profile.env bug #164818
+	GCC_SPECS="$(. /etc/profile.env; echo "${GCC_SPECS}")" \
+	PATH="$(gcc-config --get-bin-path):${PATH}" \
+	start-stop-daemon --start --quiet --exec "${DISTCCD_EXEC}" -- \
+		--daemon --pid-file "${DISTCCD_PIDFILE}" --user distcc \
+		${DISTCCD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping distccd"
+	start-stop-daemon --stop --quiet --pidfile "${DISTCCD_PIDFILE}"
+	eend $?
+}

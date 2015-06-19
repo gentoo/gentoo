@@ -1,0 +1,22 @@
+# ChangeLog for sci-biology/profphd
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/profphd/ChangeLog,v 1.4 2014/04/24 11:38:57 jlec Exp $
+
+*profphd-1.0.40 (24 Apr 2014)
+
+  24 Apr 2014; Justin Lecher <jlec@gentoo.org> profphd-1.0.39.ebuild,
+  +profphd-1.0.40.ebuild, +files/profphd-1.0.39-perl.patch:
+  Fix for newer perl, version Bump
+
+  24 Apr 2013; Justin Lecher <jlec@gentoo.org> profphd-1.0.39.ebuild:
+  Updated deps
+
+  21 Mar 2013; Justin Lecher <jlec@gentoo.org> profphd-1.0.39.ebuild:
+  Add some more PREFIX love
+
+*profphd-1.0.39 (19 Mar 2013)
+
+  19 Mar 2013; Justin Lecher <jlec@gentoo.org> +profphd-1.0.39.ebuild,
+  +metadata.xml:
+  New addition
+

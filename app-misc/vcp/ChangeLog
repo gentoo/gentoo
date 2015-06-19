@@ -1,0 +1,69 @@
+# ChangeLog for app-misc/vcp
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/vcp/ChangeLog,v 1.22 2011/01/12 07:26:53 jlec Exp $
+
+  12 Jan 2011; Justin Lecher <jlec@gentoo.org> -vcp-2.2.ebuild:
+  Removed old
+
+  11 Jan 2011; Markus Meier <maekke@gentoo.org> vcp-2.2-r1.ebuild:
+  x86 stable, bug #350706
+
+  07 Jan 2011; Brent Baude <ranger@gentoo.org> vcp-2.2-r1.ebuild:
+  Marking vcp-2.2-r1 ppc for bug 350706
+
+  05 Jan 2011; Markos Chandras <hwoarang@gentoo.org> vcp-2.2-r1.ebuild:
+  Stable on amd64 wrt bug #350706
+
+  05 Jan 2011; Justin Lecher <jlec@gentoo.org> vcp-2.2.ebuild,
+  vcp-2.2-r1.ebuild:
+  Some Clean up
+
+*vcp-2.2-r1 (27 Aug 2010)
+
+  27 Aug 2010; Jeroen Roovers <jer@gentoo.org> +vcp-2.2-r1.ebuild:
+  Respect LDFLAGS by Ross Smith (bug #334577).
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  31 Mar 2005; <blubb@gentoo.org> vcp-2.2.ebuild:
+  stable on amd64
+
+  05 Feb 2005; Michael Hanselmann <hansmi@gentoo.org> vcp-2.2.ebuild:
+  Added to ~sparc.
+
+  05 Feb 2005; Michael Hanselmann <hansmi@gentoo.org> vcp-2.2.ebuild:
+  Stable on ppc.
+
+  12 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> vcp-2.2.ebuild:
+  Marked stable on x86.
+
+*vcp-2.2 (04 Dec 2004)
+
+  04 Dec 2004; Aaron Walker <ka0ttic@gentoo.org> vcp-1.7.2.ebuild,
+  +vcp-2.2.ebuild:
+  Version bump for bug 73360. Updated HOMEPAGE and SRC_URI for both ebuilds.
+  Updated to use toolchain-funcs.eclass rather than gcc.eclass. Also, updated
+  LICENSE to BSD for version 2.2.
+
+  21 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml:
+  Add metadata (shell-tools)
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> vcp-1.7.2.ebuild:
+  Masked vcp-1.7.2.ebuild stable for ppc
+
+  07 May 2004; David Holm <dholm@gentoo.org> vcp-1.7.2.ebuild:
+  Added to ~ppc.
+
+*vcp-1.7.2 (07 May 2004)
+
+  07 May 2004; Mike Frysinger <vapier@gentoo.org> +vcp-1.7.2.ebuild:
+  Version bump #49777 by Daniel Webert
+
+*vcp-1.6.2 (02 Sep 2003)
+
+  02 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by alex f <acid.punk@gmx.net> #27787.

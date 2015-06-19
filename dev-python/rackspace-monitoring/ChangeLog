@@ -1,0 +1,38 @@
+# ChangeLog for dev-python/rackspace-monitoring
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/rackspace-monitoring/ChangeLog,v 1.7 2015/06/07 15:50:00 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+*rackspace-monitoring-0.6.5 (14 Jan 2015)
+
+  14 Jan 2015; Matthew Thode <prometheanfire@gentoo.org>
+  +rackspace-monitoring-0.6.5.ebuild, -rackspace-monitoring-0.6.2.ebuild:
+  bumping
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  rackspace-monitoring-0.6.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*rackspace-monitoring-0.6.2 (02 Jun 2014)
+
+  02 Jun 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +rackspace-monitoring-0.6.2.ebuild, -rackspace-monitoring-0.5.4.ebuild,
+  -rackspace-monitoring-0.6.0.ebuild:
+  fix for brokenness caused by broken dep in libcloud for cve
+
+*rackspace-monitoring-0.6.0 (17 Mar 2014)
+
+  17 Mar 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +rackspace-monitoring-0.6.0.ebuild:
+  bump
+
+*rackspace-monitoring-0.5.4 (08 Feb 2014)
+
+  08 Feb 2014; Matthew Thode <prometheanfire@gentoo.org> +metadata.xml,
+  +rackspace-monitoring-0.5.4.ebuild:
+  adding rackspace-monitoring package

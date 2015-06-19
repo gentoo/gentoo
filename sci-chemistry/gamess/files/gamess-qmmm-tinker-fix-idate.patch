@@ -1,0 +1,20 @@
+diff -urN gamess/tinker.orig/Libtad.f gamess/tinker/Libtad.f
+--- gamess/tinker.orig/Libtad.f	2010-05-12 21:41:56.000000000 +0400
++++ gamess/tinker/Libtad.f	2010-12-08 01:05:31.000000000 +0300
+@@ -1332,11 +1332,15 @@
+ c     and for Macintosh under Absoft Pro Fortran 5.0
+ c
+       integer hms(3)
++      integer tarray(3)
+       call itime (hms)
+       hour = hms(1)
+       minute = hms(2)
+       second = hms(3)
+-      call idate (month,day,year)
++      call idate (tarray)
++      month = tarray(1)
++      day = tarray(2)
++      year = tarray(3)
+ c
+ c     code for IBM RS/6000 under AIX appends an underscore
+ c

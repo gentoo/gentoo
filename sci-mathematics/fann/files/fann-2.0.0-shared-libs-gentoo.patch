@@ -1,0 +1,23 @@
+diff -Naur fann-2.0.0/python/pyfann/Makefile fann-2.0.0-new/python/pyfann/Makefile
+--- fann-2.0.0/python/pyfann/Makefile	2005-12-02 20:22:43.000000000 -0500
++++ fann-2.0.0-new/python/pyfann/Makefile	2006-10-28 07:36:34.000000000 -0400
+@@ -10,7 +10,7 @@
+ all: $(TARGETS)
+ 	
+ _%.so: pyfann_wrap.o fann_helper.o
+-	gcc $(LIBS) -shared -dll $^ -o $@
++	gcc $(LIBS) -fPIC -shared -dll $^ -o $@
+ 
+ %.o: %.c 
+ 	gcc -c $< -I/usr/include/$(PYTHON)/ -I$(FANN_DIR)/src/include/
+diff -Naur fann-2.0.0/python/setup.py fann-2.0.0-new/python/setup.py
+--- fann-2.0.0/python/setup.py	2006-01-06 16:45:28.000000000 -0500
++++ fann-2.0.0-new/python/setup.py	2006-10-28 07:36:07.000000000 -0400
+@@ -40,6 +40,6 @@
+     url='http://sourceforge.net/projects/fann/',
+     license='GNU LESSER GENERAL PUBLIC LICENSE (LGPL)',
+     py_modules=['pyfann.libfann','pyfann.fann'],
+-    ext_modules=[Extension('pyfann._libfann',['pyfann/pyfann.i','pyfann/fann_helper.c'], include_dirs=['../src/include'], extra_objects=['../src/doublefann.o']) ]
++    ext_modules=[Extension('pyfann._libfann',['pyfann/pyfann.i','pyfann/fann_helper.c'], include_dirs=['../src/include'], extra_objects=['../src/.libs/doublefann.o']) ]
+ )
+ 

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install nofetch
+DESCRIPTION=Programs for crystal structure determination from single-crystal diffraction data
+EAPI=5
+HOMEPAGE=http://shelx.uni-ac.gwdg.de/SHELX/
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux
+LICENSE=free-noncomm
+RESTRICT=fetch
+SLOT=0
+SRC_URI=amd64? ( anode_amd64.bz2 ciftab_amd64.bz2 shelxc_amd64.bz2 shelxd_amd64.bz2 shelxe_amd64.bz2 shelxl_amd64.bz2 shelxs_amd64.bz2 shelxt_amd64.bz2 shredcif_amd64.bz2 ) x86? ( anode_x86.bz2 ciftab_x86.bz2 shelxc_x86.bz2 shelxd_x86.bz2 shelxe_x86.bz2 shelxl_x86.bz2 shelxs_x86.bz2 shelxt_x86.bz2 shredcif_x86.bz2 )
+_md5_=06e9448a5d00d98ab328485e3c2aeef7

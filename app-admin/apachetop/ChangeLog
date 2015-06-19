@@ -1,0 +1,222 @@
+# ChangeLog for app-admin/apachetop
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/apachetop/ChangeLog,v 1.59 2015/05/28 15:13:32 jmorgan Exp $
+
+  28 May 2015; Jack Morgan <jmorgan@gentoo.org> apachetop-0.12.6-r2.ebuild:
+  sparc stable wrt bug #513988
+
+  19 May 2015; Chema Alonso <nimiux@gentoo.org> apachetop-0.12.6-r2.ebuild:
+  Stable for amd64 wrt bug #513988
+
+  26 Apr 2015; Pacho Ramos <pacho@gentoo.org> apachetop-0.12.6-r2.ebuild:
+  ppc stable wrt bug #513988
+
+  18 Apr 2015; Pacho Ramos <pacho@gentoo.org> apachetop-0.12.6-r2.ebuild:
+  x86 stable wrt bug #513988
+
+  01 Apr 2015; Jeroen Roovers <jer@gentoo.org> apachetop-0.12.6-r2.ebuild:
+  Stable for HPPA (bug #513988).
+
+*apachetop-0.12.6-r2 (29 Mar 2015)
+
+  29 Mar 2015; Pacho Ramos <pacho@gentoo.org> +apachetop-0.12.6-r2.ebuild:
+  Disable adns support as it will be removed (#513238)
+
+  09 Jul 2013; <neurogeek@gentoo.org> apachetop-0.12.6-r1.ebuild,
+  +files/apachetop-0.12.6-ac_config_header.patch:
+  Added patch to rename AM_CONFIG_HEADER to AC_CONFIG_HEADER. Closes bug
+  #467536
+
+  27 Nov 2012; Jesus Rivero <neurogeek@gentoo.org> metadata.xml:
+  Added myself as maintainer
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  22 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -apachetop-0.12.6.ebuild:
+  Delete.
+
+  20 Mar 2011; Raúl Porcel <armin76@gentoo.org> apachetop-0.12.6-r1.ebuild:
+  sparc stable wrt #316875
+
+  09 Mar 2011; Thomas Kahle <tomka@gentoo.org> apachetop-0.12.6-r1.ebuild:
+  x86 stable per bug 316875
+
+  08 Mar 2011; Jeroen Roovers <jer@gentoo.org> apachetop-0.12.6-r1.ebuild:
+  Stable for HPPA (bug #316875).
+
+  08 Mar 2011; Markos Chandras <hwoarang@gentoo.org>
+  apachetop-0.12.6-r1.ebuild:
+  Stable on amd64 wrt bug #316875
+
+  04 Mar 2011; Brent Baude <ranger@gentoo.org> apachetop-0.12.6-r1.ebuild:
+  stable ppc, bug 316875
+
+*apachetop-0.12.6-r1 (11 Jan 2010)
+
+  11 Jan 2010; Benedikt Böhm <hollow@gentoo.org>
+  +apachetop-0.12.6-r1.ebuild, +files/apachetop-0.12.6-maxpathlen.patch:
+  fix buffer overflow wrt #287332
+
+  23 Feb 2008; Benedikt Böhm <hollow@gentoo.org>
+  +files/apachetop-0.12.6-configure.patch, -files/CAN-2005-2660.patch,
+  metadata.xml, -apachetop-0.12.5-r1.ebuild, apachetop-0.12.6.ebuild:
+  fix #198553; remove old version
+
+  10 Dec 2006; Elfyn McBratney <beu@gentoo.org> apachetop-0.12.5-r1.ebuild,
+  apachetop-0.12.6.ebuild:
+  Kill redundant deps; fixes bug 157655.
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  apachetop-0.12.6.ebuild:
+  ppc stable
+
+  06 Sep 2006; Scott Stoddard <deltacow@gentoo.org> apachetop-0.12.6.ebuild:
+  Stable on amd64 w.r.t. bug #130819
+
+  04 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  apachetop-0.12.6.ebuild:
+  Stable on sparc
+
+  04 Sep 2006; Joshua Jackson <tsunam@gentoo.org> apachetop-0.12.6.ebuild:
+  Stable x86; bug #130819
+
+  03 Sep 2006; Jeroen Roovers <jer@gentoo.org> apachetop-0.12.6.ebuild:
+  Stable for HPPA (bug #130819).
+
+  02 May 2006; Mark Loeser <halcy0n@gentoo.org>
+  +files/apachetop-0.12.6-gcc41.patch, apachetop-0.12.6.ebuild:
+  Add patch to fix compilation with gcc-4.1 by tristanheaven AT gmail DOT com;
+  bug #130819
+
+*apachetop-0.12.6 (21 Apr 2006)
+
+  21 Apr 2006; Renat Lumpau <rl03@gentoo.org> +apachetop-0.12.6.ebuild:
+  Version bump (#129568).
+
+  02 Oct 2005; Renat Lumpau <rl03@gentoo.org> -apachetop-0.12.5.ebuild:
+  Removing vulnerable version
+
+  01 Oct 2005; Jason Wever <weeve@gentoo.org> apachetop-0.12.5-r1.ebuild:
+  Stable on SPARC wrt security bug #104473.
+
+  01 Oct 2005; Homer Parker <hparker@gentoo.org> apachetop-0.12.5-r1.ebuild:
+  Stable on amd64.
+
+  01 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  apachetop-0.12.5-r1.ebuild:
+  Stable on ppc. See bug #104473.
+
+  01 Oct 2005; Mark Loeser <halcy0n@gentoo.org> apachetop-0.12.5-r1.ebuild:
+  Stable on x86; bug #104473
+
+*apachetop-0.12.5-r1 (30 Sep 2005)
+
+  30 Sep 2005; Renat Lumpau <rl03@gentoo.org> +files/CAN-2005-2660.patch,
+  +apachetop-0.12.5-r1.ebuild:
+  Revbump wrt security bug #104473.
+
+  28 Sep 2005; Renat Lumpau <rl03@gentoo.org> -apachetop-0.11.ebuild,
+  -apachetop-0.12.ebuild:
+  Removing old versions
+
+  23 Aug 2005; Homer Parker <hparker@gentoo.org> apachetop-0.12.5.ebuild:
+  Marked stable on amd64
+
+  17 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  apachetop-0.12.5.ebuild:
+  ppc stable
+
+  04 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  apachetop-0.12.5.ebuild:
+  Stable on sparc
+
+  03 Jul 2005; Renat Lumpau <rl03@gentoo.org> apachetop-0.12.5.ebuild:
+  Stable on x86 per
+
+  24 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> apachetop-0.12.5.ebuild:
+  added ~amd64 to KEYWORDS. fixes #83172
+
+*apachetop-0.12.5 (06 Feb 2005)
+
+  06 Feb 2005; Benedikt Boehm <hollow@gentoo.org> +apachetop-0.12.5.ebuild:
+  Bumped to 0.12.5 Closes #67367
+
+  15 Nov 2004; Robin H. Johnson <robbat2@gentoo.org> apachetop-0.12.ebuild:
+  convert to virtual fam.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  apachetop-0.11.ebuild, apachetop-0.12.ebuild:
+  Masked apachetop-0.12.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  apachetop-0.11.ebuild:
+  Masked apachetop-0.11.ebuild stable for ppc
+
+  18 Jul 2004; Jason Wever <weeve@gentoo.org> apachetop-0.12.ebuild:
+  Stable on sparc.
+
+  15 Jul 2004; Rob Holland <tigger@ereet.co.uk> apachetop-0.12.ebuild:
+  Fix DEPEND/RDEPENDs. Should close #56756. Thanks to wood-worker@gmx.net for
+  reporting the issue.
+
+  09 Jul 2004; Stuart Herbert <stuart@gentoo.org> apachetop-0.11.ebuild,
+  apachetop-0.12.ebuild:
+  Marked 0.12 stable on x86
+
+  09 Jul 2004; Stuart Herbert <stuart@gentoo.org> apachetop-0.11.ebuild:
+  Fix for bug #56510; thanks to tigger^ for the fix
+
+  18 Jun 2004; Jason Wever <weeve@gentoo.org> apachetop-0.11.ebuild:
+  Stable on sparc.
+
+  29 May 2004; Chuck Short <zul@gentoo.org> apachetop-0.12.ebuild:
+  Modified log directory. Closes #52245.
+
+*apachetop-0.12 (26 May 2004)
+
+  26 May 2004; <chuck@gentoo.org> apachetop-0.12.ebuild:
+  Version bump.
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> apachetop-0.9.ebuild:
+  Removed S=.
+
+  30 Mar 2004; Chuck Short <zul@gentoo.org> :
+  Version bump, closes #41429.
+  Added depend on sys-libs/libtermcap-compat or apachetop would not build.
+
+*apachetop-0.11 (30 Mar 2004)
+
+  30 Mar 2004; Chuck Short <zul@gentoo.org> apachetop-0.10.ebuild,
+  apachetop-0.5.ebuild:
+  Header fixes.
+
+*apachetop-0.10 (30 Mar 2004)
+
+  30 Mar 2004; Chuck Short <zul@gentoo.org> apachetop-0.10.ebuild:
+  Version bump, changed where apachetop is looking for logfiles.
+
+  29 Mar 2004; Stuart Herbert <stuart@gentoo.org> apachetop-0.9.ebuild:
+  Marked stable on x86
+
+  19 Jan 2004; <tuxus@gentoo.org> apachetop-0.9.ebuild:
+  Added ~mips to KEYWORDS.
+
+  28 Dec 2003; Stuart Herbert <stuart@gentoo.org> :
+  Revised digest; fixes bug #36338
+
+*apachetop-0.9 (24 Dec 2003)
+
+  24 Dec 2003; Stuart Herbert <stuart@gentoo.org> apachetop-0.9.ebuild:
+  Version bump; for bug #36338
+
+  06 Oct 2003; Jason Wever <weeve@gentoo.org> apachetop-0.5.ebuild:
+  Added ~sparc keyword.
+
+*apachetop-0.5 (04 Oct 2003)
+
+  04 Oct 2003; Stuart Herbert <stuart@gentoo.org> apachetop-0.5.ebuild:
+  Initial commit; ebuild by Richard Garand <richard@garandnet.net>; submitted
+  for bug #29860

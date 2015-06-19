@@ -1,0 +1,10 @@
+# ChangeLog for dev-texlive/texlive-langkorean
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-texlive/texlive-langkorean/ChangeLog,v 1.1 2014/11/03 06:53:53 aballier Exp $
+
+*texlive-langkorean-2014 (03 Nov 2014)
+
+  03 Nov 2014; Alexis Ballier <aballier@gentoo.org>
+  +texlive-langkorean-2014.ebuild, +metadata.xml:
+  bump to texlive 2014
+

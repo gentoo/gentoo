@@ -1,0 +1,18 @@
+# ChangeLog for dev-ml/gd4o
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/gd4o/ChangeLog,v 1.4 2015/06/09 14:58:16 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  10 Mar 2013; Alexis Ballier <aballier@gentoo.org> gd4o-1.0_alpha5.ebuild:
+  eapi5: define subslot, slot dep on ocaml, remove useless || die
+
+  25 Feb 2011; Kevin McCarthy <signals@gentoo.org> gd4o-1.0_alpha5.ebuild:
+  Update depends from media-libs/jpeg to virtual/jpeg
+
+*gd4o-1.0_alpha5 (08 Aug 2010)
+
+  08 Aug 2010; Alexis Ballier <aballier@gentoo.org> +gd4o-1.0_alpha5.ebuild,
+  +metadata.xml:
+  Initial import, ebuild by me

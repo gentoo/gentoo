@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-libs/expat app-arch/unzip
+DESCRIPTION=A lightweight Relax NG Compact Syntax validator
+EAPI=4
+HOMEPAGE=http://www.davidashen.net/rnv.html
+KEYWORDS=amd64 ~ppc x86
+LICENSE=BSD
+RDEPEND=dev-libs/expat
+SLOT=0
+SRC_URI=mirror://sourceforge/rnv/rnv-1.7.11.zip
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=bb329053feaa6e018386243f2e01b4b8

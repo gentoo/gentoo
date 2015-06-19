@@ -1,0 +1,250 @@
+# ChangeLog for virtual/perl-CPAN-Meta-YAML
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/virtual/perl-CPAN-Meta-YAML/ChangeLog,v 1.55 2015/06/04 16:49:03 dilfridge Exp $
+
+*perl-CPAN-Meta-YAML-0.12.0-r1 (04 Jun 2015)
+
+  04 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-CPAN-Meta-YAML-0.8.0-r2.ebuild, -perl-CPAN-Meta-YAML-0.12.0.ebuild,
+  +perl-CPAN-Meta-YAML-0.12.0-r1.ebuild:
+  Add Perl 5.22 as provider, remove old
+
+  04 Apr 2015; Mike Frysinger <vapier@gentoo.org>
+  perl-CPAN-Meta-YAML-0.12.0.ebuild, perl-CPAN-Meta-YAML-0.8.0-r2.ebuild:
+  Mark m68k/s390/sh stable.
+
+  02 Apr 2015; Tom Gall <tgall@gentoo.org> perl-CPAN-Meta-YAML-0.12.0.ebuild:
+  stable on arm64
+
+  18 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-CPAN-Meta-YAML-0.12.0.ebuild:
+  Stable for alpha, wrt bug #536790
+
+  17 Feb 2015; Markus Meier <maekke@gentoo.org>
+  perl-CPAN-Meta-YAML-0.12.0.ebuild:
+  arm stable, bug #536790
+
+  17 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-CPAN-Meta-YAML-0.12.0.ebuild:
+  Stable for ia64, wrt bug #536790
+
+  16 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-CPAN-Meta-YAML-0.12.0.ebuild:
+  Stable for sparc, wrt bug #536790
+
+  15 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-CPAN-Meta-YAML-0.12.0.ebuild:
+  Stable for ppc64, wrt bug #536790
+
+  14 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-CPAN-Meta-YAML-0.12.0.ebuild:
+  Stable for ppc, wrt bug #536790
+
+  13 Feb 2015; Jeroen Roovers <jer@gentoo.org>
+  perl-CPAN-Meta-YAML-0.12.0.ebuild:
+  Stable for HPPA (bug #536790).
+
+  13 Feb 2015; Agostino Sarubbo <ago@gentoo.org>
+  perl-CPAN-Meta-YAML-0.12.0.ebuild:
+  Stable for x86, wrt bug #536790
+
+  08 Feb 2015; Mikle Kolyada <zlogene@gentoo.org>
+  perl-CPAN-Meta-YAML-0.12.0.ebuild:
+  amd64 stable wrt bug #536790
+
+*perl-CPAN-Meta-YAML-0.8.0-r2 (18 Jul 2014)
+
+  18 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-CPAN-Meta-YAML-0.7.0-r1.ebuild, -perl-CPAN-Meta-YAML-0.8.0-r1.ebuild,
+  +perl-CPAN-Meta-YAML-0.8.0-r2.ebuild, perl-CPAN-Meta-YAML-0.12.0.ebuild:
+  Improve dependencies; remove old
+
+*perl-CPAN-Meta-YAML-0.8.0-r1 (06 Jul 2014)
+
+  06 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-CPAN-Meta-YAML-0.8.0.ebuild, +perl-CPAN-Meta-YAML-0.8.0-r1.ebuild:
+  Revision bump for added provider
+
+*perl-CPAN-Meta-YAML-0.12.0 (05 Jul 2014)
+
+  05 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -perl-CPAN-Meta-YAML-0.4.0.ebuild, -perl-CPAN-Meta-YAML-0.5.0.ebuild,
+  -perl-CPAN-Meta-YAML-0.6.0.ebuild, perl-CPAN-Meta-YAML-0.8.0.ebuild,
+  +perl-CPAN-Meta-YAML-0.12.0.ebuild:
+  Add perl-5.20 version and remove old
+
+  28 May 2014; Mikle Kolyada <zlogene@gentoo.org>
+  -perl-CPAN-Meta-YAML-0.3.0-r1.ebuild:
+  Drop old
+
+  19 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  perl-CPAN-Meta-YAML-0.8.0.ebuild:
+  Add arm64 love.
+
+  17 Jan 2014; Mike Frysinger <vapier@gentoo.org>
+  perl-CPAN-Meta-YAML-0.4.0.ebuild, perl-CPAN-Meta-YAML-0.8.0.ebuild:
+  Mark m68k stable.
+
+  02 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-CPAN-Meta-YAML-0.8.0.ebuild:
+  Stable for sh, wrt bug #458122
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-CPAN-Meta-YAML-0.8.0.ebuild:
+  Stable for sparc, wrt bug #458122
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-CPAN-Meta-YAML-0.8.0.ebuild:
+  Stable for ia64, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-CPAN-Meta-YAML-0.8.0.ebuild:
+  Stable for arm, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-CPAN-Meta-YAML-0.8.0.ebuild:
+  Stable for s390, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-CPAN-Meta-YAML-0.8.0.ebuild:
+  Stable for alpha, wrt bug #458122
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-CPAN-Meta-YAML-0.8.0.ebuild:
+  Stable for hppa, wrt bug #458122
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org> perl-CPAN-Meta-YAML-0.8.0.ebuild:
+  Add ~arm-linux keyword.
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-CPAN-Meta-YAML-0.8.0.ebuild:
+  Stable for ppc, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-CPAN-Meta-YAML-0.8.0.ebuild:
+  Stable for ppc64, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-CPAN-Meta-YAML-0.8.0.ebuild:
+  Stable for x86, wrt bug #458122
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  perl-CPAN-Meta-YAML-0.8.0.ebuild:
+  Stable for amd64, wrt bug #458122
+
+*perl-CPAN-Meta-YAML-0.7.0-r1 (21 May 2012)
+
+  21 May 2012; Torsten Veller <tove@gentoo.org>
+  -perl-CPAN-Meta-YAML-0.7.0.ebuild, +perl-CPAN-Meta-YAML-0.7.0-r1.ebuild:
+  Add perl-5.16 as provider
+
+  15 May 2012; Mark Loeser <halcy0n@gentoo.org>
+  perl-CPAN-Meta-YAML-0.4.0.ebuild:
+  Stable for ppc64; bug #393397
+
+  28 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  perl-CPAN-Meta-YAML-0.8.0.ebuild:
+  keyword ~amd64-fbsd
+
+*perl-CPAN-Meta-YAML-0.8.0 (18 Mar 2012)
+
+  18 Mar 2012; Torsten Veller <tove@gentoo.org>
+  +perl-CPAN-Meta-YAML-0.8.0.ebuild:
+  Version bump
+
+*perl-CPAN-Meta-YAML-0.7.0 (08 Feb 2012)
+
+  08 Feb 2012; Torsten Veller <tove@gentoo.org>
+  +perl-CPAN-Meta-YAML-0.7.0.ebuild:
+  Version bump
+
+*perl-CPAN-Meta-YAML-0.6.0 (07 Feb 2012)
+
+  07 Feb 2012; Torsten Veller <tove@gentoo.org>
+  +perl-CPAN-Meta-YAML-0.6.0.ebuild:
+  Version bump
+
+  02 Feb 2012; Brent Baude <ranger@gentoo.org>
+  perl-CPAN-Meta-YAML-0.4.0.ebuild:
+  Marking perl-CPAN-Meta-YAML-0.4.0 ppc stable for bug 393397
+
+*perl-CPAN-Meta-YAML-0.5.0 (24 Jan 2012)
+
+  24 Jan 2012; Torsten Veller <tove@gentoo.org>
+  +perl-CPAN-Meta-YAML-0.5.0.ebuild:
+  Version bump
+
+  15 Jan 2012; Raúl Porcel <armin76@gentoo.org>
+  perl-CPAN-Meta-YAML-0.4.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #393397
+
+  22 Dec 2011; Markus Meier <maekke@gentoo.org>
+  perl-CPAN-Meta-YAML-0.4.0.ebuild:
+  x86 stable, bug #393397
+
+  20 Dec 2011; Agostino Sarubbo <ago@gentoo.org>
+  perl-CPAN-Meta-YAML-0.4.0.ebuild:
+  Stable for AMD64, wrt bug #393397
+
+  14 Dec 2011; Markus Meier <maekke@gentoo.org>
+  perl-CPAN-Meta-YAML-0.4.0.ebuild:
+  arm stable, bug #393397
+
+  07 Dec 2011; Jeroen Roovers <jer@gentoo.org>
+  perl-CPAN-Meta-YAML-0.4.0.ebuild:
+  Stable for HPPA (bug #393397).
+
+*perl-CPAN-Meta-YAML-0.4.0 (13 Sep 2011)
+
+  13 Sep 2011; Torsten Veller <tove@gentoo.org>
+  +perl-CPAN-Meta-YAML-0.4.0.ebuild:
+  Version bump
+
+  07 Jul 2011; Alexis Ballier <aballier@gentoo.org>
+  perl-CPAN-Meta-YAML-0.3.0-r1.ebuild:
+  keyword ~x86-fbsd
+
+*perl-CPAN-Meta-YAML-0.3.0-r1 (18 Jun 2011)
+
+  18 Jun 2011; Torsten Veller <tove@gentoo.org>
+  -perl-CPAN-Meta-YAML-0.3.0.ebuild, +perl-CPAN-Meta-YAML-0.3.0-r1.ebuild:
+  Add perl-5.14 as provider
+
+  13 Jun 2011; Matt Turner <mattst88@gentoo.org>
+  perl-CPAN-Meta-YAML-0.3.0.ebuild:
+  Added ~mips, bug 357599
+
+*perl-CPAN-Meta-YAML-0.3.0 (21 May 2011)
+
+  21 May 2011; Torsten Veller <tove@gentoo.org>
+  -perl-CPAN-Meta-YAML-0.3.ebuild, +perl-CPAN-Meta-YAML-0.3.0.ebuild:
+  Add perl-5.14.0 as provider. Change version scheme
+
+  02 May 2011; Fabian Groffen <grobian@gentoo.org>
+  perl-CPAN-Meta-YAML-0.3.ebuild:
+  Marked ~x64-freebsd
+
+  27 Feb 2011; Fabian Groffen <grobian@gentoo.org>
+  perl-CPAN-Meta-YAML-0.3.ebuild:
+  Add Prefix keywords, bug #353115
+
+  27 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  perl-CPAN-Meta-YAML-0.3.ebuild:
+  Marked ~ppc64 wrt #353115
+
+  20 Feb 2011; Joseph Jezak <josejx@gentoo.org>
+  perl-CPAN-Meta-YAML-0.3.ebuild:
+  Marked ~ppc for bug #353020.
+
+  30 Jan 2011; Raúl Porcel <armin76@gentoo.org>
+  perl-CPAN-Meta-YAML-0.3.ebuild:
+  Add ~alpha/~arm/~ia64/~m68k/~s390/~sh/~sparc wrt #353115
+
+  29 Jan 2011; Jeroen Roovers <jer@gentoo.org> perl-CPAN-Meta-YAML-0.3.ebuild:
+  Marked ~hppa (bug #353115).
+
+*perl-CPAN-Meta-YAML-0.3 (28 Jan 2011)
+
+  28 Jan 2011; Torsten Veller <tove@gentoo.org>
+  +perl-CPAN-Meta-YAML-0.3.ebuild, +metadata.xml:
+  Initial version

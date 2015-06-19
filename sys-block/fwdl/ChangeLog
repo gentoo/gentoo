@@ -1,0 +1,16 @@
+# ChangeLog for sys-block/fwdl
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/fwdl/ChangeLog,v 1.3 2011/11/27 06:28:12 radhermit Exp $
+
+  27 Nov 2011; Tim Harder <radhermit@gentoo.org> fwdl-1.2.3.ebuild:
+  Update to EAPI 4, add debug use flag, and respect LDFLAGS (bug #337876).
+
+  14 Jan 2008; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  update metadata.
+
+*fwdl-1.2.3 (06 Feb 2007)
+
+  06 Feb 2007; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +fwdl-1.2.3.ebuild:
+  Initial commit. Ebuild by Robin H. Johnson <robbat2@gentoo.org>.
+

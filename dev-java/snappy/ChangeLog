@@ -1,0 +1,13 @@
+# ChangeLog for dev-java/snappy
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/snappy/ChangeLog,v 1.1 2013/11/24 15:09:03 ercpe Exp $
+
+*snappy-1.0.3_rc3 (24 Nov 2013)
+*snappy-1.1.0.1 (24 Nov 2013)
+
+  24 Nov 2013; Johann Schmitz <ercpe@gentoo.org> +files/1.0.3_rc3-gentoo.patch,
+  +files/1.0.3_rc3-unbundle-snappy.patch, +files/1.1.0.1-gentoo.patch,
+  +files/1.1.0.1-unbundle-snappy.patch, +files/1.x-build.xml, +metadata.xml,
+  +snappy-1.0.3_rc3.ebuild, +snappy-1.1.0.1.ebuild:
+  Added ebuild for dev-java/snappy, a JNI library for app-arch/snappy. Version
+  1.1.0.1 is the latest; 1.0.3_rc3 is a dependency of picard (#491816)

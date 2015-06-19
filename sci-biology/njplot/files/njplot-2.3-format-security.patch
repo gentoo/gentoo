@@ -1,0 +1,16 @@
+ njplot-vib.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/njplot-vib.c b/njplot-vib.c
+index fe55609..63fd3b6 100644
+--- a/njplot-vib.c
++++ b/njplot-vib.c
+@@ -1976,7 +1976,7 @@ PDFONLY"       no window interface, just write the PDF/PostScript tree plot\n"
+ #else
+ 		fprintf(stderr,
+ #endif
+-		message);
++		"%s", message);
+ 		exit(0);
+ 		}
+ 	}

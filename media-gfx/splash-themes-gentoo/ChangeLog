@@ -1,0 +1,153 @@
+# ChangeLog for media-gfx/splash-themes-gentoo
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/splash-themes-gentoo/ChangeLog,v 1.31 2013/12/22 11:18:08 pacho Exp $
+
+  22 Dec 2013; Pacho Ramos <pacho@gentoo.org>
+  -splash-themes-gentoo-20101212.ebuild,
+  splash-themes-gentoo-20101212-r2.ebuild:
+  Fix fperms invocation (#494886 by Zhang Hongjiu), drop old.
+
+*splash-themes-gentoo-20101212-r2 (13 Oct 2013)
+
+  13 Oct 2013; Pacho Ramos <pacho@gentoo.org>
+  +splash-themes-gentoo-20101212-r2.ebuild:
+  Fix permissions, bug #470100
+
+  28 Sep 2013; Sergey Popov <pinkbyte@gentoo.org>
+  splash-themes-gentoo-20101212.ebuild:
+  Drop to ~ppc, wrt bug #486252
+
+  10 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  splash-themes-gentoo-20101212-r1.ebuild:
+  Stable for x86, wrt bug #461186
+
+  10 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  splash-themes-gentoo-20101212-r1.ebuild:
+  Stable for amd64, wrt bug #461186
+
+*splash-themes-gentoo-20101212-r1 (20 Jan 2013)
+
+  20 Jan 2013; Sergey Popov <pinkbyte@gentoo.org>
+  +splash-themes-gentoo-20101212-r1.ebuild:
+  Revision bump: EAPI 5, QA fixes, use internal function for installation
+  instead of simple 'cp'. Show postinstallation messages only at first install,
+  wrt bug #440458
+
+  20 Jan 2013; Pacho Ramos <pacho@gentoo.org>
+  -splash-themes-gentoo-20050429.ebuild, -splash-themes-gentoo-20080914.ebuild,
+  -splash-themes-gentoo-20090324.ebuild, -splash-themes-gentoo-20090926.ebuild,
+  -splash-themes-gentoo-20100302.ebuild, -splash-themes-gentoo-20100820.ebuild,
+  metadata.xml:
+  Cleanup due retirement, bug #35242
+
+  03 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  splash-themes-gentoo-20101212.ebuild:
+  Stable for ppc, wrt bug #397067
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  splash-themes-gentoo-20101212.ebuild:
+  x86 stable wrt bug #397067
+
+  09 Jan 2012; Agostino Sarubbo <ago@gentoo.org>
+  splash-themes-gentoo-20101212.ebuild:
+  Stable for AMD64, wrt bug #397067
+
+  07 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  splash-themes-gentoo-20100302.ebuild:
+  ppc stable wrt #329873
+
+*splash-themes-gentoo-20101212 (12 Dec 2010)
+
+  12 Dec 2010; Michał Januszewski <spock@gentoo.org>
+  +splash-themes-gentoo-20101212.ebuild:
+  Add images and config file for 1600x900 (bug #342421).
+
+*splash-themes-gentoo-20100820 (20 Aug 2010)
+
+  20 Aug 2010; Michał Januszewski <spock@gentoo.org>
+  +splash-themes-gentoo-20100820.ebuild:
+  Add natural_gentoo pictures and config for 1366x768 (bug #333057,
+  contributed by Wilfried Holzke).
+
+  31 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  splash-themes-gentoo-20100302.ebuild:
+  Stable on amd64 wrt bug #329873
+
+  27 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  splash-themes-gentoo-20100302.ebuild:
+  stable x86, bug 329873
+
+  21 Mar 2010; Michał Januszewski <spock@gentoo.org>
+  splash-themes-gentoo-20100302.ebuild:
+  Fix path in the Natural Gentoo config files (bug #307605).
+
+*splash-themes-gentoo-20100302 (02 Mar 2010)
+
+  02 Mar 2010; Michał Januszewski <spock@gentoo.org>
+  +splash-themes-gentoo-20100302.ebuild:
+  Version bump. Includes an updated version of the Natural Gentoo theme.
+
+*splash-themes-gentoo-20090926 (26 Sep 2009)
+
+  26 Sep 2009; Michał Januszewski <spock@gentoo.org>
+  +splash-themes-gentoo-20090926.ebuild:
+  Update the Natural Gentoo theme to 8.0 and fix bug #285088.
+
+  29 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  splash-themes-gentoo-20090324.ebuild:
+  stable x86
+
+  29 May 2009; Steve Dibb <beandog@gentoo.org>
+  splash-themes-gentoo-20090324.ebuild:
+  amd64 stable
+
+*splash-themes-gentoo-20090324 (23 Mar 2009)
+
+  23 Mar 2009; Michał Januszewski <spock@gentoo.org>
+  +splash-themes-gentoo-20090324.ebuild:
+  Version bump. Add the 'emerge-world' theme, switch to EAPI2.
+
+  08 Mar 2009; Markus Meier <maekke@gentoo.org>
+  splash-themes-gentoo-20080914.ebuild:
+  amd64/x86 stable, bug #260368
+
+  01 Mar 2009; nixnut <nixnut@gentoo.org>
+  splash-themes-gentoo-20080914.ebuild:
+  ppc stable #260368
+
+  14 Sep 2008; Michał Januszewski <spock@gentoo.org>
+  splash-themes-gentoo-20080914.ebuild:
+  Add a note about the GRUB splash image for Natural Gentoo.
+
+*splash-themes-gentoo-20080914 (14 Sep 2008)
+
+  14 Sep 2008; Michał Januszewski <spock@gentoo.org>
+  +splash-themes-gentoo-20080914.ebuild:
+  Add the 'Natural Gentoo' theme (bug #233198).
+
+  17 Feb 2007; Michał Januszewski <spock@gentoo.org>
+  splash-themes-gentoo-20050429.ebuild:
+  Remove invalid usage of $ROOT (bug #167285).
+
+  15 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  splash-themes-gentoo-20050429.ebuild:
+  Added RESTRICT='binchecks strip' for bug #166987.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  20 Jul 2005; Herbie Hopkins <herbs@gentoo.org>
+  splash-themes-gentoo-20050429.ebuild:
+  Stable on amd64 wrt bug #99709.
+
+  07 Jul 2005; Michał Januszewski <spock@gentoo.org>
+  splash-themes-gentoo-20050429.ebuild:
+  Marked stable on x86.
+
+*splash-themes-gentoo-20050429 (29 Apr 2005)
+
+  29 Apr 2005; Michał Januszewski <spock@gentoo.org>
+  +splash-themes-gentoo-20050429.ebuild:
+  Initial commmit. The package contains themes that were previously
+  distributed as a part of the splashutils package. Extraction of the themes
+  was requested in bug #90307.

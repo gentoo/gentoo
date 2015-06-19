@@ -1,0 +1,425 @@
+diff -Naur w3m-0.5.2.orig/libwc/Makefile.in w3m-0.5.2/libwc/Makefile.in
+--- w3m-0.5.2.orig/libwc/Makefile.in	2004-05-03 01:44:08.000000000 +0900
++++ w3m-0.5.2/libwc/Makefile.in	2007-09-27 17:34:58.000000000 +0900
+@@ -154,7 +154,7 @@
+ 	map/hkscs_ucs_p2.map map/gb12345_ucs.map map/johab_ucs.map \
+ 	map/sjis_ext_ucs.map map/gbk_ucs.map map/uhc_ucs.map map/ucs_wide.map \
+ 	map/ucs_combining.map map/ucs_precompose.map map/ucs_hangul.map \
+-	map/ucs_fullwidth.map
++	map/ucs_fullwidth.map map/ucs_ambwidth.map
+ uhc.o: wc.h wc_types.h ces.h ccs.h iso2022.h priv.h uhc.h wtf.h ucs.h
+ utf7.o: wc.h wc_types.h ces.h ccs.h iso2022.h priv.h ucs.h utf7.h wtf.h
+ utf8.o: wc.h wc_types.h ces.h ccs.h iso2022.h priv.h ucs.h utf8.h wtf.h
+diff -Naur w3m-0.5.2.orig/libwc/map/ucs_ambwidth.map w3m-0.5.2/libwc/map/ucs_ambwidth.map
+--- w3m-0.5.2.orig/libwc/map/ucs_ambwidth.map	1970-01-01 09:00:00.000000000 +0900
++++ w3m-0.5.2/libwc/map/ucs_ambwidth.map	2007-09-27 17:34:58.000000000 +0900
+@@ -0,0 +1,167 @@
++/*
++ * Based on Markus Kuhn's wcwidth.c: 2003-05-20 (Unicode 4.0)
++ * Latest version: http://www.cl.cam.ac.uk/~mgk25/ucs/wcwidth.c
++ *
++ * { 0xF0000, 0xFFFFD } and { 0x100000, 0x10FFFD } is not contained in this
++ * map because wc_map_range_search takes wc_uint16 argument.
++ */
++
++#define N_ucs_ambwidth_map 154
++
++static wc_map ucs_ambwidth_map[ N_ucs_ambwidth_map ] = {
++  { 0x00A1, 0x00A1 },
++  { 0x00A4, 0x00A4 },
++  { 0x00A7, 0x00A8 },
++  { 0x00AA, 0x00AA },
++  { 0x00AE, 0x00AE },
++  { 0x00B0, 0x00B4 },
++  { 0x00B6, 0x00BA },
++  { 0x00BC, 0x00BF },
++  { 0x00C6, 0x00C6 },
++  { 0x00D0, 0x00D0 },
++  { 0x00D7, 0x00D8 },
++  { 0x00DE, 0x00E1 },
++  { 0x00E6, 0x00E6 },
++  { 0x00E8, 0x00EA },
++  { 0x00EC, 0x00ED },
++  { 0x00F0, 0x00F0 },
++  { 0x00F2, 0x00F3 },
++  { 0x00F7, 0x00FA },
++  { 0x00FC, 0x00FC },
++  { 0x00FE, 0x00FE },
++  { 0x0101, 0x0101 },
++  { 0x0111, 0x0111 },
++  { 0x0113, 0x0113 },
++  { 0x011B, 0x011B },
++  { 0x0126, 0x0127 },
++  { 0x012B, 0x012B },
++  { 0x0131, 0x0133 },
++  { 0x0138, 0x0138 },
++  { 0x013F, 0x0142 },
++  { 0x0144, 0x0144 },
++  { 0x0148, 0x014B },
++  { 0x014D, 0x014D },
++  { 0x0152, 0x0153 },
++  { 0x0166, 0x0167 },
++  { 0x016B, 0x016B },
++  { 0x01CE, 0x01CE },
++  { 0x01D0, 0x01D0 },
++  { 0x01D2, 0x01D2 },
++  { 0x01D4, 0x01D4 },
++  { 0x01D6, 0x01D6 },
++  { 0x01D8, 0x01D8 },
++  { 0x01DA, 0x01DA },
++  { 0x01DC, 0x01DC },
++  { 0x0251, 0x0251 },
++  { 0x0261, 0x0261 },
++  { 0x02C4, 0x02C4 },
++  { 0x02C7, 0x02C7 },
++  { 0x02C9, 0x02CB },
++  { 0x02CD, 0x02CD },
++  { 0x02D0, 0x02D0 },
++  { 0x02D8, 0x02DB },
++  { 0x02DD, 0x02DD },
++  { 0x02DF, 0x02DF },
++  { 0x0391, 0x03A1 },
++  { 0x03A3, 0x03A9 },
++  { 0x03B1, 0x03C1 },
++  { 0x03C3, 0x03C9 },
++  { 0x0401, 0x0401 },
++  { 0x0410, 0x044F },
++  { 0x0451, 0x0451 },
++  { 0x2010, 0x2010 },
++  { 0x2013, 0x2016 },
++  { 0x2018, 0x2019 },
++  { 0x201C, 0x201D },
++  { 0x2020, 0x2022 },
++  { 0x2024, 0x2027 },
++  { 0x2030, 0x2030 },
++  { 0x2032, 0x2033 },
++  { 0x2035, 0x2035 },
++  { 0x203B, 0x203B },
++  { 0x203E, 0x203E },
++  { 0x2074, 0x2074 },
++  { 0x207F, 0x207F },
++  { 0x2081, 0x2084 },
++  { 0x20AC, 0x20AC },
++  { 0x2103, 0x2103 },
++  { 0x2105, 0x2105 },
++  { 0x2109, 0x2109 },
++  { 0x2113, 0x2113 },
++  { 0x2116, 0x2116 },
++  { 0x2121, 0x2122 },
++  { 0x2126, 0x2126 },
++  { 0x212B, 0x212B },
++  { 0x2153, 0x2154 },
++  { 0x215B, 0x215E },
++  { 0x2160, 0x216B },
++  { 0x2170, 0x2179 },
++  { 0x2190, 0x2199 },
++  { 0x21B8, 0x21B9 },
++  { 0x21D2, 0x21D2 },
++  { 0x21D4, 0x21D4 },
++  { 0x21E7, 0x21E7 },
++  { 0x2200, 0x2200 },
++  { 0x2202, 0x2203 },
++  { 0x2207, 0x2208 },
++  { 0x220B, 0x220B },
++  { 0x220F, 0x220F },
++  { 0x2211, 0x2211 },
++  { 0x2215, 0x2215 },
++  { 0x221A, 0x221A },
++  { 0x221D, 0x2220 },
++  { 0x2223, 0x2223 },
++  { 0x2225, 0x2225 },
++  { 0x2227, 0x222C },
++  { 0x222E, 0x222E },
++  { 0x2234, 0x2237 },
++  { 0x223C, 0x223D },
++  { 0x2248, 0x2248 },
++  { 0x224C, 0x224C },
++  { 0x2252, 0x2252 },
++  { 0x2260, 0x2261 },
++  { 0x2264, 0x2267 },
++  { 0x226A, 0x226B },
++  { 0x226E, 0x226F },
++  { 0x2282, 0x2283 },
++  { 0x2286, 0x2287 },
++  { 0x2295, 0x2295 },
++  { 0x2299, 0x2299 },
++  { 0x22A5, 0x22A5 },
++  { 0x22BF, 0x22BF },
++  { 0x2312, 0x2312 },
++  { 0x2460, 0x24E9 },
++  { 0x24EB, 0x254B },
++  { 0x2550, 0x2573 },
++  { 0x2580, 0x258F },
++  { 0x2592, 0x2595 },
++  { 0x25A0, 0x25A1 },
++  { 0x25A3, 0x25A9 },
++  { 0x25B2, 0x25B3 },
++  { 0x25B6, 0x25B7 },
++  { 0x25BC, 0x25BD },
++  { 0x25C0, 0x25C1 },
++  { 0x25C6, 0x25C8 },
++  { 0x25CB, 0x25CB },
++  { 0x25CE, 0x25D1 },
++  { 0x25E2, 0x25E5 },
++  { 0x25EF, 0x25EF },
++  { 0x2605, 0x2606 },
++  { 0x2609, 0x2609 },
++  { 0x260E, 0x260F },
++  { 0x2614, 0x2615 },
++  { 0x261C, 0x261C },
++  { 0x261E, 0x261E },
++  { 0x2640, 0x2640 },
++  { 0x2642, 0x2642 },
++  { 0x2660, 0x2661 },
++  { 0x2663, 0x2665 },
++  { 0x2667, 0x266A },
++  { 0x266C, 0x266D },
++  { 0x266F, 0x266F },
++  { 0x273D, 0x273D },
++  { 0x2776, 0x277F },
++  { 0xE000, 0xF8FF },
++  { 0xFFFD, 0xFFFD },
++};
++
+diff -Naur w3m-0.5.2.orig/libwc/status.c w3m-0.5.2/libwc/status.c
+--- w3m-0.5.2.orig/libwc/status.c	2003-09-23 06:02:23.000000000 +0900
++++ w3m-0.5.2/libwc/status.c	2007-09-27 17:34:58.000000000 +0900
+@@ -25,6 +25,7 @@
+     WC_FALSE,		/* gb18030_as_ucs */
+     WC_FALSE,		/* no_replace */
+     WC_TRUE,		/* use_wide */
++    WC_FALSE,		/* east_asian_width */
+ };
+ 
+ static wc_status output_st;
+diff -Naur w3m-0.5.2.orig/libwc/ucs.c w3m-0.5.2/libwc/ucs.c
+--- w3m-0.5.2.orig/libwc/ucs.c	2007-05-23 20:34:09.000000000 +0900
++++ w3m-0.5.2/libwc/ucs.c	2007-09-27 17:34:58.000000000 +0900
+@@ -17,6 +17,7 @@
+ 
+ #include "ucs.map"
+ 
++#include "map/ucs_ambwidth.map"
+ #include "map/ucs_wide.map"
+ #include "map/ucs_combining.map"
+ #include "map/ucs_precompose.map"
+@@ -511,11 +512,26 @@
+     if (0x80 <= ucs && ucs <= 0x9F)
+ 	return WC_CCS_C1;
+     return ((ucs <= WC_C_UCS2_END) ? WC_CCS_UCS2 : WC_CCS_UCS4)
++	| ((WcOption.east_asian_width && wc_is_ucs_ambiguous_width(ucs))
++		    ? WC_CCS_A_WIDE : 0)
+ 	| (wc_is_ucs_wide(ucs) ? WC_CCS_A_WIDE : 0)
+ 	| (wc_is_ucs_combining(ucs) ? WC_CCS_A_COMB : 0);
+ }
+ 
+ wc_bool
++wc_is_ucs_ambiguous_width(wc_uint32 ucs)
++{
++    if (0xa1 <= ucs && ucs <= 0xfe && WcOption.use_jisx0213)
++	return 1;
++    else if (ucs <= WC_C_UCS2_END)
++	return (wc_map_range_search((wc_uint16)ucs,
++		    ucs_ambwidth_map, N_ucs_ambwidth_map) != NULL);
++    else
++	return ((0xF0000 <= ucs && ucs <= 0xFFFFD)
++		|| (0x100000 <= ucs && ucs <= 0x10FFFD));
++}
++
++wc_bool
+ wc_is_ucs_wide(wc_uint32 ucs)
+ {
+     if (ucs <= WC_C_UCS2_END)
+diff -Naur w3m-0.5.2.orig/libwc/ucs.h w3m-0.5.2/libwc/ucs.h
+--- w3m-0.5.2.orig/libwc/ucs.h	2007-05-23 20:34:09.000000000 +0900
++++ w3m-0.5.2/libwc/ucs.h	2007-09-27 17:34:58.000000000 +0900
+@@ -44,6 +44,7 @@
+ extern wc_wchar_t wc_ucs_to_iso2022(wc_uint32 ucs);
+ extern wc_wchar_t wc_ucs_to_iso2022w(wc_uint32 ucs);
+ extern wc_ccs     wc_ucs_to_ccs(wc_uint32 ucs);
++extern wc_bool    wc_is_ucs_ambiguous_width(wc_uint32 ucs);
+ extern wc_bool    wc_is_ucs_wide(wc_uint32 ucs);
+ extern wc_bool    wc_is_ucs_combining(wc_uint32 ucs);
+ extern wc_bool    wc_is_ucs_hangul(wc_uint32 ucs);
+diff -Naur w3m-0.5.2.orig/libwc/wc_types.h w3m-0.5.2/libwc/wc_types.h
+--- w3m-0.5.2.orig/libwc/wc_types.h	2004-04-05 01:47:20.000000000 +0900
++++ w3m-0.5.2/libwc/wc_types.h	2007-09-27 17:34:58.000000000 +0900
+@@ -91,6 +91,7 @@
+     wc_bool gb18030_as_ucs;	/* treat 4 bytes char. of GB18030 as Unicode */
+     wc_bool no_replace;		/* don't output replace character */
+     wc_bool use_wide;		/* use wide characters */
++    wc_bool east_asian_width;	/* East Asian Ambiguous characters are wide */
+ } wc_option;
+ 
+ typedef struct {
+diff -Naur w3m-0.5.2.orig/po/ja.po w3m-0.5.2/po/ja.po
+--- w3m-0.5.2.orig/po/ja.po	2007-05-31 21:17:05.000000000 +0900
++++ w3m-0.5.2/po/ja.po	2007-09-27 17:36:36.000000000 +0900
+@@ -614,6 +614,10 @@
+ msgstr "結合文字を使う"
+ 
+ #: rc.c:219
++msgid "Use double width for some Unicode characters"
++msgstr "ある種のUnicode文字を全角にする"
++
++#: rc.c:219
+ msgid "Use Unicode language tags"
+ msgstr "Unicode の言語タグを使う"
+ 
+diff -Naur w3m-0.5.2.orig/po/w3m.pot w3m-0.5.2/po/w3m.pot
+--- w3m-0.5.2.orig/po/w3m.pot	2007-05-31 21:17:05.000000000 +0900
++++ w3m-0.5.2/po/w3m.pot	2007-09-27 17:37:12.000000000 +0900
+@@ -613,6 +613,10 @@
+ msgstr ""
+ 
+ #: rc.c:219
++msgid "Use double width for some Unicode characters"
++msgstr ""
++
++#: rc.c:219
+ msgid "Use Unicode language tags"
+ msgstr ""
+ 
+diff -Naur w3m-0.5.2.orig/proto.h w3m-0.5.2/proto.h
+--- w3m-0.5.2.orig/proto.h	2006-04-07 22:21:12.000000000 +0900
++++ w3m-0.5.2/proto.h	2007-09-27 17:34:58.000000000 +0900
+@@ -176,6 +176,9 @@
+ #define convertLine(uf,line,mode,charset,dcharset) convertLine0(uf,line,mode)
+ #endif
+ extern void push_symbol(Str str, char symbol, int width, int n);
++#ifdef USE_UNICODE
++extern void update_utf8_symbol(void);
++#endif
+ extern Buffer *loadFile(char *path);
+ extern Buffer *loadGeneralFile(char *path, ParsedURL *current, char *referer,
+ 			       int flag, FormList *request);
+diff -Naur w3m-0.5.2.orig/rc.c w3m-0.5.2/rc.c
+--- w3m-0.5.2.orig/rc.c	2007-05-24 00:06:06.000000000 +0900
++++ w3m-0.5.2/rc.c	2007-09-27 17:34:58.000000000 +0900
+@@ -216,6 +216,7 @@
+ #define CMT_EXT_HALFDUMP     N_("Output halfdump with display charset")
+ #define CMT_USE_WIDE         N_("Use multi column characters")
+ #define CMT_USE_COMBINING    N_("Use combining characters")
++#define CMT_EAST_ASIAN_WIDTH N_("Use double width for some Unicode characters")
+ #define CMT_USE_LANGUAGE_TAG N_("Use Unicode language tags")
+ #define CMT_UCS_CONV         N_("Charset conversion using Unicode map")
+ #define CMT_PRE_CONV         N_("Charset conversion when loading")
+@@ -640,6 +641,8 @@
+     {"use_combining", P_CHARINT, PI_ONOFF, (void *)&WcOption.use_combining,
+      CMT_USE_COMBINING, NULL},
+ #ifdef USE_UNICODE
++    {"east_asian_width", P_CHARINT, PI_ONOFF,
++     (void *)&WcOption.east_asian_width, CMT_EAST_ASIAN_WIDTH, NULL},
+     {"use_language_tag", P_CHARINT, PI_ONOFF,
+      (void *)&WcOption.use_language_tag, CMT_USE_LANGUAGE_TAG, NULL},
+     {"ucs_conv", P_CHARINT, PI_ONOFF, (void *)&WcOption.ucs_conv, CMT_UCS_CONV,
+@@ -1172,6 +1175,9 @@
+ 	AcceptEncoding = acceptableEncoding();
+     if (AcceptMedia == NULL || *AcceptMedia == '\0')
+ 	AcceptMedia = acceptableMimeTypes();
++#ifdef USE_UNICODE
++    update_utf8_symbol();
++#endif
+     if (fmInitialized) {
+ 	initKeymap(FALSE);
+ #ifdef USE_MOUSE
+diff -Naur w3m-0.5.2.orig/symbol.c w3m-0.5.2/symbol.c
+--- w3m-0.5.2.orig/symbol.c	2003-09-23 06:02:21.000000000 +0900
++++ w3m-0.5.2/symbol.c	2007-09-27 17:34:58.000000000 +0900
+@@ -18,7 +18,7 @@
+     wc_ces ces;
+     char width;
+     char **item;
+-    char encode;
++    char **conved_item;
+ } symbol_set;
+ 
+ typedef struct {
+@@ -27,17 +27,17 @@
+ } charset_symbol_set;
+ 
+ /* *INDENT-OFF* */
+-static symbol_set alt_symbol_set   = { WC_CES_US_ASCII, 1, alt_symbol,   1 };
+-static symbol_set alt2_symbol_set  = { WC_CES_US_ASCII, 2, alt2_symbol,  1 };
+-static symbol_set eucjp_symbol_set = { WC_CES_EUC_JP,   2, eucjp_symbol, 0 };
+-static symbol_set euckr_symbol_set = { WC_CES_EUC_KR,   2, euckr_symbol, 0 };
+-static symbol_set euccn_symbol_set = { WC_CES_EUC_CN,   2, euccn_symbol, 0 };
+-static symbol_set euctw_symbol_set = { WC_CES_EUC_TW,   2, euctw_symbol, 0 };
+-static symbol_set big5_symbol_set  = { WC_CES_BIG5,     2, big5_symbol,  0 };
++static symbol_set alt_symbol_set   = { WC_CES_US_ASCII, 1, alt_symbol,   alt_symbol };
++static symbol_set alt2_symbol_set  = { WC_CES_US_ASCII, 2, alt2_symbol,  alt2_symbol };
++static symbol_set eucjp_symbol_set = { WC_CES_EUC_JP,   2, eucjp_symbol, NULL };
++static symbol_set euckr_symbol_set = { WC_CES_EUC_KR,   2, euckr_symbol, NULL };
++static symbol_set euccn_symbol_set = { WC_CES_EUC_CN,   2, euccn_symbol, NULL };
++static symbol_set euctw_symbol_set = { WC_CES_EUC_TW,   2, euctw_symbol, NULL };
++static symbol_set big5_symbol_set  = { WC_CES_BIG5,     2, big5_symbol,  NULL };
+ #ifdef USE_UNICODE
+-static symbol_set utf8_symbol_set  = { WC_CES_UTF_8,    1, utf8_symbol,  0 };
++static symbol_set utf8_symbol_set  = { WC_CES_UTF_8,    1, utf8_symbol,  NULL };
+ #endif
+-static symbol_set cp850_symbol_set = { WC_CES_CP850,    1, cp850_symbol, 0 };
++static symbol_set cp850_symbol_set = { WC_CES_CP850,    1, cp850_symbol, NULL };
+ 
+ static charset_symbol_set charset_symbol_list[] = {
+     { WC_CES_EUC_JP,        &eucjp_symbol_set },
+@@ -73,11 +73,12 @@
+ {
+     int i;
+ 
++    for (i = 0; s->item[i]; i++) ;
++    s->conved_item = New_N(char *, i);
+     for (i = 0; s->item[i]; i++) {
+ 	if (*(s->item[i]))
+-	    s->item[i] = wc_conv(s->item[i], s->ces, InnerCharset)->ptr;
++	    s->conved_item[i] = wc_conv(s->item[i], s->ces, InnerCharset)->ptr;
+     }
+-    s->encode = 1;
+ }
+ 
+ char **
+@@ -89,7 +90,7 @@
+     if (charset == save_charset && save_symbol != NULL &&
+ 	*width == save_symbol->width) {
+ 	*width = save_symbol->width;
+-	return save_symbol->item;
++	return save_symbol->conved_item;
+     }
+     save_charset = charset;
+     for (p = charset_symbol_list; p->charset; p++) {
+@@ -102,12 +103,12 @@
+     if (s == NULL)
+ 	s = (*width == 2) ? &alt2_symbol_set : &alt_symbol_set;
+     if (s != save_symbol) {
+-	if (!s->encode)
++	if (!s->conved_item)
+ 	    encode_symbol(s);
+ 	save_symbol = s;
+     }
+     *width = s->width;
+-    return s->item;
++    return s->conved_item;
+ }
+ 
+ char **
+@@ -137,6 +138,21 @@
+     return symbol_buf;
+ }
+ 
++#ifdef USE_UNICODE
++void
++update_utf8_symbol(void)
++{
++    charset_symbol_set *p;
++    utf8_symbol_set.width = WcOption.east_asian_width ? 2 : 1;
++    for (p = charset_symbol_list; p->charset; p++) {
++	if (p->charset == WC_CES_UTF_8) {
++	    encode_symbol(p->symbol);
++	    break;
++	}
++    }
++}
++#endif
++
+ #else
+ 
+ char **

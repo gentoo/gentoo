@@ -1,0 +1,79 @@
+diff --git a/share/mk/bsd.lib.mk b/share/mk/bsd.lib.mk
+index a5eacf9..01d1045 100644
+--- a/share/mk/bsd.lib.mk
++++ b/share/mk/bsd.lib.mk
+@@ -166,11 +166,7 @@ _LIBS=		lib${LIB}.a
+ lib${LIB}.a: ${OBJS} ${STATICOBJS}
+ 	@${ECHO} building static ${LIB} library
+ 	@rm -f ${.TARGET}
+-.if !defined(NM)
+-	@${AR} ${ARFLAGS} ${.TARGET} `lorder ${OBJS} ${STATICOBJS} | tsort -q` ${ARADD}
+-.else
+-	@${AR} ${ARFLAGS} ${.TARGET} `NM='${NM}' lorder ${OBJS} ${STATICOBJS} | tsort -q` ${ARADD}
+-.endif
++	@${AR} ${ARFLAGS} ${.TARGET} ${OBJS} ${STATICOBJS} ${ARADD}
+ 	${RANLIB} ${RANLIBFLAGS} ${.TARGET}
+ .endif
+ 
+@@ -183,11 +179,7 @@ POBJS+=		${OBJS:.o=.po} ${STATICOBJS:.o=.po}
+ lib${LIB}_p.a: ${POBJS}
+ 	@${ECHO} building profiled ${LIB} library
+ 	@rm -f ${.TARGET}
+-.if !defined(NM)
+-	@${AR} ${ARFLAGS} ${.TARGET} `lorder ${POBJS} | tsort -q` ${ARADD}
+-.else
+-	@${AR} ${ARFLAGS} ${.TARGET} `NM='${NM}' lorder ${POBJS} | tsort -q` ${ARADD}
+-.endif
++	@${AR} ${ARFLAGS} ${.TARGET} ${POBJS} ${ARADD}
+ 	${RANLIB} ${RANLIBFLAGS} ${.TARGET}
+ .endif
+ 
+@@ -214,15 +206,9 @@ ${SHLIB_NAME_FULL}: ${SOBJS}
+ .if defined(SHLIB_LINK)
+ 	@${INSTALL_SYMLINK} ${SHLIB_NAME} ${SHLIB_LINK}
+ .endif
+-.if !defined(NM)
+ 	@${CC} ${LDFLAGS} ${SSP_CFLAGS} ${SOLINKOPTS} \
+ 	    -o ${.TARGET} -Wl,-soname,${SONAME} \
+-	    `lorder ${SOBJS} | tsort -q` ${LDADD}
+-.else
+-	@${CC} ${LDFLAGS} ${SSP_CFLAGS} ${SOLINKOPTS} \
+-	    -o ${.TARGET} -Wl,-soname,${SONAME} \
+-	    `NM='${NM}' lorder ${SOBJS} | tsort -q` ${LDADD}
+-.endif
++	    `echo ${SOBJS} | xargs -n 1 echo | sort -u` ${LDADD}
+ .if ${MK_CTF} != "no"
+ 	${CTFMERGE} ${CTFFLAGS} -o ${.TARGET} ${SOBJS}
+ .endif
+@@ -280,13 +266,6 @@ _EXTRADEPEND:
+ 
+ .if !target(install)
+ 
+-.if defined(PRECIOUSLIB)
+-.if !defined(NO_FSCHG)
+-SHLINSTALLFLAGS+= -fschg
+-.endif
+-SHLINSTALLFLAGS+= -S
+-.endif
+-
+ _INSTALLFLAGS:=	${INSTALLFLAGS}
+ .for ie in ${INSTALLFLAGS_EDIT}
+ _INSTALLFLAGS:=	${_INSTALLFLAGS${ie}}
+diff --git a/share/mk/bsd.prog.mk b/share/mk/bsd.prog.mk
+index a53ea14..af3f37c 100644
+--- a/share/mk/bsd.prog.mk
++++ b/share/mk/bsd.prog.mk
+@@ -179,13 +179,6 @@ _EXTRADEPEND:
+ 
+ .if !target(install)
+ 
+-.if defined(PRECIOUSPROG)
+-.if !defined(NO_FSCHG)
+-INSTALLFLAGS+= -fschg
+-.endif
+-INSTALLFLAGS+= -S
+-.endif
+-
+ _INSTALLFLAGS:=	${INSTALLFLAGS}
+ .for ie in ${INSTALLFLAGS_EDIT}
+ _INSTALLFLAGS:=	${_INSTALLFLAGS${ie}}

@@ -1,0 +1,21 @@
+[1 of 1] Compiling Network.Shed.Httpd ( Network/Shed/Httpd.hs, dist/build/Network/Shed/Httpd.o )
+
+Network/Shed/Httpd.hs:142:24:
+    Ambiguous occurrence `sClose'
+    It could refer to either `N.sClose',
+                             imported from `Network' at Network/Shed/Httpd.hs:38:1-14
+                          or `Network.Socket.sClose',
+                             imported from `Network.Socket' at Network/Shed/Httpd.hs:48:1-21
+diff --git a/Network/Shed/Httpd.hs b/Network/Shed/Httpd.hs
+index 9dbc2a2..f4f7d5e 100644
+--- a/Network/Shed/Httpd.hs
++++ b/Network/Shed/Httpd.hs
+@@ -139,7 +139,7 @@ initServerMain processBody sockAddr callOut = do
+                                  hClose h
+                    _                      -> hClose h
+                  return ()
+-           ) `finally` sClose sock
++           ) `finally` N.sClose sock
+   where 
+       loopIO m          = do m
+                              loopIO m

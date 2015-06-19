@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+	<longdescription lang="en">
+		JDiskReport enables you to understand how much space the files and
+		directories consume on your disk drives, and it helps you find obsolete
+		files and folders.
+	</longdescription>
+</pkgmetadata>
+

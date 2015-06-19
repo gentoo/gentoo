@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>desktop-misc</herd>
+  <longdescription>Dzen is a general purpose messaging, notification and menuing
+  program for X11. It was designed to be scriptable in any language and
+  integrate well with window managers like dwm, wmii and xmonad though it will
+  work with any window manager.</longdescription>
+  <upstream>
+    <remote-id type="github">robm/dzen</remote-id>
+  </upstream>
+</pkgmetadata>

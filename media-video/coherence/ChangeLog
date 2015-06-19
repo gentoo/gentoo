@@ -1,0 +1,78 @@
+# ChangeLog for media-video/coherence
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/coherence/ChangeLog,v 1.19 2015/05/07 22:39:49 mrueg Exp $
+
+  07 May 2015; Manuel Rüger <mrueg@gentoo.org> -coherence-0.6.6.1.ebuild:
+  Remove old.
+
+  06 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org> coherence-0.6.6.1.ebuild,
+  coherence-0.6.6.2.ebuild:
+  Pin gst-python to 0.10 slot.
+
+  03 Aug 2013; Michał Górny <mgorny@gentoo.org> coherence-0.6.6.1.ebuild,
+  coherence-0.6.6.2.ebuild:
+  Move dev-python/twisted to dev-python/twisted-core.
+
+  26 May 2013; Patrick Lauer <patrick@gentoo.org> coherence-0.6.6.1.ebuild,
+  coherence-0.6.6.2.ebuild:
+  Removing stable sparc keyword that has unsatisfied dependencies #469550
+
+  05 Mar 2011; Raúl Porcel <armin76@gentoo.org> coherence-0.6.6.1.ebuild,
+  coherence-0.6.6.2.ebuild:
+  Drop ia64 keywords
+
+  04 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  coherence-0.6.6.2.ebuild:
+  ppc64 stable wrt #354797
+
+  04 Mar 2011; Michael Weber <xmw@gentoo.org> coherence-0.6.6.2.ebuild:
+  ppc/sparc stable (bug 354797)
+
+  20 Feb 2011; Markos Chandras <hwoarang@gentoo.org> coherence-0.6.6.2.ebuild:
+  Stable on amd64 wrt bug #354797
+
+  18 Feb 2011; Thomas Kahle <tomka@gentoo.org> coherence-0.6.6.2.ebuild:
+  x86 stable per bug 354797
+
+  16 Feb 2011; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  remove myself from metadata
+
+  26 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  coherence-0.6.6.2.ebuild:
+  add ~ppc wrt #311825
+
+  16 Jan 2011; Raúl Porcel <armin76@gentoo.org> coherence-0.6.6.1.ebuild,
+  coherence-0.6.6.2.ebuild:
+  sparc stable, add ~ia64
+
+  11 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  coherence-0.6.6.1.ebuild, coherence-0.6.6.2.ebuild:
+  Fix dependencies.
+
+*coherence-0.6.6.2 (11 Jan 2011)
+
+  11 Jan 2011; Michael Weber <xmw@gentoo.org> coherence-0.6.6.1.ebuild,
+  +coherence-0.6.6.2.ebuild:
+  Fix python issues (bug 313987) and version bump (bug 349476).
+
+  07 Jan 2011; Michael Weber <xmw@gentoo.org> coherence-0.6.6.1.ebuild:
+  added ~sparc keyword (bug 311825)
+
+  12 Aug 2010; Markus Meier <maekke@gentoo.org> coherence-0.6.6.1.ebuild:
+  amd64/x86 stable, bug #330773
+
+  06 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  coherence-0.6.6.1.ebuild:
+  Keyword ~ppc64 wrt #311825
+
+  21 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  coherence-0.6.6.1.ebuild:
+  keyworded ~arch for x86, bug 313563
+
+*coherence-0.6.6.1 (27 Dec 2009)
+
+  27 Dec 2009; Jeremy Olexa <darkside@gentoo.org> +coherence-0.6.6.1.ebuild,
+  +files/coherence-init, +metadata.xml:
+  Initial ebuild. Many thanks to all the contributors on bug 246166. This
+  ebuild is still in rough shape, needs to have the deps worked out and
+  minor fixes. Funtionality works

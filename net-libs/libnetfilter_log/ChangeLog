@@ -1,0 +1,96 @@
+# ChangeLog for net-libs/libnetfilter_log
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libnetfilter_log/ChangeLog,v 1.21 2014/07/18 14:51:18 jer Exp $
+
+  18 Jul 2014; Jeroen Roovers <jer@gentoo.org> libnetfilter_log-1.0.1.ebuild,
+  metadata.xml:
+  Remove short <longdescription>
+
+  23 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libnetfilter_log-1.0.1.ebuild:
+  Stable for ppc, wrt bug #466810
+
+  22 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libnetfilter_log-1.0.1.ebuild:
+  Stable for x86, wrt bug #466810
+
+  22 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libnetfilter_log-1.0.1.ebuild:
+  Stable for amd64, wrt bug #466810
+
+  29 Dec 2012; Jeroen Roovers <jer@gentoo.org> libnetfilter_log-1.0.1.ebuild:
+  Verbose build.
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, #72682
+
+  16 Jun 2012; Pacho Ramos <pacho@gentoo.org> -libnetfilter_log-0.0.13.ebuild,
+  -libnetfilter_log-0.0.15.ebuild, -libnetfilter_log-0.0.16.ebuild,
+  -libnetfilter_log-1.0.0.ebuild, metadata.xml:
+  Wormo will only take care of bug wrangling, keep she only CCed to keep an eye
+  on this. Drop old.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  libnetfilter_log-0.0.15.ebuild, libnetfilter_log-0.0.16.ebuild,
+  libnetfilter_log-1.0.0.ebuild, libnetfilter_log-1.0.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  05 Jan 2012; Tim Harder <radhermit@gentoo.org> libnetfilter_log-1.0.1.ebuild:
+  Add static-libs use flag.
+
+  05 Jan 2012; Tim Harder <radhermit@gentoo.org>
+  libnetfilter_log-0.0.15.ebuild, libnetfilter_log-0.0.16.ebuild,
+  libnetfilter_log-1.0.0.ebuild:
+  Add pkgconfig build dep.
+
+*libnetfilter_log-1.0.1 (05 Jan 2012)
+
+  05 Jan 2012; Tim Harder <radhermit@gentoo.org>
+  +libnetfilter_log-1.0.1.ebuild:
+  Version bump. Update to EAPI 4.
+
+*libnetfilter_log-1.0.0 (07 Oct 2010)
+
+  07 Oct 2010; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  +libnetfilter_log-1.0.0.ebuild, metadata.xml:
+  Version bump needed by app-admin/ulogd-2.0.0_beta4
+
+  25 Jan 2010; Raúl Porcel <armin76@gentoo.org>
+  libnetfilter_log-0.0.13.ebuild, libnetfilter_log-0.0.15.ebuild,
+  libnetfilter_log-0.0.16.ebuild:
+  Add ~ia64 wrt #281056
+
+  27 Dec 2009; Joseph Jezak <josejx@gentoo.org>
+  libnetfilter_log-0.0.15.ebuild, libnetfilter_log-0.0.16.ebuild:
+  Marked ~ppc for bug #281056.
+
+  08 Sep 2009; Mike Auty <ikelos@gentoo.org> libnetfilter_log-0.0.13.ebuild,
+  libnetfilter_log-0.0.15.ebuild, libnetfilter_log-0.0.16.ebuild:
+  Making CONFIG_CHECK non-fatal for userland ebuilds, see bug 283320.
+
+*libnetfilter_log-0.0.16 (26 May 2009)
+
+  26 May 2009; Jeroen Roovers <jer@gentoo.org>
+  +libnetfilter_log-0.0.16.ebuild:
+  Version bump.
+
+  15 Dec 2008; Peter Volkov <pva@gentoo.org> libnetfilter_log-0.0.15.ebuild:
+  Fixed net-libs/libnfnetlink dependency, bug #246708, thank Richard Ash for
+  report.
+
+*libnetfilter_log-0.0.15 (15 Sep 2008)
+
+  15 Sep 2008; Peter Volkov <pva@gentoo.org>
+  +libnetfilter_log-0.0.15.ebuild:
+  Version bump, bug #234148, thank Tim Harder for report.
+
+  01 Jul 2007; Sven Wegener <swegener@gentoo.org>
+  libnetfilter_log-0.0.13.ebuild:
+  Add ~amd64 keyword.
+
+  22 May 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  libnetfilter_log-0.0.13.ebuild:
+  Keyworded ~sparc
+
+*libnetfilter_log-0.0.13 (25 Nov 2006)
+
+  25 Nov 2006; Cedric Krier <cedk@gentoo.org> +metadata.xml,
+  +libnetfilter_log-0.0.13.ebuild:
+  New ebuild for bug #141998

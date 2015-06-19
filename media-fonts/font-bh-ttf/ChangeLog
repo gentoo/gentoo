@@ -1,0 +1,212 @@
+# ChangeLog for media-fonts/font-bh-ttf
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/font-bh-ttf/ChangeLog,v 1.55 2014/09/14 17:29:38 chithanh Exp $
+
+  14 Sep 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  font-bh-ttf-1.0.3.ebuild:
+  Fix license, bug #420025.
+
+  21 Oct 2013; Fabian Groffen <grobian@gentoo.org> font-bh-ttf-1.0.3.ebuild:
+  Marked ~x64-macos, bug #486818
+
+  13 May 2012; Alexis Ballier <aballier@gentoo.org> font-bh-ttf-1.0.3.ebuild:
+  keyword ~amd64-fbsd
+
+  14 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -font-bh-ttf-1.0.1.ebuild:
+  old
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  font-bh-ttf-1.0.3.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> font-bh-ttf-1.0.3.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #344827
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> font-bh-ttf-1.0.3.ebuild:
+  Stable for HPPA (bug #344827).
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org> font-bh-ttf-1.0.3.ebuild:
+  arm stable, bug #344827
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  font-bh-ttf-1.0.3.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> font-bh-ttf-1.0.3.ebuild:
+  amd64 stable wrt #344827
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> font-bh-ttf-1.0.3.ebuild:
+  ppc64 stable wrt #344827
+
+  20 Nov 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -font-bh-ttf-1.0.0.ebuild:
+  old
+
+*font-bh-ttf-1.0.3 (17 Nov 2010)
+
+  17 Nov 2010; Michał Górny <mgorny@gentoo.org> +font-bh-ttf-1.0.3.ebuild:
+  Version bump.
+
+  21 Oct 2010; Brent Baude <ranger@gentoo.org> font-bh-ttf-1.0.1.ebuild:
+  Marking font-bh-ttf-1.0.1 ppc stable for bug 239063
+
+  19 Sep 2010; Raúl Porcel <armin76@gentoo.org> font-bh-ttf-1.0.1.ebuild:
+  ia64/s390/sh/sparc stable wrt #327777
+
+  12 Sep 2010; Tobias Klausmann <klausman@gentoo.org>
+  font-bh-ttf-1.0.1.ebuild:
+  Stable on alpha, bug #327777
+
+  03 Aug 2010; Samuli Suominen <ssuominen@gentoo.org>
+  font-bh-ttf-1.0.1.ebuild:
+  ppc64 stable wrt #327777
+
+  22 Jul 2010; Markus Meier <maekke@gentoo.org> font-bh-ttf-1.0.1.ebuild:
+  arm stable, bug #327777
+
+  14 Jul 2010; Jeroen Roovers <jer@gentoo.org> font-bh-ttf-1.0.1.ebuild:
+  Stable for HPPA (bug #327777).
+
+  13 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  font-bh-ttf-1.0.1.ebuild:
+  x86 stable, bug 327777
+
+  12 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  font-bh-ttf-1.0.1.ebuild:
+  Stable on amd64 wrt bug #327777
+
+*font-bh-ttf-1.0.1 (15 Mar 2010)
+
+  15 Mar 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +font-bh-ttf-1.0.1.ebuild:
+  Version bump.
+
+  09 Nov 2009; Rémi Cardona <remi@gentoo.org> font-bh-ttf-1.0.0.ebuild:
+  drop useless dep on ttmkfdir
+
+  16 Jun 2007; Christoph Mende <angelos@gentoo.org>
+  font-bh-ttf-1.0.0.ebuild:
+  Stable on amd64 wrt bug 181091
+
+  10 Jun 2007; Raúl Porcel <armin76@gentoo.org> font-bh-ttf-1.0.0.ebuild:
+  x86 stable wrt #181091
+
+  09 Jun 2007; nixnut <nixnut@gentoo.org> font-bh-ttf-1.0.0.ebuild:
+  Stable on ppc wrt bug 181091
+
+  08 Jun 2007; Jeroen Roovers <jer@gentoo.org> font-bh-ttf-1.0.0.ebuild:
+  Stable for HPPA (bug #181091).
+
+  07 Jun 2007; Markus Rothe <corsair@gentoo.org> font-bh-ttf-1.0.0.ebuild:
+  Stable on ppc64; bug #181091
+
+  06 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  font-bh-ttf-1.0.0.ebuild:
+  Stable on sparc wrt #181091
+
+  04 Feb 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  font-bh-ttf-1.0.0.ebuild:
+  Drop mirroring restriction.  Thanks to Zhang Le of bug #163088.
+
+  26 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  font-bh-ttf-1.0.0.ebuild:
+  Add ~x86-fbsd keyword.
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  font-bh-ttf-1.0.0.ebuild:
+  Stable on Alpha.
+
+  18 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  files/digest-font-bh-ttf-1.0.0, Manifest:
+  (#144290) Fix digest.
+
+  11 Jul 2006; Aron Griffis <agriffis@gentoo.org> font-bh-ttf-1.0.0.ebuild:
+  Mark 1.0.0 stable on ia64
+
+  11 Jun 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  files/digest-font-bh-ttf-1.0.0, Manifest:
+  Fix digest. (Kevin Quinn, bug #136151)
+
+  04 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  font-bh-ttf-1.0.0.ebuild:
+  (#133980) Add a real description (Max Lorenz).
+
+  28 Apr 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+  24 Mar 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  font-bh-ttf-1.0.0.ebuild:
+  (#127306) Digests changed between release candidates and final release for
+  the same tarballs.
+
+  26 Feb 2006; Stefaan De Roeck <stefaan@gentoo.org>
+  font-bh-ttf-1.0.0.ebuild:
+  Marked ~alpha (bug #122726)
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> font-bh-ttf-1.0.0.ebuild:
+  Added ~ppc64
+
+  31 Jan 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  font-bh-ttf-1.0.0.ebuild:
+  Unstable on hppa.
+
+*font-bh-ttf-1.0.0 (18 Dec 2005)
+
+  18 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -font-bh-ttf-0.99.1.ebuild, +font-bh-ttf-1.0.0.ebuild:
+  Bump for 7.0RC4.
+
+  14 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  font-bh-ttf-0.99.1.ebuild:
+  ttmkfdir was moved from x11-misc to x11-apps.
+
+  13 Dec 2005; Doug Goldstein <cardoe@gentoo.org> font-bh-ttf-0.99.1.ebuild:
+  Adding ~ppc
+
+  10 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  font-bh-ttf-0.99.1.ebuild:
+  Remove mkfontscale and mkfontdir deps; moved to x-modular.eclass.
+
+  07 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -font-bh-ttf-0.99.0.ebuild:
+  Pull old versions.
+
+*font-bh-ttf-0.99.1 (07 Dec 2005)
+
+  07 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +font-bh-ttf-0.99.1.ebuild:
+  Bump for 7.0RC3.
+
+  09 Nov 2005; Stephen P. Becker <geoman@gentoo.org>
+  font-bh-ttf-0.99.0.ebuild:
+  added ~mips keyword
+
+  06 Nov 2005; <dang@gentoo.org> font-bh-ttf-0.99.0.ebuild:
+  Marked ~amd64
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  14 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  font-bh-ttf-0.99.0.ebuild:
+  Autodiscover fonts instead of specifying them.
+
+  11 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  font-bh-ttf-0.99.0.ebuild:
+  Add dep on x11-misc/ttmkfdir.
+
+  11 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  font-bh-ttf-0.99.0.ebuild:
+  Update to use new x-modular.eclass setup code. See font-misc-misc ChangeLog
+  for more details.
+
+  09 Aug 2005; Ferris McCormick <fmccor@gentoo.org>
+  font-bh-ttf-0.99.0.ebuild:
+  Add ~sparc keyword (modular X testing).
+
+*font-bh-ttf-0.99.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +font-bh-ttf-0.99.0.ebuild:
+  Initial commit for modular X.

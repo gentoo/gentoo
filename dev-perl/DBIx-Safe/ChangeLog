@@ -1,0 +1,19 @@
+# ChangeLog for dev-perl/DBIx-Safe
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/DBIx-Safe/ChangeLog,v 1.4 2014/10/13 21:58:47 dilfridge Exp $
+
+  13 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  DBIx-Safe-1.2.5.ebuild:
+  Add license declaration, bug 433601
+
+  12 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> DBIx-Safe-1.2.5.ebuild:
+  Bump to EAPI=5
+
+  04 Sep 2012; Patrick Lauer <patrick@gentoo.org> DBIx-Safe-1.2.5.ebuild:
+  Some improvements from #433601
+
+*DBIx-Safe-1.2.5 (01 Sep 2012)
+
+  01 Sep 2012; Patrick Lauer <patrick@gentoo.org> +DBIx-Safe-1.2.5.ebuild,
+  +metadata.xml:
+  Initial import, ebuild by me

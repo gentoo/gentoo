@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst setup
+DESCRIPTION=Firmware and configuration instructions for ADI 930/Eagle USB ADSL Modem driver
+EAPI=2
+HOMEPAGE=https://gna.org/projects/ueagleatm/
+KEYWORDS=~amd64 x86
+LICENSE=BSD GPL-2
+RDEPEND=net-dialup/ppp !sys-kernel/linux-firmware
+SLOT=0
+SRC_URI=http://eagle-usb.org/ueagle-atm/non-free/ueagle-data-src-1.1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=e3f5fe2d24565ce6adc242a11eaf326f

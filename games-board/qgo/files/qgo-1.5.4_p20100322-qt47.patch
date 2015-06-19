@@ -1,0 +1,74 @@
+--- src/network/playergamelistings.h.old	2010-11-08 13:49:25.000000000 +0100
++++ src/network/playergamelistings.h	2010-11-08 13:52:24.000000000 +0100
+@@ -66,21 +66,21 @@
+ 	bool hidden;
+ 	PlayerListing() : id(0), 
+ 	online(0),
+-	name(0),
+-	notnickname(0),
+-	info(0),
+-	idletime(0),
++	name(QString::null),
++	notnickname(QString::null),
++	info(QString::null),
++	idletime(QString::null),
+ 	seconds_idle(0),
+-	rank(0),
++	rank(QString::null),
+ 	rank_score(0),
+-	country(0),
++	country(QString::null),
+ 	wins(0), 
+ 	losses(0),
+ 	rated_games(0),
+ 	observing(0),
+ 	playing(0), 
+-	extInfo(0),
+-	email_address(0),
++	extInfo(QString::null),
++	email_address(QString::null),
+ 	nmatch(0),
+ 	nmatch_handicapMin(0),
+ 	specialbyte(0),
+@@ -189,7 +189,7 @@
+ 	_white_rank_score(0), 
+ 	_black_rank_score(0), 
+ 	observers(0), 
+-	result(0),
++	result(QString::null),
+ 	flags(IN_PROGRESS),
+ 	rated(0), 
+ 	owner_id(0), 
+--- src/board/board.h.old	2010-11-08 13:57:26.000000000 +0100
++++ src/board/board.h	2010-11-08 13:58:17.000000000 +0100
+@@ -50,7 +50,7 @@
+ 
+ 	void removeGhosts();
+ 	void setVarGhost(StoneColor c, int x, int y);
+-	void setMark(int x, int y, MarkType t, bool update=true, QString txt=0, bool overlay=true);
++	void setMark(int x, int y, MarkType t, bool update=true, QString txt=QString::null, bool overlay=true);
+ 	Mark* hasMark(int x, int y);
+ 	void removeMark(int x, int y, bool update = false);
+ 	void removeDeadMarks();
+--- src/board/boardwindow.h.old	2010-11-08 14:21:19.000000000 +0100
++++ src/board/boardwindow.h	2010-11-08 14:21:39.000000000 +0100
+@@ -45,7 +45,7 @@
+ 	~BoardWindow();
+ 	
+ 	void init();
+-	bool loadSGF(const QString fileName, const QString SGFLoaded=0);
++	bool loadSGF(const QString fileName, const QString SGFLoaded=QString::null);
+ 	bool doSave(QString fileName, bool force);
+ 	QString getCandidateFileName();
+ 
+--- src/sgf/sgfparser.h.old	2010-11-08 14:29:05.000000000 +0100
++++ src/sgf/sgfparser.h	2010-11-08 14:29:27.000000000 +0100
+@@ -51,7 +51,7 @@
+ */
+ protected:
+ 	int minPos(int n1, int n2, int n3);
+-	bool corruptSgf(int where=0, QString reason=NULL);
++	bool corruptSgf(int where=0, QString reason=QString::null);
+ 
+ 	bool parseProperty(const QString &toParse, const QString &prop, QString &result);
+ 

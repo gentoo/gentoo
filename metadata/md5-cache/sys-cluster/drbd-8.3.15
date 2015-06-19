@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DESCRIPTION=mirror/replicate block-devices across a network-connection
+EAPI=4
+HOMEPAGE=http://www.drbd.org
+IUSE=bash-completion heartbeat pacemaker +udev xen
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://oss.linbit.com/drbd/8.3/drbd-8.3.15.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=766eae36ae895ca5c3db8c6bc50c0da0

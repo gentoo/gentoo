@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXau x11-libs/libXdmcp x11-libs/libXpm x11-proto/xproto x11-proto/xextproto >=sys-apps/sed-4
+DESCRIPTION=applet which displays the date and time in a dockable tile
+EAPI=4
+HOMEPAGE=http://packages.qa.debian.org/w/wmtime.html
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXau x11-libs/libXdmcp x11-libs/libXpm
+SLOT=0
+SRC_URI=mirror://debian/pool/main/w/wmtime/wmtime_1.0b2.orig.tar.gz mirror://debian/pool/main/w/wmtime/wmtime_1.0b2-10.diff.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=e6dca3faacf7380f1cc3b0a015a3740d

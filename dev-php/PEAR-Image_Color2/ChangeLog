@@ -1,0 +1,31 @@
+# ChangeLog for dev-php/PEAR-Image_Color2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Image_Color2/ChangeLog,v 1.4 2014/08/10 20:50:42 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-Image_Color2-0.1.5.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*PEAR-Image_Color2-0.1.5 (09 Feb 2012)
+
+  09 Feb 2012; Matti Bickel <mabi@gentoo.org> +PEAR-Image_Color2-0.1.5.ebuild,
+  -PEAR-Image_Color2-0.1.4.ebuild:
+  version bump & remove old
+
+  06 Dec 2007; Markus Ullmann <jokey@gentoo.org>
+  PEAR-Image_Color2-0.1.4.ebuild:
+  LICENSE fix from project overlay
+
+  02 Dec 2007; Jakub Moc <jakub@gentoo.org>
+  PEAR-Image_Color2-0.1.4.ebuild:
+  Fix LICENSE
+
+*PEAR-Image_Color2-0.1.4 (15 Nov 2007)
+
+  15 Nov 2007; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +PEAR-Image_Color2-0.1.4.ebuild:
+  Initial import from project overlay
+
+  15 Nov 2007; Jakub Moc <jakub@gentoo.org> +metadata.xml,
+  +PEAR-Image_Color2-0.1.4.ebuild:
+  New ebuild

@@ -1,0 +1,35 @@
+diff --git a/istream.c b/istream.c
+index de5fbd3..6718b41 100644
+--- a/istream.c
++++ b/istream.c
+@@ -132,7 +132,7 @@ newFileStream(FILE *f, void (*closep)())
+   stream = New(struct input_stream);
+   init_base_stream(stream, STREAM_BUF_SIZE);
+   stream->type = IST_FILE;
+-  stream->handle.file = New(struct file_handle);
++  stream->handle.file = New(struct afile_handle);
+   stream->handle.file->f = f;
+ 
+   if (closep)
+diff --git a/istream.h b/istream.h
+index 168882f..3e7132f 100644
+--- a/istream.h
++++ b/istream.h
+@@ -20,7 +20,7 @@ struct stream_buffer {
+ 
+ typedef struct stream_buffer *StreamBuffer;
+ 
+-struct file_handle {
++struct afile_handle {
+   FILE *f;
+   void (*close)(FILE *);
+ };
+@@ -121,7 +121,7 @@ struct tee_handle {
+ union input_handle {
+   void *gen;
+   int fd;
+-  struct file_handle *file;
++  struct afile_handle *file;
+   struct delimited_handle *delimited;
+   Str str;
+ #ifdef USE_SSL

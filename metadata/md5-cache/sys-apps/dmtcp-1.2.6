@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm
+DEPEND=sys-libs/readline app-arch/gzip sys-kernel/linux-headers emacs? ( dev-lisp/clisp ) mpi? ( virtual/mpi ) || ( app-shells/dash app-shells/zsh app-shells/tcsh ) sys-devel/patch
+DESCRIPTION=DMTCP is the Distributed MultiThreaded Checkpointing tool
+EAPI=4
+HOMEPAGE=http://dmtcp.sourceforge.net/index.html
+IUSE=debug emacs fast mpi trace
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-3
+RDEPEND=sys-libs/readline app-arch/gzip sys-kernel/linux-headers emacs? ( dev-lisp/clisp ) mpi? ( virtual/mpi ) || ( app-shells/dash app-shells/zsh app-shells/tcsh )
+SLOT=0
+SRC_URI=mirror://sourceforge/dmtcp/dmtcp-1.2.6.tar.gz
+_eclasses_=elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=648e5b5def6017c8990bdfc3f5b33003

@@ -1,0 +1,16 @@
+# ChangeLog for dev-perl/HTML-FormatText-WithLinks-AndTables
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-FormatText-WithLinks-AndTables/ChangeLog,v 1.2 2014/05/28 12:12:21 zlogene Exp $
+
+*HTML-FormatText-WithLinks-AndTables-0.20.0 (28 May 2014)
+
+  28 May 2014; Mikle Kolyada <zlogene@gentoo.org>
+  +HTML-FormatText-WithLinks-AndTables-0.20.0.ebuild,
+  -HTML-FormatText-WithLinks-AndTables-0.02.ebuild:
+  Fix version scheme
+
+*HTML-FormatText-WithLinks-AndTables-0.02 (28 May 2014)
+
+  28 May 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  +HTML-FormatText-WithLinks-AndTables-0.02.ebuild, +metadata.xml:
+  Initial commit. Ebuild written by me. Satisfies dependency for www-apps/rt.

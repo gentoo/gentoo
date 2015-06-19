@@ -1,0 +1,601 @@
+# ChangeLog for sys-power/hibernate-script
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-power/hibernate-script/ChangeLog,v 1.100 2014/03/29 22:12:12 alonbl Exp $
+
+  29 Mar 2014; Alon Bar-Lev <alonbl@gentoo.org> hibernate-script-2.0-r6.ebuild:
+  fix issue with hwclock, bug#503042, thanks to v1ne2go
+
+  18 Feb 2013; Alon Bar-Lev <alonbl@gentoo.org>
+  -hibernate-script-1.97-r4.ebuild, -hibernate-script-2.0-r1.ebuild:
+  cleanup old ebuilds
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> hibernate-script-2.0-r6.ebuild:
+  Stable for ppc, wrt bug #457488
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> hibernate-script-2.0-r6.ebuild:
+  Stable for x86, wrt bug #457488
+
+  15 Feb 2013; Agostino Sarubbo <ago@gentoo.org> hibernate-script-2.0-r6.ebuild:
+  Stable for amd64, wrt bug #457488
+
+*hibernate-script-2.0-r6 (12 Jan 2013)
+
+  12 Jan 2013; Alon Bar-Lev <alonbl@gentoo.org> +hibernate-script-2.0-r6.ebuild,
+  -files/hibernate-script-baselayout2-clock.patch,
+  -hibernate-script-2.0-r5.ebuild:
+  Fix bug#268820, bug#268133, cleanup old ebuilds
+
+  18 Dec 2012; Alon Bar-Lev <alonbl@gentoo.org> metadata.xml:
+  Assign myself as maintainer
+
+*hibernate-script-2.0-r5 (17 Dec 2012)
+
+  17 Dec 2012; Sergey Popov <pinkbyte@gentoo.org>
+  +files/hibernate-script-baselayout2-clock.patch,
+  -hibernate-script-2.0-r4.ebuild, +hibernate-script-2.0-r5.ebuild:
+  Revision bump: EAPI 5, fix incorrect clock script name wrt bug #406065, drop
+  old revision
+
+  16 Dec 2012; Pacho Ramos <pacho@gentoo.org> -hibernate-script-2.0-r2.ebuild,
+  -hibernate-script-2.0-r3.ebuild, metadata.xml:
+  Cleanup due retirement, #95685
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+*hibernate-script-2.0-r4 (30 Nov 2011)
+
+  30 Nov 2011; Krzysztof Pawlik <nelchael@gentoo.org>
+  +hibernate-script-2.0-r4.ebuild:
+  Version bump, changes opts to extra_started_commands in init.d script, see
+  bug #385643.
+
+*hibernate-script-2.0-r3 (06 Feb 2011)
+
+  06 Feb 2011; Krzysztof Pawlik <nelchael@gentoo.org>
+  +hibernate-script-2.0-r3.ebuild:
+  Fix permissions on installed files, see bug #353022.
+
+*hibernate-script-2.0-r2 (18 Apr 2010)
+
+  18 Apr 2010; Krzysztof Pawlik <nelchael@gentoo.org>
+  +hibernate-script-2.0-r2.ebuild:
+  Revision bump for new patches: fixes bug #279067.
+
+  29 Mar 2010; Krzysztof Pawlik <nelchael@gentoo.org> metadata.xml:
+  Update my first name.
+
+  04 Jun 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  -hibernate-script-1.97-r5.ebuild, -hibernate-script-1.98.1.ebuild,
+  -hibernate-script-1.99.ebuild, -hibernate-script-1.99-r1.ebuild,
+  -files/hibernate-script-1.99-init.d.patch:
+  Remove old/unneeded versions.
+
+  03 Jun 2009; Dawid Węgliński <cla@gentoo.org>
+  hibernate-script-2.0-r1.ebuild:
+  Stable on amd64 (bug #267768)
+
+  14 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  hibernate-script-2.0-r1.ebuild:
+  stable x86, bug 267768
+
+*hibernate-script-2.0-r1 (01 May 2009)
+
+  01 May 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  -hibernate-script-2.0.ebuild, +hibernate-script-2.0-r1.ebuild,
+  +files/hibernate-script-2.0-init.d.patch:
+  Fix init.d script, see bug #265368.
+
+*hibernate-script-2.0 (04 Apr 2009)
+
+  04 Apr 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  +hibernate-script-2.0.ebuild:
+  Version bump.
+
+  02 Feb 2009; Krzysiek Pawlik <nelchael@gentoo.org> ChangeLog:
+  Fix ChangeLog entries.
+
+*hibernate-script-1.99-r1 (14 Jan 2009)
+
+  14 Jan 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/hibernate-script-1.99-init.d.patch,
+  +hibernate-script-1.99-r1.ebuild:
+  Move single patch from separate patches tarball into files/, blacklist
+  sdhci modules (bug #254674).
+
+*hibernate-script-1.99 (08 Jan 2009)
+
+  08 Jan 2009; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml,
+  +hibernate-script-1.99.ebuild:
+  Added myself as maintainer, version bump.
+
+  28 May 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Alon Bar-Lev (alonbl) from metadata.xml (as per #147110).
+
+*hibernate-script-1.98.1 (05 Apr 2008)
+
+  05 Apr 2008; Alon Bar-Lev <alonbl@gentoo.org>
+  +hibernate-script-1.98.1.ebuild:
+  Version bump
+
+*hibernate-script-1.97-r5 (26 Jan 2008)
+
+  26 Jan 2008; Alon Bar-Lev <alonbl@gentoo.org>
+  +hibernate-script-1.97-r5.ebuild:
+  Support openrc layout
+
+  07 Jan 2008; Alon Bar-Lev <alonbl@gentoo.org>
+  -hibernate-script-1.95-r2.ebuild:
+  Cleanup
+
+  07 Jan 2008; Joseph Jezak <josejx@gentoo.org>
+  hibernate-script-1.97-r4.ebuild:
+  Marked ppc stable for bug #198962.
+
+*hibernate-script-1.97-r4 (08 Dec 2007)
+
+  08 Dec 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  -hibernate-script-1.95-r3.ebuild, -hibernate-script-1.96.ebuild,
+  -hibernate-script-1.96-r1.ebuild, -hibernate-script-1.97-r2.ebuild,
+  -hibernate-script-1.97-r3.ebuild, +hibernate-script-1.97-r4.ebuild:
+  Fix init.d script dependencies, bug#201485, thanks to David Durrleman,
+  cleanup.
+
+*hibernate-script-1.97-r3 (25 Nov 2007)
+
+  25 Nov 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +hibernate-script-1.97-r3.ebuild:
+  Fix X environment issue, bug#199806, thanks to Daniel Schömer
+
+*hibernate-script-1.97-r2 (17 Nov 2007)
+
+  17 Nov 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  -hibernate-script-1.97-r1.ebuild, +hibernate-script-1.97-r2.ebuild:
+  Add some comments regarding dependencies
+
+  14 Nov 2007; Markus Meier <maekke@gentoo.org>
+  hibernate-script-1.97-r1.ebuild:
+  x86 stable, bug #198962
+
+  14 Nov 2007; Steve Dibb <beandog@gentoo.org>
+  hibernate-script-1.97-r1.ebuild:
+  amd64 stable, bug 198962
+
+  12 Nov 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  hibernate-script-1.95-r2.ebuild, hibernate-script-1.95-r3.ebuild,
+  hibernate-script-1.96.ebuild, hibernate-script-1.96-r1.ebuild,
+  hibernate-script-1.97-r1.ebuild:
+  Remove logrotate USE flag, bug#198901
+
+  03 Nov 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  -hibernate-script-1.97.ebuild:
+  Cleanup
+
+*hibernate-script-1.97-r1 (03 Nov 2007)
+
+  03 Nov 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +hibernate-script-1.97-r1.ebuild:
+  Fix tuxonice filewriter issue, bug#197630, thanks Frittella Laurento for
+  reporting
+
+  28 Oct 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  files/digest-hibernate-script-1.97, Manifest:
+  Update fbsplash support
+
+*hibernate-script-1.97 (27 Oct 2007)
+
+  27 Oct 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +hibernate-script-1.97.ebuild:
+  Version bump
+
+*hibernate-script-1.96-r1 (12 Sep 2007)
+
+  12 Sep 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +hibernate-script-1.96-r1.ebuild:
+  Sync some patches from upstream
+
+*hibernate-script-1.96 (17 Jul 2007)
+
+  17 Jul 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +hibernate-script-1.96.ebuild:
+  Version bump
+
+  22 Jun 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  -hibernate-script-1.94-r5.ebuild:
+  Cleanup
+
+  21 Jun 2007; Christoph Mende <angelos@gentoo.org>
+  hibernate-script-1.95-r2.ebuild:
+  Stable on amd64 wrt bug 180645
+
+  14 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  hibernate-script-1.95-r2.ebuild:
+  ppc stable, bug #180645
+
+  12 Jun 2007; Markus Ullmann <jokey@gentoo.org>
+  hibernate-script-1.95-r2.ebuild:
+  Stable on x86 wrt bug #180645
+
+*hibernate-script-1.95-r3 (04 Jun 2007)
+
+  04 Jun 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +hibernate-script-1.95-r3.ebuild:
+  Add ususpend vbe mode support, thanks to Ricardo Salveti
+
+*hibernate-script-1.95-r2 (25 May 2007)
+
+  25 May 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  -hibernate-script-1.95.ebuild, -hibernate-script-1.95-r1.ebuild,
+  +hibernate-script-1.95-r2.ebuild:
+  Fix ususpend issue, bug#179743, thanks to Petric Frank for reporting
+
+*hibernate-script-1.95 (18 May 2007)
+
+  18 May 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  -hibernate-script-1.95_beta20070504.ebuild,
+  -hibernate-script-1.95_beta20070504-r1.ebuild,
+  +hibernate-script-1.95.ebuild:
+  Version bump
+
+*hibernate-script-1.95_beta20070504-r1 (10 May 2007)
+
+  10 May 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +hibernate-script-1.95_beta20070504-r1.ebuild:
+  Fix functions.sh location, bug#177690, thanks to comio and SpanKY
+
+*hibernate-script-1.95_beta20070504 (04 May 2007)
+
+  04 May 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +hibernate-script-1.95_beta20070504.ebuild:
+  Snapshot, all our patches applied and there is a better support for suspend2
+  as modules
+
+  09 Apr 2007; Peter Weller <welp@gentoo.org>
+  hibernate-script-1.94-r5.ebuild:
+  Stable on amd64 wrt bug 171484
+
+  06 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  hibernate-script-1.94-r5.ebuild:
+  ppc stable, bug #171484
+
+  20 Mar 2007; Andrej Kacian <ticho@gentoo.org>
+  hibernate-script-1.94-r5.ebuild:
+  Stable on x86, bug #171484.
+
+*hibernate-script-1.94-r5 (10 Feb 2007)
+
+  10 Feb 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +hibernate-script-1.94-r5.ebuild:
+  Fix log issue which caused vbetool not to work, bug#164773, thanks to
+  Bernard Blackham and Raymond Lewis Rebbeck, Nick Bolten for testing
+
+  05 Feb 2007; Joseph Jezak <josejx@gentoo.org>
+  hibernate-script-1.94-r3.ebuild:
+  Marked ppc stable for bug #164292.
+
+  05 Feb 2007; Steve Dibb <beandog@gentoo.org>
+  hibernate-script-1.94-r3.ebuild:
+  amd64 stable, bug 164292
+
+*hibernate-script-1.94-r4 (02 Feb 2007)
+
+  02 Feb 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +hibernate-script-1.94-r4.ebuild:
+  Revert vbetool modification of this version
+
+  30 Jan 2007; Andrej Kacian <ticho@gentoo.org>
+  hibernate-script-1.94-r3.ebuild:
+  Stable on x86, bug #164292.
+
+*hibernate-script-1.94-r3 (31 Dec 2006)
+
+  31 Dec 2006; Alon Bar-Lev <alonbl@gentoo.org>
+  -hibernate-script-1.94-r2.ebuild, +hibernate-script-1.94-r3.ebuild:
+  Removed 855resolution patch, 915resolution superseed it, bug#159399
+
+*hibernate-script-1.94-r2 (30 Dec 2006)
+
+  30 Dec 2006; Alon Bar-Lev <alonbl@gentoo.org>
+  -hibernate-script-1.94-r1.ebuild, +hibernate-script-1.94-r2.ebuild:
+  Modified i810 to be restart instead of start, closes bug#159399, thanks for
+  Stefan Becker
+
+*hibernate-script-1.94-r1 (21 Dec 2006)
+
+  21 Dec 2006; Alon Bar-Lev <alonbl@gentoo.org>
+  -files/hibernate-script-1.12-gentoo.patch,
+  -files/hibernate-script-1.12-misc.patch, -hibernate-script-1.12-r1.ebuild,
+  -hibernate-script-1.94.ebuild, +hibernate-script-1.94-r1.ebuild:
+  Added missing files, closes bug#158504, thanks to Lars Weiler.
+  Some cleanups.
+
+*hibernate-script-1.94 (17 Dec 2006)
+
+  17 Dec 2006; Alon Bar-Lev <alonbl@gentoo.org>
+  +hibernate-script-1.94.ebuild:
+  Version bump, closes bug#157636, thanks to Marcel Klein
+
+  16 Dec 2006; Alon Bar-Lev <alonbl@gentoo.org> metadata.xml:
+  Modify maintainer
+
+  25 Nov 2006; <blubb@gentoo.org> hibernate-script-1.93-r6.ebuild:
+  stable on amd64
+
+  13 Nov 2006; Joseph Jezak <josejx@gentoo.org>
+  hibernate-script-1.93-r6.ebuild:
+  Marked ppc stable for bug #140967.
+
+  24 Oct 2006; Joshua Jackson <tsunam@gentoo.org>
+  hibernate-script-1.93-r6.ebuild:
+  Stable x86; bug #140967
+
+  01 Oct 2006; Christian Heim <phreak@gentoo.org>
+  hibernate-script-1.93-r6.ebuild:
+  Updated patch-tarball, including a definite fix/workaround for #146352
+  (hibernate is looking for app-shells/dash, that doesn't understand '[[' and
+  arithmetics - thanks to Bernard Blackham and Alexander Skwar for helping
+  out).
+
+  26 Sep 2006; Christian Heim <phreak@gentoo.org>
+  hibernate-script-1.93-r6.ebuild:
+  Adopting the ebuild to use elog instead of einfo (thanks to Bo Orsted
+  Andresen for the information).
+
+  26 Sep 2006; Christian Heim <phreak@gentoo.org>
+  hibernate-script-1.93-r6.ebuild:
+  Silent bump to hibernate-script-1.93-patches-0.5 to fix #146352 (thanks
+  Alexander Skwar <askwar at digitalprojects.com> for reporting and testing).
+
+*hibernate-script-1.93-r6 (17 Sep 2006)
+
+  17 Sep 2006; Christian Heim <phreak@gentoo.org>
+  -hibernate-script-1.93-r4.ebuild, -hibernate-script-1.93-r5.ebuild,
+  +hibernate-script-1.93-r6.ebuild:
+  Revision bump, fixing #147832. Moving the scriptlets.d/swsusp2_15 out of the
+  gentoo.patch as it is causing rejects too often (just rm'ing it now within
+  the ebuild). Removing old revisions.
+
+*hibernate-script-1.93-r5 (16 Sep 2006)
+
+  16 Sep 2006; Christian Heim <phreak@gentoo.org>
+  +hibernate-script-1.93-r5.ebuild:
+  Revision bump, including new patch tarball. Fixing my bad patch
+  implementation and using bash conform function syntax (i855resolution vs.
+  855resolution). Thanks to Alexander Skwar in #146170.
+
+*hibernate-script-1.93-r4 (22 Jul 2006)
+
+  22 Jul 2006; Christian Heim <phreak@gentoo.org>
+  -files/hibernate-script-1.93-gentoo.patch,
+  -files/hibernate-script-1.93-kde-lock-session.patch,
+  -files/hibernate-script-1.93-last_result.patch,
+  -files/hibernate-script-1.93-return.patch,
+  -files/hibernate-script-1.93-rt2500-blacklist.patch,
+  +hibernate-script-1.93-r4.ebuild:
+  Revision bump. Moving the patches to a seperate tarball. Backporting some
+  changes from UPSTREAM svn. Finally fixing the last-return error, adding new
+  ERROR messages for newer kernels. Fixing bug #141204 (thanks to Stefan
+  Becker <schtefan at gmx.net> for the initial patch), restart 855resolution
+  after resume.
+
+*hibernate-script-1.93-r3 (19 Jul 2006)
+
+  19 Jul 2006; Christian Heim <phreak@gentoo.org>
+  +files/hibernate-script-1.93-rt2500-blacklist.patch,
+  -hibernate-script-1.93-r2.ebuild, +hibernate-script-1.93-r3.ebuild:
+  Revision bump. According to #140931 net-wireless/rt2500 (and to the rt2500
+  ticket #1472869) it should now work properly after resuming. Thanks to Colin
+  Carle <colin.carle at gmail.com> for the patches!
+
+  15 Jul 2006; Christian Heim <phreak@gentoo.org>
+  files/hibernate-script-1.93-gentoo.patch,
+  +files/hibernate-script-1.93-return.patch,
+  hibernate-script-1.93-r2.ebuild:
+  Adding a patch to fix #140512 (thanks to Marek Szuba <cyberman at
+  if.pw.edu.pl> for the patch)
+
+  15 Jul 2006; Christian Heim <phreak@gentoo.org>
+  -files/hibernate-script-1.91-gentoo.patch, -hibernate-script-1.91.ebuild,
+  -hibernate-script-1.93.ebuild, -hibernate-script-1.93-r1.ebuild:
+  Cleaning up old ebuilds
+
+*hibernate-script-1.93-r2 (15 Jul 2006)
+
+  15 Jul 2006; Christian Heim <phreak@gentoo.org>
+  files/hibernate-script-1.93-gentoo.patch,
+  +files/hibernate-script-1.93-kde-lock-session.patch,
+  +hibernate-script-1.93-r2.ebuild:
+  Revision bump. Fixing KDE session locking (#140403 thanks to Alexandre
+  Ferreira <alexandre at vydia.com.br>) and fixing error codes in the startup
+  script (#140446 thanks to Alon Bar-Lev <alon.barlev at gmail.com>)
+
+*hibernate-script-1.93-r1 (14 Jul 2006)
+
+  14 Jul 2006; Christian Heim <phreak@gentoo.org>
+  +files/hibernate-script-1.93-last_result.patch, metadata.xml,
+  +hibernate-script-1.93-r1.ebuild:
+  Revision bump; hibernate-scripts is trying to echo to an read-only file;
+  metadata.xml touchup
+
+*hibernate-script-1.93 (13 Jul 2006)
+
+  13 Jul 2006; Christian Heim <phreak@gentoo.org>
+  +files/hibernate-script-1.93-gentoo.patch, metadata.xml,
+  +hibernate-script-1.93.ebuild:
+  Version bump; Taking temporary maintainership
+
+*hibernate-script-1.91 (05 Jun 2006)
+
+  05 Jun 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +files/hibernate-script-1.91-gentoo.patch, +hibernate-script-1.91.ebuild:
+  Version bump. Watch out for the configuration file changes!
+
+  28 May 2006; Henrik Brix Andersen <brix@gentoo.org>
+  -hibernate-script-1.12.ebuild:
+  Pruned old ebuilds.
+
+  30 Apr 2006; Henrik Brix Andersen <brix@gentoo.org>
+  hibernate-script-1.12-r1.ebuild:
+  Stable on x86.
+
+*hibernate-script-1.12-r1 (28 Mar 2006)
+
+  28 Mar 2006; Henrik Brix Andersen <brix@gentoo.org>
+  +files/hibernate-script-1.12-misc.patch, +hibernate-script-1.12-r1.ebuild:
+  Added patch from upstream, thanks to Alon Bar-Lev.
+
+  14 Dec 2005; Henrik Brix Andersen <brix@gentoo.org>
+  -files/hibernate-script-1.10-gentoo.patch,
+  -hibernate-script-1.10-r1.ebuild:
+  Pruned old ebuilds.
+
+  22 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
+  -files/hibernate-script-1.08-gentoo.patch,
+  -files/hibernate-script-1.09-gentoo.patch, -hibernate-script-1.08.ebuild,
+  -hibernate-script-1.09.ebuild, -hibernate-script-1.10.ebuild:
+  Pruned old versions.
+
+*hibernate-script-1.12 (20 Oct 2005)
+
+  20 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +files/hibernate-script-1.12-gentoo.patch, +hibernate-script-1.12.ebuild:
+  Version bump, bug #108304 and bug #104668.
+
+  26 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  hibernate-script-1.10-r1.ebuild:
+  Stable on x86 due to Distribution change.
+
+*hibernate-script-1.10-r1 (17 Aug 2005)
+
+  17 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +hibernate-script-1.10-r1.ebuild:
+  Set Distribution to gentoo, thanks to Florian Zierer.
+
+  25 Jul 2005; Henrik Brix Andersen <brix@gentoo.org>
+  hibernate-script-1.09.ebuild:
+  Stable on x86.
+
+*hibernate-script-1.10 (13 Jul 2005)
+
+  13 Jul 2005; <brix@gentoo.org> +files/hibernate-script-1.10-gentoo.patch,
+  +hibernate-script-1.10.ebuild:
+  Version bump, hibernate-script now defaults to using Software Suspend 2.
+
+  28 Jun 2005; David Holm <dholm@gentoo.org> hibernate-script-1.09.ebuild:
+  Added to ~ppc.
+
+*hibernate-script-1.09 (27 Jun 2005)
+
+  27 Jun 2005; <brix@gentoo.org> +files/hibernate-script-1.09-gentoo.patch,
+  +hibernate-script-1.09.ebuild:
+  Version bump.
+
+  11 Jun 2005; <brix@gentoo.org> -files/hibernate-script-1.07-gentoo.patch,
+  -hibernate-script-1.05.ebuild, -hibernate-script-1.06.ebuild,
+  -hibernate-script-1.07.ebuild:
+  Pruned old ebuilds.
+
+  09 Jun 2005; <brix@gentoo.org> hibernate-script-1.08.ebuild:
+  Stable on x86.
+
+  26 May 2005; <brix@gentoo.org> hibernate-script-1.07.ebuild:
+  Stable on x86.
+
+*hibernate-script-1.08 (13 May 2005)
+
+  13 May 2005; <brix@gentoo.org> +files/hibernate-script-1.08-gentoo.patch,
+  +hibernate-script-1.08.ebuild:
+  Version bump.
+
+  04 May 2005; <brix@gentoo.org> hibernate-script-1.06.ebuild:
+  Stable on x86.
+
+  30 Apr 2005; <brix@gentoo.org> +files/hibernate-script-1.07-gentoo.patch,
+  -files/hibernate-script-1.07-init.d, hibernate-script-1.07.ebuild:
+  Better integration of init script.
+
+*hibernate-script-1.07 (30 Apr 2005)
+
+  30 Apr 2005; <brix@gentoo.org> +files/hibernate-script-1.07-init.d,
+  +hibernate-script-1.07.ebuild:
+  Version bump.
+
+  09 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  hibernate-script-1.06.ebuild:
+  added ~amd64
+
+*hibernate-script-1.06 (04 Apr 2005)
+
+  04 Apr 2005; <brix@gentoo.org> +hibernate-script-1.06.ebuild:
+  Version bump.
+
+*hibernate-script-1.05 (14 Mar 2005)
+
+  14 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +hibernate-script-1.05.ebuild:
+  Moved from sys-apps/hibernate-script to sys-power/hibernate-script.
+
+  12 Mar 2005; Henrik Brix Andersen <brix@gentoo.org>
+  -hibernate-script-1.00.ebuild, -hibernate-script-1.01.ebuild,
+  -hibernate-script-1.02-r1.ebuild, -hibernate-script-1.02.ebuild,
+  -hibernate-script-1.03.ebuild, -hibernate-script-1.04.ebuild:
+  Pruned old versions.
+
+  02 Mar 2005; Henrik Brix Andersen <brix@gentoo.org>
+  hibernate-script-1.05.ebuild:
+  Stable on x86.
+
+*hibernate-script-1.05 (08 Feb 2005)
+
+  08 Feb 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +hibernate-script-1.05.ebuild:
+  Version bump.
+
+*hibernate-script-1.04 (08 Feb 2005)
+
+  08 Feb 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +hibernate-script-1.04.ebuild:
+  Version bump.
+
+  05 Feb 2005; Henrik Brix Andersen <brix@gentoo.org>
+  hibernate-script-1.03.ebuild:
+  Stable on x86.
+
+  04 Jan 2005; Henrik Brix Andersen <brix@gentoo.org>
+  hibernate-script-1.03.ebuild:
+  Accidentally marked 1.03 stable on x86.
+
+*hibernate-script-1.03 (04 Jan 2005)
+
+  04 Jan 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +hibernate-script-1.03.ebuild:
+  Version bump.
+
+  30 Dec 2004; Henrik Brix Andersen <brix@gentoo.org>
+  hibernate-script-1.02-r1.ebuild:
+  Stable on x86.
+
+*hibernate-script-1.02-r1 (07 Dec 2004)
+
+  07 Dec 2004; Henrik Brix Andersen <brix@gentoo.org>
+  +hibernate-script-1.02-r1.ebuild:
+  Allow calling hibernate for suspend-to-disk, and hibernate-sleep for
+  suspend-to-ram.
+
+*hibernate-script-1.02 (24 Nov 2004)
+
+  24 Nov 2004; Henrik Brix Andersen <brix@gentoo.org>
+  +hibernate-script-1.02.ebuild:
+  Version bump.
+
+*hibernate-script-1.01 (19 Nov 2004)
+
+  19 Nov 2004; Henrik Brix Andersen <brix@gentoo.org>
+  +hibernate-script-1.01.ebuild:
+  Version bump.
+
+*hibernate-script-1.00 (12 Nov 2004)
+
+  12 Nov 2004; Henrik Brix Andersen <brix@gentoo.org> +metadata.xml,
+  +hibernate-script-1.00.ebuild:
+  Initial check-in. Thank you to all who commented on bug #52019.

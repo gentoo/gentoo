@@ -1,0 +1,84 @@
+# ChangeLog for dev-libs/libhome
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libhome/ChangeLog,v 1.19 2015/06/09 14:29:20 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  libhome-0.10.2-r1.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  04 Nov 2014; Patrick Lauer <patrick@gentoo.org> libhome-0.10.2-r1.ebuild:
+  More cleanups
+
+*libhome-0.10.2-r1 (04 Nov 2014)
+
+  04 Nov 2014; Patrick Lauer <patrick@gentoo.org> +libhome-0.10.2-r1.ebuild,
+  -libhome-0.10.2.ebuild:
+  Fix repoman warnings and upgrade EAPI to something sane
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org> libhome-0.10.2.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+  15 Dec 2012; Julian Ospald <hasufell@gentoo.org>
+  -files/libhome-0.10.1-Makefile.patch, files/libhome-0.10.2-Makefile.patch:
+  respect LDFLAGS wrt #336203
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> -libhome-0.10.1.ebuild,
+  metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  10 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org> libhome-0.10.2.ebuild,
+  +files/libhome-0.10.2-Makefile.patch:
+  Allow libhome to build against berkdb 5.0 as well as any 4.x version, by
+  letting db-use provide the library name instead. Closes bug #340669.
+
+  17 Jun 2010; Patrick Lauer <patrick@gentoo.org> libhome-0.10.1.ebuild,
+  libhome-0.10.2.ebuild:
+  Migrating away from deprecated postgres virtuals
+
+  05 Jul 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  files/libhome-0.10.1-Makefile.patch:
+  Fix building with >=sys-libs/db-4.6 (bug #227553).
+
+*libhome-0.10.2 (05 Jul 2009)
+
+  05 Jul 2009; Benedikt Böhm <hollow@gentoo.org>
+  +files/libhome-0.10.2-ldap_deprecated.patch, +libhome-0.10.2.ebuild:
+  version bump, fixes #265588 and maybe #234538
+
+  10 Jun 2008; Diego Pettenò <flameeyes@gentoo.org>
+  -files/libhome-0.10.1-fixlt.patch, libhome-0.10.1.ebuild:
+  Use sed rather than a patch to fix the bug, so that it's not thrown off by
+  CVS keywords.
+
+  09 Jun 2008; Diego Pettenò <flameeyes@gentoo.org>
+  files/libhome-0.10.1-fixlt.patch:
+  Fix patch to avoid CVS keywords.
+
+  09 Jun 2008; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libhome-0.10.1-fixlt.patch, libhome-0.10.1.ebuild:
+  Add a patch to fix bug #225579. Yes you can shoot yourself in the foot
+  with autotools doing crazy stuff.
+
+  01 Jun 2008; Benedikt Böhm <hollow@gentoo.org> libhome-0.10.1.ebuild:
+  fix #220887
+
+  21 May 2008; Tiziano Müller <dev-zero@gentoo.org> libhome-0.10.1.ebuild:
+  Changed dependency for postgresql from dev-db/postgresql to
+  virtual/postgresql-server
+
+  14 May 2008; Diego Pettenò <flameeyes@gentoo.org> libhome-0.10.1.ebuild:
+  Depend on virtual/pam as the code builds fine with OpenPAM.
+
+  23 Mar 2008; Benedikt Böhm <hollow@gentoo.org> metadata.xml:
+  fix metadata
+
+*libhome-0.10.1 (09 Sep 2007)
+
+  09 Sep 2007; Benedikt Böhm <hollow@gentoo.org>
+  +files/libhome-0.10.1-Makefile.patch, +metadata.xml,
+  +libhome-0.10.1.ebuild:
+  initial version

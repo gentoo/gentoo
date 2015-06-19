@@ -1,0 +1,446 @@
+# ChangeLog for dev-libs/openct
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/openct/ChangeLog,v 1.118 2015/06/09 14:46:40 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  08 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Correct remote id
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  02 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> openct-0.6.20-r3.ebuild,
+  openct-0.6.20-r4.ebuild:
+  fix SRC_URI
+
+  06 Nov 2014; Mike Frysinger <vapier@gentoo.org> openct-0.6.20-r3.ebuild,
+  openct-0.6.20-r4.ebuild:
+  Require libltdl:0 specifically, and allow older libtool for stable ebuilds
+  #528294 by Pacho Ramos.
+
+*openct-0.6.20-r4 (05 Nov 2014)
+
+  05 Nov 2014; Mike Frysinger <vapier@gentoo.org> +openct-0.6.20-r4.ebuild:
+  Depend on libltdl rather than libtool #528294 by Pacho Ramos.
+
+  08 Aug 2014; Alon Bar-Lev <alonbl@gentoo.org> -openct-0.6.20.ebuild,
+  openct-0.6.20-r3.ebuild:
+  Modify urls, bug#518296. cleanup old
+
+  30 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> openct-0.6.20-r3.ebuild,
+  openct-0.6.20.ebuild:
+  Use shorter get_udevdir() instead of the longer deprecated udev_get_udevdir()
+  version.
+
+  01 Jan 2013; Raúl Porcel <armin76@gentoo.org> openct-0.6.20-r3.ebuild:
+  m68k/s390/sh stable wrt #418765
+
+  30 Dec 2012; Agostino Sarubbo <ago@gentoo.org> openct-0.6.20-r3.ebuild:
+  Stable for sparc, wrt bug #418765
+
+  29 Dec 2012; Agostino Sarubbo <ago@gentoo.org> openct-0.6.20-r3.ebuild:
+  Stable for alpha, wrt bug #418765
+
+  17 Dec 2012; Agostino Sarubbo <ago@gentoo.org> openct-0.6.20-r3.ebuild:
+  Stable for ia64, wrt bug #418765
+
+  11 Dec 2012; Samuli Suominen <ssuominen@gentoo.org> openct-0.6.20.ebuild,
+  openct-0.6.20-r3.ebuild:
+  Use the udev_newrules function from udev.eclass
+
+  04 Dec 2012; Anthony G. Basile <blueness@gentoo.org> openct-0.6.20-r3.ebuild:
+  stable arm, bug #418765
+
+  04 Dec 2012;  <ago@gentoo.org> openct-0.6.20-r3.ebuild:
+  Stable for x86, wrt bug #418765
+
+  03 Dec 2012; Anthony G. Basile <blueness@gentoo.org> openct-0.6.20-r3.ebuild:
+  stable ppc ppc64, bug #418765
+
+  29 Nov 2012; Jeroen Roovers <jer@gentoo.org> openct-0.6.20-r3.ebuild:
+  Stable for HPPA (bug #418765).
+
+  29 Nov 2012; <ago@gentoo.org> openct-0.6.20-r3.ebuild:
+  Stable for amd64, wrt bug #418765
+
+  28 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> -openct-0.6.20-r2.ebuild:
+  old
+
+*openct-0.6.20-r3 (28 Nov 2012)
+
+  28 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> openct-0.6.20.ebuild,
+  +openct-0.6.20-r3.ebuild:
+  Use virtual/udev. Use udev.eclass to install udev helpers and rules to
+  correct directories wrt #419423 by SpanKY
+
+*openct-0.6.20-r2 (19 Jun 2012)
+
+  19 Jun 2012; Diego E. Pettenò <flameeyes@gentoo.org> +files/openct.rc.2,
+  +openct-0.6.20-r2.ebuild, -openct-0.6.20-r1.ebuild, metadata.xml:
+  Update init script to use checkpath instead of using keepdir in the ebuild;
+  add an udev USE flag to not install the rules; use EAPI=4; use append-cppflags
+  for -DDEBUG_IFDH.
+
+  06 Jun 2012; Zac Medico <zmedico@gentoo.org> openct-0.6.20-r1.ebuild,
+  openct-0.6.20.ebuild:
+  inherit multilib for get_libdir, and user for enewgroup and enewuser
+
+  08 Oct 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  openct-0.6.20-r1.ebuild:
+  Do not use /lib64 for rules.
+
+  13 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  openct-0.6.20-r1.ebuild:
+  Commit the actually saved ebuild.
+
+  13 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  openct-0.6.20-r1.ebuild, metadata.xml:
+  Add a debug USE flag and improve USE flags descriptions.
+
+*openct-0.6.20-r1 (13 Apr 2011)
+
+  13 Apr 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  +openct-0.6.20-r1.ebuild:
+  Revision bump: require a new version of pcsc-lite that is known to work with
+  this version of opensc; install the pcsc-lite bundle properly; disable build
+  of static libraries; remove superfluous ifd library; remove .la files;
+  install ruels in /lib/udev/rules.d instead of /etc.
+
+  29 Nov 2010; Diego E. Pettenò <flameeyes@gentoo.org> openct-0.6.20.ebuild:
+  Add missing runtime dependency over libtool (for ltdl).
+
+  20 May 2010; Jeroen Roovers <jer@gentoo.org> openct-0.6.20.ebuild:
+  Stable for HPPA (bug #310771).
+
+  19 May 2010; Raúl Porcel <armin76@gentoo.org> openct-0.6.20.ebuild:
+  alpha/arm/ia64/s390/sh/sparc stable wrt #310771
+
+  16 May 2010; Markus Meier <maekke@gentoo.org> openct-0.6.20.ebuild:
+  amd64/x86 stable, bug #310771
+
+  23 Mar 2010; Brent Baude <ranger@gentoo.org> openct-0.6.20.ebuild:
+  Marking openct-0.6.20 ppc for bug 310771
+
+  23 Mar 2010; Brent Baude <ranger@gentoo.org> openct-0.6.20.ebuild:
+  Marking openct-0.6.20 ppc64 for bug 310771
+
+  04 Mar 2010; Jeroen Roovers <jer@gentoo.org> openct-0.6.19.ebuild:
+  Stable for HPPA (bug #304001).
+
+  01 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> openct-0.6.19.ebuild:
+  x86 stable wrt bug #304001
+
+*openct-0.6.20 (20 Feb 2010)
+
+  20 Feb 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +openct-0.6.20.ebuild:
+  Version bump.
+
+  12 Feb 2010; Joseph Jezak <josejx@gentoo.org> openct-0.6.19.ebuild:
+  Marked ppc/ppc64 stable for bug #304001.
+
+*openct-0.6.19 (07 Jan 2010)
+
+  07 Jan 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +openct-0.6.19.ebuild:
+  Version bump.
+
+  05 Oct 2009; Raúl Porcel <armin76@gentoo.org> openct-0.6.17.ebuild:
+  arm/ia64/m68k/s390/sh/sparc stable wrt #283061
+
+*openct-0.6.18 (26 Sep 2009)
+
+  26 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +openct-0.6.18.ebuild:
+  Version bump.
+
+  23 Sep 2009; Jeroen Roovers <jer@gentoo.org> openct-0.6.17.ebuild:
+  Stable for HPPA (bug #283061).
+
+  07 Sep 2009; Markus Meier <maekke@gentoo.org> openct-0.6.17.ebuild:
+  amd64/x86 stable, bug #283061
+
+  07 Sep 2009; Tobias Klausmann <klausman@gentoo.org> openct-0.6.17.ebuild:
+  Stable on alpha, bug #283061
+
+  31 Aug 2009; Brent Baude <ranger@gentoo.org> openct-0.6.17.ebuild:
+  Marking openct-0.6.17 ppc64 for bug 283061
+
+  30 Aug 2009; nixnut <nixnut@gentoo.org> openct-0.6.17.ebuild:
+  ppc stable #283061
+
+*openct-0.6.17 (29 Jul 2009)
+
+  29 Jul 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -openct-0.6.14.ebuild, -openct-0.6.14-r1.ebuild, -openct-0.6.15.ebuild,
+  +openct-0.6.17.ebuild:
+  Version bump.
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> openct-0.6.16.ebuild:
+  ppc stable #274177
+
+  05 Jul 2009; Markus Meier <maekke@gentoo.org> openct-0.6.16.ebuild:
+  amd64 stable, bug #274177
+
+  24 Jun 2009; Raúl Porcel <armin76@gentoo.org> openct-0.6.16.ebuild:
+  arm/ia64/m68k/s390/sh/sparc stable wrt #274177
+
+  19 Jun 2009; Brent Baude <ranger@gentoo.org> openct-0.6.16.ebuild:
+  stable ppc64, bug 274177
+
+  17 Jun 2009; Christian Faulhammer <fauli@gentoo.org> openct-0.6.16.ebuild:
+  stable x86, bug 274177
+
+  15 Jun 2009; Jeroen Roovers <jer@gentoo.org> openct-0.6.16.ebuild:
+  Stable for HPPA (bug #274177).
+
+  16 May 2009; Robin H. Johnson <robbat2@gentoo.org> openct-0.6.14.ebuild,
+  openct-0.6.14-r1.ebuild, openct-0.6.15.ebuild:
+  Migration to virtual/libusb. Verified by code inspection.
+
+*openct-0.6.16 (15 May 2009)
+
+  15 May 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +openct-0.6.16.ebuild,
+  +files/openct-0.6.16-fix_implicit_declaration.patch:
+  Version bump.
+
+  02 May 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  openct-0.6.15.ebuild, metadata.xml:
+  Add optional support for sys-apps/pcsc-lite (bug #264630).
+
+  02 Apr 2009; Raúl Porcel <armin76@gentoo.org> openct-0.6.15.ebuild:
+  arm/ia64/m68k/s390/sh/sparc stable wrt #263401
+
+  25 Mar 2009; Joseph Jezak <josejx@gentoo.org> openct-0.6.15.ebuild:
+  Marked ppc stable for bug #263401.
+
+  23 Mar 2009; Markus Meier <maekke@gentoo.org> openct-0.6.15.ebuild:
+  amd64/x86 stable, bug #263401
+
+  23 Mar 2009; Brent Baude <ranger@gentoo.org> openct-0.6.15.ebuild:
+  stable ppc64, bug 263401
+
+  04 Nov 2008; Daniel Black <dragonheart@gentoo.org>
+  -files/openct-0.6.11-ifdhandlerv2.patch, -openct-0.6.11-r1.ebuild:
+  purged finally - bug #226713
+
+  31 Oct 2008; Guy Martin <gmsoft@gentoo.org> openct-0.6.14.ebuild:
+  hppa stable, #162205
+
+  30 Aug 2008; Raúl Porcel <armin76@gentoo.org> openct-0.6.14.ebuild:
+  ia64 stable
+
+  30 Aug 2008; Daniel Black <dragonheart@gentoo.org> -openct-0.5.0.ebuild:
+  punting version 0.5.0 as it does work
+  https://bugs.gentoo.org/show_bug.cgi?id=162205#c14 thanks Alon
+
+*openct-0.6.15 (30 Aug 2008)
+
+  30 Aug 2008; Daniel Black <dragonheart@gentoo.org> +openct-0.6.15.ebuild:
+  version bump thanks to Alon - bug #233519
+
+  21 Jun 2008; Friedrich Oslage <bluebird@gentoo.org> openct-0.6.14.ebuild,
+  openct-0.6.14-r1.ebuild:
+  Drop ~sparc keyword, no hardware to test(bug #162205)
+
+  08 Jun 2008; Mike Frysinger <vapier@gentoo.org> openct-0.6.14-r1.ebuild:
+  Fix building with glibc-2.8 #225435 by Mario Fetka.
+
+*openct-0.6.14-r1 (15 Feb 2008)
+
+  15 Feb 2008; Alon Bar-Lev <alonbl@gentoo.org> +openct-0.6.14-r1.ebuild:
+  Remove hotplug stuff, bug#210082
+
+  25 Nov 2007; Brent Baude <ranger@gentoo.org> openct-0.6.14.ebuild:
+  Marking openct-0.6.14 ppc for bug 162205
+
+  13 Nov 2007; Markus Rothe <corsair@gentoo.org> openct-0.6.14.ebuild:
+  Stable on ppc64; bug #162205
+
+  11 Nov 2007; Samuli Suominen <drac@gentoo.org> openct-0.6.14.ebuild:
+  amd64 stable wrt #162205
+
+  11 Nov 2007; Markus Meier <maekke@gentoo.org> openct-0.6.14.ebuild:
+  x86 stable, bug #162205
+
+  10 Nov 2007; Alon Bar-Lev <alonbl@gentoo.org> -openct-0.6.6.ebuild,
+  -openct-0.6.8.ebuild, -openct-0.6.9.ebuild:
+  Cleanup.
+
+  19 Sep 2007; Alon Bar-Lev <alonbl@gentoo.org> openct-0.6.14.ebuild:
+  Add eutils, bug#192958, thanks to Robert Kerr
+
+*openct-0.6.14 (30 Aug 2007)
+
+  30 Aug 2007; Alon Bar-Lev <alonbl@gentoo.org> metadata.xml,
+  +openct-0.6.14.ebuild:
+  Version bump, cleanups, take ownership
+
+  29 Aug 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing kaiowas from metadata due to his retirement (see #61930 for
+  reference).
+
+  25 Jul 2007; Guy Martin <gmsoft@gentoo.org> openct-0.6.11-r1.ebuild:
+  Stable on hppa
+
+  28 Apr 2007; Torsten Veller <tove@gentoo.org> openct-0.5.0.ebuild:
+  Use newinitd
+
+  06 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  openct-0.6.11-r1.ebuild:
+  ppc stable, bug #162205
+
+  31 Mar 2007; Petre Rodan <kaiowas@gentoo.org>
+  +files/openct-0.6.11-ifdhandlerv2.patch, openct-0.6.11-r1.ebuild:
+  added fix from bug #168446
+
+  03 Mar 2007; Marius Mauch <genone@gentoo.org> openct-0.5.0.ebuild,
+  openct-0.6.6.ebuild, openct-0.6.8.ebuild, openct-0.6.9.ebuild,
+  openct-0.6.11-r1.ebuild:
+  Replacing einfo with elog
+
+  12 Feb 2007; Simon Stelling <blubb@gentoo.org> openct-0.6.11-r1.ebuild:
+  stable on amd64; bug 162205
+
+  19 Jan 2007; Markus Rothe <corsair@gentoo.org> openct-0.6.11-r1.ebuild:
+  Stable on ppc64; bug #162205
+
+*openct-0.6.11-r1 (15 Jan 2007)
+
+  15 Jan 2007; Petre Rodan <kaiowas@gentoo.org> openct-0.6.9.ebuild,
+  -openct-0.6.11.ebuild, +openct-0.6.11-r1.ebuild:
+  changed dependencies as per bug# 162205
+
+  18 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> openct-0.6.11.ebuild:
+  Stable on sparc
+
+  17 Dec 2006; Petre Rodan <kaiowas@gentoo.org> openct-0.6.11.ebuild:
+  Stable on x86
+
+  17 Dec 2006; Petre Rodan <kaiowas@gentoo.org> openct-0.6.9.ebuild,
+  openct-0.6.11.ebuild:
+  removed udev USE flag as per bug #158114
+
+  03 Dec 2006; Markus Rothe <corsair@gentoo.org> openct-0.6.9.ebuild:
+  Stable on ppc64
+
+*openct-0.6.11 (23 Nov 2006)
+
+  23 Nov 2006; Petre Rodan <kaiowas@gentoo.org> -openct-0.6.10.ebuild,
+  +openct-0.6.11.ebuild:
+  version bump
+
+*openct-0.6.10 (11 Nov 2006)
+
+  11 Nov 2006; Petre Rodan <kaiowas@gentoo.org> +openct-0.6.10.ebuild:
+  version bump
+
+  25 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> openct-0.6.9.ebuild:
+  Stable on sparc
+
+  21 Oct 2006; Petre Rodan <kaiowas@gentoo.org> openct-0.6.9.ebuild:
+  Stable on x86.
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> openct-0.6.8.ebuild:
+  Stable on Alpha.
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> openct-0.6.8.ebuild:
+  Stable on ia64.
+
+  25 Sep 2006; Petre Rodan <kaiowas@gentoo.org> openct-0.6.9.ebuild:
+  fix QA bugs as per #149044, thanks vapier
+
+*openct-0.6.9 (22 Sep 2006)
+
+  22 Sep 2006; Petre Rodan <kaiowas@gentoo.org> +openct-0.6.9.ebuild:
+  version bump
+
+  17 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org> openct-0.6.8.ebuild:
+  Stable on sparc
+
+  16 Aug 2006; Markus Rothe <corsair@gentoo.org> openct-0.6.8.ebuild:
+  Stable on ppc64
+
+  05 Aug 2006; Michael Hanselmann <hansmi@gentoo.org> openct-0.6.8.ebuild:
+  Stable on ppc.
+
+  21 Jul 2006; Petre Rodan <kaiowas@gentoo.org> openct-0.6.6.ebuild,
+  openct-0.6.8.ebuild:
+  mark stable on x86
+
+  02 Jul 2006; Jason Wever <weeve@gentoo.org> openct-0.6.6.ebuild:
+  Stable on SPARC wrt bug #137963.
+
+  02 Jul 2006; Lars Weiler <pylon@gentoo.org> openct-0.6.6.ebuild:
+  Stable on ppc; bug #137963.
+
+  27 Jun 2006; Guy Martin <gmsoft@gentoo.org> openct-0.6.6.ebuild:
+  Stable on hppa.
+
+  26 Jun 2006; Simon Stelling <blubb@gentoo.org> openct-0.6.6.ebuild:
+  stable on amd64
+
+  25 Jun 2006; Markus Rothe <corsair@gentoo.org> openct-0.6.6.ebuild:
+  Stable on ppc64; bug #137963
+
+*openct-0.6.8 (24 Jun 2006)
+
+  24 Jun 2006; Petre Rodan <kaiowas@gentoo.org> -openct-0.6.7.ebuild,
+  +openct-0.6.8.ebuild:
+  version bump as per bug #137680
+
+*openct-0.6.7 (03 Jun 2006)
+
+  03 Jun 2006; Petre Rodan <kaiowas@gentoo.org> -files/usb.usermap,
+  metadata.xml, +openct-0.6.7.ebuild:
+  version bump. changed HOMEPAGE SRC_URI LICENSE and dodoc, added fix for
+  upstream bug #18
+
+  09 Mar 2006; Mike Frysinger <vapier@gentoo.org> openct-0.6.6.ebuild:
+  Use revdep-rebuild --library instead of revdep-rebuild --soname #125506 by
+  Carsten Lohrke.
+
+*openct-0.6.6 (14 Sep 2005)
+
+  14 Sep 2005; Mike Frysinger <vapier@gentoo.org> +openct-0.6.6.ebuild:
+  Version bump.
+
+*openct-0.6.5 (26 Jun 2005)
+
+  26 Jun 2005; Mike Frysinger <vapier@gentoo.org> +openct-0.6.5.ebuild:
+  Version bump #92291 by Andreas Jellinghaus.
+
+  23 Jan 2005; Markus Rothe <corsair@gentoo.org> openct-0.5.0.ebuild,
+  openct-0.6.2.ebuild:
+  added ~ppc64 to KEYWORDS
+
+*openct-0.6.2 (02 Nov 2004)
+
+  02 Nov 2004; Mike Frysinger <vapier@gentoo.org> +openct-0.6.2.ebuild:
+  Version bump #66966.
+
+*openct-0.6.1 (31 Aug 2004)
+
+  31 Aug 2004; Mike Frysinger <vapier@gentoo.org> -openct-0.6.0_alpha.ebuild,
+  +openct-0.6.1.ebuild:
+  Version bump.
+
+  17 Jul 2004; David Holm <dholm@gentoo.org> openct-0.5.0.ebuild,
+  openct-0.6.0_alpha.ebuild:
+  Added to ~ppc.
+
+*openct-0.6.0_alpha (13 Jul 2004)
+
+  13 Jul 2004; Mike Frysinger <vapier@gentoo.org> +openct-0.6.0_alpha.ebuild:
+  Add an alpha version -* for Lars T. Mikkelsen #55828.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> openct-0.5.0.ebuild:
+  virtual/glibc -> virtual/libc
+
+*openct-0.5.0 (22 Feb 2004)
+
+  22 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Lars T. Mikkelsen/Peter Stuge #28202.

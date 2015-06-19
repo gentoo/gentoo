@@ -1,0 +1,29 @@
+# ChangeLog for app-mobilephone/qtadb
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/qtadb/ChangeLog,v 1.7 2014/05/30 21:34:07 pesa Exp $
+
+  30 May 2014; Davide Pesavento <pesa@gentoo.org> metadata.xml:
+  Remove qt (and empty longdescription) from metadata.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> qtadb-0.8.1.ebuild:
+  Move Qt dependencies to the new category
+
+  15 Feb 2013; Pacho Ramos <pacho@gentoo.org> qtadb-0.8.1.ebuild:
+  Don't show elog messages always (#457596)
+
+  15 Nov 2011; Markos Chandras <hwoarang@gentoo.org> qtadb-0.8.1.ebuild:
+  Add missing x11-libs/qt-declarative dependency. Fix DEPEND variable. Bug
+  #390677
+
+  14 Nov 2011; Markos Chandras <hwoarang@gentoo.org> qtadb-0.8.1.ebuild:
+  Add missing IUSE. Fix whitespace
+
+*qtadb-0.8.1 (14 Nov 2011)
+
+  14 Nov 2011; Markos Chandras <hwoarang@gentoo.org> +qtadb-0.8.1.ebuild,
+  +metadata.xml:
+  Initial commit. Thanks to Marios Andreopoulos <opensource@andmarios.com>. Bug
+  #390331

@@ -1,0 +1,508 @@
+# ChangeLog for app-emacs/auctex
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/auctex/ChangeLog,v 1.132 2015/01/01 11:28:03 ago Exp $
+
+  01 Jan 2015; Agostino Sarubbo <ago@gentoo.org> auctex-11.88.ebuild:
+  Stable for ppc64, wrt bug #531808
+
+  31 Dec 2014; Agostino Sarubbo <ago@gentoo.org> auctex-11.88.ebuild:
+  Stable for ppc, wrt bug #531808
+
+  26 Dec 2014; Agostino Sarubbo <ago@gentoo.org> auctex-11.88.ebuild:
+  Stable for x86, wrt bug #531808
+
+  08 Dec 2014; Chema Alonso <nimiux@gentoo.org> auctex-11.88.ebuild:
+  Stable for amd64 wrt bug #531808
+
+*auctex-11.88 (01 Nov 2014)
+
+  01 Nov 2014; Ulrich Müller <ulm@gentoo.org> +auctex-11.88.ebuild:
+  Version bump.
+
+  01 Nov 2014; Ulrich Müller <ulm@gentoo.org> auctex-11.87-r1.ebuild:
+  Fix typo in src_configure, EMACS_FLAVOR instead of EMACS_FLAVOUR.
+
+  13 Sep 2014; Markus Meier <maekke@gentoo.org> auctex-11.87-r1.ebuild:
+  add ~arm, bug #510480
+
+  19 Jul 2014; Ulrich Müller <ulm@gentoo.org> -auctex-11.87.ebuild:
+  Remove old.
+
+  19 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> auctex-11.87-r1.ebuild:
+  ppc64 and x86 stable wrt bug #515540
+
+  13 Jul 2014; Agostino Sarubbo <ago@gentoo.org> auctex-11.87-r1.ebuild:
+  Stable for ppc, wrt bug #515540
+
+  08 Jul 2014; Chema Alonso <nimiux@gentoo.org> auctex-11.87-r1.ebuild:
+  Stable for amd64 wrt bug #515540
+
+*auctex-11.87-r1 (23 May 2014)
+
+  23 May 2014; Ulrich Müller <ulm@gentoo.org> +auctex-11.87-r1.ebuild,
+  +files/auctex-11.87-jit-lock.patch:
+  Fix incompatibility with jit-lock in Emacs 24.4. Patch from upstream.
+
+  25 Mar 2014; Ulrich Müller <ulm@gentoo.org> -auctex-11.86-r1.ebuild,
+  -files/auctex-11.86-ghostscript9.patch:
+  Remove old.
+
+  22 Jan 2013; Agostino Sarubbo <ago@gentoo.org> auctex-11.87.ebuild:
+  Stable for x86, wrt bug #451930
+
+  16 Jan 2013; Agostino Sarubbo <ago@gentoo.org> auctex-11.87.ebuild:
+  Stable for ppc and ppc64, wrt bug #451930
+
+  14 Jan 2013; Agostino Sarubbo <ago@gentoo.org> auctex-11.87.ebuild:
+  Stable for amd64, wrt bug #451930
+
+*auctex-11.87 (03 Dec 2012)
+
+  03 Dec 2012; Ulrich Müller <ulm@gentoo.org> auctex-11.86-r1.ebuild,
+  +auctex-11.87.ebuild:
+  Version bump.
+
+  14 Jan 2012; Ulrich Müller <ulm@gentoo.org> auctex-11.86-r1.ebuild:
+  Assign VARTEXFONTS wrt bug 377921. Remove old blocker.
+
+  18 Jul 2011; Ulrich Mueller <ulm@gentoo.org> -auctex-11.86.ebuild:
+  Remove old.
+
+  18 Jul 2011; Mark Loeser <halcy0n@gentoo.org> auctex-11.86-r1.ebuild:
+  Stable for ppc64; bug #368307
+
+  24 Jun 2011; Brent Baude <ranger@gentoo.org> auctex-11.86-r1.ebuild:
+  Marking auctex-11.86-r1 ppc for bug 368307
+
+  19 Jun 2011; Raúl Porcel <armin76@gentoo.org> auctex-11.86.ebuild,
+  auctex-11.86-r1.ebuild:
+  Drop sparc keywords
+
+  29 May 2011; Christian Faulhammer <fauli@gentoo.org> auctex-11.86-r1.ebuild:
+  stable x86, bug 368307
+
+  23 May 2011; Markos Chandras <hwoarang@gentoo.org> auctex-11.86-r1.ebuild:
+  Stable on amd64 wrt bug #368307
+
+*auctex-11.86-r1 (17 Jan 2011)
+
+  17 Jan 2011; Ulrich Mueller <ulm@gentoo.org> +auctex-11.86-r1.ebuild,
+  +files/auctex-11.86-ghostscript9.patch:
+  Fix preview PNG generation with ghostscript-gpl-9.00, bug 351774.
+
+  12 Dec 2010; Christian Faulhammer <fauli@gentoo.org> -auctex-11.85.ebuild:
+  clean up
+
+  27 Nov 2010; Ulrich Mueller <ulm@gentoo.org> -auctex-11.85-r1.ebuild:
+  Remove intermediate version.
+
+  23 May 2010; Pacho Ramos <pacho@gentoo.org> auctex-11.86.ebuild:
+  stable amd64, bug 313815
+
+  11 May 2010; Brent Baude <ranger@gentoo.org> auctex-11.86.ebuild:
+  stable ppc64, bug 313815
+
+  07 May 2010; Raúl Porcel <armin76@gentoo.org> auctex-11.86.ebuild:
+  sparc stable wrt #313815
+
+  16 Apr 2010; Brent Baude <ranger@gentoo.org> auctex-11.86.ebuild:
+  stable ppc, bug 313815
+
+  08 Apr 2010; Christian Faulhammer <fauli@gentoo.org> auctex-11.86.ebuild:
+  stable x86, bug 313815
+
+*auctex-11.86 (24 Feb 2010)
+
+  24 Feb 2010; Ulrich Mueller <ulm@gentoo.org> +auctex-11.86.ebuild:
+  Version bump.
+
+*auctex-11.85-r1 (30 Jan 2010)
+
+  30 Jan 2010; Ulrich Mueller <ulm@gentoo.org> +auctex-11.85-r1.ebuild:
+  Add prefix keywords, change EAPI to 3.
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> auctex-11.85.ebuild:
+  virtual/ghostscript->app-text/ghostscript-gpl: ghostscript-gpl is the only
+  implementation left in the tree.
+
+  04 Dec 2009; Ulrich Mueller <ulm@gentoo.org> auctex-11.85.ebuild:
+  Properly configure docdir location, fixes bug 295781.
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org> auctex-11.85.ebuild:
+  set explicit RDEPEND
+
+  28 Nov 2008; Ulrich Mueller <ulm@gentoo.org> auctex-11.85.ebuild:
+  Fix Info dir entry.
+
+  28 Jul 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  06 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  -files/auctex-11.84-configure.diff, -files/auctex-11.84-japanes.patch,
+  -auctex-11.84-r3.ebuild:
+  clean up
+
+  05 May 2008; Markus Meier <maekke@gentoo.org> auctex-11.85.ebuild:
+  amd64 stable, bug #213992
+
+  18 Apr 2008; Ulrich Mueller <ulm@gentoo.org> auctex-11.85.ebuild:
+  Parallel install does not work, bug 213992 comment 5.
+
+  23 Mar 2008; Brent Baude <ranger@gentoo.org> auctex-11.85.ebuild:
+  stable ppc64, bug 213992
+
+  22 Mar 2008; Raúl Porcel <armin76@gentoo.org> auctex-11.85.ebuild:
+  sparc stable wrt #213992
+
+  22 Mar 2008; nixnut <nixnut@gentoo.org> auctex-11.85.ebuild:
+  Stable on ppc wrt bug 213992
+
+  21 Mar 2008; Christian Faulhammer <opfer@gentoo.org> auctex-11.85.ebuild:
+  stable x86, bug 213992
+
+  20 Mar 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add longdescription to metadata.
+
+*auctex-11.85 (11 Feb 2008)
+
+  11 Feb 2008; Christian Faulhammer <opfer@gentoo.org> +auctex-11.85.ebuild:
+  version bump: Only some bug fixes (make the japanese patch obsolete e.g.);
+  move DEPEND to virtual/latex-base, remove fix for Emacs 23, it seems to work
+  without the patch now by forcing EMACS_FLAVOR
+
+  11 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  +files/50auctex-gentoo.el, -files/52auctex-gentoo.el:
+  readd previously deleted file and clean out correct one
+
+  11 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  -files/50auctex-gentoo.el, -auctex-11.84-r2.ebuild:
+  clean up
+
+  23 Jan 2008; Raúl Porcel <armin76@gentoo.org> auctex-11.84-r3.ebuild:
+  sparc stable wrt #206992
+
+  22 Jan 2008; Brent Baude <ranger@gentoo.org> auctex-11.84-r3.ebuild:
+  Marking auctex-11.84-r3 ppc and ppc64 for bug 206992
+
+  22 Jan 2008; Christian Faulhammer <opfer@gentoo.org>
+  auctex-11.84-r3.ebuild:
+  stable amd64/x86, bug 206992
+
+  22 Dec 2007; Ulrich Mueller <ulm@gentoo.org>
+  -files/auctex-11.84-ppc64_configure.patch, -auctex-11.84-r1.ebuild:
+  Remove old revision.
+
+  22 Dec 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  auctex-11.84-r2.ebuild:
+  ppc stable, bug #199765
+
+  01 Dec 2007; Ulrich Mueller <ulm@gentoo.org> auctex-11.84-r3.ebuild:
+  Use SITEETC eclass variable.
+
+  27 Nov 2007; Christoph Mende <angelos@gentoo.org> auctex-11.84-r2.ebuild:
+  Stable on amd64 wrt bug #199765
+
+  24 Nov 2007; Ulrich Mueller <ulm@gentoo.org> auctex-11.84-r3.ebuild:
+  Install TeX files in texmf-site; remove kpathsea workaround.
+
+  23 Nov 2007; Markus Rothe <corsair@gentoo.org> auctex-11.84-r2.ebuild:
+  Stable on ppc64; bug #199765
+
+*auctex-11.84-r3 (23 Nov 2007)
+
+  23 Nov 2007; Ulrich Mueller <ulm@gentoo.org> +files/50auctex-gentoo.el,
+  +auctex-11.84-r3.ebuild:
+  Move data files from site-lisp to etc directory. Use "emake install" for
+  installation and remove ${D} from configure options. Don't use auctex.el
+  wrapper for startup, but require tex-site directly.
+
+  21 Nov 2007; Raúl Porcel <armin76@gentoo.org> auctex-11.84-r2.ebuild:
+  sparc stable wrt #199765
+
+  20 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  auctex-11.84-r2.ebuild:
+  stable x86, bug 199765
+
+  25 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  auctex-11.84-r2.ebuild:
+  using SITELISP variable from elisp.eclass instead of hard-coded path
+
+  01 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  +files/digest-auctex-11.84-r1, +files/digest-auctex-11.84-r2, Manifest:
+  (QA) Add digests.
+
+  28 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
+  auctex-11.84-r2.ebuild:
+  remove ppc64 patch, as Emacs 21 has been reworked to make this patch unncessary
+
+*auctex-11.84-r2 (27 Jun 2007)
+
+  27 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
+  +auctex-11.84-r2.ebuild:
+  generate and install reference card in doc directory
+
+  14 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
+  -files/51auctex-gentoo.el, -files/auctex-11.55-configure.diff,
+  -files/auctex-11.81-configure.diff, -files/auctex-11.82-configure.diff,
+  -files/50auctex-gentoo.el, -auctex-11.55.ebuild, -auctex-11.82.ebuild,
+  -auctex-11.83.ebuild, -auctex-11.83-r1.ebuild, -auctex-11.84.ebuild:
+  clean up
+
+  15 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  auctex-11.84-r1.ebuild:
+  stable amd64; bug 177348
+
+  10 May 2007; Torsten Veller <tove@gentoo.org> auctex-11.84-r1.ebuild:
+  Stable on x86 (#177348)
+
+  08 May 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  auctex-11.84-r1.ebuild:
+  Stable on sparc wrt #177348
+
+  07 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  auctex-11.84-r1.ebuild:
+  ppc stable, bug #177348
+
+  06 May 2007; Markus Rothe <corsair@gentoo.org> auctex-11.84-r1.ebuild:
+  Stable on ppc64; bug #177348
+
+  09 Apr 2007; Markus Rothe <corsair@gentoo.org> auctex-11.84-r1.ebuild:
+  Added ~ppc64 back; bug #131761
+
+  07 Apr 2007; Christian Faulhammer <opfer@gentoo.org> auctex-11.55.ebuild,
+  auctex-11.82.ebuild, auctex-11.83.ebuild, auctex-11.83-r1.ebuild,
+  auctex-11.84.ebuild, auctex-11.84-r1.ebuild:
+  added FDL to LICENSE
+
+  30 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  +files/auctex-11.84-ppc64_configure.patch, auctex-11.84-r1.ebuild:
+  apply patch for PPC64, so configure won't fail on it
+
+*auctex-11.84-r1 (04 Mar 2007)
+
+  04 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  +files/auctex-11.84-japanes.patch, +auctex-11.84-r1.ebuild:
+  added patch to allow compilation of Japanese (La)TeX files, fix taken from
+  auctex' CVS, fixes bug 169114 reported by MATSUI Tetsushi
+  <VED03370@nifty.ne.jp>
+
+  22 Feb 2007; Christian Faulhammer <opfer@gentoo.org> auctex-11.84.ebuild:
+  refined the checks for TEXMFSITE further. A non existing directory now lets
+  the emerge process fail to prevent installing TeX files into weird
+  directories
+
+  22 Feb 2007; Christian Faulhammer <opfer@gentoo.org> auctex-11.84.ebuild:
+  applied better checks for the contents of TEXMFSITE: if it is defined at all
+  (emerge process fails then), to choose an entry if several paths are in it
+  and use the dodir function instead of an manual mkdir command
+
+  20 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/52auctex-gentoo.el:
+  added a needed newline, as reported by Ulrich Mueller <ulm@kph.uni-mainz.de>
+  in bug 167673
+
+*auctex-11.84 (15 Jan 2007)
+
+  15 Jan 2007; <opfer@gentoo.org> -files/auctex-11.54-configure.diff,
+  +files/auctex-11.84-configure.diff, +auctex-11.84.ebuild:
+  version bump: mainly bug fixes; adjusted DESCRIPTION; added adjusted
+  configure patch; removed stray patch
+  Thanks to Christian Schlotter <again@gmx.de> in bug #161923
+
+  06 Dec 2006; Christian Faulhammer <opfer@gentoo.org> auctex-11.55.ebuild,
+  auctex-11.82.ebuild, auctex-11.83.ebuild:
+  added trailing slashes to all the HOMEPAGE URIs
+
+  27 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  auctex-11.83-r1.ebuild:
+  added tetex dependency as it is not pulled in by dependencies above in any
+  case; to prevent file collisions with app-text/tetex, TeX files for
+  preview-latex are installed in TEXMFSITE (usually /usr/share/texmf-site/),
+  see bug #155944, reported by Emiliano Vavassori <syntaxerrormmm@gmail.com>;
+  added some quotes around variables
+
+  23 Nov 2006; Tobias Scherbaum <dertobi123@gentoo.org> auctex-11.83.ebuild:
+  ppc stable, bug #154240
+
+  23 Nov 2006; <blubb@gentoo.org> auctex-11.83.ebuild:
+  stable on amd64
+
+*auctex-11.83-r1 (22 Nov 2006)
+
+  22 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  +files/52auctex-gentoo.el, +auctex-11.83-r1.ebuild:
+  added selfparsing option to SITEFILE, so steps that should follow are
+  detected; prettyprinted ebuild a bit, added some quotes around variables,
+  added trailing slash to HOMEPAGE URI
+
+  16 Nov 2006; Christian Faulhammer <opfer@gentoo.org> auctex-11.83.ebuild:
+  added ghostscript dependency for preview-latex
+
+  15 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org> auctex-11.83.ebuild:
+  Stable on sparc wrt #154240
+
+  07 Nov 2006; Christian Faulhammer <opfer@gentoo.org> auctex-11.83.ebuild:
+  stable x86, bug #154240
+
+  08 Aug 2006; Matthew Kennedy <mkennedy@gentoo.org> -auctex-11.54.ebuild,
+  -auctex-11.81.ebuild:
+  Remove some more redundant ebuilds.
+
+  08 Aug 2006; Matthew Kennedy <mkennedy@gentoo.org> -auctex-11.14.ebuild:
+  Remove old ebuild; Resolves Bug #140383.
+
+  25 Jun 2006; Tobias Scherbaum <dertobi123@gentoo.org> auctex-11.83.ebuild:
+  Added ~ppc, bug #131761
+
+*auctex-11.83 (19 Jun 2006)
+
+  19 Jun 2006; Matthew Kennedy <mkennedy@gentoo.org> +auctex-11.83.ebuild:
+  New upstream; Resolves Bug #136138; Depend on app-text/dvipng when
+  preview-latex in USE; Resolves Bug #131761.
+
+*auctex-11.82 (01 Feb 2006)
+
+  01 Feb 2006; Mamoru KOMACHI <usata@gentoo.org> +files/51auctex-gentoo.el,
+  +files/60auctex-gentoo.el, +files/auctex-11.82-configure.diff,
+  +auctex-11.82.ebuild:
+  Version bumped and fixed bug #118100. Thanks to Christian Faulhammer
+  <v-li@gmx.de> and Matsui Tetsushi <VED03370@nifty.ne.jp>.
+
+*auctex-11.81 (20 Dec 2005)
+
+  20 Dec 2005; Mamoru KOMACHI <usata@gentoo.org>
+  +files/auctex-11.81-configure.diff, +auctex-11.81.ebuild:
+  Version bumped. Thanks to James Cloos <cloos@jhcloos.com> and Anders
+  Bach Nielsen <abachn@daimi.au.dk>; bug #107323.
+
+  25 Nov 2005; Tom Gall <tgall@gentoo.org> auctex-11.55.ebuild:
+  stable on ppc64
+
+  23 Oct 2005; Brent Baude <ranger@gentoo.org> auctex-11.55.ebuild:
+  Marking auctex-11.55 ~ppc64 for bug 109774
+
+  15 Aug 2005; Luis Medinas <metalgod@gentoo.org> auctex-11.55.ebuild:
+  Marked Stable on AMD64.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> auctex-11.55.ebuild:
+  Stable on ppc.
+
+  26 May 2005; Jason Wever <weeve@gentoo.org> auctex-11.55.ebuild:
+  Stable on SPARC.
+
+  21 May 2005; Mamoru KOMACHI <usata@gentoo.org> -auctex-11.53-r1.ebuild,
+  auctex-11.55.ebuild:
+  Stable on x86.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> auctex-11.54.ebuild:
+  stable on amd64
+
+  12 Apr 2005; Mamoru KOMACHI <usata@gentoo.org>
+  +files/auctex-11.54-configure.diff, +files/auctex-11.55-configure.diff,
+  auctex-11.54.ebuild, auctex-11.55.ebuild:
+  Fixed compilation with emacs-23; bug #83079.
+
+  09 Apr 2005; Jason Wever <weeve@gentoo.org> auctex-11.54.ebuild:
+  Stable on SPARC.
+
+*auctex-11.55 (02 Apr 2005)
+
+  02 Apr 2005; Mamoru KOMACHI <usata@gentoo.org> -auctex-11.53.ebuild,
+  auctex-11.54.ebuild, +auctex-11.55.ebuild:
+  Version bumped. This closes bug #84273.
+
+  11 Feb 2005; Jason Wever <weeve@gentoo.org> auctex-11.53-r1.ebuild:
+  Stable on sparc.
+
+*auctex-11.54 (08 Feb 2005)
+
+  08 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> auctex-11.53-r1.ebuild,
+  +auctex-11.54.ebuild:
+  Version bumped. This closes bug #78738.
+
+*auctex-11.53-r1 (02 Dec 2004)
+
+  02 Dec 2004; Mamoru KOMACHI <usata@gentoo.org> +auctex-11.53-r1.ebuild:
+  Install bib-cite.el and tex-jp.el as well (bug #72637) and updated
+  doc files (bug #72644). Thanks to Matsui Tetsushi <VED03370@nifty.ne.jp>.
+
+  16 Oct 2004; Jason Wever <weeve@gentoo.org> auctex-11.53.ebuild:
+  Stable on sparc.
+
+  14 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> auctex-11.53.ebuild:
+  Added --with-lispdir in response to bug #67402.
+
+  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> -auctex-11.51.ebuild,
+  -auctex-11.52.ebuild, auctex-11.53.ebuild:
+  Stable on x86 and ppc.
+
+*auctex-11.53 (07 Sep 2004)
+
+  07 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> +auctex-11.53.ebuild:
+  Version bumped. See bug #62401.
+
+*auctex-11.52 (24 Aug 2004)
+
+  24 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> auctex-11.14.ebuild,
+  auctex-11.51.ebuild, +auctex-11.52.ebuild:
+  Version bumped and corrected DESCRIPTION; bug #60283.
+
+*auctex-11.51 (17 Aug 2004)
+
+  17 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> +auctex-11.51.ebuild:
+  Version bumped. Thanks to Stefan Thalauer <gentoo@thalauer.net>.
+  This closes bug #60283. 
+
+  22 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> auctex-11.14.ebuild:
+  Stable on ppc.
+
+  19 Jun 2004; Jason Wever <weeve@gentoo.org> auctex-11.14.ebuild:
+  Stable on sparc.
+
+  10 May 2004; Jason Wever <weeve@gentoo.org> auctex-11.14.ebuild:
+  Added ~sparc keyword to help resolve bug #50695.
+
+  02 May 2004; Mamoru KOMACHI <usata@gentoo.org> auctex-10.0g.ebuild,
+  auctex-11.13.ebuild, auctex-11.14.ebuild:
+  Moved Xaw3d warning to pkg_postinst. See bug #18518 and #49681.
+  Removed old ebuilds.
+
+  18 Jan 2004; Matthieu Sozeau <mattam@gentoo.org> auctex-11.14.ebuild:
+  Added ~ppc to keywords.
+
+  31 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> auctex-10.0g.ebuild,
+  auctex-11.13.ebuild, auctex-11.14.ebuild:
+  Added pkg_setup to let people recompile emacs with USE="Xaw3d".
+  Fixed info breakage. This closed Bug #18518.
+
+  10 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> auctex-10.0g.ebuild,
+  auctex-11.13.ebuild, auctex-11.14.ebuild:
+  Changed to depend on virtual/tetex
+
+  09 Jun 2003; <msterret@gentoo.org> auctex-11.14.ebuild:
+  DEPEND on sed >= 4
+
+  15 May 2003; Patrick Kursawe <phosphan@gentoo.org> auctex-10.0g.ebuild,
+  auctex-11.13.ebuild, auctex-11.14.ebuild:
+  Corrected homepage and src_uri, bug 21001
+
+*auctex-11.14 (28 Mar 2003)
+
+  28 Mar 2003; Matthew Kennedy <mkennedy@gentoo.org> auctex-11.14.ebuild:
+  minor version bump
+
+*auctex-11.13 (09 Feb 2003)
+
+  09 Feb 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  auctex-11.13.ebuild, files/digest-auctex-11.13 :
+
+  Version bump to latest stable. resolves bug #13177 (masked as ~x86
+  while release freeze applies).
+
+*auctex-10.0g (31 Oct 2002)
+
+  31 Oct 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  auctex-10.0g.ebuild, files/50auctex-gentoo.el,
+  files/digest-auctex-10.0g :
+
+  Initial import.

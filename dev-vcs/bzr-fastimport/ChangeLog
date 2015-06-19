@@ -1,0 +1,49 @@
+# ChangeLog for dev-vcs/bzr-fastimport
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/bzr-fastimport/ChangeLog,v 1.11 2015/05/16 06:05:45 tetromino Exp $
+
+  16 May 2015; Alexandre Rostovtsev <tetromino@gentoo.org>
+  bzr-fastimport-0.13.0.ebuild:
+  distutils_pkg_postinst() is now gone (bug #549554, thanks to Toralf
+  Förster).
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> bzr-fastimport-0.13.0.ebuild:
+  Drop old Python implementations
+
+  28 Dec 2014; Mike Gilbert <floppym@gentoo.org> bzr-fastimport-0.13.0.ebuild:
+  Drop PYTHON_MODNAME, bug 533838.
+
+  06 Aug 2013; Christian Faulhammer <fauli@gentoo.org>
+  bzr-fastimport-0.13.0.ebuild:
+  convert to distutils-r1.eclass
+
+  06 Aug 2013; Christian Faulhammer <fauli@gentoo.org>
+  -bzr-fastimport-0.12.0.ebuild:
+  clean up
+
+  11 Aug 2012; Agostino Sarubbo <ago@gentoo.org> bzr-fastimport-0.13.0.ebuild:
+  Stable for amd64, wrt bug #427522
+
+  21 Jul 2012; Jeff Horelick <jdhore@gentoo.org> bzr-fastimport-0.13.0.ebuild:
+  marked x86 per bug 427522
+
+*bzr-fastimport-0.13.0 (16 Mar 2012)
+
+  16 Mar 2012; Christian Faulhammer <fauli@gentoo.org>
+  -bzr-fastimport-0.11.0.ebuild, +bzr-fastimport-0.13.0.ebuild:
+  version bump and clean up
+
+*bzr-fastimport-0.12.0 (25 Feb 2012)
+
+  25 Feb 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +bzr-fastimport-0.12.0.ebuild:
+  Version bump.
+
+  13 Feb 2012; Alexandre Rostovtsev <tetromino@gentoo.org> metadata.xml:
+  Add to bazaar herd, acked by fauli.
+
+*bzr-fastimport-0.11.0 (13 Feb 2012)
+
+  13 Feb 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +bzr-fastimport-0.11.0.ebuild, +metadata.xml:
+  New ebuild for a fastimport plugin for bzr.

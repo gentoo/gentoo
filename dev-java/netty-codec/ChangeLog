@@ -1,0 +1,21 @@
+# ChangeLog for dev-java/netty-codec
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/netty-codec/ChangeLog,v 1.3 2015/06/07 08:35:20 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*netty-codec-4.0.21 (15 Jul 2014)
+
+  15 Jul 2014; Johann Schmitz <ercpe@gentoo.org>
+  +files/netty-codec-4.0.21-build.xml, +netty-codec-4.0.21.ebuild:
+  Version bump (bug #515854); dropped code for failing tests
+
+*netty-codec-4.0.19 (28 May 2014)
+
+  28 May 2014; Tom Wijsman <TomWij@gentoo.org>
+  +files/netty-codec-4.0.19-build.xml, +metadata.xml,
+  +netty-codec-4.0.19.ebuild:
+  New ebuild for dev-java/netty-codec, async event-driven framework for rapid
+  development of high performance network applications; requested by Arfrever,
+  needed for new Jython versions.

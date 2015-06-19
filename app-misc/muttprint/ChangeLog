@@ -1,0 +1,275 @@
+# ChangeLog for app-misc/muttprint
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/muttprint/ChangeLog,v 1.71 2015/06/09 11:48:36 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  23 Feb 2015; Agostino Sarubbo <ago@gentoo.org> muttprint-0.73-r3.ebuild:
+  Stable for ppc64, wrt bug #537944
+
+  21 Feb 2015; Agostino Sarubbo <ago@gentoo.org> muttprint-0.73-r3.ebuild:
+  Stable for ppc, wrt bug #537944
+
+  01 Feb 2015; Agostino Sarubbo <ago@gentoo.org> muttprint-0.73-r3.ebuild:
+  Stable for x86, wrt bug #537944
+
+  31 Jan 2015; Agostino Sarubbo <ago@gentoo.org> muttprint-0.73-r3.ebuild:
+  Stable for amd64, wrt bug #537944
+
+*muttprint-0.73-r3 (19 Dec 2014)
+
+  19 Dec 2014; Chema Alonso <nimiux@gentoo.org> +muttprint-0.73-r3.ebuild,
+  +files/muttprint-0.73-r3-pod-encoding.patch:
+  Fix bug 525152. Thanks to Bernd Raschke
+
+  27 Oct 2014; Agostino Sarubbo <ago@gentoo.org> muttprint-0.73-r2.ebuild:
+  Stable for ppc64, wrt bug #523450
+
+  18 Oct 2014; Agostino Sarubbo <ago@gentoo.org> muttprint-0.73-r2.ebuild:
+  Stable for ppc, wrt bug #523450
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> muttprint-0.73-r2.ebuild:
+  Stable for x86, wrt bug #523450
+
+  09 Oct 2014; Agostino Sarubbo <ago@gentoo.org> muttprint-0.73-r2.ebuild:
+  Stable for amd64, wrt bug #523450
+
+*muttprint-0.73-r2 (19 Aug 2014)
+
+  19 Aug 2014; Chema Alonso <nimiux@gentoo.org> +muttprint-0.73-r2.ebuild,
+  +files/muttprint-0.73-pod-encoding.patch:
+  Fix bug #519606. Thanks to Barry Schwartz and Lars
+
+  28 Sep 2013; Chema Alonso <nimiux@gentoo.org> -muttprint-0.72d-r3.ebuild,
+  -files/muttprint-0.72d-warning.patch, -files/muttprint-CVE-2008-5368.patch,
+  -files/muttprint-ldflags.patch, -files/muttprint-no_html_docs.patch:
+  Drop old
+
+  15 May 2013; Chema Alonso <nimiux@gentoo.org> -muttprint-0.72d-r1.ebuild,
+  -muttprint-0.72d-r2.ebuild, -files/muttprint-rem_sig.patch:
+  Drop old
+
+  21 Aug 2012; Michael Weber <xmw@gentoo.org> muttprint-0.73-r1.ebuild:
+  ppc stable (bug 418607)
+
+  22 Jun 2012; Brent Baude <ranger@gentoo.org> muttprint-0.73-r1.ebuild:
+  Marking muttprint-0.73-r1 ppc64 for bug 418607
+
+  15 Jun 2012; Jeff Horelick <jdhore@gentoo.org> muttprint-0.73-r1.ebuild:
+  marked x86 per bug 418607
+
+  08 Jun 2012; Chema Alonso <nimiux@gentoo.org> muttprint-0.73-r1.ebuild,
+  metadata.xml:
+  Enable in-source build wrt bug #420063. Added missing doc use flag to
+  metadata.
+
+  03 Jun 2012; Agostino Sarubbo <ago@gentoo.org> muttprint-0.73-r1.ebuild:
+  Stable for amd64, wrt bug #418607
+
+*muttprint-0.73-r1 (28 Apr 2012)
+
+  28 Apr 2012; Chema Alonso <nimiux@gentoo.org> +muttprint-0.73-r1.ebuild,
+  files/muttprint-0.73-warning.patch:
+  Bump to 0.73-r1. Added dependency on dev-texlive/texlive-latexextra. Removed
+  warning on fatal error.
+
+*muttprint-0.73 (18 Apr 2012)
+
+  18 Apr 2012; Chema Alonso <nimiux@gentoo.org> +muttprint-0.73.ebuild,
+  +files/muttprint-0.73-manuals.patch, +files/muttprint-0.73-warning.patch,
+  metadata.xml:
+  app-misc/muttprint revision bump to 0.73
+
+  16 Apr 2012; Brent Baude <ranger@gentoo.org> muttprint-0.72d-r3.ebuild:
+  Marking muttprint-0.72d-r3 ppc for bug 394727
+
+  23 Mar 2012; Chema Alonso <nimiux@gentoo.org> metadata.xml:
+  Removed Dane Smith (c1pher) as maintainer (Proxy)
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> muttprint-0.72d-r3.ebuild:
+  Marking muttprint-0.72d-r3 ppc64 for bug 394727
+
+  04 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  muttprint-0.72d-r3.ebuild:
+  x86 stable wrt bug #394727
+
+  17 Dec 2011; Raúl Porcel <armin76@gentoo.org> muttprint-0.72d-r1.ebuild,
+  muttprint-0.72d-r2.ebuild, muttprint-0.72d-r3.ebuild:
+  Drop alpha/ia64 keywords
+
+  14 Dec 2011; Agostino Sarubbo <ago@gentoo.org> muttprint-0.72d-r3.ebuild:
+  Stable for AMD64, wrt bug #394727
+
+*muttprint-0.72d-r3 (05 Nov 2011)
+
+  05 Nov 2011; Dane Smith <c1pher@gentoo.org> +muttprint-0.72d-r3.ebuild:
+  Revbump. Fixed bug 184158. Thanks to Chema Alonso.
+
+  13 Oct 2011; Dane Smith <c1pher@gentoo.org> metadata.xml:
+  Updated maintainer info to reflect new proxy maintainer.
+
+*muttprint-0.72d-r2 (21 May 2011)
+
+  21 May 2011; Markos Chandras <hwoarang@gentoo.org>
+  +muttprint-0.72d-r2.ebuild, +files/muttprint-0.72d-warning.patch:
+  Apply patch from bug #347671. Thanks to Bob Johnson <ke6fis@arrl.net>
+
+  03 Dec 2009; Víctor Ostorga <vostorga@gentoo.org>
+  muttprint-0.72d-r1.ebuild:
+  Fixing documentation path, patch thanks to Thomas Beierlein
+  <tb@forth-ev.de> bug #295315
+
+  10 Nov 2009; Jonathan Callen <abcd@gentoo.org>
+  -files/muttprint-0.72a-platex.patch:
+  Drop unused file
+
+  03 Nov 2009; Víctor Ostorga <vostorga@gentoo.org>
+  muttprint-0.72d-r1.ebuild:
+  Adding dev-texlive/texlive-latexextra as a RDEPEND , bug #290124
+
+  23 Oct 2009; Torsten Veller <tove@gentoo.org> -muttprint-0.72a.ebuild,
+  -muttprint-0.72b.ebuild, -muttprint-0.72d.ebuild:
+  Cleanup
+
+  18 Mar 2009; Brent Baude <ranger@gentoo.org> muttprint-0.72d-r1.ebuild:
+  Marking muttprint-0.72d-r1 ppc for bug 250554
+
+  13 Mar 2009; Raúl Porcel <armin76@gentoo.org> muttprint-0.72d-r1.ebuild:
+  ia64 stable wrt #250554
+
+  11 Mar 2009; Tobias Klausmann <klausman@gentoo.org>
+  muttprint-0.72d-r1.ebuild:
+  Stable on alpha, bug #250554
+
+  11 Mar 2009; Brent Baude <ranger@gentoo.org> muttprint-0.72d-r1.ebuild:
+  Marking muttprint-0.72d-r1 ppc64 for bug 250554
+
+  09 Mar 2009; Markus Meier <maekke@gentoo.org> muttprint-0.72d-r1.ebuild:
+  amd64/x86 stable, bug #250554
+
+*muttprint-0.72d-r1 (09 Mar 2009)
+
+  09 Mar 2009; Torsten Veller <tove@gentoo.org>
+  +files/muttprint-CVE-2008-5368.patch, +files/muttprint-ldflags.patch,
+  +files/muttprint-no_html_docs.patch, +muttprint-0.72d-r1.ebuild:
+  Fixes symlink attack (#250554), sets CC (#243660), CFLAGS (#240078)
+  and installs english docs (#112592).
+  Now maintainer-needed.
+
+  03 Sep 2008; Christian Faulhammer <opfer@gentoo.org>
+  muttprint-0.72a.ebuild, muttprint-0.72b.ebuild, muttprint-0.72d.ebuild:
+  change dependency from virtual/tetex to virtual/latex-base and quote some
+  variables
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Feb 2006; Simon Stelling <blubb@gentoo.org> muttprint-0.72d.ebuild:
+  stable on amd64
+
+  03 Sep 2005; Markus Rothe <corsair@gentoo.org> muttprint-0.72d.ebuild:
+  Stable on ppc64
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  muttprint-0.72d.ebuild:
+  Stable on ppc.
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> muttprint-0.72d.ebuild:
+  stable on ia64
+
+  23 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> muttprint-0.72d.ebuild:
+  Stable on alpha and x86
+
+  04 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/muttprint-rem_sig.patch, muttprint-0.72d.ebuild:
+  patch to make REM_SIG work, wrt #100607
+
+*muttprint-0.72d (19 Jun 2005)
+
+  19 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org> +metadata.xml,
+  +muttprint-0.72d.ebuild:
+  Version bump. Add metadata, take over maintainership
+
+  14 Dec 2004; Markus Rothe <corsair@gentoo.org> muttprint-0.72a.ebuild:
+  Stable on ppc64
+
+*muttprint-0.72b (04 Dec 2004)
+
+  04 Dec 2004; Tom Martin <slarti@gentoo.org> +muttprint-0.72b.ebuild:
+  Version bump, resolving bug 70438.
+
+  01 Nov 2004; Markus Rothe <corsair@gentoo.org>
+
+  muttprint-0.72a.ebuild:
+  Marked ~ppc64; bug #66216
+
+  14 Oct 2004; Aron Griffis <agriffis@gentoo.org> -muttprint-0.71.ebuild,
+  muttprint-0.72a.ebuild:
+  Mark stable everywhere, retire older version. Add dev-perl/File-Which dep
+  #66216
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  muttprint-0.72a.ebuild:
+  Masked muttprint-0.72a.ebuild stable for ppc
+
+  30 Aug 2004; David Holm <dholm@gentoo.org> muttprint-0.72a.ebuild:
+  Added to ~ppc.
+
+*muttprint-0.72a (17 Aug 2004)
+
+  17 Aug 2004; Aron Griffis <agriffis@gentoo.org>
+  +files/muttprint-0.72a-platex.patch, -muttprint-0.62b.ebuild,
+  -muttprint-0.63a.ebuild, -muttprint-0.64.ebuild, muttprint-0.71.ebuild,
+  +muttprint-0.72a.ebuild:
+  Add psutils to RDEPEND #59477. Mark 0.71 stable and trim old versions. Add
+  0.72 with improved ptex support
+
+  19 Jun 2004; <malc@gentoo.org> muttprint-0.71.ebuild:
+  add ~amd64 - fixes bug #54410
+
+  14 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> muttprint-0.62b.ebuild,
+  muttprint-0.63a.ebuild, muttprint-0.64.ebuild:
+  Don't assign default to S; header fix
+
+  09 Jan 2004; Aron Griffis <agriffis@gentoo.org> muttprint-0.71.ebuild:
+  stable on alpha
+
+  20 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> muttprint-0.62b.ebuild,
+  muttprint-0.63a.ebuild, muttprint-0.64.ebuild, muttprint-0.71.ebuild:
+  Changed app-text/tetex to virtual/tetex
+
+  17 Jul 2003; Peter Johanson <latexer@gentoo.org> muttprint-0.71.ebuild:
+  Added a depend on dev-perl/TimeDate. Is used to format time to local time for
+  printing.
+
+  08 Jul 2003; Aron Griffis <agriffis@gentoo.org> muttprint-0.71.ebuild:
+  Add ~alpha to KEYWORDS
+
+  12 Jun 2003; <msterret@gentoo.org> muttprint-0.71.ebuild:
+  add Header
+
+*muttprint-0.71 (27 May 2003)
+
+  27 May 2003; Peter Johanson <latexer@gentoo.org> muttprint-0.71.ebuild:
+  Bump. Bug #20178. Thanks to Ferdy <ferdy@ferdyx.org>
+
+*muttprint-0.64 (19 Apr 2003)
+
+  19 Apr 2003; Peter Johanson <latexer@gentoo.org> muttprint-0.64.ebuild:
+  Version bump. thanks to Christian Dietl <christian@expires.de> bug #18641
+
+*muttprint-0.63a (05 Nov 2002)
+
+  05 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
+
+*muttprint-0.62b (28 Jul 2002)
+
+  14 Sep 2002; Seemant Kulleen <seemant@gentoo.org> muttprint-0.62b.ebuild :
+
+  fixed location of docs installation, thanks to: rladams@kelsey-seybold.com
+  (Russell Adams) in bug #7884
+
+  28 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> muttprint-0.62b.ebuild : 
+  Initial import. Ebuild submitted by huz <marc.reynes@tuxfamily.org>.  

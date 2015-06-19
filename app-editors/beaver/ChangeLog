@@ -1,0 +1,18 @@
+# ChangeLog for app-editors/beaver
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/beaver/ChangeLog,v 1.21 2015/06/09 09:47:49 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  06 May 2014; Jeroen Roovers <jer@gentoo.org> beaver-0.4.1.ebuild:
+  EAPI + defaults.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> beaver-0.4.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*beaver-0.4.1 (15 Oct 2010)
+
+  15 Oct 2010; Samuli Suominen <ssuominen@gentoo.org> +beaver-0.4.1.ebuild,
+  +files/beaver-0.4.1-desktop-file-validate.patch:
+  Initial commit wrt #231532 by Mirko Briemle.

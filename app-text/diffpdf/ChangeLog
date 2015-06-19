@@ -1,0 +1,49 @@
+# ChangeLog for app-text/diffpdf
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/diffpdf/ChangeLog,v 1.9 2015/05/12 21:46:18 reavertm Exp $
+
+*diffpdf-2.1.3 (12 May 2015)
+
+  12 May 2015; Maciej Mrozowski <reavertm@gentoo.org> +diffpdf-2.1.3.ebuild,
+  -diffpdf-1.9.2.ebuild, -diffpdf-2.1.1.ebuild:
+  Version bump (the last version released by upstream), remove all.
+
+  17 Mar 2013; Andreas K. Huettel <dilfridge@gentoo.org> diffpdf-1.9.2.ebuild,
+  diffpdf-2.1.1.ebuild:
+  EAPI=5 and poppler subslot dependencies
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> diffpdf-1.9.2.ebuild,
+  diffpdf-2.1.1.ebuild:
+  Move Qt dependencies to the new category
+
+*diffpdf-2.1.1 (22 Sep 2012)
+
+  22 Sep 2012; Maciej Mrozowski <reavertm@gentoo.org> +diffpdf-2.1.1.ebuild,
+  -diffpdf-1.2.2.ebuild:
+  Version bump, remove all.
+
+*diffpdf-1.9.2 (01 Apr 2012)
+
+  01 Apr 2012; Maciej Mrozowski <reavertm@gentoo.org> +diffpdf-1.9.2.ebuild:
+  Version bump, bug 410233
+
+*diffpdf-1.2.2 (06 Sep 2011)
+
+  06 Sep 2011; Maciej Mrozowski <reavertm@gentoo.org> -diffpdf-1.0.0.ebuild,
+  -diffpdf-1.1.4.ebuild, +diffpdf-1.2.2.ebuild:
+  Version bump, remove old
+
+*diffpdf-1.1.4 (06 Jan 2011)
+
+  06 Jan 2011; Maciej Mrozowski <reavertm@gentoo.org> +diffpdf-1.1.4.ebuild:
+  Version bump, bug 350837
+
+  27 Dec 2010; Maciej Mrozowski <reavertm@gentoo.org> diffpdf-1.0.0.ebuild:
+  Add missing qt4 USE dep poppler, bug 349438. Thanks to Mike Hammill for
+  reporting.
+
+*diffpdf-1.0.0 (19 May 2010)
+
+  19 May 2010; Maciej Mrozowski <reavertm@gentoo.org> +diffpdf-1.0.0.ebuild,
+  +metadata.xml:
+  New ebuild

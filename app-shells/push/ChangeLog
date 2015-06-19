@@ -1,0 +1,95 @@
+# ChangeLog for app-shells/push
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-shells/push/ChangeLog,v 1.26 2015/06/06 07:51:55 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> push-1.5-r1.ebuild,
+  push-1.5.ebuild, push-1.6.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  04 Aug 2014; Mike Frysinger <vapier@gentoo.org> push-1.6.ebuild:
+  Mark arm64/m68k/s390/sh stable.
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org> push-1.6.ebuild:
+  Stable for sparc, wrt bug #495348
+
+  19 Jan 2014; Agostino Sarubbo <ago@gentoo.org> push-1.6.ebuild:
+  Stable for ppc64, wrt bug #495348
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> push-1.6.ebuild:
+  Stable for alpha, wrt bug #495348
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> push-1.6.ebuild:
+  Stable for ia64, wrt bug #495348
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> push-1.6.ebuild:
+  Stable for ppc, wrt bug #495348
+
+  05 Jan 2014; Agostino Sarubbo <ago@gentoo.org> push-1.6.ebuild:
+  Stable for x86, wrt bug #495348
+
+  04 Jan 2014; Chema Alonso <nimiux@gentoo.org> push-1.6.ebuild:
+  Stable for amd64 wrt bug #495348
+
+  29 Dec 2013; Markus Meier <maekke@gentoo.org> push-1.6.ebuild:
+  arm stable, bug #495348
+
+  27 Dec 2013; Sergey Popov <pinkbyte@gentoo.org> push-1.5.ebuild,
+  push-1.5-r1.ebuild:
+  Drop s390/sh/m68k to unstable
+
+  25 Dec 2013; Jeroen Roovers <jer@gentoo.org> push-1.6.ebuild:
+  Stable for HPPA (bug #495348).
+
+*push-1.5 (23 Nov 2013)
+*push-1.6 (23 Nov 2013)
+
+  23 Nov 2013; Ian Stakenvicius <axs@gentoo.org> +push-1.5.ebuild,
+  +push-1.6.ebuild:
+  fixed misunderstanding on previous commit; restored old stable and committed
+  the new ebuild as the proper full version bump
+
+*push-1.5-r1 (22 Nov 2013)
+
+  22 Nov 2013; Ian Stakenvicius <axs@gentoo.org> +push-1.5-r1.ebuild,
+  -push-1.5.ebuild, metadata.xml:
+  updated metadata and upstream distfile, all code unchanged (only README) so
+  committing revbump direct to stable
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  19 Sep 2012; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  update metadata
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> push-1.5.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #427100
+
+  04 Aug 2012; Agostino Sarubbo <ago@gentoo.org> push-1.5.ebuild:
+  Stable for amd64, wrt bug #427100
+
+  25 Jul 2012; Jeroen Roovers <jer@gentoo.org> push-1.5.ebuild:
+  Stable for HPPA (bug #427100).
+
+  23 Jul 2012; Markus Meier <maekke@gentoo.org> push-1.5.ebuild:
+  arm stable, bug #427100
+
+  19 Jul 2012; Anthony G. Basile <blueness@gentoo.org> push-1.5.ebuild:
+  Stable ppc/ppc64, bug #427100
+
+  19 Jul 2012; Johannes Huber <johu@gentoo.org> push-1.5.ebuild:
+  Stable for x86, wrt bug #427100
+
+  22 May 2012; Jeremy Olexa <darkside@gentoo.org> push-1.5.ebuild:
+  add ~amd64-fbsd
+
+  08 May 2012; Jeremy Olexa <darkside@gentoo.org> push-1.5.ebuild:
+  fix header
+
+*push-1.5 (08 May 2012)
+
+  08 May 2012; Jeremy Olexa <darkside@gentoo.org> +push-1.5.ebuild,
+  +metadata.xml:
+  New ebuild by Martin Väth

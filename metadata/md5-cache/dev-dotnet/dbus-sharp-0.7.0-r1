@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare setup
+DEPEND=dev-lang/mono sys-apps/dbus virtual/pkgconfig
+DESCRIPTION=D-Bus for .NET
+EAPI=4
+HOMEPAGE=https://github.com/mono/dbus-sharp
+KEYWORDS=amd64 ppc x86
+LICENSE=MIT
+RDEPEND=dev-lang/mono sys-apps/dbus
+SLOT=0
+SRC_URI=mirror://github/mono/dbus-sharp/dbus-sharp-0.7.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	mono	203a4295c06155d318bdff9c6b2d5e1c	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=bf4fe3e400df88f78b7a8b3ba4b96bdb

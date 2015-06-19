@@ -1,0 +1,81 @@
+--- config.mk
++++ config.mk
+@@ -3,15 +3,17 @@
+ SONAME = libacpi.so.${SOVERSION}
+ 
+ # customize below to fit your system
+-PREFIX = /usr/local
++PREFIX = /usr
+ MANPREFIX = ${PREFIX}/share/man
++DOCDIR = ${PREFIX}/share/doc/libacpi-${VERSION}
++LIBDIR = ${PREFIX}/lib
+ 
+ # flags
+ SOFLAGS = -shared -Wl,-soname,${SONAME}
+-CFLAGS += -fPIC -g --pedantic -Wall -Wextra
++CFLAGS += -fPIC -pedantic -Wall -Wextra
+ 
+ # Compiler and linker
+-CC = cc
++CC ?= cc
+ LD = ${CC}
+-AR = ar cr
+-RANLIB = ranlib
++AR ?= ar
++RANLIB ?= ranlib
+--- Makefile
++++ Makefile
+@@ -25,30 +25,29 @@
+ 
+ libacpi.a: ${OBJ}
+ 	@echo AR $@
+-	@${AR} $@ ${OBJ}
++	@${AR} cr $@ ${OBJ}
+ 	@${RANLIB} $@
+ 
+ libacpi.so: ${OBJ}
+ 	@echo LD $@
+-	@${LD} ${SOFLAGS} -o $@.${SOVERSION} ${OBJ}
++	@${LD} ${LDFLAGS} ${SOFLAGS} -o $@.${SOVERSION} ${OBJ}
+ 
+ test-libacpi: ${OBJ_test}
+ 	@echo LD $@
+-	@${LD} -o $@ ${OBJ_test} ${LDFLAGS}
+-	@strip $@
++	@${LD} ${LDFLAGS} -o $@ ${OBJ_test}
+ 
+ install: all
+ 	@echo installing header to ${DESTDIR}${PREFIX}/include
+ 	@mkdir -p ${DESTDIR}${PREFIX}/include
+ 	@cp -f libacpi.h ${DESTDIR}${PREFIX}/include
+ 	@chmod 644 ${DESTDIR}${PREFIX}/include/libacpi.h
+-	@echo installing library to ${DESTDIR}${PREFIX}/lib
+-	@mkdir -p ${DESTDIR}${PREFIX}/lib
+-	@cp -f libacpi.a ${DESTDIR}${PREFIX}/lib
+-	@chmod 644 ${DESTDIR}${PREFIX}/lib/libacpi.a
+-	@cp -f ${SONAME} ${DESTDIR}${PREFIX}/lib/
+-	@chmod 644 ${DESTDIR}${PREFIX}/lib/${SONAME}
+-	@ln -s ${SONAME} ${DESTDIR}${PREFIX}/lib/libacpi.so
++	@echo installing library to ${DESTDIR}${LIBDIR}
++	@mkdir -p ${DESTDIR}${LIBDIR}
++	@cp -f libacpi.a ${DESTDIR}${LIBDIR}
++	@chmod 644 ${DESTDIR}${LIBDIR}/libacpi.a
++	@cp -f ${SONAME} ${DESTDIR}${LIBDIR}/
++	@chmod 644 ${DESTDIR}${LIBDIR}/${SONAME}
++	@ln -s ${SONAME} ${DESTDIR}${LIBDIR}/libacpi.so
+ 	@echo installing test-libacpi to ${DESTDIR}${PREFIX}/bin
+ 	@mkdir -p ${DESTDIR}${PREFIX}/bin
+ 	@cp -f test-libacpi ${DESTDIR}${PREFIX}/bin
+@@ -56,9 +55,9 @@
+ 	@echo installing manual page to ${DESTDIR}${MANPREFIX}/man3
+ 	@mkdir -p ${DESTDIR}${MANPREFIX}/man3
+ 	@cp libacpi.3 ${DESTDIR}${MANPREFIX}/man3
+-	@echo installing documentation and misc files to ${DESTDIR}${PREFIX}/share/doc/libacpi
+-	@mkdir -p ${DESTDIR}${PREFIX}/share/doc/libacpi
+-	@cp -r AUTHORS CHANGES README LICENSE doc ${DESTDIR}${PREFIX}/share/doc/libacpi
++	@echo installing documentation and misc files to ${DESTDIR}${DOCDIR}
++	@mkdir -p ${DESTDIR}${DOCDIR}
++	@cp -r AUTHORS CHANGES README doc/* ${DESTDIR}${DOCDIR}
+ 	@echo finished installation
+ 
+ uninstall:

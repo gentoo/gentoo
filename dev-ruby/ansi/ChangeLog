@@ -1,0 +1,26 @@
+# ChangeLog for dev-ruby/ansi
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ansi/ChangeLog,v 1.6 2015/04/04 10:27:35 graaff Exp $
+
+  04 Apr 2015; Hans de Graaff <graaff@gentoo.org> -ansi-1.4.3.ebuild:
+  Cleanup.
+
+*ansi-1.5.0 (19 Jan 2015)
+
+  19 Jan 2015; Hans de Graaff <graaff@gentoo.org> +ansi-1.5.0.ebuild:
+  Version bump.
+
+  19 Aug 2014; Raúl Porcel <armin76@gentoo.org> ansi-1.4.3.ebuild:
+  add ~alpha/~arm/~ia64/~sparc/~x86, bug #519170
+
+  12 Aug 2014; Anthony G. Basile <blueness@gentoo.org> ansi-1.4.3.ebuild:
+  Keyword ~ppc and ~ppc64, bug #519170
+
+  11 Aug 2014; Jeroen Roovers <jer@gentoo.org> ansi-1.4.3.ebuild:
+  Marked ~hppa (bug #519170).
+
+*ansi-1.4.3 (15 May 2014)
+
+  15 May 2014; Peter Wilmott <p8952@gentoo.org> +ansi-1.4.3.ebuild,
+  +metadata.xml:
+  New ebuild for ansi. Dependency for hashery.

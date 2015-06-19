@@ -1,0 +1,32 @@
+# ChangeLog for dev-haskell/shakespeare-i18n
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/shakespeare-i18n/ChangeLog,v 1.6 2014/07/25 09:16:22 slyfox Exp $
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  shakespeare-i18n-1.0.0.3.ebuild, shakespeare-i18n-1.0.0.4.ebuild,
+  shakespeare-i18n-1.0.0.5.ebuild:
+  Drop trailing '.' from description.
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*shakespeare-i18n-1.1.0 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org> +shakespeare-i18n-1.1.0.ebuild:
+  Bump shakespeare-i18n to 1.1.0
+
+*shakespeare-i18n-1.0.0.5 (10 Dec 2013)
+
+  10 Dec 2013; Mark Wright <gienah@gentoo.org> +shakespeare-i18n-1.0.0.5.ebuild:
+  Bump shakespeare-i18n to 1.0.0.5
+
+*shakespeare-i18n-1.0.0.4 (13 Sep 2013)
+
+  13 Sep 2013; Mark Wright <gienah@gentoo.org> +shakespeare-i18n-1.0.0.4.ebuild:
+  Bump shakespeare-i18n to 1.0.0.4
+
+*shakespeare-i18n-1.0.0.3 (26 Aug 2013)
+
+  26 Aug 2013; Alexander Vershilov <qnikst@gentoo.org> +metadata.xml,
+  +shakespeare-i18n-1.0.0.3.ebuild:
+  dev-haskell/shakespeare-i18n: initial layout

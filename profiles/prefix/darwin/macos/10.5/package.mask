@@ -1,0 +1,17 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/darwin/macos/10.5/package.mask,v 1.5 2013/12/25 13:41:39 grobian Exp $
+
+# Fabian Groffen <grobian@gentoo.org> (25 Dec 2013)
+# Needs 64-bits Intel, only tested on 10.6, might work on 10.5
+dev-java/oracle-jdk-bin
+
+# Fabian Groffen <grobian@gentoo.org> (03 May 2012)
+# Needs 10.6 or up
+>=dev-lang/ghc-7
+
+# Fabian Groffen <grobian@gentoo.org> (06 Nov 2011)
+# These releases got a rewrite that is no longer compatible with
+# CoreAudio as available on Tiger and Leopard
+>=media-libs/mediastreamer-2.7.3
+

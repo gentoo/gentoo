@@ -1,0 +1,66 @@
+# ChangeLog for media-sound/a2jmidid
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/a2jmidid/ChangeLog,v 1.16 2015/05/13 09:26:10 ago Exp $
+
+  13 May 2015; Agostino Sarubbo <ago@gentoo.org> a2jmidid-8-r1.ebuild:
+  Stable for x86, wrt bug #548560
+
+  12 May 2015; Agostino Sarubbo <ago@gentoo.org> a2jmidid-8-r1.ebuild:
+  Stable for amd64, wrt bug #548560
+
+  04 May 2015; Ian Delaney <idella4@gentoo.org> +files/a2jmidid-link.patch,
+  a2jmidid-8-r1.ebuild:
+  add patch to fix linking issue, fixes bug #518382
+
+*a2jmidid-8-r1 (03 Jan 2015)
+
+  03 Jan 2015; Michał Górny <mgorny@gentoo.org> +a2jmidid-8-r1.ebuild:
+  Convert to python-single-r1.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> a2jmidid-8.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  27 Jun 2013; Alexis Ballier <aballier@gentoo.org> -a2jmidid-4.ebuild,
+  -a2jmidid-5.ebuild, -a2jmidid-6.ebuild:
+  remove old
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> a2jmidid-8.ebuild:
+  Stable for amd64, wrt bug #474258
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> a2jmidid-8.ebuild:
+  Stable for x86, wrt bug #474258
+
+*a2jmidid-8 (20 May 2013)
+
+  20 May 2013; Alexis Ballier <aballier@gentoo.org> +a2jmidid-8.ebuild:
+  version bump, add a dbus useflag by Rodrigo Severo, bug #417701
+
+  20 May 2013; Alexis Ballier <aballier@gentoo.org> a2jmidid-6.ebuild:
+  convert to waf-utils and improve python code, bug #313931 by Arfrever Frehtes
+  Taifersar Arahesis
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> a2jmidid-4.ebuild,
+  a2jmidid-5.ebuild, a2jmidid-6.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*a2jmidid-6 (09 Jan 2010)
+
+  09 Jan 2010; Alexis Ballier <aballier@gentoo.org> +a2jmidid-6.ebuild:
+  version bump
+
+*a2jmidid-5 (17 Jun 2009)
+
+  17 Jun 2009; Alexis Ballier <aballier@gentoo.org> +a2jmidid-5.ebuild:
+  version bump
+
+  25 Jan 2009; Markus Meier <maekke@gentoo.org> a2jmidid-4.ebuild:
+  amd64/x86 stable, bug #255746
+
+*a2jmidid-4 (06 Aug 2008)
+
+  06 Aug 2008; Alexis Ballier <aballier@gentoo.org> +metadata.xml,
+  +a2jmidid-4.ebuild:
+  initial import, thanks to Jouni Rinne.

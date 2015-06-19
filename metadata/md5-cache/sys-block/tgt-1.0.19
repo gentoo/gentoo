@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install setup
+DEPEND=dev-perl/Config-General infiniband? ( sys-infiniband/libibverbs sys-infiniband/librdmacm )
+DESCRIPTION=Linux SCSI target framework (tgt)
+EAPI=4
+HOMEPAGE=http://stgt.sourceforge.net
+IUSE=ibmvio infiniband fcp fcoe
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-perl/Config-General infiniband? ( sys-infiniband/libibverbs sys-infiniband/librdmacm ) sys-apps/sg3_utils
+SLOT=0
+SRC_URI=http://stgt.sourceforge.net/releases/tgt-1.0.19.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=8895476be584bd8133e72e85029effcf

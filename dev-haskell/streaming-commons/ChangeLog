@@ -1,0 +1,32 @@
+# ChangeLog for dev-haskell/streaming-commons
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/streaming-commons/ChangeLog,v 1.6 2015/06/06 17:21:57 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*streaming-commons-0.1.10.0 (04 Apr 2015)
+
+  04 Apr 2015; Mark Wright <gienah@gentoo.org>
+  +streaming-commons-0.1.10.0.ebuild:
+  Bump streaming-commons to 0.1.10.0
+
+*streaming-commons-0.1.8 (22 Dec 2014)
+
+  22 Dec 2014; Mark Wright <gienah@gentoo.org> +streaming-commons-0.1.8.ebuild:
+  Bump streaming-commons to 0.1.8
+
+*streaming-commons-0.1.7.3 (14 Dec 2014)
+
+  14 Dec 2014; Mark Wright <gienah@gentoo.org>
+  +streaming-commons-0.1.7.3.ebuild:
+  Bump streaming-commons to 0.1.7.3
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*streaming-commons-0.1.3 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org> +metadata.xml,
+  +streaming-commons-0.1.3.ebuild:
+  Add streaming-commons

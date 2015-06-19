@@ -1,0 +1,126 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/tgt/files/tgtd-1.0.24.initd,v 1.1 2012/03/14 10:07:11 xarthisius Exp $
+
+TGTD_CONFIG=/etc/tgt/targets.conf
+
+TASK=$1
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting target framework daemon"
+	ebegin "Starting ${SVCNAME}"
+	# Start tgtd first.
+	start-stop-daemon --start --quiet \
+		--name tgtd \
+		--exec /usr/sbin/tgtd -- \
+		${TGTD_OPTS}
+	RETVAL=$?
+	if [ "$RETVAL" -ne 0 ] ; then
+	    echo "Could not start tgtd (is tgtd already running?)"
+	    exit 1
+	fi
+	# We need to wait for 1 second before do anything with tgtd
+	sleep 1
+	# Put tgtd into "offline" state until all the targets are configured.
+	# We don't want initiators to (re)connect and fail the connection
+	# if it's not ready
+	tgtadm --op update --mode sys --name State -v offline
+	# Configure the targets.
+	tgt-admin --update ALL -c $TGTD_CONFIG
+	# Put tgtd into "ready" state.
+	tgtadm --op update --mode sys --name State -v ready
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	ebegin "Stopping target framework daemon"
+	# start-stop-daemon --stop --exec /usr/sbin/tgtd --quiet
+	if [ "$RUNLEVEL" == 0 -o "$RUNLEVEL" == 6 ] ; then
+	    forcedstop
+	fi
+	# Remove all targets. It only removes targets which are not in use.
+	tgt-admin --update ALL -c /dev/null &>/dev/null
+	# tgtd will exit if all targets were removed
+	tgtadm --op delete --mode system &>/dev/null
+	RETVAL=$?
+	if [ "$RETVAL" -eq 107 ] ; then
+	    echo "tgtd is not running"
+	    if [ "$TASK" != "restart" ] ; then
+			exit 1
+		fi
+	elif [ "$RETVAL" -ne 0 ] ; then
+	    echo "Some initiators are still connected - could not stop tgtd"
+	    exit 2
+	fi
+	# echo -n
+	eend $?
+}
+
+forcedstop() {
+	# NOTE: Forced shutdown of the iscsi target may cause data corruption
+	# for initiators that are connected.
+	echo "Force-stopping target framework daemon"
+	# Offline everything first. May be needed if we're rebooting, but
+	# expect the initiators to reconnect cleanly when we boot again
+	# (i.e. we don't want them to reconnect to a tgtd which is still
+	# working, but the target is gone).
+	tgtadm --op update --mode sys --name State -v offline &>/dev/null
+	RETVAL=$?
+	if [ "$RETVAL" -eq 107 ] ; then
+	    echo "tgtd is not running"
+	    if [ "$TASK" != "restart" ] ; then
+			exit 1
+		fi
+	else
+	    tgt-admin --offline ALL
+	    # Remove all targets, even if they are still in use.
+	    tgt-admin --update ALL -c /dev/null -f
+	    # It will shut down tgtd only after all targets were removed.
+	    tgtadm --op delete --mode system
+	    RETVAL=$?
+	    if [ "$RETVAL" -ne 0 ] ; then
+			echo "Failed to shutdown tgtd"
+			exit 1
+	    fi
+	fi
+	echo -n
+}
+
+reload() {
+	echo "Updating target framework daemon configuration"
+	# Update configuration for targets. Only targets which
+	# are not in use will be updated.
+	tgt-admin --update ALL -c $TGTD_CONFIG &>/dev/null
+	RETVAL=$?
+	if [ "$RETVAL" -eq 107 ] ; then
+	    echo "tgtd is not running"
+	    exit 1
+	fi
+}
+
+forcedreload() {
+	echo "Force-updating target framework daemon configuration"
+	# Update configuration for targets, even those in use.
+	tgt-admin --update ALL -f -c $TGTD_CONFIG &>/dev/null
+	RETVAL=$?
+	if [ "$RETVAL" -eq 107 ] ; then
+	    echo "tgtd is not running"
+	    exit 1
+	fi
+}
+
+status() {
+	# Don't name this script "tgtd"...
+	TGTD_PROC=$(ps -C tgtd | grep -c tgtd)
+	if [ "$TGTD_PROC" -eq 2 ] ; then
+	    echo "tgtd is running. Run 'tgt-admin -s' to see detailed target info."
+	else
+	    echo "tgtd is NOT running."
+	fi
+}

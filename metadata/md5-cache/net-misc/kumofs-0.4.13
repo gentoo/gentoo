@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=>=dev-db/tokyocabinet-1.4.10 >=dev-libs/msgpack-0.3.1 dev-libs/openssl >=dev-ruby/msgpack-0.3.1 >=dev-lang/ruby-1.8.6 sys-libs/zlib
+DESCRIPTION=a scalable and highly available distributed key-value store
+EAPI=3
+HOMEPAGE=http://github.com/etolabo/kumofs
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=dev-db/tokyocabinet-1.4.10 >=dev-libs/msgpack-0.3.1 dev-libs/openssl >=dev-ruby/msgpack-0.3.1 >=dev-lang/ruby-1.8.6 sys-libs/zlib
+SLOT=0
+SRC_URI=mirror://github/etolabo/kumofs/kumofs-0.4.13.tar.gz
+_md5_=0aee91cbaeceb86c92ec567a6ca31cf3

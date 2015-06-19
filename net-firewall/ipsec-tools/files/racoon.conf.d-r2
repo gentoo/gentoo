@@ -1,0 +1,30 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/ipsec-tools/files/racoon.conf.d-r2,v 1.1 2014/01/30 22:53:45 blueness Exp $
+
+# Config file for /etc/init.d/racoon
+
+# See the man page or run `racoon --help` for valid command-line options
+# RACOON_OPTS="-d"
+
+RACOON_CONF="/etc/racoon/racoon.conf"
+RACOON_PSK_FILE="/etc/racoon/psk.txt"
+
+# The amount of time in ms for start-stop-daemon to wait before a timeout
+# Racoon can sometimes be slow.  We'll wait 1 sec.  Bug #435398.
+
+RACOON_WAIT="1000"
+
+# The setkey config file.  Don't name it ipsec.conf as this clashes
+# with strongswan.  We'll follow debian's naming.  Bug #436144.
+
+SETKEY_CONF="/etc/ipsec-tools.conf"
+
+# Comment or remove the following if you don't want the policy tables
+# to be flushed when racoon is stopped.
+
+RACOON_RESET_TABLES="true"
+
+# If you need to set custom options to the setkey command when loading rules, use this
+# more info in the setkey mangage (example below sets kernel mode instead of RFC mode):
+#SETKEY_OPTS="-k"

@@ -1,0 +1,56 @@
+# ChangeLog for dev-perl/Bio-ASN1-EntrezGene
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Bio-ASN1-EntrezGene/ChangeLog,v 1.12 2014/08/24 02:53:40 axs Exp $
+
+*Bio-ASN1-EntrezGene-1.91.0-r1 (24 Aug 2014)
+
+  24 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Bio-ASN1-EntrezGene-1.91.0-r1.ebuild, -Bio-ASN1-EntrezGene-1.91.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 May 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #199047
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -Bio-ASN1-EntrezGene-1.091.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org>
+  Bio-ASN1-EntrezGene-1.91.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Bio-ASN1-EntrezGene-1.91.0 (01 Sep 2011)
+
+  01 Sep 2011; Torsten Veller <tove@gentoo.org>
+  +Bio-ASN1-EntrezGene-1.91.0.ebuild:
+  Change version scheme
+
+  11 Jun 2009; Markus Meier <maekke@gentoo.org>
+  Bio-ASN1-EntrezGene-1.091.ebuild:
+  amd64 stable, bug #269583
+
+  02 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  Bio-ASN1-EntrezGene-1.091.ebuild:
+  stable x86, bug 269583
+
+  25 May 2009; Andrey Kislyuk <weaver@gentoo.org>
+  Bio-ASN1-EntrezGene-1.091.ebuild:
+  Should be in DEPEND as well
+
+  24 May 2009; Andrey Kislyuk <weaver@gentoo.org>
+  Bio-ASN1-EntrezGene-1.091.ebuild:
+  Moved Bioperl to RDEPEND per bug 269583
+
+  20 May 2009; Andrey Kislyuk <weaver@gentoo.org>
+  Bio-ASN1-EntrezGene-1.091.ebuild:
+  Added bioperl to PDEPEND
+
+*Bio-ASN1-EntrezGene-1.091 (16 Mar 2009)
+
+  16 Mar 2009; Andrey Kislyuk <weaver@gentoo.org> +metadata.xml,
+  +Bio-ASN1-EntrezGene-1.091.ebuild:
+  New package, dependency for sci-biology/bioperl. Ebuild written by me.

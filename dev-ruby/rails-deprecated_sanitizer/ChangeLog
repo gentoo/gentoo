@@ -1,0 +1,24 @@
+# ChangeLog for dev-ruby/rails-deprecated_sanitizer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rails-deprecated_sanitizer/ChangeLog,v 1.5 2015/06/07 19:10:20 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  08 Jan 2015; Markus Meier <maekke@gentoo.org>
+  rails-deprecated_sanitizer-1.0.3.ebuild:
+  add ~arm, bug #534186
+
+  01 Jan 2015; Agostino Sarubbo <ago@gentoo.org>
+  rails-deprecated_sanitizer-1.0.3.ebuild:
+  Stable for ~ppc64, wrt bug #534186
+
+  01 Jan 2015; Agostino Sarubbo <ago@gentoo.org>
+  rails-deprecated_sanitizer-1.0.3.ebuild:
+  Stable for ~ppc, wrt bug #534186
+
+*rails-deprecated_sanitizer-1.0.3 (01 Jan 2015)
+
+  01 Jan 2015; Hans de Graaff <graaff@gentoo.org>
+  +rails-deprecated_sanitizer-1.0.3.ebuild, +metadata.xml:
+  Initial import. New dependency for Rails 4.2.

@@ -1,0 +1,554 @@
+http://bugs.gentoo.org/206939
+
+http://pkgs.fedoraproject.org/cgit/cdrkit.git/tree/cdrkit-1.1.11-paranoiacdda.patch modified because
+we install headers to $includedir instead of $includedir/cdda
+
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -1,3 +1,3 @@
+ PROJECT (cdrkit C)
+-SUBDIRS(include genisoimage wodim libedc libhfs_iso libparanoia icedax libusal librols libunls readom netscsid 3rd-party/dirsplit)
++SUBDIRS(include genisoimage wodim libedc libhfs_iso icedax libusal librols libunls readom netscsid 3rd-party/dirsplit)
+ 
+--- icedax/CMakeLists.txt
++++ icedax/CMakeLists.txt
+@@ -1,8 +1,9 @@
+ PROJECT (icedax C)
+-INCLUDE_DIRECTORIES(../include ../wodim ../libparanoia ${CMAKE_BINARY_DIR} ${CMAKE_BINARY_DIR}/include)
++INCLUDE_DIRECTORIES(../include ../wodim ${CMAKE_BINARY_DIR} ${CMAKE_BINARY_DIR}/include)
+ include(../include/AddScgBits.cmake)
+ include(../include/AddSchilyBits.cmake)
+ include(../include/AddNetworkBits.cmake)
++INCLUDE (CheckLibraryExists) 
+ 
+ FIND_FILE (HAVE_SYS_SOUNDCARD_H sys/soundcard.h)
+ IF(HAVE_SYS_SOUNDCARD_H)
+@@ -18,12 +19,20 @@ IF(HAVE_LIBOSSAUDIO)
+    LIST(APPEND EXTRA_LIBS "ossaudio")
+ ENDIF(HAVE_LIBOSSAUDIO)
+ 
+-LIST(APPEND EXTRA_LIBS  paranoia)
++CHECK_INCLUDE_FILES(cdda_interface.h HAVE_CDDA_INTERFACE_H)
++CHECK_LIBRARY_EXISTS (cdda_paranoia paranoia_init "" HAVE_LIBPARANOIA)
++IF(HAVE_CDDA_INTERFACE_H AND HAVE_LIBPARANOIA)
++   LIST(APPEND EXTRA_LIBS cdda_paranoia cdda_interface)
++ELSE(HAVE_CDDA_INTERFACE_H AND HAVE_LIBPARANOIA)
++   MESSAGE(FATAL_ERROR "You need cdparanoia library installed")
++ENDIF(HAVE_CDDA_INTERFACE_H AND HAVE_LIBPARANOIA)
++	
++LIST(APPEND EXTRA_LIBS)
+ IF (WIN32)
+ 	LIST(APPEND EXTRA_LIBS winmm)
+ ENDIF (WIN32)
+ 
+-LINK_DIRECTORIES(../librols ../libusal  ../libparanoia)
++LINK_DIRECTORIES(../librols ../libusal)
+ ADD_EXECUTABLE (icedax aifc.c aiff.c base64.c icedax.c interface.c ioctl.c raw.c resample.c ringbuff.c scsi_cmds.c semshm.c setuid.c sha_func.c sndconfig.c sun.c toc.c wav.c)
+ TARGET_LINK_LIBRARIES(icedax wodimstuff ${EXTRA_LIBS})
+ SET_TARGET_PROPERTIES(icedax PROPERTIES  SKIP_BUILD_RPATH TRUE)
+--- icedax/global.h
++++ icedax/global.h
+@@ -17,7 +17,8 @@
+ #include "md5.h"
+ #endif
+ #ifdef	USE_PARANOIA
+-#include "cdda_paranoia.h"
++#include <cdda_interface.h>
++#include <cdda_paranoia.h>
+ #endif
+ 
+ typedef struct index_list
+@@ -102,10 +103,10 @@ typedef struct global
+ 
+ 	struct paranoia_parms_t
+ 	{
+-	        Ucbit	disable_paranoia:1;
+-	        Ucbit	disable_extra_paranoia:1;
+-	        Ucbit	disable_scratch_detect:1;
+-	        Ucbit	disable_scratch_repair:1;
++	        char	disable_paranoia:1;
++	        char	disable_extra_paranoia:1;
++	        char	disable_scratch_detect:1;
++	        char	disable_scratch_repair:1;
+ 		int	retries;
+ 		int	overlap;
+ 		int	mindynoverlap;
+--- icedax/icedax.c
++++ icedax/icedax.c
+@@ -120,6 +120,10 @@
+ #ifdef	USE_LAME
+ #include "mp3.h"	/* mp3 file handling */
+ #endif
++#ifdef	USE_PARANOIA
++#include <cdda_interface.h>
++#include <cdda_paranoia.h>
++#endif
+ #include "interface.h"  /* low level cdrom interfacing */
+ #include "icedax.h"
+ #include "resample.h"
+@@ -128,9 +132,6 @@
+ #include "ringbuff.h"
+ #include "global.h"
+ #include "exitcodes.h"
+-#ifdef	USE_PARANOIA
+-#include "cdda_paranoia.h"
+-#endif
+ #include "defaults.h"
+ 
+ static void RestrictPlaybackRate(long newrate);
+@@ -800,7 +801,7 @@ static void init_globals()
+   global.useroverlap = -1;      /* amount of overlapping sectors user override */
+   global.need_hostorder = 0;	/* processing needs samples in host endianess */
+   global.in_lendian = -1;	/* input endianess from SetupSCSI() */
+-  global.outputendianess = NONE; /* user specified output endianess */
++  global.outputendianess = NONE_EN; /* user specified output endianess */
+   global.findminmax  =  0;	/* flag find extrem amplitudes */
+ #ifdef HAVE_LIMITS_H
+   global.maxamp[0] = INT_MIN;	/* maximum amplitude */
+@@ -2418,7 +2419,7 @@ Rate   Divider      Rate   Divider
+   if (bulk == -1) bulk = 0;
+ 
+   global.need_big_endian = global.audio_out->need_big_endian;
+-  if (global.outputendianess != NONE)
++  if (global.outputendianess != NONE_EN)
+     global.need_big_endian = global.outputendianess == BIG;
+ 
+   if (global.no_file) global.fname_base[0] = '\0';
+@@ -2602,7 +2603,7 @@ Rate   Divider      Rate   Divider
+     fputs( ", soundcard", stderr );
+ #endif
+ #if defined USE_PARANOIA
+-    fputs( ", libparanoia", stderr );
++    fputs( ", libcdda_paranoia", stderr );
+ #endif
+     fputs( " support\n", stderr );
+   }
+@@ -2892,8 +2893,28 @@ Rate   Divider      Rate   Divider
+ #ifdef	USE_PARANOIA
+ 	if (global.paranoia_selected) {
+ 		long paranoia_mode;
++		cdrom_drive *tmpdrive;
++		usal_close(get_scsi_p());
+ 
+-		global.cdp = paranoia_init(get_scsi_p(), global.nsectors);
++		tmpdrive = cdda_identify(global.dev_name, 0, NULL);
++		if (!tmpdrive)
++		{
++			fputs("Can't identify disc\n", stderr);
++                	return 1;
++		}
++
++		if(global.nsectors)
++		{
++		  tmpdrive->nsectors = global.nsectors;
++		  tmpdrive->bigbuff = global.nsectors * CD_FRAMESIZE_RAW;
++		}
++		if (cdda_open(tmpdrive) != 0)
++		{
++		  fputs("Can't open disc\n", stderr);
++		  cdda_close(tmpdrive);
++		  return 1;
++		}
++		global.cdp = paranoia_init(tmpdrive);
+ 
+ 		if (global.paranoia_parms.overlap >= 0) {
+ 			int	overlap = global.paranoia_parms.overlap;
+@@ -2902,17 +2923,7 @@ Rate   Divider      Rate   Divider
+ 				overlap = global.nsectors - 1;
+ 			paranoia_overlapset(global.cdp, overlap);
+ 		}
+-		/*
+-		 * Default to a  minimum of dynamic overlapping == 0.5 sectors.
+-		 * If we don't do this, we get the default from libparanoia
+-		 * which is approx. 0.1.
+-		 */
+-		if (global.paranoia_parms.mindynoverlap < 0)
+-			paranoia_dynoverlapset(global.cdp, CD_FRAMEWORDS/2, -1);
+-		paranoia_dynoverlapset(global.cdp,
+-			global.paranoia_parms.mindynoverlap * CD_FRAMEWORDS,
+-			global.paranoia_parms.maxdynoverlap * CD_FRAMEWORDS);
+-
++	
+ 		paranoia_mode = PARANOIA_MODE_FULL ^ PARANOIA_MODE_NEVERSKIP;
+ 
+ 		if (global.paranoia_parms.disable_paranoia) {
+--- icedax/icedax.h
++++ icedax/icedax.h
+@@ -41,7 +41,7 @@
+ 
+ /* Endianess */
+ #define GUESS (-2)
+-#define NONE (-1)
++#define NONE_EN (-1)
+ #define LITTLE 0
+ #define BIG 1
+ 
+--- icedax/interface.c
++++ icedax/interface.c
+@@ -116,7 +116,7 @@ int		(*Play_at)(SCSI *usalp, unsigned in
+ int		(*StopPlay)(SCSI *usalp);
+ void		(*trash_cache)(UINT4 *p, unsigned lSector, unsigned SectorBurstVal);
+ 
+-#if	defined	USE_PARANOIA
++#if	0 //defined	USE_PARANOIA
+ long cdda_read(void *d, void *buffer, long beginsector, long sectors);
+ 
+ long cdda_read(void *d, void *buffer, long beginsector, long sectors)
+--- icedax/toc.c
++++ icedax/toc.c
+@@ -379,8 +379,7 @@ static void emit_cddb_form(char *fname_b
+ static void emit_cdindex_form(char *fname_baseval);
+ #endif
+ 
+-
+-typedef struct TOC {	/* structure of table of contents (cdrom) */
++typedef struct TOC_t {	/* structure of table of contents (cdrom) */
+ 	unsigned char reserved1;
+ 	unsigned char bFlags;
+ 	unsigned char bTrack;
+@@ -391,8 +390,7 @@ typedef struct TOC {	/* structure of tab
+ 	int frms;
+ 	unsigned char ISRC[16];
+ 	int	SCMS;
+-} TOC;
+-
++} TOC_t;
+ 
+ /* Flags contains two fields:
+     bits 7-4 (ADR)
+@@ -432,7 +430,7 @@ struct iterator {
+ 	int index;
+ 	int startindex;
+ 	void        (*reset)(struct iterator *this);
+-	struct TOC *(*getNextTrack)(struct iterator *this);
++	struct TOC_t *(*getNextTrack)(struct iterator *this);
+ 	int         (*hasNextTrack)(struct iterator *this);
+ };
+ 
+@@ -518,7 +516,7 @@ unsigned FixupTOC(unsigned no_tracks)
+ 		    InitIterator(&i, 1);
+ 
+ 	    while (i.hasNextTrack(&i)) {
+-		    struct TOC *p = i.getNextTrack(&i);
++		    struct TOC_t *p = i.getNextTrack(&i);
+ 		    if (IS__AUDIO(p)) count_audio_tracks++;
+ 	    }
+ 
+@@ -733,7 +731,7 @@ static void emit_cddb_form(char *fname_b
+   fprintf( cddb_form, "# Track frame offsets:\n#\n");
+ 
+   while (i.hasNextTrack(&i)) {
+-	  struct TOC *p = i.getNextTrack(&i);
++	  struct TOC_t *p = i.getNextTrack(&i);
+ 	  if (GETTRACK(p) == CDROM_LEADOUT) break;
+ 	  fprintf( cddb_form,
+ 		   "# %lu\n", 150 + Get_AudioStartSector(GETTRACK(p)));
+@@ -765,7 +763,7 @@ static void emit_cddb_form(char *fname_b
+ 
+   i.reset(&i);
+   while (i.hasNextTrack(&i)) {
+-	  struct TOC *p = i.getNextTrack(&i);
++	  struct TOC_t *p = i.getNextTrack(&i);
+ 	  int ii;
+ 
+ 	  ii = GETTRACK(p);
+@@ -788,7 +786,7 @@ static void emit_cddb_form(char *fname_b
+ 
+   i.reset(&i);
+   while (i.hasNextTrack(&i)) {
+-	  struct TOC *p = i.getNextTrack(&i);
++	  struct TOC_t *p = i.getNextTrack(&i);
+ 	  int ii;
+ 
+ 	  ii = GETTRACK(p);
+@@ -1495,7 +1493,7 @@ static int IsSingleArtist(void)
+ 	InitIterator(&i, 1);
+ 
+ 	while (i.hasNextTrack(&i)) {
+-		struct TOC *p = i.getNextTrack(&i);
++		struct TOC_t *p = i.getNextTrack(&i);
+ 		int ii;
+ 
+ 		if (IS__DATA(p) || GETTRACK(p) == CDROM_LEADOUT) continue;
+@@ -1681,7 +1679,7 @@ static void emit_cdindex_form(char *fnam
+ 	 global.creator ? ascii2html(global.creator) : "");
+ 
+     while (i.hasNextTrack(&i)) {
+-	    struct TOC *p = i.getNextTrack(&i);
++	    struct TOC_t *p = i.getNextTrack(&i);
+ 	    int ii = GETTRACK(p);
+ 
+ 	    if (ii == CDROM_LEADOUT) break;
+@@ -1703,7 +1701,7 @@ static void emit_cdindex_form(char *fnam
+     fprintf( cdindex_form, "   <MultipleArtistCD>\n");
+ 
+     while (i.hasNextTrack(&i)) {
+-	    struct TOC *p = i.getNextTrack(&i);
++	    struct TOC_t *p = i.getNextTrack(&i);
+ 	    int ii = GETTRACK(p);
+ 
+ 	    if (ii == CDROM_LEADOUT) break;
+@@ -1942,9 +1940,9 @@ static void DisplayToc_with_gui(unsigned
+ 
+ 	if ((global.verbose & (SHOW_TOC | SHOW_STARTPOSITIONS | SHOW_SUMMARY | SHOW_TITLES)) != 0
+ 	    && i.hasNextTrack(&i)) {
+-		TOC *o = i.getNextTrack(&i);
++		TOC_t *o = i.getNextTrack(&i);
+ 		while (i.hasNextTrack(&i)) {
+-			TOC *p = i.getNextTrack(&i);
++			TOC_t *p = i.getNextTrack(&i);
+ 			int from;
+ 			from = GETTRACK(o);
+ 
+@@ -2072,9 +2070,9 @@ static void DisplayToc_no_gui(unsigned l
+ 	count_audio_trks = 0;
+ 
+ 	if (i.hasNextTrack(&i)) {
+-		TOC *o = i.getNextTrack(&i);
++		TOC_t *o = i.getNextTrack(&i);
+ 		while (i.hasNextTrack(&i)) {
+-			TOC *p = i.getNextTrack(&i);
++			TOC_t *p = i.getNextTrack(&i);
+ 			int from;
+ 			from = GETTRACK(o);
+ 
+@@ -2131,10 +2129,10 @@ static void DisplayToc_no_gui(unsigned l
+ 	i.reset(&i);
+ 	if ((global.verbose & SHOW_TOC) != 0 &&
+ 		i.hasNextTrack(&i)) {
+-		TOC *o = i.getNextTrack(&i);
++		TOC_t *o = i.getNextTrack(&i);
+ 
+ 		for (; i.hasNextTrack(&i);) {
+-			TOC *p = i.getNextTrack(&i);
++			TOC_t *p = i.getNextTrack(&i);
+ 
+ 			if ( GETTRACK(o) <= MAXTRK ) {
+ 				unsigned char brace1, brace2;
+@@ -2189,9 +2187,9 @@ static void DisplayToc_no_gui(unsigned l
+ 		ii = 0;
+ 		i.reset(&i);
+ 		if (i.hasNextTrack(&i)) {
+-			TOC *o = i.getNextTrack(&i);
++			TOC_t *o = i.getNextTrack(&i);
+ 			for ( ; i.hasNextTrack(&i);) {
+-				TOC *p = i.getNextTrack(&i);
++				TOC_t *p = i.getNextTrack(&i);
+ 				fprintf ( stderr,
+ 					  " %2u.(%8u)",
+ 					  GETTRACK(o),
+@@ -2248,7 +2246,7 @@ static void DisplayToc_no_gui(unsigned l
+ 
+ 		i.reset(&i);
+ 		for ( ; i.hasNextTrack(&i);) {
+-			TOC *p = i.getNextTrack(&i);
++			TOC_t *p = i.getNextTrack(&i);
+ 			int jj = GETTRACK(p);
+ 
+ 			if ( global.tracktitle[jj] != NULL ) {
+@@ -2260,7 +2258,7 @@ static void DisplayToc_no_gui(unsigned l
+ 		
+ 		i.reset(&i);
+ 		for ( ; i.hasNextTrack(&i); ) {
+-			TOC *p = i.getNextTrack(&i);
++			TOC_t *p = i.getNextTrack(&i);
+ 			int jj;
+ 
+ 			if (IS__DATA(p))
+@@ -2720,7 +2718,7 @@ void Read_MCN_ISRC(void)
+ 		InitIterator(&i, 1);
+ 
+ 		while (i.hasNextTrack(&i)) {
+-			struct TOC *p = i.getNextTrack(&i);
++			struct TOC_t *p = i.getNextTrack(&i);
+ 			unsigned ii = GETTRACK(p);
+ 			
+ 			if (ii == CDROM_LEADOUT) break;
+@@ -3155,7 +3153,7 @@ unsigned ScanIndices(unsigned track, uns
+ 
+ 
+   while (i.hasNextTrack(&i)) {
+-	  struct TOC *p = i.getNextTrack(&i);
++	  struct TOC_t *p = i.getNextTrack(&i);
+ 	  unsigned ii = GETTRACK(p);
+ 
+ 	  if ( ii < starttrack || IS__DATA(p) )
+@@ -3322,7 +3320,7 @@ unsigned char *Get_MCN(void)
+ }
+ 
+ 
+-static TOC g_toc [MAXTRK+1]; /* hidden track + 100 regular tracks */
++static TOC_t g_toc [MAXTRK+1]; /* hidden track + 100 regular tracks */
+ 
+ /*#define IS_AUDIO(i) (!(g_toc[i].bFlags & 0x40))*/
+ 
+@@ -3397,10 +3395,10 @@ static int patch_cd_extra(unsigned track
+ 
+ static int restrict_tracks_illleadout(void)
+ {
+-	struct TOC *o = &g_toc[cdtracks+1];
++	struct TOC_t *o = &g_toc[cdtracks+1];
+ 	int i;
+ 	for (i = cdtracks; i >= 0; i--) {
+-		struct TOC *p = &g_toc[i];
++		struct TOC_t *p = &g_toc[i];
+ 		if (GETSTART(o) > GETSTART(p)) break;
+ 	}
+ 	patch_cd_extra(i+1, GETSTART(o));
+@@ -3523,7 +3521,7 @@ static void it_reset(struct iterator *th
+ 
+ 
+ static int it_hasNextTrack(struct iterator *this);
+-static struct TOC *it_getNextTrack(struct iterator *this);
++static struct TOC_t *it_getNextTrack(struct iterator *this);
+ 
+ static int it_hasNextTrack(struct iterator *this)
+ {
+@@ -3532,7 +3530,7 @@ static int it_hasNextTrack(struct iterat
+ 
+ 
+ 
+-static struct TOC *it_getNextTrack(struct iterator *this)
++static struct TOC_t *it_getNextTrack(struct iterator *this)
+ {
+ 	/* if ( (*this->hasNextTrack)(this) == 0 ) return NULL; */
+ 	if ( this->index > (int)cdtracks+1 ) return NULL;
+@@ -3583,7 +3581,7 @@ long Get_AudioStartSector(unsigned long
+ 	if (p_track == cdtracks + 1) p_track = CDROM_LEADOUT;
+ 
+ 	while (i.hasNextTrack(&i)) {
+-		TOC *p = i.getNextTrack(&i);
++		TOC_t *p = i.getNextTrack(&i);
+ 
+ 		if (GETTRACK(p) == p_track) {
+ 			if (IS__DATA(p)) {
+@@ -3613,7 +3611,7 @@ long Get_StartSector(unsigned long p_tra
+ 	if (p_track == cdtracks + 1) p_track = CDROM_LEADOUT;
+ 
+ 	while (i.hasNextTrack(&i)) {
+-		TOC *p = i.getNextTrack(&i);
++		TOC_t *p = i.getNextTrack(&i);
+ 
+ 		if (GETTRACK(p) == p_track) {
+ 			return GETSTART(p);
+@@ -3637,7 +3635,7 @@ long Get_EndSector(unsigned long p_track
+ 	if (p_track == cdtracks + 1) p_track = CDROM_LEADOUT;
+ 
+ 	while (i.hasNextTrack(&i)) {
+-		TOC *p = i.getNextTrack(&i);
++		TOC_t *p = i.getNextTrack(&i);
+ 		if (GETTRACK(p) == p_track) {
+ 			p = i.getNextTrack(&i);
+ 			if (p == NULL) {
+@@ -3669,7 +3667,7 @@ long FirstAudioTrack(void)
+ 	else i.reset(&i);
+ 
+ 	while (i.hasNextTrack(&i)) {
+-		TOC *p = i.getNextTrack(&i);
++		TOC_t *p = i.getNextTrack(&i);
+ 		unsigned ii = GETTRACK(p);
+ 
+ 		if (ii == CDROM_LEADOUT) break;
+@@ -3687,7 +3685,7 @@ long FirstDataTrack(void)
+ 	else i.reset(&i);
+ 
+ 	while (i.hasNextTrack(&i)) {
+-		TOC *p = i.getNextTrack(&i);
++		TOC_t *p = i.getNextTrack(&i);
+ 		if (IS__DATA(p)) {
+ 			return GETTRACK(p);
+ 		}
+@@ -3708,7 +3706,7 @@ long LastAudioTrack(void)
+ 	else i.reset(&i);
+ 
+ 	while (i.hasNextTrack(&i)) {
+-		TOC *p = i.getNextTrack(&i);
++		TOC_t *p = i.getNextTrack(&i);
+ 		if (IS__AUDIO(p) && (GETTRACK(p) != CDROM_LEADOUT)) {
+ 			j = GETTRACK(p);
+ 		}
+@@ -3730,7 +3728,7 @@ long Get_LastSectorOnCd(unsigned long p_
+ 	if (p_track == cdtracks + 1) p_track = CDROM_LEADOUT;
+ 
+ 	while (i.hasNextTrack(&i)) {
+-		TOC *p = i.getNextTrack(&i);
++		TOC_t *p = i.getNextTrack(&i);
+ 
+ 		if (GETTRACK(p) < p_track)
+ 			continue;
+@@ -3749,9 +3747,9 @@ int Get_Track(unsigned long sector)
+ 	else i.reset(&i);
+ 
+ 	if (i.hasNextTrack(&i)) {
+-		TOC *o = i.getNextTrack(&i);
++		TOC_t *o = i.getNextTrack(&i);
+ 		while (i.hasNextTrack(&i)) {
+-			TOC *p = i.getNextTrack(&i);
++			TOC_t *p = i.getNextTrack(&i);
+ 			if ((GETSTART(o) <= sector) && (GETSTART(p) > sector)) {
+ 				if (IS__DATA(o)) {
+ 					return -1;
+@@ -3772,7 +3770,7 @@ int CheckTrackrange(unsigned long from,
+ 	else i.reset(&i);
+ 
+ 	while (i.hasNextTrack(&i)) {
+-		TOC *p = i.getNextTrack(&i);
++		TOC_t *p = i.getNextTrack(&i);
+ 
+ 		if (GETTRACK(p) < from)
+ 			continue;
+@@ -3788,54 +3786,3 @@ int CheckTrackrange(unsigned long from,
+ 	return 0;
+ }
+ 
+-#ifdef	USE_PARANOIA
+-long cdda_disc_firstsector(void *d);
+-
+-long cdda_disc_firstsector(void *d)
+-{
+-	return Get_StartSector(FirstAudioTrack());
+-}
+-
+-int cdda_tracks(void *d);
+-
+-int cdda_tracks(void *d)
+-{
+-	return LastAudioTrack() - FirstAudioTrack() +1;
+-}
+-
+-int cdda_track_audiop(void *d, int track);
+-
+-int cdda_track_audiop(void *d, int track)
+-{
+-	return Get_Datatrack(track) == 0;
+-}
+-
+-long cdda_track_firstsector(void *d, int track);
+-
+-long cdda_track_firstsector(void *d, int track)
+-{
+-	return Get_AudioStartSector(track);
+-}
+-
+-long cdda_track_lastsector(void *d, int track);
+-
+-long cdda_track_lastsector(void *d, int track)
+-{
+-	return Get_EndSector(track);
+-}
+-
+-long cdda_disc_lastsector(void *d);
+-
+-long cdda_disc_lastsector(void *d)
+-{
+-	return Get_LastSectorOnCd(cdtracks) - 1;
+-}
+-
+-int cdda_sector_gettrack(void *d,long sector);
+-
+-int cdda_sector_gettrack(void *d, long sector)
+-{
+-	return Get_Track(sector);
+-}
+-
+-#endif

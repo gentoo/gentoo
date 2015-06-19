@@ -1,0 +1,38 @@
+# ChangeLog for dev-ruby/http_parser_rb
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/http_parser_rb/ChangeLog,v 1.9 2015/06/07 17:59:42 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  20 Mar 2015; Hans de Graaff <graaff@gentoo.org>
+  http_parser_rb-0.6.0-r1.ebuild:
+  Add ruby22.
+
+  20 Feb 2015; Agostino Sarubbo <ago@gentoo.org> http_parser_rb-0.6.0.ebuild:
+  Stable for x86, wrt bug #540254
+
+  20 Feb 2015; Agostino Sarubbo <ago@gentoo.org> http_parser_rb-0.6.0.ebuild:
+  Stable for amd64, wrt bug #540254
+
+*http_parser_rb-0.6.0-r1 (20 Feb 2015)
+
+  20 Feb 2015; Hans de Graaff <graaff@gentoo.org> http_parser_rb-0.6.0.ebuild,
+  +http_parser_rb-0.6.0-r1.ebuild:
+  Create stable candidate.
+
+  19 Dec 2014; Agostino Sarubbo <ago@gentoo.org> http_parser_rb-0.6.0.ebuild:
+  Add ~x86, wrt bug #511176
+
+  15 Aug 2014; Anthony G. Basile <blueness@gentoo.org>
+  http_parser_rb-0.6.0.ebuild:
+  Keyword ~ppc ~ppc64, bug #511424
+
+  22 Apr 2014; Hans de Graaff <graaff@gentoo.org> http_parser_rb-0.6.0.ebuild:
+  Add ruby21.
+
+*http_parser_rb-0.6.0 (21 Feb 2014)
+
+  21 Feb 2014; Hans de Graaff <graaff@gentoo.org> +http_parser_rb-0.6.0.ebuild,
+  +metadata.xml:
+  Initial import. New dependency for dev-ruby/twitter.

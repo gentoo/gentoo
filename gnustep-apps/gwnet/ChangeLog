@@ -1,0 +1,85 @@
+# ChangeLog for gnustep-apps/gwnet
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/gwnet/ChangeLog,v 1.15 2007/11/16 15:30:52 beandog Exp $
+
+  16 Nov 2007; Steve Dibb <beandog@gentoo.org> gwnet-0.1.0.8.2.ebuild:
+  amd64 stable, bug 195990
+
+  08 Nov 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  -gwnet-0.1.0.7.1.ebuild:
+  Remove old version
+
+  27 Oct 2007; nixnut <nixnut@gentoo.org> gwnet-0.1.0.8.2.ebuild:
+  Stable on ppc wrt bug 195990
+
+  17 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  gwnet-0.1.0.8.2.ebuild:
+  stable x86, bug 195990
+
+*gwnet-0.1.0.8.2 (11 Sep 2007)
+
+  11 Sep 2007; Bernard Cafarelli <voyageur@gentoo.org>
+  -gwnet-0.1.0.7.0.ebuild, +gwnet-0.1.0.8.2.ebuild:
+  Version bump to latest gworkspace including this package
+
+  22 Aug 2007; Christoph Mende <angelos@gentoo.org> gwnet-0.1.0.7.1.ebuild:
+  Added ~amd64 wrt bug #170433
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  06 Jun 2005; Armando Di Cianno <fafhrd@gentoo.org> gwnet-0.1.0.7.1.ebuild:
+  Stabilization for GNUstep GWorkspace related ebuilds
+
+*gwnet-0.1.0.7.1 (15 Apr 2005)
+
+  15 Apr 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -gwnet-0.1_pre20050106.ebuild, +gwnet-0.1.0.7.1.ebuild:
+  General bumps of all GWorkspace related ebuilds
+
+*gwnet-0.1.0.7.0 (17 Mar 2005)
+
+  17 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  +gwnet-0.1.0.7.0.ebuild, -gwnet-0.1_pre20041203.ebuild:
+  ebuild updates for GNUstep base, libs, and apps across the board; proper
+  versions (to be stabilized, in due time) added where apropos, cvs-pull
+  versions updated where needed
+
+*gwnet-0.1.0.7.0 (17 Mar 2005)
+
+  17 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  +gwnet-0.1.0.7.0.ebuild, -gwnet-0.1_pre20041203.ebuild:
+  ebuild updates for GNUstep base, libs, and apps across the board; proper
+  versions (to be stabilized, in due time) added where apropos, cvs-pull
+  versions updated where needed
+
+*gwnet-0.1_pre20050106 (10 Jan 2005)
+
+  10 Jan 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -gwnet-0.1_pre20040928.ebuild, +gwnet-0.1_pre20050106.ebuild:
+  cvs snapshot version bumps; cleaned out old cvs versioned ebuilds; fixed
+  date spec on ebuild headers as repoman was complaining
+
+*gwnet-0.1_pre20041203 (04 Dec 2004)
+
+  04 Dec 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +gwnet-0.1_pre20041203.ebuild:
+  General version bump
+
+  11 Nov 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  gwnet-0.1_pre20040928.ebuild:
+  Mass Update: gnustep.eclass revamped to allow configurable root install;
+  gnustep-base/libs/apps updated to utilize new gnustep.eclass (only versions
+  bumped where files would change); some KEYWORDS were accidentally dropped
+  between version bumps of packages -- this has been resolved; windowmaker
+  correctly supports gnustep now
+
+  17 Oct 2004; David Holm <dholm@gentoo.org> gwnet-0.1_pre20040928.ebuild:
+  Added to ~ppc.
+
+*gwnet-0.1_pre20040928 (05 Oct 2004)
+
+  05 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org> +metadata.xml,
+  +gwnet-0.1_pre20040928.ebuild:
+  Original package added; keyworded for ~x86
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>maintainer-needed@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		bookmarksync is a tool used for synchronizing different bookmark files
+		and types. It preserves current bookmark structures and sorts in new
+		ones correctly in existing directorys or create new one if necessary.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">booksync</remote-id>
+	</upstream>
+</pkgmetadata>

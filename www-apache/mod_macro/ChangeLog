@@ -1,0 +1,85 @@
+# ChangeLog for www-apache/mod_macro
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_macro/ChangeLog,v 1.22 2014/08/10 20:16:52 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> mod_macro-1.1.10.ebuild,
+  mod_macro-1.2.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> -mod_macro-1.1.11.ebuild,
+  metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+*mod_macro-1.2.1 (20 Apr 2012)
+
+  20 Apr 2012; Patrick Lauer <patrick@gentoo.org> +mod_macro-1.2.1.ebuild:
+  Bump for #411553
+
+*mod_macro-1.1.11 (14 Oct 2011)
+
+  14 Oct 2011; Steve Dibb <beandog@gentoo.org> +mod_macro-1.1.11.ebuild:
+  Version bump, bug 362309
+
+  24 Mar 2009; Benedikt Böhm <hollow@gentoo.org> +files/00_example.conf,
+  files/27_mod_macro.conf, mod_macro-1.1.10.ebuild:
+  add support for macros.d/
+
+  22 Mar 2008; Benedikt Böhm <hollow@gentoo.org> mod_macro-1.1.10.ebuild:
+  amd64 stable wrt #208556
+
+  07 Feb 2008; Benedikt Böhm <hollow@gentoo.org> -mod_macro-1.1.6.ebuild,
+  -mod_macro-1.1.8.ebuild:
+  remove outdated versions
+
+  03 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  mod_macro-1.1.10.ebuild:
+  stable x86, bug 208556
+
+  31 Jan 2008; Benedikt Böhm <hollow@gentoo.org> files/27_mod_macro.conf,
+  metadata.xml:
+  update metadata; cleanup
+
+*mod_macro-1.1.10 (30 Dec 2007)
+
+  30 Dec 2007; Benedikt Böhm <hollow@gentoo.org> +mod_macro-1.1.10.ebuild:
+  version bump, #203761
+
+  13 Jun 2007; Luca Longinotti <chtekk@gentoo.org> -mod_macro-1.1.2.ebuild:
+  Remove Apache1.
+
+  18 May 2007; Luca Longinotti <chtekk@gentoo.org> mod_macro-1.1.8.ebuild:
+  Use eclass depends for this.
+
+*mod_macro-1.1.8 (18 May 2007)
+
+  18 May 2007; Christian Heim <phreak@gentoo.org> +mod_macro-1.1.8.ebuild:
+  Version bump, adding an explicit DEPEND/RDEPEND on net-www/apache-2.2*.
+
+  15 Jan 2007; Luca Longinotti <chtekk@gentoo.org> metadata.xml,
+  mod_macro-1.1.2.ebuild, mod_macro-1.1.6.ebuild:
+  Cleanup.
+
+  29 Nov 2006; Sven Wegener <swegener@gentoo.org> mod_macro-1.1.2.ebuild,
+  mod_macro-1.1.6.ebuild:
+  Add ~amd64 keyword.
+
+  18 Sep 2005; Michael Stewart <vericgar@gentoo.org> mod_macro-1.1.6.ebuild:
+  Stable on x86
+
+*mod_macro-1.1.2 (02 Mar 2005)
+
+  02 Mar 2005; Benedikt Boehm <hollow@gentoo.org> +mod_macro-1.1.2.ebuild:
+  added apache 1.3 support + default config
+
+  25 Feb 2005; Benedikt Boehm <hollow@gentoo.org> mod_macro-1.1.6.ebuild:
+  added MOD_DEFINE
+
+  17 Feb 2005; Benedikt Boehm <hollow@gentoo.org> mod_macro-1.1.6.ebuild:
+  cleanup
+
+*mod_macro-1.1.6 (10 Jan 2005)
+
+  10 Jan 2005; Benedikt Boehm <hollow@gentoo.org> +files/27_mod_macro.conf,
+  +mod_macro-1.1.6.ebuild:
+  Apache herd package refresh (New ebuild)

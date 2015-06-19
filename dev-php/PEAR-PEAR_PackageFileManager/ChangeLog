@@ -1,0 +1,70 @@
+# ChangeLog for dev-php/PEAR-PEAR_PackageFileManager
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-PEAR_PackageFileManager/ChangeLog,v 1.9 2015/04/15 01:31:39 grknight Exp $
+
+  15 Apr 2015; Brian Evans <grknight@gentoo.org>
+  PEAR-PEAR_PackageFileManager-1.7.0.ebuild:
+  Fix Copyright
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-PEAR_PackageFileManager-1.6.3.ebuild,
+  PEAR-PEAR_PackageFileManager-1.7.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  01 Jul 2012; Matti Bickel <mabi@gentoo.org>
+  PEAR-PEAR_PackageFileManager-1.6.3.ebuild,
+  PEAR-PEAR_PackageFileManager-1.7.0.ebuild:
+  move to EAPI4 to get rid of depend.php
+
+*PEAR-PEAR_PackageFileManager-1.7.0 (16 Feb 2010)
+
+  16 Feb 2010; Steve Dibb <beandog@gentoo.org>
+  +PEAR-PEAR_PackageFileManager-1.7.0.ebuild:
+  Version bump
+
+  17 Mar 2008; <jokey@gentoo.org> PEAR-PEAR_PackageFileManager-1.6.3.ebuild:
+  Version bump from project overlay
+
+  07 Mar 2008; Jakub Moc <jakub@gentoo.org>
+  PEAR-PEAR_PackageFileManager-1.6.3.ebuild:
+  Check for simplexml support in PHP wrt bug #209515 and PEAR bug #13098
+
+  06 Dec 2007; Markus Ullmann <jokey@gentoo.org>
+  -PEAR-PEAR_PackageFileManager-1.6.1.ebuild,
+  -PEAR-PEAR_PackageFileManager-1.6.2.ebuild,
+  PEAR-PEAR_PackageFileManager-1.6.3.ebuild:
+  LICENSE fix from project overlay
+
+  02 Dec 2007; Jakub Moc <jakub@gentoo.org>
+  PEAR-PEAR_PackageFileManager-1.6.3.ebuild:
+  Fix LICENSE
+
+*PEAR-PEAR_PackageFileManager-1.6.3 (29 Nov 2007)
+
+  29 Nov 2007; Markus Ullmann <jokey@gentoo.org>
+  +PEAR-PEAR_PackageFileManager-1.6.3.ebuild:
+  Version bump from project overlay
+
+  22 Nov 2007; Jakub Moc <jakub@gentoo.org> +metadata.xml,
+  +PEAR-PEAR_PackageFileManager-1.6.3.ebuild:
+  Version bump
+
+*PEAR-PEAR_PackageFileManager-1.6.2 (08 Nov 2007)
+
+  08 Nov 2007; Markus Ullmann <jokey@gentoo.org>
+  +PEAR-PEAR_PackageFileManager-1.6.2.ebuild:
+  Version bump from project overlay
+
+  28 Oct 2007; Jakub Moc <jakub@gentoo.org>
+  +PEAR-PEAR_PackageFileManager-1.6.2.ebuild:
+  Version bump
+
+*PEAR-PEAR_PackageFileManager-1.6.1 (30 Aug 2007)
+
+  30 Aug 2007; Markus Ullmann <jokey@gentoo.org>
+  +PEAR-PEAR_PackageFileManager-1.6.1.ebuild:
+  Port from project overlay
+
+  17 Aug 2007; Jakub Moc <jakub@gentoo.org> +metadata.xml,
+  +PEAR-PEAR_PackageFileManager-1.6.1.ebuild:
+  New ebuild

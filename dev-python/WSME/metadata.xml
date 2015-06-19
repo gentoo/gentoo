@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>openstack</herd>
+  <maintainer>
+    <email>prometheanfire@gentoo.org</email>
+    <name>Matthew Thode</name>
+  </maintainer>
+  <longdescription lang="en">
+	Simplify the writing of REST APIs, and extend them with additional protocols.
+	</longdescription>
+  <upstream>
+    <remote-id type="pypi">WSME</remote-id>
+  </upstream>
+</pkgmetadata>

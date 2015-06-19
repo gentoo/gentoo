@@ -1,0 +1,10 @@
+[Unit]
+Description=Very Secure FTP Daemon
+
+[Service]
+Type=simple
+# Note: Do not use ExecStartPre=/usr/libexec/vsftpd-checkconfig.sh, as it
+# requires one of the listen options to be enabled.
+ExecStart=/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf -obackground=NO -olisten=NO -olisten_ipv6=NO
+StandardInput=socket
+SuccessExitStatus=2

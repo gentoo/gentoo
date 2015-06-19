@@ -1,0 +1,63 @@
+# ChangeLog for media-gfx/pngtools
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/pngtools/ChangeLog,v 1.14 2011/10/21 16:44:17 ssuominen Exp $
+
+  21 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> -pngtools-0.4.ebuild:
+  old
+
+  21 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> pngtools-0.4-r2.ebuild:
+  x86 stable wrt #387461
+
+  18 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> pngtools-0.4-r2.ebuild:
+  amd64 stable wrt #387461
+
+  18 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org> pngtools-0.4-r2.ebuild:
+  ppc stable wrt #387461
+
+*pngtools-0.4-r2 (16 Sep 2011)
+
+  16 Sep 2011; Robin H. Johnson <robbat2@gentoo.org> -pngtools-0.4-r1.ebuild,
+  +pngtools-0.4-r2.ebuild, files/pngtools-0.4-libpng15-fixes.patch:
+  Bug #378169 again, missed on more case with libpng15, revbump to ensure all
+  users get the rebuilt version.
+
+*pngtools-0.4-r1 (15 Sep 2011)
+
+  15 Sep 2011; Robin H. Johnson <robbat2@gentoo.org> +pngtools-0.4-r1.ebuild,
+  +files/pngtools-0.4-libpng15-fixes.patch:
+  Bug #378169: fixes for libpng15.
+
+  08 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> pngtools-0.4.ebuild,
+  +files/pngtools-0.4-libpng14.patch:
+  Fix building with -Wl,--as-needed and libpng14.
+
+  26 Nov 2009; Markus Meier <maekke@gentoo.org> pngtools-0.4.ebuild:
+  add trailing slash to HOMEPAGE by Mr. Anderson in bug #293205
+
+  09 Nov 2009; Markus Meier <maekke@gentoo.org> pngtools-0.4.ebuild:
+  amd64/x86 stable, bug #286593
+
+  08 Nov 2009; nixnut <nixnut@gentoo.org> pngtools-0.4.ebuild:
+  ppc stable #286593
+
+*pngtools-0.4 (04 Jun 2009)
+
+  04 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +pngtools-0.4.ebuild:
+  Version bump for proper support of 64-bit systems.
+
+  23 Apr 2008; Samuli Suominen <drac@gentoo.org>
+  +files/pngtools-0.3-implicit-declarations.patch, pngtools-0.3.ebuild:
+  Keyword ~amd64. Fix implicit declarations; math.h, string.h, stdlib.h. Use
+  toolchain-funcs to export CC.
+
+  05 Jun 2006; Robin H. Johnson <robbat2@gentoo.org> metadata.xml,
+  pngtools-0.3.ebuild:
+  Add to graphics herd and use -j1 for install, as requested by Halcy0n.
+
+*pngtools-0.3 (03 Jun 2006)
+
+  03 Jun 2006; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +pngtools-0.3.ebuild:
+  Initial commit. Bug #133328, thanks to Gerben Vos <gpvos+gnt@xs4all.nl>.
+

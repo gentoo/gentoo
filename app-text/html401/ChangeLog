@@ -1,0 +1,81 @@
+# ChangeLog for app-text/html401
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/html401/ChangeLog,v 1.22 2013/07/21 10:04:55 pacho Exp $
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/sgml-herd-has-no-maintainers-
+  again-td259655.html
+
+  28 Mar 2012; Agostino Sarubbo <ago@gentoo.org> html401-19991224-r2.ebuild:
+  Stable for amd64, wrt bug #276400
+
+  30 Sep 2010; Theo Chatzimichos <tampakrap@gentoo.org>
+  html401-19991224-r2.ebuild:
+  Cleanup, improve directory structure, bug 139537, thanks to Roberto
+  Castagnola for patch
+
+  02 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  html401-19991224-r2.ebuild:
+  Transfer Prefix keywords
+
+  20 Jan 2008; Fabian Groffen <grobian@gentoo.org>
+  html401-19991224-r2.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  12 Mar 2007; Leonardo Boshell <leonardop@gentoo.org> metadata.xml:
+  Replacing text-markup herd with the new sgml herd.
+
+  05 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  15 Jan 2006; Marcus D. Hanwell <cryos@gentoo.org>
+  html401-19991224-r2.ebuild:
+  Marked ~amd64, closes bug 117753.
+
+  15 Oct 2005; Fabian Groffen <grobian@gentoo.org>
+  html401-19991224-r2.ebuild:
+  Marked ~ppc-macos (bug #108636)
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  html401-19991224-r2.ebuild:
+  Stable on ppc.
+
+  15 Jul 2005; Leonardo Boshell <leonardop@gentoo.org>
+  html401-19991224-r2.ebuild:
+  Call sgml-catalog_cat_include() from the global scope again (bug #98680).
+
+  09 Jul 2005; Leonardo Boshell <leonardop@gentoo.org>
+  html401-19991224-r2.ebuild:
+  Moved sgml-catalog_cat_include into pkg_setup().
+
+  21 Jun 2005; Leonardo Boshell <leonardop@gentoo.org>
+  html401-19991224-r2.ebuild:
+  Stable on x86.
+
+  30 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  html401-19991224-r2.ebuild:
+  mark ~ppc
+
+*html401-19991224-r2 (06 Nov 2004)
+
+  06 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> +files/html401-decl.diff,
+  +html401-19991224-r2.ebuild, -html401-19991224.ebuild:
+  Added DTDDECL to HTML4.cat; bug #33517.
+
+  16 Apr 2004; Michael McCabe <randy@gentoo.org>
+  html401-19991224-r1.ebuild:
+  added s390 keywords
+
+  08 Jan 2003; Matthew Turk <satai@gentoo.org> :
+  Marked as stable.
+
+*html401-19991224-r1 (30 Dec 2002)
+
+  30 Dec 2002; Matthew Turk <satai@gentoo.org> : 
+  changed to inherit sgml-catalog and better deal with catalogs. 
+
+
+*html401-19991224 (25 Nov 2002)
+
+  25 Nov 2002; Rendhalver [Peter Brown] <rendhalver@xemacs.org> :
+  Initial import.  Ebuild submitted by Rendhalver [Peter Brown] <rendhalver@xemacs.org>.

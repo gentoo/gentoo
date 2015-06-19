@@ -1,0 +1,16 @@
+# ChangeLog for sci-chemistry/xyza2pipe
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/xyza2pipe/ChangeLog,v 1.2 2013/11/28 07:57:06 jlec Exp $
+
+*xyza2pipe-20121001 (28 Nov 2013)
+
+  28 Nov 2013; Justin Lecher <jlec@gentoo.org> +xyza2pipe-20121001.ebuild,
+  +files/xyza2pipe-20121001-gentoo.patch, metadata.xml:
+  Version Bump
+
+*xyza2pipe-20101129 (29 Nov 2010)
+
+  29 Nov 2010; Justin Lecher <jlec@gentoo.org> +files/20101129-gentoo.patch,
+  +xyza2pipe-20101129.ebuild, +metadata.xml:
+  New addition
+

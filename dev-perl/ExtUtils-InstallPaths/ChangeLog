@@ -1,0 +1,28 @@
+# ChangeLog for dev-perl/ExtUtils-InstallPaths
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/ExtUtils-InstallPaths/ChangeLog,v 1.6 2015/05/20 04:48:59 mattst88 Exp $
+
+  20 May 2015; Matt Turner <mattst88@gentoo.org>
+  ExtUtils-InstallPaths-0.10.0.ebuild:
+  Added ~alpha, bug 548352.
+
+  03 May 2015; Jeroen Roovers <jer@gentoo.org>
+  ExtUtils-InstallPaths-0.10.0.ebuild:
+  Mark ~hppa (bug #548352).
+
+  03 May 2015; Jeroen Roovers <jer@gentoo.org>
+  ExtUtils-InstallPaths-0.10.0.ebuild:
+  Mark ~ppc64 (bug #548352).
+
+  09 Nov 2014; Mikle Kolyada <zlogene@gentoo.org>
+  ExtUtils-InstallPaths-0.10.0.ebuild:
+  Add ~ppc keyword wrt bug #518644
+
+  31 Jul 2014; Vladimir Smirnov ExtUtils-InstallPaths-0.10.0.ebuild:
+  Keyword for ~arm.
+
+*ExtUtils-InstallPaths-0.10.0 (31 Jul 2014)
+
+  31 Jul 2014; Vladimir Smirnov +ExtUtils-InstallPaths-0.10.0.ebuild,
+  +metadata.xml:
+  Initial bump. Based on Kent's ebuild from perl-experimental.

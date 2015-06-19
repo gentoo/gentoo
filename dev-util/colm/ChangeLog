@@ -1,0 +1,14 @@
+# ChangeLog for dev-util/colm
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/colm/ChangeLog,v 1.2 2014/05/03 06:00:23 patrick Exp $
+
+*colm-0.12.0 (03 May 2014)
+
+  03 May 2014; Patrick Lauer <patrick@gentoo.org> +colm-0.12.0.ebuild:
+  Bump
+
+*colm-0.11 (05 Jun 2013)
+
+  05 Jun 2013; Patrick Lauer <patrick@gentoo.org> +colm-0.11.ebuild,
+  +metadata.xml:
+  Whitespace

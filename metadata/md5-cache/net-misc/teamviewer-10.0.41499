@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm preinst prepare unpack
+DEPEND=>=sys-apps/sed-4 virtual/pkgconfig
+DESCRIPTION=All-In-One Solution for Remote Access and Support over the Internet
+EAPI=5
+HOMEPAGE=https://www.teamviewer.com
+IUSE=+system-wine
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=TeamViewer
+RDEPEND=system-wine? ( app-emulation/wine[abi_x86_32(-)] ) dev-qt/qtcore:4[abi_x86_32(-)] dev-qt/qtgui:4[abi_x86_32(-)] dev-qt/qtwebkit:4[abi_x86_32(-)] media-libs/alsa-lib[abi_x86_32(-)] x11-libs/libICE[abi_x86_32(-)] x11-libs/libSM[abi_x86_32(-)] x11-libs/libX11[abi_x86_32(-)] x11-libs/libXau[abi_x86_32(-)] x11-libs/libXdamage[abi_x86_32(-)] x11-libs/libXdmcp[abi_x86_32(-)] x11-libs/libXext[abi_x86_32(-)] x11-libs/libXfixes[abi_x86_32(-)] x11-libs/libXrandr[abi_x86_32(-)] x11-libs/libXtst[abi_x86_32(-)]
+RESTRICT=bindist mirror
+SLOT=10
+SRC_URI=https://download.teamviewer.com/download/version_10x/teamviewer_10.0.41499_i386.deb
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	systemd	090342761f573a8280dd5aa6b0345f3b	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=4c37f4c5750f7f7691a81ad74e156741

@@ -1,0 +1,696 @@
+# ChangeLog for dev-perl/DBI
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/DBI/ChangeLog,v 1.191 2015/05/09 19:13:17 dilfridge Exp $
+
+*DBI-1.633.0 (09 May 2015)
+
+  09 May 2015; Andreas K. Huettel <dilfridge@gentoo.org> -DBI-1.623.0.ebuild,
+  +DBI-1.633.0.ebuild:
+  Version bump; remove old
+
+  05 Apr 2015; Mike Frysinger <vapier@gentoo.org> DBI-1.628.0.ebuild:
+  Mark arm64/s390/sh stable.
+
+  02 Nov 2014; Mikle Kolyada <zlogene@gentoo.org> DBI-1.628.0.ebuild:
+  arm stable wrt bug #520928
+
+  02 Nov 2014; Agostino Sarubbo <ago@gentoo.org> DBI-1.628.0.ebuild:
+  Stable for alpha, wrt bug #520928
+
+  01 Nov 2014; Agostino Sarubbo <ago@gentoo.org> DBI-1.628.0.ebuild:
+  Stable for ppc, wrt bug #520928
+
+  30 Oct 2014; Agostino Sarubbo <ago@gentoo.org> DBI-1.628.0.ebuild:
+  Stable for x86, wrt bug #520928
+
+  29 Oct 2014; Agostino Sarubbo <ago@gentoo.org> DBI-1.628.0.ebuild:
+  Stable for sparc, wrt bug #520928
+
+  28 Oct 2014; Agostino Sarubbo <ago@gentoo.org> DBI-1.628.0.ebuild:
+  Stable for ia64, wrt bug #520928
+
+  27 Oct 2014; Agostino Sarubbo <ago@gentoo.org> DBI-1.628.0.ebuild:
+  Stable for ppc64, wrt bug #520928
+
+  27 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> DBI-1.628.0.ebuild:
+  amd64 stable wrt bug #520928
+
+  25 Oct 2014; Jeroen Roovers <jer@gentoo.org> DBI-1.628.0.ebuild:
+  Stable for HPPA (bug #520928).
+
+*DBI-1.631.0 (25 Oct 2014)
+
+  25 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org> +DBI-1.631.0.ebuild:
+  Version bump
+
+  23 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> -DBI-1.618.0.ebuild,
+  -DBI-1.622.0.ebuild:
+  Drop old
+
+  20 Jan 2014; Mike Frysinger <vapier@gentoo.org> DBI-1.623.0.ebuild,
+  DBI-1.628.0.ebuild:
+  Add arm64 love.
+
+*DBI-1.628.0 (14 Aug 2013)
+
+  14 Aug 2013; Patrick Lauer <patrick@gentoo.org> +DBI-1.628.0.ebuild:
+  Bump
+
+  01 Mar 2013; Agostino Sarubbo <ago@gentoo.org> DBI-1.623.0.ebuild:
+  Stable for sh, wrt bug #458138
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org> DBI-1.623.0.ebuild:
+  Stable for sparc, wrt bug #458138
+
+  21 Feb 2013; Agostino Sarubbo <ago@gentoo.org> DBI-1.623.0.ebuild:
+  Stable for ia64, wrt bug #458138
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> DBI-1.623.0.ebuild:
+  Stable for arm, wrt bug #458138
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> DBI-1.623.0.ebuild:
+  Stable for s390, wrt bug #458138
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> DBI-1.623.0.ebuild:
+  Stable for alpha, wrt bug #458138
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org> DBI-1.623.0.ebuild:
+  Stable for hppa, wrt bug #458138
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> DBI-1.623.0.ebuild:
+  Stable for ppc64, wrt bug #458138
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> DBI-1.623.0.ebuild:
+  Stable for ppc, wrt bug #458138
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> DBI-1.623.0.ebuild:
+  Stable for x86, wrt bug #458138
+
+  18 Feb 2013; Agostino Sarubbo <ago@gentoo.org> DBI-1.623.0.ebuild:
+  Stable for amd64, wrt bug #458138
+
+*DBI-1.623.0 (03 Jan 2013)
+
+  03 Jan 2013; Torsten Veller <tove@gentoo.org> +DBI-1.623.0.ebuild,
+  metadata.xml:
+  Version bump
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org> -DBI-1.615.ebuild,
+  -DBI-1.616.0.ebuild, -DBI-1.617.0.ebuild, -DBI-1.619.0.ebuild,
+  -DBI-1.620.0.ebuild, -DBI-1.621.0.ebuild:
+  Cleanup
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org> DBI-1.622.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  17 Jun 2012; Raúl Porcel <armin76@gentoo.org> DBI-1.618.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #413005
+
+*DBI-1.622.0 (07 Jun 2012)
+
+  07 Jun 2012; Torsten Veller <tove@gentoo.org> +DBI-1.622.0.ebuild:
+  Version bump
+
+*DBI-1.621.0 (23 May 2012)
+
+  23 May 2012; Torsten Veller <tove@gentoo.org> +DBI-1.621.0.ebuild:
+  Version bump
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> DBI-1.620.0.ebuild:
+  keyword ~amd64-fbsd
+
+  06 May 2012; Brent Baude <ranger@gentoo.org> DBI-1.618.0.ebuild:
+  Marking DBI-1.618.0 ppc for bug 413005
+
+  26 Apr 2012; Jeroen Roovers <jer@gentoo.org> DBI-1.618.0.ebuild:
+  Stable for HPPA (bug #413005).
+
+  25 Apr 2012; Markus Meier <maekke@gentoo.org> DBI-1.618.0.ebuild:
+  arm stable, bug #413005
+
+*DBI-1.620.0 (25 Apr 2012)
+
+  25 Apr 2012; Torsten Veller <tove@gentoo.org> +DBI-1.620.0.ebuild:
+  Version bump
+
+*DBI-1.619.0 (25 Apr 2012)
+
+  25 Apr 2012; Torsten Veller <tove@gentoo.org> +DBI-1.619.0.ebuild:
+  Version bump
+
+  24 Apr 2012; Jeff Horelick <jdhore@gentoo.org> DBI-1.618.0.ebuild:
+  marked x86 per bug 413005
+
+  22 Apr 2012; Agostino Sarubbo <ago@gentoo.org> DBI-1.618.0.ebuild:
+  Stable for amd64, wrt bug #413005
+
+  03 Mar 2012; Brent Baude <ranger@gentoo.org> DBI-1.618.0.ebuild:
+  Marking DBI-1.618.0 ppc64 for bug 400225
+
+*DBI-1.618.0 (26 Feb 2012)
+
+  26 Feb 2012; Torsten Veller <tove@gentoo.org> +DBI-1.618.0.ebuild:
+  Version bump
+
+  24 Feb 2012; Brent Baude <ranger@gentoo.org> DBI-1.617.0.ebuild:
+  Marking DBI-1.617.0 ppc for bug 400225
+
+*DBI-1.617.0 (31 Jan 2012)
+
+  31 Jan 2012; Torsten Veller <tove@gentoo.org> +DBI-1.617.0.ebuild:
+  Version bump
+
+  28 Sep 2011; Fabian Groffen <grobian@gentoo.org> DBI-1.616.0.ebuild:
+  Marked ~sparc-solaris and ~sparc64-solaris
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -DBI-1.616.ebuild:
+  Cleanup
+
+*DBI-1.616.0 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org> +DBI-1.616.0.ebuild:
+  Change version scheme
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org> DBI-1.615.ebuild,
+  DBI-1.616.ebuild:
+  Drop ~sparc-fbsd KEYWORD
+
+  03 May 2011; Fabian Groffen <grobian@gentoo.org> DBI-1.616.ebuild:
+  Marked ~x64-freebsd
+
+  14 Jan 2011; Torsten Veller <tove@gentoo.org> -DBI-1.609.ebuild,
+  -DBI-1.611.ebuild, -DBI-1.612.ebuild, -DBI-1.613.ebuild:
+  Cleanup
+
+*DBI-1.616 (13 Jan 2011)
+
+  13 Jan 2011; Torsten Veller <tove@gentoo.org> +DBI-1.616.ebuild:
+  Version bump
+
+  13 Jan 2011; Brent Baude <ranger@gentoo.org> DBI-1.615.ebuild:
+  Marking DBI-1.615 ppc stable for bug 341865
+
+  13 Nov 2010; Raúl Porcel <armin76@gentoo.org> DBI-1.615.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #341865
+
+  05 Nov 2010; Samuli Suominen <ssuominen@gentoo.org> DBI-1.615.ebuild:
+  ppc64 stable wrt #341865
+
+  05 Nov 2010; Markos Chandras <hwoarang@gentoo.org> DBI-1.615.ebuild:
+  Stable on amd64 wrt bug #341865
+
+  05 Nov 2010; Markus Meier <maekke@gentoo.org> DBI-1.615.ebuild:
+  arm stable, bug #341865
+
+  05 Nov 2010; Jeroen Roovers <jer@gentoo.org> DBI-1.615.ebuild:
+  Stable for HPPA (bug #341865).
+
+  04 Nov 2010; Christian Faulhammer <fauli@gentoo.org> DBI-1.615.ebuild:
+  x86 stable, bug 341865
+
+*DBI-1.615 (24 Sep 2010)
+
+  24 Sep 2010; Torsten Veller <tove@gentoo.org> +DBI-1.615.ebuild:
+  Version bump
+
+  03 Sep 2010; Christian Faulhammer <fauli@gentoo.org> DBI-1.613.ebuild:
+  add ~x86-freebsd
+
+*DBI-1.613 (20 Aug 2010)
+
+  20 Aug 2010; Robin H. Johnson <robbat2@gentoo.org> +DBI-1.613.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*DBI-1.612 (22 Jul 2010)
+
+  22 Jul 2010; Torsten Veller <tove@gentoo.org> +DBI-1.612.ebuild:
+  Version bump
+
+*DBI-1.611 (30 Apr 2010)
+
+  30 Apr 2010; Torsten Veller <tove@gentoo.org> +DBI-1.611.ebuild:
+  Version bump
+
+  09 Jan 2010; Fabian Groffen <grobian@gentoo.org> DBI-1.609.ebuild:
+  Transfer Prefix keywords
+
+  19 Nov 2009; Torsten Veller <tove@gentoo.org> -DBI-1.50.ebuild,
+  -DBI-1.54.ebuild, -DBI-1.601.ebuild:
+  Cleanup
+
+  14 Nov 2009; Raúl Porcel <armin76@gentoo.org> DBI-1.609.ebuild:
+  ia64/s390/sh/sparc/x86 stable wrt #289461
+
+  31 Oct 2009; Brent Baude <ranger@gentoo.org> DBI-1.609.ebuild:
+  Marking DBI-1.609 ppc64 for bug 289461
+
+  27 Oct 2009; Jeroen Roovers <jer@gentoo.org> DBI-1.609.ebuild:
+  Stable for HPPA (bug #289461).
+
+  24 Oct 2009; Tobias Klausmann <klausman@gentoo.org> DBI-1.609.ebuild:
+  Stable on alpha, bug #289461
+
+  18 Oct 2009; nixnut <nixnut@gentoo.org> DBI-1.609.ebuild:
+  ppc stable #289461
+
+  18 Oct 2009; Dawid Węgliński <cla@gentoo.org> DBI-1.609.ebuild:
+  Stable on amd64 (bug #289461)
+
+  27 Sep 2009; Markus Meier <maekke@gentoo.org> DBI-1.609.ebuild:
+  arm stable, bug #276768
+
+  16 Jul 2009; Torsten Veller <tove@gentoo.org> -DBI-1.51.ebuild,
+  -DBI-1.607.ebuild, -DBI-1.608.ebuild:
+  Cleanup
+
+*DBI-1.609 (08 Jun 2009)
+
+  08 Jun 2009; Torsten Veller <tove@gentoo.org> +DBI-1.609.ebuild:
+  Version bump
+
+*DBI-1.608 (06 May 2009)
+
+  06 May 2009; Torsten Veller <tove@gentoo.org> +DBI-1.608.ebuild:
+  Version bump
+
+  13 Feb 2009; Raúl Porcel <armin76@gentoo.org> DBI-1.607.ebuild:
+  Re-add ~arm/~s390/~sh
+
+*DBI-1.607 (26 Nov 2008)
+
+  26 Nov 2008; Torsten Veller <tove@gentoo.org> +DBI-1.607.ebuild:
+  Version bump (#248767)
+
+  15 Sep 2008; Torsten Veller <tove@gentoo.org> -DBI-1.51-r1.ebuild,
+  -DBI-1.52.ebuild, -DBI-1.53.ebuild, -DBI-1.55.ebuild, -DBI-1.56.ebuild,
+  -DBI-1.57.ebuild, -DBI-1.58.ebuild, -DBI-1.59.ebuild:
+  Cleanup
+
+  07 Jun 2008; Alexis Ballier <aballier@gentoo.org> DBI-1.601.ebuild:
+  keyword ~x86-fbsd
+
+  19 Mar 2008; Jeroen Roovers <jer@gentoo.org> DBI-1.601.ebuild:
+  Stable for HPPA too.
+
+  05 Feb 2008; Markus Rothe <corsair@gentoo.org> DBI-1.601.ebuild:
+  Stable on ppc64
+
+  17 Dec 2007; Samuli Suominen <drac@gentoo.org> DBI-1.601.ebuild:
+  amd64 stable
+
+  06 Dec 2007; Raúl Porcel <armin76@gentoo.org> DBI-1.601.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org> DBI-1.58.ebuild:
+  amd64 stable
+
+*DBI-1.601 (26 Oct 2007)
+
+  26 Oct 2007; Christian Hartmann <ian@gentoo.org> +DBI-1.601.ebuild:
+  Version bump
+
+*DBI-1.59 (19 Oct 2007)
+
+  19 Oct 2007; Christian Hartmann <ian@gentoo.org> +DBI-1.59.ebuild:
+  Version bump
+
+  06 Oct 2007; Tom Gall <tgall@gentoo.org> DBI-1.58.ebuild:
+  stable on ppc64
+
+  09 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> DBI-1.58.ebuild:
+  Stable on sparc
+
+  01 Aug 2007; Joshua Kinard <kumba@gentoo.org> DBI-1.58.ebuild:
+  Stable on mips.
+
+  28 Jul 2007; Raúl Porcel <armin76@gentoo.org> DBI-1.58.ebuild:
+  alpha/ia64/x86 stable
+
+  06 Jul 2007; Tom Gall <tgall@gentoo.org> DBI-1.56.ebuild:
+  stable on ppc64
+
+  03 Jul 2007; Raúl Porcel <armin76@gentoo.org> DBI-1.56.ebuild:
+  alpha/ia64/x86 stable
+
+  30 Jun 2007; Joshua Kinard <kumba@gentoo.org> DBI-1.56.ebuild:
+  Stable on mips.
+
+*DBI-1.58 (29 Jun 2007)
+
+  29 Jun 2007; Michael Cummings <mcummings@gentoo.org> +DBI-1.58.ebuild:
+  Version bump
+
+  25 Jun 2007; Michael Cummings <mcummings@gentoo.org> DBI-1.56.ebuild:
+  Marking sparc stable
+
+*DBI-1.57 (25 Jun 2007)
+
+  25 Jun 2007; Michael Cummings <mcummings@gentoo.org> +DBI-1.57.ebuild:
+  Version bump
+
+  21 Jun 2007; Michael Cummings <mcummings@gentoo.org> Manifest:
+  Marking sparc stable
+
+  21 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org> DBI-1.55.ebuild:
+  Stable on sparc
+
+  15 Jun 2007; Michael Cummings <mcummings@gentoo.org> DBI-1.55.ebuild:
+  Marking amd64 stable
+
+  09 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org> DBI-1.54.ebuild:
+  ppc stable
+
+*DBI-1.56 (24 May 2007)
+
+  24 May 2007; Michael Cummings <mcummings@gentoo.org> +DBI-1.56.ebuild:
+  Version bump
+
+*DBI-1.55 (12 May 2007)
+
+  12 May 2007; Michael Cummings <mcummings@gentoo.org> +DBI-1.55.ebuild:
+  Version bump
+
+  12 May 2007; Joshua Kinard <kumba@gentoo.org> DBI-1.54.ebuild:
+  Stable on mips.
+
+  23 Apr 2007; Raúl Porcel <armin76@gentoo.org> DBI-1.54.ebuild:
+  Add ~ia64 and stable x86
+
+  15 Apr 2007; Markus Rothe <corsair@gentoo.org> DBI-1.53.ebuild:
+  Stable on ppc64
+
+  14 Apr 2007; Michael Cummings <mcummings@gentoo.org> DBI-1.54.ebuild:
+  amd64 stable
+
+  10 Apr 2007; Michael Cummings <mcummings@gentoo.org> DBI-1.54.ebuild:
+  sparc stable
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org> DBI-1.53.ebuild:
+  Stable on x86, bug #169152.
+
+*DBI-1.54 (26 Feb 2007)
+
+  26 Feb 2007; Michael Cummings <mcummings@gentoo.org> +DBI-1.54.ebuild:
+  Bug 168379, version bump
+
+  07 Jan 2007; Michael Cummings <mcummings@gentoo.org> DBI-1.53.ebuild:
+  Marking sparc stable
+
+  07 Jan 2007; Michael Cummings <mcummings@gentoo.org> DBI-1.53.ebuild:
+  Marking amd64 stable
+
+  02 Jan 2007; Michael Cummings <mcummings@gentoo.org> DBI-1.51-r1.ebuild,
+  DBI-1.52.ebuild, DBI-1.53.ebuild:
+  Bug 157684, virtual dep
+
+*DBI-1.53 (06 Nov 2006)
+
+  06 Nov 2006; Michael Cummings <mcummings@gentoo.org> +DBI-1.53.ebuild:
+  Version bump
+
+  01 Nov 2006; Christian Hartmann <ian@gentoo.org> Manifest:
+  Fix broken digest
+
+  01 Nov 2006; Francesco Riosa <vivo@gentoo.org> DBI-1.52.ebuild:
+  added ~sparc-fbsd to satisfy MySQL deps
+
+  23 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> DBI-1.52.ebuild:
+  Stable on hppa
+
+  21 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org> DBI-1.52.ebuild:
+  ppc stable
+
+  09 Oct 2006; Michael Cummings <mcummings@gentoo.org> DBI-1.51-r1.ebuild:
+  Cleaning up; marking amd64, sparc stable
+
+  01 Oct 2006; Jeroen Roovers <jer@gentoo.org> DBI-1.51-r1.ebuild,
+  DBI-1.52.ebuild:
+  Marked ~hppa (bug #143138).
+
+  30 Sep 2006; Michael Cummings <mcummings@gentoo.org> -DBI-1.48.ebuild,
+  DBI-1.52.ebuild:
+  Marking amd64, sparc stable; cleaning out old ebuilds
+
+  05 Sep 2006; Joshua Kinard <kumba@gentoo.org> DBI-1.51-r1.ebuild,
+  DBI-1.52.ebuild:
+  Added ~mips to KEYWORDS.
+
+  29 Aug 2006; Fernando J. Pereda <ferdy@gentoo.org> DBI-1.52.ebuild:
+  Add ~alpha keyword as per bug #143138
+
+*DBI-1.52 (19 Aug 2006)
+
+  19 Aug 2006; Michael Cummings <mcummings@gentoo.org> DBI-1.48.ebuild,
+  DBI-1.50.ebuild, DBI-1.51.ebuild, DBI-1.51-r1.ebuild, +DBI-1.52.ebuild:
+  Version bump
+
+  12 Aug 2006; Markus Rothe <corsair@gentoo.org> DBI-1.51-r1.ebuild:
+  Added ~ppc64; bug #143138
+
+*DBI-1.51-r1 (07 Aug 2006)
+
+  07 Aug 2006; Michael Cummings <mcummings@gentoo.org> +DBI-1.51-r1.ebuild:
+  Bug 143138 - need >= Sys-Syslog-0.17 for tests to pass, in particular test
+  80proxy.
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org> DBI-1.48.ebuild,
+  DBI-1.50.ebuild, DBI-1.51.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  04 Jul 2006; Christian Hartmann <ian@gentoo.org> DBI-1.48.ebuild,
+  DBI-1.50.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+  02 Jul 2006; Michael Cummings <mcummings@gentoo.org> DBI-1.50.ebuild:
+  Marking stable amd64
+
+*DBI-1.51 (20 Jun 2006)
+
+  20 Jun 2006; Christian Hartmann <ian@gentoo.org> +DBI-1.51.ebuild:
+  Version bump; enabled tests
+
+  28 May 2006; Bryan Østergaard <kloeri@gentoo.org> DBI-1.50.ebuild:
+  Stable on alpha.
+
+  22 May 2006; Christian Hartmann <ian@gentoo.org>
+  -files/CAN-2005-0077.patch, -DBI-1.38.ebuild, -DBI-1.38-r1.ebuild,
+  -DBI-1.46.ebuild:
+  Removed vulnerable (GLSA-200501-38) and outdated versions.
+
+  29 Apr 2006; Joshua Kinard <kumba@gentoo.org> DBI-1.50.ebuild:
+  Marked stable on mips.
+
+  22 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> DBI-1.50.ebuild:
+  Add ~x86-fbsd keyword.
+
+  28 Mar 2006; Aron Griffis <agriffis@gentoo.org> DBI-1.50.ebuild:
+  Mark 1.50 stable on ia64
+
+  27 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> DBI-1.50.ebuild:
+  Stable on hppa
+
+  27 Mar 2006; Markus Rothe <corsair@gentoo.org> DBI-1.50.ebuild:
+  Stable on ppc64
+
+  26 Mar 2006; Michael Hanselmann <hansmi@gentoo.org> DBI-1.50.ebuild:
+  Stable on ppc.
+
+  26 Mar 2006; Michael Cummings <mcummings@gentoo.org> DBI-1.50.ebuild:
+  60+ days, marking stable sparc x86
+
+  25 Feb 2006; Joshua Kinard <kumba@gentoo.org> DBI-1.48.ebuild:
+  Marked stable on mips.
+
+  06 Feb 2006; Simon Stelling <blubb@gentoo.org> DBI-1.48.ebuild:
+  stable on amd64
+
+  31 Jan 2006; Aron Griffis <agriffis@gentoo.org> DBI-1.48.ebuild:
+  Mark 1.48 stable on alpha
+
+  21 Jan 2006; Markus Rothe <corsair@gentoo.org> DBI-1.48.ebuild:
+  Stable on ppc64
+
+  15 Jan 2006; Michael Hanselmann <hansmi@gentoo.org> DBI-1.48.ebuild:
+  Stable on ppc.
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org> DBI-1.48.ebuild:
+  marking stable sparc x86
+
+*DBI-1.50 (08 Jan 2006)
+
+  08 Jan 2006; Michael Cummings <mcummings@gentoo.org> +DBI-1.50.ebuild:
+  Bug 115871, version bump
+
+  30 Sep 2005; MATSUU Takuto <matsuu@gentoo.org> DBI-1.46.ebuild:
+  Stable on sh.
+
+  29 Jun 2005; Joshua Kinard <kumba@gentoo.org> DBI-1.46.ebuild:
+  Marked stable on mips.
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> DBI-1.46.ebuild:
+  Stable on ppc64
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> DBI-1.46.ebuild:
+  Stable on amd64.
+
+  30 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> DBI-1.46.ebuild:
+  Stable on ppc.
+
+  26 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> DBI-1.46.ebuild:
+  Stable on alpha.
+
+*DBI-1.48 (25 Apr 2005)
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org> -DBI-1.21-r1.ebuild,
+  -DBI-1.21.ebuild, -DBI-1.30-r1.ebuild, -DBI-1.30.ebuild, -DBI-1.32.ebuild,
+  -DBI-1.37-r1.ebuild, -DBI-1.37.ebuild, DBI-1.46.ebuild, +DBI-1.48.ebuild:
+  cleaning and bumping
+
+  19 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> DBI-1.38-r1.ebuild:
+  Stable on ppc.
+
+*DBI-1.38-r1 (25 Jan 2005)
+
+  25 Jan 2005; Michael Cummings <mcummings@gentoo.org> +DBI-1.37-r1.ebuild,
+  +DBI-1.38-r1.ebuild:
+  Security patch, bug 78634
+
+*DBI-1.46 (24 Jan 2005)
+
+  24 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  -DBI-1.42.ebuild, -DBI-1.43.ebuild, -DBI-1.45.ebuild:
+  Clean up of unused and masked copies
+
+*DBI-1.46 (24 Jan 2005)
+
+  24 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  +files/CAN-2005-0077.patch, +DBI-1.46.ebuild:
+  New version from cpan
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  23 Nov 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed digest.
+
+*DBI-1.45 (17 Oct 2004)
+
+  17 Oct 2004; Michael Cummings <mcummings@gentoo.org> +DBI-1.45.ebuild:
+  New version on cpan
+
+*DBI-1.43 (30 Jul 2004)
+
+  30 Jul 2004; Michael Cummings <mcummings@gentoo.org> +DBI-1.43.ebuild:
+  New version on cpan
+
+  26 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> DBI-1.38.ebuild:
+  Marked stable on amd64.
+
+*DBI-1.42 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org> DBI-1.42.ebuild:
+  new version on cpan
+
+  01 Jun 2004; Tom Gall <tgall@gentoo.org> DBI-1.38.ebuild:
+  stable on ppc64, bug #52701
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org> DBI-1.38.ebuild:
+  Stable on alpha.
+
+  02 Apr 2004; <randy@gentoo.org> DBI-1.38.ebuild:
+  adding s390 to keywords
+
+  26 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org> DBI-1.38.ebuild:
+  stable on hppa
+
+  21 Mar 2004; Joshua Kinard <kumba@gentoo.org> DBI-1.21-r1.ebuild,
+  DBI-1.21.ebuild, DBI-1.30-r1.ebuild, DBI-1.30.ebuild, DBI-1.32.ebuild,
+  DBI-1.37.ebuild, DBI-1.38.ebuild:
+  Marked stable on mips.
+
+  05 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org> DBI-1.38.ebuild:
+  marked stable on sparc
+
+  27 Feb 2004; Michael Cummings <mcummings@gentoo.org> DBI-1.38.ebuild:
+  Masked for 185 days, unmasking for x86
+
+  04 Feb 2004; Joshua Kinard <kumba@gentoo.org> DBI-1.38.ebuild:
+  Added ~mips to KEYWORDS
+
+*DBI-1.38 (26 Aug 2003)
+
+  26 Aug 2003; Michael Cummings <mcummings@gentoo.org> DBI-1.38.ebuild:
+  CPAN Update. Code Fix. http://search.cpan.org/src/TIMB/DBI-1.38/Changes
+
+*DBI-1.30-r1 (08 Jun 2003)
+
+  01 Jul 2003; Guy Martin <gmsoft@gentoo.org> DBI-1.37.ebuild
+  Marked stable on hppa.
+
+  08 Jun 2003; <rac@gentoo.org> DBI-1.30-r1.ebuild, DBI-1.30.ebuild:
+  Fix ebuild headers, add IUSE
+
+  03 Jun 2003; Christian Birchinger <joker@gentoo.org> DBI-1.37.ebuild:
+  Added sparc stable keyword
+
+*DBI-1.37 (31 May 2003)
+
+  31 May 2003; Michael Cummings <mcummings@gentoo.org> DBI-1.37.ebuild:
+  Version bump from CPAN
+
+*DBI-1.32 (16 Jan 2003)
+
+  05 Apr 2003; Zach Welch <zwelch@gentoo.org> DBI-1.32.ebuild:
+  add arm keyword
+
+  20 Mar 2003; Guy Martin <gmsoft@gentoo.org> DBI-1.32.ebuild :
+  Added hppa to KEYWORDS.
+
+  16 Jan 2003; Michael Cummings <mcummings@gentoo.org> : DBI-1.32.ebuild:
+
+  Version bump. This has been sitting over here for a while, added to cvs but
+  never commited. Not sure how it got missed.
+
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  31 Oct 2002; <mcummings@gentoo.org> : Added keywords sparc sparc64
+
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+
+  forced version bump to install into correct locations
+
+*DBI-1.30 (8 Sep 2002)
+
+  8 Sep 2002; <mcummings@gentoo.org> DBI-1.30.ebuild :
+  Ebuild update submitted by Nicholas Wourms; tweaked for usage by perl-modules
+  eclass.
+  
+*DBI-1.21-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*DBI-1.21 (5 May 2002)
+
+  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> DBI-1.21.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  5 May 2002; Seemant Kulleen <seemant@gentoo.org> DBI-1.21.ebuild
+  files/digest-DBI-1.2.1 :
+
+  Version bump, and conversion to eclasses.
+
+*DBI-1.14 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

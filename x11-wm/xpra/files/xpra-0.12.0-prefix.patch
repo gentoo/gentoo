@@ -1,0 +1,27 @@
+--- xpra-0.12.0/xpra/scripts/config.py
++++ xpra-0.12.0/xpra/scripts/config.py
+@@ -188,9 +188,9 @@
+         #OSX and win32 use binary installers,
+         #we must look for the default config in the bundled resource location:
+         conf_dir = get_resources_dir()
+-    elif sys.prefix == '/usr':
++    elif sys.prefix[-4:] == '/usr':
+         #default posix config location:
+-        conf_dir = '/etc/xpra'
++        conf_dir = sys.prefix[:-4] + '/etc/xpra'
+     else:
+         #hope the prefix is something like "/usr/local":
+         conf_dir = sys.prefix + '/etc/xpra/'
+--- xpra-0.12.0/setup.py
++++ xpra-0.12.0/setup.py
+@@ -990,8 +990,8 @@
+             return {}
+     if "install" in sys.argv:
+         #prepare default [/usr/local]/etc configuration files:
+-        if sys.prefix == '/usr':
+-            etc_prefix = '/etc/xpra'
++        if sys.prefix[-4:] == '/usr':
++            etc_prefix = sys.prefix[:-4] + '/etc/xpra'
+         else:
+             etc_prefix = sys.prefix + '/etc/xpra'
+ 

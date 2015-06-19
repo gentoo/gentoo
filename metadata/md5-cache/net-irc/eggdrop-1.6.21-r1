@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=dev-lang/tcl:0 sys-apps/gentoo-functions !vanilla? ( mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql[server] ) ssl? ( dev-libs/openssl ) )
+DESCRIPTION=An IRC bot extensible with C or TCL
+EAPI=4
+HOMEPAGE=http://www.eggheads.org/
+IUSE=debug mysql postgres ssl static vanilla
+KEYWORDS=alpha amd64 ia64 ~mips ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/tcl:0 sys-apps/gentoo-functions !vanilla? ( mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql[server] ) ssl? ( dev-libs/openssl ) )
+REQUIRED_USE=vanilla? ( !mysql !postgres !ssl )
+SLOT=0
+SRC_URI=ftp://ftp.eggheads.org/pub/eggdrop/source/1.6/eggdrop1.6.21.tar.bz2 http://dev.gentoo.org/~binki/distfiles/net-irc/eggdrop/eggdrop-1.6.21-patches-1.0.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=5c3e1feaae9296f32ff8d3d803b1bc36

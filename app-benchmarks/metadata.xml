@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The app-benchmarks category contains benchmarking software.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría app-benchmarks contiene programas para pruebas.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-benchmarks enthält Benchmark-Software.
+	</longdescription>
+	<longdescription lang="ja">
+		app-benchmarksカテゴリにはベンチマークソフトウェアが含まれます。
+	</longdescription>
+	<longdescription lang="nl">
+		De app-benchmarks categorie bevat benchmarking applicaties.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-benchmarks chứa các ứng dụng benchmark.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-benchmarks contiene programmi per l'analisi delle prestazioni.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria app-benchmarks contém programas para benchmarking.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria app-benchmarks zawiera oprogramowanie służące do testowania
+		wydajności.
+	</longdescription>
+</catmetadata>
+

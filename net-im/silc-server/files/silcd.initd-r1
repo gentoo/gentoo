@@ -1,0 +1,25 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/silc-server/files/silcd.initd-r1,v 1.1 2013/10/31 10:01:09 polynomial-c Exp $
+
+description="Server for Secure Internet Live Conferencing"
+pidfile="/run/silcd.pid"
+command="/usr/sbin/silcd"
+command_args="-f /etc/silc/silcd.conf >/dev/null 2>&1"
+start_stop_daemon_args="-w 2000"
+
+depend() {
+	need net
+	use dns
+}
+
+start_pre() {
+	local silcdconf="/etc/silc/silcd.conf"
+
+	if [ ! -f "${silcdconf}" ] ; then
+		eerror "You need to set up a ${silcdconf} file in order to start the server."
+		eerror "You can find an example config in /usr/share/doc/silc-server*"
+		return 1
+	fi
+}

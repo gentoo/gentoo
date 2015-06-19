@@ -1,0 +1,79 @@
+# ChangeLog for games-sports/billardgl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-sports/billardgl/ChangeLog,v 1.13 2015/03/08 19:17:38 tupone Exp $
+
+  08 Mar 2015; Tupone Alfredo <tupone@gentoo.org> billardgl-1.75-r1.ebuild:
+  EAPI 5
+
+  16 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  billardgl-1.75-r1.ebuild:
+  virtual/glut -> media-libs/glut
+
+  06 Apr 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  billardgl-1.75-r1.ebuild:
+  EAPI=2; honor CXX
+
+  14 Feb 2007; Tristan Heaven <nyhm@gentoo.org> -files/billardgl.png,
+  billardgl-1.75-r1.ebuild:
+  Move icon to mirror://gentoo
+
+  06 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  billardgl-1.75-r1.ebuild:
+  Remove old virtual/x11 dependency.
+
+  12 Mar 2006; <Tupone@gentoo.org> +files/billardgl.png,
+  billardgl-1.75-r1.ebuild:
+  Providing desktop menu entry (bug #111667). Thanks to Gustav Schaffter.
+
+  29 Jan 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  billardgl-1.75-r1.ebuild:
+  Add modular X dependencies.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  20 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  billardgl-1.75-r1.ebuild:
+  don't rdepend on sed; sed in unpack; error check; IUSE; header fix
+
+  28 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org>
+  billardgl-1.75-r1.ebuild:
+  added amd64 per bug 34520
+
+  03 Sep 2003; Michael Sterrett <msterret@gentoo.org>
+  billardgl-1.75-r1.ebuild:
+  use sed >=4; repoman cleanups
+
+  02 Aug 2003; Chris Gianelloni <wolf31o2@gentoo.org>
+  billardgl-1.75-r1.ebuild:
+  Fixed to use mirror://sourceforge
+
+*billardgl-1.75-r1 (19 Jun 2002)
+
+  29 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Added games eclass support
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> billardgl-1.75.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+  Fixed install problem
+
+*billardgl-1.7.5 (18 Jun 2002)
+
+  18 Jun 2002; Ryan Phillips <rphillips@gentoo.org> billardgl-1.75.ebuild :
+  New version
+
+*billardgl-1.7.0 (20 Apr 2002)
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> billardgl-1.70.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+  Typo in ebuild.  Homepage would not display
+
+  20 Apr 2002; Ryan Phillips <rphillips@gentoo.org> billardgl-1.70 :
+  Renamed ebuild
+  
+  20 Apr 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

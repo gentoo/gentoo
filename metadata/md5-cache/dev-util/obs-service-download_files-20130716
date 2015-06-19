@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION=Open Build Service client module - download_files service
+EAPI=5
+HOMEPAGE=http://en.opensuse.org/openSUSE:OSC
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=net-misc/wget dev-util/osc dev-util/suse-build
+SLOT=0
+SRC_URI=https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-download_files/download_files -> download_files-20130716 https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-download_files/download_files.service -> download_files-20130716.service
+_eclasses_=obs-download	8b22473fde39f5051ce00b61062dd086	obs-service	0fc1a1ab792dd8a4e38c10901ff57032
+_md5_=305e7cdb82e78d6e58d6602a67004a3f

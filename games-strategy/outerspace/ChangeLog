@@ -1,0 +1,106 @@
+# ChangeLog for games-strategy/outerspace
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/outerspace/ChangeLog,v 1.23 2015/04/08 18:11:44 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> outerspace-0.5.68.ebuild:
+  Drop old Python implementations
+
+  21 Mar 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  -outerspace-0.5.67-r1.ebuild:
+  old
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org> outerspace-0.5.68.ebuild:
+  Stable for x86, wrt bug #490656
+
+  13 Nov 2013; Tony Vroon <chainsaw@gentoo.org> outerspace-0.5.68.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #490656.
+
+*outerspace-0.5.68 (27 Jan 2013)
+
+  27 Jan 2013; Julian Ospald <hasufell@gentoo.org> +outerspace-0.5.68.ebuild,
+  +files/outerspace-0.5.68-setup.patch:
+  version bump wrt #380487, convert to distutils-r1
+
+  30 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  outerspace-0.5.67-r1.ebuild:
+  x86 stable wrt bug #352157
+
+  20 Jan 2011; Markos Chandras <hwoarang@gentoo.org>
+  outerspace-0.5.67-r1.ebuild:
+  Stable on amd64 wrt bug #352157
+
+*outerspace-0.5.67-r1 (20 Dec 2010)
+
+  20 Dec 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +outerspace-0.5.67-r1.ebuild:
+  rev bump (changed upstream tarball) - bug #349149
+
+  22 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  outerspace-0.5.67.ebuild:
+  stable x86, bug 341419
+
+  19 Oct 2010; Markos Chandras <hwoarang@gentoo.org>
+  outerspace-0.5.67.ebuild:
+  Stable on amd64 wrt bug #341419
+
+*outerspace-0.5.67 (16 Sep 2010)
+
+  16 Sep 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +outerspace-0.5.67.ebuild:
+  version bump
+
+  06 Apr 2010; Tupone Alfredo <tupone@gentoo.org> outerspace-0.5.66.ebuild:
+  Force python 2 version. Bug #312287 by arfrever@gentoo.org
+
+  25 Nov 2009; Markus Meier <maekke@gentoo.org> outerspace-0.5.66.ebuild:
+  amd64/x86 stable, bug #294449
+
+*outerspace-0.5.66 (27 Nov 2007)
+
+  27 Nov 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  +outerspace-0.5.66.ebuild:
+  version bump
+
+*outerspace-0.5.65 (12 Aug 2007)
+
+  12 Aug 2007; Tristan Heaven <nyhm@gentoo.org> +outerspace-0.5.65.ebuild:
+  Version bump
+
+*outerspace-0.5.64 (16 Jun 2007)
+
+  16 Jun 2007; Tristan Heaven <nyhm@gentoo.org> +outerspace-0.5.64.ebuild:
+  Version bump
+
+*outerspace-0.5.63.1 (28 May 2007)
+
+  28 May 2007; Tristan Heaven <nyhm@gentoo.org> +outerspace-0.5.63.1.ebuild:
+  Version bump
+
+*outerspace-0.5.63 (27 May 2007)
+
+  27 May 2007; Tristan Heaven <nyhm@gentoo.org> +outerspace-0.5.63.ebuild:
+  Version bump
+
+*outerspace-0.5.62 (20 May 2007)
+
+  20 May 2007; Tristan Heaven <nyhm@gentoo.org> +outerspace-0.5.62.ebuild:
+  Version bump
+
+*outerspace-0.5.61 (26 Feb 2007)
+
+  26 Feb 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  +outerspace-0.5.61.ebuild:
+  version bump
+
+  07 Jan 2007; <tupone@gentoo.org> outerspace-0.5.59.ebuild:
+  Added ~amd64 keyword. Bug #160453 by Arttu Valo
+
+  02 Jan 2007; <tupone@gentoo.org> outerspace-0.5.59.ebuild:
+  Adding some error handling
+
+*outerspace-0.5.59 (01 Jan 2007)
+
+  01 Jan 2007; <tupone@gentoo.org> +files/outerspace, +metadata.xml,
+  +outerspace-0.5.59.ebuild:
+  Initial import. Bug #89059 submitted by Chris Gorgolewski.

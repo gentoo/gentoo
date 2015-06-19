@@ -1,0 +1,86 @@
+Remove suitesparse (camd,colamd) and zlib bundles
+bicatali - apr 2014
+
+--- configure.ac.orig	2014-04-05 14:18:56.045148287 -0700
++++ configure.ac	2014-04-05 14:23:24.878803309 -0700
+@@ -59,6 +59,11 @@
+ dnl Check for math library
+ AC_CHECK_LIB([m], [exp])
+ 
++AC_CHECK_LIB([amd], [amd_1])
++AC_CHECK_LIB([colamd], [colamd])
++AC_CHECK_HEADER([amd.h])
++AC_CHECK_LIB([z], [gzopen])
++
+ dnl Check for <sys/time.h> header
+ AC_CHECK_HEADER([sys/time.h],
+    AC_DEFINE([HAVE_SYS_TIME_H], [1], [N/A]))
+--- src/Makefile.am.orig	2014-04-05 14:19:16.401273769 -0700
++++ src/Makefile.am	2014-04-05 14:21:56.696259485 -0700
+@@ -6,15 +6,12 @@
+ 
+ libglpk_la_CPPFLAGS = \
+ -I$(srcdir) \
+--I$(srcdir)/amd \
+ -I$(srcdir)/bflib \
+ -I$(srcdir)/cglib \
+--I$(srcdir)/colamd \
+ -I$(srcdir)/env \
+ -I$(srcdir)/minisat \
+ -I$(srcdir)/misc \
+--I$(srcdir)/proxy \
+--I$(srcdir)/zlib
++-I$(srcdir)/proxy
+ 
+ libglpk_la_LDFLAGS = \
+ -version-info 37:1:1 \
+@@ -92,18 +89,6 @@
+ glpssx02.c \
+ glptsp.c \
+ lux.c \
+-amd/amd_1.c \
+-amd/amd_2.c \
+-amd/amd_aat.c \
+-amd/amd_control.c \
+-amd/amd_defaults.c \
+-amd/amd_dump.c \
+-amd/amd_info.c \
+-amd/amd_order.c \
+-amd/amd_post_tree.c \
+-amd/amd_postorder.c \
+-amd/amd_preprocess.c \
+-amd/amd_valid.c \
+ bflib/btf.c \
+ bflib/btfint.c \
+ bflib/fhv.c \
+@@ -117,7 +102,6 @@
+ bflib/sva.c \
+ cglib/cfg.c \
+ cglib/cfg1.c \
+-colamd/colamd.c \
+ env/alloc.c \
+ env/dlsup.c \
+ env/env.c \
+@@ -150,21 +134,6 @@
+ misc/wclique.c \
+ misc/wclique1.c \
+ proxy/proxy.c \
+-proxy/proxy1.c \
+-zlib/adler32.c \
+-zlib/compress.c \
+-zlib/crc32.c \
+-zlib/deflate.c \
+-zlib/gzclose.c \
+-zlib/gzlib.c \
+-zlib/gzread.c \
+-zlib/gzwrite.c \
+-zlib/inffast.c \
+-zlib/inflate.c \
+-zlib/inftrees.c \
+-zlib/trees.c \
+-zlib/uncompr.c \
+-zlib/zio.c \
+-zlib/zutil.c
++proxy/proxy1.c
+ 
+ ## eof ##

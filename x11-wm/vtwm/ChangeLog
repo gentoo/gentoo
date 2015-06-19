@@ -1,0 +1,52 @@
+# ChangeLog for x11-wm/vtwm
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/vtwm/ChangeLog,v 1.12 2013/10/19 15:31:18 pacho Exp $
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due desktop-wm removal
+
+*vtwm-5.4.7-r1 (17 Sep 2010)
+
+  17 Sep 2010; Jeroen Roovers <jer@gentoo.org> -vtwm-5.4.7.ebuild,
+  +vtwm-5.4.7-r1.ebuild, +files/vtwm-5.4.7-NO_SOUND_SUPPORT.patch,
+  +files/vtwm-5.4.7-do-not-rm.patch,
+  -files/vtwm-5.4.7-dont-use-local-path.patch:
+  Respect LDFLAGS (bug #335807), CC, CFLAGS. Fix USE=-rplay. Do not rebuild
+  in src_install(). Have flex and bison in DEPEND. Replace local path patch
+  with simple sed scripts. Run make depend in src_configure() too so we can
+  have parallel make in src_compile().
+
+*vtwm-5.4.7 (02 Jul 2007)
+
+  02 Jul 2007; Santiago M. Mola <coldwind@gentoo.org>
+  +files/vtwm-5.4.7-dont-use-local-path.patch, metadata.xml,
+  vtwm-5.4.6a.ebuild, +vtwm-5.4.7.ebuild:
+  The Last Version Bump. Thanks to Alexander Skwar. bug #155084
+
+  13 Aug 2006; Pieter Van den Abeele <pvdabeel@gentoo.org> vtwm-5.4.6a.ebuild:
+  Force Makeopts -j1
+
+  11 Jun 2006; Krzysiek Pawlik <nelchael@gentoo.org> vtwm-5.4.6a.ebuild:
+  Migrated to modular X.
+
+  30 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> vtwm-5.4.6a.ebuild:
+  Masked vtwm-5.4.6a.ebuild stable for ppc
+
+  18 Jun 2004; Jason Wever <weeve@gentoo.org> vtwm-5.4.6a.ebuild:
+  Stable on sparc.
+
+  05 May 2004; Mamoru KOMACHI <usata@gentoo.org> vtwm-5.4.6a.ebuild:
+  Stable on alpha. Don't assign default to S
+
+*vtwm-5.4.6a (25 Aug 2003)
+
+  08 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> metadata.xml,
+  vtwm-5.4.6a.ebuild:
+  Marked as stable for x86. Added desktop-wm herd.
+
+  26 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> vtwm-5.4.6a.ebuild:
+  Xsession entry for vtwm should refer to /usr/bin/vtwm
+
+  25 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> vtwm-5.4.6a.ebuild:
+  Initial import.  Ebuild submitted by Andrew Casey <drewbian@tsn.cc>
+  This closes Bug #24025

@@ -1,0 +1,151 @@
+# ChangeLog for sci-mathematics/pspp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/pspp/ChangeLog,v 1.31 2014/12/28 16:54:20 titanofold Exp $
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org> pspp-0.8.1-r1.ebuild,
+  pspp-0.8.3.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org> pspp-0.8.1-r1.ebuild,
+  pspp-0.8.3.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+*pspp-0.8.3 (28 May 2014)
+
+  28 May 2014; Sébastien Fabbro <bicatali@gentoo.org> +pspp-0.8.3.ebuild,
+  -files/pspp-0.6.0-as-needed.patch, -files/pspp-0.6.2-gtk.patch,
+  -files/pspp-0.6.2-no-test-pgsql.patch, -files/pspp-0.8.0-as-needed.patch,
+  -pspp-0.6.2-r1.ebuild, -pspp-0.8.0.ebuild:
+  Version bump
+
+  31 Oct 2013; Sébastien Fabbro <bicatali@gentoo.org> pspp-0.8.1-r1.ebuild:
+  Install emacs files (broken by out of source building, bug #489938)
+
+  30 Oct 2013; Justin Lecher <jlec@gentoo.org> pspp-0.8.1-r1.ebuild:
+  Fixing out-of-source doc build
+
+*pspp-0.8.1-r1 (30 Oct 2013)
+
+  30 Oct 2013; Justin Lecher <jlec@gentoo.org> pspp-0.8.0.ebuild,
+  -pspp-0.8.1.ebuild, +pspp-0.8.1-r1.ebuild, +files/pspp-0.8.1-oos.patch,
+  +files/pspp-0.8.1-underlinking.patch, metadata.xml:
+  Fix underlinking and out-of-source build
+
+*pspp-0.8.1 (30 Oct 2013)
+
+  30 Oct 2013; Sébastien Fabbro <bicatali@gentoo.org> +pspp-0.8.1.ebuild:
+  Version bump, patches not needed anymore, fix bug #489526, thanks
+  cujyaz@googlemail.com
+
+  10 Sep 2013; Patrick Lauer <patrick@gentoo.org> pspp-0.8.0.ebuild:
+  Whitespace
+
+*pspp-0.8.0 (06 Aug 2013)
+
+  06 Aug 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/pspp-0.8.0-as-needed.patch, +files/pspp-0.8.0-gettext.patch,
+  +pspp-0.8.0.ebuild:
+  Version bump
+
+  30 Dec 2012; Thomas Kahle <tomka@gentoo.org> pspp-0.6.2-r1.ebuild:
+  Fix doc install per bug 449312
+
+  10 Dec 2012; Sébastien Fabbro <bicatali@gentoo.org> -pspp-0.6.2.ebuild,
+  pspp-0.6.2-r1.ebuild:
+  Keyword amd64-linux and x86-linux, cleaning
+
+  21 May 2012; Samuli Suominen <ssuominen@gentoo.org> pspp-0.6.2-r1.ebuild:
+  Remove unnecessary gnome-extra/yelp from runtime dependencies;
+  src/ui/gui/automake.mk will print a message suggesting to use online help as
+  alternative. This will avoid pulling in vulnerable copy of net-libs/xulrunner
+  wrt #416843.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> pspp-0.6.2.ebuild,
+  pspp-0.6.2-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  24 Apr 2012; Michał Górny <mgorny@gentoo.org> pspp-0.6.2.ebuild,
+  pspp-0.6.2-r1.ebuild:
+  Update to use mirror://.
+
+  15 Mar 2012; Sébastien Fabbro <bicatali@gentoo.org> pspp-0.6.2-r1.ebuild:
+  Added gnome-extras/yelp dependency for documentation when gtk is set
+
+*pspp-0.6.2-r1 (15 Mar 2011)
+
+  15 Mar 2011; Sébastien Fabbro <bicatali@gentoo.org> +pspp-0.6.2-r1.ebuild,
+  +files/pspp-0.6.2-gtk.patch:
+  Added a patch for GTK (bug #358433) from upstream. Disabled all date tests.
+  Added static-libs flag.
+
+  07 Mar 2011; Justin Lecher <jlec@gentoo.org> pspp-0.6.2.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> pspp-0.6.2.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  02 Mar 2011; Justin Lecher <jlec@gentoo.org> pspp-0.6.2.ebuild:
+  Correct Slots for gtk 3 introduction to tree
+
+  17 Jun 2010; Patrick Lauer <patrick@gentoo.org> pspp-0.6.1.ebuild,
+  pspp-0.6.2.ebuild:
+  Migrating away from deprecated postgres virtuals
+
+  09 Mar 2010; Jonathan Callen <abcd@gentoo.org> pspp-0.6.1.ebuild,
+  pspp-0.6.2.ebuild:
+  QA: When not using an absolute path, you MUST NOT use a file extension
+  (.png, .svg, or .xpm) on the icon name for make_desktop_entry
+
+*pspp-0.6.2 (21 Nov 2009)
+
+  21 Nov 2009; Sébastien Fabbro <bicatali@gentoo.org> +pspp-0.6.2.ebuild:
+  Version bump
+
+  03 Apr 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/pspp-0.6.0-disable-inline.patch, -pspp-0.4.0.ebuild,
+  -pspp-0.6.0.ebuild:
+  Removed obsolete versions
+
+*pspp-0.6.1 (28 Oct 2008)
+
+  28 Oct 2008; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml,
+  +pspp-0.6.1.ebuild:
+  Version bump, more complete doc installation, added missing dependencies
+  and fix for crashing GUI, bug #244631
+
+  28 Oct 2008; Markus Dittrich <markusle@gentoo.org>
+  +files/pspp-0.6.0-as-needed.patch, pspp-0.6.0.ebuild:
+  Fixed as-needed issues (see bug #244547).
+
+  06 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+*pspp-0.6.0 (30 Jun 2008)
+
+  30 Jun 2008; Markus Dittrich <markusle@gentoo.org>
+  +files/pspp-0.6.0-disable-inline.patch, +pspp-0.6.0.ebuild:
+  Version bump including patch to allow compilation with gcc-4.3 (see bug
+  #229905).
+
+  03 Feb 2008; Markus Dittrich <markusle@gentoo.org> pspp-0.4.0.ebuild:
+  Added bindist USE flag to prevent linking against GPL-3d >=gsl-1.10 
+  if needed (see bug #199451).
+
+  31 Jul 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  files/50pspp-gentoo.el:
+  update site-init file, thanks to Ulrich Mueller <ulm@gentoo.org>
+
+  31 Jul 2007; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/50pspp-gentoo.el, pspp-0.4.0.ebuild:
+  Added patch emacs support, thanks to Christian Faulhammer
+  <opfer@gentoo.org>. Closing bug #187212
+
+  20 Mar 2007; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml:
+  herd sci -> sci-mathematics
+
+*pspp-0.4.0 (19 Mar 2007)
+
+  19 Mar 2007; Sébastien Fabbro <bicatali@gentoo.org> +metadata.xml,
+  +pspp-0.4.0.ebuild:
+  Initial import of pspp. Thanks to Torsten Kurbad <torsten@tk-webart.de> 
+  for his work. Closes bug #79943.

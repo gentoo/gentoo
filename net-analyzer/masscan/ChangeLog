@@ -1,0 +1,18 @@
+# ChangeLog for net-analyzer/masscan
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/masscan/ChangeLog,v 1.3 2014/07/13 13:31:10 jer Exp $
+
+  13 Jul 2014; Jeroen Roovers <jer@gentoo.org> masscan-1.0.3-r1.ebuild:
+  Respect CC even better. mv should die().
+
+*masscan-1.0.3-r1 (02 Mar 2014)
+
+  02 Mar 2014; Jeroen Roovers <jer@gentoo.org> -masscan-1.0.3.ebuild,
+  +masscan-1.0.3-r1.ebuild:
+  Clean up. Respect CC. sed must die().
+
+*masscan-1.0.3 (01 Mar 2014)
+
+  01 Mar 2014; Robin H. Johnson <robbat2@gentoo.org> +files/masscan.conf,
+  +masscan-1.0.3.ebuild, +metadata.xml:
+  Initial commit. Based on the Pentoo ebuild, with lots of cleanup.

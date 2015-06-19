@@ -1,0 +1,248 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/files/named.init-r13,v 1.1 2014/01/31 21:24:49 idl0r Exp $
+
+extra_commands="checkconfig checkzones"
+extra_started_commands="reload"
+
+depend() {
+	need net
+	use logger
+	provide dns
+}
+
+NAMED_CONF=${CHROOT}/etc/bind/named.conf
+
+OPENSSL_LIBGOST=${OPENSSL_LIBGOST:-0}
+MOUNT_CHECK_TIMEOUT=${MOUNT_CHECK_TIMEOUT:-60}
+
+_mount() {
+	local from
+	local to
+	local opts
+	local ret=0
+
+	if [ "${#}" -lt 3 ]; then
+		eerror "_mount(): to few arguments"
+		return 1
+	fi
+
+	from=$1
+	to=$2
+	shift 2
+
+	opts="${*}"
+	shift $#
+
+	if [ -z "$(awk "\$2 == \"${to}\" { print \$2 }" /proc/mounts)" ]; then
+		einfo "mounting ${from} to ${to}"
+		mount ${from} ${to} ${opts}
+		ret=$?
+
+		eend $ret
+		return $ret
+	fi
+
+	return 0
+}
+
+_umount() {
+	local dir=$1
+	local ret=0
+
+	if [ -n "$(awk "\$2 == \"${dir}\" { print \$2 }" /proc/mounts)" ]; then
+		ebegin "umounting ${dir}"
+		umount ${dir}
+		ret=$?
+
+		eend $ret
+		return $ret
+	fi
+
+	return 0
+}
+
+_get_pidfile() {
+	# as suggested in bug #107724, bug 335398#c17
+	[ -n "${PIDFILE}" ] || PIDFILE=${CHROOT}$(\
+			/usr/sbin/named-checkconf -p ${CHROOT:+-t} ${CHROOT} ${NAMED_CONF#${CHROOT}} | grep 'pid-file' | cut -d\" -f2)
+	[ -z "${PIDFILE}" ] && PIDFILE=${CHROOT}/run/named/named.pid
+}
+
+check_chroot() {
+	if [ -n "${CHROOT}" ]; then
+		[ ! -d "${CHROOT}" ] && return 1
+		[ ! -d "${CHROOT}/dev" ] || [ ! -d "${CHROOT}/etc" ] || [ ! -d "${CHROOT}/var" ] && return 1
+		[ ! -d "${CHROOT}/run" ] || [ ! -d "${CHROOT}/var/log" ] && return 1
+		[ ! -d "${CHROOT}/etc/bind" ] || [ ! -d "${CHROOT}/var/bind" ] && return 1
+		[ ! -d "${CHROOT}/var/log/named" ] && return 1
+		[ ! -c "${CHROOT}/dev/null" ] || [ ! -c "${CHROOT}/dev/zero" ] && return 1
+		[ ! -c "${CHROOT}/dev/random" ] && [ ! -c "${CHROOT}/dev/urandom" ] && return 1
+		[ "${CHROOT_GEOIP:-0}" -eq 1 ] && [ ! -d "${CHROOT}/usr/share/GeoIP" ] && return 1
+		if [ ${OPENSSL_LIBGOST:-0} -eq 1 ]; then
+			if [ -d "/usr/lib64" ]; then
+				[ ! -d "${CHROOT}/usr/lib64/engines" ] && return 1
+			elif [ -d "/usr/lib" ]; then
+				[ ! -d "${CHROOT}/usr/lib/engines" ] && return 1
+			fi
+		fi
+	fi
+
+	return 0
+}
+
+checkconfig() {
+	ebegin "Checking named configuration"
+
+	if [ ! -f "${NAMED_CONF}" ] ; then
+		eerror "No ${NAMED_CONF} file exists!"
+		return 1
+	fi
+
+	/usr/sbin/named-checkconf ${CHROOT:+-t} ${CHROOT} ${NAMED_CONF#${CHROOT}} || {
+		eerror "named-checkconf failed! Please fix your config first."
+		return 1
+	}
+
+	eend 0
+	return 0
+}
+
+checkzones() {
+	ebegin "Checking named configuration and zones"
+	/usr/sbin/named-checkconf -z -j ${CHROOT:+-t} ${CHROOT} ${NAMED_CONF#${CHROOT}}
+	eend $?
+}
+
+start() {
+	local piddir
+
+	ebegin "Starting ${CHROOT:+chrooted }named"
+
+	if [ -n "${CHROOT}" ]; then
+		if [ ${CHROOT_NOCHECK:-0} -eq 0 ]; then
+			check_chroot || {
+				eend 1
+				eerror "Your chroot dir ${CHROOT} is inconsistent, please run 'emerge --config net-dns/bind' first"
+				return 1
+			}
+		fi
+
+		if [ ${OPENSSL_LIBGOST:-0} -eq 1 ]; then
+			if [ ! -e /usr/lib/engines/libgost.so ]; then
+				eend 1
+				eerror "Couldn't find /usr/lib/engines/libgost.so but bind has been built with openssl and libgost support"
+				return 1
+			fi
+			cp -Lp /usr/lib/engines/libgost.so "${CHROOT}/usr/lib/engines/libgost.so" || {
+				eend 1
+				eerror "Couldn't copy /usr/lib/engines/libgost.so into '${CHROOT}/usr/lib/engines/'"
+				return 1
+			}
+		fi
+		cp -Lp /etc/localtime "${CHROOT}/etc/localtime"
+
+		if [ "${CHROOT_NOMOUNT:-0}" -eq 0 ]; then
+			einfo "Mounting chroot dirs"
+			_mount /etc/bind ${CHROOT}/etc/bind -o bind
+			_mount /var/bind ${CHROOT}/var/bind -o bind
+			_mount /var/log/named ${CHROOT}/var/log/named -o bind
+			if [ "${CHROOT_GEOIP:-0}" -eq 1 ]; then
+				_mount /usr/share/GeoIP ${CHROOT}/usr/share/GeoIP -o bind
+			fi
+		fi
+	fi
+
+	checkconfig || { eend 1; return 1; }
+
+	# create piddir (usually /run/named) if necessary, bug 334535
+	_get_pidfile
+	piddir="${PIDFILE%/*}"
+	checkpath -q -d -o root:named -m 0770 "${piddir}" || {
+		eend 1
+		return 1
+	}
+
+	# In case someone have $CPU set in /etc/conf.d/named
+	if [ -n "${CPU}" ] && [ "${CPU}" -gt 0 ]; then
+		CPU="-n ${CPU}"
+	fi
+
+	start-stop-daemon --start --pidfile ${PIDFILE} \
+		--nicelevel ${NAMED_NICELEVEL:-0} \
+		--exec /usr/sbin/named \
+		-- -u named ${CPU} ${OPTIONS} ${CHROOT:+-t} ${CHROOT}
+	eend $?
+}
+
+stop() {
+	local reported=0
+
+	ebegin "Stopping ${CHROOT:+chrooted }named"
+
+	# Workaround for now, until openrc's restart has been fixed.
+	# openrc doesn't care about a restart() function in init scripts.
+	if [ "${RC_CMD}" = "restart" ]; then
+		if [ -n "${CHROOT}" -a ${CHROOT_NOCHECK:-0} -eq 0 ]; then
+			check_chroot || {
+				eend 1
+				eerror "Your chroot dir ${CHROOT} is inconsistent, please run 'emerge --config net-dns/bind' first"
+				return 1
+			}
+		fi
+
+		checkconfig || { eend 1; return 1; }
+	fi
+
+	# -R 10, bug 335398
+	_get_pidfile
+	start-stop-daemon --stop --retry 10 --pidfile $PIDFILE \
+		--exec /usr/sbin/named
+
+	if [ -n "${CHROOT}" ] && [ "${CHROOT_NOMOUNT:-0}" -eq 0 ]; then
+		ebegin "Umounting chroot dirs"
+
+		# just to be sure everything gets clean
+		while fuser -s ${CHROOT} 2>/dev/null; do
+			if [ "${reported}" -eq 0 ]; then
+				einfo "Waiting until all named processes are stopped (max. ${MOUNT_CHECK_TIMEOUT} seconds)"
+			elif [ "${reported}" -eq "${MOUNT_CHECK_TIMEOUT}" ]; then
+				eerror "Waiting until all named processes are stopped failed!"
+				eend 1
+				break
+			fi
+			sleep 1
+			reported=$((reported+1))
+		done
+
+		[ "${CHROOT_GEOIP:-0}" -eq 1 ] && _umount ${CHROOT}/usr/share/GeoIP
+		_umount ${CHROOT}/etc/bind
+		_umount ${CHROOT}/var/log/named
+		_umount ${CHROOT}/var/bind
+	fi
+
+	eend $?
+}
+
+reload() {
+	local ret
+
+	ebegin "Reloading named.conf and zone files"
+
+	checkconfig || { eend 1; return 1; }
+
+	_get_pidfile
+	if [ -n "${PIDFILE}" ]; then
+		start-stop-daemon --pidfile $PIDFILE --signal HUP
+		ret=$?
+	else
+		ewarn "Unable to determine the pidfile... this is"
+		ewarn "a fallback mode. Please check your installation!"
+
+		$RC_SERVICE restart
+		ret=$?
+	fi
+
+	eend $ret
+}

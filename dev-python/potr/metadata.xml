@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>aidecoe@gentoo.org</email>
+		<name>Amadeusz Żołnowski</name>
+	</maintainer>
+	<longdescription lang="en">
+		This is a pure Python OTR implementation; it does not bind to libotr.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">python-potr</remote-id>
+		<remote-id type="github">python-otr/pure-python-otr</remote-id>
+	</upstream>
+</pkgmetadata>

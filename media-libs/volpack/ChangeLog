@@ -1,0 +1,20 @@
+# ChangeLog for media-libs/volpack
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/volpack/ChangeLog,v 1.4 2012/04/12 23:07:37 bicatali Exp $
+
+  12 Apr 2012; Sébastien Fabbro <bicatali@gentoo.org> volpack-1.0_p7.ebuild:
+  Added static-libs flag
+
+  29 Mar 2012; Sébastien Fabbro <bicatali@gentoo.org> volpack-1.0_p7.ebuild:
+  Switch to EAPI4, cleanup and fix bug #408853
+
+  26 Aug 2011; Matt Turner <mattst88@gentoo.org> volpack-1.0_p7.ebuild:
+  Added sys-devel/m4 to DEPEND, bug 380615.
+
+*volpack-1.0_p7 (24 Nov 2009)
+
+  24 Nov 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  +volpack-1.0_p7.ebuild, +metadata.xml:
+  Initial imporrt. Ebuild inspired from bug #119354. Thanks Jennifer and
+  Ivan Havlicek for their work
+

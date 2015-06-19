@@ -1,0 +1,18 @@
+# ChangeLog for dev-perl/Package-Variant
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Package-Variant/ChangeLog,v 1.3 2014/08/26 16:00:10 axs Exp $
+
+*Package-Variant-1.1.2-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Package-Variant-1.1.2-r1.ebuild, -Package-Variant-1.1.2.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+  20 Jul 2013; Fabian Groffen <grobian@gentoo.org> Package-Variant-1.1.2.ebuild:
+  Added Prefix keywords, bug #437522
+
+*Package-Variant-1.1.2 (07 Oct 2012)
+
+  07 Oct 2012; Torsten Veller <tove@gentoo.org> +Package-Variant-1.1.2.ebuild,
+  +metadata.xml:
+  Initial import for SQL-Translator

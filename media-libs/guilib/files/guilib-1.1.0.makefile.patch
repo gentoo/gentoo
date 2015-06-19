@@ -1,0 +1,36 @@
+*** Makefile.in.good	Sun Nov 10 17:26:31 2002
+--- Makefile.in	Sun Nov 10 17:26:44 2002
+***************
+*** 271,277 ****
+  
+  hello_C: $(hello_C_OBJECTS) $(hello_C_DEPENDENCIES)
+  	@rm -f hello_C
+! 	$(LINK) $(hello_C_LDFLAGS) $(hello_C_OBJECTS) $(hello_C_LDADD) $(LIBS)
+  
+  keyboard: $(keyboard_OBJECTS) $(keyboard_DEPENDENCIES)
+  	@rm -f keyboard
+--- 271,277 ----
+  
+  hello_C: $(hello_C_OBJECTS) $(hello_C_DEPENDENCIES)
+  	@rm -f hello_C
+! 	$(CXXLINK) $(hello_C_LDFLAGS) $(hello_C_OBJECTS) $(hello_C_LDADD) $(LIBS)
+  
+  keyboard: $(keyboard_OBJECTS) $(keyboard_DEPENDENCIES)
+  	@rm -f keyboard
+***************
+*** 279,285 ****
+  
+  okay: $(okay_OBJECTS) $(okay_DEPENDENCIES)
+  	@rm -f okay
+! 	$(LINK) $(okay_LDFLAGS) $(okay_OBJECTS) $(okay_LDADD) $(LIBS)
+  .cpp.o:
+  	$(CXXCOMPILE) -c $<
+  .cpp.lo:
+--- 279,285 ----
+  
+  okay: $(okay_OBJECTS) $(okay_DEPENDENCIES)
+  	@rm -f okay
+! 	$(CXXLINK) $(okay_LDFLAGS) $(okay_OBJECTS) $(okay_LDADD) $(LIBS)
+  .cpp.o:
+  	$(CXXCOMPILE) -c $<
+  .cpp.lo:

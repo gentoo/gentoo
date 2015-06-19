@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare pretend setup unpack
+DEPEND=virtual/libiconv >=dev-libs/xapian-1.0.12 sys-libs/zlib spell? ( app-text/aspell ) !inotify? ( fam? ( virtual/fam ) ) qt4? ( dev-qt/qtcore:4[qt3support] dev-qt/qtwebkit:4 ) session? ( inotify? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) !inotify? ( fam? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) ) ) =dev-lang/python-2*
+DESCRIPTION=A personal full text search package
+EAPI=4
+HOMEPAGE=http://www.lesbonscomptes.com/recoll/
+IUSE=+spell +inotify +qt4 +session camelcase xattr fam chm djvu dvi exif postscript ics info lyx msdoc msppt msxls pdf rtf sound tex wordperfect xml
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=virtual/libiconv >=dev-libs/xapian-1.0.12 sys-libs/zlib spell? ( app-text/aspell ) !inotify? ( fam? ( virtual/fam ) ) qt4? ( dev-qt/qtcore:4[qt3support] dev-qt/qtwebkit:4 ) session? ( inotify? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) !inotify? ( fam? ( x11-libs/libX11 x11-libs/libSM x11-libs/libICE ) ) ) app-arch/unzip sys-apps/sed virtual/awk pdf? ( app-text/poppler ) postscript? ( app-text/pstotext ) msdoc? ( app-text/antiword ) msxls? ( app-text/catdoc ) msppt? ( app-text/catdoc ) wordperfect? ( app-text/libwpd:0.9 ) rtf? ( app-text/unrtf ) tex? ( dev-tex/detex ) dvi? ( virtual/tex-base ) djvu? ( >=app-text/djvu-3.5.15 ) exif? ( media-libs/exiftool ) chm? ( dev-python/pychm ) ics? ( dev-python/icalendar ) lyx? ( app-office/lyx ) sound? ( media-libs/mutagen ) xml? ( dev-libs/libxslt ) info? ( sys-apps/texinfo ) =dev-lang/python-2*
+REQUIRED_USE=^^ ( fam inotify ) session? ( || ( fam inotify ) )
+SLOT=0
+SRC_URI=http://www.lesbonscomptes.com/recoll/recoll-1.17.3.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	python	3a270b7b1d1e679847ff0faeac25c5a3	qmake-utils	55ebcc6f3269308d226969c26704e343	qt4-r2	7199e3db5b5908325487d379c6f67cf0	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=1e96bea56e2286f34b7478849ed2e7d0

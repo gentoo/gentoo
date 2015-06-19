@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=!native? ( sys-devel/gcc[vanilla] ) native? ( || ( dev-lang/ekopath dev-lang/path64 ) ) valgrind? ( dev-util/valgrind ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Path64 Compiler Suite Community Edition
+EAPI=4
+HOMEPAGE=http://www.pathscale.com/ekopath-compiler-suite
+IUSE=assembler custom-cflags debugger fortran +native +openmp valgrind
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=!native? ( sys-devel/gcc[vanilla] ) native? ( || ( dev-lang/ekopath dev-lang/path64 ) ) valgrind? ( dev-util/valgrind )
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~xarthisius/distfiles/path64-suite-1.0.0_pre20110924.tbz2 http://dev.gentoo.org/~xarthisius/distfiles/path64-compiler-1.0.0_pre20110924.tbz2 assembler? ( http://dev.gentoo.org/~xarthisius/distfiles/path64-assembler-1.0.0_pre20110924.tbz2 ) debugger? ( http://dev.gentoo.org/~xarthisius/distfiles/path64-debugger-1.0.0_pre20110924.tbz2 )
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=819fa3e252ee71288e379dcd2ab418f5

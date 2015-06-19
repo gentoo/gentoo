@@ -1,0 +1,25 @@
+From 545a9350f8026f6c9826dd4fa7ab6000d8826d78 Mon Sep 17 00:00:00 2001
+From: Tim Harder <radhermit@gmail.com>
+Date: Wed, 6 Mar 2013 15:51:27 -0800
+Subject: [PATCH] Respect LDFLAGS and explicitly link to math library
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 3cc231d..48d1f26 100644
+--- a/Makefile
++++ b/Makefile
+@@ -3,7 +3,7 @@ CFLAGS=-O3 -Wall -Wextra
+ 
+ 
+ pigz: pigz.o yarn.o zopfli/deflate.o zopfli/blocksplitter.o zopfli/tree.o zopfli/lz77.o zopfli/cache.o zopfli/hash.o zopfli/util.o zopfli/squeeze.o zopfli/katajainen.o
+-	$(CC) -o pigz $^ -lpthread -lz
++	$(CC) $(LDFLAGS) -o pigz $^ -lpthread -lz -lm
+ 	ln -f pigz unpigz
+ 
+ pigz.o: pigz.c yarn.h zopfli/deflate.h zopfli/util.h
+-- 
+1.8.1.5
+

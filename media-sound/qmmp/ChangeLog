@@ -1,0 +1,593 @@
+# ChangeLog for media-sound/qmmp
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/qmmp/ChangeLog,v 1.143 2015/06/13 18:11:23 hwoarang Exp $
+
+*qmmp-0.8.5 (13 Jun 2015)
+
+  13 Jun 2015; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.8.5.ebuild:
+  Version bump
+
+*qmmp-0.8.4 (11 Apr 2015)
+
+  11 Apr 2015; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.8.4.ebuild:
+  Version bump
+
+  03 Mar 2015; Markos Chandras <hwoarang@gentoo.org> -qmmp-0.8.0.ebuild,
+  -qmmp-0.8.2.ebuild, qmmp-0.8.3.ebuild:
+  x86/amd64 stable. drop old
+
+  03 Feb 2015; Michael Palimaka <kensington@gentoo.org> qmmp-0.8.0.ebuild,
+  qmmp-0.8.2.ebuild, qmmp-0.8.3.ebuild, qmmp-9999.ebuild:
+  Pin dev-qt/qtgui to SLOT 4.
+
+*qmmp-0.8.3 (13 Jan 2015)
+
+  13 Jan 2015; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.8.3.ebuild:
+  Version bump
+
+  11 Jan 2015; Markos Chandras <hwoarang@gentoo.org> qmmp-0.8.0.ebuild,
+  qmmp-0.8.2.ebuild, qmmp-9999.ebuild:
+  Add missing dev-qt/qtgui dependency. Thanks to Toralf Förster. Bug #534322
+
+*qmmp-0.8.2 (11 Nov 2014)
+
+  11 Nov 2014; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.8.2.ebuild,
+  -qmmp-0.6.8.ebuild, -qmmp-0.7.3.ebuild, -qmmp-0.7.6.ebuild,
+  -qmmp-0.7.7.ebuild, -qmmp-0.8.1.ebuild:
+  Version bump. remove old
+
+  16 Sep 2014; Agostino Sarubbo <ago@gentoo.org> qmmp-0.8.0.ebuild:
+  Stable for x86, wrt bug #522772
+
+  16 Sep 2014; Agostino Sarubbo <ago@gentoo.org> qmmp-0.8.0.ebuild:
+  Stable for amd64, wrt bug #522772
+
+*qmmp-0.8.1 (14 Sep 2014)
+
+  14 Sep 2014; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.8.1.ebuild:
+  Version bump
+
+  24 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> qmmp-0.6.8.ebuild,
+  qmmp-0.7.3.ebuild, qmmp-0.7.6.ebuild, qmmp-0.7.7.ebuild, qmmp-0.8.0.ebuild,
+  qmmp-9999.ebuild:
+  Rename USE="udev" to USE="udisks"
+
+  14 Jul 2014; Markos Chandras <hwoarang@gentoo.org> qmmp-0.8.0.ebuild,
+  qmmp-9999.ebuild:
+  Drop qt3support dependency per #517044
+
+  14 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> qmmp-0.6.8.ebuild,
+  qmmp-0.7.3.ebuild, qmmp-0.7.6.ebuild, qmmp-0.7.7.ebuild,
+  qmmp-0.8.0.ebuild, qmmp-9999.ebuild:
+  Simplify libcdio dependency string.
+
+*qmmp-0.8.0 (12 Jul 2014)
+
+  12 Jul 2014; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.8.0.ebuild:
+  Version bump
+
+*qmmp-0.7.7 (28 May 2014)
+
+  28 May 2014; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.7.7.ebuild:
+  Version bump
+
+  09 May 2014; Markos Chandras <hwoarang@gentoo.org> -qmmp-0.7.4.ebuild,
+  -qmmp-0.7.5.ebuild:
+  Remove old
+
+*qmmp-0.7.6 (18 Apr 2014)
+
+  18 Apr 2014; Lars Wendler <polynomial-c@gentoo.org> +qmmp-0.7.6.ebuild:
+  Version bump.
+
+*qmmp-0.7.5 (17 Mar 2014)
+
+  17 Mar 2014; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.7.5.ebuild:
+  Version bump
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> qmmp-0.7.3.ebuild:
+  x86 stable wrt bug #492908
+
+*qmmp-0.7.4 (02 Jan 2014)
+
+  02 Jan 2014; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.7.4.ebuild:
+  Version bump
+
+  08 Dec 2013; Markos Chandras <hwoarang@gentoo.org> qmmp-0.7.3.ebuild:
+  Stable on amd64 wrt bug #492908
+
+  30 Nov 2013; Markos Chandras <hwoarang@gentoo.org> -qmmp-0.7.1.ebuild,
+  -qmmp-0.7.2.ebuild:
+  Remove old
+
+  14 Oct 2013; Markos Chandras <hwoarang@gentoo.org> qmmp-0.7.3.ebuild,
+  qmmp-9999.ebuild:
+  Add missing dev-qt/qtdbus dep for USE=mpris. Bug #487928
+
+*qmmp-0.7.3 (03 Oct 2013)
+
+  03 Oct 2013; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.7.3.ebuild:
+  Version bump. Bug #486850
+
+*qmmp-0.7.2 (29 Aug 2013)
+
+  29 Aug 2013; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.7.2.ebuild,
+  -qmmp-0.6.5.ebuild, -qmmp-0.6.7.ebuild, -qmmp-0.7.0.ebuild:
+  Version bump. Remove old. Bug #482837
+
+  28 Aug 2013; Agostino Sarubbo <ago@gentoo.org> qmmp-0.7.1.ebuild,
+  qmmp-9999.ebuild:
+  Point to the right HOMEPAGE, the previous link with 'index_en.php' was no
+  longer valid
+
+  18 Jul 2013; Chris Reffett <creffett@gentoo.org> qmmp-0.6.7.ebuild,
+  qmmp-0.6.8.ebuild, qmmp-0.7.0.ebuild, qmmp-0.7.1.ebuild, qmmp-9999.ebuild:
+  Convert base_src_prepare to cmake-utils_src_prepare, bug 475514
+
+*qmmp-0.7.1 (30 Jun 2013)
+
+  30 Jun 2013; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.7.1.ebuild:
+  Version bump. Bug #475162
+
+  27 Apr 2013; Agostino Sarubbo <ago@gentoo.org> qmmp-0.6.8.ebuild:
+  Stable for x86, wrt bug #464554
+
+  27 Apr 2013; Chema Alonso <nimiux@gentoo.org> qmmp-0.6.8.ebuild:
+  Stable for amd64 wrt bug #464554
+
+*qmmp-0.7.0 (20 Apr 2013)
+
+  20 Apr 2013; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.7.0.ebuild,
+  metadata.xml, qmmp-9999.ebuild:
+  Version bump
+
+*qmmp-0.6.8 (25 Mar 2013)
+
+  25 Mar 2013; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.6.8.ebuild:
+  Version bump
+
+  03 Mar 2013; Markos Chandras <hwoarang@gentoo.org> -qmmp-0.6.6.ebuild:
+  remove old
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> qmmp-0.6.5.ebuild,
+  qmmp-0.6.6.ebuild, qmmp-0.6.7.ebuild, qmmp-9999.ebuild:
+  Move Qt dependencies to the new category
+
+*qmmp-0.6.7 (21 Feb 2013)
+
+  21 Feb 2013; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.6.7.ebuild:
+  Version bump
+
+  19 Feb 2013; Markos Chandras <hwoarang@gentoo.org> qmmp-0.6.6.ebuild,
+  qmmp-9999.ebuild:
+  kde support requires dbus. Bug #452778
+
+  18 Jan 2013; Agostino Sarubbo <ago@gentoo.org> -qmmp-0.6.0.ebuild:
+  Remove old
+
+  18 Jan 2013; Agostino Sarubbo <ago@gentoo.org> qmmp-0.6.5.ebuild:
+  Stable for x86, wrt bug #440822
+
+  18 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> qmmp-0.6.5.ebuild:
+  Stable on amd64, wrt bug #440822
+
+  16 Jan 2013; Samuli Suominen <ssuominen@gentoo.org> qmmp-0.6.6.ebuild:
+  Fix compability with libcdio-paranoia.
+
+*qmmp-0.6.6 (14 Jan 2013)
+
+  14 Jan 2013; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.6.6.ebuild:
+  Version bump
+
+  22 Dec 2012; Markos Chandras <hwoarang@gentoo.org> -qmmp-0.6.3.ebuild,
+  -qmmp-0.6.4.ebuild:
+  Remove old
+
+*qmmp-0.6.5 (08 Dec 2012)
+
+  08 Dec 2012; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.6.5.ebuild:
+  Version bump
+
+*qmmp-0.6.4 (05 Nov 2012)
+
+  05 Nov 2012; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.6.4.ebuild:
+  Version bump
+
+  04 Nov 2012; Markos Chandras <hwoarang@gentoo.org> qmmp-0.6.3.ebuild,
+  qmmp-9999.ebuild:
+  Revert my last commit
+
+  04 Nov 2012; Markos Chandras <hwoarang@gentoo.org> qmmp-0.6.3.ebuild,
+  qmmp-9999.ebuild:
+  Switch from udisks:0 to udisks:2 per bug #439646
+
+  25 Aug 2012; Markos Chandras <hwoarang@gentoo.org> -qmmp-0.6.2.ebuild:
+  Remove old
+
+*qmmp-0.6.3 (17 Aug 2012)
+
+  17 Aug 2012; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.6.3.ebuild:
+  Version bump. Bug #431720
+
+  04 Aug 2012; Agostino Sarubbo <ago@gentoo.org> -qmmp-0.5.4.ebuild:
+  Remove old
+
+  02 Aug 2012; Markos Chandras <hwoarang@gentoo.org> qmmp-0.6.0.ebuild:
+  Stable on amd64 wrt bug #428622
+
+  31 Jul 2012; Markos Chandras <hwoarang@gentoo.org>
+  -files/qmmp-0.6.1-enca.patch:
+  Remove obsolete patch file
+
+*qmmp-0.6.2 (31 Jul 2012)
+
+  31 Jul 2012; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.6.2.ebuild,
+  -qmmp-0.6.1-r1.ebuild:
+  Version bump
+
+  31 Jul 2012; Jeff Horelick <jdhore@gentoo.org> qmmp-0.6.0.ebuild:
+  marked x86 per bug 428622
+
+  30 Jul 2012; Agostino Sarubbo <ago@gentoo.org> -qmmp-0.5.5.ebuild,
+  -qmmp-0.5.6.ebuild, -qmmp-0.6.1.ebuild:
+  Remove old
+
+*qmmp-0.6.1-r1 (28 Jul 2012)
+
+  28 Jul 2012; Agostino Sarubbo <ago@gentoo.org> +files/qmmp-0.6.1-enca.patch,
+  +qmmp-0.6.1-r1.ebuild:
+  fixed crash in enca_set_threshold, thanks to Linubie and Franz Fellner, wrt to
+  bug #428364
+
+*qmmp-0.6.1 (24 Jul 2012)
+
+  24 Jul 2012; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.6.1.ebuild:
+  Version bump
+
+*qmmp-0.6.0 (02 Jul 2012)
+
+  02 Jul 2012; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.6.0.ebuild:
+  Version bump
+
+*qmmp-0.5.6 (16 Jun 2012)
+
+  16 Jun 2012; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.5.6.ebuild:
+  Version bump
+
+*qmmp-0.5.5 (25 May 2012)
+
+  25 May 2012; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.5.5.ebuild:
+  Version bump
+
+  30 Apr 2012; Agostino Sarubbo <ago@gentoo.org> -qmmp-0.5.2.ebuild,
+  -qmmp-0.5.3.ebuild:
+  Remove old
+
+  31 Mar 2012; Agostino Sarubbo <ago@gentoo.org> qmmp-0.5.4.ebuild:
+  Stable for X86/AMD64, wrt bug #410265
+
+  27 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> qmmp-0.5.2.ebuild,
+  qmmp-0.5.3.ebuild, qmmp-0.5.4.ebuild, qmmp-9999.ebuild:
+  Pin to SLOT="0" of sys-fs/udisks.
+
+*qmmp-0.5.4 (02 Mar 2012)
+
+  02 Mar 2012; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.5.4.ebuild:
+  Version bump
+
+*qmmp-0.5.3 (22 Jan 2012)
+
+  22 Jan 2012; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.5.3.ebuild:
+  version bump
+
+  30 Nov 2011; Markos Chandras <hwoarang@gentoo.org> qmmp-0.5.2.ebuild,
+  qmmp-9999.ebuild:
+  allow media-video/mplayer2 for mplayer useflag
+
+  04 Nov 2011; Markos Chandras <hwoarang@gentoo.org> metadata.xml,
+  qmmp-9999.ebuild, qmmp-0.5.2.ebuild:
+  Add missing game useflag. BUg #388767. Thanks to Dmitry <bigsiama@yandex.ru>
+
+  18 Oct 2011; Markos Chandras <hwoarang@gentoo.org> -qmmp-0.5.1.ebuild:
+  old
+
+  18 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> qmmp-0.5.2.ebuild:
+  x86 stable wrt bug #387201
+
+  16 Oct 2011; Tony Vroon <chainsaw@gentoo.org> qmmp-0.5.2.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Elijah "Armageddon" El Lazkani in bug #387201.
+
+*qmmp-0.5.2 (05 Sep 2011)
+
+  05 Sep 2011; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.5.2.ebuild:
+  Version bump. Bug #381889
+
+  11 Aug 2011; Markos Chandras <hwoarang@gentoo.org> -qmmp-0.5.0.ebuild:
+  ^
+
+  09 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> qmmp-0.5.1.ebuild:
+  Marked ~ppc wrt #360469 by Alexander Koryushkin <madcored@gmail.com>
+
+  17 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  mms USE flag is now global.
+
+  13 Jul 2011; Markus Meier <maekke@gentoo.org> qmmp-0.5.1.ebuild:
+  x86 stable, bug #372163
+
+  18 Jun 2011; Markos Chandras <hwoarang@gentoo.org> qmmp-0.5.1.ebuild:
+  Stable on amd64 wrt bug #372163
+
+  29 May 2011; Markos Chandras <hwoarang@gentoo.org> -qmmp-0.4.3.ebuild,
+  -qmmp-0.4.4.ebuild, -qmmp-0.4.5.ebuild:
+  remove old
+
+  27 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> qmmp-0.5.0.ebuild:
+  x86 stable wrt bug #367231
+
+*qmmp-0.5.1 (20 May 2011)
+
+  20 May 2011; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.5.1.ebuild:
+  Version bump
+
+  15 May 2011; Christoph Mende <angelos@gentoo.org> qmmp-0.5.0.ebuild:
+  Stable on amd64 wrt bug #367231
+
+  26 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> qmmp-0.4.3.ebuild,
+  qmmp-0.4.4.ebuild, qmmp-0.4.5.ebuild, qmmp-0.5.0.ebuild, qmmp-9999.ebuild:
+  Depend on virtual/ffmpeg instead of media-video/ffmpeg.
+
+  25 Mar 2011; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.5.0.ebuild:
+  Version bump
+
+*qmmp-0.5.0 (25 Mar 2011)
+
+  25 Mar 2011; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.5.0.ebuild:
+  Version bump
+
+*qmmp-0.4.5 (11 Mar 2011)
+
+  11 Mar 2011; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.4.5.ebuild:
+  Version bump
+
+*qmmp-0.4.4 (15 Feb 2011)
+
+  15 Feb 2011; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.4.4.ebuild:
+  Version bump
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> qmmp-0.4.3.ebuild,
+  qmmp-9999.ebuild:
+  Remove USE="hal" (replaced by USE="udev") wrt #313389.
+
+  04 Dec 2010; Markos Chandras <hwoarang@gentoo.org> -qmmp-0.4.2.ebuild,
+  qmmp-0.4.3.ebuild:
+  Stable on amd64 wrt bug #347709. Remove old ebuild
+
+  04 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> qmmp-0.4.3.ebuild:
+  x86 stable wrt bug #347709
+
+  03 Nov 2010; Markos Chandras <hwoarang@gentoo.org> qmmp-0.4.2.ebuild,
+  qmmp-0.4.3.ebuild, qmmp-9999.ebuild:
+  Replace qt-gui dependency with qt-qt3support
+
+*qmmp-0.4.3 (03 Nov 2010)
+
+  03 Nov 2010; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.4.3.ebuild:
+  Version bump
+
+  10 Oct 2010; Markos Chandras <hwoarang@gentoo.org> -qmmp-0.4.1.ebuild:
+  Remove old ebuild
+
+  10 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> qmmp-0.4.2.ebuild:
+  x86 stable wrt bug #340277
+
+  10 Oct 2010; Markos Chandras <hwoarang@gentoo.org> qmmp-0.4.2.ebuild:
+  Stable on amd64 wrt bug #340277
+
+  14 Sep 2010; Markos Chandras <hwoarang@gentoo.org> -qmmp-0.4.0.ebuild,
+  qmmp-0.4.1.ebuild:
+  Stable on amd64 334881. Remove old ebuild
+
+  14 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> qmmp-0.4.1.ebuild:
+  x86 stable wrt bug #334881
+
+  13 Sep 2010; Markos Chandras <hwoarang@gentoo.org> qmmp-0.4.1.ebuild,
+  qmmp-0.4.2.ebuild, qmmp-9999.ebuild:
+  Add missing qt-opengl dependency for projectm plugin. Bug #334881
+
+*qmmp-0.4.2 (03 Sep 2010)
+
+  03 Sep 2010; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.4.2.ebuild:
+  Version bump
+
+  30 Aug 2010; Markos Chandras <hwoarang@gentoo.org> qmmp-9999.ebuild:
+  Add udisks configure option which completes my last commit
+
+  30 Aug 2010; Markos Chandras <hwoarang@gentoo.org> qmmp-9999.ebuild,
+  metadata.xml:
+  Add udisks use flag for removal devices
+
+  28 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  -files/qmmp-0.3.2-kio-file-path-fix.patch:
+  Remove useless patch thanks to scarabeus
+
+  27 Aug 2010; Markos Chandras <hwoarang@gentoo.org> -qmmp-0.3.1.ebuild,
+  -qmmp-0.3.2-r1.ebuild, -qmmp-0.3.3.ebuild, -qmmp-0.3.4.ebuild:
+  Remove old ebuilds
+
+  15 Jul 2010; Markos Chandras <hwoarang@gentoo.org> qmmp-0.4.1.ebuild,
+  qmmp-9999.ebuild:
+  Use cmake-utils_use_use function instead of qmmp_use_enable
+
+  14 Jul 2010; Markos Chandras <hwoarang@gentoo.org> qmmp-0.4.1.ebuild,
+  qmmp-9999.ebuild:
+  Refactor qmmp_use_enable function using cmake-util_use. Thanks to Tomáš
+  Chvátal <scarabeus@gentoo.org>
+
+  14 Jul 2010; Christian Faulhammer <fauli@gentoo.org> qmmp-0.4.0.ebuild:
+  stable x86, bug 325635
+
+  26 Jun 2010; Christoph Mende <angelos@gentoo.org> qmmp-0.4.0.ebuild:
+  Stable on amd64 wrt bug #325635
+
+*qmmp-0.4.1 (13 Jun 2010)
+
+  13 Jun 2010; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.4.1.ebuild,
+  metadata.xml:
+  Version bump. Taking over maintainership
+
+  04 May 2010; Markos Chandras <hwoarang@gentoo.org> qmmp-9999.ebuild:
+  Replace cdrom use flag with cdda on live ebuild as well
+
+  04 May 2010; Markos Chandras <hwoarang@gentoo.org> qmmp-0.4.0.ebuild:
+  Replace cdrom use flag with cdda
+
+  03 May 2010; Lars Wendler <polynomial-c@gentoo.org> qmmp-0.4.0.ebuild,
+  qmmp-9999.ebuild:
+  non maintainer commit: Added cdrom USE flag to IUSE (reported by
+  Nikoli in bug #318243).
+
+  03 May 2010; Lars Wendler <polynomial-c@gentoo.org> qmmp-0.4.0.ebuild:
+  non maintainer commit: fixed typo in ebuild reported by Alexandr Orlenko
+  (bug #318235).
+
+*qmmp-0.4.0 (02 May 2010)
+
+  02 May 2010; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.4.0.ebuild,
+  qmmp-9999.ebuild, metadata.xml:
+  Version bump
+
+*qmmp-0.3.4 (19 Apr 2010)
+
+  19 Apr 2010; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.3.4.ebuild:
+  Version bump
+
+*qmmp-0.3.3 (11 Mar 2010)
+
+  11 Mar 2010; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.3.3.ebuild:
+  Version bump
+
+  06 Mar 2010; Markos Chandras <hwoarang@gentoo.org> qmmp-0.3.1.ebuild,
+  qmmp-0.3.2-r1.ebuild, qmmp-9999.ebuild:
+  Add qt3 use dependency. Fixes bug #307905
+
+  29 Jan 2010; Samuli Suominen <ssuominen@gentoo.org> qmmp-0.3.1.ebuild:
+  Fix depend to <media-libs/libprojectm-2 wrt #302771, thanks
+  to Paul Tobias for reporting.
+
+  20 Jan 2010; Markus Meier <maekke@gentoo.org> qmmp-0.3.1.ebuild:
+  x86 stable, bug #299921
+
+  18 Jan 2010; <hwoarang@gentoo.org> -qmmp-0.3.2.ebuild,
+  qmmp-0.3.2-r1.ebuild:
+  Remove old ebuild, fix libprojectm dependency
+
+*qmmp-0.3.2-r1 (18 Jan 2010)
+
+  18 Jan 2010; <hwoarang@gentoo.org> +qmmp-0.3.2-r1.ebuild,
+  +files/qmmp-0.3.2-kio-file-path-fix.patch:
+  Add kio-file patch. Thanks to Sebastian Pipping <sping@gentoo.org>
+
+*qmmp-0.3.2 (13 Jan 2010)
+
+  13 Jan 2010; <hwoarang@gentoo.org> +qmmp-0.3.2.ebuild:
+  Version bump
+
+  06 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org> qmmp-0.3.1.ebuild:
+  Stable on amd64 (bug #299921).
+
+*qmmp-0.3.1 (01 Nov 2009)
+
+  01 Nov 2009; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.3.1.ebuild:
+  Version bump
+
+  22 Oct 2009; Markos Chandras <hwoarang@gentoo.org> -qmmp-0.3.0.ebuild:
+  Remove old broken ebuild
+
+  15 Oct 2009; Markus Meier <maekke@gentoo.org> qmmp-0.3.0-r1.ebuild:
+  amd64/x86 stable, bug #288009
+
+  09 Oct 2009; Sebastian Pipping <sping@gentoo.org> qmmp-0.3.0-r1.ebuild,
+  qmmp-9999.ebuild:
+  Revert musepack dependency fix (thanks to ssuominen)
+
+*qmmp-9999 (09 Oct 2009)
+
+  09 Oct 2009; Sebastian Pipping <sping@gentoo.org> qmmp-0.3.0-r1.ebuild,
+  +qmmp-9999.ebuild:
+  Add live ebuild and make 0.3.0-r1 and 9999 share all code, fix musepack
+  dependency
+
+*qmmp-0.3.0-r1 (07 Oct 2009)
+
+  07 Oct 2009; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.3.0-r1.ebuild:
+  Revbump which respects use flag as it was supposed to ( fixes bug 288009 )
+
+  07 Oct 2009; Sebastian Pipping <sping@gentoo.org> metadata.xml:
+  Improve and sync bs2b use flag description
+
+  24 Sep 2009; Samuli Suominen <ssuominen@gentoo.org> qmmp-0.3.0.ebuild:
+  libmpcdec SV7 support is replaced by musepack-tools SV8 support.
+
+  20 Sep 2009; Markus Meier <maekke@gentoo.org> qmmp-0.3.0.ebuild:
+  amd64 stable, bug #284782
+
+  14 Sep 2009; Christian Faulhammer <fauli@gentoo.org> qmmp-0.3.0.ebuild:
+  stable x86, bug 284782
+
+  26 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> qmmp-0.3.0.ebuild:
+  Fix Musepack deps for SV8.
+
+  13 Jul 2009; Markos Chandras <hwoarang@gentoo.org> qmmp-0.3.0.ebuild,
+  metadata.xml:
+  Drop faad2 use flag. Use aac instead
+
+  13 Jul 2009; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add faad2 use flag on IUSE and metadata.xml
+
+*qmmp-0.3.0 (11 Jul 2009)
+
+  11 Jul 2009; Markos Chandras <hwoarang@gentoo.org> +qmmp-0.3.0.ebuild,
+  metadata.xml:
+  Version bump
+
+  07 Jun 2009; Markus Meier <maekke@gentoo.org> qmmp-0.2.4.ebuild:
+  amd64/x86 stable, bug #272348
+
+  05 Jun 2009; Ben de Groot <yngwin@gentoo.org> qmmp-0.2.4.ebuild:
+  Pull musepack-tools only when USE=musepack, thanks to Alex Dedul in
+  bug 272707
+
+*qmmp-0.2.4 (07 Apr 2009)
+
+  07 Apr 2009; Markos Chandras <hwoarang@gentoo.org>
+  +files/decoder_mad-gcc-4.3.patch, +qmmp-0.2.4.ebuild:
+  Version bump, use gcc-4.3 patch
+
+  04 Apr 2009; Markus Meier <maekke@gentoo.org> qmmp-0.2.3-r1.ebuild:
+  amd64/x86 stable, bug #263690
+
+  25 Mar 2009; Ben de Groot <yngwin@gentoo.org> -qmmp-0.2.3.ebuild,
+  qmmp-0.2.3-r1:
+  Drop old buggy revision. Drop monolithic Qt dep alternative.
+
+  23 Feb 2009; Markos Chandras <hwoarang@gentoo.org> qmmp-0.2.3,
+  qmmp-0.2.3-r1:
+  Droping CMAKE_IN_SOURCE_BUILD variable
+
+*qmmp-0.2.3-r1 (21 Feb 2009)
+
+  21 Feb 2009; Markos Chandras <hwoarang@gentoo.org>
+  +files/qmmp-0.2.3-fix-playlist-download.patch,
+  +files/qmmp-0.2.3-fix-xspf.patch, +qmmp-0.2.3-r1.ebuild:
+  revbump, fixes bug #257712, thanks to Sebastian Pipping
+
+  02 Jan 2009; Ben de Groot <yngwin@gentoo.org> qmmp-0.2.3.ebuild:
+  Let homepage refer to English version
+
+*qmmp-0.2.3 (02 Jan 2009)
+
+  02 Jan 2009; Ben de Groot <yngwin@gentoo.org> +metadata.xml,
+  +qmmp-0.2.3.ebuild:
+  Initial import. Ebuild based on the one developed in bug 180685 by Evgeniy
+  Kliymovich, Andrey Melentyev, kavol and Thomas Kuther.

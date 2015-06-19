@@ -1,0 +1,11 @@
+DEFINED_PHASES=prepare unpack
+DEPEND=app-text/xmlto >=sys-libs/libsepol-9999 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=SELinux Common Intermediate Language (CIL) Compiler
+EAPI=5
+HOMEPAGE=https://github.com/SELinuxProject/selinux/wiki
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/libsepol-9999
+RESTRICT=test
+SLOT=0
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	git-r3	3a2bd0ae504c33a50061885480f3def3	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=97aaabb64f9594b04ceced2cdd7567d6

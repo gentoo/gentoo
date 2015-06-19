@@ -1,0 +1,40 @@
+# ChangeLog for dev-db/dbmodel
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/dbmodel/ChangeLog,v 1.10 2015/06/09 13:08:07 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> dbmodel-0.3.ebuild:
+  Move Qt dependencies to the new category
+
+  15 Jan 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Remove myself from metadata
+
+  14 Sep 2010; Markos Chandras <hwoarang@gentoo.org> -dbmodel-0.2.0.ebuild,
+  dbmodel-0.3.ebuild:
+  Stable on amd64 334943. Remove old ebuild
+
+  14 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> dbmodel-0.3.ebuild:
+  x86 stable wrt bug #334943
+
+  12 Sep 2010; Markos Chandras <hwoarang@gentoo.org> dbmodel-0.3.ebuild:
+  Add missing x11-libs/qt-svg dependency per bug #334943. Migrated to qt4-r2
+
+*dbmodel-0.3 (26 Jun 2010)
+
+  26 Jun 2010; Markos Chandras <hwoarang@gentoo.org> +dbmodel-0.3.ebuild:
+  Version bump
+
+  15 Sep 2009; Dror Levin <spatz@gentoo.org> dbmodel-0.2.0.ebuild:
+  Set correct homepage, bug 285131.
+
+  11 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  dbmodel-0.2.0.ebuild:
+  Fix DEPEND/RDEPEND assignment.
+
+*dbmodel-0.2.0 (30 Jun 2009)
+
+  30 Jun 2009; Markos Chandras <hwoarang@gentoo.org> +dbmodel-0.2.0.ebuild,
+  +metadata.xml:
+  Initial commit of dbmodel application

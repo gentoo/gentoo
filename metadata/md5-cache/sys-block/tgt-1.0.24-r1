@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare setup
+DEPEND=dev-perl/Config-General dev-libs/libxslt infiniband? ( sys-infiniband/libibverbs sys-infiniband/librdmacm ) app-text/docbook-xsl-stylesheets
+DESCRIPTION=Linux SCSI target framework (tgt)
+EAPI=4
+HOMEPAGE=http://stgt.sourceforge.net
+IUSE=ibmvio infiniband fcp fcoe
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-perl/Config-General dev-libs/libxslt infiniband? ( sys-infiniband/libibverbs sys-infiniband/librdmacm ) app-text/docbook-xsl-stylesheets sys-apps/sg3_utils
+SLOT=0
+SRC_URI=https://github.com/fujita/tgt/tarball/v1.0.24 -> tgt-1.0.24.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	linux-info	8cbc678e083c23e4ad546ca6509cf304	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=a64b46c53e4b8aee31c11abdddea34b6

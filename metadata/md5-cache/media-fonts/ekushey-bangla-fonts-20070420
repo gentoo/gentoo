@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst postrm setup unpack
+DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=A collection of Free fonts for the Bangla (Bengali) script
+HOMEPAGE=http://ekushey.org/index.php/page/otf_bangla_fonts
+IUSE=X
+KEYWORDS=amd64 x86
+LICENSE=GPL-2 OFL-1.1
+SLOT=0
+SRC_URI=mirror://sourceforge/ekushey/Lohit_14-04-2007.ttf mirror://sourceforge/ekushey/Mohua_07-09-05.ttf mirror://sourceforge/ekushey/Godhuli_03-09-2005.ttf mirror://sourceforge/ekushey/Puja-17-06-2006.ttf mirror://sourceforge/ekushey/Durga_03-09-2005.ttf mirror://sourceforge/ekushey/Saraswatii_03-09-2005.ttf mirror://sourceforge/ekushey/Sharifa_03-09-2005.ttf mirror://sourceforge/ekushey/Sumit_03-09-2005.ttf mirror://sourceforge/ekushey/Punarbhaba_27-02-2006.ttf mirror://sourceforge/ekushey/SolaimanLipi_20-04-07.ttf mirror://sourceforge/ekushey/Rupali_01-02-2007.ttf
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	font	b3239d2dc442d1717b9725e2be7cb5d6	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=ea1836a34801a6982a386431ac00c153

@@ -1,0 +1,8 @@
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/sunos/solaris/5.9/sparc64/make.defaults,v 1.1 2009/06/06 03:55:06 solar Exp $
+
+ARCH="sparc64-solaris"
+CHOST="sparcv9-sun-solaris2.9"
+ACCEPT_KEYWORDS="~sparc64-solaris"
+

@@ -1,0 +1,492 @@
+# ChangeLog for net-analyzer/nagios
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios/ChangeLog,v 1.121 2015/02/21 23:22:49 mjo Exp $
+
+*nagios-4.0.8-r1 (21 Feb 2015)
+
+  21 Feb 2015; Michael Orlitzky <mjo@gentoo.org> +nagios-4.0.8-r1.ebuild,
+  metadata.xml:
+  Add myself as a maintainer and revbump to accept net-analyzer/monitoring-
+  plugins.
+
+  26 Dec 2014; Agostino Sarubbo <ago@gentoo.org> nagios-3.5.1.ebuild:
+  Stable for alpha/ppc/ppc64/sparc, wrt bug #501200
+
+  16 Dec 2014; Patrick Lauer <patrick@gentoo.org> -nagios-3.2.3.ebuild,
+  -nagios-3.3.1.ebuild:
+  Remove old after nagios-core cleanup
+
+*nagios-4.0.8 (22 Nov 2014)
+
+  22 Nov 2014; Michael Orlitzky <mjo@gentoo.org> +nagios-4.0.8.ebuild:
+  Version bump with permission from creffett, bug #485756.
+
+  06 Sep 2014; Agostino Sarubbo <ago@gentoo.org> nagios-3.5.1.ebuild:
+  Stable for x86, wrt bug #501200
+
+  06 Sep 2014; Agostino Sarubbo <ago@gentoo.org> nagios-3.5.1.ebuild:
+  Stable for amd64, wrt bug #501200
+
+  04 Sep 2014; Jeroen Roovers <jer@gentoo.org> nagios-3.5.1.ebuild:
+  Stable for HPPA (bug #501200).
+
+*nagios-3.5.1 (02 Sep 2014)
+
+  02 Sep 2014; Chris Reffett <creffett@gentoo.org> +nagios-3.5.1.ebuild:
+  Bump along with nagios-core
+
+  03 Aug 2014;  <tgall@gentoo.org> nagios-3.3.1.ebuild:
+  arm64, initial support
+
+  26 May 2014; Jeroen Roovers <jer@gentoo.org> nagios-3.3.1.ebuild:
+  Stable for HPPA too.
+
+  26 Jan 2014; Chris Reffett <creffett@gentoo.org> metadata.xml:
+  Update maintainers (add ahamilto as maintainer, me as proxy, proxy-maint herd
+  too)
+
+  05 Sep 2012; Anthony G. Basile <blueness@gentoo.org> nagios-3.3.1.ebuild:
+  Keyword ~arm, bug #389113
+
+  19 Aug 2012; Diego E. Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Re-assign to sysadmin herd.
+
+  09 Feb 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #85926
+
+  27 Aug 2011; Raúl Porcel <armin76@gentoo.org> nagios-3.3.1.ebuild:
+  alpha/sparc stable wrt #371302
+
+  19 Aug 2011; Thomas Kahle <tomka@gentoo.org> nagios-3.3.1.ebuild:
+  x86 stable per bug 371302
+
+  18 Aug 2011; Kacper Kowalik <xarthisius@gentoo.org> nagios-3.3.1.ebuild:
+  ppc/ppc64 stable wrt #371302
+
+  18 Aug 2011; Tony Vroon <chainsaw@gentoo.org> nagios-3.3.1.ebuild:
+  Marked stable on AMD64 as per arch testing by Agostino "ago" Sarubbo in
+  security bug #371302 filed by Tim Sammut.
+
+*nagios-3.3.1 (27 Jul 2011)
+
+  27 Jul 2011; Tobias Scherbaum <dertobi123@gentoo.org> -nagios-3.2.0.ebuild,
+  -nagios-3.2.1.ebuild, +nagios-3.3.1.ebuild:
+  Version bump and cleanup, #376471
+
+  25 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> nagios-3.2.3.ebuild:
+  ppc/ppc64 stable wrt #374553
+
+  24 Jul 2011; Raúl Porcel <armin76@gentoo.org> nagios-3.2.3.ebuild:
+  alpha/sparc stable wrt #374553
+
+  17 Jul 2011; Markus Meier <maekke@gentoo.org> nagios-3.2.3.ebuild:
+  x86 stable, bug #374553
+
+  16 Jul 2011; Markos Chandras <hwoarang@gentoo.org> nagios-3.2.3.ebuild:
+  Stable on amd64 wrt bug #374553
+
+  04 Mar 2011; Guy Martin <gmsoft@gentoo.org> nagios-3.2.3.ebuild:
+  Added ~hppa to KEYWORDS.
+
+  15 Oct 2010; Brent Baude <ranger@gentoo.org> nagios-3.2.1.ebuild:
+  Marking nagios-3.2.1 ppc for bug 312843
+
+*nagios-3.2.3 (07 Oct 2010)
+
+  07 Oct 2010; Tobias Scherbaum <dertobi123@gentoo.org>
+  -nagios-3.0.6.ebuild, -nagios-3.2.2.ebuild, +nagios-3.2.3.ebuild:
+  Version bump (#339831), cleanup
+
+  01 Oct 2010; Brent Baude <ranger@gentoo.org> nagios-3.2.1.ebuild:
+  Marking nagios-3.2.1 ppc64 for bug 312843
+
+  18 Sep 2010; Raúl Porcel <armin76@gentoo.org> nagios-3.2.1.ebuild:
+  sparc stable wrt #312843
+
+*nagios-3.2.2 (02 Sep 2010)
+
+  02 Sep 2010; Tobias Scherbaum <dertobi123@gentoo.org>
+  +nagios-3.2.2.ebuild:
+  Version bump
+
+  23 Jul 2010; Tobias Klausmann <klausman@gentoo.org> nagios-3.2.1.ebuild:
+  Stable on alpha, bug #312843
+
+  23 Jul 2010; Markus Meier <maekke@gentoo.org> nagios-3.2.1.ebuild:
+  amd64 stable, bug #312843
+
+  13 Jul 2010; Christian Faulhammer <fauli@gentoo.org> nagios-3.2.1.ebuild:
+  stable x86, bug 312843
+
+  09 May 2010; Raúl Porcel <armin76@gentoo.org> nagios-3.2.0.ebuild:
+  alpha/sparc stable wrt #312843
+
+  18 Apr 2010; <nixnut@gentoo.org> nagios-3.2.0.ebuild:
+  ppc stable #312843
+
+  12 Apr 2010; Markus Meier <maekke@gentoo.org> nagios-3.2.0.ebuild:
+  amd64/x86 stable, bug #312843
+
+*nagios-3.2.1 (02 Apr 2010)
+
+  02 Apr 2010; Tobias Scherbaum <dertobi123@gentoo.org> -nagios-2.12.ebuild,
+  +nagios-3.2.1.ebuild:
+  Version bump, plus remove old 2.x series
+
+*nagios-3.2.0 (13 Aug 2009)
+
+  13 Aug 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  -nagios-3.1.2.ebuild, +nagios-3.2.0.ebuild:
+  Version bump
+
+*nagios-3.1.2 (25 Jun 2009)
+
+  25 Jun 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  -nagios-3.1.0.ebuild, +nagios-3.1.2.ebuild:
+  Bump, somehow i forgot about it *sigh*
+
+  18 Mar 2009; Brent Baude <ranger@gentoo.org> nagios-3.0.6.ebuild:
+  Marking nagios-3.0.6 ppc stable for bug 256177
+
+  07 Mar 2009; Markus Meier <maekke@gentoo.org> nagios-3.0.6.ebuild:
+  amd64/x86 stable, bug #256177
+
+  04 Mar 2009; Ferris McCormick <fmccor@gentoo.org> nagios-3.0.6.ebuild:
+  Sparc stable, part of Bug #256177.
+
+  02 Feb 2009; Tobias Scherbaum <dertobi123@gentoo.org> nagios-3.0.6.ebuild,
+  nagios-3.1.0.ebuild:
+  Inherit multilib eclass
+
+  01 Feb 2009; Tobias Klausmann <klausman@gentoo.org> nagios-3.0.6.ebuild:
+  Stable on alpha, bug #256177
+
+  26 Jan 2009; Brent Baude <ranger@gentoo.org> nagios-3.0.6.ebuild:
+  Marking nagios-3.0.6 ppc64 stable for bug 256177
+
+*nagios-3.1.0 (25 Jan 2009)
+
+  25 Jan 2009; Tobias Scherbaum <dertobi123@gentoo.org> nagios-3.0.6.ebuild,
+  +nagios-3.1.0.ebuild:
+  Version bump (and set on nagios-plugins to 1.4.13-r1 for 3.0.6, too)
+
+  04 Jan 2009; Tobias Scherbaum <dertobi123@gentoo.org> nagios-3.0.6.ebuild:
+  Fix detection for incompatible upgrades
+
+*nagios-3.0.6 (02 Dec 2008)
+
+  02 Dec 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  -nagios-3.0.5.ebuild, +nagios-3.0.6.ebuild:
+  Version bump
+
+*nagios-3.0.5 (06 Nov 2008)
+
+  06 Nov 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  -nagios-3.0.4.ebuild, +nagios-3.0.5.ebuild:
+  Version bump
+
+*nagios-3.0.4 (16 Oct 2008)
+
+  16 Oct 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  -nagios-3.0.3.ebuild, +nagios-3.0.4.ebuild:
+  Version bump
+
+  28 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org> -nagios-2.11.ebuild,
+  -nagios-3.0.2.ebuild:
+  Clean old versions
+
+*nagios-3.0.3 (25 Jun 2008)
+
+  25 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  +nagios-3.0.3.ebuild:
+  Version bump
+
+  08 Jun 2008; Tobias Scherbaum <dertobi123@gentoo.org> nagios-3.0.2.ebuild:
+  Add check if we are upgrading from <nagios-3.
+
+  29 May 2008; Tobias Scherbaum <dertobi123@gentoo.org> nagios-3.0.2.ebuild:
+  Adjust nagios-plugins dep
+
+  22 May 2008; Markus Meier <maekke@gentoo.org> nagios-2.12.ebuild:
+  amd64 stable, bug #208398
+
+  22 May 2008; Markus Rothe <corsair@gentoo.org> nagios-2.12.ebuild:
+  Stable on ppc64; bug #208398
+
+  21 May 2008; Christian Faulhammer <opfer@gentoo.org> nagios-2.12.ebuild:
+  stable x86, security bug 208398
+
+  21 May 2008; Ferris McCormick <fmccor@gentoo.org> nagios-2.12.ebuild:
+  Sparc stable, Security Bug #208398.
+
+*nagios-3.0.2 (21 May 2008)
+*nagios-2.12 (21 May 2008)
+
+  21 May 2008; Tobias Scherbaum <dertobi123@gentoo.org> +nagios-2.12.ebuild,
+  -nagios-3.0.1.ebuild, +nagios-3.0.2.ebuild:
+  Bump to 2.12 and 3.0.2 for #208398
+
+*nagios-3.0.1 (27 Apr 2008)
+
+  27 Apr 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  +nagios-3.0.1.ebuild:
+  bump for nagios-3
+
+  23 Mar 2008; Tobias Scherbaum <dertobi123@gentoo.org> -nagios-2.10.ebuild,
+  nagios-2.11.ebuild:
+  Remove old version & sparc keyword for 2.11
+
+  21 Mar 2008; Brent Baude <ranger@gentoo.org> nagios-2.11.ebuild:
+  Marking nagios-2.11 ppc64 for bug 213766
+
+  21 Mar 2008; Markus Meier <maekke@gentoo.org> nagios-2.11.ebuild:
+  amd64/x86 stable, security bug #213766
+
+  14 Mar 2008; Caleb Tennis <caleb@gentoo.org> nagios-2.10.ebuild:
+  amd64 stable, per #205335
+
+*nagios-2.11 (14 Mar 2008)
+
+  14 Mar 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  -nagios-1.4.1.ebuild, +nagios-2.11.ebuild:
+  Version bump
+
+  21 Jan 2008; Raúl Porcel <armin76@gentoo.org> nagios-2.10.ebuild:
+  sparc stable wrt #205335
+
+  13 Jan 2008; Brent Baude <ranger@gentoo.org> nagios-2.10.ebuild:
+  Marking nagios-2.10 ppc64 for bug 205570
+
+  12 Jan 2008; Dawid Węgliński <cla@gentoo.org> nagios-2.10.ebuild:
+  Stable on x86 (bug #205335)
+
+*nagios-2.10 (22 Oct 2007)
+
+  22 Oct 2007; Tobias Scherbaum <dertobi123@gentoo.org> -nagios-2.9.ebuild,
+  +nagios-2.10.ebuild:
+  Version bump
+
+  10 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  -nagios-2.3.1.ebuild, -nagios-2.4.ebuild, -nagios-2.5.ebuild,
+  -nagios-2.8.ebuild:
+  Clean out old versions.
+
+*nagios-2.9 (08 May 2007)
+
+  08 May 2007; Tobias Scherbaum <dertobi123@gentoo.org> +nagios-2.9.ebuild:
+  Version bump to 2.9
+
+  01 May 2007; Marius Mauch <genone@gentoo.org> nagios-1.4.1.ebuild,
+  nagios-2.3.1.ebuild, nagios-2.4.ebuild, nagios-2.5.ebuild,
+  nagios-2.8.ebuild:
+  Replacing einfo with elog
+
+*nagios-2.8 (12 Mar 2007)
+
+  12 Mar 2007; Martin Jackson <mjolnir@gentoo.org> +nagios-2.8.ebuild:
+  Version bump to 2.8 for #159571
+
+  21 Oct 2006; Thomas Cort <tcort@gentoo.org> nagios-2.5.ebuild:
+  Added ~alpha keyword wrt Bug #110130.
+
+*nagios-2.5 (18 Jul 2006)
+
+  18 Jul 2006; Lance Albertson <ramereth@gentoo.org> -nagios-1.4.ebuild,
+  +nagios-2.5.ebuild:
+  * Version bump
+  * Clean old ebuild
+
+  23 Jun 2006; Eldad Zack <eldad@gentoo.org> nagios-2.3.1.ebuild,
+  nagios-2.4.ebuild:
+  fixed nagios-imagepack dep, bug #137668
+
+  16 Jun 2006; Michael Sterrett <mr_bones_@gentoo.org> -nagios-2.3.ebuild:
+  removed due to broken deps
+
+*nagios-2.4 (01 Jun 2006)
+
+  01 Jun 2006; Lance Albertson <ramereth@gentoo.org> +nagios-2.4.ebuild:
+  * Version bump
+
+  16 May 2006; Markus Rothe <corsair@gentoo.org> nagios-1.4.1.ebuild:
+  Stable on ppc64; bug #133487
+
+  16 May 2006; Gustavo Zacarias <gustavoz@gentoo.org> nagios-1.4.1.ebuild:
+  Stable on sparc wrt security #133487
+
+  16 May 2006; Chris Gianelloni <wolf31o2@gentoo.org> nagios-1.4.1.ebuild:
+  Stable on x86 wrt bug #133487.
+
+*nagios-2.3.1 (16 May 2006)
+*nagios-1.4.1 (16 May 2006)
+
+  16 May 2006; Lance Albertson <ramereth@gentoo.org> +nagios-1.4.1.ebuild,
+  +nagios-2.3.1.ebuild:
+  * Version bump for yet another security issue (see bug #133487)
+
+  07 May 2006; Markus Rothe <corsair@gentoo.org> nagios-1.4.ebuild:
+  Stable on ppc64
+
+  06 May 2006; Eldad Zack <eldad@gentoo.org> -nagios-1.2.ebuild,
+  -nagios-1.3.ebuild:
+  removed versions wrt security #132159
+
+  06 May 2006; Eldad Zack <eldad@gentoo.org> -nagios-2.0.ebuild,
+  -nagios-2.1.ebuild, -nagios-2.2.ebuild:
+  removed versions wrt security #132159
+
+  05 May 2006; Lance Albertson <ramereth@gentoo.org> nagios-1.4.ebuild:
+  * Fix nagios-core dep
+  * Marked stable on x86 (bug #132159)
+
+  05 May 2006; Gustavo Zacarias <gustavoz@gentoo.org> nagios-1.4.ebuild:
+  Stable on sparc wrt security #132159
+
+*nagios-2.3 (03 May 2006)
+*nagios-1.4 (03 May 2006)
+
+  03 May 2006; Lance Albertson <ramereth@gentoo.org> +nagios-1.4.ebuild,
+  +nagios-2.3.ebuild:
+  * Version bump
+
+*nagios-2.2 (08 Apr 2006)
+
+  08 Apr 2006; Lance Albertson <ramereth@gentoo.org> +nagios-2.2.ebuild:
+  * Version bump
+
+*nagios-2.1 (03 Apr 2006)
+
+  03 Apr 2006; Lance Albertson <ramereth@gentoo.org> -nagios-2.0_rc1.ebuild,
+  -nagios-2.0_rc2.ebuild, +nagios-2.1.ebuild:
+  * Version bump
+  * Clean up older release candidates
+
+*nagios-2.0 (08 Feb 2006)
+
+  08 Feb 2006; Lance Albertson <ramereth@gentoo.org> +nagios-2.0.ebuild:
+  * Version bump
+
+  11 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org> nagios-1.3.ebuild:
+  Stable on sparc
+
+*nagios-2.0_rc2 (11 Jan 2006)
+
+  11 Jan 2006; Lance Albertson <ramereth@gentoo.org> nagios-1.3.ebuild,
+  +nagios-2.0_rc2.ebuild:
+  * Stable on x86
+  * Version bump
+
+*nagios-2.0_rc1 (27 Dec 2005)
+
+  27 Dec 2005; Lance Albertson <ramereth@gentoo.org> +nagios-2.0_rc1.ebuild,
+  -nagios-2.0b_p4.ebuild, -nagios-2.0b_p5.ebuild:
+  * Version bump 
+  * Special NOTE: Removing old beta ebuilds to force the
+  correct version naming scheme on users. 2.0b_p# should have been 2.0_beta#
+  from the beginning and was never fixed.
+
+  17 Dec 2005; Markus Rothe <corsair@gentoo.org> nagios-2.0b_p5.ebuild:
+  Added ~ppc64
+
+  20 Nov 2005; Lance Albertson <ramereth@gentoo.org>
+  -files/digest-nagios-2.0b_p1, -files/digest-nagios-2.0b_p2:
+  * Fix missing digests
+
+*nagios-2.0b_p5 (19 Nov 2005)
+*nagios-1.3 (19 Nov 2005)
+
+  19 Nov 2005; Lance Albertson <ramereth@gentoo.org> +nagios-1.3.ebuild,
+  -nagios-2.0b_p1.ebuild, -nagios-2.0b_p2.ebuild, +nagios-2.0b_p5.ebuild:
+  * Version bumps
+  * Remove old ebuilds
+
+*nagios-2.0b_p4 (28 Sep 2005)
+
+  28 Sep 2005; Lance Albertson <ramereth@gentoo.org> metadata.xml,
+  +nagios-2.0b_p4.ebuild:
+  * revbump for 2.0b_p4
+  * updated metadata.xml
+
+  06 Aug 2005; Chris White <chriswhite@gentoo.org> nagios-2.0b_p1.ebuild,
+  nagios-2.0b_p2.ebuild:
+  Got rid of strange tmp directory, adjusted the 2.0* ebuild's descriptions to
+  match 1.2's with permission of dragonheart. Fixes bug #101517. Fixed header
+  issues for 1.2.
+
+  24 Feb 2005; Daniel Black <dragonheart@gentoo.org> nagios-2.0b_p1.ebuild,
+  +nagios-2.0b_p2.ebuild:
+  Version bump as per bug #83116. Thanks to Allen Parker <allenp@efn.org>
+
+*nagios-2.0b_p1 (15 Feb 2005)
+
+  15 Feb 2005; Daniel Black <dragonheart@gentoo.org> +nagios-2.0b_p1.ebuild:
+  Version bump ebuild as per bug #81826 thanks to Marco Morales 
+  <soulse@gmail.com>
+
+  24 Oct 2004; Jason Wever <weeve@gentoo.org> nagios-1.2.ebuild:
+  Stable on sparc.
+
+  23 Jul 2004; Eldad Zack <eldad@gentoo.org> nagios-1.2.ebuild:
+  Added meta ebuild notice in pkg_postrm. Closes #30469.
+
+  05 Jul 2004; Eldad Zack <eldad@gentoo.org> nagios-1.2.ebuild:
+  x86 marked stable
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> nagios-1.1.ebuild,
+  nagios-1.2.ebuild:
+  added missing IUSE
+
+*nagios-1.2 (21 Mar 2004)
+
+  21 Mar 2004; Michael Boman <mboman@gentoo.org> :
+  Version-bumped the Nagios meta package.
+
+  18 Feb 2004; Martin Holzer <mholzer@gentoo.org> nagios-1.1.ebuild:
+  removing einfo since this is done in nagios-core
+
+  02 Feb 2004; Martin Holzer <mholzer@gentoo.org> nagios-1.1.ebuild:
+  correcting einfo package.
+
+  14 Jul 2003; Patrick Kursawe <phosphan@gentoo.org> :
+  You forgot to close bug 23564 :-)
+
+  12 Jul 2003; Robin H. Johnson <robbat2@gentoo.org> files/digest-nagios-1.0
+  files/digest-nagios-1.0-r1 files/digest-nagios-1.0_beta6
+  files/digest-nagios-1.1:
+  Add long forgotten digests. Portage needs them, even tho they are empty.
+
+  14 Jul 2003; Patrick Kursawe <phosphan@gentoo.org> :
+  Generated digest files, even if there's nothing to digest...
+
+*nagios-1.1 (10 Jun 2003)
+  10 Jun 2003; Dean Bailey <alron@gentoo.org> nagios-1.1 :
+  Version bump to force updates to nagios-1.1.
+
+*nagios-1.0-r1		(11 Feb 2003)
+  11 Feb 2003; Dean Bailey <alron@gentoo.org> nagios-1.0-r1 :
+  Made changes to have the ebuild pull the latest installable
+  version of the nagios suite. Did this because of a small 
+  nagios-core update which addresses bug #14731
+  
+  15 Jan 2003; Dean Bailey <alron@gentoo.org> nagios-1.0 :
+  Changed ~x86 to x86 and added sparc and ppc keywords
+
+*nagios-1.0		(13 Jan 2003)
+  13 Jan 2003; Dean Bailey <alron@gentoo.org> nagios-1.0 :
+  Updated to latest version.
+
+*nagios-1.0_beta6	(19 Nov 2002)
+  19 Nov 2002; Dean Bailey <alron@gentoo.org> nagios-1.0_beta6 :
+  Whoops, I guess I didnt fix it properly last time. 
+  Lets try this again.
+
+*nagios-1.0_beta6	(16 Nov 2002)
+  16 Nov 2002; Dean Bailey <alron@getnoo.org> nagios-1.0_beta6 :
+  Small ebuild fix, not warrenting a revision change. The msg the ebuild 
+  gave after emerge had a small error in it. Fixed.
+
+*nagios-1.0_beta6	(1 Nov 2002)
+  1 Nov 2002; Dean Bailey <alron@gentoo.org> nagios-1.0_beta6 :
+  Initial import. Ebuild submitted by Dean Bailey <alron@gentoo.org>.
+  Christian - Manny Calavera - Neumair <christian-neumair@web.de> also
+  had submitted a bug report about nagios.

@@ -1,0 +1,19 @@
+# ChangeLog for net-mail/courierpassd
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/courierpassd/ChangeLog,v 1.4 2007/12/26 21:42:31 phreak Exp $
+
+  26 Dec 2007; Christian Heim <phreak@gentoo.org> courierpassd-1.1.2.ebuild:
+  Fixing the useless dodoc of INSTALL and COPYING, fixing the unquoted variables.
+
+  26 Dec 2007; Christian Heim <phreak@gentoo.org> courierpassd-1.1.2.ebuild:
+  Adjusting RESTRICT=nomirror to be RESTRICT=mirror.
+
+  21 Aug 2007; Jurek Bartuszek <jurek@gentoo.org> files/courierpassd:
+  Small changes in xinetd.d script
+
+*courierpassd-1.1.2 (26 Jul 2007)
+
+  26 Jul 2007; Jurek Bartuszek <jurek@gentoo.org> +files/courierpassd,
+  +metadata.xml, +courierpassd-1.1.2.ebuild:
+  Initial version (fixing bug #107207)
+

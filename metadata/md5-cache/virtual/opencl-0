@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for OpenCL implementations
+EAPI=4
+IUSE=video_cards_nvidia
+KEYWORDS=amd64 x86
+RDEPEND=|| ( video_cards_nvidia? ( x11-drivers/nvidia-drivers >=dev-util/nvidia-cuda-toolkit-3.1 ) )
+REQUIRED_USE=|| ( video_cards_nvidia )
+SLOT=0
+_md5_=93565cc29d37b0187044fb29379f1ad8

@@ -1,0 +1,53 @@
+# Copyright 1999-2015 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License, v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/releases/freebsd-10.1/package.mask,v 1.1 2015/03/01 18:25:22 mgorny Exp $
+
+# Make sure we don't get wrong versions
+<sys-freebsd/freebsd-pam-modules-10.1_alpha
+>sys-freebsd/freebsd-pam-modules-10.1.99
+<sys-freebsd/freebsd-rescue-10.1_alpha
+>sys-freebsd/freebsd-rescue-10.1.99
+<sys-freebsd/freebsd-pf-10.1_alpha
+>sys-freebsd/freebsd-pf-10.1.99
+<sys-freebsd/freebsd-mk-defs-10.1_alpha
+>sys-freebsd/freebsd-mk-defs-10.1.99
+<sys-freebsd/freebsd-lib-10.1_alpha
+>sys-freebsd/freebsd-lib-10.1.99
+<sys-freebsd/freebsd-libexec-10.1_alpha
+>sys-freebsd/freebsd-libexec-10.1.99
+<sys-freebsd/freebsd-bin-10.1_alpha
+>sys-freebsd/freebsd-bin-10.1.99
+<sys-freebsd/freebsd-sbin-10.1_alpha
+>sys-freebsd/freebsd-sbin-10.1.99
+<sys-freebsd/freebsd-ubin-10.1_alpha
+>sys-freebsd/freebsd-ubin-10.1.99
+>sys-freebsd/freebsd-usbin-10.1.99
+<sys-freebsd/freebsd-share-10.1_alpha
+>sys-freebsd/freebsd-share-10.1.99
+<sys-freebsd/freebsd-contrib-10.1_alpha
+>sys-freebsd/freebsd-contrib-10.1.99
+>sys-freebsd/freebsd-cddl-10.1.99
+<sys-freebsd/boot0-10.1_alpha
+>sys-freebsd/boot0-10.1.99
+<sys-freebsd/freebsd-sources-10.1_alpha
+>sys-freebsd/freebsd-sources-10.1.99
+
+# Mask version of -cddl and -usbin is different for ease of upgrade. bug #491774
+# Please keep <freebsd-cddl-9.2_alpha and <freebsd-usbin-9.1_alpha.
+<sys-freebsd/freebsd-cddl-9.2_alpha
+<sys-freebsd/freebsd-usbin-9.1_alpha
+
+# Alexis Ballier <aballier@gentoo.org> (19 Jul 2008)
+# JDK/JRE 1.5 are specific to fbsd 6 and 5
+=virtual/jdk-1.5*
+=virtual/jre-1.5*
+
+# Alexis Ballier <aballier@gentoo.org> (07 Nov 2011)
+# It is in freebsd-ubin starting from FreeBSD 9.0
+sys-process/fuser-bsd
+
+# Alexis Ballier <aballier@gentoo.org> (11 May 2012)
+# freebsd-lib provides a utempter compatible interface starting from FreeBSD 9.0
+# via libulog.
+# this package does not build anymore as it requires utmp
+sys-libs/libutempter

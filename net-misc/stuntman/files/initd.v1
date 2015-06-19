@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/stuntman/files/initd.v1,v 1.1 2014/01/07 11:49:44 chainsaw Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting STUNTMAN"
+	start-stop-daemon --start --quiet --exec /usr/sbin/stunserver \
+		--make-pidfile --pidfile=/run/stunserver.pid --background
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping STUNTMAN"
+	start-stop-daemon --stop --quiet --pidfile=/run/stunserver.pid
+	eend $?
+}

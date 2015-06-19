@@ -1,0 +1,47 @@
+# ChangeLog for sci-libs/mc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/mc/ChangeLog,v 1.10 2015/04/21 17:41:13 pacho Exp $
+
+  21 Apr 2015; Pacho Ramos <pacho@gentoo.org> mc-1.5.ebuild:
+  x86 stable wrt bug #534668
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> mc-1.5.ebuild:
+  Stable for amd64, wrt bug #534668
+
+  04 Jan 2015; Justin Lecher <jlec@gentoo.org> mc-1.5.ebuild, metadata.xml:
+  Bump EAPI
+
+  16 Oct 2012; Justin Lecher <jlec@gentoo.org> -mc-1.4.ebuild, mc-1.5.ebuild:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  28 Feb 2012; Justin Lecher <jlec@gentoo.org> mc-1.5.ebuild,
+  +files/mc-1.5-unbundle.patch, metadata.xml:
+  Moved to autotools-utils, EAPI=4, fix blas/lapack detection and add
+  USE=static-libs
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> mc-1.4.ebuild, mc-1.5.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> mc-1.4.ebuild, mc-1.5.ebuild:
+  Added fortran-2.eclass support
+
+*mc-1.5 (16 Apr 2011)
+
+  16 Apr 2011; Justin Lecher <jlec@gentoo.org> +mc-1.5.ebuild:
+  Version Bump
+
+  02 Nov 2010; Justin Lecher <jlec@gentoo.org> +files/1.4-doc.patch,
+  mc-1.4.ebuild:
+  Fixed automagic doxygen usage
+
+  02 Nov 2010; Justin Lecher <jlec@gentoo.org> +files/1.4-doc.patch,
+  mc-1.4.ebuild:
+  Fixed automagic doxygen usage
+
+*mc-1.4 (01 Nov 2010)
+
+  01 Nov 2010; Justin Lecher <jlec@gentoo.org> +files/1.4-multilib.patch,
+  +mc-1.4.ebuild, +files/1.4-overflow.patch, +files/1.4-superlu.patch,
+  +metadata.xml:
+  New addition

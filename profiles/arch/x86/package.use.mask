@@ -1,0 +1,252 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/x86/package.use.mask,v 1.155 2015/06/09 23:57:34 eva Exp $
+
+# This file requires >=portage-2.1.1
+
+# Gilles Dartiguelongue <eva@gentoo.org> (10 Jun 2015)
+# net-libs/dleyna-connector-dbus lack x86 keyword, bug #551634
+>=media-plugins/grilo-plugins-0.2.14 upnp-av
+
+# Ben de Groot <yngwin@gentoo.org> (15 Mar 2015)
+# media-libs/libbdplus is keyworded on x86, so unmask the useflag
+media-libs/libbluray -bdplus
+
+# Michał Górny <mgorny@gentoo.org> (01 Mar 2015)
+# pidgin-opensteamworks is only available for amd64, ppc32 and x86
+net-im/telepathy-connection-managers -steam
+
+# Andrey Grozin <grozin@gentoo.org> (23 Feb 2015)
+# Does not compile with this flag
+=dev-lisp/ecls-15.2.21 cpu_flags_x86_sse
+
+# Jeroen Roovers <jer@gentoo.org> (31 Jan 2015)
+# >x11-drivers/nvidia-drivers-346 on x86 has no UVM support (bug #534156)
+>x11-drivers/nvidia-drivers-346 uvm
+
+# Pacho Ramos <pacho@gentoo.org> (18 Jan 2015)
+# Missing keywords
+media-plugins/gst-plugins-meta vaapi
+
+# Tim Harder <radhermit@gentoo.org> (11 Oct 2014)
+# Unmask skype support for unstable keywords
+net-im/bitlbee -skype
+
+# Mike Frysinger <vapier@gentoo.org> (04 Aug 2014)
+# Unmask flashrom drivers that only work on x86 due to in/out asm insns #454024
+sys-apps/flashrom -atahpt -nic3com -nicnatsemi -nicrealtek -rayer_spi -satamv
+
+# Yixun Lan <dlan@gentoo.org> (21 May 2014)
+# sys-fs/zfs not keyworded on x86
+sys-cluster/ceph zfs
+
+# Lars Wendler <polynomial-c@gentoo.org (23 Apr 2014)
+# Works on 32bit x86
+media-sound/lmms -vst
+
+# Matt Turner <mattst88@gentoo.org> (07 Mar 2014)
+# media-libs/libomxil-bellagio keyworded on amd64/x86
+media-libs/mesa -openmax
+
+# Samuli Suominen <ssuominen@gentoo.org> (16 Feb 2014)
+# Still considered experimental by upstream:
+# http://sourceforge.net/p/mikmod/bugs/16/#17ea
+media-libs/libmikmod sse2
+media-libs/libmikmod cpu_flags_x86_sse2
+
+# Sergey Popov <pinkbyte@gentoo.org> (27 Dec 2013)
+# Boost.Context can be built on x86
+dev-libs/boost	-context
+
+# Christoph Junghans <ottxor@gentoo.org> (08 Sep 2013)
+# restrict USE=quad for x86 as there are too less registers
+sci-libs/fftw quad
+
+# Jeff Horelick <jdhore@gentoo.org> (1 Sep 2013)
+# Dependency (media-libs/libsidplayfp) only keyworded
+# on x86 and amd64. (masked in base)
+>=media-plugins/audacious-plugins-3.4 -sid
+
+# Tim Harder <radhermit@gentoo.org> (13 Aug 2013)
+# dev-lang/luajit keyworded for x86 (masked in base)
+# dev-scheme/racket keyworded for amd64 (masked in base)
+app-editors/vim -luajit -racket
+app-editors/gvim -luajit -racket
+
+# Kacper Kowalik <xarthisius@gentoo.org> (09 Aug 2013)
+# Works on x86
+sys-apps/hwloc -cuda -gl -opencl
+
+# Pacho Ramos <pacho@gentoo.org> (20 Jul 2013)
+# Keywords missing, bug #478104
+>=app-editors/gedit-plugins-3.8.3 git
+
+# Justin Lecher <jlec@gentoo.org> (21 Feb 2013)
+# cuda only works on x86 and amd64
+sci-libs/cholmod -cuda
+sci-libs/flann -cuda
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
+# sys-apps/biosdevname, systemd work on this arch (masked in base)
+sys-kernel/dracut -dracut_modules_biosdevname -dracut_modules_systemd
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
+# chromium, mono work on this arch (masked in base)
+gnome-extra/zeitgeist-datasources -chromium -tomboy
+
+# Christoph Jungans <ottxor@gentoo.org> (26 Dec 2012)
+# cuda/openmm/mkl works on x86/amd64 (masked in base)
+sci-chemistry/gromacs -cuda -mkl -openmm
+
+# Diego Elio Pettenò <flameeyes@gentoo.org> (3 Nov 2012)
+# Unmask here, as it's masked in base.
+net-libs/gnutls -dane
+
+# Johannes Huber <johu@gentoo.org> (15 Sep 2012)
+# Masked for stabilization as the use flag pulls a dep tree of hell.
+media-libs/phonon zeitgeist
+
+# Ben de Groot <yngwin@gentoo.org> (30 Jul 2012)
+# dependency keyworded here, masked in base
+media-libs/freetype -infinality
+
+# James Le Cuirot <chewi@gentoo.org> (20 May 2015)
+# Masked in base like the above.
+dev-java/icedtea -infinality
+
+# Rick Farina <zerochaos@gentoo.org> (05 July 2012)
+# masked in base, unmask x86/amd64 only
+app-crypt/johntheripper -cuda
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
+# Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
+# gobject-introspection[doctool], bug #411761
+dev-libs/gobject-introspection -doctool
+
+# Michał Górny <mgorny@gentoo.org> (11 Apr 2012)
+# JIT compilation in libzpaq generates code for x86/amd64.
+app-arch/libzpaq -jit
+
+# Arun Raghavan <ford_prefect@gentoo.org> (29 Mar 2012)
+# webrtc-audio-processing is only supported on x86/amd64. Possibly arm can be
+# added.
+# Arun Raghavan <ford_prefect@gentoo.org> (24 May 2012)
+# Mask xen USE flag by default, unmask on x86/amd64 where it is supported.
+media-sound/pulseaudio -webrtc-aec -xen
+
+# Bernard Cafarelli <voyageur@gentoo.org> (27 Feb 2012)
+# Masked in base profile, supported on this arch
+gnustep-base/gnustep-make -libobjc2
+
+# Doug Goldstein <cardoe@gentoo.org> (17 Jan 2012)
+# The SPICE server is only supported on 64-bit platforms and not on 32-bit
+app-emulation/qemu	spice
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (09 Jan 2012)
+# jsc JIT compilation is supported only on amd64/arm/x86 and their prefixes, so
+# it's masked in base profile and unmasked here (bug #396313).
+net-libs/webkit-gtk -jit
+www-client/epiphany -jit
+www-client/midori -jit
+
+# Samuli Suominen <ssuominen@gentoo.org> (06 Dec 2011)
+# NuppelVideo support is x86 only
+media-video/transcode -nuv -pic
+
+# Davide Pesavento <pesa@gentoo.org> (30 Nov 2011)
+# JavaScriptCore JIT is supported only on amd64/arm/x86,
+# so it's masked in base profile and unmasked here.
+dev-qt/qtscript -jit
+dev-qt/qtwebkit -jit
+
+# Samuli Suominen <ssuominen@gentoo.org> (25 Nov 2011)
+# Expose USE="suid" for USE="svga" only for x86 users,
+# see base/package.use.mask
+www-client/links -suid
+
+# Samuli Suominen <ssuominen@gentoo.org> (16 Oct 2011)
+# Masked in base, unmask per arch
+gnome-base/gvfs -bluray
+
+# Nirbheek Chauhan <nirbheek@gentoo.org> (17 Sep 2011)
+# Systemtap is masked in base/package.use.mask
+# Temporarily unmask in amd64/x86, bug 384647
+dev-libs/glib -systemtap
+
+# Robin H. Johnson <robbat2@gentoo.org> (10 Jul 2011)
+# PPS should work on all arches, but only keyworded on amd64/x86
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
+
+# Alexey Shvetsov <alexxy@gentoo.org> (1 Jul 2011)
+# Use mask infiniband for stable corosync and glusterfs
+=sys-cluster/glusterfs-3.1.2 infiniband
+=sys-cluster/corosync-1.3.0 infiniband
+
+# Luca Barbato <lu_zero@gentoo.org> (28 Feb 2011)
+# # Masked in base, unmask for amd64/x86
+media-video/mplayer2 -bluray
+
+# Tim Harder <radhermit@gentoo.org> (13 Feb 2011)
+# Masked in base, unmask for amd64/x86
+>=media-video/mplayer-1.0_rc4_p20101219 -bluray
+
+# Thomas Kahle <tomka@gentoo.org> (15 Jan 2011)
+# we dropped stable prelude but don't want to drop stable nufw
+=net-firewall/nufw-2.2.21 prelude
+
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (28 Nov 2010)
+# sys-devel/llvm is keyworded on x86
+media-libs/mesa -llvm
+
+# Nirbheek Chauhna <nirbheek@gentoo.org> (26 Jun 2010)
+# Inter-process communication doesn't work on anything except x86/amd64/arm
+# due to lack of atomic ops, bug 325185
+www-client/firefox -ipc
+
+# Tomáš Chvátal <scarabeus@gentoo.org> (4 Apr 2010)
+# x86 platforms works
+sys-power/pm-utils -video_cards_intel -video_cards_radeon
+
+# Vlastimil Babka <caster@gentoo.org> (31 Mar 2010)
+>=dev-java/sun-jdk-1.6 -nsplugin
+>=dev-java/sun-jre-bin-1.6 -nsplugin
+>=dev-java/ibm-jdk-bin-1.5 -nsplugin
+>=dev-java/ibm-jre-bin-1.5 -nsplugin
+
+# Jim Ramsay <lack@gentoo.org> (24 March 2011)
+# '64bit' '32bit' 'nspluginwrapper' are for amd64 only
+www-plugins/adobe-flash 32bit 64bit
+
+# Mounir Lamouri <volkmar@gentoo.org> (07 Nov 2009)
+# Masked in base, unmak for amd64/x86. Bug 267264
+media-gfx/k3d -cuda
+
+# Jean-Noël Rivasseau <elvanor@gentoo.org> (23 Sep 2009)
+# X use flag only for amd64/x86, bug 285951.
+media-gfx/iscan -X
+
+# Tomáš Chvátal <scarabeus@gentoo.org> (10 Sep 2009)
+# quakeforge has video_cards_voodoo enabled only for x86
+games-fps/quakeforge -video_cards_tdfx
+
+# Tomas Chvatal <scarabeus@gentoo.org> (24 Nov 2008)
+# masked in base, unmask for x86/amd64
+sci-misc/boinc -cuda
+
+# Robert Buchholz <rbu@gentoo.org> (16 Aug 2008)
+# masked in base, unmask for x86/amd64
+dev-python/kaa-base -tls
+
+# Serkan Kaba <serkan@gentoo.org> (20 Jul 2008)
+app-text/enchant -zemberek
+
+x11-terms/eterm sse2
+x11-terms/eterm cpu_flags_x86_sse2
+
+# Christian Faulhammer <opfer@gentoo.org> (14 Jan 2008)
+# only works on x86
+dev-java/ibm-jdk-bin -alsa
+dev-java/ibm-jre-bin -alsa
+
+# Steve Dibb <beandog@gentoo.org> (29 Sept 2008)
+media-video/mplayer -cpudetection -custom-cpuopts -bindist

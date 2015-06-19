@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=games-misc/fortune-mod
+DESCRIPTION=Fortune database of quotes from gentoo.ru forum and gentoo@conference.gentoo.ru
+EAPI=4
+HOMEPAGE=http://fortunes.gentoo.ru
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+LICENSE=fairuse
+RDEPEND=games-misc/fortune-mod
+SLOT=0
+SRC_URI=http://slepnoga.googlecode.com/files/gentoo-ru-0.25.gz http://marsoft.dyndns.info/fortunes-gentoo-ru/gentoo-ru-0.25.gz
+_md5_=4bf375a73b676b1466649663db4b1616

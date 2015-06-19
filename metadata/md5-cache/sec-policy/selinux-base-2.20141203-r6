@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install preinst prepare
+DEPEND=>=sys-apps/policycoreutils-2.3 virtual/udev !<=sec-policy/selinux-base-policy-2.20120725 sys-devel/m4 >=sys-apps/checkpolicy-2.3
+DESCRIPTION=Gentoo base policy for SELinux
+EAPI=5
+HOMEPAGE=http://www.gentoo.org/proj/en/hardened/selinux/
+IUSE=+peer_perms +open_perms +ubac +unconfined doc
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/policycoreutils-2.3 virtual/udev !<=sec-policy/selinux-base-policy-2.20120725
+SLOT=0
+SRC_URI=https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20141203.tar.bz2 http://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20141203-r6.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=cf341faa2d94ca45e298219e0470234d

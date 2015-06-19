@@ -1,0 +1,48 @@
+# ChangeLog for games-board/grhino
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/grhino/ChangeLog,v 1.13 2014/09/11 23:10:01 mr_bones_ Exp $
+
+  11 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org> grhino-0.16.1.ebuild:
+  EAPI=5; tidy
+
+  10 Oct 2010; Christian Faulhammer <fauli@gentoo.org> grhino-0.16.1.ebuild:
+  stable x86, bug 340012
+
+  10 Oct 2010; Markos Chandras <hwoarang@gentoo.org> grhino-0.16.1.ebuild:
+  Stable on amd64 wrt bug #340012
+
+*grhino-0.16.1 (04 Sep 2010)
+
+  04 Sep 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +grhino-0.16.1.ebuild:
+  version bump
+
+  25 Oct 2009; Markus Meier <maekke@gentoo.org> grhino-0.16.0.ebuild:
+  amd64/x86 stable, bug #288917
+
+  04 May 2009; Michael Sterrett <mr_bones_@gentoo.org> grhino-0.16.0.ebuild:
+  EAPI=2
+
+  02 May 2008; Tristan Heaven <nyhm@gentoo.org>
+  +files/grhino-0.16.0-gcc43.patch, grhino-0.16.0.ebuild:
+  Fix building with gcc-4.3
+
+  20 Mar 2008; Tristan Heaven <nyhm@gentoo.org> grhino-0.16.0.ebuild:
+  Add ~amd64 keyword
+
+  11 Jun 2007; Tristan Heaven <nyhm@gentoo.org> grhino-0.16.0.ebuild:
+  Add nls USE flag
+
+  09 Jan 2007; <tupone@gentoo.org> grhino-0.16.0.ebuild:
+  Install menu entry only if gnome use flag has been specified
+
+  08 Jan 2007; <tupone@gentoo.org> grhino-0.16.0.ebuild:
+  Defaulting to use gtp if neither gnome or gtp are specified
+
+  08 Jan 2007; <tupone@gentoo.org> grhino-0.16.0.ebuild:
+  Adding more errors handling
+
+*grhino-0.16.0 (08 Jan 2007)
+
+  08 Jan 2007; <tupone@gentoo.org> +grhino-0.16.0.ebuild:
+  New ebuild. Bug #90373 by Anton Romanov

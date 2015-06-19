@@ -1,0 +1,30 @@
+# ChangeLog for app-text/fbless
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/fbless/ChangeLog,v 1.5 2015/06/06 07:56:46 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*fbless-0.2.2-r1 (09 Apr 2013)
+
+  09 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> -fbless-0.2.2.ebuild,
+  +fbless-0.2.2-r1.ebuild, fbless-9999.ebuild:
+  Revision bump: EAPI 5, port to distutils-r1 eclass, add ~amd64-linux and
+  ~x86-linux keywords. Sync live ebuild
+
+  30 Aug 2012; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Set correct email address, drop proxy-maint herd
+
+*fbless-9999 (18 Jul 2012)
+*fbless-0.2.2 (18 Jul 2012)
+
+  18 Jul 2012; Ben de Groot <yngwin@gentoo.org> +fbless-0.2.2.ebuild,
+  +fbless-9999.ebuild, -fbless-0.2.1.ebuild:
+  Version bump for new, active, fork. Add live ebuild. Bug #427006.
+
+*fbless-0.2.1 (13 Jul 2012)
+
+  13 Jul 2012; Ben de Groot <yngwin@gentoo.org> +fbless-0.2.1.ebuild,
+  +metadata.xml:
+  Initial commit. Ebuild based on the one provided by Sergey Popov in bug
+  #426350 who will proxy-maintain this package.

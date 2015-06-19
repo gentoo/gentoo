@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=app-arch/bzip2 x11-libs/gtk+:2 >=media-libs/libpng-1.2:0 x11-libs/libXinerama wmf? ( >=media-libs/libwmf-0.2.8 ) mng? ( media-libs/libmng ) svg? ( gnome-base/librsvg ) mplayer? ( media-video/mplayer ) nls? ( sys-devel/gettext ) virtual/pkgconfig
+DESCRIPTION=Powerful GTK+ based image & movie viewer
+EAPI=4
+HOMEPAGE=http://gtkmmviewer.sourceforge.net/
+IUSE=mng nls mplayer svg wmf
+KEYWORDS=amd64 ~hppa ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=app-arch/bzip2 x11-libs/gtk+:2 >=media-libs/libpng-1.2:0 x11-libs/libXinerama wmf? ( >=media-libs/libwmf-0.2.8 ) mng? ( media-libs/libmng ) svg? ( gnome-base/librsvg ) mplayer? ( media-video/mplayer )
+SLOT=0
+SRC_URI=mirror://sourceforge/gtkmmviewer/gimageview-0.2.27.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=1f2d6ae6f61cedc2b3c167bdbc35de0c

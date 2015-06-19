@@ -1,0 +1,418 @@
+# ChangeLog for dev-perl/Class-MethodMaker
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-MethodMaker/ChangeLog,v 1.92 2015/05/01 17:23:56 dilfridge Exp $
+
+*Class-MethodMaker-2.240.0 (01 May 2015)
+
+  01 May 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  -Class-MethodMaker-2.180.0-r1.ebuild, +Class-MethodMaker-2.240.0.ebuild:
+  Version bump; remove old
+
+  05 Apr 2015; Mike Frysinger <vapier@gentoo.org>
+  Class-MethodMaker-2.210.0.ebuild:
+  Mark m68k/s390/sh stable.
+
+  14 Dec 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Class-MethodMaker-2.210.0.ebuild:
+  Stable for all wrt bug #519964
+
+  14 Dec 2014; Jeroen Roovers <jer@gentoo.org>
+  Class-MethodMaker-2.210.0.ebuild:
+  Stable for HPPA (bug #519964).
+
+*Class-MethodMaker-2.210.0 (30 Nov 2014)
+
+  30 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Class-MethodMaker-2.210.0.ebuild:
+  Version bump, bug 519964
+
+*Class-MethodMaker-2.180.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Class-MethodMaker-2.180.0-r1.ebuild, -Class-MethodMaker-2.180.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  02 Sep 2012; Torsten Veller <tove@gentoo.org> -Class-MethodMaker-2.15.ebuild:
+  Cleanup
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org>
+  Class-MethodMaker-2.180.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  17 Jun 2012; Raúl Porcel <armin76@gentoo.org>
+  Class-MethodMaker-2.180.0.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #413085
+
+  06 May 2012; Brent Baude <ranger@gentoo.org>
+  Class-MethodMaker-2.180.0.ebuild:
+  Marking Class-MethodMaker-2.180.0 ppc for bug 413085
+
+  26 Apr 2012; Jeroen Roovers <jer@gentoo.org>
+  Class-MethodMaker-2.180.0.ebuild:
+  Stable for HPPA (bug #413085).
+
+  25 Apr 2012; Markus Meier <maekke@gentoo.org>
+  Class-MethodMaker-2.180.0.ebuild:
+  arm stable, bug #413085
+
+  24 Apr 2012; Agostino Sarubbo <ago@gentoo.org>
+  Class-MethodMaker-2.180.0.ebuild:
+  Stable for amd64, wrt bug #413085
+
+  24 Apr 2012; Jeff Horelick <jdhore@gentoo.org>
+  Class-MethodMaker-2.180.0.ebuild:
+  marked x86 per bug 413085
+
+  23 Apr 2012; Brent Baude <ranger@gentoo.org>
+  Class-MethodMaker-2.180.0.ebuild:
+  Marking Class-MethodMaker-2.180.0 ppc64 for bug 413085
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org>
+  -Class-MethodMaker-2.170.0.ebuild:
+  Cleanup
+
+*Class-MethodMaker-2.180.0 (16 May 2011)
+
+  16 May 2011; Torsten Veller <tove@gentoo.org>
+  +Class-MethodMaker-2.180.0.ebuild:
+  Version bump
+
+  03 Apr 2011; Torsten Veller <tove@gentoo.org> -Class-MethodMaker-2.16.ebuild:
+  Cleanup
+
+*Class-MethodMaker-2.170.0 (04 Mar 2011)
+
+  04 Mar 2011; Torsten Veller <tove@gentoo.org>
+  +Class-MethodMaker-2.170.0.ebuild:
+  Version bump
+
+*Class-MethodMaker-2.16 (11 May 2010)
+
+  11 May 2010; Torsten Veller <tove@gentoo.org>
+  +Class-MethodMaker-2.16.ebuild:
+  Version bump
+
+  09 Jan 2010; Fabian Groffen <grobian@gentoo.org>
+  Class-MethodMaker-2.15.ebuild:
+  Transfer Prefix keywords
+
+  24 Dec 2009; Torsten Veller <tove@gentoo.org>
+  -Class-MethodMaker-1.11.ebuild, -Class-MethodMaker-2.10.ebuild,
+  -Class-MethodMaker-2.12.ebuild:
+  Cleanup
+
+  28 Oct 2009; Raúl Porcel <armin76@gentoo.org>
+  Class-MethodMaker-2.15.ebuild:
+  ia64/m68k/s390/sh table
+
+  18 Oct 2009; Tobias Klausmann <klausman@gentoo.org>
+  Class-MethodMaker-2.15.ebuild:
+  Stable on alpha, bug #283969
+
+  07 Oct 2009; Tiago Cunha <tcunha@gentoo.org>
+  Class-MethodMaker-2.15.ebuild:
+  stable sparc, bug 283969
+
+  27 Sep 2009; Brent Baude <ranger@gentoo.org>
+  Class-MethodMaker-2.15.ebuild:
+  Marking Class-MethodMaker-2.15 ppc64 stable for bug 283969
+
+  19 Sep 2009; nixnut <nixnut@gentoo.org> Class-MethodMaker-2.15.ebuild:
+  ppc stable #283969
+
+  18 Sep 2009; Markus Meier <maekke@gentoo.org>
+  Class-MethodMaker-2.15.ebuild:
+  arm stable, bug #283969
+
+  18 Sep 2009; Torsten Veller <tove@gentoo.org>
+  Class-MethodMaker-2.15.ebuild:
+  Stable on amd64 (#283969)
+
+  17 Sep 2009; Jeroen Roovers <jer@gentoo.org>
+  Class-MethodMaker-2.15.ebuild:
+  Stable for HPPA (bug #283969).
+
+  10 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  Class-MethodMaker-2.15.ebuild:
+  x86 stable, bug 283969
+
+  29 Jun 2009; Jeroen Roovers <jer@gentoo.org>
+  Class-MethodMaker-2.12.ebuild:
+  Stable for HPPA too.
+
+  13 Mar 2009; Torsten Veller <tove@gentoo.org>
+  -Class-MethodMaker-2.11.ebuild, -Class-MethodMaker-2.13.ebuild:
+  Cleanup
+
+*Class-MethodMaker-2.15 (15 Feb 2009)
+
+  15 Feb 2009; Torsten Veller <tove@gentoo.org>
+  +Class-MethodMaker-2.15.ebuild:
+  Version bump
+
+  08 Dec 2008; Torsten Veller <tove@gentoo.org>
+  Class-MethodMaker-2.12.ebuild, Class-MethodMaker-2.13.ebuild:
+  Add dev-lang/perl to DEPEND again.
+
+*Class-MethodMaker-2.13 (08 Dec 2008)
+
+  08 Dec 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +Class-MethodMaker-2.13.ebuild:
+  Version bump.
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org>
+  Class-MethodMaker-1.11.ebuild, Class-MethodMaker-2.10.ebuild,
+  Class-MethodMaker-2.11.ebuild:
+  New virtuals: module-build
+
+  05 Sep 2008; Raúl Porcel <armin76@gentoo.org>
+  Class-MethodMaker-2.12.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+  01 Aug 2008; Torsten Veller <tove@gentoo.org>
+  -Class-MethodMaker-2.07-r2.ebuild, -Class-MethodMaker-2.08.ebuild,
+  -Class-MethodMaker-2.09.ebuild:
+  Cleanup
+
+*Class-MethodMaker-2.12 (01 Aug 2008)
+
+  01 Aug 2008; Torsten Veller <tove@gentoo.org>
+  +Class-MethodMaker-2.12.ebuild:
+  Version bump
+
+  26 Jul 2008; Javier Villavicencio <the_paya@gentoo.org>
+  Class-MethodMaker-2.11.ebuild:
+  Added ~x86-fbsd keyword.
+
+  13 Jun 2008; Raúl Porcel <armin76@gentoo.org>
+  Class-MethodMaker-2.11.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+*Class-MethodMaker-2.11 (29 Apr 2008)
+
+  29 Apr 2008; Yuval Yaari <yuval@gentoo.org>
+  +Class-MethodMaker-2.11.ebuild:
+  Version bump
+
+  28 Mar 2008; Jeroen Roovers <jer@gentoo.org>
+  Class-MethodMaker-2.10.ebuild:
+  Stable for HPPA too.
+
+  10 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  Class-MethodMaker-2.10.ebuild:
+  amd64 stable
+
+  09 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  Class-MethodMaker-2.10.ebuild:
+  Stable on ppc.
+
+  23 Jul 2007; Joshua Kinard <kumba@gentoo.org>
+  Class-MethodMaker-2.10.ebuild:
+  Stable on mips.
+
+  11 Jul 2007; Markus Rothe <corsair@gentoo.org>
+  Class-MethodMaker-2.10.ebuild:
+  Stable on ppc64; bug #184979
+
+  09 Jul 2007; Michael Cummings <mcummings@gentoo.org>
+  Class-MethodMaker-2.07-r2.ebuild:
+  Marking sparc stable
+
+  05 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  Class-MethodMaker-2.10.ebuild:
+  alpha/ia64/x86 stable
+
+  21 Jun 2007; Michael Cummings <mcummings@gentoo.org>
+  Class-MethodMaker-2.09.ebuild, Class-MethodMaker-2.10.ebuild:
+  Marking sparc stable
+
+  28 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Class-MethodMaker-2.10.ebuild:
+  Disabled BUILD.PL
+
+*Class-MethodMaker-2.10 (28 Apr 2007)
+
+  28 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  +Class-MethodMaker-2.10.ebuild:
+  Version bump
+
+  02 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Class-MethodMaker-2.09.ebuild:
+  Updated src_uri for 2.09 - it appears to have switched maintainers
+  mid-release...
+
+  01 Apr 2007; Tom Gall <tgall@gentoo.org>
+  Class-MethodMaker-2.08.ebuild:
+  added ~ppc64
+
+*Class-MethodMaker-2.09 (01 Apr 2007)
+
+  01 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  +Class-MethodMaker-2.09.ebuild:
+  Version bump
+
+  01 Apr 2007; Michael Cummings <mcummings@gentoo.org>
+  Class-MethodMaker-2.08.ebuild:
+  Keywording ~mips, test on swarm
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  Class-MethodMaker-1.11.ebuild, Class-MethodMaker-2.07-r2.ebuild,
+  Class-MethodMaker-2.08.ebuild:
+  Ebuild maintenance
+
+  04 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-MethodMaker-1.11.ebuild, Class-MethodMaker-2.07-r2.ebuild,
+  Class-MethodMaker-2.08.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  14 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-MethodMaker-1.11.ebuild, Class-MethodMaker-2.07-r2.ebuild,
+  Class-MethodMaker-2.08.ebuild:
+  Forcing mb version
+
+  02 Jul 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-MethodMaker-2.08.ebuild:
+  Marking stable amd64
+
+  14 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-MethodMaker-2.07-r2.ebuild, Class-MethodMaker-2.08.ebuild:
+  Updating the ignore build file stuff
+
+  28 May 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Class-MethodMaker-2.08.ebuild:
+  Stable on alpha.
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  Class-MethodMaker-2.08.ebuild:
+  Mark 2.08 ~ia64
+
+  23 Mar 2006; Michael Hanselmann <hansmi@gentoo.org>
+  Class-MethodMaker-2.08.ebuild:
+  Stable on ppc.
+
+  23 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  Class-MethodMaker-2.08.ebuild:
+  Stable on hppa
+
+  23 Mar 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-MethodMaker-2.08.ebuild:
+  Unmasking sparc and x86
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-MethodMaker-2.08.ebuild:
+  bug 118913
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-MethodMaker-2.07-r2.ebuild, Class-MethodMaker-2.08.ebuild:
+  This module deps on module-build, but the Build.PL is still junk.
+
+*Class-MethodMaker-2.08 (13 Jan 2006)
+
+  13 Jan 2006; Michael Cummings <mcummings@gentoo.org>
+  Class-MethodMaker-2.07-r2.ebuild, +Class-MethodMaker-2.08.ebuild:
+  Version bump upstream
+
+  19 Jul 2005; Michael Cummings <mcummings@gentoo.org> -files/0-signature.t,
+  -files/C-MM-Build.patch, -Class-MethodMaker-2.07.ebuild:
+  Just cleaning up this mornings mess
+
+*Class-MethodMaker-2.07-r2 (19 Jul 2005)
+
+  19 Jul 2005; Michael Cummings <mcummings@gentoo.org> files/C-MM-Build.patch,
+  -Class-MethodMaker-2.07-r1.ebuild, +Class-MethodMaker-2.07-r2.ebuild:
+  Giving up on fixing this Build.PL - authors syntax is more than I can grok.
+  Override in eclass for cases like this, now invoked
+
+*Class-MethodMaker-2.07-r1 (19 Jul 2005)
+
+  19 Jul 2005; Michael Cummings <mcummings@gentoo.org> +files/0-signature.t,
+  +files/C-MM-Build.patch, +Class-MethodMaker-2.07-r1.ebuild,
+  Class-MethodMaker-2.07.ebuild:
+  RT Bug 13755 - the Build.PL had issues
+
+*Class-MethodMaker-2.07 (24 Apr 2005)
+
+  24 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Class-MethodMaker-1.08.ebuild, -Class-MethodMaker-1.10.ebuild,
+  -Class-MethodMaker-2.02.ebuild, -Class-MethodMaker-2.05.ebuild,
+  +Class-MethodMaker-2.07.ebuild:
+  cleaning
+
+  21 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Class-MethodMaker-1.11.ebuild:
+  Stable on ppc.
+
+  16 Mar 2005; Michael Cummings <mcummings@gentoo.org>
+  Class-MethodMaker-1.11.ebuild, -Class-MethodMaker-2.04.1.ebuild:
+  Clean up; removing 2.04.1 since it is severely broken and replaced
+
+  14 Mar 2005; Michael Cummings <mcummings@gentoo.org>
+  Class-MethodMaker-2.05.ebuild:
+  Fix for pending eclass change for Module-Build
+
+*Class-MethodMaker-2.05 (11 Mar 2005)
+
+  11 Mar 2005; Michael Cummings <mcummings@gentoo.org>
+  +Class-MethodMaker-2.05.ebuild:
+  new version; Build script is broken for this one
+
+*Class-MethodMaker-2.04.1 (21 Oct 2004)
+
+  21 Oct 2004; Michael Cummings <mcummings@gentoo.org>
+  +Class-MethodMaker-2.04.1.ebuild:
+  new version on cpan
+
+  26 Jun 2004; Danny van Dyk <kugelfang@gentoo.org>
+  Class-MethodMaker-1.11.ebuild:
+  Marked stable on amd64.
+
+*Class-MethodMaker-2.02 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  Class-MethodMaker-2.02.ebuild:
+  new version on cpan
+
+  04 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  Class-MethodMaker-1.11.ebuild:
+  stable on sparc
+
+  27 Feb 2004; Michael Cummings <mcummings@gentoo.org>
+  Class-MethodMaker-1.11.ebuild:
+  Unmasking after 198 days with no bugs
+
+  18 Feb 2004; Aron Griffis <agriffis@gentoo.org>
+  Class-MethodMaker-1.11.ebuild:
+  stable on alpha and ia64
+
+  19 Jan 2004; <gustavoz@gentoo.org> Class-MethodMaker-1.10.ebuild:
+  stable on sparc
+
+*Class-MethodMaker-1.11 (13 Aug 2003)
+
+  13 Aug 2003; Michael Cummings <mcummings@gentoo.org>
+  Class-MethodMaker-1.11.ebuild:
+  CPAN Version bump
+
+*Class-MethodMaker-1.10 (07 Jun 2003)
+
+  07 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  Class-MethodMaker-1.10.ebuild:
+  CPAN update
+
+*Class-MethodMaker-1.08 (11 Feb 2003)
+
+  11 Feb 2003; Seemant Kulleen <seemant@gentoo.org> ChangeLog
+  Class-MethodMaker-1.08.ebuild files/digest-Class-MethodMaker-1.08 :
+
+  New perl module, required by Term-ProgressBar, which is required by
+  xmltv, which is required by mythtv.  Ebuild submission by Tony Clark
+  <tclark@telia.com> in bug #13033
+
+*Class-MakeMethods-Template-1.004-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.

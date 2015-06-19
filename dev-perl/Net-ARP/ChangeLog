@@ -1,0 +1,10 @@
+# ChangeLog for dev-perl/Net-ARP
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-ARP/ChangeLog,v 1.1 2013/02/27 10:38:20 chainsaw Exp $
+
+*Net-ARP-1.0.6 (27 Feb 2013)
+
+  27 Feb 2013; Tony Vroon <chainsaw@gentoo.org> +files/1.0.6-header.diff,
+  +Net-ARP-1.0.6.ebuild, +metadata.xml:
+  Initial commit. Ebuild & patches by Fabio Rossi in bug #356577.
+

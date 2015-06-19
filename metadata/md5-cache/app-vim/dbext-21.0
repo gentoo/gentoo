@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: easy access to databases
+EAPI=5
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=356
+KEYWORDS=~amd64 ~mips ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/dbext-21.0.tar.bz2 http://dev.gentoo.org/~radhermit/vim/dbext-21.0.tar.bz2
+_eclasses_=vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=8526476e534a0e19105ba0f6ced88b03

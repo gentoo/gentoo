@@ -1,0 +1,35 @@
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/apng2gif/apng2gif-1.6.ebuild,v 1.1 2013/12/17 10:26:21 radhermit Exp $
+
+EAPI="5"
+
+inherit toolchain-funcs eutils
+
+DESCRIPTION="create a GIF from an APNG"
+HOMEPAGE="http://sourceforge.net/projects/apng2gif/"
+SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}-src.zip"
+
+LICENSE="LGPL-2.1"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+IUSE=""
+
+RDEPEND="sys-libs/zlib
+	media-libs/libpng:0="
+DEPEND="${RDEPEND}
+	app-arch/unzip"
+
+S=${WORKDIR}
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-makefile.patch
+	epatch "${FILESDIR}"/${P}-gcc-4.3.patch
+
+	tc-export CXX
+}
+
+src_install() {
+	dobin ${PN}
+	dodoc readme.txt
+}

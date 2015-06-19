@@ -1,0 +1,31 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mongodb/files/mms-agent.initd-r1,v 1.1 2014/04/09 15:40:20 ultrabug Exp $
+
+ROOTDIR=/opt/mms-agent
+PIDFILE=/var/run/mm-agent.pid
+EXEC="/usr/bin/env python agent.py"
+LOGFILE=/var/log/mongodb/mms-agent.log
+
+depend() {
+	need net
+	use syslog
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+
+	checkpath -d -m 0755 -o root:root /var/run/
+
+	start-stop-daemon --start --chdir ${ROOTDIR} --exec ${EXEC} \
+		--pidfile "${PIDFILE}" --make-pidfile --background \
+		--user mongodb:mongodb --stdout ${LOGFILE} --stderr ${LOGFILE}
+	eend $?
+}
+
+stop() {
+	ebegin "Requesting ${SVCNAME} to stop"
+	start-stop-daemon --stop --pidfile "${PIDFILE}"
+	eend $?
+}

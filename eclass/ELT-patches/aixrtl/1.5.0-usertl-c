@@ -1,0 +1,10 @@
+--- configure
++++ configure
+@@ -7130,6 +7130,7 @@
+   	  fi
+ 	  done
+ 	esac
++  	aix_use_runtimelinking=yes
+ 
+ 	exp_sym_flag='-bexport'
+ 	no_entry_flag='-bnoentry'

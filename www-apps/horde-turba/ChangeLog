@@ -1,0 +1,284 @@
+# ChangeLog for www-apps/horde-turba
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/horde-turba/ChangeLog,v 1.58 2012/09/09 17:07:25 armin76 Exp $
+
+  09 Sep 2012; Raúl Porcel <armin76@gentoo.org> horde-turba-2.3.4.ebuild,
+  horde-turba-2.3.5.ebuild:
+  Drop alpha keywords
+
+  22 Aug 2012; Alex Legler <a3li@gentoo.org> metadata.xml:
+  removing from metadata
+
+  19 Mar 2012; Raúl Porcel <armin76@gentoo.org> horde-turba-2.3.4.ebuild,
+  horde-turba-2.3.5.ebuild:
+  Drop sparc keywords
+
+  07 Mar 2012; Brent Baude <ranger@gentoo.org> horde-turba-2.3.5.ebuild:
+  Marking horde-turba-2.3.5 ppc for bug 397249
+
+  02 Mar 2012; Tobias Klausmann <klausman@gentoo.org> horde-turba-2.3.5.ebuild:
+  Stable on alpha, bug #397249
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  horde-turba-2.3.5.ebuild:
+  x86 stable wrt bug #397249
+
+  08 Feb 2012; Jeroen Roovers <jer@gentoo.org> horde-turba-2.3.5.ebuild:
+  Stable for HPPA (bug #397249).
+
+  04 Feb 2012; Agostino Sarubbo <ago@gentoo.org> horde-turba-2.3.5.ebuild:
+  Stable for amd64, wrt bug #397249
+
+  22 Oct 2010; Alex Legler <a3li@gentoo.org> -horde-turba-2.1.7.ebuild:
+  cleanup
+
+  22 Oct 2010; Jeroen Roovers <jer@gentoo.org> horde-turba-2.3.4.ebuild:
+  Stable for HPPA (bug #333207).
+
+  08 Oct 2010; Brent Baude <ranger@gentoo.org> horde-turba-2.3.4.ebuild:
+  Marking horde-turba-2.3.4 ppc for bug 333207
+
+*horde-turba-2.3.5 (29 Sep 2010)
+
+  29 Sep 2010; Alex Legler <a3li@gentoo.org> -horde-turba-2.3.3.ebuild,
+  +horde-turba-2.3.5.ebuild:
+  Version bump, contains minor bugfixes and updated i18n. Removing old
+  version.
+
+  18 Sep 2010; Raúl Porcel <armin76@gentoo.org> horde-turba-2.3.4.ebuild:
+  alpha/sparc stable wrt #333207
+
+  23 Aug 2010; Markus Meier <maekke@gentoo.org> horde-turba-2.3.4.ebuild:
+  x86 stable, bug #333207
+
+  19 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  horde-turba-2.3.4.ebuild:
+  Stable on amd64 wrt bug #333207
+
+*horde-turba-2.3.4 (27 Jul 2010)
+
+  27 Jul 2010; Alex Legler <a3li@gentoo.org> -horde-turba-2.3.2.ebuild,
+  horde-turba-2.3.3.ebuild, +horde-turba-2.3.4.ebuild:
+  Version bump, closes bug 329253. No longer try to install docs/vcf
+  directory which resulted in a bzip2 failure. Removing old version.
+
+*horde-turba-2.3.3 (17 Dec 2009)
+
+  17 Dec 2009; Alex Legler <a3li@gentoo.org> +horde-turba-2.3.3.ebuild,
+  metadata.xml:
+  Version bump, taking over maintenance
+
+*horde-turba-2.3.2 (17 Sep 2009)
+
+  17 Sep 2009; Alex Legler <a3li@gentoo.org> -horde-turba-2.2.1.ebuild,
+  -horde-turba-2.3.ebuild, +horde-turba-2.3.2.ebuild:
+  Version bump, closes bug 259349. Cleaning some old versions.
+
+*horde-turba-2.3 (30 Oct 2008)
+
+  30 Oct 2008; Gunnar Wrobel <wrobel@gentoo.org> +horde-turba-2.3.ebuild:
+  Added www-apps/horde-turba-2.3.
+
+*horde-turba-2.2.1 (24 Jun 2008)
+
+  24 Jun 2008; wrobel@gentoo.org metadata.xml, -horde-turba-2.2.ebuild,
+  +horde-turba-2.2.1.ebuild:
+  Added horde-turba-2.2.1, removed vulnerable horde-turba-2.2 (sec issue
+  #228505).
+
+*horde-turba-2.2 (01 Jun 2008)
+
+  01 Jun 2008; Mike Frysinger <vapier@gentoo.org> +horde-turba-2.2.ebuild:
+  Version bump #224333 by Arfrever Frehtes Taifersar Arahesis.
+
+  25 Feb 2008; Steve Dibb <beandog@gentoo.org> horde-turba-2.1.7.ebuild:
+  amd64 stable, bug 209960
+
+  22 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  horde-turba-2.1.7.ebuild:
+  ppc stable, bug #209960
+
+  21 Feb 2008; Jeroen Roovers <jer@gentoo.org> horde-turba-2.1.7.ebuild:
+  Stable for HPPA (bug #209960).
+
+  21 Feb 2008; Raúl Porcel <armin76@gentoo.org> horde-turba-2.1.7.ebuild:
+  alpha/sparc stable wrt security #209960
+
+  21 Feb 2008; Christian Faulhammer <opfer@gentoo.org>
+  horde-turba-2.1.7.ebuild:
+  stable x86, security bug 209960
+
+*horde-turba-2.1.7 (17 Feb 2008)
+
+  17 Feb 2008; Mike Frysinger <vapier@gentoo.org> +horde-turba-2.1.7.ebuild:
+  Version bump #209960.
+
+*horde-turba-2.1.6 (12 Jan 2008)
+
+  12 Jan 2008; Mike Frysinger <vapier@gentoo.org> +horde-turba-2.1.6.ebuild:
+  Version bump.
+
+  30 Dec 2007; Mike Frysinger <vapier@gentoo.org> horde-turba-2.1.5.ebuild:
+  Pull in PEAR-Net_LDAP for USE=ldap #143170 by Marcin Deranek.
+
+*horde-turba-2.1.5 (23 Dec 2007)
+
+  23 Dec 2007; Mike Frysinger <vapier@gentoo.org> +horde-turba-2.1.5.ebuild:
+  Version bump.
+
+  12 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  horde-turba-2.1.4.ebuild:
+  Stable on sparc
+
+*horde-turba-2.1.4 (05 May 2007)
+
+  05 May 2007; Mike Frysinger <vapier@gentoo.org> +horde-turba-2.1.4.ebuild:
+  Version bump.
+
+  06 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  horde-turba-2.1.2.ebuild:
+  Stable on Alpha.
+
+  04 Nov 2006; <blubb@gentoo.org> horde-turba-2.1.2.ebuild:
+  stable on amd64
+
+  30 Sep 2006; <ticho@gentoo.org> horde-turba-2.1.2.ebuild:
+  Stable on x86, bug #148770.
+
+  26 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  horde-turba-2.1.2.ebuild:
+  Stable on hppa wrt #148770
+
+  26 Sep 2006; Jason Wever <weeve@gentoo.org> horde-turba-2.1.2.ebuild:
+  Stable on SPARC wrt bug #148770.
+
+  23 Sep 2006; Joseph Jezak <josejx@gentoo.org> horde-turba-2.1.2.ebuild:
+  Marked ppc stable for bug #148770.
+
+*horde-turba-2.1.2 (23 Aug 2006)
+
+  23 Aug 2006; Mike Frysinger <vapier@gentoo.org> +horde-turba-2.1.2.ebuild:
+  Version bump.
+
+*horde-turba-2.1.1 (15 Jun 2006)
+
+  15 Jun 2006; Luca Longinotti <chtekk@gentoo.org>
+  +horde-turba-2.1.1.ebuild:
+  Version bump
+
+  04 Apr 2006; <blubb@gentoo.org> horde-turba-2.1.ebuild:
+  stable on amd64 wrt bug 126435
+
+  31 Mar 2006; Jose Luis Rivero <yoswink@gentoo.org> horde-turba-2.1.ebuild:
+  Stable on alpha wrt bug #126435
+
+  28 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  horde-turba-2.1.ebuild:
+  Stable on hppa wrt security #126435
+
+  28 Mar 2006; Mark Loeser <halcy0n@gentoo.org> horde-turba-2.1.ebuild:
+  Stable on x86; bug #126435
+
+  25 Mar 2006; Joseph Jezak <josejx@gentoo.org> horde-turba-2.1.ebuild:
+  Marked ppc stable for bug #126435.
+
+  20 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  horde-turba-2.1.ebuild:
+  Stable on sparc wrt security #126435
+
+*horde-turba-2.1 (09 Mar 2006)
+
+  09 Mar 2006; Mike Frysinger <vapier@gentoo.org> +horde-turba-2.1.ebuild:
+  Version bump #125571 by Pol.
+
+*horde-turba-2.0.5 (12 Dec 2005)
+
+  12 Dec 2005; Mike Frysinger <vapier@gentoo.org> +horde-turba-2.0.5.ebuild:
+  Version bump #115206 by David Watzke.
+
+*horde-turba-2.0.4 (25 Oct 2005)
+
+  25 Oct 2005; Mike Frysinger <vapier@gentoo.org> +horde-turba-2.0.4.ebuild:
+  Version bump.
+
+*horde-turba-2.0.3 (07 Aug 2005)
+
+  07 Aug 2005; Mike Frysinger <vapier@gentoo.org> +horde-turba-2.0.3.ebuild:
+  Version bump.
+
+*horde-turba-1.2.5 (26 Apr 2005)
+
+  26 Apr 2005; Mike Frysinger <vapier@gentoo.org> +horde-turba-1.2.5.ebuild:
+  Version bump for security #90365.
+
+*horde-turba-2.0.2 (23 Feb 2005)
+
+  23 Feb 2005; Mike Frysinger <vapier@gentoo.org> +horde-turba-2.0.2.ebuild,
+  -horde-turba-2.0.ebuild:
+  Version bump.
+
+*horde-turba-1.2.4 (16 Jan 2005)
+
+  16 Jan 2005; Mike Frysinger <vapier@gentoo.org> -horde-turba-1.2.3.ebuild,
+  +horde-turba-1.2.4.ebuild:
+  Version bump.
+
+*horde-turba-1.2.3 (16 Jan 2005)
+
+  16 Jan 2005; Mike Frysinger <vapier@gentoo.org> -horde-turba-1.2.2.ebuild,
+  +horde-turba-1.2.3.ebuild:
+  Version bump.
+
+*horde-turba-2.0 (24 Dec 2004)
+
+  24 Dec 2004; Mike Frysinger <vapier@gentoo.org> +horde-turba-2.0.ebuild:
+  Version bump.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  15 Aug 2004; Stuart Herbert <stuart@gentoo.org> horde-turba-1.2.2.ebuild:
+  Deps updated to reflect net-www split
+
+*horde-turba-1.2.2 (15 Aug 2004)
+
+  15 Aug 2004; Stuart Herbert <stuart@gentoo.org> +metadata.xml,
+  +horde-turba-1.2.2.ebuild:
+  Moved from net-www/horde-turba to www-apps/horde-turba.
+
+  01 Apr 2004; Chris Aniszczyk <zx@gentoo.org> horde-turba-1.2.1.ebuild,
+  horde-turba-1.2.2.ebuild:
+  Clean up + Marking ~hppa
+
+*horde-turba-1.2.2 (26 Feb 2004)
+
+  26 Feb 2004; Martin Holzer <mholzer@gentoo.org> horde-turba-1.2.2.ebuild:
+  Version bumped.
+
+  07 Jan 2004; Robin H. Johnson <robbat2@gentoo.org> horde-turba-1.2.1.ebuild:
+  fix bug #37492 and update copyright headers
+
+  15 Dec 2003; Stuart Herbert <stuart@gentoo.org> horde-turba-1.2.1.ebuild:
+  Fix for bug #32636
+
+  04 Dec 2003; Martin Holzer <mholzer@gentoo.org> horde-turba-1.2.1.ebuild:
+  added webapps-apache
+
+  19 Oct 2003; Martin Holzer <mholzer@gentoo.org> horde-turba-1.2.1.ebuild:
+  marked x86 stable.
+
+*horde-turba-1.2.1 (02 Oct 2003)
+
+  02 Oct 2003; Martin Holzer <mholzer@gentoo.org> horde-turba-1.2.1.ebuild:
+  Version bumped.
+
+*horde-turba-1.2 (08 Apr 2003)
+  08 Apr 2003; Dean Bailey <alron@gentoo.org> horde-turba-1.2 :
+  Version bump and fix for when updatin turba.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*horde-turba-1.1 (31 Oct 2002)
+
+  31 Oct 2002; Karl Trygve Kalleberg <karltk@gentoo.org> horde-turba-1.1.ebuild files/digest-horde-turba-1.1 :
+  Initial import. Ebuild submitted by Christophe GUILLOUX <cg@rootix.info>.

@@ -1,0 +1,438 @@
+diff -Naur vdr-2.0.7.orig/HISTORY vdr-2.0.7/HISTORY
+--- vdr-2.0.7.orig/HISTORY	2015-01-23 09:16:13.735620000 +0100
++++ vdr-2.0.7/HISTORY	2015-01-23 09:17:29.038614491 +0100
+@@ -7916,6 +7916,16 @@
+ - The APIVERSION has been increased to 2.0.6 due to the changes to pat.h, sdt.h and
+   the functional modification to cFont::CreateFont().
+ 
++2015-01-18: Version 2.0.6 + backport of systemd support from versions 2.1.6 and 2.1.7
++
++- Added support for systemd (thanks to Christopher Reimer). To activate this you
++  need to add "SDNOTIFY=1" to the 'make' call.
++
++2015-01-18: Version 2.0.6 + backport of reading command line arguments from files, from version 2.1$
++
++- VDR now reads command line options from *.conf files in /etc/vdr/conf.d (thanks
++  to Lars Hanisch). See vdr.1 and vdr.5 for details.
++
+ 2015-01-20: Version 2.0.7
+ 
+ - Fixed a possible division by zero in frame rate detection.
+diff -Naur vdr-2.0.7.orig/Make.config.template vdr-2.0.7/Make.config.template
+--- vdr-2.0.7.orig/Make.config.template	2015-01-23 09:16:13.736620000 +0100
++++ vdr-2.0.7/Make.config.template	2015-01-23 09:16:34.199618503 +0100
+@@ -38,6 +38,7 @@
+ 
+ #VIDEODIR  = /srv/vdr/video
+ #CONFDIR   = /var/lib/vdr
++#ARGSDIR   = /etc/vdr/conf.d
+ #CACHEDIR  = /var/cache/vdr
+ 
+ # Overrides for preset/legacy configurations:
+diff -Naur vdr-2.0.7.orig/Makefile vdr-2.0.7/Makefile
+--- vdr-2.0.7.orig/Makefile	2015-01-23 09:16:13.724620001 +0100
++++ vdr-2.0.7/Makefile	2015-01-23 09:17:58.588612330 +0100
+@@ -31,6 +31,7 @@
+ DESTDIR   ?=
+ VIDEODIR  ?= /srv/vdr/video
+ CONFDIR   ?= /var/lib/vdr
++ARGSDIR   ?= /etc/vdr/conf.d
+ CACHEDIR  ?= /var/cache/vdr
+ 
+ PREFIX    ?= /usr/local
+@@ -66,7 +67,7 @@
+ 
+ SILIB    = $(LSIDIR)/libsi.a
+ 
+-OBJS = audio.o channels.o ci.o config.o cutter.o device.o diseqc.o dvbdevice.o dvbci.o\
++OBJS = args.o audio.o channels.o ci.o config.o cutter.o device.o diseqc.o dvbdevice.o dvbci.o\
+        dvbplayer.o dvbspu.o dvbsubtitle.o eit.o eitscan.o epg.o filter.o font.o i18n.o interface.o keys.o\
+        lirc.o menu.o menuitems.o nit.o osdbase.o osd.o pat.o player.o plugin.o\
+        receiver.o recorder.o recording.o remote.o remux.o ringbuffer.o sdt.o sections.o shutdown.o\
+@@ -111,12 +112,18 @@
+ DEFINES += -DBIDI
+ LIBS += $(shell pkg-config --libs fribidi)
+ endif
++ifdef SDNOTIFY
++INCLUDES += $(shell pkg-config --cflags libsystemd-daemon)
++DEFINES += -DSDNOTIFY
++LIBS += $(shell pkg-config --libs libsystemd-daemon)
++endif
+ 
+ LIRC_DEVICE ?= /var/run/lirc/lircd
+ 
+ DEFINES += -DLIRC_DEVICE=\"$(LIRC_DEVICE)\"
+ DEFINES += -DVIDEODIR=\"$(VIDEODIR)\"
+ DEFINES += -DCONFDIR=\"$(CONFDIR)\"
++DEFINES += -DARGSDIR=\"$(ARGSDIR)\"
+ DEFINES += -DCACHEDIR=\"$(CACHEDIR)\"
+ DEFINES += -DRESDIR=\"$(RESDIR)\"
+ DEFINES += -DPLUGINDIR=\"$(LIBDIR)\"
+@@ -161,6 +168,7 @@
+ 	@echo "mandir=$(MANDIR)" >> $@
+ 	@echo "configdir=$(CONFDIR)" >> $@
+ 	@echo "videodir=$(VIDEODIR)" >> $@
++	@echo "argsdir=$(ARGSDIR)" >> $@
+ 	@echo "cachedir=$(CACHEDIR)" >> $@
+ 	@echo "resdir=$(RESDIR)" >> $@
+ 	@echo "libdir=$(LIBDIR)" >> $@
+@@ -278,6 +286,7 @@
+ install-dirs:
+ 	@mkdir -p $(DESTDIR)$(VIDEODIR)
+ #	@mkdir -p $(DESTDIR)$(CONFDIR)
++	@mkdir -p $(DESTDIR)$(ARGSDIR)
+ #	@mkdir -p $(DESTDIR)$(CACHEDIR)
+ 	@mkdir -p $(DESTDIR)$(RESDIR)
+ 
+diff -Naur vdr-2.0.7.orig/args.c vdr-2.0.7/args.c
+--- vdr-2.0.7.orig/args.c	1970-01-01 01:00:00.000000000 +0100
++++ vdr-2.0.7/args.c	2015-01-23 09:16:34.199618503 +0100
+@@ -0,0 +1,129 @@
++/*
++ * args.c: Read arguments from files
++ *
++ * See the main source file 'vdr.c' for copyright information and
++ * how to reach the author.
++ *
++ * Original version written by Lars Hanisch <dvb@flensrocker.de>.
++ *
++ * $Id: vdr-2.0.7_systemd_argsdir.patch,v 1.1 2015/01/23 08:28:14 hd_brummy Exp $
++ */
++
++#include "args.h"
++#include <unistd.h>
++
++cArgs::cArgs(const char *Argv0)
++{
++  argv0 = Argv0;
++  argc = 0;
++  argv = NULL;
++}
++
++cArgs::~cArgs(void)
++{
++  if (argv != NULL)
++     delete [] argv;
++}
++
++bool cArgs::AddArg(const char *s)
++{
++  if (inVdrSection)
++     args.Append(strdup(s));
++  else if (*lastArg == NULL)
++     return false;
++  else
++     lastArg = cString::sprintf("%s %s", *lastArg, s);
++  return true;
++}
++
++bool cArgs::ReadDirectory(const char *Directory)
++{
++  if (argv != NULL)
++     delete [] argv;
++  argc = 0;
++  argv = NULL;
++  args.Clear();
++  lastArg = NULL;
++  inVdrSection = false;
++  cFileNameList files(Directory, false);
++  if (files.Size() == 0)
++     return false;
++  for (int i = 0; i < files.Size(); i++) {
++      const char *fileName = files.At(i);
++      if (startswith(fileName, ".") || !endswith(fileName, ".conf"))
++         continue;
++      cString fullFileName = AddDirectory(Directory, fileName);
++      struct stat fs;
++      if ((access(*fullFileName, F_OK) != 0) || (stat(*fullFileName, &fs) != 0) || S_ISDIR(fs.st_mode))
++         continue;
++      bool ok = true;
++      int line = 0;
++      FILE *f = fopen(*fullFileName, "r");
++      if (f) {
++         char *s;
++         cReadLine ReadLine;
++         while ((s = ReadLine.Read(f)) != NULL) {
++               line++;
++               s = stripspace(skipspace(s));
++               if (!isempty(s) && (s[0] != '#')) {
++                  if (startswith(s, "[") && endswith(s, "]")) {
++                     s[strlen(s) - 1] = 0;
++                     s++;
++                     if (*lastArg) {
++                        args.Append(strdup(*lastArg));
++                        lastArg = NULL;
++                        }
++                     if (strcmp(s, "vdr") == 0)
++                        inVdrSection = true;
++                     else {
++                        inVdrSection = false;
++                        lastArg = cString::sprintf("--plugin=%s", s);
++                        }
++                     }
++                  else {
++                     if ((strlen(s) > 2) && (s[0] == '-') && (s[1] != '-')) { // short option, split at first space
++                        char *p = strchr(s, ' ');
++                        if (p == NULL) {
++                           ok = AddArg(s);
++                           if (!ok)
++                              break;
++                           }
++                        else {
++                           *p = 0;
++                           p++;
++                           ok = AddArg(s);
++                           if (!ok)
++                              break;
++                           ok = AddArg(p);
++                           if (!ok)
++                              break;
++                           }
++                        }
++                     else {
++                        ok = AddArg(s);
++                        if (!ok)
++                           break;
++                        }
++                     }
++                  }
++               }
++         fclose(f);
++         }
++       if (!ok) {
++          esyslog("ERROR: args file %s, line %d", *fullFileName, line);
++          return false;
++          }
++      }
++  if (*lastArg) {
++     args.Append(strdup(*lastArg));
++     lastArg = NULL;
++     }
++  argv = new char*[args.Size() + 1];
++  argv[0] = strdup(*argv0);
++  argc = 1;
++  for (int i = 0; i < args.Size(); i++) {
++      argv[argc] = args.At(i);
++      argc++;
++      }
++  return true;
++}
+diff -Naur vdr-2.0.7.orig/args.h vdr-2.0.7/args.h
+--- vdr-2.0.7.orig/args.h	1970-01-01 01:00:00.000000000 +0100
++++ vdr-2.0.7/args.h	2015-01-23 09:16:34.199618503 +0100
+@@ -0,0 +1,34 @@
++/*
++ * args.h: Read arguments from files
++ *
++ * See the main source file 'vdr.c' for copyright information and
++ * how to reach the author.
++ *
++ * Original version written by Lars Hanisch <dvb@flensrocker.de>.
++ *
++ * $Id: vdr-2.0.7_systemd_argsdir.patch,v 1.1 2015/01/23 08:28:14 hd_brummy Exp $
++ */
++
++#ifndef __ARGS_H
++#define __ARGS_H
++
++#include "tools.h"
++
++class cArgs {
++private:
++  cString argv0;
++  cStringList args;
++  cString lastArg;
++  bool inVdrSection;
++  int argc;
++  char **argv;
++  bool AddArg(const char *s);
++public:
++  cArgs(const char *Argv0);
++  ~cArgs(void);
++  bool ReadDirectory(const char *Directory);
++  int GetArgc(void) const { return argc; };
++  char **GetArgv(void) const { return argv; };
++  };
++
++#endif //__ARGS_H
+diff -Naur vdr-2.0.7.orig/interface.c vdr-2.0.7/interface.c
+--- vdr-2.0.7.orig/interface.c	2015-01-23 09:16:13.725620001 +0100
++++ vdr-2.0.7/interface.c	2015-01-23 09:16:34.199618503 +0100
+@@ -10,6 +10,9 @@
+ #include "interface.h"
+ #include <ctype.h>
+ #include <stdlib.h>
++#ifdef SDNOTIFY
++#include <systemd/sd-daemon.h>
++#endif
+ #include <unistd.h>
+ #include "i18n.h"
+ #include "status.h"
+@@ -159,6 +162,9 @@
+       bool known = Keys.KnowsRemote(Remote->Name());
+       dsyslog("remote control %s - %s", Remote->Name(), known ? "keys known" : "learning keys");
+       if (!known) {
++#ifdef SDNOTIFY
++         sd_notify(0, "READY=1\nSTATUS=Learning keys...");
++#endif
+          cSkinDisplayMenu *DisplayMenu = Skins.Current()->DisplayMenu();
+          DisplayMenu->SetMenuCategory(mcUnknown);
+          char Headline[256];
+diff -Naur vdr-2.0.7.orig/vdr.1 vdr-2.0.7/vdr.1
+--- vdr-2.0.7.orig/vdr.1	2015-01-23 09:16:13.730620000 +0100
++++ vdr-2.0.7/vdr.1	2015-01-23 09:16:34.200618503 +0100
+@@ -178,6 +178,10 @@
+ Read resource files from \fIdir\fR
+ (default is to read them from the config directory).
+ .TP
++.BI \-\-showargs[= dir ]
++Read command line arguments from \fIdir\fR (default is \fI/etc/vdr/conf.d\fR),
++display them to the console and exit.
++.TP
+ .BI \-s\  cmd ,\ \-\-shutdown= cmd
+ Call \fIcmd\fR to shutdown the computer. See the file \fIINSTALL\fR for more
+ information.
+@@ -213,6 +217,10 @@
+ .BI \-w\  sec ,\ \-\-watchdog= sec
+ Activate the watchdog timer with a timeout of \fIsec\fR seconds.
+ A value of \fB0\fR (default) disables the watchdog.
++.P
++If started without any options, vdr tries to read command line options
++from files named '*.conf' in the directory /etc/vdr/conf.d. Files are
++read in alphabetical order. See vdr(5) for details.
+ .SH SIGNALS
+ .TP
+ .B SIGINT, SIGTERM
+diff -Naur vdr-2.0.7.orig/vdr.5 vdr-2.0.7/vdr.5
+--- vdr-2.0.7.orig/vdr.5	2015-01-23 09:16:13.732620000 +0100
++++ vdr-2.0.7/vdr.5	2015-01-23 09:16:34.200618503 +0100
+@@ -895,6 +895,33 @@
+ just 16 bit wide. The internal representation in VDR allows for 32 bit to
+ be used, so that external tools can generate EPG data that is guaranteed
+ not to collide with the ids of existing data.
++.SS COMMANDLINE OPTIONS
++If started without any options, vdr tries to read any files in the directory
++/etc/vdr/conf.d with names that do not begin with a '.' and that end with '.conf'.
++These files are read in alphabetical order. The format of these files is
++
++# comment
++.br
++[name]
++.br
++-a
++.br
++-b 123
++.br
++--long
++.br
++--longarg=123
++.br
++
++Any lines that begin with '#' as the first non-whitespace character are considered
++comments and are ignored.
++A command line option file consists of one or more sections, indicated by '[name]',
++where 'name' is either the fixed word 'vdr' (if this section contains options for
++the main VDR program) or the name of the plugin this section applies to.
++Each option must be written on a separate line, including the leading '-' (for
++a short option) or '--' (for a long option). If the option has additional arguments,
++they have to be written on the same line as the option itself, separated from the
++option with a blank (short option) or equal sign (long option).
+ .SH SEE ALSO
+ .BR vdr (1)
+ .SH AUTHOR
+diff -Naur vdr-2.0.7.orig/vdr.c vdr-2.0.7/vdr.c
+--- vdr-2.0.7.orig/vdr.c	2015-01-23 09:16:13.732620000 +0100
++++ vdr-2.0.7/vdr.c	2015-01-23 09:16:34.200618503 +0100
+@@ -34,8 +34,12 @@
+ #include <stdlib.h>
+ #include <sys/capability.h>
+ #include <sys/prctl.h>
++#ifdef SDNOTIFY
++#include <systemd/sd-daemon.h>
++#endif
+ #include <termios.h>
+ #include <unistd.h>
++#include "args.h"
+ #include "audio.h"
+ #include "channels.h"
+ #include "config.h"
+@@ -192,6 +196,7 @@
+ #define DEFAULTWATCHDOG     0 // seconds
+ #define DEFAULTVIDEODIR VIDEODIR
+ #define DEFAULTCONFDIR dd(CONFDIR, VideoDirectory)
++#define DEFAULTARGSDIR dd(ARGSDIR, "/etc/vdr/conf.d")
+ #define DEFAULTCACHEDIR dd(CACHEDIR, VideoDirectory)
+ #define DEFAULTRESDIR dd(RESDIR, ConfigDirectory)
+ #define DEFAULTPLUGINDIR PLUGINDIR
+@@ -229,6 +234,15 @@
+   VdrUser = VDR_USER;
+ #endif
+ 
++  cArgs *Args = NULL;
++  if (argc == 1) {
++     Args = new cArgs(argv[0]);
++     if (Args->ReadDirectory(DEFAULTARGSDIR)) {
++        argc = Args->GetArgc();
++        argv = Args->GetArgv();
++        }
++     }
++
+   SetVideoDirectory(VideoDirectory);
+   cPluginManager PluginManager(DEFAULTPLUGINDIR);
+ 
+@@ -256,6 +270,7 @@
+       { "port",     required_argument, NULL, 'p' },
+       { "record",   required_argument, NULL, 'r' },
+       { "resdir",   required_argument, NULL, 'r' | 0x100 },
++      { "showargs", optional_argument, NULL, 's' | 0x200 },
+       { "shutdown", required_argument, NULL, 's' },
+       { "split",    no_argument,       NULL, 's' | 0x100 },
+       { "terminal", required_argument, NULL, 't' },
+@@ -428,6 +443,19 @@
+           case 's' | 0x100:
+                     Setup.SplitEditedFiles = 1;
+                     break;
++          case 's' | 0x200: {
++                    const char *ArgsDir = optarg ? optarg : DEFAULTARGSDIR;
++                    cArgs Args(argv[0]);
++                    if (!Args.ReadDirectory(ArgsDir)) {
++                       fprintf(stderr, "vdr: can't read arguments from directory: %s\n", ArgsDir);
++                       return 2;
++                       }
++                    int c = Args.GetArgc();
++                    char **v = Args.GetArgv();
++                    for (int i = 1; i < c; i++)
++                        printf("%s\n", v[i]);
++                    return 0;
++                    }
+           case 't': Terminal = optarg;
+                     if (access(Terminal, R_OK | W_OK) < 0) {
+                        fprintf(stderr, "vdr: can't access terminal: %s\n", Terminal);
+@@ -541,6 +569,8 @@
+                "  -s CMD,   --shutdown=CMD call CMD to shutdown the computer\n"
+                "            --split        split edited files at the editing marks (only\n"
+                "                           useful in conjunction with --edit)\n"
++               "            --showargs[=DIR] print the arguments read from DIR and exit\n"
++               "                           (default: %s)\n"
+                "  -t TTY,   --terminal=TTY controlling tty\n"
+                "  -u USER,  --user=USER    run as user USER; only applicable if started as\n"
+                "                           root\n"
+@@ -563,6 +593,7 @@
+                DEFAULTLOCDIR,
+                DEFAULTSVDRPPORT,
+                DEFAULTRESDIR,
++               DEFAULTARGSDIR,
+                DEFAULTVIDEODIR,
+                DEFAULTWATCHDOG
+                );
+@@ -848,6 +879,10 @@
+      alarm(WatchdogTimeout); // Initial watchdog timer start
+      }
+ 
++#ifdef SDNOTIFY
++  sd_notify(0, "READY=1\nSTATUS=Ready");
++#endif
++
+   // Main program loop:
+ 
+ #define DELETE_MENU ((IsInfoMenu &= (Menu == NULL)), delete Menu, Menu = NULL)

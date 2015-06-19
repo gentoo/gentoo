@@ -1,0 +1,98 @@
+# ChangeLog for dev-perl/Sub-Name
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Sub-Name/ChangeLog,v 1.28 2014/08/20 18:04:27 axs Exp $
+
+*Sub-Name-0.50.0-r1 (20 Aug 2014)
+
+  20 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Sub-Name-0.50.0-r1.ebuild, -Sub-Name-0.50.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  23 Feb 2014; Naohiro Aota <naota@gentoo.org> Sub-Name-0.50.0.ebuild:
+  Add ~x86-fbsd.
+
+  01 Feb 2014; Mike Frysinger <vapier@gentoo.org> Sub-Name-0.50.0.ebuild:
+  Add arm64 love.
+
+  05 Jan 2014; Markos Chandras <hwoarang@gentoo.org> Sub-Name-0.50.0.ebuild:
+  Add ~mips
+
+  05 Sep 2013; Mike Frysinger <vapier@gentoo.org> Sub-Name-0.50.0.ebuild:
+  Mark arm/s390/sh stable #479612.
+
+  13 Jan 2013; Markus Meier <maekke@gentoo.org> Sub-Name-0.50.0.ebuild:
+  add ~arm, bug #449762
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org> Sub-Name-0.50.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  28 May 2012; Raúl Porcel <armin76@gentoo.org> Sub-Name-0.50.0.ebuild:
+  alpha/ia64/sparc stable wrt #404665
+
+  17 Apr 2012; Brent Baude <ranger@gentoo.org> Sub-Name-0.50.0.ebuild:
+  Marking Sub-Name-0.50.0 ppc64 for bug 404665
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -Sub-Name-0.04.ebuild:
+  Cleanup
+
+  29 Mar 2012; Jeroen Roovers <jer@gentoo.org> Sub-Name-0.50.0.ebuild:
+  Stable for HPPA (bug #404665).
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> Sub-Name-0.50.0.ebuild:
+  x86 stable wrt bug #400221
+
+  27 Feb 2012; Brent Baude <ranger@gentoo.org> Sub-Name-0.50.0.ebuild:
+  Marking Sub-Name-0.50.0 ppc for bug 400221
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Sub-Name-0.50.0.ebuild:
+  Stable for amd64, wrt bug #400221
+
+  24 Sep 2011; Fabian Groffen <grobian@gentoo.org> Sub-Name-0.50.0.ebuild:
+  Marked ~x64-macos
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Sub-Name-0.05.ebuild:
+  Cleanup
+
+*Sub-Name-0.50.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +Sub-Name-0.50.0.ebuild:
+  Change version scheme
+
+*Sub-Name-0.05 (09 Sep 2010)
+
+  09 Sep 2010; Torsten Veller <tove@gentoo.org> +Sub-Name-0.05.ebuild:
+  Version bump
+
+  27 Jun 2010; <nixnut@gentoo.org> Sub-Name-0.04.ebuild:
+  ppc stable #323529
+
+  11 Jan 2010; Fabian Groffen <grobian@gentoo.org> Sub-Name-0.04.ebuild:
+  Transfer Prefix keywords
+
+  02 Dec 2009; Torsten Veller <tove@gentoo.org> Sub-Name-0.04.ebuild:
+  Stable on amd64 and x86 (#293622)
+
+  13 Jul 2009; Joseph Jezak <josejx@gentoo.org> Sub-Name-0.04.ebuild:
+  Marked ~ppc for bug #268669.
+
+  17 May 2009; Raúl Porcel <armin76@gentoo.org> Sub-Name-0.04.ebuild:
+  Add ~ia64/~sparc wrt #268651
+
+  11 May 2009; Brent Baude <ranger@gentoo.org> Sub-Name-0.04.ebuild:
+  keyworded ~arch for ppc64, bug 268651
+
+  09 May 2009; Tobias Klausmann <klausman@gentoo.org> Sub-Name-0.04.ebuild:
+  Keyworded on alpha, bug #268645
+
+  06 May 2009; Jeroen Roovers <jer@gentoo.org> Sub-Name-0.04.ebuild:
+  Marked ~hppa (bug #268651).
+
+*Sub-Name-0.04 (14 Jan 2009)
+
+  14 Jan 2009; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +Sub-Name-0.04.ebuild:
+  Initial version. From the perl overlay

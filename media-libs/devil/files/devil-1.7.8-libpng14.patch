@@ -1,0 +1,33 @@
+diff -Nur devil-1.7.8.orig/src-IL/src/il_icon.c devil-1.7.8/src-IL/src/il_icon.c
+--- devil-1.7.8.orig/src-IL/src/il_icon.c	2009-03-08 09:10:09.000000000 +0200
++++ devil-1.7.8/src-IL/src/il_icon.c	2010-01-17 00:54:09.000000000 +0200
+@@ -525,7 +525,7 @@
+ 
+ 	// Expand low-bit-depth grayscale images to 8 bits
+ 	if (ico_color_type == PNG_COLOR_TYPE_GRAY && bit_depth < 8) {
+-		png_set_gray_1_2_4_to_8(ico_png_ptr);
++		png_set_expand_gray_1_2_4_to_8(ico_png_ptr);
+ 	}
+ 
+ 	// Expand RGB images with transparency to full alpha channels
+diff -Nur devil-1.7.8.orig/src-IL/src/il_png.c devil-1.7.8/src-IL/src/il_png.c
+--- devil-1.7.8.orig/src-IL/src/il_png.c	2009-03-08 09:10:09.000000000 +0200
++++ devil-1.7.8/src-IL/src/il_png.c	2010-01-17 00:55:26.000000000 +0200
+@@ -105,7 +105,7 @@
+ 	Read = iread(Signature, 1, 8);
+ 	iseek(-Read, IL_SEEK_CUR);
+ 
+-	return png_check_sig(Signature, 8);
++	return png_sig_cmp(Signature, 0, 8) == 0;
+ }
+ 
+ 
+@@ -278,7 +278,7 @@
+ 
+ 	// Expand low-bit-depth grayscale images to 8 bits
+ 	if (png_color_type == PNG_COLOR_TYPE_GRAY && bit_depth < 8) {
+-		png_set_gray_1_2_4_to_8(png_ptr);
++		png_set_expand_gray_1_2_4_to_8(png_ptr);
+ 	}
+ 
+ 	// Expand RGB images with transparency to full alpha channels

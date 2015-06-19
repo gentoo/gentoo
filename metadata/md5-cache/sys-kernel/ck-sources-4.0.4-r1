@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
+DESCRIPTION=Full Linux 4.0 kernel sources with Con Kolivas' high performance patchset and Gentoo's genpatches
+EAPI=5
+HOMEPAGE=http://www.kernel.org/ http://www.gentoo.org/ http://dev.gentoo.org/~mpagano/genpatches/ http://users.on.net/~ckolivas/kernel/ http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags
+IUSE=bfsonly symlink build deblob
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 !deblob? ( freedist )
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
+RESTRICT=binchecks strip
+SLOT=4.0.4-r1
+SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.0.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.0-gnu/deblob-4.0 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.0-gnu/deblob-check -> deblob-check-4.0 ) mirror://gentoo/genpatches-4.0-6.base.tar.xz mirror://gentoo/genpatches-4.0-6.extras.tar.xz mirror://gentoo/genpatches-4.0-6.experimental.tar.xz !bfsonly? ( http://ck.kolivas.org/patches/4.0/4.0/4.0-ck1/patch-4.0-ck1.bz2 ) bfsonly? ( http://ck.kolivas.org/patches/4.0/4.0/4.0-ck1/patches/4.0-sched-bfs-462.patch )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	kernel-2	4da0de8e87de8d48f4576790a3034be2	multilib	62927b3db3a589b0806255f3a002d5d3	python-any-r1	da352ea9da8eb9bf158d56cca65d6c82	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=549a768b6a7f69f9ed55ed7a1274d433

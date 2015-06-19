@@ -1,0 +1,83 @@
+# ChangeLog for net-misc/balance
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/balance/ChangeLog,v 1.21 2013/02/28 11:32:54 xmw Exp $
+
+*balance-3.54-r1 (28 Feb 2013)
+
+  28 Feb 2013; Michael Weber <xmw@gentoo.org> -balance-3.48.ebuild,
+  -balance-3.54.ebuild, +balance-3.54-r1.ebuild:
+  Remove /var/run/balance dir from install (bug 455014), drop old.
+
+*balance-3.54 (16 Jun 2012)
+
+  16 Jun 2012; Michael Weber <xmw@gentoo.org> +balance-3.54.ebuild,
+  +files/balance-3.54-Makefile.patch:
+  Version bump (bug 365965, thanks CJ Kucera), respect LDFLAGS (bug 336958)
+
+  16 Jun 2012; Michael Weber <xmw@gentoo.org> metadata.xml:
+  Taking maint.
+
+  16 Jun 2012; Pacho Ramos <pacho@gentoo.org> -balance-3.35.ebuild,
+  -balance-3.40.ebuild, metadata.xml:
+  Drop maintainer due retirement, bug #173837. Drop old.
+
+*balance-3.48 (08 Feb 2010)
+
+  08 Feb 2010; Dawid Węgliński <cla@gentoo.org> +balance-3.48.ebuild:
+  Version bump (bug #303801)
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> balance-3.35.ebuild,
+  balance-3.40.ebuild:
+  virtual/ghostscript->app-text/ghostscript-gpl: ghostscript-gpl is the only
+  implementation left in the tree.
+
+*balance-3.40 (25 Dec 2007)
+
+  25 Dec 2007; Dawid Węgliński <cla@gentoo.org> -balance-3.24.ebuild,
+  -balance-3.26.ebuild, +balance-3.40.ebuild:
+  Version bump (bug #203339); remove old
+
+  14 Nov 2007; Samuli Suominen <drac@gentoo.org> balance-3.35.ebuild:
+  Keyword ~amd64 wrt #168764
+
+  15 Oct 2007; Dawid Węgliński <cla@gentoo.org> metadata.xml:
+  Assuming maintainer role of this package
+
+*balance-3.35 (15 Oct 2007)
+
+  15 Oct 2007; Christian Faulhammer <opfer@gentoo.org> -balance-3.19.ebuild,
+  +balance-3.35.ebuild:
+  little clean up, version bump (bug 168764)
+
+  15 Jul 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Assigning net-misc/balance to m-needed, as beu is being retired (#66608).
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  02 Nov 2005; Stefan Schweizer <genstef@gentoo.org> balance-3.24.ebuild,
+  balance-3.26.ebuild:
+  app-text/ghostscript -> virtual/ghostscript
+
+*balance-3.26 (03 Sep 2005)
+
+  03 Sep 2005; Daniel Black <dragonheart@gentoo.org> +balance-3.26.ebuild:
+  version bump
+
+*balance-3.24 (06 Jul 2005)
+
+  06 Jul 2005; Mike Frysinger <vapier@gentoo.org> +balance-3.24.ebuild:
+  Version bump #97948 by wolf3d.
+
+*balance-3.19 (05 Dec 2004)
+
+  05 Dec 2004; Mike Frysinger <vapier@gentoo.org> +balance-3.19.ebuild:
+  Version bump #73374 by werner maier.
+
+*balance-3.11 (25 Dec 2003)
+
+  25 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Mark Dierolf <smark@3e0.com> #36172.

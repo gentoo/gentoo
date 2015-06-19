@@ -1,0 +1,32 @@
+# ChangeLog for x11-themes/skinenigmang-logos
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/skinenigmang-logos/ChangeLog,v 1.6 2014/02/24 02:30:21 patrick Exp $
+
+  24 Feb 2014; Patrick Lauer <patrick@gentoo.org>
+  -skinenigmang-logos-20070214.ebuild:
+  Clean out old broken by other removals
+
+*skinenigmang-logos-20131008 (08 Oct 2013)
+
+  08 Oct 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +skinenigmang-logos-20131008.ebuild:
+  snapshot 2013/10/08, should cover all logos from Astra 19.2E
+
+*skinenigmang-logos-20070214-r1 (17 Jan 2011)
+
+  17 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +skinenigmang-logos-20070214-r1.ebuild:
+  fix to support your utf-8 locale settings
+
+  27 Apr 2009; Joerg Bornkessel <hd_brummy@gentoo.org>
+  skinenigmang-logos-20070214:
+  stable x86
+
+  21 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+*skinenigmang-logos-20070214 (06 Mar 2007)
+
+  06 Mar 2007; Joerg Bornkessel <hd_brummy@gentoo.org> +metadata.xml,
+  +skinenigmang-logos-20070214.ebuild:
+  initial ebuild

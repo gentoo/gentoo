@@ -1,0 +1,40 @@
+# ChangeLog for app-benchmarks/sysbench
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/sysbench/ChangeLog,v 1.9 2015/06/09 09:07:06 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  28 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -sysbench-0.4.10.ebuild:
+  Remove old.
+
+  08 Aug 2012; Andreas Schuerch <nativemad@gentoo.org>
+  sysbench-0.4.12-r1.ebuild:
+  x86 stable, see bug 418519
+
+  02 Aug 2012; Markos Chandras <hwoarang@gentoo.org> sysbench-0.4.12-r1.ebuild:
+  Stable on amd64 wrt bug #418519
+
+*sysbench-0.4.12-r1 (27 Dec 2011)
+
+  27 Dec 2011; Patrick Lauer <patrick@gentoo.org> +sysbench-0.4.12-r1.ebuild,
+  -sysbench-0.4.12.ebuild:
+  Fix for #297590
+
+*sysbench-0.4.12 (27 Aug 2011)
+
+  27 Aug 2011; Patrick Lauer <patrick@gentoo.org> +sysbench-0.4.12.ebuild:
+  Bump for #377587
+
+  27 Aug 2011; Patrick Lauer <patrick@gentoo.org> sysbench-0.4.10.ebuild:
+  Adding aio useflag to properly handle automagic depend, bug #380353
+
+  08 Mar 2009; Markus Meier <maekke@gentoo.org> sysbench-0.4.10.ebuild:
+  amd64/x86 stable, bug #261718
+
+*sysbench-0.4.10 (17 Jan 2009)
+
+  17 Jan 2009; Patrick Lauer <patrick@gentoo.org> +metadata.xml,
+  +sysbench-0.4.10.ebuild:
+  Initial import. Based on sysbench-0.4.8.ebuild from Sven Wegener
+  <swegener@gentoo.org>

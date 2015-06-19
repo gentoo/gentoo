@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst prepare unpack
+DEPEND=dev-db/sqlite:3 dev-libs/glib:2 dev-libs/girara:3 net-libs/webkit-gtk:3 x11-libs/gtk+:3 !www-client/jumanji:0 virtual/pkgconfig dev-vcs/git
+DESCRIPTION=highly customizable and functional web browser with minimalistic and space saving interface
+EAPI=5
+HOMEPAGE=http://pwmt.org/projects/jumanji
+IUSE=savedconfig
+LICENSE=ZLIB
+RDEPEND=dev-db/sqlite:3 dev-libs/glib:2 dev-libs/girara:3 net-libs/webkit-gtk:3 x11-libs/gtk+:3 !www-client/jumanji:0
+SLOT=develop
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	git-2	e28f0d8a9b321431b1e699782851b827	multilib	62927b3db3a589b0806255f3a002d5d3	portability	a45c088f246ef5091e029f6285d7ce42	savedconfig	5313100f525c41f6c72c6e04edeb4f65	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=b622cbaf7243bf25965b5388684f1c4e

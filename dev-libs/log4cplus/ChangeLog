@@ -1,0 +1,27 @@
+# ChangeLog for dev-libs/log4cplus
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/log4cplus/ChangeLog,v 1.6 2015/06/09 14:45:14 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*log4cplus-1.1.2 (22 Feb 2014)
+
+  22 Feb 2014; Christian Ruppert <idl0r@gentoo.org> -log4cplus-1.1.0.ebuild,
+  +log4cplus-1.1.2.ebuild:
+  Version bump
+
+  12 May 2013; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove obsolete useflag from metadata.xml
+
+  28 Mar 2013; Christian Ruppert <idl0r@gentoo.org> log4cplus-1.1.0.ebuild:
+  Rename the "qt" flag to "qt4", bug 462216
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> log4cplus-1.1.0.ebuild:
+  Move Qt dependencies to the new category
+
+*log4cplus-1.1.0 (21 Feb 2013)
+
+  21 Feb 2013; Christian Ruppert <idl0r@gentoo.org> +log4cplus-1.1.0.ebuild,
+  +metadata.xml:
+  Initial import, bug 361201

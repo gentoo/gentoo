@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install setup
+DEPEND=alsa? ( media-libs/alsa-lib ) =app-admin/gkrellm-2* virtual/pkgconfig
+DESCRIPTION=A mixer control plugin for gkrellm
+HOMEPAGE=http://gkrellm.luon.net/volume.php
+IUSE=alsa
+KEYWORDS=alpha amd64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=alsa? ( media-libs/alsa-lib ) =app-admin/gkrellm-2*
+SLOT=2
+SRC_URI=http://gkrellm.luon.net/files/gkrellm-volume-2.1.13.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	gkrellm-plugin	4599c73f33aed9a9988a7031f60d2ed8	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9f913b558f8d31c61d9912b87a9c6d83

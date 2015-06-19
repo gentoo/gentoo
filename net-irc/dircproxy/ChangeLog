@@ -1,0 +1,140 @@
+# ChangeLog for net-irc/dircproxy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/dircproxy/ChangeLog,v 1.31 2015/04/27 01:29:14 mrueg Exp $
+
+  27 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -dircproxy-1.0.5-r1.ebuild,
+  -dircproxy-1.1.0-r2.ebuild, -files/1.0.5-CVE-2007-5226.patch,
+  -files/1.1.0-less-lag-on-attach.patch, -files/dircproxy-gcc4.patch:
+  Remove old.
+
+  13 Apr 2010; Raúl Porcel <armin76@gentoo.org> dircproxy-1.2.0_rc1.ebuild:
+  alpha/sparc stable wrt #310429
+
+  04 Apr 2010; Markos Chandras <hwoarang@gentoo.org>
+  dircproxy-1.2.0_rc1.ebuild:
+  Stable on amd64 wrt bug #310429
+
+  29 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  dircproxy-1.2.0_rc1.ebuild:
+  x86 stable wrt bug #310429
+
+  23 Mar 2010; Brent Baude <ranger@gentoo.org> dircproxy-1.2.0_rc1.ebuild:
+  Marking dircproxy-1.2.0_rc1 ppc for bug 310429
+
+*dircproxy-1.2.0_rc1 (30 Aug 2009)
+
+  30 Aug 2009; Víctor Ostorga <vostorga@gentoo.org> -dircproxy-1.2.0_beta2-r1.ebuild,
+  +dircproxy-1.2.0_rc1.ebuild, -files/1.2.0-CVE-2007-5226.patch:
+  Version bump to 1.2.0_rc1 bug #269200, cleaning out beta
+
+  08 Mar 2009; Daniel Black <dragonheart@gentoo.org>
+  dircproxy-1.0.5-r1.ebuild, dircproxy-1.1.0-r2.ebuild,
+  dircproxy-1.2.0_beta2-r1.ebuild:
+  simple bugday fix as per bug #261007. Thanks Victor Ostorga
+
+  10 Nov 2007; Raúl Porcel <armin76@gentoo.org> -dircproxy-1.0.5.ebuild:
+  old
+
+  21 Oct 2007; Steve Dibb <beandog@gentoo.org> dircproxy-1.0.5-r1.ebuild:
+  amd64 stable, bug 194923
+
+  18 Oct 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  dircproxy-1.0.5-r1.ebuild:
+  ppc stable, bug #194923
+
+  16 Oct 2007; Raúl Porcel <armin76@gentoo.org> dircproxy-1.0.5-r1.ebuild:
+  alpha stable wrt security #194923
+
+  15 Oct 2007; Dawid Węgliński <cla@gentoo.org> dircproxy-1.0.5-r1.ebuild:
+  Stable on x86 (bug #194923), quotes
+
+*dircproxy-1.2.0_beta2-r1 (15 Oct 2007)
+*dircproxy-1.1.0-r2 (15 Oct 2007)
+*dircproxy-1.0.5-r1 (15 Oct 2007)
+
+  15 Oct 2007; Raúl Porcel <armin76@gentoo.org>
+  +files/1.0.5-CVE-2007-5226.patch, +files/1.2.0-CVE-2007-5226.patch,
+  +dircproxy-1.0.5-r1.ebuild, -dircproxy-1.1.0-r1.ebuild,
+  +dircproxy-1.1.0-r2.ebuild, -dircproxy-1.2.0_beta2.ebuild,
+  +dircproxy-1.2.0_beta2-r1.ebuild:
+  Add security patches for CVE-2007-5226, bug #194923
+
+*dircproxy-1.2.0_beta2 (17 Feb 2007)
+
+  17 Feb 2007; Raúl Porcel <armin76@gentoo.org>
+  +files/dircproxy-gcc4.patch, dircproxy-1.0.5.ebuild,
+  dircproxy-1.1.0-r1.ebuild, +dircproxy-1.2.0_beta2.ebuild:
+  Version bump, plus add patch to make it compile with gcc4, bug 139934
+
+  05 Apr 2006; <mcumming@gentoo.org> dircproxy-1.1.0-r1.ebuild:
+  Marking 1.1.0-r1 ~sparc
+
+  14 May 2005; Jan Brinkmann <luckyduck@gentoo.org> dircproxy-1.0.5.ebuild:
+  stable on amd64
+
+  18 Feb 2005; Sven Wegener <swegener@gentoo.org>
+  -files/1.1.0-005-numeric.patch, dircproxy-1.1.0-r1.ebuild:
+  Removed the numeric patch, it causes more problems than advantages.
+
+  23 Jan 2005; Sven Wegener <swegener@gentoo.org>
+  +files/1.1.0-less-lag-on-attach.patch, dircproxy-1.1.0-r1.ebuild:
+  Added a patch from Adrian <adrian@planetcoding.net> that reduces the
+  on-attach lag by sending all channels in NAMES and TOPIC requests at once.
+  Closes bug #78341.
+
+  09 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> dircproxy-1.0.5.ebuild,
+  dircproxy-1.1.0-r1.ebuild:
+  added ~amd64 to KEYWORDS. fixes bug #76777.
+
+*dircproxy-1.1.0-r1 (07 Jan 2005)
+
+  07 Jan 2005; Sven Wegener <swegener@gentoo.org>
+  +files/1.1.0-005-numeric.patch, +dircproxy-1.1.0-r1.ebuild,
+  -dircproxy-1.1.0.ebuild:
+  Revision bump to include patch by Adrian <adrian@planetcoding.net> from bug
+  #76781. It patches dircproxy to not ignore the 005 numeric. Old behaviour
+  breaks some scripts.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  dircproxy-1.0.5.ebuild, dircproxy-1.1.0.ebuild:
+  virtual/glibc -> virtual/libc
+
+  17 Jun 2004; Sven Wegener <swegener@gentoo.org> dircproxy-1.0.5.ebuild,
+  dircproxy-1.1.0.ebuild:
+  Added IUSE=""
+
+*dircproxy-1.1.0 (17 Jun 2004)
+
+  17 Jun 2004; Sven Wegener <swegener@gentoo.org> dircproxy-1.0.5.ebuild,
+  +dircproxy-1.1.0.ebuild:
+  Updated SRC_URI and HOMEPAGE to new locations. Added unstable upstream version
+  1.1.0 which only includes small fixes over 1.0.5 and should be considered
+  stable. Thanks to Morten Lied Johansen <mortenjo@ifi.uio.no> for notifcation
+  and patch in bug #53887. Changed make target in src_install() from
+  install-strip to install, as stripping is controlled with FEATURES="nostrip".
+
+  03 Jul 2003; Paul de Vrieze <pauldv@gentoo.org> dircproxy-1.0.5.ebuild:
+  Add the INSTALL file to the documentation as it describes how to configure it
+
+*dircproxy-1.0.5 (03 Feb 2003)
+
+  11 Mar 2003; Aron Griffis <agriffis@gentoo.org> dircproxy-1.0.5.ebuild:
+  Mark stable on alpha
+
+  03 Feb 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #14707.
+
+*dircproxy-1.0.4 (05 Nov 2002)
+
+  05 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
+
+*dircproxy-1.0.3 (14 April 2002)
+
+  30 Oct 2002; Jon Nall <nall@gentoo.org> dircproxy-1.0.3.ebuild :
+
+  Added ~ppc to KEYWORDS
+
+  14 April 2002; Bart Verwilst <verwilst@gentoo.org> Changelog :
+
+  Initial ebuild, dircproxy version 1.0.3.. Enjoy!

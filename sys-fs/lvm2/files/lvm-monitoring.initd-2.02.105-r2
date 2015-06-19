@@ -1,0 +1,39 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/files/lvm-monitoring.initd-2.02.105-r2,v 1.1 2014/02/02 19:52:34 robbat2 Exp $
+
+# This script is based on upstream file
+# LVM2.2.02.67/scripts/lvm2_monitoring_init_red_hat.in
+
+depend() {
+	# As of .67-r1, we call ALL lvm start/stop scripts with --sysinit, that
+	# means dmeventd is NOT notified, as it cannot be safely running
+	need lvm dmeventd
+}
+
+VGCHANGE=/sbin/vgchange
+VGS=/sbin/vgs
+
+start() {
+	ret=0
+	# TODO do we want to separate out already active groups only?
+	VGSLIST=`$VGS --noheadings -o name --rows 2> /dev/null`
+	ebegin "Starting LVM monitoring for VGs ${VGSLIST}:"
+	$VGCHANGE --monitor y --poll y  ${VGSLIST}
+	ret=$?
+	eend $ret
+	return $ret
+
+}
+
+stop() {
+	ret=0
+	# TODO do we want to separate out already active groups only?
+	VGSLIST=`$VGS --noheadings -o name --rows 2> /dev/null`
+	ebegin "Stopping LVM monitoring for VGs ${VGSLIST}:"
+	$VGCHANGE --monitor n ${VGSLIST}
+	ret=$?
+	eend $ret
+	return $ret
+}

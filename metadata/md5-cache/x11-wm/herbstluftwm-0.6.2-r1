@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=>=dev-libs/glib-2.24:2 x11-libs/libX11 x11-libs/libXext xinerama? ( x11-libs/libXinerama ) virtual/pkgconfig
+DESCRIPTION=A manual tiling window manager for X
+EAPI=5
+HOMEPAGE=http://herbstluftwm.org
+IUSE=examples xinerama zsh-completion
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=>=dev-libs/glib-2.24:2 x11-libs/libX11 x11-libs/libXext xinerama? ( x11-libs/libXinerama ) app-shells/bash zsh-completion? ( app-shells/zsh )
+SLOT=0
+SRC_URI=http://herbstluftwm.org/tarballs/herbstluftwm-0.6.2.tar.gz
+_eclasses_=bash-completion-r1	c8399c7c7ecbcf7ed6e5bd3abb3d4af3	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=81e78c0ff24dc54821ee1ecbce09056c

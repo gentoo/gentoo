@@ -1,0 +1,2770 @@
+# ChangeLog for sys-fs/udev
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/ChangeLog-2009,v 1.2 2013/03/15 09:38:45 ssuominen Exp $
+
+  30 Dec 2009; Matthias Schwarzott <zzam@gentoo.org> udev-149.ebuild,
+  udev-9999.ebuild:
+  Sync live ebuild to udev-149.
+
+  21 Dec 2009; Matthias Schwarzott <zzam@gentoo.org> udev-149.ebuild:
+  Fix glibc dependency, Bug #295989.
+
+  11 Dec 2009; Raúl Porcel <armin76@gentoo.org> udev-146-r1.ebuild:
+  m68k/s390/sh stable
+
+  07 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> udev-146-r1.ebuild:
+  amd64 stable wrt #286074
+
+  05 Dec 2009; Matthias Schwarzott <zzam@gentoo.org> udev-141-r1.ebuild:
+  Mark this ebuild as the highest that can work with xen-sources and should
+  not be removed.
+
+*udev-149 (05 Dec 2009)
+
+  05 Dec 2009; Matthias Schwarzott <zzam@gentoo.org> +udev-149.ebuild:
+  Version bumped. No longer exclude /etc/udev/rules.d from config_protect.
+
+  04 Dec 2009; Raúl Porcel <armin76@gentoo.org> udev-147-r1.ebuild:
+  Doesn't compile on sh
+
+  29 Nov 2009; Joseph Jezak <josejx@gentoo.org> udev-146-r1.ebuild:
+  Marked ppc ppc64 stable for bug #286074.
+
+  29 Nov 2009; Raúl Porcel <armin76@gentoo.org> udev-146-r1.ebuild:
+  ia64/sparc stable
+
+  26 Nov 2009; Tobias Klausmann <klausman@gentoo.org> udev-147-r1.ebuild:
+  Versions >=147 require functionality not available on alpha kernels at the
+  moment, resulting in systems not working at all after boot.
+
+*udev-147-r1 (24 Nov 2009)
+
+  24 Nov 2009; Matthias Schwarzott <zzam@gentoo.org> -udev-147.ebuild,
+  +udev-147-r1.ebuild:
+  Backport some patches. Fixes CD-RW blanking due to bad ATA commands,
+  http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=556635
+
+  23 Nov 2009; Markus Meier <maekke@gentoo.org> udev-146-r1.ebuild:
+  arm stable, bug #286074
+
+  18 Nov 2009; Matthias Schwarzott <zzam@gentoo.org> udev-147.ebuild,
+  udev-9999.ebuild:
+  Add depend to tree for test-suite. Bug #292787.
+
+  13 Nov 2009; Matthias Schwarzott <zzam@gentoo.org> files/136/udev.initd,
+  files/147/udev.initd:
+  Fix udev init-script to report success, Bug #292966.
+
+  13 Nov 2009; Matthias Schwarzott <zzam@gentoo.org> udev-147.ebuild,
+  udev-9999.ebuild:
+  Depend on linux-headers-2.6.29 to get bsg.h, Bug #292922.
+
+  13 Nov 2009; Matthias Schwarzott <zzam@gentoo.org> files/147/udev.initd,
+  files/147/udev-start.sh:
+  Make script work better with baselayout-1.
+
+*udev-147 (11 Nov 2009)
+*udev-146-r2 (11 Nov 2009)
+
+  11 Nov 2009; Matthias Schwarzott <zzam@gentoo.org> +udev-146-r2.ebuild,
+  +udev-147.ebuild, udev-9999.ebuild:
+  Add udev-146 ebuild with the new init-scripts from udev-9999, Oct 20. Bump
+  to udev-147.
+
+  09 Nov 2009; Christian Faulhammer <fauli@gentoo.org> udev-146-r1.ebuild:
+  stable x86, bug 286074
+
+  29 Oct 2009; Matthias Schwarzott <zzam@gentoo.org> udev-145-r1.ebuild,
+  udev-145-r2.ebuild, udev-145-r3.ebuild, udev-146.ebuild,
+  udev-146-r1.ebuild, udev-9999.ebuild:
+  Fix grammar, Bug #290961.
+
+  21 Oct 2009; Jeroen Roovers <jer@gentoo.org> udev-146-r1.ebuild:
+  Stable for HPPA (bug #286074).
+
+  20 Oct 2009; Matthias Schwarzott <zzam@gentoo.org> udev-9999.ebuild:
+  Auto enable udev-postmount only if udev is enabled.
+
+  20 Oct 2009; Matthias Schwarzott <zzam@gentoo.org>
+  files/147/shell-compat-addon.sh, udev-9999.ebuild, files/147/udev.initd,
+  files/147/udev-mount.initd, files/147/udev-postmount.initd:
+  Update init-scripts. udev-postmount should be in default runlevel. No
+  longer handle it like a synthetic hotplug event. Let it rerun failed
+  events. Handle devtmpfs if supported, and also the case /dev is already
+  mounted. Do not run net.* init-scripts if the new network init-script is
+  used. Cleanup of pre/postinst code.
+
+  15 Oct 2009; Matthias Schwarzott <zzam@gentoo.org>
+  +files/147/shell-compat-KV.sh, +files/147/shell-compat-addon.sh,
+  +files/147/udev.confd, +files/147/udev.initd,
+  +files/147/udev-dev-tarball.initd, +files/147/udev-mount.initd,
+  +files/147/udev-postmount.initd, +files/147/udev-start.sh,
+  +files/147/udev-stop.sh, udev-9999.ebuild:
+  Do not call net.* scripts when new-style network is used. Retry failed
+  events in udev-postmount, Bug #283414. Add udev-postmount to runlevel
+  default at update and no longer inject it. Use mountinfo for mounting the
+  fstab entry, bug #288021.
+
+  03 Oct 2009; Tobias Klausmann <klausman@gentoo.org> udev-146-r1.ebuild:
+  Stable on alpha, bug #286074
+
+*udev-146-r1 (02 Oct 2009)
+*udev-145-r3 (02 Oct 2009)
+
+  02 Oct 2009; Matthias Schwarzott <zzam@gentoo.org> +udev-145-r3.ebuild,
+  +udev-146-r1.ebuild:
+  Update patchset, add patchset for udev-146, fix ioctl issue on amd64, Bug
+  #286041.
+
+  02 Oct 2009; Matthias Schwarzott <zzam@gentoo.org> udev-145.ebuild,
+  udev-145-r1.ebuild, udev-145-r2.ebuild, udev-146.ebuild, udev-9999.ebuild:
+  Switch libusb depend to use the correct virtual, Bug #287261.
+
+  29 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org> udev-146.ebuild:
+  Fix libusb dependency (it would fail configure otherwise).
+
+  26 Sep 2009; Brent Baude <ranger@gentoo.org> udev-141.ebuild:
+  Marking udev-141 ppc64 for bug 254616
+
+*udev-145-r2 (23 Sep 2009)
+
+  23 Sep 2009; Matthias Schwarzott <zzam@gentoo.org> +udev-145-r2.ebuild:
+  Backport udev-146 ebuild changes and add usb printer fixes for cups 1.4+.
+  Backport a lot of fixes from udev-git bundled into a tarball.
+
+  19 Sep 2009; Matthias Schwarzott <zzam@gentoo.org> udev-9999.ebuild:
+  Do not apply upstream patch that is already applied.
+
+*udev-146 (19 Sep 2009)
+
+  19 Sep 2009; Matthias Schwarzott <zzam@gentoo.org> +files/blacklist-146,
+  +udev-146.ebuild, +files/udev-146-printer-usb_device-permission.diff,
+  udev-9999.ebuild, -files/udev-9999-disable-doc.diff:
+  Version bumped. Add permission for libusb printer devices for cups 1.4+,
+  add disabled blacklist entry for usblp, Bug #285166. Now require kernel
+  2.6.27 to be safe, Bug #281312. Sync with udev-9999 and no longer allow to
+  disable docs.
+
+  06 Sep 2009; Robin H. Johnson <robbat2@gentoo.org> udev-145-r1.ebuild:
+  Use proper kernel_is function to compare properly including the 4 argument
+  of the kernel version.
+
+  06 Sep 2009; Matthias Schwarzott <zzam@gentoo.org> udev-145-r1.ebuild:
+  Only execute the lib->lib64 move code if it is really needed, bug #281338.
+  Only test for INOTIFY_USER, bug #283763. Block older lvm2 versions and all
+  device-mapper versions, as the included udev-rules are too old and still
+  using vol_id, bug #283727.
+
+  06 Sep 2009; Robin H. Johnson <robbat2@gentoo.org> udev-145-r1.ebuild:
+  Missed one check.
+
+  06 Sep 2009; Robin H. Johnson <robbat2@gentoo.org> udev-145-r1.ebuild:
+  Fix bug #283760 with extended kernel versions.
+
+  05 Sep 2009; Robin H. Johnson <robbat2@gentoo.org> udev-145-r1.ebuild:
+  Make the CONFIG_CHECK checks non-fatal. As udev WILL build without them,
+  it just won't run.
+
+*udev-145-r1 (05 Sep 2009)
+
+  05 Sep 2009; Matthias Schwarzott <zzam@gentoo.org> +udev-145-r1.ebuild:
+  Add message that one may need to re-emerge hal, bug #275974. Add checks
+  about needed kernel options. Use linux-mod.eclass for that, bug #281312
+  and bug #281338.
+
+  01 Sep 2009; Matthias Schwarzott <zzam@gentoo.org> udev-145.ebuild:
+  Move glibc to be in DEPEND and RDEPEND.
+
+  31 Aug 2009; Raúl Porcel <armin76@gentoo.org> udev-141.ebuild:
+  arm/ia64/s390/sh/sparc stable wrt #254616
+
+  15 Aug 2009; Matthias Schwarzott <zzam@gentoo.org> udev-145.ebuild:
+  Fix duplicated docs, Bug #281137. Depend on glibc-2.7 to get
+  signalfd-header, Bug #281520.
+
+  10 Aug 2009; Matthias Schwarzott <zzam@gentoo.org>
+  files/udev-9999-disable-doc.diff:
+  Update patch for live-ebuild without docs.
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> udev-141.ebuild:
+  ppc stable #254616
+
+  16 Jul 2009; Matthias Schwarzott <zzam@gentoo.org> udev-124-r1.ebuild,
+  udev-124-r2.ebuild:
+  Do not restart udevd if it was not running before, Bug #234669.
+
+  16 Jul 2009; Matthias Schwarzott <zzam@gentoo.org> -udev-143.ebuild,
+  -udev-144.ebuild, udev-145.ebuild, udev-9999.ebuild:
+  Delete older masked versions. Adjust dependency to
+  >=sys-apps/util-linux-2.16
+
+*udev-145 (13 Jul 2009)
+
+  13 Jul 2009; Matthias Schwarzott <zzam@gentoo.org> +udev-145.ebuild:
+  Version bumped.
+
+*udev-144 (06 Jul 2009)
+
+  06 Jul 2009; Matthias Schwarzott <zzam@gentoo.org> +udev-144.ebuild:
+  Version bumped.
+
+*udev-143 (03 Jul 2009)
+
+  03 Jul 2009; Matthias Schwarzott <zzam@gentoo.org> +udev-143.ebuild,
+  udev-9999.ebuild:
+  Version bumped. This version no longer installs libvol_id, but requires
+  libblkid provided by util-linux-2.16.
+
+  27 Jun 2009; Tobias Klausmann <klausman@gentoo.org> udev-141.ebuild:
+  Stable on alpha, bug #254616
+
+  26 Jun 2009; Thomas Anderson <gentoofan23@gentoo.org> udev-141.ebuild:
+  stable amd64, bug 254616
+
+  18 Jun 2009; Matthias Schwarzott <zzam@gentoo.org> udev-9999.ebuild,
+  +files/udev-9999-disable-doc.diff, metadata.xml:
+  Make extras a use-flag and add all necessary depends. Change way doc is
+  handled for autotools.
+
+  17 Jun 2009; Matthias Schwarzott <zzam@gentoo.org> udev-9999.ebuild:
+  Update to level of udev-141-r1. Update for changed configure-script. Patch
+  out gtk-doc stuff, else autotools fail without gtk. Note about needed
+  util-linux for it libblkid. udev no longer installs libvolume_id and
+  vol_id binary. Lift minimal required kernel version to 2.6.25. Disable new
+  udev-extras for now, they need a lot of dependencies.
+
+  17 Jun 2009; Jeroen Roovers <jer@gentoo.org> udev-141-r1.ebuild:
+  Stable for HPPA (bug #254616).
+
+  17 Jun 2009; Christian Faulhammer <fauli@gentoo.org> udev-141.ebuild:
+  stable x86, bug 254616
+
+*udev-141-r1 (10 Jun 2009)
+
+  10 Jun 2009; Matthias Schwarzott <zzam@gentoo.org> +udev-141-r1.ebuild,
+  +files/udev-141-remove-devfs-names.diff, metadata.xml:
+  Add use-flag to disable devfs-compat device names, Bug #269359.
+
+  12 May 2009; Matthias Schwarzott <zzam@gentoo.org> udev-124-r2.ebuild,
+  udev-141.ebuild:
+  Fix config file renaming if user had changes. Bug #269392.
+
+  06 May 2009; Mike Frysinger <vapier@gentoo.org> udev-114.ebuild,
+  udev-115-r1.ebuild, udev-119.ebuild, udev-124-r1.ebuild,
+  udev-124-r2.ebuild, udev-141.ebuild, udev-9999.ebuild:
+  Rename modprobe.d files with .conf extensions.
+
+  18 Apr 2009; Tobias Klausmann <klausman@gentoo.org> udev-124-r2.ebuild:
+  Stable on alpha, bug #266290
+
+  18 Apr 2009; Raúl Porcel <armin76@gentoo.org> udev-124-r2.ebuild:
+  arm/ia64/m68k/s390/sh/sparc stable wrt #266290
+
+  18 Apr 2009; Brent Baude <ranger@gentoo.org> udev-124-r2.ebuild:
+  Marking udev-124-r2 ppc64 and ppc for bug 266290
+
+  18 Apr 2009; Markus Meier <maekke@gentoo.org> udev-124-r2.ebuild:
+  x86 stable, bug #266290
+
+  18 Apr 2009; Tobias Heinlein <keytoaster@gentoo.org> udev-124-r2.ebuild:
+  amd64 stable wrt security bug #266290
+
+  17 Apr 2009; Jeroen Roovers <jer@gentoo.org> udev-124-r2.ebuild:
+  Stable for HPPA (bug #266290).
+
+  17 Apr 2009; Matthias Schwarzott <zzam@gentoo.org>
+  -files/udev-125-cdrom-autoclose-bug.diff,
+  -files/udev-125-rules-update.diff, -files/udev-start-126.sh,
+  -files/udev-stop-126.sh, -files/udev-postmount-130-r2.initd,
+  -files/udev-133-rules-update.diff,
+  -files/udev-133-silence-physdev-warnings.diff, -files/udev-start-133.sh,
+  -files/udev-135-fix-capi.diff, -files/udev-135-fix-dri-perms.diff,
+  -files/udev-135-r2.confd, -files/udev-135-r2.initd,
+  -files/udev-dev-tarball-135-r2.initd, -files/udev-mount-135-r2.initd,
+  -files/udev-postmount-135-r2.initd, -files/udev-start-135-r2.sh,
+  -files/udev-stop-135-r2.sh, -files/udev-135-r3.confd,
+  -files/udev-mount-135-r3.initd, -files/udev-start-135-r3.sh,
+  -files/udev-135-rules-update.diff, -files/udev-fix-udevinfo-in-doc.diff,
+  -udev-122-r1.ebuild, -udev-125-r2.ebuild, -udev-130-r1.ebuild,
+  -udev-133.ebuild, -udev-135.ebuild, -udev-135-r1.ebuild,
+  -udev-135-r2.ebuild, -udev-135-r3.ebuild, -udev-135-r4.ebuild,
+  -udev-138.ebuild, -udev-139.ebuild, -udev-140.ebuild:
+  Remove all buggy old versions.
+
+*udev-124-r2 (16 Apr 2009)
+
+  16 Apr 2009; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-124-encoding-overflow.patch,
+  +files/udev-124-netlink-owner-check.patch, +udev-124-r2.ebuild:
+  Fix Bug #266290. CVE-2009-1185 and CVE-2009-1186
+
+*udev-141 (09 Apr 2009)
+
+  09 Apr 2009; Matthias Schwarzott <zzam@gentoo.org> +udev-141.ebuild:
+  Version bumped.
+
+*udev-140 (14 Mar 2009)
+
+  14 Mar 2009; Matthias Schwarzott <zzam@gentoo.org> +udev-140.ebuild:
+  Version bumped. This is mostly a bugfix release.
+
+  12 Mar 2009; Matthias Schwarzott <zzam@gentoo.org> files/136/udev.initd:
+  Make init-script only depend on udev-dev-tarball, if the option is set in
+  config file.
+
+*udev-139 (26 Feb 2009)
+
+  26 Feb 2009; Matthias Schwarzott <zzam@gentoo.org> +udev-139.ebuild:
+  Version bumped.
+
+  25 Feb 2009; Matthias Schwarzott <zzam@gentoo.org> udev-9999.ebuild:
+  Fix dialout permissions also for udev-9999 ebuild.
+
+  23 Feb 2009; Matthias Schwarzott <zzam@gentoo.org>
+  files/136/udev-postmount.initd:
+  Typo.
+
+  21 Feb 2009; Matthias Schwarzott <zzam@gentoo.org> files/136/udev.confd,
+  files/136/udev.initd, files/136/udev-mount.initd,
+  files/136/udev-postmount.initd:
+  Add option to disable persistent-cd. Make read-only root not fatal in
+  udev-postmount. Bug #259495. Allow silencing unreliable kernel/udev
+  warning.
+
+  20 Feb 2009; Jeroen Roovers <jer@gentoo.org> udev-135-r4.ebuild:
+  Revert to ~alpha and ~hppa (bug #254616 comment #6).
+
+  19 Feb 2009; Matthias Schwarzott <zzam@gentoo.org>
+  files/136/udev-mount.initd:
+  Set permission bits correct for seeding dev. Also create /dev/kmsg before
+  running udevd so it can write messages to dmesg.
+
+*udev-138 (19 Feb 2009)
+
+  19 Feb 2009; Matthias Schwarzott <zzam@gentoo.org>
+  -files/udev-136-fix-ide-cd-rule.diff, -files/udev-137-rules-update.diff,
+  -udev-136.ebuild, -udev-137.ebuild, +udev-138.ebuild:
+  Version bumped. This is a bugfix release. Now block devices are watched
+  via inotify and trigger persistent storage links to be updated after write
+  access. Removed older versions.
+
+  13 Feb 2009; Tobias Klausmann <klausman@gentoo.org> udev-135-r4.ebuild:
+  Stable on alpha, bug #254616
+
+  12 Feb 2009; Jeroen Roovers <jer@gentoo.org> udev-135-r4.ebuild:
+  Stable for HPPA (bug #254616).
+
+  27 Jan 2009; Matthias Schwarzott <zzam@gentoo.org>
+  files/udev-137-rules-update.diff, udev-137.ebuild, udev-9999.ebuild:
+  Cleanup depends. Add missing depends for documentation processing of
+  udev-9999. Fix kernel version check of udev-9999. Update rules patch for
+  udev-137, move all rules in one file.
+
+  25 Jan 2009; Matthias Schwarzott <zzam@gentoo.org> udev-137.ebuild:
+  Fix kernel version with which udev runs reliable. Also apply documentation
+  udevinfo to udevadm info patch.
+
+  24 Jan 2009; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-137-rules-update.diff, udev-137.ebuild:
+  Rules update.
+
+*udev-135-r4 (24 Jan 2009)
+
+  24 Jan 2009; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-135-fix-dri-perms.diff, +files/udev-fix-udevinfo-in-doc.diff,
+  +udev-135-r4.ebuild:
+  Fix permissions of dri devices, Bug #255841. Fix references to no longer
+  existing udevinfo command, Bug #255955.
+
+*udev-137 (24 Jan 2009)
+
+  24 Jan 2009; Matthias Schwarzott <zzam@gentoo.org> +udev-137.ebuild:
+  Version bumped.
+
+  22 Jan 2009; Matthias Schwarzott <zzam@gentoo.org> files/136/udev.confd,
+  files/136/udev.initd:
+  Add expert options to change udevsettle timeout and to run udevmonitor at
+  boot time to catch all events.
+
+  22 Jan 2009; Matthias Schwarzott <zzam@gentoo.org> udev-9999.ebuild:
+  Also set HOMEPAGE after inherit, Bug #255953.
+
+*udev-136 (20 Jan 2009)
+
+  20 Jan 2009; Matthias Schwarzott <zzam@gentoo.org>
+  +files/136/shell-compat-addon.sh, +files/136/udev.confd,
+  +files/udev-136-fix-ide-cd-rule.diff, +files/136/udev.initd,
+  +files/136/udev-dev-tarball.initd, +files/136/udev-mount.initd,
+  +files/136/shell-compat-KV.sh, +files/136/udev-postmount.initd,
+  +files/136/udev-start.sh, +files/136/udev-stop.sh, +udev-136.ebuild,
+  udev-9999.ebuild:
+  Version bumped. This raises kernel version for reliable udev usage to
+  2.6.20. Backported one patch. The upstream rule changes still need to be
+  reviewed. For now keep using group uucp instead of dialout as suggested by
+  upstream. Move init-script stuff into a subdir for FILESDIR. Small changes
+  to shell-compat logic.
+
+  20 Jan 2009; Matthias Schwarzott <zzam@gentoo.org>
+  files/shell-compat-118-r3.sh:
+  Change comments.
+
+  19 Jan 2009; Matthias Schwarzott <zzam@gentoo.org>
+  files/shell-compat-118-r3.sh, files/udev-135-r2.initd,
+  files/udev-start-135-r3.sh:
+  No longer rely on existance of /lib/librc.so to check for openrc as this
+  is known to fail on some (multilib) setups, Bug #252493 and others.
+
+  19 Jan 2009; Benedikt Böhm <hollow@gentoo.org> files/udev-135-r2.initd:
+  fix newer udev init script inside vservers too, bug #253105
+
+  06 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org> udev-9999.ebuild:
+  set DESCRIPTION after inherit to avoid overwriting it
+
+  01 Jan 2009; Benedikt Böhm <hollow@gentoo.org> files/udev.initd:
+  fix udev init script inside vservers, bug #253105
+
+*udev-9999 (30 Dec 2008)
+
+  30 Dec 2008; Matthias Schwarzott <zzam@gentoo.org> +udev-9999.ebuild:
+  Add live udev ebuild.
+
+*udev-135-r3 (27 Dec 2008)
+
+  27 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-135-r3.confd, +files/udev-mount-135-r3.initd,
+  +files/udev-start-135-r3.sh, +udev-135-r3.ebuild:
+  Create /dev/.rcsysinit only for older baselayouts. Add some comments about
+  rc_oldplug to /etc/conf.d/udev, suggested by Polynomial-C
+  <polynomial-c@gmx.de>.
+
+  19 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-postmount-135-r2.initd, files/udev-start-135-r2.sh,
+  udev-135-r2.ebuild:
+  Remove the code to add udev to sysinit runlevel. openrc ebuild does it
+  now. Fix udev-start for older systems.
+
+  17 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
+  files/udev-135-r2.initd:
+  Add stop function to udev init-script.
+
+  17 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
+  files/udev-mount-135-r2.initd:
+  Also create /dev/tty before running udevd. Suggested by Daniel Robbins
+  <drobbins@funtoo.org>.
+
+  13 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
+  files/udev-135-r2.initd, files/udev-dev-tarball-135-r2.initd,
+  files/udev-mount-135-r2.initd, files/udev-start-135-r2.sh:
+  Fix udev-start to call the init-scripts, but not the openrc-version
+  checks.
+
+*udev-135-r2 (10 Dec 2008)
+
+  10 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-135-r2.confd, +files/udev-135-r2.initd,
+  +files/udev-dev-tarball-135-r2.initd, +files/udev-mount-135-r2.initd,
+  +files/udev-start-135-r2.sh, +files/udev-stop-135-r2.sh,
+  +udev-135-r2.ebuild:
+  Redesign of addons/init-scripts. Moved code into init-scripts and split
+  into smaller parts. Source init-scripts from addons for older baselayouts.
+
+*udev-135-r1 (03 Dec 2008)
+
+  03 Dec 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-135-fix-capi.diff, +files/udev-135-rules-update.diff,
+  +udev-135-r1.ebuild:
+  Fix capi device nodes, Bug #249389. Do this by applying upstream patch to
+  the common capi rules and install these. Remove capi from gentoo-specific
+  rules.
+
+*udev-135 (02 Dec 2008)
+
+  02 Dec 2008; Matthias Schwarzott <zzam@gentoo.org> +udev-135.ebuild:
+  Version bumped. This should solve bug #249222.
+
+  28 Nov 2008; Matthias Schwarzott <zzam@gentoo.org> udev-122-r1.ebuild,
+  udev-124-r1.ebuild, udev-125-r2.ebuild, udev-130-r1.ebuild,
+  udev-133.ebuild:
+  Do only recommend to reboot instead of trigger for re-creating
+  persistent-rules, suggested by Kay Sievers. Cleanup some messages.
+
+  26 Nov 2008; Matthias Schwarzott <zzam@gentoo.org> -udev-130-r2.ebuild,
+  -udev-132.ebuild:
+  Removed two buggy versions.
+
+  25 Nov 2008; Matthias Schwarzott <zzam@gentoo.org> udev-133.ebuild:
+  Remove TODO comments.
+
+  25 Nov 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-133-rules-update.diff,
+  +files/udev-133-silence-physdev-warnings.diff, udev-133.ebuild:
+  Add missing pieces to kernel-compat rules. Add patch to not warn about
+  usage of PHYSDEV* in rules doing WAIT_FOR.
+
+  23 Nov 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-start-133.sh, +files/udev.confd, udev-133.ebuild:
+  Add switch to disable persistent-net, Bug #246312.
+
+  19 Nov 2008; Matthias Schwarzott <zzam@gentoo.org> udev-133.ebuild:
+  No longer change Makefiles and call eautoreconf just to change install
+  location. Now just move the files after make install. Also drop libtool
+  parameter change in makefile.
+
+*udev-133 (19 Nov 2008)
+
+  19 Nov 2008; Matthias Schwarzott <zzam@gentoo.org> +udev-133.ebuild:
+  Version bumped. This version should solve Bug #246938. Enable logging as
+  suggested by upstream, but this prints messages about deprecated stuff in
+  compat rules :/ Add code to guess if udev was enabled in baselayout or
+  openrc, and enable init-script then, Bug #240984. Fix old persistent-net
+  rules on update, Bugs #246849 and #246927.
+
+*udev-132 (14 Nov 2008)
+
+  14 Nov 2008; Matthias Schwarzott <zzam@gentoo.org> +udev-132.ebuild:
+  Version bumped. Changed minimal version for reliable operation to Kernel
+  2.6.19. Improved code to restart udevd and moved it to an extra function,
+  see Bug #129204 for this.
+
+  06 Nov 2008; Matthias Schwarzott <zzam@gentoo.org>
+  -files/udev-start-122.sh,
+  -files/udev-127-disable-logging-compile-fix.patch,
+  -files/udev-129-fix-without-logging.diff, -udev-122.ebuild,
+  -udev-124.ebuild, -udev-125-r1.ebuild, -udev-126.ebuild, -udev-127.ebuild,
+  -udev-127-r1.ebuild, -udev-128.ebuild, -udev-129.ebuild, -udev-130.ebuild:
+  Remove a lot of useless versions.
+
+  05 Nov 2008; Matthias Schwarzott <zzam@gentoo.org> files/udev.initd:
+  Small improvements of init-script. Do run udev-postmount always
+
+*udev-130-r2 (28 Oct 2008)
+
+  28 Oct 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-postmount-130-r2.initd, +files/udev.initd,
+  +udev-130-r2.ebuild:
+  Add udev init-script for new, not yet in tree, openrc-versions (>0.3.0),
+  Bug #240984.
+
+*udev-130-r1 (09 Oct 2008)
+
+  09 Oct 2008; Matthias Schwarzott <zzam@gentoo.org> +files/net-130-r1.sh,
+  +udev-130-r1.ebuild:
+  Ignore events of br-devices to not get a loop of uevents/init-script
+  calls, Bug #239239.
+
+*udev-130 (07 Oct 2008)
+
+  07 Oct 2008; Matthias Schwarzott <zzam@gentoo.org> +udev-130.ebuild:
+  Version bumped. This adds /dev/{block,char}/<maj>:<min> devices to look up
+  devices by major:minor pairs.
+
+*udev-129 (02 Oct 2008)
+
+  02 Oct 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-129-fix-without-logging.diff, +udev-129.ebuild:
+  Version bumped. Needed a patch for compiling with --without-logging. This
+  version should fix issues with detecting raid-partitions, related to
+  missing large-file-support.
+
+*udev-128 (13 Sep 2008)
+
+  13 Sep 2008; Matthias Schwarzott <zzam@gentoo.org> +udev-128.ebuild:
+  Version bumped. Fixed configure parameters.
+
+*udev-127-r1 (13 Sep 2008)
+
+  13 Sep 2008; Rémi Cardona <remi@gentoo.org> +udev-127-r1.ebuild:
+  add --with-udev-prefix to econf, fixes hal mounting, see bug #236635
+
+*udev-127 (02 Sep 2008)
+
+  02 Sep 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-127-disable-logging-compile-fix.patch, +udev-127.ebuild:
+  Version bumped.
+
+  28 Aug 2008; Matthias Schwarzott <zzam@gentoo.org> udev-126.ebuild:
+  Change user-message about udevadm and initramfs, as there are no longer
+  any symlinks but only udevadm executable, thanks to polynomial-c for
+  noticing.
+
+  28 Aug 2008; Matthias Schwarzott <zzam@gentoo.org> udev-126.ebuild:
+  Use configure parameters as designed. (--prefix vs. --exec-prefix). No
+  longer need to patch pkgconfig path.
+
+  27 Aug 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-start-126.sh, udev-126.ebuild:
+  Silence errors from modprobe unix.
+
+*udev-126 (27 Aug 2008)
+
+  27 Aug 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-stop-126.sh, +udev-126.ebuild:
+  Version bumped. Thanks to Polynomial-C for the ebuild. Build system
+  changed to autotools. This leads to no longer building a static library
+  for libvolume_id. Patched makefile to get correct libvolume_id.so version.
+
+  20 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  update metadata maintainers
+
+  14 Aug 2008; nixnut <nixnut@gentoo.org> udev-124-r1.ebuild:
+  Stable on ppc wrt bug 233790
+
+  10 Aug 2008; Tobias Klausmann <klausman@gentoo.org> udev-124-r1.ebuild:
+  Stable on alpha, bug #233790
+
+  09 Aug 2008; Raúl Porcel <armin76@gentoo.org> udev-124-r1.ebuild:
+  x86 stable wrt #233790
+
+  08 Aug 2008; Steve Dibb <beandog@gentoo.org> udev-124-r1.ebuild:
+  amd64 stable, bug 233790
+
+  08 Aug 2008; Markus Rothe <corsair@gentoo.org> udev-124-r1.ebuild:
+  Stable on ppc64; bug #233790
+
+  07 Aug 2008; Jeroen Roovers <jer@gentoo.org> udev-124-r1.ebuild:
+  Stable for HPPA (bug #233790).
+
+  04 Aug 2008; Raúl Porcel <armin76@gentoo.org> udev-124-r1.ebuild:
+  ia64/sparc stable wrt #233790
+
+*udev-125-r2 (03 Aug 2008)
+*udev-124-r1 (03 Aug 2008)
+
+  03 Aug 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-124-cdrom-autoclose-bug.diff,
+  +files/udev-125-cdrom-autoclose-bug.diff,
+  +files/udev-125-rules-update.diff, +udev-124-r1.ebuild,
+  +udev-125-r2.ebuild:
+  Backported fix for cdrom autoclosing when ejecting the media. Cleaned up
+  udev-125 rules update patch.
+
+  26 Jul 2008; Matthias Schwarzott <zzam@gentoo.org> -udev-125.ebuild,
+  udev-125-r1.ebuild:
+  No longer install old not existant docs, Bug #232972. Removed broken
+  ebuild.
+
+*udev-125-r1 (25 Jul 2008)
+
+  25 Jul 2008; Matthias Schwarzott <zzam@gentoo.org> +udev-125-r1.ebuild:
+  Added missing cd command, thanks to Polynomial-C, Bug #232954. Hopefully
+  this also fixes Bug #232923.
+
+*udev-125 (25 Jul 2008)
+
+  25 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/write_root_link_rule-125, +udev-125.ebuild:
+  Version bumped. rules were moved inside the tarball. Rewritten
+  write_root_link_rule due to better support from udevadm.
+
+  18 Jun 2008; Matthias Schwarzott <zzam@gentoo.org>
+  -files/05-udev-early.rules-104-r5, -files/udev.rules-104-r10,
+  -files/udev-104-netif-rename-busywait.patch,
+  -files/udev-104-peristent-net-disable-xen.patch,
+  -files/udev-104-persistent-net-fix-name-dups.patch,
+  -files/udev-start-104-r12.sh, -files/udev-start-104-r13.sh,
+  -files/udev-stop-104-r13.sh, -files/udev-stop-104-r8.sh,
+  -files/udev-105-unlink-db-files.patch, -files/udev-105-vol_id-fix.patch,
+  -files/modprobe-105.sh, -files/05-udev-early.rules-106-r5,
+  -files/udev-start-110-r1.sh, -files/udev-stop-110-r1.sh,
+  -files/udev-start-111-r3.sh, -files/udev-112-rules.diff,
+  -files/udev-113-r1-rules.diff, -files/udev-113-r2-rules.diff,
+  -files/udev-114-fix-persistent-net.diff, -files/95-net.rules,
+  -files/modprobe-111-r1.sh, -files/udev-115-add-special-rule-files.diff,
+  -files/95-udev-late.rules, -files/modprobe-104-r12.sh,
+  -files/modprobe-113-r2.sh, -files/udev-115-fix-modprobe-calls.diff,
+  -files/udev-start-115-r3.sh, -files/udev-start-115-r6.sh,
+  -files/udev-115-rules-update.diff,
+  -files/udev-115-update-gentoo-rules-2.diff,
+  -files/udev-116-gentoo-rules-update.diff,
+  -files/udev-116-path-to-logger.diff, -files/udev-start-118-r1.sh,
+  -files/udev-start-119-r1.sh, -files/udev-121-cdrom_id-segfault.diff,
+  -files/move_tmp_persistent_rules.sh, -files/seq_node.sh,
+  -files/udev.conf.115-r6, -files/udev.conf.post_081,
+  -files/udev.conf.post_108, -files/udev.conf.post_115, -udev-114-r1.ebuild,
+  -udev-114-r2.ebuild, -udev-115.ebuild, -udev-115-r5.ebuild,
+  -udev-115-r6.ebuild, -udev-116.ebuild, -udev-116-r1.ebuild,
+  -udev-117.ebuild, -udev-118.ebuild, -udev-118-r1.ebuild,
+  -udev-118-r2.ebuild, -udev-118-r3.ebuild, -udev-119-r1.ebuild,
+  -udev-120.ebuild, -udev-121.ebuild:
+  Removed old ebuilds.
+
+  15 Jun 2008; Zac Medico <zmedico@gentoo.org> udev-114.ebuild,
+  udev-114-r1.ebuild, udev-114-r2.ebuild, udev-115.ebuild,
+  udev-115-r1.ebuild, udev-115-r5.ebuild, udev-115-r6.ebuild,
+  udev-116.ebuild, udev-116-r1.ebuild, udev-117.ebuild, udev-118.ebuild,
+  udev-118-r1.ebuild, udev-118-r2.ebuild, udev-118-r3.ebuild,
+  udev-119.ebuild, udev-119-r1.ebuild, udev-120.ebuild, udev-121.ebuild,
+  udev-122.ebuild, udev-122-r1.ebuild, udev-124.ebuild:
+  Bug #226505 - For compatibility with phase execution order in
+  >=portage-2.1.5, call has_version inside pkg_preinst instead of
+  pkg_postinst.
+
+*udev-124 (12 Jun 2008)
+
+  12 Jun 2008; Matthias Schwarzott <zzam@gentoo.org> -udev-123.ebuild,
+  +udev-124.ebuild:
+  Bugfix release to make cdrom_id work correct.
+
+*udev-123 (12 Jun 2008)
+
+  12 Jun 2008; Matthias Schwarzott <zzam@gentoo.org> +udev-123.ebuild:
+  Version bumped.
+
+*udev-122-r1 (09 Jun 2008)
+
+  09 Jun 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-start-122-r1.sh, +files/udev-122-rules-update.diff,
+  +udev-122-r1.ebuild:
+  Load unix sockets module before starting udevd, Bug #221253. Print some
+  elog info about persistent-net, Bug 225033. Add rules to set permissions
+  for rfcomm and ttyACM devices, Bug #223757 and Bug #208578.
+
+*udev-122 (19 May 2008)
+
+  19 May 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-start-122.sh, +udev-122.ebuild:
+  Version bumped. Needed to change udev-start to use udevadm subcommands
+  instead of standalone ones (udevtrigger, udevsettle).
+
+*udev-121 (14 May 2008)
+
+  14 May 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-121-cdrom_id-segfault.diff, +udev-121.ebuild:
+  Version bumped. Fix a segfault introduced with this version.
+
+  22 Apr 2008; Tobias Klausmann <klausman@gentoo.org> udev-119.ebuild:
+  Stable on alpha, bug #218407
+
+  21 Apr 2008; Markus Meier <maekke@gentoo.org> udev-119.ebuild:
+  amd64 stable, bug #218407
+
+  21 Apr 2008; Greg Kroah-Hartman <gregkh@gentoo.org> -udev-104-r12.ebuild,
+  -udev-104-r13.ebuild, -udev-111.ebuild, -udev-111-r1.ebuild,
+  -udev-111-r3.ebuild, -udev-112.ebuild, -udev-112-r1.ebuild,
+  -udev-113.ebuild, -udev-113-r1.ebuild, -udev-113-r2.ebuild:
+  remove unneeded ebuilds
+
+  21 Apr 2008; Jeroen Roovers <jer@gentoo.org> udev-119.ebuild:
+  Stable for HPPA (bug #218407).
+
+  20 Apr 2008; nixnut <nixnut@gentoo.org> udev-119.ebuild:
+  Stable on ppc wrt bug 218407
+
+  19 Apr 2008; Raúl Porcel <armin76@gentoo.org> udev-119.ebuild:
+  ia64/sparc/x86 stable wrt #218407
+
+  19 Apr 2008; Markus Rothe <corsair@gentoo.org> udev-119.ebuild:
+  Stable on ppc64; bug #218407
+
+  14 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  files/udev-start-119-r1.sh:
+  Some small cleanups in udev-start.
+
+*udev-120 (03 Apr 2008)
+
+  03 Apr 2008; Matthias Schwarzott <zzam@gentoo.org> +udev-120.ebuild:
+  Version bumped. Removes udevmonitor and udevtest. Fixes ttyS devices
+  moving around between drivers.
+
+  03 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  files/udev-start-119-r1.sh:
+  Add ewarn about missing /dev/zero and about kernel older than 2.6.18.
+  Cosmetics.
+
+*udev-119-r1 (03 Apr 2008)
+
+  03 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-start-119-r1.sh, +udev-119-r1.ebuild:
+  Add masked revision to work on udev-start.sh. This should improve error
+  handling.
+
+*udev-119 (17 Mar 2008)
+
+  17 Mar 2008; Matthias Schwarzott <zzam@gentoo.org> +udev-119.ebuild:
+  Version bump. udev works best with Kernel >=2.6.18 now. Fixes Bug #209733,
+  Bug #208815 and more other stuff.
+
+*udev-118-r3 (08 Feb 2008)
+
+  08 Feb 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/shell-compat-118-r3.sh, +udev-118-r3.ebuild:
+  Fix mounting tmpfs on baselayout-1, when RC_USE_FSTAB=yes is set, but no
+  entry for /dev exists in /etc/fstab.
+
+*udev-118-r2 (02 Feb 2008)
+
+  02 Feb 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +files/shell-compat-118-r2.sh, +files/udev-start-118-r2.sh,
+  +files/udev-stop-118-r2.sh, +udev-118-r2.ebuild:
+  Add openrc capable start-scripts. Based on code by Uberlord, Bug #208245.
+  This removes mount-options from udev.conf, now they are taken from fstab.
+
+*udev-118-r1 (01 Feb 2008)
+
+  01 Feb 2008; Matthias Schwarzott <zzam@gentoo.org> +files/net-118-r1.sh,
+  +files/udev-start-118-r1.sh, +udev-118-r1.ebuild:
+  Do not start net-init-scripts if coldplug=no, Bug #206518. Do not log
+  missing init-script message, Bug #205687.
+
+*udev-118 (19 Dec 2007)
+
+  19 Dec 2007; Matthias Schwarzott <zzam@gentoo.org> +udev-118.ebuild:
+  Version bumped. This contains some small fixes, a rules update (solving Bug
+  #193315), and an update rule-writing guide.
+
+  19 Nov 2007; Joshua Kinard <kumba@gentoo.org> udev-115-r1.ebuild:
+  Stable on mips, per #195289.
+
+*udev-117 (13 Nov 2007)
+
+  13 Nov 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/write_root_link_rule, +udev-117.ebuild:
+  Version bumped. Now all helper-apps are merged into binary udevadm. This
+  needs to be included when building initramfs'. Using udevadm for providing
+  /dev/root link. Added special warning for Bug #190994. No longer install
+  udevstart, it is not needed for 2.6.15 and newer and just confuses people.
+
+  10 Nov 2007; Matthias Schwarzott <zzam@gentoo.org> udev-104-r12.ebuild,
+  udev-104-r13.ebuild, udev-111.ebuild, udev-111-r1.ebuild,
+  udev-111-r3.ebuild, udev-112.ebuild, udev-112-r1.ebuild, udev-113.ebuild,
+  udev-113-r1.ebuild, udev-113-r2.ebuild, udev-114.ebuild,
+  udev-114-r1.ebuild, udev-114-r2.ebuild, udev-115.ebuild,
+  udev-115-r5.ebuild, udev-116.ebuild, udev-116-r1.ebuild:
+  Remove try to apply non-existant patch. Fixed quoting.
+
+*udev-116-r1 (21 Oct 2007)
+
+  21 Oct 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-116-gentoo-rules-update.diff, +udev-116-r1.ebuild:
+  udev-rules update. Fixes bugs #195607 #195728 #195839.
+
+  15 Oct 2007; Tom Gall <tgall@gentoo.org> udev-115-r1.ebuild:
+  stable on ppc64, bug #195289
+
+*udev-116 (14 Oct 2007)
+
+  14 Oct 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-116-path-to-logger.diff, +udev-116.ebuild:
+  Version bumped. This version already contains our huge rules patch. Fix Bug
+  195317 by removing hardcoded path to logger.
+
+  14 Oct 2007; Raúl Porcel <armin76@gentoo.org> udev-115-r1.ebuild:
+  alpha/ia64 stable wrt #195289
+
+  13 Oct 2007; Christoph Mende <angelos@gentoo.org> udev-115-r1.ebuild:
+  Stable on amd64 wrt bug #195289
+
+  12 Oct 2007; Ferris McCormick <fmccor@gentoo.org> udev-115-r1.ebuild:
+  sparc stable --- Bug #195289 --- thanks Jorge.
+
+  11 Oct 2007; Lars Weiler <pylon@gentoo.org> udev-115-r1.ebuild:
+  stable ppc, bug #195289
+
+  10 Oct 2007; Christian Faulhammer <opfer@gentoo.org> udev-115-r1.ebuild:
+  stable x86, bug #195289
+
+  09 Oct 2007; Jeroen Roovers <jer@gentoo.org> udev-115-r1.ebuild:
+  Stable for HPPA (bug #195289), quoting fixes, trivial grammar correction.
+
+  28 Sep 2007; Joshua Kinard <kumba@gentoo.org> udev-114.ebuild:
+  Stable on mips.
+
+  25 Sep 2007; Matthias Schwarzott <zzam@gentoo.org>
+  files/udev-start-115-r6.sh:
+  Moved comment to correct place.
+
+  25 Sep 2007; Matthias Schwarzott <zzam@gentoo.org> udev-115-r6.ebuild:
+  Cleanup of ebuild style.
+
+*udev-115-r6 (24 Sep 2007)
+
+  24 Sep 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-start-115-r6.sh, +files/udev-115-update-gentoo-rules-2.diff,
+  +files/udev.conf.115-r6, +udev-115-r6.ebuild:
+  Simplified rules a bit. Let user configure max inode nr of /dev, solving bug
+  #193586.
+
+*udev-115-r5 (20 Sep 2007)
+
+  20 Sep 2007; Matthias Schwarzott <zzam@gentoo.org>
+  files/udev-115-add-special-rule-files.diff, -udev-115-r2.ebuild,
+  -udev-115-r3.ebuild, -udev-115-r4.ebuild, +udev-115-r5.ebuild:
+  Added isdn and pilot devices to group uucp. Removed older test versions.
+
+*udev-115-r4 (20 Sep 2007)
+
+  20 Sep 2007; Matthias Schwarzott <zzam@gentoo.org>
+  files/udev-115-add-special-rule-files.diff, +udev-115-r4.ebuild:
+  Updated to git version. Fixed permission rules for sg devices.
+
+*udev-115-r3 (11 Sep 2007)
+
+  11 Sep 2007; Matthias Schwarzott <zzam@gentoo.org>
+  files/udev-115-add-special-rule-files.diff,
+  +files/udev-115-fix-modprobe-calls.diff, +files/udev-start-115-r3.sh,
+  files/pnp-aliases, +files/udev.conf.post_115, +udev-115-r3.ebuild:
+  No longer use modprobe-wrapper, that should fix bug 191813 and other
+  breakages caused by our wrapper. This also removes auto-blacklisting of
+  modules that get loaded by modules.autoload. It will break blacklisting of
+  some special aliased modules like pcspkr until bug 192201 is fixed. Now also
+  run persistent-net rules when coldplug is disabled, bug 191466.
+
+  10 Sep 2007; Matthias Schwarzott <zzam@gentoo.org>
+  files/udev-115-add-special-rule-files.diff, udev-115-r2.ebuild:
+  Updated to udev-git. Removed /dev/fb subdirectory for framebuffer devices.
+
+  07 Sep 2007; Matthias Schwarzott <zzam@gentoo.org>
+  files/udev-115-add-special-rule-files.diff, udev-115-r2.ebuild:
+  Updated to udev-git from today. This should fix selinux.
+
+*udev-115-r2 (06 Sep 2007)
+
+  06 Sep 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-115-add-special-rule-files.diff, +udev-115-r2.ebuild:
+  Added masked revision for testing new rules/merged with upstream.
+
+  05 Sep 2007; Matthias Schwarzott <zzam@gentoo.org> udev-115.ebuild,
+  udev-115-r1.ebuild:
+  Fix make trying to rebuild manpages using xmlto, thanks to jakub, bug 191338.
+
+*udev-115-r1 (04 Sep 2007)
+
+  04 Sep 2007; Matthias Schwarzott <zzam@gentoo.org> +files/modprobe-115.sh,
+  +udev-115-r1.ebuild:
+  Updated ebuild to git code of udev. This contains rule updates, mainly to
+  share more code with upstream. In this turn also changing modprobe.sh to be
+  able to load multiple modules at once. Now installing extras/collect. Adding
+  rules directory to CONFIG_PROTECT_MASK.
+
+  02 Sep 2007; Matthias Schwarzott <zzam@gentoo.org> udev-114.ebuild,
+  udev-115.ebuild:
+  Delete file from correct lib-dir (multilib), correcting bug 191043.
+
+  02 Sep 2007; Matthias Schwarzott <zzam@gentoo.org> udev-114.ebuild:
+  Also doing lib install cleanup for stable version.
+
+  02 Sep 2007; Matthias Schwarzott <zzam@gentoo.org> udev-115.ebuild:
+  Cleaning up libvolume_id installation. Now die if dolib fails to prevent
+  broken udev installs, bug 190994.
+
+  30 Aug 2007; Matthias Schwarzott <zzam@gentoo.org> udev-114-r2.ebuild:
+  Backported fix to kernel version check by Polynomial-C
+  <polynomial-C@gmx.de>, bug 190326.
+
+  26 Aug 2007; Matthias Schwarzott <zzam@gentoo.org> udev-115.ebuild:
+  Change kernel-version parsing to be more robust, now using
+  versionator.eclass, thanks to Polynomial-C <polynomial-C@gmx.de>, bug
+  190326.
+
+*udev-115 (26 Aug 2007)
+
+  26 Aug 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-115-rules-update.diff, +files/udev.conf.post_114,
+  +udev-115.ebuild:
+  Version bumped. No longer disable s390 persistent-net. Small improvements to
+  rule and conf-file installation.
+
+  25 Aug 2007; Matthias Schwarzott <zzam@gentoo.org> udev-114-r2.ebuild:
+  Now warn about unappropriate kernel version with just using uname -r, and no
+  longer inheriting linux-info. That is to not pull in dependency to
+  virtual/linux-sources.
+
+  24 Aug 2007; Raúl Porcel <armin76@gentoo.org> udev-114.ebuild:
+  alpha/ia64 stable wrt #188796
+
+*udev-114-r2 (22 Aug 2007)
+
+  22 Aug 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-114-fix-persistent-net.diff, +udev-114-r2.ebuild:
+  Fixed persistent-net to now really ignore devices without DRIVERS having a
+  value, Bug 189042.
+
+  21 Aug 2007; Jeroen Roovers <jer@gentoo.org> udev-114.ebuild:
+  Stable for HPPA (bug #188796).
+
+  17 Aug 2007; Matthias Schwarzott <zzam@gentoo.org> udev-114.ebuild,
+  udev-114-r1.ebuild:
+  Added blocker suggested in bug 189227, removed other hacks to keep the file.
+  I wanted to avoid this, but it seems blockers work better these days. And if
+  not, I don't get the bug, but portage-team ;)
+
+  17 Aug 2007; Matthias Schwarzott <zzam@gentoo.org> Manifest:
+  Fixed manifest
+
+  17 Aug 2007; Matthias Schwarzott <zzam@gentoo.org> udev-114.ebuild,
+  udev-114-r1.ebuild:
+  Now even modify device-mapper.rules to be sure to keep the file, else
+  unmerge-orphans will catch us.
+
+*udev-114-r1 (16 Aug 2007)
+
+  16 Aug 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-start-114-r1.sh, +files/udev-114-root-link-2.diff,
+  +udev-114-r1.ebuild:
+  Updated method to create /dev/root. It now is a symlink and directly created
+  by udev via an injected rule. Added warning about too old kernel to ebuild
+  and udev-start.sh. Now udev-start.sh fails with clear error message and not
+  with messages about failed netlink sockets.
+
+  15 Aug 2007; Christian Faulhammer <opfer@gentoo.org> udev-114.ebuild:
+  stable x86, bug 188796
+
+  14 Aug 2007; Christoph Mende <angelos@gentoo.org> udev-114.ebuild:
+  Stable on amd64 wrt bug #188796
+
+  14 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org> udev-114.ebuild:
+  Stable on sparc wrt #188796
+
+  14 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org> udev-114.ebuild:
+  ppc stable, bug #188796
+
+  14 Aug 2007; Markus Rothe <corsair@gentoo.org> udev-114.ebuild:
+  Stable on ppc64; bug #188796
+
+*udev-114 (05 Aug 2007)
+
+  05 Aug 2007; Matthias Schwarzott <zzam@gentoo.org> +files/modprobe-114.sh,
+  +udev-114.ebuild:
+  Version bumped. This contains updated rules and a slightly improved
+  modprobe-wrapper. Now one can match on SYMLINK. persistent-net is improved
+  to not match on dynamic mac addresses, supports s390 now.
+
+  29 Jul 2007; Joseph Jezak <josejx@gentoo.org> udev-104-r13.ebuild:
+  Marked ppc/ppc64 stable for bug #186508.
+
+  28 Jul 2007; Steve Dibb <beandog@gentoo.org> udev-104-r13.ebuild:
+  amd64 stable, bug 186508
+
+  28 Jul 2007; Joshua Kinard <kumba@gentoo.org> udev-104-r13.ebuild:
+  Stable on mips, per #186508.
+
+  27 Jul 2007; Raúl Porcel <armin76@gentoo.org> udev-104-r13.ebuild:
+  alpha/ia64/x86 stable wrt #186508
+
+  27 Jul 2007; Jeroen Roovers <jer@gentoo.org> udev-104-r13.ebuild:
+  Stable for HPPA (bug #186508).
+
+  27 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> udev-104-r13.ebuild:
+  Stable on sparc wrt #186508
+
+*udev-104-r13 (24 Jul 2007)
+
+  24 Jul 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-start-104-r13.sh, +files/udev-stop-104-r13.sh,
+  +udev-104-r13.ebuild:
+  Backported creation of /dev/root from udev-110-r1 to 104-r12 as this is
+  needed for sys-apps/hal that is already stable.
+
+  12 Jul 2007; Matthias Schwarzott <zzam@gentoo.org>
+  files/modprobe-113-r2.sh:
+  Convert module name to a regular expression, to match autoload/blacklist
+  entries regardless of being written with - or _.
+
+*udev-113-r2 (12 Jul 2007)
+
+  12 Jul 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-113-r2-rules.diff, +files/modprobe-113-r2.sh,
+  +files/udev-start-113-r2.sh, +files/udev.conf.post_113,
+  +udev-113-r2.ebuild:
+  Corrected typo in file mode for new added usb rule, Bug #185069. Now
+  automatically blacklist the modules in modules.autoload.d from coldplug, to
+  let modules-init script load them and respect the order in which they are
+  listed, relevant for multimedia devices like alsa, v4l and dvb, Bug #184833.
+
+*udev-113-r1 (10 Jul 2007)
+
+  10 Jul 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-113-r1-rules.diff, +udev-113-r1.ebuild:
+  Rules update. Adds rule to create usbfs like nodes for kernel 2.6.22. Try to
+  keep nodes /dev/net/tun and /dev/ppp after module unload.
+
+*udev-113 (27 Jun 2007)
+
+  27 Jun 2007; Matthias Schwarzott <zzam@gentoo.org> +udev-113.ebuild:
+  Version bumped. Moved installing device-mapper rules to sys-fs/device-mapper
+  ebuild, Bug #182957. Added some code to make sure the file gets kept if
+  device-mapper is installed, and removed if not.
+
+*udev-112-r1 (07 Jun 2007)
+
+  07 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/move_tmp_persistent_rules-112-r1.sh, +udev-112-r1.ebuild:
+  Added missing inclusion of functions.sh, thanks to steffi from
+  #gentoo-anfaenger. Changed einfo to ebegin/eend.
+
+*udev-112 (05 Jun 2007)
+
+  05 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-112-rules.diff, +udev-112.ebuild:
+  Version bumped. Now go back to using make install. udevmonitor is now
+  installed into /usr/sbin.
+
+*udev-111-r3 (27 May 2007)
+
+  27 May 2007; Matthias Schwarzott <zzam@gentoo.org>
+  -files/udev-start-111-r2.sh, +files/udev-start-111-r3.sh,
+  -udev-111-r2.ebuild, +udev-111-r3.ebuild:
+  Changed udev-start.sh to return an exit-code of 0, to not let baselayout
+  think udev failed, and start mdev afterwards, solving bug #179847.
+
+*udev-111-r2 (25 May 2007)
+
+  25 May 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-postmount-initd-111-r2, +files/udev-start-111-r2.sh,
+  +files/udev-stop-111-r2.sh, +files/move_tmp_persistent_rules.sh,
+  +udev-111-r2.ebuild:
+  Added additional init-script to be started after localmount
+  (udev-postmount), for moving persistent-rules temporarily created under
+  /dev/.udev/ to /etc directly at boot. For now this gets started via
+  initiated services, could be blocked by some rc-settings regarding hotplug.
+
+*udev-111-r1 (22 May 2007)
+
+  22 May 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/modprobe-111-r1.sh, +udev-111-r1.ebuild:
+  Do not print modprobe-errors. Do some locking to not get multiple concurrent
+  modprobe calls for same module, and no multiple loading messages.
+
+  16 May 2007; Matthias Schwarzott <zzam@gentoo.org> udev-111.ebuild:
+  Use /get_libdir/udev, instead of /lib/udev.
+
+  12 May 2007; Matthias Schwarzott <zzam@gentoo.org>
+  -files/udev-stop-105.sh, -files/udev.rules-106-r3,
+  -files/udev.rules-106-r5, -files/udev-106-floppy-devices-no-umask.diff,
+  -files/udev-start-106-r2.sh, -files/udev-106-remove-dasd-rules.patch,
+  -files/udev.rules-107-r1, -files/udev-107-usbcd-by-id.patch,
+  -files/udev-start-107.sh, -files/udev-108-cleanup-early-rules.diff,
+  -files/udev-108-persistent-joystick.diff, -files/udev-start-108-r1.sh,
+  -files/udev-stop-108-r1.sh, -files/udev-109-respect-CFLAGS.diff,
+  -files/64-device-mapper.rules, -files/64-device-mapper.rules-107,
+  -files/64-device-mapper.rules-107-r1,
+  -files/udev-110-makefile-depend.diff, -files/udev-start-110.sh,
+  -files/blacklist, udev-104-r12.ebuild, -udev-106-r4.ebuild,
+  -udev-106-r5.ebuild, -udev-107.ebuild, -udev-107-r1.ebuild,
+  -udev-108.ebuild, -udev-108-r1.ebuild, -udev-109.ebuild,
+  -udev-109-r1.ebuild, -udev-110.ebuild, -udev-110-r1.ebuild,
+  udev-111.ebuild:
+  Second stage of cleanup: Removed all ebuilds between latest stable, and
+  latest ~ARCH version.
+
+  12 May 2007; Matthias Schwarzott <zzam@gentoo.org> -files/udev.rules-018,
+  -files/udev-021-udev_add_c-gcc295-compat.patch,
+  -files/udev-050-udev_volume_id.patch, -files/udev.rules-064-r1,
+  -files/udev.rules-077, -files/udev.rules-077-r1, -files/udev.rules-077-r5,
+  -files/udev-start-077-r2.sh, -files/udev-start-077-r4.sh,
+  -files/udev-start-077.sh, -files/05-udev-early.rules-078,
+  -files/udev.rules-078, -files/05-udev-early.rules-079,
+  -files/udev-start-079.sh, -files/udev.rules-084, -files/udev.rules-089,
+  -files/udev-start-089.sh, -files/udev-start-090.sh, -files/udev.rules-094,
+  -files/udev.rules-096, -files/udev.rules-096-r1,
+  -files/udev-096-udevtrigger.patch, -files/udev-start-096.sh,
+  -files/udev.rules-098, -files/udev-098-udevtrigger.patch,
+  -files/udev-start-098.sh, -files/udev-start-099.sh,
+  -files/udev-start-104-r10.sh, -files/modprobe.sh, -files/udev.conf,
+  -files/udev.conf.post_024, -files/udev.conf.post_046,
+  -files/udev.conf.post_050, -files/udev.conf.post_059,
+  -files/udev.hotplug.empty, -files/udev.permissions, -files/udev.rules,
+  -files/udev.rules.post_012, -files/udev-parisc-path_id.patch,
+  -files/udev-parisc-path_id-again.patch, -files/udev-start.sh,
+  -files/udev-stop.sh, -udev-079-r2.ebuild, -udev-087.ebuild,
+  -udev-087-r1.ebuild, -udev-090-r1.ebuild, -udev-094.ebuild,
+  -udev-096.ebuild, -udev-096-r1.ebuild, -udev-098.ebuild, -udev-099.ebuild,
+  -udev-100.ebuild, -udev-100-r2.ebuild, -udev-103.ebuild,
+  -udev-104-r11.ebuild:
+  Removed all ebuilds older than stable version 104-r12.
+
+  11 May 2007; Joshua Kinard <kumba@gentoo.org> udev-104-r12.ebuild:
+  Stable on mips, per #159871.
+
+*udev-111 (10 May 2007)
+
+  10 May 2007; Matthias Schwarzott <zzam@gentoo.org> +udev-111.ebuild:
+  Version bumped.
+
+  05 May 2007; Roy Marples <uberlord@gentoo.org> files/udev-start-110-r1.sh:
+  Work with dash again.
+
+*udev-110-r1 (04 May 2007)
+
+  04 May 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-start-110-r1.sh, +files/udev-stop-110-r1.sh,
+  +files/udev-110-root-link-1.diff, +udev-110-r1.ebuild:
+  Now creating /dev/root the easy way (mknod), Bug #175243. Printing a warning
+  at boot if persistent-net behaves bad, and if, then checking the stored
+  rules for duplicates.
+
+  04 May 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-110-makefile-depend.diff, udev-110.ebuild:
+  Fix parallel make issue, Bug #176918. Added forgotten backslash causing udev
+  to fail on selinux, Bug #176957.
+
+  03 May 2007; Matthias Schwarzott <zzam@gentoo.org>
+  files/udev-start-110.sh:
+  Make modprobe.sh write colorful output also with baselayout-2.
+
+*udev-110 (02 May 2007)
+
+  02 May 2007; Matthias Schwarzott <zzam@gentoo.org> +files/blacklist-110,
+  +files/udev-start-110.sh, +udev-110.ebuild:
+  Version bumped. Call volume-manager setup only for baselayout-1, Bug
+  #171593. Blacklist eth1394 by default, Bug #128962.
+
+*udev-109-r1 (25 Apr 2007)
+
+  25 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-109-respect-CFLAGS.diff, +udev-109-r1.ebuild:
+  No longer ignore MAKEOPTS, CFLAGS and LDFLAGS, requested in Bug #175893.
+
+*udev-109 (24 Apr 2007)
+
+  24 Apr 2007; Matthias Schwarzott <zzam@gentoo.org> +udev-109.ebuild:
+  Version bumped.
+
+*udev-108-r1 (23 Apr 2007)
+
+  23 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-108-cleanup-early-rules.diff,
+  +files/udev-108-persistent-joystick.diff, +files/udev-start-108-r1.sh,
+  +files/udev-stop-108-r1.sh, +files/udev.conf.post_108,
+  +udev-108-r1.ebuild:
+  Removing variable that was unconditionally added to env of all events,
+  saving lot of space, Bug #173476. Restricting /dev-tmpfs in size, 10M by
+  default. Added persistent links for joysticks. Finally removed /etc/dev.d.
+  Make moving persistent-rules from tmp-storage to /etc more generic.
+
+*udev-108 (29 Mar 2007)
+
+  29 Mar 2007; Matthias Schwarzott <zzam@gentoo.org> +udev-108.ebuild:
+  Version bumped.
+
+  28 Mar 2007; Matthias Schwarzott <zzam@gentoo.org>
+  files/udev.rules-107-r1:
+  Removed the commented legacy rules calling hotplug/dev.d, as the needed
+  helpers are no longer present udev.
+
+*udev-107-r1 (28 Mar 2007)
+
+  28 Mar 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/64-device-mapper.rules-107-r1, +files/udev.rules-107-r1,
+  +udev-107-r1.ebuild:
+  Ignore luks crypt devices while not fully up. Small rule cleanup.
+
+  27 Mar 2007; Matthias Schwarzott <zzam@gentoo.org> udev-079-r2.ebuild,
+  udev-087.ebuild, udev-087-r1.ebuild, udev-090-r1.ebuild, udev-094.ebuild,
+  udev-096.ebuild, udev-096-r1.ebuild, udev-098.ebuild, udev-099.ebuild,
+  udev-100.ebuild, udev-100-r2.ebuild, udev-103.ebuild, udev-104-r11.ebuild,
+  udev-104-r12.ebuild, udev-106-r4.ebuild, udev-106-r5.ebuild,
+  udev-107.ebuild:
+  Install rcaddon into get_libdir/rcscripts, Bug #172391.
+
+*udev-107 (22 Mar 2007)
+
+  22 Mar 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/64-device-mapper.rules-107, +files/udev-107-usbcd-by-id.patch,
+  +files/udev-start-107.sh, udev-106-r5.ebuild, +udev-107.ebuild:
+  Do not install run_directory, it is marked as strongly deprecated. No need
+  for /dev/console redirect fix, Bug #151414. Do not call dmsetup from
+  udev-start, as rules already do this. Use by-id method for usb and firewire
+  cdrom persistence. Use higher priority for device-mapper persistent symlinks
+  to overwrite symlinks of multipath base devices.
+
+  21 Mar 2007; Chris Gianelloni <wolf31o2@gentoo.org> udev-104-r12.ebuild:
+  Stable on alpha wrt bug #159871.
+
+*udev-106-r5 (19 Mar 2007)
+
+  19 Mar 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev.rules-106-r5, +files/64-device-mapper.rules,
+  +files/05-udev-early.rules-106-r5,
+  +files/udev-106-remove-dasd-rules.patch, +files/95-udev-late.rules,
+  +udev-106-r5.ebuild:
+  Updated early-rules for scsi-wait, like upstream. Created
+  95-udev-late.rules, which now contains 95-net.rules and the udevmonitor and
+  eventrecorder-rules. Removed dasd_id tool, that is now in s390-tools.
+  Removed old, broken seq_node.sh. Moved all device-mapper stuff to own file,
+  export name of dm-device in ID_DM_NAME. No longer call legacy /etc/dev.d/
+  stuff.
+
+  17 Mar 2007; Steve Dibb <beandog@gentoo.org> udev-104-r12.ebuild:
+  amd64 stable, bug 159871
+
+  17 Mar 2007; Matthias Schwarzott <zzam@gentoo.org>
+  files/modprobe-104-r12.sh:
+  Backported non-modular kernel fix toget it into release, Bug #168322.
+
+  14 Mar 2007; Matthias Schwarzott <zzam@gentoo.org>
+  -files/udev.rules-104-r7, -files/udev-start-104-r5.sh,
+  -files/udev.rules-105, -files/udev-start-105.sh, -files/udev.rules-106,
+  -files/udev.rules-106-r1, -files/udev.rules-106-r2, -files/net.sh,
+  -udev-104-r9.ebuild, -udev-104-r10.ebuild, -udev-105.ebuild,
+  -udev-106.ebuild, -udev-106-r1.ebuild, -udev-106-r2.ebuild,
+  -udev-106-r3.ebuild:
+  Cleanup of old ebuilds.
+
+*udev-106-r4 (14 Mar 2007)
+
+  14 Mar 2007; Matthias Schwarzott <zzam@gentoo.org> +udev-106-r4.ebuild:
+  Now really use new rules file, that should already be in udev-106-r3.
+
+  14 Mar 2007; Roy Marples <uberlord@gentoo.org> files/modprobe-105.sh:
+  Remove bashisms from modprobe.sh
+
+*udev-106-r3 (13 Mar 2007)
+
+  13 Mar 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev.rules-106-r3, +files/blacklist, +files/pnp-aliases,
+  +udev-106-r3.ebuild:
+  Symlink some utilities to /sbin where multipath-tools expect them, Bug
+  #168588. Install persistent-device rules for device-mapper devices. Added
+  template for blacklist file. Added modprobe file with aliases for isapnp
+  devices. Let device-mapper rule also react on change events.
+
+  12 Mar 2007; Markus Rothe <corsair@gentoo.org> udev-104-r12.ebuild:
+  Stable on ppc64; bug #159871
+
+*udev-106-r2 (12 Mar 2007)
+
+  12 Mar 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev.rules-106-r2, +files/udev-start-106-r2.sh,
+  +udev-106-r2.ebuild:
+  Now support kernel cmdline gentoo=nocoldplug to disable udev coldplug. Do
+  not install persistent net rules for s390 arch, as it has no persistent mac
+  addresses. No longer ignore device mapper devices, but look up the name and
+  create /dev/mapper/NAME, that allows hal to get the events, Bug #137831. Do
+  not apply normal rules to network devices, Bug #166652.
+
+  11 Mar 2007; Roy Marples <uberlord@gentoo.org> files/modprobe-104-r12.sh,
+  files/modprobe-105.sh, files/modprobe.sh:
+  Use /etc/init.d/functions.sh instead of /sbin/functions.sh
+
+  10 Mar 2007; nixnut <nixnut@gentoo.org> udev-104-r12.ebuild:
+  Stable on ppc wrt bug 159871
+
+  09 Mar 2007; Jeroen Roovers <jer@gentoo.org> udev-104-r12.ebuild:
+  Stable for HPPA (bug #159871).
+
+  09 Mar 2007; Raúl Porcel <armin76@gentoo.org> udev-104-r12.ebuild:
+  x86 stable wrt bug 159871
+
+  09 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org> udev-104-r12.ebuild:
+  Stable on sparc wrt #159871
+
+  09 Mar 2007; Matthias Schwarzott <zzam@gentoo.org>
+  files/udev.rules-104-r10:
+  Backported fix for calling modprobe.sh for pnp devices from udev-106-r1.ebuild.
+
+  08 Mar 2007; Matthias Schwarzott <zzam@gentoo.org> udev-104-r9.ebuild,
+  udev-104-r10.ebuild, udev-104-r11.ebuild, udev-104-r12.ebuild,
+  udev-105.ebuild, udev-106.ebuild, udev-106-r1.ebuild:
+  Depending on baselayout-1.12.5 now, as >udev-103 breaks older baselayouts
+  for missing /sbin/udev, Bug #169758.
+
+*udev-106-r1 (06 Mar 2007)
+
+  06 Mar 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev.rules-106-r1, +udev-106-r1.ebuild:
+  Fixed floppy rule, fix calling modprobe.sh for pnp devices. Rule speedup by
+  not calling modprobe if already loaded.
+
+*udev-106 (05 Mar 2007)
+
+  05 Mar 2007; Matthias Schwarzott <zzam@gentoo.org> +files/udev.rules-106,
+  +files/udev-106-floppy-devices-no-umask.diff, +udev-106.ebuild:
+  Version bumped. Added rule to create the specific floppy device nodes like
+  /dev/floppy/fd0u1440. Some small rules cleanup/reorder.
+
+  02 Mar 2007; Matthias Schwarzott <zzam@gentoo.org> files/udev.rules-105:
+  Let all modprobe calls use the wrapper.
+
+*udev-105 (02 Mar 2007)
+
+  02 Mar 2007; Matthias Schwarzott <zzam@gentoo.org> +files/udev.rules-105,
+  +files/modprobe-105.sh, +files/udev-start-105.sh, +files/udev-stop-105.sh,
+  +udev-105.ebuild:
+  Version bumped. Cleaned up start/stop scripts regarding check for
+  udev-version. Reordered some rules, added module loading for ide tape
+  devices, scsi medium changers and mmc devices. Do not load module i82365 as
+  that can lead to deadlocks. Make modprobe.sh converted to generic shell and
+  ignore requests silently if kernel has no module support, Bug #168322.
+
+  22 Feb 2007; Roy Marples <uberlord@gentoo.org>
+  files/udev-start-104-r12.sh, files/udev-stop-104-r8.sh:
+  udev-start,shop.sh now work with any shell
+
+*udev-104-r12 (20 Feb 2007)
+
+  20 Feb 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/modprobe-104-r12.sh, +files/udev-start-104-r12.sh,
+  +udev-104-r12.ebuild:
+  Added code to detect emerge in chroot and not restart udevd there, Bug
+  #129204. Changed modprobe.sh to write to , and let udev-start create
+  /dev/tty1 when seeding to allow using it before udevd creates it, to not
+  write over boot splash, Bug #166990.
+
+  13 Feb 2007; Markus Rothe <corsair@gentoo.org> udev-104-r11.ebuild:
+  Stable on ppc64; bug #159871
+
+  13 Feb 2007; Joseph Jezak <josejx@gentoo.org> udev-104-r11.ebuild:
+  Marked ppc stable for bug #159871.
+
+  13 Feb 2007; Marcus D. Hanwell <cryos@gentoo.org> udev-104-r11.ebuild:
+  Stable on amd64, bug 159871.
+
+  12 Feb 2007; Bryan Østergaard <kloeri@gentoo.org> udev-104-r11.ebuild:
+  Stable on Alpha, bug 159871.
+
+  12 Feb 2007; Bryan Østergaard <kloeri@gentoo.org> udev-104-r11.ebuild:
+  Stable on IA64, bug 159871.
+
+  12 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org> udev-104-r11.ebuild:
+  Stable on sparc wrt #159871
+
+  12 Feb 2007; Raúl Porcel <armin76@gentoo.org> udev-104-r11.ebuild:
+  x86 stable wrt bug 159871
+
+  12 Feb 2007; Jeroen Roovers <jer@gentoo.org> udev-104-r11.ebuild:
+  Oh no, not again for HPPA (bug #159871).
+
+*udev-104-r11 (12 Feb 2007)
+
+  12 Feb 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-104-persistent-net-fix-name-dups.patch, +udev-104-r11.ebuild:
+  Removed check for a wrong file when looking for already used device-names,
+  solving Bug #166486.
+
+  12 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org> udev-104-r10.ebuild:
+  Stable on sparc wrt #159871
+
+  12 Feb 2007; Jeroen Roovers <jer@gentoo.org> udev-104-r10.ebuild:
+  Stable for HPPA (bug #159871).
+
+  11 Feb 2007; Raúl Porcel <armin76@gentoo.org> udev-104-r10.ebuild:
+  x86 stable wrt bug 159871
+
+  11 Feb 2007; Matthias Schwarzott <zzam@gentoo.org> udev-104-r10.ebuild:
+  Resetting all keywords which were copied from udev-104-r9 to let archs
+  themself set it stable.
+
+  11 Feb 2007; Matthias Schwarzott <zzam@gentoo.org> udev-104-r10.ebuild:
+  Copy over keyword modification from 104-r9 (ppc).
+
+  11 Feb 2007; Joseph Jezak <josejx@gentoo.org> udev-104-r9.ebuild:
+  Marked ppc stable for bug #159871.
+
+  10 Feb 2007; Matthias Schwarzott <zzam@gentoo.org> files/modprobe.sh:
+  Corrected both grep-expressions, to not get commented blacklist entries, and
+  to get log output correct.
+
+*udev-104-r10 (10 Feb 2007)
+
+  10 Feb 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev.rules-104-r10, +files/net-104-r10.sh,
+  +files/udev-start-104-r10.sh, +files/modprobe.sh, +udev-104-r10.ebuild:
+  Does not call /etc/init.d/net.IFACE for network devices which are registed
+  after being up (like ppp, isdn), solving bug #165936. Added modprobe wrapper
+  to make all modules blacklistable, Bug #130766, and to give console-output
+  about loading modules.
+
+  08 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> udev-104-r9.ebuild:
+  Stable on alpha wrt bug #159871.
+
+  08 Feb 2007; Patrick McLean <chutzpah@gentoo.org> udev-104-r9.ebuild:
+  Stable on amd64 bug #159871.
+
+  07 Feb 2007; Matthias Schwarzott <zzam@gentoo.org>
+  -files/udev.rules-104-r4, -files/udev-stop-104-r3.sh, -udev-104-r5.ebuild,
+  -udev-104-r6.ebuild, -udev-104-r7.ebuild, -udev-104-r8.ebuild:
+  Cleaned up older versions.
+
+  06 Feb 2007; Markus Rothe <corsair@gentoo.org> udev-104-r9.ebuild:
+  Stable on ppc64; bug #159871
+
+  06 Feb 2007; Jeroen Roovers <jer@gentoo.org> udev-104-r9.ebuild:
+  Stable for HPPA (bug #159871).
+
+  05 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org> udev-104-r9.ebuild:
+  Stable on sparc wrt #159871
+
+  05 Feb 2007; Raúl Porcel <armin76@gentoo.org> udev-104-r9.ebuild:
+  x86 stable wrt bug 159871
+
+*udev-104-r9 (04 Feb 2007)
+
+  04 Feb 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-105-unlink-db-files.patch, +udev-104-r9.ebuild:
+  Adding another patch from udev-105, to unlink database files before
+  (re)creating them, fixing some symlink issues.
+
+*udev-104-r8 (03 Feb 2007)
+
+  03 Feb 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-stop-104-r8.sh, +files/udev-105-vol_id-fix.patch,
+  +udev-104-r8.ebuild:
+  Apply patch from udev-105 to let vol_id properly detect raid partitions.
+  Added code to udev-stop script to save persistent-{cd,net} rules created at
+  boot while root-device was read-only to /etc/udev/rules.d, to make it really
+  persistent over multiple boots.
+
+*udev-104-r7 (31 Jan 2007)
+
+  31 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev.rules-104-r7, +udev-104-r7.ebuild:
+  Fix rule for sg-devices of scsi-cdroms, to only match attributes that are
+  reliable, Bug #164595.
+
+*udev-104-r6 (30 Jan 2007)
+
+  30 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-104-peristent-net-disable-xen.patch, +udev-104-r6.ebuild:
+  Stop persistent-net from touching xen-network-devices, solving Bug #162730.
+
+  30 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  -files/05-udev-early.rules-104-r2, -files/udev.rules-104-r2,
+  -files/udev-start-104-r3.sh, -udev-104-r3.ebuild, -udev-104-r4.ebuild:
+  Removed older revisions.
+
+  30 Jan 2007; Matthias Schwarzott <zzam@gentoo.org> udev-104-r3.ebuild,
+  udev-104-r4.ebuild, udev-104-r5.ebuild:
+  Removed useless dependency on hotplug-base for newer versions.
+
+*udev-104-r5 (29 Jan 2007)
+
+  29 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/05-udev-early.rules-104-r5, +files/udev-start-104-r5.sh,
+  +udev-104-r5.ebuild:
+  Enable bootup with empty /dev on root-partition, Bug #151414. Setting
+  IN_HOTPLUG for all events for compatibility. Now remove network-dev.d
+  script as there now is own net-hotplug-udev-rule, and this specific
+  script seemed to not work.
+
+  28 Jan 2007; Mike Frysinger <vapier@gentoo.org> udev-103.ebuild,
+  udev-104-r3.ebuild, udev-104-r4.ebuild:
+  Only screw with udevd when ROOT == /.
+
+*udev-104-r4 (27 Jan 2007)
+
+  27 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev.rules-104-r4, +udev-104-r4.ebuild:
+  Changing serial,isdn,capi and all other dialout-devices to group uucp, mode
+  0660, solving Bug #108249.
+
+  27 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  -files/05-udev-early.rules-104, -files/udev.rules-104,
+  -files/udev-start-104.sh, -udev-104-r1.ebuild, -udev-104-r2.ebuild,
+  udev-104-r3.ebuild:
+  Deleted some buggy versions. Removed upgrade-warnings for ancient versions.
+
+  26 Jan 2007; Matthias Schwarzott <zzam@gentoo.org> udev-090-r1.ebuild,
+  udev-094.ebuild, udev-096.ebuild, udev-096-r1.ebuild, udev-098.ebuild,
+  udev-099.ebuild, udev-100.ebuild, udev-100-r2.ebuild, udev-103.ebuild,
+  udev-104-r1.ebuild, udev-104-r2.ebuild, udev-104-r3.ebuild:
+  Explicitly inherited toolchain-funcs to solve Bug #144529.
+
+*udev-104-r3 (25 Jan 2007)
+
+  25 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-start-104-r3.sh, +files/udev-stop-104-r3.sh,
+  +udev-104-r3.ebuild:
+  Fixed ugly manpage symlink (.gz.bz2). No longer use mktemp in addon, Bug
+  #163695. Make storing devices work again, Bug #162866. Finally removed
+  device-nodes added to /lib by default, Bug #128302.
+
+*udev-104-r2 (24 Jan 2007)
+
+  24 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/05-udev-early.rules-104-r2, +files/udev.rules-104-r2,
+  +files/udev-104-netif-rename-busywait.patch, +udev-104-r2.ebuild:
+  Avoid warnings about wait_for_sysfs rule for persistent-net, Bug #163096.
+  Added missing reaction on netif rename return code for success, Bug #158531.
+  Removed duplicated old rule for scsi-module-loading. Consistent use of ENV
+  for MODALIAS, Bug #163410.
+
+  22 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  -files/40-scsi-hotplug.rules, -files/udev.rules-103-r1,
+  -files/udev.rules-103-r2, -files/udev.rules-103-r3, -udev-103-r1.ebuild,
+  -udev-103-r2.ebuild, -udev-103-r3.ebuild, -udev-104.ebuild:
+  Nuked crappy revisions.
+
+*udev-104-r1 (20 Jan 2007)
+
+  20 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-start-104.sh, +udev-104-r1.ebuild:
+  Fixed using disappeared /sbin/udev for checking udev-version in
+  rcscript-addon, now just write udev-version into skript at emerge time,
+  reported by Polyomial-C <polynomial-C@gmx.de> on Bug #161801.
+
+*udev-104 (19 Jan 2007)
+
+  19 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/05-udev-early.rules-104, +files/udev.rules-104, +udev-104.ebuild:
+  Version bumped, Bug #161801. Added depend to libselinux, Bug #156704. Moved
+  scsi-rules to all other rules inside 50-udev.rules, removing
+  40-scsi-hotplug.rules in pkg_postinst, Added rule for loading st/osst tape
+  module, setting timeout of tape-like scsi-devices to large value (900s),
+  inspired by redhat-rules. Added wait-rule for "device/driver" to work around
+  race in persistence-net. Added raw usb-devices for use by libusb to group
+  usb with group write permission, Bug #150223. Removed installation of
+  /sbin/udev as it no longer exists and /sbin/rc also does not seem to need it
+  any longer.
+
+*udev-103-r3 (16 Jan 2007)
+
+  16 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev.rules-103-r3, +files/40-scsi-hotplug.rules,
+  +files/95-net.rules, +udev-103-r3.ebuild:
+  Restrict cdrom_id rule to ACTION==add. Move network-init-script rules to a
+  place after network-device persistance rules. Add rules to autoload
+  scsi-device-class drivers (sr_mod, sd_mod).
+
+*udev-103-r2 (16 Jan 2007)
+
+  16 Jan 2007; Roy Marples <uberlord@gentoo.org> +files/udev.rules-103-r2,
+  +files/net.sh, +udev-103-r2.ebuild:
+  udev can now automatically start our network scripts again.
+
+*udev-103-r1 (15 Jan 2007)
+
+  15 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev.rules-103-r1, +udev-103-r1.ebuild:
+  Remove old cdrom-rules, solving Bug #158060. Disable calling hotplugd for
+  compatibility to remove co-existance problems for firmware loading and more,
+  Bug #147006 and Bug #145809.
+
+  15 Jan 2007; Matthias Schwarzott <zzam@gentoo.org> metadata.xml:
+  Added cardoe and me to maintainers.
+
+  11 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> udev-103.ebuild:
+  Stable on sparc
+
+  06 Dec 2006; Jeroen Roovers <jer@gentoo.org> udev-103.ebuild:
+  Stable for HPPA.
+
+  03 Dec 2006; Markus Rothe <corsair@gentoo.org> udev-103.ebuild:
+  Stable on ppc64
+
+  25 Nov 2006; Greg Kroah-Hartman <gregkh@gentoo.org> udev-103.ebuild:
+  mark 103 stable on x86
+
+  04 Nov 2006; Roy Marples <uberlord@gentoo.org> files/udev-start-099.sh:
+  Change the bash =~ operator to work with all versions.
+
+*udev-103 (23 Oct 2006)
+
+  23 Oct 2006; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-103.ebuild:
+  103 release
+
+  18 Sep 2006; Herbie Hopkins <herbs@gentoo.org> udev-100-r2.ebuild:
+  Multilib fixes, don't install helper scripts in /get_libdir/udev and call
+  them at /lib/udev in other scripts.
+
+  12 Sep 2006; Greg Kroah-Hartman <gregkh@gentoo.org> -udev-100-r1.ebuild:
+  remove buggy 100-r1 ebuild
+
+*udev-100-r2 (12 Sep 2006)
+
+  12 Sep 2006; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-100-r2.ebuild:
+  Fix boot bug in 100-r1, sorry about that.
+
+*udev-100-r1 (11 Sep 2006)
+
+  11 Sep 2006; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-100-r1.ebuild:
+  add network and cdrom persistent device name rules
+
+*udev-100 (08 Sep 2006)
+
+  08 Sep 2006; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-100.ebuild:
+  100 release (fixes some disk persistent name issues.)
+
+*udev-099 (06 Sep 2006)
+
+  06 Sep 2006; Greg Kroah-Hartman <gregkh@gentoo.org>
+  +files/udev-start-099.sh, +udev-099.ebuild:
+  099 release
+
+*udev-098 (31 Aug 2006)
+
+  31 Aug 2006; Greg Kroah-Hartman <gregkh@gentoo.org> +files/udev.rules-098,
+  +files/udev-098-udevtrigger.patch, +files/udev-start-098.sh,
+  +udev-098.ebuild:
+  098 release.  Loads of bugs fixed in the ebuild and surrounding scripts. Rules
+  files also updated to work properly.
+
+  19 Jul 2006; Martin Schlemmer <azarah@gentoo.org> udev-096-r1.ebuild:
+  Remove redundent 10-udev.hotplug symlink. Noticed by Walt
+  <wa1ter@myrealbox.com>.
+
+*udev-096-r1 (17 Jul 2006)
+
+  17 Jul 2006; Martin Schlemmer <azarah@gentoo.org>
+  +files/udev.rules-096-r1, +udev-096-r1.ebuild:
+  Fix path issues, bug #140668.
+
+*udev-096 (15 Jul 2006)
+
+  15 Jul 2006; Martin Schlemmer <azarah@gentoo.org> +files/udev.rules-096,
+  +files/udev-096-udevtrigger.patch, +files/udev-start-096.sh,
+  +udev-096.ebuild:
+  Update version. Enable firmware loading, bug #138126. Add patches from bug
+  #119989.
+
+  06 Jul 2006; Joshua Kinard <kumba@gentoo.org> udev-090-r1.ebuild:
+  Marked stable on mips.
+
+  05 Jul 2006; Martin Schlemmer <azarah@gentoo.org> files/seq_node.sh:
+  Fix some logic issues and typo's.
+
+  04 Jul 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fix Manifest (a couple of files mysteriously ended up with an off-by-one
+  size and different checksums).
+
+  03 Jul 2006; <plasmaroo@gentoo.org> udev-090-r1.ebuild:
+  Stable on IA64.
+
+  02 Jul 2006; Joel Martin <kanaka@gentoo.org> udev-084.ebuild,
+  udev-085.ebuild, udev-086.ebuild, udev-087.ebuild, udev-087-r1.ebuild,
+  udev-089.ebuild, udev-089-r1.ebuild, udev-089-r2.ebuild, udev-090.ebuild,
+  udev-090-r1.ebuild, udev-094.ebuild:
+  From version 84 the CROSS variable changed to CROSS_COMPILE. Change
+  everything 084 and later.
+
+  28 Jun 2006; Martin Schlemmer <azarah@gentoo.org> Manifest:
+  Bah, repoman.
+
+*udev-094 (28 Jun 2006)
+
+  28 Jun 2006; Martin Schlemmer <azarah@gentoo.org> +files/udev.rules-094,
+  +files/seq_node.sh, +udev-094.ebuild:
+  Update version. Fix some '==' vs '=' errors with rules file. Add hopeful
+  sufficient replacement script for depriciated '%e' directive.
+
+  28 Jun 2006; Bryan Østergaard <kloeri@gentoo.org> udev-087-r1.ebuild:
+  Stable on alpha.
+
+*udev-090-r1 (19 Jun 2006)
+*udev-087-r1 (19 Jun 2006)
+*udev-079-r2 (19 Jun 2006)
+
+  19 Jun 2006; Roy Marples <uberlord@gentoo.org> files/udev-stop.sh,
+  +udev-079-r2.ebuild, +udev-087-r1.ebuild, +udev-090-r1.ebuild:
+  Remove the try command from udev-stop.sh, #136350 thanks to Paul Bredbury.
+
+  24 May 2006; Roy Marples <uberlord@gentoo.org> files/udev-start-077-r2.sh,
+  files/udev-start-077-r4.sh, files/udev-start-079.sh,
+  files/udev-start-089.sh, files/udev-start-090.sh:
+  Fix typo "Finializing" > "Finalizing"
+
+  01 May 2006; Simon Stelling <blubb@gentoo.org> udev-087.ebuild:
+  stable on amd64
+
+  29 Apr 2006; Joshua Kinard <kumba@gentoo.org> udev-087.ebuild:
+  Marked stable on mips.
+
+*udev-090 (17 Apr 2006)
+
+  17 Apr 2006; Greg Kroah-Hartman <gregkh@gentoo.org> files/udev.rules-089,
+  +files/udev-start-090.sh, +udev-090.ebuild:
+  090 udev release.
+  Lots of little bug fixes from 089.
+  pnp modules should now be autoloaded (if not, please read comments
+  in the 050-udev.rules file in the /etc/udev/rules/ directory on what
+  you need to add to the modules.conf file).
+  "safer" ebuild now, we do error checking and warn about coldplug
+  still being present on the box.
+  We also create device nodes directly on the root fs, not in /var
+  to help those who mount /var -nodev.
+
+  16 Apr 2006; Michael Hanselmann <hansmi@gentoo.org> udev-087.ebuild:
+  Stable on ppc.
+
+  09 Apr 2006; Markus Rothe <corsair@gentoo.org> udev-087.ebuild:
+  Stable on ppc64
+
+  05 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org> udev-087.ebuild:
+  Stable on sparc
+
+*udev-089-r2 (04 Apr 2006)
+
+  04 Apr 2006; Greg Kroah-Hartman <gregkh@gentoo.org> +files/udev.rules-089,
+  +udev-089-r2.ebuild:
+  fix raid-devfs.sh losage (bug #128682)
+  fix inability to boot on kernels older than 2.6.14 (bug #128792)
+
+  04 Apr 2006; Aron Griffis <agriffis@gentoo.org> udev-087.ebuild:
+  Mark 087 stable on ia64
+
+*udev-089-r1 (04 Apr 2006)
+
+  04 Apr 2006; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-089-r1.ebuild:
+  oops path_id went away, put it back now.
+
+*udev-089 (03 Apr 2006)
+
+  03 Apr 2006; Greg Kroah-Hartman <gregkh@gentoo.org>
+  +files/udev-start-089.sh, +udev-089.ebuild:
+  089 release
+  adds a new library (can 64 bit arches please verify that I didn't mess
+  something up here?)
+  adds "coldplug" functionality to udev by default, use the module blacklist
+  option to prevent things from being loaded if you don't like this.
+
+  03 Apr 2006; Greg Kroah-Hartman <gregkh@gentoo.org> udev-087.ebuild:
+  mark 087 stable on x86 due to 2.6.16 being stable soon
+
+*udev-087 (15 Mar 2006)
+
+  15 Mar 2006; Robin H. Johnson <robbat2@gentoo.org> +udev-087.ebuild:
+  Version bump, now supports SAS hardware.
+
+  06 Mar 2006; Mike Frysinger <vapier@gentoo.org> files/udev-stop.sh:
+  Pass --numeric-owner to tar to make shutdown with NIS users happy.
+
+*udev-086 (02 Mar 2006)
+
+  02 Mar 2006; Greg Kroah-Hartman <gregkh@gentoo.org>
+  files/udev-start-079.sh, +udev-086.ebuild:
+  086 release
+  fixed problem that /dev/.udev might be a file instead of a directory
+  Startup queue waiting problem fixed (people with fancy disk setups hit this.)
+
+*udev-085 (21 Feb 2006)
+
+  21 Feb 2006; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-085.ebuild:
+  085 added
+
+  21 Feb 2006; Joel Martin <kanaka@gentoo.org> udev-070-r1.ebuild:
+  Fix invalid size value for udev.permissions in Manifest
+
+  19 Feb 2006; Joshua Kinard <kumba@gentoo.org> udev-079-r1.ebuild:
+  Marked stable on mips.
+
+  17 Feb 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  files/udev-start-079.sh:
+  Added patch from bug #123129 to fix evms_activate for LiveCD builds.
+
+  08 Feb 2006; Aron Griffis <agriffis@gentoo.org> udev-079-r1.ebuild:
+  Mark 079-r1 stable on alpha
+
+*udev-084 (31 Jan 2006)
+
+  31 Jan 2006; Greg Kroah-Hartman <gregkh@gentoo.org>
+  files/05-udev-early.rules-079, +files/udev.rules-084,
+  +files/udev.conf.post_081, +files/udev-parisc-path_id-again.patch,
+  +udev-084.ebuild:
+  084 release - lots of little bug fixes, and config file updates.
+
+  22 Jan 2006; Markus Rothe <corsair@gentoo.org> udev-079-r1.ebuild:
+  Stable on ppc64
+
+  22 Jan 2006; <dang@gentoo.org> udev-079-r1.ebuild:
+  Marked stable on amd64
+
+*udev-081-r1 (21 Jan 2006)
+*udev-079-r1 (21 Jan 2006)
+
+  21 Jan 2006; Roy Marples <uberlord@gentoo.org> +files/udev-start-079.sh,
+  +udev-079-r1.ebuild, +udev-081-r1.ebuild:
+  Version bump for new scripts to stop udev from starting init scripts
+  too early, #118419.
+
+  18 Jan 2006; Guy Martin <gmsoft@gentoo.org> udev-079.ebuild:
+  Stable on hppa.
+
+  18 Jan 2006; Joseph Jezak <josejx@gentoo.org> udev-079.ebuild:
+  Marked ppc stable.
+
+*udev-081 (17 Jan 2006)
+
+  17 Jan 2006; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-081.ebuild:
+  add 081 release from upstream.
+
+  17 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org> udev-079.ebuild:
+  Stable on sparc
+
+  14 Jan 2006; Greg Kroah-Hartman <gregkh@gentoo.org> udev-079.ebuild:
+  079 marked stable on x86 to handle upcoming 2.6.15 stable marking too.
+
+  25 Dec 2005; Joshua Kinard <kumba@gentoo.org> udev-070-r1.ebuild:
+  Marked stable on mips.
+
+*udev-079 (23 Dec 2005)
+
+  23 Dec 2005; Greg Kroah-Hartman <gregkh@gentoo.org>
+  +files/05-udev-early.rules-079, +udev-079.ebuild:
+  079 release, fixes some /dev/disk names and naming of network devices bugs.
+
+*udev-078 (19 Dec 2005)
+
+  19 Dec 2005; Greg Kroah-Hartman <gregkh@gentoo.org>
+  +files/05-udev-early.rules-078, +files/udev.rules-078, +udev-078.ebuild:
+  078 release.
+  fixes dvb issue (hopefully for real this time.)
+  scsi tool fixes.
+  added new config file to run before everyone else.
+
+  18 Dec 2005; Markus Rothe <corsair@gentoo.org> udev-070-r1.ebuild:
+  Stable on ppc64
+
+*udev-077-r5 (13 Dec 2005)
+
+  13 Dec 2005; Greg Kroah-Hartman <gregkh@gentoo.org>
+  +files/udev.rules-077-r5, +udev-077-r5.ebuild:
+  Fix DVB naming issue (#115123) and fix the serial port names to be real with
+  symlinks for people who can't live without the dumb devfs names...
+
+*udev-077-r4 (11 Dec 2005)
+
+  11 Dec 2005; Greg Kroah-Hartman <gregkh@gentoo.org>
+  +files/udev-start-077-r4.sh, +udev-077-r4.ebuild:
+  seed /lib/udev/devices with some known device files (fixes some errors at boot
+  time.)  Also rework the udev-start.sh file a bit to fix the order of how we
+  start up udev.
+
+*udev-077-r3 (09 Dec 2005)
+
+  09 Dec 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-077-r3.ebuild:
+  077-r3 release - fix dependancy on newer version of baselayout (for those who
+  are running stable for other packages, and don't seem to want to upgrade) as
+  we need it to start udev properly at boot time.
+
+*udev-077-r2 (08 Dec 2005)
+
+  08 Dec 2005; Greg Kroah-Hartman <gregkh@gentoo.org>
+  +files/udev-start-077-r2.sh, +udev-077-r2.ebuild:
+  changes to udev-start.sh to handle the good features in the 2.6.15 kernel
+  release (only use netlink, faster startup time using uevent, etc.)
+  
+  Everything should still work just fine for older kernel releases, if not,
+  please enter bugs.
+
+*udev-077-r1 (07 Dec 2005)
+
+  07 Dec 2005; Greg Kroah-Hartman <gregkh@gentoo.org>
+  +files/udev.rules-077-r1, +files/udev-parisc-path_id.patch,
+  +udev-077-r1.ebuild:
+  077-r1 release.
+  Fixes a number of little bugs that people have reported.
+
+*udev-077 (07 Dec 2005)
+
+  07 Dec 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +files/udev.rules-077,
+  +files/udev-start-077.sh, +udev-077.ebuild:
+  Rudimentary 077 udev support added.  Should fix lots of odd bugs
+  people have been having with 073.
+
+  12 Nov 2005; Chris White <chriswhite@gentoo.org> Manifest:
+  Fixed silly bug #112235. Feel free to chew my head off, it's breaking user's
+  systems for a very silly reason.
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> udev-070-r1.ebuild:
+  Stable on ppc.
+
+*udev-073 (07 Nov 2005)
+
+  07 Nov 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-073.ebuild:
+  073 release.
+  Fixes the "kernel does not have inotify" issue.
+
+*udev-072 (06 Nov 2005)
+
+  06 Nov 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-072.ebuild:
+  072 release.  Careful about running this on kernels older
+  than 2.6.14, I do not know what will happen with that...
+
+  25 Oct 2005; Greg Kroah-Hartman <gregkh@gentoo.org> -udev-045.ebuild,
+  -udev-056.ebuild, -udev-058.ebuild, -udev-068.ebuild:
+  remove more old versions of udev from the tree
+
+  25 Oct 2005; Greg Kroah-Hartman <gregkh@gentoo.org>
+  -files/udev-070-gcc2.patch, -udev-030.ebuild, -udev-059.ebuild,
+  -udev-060.ebuild, -udev-062.ebuild, -udev-063.ebuild, -udev-064.ebuild,
+  -udev-064-r1.ebuild, -udev-065.ebuild, -udev-066.ebuild, -udev-067.ebuild,
+  -udev-070.ebuild:
+  remove a bunch of old udev versions from the tree
+
+*udev-071 (19 Oct 2005)
+
+  19 Oct 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-071.ebuild:
+  071 release
+  added firmware_helper to hopefully help out the firmware issues people are
+  seeing.
+
+*udev-070-r1 (19 Oct 2005)
+
+  19 Oct 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-070-r1.ebuild:
+  Fix 109789 caused by gcc 2 patch which was incorrect :(
+
+  19 Oct 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/udev-070-gcc2.patch, udev-070.ebuild:
+  Fix building with gcc-2.x.
+
+  18 Oct 2005; Aron Griffis <agriffis@gentoo.org> udev-070.ebuild:
+  Mark 070 stable on alpha
+
+  17 Oct 2005; <dang@gentoo.org> udev-070.ebuild:
+  Marked stable on amd64
+
+  17 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org> udev-070.ebuild:
+  Stable on sparc
+
+  14 Oct 2005; Greg Kroah-Hartman <gregkh@gentoo.org> udev-070.ebuild:
+  Marked 070 stable on x86
+
+  14 Oct 2005; Carlos Silva <r3pek@gentoo.org> udev-068-r1.ebuild,
+  udev-070.ebuild:
+  Added a workaround to the md5sum calculation. Older versions of coreutils
+  doesn't return the end '-'
+
+  16 Sep 2005; Aron Griffis <agriffis@gentoo.org> udev-068-r1.ebuild:
+  Mark 068-r1 stable on alpha
+
+*udev-070 (14 Sep 2005)
+
+  14 Sep 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-070.ebuild:
+  070 release, gets rid of some kernel log messages people were seeing on
+  startup.
+
+*udev-069 (13 Sep 2005)
+
+  13 Sep 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-069.ebuild:
+  069 udev release.  Lots of tiny bug fixes all over the place.
+
+*udev-068-r1 (12 Sep 2005)
+
+  12 Sep 2005; Martin Schlemmer <azarah@gentoo.org> +files/udev-start.sh,
+  +files/udev-stop.sh, udev-068.ebuild, +udev-068-r1.ebuild:
+  Add rcscript addons.  Note that they will only be used in next unstable
+  baselayout version 1.12.0.
+
+  08 Sep 2005; Aaron Walker <ka0ttic@gentoo.org> udev-068.ebuild:
+  Stable on mips.
+
+  03 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> udev-068.ebuild:
+  Stable on ppc.
+
+  03 Sep 2005; Markus Rothe <corsair@gentoo.org> udev-068.ebuild:
+  Stable on ppc64
+
+  31 Aug 2005; Luis Medinas <metalgod@gentoo.org> udev-068.ebuild:
+  Marked Stable on AMD64.
+
+  31 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> udev-068.ebuild:
+  Stable on sparc
+
+  30 Aug 2005; Greg Kroah-Hartman <gregkh@gentoo.org> udev-068.ebuild:
+  Add more info messages (like anyone reads them...) for people upgrading
+  to the latest 068 release that does not have devfs style names anymore.
+  
+  Marked 068 stable on x86, let the bugs begin...
+
+*udev-068 (18 Aug 2005)
+
+  18 Aug 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-068.ebuild:
+  068 release
+  This should fix the cdrom, dvb, and any other external callout problem that
+  was happening with the 066 and 067 release.
+  Also fixes the CFLAGS issue.
+
+  13 Aug 2005; Greg Kroah-Hartman <gregkh@gentoo.org> Manifest:
+  fixed 067 digest md5
+
+*udev-067 (13 Aug 2005)
+
+  13 Aug 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-067.ebuild:
+  067 release
+  
+  Fixes persistant name stuff at boot (and the cdrom naming at boot).
+  Fixes build of cdrom_id with older versions of linux-headers.
+
+*udev-066 (11 Aug 2005)
+
+  11 Aug 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-066.ebuild:
+  066 release
+  Should fix cdrom permission problem from 065
+  helper programs are moved to /sbin
+  Lots of config file tweaks.
+
+*udev-065 (02 Aug 2005)
+
+  02 Aug 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-065.ebuild:
+  065 release
+  
+  Little bug fixes, new helper script "path_id".
+  
+  Also, we now have persistent block device names in /dev/disk/ try them out and
+  let me know if they are useful or not.
+
+*udev-064-r1 (31 Jul 2005)
+
+  31 Jul 2005; Greg Kroah-Hartman <gregkh@gentoo.org>
+  +files/udev.rules-064-r1, +udev-064-r1.ebuild:
+  Start moving to a sane /dev naming scheme.
+  This release removes the devfs names for the tty and consolde devices, and the
+  symlinks that were implementing the LSB standard names.  We only implement the
+  LSB names now, which saves over 3Mb of RAM on /dev.
+  
+  This rule change also speeds up udev init time by a order of magnitude 
+  (my slow box went from 5 seconds to .5 seconds, your mileage will vary, 
+  'time udevstart' as root before and after this release to see your difference.)
+
+*udev-064 (26 Jul 2005)
+
+  26 Jul 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-064.ebuild:
+  064 release
+  
+  Fixes sparc and other 64 bit arch issues.
+  Added another udev helper program, create_floppy_devices, which requires a
+  kernel patch to work properly.
+
+  17 Jul 2005; Joshua Kinard <kumba@gentoo.org> udev-062.ebuild,
+  udev-063.ebuild:
+  Remove sparc keywords from udev-062 and udev-063 until bus error in Bug #99290
+  is fixed.
+
+*udev-063 (15 Jul 2005)
+
+  15 Jul 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-063.ebuild:
+  063 release
+  fixes cdrom and firewire raw device issues, among other things.
+
+  13 Jul 2005; Aron Griffis <agriffis@gentoo.org> udev-058.ebuild:
+  stable on alpha
+
+  09 Jul 2005; Joseph Jezak <josejx@gentoo.org> udev-058.ebuild:
+  Marked ppc stable.
+
+  07 Jul 2005; Greg Kroah-Hartman <gregkh@gentoo.org> -udev-061.ebuild:
+  remove 061 from tree as it's so broken.
+
+*udev-062 (07 Jul 2005)
+
+  07 Jul 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-062.ebuild:
+  062 release
+  Fixes big permission problem with 061 and some other things.
+
+  07 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org> udev-058.ebuild:
+  Stable amd64.
+
+  06 Jul 2005; Greg Kroah-Hartman <gregkh@gentoo.org> -udev-042.ebuild,
+  -udev-043.ebuild, -udev-046.ebuild, -udev-048.ebuild, -udev-049.ebuild,
+  -udev-050.ebuild, -udev-051.ebuild, -udev-052.ebuild, -udev-054.ebuild:
+  deleted old udev ebuilds that are not needed
+
+*udev-061 (06 Jul 2005)
+
+  06 Jul 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-061.ebuild:
+  061 release
+  Fixes the cdsymlink issue.
+
+  05 Jul 2005; Aron Griffis <agriffis@gentoo.org> udev-058.ebuild:
+  stable on ia64
+
+  04 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> udev-058.ebuild:
+  Stable on sparc
+
+*udev-060 (03 Jul 2005)
+
+  03 Jul 2005; Greg Kroah-Hartman <gregkh@gentoo.org>
+  +files/udev.conf.post_059, +udev-060.ebuild:
+  060 release
+  
+  This one should actually boot, unlike 059, sorry about that...
+
+  01 Jul 2005; Markus Rothe <corsair@gentoo.org> udev-058.ebuild:
+  Stable on ppc64
+
+  01 Jul 2005; Greg Kroah-Hartman <gregkh@gentoo.org> udev-058.ebuild:
+  mark 058 stable on x86
+
+*udev-059 (01 Jul 2005)
+
+  01 Jul 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-059.ebuild:
+  059 release
+  
+  Note this is _very_ experimental still.  Not quite sure if /etc/dev.d/
+  rules still run properly, but booting should still work just fine (as
+  long as your boot partitions aren't under some crazy-whack rule...)
+
+  28 Jun 2005; Joshua Kinard <kumba@gentoo.org> udev-056.ebuild:
+  Marked stable on mips.
+
+  21 Jun 2005; Olivier Crête <tester@gentoo.org> udev-056.ebuild:
+  Stable on amd64
+
+  27 May 2005; Joseph Jezak <josejx@gentoo.org> udev-056.ebuild:
+  Marked ppc stable.
+
+  23 May 2005; Jason Wever <weeve@gentoo.org> udev-056.ebuild:
+  Stable on SPARC.
+
+  22 May 2005; Markus Rothe <corsair@gentoo.org> udev-056.ebuild:
+  Stable on ppc64
+
+*udev-058 (20 May 2005)
+
+  20 May 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-058.ebuild:
+  058 release.
+  Please read RELEASE-NOTES if you have custom udev rules.
+  This version is required if you have custom rules, and you are running
+  a kernel newer than 2.6.12-rc4 (this includes 2.6.12 and the 2.6.12-mm
+  releases.)
+
+  12 May 2005; Guy Martin <gmsoft@gentoo.org> udev-056.ebuild:
+  Stable on hppa.
+
+  11 May 2005; Greg Kroah-Hartman <gregkh@gentoo.org> udev-056.ebuild:
+  Marked 056 stable on x86 (finally...)  This fixes a whole lot of reported bugs.
+  But please be careful about changes in the rule structures if you had any
+  custom rules written for older versions of udev.
+
+  26 Mar 2005; Joseph Jezak <josejx@gentoo.org> udev-045.ebuild:
+  Marked ppc stable.
+
+*udev-056 (24 Mar 2005)
+
+  24 Mar 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-056.ebuild:
+  added 056 release
+
+  20 Mar 2005; Markus Rothe <corsair@gentoo.org> udev-045.ebuild:
+  Stable on ppc64
+
+*udev-054 (25 Feb 2005)
+
+  25 Feb 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-054.ebuild:
+  054 release
+
+*udev-052 (08 Feb 2005)
+
+  08 Feb 2005; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-052.ebuild:
+  052 release.
+  Lots of gentoo config bugs fixed in here.
+
+*udev-051 (03 Feb 2005)
+
+  03 Feb 2005; Greg Kroah-Hartman <gregkh@gentoo.org>
+  +files/udev.conf.post_050, +udev-051.ebuild:
+  update to 051 release. This fixes (or should) the firmware oops. Also,
+  please note that the .permissions files are now gone! If you had custom ones
+  in the past, you need to move that logic into the .rules files (if not,
+  you'll just get root only access to the devices, so it's not a security
+  issue...)
+
+  18 Jan 2005; Joshua Kinard <kumba@gentoo.org> udev-045.ebuild:
+  Marked stable on mips.
+
+  01 Jan 2005; Jason Wever <weeve@gentoo.org> udev-045.ebuild:
+  Stable on sparc.
+
+*udev-050 (17 Dec 2004)
+
+  17 Dec 2004; Greg Kroah-Hartman <gregkh@gentoo.org>
+  +files/udev-050-udev_volume_id.patch, +udev-050.ebuild:
+  050 release (fixes some segfaults in the 049 release)
+
+*udev-039 (17 Dec 2004)
+
+  17 Dec 2004; Greg Kroah-Hartman <gregkh@gentoo.org> -udev-024-r1.ebuild,
+  -udev-025-r1.ebuild, -udev-026-r1.ebuild, -udev-027.ebuild,
+  -udev-028.ebuild, -udev-029.ebuild, -udev-031.ebuild, -udev-032.ebuild,
+  -udev-033.ebuild, -udev-034-r1.ebuild, -udev-034.ebuild, -udev-035.ebuild,
+  -udev-036.ebuild, -udev-038.ebuild, -udev-039.ebuild, -udev-040.ebuild,
+  -udev-044.ebuild:
+  removed a lot of old udev ebuilds.
+
+  15 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> udev-045.ebuild:
+  Stable on alpha.
+
+*udev-049 (14 Dec 2004)
+
+  14 Dec 2004; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-049.ebuild:
+  049 release
+
+  14 Dec 2004; Dylan Carlson <absinthe@gentoo.org> udev-045.ebuild:
+  Stable on amd64.
+
+  09 Dec 2004; Greg Kroah-Hartman <gregkh@gentoo.org> udev-024-r1.ebuild:
+  048 release
+  
+  the /etc/hotplug.d/default/05-wait_for_sysfs.hotplug symlink is now gone.
+
+  07 Dec 2004; Mike Frysinger <vapier@gentoo.org> udev-046.ebuild:
+  Cross compile support.
+
+*udev-046 (18 Nov 2004)
+
+  18 Nov 2004; Greg Kroah-Hartman <gregkh@gentoo.org>
+  +files/udev.conf.post_046, +udev-046.ebuild:
+  046 release
+  
+  Note: If you rely on the output of udevinfo, please run udevstart
+  after upgrading, or just reboot.  This isn't really a big deal, as
+  I don't know of many tools that do rely on this (HAL might, don't
+  remember) but it's a good idea.
+
+  18 Nov 2004; Greg Kroah-Hartman <gregkh@gentoo.org> udev-045.ebuild:
+  mark 045 stable on x86
+
+*udev-045 (17 Nov 2004)
+
+  17 Nov 2004; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-045.ebuild:
+  045 release (just a rules file update to fix bugs caused by the 044 release,
+  sorry about that...)
+
+  11 Nov 2004; Travis Tilley <lv@gentoo.org> udev-043.ebuild:
+  stable on amd64
+
+  12 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> udev-043.ebuild:
+  Stable on alpha.
+
+  11 Nov 2004; Joshua Kinard <kumba@gentoo.org> udev-042.ebuild:
+  Marked stable on mips.
+
+*udev-044 (10 Nov 2004)
+
+  10 Nov 2004; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-044.ebuild:
+  044 release
+  added cdrom symlinks
+  added 'static' IUSE support (will build with klibc)
+  fixed 'maketest' FEATURE usage (no more sudo dependancy)
+  other minor bugfixes and updates
+
+  09 Nov 2004; Greg Kroah-Hartman <gregkh@gentoo.org> udev-043.ebuild:
+  add sudo to the list of depends to build with
+  mark 043 stable
+
+*udev-043 (05 Nov 2004)
+
+  05 Nov 2004; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-043.ebuild:
+  043 release
+
+*udev-042 (22 Oct 2004)
+
+  22 Oct 2004; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-042.ebuild:
+  042 release
+  wait_for_sysfs updates (needed for -mm or latest -bk kernels)
+  inotify fix
+  Other bug fixes.
+
+*udev-040 (18 Oct 2004)
+
+  18 Oct 2004; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-040.ebuild:
+  040 release
+  Now fixes all the vcs issues in wait_for_sysfs (famous last words...)
+  Also fixes mtr device node issue, sorry about that...
+
+  15 Oct 2004; Greg Kroah-Hartman <gregkh@gentoo.org> :
+  039 release
+  Fixes the firmware loading bug.
+  Should fix almost all wait_for_sysfs messages now too.
+  If not, please send them to the address the log message tells you to.
+
+  13 Oct 2004; Greg Kroah-Hartman <gregkh@gentoo.org> -udev-037.ebuild:
+  remove 037 files, as that version didn't build the extras directory correctly.
+
+*udev-037 (13 Oct 2004)
+
+  13 Oct 2004; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-037.ebuild,
+  +udev-038.ebuild:
+  037 and 038 version bump.  
+  Lots of good bug fixes, and better wait_for_sysfs error reporting.
+  (Don't use 037, it will not build for you...)
+
+*udev-036 (12 Oct 2004)
+
+  12 Oct 2004; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-036.ebuild:
+  036 bump.
+  Hopefully get a bit better error reporting out of wait_for_sysfs now.
+
+*udev-035 (11 Oct 2004)
+
+  11 Oct 2004; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-035.ebuild:
+  035 bump
+  Lots more wait_for_sysfs warnings fixed.  If anyone sees any on their boxes,
+  please send them to the address that the message tells you to.
+
+  09 Oct 2004; Greg Kroah-Hartman <gregkh@gentoo.org> udev-034-r1.ebuild:
+  oops, missed HOMEPAGE change for udev...
+
+*udev-034-r1 (09 Oct 2004)
+
+  09 Oct 2004; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-034-r1.ebuild:
+  Fix bug 66634 and 66930 at the same time.
+  (udevinfo and udevtest were getting placed in /bin/ instead of /usr/bin/)
+
+*udev-034 (07 Oct 2004)
+
+  07 Oct 2004; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-034.ebuild:
+  034 release bump, which fixes a lot of the wait_for_sysfs log messages
+  
+  If people see any more of them, please send them to the email address
+  in the log message.
+
+*udev-033 (06 Oct 2004)
+
+  06 Oct 2004; Greg Kroah-Hartman <gregkh@gentoo.org>
+  +files/udev.hotplug.empty, +udev-033.ebuild:
+  033 upstream release
+  added volume_id back to the package, as it works again
+  new program, wait_for_sysfs is now run before udev.
+  udev is now 10-udev.hotplug in /etc/hotplug.d/default so that HAL
+  is happier.
+  Please feel free to delete the /etc/hotplug.d/default/udev.hotplug file.
+
+*udev-032 (13 Sep 2004)
+
+  13 Sep 2004; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-032.ebuild:
+  032 release which fixes a number of 031 reported bugs.
+
+  13 Sep 2004; Greg Kroah-Hartman <gregkh@gentoo.org>
+  -files/udev-015-no-wait-for-sleep.patch,
+  -files/udev-016-logging-config-option.patch,
+  -files/udev-017-no-wait-for-sleep.patch,
+  -files/udev-018-sysfs-build-fix.patch,
+  -files/udev-019-unlink-existing.patch:
+  deleted a lot of old patches from the tree
+
+*udev-031 (10 Sep 2004)
+
+  10 Sep 2004; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-031.ebuild:
+  031 release
+  No more udev_volume_id as it doesn't build :(
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> udev-025-r1.ebuild,
+  udev-030.ebuild:
+  Masked udev-030.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> udev-025-r1.ebuild:
+  Masked udev-025-r1.ebuild stable for ppc
+
+  21 Aug 2004; Joshua Kinard <kumba@gentoo.org> udev-030.ebuild:
+  Marked stable on mips.
+
+  11 Aug 2004; Greg Kroah-Hartman <gregkh@gentoo.org> udev-030.ebuild:
+  mark 030 stable on x86
+
+  28 Jul 2004; Travis Tilley <lv@gentoo.org> udev-030.ebuild:
+  marking stable on amd64 for misc bugfixes
+
+  22 Jul 2004; Tom Gall <tgall@gentoo.org> udev-030.ebuild:
+  stable, ppc64, let the brave new world start!
+
+  10 Jul 2004; Ciaran McCreesh <ciaranm@gentoo.org> udev-029.ebuild:
+  -sparc, see bug #55959
+
+*udev-030 (09 Jul 2004)
+
+  09 Jul 2004; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-030.ebuild:
+  version bump to 030
+  Should fix bug 55959 for amd64 (actually the bug was there for all arches
+  the others just got lucky...)
+
+*udev-029 (02 Jul 2004)
+
+  02 Jul 2004; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-029.ebuild:
+  029 version bump.
+  Another stab at fixing the dm udevstart issue.
+
+  30 Jun 2004; Greg Kroah-Hartman <gregkh@gentoo.org> -udev-016-r2.ebuild:
+  removed old ebuilds, closing bug #4900
+
+  28 Jun 2004; Joshua Kinard <kumba@gentoo.org> udev-026-r1.ebuild:
+  Marked stable on mips.
+
+*udev-028 (25 Jun 2004)
+
+  25 Jun 2004; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-028.ebuild:
+  version bump, hopefully will fix the lvm issue
+
+  19 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> udev-024-r1.ebuild,
+  udev-025-r1.ebuild:
+  Marked stable on amd64.
+
+*udev-027 (14 Jun 2004)
+
+  14 Jun 2004; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-027.ebuild:
+  027 version bump.
+  Fixes the /dev/tty and /dev/misc/* permission problems.
+
+*udev-026-r1 (07 Jun 2004)
+
+  07 Jun 2004; Greg Kroah-Hartman <gregkh@gentoo.org> +udev-026-r1.ebuild:
+  026 version bump
+  Added udev_volume_id to built files for people who want to use it.
+
+  07 Jun 2004; Greg Kroah-Hartman <gregkh@gentoo.org>
+  files/udev.conf.post_024:
+  fix http://bugs.gentoo.org/show_bug.cgi?id=48740 by changing the default
+  perms to 0660
+
+*udev-023-r1 (07 May 2004)
+
+  07 May 2004; Greg Kroah-Hartman <gregkh@gentoo.org> -udev-021-r1.ebuild,
+  -udev-022-r1.ebuild, -udev-023-r1.ebuild, udev-025-r1.ebuild:
+  removed 021-r1, 022-r1, and 023-r1 release as they are not needed anymore.
+
+*udev-025-r1 (21 Apr 2004)
+
+  21 Apr 2004; Greg Kroah-Hartman <gregkh@gentoo.org>
+  +files/udev.conf.post_024, +udev-025-r1.ebuild:
+  version bump.
+  
+  Changed the configs to look in /etc/udev/rules.d/ for udev rules
+  and in /etc/udev/permissions.d/ for permission files.  Put the
+  default files in those directories with the 50- prefix to allow
+  users to override anything they don't like much easier.
+
+  07 Apr 2004; Will Woods <wwoods@gentoo.org> udev-024-r1.ebuild:
+  added ~alpha to KEYWORDS
+
+  12 Apr 2004; Greg Kroah-Hartman <gregkh@gentoo.org> udev-024-r1.ebuild:
+  Marked stable on x86   (crosses his fingers...)
+
+*udev-024-r1 (02 Apr 2004)
+
+  02 Apr 2004; Greg Kroah-Hartman <gregkh@gentoo.org> udev-024-r1.ebuild:
+  024 release bump
+  
+  Use the udev.rules.gentoo and udev.permissions.gentoo files from the main
+  udev tarball now, as they are synced up properly.
+  
+  Add the etc/dev.d/net/hotplug.dev script to properly handle renaming network
+  devices with udev.
+
+  24 Mar 2004; Greg Kroah-Hartman <gregkh@gentoo.org> :
+  Took k the sysfsutils dependancy off, as it is onot needed.
+  
+  Bump to 023 release
+  Remove DBUS support as it is currently broken in 023
+
+  22 Mar 2004; Joshua Kinard <kumba@gentoo.org> udev-022-r1.ebuild:
+  Added ~mips to KEYWORDS.
+
+*udev-022-r1 (20 Mar 2004)
+
+  20 Mar 2004; Greg Kroah-Hartman <gregkh@gentoo.org> metadata.xml,
+  udev-022-r1.ebuild:
+  Updated to version 022 of uevdev
+
+*udev-016-r2 (16 Mar 2004)
+*udev-017-r1 (16 Mar 2004)
+*udev-018-r3 (16 Mar 2004)
+*udev-018-r4 (16 Mar 2004)
+*udev-018-r5 (16 Mar 2004)
+*udev-019-r2 (16 Mar 2004)
+*udev-019-r3 (16 Mar 2004)
+*udev-021-r1 (16 Mar 2004)
+
+  16 Mar 2004; Seemant Kulleen <seemant@gentoo.org> udev-016-r1.ebuild,
+  udev-016-r2.ebuild, udev-017-r1.ebuild, udev-017.ebuild, udev-018-r1.ebuild,
+  udev-018-r2.ebuild, udev-018-r3.ebuild, udev-018-r4.ebuild,
+  udev-018-r5.ebuild, udev-018.ebuild, udev-019-r1.ebuild, udev-019-r2.ebuild,
+  udev-019-r3.ebuild, udev-019.ebuild, udev-021-r1.ebuild, udev-021.ebuild:
+  bumps to PROVIDE virtual/dev-manager
+
+*udev-021 (04 Mar 2004)
+
+  06 Mar 2004; Mike Frysinger <vapier@gentoo.org>
+  Add gcc-2.x compat patch.
+
+  04 Mar 2004; Martin Schlemmer <azarah@gentoo.org> udev-021.ebuild:
+  Update version.  Add udevstart and manpage to be installed.
+
+  29 Feb 2004; Martin Schlemmer <azarah@gentoo.org> udev-019-r1.ebuild:
+  Fix it to use udev.rules-018.
+
+  29 Feb 2004; Martin Schlemmer <azarah@gentoo.org> files/udev.rules-018:
+  Fix missing comma, reported by floam.
+
+*udev-019-r1 (29 Feb 2004)
+
+  29 Feb 2004; Martin Schlemmer <azarah@gentoo.org> udev-019-r1.ebuild,
+  files/udev-019-unlink-existing.patch:
+  Remove existing file first before creating node/symlink (bug #43151).
+
+*udev-019 (29 Feb 2004)
+
+  29 Feb 2004; Martin Schlemmer <azarah@gentoo.org> udev-019.ebuild:
+  Update version.
+
+*udev-018-r2 (26 Feb 2004)
+
+  26 Feb 2004; Martin Schlemmer <azarah@gentoo.org> udev-018-r2.ebuild,
+  files/udev-018-sysfs-build-fix.patch:
+  Fix build error, bug #42377, thanks Greg KH <greg@kroah.com>.
+
+  26 Feb 2004; Ciaran McCreesh <ciaranm@gentoo.org> udev-018-r1.ebuild:
+  Works on (most) sparc kit, adding ~sparc to the keywords
+
+*udev-018-r1 (20 Feb 2004)
+
+  20 Feb 2004; Martin Schlemmer <azarah@gentoo.org> udev-018-r1.ebuild:
+  Give udevsend and udevd a go, as it seems previous issues are solved (missing
+  events, etc).
+
+*udev-018 (20 Feb 2004)
+
+  20 Feb 2004; Martin Schlemmer <azarah@gentoo.org> udev-017.ebuild,
+  udev-018.ebuild, files/udev.rules-018:
+  Update version.
+
+*udev-017 (13 Feb 2004)
+
+  13 Feb 2004; Martin Schlemmer <azarah@gentoo.org> udev-017.ebuild,
+  files/udev-017-no-wait-for-sleep.patch:
+  Update version.
+
+*udev-016-r1 (08 Feb 2004)
+
+  08 Feb 2004; Martin Schlemmer <azarah@gentoo.org> udev-016-r1.ebuild,
+  files/udev.rules.post_012:
+  Comment examples in udev.rules as they cause issues. Bump version to propagate
+  this change. Closes bug #40758.
+
+*udev-016 (03 Feb 2004)
+
+  03 Feb 2004; Martin Schlemmer <azarah@gentoo.org> udev-016.ebuild,
+  files/udev-016-logging-config-option.patch:
+  Update version.
+
+  30 Jan 2004; Mike Frysinger <vapier@gentoo.org>
+  udev-015-sysbus-missing-include.patch :
+  Add patch to include missing header file #39792 by Simon Watson.
+
+  30 Jan 2004; Martin Schlemmer <azarah@gentoo.org>
+  files/udev-015-logging-config-option.patch:
+  Tweak patch to use #define and not a string.
+
+*udev-015 (29 Jan 2004)
+
+  29 Jan 2004; Martin Schlemmer <azarah@gentoo.org> udev-015.ebuild,
+  files/udev-015-logging-config-option.patch,
+  files/udev-015-no-wait-for-sleep.patch,
+  files/udev.conf, files/udev.rules.post_012
+  Update version.  Update no-wait-for-sleep.patch to apply again.  Add
+  logging-config-option.patch to toggle logging via a udev.conf option,
+  and add it to udev.conf.  Update udev.rules.post_012 with some misc
+  rules to extend devfs compat.  Should close bug #39517.
+
+*udev-013-r1 (16 Jan 2004)
+
+  16 Jan 2004; Martin Schlemmer <azarah@gentoo.org> udev-013-r1.ebuild,
+  files/udev.rules.post_012:
+  Add sound/OSS and input devfs rules from Christophe Saout <christophe@saout.de>.
+  Bump revision to make sure previous and ide-devfs.sh changes gets in.
+
+  16 Jan 2004; Martin Schlemmer <azarah@gentoo.org> files/udev.rules.post_012:
+  Fix calling of ide-devfs.sh.
+
+*udev-013 (16 Jan 2004)
+
+  16 Jan 2004; Martin Schlemmer <azarah@gentoo.org> udev-013.ebuild,
+  files/udev.rules.post_012:
+  Update version.  Update config files to suite new rules syntax.
+
+*udev-012 (01 Jan 2004)
+
+  04 Jan 2004; Mike Frysinger <vapier@gentoo.org> udev-012-udev_c-gcc295-compat.patch :
+  Another gcc-2.x compatible patch.  I thought these guys wrote C, not C++ :).
+
+  01 Jan 2004; Martin Schlemmer <azarah@gentoo.org> udev-012.ebuild,
+  files/udev.permissions:
+  Update version. Update udev.permissions (According to changes to Debian config
+  file). Closes bug #36925.
+
+  27 Dec 2003; Martin Schlemmer <azarah@gentoo.org> udev-011.ebuild,
+  files/udev-011-namedev_c-gcc295-compat.patch:
+  Fix gcc-2.95.3 compat, bug #36556.
+
+*udev-011 (27 Dec 2003)
+
+  27 Dec 2003; Martin Schlemmer <azarah@gentoo.org> udev-011.ebuild,
+  files/udev-011-ide-devfs-form-fixes.patch, files/udev-011-ide-devfs.patch,
+  files/udev-011-no-wait-for-sleep.patch,
+  files/udev-011-unlink-before-symlink.patch, files/udev.conf,
+  files/udev.permissions, files/udev.rules:
+  Update version. Fix udev_db path to point to /dev, else it is not writable
+  early during boot. Fix permissions on /dev/ptmx, else we use old style PTYs.
+  Update udev.permissions to also include devfs paths. Update udev.rules to use
+  some devfs layout for easy initial transition. Update included script
+  (udev-011-ide-devfs*.patch) that handles ide devfs symlinks to also generate
+  /dev/{cdroms,discs} ones. Fix udev to first remove any existing
+  nodes/fifo's/sockets/etc before trying to create a symlink, else it silently
+  fails without debugging enabled (udev-011-unlink-before-symlink.patch). Add
+  hack so that we can disable the sleep period udev have (its there so that udev
+  do not try to access the sysfs info before the kernel created the entries) -
+  we do not need it when we disable sleep, as the entries are already created
+  (udev-011-no-wait-for-sleep.patch).
+
+*udev-009 (17 Dec 2003)
+
+  17 Dec 2003; Martin Schlemmer <azarah@gentoo.org> udev-009.ebuild,
+  files/udev-009-scsi_id-new-sysfs.patch:
+  New version.
+
+*udev-008 (14 Dec 2003)
+
+  14 Dec 2003; Martin Schlemmer <azarah@gentoo.org> udev-008.ebuild,
+  files/udev.conf:
+  Update version.
+
+*udev-007 (24 Nov 2003)
+
+  24 Nov 2003; Martin Schlemmer <azarah@gentoo.org> udev-007.ebuild,
+  files/namedev.permissions, files/udev-007-check-valid-mode.patch,
+  files/udev.permissions:
+  Update version. Add patch to stop udev segfault due to my type-o's that was in
+  udev.permissions. Move namedev.permissions to udev.permissions and update it
+  with more nodes.
+
+*udev-006 (19 Nov 2003)
+
+  19 Nov 2003; Martin Schlemmer <azarah@gentoo.org> udev-006.ebuild:
+  Update version. Make it easier to choose between internal and external
+  libsysfs; also make possible to enable kglibc support. Note that there were
+  some libsysfs changes again, so we cannot use external libsysfs for this
+  release ...
+
+*udev-005-r1 (07 Nov 2003)
+
+  07 Nov 2003; Martin Schlemmer <azarah@gentoo.org> udev-005-r1.ebuild:
+  Update to build against external libsysfs.
+
+*udev-005 (23 Oct 2003)
+
+  23 Oct 2003; Martin Schlemmer <azarah@gentoo.org> udev-005.ebuild:
+  Update version.
+
+*udev-004 (22 Oct 2003)
+
+  22 Oct 2003; Martin Schlemmer <azarah@gentoo.org> udev-004.ebuild,
+  files/udev-004-disk-loop-fix.patch, files/udev-004-label-fixes.patch,
+  files/udev-004-manpage-update.patch:
+  New version.
+
+  21 Oct 2003; Martin Schlemmer <azarah@gentoo.org> udev-0.2.ebuild,
+  udev-0.3.ebuild, files/udev-0.2-major_minor-in-decimal.patch,
+  files/udev-0.3-fix-partition-support.patch:
+  Cleanup.
+
+*udev-003 (21 Oct 2003)
+
+  21 Oct 2003; Martin Schlemmer <azarah@gentoo.org> udev-003.ebuild,
+  files/udev-003-fix-partition-support.patch:
+  Ok, according to Greg KH 003, 004, etc is going to be the new versioning
+  scheme, so revert my version fix.
+
+  21 Oct 2003; Martin Schlemmer <azarah@gentoo.org> udev-0.3.ebuild:
+  Update DEPEND with hotplug, as we should be able to start using udev without
+  modifying /proc/sys/kernel/hotplug.
+
+*udev-0.3 (21 Oct 2003)
+
+  21 Oct 2003; Martin Schlemmer <azarah@gentoo.org> udev-0.3.ebuild,
+  files/udev-0.3-fix-partition-support.patch:
+  Update version.
+
+*udev-0.2 (14 Oct 2003)
+
+  14 Oct 2003; Martin Schlemmer <azarah@gentoo.org> udev-0.2.ebuild,
+  files/namedev.permissions, files/udev-0.2-major_minor-in-decimal.patch:
+  Initial version submitted by myself.
+

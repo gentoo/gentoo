@@ -1,0 +1,11 @@
+--- data/example.conf.orig	2008-12-14 20:37:22.000000000 +0000
++++ data/example.conf	2008-12-14 20:37:43.000000000 +0000
+@@ -285,7 +285,7 @@ HostServName	"HostServ"  "vHost Server"
+ # PIDFile <filename>  [REQUIRED]
+ #     Specifies the name of the file containing Services' process ID.
+ 
+-PIDFile     services.pid
++PIDFile     /var/run/anope/services.pid
+ 
+ # MOTDFile <filename>  [REQUIRED]
+ #     Specifies the name of the Message of the Day file.

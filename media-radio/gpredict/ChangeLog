@@ -1,0 +1,62 @@
+# ChangeLog for media-radio/gpredict
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-radio/gpredict/ChangeLog,v 1.16 2014/02/02 17:12:25 tomjbe Exp $
+
+  02 Feb 2014; Thomas Beierlein <tomjbe@gentoo.org> gpredict-1.3.ebuild:
+  add missing DEPEND to dev-util/intltool (bug #499886). Thanks Nikoli
+
+  30 Jul 2013; Thomas Beierlein <tomjbe@gentoo.org> gpredict-1.3.ebuild:
+  Bump EAPI
+
+  18 Jun 2012; Agostino Sarubbo <ago@gentoo.org> -gpredict-1.1.ebuild,
+  -gpredict-1.2.ebuild:
+  Remove old
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> gpredict-1.1.ebuild,
+  gpredict-1.2.ebuild, gpredict-1.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> gpredict-1.3.ebuild:
+  Marking gpredict-1.3 ppc for bug 376933
+
+  07 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> gpredict-1.3.ebuild:
+  x86 stable wrt bug #376933
+
+  02 Aug 2011; Markos Chandras <hwoarang@gentoo.org> gpredict-1.3.ebuild:
+  Stable on amd64 wrt bug #376933
+
+  27 Mar 2011; Brent Baude <ranger@gentoo.org> gpredict-1.2.ebuild:
+  stable ppc, bug 335264
+
+  08 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> gpredict-1.1.ebuild,
+  gpredict-1.2.ebuild, gpredict-1.3.ebuild:
+  Fix slot-deps on gtk+ and other libs
+
+*gpredict-1.3 (06 Mar 2011)
+
+  06 Mar 2011; Thomas Beierlein <tomjbe@gentoo.org> +gpredict-1.3.ebuild:
+  Version bump.
+
+  10 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> gpredict-1.2.ebuild:
+  x86 stable wrt bug #335264
+
+  25 Jan 2011; Markos Chandras <hwoarang@gentoo.org> gpredict-1.2.ebuild:
+  Stable on amd64 wrt bug #335264
+
+*gpredict-1.2 (22 Nov 2010)
+
+  22 Nov 2010; Thomas Beierlein <tomjbe@gentoo.org> +gpredict-1.2.ebuild:
+  Version bump.
+
+  04 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> gpredict-1.1.ebuild:
+  x86 stable wrt bug #335264
+
+  31 Aug 2010; Markos Chandras <hwoarang@gentoo.org> gpredict-1.1.ebuild:
+  Stable on amd64 wrt bug #335264
+
+*gpredict-1.1 (13 Jul 2010)
+
+  13 Jul 2010; Thomas Beierlein <tomjbe@gentoo.org> +gpredict-1.1.ebuild,
+  +files/gpredict-1.1-doc.patch, +metadata.xml:
+  Initial portage version. Moved from sunrise. Bug #125342
+

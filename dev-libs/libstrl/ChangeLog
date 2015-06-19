@@ -1,0 +1,49 @@
+# ChangeLog for dev-libs/libstrl
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libstrl/ChangeLog,v 1.11 2013/02/09 08:30:15 binki Exp $
+
+  09 Feb 2013; Nathan Phillip Brink <binki@gentoo.org> libstrl-0.5.1.ebuild:
+  Add blockers on mail-filter/opendkim-2.7.0 through mail-filter/opendkim-2.7.2
+  due to bug #454938 and bug #441790 reported by Flameeyes.
+
+  14 Jan 2012; Michał Górny <mgorny@gentoo.org> libstrl-0.5.1.ebuild:
+  --docdir is now passed within autotools-utils.eclass.
+
+  15 Oct 2011; Markus Meier <maekke@gentoo.org> libstrl-0.5.1.ebuild:
+  x86 stable, bug #385957
+
+  12 Oct 2011; Markos Chandras <hwoarang@gentoo.org> libstrl-0.5.1.ebuild:
+  Stable on amd64 wrt bug #385957
+
+*libstrl-0.5.1 (22 Aug 2011)
+
+  22 Aug 2011; Nathan Phillip Brink <binki@gentoo.org> -libstrl-0.4.ebuild,
+  +libstrl-0.5.1.ebuild:
+  Bump to libstrl-0.5.1.
+
+  02 Jun 2011; Nathan Phillip Brink <binki@gentoo.org> -libstrl-0.3.ebuild:
+  Remove old and broken libstrl-0.3.
+
+*libstrl-0.4 (02 Jun 2011)
+
+  02 Jun 2011; Nathan Phillip Brink <binki@gentoo.org> +libstrl-0.4.ebuild:
+  Bump to libstrl-0.4, which now installs docs into /usr/share/doc/
+  properly.
+
+  02 Jun 2011; Nathan Phillip Brink <binki@gentoo.org> -libstrl-0.2.ebuild:
+  Drop old libstrl-0.2.
+
+  04 May 2011; Nathan Phillip Brink (binki) <binki@gentoo.org> metadata.xml:
+  Take over package which used to be proxy maintained for me.
+
+*libstrl-0.3 (21 Jan 2011)
+
+  21 Jan 2011; Markos Chandras <hwoarang@gentoo.org> +libstrl-0.3.ebuild:
+  Version bump
+
+*libstrl-0.2 (18 Jan 2011)
+
+  18 Jan 2011; Markos Chandras <hwoarang@gentoo.org> +libstrl-0.2.ebuild,
+  +metadata.xml:
+  Moved from sunrise overlay. Thanks to Nathan Phillip Brink (ohnobinki)
+  <ohnobinki@ohnopublishing.net>. Bug #351941

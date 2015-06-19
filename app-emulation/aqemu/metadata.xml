@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>maksbotan@gentoo.org</email>
+		<description>Proxy maintainer (CC on bugs)</description>
+	</maintainer>
+	<maintainer>
+		<email>andreis.vinogradovs@gmail.com</email>
+		<description>Proxied maintainer (assign bugs)</description>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">aqemu</remote-id>
+	</upstream>
+</pkgmetadata>

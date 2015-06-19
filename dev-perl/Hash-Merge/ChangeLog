@@ -1,0 +1,51 @@
+# ChangeLog for dev-perl/Hash-Merge
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Hash-Merge/ChangeLog,v 1.13 2015/01/09 00:30:20 zlogene Exp $
+
+  09 Jan 2015; Mikle Kolyada <zlogene@gentoo.org> Hash-Merge-0.200.0.ebuild:
+  Mark stable
+
+  26 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> Hash-Merge-0.120.0.ebuild:
+  Stable for all
+
+*Hash-Merge-0.200.0 (26 Jul 2014)
+
+  26 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> +Hash-Merge-0.200.0.ebuild:
+  Version bump
+
+  26 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> Hash-Merge-0.120.0.ebuild:
+  Bump to EAPI=5
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org> Hash-Merge-0.120.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Hash-Merge-0.12.ebuild:
+  Cleanup
+
+*Hash-Merge-0.120.0 (30 Aug 2011)
+
+  30 Aug 2011; Torsten Veller <tove@gentoo.org> +Hash-Merge-0.120.0.ebuild:
+  Change version scheme
+
+  14 Oct 2010; Brent Baude <ranger@gentoo.org> Hash-Merge-0.12.ebuild:
+  Marking Hash-Merge-0.12 ~ppc for bug 337974
+
+  22 Sep 2010; Fabian Groffen <grobian@gentoo.org> Hash-Merge-0.12.ebuild:
+  Marked ~ppc-macos ~x86-solaris, bug #337974
+
+  10 Apr 2010; Torsten Veller <tove@gentoo.org> -Hash-Merge-0.11.ebuild:
+  Cleanup
+
+*Hash-Merge-0.12 (17 Feb 2010)
+
+  17 Feb 2010; Torsten Veller <tove@gentoo.org> +Hash-Merge-0.12.ebuild:
+  Version bump
+
+*Hash-Merge-0.11 (14 Nov 2009)
+
+  14 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Hash-Merge-0.11.ebuild, +metadata.xml:
+  Initial commit. Ebuild by g-cpan. Dependancy for DBIx-Class-0.08113.

@@ -1,0 +1,34 @@
+# ChangeLog for sci-misc/apertium
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/apertium/ChangeLog,v 1.7 2013/06/14 06:52:28 jlec Exp $
+
+  14 Jun 2013; Justin Lecher <jlec@gentoo.org> apertium-3.2.0.ebuild,
+  +files/apertium-3.2.0-libpcre.patch, metadata.xml:
+  Fix detection of libpcre, #440632
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> apertium-3.2.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  25 Apr 2012; Justin Lecher <jlec@gentoo.org> -apertium-3.1.0.ebuild,
+  apertium-3.2.0.ebuild, metadata.xml:
+  Moved to autotools-utils
+
+*apertium-3.2.0 (29 Jul 2011)
+
+  29 Jul 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/3.2.0-datadir.patch, +files/3.2.0-flags.patch, +apertium-3.2.0.ebuild:
+  Version bump
+
+  23 Aug 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  apertium-3.1.0.ebuild:
+  Use -j1 for make (bug #282425).
+
+  20 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing anant as a maintainer since he was retired.
+
+*apertium-3.1.0 (16 Dec 2008)
+
+  16 Dec 2008; <anant@gentoo.org> +metadata.xml, +apertium-3.1.0.ebuild:
+  New ebuild for apertium, bug #215833
+

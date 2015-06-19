@@ -1,0 +1,448 @@
+# ChangeLog for media-video/minitube
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/minitube/ChangeLog,v 1.104 2015/05/10 13:05:17 pesa Exp $
+
+  10 May 2015; Davide Pesavento <pesa@gentoo.org> minitube-2.3-r1.ebuild,
+  minitube-2.4.ebuild:
+  Add missing usedep for qtsingleapplication.
+
+  26 Apr 2015; Markos Chandras <hwoarang@gentoo.org>
+  +files/minitube-2.4-disable-updates.patch, minitube-2.4.ebuild:
+  Update disable-updates patch for 2.4. Bug #547756
+
+  23 Apr 2015; Markos Chandras <hwoarang@gentoo.org> minitube-2.4.ebuild:
+  typo
+
+*minitube-2.4 (19 Apr 2015)
+
+  19 Apr 2015; Markos Chandras <hwoarang@gentoo.org> -minitube-2.1.6.ebuild,
+  -minitube-2.2.ebuild, +minitube-2.4.ebuild:
+  Version bump
+
+  31 Dec 2014; Michael Palimaka <kensington@gentoo.org> minitube-2.0.ebuild,
+  minitube-2.1.6.ebuild, minitube-2.2.ebuild, minitube-2.3-r1.ebuild:
+  Enforce USE dependency for media-libs/phonon.
+
+*minitube-2.3-r1 (07 Nov 2014)
+
+  07 Nov 2014; Markos Chandras <hwoarang@gentoo.org> +minitube-2.3-r1.ebuild,
+  -minitube-2.3.ebuild:
+  Use system qtsingleapplication. Patch by cyberbat. Bug #489136
+
+*minitube-2.3 (06 Nov 2014)
+
+  06 Nov 2014; Markos Chandras <hwoarang@gentoo.org> +minitube-2.3.ebuild:
+  Version bump. Bug #528162
+
+  03 Nov 2014; Davide Pesavento <pesa@gentoo.org> metadata.xml:
+  Fix indentation in metadata.
+
+*minitube-2.2 (20 Jul 2014)
+
+  20 Jul 2014; Markos Chandras <hwoarang@gentoo.org> +minitube-2.2.ebuild,
+  -minitube-2.1.3.ebuild, -minitube-2.1.5.ebuild:
+  Version bump. remove old
+
+*minitube-2.1.6 (16 Feb 2014)
+
+  16 Feb 2014; Markos Chandras <hwoarang@gentoo.org> +minitube-2.1.6.ebuild:
+  Version bump
+
+  02 Jan 2014; Markos Chandras <hwoarang@gentoo.org> minitube-2.1.3.ebuild,
+  minitube-2.1.5.ebuild:
+  Use PLOCALE_BACKUP to default to the English locale if user hasn't selected
+  one
+
+*minitube-2.1.5 (22 Dec 2013)
+
+  22 Dec 2013; Markos Chandras <hwoarang@gentoo.org> +minitube-2.1.5.ebuild:
+  Version bump
+
+  30 Nov 2013; Markos Chandras <hwoarang@gentoo.org> minitube-2.1.3.ebuild:
+  Remove gtkstyle use-dep from dev-qt/qtgui. Bug #492818 by Alec Moskvin
+
+  19 Nov 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml,
+  minitube-2.1.3.ebuild:
+  Add useflag to enable/disable support for downloading youtube videos. Bug
+  #491344
+
+  06 Nov 2013; Markos Chandras <hwoarang@gentoo.org> minitube-2.1.3.ebuild:
+  Add missing dev-qt/qtsqli dependency. Bug #490494
+
+*minitube-2.1.3 (02 Nov 2013)
+*minitube-2.1 (02 Nov 2013)
+
+  02 Nov 2013; Markos Chandras <hwoarang@gentoo.org>
+  +files/minitube-2.1-disable-updates.patch,
+  +files/minitube-2.1.3-disable-updates.patch, +minitube-2.1.3.ebuild,
+  +minitube-2.1.ebuild:
+  Version bump. Bug #489634
+
+  29 Jun 2013; Michael Palimaka <kensington@gentoo.org>
+  -files/minitube-1.9-desktop.patch, -minitube-1.9.ebuild:
+  Remove old.
+
+  28 Jun 2013; Mikle Kolyada <zlogene@gentoo.org> minitube-2.0.ebuild:
+  x86 stable wrt bug #475102
+
+  28 Jun 2013; Agostino Sarubbo <ago@gentoo.org> minitube-2.0.ebuild:
+  Stable for amd64, wrt bug #475102
+
+  21 May 2013; Markos Chandras <hwoarang@gentoo.org> minitube-1.9.ebuild,
+  minitube-2.0.ebuild:
+  Add missing dep to media-plugins/gst-plugins-theora for HD videos
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> minitube-1.9.ebuild,
+  minitube-2.0.ebuild:
+  Move Qt dependencies to the new category
+
+  15 Feb 2013; Markos Chandras <hwoarang@gentoo.org> minitube-2.0.ebuild:
+  Drop unused LINGUAS. Bug #457550
+
+*minitube-2.0 (10 Feb 2013)
+
+  10 Feb 2013; Markos Chandras <hwoarang@gentoo.org>
+  +files/minitube-2.0-disable-updates.patch, +minitube-2.0.ebuild:
+  Version bump. Disable check_for_updates popup on startup. bug #455976
+
+  22 Dec 2012; Markos Chandras <hwoarang@gentoo.org>
+  -files/minitube-1.8-gcc4.7.patch, -minitube-1.8.ebuild:
+  Remove old
+
+  08 Dec 2012; Markos Chandras <hwoarang@gentoo.org>
+  +files/minitube-1.9-desktop.patch, minitube-1.9.ebuild:
+  Apply patch to remove deprecated fields for the desktop file. Bug #443730.
+  Thanks to Michael Palimaka <kensington@gentoo.org>
+
+  02 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org> minitube-1.8.ebuild,
+  minitube-1.9.ebuild:
+  Pin gstreamer dependencies.
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> minitube-1.9.ebuild:
+  Stable for x86, wrt bug #441412
+
+  20 Nov 2012;  <ago@gentoo.org> minitube-1.9.ebuild:
+  Stable for amd64, wrt bug #441412
+
+  17 Nov 2012; Markos Chandras <hwoarang@gentoo.org> minitube-1.9.ebuild:
+  Drop nonexisting linguas. Bug #442698
+
+*minitube-1.9 (27 Sep 2012)
+
+  27 Sep 2012; Markos Chandras <hwoarang@gentoo.org>
+  +files/minitube-1.9-gcc47.patch, +minitube-1.9.ebuild:
+  Version bump
+
+  27 Aug 2012; Johannes Huber <johu@gentoo.org> -minitube-1.7.1.ebuild:
+  Remove old.
+
+  27 Aug 2012; Johannes Huber <johu@gentoo.org> minitube-1.8.ebuild:
+  Stable for x86, wrt bug #432778
+
+  26 Aug 2012; Agostino Sarubbo <ago@gentoo.org> minitube-1.8.ebuild:
+  Stable for amd64, wrt bug #432778
+
+  27 Jul 2012; Ben de Groot <yngwin@gentoo.org> minitube-1.7.1.ebuild,
+  minitube-1.8.ebuild:
+  Add fix for l10n usage, bug #428206
+
+  26 Jul 2012; Ben de Groot <yngwin@gentoo.org> minitube-1.7.1.ebuild,
+  minitube-1.8.ebuild:
+  Use l10n.eclass for handling locales.
+
+  02 Jul 2012; Markos Chandras <hwoarang@gentoo.org>
+  +files/minitube-1.8-gcc4.7.patch, minitube-1.8.ebuild:
+  Update linguas. Fix compilation with gcc-4.7. Bug #422977
+
+*minitube-1.8 (02 Jul 2012)
+
+  02 Jul 2012; Markos Chandras <hwoarang@gentoo.org> +minitube-1.8.ebuild:
+  Version bump
+
+  06 Apr 2012; Davide Pesavento <pesa@gentoo.org> -minitube-1.6.ebuild,
+  -minitube-1.7.ebuild:
+  Remove old.
+
+  06 Apr 2012; Agostino Sarubbo <ago@gentoo.org> minitube-1.7.1.ebuild:
+  Stable for amd64, wrt bug #410893
+
+  05 Apr 2012; Jeff Horelick <jdhore@gentoo.org> minitube-1.7.1.ebuild:
+  marked x86 per bug 410893
+
+*minitube-1.7.1 (03 Mar 2012)
+
+  03 Mar 2012; Markos Chandras <hwoarang@gentoo.org> +minitube-1.7.1.ebuild:
+  Version bump
+
+  16 Feb 2012; Davide Pesavento <pesa@gentoo.org>
+  -files/minitube-1.5-use-correct-env-variable.patch, -minitube-1.5-r1.ebuild,
+  minitube-1.7.ebuild:
+  Cleanup 1.7 ebuild; remove old and unused 1.5-r1.
+
+*minitube-1.7 (06 Jan 2012)
+
+  06 Jan 2012; Markos Chandras <hwoarang@gentoo.org> +minitube-1.7.ebuild:
+  Version bump. Bug #397783
+
+  02 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> minitube-1.6.ebuild:
+  x86 stable wrt bug #388867
+
+  01 Nov 2011; Tony Vroon <chainsaw@gentoo.org> minitube-1.6.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo,
+  Elijah "Armageddon" El Lazkani & Tomáš "Mepho" Pružina in security bug
+  #388867.
+
+  30 Oct 2011; Markos Chandras <hwoarang@gentoo.org> minitube-1.6.ebuild:
+  more lingua fixes
+
+  29 Oct 2011; Markos Chandras <hwoarang@gentoo.org> minitube-1.6.ebuild:
+  fix linguas per bug #388871
+
+*minitube-1.6 (29 Oct 2011)
+
+  29 Oct 2011; Markos Chandras <hwoarang@gentoo.org> +minitube-1.6.ebuild:
+  version bump
+
+*minitube-1.5-r1 (07 Aug 2011)
+
+  07 Aug 2011; Markos Chandras <hwoarang@gentoo.org> -minitube-1.5.ebuild,
+  +minitube-1.5-r1.ebuild, -files/minitube-1.5-non-static-filename.patch,
+  +files/minitube-1.5-use-correct-env-variable.patch:
+  Remove security fix due to regressions. Use temporary patch to override the
+  wrong environmental variable. Force revbump to stable
+
+  07 Aug 2011; Markos Chandras <hwoarang@gentoo.org> -minitube-1.4.ebuild,
+  minitube-1.5.ebuild, +files/minitube-1.5-non-static-filename.patch:
+  Add security fix and mark stable for amd64. Bug #377929
+
+  07 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> minitube-1.5.ebuild:
+  x86 stable wrt bug #377929
+
+*minitube-1.5 (05 Aug 2011)
+
+  05 Aug 2011; Markos Chandras <hwoarang@gentoo.org> -minitube-1.4.3.ebuild,
+  +minitube-1.5.ebuild:
+  Version bump
+
+  17 May 2011; Markos Chandras <hwoarang@gentoo.org> -minitube-1.4.2.ebuild:
+  remove old
+
+*minitube-1.4.3 (16 May 2011)
+
+  16 May 2011; Markos Chandras <hwoarang@gentoo.org> +minitube-1.4.3.ebuild:
+  Version bump
+
+*minitube-1.4.2 (16 Apr 2011)
+
+  16 Apr 2011; Markos Chandras <hwoarang@gentoo.org> -minitube-1.4.1.ebuild,
+  +minitube-1.4.2.ebuild:
+  Version bump. Remove old ebuild
+
+  11 Apr 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> minitube-1.4.ebuild:
+  x86 stable wrt bug #358547
+
+*minitube-1.4.1 (27 Mar 2011)
+
+  27 Mar 2011; Markos Chandras <hwoarang@gentoo.org> +minitube-1.4.1.ebuild:
+  Version bump
+
+  26 Mar 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  minitube-1.3.ebuild, minitube-1.4.ebuild:
+  Adapt phonon dependency for package move
+
+  13 Mar 2011; Markos Chandras <hwoarang@gentoo.org> minitube-1.4.ebuild:
+  Stable on amd64 wrt bug #358547
+
+  09 Mar 2011; Markos Chandras <hwoarang@gentoo.org> minitube-1.4.ebuild:
+  Allow minitube to build against qt-phonon despite the gstreamer use flag
+  status. Bug #357111. Thanks to Jorge Manuel B. S. Vicetto for the patch
+
+*minitube-1.4 (10 Feb 2011)
+
+  10 Feb 2011; Markos Chandras <hwoarang@gentoo.org> +minitube-1.4.ebuild:
+  Version bump
+
+  20 Dec 2010; Markos Chandras <hwoarang@gentoo.org> -minitube-1.2.ebuild,
+  minitube-1.3.ebuild:
+  Fast stabilization for amd64. Bug #349189. Remove old ebuild
+
+  20 Dec 2010; Dane Smith <c1pher@gentoo.org> minitube-1.3.ebuild:
+  Stable x86 wrt bug 349189.
+
+*minitube-1.3 (10 Dec 2010)
+
+  10 Dec 2010; Markos Chandras <hwoarang@gentoo.org> -minitube-1.1.ebuild,
+  +minitube-1.3.ebuild:
+  Version bump. Remove old ebuild
+
+  16 Nov 2010; Markos Chandras <hwoarang@gentoo.org> minitube-1.2.ebuild:
+  Add qt-dbus dependency. Bug #345627
+
+  16 Nov 2010; Christian Faulhammer <fauli@gentoo.org> minitube-1.2.ebuild:
+  stable x86, bug 345283
+
+  14 Nov 2010; Markos Chandras <hwoarang@gentoo.org> minitube-1.2.ebuild:
+  Stable on amd64 wrt bug #345283
+
+*minitube-1.2 (12 Oct 2010)
+
+  12 Oct 2010; Markos Chandras <hwoarang@gentoo.org> +minitube-1.2.ebuild:
+  Version bump
+
+  09 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  -minitube-1.0-r1.ebuild, minitube-1.1.ebuild:
+  Stable on amd64 wrt bug #330853. Remove old ebuild
+
+  08 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> minitube-1.1.ebuild:
+  x86 stable wrt bug #330853
+
+*minitube-1.1 (30 Jul 2010)
+
+  30 Jul 2010; Markos Chandras <hwoarang@gentoo.org> +minitube-1.1.ebuild:
+  Version bump
+
+  06 Jul 2010; Markos Chandras <hwoarang@gentoo.org> -minitube-0.8.1.ebuild,
+  -minitube-0.9.ebuild, -minitube-1.0.ebuild:
+  Remove old ebuilds
+
+  15 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  minitube-1.0-r1.ebuild:
+  x86 stable wrt bug #322691
+
+  13 Jun 2010; Markos Chandras <hwoarang@gentoo.org> minitube-1.0-r1.ebuild:
+  Fix gstreamer dependencies logic wrt bug #323489
+
+  10 Jun 2010; Markos Chandras <hwoarang@gentoo.org> minitube-1.0-r1.ebuild:
+  Stable on amd64 wrt bug #bug #322691
+
+*minitube-1.0-r1 (10 Jun 2010)
+
+  10 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  +minitube-1.0-r1.ebuild:
+  Add gstreamer use flag since minitube works with xine and gstreamer phonon
+  backends. Thanks to amak79 for pointing this out
+
+  09 Jun 2010; Christoph Mende <angelos@gentoo.org> minitube-1.0.ebuild:
+  Stable on amd64 wrt bug #322691
+
+  18 May 2010; Markos Chandras <hwoarang@gentoo.org> -minitube-0.7.ebuild,
+  -minitube-0.8.ebuild:
+  Clean up old versions
+
+  18 May 2010; Markos Chandras <hwoarang@gentoo.org> minitube-1.0.ebuild:
+  Fix Spanish translation wrt bug #319703
+
+*minitube-1.0 (04 May 2010)
+
+  04 May 2010; Markos Chandras <hwoarang@gentoo.org> +minitube-1.0.ebuild:
+  Version bump
+
+  29 Apr 2010; Markos Chandras <hwoarang@gentoo.org> minitube-0.7.ebuild,
+  minitube-0.8.ebuild, minitube-0.8.1.ebuild:
+  Migrate to qt4-r2 eclass wrt bug #311481
+
+  02 Apr 2010; Markos Chandras <hwoarang@gentoo.org> minitube-0.9.ebuild:
+  Fix my previous commit
+
+  02 Apr 2010; Markos Chandras <hwoarang@gentoo.org> minitube-0.9.ebuild:
+  Adjust phonon dependencies
+
+  29 Mar 2010; Markos Chandras <hwoarang@gentoo.org> minitube-0.9.ebuild:
+  Ajdust dependencies. Fixes bug #302085
+
+  09 Mar 2010; Jonathan Callen <abcd@gentoo.org> minitube-0.7.ebuild,
+  minitube-0.8.ebuild, minitube-0.8.1.ebuild, minitube-0.9.ebuild:
+  QA: When not using an absolute path, you MUST NOT use a file extension
+  (.png, .svg, or .xpm) on the icon name for make_desktop_entry
+
+  07 Feb 2010; Markus Meier <maekke@gentoo.org> minitube-0.8.1.ebuild:
+  x86 stable, bug #301904
+
+  28 Jan 2010; <hwoarang@gentoo.org> minitube-0.8.1.ebuild:
+  Stable on amd64 wrt bug #301904
+
+*minitube-0.9 (23 Jan 2010)
+
+  23 Jan 2010; <hwoarang@gentoo.org> +minitube-0.9.ebuild:
+  Version bump. Migrate to qt4-r2 eclass
+
+*minitube-0.8.1 (21 Nov 2009)
+
+  21 Nov 2009; Markos Chandras <hwoarang@gentoo.org> +minitube-0.8.1.ebuild:
+  Version bump. Bug fix release
+
+*minitube-0.8 (18 Nov 2009)
+
+  18 Nov 2009; Markos Chandras <hwoarang@gentoo.org> +minitube-0.8.ebuild:
+  Version bump
+
+  16 Nov 2009; Jonathan Callen <abcd@gentoo.org>
+  -files/fix_headers_translations-0.3.patch, -minitube-0.6.ebuild,
+  -minitube-0.6.1.ebuild:
+  Drop old versions and unused file
+
+*minitube-0.7 (13 Oct 2009)
+
+  13 Oct 2009; Markos Chandras <hwoarang@gentoo.org> -minitube-0.4.ebuild,
+  -minitube-0.5.ebuild, +minitube-0.7.ebuild:
+  Version bump, remove old ebuilds
+
+*minitube-0.6.1 (03 Oct 2009)
+
+  03 Oct 2009; Markos Chandras <hwoarang@gentoo.org> +minitube-0.6.1.ebuild:
+  Version bump
+
+*minitube-0.6 (08 Sep 2009)
+
+  08 Sep 2009; Tomáš Chvátal <scarabeus@gentoo.org> +minitube-0.6.ebuild:
+  Version bump.
+
+  31 Jul 2009; Markos Chandras <hwoarang@gentoo.org>
+  -files/fix_version_0.5.patch, minitube-0.5.ebuild:
+  Remove patch since upstream applied it. Fix manifest since upstream
+  released
+  fixed tarball
+
+*minitube-0.5 (31 Jul 2009)
+
+  31 Jul 2009; Markos Chandras <hwoarang@gentoo.org>
+  +files/fix_version_0.5.patch, +minitube-0.5.ebuild:
+  Version bump. Patch which fixes version string
+
+  17 Jul 2009; Markos Chandras <hwoarang@gentoo.org> -minitube-0.3.ebuild:
+  Remove old ebuild
+
+*minitube-0.4 (03 Jul 2009)
+
+  03 Jul 2009; Markos Chandras <hwoarang@gentoo.org> +minitube-0.4.ebuild:
+  Version bump. Don't apply patches anymore since upstream fixed all the
+  issues
+
+  20 Jun 2009; Markos Chandras <hwoarang@gentoo.org> -minitube-0.2.1.ebuild,
+  -minitube-0.2.1-r1.ebuild, -files/kde_phonon.patch:
+  Remove old ebuilds
+
+*minitube-0.3 (16 Jun 2009)
+
+  16 Jun 2009; Markos Chandras <hwoarang@gentoo.org> +minitube-0.3.ebuild,
+  +files/fix_headers_translations-0.3.patch:
+  Version bump
+
+*minitube-0.2.1-r1 (15 Jun 2009)
+
+  15 Jun 2009; Markos Chandras <hwoarang@gentoo.org>
+  +minitube-0.2.1-r1.ebuild:
+  Use kde use flag to handle the phonon dependencies. Apply patch
+  conditionaly
+
+  15 Jun 2009; Markos Chandras <hwoarang@gentoo.org> minitube-0.2.1.ebuild:
+  Added accessibility use dependency. Fixes bug 273813
+
+  10 Jun 2009; Markos Chandras <hwoarang@gentoo.org> minitube-0.2.1.ebuild:
+  Add gstreamer use dependency for media-sound/phonon
+
+*minitube-0.2.1 (09 Jun 2009)
+
+  09 Jun 2009; Markos Chandras <hwoarang@gentoo.org> +minitube-0.2.1.ebuild,
+  +files/kde_phonon.patch, +metadata.xml:
+  Initial commit of minitube application

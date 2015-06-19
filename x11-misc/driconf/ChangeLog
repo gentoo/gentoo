@@ -1,0 +1,117 @@
+# ChangeLog for x11-misc/driconf
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/driconf/ChangeLog,v 1.32 2014/08/10 20:02:12 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> driconf-0.9.1-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  28 Mar 2011; Gilles Dartiguelongue <eva@gentoo.org> driconf-0.9.1-r1.ebuild:
+  Pin pygtk and gtk+ to slot 2.
+
+  15 Nov 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  driconf-0.9.1-r1.ebuild:
+  Update EAPI. Fix dependencies, use Python 2, call python_mod_optimize() and
+  python_mod_cleanup() (bug 317007).
+
+  21 Oct 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -driconf-0.9.1.ebuild:
+  old
+
+  21 Oct 2010; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking driconf-0.9.1-r1 ppc stable for bug 239063
+
+  28 Sep 2010; Samuli Suominen <ssuominen@gentoo.org>
+  driconf-0.9.1-r1.ebuild:
+  ppc64 stable wrt #327777
+
+  13 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  driconf-0.9.1-r1.ebuild:
+  x86 stable, bug 327777
+
+  12 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  driconf-0.9.1-r1.ebuild:
+  Stable on amd64 wrt bug #327777
+
+*driconf-0.9.1-r1 (16 Mar 2010)
+
+  16 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +driconf-0.9.1-r1.ebuild, +files/driconf-0.9.1-driconf_simpleui.py.patch,
+  +files/driconf-0.9.1-glxinfo-unicode.patch,
+  +files/driconf-0.9.1-update-toolbar-methods.patch:
+  Import Fedora patchset.
+
+  23 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org> driconf-0.9.1.ebuild:
+  Fix wrong doins.
+
+  10 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org> driconf-0.9.1.ebuild:
+  Fix python dep per bug #299198.
+
+  06 Apr 2009; Friedrich Oslage <bluebird@gentoo.org> driconf-0.9.1.ebuild:
+  Add ~sparc keyword, bug #251832
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> driconf-0.9.1.ebuild:
+  Marking driconf-0.9.1 ppc64 stable for bug 251832
+
+  31 Jan 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  -driconf-0.2.7.ebuild:
+  Clean up.
+
+  08 Sep 2007; Joseph Jezak <josejx@gentoo.org> driconf-0.9.1.ebuild:
+  Marked ppc for bug #191615.  Marked ~ppc64 too.
+
+  07 Sep 2007; Chris Gianelloni <wolf31o2@gentoo.org> driconf-0.9.1.ebuild:
+  Stable on amd64 wrt bug #191615.
+
+  07 Sep 2007; Chris Gianelloni <wolf31o2@gentoo.org> driconf-0.9.1.ebuild:
+  Stable on x86 wrt bug #191615.
+
+  29 Aug 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing joshuabaergen from metadata due to his retirement (see #92210 for
+  reference).
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; driconf-0.2.7.ebuild,
+  driconf-0.9.1.ebuild:
+  Drop virtual/x11 references.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  18 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  -driconf-0.9.0.ebuild:
+  Remove older version.
+
+*driconf-0.9.1 (18 Sep 2006)
+
+  18 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  +driconf-0.9.1.ebuild:
+  Bump. Adds some translations and a .desktop file.
+
+  01 Jul 2006; Donnie Berkholz <spyderous@gentoo.org>; driconf-0.2.7.ebuild:
+  x86 stable.
+
+  12 Apr 2006; Daniel Gryniewicz <dang@gentoo.org> driconf-0.9.0.ebuild:
+  Mark ~amd64
+
+  19 Mar 2006; <nixnut@gentoo.org> driconf-0.9.0.ebuild:
+  Added ~ppc. Bug #126816
+
+*driconf-0.9.0 (02 Feb 2006)
+
+  02 Feb 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  +driconf-0.9.0.ebuild:
+  Version bump due to the poke of Erik Andrén in #70267.
+
+  28 Jan 2006; Donnie Berkholz <spyderous@gentoo.org>; driconf-0.2.7.ebuild:
+  Fix ordering of modular X deps. We want to pull in modular by default when
+  available.
+
+  28 Jan 2006; Joshua Baergen <joshuabaergen@gentoo.org>
+  driconf-0.2.7.ebuild:
+  Fix dependencies per #120548.
+
+*driconf-0.2.7 (09 Sep 2005)
+
+  09 Sep 2005; Joshua Baergen <joshuabaergen@gentoo.org> +metadata.xml,
+  +driconf-0.2.7.ebuild:
+  Initial import.  Thanks to James Le Cuirot and Christoph Brill (egore) for the
+  ebuild.  Bug #70267 .

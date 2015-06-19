@@ -1,0 +1,51 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/net-misc/gvrpcd/files/init.gvrpcd,v 1.1 2012/09/23 12:52:22 pinkbyte Exp $
+
+extra_commands="checkconfig"
+
+checkconfig() {
+	if [ -z "${INTERFACES}" ]; then
+		eerror "INTERFACES should be set. PLease edit /etc/conf.d/gvrpcd"
+		return 1
+	fi
+	if [ ! -d /proc/net/vlan ]; then
+		modprobe 8021q
+		if [ ! -d /proc/net/vlan ]; then
+			eerror "VLAN (802.1q) support is not present in this kernel"
+			return 1
+		fi
+	fi
+}
+
+depend() {
+	need net
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting gvrpcd"
+	for IFNAME in ${INTERFACES}; do
+		ebegin "	on interface ${IFNAME}"
+		start-stop-daemon --start \
+			--pidfile /var/run/gvrpcd-${IFNAME}.pid \
+			--exec /usr/sbin/gvrpcd \
+			-- -d -p /var/run/gvrpcd-${IFNAME}.pid \
+			-i "${IFNAME}" ${EXTRA_ARGS}
+		eend $?
+	done
+#	eend $?
+}
+
+stop() {
+	ebegin "Stoping gvrpcd"
+	for IFNAME in ${INTERFACES}; do
+		ebegin "	on interface ${IFNAME}"
+		start-stop-daemon --stop --exec /usr/sbin/gvrpcd \
+			-p /var/run/gvrpcd-${IFNAME}.pid
+		eend $?
+	done
+#	eend $?
+}
+

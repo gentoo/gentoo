@@ -1,0 +1,36 @@
+# ChangeLog for www-apps/liquid_feedback_frontend
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/liquid_feedback_frontend/ChangeLog,v 1.6 2015/05/27 19:20:28 tupone Exp $
+
+*liquid_feedback_frontend-3.0.6 (27 May 2015)
+
+  27 May 2015; Alfredo Tupone <tupone@gentoo.org>
+  +liquid_feedback_frontend-3.0.6.ebuild, files/postinstall-en.txt:
+  Version bump to 3.0.6
+
+*liquid_feedback_frontend-2.2.7 (28 Nov 2014)
+
+  28 Nov 2014; Alfredo Tupone <tupone@gentoo.org>
+  +liquid_feedback_frontend-2.2.7.ebuild:
+  Version bump to 2.2.7
+
+  20 Nov 2014; Alfredo Tupone <tupone@gentoo.org>
+  liquid_feedback_frontend-2.2.2.ebuild:
+  Add dependency on apache. Fix bug #528848 by Toralf Forster
+
+  03 Nov 2014; Alfredo Tupone <tupone@gentoo.org>
+  liquid_feedback_frontend-2.2.2.ebuild:
+  Better fix against bug #513922
+
+  24 Jun 2014; Tupone Alfredo <tupone@gentoo.org>
+  liquid_feedback_frontend-2.2.2.ebuild:
+  Fix build failure when we got no locale files. Bug #513922 by Patrick Lauer
+
+*liquid_feedback_frontend-2.2.2 (28 May 2013)
+
+  28 May 2013; Alfredo Tupone <tupone@gentoo.org>
+  +liquid_feedback_frontend-2.2.2.ebuild, +files/lqfb.example.com.conf,
+  +files/lqfb-apache.conf, +files/myconfig.lua, +files/postinstall-en.txt,
+  +metadata.xml:
+  New package
+

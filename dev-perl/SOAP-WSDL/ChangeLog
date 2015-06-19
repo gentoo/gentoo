@@ -1,0 +1,31 @@
+# ChangeLog for dev-perl/SOAP-WSDL
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/SOAP-WSDL/ChangeLog,v 1.6 2015/06/13 22:22:23 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  SOAP-WSDL-2.00.10-r1.ebuild, SOAP-WSDL-3.2.0.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*SOAP-WSDL-3.2.0 (03 Dec 2014)
+
+  03 Dec 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +SOAP-WSDL-3.2.0.ebuild:
+  Version bump
+
+*SOAP-WSDL-2.00.10-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +SOAP-WSDL-2.00.10-r1.ebuild, -SOAP-WSDL-2.00.10.ebuild:
+  bump EAPI to 5 to help support dev-lang/perl upgrades
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  22 Apr 2012; Torsten Veller <tove@gentoo.org> SOAP-WSDL-2.00.10.ebuild:
+  Fix Header. Add ~x86. Depend on dev-perl/libwww-perl
+
+*SOAP-WSDL-2.00.10 (11 Apr 2012)
+
+  11 Apr 2012; Diego E. Pettenò <flameeyes@gentoo.org>
+  +SOAP-WSDL-2.00.10.ebuild, +metadata.xml:
+  Initial import of dependencies of google-api-adwords-perl.

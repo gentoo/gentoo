@@ -1,0 +1,30 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/files/exim.rc8,v 1.1 2013/10/08 18:16:18 grobian Exp $
+
+extra_started_commands="reload"
+
+depend() {
+	need logger
+	use antivirus net
+	provide mta
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --exec /usr/sbin/exim --pidfile /run/${SVCNAME}.pid -- -C /etc/exim/${SVCNAME}.conf ${EXIM_OPTS:--bd -q15m}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --pidfile /run/${SVCNAME}.pid --name exim
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading ${SVCNAME}"
+	start-stop-daemon --signal HUP --pidfile /run/${SVCNAME}.pid --name exim
+	eend $?
+}

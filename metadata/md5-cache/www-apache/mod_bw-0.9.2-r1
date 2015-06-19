@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare setup
+DEPEND=sys-devel/libtool =www-servers/apache-2*
+DESCRIPTION=Bandwidth Management Module for Apache2
+EAPI=5
+HOMEPAGE=http://www.ivn.cl/apache/
+KEYWORDS=amd64 ppc x86
+LICENSE=Apache-2.0
+RDEPEND==www-servers/apache-2*
+SLOT=0
+SRC_URI=http://ivn.cl/files/source/mod_bw-0.92.tgz
+_eclasses_=apache-module	5c4c90da2d68c2dc8391666824f1293c	depend.apache	1a38534d3f755d1ab1d92ce120bd7dbd	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=94dd4fa2a8e9eedfa774eedc5c701ab0

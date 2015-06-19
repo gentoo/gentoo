@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND==sys-cluster/ccs-2.03.09* =sys-cluster/dlm-lib-2.03.09* =sys-cluster/cman-lib-2.03.09* dev-libs/libxml2 =sys-libs/slang-2*
+DESCRIPTION=Clustered resource group manager
+HOMEPAGE=http://sources.redhat.com/cluster/wiki/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND==sys-cluster/ccs-2.03.09* =sys-cluster/dlm-lib-2.03.09* =sys-cluster/cman-lib-2.03.09*
+SLOT=0
+SRC_URI=ftp://sources.redhat.com/pub/cluster/releases/cluster-2.03.09.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=6b026a0e25afe2e0707cdd0779cfae54

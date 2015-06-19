@@ -1,0 +1,167 @@
+# ChangeLog for Gentoo/x86-fbsd profile directory
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/arch/x86-fbsd/ChangeLog,v 1.52 2015/05/19 21:04:58 chewi Exp $
+
+  19 May 2015; James Le Cuirot <chewi@gentoo.org> use.mask:
+  Mask java because icedtea needs testing and gcj isn't supported.
+
+  11 May 2015; Davide Pesavento <pesa@gentoo.org> package.mask:
+  Extend Qt4-multilib mask to cover 4.8.7 as well.
+
+  01 Feb 2015; Michał Górny <mgorny@gentoo.org> make.defaults:
+  Unhide CPU_FLAGS_X86 on {amd64,x86}-fbsd profiles, bug #538322 by Yuta SATOH.
+
+  28 Jan 2015; Michał Górny <mgorny@gentoo.org> use.mask:
+  Unmask CPU_FLAGS_X86.
+
+  28 Jan 2015; Johannes Huber <johu@gentoo.org> package.use.mask:
+  Mask app-crypt/qca[botan].
+
+  20 Nov 2014; Davide Pesavento <pesa@gentoo.org> +package.mask:
+  Move Qt 4.8.6 mask from global package.mask to arch profiles.
+
+  01 Jul 2014; Michał Górny <mgorny@gentoo.org> make.defaults:
+  Set default ABI_X86 and IUSE_IMPLICIT.
+
+  20 Jun 2014; Michał Górny <mgorny@gentoo.org> make.defaults:
+  Set amd64-fbsd-compatible values for ABI and related variables.
+
+  19 Mar 2014; Andreas K. Huettel <dilfridge@gentoo.org> +eapi:
+  Increase EAPI to 5
+
+  27 Aug 2013; Alexis Ballier <aballier@gentoo.org> package.use.mask:
+  remove obsolote ppl[prolog] usemask
+
+  22 Aug 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> use.mask:
+  Mask opencl flag due to lack of virtual/opencl keywording.
+
+  09 Aug 2013; Alexis Ballier <aballier@gentoo.org> use.force, use.mask:
+  unmask and force abi_x86_32
+
+  07 Apr 2013; Michael Palimaka <kensington@gentoo.org> -package.mask:
+  Unmask KDE SC 4.10.0 since it is no longer in the tree.
+
+  07 Feb 2013; Alexey Shvetsov <alexxy@gentoo.org> +package.mask:
+  Mask KDE SC 4.10.0 for keywording bug #455960
+
+  07 Feb 2013; Matt Turner <mattst88@gentoo.org> use.mask:
+  Drop sse5 USE flag.
+
+  20 Jan 2013; Michał Górny <mgorny@gentoo.org> use.mask:
+  Remove duplicate pypy/jython masks (masked in base profile now).
+
+  27 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org> package.use.mask:
+  Add epiphany[jit] to webkit-gtk[jit] unmask.
+
+  05 Dec 2012; Michał Górny <mgorny@gentoo.org> use.mask:
+  Mask PYTHON_TARGETS for pypy & jython.
+
+  04 Oct 2012; Samuli Suominen <ssuominen@gentoo.org> package.use.mask:
+  Remove ancient USE="autotrace" mask wrt #317619
+
+  04 Jul 2012; Samuli Suominen <ssuominen@gentoo.org> package.use.mask:
+  Remove obsolete entry for dev-python/gnome-python-extras.
+
+  02 Jul 2012; Naohiro Aota <naota@gentoo.org> package.use.mask:
+  Mask smbkrb5passwd for net-nds/openldap.
+
+  18 Mar 2012; Justin Lecher <jlec@gentoo.org> package.use.mask:
+  Use mask kde for net-im/gajim
+
+  09 Jan 2012; Alexandre Rostovtsev <tetromino@gentoo.org> package.use.mask:
+  Unmask USE="jit" for webkit-gtk (bug #396313).
+
+  06 Oct 2011; Alexis Ballier <aballier@gentoo.org> use.mask:
+  mask vaapi useflag as libva doesnt build
+
+  05 Oct 2011; Alexis Ballier <aballier@gentoo.org> -package.mask:
+  unmask texlive as most of it is keyworded and older versions are going away
+
+  06 Aug 2011; Ryan Hill <dirtyepic@gentoo.org> package.use.mask:
+  Unmask lto.
+
+  20 Jul 2011; Ryan Hill <dirtyepic@gentoo.org> package.use.mask:
+  Mask gcc [lto] due to unkeyworded dependencies (bug #375737).
+
+  30 Jun 2011; Pacho Ramos <pacho@gentoo.org> package.use.mask:
+  Needed plugins are not keyworded on this arch
+
+  31 Mar 2011; Tomáš Chvátal <scarabeus@gentoo.org> package.mask:
+  Drop obslolete KDE entries
+
+  18 Mar 2011; Pacho Ramos <pacho@gentoo.org> package.use.mask:
+  Mask media-plugins/gst-plugins-meta USE flags due missing keywords on deps.
+
+  13 Nov 2010; Alexis Ballier <aballier@gentoo.org> package.mask:
+  Move TeX Live 2010 package.mask to per-arch package.mask, bug #342513
+
+  19 Sep 2010; Justin Lecher <jlec@gentoo.org> package.use.mask:
+  Mask app-arch/p7zip[kde] as kde-base/konqueror is not keyworded
+
+  12 Sep 2010; Justin Lecher <jlec@gentoo.org> package.use.mask:
+  net-im/gajim jingle masked, because net-libs/farsight2 is not keyworded
+  336899
+
+  13 Aug 2010; Justin Lecher <jlec@gentoo.org> package.use.mask:
+  MKL not available on this arch
+
+  12 May 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  package.use.mask:
+  unmask dev-libs/udis86 test after adding patch to make yasm optional
+
+  10 May 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  package.use.mask:
+  unmask dev-libs/udis86 test
+
+  01 May 2010; Alexis Ballier <aballier@gentoo.org> package.use.mask:
+  mask mplayer[xanim]
+
+  28 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> package.use.mask:
+  Mask USE="autotrace" for imagemagick wrt #281573.
+
+  22 Mar 2010; Pacho Ramos <pacho@gentoo.org> package.use.mask:
+  Mask xulrunner and libgda USE flags due bug 282291
+
+  07 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> use.mask:
+  Unmask x86_* flags sse3, sse4, sse4a, and sse5.
+
+  13 Dec 2009; Rémi Cardona <remi@gentoo.org> make.defaults:
+  drop "vga" from VIDEO_CARDS in all profiles
+
+  26 Nov 2009; Alexis Ballier <aballier@gentoo.org> package.use.mask:
+  unmask mlt[frei0r], bug #276679
+
+  26 Nov 2009; Alexis Ballier <aballier@gentoo.org> package.use.mask:
+  usemasks for frei0r plugins
+
+  19 Sep 2009; Alexis Ballier <aballier@gentoo.org> package.use.mask:
+  use mask dev-libs/ppl[prolog]
+
+  16 Aug 2009; Rémi Cardona <remi@gentoo.org> make.defaults:
+  drop last traces of i810
+
+  05 Jul 2009; Alexis Ballier <aballier@gentoo.org> package.use.mask:
+  usemask anjuta[valgrind] on bsd
+
+  05 Jul 2009; Alexis Ballier <aballier@gentoo.org> package.use.mask:
+  remove old webkit usemask for qt assistant
+
+  02 Jul 2009; Alexis Ballier <aballier@gentoo.org> use.mask:
+  unmask policykit useflag on x86-fbsd
+
+  27 Jun 2009; Alexis Ballier <aballier@gentoo.org> use.mask:
+  Mask policykit support until it is keyworded
+
+  08 Jun 2009; Alexis Ballier <aballier@gentoo.org> use.mask:
+  usemask portaudio too on fbsd
+
+  05 Jun 2009; Alexis Ballier <aballier@gentoo.org> use.mask:
+  usemask pulseaudio on fbsd
+
+  19 Jan 2009; Alexis Ballier <aballier@gentoo.org> +make.defaults,
+  +package.use.mask, +parent, +use.force, +use.mask:
+  Add x86-fbsd arch profile; it will be used for freebsd 7.1 and we should
+  try to make 6.2 profiles use it if they are going to stay for some time.
+  This directory is where lazy people are expected to put the masks for
+  missing keywords.
+

@@ -1,0 +1,170 @@
+# ChangeLog for perl-core/Locale-Maketext-Simple
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/perl-core/Locale-Maketext-Simple/ChangeLog,v 1.13 2014/07/25 21:10:52 dilfridge Exp $
+
+*Locale-Maketext-Simple-0.210.0-r1 (25 Jul 2014)
+
+  25 Jul 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Locale-Maketext-Simple-0.210.0-r1.ebuild,
+  -Locale-Maketext-Simple-0.210.0.ebuild:
+  EAPI bump
+
+  19 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  Locale-Maketext-Simple-0.210.0.ebuild:
+  Stable for alpha, wrt bug #458122
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  20 May 2012; Torsten Veller <tove@gentoo.org>
+  Locale-Maketext-Simple-0.210.0.ebuild:
+  Drop non-core test dependency: dev-perl/locale-maketext-lexicon
+
+  28 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  Locale-Maketext-Simple-0.210.0.ebuild:
+  keyword ~amd64-fbsd
+
+*Locale-Maketext-Simple-0.210.0 (20 May 2011)
+
+  20 May 2011; Torsten Veller <tove@gentoo.org>
+  -Locale-Maketext-Simple-0.21.ebuild, +Locale-Maketext-Simple-0.210.0.ebuild:
+  Change version scheme
+
+  12 Sep 2010; Raúl Porcel <armin76@gentoo.org>
+  Locale-Maketext-Simple-0.21.ebuild:
+  ia64/sparc stable wrt #333421
+
+  20 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  Locale-Maketext-Simple-0.21.ebuild:
+  stable x86, bug 333421
+
+  19 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  Locale-Maketext-Simple-0.21.ebuild:
+  Stable on amd64 wrt bug #333421
+
+  16 Dec 2009; Jonathan Callen <abcd@gentoo.org>
+  Locale-Maketext-Simple-0.21.ebuild:
+  QA: Transfer prefix keywords
+
+*Locale-Maketext-Simple-0.21 (18 Aug 2009)
+
+  18 Aug 2009; Torsten Veller <tove@gentoo.org>
+  +Locale-Maketext-Simple-0.21.ebuild:
+  Version bump
+
+*Locale-Maketext-Simple-0.20 (16 Jul 2009)
+
+  16 Jul 2009; Torsten Veller <tove@gentoo.org>
+  +Locale-Maketext-Simple-0.20.ebuild:
+  Version bump
+
+  01 Nov 2008; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +Locale-Maketext-Simple-0.18.ebuild:
+  dev-perl => perl-core migration
+
+  15 Sep 2008; Torsten Veller <tove@gentoo.org>
+  -Locale-Maketext-Simple-0.12.ebuild, -Locale-Maketext-Simple-0.14.ebuild,
+  -Locale-Maketext-Simple-0.17.ebuild:
+  Cleanup
+
+  16 Aug 2008; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove pclouds from metadata.xml (#49680)
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org>
+  Locale-Maketext-Simple-0.18.ebuild:
+  Stable on x86, bug #169152.
+
+  21 Oct 2006; Aron Griffis <agriffis@gentoo.org>
+  Locale-Maketext-Simple-0.18.ebuild:
+  Mark 0.18 stable on ia64
+
+  21 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Locale-Maketext-Simple-0.18.ebuild:
+  Marking sparc stable
+
+  21 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Locale-Maketext-Simple-0.18.ebuild:
+  Marking amd64 stable
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Locale-Maketext-Simple-0.17.ebuild:
+  Stable on ia64.
+
+  10 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Locale-Maketext-Simple-0.12.ebuild, Locale-Maketext-Simple-0.14.ebuild,
+  -Locale-Maketext-Simple-0.16.ebuild, Locale-Maketext-Simple-0.17.ebuild:
+  Marking sparc, amd64 stable; cleaned up stale ebuild
+
+*Locale-Maketext-Simple-0.18 (10 Sep 2006)
+
+  10 Sep 2006; Yuval Yaari <yuval@gentoo.org>
+  +Locale-Maketext-Simple-0.18.ebuild:
+  Version bump
+
+*Locale-Maketext-Simple-0.17 (20 Aug 2006)
+
+  20 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  +Locale-Maketext-Simple-0.17.ebuild:
+  Version bump
+
+  17 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Locale-Maketext-Simple-0.16.ebuild:
+  Marking amd64, sparc stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Locale-Maketext-Simple-0.12.ebuild, Locale-Maketext-Simple-0.14.ebuild,
+  Locale-Maketext-Simple-0.16.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  Locale-Maketext-Simple-0.14.ebuild:
+  Mark 0.14 stable on ia64
+
+  12 Jun 2006; Michael Cummings <mcummings@gentoo.org>
+  Locale-Maketext-Simple-0.14.ebuild:
+  Marking sparc stable
+
+*Locale-Maketext-Simple-0.16 (24 May 2006)
+
+  24 May 2006; Christian Hartmann <ian@gentoo.org>
+  +Locale-Maketext-Simple-0.16.ebuild:
+  Version bump
+
+*Locale-Maketext-Simple-0.14 (01 May 2006)
+
+  01 May 2006; <mcumming@gentoo.org> +Locale-Maketext-Simple-0.14.ebuild:
+  Version bump
+
+  28 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  Locale-Maketext-Simple-0.12.ebuild:
+  Mark 0.12 stable on ia64
+
+  22 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  Locale-Maketext-Simple-0.12.ebuild:
+  Mark 0.12 ~ia64
+
+  15 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Locale-Maketext-Simple-0.12.ebuild:
+  Stable on sparc
+
+  16 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Locale-Maketext-Simple-0.12.ebuild:
+  Keyworded ~sparc
+
+  07 May 2005; David Holm <dholm@gentoo.org>
+  Locale-Maketext-Simple-0.12.ebuild:
+  Added to ~ppc.
+
+  28 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  Locale-Maketext-Simple-0.12.ebuild:
+  Cleaning
+
+  05 Feb 2005; Dylan Carlson <absinthe@gentoo.org>
+  Locale-Maketext-Simple-0.12.ebuild:
+  Keywords ~amd64.
+
+*Locale-Maketext-Simple-0.12 (27 Nov 2004)
+
+  27 Nov 2004; <pclouds@gentoo.org> +metadata.xml,
+  +Locale-Maketext-Simple-0.12.ebuild:
+  New ebuild

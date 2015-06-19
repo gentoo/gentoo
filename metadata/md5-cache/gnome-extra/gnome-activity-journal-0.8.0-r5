@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEPEND=dev-python/dbus-python dev-python/libgnome-python dev-python/gconf-python dev-python/gst-python:0.10 dev-python/pycairo dev-python/pygobject:2 dev-python/pygtk:2 dev-python/pyxdg gnome-extra/zeitgeist sys-apps/dbus dev-util/intltool dev-python/python-distutils-extra app-arch/xz-utils >=sys-apps/sed-4 >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)]
+DESCRIPTION=Tool for easily browsing and finding files on your computer
+EAPI=5
+HOMEPAGE=https://launchpad.net/gnome-activity-journal/
+IUSE=debug python_targets_python2_7
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3 LGPL-3
+RDEPEND=dev-python/dbus-python dev-python/libgnome-python dev-python/gconf-python dev-python/gst-python:0.10 dev-python/pycairo dev-python/pygobject:2 dev-python/pygtk:2 dev-python/pyxdg gnome-extra/zeitgeist sys-apps/dbus >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)]
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=http://launchpad.net/gnome-activity-journal/0.8/0.8.0/+download/gnome-activity-journal-0.8.0.tar.gz
+_eclasses_=distutils-r1	c01d5c4af34f4a37a51fc9638299c222	eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	gnome.org	8fef8f967214f56e08fa92d61163d891	gnome2	10c513def52488230abb60a4b19a03b9	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	libtool	52d0e17251d04645ffaa61bfdd858944	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	7a178335dbd6ea7f50ed4e3e1c13c1e4	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=ea4d4fb27396b6da951a05aa3b7c1f28

@@ -1,0 +1,44 @@
+ Makefile.am  |    2 +-
+ configure.ac |    9 +--------
+ 2 files changed, 2 insertions(+), 9 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 55659c5..a065514 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -27,7 +27,7 @@ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = libqrencode.pc
+ 
+ EXTRA_DIST = libqrencode.pc.in autogen.sh configure.ac acinclude.m4 \
+-			 Makefile.am tests/Makefile.am qrencode.spec.in qrencode.spec \
++			 Makefile.am qrencode.spec.in qrencode.spec \
+ 			 qrencode.1.in Doxyfile tests/test_all.sh
+ 
+ if BUILD_TOOLS
+diff --git a/configure.ac b/configure.ac
+index 6fb1409..ca30225 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -30,7 +30,7 @@ AC_PROG_LIBTOOL
+ AC_PROG_RANLIB
+ PKG_PROG_PKG_CONFIG
+ 
+-AC_CONFIG_FILES([Makefile libqrencode.pc tests/Makefile qrencode.spec qrencode.1])
++AC_CONFIG_FILES([Makefile libqrencode.pc qrencode.spec qrencode.1])
+ 
+ AC_CHECK_FUNCS([strdup])
+ 
+@@ -71,13 +71,6 @@ echo "#define __STATIC static" >>confdefs.h
+ echo "/* #undef WITH_TESTS */" >>confdefs.h
+ fi
+ 
+-if test x$build_tests = xyes ; then
+-	SDL_REQUIRED_VERSION=1.2.0
+-	AM_PATH_SDL($SDL_REQUIRED_VERSION,,AC_MSG_WARN([*** SDL $SDL_REQUIRED_VERSION or better is required.]))
+-	AC_MSG_NOTICE([SDL check done.])
+-	AM_ICONV_LINK
+-fi
+-AM_CONDITIONAL(HAVE_SDL, [test "x$SDL_CFLAGS" != "x" ])
+ 
+ 
+ dnl --enable-gprof

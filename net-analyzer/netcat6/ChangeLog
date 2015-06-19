@@ -1,0 +1,120 @@
+# ChangeLog for net-analyzer/netcat6
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netcat6/ChangeLog,v 1.34 2014/07/14 21:39:15 jer Exp $
+
+  14 Jul 2014; Jeroen Roovers <jer@gentoo.org> netcat6-1.0-r2.ebuild,
+  files/netcat6-1.0-automake-1.14.patch, files/netcat6-1.0-unix-sockets.patch:
+  Set RDEPEND (not DEPEND) blocker. Clean up patches.
+
+  04 Dec 2013; Tim Harder <radhermit@gentoo.org> netcat6-1.0-r2.ebuild,
+  +files/netcat6-1.0-automake-1.14.patch:
+  Fix build with automake-1.14 (bug #493100).
+
+  24 Apr 2013; Jeroen Roovers <jer@gentoo.org> netcat6-1.0-r2.ebuild:
+  Do not call ar directly. Fix building with automake-1.13 (bug #467014 by
+  Alphat-PC).
+
+  21 Feb 2013; Zac Medico <zmedico@gentoo.org> netcat6-1.0-r2.ebuild:
+  Add ~arm-linux keyword.
+
+  24 Jul 2012; Anthony G. Basile <blueness@gentoo.org> netcat6-1.0-r2.ebuild:
+  Keyword ~mips
+
+  14 Apr 2012; Zac Medico <zmedico@gentoo.org> netcat6-1.0-r2.ebuild:
+  Add ~amd64-linux keyword.
+
+  03 Aug 2011; Zac Medico <zmedico@gentoo.org> netcat6-1.0-r2.ebuild:
+  Add ~x86-linux keyword.
+
+  29 Jan 2011; Raúl Porcel <armin76@gentoo.org> netcat6-1.0-r2.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #300610
+
+  25 Jan 2011; Markos Chandras <hwoarang@gentoo.org> netcat6-1.0-r2.ebuild:
+  Stable on amd64 wrt bug #300610
+
+  24 Jan 2011; Jeroen Roovers <jer@gentoo.org> netcat6-1.0-r2.ebuild:
+  Stable for HPPA (bug #300610).
+
+  23 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org> netcat6-1.0-r2.ebuild:
+  ppc stable wrt #300610
+
+  22 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  netcat6-1.0-r2.ebuild:
+  x86 stable wrt bug #300610
+
+  11 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> netcat6-1.0-r1.ebuild,
+  netcat6-1.0-r2.ebuild:
+  Drop bluez-libs support wrt #301630.
+
+*netcat6-1.0-r2 (08 Sep 2009)
+
+  08 Sep 2009; Patrick Lauer <patrick@gentoo.org> +netcat6-1.0-r2.ebuild:
+  Adding /bin/nc symlink and blocking normal netcat for libvirt #280650
+
+  19 Jul 2009; nixnut <nixnut@gentoo.org> netcat6-1.0-r1.ebuild:
+  ppc stable #275386
+
+  08 Jul 2009; Markus Meier <maekke@gentoo.org> netcat6-1.0-r1.ebuild:
+  amd64 stable, bug #275386
+
+  06 Jul 2009; Raúl Porcel <armin76@gentoo.org> netcat6-1.0-r1.ebuild:
+  arm/ia64/m68k/s390/sh/sparc stable wrt #275386
+
+  04 Jul 2009; Brent Baude <ranger@gentoo.org> netcat6-1.0-r1.ebuild:
+  keyworded ~arch for ppc64, bug 275386
+
+  30 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  netcat6-1.0-r1.ebuild:
+  stable x86, bug 275386
+
+  28 Jun 2009; Tobias Klausmann <klausman@gentoo.org> netcat6-1.0-r1.ebuild:
+  Stable on alpha, bug #275386
+
+  26 Jun 2009; Jeroen Roovers <jer@gentoo.org> netcat6-1.0-r1.ebuild:
+  Stable for HPPA (bug #275386).
+
+  12 May 2009; Peter Alfredsen <loki_val@gentoo.org> netcat6-1.0-r1.ebuild:
+  List net-wireless/bluez first in ( a b ) dependency w.r.t. bug 269519.
+
+  01 Mar 2009; Tiziano Müller <dev-zero@gentoo.org> netcat6-1.0-r1.ebuild:
+  Added net-wireless/bluez as possible dep for bluetooth
+
+  24 Dec 2008; Raúl Porcel <armin76@gentoo.org> netcat6-1.0-r1.ebuild:
+  Re-add ~s390 wrt #244318
+
+*netcat6-1.0-r1 (25 Oct 2008)
+
+  25 Oct 2008; Peter Volkov <pva@gentoo.org>
+  +files/netcat6-1.0-unix-sockets.patch, -netcat6-0.5.ebuild,
+  +netcat6-1.0-r1.ebuild:
+  Added patch to make netcat6 listen on unix sockets, bug #235160, thank
+  Georgi Georgiev for this patch. Added bluetooth support. Removed old
+  version.
+
+  09 Jul 2007; Jeroen Roovers <jer@gentoo.org> netcat6-1.0.ebuild:
+  Stable for HPPA (as informally requested by armin76).
+
+  09 Jul 2007; Raúl Porcel <armin76@gentoo.org> netcat6-1.0.ebuild:
+  alpha stable
+
+  20 Mar 2007; Raúl Porcel <armin76@gentoo.org> netcat6-1.0.ebuild:
+  x86 stable
+
+  20 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+*netcat6-1.0 (19 Feb 2006)
+
+  19 Feb 2006; Mike Frysinger <vapier@gentoo.org> +netcat6-1.0.ebuild:
+  Version bump #123112 by Sascha Geschwandtner.
+
+  18 Oct 2005; Aron Griffis <agriffis@gentoo.org> netcat6-0.5.ebuild:
+  Mark 0.5 stable on alpha
+
+  17 Oct 2005; Aron Griffis <agriffis@gentoo.org> netcat6-0.5.ebuild:
+  Mark 0.5 stable on ia64
+
+*netcat6-0.5 (02 Jun 2003)
+
+  02 Jun 2003; Peter Johanson <latexer@gentoo.org> netcat6-0.5.ebuild:
+  Initial import. Netcat version that supports IPv6 also

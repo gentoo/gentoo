@@ -1,0 +1,37 @@
+# ChangeLog for app-misc/astrolog-ephemeris
+# Copyright 2002-2006 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/astrolog-ephemeris/ChangeLog,v 1.11 2006/03/19 19:04:10 halcy0n Exp $
+
+  19 Mar 2006; Mark Loeser <halcy0n@gentoo.org>
+  astrolog-ephemeris-5.40.ebuild:
+  Add DEPEND on app-arch/unzip
+
+  16 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  astrolog-ephemeris-5.40.ebuild:
+  tidy
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  astrolog-ephemeris-5.40.ebuild:
+  stable on amd64
+
+  08 Dec 2004; Karol Wojtaszek <sekretarz@gentoo.org>
+  astrolog-ephemeris-5.40.ebuild:
+  Added to ~amd64, bug #73724
+
+  03 Nov 2004; Thomas Matthijs <axxo@gentoo.org>
+  astrolog-ephemeris-5.40.ebuild:
+  depend on app-arch/unzip
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  astrolog-ephemeris-5.40.ebuild:
+  Masked astrolog-ephemeris-5.40.ebuild stable for ppc
+
+  19 Sept 2004; Tom Gall <tgall@gentoo.org> astrolog-ephemeris-5.40.ebuild:
+  stable on ppc64, bug #63656
+
+  14 Aug 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed CVS Header.
+
+*astrolog-ephemeris-5.40 (30 Jul 2003)
+
+  Initial ebuild created by Nicolai Lissner <nlissne@linux01.gwdg.de>

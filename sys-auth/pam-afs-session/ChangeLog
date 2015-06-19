@@ -1,0 +1,40 @@
+# ChangeLog for sys-auth/pam-afs-session
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam-afs-session/ChangeLog,v 1.7 2012/11/17 10:20:05 ulm Exp $
+
+  17 Nov 2012; Ulrich Müller <ulm@gentoo.org> pam-afs-session-1.3.ebuild,
+  pam-afs-session-1.5.ebuild, pam-afs-session-1.6.ebuild:
+  Update LICENSE, see LICENSE file in tarball, bug 440910.
+
+  13 Sep 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #99651
+
+*pam-afs-session-1.6 (25 Mar 2008)
+
+  25 Mar 2008; Stefaan De Roeck <stefaan@gentoo.org>
+  +pam-afs-session-1.6.ebuild:
+  Version bump to 1.6
+
+*pam-afs-session-1.5 (13 Oct 2007)
+
+  13 Oct 2007; Stefaan De Roeck <stefaan@gentoo.org>
+  -pam-afs-session-1.1.ebuild, +pam-afs-session-1.5.ebuild:
+  Version bump to 1.5, fixes bug #195538.  Remove old 1.1 version.
+
+*pam-afs-session-1.3 (01 May 2007)
+
+  01 May 2007; Stefaan De Roeck <stefaan@gentoo.org>
+  +pam-afs-session-1.3.ebuild:
+  Version bump (see bug #160082)
+
+  14 Feb 2007; Stefaan De Roeck <stefaan@gentoo.org>
+  pam-afs-session-1.1.ebuild:
+  Initial keywording: ~amd64 and ~x86 as per comments in bug #160082
+  (temporary proxy maintenance)
+
+*pam-afs-session-1.1 (12 Feb 2007)
+
+  12 Feb 2007; Stefaan De Roeck <stefaan@gentoo.org> +metadata.xml,
+  +pam-afs-session-1.1.ebuild:
+  Initial commit - keywords pending
+

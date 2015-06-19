@@ -1,0 +1,26 @@
+* warning: implicit declaration of function ‘unlink’
+* warning: too few arguments for format
+--- a/src/sed/lib/utils.c
++++ b/src/sed/lib/utils.c
+@@ -35,6 +35,10 @@
+ # include <stdlib.h>
+ #endif /* HAVE_STDLIB_H */
+ 
++#ifdef HAVE_UNISTD_H
++# include <unistd.h>
++#endif /* HAVE_UNISTD_H */
++
+ #include "utils.h"
+ 
+ const char *myname;
+--- a/src/kmk/kmkbuiltin/printf.c
++++ b/src/kmk/kmkbuiltin/printf.c
+@@ -206,7 +206,7 @@
+ 
+ 	(void)funcname;
+ 	if (rc != 0)
+-		fatal (NILF, _("$(%s): failure rc=%d\n"), rc);
++		fatal (NILF, _("$(%s): failure rc=%d\n"), funcname, rc);
+ 	return o;
+ }
+ #endif

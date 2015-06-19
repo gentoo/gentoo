@@ -1,0 +1,59 @@
+--- bind-9.5.0a6.orig/contrib/dlz/drivers/dlz_mysql_driver.c	2007-02-06 06:44:26.000000000 +0100
++++ bind-9.5.0a6/contrib/dlz/drivers/dlz_mysql_driver.c	2007-09-04 23:57:57.000000000 +0200
+@@ -92,6 +92,25 @@
+  */
+ 
+ /*%
++ * Factorize the mysql_ping for adding a log error message
++ */
++static isc_result_t
++mysqldrv_ping(dbinstance_t *dbi) {
++    int pres = 0;
++
++    pres = mysql_ping(dbi->dbconn);
++    if ( pres != 0 ) {
++        isc_log_write(dns_lctx, DNS_LOGCATEGORY_DATABASE,
++                      DNS_LOGMODULE_DLZ, ISC_LOG_DEBUG(1),
++                      "\nMySQL Ping Error : %s (%i)\n",
++                      mysql_error(dbi->dbconn),
++                      mysql_errno(dbi->dbconn));
++        return (ISC_R_FAILURE);
++    }
++    return (ISC_R_SUCCESS);
++}
++
++/*%
+  * Allocates memory for a new string, and then constructs the new
+  * string by "escaping" the input string.  The new string is
+  * safe to be used in queries.  This is necessary because we cannot
+@@ -225,6 +244,8 @@
+ 	}
+ 
+ 
++    mysqldrv_ping(dbi);
++
+ 	/*
+ 	 * was a zone string passed?  If so, make it safe for use in
+ 	 * queries.
+@@ -324,7 +345,7 @@
+ 		qres = mysql_query((MYSQL *) dbi->dbconn, querystring);
+ 		if (qres == 0)
+ 			break;
+-		for (j=0; mysql_ping((MYSQL *) dbi->dbconn) != 0 && j < 4; j++)
++		for (j=0; mysqldrv_ping(dbi) != 0 && j < 4; j++)
+ 			;
+ 	}
+ 
+@@ -923,6 +944,12 @@
+ 	pass = getParameterValue(argv[1], "pass=");
+ 	socket = getParameterValue(argv[1], "socket=");
+ 
++    if(mysql_options((MYSQL *) dbi->dbconn, MYSQL_OPT_RECONNECT, "1")) {
++		isc_log_write(dns_lctx, DNS_LOGCATEGORY_DATABASE,
++			      DNS_LOGMODULE_DLZ, ISC_LOG_ERROR,
++			      "Could not set database reconnect option");
++    }
++
+ 	for (j=0; dbc == NULL && j < 4; j++)
+ 		dbc = mysql_real_connect((MYSQL *) dbi->dbconn, host,
+ 					 user, pass, dbname, port, socket,

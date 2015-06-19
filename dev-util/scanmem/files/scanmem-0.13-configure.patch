@@ -1,0 +1,31 @@
+--- scanmem-0.13/configure.ac
++++ scanmem-0.13/configure.ac
+@@ -108,16 +108,17 @@
+                 test/Makefile
+                 ])
+ 
+-AC_ARG_ENABLE(gui, [AS_HELP_STRING([--enable-gui],
+-                            [enable gameconqueror, the gui front-end of scanmem])],
+-                 [enable_gui=true
+-                  AC_CONFIG_FILES([
+-                 gui/Makefile
+-                 gui/consts.py
+-                 gui/gameconqueror
+-                 ])],
+-                 [enable_gui=false]
+-                 )
++AC_ARG_ENABLE([gui],
++	AS_HELP_STRING([--enable-gui],
++		[enable gameconqueror, the gui front-end of scanmem]))
+ 
+-AM_CONDITIONAL([ENABLE_GUI], [test x$enable_gui = xtrue])
++AS_IF([test "x$enable_gui" = "xyes"], [
++	AC_CONFIG_FILES([
++		gui/Makefile
++		gui/consts.py
++		gui/gameconqueror
++	])
++])
++
++AM_CONDITIONAL([ENABLE_GUI], [test "x$enable_gui" = "xyes"])
+ AC_OUTPUT

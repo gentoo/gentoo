@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION=Open Build Service client module - format_spec_file service
+EAPI=5
+HOMEPAGE=http://en.opensuse.org/openSUSE:OSC
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-util/obs-service-source_validator dev-util/osc dev-util/suse-build
+SLOT=0
+SRC_URI=https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-format_spec_file/format_spec_file -> format_spec_file-20130618 https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-format_spec_file/format_spec_file.service -> format_spec_file-20130618.service https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-format_spec_file/licenses_changes.txt -> licenses_changes.txt-20130618 https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-format_spec_file/patch_license -> patch_license-20130618 https://api.opensuse.org/public/source/openSUSE:Tools/obs-service-format_spec_file/prepare_spec -> prepare_spec-20130618
+_eclasses_=obs-download	8b22473fde39f5051ce00b61062dd086	obs-service	0fc1a1ab792dd8a4e38c10901ff57032
+_md5_=0ff1006075ce9be6951ba573b759ecc6

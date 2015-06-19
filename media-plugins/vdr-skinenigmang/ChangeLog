@@ -1,0 +1,94 @@
+# ChangeLog for media-plugins/vdr-skinenigmang
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-skinenigmang/ChangeLog,v 1.16 2014/02/23 20:58:57 hd_brummy Exp $
+
+  23 Feb 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-skinenigmang-0.1.1.ebuild:
+  cleanup old, depended on vdr-plugin.eclass
+
+*vdr-skinenigmang-0.1.2_p20130302 (22 Apr 2013)
+
+  22 Apr 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-skinenigmang-0.1.2_p20130302.ebuild:
+  new snapshot, compilefix for imagemagick-6.8.4.9
+
+  03 Oct 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-skinenigmang-0.1.2_p20120618.ebuild:
+  fixed checksumerrors on every dl from hg server, moved distfile to another
+  wepspace
+
+*vdr-skinenigmang-0.1.2_p20120618 (27 Sep 2012)
+
+  27 Sep 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-skinenigmang-0.1.2_p20120618.ebuild:
+  git snapshot 20120618, thix fix problems in osd area, reported bey
+  johns@vdr-portal.de
+
+*vdr-skinenigmang-0.1.2 (29 Apr 2012)
+
+  29 Apr 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-skinenigmang-0.1.2.ebuild:
+  bump; migrated to vdr-plugin-2.eclass
+
+  06 Apr 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-skinenigmang-0.1.1.ebuild, +files/vdr-1.7.27.diff:
+  eapi=4; compilefix >=vdr-1.7.27
+
+  17 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-skinenigmang-0.0.6.ebuild, -vdr-skinenigmang-0.1.0.ebuild,
+  -vdr-skinenigmang-0.1.0-r1.ebuild, vdr-skinenigmang-0.1.1.ebuild,
+  -files/imagemagick-6.4.x.diff:
+  cleanup, stable x86
+
+*vdr-skinenigmang-0.1.1 (08 Apr 2010)
+*vdr-skinenigmang-0.1.0-r1 (08 Apr 2010)
+
+  08 Apr 2010; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-skinenigmang-0.1.0.ebuild, +vdr-skinenigmang-0.1.0-r1.ebuild,
+  +vdr-skinenigmang-0.1.1.ebuild:
+  0.1.0 stable x86; version bump
+
+  03 Apr 2010; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-skinenigmang-0.1.0.ebuild:
+  add cxx to use-depend for newer imagemagick use-flags changes
+
+*vdr-skinenigmang-0.1.0 (28 Apr 2009)
+
+  28 Apr 2009; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-skinenigmang-0.0.3.ebuild, -vdr-skinenigmang-0.0.4.ebuild,
+  -vdr-skinenigmang-0.0.5.ebuild, vdr-skinenigmang-0.0.6,
+  +vdr-skinenigmang-0.1.0.ebuild:
+  cleanup; stable x86; version bump
+
+  04 Aug 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/imagemagick-6.4.x.diff, vdr-skinenigmang-0.0.6.ebuild:
+  fix for new imagemagick include dir struct
+
+*vdr-skinenigmang-0.0.6 (09 Mar 2008)
+
+  09 Mar 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-skinenigmang-0.0.3.ebuild, vdr-skinenigmang-0.0.4.ebuild,
+  +vdr-skinenigmang-0.0.6.ebuild:
+  Version bumped. Add hack to disable bad makefile gettext check.
+
+*vdr-skinenigmang-0.0.5 (29 Dec 2007)
+
+  29 Dec 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-skinenigmang-0.0.5.ebuild:
+  version bump
+
+  17 Apr 2007; Matthias Schwarzott <zzam@gentoo.org> files/rc-addon.sh:
+  Removed bash specific stuff.
+
+*vdr-skinenigmang-0.0.4 (02 Apr 2007)
+
+  02 Apr 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-skinenigmang-0.0.4.ebuild:
+  version bump
+
+*vdr-skinenigmang-0.0.3 (06 Mar 2007)
+
+  06 Mar 2007; Joerg Bornkessel <hd_brummy@gentoo.org> +files/rc-addon.sh,
+  +metadata.xml, +vdr-skinenigmang-0.0.3.ebuild:
+  initial ebuild
+

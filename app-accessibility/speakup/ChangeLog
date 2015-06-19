@@ -1,0 +1,286 @@
+# ChangeLog for app-accessibility/speakup
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/speakup/ChangeLog,v 1.61 2015/04/19 22:38:17 mrueg Exp $
+
+  19 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -speakup-3.1.6.ebuild:
+  Remove old.
+
+  06 Aug 2014; Patrick Lauer <patrick@gentoo.org> speakup-3.1.6.ebuild,
+  speakup-3.1.6_p201011120508.ebuild, speakup-9999.ebuild:
+  Make description more repoman-happy
+
+  25 Jun 2011; William Hubbs <williamh@gentoo.org>
+  speakup-3.1.6_p201011120508.ebuild, speakup-9999.ebuild:
+  migrate to git-2 eclass
+
+  19 Jan 2011; William Hubbs <williamh@gentoo.org>
+  speakup-3.1.6_p201011120508.ebuild:
+  fix kernel_is call to work correctly
+
+  13 Jan 2011; William Hubbs <williamh@gentoo.org>
+  speakup-3.1.6_p201011120508.ebuild:
+  this version only works for kernel 2.6.36.
+  No one should emerge this package for 2.6.37 or later unless they are
+  using the live ebuild.
+
+  31 Dec 2010; William Hubbs <williamh@gentoo.org>
+  speakup-3.1.6_p201011120508.ebuild:
+  fix snapshot for 2.6.36
+  The S variable wasn't set correctly.
+
+  20 Dec 2010; William Hubbs <williamh@gentoo.org>
+  speakup-3.1.6_p201011120508.ebuild:
+  amd 64 stable, needed for kernel 2.6.36.
+
+  14 Dec 2010; William Hubbs <williamh@gentoo.org> speakup-9999.ebuild:
+  sync live ebuild with snapshot
+
+*speakup-3.1.6_p201011120508 (13 Dec 2010)
+
+  13 Dec 2010; William Hubbs <williamh@gentoo.org>
+  +speakup-3.1.6_p201011120508.ebuild:
+  This snapshot is required for kernel 2.6.36, so since it is stable on
+  x86, I am taking this straight to stable.
+  I am also comfortable doing this because I am part of upstream and have
+  been using it.
+
+  09 Dec 2010; William Hubbs <williamh@gentoo.org> speakup-3.1.6.ebuild,
+  speakup-9999.ebuild:
+  Add back support for USE=modules; this will be handled in the minimal
+  specs.
+
+  09 Dec 2010; William Hubbs <williamh@gentoo.org> speakup-3.1.6.ebuild,
+  speakup-9999.ebuild:
+  Speakup is not functional without the modules, and this was causing the
+  minimal live cd not to speak. I just now discovered this because there
+  wasn't a way for me to look at the cd until now to find out what was
+  going on, but they have the modules use flag turned off in the specs.
+  I am removing the modules use flag because the modules are always needed
+  for speakup to work.
+
+  05 Nov 2010; William Hubbs <williamh@gentoo.org> -speakup-3.1.4.ebuild,
+  -speakup-3.1.5.ebuild:
+  remove old versions
+
+  04 Nov 2010; William Hubbs <williamh@gentoo.org> speakup-3.1.6.ebuild:
+  stable on x86 and amd64
+
+  21 Oct 2010; William Hubbs <williamh@gentoo.org> speakup-9999.ebuild:
+  fix live ebuild to match upstream repository
+
+  14 Oct 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  speakup-3.1.6.ebuild:
+  QA: fix kernel_is call that could never have worked.
+
+*speakup-3.1.6 (13 Oct 2010)
+
+  13 Oct 2010; William Hubbs <williamh@gentoo.org> +speakup-3.1.6.ebuild:
+  version bump
+
+  29 Jun 2010; William Hubbs <williamh@gentoo.org> speakup-9999.ebuild:
+  Speakup now requires at least kernel 2.6.26.
+
+  02 Jun 2010; William Hubbs <williamh@gentoo.org> speakup-3.1.5.ebuild:
+  amd64/x86 stable.
+
+*speakup-3.1.5 (19 Mar 2010)
+
+  19 Mar 2010; William Hubbs <williamh@gentoo.org> +speakup-3.1.5.ebuild:
+  version bump
+
+  28 Jan 2010; William Hubbs <williamh@gentoo.org> -speakup-3.1.3.ebuild,
+  -speakup-3.1.3-r1.ebuild:
+  removed old versions
+
+  28 Jan 2010; William Hubbs <williamh@gentoo.org> speakup-3.1.4.ebuild:
+  Stabilizing on amd64/x86 for bug #301527.
+
+  25 Jan 2010; William Hubbs <williamh@gentoo.org> speakup-3.1.3-r1.ebuild:
+  stable on x86
+
+*speakup-3.1.4 (25 Jan 2010)
+
+  25 Jan 2010; William Hubbs <williamh@gentoo.org> +speakup-3.1.4.ebuild:
+  version bump
+
+  03 Dec 2009; William Hubbs <williamh@gentoo.org> speakup-9999.ebuild:
+  synced live ebuild with 3.1.1-r1
+
+*speakup-3.1.3-r1 (25 Oct 2009)
+
+  25 Oct 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +speakup-3.1.3-r1.ebuild:
+  Support USE=modules for kernels with merged speakup. Not compile tested as
+  speakup fails to build against 2.6.32-rc5.
+
+  11 Sep 2009; William Hubbs <williamh@gentoo.org> -speakup-3.1.1.ebuild,
+  -speakup-3.1.2.ebuild:
+  removed old versions
+
+  11 Sep 2009; Jeremy Olexa <darkside@gentoo.org> speakup-3.1.3.ebuild:
+  amd64 stable, bug 282054. Compile tested only due to environment
+
+  31 Aug 2009; William Hubbs <williamh@gentoo.org> speakup-3.1.3.ebuild:
+  stable on x86
+
+  19 Aug 2009; William Hubbs <williamh@gentoo.org> speakup-3.1.2.ebuild:
+  stable x86
+
+  19 Aug 2009; William Hubbs <williamh@gentoo.org> speakup-9999.ebuild:
+  updated live ebuild to install man pages
+
+*speakup-3.1.3 (05 Aug 2009)
+
+  05 Aug 2009; William Hubbs <williamh@gentoo.org> +speakup-3.1.3.ebuild:
+  version bump
+
+  27 Jul 2009; William Hubbs <williamh@gentoo.org>
+  -speakup-3.0.3_p200904041142.ebuild, -speakup-3.0.5.ebuild:
+  removed old versions
+
+  27 Jul 2009; <chainsaw@gentoo.org> speakup-3.1.1.ebuild:
+  Marked stable on AMD64 as requested by William Hubbs <williamh@gentoo.org>
+  in bug #277968. Compile-tested on a Core2 Duo, no test hardware available.
+
+  15 Jul 2009; William Hubbs <williamh@gentoo.org> speakup-3.1.1.ebuild:
+  stable x86
+
+*speakup-9999 (15 Jul 2009)
+
+  15 Jul 2009; William Hubbs <williamh@gentoo.org> +speakup-9999.ebuild:
+  added live ebuild.
+
+*speakup-3.1.2 (15 Jul 2009)
+
+  15 Jul 2009; William Hubbs <williamh@gentoo.org> +speakup-3.1.2.ebuild:
+  Version bump.
+
+*speakup-3.1.1 (20 Jun 2009)
+
+  20 Jun 2009; William Hubbs <williamh@gentoo.org> +speakup-3.1.1.ebuild:
+  Version bump.
+
+*speakup-3.0.5 (03 Jun 2009)
+
+  03 Jun 2009; William Hubbs <williamh@gentoo.org> -speakup-3.0.4.ebuild,
+  +speakup-3.0.5.ebuild:
+  Version bump and removed 3.0.4 since it was buggy.
+
+  31 May 2009; William Hubbs <williamh@gentoo.org> speakup-3.0.4.ebuild:
+  Corrected the src_uri.
+
+*speakup-3.0.4 (31 May 2009)
+
+  31 May 2009; William Hubbs <williamh@gentoo.org> +speakup-3.0.4.ebuild:
+  Version bump.
+
+  26 May 2009; William Hubbs <williamh@gentoo.org>
+  speakup-3.0.3_p200904041142.ebuild:
+  fixed typos.
+
+  22 Apr 2009; Markus Meier <maekke@gentoo.org> speakup-3.0.3_p200904041142:
+  amd64 stable, bug #263741
+
+  09 Apr 2009; William Hubbs <williamh@gentoo.org>
+  -speakup-3.0.3_p200902221539.ebuild:
+  Removed old version.
+
+  09 Apr 2009; William Hubbs <williamh@gentoo.org>
+  speakup-3.0.3_p200904041142.ebuild:
+  Stable on x86. I am expediting this because the previous snapshot had a
+  bug (upstream) that would lock up some systems.
+
+*speakup-3.0.3_p200904041142 (05 Apr 2009)
+
+  05 Apr 2009; William Hubbs <williamh@gentoo.org>
+  +speakup-3.0.3_p200904041142.ebuild:
+  New snapshot.
+
+  01 Apr 2009; William Hubbs <williamh@gentoo.org>
+  speakup-3.0.3_p200902221539.ebuild:
+  Marked stable x86.
+
+  22 Feb 2009; William Hubbs <williamh@gentoo.org>
+  -speakup-3.0.3_p20080802.ebuild:
+  Removed old snapshot.
+
+*speakup-3.0.3_p200902221539 (22 Feb 2009)
+
+  22 Feb 2009; William Hubbs <williamh@gentoo.org>
+  +speakup-3.0.3_p200902221539.ebuild:
+  New snapshot.
+
+  09 Nov 2008; William Hubbs <williamh@gentoo.org>
+  speakup-3.0.3_p20080802.ebuild:
+  Fixed the way the kernel version is recognized for bug #245607.
+
+*speakup-3.0.3_p20080802 (02 Aug 2008)
+
+  02 Aug 2008; William Hubbs <williamh@gentoo.org>
+  -speakup-3.0.3_p20080723.ebuild, +speakup-3.0.3_p20080802.ebuild:
+  New snapshot.
+
+*speakup-3.0.3_p20080723 (24 Jul 2008)
+
+  24 Jul 2008; William Hubbs <williamh@gentoo.org>
+  -speakup-3.0.3_p20080722.ebuild, +speakup-3.0.3_p20080723.ebuild:
+  New snapshot.
+
+*speakup-3.0.3_p20080722 (23 Jul 2008)
+
+  23 Jul 2008; William Hubbs <williamh@gentoo.org>
+  -speakup-3.0.3_p20080716.ebuild, +speakup-3.0.3_p20080722.ebuild:
+  New snapshot.
+
+*speakup-3.0.3_p20080716 (16 Jul 2008)
+
+  16 Jul 2008; William Hubbs <williamh@gentoo.org>
+  -speakup-3.0.3_p20080629.ebuild, -speakup-3.0.3_p20080714.ebuild,
+  +speakup-3.0.3_p20080716.ebuild:
+  New snapshot and removed all previous snapshots.
+
+*speakup-3.0.3_p20080714 (14 Jul 2008)
+
+  14 Jul 2008; William Hubbs <williamh@gentoo.org>
+  -speakup-3.0.3_p20080708.ebuild, +speakup-3.0.3_p20080714.ebuild:
+  New snapshot.
+
+*speakup-3.0.3_p20080708 (09 Jul 2008)
+
+  09 Jul 2008; William Hubbs <williamh@gentoo.org>
+  -speakup-3.0.2_p20080520.ebuild, +speakup-3.0.3_p20080708.ebuild:
+  New snapshot and removed the oldest one.
+
+*speakup-3.0.3_p20080629 (29 Jun 2008)
+
+  29 Jun 2008; William Hubbs <williamh@gentoo.org>
+  +speakup-3.0.3_p20080629.ebuild:
+  Snapshot and version bump.
+
+*speakup-3.0.2_p20080520 (21 May 2008)
+
+  21 May 2008; William Hubbs <williamh@gentoo.org>
+  -speakup-3.0.2_p20080517.ebuild, +speakup-3.0.2_p20080520.ebuild:
+  Snapshot bump.
+
+  17 May 2008; William Hubbs <williamh@gentoo.org>
+  -speakup-3.0.2_p20080414.ebuild, -speakup-3.0.2_p20080509.ebuild:
+  Removed old snapshots due to them having bugs.
+
+*speakup-3.0.2_p20080517 (17 May 2008)
+
+  17 May 2008; William Hubbs <williamh@gentoo.org>
+  +speakup-3.0.2_p20080517.ebuild:
+  New speakup-3.0.2 snapshot, also now supports linux-2.6.26.
+
+*speakup-3.0.2_p20080509 (09 May 2008)
+
+  09 May 2008; William Hubbs <williamh@gentoo.org>
+  +speakup-3.0.2_p20080509.ebuild:
+  New gentoo snapshot.
+
+*speakup-3.0.2_p20080414 (19 Apr 2008)
+
+  19 Apr 2008; William Hubbs <williamh@gentoo.org> +metadata.xml,
+  +speakup-3.0.2_p20080414.ebuild:
+  Initial commit.

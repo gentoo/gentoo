@@ -1,0 +1,60 @@
+# ChangeLog for dev-python/docutils-glep
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/docutils-glep/ChangeLog,v 1.18 2015/04/08 08:05:22 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> docutils-glep-0.4-r1.ebuild:
+  Drop old Python implementations
+
+  24 Nov 2014; Pacho Ramos <pacho@gentoo.org> docutils-glep-0.4-r1.ebuild:
+  Support python 3.4
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> docutils-glep-0.4-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> docutils-glep-0.4-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  25 May 2013; Agostino Sarubbo <ago@gentoo.org> docutils-glep-0.4-r1.ebuild:
+  Stable for sparc, wrt bug #469660
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> docutils-glep-0.4-r1.ebuild:
+  Stable for s390, wrt bug #469660
+
+  18 May 2013; Agostino Sarubbo <ago@gentoo.org> docutils-glep-0.4-r1.ebuild:
+  Stable for alpha, wrt bug #469660
+
+  18 May 2013; Agostino Sarubbo <ago@gentoo.org> docutils-glep-0.4-r1.ebuild:
+  Stable for ia64, wrt bug #469660
+
+  17 May 2013; Jeroen Roovers <jer@gentoo.org> docutils-glep-0.4-r1.ebuild:
+  Stable for HPPA (bug #469660).
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> docutils-glep-0.4-r1.ebuild:
+  Stable for ppc64, wrt bug #469660
+
+  16 May 2013; Agostino Sarubbo <ago@gentoo.org> docutils-glep-0.4-r1.ebuild:
+  Stable for ppc, wrt bug #469660
+
+  14 May 2013; Agostino Sarubbo <ago@gentoo.org> docutils-glep-0.4-r1.ebuild:
+  Stable for arm, wrt bug #469660
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> docutils-glep-0.4-r1.ebuild:
+  Stable for x86, wrt bug #454314
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> docutils-glep-0.4-r1.ebuild:
+  Stable for amd64, wrt bug #454314
+
+  20 Jan 2013; Michał Górny <mgorny@gentoo.org> docutils-glep-0.4-r1.ebuild:
+  Enable pypy2.0 for deps.
+
+  18 Jan 2013; Michał Górny <mgorny@gentoo.org> docutils-glep-0.4-r1.ebuild:
+  Enable python3.3.
+
+  13 Jan 2013; Michał Górny <mgorny@gentoo.org> docutils-glep-0.4-r1.ebuild:
+  Disable pypy1.8 to fix broken deps.
+
+*docutils-glep-0.4-r1 (31 Dec 2012)
+
+  31 Dec 2012; Michał Górny <mgorny@gentoo.org> +docutils-glep-0.4-r1.ebuild,
+  +metadata.xml:
+  Introduce a split ebuild for GLEP support for docutils.

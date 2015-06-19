@@ -1,0 +1,155 @@
+# ChangeLog for media-fonts/corefonts
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/corefonts/ChangeLog,v 1.40 2015/04/28 09:19:30 yngwin Exp $
+
+  28 Apr 2015; Ben de Groot <yngwin@gentoo.org> corefonts-1-r7.ebuild:
+  stable
+
+*corefonts-1-r7 (29 Mar 2015)
+
+  29 Mar 2015; Ben de Groot <yngwin@gentoo.org> +corefonts-1-r7.ebuild,
+  -corefonts-1-r5.ebuild, corefonts-1-r6.ebuild, metadata.xml:
+  Add Tahoma optionally. Include shipped EULA (bug #416735).
+
+  18 Jan 2014; Mike Frysinger <vapier@gentoo.org> corefonts-1-r4.ebuild,
+  corefonts-1-r5.ebuild, corefonts-1-r6.ebuild:
+  Add arm64 love.
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org> corefonts-1-r6.ebuild:
+  keyword ~amd64-fbsd
+
+*corefonts-1-r6 (20 Jun 2011)
+
+  20 Jun 2011; Peter Volkov <pva@gentoo.org> +corefonts-1-r6.ebuild:
+  Use updated Microsoft's fonts that have some Bulgarian and Romanian letters
+  added, bug 363847 thank sulfinu AT gmail DOT com for report.
+
+*corefonts-1-r5 (23 Feb 2011)
+
+  23 Feb 2011; Robin H. Johnson <robbat2@gentoo.org> +corefonts-1-r5.ebuild:
+  To fully comply with the license, we need to make sure a copy of it ends up
+  on the system (and inside any binpkgs we generate). Revbump to support the
+  new LiveDVD release.
+
+  09 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  corefonts-1-r4.ebuild:
+  keyword ~x86-freebsd
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  corefonts-1-r4.ebuild:
+  Transfer Prefix keywords
+
+  07 Sep 2009; Ryan Hill <dirtyepic@gentoo.org> -corefonts-1-r2.ebuild:
+  Remove old.
+
+  25 May 2009; Jeroen Roovers <jer@gentoo.org> corefonts-1-r4.ebuild:
+  Fix quoting issue.
+
+  25 May 2009; Jeroen Roovers <jer@gentoo.org> corefonts-1-r4.ebuild:
+  Stable for HPPA too.
+
+  16 Jun 2008; Joseph Jezak <josejx@gentoo.org> corefonts-1-r4.ebuild:
+  Marked ppc stable.
+
+  21 Mar 2008; Samuli Suominen <drac@gentoo.org> corefonts-1-r4.ebuild:
+  amd64 stable
+
+  05 Feb 2008; Markus Rothe <corsair@gentoo.org> corefonts-1-r4.ebuild:
+  Stable on ppc64
+
+  23 Jan 2008; Raúl Porcel <armin76@gentoo.org> corefonts-1-r4.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+*corefonts-1-r4 (10 Jul 2007)
+
+  10 Jul 2007; Ryan Hill <dirtyepic@gentoo.org> -corefonts-1-r3.ebuild,
+  +corefonts-1-r4.ebuild:
+  Remove Tahoma font as the missing bold face is negatively affecting the font
+  quality of common web pages and apps. Thanks to Peter Ansell for bug
+  #184790.
+
+*corefonts-1-r3 (24 Jun 2007)
+
+  24 Jun 2007; Ryan Hill <dirtyepic@gentoo.org> +corefonts-1-r3.ebuild:
+  Install the Tahoma font, which was previously omitted due to licensing
+  issues. Thanks to Christoph Brill in Bug #141219.
+
+  18 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> corefonts-1-r2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  23 Mar 2006; Donnie Berkholz <spyderous@gentoo.org>; -corefonts-1.ebuild,
+  -corefonts-1-r1.ebuild:
+  Get rid of ebuilds unported to modular X, breaking category-level commits.
+
+  08 May 2005; Aron Griffis <agriffis@gentoo.org> corefonts-1-r2.ebuild:
+  stable on ia64
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  16 Dec 2004; Dylan Carlson <absinthe@gentoo.org> corefonts-1-r2.ebuild:
+  Stable on amd64.
+
+  14 Dec 2004; Markus Rothe <corsair@gentoo.org> corefonts-1-r2.ebuild:
+  Stable on ppc64
+
+  08 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> corefonts-1-r2.ebuild:
+  Added to ~ppc-macos.
+
+  04 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> corefonts-1-r2.ebuild:
+  Stable on sparc
+
+  04 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> corefonts-1-r2.ebuild,
+  corefonts-1.ebuild:
+  Removed cabextract from RDEPEND; bug #69601. Marked 1-r2 stable on x86,
+  alpha and ppc.
+
+  01 Nov 2004; Markus Rothe <corsair@gentoo.org>
+
+  corefonts-1-r2.ebuild:
+  Marked ~ppc64; bug #68103
+
+*corefonts-1-r2 (01 Oct 2004)
+
+  01 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> +corefonts-1-r2.ebuild:
+  Adopted font.eclass; see bug #53965.
+
+  29 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> corefonts-1-r1.ebuild:
+  Make X optional; bug #53965.
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> corefonts-1-r1.ebuild:
+  Stable on alpha.
+
+  06 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> corefonts-1-r1.ebuild:
+  Stable on sparc
+
+  27 Jul 2004; Donnie Berkholz <spyderous@gentoo.org>; corefonts-1-r1.ebuild:
+  stable on x86, since xorg-x11 is stable and lots of people want these.
+
+  15 Feb 2004; Donnie Berkholz <spyderous@gentoo.org>; metadata.xml:
+  Adding metadata.xml.
+
+  15 Feb 2004; Donnie Berkholz <spyderous@gentoo.org>; corefonts-1-r1.ebuild:
+  Adding hints about /etc/fonts/local.conf.
+
+*corefonts-1-r1 (03 Feb 2004)
+
+  03 Feb 2004; <augustus@gentoo.org> corefonts-1-r1.ebuild:
+  Fixed installion of corefonts to depend on x11 and to install the fonts.scale
+  and fonts.dir files. Also added the hints about XF86Config changes. Added
+  ~amd64 keyword.
+
+  25 Jan 2004; Sven Blumenstein <bazik@gentoo.org> corefonts-1.ebuild:
+  Stable on sparc.
+
+  05 Dec 2003; <agriffis@gentoo.org> corefonts-1.ebuild:
+  Stable on ia64
+
+  22 Oct 2003; Aron Griffis <agriffis@gentoo.org> corefonts-1.ebuild:
+  Stable on alpha
+
+*corefonts-1 (02 Jul 2003)
+
+  02 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me for jpgraph support.
+  Ripped code from the xfree ebuild.

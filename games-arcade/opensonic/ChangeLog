@@ -1,0 +1,38 @@
+# ChangeLog for games-arcade/opensonic
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/opensonic/ChangeLog,v 1.9 2014/11/25 23:08:10 hasufell Exp $
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  20 May 2013; Agostino Sarubbo <ago@gentoo.org> opensonic-0.1.4-r1.ebuild:
+  Stable for x86, wrt bug #469726
+
+  14 May 2013; Sergey Popov <pinkbyte@gentoo.org> opensonic-0.1.4-r1.ebuild:
+  Stable on amd64, wrt bug #469726
+
+  29 Sep 2012; Julian Ospald <hasufell@gentoo.org>
+  files/opensonic-0.1.4-r1-cmake.patch:
+  fix compilation for --as-needed
+
+  02 Jun 2012; Julian Ospald <hasufell@gentoo.org> opensonic-0.1.4-r1.ebuild:
+  bump to EAPI=4
+
+  28 May 2012; Julian Ospald <hasufell@gentoo.org> opensonic-0.1.4-r1.ebuild:
+  respect cmake-utils_src_compile which also gives us verbosity
+
+*opensonic-0.1.4-r1 (17 May 2012)
+
+  17 May 2012; Julian Ospald <hasufell@gentoo.org> -opensonic-0.1.4.ebuild,
+  +opensonic-0.1.4-r1.ebuild, -files/opensonic-0.1.4-cmake.patch,
+  +files/opensonic-0.1.4-r1-cmake.patch:
+  respect FHS
+
+  16 May 2012; Julian Ospald <hasufell@gentoo.org> opensonic-0.1.4.ebuild:
+  we want fetch not mirror restrict
+
+*opensonic-0.1.4 (16 May 2012)
+
+  16 May 2012; Julian Ospald <hasufell@gentoo.org> +opensonic-0.1.4.ebuild,
+  +files/opensonic-0.1.4-cmake.patch, +metadata.xml:
+  initial commit wrt #413907

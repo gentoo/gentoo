@@ -1,0 +1,25 @@
+http://bugs.gentoo.org/193107
+
+asm/io.h does not exist with sanitized kernel headers, nor do these source
+files actually need the header, so punt it
+
+--- src/linux/rw_in_aa.c
++++ src/linux/rw_in_aa.c
+@@ -46,7 +46,6 @@
+ #include <sys/mman.h>
+ 
+ #if defined (__linux__)
+-#include <asm/io.h>
+ #include <sys/vt.h>
+ #endif
+ 
+--- src/linux/rw_aa.c
++++ src/linux/rw_aa.c
+@@ -63,7 +63,6 @@
+ #include <dlfcn.h>
+ #if defined (__linux__)
+ #include <sys/vt.h>
+-#include <asm/io.h>
+ #endif
+ #include <aalib.h>
+ 

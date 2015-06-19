@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst postrm setup
+DEPEND=media-gfx/ebdftopcf X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=WenQuanYi Unibit CJK font
+HOMEPAGE=http://wenq.org/enindex.cgi
+IUSE=X
+KEYWORDS=amd64 ~arm x86
+LICENSE=GPL-2
+RESTRICT=strip binchecks
+SLOT=0
+SRC_URI=mirror://sourceforge/wqy/wqy-unibit-bdf-1.1.0-1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	font	b3239d2dc442d1717b9725e2be7cb5d6	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=d81d26d0c21046b7a3c3982da6900786

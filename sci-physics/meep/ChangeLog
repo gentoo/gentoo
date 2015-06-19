@@ -1,0 +1,82 @@
+# ChangeLog for sci-physics/meep
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-physics/meep/ChangeLog,v 1.18 2012/08/14 23:11:40 bicatali Exp $
+
+  14 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> meep-1.1.1.ebuild:
+  Backporting test fixes from meep-1.2, hopefully fixing bug #423247
+
+*meep-1.2 (14 Aug 2012)
+
+  14 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/meep-1.2-no-auto-mpb.patch, +files/meep-1.2-pc-no-ldflags.patch,
+  +meep-1.2.ebuild, metadata.xml:
+  Version bump, removed LDFLAGS from the pkg-config flag, added a mpb flag to
+  compile against sci-physics/mpb, avoiding automagic
+
+  23 Jun 2010; Sébastien Fabbro <bicatali@gentoo.org> meep-1.1.1.ebuild:
+  Removed bindist flag, should be compatible GPL-3 anyway
+
+  28 May 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/meep-0.10.1-gcc4.3.patch, -meep-0.20.3.ebuild, -meep-0.20.4.ebuild,
+  -meep-1.0.3.ebuild, -files/meep-1.0.3-gcc44.patch:
+  Removed old versions
+
+  31 Jan 2010; <hwoarang@gentoo.org> meep-1.1.1.ebuild:
+  Stable on amd64 wrt bug #294447
+
+  21 Jan 2010; Christian Faulhammer <fauli@gentoo.org> meep-1.1.1.ebuild:
+  stable x86, bug 294447
+
+*meep-1.1.1 (09 Sep 2009)
+
+  09 Sep 2009; Sébastien Fabbro <bicatali@gentoo.org> +meep-1.1.1.ebuild:
+  Version bump
+
+  10 Aug 2009; Samuli Suominen <ssuominen@gentoo.org> meep-1.0.3.ebuild,
+  +files/meep-1.0.3-gcc44.patch:
+  Fix building with GCC 4.4+ wrt #278427.
+
+*meep-1.0.3 (14 Jul 2009)
+
+  14 Jul 2009; Sébastien Fabbro <bicatali@gentoo.org> +meep-1.0.3.ebuild:
+  Version bump
+
+*meep-0.20.4 (18 Mar 2009)
+
+  18 Mar 2009; Sébastien Fabbro <bicatali@gentoo.org> +meep-0.20.4.ebuild:
+  Version bump
+
+  16 Jan 2009; Sébastien Fabbro <bicatali@gentoo.org> meep-0.20.3.ebuild:
+  Updated libctl dep, closing bug #253423
+
+  08 Nov 2008; Markus Meier <maekke@gentoo.org> meep-0.20.3.ebuild:
+  amd64/x86 stable, bug #245938
+
+  10 Oct 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/meep-0.10.1-configure.ac.patch, -meep-0.10.1.ebuild:
+  Removed old version an and closing bug #229693
+
+*meep-0.20.3 (02 Sep 2008)
+
+  02 Sep 2008; Sébastien Fabbro <bicatali@gentoo.org> +meep-0.20.3.ebuild:
+  Version bump
+
+  03 Aug 2008; Markus Dittrich <markusle@gentoo.org> meep-0.10.1.ebuild:
+  Removed doc USE flag since generation of meep.pdf requires hdf5 and
+  describes a deprecated C++ API (fixes bug #233269).
+
+  28 Jun 2008; Markus Dittrich <markusle@gentoo.org> meep-0.10.1.ebuild:
+  Since blas-reference seems to result in a faulty meep, let's depend
+  explicitly on blas-atlas and add a warning in case the user has 
+  selected blas-reference (see bug #229693). Thanks much to 
+  Dustin Surawicz for tracking this down.
+
+  27 Jun 2008; Markus Dittrich <markusle@gentoo.org>
+  +files/meep-0.10.1-gcc4.3.patch, meep-0.10.1.ebuild:
+  Added gcc-4.3 compatibility patch (fixes #229693).
+
+*meep-0.10.1 (06 Feb 2008)
+
+  06 Feb 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/meep-0.10.1-configure.ac.patch, +metadata.xml, +meep-0.10.1.ebuild:
+  Initial import. Ebuild first submitted by Ben Schwartz, see bug #170989

@@ -1,0 +1,114 @@
+# ChangeLog for net-irc/anope
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/anope/ChangeLog,v 1.23 2013/02/18 18:48:48 gurligebis Exp $
+
+  18 Feb 2013; <gurligebis@gentoo.org> anope-1.8.7-r1.ebuild:
+  Removing keepdir on /var/run/anope, since it is gone, fixing #458158
+
+*anope-1.8.7-r1 (18 Feb 2013)
+
+  18 Feb 2013; <gurligebis@gentoo.org> -anope-1.8.7.ebuild,
+  +anope-1.8.7-r1.ebuild, files/anope-init.d:
+  Fixing init script to ensure /run directory exists, fixing #448464
+
+  01 Jul 2012; Nathan Phillip Brink <binki@gentoo.org> anope-1.8.7.ebuild:
+  Ensure that /var/lib/anope/backups directory exists so that database backups
+  succeed, fixing bug #410741.
+
+  12 Jan 2012; Nathan Phillip Brink <binki@gentoo.org> anope-1.8.7.ebuild,
+  +files/anope-1.8.7-mariadb.patch:
+  Fix compilation with =mariadb-5.2*, bug #381119 reported by Flameeyes with
+  patch from Adam from upstream.
+
+*anope-1.8.7 (28 Dec 2011)
+
+  28 Dec 2011; <gurligebis@gentoo.org> -anope-1.8.5.ebuild,
+  +anope-1.8.7.ebuild, +files/anope-1.8.7-ldflags-fix.patch,
+  +files/anope-1.8.7-libdir-gentoo.patch, +files/anope-conf.d,
+  +files/anope-init.d, -files/anope.confd, -files/anope.initd,
+  -files/ldflags-fix.patch:
+  Bumping to 1.8.7, removing old version and moving out of /opt.
+  Thanks to everybody who helped out. Fixing bug #395089
+
+  18 Jan 2011; <gurligebis@gentoo.org> files/ldflags-fix.patch:
+  Fixing patch to work with portage-multilib, fixing bug #351414
+
+*anope-1.8.5 (10 Oct 2010)
+
+  10 Oct 2010; <gurligebis@gentoo.org> -anope-1.8.0_rc1.ebuild,
+  -anope-1.8.0.ebuild, -anope-1.8.4.ebuild, +anope-1.8.5.ebuild,
+  +files/ldflags-fix.patch:
+  Bumping to 1.8.5, removing old versions and fixing LDFLAGS problem
+  wrt. bug #339747 .
+
+*anope-1.8.4 (22 Jul 2010)
+
+  22 Jul 2010; Bjarke Istrup Pedersen <gurligebis@gentoo.org>
+  +anope-1.8.4.ebuild:
+  Bumping to 1.8.4
+
+*anope-1.8.0 (27 Jun 2009)
+
+  27 Jun 2009; Patrick Lauer <patrick@gentoo.org> +anope-1.8.0.ebuild:
+  Bump to 1.8.0 final. Fixes #274378
+
+  04 Jan 2009; Bjarke Istrup Pedersen <gurligebis@gentoo.org>
+  anope-1.8.0_rc1.ebuild:
+  Add installation sql script
+
+*anope-1.8.0_rc1 (14 Dec 2008)
+
+  14 Dec 2008; Bjarke Istrup Pedersen <gurligebis@gentoo.org>
+  files/pid-patch.diff, -anope-1.7.21.ebuild, +anope-1.8.0_rc1.ebuild:
+  Bumping to 1.8.0_rc1
+
+  29 Nov 2008; Thomas Anderson <gentoofan23@gentoo.org> anope-1.7.21.ebuild:
+  keyworded ~arch for amd64, bug 248624
+
+*anope-1.7.21 (24 Mar 2008)
+
+  24 Mar 2008; Raúl Porcel <armin76@gentoo.org> -anope-1.7.19.ebuild,
+  -anope-1.7.20.ebuild, +anope-1.7.21.ebuild:
+  Version bump
+
+*anope-1.7.20 (08 Jan 2008)
+
+  08 Jan 2008; Markus Ullmann <jokey@gentoo.org> +anope-1.7.20.ebuild:
+  Version bump
+
+  27 Dec 2007; Markus Ullmann <jokey@gentoo.org> anope-1.7.19.ebuild:
+  Install services.conf as services.conf.example to avoid overwriting
+
+  25 Oct 2007; Raúl Porcel <armin76@gentoo.org> -anope-1.7.18.ebuild:
+  old
+
+*anope-1.7.19 (06 Sep 2007)
+
+  06 Sep 2007; Markus Ullmann <jokey@gentoo.org> +anope-1.7.19.ebuild:
+  Version bump
+
+  21 Apr 2007; Bjarke Istrup Pedersen <gurligebis@gentoo.org> anope-1.7.18.ebuild:
+  replacing insinto with newconfd and newinitd functions
+
+  06 Mar 2007; Luca Barbato <lu_zero@gentoo.org> anope-1.7.18.ebuild:
+  do not wipe configuration
+
+*anope-1.7.18 (20 Feb 2007)
+
+  20 Feb 2007; Raúl Porcel <armin76@gentoo.org> -anope-1.7.15.ebuild,
+  -anope-1.7.17.ebuild, +anope-1.7.18.ebuild:
+  Version bump, drop old
+
+  23 Nov 2006; Francesco Riosa <vivo@gentoo.org> anope-1.7.15.ebuild,
+  anope-1.7.17.ebuild:
+  dev-db/mysql => virtual/mysql
+
+*anope-1.7.17 (26 Oct 2006)
+
+  26 Oct 2006; Markus Ullmann <jokey@gentoo.org> +anope-1.7.17.ebuild:
+  Security version bump
+
+*anope-1.7.15 (29 Aug 2006)
+
+  29 Aug 2006; Bjarke Istrup Pedersen <gurligebis@gentoo.org> :
+  Initial import.  Based on ebuild by Björn Stiddien <keeper@anope.org>.

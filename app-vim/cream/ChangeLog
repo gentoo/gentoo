@@ -1,0 +1,235 @@
+# ChangeLog for app-vim/cream
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/cream/ChangeLog,v 1.61 2015/06/09 12:47:54 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  18 Mar 2013; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove proxy-maintainers from metadata.
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  07 Mar 2012; Tim Harder <radhermit@gentoo.org> -cream-0.41-r2.ebuild,
+  -files/cream-0.41-ctrl-o.patch:
+  Remove old.
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> cream-0.43.ebuild:
+  Marking cream-0.43 ppc for bug 384135
+
+  01 Feb 2012; Brent Baude <ranger@gentoo.org> cream-0.43.ebuild:
+  Marking cream-0.43 ppc for bug 384135
+
+  08 Oct 2011; Raúl Porcel <armin76@gentoo.org> cream-0.43.ebuild:
+  alpha/ia64/sparc stable wrt #384135
+
+  01 Oct 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> cream-0.43.ebuild:
+  x86 stable wrt bug #384135
+
+  25 Sep 2011; Tony Vroon <chainsaw@gentoo.org> cream-0.43.ebuild:
+  Marked stable on AMD64 based on arch testing by Ian "idella4" Delaney, Elijah
+  "Armageddon" El Lazkani & Agostino "ago" Sarubbo in bug #384135.
+
+  22 Sep 2011; Tim Harder <radhermit@gentoo.org> cream-0.43.ebuild:
+  Update to EAPI 4.
+
+  22 Sep 2011; Tim Harder <radhermit@gentoo.org> cream-0.41-r2.ebuild,
+  cream-0.43.ebuild:
+  Only install dictionaries when the proper LINGUAS is set (bug #299758 by
+  Diego Elio Pettenò).
+
+  18 Jul 2011; Tim Harder <radhermit@gentoo.org> -cream-0.32.ebuild,
+  -cream-0.34.ebuild:
+  Remove old.
+
+  18 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> cream-0.41-r2.ebuild:
+  ppc stable wrt #306949
+
+  07 May 2011; Raúl Porcel <armin76@gentoo.org> cream-0.41-r2.ebuild:
+  alpha/ia64/sparc stable wrt #306949
+
+  02 May 2011; Thomas Kahle <tomka@gentoo.org> cream-0.41-r2.ebuild:
+  x86 stable per bug 306949
+
+  26 Apr 2011; Christoph Mende <angelos@gentoo.org> cream-0.41-r2.ebuild:
+  Stable on amd64 wrt bug #306949
+
+*cream-0.43 (25 Apr 2011)
+
+  25 Apr 2011; Jim Ramsay <lack@gentoo.org> +cream-0.43.ebuild:
+  Version bump: 0.43 is released (Bug #306949)
+
+  21 Nov 2010; Sebastian Pipping <sping@gentoo.org> -files/cream.sh:
+  Remove unused file (bug #344617)
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org> cream-0.32.ebuild:
+  Drop to ~mips
+
+*cream-0.41-r2 (25 Sep 2008)
+
+  25 Sep 2008; Ali Polatel <hawking@gentoo.org>
+  +files/cream-0.41-ctrl-o.patch, -cream-0.41-r1.ebuild,
+  +cream-0.41-r2.ebuild:
+  Revbump. Add patch to fix Ctrl-O, bug 238544.
+
+*cream-0.41-r1 (23 Sep 2008)
+
+  23 Sep 2008; Ali Polatel <hawking@gentoo.org> -cream-0.41.ebuild,
+  +cream-0.41-r1.ebuild:
+  Revbump. Pass --servername CREAM to gvim, bug 238267.
+
+*cream-0.41 (20 Sep 2008)
+
+  20 Sep 2008; Ali Polatel <hawking@gentoo.org> cream-0.32.ebuild,
+  cream-0.34.ebuild, -cream-0.36.ebuild, +cream-0.41.ebuild:
+  Version bump. Quoting. Drop old.
+
+  18 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> cream-0.34.ebuild:
+  Stable on sparc
+
+  17 Mar 2007; Steve Dibb <beandog@gentoo.org> cream-0.34.ebuild:
+  amd64 stable
+
+  23 Jan 2007; Marius Mauch <genone@gentoo.org> cream-0.32.ebuild,
+  cream-0.34.ebuild, cream-0.36.ebuild:
+  Replacing einfo with elog
+
+  10 Jan 2007; Mike Kelly <pioto@gentoo.org> -cream-0.31.ebuild:
+  Remove old version.
+
+  19 Oct 2006; Aron Griffis <agriffis@gentoo.org> cream-0.34.ebuild:
+  Mark 0.34 stable on alpha
+
+*cream-0.36 (21 Sep 2006)
+
+  21 Sep 2006; Mike Kelly <pioto@gentoo.org> +cream-0.36.ebuild:
+  Version bump, thanks to TGL (bug #128990).
+
+  16 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org> cream-0.34.ebuild:
+  ppc stable
+
+  30 Aug 2006; Joshua Jackson <tsunam@gentoo.org> cream-0.31.ebuild,
+  cream-0.32.ebuild, cream-0.34.ebuild:
+  Proxy commit for Mark Loeser to fix Linguas issues with all cream ebuilds
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> cream-0.34.ebuild:
+  Mark 0.34 stable on ia64
+
+  28 Feb 2006; Ciaran McCreesh <ciaranm@gentoo.org>
+  +files/enhancedcommentify-2.1-extra-ft-support.patch,
+  +files/enhancedcommentify-2.1-gentooisms.patch, cream-0.34.ebuild:
+  Improve EnhancedCommentify. Thanks to TGL in bug #124395.
+
+*cream-0.34 (24 Feb 2006)
+
+  24 Feb 2006; Ciaran McCreesh <ciaranm@gentoo.org> cream-0.31.ebuild,
+  cream-0.32.ebuild, +cream-0.34.ebuild:
+  New version, thanks to TGL in bug #123153. Add missing unzip DEPENDS.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> cream-0.32.ebuild:
+  Stable on ppc.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> cream-0.32.ebuild:
+  stable on amd64
+
+  01 Feb 2005; Ciaran McCreesh <ciaranm@gentoo.org> cream-0.32.ebuild:
+  x86, sparc, mips stable
+
+*cream-0.32 (31 Dec 2004)
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> +cream-0.32.ebuild:
+  Bump, bug #76009
+
+  31 Oct 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  -files/cream-0.29-ctags.patch, -files/cream-0.29-desktop.patch,
+  -files/cream-0.29-paths.patch, -files/cream-0.30-autocmd.patch,
+  -cream-0.28.ebuild, -cream-0.29-r1.ebuild, -cream-0.30-r1.ebuild,
+  -cream-0.30-r2.ebuild, -cream-0.30-r3.ebuild:
+  Tidy up old versions
+
+  31 Oct 2004; Ciaran McCreesh <ciaranm@gentoo.org> cream-0.31.ebuild:
+  Stable on sparc, mips, x86
+
+*cream-0.31 (13 Oct 2004)
+
+  13 Oct 2004; Ciaran McCreesh <ciaranm@gentoo.org> +cream-0.31.ebuild:
+  Bump. Thanks to TGL <degrenier@easyconnect.fr> in bug #67348.
+
+*cream-0.30-r3 (02 Oct 2004)
+
+  02 Oct 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  +files/cream-0.30-ebuilds.patch, +cream-0.30-r3.ebuild:
+  Ebuilds are bash files too. Bug #66052
+
+  11 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> cream-0.30-r2.ebuild:
+  Added in help text and moved the einfo things around, bug #63318.
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> cream-0.30-r2.ebuild:
+  Stable on x86, sparc, mips
+
+*cream-0.30-r2 (26 Aug 2004)
+
+  26 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  +files/cream-0.30-autocmd.patch, +cream-0.30-r2.ebuild:
+  Fix screwy recursive autocmd badness, bug #61158. Thanks to TGL
+  <degrenier@easyconnect.fr> for the patch.
+
+  20 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org> cream-0.30-r1.ebuild,
+  -cream-0.30.ebuild:
+  Remove the screwy version, stable the working version on sparc and mips
+
+*cream-0.30-r1 (13 Aug 2004)
+
+  13 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org> +cream-0.30-r1.ebuild:
+  Disable regular vim plugins, they interfere too much. Thanks to TGL
+  <degrenier@easyconnect.fr> in bug #58683
+
+  18 Jul 2004; Daniel Ahlberg <aliz@gentoo.org> cream-0.30.ebuild:
+  Added amd64 keyword, closing #56808.
+
+  12 Jul 2004; Ciaran McCreesh <ciaranm@gentoo.org> cream-0.30.ebuild:
+  Stable on sparc, mips
+
+*cream-0.30 (15 Jun 2004)
+
+  15 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> +cream-0.30.ebuild:
+  Version bump, thanks to TGL <degrenier@easyconnect.fr> in bug #54016
+
+  12 May 2004; Ciaran McCreesh <ciaranm@gentoo.org> cream-0.29-r1.ebuild:
+  Stable on sparc, mips
+
+*cream-0.29-r1 (29 Apr 2004)
+
+  29 Apr 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  +files/cream-0.29-ctags.patch, +files/cream-0.29-desktop.patch,
+  +files/cream-0.29-paths.patch, -files/gentoo-cream-0.29-mkdir.patch,
+  +cream-0.29-r1.ebuild, -cream-0.29.ebuild:
+  Pulling 0.29 as it is broken. Adding in 0.29-r1 as ~arch. Thanks to TGL
+  <degrenier@easyconnect.fr> in #48960
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> cream-0.29.ebuild:
+  Add inherit eutils
+
+*cream-0.29 (25 Apr 2004)
+
+  25 Apr 2004; Wout Mertens <wmertens@gentoo.org> cream-0.29.ebuild:
+  Version Bump.
+  Changed the ebuild to use the install script, for upwards maintainability.
+  Note that the cream.sh executable was missing in CVS for 0.28, but it's
+  not necessary any more.
+  Patched creamrc so mkdirs also work under Unix.
+  Marking stable because the previous one didn't work for me and this one
+  does, and no stable version is available.
+
+  16 Mar 2004; David Holm <dholm@gentoo.org> cream-0.28.ebuild:
+  Added to ~ppc.
+
+  15 Mar 2004; Ciaran McCreesh <ciaranm@gentoo.org> cream-0.28.ebuild:
+  Stable on sparc, added ~mips
+
+*cream-0.28 (07 Feb 2004)
+
+  07 Feb 2004; Ciaran McCreesh <ciaranm@gentoo.org> cream-0.28.ebuild,
+  metadata.xml:
+  Initial ebuild, thanks to TGL <degrenier@easyconnect.fr> in bug #40522

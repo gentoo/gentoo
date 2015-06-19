@@ -1,0 +1,164 @@
+# ChangeLog for sci-mathematics/dataplot
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/dataplot/ChangeLog,v 1.19 2014/10/26 14:40:18 jlec Exp $
+
+  26 Oct 2014; Justin Lecher <jlec@gentoo.org> dataplot-20090821.ebuild,
+  files/configure.ac.20090821, metadata.xml:
+  Drop bashisms from configure.ac, #526888
+
+  16 Oct 2012; Justin Lecher <jlec@gentoo.org> dataplot-20090821.ebuild,
+  metadata.xml:
+  Remove virtual/fortran and always call fortran-2_pkg_setup as intend by the
+  updated fortran-2.eclass
+
+  09 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> dataplot-20090821.ebuild:
+  keyword amd64-linux x86-linux
+
+  16 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> metadata.xml:
+  Remove unused local description for USE="gs"
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> dataplot-20090821.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  25 Nov 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  -dataplot-20080225.ebuild, -files/dpsrc-dp1patches-20080225.patch,
+  -files/dpsrc-patchset-20080225.patch, -files/Makefile.am.20080225,
+  -files/configure.ac.20080225:
+  Removed old
+
+  13 Sep 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #225633
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> dataplot-20080225.ebuild,
+  dataplot-20090821.ebuild:
+  Add dependency on virtual/fortran
+
+  21 Jun 2011; Justin Lecher <jlec@gentoo.org> dataplot-20080225.ebuild,
+  dataplot-20090821.ebuild:
+  Added fortran-2.eclass support
+
+  16 Dec 2010; Justin Lecher <jlec@gentoo.org> dataplot-20080225.ebuild:
+  Removal of fortran.eclass, #348851
+
+*dataplot-20090821 (23 Jul 2010)
+
+  23 Jul 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +dataplot-20090821.ebuild, +files/dataplot-20090821-opengl.patch,
+  +files/Makefile.am.20090821, +files/configure.ac.20090821:
+  Version bump. Still rough (untested fully). No more use of fortran eclass,
+  updated patches, dependencies, some work to make it easier to maintain
+
+  26 Dec 2009; Peter Volkov <pva@gentoo.org> dataplot-20080225.ebuild:
+  virtual/ghostscript->app-text/ghostscript-gpl: ghostscript-gpl is the only
+  implementation left in the tree.
+
+  20 Feb 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  dataplot-20080225.ebuild:
+  Fix EAPI 2 function additions
+
+  20 Feb 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  dataplot-20080225.ebuild:
+  Migrate to EAPI 2 use deps
+
+  06 Aug 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml:
+  Add USE flag description to metadata wrt GLEP 56.
+
+  01 Jul 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  dataplot-20080225.ebuild:
+  Remove unnecessary inherit
+
+  20 Jun 2008; Thomas Anderson (gentoofan23) <gentoofan23@gentoo.org>
+  metadata.xml:
+  Fix my email address
+
+  04 Jun 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  dataplot-20080225.ebuild:
+  Fixed directory changes
+
+*dataplot-20080225 (04 Jun 2008)
+
+  04 Jun 2008; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/dpsrc-dp1patches-20080225.patch, +files/90dataplot,
+  +files/dpsrc-patchset-20080225.patch, +files/Makefile.am.20080225,
+  +files/configure.ac.20080225, +metadata.xml, +dataplot-20080225.ebuild:
+  Initial import from sunrise. Proxy-maintaining for Thomas Anderson
+
+  30 May 2008; Thomas Anderson (gentoofan23) <gentoofan23@gmail.com>
+  dataplot-20080225-r1.ebuild, -files/dpsrc-maxobvvalue-20080225.patch,
+  files/dpsrc-dp1patches-20080225.patch, -files/Makefile.am,
+  +files/Makefile.am.20080225, -files/configure.ac,
+  +files/configure.ac.20080225:
+  Merge maxobvvalue into dp1patches. Move dataplot's Makefile.am and
+  configure.ac to {configure.ac,Makefile.am}.${PV}. Add || die to doins and
+  econf
+
+  30 May 2008; Thomas Anderson (gentoofan23) <gentoofan23@gmail.com>
+  dataplot-20080225-r1.ebuild:
+  tweak fortran checks
+
+  30 May 2008; Thomas Anderson (gentoofan23) <gentoofan23@gmail.com>
+  -files/dpsrc-datadir-20080225.patch:
+  Remove obsolete patches that have been incorporated into dp1patches
+
+  30 May 2008; Thomas Anderson (gentoofan23) <gentoofan23@gmail.com>
+  dataplot-20080225-r1.ebuild:
+  Switch back to using need_fortran instead of built_with_use checks, though
+  it's doing essentially the same thing behind the scenes
+
+  19 May 2008; Thomas Anderson (gentoofan23) <gentoofan23@gmail.com>
+  dataplot-20080225-r1.ebuild:
+  Notify user about the need to update their environment after merging to
+  avoid error messages.
+
+  13 May 2008; Thomas Anderson (gentoofan23) <gentoofan23@gmail.com>
+  dataplot-20080225-r1.ebuild:
+  Add DEPEND on dev-util/pkgconfig since it is used in the autotools stuff.
+
+  30 Apr 2008; Thomas Anderson (gentoofan23) <gentoofan23@gmail.com>
+  -dataplot-20080225.ebuild, +dataplot-20080225-r1.ebuild:
+  Oops, forgot to revbump for new ghostscript(gs) USE flag
+
+  30 Apr 2008; Thomas Anderson (gentoofan23) <gentoofan23@gmail.com>
+  +files/90dataplot, dataplot-20080225.ebuild:
+  Add env.d file for dataplot. Necessary for startup file location, env
+  variable, and
+
+  30 Apr 2008; Thomas Anderson (gentoofan23) <gentoofan23@gmail.com>
+  dataplot-20080225.ebuild, +files/dpsrc-datadir-20080225.patch,
+  +files/dpsrc-maxobvvalue-20080225.patch,
+  files/dpsrc-patchset-20080225.patch,
+  +files/dpsrc-dp1patches-20080225.patch, +files/Makefile.am,
+  +files/configure.ac:
+  Many changes. Add parallel build support, using autotools. Add GhostScript
+  support. Many many thanks to bicatali for helping with the autofoo and other
+  general pointers.
+
+  30 Apr 2008; Thomas Anderson (gentoofan23) <gentoofan23@gmail.com>
+  dataplot-20080225.ebuild:
+  Only do built_with_use check if USE='gd'
+
+  19 Apr 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  dataplot-20080225.ebuild:
+  Move -I/usr/include/GL from `use gd` conditional to `use gl`
+
+  16 Apr 2008; Thomas Anderson (gentoofan23) <gentoofan23@gmail.com>
+  dataplot-20080225.ebuild:
+  Various style fixes from bicatali
+
+  14 Apr 2008; Thomas Anderson (gentoofan23) <gentoofan23@gmail.com>
+  dataplot-20080225.ebuild:
+  Make DESCRIPTION a little nicer and more accurate
+
+  12 Apr 2008; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  dataplot-20080225.ebuild:
+  Use alphabetical order
+
+  12 Apr 2008; Thomas Anderson (gentoofan23) <gentoofan23@gmail.com>
+  dataplot-20080225.ebuild:
+  Don't do "need_fortran g77 gfortran" but "need_fortran gfortran" until
+  testing with g77 is done
+
+  12 Apr 2008; Thomas Anderson (gentoofan23) <gentoofan23@gmail.com>
+  +dataplot-20080225.ebuild, +files/dpsrc-patchset-20080225.patch,
+  +metadata.xml:
+  New Ebuild for bug #217390, thanks to Tommy[D] for reviewing

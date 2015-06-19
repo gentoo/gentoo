@@ -1,0 +1,12 @@
+# ChangeLog for app-dicts/sword-dan
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/sword-dan/ChangeLog,v 1.2 2014/01/05 22:36:20 creffett Exp $
+
+  05 Jan 2014; Chris Reffett <creffett@gentoo.org> sword-dan-2.1.ebuild:
+  EAPI bump
+
+*sword-dan-2.1 (14 Mar 2008)
+
+  14 Mar 2008; Steve Dibb <beandog@gentoo.org> +metadata.xml,
+  +sword-dan-2.1.ebuild:
+  Initial commit

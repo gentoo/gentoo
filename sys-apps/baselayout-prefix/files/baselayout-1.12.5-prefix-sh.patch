@@ -1,0 +1,226 @@
+diff -ur sbin/rc-daemon.sh @GENTOO_PORTAGE_EPREFIX@/lib/rcscripts/sh/rc-daemon.sh
+--- baselayout-1.12.5/sbin/rc-daemon.sh	2006-09-14 14:11:34 +0400
++++ baselayout-1.12.5/sbin/rc-daemon.sh	2007-10-18 01:20:10 +0400
+@@ -226,7 +229,7 @@
+ # We don't do anyting fancy - just pass the given options
+ # to start-stop-daemon and return the value
+ rc_start_daemon() {
+-	eval /sbin/start-stop-daemon "${args}"
++	eval @GENTOO_PORTAGE_EPREFIX@/sbin/start-stop-daemon "${args}"
+ 	local retval="$?"
+ 
+ 	[[ ${retval} != "0" ]] && return "${retval}"
+@@ -365,7 +368,7 @@
+ 
+ 	# We pass --oknodo and --test directly to start-stop-daemon and return
+ 	if ${nothing}; then
+-		eval /sbin/start-stop-daemon "${args}"
++		eval @GENTOO_PORTAGE_EPREFIX@/sbin/start-stop-daemon "${args}"
+ 		return "$?"
+ 	fi
+ 
+diff -ur sbin/rc-services.sh @GENTOO_PORTAGE_EPREFIX@/lib/rcscripts/sh/rc-services.sh
+--- baselayout-1.12.5/sbin/rc-services.sh	2006-09-14 14:11:34 +0400
++++ baselayout-1.12.5/sbin/rc-services.sh	2007-10-18 01:25:55 +0400
+@@ -8,9 +8,9 @@
+ 
+ if [[ ${RC_GOT_DEPTREE_INFO} != "yes" ]] ; then
+ 	# Only try and update if we are root
+-	if [[ ${EUID} == "0" ]] && ! /sbin/depscan.sh ; then
++	if [[ ${EUID} == "0" ]] && ! @GENTOO_PORTAGE_EPREFIX@/sbin/depscan.sh ; then
+ 		echo
+-		eerror "Error running '/sbin/depscan.sh'!"
++		eerror "Error running '@GENTOO_PORTAGE_EPREFIX@/sbin/depscan.sh'!"
+ 		eerror "Please correct any problems above."
+ 		exit 1
+ 	fi
+@@ -19,7 +19,7 @@
+ 	if [[ ${RC_GOT_DEPTREE_INFO} != "yes" ]] ; then
+ 		echo
+ 		eerror "Dependency info is missing!  Please run"
+-		eerror "  # /sbin/depscan.sh"
++		eerror "  # @GENTOO_PORTAGE_EPREFIX@/sbin/depscan.sh"
+ 		eerror "to fix this."
+ 		exit 1
+ 	fi
+@@ -134,7 +134,7 @@
+ 	if ! get_dep_info "${myservice}" >/dev/null ; then
+ 		eerror "Could not get dependency info for ${myservice}!" > /dev/stderr
+ 		eerror "Please run:" > /dev/stderr
+-		eerror "  # /sbin/depscan.sh" > /dev/stderr
++		eerror "  # @GENTOO_PORTAGE_EPREFIX@/sbin/depscan.sh" > /dev/stderr
+ 		eerror "to try and fix this." > /dev/stderr
+ 		return 1
+ 	fi
+@@ -212,11 +212,11 @@
+ 
+ 	[[ -z $1 || -z $2 ]] && return 1
+ 
+-	[[ $2 != "${BOOTLEVEL}" && -e /etc/runlevels/"${BOOTLEVEL}"/.fake ]] && \
+-		fake_services="$( < /etc/runlevels/"${BOOTLEVEL}"/.fake )"
++	[[ $2 != "${BOOTLEVEL}" && -e @GENTOO_PORTAGE_EPREFIX@/etc/runlevels/"${BOOTLEVEL}"/.fake ]] && \
++		fake_services="$( < @GENTOO_PORTAGE_EPREFIX@/etc/runlevels/"${BOOTLEVEL}"/.fake )"
+ 
+-	[[ -e /etc/runlevels/"$2"/.fake ]] && \
+-		fake_services="${fake_services} $( < /etc/runlevels/"$2"/.fake )"
++	[[ -e @GENTOO_PORTAGE_EPREFIX@/etc/runlevels/"$2"/.fake ]] && \
++		fake_services="${fake_services} $( < @GENTOO_PORTAGE_EPREFIX@/etc/runlevels/"$2"/.fake )"
+ 
+ 	for x in ${fake_services} ; do
+ 		[[ $1 == "${x##*/}" ]] && return 0
+@@ -232,7 +232,7 @@
+ in_runlevel() {
+ 	[[ -z $1 || -z $2 ]] && return 1
+ 
+-	[[ -L "/etc/runlevels/$2/$1" ]] && return 0
++	[[ -L "@GENTOO_PORTAGE_EPREFIX@/etc/runlevels/$2/$1" ]] && return 0
+ 
+ 	return 1
+ }
+@@ -385,7 +385,7 @@
+ 	local service="$1"
+ 	[[ -z ${service} ]] && return 1
+ 
+-	if [[ ! -e "/etc/init.d/${service}" ]] ; then
++	if [[ ! -e "@GENTOO_PORTAGE_EPREFIX@/etc/init.d/${service}" ]] ; then
+ 		mark_service_stopped "${service}"
+ 		return 1
+ 	fi
+@@ -408,8 +408,8 @@
+ 		# if we can not start the services in parallel
+ 		# then just start it and return the exit status
+ 		(
+-			profiling name "/etc/init.d/${service} start"
+-			"/etc/init.d/${service}" start
++			profiling name "@GENTOO_PORTAGE_EPREFIX@/etc/init.d/${service} start"
++			"@GENTOO_PORTAGE_EPREFIX@/etc/init.d/${service}" start
+ 		)
+ 		
+ 		service_started "${service}" || service_inactive "${service}" \
+@@ -423,8 +423,8 @@
+ 	else
+ 		# if parallel startup is allowed, start it in background
+ 		(
+-			profiling name "/etc/init.d/${service} start"
+-			"/etc/init.d/${service}" start
++			profiling name "@GENTOO_PORTAGE_EPREFIX@/etc/init.d/${service} start"
++			"@GENTOO_PORTAGE_EPREFIX@/etc/init.d/${service}" start
+ 			
+ 			service_started "${service}" || service_inactive "${service}" \
+ 				|| service_scheduled "${service}"
+@@ -445,7 +445,7 @@
+ 	local service="$1"
+ 	[[ -z ${service} ]] && return 1
+ 
+-	if [[ ! -e "/etc/init.d/${service}" ]] ; then
++	if [[ ! -e "@GENTOO_PORTAGE_EPREFIX@/etc/init.d/${service}" ]] ; then
+ 		mark_service_stopped "${service}"
+ 		return 0
+ 	fi
+@@ -470,7 +470,7 @@
+ 		  ${STOP_CRITICAL} == "yes" ]] ; then
+ 		# if we can not start the services in parallel
+ 		# then just start it and return the exit status
+-		( "/etc/init.d/${service}" stop )
++		( "@GENTOO_PORTAGE_EPREFIX@/etc/init.d/${service}" stop )
+ 		service_stopped "${service}"
+ 		retval=$?
+ 		end_service "${service}" "${retval}"
+@@ -479,7 +479,7 @@
+ 	else
+ 		# if parallel startup is allowed, start it in background
+ 		(
+-			( "/etc/init.d/${service}" stop )
++			( "@GENTOO_PORTAGE_EPREFIX@/etc/init.d/${service}" stop )
+ 			service_stopped "${service}"
+ 			retval=$?
+ 			end_service "${service}" "${retval}"
+@@ -496,7 +496,7 @@
+ mark_service_coldplugged() {
+ 	[[ -z $1 ]] && return 1
+ 
+-	ln -snf "/etc/init.d/$1" "${svcdir}/coldplugged/$1"
++	ln -snf "@GENTOO_PORTAGE_EPREFIX@/etc/init.d/$1" "${svcdir}/coldplugged/$1"
+ 	return 0
+ }
+ 
+@@ -507,7 +507,7 @@
+ mark_service_starting() {
+ 	[[ -z $1 ]] && return 1
+ 
+-	ln -sn "/etc/init.d/$1" "${svcdir}/starting/$1" 2>/dev/null || return 1
++	ln -sn "@GENTOO_PORTAGE_EPREFIX@/etc/init.d/$1" "${svcdir}/starting/$1" 2>/dev/null || return 1
+ 
+ 	[[ -f "${svcdir}/started/$1" ]] && rm -f "${svcdir}/started/$1"
+ 	[[ -f "${svcdir}/inactive/$1" ]] \
+@@ -522,7 +522,7 @@
+ mark_service_started() {
+ 	[[ -z $1 ]] && return 1
+ 
+-	ln -snf "/etc/init.d/$1" "${svcdir}/started/$1"
++	ln -snf "@GENTOO_PORTAGE_EPREFIX@/etc/init.d/$1" "${svcdir}/started/$1"
+ 	
+ 	rm -f "${svcdir}/starting/$1" "${svcdir}/inactive/$1" \
+ 		"${svcdir}/wasinactive/$1" "${svcdir}/stopping/$1" \
+@@ -538,7 +538,7 @@
+ mark_service_inactive() {
+ 	[[ -z $1 ]] && return 1
+ 
+-	ln -snf "/etc/init.d/$1" "${svcdir}/inactive/$1"
++	ln -snf "@GENTOO_PORTAGE_EPREFIX@/etc/init.d/$1" "${svcdir}/inactive/$1"
+ 	
+ 	rm -f "${svcdir}/started/$1" "${svcdir}/wasinactive/$1" \
+ 		"${svcdir}/starting/$1" "${svcdir}/stopping/$1"
+@@ -553,7 +553,7 @@
+ mark_service_stopping() {
+ 	[[ -z $1 ]] && return 1
+ 
+-	ln -sn "/etc/init.d/$1" "${svcdir}/stopping/$1" 2>/dev/null || return 1
++	ln -sn "@GENTOO_PORTAGE_EPREFIX@/etc/init.d/$1" "${svcdir}/stopping/$1" 2>/dev/null || return 1
+ 
+ 	rm -f "${svcdir}/started/$1"
+ 	[[ -f "${svcdir}/inactive/$1" ]] \
+@@ -690,7 +691,7 @@
+ mark_service_failed() {
+ 	[[ -z $1 || ! -d "${svcdir}/failed" ]] && return 1
+ 
+-	ln -snf "/etc/init.d/$1" "${svcdir}/failed/$1"
++	ln -snf "@GENTOO_PORTAGE_EPREFIX@/etc/init.d/$1" "${svcdir}/failed/$1"
+ }
+ 
+ # bool service_failed(service)
+@@ -744,8 +745,8 @@
+ 			return $?
+ 			;;
+ 		yes)
+-			for x in $(dolisting "/etc/runlevels/${BOOTLEVEL}/net.*") \
+-				$(dolisting "/etc/runlevels/${SOFTLEVEL}/net.*") ; do
++			for x in $(dolisting "@GENTOO_PORTAGE_EPREFIX@/etc/runlevels/${BOOTLEVEL}/net.*") \
++				$(dolisting "@GENTOO_PORTAGE_EPREFIX@/etc/runlevels/${SOFTLEVEL}/net.*") ; do
+ 				local y="${x##*/}"
+ 				[[ ${y} == "$1" ]] && return 1
+ 				service_started "${y}" || return 1
+@@ -785,8 +786,8 @@
+ 	[[ -f "${svcdir}/softlevel" ]] && mylevel=$( < "${svcdir}/softlevel" )
+ 
+ 	for x in $( i$1 "$2" ) ; do
+-		[[ -e "/etc/runlevels/${BOOTLEVEL}/${x}" || \
+-		   -e "/etc/runlevels/${mylevel}/${x}" || \
++		[[ -e "@GENTOO_PORTAGE_EPREFIX@/etc/runlevels/${BOOTLEVEL}/${x}" || \
++		   -e "@GENTOO_PORTAGE_EPREFIX@/etc/runlevels/${mylevel}/${x}" || \
+ 		   ${x} == "net" ]] \
+ 				&& valid="${valid} ${x}"
+ 	done
+@@ -836,9 +837,9 @@
+ 			net_services="${net_services} ${x##*/}"
+ 		done
+ 	else
+-		for x in $(dolisting "/etc/runlevels/${BOOTLEVEL}/net.*") \
+-			$(dolisting "/etc/runlevels/${SOFTLEVEL}/net.*") \
+-			$(dolisting "/etc/runlevels/coldplugged/net.*") ; do
++		for x in $(dolisting "@GENTOO_PORTAGE_EPREFIX@/etc/runlevels/${BOOTLEVEL}/net.*") \
++			$(dolisting "@GENTOO_PORTAGE_EPREFIX@/etc/runlevels/${SOFTLEVEL}/net.*") \
++			$(dolisting "@GENTOO_PORTAGE_EPREFIX@/etc/runlevels/coldplugged/net.*") ; do
+ 			net_services="${net_services} ${x##*/}"
+ 		done
+ 	fi

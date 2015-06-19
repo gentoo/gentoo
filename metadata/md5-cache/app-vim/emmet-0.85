@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: HTML and CSS hi-speed coding
+EAPI=5
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=2981 http://mattn.github.io/emmet-vim/ http://emmet.io/
+KEYWORDS=amd64 x86
+LICENSE=BSD
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/emmet-0.85.tar.bz2 http://dev.gentoo.org/~radhermit/vim/emmet-0.85.tar.bz2
+_eclasses_=vim-doc	1c18baeec98cec3287524cbf2fee2bd2	vim-plugin	286547e90fbbc4c841eee80cd73e646c
+_md5_=8224df056300a25b5b7525561f7b3b7a

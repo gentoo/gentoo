@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>games</herd>
+	<longdescription lang="en">
+Extreme Tux Racer is an open source racing game featuring Tux the Linux Penguin.
+ETRacer continues in the tracks of Tux Racer and its forks.
+</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">extremetuxracer</remote-id>
+	</upstream>
+</pkgmetadata>

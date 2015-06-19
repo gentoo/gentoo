@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>djc@gentoo.org</email>
+    <name>Dirkjan Ochtman</name>
+  </maintainer>
+  <longdescription>OpenVPN is an easy-to-use, robust and highly
+configurable VPN daemon which can be used to securely link two or more
+networks using an encrypted tunnel.</longdescription>
+  <use>
+    <flag name="down-root">Enable the down-root plugin</flag>
+    <flag name="iproute2">Enabled iproute2 support instead of net-tools</flag>
+    <flag name="passwordsave">Enables openvpn to save passwords</flag>
+    <flag name="polarssl">Use PolarSSL instead of OpenSSL</flag>
+    <flag name="pkcs11">Enable PKCS#11 smartcard support</flag>
+    <flag name="plugins">Enable the OpenVPN plugin system</flag>
+  </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:openvpn:openvpn</remote-id>
+  </upstream>
+</pkgmetadata>

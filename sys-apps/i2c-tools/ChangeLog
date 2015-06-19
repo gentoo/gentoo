@@ -1,0 +1,87 @@
+# ChangeLog for sys-apps/i2c-tools
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/i2c-tools/ChangeLog,v 1.22 2015/04/04 06:28:17 mr_bones_ Exp $
+
+  04 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> -i2c-tools-3.1.0.ebuild,
+  -i2c-tools-3.1.1.ebuild:
+  old
+
+*i2c-tools-3.1.1-r1 (21 Mar 2015)
+
+  21 Mar 2015; Michał Górny <mgorny@gentoo.org> +i2c-tools-3.1.1-r1.ebuild:
+  EAPI bump, bug #543162.
+
+*i2c-tools-3.1.1 (16 Oct 2014)
+
+  16 Oct 2014; Mike Frysinger <vapier@gentoo.org>
+  +files/i2c-tools-3.1.1-python-3.patch, +i2c-tools-3.1.1.ebuild:
+  Version bump & port to distutils-r1 #524722 by Paul Zander.  Port to
+  python-3.x #492632 by Marcel Greter.
+
+  12 Mar 2014; Patrick Lauer <patrick@gentoo.org> i2c-tools-3.0.2.ebuild,
+  i2c-tools-3.1.0.ebuild:
+  Shorten description for improved repoman happy
+
+  18 Oct 2013; Mike Frysinger <vapier@gentoo.org> i2c-tools-3.1.0.ebuild:
+  Add mor keywords.
+
+  22 Feb 2013; Agostino Sarubbo <ago@gentoo.org> i2c-tools-3.0.2.ebuild:
+  Stable for arm, wrt bug #458190
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> -i2c-tools-3.0.3.ebuild,
+  metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+  19 Apr 2012; Michael Weber <xmw@gentoo.org> i2c-tools-3.1.0.ebuild:
+  call python_pkg_setup unconditionally (bug 412013)
+
+*i2c-tools-3.1.0 (14 Apr 2012)
+
+  14 Apr 2012; Michael Weber <xmw@gentoo.org> +i2c-tools-3.1.0.ebuild:
+  Version bump (non-maint commit, bug 410277).
+
+  06 Nov 2011; Raúl Porcel <armin76@gentoo.org> i2c-tools-3.0.2.ebuild,
+  i2c-tools-3.0.3.ebuild:
+  Add ~sparc wrt #369895
+
+  05 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  i2c-tools-3.0.2.ebuild, i2c-tools-3.0.3.ebuild:
+  Set SUPPORT_PYTHON_ABIS (bug #316929).
+
+*i2c-tools-3.0.3 (07 Jan 2011)
+
+  07 Jan 2011; Mike Frysinger <vapier@gentoo.org> +i2c-tools-3.0.3.ebuild:
+  Version bump.
+
+  10 Jun 2009; Markus Meier <maekke@gentoo.org> i2c-tools-3.0.2.ebuild:
+  amd64/x86 stable, bug #273049
+
+*i2c-tools-3.0.2 (14 Jan 2009)
+
+  14 Jan 2009; Mike Frysinger <vapier@gentoo.org> +i2c-tools-3.0.2.ebuild:
+  Version bump and add support for USE=python #246182 by Alex Guensche.
+
+  09 May 2008; <solar@gentoo.org> i2c-tools-3.0.1.ebuild:
+  - keyworded for arm
+
+  10 Apr 2008; Markus Meier <maekke@gentoo.org> i2c-tools-3.0.0.ebuild:
+  amd64/x86 stable, bug #216276
+
+  10 Apr 2008; Mike Frysinger <vapier@gentoo.org> i2c-tools-3.0.0.ebuild,
+  i2c-tools-3.0.1.ebuild:
+  Dont install any files into /usr/include as they are part of the
+  linux-headers package #216276 by Markus Meier.
+
+  07 Apr 2008; Mike Frysinger <vapier@gentoo.org> i2c-tools-3.0.0.ebuild,
+  i2c-tools-3.0.1.ebuild:
+  Make sure to block lm_sensors versions older than 3.0 #216276.
+
+*i2c-tools-3.0.1 (07 Apr 2008)
+
+  07 Apr 2008; Mike Frysinger <vapier@gentoo.org> +i2c-tools-3.0.1.ebuild:
+  Version bump.
+
+*i2c-tools-3.0.0 (23 Jan 2008)
+
+  23 Jan 2008; Mike Frysinger <vapier@gentoo.org> +i2c-tools-3.0.0.ebuild:
+  Initial ebuild by me.

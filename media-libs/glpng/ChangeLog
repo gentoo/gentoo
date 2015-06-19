@@ -1,0 +1,64 @@
+# ChangeLog for media-libs/glpng
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/glpng/ChangeLog,v 1.14 2015/05/02 16:12:49 chewi Exp $
+
+*glpng-1.46-r1 (02 May 2015)
+
+  02 May 2015; James Le Cuirot <chewi@gentoo.org> +glpng-1.46-r1.ebuild,
+  -glpng-1.46.ebuild:
+  Fix the multilib dependencies.
+
+  25 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> glpng-1.46.ebuild:
+  tidy
+
+*glpng-1.46 (24 Mar 2015)
+
+  24 Mar 2015; James Le Cuirot <chewi@gentoo.org> +glpng-1.46.ebuild,
+  metadata.xml:
+  Version bump. I'm taking over this package as I have upstream commit access.
+  Closes bug #332511 (CVE-2010-1519).
+
+  12 Oct 2012; Michael Sterrett <mr_bones_@gentoo.org> glpng-1.45-r1.ebuild:
+  add virtual/glu dep (bug #438128)
+
+  09 Aug 2011; Samuli Suominen <ssuominen@gentoo.org> glpng-1.45-r1.ebuild,
+  +files/glpng-1.45-libpng15.patch:
+  Fix building with libpng15 wrt #378417 by Diego Elio Pettenò
+
+  31 May 2011; Tomáš Chvátal <scarabeus@gentoo.org> glpng-1.45-r1.ebuild,
+  metadata.xml:
+  Move to eapi4 and drop wrong dep. Drop maintainership as i no longer use it
+  in my projects.
+
+  15 Jan 2011; Brent Baude <ranger@gentoo.org> glpng-1.45-r1.ebuild:
+  stable ppc, bug 334215
+
+  31 May 2009; Tristan Heaven <nyhm@gentoo.org> glpng-1.45-r1.ebuild:
+  Fix LICENSE: as-is -> ZLIB
+
+  09 Mar 2009; Raúl Porcel <armin76@gentoo.org> glpng-1.45-r1.ebuild:
+  x86 stable wrt #245293
+
+  07 Mar 2009; Jeremy Olexa <darkside@gentoo.org> glpng-1.45-r1.ebuild:
+  amd64 stable, bug 245293
+
+  29 Jan 2009; Tomas Chvatal <scarabeus@gentoo.org> glpng-1.45-r1.ebuild:
+  Fix libdir usage. Per bug #256791
+
+*glpng-1.45-r1 (02 Dec 2008)
+
+  02 Dec 2008; Tomas Chvatal <scarabeus@gentoo.org> -files/Makefile,
+  -glpng-1.45.ebuild, +glpng-1.45-r1.ebuild:
+  Revision bump. Use own created cmakescript instead of patching up
+  Makefile. Get rid of problematic one. Add ppc keyword.
+
+  02 Dec 2008; Tomas Chvatal <scarabeus@gentoo.org> files/Makefile:
+  Update Makefile and make default LDFLAGS in it.
+
+*glpng-1.45 (28 Nov 2008)
+
+  28 Nov 2008; Tomas Chvatal <scarabeus@gentoo.org> +files/Makefile,
+  +metadata.xml, +glpng-1.45.ebuild:
+  Initial import. This ebuild is added as dep for new chromium. Will be removed
+  when chromium don't need anymore. Report to me if you want to use this in
+  different ebuilds please.

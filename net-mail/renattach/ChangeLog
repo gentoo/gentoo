@@ -1,0 +1,39 @@
+# ChangeLog for net-mail/renattach
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/renattach/ChangeLog,v 1.9 2014/08/10 20:46:21 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> renattach-1.2.4-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*renattach-1.2.4-r1 (03 Jul 2014)
+
+  03 Jul 2014; Chris Reffett <creffett@gentoo.org> +renattach-1.2.4-r1.ebuild,
+  -renattach-1.2.4.ebuild:
+  [QA] EAPI bump
+
+  26 Sep 2012; Michael Palimaka <kensington@gentoo.org> -renattach-1.2.2.ebuild:
+  Remove old.
+
+*renattach-1.2.4 (05 Sep 2010)
+
+  05 Sep 2010; Michael Weber <xmw@gentoo.org> +renattach-1.2.4.ebuild:
+  Version bump to fix bug #336051, thanks to Andreis_Vinogradovs ( slepnoga
+  ) <spamslepnoga@inbox.ru> for the report.
+
+  05 Sep 2010; Michael Weber <xmw@gentoo.org> renattach-1.2.2.ebuild:
+  Added ~amd64 Keyword, minor ebuild cleanup.
+
+  02 Jun 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove xmerlin from metadata.xml (#69210)
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> renattach-1.2.2.ebuild:
+  Remove virtual/libc
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*renattach-1.2.2 (07 Mar 2005)
+
+  07 Mar 2005; Christian Zoffoli <xmerlin@gentoo.org> +metadata.xml,
+  +renattach-1.2.2.ebuild:
+  added to portage

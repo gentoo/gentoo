@@ -1,0 +1,197 @@
+# ChangeLog for dev-vcs/giggle
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/giggle/ChangeLog,v 1.25 2014/11/13 12:55:55 pacho Exp $
+
+  13 Nov 2014; Pacho Ramos <pacho@gentoo.org>
+  -files/giggle-0.6.1-gmodule-explicit.patch, -giggle-0.6.2.ebuild,
+  -giggle-0.7.ebuild:
+  Drop old (#508854)
+
+  07 Jul 2014; Pacho Ramos <pacho@gentoo.org> giggle-0.7-r1.ebuild:
+  x86 stable, bug #514458
+
+  07 Jul 2014; Pacho Ramos <pacho@gentoo.org> giggle-0.7-r1.ebuild:
+  amd64 stable, bug #514458
+
+*giggle-0.7-r1 (22 Jun 2014)
+
+  22 Jun 2014; Pacho Ramos <pacho@gentoo.org> +giggle-0.7-r1.ebuild,
+  -giggle-0.6.1.ebuild:
+  0.7 is compatible with latest eds, all .la files can be dropped, debug USE
+  flag is not honoured, pass options at src_configure phase.
+
+*giggle-0.7 (12 Oct 2013)
+
+  12 Oct 2013; Mike Auty <ikelos@gentoo.org> +giggle-0.7.ebuild:
+  Version bump giggle to 0.7 (bug 476902).
+
+  13 Apr 2013; Mike Auty <ikelos@gentoo.org> -giggle-0.5.ebuild,
+  giggle-0.6.2.ebuild, +files/giggle-0.6.2-gtksourceview-3.8.0.patch:
+  Fix compilation with >= gtksourceview-3.8.0 by adding the appropriate include
+  statements at the right locations. Fixes bug 465652.
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> giggle-0.6.2.ebuild:
+  Stable for x86, wrt bug #457352
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> giggle-0.6.2.ebuild:
+  Stable for amd64, wrt bug #457352
+
+*giggle-0.6.2 (29 Dec 2012)
+
+  29 Dec 2012; Mike Auty <ikelos@gentoo.org> giggle-0.5.ebuild,
+  giggle-0.6.1.ebuild, +giggle-0.6.2.ebuild:
+  Bump giggle to 0.6.2. Also block all ebuilds on evolution-data-server-3.6
+  which changed headers out from under programs (see bug 449138).
+
+  03 Aug 2012; Markos Chandras <hwoarang@gentoo.org> giggle-0.6.1.ebuild:
+  Stable on amd64 wrt bug #428054
+
+  27 Jul 2012; Jeff Horelick <jdhore@gentoo.org> giggle-0.6.1.ebuild:
+  marked x86 per bug 428054
+
+  06 May 2012; Mike Auty <ikelos@gentoo.org> giggle-0.6.1.ebuild,
+  +files/giggle-0.6.1-gmodule-explicit.patch:
+  Fix bug 414835, no version bump since it's a compilation bug.
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> giggle-0.5.ebuild,
+  giggle-0.6.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  13 Dec 2011; Mike Auty <ikelos@gentoo.org> giggle-0.6.1.ebuild:
+  Add dependency on yelp-tools (and hence itstool) to solve bug 394613.
+  Requires the removal of the ppc flag until itstool/yelp-tools are keyworded
+  for ppc.
+
+  10 Dec 2011; Mike Auty <ikelos@gentoo.org> giggle-0.6.1.ebuild:
+  Removed the eautoreconf since it would have needed yelp-tools, which isn't
+  yet keyworded for ppc. Thanks to Rafał Mużyło for the speedy diagnosis.
+  Fixes bug 393271.
+
+  04 Dec 2011; Mike Auty <ikelos@gentoo.org> giggle-0.6.1.ebuild:
+  Fix up missing dependencies, closes bug 393171.
+
+*giggle-0.6.1 (04 Dec 2011)
+
+  04 Dec 2011; Mike Auty <ikelos@gentoo.org> +giggle-0.6.1.ebuild:
+  Bump giggle to 0.6.1.
+
+  21 Mar 2011; Nirbheek Chauhan <nirbheek@gentoo.org> -giggle-0.4.ebuild,
+  -giggle-0.4.95.ebuild, -giggle-0.4.96.ebuild, giggle-0.5.ebuild:
+  Fix slot-deps on gnome libs
+
+  12 Jul 2010; Markos Chandras <hwoarang@gentoo.org> giggle-0.5.ebuild:
+  Stable on amd64 wrt bug #327341
+
+  12 Jul 2010; Christian Faulhammer <fauli@gentoo.org> giggle-0.5.ebuild:
+  stable x86, bug 327341
+
+  04 Jun 2010; Mike Auty <ikelos@gentoo.org> giggle-0.4.ebuild,
+  -giggle-0.4.90.ebuild, -giggle-0.4.91.ebuild,
+  -files/giggle-0.4.91-libgiggle.patch, giggle-0.4.95.ebuild,
+  giggle-0.4.96.ebuild, giggle-0.5.ebuild:
+  Remove old versions and add gnome-common build dependency to fix bug
+  322617.
+
+*giggle-0.5 (04 Jun 2010)
+
+  04 Jun 2010; Mike Auty <ikelos@gentoo.org> +giggle-0.5.ebuild:
+  Version bump giggle to 0.5.
+
+  21 Mar 2010; Mike Auty <ikelos@gentoo.org> giggle-0.4.96.ebuild:
+  Add in x11-libs/vte to giggle's dependencies, bug 308393.
+
+  17 Mar 2010; Sebastian Pipping <sping@gentoo.org> giggle-0.4.ebuild,
+  giggle-0.4.90.ebuild, giggle-0.4.91.ebuild, giggle-0.4.95.ebuild,
+  giggle-0.4.96.ebuild:
+  Propagate move of dev-util/git to dev-vcs/git
+
+  04 Mar 2010; Mike Auty <ikelos@gentoo.org> +giggle-0.4.ebuild,
+  +giggle-0.4.90.ebuild, +giggle-0.4.91.ebuild,
+  +files/giggle-0.4.91-libgiggle.patch, +giggle-0.4.95.ebuild,
+  +giggle-0.4.96.ebuild, +metadata.xml:
+  Move category from dev-util to dev-vcs.
+
+  21 Feb 2010; Jonathan Callen <abcd@gentoo.org> giggle-0.4.96.ebuild:
+  Transfer prefix keywords (no other changes)
+
+*giggle-0.4.96 (11 Feb 2010)
+
+  11 Feb 2010; Mike Auty <ikelos@gentoo.org> +giggle-0.4.96.ebuild:
+  Version bump giggle to 0.4.96, fixes bug 304511.
+
+  09 Feb 2010; Mike Auty <ikelos@gentoo.org> giggle-0.4.95.ebuild:
+  Fix up dependency on gtksourceview, bug 303981.
+
+  06 Feb 2010; Mike Auty <ikelos@gentoo.org> giggle-0.4.95.ebuild:
+  Change giggle dependency to require >=autoconf-2.64. Since this would
+  break the install for affected users, no bump is required.
+
+  06 Feb 2010; Mike Auty <ikelos@gentoo.org> giggle-0.4.95.ebuild:
+  Remove epatch line from 0.4.95.
+
+*giggle-0.4.95 (05 Feb 2010)
+
+  05 Feb 2010; Mike Auty <ikelos@gentoo.org> +giggle-0.4.95.ebuild:
+  Version bump giggle to 0.4.95.
+
+  29 Apr 2009; Mike Auty <ikelos@gentoo.org> -giggle-0.2.ebuild,
+  -giggle-0.3.ebuild, giggle-0.4.ebuild, giggle-0.4.90.ebuild,
+  giggle-0.4.91.ebuild:
+  Remove old versions and add DOCS to existing versions of giggle.
+
+  03 Apr 2009; Mike Auty <ikelos@gentoo.org> giggle-0.4.91.ebuild:
+  Add dependency on libtool-2, fixes bug 264745.
+
+*giggle-0.4.91 (03 Apr 2009)
+
+  03 Apr 2009; Mike Auty <ikelos@gentoo.org>
+  +files/giggle-0.4.91-libgiggle.patch, +giggle-0.4.91.ebuild:
+  Version bump giggle to development version 0.4.91.
+
+  15 Feb 2009; Mike Auty <ikelos@gentoo.org> giggle-0.4.90.ebuild:
+  Giggle-0.4.90 depends on glib-2.18, thanks to Jose Marino (bug 259054).
+
+  14 Feb 2009; Mike Auty <ikelos@gentoo.org> giggle-0.4.90.ebuild:
+  Add in dependency on evolution-data-server, which can't be configured out,
+  and is needed for a giggle plugin.
+
+*giggle-0.4.90 (14 Feb 2009)
+
+  14 Feb 2009; Mike Auty <ikelos@gentoo.org> +giggle-0.4.90.ebuild:
+  Version bump, thanks to mraudsepp for the request.
+
+  26 Jan 2009; Mike Auty <ikelos@gentoo.org> giggle-0.4.ebuild:
+  Fix homepage on most recent giggle ebuild.
+
+  15 Jan 2009; Mike Auty <ikelos@gentoo.org> metadata.xml:
+  Compnerd's retired, taking over giggle.
+
+*giggle-0.4 (27 Jan 2008)
+
+  27 Jan 2008; Saleem Abdulrasool <compnerd@gentoo.org> +giggle-0.4.ebuild:
+  Version bump from upstream
+
+  12 Oct 2007; Rémi Cardona <remi@gentoo.org> giggle-0.2.ebuild,
+  giggle-0.3.ebuild:
+  update gtksourceview deps (see bug #195366)
+
+  16 May 2007; Joseph Jezak <josejx@gentoo.org> giggle-0.2.ebuild,
+  giggle-0.3.ebuild:
+  Marked ~ppc for bug #178677.
+
+  15 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+*giggle-0.3 (13 May 2007)
+
+  13 May 2007; Saleem Abdulrasool <compnerd@gentoo.org> +giggle-0.3.ebuild:
+  Version bump from upstream
+
+  13 May 2007; Saleem Abdulrasool <compnerd@gentoo.org> giggle-0.2.ebuild:
+  Fix the really broken dependencies
+
+*giggle-0.2 (11 May 2007)
+
+  11 May 2007; Saleem Abdulrasool <compnerd@gentoo.org> +metadata.xml,
+  +giggle-0.2.ebuild:
+  Initial import of giggle

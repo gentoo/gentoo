@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sys-process category contains packages which query or manipulate
+		processes. The 'cron' daemons are included in this.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sys-proccess contiene paquetes que manipulan y obtienen
+		información de los procesos. Los paquetes de 'cron' también están
+		incluidos en esta categoría.
+	</longdescription>
+	<longdescription lang="ja">
+		sys-processカテゴリにはプロセスを照会と操作パッケージが含まれます。
+		cronデーモンはここに含まれます。
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sys-process enthält Pakete für das Arbeiten mit Prozessen.
+		Auch die Cron-Daemons sind in dieser Kategorie enthalten.
+	</longdescription>
+	<longdescription lang="nl">
+		De sys-process categorie bevat pakketten voor de omgang met processen. Ook
+		de verschillende cron-daemons behoren tot deze categorie.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm sys-process chứa các phần mềm truy vấn và xử lý tiến trình.
+		Các 'cron' daemon cũng nằm trong đây.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sys-process contiene pacchetti per la manipolazione e l'analisi dei processi.
+		I demoni 'cron' appartengono a questa categoria.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sys-process contém pacotes que manipulam e captam
+		informações dos processos. Os daemons de 'cron' estão incluídos
+		aqui.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sys-process zawiera programy do przeszukiwania listy procesów
+		oraz do manipulowania nimi. Znajdują się tu również demony cron.
+	</longdescription>
+	<longdescription lang="ru">
+		Категория sys-process содержит пакеты, которые работают с процессами в системе.
+		Демоны 'cron' также относятся к данной категории.
+	</longdescription>
+</catmetadata>
+

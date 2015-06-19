@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=dev-cpp/luabind dev-lang/lua media-libs/libpng:0= media-libs/libsdl[X,joystick,opengl,video] media-libs/libvorbis media-libs/openal media-libs/sdl-image[png] media-libs/sdl-ttf virtual/glu virtual/opengl x11-libs/libX11 editor? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 ) nls? ( virtual/libintl ) dev-libs/boost nls? ( sys-devel/gettext ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=A free 2D J-RPG based on the Hero of Allacrost engine
+EAPI=5
+HOMEPAGE=http://valyriatear.blogspot.de/ https://github.com/Bertram25/ValyriaTear
+IUSE=debug editor nls
+KEYWORDS=amd64 x86
+LICENSE=GPL-2 GPL-2+ GPL-3 CC-BY-SA-3.0 CC-BY-3.0 CC0-1.0 OFL-1.1
+RDEPEND=dev-cpp/luabind dev-lang/lua media-libs/libpng:0= media-libs/libsdl[X,joystick,opengl,video] media-libs/libvorbis media-libs/openal media-libs/sdl-image[png] media-libs/sdl-ttf virtual/glu virtual/opengl x11-libs/libX11 editor? ( dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 ) nls? ( virtual/libintl ) games-misc/games-envd
+SLOT=0
+SRC_URI=https://github.com/Bertram25/ValyriaTear/archive/1.0.0/valyriatear-1.0.0.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=6a2cc3b856e735005fbcb8722290b910

@@ -1,0 +1,169 @@
+# ChangeLog for dev-util/bsdiff
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/bsdiff/ChangeLog,v 1.47 2015/04/23 00:47:45 mrueg Exp $
+
+  23 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -bsdiff-4.3-r1.ebuild,
+  -bsdiff-4.3-r2.ebuild:
+  Remove old.
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> bsdiff-4.3-r3.ebuild:
+  Stable for sparc, wrt bug #473558
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org> bsdiff-4.3-r3.ebuild:
+  Stable for ia64, wrt bug #473558
+
+  26 Jun 2013; Agostino Sarubbo <ago@gentoo.org> bsdiff-4.3-r3.ebuild:
+  Stable for alpha, wrt bug #473558
+
+  24 Jun 2013; Agostino Sarubbo <ago@gentoo.org> bsdiff-4.3-r3.ebuild:
+  Stable for ppc, wrt bug #473558
+
+  19 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> bsdiff-4.3-r3.ebuild:
+  Add ~arm keyword
+
+  17 Jun 2013; Mikle Kolyada <zlogene@gentoo.org> bsdiff-4.3-r3.ebuild:
+  x86 stable wrt bug #473558
+
+  17 Jun 2013; Jeroen Roovers <jer@gentoo.org> bsdiff-4.3-r3.ebuild:
+  Stable for HPPA (bug #473558).
+
+  17 Jun 2013; Mikle Kolyada <zlogene@gentoo.org> bsdiff-4.3-r3.ebuild:
+  amd64 stable wrt bug #473558
+
+*bsdiff-4.3-r3 (17 Jun 2013)
+
+  17 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> +bsdiff-4.3-r3.ebuild,
+  metadata.xml:
+  Revision bump: EAPI 5, add epatch_user, assign myself as maintainer
+
+  16 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #122207
+
+  18 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> bsdiff-4.3-r2.ebuild:
+  x86 stable wrt bug #393707
+
+  16 Dec 2011; Agostino Sarubbo <ago@gentoo.org> bsdiff-4.3-r2.ebuild:
+  Stable for AMD64, wrt bug #393707
+
+  12 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org> bsdiff-4.3-r2.ebuild:
+  Fix whitespace.
+
+*bsdiff-4.3-r2 (13 Dec 2010)
+
+  13 Dec 2010; Diego E. Pettenò <flameeyes@gentoo.org> +bsdiff-4.3-r2.ebuild:
+  Revision bump to make sure that hte package is built with large file support
+  on 32-bit architectures (it wasn't before, even though it was intended to).
+  Make build verbose to avoid further mistakes slipping by as it happened
+  before. Add die clauses to install while at it, and bump to EAPI=2.
+
+  19 Oct 2010; Mart Raudsepp <leio@gentoo.org> bsdiff-4.3-r1.ebuild:
+  Drop to ~mips
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org> bsdiff-4.3-r1.ebuild:
+  Transfer Prefix keywords
+
+  25 Oct 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove drizzt from metadata.xml (#149111)
+
+  06 Jul 2009; Jeroen Roovers <jer@gentoo.org> bsdiff-4.3-r1.ebuild:
+  Stable for HPPA too.
+
+  14 Jul 2007; Christoph Mende <angelos@gentoo.org> bsdiff-4.3-r1.ebuild:
+  Stable on amd64
+
+  27 Jun 2007; Raúl Porcel <armin76@gentoo.org> bsdiff-4.3-r1.ebuild:
+  alpha stable wrt #183376
+
+  24 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> bsdiff-4.3-r1.ebuild:
+  Stable on sparc
+
+  24 Apr 2007; Alexander Færøy <eroyf@gentoo.org> bsdiff-4.3-r1.ebuild:
+  Stable on MIPS.
+
+  21 Apr 2007; Raúl Porcel <armin76@gentoo.org> bsdiff-4.3-r1.ebuild:
+  ia64 stable
+
+  01 Apr 2007; Michael Hanselmann <hansmi@gentoo.org> bsdiff-4.3-r1.ebuild:
+  Stable on ppc.
+
+  21 Mar 2007; Raúl Porcel <armin76@gentoo.org> bsdiff-4.3-r1.ebuild:
+  x86 stable
+
+  26 Dec 2006; Timothy Redaelli <drizzt@gentoo.org> metadata.xml,
+  bsdiff-4.3-r1.ebuild:
+  Use append-lfs-flags.
+
+  19 Dec 2006; Alexander H. Færøy <eroyf@gentoo.org> bsdiff-4.3.ebuild:
+  Stable on MIPS.
+
+  24 Nov 2006; Timothy Redaelli <drizzt@gentoo.org> bsdiff-4.3-r1.ebuild:
+  Oops, i forgot to remove debugging echos.
+  Thanks to David Morgan wrt BUG #156136.
+  Fixed RDEPEND, thanks to jakub.
+
+*bsdiff-4.3-r1 (21 Nov 2006)
+
+  21 Nov 2006; Timothy Redaelli <drizzt@gentoo.org> metadata.xml,
+  +bsdiff-4.3-r1.ebuild:
+  Taken maintainership.
+  Revision bump: added support for large files (>2**32);
+  respect CFLAGS and LDFLAGS.
+
+  09 Oct 2006; Timothy Redaelli <drizzt@gentoo.org> bsdiff-4.3.ebuild:
+  Added ~x86-fbsd keyword.
+
+  30 May 2006; Mike Doty <kingtaco@gentoo.org> -bsdiff-4.2.ebuild:
+  Removing 4.2 per ferringb's request.  4.3 has the same keywords
+
+*bsdiff-4.3 (17 Sep 2005)
+
+  17 Sep 2005: Brian Harring <ferringb@gentoo.org>: +bsdiff-4.3.ebuild
+  -bsdiff-4.1.ebuild.
+  Version bump, something of a maintenance release it seems. 
+  Changes between 4.2 and 4.3 come down to using libbz2 rather then piping to
+  bzip2.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> bsdiff-4.2.ebuild:
+  Stable on ppc.
+
+  01 Apr 2005; Simon Stelling <blubb@gentoo.org> bsdiff-4.2.ebuild:
+  stable on amd64
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> bsdiff-4.2.ebuild:
+  stable on ia64
+
+  22 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> bsdiff-4.2.ebuild:
+  Stable on alpha.
+
+  15 Mar 2005; Christian Birchinger <joker@gentoo.org> bsdiff-4.2.ebuild:
+  Added sparc stable keyword
+
+  14 Mar 2005; Brian Harring <ferringb@gentoo.org> :
+  keyworded bsdiff-4.2 x86.
+
+*bsdiff-4.2 (15 Mar 2005)
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  10 Nov 2004; Brian Harring <ferringb@gentoo.org> bsdiff-4.1.ebuild,
+  bsdiff-4.2.ebuild: Version bump, and a correction of the HOMEPAGE.
+  Thanks to David Morgan for the notice- bug #70714.
+
+  18 Jul 2004; Ciaran McCreesh <ciaranm@gentoo.org> bsdiff-4.1.ebuild:
+  Stable on sparc at ferringb's request
+
+  03 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> bsdiff-4.1.ebuild:
+  Stable on alpha.
+
+  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> bsdiff-4.1.ebuild :
+  Stable on AMD64.
+
+  25 Nov 2003; Brian Jackson <iggy@gentoo.org> bsdiff-4.1.ebuild:
+  changing license to BSD-protection, also bumping it to x86
+
+*bsdiff-4.1 (15 Nov 2003)
+
+  15 Nov 2003; Seemant Kulleen <seemant@gentoo.org> bsdiff-4.1.ebuild:
+  binary suffix diff'er tool from FreeBSD. Ebuild submitted by: Brian Harring
+  <bdharring@wisc.edu> in bug #33100

@@ -1,0 +1,11 @@
+DEFINED_PHASES=prepare
+DESCRIPTION=Yet Another RSS Reader - A KDE/Gnome system tray rss aggregator
+EAPI=5
+HOMEPAGE=http://yarssr.sourceforge.net/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-perl/Locale-gettext dev-perl/XML-RSS dev-perl/gtk2-trayicon dev-perl/gtk2-gladexml dev-perl/gnome2-vfs-perl >=dev-perl/gnome2-perl-0.94
+SLOT=0
+SRC_URI=mirror://sourceforge/yarssr/yarssr-0.2.2.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=2fa46b962cff4dd7f438a37b28866288

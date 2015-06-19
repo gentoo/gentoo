@@ -1,0 +1,312 @@
+# ChangeLog for media-video/cclive
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/cclive/ChangeLog,v 1.72 2015/02/17 00:39:59 vapier Exp $
+
+  17 Feb 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/cclive-0.9.3-iostream.patch, cclive-0.9.3-r1.ebuild:
+  Fix by Alexandre Rostovtsev for building with newer boost #527658 by Diego
+  Elio Pettenò.
+
+  27 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> -cclive-0.7.12.ebuild,
+  -cclive-0.7.13.ebuild, -cclive-0.7.15.ebuild, -cclive-0.7.16.ebuild,
+  -cclive-0.9.0.ebuild, -cclive-0.9.1.ebuild:
+  old
+
+  23 Feb 2014; Pacho Ramos <pacho@gentoo.org> cclive-0.9.3-r1.ebuild:
+  x86 stable, bug #500726
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> cclive-0.9.3-r1.ebuild:
+  amd64 stable, bug #500726
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> cclive-0.9.3-r1.ebuild:
+  revert previous commit that was done by accident (sorry a lot)
+
+*cclive-0.9.3-r1 (27 Nov 2013)
+
+  27 Nov 2013; Tim Harder <radhermit@gentoo.org> -cclive-0.9.3.ebuild,
+  +cclive-0.9.3-r1.ebuild:
+  Add missing glibmm dep (bug #492656).
+
+*cclive-0.9.3 (26 Nov 2013)
+*cclive-0.7.16 (26 Nov 2013)
+
+  26 Nov 2013; Tim Harder <radhermit@gentoo.org> +cclive-0.7.16.ebuild,
+  +cclive-0.9.3.ebuild:
+  Version bumps.
+
+  08 Aug 2013; Tim Harder <radhermit@gentoo.org> -cclive-0.7.10-r1.ebuild,
+  -cclive-0.7.11.ebuild:
+  Remove old.
+
+*cclive-0.9.1 (08 Aug 2013)
+*cclive-0.7.15 (08 Aug 2013)
+
+  08 Aug 2013; Tim Harder <radhermit@gentoo.org> +cclive-0.7.15.ebuild,
+  +cclive-0.9.1.ebuild:
+  Version bumps.
+
+*cclive-0.9.0 (25 Jun 2013)
+*cclive-0.7.13 (25 Jun 2013)
+
+  25 Jun 2013; Tim Harder <radhermit@gentoo.org> +cclive-0.7.13.ebuild,
+  +cclive-0.9.0.ebuild:
+  Version bumps (bug #474660).
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> cclive-0.7.12.ebuild:
+  Stable for x86, wrt bug #463106
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> cclive-0.7.12.ebuild:
+  Stable for amd64, wrt bug #463106
+
+*cclive-0.7.12 (15 Feb 2013)
+
+  15 Feb 2013; Tim Harder <radhermit@gentoo.org> +cclive-0.7.12.ebuild:
+  Version bump.
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> cclive-0.7.11.ebuild:
+  Stable for x86, wrt bug #457408
+
+  14 Feb 2013; Agostino Sarubbo <ago@gentoo.org> cclive-0.7.11.ebuild:
+  Stable for amd64, wrt bug #457408
+
+  17 Dec 2012; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Remove redundant maintainer from metadata.
+
+*cclive-0.7.11 (17 Dec 2012)
+
+  17 Dec 2012; Tim Harder <radhermit@gentoo.org> +cclive-0.7.11.ebuild:
+  Version bump.
+
+  17 Dec 2012; Tim Harder <radhermit@gentoo.org> -cclive-0.7.6.ebuild,
+  -cclive-0.7.9.ebuild:
+  Remove old.
+
+  16 Dec 2012; Agostino Sarubbo <ago@gentoo.org> cclive-0.7.10-r1.ebuild:
+  Stable for x86, wrt bug #441406
+
+  08 Dec 2012; <ago@gentoo.org> cclive-0.7.10-r1.ebuild:
+  Stable for amd64, wrt bug #441406
+
+  25 Sep 2012; Tim Harder <radhermit@gentoo.org> cclive-0.7.10-r1.ebuild:
+  Keyword ~ppc ~ppc64 for latest version too.
+
+  25 Sep 2012; Anthony G. Basile <blueness@gentoo.org> cclive-0.7.9.ebuild:
+  Keyword ~ppc ~ppc64, bug #386611
+
+  05 Sep 2012; Tim Harder <radhermit@gentoo.org> -cclive-0.7.10.ebuild:
+  Remove old.
+
+*cclive-0.7.10-r1 (05 Sep 2012)
+
+  05 Sep 2012; Tim Harder <radhermit@gentoo.org> +cclive-0.7.10-r1.ebuild:
+  Revision bump to remove ccl symlink (bug #433802).
+
+*cclive-0.7.10 (03 Sep 2012)
+
+  03 Sep 2012; Tim Harder <radhermit@gentoo.org> +cclive-0.7.10.ebuild:
+  Version bump.
+
+  01 Aug 2012; Tim Harder <radhermit@gentoo.org> -cclive-0.7.2.ebuild,
+  -cclive-0.7.8.ebuild:
+  Remove old.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> cclive-0.7.2.ebuild,
+  cclive-0.7.6.ebuild, cclive-0.7.8.ebuild, cclive-0.7.9.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  06 Mar 2012; Tim Harder <radhermit@gentoo.org> -cclive-0.7.7.ebuild:
+  Remove old.
+
+*cclive-0.7.9 (06 Mar 2012)
+
+  06 Mar 2012; Tim Harder <radhermit@gentoo.org> +cclive-0.7.9.ebuild:
+  Version bump.
+
+  31 Jan 2012; Samuli Suominen <ssuominen@gentoo.org> cclive-0.7.2.ebuild:
+  Revert back to ~ppc/~ppc64 wrt #387611
+
+*cclive-0.7.8 (05 Dec 2011)
+
+  05 Dec 2011; Tim Harder <radhermit@gentoo.org> +cclive-0.7.8.ebuild:
+  Version bump.
+
+  24 Oct 2011; Markus Meier <maekke@gentoo.org> cclive-0.7.6.ebuild:
+  x86 stable, bug #387611
+
+*cclive-0.7.7 (21 Oct 2011)
+
+  21 Oct 2011; Tim Harder <radhermit@gentoo.org> -cclive-0.7.6-r1.ebuild,
+  +cclive-0.7.7.ebuild:
+  Version bump and remove old.
+
+  20 Oct 2011; Tony Vroon <chainsaw@gentoo.org> cclive-0.7.6.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo & Ian
+  "idella4" Delaney in bug #387611.
+
+  18 Oct 2011; Tim Harder <radhermit@gentoo.org> cclive-0.7.6.ebuild:
+  Add build dep on xz-utils.
+
+  18 Oct 2011; Tim Harder <radhermit@gentoo.org> +cclive-0.7.6.ebuild:
+  Re-add as a stable target with media-libs/quvi-0.2.19.
+
+  10 Oct 2011; Tim Harder <radhermit@gentoo.org> -cclive-0.7.4.ebuild,
+  -cclive-0.7.4.1.ebuild, -cclive-0.7.5.ebuild, -cclive-0.7.6.ebuild:
+  Remove old.
+
+*cclive-0.7.6-r1 (10 Oct 2011)
+
+  10 Oct 2011; Tim Harder <radhermit@gentoo.org> +cclive-0.7.6-r1.ebuild:
+  Revbump to move to media-libs/libquvi dependency and add xz-utils build dep.
+
+*cclive-0.7.6 (15 Sep 2011)
+
+  15 Sep 2011; Tim Harder <radhermit@gentoo.org> +cclive-0.7.6.ebuild:
+  Version bump.
+
+*cclive-0.7.5 (17 Aug 2011)
+
+  17 Aug 2011; Tim Harder <radhermit@gentoo.org> +cclive-0.7.5.ebuild:
+  Version bump
+
+*cclive-0.7.4.1 (05 Aug 2011)
+
+  05 Aug 2011; Hanno Boeck <hanno@gentoo.org> +cclive-0.7.4.1.ebuild:
+  Version bump.
+
+  05 Aug 2011; Markos Chandras <hwoarang@gentoo.org> cclive-0.7.2.ebuild:
+  Append -DBOOST_FILESYSTEM_VERSION=2 to C{XX}FLAGS to compile with new boost
+  releases. Bug #377799
+
+  22 Jun 2011; Alexis Ballier <aballier@gentoo.org> -cclive-0.5.3.ebuild,
+  -cclive-0.5.8.ebuild, -cclive-0.6.5.ebuild, -cclive-0.7.3.1.ebuild:
+  remove old
+
+*cclive-0.7.4 (22 Jun 2011)
+
+  22 Jun 2011; Alexis Ballier <aballier@gentoo.org> +cclive-0.7.4.ebuild:
+  version bump
+
+  02 May 2011; Thomas Kahle <tomka@gentoo.org> cclive-0.7.2.ebuild:
+  x86 stable per bug 357773
+
+  27 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> cclive-0.7.2.ebuild:
+  ppc/ppc64 stable wrt #357773
+
+*cclive-0.7.3.1 (20 Mar 2011)
+
+  20 Mar 2011; Tim Harder <radhermit@gentoo.org> +cclive-0.7.3.1.ebuild:
+  Version bump. Update to EAPI 4, remove versionator eclass usage, and use
+  array notation for DOCS.
+
+  08 Mar 2011; Markos Chandras <hwoarang@gentoo.org> cclive-0.7.2.ebuild:
+  Stable on amd64 wrt bug #357773
+
+*cclive-0.7.2 (09 Feb 2011)
+
+  09 Feb 2011; Tim Harder <radhermit@gentoo.org> -cclive-0.7.1.ebuild,
+  +cclive-0.7.2.ebuild:
+  Version bump and remove old. Add dependency on >=cmake-2.8.3 for bug #351229.
+
+*cclive-0.7.1 (07 Jan 2011)
+
+  07 Jan 2011; Alexis Ballier <aballier@gentoo.org> +cclive-0.7.1.ebuild:
+  version bump
+
+  07 Jan 2011; Alexis Ballier <aballier@gentoo.org> cclive-0.6.5.ebuild:
+  add libpcre[cxx] dep, by Arseny Solokha <b0ntrict0r@yandex.ru>, bug #348742
+
+*cclive-0.6.5 (26 Aug 2010)
+
+  26 Aug 2010; Tomáš Chvátal <scarabeus@gentoo.org> -cclive-0.6.2.ebuild,
+  -cclive-0.6.3.ebuild, +cclive-0.6.5.ebuild, metadata.xml:
+  Version bump. Drop old.
+
+  25 Jun 2010; Alexis Ballier <aballier@gentoo.org> cclive-0.6.3.ebuild:
+  bump quvi dep, by Arseny Solokha <b0ntrict0r@yandex.ru>, bug #323897
+
+  12 Jun 2010; Alexis Ballier <aballier@gentoo.org> -cclive-0.4.7.ebuild,
+  -cclive-0.5.1.ebuild, -cclive-0.5.2.ebuild, -cclive-0.5.5.ebuild,
+  -cclive-0.5.6.ebuild, -cclive-0.5.7.ebuild, -cclive-0.6.1.ebuild:
+  remove old
+
+*cclive-0.6.3 (12 Jun 2010)
+
+  12 Jun 2010; Alexis Ballier <aballier@gentoo.org> +cclive-0.6.3.ebuild:
+  version bump
+
+*cclive-0.6.2 (12 Apr 2010)
+
+  12 Apr 2010; Alexis Ballier <aballier@gentoo.org> +cclive-0.6.2.ebuild:
+  version bump, by hitachi <mail@konstantinhansen.de>, bug #306829
+
+  24 Feb 2010; Christian Faulhammer <fauli@gentoo.org> cclive-0.5.8.ebuild:
+  stable x86, bug 287175
+
+*cclive-0.6.1 (14 Feb 2010)
+
+  14 Feb 2010; Hanno Boeck <hanno@gentoo.org> +cclive-0.6.1.ebuild:
+  Version bump.
+
+  06 Feb 2010; Markos Chandras <hwoarang@gentoo.org> cclive-0.5.3.ebuild:
+  Stable on amd64 wrt bug #287175
+
+*cclive-0.5.8 (15 Jan 2010)
+
+  15 Jan 2010; Hanno Boeck <hanno@gentoo.org> +cclive-0.5.8.ebuild:
+  Version bump.
+
+  06 Jan 2010; Brent Baude <ranger@gentoo.org> cclive-0.5.3.ebuild:
+  Marking cclive-0.5.3 ppc64 for bug 287175
+
+*cclive-0.5.7 (24 Dec 2009)
+
+  24 Dec 2009; Tomáš Chvátal <scarabeus@gentoo.org> +cclive-0.5.7.ebuild:
+  Version bump. Try to accomodate offesnive part of bug #298150.
+
+*cclive-0.5.6 (16 Dec 2009)
+
+  16 Dec 2009; Alexis Ballier <aballier@gentoo.org> +cclive-0.5.6.ebuild:
+  version bump
+
+  09 Dec 2009; nixnut <nixnut@gentoo.org> cclive-0.5.3.ebuild:
+  ppc stable #287175
+
+*cclive-0.5.5 (21 Nov 2009)
+
+  21 Nov 2009; Mike Frysinger <vapier@gentoo.org> +cclive-0.5.5.ebuild:
+  Version bump.
+
+*cclive-0.5.3 (27 Oct 2009)
+
+  27 Oct 2009; Alexis Ballier <aballier@gentoo.org> +cclive-0.5.3.ebuild:
+  version bump
+
+*cclive-0.5.2 (10 Oct 2009)
+
+  10 Oct 2009; Patrick Lauer <patrick@gentoo.org> +cclive-0.5.2.ebuild:
+  Bump to 0.5.2. Fixes #288211. Ebuild improvements by Tomas Chvatal.
+
+*cclive-0.5.1 (18 Sep 2009)
+
+  18 Sep 2009; Alexis Ballier <aballier@gentoo.org> +cclive-0.5.1.ebuild:
+  version bump
+
+  25 Aug 2009; Alexis Ballier <aballier@gentoo.org> -cclive-0.4.1.ebuild,
+  -cclive-0.4.6.ebuild:
+  remove old
+
+*cclive-0.4.7 (25 Aug 2009)
+
+  25 Aug 2009; Alexis Ballier <aballier@gentoo.org> +cclive-0.4.7.ebuild:
+  version bump
+
+*cclive-0.4.6 (02 Aug 2009)
+
+  02 Aug 2009; Alexis Ballier <aballier@gentoo.org> +cclive-0.4.6.ebuild:
+  version bump, bug #279834
+
+*cclive-0.4.1 (05 May 2009)
+
+  05 May 2009; Mike Frysinger <vapier@gentoo.org> +cclive-0.4.1.ebuild,
+  +files/cclive-0.4.1-64bit.patch, +metadata.xml:
+  Initial ebuild by me.

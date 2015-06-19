@@ -1,0 +1,112 @@
+# ChangeLog for net-analyzer/ippl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ippl/ChangeLog,v 1.30 2015/01/26 10:14:22 ago Exp $
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> ippl-1.4.14-r5.ebuild:
+  Stable for x86, wrt bug #535526
+
+*ippl-1.4.14-r5 (13 Jan 2015)
+
+  13 Jan 2015; Jeroen Roovers <jer@gentoo.org> -ippl-1.4.14-r4.ebuild,
+  +ippl-1.4.14-r5.ebuild, +files/ippl-1.4.14-format-warnings.patch:
+  Fix some format warnings (bug #536116).
+
+  09 Jan 2015; Agostino Sarubbo <ago@gentoo.org> ippl-1.4.14-r4.ebuild:
+  Stable for amd64, wrt bug #535526
+
+  06 Jan 2015; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Remove short <longdescription>.
+
+*ippl-1.4.14-r4 (12 Jul 2014)
+
+  12 Jul 2014; Jeroen Roovers <jer@gentoo.org> +ippl-1.4.14-r4.ebuild,
+  files/ippl-1.4.14-includes.patch, files/ippl-1.4.14-manpage.patch,
+  files/ippl-1.4.14-noportresolve.patch,
+  files/ippl-1.4.14-privilege-drop.patch, files/ippl.rc:
+  Clean up sed scripts. Use /run not /var/run in init script. Clean up patches.
+
+  24 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> -ippl-1.4.14-r1.ebuild:
+  Drop old revision
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> ippl-1.4.14-r3.ebuild:
+  Stable for x86, wrt bug #454010
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> ippl-1.4.14-r3.ebuild:
+  Stable for amd64, wrt bug #454010
+
+  30 Jan 2013; Jeroen Roovers <jer@gentoo.org> -ippl-1.4.14-r2.ebuild,
+  ippl-1.4.14-r3.ebuild:
+  Move enewuser to pkg_postinst().
+
+  12 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> ippl-1.4.14-r1.ebuild,
+  ippl-1.4.14-r2.ebuild, ippl-1.4.14-r3.ebuild:
+  Replace yacc dependency atoms with virtual/yacc
+
+*ippl-1.4.14-r3 (12 Oct 2012)
+
+  12 Oct 2012; Sergey Popov <pinkbyte@gentoo.org> +ippl-1.4.14-r3.ebuild:
+  Revision bump: bump to EAPI 4, fix bug #351287
+
+  12 Jun 2012; Zac Medico <zmedico@gentoo.org> ippl-1.4.14-r1.ebuild,
+  ippl-1.4.14-r2.ebuild:
+  inherit user for enewuser
+
+  21 Mar 2011; Diego E. Pettenò <flameeyes@gentoo.org> ippl-1.4.14-r2.ebuild:
+  QA: workaround parallel make failure until bug #351287 is properly fixed.
+
+*ippl-1.4.14-r2 (15 Sep 2010)
+
+  15 Sep 2010; Jeroen Roovers <jer@gentoo.org> -ippl-1.4.14.ebuild,
+  +ippl-1.4.14-r2.ebuild, +files/ippl-1.4.14-includes.patch:
+  Respect LDFLAGS (bug #337192), CC. Fix missing includes. Use $(MAKE)
+  instead of make.
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/ippl-1.4.14-manpage.patch:
+  Fix patch with absolute paths.
+
+  16 Sep 2008; Peter Volkov <pva@gentoo.org> ippl-1.4.14-r1.ebuild:
+  amd64 stable, removed old.
+
+  10 Sep 2008; Peter Volkov <pva@gentoo.org> ippl-1.4.14-r1.ebuild:
+  enewuser/enewgroup die on their own, no need to || die
+
+  14 Aug 2008; Raúl Porcel <armin76@gentoo.org> ippl-1.4.14-r1.ebuild:
+  x86 stable
+
+*ippl-1.4.14-r1 (05 Jun 2008)
+
+  05 Jun 2008; Peter Volkov <pva@gentoo.org>
+  +files/ippl-1.4.14-manpage.patch, +files/ippl-1.4.14-noportresolve.patch,
+  +files/ippl-1.4.14-privilege-drop.patch, +ippl-1.4.14-r1.ebuild:
+  Added debian patches, should fix kernel 2.6.24 compatibility problem, bug
+  #213284, thank svrmarty for report.
+
+  28 Apr 2007; Torsten Veller <tove@gentoo.org> ippl-1.4.14.ebuild:
+  Use newinitd
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  12 Feb 2006; Martin Holzer <mholzer@gentoo.org> ippl-1.4.14.ebuild:
+  stable on amd64
+
+  19 Jul 2005; David Holm <dholm@gentoo.org> ippl-1.4.14.ebuild:
+  Added to ~ppc.
+
+  02 Apr 2005; Martin Holzer <mholzer@gentoo.org> ippl-1.4.14.ebuild:
+  adding keyword
+
+  09 Jul 2004; Eldad Zack <eldad@gentoo.org> ippl-1.4.14.ebuild:
+  Added missing IUSE. Added metadata
+
+  19 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> ippl-1.4.14.ebuild:
+  fix depend (bug #45110); tidy
+
+*ippl-1.4.14 (04 Nov 2002)
+
+  17 Mar 2003; Martin Holzer <mholzer@gentoo.org> ippl-1.4.14.ebuild:
+  Marked as stable.
+
+  04 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Initial import. Ebuild contributed by Mike Lundy <novas007@gmx.net> in #8015.

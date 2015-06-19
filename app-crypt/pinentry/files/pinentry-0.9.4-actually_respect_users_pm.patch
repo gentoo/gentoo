@@ -1,0 +1,49 @@
+From 444598586d0abf70d5a27d2aafcd6c14989621db Mon Sep 17 00:00:00 2001
+From: "Neal H. Walfield" <neal@gnu.org>
+Date: Sun, 7 Jun 2015 14:36:39 +0200
+Subject: [PATCH] gnome3: Actually respect the user's choice of using a
+ password manager.
+
+* gnome3/pinentry-gnome3.c (create_prompt) [HAVE_LIBSECRET]: Only show
+the libsecret prompt in this case.
+(gnome3_cmd_handler) [HAVE_LIBSECRET]: Set PE->MAY_CACHE_PASSWORD
+according to the user's choice.
+---
+ gnome3/pinentry-gnome3.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/gnome3/pinentry-gnome3.c b/gnome3/pinentry-gnome3.c
+index 74ec89c..0fea8f0 100644
+--- a/gnome3/pinentry-gnome3.c
++++ b/gnome3/pinentry-gnome3.c
+@@ -145,6 +145,7 @@ create_prompt (pinentry_t pe, int confirm)
+   /* XXX: gcr expects a string; we have a int.  */
+   // gcr_prompt_set_caller_window (prompt, pe->parent_wid);
+ 
++#ifdef HAVE_LIBSECRET
+   if (! confirm && pe->allow_external_password_cache && pe->keyinfo)
+     {
+       if (pe->default_pwmngr)
+@@ -157,6 +158,7 @@ create_prompt (pinentry_t pe, int confirm)
+ 	gcr_prompt_set_choice_label
+ 	  (prompt, "Automatically unlock this key, whenever I'm logged in");
+     }
++#endif
+ 
+   return prompt;
+ }
+@@ -203,6 +205,11 @@ gnome3_cmd_handler (pinentry_t pe)
+ 	  if (pe->repeat_passphrase)
+ 	    pe->repeat_okay = 1;
+ 
++#ifdef HAVE_LIBSECRET
++	  if (pe->allow_external_password_cache && pe->keyinfo)
++	    pe->may_cache_password = gcr_prompt_get_choice_chosen (prompt);
++#endif
++
+ 	  ret = 1;
+ 	}
+     }
+-- 
+2.1.4
+

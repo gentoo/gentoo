@@ -1,0 +1,845 @@
+# ChangeLog for x11-wm/fvwm
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/fvwm/ChangeLog,v 1.196 2013/10/19 15:23:53 pacho Exp $
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due desktop-wm removal
+
+  12 Oct 2013; Pacho Ramos <pacho@gentoo.org> +files/fvwm-2.6.5-ar.patch,
+  -fvwm-2.6.2.ebuild, -fvwm-2.6.3.ebuild, fvwm-2.6.5.ebuild:
+  Respect AR (#474528 by Michael Mair-Keimberger (iamnr3)), drop old
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> fvwm-2.6.5.ebuild:
+  Stable for amd64, wrt bug #471900
+
+  25 Jun 2013; Agostino Sarubbo <ago@gentoo.org> fvwm-2.6.5.ebuild:
+  Stable for x86, wrt bug #471900
+
+  24 Jun 2013; Agostino Sarubbo <ago@gentoo.org> fvwm-2.6.5.ebuild:
+  Stable for ppc, wrt bug #471900
+
+  20 Jan 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Update committers
+
+  09 Nov 2012; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  remove myself from metadata
+
+  08 Oct 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/fvwm-2.6.5-mouse-buttons.patch:
+  Commit forgotten patch, bug #437552 by avx.
+
+*fvwm-2.6.5 (07 Oct 2012)
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> +fvwm-2.6.5.ebuild:
+  Version bump, also include a default on vanilla USE and patch to increase
+  maximum mouse buttons number when that USE is off, also include epatch_user as
+  requested, please see bugs #411811 (by avx) and #412079 (also by Jesús
+  Guerrero).
+
+  29 May 2012; Brent Baude <ranger@gentoo.org> fvwm-2.6.2.ebuild:
+  Marking fvwm-2.6.2 ppc for bug 416213
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> fvwm-2.6.2.ebuild,
+  fvwm-2.6.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  07 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> fvwm-2.6.3.ebuild:
+  x86 stable wrt bug #392411
+
+  05 Dec 2011; Tony Vroon <chainsaw@gentoo.org> fvwm-2.6.3.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Elijah "Armageddon" El Lazkani in bug #392411.
+
+  11 Nov 2011; Samuli Suominen <ssuominen@gentoo.org> -fvwm-2.5.28.ebuild,
+  -files/fvwm-2.5.28-libpng14.patch, -fvwm-2.5.31.ebuild:
+  old
+
+  23 Oct 2011; Markus Meier <maekke@gentoo.org> fvwm-2.6.2.ebuild:
+  x86 stable, bug #385143
+
+  14 Oct 2011; Steve Dibb <beandog@gentoo.org> fvwm-2.6.2.ebuild:
+  amd64 stable, bug 385143
+
+  03 Oct 2011; Jeremy Olexa <darkside@gentoo.org> fvwm-2.6.2.ebuild:
+  increase needed dev-libs/fribidi version, bug 385169
+
+*fvwm-2.6.3 (01 Oct 2011)
+
+  01 Oct 2011; Jeremy Olexa <darkside@gentoo.org> +fvwm-2.6.3.ebuild:
+  version bump by Jesús Guerrero, bug 385145
+
+*fvwm-2.6.2 (08 Aug 2011)
+
+  08 Aug 2011; Jeremy Olexa <darkside@gentoo.org> -fvwm-2.5.30.ebuild,
+  -fvwm-2.6.1.ebuild, +fvwm-2.6.2.ebuild:
+  Version bump, bug 378251 - tested by Jesús Guerrero
+
+  27 May 2011; Michael Weber <xmw@gentoo.org> fvwm-2.6.1.ebuild:
+  added ~arm keyword (bug 368715)
+
+*fvwm-2.6.1 (18 Apr 2011)
+
+  18 Apr 2011; Jeremy Olexa <darkside@gentoo.org> +fvwm-2.6.1.ebuild:
+  version bump
+
+*fvwm-2.5.31 (23 Sep 2010)
+
+  23 Sep 2010; Jeremy Olexa <darkside@gentoo.org> +fvwm-2.5.31.ebuild:
+  Version bump, bug 337545. Misc fixes
+
+  14 May 2010; Jeremy Olexa <darkside@gentoo.org> fvwm-2.5.30.ebuild:
+  Remove hack for documentation location. Use configure and make instead.
+  Help by Thomas Adam in bug 319173
+
+*fvwm-2.5.30 (14 May 2010)
+
+  14 May 2010; Jeremy Olexa <darkside@gentoo.org> +fvwm-2.5.30.ebuild:
+  Version bump, bug 319173 by Jesús Guerrero
+
+  11 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> fvwm-2.5.28.ebuild,
+  +files/fvwm-2.5.28-libpng14.patch:
+  Fix building with libpng14.
+
+  31 Dec 2009; Brent Baude <ranger@gentoo.org> fvwm-2.5.28.ebuild:
+  Marking fvwm-2.5.28 ppc64 for bug 290126
+
+  24 Nov 2009; Samuli Suominen <ssuominen@gentoo.org>
+  -fvwm-2.5.18-r1.ebuild, fvwm-2.5.27-r1.ebuild, fvwm-2.5.28.ebuild:
+  Remove USE gtk and imlib (media-libs/imlib[deprecated]).
+
+  05 Nov 2009; Raúl Porcel <armin76@gentoo.org> fvwm-2.5.28.ebuild:
+  ia64/sparc stable wrt #290126
+
+  30 Oct 2009; Markus Meier <maekke@gentoo.org> fvwm-2.5.28.ebuild:
+  amd64/x86 stable, bug #290126
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> fvwm-2.5.28.ebuild:
+  ppc stable #290126
+
+  24 Oct 2009; Tobias Klausmann <klausman@gentoo.org> fvwm-2.5.28.ebuild:
+  Stable on alpha, bug #290126
+
+  02 Oct 2009; Raúl Porcel <armin76@gentoo.org> fvwm-2.5.27-r1.ebuild:
+  ia64 stable wrt #266937
+
+  25 Sep 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -files/fvwm-2.5.23-translucent-menus.diff:
+  Remove unused, duplicate patch.
+
+*fvwm-2.5.28 (22 Sep 2009)
+
+  22 Sep 2009; Jeremy Olexa <darkside@gentoo.org> -fvwm-2.5.25.ebuild,
+  -fvwm-2.5.26.ebuild, -fvwm-2.5.27.ebuild, +fvwm-2.5.28.ebuild:
+  Version bump, bug fix release. bug 285880
+
+  12 Sep 2009; Tiago Cunha <tcunha@gentoo.org> fvwm-2.5.27-r1.ebuild:
+  stable sparc, bug 266937
+
+  11 Sep 2009; Jeremy Olexa <darkside@gentoo.org> fvwm-2.5.27-r1.ebuild:
+  Fix dodir call, Comment #22 bug 266937
+
+*fvwm-2.5.27-r1 (11 Sep 2009)
+
+  11 Sep 2009; Christian Faulhammer <fauli@gentoo.org>
+  +fvwm-2.5.27-r1.ebuild:
+  create Sessions directory before doing any operations there, thanks to
+  tcunha
+
+  05 Sep 2009; Markus Meier <maekke@gentoo.org> fvwm-2.5.27.ebuild:
+  amd64 stable, bug #266937
+
+  05 Sep 2009; Brent Baude <ranger@gentoo.org> fvwm-2.5.27.ebuild:
+  Marking fvwm-2.5.27 ppc64 for bug 266937
+
+  10 Aug 2009; Tobias Klausmann <klausman@gentoo.org> fvwm-2.5.27.ebuild:
+  Stable on alpha, bug #266937
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> fvwm-2.5.27.ebuild:
+  ppc stable #266937
+
+  08 Aug 2009; Christian Faulhammer <fauli@gentoo.org> fvwm-2.5.27.ebuild:
+  stable x86, bug 266937
+
+  08 Aug 2009; Christian Faulhammer <fauli@gentoo.org> fvwm-2.5.27.ebuild:
+  USE flag is not called xlock, but lock
+
+  23 Jul 2009; Raúl Porcel <armin76@gentoo.org> fvwm-2.5.27.ebuild:
+  Readd ~ia64 wrt #277004
+
+  22 Jul 2009; Tobias Klausmann <klausman@gentoo.org> fvwm-2.5.27.ebuild:
+  Keyworded on alpha, bug #277004
+
+  08 Jul 2009; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  edit metadata for new proxied commiter
+
+*fvwm-2.5.27 (08 Jul 2009)
+
+  08 Jul 2009; Christian Faulhammer <fauli@gentoo.org> +fvwm-2.5.27.ebuild,
+  +files/fvwm-2.5.27-translucent-menus.diff, +files/README.translucency,
+  -files/README.transluceny, metadata.xml:
+  version bump (non-maintainer commit) for bug 261301, fixes bug 238905,
+  too. Thanks to all the people who contributed
+
+  09 Jan 2009; Rémi Cardona <remi@gentoo.org> fvwm-2.5.18-r1.ebuild,
+  fvwm-2.5.19.ebuild, fvwm-2.5.21.ebuild, fvwm-2.5.25.ebuild,
+  fvwm-2.5.26.ebuild:
+  Change virtual/xft dependency to x11-libs/libXft, bug 253771.
+
+*fvwm-2.5.26 (14 May 2008)
+
+  14 May 2008; David Shakaryan <omp@gentoo.org> +fvwm-2.5.26.ebuild:
+  Version bump; copied from my subversion repository.
+
+  07 May 2008; David Shakaryan <omp@gentoo.org> fvwm-2.5.25.ebuild:
+  Fix patch name. (bug #220217)
+
+*fvwm-2.5.25 (04 May 2008)
+
+  04 May 2008; David Shakaryan <omp@gentoo.org>
+  +files/fvwm-2.5.23-translucent-menus.diff, +fvwm-2.5.25.ebuild:
+  Version bump; copied from my subversion repository. (bug #191638)
+
+  07 Jan 2008; David Shakaryan <omp@gentoo.org> fvwm-2.5.18-r1.ebuild,
+  fvwm-2.5.19.ebuild, fvwm-2.5.21.ebuild:
+  Install session .desktop file. (bug #109009)
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing taviso from metadata.xml as per #202471.
+
+  07 Aug 2007; Roy Marples <uberlord@gentoo.org> fvwm-2.5.21.ebuild:
+  Keyworded ~x86-fbsd, #141142 thanks to Robert Annessi
+
+  22 Jul 2007; David Shakaryan <omp@gentoo.org> fvwm-2.5.18-r1.ebuild,
+  fvwm-2.5.19.ebuild, fvwm-2.5.21.ebuild:
+  Remove virtual/x11 from dependencies.
+
+*fvwm-2.5.21 (23 Mar 2007)
+
+  23 Mar 2007; Tavis Ormandy <taviso@gentoo.org> +fvwm-2.5.21.ebuild:
+  version bump
+
+  22 Feb 2007; David Shakaryan <omp@gentoo.org> fvwm-2.5.18-r1.ebuild,
+  fvwm-2.5.19.ebuild:
+  Remove x11-wm/metisse blocker from DEPEND.
+
+  17 Jan 2007; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.19.ebuild:
+  always use signed-chars on ppc
+
+  05 Jan 2007; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.19.ebuild:
+  change dependency for bsd #135530
+
+*fvwm-2.5.19 (18 Dec 2006)
+
+  18 Dec 2006; Tavis Ormandy <taviso@gentoo.org> -fvwm-2.5.16.ebuild,
+  -fvwm-2.5.18.ebuild, +fvwm-2.5.19.ebuild:
+  version bump.
+  remove stale ebuilds.
+
+  28 Nov 2006; David Shakaryan <omp@gentoo.org> fvwm-2.5.16.ebuild,
+  fvwm-2.5.18.ebuild, fvwm-2.5.18-r1.ebuild:
+  Remove calling of prepallman. (bug #140697)
+
+  20 Nov 2006; <blubb@gentoo.org> fvwm-2.5.18-r1.ebuild:
+  stable on amd64
+
+  19 Nov 2006; <compnerd@gentoo.org> fvwm-2.5.16.ebuild, fvwm-2.5.18.ebuild:
+  Dropping imlib useflag for gnome-1.x removal
+
+  18 Nov 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  fvwm-2.5.18-r1.ebuild:
+  ppc stable, bug #155078
+
+  17 Nov 2006; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.18-r1.ebuild:
+  remove pixbuf dependency  bug #118581
+
+  15 Nov 2006; Markus Rothe <corsair@gentoo.org> fvwm-2.5.18-r1.ebuild:
+  Stable on ppc64; bug #155078
+
+  14 Nov 2006; Bryan Østergaard <kloeri@gentoo.org> fvwm-2.5.18-r1.ebuild:
+  Stable on ia64, bug 155078.
+
+  14 Nov 2006; Bryan Østergaard <kloeri@gentoo.org> fvwm-2.5.18-r1.ebuild:
+  Stable on Alpha, bug 155078.
+
+  14 Nov 2006; Ferris McCormick <fmccor@gentoo.org> fvwm-2.5.18-r1.ebuild:
+  Stable on sparc --- Security Bug #155078 --- builds, installs, and appears to
+  run for me as expected.
+
+  14 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  fvwm-2.5.18-r1.ebuild:
+  stable x86, security bug #155078
+
+*fvwm-2.5.18-r1 (13 Nov 2006)
+
+  13 Nov 2006; Tavis Ormandy <taviso@gentoo.org>
+  +files/fvwm-menu-directory-security.diff, +fvwm-2.5.18-r1.ebuild:
+  add security patch to fvwm-menu-directory from debian
+  http://article.gmane.org/gmane.comp.window-managers.fvwm.devel/2419
+
+  05 Nov 2006; Brent Baude <ranger@gentoo.org> fvwm-2.5.18.ebuild:
+  marking fvwm-2.5.18 ppc64 stable for bug 152758
+
+  29 Oct 2006; Bryan Østergaard <kloeri@gentoo.org> fvwm-2.5.18.ebuild:
+  Stable on ia64, bug 152758.
+
+  29 Oct 2006; Thomas Cort <tcort@gentoo.org> fvwm-2.5.18.ebuild:
+  Stable on alpha and amd64 wrt security Bug #152758.
+
+  28 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org> fvwm-2.5.18.ebuild:
+  ppc stable, bug #152758
+
+  28 Oct 2006; Christian Faulhammer <opfer@gentoo.org> fvwm-2.5.18.ebuild:
+  x86 stable wrt security bug #152758
+
+  25 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> fvwm-2.5.18.ebuild:
+  Stable on sparc wrt security #152758
+
+  23 Oct 2006; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.18.ebuild:
+  add requirement on latest X11-Protocol to avoid hang in FvwmTabs.
+
+  20 Oct 2006; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.18.ebuild:
+  modernise some of the configuration.
+
+*fvwm-2.5.18 (19 Oct 2006)
+
+  19 Oct 2006; Tavis Ormandy <taviso@gentoo.org> +fvwm-2.5.18.ebuild:
+  revision bump
+
+  19 Sep 2006; Doug Goldstein <cardoe@gentoo.org> fvwm-2.5.16.ebuild:
+  tcltk -> tk USE flag change as per bug #17808
+
+  02 Aug 2006; Michael Sterrett <mr_bones_@gentoo.org> -fvwm-2.4.18.ebuild,
+  -fvwm-2.5.12.ebuild, -fvwm-2.5.13-r1.ebuild, -fvwm-2.5.14-r1.ebuild:
+  clean out old versions
+
+  02 Aug 2006; Aron Griffis <agriffis@gentoo.org> fvwm-2.5.16.ebuild:
+  Mark 2.5.16 stable on ia64
+
+  25 May 2006; Michael Hanselmann <hansmi@gentoo.org> fvwm-2.5.16.ebuild:
+  Stable on ppc.
+
+  22 May 2006; Paul Varner <fuzzyray@gentoo.org> fvwm-2.5.16.ebuild:
+  Stable on x86; bug #133579
+
+  19 May 2006; Markus Rothe <corsair@gentoo.org> fvwm-2.5.16.ebuild:
+  Stable on ppc64; bug #133579
+
+  18 May 2006; Thomas Cort <tcort@gentoo.org> fvwm-2.5.16.ebuild:
+  Stable on alpha wrt Bug #133579.
+
+  17 May 2006; Daniel Gryniewicz <dang@gentoo.org> fvwm-2.5.16.ebuild:
+  Marked stable on amd64 per bug #133579
+
+  17 May 2006; Gustavo Zacarias <gustavoz@gentoo.org> fvwm-2.5.16.ebuild:
+  Stable on sparc wrt #133579
+
+  06 Mar 2006; Simon Stelling <blubb@gentoo.org> fvwm-2.5.12.ebuild,
+  fvwm-2.5.13-r1.ebuild, fvwm-2.5.14-r1.ebuild, fvwm-2.5.16.ebuild:
+  move compressed patches to the mirrors
+
+*fvwm-2.5.16 (20 Jan 2006)
+
+  20 Jan 2006; Tavis Ormandy <taviso@gentoo.org> -fvwm-2.5.15.ebuild,
+  +fvwm-2.5.16.ebuild:
+  new version
+
+  16 Jan 2006; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.15.ebuild:
+  upstream regenerated tarball, so digests no longer match.
+
+*fvwm-2.5.15 (15 Jan 2006)
+
+  15 Jan 2006; Tavis Ormandy <taviso@gentoo.org> +fvwm-2.5.15.ebuild:
+  new release
+
+  04 Jan 2006; Karol Wojtaszek <sekretarz@gentoo.org> fvwm-2.5.14-r1.ebuild:
+  Add modular X dependencies, bug #115591
+
+*fvwm-2.5.14 (21 Sep 2005)
+
+  21 Sep 2005; Tavis Ormandy <taviso@gentoo.org> +fvwm-2.5.14-r1.ebuild,
+  -fvwm-2.5.14.ebuild:
+  remove gtk2 flag #106560
+
+  28 Aug 2005; Tavis Ormandy <taviso@gentoo.org> :
+  bump, use -fno-strict-aliasing as recommended by upstream.
+
+  19 Jul 2005; Tavis Ormandy <taviso@gentoo.org>
+  -files/fvwm-2.5.10-FvwmCommand.diff, -files/fvwm-2.5.10-Test-update.diff,
+  -files/fvwm-2.5.10-mips-compat.diff, -files/fvwm-2.5.10-post-release.diff,
+  -files/fvwm-iconman.diff, -files/fvwmtabs-2.8-insecure-tmp-handling.diff,
+  -files/iconfile-2.5.10.diff, -fvwm-2.5.13.ebuild:
+  remove stale patches
+
+*fvwm-2.5.13-r1 (19 Jul 2005)
+
+  19 Jul 2005; Tavis Ormandy <taviso@gentoo.org>
+  +files/fvwm-64bit-fixes.diff.gz, +files/fvwm-noxbell-grab-fail.diff,
+  +fvwm-2.5.13-r1.ebuild:
+  include 64bit cleanliness patch.
+  disable XBell() on grab fail.
+
+*fvwm-2.5.13 (17 Jul 2005)
+
+  17 Jul 2005; Tavis Ormandy <taviso@gentoo.org> +fvwm-2.5.13.ebuild:
+  bump
+
+  07 Jul 2005; Tavis Ormandy <taviso@gentoo.org> :
+  remove stale ebuilds
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> fvwm-2.5.12.ebuild:
+  Stable on ppc64
+
+  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> fvwm-2.5.12.ebuild:
+  Stable on ia64.
+
+  30 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> fvwm-2.5.12.ebuild:
+  Stable on ppc.
+
+  17 Feb 2005; Karol Wojtaszek <sekretarz@gentoo.org> fvwm-2.5.12.ebuild:
+  Stable on amd64
+
+  13 Feb 2005; Bryan Østergaard <kloeri@gentoo.org> fvwm-2.5.12.ebuild:
+  Stable on alpha.
+
+  09 Feb 2005; Bryan Østergaard <kloeri@gentoo.org> fvwm-2.5.12.ebuild:
+  ~alpha keyword.
+
+  03 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> fvwm-2.5.12.ebuild:
+  Stable on sparc
+
+  31 Dec 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.12.ebuild:
+  2.5.12 stable on x86
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  11 Dec 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.12.ebuild:
+  minor updates
+
+  07 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> fvwm-2.5.10-r5.ebuild:
+  -fPIC is no longer needed on alpha.
+
+  19 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> fvwm-2.4.18.ebuild,
+  fvwm-2.5.10-r3.ebuild, fvwm-2.5.10-r5.ebuild, fvwm-2.5.10-r6.ebuild,
+  fvwm-2.5.12.ebuild:
+  Block x11-wm/metisse; bug #66374.
+
+  16 Oct 2004; Mike Frysinger <vapier@gentoo.org> fvwm-2.4.18.ebuild,
+  fvwm-2.5.10-r3.ebuild, fvwm-2.5.10-r5.ebuild, fvwm-2.5.10-r6.ebuild,
+  fvwm-2.5.12.ebuild:
+  Fix stupid dependency on sys-libs/libtermcap-compat (i.e. remove it) #64212.
+
+*fvwm-2.5.12 (06 Oct 2004)
+
+  06 Oct 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.11.ebuild,
+  +fvwm-2.5.12.ebuild:
+  new (mainly bugfix) release, replaces 2.5.11.
+
+  05 Oct 2004; Jason Wever <weeve@gentoo.org> fvwm-2.5.11.ebuild:
+  Added ~sparc keyword.
+
+*fvwm-2.5.11 (30 Sep 2004)
+
+  30 Sep 2004; Tavis Ormandy <taviso@gentoo.org> +fvwm-2.5.11.ebuild:
+  new version of fvwm, and FvwmTabs.
+
+*fvwm-2.5.10-r7 (08 Sep 2004)
+
+  08 Sep 2004; Tavis Ormandy <taviso@gentoo.org> -files/acinclude.m4,
+  -files/fvwm-2.5.10-fvwmbuttonshover.diff,
+  +files/fvwm-2.5.10-fvwmbuttonshover.diff.gz,
+  +files/fvwm-2.5.10-long-data-elements.diff, fvwm-2.5.10-r6.ebuild,
+  +fvwm-2.5.10-r7.ebuild, -fvwm-2.5.7-r5.ebuild:
+  64bit fix, remove outdated ebuild.
+
+  31 Jul 2004; Tom Gall <tgall@gentoo.org>  fvwm-2.5.10-r6.ebuild:
+  stable on ppc64, bug #57040
+
+*fvwm-2.5.10-r6 (10 Jul 2004)
+
+  10 Jul 2004; Tavis Ormandy <taviso@gentoo.org>
+  +files/fvwm-2.5.10-fvwmbuttonshover.diff, +fvwm-2.5.10-r6.ebuild:
+  adding fvwmbuttons patch from cvs
+
+  07 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> fvwm-2.5.10-r3.ebuild:
+  Stable on alpha.
+
+*fvwm-2.5.10-r4 (28 Jun 2004)
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> fvwm-2.5.10-r3.ebuild,
+  fvwm-2.5.10-r4.ebuild, fvwm-2.5.10-r5.ebuild, fvwm-2.5.7-r5.ebuild,
+  fvwm-2.5.8-r6.ebuild:
+  sync IUSE (+nosm, +noxpm, -cjk)
+
+*fvwm-2.5.10-r5 (20 Jun 2004)
+
+  20 Jun 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.10-r5.ebuild:
+  new FvwmTabs release, two patches from cvs
+
+  06 Jun 2004; Jason Wever <weeve@gentoo.org> fvwm-2.5.10-r3.ebuild:
+  Stable on sparc.
+
+  29 May 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.10-r3.ebuild:
+  marking -r3 stable on x86, added -r4 which adds two patches from cvs, 
+  a bugfix for FvwmCommand, and an update to the Test () Syntax.
+
+  28 May 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.10-r1.ebuild,
+  fvwm-2.5.10-r2.ebuild:
+  remove old ebuilds
+
+*fvwm-2.5.10-r3 (24 May 2004)
+
+  24 May 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.10-r3.ebuild:
+  fvwm-menu-xlock incorrectly called xlock.
+
+*fvwm-2.5.10-r2 (20 Apr 2004)
+
+  20 Apr 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.10-r2.ebuild,
+  files/fvwm-2.5.10-mips-compat.diff:
+  new release of FvwmTabs, patch for mips compatability.
+
+  30 Mar 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-2.4.17.ebuild,
+  fvwm-2.4.18.ebuild, fvwm-2.5.10.ebuild, fvwm-2.5.8-r4.ebuild,
+  fvwm-2.5.8-r6.ebuild, fvwm-2.5.9.ebuild:
+  removing stale ebuilds
+  mark 2.4.18 stable for those who prefer the 2.4.x branch
+
+*fvwm-2.5.10-r1 (30 Mar 2004)
+
+  30 Mar 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.10-r1.ebuild,
+  files/fvwm-2.5.10-post-release.diff:
+  new release of FvwmTabs, which fixes the tmp file handling problem.
+  extracted some patches from cvs which fix issues reported since the
+  release, including a problem with FvwmTaskBar and multiple rows
+  , inconsistencies in variable names in the FvwmButtons man page,
+  and a problem with the BackingStore style.
+
+*fvwm-2.5.8-r6 (20 Mar 2004)
+
+  20 Mar 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.10.ebuild,
+  fvwm-2.5.8-r5.ebuild, fvwm-2.5.8-r6.ebuild,
+  files/fvwm-2.5.8-fvwm-bug-security.diff:
+  adding fvwm-bug security fix to stable fvwm.
+
+*fvwm-2.5.10 (19 Mar 2004)
+*fvwm-2.4.18 (19 Mar 2004)
+
+  19 Mar 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.10.ebuild,
+  fvwm-2.4.18.ebuild:
+  new releases from both development branches.
+
+  minor security related problems have been fixed in these
+  release, (predicatble (pid based) temp files used in fvwm-bug)
+
+  16 Mar 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.9.ebuild:
+  ensure FvwmGtk gets a man page.
+  clean up some old ebuilds.
+
+*fvwm-2.5.9 (02 Mar 2004)
+
+  02 Mar 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.9.ebuild,
+  files/fvwm-2.5.9-translucent-menus.diff.gz:
+  new fvwm and FvwmTabs release, some patches have been reworked to apply.
+  no longer depend on netpbm.
+  iconv support is optional, so disable it with -nls.
+
+  28 Feb 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.8-r5.ebuild:
+  stable on alpha and x86
+
+  26 Feb 2004; Sven Blumenstein <bazik@gentoo.org> fvwm-2.5.8-r5.ebuild:
+  Stable on sparc!
+
+  17 Feb 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.8-r5.ebuild,
+  files/fvwm-2.5.8-flickeringmoveworkaround.diff:
+  patch from cvs.
+
+*fvwm-2.5.8-r5 (16 Feb 2004)
+
+  16 Feb 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.8-r5.ebuild,
+  files/fvwm-2.5.8-iconfile.diff:
+  patch from cvs
+
+*fvwm-2.5.8-r4 (08 Feb 2004)
+
+  08 Feb 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.8-r3.ebuild,
+  fvwm-2.5.8-r4.ebuild:
+  marking 2.5.8-r3 stable on x86 and alpha, adding -r4 minor 
+  update to FvwmTabs.
+
+  01 Feb 2004; Jon Portnoy <avenj@gentoo.org> fvwm-2.5.8-r3.ebuild :
+  AMD64 keywords.
+
+  13 Jan 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-2.4.17.ebuild,
+  fvwm-2.5.7-r5.ebuild, fvwm-2.5.8-r2.ebuild, fvwm-2.5.8-r3.ebuild,
+  files/fvwm-2.5.8-FvwmScript-Quit-reboot.diff:
+  typo
+
+*fvwm-2.5.8-r3 (12 Jan 2004)
+
+  12 Jan 2004; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.8-r3.ebuild,
+  files/fvwm-2.5.8-taskbar-margins.diff, files/fvwm-2.5.8-undermouse.diff,
+  files/fvwm-iconman.diff:
+  adding two new patches from #37079
+  adding a patch from cvs to fix taskbar margins
+  revision bump
+
+  11 Dec 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.8-r2.ebuild,
+  files/fvwm-2.5.8-fvwm-menu-directory-security.diff:
+  minor patch for fvwm-menu-directory, newlines confuse it.
+
+  11 Dec 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.8-r2.ebuild:
+  stable
+
+  28 Nov 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.8-r2.ebuild:
+  remove icc, clean DEPEND.
+
+*fvwm-2.5.8-r2 (27 Nov 2003)
+
+  27 Nov 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.8-r1.ebuild,
+  fvwm-2.5.8-r2.ebuild, fvwm-2.5.8.ebuild:
+  new FvwmTabs released, version bump.
+  removing some stale ebuilds.
+
+*fvwm-2.5.8-r1 (13 Nov 2003)
+
+  13 Nov 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.8-r1.ebuild,
+  files/mini.happy.xpm:
+  new release of FvwmTabs, including a default dnd icon.
+  version bump.
+
+  11 Nov 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.8.ebuild:
+  --enable-multibyte is no longer optional, removed cjk from IUSE.
+
+  11 Nov 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.8.ebuild,
+  files/fvwmtabs-insecure-tmp-handling.diff:
+  make fvwmtabs save state files to home directory, rather than /tmp.
+  see ebuild comments.
+
+  07 Nov 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.8.ebuild:
+  append-flags -fPIC on alpha.
+
+  03 Nov 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.8.ebuild:
+  set FVWM_BUGADDR.
+
+  03 Nov 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.8.ebuild:
+  gnome libraries are not much use without FvwmGtk.
+
+  02 Nov 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.8.ebuild:
+  inherit eutils, gnuconfig no longer required.
+
+*fvwm-2.5.8 (01 Nov 2003)
+
+  01 Nov 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.8.ebuild,
+  files/disable-debug-statements.diff, files/fvwm-translucent-menus.diff.gz:
+  new fvwm development release 2.5.8, and new FvwmTabs 2.4.
+  i've included two patches, one enables fast translucent menus, the other
+  disables some noisy debug statements.
+
+  31 Oct 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.7-r5.ebuild:
+  stable.
+
+*fvwm-2.5.7-r5 (20 Oct 2003)
+
+  20 Oct 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.7-r5.ebuild:
+  new release of FvwmTabs, with some new configuration options.
+
+*fvwm-2.5.7-r4 (18 Oct 2003)
+
+  18 Oct 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.7-r4.ebuild:
+  new FvwmTabs released which fixes a focus race condition. FvwmTabs now
+  includes a man page.
+
+  13 Oct 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.4.16-r1.ebuild,
+  fvwm-2.4.16.ebuild, fvwm-2.4.17.ebuild, fvwm-2.4.8.ebuild,
+  fvwm-2.5.7-r2.ebuild, fvwm-2.5.7-r3.ebuild:
+  
+  marking 2.5.7-r3 stable, it is a release from the development branch, but has
+  proven stable in practice and has some important internationalisation 
+  features (among other things) missing from the stable branch.
+
+  2.4.17 is also stable, and will be maintained in portage for those who 
+  prefer it.
+
+  removing stale ebuilds.
+
+*fvwm-2.5.7-r3 (11 Oct 2003)
+*fvwm-2.4.17 (11 Oct 2003)
+
+  11 Oct 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.4.17.ebuild,
+  fvwm-2.5.7-r3.ebuild:
+  new release from stable branch
+  New release of FvwmTabs, requiring X11-Protocol-0.51-r1
+
+  07 Oct 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.7-r2.ebuild,
+  metadata.xml:
+  update metadata longdescription from fvwm.lsm
+
+  adding some extra documentation, examples and scripts from
+  utils directory.
+
+  apparently it annoys some developers if KEYWORDS is not in order,
+  so they are now in order, as dictated by arch.list :)
+
+  17 Sep 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.7-r2.ebuild:
+  apparently noxpm and nosm are confusing, removing them from IUSE.
+  only fix Xft detection if USE="truetype"
+  changin some of the informational messages to use ebegin/eend.
+  print out a message indicatind imlib/gtk errors are normal if USE="-gtk -imlib"
+
+  15 Sep 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.7-r1.ebuild,
+  fvwm-2.5.7.ebuild:
+  cleaning up old ebuilds.
+
+  14 Sep 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.7-r2.ebuild:
+  tweaking postinst messages.
+
+  03 Sep 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.7-r2.ebuild:
+  fvwm-convert-2.6 is a script to updated .fvwm2rc files, but is currently 
+  just a stub, as the format has not yet been finalised. This update
+  removes the script and manpage.
+  fvwm-convert-2.2 was used to update from the old 1.x format, it is no longer
+  distributed, but still has a manpage, ive removed it.
+
+  02 Sep 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.7-r2.ebuild:
+  Packaged FvwmTabs into a tarball with version information, as FvwmTabs author
+  just overwrites existing URL with updated version.
+
+  01 Sep 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.7-r2.ebuild:
+  changed the postinst blurb.
+
+*fvwm-2.5.7-r2 (01 Sep 2003)
+
+  01 Sep 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.7-r2.ebuild:
+  Three new USE flags, 
+  	noxpm - Disable support for XPM Images, for people who 
+  		only use png images, or prefer solid colour/gradiant/etc.
+  	nosm - Disable session management support, for users who 
+  		never use session managers (xsm, for example)
+  	truetype - Allows users to toggle Xft support.
+  Adding /usr/share/icons/fvwm to the default ImagePath.
+  Some minor tweaks to the toolkit options, so that -gtk also removes gtk2
+  support, as reccommended.
+  
+  The new USE flags mean only XRender, SHM and Shaped Windows are left to 
+  the configure script to decide, which i suspect everybody will want unless
+  support isnt available, which the configure script will deduce automatically.
+
+  01 Sep 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.7-r1.ebuild:
+  gtk2 wasnt in IUSE.
+
+*fvwm-2.5.7-r1 (05 Aug 2003)
+
+  05 Aug 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.7-r1.ebuild, files/fvwm2:
+  Adding fvwm-2.5.7-r1, which fixes:
+  	bad xpmroot manpage (fixed with a call to prepallman)
+	dependencies missing for perllib toolkit bindings (gtk2/tcltk/gtk)
+	Remove useless fvwm-perllib script of perllib isnt installed
+  And adds:
+  	Including some developer documentation with USE="doc"
+	If tcltk and perl USE flags are set, install the 3rd Party FvwmTabs module
+	USE="debug" turns on debug mesages, and command logging.
+ 
+  Currently masked.
+
+  04 Aug 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.7.ebuild:
+  reported working on sparc.
+
+  03 Aug 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.4.16-r1.ebuild:
+  marking stable.
+
+  31 Jul 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.7.ebuild:
+  imlib USE flag
+
+  31 Jul 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.7.ebuild:
+  Re-written ebuild to take full advantage of all the optional features
+  available. As this is a dramatic change to how the gentoo FVWM ebuilds work,
+  I've added warning messages to the pkg_postinst().
+
+  Adding ncurses USE flag, if USE="readline ncurses" FvwmConsole links with
+  ncurses, with USE="readline -ncurses" it links with and depends on 
+  libtermcap.
+  
+*fvwm-2.5.7 (30 Jul 2003)
+
+  30 Jul 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.5.7.ebuild:
+  Imported fvwm-2.5.7 from the Unstable branch, available to unstable users.
+  Some Excellent new features available (Xft, Alpha blending, etc)
+
+*fvwm-2.4.16-r1 (31 Jul 2003)
+
+  31 Jul 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.4.16-r1:
+  Backporting the new ebuild to 2.4.x
+
+*fvwm-2.4.16 (06 Jul 2003)
+
+  06 Jul 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.4.16.ebuild:
+  build bombs out if a comma is in CFLAGS, replaced with !'s.
+
+  03 Jul 2003; Tavis Ormandy <taviso@gentoo.org> fvwm-2.4.7-r1.ebuild:
+  new release, now includes rplay support.
+
+*fvwm-2.4.15 (13 Feb 2003)
+
+  13 Feb 2003; Aron Griffis <agriffis@gentoo.org> fvwm-2.4.15.ebuild :
+  Update to 2.4.15 (bug #14529) and add ~alpha
+
+  19 Dec 2002; Dean Bailey <alron@gentoo.org> : removed sparc64 keyword
+
+*fvwm-2.4.14 (10 Dec 2002)
+
+  10 Dec 2002; Matt Keadle <mkeadle@gentoo.org> fvwm-2.4.14.ebuild
+  files/digest-fvwm-2.4.14 :
+
+  Bump to latest stable. Thanks to Thomas Preissler for providing the ebuild
+  in bug #11768
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*fvwm-2.4.8 (12 Aug 2002)
+
+  12 Aug 2002; Seemant Kulleen <seemant@gentoo.org> fvwm-2.4.8.ebuild
+  files/digest-fvwm-2.4.8 files/fvwm2 :
+
+  Moved the fvwm2 script into a dynamic thing within the ebuild.  Made a big
+  bz2ball of the patches to be applied to the source.  Version bump and
+  patches from: matt@zigg.com (Matt Behrens) in bug #5886
+
+*fvwm-2.4.7-r1 (26 May 2002)
+
+  26 May 2002; Seemant Kulleen <seemant@gentoo.org> fvwm-2.4.7-r1.ebuild
+  files/digest-fvwm-2.4.7-r1 :
+
+  Tristan pointed me to a patch which prettifies the window dressings.  The
+  code is already in fvwm's developmental (2.5.x) branch, but a patch has
+  been made for this release as well.
+
+*fvwm-2.4.7 (26 May 2002)
+
+  26 May 2002; Seemant Kulleen <seemant@gentoo.org> fvwm-2.4.7.ebuild
+  files/digest-fvwm-2.4.7 :
+
+  Version bump thanks to T.Henderson@cs.ucl.ac.uk (Tristan Henderson) in bug
+  #2951
+
+*fvwm-2.4.3-r1 (14 Apr 2002)
+
+  14 Apr 2002; Seemant Kulleen <seemant@gentoo.org> fvwm-2.4.3-r1.ebuild :
+
+  Cleaned up a little.
+
+*fvwm-2.4.3-r1 (14 Feb 2002)
+
+  14 Feb 2002; Dan Armak <danarmak@gentoo.org> ChangeLog :
+  
+  Added /etc/X11/Sessions/fvwm, which adds fvwm to the auto-generated session
+  list in kdm and gdm.
+
+*fvwm-2.4.3 (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,160 @@
+# ChangeLog for dev-python/irc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/irc/ChangeLog,v 1.32 2015/06/07 19:30:00 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add bitbucket to remote-id in metadata.xml
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> irc-11.0.1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> irc-11.0.1.ebuild:
+  amd64 stable, bug 540290
+
+*irc-11.0.1 (07 Dec 2014)
+
+  07 Dec 2014; Ian Delaney <idella4@gentoo.org> +irc-11.0.1.ebuild,
+  -files/irc-8.5.1-setup_requires.patch, -irc-10.0-r1.ebuild, -irc-8.9.1.ebuild:
+  bump; rm dis-used patch, old versions
+
+*irc-10.0-r1 (08 Nov 2014)
+
+  08 Nov 2014; Ian Delaney <idella4@gentoo.org> +irc-10.0-r1.ebuild,
+  -irc-10.0.ebuild:
+  revbump; add sed st'mnt to fix broken test (acquired upstream), tidy, remove
+  the -10.0.
+
+*irc-10.0 (06 Nov 2014)
+
+  06 Nov 2014; Ian Delaney <idella4@gentoo.org> +irc-10.0.ebuild,
+  files/irc-8.5.1-setup_requires.patch:
+  bump; minor re-write; deps upgraded, tidied, redundant patch and sed
+  statements dropped
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> irc-8.9.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  19 Jun 2014; Ian Delaney <idella4@gentoo.org> -irc-8.5.1.ebuild,
+  -irc-8.5.3.ebuild, -irc-8.5.4.ebuild, -irc-8.9.ebuild:
+  -remove old, fixes Bug #513662 by Monsieur L. Bachelier
+
+  12 Jun 2014; Patrick Lauer <patrick@gentoo.org> irc-8.9.1.ebuild:
+  Add py34 support
+
+*irc-8.9.1 (12 Jun 2014)
+
+  12 Jun 2014; Patrick Lauer <patrick@gentoo.org> +irc-8.9.1.ebuild:
+  Bump, new test dependencies
+
+*irc-8.9 (12 May 2014)
+
+  12 May 2014; Ian Delaney <idella4@gentoo.org> +irc-8.9.ebuild:
+  bump; drop py2.6 pypy2_0 support
+
+  11 Apr 2014; Samuel Damashek <sdamashek@gentoo.org> irc-8.5.4.ebuild:
+  Add python3_4 to PYTHON_COMPAT for 8.5.4
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> irc-8.5.1.ebuild,
+  irc-8.5.3.ebuild, irc-8.5.4.ebuild:
+  Add support for the new PyPy slotting.
+
+  19 Mar 2014; Ian Delaney <idella4@gentoo.org> irc-8.5.4.ebuild:
+  add missing dep sourced from Bug #503350 by W. King
+
+*irc-8.5.4 (22 Nov 2013)
+
+  22 Nov 2013; Patrick Lauer <patrick@gentoo.org> +irc-8.5.4.ebuild:
+  Bump
+
+*irc-8.5.3 (29 Oct 2013)
+
+  29 Oct 2013; Patrick Lauer <patrick@gentoo.org> +irc-8.5.3.ebuild:
+  Bump
+
+  19 Sep 2013; Mike Gilbert <floppym@gentoo.org>
+  +files/irc-8.5.1-setup_requires.patch, -files/irc-8-setup.py.patch,
+  -files/irc-setup.py.3.4.2.patch, -files/irc-setup.py.8.0.1.patch,
+  -files/irc-setup.py.patch, -irc-8.2.ebuild, -irc-8.3-r1.ebuild,
+  -irc-8.3.1.ebuild, -irc-8.3.ebuild, -irc-8.4.ebuild, -irc-8.5.ebuild,
+  irc-8.5.1.ebuild:
+  Restore patch to drop hgtools dep, thanks to Bertrand Jacquin on bug 485398.
+  Remove old ebuilds and patches.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> irc-8.3-r1.ebuild,
+  irc-8.3.1.ebuild, irc-8.4.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*irc-8.5.1 (26 Aug 2013)
+
+  26 Aug 2013; Patrick Lauer <patrick@gentoo.org> +irc-8.5.1.ebuild:
+  Bump
+
+*irc-8.5 (19 Aug 2013)
+
+  19 Aug 2013; Ian Delaney <idella4@gentoo.org> +irc-8.5.ebuild:
+  bump; Drop py3.1 support, update deps., re-add test phase which was seemingly
+  dropped post irc-8.0, add IUSE test
+
+*irc-8.4 (10 Aug 2013)
+
+  10 Aug 2013; Patrick Lauer <patrick@gentoo.org> +irc-8.4.ebuild:
+  Bump
+
+*irc-8.3.1 (08 Jul 2013)
+
+  08 Jul 2013; Patrick Lauer <patrick@gentoo.org> +irc-8.3.1.ebuild:
+  Bump
+
+*irc-8.3-r1 (24 Jun 2013)
+
+  24 Jun 2013; Ian Delaney <idella4@gentoo.org> +irc-8.3-r1.ebuild,
+  -irc-8.0.1.ebuild, -irc-8.0.ebuild, -irc-8.1.1.ebuild:
+  revbump; migrate -> distutils-r1, remove old
+
+*irc-8.3 (02 May 2013)
+
+  02 May 2013; Patrick Lauer <patrick@gentoo.org> +irc-8.3.ebuild:
+  Bump
+
+*irc-8.2 (15 Apr 2013)
+
+  15 Apr 2013; Patrick Lauer <patrick@gentoo.org> +irc-8.2.ebuild,
+  -irc-3.2.2.ebuild, -irc-3.4.2.ebuild, -irc-5.0.1.ebuild:
+  Bump
+
+*irc-8.1.1 (08 Apr 2013)
+
+  08 Apr 2013; Patrick Lauer <patrick@gentoo.org> +irc-8.1.1.ebuild:
+  Bump
+
+*irc-8.0.1 (11 Mar 2013)
+
+  11 Mar 2013; Patrick Lauer <patrick@gentoo.org>
+  +files/irc-setup.py.8.0.1.patch, +irc-8.0.1.ebuild:
+  Bump
+
+*irc-8.0 (09 Mar 2013)
+
+  09 Mar 2013; Ian Delaney <idella4@gentoo.org> +files/irc-8-setup.py.patch,
+  +irc-8.0.ebuild:
+  bump + test phase
+
+*irc-5.0.1 (29 Nov 2012)
+
+  29 Nov 2012; Patrick Lauer <patrick@gentoo.org> +irc-5.0.1.ebuild:
+  Bump
+
+*irc-3.4.2 (30 Oct 2012)
+
+  30 Oct 2012; Patrick Lauer <patrick@gentoo.org>
+  +files/irc-setup.py.3.4.2.patch, +irc-3.4.2.ebuild:
+  Bump
+
+  13 Oct 2012; Mike Gilbert <floppym@gentoo.org> irc-3.2.2.ebuild:
+  Update HOMEPAGE.
+
+*irc-3.2.2 (13 Oct 2012)
+
+  13 Oct 2012; Mike Gilbert <floppym@gentoo.org> +files/irc-setup.py.patch,
+  +irc-3.2.2.ebuild, +metadata.xml:
+  New package, formerly dev-python/python-irclib.

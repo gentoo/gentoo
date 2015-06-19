@@ -1,0 +1,63 @@
+# ChangeLog for net-libs/stem
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/stem/ChangeLog,v 1.13 2015/06/04 10:40:05 jlec Exp $
+
+  04 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+*stem-1.4.1 (25 May 2015)
+
+  25 May 2015; Manuel Rüger <mrueg@gentoo.org> +stem-1.4.1.ebuild:
+  Version bump.
+
+*stem-1.4.0 (16 May 2015)
+
+  16 May 2015; Manuel Rüger <mrueg@gentoo.org> +stem-1.4.0.ebuild,
+  -stem-1.2.2_p20140718.ebuild, -stem-1.3.0_p20150414.ebuild:
+  Version bump. Remove old.
+
+*stem-1.3.0_p20150414 (16 Apr 2015)
+
+  16 Apr 2015; Manuel Rüger <mrueg@gentoo.org> +stem-1.3.0_p20150414.ebuild:
+  Add new snapshot with python3 support.
+
+*stem-1.3.0 (22 Dec 2014)
+
+  22 Dec 2014; Manuel Rüger <mrueg@gentoo.org> +stem-1.3.0.ebuild,
+  -stem-1.2.2.ebuild, -stem-1.2.2_p20141018.ebuild:
+  Version bump. Remove old.
+
+  07 Dec 2014; Anthony G. Basile <blueness@gentoo.org> stem-1.2.2.ebuild,
+  stem-1.2.2_p20140718.ebuild, stem-1.2.2_p20141018.ebuild:
+  Fix licences
+
+  15 Nov 2014; Anthony G. Basile <blueness@gentoo.org> stem-1.2.2.ebuild,
+  stem-1.2.2_p20140718.ebuild, stem-1.2.2_p20141018.ebuild:
+  Keyword ~x86, bug #517838
+
+*stem-1.2.2_p20141018 (22 Oct 2014)
+
+  22 Oct 2014; Manuel Rüger <mrueg@gentoo.org> +stem-1.2.2_p20141018.ebuild:
+  Add new snapshot.
+
+  24 Jul 2014; Naohiro Aota <naota@gentoo.org> stem-1.2.2_p20140718.ebuild:
+  Add ~x86-fbsd. #517838
+
+  23 Jul 2014; Anthony G. Basile <blueness@gentoo.org> stem-1.2.2.ebuild,
+  stem-1.2.2_p20140718.ebuild:
+  Keyword ~arm and ~mips, bug #517838
+
+  23 Jul 2014; Anthony G. Basile <blueness@gentoo.org> stem-1.2.2.ebuild,
+  stem-1.2.2_p20140718.ebuild:
+  Keyword ~ppc and ~ppc64, bug #517838
+
+*stem-1.2.2_p20140718 (22 Jul 2014)
+
+  22 Jul 2014; Manuel Rüger <mrueg@gentoo.org> +stem-1.2.2_p20140718.ebuild:
+  Add snapshot.
+
+*stem-1.2.2 (22 Jul 2014)
+
+  22 Jul 2014; Manuel Rüger <mrueg@gentoo.org> +metadata.xml,
+  +stem-1.2.2.ebuild:
+  Initial version.

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+<email>tupone@gentoo.org</email>
+<name>Alfredo Tupone</name>
+</maintainer>
+<longdescription lang="en">
+LiquidFeedback is an open-source software, powering internet platforms for proposition development and decision making.
+LiquidFeedback is an independent open source project published under MIT license by the Public Software Group of Berlin, Germany.
+The developers of LiquidFeedback have joined together in the Interaktive Demokratie association to promote the use of electronic media for democratic processes.
+The core consists of a database scheme for the PostgreSQL database, including the algorithms for delegations, feedback and the voting procedure implemented as SQL views and database procedures written in PL/pgSQL. As it is licensed under the liberal MIT/X11-License you can include it in any software project you like, as long as there is PostgreSQL support for your programming language available. 
+</longdescription>
+</pkgmetadata>

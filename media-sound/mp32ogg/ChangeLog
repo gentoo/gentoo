@@ -1,0 +1,97 @@
+# ChangeLog for media-sound/mp32ogg
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mp32ogg/ChangeLog,v 1.20 2015/03/29 21:58:40 mrueg Exp $
+
+  29 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -mp32ogg-0.11-r5.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> mp32ogg-0.11-r5.ebuild,
+  mp32ogg-0.11-r6.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> mp32ogg-0.11-r5.ebuild,
+  mp32ogg-0.11-r6.ebuild:
+  Drop sparc keywords
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> mp32ogg-0.11-r6.ebuild:
+  x86 stable wrt bug #397099
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org> mp32ogg-0.11-r6.ebuild:
+  Stable for amd64, wrt bug #397099
+
+*mp32ogg-0.11-r6 (19 Jul 2010)
+
+  19 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +mp32ogg-0.11-r6.ebuild,
+  +files/mp32ogg-0.11-r6-force-filename-stringification.patch:
+  Fix "Not a GLOB reference" error wrt #328953 by Arne Babenhauserheide.
+
+  14 Sep 2008; Friedrich Oslage <bluebird@gentoo.org>
+  mp32ogg-0.11-r5.ebuild:
+  Stable on sparc, bug #237332
+
+  11 Sep 2008; Markus Meier <maekke@gentoo.org> mp32ogg-0.11-r5.ebuild:
+  amd64/x86 stable, bug #237332
+
+*mp32ogg-0.11-r5 (28 Feb 2008)
+
+  28 Feb 2008; Tiziano Müller <dev-zero@gentoo.org>
+  +files/mp32ogg-0.11-r5-german_umlaut.patch, +mp32ogg-0.11-r5.ebuild:
+  Added patch for bug #208017 (thanks to Mathias Hablützel, patch originally
+  from Ubuntu).
+
+  03 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*mp32ogg-0.11-r4 (01 Jan 2005)
+
+  01 Jan 2005; Tony Vroon <chainsaw@gentoo.org>
+  +files/mp32ogg-0.11-r4-mpg321.patch, +files/mp32ogg-0.11-r4-quality.patch,
+  +mp32ogg-0.11-r4.ebuild:
+  Ported debian patches for --quality commandline option and non-zero exitcode
+  on failure. Closes bug #76267.
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mp32ogg-0.11-r3.ebuild:
+  Stable amd64, sparc.
+
+  12 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mp32ogg-0.11-r3.ebuild:
+  ~sparc ~amd64
+
+  12 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mp32ogg-0.11-r3.ebuild:
+  ~sparc ~amd64
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mp32ogg-0.11-r3.ebuild:
+  QA fix.
+
+  15 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mp32ogg-0.11-r2.ebuild, mp32ogg-0.11-r3.ebuild:
+  media-sound/mpg123 dep changed to virtual/mpg123
+
+*mp32ogg-0.11-r3 (03 Feb 2004)
+
+  03 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mp32ogg-0.11-r1.ebuild, mp32ogg-0.11-r3.ebuild,
+  files/mp32ogg-0.11-r3-mpg321.patch:
+  Added a patch to fallback on mpg321 if mpg123 is not installed.
+
+*mp32ogg-0.11-r2 (01 Feb 2004)
+
+  01 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mp32ogg-0.11-r1.ebuild, mp32ogg-0.11-r2.ebuild, mp32ogg-0.11.ebuild:
+  Added mpg123 dependency to close bug #40106
+
+*mp32ogg-0.11-r1 (11 Jun 2003)
+
+  11 Jun 2003; Patrick Kursawe <phosphan@gentoo.org> mp32ogg-0.11-r1.ebuild:
+  Fixing dependencies (bug 22612)
+
+*mp32ogg-0.11 (12 May 2003)
+
+  12 May 2003; Jon Portnoy <avenj@gentoo.org> mp32ogg-0.11.ebuild :
+  Initial import. Ebuild submitted by John Herdy and
+  Abhishek Amit in bugs 10145 and 19336. Thanks John and
+  Abhishek!

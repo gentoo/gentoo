@@ -1,0 +1,16 @@
+Fixed upstream:
+
+http://www.atosc.org/pipermail/osip/2010-February/009864.html
+
+--- src/test/Makefile.am	2010-02-11 17:51:43 +0000
++++ src/test/Makefile.am	2010-02-11 17:52:09 +0000
+@@ -49,7 +49,7 @@
+ 	@echo " *******************************"
+ 	@echo " ****** starting tests! ********"
+ 	@echo " *******************************"
+-	@./$(top_srcdir)/src/test/tst ./$(top_srcdir)/src/test/res -c
++	@$(top_srcdir)/src/test/tst $(top_srcdir)/src/test/res -c
+ 
+ 	@echo ""
+ 	@echo "In case you have a doubt, send the generated"
+

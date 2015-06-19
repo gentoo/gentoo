@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=<dev-lang/perl-5.21 dev-libs/gmp dev-libs/mpfr dev-libs/libxml2:2 dev-libs/libxslt ppl? ( dev-libs/ppl ) cdd? ( sci-libs/cddlib ) lrs? ( >=sci-libs/lrslib-051[gmp] ) bliss? ( sci-libs/bliss[gmp] ) group? ( dev-libs/boost ) libnormaliz? ( dev-libs/boost ) singular? ( >=sci-mathematics/singular-4.0.1 )
+DESCRIPTION=research tool for polyhedral geometry and combinatorics
+EAPI=5
+HOMEPAGE=http://polymake.org
+IUSE=+cdd lrs ppl bliss group +libnormaliz singular libpolymake
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=<dev-lang/perl-5.21 dev-libs/gmp dev-libs/mpfr dev-libs/libxml2:2 dev-libs/libxslt ppl? ( dev-libs/ppl ) cdd? ( sci-libs/cddlib ) lrs? ( >=sci-libs/lrslib-051[gmp] ) bliss? ( sci-libs/bliss[gmp] ) group? ( dev-libs/boost ) libnormaliz? ( dev-libs/boost ) singular? ( >=sci-mathematics/singular-4.0.1 ) dev-perl/XML-LibXML dev-perl/XML-LibXSLT dev-perl/XML-Writer dev-perl/Term-ReadLine-Gnu
+REQUIRED_USE=group? ( cdd lrs )
+SLOT=0
+SRC_URI=http://polymake.org/lib/exe/fetch.php/download/polymake-2.14-minimal.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=62472ac8fe7b38f6e1b39044ce609044

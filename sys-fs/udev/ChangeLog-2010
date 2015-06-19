@@ -1,0 +1,257 @@
+# ChangeLog for sys-fs/udev
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/ChangeLog-2010,v 1.1 2013/03/15 09:38:45 ssuominen Exp $
+
+*udev-164-r1 (12 Dec 2010)
+
+  12 Dec 2010; Matthias Schwarzott <zzam@gentoo.org> +udev-164-r1.ebuild:
+  Moved scripts from files to a tarball.
+
+*udev-164 (30 Oct 2010)
+
+  30 Oct 2010; Matthias Schwarzott <zzam@gentoo.org>
+  +files/164/40-gentoo.rules, +files/164/90-network.rules,
+  +files/164/shell-compat-KV.sh, +files/164/shell-compat-addon.sh,
+  +files/164/udev.confd, +files/164/udev.initd,
+  +files/164/udev-dev-tarball.initd, +files/164/udev-mount.initd,
+  +files/164/udev-postmount.initd, +udev-164.ebuild,
+  +files/164/udev-start.sh, +files/164/udev-stop.sh:
+  Version bumped. Changed udev-postmount script to better check for ro
+  filesystems and non bash shells. Bugs 342403, 326825. Remove /dev/loop if
+  it is empty, Bug #338766.
+
+  29 Oct 2010; Jeroen Roovers <jer@gentoo.org> udev-151-r4.ebuild:
+  Stable for HPPA (bug #324507).
+
+*udev-163 (11 Oct 2010)
+
+  11 Oct 2010; Matthias Schwarzott <zzam@gentoo.org> +udev-163.ebuild:
+  Version bumped.
+
+  27 Sep 2010; Matthias Schwarzott <zzam@gentoo.org> -udev-146.ebuild,
+  -udev-146-r2.ebuild, -udev-146-r3.ebuild,
+  -files/udev-146-printer-usb_device-permission.diff,
+  -files/151/shell-compat-addon.sh, -udev-147-r1.ebuild,
+  -files/151/udev.confd, -udev-145.ebuild, -udev-150-r1.ebuild,
+  -udev-151-r1.ebuild, -udev-151-r2.ebuild, -udev-151-r3.ebuild,
+  -udev-154.ebuild, -udev-156.ebuild, -udev-157.ebuild, -udev-158.ebuild,
+  -udev-159.ebuild, -files/udev-159-path_id.patch, -files/151/udev.initd,
+  -udev-160.ebuild, -files/151/udev-dev-tarball.initd, -udev-145-r1.ebuild,
+  -udev-161.ebuild,
+  -files/udev-161-cdrom_id_Drop_MEDIA_SESSION_NEXT_for_DVD-RW-RO.patch,
+  -files/151/shell-compat-KV.sh, -files/151/udev-mount.initd,
+  -files/151/udev-postmount.initd, -files/151/udev-start.sh,
+  -udev-145-r2.ebuild, -files/151/udev-stop.sh, -udev-145-r3.ebuild:
+  Removed a lot of old versions.
+
+*udev-162 (12 Sep 2010)
+
+  12 Sep 2010; Matthias Schwarzott <zzam@gentoo.org> +udev-162.ebuild:
+  Version bumped.
+
+  28 Aug 2010; Raúl Porcel <armin76@gentoo.org> udev-151-r4.ebuild:
+  ia64/m68k/s390/sh/sparc stable wrt #334087
+
+  28 Aug 2010; Markus Meier <maekke@gentoo.org> udev-151-r4.ebuild:
+  arm stable, bug #324507
+
+*udev-161 (24 Aug 2010)
+
+  24 Aug 2010; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-161-cdrom_id_Drop_MEDIA_SESSION_NEXT_for_DVD-RW-RO.patch,
+  +files/161/40-gentoo.rules, +files/161/90-network.rules,
+  +files/161/shell-compat-KV.sh, +files/161/shell-compat-addon.sh,
+  +files/161/udev.confd, +files/161/udev-dev-tarball.initd,
+  +udev-161.ebuild, +files/161/udev.initd, +files/161/udev-mount.initd,
+  +files/161/udev-postmount.initd, +files/161/udev-start.sh,
+  +files/161/udev-stop.sh:
+  Version bumped. Fixed dir_writable check printing an error to console when
+  test fails, bug #326825.
+
+  24 Aug 2010; Matthias Schwarzott <zzam@gentoo.org> udev-149.ebuild,
+  udev-150-r1.ebuild, udev-151-r1.ebuild, udev-151-r2.ebuild,
+  udev-151-r3.ebuild, udev-151-r4.ebuild, udev-154.ebuild, udev-156.ebuild,
+  udev-157.ebuild, udev-158.ebuild, udev-159.ebuild, udev-160.ebuild,
+  udev-9999.ebuild:
+  Fix pkgconfig dependency to be only in DEPEND and not in RDEPEND.
+
+  23 Aug 2010; Mike Frysinger <vapier@gentoo.org> udev-149.ebuild,
+  udev-150-r1.ebuild, udev-151-r1.ebuild, udev-151-r2.ebuild,
+  udev-151-r3.ebuild, udev-151-r4.ebuild, udev-154.ebuild, udev-156.ebuild,
+  udev-157.ebuild, udev-158.ebuild, udev-159.ebuild, udev-160.ebuild,
+  udev-9999.ebuild:
+  Convert kernel headers into a blocker #296546 by Alan Hourihane.
+
+  13 Aug 2010; Joseph Jezak <josejx@gentoo.org> udev-151-r4.ebuild:
+  Marked ppc stable for bug #324507.
+
+  12 Aug 2010; Brent Baude <ranger@gentoo.org> udev-151-r4.ebuild:
+  stable ppc64, bug 324507
+
+  08 Aug 2010; Raúl Porcel <armin76@gentoo.org> udev-149.ebuild,
+  udev-150-r1.ebuild, udev-151-r1.ebuild, udev-151-r2.ebuild,
+  udev-151-r3.ebuild, udev-151-r4.ebuild, udev-154.ebuild, udev-156.ebuild,
+  udev-157.ebuild, udev-158.ebuild, udev-159.ebuild, udev-160.ebuild:
+  Re-add sh
+
+  02 Aug 2010; Matthias Schwarzott <zzam@gentoo.org> udev-149.ebuild,
+  udev-150-r1.ebuild, udev-151-r1.ebuild, udev-151-r2.ebuild,
+  udev-151-r3.ebuild, udev-151-r4.ebuild, udev-154.ebuild, udev-156.ebuild,
+  udev-157.ebuild, udev-158.ebuild, udev-159.ebuild, udev-160.ebuild:
+  Added pkgconfig dependency for udev-149 and newer when using extras
+  use-flag, Bug #327713.
+
+  27 Jul 2010; Pacho Ramos <pacho@gentoo.org> udev-151-r4.ebuild:
+  amd64 stable, bug 324507
+
+  25 Jul 2010; Tobias Klausmann <klausman@gentoo.org> udev-151-r4.ebuild:
+  Stable on alpha, bug #324507
+
+  22 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> udev-151-r4.ebuild:
+  x86 stable wrt bug #324507
+
+  17 Jul 2010; Matthias Schwarzott <zzam@gentoo.org> udev-9999.ebuild:
+  Updated live ebuild, Bug #327823.
+
+*udev-160 (12 Jul 2010)
+
+  12 Jul 2010; Matthias Schwarzott <zzam@gentoo.org> +udev-160.ebuild:
+  Version bumped. This is a bugfix release.
+
+  10 Jul 2010; Raúl Porcel <armin76@gentoo.org> udev-147-r1.ebuild,
+  udev-149.ebuild, udev-150-r1.ebuild, udev-151-r1.ebuild,
+  udev-151-r2.ebuild, udev-151-r3.ebuild, udev-151-r4.ebuild,
+  udev-154.ebuild, udev-156.ebuild, udev-157.ebuild, udev-158.ebuild,
+  udev-159.ebuild:
+  Rekeyword ~alpha now that the glibc issues have been fixed
+
+*udev-159 (07 Jul 2010)
+
+  07 Jul 2010; Matthias Schwarzott <zzam@gentoo.org> +udev-159.ebuild,
+  +files/udev-159-path_id.patch:
+  Version bumped.
+
+*udev-158 (24 Jun 2010)
+
+  24 Jun 2010; Matthias Schwarzott <zzam@gentoo.org> +udev-158.ebuild:
+  Version bumped.
+
+*udev-157 (20 Jun 2010)
+*udev-156 (20 Jun 2010)
+
+  20 Jun 2010; Matthias Schwarzott <zzam@gentoo.org>
+  +files/156/40-gentoo.rules, +files/156/90-network.rules,
+  +files/156/shell-compat-KV.sh, +files/156/shell-compat-addon.sh,
+  +files/156/udev.confd, +files/156/udev-dev-tarball.initd,
+  +udev-157.ebuild, +files/156/udev.initd, +files/156/udev-mount.initd,
+  +files/156/udev-postmount.initd, udev-9999.ebuild,
+  +files/156/udev-start.sh, +files/156/udev-stop.sh, +udev-156.ebuild:
+  Add version udev-156 and udev-157. These contain some rule changes.
+  Init-scripts improved a bit. Fix udev-postmount on selinux, Bug #317573.
+
+*udev-154 (12 May 2010)
+
+  12 May 2010; Matthias Schwarzott <zzam@gentoo.org> +udev-154.ebuild:
+  Version bumped. Now devfs-compat and oldhd is no longer supported.
+
+*udev-151-r4 (05 May 2010)
+
+  05 May 2010; Matthias Schwarzott <zzam@gentoo.org>
+  +files/151-r4/shell-compat-KV.sh, +files/151-r4/shell-compat-addon.sh,
+  +files/151-r4/udev.confd, +files/151-r4/udev-dev-tarball.initd,
+  udev-9999.ebuild, +files/151-r4/udev.initd,
+  +files/151-r4/udev-mount.initd, +files/151-r4/udev-postmount.initd,
+  +files/151-r4/udev-start.sh, +files/151-r4/udev-stop.sh,
+  +udev-151-r4.ebuild:
+  Updated init-scripts. Now support setting debug and trace options in
+  config file. Explicitly send add-event for initial population (newer
+  udevds will default to change). Set property STARTUP while booting for
+  compatibility with new eg. lvm2 init-scripts. Sync udev-9999.ebuild.
+
+*udev-151-r3 (02 May 2010)
+
+  02 May 2010; Matthias Schwarzott <zzam@gentoo.org> +udev-151-r3.ebuild:
+  Disable devfs-compat and old-hd-rules use flags by default they will be
+  removed on next udev update.
+
+*udev-146-r3 (20 Apr 2010)
+
+  20 Apr 2010; Robin H. Johnson <robbat2@gentoo.org> +udev-146-r3.ebuild:
+  Alpha cannot use the 151-r2 version due to non-availability of newer
+  kernels, so provide an older ebuild with static libraries for lvm2
+  bumping.
+
+*udev-151-r2 (19 Apr 2010)
+
+  19 Apr 2010; Robin H. Johnson <robbat2@gentoo.org> +udev-151-r2.ebuild:
+  Build static libraries as well, for lvm2 to use when building static
+  versions for early boot purposes.
+
+  19 Apr 2010; Matthias Schwarzott <zzam@gentoo.org> files/151/udev.initd,
+  udev-9999.ebuild:
+  Add keywords nolxc and noopenvz to udev init-script, Bug #310427.
+
+  16 Apr 2010; Brent Baude <ranger@gentoo.org> udev-149.ebuild:
+  Marking udev-149 ppc for bug 303031
+
+  05 Apr 2010; Jeroen Roovers <jer@gentoo.org> udev-149.ebuild:
+  Back to ~hppa (bug #294470).
+
+  22 Mar 2010; Brent Baude <ranger@gentoo.org> udev-149.ebuild:
+  Marking udev-149 ppc64 for bug 303031
+
+  15 Mar 2010; Matthias Schwarzott <zzam@gentoo.org> udev-145.ebuild,
+  udev-145-r1.ebuild, udev-145-r2.ebuild, udev-145-r3.ebuild,
+  udev-146.ebuild, udev-146-r1.ebuild, udev-146-r2.ebuild,
+  udev-147-r1.ebuild, udev-149.ebuild, udev-150-r1.ebuild,
+  udev-151-r1.ebuild, udev-9999.ebuild:
+  Fix tests for udev-149 and udev-151-r1, thanks to Myckel Habets for
+  looking into it, Bug #295958. Restrict test for the other ebuilds.
+
+  07 Mar 2010; Markus Meier <maekke@gentoo.org> udev-149.ebuild:
+  amd64/arm stable, bug #303031
+
+  02 Mar 2010; Jeroen Roovers <jer@gentoo.org> udev-149.ebuild:
+  Stable for HPPA (bug #303031).
+
+  21 Feb 2010; Christian Faulhammer <fauli@gentoo.org> udev-149.ebuild:
+  stable x86, bug 303031
+
+  07 Feb 2010; Matthias Schwarzott <zzam@gentoo.org> udev-141-r1.ebuild,
+  udev-145.ebuild, udev-145-r1.ebuild, udev-145-r2.ebuild,
+  udev-145-r3.ebuild, udev-146.ebuild, udev-146-r1.ebuild,
+  udev-146-r2.ebuild, udev-147-r1.ebuild, udev-149.ebuild,
+  udev-150-r1.ebuild, udev-151-r1.ebuild, udev-9999.ebuild:
+  Improve wording of devfs-compat message, Bug #301141. Sync udev-9999 to
+  latest udev-151-r1.
+
+*udev-151-r1 (01 Feb 2010)
+*udev-150-r1 (01 Feb 2010)
+
+  01 Feb 2010; Matthias Schwarzott <zzam@gentoo.org> -udev-150.ebuild,
+  +udev-150-r1.ebuild, +files/udev-150-fix-missing-firmware-timeout.diff,
+  -udev-151.ebuild, +udev-151-r1.ebuild:
+  Fix missing firmware timeout, to stop modprobe from waiting 60s for no
+  file stretching boot very long, Bug #301667.
+
+  31 Jan 2010; Matthias Schwarzott <zzam@gentoo.org> udev-151.ebuild:
+  Fix install error, bug #302903. Removed old code for multilib-installs.
+
+*udev-151 (29 Jan 2010)
+
+  29 Jan 2010; Matthias Schwarzott <zzam@gentoo.org>
+  +files/udev-151-readd-hd-rules.diff, +files/151/shell-compat-KV.sh,
+  +files/151/shell-compat-addon.sh, +files/151/udev.confd,
+  +files/151/udev.initd, +files/151/udev-dev-tarball.initd,
+  +files/151/udev-mount.initd, +files/151/udev-postmount.initd,
+  +udev-151.ebuild, +files/151/udev-start.sh, +files/151/udev-stop.sh,
+  metadata.xml:
+  Version bumped. Fix selinux, Bug #297317. Add use-flag old-hd-rules to
+  control re-adding of rules for /dev/hd*, Bug #300627.
+
+*udev-150 (19 Jan 2010)
+
+  19 Jan 2010; Matthias Schwarzott <zzam@gentoo.org> +udev-150.ebuild:
+  Version bumped.
+
+  For previous entries, please see ChangeLog-2009.

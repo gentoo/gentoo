@@ -1,0 +1,19 @@
+# ChangeLog for dev-ruby/duby
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/duby/ChangeLog,v 1.3 2014/08/05 16:01:00 mrueg Exp $
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> duby-0.0.2-r1.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+*duby-0.0.2-r1 (10 Mar 2014)
+
+  10 Mar 2014; Manuel Rüger <mrueg@gentoo.org> +duby-0.0.2-r1.ebuild,
+  -duby-0.0.2.ebuild:
+  Add missing rdepend on bitescript. EAPI bump.
+
+*duby-0.0.2 (19 Feb 2010)
+
+  19 Feb 2010; Diego E. Pettenò <flameeyes@gentoo.org> +duby-0.0.2.ebuild,
+  +metadata.xml:
+  Initial import of duby, the typed language with a Ruby-influenced syntax
+  to be used with JRuby.

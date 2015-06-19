@@ -1,0 +1,58 @@
+# ChangeLog for app-xemacs/edict
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/edict/ChangeLog,v 1.19 2011/07/22 11:24:58 xarthisius Exp $
+
+  22 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> edict-1.17.ebuild:
+  ppc64 stable wrt #369897
+
+  03 Jul 2011; Markos Chandras <hwoarang@gentoo.org> edict-1.17.ebuild:
+  Stable on amd64 wrt bug #369897
+
+  28 Jun 2011; Brent Baude <ranger@gentoo.org> edict-1.17.ebuild:
+  Marking edict-1.17 ppc stable for bug 369897
+
+  25 Jun 2011; Raúl Porcel <armin76@gentoo.org> edict-1.17.ebuild:
+  alpha/sparc stable wrt #369897
+
+  12 Jun 2011; Thomas Kahle <tomka@gentoo.org> edict-1.17.ebuild:
+  x86 stable per bug 369897
+
+*edict-1.17 (13 Aug 2010)
+
+  13 Aug 2010; Hans de Graaff <graaff@gentoo.org> +edict-1.17.ebuild:
+  Version bump: XEmacs compatibility fixes.
+
+  19 Mar 2008; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  A herd should not be listed as maintainer
+
+  25 Oct 2007; Hans de Graaff <graaff@gentoo.org> -edict-1.13.ebuild:
+  Remove old version
+
+  03 Jun 2007; Hans de Graaff <graaff@gentoo.org> edict-1.16.ebuild:
+  Stable on amd64, ppc, ppc64, sparc, x86 as per #175560
+
+  29 May 2007; Raúl Porcel <armin76@gentoo.org> edict-1.16.ebuild:
+  alpha stable wrt #175560
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*edict-1.16 (11 Nov 2006)
+
+  11 Nov 2006; Hans de Graaff <graaff@gentoo.org> +metadata.xml,
+  +edict-1.16.ebuild:
+  Version bump; add metadata.
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org> edict-1.13.ebuild:
+  Stable on ppc.
+
+  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> edict-1.13.ebuild:
+  Stable on alpha
+
+*edict-1.13 (16 Dec 2002)
+
+  22 Feb 2003;  <rendhalver@gentoo.org> edict-1.13.ebuild :
+  Add ~alpha to KEYWORDS
+
+  16 Dec 2002; Rendhalver [Peter Brown] <rendhalver@gentoo.org> :
+  Initial import.

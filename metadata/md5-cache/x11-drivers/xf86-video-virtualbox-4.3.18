@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
+DEPEND=>=x11-base/xorg-server-1.7:=[-minimal] x11-libs/libXcomposite >=dev-util/kbuild-0.1.9998_pre20131130 >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_5(-),-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),python_single_target_python2_7(+)] >=dev-lang/yasm-0.6.2 sys-power/iasl x11-proto/fontsproto x11-proto/randrproto x11-proto/renderproto x11-proto/resourceproto x11-proto/scrnsaverproto x11-proto/xextproto x11-proto/xineramaproto x11-proto/xproto x11-libs/libXdmcp x11-libs/libXau x11-libs/libX11 x11-libs/libXfixes x11-libs/libXext dri? ( x11-proto/xf86driproto >=x11-libs/libdrm-2.4.5 ) kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=VirtualBox video driver
+EAPI=5
+HOMEPAGE=http://www.virtualbox.org/
+IUSE=dri kernel_linux python_targets_python2_7
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=x11-base/xorg-server-1.7:=[-minimal] x11-libs/libXcomposite kernel_linux? ( virtual/modutils )
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=http://download.virtualbox.org/virtualbox/4.3.18/VirtualBox-4.3.18.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	linux-info	8cbc678e083c23e4ad546ca6509cf304	linux-mod	101302d4b7b694ea9622bbffb187d0de	multilib	62927b3db3a589b0806255f3a002d5d3	python-single-r1	7a178335dbd6ea7f50ed4e3e1c13c1e4	python-utils-r1	096f8247eae93026af13ab88cf4305cd	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=7e602ad28b2b2070424247177eb82b62

@@ -1,0 +1,44 @@
+# ChangeLog for sci-biology/consed
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/consed/ChangeLog,v 1.8 2014/10/26 16:13:23 jlec Exp $
+
+*consed-27 (26 Oct 2014)
+
+  26 Oct 2014; Justin Lecher <jlec@gentoo.org> -consed-19-r1.ebuild,
+  +consed-27.ebuild:
+  Import to tree; drop old EPAI=1 version, #526742
+
+  11 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+  17 Feb 2013; Justin Lecher <jlec@gentoo.org> consed-19-r2.ebuild,
+  metadata.xml:
+  Quote EPREFIX, thanks Martin Mokrejš for the patch
+
+  24 Oct 2012; Ulrich Müller <ulm@gentoo.org> consed-19-r1.ebuild,
+  consed-19-r2.ebuild:
+  Update dependency after package move from x11-libs/openmotif to
+  x11-libs/motif.
+
+  10 Oct 2010; Ulrich Mueller <ulm@gentoo.org> consed-19-r1.ebuild,
+  consed-19-r2.ebuild:
+  Fix openmotif dependency.
+
+*consed-19-r2 (22 May 2010)
+
+  22 May 2010; Justin Lecher <jlec@gentoo.org> consed-19-r1.ebuild,
+  +consed-19-r2.ebuild:
+  removed PHRED_PARAMETER_FILE env, #253451, some QA
+
+*consed-19-r1 (15 Mar 2009)
+
+  15 Mar 2009; Andrey Kislyuk <weaver@gentoo.org> -consed-19.ebuild,
+  +consed-19-r1.ebuild:
+  Revision bump fixes several issues in installation of supplementary files
+
+*consed-19 (18 Feb 2009)
+
+  18 Feb 2009; weaver <weaver@gentoo.org> +metadata.xml, +consed-19.ebuild:
+  New package sci-biology/consed, bug 253451. Ebuild written by Martin Mokrejs
+  <mmokrejs@ribosome.natur.cuni.cz> and me.
+

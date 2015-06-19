@@ -1,0 +1,20 @@
+diff -Naur ttf2pt1-3.4.4-orig/ft.c ttf2pt1-3.4.4/ft.c
+--- ttf2pt1-3.4.4.orig/ft.c	2014-07-02 14:19:32.000000000 -0700
++++ ttf2pt1-3.4.4/ft.c	2014-07-02 14:20:22.794538869 -0700
+@@ -13,11 +13,11 @@
+ #include <ctype.h>
+ #include <sys/types.h>
+ #include <ft2build.h>
+-#include <freetype/freetype.h>
+-#include <freetype/ftglyph.h>
+-#include <freetype/ftsnames.h>
+-#include <freetype/ttnameid.h>
+-#include <freetype/ftoutln.h>
++#include <freetype2/freetype.h>
++#include <freetype2/ftglyph.h>
++#include <freetype2/ftsnames.h>
++#include <freetype2/ttnameid.h>
++#include <freetype2/ftoutln.h>
+ #include "pt1.h"
+ #include "global.h"
+ 

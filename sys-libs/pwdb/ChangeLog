@@ -1,0 +1,145 @@
+# ChangeLog for sys-libs/pwdb
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/pwdb/ChangeLog,v 1.41 2012/04/13 23:21:39 vapier Exp $
+
+  13 Apr 2012; Mike Frysinger <vapier@gentoo.org> pwdb-0.62.ebuild,
+  files/pwdb-0.62-build.patch:
+  Use libtirpc for nis logic #198134 by Wolfgang Thiess.
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> pwdb-0.62.ebuild:
+  Drop to ~mips
+
+  07 Feb 2008; Raúl Porcel <armin76@gentoo.org> pwdb-0.62.ebuild:
+  Fix HOMEPAGE
+
+  31 Dec 2006; Mike Frysinger <vapier@gentoo.org> pwdb-0.62.ebuild:
+  Punt old flag filters and use emake in install.
+
+  27 Jun 2006; Joel Martin <kanaka@gentoo.org> pwdb-0.62.ebuild:
+  Fix sed of default.defs so that it works with CC that has path it, and so
+  the sed doesn't silently fail.
+
+  10 May 2006; Chris PeBenito <pebenito@gentoo.org>
+  files/pwdb-0.62-selinux.patch:
+  Fix SELinux patch to apply on top of the misc source touchups.
+
+  19 Mar 2006; Mike Frysinger <vapier@gentoo.org>
+  files/pwdb-0.62-build.patch:
+  Add misc source touchups by Beech Horn #126695.
+
+  12 Feb 2006; Mike Frysinger <vapier@gentoo.org> pwdb-0.62.ebuild:
+  Restrict broken src_test #122603 by Ryan Hill.
+
+  05 Jan 2006; Chris PeBenito <pebenito@gentoo.org>
+  files/pwdb-0.62-selinux.patch:
+  Fix SELinux patch, as seen in bug #116738.
+
+  08 Oct 2005; Simon Stelling <blubb@gentoo.org> pwdb-0.62.ebuild,
+  -pwdb-0.62-r1.ebuild:
+  backport -r1 changes to 0.62, no need to do a revision bump for
+  multilib-strict fixes
+
+*pwdb-0.62-r1 (03 Feb 2005)
+
+  03 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +pwdb-0.62-r1.ebuild:
+  Multilib fixes.
+
+  02 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> pwdb-0.61-r4.ebuild,
+  pwdb-0.62.ebuild:
+  virtual/glibc -> virtual/libc
+
+  09 Mar 2004; <agriffis@gentoo.org> pwdb-0.62.ebuild:
+  stable on alpha and ia64
+
+  07 Mar 2004; Joshua Kinard <kumba@gentoo.org> pwdb-0.62.ebuild:
+  Marked stable on mips.
+
+  02 Mar 2004; Brian Jackson <iggy@gentoo.org> pwdb-0.62.ebuild:
+  adding initial s390 support
+
+  27 Feb 2004; Seemant Kulleen <seemant@gentoo.org> pwdb-0.61-r4.ebuild,
+  pwdb-0.62.ebuild:
+  move the filter-flags statement into src_compile
+
+  09 Feb 2004; <gustavoz@gentoo.org> pwdb-0.62.ebuild:
+  stable on sparc
+
+  09 Feb 2004; Guy Martin <gmsoft@gentoo.org> pwdb-0.62.ebuild:
+  Marked stable on hppa.
+
+  06 Feb 2004; Martin Schlemmer <azarah@gentoo.org> pwdb-0.62.ebuild:
+  Bump to stable for x86 (needed by pam).
+
+  03 Feb 2004; Bartosch Pixa <darkspecter@gentoo.org> pwdb-0.62.ebuild:
+  set ppc in keywords
+
+  21 Jan 2004; Chris PeBenito <pebenito@gentoo.org>
+  files/pwdb-0.62-selinux.patch:
+  Fix selinux patch to not link against attr
+
+  21 Dec 2003; Brad House <brad_mssw@gentoo.org> pwdb-0.62.ebuild:
+  mark stable on amd64
+
+*pwdb-0.62 (09 Nov 2003)
+
+  09 Nov 2003; Martin Schlemmer <azarah@gentoo.org> pwdb-0.62.ebuild,
+  files/pwdb-0.62-selinux.patch, files/pwdb-0.62-use-gcc-as-linker.patch:
+  Update version.
+
+  28 Oct 2003; Chris PeBenito <pebenito@gentoo.org> pwdb-0.61-r4.ebuild,
+  files/pwdb-0.61-selinux.diff.bz2:
+  Add new API SELinux patch
+
+  11 Aug 2003; Luke-Jr <luke-jr@gentoo.org> pwdb-0.61-r3.ebuild,
+  pwdb-0.61-r4.ebuild:
+  Changed LICENSE to "BSD | GPL-2"
+
+  08 Aug 2003; Matthew Rickard <frogger@gentoo.org> pwdb-0.61-r3.ebuild,
+  pwdb-0.61-r4.ebuild:
+  Filter -fstack-protector or else pam_pwdb module
+  will not build.  This should resolve Bug 23934.
+
+  18 May 2003; Tavis Ormandy <taviso@gentoo.org> pwdb-0.61-r4.ebuild:
+  stop gcc being hardcoded.
+
+  24 Mar 2003; Guy Martin <gmsoft@gentoo.org> pwdb-0.61-r4.ebuild, pwdb-0.61-hppa.patch :
+  Added patch to fix linking under some circumstances on hppa.
+
+  18 Feb 2003; Zach Welch <zwelch@gentoo.org> pwdb-0.61-r4.ebuild :
+  Added arm to keywords.
+
+  09 Feb 2003; Guy Martin <gmsoft@gentoo.org> pwdb-0.61-r4.ebuild :
+  Added hppa to keywords.
+
+="x86 ppc sparc alpha mips"
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*pwdb-0.61-r4 (26 Oct 2002)
+
+  18 Jan 2003; Jan Seidel <tuxus@gentoo.org> :
+  Added mips to keywords
+
+  26 Oct 2002; Martin Schlemmer <azarah@gentoo.org> :
+  Fix pwdb for bug #4411.
+
+*pwdb-0.61-r3 (1 Feb 2002)
+
+  21 Sep 2002; Mike Frysinger <vapier@gentoo.org> :
+  Added HOMEPAGE variable and updated SRC_URI
+
+  15 Jul 2002; Mark Guertin <gerk@gentoo.org>
+  Added ppc to keywords
+
+  5 Apr 2002; M.Schlemmer <azarah@gentoo.org> pwdb-0.61-r3.ebuild :
+  Remove lines to install /etc/pam.d/passwd, since it comes with shadow.
+
+  21 Mar 2002; Seemant Kulleen <seemant@gentoo.org> pwdb-0.61-r3.ebuild :
+  HTML documentation no longer gzipped.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

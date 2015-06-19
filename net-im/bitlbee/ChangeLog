@@ -1,0 +1,787 @@
+# ChangeLog for net-im/bitlbee
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/bitlbee/ChangeLog,v 1.181 2015/06/02 18:57:22 pacho Exp $
+
+  02 Jun 2015; Pacho Ramos <pacho@gentoo.org> -bitlbee-3.0.5-r1.ebuild,
+  -files/bitlbee-3.0-configure.patch, -files/bitlbee-3.0.5-parallel-make.patch,
+  -files/bitlbee-3.0.6-configure.patch, -files/bitlbee-3.2.1-tests.patch:
+  Drop old ebuild still using 'jabber' instead of 'xmpp' USE (#216300)
+
+  16 May 2015; Pacho Ramos <pacho@gentoo.org> bitlbee-3.2.2.ebuild:
+  Rename jabber to xmpp USE (#216300)
+
+  19 Apr 2015; Pacho Ramos <pacho@gentoo.org> bitlbee-3.2.2.ebuild:
+  x86 stable wrt bug #529512
+
+  14 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -bitlbee-3.0.6.ebuild,
+  -bitlbee-3.2.1-r2.ebuild, -bitlbee-3.2.1.ebuild, -bitlbee-3.2.ebuild:
+  Remove old.
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> bitlbee-3.2.1-r2.ebuild,
+  bitlbee-3.2.1.ebuild, bitlbee-3.2.2.ebuild, bitlbee-3.2.ebuild:
+  Drop old Python implementations
+
+  27 Mar 2015; Agostino Sarubbo <ago@gentoo.org> bitlbee-3.2.2.ebuild:
+  Stable for amd64, wrt bug #529512
+
+  02 Mar 2015; Agostino Sarubbo <ago@gentoo.org> bitlbee-3.2.2.ebuild:
+  Stable for ppc, wrt bug #529512
+
+  02 Nov 2014; Sven Vermeulen <swift@gentoo.org> bitlbee-3.0.5-r1.ebuild,
+  bitlbee-3.0.6.ebuild, bitlbee-3.2.1-r2.ebuild, bitlbee-3.2.1.ebuild,
+  bitlbee-3.2.2.ebuild, bitlbee-3.2.ebuild:
+  Remove sec-policy/selinux-* dependency from DEPEND but keep in RDEPEND (bug
+  #527698)
+
+*bitlbee-3.2.2 (10 Oct 2014)
+
+  10 Oct 2014; Alex Alexander <wired@gentoo.org> +bitlbee-3.2.2.ebuild:
+  version bump. libotr-4 and systemd support. bug #516918
+
+*bitlbee-3.2.1-r2 (09 Oct 2014)
+
+  09 Oct 2014; Alex Alexander <wired@gentoo.org> -bitlbee-3.2.1-r1.ebuild,
+  +bitlbee-3.2.1-r2.ebuild, +files/bitlbee.confd-r1, files/bitlbee.initd-r1:
+  init: let users choose if they want forks stopped
+
+*bitlbee-3.2.1-r1 (07 Oct 2014)
+
+  07 Oct 2014; Alex Alexander <wired@gentoo.org> +bitlbee-3.2.1-r1.ebuild,
+  +files/bitlbee.initd-r1:
+  init script: stop and restart properly, bug #418461
+
+  05 Aug 2014; Manuel Rüger <mrueg@gentoo.org> bitlbee-3.0.5-r1.ebuild,
+  bitlbee-3.0.6.ebuild, bitlbee-3.2.1.ebuild, bitlbee-3.2.ebuild:
+  Remove trailing '.' from DESCRIPTION.
+
+  05 Jun 2014; Manuel Rüger <mrueg@gentoo.org> bitlbee-3.0.5-r1.ebuild,
+  bitlbee-3.0.6.ebuild, bitlbee-3.2.1.ebuild, bitlbee-3.2.ebuild:
+  Restrict dependency to <net-libs/libotr-4
+
+  26 May 2014; Sven Vermeulen <swift@gentoo.org> bitlbee-3.0.5-r1.ebuild,
+  bitlbee-3.0.6.ebuild, bitlbee-3.2.1.ebuild, bitlbee-3.2.ebuild:
+  Add USE=selinux dependency to sec-policy/selinux-bitlbee
+
+  17 Dec 2013; Tim Harder <radhermit@gentoo.org> bitlbee-3.2.1.ebuild,
+  +files/bitlbee-3.2.1-tests.patch:
+  Fix tests (patch by vikraman).
+
+*bitlbee-3.2.1 (17 Dec 2013)
+
+  17 Dec 2013; Vikraman <vikraman@gentoo.org> +bitlbee-3.2.1.ebuild,
+  +files/bitlbee-3.2.1-configure.patch:
+  Bump to version 3.2.1
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> bitlbee-3.2.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  01 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #151880
+
+  08 Jan 2013; Cédric Krier <cedk@gentoo.org> bitlbee-3.0.5-r1.ebuild,
+  bitlbee-3.0.6.ebuild, bitlbee-3.2.ebuild, files/bitlbee.initd:
+  Remove /var/run keepdir statements for bug #450882
+
+*bitlbee-3.2 (07 Jan 2013)
+
+  07 Jan 2013; Tim Harder <radhermit@gentoo.org> +bitlbee-3.2.ebuild:
+  Version bump. Migrate to python-single-r1.
+
+*bitlbee-3.0.6 (19 Oct 2012)
+
+  19 Oct 2012; Tim Harder <radhermit@gentoo.org> +bitlbee-3.0.6.ebuild,
+  +files/bitlbee-3.0.6-configure.patch:
+  Version bump.
+
+  20 Jul 2012; Anthony G. Basile <blueness@gentoo.org> bitlbee-3.0.5-r1.ebuild:
+  Keyword ~ppc64
+
+  14 Jun 2012; Tim Harder <radhermit@gentoo.org> bitlbee-3.0.5-r1.ebuild:
+  Add user eclass for enewgroup and enewuser.
+
+  14 Jun 2012; Tim Harder <radhermit@gentoo.org> -bitlbee-3.0.3.ebuild,
+  -bitlbee-3.0.3-r1.ebuild, -files/bitlbee-3.0.3-msn-login-fix.patch,
+  -bitlbee-3.0.4.ebuild, -bitlbee-3.0.5.ebuild:
+  Remove old.
+
+  14 Jun 2012; Michael Weber <xmw@gentoo.org> bitlbee-3.0.5-r1.ebuild:
+  ppc stable (bug 409213)
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> bitlbee-3.0.3.ebuild,
+  bitlbee-3.0.3-r1.ebuild, bitlbee-3.0.4.ebuild, bitlbee-3.0.5.ebuild,
+  bitlbee-3.0.5-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  27 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> bitlbee-3.0.5-r1.ebuild:
+  x86 stable wrt bug #409213
+
+  23 Mar 2012; Agostino Sarubbo <ago@gentoo.org> bitlbee-3.0.5-r1.ebuild:
+  Stable for amd64, wrt bug #409213
+
+*bitlbee-3.0.5-r1 (17 Mar 2012)
+
+  17 Mar 2012; Tim Harder <radhermit@gentoo.org> +bitlbee-3.0.5-r1.ebuild,
+  +files/bitlbee-3.0.5-parallel-make.patch, metadata.xml:
+  Revbump to add support for building skype plugin (bug #405043).
+
+  23 Feb 2012; Brent Baude <ranger@gentoo.org> bitlbee-3.0.4.ebuild:
+  Marking bitlbee-3.0.4 ppc for bug 405011
+
+  21 Feb 2012; Agostino Sarubbo <ago@gentoo.org> bitlbee-3.0.4.ebuild:
+  Stable for amd64, wrt bug #405011
+
+*bitlbee-3.0.5 (19 Feb 2012)
+
+  19 Feb 2012; Tim Harder <radhermit@gentoo.org> +bitlbee-3.0.5.ebuild:
+  Version bump.
+
+*bitlbee-3.0.4 (04 Dec 2011)
+
+  04 Dec 2011; Tim Harder <radhermit@gentoo.org> +bitlbee-3.0.4.ebuild,
+  files/bitlbee.initd:
+  Version bump. Update init script to fix deprecated flag usage.
+
+*bitlbee-3.0.3-r1 (14 Nov 2011)
+
+  14 Nov 2011; Alex Alexander <wired@gentoo.org> +bitlbee-3.0.3-r1.ebuild,
+  +files/bitlbee-3.0.3-msn-login-fix.patch:
+  fix for msn login failures
+
+  11 Oct 2011; Tim Harder <radhermit@gentoo.org>
+  -files/bitlbee-1.2.2-fix_tests_check_set.patch, -bitlbee-1.2.3.ebuild,
+  -bitlbee-1.2.3-r1.ebuild, -bitlbee-1.2.8.ebuild, -bitlbee-3.0.ebuild,
+  -bitlbee-3.0.1.ebuild, -files/bitlbee-3.0.1-ldflags.patch,
+  -files/bitlbee-3.0.1-no-ssl.patch, -bitlbee-3.0.2.ebuild,
+  -files/bitlbee-3.0-jabber.patch, -files/bitlbeed.confd2,
+  -files/bitlbeed.initd:
+  Remove old.
+
+  11 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org> bitlbee-3.0.3.ebuild:
+  ppc stable wrt #375155
+
+  09 Aug 2011; Tim Harder <radhermit@gentoo.org> bitlbee-3.0.3.ebuild:
+  Fix debug flag handling.
+
+  26 Jul 2011; Markus Meier <maekke@gentoo.org> bitlbee-3.0.3.ebuild:
+  x86 stable, bug #375155
+
+  23 Jul 2011; Tim Harder <radhermit@gentoo.org> bitlbee-3.0.3.ebuild:
+  Fix tests.
+
+  16 Jul 2011; Markos Chandras <hwoarang@gentoo.org> bitlbee-3.0.3.ebuild:
+  Stable on amd64 wrt bug #375155
+
+*bitlbee-3.0.3 (13 Jun 2011)
+
+  13 Jun 2011; Tim Harder <radhermit@gentoo.org> +bitlbee-3.0.3.ebuild:
+  Version bump.
+
+*bitlbee-3.0.2 (08 Mar 2011)
+
+  08 Mar 2011; Tim Harder <radhermit@gentoo.org> +bitlbee-3.0.2.ebuild:
+  Version bump (thanks to Alex Alexander for help). Update to EAPI 4 and use
+  REQUIRED_USE.
+
+  25 Feb 2011; Thomas Kahle <tomka@gentoo.org> bitlbee-3.0.1.ebuild:
+  x86 stable per bug 347537
+
+  10 Feb 2011; Tim Harder <radhermit@gentoo.org> bitlbee-3.0.1.ebuild,
+  +files/bitlbee-3.0.1-no-ssl.patch:
+  Fix compile when the ssl USE flag isn't selected.
+
+  27 Jan 2011; Markos Chandras <hwoarang@gentoo.org> bitlbee-3.0.1.ebuild,
+  +files/bitlbee-3.0.1-ldflags.patch:
+  QA commit: Respect ldflags: Bug #350466. Thanks to Nick White
+  <gentoo@njw.me.uk>
+  AMD64: Stable on amd64 wrt bug #347537
+
+  23 Jan 2011; Raúl Porcel <armin76@gentoo.org> bitlbee-1.2.3.ebuild,
+  bitlbee-1.2.3-r1.ebuild, bitlbee-1.2.8.ebuild, bitlbee-3.0.ebuild,
+  bitlbee-3.0.1.ebuild:
+  Drop alpha/ia64/sparc keywords
+
+  10 Jan 2011; Brent Baude <ranger@gentoo.org> bitlbee-3.0.1.ebuild:
+  stable ppc, bug 347537
+
+  05 Jan 2011; Markos Chandras <hwoarang@gentoo.org> bitlbee-3.0.1.ebuild:
+  Revert my commit due to bug #347537
+
+  05 Jan 2011; Markos Chandras <hwoarang@gentoo.org> bitlbee-3.0.1.ebuild:
+  Stable on amd64 wrt bug #347537
+
+*bitlbee-3.0.1 (25 Nov 2010)
+
+  25 Nov 2010; Tim Harder <radhermit@gentoo.org> +bitlbee-3.0.1.ebuild:
+  Version bump to new bugfix release.
+
+  29 Oct 2010; Tim Harder <radhermit@gentoo.org> bitlbee-3.0.ebuild:
+  Add conditional otr dependency on net-libs/libotr (bug #343181 by Manu
+  Wächter) and install the plugin in the correct place for multilib.
+
+  28 Oct 2010; Alex Alexander <wired@gentoo.org> -bitlbee-1.2.4.ebuild,
+  -bitlbee-1.2.4-r1.ebuild, -bitlbee-1.2.6a.ebuild, -bitlbee-1.2.7.ebuild:
+  removed old versions
+
+*bitlbee-3.0 (28 Oct 2010)
+
+  28 Oct 2010; Tim Harder <radhermit@gentoo.org> +bitlbee-3.0.ebuild,
+  +files/bitlbee-3.0-configure.patch, +files/bitlbee-3.0-jabber.patch,
+  metadata.xml:
+  Version bump (thanks to wired for helping). This version adds support for
+  file transfers, OTR encryption, plugins, optional libpurple support, event
+  handling using libevent, and many other updates. Added myself to the
+  maintainer list.
+
+*bitlbee-1.2.8 (08 Sep 2010)
+
+  08 Sep 2010; Alex Alexander <wired@gentoo.org> +bitlbee-1.2.8.ebuild,
+  metadata.xml:
+  version bump, EAPI 3, bug #327851. added myself as maintainer.
+
+  10 Aug 2010; Markos Chandras <hwoarang@gentoo.org> bitlbee-1.2.7.ebuild:
+  Respect LDFLAGS. Bug #331845. Thanks to Diego E. 'Flameeyes' Pettenò
+  <flameeyes@gentoo.org> for reporting
+
+*bitlbee-1.2.7 (19 May 2010)
+
+  19 May 2010; Cédric Krier <cedk@gentoo.org> +bitlbee-1.2.7.ebuild:
+  Version bump
+
+*bitlbee-1.2.6a (29 Apr 2010)
+
+  29 Apr 2010; Cédric Krier <cedk@gentoo.org> +bitlbee-1.2.6a.ebuild,
+  metadata.xml:
+  Version bump and add twitter USE flag
+
+  04 Mar 2010; Cédric Krier <cedk@gentoo.org> files/bitlbee.confd,
+  files/bitlbee.initd:
+  Fix bitlbee initd script
+
+*bitlbee-1.2.4-r1 (28 Feb 2010)
+
+  28 Feb 2010; Cédric Krier <cedk@gentoo.org> +bitlbee-1.2.4-r1.ebuild,
+  +files/bitlbee.confd, +files/bitlbee.initd:
+  Replace bitlbeed init script with bitlbee for bug #301082
+
+*bitlbee-1.2.4 (15 Nov 2009)
+
+  15 Nov 2009; Cédric Krier <cedk@gentoo.org> +bitlbee-1.2.4.ebuild:
+  Version bump
+
+  01 Nov 2008; nixnut <nixnut@gentoo.org> bitlbee-1.2.3-r1.ebuild:
+  Stable on ppc wrt bug 244533
+
+  28 Oct 2008; Raúl Porcel <armin76@gentoo.org> bitlbee-1.2.3-r1.ebuild:
+  alpha/ia64/sparc stable #244533
+
+  27 Oct 2008; Markus Meier <maekke@gentoo.org> bitlbee-1.2.3-r1.ebuild:
+  amd64/x86 stable, bug #244533
+
+  28 Sep 2008; Cédric Krier <cedk@gentoo.org>
+  -files/bitlbee-1.0.3-xinetd.patch, -files/bitlbee-gentoohack.patch,
+  -files/bitlbee-xinetd.patch, -files/bitlbeed.confd, -files/bitlbeed.init,
+  -files/oscar-sms.patch, -bitlbee-1.0.3.ebuild, -bitlbee-1.0.4.ebuild,
+  -bitlbee-1.1-r1.ebuild, -bitlbee-1.1.1.ebuild, -bitlbee-1.2.ebuild,
+  -bitlbee-1.2.1.ebuild, -bitlbee-1.2.2.ebuild:
+  Remove old
+
+*bitlbee-1.2.3-r1 (28 Sep 2008)
+
+  28 Sep 2008; Cédric Krier <cedk@gentoo.org> +bitlbee-1.2.3-r1.ebuild:
+  Add install-dev for bug #237943
+
+  19 Sep 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  bitlbee-1.2.3.ebuild:
+  ppc stable, bug #236160
+
+  11 Sep 2008; Tobias Heinlein <keytoaster@gentoo.org> bitlbee-1.2.3.ebuild:
+  amd64 stable wrt security bug #236160
+
+  11 Sep 2008; Raúl Porcel <armin76@gentoo.org> bitlbee-1.2.3.ebuild:
+  alpha/ia64/x86 stable wrt #236160
+
+  10 Sep 2008; Ferris McCormick <fmccor@gentoo.org> bitlbee-1.2.3.ebuild:
+  Sparc stable, immediate --- Security Bug #236160 --- tests run cleanly.
+
+*bitlbee-1.2.3 (10 Sep 2008)
+
+  10 Sep 2008; Cédric Krier <cedk@gentoo.org> +bitlbee-1.2.3.ebuild:
+  Version bump for bug #236160
+
+  31 Aug 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  bitlbee-1.2.2.ebuild:
+  ppc stable, bug #236160
+
+  31 Aug 2008; Raúl Porcel <armin76@gentoo.org> bitlbee-1.2.2.ebuild:
+  alpha/ia64 stable wrt #236160
+
+  31 Aug 2008; Ferris McCormick <fmccor@gentoo.org> bitlbee-1.2.2.ebuild:
+  Sparc stable, security Bug #236160.
+
+  31 Aug 2008; Markus Meier <maekke@gentoo.org> bitlbee-1.2.2.ebuild:
+  x86 stable, bug #236160
+
+  30 Aug 2008; Tobias Heinlein <keytoaster@gentoo.org> bitlbee-1.2.2.ebuild:
+  amd64 stable wrt security bug #236160
+
+  30 Aug 2008; Cédric Krier <cedk@gentoo.org>
+  +files/bitlbee-1.2.2-fix_tests_check_set.patch, bitlbee-1.2.2.ebuild:
+  Fix tests check_set for bug #236160
+
+*bitlbee-1.2.2 (30 Aug 2008)
+
+  30 Aug 2008; Cédric Krier <cedk@gentoo.org> +bitlbee-1.2.2.ebuild:
+  Version bump for bug #236160
+
+  05 Aug 2008; Thomas Anderson <gentoofan23@gentoo.org> metadata.xml:
+  Add USE flag description to metadata as per GLEP 56.
+
+*bitlbee-1.2.1 (08 Jul 2008)
+
+  08 Jul 2008; Cédric Krier <cedk@gentoo.org> +bitlbee-1.2.1.ebuild:
+  Version bump
+
+  12 Apr 2008; Tobias Scherbaum <dertobi123@gentoo.org> bitlbee-1.2.ebuild:
+  ppc stable, bug #213958
+
+  30 Mar 2008; Cédric Krier <cedk@gentoo.org> bitlbee-1.2.ebuild:
+  Change ewarn to elog for bug #215432
+
+  30 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> bitlbee-1.2.ebuild:
+  amd64 stable wrt bug #213958
+
+  30 Mar 2008; Raúl Porcel <armin76@gentoo.org> bitlbee-1.2.ebuild:
+  alpha/ia64/sparc stable wrt #213958
+
+  29 Mar 2008; Christian Faulhammer <opfer@gentoo.org> bitlbee-1.2.ebuild:
+  stable x86, bug 213958
+
+  29 Mar 2008; Cédric Krier <cedk@gentoo.org> bitlbee-1.2.ebuild:
+  Change order of ssl selection
+
+  27 Mar 2008; Cédric Krier <cedk@gentoo.org> bitlbee-1.2.ebuild:
+  Disable jabber protocol to compile with nss for bug #213958
+
+  25 Mar 2008; Cédric Krier <cedk@gentoo.org> bitlbee-1.0.3.ebuild,
+  bitlbee-1.0.4.ebuild, bitlbee-1.1-r1.ebuild:
+  Fix missing quote
+
+  25 Mar 2008; Cédric Krier <cedk@gentoo.org> bitlbee-1.2.ebuild:
+  Add missing dep for bug #213958
+
+*bitlbee-1.2 (19 Mar 2008)
+
+  19 Mar 2008; Cédric Krier <cedk@gentoo.org> +bitlbee-1.2.ebuild:
+  Version bump
+
+*bitlbee-1.1.1 (30 Dec 2007)
+
+  30 Dec 2007; Cédric Krier <cedk@gentoo.org> +bitlbee-1.1.1.ebuild:
+  Version bump
+
+  13 Dec 2007; Cédric Krier <cedk@gentoo.org> bitlbee-1.1-r1.ebuild:
+  Fix to enable bogus ssl
+
+  13 Dec 2007; Cédric Krier <cedk@gentoo.org>
+  -files/bitlbee-1.0-xinetd.patch, -bitlbee-1.0.1.ebuild,
+  -bitlbee-1.0.2.ebuild, -bitlbee-1.1.ebuild:
+  Remove old
+
+*bitlbee-1.1-r1 (13 Dec 2007)
+
+  13 Dec 2007; Cédric Krier <cedk@gentoo.org> +files/oscar-sms.patch,
+  +bitlbee-1.1-r1.ebuild:
+  Fix for bugs #134202 and #156159
+
+  28 Oct 2007; Christian Heim <phreak@gentoo.org> bitlbee-1.0.1.ebuild,
+  bitlbee-1.0.2.ebuild, bitlbee-1.0.3.ebuild, bitlbee-1.0.4.ebuild,
+  bitlbee-1.1.ebuild:
+  Include virtual/logger in RDEPEND, as the initscript already specifies 'need
+  logger'.
+
+  18 Sep 2007; Cédric Krier <cedk@gentoo.org>
+  -files/bitlbee-0.80-xinetd.patch, -files/bitlbee-0.82-segv.diff,
+  -files/bitlbee-0.84-passport.diff, -bitlbee-0.92.ebuild,
+  -bitlbee-0.92-r1.ebuild, -bitlbee-0.92-r2.ebuild, -bitlbee-0.92-r3.ebuild,
+  -bitlbee-0.99.ebuild, -bitlbee-1.0.ebuild:
+  Remove old
+
+*bitlbee-1.1 (18 Sep 2007)
+
+  18 Sep 2007; Cédric Krier <cedk@gentoo.org> +bitlbee-1.1.ebuild:
+  Version bump
+
+  18 Sep 2007; Cédric Krier <cedk@gentoo.org> bitlbee-1.0.4.ebuild:
+  Fix ssl option for bug #134202
+
+  16 Sep 2007; Cédric Krier <cedk@gentoo.org> bitlbee-0.92-r1.ebuild,
+  bitlbee-0.92-r2.ebuild, bitlbee-0.92-r3.ebuild, bitlbee-0.99.ebuild:
+  Fix syntax for bug #192664
+
+*bitlbee-1.0.4 (05 Sep 2007)
+
+  05 Sep 2007; Cédric Krier <cedk@gentoo.org> +files/bitlbeed.confd2,
+  +files/bitlbeed.initd, +bitlbee-1.0.4.ebuild:
+  Version bump and use bitlbee user instead of nobody
+
+  05 Sep 2007; Cédric Krier <cedk@gentoo.org> metadata.xml:
+  Add cedk
+
+  05 Sep 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing weeve from metadata due to his retirement (see #181019 for reference).
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org> bitlbee-0.92.ebuild,
+  bitlbee-0.92-r1.ebuild, bitlbee-0.92-r2.ebuild, bitlbee-0.92-r3.ebuild,
+  bitlbee-0.99.ebuild, bitlbee-1.0.ebuild, bitlbee-1.0.1.ebuild,
+  bitlbee-1.0.2.ebuild, bitlbee-1.0.3.ebuild:
+  Fix *initd, *confd and *envd calls (#173884, #174266)
+
+  10 Mar 2007; Peter Weller <welp@gentoo.org> bitlbee-1.0.3.ebuild:
+  Keyworded ~x86-fbsd
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  12 Jan 2007; Alexander H. Færøy <eroyf@gentoo.org> bitlbee-1.0.3.ebuild:
+  Stable on IA64.
+
+  05 Jan 2007; Jason Wever <weeve@gentoo.org> bitlbee-0.92.ebuild,
+  bitlbee-0.92-r1.ebuild, bitlbee-0.92-r2.ebuild, bitlbee-0.92-r3.ebuild,
+  bitlbee-0.99.ebuild, bitlbee-1.0.ebuild, bitlbee-1.0.1.ebuild,
+  bitlbee-1.0.2.ebuild, bitlbee-1.0.3.ebuild:
+  Change einfo statements into elog statements.
+
+  10 Sep 2006; Emanuele Giaquinta <exg@gentoo.org> bitlbee-1.0.3.ebuild:
+  Stable on ppc; bug #146417
+
+  09 Sep 2006; Thomas Cort <tcort@gentoo.org> bitlbee-1.0.3.ebuild:
+  Stable on amd64 wrt Bug #146417.
+
+  05 Sep 2006; Stephen Bennett <spb@gentoo.org> bitlbee-1.0.3.ebuild:
+  x86 stable
+
+  05 Sep 2006; Thomas Cort <tcort@gentoo.org> bitlbee-1.0.3.ebuild:
+  Stable on alpha wrt Bug #146417.
+
+  05 Sep 2006; Jason Wever <weeve@gentoo.org> bitlbee-1.0.3.ebuild:
+  Stable on SPARC.
+
+  02 Sep 2006; Jason Wever <weeve@gentoo.org> bitlbee-0.99.ebuild,
+  bitlbee-1.0.ebuild, bitlbee-1.0.1.ebuild, bitlbee-1.0.2.ebuild,
+  bitlbee-1.0.3.ebuild:
+  Fixed grammar in the einfo note about the IRSSI script, resolves bug #144992.
+
+*bitlbee-1.0.3 (16 Jul 2006)
+
+  16 Jul 2006; Jason Wever <weeve@gentoo.org>
+  +files/bitlbee-1.0.3-xinetd.patch, +bitlbee-1.0.3.ebuild:
+  Version bump tp 1.0.3. Updated SSL handling to better allow support for
+  openssl, gnutls and nss. Also fixed handling of SSL so that building MSN
+  without SSL support will fail at the request of upstream and users.
+  Addresses bugs #138279, #134202 and #132409.
+
+  13 Jul 2006; Aron Griffis <agriffis@gentoo.org> bitlbee-1.0.1.ebuild:
+  Mark 1.0.1 stable on ia64
+
+  27 Apr 2006; Alec Warner <antarus@gentoo.org> files/digest-bitlbee-0.92,
+  files/digest-bitlbee-0.92-r1, files/digest-bitlbee-0.92-r2,
+  files/digest-bitlbee-0.92-r3, files/digest-bitlbee-0.99,
+  files/digest-bitlbee-1.0, Manifest:
+  Fixing SHA256 digest, pass four
+
+  21 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  bitlbee-1.0.1.ebuild:
+  ppc stable, bug #130422
+
+  21 Apr 2006; Joshua Jackson <tsunam@gentoo.org> bitlbee-1.0.1.ebuild:
+  stable on x86; bug #130422
+
+  19 Apr 2006; Thomas Cort <tcort@gentoo.org> bitlbee-1.0.1.ebuild:
+  Stable on amd64 wrt Bug #130422.
+
+  19 Apr 2006; Thomas Cort <tcort@gentoo.org> bitlbee-1.0.1.ebuild:
+  Stable on alpha wrt Bug #130422.
+
+*bitlbee-1.0.2 (19 Apr 2006)
+
+  19 Apr 2006; Jason Wever <weeve@gentoo.org> bitlbee-1.0.1.ebuild,
+  +bitlbee-1.0.2.ebuild:
+  Version bump to 1.0.2.  Marked 1.0.1 stable on SPARC.
+
+  27 Feb 2006; Jason Wever <weeve@gentoo.org> bitlbee-0.92.ebuild,
+  bitlbee-0.92-r1.ebuild, bitlbee-0.92-r2.ebuild, bitlbee-0.92-r3.ebuild,
+  bitlbee-0.99.ebuild, bitlbee-1.0.ebuild, bitlbee-1.0.1.ebuild:
+  Applied fix suggestion from bug #124216.
+
+  13 Feb 2006; Jason Wever <weeve@gentoo.org> bitlbee-1.0.1.ebuild:
+  Fixed to use configure rather than econf as this configure ain't your
+  autotool's baby! Thanks to Ticho for pointing this out. Also fixed docs
+  installing.
+
+*bitlbee-1.0.1 (15 Jan 2006)
+
+  15 Jan 2006; Jason Wever <weeve@gentoo.org> +bitlbee-1.0.1.ebuild:
+  Version bump.
+
+*bitlbee-1.0 (08 Dec 2005)
+
+  08 Dec 2005; Jason Wever <weeve@gentoo.org>
+  +files/bitlbee-1.0-xinetd.patch, +bitlbee-1.0.ebuild:
+  Version bump.
+
+*bitlbee-0.99 (07 Nov 2005)
+
+  07 Nov 2005; Jason Wever <weeve@gentoo.org> +bitlbee-0.99.ebuild:
+  Version bump, resolves bug #111419. Thanks to Ludvig Ericson
+  <ludvig.ericson@gmail.com> for the ebuild. The aimextras use flag is no
+  longer used as that functionality is natively present in this release.
+
+*bitlbee-0.92-r3 (31 Oct 2005)
+
+  31 Oct 2005; Jason Wever <weeve@gentoo.org> +bitlbee-0.92-r3.ebuild:
+  Rev bump, adds support for Google Talk. Resolves bug #109026. Thanks to
+  Ludvig Ericson <ludvig.ericson@gmail.com> for the ebuild.
+
+*bitlbee-0.92-r2 (16 Jul 2005)
+
+  16 Jul 2005; Jason Wever <weeve@gentoo.org> +bitlbee-0.92-r2.ebuild:
+  Revision bump, resolves bug #97098.
+
+*bitlbee-0.92-r1 (15 May 2005)
+
+  15 May 2005; Jason Wever <weeve@gentoo.org> -bitlbee-0.84.ebuild,
+  -bitlbee-0.91.ebuild, -bitlbee-0.91-r1.ebuild, bitlbee-0.92.ebuild,
+  +bitlbee-0.92-r1.ebuild:
+  Updated bitlbee to support toolchain-funcs eclass instead of gcc and added a
+  new rev bump to resolve bug #74367.
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org> bitlbee-0.92.ebuild:
+  Stable on ppc.
+
+  20 Apr 2005; Simon Stelling <blubb@gentoo.org> bitlbee-0.92.ebuild:
+  stable on amd64
+
+  28 Feb 2005; Aron Griffis <agriffis@gentoo.org> bitlbee-0.92.ebuild:
+  stable on ia64 #83467
+
+*bitlbee-0.92 (27 Feb 2005)
+
+  27 Feb 2005; Jason Wever <weeve@gentoo.org>
+  +files/bitlbee-gentoohack.patch, +bitlbee-0.92.ebuild:
+  Version bump, resolves bug #83401.
+
+  24 Nov 2004; Jason Wever <weeve@gentoo.org> bitlbee-0.91-r1.ebuild:
+  Really add the fix in 0.91-r1 :) Thanks to Enrique D. Bosch
+  <presidev@presi.org> for pointing this out.
+
+*bitlbee-0.91-r1 (23 Nov 2004)
+
+  23 Nov 2004; Jason Wever <weeve@gentoo.org> +bitlbee-0.91-r1.ebuild:
+  Rev bump. Fixes problem in bug #71990 where enabling the ssl useflag
+  clobbers all other useflag settings. Thanks to Enrique D. Bosch
+  <presidev@presi.org> for the patch.
+
+  01 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> bitlbee-0.91.ebuild:
+  Stable on alpha.
+
+  13 Oct 2004; Tom Martin <slarti@gentoo.org> bitlbee-0.91.ebuild:
+  Marked ~amd64.
+
+  07 Oct 2004; Jason Wever <weeve@gentoo.org> -files/yahoo.diff,
+  -bitlbee-0.85a.ebuild, -bitlbee-0.90-r1.ebuild, -bitlbee-0.90.ebuild,
+  bitlbee-0.91.ebuild:
+  Stablized 0.91 on sparc and x86, older version cleanup where applicable.
+
+  27 Sep 2004; Jason Wever <weeve@gentoo.org> bitlbee-0.91.ebuild:
+  Added fix to enable ssl for jabber, thanks to Thomas Matthijs
+  <axxo@gentoo.org> for the patch. Resolves bug #65556.
+
+*bitlbee-0.91 (26 Sep 2004)
+
+  26 Sep 2004; Jason Wever <weeve@gentoo.org> +bitlbee-0.91.ebuild:
+  Version bump.
+
+  08 Aug 2004; Jason Wever <weeve@gentoo.org> bitlbee-0.90-r1.ebuild:
+  Stable on sparc and x86.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> bitlbee-0.84.ebuild,
+  bitlbee-0.85a.ebuild, bitlbee-0.90-r1.ebuild, bitlbee-0.90.ebuild:
+  virtual/glibc -> virtual/libc
+
+*bitlbee-0.90-r1 (26 Jun 2004)
+
+  26 Jun 2004; Jason Wever <weeve@gentoo.org> +bitlbee-0.90-r1.ebuild:
+  Revision bump, includes yahoo authentication patch from bitlbee.org.
+
+*bitlbee-0.90 (29 May 2004)
+
+  29 May 2004; Jason Wever <weeve@gentoo.org> -bitlbee-0.85-r1.ebuild,
+  -bitlbee-0.85.ebuild, +bitlbee-0.90.ebuild:
+  Version bump to 0.90 and removed old ebuilds for 0.85 and 0.85-r1.
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> bitlbee-0.84.ebuild,
+  bitlbee-0.85-r1.ebuild, bitlbee-0.85.ebuild, bitlbee-0.85a.ebuild:
+  Add die following econf for bug 48950
+
+  22 Apr 2004; Jason Wever <weeve@gentoo.org> -bitlbee-0.80-r2.ebuild,
+  -bitlbee-0.82-r1.ebuild, -bitlbee-0.83.ebuild, bitlbee-0.85a.ebuild:
+  Marked 0.85a stable on sparc and x86 as well as removed old versions 0.80-r2,
+  0.82-r1 and 0.83.
+
+  30 Mar 2004; Jason Wever <weeve@gentoo.org> bitlbee-0.85a.ebuild:
+  Added ~ppc keyword.
+
+  29 Mar 2004; Aron Griffis <agriffis@gentoo.org> bitlbee-0.82-r1.ebuild,
+  bitlbee-0.84.ebuild, bitlbee-0.85a.ebuild:
+  Adjust alpha/ia64 keywords since the alpha keywords were lost when this ebuild
+  was version-bumped
+
+  25 Mar 2004; David Holm <dholm@gentoo.org> bitlbee-0.85-r1.ebuild:
+  Added to ~ppc.
+
+*bitlbee-0.85a (24 Mar 2004)
+
+  24 Mar 2004; Jason Wever <weeve@gentoo.org> bitlbee-0.85a.ebuild:
+  Version bump.
+
+*bitlbee-0.85-r1 (16 Mar 2004)
+
+  16 Mar 2004; Jason Wever <weeve@gentoo.org> bitlbee-0.85-r1.ebuild:
+  Added bitlbee-0.85-r1 which has a patch for msn login problems and removed old
+  bitlbee-0.83 ebuild.
+
+*bitlbee-0.85 (14 Mar 2004)
+
+  14 Mar 2004; Jason Wever <weeve@gentoo.org> bitlbee-0.85.ebuild:
+  Version bump.
+
+  26 Feb 2004; Jason Wever <weeve@gentoo.org> bitlbee-0.84.ebuild:
+  Marked stable on x86 and sparc.
+
+*bitlbee-0.84 (13 Feb 2004)
+
+  13 Feb 2004; Jason Wever <weeve@gentoo.org> bitlbee-0.84.ebuild:
+  Version bump.
+
+  26 Jan 2004; Jason Wever <weeve@gentoo.org> files/bitlbeed.init:
+  Fixed init.d script to correctly reference the options from the conf.d file.
+  Thanks to Michael Fyles <mf@fenleys.co.uk> for having good eyes. :)
+
+  25 Jan 2004; Jason Wever <weeve@gentoo.org> bitlbee-0.83.ebuild:
+  Marked stable on sparc and x86.
+
+  09 Jan 2004; Jason Wever <weeve@gentoo.org> bitlbee-0.72.ebuild,
+  bitlbee-0.73-r1.ebuild, bitlbee-0.73.ebuild, bitlbee-0.74a.ebuild,
+  bitlbee-0.80-r1.ebuild, bitlbee-0.80.ebuild, bitlbee-0.81a.ebuild,
+  bitlbee-0.82-r1.ebuild, bitlbee-0.82.ebuild, bitlbee-0.83.ebuild:
+  Added checks to 0.82-r1 and 0.83 to fail if no protocols selected at request
+  of upstream author. Old ebuild cleanup.
+
+*bitlbee-0.83 (31 Dec 2003)
+
+  31 Dec 2003; Jason Wever <weeve@gentoo.org> bitlbee-0.83.ebuild:
+  version bump
+
+  25 Dec 2003; Jason Wever <weeve@gentoo.org> bitlbee-0.82-r1.ebuild:
+  Marked stable on x86 and sparc.
+
+*bitlbee-0.82-r1 (19 Nov 2003)
+
+  19 Nov 2003; Jason Wever <weeve@gentoo.org> bitlbee-0.81a.ebuild,
+  bitlbee-0.82-r1.ebuild:
+  Stabilized 0.81a for x86 and sparc, and revbumped 0.82 to 0.82-r1 to add local
+  useflags for all protocols, which resolves bug #33606.
+
+*bitlbee-0.82 (06 Nov 2003)
+
+  06 Nov 2003; Jason Wever <weeve@gentoo.org> bitlbee-0.82.ebuild,
+  files/bitlbee-0.82-segv.diff:
+  Version bump. removed the tcpd useflag as bitlbee's authors say it doesn't
+  work right and they don't support it anymore. Added useflags for debug and msn
+  since msn now requires libsoup to run.
+
+*bitlbee-0.81a (16 Oct 2003)
+
+  16 Oct 2003; Jason Wever <weeve@gentoo.org> bitlbee-0.81a.ebuild:
+  Version bump.
+
+  16 Oct 2003; Jason Wever <weeve@gentoo.org> bitlbee-0.80-r2.ebuild,
+  files/bitlbeed.confd, files/bitlbeed.init:
+  Fixed the bitlbeed init script to run bitlbeed as user nobody (similarly to
+  how it's run in the xinetd.d config). Resolves bug #30552.
+
+  16 Oct 2003; Markus Nigbur <pyrania@gentoo.org> bitlbee-0.72.ebuild,
+  bitlbee-0.73-r1.ebuild, bitlbee-0.73.ebuild, bitlbee-0.74a.ebuild,
+  bitlbee-0.80-r1.ebuild, bitlbee-0.80-r2.ebuild, bitlbee-0.80.ebuild:
+  Fixed typo in description.
+
+*bitlbee-0.80-r2 (05 Oct 2003)
+
+  05 Oct 2003; Jason Wever <weeve@gentoo.org> bitlbee-0.80-r2.ebuild,
+  files/yahoo.diff:
+  Revision bump, adds the yahoo patch from bitlbee's website.
+
+  01 Oct 2003; Tavis Ormandy <taviso@gentoo.org> bitlbee-0.80-r1.ebuild:
+  Stable on alpha
+
+*bitlbee-0.80-r1 (09 Sep 2003)
+
+  09 Sep 2003; Jason Wever <weeve@gentoo.org> bitlbee-0.80-r1.ebuild,
+  files/bitlbeed.confd, files/bitlbeed.init:
+  Added an init script for bitlbeed.
+
+  16 Aug 2003; Jason Wever <weeve@gentoo.org> bitlbee-0.80.ebuild:
+  Marked stable for x86.
+
+  15 Aug 2003; Jason Wever <weeve@gentoo.org> bitlbee-0.80.ebuild:
+  Changed ~sparc keyword to sparc.
+
+  11 Jul 2003; Tavis Ormandy <taviso@gentoo.org> bitlbee-0.80.ebuild:
+  ~alpha
+
+  02 Jul 2003; Jason Wever <weeve@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+*bitlbee-0.80 (24 Jun 2003)
+
+  24 Jun 2003; Jason Wever <weeve@gentoo.org> bitlbee-0.80.ebuild,
+  files/bitlbee-0.80-xinetd.patch:
+  Version bump.
+
+*bitlbee-0.74a (14 Jun 2003)
+
+  14 Jun 2003; Jason Wever <weeve@gentoo.org> bitlbee-0.74a.ebuild:
+  Version bump and security fix.
+
+  15 May 2003; Jason Wever <weeve@gentoo.org> bitlbee-0.73-r1.ebuild:
+  Changed ~sparc keyword to sparc.
+
+*bitlbee-0.73-r1 (20 Apr 2003)
+
+  20 Apr 2003; Jason Wever <weeve@gentoo.org> bitlbee-0.73-r1.ebuild:
+  Ebuild cleanups and addition of bitlebeed for users who don't want to run
+  ident. Thanks to Alastair Tse <liquidx@gentoo.org> for pointing these out.
+
+*bitlbee-0.73 (13 Apr 2003)
+
+  13 Apr 2003; Jason Wever <weeve@gentoo.org> bitlbee-0.73.ebuild:
+  New version.
+
+*bitlbee-20030305 (09 Apr 2003)
+
+  13 Apr 2003; Jason Wever <weeve@gentoo.org> bitlbee-20030305.ebuild,
+  bitlbee-20030305.ebuild:
+  Removed daily snapshop as new version is out.
+
+  13 Apr 2003; Jason Wever <weeve@gentoo.org> bitlbee-0.72.ebuild,
+  bitlbee-20030305.ebuild:
+  Changed patch name and adjusted ebuilds to new patch name
+
+  09 Apr 2003; Jason Wever <weeve@gentoo.org> bitlbee-20030305.ebuild:
+  Added a daily development snapshot.  Now more/better IM protocol support.
+
+*bitlbee-0.72 (08 Apr 2003)
+
+  08 Apr 2003; Jason Wever <weeve@gentoo.org> bitlbee-0.72.ebuild,
+  files/bitlbee-0.72-xinetd.patch:
+  Initial addition.

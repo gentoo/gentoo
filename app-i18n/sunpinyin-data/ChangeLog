@@ -1,0 +1,25 @@
+# ChangeLog for app-i18n/sunpinyin-data
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/sunpinyin-data/ChangeLog,v 1.5 2015/05/01 05:52:19 jer Exp $
+
+  01 May 2015; Jeroen Roovers <jer@gentoo.org> sunpinyin-data-20130220.ebuild:
+  Stable for PPC64 (bug #540844).
+
+  19 Apr 2015; Anthony G. Basile <blueness@gentoo.org>
+  sunpinyin-data-20121025.ebuild, sunpinyin-data-20130220.ebuild:
+  Keyword ~ppc and ~ppc64.  Bug #498686.
+
+  08 Mar 2014; Pacho Ramos <pacho@gentoo.org> sunpinyin-data-20130220.ebuild:
+  amd64 stable, bug 498688
+
+*sunpinyin-data-20130220 (10 Mar 2013)
+
+  10 Mar 2013; Naohiro Aota <naota@gentoo.org> +sunpinyin-data-20130220.ebuild:
+  version bump. #460742
+
+*sunpinyin-data-20121025 (30 Jan 2013)
+
+  30 Jan 2013; Ben de Groot <yngwin@gentoo.org> +files/SLM-inst.mk,
+  +metadata.xml, +sunpinyin-data-20121025.ebuild:
+  Initial commit. Ebuild split off from app-i18n/sunpinyin, with help from Wang
+  Jiajun (gentoo-zh overlay).

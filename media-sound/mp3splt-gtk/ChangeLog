@@ -1,0 +1,190 @@
+# ChangeLog for media-sound/mp3splt-gtk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3splt-gtk/ChangeLog,v 1.42 2015/05/06 09:42:28 mrueg Exp $
+
+  06 May 2015; Manuel Rüger <mrueg@gentoo.org> -mp3splt-gtk-0.5.9.ebuild:
+  Remove old.
+
+*mp3splt-gtk-0.9.1a-r1 (06 Sep 2014)
+
+  06 Sep 2014; Sebastian Pipping <sping@gentoo.org>
+  +mp3splt-gtk-0.9.1a-r1.ebuild:
+  Pull in missing gstreamer MP3 plugin dependency (bug #520444)
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> mp3splt-gtk-0.5.9.ebuild,
+  mp3splt-gtk-0.7.3.ebuild, mp3splt-gtk-0.9.1.ebuild, mp3splt-gtk-0.9.1a.ebuild,
+  mp3splt-gtk-0.9.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  28 Jul 2014; Sebastian Pipping <sping@gentoo.org> mp3splt-gtk-0.9.1a.ebuild:
+  Fix libmp3splt dependency (bug #518314)
+
+*mp3splt-gtk-0.9.1a (26 Jul 2014)
+
+  26 Jul 2014; Sebastian Pipping <sping@gentoo.org> +mp3splt-gtk-0.9.1a.ebuild:
+  Bump to 0.9.1a (bug #517786)
+
+  14 Jul 2014; Sebastian Pipping <sping@gentoo.org> -mp3splt-gtk-0.7.ebuild,
+  -mp3splt-gtk-0.7.0.920.ebuild, -mp3splt-gtk-0.7.0.930.ebuild,
+  -mp3splt-gtk-0.7.1.ebuild, -mp3splt-gtk-0.7.2.ebuild,
+  -mp3splt-gtk-0.8.1.ebuild, -mp3splt-gtk-0.8.2.ebuild:
+  Remove mid-way unstable ebuilds
+
+*mp3splt-gtk-0.9.1 (14 Jul 2014)
+
+  14 Jul 2014; Sebastian Pipping <sping@gentoo.org> +mp3splt-gtk-0.9.1.ebuild:
+  Bump to 0.9.1 (bug #514880)
+
+*mp3splt-gtk-0.9 (22 Jul 2013)
+
+  22 Jul 2013; Sebastian Pipping <sping@gentoo.org> +mp3splt-gtk-0.9.ebuild:
+  Bump to 0.9
+
+  08 Jun 2013; Sebastian Pipping <sping@gentoo.org> mp3splt-gtk-0.8.2.ebuild,
+  +files/mp3splt-gtk-0.8.2-automake-1.13.patch:
+  Fix compilation with automake 1.13 (bug #470802)
+
+*mp3splt-gtk-0.8.2 (01 May 2013)
+
+  01 May 2013; Sebastian Pipping <sping@gentoo.org> +mp3splt-gtk-0.8.2.ebuild,
+  +files/mp3splt-gtk-0.8.2-desktop-file.patch:
+  Bump to 0.8.2
+
+*mp3splt-gtk-0.8.1 (27 Jan 2013)
+
+  27 Jan 2013; Sebastian Pipping <sping@gentoo.org> +mp3splt-gtk-0.8.1.ebuild:
+  Bump to 0.8.1
+
+  13 Jan 2013; Agostino Sarubbo <ago@gentoo.org> mp3splt-gtk-0.7.3.ebuild:
+  Stable for x86, wrt bug #448164
+
+  05 Jan 2013; Agostino Sarubbo <ago@gentoo.org> mp3splt-gtk-0.7.3.ebuild:
+  Stable for sparc, wrt bug #448164
+
+  04 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> mp3splt-gtk-0.7.3.ebuild:
+  Stable on amd64, wrt bug #448164
+
+  03 Jan 2013; Sebastian Pipping <sping@gentoo.org> mp3splt-gtk-0.5.9.ebuild:
+  Fix dependency on libmp3splt (bug #449014)
+
+*mp3splt-gtk-0.7.3 (08 Sep 2012)
+
+  08 Sep 2012; Sebastian Pipping <sping@gentoo.org> +mp3splt-gtk-0.7.3.ebuild:
+  Bump to 0.7.3
+
+  21 May 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  mp3splt-gtk-0.7.0.930.ebuild, mp3splt-gtk-0.7.ebuild:
+  Add missing inheritance of eutils.eclass
+
+*mp3splt-gtk-0.7.2 (16 May 2012)
+
+  16 May 2012; Sebastian Pipping <sping@gentoo.org> +mp3splt-gtk-0.7.2.ebuild:
+  Bump to 0.7.2
+
+  04 Jan 2012; Michael Sterrett <mr_bones_@gentoo.org>
+  mp3splt-gtk-0.7.1.ebuild:
+  fix SRC_URI
+
+*mp3splt-gtk-0.7.1 (04 Jan 2012)
+
+  04 Jan 2012; Sebastian Pipping <sping@gentoo.org> +mp3splt-gtk-0.7.1.ebuild:
+  Bump to 0.7.1, looks trivial
+
+*mp3splt-gtk-0.7.0.930 (23 Sep 2011)
+
+  23 Sep 2011; Sebastian Pipping <sping@gentoo.org>
+  +mp3splt-gtk-0.7.0.930.ebuild, +files/mp3splt-gtk-0.7.0.930-gtk.patch,
+  metadata.xml:
+  Bump to latest snapshot for support of both Audacious/GTK 2.x/3.x
+
+*mp3splt-gtk-0.7.0.920 (06 Sep 2011)
+
+  06 Sep 2011; Sebastian Pipping <sping@gentoo.org>
+  +mp3splt-gtk-0.7.0.920.ebuild:
+  Bump to upstream's snapshot of SVN revision 920
+
+  03 Aug 2011; Sebastian Pipping <sping@gentoo.org> mp3splt-gtk-0.7.ebuild,
+  +files/mp3splt-gtk-0.7-disable-docs.patch:
+  Disable generation of source documentation
+
+*mp3splt-gtk-0.7 (03 Aug 2011)
+
+  03 Aug 2011; Sebastian Pipping <sping@gentoo.org> +mp3splt-gtk-0.7.ebuild:
+  Bump to 0.7, enable gnome support, restrict Audacious support to <3.0 due to
+  build failurs with mixed GTK 2 and 3
+
+  10 Oct 2010; Raúl Porcel <armin76@gentoo.org> mp3splt-gtk-0.5.9.ebuild:
+  sparc stable wrt #326139
+
+  15 Jul 2010; Markus Meier <maekke@gentoo.org> mp3splt-gtk-0.5.9.ebuild:
+  x86 stable, bug #326139
+
+  29 Jun 2010; Christoph Mende <angelos@gentoo.org>
+  mp3splt-gtk-0.5.9.ebuild:
+  Stable on amd64 wrt bug #326139
+
+  02 May 2010; Samuli Suominen <ssuominen@gentoo.org>
+  mp3splt-gtk-0.5.9.ebuild:
+  Fix audacious plug-in building wrt #318141 by Rafał Mużyło and Jochen
+  Schlick.
+
+*mp3splt-gtk-0.5.9 (28 Apr 2010)
+
+  28 Apr 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +mp3splt-gtk-0.5.9.ebuild:
+  Version bump.
+
+*mp3splt-gtk-0.5.6 (10 Jun 2009)
+
+  10 Jun 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +mp3splt-gtk-0.5.6.ebuild:
+  Version bump.
+
+  10 Jun 2009; Raúl Porcel <armin76@gentoo.org> mp3splt-gtk-0.5.4.ebuild:
+  sparc stable wrt #272104
+
+  06 Jun 2009; nixnut <nixnut@gentoo.org> mp3splt-gtk-0.5.4.ebuild:
+  ppc stable #272104
+
+  03 Jun 2009; Markus Meier <maekke@gentoo.org> mp3splt-gtk-0.5.4.ebuild:
+  amd64/x86 stable, bug #272104
+
+*mp3splt-gtk-0.5.4 (30 Apr 2009)
+
+  30 Apr 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +files/mp3splt-gtk-0.5.4-validate_desktop_entry.patch,
+  -mp3splt-gtk-0.5.ebuild, -mp3splt-gtk-0.5.2.ebuild,
+  +mp3splt-gtk-0.5.4.ebuild:
+  Version bump.
+
+  09 Jan 2009; Joseph Jezak <josejx@gentoo.org> mp3splt-gtk-0.5.2.ebuild:
+  Marked ~ppc for bug #221989.
+
+*mp3splt-gtk-0.5.2 (24 Nov 2008)
+
+  24 Nov 2008; Samuli Suominen <ssuominen@gentoo.org>
+  +mp3splt-gtk-0.5.2.ebuild:
+  Version bump for bug 247603, thanks to Sebastian Mair for reporting.
+
+*mp3splt-gtk-0.5 (08 Sep 2008)
+
+  08 Sep 2008; Alexis Ballier <aballier@gentoo.org> +mp3splt-gtk-0.5.ebuild:
+  version bump
+
+  15 May 2008; Jeroen Roovers <jer@gentoo.org> mp3splt-gtk-0.4_rc1.ebuild:
+  Marked ~hppa (bug #221989).
+
+  14 May 2008; Tobias Klausmann <klausman@gentoo.org> ChangeLog:
+  Keyworded on alpha, bug #221989
+
+  14 May 2008; Markus Rothe <corsair@gentoo.org> mp3splt-gtk-0.4_rc1.ebuild:
+  Added ~ppc64; bug #221989
+
+  14 May 2008; Raúl Porcel <armin76@gentoo.org> mp3splt-gtk-0.4_rc1.ebuild:
+  Add ~sparc/~x86 wrt #221989
+
+*mp3splt-gtk-0.4_rc1 (13 May 2008)
+
+  13 May 2008; Samuli Suominen <ssuominen@gentoo.org>
+  +mp3splt-gtk-0.4_rc1.ebuild:
+  Initial commit.

@@ -1,0 +1,31 @@
+#!/sbin/runscript
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ ! -e "${DNSPROXY_CONFFILE}" ] ; then
+		eerror "You need to create and select the configuration file first."
+		eerror "An example can be found in /etc/dnsproxy/dnsproxy.conf.dist"
+		return 1
+	fi
+}
+
+start() {
+	ebegin "Starting dnsproxy"
+	checkconfig && \
+		start-stop-daemon --start --make-pidfile \
+			--quiet -b --pidfile ${DNSPROXY_PIDFILE} \
+			--exec /usr/sbin/dnsproxy  -- -c "${DNSPROXY_CONFFILE}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping dnsproxy"
+	start-stop-daemon --stop --quiet \
+		--pidfile ${DNSPROXY_PIDFILE}
+	eend $?
+}

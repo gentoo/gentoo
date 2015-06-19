@@ -1,0 +1,78 @@
+# ChangeLog for app-emacs/magit
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/magit/ChangeLog,v 1.18 2015/06/07 07:51:59 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  20 May 2015; Mikle Kolyada <zlogene@gentoo.org> magit-1.2.2.ebuild:
+  amd64/x86 stable wrt bug #549892
+
+*magit-1.2.2 (25 Mar 2015)
+
+  25 Mar 2015; Ulrich Müller <ulm@gentoo.org> +magit-1.2.2.ebuild:
+  Version bump.
+
+  09 Aug 2014; Chema Alonso <nimiux@gentoo.org> magit-1.2.0-r1.ebuild:
+  Stable for amd64 wrt bug #509736
+
+  26 Jul 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> magit-1.2.0-r1.ebuild:
+  x86 stable wrt bug #509736
+
+  30 May 2014; Ulrich Müller <ulm@gentoo.org> -magit-1.2.0.ebuild:
+  Remove old.
+
+*magit-1.2.0-r1 (23 May 2014)
+
+  23 May 2014; Ulrich Müller <ulm@gentoo.org> +magit-1.2.0-r1.ebuild,
+  +files/magit-1.2.0-delete-directory.patch:
+  Fix incompatibily with emacs-vcs. Call elisp-compile, because the upstream
+  build system doesn't care about byte-compile errors.
+
+  05 May 2014; Hans de Graaff <graaff@gentoo.org> magit-1.2.0.ebuild:
+  Fix HOMEPAGE. Restrict tests since the tests are not included in the archive.
+
+  05 May 2014; Hans de Graaff <graaff@gentoo.org> -magit-1.0.0.ebuild,
+  -magit-1.1.1.ebuild:
+  Cleanup.
+
+  31 Jan 2013; Sébastien Fabbro <bicatali@gentoo.org> magit-1.2.0.ebuild:
+  Keyworded amd64-linux and x86-linux
+
+*magit-1.2.0 (26 Nov 2012)
+
+  26 Nov 2012; Ulrich Müller <ulm@gentoo.org> magit-1.0.0.ebuild,
+  magit-1.1.1.ebuild, +magit-1.2.0.ebuild:
+  Version bump, bug 444776. Specify LICENSE more precisely.
+
+*magit-1.1.1 (02 Apr 2012)
+
+  02 Apr 2012; Ulrich Müller <ulm@gentoo.org> -magit-0.8.1.ebuild,
+  -magit-0.8.2.ebuild, magit-1.0.0.ebuild, +magit-1.1.1.ebuild, metadata.xml:
+  Version bump, update HOMEPAGE and SRC_URI, bug 410521. Add contrib USE flag.
+  Remove old.
+
+*magit-1.0.0 (17 Apr 2011)
+
+  17 Apr 2011; Ulrich Mueller <ulm@gentoo.org> +magit-1.0.0.ebuild:
+  Version bump, bug 363923.
+
+  18 Jul 2010; Christian Faulhammer <fauli@gentoo.org> -magit-0.7.ebuild:
+  clean up
+
+*magit-0.8.2 (18 Jul 2010)
+
+  18 Jul 2010; Christian Faulhammer <fauli@gentoo.org> +magit-0.8.2.ebuild:
+  version bump for bug 328345 by f <zhixun.lin AT gmail DOT com>
+
+*magit-0.8.1 (13 Jun 2010)
+
+  13 Jun 2010; Christian Faulhammer <fauli@gentoo.org> +magit-0.8.1.ebuild:
+  version bump and new homepage, as reported by f <zhixun DOT lin AT gmail
+  DOT com> in bug 322899
+
+*magit-0.7 (10 Oct 2009)
+
+  10 Oct 2009; Ulrich Mueller <ulm@gentoo.org> +files/50magit-gentoo.el,
+  +magit-0.7.ebuild, +metadata.xml:
+  Initial import from Emacs overlay, bug 254531. Ebuild contributed by me.

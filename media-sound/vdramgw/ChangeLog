@@ -1,0 +1,26 @@
+# ChangeLog for media-sound/vdramgw
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/vdramgw/ChangeLog,v 1.5 2012/06/30 16:03:20 hd_brummy Exp $
+
+  30 Jun 2012; Joerg Bornkessel <hd_brummy@gentoo.org> vdramgw-0.0.2.ebuild,
+  files/vdramgw-0.0.2-gcc43.patch, +files/vdramgw-0.0.2_gcc-4.7.diff:
+  gcc-4.7 compile fixed, bug 424101; eapi=4; fixed c++ includes; minor fixes in
+  ebuild
+
+  13 Aug 2010; Markos Chandras <hwoarang@gentoo.org> vdramgw-0.0.2.ebuild:
+  Respect CXX,CXXFLAGS,LDFLAGS. Bug #332543. Thanks to Diego E. 'Flameeyes'
+  Pettenò <flameeyes@gentoo.org> for reporting
+
+  30 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> vdramgw-0.0.2.ebuild,
+  +files/vdramgw-0.0.2-gcc43.patch:
+  Fix building with GCC 4.3 wrt #276573.
+
+  19 Dec 2007; Joerg Bornkessel <hd_brummy@gentoo.org> vdramgw-0.0.2.ebuild:
+  keyword ~amd64
+
+*vdramgw-0.0.2 (13 Dec 2007)
+
+  13 Dec 2007; Matthias Schwarzott <zzam@gentoo.org> +metadata.xml,
+  +vdramgw-0.0.2.ebuild:
+  Initial import of ebuild written by me.
+

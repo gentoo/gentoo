@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DEPEND=app-emulation/xen-tools app-arch/rpm sys-block/parted sys-apps/yum sys-fs/lvm2 sys-fs/multipath-tools
+DESCRIPTION=Scripts for building Xen domains
+HOMEPAGE=http://www.bytesex.org
+KEYWORDS=~x86
+LICENSE=GPL-2
+RDEPEND=app-emulation/xen-tools app-arch/rpm sys-block/parted sys-apps/yum sys-fs/lvm2 sys-fs/multipath-tools
+RESTRICT=test
+SLOT=0
+SRC_URI=http://dl.bytesex.org/cvs-snapshots/domi-20060816-153213.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=4f9ab3e5a80746cef389af11a72c0b85

@@ -1,0 +1,14 @@
+# Copyright 1999-2015 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/musl/amd64/package.mask,v 1.5 2015/06/02 09:15:36 ulm Exp $
+
+#
+# Alfredo Tupone <tupone@gentoo.org> (02 Feb 2013)
+# Depending on masked packages
+#
+games-strategy/dominions2-demo
+
+# Ulrich Müller <ulm@gentoo.org> (18 Mar 2013)
+# Packages that rely on multilib
+=app-editors/emacs-18*
+net-misc/icaclient

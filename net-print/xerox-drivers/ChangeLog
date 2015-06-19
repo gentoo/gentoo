@@ -1,0 +1,30 @@
+# ChangeLog for net-print/xerox-drivers
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-print/xerox-drivers/ChangeLog,v 1.4 2013/06/16 09:58:36 pacho Exp $
+
+  16 Jun 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #200380
+
+  01 Jul 2010; Timo Gurr <tgurr@gentoo.org>
+  xerox-drivers-0_p20080123.ebuild:
+  Fix CUPS dependency wrt bug #326485.
+
+  10 Dec 2009; Markus Meier <maekke@gentoo.org>
+  xerox-drivers-0_p20080123.ebuild:
+  amd64/x86 stable, bug #296150
+
+*xerox-drivers-0_p20080123 (08 Nov 2009)
+
+  08 Nov 2009; Jean-Noël Rivasseau <elvanor@gentoo.org>
+  +xerox-drivers-0_p20080123.ebuild, +metadata.xml:
+  Moved to main tree, cleaned up the ebuild a bit.
+
+  27 Apr 2009; Matthew Schultz (mschultz) <mattsch@gmail.com>
+  +xerox-drivers-0_p20080123.ebuild, -xerox-drivers-0.1.ebuild,
+  metadata.xml:
+  Changed ebuild version to the file date listed on the homepage for a more
+  appropriate version.
+
+  26 Apr 2009; Matthew Schultz (mschultz) <mattsch@gmail.com> ChangeLog:
+  +xerox-drivers-0.1.ebuild, +metadata.xml:
+  New ebuild for bug 219718.

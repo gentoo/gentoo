@@ -1,0 +1,50 @@
+# ChangeLog for media-fonts/pcf2bdf
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/pcf2bdf/ChangeLog,v 1.14 2012/12/16 17:09:07 ulm Exp $
+
+  16 Dec 2012; Ulrich Müller <ulm@gentoo.org> pcf2bdf-1.04-r1.ebuild:
+  Fix LICENSE, see README.txt, bug 445674.
+
+  25 Nov 2009; Markus Meier <maekke@gentoo.org> pcf2bdf-1.04-r1.ebuild:
+  amd64 stable, bug #284020
+
+  27 Sep 2009; Mounir Lamouri <volkmar@gentoo.org> ChangeLog:
+  Stable for ppc. Bug 284020
+
+  06 Jul 2009; Jeroen Roovers <jer@gentoo.org> pcf2bdf-1.04-r1.ebuild:
+  Stable for HPPA too.
+
+  24 Feb 2008; Raúl Porcel <armin76@gentoo.org> pcf2bdf-1.04-r1.ebuild:
+  alpha/sparc stable
+
+  23 Jan 2008; Raúl Porcel <armin76@gentoo.org> pcf2bdf-1.04-r1.ebuild:
+  Add ~alpha/~sparc, ia64/x86 stable
+
+  26 Nov 2006; Diego Pettenò <flameeyes@gentoo.org> pcf2bdf-1.04-r1.ebuild:
+  Add ~x86-fbsd keyword.
+
+*pcf2bdf-1.04-r1 (23 Oct 2006)
+
+  23 Oct 2006; Simon Stelling <blubb@gentoo.org>
+  +files/pcf2bdf-1.04-64bit.patch, +files/pcf2bdf-1.04-gzip.patch,
+  +pcf2bdf-1.04-r1.ebuild:
+  revbump to fix bug 140093 and add ~amd64
+
+  01 Sep 2006; Tobias Scherbaum <dertobi123@gentoo.org> pcf2bdf-1.04.ebuild:
+  ppc stable, bug #145688
+
+  11 Jul 2006; Aron Griffis <agriffis@gentoo.org> pcf2bdf-1.04.ebuild:
+  Mark 1.04 stable on ia64
+
+  10 Jan 2006; Michael Hanselmann <hansmi@gentoo.org> pcf2bdf-1.04.ebuild:
+  Added to ~hppa, ~ppc.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> pcf2bdf-1.04.ebuild:
+  virtual/glibc -> virtual/libc
+
+*pcf2bdf-1.04 (16 May 2004)
+
+  16 May 2004; Mamoru KOMACHI <usata@gentoo.org> pcf2bdf-1.04.ebuild:
+  Initial import. Ebuild submitted by Eivind Tagseth
+  <eivindt-gentoo@multinet.no>, closing bug #50925
+

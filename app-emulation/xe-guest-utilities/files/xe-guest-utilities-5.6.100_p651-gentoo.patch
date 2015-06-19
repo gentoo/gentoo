@@ -1,0 +1,35 @@
+--- usr/sbin/xe-linux-distribution.orig	2011-04-18 10:56:30.000000000 -0500
++++ usr/sbin/xe-linux-distribution	2013-12-31 01:35:51.995831278 -0600
+@@ -249,6 +249,24 @@
+     write_to_output "${distro}" "${major}" "${minor}" "${description}"
+ }
+ 
++identify_gentoo()
++{
++	gentoo_release="$1"
++	if [ ! -e "${gentoo_release}" ] ; then
++		return 1
++	fi
++	distro="gentoo"
++	eval $(cat ${gentoo_release} | awk '{ print "release=" $5 }' )
++	if [ -z "${release}" ] ; then
++		return 1
++	fi
++	eval $(echo $release | awk -F. -- '{ print "major=" $1 ; print "minor=" $2 }' )
++	if [ -z "${major}" -o -z "$minor" ] ; then
++		return 1
++	fi
++	write_to_output "${distro}" "${major}" "${minor}" "${distro}"
++}
++
+ if [ $# -eq 1 ] ; then
+     exec 1>"$1"
+ fi
+@@ -258,6 +276,7 @@
+     identify_sles   /etc/SuSE-release   && exit 0
+     identify_lsb    lsb_release         && exit 0
+     identify_debian /etc/debian_version && exit 0
++    identify_gentoo /etc/gentoo-release && exit 0
+ 
+     if [ $# -eq 1 ] ; then
+ 	rm -f "$1"

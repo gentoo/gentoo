@@ -1,0 +1,24 @@
+#!/sbin/runscript
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting powermand"
+
+	checkpath -q -d -m 0755 /var/run/powerman
+
+	start-stop-daemon --start \
+		--pidfile /var/run/powerman/powermand.pid \
+		--exec /usr/sbin/powermand
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping powermand"
+	start-stop-daemon --stop \
+		--pidfile /var/run/powerman/powermand.pid \
+		--exec /usr/sbin/powermand
+	eend $?
+}

@@ -1,0 +1,215 @@
+# ChangeLog for app-editors/jed
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/jed/ChangeLog,v 1.65 2014/09/29 20:02:56 ulm Exp $
+
+  29 Sep 2014; Ulrich Müller <ulm@gentoo.org> jed-0.99.19.ebuild:
+  Fix LICENSE, clean up unused dependencies.
+
+  10 May 2013; Markus Meier <maekke@gentoo.org> jed-0.99.19.ebuild:
+  add ~arm, bug #466712
+
+  20 May 2012; Samuli Suominen <ssuominen@gentoo.org> jed-0.99.19.ebuild:
+  Missing build dependencies x11-libs/libXt (for X11/Intrinsic.h) and
+  x11-proto/xproto (for X11/keysym.h). Thanks to fouDuBassan (Freenode, IRC)
+  for reporting.
+
+  20 Mar 2011; Raúl Porcel <armin76@gentoo.org> jed-0.99.19.ebuild:
+  Add ~alpha
+
+  29 Nov 2010; Christian Faulhammer <fauli@gentoo.org> -jed-0.99.18.ebuild:
+  clean up
+
+  23 May 2010; Pacho Ramos <pacho@gentoo.org> jed-0.99.19.ebuild:
+  stable amd64, bug 307509
+
+  15 Mar 2010; nixnut <nixnut@gentoo.org> jed-0.99.19.ebuild:
+  ppc stable #307509
+
+  13 Mar 2010; Brent Baude <ranger@gentoo.org> jed-0.99.19.ebuild:
+  stable ppc64, bug 307509
+
+  06 Mar 2010; Tiago Cunha <tcunha@gentoo.org> jed-0.99.19.ebuild:
+  stable sparc, bug 307509
+
+  03 Mar 2010; Christian Faulhammer <fauli@gentoo.org> jed-0.99.19.ebuild:
+  stable x86, bug 307509
+
+*jed-0.99.19 (31 Jan 2010)
+
+  31 Jan 2010; Ulrich Mueller <ulm@gentoo.org> +jed-0.99.19.ebuild:
+  Version bump. Ebuild cleaned up, EAPI changed to 3. Add prefix keywords.
+
+  04 Jan 2009; Ulrich Mueller <ulm@gentoo.org> jed-0.99.18.ebuild:
+  Change virtual/xft dependency to x11-libs/libXft, bug 253771.
+
+  11 Mar 2008; Christian Faulhammer <opfer@gentoo.org> jed-0.99.18.ebuild:
+  use emake instead of make
+
+  11 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  -files/jed-0.99.16-darwin.patch, -files/jed-0.99.16-gentoo-shmode.sl,
+  -files/jed-0.99.16-jed.info.patch, -files/jed.info.diff,
+  -jed-0.99.16-r2.ebuild:
+  clean up
+
+  11 Mar 2008; Brent Baude <ranger@gentoo.org> jed-0.99.18.ebuild:
+  stable ppc64, bug 211991
+
+  10 Mar 2008; Samuli Suominen <drac@gentoo.org> jed-0.99.18.ebuild:
+  amd64 stable wrt #211991
+
+  10 Mar 2008; Raúl Porcel <armin76@gentoo.org> jed-0.99.18.ebuild:
+  sparc stable wrt #211991
+
+  09 Mar 2008; nixnut <nixnut@gentoo.org> jed-0.99.18.ebuild:
+  Stable on ppc wrt bug 211991
+
+  09 Mar 2008; Markus Meier <maekke@gentoo.org> jed-0.99.18.ebuild:
+  x86 stable, bug #211991
+
+  10 Feb 2008; Ulrich Mueller <ulm@gentoo.org> jed-0.99.18.ebuild:
+  Really set XJED_HAS_XRENDERFONT for USE="X truetype". Fix X dependencies.
+
+  10 Feb 2008; Tobias Scherbaum <dertobi123@gentoo.org> jed-0.99.18.ebuild:
+  Added ~ppc, bug #209434
+
+  09 Feb 2008; Brent Baude <ranger@gentoo.org> jed-0.99.18.ebuild:
+  keyworded ~arch for ppc64, bug 209434
+
+  09 Feb 2008; Ulrich Mueller <ulm@gentoo.org> jed-0.99.18.ebuild:
+  Fix jed to link against slang-2.1.3. Some cleanup of the ebuild.
+
+  16 Nov 2007; Ferris McCormick <fmccor@gentoo.org> jed-0.99.18.ebuild:
+  Add ~sparc for testing; this and slang seem to work fine (even though
+  p.masked).
+
+  10 Oct 2007; Christian Faulhammer <opfer@gentoo.org>
+  jed-0.99.16-r2.ebuild, jed-0.99.18.ebuild:
+  remove PROVIDE=virtual/editor as we have now a new-style virtual
+
+  30 Aug 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing liquidx from metadata due to his retirement (see #171155 for
+  reference).
+
+  18 Jun 2007; Christian Faulhammer <opfer@gentoo.org>
+  jed-0.99.16-r2.ebuild, jed-0.99.18.ebuild:
+  added a lot of quotes around variables; fix slang dependency,see bug 141947
+
+  08 Jun 2007; Christian Faulhammer <opfer@gentoo.org> metadata.xml:
+  adding emacs team to herd tag
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  09 Feb 2007; Fabian Groffen <grobian@gentoo.org> jed-0.99.16-r2.ebuild:
+  Dropped ppc-macos keyword
+
+*jed-0.99.18 (09 Aug 2006)
+
+  09 Aug 2006; Alastair Tse <liquidx@gentoo.org> +jed-0.99.18.ebuild:
+  version bump, but masked until slang-2 is unmasked.
+
+  28 Jul 2006; Alastair Tse <liquidx@gentoo.org> jed-0.99.16-r2.ebuild:
+  slotting dependencies for slang-2 (#141947)
+
+  13 Feb 2006; Mark Loeser <halcy0n@gentoo.org> jed-0.99.16-r2.ebuild:
+  Fix leading and trailing spaces
+
+  10 Feb 2006; Alastair Tse <liquidx@gentoo.org> jed-0.99.16-r2.ebuild:
+  remove xproto as it is redundant
+
+  10 Feb 2006; Alastair Tse <liquidx@gentoo.org> -jed-0.99.16-r1.ebuild,
+  jed-0.99.16-r2.ebuild:
+  modular X deps
+
+  04 Dec 2005; Tom Gall <tgall@gentoo.org> jed-0.99.16-r2.ebuild:
+  stable on ppc64
+
+  16 Aug 2005; Fabian Groffen <grobian@gentoo.org>
+  +files/jed-0.99.16-darwin.patch, jed-0.99.16-r2.ebuild:
+  Adding a patch by <tchiwam at gentoo dot org> on order to successfully compile
+  on ppc-macos.  Marking ~ppc-macos
+
+  25 Nov 2004; Alastair Tse <liquidx@gentoo.org> jed-0.99.16-r2.ebuild:
+  fix typo for -r2 with RDEPEND/DEPEND (#72396)
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  jed-0.99.16-r2.ebuild:
+  Masked jed-0.99.16-r2.ebuild stable for ppc
+
+  27 Sep 2004; Alastair Tse <liquidx@gentoo.org> jed-0.99.16-r1.ebuild,
+  jed-0.99.16-r2.ebuild:
+  use epatch instead of patch during src_install
+
+  29 Jun 2004; Tom Gall <tgall@gentoo.org> jed-0.99.16-r2.ebuild:
+  ~ppc64 bug #55304
+
+  23 Jun 2004; <malc@gentoo.org> jed-0.99.16-r2.ebuild:
+  Mark stable on amd64
+
+  03 May 2004; Ferris McCormick <fmccor@gentoo.org> jed-0.99.16-r2.ebuild:
+  Marked stable on sparc.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> jed-0.99.16-r2.ebuild:
+  Add inherit eutils
+
+*jed-0.99.16-r2 (20 Apr 2004)
+
+  20 Apr 2004; Alastair Tse <liquidx@gentoo.org> jed-0.99.16-r2.ebuild,
+  files/jed-0.99.16-jed.info.patch:
+  added jed info patch thanks to Doug Weimer <dweimer@socal.rr.com> (#46743)
+
+  05 Feb 2004; Alastair Tse <liquidx@gentoo.org> jed-0.99.16-r1.ebuild:
+  add more reliable SRC_URI
+
+  18 Jan 2004; Chuck Short <zul@gentoo.org> jed-0.99.14-r1.ebuild,
+  jed-0.99.16-r1.ebuild, jed-0.99.16.ebuild:
+  Header updates added amd64 to jed-0.99.16-r1, closes #37214.
+
+  18 Sep 2003; Chuck Short <zul@gentoo.org> jed-0.99.14-r1.ebuild,
+  jed-0.99.16-r1.ebuild, jed-0.99.16.ebuild:
+  Updated homepage. Closes bug #29025.
+
+  07 Jun 2003; Alastair Tse <liquidx@gentoo.org> jed-0.99.16-r1.ebuild:
+  added sed-4 dep
+
+  04 Jun 2003; Christian Birchinger <joker@gentoo.org> jed-0.99.16-r1.ebuild:
+  Added sparc stable keyword
+
+  05 Jun 2003; Alastair Tse <liquidx@gentoo.org> jed-0.99.16-r1.ebuild:
+  make X optional again even if use has +truetype
+
+  04 Jun 2003; Alastair Tse <liquidx@gentoo.org> jed-0.99.16-r1.ebuild:
+  changed default keybindings to emacs. #17717.
+
+*jed-0.99.16-r1 (17 Feb 2003)
+
+  17 Apr 2003; foser <foser@gentoo.org> jed-0.99.16-r1.ebuild :
+  Fixed xft dep to be virtual
+
+  17 Feb 2003; Alastair Tse <alastair@gentoo.org> jed-0.99.16.ebuild,
+  
+  Added Xft support. Enabled by "truetype" USE flag. Resolves bug #15534.
+
+*jed-0.99.16 (14 Dec 2002)
+
+  06 Jan 2003; Seemant Kulleen <seemant@gentoo.org> *.ebuild :
+
+  PROVIDE virtual/editor
+
+  14 Dec 2002; Matthew Kennedy <mkennedy@gentoo.org> jed-0.99.16.ebuild,
+  ChangeLog, files/digest-jed-0.99.16 :
+
+  Version bump. Resolves bug #1134.
+
+*jed-0.99.14-r1 (1 Feb 2002)
+
+  06 Aug 2002; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

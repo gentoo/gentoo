@@ -1,0 +1,25 @@
+From e8931ed7f49eb55d6259328a5a78f3fc18472d48 Mon Sep 17 00:00:00 2001
+From: Davide Pesavento <pesa@gentoo.org>
+Date: Tue, 14 Oct 2014 04:30:29 +0200
+Subject: [PATCH] Support building against KDE's phonon variant.
+
+---
+ configure-ng.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/configure-ng.py b/configure-ng.py
+index a80cb57..fd2c56c 100644
+--- a/configure-ng.py
++++ b/configure-ng.py
+@@ -2256,6 +2256,8 @@ def generate_sip_module_code(target_config, verbose, no_timestamp, parts, tracin
+         if mname == 'QtCore':
+             includepath = target_config.vend_inc_dir
+             libs = '-L%s -lvendorid' % target_config.vend_lib_dir
++    if mname == 'phonon':
++        includepath = os.path.join(sys.prefix, 'include', 'phonon')
+ 
+     generate_module_makefile(target_config, verbose, mname,
+             includepath=includepath, libs=libs, qpy_sources=qpy_sources,
+-- 
+2.1.2
+

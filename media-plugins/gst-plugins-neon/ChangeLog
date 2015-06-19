@@ -1,0 +1,398 @@
+# ChangeLog for media-plugins/gst-plugins-neon
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-neon/ChangeLog,v 1.88 2014/08/25 11:01:44 ago Exp $
+
+  25 Aug 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-neon-0.10.23-r1.ebuild, gst-plugins-neon-1.2.4-r1.ebuild:
+  Stable for alpha, wrt bug #512012
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-neon-0.10.23-r1.ebuild, gst-plugins-neon-1.2.4-r1.ebuild:
+  Stable for ppc64, wrt bug #512012
+
+  28 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-neon-0.10.23-r1.ebuild, gst-plugins-neon-1.2.4-r1.ebuild:
+  Stable for ppc, wrt bug #512012
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-neon-0.10.23-r1.ebuild, gst-plugins-neon-1.2.4-r1.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-neon-0.10.23-r1.ebuild, gst-plugins-neon-1.2.4-r1.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org>
+  gst-plugins-neon-0.10.23-r1.ebuild, gst-plugins-neon-1.2.4-r1.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+*gst-plugins-neon-1.2.4-r1 (10 Jun 2014)
+*gst-plugins-neon-0.10.23-r1 (10 Jun 2014)
+
+  10 Jun 2014; Michał Górny <mgorny@gentoo.org>
+  +gst-plugins-neon-0.10.23-r1.ebuild, +gst-plugins-neon-1.2.4-r1.ebuild:
+  Enable multilib support, bug #493176.
+
+*gst-plugins-neon-1.2.4 (31 May 2014)
+
+  31 May 2014; Pacho Ramos <pacho@gentoo.org> +gst-plugins-neon-1.2.4.ebuild,
+  -gst-plugins-neon-1.0.10.ebuild, -gst-plugins-neon-1.2.0.ebuild:
+  Version bump, drop old
+
+  18 Apr 2014; Agostino Sarubbo <ago@gentoo.org> gst-plugins-neon-1.2.3.ebuild:
+  Stable for alpha, wrt bug #507568
+
+  16 Apr 2014; Agostino Sarubbo <ago@gentoo.org> gst-plugins-neon-1.2.3.ebuild:
+  Stable for ppc64, wrt bug #507568
+
+  14 Apr 2014; Agostino Sarubbo <ago@gentoo.org> gst-plugins-neon-1.2.3.ebuild:
+  Stable for ppc, wrt bug #507568
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gst-plugins-neon-1.2.3.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> gst-plugins-neon-1.2.3.ebuild:
+  amd64 stable, bug 499954
+
+*gst-plugins-neon-1.2.3 (01 Mar 2014)
+
+  01 Mar 2014; <leio@gentoo.org> -gst-plugins-neon-1.0.8.ebuild,
+  +gst-plugins-neon-1.2.3.ebuild:
+  Version bump to be in sync with the rest; no code changes. Remove old.
+
+*gst-plugins-neon-1.2.0 (29 Sep 2013)
+
+  29 Sep 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  +gst-plugins-neon-1.2.0.ebuild:
+  Version bump.
+
+*gst-plugins-neon-1.0.10 (01 Sep 2013)
+
+  01 Sep 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  +gst-plugins-neon-1.0.10.ebuild:
+  Version bump.
+
+*gst-plugins-neon-1.0.8 (26 Aug 2013)
+
+  26 Aug 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  +gst-plugins-neon-1.0.8.ebuild:
+  Version bump.
+
+  12 Aug 2013; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gst-plugins-neon-0.10.23.ebuild:
+  Allow building with neon-0.30 (bug #479928, thanks to Andrés Becerra
+  Sandoval).
+
+  05 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -gst-plugins-neon-0.10.22.ebuild:
+  Clean up old revisions.
+
+  04 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-neon-0.10.23.ebuild:
+  Stable for alpha, wrt bug #454906
+
+  01 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-neon-0.10.23.ebuild:
+  Stable for ppc, wrt bug #454906
+
+  01 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-neon-0.10.23.ebuild:
+  Stable for ppc64, wrt bug #454906
+
+  01 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-neon-0.10.23.ebuild:
+  Stable for x86, wrt bug #454906
+
+  01 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  gst-plugins-neon-0.10.23.ebuild:
+  Stable for amd64, wrt bug #454906
+
+*gst-plugins-neon-0.10.23 (02 Dec 2012)
+
+  02 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  +gst-plugins-neon-0.10.23.ebuild:
+  Version bump.
+
+  02 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  -gst-plugins-neon-0.10.19.ebuild, -gst-plugins-neon-0.10.21.ebuild,
+  gst-plugins-neon-0.10.22.ebuild:
+  Clean up old revisions. EAPI bump stable due to pending eclass changes and
+  slot pinning.
+
+  15 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  gst-plugins-neon-0.10.22.ebuild:
+  ppc/ppc64 stable wrt #382225
+
+  09 Oct 2011; Raúl Porcel <armin76@gentoo.org>
+  gst-plugins-neon-0.10.22.ebuild:
+  alpha stable wrt #382225
+
+  25 Sep 2011; Tony Vroon <chainsaw@gentoo.org>
+  gst-plugins-neon-0.10.22.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Tomáš "Mepho" Pružina in bug #382225.
+
+  25 Sep 2011; Raúl Porcel <armin76@gentoo.org>
+  gst-plugins-neon-0.10.21.ebuild:
+  alpha stable wrt #368281
+
+  20 Sep 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gst-plugins-neon-0.10.22.ebuild:
+  x86 stable wrt bug #382225
+
+*gst-plugins-neon-0.10.22 (29 Jul 2011)
+
+  29 Jul 2011; Mart Raudsepp <leio@gentoo.org>
+  +gst-plugins-neon-0.10.22.ebuild:
+  Version bump to be in sync with the rest; no code changes
+
+  25 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  gst-plugins-neon-0.10.21.ebuild:
+  ppc/ppc64 stable wrt #368281
+
+  23 May 2011; Markos Chandras <hwoarang@gentoo.org>
+  gst-plugins-neon-0.10.21.ebuild:
+  Stable on amd64 wrt bug #368281
+
+  23 May 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gst-plugins-neon-0.10.21.ebuild:
+  x86 stable wrt bug #368281
+
+*gst-plugins-neon-0.10.21 (13 Apr 2011)
+
+  13 Apr 2011; Mart Raudsepp <leio@gentoo.org>
+  -gst-plugins-neon-0.10.14.ebuild, -gst-plugins-neon-0.10.17.ebuild,
+  -gst-plugins-neon-0.10.18.ebuild, +gst-plugins-neon-0.10.21.ebuild:
+  Version bump. Timeout properties and cookie support
+
+  11 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  gst-plugins-neon-0.10.19.ebuild:
+  ppc/ppc64 stable wrt #346981
+
+  06 Jan 2011; Raúl Porcel <armin76@gentoo.org>
+  gst-plugins-neon-0.10.19.ebuild:
+  alpha stable wrt #346981
+
+  20 Dec 2010; Markos Chandras <hwoarang@gentoo.org>
+  gst-plugins-neon-0.10.19.ebuild:
+  Stable on amd64 wrt bug #346981
+
+  20 Dec 2010; Thomas Kahle <tomka@gentoo.org> gst-plugins-neon-0.10.19.ebuild:
+  x86 stable per bug 346981
+
+  05 Aug 2010; Samuli Suominen <ssuominen@gentoo.org>
+  gst-plugins-neon-0.10.18.ebuild:
+  ppc64 stable wrt #324691
+
+*gst-plugins-neon-0.10.19 (03 Aug 2010)
+
+  03 Aug 2010; Mart Raudsepp <leio@gentoo.org>
+  +gst-plugins-neon-0.10.19.ebuild:
+  Version bump. No noteworthy changes.
+
+  01 Aug 2010; Tobias Klausmann <klausman@gentoo.org>
+  gst-plugins-neon-0.10.18.ebuild:
+  Stable on alpha, bug #324691
+
+  01 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  gst-plugins-neon-0.10.18.ebuild:
+  x86 stable, bug 324691
+
+  27 Jun 2010; <nixnut@gentoo.org> gst-plugins-neon-0.10.18.ebuild:
+  ppc stable #324691
+
+  24 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  gst-plugins-neon-0.10.18.ebuild:
+  Stable on amd64 wrt bug #324691
+
+  22 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gst-plugins-neon-0.10.14.ebuild, gst-plugins-neon-0.10.17.ebuild,
+  gst-plugins-neon-0.10.18.ebuild:
+  net-misc/neon renamed to net-libs/neon.
+
+  18 Apr 2010; <nixnut@gentoo.org> gst-plugins-neon-0.10.17.ebuild:
+  ppc stable #308379
+
+*gst-plugins-neon-0.10.18 (05 Apr 2010)
+
+  05 Apr 2010; Mart Raudsepp <leio@gentoo.org>
+  +gst-plugins-neon-0.10.18.ebuild:
+  Version bump to be in sync with the rest; no code changes
+
+  24 Mar 2010; Christian Faulhammer <fauli@gentoo.org>
+  gst-plugins-neon-0.10.17.ebuild:
+  stable x86, bug 308379
+
+  19 Mar 2010; Pacho Ramos <pacho@gentoo.org>
+  gst-plugins-neon-0.10.17.ebuild:
+  amd64 stable, bug 308379
+
+  04 Mar 2010; Mart Raudsepp <leio@gentoo.org>
+  -gst-plugins-neon-0.10.11.ebuild:
+  Remove old
+
+*gst-plugins-neon-0.10.17 (23 Jan 2010)
+
+  23 Jan 2010; Olivier Crête <tester@gentoo.org>
+  +gst-plugins-neon-0.10.17.ebuild:
+  Version bump, bug #290084
+
+  05 Jan 2010; nixnut <nixnut@gentoo.org> gst-plugins-neon-0.10.14.ebuild:
+  ppc stable #290343
+
+  29 Nov 2009; Tobias Klausmann <klausman@gentoo.org>
+  gst-plugins-neon-0.10.14.ebuild:
+  Stable on alpha, bug #290343
+
+  18 Nov 2009; Christian Faulhammer <fauli@gentoo.org>
+  gst-plugins-neon-0.10.14.ebuild:
+  x86 stable, bug 290343
+
+  17 Nov 2009; Brent Baude <ranger@gentoo.org>
+  gst-plugins-neon-0.10.14.ebuild:
+  Marking gst-plugins-neon-0.10.14 ppc64 stable for bug 290343
+
+  10 Nov 2009; Olivier Crête <tester@gentoo.org>
+  gst-plugins-neon-0.10.14.ebuild:
+  Stable on amd64, bug #290343
+
+  17 Oct 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  gst-plugins-neon-0.10.11.ebuild, gst-plugins-neon-0.10.14.ebuild:
+  Fix building with >=net-misc/neon-0.29.0 (bug #286171).
+
+*gst-plugins-neon-0.10.14 (07 Sep 2009)
+
+  07 Sep 2009; Olivier Crête <tester@gentoo.org>
+  +gst-plugins-neon-0.10.14.ebuild:
+  Version bump
+
+  05 Aug 2009; Mart Raudsepp <leio@gentoo.org>
+  -gst-plugins-neon-0.10.7.ebuild, -gst-plugins-neon-0.10.9.ebuild:
+  Remove old
+
+  21 May 2009; Brent Baude <ranger@gentoo.org>
+  gst-plugins-neon-0.10.11.ebuild:
+  Marking gst-plugins-neon-0.10.11 ppc64 stable for bug 266986
+
+  21 May 2009; Brent Baude <ranger@gentoo.org>
+  gst-plugins-neon-0.10.11.ebuild:
+  Marking gst-plugins-neon-0.10.11 ppc stable for bug 266986
+
+  14 May 2009; Markus Meier <maekke@gentoo.org>
+  gst-plugins-neon-0.10.11.ebuild:
+  amd64 stable, bug #266986
+
+  12 May 2009; Christian Faulhammer <fauli@gentoo.org>
+  gst-plugins-neon-0.10.11.ebuild:
+  stable x86, bug 266986
+
+  03 May 2009; Tobias Klausmann <klausman@gentoo.org>
+  gst-plugins-neon-0.10.11.ebuild:
+  Stable on alpha, bug #266986
+
+*gst-plugins-neon-0.10.11 (30 Mar 2009)
+
+  30 Mar 2009; Olivier Crête <tester@gentoo.org>
+  +gst-plugins-neon-0.10.11.ebuild:
+  Version bump
+
+*gst-plugins-neon-0.10.9 (05 Dec 2008)
+
+  05 Dec 2008; <ssuominen@gentoo.org> +gst-plugins-neon-0.10.9.ebuild:
+  Version bump.
+
+  08 Aug 2008; Markus Meier <maekke@gentoo.org>
+  gst-plugins-neon-0.10.7.ebuild:
+  x86 stable, bug #232054
+
+  07 Aug 2008; Tobias Klausmann <klausman@gentoo.org>
+  gst-plugins-neon-0.10.7.ebuild:
+  Stable on alpha, bug #232054
+
+  01 Aug 2008; Brent Baude <ranger@gentoo.org>
+  gst-plugins-neon-0.10.7.ebuild:
+  Marking gst-plugins-neon-0.10.7 ppc64 stable for bug 232054
+
+  30 Jul 2008; Brent Baude <ranger@gentoo.org>
+  gst-plugins-neon-0.10.7.ebuild:
+  Marking gst-plugins-neon-0.10.7 ppc stable for bug 232054
+
+  26 Jul 2008; Olivier Crête <tester@gentoo.org>
+  gst-plugins-neon-0.10.7.ebuild:
+  Stable on amd64, bug #232054
+
+  13 Jul 2008; Joseph Jezak <josejx@gentoo.org>
+  gst-plugins-neon-0.10.7.ebuild:
+  Marked ~ppc for bug #208732.
+
+*gst-plugins-neon-0.10.7 (29 Jun 2008)
+
+  29 Jun 2008; Samuli Suominen <drac@gentoo.org>
+  -files/gst-plugins-neon-0.10.5-neon.patch,
+  -files/gst-plugins-neon-0.10.6-neon-0.28.1.patch,
+  -gst-plugins-neon-0.10.5.ebuild, -gst-plugins-neon-0.10.5-r1.ebuild,
+  -gst-plugins-neon-0.10.6.ebuild, -gst-plugins-neon-0.10.6-r1.ebuild,
+  +gst-plugins-neon-0.10.7.ebuild:
+  Version bump.
+
+  13 Apr 2008; Benedikt Böhm <hollow@gentoo.org>
+  gst-plugins-neon-0.10.6-r1.ebuild:
+  fix neon DEPEND
+
+*gst-plugins-neon-0.10.6-r1 (13 Apr 2008)
+
+  13 Apr 2008; Benedikt Böhm <hollow@gentoo.org>
+  +files/gst-plugins-neon-0.10.6-neon-0.28.1.patch,
+  gst-plugins-neon-0.10.6.ebuild, +gst-plugins-neon-0.10.6-r1.ebuild:
+  fix #214451
+
+  21 Feb 2008; Samuli Suominen <drac@gentoo.org>
+  -gst-plugins-neon-0.10.5.4.ebuild:
+  Remove unused version, it used a weird version number.
+
+*gst-plugins-neon-0.10.6 (21 Feb 2008)
+
+  21 Feb 2008; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  +gst-plugins-neon-0.10.6.ebuild:
+  version bump
+
+*gst-plugins-neon-0.10.5.4 (20 Feb 2008)
+
+  20 Feb 2008; Samuli Suominen <drac@gentoo.org>
+  +gst-plugins-neon-0.10.5.4.ebuild:
+  Version bump to get working http streaming..
+
+*gst-plugins-neon-0.10.5-r1 (03 Feb 2008)
+
+  03 Feb 2008; Samuli Suominen <drac@gentoo.org>
+  +files/gst-plugins-neon-0.10.5-neon.patch,
+  +gst-plugins-neon-0.10.5-r1.ebuild:
+  Fix #208611, HTTP streaming, thanks to Thomas Green.
+
+*gst-plugins-neon-0.10.5 (30 Aug 2007)
+
+  30 Aug 2007; Samuli Suominen <drac@gentoo.org>
+  +gst-plugins-neon-0.10.5.ebuild:
+  Version bump.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*gst-plugins-neon-0.10.4 (25 Jan 2007)
+
+  25 Jan 2007; Jim Ramsay <lack@gentoo.org> +gst-plugins-neon-0.10.4.ebuild:
+  Version bump - gst-plugins-bad-0.10.4 is released
+
+*gst-plugins-neon-0.10.3 (20 Jul 2006)
+
+  20 Jul 2006; <zaheerm@gentoo.org>
+  +files/gst-plugins-neon-0.10.3-neonfix.patch,
+  +gst-plugins-neon-0.10.3.ebuild:
+  version bump, plus patch from Samuli Suominen
+
+*gst-plugins-neon-0.10.1 (24 Mar 2006)
+
+  24 Mar 2006; Zaheer Abbas Merali <zaheerm@gentoo.org> +metadata.xml,
+  +gst-plugins-neon-0.10.1.ebuild:
+  initial ebuild for gst-plugins-neon

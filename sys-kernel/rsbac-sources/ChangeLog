@@ -1,0 +1,44 @@
+
+*rsbac-sources-3.10.7 (20 Aug 2013)
+
+  20 Aug 2013; Anthony G. Basile <blueness@gentoo.org>
+  +rsbac-sources-3.10.7.ebuild, -rsbac-sources-3.1.5.ebuild,
+  -rsbac-sources-3.2.19.ebuild, -rsbac-sources-3.3.8.ebuild,
+  -rsbac-sources-3.4.1.ebuild:
+  Version bump, remove older unstable
+
+  09 Jun 2013; Mike Frysinger <vapier@gentoo.org> metadata.xml:
+  Add upstream CPE tag (security info) from ChromiumOS.
+
+  09 Mar 2013; Tom Wijsman <TomWij@gentoo.org> rsbac-sources-3.1.5.ebuild,
+  rsbac-sources-3.2.19.ebuild, rsbac-sources-3.3.8.ebuild,
+  rsbac-sources-3.4.1.ebuild:
+  EAPI 5. Kernel sources and (gen)patches now use xz instead of bz2. Bug
+  #421721.
+
+*rsbac-sources-3.4.1 (09 Jun 2012)
+
+  09 Jun 2012; Anthony G. Basile <blueness@gentoo.org>
+  +rsbac-sources-3.4.1.ebuild:
+  Based on 3.4.1 + 4500_patch-linux-3.4.1-rsbac-1.4.6.diff
+  4500_patch-linux-3.4.1-rsbac-1.4.6.diff included for testing but not applied
+
+*rsbac-sources-3.3.8 (09 Jun 2012)
+
+  09 Jun 2012; Anthony G. Basile <blueness@gentoo.org>
+  +rsbac-sources-3.3.8.ebuild:
+  Based on 3.3.8 + 4500_patch-linux-3.3.8-rsbac-1.4.6.diff
+  4500_patch-linux-3.3.8-rsbac-1.4.6.diff included for testing but not applied
+
+*rsbac-sources-3.2.19 (09 Jun 2012)
+
+  09 Jun 2012; Anthony G. Basile <blueness@gentoo.org>
+  +rsbac-sources-3.2.19.ebuild:
+  Based on 3.2.19 + 4500_patch-linux-3.2.19-rsbac-1.4.6.diff
+  4520_pax-linux-3.2.18-test49.patch included for testing but not applied
+
+*rsbac-sources-3.1.5 (07 Jan 2012)
+
+  07 Jan 2012; Anthony G. Basile <blueness@gentoo.org>
+  +rsbac-sources-3.1.5.ebuild, +metadata.xml:
+  Initial resurrection

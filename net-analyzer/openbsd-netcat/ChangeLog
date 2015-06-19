@@ -1,0 +1,21 @@
+# ChangeLog for net-analyzer/openbsd-netcat
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/openbsd-netcat/ChangeLog,v 1.4 2014/02/01 08:47:17 heroxbd Exp $
+
+  01 Feb 2014; Benda Xu <heroxbd@gentoo.org> openbsd-netcat-1.84.ebuild:
+  respect LDFLAGS, bug 441680, credits Diego; warn against FO_REUSEPORT
+  mismatch, bug 493074, credits Josh.
+
+  01 Nov 2012; Benda Xu <heroxbd@gentoo.org> openbsd-netcat-1.84.ebuild:
+  fix indentations
+
+  01 Nov 2012; Benda Xu <heroxbd@gentoo.org> ChangeLog:
+  include in tree. closing bug 333253 and replies to bug 237277. credits to
+  Luca Pasquali for initial writing of the ebuild and all who contributed
+  patches.
+
+*netcat-openbsd (12 Sep 2008)
+
+  12 Sep 2008; Luca Pasquali <lpasquali@staff.dada.net> netcat-openbsd-1.84-r0.ebuild:
+  just started the ebuild.
+  package is initially put tidled in my two test environments: amd64 and x86.

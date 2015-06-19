@@ -1,0 +1,130 @@
+# ChangeLog for dev-perl/DateTime-Format-W3CDTF
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/DateTime-Format-W3CDTF/ChangeLog,v 1.29 2015/06/13 22:25:52 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  DateTime-Format-W3CDTF-0.60.0-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*DateTime-Format-W3CDTF-0.60.0-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +DateTime-Format-W3CDTF-0.60.0-r1.ebuild,
+  -DateTime-Format-W3CDTF-0.60.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org>
+  -DateTime-Format-W3CDTF-0.04.ebuild:
+  Cleanup
+
+  19 Mar 2012; Raúl Porcel <armin76@gentoo.org>
+  DateTime-Format-W3CDTF-0.04.ebuild, DateTime-Format-W3CDTF-0.60.0.ebuild:
+  Drop ia64/sparc keywords
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  DateTime-Format-W3CDTF-0.60.0.ebuild:
+  x86 stable wrt bug #400083
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org>
+  DateTime-Format-W3CDTF-0.60.0.ebuild:
+  Marking DateTime-Format-W3CDTF-0.60.0 ppc64 for bug 400083
+
+  01 Mar 2012; Brent Baude <ranger@gentoo.org>
+  DateTime-Format-W3CDTF-0.60.0.ebuild:
+  Marking DateTime-Format-W3CDTF-0.60.0 ppc for bug 400083
+
+  25 Feb 2012; Tobias Klausmann <klausman@gentoo.org>
+  DateTime-Format-W3CDTF-0.60.0.ebuild:
+  Stable on alpha, bug #400083
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  DateTime-Format-W3CDTF-0.60.0.ebuild:
+  Stable for amd64, wrt bug #400083
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org>
+  -DateTime-Format-W3CDTF-0.06.ebuild:
+  Cleanup
+
+*DateTime-Format-W3CDTF-0.60.0 (31 Aug 2011)
+
+  31 Aug 2011; Torsten Veller <tove@gentoo.org>
+  +DateTime-Format-W3CDTF-0.60.0.ebuild:
+  Change version scheme
+
+  03 Apr 2011; Torsten Veller <tove@gentoo.org>
+  -DateTime-Format-W3CDTF-0.05.ebuild:
+  Cleanup
+
+*DateTime-Format-W3CDTF-0.06 (07 Feb 2011)
+
+  07 Feb 2011; Robin H. Johnson <robbat2@gentoo.org>
+  +DateTime-Format-W3CDTF-0.06.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  03 Dec 2010; Michael Weber <xmw@gentoo.org>
+  DateTime-Format-W3CDTF-0.04.ebuild, DateTime-Format-W3CDTF-0.05.ebuild:
+  add ~arm (bug 302981)
+
+  20 Jan 2010; Torsten Veller <tove@gentoo.org>
+  DateTime-Format-W3CDTF-0.05.ebuild:
+  Depend on Module-Build (#301613)
+
+  23 Dec 2009; Fabian Groffen <grobian@gentoo.org>
+  DateTime-Format-W3CDTF-0.05.ebuild:
+  Marked ~x86-solaris, bug #296509
+
+*DateTime-Format-W3CDTF-0.05 (10 Nov 2009)
+
+  10 Nov 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +DateTime-Format-W3CDTF-0.05.ebuild:
+  Version bump via perl-bump experimental tool.
+
+  05 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  DateTime-Format-W3CDTF-0.04.ebuild:
+  ppc stable
+
+  16 Apr 2007; Markus Rothe <corsair@gentoo.org>
+  DateTime-Format-W3CDTF-0.04.ebuild:
+  Stable on ppc64
+
+  05 Mar 2007; Andrej Kacian <ticho@gentoo.org>
+  DateTime-Format-W3CDTF-0.04.ebuild:
+  Stable on x86, bug #169152.
+
+  23 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  DateTime-Format-W3CDTF-0.04.ebuild:
+  Stable on Alpha + IA64.
+
+  07 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  DateTime-Format-W3CDTF-0.04.ebuild:
+  Marking sparc stable
+
+  07 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  DateTime-Format-W3CDTF-0.04.ebuild:
+  Marking amd64 stable
+
+  25 Nov 2006; Bryan Østergaard <kloeri@gentoo.org>
+  DateTime-Format-W3CDTF-0.04.ebuild:
+  Add ~alpha + ~ia64 keyword.
+
+  24 Nov 2006; Markus Rothe <corsair@gentoo.org>
+  DateTime-Format-W3CDTF-0.04.ebuild:
+  Added ~ppc64; bug #155683
+
+  20 Nov 2006; nixnut <nixnut@gentoo.org>
+  DateTime-Format-W3CDTF-0.04.ebuild:
+  Added ~ppc keyword wrt bug 155683
+
+  19 Nov 2006; Diego Pettenò <flameeyes@gentoo.org>
+  DateTime-Format-W3CDTF-0.04.ebuild:
+  Add ~x86-fbsd keyword.
+
+*DateTime-Format-W3CDTF-0.04 (19 Nov 2006)
+
+  19 Nov 2006; Michael Cummings <mcummings@gentoo.org> +metadata.xml,
+  +DateTime-Format-W3CDTF-0.04.ebuild:
+  New dep for dev-perl/XML-RSS

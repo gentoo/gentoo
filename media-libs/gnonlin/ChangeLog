@@ -1,0 +1,134 @@
+# ChangeLog for media-libs/gnonlin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/gnonlin/ChangeLog,v 1.28 2015/03/15 13:35:11 pacho Exp $
+
+  15 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnonlin-0.10.17.ebuild,
+  gnonlin-1.4.0.ebuild:
+  x86 stable, bug 534012
+
+  14 Mar 2015; Pacho Ramos <pacho@gentoo.org> gnonlin-0.10.17.ebuild,
+  gnonlin-1.4.0.ebuild:
+  amd64 stable, bug 534012
+
+*gnonlin-1.4.0 (03 Feb 2015)
+
+  03 Feb 2015; Pacho Ramos <pacho@gentoo.org> +gnonlin-1.4.0.ebuild,
+  -gnonlin-1.2.0.ebuild:
+  Version bump, drop old
+
+  29 Jan 2015; Pacho Ramos <pacho@gentoo.org> gnonlin-0.10.9.ebuild:
+  amd64 stable, bug #531490
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> gnonlin-0.10.17.ebuild,
+  gnonlin-0.10.9.ebuild, gnonlin-1.2.0.ebuild, gnonlin-1.2.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*gnonlin-1.2.1 (31 May 2014)
+
+  31 May 2014; Pacho Ramos <pacho@gentoo.org> +gnonlin-1.2.1.ebuild:
+  Version bump
+
+*gnonlin-1.2.0 (06 Apr 2014)
+
+  06 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org> +gnonlin-1.2.0.ebuild:
+  Version bump, bug #490770. Needed for pitivi-0.91.
+
+  07 Nov 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gnonlin-0.10.9.ebuild, gnonlin-0.10.17.ebuild:
+  Slot gstreamer dependencies in preparation for gstreamer-1.0.
+
+  25 Oct 2012; Gilles Dartiguelongue <eva@gentoo.org> -gnonlin-0.10.13.ebuild,
+  -gnonlin-0.10.15.ebuild, -gnonlin-0.10.16.ebuild, gnonlin-0.10.17.ebuild:
+  Pin gstreamer dependencies to slot 0.10 and bump EAPI to 4. Drop old
+  revisions.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> gnonlin-0.10.9.ebuild,
+  gnonlin-0.10.13.ebuild, gnonlin-0.10.15.ebuild, gnonlin-0.10.16.ebuild,
+  gnonlin-0.10.17.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*gnonlin-0.10.17 (13 Apr 2011)
+
+  13 Apr 2011; Mart Raudsepp <leio@gentoo.org> +gnonlin-0.10.17.ebuild:
+  Version bump. Documentation and debugging fixes
+
+*gnonlin-0.10.16 (24 Dec 2010)
+
+  24 Dec 2010; Arun Raghavan <ford_prefect@gentoo.org> +gnonlin-0.10.16.ebuild:
+  Bump to 0.10.16. Minor fixes in this release.
+
+  20 Mar 2010; Nirbheek Chauhan <nirbheek@gentoo.org>
+  -gnonlin-0.10.8.ebuild, -gnonlin-0.10.10.ebuild, -gnonlin-0.10.11.ebuild,
+  -gnonlin-0.10.12.ebuild:
+  Remove old
+
+*gnonlin-0.10.15 (20 Mar 2010)
+
+  20 Mar 2010; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +gnonlin-0.10.15.ebuild:
+  Bump to 0.10.15, install docs with USE=doc
+
+*gnonlin-0.10.13 (28 Sep 2009)
+
+  28 Sep 2009; Hanno Boeck <hanno@gentoo.org> +gnonlin-0.10.13.ebuild:
+  Version bump.
+
+*gnonlin-0.10.12 (15 Aug 2009)
+
+  15 Aug 2009; Olivier Crête <tester@gentoo.org> +gnonlin-0.10.12.ebuild:
+  Version bump
+
+*gnonlin-0.10.11 (24 May 2009)
+
+  24 May 2009; Hanno Boeck <hanno@gentoo.org> +gnonlin-0.10.11.ebuild:
+  Version bump.
+
+*gnonlin-0.10.10 (03 Nov 2008)
+
+  03 Nov 2008; Olivier Crête <tester@gentoo.org> +gnonlin-0.10.10.ebuild:
+  Version bump
+
+  30 Dec 2007; Markus Ullmann <jokey@gentoo.org> gnonlin-0.10.9.ebuild:
+  Stable on x86
+
+*gnonlin-0.10.9 (13 Sep 2007)
+
+  13 Sep 2007; Samuli Suominen <drac@gentoo.org> +gnonlin-0.10.9.ebuild:
+  Version bump.
+
+*gnonlin-0.10.8 (10 Jun 2007)
+
+  10 Jun 2007; Hanno Boeck <hanno@gentoo.org> +gnonlin-0.10.8.ebuild:
+  Version bump.
+
+*gnonlin-0.10.7 (02 Apr 2007)
+
+  02 Apr 2007; Hanno Boeck <hanno@gentoo.org> +gnonlin-0.10.7.ebuild:
+  Version bump.
+
+*gnonlin-0.10.4 (11 May 2006)
+
+  11 May 2006; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  -gnonlin-0.10.3.ebuild, +gnonlin-0.10.4.ebuild:
+  version bump
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+*gnonlin-0.10.3 (26 Apr 2006)
+
+  26 Apr 2006; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  -gnonlin-0.10.1.ebuild, -gnonlin-0.10.2.ebuild, +gnonlin-0.10.3.ebuild:
+  version bump
+
+*gnonlin-0.10.2 (21 Apr 2006)
+
+  21 Apr 2006; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  +gnonlin-0.10.2.ebuild:
+  version bump
+
+*gnonlin-0.10.1 (07 Apr 2006)
+
+  07 Apr 2006; Zaheer Abbas Merali <zaheerm@gentoo.org> +metadata.xml,
+  +gnonlin-0.10.1.ebuild:
+  Initial import

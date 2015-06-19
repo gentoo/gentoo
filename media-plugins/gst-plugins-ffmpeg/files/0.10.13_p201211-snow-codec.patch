@@ -1,0 +1,11 @@
+From: Ettore Di Giacinto <mudler@sabayonlinux.org>
+--- ext/ffmpeg/gstffmpegcodecmap.c~	2015-05-29 10:50:06.207840323 +0200
++++ ext/ffmpeg/gstffmpegcodecmap.c	2015-05-29 10:50:25.638042896 +0200
+@@ -1307,7 +1307,6 @@
+     case AV_CODEC_ID_FLIC:
+     case AV_CODEC_ID_VMDVIDEO:
+     case AV_CODEC_ID_VMDAUDIO:
+-    case AV_CODEC_ID_SNOW:
+     case AV_CODEC_ID_VIXL:
+     case AV_CODEC_ID_QPEG:
+     case AV_CODEC_ID_PGMYUV:

@@ -1,0 +1,39 @@
+From d54c86abfba35f48cad78bb99b1d199afe8c2095 Mon Sep 17 00:00:00 2001
+From: Jeff McCune <jeff@puppetlabs.com>
+Date: Tue, 16 Apr 2013 11:27:30 -0400
+Subject: [PATCH] (#14522) Force /proc/self/status encoding to valid UTF-8 (try
+ 2)
+
+Without this patch the previous attempt to fix issue 14522 is
+insufficient because the String#encode method is a no-op when the source
+and destination encodings are the same encoding, even if there are
+invalid byte sequences.
+
+This is a problem because we're still getting unhandled `invalid byte
+sequence in UTF-8` errors running the specs.
+
+This patch addresses the problem by changing encoding from UTF-8 to
+UTF-16, replacing all invalid byte sequences with the default unicode
+string of "uFFFD"  We then convert back to UTF-8 to guarantee only valid
+byte sequences remain.
+---
+ lib/facter/util/virtual.rb | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/lib/facter/util/virtual.rb b/lib/facter/util/virtual.rb
+index 8223b41..65cf58a 100644
+--- a/lib/facter/util/virtual.rb
++++ b/lib/facter/util/virtual.rb
+@@ -63,7 +63,8 @@ def self.vserver?
+     return false unless FileTest.exists?("/proc/self/status")
+     txt = File.open("/proc/self/status", "rb").read
+     if txt.respond_to?(:encode!)
+-      txt.encode!('UTF-8', 'UTF-8', :invalid => :replace)
++      txt.encode!('UTF-16', 'UTF-8', :invalid => :replace)
++      txt.encode!('UTF-8', 'UTF-16')
+     end
+     return true if txt =~ /^(s_context|VxID):[[:blank:]]*[0-9]/
+     return false
+-- 
+1.8.1.6
+

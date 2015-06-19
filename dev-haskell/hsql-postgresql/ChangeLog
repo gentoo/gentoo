@@ -1,0 +1,92 @@
+# ChangeLog for dev-haskell/hsql-postgresql
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hsql-postgresql/ChangeLog,v 1.20 2014/12/28 15:23:09 titanofold Exp $
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  hsql-postgresql-1.8.1.ebuild, hsql-postgresql-1.8.2.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  04 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  hsql-postgresql-1.8.1.ebuild, hsql-postgresql-1.8.2.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  hsql-postgresql-1.8.1.ebuild, hsql-postgresql-1.8.2.ebuild:
+  Drop trailing '.' from description.
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org>
+  hsql-postgresql-1.8.1.ebuild, hsql-postgresql-1.8.2.ebuild:
+  move dev-haskell/hsql-postgresql/hsql-postgresql-1.8.2.ebuild ebuild to
+  mirror://hackage
+
+*hsql-postgresql-1.8.2 (15 Apr 2012)
+
+  15 Apr 2012; Mark Wright <gienah@gentoo.org> +hsql-postgresql-1.8.2.ebuild,
+  hsql-postgresql-1.8.1.ebuild, metadata.xml:
+  Bump hsql to 1.8.2. EAPI=4 and [profile?] on haskell libs (part of fix for bug
+  341795 dev-haskell/* USE=profile missing dependencies) for hsql-postgresql
+  1.8.1
+
+  04 Aug 2011; Sergei Trofimovich <slyfox@gentoo.org>
+  -hsql-postgresql-1.7.ebuild, -hsql-postgresql-1.7.3.ebuild,
+  -files/hsql-postgresql-1.7.3-ghc68.patch:
+  Removed old.
+
+*hsql-postgresql-1.8.1 (04 Aug 2011)
+
+  04 Aug 2011; Sergei Trofimovich <slyfox@gentoo.org>
+  +hsql-postgresql-1.8.1.ebuild:
+  Version bump (ghc-7 compatible)
+
+  12 Jul 2010; Sergei Trofimovich <slyfox@gentoo.org>
+  hsql-postgresql-1.7.ebuild:
+  Fixed bug #278897 (build failure on ghc-6.10+). Thanks to Nikolay Orlyuk
+  <virkony@gmail.com> for the report and fix.
+
+  17 Jun 2010; Patrick Lauer <patrick@gentoo.org>
+  hsql-postgresql-1.7.ebuild, hsql-postgresql-1.7.3.ebuild:
+  Migrating away from deprecated postgres virtuals
+
+*hsql-postgresql-1.7.3 (05 Aug 2009)
+
+  05 Aug 2009; Lennart Kolmodin <kolmodin@gentoo.org>
+  +hsql-postgresql-1.7.3.ebuild, +files/hsql-postgresql-1.7.3-ghc68.patch:
+  Version bump. Builds on ghc 6.10, patched to also build on ghc 6.8.
+
+  19 May 2008; Tiziano Müller <dev-zero@gentoo.org> ChangeLog:
+  Changed dependency for postgresql to virtual/postgresql-base
+
+  13 Dec 2007; Duncan Coutts <dcoutts@gentoo.org>
+  hsql-postgresql-1.7.ebuild:
+  Updates for upward compatability with cabal-1.2 and ghc-6.8
+
+  31 Oct 2007; Duncan Coutts <dcoutts@gentoo.org>
+  hsql-postgresql-1.7.ebuild:
+  Drop virtual/ghc in favour of dev-lang/ghc
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  09 Mar 2006; Duncan Coutts <dcoutts@gentoo.org>
+  hsql-postgresql-1.7.ebuild:
+  Add ~sparc to KEYWORDS. See bug #124902
+
+  01 Mar 2006; Markus Rothe <corsair@gentoo.org> hsql-postgresql-1.7.ebuild:
+  Added ~ppc64; bug #124469
+
+  01 Mar 2006; Michael Hanselmann <hansmi@gentoo.org>
+  hsql-postgresql-1.7.ebuild:
+  Added to ~ppc. See bug #124469.
+
+  23 Feb 2006; Duncan Coutts <dcoutts@gentoo.org>
+  hsql-postgresql-1.7.ebuild:
+  Changed the dep on hsql to use a '~' dep (as suggested by ciaranm)
+
+*hsql-postgresql-1.7 (23 Feb 2006)
+
+  23 Feb 2006; <dcoutts@gentoo.org> +metadata.xml,
+  +hsql-postgresql-1.7.ebuild:
+  Initial import.

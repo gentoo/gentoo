@@ -1,0 +1,26 @@
+diff -Nru deployment-api.vanilla/build.xml deployment-api/build.xml
+--- deployment-api.vanilla/build.xml	2009-05-09 15:54:02.000000000 +0100
++++ deployment-api/build.xml	2009-05-09 15:54:44.000000000 +0100
+@@ -70,12 +70,7 @@
+             description="Compile javax/enterprise/deploy sources">  
+      
+         <javac srcdir="${src.dir}" 
+-               destdir="${component.classes.dir}"
+-               debug="${javac.debug}" 
+-               optimize="${javac.optimize}"
+-               source="${javac.source}" 
+-               deprecation="${javac.deprecation}"
+-               failonerror="true">
++               destdir="${component.classes.dir}">
+             <include name="javax/enterprise/deploy/**"/>            
+         </javac>
+     </target>
+@@ -89,7 +84,7 @@
+                      includes="**/LocalStrings.properties"/>
+         </copy>
+ 
+-        <jar jarfile="${javaee.jar}" update="yes">
++        <jar jarfile="deployment-api.jar" update="yes">
+             <fileset dir="${component.classes.dir}">
+                 <include name="javax/enterprise/deploy/**/*.class"/>
+                 <include name="javax/enterprise/deploy/**/*.properties"/>

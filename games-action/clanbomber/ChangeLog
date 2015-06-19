@@ -1,0 +1,94 @@
+# ChangeLog for games-action/clanbomber
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/clanbomber/ChangeLog,v 1.24 2015/02/06 13:44:04 ago Exp $
+
+  06 Feb 2015; Agostino Sarubbo <ago@gentoo.org> clanbomber-2.1.1.ebuild:
+  Stable for amd64, wrt bug #538998
+
+  05 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> clanbomber-2.1.1.ebuild:
+  EAPI=5; tidy
+
+  31 Dec 2014; Tupone Alfredo <tupone@gentoo.org> clanbomber-2.1.1.ebuild:
+  Migration to EAPI 4
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> clanbomber-2.1.1.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  31 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -clanbomber-2.0.9.1.ebuild, -files/clanbomber-2.0.9.1-gcc43.patch:
+  old
+
+  15 Nov 2012; Tupone Alfredo <tupone@gentoo.org> clanbomber-2.1.1.ebuild,
+  +files/clanbomber-2.1.1-automake112.patch,
+  +files/clanbomber-2.1.1-boost150.patch:
+  Build with automake 1.12 Bug #442310 by Diego
+  Build with new boost
+
+  04 Nov 2012; Michael Sterrett <mr_bones_@gentoo.org> clanbomber-2.1.1.ebuild:
+  unclamp the boost dep (bug #441602)
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> clanbomber-2.1.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  21 Aug 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> clanbomber-2.1.1.ebuild:
+  x86 stable wrt bug #378839
+
+  12 Jul 2011; Michael Sterrett <mr_bones_@gentoo.org> clanbomber-2.1.1.ebuild:
+  clean up deps and install (bug #374865)
+
+*clanbomber-2.1.1 (05 Jul 2011)
+
+  05 Jul 2011; Tupone Alfredo <tupone@gentoo.org> +clanbomber-2.1.1.ebuild:
+  Version bump to 2.1.1 Bug #369537 by Victor Ostorga
+
+  09 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  clanbomber-2.0.9.1.ebuild:
+  stable x86, bug 296035
+
+  05 Nov 2009; Mounir Lamouri <volkmar@gentoo.org>
+  clanbomber-2.0.9.1.ebuild:
+  Keywording for ppc, bug 289266
+
+  14 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  clanbomber-2.0.9.1.ebuild:
+  EAPI=2
+
+  22 Jan 2009; Alfredo Tupone <tupone@gentoo.org>
+  +files/clanbomber-2.0.9.1-gcc43.patch, clanbomber-2.0.9.1.ebuild:
+  Fix gcc-4.3 bug #227937 by Evil Compile Person
+  Fix build with dev-libs/DirectFb-1*
+
+*clanbomber-2.0.9.1 (15 Feb 2008)
+
+  15 Feb 2008; Tristan Heaven <nyhm@gentoo.org> +clanbomber-2.0.9.1.ebuild:
+  Version bump, bug #166368
+
+  17 Feb 2007; Tristan Heaven <nyhm@gentoo.org>
+  +files/clanbomber-1.05-build.patch, clanbomber-1.05.ebuild:
+  Fix ROOT abuse, bug #167277
+
+  08 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  clanbomber-1.05.ebuild:
+  Making games last on inherit line.
+
+  08 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/1.05-gcc34.patch, clanbomber-1.05.ebuild:
+  gcc34 patch from Marco Squarcina via bug #73763
+
+*clanbomber-1.05 (16 Feb 2004)
+
+  16 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> clanbomber-1.05.ebuild,
+  files/1.05-no-display.patch:
+  version bump
+
+*clanbomber-1.04 (09 Jan 2004)
+
+  29 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Add patch to disable initializing video/sound when compiling #38831.
+
+  09 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by me for #20592.

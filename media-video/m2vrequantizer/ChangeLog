@@ -1,0 +1,47 @@
+# ChangeLog for media-video/m2vrequantizer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/m2vrequantizer/ChangeLog,v 1.10 2015/05/07 22:38:42 mrueg Exp $
+
+  07 May 2015; Manuel Rüger <mrueg@gentoo.org> -m2vrequantizer-0.0.1.ebuild:
+  Remove old.
+
+  09 Nov 2008; Markus Meier <maekke@gentoo.org>
+  m2vrequantizer-20060306.ebuild:
+  x86 stable, bug #246077
+
+  15 Apr 2008; Matthias Schwarzott <zzam@gentoo.org> Manifest:
+  Re-Add the removed ebuild as it is newer and removal broke deps.
+
+  15 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +m2vrequantizer-20060306.ebuild:
+  Re-Add the removed ebuild as it is newer and removal broke deps.
+
+  15 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  -m2vrequantizer-20060306.ebuild:
+  Removed m2vrequantizer-20060306 as requested in Bug 198960
+
+  27 Nov 2007; Matthias Schwarzott <zzam@gentoo.org>
+  m2vrequantizer-0.0.1.ebuild, m2vrequantizer-20060306.ebuild:
+  Fixed quoting.
+
+  22 Jan 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  m2vrequantizer-20060306.ebuild:
+  fixed amd64 compile problems; thanks to Mirko Guenther
+
+*m2vrequantizer-0.0.1 (16 Jan 2007)
+
+  16 Jan 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +m2vrequantizer-0.0.1.ebuild, -m2vrequantizer-20030925.ebuild:
+  moved requant-0.0.1.ebuild to m2vrequantizer-0.0.1.ebuild; removed uneeded
+  m2vrequantizer-20030925.ebuild
+
+  15 Jan 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  m2vrequantizer-20030925.ebuild, m2vrequantizer-20060306.ebuild:
+  added block to media-video/requant
+
+*m2vrequantizer-20060306 (15 Jan 2007)
+*m2vrequantizer-20030925 (15 Jan 2007)
+
+  15 Jan 2007; Joerg Bornkessel <hd_brummy@gentoo.org> +metadata.xml,
+  +m2vrequantizer-20030925.ebuild, +m2vrequantizer-20060306.ebuild:
+  initial ebuild's

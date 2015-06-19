@@ -1,0 +1,24 @@
+# ChangeLog for games-arcade/jvgs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/jvgs/ChangeLog,v 1.6 2015/06/02 01:39:52 mr_bones_ Exp $
+
+  02 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org> jvgs-0.5.ebuild:
+  add slot dep for repoman
+
+  05 Jan 2015; Tupone Alfredo <tupone@gentoo.org> jvgs-0.5.ebuild:
+  EAPI 5
+
+  03 Sep 2012; Julian Ospald <hasufell@gentoo.org> jvgs-0.5.ebuild,
+  +files/jvgs-0.5-flags.patch:
+  respect cflags wrt #430080
+
+  07 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> jvgs-0.5.ebuild:
+  x86 stable wrt bug #315909
+
+  28 Apr 2010; Samuli Suominen <ssuominen@gentoo.org> jvgs-0.5.ebuild:
+  amd64 stable wrt #315909
+
+*jvgs-0.5 (18 Mar 2010)
+
+  18 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> +jvgs-0.5.ebuild:
+  Initial commit based on ebuild by Michael Sterrett.

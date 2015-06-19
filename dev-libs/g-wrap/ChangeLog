@@ -1,0 +1,335 @@
+# ChangeLog for dev-libs/g-wrap
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/g-wrap/ChangeLog,v 1.85 2012/10/03 18:10:04 ranger Exp $
+
+  03 Oct 2012; Brent Baude <ranger@gentoo.org> g-wrap-1.9.13.ebuild:
+  Marking g-wrap-1.9.13 ppc for bug 427470
+
+  27 Aug 2012; Raúl Porcel <armin76@gentoo.org> g-wrap-1.9.11.ebuild,
+  g-wrap-1.9.13.ebuild, g-wrap-1.9.14.ebuild:
+  Drop alpha/sparc keywords
+
+  07 Aug 2012; Brent Baude <ranger@gentoo.org> g-wrap-1.9.13.ebuild:
+  Marking g-wrap-1.9.13 ppc64 for bug 427470
+
+  26 Jul 2012; Justin Lecher <jlec@gentoo.org> g-wrap-1.9.11.ebuild,
+  g-wrap-1.9.13.ebuild, g-wrap-1.9.14.ebuild:
+  Backport EAPI bump, fowardport parallel build restriction
+
+*g-wrap-1.9.14 (26 Jul 2012)
+
+  26 Jul 2012; Justin Lecher <jlec@gentoo.org> +g-wrap-1.9.14.ebuild,
+  metadata.xml:
+  Version Bump, #427468
+
+  25 Jul 2012; Jeroen Roovers <jer@gentoo.org> g-wrap-1.9.13.ebuild:
+  Stable for HPPA (bug #427470).
+
+  22 Jul 2012; Markos Chandras <hwoarang@gentoo.org> g-wrap-1.9.13.ebuild:
+  Stable on amd64 wrt bug #427470
+
+  21 Jul 2012; Jeff Horelick <jdhore@gentoo.org> g-wrap-1.9.13.ebuild:
+  marked x86 per bug 427470
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> g-wrap-1.9.11.ebuild,
+  g-wrap-1.9.13.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  29 Oct 2009; Marijn Schouten <hkBst@gentoo.org> -g-wrap-1.9.6-r3.ebuild,
+  -g-wrap-1.9.8.ebuild, -g-wrap-1.9.9.ebuild:
+  cleanup old versions
+
+*g-wrap-1.9.13 (29 Oct 2009)
+
+  29 Oct 2009; Marijn Schouten <hkBst@gentoo.org> +g-wrap-1.9.13.ebuild:
+  bump
+
+  14 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  g-wrap-1.9.6-r3.ebuild, g-wrap-1.9.8.ebuild, g-wrap-1.9.9.ebuild:
+  Add reverse blockers for dev-libs/libffi to avoid people breaking
+  dev-lang/python because of ld.so.conf conflict.
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> g-wrap-1.9.11.ebuild:
+  ppc stable #272675
+
+  05 Sep 2009; Brent Baude <ranger@gentoo.org> g-wrap-1.9.11.ebuild:
+  Marking g-wrap-1.9.11 ppc64 for bug 272675
+
+  25 Aug 2009; Tobias Klausmann <klausman@gentoo.org> g-wrap-1.9.11.ebuild:
+  Stable on alpha, bug #272675
+
+  23 Jul 2009; Marijn Schouten <hkBst@gentoo.org> -g-wrap-1.9.12.ebuild:
+  remove problem version 1.9.12
+
+  19 Jul 2009; Marijn Schouten <hkBst@gentoo.org> g-wrap-1.9.11.ebuild,
+  -g-wrap-1.9.11-r1.ebuild, g-wrap-1.9.12.ebuild:
+  srfi-3[45] are provided by guile-lib, so don't install them anymore, bug
+  278233
+
+*g-wrap-1.9.12 (19 Jul 2009)
+
+  19 Jul 2009; Marijn Schouten <hkBst@gentoo.org> g-wrap-1.9.11.ebuild,
+  g-wrap-1.9.11-r1.ebuild, +g-wrap-1.9.12.ebuild:
+  bump, disable parallel build, bug 275222
+
+*g-wrap-1.9.11-r1 (17 Jul 2009)
+
+  17 Jul 2009; Marijn Schouten <hkBst@gentoo.org> +g-wrap-1.9.11-r1.ebuild:
+  fix installation of srfi's: bug 273772
+
+  11 Jun 2009; Markus Meier <maekke@gentoo.org> g-wrap-1.9.11.ebuild:
+  amd64 stable, bug #272675
+
+  10 Jun 2009; Christian Faulhammer <fauli@gentoo.org> g-wrap-1.9.11.ebuild:
+  stable x86, bug 272675
+
+  05 Jun 2009; Ferris McCormick <fmccor@gentoo.org> g-wrap-1.9.11.ebuild:
+  Sparc stable, part of Bug #272675.
+
+  14 Apr 2009; Jeremy Olexa <darkside@gentoo.org> -g-wrap-1.9.7-r3.ebuild:
+  remove masked version, newer versions exist
+
+  04 Oct 2008; Matti Bickel <mabi@gentoo.org> g-wrap-1.9.11.ebuild:
+  fixing messed up RDEPEND, sorry
+
+  04 Oct 2008; Matti Bickel <mabi@gentoo.org> g-wrap-1.9.11.ebuild:
+  fix bug #216403
+
+*g-wrap-1.9.11 (03 Jul 2008)
+
+  03 Jul 2008; Marijn Schouten <hkBst@gentoo.org> +g-wrap-1.9.11.ebuild:
+  bump
+
+  20 Nov 2007; Markus Rothe <corsair@gentoo.org> g-wrap-1.9.9.ebuild:
+  Added ~ppc64; bug #199368
+
+  19 Nov 2007; Jeroen Roovers <jer@gentoo.org> g-wrap-1.9.9.ebuild:
+  Marked ~hppa (bug #199368).
+
+*g-wrap-1.9.9 (06 Nov 2007)
+
+  06 Nov 2007; Marijn Schouten <hkBst@gentoo.org> +g-wrap-1.9.9.ebuild:
+  bump, fixes bug 198175
+
+  31 Aug 2007; Christoph Mende <angelos@gentoo.org> g-wrap-1.9.8.ebuild:
+  Added ~amd64 wrt bug #190673
+
+  29 Aug 2007; Ferris McCormick <fmccor@gentoo.org> g-wrap-1.9.8.ebuild:
+  Re-keyword ~sparc --- Bug #190673 --- everything as expected.
+
+  29 Aug 2007; Marijn Schouten <hkBst@gentoo.org> g-wrap-1.9.6-r3.ebuild,
+  g-wrap-1.9.7-r3.ebuild, g-wrap-1.9.8.ebuild:
+  disable -Werror, bug 190593
+
+  09 Jul 2007; Marijn Schouten <hkBst@gentoo.org> -g-wrap-1.3.4-r1.ebuild:
+  remove old version, bug 171159
+
+  19 Jun 2007; Raúl Porcel <armin76@gentoo.org> g-wrap-1.9.8.ebuild:
+  Add ~alpha wrt #162010
+
+  09 Jun 2007; Donnie Berkholz <dberkholz@gentoo.org>; g-wrap-1.9.8.ebuild:
+  Add http:// to SRC_URI for patch (Jakub Moc).
+
+*g-wrap-1.9.8 (06 Jun 2007)
+
+  06 Jun 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/1.9.8-fix-gcc-4.2.0-libffi.patch,
+  +files/1.9.8-fix-ffi-build-issue.patch, +g-wrap-1.9.8.ebuild:
+  Bump to latest. Add a large patch on mirrors to forward-port libffi to the
+  code distributed in gcc 4.2.0, because I was getting segfaults on ppc with
+  the original code, and an accompanying patch to let it build outside the gcc
+  tree. Add another patch to make sure the ffi header directory gets found
+  during the compile. Removed ~amd64 and ~sparc because guile-lib isn't
+  keyworded for them yet.
+
+  04 Apr 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  g-wrap-1.9.6-r3.ebuild:
+  Stable on alpha/amd64 wrt bug #167706.
+
+  04 Apr 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  g-wrap-1.9.6-r3.ebuild:
+  ppc stable, bug #167706
+
+  31 Mar 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  g-wrap-1.9.6-r3.ebuild, g-wrap-1.9.7-r3.ebuild:
+  Added ~ppc, bug #162010
+
+  28 Mar 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  g-wrap-1.9.6-r3.ebuild:
+  Stable on sparc wrt security #167706
+
+  28 Mar 2007; Christian Faulhammer <opfer@gentoo.org>
+  g-wrap-1.9.6-r3.ebuild:
+  stable x86, security bug 167706
+
+  11 Mar 2007; Marijn Schouten <hkBst@gentoo.org> g-wrap-1.9.6-r3.ebuild,
+  g-wrap-1.9.7-r3.ebuild:
+  some small fixes from bug 112897
+
+  03 Mar 2007; Marijn Schouten <hkBst@gentoo.org> g-wrap-1.9.6-r3.ebuild,
+  g-wrap-1.9.7-r3.ebuild:
+  only block libffi-4*
+
+*g-wrap-1.9.7-r3 (02 Mar 2007)
+*g-wrap-1.9.6-r3 (02 Mar 2007)
+
+  02 Mar 2007; Marijn Schouten <hkBst@gentoo.org>
+  +files/libffi_automagic.patch, -g-wrap-1.9.6-r2.ebuild,
+  +g-wrap-1.9.6-r3.ebuild, -g-wrap-1.9.7-r2.ebuild, +g-wrap-1.9.7-r3.ebuild:
+  always build internal libffi, fixes bug 163647
+
+*g-wrap-1.9.6-r2 (28 Feb 2007)
+
+  28 Feb 2007; Marijn Schouten <hkBst@gentoo.org> g-wrap-1.9.6-r2.ebuild
+  files/digest-g-wrap-1.9.6-r2 -g-wrap-1.9.6-r1.ebuild -files/digest-g-wrap-1.9.6-r1:
+  fix srfi issues of bug 165763
+
+  07 Feb 2007; Marijn Schouten <hkBst@gentoo.org> g-wrap-1.9.7-r2.ebuild:
+  fix guile dependence
+
+  04 Feb 2007; Marijn Schouten <hkBst@gentoo.org> g-wrap-1.9.6-r1.ebuild:
+  add check for deprecated use flag for guile-1.8*, bug 165156
+
+  02 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  g-wrap-1.9.7-r2.ebuild:
+  Keyworded ~sparc wrt #163735
+
+  02 Feb 2007; Seemant Kulleen <seemant@gentoo.org> g-wrap-1.9.6-r1.ebuild:
+  remove the restricted dependency on guile-1.6, this was just because of
+  gnucash, whose problem has been solved
+
+  28 Jan 2007; Jason Wever <weeve@gentoo.org> g-wrap-1.9.6-r1.ebuild:
+  Added ~sparc keyword wrt bug #163735.
+
+*g-wrap-1.9.7-r2 (24 Jan 2007)
+*g-wrap-1.9.6-r1 (24 Jan 2007)
+
+  24 Jan 2007; Marijn Schouten <hkBst@gentoo.org> -g-wrap-1.9.6.ebuild,
+  +g-wrap-1.9.6-r1.ebuild, -g-wrap-1.9.7-r1.ebuild, +g-wrap-1.9.7-r2.ebuild:
+  force glib on
+
+  20 Jan 2007; Marijn Schouten <hkBst@gentoo.org>
+  files/g-wrap-1.9.6_glib_automagic.patch:
+  fix 1.9.6 patch
+
+  19 Jan 2007; Marijn Schouten <hkBst@gentoo.org> -g-wrap-1.9.7.ebuild:
+  remove because of automagic dep on glib-1.2
+
+*g-wrap-1.9.6 (19 Jan 2007)
+
+  19 Jan 2007; Marijn Schouten <hkBst@gentoo.org>
+  +files/g-wrap-1.9.6_glib_automagic.patch,
+  +files/g-wrap-1.9.7_glib_automagic.patch,
+  -files/g-wrap-glib-problem-fix.patch, +g-wrap-1.9.6.ebuild,
+  g-wrap-1.9.7-r1.ebuild:
+  add 1.9.6 and patch and rename patch for 1.9.7
+
+  18 Jan 2007; Marijn Schouten <hkBst@gentoo.org>
+  +files/glib_automagic.patch, +g-wrap-1.9.7-r1.ebuild:
+  added patch for glib automagic dep; fixes Bug 161903
+
+*g-wrap-1.9.7-r1 (18 Jan 2007)
+
+  17 Jan 2007; Christian Faulhammer <opfer@gentoo.org> g-wrap-1.9.7.ebuild:
+  keyworded ~x86, bug #162010
+
+  14 Jan 2007; Marijn Schouten <hkBst@gentoo.org> metadata.xml:
+  metadata: taking over, adding description
+
+*g-wrap-1.9.7 (12 Jan 2007)
+
+  12 Jan 2007; Marijn Schouten hkBst@gentoo.org +g-wrap-1.9.7.ebuild:
+  Added 1.9.7 ebuild
+
+  10 Jan 2007; Piotr Jaroszyński <peper@gentoo.org> g-wrap-1.3.4-r1.ebuild:
+  Dependency update: dev-util/guile -> dev-scheme/guile.
+
+  10 Jan 2007; <marijn@gentoo.org> g-wrap-1.3.4-r1.ebuild:
+  Dependency update: dev-libs/slib -> dev-scheme/slib.
+
+  18 Dec 2006; Seemant Kulleen <seemant@gentoo.org> g-wrap-1.3.4-r1.ebuild:
+  let us reset the slot to 0, g-wrap is unslottable
+
+  24 May 2006; Seemant Kulleen <seemant@gentoo.org> g-wrap-1.3.4-r1.ebuild:
+  add glib-1 specifically as a dep, to close bug #115384
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> g-wrap-1.3.4-r1.ebuild:
+  Mark 1.3.4-r1 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> g-wrap-1.3.4-r1.ebuild:
+  add ~ia64
+
+  19 Jul 2005; Seemant Kulleen <seemant@gentoo.org>
+  +files/g-wrap-1.3.4-m4.patch, g-wrap-1.3.4-r1.ebuild:
+  fix the underquoted definition warnings, thanks to: Joel Konkle-Parker
+  <jjk3@msstate.edu> in bug #92172
+
+*g-wrap-1.3.4-r1 (02 Jul 2004)
+
+  02 Jul 2004; Seemant Kulleen <seemant@gentoo.org>
+  +files/g-wrap-1.3.4-direntry.patch, g-wrap-1.2.1-r2.ebuild,
+  g-wrap-1.3.1-r1.ebuild, +g-wrap-1.3.4-r1.ebuild, g-wrap-1.3.4.ebuild:
+  add a patch to fix the info file direntry. Thanks to: Doug Weimer
+  <dweimer@socal.rr.com> for creating the patch to close bug #42895 by Sebastian
+  Flothow <sebastian@flothow.de>
+
+  22 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> g-wrap-1.3.4.ebuild:
+  inherit to top; filter-flags into src_compile; error messages; IUSE; tidy
+
+  09 Feb 2004; Dylan Carlson <absinthe@gentoo.org> g-wrap-1.3.4.ebuild:
+  added amd64 keyword.
+
+  20 Jan 2004; <gustavoz@gentoo.org> g-wrap-1.3.4.ebuild:
+  stable on sparc
+
+  09 Jan 2004; Aron Griffis <agriffis@gentoo.org> g-wrap-1.3.4.ebuild:
+  stable on alpha
+
+  21 Jul 2003; Alastair Tse <liquidx@gentoo.org> g-wrap-1.2.1-r2.ebuild:
+  unslotting older version in a futile attempt to unslot this package.
+
+  24 Jul 2003; Tavis Ormandy <taviso@gentoo.org> g-wrap-1.3.4.ebuild:
+  ~alpha
+
+  16 Jul 2003; Alastair Tse <liquidx@gentoo.org> g-wrap-1.3.4.ebuild:
+  about time this went stable for x86
+
+*g-wrap-1.3.4 (17 Mar 2003)
+
+  03 Apr 2003; Alastair Tse <liquidx@gentoo.org> ChangeLog :
+  Fixed edolnx's inability to correctly enter a changelog entry according
+  to the guidelines.
+
+  19 Mar 2003; Jon Nall <nall@gentoo.org> g-wrap-1.3.4.ebuild :
+  added ~ppc
+	
+  17 Mar 2003; Carl Perry <edolnx@gentoo.org> g-wrap-1.3.4.ebuild :
+  Added 1.3.4 for gnucash 1.8 series - doesn't seem to adversely 
+  interact with any other apps
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*g-wrap-1.3.1-r1 (1 Apr 2002)
+
+  1 Apr 2002; M.Schlemmer <azarah@gentoo.org> g-wrap-1.3.1.ebuild :
+
+  Libtoolize to fix "relink" bug in older versions of libtool.
+
+*g-wrap-1.2.1-r2 (13 Feb 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*g-wrap-1.2.1 (28 Mar 2002)
+
+  28 Mar 2002; Seemant Kulleen <seemant@gentoo.org> g-wrap-1.2.1.ebuild :
+
+  Changed the SRC_URI to an http:// destination instead of ftp://
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

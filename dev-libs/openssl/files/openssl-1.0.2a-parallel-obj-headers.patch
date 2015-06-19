@@ -1,0 +1,37 @@
+https://rt.openssl.org/Ticket/Display.html?id=3737&user=guest&pass=guest
+
+From ce279d4361e07e9af9ceca8a6e326e661758ad53 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 8 Mar 2015 01:34:48 -0500
+Subject: [PATCH] fix parallel generation of obj headers
+
+The current code has dummy sleep/touch commands to try and work
+around the parallel issue, but that is obviously racy.  Instead
+lets force one of the files to depend on the other so we know
+they'll never run in parallel.
+---
+ crypto/objects/Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/crypto/objects/Makefile b/crypto/objects/Makefile
+index ad2db1e..7d32504 100644
+--- a/crypto/objects/Makefile
++++ b/crypto/objects/Makefile
+@@ -44,11 +44,11 @@
+ # objects.pl both reads and writes obj_mac.num
+ obj_mac.h: objects.pl objects.txt obj_mac.num
+ 	$(PERL) objects.pl objects.txt obj_mac.num obj_mac.h
+-	@sleep 1; touch obj_mac.h; sleep 1
+ 
+-obj_xref.h: objxref.pl obj_xref.txt obj_mac.num
++# This doesn't really need obj_mac.h, but since that rule reads & writes
++# obj_mac.num, we can't run in parallel with it.
++obj_xref.h: objxref.pl obj_xref.txt obj_mac.num obj_mac.h
+ 	$(PERL) objxref.pl obj_mac.num obj_xref.txt > obj_xref.h
+-	@sleep 1; touch obj_xref.h; sleep 1
+ 
+ files:
+ 	$(PERL) $(TOP)/util/files.pl Makefile >> $(TOP)/MINFO
+-- 
+2.3.4
+

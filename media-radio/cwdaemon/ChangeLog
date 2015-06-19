@@ -1,0 +1,135 @@
+# ChangeLog for media-radio/cwdaemon
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-radio/cwdaemon/ChangeLog,v 1.29 2015/03/07 18:30:44 tomjbe Exp $
+
+  07 Mar 2015; Thomas Beierlein <tomjbe@gentoo.org> -cwdaemon-0.9.2.ebuild,
+  -cwdaemon-0.9.4.ebuild, -cwdaemon-0.9.6.ebuild, -cwdaemon-0.9.7.ebuild,
+  -cwdaemon-0.10.0.ebuild, -files/cwdaemon-0.9.4-unixcw3.patch:
+  Drop old
+
+  24 Feb 2015; Agostino Sarubbo <ago@gentoo.org> cwdaemon-0.10.1.ebuild:
+  Stable for alpha, wrt bug #531962
+
+  31 Dec 2014; Agostino Sarubbo <ago@gentoo.org> cwdaemon-0.10.1.ebuild:
+  Stable for ppc, wrt bug #531962
+
+  28 Dec 2014; Agostino Sarubbo <ago@gentoo.org> cwdaemon-0.10.1.ebuild:
+  Stable for x86, wrt bug #531962
+
+  27 Dec 2014; Agostino Sarubbo <ago@gentoo.org> cwdaemon-0.10.1.ebuild:
+  Stable for amd64, wrt bug #531962
+
+*cwdaemon-0.10.1 (16 May 2014)
+
+  16 May 2014; Thomas Beierlein <tomjbe@gentoo.org> +cwdaemon-0.10.1.ebuild:
+  Bug fix release
+
+*cwdaemon-0.10.0 (02 Feb 2014)
+
+  02 Feb 2014; Thomas Beierlein <tomjbe@gentoo.org> +cwdaemon-0.10.0.ebuild:
+  Version bump
+
+*cwdaemon-0.9.7 (26 Aug 2013)
+
+  26 Aug 2013; Patrick Lauer <patrick@gentoo.org> +cwdaemon-0.9.7.ebuild:
+  Bump
+
+  07 Feb 2013; Thomas Beierlein <tomjbe@gentoo.org> cwdaemon-0.9.2.ebuild:
+  Drop unneeded awk dep (bug #455734)
+
+  13 Aug 2012; Thomas Beierlein <tomjbe@gentoo.org> cwdaemon-0.9.6.ebuild:
+  Fix HOMEPAGE
+
+*cwdaemon-0.9.6 (06 Aug 2012)
+
+  06 Aug 2012; Thomas Beierlein <tomjbe@gentoo.org> +cwdaemon-0.9.6.ebuild:
+  Version bump
+
+  25 Jun 2012; Thomas Beierlein <tomjbe@gentoo.org> cwdaemon-0.9.4.ebuild,
+  +files/cwdaemon-0.9.4-unixcw3.patch:
+  Adapt to new unixcw-3. Bug #423389. Thanks Diego
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> cwdaemon-0.9.4.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  26 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> cwdaemon-0.9.4.ebuild:
+  Marked ~ppc wrt #338662
+
+  20 Dec 2010; Tobias Klausmann <klausman@gentoo.org> cwdaemon-0.9.4.ebuild:
+  Keyworded on alpha, bug #338662
+
+*cwdaemon-0.9.4 (25 Sep 2010)
+
+  25 Sep 2010; Thomas Beierlein <tomjbe@gentoo.org> +cwdaemon-0.9.4.ebuild,
+  metadata.xml:
+  Version bump.
+  - Fix broken HOMEPAGE
+  - Minor improvements
+  - Drop bundled cwlib and rely on media-radio/unixcw which provides it
+  - Drop alpha and ppc from KEYWORDS because dep misses that arches
+
+  01 Oct 2009; Samuli Suominen <ssuominen@gentoo.org> cwdaemon-0.9.2.ebuild:
+  amd64 stable wrt #287063
+
+  07 Sep 2009; Patrick Lauer <patrick@gentoo.org> cwdaemon-0.9.2.ebuild:
+  Add ~amd64
+
+  15 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Jan 2007; Danny van Dyk <kugelfang@gentoo.org> -cwdaemon-0.8.ebuild,
+  -cwdaemon-0.9.ebuild, -cwdaemon-0.9.1.ebuild:
+  QA: Removed unused versions.
+
+  14 Sep 2005; Aron Griffis <agriffis@gentoo.org> cwdaemon-0.9.2.ebuild:
+  Mark 0.9.2 stable on alpha
+
+  30 Mar 2005; Robb Romans <killsoft@gentoo.org> :
+  New version 0.9.2
+  * Many patches by Jason L. Wright, AI4JW, which brings us OpenBSD
+    support and the following:
+  * Better command line parsing and error checking added.
+  * The 'none' sound device had been added in case you don't want a
+    sidetone.
+  * Free entry of portnames has been added, together with autodetection
+    of ports. This should give support for more platforms.
+  * A null device has been added in case you want sidetone but no keying,
+    see 'man cwdaemon'.
+  * Many minor bugfixes.
+
+*cwdaemon-0.9.1 (11 Jan 2005)
+
+  11 Jan 2005; Robb Romans <killsoft@gentoo.org> cwdaemon-0.8.ebuild,
+  +cwdaemon-0.9.1.ebuild, cwdaemon-0.9.ebuild:
+  New version fixes a possible security issue
+
+*cwdaemon-0.9 (08 Dec 2004)
+
+  08 Dec 2004; Robb Romans <killsoft@gentoo.org> +cwdaemon-0.9.ebuild:
+  cwdaemon (0.9)
+  
+  * ESCh will send echo to the program using cwdaemon when CW playing is done,
+    using the '^' character. Added by Lada, OK1ZIA. This is used by tucnak,
+    a VHF contest logging program, see http://tucnak.nagano.cz.
+  * Debian init.d bootscript added by Lada, together with /etc/default/cwdaemon,
+    which you can use to configure cwdaemon. Set START_CWDAEMON=no in
+    /etc/default/cwdaemon to disable start at boottime.
+  * Serial and parallel port now supported on FreeBSD. Parallel port and various
+    BSD fixes thanks to Diane Bruce, VA3DB.
+
+  04 Aug 2004; Robb Romans <killsoft@gentoo.org> cwdaemon-0.8.ebuild:
+  Mark stable on x86, add ~alpha.
+
+  29 Jun 2004; Robb Romans <killsoft@gentoo.org> cwdaemon-0.8.ebuild:
+  Move to virtual/libc
+
+*cwdaemon-0.8 (28 Jun 2004)
+
+  28 Jun 2004; David Holm <dholm@gentoo.org> cwdaemon-0.8.ebuild:
+  Added to ~ppc.
+
+  27 Jun 2004; Robb Romans <killsoft@gentoo.org> +metadata.xml:
+  Initial import.

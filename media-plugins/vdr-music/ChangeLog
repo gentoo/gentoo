@@ -1,0 +1,74 @@
+# ChangeLog for media-plugins/vdr-music
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-music/ChangeLog,v 1.15 2014/03/03 15:23:59 hd_brummy Exp $
+
+  03 Mar 2014; Joerg Bornkessel <hd_brummy@gentoo.org> vdr-music-0.9.9.ebuild:
+  disabled the new makefile, needs some more testing
+
+  24 Feb 2014; Patrick Lauer <patrick@gentoo.org> metadata.xml,
+  vdr-music-0.9.9.ebuild:
+  Remove redundant useflag descriptions from metadata.xml, fix quoting
+
+  23 Feb 2014; Joerg Bornkessel <hd_brummy@gentoo.org> -vdr-music-0.2.0.ebuild,
+  -files/vdr-music-0.2.0-ImageMagick-header.diff,
+  -files/vdr-music-0.2.0-gcc4.3.diff, -files/vdr-music-0.2.0-gentoo.diff,
+  -files/vdr-music-0.2.0-glibc-2.10.patch,
+  -files/vdr-music-0.2.0-graphtftcoverfix.diff,
+  -files/vdr-music-0.2.0-lyrics.diff, -files/vdr-music-0.2.0-vdr-1.5.x.diff,
+  -vdr-music-0.9.3.ebuild, -files/vdr-music-0.9.3-makefile.patch:
+  cleanup old
+
+*vdr-music-0.9.9 (30 Jun 2013)
+
+  30 Jun 2013; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-music-0.9.9.ebuild,
+  +files/music.mk:
+  bump, wrt bug 474888
+
+*vdr-music-0.9.3 (31 Dec 2010)
+
+  31 Dec 2010; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-music-0.9.3.ebuild, +files/vdr-music-0.9.3-makefile.patch,
+  metadata.xml:
+  version bump
+
+  30 Dec 2010; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-music-0.2.0.ebuild, +files/vdr-music-0.2.0-ImageMagick-header.diff:
+  fixed includes newer ImageMagick; bug 274159
+
+  06 Nov 2009; Vlastimil Babka <caster@gentoo.org> vdr-music-0.2.0.ebuild:
+  Depend on virtual/jre instead of hardwired blackdown-jre
+
+  09 Aug 2009; Samuli Suominen <ssuominen@gentoo.org>
+  vdr-music-0.2.0.ebuild, +files/vdr-music-0.2.0-glibc-2.10.patch:
+  Fix building with GLIBC 2.10+ wrt #273979.
+
+  24 Feb 2009; Matthias Schwarzott <zzam@gentoo.org> vdr-music-0.2.0.ebuild:
+  Switch to eapi2 so the built_with_use can be replaced by a proper
+  use-depend. Also add DEPEND to RDEPEND as that seems to be missing.
+
+  13 Jan 2009; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-music-0.2.0-gcc4.3.diff, vdr-music-0.2.0.ebuild:
+  Fix compilation with gcc-4.3, Bug #251187
+
+  01 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  22 Jun 2008; Ben de Groot <yngwin@gentoo.org> vdr-music-0.2.0.ebuild:
+  Undoing previous change, as media-plugins/vdr-graphtft is unmasked again.
+
+  20 Jun 2008; Ben de Groot <yngwin@gentoo.org> vdr-music-0.2.0.ebuild:
+  Commenting out graphtft options, as media-plugins/vdr-graphtft is p.masked
+  at the moment.
+
+  20 Jan 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  files/vdr-music-0.2.0-gentoo.diff:
+  fixed typo in *-gentoo.diff; Thanks to Holymoly @ vdrportal.de
+
+*vdr-music-0.2.0 (13 Jan 2008)
+
+  13 Jan 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-music-0.2.0-gentoo.diff,
+  +files/vdr-music-0.2.0-graphtftcoverfix.diff,
+  +files/vdr-music-0.2.0-lyrics.diff, +files/vdr-music-0.2.0-vdr-1.5.x.diff,
+  +metadata.xml, +vdr-music-0.2.0.ebuild:
+  initial ebuild; moved from vdr-testing overlay; Thanks to T.Kost T.Rheinhold

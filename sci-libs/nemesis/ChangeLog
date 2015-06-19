@@ -1,0 +1,16 @@
+# ChangeLog for sci-libs/nemesis
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/nemesis/ChangeLog,v 1.2 2013/07/18 07:21:30 jlec Exp $
+
+*nemesis-5.24 (18 Jul 2013)
+
+  18 Jul 2013; Justin Lecher <jlec@gentoo.org> nemesis-5.22b.ebuild,
+  +nemesis-5.24.ebuild:
+  Version Bump; add missing dep; Fix usage of cmake-utils.eclass, #477230
+
+*nemesis-5.22b (13 Dec 2012)
+
+  13 Dec 2012; Justin Lecher <jlec@gentoo.org> +nemesis-5.22b.ebuild,
+  +files/nemesis-5.22b-multilib.patch, +metadata.xml:
+  New addition
+

@@ -1,0 +1,51 @@
+diff --git a/Codec/Archive/Tar/Pack.hs b/Codec/Archive/Tar/Pack.hs
+index 8e43091..3cc96ef 100644
+--- a/Codec/Archive/Tar/Pack.hs
++++ b/Codec/Archive/Tar/Pack.hs
+@@ -1,3 +1,4 @@
++{-# LANGUAGE CPP #-}
+ -----------------------------------------------------------------------------
+ -- |
+ -- Module      :  Codec.Archive.Tar
+@@ -28,8 +29,16 @@ import qualified System.FilePath as FilePath.Native
+ import System.Directory
+          ( getDirectoryContents, doesDirectoryExist, getModificationTime
+          , Permissions(..), getPermissions )
++#if MIN_VERSION_directory(1,2,0)
++-- The directory package switched to the new time package
++import Data.Time.Clock
++         ( UTCTime )
++import Data.Time.Clock.POSIX
++         ( utcTimeToPOSIXSeconds )
++#else
+ import System.Time
+          ( ClockTime(..) )
++#endif
+ import System.IO
+          ( IOMode(ReadMode), openBinaryFile, hFileSize )
+ import System.IO.Unsafe (unsafeInterleaveIO)
+@@ -170,5 +179,11 @@ recurseDirectories base (dir:dirs) = unsafeInterleaveIO $ do
+ 
+ getModTime :: FilePath -> IO EpochTime
+ getModTime path = do
++#if MIN_VERSION_directory(1,2,0)
++  -- The directory package switched to the new time package
++  t <- getModificationTime path
++  return . floor . utcTimeToPOSIXSeconds $ t
++#else
+   (TOD s _) <- getModificationTime path
+   return $! fromIntegral s
++#endif
+diff --git a/tar.cabal b/tar.cabal
+index 6467e4b..52e0611 100644
+--- a/tar.cabal
++++ b/tar.cabal
+@@ -25,7 +25,7 @@ source-repository head
+ 
+ library
+   build-depends: base >= 3 && < 5, filepath,
+-                 directory, old-time, bytestring
++                 directory, old-time, time, bytestring
+ 
+   exposed-modules:
+     Codec.Archive.Tar

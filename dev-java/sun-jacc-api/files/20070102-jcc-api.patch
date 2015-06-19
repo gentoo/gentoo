@@ -1,0 +1,11 @@
+--- build.xml	2005-12-25 05:26:06.000000000 +0100
++++ build.xml	2007-01-08 18:27:13.000000000 +0100
+@@ -75,7 +76,7 @@
+     <target name="assemble" depends="init"
+             description="Create JACC API jar files">               
+ 
+-        <jar jarfile="${javaee.jar}" update="yes">
++        <jar jarfile="jcc-api.jar">
+             <fileset dir="${component.classes.dir}">
+                 <include name="javax/security/jacc/**/*.class"/>
+             </fileset>

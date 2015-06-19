@@ -1,0 +1,54 @@
+# ChangeLog for sci-libs/cminpack
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/cminpack/ChangeLog,v 1.11 2015/04/07 14:41:19 jlec Exp $
+
+*cminpack-1.3.4 (09 Jun 2014)
+
+  09 Jun 2014; Sébastien Fabbro <bicatali@gentoo.org> +cminpack-1.3.4.ebuild,
+  -cminpack-1.3.0.ebuild, -cminpack-1.3.1.ebuild:
+  Version bump
+
+*cminpack-1.3.2 (14 Nov 2013)
+
+  14 Nov 2013; Sébastien Fabbro <bicatali@gentoo.org> +cminpack-1.3.2.ebuild:
+  Version bump
+
+*cminpack-1.3.1 (23 Oct 2013)
+
+  23 Oct 2013; Sébastien Fabbro <bicatali@gentoo.org> +cminpack-1.3.1.ebuild,
+  metadata.xml:
+  Version bump
+
+  05 Feb 2013; Ulrich Müller <ulm@gentoo.org> cminpack-1.3.0.ebuild:
+  Specify LICENSE more precisely, see CopyrightMINPACK.txt, bug 455574.
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> -cminpack-1.1.4.ebuild,
+  -cminpack-1.2.2.ebuild:
+  removed old
+
+  03 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> cminpack-1.3.0.ebuild:
+  keyword amd64-linux x86-linux
+
+*cminpack-1.3.0 (20 Jun 2012)
+
+  20 Jun 2012; Justin Lecher <jlec@gentoo.org> cminpack-1.2.2.ebuild,
+  +files/cminpack-1.2.2-underlinking.patch, +cminpack-1.3.0.ebuild,
+  metadata.xml:
+  Version Bump, add underlinking fix, which fixes test failures, #422693
+
+*cminpack-1.2.2 (29 May 2012)
+
+  29 May 2012; Sébastien Fabbro <bicatali@gentoo.org> -cminpack-1.1.3.ebuild,
+  +cminpack-1.2.2.ebuild:
+  Version bump
+
+*cminpack-1.1.4 (03 Jan 2012)
+
+  03 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org> +cminpack-1.1.4.ebuild:
+  Version bump
+
+*cminpack-1.1.3 (09 Jun 2011)
+
+  09 Jun 2011; Sébastien Fabbro <bicatali@gentoo.org> +cminpack-1.1.3.ebuild,
+  +metadata.xml:
+  Initial import

@@ -1,0 +1,574 @@
+# ChangeLog for media-libs/gd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/gd/ChangeLog,v 1.110 2015/05/12 07:16:38 vapier Exp $
+
+  12 May 2015; Mike Frysinger <vapier@gentoo.org> gd-2.0.35-r4.ebuild,
+  gd-2.1.1-r1.ebuild:
+  Depend on jpeg/libpng subslots to get autorebuilds.
+
+*gd-2.1.1-r1 (09 Apr 2015)
+
+  09 Apr 2015; Mike Frysinger <vapier@gentoo.org>
+  +files/gd-2.1.1-webp-pre.patch, +files/gd-2.1.1-webp.patch,
+  +gd-2.1.1-r1.ebuild:
+  Backport upstream changes to move from libvpx to libwebp #545956 by Paweł
+  Hajdan, Jr..
+
+  08 Apr 2005; Mike Frysinger <vapier@gentoo.org> gd-2.1.1.ebuild:
+  Force older version of libvpx as the API has changed #545956 by Paweł Hajdan,
+  Jr.
+
+  21 Mar 2015; Fabian Groffen <grobian@gentoo.org> gd-2.0.35-r4.ebuild,
+  gd-2.1.1.ebuild:
+  Install shared lib on Solaris, fix SRC_URI repoman complaint
+
+  07 Mar 2015; Mike Frysinger <vapier@gentoo.org> gd-2.1.1.ebuild, metadata.xml:
+  Add USE=webp to control the libvpx dep #541854 by Anthony Parsons.
+
+  28 Feb 2015; Mike Frysinger <vapier@gentoo.org> +files/gd-2.1.1-headers.patch,
+  gd-2.1.1.ebuild:
+  Fix out-of-tree test builds #540376 by tka.
+
+*gd-2.1.1 (16 Feb 2015)
+
+  16 Feb 2015; Mike Frysinger <vapier@gentoo.org> +gd-2.1.1.ebuild,
+  metadata.xml:
+  Version bump #478066 by Meik Frischke.
+
+  11 Oct 2014; Markus Meier <maekke@gentoo.org> gd-2.0.35-r4.ebuild:
+  arm stable, bug #512012
+
+  15 Sep 2014; Agostino Sarubbo <ago@gentoo.org> gd-2.0.35-r4.ebuild:
+  Stable for sparc, wrt bug #512012
+
+  07 Sep 2014; Fabian Groffen <grobian@gentoo.org> gd-2.0.35-r4.ebuild:
+  Add back font paths for as long as we don't understand why fontconfig doesn't
+  work, bug #518970
+
+  25 Aug 2014; Agostino Sarubbo <ago@gentoo.org> gd-2.0.35-r4.ebuild:
+  Stable for alpha, wrt bug #512012
+
+  23 Aug 2014; Agostino Sarubbo <ago@gentoo.org> gd-2.0.35-r4.ebuild:
+  Stable for ia64, wrt bug #512012
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org> gd-2.0.35-r4.ebuild:
+  Stable for ppc64, wrt bug #512012
+
+  07 Aug 2014; Jeroen Roovers <jer@gentoo.org> gd-2.0.35-r4.ebuild:
+  Stable for HPPA (bug #512012).
+
+  05 Aug 2014; Christoph Junghans <ottxor@gentoo.org> gd-2.0.35-r4.ebuild:
+  added prefix support (bug #518970)
+
+  28 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gd-2.0.35-r4.ebuild:
+  Stable for ppc, wrt bug #512012
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gd-2.0.35-r4.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> gd-2.0.35-r4.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> gd-2.0.35-r4.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  15 Jun 2014; Mike Frysinger <vapier@gentoo.org> gd-2.0.35-r3.ebuild,
+  gd-2.0.35-r4.ebuild:
+  Add arm64 love.
+
+  15 Jun 2014; Mike Frysinger <vapier@gentoo.org> gd-2.0.35-r4.ebuild:
+  Make sure @LIBICONV@ is replaced when nls is unavailable #512942 by Ulrich
+  Müller.
+
+*gd-2.0.35-r4 (21 May 2014)
+
+  21 May 2014; Michał Górny <mgorny@gentoo.org> +gd-2.0.35-r4.ebuild:
+  Enable multilib support, as a dependency of libgphoto2.
+
+  27 Aug 2013; Michael Palimaka <kensington@gentoo.org> gd-2.0.35-r3.ebuild:
+  Pin virtual/jpeg SLOT to 0.
+
+  25 Apr 2013; Tim Harder <radhermit@gentoo.org> gd-2.0.35-r3.ebuild:
+  Fix autoreconf failures with automake-1.13 (bug #466996).
+
+  04 Jan 2013; Ulrich Müller <ulm@gentoo.org> gd-2.0.35-r3.ebuild:
+  Fix LICENSE, see COPYING and notices in source files, bug 450244.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> gd-2.0.35-r3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> gd-2.0.35-r3.ebuild:
+  keyword ~amd64-fbsd
+
+  23 Apr 2012; Mike Frysinger <vapier@gentoo.org> gd-2.0.35-r3.ebuild:
+  Stub out AM_ICONV if gettext is not installed.
+
+  05 Mar 2012; Mike Frysinger <vapier@gentoo.org> gd-2.0.35-r3.ebuild:
+  Restore sed -r flag after refactor in previous commit lost it #406933 by
+  Drake Donahue.
+
+  02 Mar 2012; Ulrich Müller <ulm@gentoo.org> gd-2.0.35-r3.ebuild:
+  Fix LICENSE, "||" would mean dual licensing which is not the case here.
+
+  27 Feb 2012; Mike Frysinger <vapier@gentoo.org> gd-2.0.35-r3.ebuild:
+  DEPEND on pkg-config #406057 by cyberbat.
+
+  15 Dec 2011; Mike Frysinger <vapier@gentoo.org> gd-2.0.35-r3.ebuild:
+  Pass --without-x to avoid useless system -I/-L paths.
+
+  15 Dec 2011; Mike Frysinger <vapier@gentoo.org> gd-2.0.35-r3.ebuild,
+  +files/gd-2.0.35-libpng-pkg-config.patch:
+  Use libpng's pkg-config files rather than xxx-config scripts.
+
+  15 Dec 2011; Samuli Suominen <ssuominen@gentoo.org> -gd-2.0.35-r1.ebuild,
+  -gd-2.0.35-r2.ebuild:
+  old
+
+  05 Nov 2011; Raúl Porcel <armin76@gentoo.org> gd-2.0.35-r3.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #387291
+
+  30 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> gd-2.0.35-r3.ebuild:
+  Fix building with USE="png -zlib" wrt #381729 by Brennan Shacklett
+
+  29 Oct 2011; Markus Meier <maekke@gentoo.org> gd-2.0.35-r3.ebuild:
+  arm stable, bug #387291
+
+  21 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> gd-2.0.35-r3.ebuild:
+  x86 stable wrt #387291
+
+  18 Oct 2011; Kacper Kowalik <xarthisius@gentoo.org> gd-2.0.35-r3.ebuild:
+  ppc/ppc64 stable wrt #387291
+
+  18 Oct 2011; Jeroen Roovers <jer@gentoo.org> gd-2.0.35-r3.ebuild:
+  Stable for HPPA (bug #387291).
+
+  16 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> gd-2.0.35-r3.ebuild:
+  amd64 stable wrt #387291 and force libpng >= 1.5 :0 to ensure gdlib-config is
+  correct.
+
+  16 Oct 2011; Samuli Suominen <ssuominen@gentoo.org> gd-2.0.35-r3.ebuild:
+  Upgrade libpng version sed.
+
+  15 Apr 2011; Mike Frysinger <vapier@gentoo.org> gd-2.0.35-r3.ebuild:
+  Disable png/zlib related programs when support is disabled #363491 by Albert
+  W. Hopkins.
+
+*gd-2.0.35-r3 (13 Apr 2011)
+
+  13 Apr 2011; Mike Frysinger <vapier@gentoo.org> +gd-2.0.35-r3.ebuild,
+  +files/gd-2.0.35-fontconfig.patch:
+  Split out USE=zlib logic from USE=png, and add fix from upstream for
+  fontconfig #363367 by genbug.
+
+  11 Apr 2011; Samuli Suominen <ssuominen@gentoo.org> gd-2.0.35-r2.ebuild:
+  Remove libtool and static archive if USE="static-libs" is not set wrt #362959
+  by Stéphane Pagnon.
+
+  23 Jul 2010; Samuli Suominen <ssuominen@gentoo.org> gd-2.0.35-r2.ebuild:
+  Use virtual/jpeg.
+
+*gd-2.0.35-r2 (21 May 2010)
+
+  21 May 2010; Samuli Suominen <ssuominen@gentoo.org> gd-2.0.35-r1.ebuild,
+  +gd-2.0.35-r2.ebuild:
+  Revision bump to force rebuild with modified call to sed wrt #320837 by
+  Cédric Jeanneret.
+
+  20 May 2010; Samuli Suominen <ssuominen@gentoo.org> gd-2.0.35-r1.ebuild:
+  Try libpng14-config and -lpng14 before falling back to libpng-config and
+  -lpng. This is working around issues in "prefix" picking up
+  libpng12-config from host over libpng-config from "prefix".
+
+  08 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> gd-2.0.35-r1.ebuild,
+  +files/gd-2.0.35-libpng14.patch:
+  Fix building with libpng14 wrt #305101 by Lars Wendler.
+
+  21 Nov 2009; nixnut <nixnut@gentoo.org> gd-2.0.35-r1.ebuild:
+  ppc stable #292130
+
+  17 Nov 2009; Brent Baude <ranger@gentoo.org> gd-2.0.35-r1.ebuild:
+  Marking gd-2.0.35-r1 ppc64 for bug 292130
+
+  11 Nov 2009; Jeroen Roovers <jer@gentoo.org> gd-2.0.35-r1.ebuild:
+  Stable for HPPA (bug #292130).
+
+  10 Nov 2009; Raúl Porcel <armin76@gentoo.org> gd-2.0.35-r1.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #292130
+
+  10 Nov 2009; Dawid Węgliński <cla@gentoo.org> gd-2.0.35-r1.ebuild:
+  Stable on amd64 (security #292130)
+
+  09 Nov 2009; Christian Faulhammer <fauli@gentoo.org> gd-2.0.35-r1.ebuild:
+  stable x86, security bug 292130
+
+*gd-2.0.35-r1 (09 Nov 2009)
+
+  09 Nov 2009; Markus Meier <maekke@gentoo.org> +gd-2.0.35-r1.ebuild,
+  +files/gd-2.0.35-maxcolors.patch:
+  revision bump wrt security bug #292130
+
+  29 May 2009; Mike Frysinger <vapier@gentoo.org> -gd-2.0.34.ebuild:
+  Punt due to GLSA 200708-05 vuln #271688 by Robert Buchholz.
+
+  30 Mar 2008; <ricmm@gentoo.org> gd-2.0.34.ebuild, gd-2.0.35.ebuild:
+  Drop to ~mips due to unstable deps
+
+  06 Aug 2007; Joshua Kinard <kumba@gentoo.org> gd-2.0.35.ebuild:
+  Stable on mips, per #179154.
+
+  25 Jul 2007; Markus Rothe <corsair@gentoo.org> gd-2.0.35.ebuild:
+  Stable on ppc64; bug #179154
+
+  24 Jul 2007; Steve Dibb <beandog@gentoo.org> gd-2.0.35.ebuild:
+  amd64 stable, security bug 179154
+
+  21 Jul 2007; Raúl Porcel <armin76@gentoo.org> gd-2.0.35.ebuild:
+  alpha/ia64/x86 stable wrt security #179154
+
+  21 Jul 2007; Jeroen Roovers <jer@gentoo.org> gd-2.0.35.ebuild:
+  Stable for HPPA (bug #179154).
+
+  20 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> gd-2.0.35.ebuild:
+  Stable on sparc wrt security #179154
+
+  20 Jul 2007; Tobias Scherbaum <dertobi123@gentoo.org> gd-2.0.35.ebuild:
+  ppc stable, bug #179154
+
+  12 Jul 2007; Roy Marples <uberlord@gentoo.org> gd-2.0.35.ebuild:
+  Keyworded ~sparc-fbsd.
+
+*gd-2.0.35 (22 Jun 2007)
+
+  22 Jun 2007; Mike Frysinger <vapier@gentoo.org> +gd-2.0.35.ebuild:
+  Version bump.
+
+  12 May 2007; Joshua Kinard <kumba@gentoo.org> gd-2.0.34.ebuild:
+  Stable on mips.
+
+  15 Feb 2007; Fabian Groffen <grobian@gentoo.org> gd-2.0.32.ebuild,
+  gd-2.0.33.ebuild, gd-2.0.34.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  13 Feb 2007; Markus Rothe <corsair@gentoo.org> gd-2.0.34.ebuild:
+  Stable on ppc64; bug #141577
+
+  12 Feb 2007; Bryan Østergaard <kloeri@gentoo.org> gd-2.0.34.ebuild:
+  Stable on Alpha, bug 141577.
+
+  12 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org> gd-2.0.34.ebuild:
+  Stable on sparc wrt security #141577
+
+  11 Feb 2007; Simon Stelling <blubb@gentoo.org> gd-2.0.34.ebuild:
+  stable on amd64; security bug 141577
+
+  11 Feb 2007; Bryan Østergaard <kloeri@gentoo.org> gd-2.0.34.ebuild:
+  Stable on IA64, bug 141577.
+
+  11 Feb 2007; René Nussbaumer <killerfox@gentoo.org> gd-2.0.34.ebuild:
+  Stable on hppa. See bug #141577.
+
+  11 Feb 2007; Tobias Scherbaum <dertobi123@gentoo.org> gd-2.0.34.ebuild:
+  Stable on ppc wrt bug #141577.
+
+  11 Feb 2007; Christian Faulhammer <opfer@gentoo.org> gd-2.0.34.ebuild:
+  stable x86; security bug #141577
+
+*gd-2.0.34 (07 Feb 2007)
+
+  07 Feb 2007; Mike Frysinger <vapier@gentoo.org> +gd-2.0.34.ebuild:
+  Version bump.
+
+*gd-2.0.34_rc2 (03 Feb 2007)
+
+  03 Feb 2007; Mike Frysinger <vapier@gentoo.org> +gd-2.0.34_rc2.ebuild:
+  Version bump.
+
+  23 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/gd-2.0.33-iconv.patch, gd-2.0.33.ebuild:
+  Add patch to link against libiconv when needed.
+
+  23 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> gd-2.0.33.ebuild:
+  Add ~x86-fbsd keyword.
+
+  22 Dec 2005; Michael Hanselmann <hansmi@gentoo.org> gd-2.0.33.ebuild:
+  Stable on ppc.
+
+  21 Dec 2005; Marcus D. Hanwell <cryos@gentoo.org> gd-2.0.33.ebuild:
+  Stable on amd64, bug 112937.
+
+  21 Dec 2005; Gustavo Zacarias <gustavoz@gentoo.org> gd-2.0.33.ebuild:
+  Stable on sparc wrt security #112937
+
+  21 Dec 2005; Fernando J. Pereda <ferdy@gentoo.org> gd-2.0.33.ebuild:
+  stable on alpha as per bug #112937
+
+  21 Dec 2005; Mark Loeser <halcy0n@gentoo.org> gd-2.0.33.ebuild:
+  Stable on x86; bug #112937
+
+  21 Dec 2005; Markus Rothe <corsair@gentoo.org> gd-2.0.33.ebuild:
+  Stable on ppc64; bug #112937
+
+*gd-2.0.33 (21 Dec 2005)
+
+  21 Dec 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/gd-2.0.33-overflow-checks.patch, +gd-2.0.33.ebuild:
+  Add some sanity checks to prevent overflows #112937.
+
+  13 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>; gd-2.0.32.ebuild:
+  Add modular X dependencies.
+
+  20 Aug 2005; Mike Frysinger <vapier@gentoo.org> gd-2.0.32.ebuild:
+  Add support for USE=fontconfig #79375 by Jung Tae-young.
+
+  09 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> gd-2.0.28.ebuild,
+  gd-2.0.32.ebuild:
+  Stable ppc-macos
+
+  31 Dec 2004; Lina Pezzella <j4rg0n@gentoo.org> gd-2.0.32.ebuild:
+  Unstable ppc-macos.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  05 Nov 2004; Hardave Riar <hardave@gentoo.org> gd-2.0.32.ebuild:
+  Stable on mips, bug #69070.
+
+*gd-2.0.32 (02 Nov 2004)
+
+  02 Nov 2004; Mike Frysinger <vapier@gentoo.org>
+  -files/1.8.4-dec-alpha-compiler.diff, -files/1.8.4-jpeg-inc.patch,
+  -files/1.8.4-png-overflows.patch, -gd-1.8.4-r2.ebuild, -gd-2.0.31.ebuild,
+  +gd-2.0.32.ebuild:
+  Version bump to fix png compiling.
+
+  02 Nov 2004; Markus Rothe <corsair@gentoo.org> gd-2.0.31.ebuild:
+  Stable on ppc64, bug #69070
+
+  02 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org> gd-2.0.31.ebuild:
+  Stable amd64
+
+  31 Oct 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/1.8.4-png-overflows.patch, gd-1.8.4-r2.ebuild:
+  Backwards port png overflow fix from gd-2.x #69070.
+
+*gd-2.0.31 (31 Oct 2004)
+
+  31 Oct 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/2.0.31-png-check.patch, -gd-2.0.30.ebuild, +gd-2.0.31.ebuild:
+  Version bump to fix png building #69611 by Tomasz Sterna.
+
+  31 Oct 2004; Jason Wever <weeve@gentoo.org> gd-2.0.30.ebuild:
+  Stable on sparc wrt securit bug #69070.
+
+  31 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> gd-2.0.30.ebuild:
+  Stable on alpha, bug 69070.
+
+  31 Oct 2004; Michael Hanselmann <hansmi@gentoo.org> gd-1.8.4-r2.ebuild,
+  gd-2.0.28.ebuild, gd-2.0.30.ebuild:
+  Stable on ppc, updated to the new LICENSE-syntax.
+
+*gd-2.0.30 (30 Oct 2004)
+
+  30 Oct 2004; Mike Frysinger <vapier@gentoo.org> +gd-2.0.30.ebuild:
+  Version bump for security and stuff #69070.
+
+  08 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> gd-2.0.26.ebuild:
+  Stable on alpha.
+
+*gd-2.0.28 (22 Jul 2004)
+
+  22 Jul 2004; Mike Frysinger <vapier@gentoo.org> +gd-2.0.28.ebuild:
+  Version bump.
+
+  15 Jul 2004; Tom Gall <tgall@gentoo.org> gd-2.0.26.ebuild:
+  stable on ppc64, bug #55549
+
+*gd-2.0.26 (30 Jun 2004)
+*gd-1.8.4-r2 (30 Jun 2004)
+
+  30 Jun 2004; Mike Frysinger <vapier@gentoo.org> +metadata.xml,
+  +files/1.8.4-dec-alpha-compiler.diff, +files/1.8.4-jpeg-inc.patch,
+  +gd-1.8.4-r2.ebuild, +gd-2.0.23.ebuild, +gd-2.0.26.ebuild:
+  Version bump and rename #55584 by Haroon Rafique.
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org> libgd-1.8.4-r2.ebuild:
+  Fix use invocation
+
+  11 May 2004; Michael McCabe <randy@gentoo.org> libgd-2.0.23.ebuild:
+  Added s390 keywords
+
+*gd-2.0.23 (07 May 2004)
+
+  07 May 2004; Mike Frysinger <vapier@gentoo.org> +libgd-2.0.23.ebuild:
+  Version bump #50302 by Daniel Webert
+
+  24 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> libgd-1.8.4-r2.ebuild:
+  don't use deprecated ? : use syntax
+
+  04 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org> libgd-2.0.22.ebuild:
+  stable on sparc
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> libgd-2.0.22.ebuild:
+  stable on alpha and ia64
+
+  09 Feb 2004; <augustus@gentoo.org> libgd-2.0.22.ebuild:
+  Added ~amd64 keyword.
+
+*libgd-2.0.22 (02 Feb 2004)
+
+  02 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #40219 by Diego Garcia.
+
+  24 Jan 2004; <gustavoz@gentoo.org> libgd-2.0.15-r1.ebuild:
+  marked stable on sparc
+
+  10 Jan 2004; <agriffis@gentoo.org> libgd-1.8.4-r2.ebuild:
+  stable on ia64
+
+*libgd-2.0.17-r1 (31 Dec 2003)
+
+  31 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
+  Port the gif patch so as to not break some php installs.
+
+*libgd-2.0.17 (27 Dec 2003)
+
+  27 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump + optionalize jpeg/png/xpm/freetype #36271.
+
+*libgd-1.8.4-r2 (30 Jun 2003)
+
+  24 Nov 2003; Aron Griffis <agriffis@gentoo.org> libgd-1.8.4-r2.ebuild:
+  Stable on alpha
+
+  02 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Make jpeg support optional again and fix it so that it'll actually
+  compile when jpeg is not present #23648.
+
+  10 Jul 2003; Christian Birchinger <joker@gentoo.org> libgd-1.8.4-r2.ebuild:
+  Added sparc stable keyword
+
+  06 Jul 2003; Guy Martin <gmsoft@gentoo.org> libgd-1.8.4-r2.ebuild :
+  Marked stable on hppa.
+
+  30 Jun 2003; Daniel Ahlberg <aliz@gentoo.org> libgd-1.8.4-r2.ebuild :
+  Force jpeg support or else analog fails to build if libgd is built without jpeg support.
+
+*libgd-2.0.15-r1 (26 Jun 2003)
+
+  26 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  mmm SLOT goodiness.
+
+*libgd-2.0.15 (17 Jun 2003)
+
+  17 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bumped + grab gif patch from orig site.
+
+*libgd-2.0.12 (14 Apr 2003)
+
+  14 Apr 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bumped + comment out gif patch till Nich can update.
+
+*libgd-2.0.11-r1 (20 Mar 2003)
+
+  20 Mar 2003; Graham Forest <vladimir@gentoo.org> libgd-2.0.11-r1.ebuild:
+  Removed usage of pic USE flag
+
+*libgd-2.0.11 (23 Feb 2003)
+
+  20 Mar 2003; Guy Martin <gmsoft@gentoo.org> libgd-2.0.11.ebuild, libgd-1.8.4.ebuild : 
+  Added ~hppa to KEYWORDS.
+
+  23 Feb 2003; Nicholas Wourms <dragon@gentoo.org> libgd-2.0.11.ebuild files/gd-2.0.11-gif-support.patch.bz2 :
+  Added patch for gif support when USE="gif".  Added ~arch keywords to
+  correspond to the keywords from 1.8.4. This package also needed to be
+  elibtoolized.  Also, this gd requires a modern libpng and freetype,
+  otherwise output won't look right.  Changed dependancies to reflect
+  this.
+
+  23 Feb 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bumpage.
+
+*libgd-2.0.1 (09 Sep 2002)
+
+  14 Sep 2002; <mcummings@gentoo.org> :
+  bzip'd patch and moved to mirror
+
+  09 Sep 2002; <mcummings@gentoo.org> :
+  Fixes bugs with perl versions using gd; corrects a few compile options
+
+*libgd-1.8.4-r1 (26 Jun 2003)
+
+  26 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added local USE flag 'ttf' to determine whether user wants
+  to use freetype-2.x (truetype) or freetype-1.x (ttf).  Since
+  ttf is a local USE flag, we defer choice to ttf.
+
+  26 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  mmm SLOT goodiness.
+
+*libgd-1.8.4 (18 Feb 2003)
+
+  24 May 2003; Tavis Ormandy <taviso@gentoo.org> libgd-1.8.3-r6.ebuild,
+  libgd-1.8.4.ebuild, files/gd-1.8.3-dec-alpha-compiler.diff,
+  files/gd-1.8.4-dec-alpha-compiler.diff:
+  makring alpha, also ccc fixes.
+
+  18 May 2003; Martin Holzer <mholzer@gentoo.org> libgd-1.8.3-r6.ebuild,
+  libgd-1.8.4.ebuild:
+  Added USE flags. Closes #21059.
+
+  20 Mar 2003; Guy Martin <gmsoft@gentoo.org> libgd-1.8.3-r6.ebuild :
+  Added hppa to KEYWORDS.
+
+  18 Feb 2003; Robert Coie <rac@gentoo.org>; libgd-1.8.4.ebuild :
+  Based off of 1.8.3-r6, changed library defines HAVE_JPEG and
+  HAVE_PNG to HAVE_LIBJPEG and HAVE_LIBPNG to reflect upstream name
+  changes.
+
+*libgd-1.8.3-r6 (15 Jan 2003)
+  
+  07 Feb 2003; Brandon Low <lostlogic@gentoo.org>; libgd-1.8.3-r6.ebuild :
+  Fix to work with userpriv properly.
+
+  04 Feb 2003; Seemant Kulleen <seemant@gentoo.org> libgd-1.8.3-r6.ebuild :
+  Removed dependency on sed-4 because it is buggy on ppc.  Switched to
+  normal gnu-sed syntax. Closes bug #15022 by Rajiv Manglani
+  <rajiv@gentoo.org>
+
+  15 Jan 2003; Brandon Low <lostlogic@gentoo.org> libgd-1.8.3-r6.ebuild:
+  Drop dependency on supersed, switch to >=sed-4.0.  This is unstable on the
+  ppc pending the stability of sed-4 on the ppc.
+
+*libgd-1.8.3-r5 (12 Apr 2002)
+
+  22 Apr 2003; Brandon Low <lostlogic@gentoo.org> libgd-1.8.3-r5.ebuild:
+  Change supersed dependencies
+
+  22 Oct 2002; Seemant Kulleen <seemant@gentoo.org> libgd-1.8.3-r5.ebuid :
+  jpeg, X, and truetype turned into USE dependent support.
+
+  07 Aug 2002; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
+
+  12 Apr 2002; Spider <spider@gentoo.org> libgd-1.8.3-r5.ebuild :
+  Updating revision with new libpng
+
+*libgd-1.8.3-r4 (03 Apr 2002)
+
+  03 Apr 2002; Bruce A. Locke <blocke@shivan.org> libgd-1.8.3-r4.ebuild :
+  Quick fix for glibc circular dependencies.
+
+*libgd-1.8.3-r3 (27 Mar 2002)
+
+  27 Mar 2002; Seemant Kulleen <seemant@gentoo.org> libgd-1.8.3-r3.ebuild :
+  Updated ebuild to modern syntax, and ungzipped HTML docs.
+
+*libgd-1.8.3-r2 (01 Feb 2002)
+
+  01 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

@@ -1,0 +1,32 @@
+# ChangeLog for dev-python/ansicolor
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ansicolor/ChangeLog,v 1.9 2015/06/06 19:56:22 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> ansicolor-0.2.1.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> ansicolor-0.2.4.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> ansicolor-0.2.4.ebuild:
+  amd64 stable, bug 540290
+
+*ansicolor-0.2.4 (01 May 2014)
+
+  01 May 2014; Ian Delaney <idella4@gentoo.org> +ansicolor-0.2.4.ebuild:
+  bump; drop py2.6 py3.2, add py3.4 support
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> ansicolor-0.2.1.ebuild:
+  Add support for the new PyPy slotting.
+
+*ansicolor-0.2.1 (10 Mar 2014)
+
+  10 Mar 2014; Justin Lecher <jlec@gentoo.org> +ansicolor-0.2.1.ebuild,
+  +metadata.xml:
+  New addition, written by me

@@ -1,0 +1,156 @@
+# ChangeLog for x11-misc/wdm
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/wdm/ChangeLog,v 1.44 2015/05/18 21:36:48 mrueg Exp $
+
+  18 May 2015; Manuel Rüger <mrueg@gentoo.org> -wdm-1.28-r1.ebuild:
+  Remove old.
+
+  02 Mar 2012; Tobias Klausmann <klausman@gentoo.org> wdm-1.28-r3.ebuild:
+  Stable on alpha, bug #397275
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> wdm-1.28-r3.ebuild:
+  x86 stable wrt bug #397275
+
+  03 Feb 2012; Brent Baude <ranger@gentoo.org> wdm-1.28-r3.ebuild:
+  Marking wdm-1.28-r3 ppc for bug 397275
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org> wdm-1.28-r3.ebuild:
+  Stable for amd64, wrt bug #397275
+
+*wdm-1.28-r3 (06 Jun 2010)
+
+  06 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> +wdm-1.28-r3.ebuild,
+  +files/wdm-1.28-terminateServer.patch:
+  Apply terminateServer patch from bug 290034.
+
+  13 Mar 2010; Markos Chandras <hwoarang@gentoo.org> wdm-1.28-r1.ebuild,
+  wdm-1.28-r2.ebuild:
+  Add x11-libs/libXmu dependency wrt bug #292438. Thanks to Christophe
+  LEFEBVRE <chtof62@gmail.com> for the ebuilds
+
+  09 Jan 2009; Joseph Jezak <josejx@gentoo.org> wdm-1.28-r2.ebuild:
+  Marked ~ppc for bug #210854.
+
+  09 Jan 2009; Rémi Cardona <remi@gentoo.org> wdm-1.28-r1.ebuild,
+  wdm-1.28-r2.ebuild:
+  Change virtual/xft dependency to x11-libs/libXft, bug 253771.
+
+  17 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> wdm-1.28-r2.ebuild:
+  ~amd64 added wrt bug #210854
+
+  06 Mar 2008; Raúl Porcel <armin76@gentoo.org> wdm-1.28-r2.ebuild:
+  Add ~alpha wrt #210854
+
+  05 Mar 2008; Ferris McCormick <fmccor@gentoo.org> wdm-1.28-r2.ebuild:
+  Add ~sparc for testing, Bug #210854 --- works fine with USE=pam.
+
+  05 Mar 2008; Brent Baude <ranger@gentoo.org> wdm-1.28-r2.ebuild:
+  keyworded ~arch for ppc64, bug 210854
+
+  04 Mar 2008; <cla@gentoo.org> wdm-1.28-r2.ebuild:
+  Marked ~x86 (bug #210854). Thanks to Michał Wołonkiewicz <volon@vp.pl> for
+  testing.
+
+*wdm-1.28-r2 (20 Feb 2008)
+
+  20 Feb 2008; David Shakaryan <omp@gentoo.org> +wdm-1.28-r2.ebuild:
+  Utilise pambase and general cleanup.
+
+  04 Jul 2007; Christoph Mende <angelos@gentoo.org> wdm-1.28-r1.ebuild:
+  Stable on amd64 wrt bug #183961
+
+  02 Jul 2007; Raúl Porcel <armin76@gentoo.org> wdm-1.28-r1.ebuild:
+  alpha/x86 stable wrt #183961
+
+  02 Jul 2007; Lars Weiler <pylon@gentoo.org> wdm-1.28-r1.ebuild:
+  Stable on ppc; bug #183961.
+
+*wdm-1.28-r1 (02 Jul 2007)
+
+  02 Jul 2007; Diego Pettenò <flameeyes@gentoo.org> -files/wdm,
+  +files/wdm-include.1, +wdm-1.28-r1.ebuild:
+  Revision bump to fix the pam.d file.
+
+  15 Nov 2006; Krzysiek Pawlik <nelchael@gentoo.org> wdm-1.28.ebuild:
+  Add missing libs, see bug #150815.
+
+  14 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org> -wdm-1.26-r1.ebuild:
+  Remove old version.
+
+  23 May 2006; Jason Wever <weeve@gentoo.org> wdm-1.28.ebuild:
+  Added ~sparc keyword.
+
+  07 Feb 2006; Aron Griffis <agriffis@gentoo.org> wdm-1.28.ebuild:
+  Mark 1.28 stable on alpha
+
+  21 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> wdm-1.26-r1.ebuild,
+  wdm-1.28.ebuild:
+  Fixed DEPEND for modular X.
+
+  14 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> wdm-1.28.ebuild:
+  Stable on ppc. See bug #111349.
+
+  03 Nov 2005; Luis Medinas <metalgod@gentoo.org> wdm-1.28.ebuild:
+  Marked Stable on amd64. Bug #111349.
+
+  03 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org> wdm-1.28.ebuild:
+  Fixed ChangeLog, marked 1.28 stable on x86.
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> wdm-1.26-r1.ebuild:
+  Mark 1.26-r1 stable on alpha
+
+  09 Jul 2005; Jonathan Smith <smithj@gentoo.org> files/wdm-include:
+  removed references to pam_console for #98456
+
+  15 Jun 2005; David Holm <dholm@gentoo.org> wdm-1.28.ebuild:
+  Added to ~ppc.
+
+*wdm-1.28 (14 Jun 2005)
+
+  14 Jun 2005; Jonathan Smith <smithj@gentoo.org> -wdm-1.26.ebuild,
+  wdm-1.26-r1.ebuild, +wdm-1.28.ebuild:
+  version bump for #72198, ebuild cleanup, marked 1.26-r1 stable on x86
+
+  13 Jun 2005; Jonathan Smith <smithj@gentoo.org> wdm-1.26-r1.ebuild:
+  trailing whitespace fix for wdm-1.26-r1.ebuild
+
+  13 Jun 2005; Diego Pettenò <flameeyes@gentoo.org> wdm-1.26-r1.ebuild:
+  Inherit pam eclass for newpamd function.
+
+*wdm-1.26-r1 (13 Jun 2005)
+
+  13 Jun 2005; Jonathan Smith <smithj@gentoo.org> -wdm-1.22.ebuild:
+  ebuild cleanup and fix to #93186
+
+  17 Aug 2004; Aron Griffis <agriffis@gentoo.org> wdm-1.26.ebuild:
+  add ~alpha #60071
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> wdm-1.26.ebuild:
+  Marked stable.
+
+*wdm-1.26 (23 Dec 2003)
+
+  23 Dec 2003; Markus Nigbur <pyrania@gentoo.org> wdm-1.26.ebuild:
+  Version bump.
+
+  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+*wdm-1.25 (25 Jun 2003)
+
+  25 Jun 2003; Brad Cowan <bcowan@gentoo.org> wdm-1.25.ebuild:
+  Version bump.
+
+*wdm-1.22 (19 Feb 2003)
+
+  18 Apr 2003; foser <foser@gentoo.org> wdm-1.22.ebuild :
+  Fix xft dep to be virtual
+
+  02 Apr 2003; Alastair Tse <liquidx@gentoo.org> wdm-1.22.ebuild:
+  place config files in /etc/X11/wdm. fixes #18168.
+
+  19 Feb 2003; Brad Cowan <bcowan@gentoo.org> wdm-1.22.ebuild, 
+  ChangeLog, files/digest-wdm-1.22, wdm :
+  
+  Initial import.  Ebuild submitted by Don Seiler <don@seiler.us>.
+  

@@ -1,0 +1,26 @@
+diff -uNr opentyrian.ORIG/Makefile opentyrian/Makefile
+--- opentyrian.ORIG/Makefile	2009-10-25 00:45:41.958937396 +0100
++++ opentyrian/Makefile	2009-10-25 00:47:31.759940038 +0100
+@@ -73,6 +73,10 @@
+ 	CFLAGS += -DHG_REV='"$(HG_REV)"'
+ endif
+ 
++ifneq ($(DATA_PATH), )
++	CFLAGS += -DDATA_PATH=\"$(DATA_PATH)\"
++endif
++
+ # RULES ####################################################
+ 
+ .PHONY : all
+diff -uNr opentyrian.ORIG/src/file.c opentyrian/src/file.c
+--- opentyrian.ORIG/src/file.c	2009-10-25 00:45:41.967228200 +0100
++++ opentyrian/src/file.c	2009-10-25 00:50:21.542979700 +0100
+@@ -34,7 +34,7 @@
+ #ifdef TARGET_MACOSX
+ 		tyrian_game_folder(),
+ #endif
+-		"/usr/share/opentyrian/data"
++		DATA_PATH
+ 	};
+ 	
+ 	static const char *dir = NULL;

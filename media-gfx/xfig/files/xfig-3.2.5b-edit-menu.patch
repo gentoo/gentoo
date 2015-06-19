@@ -1,0 +1,332 @@
+diff -Naur /var/tmp/portage/media-gfx/xfig-3.2.5b-r2/work/xfig.3.2.5b/Imakefile /root/xfig.3.2.5b/Imakefile
+--- /var/tmp/portage/media-gfx/xfig-3.2.5b-r2/work/xfig.3.2.5b/Imakefile	2012-04-20 09:46:26.217957716 +0200
++++ /root/xfig.3.2.5b/Imakefile	2012-04-20 09:16:28.744362135 +0200
+@@ -251,7 +251,7 @@
+ #endif /* USEJPEG */
+ 
+ #ifdef I18N
+-I18N_DEFS = -DI18N -DSETLOCALE
++I18N_DEFS = -DI18N -DSETLOCALE -DXAW_INTERNATIONALIZATION
+ I18N_SRC = w_i18n.c
+ I18N_OBJ = w_i18n.o
+ #endif
+diff -Naur /var/tmp/portage/media-gfx/xfig-3.2.5b-r2/work/xfig.3.2.5b/e_edit.c /root/xfig.3.2.5b/e_edit.c
+--- /var/tmp/portage/media-gfx/xfig-3.2.5b-r2/work/xfig.3.2.5b/e_edit.c	2007-04-04 18:18:32.000000000 +0200
++++ /root/xfig.3.2.5b/e_edit.c	2012-04-20 10:02:04.209542848 +0200
+@@ -3211,7 +3211,7 @@
+ 	XtAddCallback(but1, XtNcallback,
+ 	    (XtCallbackProc) grab_button, (XtPointer) NULL);
+ 
+-	if ( cur_image_editor != NULL && *cur_image_editor != (char) NULL) {
++	if ( cur_image_editor != NULL && *cur_image_editor != '\0' ) {
+ 	    FirstArg(XtNlabel,"Edit Image");
+ 	    NextArg(XtNfromHoriz, but1);
+ 	    NextArg(XtNfromVert, label);
+@@ -3501,7 +3501,7 @@
+ {
+     Widget          but_spline[3];
+     Dimension	    label_height, label_width;
+-    int		    i, dist;
++    int             i, dist;
+ 
+     static char use_item[]="Edit the behavior\nof the control point";
+     
+@@ -3598,7 +3598,7 @@
+ 	below = but_spline[i] = XtCreateManagedWidget(sfactor_type[i].label,
+ 				   commandWidgetClass, form, Args, ArgCount);
+ 	XtAddCallback(but_spline[i], XtNcallback,
+-		      (XtCallbackProc) toggle_sfactor_type, (XtPointer) i);
++		      (XtCallbackProc) toggle_sfactor_type, (XtPointer) (intptr_t) i);
+ 	XtSetArg(Args[0], XtNfromVert, below);        /* here are the direct */
+ 	XtSetArg(Args[1], XtNvertDistance, 3 * dist); /* accesses to Args    */
+       }
+@@ -3608,7 +3608,7 @@
+ static void
+ toggle_sfactor_type(Widget panel_local, XtPointer _sfactor_index, XtPointer call_data)
+ {
+-  int             sfactor_index = (int) _sfactor_index;
++  int        sfactor_index = (int) (intptr_t) _sfactor_index;
+ 
+   update_sfactor_value(sfactor_type[sfactor_index].value);
+   XawScrollbarSetThumb(sfactor_bar,
+@@ -3629,10 +3629,10 @@
+ static void
+ scroll_sfactor_value(Widget panel_local, XtPointer closure, XtPointer _num_pixels)
+ {
+-  int 		   *num_pixels = (int *) _num_pixels;
++  int		   num_pixels = (int) (intptr_t) _num_pixels;
+ 
+   update_sfactor_value(sub_sfactor->s + 
+-		       (STEP_VALUE * SFACTOR_SIGN((int) num_pixels)));
++		       (STEP_VALUE * SFACTOR_SIGN(num_pixels)));
+   XawScrollbarSetThumb(panel_local, SFACTOR_TO_PERCENTAGE(sub_sfactor->s),
+ 		       THUMB_H);
+ }
+@@ -4031,7 +4031,6 @@
+ Widget
+ color_selection_panel(char *label, char *wname, char *name, Widget parent, Widget below, Widget beside, Widget *button, Widget *popup, int color, XtCallbackProc callback)
+ {
+-
+     FirstArg(XtNfromVert, below);
+     NextArg(XtNborderWidth, 0);
+     NextArg(XtNtop, XtChainBottom);
+@@ -4057,7 +4056,7 @@
+      * callback
+      */
+     /* also set the label */
+-    (callback)(below, (XtPointer) color, NULL);
++    (callback)(below, (XtPointer) (intptr_t) color, NULL);
+     *popup = make_color_popup_menu(below, name, callback, NO_TRANSP, NO_BACKG);
+ 
+     return *button;
+@@ -4658,7 +4657,7 @@
+     int		    ival;
+     double	    val;
+ 
+-    new_points_units = (int) new_unit;
++    new_points_units = (int) (intptr_t) new_unit;
+     if (points_units == new_points_units)
+ 	return;
+ 
+@@ -4739,7 +4738,7 @@
+     FirstArg(XtNlabel, XtName(w));
+     SetValues(arc_type_panel);
+ 
+-    generic_vals.arc_type = (int) new_style;
++    generic_vals.arc_type = (int) (intptr_t) new_style;
+     /* if now a pie-wedge type, make the arrow panels insensitive */
+     if (generic_vals.arc_type == T_PIE_WEDGE_ARC) {
+ 	/* unmanage arrow forms */
+@@ -4865,7 +4864,7 @@
+ static void
+ pen_color_select(Widget w, XtPointer new_color, XtPointer call_data)
+ {
+-    pen_color = (Color) new_color;
++    pen_color = (Color) (intptr_t) new_color;
+     color_select(pen_col_button, pen_color);
+     if (pen_color_popup) {
+ 	XtPopdown(pen_color_popup);
+@@ -4875,7 +4874,7 @@
+ static void
+ fill_color_select(Widget w, XtPointer new_color, XtPointer call_data)
+ {
+-    fill_color = (Color) new_color;
++    fill_color = (Color) (intptr_t) new_color;
+     color_select(fill_col_button, fill_color);
+     if (fill_color_popup) {
+ 	XtPopdown(fill_color_popup);
+@@ -4927,7 +4926,7 @@
+ {
+     FirstArg(XtNlabel, XtName(w));
+     SetValues(hidden_text_panel);
+-    hidden_text_flag = (int) new_hidden_text;
++    hidden_text_flag = (int) (intptr_t) new_hidden_text;
+ }
+ 
+ static void
+@@ -4935,7 +4934,7 @@
+ {
+     FirstArg(XtNlabel, XtName(w));
+     SetValues(rigid_text_panel);
+-    rigid_text_flag = (int) new_rigid_text;
++    rigid_text_flag = (int) (intptr_t) new_rigid_text;
+ }
+ 
+ static void
+@@ -4943,7 +4942,7 @@
+ {
+     FirstArg(XtNlabel, XtName(w));
+     SetValues(special_text_panel);
+-    special_text_flag = (int) new_special_text;
++    special_text_flag = (int) (intptr_t) new_special_text;
+ }
+ 
+ static void
+@@ -4951,7 +4950,7 @@
+ {
+     FirstArg(XtNlabel, XtName(w));
+     SetValues(textjust_panel);
+-    textjust = (int) new_textjust;
++    textjust = (int) (intptr_t) new_textjust;
+ }
+ 
+ static void
+@@ -4963,7 +4962,7 @@
+ 
+     FirstArg(XtNlabel, XtName(w));
+     SetValues(flip_pic_panel);
+-    flip_pic_flag = (int) new_flipflag;
++    flip_pic_flag = (int) (intptr_t) new_flipflag;
+     p1.x = panel_get_dim_value(x1_panel);
+     p1.y = panel_get_dim_value(y1_panel);
+     p2.x = panel_get_dim_value(x2_panel);
+@@ -4996,7 +4995,7 @@
+     FirstArg(XtNlabel, XtName(w));
+     SetValues(rotation_panel);
+     /* get new rotation (0 = 0 degrees, 1 = 90, 2 = 180, 3 = 270) */
+-    rotation = (int) new_rotation;
++    rotation = (int) (intptr_t) new_rotation;
+ 
+     /* get the two opposite corners */
+     p1.x = panel_get_dim_value(x1_panel);
+@@ -5104,7 +5103,7 @@
+ 
+     FirstArg(XtNlabel, XtName(w));
+     SetValues(fill_style_button);
+-    fill_flag = (int) new_fillflag;
++    fill_flag = (int) (intptr_t) new_fillflag;
+ 
+     if (fill_flag == 0) { 
+       /* no fill; blank out fill density value and pattern */
+diff -Naur /var/tmp/portage/media-gfx/xfig-3.2.5b-r2/work/xfig.3.2.5b/u_draw.c /root/xfig.3.2.5b/u_draw.c
+--- /var/tmp/portage/media-gfx/xfig-3.2.5b-r2/work/xfig.3.2.5b/u_draw.c	2007-04-04 18:18:32.000000000 +0200
++++ /root/xfig.3.2.5b/u_draw.c	2012-04-20 09:20:31.379714332 +0200
+@@ -603,7 +603,7 @@
+     /* is it a picture object or a Fig figure? */
+     if (line->type == T_PICTURE) {
+ 	if (line->pic->pic_cache) {
+-	    if ((line->pic->pic_cache->bitmap != (Pixmap) NULL) && active_layer(line->depth)) {
++	    if ((line->pic->pic_cache->bitmap != NULL) && active_layer(line->depth)) {
+ 		/* only draw the picture if there is a pixmap AND this layer is active */
+ 		draw_pic_pixmap(line, op);
+ 		return;
+diff -Naur /var/tmp/portage/media-gfx/xfig-3.2.5b-r2/work/xfig.3.2.5b/w_cmdpanel.c /root/xfig.3.2.5b/w_cmdpanel.c
+--- /var/tmp/portage/media-gfx/xfig-3.2.5b-r2/work/xfig.3.2.5b/w_cmdpanel.c	2008-07-17 17:50:06.000000000 +0200
++++ /root/xfig.3.2.5b/w_cmdpanel.c	2012-04-20 09:54:55.595198185 +0200
+@@ -1581,7 +1581,7 @@
+ 	    beside = XtCreateManagedWidget("char_button", commandWidgetClass,
+ 					     character_map_panel, Args, ArgCount);
+ 	    /* add callback to paste character into current text */
+-	    XtAddCallback(beside, XtNcallback, paste_char, (XtPointer) i);
++	    XtAddCallback(beside, XtNcallback, paste_char, (XtPointer) (intptr_t) i);
+ 	    /* skip empty entries and 127 (delete) */
+ 	    if (i==126) {
+ 		below = beside;
+diff -Naur /var/tmp/portage/media-gfx/xfig-3.2.5b-r2/work/xfig.3.2.5b/w_color.c /root/xfig.3.2.5b/w_color.c
+--- /var/tmp/portage/media-gfx/xfig-3.2.5b-r2/work/xfig.3.2.5b/w_color.c	2007-04-04 18:18:32.000000000 +0200
++++ /root/xfig.3.2.5b/w_color.c	2012-04-20 09:23:24.738775166 +0200
+@@ -334,7 +334,7 @@
+ 		} else {
+ 		    NextArg(XtNstate, True);	/* start with edit pen */
+ 		}
+-		NextArg(XtNradioData, (XtPointer) (i+1));	/* can't use 0 */
++		NextArg(XtNradioData, (XtPointer) (intptr_t) (i+1));	/* can't use 0 */
+ 		mixedEdit[i] = XtCreateManagedWidget("mixedEdit", toggleWidgetClass,
+ 							mixedForm[i], Args, ArgCount);
+ 		XtAddCallback(mixedEdit[i], XtNcallback, switch_edit, (XtPointer) 0);
+@@ -807,7 +807,7 @@
+ 	set_slider_sensitivity();
+ 
+ 	/* activate the one the user pressed (pen or fill) */
+-	XawToggleSetCurrent(mixedEdit[0],(XtPointer) (func==I_PEN_COLOR? 1:2));
++	XawToggleSetCurrent(mixedEdit[0],(XtPointer) (intptr_t) (func==I_PEN_COLOR? 1:2));
+ }
+ 
+ void restore_mixed_colors(void)
+diff -Naur /var/tmp/portage/media-gfx/xfig-3.2.5b-r2/work/xfig.3.2.5b/w_export.c /root/xfig.3.2.5b/w_export.c
+--- /var/tmp/portage/media-gfx/xfig-3.2.5b-r2/work/xfig.3.2.5b/w_export.c	2007-09-19 21:32:30.000000000 +0200
++++ /root/xfig.3.2.5b/w_export.c	2012-04-20 09:24:09.181867729 +0200
+@@ -384,7 +384,7 @@
+ 	change_orient();
+ 	appres.landscape = (int) client_data;
+ 	/* make sure that paper size is appropriate */
+-	papersize_select(export_papersize_panel, (XtPointer) appres.papersize, (XtPointer) 0);
++	papersize_select(export_papersize_panel, (XtPointer) (intptr_t) appres.papersize, (XtPointer) 0);
+     }
+ }
+ 
+diff -Naur /var/tmp/portage/media-gfx/xfig-3.2.5b-r2/work/xfig.3.2.5b/w_fontpanel.c /root/xfig.3.2.5b/w_fontpanel.c
+--- /var/tmp/portage/media-gfx/xfig-3.2.5b-r2/work/xfig.3.2.5b/w_fontpanel.c	2007-04-04 18:18:32.000000000 +0200
++++ /root/xfig.3.2.5b/w_fontpanel.c	2012-04-20 09:26:50.774325641 +0200
+@@ -142,14 +142,14 @@
+ 	ps_fontmenu_items[i].type = MENU_IMAGESTRING;		/* put the fontnames in
+ 								 * menu */
+ 	ps_fontmenu_items[i].label = ps_fontinfo[i].name;
+-	ps_fontmenu_items[i].info = (caddr_t) (i - 1);		/* index for font # */
++	ps_fontmenu_items[i].info = (caddr_t) (intptr_t) (i - 1);		/* index for font # */
+     }
+ 
+     for (i = 0; i < NUM_LATEX_FONTS; i++) {
+ 	latex_fontmenu_items[i].type = MENU_IMAGESTRING;	/* put the fontnames in
+ 								 * menu */
+ 	latex_fontmenu_items[i].label = latex_fontinfo[i].name;
+-	latex_fontmenu_items[i].info = (caddr_t) i;		/* index for font # */
++	latex_fontmenu_items[i].info = (caddr_t) (intptr_t) i;		/* index for font # */
+     }
+ 
+     pane_actions = XtParseTranslationTable("<EnterWindow>:set()\n\
+@@ -352,9 +352,9 @@
+     char	   *font_name = mi->label;
+ 
+     if (*flag_sel)
+-	*font_ps_sel = (int) mi->info;	/* set ps font to one selected */
++	*font_ps_sel = (int) (intptr_t) mi->info;	/* set ps font to one selected */
+     else
+-	*font_latex_sel = (int) mi->info;	/* set latex font to one
++	*font_latex_sel = (int) (intptr_t) mi->info;	/* set latex font to one
+ 						 * selected */
+     put_msg("Font: %s", font_name);
+     /* put image of font in indicator window */
+diff -Naur /var/tmp/portage/media-gfx/xfig-3.2.5b-r2/work/xfig.3.2.5b/w_indpanel.c /root/xfig.3.2.5b/w_indpanel.c
+--- /var/tmp/portage/media-gfx/xfig-3.2.5b-r2/work/xfig.3.2.5b/w_indpanel.c	2009-03-30 17:54:00.000000000 +0200
++++ /root/xfig.3.2.5b/w_indpanel.c	2012-04-20 09:34:38.181793478 +0200
+@@ -2692,7 +2692,7 @@
+     /* "Ticks" checkbutton */
+     below = CreateCheckbutton("Show ticks", "ticks", tickform, below, (Widget) NULL,
+ 				MANAGE, LARGE_CHK, &dimline_ticks,
+-				dimline_panel_preview, (Widget) NULL);
++				dimline_panel_preview, (Widget*) NULL);
+ 
+     /* Tick Thickness label */
+     FirstArg(XtNlabel, "Thickness");
+diff -Naur /var/tmp/portage/media-gfx/xfig-3.2.5b-r2/work/xfig.3.2.5b/w_print.c /root/xfig.3.2.5b/w_print.c
+--- /var/tmp/portage/media-gfx/xfig-3.2.5b-r2/work/xfig.3.2.5b/w_print.c	2009-04-20 18:26:14.000000000 +0200
++++ /root/xfig.3.2.5b/w_print.c	2012-04-20 09:36:11.004623947 +0200
+@@ -407,7 +407,7 @@
+ 	change_orient();
+ 	appres.landscape = (int) new_orient;
+ 	/* make sure that paper size is appropriate */
+-	papersize_select(print_papersize_panel, (XtPointer) appres.papersize, (XtPointer) 0);
++	papersize_select(print_papersize_panel, (XtPointer) (intptr_t) appres.papersize, (XtPointer) 0);
+     }
+ }
+ 
+@@ -771,7 +771,7 @@
+ 	for (i = 0; i < XtNumber(paper_sizes); i++) {
+ 	    entry = XtCreateManagedWidget(paper_sizes[i].fname, smeBSBObjectClass, 
+ 					papersize_menu, NULL, ZERO);
+-	    XtAddCallback(entry, XtNcallback, papersize_select, (XtPointer) i);
++	    XtAddCallback(entry, XtNcallback, papersize_select, (XtPointer) (intptr_t) i);
+ 	}
+ 
+ 	/* Orientation */
+diff -Naur /var/tmp/portage/media-gfx/xfig-3.2.5b-r2/work/xfig.3.2.5b/w_util.c /root/xfig.3.2.5b/w_util.c
+--- /var/tmp/portage/media-gfx/xfig-3.2.5b-r2/work/xfig.3.2.5b/w_util.c	2009-03-30 17:52:38.000000000 +0200
++++ /root/xfig.3.2.5b/w_util.c	2012-04-20 09:37:37.764153931 +0200
+@@ -378,7 +378,7 @@
+ 	}
+ 	entry = XtCreateManagedWidget(entries[i], smeBSBObjectClass, pulldown_menu, 
+ 					NULL, ZERO);
+-	XtAddCallback(entry, XtNcallback, callback, (XtPointer) i);
++	XtAddCallback(entry, XtNcallback, callback, (XtPointer) (intptr_t) i);
+     }
+     return pulldown_menu;
+ }
+@@ -488,7 +488,7 @@
+ 	    NextArg(XtNbackground, black_color.pixel);
+ 	}
+ 	entry = XtCreateManagedWidget(buf, commandWidgetClass, pop_form, Args, ArgCount);
+-	XtAddCallback(entry, XtNcallback, callback, (XtPointer) i);
++	XtAddCallback(entry, XtNcallback, callback, (XtPointer) (intptr_t) i);
+     }
+ 
+     /* make a scrollable viewport in case all the buttons don't fit */
+@@ -545,7 +545,7 @@
+ 	}
+ 	entry = XtCreateManagedWidget(buf, commandWidgetClass, color_box,
+ 				      Args, ArgCount);
+-	XtAddCallback(entry, XtNcallback, callback, (XtPointer) i);
++	XtAddCallback(entry, XtNcallback, callback, (XtPointer) (intptr_t) i);
+     }
+ 
+     /* make the cancel button */

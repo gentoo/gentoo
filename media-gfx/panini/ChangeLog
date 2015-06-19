@@ -1,0 +1,23 @@
+# ChangeLog for media-gfx/panini
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/panini/ChangeLog,v 1.5 2015/03/16 03:31:34 radhermit Exp $
+
+  16 Mar 2015; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Drop myself as maintainer.
+
+  09 Jun 2014; Tim Harder <radhermit@gentoo.org>
+  files/panini-0.71.104-glu.patch:
+  Fix underlinking issue with zlib (bug #512728).
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> panini-0.71.104.ebuild:
+  Move Qt dependencies to the new category
+
+  15 Sep 2012; Tim Harder <radhermit@gentoo.org> panini-0.71.104.ebuild,
+  +files/panini-0.71.104-glu.patch:
+  Add dep on virtual/glu and fix linking with GLU (bug #408301).
+
+*panini-0.71.104 (27 Feb 2011)
+
+  27 Feb 2011; Tim Harder <radhermit@gentoo.org> +panini-0.71.104.ebuild,
+  +files/panini.desktop, +metadata.xml:
+  Initial import (bug #272205). Ebuild by me.

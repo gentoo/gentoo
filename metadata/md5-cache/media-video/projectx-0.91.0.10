@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install preinst prepare setup
+DEPEND=>=virtual/jdk-1.5 app-arch/xz-utils virtual/libiconv dev-java/commons-net X? ( =dev-java/browserlauncher2-1* ) >=dev-java/java-config-2.2.0 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2 >=dev-java/javatoolkit-0.3.0-r2
+DESCRIPTION=Converts, splits and demuxes DVB and other MPEG recordings
+EAPI=5
+HOMEPAGE=http://project-x.sourceforge.net/
+IUSE=X cpu_flags_x86_mmx cpu_flags_x86_sse elibc_FreeBSD doc source elibc_FreeBSD
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=>=virtual/jre-1.5 dev-java/commons-net X? ( =dev-java/browserlauncher2-1* ) >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~billie/distfiles/projectx-0.91.0.10.tar.xz http://sbriesen.de/gentoo/distfiles/projectx-idctfast.tar.xz http://sbriesen.de/gentoo/distfiles/xdg-20100731.java.xz http://sbriesen.de/gentoo/distfiles/projectx-icon.png
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	java-ant-2	1091461b8b02f54fabcfbf159164ff15	java-pkg-2	1889f7787714c5f7e3b5bb1c2be07c1f	java-utils-2	6627198e505d021534cb20f89279c509	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=10791336764614208ada7a599beafbfd

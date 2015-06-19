@@ -1,0 +1,12 @@
+diff -uNr snips-1.2.ORIG/etherload/Makefile.mid snips-1.2/etherload/Makefile.mid
+--- snips-1.2.ORIG/etherload/Makefile.mid	2012-06-26 15:35:46.329759711 +0100
++++ snips-1.2/etherload/Makefile.mid	2012-06-26 15:37:13.194765114 +0100
+@@ -19,7 +19,7 @@
+ INITFILES = etherload
+ 
+ $(TARG):  $(OBJS)
+-	$(CC) -o etherload $(CFLAGS) $(OBJS) $(LDFLAGS) $(LIBS)
++	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LIBS) -o $@
+ 
+ standalone:  clean
+ 	make CFLAGS="$(CFLAGS) -DSTANDALONE" $(TARG)

@@ -1,0 +1,82 @@
+# ChangeLog for net-firewall/arno-iptables-firewall
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/arno-iptables-firewall/ChangeLog,v 1.14 2014/06/26 09:46:35 nimiux Exp $
+
+  26 Jun 2014; Chema Alonso <nimiux@gentoo.org>
+  arno-iptables-firewall-2.0.1e.ebuild:
+  Stable for amd64 wrt bug #509612
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  arno-iptables-firewall-2.0.1e.ebuild:
+  x86 stable wrt bug #509612
+
+*arno-iptables-firewall-2.0.1e (02 Apr 2014)
+
+  02 Apr 2014; Tom Wijsman <TomWij@gentoo.org>
+  +arno-iptables-firewall-2.0.1e.ebuild, -arno-iptables-firewall-1.9.2a.ebuild,
+  -arno-iptables-firewall-1.9.2d.ebuild,
+  -arno-iptables-firewall-2.0.1d-r1.ebuild:
+  Version bump to 2.0.1e; fixes bug #500114, proxied commit for Ferenc Erki.
+  Removed old.
+
+  26 Jan 2014; Agostino Sarubbo <ago@gentoo.org>
+  arno-iptables-firewall-2.0.1d-r2.ebuild:
+  Stable for x86, wrt bug #495838
+
+  18 Jan 2014; Pacho Ramos <pacho@gentoo.org>
+  arno-iptables-firewall-2.0.1d-r2.ebuild:
+  amd64 stable, bug #495838
+
+  10 Sep 2013; Sergey Popov <pinkbyte@gentoo.org>
+  -arno-iptables-firewall-2.0.1d.ebuild:
+  Drop old revision
+
+*arno-iptables-firewall-2.0.1d-r2 (06 Sep 2013)
+
+  06 Sep 2013; Pacho Ramos <pacho@gentoo.org>
+  +arno-iptables-firewall-2.0.1d-r2.ebuild,
+  +files/arno-iptables-firewall.service:
+  Add unit file (#483602 by Ferenc Erki)
+
+*arno-iptables-firewall-2.0.1d-r1 (18 May 2013)
+
+  18 May 2013; Markos Chandras <hwoarang@gentoo.org>
+  +arno-iptables-firewall-2.0.1d-r1.ebuild, +files/arno-iptables-firewall:
+  Cleanup, EAPI5, initscript and other fixes thanks to Ferenc Erki
+  <erkiferenc@gmail.com>. Bug #465114
+
+*arno-iptables-firewall-2.0.1d (17 Dec 2012)
+
+  17 Dec 2012; Markos Chandras <hwoarang@gentoo.org>
+  +arno-iptables-firewall-2.0.1d.ebuild, +files/rc.firewall_replace_opts.patch,
+  metadata.xml:
+  Version bump. Fixes 447386. Also fixes outstanding #309473 and #411661. Thanks
+  to Ferenc Erki <erkiferenc@gmail.com>
+
+*arno-iptables-firewall-1.9.2d (10 Oct 2009)
+
+  10 Oct 2009; Víctor Ostorga <vostorga@gentoo.org>
+  +arno-iptables-firewall-1.9.2d.ebuild:
+  Version bump to 1.9.2d , bug 287237
+
+*arno-iptables-firewall-1.9.2a (03 Jul 2009)
+
+  03 Jul 2009; Jeremy Olexa <darkside@gentoo.org>
+  -arno-iptables-firewall-1.9.0_beta3.ebuild,
+  +arno-iptables-firewall-1.9.2a.ebuild:
+  (non maintainer commit) Version bump for security bug 261507, ebuild by
+  Johannes Kellner
+
+  17 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  28 Jul 2008; Chris Gianelloni <wolf31o2@gentoo.org> metadata.xml:
+  Change to maintainer-needed.
+
+*arno-iptables-firewall-1.9.0_beta3 (10 Jul 2008)
+
+  10 Jul 2008; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +arno-iptables-firewall-1.9.0_beta3.ebuild:
+  Initial import. Ebuild loosely based on previous ebuilds from Christian
+  Loitsch <gentoo-bug@loitsch.org> and Avuton Olrich <avuton@gmail.com>.
+  Closing bug #20726.

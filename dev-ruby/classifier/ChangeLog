@@ -1,0 +1,35 @@
+# ChangeLog for dev-ruby/classifier
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/classifier/ChangeLog,v 1.9 2015/06/07 17:25:42 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  31 Jan 2015; Hans de Graaff <graaff@gentoo.org> classifier-1.3.4.ebuild:
+  Add ruby22.
+
+  14 Aug 2014; Patrick Lauer <patrick@gentoo.org> classifier-1.3.4.ebuild:
+  Whitespace
+
+  13 Aug 2014; Manuel Rüger <mrueg@gentoo.org> classifier-1.3.4.ebuild:
+  Make depends look nicer.
+
+  13 Aug 2014; Manuel Rüger <mrueg@gentoo.org> classifier-1.3.4.ebuild:
+  Add hardblocker on dev-ruby/classifier-reborn.
+
+  25 Jul 2014; Manuel Rüger <mrueg@gentoo.org> classifier-1.3.4.ebuild:
+  Add ruby21 target.
+
+  31 Mar 2014; Manuel Rüger <mrueg@gentoo.org> -classifier-1.3.3.ebuild:
+  Cleanup old.
+
+*classifier-1.3.4 (13 Jan 2014)
+
+  13 Jan 2014; Manuel Rüger <mrueg@gentoo.org> +classifier-1.3.4.ebuild:
+  Version bump.
+
+*classifier-1.3.3 (30 Nov 2013)
+
+  30 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +classifier-1.3.3.ebuild,
+  +metadata.xml:
+  Initial ebuild.

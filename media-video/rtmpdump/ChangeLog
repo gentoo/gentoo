@@ -1,0 +1,156 @@
+# ChangeLog for media-video/rtmpdump
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/rtmpdump/ChangeLog,v 1.36 2015/05/07 22:37:41 mrueg Exp $
+
+  07 May 2015; Manuel Rüger <mrueg@gentoo.org> -rtmpdump-2.3.ebuild,
+  -rtmpdump-2.4.ebuild:
+  Remove old.
+
+  11 Feb 2015; Michał Górny <mgorny@gentoo.org> rtmpdump-2.4_p20131018.ebuild,
+  rtmpdump-9999.ebuild:
+  Fix multilib deps. Move zlib into "ssl?" since it is used only along with SSL.
+  Add missing ||die. Bug #501098, https://github.com/gentoo/gentoo-portage-
+  rsync-mirror/pull/13 by Michael Mair-Keimberger.
+
+  04 Jul 2014; Jeroen Roovers <jer@gentoo.org> rtmpdump-2.4_p20131018.ebuild:
+  Fix quoted ${A}.
+
+  04 Jul 2014; Jeroen Roovers <jer@gentoo.org> rtmpdump-2.4_p20131018.ebuild:
+  Stable for HPPA (bug #496436).
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> rtmpdump-9999.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  04 Jun 2014; Luca Barbato <lu_zero@gentoo.org> rtmpdump-2.4_p20131018.ebuild,
+  rtmpdump-9999.ebuild:
+  Multilib support thanks to Christian Schmidt, bug #501098
+
+  19 Jan 2014; Agostino Sarubbo <ago@gentoo.org> rtmpdump-2.4_p20131018.ebuild:
+  Stable for ppc64, wrt bug #496436
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> rtmpdump-2.4_p20131018.ebuild:
+  Stable for ppc, wrt bug #496436
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> rtmpdump-2.4_p20131018.ebuild:
+  Stable for x86, wrt bug #496436
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> rtmpdump-2.4_p20131018.ebuild:
+  amd64 stable, bug #496436
+
+  02 Jan 2014; Jeroen Roovers <jer@gentoo.org> rtmpdump-2.4.ebuild:
+  Stable for HPPA (bug #496436).
+
+  02 Nov 2013; Markos Chandras <hwoarang@gentoo.org>
+  rtmpdump-2.4_p20131018.ebuild:
+  Add ~mips
+
+*rtmpdump-2.4_p20131018 (18 Oct 2013)
+
+  18 Oct 2013; Markos Chandras <hwoarang@gentoo.org>
+  +rtmpdump-2.4_p20131018.ebuild:
+  Add new media-video/rtmpdump snapshot. Required by new applications. Bug
+  #488510
+
+  25 Nov 2012; Markos Chandras <hwoarang@gentoo.org> rtmpdump-2.3.ebuild,
+  rtmpdump-2.4.ebuild, rtmpdump-9999.ebuild:
+  Add missing quotes for tc-getXX functions to avoid problems with cross-
+  compilation. Bug #444590. Thanks to Alexander E. Patrakov <patrakov@gmail.com>
+
+  17 Oct 2012; Christoph Junghans <ottxor@gentoo.org> rtmpdump-2.4.ebuild,
+  rtmpdump-9999.ebuild:
+  added prefix support (bug #351220)
+
+  15 May 2012; Alexis Ballier <aballier@gentoo.org> rtmpdump-2.4.ebuild:
+  keyword ~amd64-fbsd
+
+  20 Mar 2012; Diego E. Pettenò <flameeyes@gentoo.org> rtmpdump-2.3.ebuild,
+  rtmpdump-2.4.ebuild, rtmpdump-9999.ebuild:
+  Fix license identification.
+
+*rtmpdump-9999 (10 Aug 2011)
+*rtmpdump-2.4 (10 Aug 2011)
+
+  10 Aug 2011; Markos Chandras <hwoarang@gentoo.org> +rtmpdump-2.4.ebuild,
+  +rtmpdump-9999.ebuild:
+  Version bump per bug #376551 and live ebuild inclusion
+
+  07 Jul 2011; Alexis Ballier <aballier@gentoo.org> rtmpdump-2.3.ebuild:
+  keyword ~x86-fbsd
+
+  11 Jun 2011; Markus Meier <maekke@gentoo.org> rtmpdump-2.3.ebuild:
+  add ~arm, bug #354467
+
+  11 Oct 2010; Jeroen Roovers <jer@gentoo.org> rtmpdump-2.3.ebuild:
+  Stable for HPPA (bug #332361).
+
+  08 Oct 2010; Brent Baude <ranger@gentoo.org> rtmpdump-2.3.ebuild:
+  Marking rtmpdump-2.3 ppc for bug 332361
+
+  08 Oct 2010; Brent Baude <ranger@gentoo.org> rtmpdump-2.3.ebuild:
+  Marking rtmpdump-2.3 ppc64 for bug 332361
+
+  24 Sep 2010; Markos Chandras <hwoarang@gentoo.org> rtmpdump-2.3.ebuild:
+  Stable on amd64 wrt bug #332361
+
+  17 Sep 2010; Christian Faulhammer <fauli@gentoo.org> rtmpdump-2.3.ebuild:
+  stable x86, security bug 332361
+
+  15 Sep 2010; Joseph Jezak <josejx@gentoo.org> rtmpdump-2.3.ebuild:
+  Marked ~ppc/~ppc64.
+
+  27 Aug 2010; Markos Chandras <hwoarang@gentoo.org> -rtmpdump-2.2d.ebuild,
+  -rtmpdump-2.2e-r3.ebuild, rtmpdump-2.3.ebuild:
+  Fix polarssl dependency to match >=0.14.0. Bug #331587
+
+  11 Jul 2010; Jeroen Roovers <jer@gentoo.org> rtmpdump-2.3.ebuild:
+  Marked ~hppa (bug #324941).
+
+  08 Jul 2010; Markos Chandras <hwoarang@gentoo.org> rtmpdump-2.3.ebuild:
+  Fix multilib-strict support. Bug #327449
+
+*rtmpdump-2.3 (07 Jul 2010)
+
+  07 Jul 2010; Markos Chandras <hwoarang@gentoo.org> +rtmpdump-2.3.ebuild:
+  Version bump. Thanks to Adrian.Bassett@hotmail.co.uk for the ebuild. Fixes
+  bug #326619
+
+*rtmpdump-2.2e-r3 (17 Jun 2010)
+
+  17 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  -rtmpdump-2.2e-r1.ebuild, -rtmpdump-2.2e-r2.ebuild,
+  +rtmpdump-2.2e-r3.ebuild:
+  Revbump which fixes static archive build with -fPIC. Fixes bug #324513. Thanks to Marc-Antoine
+  Perennou <Marc-Antoine@Perennou.com> for the patch
+
+*rtmpdump-2.2e-r2 (17 Jun 2010)
+
+  17 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  +rtmpdump-2.2e-r2.ebuild:
+  Define CRYPTO on src_install. Fixes bug #324469
+
+  06 Jun 2010; Luca Barbato <lu_zero@gentoo.org> rtmpdump-2.2e-r1.ebuild:
+  Make librtmp pic
+
+*rtmpdump-2.2e-r1 (06 Jun 2010)
+
+  06 Jun 2010; Markos Chandras <hwoarang@gentoo.org> -rtmpdump-2.2e.ebuild,
+  +rtmpdump-2.2e-r1.ebuild:
+  Fix manpage installation path
+
+*rtmpdump-2.2e (05 Jun 2010)
+
+  05 Jun 2010; Markos Chandras <hwoarang@gentoo.org> +rtmpdump-2.2e.ebuild:
+  Version bump thanks to Maxime de Roucy (maxime1986)
+  <maxime.deroucy@gmail.com>
+
+*rtmpdump-2.2d (05 Jun 2010)
+
+  05 Jun 2010; Markos Chandras <hwoarang@gentoo.org> +rtmpdump-2.2d.ebuild,
+  +metadata.xml:
+  Moved from sunrise overlay. Fixes bug #299819. Thanks to Maxime de Roucy
+  (maxime1986) <maxime.deroucy@gmail.com> for the sunrise ebuild
+
+  30 May 2010; Maxime de Roucy (maxime1986) <maxime.deroucy@gmail.com>
+  +rtmpdump-2.2d.ebuild, +metadata.xml:
+  New Ebuild for bug 299819 (thanks to Alec M.)

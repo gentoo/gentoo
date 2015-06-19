@@ -1,0 +1,117 @@
+# ChangeLog for net-dialup/radiusclient-ng
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/radiusclient-ng/ChangeLog,v 1.25 2015/01/27 10:08:26 pinkbyte Exp $
+
+  27 Jan 2015; Sergey Popov <pinkbyte@gentoo.org>
+  -radiusclient-ng-0.5.6.ebuild, radiusclient-ng-0.5.6-r1.ebuild:
+  Adjust HOMEPAGE and SRC_URI, wrt bug #537770. Drop old revision
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org> radiusclient-ng-0.5.6-r1.ebuild:
+  amd64 stable, bug #495836
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  radiusclient-ng-0.5.6-r1.ebuild:
+  x86 stable wrt bug #495836
+
+*radiusclient-ng-0.5.6-r1 (11 Nov 2013)
+
+  11 Nov 2013; Sergey Popov <pinkbyte@gentoo.org>
+  +radiusclient-ng-0.5.6-r1.ebuild,
+  +files/radiusclient-ng-0.5.6-cross-compile.patch:
+  Revision bump: EAPI 5, autotools-utils eclass, add fix for cross compilation
+  wrt bug #373365, thanks to Bertrand Jacquin <beber AT meleeweb.net>
+
+  03 Mar 2009; Alin Năstac <mrness@gentoo.org>
+  radiusclient-ng-0.5.6.ebuild:
+  Add net-dialup/freeradius-client blocking atom (#234098).
+
+  01 Dec 2008; Alin Năstac <mrness@gentoo.org>
+  radiusclient-ng-0.5.6.ebuild:
+  Add net-dialup/radiusclient blocking dependency atom (#247950).
+
+  04 May 2008; Peter Volkov <pva@gentoo.org> radiusclient-ng-0.5.6.ebuild:
+  Use berlios mirror://, bug #218657, thank Gilles Dartiguelongue for
+  report.
+
+  03 Jan 2008; Alin Năstac <mrness@gentoo.org>
+  -radiusclient-ng-0.5.5.1.ebuild:
+  Remove old version.
+
+  23 Nov 2007; Samuli Suominen <drac@gentoo.org>
+  radiusclient-ng-0.5.6.ebuild:
+  amd64 stable wrt #198942
+
+  13 Nov 2007; Dawid Węgliński <cla@gentoo.org>
+  radiusclient-ng-0.5.6.ebuild:
+  Stable on x86 (bug #198942)
+
+  12 Nov 2007; Alin Năstac <mrness@gentoo.org>
+  -files/radiusclient-ng-0.5.2-destdir.patch,
+  -files/radiusclient-ng-0.5.2-implicit-decl.patch,
+  -radiusclient-ng-0.5.2.ebuild, radiusclient-ng-0.5.6.ebuild:
+  Remove obsolete version.
+
+  04 Sep 2007; Christoph Mende <angelos@gentoo.org>
+  radiusclient-ng-0.5.5.1.ebuild:
+  Stable on amd64 wrt bug #185736
+
+*radiusclient-ng-0.5.6 (25 Aug 2007)
+
+  25 Aug 2007; Alin Năstac <mrness@gentoo.org>
+  +radiusclient-ng-0.5.6.ebuild:
+  Version bump.
+
+  24 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  radiusclient-ng-0.5.5.1.ebuild:
+  stable x86, bug 185736
+
+*radiusclient-ng-0.5.5.1 (15 Apr 2007)
+
+  15 Apr 2007; Alin Năstac <mrness@gentoo.org>
+  +files/radiusclient-ng-0.5.2-implicit-decl.patch,
+  radiusclient-ng-0.5.2.ebuild, +radiusclient-ng-0.5.5.1.ebuild:
+  Fix QA implicit declaration warning. Stable on amd64. Version bump.
+
+  23 Sep 2006; Alin Nastac <mrness@gentoo.org>
+  -files/pkgsysconfdir-install.patch, -radiusclient-ng-0.5.1.ebuild:
+  Remove obsolete version.
+
+  14 May 2006; Alin Nastac <mrness@gentoo.org> radiusclient-ng-0.5.2.ebuild:
+  Stable on x86.
+
+*radiusclient-ng-0.5.2 (16 Mar 2006)
+
+  16 Mar 2006; Alin Nastac <mrness@gentoo.org>
+  +files/radiusclient-ng-0.5.2-destdir.patch, radiusclient-ng-0.5.1.ebuild,
+  +radiusclient-ng-0.5.2.ebuild:
+  Remove virtual/libc dependency. Version bump.
+
+  27 Dec 2005; Alin Nastac <mrness@gentoo.org>
+  -radiusclient-ng-0.5.0.ebuild:
+  Remove obsolete version.
+
+  04 Oct 2005; Alin Nastac <mrness@gentoo.org> radiusclient-ng-0.5.1.ebuild:
+  Stable on x86.
+
+  12 Sep 2005; Luis Medinas <metalgod@gentoo.org>
+  radiusclient-ng-0.5.1.ebuild:
+  Added ~amd64 keyword.
+
+*radiusclient-ng-0.5.1 (03 Aug 2005)
+
+  03 Aug 2005; Alin Nastac <mrness@gentoo.org> radiusclient-ng-0.5.0.ebuild,
+  +radiusclient-ng-0.5.1.ebuild:
+  Stable on x86. Version bump.
+
+  15 Jun 2005; David Holm <dholm@gentoo.org> radiusclient-ng-0.5.0.ebuild:
+  Added to ~ppc.
+
+  14 Jun 2005; Jason Wever <weeve@gentoo.org> radiusclient-ng-0.5.0.ebuild:
+  Added ~sparc keyword.
+
+*radiusclient-ng-0.5.0 (22 May 2005)
+
+  22 May 2005; Alin Nastac <mrness@gentoo.org>
+  +files/pkgsysconfdir-install.patch, +metadata.xml,
+  +radiusclient-ng-0.5.0.ebuild:
+  Initial import from bug #78386.

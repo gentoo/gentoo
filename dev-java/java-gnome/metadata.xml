@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>java</herd>
+	<longdescription>
+		An elegant set of language bindings to allow you to write
+		native GNOME/GTK applications in Java. Works with both
+		traditional Java VMs and also with GCJ, allowing the creation
+		of native Linux executable binaries.
+
+		These libraries all come from the java-gnome project, which in
+		turn is part of the official suite of GNOME language bindings.
+
+		As of java-gnome 2.8, the previously monolithic package was
+		split into numerous individual libraries to allow more
+		modular use. Those libraries are libgtk-java, libgnome-java,
+		libgconf-java, libglade-java, etc.
+
+		This ebuild is a meta package which simply depends on the
+		various libraries which make up the complete java-gnome suite.
+
+		In all likelihood (especially if you're developing apps) this
+		is what you want to emerge.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,6 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for BSD-like make
+KEYWORDS=alpha amd64 arm ia64 ~mips ppc sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris
+RDEPEND=kernel_linux? ( sys-devel/pmake ) kernel_SunOS? ( sys-devel/pmake ) kernel_Darwin? ( sys-devel/bsdmake )
+SLOT=0
+_md5_=74cf53814e83105de54dda98148f5a47

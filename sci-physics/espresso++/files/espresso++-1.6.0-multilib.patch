@@ -1,0 +1,65 @@
+# HG changeset patch
+# User Christoph Junghans <christoph.junghans@gmail.com>
+# Date 1381325052 -7200
+# Node ID bcdda52214df0c007e44ec8d5045b0e68b142227
+# Parent  65da1a6110e59322efa1bb5eaff596baf9f07d5d
+added LIB variable
+
+diff -r 65da1a6110e5 -r bcdda52214df CMakeLists.txt
+--- a/CMakeLists.txt	Tue Oct 08 20:52:46 2013 +0200
++++ b/CMakeLists.txt	Wed Oct 09 15:24:12 2013 +0200
+@@ -29,6 +29,9 @@
+ option(BUILD_SHARED_LIBS "Build shared libs" ON)
+ option(BUILD_STANDALONE "Builds pypresso an standalone binary" OFF)
+ option(BUILD_PYTHON_MODULE "Builds epresso as python module" ON)
++if (NOT DEFINED LIB)
++  set(LIB "lib")
++endif(NOT DEFINED LIB)
+ 
+ if(NOT BUILD_STANDALONE AND NOT BUILD_PYTHON_MODULE)
+   message(FATAL_ERROR "You need to enable pypresso or the python module")
+diff -r 65da1a6110e5 -r bcdda52214df contrib/boost/CMakeLists.txt
+--- a/contrib/boost/CMakeLists.txt	Tue Oct 08 20:52:46 2013 +0200
++++ b/contrib/boost/CMakeLists.txt	Wed Oct 09 15:24:12 2013 +0200
+@@ -21,4 +21,4 @@
+ 
+ add_library(espresso_boost ${BOOST_SOURCES})
+ target_link_libraries(espresso_boost ${PYTHON_LIBRARIES} ${VAMPIRTRACE_LIBRARIES} ${MPI_LIBRARIES} ${RT_LIBRARIES})
+-install(TARGETS espresso_boost LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
++install(TARGETS espresso_boost LIBRARY DESTINATION ${LIB} ARCHIVE DESTINATION lib)
+diff -r 65da1a6110e5 -r bcdda52214df contrib/mpi4py/CMakeLists.txt
+--- a/contrib/mpi4py/CMakeLists.txt	Tue Oct 08 20:52:46 2013 +0200
++++ b/contrib/mpi4py/CMakeLists.txt	Wed Oct 09 15:24:12 2013 +0200
+@@ -12,4 +12,4 @@
+ target_link_libraries(dl ${PYTHON_LIBRARIES} ${VAMPIRTRACE_LIBRARIES} ${MPI_LIBRARIES})
+ set_target_properties(dl PROPERTIES PREFIX "" SUFFIX ".so")
+ 
+-install(TARGETS MPI LIBRARY DESTINATION ${PYTHON_INSTDIR} ARCHIVE DESTINATION lib)
++install(TARGETS MPI LIBRARY DESTINATION ${PYTHON_INSTDIR} ARCHIVE DESTINATION ${LIB})
+diff -r 65da1a6110e5 -r bcdda52214df src/CMakeLists.txt
+--- a/src/CMakeLists.txt	Tue Oct 08 20:52:46 2013 +0200
++++ b/src/CMakeLists.txt	Wed Oct 09 15:24:12 2013 +0200
+@@ -70,11 +70,11 @@
+ add_library(espresso_common ${ESPRESSO_SOURCES})
+ target_link_libraries(espresso_common pylogger ${BOOST} ${PYTHON_LIBRARIES}
+                                       ${VAMPIRTRACE_LIBRARIES} ${MPI_LIBRARIES} ${FFTW3_LIBRARIES})
+-install(TARGETS espresso_common LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
++install(TARGETS espresso_common LIBRARY DESTINATION ${LIB} ARCHIVE DESTINATION lib)
+ 
+ add_library(pylogger esutil/PyLogger.cpp)
+ target_link_libraries(pylogger ${BOOST})
+-install(TARGETS pylogger LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
++install(TARGETS pylogger LIBRARY DESTINATION ${LIB} ARCHIVE DESTINATION lib)
+ 
+ if(BUILD_STANDALONE)
+   add_executable(pypresso main/pypresso.cpp)
+diff -r 65da1a6110e5 -r bcdda52214df src/pymodule/CMakeLists.txt
+--- a/src/pymodule/CMakeLists.txt	Tue Oct 08 20:52:46 2013 +0200
++++ b/src/pymodule/CMakeLists.txt	Wed Oct 09 15:24:12 2013 +0200
+@@ -5,5 +5,5 @@
+   add_dependencies(_espresso scripts)
+   #python libs have not prefix (default would be 'lib')
+   set_target_properties(_espresso PROPERTIES PREFIX "" SUFFIX ".so")
+-  install(TARGETS _espresso LIBRARY DESTINATION ${PYTHON_INSTDIR} ARCHIVE DESTINATION lib)
++  install(TARGETS _espresso LIBRARY DESTINATION ${PYTHON_INSTDIR} ARCHIVE DESTINATION ${LIB})
+ endif(BUILD_PYTHON_MODULE)

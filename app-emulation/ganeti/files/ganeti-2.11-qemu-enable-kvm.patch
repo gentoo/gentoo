@@ -1,0 +1,12 @@
+diff --git a/lib/hypervisor/hv_kvm.py b/lib/hypervisor/hv_kvm.py
+index b61be65..100aafd 100644
+--- a/lib/hypervisor/hv_kvm.py
++++ b/lib/hypervisor/hv_kvm.py
+@@ -1380,6 +1380,7 @@ class KVMHypervisor(hv_base.BaseHypervisor):
+     kvm = hvp[constants.HV_KVM_PATH]
+     kvm_cmd = [kvm]
+     # used just by the vnc server, if enabled
++    kvm_cmd.extend(["-enable-kvm"])
+     kvm_cmd.extend(["-name", instance.name])
+     kvm_cmd.extend(["-m", instance.beparams[constants.BE_MAXMEM]])
+ 

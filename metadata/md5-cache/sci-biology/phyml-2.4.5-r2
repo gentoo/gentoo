@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=Estimation of large phylogenies by maximum likelihood
+EAPI=2
+HOMEPAGE=http://atgc.lirmm.fr/phyml/
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.lirmm.fr/~guindon/phyml_v2.4.5.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=83c36492e9c79d28a3ab6c138dc27f32

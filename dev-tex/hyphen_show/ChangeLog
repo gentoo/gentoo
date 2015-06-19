@@ -1,0 +1,36 @@
+# ChangeLog for dev-tex/hyphen_show
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/hyphen_show/ChangeLog,v 1.9 2010/09/04 17:41:54 ulm Exp $
+
+  04 Sep 2010; Ulrich Mueller <ulm@gentoo.org> hyphen_show-20000425.ebuild:
+  Respect LDFLAGS, bug 335988.
+
+  19 Sep 2008; Brent Baude <ranger@gentoo.org> hyphen_show-20000425.ebuild:
+  Marking hyphen_show-20000425 ~ppc64 for bug 237447
+
+  12 Sep 2008; Markus Meier <maekke@gentoo.org> hyphen_show-20000425.ebuild:
+  amd64/x86 stable, bug #237447
+
+  20 Mar 2008; Ulrich Mueller <ulm@gentoo.org> metadata.xml,
+  hyphen_show-20000425.ebuild:
+  Add longdescription to metadata. Don't quote ${A}.
+
+  15 Jul 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Assigning to tex, as nattfodd is being retired (#108329).
+
+  12 Mar 2007; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Replaced text-markup by tex as maintaining herd (text-markup split).
+
+  05 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  28 Nov 2005; Alexandre Buisse <nattfodd@gentoo.org> metadata.xml:
+  Added myself as maintainer.
+
+*hyphen_show-20000425 (18 Nov 2005)
+
+  18 Nov 2005; Leonardo Boshell <leonardop@gentoo.org>
+  +hyphen_show-20000425.ebuild, +files/hyphen_show-gcc34.patch:
+  New package. Reported on bug #107419; ebuild and patch submitted by Ulrich
+  Mueller.
+

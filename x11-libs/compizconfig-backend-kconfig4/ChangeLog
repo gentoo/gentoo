@@ -1,0 +1,123 @@
+# ChangeLog for x11-libs/compizconfig-backend-kconfig4
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/compizconfig-backend-kconfig4/ChangeLog,v 1.9 2014/04/26 12:18:58 johu Exp $
+
+  26 Apr 2014; Johannes Huber <johu@gentoo.org>
+  compizconfig-backend-kconfig4-0.8.8.ebuild:
+  EAPI 5.
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org>
+  compizconfig-backend-kconfig4-0.8.8.ebuild:
+  Move Qt dependencies to the new category
+
+  11 Jan 2013; Andreas K. Huettel <dilfridge@gentoo.org>
+  compizconfig-backend-kconfig4-0.8.8.ebuild:
+  Drop ppc64, unfulfilled dependencies
+
+  25 Sep 2012; Sergey Popov <pinkbyte@gentoo.org>
+  -compizconfig-backend-kconfig4-0.8.4.ebuild:
+  Drop old
+
+*compizconfig-backend-kconfig4-0.8.8 (30 Aug 2012)
+
+  30 Aug 2012; Sergey Popov <pinkbyte@gentoo.org>
+  +compizconfig-backend-kconfig4-0.8.8.ebuild:
+  Version bump
+
+  28 Oct 2011; Jonathan Callen <abcd@gentoo.org>
+  compizconfig-backend-kconfig4-0.8.4.ebuild:
+  Bump to EAPI=4
+
+  02 Feb 2011; Theo Chatzimichos <tampakrap@gentoo.org>
+  compizconfig-backend-kconfig4-0.8.4.ebuild:
+  EAPI3
+
+  09 Aug 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  compizconfig-backend-kconfig4-0.8.4.ebuild:
+  Drop useless kde_minimal definition.
+
+*compizconfig-backend-kconfig4-0.8.4 (03 Apr 2010)
+
+  03 Apr 2010; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +compizconfig-backend-kconfig4-0.8.4.ebuild, +metadata.xml:
+  Moving compizconfig-backend-kconfig to compizconfig-backend-kconfig4.
+  Replaced compiz ~ deps with >= deps to support the new compiz-0.8.6
+  release and to avoid future dep issues.
+  Did a revbump to avoid issues with installed packages.
+
+*compizconfig-backend-kconfig-0.8.4-r1 (23 Oct 2009)
+
+  23 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +compizconfig-backend-kconfig-0.8.4-r1.ebuild:
+  Version bump wrt #289511, thanks to Yachay Tolosa Bello.
+
+  16 Oct 2009; Zac Medico <zmedico@gentoo.org>
+  compizconfig-backend-kconfig-0.8.2.ebuild,
+  compizconfig-backend-kconfig-0.8.4.ebuild:
+  Bug #248293 - Use need-kde instead of NEED_KDE.
+
+*compizconfig-backend-kconfig-0.8.4 (15 Oct 2009)
+
+  15 Oct 2009; Romain Perier <mrpouet@gentoo.org>
+  +compizconfig-backend-kconfig-0.8.4.ebuild:
+  Version bump.
+
+  25 Apr 2009; Brent Baude <ranger@gentoo.org>
+  compizconfig-backend-kconfig-0.8.2.ebuild:
+  Marking compizconfig-backend-kconfig-0.8.2 ~ppc for bug 246804
+
+  25 Apr 2009; Brent Baude <ranger@gentoo.org>
+  compizconfig-backend-kconfig-0.8.2.ebuild:
+  Marking compizconfig-backend-kconfig-0.8.2 ~ppc64 for bug 246804
+
+  11 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  -compizconfig-backend-kconfig-0.7.8.ebuild:
+  Removing old compiz 0.7.8 ebuilds - affected by bug 263678.
+
+*compizconfig-backend-kconfig-0.8.2 (03 Apr 2009)
+
+  03 Apr 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  +compizconfig-backend-kconfig-0.8.2.ebuild:
+  Bumped compiz to the 0.8.2 release.
+
+  15 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  compizconfig-backend-kconfig-0.7.8.ebuild:
+  Removed the mirror restriction that was used for the overlay.
+
+  01 Nov 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Fixed metadata.xml by removing hanno now that he is on the desktop-effects
+  herd and fixing the description.
+
+  27 Oct 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  compizconfig-backend-kconfig-0.7.8.ebuild:
+  Removed the bug reporting warning that was copied from the desktop-effects
+  overlay by mistake.
+
+*compizconfig-backend-kconfig-0.7.8 (27 Oct 2008)
+
+  27 Oct 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml, +compizconfig-backend-kconfig-0.7.8.ebuild:
+  Added compiz-0.7.8 to the tree
+
+  01 Nov 2007; Olivier Crête <tester@gentoo.org>
+  compizconfig-backend-kconfig-0.6.0.ebuild:
+  Mark ~amd64, bug #197287
+
+  31 Oct 2007; Hanno Boeck <hanno@gentoo.org>
+  compizconfig-backend-kconfig-0.6.0.ebuild:
+  Added proper kde-deps, thanks to jmbsvicetto.
+
+  24 Oct 2007; Luca Barbato <lu_zero@gentoo.org>
+  compizconfig-backend-kconfig-0.6.0.ebuild:
+  Marked ~ppc
+
+  24 Oct 2007; Hanno Boeck <hanno@gentoo.org>
+  compizconfig-backend-kconfig-0.6.0.ebuild:
+  QA fixes.
+
+*compizconfig-backend-kconfig-0.6.0 (23 Oct 2007)
+
+  23 Oct 2007; Hanno Boeck <hanno@gentoo.org> +metadata.xml,
+  +compizconfig-backend-kconfig-0.6.0.ebuild:
+  Initial compiz-fusion commit, ebuild based on xeffects overlay.

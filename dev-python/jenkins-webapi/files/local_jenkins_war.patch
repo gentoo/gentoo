@@ -1,0 +1,12 @@
+--- tests/install.py.orig	2014-11-23 21:21:29.000000000 +0100
++++ tests/install.py	2015-01-28 18:29:42.750933314 +0100
+@@ -23,7 +23,7 @@
+         self.destdir = destdir
+ 
+         self.logfile    = logfile if logfile else pjoin(self.destdir, 'jenkins.log')
+-        self.jenkinswar = pjoin(self.destdir, 'jenkins.war')
++        self.jenkinswar = pjoin('/opt/jenkins', 'jenkins.war')
+         self.jenkinscli = pjoin(self.destdir, 'jenkins-cli.jar')
+         self.homedir    = pjoin(self.destdir, 'home')
+ 
+

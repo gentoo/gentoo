@@ -1,0 +1,26 @@
+* Don't install unneeded docs
+* Don't install all translations
+
+--- installs.pri
++++ installs.pri
+@@ -31,19 +31,9 @@
+     !exists( $${toolsFolder} ):toolsFolder    = tools
+     toolsDataFolder = $${toolsFolder}/data/$${dataFolder}
+     
+-    # licenses, readme, changelog
+-    monkey_docs.path = $${PACKAGE_DOCS}
+-    monkey_docs.files = GPL-2 \
+-        GPL-3 \
+-        LGPL-3 \
+-        dev-readme \
+-        readme.txt \
+-        ChangeLog
+-    install_folders *= $${monkey_docs.path}
+-
+     # datas
+     monkey_datas.path   = $${PACKAGE_DATAS}
+-    monkey_datas.files  = datas/*
++    monkey_datas.files  = datas/apis datas/scripts datas/templates
+     monkey_datas.CONFIG *= no_check_exist
+     install_folders *= $${monkey_datas.path}
+ 

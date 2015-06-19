@@ -1,0 +1,458 @@
+# ChangeLog for dev-python/bsddb3
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/bsddb3/ChangeLog,v 1.122 2015/04/08 08:05:03 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> bsddb3-6.0.1.ebuild,
+  bsddb3-6.1.0.ebuild:
+  Drop old Python implementations
+
+  02 Feb 2015; Mike Gilbert <floppym@gentoo.org> bsddb3-6.0.1.ebuild,
+  bsddb3-6.1.0.ebuild:
+  Fix double EPREFIX in BERKELEYDB_INCDIR, bug 538568 by Michael Schubert.
+
+  28 Dec 2014; Mike Gilbert <floppym@gentoo.org> -bsddb3-5.1.2.ebuild,
+  -bsddb3-5.2.0.ebuild, -bsddb3-5.3.0-r1.ebuild, -bsddb3-5.3.0.ebuild,
+  -bsddb3-6.0.0.ebuild, -files/py3tests.patch:
+  Remove old.
+
+  11 Oct 2014; Markus Meier <maekke@gentoo.org> bsddb3-6.0.1.ebuild:
+  arm stable, bug #512012
+
+  15 Sep 2014; Agostino Sarubbo <ago@gentoo.org> bsddb3-6.0.1.ebuild:
+  Stable for sparc, wrt bug #512012
+
+  25 Aug 2014; Agostino Sarubbo <ago@gentoo.org> bsddb3-6.0.1.ebuild:
+  Stable for alpha, wrt bug #512012
+
+  23 Aug 2014; Agostino Sarubbo <ago@gentoo.org> bsddb3-6.0.1.ebuild:
+  Stable for ia64, wrt bug #512012
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org> bsddb3-6.0.1.ebuild:
+  Stable for ppc64, wrt bug #512012
+
+  07 Aug 2014; Jeroen Roovers <jer@gentoo.org> bsddb3-6.0.1.ebuild:
+  Stable for HPPA (bug #512012).
+
+  04 Aug 2014; Mike Gilbert <floppym@gentoo.org> bsddb3-6.1.0.ebuild:
+  Simplify deps, and make the slot-operator actually work.
+
+  03 Aug 2014; Mike Gilbert <floppym@gentoo.org> bsddb3-6.1.0.ebuild:
+  Allow sys-libs/db:4.7.
+
+  03 Aug 2014; Mike Gilbert <floppym@gentoo.org> bsddb3-6.1.0.ebuild:
+  Use DB_VER from the environment to facilitate testing.
+
+  03 Aug 2014; Mike Gilbert <floppym@gentoo.org> bsddb3-6.1.0.ebuild:
+  Drop bindist from IUSE too.
+
+  03 Aug 2014; Mike Gilbert <floppym@gentoo.org> bsddb3-6.1.0.ebuild:
+  Drop bindist use flag; BSD and AGPLv3 are compatible.
+
+  03 Aug 2014; Mike Gilbert <floppym@gentoo.org> bsddb3-6.1.0.ebuild:
+  Introduce bindist use flag to control dependency on db-6.x. Bug 494490.
+
+  28 Jul 2014; Agostino Sarubbo <ago@gentoo.org> bsddb3-6.0.1.ebuild:
+  Stable for ppc, wrt bug #512012
+
+*bsddb3-6.1.0 (27 Jul 2014)
+
+  27 Jul 2014; Ian Delaney <idella4@gentoo.org> +bsddb3-6.1.0.ebuild:
+  bump; drop py2.6, upgrade test phase
+
+  16 Jul 2014; Pacho Ramos <pacho@gentoo.org> bsddb3-6.0.1.ebuild:
+  amd64/x86 stable, bug #516176
+
+  20 May 2014; Ian Delaney <idella4@gentoo.org> bsddb3-6.0.1.ebuild:
+  add py3.4 support
+
+  19 May 2014; Mike Gilbert <floppym@gentoo.org> bsddb3-6.0.1.ebuild:
+  Set BERKELEYDB envvars instead of passing them as arguments to setup.py.
+
+  19 May 2014; Mike Gilbert <floppym@gentoo.org> bsddb3-6.0.1.ebuild:
+  Fixup distutils-r1 conversion, and fix build with newer multilib-enabled sys-
+  apps/db.
+
+  01 Apr 2014; Ian Delaney <idella4@gentoo.org>+files/py3tests.patch,
+  bsddb3-6.0.0.ebuild:
+  install phase tidied, un-needed removal of tests folders removed, 
+  test phase revised and fixed for py3 due to flaws in the source
+  code's setup, includes the patch. Fixes Bugs #493500 by Nikoli and 
+  #476246 by Patrick
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> bsddb3-6.0.0.ebuild:
+  Stable for sparc, wrt bug #482056
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> bsddb3-6.0.0.ebuild:
+  Stable for ppc, wrt bug #482056
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> bsddb3-6.0.0.ebuild:
+  Stable for ppc64, wrt bug #482056
+
+  15 Jan 2014; Agostino Sarubbo <ago@gentoo.org> bsddb3-6.0.0.ebuild:
+  Stable for alpha, wrt bug #482056
+
+*bsddb3-6.0.1 (08 Jan 2014)
+
+  08 Jan 2014; Patrick Lauer <patrick@gentoo.org> +bsddb3-6.0.1.ebuild:
+  Bump
+
+  07 Dec 2013; Akinori Hattori <hattya@gentoo.org> bsddb3-6.0.0.ebuild:
+  ia64 stable wrt bug #482056
+
+  11 Oct 2013; Markus Meier <maekke@gentoo.org> bsddb3-6.0.0.ebuild:
+  arm stable, bug #482056
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> bsddb3-5.3.0-r1.ebuild,
+  bsddb3-6.0.0.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  17 Jul 2013; Mike Gilbert <floppym@gentoo.org> bsddb3-5.3.0.ebuild:
+  Revert changes by idella4.
+
+  13 Jul 2013; Ian Delaney <idella4@gentoo.org> bsddb3-6.0.0.ebuild:
+  edit to test phase, closes Bug #476246
+
+*bsddb3-6.0.0 (09 Jul 2013)
+
+  09 Jul 2013; Patrick Lauer <patrick@gentoo.org> +bsddb3-6.0.0.ebuild:
+  Bump
+
+  04 Jul 2013; Benda Xu <heroxbd@gentoo.org> bsddb3-5.3.0-r1.ebuild:
+  keyword amd64-linux and x86-linux
+
+*bsddb3-5.3.0-r1 (28 May 2013)
+
+  28 May 2013; Ian Delaney <idella4@gentoo.org> +bsddb3-5.3.0-r1.ebuild,
+  bsddb3-5.3.0.ebuild:
+  revbump, migrate -> distutils-r1, test fail cited wrt Bug #470976
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> bsddb3-5.3.0.ebuild:
+  Add ~arm, wrt bug #449220
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> bsddb3-5.3.0.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> bsddb3-5.3.0.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> bsddb3-5.3.0.ebuild:
+  Add ~ppc64, wrt bug #449220
+
+  23 Nov 2012; Ian Delaney <idella4@gentoo.org> bsddb3-5.3.0.ebuild:
+  msg added in test phase to the effect that tests are run in silent mode and
+  can take long time, closes Bug #442184
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> bsddb3-5.1.2.ebuild,
+  bsddb3-5.2.0.ebuild, bsddb3-5.3.0.ebuild:
+  Drop sparc keywords
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> bsddb3-5.3.0.ebuild:
+  Marking bsddb3-5.3.0 ppc for bug 418339
+
+  31 May 2012; Agostino Sarubbo <ago@gentoo.org> bsddb3-5.3.0.ebuild:
+  Stable for amd64, wrt bug #418339
+
+  31 May 2012; Jeff Horelick <jdhore@gentoo.org> bsddb3-5.3.0.ebuild:
+  marked x86 per bug 418339
+
+  08 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> bsddb3-5.2.0.ebuild:
+  x86 stable wrt bug #406453
+
+  07 Mar 2012; Brent Baude <ranger@gentoo.org> bsddb3-5.2.0.ebuild:
+  Marking bsddb3-5.2.0 ppc for bug 406453
+
+  04 Mar 2012; Justin Lecher <jlec@gentoo.org> bsddb3-5.1.2.ebuild,
+  bsddb3-5.2.0.ebuild, bsddb3-5.3.0.ebuild:
+  Restrict pypy
+
+  02 Mar 2012; Agostino Sarubbo <ago@gentoo.org> bsddb3-5.2.0.ebuild:
+  Stable for amd64, wrt bug #406453
+
+*bsddb3-5.3.0 (01 Mar 2012)
+
+  01 Mar 2012; Dirkjan Ochtman <djc@gentoo.org> +bsddb3-5.3.0.ebuild:
+  Version bump to 5.3.0 for bug 404161 (thanks to Ian Delaney).
+
+  22 Feb 2012; Patrick Lauer <patrick@gentoo.org> bsddb3-5.1.2.ebuild,
+  bsddb3-5.2.0.ebuild:
+  Restricting jython
+
+*bsddb3-5.2.0 (10 Sep 2011)
+
+  10 Sep 2011; Dirkjan Ochtman <djc@gentoo.org> +bsddb3-5.2.0.ebuild:
+  Version bump for 5.2.0.
+
+  25 Apr 2011; Raúl Porcel <armin76@gentoo.org> bsddb3-5.1.2.ebuild:
+  sparc stable wrt #362757
+
+  15 Apr 2011; Christoph Mende <angelos@gentoo.org> bsddb3-5.1.2.ebuild:
+  Stable on amd64 wrt bug #362757
+
+  14 Apr 2011; Brent Baude <ranger@gentoo.org> bsddb3-5.1.2.ebuild:
+  stable ppc, bug 362757
+
+  14 Apr 2011; Thomas Kahle <tomka@gentoo.org> bsddb3-5.1.2.ebuild:
+  x86 stable per bug 362757
+
+*bsddb3-5.1.2 (08 Mar 2011)
+
+  08 Mar 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +bsddb3-5.1.2.ebuild:
+  Version bump.
+
+  07 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -bsddb3-5.0.0.ebuild, -bsddb3-5.1.0.ebuild:
+  Delete.
+
+  07 Jan 2011; Brent Baude <ranger@gentoo.org> bsddb3-5.1.1.ebuild:
+  Marking bsddb3-5.1.1 ppc for bug 349134
+
+  04 Jan 2011; Michael Weber <xmw@gentoo.org> bsddb3-5.1.1.ebuild:
+  sparc stable (bug 349134)
+
+  20 Dec 2010; Markos Chandras <hwoarang@gentoo.org> bsddb3-5.1.1.ebuild:
+  Stable on amd64 wrt bug #349134
+
+  20 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> bsddb3-5.1.1.ebuild:
+  x86 stable wrt bug #349134
+
+*bsddb3-5.1.1 (15 Nov 2010)
+
+  15 Nov 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +bsddb3-5.1.1.ebuild:
+  Version bump.
+
+*bsddb3-5.1.0 (07 Nov 2010)
+
+  07 Nov 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +bsddb3-5.1.0.ebuild:
+  Version bump.
+
+  30 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -bsddb3-4.8.1.ebuild, -bsddb3-4.8.3.ebuild,
+  -files/bsddb3-4.8.3-BSDDB_TEST_PATH.patch, -bsddb3-4.8.4.ebuild:
+  Delete.
+
+  20 Jun 2010; Raúl Porcel <armin76@gentoo.org> bsddb3-5.0.0.ebuild:
+  sparc stable wrt #319731
+
+  14 Jun 2010; Christian Faulhammer <fauli@gentoo.org> bsddb3-5.0.0.ebuild:
+  stable x86, bug 319731
+
+  25 May 2010; Pacho Ramos <pacho@gentoo.org> bsddb3-5.0.0.ebuild:
+  stable amd64, bug 319731
+
+  24 May 2010; <nixnut@gentoo.org> bsddb3-5.0.0.ebuild:
+  ppc stable #319731
+
+*bsddb3-5.0.0 (14 Apr 2010)
+
+  14 Apr 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +bsddb3-5.0.0.ebuild:
+  Version bump.
+
+  11 Apr 2010; <nixnut@gentoo.org> bsddb3-4.8.3.ebuild:
+  ppc stable #302680
+
+*bsddb3-4.8.4 (23 Mar 2010)
+
+  23 Mar 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +bsddb3-4.8.4.ebuild:
+  Version bump.
+
+  07 Mar 2010; Samuli Suominen <ssuominen@gentoo.org> bsddb3-4.8.3.ebuild:
+  amd64 stable wrt #302680
+
+*bsddb3-4.8.3 (01 Mar 2010)
+
+  01 Mar 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +bsddb3-4.8.3.ebuild, +files/bsddb3-4.8.3-BSDDB_TEST_PATH.patch:
+  Version bump. Run tests in ${T}/tests-${PYTHON_ABI} directories
+  instead of /tmp/z-Berkeley_DB.
+
+  10 Jan 2010; nixnut <nixnut@gentoo.org> bsddb3-4.8.1.ebuild:
+  ppc stable #296027
+
+*bsddb3-4.8.2 (29 Dec 2009)
+
+  29 Dec 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +bsddb3-4.8.2.ebuild:
+  Version bump.
+
+  29 Dec 2009; Raúl Porcel <armin76@gentoo.org> bsddb3-4.8.1.ebuild:
+  sparc stable wrt #296027
+
+  16 Dec 2009; Markus Meier <maekke@gentoo.org> bsddb3-4.8.1.ebuild:
+  amd64/x86 stable, bug #296027
+
+  26 Nov 2009; Markus Meier <maekke@gentoo.org> bsddb3-4.8.0.ebuild:
+  amd64 stable, bug #289436
+
+*bsddb3-4.8.1 (06 Nov 2009)
+
+  06 Nov 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +bsddb3-4.8.1.ebuild:
+  Version bump.
+
+  29 Oct 2009; Christian Faulhammer <fauli@gentoo.org> bsddb3-4.8.0.ebuild:
+  stable x86, bug 289436
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> bsddb3-4.8.0.ebuild:
+  ppc stable #289436
+
+*bsddb3-4.8.0 (17 Sep 2009)
+
+  17 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -bsddb3-4.5.0.ebuild, -bsddb3-4.7.5.ebuild, -bsddb3-4.7.6-r1.ebuild,
+  +bsddb3-4.8.0.ebuild:
+  Version bump.
+
+*bsddb3-4.7.6-r1 (01 Aug 2009)
+
+  01 Aug 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +bsddb3-4.7.6-r1.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+  17 Jul 2009; nixnut <nixnut@gentoo.org> ChangeLog:
+  ppc stable #274180
+
+  30 Jun 2009; Raúl Porcel <armin76@gentoo.org> bsddb3-4.7.6.ebuild:
+  sparc stable wrt #274180
+
+  17 Jun 2009; Christian Faulhammer <fauli@gentoo.org> bsddb3-4.7.6.ebuild:
+  stable x86, bug 274180
+
+  17 Jun 2009; Thomas Anderson <gentoofan23@gentoo.org> bsddb3-4.7.6.ebuild:
+  stable amd64, bug 274180
+
+  24 May 2009; Markus Meier <maekke@gentoo.org> bsddb3-4.7.5.ebuild:
+  amd64/x86 stable, bug #270089
+
+  23 May 2009; nixnut <nixnut@gentoo.org> bsddb3-4.7.6.ebuild:
+  ppc stable #270089
+
+*bsddb3-4.7.6 (16 May 2009)
+
+  16 May 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +bsddb3-4.7.6.ebuild:
+  Version bump.
+
+  24 Apr 2009; Patrick Lauer <patrick@gentoo.org> -bsddb3-4.7.0.ebuild,
+  -bsddb3-4.7.3.ebuild, -bsddb3-4.7.4.ebuild:
+  Remove old
+
+*bsddb3-4.7.5 (15 Feb 2009)
+
+  15 Feb 2009; Patrick Lauer <patrick@gentoo.org> +bsddb3-4.7.5.ebuild:
+  Bump to 4.7.5, fixes #259038
+
+*bsddb3-4.7.4 (01 Feb 2009)
+
+  01 Feb 2009; Patrick Lauer <patrick@gentoo.org> +bsddb3-4.7.4.ebuild:
+  Bump to 4.7.4, closes #256864
+
+  25 Oct 2008; Ali Polatel <hawking@gentoo.org> bsddb3-4.7.3.ebuild:
+  Use db-2.7 if available. Update DEPEND.
+
+*bsddb3-4.7.3 (25 Oct 2008)
+
+  25 Oct 2008; Ali Polatel <hawking@gentoo.org> +bsddb3-4.7.3.ebuild:
+  Version bump.
+
+  29 Jun 2008; Raúl Porcel <armin76@gentoo.org> bsddb3-4.7.0.ebuild:
+  Add ~ia64/~sparc wrt #229393
+
+  28 Jun 2008; Tiziano Müller <dev-zero@gentoo.org> bsddb3-4.7.0.ebuild:
+  Corrected dependency to sys-libs/db:4.6 (thanks to armin76)
+
+*bsddb3-4.7.0 (25 Jun 2008)
+
+  25 Jun 2008; Tiziano Müller <dev-zero@gentoo.org> +bsddb3-4.7.0.ebuild:
+  Version bump (fixes bug #227699, introduces new dependency)
+
+  06 Mar 2007; Simon Stelling <blubb@gentoo.org> bsddb3-4.5.0.ebuild:
+  stable on amd64; bug 169212
+
+  05 Mar 2007; Caleb Tennis <caleb@gentoo.org>
+  -files/bsddb3-4.1.3-setup.py.patch, -bsddb3-4.1.3.ebuild:
+  remove old version - db 4.1 isn't in portage anymore
+
+  04 Mar 2007; Christian Faulhammer <opfer@gentoo.org> bsddb3-4.5.0.ebuild:
+  stable x86; bug 169212
+
+*bsddb3-4.5.0 (14 Feb 2007)
+
+  14 Feb 2007; Tiziano Müller <dev-zero@gentoo.org>
+  -files/bsddb3-3.4.0-db3.patch, -files/bsddb3-4.1.3-db4.0.patch,
+  -files/bsddb3-4.2.4-db4.2.patch, -bsddb3-3.4.0-r1.ebuild,
+  -bsddb3-4.2.4.ebuild, +bsddb3-4.5.0.ebuild:
+  Version bump. Dropped old versions. Added tests.
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> bsddb3-4.2.4.ebuild:
+  Mark 4.2.4 ~ia64
+
+  24 Apr 2005; Simon Stelling <blubb@gentoo.org> bsddb3-4.1.3.ebuild,
+  bsddb3-4.2.4.ebuild:
+  marked 4.2.4 testing and 4.1.3 stable on amd64
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  03 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> bsddb3-3.4.0-r1.ebuild:
+  Fix failed patch, bug 64280.
+
+  26 Sep 2004; Alastair Tse <liquidx@gentoo.org>
+  +files/bsddb3-4.1.3-setup.py.patch, bsddb3-4.1.3.ebuild,
+  bsddb3-4.2.4.ebuild:
+  fix problems with 4.2 incompatibility with bsddb3-4.1.3 (#62017)
+
+  26 Jun 2004; Alastair Tse <liquidx@gentoo.org> bsddb3-4.1.3.ebuild:
+  fix bsddb3 to use the stable db4.1 (#51951)
+
+  30 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> bsddb3-4.1.3.ebuild:
+  Adding amd64 keyword. Closing #43595.
+
+  17 Mar 2004; Seemant Kulleen <seemant@gentoo.org> bsddb3-3.4.0-r1.ebuild,
+  bsddb3-4.1.3.ebuild, bsddb3-4.2.4.ebuild:
+  spelling of Berkeley fixed, thanks to: Martin Rieder <bugs@martinrieder.de> in
+  bug #44927
+
+*bsddb3-4.2.4 (13 Feb 2004)
+
+  13 Feb 2004; Alastair Tse <liquidx@gentoo.org> bsddb3-3.4.0.ebuild,
+  bsddb3-4.1.3.ebuild, bsddb3-4.2.4.ebuild, files/bsddb3-4.1.3-db4.0.patch,
+  files/bsddb3-4.2.4-db4.2.patch:
+  version bump to work with db-4.2, peg bsddb3-4.1 at db-4.0 and bsddb3-4.2 at
+  db-4.2 and add patches to change references to version specific include files
+  and libraries.
+
+  01 Nov 2003; Jason Wever <weeve@gentoo.org> bsddb3-3.4.0-r1.ebuild,
+  bsddb3-3.4.0.ebuild, bsddb3-4.1.3.ebuild:
+  Added ~sparc keyword.
+
+  03 Sep 2003; Alastair Tse <liquidx@gentoo.org> bsddb3-3.4.0-r1.ebuild,
+  files/bsddb3-3.4.0-db3.patch:
+  fixed db-3 patch to point to db-3.2 instead of db-3. updated deps.
+
+*bsddb3-3.4.0-r1 (01 Jun 2003)
+
+  01 Jun 2003; Alastair Tse <liquidx@gentoo.org> bsddb3-3.4.0-r1.ebuild,
+  files/bsddb3-3.4.0-db3.patch:
+  make it compile with db-3 versioned libs in the presence of db-4
+
+*bsddb3-4.1.3 (21 May 2003)
+
+  21 May 2003; Michael Imhof <tantive@gentoo.org> bsddb3-4.1.3.ebuild:
+  Version bump. Submitted by Chris Fernandes de Sousa 
+  <cdesousa@faeldryn.net>.
+
+*bsddb3-3.4.0 (01 Nov 2002)
+
+  25 Apr 2003; Lars Weiler <pylon@gentoo.org> bsddb3-3.4.0.ebuild:
+  Set ~ppc in KEYWORDS
+
+  04 Apr 2003; Alastair Tse <liquidx@gentoo.org> bsddb3-3.4.0.ebuild:
+  distutil-ize
+
+  01 Nov 2002; foser <foser@gentoo.org> bsddb3-3.4.0.ebuild, ChangeLog :
+  Initial import

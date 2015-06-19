@@ -1,0 +1,135 @@
+# ChangeLog for lxde-base/lxterminal
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/lxde-base/lxterminal/ChangeLog,v 1.32 2015/03/03 08:11:52 dlan Exp $
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> lxterminal-0.1.11.ebuild:
+  add arm64 support, tested on A53 board
+
+*lxterminal-0.2.0 (28 Feb 2015)
+
+  28 Feb 2015; Pavel Kazakov <nullishzero@gentoo.org> +lxterminal-0.2.0.ebuild:
+  Version bump
+
+  22 Feb 2013; Zac Medico <zmedico@gentoo.org> lxterminal-0.1.11.ebuild:
+  Add ~arm-linux keyword.
+
+  25 Aug 2012; Markos Chandras <hwoarang@gentoo.org> -lxterminal-0.1.9.ebuild:
+  Remove old LXDE packages
+
+  11 Aug 2012; Agostino Sarubbo <ago@gentoo.org> lxterminal-0.1.11.ebuild:
+  Stable for amd64, wrt bug #430494
+
+  05 Jun 2012; Michael Weber <xmw@gentoo.org> lxterminal-0.1.11.ebuild:
+  ppc stable (bug 385189)
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> lxterminal-0.1.9.ebuild,
+  lxterminal-0.1.11.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  09 Oct 2011; Markus Meier <maekke@gentoo.org> lxterminal-0.1.11.ebuild:
+  arm stable, bug #385189
+
+  07 Oct 2011; Markos Chandras <hwoarang@gentoo.org> lxterminal-0.1.11.ebuild:
+  Stable on amd64 wrt bug #385189
+
+  05 Oct 2011; Andreas Schuerch <nativemad@gentoo.org>
+  lxterminal-0.1.11.ebuild:
+  x86 stable, bug 385189
+
+*lxterminal-0.1.11 (28 Jul 2011)
+
+  28 Jul 2011; Markos Chandras <hwoarang@gentoo.org> -lxterminal-0.1.10.ebuild,
+  +lxterminal-0.1.11.ebuild:
+  Version bump to 0.1.11 which fixes two regressions since 0.1.10. Remove old
+  ebuild
+
+*lxterminal-0.1.10 (26 Jul 2011)
+
+  26 Jul 2011; Markos Chandras <hwoarang@gentoo.org> -lxterminal-0.1.6.ebuild,
+  -lxterminal-0.1.7.ebuild, -lxterminal-0.1.8.ebuild,
+  +lxterminal-0.1.10.ebuild:
+  Version bump
+
+  31 Mar 2011; Mart Raudsepp <leio@gentoo.org> lxterminal-0.1.9.ebuild:
+  Add ~mips keyword
+
+  09 Mar 2011; Markos Chandras <hwoarang@gentoo.org> lxterminal-0.1.6.ebuild,
+  lxterminal-0.1.7.ebuild, lxterminal-0.1.8.ebuild, lxterminal-0.1.9.ebuild:
+  Add slotted x11-libs/vte dependency. Bug #357571
+
+  07 Mar 2011; Tobias Klausmann <klausman@gentoo.org> lxterminal-0.1.9.ebuild:
+  Keyworded on alpha, bug #330911
+
+  08 Jan 2011; Markus Meier <maekke@gentoo.org> lxterminal-0.1.9.ebuild:
+  arm stable, bug #349762
+
+  04 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  lxterminal-0.1.9.ebuild:
+  stable x86, bug 349762
+
+  01 Jan 2011; Markos Chandras <hwoarang@gentoo.org> lxterminal-0.1.9.ebuild:
+  Stable on amd64 wrt bug #349762
+
+*lxterminal-0.1.9 (12 Oct 2010)
+
+  12 Oct 2010; Víctor Ostorga <vostorga@gentoo.org>
+  +lxterminal-0.1.9.ebuild:
+  Version bump to 0.1.9 . Fixes a configuration file corruption issue.
+
+*lxterminal-0.1.8 (29 Jul 2010)
+
+  29 Jul 2010; Víctor Ostorga <vostorga@gentoo.org>
+  +lxterminal-0.1.8.ebuild:
+  Version bump to 0.1.8
+
+*lxterminal-0.1.7 (14 Mar 2010)
+
+  14 Mar 2010; Víctor Ostorga <vostorga@gentoo.org>
+  +lxterminal-0.1.7.ebuild:
+  Version bump to 0.1.7
+
+  23 Feb 2010; Raúl Porcel <armin76@gentoo.org> lxterminal-0.1.6.ebuild:
+  arm stable wrt #306433
+
+  24 Jan 2010; Raúl Porcel <armin76@gentoo.org> lxterminal-0.1.6.ebuild:
+  Add ~arm
+
+  16 Jan 2010; Jonathan Callen <abcd@gentoo.org> lxterminal-0.1.6.ebuild:
+  Add prefix keywords
+
+  21 Nov 2009; nixnut <nixnut@gentoo.org> lxterminal-0.1.6.ebuild:
+  ppc stable #292698
+
+  20 Nov 2009; Markus Meier <maekke@gentoo.org> lxterminal-0.1.6.ebuild:
+  amd64/x86 stable, bug #292698
+
+  05 Nov 2009; Víctor Ostorga <vostorga@gentoo.org>
+  -lxterminal-0.1.4.ebuild, -lxterminal-0.1.5.ebuild:
+  Cleaning out old ebuilds
+
+*lxterminal-0.1.6 (03 Aug 2009)
+
+  03 Aug 2009; Víctor Ostorga <vostorga@gentoo.org>
+  lxterminal-0.1.4.ebuild, lxterminal-0.1.5.ebuild,
+  +lxterminal-0.1.6.ebuild:
+  Version bump to 0.1.6. Fixing DEPEND
+
+  30 Jul 2009; Mounir Lamouri <volkmar@gentoo.org> lxterminal-0.1.5.ebuild:
+  Keywording for ppc. Bug 271148
+
+*lxterminal-0.1.5 (24 May 2009)
+
+  24 May 2009; Ben de Groot <yngwin@gentoo.org> +lxterminal-0.1.5.ebuild:
+  Version bump
+
+*lxterminal-0.1.4 (12 Jan 2009)
+
+  12 Jan 2009; Friedrich Oslage <bluebird@gentoo.org>
+  -lxterminal-0.1.3.ebuild, +lxterminal-0.1.4.ebuild:
+  Version bump
+
+*lxterminal-0.1.3 (07 Nov 2008)
+
+  07 Nov 2008; Ben de Groot <yngwin@gentoo.org> +metadata.xml,
+  +lxterminal-0.1.3.ebuild:
+  Initial import of ebuild from lxde overlay

@@ -1,0 +1,80 @@
+# ChangeLog for app-backup/mylvmbackup
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/mylvmbackup/ChangeLog,v 1.15 2013/12/28 01:44:12 robbat2 Exp $
+
+*mylvmbackup-0.14 (28 Dec 2013)
+
+  28 Dec 2013; Robin H. Johnson <robbat2@gentoo.org> +mylvmbackup-0.14.ebuild:
+  Bug #475390: bump.
+
+  23 May 2010; Christian Ruppert <idl0r@gentoo.org> mylvmbackup-0.11.ebuild,
+  mylvmbackup-0.13.ebuild:
+  Fix HOMEPAGE/DESCRIPTION and SRC_URI. Add missing die statements.
+
+  29 Apr 2010; Robin H. Johnson <robbat2@gentoo.org>
+  mylvmbackup-0.13.ebuild:
+  POD is used to generate docs now, not asciidoc.
+
+  24 Mar 2010; Robin H. Johnson <robbat2@gentoo.org>
+  -mylvmbackup-0.4_pre1.ebuild, -mylvmbackup-0.6.ebuild,
+  -mylvmbackup-0.6-r1.ebuild, -files/mylvmbackup-0.6-pidfile-fix.patch,
+  -mylvmbackup-0.8.ebuild, -mylvmbackup-0.9.ebuild:
+  Trim old versions.
+
+*mylvmbackup-0.13 (24 Mar 2010)
+
+  24 Mar 2010; Robin H. Johnson <robbat2@gentoo.org>
+  +mylvmbackup-0.13.ebuild:
+  Bug #307873: version bump.
+
+*mylvmbackup-0.11 (05 Jan 2009)
+
+  05 Jan 2009; Patrick Lauer <patrick@gentoo.org> +mylvmbackup-0.11.ebuild:
+  Bump to 0.11
+
+*mylvmbackup-0.9 (01 Nov 2008)
+
+  01 Nov 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +mylvmbackup-0.9.ebuild:
+  Version bump.
+
+  07 Jun 2008; Robin H. Johnson <robbat2@gentoo.org> mylvmbackup-0.8.ebuild:
+  Bug #162681, fix manpage location.
+
+*mylvmbackup-0.8 (17 Apr 2008)
+
+  17 Apr 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +mylvmbackup-0.8.ebuild:
+  Version bump.
+
+  18 Mar 2008; Robin H. Johnson <robbat2@gentoo.org>
+  mylvmbackup-0.6-r1.ebuild:
+  Add a missing dep.
+
+*mylvmbackup-0.6-r1 (15 Mar 2008)
+
+  15 Mar 2008; Robin H. Johnson <robbat2@gentoo.org>
+  +files/mylvmbackup-0.6-pidfile-fix.patch, mylvmbackup-0.4_pre1.ebuild,
+  mylvmbackup-0.6.ebuild, +mylvmbackup-0.6-r1.ebuild:
+  Backport the pidfile fix from the upcoming 0.7 release.
+
+*mylvmbackup-0.6 (04 Dec 2007)
+
+  04 Dec 2007; Robin H. Johnson <robbat2@gentoo.org>
+  +mylvmbackup-0.6.ebuild:
+  Version bump.
+
+  15 Jan 2007; Robin H. Johnson <robbat2@gentoo.org>
+  mylvmbackup-0.4_pre1.ebuild:
+  Fix lvm2 version number, and asciidoc dep.
+
+  12 Jan 2007; Robin H. Johnson <robbat2@gentoo.org>
+  mylvmbackup-0.4_pre1.ebuild:
+  Clean up thinko, SRC_URI and RDEPEND.
+
+*mylvmbackup-0.4_pre1 (12 Jan 2007)
+
+  12 Jan 2007; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +mylvmbackup-0.4_pre1.ebuild:
+  Initial commit. Ebuild (and some upstream work) by Robin H. Johnson
+  <robbat2@gentoo.org>.

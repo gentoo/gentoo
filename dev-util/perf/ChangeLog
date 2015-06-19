@@ -1,0 +1,188 @@
+# ChangeLog for dev-util/perf
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/perf/ChangeLog,v 1.34 2015/04/08 17:54:03 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> perf-3.12.ebuild,
+  perf-3.13.1-r1.ebuild, perf-3.15.5.ebuild:
+  Drop old Python implementations
+
+  09 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org> perf-3.8-r1.ebuild,
+  perf-3.12.ebuild, perf-3.13.1-r1.ebuild, perf-3.15.5.ebuild:
+  The libperl ebuild is only a dummy and will be removed; libperl is provided
+  by dev-lang/perl.
+
+  18 Jul 2014; Markos Chandras <hwoarang@gentoo.org> perf-3.13.1-r1.ebuild:
+  Add ~mips. Bug #517294
+
+*perf-3.15.5 (18 Jul 2014)
+
+  18 Jul 2014; Naohiro Aota <naota@gentoo.org> +perf-3.15.5.ebuild,
+  -perf-3.13.1.ebuild, -perf-3.2.ebuild, -perf-3.4.ebuild, -perf-3.8.ebuild,
+  perf-3.12.ebuild, perf-3.13.1-r1.ebuild:
+  Version bump #506436; Drop old versions; Add python USE requirements #517084
+
+  14 Jul 2014; Markos Chandras <hwoarang@gentoo.org> perf-3.8-r1.ebuild:
+  Add ~mips per #517046
+
+*perf-3.13.1-r1 (22 Mar 2014)
+
+  22 Mar 2014; Naohiro Aota <naota@gentoo.org> +perf-3.13.1-r1.ebuild:
+  Move perf from /usr/sbin to /usr/bin #503790
+
+  26 Feb 2014; Mike Frysinger <vapier@gentoo.org> perf-3.13.1.ebuild:
+  Add USE=gtk to control gtk+ dep; fix by Sonny Rao.
+
+*perf-3.13.1 (07 Feb 2014)
+
+  07 Feb 2014; Mike Frysinger <vapier@gentoo.org> +perf-3.13.1.ebuild:
+  Version bump.
+
+  11 Dec 2013; Mike Frysinger <vapier@gentoo.org> perf-3.12.ebuild:
+  Fix by Vincent Palatin to use tc-arch-kernel to get at the ARCH value.
+
+*perf-3.12 (17 Nov 2013)
+
+  17 Nov 2013; Naohiro Aota <naota@gentoo.org> +perf-3.12.ebuild:
+  version bump
+
+  17 Nov 2013; Naohiro Aota <naota@gentoo.org> perf-3.8-r1.ebuild:
+  Use tc-arch and replace amd64 with x86_64. #487950
+
+*perf-3.8-r1 (08 Oct 2013)
+
+  08 Oct 2013; Mike Frysinger <vapier@gentoo.org> +perf-3.8-r1.ebuild,
+  metadata.xml:
+  Fix call to linux-info pkg_setup.  Update SRC_URI paths to handle v3.x
+  upstream.  Fix bash-completion install path.  Simplify/fix doc building.  Add
+  arm lovin.  Handle USE="audit libunwind" #485110 by Richard Yao.
+
+  21 Mar 2013; Patrick Lauer <patrick@gentoo.org> perf-3.8.ebuild:
+  Avoiding parallel make failure #461710
+
+*perf-3.8 (04 Mar 2013)
+
+  04 Mar 2013; Naohiro Aota <naota@gentoo.org> +perf-3.8.ebuild:
+  Version bump. #460182
+
+*perf-3.4 (28 Jun 2012)
+
+  28 Jun 2012; Naohiro Aota <naota@gentoo.org> +perf-3.4.ebuild, metadata.xml:
+  Version bump; Assign myself as a maintainer.
+
+*perf-3.2 (28 Feb 2012)
+
+  28 Feb 2012; Mike Frysinger <vapier@gentoo.org> -perf-2.6.35_rc4.ebuild,
+  -perf-3.1.ebuild, +perf-3.2.ebuild:
+  Fix automagic depends #390191 and clean up the ebuild.
+
+*perf-3.1 (01 Nov 2011)
+
+  01 Nov 2011; Robin H. Johnson <robbat2@gentoo.org> +perf-3.1.ebuild:
+  Version bump. Improve install phase. Fix automagic dependency on
+  dev-libs/newt and python. Install python+perl tools. Ensure DWARF is built on
+  amd64.
+
+*perf-2.6.35_rc4 (11 Jul 2010)
+
+  11 Jul 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -perf-2.6.33.1.ebuild, -perf-2.6.34.ebuild, -perf-2.6.35_rc3.ebuild,
+  +perf-2.6.35_rc4.ebuild:
+  Version bump to latest rc.
+
+*perf-2.6.35_rc3 (12 Jun 2010)
+
+  12 Jun 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +perf-2.6.35_rc3.ebuild:
+  Bump to latest rc.
+
+*perf-2.6.34 (18 May 2010)
+
+  18 May 2010; Diego E. Pettenò <flameeyes@gentoo.org> -perf-2.6.32.ebuild,
+  +perf-2.6.34.ebuild:
+  Version bump.
+
+*perf-2.6.33.1 (16 Mar 2010)
+
+  16 Mar 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -perf-2.6.33_rc6.ebuild, -perf-2.6.33_rc7.ebuild, +perf-2.6.33.1.ebuild:
+  Version bump and remove older RCs.
+
+*perf-2.6.33_rc7 (09 Feb 2010)
+
+  09 Feb 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +perf-2.6.33_rc7.ebuild:
+  Version bump.
+
+*perf-2.6.33_rc6 (31 Jan 2010)
+
+  31 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  -perf-2.6.33_rc2.ebuild, -perf-2.6.33_rc5.ebuild, +perf-2.6.33_rc6.ebuild,
+  metadata.xml:
+  Bump to rc6 (instead of revbumping) so that the RC patch is actually
+  applied. Huge thanks to Zeev Tarantov in bug #302387 for reporting and
+  providing the fix. Also introduce perl USE flag for the Perl scripting in
+  perf, and fix building with USE=perl and --as-needed (patch to be sent
+  upstream).
+
+  23 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  perf-2.6.33_rc2.ebuild, perf-2.6.33_rc5.ebuild:
+  Fix (again) bug #291801.
+
+*perf-2.6.33_rc5 (22 Jan 2010)
+
+  22 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  +perf-2.6.33_rc5.ebuild:
+  Bump to latest rc.
+
+*perf-2.6.33_rc2 (28 Dec 2009)
+
+  28 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -perf-2.6.33_rc1.ebuild, +perf-2.6.33_rc2.ebuild:
+  Version bump and cleanup previous rc.
+
+*perf-2.6.33_rc1 (19 Dec 2009)
+
+  19 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +perf-2.6.33_rc1.ebuild:
+  Version bump.
+
+*perf-2.6.32 (04 Dec 2009)
+
+  04 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -perf-2.6.32_rc7.ebuild, +perf-2.6.32.ebuild:
+  Bump to final .32 version.
+
+*perf-2.6.32_rc7 (16 Nov 2009)
+
+  16 Nov 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  -perf-2.6.32_rc6.ebuild, +perf-2.6.32_rc7.ebuild:
+  Version bump to latest rc; make the linux-info checks non-fatal since the
+  package builds anyway.
+
+  04 Nov 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  perf-2.6.32_rc6.ebuild:
+  Fix typo, closes bug #291801 by Zeev Tarantov.
+
+*perf-2.6.32_rc6 (03 Nov 2009)
+
+  03 Nov 2009; Diego E. Pettenò <flameeyes@gentoo.org> -perf-2.6.31.ebuild,
+  -perf-2.6.32_rc5.ebuild, +perf-2.6.32_rc6.ebuild:
+  Version bump to latest rc, make sure the ebuild is fixed to fetch properly
+  (was broken before), remove previous stuff.
+
+  31 Oct 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  perf-2.6.32_rc5.ebuild, metadata.xml:
+  Add doc USE flag to build documentation and man pages.
+
+*perf-2.6.32_rc5 (30 Oct 2009)
+
+  30 Oct 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  +perf-2.6.32_rc5.ebuild:
+  Bump to version 2.6.32_rc5 already, add support for patching in an RC
+  version.
+
+*perf-2.6.31 (30 Oct 2009)
+
+  30 Oct 2009; Diego E. Pettenò <flameeyes@gentoo.org> +perf-2.6.31.ebuild,
+  +metadata.xml:
+  Initial import of the performance counter userland utility.

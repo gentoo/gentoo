@@ -1,0 +1,45 @@
+--- testpack-2.1.2.1-orig/testpack.cabal	2013-02-26 02:03:46.000000000 +1100
++++ testpack-2.1.2.1/testpack.cabal	2013-03-14 12:10:12.741512817 +1100
+@@ -39,7 +39,7 @@
+ 
+  Build-Depends: base >= 3 && < 5,
+                mtl, HUnit,
+-               QuickCheck >= 2.1.0.3 && < 2.5
++               QuickCheck >= 2.1.0.3
+ 
+  If flag(splitBase)
+    Build-Depends: base >= 3 && < 5, containers, random
+--- testpack-2.1.2-quickcheck-2.5/src/Test/HUnit/Tools.hs	2012-07-09 09:03:53.104931180 +1000
++++ testpack-2.1.2.1/src/Test/HUnit/Tools.hs	2013-03-14 12:51:13.403489351 +1100
+@@ -169,10 +169,15 @@
+ -- | Tests a property, using test arguments, produces a test result, and prints the results to 'stdout'.
+ localquickCheckWithResult :: Testable prop => Args -> prop -> IO Result
+ localquickCheckWithResult args p =
+-  do 
+ #if MIN_VERSION_QuickCheck(2,3,0)
++#if MIN_VERSION_QuickCheck(2,6,0)
++  (if chatty args then withStdioTerminal else withNullTerminal) $ \tm -> do
++#else
++  do
+      tm  <- if chatty args then newStdioTerminal else newNullTerminal
++#endif
+ #else
++  do
+      tm  <- newTerminal
+ #endif
+      rnd <- case replay args of
+--- testpack-2.1.2.1-orig/src/Test/QuickCheck/Tools.hs	2013-02-26 02:03:46.000000000 +1100
++++ testpack-2.1.2.1/src/Test/QuickCheck/Tools.hs	2013-03-14 12:46:14.922492197 +1100
+@@ -23,8 +23,12 @@
+                               
+                              )
+ where
++#if MIN_VERSION_QuickCheck(2,6,0)
++import Test.QuickCheck.Property (Result(..), callbacks, expect, interrupted, ok, reason, stamp)
++#else
+ import Test.QuickCheck hiding (Result, reason)
+ import Test.QuickCheck.Property
++#endif
+ 
+ {- | Compare two values.  If same, the test passes.  If different, the result indicates
+ what was expected and what was received as part of the error. -}

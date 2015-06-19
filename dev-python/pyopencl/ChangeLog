@@ -1,0 +1,148 @@
+# ChangeLog for dev-python/pyopencl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyopencl/ChangeLog,v 1.33 2015/04/08 08:05:10 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> pyopencl-2014.1.ebuild,
+  pyopencl-2015.1.ebuild, pyopencl-9999.ebuild:
+  Drop old Python implementations
+
+  27 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -pyopencl-2013.2-r1.ebuild,
+  -pyopencl-2013.2.ebuild:
+  Remove old.
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> pyopencl-2014.1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> pyopencl-2014.1.ebuild:
+  amd64 stable, bug 540290
+
+*pyopencl-2015.1 (25 Feb 2015)
+
+  25 Feb 2015; Patrick Lauer <patrick@gentoo.org> +pyopencl-2015.1.ebuild:
+  Bump
+
+  25 Dec 2014; Michał Górny <mgorny@gentoo.org> pyopencl-2014.1.ebuild,
+  pyopencl-9999.ebuild:
+  Add missing PYTHON_USEDEP. Port the changes to -9999.
+
+  25 Nov 2014; Pacho Ramos <pacho@gentoo.org> pyopencl-2014.1.ebuild:
+  Support python 3.4
+
+  05 Jun 2014; Patrick Lauer <patrick@gentoo.org> -pyopencl-2011.2-r1.ebuild,
+  -pyopencl-2012.1.ebuild, -pyopencl-2013.1.ebuild:
+  Remove old
+
+*pyopencl-2014.1 (05 Jun 2014)
+
+  05 Jun 2014; Patrick Lauer <patrick@gentoo.org> +pyopencl-2014.1.ebuild:
+  Bump
+
+  04 Apr 2014; Ian Delaney <idella4@gentoo.org> pyopencl-2013.2-r1.ebuild:
+  Rm doc build, fixes Bug #506688
+
+*pyopencl-2013.2-r1 (03 Apr 2014)
+
+  03 Apr 2014; Ian Delaney <idella4@gentoo.org> +pyopencl-2013.2-r1.ebuild:
+  revbump; convert -> distutils-r1, add py3 support
+
+*pyopencl-2013.2 (07 Nov 2013)
+
+  07 Nov 2013; Patrick Lauer <patrick@gentoo.org> +pyopencl-2013.2.ebuild:
+  Bump
+
+*pyopencl-2013.1 (08 Jul 2013)
+
+  08 Jul 2013; Patrick Lauer <patrick@gentoo.org> +pyopencl-2013.1.ebuild:
+  Bump
+
+  20 Jan 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due retirement, bug #35242
+
+  08 Nov 2012; Diego E. Pettenò <flameeyes@gentoo.org> -pyopencl-2011.2.ebuild:
+  Remove old version depending on older boost.
+
+*pyopencl-2012.1 (28 Jun 2012)
+
+  28 Jun 2012; Patrick Lauer <patrick@gentoo.org> +pyopencl-2012.1.ebuild:
+  Bump
+
+  19 Apr 2012; Kacper Kowalik <xarthisius@gentoo.org> pyopencl-2011.2-r1.ebuild,
+  pyopencl-9999.ebuild:
+  Add missing dependency on dev-python/mako
+
+  19 Apr 2012; Kacper Kowalik <xarthisius@gentoo.org> pyopencl-2011.2-r1.ebuild,
+  pyopencl-9999.ebuild:
+  Add missing dependency on dev-python/decorator
+
+  13 Mar 2012; Mike Gilbert <floppym@gentoo.org> pyopencl-9999.ebuild:
+  Synchronize ebuilds. Patch by Arfrever.
+
+  06 Mar 2012; Jesus Rivero <neurogeek@gentoo.org> pyopencl-2011.2-r1.ebuild,
+  pyopencl-9999.ebuild:
+  Dropped boots-thread config line and fixed deps on virtual/opencl-0-r1 on
+  both versions
+
+  25 Feb 2012; Patrick Lauer <patrick@gentoo.org> pyopencl-2011.2-r1.ebuild,
+  pyopencl-2011.2.ebuild, pyopencl-9999.ebuild:
+  Fixing accidental double asterisk
+
+  20 Feb 2012; Patrick Lauer <patrick@gentoo.org> pyopencl-2011.2-r1.ebuild,
+  pyopencl-2011.2.ebuild, pyopencl-9999.ebuild:
+  Fixing pypy restricts to actually work
+
+*pyopencl-2011.2-r1 (28 Jan 2012)
+
+  28 Jan 2012; Mike Gilbert <floppym@gentoo.org> +pyopencl-2011.2-r1.ebuild,
+  -pyopencl-0.92.ebuild, pyopencl-2011.2.ebuild, pyopencl-9999.ebuild:
+  Prepare for PYTHON_ABI-versioned Boost Python libraries in Boost 1.48. Delete
+  old version. Patch by Arfrever.
+
+*pyopencl-2011.2 (08 Jan 2012)
+
+  08 Jan 2012; Michał Januszewski <spock@gentoo.org> +pyopencl-2011.2.ebuild:
+  Version bump.
+
+  21 Dec 2011; Mike Frysinger <vapier@gentoo.org> pyopencl-0.92.ebuild,
+  pyopencl-9999.ebuild:
+  Depend on virtual/opencl so we get the headers/libraries we need #352006 by
+  Diego Elio Pettenò.
+
+  21 Sep 2011; Michał Górny <mgorny@gentoo.org> pyopencl-9999.ebuild:
+  Migrate to git-2. Simplify.
+
+  31 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pyopencl-0.92.ebuild, pyopencl-9999.ebuild:
+  Fix dependencies. Set SUPPORT_PYTHON_ABIS.
+
+  26 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pyopencl-0.91.4.ebuild, -pyopencl-0.91.5.ebuild:
+  Delete.
+
+*pyopencl-0.92 (12 Dec 2010)
+
+  12 Dec 2010; Michał Januszewski <spock@gentoo.org> pyopencl-0.91.4.ebuild,
+  pyopencl-0.91.5.ebuild, +pyopencl-0.92.ebuild, pyopencl-9999.ebuild:
+  Version bump. Change dep on nvidia-drivers to nvidia-cuda-toolkit which now
+  provides the OpenCL header files.
+
+  17 May 2010; Michał Januszewski <spock@gentoo.org>
+  pyopencl-0.91.4.ebuild, pyopencl-0.91.5.ebuild, pyopencl-9999.ebuild:
+  Add a dependency on nvidia-drivers which provides a working OpenCL
+  implementation.
+
+*pyopencl-0.91.5 (17 May 2010)
+
+  17 May 2010; Michał Januszewski <spock@gentoo.org>
+  +pyopencl-0.91.5.ebuild:
+  Version bump (bug #319187).
+
+*pyopencl-9999 (08 Feb 2010)
+
+  08 Feb 2010; Michał Januszewski <spock@gentoo.org> +pyopencl-9999.ebuild:
+  Add a live git ebuild.
+
+*pyopencl-0.91.4 (08 Feb 2010)
+
+  08 Feb 2010; Michał Januszewski <spock@gentoo.org>
+  +pyopencl-0.91.4.ebuild, +metadata.xml:
+  Initial commit.

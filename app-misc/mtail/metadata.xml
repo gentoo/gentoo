@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>shell-tools</herd>
+	<longdescription lang="en">
+		mtail is a small tail workalike that performs output coloring using
+		ansi escape sequences (although the sequences are overridable, so you
+		could cause it to output something else, e.g. html font tags, if you
+		really wanted to). mtail is written in python, is fairly small, and
+		should be relatively platform-independent.
+	</longdescription>
+</pkgmetadata>

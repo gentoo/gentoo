@@ -1,0 +1,55 @@
+# ChangeLog for x11-misc/skippy
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/skippy/ChangeLog,v 1.16 2012/05/05 04:53:46 jdhore Exp $
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> skippy-0.5.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  06 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> skippy-0.5.0.ebuild,
+  +files/skippy-0.5.0-Makefile.patch:
+  Don't use LDFLAGS to pass libraries. Use CC variable instead of hardcoded
+  gcc. Missing USE depend wrt #248579 by Kacper Kowalik.
+
+  09 Jan 2009; Rémi Cardona <remi@gentoo.org> skippy-0.5.0.ebuild:
+  Change virtual/xft dependency to x11-libs/libXft, bug 253771.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; skippy-0.5.0.ebuild:
+  Drop virtual/x11 references.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  11 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org> skippy-0.5.0.ebuild:
+  Add missing dev-util/pkgconfig to DEPEND, see bug #150811.
+
+  28 Dec 2005; Krzysiek Pawlik <nelchael@gentoo.org> skippy-0.5.0.ebuild:
+  Fix *DEPEND for modular X. See bug #115650.
+
+  15 Dec 2005; Herbie Hopkins <herbs@gentoo.org> skippy-0.5.0.ebuild:
+  Stable on amd64.
+
+  25 Jul 2005; Jonathan Smith <smithj@gentoo.org> skippy-0.5.0.ebuild:
+  #99426: ~amd64
+
+  25 Jul 2005; Jonathan Smith <smithj@gentoo.org>
+  +files/skippy-pointer-size.patch, skippy-0.5.0.ebuild:
+  #99426: fixed hardcoded pointer size
+
+  14 Aug 2004; Sven Wegener <swegener@gentoo.org> skippy-0.5.0.ebuild:
+  Fixed CVS Header.
+
+  30 Jul 2004; Lars Weiler <pylon@gentoo.org> skippy-0.5.0.ebuild:
+  Stable on ppc.
+
+  04 Jul 2004; <pyrania@gentoo.org> skippy-0.5.0.ebuild:
+  Stable on x86.
+
+*skippy-0.5.0 (04 Jun 2004)
+
+  04 Jun 2004; David Holm <dholm@gentoo.org> skippy-0.5.0.ebuild:
+  Added to ~ppc.
+
+  02 Jun 2004; Ian Leitch <port001@gentoo.org> :
+  Initial commit. Thanks to Roshan Sembacuttiaratchy
+  <rns.gentoobugzilla.n.semba@xoxy.net> for the ebuild. #51595
+

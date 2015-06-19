@@ -1,0 +1,38 @@
+# ChangeLog for media-gfx/openscad
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/openscad/ChangeLog,v 1.9 2014/05/05 18:38:19 mattm Exp $
+
+*openscad-2014.03 (05 May 2014)
+
+  05 May 2014; Matthew Marlowe <mattm@gentoo.org> +openscad-2014.03.ebuild,
+  -openscad-2011.12.ebuild, -openscad-2013.01.ebuild:
+  Bump for version 2014.3, Remove older ebuilds using legacy EAPI's.
+
+  16 Sep 2013; Tomáš Chvátal <scarabeus@gentoo.org> openscad-2013.06.ebuild:
+  Bump to eapi5 and put subslot dep over boost.
+
+  19 Jul 2013; Matthew Marlowe <mattm@gentoo.org> openscad-2013.06.ebuild:
+  Unmasking the latest openscad 2013.06 bump for testing - Bug 476780.
+
+*openscad-2013.06 (05 Jul 2013)
+
+  05 Jul 2013; Matthew Marlowe <mattm@gentoo.org> +openscad-2013.06.ebuild:
+  Initial test bump for openscad-2013.06
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> openscad-2011.12.ebuild,
+  openscad-2013.01.ebuild:
+  Move Qt dependencies to the new category
+
+*openscad-2013.01 (11 Feb 2013)
+
+  11 Feb 2013; Matthew Marlowe <mattm@gentoo.org> +openscad-2013.01.ebuild,
+  openscad-2011.12.ebuild:
+  Bump openscad 2013.01, update copyright for 2013, use github mirror syntax for
+  source, Bug 453958
+
+  21 Aug 2012; Matthew Marlowe <mattm@gentoo.org> openscad-2011.12.ebuild:
+  Fixed bug 431734 and removed package mask -- openscad pkg is now ready for
+  testing arches.
+
+  04 Aug 2012; Michael Palimaka <kensington@gentoo.org> openscad-2011.12.ebuild:
+  Add missing slot dependencies on Qt.

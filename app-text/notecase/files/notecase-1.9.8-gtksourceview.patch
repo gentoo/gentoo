@@ -1,0 +1,13 @@
+Index: notecase-1.9.8/Makefile
+===================================================================
+--- notecase-1.9.8.orig/Makefile
++++ notecase-1.9.8/Makefile
+@@ -685,7 +685,7 @@ updatesrc:
+ 		exit 1;\
+ 	fi;  
+ 	$(Q)if [ "$(HAVE_GTKSOURCEVIEW)" = "1" ]; then \
+-		if [[ "$(TEST_SRCVIEW_VER)" < "2.4.1" ]]; then \
++		if [[ "$(TEST_SRCVIEW_VER)" < "2.10.1" ]]; then \
+ 		echo 'ERROR: gtksourceview package is too old ($(shell pkg-config --modversion gtksourceview-2.0))!';\
+ 		exit 1;\
+ 		fi;\

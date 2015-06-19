@@ -1,0 +1,35 @@
+# ChangeLog for net-analyzer/speedtest-cli
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/speedtest-cli/ChangeLog,v 1.8 2015/05/15 07:00:35 pacho Exp $
+
+  15 May 2015; Pacho Ramos <pacho@gentoo.org> speedtest-cli-0.2.5.ebuild:
+  amd64 stable, bug #530994
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> speedtest-cli-0.2.4.ebuild,
+  speedtest-cli-0.2.5.ebuild:
+  Drop old Python implementations
+
+  10 Feb 2015; Michał Górny <mgorny@gentoo.org> speedtest-cli-0.2.4.ebuild,
+  speedtest-cli-0.2.5.ebuild:
+  Add setuptools to DEPEND, bug #502302.
+
+  24 Jan 2015; Agostino Sarubbo <ago@gentoo.org> speedtest-cli-0.2.5.ebuild:
+  Add ~ppc and ~ppc64
+
+  28 Nov 2014; Pacho Ramos <pacho@gentoo.org> speedtest-cli-0.2.5.ebuild:
+  Support python 3.4
+
+  09 Mar 2014; Richard Yao <ryao@gentoo.org> speedtest-cli-0.2.4.ebuild:
+  Stabilize net-analyzer/speedtest-cli-0.2.4 on amd64
+
+*speedtest-cli-0.2.5 (09 Mar 2014)
+
+  09 Mar 2014; Justin Lecher <jlec@gentoo.org> +speedtest-cli-0.2.5.ebuild,
+  metadata.xml:
+  Version Bump
+
+*speedtest-cli-0.2.4 (27 Dec 2013)
+
+  27 Dec 2013; Jason A. Donenfeld <zx2c4@gentoo.org> +metadata.xml,
+  +speedtest-cli-0.2.4.ebuild:
+  Initial import of this great package.

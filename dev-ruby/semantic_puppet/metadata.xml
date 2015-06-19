@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>ruby</herd>
+	<maintainer>
+		<email>robbat2@gentoo.org</email>
+		<name>Robin H. Johnson</name>
+	</maintainer>
+	<longdescription lang="en">
+		Library of useful tools for working with Semantic Versions and module dependencies.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">puppetlabs/semantic_puppet</remote-id>
+	</upstream>
+</pkgmetadata>

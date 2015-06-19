@@ -1,0 +1,329 @@
+diff --git a/NEWS b/NEWS
+index 8d8bdd9..4d8c01d 100644
+--- a/NEWS
++++ b/NEWS
+@@ -1,6 +1,19 @@
+ This file describes user-visible changes in rbldnsd.
+ Newer news is at the top.
+ 
++Next release
++
++ - fix tests for systems without ipv6 support, or when ipv6 is
++   disabled in rbldnsd at compile-time
++
++ - fix tests for API change in pydns >= 2.3.6
++
++ - It is no longer an error to request binding to a particular
++   address/port more than once. (The subsequent requests are simply
++   ignored.) (This avoids confusion on certain systems/configurations
++   where gethostbyname("localhost") can return 127.0.0.1 multiple
++   times.)
++
+ 0.997a (23 Jul 2013)
+ 
+  - minor fixes/changes in packaging, no code changes.
+diff --git a/rbldnsd.c b/rbldnsd.c
+index abf1d01..8322bdd 100644
+--- a/rbldnsd.c
++++ b/rbldnsd.c
+@@ -203,10 +203,79 @@ static volatile int signalled;
+ #define SIGNALLED_ZSTATS	0x10
+ #define SIGNALLED_TERM		0x20
+ 
++static inline int sockaddr_in_equal(const struct sockaddr_in *addr1,
++                                    const struct sockaddr_in *addr2)
++{
++  return (addr1->sin_port == addr2->sin_port
++          && addr1->sin_addr.s_addr == addr2->sin_addr.s_addr);
++}
++
++#ifndef NO_IPv6
++static inline int sockaddr_in6_equal(const struct sockaddr_in6 *addr1,
++                                     const struct sockaddr_in6 *addr2)
++{
++  if (memcmp(addr1->sin6_addr.s6_addr, addr2->sin6_addr.s6_addr, 16) != 0)
++    return 0;
++  return (addr1->sin6_port == addr2->sin6_port
++          && addr1->sin6_flowinfo == addr2->sin6_flowinfo
++          && addr1->sin6_scope_id == addr2->sin6_scope_id);
++}
++#endif
++
++static inline int sockaddr_equal(const struct sockaddr *addr1,
++                                 const struct sockaddr *addr2)
++{
++  if (addr1->sa_family != addr2->sa_family)
++    return 0;
++  switch (addr1->sa_family) {
++  case AF_INET:
++    return sockaddr_in_equal((const struct sockaddr_in *)addr1,
++                             (const struct sockaddr_in *)addr2);
++#ifndef NO_IPv6
++    return sockaddr_in6_equal((const struct sockaddr_in6 *)addr1,
++                              (const struct sockaddr_in6 *)addr2);
++#endif
++    default:
++      error(0, "unknown address family (%d)", addr1->sa_family);
++  }
++}
++
++/* already_bound(addr, addrlen)
++ *
++ * Determine whether we've already bound to a particular address.
++ * This is here mostly to deal with the fact that on certain systems,
++ * gethostbyname()/getaddrinfo() can return a duplicate 127.0.0.1
++ * for 'localhost'.  See
++ *   - http://sourceware.org/bugzilla/show_bug.cgi?id=4980
++ *   - https://bugzilla.redhat.com/show_bug.cgi?id=496300
++ */
++static int already_bound(const struct sockaddr *addr, socklen_t addrlen) {
++#ifdef NO_IPv6
++  struct sockaddr_in addr_buf;
++#else
++  struct sockaddr_in6 addr_buf;
++#endif
++  struct sockaddr *boundaddr = (struct sockaddr *)&addr_buf;
++  socklen_t buflen;
++  int i;
++
++  for (i = 0; i < numsock; i++) {
++    buflen = sizeof(addr_buf);
++    if (getsockname(sock[i], boundaddr, &buflen) < 0)
++      error(errno, "getsockname failed");
++    if (buflen == addrlen && sockaddr_equal(boundaddr, addr))
++      return 1;
++  }
++  return 0;
++}
++
+ #ifdef NO_IPv6
+ static void newsocket(struct sockaddr_in *sin) {
+   int fd;
+   const char *host = ip4atos(ntohl(sin->sin_addr.s_addr));
++
++  if (already_bound((struct sockaddr *)sin, sizeof(*sin)))
++    return;
+   if (numsock >= MAXSOCK)
+     error(0, "too many listening sockets (%d max)", MAXSOCK);
+   fd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+@@ -223,6 +292,8 @@ static int newsocket(struct addrinfo *ai) {
+   int fd;
+   char host[NI_MAXHOST], serv[NI_MAXSERV];
+ 
++  if (already_bound(ai->ai_addr, ai->ai_addrlen))
++    return 1;
+   if (numsock >= MAXSOCK)
+     error(0, "too many listening sockets (%d max)", MAXSOCK);
+   fd = socket(ai->ai_family, ai->ai_socktype, ai->ai_protocol);
+diff --git a/rbldnsd.py b/rbldnsd.py
+index 9300ef2..4b78dee 100644
+--- a/rbldnsd.py
++++ b/rbldnsd.py
+@@ -2,6 +2,7 @@
+ 
+ 
+ """
++import errno
+ from itertools import count
+ import subprocess
+ from tempfile import NamedTemporaryFile, TemporaryFile
+@@ -12,6 +13,14 @@ try:
+     import DNS
+ except ImportError:
+     raise RuntimeError("The pydns library is not installed")
++try:
++    from DNS import SocketError as DNS_SocketError
++except ImportError:
++    class DNS_SocketError(Exception):
++        """ Dummy, never raised.
++
++        (Older versions of pydns before 2.3.6 do not raise SocketError.)
++        """
+ 
+ DUMMY_ZONE_HEADER = """
+ $SOA 0 example.org. hostmaster.example.com. 0 1h 1h 2d 1h
+@@ -113,7 +122,6 @@ class Rbldnsd(object):
+                                                  stderr=self.stderr)
+ 
+         # wait for rbldnsd to start responding
+-        time.sleep(0.1)
+         for retry in count():
+             if daemon.poll() is not None:
+                 raise DaemonError(
+@@ -124,12 +132,18 @@ class Rbldnsd(object):
+                 break
+             except QueryRefused:
+                 break
++            except DNS_SocketError as ex:
++                # pydns >= 2.3.6
++                wrapped_error = ex.args[0]
++                if wrapped_error.errno != errno.ECONNREFUSED:
++                    raise
+             except DNS.DNSError as ex:
++                # pydns < 2.3.6
+                 if str(ex) != 'no working nameservers found':
+                     raise
+-                elif retries > 10:
+-                    raise DaemonError(
+-                        "rbldnsd does not seem to be responding")
++            if retry > 10:
++                raise DaemonError("rbldnsd does not seem to be responding")
++            time.sleep(0.1)
+ 
+     def _stop_daemon(self):
+         daemon = self._daemon
+@@ -150,6 +164,22 @@ class Rbldnsd(object):
+             raise DaemonError("rbldnsd exited with code %d"
+                               % daemon.returncode)
+ 
++    @property
++    def no_ipv6(self):
++        """ Was rbldnsd compiled with -DNO_IPv6?
++        """
++        # If rbldnsd was compiled with -DNO_IPv6, the (therefore
++        # unsupported) '-6' command-line switch will not be described
++        # in the help message
++        cmd = [self.daemon_bin, '-h']
++        proc = subprocess.Popen(cmd, stdout=subprocess.PIPE)
++        help_message = proc.stdout.readlines()
++        if proc.wait() != 0:
++            raise subprocess.CalledProcessError(proc.returncode, cmd)
++        return not any(line.lstrip().startswith('-6 ')
++                       for line in help_message)
++
++
+ class TestRbldnsd(unittest.TestCase):
+     def test(self):
+         rbldnsd = Rbldnsd()
+diff --git a/test_acl.py b/test_acl.py
+index d93ca0a..10bed1c 100644
+--- a/test_acl.py
++++ b/test_acl.py
+@@ -1,5 +1,8 @@
+ """ Tests for the acl dataset
+ """
++from functools import wraps
++import socket
++import sys
+ from tempfile import NamedTemporaryFile
+ import unittest
+ 
+@@ -9,6 +12,35 @@ __all__ = [
+     'TestAclDataset',
+     ]
+ 
++try:
++    from unittest import skipIf
++except ImportError:
++    # hokey replacement (for python <= 2.6)
++    def skipIf(condition, reason):
++        if condition:
++            def decorate(f):
++                @wraps(f)
++                def skipped(*args, **kw):
++                    sys.stderr.write("skipped test: %s " % reason)
++                return skipped
++            return decorate
++        else:
++            return lambda f: f
++
++def _have_ipv6():
++    # Check for IPv6 support
++    if not getattr(socket, 'has_ipv6', False):
++        return False                    # no python support for ipv6
++    elif Rbldnsd().no_ipv6:
++        return False                    # rbldnsd compiled with -DNO_IPv6
++    try:
++        socket.socket(socket.AF_INET6, socket.SOCK_DGRAM).close()
++    except socket.error:
++        return False                    # no kernel (or libc) support for ipv6?
++    return True
++
++no_ipv6 = not _have_ipv6()
++
+ def daemon(acl, addr='localhost'):
+     """ Create an Rbldnsd instance with given ACL
+     """
+@@ -33,11 +65,13 @@ class TestAclDataset(unittest.TestCase):
+                     addr='127.0.0.1') as dnsd:
+             self.assertEqual(dnsd.query('test.example.com'), 'Success')
+ 
++    @skipIf(no_ipv6, "IPv6 unsupported")
+     def test_refuse_ipv6(self):
+         with daemon(acl=["::1 :refuse"],
+                     addr='::1') as dnsd:
+             self.assertRaises(QueryRefused, dnsd.query, 'test.example.com')
+ 
++    @skipIf(no_ipv6, "IPv6 unsupported")
+     def test_pass_ipv6(self):
+         with daemon(acl=[ "0/0 :refuse",
+                           "0::1 :pass" ],
+diff --git a/test_ip4trie.py b/test_ip4trie.py
+index fe9e78f..2cce09b 100644
+--- a/test_ip4trie.py
++++ b/test_ip4trie.py
+@@ -9,7 +9,7 @@ __all__ = [
+     ]
+ 
+ def ip4trie(zone_data):
+-    """ Run rbldnsd with an ip6trie dataset
++    """ Run rbldnsd with an ip4trie dataset
+     """
+     dnsd = Rbldnsd()
+     dnsd.add_dataset('ip4trie', ZoneFile(zone_data))
+diff --git a/test_ip6trie.py b/test_ip6trie.py
+index d3600db..377c5dd 100644
+--- a/test_ip6trie.py
++++ b/test_ip6trie.py
+@@ -15,15 +15,6 @@ def ip6trie(zone_data):
+     dnsd.add_dataset('ip6trie', ZoneFile(zone_data))
+     return dnsd
+ 
+-def rfc3152(ip6addr, domain='example.com'):
+-    from socket import inet_pton, AF_INET6
+-    from struct import unpack
+-
+-    bytes = unpack("16B", inet_pton(AF_INET6, ip6addr))
+-    nibbles = '.'.join("%x.%x" % (byte & 0xf, (byte >> 4) & 0xf)
+-                       for byte in reversed(bytes))
+-    return "%s.%s" % (nibbles, domain)
+-
+ class TestIp6TrieDataset(unittest.TestCase):
+     def test_exclusion(self):
+         with ip6trie(["dead::/16 listed",
+@@ -31,5 +22,35 @@ class TestIp6TrieDataset(unittest.TestCase):
+             self.assertEqual(dnsd.query(rfc3152("dead::beef")), None)
+             self.assertEqual(dnsd.query(rfc3152("dead::beee")), "listed")
+ 
++
++def rfc3152(ip6addr, domain='example.com'):
++    return "%s.%s" % ('.'.join(reversed(_to_nibbles(ip6addr))), domain)
++
++def _to_nibbles(ip6addr):
++    """ Convert ip6 address (in rfc4291 notation) to a sequence of nibbles
++
++    NB: We avoid the use of socket.inet_pton(AF_INET6, ip6addr) here
++    because it fails (with 'error: can't use AF_INET6, IPv6 is
++    disabled') when python has been compiled without IPv6 support. See
++    http://www.corpit.ru/pipermail/rbldnsd/2013q3/001181.html
++
++    """
++    def _split_words(addr):
++        return [ int(w, 16) for w in addr.split(':') ] if addr else []
++
++    if '::' in ip6addr:
++        head, tail = [ _split_words(s) for s in ip6addr.split('::', 1) ]
++        nzeros = 8 - len(head) - len(tail)
++        assert nzeros >= 0
++        words = head + [ 0 ] * nzeros + tail
++    else:
++        words = _split_words(ip6addr)
++
++    assert len(words) == 8
++    for word in words:
++        assert 0 <= word <= 0xffff
++
++    return ''.join("%04x" % word for word in words)
++
+ if __name__ == '__main__':
+     unittest.main()

@@ -1,0 +1,214 @@
+# ChangeLog for dev-java/edtftpj
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/edtftpj/ChangeLog,v 1.54 2014/06/17 13:40:25 mrueg Exp $
+
+  17 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -edtftpj-2.0.3.ebuild:
+  NM: Cleanup superseded ebuilds.
+
+  13 Apr 2014; Agostino Sarubbo <ago@gentoo.org> edtftpj-2.0.4.ebuild:
+  Stable for ppc, wrt bug #492006
+
+  07 Mar 2014; Pacho Ramos <pacho@gentoo.org> edtftpj-2.0.4.ebuild:
+  amd64 stable, bug #492006
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> edtftpj-2.0.4.ebuild:
+  x86 stable wrt bug #492006
+
+*edtftpj-2.0.4 (08 Jul 2013)
+
+  08 Jul 2013; Tom Wijsman <TomWij@gentoo.org> +edtftpj-2.0.4.ebuild:
+  Version bump to 2.0.4.
+
+  04 Feb 2009; Petteri Räty <betelgeuse@gentoo.org> -edtftpj-1.5.6.ebuild,
+  -edtftpj-2.0.2.ebuild:
+  Remove old versions.
+
+  08 Dec 2008; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing wltjr as a maintainer since he was retired.
+
+  25 Oct 2008; nixnut <nixnut@gentoo.org> edtftpj-2.0.3.ebuild:
+  Stable on ppc wrt bug 242972
+
+  24 Oct 2008; Markus Meier <maekke@gentoo.org> edtftpj-2.0.3.ebuild:
+  x86 stable, bug #242972
+
+  21 Oct 2008; Kenneth Prugh <ken69267@gentoo.org> edtftpj-2.0.3.ebuild:
+  amd64 stable, bug #242972
+
+  16 Jul 2008; nixnut <nixnut@gentoo.org> edtftpj-2.0.2.ebuild:
+  Stable on ppc wrt bug 230425
+
+  06 Jul 2008; Markus Meier <maekke@gentoo.org> edtftpj-2.0.2.ebuild:
+  x86 stable, bug #230425
+
+  02 Jul 2008; Kenneth Prugh <ken69267@gentoo.org> edtftpj-2.0.2.ebuild:
+  amd64 stable, bug #230425
+
+*edtftpj-2.0.3 (02 Jul 2008)
+
+  02 Jul 2008; William L. Thomson Jr. <wltjr@gentoo.org>
+  -edtftpj-1.5.5.ebuild, -edtftpj-2.0.1.ebuild, +edtftpj-2.0.3.ebuild:
+  Bumped to latest release, removed older versions.
+
+*edtftpj-2.0.2 (15 May 2008)
+
+  15 May 2008; William L. Thomson Jr. <wltjr@gentoo.org>
+  +edtftpj-2.0.2.ebuild:
+  Bumped to latest release
+
+*edtftpj-2.0.1 (25 Mar 2008)
+
+  25 Mar 2008; William L. Thomson Jr. <wltjr@gentoo.org>
+  +edtftpj-2.0.1.ebuild:
+  Bumped to latest release. Seems to be some API changes, but no deps no slot.
+  Till there is a need/reason to slot.
+
+  08 Mar 2008; Markus Meier <maekke@gentoo.org> edtftpj-1.5.6.ebuild:
+  x86 stable, bug #212671
+
+  08 Mar 2008; William L. Thomson Jr. <wltjr@gentoo.org>
+  edtftpj-1.5.6.ebuild:
+  amd64 stable, bug #212671.
+
+  08 Mar 2008; Krzysiek Pawlik <nelchael@gentoo.org> edtftpj-1.5.6.ebuild:
+  Stable on ppc, see bug #212671.
+
+  10 Jan 2008; Vlastimil Babka <caster@gentoo.org> edtftpj-1.5.5.ebuild,
+  edtftpj-1.5.6.ebuild:
+  Restrict junit dependency.
+
+*edtftpj-1.5.6 (29 Nov 2007)
+
+  29 Nov 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  +edtftpj-1.5.6.ebuild:
+  Bumped to latest release
+
+  08 Sep 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -edtftpj-1.5.4.ebuild:
+  House cleaning, removed older version
+
+  03 Sep 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  edtftpj-1.5.5.ebuild:
+  amd64 stable, bug #190572.
+
+  02 Sep 2007; Christian Faulhammer <opfer@gentoo.org> edtftpj-1.5.5.ebuild:
+  stable x86, bug 190572
+
+  01 Sep 2007; nixnut <nixnut@gentoo.org> edtftpj-1.5.5.ebuild:
+  Stable on ppc wrt bug 190572
+
+*edtftpj-1.5.5 (31 May 2007)
+
+  31 May 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  +edtftpj-1.5.5.ebuild:
+  Bumped to latest release
+
+  28 May 2007; Vlastimil Babka <caster@gentoo.org> -edtftpj-1.5.3-r1.ebuild:
+  Remove unused version.
+
+  28 May 2007; nixnut <nixnut@gentoo.org> edtftpj-1.5.4.ebuild:
+  Stable on ppc wrt bug 178381
+
+  15 May 2007; Christian Faulhammer <opfer@gentoo.org> edtftpj-1.5.4.ebuild:
+  stable x86, bug 178381
+
+  13 May 2007; Petteri Räty <betelgeuse@gentoo.org> edtftpj-1.5.4.ebuild:
+  Add app-arch/unzip to DEPEND.
+
+  13 May 2007; Petteri Räty <betelgeuse@gentoo.org> edtftpj-1.5.4.ebuild:
+  Switch to java-pkg_dojavadoc.
+
+  13 May 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  edtftpj-1.5.4.ebuild:
+  Stable on amd64, bug #178381.
+
+  15 Mar 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -edtftpj-1.5.3.ebuild, edtftpj-1.5.3-r1.ebuild:
+  Stable on amd64 per bug #168286
+
+*edtftpj-1.5.4 (08 Mar 2007)
+
+  08 Mar 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -edtftpj-1.4.8.ebuild, +edtftpj-1.5.4.ebuild:
+  Bumped to lastest packge version. Removed older version
+
+  02 Mar 2007; nixnut <nixnut@gentoo.org> edtftpj-1.5.3-r1.ebuild:
+  Stable on ppc wrt bug 168286
+
+  25 Feb 2007; Christian Faulhammer <opfer@gentoo.org>
+  edtftpj-1.5.3-r1.ebuild:
+  stable x86; bug 168286
+
+  10 Feb 2007; nixnut <nixnut@gentoo.org> edtftpj-1.5.3.ebuild:
+  Stable on ppc wrt bug 159721
+
+  04 Feb 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -edtftpj-1.4.4.ebuild, -edtftpj-1.5.2.ebuild:
+  Removed old versions of package
+
+*edtftpj-1.5.3-r1 (26 Jan 2007)
+
+  26 Jan 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  +edtftpj-1.5.3-r1.ebuild:
+  Migrated to gen 2
+
+  10 Jan 2007; Steve Dibb <beandog@gentoo.org> edtftpj-1.5.3.ebuild:
+  amd64 stable, bug 159721
+
+  05 Jan 2007; Christian Faulhammer <opfer@gentoo.org> edtftpj-1.5.3.ebuild:
+  stable x86, bug #159721
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> edtftpj-1.4.4.ebuild,
+  edtftpj-1.4.8.ebuild, edtftpj-1.5.2.ebuild, edtftpj-1.5.3.ebuild:
+  Dropping sparc keywords, see #96229
+
+*edtftpj-1.5.2 (20 Dec 2005)
+
+  20 Dec 2005; Petteri Räty <betelgeuse@gentoo.org> +edtftpj-1.5.2.ebuild:
+  Version bump. Added examples and source use flags.
+
+  13 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> edtftpj-1.4.8.ebuild:
+  Stable on ppc.
+
+*edtftpj-1.4.8 (05 May 2005)
+
+  05 May 2005; Jan Brinkmann <luckyduck@gentoo.org> edtftpj-1.4.4.ebuild,
+  +edtftpj-1.4.8.ebuild:
+  new upstream version. marked 1.4.4 stable on amd64, ppc and x86
+
+  20 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> edtftpj-1.4.2.ebuild,
+  edtftpj-1.4.4.ebuild:
+  added missing jikes dependency. see #78819.
+
+  29 Oct 2004; Thomas Matthijs <axxo@gentoo.org> edtftpj-1.4.2.ebuild,
+  edtftpj-1.4.4.ebuild:
+  removed nomirror
+
+*edtftpj-1.4.4 (20 Oct 2004)
+
+  20 Oct 2004; Dylan Carlson <absinthe@gentoo.org> +edtftpj-1.4.4.ebuild:
+  Version bump.
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> edtftpj-1.4.2.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+*edtftpj-1.4.2 (24 Aug 2004)
+
+  24 Aug 2004; Chris Aniszczyk <zx@gentoo.org> -edtftpj-1.3.3.ebuild,
+  +edtftpj-1.4.2.ebuild:
+  Version bump & Cleanup
+
+*edtftpj-1.3.3 (21 May 2004)
+
+  21 May 2004; Chris Aniszczyk <zx@gentoo.org> +edtftpj-1.3.3.ebuild:
+  Version bump. Closes #51633
+  Thanks to Mike Javorski <mike_javorski@bigfoot.com> for the heads up.
+
+*edtftpj-1.3.2 (14 May 2004)
+
+  14 May 2004; Chris Aniszczyk <zx@gentoo.org> +metadata.xml,
+  +edtftpj-1.3.2.ebuild:
+  Initial Import. Closes #49798
+  Thanks to Mike Javorski <mike_javorski@bigfoot.com> for the preliminary ebuild.

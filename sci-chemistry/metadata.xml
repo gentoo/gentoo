@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The sci-chemistry category contains software that can be used
+		in chemistral scientific environments.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sci-chemistry enthält Software, welche in chemischen
+		und chemietechnischen Umgebungen genutzt werden kann.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría sci-chemistry contiene programas que pueden ser utilizados
+		en entornos relacionados con la química.
+	</longdescription>
+	<longdescription lang="ja">
+		sci-chemistryカテゴリーには化学の科学的な分野に利用される
+		フトウェアが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De sci-chemistry categorie bevat software die in scheikundige omgevingen
+		gebruikt kan worden.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm sci-chemistry chứa các phần mềm dùng trong hoá học.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria sci-chemistry contiene programmi per la chimica.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria sci-chemistry contém programas que podem ser usados
+		em ambientes relacionados a química.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria sci-chemistry zawiera programy naukowe związane z chemią.
+	</longdescription>
+</catmetadata>
+

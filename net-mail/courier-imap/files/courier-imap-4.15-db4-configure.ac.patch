@@ -1,0 +1,33 @@
+--- configure.ac.orig	2013-09-28 19:44:24.000000000 +0200
++++ configure.ac	2013-11-22 10:46:34.910990069 +0100
+@@ -180,15 +180,21 @@
+ if test "$db" != "gdbm"
+ then
+ 
+-	AC_CHECK_LIB(db, dbopen, [ LIBDB=-ldb ; LIBS="-ldb $LIBS" ],
+-		AC_CHECK_LIB(db, db_open, [ LIBDB=-ldb ; LIBS="-ldb $LIBS"],
+-		AC_CHECK_LIB(db, db_env_create,
+-				[ LIBDB=-ldb; LIBS="-ldb $LIBS"])
+-	))
+-
+-	AC_CHECK_FUNC(dbopen, HAVE_BDB=1)
+-	AC_CHECK_FUNC(db_open, HAVE_BDB=1)
+-	AC_CHECK_FUNC(db_env_create, HAVE_BDB=1)
++for dbname in db-4.4 db4.4 db44 db-4.3 db4.3 db43 db-4.2 db4.2 db42 db-4.1 db4.1 db41 db-4.0 db4.0 db-4 db40 db4 db
++	do
++		AC_CHECK_LIB($dbname, db_create_4004, [ LIBDB=-l$dbname ; LIBS="-l$dbname $LIBS"; break ],
++		AC_CHECK_LIB($dbname, db_create_4003, [ LIBDB=-l$dbname ; LIBS="-l$dbname $LIBS"; break ],
++		AC_CHECK_LIB($dbname, db_create_4002, [ LIBDB=-l$dbname ; LIBS="-l$dbname $LIBS"; break ],
++		AC_CHECK_LIB($dbname, db_create_4001, [ LIBDB=-l$dbname ; LIBS="-l$dbname $LIBS"; break ],
++		AC_CHECK_LIB($dbname, db_create_4000, [ LIBDB=-l$dbname ; LIBS="-l$dbname $LIBS"; break ],
++		AC_CHECK_LIB($dbname, db_create, [ LIBDB=-l$dbname ; LIBS="-l$dbname $LIBS"; break ]))))))
++	done
++AC_CHECK_FUNC(db_create_4004, HAVE_BDB=1)
++AC_CHECK_FUNC(db_create_4003, HAVE_BDB=1)
++AC_CHECK_FUNC(db_create_4002, HAVE_BDB=1)
++AC_CHECK_FUNC(db_create_4001, HAVE_BDB=1)
++AC_CHECK_FUNC(db_create_4000, HAVE_BDB=1)
++AC_CHECK_FUNC(db_create, HAVE_BDB=1)
+ fi
+ 
+ LIBS="$saveLIBS"

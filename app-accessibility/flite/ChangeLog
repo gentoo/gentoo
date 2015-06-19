@@ -1,0 +1,259 @@
+# ChangeLog for app-accessibility/flite
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/flite/ChangeLog,v 1.65 2014/11/23 19:43:18 teiresias Exp $
+
+  23 Nov 2014; Christopher Brannon <teiresias@gentoo.org> -flite-1.2-r1.ebuild,
+  -flite-1.2-r2.ebuild, -flite-1.3.ebuild, -flite-1.3-r1.ebuild,
+  -flite-1.4-r3.ebuild, -files/flite-1.2-tempfile.patch,
+  -files/flite-1.3-alsa-support.patch, -files/flite-1.3-fix-static.patch,
+  -files/flite-1.3-libm.patch, -files/flite-1.3-respect-ldflags.patch,
+  -files/flite-1.3-shared-libs.patch, -files/flite-1.3-tempfile.patch,
+  -files/const.patch:
+  Remove old versions from the tree.
+
+  11 Oct 2014; Markus Meier <maekke@gentoo.org> flite-1.4-r4.ebuild:
+  arm stable, bug #512012
+
+  15 Sep 2014; Agostino Sarubbo <ago@gentoo.org> flite-1.4-r4.ebuild:
+  Stable for sparc, wrt bug #512012
+
+  25 Aug 2014; Agostino Sarubbo <ago@gentoo.org> flite-1.4-r4.ebuild:
+  Stable for alpha, wrt bug #512012
+
+  21 Aug 2014; Agostino Sarubbo <ago@gentoo.org> flite-1.4-r4.ebuild:
+  Stable for ppc64, wrt bug #512012
+
+  02 Aug 2014; Raúl Porcel <armin76@gentoo.org> flite-1.2-r2.ebuild,
+  flite-1.3-r1.ebuild:
+  sparc stable wrt #510324, #510260
+
+  28 Jul 2014; Agostino Sarubbo <ago@gentoo.org> flite-1.4-r4.ebuild:
+  Stable for ppc, wrt bug #512012
+
+  23 Jul 2014; Agostino Sarubbo <ago@gentoo.org> flite-1.4-r4.ebuild:
+  Stable for x86, wrt bug #512012
+
+  22 Jul 2014; Agostino Sarubbo <ago@gentoo.org> flite-1.4-r4.ebuild:
+  Stable for amd64, wrt bug #512912
+
+  20 Jul 2014; Tobias Klausmann <klausman@gentoo.org> flite-1.3-r1.ebuild:
+  Stable on alpha, bug #510260
+
+  20 Jul 2014; Tobias Klausmann <klausman@gentoo.org> flite-1.2-r2.ebuild:
+  Stable on alpha, bug #510324
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> flite-1.4-r4.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  14 Jun 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> flite-1.3-r1.ebuild:
+  x86 stable wrt bug #510260
+
+*flite-1.4-r4 (11 Jun 2014)
+
+  11 Jun 2014; Michał Górny <mgorny@gentoo.org> +flite-1.4-r4.ebuild:
+  Enable multilib support.
+
+  27 May 2014; Markos Chandras <hwoarang@gentoo.org> flite-1.3-r1.ebuild:
+  Stable on amd64 wrt bug #510260
+
+  27 May 2014; Markos Chandras <hwoarang@gentoo.org> flite-1.2-r2.ebuild:
+  Stable on amd64 wrt bug #510324
+
+  25 May 2014; Markus Meier <maekke@gentoo.org> flite-1.3-r1.ebuild:
+  arm stable, bug #510260
+
+*flite-1.4-r3 (12 Feb 2014)
+*flite-1.3-r1 (12 Feb 2014)
+*flite-1.2-r2 (12 Feb 2014)
+
+  12 Feb 2014; Christopher Brannon <teiresias@gentoo.org> +flite-1.2-r2.ebuild,
+  +files/flite-1.2-tempfile.patch, +flite-1.3-r1.ebuild,
+  +files/flite-1.3-fix-static.patch, +files/flite-1.3-libm.patch,
+  +files/flite-1.3-respect-ldflags.patch, +files/flite-1.3-tempfile.patch,
+  -flite-1.4-r2.ebuild, +flite-1.4-r3.ebuild, +files/flite-1.4-tempfile.patch:
+  For flite 1.2, 1.3, and 1.4, add a patch to prevent
+  the use of a temporary file. (bug #498020).
+  For flite 1.3, respect LDFLAGS (bug #476810).
+  For flite 1.3, fix build failure (bug #456986).
+  For flite 1.3, allow static flite to be built. USE=static has been
+  broken for a long time. No bug was ever opened, and I just found the
+  problem today.
+
+  25 Aug 2013; Jeroen Roovers <jer@gentoo.org> flite-1.2-r1.ebuild,
+  flite-1.3.ebuild, flite-1.4-r2.ebuild:
+  Drop HPPA keywording (bug #307241).
+
+  29 Jun 2013; Agostino Sarubbo <ago@gentoo.org> flite-1.3.ebuild:
+  Stable for arm, wrt bug #473302
+
+  21 Apr 2013; Markus Meier <maekke@gentoo.org> flite-1.4-r2.ebuild:
+  add ~arm, bug #458100
+
+*flite-1.4-r2 (10 Mar 2013)
+
+  10 Mar 2013; Lars Wendler <polynomial-c@gentoo.org> -flite-1.4-r1.ebuild,
+  +flite-1.4-r2.ebuild, files/flite-1.4-ldflags.patch:
+  Non-maintainer commit: Fixed linking of shared libraries. Thanks to Andrew
+  John Hughes for providing a patch in bug #339923.
+
+  28 Dec 2012; Ulrich Müller <ulm@gentoo.org> flite-1.2-r1.ebuild,
+  flite-1.3.ebuild, flite-1.4-r1.ebuild:
+  Fix LICENSE, see COPYING file, bug 447362.
+
+  22 Sep 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/flite-1.4-audio-interface.patch, flite-1.4-r1.ebuild:
+  Fix undefined reference, #305539 by Diego Elio Pettenò and Michael Palimaka
+  (kensington).
+
+  13 Apr 2012; Jesus Rivero <neurogeek@gentoo.org> flite-1.4-r1.ebuild:
+  Added media-libs/alsa-lib as DEPEND and bumped EAPI. Fixes bug #390597
+
+  22 Feb 2012; Jeroen Roovers <jer@gentoo.org> flite-1.4-r1.ebuild:
+  Does not work on HPPA (bug #307241).
+
+  22 Feb 2012; Jeroen Roovers <jer@gentoo.org> flite-1.4-r1.ebuild,
+  +files/flite-1.4-ldflags.patch:
+  Add patch by Christopher Brannon to respect LDFLAGS (bug #334031). Fix -rpath
+  directory (bug #405339). Remove static libraries in case LIBDIR is not
+  /usr/lib/.
+
+  28 Feb 2010; Jeroen Roovers <jer@gentoo.org> flite-1.3.ebuild:
+  Segfaults on HPPA, keywording -hppa (bug #307241).
+
+*flite-1.4-r1 (01 Jan 2010)
+
+  01 Jan 2010; William Hubbs <williamh@gentoo.org> -flite-1.4.ebuild,
+  +flite-1.4-r1.ebuild, +files/flite-1.4-fix-parallel-builds.patch:
+  fix shared library support and parallel build issue.
+
+  01 Jan 2010; William Hubbs <williamh@gentoo.org> flite-1.4.ebuild:
+  work around paralell make issue. #299032.
+
+  31 Dec 2009; William Hubbs <williamh@gentoo.org> metadata.xml:
+  removed use descriptions since the flags are global.
+
+  31 Dec 2009; William Hubbs <williamh@gentoo.org> metadata.xml:
+  added use descriptions to metadata.
+
+*flite-1.4 (31 Dec 2009)
+
+  31 Dec 2009; William Hubbs <williamh@gentoo.org> +flite-1.4.ebuild,
+  +files/flite-1.4-respect-destdir.patch:
+  version bump for #299032, thanks to Chris Bruner.
+
+  26 Dec 2009; Raúl Porcel <armin76@gentoo.org> flite-1.3.ebuild:
+  sparc stable wrt #289439
+
+  30 Nov 2009; Joseph Jezak <josejx@gentoo.org> flite-1.3.ebuild:
+  Marked ppc64 stable.
+
+  21 Nov 2009; Markus Meier <maekke@gentoo.org> flite-1.3.ebuild:
+  amd64 stable, bug #289439
+
+  24 Oct 2009; Tobias Klausmann <klausman@gentoo.org> flite-1.3.ebuild:
+  Stable on alpha, bug #289439
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> flite-1.3.ebuild:
+  ppc stable #289439
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> flite-1.2-r1.ebuild:
+  Removing virtual/libc depends
+
+  01 Apr 2009; William Hubbs <williamh@gentoo.org> flite-1.3.ebuild:
+  Stable on x86
+
+  02 Nov 2008; Mike Frysinger <vapier@gentoo.org> flite-1.3.ebuild:
+  Add ppc64 love for KDE 4.
+
+  06 Apr 2008; Tobias Klausmann <klausman@gentoo.org> flite-1.2-r1.ebuild:
+  Keyworded on alpha, bug #204504
+
+  26 Jan 2008; William Hubbs <williamh@gentoo.org> flite-1.3.ebuild:
+  Flite 1.3 is not paralell build safe, so I added -j1 to the call to emake in
+  src_compile for bug #201786.
+  Also fixed some quoting.
+
+  24 Jan 2008; William Hubbs <williamh@gentoo.org> flite-1.3.ebuild:
+  Added back ~hppa.
+
+*flite-1.3 (24 Jan 2008)
+
+  24 Jan 2008; William Hubbs <williamh@gentoo.org>
+  +files/flite-1.3-alsa-support.patch, +files/flite-1.3-shared-libs.patch,
+  +flite-1.3.ebuild:
+  Version bump.
+  The patches for alsa support and shared libraries were retrieved from
+  http://dialogpalette.sourceforge.net/extras.html.
+
+  11 Jan 2008; Jeroen Roovers <jer@gentoo.org> flite-1.2-r1.ebuild:
+  Stable for HPPA (bug #204504).
+
+  03 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  flite-1.2-r1.ebuild:
+  Masked flite-1.2-r1.ebuild stable for ppc
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> -flite-1.2.ebuild:
+  Removing old version.
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> flite-1.2-r1.ebuild:
+  Stable sparc.
+
+  22 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> flite-1.2-r1.ebuild:
+  ~sparc
+
+  15 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org> flite-1.2-r1.ebuild:
+  Stable x86.
+
+  14 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org> flite-1.2-r1.ebuild:
+  Stable amd64.
+
+*flite-1.2-r1 (30 May 2004)
+
+  30 May 2004; Jon Hood <squinky86@gentoo.org> -flite-1.0.ebuild,
+  +flite-1.2-r1.ebuild, files/const.patch:
+  remove old versions, use a higher quality voice thanks to Ingo Bormuth
+  <ingo@bormuth.org> (#47635); added patch from Michael Gorse
+  <mgorse@alum.wpi.edu> (#52466)
+
+  22 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> flite-1.2.ebuild:
+  Stable x86.
+
+  24 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> flite-1.0.ebuild:
+  Added IUSE.
+
+  22 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> flite-1.2.ebuild:
+  Added keyword ~amd64.
+
+*flite-1.2 (19 Mar 2004)
+
+  19 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> flite-1.0-r1.ebuild,
+  flite-1.2.ebuild:
+  Version bump.
+
+*flite-1.0-r1 (17 Mar 2004)
+
+  17 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> flite-1.0-r1.ebuild:
+  Added libs and includes.
+
+  17 Mar 2004; David Holm <dholm@gentoo.org> flite-1.0.ebuild:
+  Added to ~ppc.
+
+  16 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  flite-1.0.ebuild, metadata.xml:
+  Moved from media-sound/flite to app-accessibility/flite.
+
+  12 Jun 2003; <msterret@gentoo.org> flite-1.0.ebuild:
+  fix Header
+
+*flite-1.0 (31 May 2002)
+
+  31 May 2002; Michael M Nazaroff <naz@gentoo.org> flite-1.0.ebuild : 
+  
+  This changelog is for the initial release of flite which is minimal
+  text-to-speach engine that is engineered to be small and resource friendly.
+  Flite is based of the festival engine. This ebuild was kindly submitted by
+  Matt Keadle <mkeadle@ecpi.edu>.

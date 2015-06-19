@@ -1,0 +1,38 @@
+# ChangeLog for media-libs/blib
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/blib/ChangeLog,v 1.9 2012/05/05 08:02:44 jdhore Exp $
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> blib-1.1.7-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  20 Nov 2011; Pacho Ramos <pacho@gentoo.org> blib-1.1.7-r1.ebuild:
+  Drop DEPRECATED flags, bug #391105
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 May 2006; Diego Pettenò <flameeyes@gentoo.org> -blib-1.1.7.ebuild:
+  Drop old version.
+
+  03 May 2006; Diego Pettenò <flameeyes@gentoo.org> metadata.xml:
+  Update metadata to list media-video@gentoo.org as maintainer.
+
+  28 Apr 2006; Joshua Jackson <tsunam@gentoo.org> blib-1.1.7-r1.ebuild:
+  Stable on x86; bug #130897
+
+  24 Apr 2006; Luis Medinas <metalgod@gentoo.org> blib-1.1.7-r1.ebuild:
+  Stable on amd64. Bug #130897.
+
+*blib-1.1.7-r1 (22 Mar 2006)
+
+  22 Mar 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +blib-1.1.7-r1.ebuild:
+  Revbump for changing the USE flags from GTK2 to GTK as per bug #106560
+
+*blib-1.1.7 (16 May 2005)
+
+  16 May 2005; Jan Brinkmann <luckyduck@gentoo.org> +metadata.xml,
+  +blib-1.1.7.ebuild:
+  Initial import, ebuild contributed by Niels Will <NachtKind@mindpoison.net>.
+  Fixes #61770.
+

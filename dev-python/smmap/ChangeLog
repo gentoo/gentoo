@@ -1,0 +1,52 @@
+# ChangeLog for dev-python/smmap
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/smmap/ChangeLog,v 1.12 2015/06/07 16:08:14 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> smmap-0.9.0.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> smmap-0.9.0.ebuild:
+  amd64 stable, bug 540290
+
+*smmap-0.9.0 (12 Jan 2015)
+
+  12 Jan 2015; Ian Delaney <idella4@gentoo.org> +smmap-0.9.0.ebuild,
+  -smmap-0.8.1.ebuild, -smmap-0.8.2-r1.ebuild, -smmap-0.8.2.ebuild:
+  bump, rm old
+
+*smmap-0.8.3 (18 Nov 2014)
+
+  18 Nov 2014; Justin Lecher <jlec@gentoo.org> +smmap-0.8.3.ebuild,
+  metadata.xml:
+  Version Bump; fix test dep; add python3 support
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> smmap-0.8.2-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*smmap-0.8.2-r1 (07 May 2013)
+
+  07 May 2013; Ian Delaney <idella4@gentoo.org> +smmap-0.8.2-r1.ebuild:
+  migrate -> distutils-r1
+
+*smmap-0.8.2 (11 Apr 2012)
+
+  11 Apr 2012; Patrick Lauer <patrick@gentoo.org> +smmap-0.8.2.ebuild:
+  Bump for #409789
+
+  22 Feb 2012; Patrick Lauer <patrick@gentoo.org> smmap-0.8.1.ebuild:
+  Restricting pypy and jython properly
+
+  20 Feb 2012; Patrick Lauer <patrick@gentoo.org> smmap-0.8.1.ebuild:
+  Restricting pypy #404055
+
+  27 Aug 2011; Jesus Rivero <neurogeek@gentoo.org> smmap-0.8.1.ebuild:
+  Added ~amd64 keyword
+
+*smmap-0.8.1 (27 Aug 2011)
+
+  27 Aug 2011; Jesus Rivero <neurogeek@gentoo.org> +smmap-0.8.1.ebuild,
+  +metadata.xml:
+  Initial commit

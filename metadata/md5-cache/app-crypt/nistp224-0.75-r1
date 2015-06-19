@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=sys-apps/sed-4
+DESCRIPTION=nistp224 performs compressed Diffie-Hellman key exchange on the NIST P-224 elliptic curve
+EAPI=2
+HOMEPAGE=http://cr.yp.to/nistp224.html
+KEYWORDS=~x86
+LICENSE=all-rights-reserved
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=http://cr.yp.to/nistp224/nistp224-0.75.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fixheadtails	c6fd1fc49c9dc11924f28a1406f251a0	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=dd8b2a26cf3328b80356187ce2a26df7

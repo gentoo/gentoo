@@ -1,0 +1,49 @@
+# ChangeLog for games-arcade/diameter
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/diameter/ChangeLog,v 1.12 2015/01/27 07:29:45 mr_bones_ Exp $
+
+  27 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org> -diameter-0.4.0.3.ebuild:
+  old
+
+  26 Jan 2015; Agostino Sarubbo <ago@gentoo.org> diameter-0.4.0.3-r1.ebuild:
+  Stable for x86, wrt bug #534242
+
+  22 Jan 2015; Agostino Sarubbo <ago@gentoo.org> diameter-0.4.0.3-r1.ebuild:
+  Stable for amd64, wrt bug #534242
+
+*diameter-0.4.0.3-r1 (01 Jan 2015)
+
+  01 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +diameter-0.4.0.3-r1.ebuild:
+  EAPI=5; use python-any-r1
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> diameter-0.4.0.3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  19 Nov 2011; Michael Sterrett <mr_bones_@gentoo.org> diameter-0.4.0.3.ebuild:
+  needs python-2 (bug #390223)
+
+  11 Sep 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  diameter-0.4.0.3.ebuild:
+  install with newer coreutils (bug #336812)
+
+  25 Nov 2009; Markus Meier <maekke@gentoo.org> diameter-0.4.0.3.ebuild:
+  amd64/x86 stable, bug #294344
+
+  09 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  diameter-0.4.0.3.ebuild:
+  EAPI=2; add use-based deps
+
+*diameter-0.4.0.3 (06 Sep 2008)
+
+  06 Sep 2008; Tristan Heaven <nyhm@gentoo.org> +diameter-0.4.0.3.ebuild:
+  Version bump, bug #236507
+
+  23 May 2007; Tristan Heaven <nyhm@gentoo.org> diameter-0.4.0.1.ebuild:
+  Add ~x86 keyword
+
+*diameter-0.4.0.1 (20 May 2007)
+
+  20 May 2007; Tupone Alfredo <tupone@gentoo.org> +metadata.xml,
+  +diameter-0.4.0.1.ebuild:
+  New package. Bug #156084 by Paul Bredbury

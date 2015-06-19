@@ -1,0 +1,47 @@
+From 381385ccb7581bb16b72c23fd804c40b0330fe71 Mon Sep 17 00:00:00 2001
+From: David Bremner <david@tethera.net>
+Date: Sat, 3 Jan 2015 14:14:03 +0100
+Subject: [PATCH 3/3] build: eliminate use of python execfile command
+
+As discussed in
+id:8cc9dd580ad672527e12f43706f9803b2c8e99d8.1405220724.git.wking@tremily.us,
+execfile is unavailable in python3.
+
+The approach of this commit avoids modifying the python module path,
+which is arguably preferable since it avoids potentially accidentally
+importing a module from the wrong place.
+---
+ devel/release-checks.sh | 2 +-
+ doc/prerst2man.py       | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/devel/release-checks.sh b/devel/release-checks.sh
+index 797d62a..ae02f55 100755
+--- a/devel/release-checks.sh
++++ b/devel/release-checks.sh
+@@ -130,7 +130,7 @@ else
+ fi
+ 
+ echo -n "Checking that python bindings version is $VERSION... "
+-py_version=`python -c "execfile('$PV_FILE'); print __VERSION__"`
++py_version=`python -c "with open('$PV_FILE') as vf: exec(vf.read()); print __VERSION__"`
+ if [ "$py_version" = "$VERSION" ]
+ then
+ 	echo Yes.
+diff --git a/doc/prerst2man.py b/doc/prerst2man.py
+index 22b8258..45dddca 100644
+--- a/doc/prerst2man.py
++++ b/doc/prerst2man.py
+@@ -10,7 +10,8 @@ outdir = argv[2]
+ if not isdir(outdir):
+     makedirs(outdir, 0o755)
+ 
+-execfile(sourcedir + "/conf.py")
++with open(sourcedir + "/conf.py") as cf:
++    exec(cf.read())
+ 
+ 
+ def header(file, startdocname, command, description, authors, section):
+-- 
+2.2.2
+

@@ -1,0 +1,20 @@
+--- pam_ssh-1.97/pam_ssh.c.orig	2009-08-01 20:11:00.000000000 +0200
++++ pam_ssh-1.97/pam_ssh.c	2009-08-01 20:11:16.000000000 +0200
+@@ -627,7 +627,7 @@
+              * than the file creation time */
+             if (retval = stat(per_agent, &stat_buf)) {
+                 pam_ssh_log(LOG_ERR, "stat() failed on %s", per_agent);
+-                free(per_agent);
++                pam_set_data(pamh, "ssh_agent_env_agent", NULL, NULL);
+                 fclose(env_read);
+                 return retval;
+             }
+@@ -646,7 +646,7 @@
+ 	if (start_agent) {
+                 if ((env_write = open(per_agent, O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR)) < 0) {
+                         pam_ssh_log(LOG_ERR, "can't write to %s", per_agent);
+-                        free(per_agent);
++                        pam_set_data(pamh, "ssh_agent_env_agent", NULL, NULL);
+                         openpam_restore_cred(pamh);
+                         return PAM_SERVICE_ERR;
+                 }

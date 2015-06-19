@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst unpack
+DESCRIPTION=PHP project build system based on Apache Ant
+EAPI=5
+HOMEPAGE=http://www.phing.info/
+IUSE=+minimal
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=!minimal? ( dev-php/phpDocumentor dev-php/PHP_CodeCoverage >=dev-php/PEAR-HTTP_Request2-2.1.1 >=dev-php/PEAR-PEAR_PackageFileManager-1.5.2 >=dev-php/PEAR-VersionControl_SVN-0.3.0_alpha1 >=dev-php/phpmd-1.1.0 >=dev-php/phpunit-4.0 >=dev-php/xdebug-2.0.5 >=dev-php/simpletest-1.0.1_beta2 ) dev-lang/php:*[cli,phar,xml,xslt]
+SLOT=0
+SRC_URI=http://www.phing.info/get/phing-2.10.1.phar
+_md5_=5f8b89f2f9b6186d4b5904cd9187b090

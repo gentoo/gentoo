@@ -1,0 +1,13 @@
+# upstream issue: https://sourceforge.net/tracker/?func=detail&aid=3615092&group_id=180858&atid=894869
+
+--- a/lxsession-edit/Makefile.am	2012-10-25 14:20:04.000000000 -0400
++++ b/lxsession-edit/Makefile.am	2013-10-14 21:30:56.627684026 -0400
+@@ -5,7 +5,7 @@
+ bin_PROGRAMS = lxsession-edit
+ 
+ lxsession_edit_CFLAGS = \
+-	-I$(topsrcdir) \
++	-I$(top_srcdir) \
+ 	$(GTK_CFLAGS) \
+ 	$(ADDITIONAL_FLAGS) \
+ 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \

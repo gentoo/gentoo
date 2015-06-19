@@ -1,0 +1,53 @@
+# ChangeLog for dev-php/PEAR-Text_Figlet
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Text_Figlet/ChangeLog,v 1.11 2014/08/10 20:55:57 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-Text_Figlet-1.0.2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  04 May 2014; Ulrich Müller <ulm@gentoo.org> -PEAR-Text_Figlet-1.0.0.ebuild,
+  -PEAR-Text_Figlet-1.0.1.ebuild:
+  Remove old.
+
+  04 May 2014; Agostino Sarubbo <ago@gentoo.org> PEAR-Text_Figlet-1.0.2.ebuild:
+  Stable for x86, wrt bug #504260
+
+  25 Apr 2014; Chema Alonso <nimiux@gentoo.org> PEAR-Text_Figlet-1.0.2.ebuild:
+  Stable for amd64 wrt bug #504260
+
+  14 Dec 2012; Ulrich Müller <ulm@gentoo.org> PEAR-Text_Figlet-1.0.2.ebuild:
+  Fix LICENSE, bug 445238.
+
+*PEAR-Text_Figlet-1.0.2 (26 Mar 2011)
+
+  26 Mar 2011; <olemarkus@gentoo.org> +PEAR-Text_Figlet-1.0.2.ebuild:
+  Version bump. Bug #360007. Thanks to Denny
+
+  12 Aug 2010; Markus Meier <maekke@gentoo.org>
+  PEAR-Text_Figlet-1.0.1.ebuild:
+  amd64 stable, bug #291286
+
+  10 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  PEAR-Text_Figlet-1.0.1.ebuild:
+  stable x86, bug 291286
+
+*PEAR-Text_Figlet-1.0.1 (22 Aug 2009)
+
+  22 Aug 2009; Steve Dibb <beandog@gentoo.org>
+  +PEAR-Text_Figlet-1.0.1.ebuild:
+  Version bump
+
+  06 Dec 2007; Markus Ullmann <jokey@gentoo.org>
+  PEAR-Text_Figlet-1.0.0.ebuild:
+  LICENSE fix from project overlay
+
+  02 Dec 2007; Jakub Moc <jakub@gentoo.org>
+  PEAR-Text_Figlet-1.0.0.ebuild:
+  Fix LICENSE
+
+*PEAR-Text_Figlet-1.0.0 (08 Oct 2007)
+
+  08 Oct 2007; Anant Narayanan <anant@gentoo.org> +metadata.xml,
+  +PEAR-Text_Figlet-1.0.0.ebuild:
+  Initial import of ebuild from overlay

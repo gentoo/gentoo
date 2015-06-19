@@ -1,0 +1,53 @@
+# ChangeLog for x11-plugins/wmpager
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmpager/ChangeLog,v 1.12 2014/08/10 20:08:24 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> wmpager-1.2-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  27 Oct 2010; Michele Noberasco <s4t4n@gentoo.org>; wmpager-1.2-r1.ebuild:
+  Honour Gentoo CFLAGS.
+  Honour Gentoo LDFLAGS, see bug #337604.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>;
+  wmpager-1.2-r1.ebuild:
+  Drop virtual/x11 references.
+
+  11 Oct 2006; Fabian Groffen <grobian@gentoo.org> wmpager-1.2-r1.ebuild:
+  Put X11 stuff in DEPEND too, you need it during compilation, thanks to
+  Patrick Lauer in bug #150653
+
+  03 May 2006; Jason Wever <weeve@gentoo.org> wmpager-1.2-r1.ebuild:
+  Added ~sparc keyword.
+
+  23 Mar 2006; Daniel Goller <morfic@gentoo.org> wmpager-1.2-r1.ebuild:
+  Mod Xified, courtesy magnade@gmail.com
+
+  06 Dec 2005; Daniel Goller <morfic@gentoo.org> wmpager-1.2-r1.ebuild:
+  Stable on amd64
+
+  23 Sep 2005; Daniel Goller <morfic@gentoo.org> wmpager-1.2-r1.ebuild:
+  Adding ~amd64
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> wmpager-1.2-r1.ebuild:
+  glibc -> libc
+
+*wmpager-1.2-r1 (26 Dec 2003)
+
+  26 Dec 2003; Ian Leitch <port001@gentoo.org> wmpager-1.2-r1.ebuild:
+  Moved from x11-misc to x11-plugins
+
+*wmpager-1.2-r1 (02 Nov 2003)
+
+  02 Nov 2003; Seemant Kulleen <seemant@gentoo.org> wmpager-1.2-r1.ebuild,
+  wmpager-1.2.ebuild:
+  changed ebuild to get rid of superfluous sed statement. Also, the Makefile
+  installs the .1x man page into /usr/man, so use doman instead. Also the DEPEND
+  on x11-base/xfree is now an RDEPEND on virtual/X11. The last thanks to Ciaran
+  McCreesh <ciaranm@firedrop.org.uk> in #gentoo-sparc
+
+*wmpager-1.2 (27 Oct 2002)
+
+  27 Oct 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog wmpager-1.2.ebuild :
+
+  First release of wmpager

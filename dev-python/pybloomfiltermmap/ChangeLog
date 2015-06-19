@@ -1,0 +1,93 @@
+# ChangeLog for dev-python/pybloomfiltermmap
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pybloomfiltermmap/ChangeLog,v 1.20 2015/04/08 08:04:55 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org>
+  pybloomfiltermmap-0.3.11-r1.ebuild:
+  Drop old Python implementations
+
+  01 Jul 2014; Ian Delaney <idella4@gentoo.org> pybloomfiltermmap-0.3.14.ebuild:
+  drop py2.6 add pypy, add missing dep, test phase,
+  fixes Bug #514294
+
+  26 Jun 2014; Sergey Popov <pinkbyte@gentoo.org>
+  -pybloomfiltermmap-0.2.0.ebuild, -pybloomfiltermmap-0.3.2.ebuild,
+  -pybloomfiltermmap-0.3.10.ebuild, -pybloomfiltermmap-0.3.11.ebuild:
+  Drop old versions
+
+*pybloomfiltermmap-0.3.14 (07 May 2014)
+
+  07 May 2014; Patrick Lauer <patrick@gentoo.org>
+  +pybloomfiltermmap-0.3.14.ebuild:
+  Bump
+
+  09 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  pybloomfiltermmap-0.3.11-r1.ebuild:
+  Stable for x86, wrt bug #463078
+
+  09 Apr 2013; Agostino Sarubbo <ago@gentoo.org>
+  pybloomfiltermmap-0.3.11-r1.ebuild:
+  Stable for amd64, wrt bug #463078
+
+  17 Feb 2013; Agostino Sarubbo <ago@gentoo.org>
+  pybloomfiltermmap-0.3.11.ebuild:
+  Stable for x86, wrt bug #456606
+
+*pybloomfiltermmap-0.3.11-r1 (12 Feb 2013)
+
+  12 Feb 2013; Sergey Popov <pinkbyte@gentoo.org>
+  +pybloomfiltermmap-0.3.11-r1.ebuild:
+  Revision bump: EAPI 5, port to distutils-r1 eclass
+
+  12 Feb 2013; Sergey Popov <pinkbyte@gentoo.org>
+  pybloomfiltermmap-0.3.11.ebuild:
+  Stable on amd64, wrt bug #456606
+
+  30 Jan 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Update metadata.xml
+
+*pybloomfiltermmap-0.3.11 (02 Dec 2012)
+
+  02 Dec 2012; Markos Chandras <hwoarang@gentoo.org>
+  +pybloomfiltermmap-0.3.11.ebuild:
+  Version bump
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org>
+  pybloomfiltermmap-0.3.2.ebuild:
+  Stable for x86, wrt bug #439746
+
+  30 Oct 2012; <ago@gentoo.org> pybloomfiltermmap-0.3.2.ebuild:
+  Stable for amd64, wrt bug #429746
+
+*pybloomfiltermmap-0.3.10 (02 Oct 2012)
+
+  02 Oct 2012; Markos Chandras <hwoarang@gentoo.org>
+  +pybloomfiltermmap-0.3.10.ebuild, -pybloomfiltermmap-0.3.8.ebuild:
+  Version bump. Remove old because it was missing source files. Bug #436960
+
+*pybloomfiltermmap-0.3.8 (28 Sep 2012)
+
+  28 Sep 2012; Markos Chandras <hwoarang@gentoo.org>
+  +pybloomfiltermmap-0.3.8.ebuild:
+  Version bump
+
+*pybloomfiltermmap-0.3.2 (19 Apr 2012)
+
+  19 Apr 2012; Patrick Lauer <patrick@gentoo.org>
+  +pybloomfiltermmap-0.3.2.ebuild:
+  Bump
+
+  21 Feb 2012; Patrick Lauer <patrick@gentoo.org>
+  pybloomfiltermmap-0.2.0.ebuild:
+  Restricting jython
+
+  20 Feb 2012; Patrick Lauer <patrick@gentoo.org>
+  pybloomfiltermmap-0.2.0.ebuild:
+  Restricting pypy #403817
+
+*pybloomfiltermmap-0.2.0 (18 Nov 2011)
+
+  18 Nov 2011; Markos Chandras <hwoarang@gentoo.org> +metadata.xml,
+  +pybloomfiltermmap-0.2.0.ebuild:
+  Initial commit thatnks to LABBE Corentin (Montjoie)
+  <corentin.labbe@geomatys.fr>. Bug #390813

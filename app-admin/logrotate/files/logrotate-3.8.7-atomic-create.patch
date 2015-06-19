@@ -1,0 +1,45 @@
+diff -Nuar a/logrotate.c b/logrotate.c
+--- a/logrotate.c	2013-10-26 18:07:54.809999410 +0200
++++ b/logrotate.c	2013-10-26 18:16:08.539999396 +0200
+@@ -304,15 +304,20 @@
+ int createOutputFile(char *fileName, int flags, struct stat *sb, acl_type acl, int force_mode)
+ {
+     int fd;
+-	struct stat sb_create;
+-	int acl_set = 0;
+-
+-	fd = open(fileName, (flags | O_EXCL | O_NOFOLLOW),
+-		(S_IRUSR | S_IWUSR) & sb->st_mode);
++    int acl_set = 0;
++    struct stat sb_create;
++    char template[PATH_MAX + 1];
++    char *fname;
++    mode_t umask_value;
++    snprintf(template, PATH_MAX, "%s/logrotate_temp.XXXXXX", ourDirName(fileName));
++    umask_value = umask(0000);
++    fname = mktemp(template);
++    fd = open(fname, (flags | O_EXCL | O_NOFOLLOW), (S_IRUSR | S_IWUSR) & sb->st_mode);
++    umask(umask_value);
+ 
+     if (fd < 0) {
+-	message(MESS_ERROR, "error creating output file %s: %s\n",
+-		fileName, strerror(errno));
++        message(MESS_ERROR, "error creating unique temp file: %s\n",
++               strerror(errno));
+ 	return -1;
+     }
+     if (fchmod(fd, (S_IRUSR | S_IWUSR) & sb->st_mode)) {
+@@ -363,6 +368,13 @@
+ 		}
+ 	}
+ 
++    if (rename(template, fileName)) {
++        message(MESS_ERROR, "error renaming temp file to %s: %s\n",
++        fileName, strerror(errno));
++        close(fd);
++        return -1;
++    }
++
+     return fd;
+ }
+ 

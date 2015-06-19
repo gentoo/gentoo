@@ -1,0 +1,15 @@
+# ChangeLog for dev-perl/Net-Whois-IP
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Whois-IP/ChangeLog,v 1.2 2014/08/26 15:31:04 axs Exp $
+
+*Net-Whois-IP-1.100.0-r1 (26 Aug 2014)
+
+  26 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Net-Whois-IP-1.100.0-r1.ebuild, -Net-Whois-IP-1.100.0.ebuild:
+  bumped EAPI to 5 to help with dev-lang/perl upgrade
+
+*Net-Whois-IP-1.100.0 (19 Nov 2012)
+
+  19 Nov 2012; Rick Farina <zerochaos@gentoo.org> +Net-Whois-IP-1.100.0.ebuild,
+  +metadata.xml:
+  added for use as rdep in dnsenum, thanks to tove for helping cleanup/style

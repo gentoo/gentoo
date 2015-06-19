@@ -1,0 +1,31 @@
+# Copyright 1999-2005 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/sys-block/open-iscsi/files/initiatorname.iscsi,v 1.2 2006/03/08 09:19:25 robbat2 Exp $
+#
+# This file must contain a InitiatorName entry!
+# white space is significent here!
+#InitiatorName=iqn.2005-09.tld.domain.hostname:openiscsi-initiator
+#InitiatorAlias=foobar
+
+# Sample documentation follows:
+
+# The InitiatorName should take the following format
+# iqn.${YEAR}-${MONTH}-${DOMAIN_REVERSED}.${HOSTNAME}:${UNIQUE_STRING}
+# Where YEAR and MONTH are the dates that your domain was registered.
+# You can use WHOIS to find when your domain was registered.
+# If you don't have a real domain in the outside world, invent one, but use
+# .local for your top-level.
+
+# Example case #1:
+# This assumes you own foobar.co.uk.
+# Domain name: foobar.co.uk.
+# Registration date: March 2001
+# Hostname: linux
+# InitiatorName=iqn.2001-03.uk.co.foobar.linux:openiscsi-29b48ad602d5f83dd9cd9aa3ef741216
+
+# Example case #2:
+# This assumes you don't have a domain of your own.
+# Domain name: foobar.local
+# Registration date: March 2001
+# Hostname: linux
+# InitiatorName=iqn.2001-03.local.foobar.linux:openiscsi-29b48ad602d5f83dd9cd9aa3ef741216

@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/awesfx/files/sfxload.initd,v 1.2 2010/04/28 19:01:05 ssuominen Exp $
+
+depend() {
+	need alsasound
+}
+
+start() {
+	ebegin "Loading sound font bank"
+	${sfxload} -q "${sfxbank}"
+	eend $? "Error at loading sound font bank ${sfxbank}"
+}
+
+stop() {
+	ebegin "Unloading sound font bank"
+	${sfxload} -i -q
+	eend $? "Error at unloading sound font bank"
+}

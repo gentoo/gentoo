@@ -1,0 +1,213 @@
+# ChangeLog for www-apps/horde-nag
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/horde-nag/ChangeLog,v 1.50 2012/08/22 15:26:27 a3li Exp $
+
+  22 Aug 2012; Alex Legler <a3li@gentoo.org> metadata.xml:
+  removing from metadata
+
+  19 Mar 2012; Raúl Porcel <armin76@gentoo.org> horde-nag-2.3.4.ebuild,
+  horde-nag-2.3.6.ebuild:
+  Drop sparc keywords
+
+  07 Mar 2012; Brent Baude <ranger@gentoo.org> horde-nag-2.3.6.ebuild:
+  Marking horde-nag-2.3.6 ppc for bug 397247
+
+  02 Mar 2012; Tobias Klausmann <klausman@gentoo.org> horde-nag-2.3.6.ebuild:
+  Stable on alpha, bug #397247
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> horde-nag-2.3.6.ebuild:
+  x86 stable wrt bug #397247
+
+  08 Feb 2012; Jeroen Roovers <jer@gentoo.org> horde-nag-2.3.6.ebuild:
+  Stable for HPPA (bug #397247).
+
+  04 Feb 2012; Agostino Sarubbo <ago@gentoo.org> horde-nag-2.3.6.ebuild:
+  Stable for amd64, wrt bug #397247
+
+  22 Oct 2010; Alex Legler <a3li@gentoo.org> -horde-nag-2.1.4.ebuild:
+  cleanup
+
+  22 Oct 2010; Jeroen Roovers <jer@gentoo.org> horde-nag-2.3.4.ebuild:
+  Stable for HPPA (bug #333207).
+
+  08 Oct 2010; Brent Baude <ranger@gentoo.org> horde-nag-2.3.4.ebuild:
+  Marking horde-nag-2.3.4 ppc for bug 333207
+
+  29 Sep 2010; Alex Legler <a3li@gentoo.org> horde-nag-2.3.6.ebuild:
+  whitespace fix
+
+*horde-nag-2.3.6 (29 Sep 2010)
+
+  29 Sep 2010; Alex Legler <a3li@gentoo.org> -horde-nag-2.3.3.ebuild,
+  +horde-nag-2.3.6.ebuild:
+  Version bump, contains minor bugfixes and updated i18n. No longer try to
+  install docs/vtodo which would fail. Removing old version.
+
+  18 Sep 2010; Raúl Porcel <armin76@gentoo.org> horde-nag-2.3.4.ebuild:
+  alpha/sparc stable wrt #333207
+
+  23 Aug 2010; Markus Meier <maekke@gentoo.org> horde-nag-2.3.4.ebuild:
+  x86 stable, bug #333207
+
+  19 Aug 2010; Markos Chandras <hwoarang@gentoo.org> horde-nag-2.3.4.ebuild:
+  Stable on amd64 wrt bug #333207
+
+*horde-nag-2.3.4 (17 Dec 2009)
+
+  17 Dec 2009; Alex Legler <a3li@gentoo.org> -horde-nag-2.3.1.ebuild,
+  +horde-nag-2.3.4.ebuild, metadata.xml:
+  Version bump, remove old version, take over maintenance
+
+*horde-nag-2.3.3 (17 Sep 2009)
+
+  17 Sep 2009; Alex Legler <a3li@gentoo.org> -horde-nag-2.2.ebuild,
+  +horde-nag-2.3.3.ebuild:
+  Version bump, removing one old version.
+
+*horde-nag-2.3.1 (30 Oct 2008)
+
+  30 Oct 2008; Gunnar Wrobel <wrobel@gentoo.org> +horde-nag-2.3.1.ebuild:
+  Added www-apps/horde-nag-2.3.1.
+
+  07 Aug 2008; wrobel@gentoo.org metadata.xml:
+  Updated maintainer.
+
+*horde-nag-2.2 (01 Jun 2008)
+
+  01 Jun 2008; Mike Frysinger <vapier@gentoo.org> +horde-nag-2.2.ebuild:
+  Version bump #221505 by Arfrever Frehtes Taifersar Arahesis.
+
+  21 Mar 2008; Markus Meier <maekke@gentoo.org> horde-nag-2.1.4.ebuild:
+  amd64 stable, security bug #212635
+
+  18 Mar 2008; Raúl Porcel <armin76@gentoo.org> horde-nag-2.1.4.ebuild:
+  alpha/sparc/x86 stable wrt security #212635
+
+  18 Mar 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  horde-nag-2.1.4.ebuild:
+  ppc stable, bug #212635
+
+  17 Mar 2008; Jeroen Roovers <jer@gentoo.org> horde-nag-2.1.4.ebuild:
+  Stable for HPPA (bug #212635).
+
+  12 Jan 2008; Mike Frysinger <vapier@gentoo.org> +horde-nag-2.1.4.ebuild:
+  Version bump .
+
+*horde-nag-2.1.4 (12 Jan 2008)
+
+  12 Jan 2008; Mike Frysinger <vapier@gentoo.org> +horde-nag-2.1.4.ebuild:
+  Version bump.
+
+  12 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  horde-nag-2.1.3.ebuild:
+  Stable on sparc
+
+  27 Jun 2007; Raúl Porcel <armin76@gentoo.org> horde-nag-2.1.2.ebuild:
+  alpha stable wrt #177129
+
+  25 May 2007; Christian Faulhammer <opfer@gentoo.org>
+  horde-nag-2.1.2.ebuild:
+  x86/amd64 stable, bug 177129
+
+  08 May 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  horde-nag-2.1.2.ebuild:
+  Stable on sparc wrt #177129
+
+  07 May 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  horde-nag-2.1.2.ebuild:
+  ppc stable, bug #177129
+
+  07 May 2007; Jeroen Roovers <jer@gentoo.org> horde-nag-2.1.2.ebuild:
+  Stable for HPPA (bug #177129).
+
+*horde-nag-2.1.3 (05 May 2007)
+
+  05 May 2007; Mike Frysinger <vapier@gentoo.org> +horde-nag-2.1.3.ebuild:
+  Version bump.
+
+*horde-nag-2.1.2 (15 Nov 2006)
+
+  15 Nov 2006; Mike Frysinger <vapier@gentoo.org> +horde-nag-2.1.2.ebuild:
+  Version bump.
+
+  04 Apr 2006; <blubb@gentoo.org> horde-nag-2.1.ebuild:
+  stable on amd64 wrt bug 126435
+
+  31 Mar 2006; Jose Luis Rivero <yoswink@gentoo.org> horde-nag-2.1.ebuild:
+  Stable on alpha wrt bug #126435
+
+  28 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> horde-nag-2.1.ebuild:
+  Stable on hppa wrt security #126435
+
+  28 Mar 2006; Mark Loeser <halcy0n@gentoo.org> horde-nag-2.1.ebuild:
+  Stable on x86; bug #126435
+
+  25 Mar 2006; Joseph Jezak <josejx@gentoo.org> horde-nag-2.1.ebuild:
+  Marked ppc stable for bug #126435.
+
+  20 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org> horde-nag-2.1.ebuild:
+  Stable on sparc wrt security #126435
+
+*horde-nag-2.1 (09 Mar 2006)
+
+  09 Mar 2006; Mike Frysinger <vapier@gentoo.org> +horde-nag-2.1.ebuild:
+  Version bump #125571 by Pol.
+
+*horde-nag-2.0.4 (12 Dec 2005)
+
+  12 Dec 2005; Mike Frysinger <vapier@gentoo.org> +horde-nag-2.0.4.ebuild:
+  Version bump #115215.
+
+*horde-nag-2.0.3 (25 Oct 2005)
+
+  25 Oct 2005; Mike Frysinger <vapier@gentoo.org> +horde-nag-2.0.3.ebuild:
+  Version bump.
+
+*horde-nag-2.0.2 (07 Aug 2005)
+
+  07 Aug 2005; Mike Frysinger <vapier@gentoo.org> +horde-nag-2.0.2.ebuild:
+  Version bump.
+
+*horde-nag-1.1.3 (26 Apr 2005)
+
+  26 Apr 2005; Mike Frysinger <vapier@gentoo.org> +horde-nag-1.1.3.ebuild:
+  Version bump for security #90365.
+
+*horde-nag-2.0.1 (23 Feb 2005)
+
+  23 Feb 2005; Mike Frysinger <vapier@gentoo.org> +horde-nag-2.0.1.ebuild,
+  -horde-nag-2.0.ebuild:
+  Version bump.
+
+*horde-nag-1.1.2 (16 Jan 2005)
+
+  16 Jan 2005; Mike Frysinger <vapier@gentoo.org> -horde-nag-1.1.1.ebuild,
+  +horde-nag-1.1.2.ebuild:
+  Version bump.
+
+*horde-nag-2.0 (24 Dec 2004)
+
+  24 Dec 2004; Mike Frysinger <vapier@gentoo.org> +horde-nag-2.0.ebuild:
+  Version bump.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  15 Aug 2004; Stuart Herbert <stuart@gentoo.org> horde-nag-1.1.1.ebuild:
+  Deps updated to reflect net-www split
+
+*horde-nag-1.1.1 (15 Aug 2004)
+
+  15 Aug 2004; Stuart Herbert <stuart@gentoo.org> +metadata.xml,
+  +horde-nag-1.1.1.ebuild:
+  Moved from net-www/horde-nag to www-apps/horde-nag.
+
+*horde-nag-1.1.1 (26 Feb 2004)
+
+  26 Feb 2004; Martin Holzer <mholzer@gentoo.org> horde-nag-1.1.1.ebuild:
+  Version bumped.
+
+*horde-nag-1.1 (19 Jan 2004)
+
+  19 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial ebuild made by me.

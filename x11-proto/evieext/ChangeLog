@@ -1,0 +1,167 @@
+# ChangeLog for x11-proto/evieext
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-proto/evieext/ChangeLog,v 1.48 2011/04/18 11:39:50 scarabeus Exp $
+
+  18 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org> -evieext-1.1.0.ebuild:
+  old
+
+  16 Apr 2011; Raúl Porcel <armin76@gentoo.org> evieext-1.1.1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #359059
+
+  08 Apr 2011; Markus Meier <maekke@gentoo.org> evieext-1.1.1.ebuild:
+  arm stable, bug #359059
+
+  04 Apr 2011; Jeroen Roovers <jer@gentoo.org> evieext-1.1.1.ebuild:
+  Stable for HPPA (bug #359059).
+
+  26 Mar 2011; Christian Faulhammer <fauli@gentoo.org> evieext-1.1.1.ebuild:
+  x86 stable, bug 359059
+
+  21 Mar 2011; Markos Chandras <hwoarang@gentoo.org> evieext-1.1.1.ebuild:
+  Stable on amd64 wrt bug #359059
+
+  15 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> evieext-1.1.1.ebuild:
+  ppc/ppc64 stable wrt #359059
+
+*evieext-1.1.1 (20 Feb 2011)
+
+  20 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org> +evieext-1.1.1.ebuild:
+  Version bump.
+
+  21 Oct 2010; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking evieext-1.1.0 ppc stable for bug 239063
+
+  10 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -evieext-1.0.2.ebuild, evieext-1.1.0.ebuild:
+  rm. Actualy cleanup current ebuild.
+
+  11 Feb 2010; Jeroen Roovers <jer@gentoo.org> evieext-1.1.0.ebuild:
+  Stable for HPPA (bug #302046).
+
+  19 Jan 2010; Raúl Porcel <armin76@gentoo.org> evieext-1.1.0.ebuild:
+  s390 stable wrt #294958
+
+  18 Jan 2010; Raúl Porcel <armin76@gentoo.org> evieext-1.1.0.ebuild:
+  alpha/ia64/sh/sparc stable wrt #294958
+
+  14 Jan 2010; Markus Meier <maekke@gentoo.org> evieext-1.1.0.ebuild:
+  arm stable, bug #294958
+
+  14 Jan 2010; Christian Faulhammer <fauli@gentoo.org> evieext-1.1.0.ebuild:
+  Transfer Prefix keywords
+
+  15 Dec 2009; Brent Baude <ranger@gentoo.org> evieext-1.1.0.ebuild:
+  Marking evieext-1.1.0 ppc64 stable for bug 294958
+
+  10 Dec 2009; Christian Faulhammer <fauli@gentoo.org> evieext-1.1.0.ebuild:
+  x86 stable, bug 294958
+
+  10 Dec 2009; Samuli Suominen <ssuominen@gentoo.org> evieext-1.1.0.ebuild:
+  amd64 stable wrt #294958
+
+*evieext-1.1.0 (19 Sep 2009)
+
+  19 Sep 2009; Rémi Cardona <remi@gentoo.org> +evieext-1.1.0.ebuild:
+  bump to 1.1.0
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org> evieext-1.0.2.ebuild:
+  fix repoman warnings
+
+  04 Feb 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  evieext-1.0.2.ebuild:
+  Drop mirroring restriction.  Thanks to Zhang Le of bug #163088.
+
+  19 Jul 2006; Guy Martin <gmsoft@gentoo.org> evieext-1.0.2.ebuild:
+  Stable on hppa.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> evieext-1.0.2.ebuild:
+  Mark 1.0.2 stable on ia64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>; evieext-1.0.2.ebuild:
+  arm/sh stable
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>; evieext-1.0.2.ebuild:
+  ppc/sparc/mips/alpha stable
+
+  30 Jun 2006; Marien Zwart <marienz@gentoo.org> files/digest-evieext-1.0.2,
+  Manifest:
+  Fix digest.
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> evieext-1.0.2.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org> evieext-1.0.2.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>; evieext-1.0.2.ebuild:
+  x86 stable.
+
+  28 Apr 2006; Marien Zwart <marienz@gentoo.org> files/digest-evieext-1.0.2,
+  Manifest:
+  Revert to working digest.
+
+  28 Apr 2006; Alec Warner <antarus@gentoo.org> files/digest-evieext-1.0.2,
+  Manifest:
+  Fixing SHA256 digest, pass four
+
+  28 Apr 2006; Marien Zwart <marienz@gentoo.org> Manifest:
+  Fixing SHA256 digest, pass four
+
+  31 Mar 2006; Diego Pettenò <flameeyes@gentoo.org> evieext-1.0.2.ebuild:
+  Add ~x86-fbsd keyword.
+
+  24 Mar 2006; Donnie Berkholz <spyderous@gentoo.org>; evieext-1.0.2.ebuild:
+  (#127306) Digests changed between release candidates and final release for
+  the same tarballs.
+
+  09 Mar 2006; Aron Griffis <agriffis@gentoo.org> evieext-1.0.2.ebuild:
+  Mark 1.0.2 ~ia64
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> evieext-1.0.2.ebuild:
+  Added ~ppc64
+
+  31 Jan 2006; Rene Nussbaumer <killerfox@gentoo.org> evieext-1.0.2.ebuild:
+  Unstable on hppa.
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -evieext-1.0.1.ebuild:
+  Pull old versions.
+
+  26 Dec 2005; Stefaan De Roeck <stefaan@gentoo.org> evieext-1.0.2.ebuild:
+  Marked ~alpha
+
+*evieext-1.0.2 (17 Dec 2005)
+
+  17 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +evieext-1.0.2.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>; -evieext-1.0.ebuild:
+  Pull old versions.
+
+*evieext-1.0.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +evieext-1.0.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  28 Aug 2005; MATSUU Takuto <matsuu@gentoo.org> evieext-1.0.ebuild:
+  Marked ~sh.
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> evieext-1.0.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> evieext-1.0.ebuild:
+  Marked ~amd64
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> evieext-1.0.ebuild:
+  Add ~sparc keyword (modular X testing on sparc).
+
+*evieext-1.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>; +evieext-1.0.ebuild:
+  Initial commit for modular X
+

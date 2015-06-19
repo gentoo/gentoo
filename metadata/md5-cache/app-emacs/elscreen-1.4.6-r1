@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=app-emacs/apel-10.8-r1 >=virtual/emacs-23
+DESCRIPTION=Frame configuration management for GNU Emacs modelled after GNU Screen
+EAPI=4
+HOMEPAGE=http://www.morishima.net/~naoto/j/software/elscreen/
+KEYWORDS=~alpha amd64 hppa ~ia64 ~ppc ~ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=>=app-emacs/apel-10.8-r1 >=virtual/emacs-23
+SLOT=0
+SRC_URI=ftp://ftp.morishima.net/pub/morishima.net/naoto/ElScreen/elscreen-1.4.6.tar.gz
+_eclasses_=elisp	d13b0507622afb8ac9e3f54e91d58614	elisp-common	9a16929c1a6aec7e1c903289983e114c	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=4b42e0cd1feec3134f8fd11f80a8298b

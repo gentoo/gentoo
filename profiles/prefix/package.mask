@@ -1,0 +1,30 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/package.mask,v 1.134 2015/06/16 13:00:05 grobian Exp $
+#
+# When you add an entry to the top of this file, add your name, the date, and
+# an explanation of why something is getting masked.  This file is for
+# Prefix profiles only!
+#
+# NOTE: Please add your entry at the top!
+#
+
+
+# Fabian Groffen <grobian@gentoo.org> (11 Feb 2014)
+# Fails to compile, bug #493464
+=sys-devel/autogen-5.18.1
+=sys-devel/autogen-5.18.2
+
+# Fabian Groffen <grobian@gentoo.org> (29 Apr 2012)
+# AT_FDCWD, openat, faccessat, etc. issues on probably all but Linux
+# platforms, masking for now.
+>=app-misc/pax-utils-0.3
+
+# Elias Pipping <pipping@gentoo.org> (09 Oct 2007)
+# darwin-miscutils are only available on darwin
+sys-apps/darwin-miscutils
+
+# Fabian Groffen <grobian@gentoo.org> (04 Apr 2007)
+# Don't use this, it is only provided for experimentation and as tool to
+# recover from broken linker situations.
+sys-devel/native-cctools

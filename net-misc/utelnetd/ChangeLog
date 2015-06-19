@@ -1,0 +1,46 @@
+# ChangeLog for net-misc/utelnetd
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/utelnetd/ChangeLog,v 1.13 2014/03/09 02:22:34 mrueg Exp $
+
+  09 Mar 2014; Manuel Rüger <mrueg@gentoo.org> -utelnetd-0.1.9.ebuild:
+  Cleanup old.
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #22900
+
+  13 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  utelnetd-0.1.9-r1.ebuild:
+  Switch to virtual/shadow.
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> utelnetd-0.1.9.ebuild:
+  Remove virtual/libc
+
+*utelnetd-0.1.9-r1 (21 Dec 2008)
+
+  21 Dec 2008; MATSUU Takuto <matsuu@gentoo.org> metadata.xml,
+  +utelnetd-0.1.9-r1.ebuild:
+  Removed strip, bug #252021.
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  29 Apr 2007; Torsten Veller <tove@gentoo.org> utelnetd-0.1.9.ebuild:
+  Fix *initd, *confd and *envd calls (#173884, #174266)
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  29 Oct 2004; MATSUU Takuto <matsuu@gentoo.org> utelnetd-0.1.9.ebuild:
+  Fixed CC usage to use new toolchain-funcs.eclass. bug 69278.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> utelnetd-0.1.9.ebuild:
+  change virtual/glibc to virtual/libc
+
+  16 Apr 2004; Michael McCabe <randy@gentoo.org> :
+  adding s390 keywords
+
+*utelnetd-0.1.9 (23 Jan 2004)
+
+  23 Jan 2004; MATSUU Takuto <matsuu@gentoo.org> utelnetd-0.1.9.ebuild,
+  files/utelnetd.initd:
+  Initial import.

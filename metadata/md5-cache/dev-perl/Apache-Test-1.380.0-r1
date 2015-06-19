@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND==www-servers/apache-2* dev-lang/perl:=[-build(-)]
+DESCRIPTION=Test.pm wrapper with helpers for testing Apache
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Apache-Test/
+KEYWORDS=alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86
+LICENSE=Apache-2.0
+RDEPEND==www-servers/apache-2* dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/P/PH/PHRED/Apache-Test-1.38.tar.gz
+_eclasses_=depend.apache	1a38534d3f755d1ab1d92ce120bd7dbd	eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=f0def8d22fb373da2b747e0f8f4d4422

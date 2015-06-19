@@ -1,0 +1,171 @@
+# ChangeLog for www-client/w3mmee
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-client/w3mmee/ChangeLog,v 1.27 2014/07/05 01:18:42 naota Exp $
+
+  05 Jul 2014; Naohiro Aota <naota@gentoo.org>
+  +files/w3mmee-0.3.2_p24-boehm-gc.patch, w3mmee-0.3.2_p24-r7.ebuild:
+  Add a patch to detect boehm-gc version properly. #514140
+
+  03 Oct 2013; Naohiro Aota <naota@gentoo.org> w3mmee-0.3.2_p24-r7.ebuild:
+  Patch XMakefile to respect AR. #483744
+
+  01 Mar 2013; Naohiro Aota <naota@gentoo.org>
+  +files/w3mmee-0.3.2_p24-tinfo.patch, w3mmee-0.3.2_p24-r7.ebuild:
+  Add workaround patch for tinfo. #459562
+
+  10 Oct 2012;  <naota@gentoo.org> -w3mmee-0.3.2_p24-r6.ebuild:
+  Drop old stable. build failure. #426682
+
+  09 Oct 2012; Anthony G. Basile <blueness@gentoo.org>
+  w3mmee-0.3.2_p24-r7.ebuild:
+  stable ppc, bug #427054
+
+  09 Oct 2012;  <naota@gentoo.org> w3mmee-0.3.2_p24-r6.ebuild,
+  w3mmee-0.3.2_p24-r7.ebuild:
+  inherit multilib.eclass
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> w3mmee-0.3.2_p24-r6.ebuild,
+  w3mmee-0.3.2_p24-r7.ebuild:
+  Drop sparc keywords
+
+  01 Aug 2012; Tony Vroon <chainsaw@gentoo.org> w3mmee-0.3.2_p24-r7.ebuild:
+  Marked stable on AMD64 based on arch testing by Maurizio "k01" Camisaschi &
+  Elijah "Armageddon" El Lazkani in bug #427054.
+
+  23 Jul 2012; Naohiro Aota <naota@gentoo.org> w3mmee-0.3.2_p24-r7.ebuild:
+  Set CC properly.
+
+  19 Jul 2012; Johannes Huber <johu@gentoo.org> w3mmee-0.3.2_p24-r7.ebuild:
+  Stable for x86, wrt bug #427054
+
+  18 Jul 2012; Naohiro Aota <naota@gentoo.org> w3mmee-0.3.2_p24-r7.ebuild:
+  Quote *FLAGS.
+
+  17 Jul 2011; Naohiro Aota <naota@gentoo.org> w3mmee-0.3.2_p24-r7.ebuild:
+  Explicitly define RDEPEND
+
+*w3mmee-0.3.2_p24-r7 (17 Jul 2011)
+
+  17 Jul 2011; Naohiro Aota <naota@gentoo.org> +w3mmee-0.3.2_p24-r7.ebuild,
+  +files/w3mmee-0.3.2_p24-glibc214.patch:
+  Add patch to deal with glibc-2.14 change. Fix bug #370435
+
+  13 Apr 2011; Ulrich Mueller <ulm@gentoo.org> w3mmee-0.3.2_p24-r6.ebuild:
+  Don't PROVIDE virtual/w3m, it is a new-style virtual now. Bug 358855.
+
+  23 Jun 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +files/w3mmee-gcc45.patch, w3mmee-0.3.2_p24-r6.ebuild:
+  Fix building with GCC 4.5+ wrt #317815 byy Kacper Kowalik.
+
+  26 Jan 2010; MATSUU Takuto <matsuu@gentoo.org>
+  -w3mmee-0.3.2_p24-r4.ebuild, -w3mmee-0.3.2_p24-r5.ebuild:
+  Removed old versions.
+
+  25 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +files/w3mmee-gcc44.patch, w3mmee-0.3.2_p24-r6.ebuild:
+  Fix building with GCC 4.4 wrt #278079.
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  21 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  w3mmee-0.3.2_p24-r4.ebuild, w3mmee-0.3.2_p24-r5.ebuild,
+  w3mmee-0.3.2_p24-r6.ebuild:
+  Drop virtual/textbrowser as per bug #130746.
+
+  21 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  w3mmee-0.3.2_p24-r6.ebuild:
+  Stable on ppc.
+
+  20 Jan 2006; Joshua Jackson <tsunam@gentoo.org>
+  w3mmee-0.3.2_p24-r6.ebuild:
+  Stable on x86 for bug #118198
+
+  19 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  w3mmee-0.3.2_p24-r6.ebuild:
+  Stable on sparc wrt #118198
+
+  19 Jan 2006; Karol Wojtaszek <sekretarz@gentoo.org>
+  w3mmee-0.3.2_p24-r6.ebuild:
+  Stable on amd64, bug #118198
+
+*w3mmee-0.3.2_p24-r6 (15 Oct 2005)
+
+  15 Oct 2005; MATSUU Takuto <matsuu@gentoo.org>
+  +w3mmee-0.3.2_p24-r6.ebuild:
+  Fixed boehm-gc dependency issue. Bug 105982.
+
+*w3mmee-0.3.2_p24-r5 (13 Feb 2005)
+
+  13 Feb 2005; Mamoru KOMACHI <usata@gentoo.org>
+  +w3mmee-0.3.2_p24-r5.ebuild:
+  Version bumped.
+
+*w3mmee-0.3.2_p24-r4 (08 Sep 2004)
+
+  08 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +files/w3mmee-w3mman-gentoo.diff, +w3mmee-0.3.2_p24-r4.ebuild:
+  Moved from net-www/w3mmee to www-client/w3mmee.
+
+  04 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  w3mmee-0.3.2_p24-r4.ebuild:
+  Masked w3mmee-0.3.2_p24-r4.ebuild stable for ppc
+
+  25 Jun 2004; Aron Griffis <agriffis@gentoo.org> w3mmee-0.3.2_p24-r3.ebuild,
+  w3mmee-0.3.2_p24-r4.ebuild:
+  QA - fix use invocation
+
+  03 May 2004; Jason Wever <weeve@gentoo.org> w3mmee-0.3.2_p24-r4.ebuild:
+  Stable on sparc.
+
+  26 Apr 2004; David Holm <dholm@gentoo.org> w3mmee-0.3.2_p24-r4.ebuild:
+  Added to ~ppc.
+
+  26 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> w3mmee-0.3.2_p24-r1.ebuild,
+  w3mmee-0.3.2_p24-r2.ebuild, w3mmee-0.3.2_p24-r3.ebuild,
+  w3mmee-0.3.2_p24-r4.ebuild:
+  inherit eutils for epatch. Marked stable on x86. Removed old ebuilds.
+
+  11 Apr 2004; Jason Wever <weeve@gentoo.org> w3mmee-0.3.2_p24-r3.ebuild:
+  Stable on sparc.
+
+*w3mmee-0.3.2_p24-r4 (25 Mar 2004)
+
+  25 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> w3mmee-0.3.2_p24-r3.ebuild,
+  w3mmee-0.3.2_p24-r4.ebuild, w3mmee-0.3.2_p24.ebuild:
+  w3mmee-p24-20 was released.
+
+  22 Mar 2004; Jason Wever <weeve@gentoo.org> w3mmee-0.3.2_p24-r2.ebuild,
+  w3mmee-0.3.2_p24-r3.ebuild:
+  Marked 0.3.2_p24-r2 stable on sparc and added ~sparc keyword to 0.3.2_p24-r3.
+
+  01 Mar 2004; Jason Wever <weeve@gentoo.org> w3mmee-0.3.2_p24-r2.ebuild:
+  Reach out and ~sparc someone.
+
+*w3mmee-0.3.2_p24-r3 (19 Jan 2004)
+
+  19 Jan 2004; Mamoru KOMACHI <usata@gentoo.org> w3mmee-0.3.2_p24-r2.ebuild,
+  w3mmee-0.3.2_p24-r3.ebuild:
+  Removed cjk IUSE flag and make multilingual enhancement enabled by default to
+  fix bug #38608
+
+*w3mmee-0.3.2_p24-r2 (06 Dec 2003)
+
+  06 Dec 2003; Mamoru KOMACHI <usata@gentoo.org> metadata.xml,
+  w3mmee-0.3.2_p24-r1.ebuild, w3mmee-0.3.2_p24-r2.ebuild,
+  w3mmee-0.3.2_p24.ebuild, files/w3mmee-w3mman-gentoo.diff:
+  w3mmee-p24-19 was released.
+
+*w3mmee-0.3.2_p24-r1 (22 Aug 2003)
+
+  22 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> w3mmee-0.3.2_p24-r1.ebuild:
+  Fixed escape character problem of viewing Japanese manpages with w3mmeeman.
+  Creates symlinks if w3m is not present
+
+*w3mmee-0.3.2_p24 (08 Aug 2003)
+
+  22 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> w3mmee-0.3.2_p24.ebuild:
+  Marked stable on x86 and ppc
+
+  08 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> :
+  Initial import

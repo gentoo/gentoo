@@ -1,0 +1,250 @@
+This patch makes it possible to compile lufis without the lufs package.
+It has been merged to the lufis cvs tree.
+We would like to remove lufs soon in favour of the newer system fuse.
+
+diff -Naur lufis-0.2.orig/lufs/fs.h lufis-0.2/lufs/fs.h
+--- lufis-0.2.orig/lufs/fs.h	1970-01-01 01:00:00.000000000 +0100
++++ lufis-0.2/lufs/fs.h	2004-11-12 21:07:45.714978800 +0100
+@@ -0,0 +1,112 @@
++/*
++ * lufs.h
++ * Copyright (C) 2002 Florin Malita <mali@go.ro>
++ *
++ * This file is part of LUFS, a free userspace filesystem implementation.
++ * See http://lufs.sourceforge.net/ for updates.
++ *
++ * LUFS is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * LUFS is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ */
++
++#ifndef _LUFS_FS_H_
++#define _LUFS_FS_H_
++
++#include <sys/types.h>
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++
++struct dir_cache;
++struct directory;
++struct lufs_fattr;
++struct file_system;
++struct list_head;
++struct dir_cache;
++
++#define MAX_LEN		64
++
++struct credentials{
++    char	user[MAX_LEN];
++    char	group[MAX_LEN];
++    uid_t	uid;
++    gid_t	gid;
++};
++
++
++struct directory* lu_cache_mkdir(char*);
++int lu_cache_add2dir(struct directory*, char*, char*, struct lufs_fattr*);
++int lu_cache_lookup(struct dir_cache*, char*, char*, struct lufs_fattr*, char*, int);
++void lu_cache_add_dir(struct dir_cache*, struct directory*);
++void lu_cache_killdir(struct directory*);
++
++int lu_check_to(int, int, int);
++int lu_atomic_read(int, char*, int, int);
++int lu_atomic_write(int, char*, int, int);
++
++int lu_opt_loadcfg(struct list_head*, char*);
++int lu_opt_parse(struct list_head*, char*, char*);
++int lu_opt_getint(struct list_head*, char*, char*, long int*, int);
++const char* lu_opt_getchar(struct list_head*, char*, char*);
++
++
++#ifdef __cplusplus
++} /* end of extern "C" { */
++#endif
++
++#ifdef TRACE
++#undef TRACE
++#endif
++#ifdef WARN
++#undef WARN
++#endif
++#ifdef ERROR
++#undef ERROR
++#endif
++
++#ifdef __cplusplus
++
++#include <iostream>
++
++#ifdef DEBUG
++#define TRACE(x) 	cout<<std::hex<<"["<<getpid()<<"]("<<__func__<<")"<<x<<"\n"
++#define WARN(x)		cerr<<std::hex<<"["<<getpid()<<"]("<<__func__<<")"<<x<<"\n"
++#define ERROR(x)	cerr<<std::hex<<"["<<getpid()<<"]("<<__func__<<")"<<x<<"\n"
++#else
++#define TRACE(x...)	do{}while(0)
++#define WARN(x...)	do{}while(0)
++#define ERROR(x...)	cerr<<x<<"\n"
++#endif
++
++#else
++
++#include <stdio.h>
++
++#ifdef DEBUG
++#define TRACE(x...)	do{fprintf(stderr, "[%x](%s) ", getpid(), __func__); fprintf(stderr, x); fprintf(stderr, "\n");}while(0)
++#define WARN(x...)	do{fprintf(stderr, "[%x](%s) ", getpid(), __func__); fprintf(stderr, x); fprintf(stderr, "\n");}while(0)
++#define ERROR(x...)	do{fprintf(stderr, "[%x](%s) ", getpid(), __func__); fprintf(stderr, x); fprintf(stderr, "\n");}while(0)
++#else
++#define TRACE(x...)	do{}while(0)
++#define WARN(x...)	do{}while(0)
++#define ERROR(x...)	do{fprintf(stderr, x); fprintf(stderr, "\n");}while(0)
++#endif
++
++#endif
++
++
++
++#endif
++
+diff -Naur lufis-0.2.orig/lufs/proto.h lufis-0.2/lufs/proto.h
+--- lufis-0.2.orig/lufs/proto.h	1970-01-01 01:00:00.000000000 +0100
++++ lufis-0.2/lufs/proto.h	2004-11-12 21:07:45.715978648 +0100
+@@ -0,0 +1,116 @@
++/*
++ * proto.h
++ * Copyright (C) 2002 Florin Malita <mali@go.ro>
++ *
++ * This file is part of LUFS, a free userspace filesystem implementation.
++ * See http://lufs.sourceforge.net/ for updates.
++ *
++ * LUFS is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * LUFS is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ */
++
++#ifndef _LU_PROTO_H_
++#define _LU_PROTO_H_
++
++#define LU_MAXDATA	4096
++
++#define PVERSION	0x02
++
++#define PTYPE_OK	0x00
++#define PTYPE_MOUNT	0x01
++#define PTYPE_READ	0x02
++#define PTYPE_WRITE	0x03
++#define PTYPE_READDIR	0x04
++#define PTYPE_STAT	0x05
++#define PTYPE_UMOUNT	0x06
++#define PTYPE_SETATTR	0x07
++#define PTYPE_MKDIR	0x08
++#define PTYPE_RMDIR	0x09
++#define PTYPE_CREATE	0x0A
++#define PTYPE_UNLINK	0x0B
++#define PTYPE_RENAME	0x0C
++#define PTYPE_OPEN	0x0D
++#define PTYPE_RELEASE	0x0E
++#define PTYPE_READLINK	0x0F
++#define PTYPE_LINK	0x10
++#define PTYPE_SYMLINK	0x11
++#define PTYPE_STATFS	0x12
++
++#define PTYPE_MAX	0x12
++
++
++#define PTYPE_ERROR	0x100
++
++#define PERROR(x)	(-(x & (PTYPE_ERROR - 1)) - 1)
++#define PIS_ERROR(x)	(x & PTYPE_ERROR)
++
++struct lu_msg {
++    unsigned short	msg_version;
++    unsigned short	msg_type;
++    unsigned short	msg_datalen;
++    unsigned short	msg_pid;
++};
++
++
++struct lufs_fattr{
++    unsigned long	f_ino;
++    unsigned long	f_mode;
++    unsigned long	f_nlink;
++    unsigned long	f_uid;
++    unsigned long	f_gid;
++    long long		f_size;
++    unsigned long	f_atime;
++    unsigned long	f_mtime;
++    unsigned long	f_ctime;
++    unsigned long	f_blksize;
++    unsigned long	f_blocks;
++};
++
++
++struct lufs_sbattr{	/* struct statfs64 */
++    unsigned long long sb_bytes;
++    unsigned long long sb_bytes_free;
++    unsigned long long sb_bytes_available;
++    unsigned long long sb_files;
++    unsigned long long sb_ffree;
++};
++
++
++struct lufs_req_readdir{
++    unsigned short	offset;
++    char		dirname[0];
++};
++
++struct lufs_req_mkdir{
++    int		mode;
++    char	dirname[0];
++};
++
++struct lufs_req_rw{
++    long long		offset;
++    unsigned long	count;
++    char		name[0];
++};
++
++struct lufs_req_open{
++    unsigned 	mode;
++    char	name[0];
++};
++
++struct lufs_req_setattr{
++    struct lufs_fattr 	fattr;
++    char		name[0];
++};
++
++#endif
+diff -Naur lufis-0.2.orig/Makefile lufis-0.2/Makefile
+--- lufis-0.2.orig/Makefile	2004-11-12 21:07:36.138434656 +0100
++++ lufis-0.2/Makefile	2004-11-12 21:10:04.342904152 +0100
+@@ -1,5 +1,5 @@
+ CC = gcc
+-CFLAGS = -Wall -W -g
++CFLAGS += -Wall -W -g -I.
+ LDLIBS = -lfuse -lpthread -ldl -rdynamic
+ CPPFLAGS := -D_FILE_OFFSET_BITS=64
+ #CPPFLAGS += -DDEBUG

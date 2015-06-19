@@ -1,0 +1,9 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/dnssec-tools/files/rollerd.confd,v 1.1 2012/07/05 12:21:40 xmw Exp $
+
+ROLLERD_CMD="rollerd"
+ROLLERD_RRFILE="/etc/dnssec-tools/dnssec-tools.rollrec"
+ROLLERD_KRFDIR="/var/bind/pri"
+ROLLERD_OPTS=""
+

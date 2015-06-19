@@ -1,0 +1,143 @@
+From 03216ccf4ca0808f9c7b9513efcaeb7f4058b575 Mon Sep 17 00:00:00 2001
+From: Akira TAGOH <akira@tagoh.org>
+Date: Wed, 10 Apr 2013 09:41:22 +0000
+Subject: Bug 63329 - make check fails: .. contents:: :depth: 2
+
+Add back FcHashGetSHA256DigestFromFile() and fall back to it
+when font isn't SFNT-based font because FT_Load_Sfnt_Table
+fails with FT_Err_Invalid_Face_Handle.
+---
+diff --git a/src/fcfreetype.c b/src/fcfreetype.c
+index 22064b3..5e8990d 100644
+--- a/src/fcfreetype.c
++++ b/src/fcfreetype.c
+@@ -1666,17 +1666,29 @@ FcFreeTypeQueryFace (const FT_Face  face,
+ 	goto bail1;
+ 
+     err = FT_Load_Sfnt_Table (face, 0, 0, NULL, &len);
+-    if (err != FT_Err_Ok)
+-	goto bail1;
+-    alen = (len + 63) & ~63;
+-    fontdata = malloc (alen);
+-    if (!fontdata)
+-	goto bail1;
+-    err = FT_Load_Sfnt_Table (face, 0, 0, (FT_Byte *)fontdata, &len);
+-    if (err != FT_Err_Ok)
++    if (err == FT_Err_Ok)
++    {
++	alen = (len + 63) & ~63;
++	fontdata = malloc (alen);
++	if (!fontdata)
++	    goto bail1;
++	err = FT_Load_Sfnt_Table (face, 0, 0, (FT_Byte *)fontdata, &len);
++	if (err != FT_Err_Ok)
++	    goto bail1;
++	memset (&fontdata[len], 0, alen - len);
++	hashstr = FcHashGetSHA256DigestFromMemory (fontdata, len);
++    }
++    else if (err == FT_Err_Invalid_Face_Handle)
++    {
++	/* font may not support SFNT. falling back to
++	 * read the font data from file directly
++	 */
++	hashstr = FcHashGetSHA256DigestFromFile (file);
++    }
++    else
++    {
+ 	goto bail1;
+-    memset (&fontdata[len], 0, alen - len);
+-    hashstr = FcHashGetSHA256DigestFromMemory (fontdata, len);
++    }
+     if (!hashstr)
+ 	goto bail1;
+     if (!FcPatternAddString (pat, FC_HASH, hashstr))
+diff --git a/src/fchash.c b/src/fchash.c
+index 1ef1e16..92585a6 100644
+--- a/src/fchash.c
++++ b/src/fchash.c
+@@ -204,6 +204,68 @@ FcHashGetSHA256Digest (const FcChar8 *input_strings,
+ }
+ 
+ FcChar8 *
++FcHashGetSHA256DigestFromFile (const FcChar8 *filename)
++{
++    FILE *fp = fopen ((const char *)filename, "rb");
++    char ibuf[64];
++    FcChar32 *ret;
++    size_t len;
++    struct stat st;
++
++    if (!fp)
++	return NULL;
++
++    if (FcStat (filename, &st))
++	goto bail0;
++
++    ret = FcHashInitSHA256Digest ();
++    if (!ret)
++	goto bail0;
++
++    while (!feof (fp))
++    {
++	if ((len = fread (ibuf, sizeof (char), 64, fp)) < 64)
++	{
++	    long v;
++
++	    /* add a padding */
++	    memset (&ibuf[len], 0, 64 - len);
++	    ibuf[len] = 0x80;
++	    if ((64 - len) < 9)
++	    {
++		/* process a block once */
++		FcHashComputeSHA256Digest (ret, ibuf);
++		memset (ibuf, 0, 64);
++	    }
++	    /* set input size at the end */
++	    v = (long)st.st_size * 8;
++	    ibuf[63 - 0] =  v        & 0xff;
++	    ibuf[63 - 1] = (v >>  8) & 0xff;
++	    ibuf[63 - 2] = (v >> 16) & 0xff;
++	    ibuf[63 - 3] = (v >> 24) & 0xff;
++	    ibuf[63 - 4] = (v >> 32) & 0xff;
++	    ibuf[63 - 5] = (v >> 40) & 0xff;
++	    ibuf[63 - 6] = (v >> 48) & 0xff;
++	    ibuf[63 - 7] = (v >> 56) & 0xff;
++	    FcHashComputeSHA256Digest (ret, ibuf);
++	    break;
++	}
++	else
++	{
++	    FcHashComputeSHA256Digest (ret, ibuf);
++	}
++    }
++    fclose (fp);
++
++    return FcHashSHA256ToString (ret);
++
++bail0:
++    fclose (fp);
++
++    return NULL;
++}
++
++FcChar8 *
+ FcHashGetSHA256DigestFromMemory (const char *fontdata,
+ 				 size_t      length)
+ {
+diff --git a/src/fcint.h b/src/fcint.h
+index a662dbf..8919958 100644
+--- a/src/fcint.h
++++ b/src/fcint.h
+@@ -818,6 +818,10 @@ FcFontSetSerialize (FcSerialize *serialize, const FcFontSet * s);
+ FcPrivate FcChar8 *
+ FcHashGetSHA256Digest (const FcChar8 *input_strings,
+ 		       size_t         len);
++
++FcPrivate FcChar8 *
++FcHashGetSHA256DigestFromFile (const FcChar8 *filename);
++
+ FcPrivate FcChar8 *
+ FcHashGetSHA256DigestFromMemory (const char *fontdata,
+ 				 size_t      length);
+--
+cgit v0.9.0.2-2-gbebe

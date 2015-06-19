@@ -1,0 +1,33 @@
+# ChangeLog for dev-php/PEAR-Config
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Config/ChangeLog,v 1.5 2014/11/06 15:07:27 grknight Exp $
+
+*PEAR-Config-1.10.12-r1 (06 Nov 2014)
+
+  06 Nov 2014; Brian Evans <grknight@gentoo.org> +PEAR-Config-1.10.12-r1.ebuild,
+  -PEAR-Config-1.10.11.ebuild, -PEAR-Config-1.10.12.ebuild:
+  Drop old; EAPI revbump
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-Config-1.10.11.ebuild, PEAR-Config-1.10.12.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*PEAR-Config-1.10.12 (27 Dec 2010)
+
+  27 Dec 2010; <olemarkus@gentoo.org> +PEAR-Config-1.10.12.ebuild:
+  Version bump
+
+  05 Dec 2007; Markus Ullmann <jokey@gentoo.org> PEAR-Config-1.10.11.ebuild:
+  LICENSE fix from project overlay
+
+  02 Dec 2007; Jakub Moc <jakub@gentoo.org> PEAR-Config-1.10.11.ebuild:
+  Fix LICENSE
+
+*PEAR-Config-1.10.11 (30 Aug 2007)
+
+  30 Aug 2007; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +PEAR-Config-1.10.11.ebuild:
+  Port from project overlay
+
+  28 Aug 2007; Jakub Moc <jakub@gentoo.org> ChangeLog:
+  New ebuild, Bug 169258

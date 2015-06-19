@@ -1,0 +1,26 @@
+#!/sbin/runscript
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/beanstalkd/files/init-1.4.6,v 1.1 2010/06/02 09:23:32 patrick Exp $
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting beanstalkd"
+	/sbin/start-stop-daemon --start \
+        --background \
+		--pidfile ${PIDFILE} --make-pidfile \
+		--exec ${BEANSTALKD_BINARY} \
+		-- -b ${DATADIR} -p ${PORT} -l ${ADDR} -u ${USER}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping beanstalkd"
+	start-stop-daemon --stop --quiet \
+		--pidfile ${PIDFILE} \
+		--exec ${BEANSTALKD_BINARY}
+	eend $?
+}

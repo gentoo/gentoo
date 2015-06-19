@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm preinst
+DEPEND=x11-themes/hicolor-icon-theme >=sys-apps/sed-4
+DESCRIPTION=Xfce Gant Icon Theme
+HOMEPAGE=http://www.xfce-look.org/content/show.php/GANT?content=23297
+KEYWORDS=amd64 x86
+LICENSE=public-domain
+RDEPEND=x11-themes/hicolor-icon-theme
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=http://overlay.uberpenguin.net/icons-xfce-gant-3.9-6.tar.bz2
+_eclasses_=gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=2f6e2bb59df4db9b9088c11ee602f551

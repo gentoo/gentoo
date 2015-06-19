@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>cpp</herd>
+  <upstream>
+    <remote-id type="sourceforge">boost</remote-id>
+  </upstream>
+</pkgmetadata>

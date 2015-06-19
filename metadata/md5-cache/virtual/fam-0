@@ -1,0 +1,7 @@
+DEFINED_PHASES=-
+DESCRIPTION=A virtual package to choose between gamin and fam
+EAPI=2
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris
+RDEPEND=|| ( app-admin/gamin app-admin/fam )
+SLOT=0
+_md5_=258861f180241b1b577aed1e8a5a5e63

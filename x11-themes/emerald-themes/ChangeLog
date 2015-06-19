@@ -1,0 +1,99 @@
+# ChangeLog for x11-themes/emerald-themes
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/emerald-themes/ChangeLog,v 1.18 2012/08/30 12:21:43 pinkbyte Exp $
+
+  30 Aug 2012; Sergey Popov <pinkbyte@gentoo.org> emerald-themes-0.5.2.ebuild:
+  Fix HOMEPAGE and SRC_URI
+
+  30 Aug 2012; Sergey Popov <pinkbyte@gentoo.org> emerald-themes-0.5.2.ebuild:
+  Bump to EAPI 4, add DOCS variable
+
+  30 Aug 2012; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Remove myself and proxy mainainer from maintainers
+
+  07 May 2012; Naohiro Aota <naota@gentoo.org> metadata.xml:
+  Assign Pinkbyte as maintainer.
+
+  29 May 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Maintained by desktop-effects
+
+  03 Jun 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/emerald-themes.patch, -emerald-themes-0.1.3.ebuild,
+  -emerald-themes-0.1.4.ebuild, -emerald-themes-0.2.1.ebuild:
+  clean out old versions
+
+  08 Feb 2008; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  Maintainer email was non-existent in bugzilla.
+
+  24 Oct 2007; Hanno Boeck <hanno@gentoo.org> emerald-themes-0.5.2.ebuild:
+  QA fixes.
+
+*emerald-themes-0.5.2 (23 Oct 2007)
+
+  23 Oct 2007; Hanno Boeck <hanno@gentoo.org> +emerald-themes-0.5.2.ebuild:
+  Version bump for compiz fusion.
+
+  02 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  emerald-themes-0.1.3.ebuild:
+  (QA) RESTRICT clean up.
+
+  15 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+*emerald-themes-0.2.1 (21 Mar 2007)
+
+  21 Mar 2007; Joshua Jackson <tsunam@gentoo.org>
+  +emerald-themes-0.2.1.ebuild:
+  adding beryl-0.2.1 to the tree
+
+  24 Feb 2007; Joshua Jackson <tsunam@gentoo.org>
+  emerald-themes-0.1.4.ebuild:
+  Changing the restrict options for themes
+
+*emerald-themes-0.1.4 (28 Dec 2006)
+
+  28 Dec 2006; Joshua Jackson <tsunam@gentoo.org>
+  +emerald-themes-0.1.4.ebuild:
+  Version bump for #159203
+
+  21 Dec 2006; Markus Rothe <corsair@gentoo.org>
+  emerald-themes-0.1.3.ebuild:
+  Added ~ppc64; bug #158709. also removed orphane digest files
+
+*emerald-themes-0.1.3 (19 Dec 2006)
+
+  19 Dec 2006; Joshua Jackson <tsunam@gentoo.org>
+  +emerald-themes-0.1.3.ebuild:
+  Version bump a week late for bug #157727; also general cleanup of old versions
+
+  19 Dec 2006; Joshua Jackson <tsunam@gentoo.org>
+  +files/emerald-themes.patch, +metadata.xml, +emerald-themes-0.1.1.ebuild,
+  +emerald-themes-0.1.2.ebuild, +emerald-themes-0.1.2-r1.ebuild:
+  Moved from x11-misc/emerald-themes to x11-themes/emerald-themes.
+
+  17 Dec 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  emerald-themes-0.1.2-r1.ebuild:
+  Change the dependency to =emerald-0.1.2*
+
+*emerald-themes-0.1.2-r1 (07 Dec 2006)
+
+  07 Dec 2006; Joshua Jackson <tsunam@gentoo.org>
+  +files/emerald-themes.patch, +emerald-themes-0.1.2-r1.ebuild:
+  Adding patch for bug #156034 to have sane permissions
+
+*emerald-themes-0.1.2 (15 Nov 2006)
+
+  15 Nov 2006; Joshua Jackson <tsunam@gentoo.org>
+  +emerald-themes-0.1.2.ebuild:
+  adding 0.1.2 to the tree
+
+  24 Oct 2006; Joshua Jackson <tsunam@gentoo.org>
+  emerald-themes-0.1.1.ebuild:
+  updating license to gpl-2
+
+*emerald-themes-0.1.1 (22 Oct 2006)
+
+  22 Oct 2006; Joshua Jackson <tsunam@gentoo.org> +metadata.xml,
+  +emerald-themes-0.1.1.ebuild:
+  Initial import of Beryl, thanks to Alex Heck
+

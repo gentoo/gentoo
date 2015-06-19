@@ -1,0 +1,69 @@
+# ChangeLog for dev-php/PEAR-HTML_Common2
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-HTML_Common2/ChangeLog,v 1.12 2014/10/11 17:47:48 grknight Exp $
+
+  11 Oct 2014; Brian Evans <grknight@gentoo.org>
+  -PEAR-HTML_Common2-2.0.0.ebuild:
+  Drop old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  PEAR-HTML_Common2-2.0.0.ebuild, PEAR-HTML_Common2-2.1.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*PEAR-HTML_Common2-2.1.0 (24 Mar 2013)
+
+  24 Mar 2013; Matti Bickel <mabi@gentoo.org> +PEAR-HTML_Common2-2.1.0.ebuild:
+  version bump
+
+  07 Feb 2012; Jeroen Roovers <jer@gentoo.org> PEAR-HTML_Common2-2.0.0.ebuild:
+  Marked ~hppa (bug #396967).
+
+  01 Feb 2012; Samuli Suominen <ssuominen@gentoo.org>
+  PEAR-HTML_Common2-2.0.0.ebuild:
+  Keyword ~ppc/~ppc64 wrt #396967
+
+  29 Jan 2012; Raúl Porcel <armin76@gentoo.org>
+  PEAR-HTML_Common2-2.0.0.ebuild:
+  Add ~alpha/~arm/~ia64/~s390/~sh/~sparc wrt #396967
+
+*PEAR-HTML_Common2-2.0.0 (15 Jan 2012)
+
+  15 Jan 2012; Matti Bickel <mabi@gentoo.org>
+  -PEAR-HTML_Common2-2.0.0_beta1.ebuild,
+  -PEAR-HTML_Common2-2.0.0_rc1-r1.ebuild, +PEAR-HTML_Common2-2.0.0.ebuild:
+  Version bump, remove old
+
+*PEAR-HTML_Common2-2.0.0_rc1-r1 (23 Mar 2010)
+
+  23 Mar 2010; Steve Dibb <beandog@gentoo.org>
+  -PEAR-HTML_Common2-2.0.0_rc1.ebuild,
+  +PEAR-HTML_Common2-2.0.0_rc1-r1.ebuild:
+  Fix workdir, bug 305745
+
+*PEAR-HTML_Common2-2.0.0_rc1 (16 Feb 2010)
+
+  16 Feb 2010; Steve Dibb <beandog@gentoo.org>
+  +PEAR-HTML_Common2-2.0.0_rc1.ebuild:
+  Version bump
+
+  06 Dec 2007; Markus Ullmann <jokey@gentoo.org>
+  PEAR-HTML_Common2-2.0.0_beta1.ebuild:
+  LICENSE fix from project overlay
+
+  02 Dec 2007; Jakub Moc <jakub@gentoo.org>
+  PEAR-HTML_Common2-2.0.0_beta1.ebuild:
+  Fix LICENSE
+
+  29 Aug 2007; Markus Ullmann <jokey@gentoo.org>
+  PEAR-HTML_Common2-2.0.0_beta1.ebuild:
+  Fix for bug #190638
+
+*PEAR-HTML_Common2-2.0.0_beta1 (27 Aug 2007)
+
+  27 Aug 2007; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +PEAR-HTML_Common2-2.0.0_beta1.ebuild:
+  Initital commit from project overlay
+
+  15 Aug 2007; Jakub Moc <jakub@gentoo.org> +metadata.xml,
+  +PEAR-HTML_Common2-2.0.0_beta1.ebuild:
+  Add a replacement for superseded PEAR-HTML_Common

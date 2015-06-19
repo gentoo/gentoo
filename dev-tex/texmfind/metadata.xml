@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>tex</herd>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>etux@bluewin.ch</email>
+		<name>Alexandre -- Untux</name>
+	</maintainer>
+	<maintainer>
+		<email>aballier@gentoo.org</email>
+		<name>Alexis Ballier</name>
+	</maintainer>
+	<maintainer>
+		<email>fauli@gentoo.org</email>
+		<name>Christian Faulhammer</name>
+	</maintainer>
+	<longdescription lang="en">
+		Little CLI utility for Gentoo-texlive end-users. Search for texmf-files
+		matching a grep regexp and get the corresponding ebuild. It consists of
+		a small Bash script, wrapping grep, and a flat data file containing (a
+		good chunk of) the texmf-files that can be installed from the main
+		portage tree.
+	</longdescription>
+	<upstream>
+		<remote-id type="launchpad">texmfind</remote-id>
+	</upstream>
+</pkgmetadata>

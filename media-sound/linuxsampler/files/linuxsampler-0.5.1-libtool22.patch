@@ -1,0 +1,20 @@
+Index: linuxsampler-0.5.1/configure.in
+===================================================================
+--- linuxsampler-0.5.1.orig/configure.in
++++ linuxsampler-0.5.1/configure.in
+@@ -38,6 +38,7 @@ LSCP_RELEASE_MINOR=3
+ AC_DEFINE_UNQUOTED(LSCP_RELEASE_MAJOR, ${LSCP_RELEASE_MAJOR}, [LSCP spec major version this release complies with.])
+ AC_DEFINE_UNQUOTED(LSCP_RELEASE_MINOR, ${LSCP_RELEASE_MINOR}, [LSCP spec minor version this release complies with.])
+ 
++AC_PROG_CXX
+ AM_PROG_LIBTOOL
+ 
+ AC_SUBST(SHLIB_VERSION_ARG)
+@@ -1082,7 +1083,6 @@ AM_CONFIG_HEADER(config.h)
+ AM_INIT_AUTOMAKE(linuxsampler, "$LINUXSAMPLER_RELEASE_MAJOR.$LINUXSAMPLER_RELEASE_MINOR.$LINUXSAMPLER_RELEASE_BUILD")
+ 
+ AC_LANG_CPLUSPLUS
+-AC_PROG_CXX
+ 
+ # some gcc 4.0 versions need -msse for SSE register allocations
+ if test "$config_asm" = "yes"; then

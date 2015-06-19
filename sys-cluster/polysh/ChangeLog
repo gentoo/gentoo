@@ -1,0 +1,65 @@
+# ChangeLog for sys-cluster/polysh
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/polysh/ChangeLog,v 1.11 2015/04/08 18:25:45 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> polysh-0.4-r1.ebuild:
+  Drop old Python implementations
+
+  26 Jun 2014; Michael Palimaka <kensington@gentoo.org> -polysh-0.3.1.ebuild:
+  Remove old.
+
+  05 Jun 2014; Fabian Groffen <grobian@gentoo.org> polysh-0.4-r1.ebuild:
+  Marked ~x64-macos
+
+  24 Mar 2014; Kacper Kowalik <xarthisius@gentoo.org> metadata.xml:
+  Drop maintainership
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> polysh-0.4-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> polysh-0.4-r1.ebuild:
+  Stable for x86, wrt bug #463146
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> polysh-0.4-r1.ebuild:
+  Stable for amd64, wrt bug #463146
+
+*polysh-0.4-r1 (02 Feb 2013)
+
+  02 Feb 2013; Kacper Kowalik <xarthisius@gentoo.org> +polysh-0.4-r1.ebuild,
+  -polysh-0.4.ebuild:
+  Port to distutils-r1
+
+*polysh-0.3.1 (02 Feb 2013)
+
+  02 Feb 2013; Kacper Kowalik <xarthisius@gentoo.org> +polysh-0.3.1.ebuild:
+  Add old stable version for a proper pkgmove
+
+  10 Feb 2012; Patrick Lauer <patrick@gentoo.org> polysh-0.4.ebuild:
+  Changing python deps in preparation for 2.4 removal
+
+*polysh-0.4 (04 Nov 2011)
+
+  04 Nov 2011; Justin Lecher <jlec@gentoo.org> +polysh-0.4.ebuild,
+  +metadata.xml:
+  Version Bump and rename to new upstream name
+
+*gsh-0.3.1 (23 Nov 2010)
+
+  23 Nov 2010; Kacper Kowalik <xarthisius@gentoo.org> +gsh-0.3.1.ebuild:
+  Version bump
+
+  25 Oct 2010; Justin Lecher <jlec@gentoo.org> gsh-0.3.ebuild:
+  Keyworded for ~linux prefix
+
+  19 Sep 2010; Markos Chandras <hwoarang@gentoo.org> gsh-0.3.ebuild:
+  Stable on amd64 wrt bug #336750
+
+  12 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> gsh-0.3.ebuild:
+  x86 stable wrt bug #336750
+
+*gsh-0.3 (05 Aug 2010)
+
+  05 Aug 2010; Kacper Kowalik <xarthisius@gentoo.org> +gsh-0.3.ebuild,
+  +metadata.xml:
+  Initial import, fixes bug 268826. Ebuild written by Łukasz Mierzwa
+  <l.mierzwa@gmail.com>

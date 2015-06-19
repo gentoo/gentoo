@@ -1,0 +1,20 @@
+--- adm8211/wep.c.old	2007-06-13 11:06:07.778330430 +1000
++++ adm8211/wep.c	2007-06-13 11:06:16.442008732 +1000
+@@ -10,7 +10,6 @@
+  * more details.
+  */
+ 
+-#include <linux/config.h>
+ #include <linux/version.h>
+ #include <linux/module.h>
+ #include <linux/init.h>
+--- adm8211/adm8211_hw.c.old	2007-06-13 11:10:12.949927966 +1000
++++ adm8211/adm8211_hw.c	2007-06-13 11:10:23.838266881 +1000
+@@ -29,7 +29,6 @@
+  */
+ 
+ 
+-#include <linux/config.h>
+ #include <linux/version.h>
+ #include <linux/module.h>
+ #include <linux/init.h>

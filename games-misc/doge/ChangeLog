@@ -1,0 +1,63 @@
+# ChangeLog for games-misc/doge
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/doge/ChangeLog,v 1.11 2015/04/08 18:10:46 mgorny Exp $
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> doge-3.5.0.ebuild:
+  Drop old Python implementations
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> doge-3.5.0.ebuild:
+  Clean up obsolete dependencies on virtual/python-argparse and virtual/python-
+  unittest2 (those packages were only required for <=python-2.6).
+
+*doge-3.5.0 (02 Jun 2014)
+
+  02 Jun 2014; Vikraman Choudhury (vikraman) <vikraman@gentoo.org>
+  +doge-3.5.0.ebuild, -doge-3.4.0.ebuild:
+  Bump to version 3.5.0
+
+*doge-3.4.0 (01 Jan 2014)
+
+  01 Jan 2014; Vikraman <vikraman@gentoo.org> +doge-3.4.0.ebuild,
+  -doge-3.3.0.ebuild:
+  Bump to version 3.4.0
+
+*doge-3.3.0 (25 Dec 2013)
+
+  25 Dec 2013; Vikraman <vikraman@gentoo.org> +doge-3.3.0.ebuild,
+  -doge-3.1.0.ebuild:
+  Version bump to 3.3.0
+
+*doge-3.1.0 (17 Dec 2013)
+
+  17 Dec 2013; Vikraman <vikraman@gentoo.org> +doge-3.1.0.ebuild,
+  -doge-3.0.0.ebuild:
+  Bump to version 3.1.0
+
+*doge-3.0.0 (13 Dec 2013)
+
+  13 Dec 2013; Vikraman <vikraman@gentoo.org> +doge-3.0.0.ebuild,
+  -doge-2.2.0.ebuild:
+  Bump version to 3.0.0
+
+*doge-2.2.0 (05 Dec 2013)
+
+  05 Dec 2013; Vikraman <vikraman@gentoo.org> +doge-2.2.0.ebuild,
+  -doge-2.1.0.ebuild:
+  Bump version 2.2.0
+
+*doge-2.1.0 (24 Nov 2013)
+
+  24 Nov 2013; Vikraman <vikraman@gentoo.org> +doge-2.1.0.ebuild,
+  -doge-1.0.0.ebuild:
+  Bump to version 2.1.0
+
+*doge-1.0.0 (10 Nov 2013)
+
+  10 Nov 2013; Vikraman <vikraman@gentoo.org> +doge-1.0.0.ebuild,
+  -doge-0.9.0.ebuild:
+  Bump to version 1.0.0
+
+*doge-0.9.0 (05 Nov 2013)
+
+  05 Nov 2013; Vikraman <vikraman@gentoo.org> +doge-0.9.0.ebuild, +metadata.xml:
+  New ebuild for games-misc/doge.

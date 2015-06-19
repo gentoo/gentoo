@@ -1,0 +1,11 @@
+--- casting-spels-emacs-orig/lisp/wizard-adventure-emacs.el	2007-09-17 04:18:48.000000000 +0200
++++ casting-spels-emacs/lisp/wizard-adventure-emacs.el	2008-09-05 19:59:21.000000000 +0200
+@@ -27,6 +27,8 @@
+ 
+ ;;; Code in the comic not needed to play the game is commented out...
+ 
++(require 'cl)
++
+ (setq eval-expression-print-length nil)
+ 
+ (setq objects '(whiskey-bottle bucket frog chain))

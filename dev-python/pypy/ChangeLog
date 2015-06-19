@@ -1,0 +1,421 @@
+# ChangeLog for dev-python/pypy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pypy/ChangeLog,v 1.88 2015/06/04 18:46:39 mgorny Exp $
+
+*pypy-2.6.0 (04 Jun 2015)
+
+  04 Jun 2015; Michał Górny <mgorny@gentoo.org> +pypy-2.6.0.ebuild:
+  Version bump (p.masked).
+
+  25 May 2015; Patrick Lauer <patrick@gentoo.org> pypy-2.5.1.ebuild:
+  Fix openssl dep #549542
+
+  12 Apr 2015; Michał Górny <mgorny@gentoo.org> -pypy-2.5.0.ebuild,
+  pypy-2.5.1.ebuild:
+  Add KEYWORDS to 2.5.1. Remove 2.5.0 because of missing binpackage.
+
+*pypy-2.5.1 (12 Apr 2015)
+
+  12 Apr 2015; Michał Górny <mgorny@gentoo.org> +pypy-2.5.1.ebuild:
+  Minor version bump.
+
+*pypy-2.5.0 (22 Mar 2015)
+
+  22 Mar 2015; Ian Delaney <idella4@gentoo.org> +files/2.5.0-shared-lib.patch,
+  +files/2.5.0_all_distutils_cxx.patch, +pypy-2.5.0.ebuild, metadata.xml:
+  bump; add missed dep for tests, update patches for shared-lib, all_distutils
+  (renamed 2.5.0_all_distutils_cxx.patch)
+
+  28 Jan 2015; Michał Górny <mgorny@gentoo.org> pypy-2.3.1-r2.ebuild,
+  pypy-2.4.0.ebuild:
+  Switch to CPU_FLAGS_X86.
+
+  17 Dec 2014; Alice Ferrazzi <alicef@gentoo.org> metadata.xml:
+  Update email and removed proxy-maintainers herd
+
+  09 Nov 2014; Michał Górny <mgorny@gentoo.org> pypy-2.4.0.ebuild:
+  Improve/simplify interpreter choice code using new eclass code.
+
+  08 Nov 2014; Michał Górny <mgorny@gentoo.org>
+  -files/2.0.2-distutils-fix_handling_of_executables_and_flags.patch,
+  -files/2.1-distutils-fix_handling_of_executables_and_flags.patch,
+  -pypy-2.0.2-r1.ebuild, -pypy-2.2.1.ebuild:
+  Drop old.
+
+  08 Nov 2014; Michał Górny <mgorny@gentoo.org> pypy-2.4.0.ebuild:
+  Restore keywords now that pypy-bin packages are built.
+
+  05 Nov 2014; Michał Górny <mgorny@gentoo.org> pypy-2.4.0.ebuild:
+  Fix whitespace.
+
+  05 Nov 2014; Michał Górny <mgorny@gentoo.org> pypy-2.4.0.ebuild:
+  Remove unnecessary vcs-snapshot use.
+
+  05 Nov 2014; Michał Górny <mgorny@gentoo.org> pypy-2.4.0.ebuild:
+  Use upstream distfile.
+
+  05 Nov 2014; Michał Górny <mgorny@gentoo.org> pypy-2.3.1-r2.ebuild,
+  pypy-2.4.0.ebuild:
+  Revert the gdbm change. I was wrong, and _gdbm is only in PyPy 3.
+
+  05 Nov 2014; Michał Górny <mgorny@gentoo.org> pypy-2.3.1-r2.ebuild,
+  pypy-2.4.0.ebuild:
+  Import _gdbm directly to generate cffi cache instead of gdbm. This avoids
+  unnecessary middle-imports and makes the block consistent with PyPy3.
+
+  04 Nov 2014; Michał Górny <mgorny@gentoo.org> metadata.xml,
+  pypy-2.3.1-r2.ebuild, pypy-2.4.0.ebuild:
+  Set higher memory requirements. Translate using PyPy by default. Add USE=low-
+  memory to translate using PyPy profiled for low memory use.
+
+*pypy-2.3.1-r2 (04 Nov 2014)
+
+  04 Nov 2014; Michał Górny <mgorny@gentoo.org> +pypy-2.3.1-r2.ebuild,
+  -pypy-2.3.1-r1.ebuild, pypy-2.4.0.ebuild:
+  Fix gdbm support, bug #519696. Add subslots in deps.
+
+*pypy-2.4.0 (20 Oct 2014)
+
+  20 Oct 2014; Patrick Lauer <patrick@gentoo.org> +pypy-2.4.0.ebuild:
+  Bump, keep keywords away until pypy-bin catches up
+
+*pypy-2.3.1-r1 (15 Jul 2014)
+
+  15 Jul 2014; Ian Delaney <idella4@gentoo.org> +files/2.3.1-shared-lib.patch,
+  +pypy-2.3.1-r1.ebuild, -pypy-2.3.1.ebuild:
+  revbump; patch to fix shared lib issue of libpypy-c.so wrt Bug #517002, thanks
+  to Arfrever for the patch which is submitted upstream
+
+  12 Jul 2014; Michał Górny <mgorny@gentoo.org> -pypy-2.3.ebuild,
+  pypy-2.3.1.ebuild:
+  Drop some random cruft, and localize LD_LIBRARY_PATH. Drop old.
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> pypy-2.0.2-r1.ebuild,
+  pypy-2.2.1.ebuild, pypy-2.3.ebuild:
+  Replace obsolete mirror://bitbucket with the real URI.
+
+*pypy-2.3.1 (18 Jun 2014)
+
+  18 Jun 2014; Ian Delaney <idella4@gentoo.org> +pypy-2.3.1.ebuild:
+  bump; add shared lib libpypy-c, prompt and initial patch by Y. Taraday in bug
+  #513014, closes said bug
+
+  18 May 2014; Mike Gilbert <floppym@gentoo.org> pypy-2.3.ebuild:
+  Remove cffi temporary files during installation.
+
+  16 May 2014; Michał Górny <mgorny@gentoo.org> -pypy-2.0.2.ebuild:
+  Remove old (slotted) version.
+
+*pypy-2.3 (15 May 2014)
+
+  15 May 2014; Mike Gilbert <floppym@gentoo.org>
+  +files/2.3-21_all_distutils_c++.patch, +pypy-2.3.ebuild:
+  Version bump.
+
+  14 May 2014; Mike Gilbert <floppym@gentoo.org> files/1.9-distutils.unixccompil
+  er.UnixCCompiler.runtime_library_dir_option.patch,
+  files/1.9-scripts-location.patch,
+  files/2.0.2-distutils-fix_handling_of_executables_and_flags.patch,
+  files/2.1-distutils-fix_handling_of_executables_and_flags.patch:
+  Normalize paths.
+
+  10 May 2014; Mike Gilbert <floppym@gentoo.org> pypy-2.2.1.ebuild:
+  Add optional dependency on dev-tcltk/tix, bug 413393.
+
+  09 May 2014; Michał Górny <mgorny@gentoo.org> pypy-2.2.1.ebuild:
+  Add USE=tk for tkinter modules. Update the list of cffi-compiled modules. Bug
+  #509794.
+
+  11 Apr 2014; Michał Górny <mgorny@gentoo.org> pypy-2.0.2-r1.ebuild,
+  pypy-2.2.1.ebuild:
+  Add a mutual blocker on pypy-bin.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> pypy-2.0.2-r1.ebuild,
+  pypy-2.0.2.ebuild, pypy-2.2.1.ebuild:
+  Add support for the new PyPy slotting.
+
+*pypy-2.0.2-r1 (30 Mar 2014)
+
+  30 Mar 2014; Michał Górny <mgorny@gentoo.org> +pypy-2.0.2-r1.ebuild:
+  Backport the :0 slot switch to pypy-2.0.2 since we have binpackages for this
+  version.
+
+  18 Mar 2014; Michał Górny <mgorny@gentoo.org> -pypy-9999.ebuild:
+  Remove the live ebuild since it is outdated and not supported.
+
+  12 Mar 2014; Michał Górny <mgorny@gentoo.org> metadata.xml:
+  Add Alice Ferrazzi as proxy-maintainer.
+
+  12 Mar 2014; Michał Górny <mgorny@gentoo.org> pypy-2.2.1.ebuild:
+  Fix to be non-slotted.
+
+*pypy-2.2.1 (12 Mar 2014)
+
+  12 Mar 2014; Patrick Lauer <patrick@gentoo.org>
+  +files/2.1-distutils-fix_handling_of_executables_and_flags.patch,
+  +pypy-2.2.1.ebuild:
+  Bump for #479832, patch by Ian Delaney.
+
+  11 Mar 2014; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #239126
+
+  17 Nov 2013; Matthew Thode <prometheanfire@gentoo.org> pypy-2.0.2.ebuild:
+  fix for pypy on hardened
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> pypy-2.0.2.ebuild,
+  pypy-9999.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org>
+  -files/1.9-distutils-fix_handling_of_executables_and_flags.patch,
+  -files/1.9-get_python_lib_standard_lib-04ea518e5b71.patch,
+  -files/1.9-getargs-freelist-c26dc70ee340.patch,
+  -files/1.9-more-ignored-ops-146ddf82a279.patch,
+  -files/1.9-more-ignored-ops-a9a8faa76bca.patch,
+  -files/1.9-no-bytecode-4151f9c406b6.patch, -files/1.9-no-static-hack.patch,
+  -files/1.9-pybuffer-release-double-decref-4ec2a5b49386.patch,
+  -files/1.9-signal-a33052b17f4e.patch,
+  -files/1.9-ssl-errors-25d3418150d2.patch,
+  -files/1.9-ssl-threads-1-34b3b5aac082.patch,
+  -files/1.9-ssl-threads-2-25cd11066d95.patch, -pypy-1.9-r2.ebuild:
+  Remove PyPy 1.9.
+
+  07 Aug 2013; Michał Górny <mgorny@gentoo.org> pypy-1.9-r2.ebuild,
+  pypy-2.0.2.ebuild, pypy-9999.ebuild:
+  Drop removed Python implementations from PYTHON_COMPAT.
+
+*pypy-9999 (25 Jul 2013)
+
+  25 Jul 2013; Michał Górny <mgorny@gentoo.org> +pypy-9999.ebuild:
+  Introduce a live ebuild to make testing easier.
+
+  25 Jul 2013; Michał Górny <mgorny@gentoo.org> pypy-1.9-r2.ebuild,
+  pypy-2.0.2.ebuild:
+  Drop needless include symlinking and flag-o-matic inherit. Add PaX-marking to
+  1.9.
+
+  22 Jul 2013; Michał Górny <mgorny@gentoo.org> pypy-1.9-r2.ebuild,
+  pypy-2.0.2.ebuild:
+  Clean up and drop meaningless USE flags (bug #477514). Drop USE=ssl (automagic
+  dep, bug #477642). Add sphinx to deps. Add USE=sse2 to control JIT backend on
+  x86. No revbump since this will not cause changes in install unless USE flags
+  are changed.
+
+  21 Jul 2013; Michał Górny <mgorny@gentoo.org>
+  -files/2.0-distutils-fix_handling_of_executables_and_flags.patch,
+  -files/2.0-encoder-3655afd07f2f.patch, -files/2.0-no-static-hack-r1.patch,
+  -files/2.0-no-static-hack.patch,
+  -files/pypy-1.7-distutils-fix_handling_of_executables_and_flags.patch, -files/
+  pypy-1.7-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patc
+  h, -pypy-1.9-r1.ebuild, -pypy-1.9.ebuild, -pypy-2.0_beta1.ebuild,
+  -pypy-2.0_beta2.ebuild:
+  Drop old.
+
+  18 Jun 2013; Ian Delaney <idella4@gentoo.org> pypy-2.0.2.ebuild,
+  pypy-2.0_beta2.ebuild:
+  Correction to symlink
+
+  18 Jun 2013; Ian Delaney <idella4@gentoo.org> pypy-2.0.2.ebuild,
+  pypy-2.0_beta2.ebuild:
+  add doc build & install, symlink to include folder on install, revbump
+  declined
+
+*pypy-2.0.2 (26 May 2013)
+
+  26 May 2013; Mike Gilbert <floppym@gentoo.org>
+  +files/2.0.2-distutils-fix_handling_of_executables_and_flags.patch,
+  +pypy-2.0.2.ebuild:
+  Version bump.
+
+  14 May 2013; Mike Gilbert <floppym@gentoo.org> pypy-2.0_beta2.ebuild:
+  Fix typo in gcc-version, bug 469832 by MiPnamic.
+
+  13 May 2013; Mike Gilbert <floppym@gentoo.org> pypy-2.0_beta2.ebuild:
+  Fix build with sqlite disabled, bug 469654 by René 'Necoro' Neumann.
+
+  10 May 2013; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Adding DOCTYPE to metadata
+
+  08 May 2013; Mike Gilbert <floppym@gentoo.org> pypy-2.0_beta2.ebuild:
+  Disable MPROTECT if jit is enabled, bug 448818.
+
+  08 May 2013; Mike Gilbert <floppym@gentoo.org> pypy-2.0_beta2.ebuild:
+  Die in pkg_pretend if gcc-4.8 is selected.
+
+  05 May 2013; Mike Gilbert <floppym@gentoo.org> pypy-2.0_beta2.ebuild:
+  Pregenerate cffi code for _curses and _sqlite3 modules.
+
+*pypy-2.0_beta2 (05 May 2013)
+
+  05 May 2013; Mike Gilbert <floppym@gentoo.org>
+  +files/2.0-no-static-hack-r1.patch, +pypy-2.0_beta2.ebuild:
+  Version bump.
+
+  21 Feb 2013; Ian Delaney <idella4@gentoo.org>
+  +files/2.0-encoder-3655afd07f2f.patch, pypy-2.0_beta1.ebuild:
+  Patch added from pypy.org/issue1366, makes testsuite of Djblets pypy capable
+  wrt Bug #451958 , decision not to revbump due to onerous load to rebuild
+
+  17 Feb 2013; Mike Gilbert <floppym@gentoo.org> pypy-1.9-r2.ebuild,
+  pypy-2.0_beta1.ebuild:
+  Export CC so the build system picks it up.
+
+  10 Feb 2013; Pacho Ramos <pacho@gentoo.org> -files/1.7-scripts-location.patch,
+  -files/1.8-elf-metadata-26a8d3fc57a7.patch,
+  -files/1.8-sext-instructions-02dc2f6160ee.patch, -pypy-1.8-r1.ebuild,
+  -pypy-1.8-r2.ebuild:
+  Remove masked package
+
+  02 Jan 2013; Mike Gilbert <floppym@gentoo.org> pypy-2.0_beta1.ebuild:
+  Add keywords.
+
+  24 Dec 2012; Zac Medico <zmedico@gentoo.org> pypy-2.0_beta1.ebuild:
+  Add pypy2_0 to PYTHON_COMPAT, since it appears to work.
+
+*pypy-2.0_beta1 (20 Dec 2012)
+
+  20 Dec 2012; Mike Gilbert <floppym@gentoo.org>
+  +files/2.0-distutils-fix_handling_of_executables_and_flags.patch,
+  +files/2.0-no-static-hack.patch, +pypy-2.0_beta1.ebuild:
+  Version bump for testing, bug 445450. No keywords.
+
+  02 Dec 2012; Mike Gilbert <floppym@gentoo.org> pypy-1.8-r2.ebuild,
+  pypy-1.9-r2.ebuild:
+  Add missing back-slashes.
+
+  01 Dec 2012; Mike Gilbert <floppym@gentoo.org> pypy-1.8-r2.ebuild,
+  pypy-1.9-r2.ebuild:
+  Fix module compilation and simpify PYTHONPATH for grammar pickle generation.
+
+*pypy-1.8-r2 (01 Dec 2012)
+*pypy-1.9-r2 (01 Dec 2012)
+
+  01 Dec 2012; Michał Górny <mgorny@gentoo.org> +pypy-1.8-r2.ebuild,
+  +pypy-1.9-r2.ebuild:
+  Introduce a cleaned up PyPy ebuilds using python-any-r1 & installing epython
+  module.
+
+  18 Nov 2012; Mike Gilbert <floppym@gentoo.org> pypy-1.8-r1.ebuild,
+  pypy-1.9-r1.ebuild, pypy-1.9.ebuild:
+  Install README file, bug 442966 by Phr33d0m.
+
+  05 Oct 2012; Dirkjan Ochtman <djc@gentoo.org> metadata.xml:
+  Remove local description of jit USE flag (bug 416605).
+
+  17 Jun 2012; Jeremy Olexa <darkside@gentoo.org> pypy-1.9-r1.ebuild:
+  add prefix keywords, bug 420621
+
+*pypy-1.9-r1 (17 Jun 2012)
+
+  17 Jun 2012; Marien Zwart <marienz@gentoo.org>
+  +files/1.9-get_python_lib_standard_lib-04ea518e5b71.patch,
+  +files/1.9-getargs-freelist-c26dc70ee340.patch,
+  +files/1.9-more-ignored-ops-146ddf82a279.patch,
+  +files/1.9-more-ignored-ops-a9a8faa76bca.patch,
+  +files/1.9-no-static-hack.patch,
+  +files/1.9-pybuffer-release-double-decref-4ec2a5b49386.patch,
+  +files/1.9-signal-a33052b17f4e.patch,
+  +files/1.9-ssl-errors-25d3418150d2.patch,
+  +files/1.9-ssl-threads-1-34b3b5aac082.patch,
+  +files/1.9-ssl-threads-2-25cd11066d95.patch, +pypy-1.9-r1.ebuild:
+  Revision bump including several patches from upstream (including a fix for bug
+  #421361), a fix needed for prefix (bug #420621, thanks to XU Benda) and
+  support for picking up -j from MAKEOPTS (bug #403991).
+
+  15 Jun 2012; Dirkjan Ochtman <djc@gentoo.org> metadata.xml:
+  Remove myself as a maintainer, I'm in the python herd.
+
+*pypy-1.9 (08 Jun 2012)
+
+  08 Jun 2012; Dirkjan Ochtman <djc@gentoo.org>
+  +files/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.p
+  atch, +files/1.9-scripts-location.patch, +pypy-1.9.ebuild,
+  +files/1.9-no-bytecode-4151f9c406b6.patch,
+  +files/1.9-distutils-fix_handling_of_executables_and_flags.patch:
+  Version bump to 1.9.
+
+  08 Jun 2012; Dirkjan Ochtman <djc@gentoo.org> metadata.xml:
+  Remove unused USE flag.
+
+  08 Jun 2012; Dirkjan Ochtman <djc@gentoo.org> -files/1.7-patches.patch,
+  -pypy-1.7-r2.ebuild, -pypy-1.8.ebuild:
+  Remove old versions.
+
+  28 Feb 2012; Mike Gilbert <floppym@gentoo.org> pypy-1.7-r2.ebuild,
+  pypy-1.8-r1.ebuild:
+  Apply patch from Arfrever for bug 406129. Tested by Ian Delaney.
+
+  16 Feb 2012; Dirkjan Ochtman <djc@gentoo.org> pypy-1.8-r1.ebuild:
+  Add fake xml useflag for dependencies (suggested by Arfrever).
+
+*pypy-1.8-r1 (16 Feb 2012)
+
+  16 Feb 2012; Dirkjan Ochtman <djc@gentoo.org> +pypy-1.8-r1.ebuild,
+  +files/1.8-sext-instructions-02dc2f6160ee.patch,
+  +files/1.8-elf-metadata-26a8d3fc57a7.patch:
+  Made xml mandatory, stackless is built by default, split patches.
+
+  14 Feb 2012; Mike Gilbert <floppym@gentoo.org> pypy-1.7-r2.ebuild,
+  pypy-1.8.ebuild:
+  Adjust memory requirements.
+
+  12 Feb 2012; Mike Gilbert <floppym@gentoo.org> -pypy-1.7.ebuild,
+  pypy-1.7-r2.ebuild, pypy-1.8.ebuild:
+  Rename 1.7 tarball as well. Override src_unpack to avoid having to hardcode S.
+  Drop old version.
+
+  12 Feb 2012; Mike Gilbert <floppym@gentoo.org> pypy-1.8.ebuild:
+  Rename source tarball.
+
+*pypy-1.8 (12 Feb 2012)
+
+  12 Feb 2012; Dirkjan Ochtman <djc@gentoo.org> +pypy-1.8.ebuild, metadata.xml:
+  Version bump to 1.8. Some test failures, but seems to be okay.
+
+  02 Feb 2012; Mike Gilbert <floppym@gentoo.org> pypy-1.7-r2.ebuild:
+  Add sqlite USE flag, patch by Arfrever. Make several variables local.
+
+*pypy-1.7-r2 (01 Feb 2012)
+
+  01 Feb 2012; Mike Gilbert <floppym@gentoo.org> +pypy-1.7-r2.ebuild,
+  -pypy-1.7-r1.ebuild,
+  files/pypy-1.7-distutils-fix_handling_of_executables_and_flags.patch:
+  Updated patch from Arfrever.
+
+*pypy-1.7-r1 (30 Jan 2012)
+
+  30 Jan 2012; Mike Gilbert <floppym@gentoo.org>
+  +files/pypy-1.7-distutils-fix_handling_of_executables_and_flags.patch, +files/
+  pypy-1.7-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patc
+  h, +pypy-1.7-r1.ebuild:
+  Apply patches from Arfrever to resolve bug 397523.
+
+  15 Jan 2012; Markos Chandras <hwoarang@gentoo.org> pypy-1.7.ebuild:
+  Don't call use() in global scope. Patch by Arfrever.
+
+  13 Dec 2011; Nirbheek Chauhan <nirbheek@gentoo.org> pypy-1.7.ebuild,
+  metadata.xml:
+  Remove USE=stackless, which is not optional any longer. Add the ~x86 keyword.
+  Add myself as co-maintainer.
+
+  30 Nov 2011; Dirkjan Ochtman <djc@gentoo.org> pypy-1.7.ebuild:
+  Fix problems resulting from earlier failing ${S}.
+
+  30 Nov 2011; Dirkjan Ochtman <djc@gentoo.org> -files/1.5-patches.patch,
+  -pypy-1.5.ebuild:
+  Remove old version.
+
+*pypy-1.7 (30 Nov 2011)
+
+  30 Nov 2011; Dirkjan Ochtman <djc@gentoo.org> +files/1.7-patches.patch,
+  +files/1.7-scripts-location.patch, +pypy-1.7.ebuild:
+  Version bump to 1.7 (bugs fixed: 379791, 383063, 373487).
+
+  24 Jun 2011; Dirkjan Ochtman <djc@gentoo.org> pypy-1.5.ebuild:
+  Fix bug 372641, bug 372639, bug 372517.
+
+*pypy-1.5 (06 Jun 2011)
+
+  06 Jun 2011; Dirkjan Ochtman <djc@gentoo.org> +files/1.5-patches.patch,
+  +pypy-1.5.ebuild, +metadata.xml:
+  Initial version of pypy (bug 300301).

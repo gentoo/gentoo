@@ -1,0 +1,5 @@
+#!/bin/sh
+# This requires that AUTOCHECK is true in /etc/default/mdadm
+if [ -x /usr/sbin/checkarray ] && [ $(date +\%d) -le 7 ]; then
+	/usr/sbin/checkarray --cron --all --idle --quiet
+fi

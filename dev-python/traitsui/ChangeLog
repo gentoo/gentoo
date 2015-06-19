@@ -1,0 +1,69 @@
+# ChangeLog for dev-python/traitsui
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/traitsui/ChangeLog,v 1.16 2015/06/07 16:18:22 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  27 May 2015; Manuel Rüger <mrueg@gentoo.org> -traitsui-4.3.0-r1.ebuild:
+  Remove old.
+
+  09 Mar 2015; Pacho Ramos <pacho@gentoo.org> traitsui-4.4.0.ebuild:
+  x86 stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> traitsui-4.4.0.ebuild:
+  ppc stable, bug 540290
+
+  07 Mar 2015; Pacho Ramos <pacho@gentoo.org> traitsui-4.4.0.ebuild:
+  ppc64 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> traitsui-4.4.0.ebuild:
+  amd64 stable, bug 540290
+
+  23 Jan 2015; Manuel Rüger <mrueg@gentoo.org> -traitsui-4.0.1.ebuild,
+  -traitsui-4.1.0.ebuild, -traitsui-4.2.0.ebuild, -traitsui-4.3.0.ebuild:
+  Remove old.
+
+*traitsui-4.4.0 (29 Jan 2014)
+
+  29 Jan 2014; Sébastien Fabbro <bicatali@gentoo.org> +traitsui-4.4.0.ebuild,
+  metadata.xml:
+  Version bump, add pypi upstream check
+
+  12 Apr 2013; Ian Delaney <idella4@gentoo.org>
+  +files/traitsui-4.3.0-tests.patch, traitsui-4.3.0-r1.ebuild:
+  test phase fixed again, upstream provided (an unexpected) fix in tracker
+  issues#74
+
+*traitsui-4.3.0-r1 (11 Apr 2013)
+
+  11 Apr 2013; Ian Delaney <idella4@gentoo.org> +traitsui-4.3.0-r1.ebuild:
+  migration -> distutils-r1, test phase fixed
+
+*traitsui-4.3.0 (03 Apr 2013)
+
+  03 Apr 2013; Patrick Lauer <patrick@gentoo.org> +traitsui-4.3.0.ebuild:
+  Bump
+
+  06 Dec 2012; Sébastien Fabbro <bicatali@gentoo.org> traitsui-4.2.0.ebuild:
+  Keyword amd64-linux and x86-linux
+
+*traitsui-4.2.0 (09 Oct 2012)
+
+  09 Oct 2012; Patrick Lauer <patrick@gentoo.org> +traitsui-4.2.0.ebuild:
+  Bump
+
+  22 Feb 2012; Patrick Lauer <patrick@gentoo.org> traitsui-4.0.1.ebuild,
+  traitsui-4.1.0.ebuild:
+  Restricting py 2.5
+
+*traitsui-4.1.0 (17 Jan 2012)
+
+  17 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org> +traitsui-4.1.0.ebuild:
+  Version bump
+
+*traitsui-4.0.1 (03 Aug 2011)
+
+  03 Aug 2011; Sébastien Fabbro <bicatali@gentoo.org> +traitsui-4.0.1.ebuild,
+  +metadata.xml:
+  Initial import

@@ -1,0 +1,12 @@
+# ChangeLog for dev-ruby/cliver
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/cliver/ChangeLog,v 1.2 2015/03/20 13:36:11 graaff Exp $
+
+  20 Mar 2015; Hans de Graaff <graaff@gentoo.org> cliver-0.3.2.ebuild:
+  Add ruby22.
+
+*cliver-0.3.2 (04 Sep 2014)
+
+  04 Sep 2014; Manuel Rüger <mrueg@gentoo.org> +cliver-0.3.2.ebuild,
+  +metadata.xml:
+  Initial commit. Original ebuild by graaff.

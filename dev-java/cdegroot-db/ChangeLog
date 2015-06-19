@@ -1,0 +1,49 @@
+# ChangeLog for dev-java/cdegroot-db
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/cdegroot-db/ChangeLog,v 1.11 2012/11/16 09:30:56 ulm Exp $
+
+  16 Nov 2012; Ulrich Müller <ulm@gentoo.org> cdegroot-db-0.08-r1.ebuild:
+  Update LICENSE, this is exactly the MIT/X11 license, only with different
+  copyright holder.
+
+  09 May 2007; Petteri Räty <betelgeuse@gentoo.org>
+  cdegroot-db-0.08-r1.ebuild:
+  Remove bundled jars in src_unpack.
+
+  25 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -cdegroot-db-0.08.ebuild, cdegroot-db-0.08-r1.ebuild:
+  Clean DEPEND.
+
+*cdegroot-db-0.08-r1 (20 Dec 2006)
+
+  20 Dec 2006; Petteri Räty <betelgeuse@gentoo.org>
+  +cdegroot-db-0.08-r1.ebuild:
+  Ported to generation 2.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  cdegroot-db-0.08.ebuild:
+  Dropping sparc keywords, see #96229
+
+  18 May 2005; Markus Rothe <corsair@gentoo.org> cdegroot-db-0.08.ebuild:
+  Stable on ppc64
+
+  06 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  cdegroot-db-0.08.ebuild:
+  Stable on sparc
+
+  04 May 2005; Jan Brinkmann <luckyduck@gentoo.org> cdegroot-db-0.08.ebuild:
+  stable on amd64, ppc and x86. introduced support for the source useflag
+
+  23 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> cdegroot-db-0.08.ebuild:
+  Keyworded ~sparc wrt #84992
+
+  13 Mar 2005; Markus Rothe <corsair@gentoo.org> cdegroot-db-0.08.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*cdegroot-db-0.08 (06 Feb 2005)
+
+  06 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> +metadata.xml,
+  +files/build.xml, +files/cdegroot-db-0.08-gentoo.patch,
+  +cdegroot-db-0.08.ebuild:
+  Initial import.
+

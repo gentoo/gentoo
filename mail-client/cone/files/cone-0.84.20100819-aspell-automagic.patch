@@ -1,0 +1,84 @@
+--- cone-0.84.20100819/cone/configure.in.orig	2010-11-11 22:08:37.279191265 -0800
++++ cone-0.84.20100819/cone/configure.in	2010-11-11 23:26:22.685898387 -0800
+@@ -168,19 +168,9 @@
+ LIBS="$save_LIBS"
+ AC_MSG_RESULT($PSPELL)
+ 
+-ALLSPELLOBJ='spellcheckerNone.$(OBJEXT)'
+-if test "$ASPELL" = "yes"
+-then
+-	ALLSPELLOBJ='spellcheckerAspell.$(OBJEXT)'" $ALLSPELLOBJ"
+-fi
+-
+-if test "$PSPELL" = "yes"
+-then
+-	ALLSPELLOBJ='spellcheckerPspell.$(OBJEXT)'" $ALLSPELLOBJ"
+-fi
+-
+ AC_ARG_WITH(spellcheck, [  --with-spellcheck=pspell      Use pspell for spell checking
+-  --with-spellcheck=aspell      Use aspell for spell checking], [
++  --with-spellcheck=aspell      Use aspell for spell checking
++  --with-spellcheck=none        Disable spell checking], [
+ 
+ case "$withval" in
+ pspell)
+@@ -196,6 +186,10 @@
+ 		AC_MSG_ERROR(aspell library not found)
+ 	fi
+ 	;;
++none)
++	SPELL="no"
++	# Spellchecking is not enabled
++	;;
+ *)
+ 	AC_MSG_ERROR(Invalid --with-spellcheck option)
+ 	;;
+@@ -216,24 +210,34 @@
+ AC_MSG_RESULT(yes)
+ ], AC_MSG_RESULT(no))
+ 
+-if test "$ASPELL" = "yes"
++if test "$SPELL" = "no"
+ then
+-	SPELL_OBJ='spellcheckerAspell.$(OBJEXT)'
+-	AC_DEFINE_UNQUOTED(USE_ASPELL, 1, [ Use aspell library for spell checking ])
+-	SPELL_LIB='-laspell'
++	ALLSPELLOBJ='spellcheckerNone.$(OBJEXT)'
++	SPELL_OBJ='spellcheckerNone.$(OBJEXT)'
++	SPELL_LIB=''
++	AC_MSG_WARN(Disabling spell checking)
+ else
+-	if test "$PSPELL" = "yes"
++	if test "$ASPELL" = "yes"
+ 	then
+-		AC_DEFINE_UNQUOTED(USE_PSPELL, 1, [ Use aspell library for spell checking ])
+-		SPELL_OBJ='spellcheckerPspell.$(OBJEXT)'
+-		SPELL_LIB='-lpspell'
++		ALLSPELLOBJ='spellcheckerAspell.$(OBJEXT)'" $ALLSPELLOBJ"
++		SPELL_OBJ='spellcheckerAspell.$(OBJEXT)'
++		AC_DEFINE_UNQUOTED(USE_ASPELL, 1, [ Use aspell library for spell checking ])
++		SPELL_LIB='-laspell'
+ 	else
+-		AC_MSG_WARN(---------------------------------------------------------------)
+-		AC_MSG_WARN(Neither pspell nor aspell was found -- disabling spell checking)
+-		AC_MSG_WARN(---------------------------------------------------------------)
+-		sleep 5
+-		SPELL_OBJ='spellcheckerNone.$(OBJEXT)'
+-		SPELL_LIB=''
++		if test "$PSPELL" = "yes"
++		then
++			ALLSPELLOBJ='spellcheckerPspell.$(OBJEXT)'" $ALLSPELLOBJ"
++			AC_DEFINE_UNQUOTED(USE_PSPELL, 1, [ Use aspell library for spell checking ])
++			SPELL_OBJ='spellcheckerPspell.$(OBJEXT)'
++			SPELL_LIB='-lpspell'
++		else
++			AC_MSG_WARN(---------------------------------------------------------------)
++			AC_MSG_WARN(Neither pspell nor aspell was found -- disabling spell checking)
++			AC_MSG_WARN(---------------------------------------------------------------)
++			sleep 5
++			SPELL_OBJ='spellcheckerNone.$(OBJEXT)'
++			SPELL_LIB=''
++		fi
+ 	fi
+ fi
+ 

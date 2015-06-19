@@ -1,0 +1,72 @@
+Make it work with GTK+ 2.
+
+--- otpCalc-0.97-orig/Makefile.in
++++ otpCalc-0.97/Makefile.in
+@@ -3,8 +3,8 @@
+ 
+ CC = @CC@
+ DEFS = -DVERSION=\"$(VER)\" @DEFS@
+-CFLAGS = -s -O3 -Wall -pipe `gtk-config --cflags`
+-LIBS = `gtk-config --libs` @LIBS@
++CFLAGS = -s -O3 -Wall -pipe `pkg-config --cflags gtk+-2.0`
++LIBS = `pkg-config --libs gtk+-2.0` @LIBS@
+ 
+ prefix = @prefix@
+ exec_prefix = @exec_prefix@
+--- otpCalc-0.97-orig/callbacks.c
++++ otpCalc-0.97/callbacks.c
+@@ -236,7 +236,7 @@
+ }
+ 
+ 
+-void focus(GtkWidget *widget, gpointer data)
++gboolean focus(GtkWidget *widget, GdkEvent *event, gpointer data)
+ {
+ 
+ 	static GdkAtom targets;
+@@ -244,12 +244,12 @@
+ 
+ 
+ 	if (!autopaste)
+-		return;
++		return FALSE;
+ 
+ 	targets = gdk_atom_intern("STRING", FALSE);
+ 
+ 	gtk_selection_convert(widget, GDK_SELECTION_PRIMARY, targets,
+ 			      GDK_CURRENT_TIME);
+ 
+-
++	return FALSE;
+ }
+--- otpCalc-0.97-orig/gui.c
++++ otpCalc-0.97/gui.c
+@@ -29,7 +29,7 @@
+ GtkWidget *te_response;
+ 
+ unsigned short hash;
+-unsigned short newline = 1;
++unsigned short newline = 0;
+ unsigned short autopaste = 1;
+ 
+ int main(int argc, char *argv[])
+@@ -147,7 +147,7 @@
+ 
+ 	/* Setup the menu bar... */
+ 	mb_top = gtk_menu_bar_new();
+-	gtk_menu_bar_set_shadow_type(GTK_MENU_BAR(mb_top), GTK_SHADOW_NONE); 
++	/*gtk_menu_bar_set_shadow_type(GTK_MENU_BAR(mb_top), GTK_SHADOW_NONE);*/
+ 	gtk_table_attach(GTK_TABLE(ta_top), mb_top, 0, 3, 0, 1,
+ 			 (GtkAttachOptions)(GTK_FILL),
+ 			 (GtkAttachOptions)(0), 0, 0);
+--- otpCalc-0.97-orig/utility.c
++++ otpCalc-0.97/utility.c
+@@ -422,7 +422,7 @@
+ 			words[extract(message, 33, 11)],
+ 			words[extract(message, 44, 11)],
+ 			words[extract(message, 55, 11)],
+-			(newline == 1) ? "\n" : NULL);
++			(newline == 1) ? "\n" : "");
+ 
+ 	return response;
+ 

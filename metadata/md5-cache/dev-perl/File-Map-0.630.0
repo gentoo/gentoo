@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=virtual/perl-Carp dev-perl/PerlIO-Layers >=dev-perl/Sub-Exporter-Progressive-0.1.5 virtual/perl-XSLoader >=dev-perl/Module-Build-0.360.100 test? ( virtual/perl-File-Spec virtual/perl-IO virtual/perl-Scalar-List-Utils dev-perl/Test-Fatal virtual/perl-Test-Simple >=dev-perl/Test-Warnings-0.5.0 virtual/perl-Time-HiRes ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Memory mapping made simple and safe
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/File-Map/
+IUSE=test
+KEYWORDS=~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp dev-perl/PerlIO-Layers >=dev-perl/Sub-Exporter-Progressive-0.1.5 virtual/perl-XSLoader dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/L/LE/LEONT/File-Map-0.63.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	multiprocessing	d7f2985a2c76c365ee20269db5261414	perl-module	9ff260c452d420630500e700913be8d8	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52
+_md5_=1893dfdfd28ff3cfca2e9cdccc755ef8

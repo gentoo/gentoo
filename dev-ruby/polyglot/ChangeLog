@@ -1,0 +1,142 @@
+# ChangeLog for dev-ruby/polyglot
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/polyglot/ChangeLog,v 1.34 2015/05/09 05:58:23 graaff Exp $
+
+  09 May 2015; Hans de Graaff <graaff@gentoo.org> polyglot-0.3.5.ebuild:
+  Use rm -f to avoid issues like bug 540182.
+
+  09 May 2015; Hans de Graaff <graaff@gentoo.org> -polyglot-0.3.4.ebuild:
+  Cleanup.
+
+  11 Apr 2015; Hans de Graaff <graaff@gentoo.org> polyglot-0.3.5.ebuild:
+  Add ruby22.
+
+  26 Nov 2014; Manuel Rüger <mrueg@gentoo.org> polyglot-0.3.4.ebuild,
+  polyglot-0.3.5.ebuild:
+  Drop jruby target.
+
+*polyglot-0.3.5 (30 May 2014)
+
+  30 May 2014; Hans de Graaff <graaff@gentoo.org> +polyglot-0.3.5.ebuild:
+  Version bump.
+
+  21 May 2014; Manuel Rüger <mrueg@gentoo.org> -polyglot-0.3.3-r1.ebuild,
+  polyglot-0.3.4.ebuild:
+  Remove ruby18 target. Cleanup old.
+
+*polyglot-0.3.4 (20 Feb 2014)
+
+  20 Feb 2014; Hans de Graaff <graaff@gentoo.org> +polyglot-0.3.4.ebuild:
+  Version bump.
+
+*polyglot-0.3.3-r1 (11 Nov 2013)
+
+  11 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +polyglot-0.3.3-r1.ebuild,
+  -polyglot-0.3.3.ebuild:
+  Add ruby20 target. Cleanup old.
+
+  16 Jan 2013; Rick Farina <zerochaos@gentoo.org> polyglot-0.3.3.ebuild:
+  adding ~arm keywords to net-analyzer/metasploit rdeps
+
+  10 Sep 2012; Hans de Graaff <graaff@gentoo.org> -polyglot-0.3.1.ebuild,
+  -polyglot-0.3.2.ebuild:
+  Cleanup.
+
+  01 May 2012; Raúl Porcel <armin76@gentoo.org> polyglot-0.3.1.ebuild,
+  polyglot-0.3.2.ebuild, polyglot-0.3.3.ebuild:
+  Drop ia64/sparc keywords
+
+  31 Dec 2011; Fabian Groffen <grobian@gentoo.org> polyglot-0.3.3.ebuild:
+  Add Prefix keywords, bug #396547
+
+  05 Dec 2011; Naohiro Aota <naota@gentoo.org> polyglot-0.3.3.ebuild:
+  Add ~x86-fbsd.
+
+*polyglot-0.3.3 (02 Nov 2011)
+
+  02 Nov 2011; Hans de Graaff <graaff@gentoo.org> +polyglot-0.3.3.ebuild:
+  Version bump.
+
+  09 Sep 2011; Fabian Groffen <grobian@gentoo.org> polyglot-0.3.2.ebuild:
+  Marked ~sparc-solaris
+
+  31 Jul 2011; Raúl Porcel <armin76@gentoo.org> polyglot-0.3.1.ebuild,
+  polyglot-0.3.2.ebuild:
+  Add ~ia64
+
+*polyglot-0.3.2 (27 Jul 2011)
+
+  27 Jul 2011; Hans de Graaff <graaff@gentoo.org> +polyglot-0.3.2.ebuild:
+  Version bump.
+
+  29 Jun 2011; Fabian Groffen <grobian@gentoo.org> polyglot-0.3.1.ebuild:
+  Marked ~x86-solaris
+
+  04 Dec 2010; Hans de Graaff <graaff@gentoo.org> polyglot-0.3.1.ebuild:
+  Add ree18 target.
+
+  25 Oct 2010; Jeroen Roovers <jer@gentoo.org> polyglot-0.3.1.ebuild:
+  Marked ~hppa (bug #337956).
+
+  22 May 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  polyglot-0.3.1.ebuild:
+  Various cleanups.
+
+  27 Apr 2010; Hans de Graaff <graaff@gentoo.org> -polyglot-0.2.9.ebuild,
+  -polyglot-0.2.9-r1.ebuild, -polyglot-0.3.0.ebuild:
+  Remove old versions.
+
+*polyglot-0.3.1 (01 Apr 2010)
+
+  01 Apr 2010; Hans de Graaff <graaff@gentoo.org> +polyglot-0.3.1.ebuild:
+  Version bump.
+
+*polyglot-0.3.0 (04 Mar 2010)
+
+  04 Mar 2010; Hans de Graaff <graaff@gentoo.org> +polyglot-0.3.0.ebuild:
+  Version bump.
+
+  13 Feb 2010; Raúl Porcel <armin76@gentoo.org> polyglot-0.2.9.ebuild,
+  polyglot-0.2.9-r1.ebuild:
+  Add ~sparc
+
+  21 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  polyglot-0.2.9-r1.ebuild:
+  Add ruby19/jruby as they pass tests, also make sure to let the ebuild die
+  if tests fail.
+
+  14 Jan 2010; Brent Baude <ranger@gentoo.org> polyglot-0.2.9-r1.ebuild:
+  Marking polyglot-0.2.9-r1 ~ppc for bug 300739
+
+  13 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  polyglot-0.2.9-r1.ebuild:
+  Use EXTRADOC variable.
+
+  13 Jan 2010; Brent Baude <ranger@gentoo.org> polyglot-0.2.9-r1.ebuild:
+  Marking polyglot-0.2.9-r1 ~ppc64 for bug 300739
+
+*polyglot-0.2.9-r1 (16 Dec 2009)
+
+  16 Dec 2009; Hans de Graaff <graaff@gentoo.org> +polyglot-0.2.9-r1.ebuild:
+  Bump to use ruby-fakegem.
+
+  09 Dec 2009; Hans de Graaff <graaff@gentoo.org> -polyglot-0.2.6.ebuild,
+  -polyglot-0.2.8.ebuild:
+  Remove old versions.
+
+*polyglot-0.2.9 (16 Sep 2009)
+
+  16 Sep 2009; Hans de Graaff <graaff@gentoo.org> +polyglot-0.2.9.ebuild:
+  Version bump: Use to_s on Pathname to support Ruby 1.9
+
+*polyglot-0.2.8 (19 Aug 2009)
+
+  19 Aug 2009; Hans de Graaff <graaff@gentoo.org> +polyglot-0.2.8.ebuild:
+  Version bump: fixes related to catching of LoadErrors.
+
+*polyglot-0.2.6 (08 Aug 2009)
+
+  08 Aug 2009; Hans de Graaff <graaff@gentoo.org> +polyglot-0.2.6.ebuild,
+  +metadata.xml:
+  Initial import. Dependency of forthcoming dev-ruby/treetop, which in turn
+  is a dependency of cucumber.

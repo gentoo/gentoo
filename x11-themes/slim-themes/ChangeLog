@@ -1,0 +1,148 @@
+# ChangeLog for x11-themes/slim-themes
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/slim-themes/ChangeLog,v 1.35 2015/03/02 19:28:28 axs Exp $
+
+  02 Mar 2015; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  slim-themes-1.2.3a-r6.ebuild:
+  dropped berlios.de per bug 537814, thanks to mm1ke pull req #51
+
+  22 Aug 2013; Ian Stakenvicius <axs@gentoo.org> slim-themes-1.2.3a-r6.ebuild:
+  added ~mips keyword to match x11-misc/slim
+
+  11 Feb 2013; Agostino Sarubbo <ago@gentoo.org> slim-themes-1.2.3a-r6.ebuild:
+  Stable for arm, wrt bug #455856
+
+  08 Aug 2012; Ian Stakenvicius <axs@gentoo.org> metadata.xml:
+  Changing maintainer
+
+  23 Jun 2012; Luca Barbato <lu_zero@gentoo.org> slim-themes-1.2.3a-r6.ebuild:
+  Tested on efikamx
+
+  27 May 2011; Naohiro Aota <naota@gentoo.org> slim-themes-1.2.3a-r6.ebuild:
+  Add ~x86-fbsd keyword
+
+  21 May 2010; Jeremy Olexa <darkside@gentoo.org>
+  -slim-themes-1.2.3a-r5.ebuild, slim-themes-1.2.3a-r6.ebuild:
+  Mark stable on amd64 ppc ppc64 sparc x86, no arch-dependant files in this
+  package
+
+*slim-themes-1.2.3a-r6 (28 Mar 2010)
+
+  28 Mar 2010; Jeremy Olexa <darkside@gentoo.org>
+  -slim-themes-1.2.3a-r3.ebuild, +slim-themes-1.2.3a-r6.ebuild,
+  +files/slim-theme-flat.diff:
+  Add small patch from Denilson in bug 303815 to improve the flat theme
+
+  30 Dec 2009; Raúl Porcel <armin76@gentoo.org>
+  slim-themes-1.2.3a-r5.ebuild:
+  sparc stable wrt #293332
+
+  19 Dec 2009; Daniel Pielmeier <billie@gentoo.org>
+  slim-themes-1.2.3a-r5.ebuild:
+  Re-add accidently removed ppc64 stable keywords.
+
+*slim-themes-1.2.3a-r5 (19 Dec 2009)
+
+  19 Dec 2009; Daniel Pielmeier <billie@gentoo.org>
+  -slim-themes-1.2.3a-r4.ebuild, +slim-themes-1.2.3a-r5.ebuild:
+  Use fixed tarballs from bug #291736 to install the gentoo-ten themes
+  correct. Remove revision with the incorrect tarballs. Use doins instead
+  of cp.
+
+  09 Dec 2009; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking slim-themes-1.2.3a-r3 ppc64 and -r4 ~ppc64 for bug 293332
+
+  08 Dec 2009; nixnut <nixnut@gentoo.org> slim-themes-1.2.3a-r4.ebuild:
+  ppc stable #293332
+
+  19 Nov 2009; Markus Meier <maekke@gentoo.org>
+  slim-themes-1.2.3a-r4.ebuild:
+  amd64/x86 stable, bug #293332
+
+  16 Nov 2009; Jeremy Olexa <darkside@gentoo.org>
+  slim-themes-1.2.3a-r4.ebuild:
+  Use upstream SRC_URI, bug 291736
+
+*slim-themes-1.2.3a-r4 (30 Oct 2009)
+
+  30 Oct 2009; Jeremy Olexa <darkside@gentoo.org>
+  +slim-themes-1.2.3a-r4.ebuild:
+  Add new 10.0 themes, by hitachi in bug 290523
+
+  25 Mar 2009; Jeremy Olexa <darkside@gentoo.org>
+  slim-themes-1.2.3a-r3.ebuild:
+  Fix SRC_URI for missing distfile upstream, bug 263118
+
+  21 Mar 2009; Krzysiek Pawlik <nelchael@gentoo.org>
+  -slim-themes-1.2.3a.ebuild:
+  Remove old versions.
+
+  20 Mar 2009; Joseph Jezak <josejx@gentoo.org>
+  slim-themes-1.2.3a-r3.ebuild:
+  Marked ppc/ppc64 stable for bug #261124.
+
+  07 Mar 2009; Raúl Porcel <armin76@gentoo.org>
+  slim-themes-1.2.3a-r3.ebuild:
+  sparc/x86 stable wrt #261124
+
+  06 Mar 2009; Thomas Anderson <gentoofan23@gentoo.org>
+  slim-themes-1.2.3a-r3.ebuild:
+  stable amd64, bug 261124
+
+*slim-themes-1.2.3a-r3 (23 Dec 2008)
+
+  23 Dec 2008; Jeremy Olexa <darkside@gentoo.org>
+  -slim-themes-1.2.3a-r2.ebuild, +slim-themes-1.2.3a-r3.ebuild:
+  More themes! New Gentoo theme from bug 107526, ebuild diff by Daniel Pielmeier
+
+  14 Dec 2008; Jeremy Olexa <darkside@gentoo.org>
+  slim-themes-1.2.3a-r2.ebuild:
+  malformed header, fix
+
+*slim-themes-1.2.3a-r2 (14 Dec 2008)
+
+  14 Dec 2008; Jeremy Olexa <darkside@gentoo.org>
+  -slim-themes-1.2.3a-r1.ebuild, +slim-themes-1.2.3a-r2.ebuild:
+  Add xfce-g-box theme, ebuild submitted by BT, bug #249880
+
+*slim-themes-1.2.3a-r1 (11 Dec 2008)
+
+  11 Dec 2008; Jeremy Olexa <darkside@gentoo.org>
+  +slim-themes-1.2.3a-r1.ebuild:
+  Version bump to include Josh Saddler's (nightmorph) theme
+
+  26 Sep 2008; Jeremy Olexa <darkside@gentoo.org> metadata.xml:
+  permission from yngwin of the desktop-misc team to maintain this too
+
+  26 Sep 2008; Alexis Ballier <aballier@gentoo.org>
+  slim-themes-1.2.3a.ebuild:
+  keyword ~ppc64, working fine on a PowerMac 970
+
+  29 Aug 2008; Markus Meier <maekke@gentoo.org> slim-themes-1.2.3a.ebuild:
+  amd64/x86 stable, bug #209540
+
+  27 Aug 2008; Brent Baude <ranger@gentoo.org> slim-themes-1.2.3a.ebuild:
+  stable ppc, bug 209540
+
+  08 Sep 2007; nixnut <nixnut@gentoo.org> slim-themes-1.2.3a.ebuild:
+  Added ~ppc wrt bug 188305
+
+  12 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  slim-themes-1.2.3a.ebuild:
+  Stable on sparc
+
+  30 May 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  slim-themes-1.2.3a.ebuild:
+  Keyworded ~sparc wrt #180204
+
+  02 May 2007; Samuli Suominen <drac@gentoo.org> slim-themes-1.2.3a.ebuild:
+  Keyword ~amd64.
+
+  02 May 2007; Samuli Suominen <drac@gentoo.org> slim-themes-1.2.3a.ebuild:
+  Stop installing dummy documentation.
+
+*slim-themes-1.2.3a (02 May 2007)
+
+  02 May 2007; Samuli Suominen <drac@gentoo.org> +metadata.xml,
+  +slim-themes-1.2.3a.ebuild:
+  Initial commit based on ebuild in Sunrise Overlay. Bug 107526.

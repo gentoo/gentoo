@@ -1,0 +1,58 @@
+# ChangeLog for app-emulation/ganeti-instance-debootstrap
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/ganeti-instance-debootstrap/ChangeLog,v 1.9 2013/12/23 15:57:38 pacho Exp $
+
+  23 Dec 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #66351
+
+*ganeti-instance-debootstrap-0.12 (13 May 2013)
+
+  13 May 2013; Lance Albertson <ramereth@gentoo.org>
+  +ganeti-instance-debootstrap-0.12.ebuild:
+  Version bump
+
+  12 Aug 2012; Markus Meier <maekke@gentoo.org>
+  ganeti-instance-debootstrap-0.11.ebuild:
+  x86 stable, bug #421985
+
+  03 Aug 2012; Markos Chandras <hwoarang@gentoo.org>
+  ganeti-instance-debootstrap-0.11.ebuild:
+  Stable on amd64 wrt bug #421985
+
+*ganeti-instance-debootstrap-0.11 (13 May 2012)
+
+  13 May 2012; Lance Albertson <ramereth@gentoo.org>
+  +ganeti-instance-debootstrap-0.11.ebuild:
+  Version bump
+
+  22 Jan 2011; Lance Albertson <ramereth@gentoo.org>
+  -ganeti-instance-debootstrap-0.7.ebuild,
+  -files/ganeti-instance-debootstrap-0.7-no-etc-default.patch,
+  -ganeti-instance-debootstrap-0.8.ebuild,
+  ganeti-instance-debootstrap-0.9.ebuild:
+  Stabilize latest release, ebuild cleanup
+
+*ganeti-instance-debootstrap-0.9 (12 Mar 2010)
+
+  12 Mar 2010; Lance Albertson <ramereth@gentoo.org>
+  +ganeti-instance-debootstrap-0.9.ebuild:
+  Version bump to 0.9
+
+  * Install example hooks
+
+*ganeti-instance-debootstrap-0.8 (07 Mar 2010)
+
+  07 Mar 2010; Lance Albertson <ramereth@gentoo.org>
+  +ganeti-instance-debootstrap-0.8.ebuild:
+  Version bump
+
+*ganeti-instance-debootstrap-0.7 (02 Oct 2009)
+
+  02 Oct 2009; Lance Albertson <ramereth@gentoo.org>
+  +ganeti-instance-debootstrap-0.7.ebuild,
+  +files/ganeti-instance-debootstrap-0.7-no-etc-default.patch,
+  +metadata.xml:
+  Initial ebuild
+
+  Special thanks to Russell Haering <russell_h@osuosl.org> for submitting the
+  ebuild.

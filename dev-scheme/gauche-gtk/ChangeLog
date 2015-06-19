@@ -1,0 +1,111 @@
+# ChangeLog for dev-scheme/gauche-gtk
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-scheme/gauche-gtk/ChangeLog,v 1.17 2015/06/13 09:40:53 zlogene Exp $
+
+  13 Jun 2015; Mikle Kolyada <zlogene@gentoo.org> -gauche-gtk-0.4.1.ebuild,
+  gauche-gtk-0.6_pre1.ebuild:
+  x86 stable wrt bug #550240; Drop old.
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> gauche-gtk-0.4.1.ebuild,
+  gauche-gtk-0.6_pre1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*gauche-gtk-0.6_pre1 (27 Nov 2011)
+
+  27 Nov 2011; Akinori Hattori <hattya@gentoo.org>
+  +files/gauche-gtk-gtk-lib.hints.diff, +files/gauche-gtk-h2s-cpp.diff,
+  +files/gauche-gtk-h2s-gdk-pixbuf.diff, +gauche-gtk-0.6_pre1.ebuild:
+  new upstream snapshot. fixes bug #239821.
+
+  29 Mar 2011; Christoph Mende <angelos@gentoo.org> gauche-gtk-0.4.1.ebuild:
+  Fixed slot deps
+
+  28 Jul 2008; Panagiotis Christopoulos <pchrist@gentoo.org> metadata.xml:
+  Update metadata.xml to include USE flag descriptions. Entries taken from
+  profiles/use.local.desc
+
+  28 Jan 2007; Marius Mauch <genone@gentoo.org> gauche-gtk-0.4.1.ebuild:
+  Replacing einfo with elog
+
+  10 Jan 2007; <marijn@gentoo.org> gauche-gtk-0.4.1.ebuild:
+  Dependency update: dev-lang/gauche -> dev-scheme/gauche.
+
+  30 Oct 2006; Akinori Hattori <hattya@gentoo.org>
+  +files/gauche-gtk-0.4.1-gtk+-2.8.diff, gauche-gtk-0.4.1.ebuild:
+  fix compilation problem with gtk+ v2.8.
+
+  22 Apr 2006; Akinori Hattori <hattya@gentoo.org> -gauche-gtk-0.3.1.ebuild,
+  -gauche-gtk-0.3.2.ebuild, -gauche-gtk-0.4.ebuild:
+  remove old ebuilds.
+
+  22 Apr 2006; Akinori Hattori <hattya@gentoo.org> gauche-gtk-0.4.1.ebuild:
+  stable on x86.
+
+  12 Jun 2005; Sven Wegener <swegener@gentoo.org> gauche-gtk-0.3.1.ebuild,
+  gauche-gtk-0.3.2.ebuild, gauche-gtk-0.4.ebuild, gauche-gtk-0.4.1.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  19 Aug 2004; Akinori Hattori <hattya@gentoo.org> gauche-gtk-0.4.1.ebuild:
+  stable on x86.
+
+  19 Jul 2004; David Holm <dholm@gentoo.org> gauche-gtk-0.4.1.ebuild:
+  Added to ~ppc.
+
+*gauche-gtk-0.4.1 (18 Jul 2004)
+
+  18 Jul 2004; Akinori Hattori <hattya@gentoo.org> +gauche-gtk-0.4.1.ebuild:
+  version bump.
+
+  11 Jul 2004; Akinori Hattori <hattya@gentoo.org> gauche-gtk-0.3.1.ebuild,
+  gauche-gtk-0.3.2.ebuild, gauche-gtk-0.4.ebuild:
+  dev-lisp/gauche to dev-lang/gauche.
+
+*gauche-gtk-0.4 (10 Jul 2004)
+
+  10 Jul 2004; Akinori Hattori <hattya@gentoo.org> +metadata.xml,
+  +gauche-gtk-0.3.1.ebuild, +gauche-gtk-0.3.2.ebuild, +gauche-gtk-0.4.ebuild:
+  moved from dev-lisp/gauche-gtk to dev-scheme/gauche-gtk.
+
+  28 Apr 2004; Akinori Hattori <hattya@gentoo.org> gauche-gtk-0.4.ebuild:
+  marked stable on x86.
+
+*gauche-gtk-0.4 (28 Mar 2004)
+
+  28 Mar 2004; Akinori Hattori <hattya@gentoo.org> gauche-gtk-0.4.ebuild:
+  version bump.
+
+  22 Feb 2004; Akinori Hattori <hattya@gentoo.org> gauche-gtk-0.3.ebuild,
+  files/gauche-gtk-0.3-gentoo.diff:
+  cleaned out old ebuild.
+
+  21 Feb 2004; Akinori Hattori <hattya@gentoo.org> gauche-gtk-0.3.2.ebuild:
+  marked stable on x86.
+
+  04 Feb 2004; Akinori Hattori <hattya@gentoo.org> gauche-gtk-0.3.1.ebuild,
+  gauche-gtk-0.3.ebuild:
+  Marked stable on x86. Updated copyright year.
+
+*gauche-gtk-0.3.2 (03 Feb 2004)
+
+  03 Feb 2004; Akinori Hattori <hattya@gentoo.org> gauche-gtk-0.3.2.ebuild,
+  metadata.xml:
+  Version bumped. Fixes bug #36671.
+  I've taken over from karltk.
+
+
+*gauche-gtk-0.3.1 (16 Oct 2003)
+
+  16 Oct 2003; Karl Trygve Kalleberg <karltk@gentoo.org> 
+  gauche-gtk-0.3.1.ebuild:
+  New upstream version. Ebuild submitted by Hattya <hattya@inter7.jp>.
+  Fixes #31278.
+  
+  
+*gauche-gtk-0.3 (05 Oct 2003)
+
+  05 Oct 2003; Karl Trygve Kalleberg <karltk@gentoo.org> gauche-gtk-0.3.ebuild:
+  Initial import.  Ebuild submitted by Hattya <hattya@inter7.jp>.
+  Fixes #30255.

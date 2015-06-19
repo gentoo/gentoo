@@ -1,0 +1,41 @@
+# ChangeLog for dev-java/commons-graph
+# Copyright 1999-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-graph/ChangeLog,v 1.7 2007/04/27 22:17:36 betelgeuse Exp $
+
+  27 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  -commons-graph-0.8.1_p20040118.ebuild,
+  -commons-graph-0.8.1_p20040118-r1.ebuild:
+  Remove old ebuilds.
+
+*commons-graph-0.8.1_p20040118-r2 (27 Apr 2007)
+
+  27 Apr 2007; Petteri Räty <betelgeuse@gentoo.org>
+  commons-graph-0.8.1_p20040118-r1.ebuild,
+  +commons-graph-0.8.1_p20040118-r2.ebuild:
+  Fix dependencies, migrate to splitted ant and add the source use flag.
+
+*commons-graph-0.8.1_p20040118-r1 (22 Jul 2006)
+
+  22 Jul 2006; Krzysiek Pawlik <nelchael@gentoo.org>
+  +commons-graph-0.8.1_p20040118-r1.ebuild:
+  Migrated to Generation 2.
+
+  04 Dec 2005; Joshua Nichols <nichoj@gentoo.org>
+  commons-graph-0.8.1_p20040118.ebuild:
+  Fixed to not install a versioned jar.
+
+  04 Dec 2005; Joshua Nichols <nichoj@gentoo.org>
+  commons-graph-0.8.1_p20040118.ebuild:
+  Now uses xml-commons instead of xerces.
+
+  04 Dec 2005; Joshua Nichols <nichoj@gentoo.org>
+  commons-graph-0.8.1_p20040118.ebuild:
+  Changed CDEPEND to COMMON_DEP.
+
+*commons-graph-0.8.1_p20040118 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Nichols <nichoj@gentoo.org>
+  +files/commons-graph-0.8.1_p20040118-gentoo.diff, +metadata.xml,
+  +commons-graph-0.8.1_p20040118.ebuild:
+  Initial import (bug #70892).
+

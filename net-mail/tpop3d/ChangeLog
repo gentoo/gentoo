@@ -1,0 +1,168 @@
+# ChangeLog for net-mail/tpop3d
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/tpop3d/ChangeLog,v 1.37 2014/12/28 16:37:11 titanofold Exp $
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org> tpop3d-1.5.5.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org> tpop3d-1.5.5.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> tpop3d-1.5.5.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  01 Dec 2011; Eray Aslan <eras@gentoo.org>
+  -files/tpop3d-1.5.3-invalid-user-message.patch,
+  -files/tpop3d-1.5.3-variable-name-clash.patch, -files/tpop3d-init,
+  -tpop3d-1.5.3.ebuild, -tpop3d-1.5.4-r2.ebuild, -tpop3d-1.5.4-r3.ebuild:
+  remove old
+
+  28 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> tpop3d-1.5.5.ebuild:
+  x86 stable wrt bug #391343
+
+*tpop3d-1.5.5 (24 Aug 2011)
+
+  24 Aug 2011; Tim Harder <radhermit@gentoo.org> +tpop3d-1.5.5.ebuild:
+  Version bump.
+
+*tpop3d-1.5.4-r3 (03 Jun 2011)
+
+  03 Jun 2011; Eray Aslan <eras@gentoo.org> +tpop3d-1.5.4-r3.ebuild,
+  +files/tpop3d-1.5.4-gold.patch:
+  Fix linking against gold - bug 369783. EAPI bump.
+
+  09 Aug 2010; Peter Volkov <pva@gentoo.org> tpop3d-1.5.4-r2.ebuild,
+  metadata.xml:
+  Move drac back, bug #280933.
+
+*tpop3d-1.5.4-r2 (03 Aug 2010)
+
+  03 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  -tpop3d-1.5.4-r1.ebuild, +tpop3d-1.5.4-r2.ebuild, metadata.xml:
+  Get rid of drac dependencies. Bug #280933
+
+  17 Jun 2010; Patrick Lauer <patrick@gentoo.org> tpop3d-1.5.3.ebuild,
+  tpop3d-1.5.4-r1.ebuild:
+  Migrating away from deprecated postgres virtuals
+
+  10 Jul 2009; Samuli Suominen <ssuominen@gentoo.org> tpop3d-1.5.3.ebuild,
+  -tpop3d-1.5.3-r1.ebuild, -tpop3d-1.5.4.ebuild, tpop3d-1.5.4-r1.ebuild:
+  Remove dev-util/efence from deps since it's obsolete; doesn't work or
+  build.
+
+*tpop3d-1.5.4-r1 (11 Aug 2008)
+
+  11 Aug 2008; Maurice van der Pot <griffon26@gentoo.org>
+  +files/tpop3d-1.5.4.init, +tpop3d-1.5.4-r1.ebuild:
+  The --background option to start-stop-daemon is no longer needed for
+  tpop3d-1.5.4 (see bug #76027) and it was causing the init script to report an
+  error while tpop3d actually started successfully.
+
+  21 May 2008; Tiziano Müller <dev-zero@gentoo.org> tpop3d-1.5.3.ebuild,
+  tpop3d-1.5.3-r1.ebuild, tpop3d-1.5.4.ebuild:
+  Changed dependency for postgresql from dev-db/postgresql to
+  virtual/postgresql-server
+
+  14 May 2008; Diego Pettenò <flameeyes@gentoo.org> tpop3d-1.5.4.ebuild:
+  Depend on virtual/pam as the code builds fine with OpenPAM.
+
+*tpop3d-1.5.4 (06 Apr 2008)
+
+  06 Apr 2008; Maurice van der Pot <griffon26@gentoo.org>
+  +tpop3d-1.5.4.ebuild:
+  Added tpop3d 1.5.4 and also fixed bug #195488 reported by Nico R.
+  <n-roeser@gmx.net>. This ebuild has a bunch of new USE flags one may want to
+  set before upgrading.
+
+  12 Jun 2007; Marius Mauch <genone@gentoo.org> tpop3d-1.5.3.ebuild,
+  tpop3d-1.5.3-r1.ebuild:
+  Replacing einfo with elog
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org> tpop3d-1.5.3.ebuild,
+  tpop3d-1.5.3-r1.ebuild:
+  Fix *initd, *confd and *envd calls (#173884, #174266)
+
+  23 Nov 2006; Francesco Riosa <vivo@gentoo.org> tpop3d-1.5.3.ebuild,
+  tpop3d-1.5.3-r1.ebuild:
+  dev-db/mysql => virtual/mysql
+
+  22 Oct 2006; <vivo@gentoo.org> tpop3d-1.5.3.ebuild:
+  added dev-util/efence to DEPEND as it is for  tpop3d-1.5.3-r1
+
+  13 Feb 2006; Maurice van der Pot <griffon26@gentoo.org>
+  -tpop3d-1.4.2.ebuild, tpop3d-1.5.3-r1.ebuild:
+  Temporarily filtering out -fstack-protector because of bug #115285
+  reported by Alexander Stoll <as@ha-networks.com>.
+  Also removed old ebuild.
+
+*tpop3d-1.5.3-r1 (04 Mar 2005)
+
+  04 Mar 2005; Maurice van der Pot <griffon26@gentoo.org>
+  +tpop3d-1.5.3-r1.ebuild:
+  Depend on mailbase and create tpop3d symlink for pam (bug #79240)
+  Depend on efence with debug use flag (bug #82988)
+
+  16 Feb 2005; Tom Martin <slarti@gentoo.org> tpop3d-1.5.3.ebuild:
+  Marked ~amd64.
+
+  21 Oct 2004; Maurice van der Pot <griffon26@gentoo.org>
+  +files/tpop3d-1.5.3-variable-name-clash.patch, tpop3d-1.5.3.ebuild:
+  Added support for authentication using a PostgreSQL database to
+  ebuild as suggested by Lionel Bouton <lionel-dev@bouton.name> in 
+  bug #68024.
+
+  26 Aug 2004; Maurice van der Pot <griffon26@gentoo.org>
+  +files/tpop3d-1.5.3-invalid-user-message.patch, tpop3d-1.5.3.ebuild:
+  Fixed invalid user error message as reported by Jaroslaw Swierad 
+  <messer@7thguard.net> in bug #51911
+  Marked stable on x86
+
+  26 Aug 2004; Maurice van der Pot <griffon26@gentoo.org> metadata.xml,
+  tpop3d-1.4.2.ebuild, tpop3d-1.5.3.ebuild:
+  Taken over maintenance from <net-mail@gentoo.org>
+  Fixed installation of tpop3d init script, closing bug #35651.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> tpop3d-1.4.2.ebuild,
+  tpop3d-1.5.3.ebuild:
+  virtual/glibc -> virtual/libc
+
+  09 Jun 2004; Aron Griffis <agriffis@gentoo.org> tpop3d-1.4.2.ebuild,
+  tpop3d-1.5.3.ebuild:
+  Fix use invocation
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> tpop3d-1.4.2.ebuild:
+  Add inherit eutils
+
+  03 Mar 2004; Martin Holzer <mholzer@gentoo.org> tpop3d-1.4.2.ebuild,
+  tpop3d-1.5.3.ebuild:
+  adding ssl to config. Closes 43510
+
+*tpop3d-1.5.3 (26 Nov 2003)
+
+  26 Nov 2003; Greg Fitzgerald <gregf@gentoo.org> tpop3d-1.5.3.ebuild:
+  Version Bump.
+
+*tpop3d-1.5.2 (19 Nov 2003)
+
+  19 Nov 2003; Greg Fitzgerald <gregf@gentoo.org> tpop3d-1.5.2.ebuild:
+  Version bump. Closes bug #31792 by Michael C. Ferguson <mcf@augustmail.com>
+
+  02 Aug 2003; <iggy@gentoo.org> tpop3d-1.4.2.ebuild, files/tpop3d-init:
+  added Gentoo init script, fixes bug # 23401, thanks to Michael C. Ferguson
+  <mcf@augustmail.com>
+
+  12 Jun 2003; <msterret@gentoo.org> tpop3d-1.4.2.ebuild:
+  fix Header
+
+*tpop3d-1.4.2 (19 Jan 2003)
+
+  04 Feb 2003; Nick Hadaway <raker@gentoo.org> tpop3d-1.4.2.ebuild :
+  Added KEYWORDS and fixed DEPEND spacing.
+
+  19 Jan 2003; Nick Hadaway <raker@gentoo.org> tpop3d-1.4.2.ebuild,
+  files/digest-tpop3d-1.4.2 :
+  New ebuild as suggested on bug #4282 by Martin Klebermass.
+  Added tests for local variables to enable/disable features that are
+  generally not needed, insecure, or rude. :) (seriously!) Also
+  added a net-mail/drac ebuild for pop-before-smtp integration and
+  included a patch for the optional auth-flatfile support.

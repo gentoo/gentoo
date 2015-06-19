@@ -1,0 +1,171 @@
+# ChangeLog for app-admin/tmpreaper
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/tmpreaper/ChangeLog,v 1.32 2013/02/04 06:42:23 xmw Exp $
+
+  04 Feb 2013; Michael Weber <xmw@gentoo.org> metadata.xml:
+  Taking maint.
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #453094
+
+  31 May 2012; Tim Harder <radhermit@gentoo.org> -tmpreaper-1.6.9.ebuild,
+  -tmpreaper-1.6.9-r1.ebuild, -files/tmpreaper-1.6.9-gentoo.patch:
+  Remove old.
+
+  05 Feb 2012; Raúl Porcel <armin76@gentoo.org> tmpreaper-1.6.9.ebuild,
+  tmpreaper-1.6.9-r1.ebuild, tmpreaper-1.6.13.ebuild:
+  Drop sparc keywords
+
+  21 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> tmpreaper-1.6.13.ebuild:
+  x86 stable wrt bug #379493
+
+  19 Dec 2011; Agostino Sarubbo <ago@gentoo.org> tmpreaper-1.6.13.ebuild:
+  Stable for AMD64, wrt bug #379493
+
+  19 Dec 2011; Michael Weber <xmw@gentoo.org> tmpreaper-1.6.13.ebuild:
+  ppc stable (bug 379493)
+
+  03 Jan 2011; Michael Weber <xmw@gentoo.org> tmpreaper-1.6.13.ebuild:
+  add ~arm keyword
+
+*tmpreaper-1.6.13 (11 Oct 2010)
+
+  11 Oct 2010; Tim Harder <radhermit@gentoo.org> +tmpreaper-1.6.13.ebuild,
+  +files/tmpreaper-1.6.13-gentoo.patch:
+  Version bump for bug #327101. Update to EAPI=3 and use src_prepare instead
+  of src_unpack.
+
+  23 Mar 2009; Olivier Crête <tester@gentoo.org> metadata.xml:
+  Taking the package
+
+  22 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing hawking as a maintainer since he was retired.
+
+*tmpreaper-1.6.9-r1 (30 Jun 2008)
+
+  30 Jun 2008; Ali Polatel <hawking@gentoo.org> +tmpreaper-1.6.9-r1.ebuild:
+  Revision bump. Apply patch to fix --protect for directories, #227467
+
+  27 Mar 2008; Raúl Porcel <armin76@gentoo.org> tmpreaper-1.6.7.ebuild:
+  Fix debian HOMEPAGE
+
+  22 Mar 2008; nixnut <nixnut@gentoo.org> tmpreaper-1.6.9.ebuild:
+  Stable on ppc wrt bug 209100
+
+  21 Mar 2008; Markus Meier <maekke@gentoo.org> tmpreaper-1.6.9.ebuild:
+  x86 stable, bug #209100
+
+  21 Mar 2008; Ferris McCormick <fmccor@gentoo.org> tmpreaper-1.6.9.ebuild:
+  Sparc stable, Bug #209100.  Please see bug for comments.
+
+  09 Mar 2008; Olivier Crête <tester@gentoo.org> tmpreaper-1.6.9.ebuild:
+  Stable on amd64
+
+*tmpreaper-1.6.9 (25 Jan 2008)
+
+  25 Jan 2008; Ali Polatel <hawking@gentoo.org>
+  -files/tmpreaper-1.6.6-fix-protect.patch,
+  +files/tmpreaper-1.6.9-gentoo.patch, metadata.xml,
+  -tmpreaper-1.6.5.ebuild, -tmpreaper-1.6.6-r1.ebuild,
+  +tmpreaper-1.6.9.ebuild:
+  Version bump. Added myself to metadata.xml. Dropped old.
+
+*tmpreaper-1.6.7 (07 Jun 2007)
+
+  07 Jun 2007; Ali Polatel (hawking) <polatel@gmail.com>
+  +files/tmpreaper-1.6.7-fix-protect.patch, +tmpreaper-1.6.7.ebuild:
+  New ebuild for bug 178254
+
+  19 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove ka0ttic from metadata.xml due to retirement.
+
+  05 Dec 2006; Charlie Shepherd <masterdriverz@gentoo.org>
+  files/tmpreaper-1.6.6-fix-protect.patch, tmpreaper-1.6.6-r1.ebuild:
+  Actually apply the previous patch, big thanks again to Andy Lutomirski for
+  providing an updated patch
+
+  04 Dec 2006; Charlie Shepherd <masterdriverz@gentoo.org>
+  -tmpreaper-1.6.6.ebuild:
+  Fix --protect, thanks to Andy Lutomirski for the patch, bug 114218
+
+*tmpreaper-1.6.6-r1 (04 Dec 2006)
+
+  04 Dec 2006; Charlie Shepherd <masterdriverz@gentoo.org>
+  +files/tmpreaper-1.6.6-fix-protect.patch, +tmpreaper-1.6.6-r1.ebuild:
+  Fix --protect, thanks to Andy Lutomirski for the patch, bug 114218
+
+*tmpreaper-1.6.6 (19 Oct 2006)
+
+  19 Oct 2006; Seemant Kulleen <seemant@gentoo.org> +tmpreaper-1.6.6.ebuild:
+  version bump, since ka0ttic seems to be MIA
+
+  11 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> -tmpreaper-1.5.1.ebuild:
+  Tidy old ebuild.
+
+  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org> tmpreaper-1.6.5.ebuild:
+  Stable on amd64.
+
+  25 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  tmpreaper-1.6.5.ebuild:
+  Stable on sparc
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  tmpreaper-1.6.5.ebuild:
+  Stable on ppc.
+
+  23 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> tmpreaper-1.6.5.ebuild:
+  Marked stable on x86.
+
+*tmpreaper-1.6.5 (10 Mar 2005)
+
+  10 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> metadata.xml,
+  tmpreaper-1.5.1.ebuild, +tmpreaper-1.6.5.ebuild:
+  Version bump; changed both ebuilds to use make install instead of einstall.
+
+*tmpreaper-1.5.1 (05 Mar 2005)
+
+  05 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +tmpreaper-1.5.1.ebuild:
+  Moved from sys-apps/tmpreaper to app-admin/tmpreaper.
+
+  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org> tmpreaper-1.5.1.ebuild:
+  stable on amd64.
+
+  07 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> tmpreaper-1.5.1.ebuild:
+  Stable on sparc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  tmpreaper-1.5.1.ebuild:
+  Masked tmpreaper-1.5.1.ebuild stable for ppc
+
+  24 Aug 2004; Sven Wegener <swegener@gentoo.org> tmpreaper-1.4.12.ebuild,
+  tmpreaper-1.5.1.ebuild:
+  Changed SRC_URI to use mirror:// syntax and marked 1.5.1 stable on x86.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  tmpreaper-1.4.12.ebuild, tmpreaper-1.5.1.ebuild:
+  virtual/glibc -> virtual/libc
+
+*tmpreaper-1.5.1 (12 Feb 2004)
+
+  12 Feb 2004; Brian Harring <ferringb@gentoo.org> tmpreaper-1.5.1.ebuild :
+  Version bump to 1.5.1.  Marking ~arch.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*tmpreaper-1.4.12 (1 Feb 2002)
+
+  21 Jul 2002; Mark Guertin <gerk@gentoo.org>:
+  updated keywords (ppc)
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> tmpreaper-1.4.12.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

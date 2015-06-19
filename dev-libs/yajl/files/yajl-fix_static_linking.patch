@@ -1,0 +1,24 @@
+diff -urN lloyd-yajl-f4baae0.old//reformatter/CMakeLists.txt lloyd-yajl-f4baae0//reformatter/CMakeLists.txt
+--- lloyd-yajl-f4baae0.old//reformatter/CMakeLists.txt	2010-07-22 00:12:15.000000000 +0200
++++ lloyd-yajl-f4baae0//reformatter/CMakeLists.txt	2011-02-11 19:28:40.006756997 +0100
+@@ -42,7 +42,7 @@
+ 
+ ADD_EXECUTABLE(json_reformat ${SRCS})
+ 
+-TARGET_LINK_LIBRARIES(json_reformat yajl_s)
++TARGET_LINK_LIBRARIES(json_reformat yajl)
+ 
+ # copy the binary into the output directory
+ GET_TARGET_PROPERTY(binPath json_reformat LOCATION)
+diff -urN lloyd-yajl-f4baae0.old//verify/CMakeLists.txt lloyd-yajl-f4baae0//verify/CMakeLists.txt
+--- lloyd-yajl-f4baae0.old//verify/CMakeLists.txt	2010-07-22 00:12:15.000000000 +0200
++++ lloyd-yajl-f4baae0//verify/CMakeLists.txt	2011-02-11 19:28:58.296756998 +0100
+@@ -42,7 +42,7 @@
+ 
+ ADD_EXECUTABLE(json_verify ${SRCS})
+ 
+-TARGET_LINK_LIBRARIES(json_verify yajl_s)
++TARGET_LINK_LIBRARIES(json_verify yajl)
+ 
+ # copy in the binary
+ GET_TARGET_PROPERTY(binPath json_verify LOCATION)

@@ -1,0 +1,15 @@
+# RESTORE_ON_START:
+# Do you want to restore your mixer settings?  If not, your cards will be
+# muted.
+# no - Do not restore state
+# yes - Restore state
+
+RESTORE_ON_START="yes"
+
+# SAVE_ON_STOP:
+# Do you want to save changes made to your mixer volumes when alsasound
+# stops? 
+# no - Do not save state
+# yes - Save state
+
+SAVE_ON_STOP="yes"

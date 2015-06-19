@@ -1,0 +1,23 @@
+diff -Naur apbs-1.2.1-source/acinclude.m4 apbs-1.2.1-source.new/acinclude.m4
+--- apbs-1.2.1-source/acinclude.m4	2009-12-01 09:20:23.000000000 -0500
++++ apbs-1.2.1-source.new/acinclude.m4	2009-12-03 22:56:47.000000000 -0500
+@@ -54,14 +54,11 @@
+ AC_LANG_C
+ ac_save_LIBS="$LIBS"
+ LIBS="mangle-func.o $LIBS"
+-AC_TRY_LINK(,foobar();,
+-     ac_f77_mangle_type=lowercase,
+-     AC_TRY_LINK(,foobar_();,
+-          ac_f77_mangle_type=lowercase-underscore,
+-          AC_TRY_LINK(,FOOBAR();,
+-               ac_f77_mangle_type=uppercase,
+-               AC_TRY_LINK(,FOOBAR_();,
+-                    ac_f77_mangle_type=uppercase-underscore))))
++AC_TRY_LINK(,foobar();,ac_f77_mangle_type=lowercase)
++AC_TRY_LINK(,foobar_();,ac_f77_mangle_type=lowercase-underscore)
++AC_TRY_LINK(,FOOBAR();,ac_f77_mangle_type=uppercase)
++AC_TRY_LINK(,FOOBAR_();,ac_f77_mangle_type=uppercase-underscore)
++
+ LIBS="$ac_save_LIBS"
+ AC_LANG_RESTORE
+ AC_MSG_RESULT($ac_f77_mangle_type)

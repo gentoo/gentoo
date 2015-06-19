@@ -1,0 +1,12 @@
+diff -dur httptunnel-3.3/common.c httptunnel-3.3-fix_write_stdin/common.c
+--- httptunnel-3.3/common.c	2001-02-25 12:45:41.000000000 +0100
++++ httptunnel-3.3-fix_write_stdin/common.c	2007-06-20 21:38:54.000000000 +0200
+@@ -314,7 +314,7 @@
+ 
+       /* If fd == 0, then we are using --stdin-stdout so write to stdout,
+        * not fd. */
+-      m = write_all (fd ? fd : 0, buf, (size_t)n);
++      m = write_all (fd ? fd : 1, buf, (size_t)n);
+       log_annoying ("write_all (%d, %p, %d) = %d", fd ? fd : 1, buf, n, m);
+       return m;
+     }

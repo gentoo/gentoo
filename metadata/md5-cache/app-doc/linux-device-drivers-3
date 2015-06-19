@@ -1,0 +1,8 @@
+DEFINED_PHASES=install
+DESCRIPTION=howto write linux device drivers (updated for Linux 2.6)
+HOMEPAGE=http://www.oreilly.com/catalog/linuxdrive3/ http://lwn.net/Kernel/LDD3/
+KEYWORDS=amd64 arm hppa ia64 ppc s390 sh x86
+LICENSE=CC-BY-SA-2.0
+SLOT=3
+SRC_URI=http://lwn.net/images/pdf/LDD3/ldd3_pdf.tar.bz2 mirror://gentoo/LDD3-examples.tar.gz
+_md5_=561d722c8c940ae199291357466cd743

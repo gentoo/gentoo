@@ -1,0 +1,96 @@
+# ChangeLog for x11-misc/xkeycaps
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xkeycaps/ChangeLog,v 1.28 2014/06/09 20:29:24 jer Exp $
+
+  09 Jun 2014; Jeroen Roovers <jer@gentoo.org> -xkeycaps-2.46.ebuild,
+  -files/Imakefile.patch:
+  Old.
+
+  23 Dec 2012; Ulrich Müller <ulm@gentoo.org> xkeycaps-2.46.ebuild,
+  xkeycaps-2.47-r1.ebuild:
+  Fix LICENSE, see notices in source files, bug 446768.
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> xkeycaps-2.46.ebuild,
+  xkeycaps-2.47-r1.ebuild:
+  Drop sparc keywords
+
+  06 Mar 2012; Brent Baude <ranger@gentoo.org> xkeycaps-2.47-r1.ebuild:
+  Marking xkeycaps-2.47-r1 ppc64 for bug 397285
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> xkeycaps-2.47-r1.ebuild:
+  x86 stable wrt bug #397285
+
+  03 Feb 2012; Brent Baude <ranger@gentoo.org> xkeycaps-2.47-r1.ebuild:
+  Marking xkeycaps-2.47-r1 ppc for bug 397285
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org> xkeycaps-2.47-r1.ebuild:
+  Stable for amd64, wrt bug #397285
+
+*xkeycaps-2.47-r1 (27 Aug 2010)
+
+  27 Aug 2010; Kacper Kowalik <xarthisius@gentoo.org> -xkeycaps-2.47.ebuild,
+  +xkeycaps-2.47-r1.ebuild:
+  Respect CC,CFLAGS,LDFLAGS wrt bug 334661. Thanks to Diego for the report.
+
+*xkeycaps-2.47 (07 Dec 2008)
+
+  07 Dec 2008; <ssuominen@gentoo.org> +files/xkeycaps-2.47-Imakefile.patch,
+  +files/xkeycaps-2.47-man.patch, +xkeycaps-2.47.ebuild:
+  Version bump for bug 215218, thanks to <timofonic at gmail.com>.
+
+  23 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> xkeycaps-2.46.ebuild:
+  amd64 stable
+
+  21 Oct 2006; David Shakaryan <omp@gentoo.org> xkeycaps-2.46.ebuild:
+  Remove monolithic X from dependencies and fix quotes.
+
+  11 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org> xkeycaps-2.46.ebuild:
+  Add missing x11-misc/xbitmaps to DEPEND, see bug #150787.
+
+  21 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> xkeycaps-2.46.ebuild:
+  Fixed DEPEND for modular X.
+
+  26 Jan 2005; Markus Rothe <corsair@gentoo.org> xkeycaps-2.46.ebuild:
+  Stable on ppc64
+
+  18 Dec 2004; Markus Rothe <corsair@gentoo.org> xkeycaps-2.46.ebuild:
+  added ~ppc64 to KEYWORDS; bug #73667
+
+  05 Dec 2004; Markus Nigbur <pyrania@gentoo.org> :
+  Removed -r1 again. See bug #73436.
+
+*xkeycaps-2.46-r1 (05 Dec 2004)
+
+  05 Dec 2004; Markus Nigbur <pyrania@gentoo.org> +xkeycaps-2.46-r1.ebuild:
+  Added manpage. Fixing bug #70318.
+
+  10 May 2004; Travis Tilley <lv@gentoo.org> xkeycaps-2.46.ebuild:
+  added ~amd64 keyword
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> xkeycaps-2.46.ebuild:
+  Add inherit eutils
+
+  06 Dec 2003; Markus Nigbur <pyrania@gentoo.org> xkeycaps-2.46.ebuild,
+  files/Imakefile.patch:
+  Created patch for Imakefile. Thanks to Florian Loitsch for finding the bogus.
+
+  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+  18 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> xkeycaps-2.46.ebuild:
+  tidy; added IUSE; use sed-4; more error checking; more docs
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*xkeycaps-2.46 (1 Feb 2002)
+
+  15 Feb 2003; Mark Guertin <gerk@gentoo.org> xkeycaps-2.46.ebuild :
+  set ppc in keywords
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

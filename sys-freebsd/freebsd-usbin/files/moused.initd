@@ -1,0 +1,66 @@
+#!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-freebsd/freebsd-usbin/files/moused.initd,v 1.3 2007/02/23 14:03:08 uberlord Exp $
+
+MOUSED_NAME=${SVCNAME##*.}
+if [ -n "${MOUSED_NAME}" ] && [ ${MOUSED_NAME} != "moused" ] ; then
+	MOUSED_DEVICE=/dev/"${MOUSED_NAME}"
+	MOUSED_PIDFILE=/var/run/moused-"${MOUSED_NAME}".pid
+else
+	MOUSED_NAME=
+	MOUSED_PIDFILE=/var/run/moused.pid
+fi
+
+depend() {
+	need localmount 
+}
+
+start() {
+	ebegin "Starting the Console Mouse Daemon" "${MOUSED_NAME}"
+
+	if [ -z ${MOUSED_DEVICE} ] ; then
+		for x in /dev/psm[0-9]* /dev/ums[0-9]* ; do
+			if [ -e "${x}" ] && \
+			[ ! -e /var/run/moused-$(basename "${x}").pid ] ; then
+				MOUSED_DEVICE=${x}
+				eindent
+				einfo "Using mouse on ${MOUSED_DEVICE}"
+				eoutdent
+				break
+			fi
+		done
+	fi
+
+	if [ -z "${MOUSED_DEVICE}" ] ; then
+		eend 1 "No device specified in" "/etc/conf.d/${SVCNAME}" \
+			"and no mouse detected"
+		return 1
+	fi
+
+	local opts="${MOUSED_FLAGS} -p ${MOUSED_DEVICE}"
+	start-stop-daemon --start --quiet --exec /usr/sbin/moused \
+		--pidfile "${MOUSED_PIDFILE}" \
+		-- ${opts} -I "${MOUSED_PIDFILE}"
+	local retval=$?
+	
+	[ -n "${MOUSE_CHAR_START}" ] && MOUSE_CHAR_START="-M ${MOUSE_CHAR_START}"
+	local ttyv=
+	for ttyv in /dev/ttyv* ; do
+		vidcontrol < "${ttyv}" ${MOUSE_CHAR_START} -m on || retval=1
+	done
+	
+	eend ${retval} "Failed to start moused"
+}
+
+stop() {
+	ebegin "Stopping the Console Mouse Daemon" "${MOUSED_NAME}"
+	# Don't specify the binary as >1 instance of moused may be running
+	# which is perfectly valid as we can be multiplexed.
+	start-stop-daemon --stop --exec /usr/sbin/moused \
+		--pidfile "${MOUSED_PIDFILE}"
+	eend $? "Failed to stop moused"
+}
+
+# vim: set ts=4 :
+

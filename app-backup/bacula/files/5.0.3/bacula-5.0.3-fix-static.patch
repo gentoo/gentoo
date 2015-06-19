@@ -1,0 +1,47 @@
+--- src/console/Makefile.in.orig	2010-12-28 16:01:28.000000000 +0000
++++ src/console/Makefile.in	2010-12-28 16:02:19.000000000 +0000
+@@ -31,6 +31,7 @@
+ CONS_INC=@CONS_INC@
+ CONS_LIBS=@CONS_LIBS@
+ CONS_LDFLAGS=@CONS_LDFLAGS@
++ZLIBS=@ZLIBS@
+ 
+ .SUFFIXES:	.c .o
+ .PHONY:
+@@ -48,13 +48,12 @@
+ 
+ bconsole: Makefile $(CONSOBJS) ../lib/libbac$(DEFAULT_ARCHIVE_TYPE) ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE)
+ 	$(LIBTOOL_LINK) $(CXX) -L../lib -L../cats $(LDFLAGS) $(CONS_LDFLAGS) -o $@ $(CONSOBJS) \
+-	      $(DLIB) $(CONS_LIBS) -lbaccfg -lbac -lm $(LIBS) $(GETTEXT_LIBS) \
+-	      $(OPENSSL_LIBS)
++	      $(DLIB) $(CONS_LIBS) -lbaccfg -lbac -lm $(ZLIBS) $(GETTEXT_LIBS) \
++	      $(OPENSSL_LIBS) $(LIBS)
+ 
+ static-bconsole: Makefile $(CONSOBJS) ../lib/libbac.a ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE)
+ 	$(LIBTOOL_LINK) $(CXX) -static $(LDFLAGS) $(CONS_LDFLAGS) -L../lib -L../cats -o $@ $(CONSOBJS) \
+-	      $(DLIB) $(CONS_LIBS) -lbaccfg -lbac -lm $(LIBS) $(GETTEXT_LIBS) \
+-	      $(OPENSSL_LIBS)
+-	strip $@
++	      $(DLIB) $(CONS_LIBS) -lbaccfg -lbac -lm $(ZLIBS) $(GETTEXT_LIBS) \
++	      $(OPENSSL_LIBS) $(LIBS)
+
+
+--- src/filed/Makefile.in.orig	2010-12-28 16:19:34.000000000 +0000
++++ src/filed/Makefile.in	2010-12-28 16:26:28.000000000 +0000
+@@ -94,13 +94,12 @@
+ bacula-fd:  Makefile $(SVROBJS) ../findlib/libbacfind$(DEFAULT_ARCHIVE_TYPE) ../lib/libbacpy$(DEFAULT_ARCHIVE_TYPE) ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE) ../lib/libbac$(DEFAULT_ARCHIVE_TYPE) @WIN32@
+ 	@echo "Linking $@ ..."
+ 	$(LIBTOOL_LINK) $(CXX) $(WLDFLAGS) $(LDFLAGS) -L../lib -L../findlib -o $@ $(SVROBJS) \
+-	  $(WIN32LIBS) $(FDLIBS) $(ZLIBS) -lbacfind -lbacpy -lbaccfg -lbac -lm $(PYTHON_LIBS) $(LIBS) \
+-	  $(DLIB) $(WRAPLIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS) $(CAP_LIBS) $(AFS_LIBS)
++	  $(WIN32LIBS) $(FDLIBS) $(ZLIBS) -lbacfind -lbacpy -lbaccfg -lbac -lm $(PYTHON_LIBS) \
++	  $(DLIB) $(WRAPLIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS) $(LIBS) $(CAP_LIBS) $(AFS_LIBS)
+ 
+ static-bacula-fd: Makefile $(SVROBJS) ../findlib/libbacfind.a ../lib/libbacpy$(DEFAULT_ARCHIVE_TYPE) ../lib/libbaccfg$(DEFAULT_ARCHIVE_TYPE) ../lib/libbac$(DEFAULT_ARCHIVE_TYPE) @WIN32@
+ 	$(LIBTOOL_LINK) $(CXX) $(WLDFLAGS) $(LDFLAGS) -static -L../lib -L../findlib -o $@ $(SVROBJS) \
+-	   $(WIN32LIBS) $(FDLIBS) $(ZLIBS) -lbacfind -lbacpy -lbaccfg -lbac -lm $(PYTHON_LIBS) $(LIBS) \
+-	   $(DLIB) $(WRAPLIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS) $(CAP_LIBS) $(AFS_LIBS)
+-	strip $@
++	   $(WIN32LIBS) $(FDLIBS) $(ZLIBS) -lbacfind -lbacpy -lbaccfg -lbac -lm $(PYTHON_LIBS) \
++	   $(DLIB) $(WRAPLIBS) $(GETTEXT_LIBS) $(OPENSSL_LIBS) $(LIBS) $(CAP_LIBS) $(AFS_LIBS)
+ 

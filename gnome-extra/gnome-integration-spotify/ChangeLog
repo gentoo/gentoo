@@ -1,0 +1,57 @@
+# ChangeLog for gnome-extra/gnome-integration-spotify
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-integration-spotify/ChangeLog,v 1.8 2014/10/08 19:43:38 prometheanfire Exp $
+
+*gnome-integration-spotify-20140907 (08 Oct 2014)
+
+  08 Oct 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +gnome-integration-spotify-20140907.ebuild,
+  -gnome-integration-spotify-20130119.ebuild,
+  -gnome-integration-spotify-20130304.ebuild:
+  updating for new release, fixes bug 522360
+
+*gnome-integration-spotify-20131013 (14 Oct 2013)
+
+  14 Oct 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +gnome-integration-spotify-20131013.ebuild:
+  just an update for bug 487932
+
+*gnome-integration-spotify-20130304 (04 Mar 2013)
+
+  04 Mar 2013; Matthew Thode <prometheanfire@gentoo.org>
+  -gnome-integration-spotify-20130116.ebuild,
+  +gnome-integration-spotify-20130304.ebuild:
+  updating for bug 458256
+
+*gnome-integration-spotify-20130119 (21 Jan 2013)
+
+  21 Jan 2013; Matthew Thode <prometheanfire@gentoo.org>
+  +gnome-integration-spotify-20130119.ebuild:
+  bup
+
+*gnome-integration-spotify-20130116 (17 Jan 2013)
+
+  17 Jan 2013; Matthew Thode <prometheanfire@gentoo.org>
+  -gnome-integration-spotify-20121019.ebuild,
+  -gnome-integration-spotify-20121120.ebuild,
+  +gnome-integration-spotify-20130116.ebuild:
+  upgrading to gnome-integration-spotify-20130116 for bug 452042
+
+*gnome-integration-spotify-20121120 (20 Nov 2012)
+
+  20 Nov 2012; Matthew Thode <prometheanfire@gentoo.org>
+  +gnome-integration-spotify-20121120.ebuild,
+  -gnome-integration-spotify-20121119.ebuild:
+  update for bug 443918 again, yay tabs
+
+*gnome-integration-spotify-20121119 (20 Nov 2012)
+
+  20 Nov 2012; Matthew Thode <prometheanfire@gentoo.org>
+  +gnome-integration-spotify-20121119.ebuild:
+  adding gnome-integration-spotify-20121119 for bug 443918
+
+*gnome-integration-spotify-20121019 (11 Nov 2012)
+
+  11 Nov 2012; Matthew Thode <prometheanfire@gentoo.org>
+  +gnome-integration-spotify-20121019.ebuild, +metadata.xml:
+  adding the initial ebuild for bug 442682

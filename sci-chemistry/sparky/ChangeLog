@@ -1,0 +1,89 @@
+# ChangeLog for sci-chemistry/sparky
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/sparky/ChangeLog,v 1.21 2015/03/20 15:29:21 jlec Exp $
+
+  20 Mar 2015; Justin Lecher <jlec@gentoo.org> -sparky-3.115.ebuild,
+  sparky-3.115-r1.ebuild:
+  Fix tcl/tk slotting; drop old
+
+  11 Nov 2013; Justin Lecher <jlec@gentoo.org> sparky-3.115-r1.ebuild:
+  It also works with python 2.7
+
+  01 Aug 2013; Justin Lecher <jlec@gentoo.org> sparky-3.115-r1.ebuild:
+  Doesn't work with py2.7
+
+*sparky-3.115-r1 (18 Jul 2013)
+
+  18 Jul 2013; Justin Lecher <jlec@gentoo.org> +sparky-3.115-r1.ebuild,
+  +files/3.115-wrapper-r1.patch, files/fix-install.patch, metadata.xml:
+  Bump to new python eclass
+
+  29 May 2012; Justin Lecher <jlec@gentoo.org> sparky-3.115.ebuild,
+  metadata.xml:
+  Fix symlink creation in EAPI=4
+
+  07 Mar 2010; Justin Lecher (jlec) <jlec@gentoo.org> sparky-3.115.ebuild,
+  files/fix-install.patch:
+  Prefix cleaning, keyworded for *-linux, tested by me
+
+  26 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org> sparky-3.115.ebuild:
+  python_mod_compile arguments fixed
+
+*sparky-3.115 (13 Feb 2010)
+
+  13 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org>
+  +files/3.115-fpic.patch, +files/3.115-ldflags.patch,
+  +files/3.115-makefile.patch, +files/3.115-paths.patch,
+  -sparky-3.113.ebuild, +files/3.115-wrapper.patch, +sparky-3.115.ebuild,
+  metadata.xml:
+  version bump, removed fixed tcl/tk and python version, multilib awareness
+  added, EPREFIX ready, keyworded for ~amd64, bug 267355 299348
+
+  18 Sep 2009; Petteri Räty <betelgeuse@gentoo.org> sparky-3.113.ebuild:
+  Migrate to EAPI 2 in order to remove built_with_use call.
+
+  03 Jun 2008; Michael Sterrett <mr_bones_@gentoo.org> sparky-3.113.ebuild:
+  remove reference to app-shells/csh which has been removed
+
+  06 Feb 2008; Donnie Berkholz <dberkholz@gentoo.org>; sparky-3.113.ebuild:
+  Fix minor syntax issues.
+
+  06 Feb 2008; Donnie Berkholz <dberkholz@gentoo.org>; -sparky-3.111.ebuild:
+  (#208859) Drop old version so python 2.3 can leave the tree.
+
+*sparky-3.113 (06 Jun 2007)
+
+  06 Jun 2007; Donnie Berkholz <dberkholz@gentoo.org>; +sparky-3.113.ebuild:
+  (#164813) Bump. Works with Python 2.4, cleans out Python bytecode on
+  uninstallation (Jakub Moc), makes sure python was built with Tk. Keyword
+  ~ppc while I'm at it.
+
+  15 Mar 2007; Danny van Dyk <kugelfang@gentoo.org> sparky-3.111.ebuild:
+  QA: Removed illegal use of ${ROOT}. Bug #168043
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> sparky-3.111.ebuild:
+  Fix SRC_URI. Transition to Manifest2.
+
+  20 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  (#148281) Change herd to sci-chemistry from sci.
+
+  05 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Remove myself as maintainer, anyone feel free to work on this, although I'll
+  continue to do so as well.
+
+  07 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Update to my new email address.
+
+  18 Dec 2005; Donnie Berkholz <dberkholz@gentoo.org>; sparky-3.111.ebuild:
+  Prefer RESTRICT=mirror over nomirror, as portage code does.
+
+  18 Dec 2005; Donnie Berkholz <dberkholz@gentoo.org>; sparky-3.111.ebuild:
+  We can't mirror this.
+
+*sparky-3.111 (18 Dec 2005)
+
+  18 Dec 2005; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/fix-install.patch, +metadata.xml, +sparky-3.111.ebuild:
+  A new graphical NMR assignment and integration program for proteins, nucleic
+  acids, and other polymers. Very strange build system; takes lots of hacking
+  and tweaking to get working. Doesn't work with python-2.4, only 2.3.

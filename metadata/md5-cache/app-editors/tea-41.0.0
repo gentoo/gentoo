@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 sys-libs/zlib aspell? ( app-text/aspell ) hunspell? ( app-text/hunspell ) hunspell? ( virtual/pkgconfig )
+DESCRIPTION=Small, lightweight Qt text editor
+EAPI=5
+HOMEPAGE=http://semiletov.org/tea/ http://tea.ourproject.org/
+IUSE=aspell hunspell linguas_de linguas_fr linguas_ru
+KEYWORDS=~amd64 ~ia64 ~x86 ~x86-fbsd
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4 sys-libs/zlib aspell? ( app-text/aspell ) hunspell? ( app-text/hunspell )
+SLOT=0
+SRC_URI=http://semiletov.org/tea/dloads/tea-41.0.0.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	l10n	33bde4fb0cfd3a21a277b66bfd837e19	multilib	62927b3db3a589b0806255f3a002d5d3	qmake-utils	55ebcc6f3269308d226969c26704e343	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8e26a5997464843bc10bb1a22c519e6b

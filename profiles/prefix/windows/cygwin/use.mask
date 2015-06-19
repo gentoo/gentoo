@@ -1,0 +1,6 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/windows/cygwin/use.mask,v 1.1 2014/04/30 22:07:29 blueness Exp $
+
+# Re-add Cygwin's libc
+-elibc_Cygwin

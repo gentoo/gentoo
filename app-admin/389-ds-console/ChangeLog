@@ -1,0 +1,53 @@
+# ChangeLog for app-admin/389-ds-console
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/389-ds-console/ChangeLog,v 1.11 2014/08/18 19:58:21 creffett Exp $
+
+*389-ds-console-1.2.6-r1 (18 Aug 2014)
+
+  18 Aug 2014; Christopher Reffett <2011creffett@gentoo.org>
+  +389-ds-console-1.2.6-r1.ebuild, -389-ds-console-1.2.6.ebuild:
+  QA: EAPI bump, revbump
+
+  22 Jun 2014; Fabio Erculiani <lxnay@gentoo.org> metadata.xml:
+  reset to maintainer-needed@
+
+  14 Mar 2013; Fabio Erculiani <lxnay@gentoo.org>
+  -389-ds-console-1.2.3-r1.ebuild:
+  drop older versions
+
+*389-ds-console-1.2.6 (14 Aug 2011)
+
+  14 Aug 2011; Fabio Erculiani <lxnay@gentoo.org> +389-ds-console-1.2.6.ebuild:
+  version bump
+
+  17 Oct 2010; Fabio Erculiani <lxnay@gentoo.org>
+  389-ds-console-1.2.3-r1.ebuild:
+  tweak jdk/jre RDEPEND
+
+  11 Jul 2010; Fabio Erculiani <lxnay@gentoo.org>
+  389-ds-console-1.2.3-r1.ebuild:
+  update HOMEPAGE
+
+*389-ds-console-1.2.3-r1 (11 Jul 2010)
+
+  11 Jul 2010; Fabio Erculiani <lxnay@gentoo.org>
+  -389-ds-console-1.2.3.ebuild, +389-ds-console-1.2.3-r1.ebuild:
+  add net-nds/389-ds-base to DEPEND/RDEPEND
+
+  11 Jul 2010; Fabio Erculiani <lxnay@gentoo.org>
+  389-ds-console-1.2.3.ebuild:
+  add sys-apps/sed to DEPEND
+
+  11 Jul 2010; Fabio Erculiani <lxnay@gentoo.org> metadata.xml:
+  set java herd in metadata.xml
+
+  10 Jul 2010; Fabio Erculiani <lxnay@gentoo.org>
+  389-ds-console-1.2.3.ebuild:
+  improve ebuild quality, fix improper usage of die
+
+*389-ds-console-1.2.3 (07 Jul 2010)
+
+  07 Jul 2010; Fabio Erculiani <lxnay@gentoo.org>
+  +389-ds-console-1.2.3.ebuild, +metadata.xml:
+  new ebuild, thanks to Andreis_Vinogradovs ( slepnoga )
+  <spamslepnoga@inbox.ru> for reporting, close bug #309553

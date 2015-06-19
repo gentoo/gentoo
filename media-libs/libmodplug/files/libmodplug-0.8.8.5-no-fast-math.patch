@@ -1,0 +1,12 @@
+diff -uNr libmodplug-0.8.8.5.ORIG/configure.ac libmodplug-0.8.8.5/configure.ac
+--- libmodplug-0.8.8.5.ORIG/configure.ac	2014-08-04 22:25:14.741262000 +0100
++++ libmodplug-0.8.8.5/configure.ac	2014-08-04 22:25:45.228263519 +0100
+@@ -29,7 +29,7 @@
+ AC_CHECK_HEADERS([inttypes.h stdint.h malloc.h])
+ AC_CHECK_FUNCS(setenv sinf)
+ 
+-CXXFLAGS="$CXXFLAGS -fno-exceptions -Wall -ffast-math -D_REENTRANT"
++CXXFLAGS="$CXXFLAGS -fno-exceptions -Wall -D_REENTRANT"
+ # CXXFLAGS="-fno-exceptions -g -Wall -ffast-math -D_REENTRANT `glib-config --cflags`"
+ 
+ AC_CANONICAL_HOST

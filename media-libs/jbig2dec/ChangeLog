@@ -1,0 +1,117 @@
+# ChangeLog for media-libs/jbig2dec
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/jbig2dec/ChangeLog,v 1.35 2014/06/10 00:48:12 vapier Exp $
+
+  10 Jun 2014; Mike Frysinger <vapier@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  Add arm64/m68k love.
+
+  03 Nov 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  jbig2dec-0.11-r1.ebuild:
+  Keyword ~sparc-solaris
+
+  24 Apr 2013; Samuli Suominen <ssuominen@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  Use subslot operator for the libpng dependency. Use AC_CONFIG_HEADERS instead
+  of AM_CONFIG_HEADER wrt #466998 by Alphat-PC and Tobias B.
+
+  03 Mar 2013; Mike Frysinger <vapier@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  Add s390 love.
+
+  09 Aug 2012; Fabian Groffen <grobian@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  Marked ~ppc-macos
+
+  12 Jul 2012; Fabian Groffen <grobian@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  Marked ~x86-solaris
+
+  08 Jul 2012; Raúl Porcel <armin76@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  alpha/ia64/sparc stable wrt #414463
+
+  12 Jun 2012; Jeremy Olexa <darkside@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  add ~x86-macos, bug 419779
+
+  10 Jun 2012; Benda Xu <heroxbd@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  keyword ~amd64-linux ~x86-linux
+
+  04 Jun 2012; Fabian Groffen <grobian@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  Marked ~m68k-mint, bug #418389
+
+  26 May 2012; Fabian Groffen <grobian@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  Marked ~x64-macos
+
+  16 May 2012; Jeroen Roovers <jer@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  Stable for HPPA (bug #414463).
+
+  13 May 2012; Markus Meier <maekke@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  arm stable, bug #414463
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  keyword ~amd64-fbsd
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #401853
+
+  11 Mar 2012; Mart Raudsepp <leio@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  Add ~mips keyword, unbundled in newer ghostscript-gpl wrt #401853
+
+  05 Mar 2012; Samuli Suominen <ssuominen@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  Missing app-arch/unzip DEPEND for USE="test" wrt #406793 by Toralf Förster
+
+  20 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> -jbig2dec-0.11.ebuild:
+  old
+
+  20 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  ppc/ppc64 stable wrt #402907
+
+  20 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  Keyword ~ppc64 wrt #401853
+
+  19 Feb 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  jbig2dec-0.11-r1.ebuild:
+  Actually implement test phase... still fails though, bug 324275
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  x86 stable wrt bug #402907
+
+  14 Feb 2012; Alexis Ballier <aballier@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  keyword ~x86-fbsd
+
+  10 Feb 2012; Agostino Sarubbo <ago@gentoo.org> jbig2dec-0.11-r1.ebuild:
+  Stable for amd64, wrt bug #402907
+
+*jbig2dec-0.11-r1 (09 Feb 2012)
+
+  09 Feb 2012; Samuli Suominen <ssuominen@gentoo.org> +jbig2dec-0.11-r1.ebuild,
+  +files/jbig2dec-0.11-libpng15.patch:
+  Fix building with libpng15.
+
+  09 Feb 2012; Jeroen Roovers <jer@gentoo.org> jbig2dec-0.11.ebuild:
+  Marked ~hppa (bug #401853).
+
+  08 Feb 2012; Markus Meier <maekke@gentoo.org> jbig2dec-0.11.ebuild:
+  add ~arm, bug #401853
+
+  02 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org> jbig2dec-0.11.ebuild:
+  Silence Repoman
+
+  02 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org> jbig2dec-0.11.ebuild:
+  Added note that tests make no sense, bug 324275
+
+  29 Mar 2011; Michael Weber <xmw@gentoo.org> jbig2dec-0.11.ebuild:
+  ppc stable (bug 358029)
+
+  20 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> jbig2dec-0.11.ebuild:
+  Marked ~ppc wrt #341689
+
+  14 Nov 2010; Christian Faulhammer <fauli@gentoo.org> jbig2dec-0.11.ebuild:
+  stable x86, bug 345159
+
+  13 Nov 2010; Markos Chandras <hwoarang@gentoo.org> jbig2dec-0.11.ebuild:
+  Stable on amd64 wrt bug #345159
+
+  13 Nov 2010; Markos Chandras <hwoarang@gentoo.org> jbig2dec-0.11.ebuild:
+  Restrict tests. Bug #324275
+
+*jbig2dec-0.11 (10 Jun 2010)
+
+  10 Jun 2010; Samuli Suominen <ssuominen@gentoo.org> +jbig2dec-0.11.ebuild:
+  Initial commit wrt #321997 by Michael Weber. Required for unbundling
+  jbig2dec from ghostscript-gpl.

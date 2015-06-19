@@ -1,0 +1,42 @@
+# ChangeLog for sci-biology/ucsc-genome-browser
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/ucsc-genome-browser/ChangeLog,v 1.7 2015/04/17 06:21:51 jlec Exp $
+
+  17 Apr 2015; Justin Lecher <jlec@gentoo.org> -ucsc-genome-browser-223.ebuild,
+  ucsc-genome-browser-260.ebuild:
+  Drop old; bump EAPI
+
+  12 Mar 2013; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Drop Andrey as maintainer so that bugs get assigned to sci-biology directly
+
+*ucsc-genome-browser-260 (27 Dec 2011)
+
+  27 Dec 2011; Justin Lecher <jlec@gentoo.org> +ucsc-genome-browser-260.ebuild,
+  metadata.xml:
+  Version Bump, move to EAPI=4, handled static-libs, respect mostly everywhere
+  LDFALGS
+
+  24 Feb 2010; Andrey Kislyuk <weaver@gentoo.org>
+  ucsc-genome-browser-223.ebuild:
+  Re-add parallel make workaround
+
+*ucsc-genome-browser-223 (08 Feb 2010)
+
+  08 Feb 2010; Andrey Kislyuk <weaver@gentoo.org>
+  -ucsc-genome-browser-221.ebuild, +ucsc-genome-browser-223.ebuild:
+  Version bump and set SLOT per bug 300736
+
+*ucsc-genome-browser-221 (10 Jan 2010)
+
+  10 Jan 2010; Andrey Kislyuk <weaver@gentoo.org>
+  -ucsc-genome-browser-217.ebuild, +ucsc-genome-browser-221.ebuild:
+  Version bump
+
+*ucsc-genome-browser-217 (28 Oct 2009)
+
+  28 Oct 2009; Andrey Kislyuk <weaver@gentoo.org> +metadata.xml,
+  +ucsc-genome-browser-217.ebuild:
+  Import from Science overlay
+
+  23 Oct 2009; Andrey Kislyuk <weaver@gentoo.org> ChangeLog:
+  New package, bug 155780. Ebuild written by me and dawe <daweonline@gmail.com>

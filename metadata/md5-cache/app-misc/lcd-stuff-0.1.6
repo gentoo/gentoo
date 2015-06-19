@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=virtual/pkgconfig
+DESCRIPTION=lcd-stuff is a client for lcdproc that displays RSS, Weather, MPD and new mail
+EAPI=2
+HOMEPAGE=http://lcd-stuff.berlios.de/
+IUSE=imap mpd mp3 xml rss
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=app-misc/lcdproc net-misc/curl dev-libs/glib imap? ( net-libs/libetpan ) mpd? ( >=media-libs/libmpd-0.12.0 ) mp3? ( media-libs/taglib ) xml? ( net-libs/libnxml ) rss? ( net-libs/libmrss net-libs/libnxml )
+SLOT=0
+SRC_URI=mirror://berlios/lcd-stuff/lcd-stuff-0.1.6.tar.bz2
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=967306d123c21cf4b9dbf8ffe732dd3f

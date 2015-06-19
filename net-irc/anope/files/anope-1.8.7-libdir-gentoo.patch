@@ -1,0 +1,91 @@
+--- configure.in
++++ configure.in
+@@ -286,6 +286,15 @@
+ ])
+ 
+ AC_SUBST(DATDEST)
++
++AC_ARG_WITH(libdir, [ --with-libdir=libdir   Specify the location of the services lib folder], [
++ AC_DEFINE_UNQUOTED(LIB_DIR,"$withval","services lib dir")
++ AC_DEFINE_UNQUOTED(MODULE_PATH,"${withval}/modules/","Module dir")
++ DATDEST=$withval
++ MODULE_PATH=${withval}/modules/
++])
++
++AC_SUBST(LIB_PATH)
+ AC_SUBST(MODULE_PATH)
+ 
+ AC_CONFIG_FILES(		\
+--- src/Makefile
++++ src/Makefile
+@@ -115,10 +115,6 @@
+ 	ln $(BINDEST)/services $(BINDEST)/listnicks
+ 	ln $(BINDEST)/services $(BINDEST)/listchans
+ 	(cd ../lang ; $(MAKE) install)
+-	$(CP) ../data/* $(DATDEST)
+-	$(INSTALL) bin/mydbgen $(DATDEST)/mydbgen
+-	test -d $(DATDEST)/backups || mkdir $(DATDEST)/backups
+-	test -d $(DATDEST)/logs || mkdir $(DATDEST)/logs
+ 	@if [ "$(MODULE_PATH)" ] ; then \
+ 		test -d ${MODULE_PATH} || mkdir ${MODULE_PATH} ; \
+ 		test -d ${MODULE_PATH}/runtime || mkdir ${MODULE_PATH}/runtime ; \
+--- include/sysconf.h.in
++++ include/sysconf.h.in
+@@ -96,6 +96,9 @@
+ /* "Module dir" */
+ #undef MODULE_PATH
+ 
++/* "Lib dir" */
++#undef LIB_DIR
++
+ /* "Has mysql/mysql.h" */
+ #undef MYSQL_HEADER_PREFIX
+ 
+--- include/config.h
++++ include/config.h
+@@ -22,10 +22,10 @@
+ /******* General configuration *******/
+ 
+ /* Name of configuration file (in Services directory) */
+-#define SERVICES_CONF	"services.conf"
++#define SERVICES_CONF	"/etc/anope/services.conf"
+ 
+ /* Name of log file (in Services directory) */
+-#define LOG_FILENAME	"services.log"
++#define LOG_FILENAME	"/var/log/anope/services.log"
+ 
+ /* Maximum amount of data from/to the network to buffer (bytes). */
+ #define NET_BUFSIZE	65536
+--- src/log.c
++++ src/log.c
+@@ -33,7 +33,7 @@
+ 
+     /* fix bug 577 */
+     strftime(timestamp, sizeof(timestamp), "%Y%m%d", tm);
+-    snprintf(name, count, "logs/%s.%s", log_filename, timestamp);
++    snprintf(name, count, "%s.%s", log_filename, timestamp);
+     curday = tm->tm_yday;
+ 
+     return 1;
+--- src/modules.c
++++ src/modules.c
+@@ -2846,7 +2846,7 @@
+ 
+ 
+ #ifndef _WIN32
+-    snprintf(dirbuf, BUFSIZE, "%s/modules/runtime", services_dir);
++    snprintf(dirbuf, BUFSIZE, "%s/modules/runtime", LIB_DIR);
+ #else
+     snprintf(dirbuf, BUFSIZE, "\\%s", "modules/runtime");
+ #endif
+--- src/language.c
++++ src/language.c
+@@ -71,7 +71,7 @@
+         alog("debug: Loading language %d from file `languages/%s'",
+              index, filename);
+     }
+-    snprintf(buf, sizeof(buf), "languages/%s", filename);
++    snprintf(buf, sizeof(buf), "%s/languages/%s", LIB_DIR, filename);
+ #ifndef _WIN32
+     if (!(f = fopen(buf, "r"))) {
+ #else

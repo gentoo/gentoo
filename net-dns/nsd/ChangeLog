@@ -1,0 +1,73 @@
+# ChangeLog for net-dns/nsd
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/nsd/ChangeLog,v 1.11 2014/09/28 18:12:51 floppym Exp $
+
+*nsd-3.2.18 (28 Sep 2014)
+*nsd-4.1.0 (28 Sep 2014)
+
+  28 Sep 2014; Mike Gilbert <floppym@gentoo.org> +files/nsd.service,
+  +nsd-3.2.18.ebuild, +nsd-4.1.0.ebuild, -nsd-3.2.16.ebuild, -nsd-3.2.17.ebuild,
+  -nsd-4.0.0.ebuild, -nsd-4.0.3.ebuild:
+  Version bumps, remove old. Install systemd unit, bug 522290. Move user
+  creation to pkg_postinst for improved binpkg handling.
+
+  26 Mar 2014; Wolfram Schlich <wschlich@gentoo.org> files/nsd.munin-conf:
+  munin config update by tom@whyscream.net (bug #505360, comment 3)
+
+*nsd-4.0.3 (25 Mar 2014)
+*nsd-3.2.17 (25 Mar 2014)
+
+  25 Mar 2014; Wolfram Schlich <wschlich@gentoo.org> +nsd-3.2.17.ebuild,
+  +nsd-4.0.3.ebuild:
+  version bump by tom@whyscream.net
+
+*nsd-4.0.0 (30 Oct 2013)
+
+  30 Oct 2013; Wolfram Schlich <wschlich@gentoo.org> +nsd-4.0.0.ebuild,
+  -nsd-4.0.0_beta5.ebuild:
+  version bump, removed beta version
+
+*nsd-3.2.16 (12 Aug 2013)
+*nsd-4.0.0_beta5 (12 Aug 2013)
+
+  12 Aug 2013; Wolfram Schlich <wschlich@gentoo.org> +files/nsd_munin_.patch,
+  +nsd-3.2.16.ebuild, +nsd-4.0.0_beta5.ebuild, -nsd-3.2.15-r1.ebuild,
+  -nsd-4.0.0_beta4-r1.ebuild:
+  version bump by tom@whyscream.net
+
+*nsd-3.2.15-r1 (03 Apr 2013)
+
+  03 Apr 2013; Wolfram Schlich <wschlich@gentoo.org> +files/nsd3.initd-r1,
+  +nsd-3.2.15-r1.ebuild, -files/nsd3.initd, -nsd-3.2.15.ebuild:
+  fix typo in nsd3.initd
+
+*nsd-4.0.0_beta4-r1 (03 Apr 2013)
+*nsd-3.2.15 (03 Apr 2013)
+
+  03 Apr 2013; Wolfram Schlich <wschlich@gentoo.org> +files/nsd.munin-conf,
+  +files/nsd3-patch.cron, +files/nsd3.initd, +nsd-3.2.15.ebuild,
+  +nsd-4.0.0_beta4-r1.ebuild, -nsd-4.0.0_beta4.ebuild, files/nsd.initd,
+  metadata.xml:
+  added nsd-3.x ebuild, added nsd-4.x munin plugin config. thanks to Tom
+  Hendrikx <tom@whyscream.net>
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*nsd-4.0.0_beta4 (06 Feb 2013)
+
+  06 Feb 2013; Wolfram Schlich <wschlich@gentoo.org> +nsd-4.0.0_beta4.ebuild,
+  -nsd-4.0.0_beta3-r1.ebuild:
+  version bump
+
+*nsd-4.0.0_beta3-r1 (30 Jan 2013)
+
+  30 Jan 2013; Wolfram Schlich <wschlich@gentoo.org> +nsd-4.0.0_beta3-r1.ebuild,
+  -nsd-4.0.0_beta3.ebuild, metadata.xml:
+  added munin plugin + USE flag, small other improvements
+
+*nsd-4.0.0_beta3 (30 Jan 2013)
+
+  30 Jan 2013; Wolfram Schlich <wschlich@gentoo.org> +files/nsd.initd,
+  +metadata.xml, +nsd-4.0.0_beta3.ebuild:
+  initial import, ebuild by Tom Hendrikx <tom@whyscream.net> (see bug #128246)

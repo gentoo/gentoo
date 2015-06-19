@@ -1,0 +1,21 @@
+commit b6196bc1fd489a5be69731ca9a19d8a95f721570
+Author: Montel Laurent <montel@kde.org>
+Date:   Thu Mar 12 07:48:15 2015 +0100
+
+    Fix Bug 345071 - KMail crashed while I was reading an email
+    
+    BUG: 345071
+    FIXED-IN: 4.16.7
+
+diff --git a/kmail/kmmainwidget.cpp b/kmail/kmmainwidget.cpp
+index 2228aef..92ba8c5 100644
+--- a/kmail/kmmainwidget.cpp
++++ b/kmail/kmmainwidget.cpp
+@@ -4498,5 +4498,6 @@ void KMMainWidget::populateMessageListStatusFilterCombo()
+ 
+ void KMMainWidget::slotCollectionRemoved(const Akonadi::Collection &col)
+ {
+-    mFavoritesModel->removeCollection(col);
++    if (mFavoritesModel)
++       mFavoritesModel->removeCollection(col);
+ }

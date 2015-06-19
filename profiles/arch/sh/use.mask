@@ -1,0 +1,185 @@
+# Unmask the flag which corresponds to ARCH.
+-sh
+
+# Kacper Kowalik <xarthisius@gentoo.org> (9 Aug 2010)
+# cblas-external as virtual/cblas is also masked
+cblas-external
+
+hardened
+
+# Paul de Vrieze <pauldv@gentoo.org>
+# There is no java in this profile (if there is it must be available). Without
+# this repoman will fail on apps like sys-libs/db
+java
+java-internal
+java-external
+pdfannotextractor
+
+# broken upstream, see libavcodec/sh4/idct_sh4.c:#error
+ffmpeg
+
+# No hardware to test
+bluetooth
+dvd
+ios
+
+# Stuff we don't want
+chicken
+fuse
+R
+octave
+tracker
+xindy
+lyx
+mpi
+lasi
+fusion
+lensfun
+fits
+networkmanager
+lpsol
+openexr
+libev
+clang
+
+# Stuff that doesn't make sense on this arch
+3dfx
+dell
+dmi
+laptop
+
+# havent tested yet
+scanner
+gphoto2
+mythtv
+dvb
+qt4
+kde
+diet
+lirc
+afs
+mono
+lm_sensors
+qdbm
+fftw
+netjack
+mzscheme
+beagle
+eds
+pike
+nvtv
+xine
+ocaml
+gimp
+xemacs
+gnomecd
+lapack
+cblas
+webkit
+prolog
+timidity
+fluidsynth
+mms
+sid
+autotrace
+lqr
+musepack
+authdaemond
+v4l
+tokyocabinet
+wildmidi
+webp
+systemd
+soundcloud
+gts
+devil
+rtmp
+metalink
+lucene
+
+# 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
+# Modular X: mask for architectures on which they aren't available
+video_cards_apm
+video_cards_ark
+video_cards_ast
+video_cards_ati
+video_cards_cirrus
+video_cards_chips
+video_cards_cyrix
+video_cards_glint
+video_cards_i128
+video_cards_i740
+video_cards_intel
+video_cards_mach64
+video_cards_mga
+video_cards_neomagic
+video_cards_newport
+video_cards_nouveau
+video_cards_nsc
+video_cards_nv
+video_cards_r128
+video_cards_radeon
+video_cards_rendition
+video_cards_s3
+video_cards_s3virge
+video_cards_savage
+video_cards_siliconmotion
+video_cards_sis
+video_cards_tdfx
+video_cards_tga
+video_cards_trident
+video_cards_tseng
+video_cards_vesa
+video_cards_via
+video_cards_voodoo
+
+# Matt Turner <mattst88@gentoo.org>
+# Mask more VIDEO_CARDs added with mesa-8.0
+video_cards_r100
+video_cards_r200
+video_cards_r300
+video_cards_r600
+video_cards_radeonsi
+video_cards_i915
+video_cards_i965
+video_cards_ilo
+# vmware wasn't added with mesa-8.0, but it should still be masked
+video_cards_vmware
+
+# 2006/03/07 - Donnie Berkholz <dberkholz@gentoo.org>
+# Modular X: mask for architectures lacking direct rendering      
+dri
+
+# nspr isnt ported to SuperH which means no seamonkey/firefox/etc...
+nsplugin
+firefox
+nss
+seamonkey
+
+# USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
+# Bug #184563, 18 Sep 2007 
+# Robin H. Johnson <robbat2@gentoo.org>
+audit
+
+# Matt Turner <mattst88@gentoo.org) (10 Feb 2012)
+# mask d3d since we don't have wine
+d3d
+
+# Matt Turner <mattst88@gentoo.org) (10 Feb 2012)
+# mask wayland since dev-libs/wayland isn't keyworded
+wayland
+
+# Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)
+# libdlm and cman are not keyworded
+cman
+clvm
+
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
+# virtual/opencl is not keyworded
+opencl
+
+# Unmask once sys-libs/libunwind gets keyworded.
+unwind
+
+# sys-libs/libseccomp has not been ported to this arch yet #524148
+seccomp

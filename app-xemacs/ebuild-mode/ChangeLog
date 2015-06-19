@@ -1,0 +1,154 @@
+# ChangeLog for app-xemacs/ebuild-mode
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/ebuild-mode/ChangeLog,v 1.5 2014/08/10 18:51:26 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> ebuild-mode-1.19.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  18 Jan 2014; Pacho Ramos <pacho@gentoo.org> ebuild-mode-1.24.ebuild:
+  amd64 stable, bug #491972
+
+  06 Dec 2013; Mats Lidell <matsl@gentoo.org> ebuild-mode-1.24.ebuild:
+  stable x86 - bug 491972
+
+*ebuild-mode-1.24 (17 Sep 2013)
+
+  17 Sep 2013; Ulrich Müller <ulm@gentoo.org> -ebuild-mode-1.22.ebuild,
+  +ebuild-mode-1.24.ebuild:
+  Version bump.
+
+*ebuild-mode-1.22 (06 Jul 2013)
+
+  06 Jul 2013; Ulrich Müller <ulm@gentoo.org> -gentoo-syntax-1.19.ebuild,
+  +ebuild-mode-1.19.ebuild, +ebuild-mode-1.22.ebuild:
+  Version bump. Move app-xemacs/gentoo-syntax to app-xemacs/ebuild-mode.
+
+  06 Jul 2013; Ulrich Müller <ulm@gentoo.org> -gentoo-syntax-1.18.ebuild,
+  gentoo-syntax-1.19.ebuild:
+  Fix compile failure, bug 395897 comment #1. Remove old.
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gentoo-syntax-1.19.ebuild:
+  x86 stable wrt bug #418663
+
+  04 Jun 2012; Agostino Sarubbo <ago@gentoo.org> gentoo-syntax-1.19.ebuild:
+  Stable for amd64, wrt bug #418663
+
+  02 Jun 2012; Hans de Graaff <graaff@gentoo.org> -gentoo-syntax-1.16.ebuild,
+  -gentoo-syntax-1.17.ebuild:
+  Remove old versions.
+
+  04 Jan 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  gentoo-syntax-1.18.ebuild:
+  x86 stable wrt bug #395897
+
+  28 Dec 2011; Agostino Sarubbo <ago@gentoo.org> gentoo-syntax-1.18.ebuild:
+  Stable for AMD64, wrt bug #395897
+
+*gentoo-syntax-1.19 (24 Dec 2011)
+
+  24 Dec 2011; Hans de Graaff <graaff@gentoo.org> +gentoo-syntax-1.19.ebuild:
+  Version bump.
+
+  03 Jun 2011; Hans de Graaff <graaff@gentoo.org> -gentoo-syntax-1.11.ebuild:
+  Remove old version.
+
+*gentoo-syntax-1.18 (23 Oct 2010)
+
+  23 Oct 2010; Hans de Graaff <graaff@gentoo.org>
+  +gentoo-syntax-1.18.ebuild:
+  Version bump.
+
+  12 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  gentoo-syntax-1.16.ebuild:
+  Stable on amd64 wrt bug #327661
+
+  12 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  gentoo-syntax-1.16.ebuild:
+  stable x86, bug 327661
+
+*gentoo-syntax-1.17 (10 Jul 2010)
+
+  10 Jul 2010; Hans de Graaff <graaff@gentoo.org>
+  +gentoo-syntax-1.17.ebuild:
+  Version bump.
+
+  10 Jul 2010; Hans de Graaff <graaff@gentoo.org>
+  -gentoo-syntax-1.14.ebuild, -gentoo-syntax-1.15.ebuild:
+  Remove old versions.
+
+*gentoo-syntax-1.16 (17 Jan 2010)
+
+  17 Jan 2010; Hans de Graaff <graaff@gentoo.org>
+  +gentoo-syntax-1.16.ebuild:
+  Version bump.
+
+*gentoo-syntax-1.15 (24 Oct 2009)
+
+  24 Oct 2009; Hans de Graaff <graaff@gentoo.org>
+  +gentoo-syntax-1.15.ebuild:
+  Version bump.
+
+*gentoo-syntax-1.14 (25 Sep 2009)
+
+  25 Sep 2009; Hans de Graaff <graaff@gentoo.org>
+  +gentoo-syntax-1.14.ebuild:
+  Version bump.
+
+  23 Feb 2009; Christian Faulhammer <fauli@gentoo.org>
+  -gentoo-syntax-1.8.ebuild:
+  clean up
+
+  22 Feb 2009; Raúl Porcel <armin76@gentoo.org> gentoo-syntax-1.11.ebuild:
+  x86 stable wrt #259655
+
+  22 Feb 2009; Tiago Cunha <tcunha@gentoo.org> gentoo-syntax-1.11.ebuild:
+  stable amd64, bug 259655
+
+  20 Feb 2009; Christian Faulhammer <fauli@gentoo.org>
+  -gentoo-syntax-1.9.ebuild, -gentoo-syntax-1.10.ebuild:
+  clean up
+
+*gentoo-syntax-1.11 (11 Jan 2009)
+
+  11 Jan 2009; Hans de Graaff <graaff@gentoo.org>
+  +gentoo-syntax-1.11.ebuild:
+  Version bump with some XEmacs compatibility fixes.
+
+*gentoo-syntax-1.10 (02 Jan 2009)
+
+  02 Jan 2009; Hans de Graaff <graaff@gentoo.org>
+  +gentoo-syntax-1.10.ebuild:
+  Version bump
+
+  02 Jan 2009; Hans de Graaff <graaff@gentoo.org> -gentoo-syntax-1.7.ebuild:
+  Remove old version
+
+  14 May 2008; Christian Faulhammer <opfer@gentoo.org>
+  gentoo-syntax-1.8.ebuild:
+  stable x86, bug 222023
+
+  14 May 2008; Hans de Graaff <graaff@gentoo.org> gentoo-syntax-1.8.ebuild:
+  Mark stable on amd64, bug 222023
+
+*gentoo-syntax-1.9 (14 May 2008)
+
+  14 May 2008; Hans de Graaff <graaff@gentoo.org> +gentoo-syntax-1.9.ebuild:
+  Version bump
+
+  30 Mar 2008; Hans de Graaff <graaff@gentoo.org> gentoo-syntax-1.8.ebuild:
+  Add missing dependency on app-xemacs/sh-script, thanks to ulm for the report
+
+*gentoo-syntax-1.8 (22 Mar 2008)
+
+  22 Mar 2008; Hans de Graaff <graaff@gentoo.org> +gentoo-syntax-1.8.ebuild:
+  Version bump
+
+  19 Mar 2008; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  A herd should not be listed as maintainer
+
+*gentoo-syntax-1.7 (15 Sep 2007)
+
+  15 Sep 2007; Hans de Graaff <graaff@gentoo.org> +gentoo-syntax-1.7.ebuild:
+  Initial public version of gentoo-syntax, a package to help edit
+  gentoo-specific files such as ebuilds with XEmacs.

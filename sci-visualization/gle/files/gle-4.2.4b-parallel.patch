@@ -1,0 +1,21 @@
+--- src/gui/MakefileAC.in.orig	2010-01-06 20:10:04.000000000 +0000
++++ src/gui/MakefileAC.in	2010-01-06 20:21:15.000000000 +0000
+@@ -84,14 +84,14 @@
+ qmake:
+ 	$(QMAKE_PROG) $(QMAKE_OPTS)
+ 
+-domake:
+-	$(MAKE_PROG)
++domake: Makefile
++	$(MAKE)
+ 
+-repmake:
++repmake: Makefile
+ 	perl ../../platform/autopackage/qt-replace.pl Makefile
+ 
+ doclean:
+-	-$(MAKE_PROG) clean
++	-$(MAKE) clean
+ 	-@$(RM) qgle install_qgle_name_mac Makefile
+ 	-@$(RMDIR) moc
+ 	-@$(RMDIR) objects

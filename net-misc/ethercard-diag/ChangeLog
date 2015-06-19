@@ -1,0 +1,10 @@
+# ChangeLog for net-misc/ethercard-diag
+# Copyright 1999-2008 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ethercard-diag/ChangeLog,v 1.1 2008/04/14 05:59:50 vapier Exp $
+
+*ethercard-diag-20050321.1g (14 Apr 2008)
+
+  14 Apr 2008; Mike Frysinger <vapier@gentoo.org> +metadata.xml,
+  +ethercard-diag-20050321.1g.ebuild:
+  Initial package of merged diag utils.
+

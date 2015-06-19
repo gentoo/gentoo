@@ -1,0 +1,13 @@
+# ChangeLog for dev-perl/Crypt-URandom
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-URandom/ChangeLog,v 1.2 2015/06/13 21:44:10 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Crypt-URandom-0.340.0.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+*Crypt-URandom-0.340.0 (21 Feb 2015)
+
+  21 Feb 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Crypt-URandom-0.340.0.ebuild, +metadata.xml:
+  New package, dependency of dev-perl/MongoDB

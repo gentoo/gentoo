@@ -1,0 +1,21 @@
+# ChangeLog for media-gfx/pixels2pgf
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/pixels2pgf/ChangeLog,v 1.4 2014/07/06 13:19:51 mgorny Exp $
+
+  06 Jul 2014; Michał Górny <mgorny@gentoo.org> pixels2pgf-9999.ebuild:
+  Replace obsolete mirror://bitbucket with the real URI.
+
+  15 Oct 2013; Michał Górny <mgorny@gentoo.org> pixels2pgf-9999.ebuild:
+  Switch to git-r3.
+
+*pixels2pgf-9999 (15 Dec 2012)
+
+  15 Dec 2012; Michał Górny <mgorny@gentoo.org> +pixels2pgf-9999.ebuild,
+  metadata.xml:
+  Import the live ebuild.
+
+*pixels2pgf-0.1 (09 Apr 2012)
+
+  09 Apr 2012; Michał Górny <mgorny@gentoo.org> +pixels2pgf-0.1.ebuild,
+  +metadata.xml:
+  Introduce pixels2pgf, a pixel image to PGF/Tikz rectangles converter.

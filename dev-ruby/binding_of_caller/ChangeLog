@@ -1,0 +1,12 @@
+# ChangeLog for dev-ruby/binding_of_caller
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/binding_of_caller/ChangeLog,v 1.2 2015/06/07 16:51:23 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*binding_of_caller-0.7.2 (06 Mar 2015)
+
+  06 Mar 2015; Hans de Graaff <graaff@gentoo.org>
+  +binding_of_caller-0.7.2.ebuild, +metadata.xml:
+  Initial import. Dependency for forthcoming web-console.

@@ -1,0 +1,13 @@
+diff -aur src/mgui/author/gb_devices.c src/mgui/author/gb_devices.c
+--- src/mgui/author/gb_devices.c	2012-02-08 13:19:21.000000000 +0100
++++ src/mgui/author/gb_devices.c	2012-04-26 14:32:30.059001909 +0200
+@@ -28,9 +28,6 @@
+ 
+ #include "gb_devices.h"
+ 
+-#include <glib/gthread.h>
+-#include <glib/gmessages.h>
+-#include <glib/ghash.h>
+ /* 
+ #include <glib/gfileutils.h> 
+ */ 

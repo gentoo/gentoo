@@ -1,0 +1,74 @@
+# ChangeLog for sys-libs/libtrash
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libtrash/ChangeLog,v 1.17 2013/02/25 21:22:46 pinkbyte Exp $
+
+*libtrash-3.2-r1 (25 Feb 2013)
+
+  25 Feb 2013; Sergey Popov <pinkbyte@gentoo.org> -libtrash-3.2.ebuild,
+  +libtrash-3.2-r1.ebuild, +files/libtrash-3.2-ldflags.patch:
+  Revision bump: EAPI 5, respect LDFLAGS, wrt bug #334833, drop old revision.
+  Thanks to Diego Elio Pettenò for discovering this issue
+
+  25 Feb 2013; Sergey Popov <pinkbyte@gentoo.org>
+  files/libtrash-3.2-gentoo.patch:
+  Add creation of missing symlink
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> -files/libtrash-2.2-gentoo.patch,
+  -files/libtrash-2.4-gentoo.patch, -libtrash-2.2.ebuild, -libtrash-2.8.ebuild,
+  metadata.xml:
+  Cleanup due #22900
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> libtrash-2.2.ebuild,
+  libtrash-2.8.ebuild:
+  Remove virtual/libc
+
+*libtrash-3.2 (30 Dec 2008)
+
+  30 Dec 2008; MATSUU Takuto <matsuu@gentoo.org>
+  +files/libtrash-3.2-gentoo.patch, -libtrash-2.4.ebuild,
+  -libtrash-2.6.ebuild, +libtrash-3.2.ebuild:
+  Version bumped, bug #252771.
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/libtrash-2.4-gentoo.patch:
+  Fix patch with absolute paths.
+
+*libtrash-2.8 (25 May 2007)
+
+  25 May 2007; MATSUU Takuto <matsuu@gentoo.org> +libtrash-2.8.ebuild:
+  Version bumped.
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+*libtrash-2.6 (01 May 2007)
+
+  01 May 2007; MATSUU Takuto <matsuu@gentoo.org> +libtrash-2.6.ebuild:
+  Version bumped.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*libtrash-2.4 (05 Nov 2005)
+
+  05 Nov 2005; MATSUU Takuto <matsuu@gentoo.org>
+  +files/libtrash-2.4-gentoo.patch, +libtrash-2.4.ebuild:
+  Version bumped. Bug 108127.
+
+  16 May 2005; MATSUU Takuto <matsuu@gentoo.org> libtrash-2.2.ebuild:
+  Fixed inheriting gcc, Bug 92745.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  libtrash-2.2.ebuild:
+  Masked libtrash-2.2.ebuild stable for ppc
+
+  02 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> libtrash-2.2.ebuild:
+  virtual/glibc -> virtual/libc
+
+  27 Mar 2004; David Holm <dholm@gentoo.org> libtrash-2.2.ebuild:
+  Added to ~ppc.
+
+*libtrash-2.2 (27 Mar 2004)
+
+  27 Mar 2004; <matsuu@gentoo.org> libtrash-2.2.ebuild:
+  Initial import. Bugs #17615.

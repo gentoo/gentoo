@@ -1,0 +1,36 @@
+diff --git a/utils/Makefile b/utils/Makefile
+index 4929e08..51c4e5f 100644
+--- a/utils/Makefile
++++ b/utils/Makefile
+@@ -16,14 +16,13 @@
+ 
+ #KERNELDIR = /usr/src/kernel-headers-2.4.18
+ 
+-CFLAGS =   -I/usr/include -I.. -O2 -Wall -DCONFIG_YAFFS_UTIL
++CFLAGS+=   -I.. -Wall -DCONFIG_YAFFS_UTIL $(CPPFLAGS)
+ CFLAGS+=   -Wshadow -Wpointer-arith -Wwrite-strings -Wstrict-prototypes -Wmissing-declarations
+ CFLAGS+=   -Wmissing-prototypes -Wredundant-decls -Wnested-externs -Winline
+ 
+ ## Change if you are using a cross-compiler
+ MAKETOOLS = 
+ 
+-CC=$(MAKETOOLS)gcc
+ 
+ MKYAFFSOBJS = mkyaffs.o
+ 
+@@ -36,13 +35,13 @@ $(MKYAFFSIMAGEOBJS): %.o: %.c
+ 	$(CC) -c $(CFLAGS) $< -o $@
+ 
+ mkyaffsimage: $(MKYAFFSIMAGEOBJS)
+-	$(CC) -o $@ $(MKYAFFSIMAGEOBJS)
++	$(CC) $(CFLAGS) -o $@ $(MKYAFFSIMAGEOBJS) $(LDFLAGS)
+ 
+ $(MKYAFFSOBJS): %.o: %.c
+ 	$(CC) -c $(CFLAGS) $< -o $@
+ 
+ mkyaffs: $(MKYAFFSOBJS)
+-	$(CC) -o $@ $(MKYAFFSOBJS)
++	$(CC) $(CFLAGS) -o $@ $(MKYAFFSOBJS) $(LDFLAGS)
+ 
+ yaffs_ecc.c:
+ 	ln -s ../yaffs_ecc.c yaffs_ecc.c

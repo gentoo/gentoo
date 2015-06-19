@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=net-wireless/b43-fwcutter-012
+DESCRIPTION=broadcom firmware for b43legacy/bcm43xx
+EAPI=5
+HOMEPAGE=http://linuxwireless.org/en/users/Drivers/b43
+KEYWORDS=~amd64 ~x86
+LICENSE=Broadcom
+RESTRICT=mirror binchecks strip
+SLOT=0
+SRC_URI=http://downloads.openwrt.org/sources/wl_apsta-3.130.20.0.o
+_md5_=3f0a4f84da61ffc22b6bee4fb430eb35

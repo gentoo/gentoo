@@ -1,0 +1,33 @@
+http://repos.archlinux.org/wsvn/packages/mrxvt/trunk/libpng14.patch
+
+--- configure.ac
++++ configure.ac
+@@ -952,7 +952,7 @@
+ if test "x$support_png" = "xyes"; then
+     AC_CHECK_LIB(
+         png,
+-        png_check_sig,
++        png_sig_cmp,
+         [],
+         [support_png=no],
+         [-lz -lm]
+--- src/mpng.c
++++ src/mpng.c
+@@ -83,7 +83,7 @@
+     display_depth = XDefaultDepth(display,XDefaultScreen(display));
+ 
+     fread(sig, 1, 8, ifile);
+-    if (!png_check_sig(sig, 8)){
++    if (png_sig_cmp(sig, 0, 8)){
+       fclose(ifile);
+       return -1;
+     }
+@@ -113,7 +113,7 @@
+ 
+     if (png_depth < 8){
+       if (png_color_type == PNG_COLOR_TYPE_GRAY ){
+-        png_set_gray_1_2_4_to_8(png_ptr);
++        png_set_expand_gray_1_2_4_to_8(png_ptr);
+         png_row_bytes = png_width;
+       }else{
+         png_set_expand(png_ptr);

@@ -1,0 +1,11 @@
+--- HandBrake-0.9.9.orig/gtk/configure.ac	2013-09-01 12:13:06.684612296 +0300
++++ HandBrake-0.9.9/gtk/configure.ac	2013-09-01 20:09:35.446706059 +0300
+@@ -96,7 +96,7 @@ case $host in
+ 	  pkg_gudev="gudev-1.0"
+ 	  ;;
+     esac
+-    GHB_PACKAGES="gthread-2.0 gio-2.0 libnotify dbus-glib-1 $pkg_gudev"
++    GHB_PACKAGES="gthread-2.0 gmodule-2.0 gio-2.0 libnotify dbus-glib-1 $pkg_gudev"
+ 	mingw_flag=no
+     ;;
+ esac

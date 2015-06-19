@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/354351
+
+fix sniped from Debian:
+* Fix "FTBFS: ncc: illegal label": apply patch by dai that replaces strcpy
+  by memmove (closes: #591133).
+
+--- copt/copt.c
++++ copt/copt.c
+@@ -174,7 +174,7 @@
+   /* Delete leading white spaces */
+   for (cp = buf; *cp && isspace(*cp); cp++) ;
+   if (cp != buf && *cp)
+-	strcpy(buf, cp);
++	memmove(buf, cp, strlen(cp) + 1);
+ 
+   return(buf);
+ }

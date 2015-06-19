@@ -1,0 +1,166 @@
+# ChangeLog for media-libs/libreplaygain
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libreplaygain/ChangeLog,v 1.47 2014/01/19 10:24:09 ago Exp $
+
+  19 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libreplaygain-477-r1.ebuild:
+  Stable for ppc64, wrt bug #495742
+
+  18 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libreplaygain-477-r1.ebuild:
+  Stable for alpha, wrt bug #495742
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libreplaygain-477-r1.ebuild:
+  Stable for ppc, wrt bug #495742
+
+  14 Jan 2014; Agostino Sarubbo <ago@gentoo.org> libreplaygain-477-r1.ebuild:
+  Stable for x86, wrt bug #495742
+
+  12 Jan 2014; Pacho Ramos <pacho@gentoo.org> libreplaygain-477-r1.ebuild:
+  amd64 stable, bug #495742
+
+  01 Jan 2014; Jeroen Roovers <jer@gentoo.org> libreplaygain-477-r1.ebuild:
+  Stable for HPPA (bug #495742).
+
+*libreplaygain-477-r1 (28 Jul 2013)
+
+  28 Jul 2013; Alexis Ballier <aballier@gentoo.org>
+  +libreplaygain-477-r1.ebuild:
+  go multilib and slat it for medialibs -r3
+
+  01 Jun 2013; Tim Harder <radhermit@gentoo.org> -libreplaygain-444.ebuild,
+  -libreplaygain-465.ebuild, -files/libreplaygain-444-multilib.patch:
+  Remove old.
+
+  01 Jun 2013; Chris Reffett <creffett@gentoo.org> libreplaygain-444.ebuild:
+  EAPI bump wrt bug 460572
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> libreplaygain-477.ebuild:
+  Add ~arm, wrt bug #449220
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> libreplaygain-477.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> libreplaygain-477.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  30 Sep 2012; Raúl Porcel <armin76@gentoo.org> libreplaygain-477.ebuild:
+  alpha stable wrt #419095
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> libreplaygain-477.ebuild:
+  Marking libreplaygain-477 ppc for bug 419095
+
+  06 Jun 2012; Jeroen Roovers <jer@gentoo.org> libreplaygain-477.ebuild:
+  Stable for HPPA (bug #419095).
+
+  06 Jun 2012; Jeff Horelick <jdhore@gentoo.org> libreplaygain-477.ebuild:
+  marked x86 per bug 419095
+
+  05 Jun 2012; Brent Baude <ranger@gentoo.org> libreplaygain-477.ebuild:
+  Marking libreplaygain-477 ppc64 for bug 419095
+
+  02 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libreplaygain-477.ebuild:
+  Stable for amd64, wrt bug #419095
+
+  17 May 2012; Alexis Ballier <aballier@gentoo.org> libreplaygain-477.ebuild:
+  keyword ~amd64-fbsd
+
+*libreplaygain-477 (30 Jan 2012)
+
+  30 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +libreplaygain-477.ebuild:
+  New upstream revision.
+
+  17 Aug 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  libreplaygain-465.ebuild:
+  keyword ~sparc-solaris
+
+  16 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> libreplaygain-465.ebuild:
+  ppc/ppc64 stable wrt #348512
+
+  27 Feb 2011; Tobias Klausmann <klausman@gentoo.org> libreplaygain-465.ebuild:
+  Stable on alpha, bug #348512
+
+  25 Jan 2011; Jeroen Roovers <jer@gentoo.org> libreplaygain-465.ebuild:
+  Stable for HPPA (bug #348512).
+
+  18 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  libreplaygain-465.ebuild:
+  x86 stable wrt bug #348512
+
+  14 Dec 2010; Markos Chandras <hwoarang@gentoo.org> libreplaygain-465.ebuild:
+  Stable on amd64 wrt bug #348512
+
+  12 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> libreplaygain-465.ebuild:
+  Ensure only users flags are used for optimization.
+
+  01 Oct 2010; Fabian Groffen <grobian@gentoo.org> libreplaygain-465.ebuild:
+  Marked ~x86-solaris
+
+*libreplaygain-465 (21 Jul 2010)
+
+  21 Jul 2010; Samuli Suominen <ssuominen@gentoo.org>
+  +libreplaygain-465.ebuild:
+  Version bump.
+
+  03 Feb 2010; Fabian Groffen <grobian@gentoo.org> libreplaygain-458.ebuild:
+  Drop install_name_tool hack, I managed to fix the issue sort of with cmake
+
+  03 Feb 2010; Fabian Groffen <grobian@gentoo.org> libreplaygain-458.ebuild:
+  Marked ~x86-macos
+
+  12 Jan 2010; Jonathan Callen <abcd@gentoo.org> libreplaygain-458.ebuild:
+  Add ~x86-linux keyword
+
+  09 Jan 2010; Fabian Groffen <grobian@gentoo.org> libreplaygain-458.ebuild:
+  Marked ~amd64-linux (bug #300037). Fixed for and marked ~ppc-macos.
+
+*libreplaygain-458 (09 Dec 2009)
+
+  09 Dec 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +libreplaygain-458.ebuild:
+  Version bump.
+
+  01 Oct 2009; Tobias Klausmann <klausman@gentoo.org>
+  libreplaygain-444.ebuild:
+  Stable on alpha, bug #284781
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> libreplaygain-444.ebuild:
+  ppc stable #284781
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> libreplaygain-444.ebuild:
+  ~ppc #279069
+
+  26 Sep 2009; Brent Baude <ranger@gentoo.org> libreplaygain-444.ebuild:
+  Marking libreplaygain-444 ppc64 for bug 284781
+
+  20 Sep 2009; Markus Meier <maekke@gentoo.org> libreplaygain-444.ebuild:
+  amd64/x86 stable, bug #284781
+
+  15 Sep 2009; Jeroen Roovers <jer@gentoo.org> libreplaygain-444.ebuild:
+  Stable for HPPA (bug #284781).
+
+  31 Aug 2009; Brent Baude <ranger@gentoo.org> libreplaygain-444.ebuild:
+  Marking libreplaygain-444 ~ppc64 for bug 279069
+
+  28 Aug 2009; Tobias Klausmann <klausman@gentoo.org>
+  libreplaygain-444.ebuild:
+  Keyworded on alpha, bug #279069
+
+  31 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  libreplaygain-444.ebuild, files/libreplaygain-444-multilib.patch:
+  Update patch for upstream.
+
+  29 Jul 2009; Jeroen Roovers <jer@gentoo.org> libreplaygain-444.ebuild:
+  Marked ~hppa (bug #279069).
+
+  27 Jul 2009; Alexis Ballier <aballier@gentoo.org>
+  libreplaygain-444.ebuild:
+  keyword ~x86-fbsd, bug #279069
+
+  26 Jul 2009; Mark Loeser <halcy0n@gentoo.org> libreplaygain-444.ebuild:
+  Marked ~x86; bug #279069
+
+*libreplaygain-444 (25 Jul 2009)
+
+  25 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +libreplaygain-444.ebuild, +files/libreplaygain-444-multilib.patch:
+  Initial commit.

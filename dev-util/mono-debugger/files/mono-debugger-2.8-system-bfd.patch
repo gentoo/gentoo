@@ -1,0 +1,97 @@
+diff --git a/configure.in b/configure.in
+index c643e64..402be56 100644
+--- a/configure.in
++++ b/configure.in
+@@ -64,6 +64,19 @@ case "$host" in
+ esac
+ AC_MSG_RESULT(ok)
+ 
++AC_ARG_WITH([system-libbfd],
++	AS_HELP_STRING([--with-system-libbfd], [Use the system copy of libbfd and libopcodes.]))
++
++AS_IF([test "x$with_system_libbfd" = "xyes"],
++	[
++		AC_CHECK_HEADERS([bfd.h], [], [AC_MSG_ERROR([Missing bfd.h header])])
++		AC_CHECK_LIB([bfd], [bfd_init], [:], [AC_MSG_ERROR([Missing libbfd library])])
++		AC_CHECK_LIB([opcodes], [init_disassemble_info], [:], [AC_MSG_ERROR([Missing libopcodes library])])
++		AC_CHECK_MEMBERS([asection.rawsize], [], [], [[#include <bfd.h>]])
++	])
++
++AM_CONDITIONAL([SYSTEM_LIBBFD], [test "x$with_system_libbfd" = "xyes"])
++
+ AC_ARG_WITH(bfd-target,
+ [  --with-bfd-target       Manually override the BFD target],
+ 	if test x$with_bfd_target != "x"; then
+diff --git a/sysdeps/Makefile.am b/sysdeps/Makefile.am
+index 017026f..f63c181 100644
+--- a/sysdeps/Makefile.am
++++ b/sysdeps/Makefile.am
+@@ -1 +1,5 @@
++if !SYSTEM_LIBBFD
+ SUBDIRS = bfd server
++else
++SUBDIRS = server
++endif
+diff --git a/sysdeps/server/Makefile.am b/sysdeps/server/Makefile.am
+index dad57ab..8e7ac68 100644
+--- a/sysdeps/server/Makefile.am
++++ b/sysdeps/server/Makefile.am
+@@ -6,10 +6,9 @@ libmonodebuggerbfdglue_la_SOURCES = \
+ 	bfdglue.c \
+ 	bfdglue.h
+ 
++if !SYSTEM_LIBBFD
+ libmonodebuggerbfdglue_la_LIBADD = \
+ 	../../sysdeps/bfd/opcodes/libopcodes.la ../../sysdeps/bfd/libbfd.la
+-libmonodebuggerbfdglue_la_LDFLAGS = \
+-	-no-undefined -module -export-dynamic -shared
+ 
+ libmonodebuggerbfdglue_la_CPPFLAGS = \
+ 	-I$(top_srcdir)/sysdeps/bfd \
+@@ -17,6 +16,17 @@ libmonodebuggerbfdglue_la_CPPFLAGS = \
+ 	-I$(top_srcdir)/sysdeps/bfd/opcodes \
+ 	@SERVER_DEPENDENCIES_CFLAGS@ @server_cflags@
+ 
++else
++libmonodebuggerbfdglue_la_LIBADD = -lopcodes -lbfd
++
++libmonodebuggerbfdglue_la_CPPFLAGS = \
++	@SERVER_DEPENDENCIES_CFLAGS@ @server_cflags@
++
++endif
++
++libmonodebuggerbfdglue_la_LDFLAGS = \
++	-no-undefined -module -export-dynamic -shared
++
+ EXTRA_libmonodebuggerserver_la_SOURCES = \
+ 	i386-arch.c			\
+ 	i386-arch.h			\
+diff --git a/sysdeps/server/bfdglue.c b/sysdeps/server/bfdglue.c
+index 9a741ac..e2138e7 100644
+--- a/sysdeps/server/bfdglue.c
++++ b/sysdeps/server/bfdglue.c
+@@ -1,3 +1,5 @@
++#include <config.h>
++
+ #include <bfdglue.h>
+ #include <signal.h>
+ #include <string.h>
+@@ -246,7 +248,11 @@ bfd_glue_get_errormsg (void)
+ guint32
+ bfd_glue_get_section_size (asection *p)
+ {
++#ifdef HAVE_ASECTION_RAWSIZE
++	return p->rawsize ? p->rawsize : p->size;
++#else
+ 	return p->_raw_size;
++#endif
+ }
+ 
+ BfdGlueSectionFlags
+@@ -350,4 +356,4 @@ guint64
+ bfd_glue_get_start_address (bfd *abfd)
+ {
+ 	return bfd_get_start_address (abfd);
+-}
+\ No newline at end of file
++}

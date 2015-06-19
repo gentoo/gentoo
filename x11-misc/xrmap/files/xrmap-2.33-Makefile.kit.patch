@@ -1,0 +1,20 @@
+Index: xrmap-2.33/editkit/Makefile.kit
+===================================================================
+--- xrmap-2.33.orig/editkit/Makefile.kit
++++ xrmap-2.33/editkit/Makefile.kit
+@@ -15,13 +15,14 @@
+ 
+ SHAREDIR=/usr/share/editkit
+ 
+-CFLAGS = -O2 -fomit-frame-pointer -pipe -Wall -DTHREED -DGREEK -DJUSTIFY -DSHAREDIR="\"$(SHAREDIR)\""
++CFLAGS = -O2 -fomit-frame-pointer -pipe -Wall -DTHREED -DGREEK -DJUSTIFY -DSHAREDIR="\"$(SHAREDIR)\"" -DSHAREDIR="\"$(SHARE_DIR)\""
+ 
+ #CFLAGS = -O2 -fomit-frame-pointer -pipe -Wall -DMINIMAL -DTWOBUTN -DVERTCURS -DTLL
+ 
+ #CFLAGS = -g -pipe
+ 
+ TLIBS = -L/usr/lib -ltermcap
++TLIBS = -L/usr/lib -lcurses
+ XLIBS = -L/usr/X11R6/lib -lX11
+ 
+ # Use this for solaris

@@ -1,0 +1,11 @@
+--- m4/ax_python.m4
++++ m4/ax_python.m4
+@@ -65,7 +65,7 @@
+    [python_version=`$ax_python_bin -c 'import sys; print(".".join(str(x) for x in sys.version_info[:2]))'`]
+    AC_CHECK_LIB(python$python_version, main, ax_python_lib=python$python_version, ax_python_lib=no)
+    AC_CHECK_HEADER([python$python_version/Python.h],
+-   [[ax_python_header=`locate python$python_version/Python.h | sed -e s,/Python.h,,`]],
++   [[ax_python_header=`$ax_python_bin -c 'import sys; print(sys.prefix + "/include/python%s.%s" % sys.version_info[:2])'`]],
+    ax_python_header=no)
+    if test $ax_python_lib != no; then
+      if test $ax_python_header != no; then

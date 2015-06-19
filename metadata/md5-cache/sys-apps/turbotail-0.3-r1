@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=fam? ( virtual/fam )
+DESCRIPTION=Drop-in replacement for 'tail' which uses the kernel DNOTIFY-api
+EAPI=4
+HOMEPAGE=http://www.vanheusden.com/turbotail/
+IUSE=fam
+KEYWORDS=~amd64 ~hppa ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=fam? ( virtual/fam )
+SLOT=0
+SRC_URI=http://www.vanheusden.com/turbotail/turbotail-0.3.tgz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9f328f6f0c27cb7020b5cdaad8086ae2

@@ -1,0 +1,127 @@
+# ChangeLog for dev-perl/gtk2-spell
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/gtk2-spell/ChangeLog,v 1.34 2015/05/01 12:44:59 dilfridge Exp $
+
+  01 May 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  gtk2-spell-1.40.0-r1.ebuild:
+  dev-perl/extutils-depends just became dev-perl/ExtUtils-Depends
+
+*gtk2-spell-1.40.0-r1 (25 Aug 2014)
+
+  25 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +gtk2-spell-1.40.0-r1.ebuild, -gtk2-spell-1.40.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org> -gtk2-spell-1.30.0.ebuild:
+  Cleanup
+
+  02 Sep 2012; Raúl Porcel <armin76@gentoo.org> gtk2-spell-1.30.0.ebuild,
+  gtk2-spell-1.40.0.ebuild:
+  Drop alpha/ia64/sparc keywords
+
+  11 Aug 2012; Markus Meier <maekke@gentoo.org> gtk2-spell-1.40.0.ebuild:
+  x86 stable, bug #418879
+
+  04 Aug 2012; Jeroen Roovers <jer@gentoo.org> gtk2-spell-1.40.0.ebuild:
+  Stable for HPPA (bug #418879).
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> gtk2-spell-1.40.0.ebuild:
+  Stable for amd64, wrt bug #418879
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> gtk2-spell-1.30.0.ebuild,
+  gtk2-spell-1.40.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  12 Apr 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Fix cpan distribution in metadata.xml
+
+*gtk2-spell-1.40.0 (08 Jan 2012)
+
+  08 Jan 2012; Torsten Veller <tove@gentoo.org> +gtk2-spell-1.40.0.ebuild:
+  Version bump
+
+  27 Oct 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  gtk2-spell-1.30.0.ebuild:
+  Slot gtkspell dependency to 2 in preparation for gtkspell-3.
+
+*gtk2-spell-1.30.0 (04 Mar 2011)
+
+  04 Mar 2011; Torsten Veller <tove@gentoo.org> -gtk2-spell-1.03.ebuild,
+  +gtk2-spell-1.30.0.ebuild:
+  Change version scheme. Maintenance. Depend on x11-libs/gtk+:2
+
+  20 Jul 2010; Torsten Veller <tove@gentoo.org> gtk2-spell-1.03.ebuild:
+  Fix invalid version format bug (#328723)
+
+  19 Apr 2010; Torsten Veller <tove@gentoo.org> gtk2-spell-1.03.ebuild:
+  Maintenance. Add missing deps. Fix LICENSE. EAPI=3
+
+  10 Jan 2010; Fabian Groffen <grobian@gentoo.org> gtk2-spell-1.03.ebuild:
+  Transfer Prefix keywords
+
+  02 Jul 2009; Jeroen Roovers <jer@gentoo.org> gtk2-spell-1.03.ebuild:
+  Stable for HPPA too.
+
+  17 Jan 2008; Diego Pettenò <flameeyes@gentoo.org> gtk2-spell-1.03.ebuild:
+  Add missing pkg-config dependency. Thanks Patrick in bug #206186.
+
+  15 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  gtk2-spell-1.03.ebuild:
+  Ebuild maintenance
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  gtk2-spell-1.03.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  05 Jul 2006; Christian Hartmann <ian@gentoo.org> gtk2-spell-1.03.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed header; fixed DEPEND
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org> gtk2-spell-1.03.ebuild:
+  Mark 1.03 stable on ia64
+
+  08 Sep 2005; Aron Griffis <agriffis@gentoo.org> gtk2-spell-1.03.ebuild:
+  Mark 1.03 stable on alpha
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> gtk2-spell-1.03.ebuild:
+  add ~ia64
+
+  17 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  gtk2-spell-1.03.ebuild:
+  Stable on sparc
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> gtk2-spell-1.03.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  gtk2-spell-1.03.ebuild:
+  Cleaning for mirror
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> gtk2-spell-1.03.ebuild:
+  stable on amd64
+
+  30 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
+  gtk2-spell-1.00.ebuild, gtk2-spell-1.02.ebuild:
+  No longer on CPAN
+
+*gtk2-spell-1.03 (30 Dec 2003)
+
+  30 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
+  gtk2-spell-1.03.ebuild:
+  New version on CPAN
+
+*gtk2-spell-1.02 (08 Sep 2003)
+
+  08 Sep 2003; Michael Cummings <mcummings@gentoo.org> gtk2-spell-1.02.ebuild:
+  new version from sourceforge
+
+  04 Aug 2003; Michael Cummings <mcummings@gentoo.org> gtk2-spell-1.00.ebuild:
+  changed ref to glib-perl
+
+*gtk2-spell-1.00 (20 Jul 2003)
+
+  20 Jul 2003; Michael Cummings <mcummings@gentoo.org> gtk2-spell-1.00.ebuild:
+  submitted by Rigo Ketelings <rigo@home.nl> in bug 24036

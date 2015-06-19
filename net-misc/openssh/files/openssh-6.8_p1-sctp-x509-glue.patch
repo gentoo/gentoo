@@ -1,0 +1,90 @@
+--- openssh-6.8_p1-sctp.patch.orig	2015-03-18 17:52:40.563506822 -0700
++++ openssh-6.8_p1-sctp.patch	2015-03-18 18:14:30.919753194 -0700
+@@ -184,34 +184,6 @@
+  	int     port;		/* Port to connect. */
+  	int     address_family;
+  	int     connection_attempts;	/* Max attempts (seconds) before
+---- a/scp.1
+-+++ b/scp.1
+-@@ -19,7 +19,7 @@
+- .Sh SYNOPSIS
+- .Nm scp
+- .Bk -words
+--.Op Fl 12346BCpqrv
+-+.Op Fl 12346BCpqrvz
+- .Op Fl c Ar cipher
+- .Op Fl F Ar ssh_config
+- .Op Fl i Ar identity_file
+-@@ -178,6 +178,7 @@ For full details of the options listed b
+- .It ServerAliveCountMax
+- .It StrictHostKeyChecking
+- .It TCPKeepAlive
+-+.It Transport
+- .It UpdateHostKeys
+- .It UsePrivilegedPort
+- .It User
+-@@ -218,6 +219,8 @@ and
+- to print debugging messages about their progress.
+- This is helpful in
+- debugging connection, authentication, and configuration problems.
+-+.It Fl z
+-+Use the SCTP protocol for connection instead of TCP which is the default.
+- .El
+- .Sh EXIT STATUS
+- .Ex -std scp
+ --- a/scp.c
+ +++ b/scp.c
+ @@ -395,7 +395,11 @@ main(int argc, char **argv)
+@@ -471,34 +443,6 @@
+  	int	protocol;	/* Supported protocol versions. */
+  	struct ForwardOptions fwd_opts;	/* forwarding options */
+  	SyslogFacility log_facility;	/* Facility for system logging. */
+---- a/ssh.1
+-+++ b/ssh.1
+-@@ -43,7 +43,7 @@
+- .Sh SYNOPSIS
+- .Nm ssh
+- .Bk -words
+--.Op Fl 1246AaCfGgKkMNnqsTtVvXxYy
+-+.Op Fl 1246AaCfGgKkMNnqsTtVvXxYyz
+- .Op Fl b Ar bind_address
+- .Op Fl c Ar cipher_spec
+- .Op Fl D Oo Ar bind_address : Oc Ns Ar port
+-@@ -473,6 +473,7 @@ For full details of the options listed b
+- .It StreamLocalBindUnlink
+- .It StrictHostKeyChecking
+- .It TCPKeepAlive
+-+.It Transport
+- .It Tunnel
+- .It TunnelDevice
+- .It UsePrivilegedPort
+-@@ -665,6 +666,8 @@ Trusted X11 forwardings are not subjecte
+- controls.
+- .It Fl y
+- Send log information using the
+-+.It Fl z
+-+Use the SCTP protocol for connection instead of TCP which is the default.
+- .Xr syslog 3
+- system module.
+- By default this information is sent to stderr.
+ --- a/ssh.c
+ +++ b/ssh.c
+ @@ -194,12 +194,17 @@ extern int muxserver_sock;
+@@ -520,13 +464,11 @@
+  "           [-D [bind_address:]port] [-E log_file] [-e escape_char]\n"
+  "           [-F configfile] [-I pkcs11] [-i identity_file]\n"
+  "           [-L [bind_address:]port:host:hostport] [-l login_name] [-m mac_spec]\n"
+-@@ -506,7 +512,7 @@ main(int ac, char **av)
+- 	argv0 = av[0];
++@@ -506,4 +512,4 @@ main(int ac, char **av)
+  
+-  again:
+--	while ((opt = getopt(ac, av, "1246ab:c:e:fgi:kl:m:no:p:qstvx"
+-+	while ((opt = getopt(ac, av, "1246ab:c:e:fgi:kl:m:no:p:qstvx" SCTP_OPT
+- 	    "ACD:E:F:GI:KL:MNO:PQ:R:S:TVw:W:XYy")) != -1) {
++-	while ((opt = getopt(ac, av, "1246ab:c:de:fgi:kl:m:no:p:qstvx"
+++	while ((opt = getopt(ac, av, "1246ab:c:de:fgi:kl:m:no:p:qstvx" SCTP_OPT
++ 	    "ACD:E:F:" ENGCONFIG "I:KL:MNO:PQ:R:S:TVw:W:XYy")) != -1) {
+  		switch (opt) {
+  		case '1':
+ @@ -732,6 +738,11 @@ main(int ac, char **av)

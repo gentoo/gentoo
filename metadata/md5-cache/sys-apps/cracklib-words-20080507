@@ -1,0 +1,8 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=large set of crack/cracklib dictionaries
+HOMEPAGE=http://sourceforge.net/projects/cracklib
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd
+LICENSE=public-domain
+SLOT=0
+SRC_URI=mirror://sourceforge/cracklib/cracklib-words-20080507.gz
+_md5_=61db0e6d1fea6b6d0b262368c78eab8a

@@ -1,0 +1,21 @@
+# ChangeLog for www-apache/mod_proxy_fcgi
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_proxy_fcgi/ChangeLog,v 1.4 2012/11/27 19:27:34 pacho Exp $
+
+  27 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop apache herd as discussed in http://www.gossamer-
+  threads.com/lists/gentoo/dev/262834
+
+  12 Oct 2012; Patrick Lauer <patrick@gentoo.org>
+  mod_proxy_fcgi-0_p816361.ebuild:
+  Restricting to apache 2.2
+
+  20 May 2010; Jeremy Olexa <darkside@gentoo.org> Manifest:
+  QA: Fix distfile size
+
+*mod_proxy_fcgi-0_p816361 (12 May 2010)
+
+  12 May 2010; Benedikt Böhm <hollow@gentoo.org>
+  +files/36_mod_proxy_fcgi.conf, +mod_proxy_fcgi-0_p816361.ebuild,
+  +metadata.xml:
+  initial ebuild

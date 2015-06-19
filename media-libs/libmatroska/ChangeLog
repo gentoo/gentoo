@@ -1,0 +1,472 @@
+# ChangeLog for media-libs/libmatroska
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libmatroska/ChangeLog,v 1.119 2015/01/04 18:13:51 radhermit Exp $
+
+*libmatroska-1.4.2 (04 Jan 2015)
+
+  04 Jan 2015; Tim Harder <radhermit@gentoo.org> +libmatroska-1.4.2.ebuild:
+  Version bump.
+
+  24 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libmatroska-1.4.1.ebuild:
+  Stable for ppc, wrt bug #492246
+
+  23 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libmatroska-1.4.1.ebuild:
+  Stable for x86, wrt bug #492246
+
+  19 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libmatroska-1.4.1.ebuild:
+  Stable for alpha, wrt bug #492246
+
+  14 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libmatroska-1.4.1.ebuild:
+  Stable for ppc64, wrt bug #492246
+
+  12 Mar 2014; Agostino Sarubbo <ago@gentoo.org> libmatroska-1.4.1.ebuild:
+  Stable for sparc, wrt bug #492246
+
+  07 Mar 2014; Pacho Ramos <pacho@gentoo.org> libmatroska-1.4.1.ebuild:
+  amd64 stable, bug #492246
+
+  20 Feb 2014; Markus Meier <maekke@gentoo.org> libmatroska-1.4.1.ebuild:
+  arm stable, bug #492246
+
+  20 Feb 2014; Akinori Hattori <hattya@gentoo.org> libmatroska-1.4.1.ebuild:
+  ia64 stable wrt bug #492246
+
+*libmatroska-1.4.1 (17 Sep 2013)
+
+  17 Sep 2013; Tim Harder <radhermit@gentoo.org> +libmatroska-1.4.1.ebuild,
+  +files/libmatroska-1.4.1-flags.patch:
+  Version bump.
+
+*libmatroska-1.4.0 (21 Mar 2013)
+
+  21 Mar 2013; Tim Harder <radhermit@gentoo.org> +libmatroska-1.4.0.ebuild:
+  Version bump and add subslot.
+
+  06 Sep 2012; Christoph Junghans <ottxor@gentoo.org> libmatroska-1.3.0.ebuild:
+  added ~x86-linux
+
+  19 Aug 2012; Raúl Porcel <armin76@gentoo.org> libmatroska-1.3.0.ebuild:
+  alpha/arm/ia64/sparc stable wrt #423129
+
+  10 Jul 2012; Brent Baude <ranger@gentoo.org> libmatroska-1.3.0.ebuild:
+  Marking libmatroska-1.3.0 ppc64 for bug 423129
+
+  29 Jun 2012; Brent Baude <ranger@gentoo.org> libmatroska-1.3.0.ebuild:
+  Marking libmatroska-1.3.0 ppc for bug 423129
+
+  25 Jun 2012; Jeff Horelick <jdhore@gentoo.org> libmatroska-1.3.0.ebuild:
+  marked x86 per bug 423129
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libmatroska-1.3.0.ebuild:
+  Stable for amd64, wrt bug #423129
+
+  09 Jun 2012; Zac Medico <zmedico@gentoo.org> libmatroska-1.2.0.ebuild,
+  libmatroska-1.3.0.ebuild:
+  inherit multilib for get_libdir
+
+  29 May 2012; Alexis Ballier <aballier@gentoo.org> libmatroska-1.3.0.ebuild:
+  keyword ~amd64-fbsd
+
+  27 Nov 2011; Tim Harder <radhermit@gentoo.org> -libmatroska-0.8.1.ebuild,
+  -files/libmatroska-0.8.1-respectflags.patch, -libmatroska-0.9.0.ebuild,
+  -files/libmatroska-0.9.0-respectflags.patch, -libmatroska-1.0.0.ebuild,
+  -libmatroska-1.1.0.ebuild:
+  Remove old.
+
+  20 Nov 2011; Kacper Kowalik <xarthisius@gentoo.org> libmatroska-1.2.0.ebuild:
+  ppc/ppc64 stable wrt #376399
+
+*libmatroska-1.3.0 (26 Sep 2011)
+
+  26 Sep 2011; Tim Harder <radhermit@gentoo.org> +libmatroska-1.3.0.ebuild:
+  Version bump. Update to EAPI 4 and add static-libs use flag (bug #381663).
+
+  24 Sep 2011; Raúl Porcel <armin76@gentoo.org> libmatroska-1.2.0.ebuild:
+  alpha/ia64/sparc stable wrt #376399
+
+  11 Sep 2011; Markus Meier <maekke@gentoo.org> libmatroska-1.2.0.ebuild:
+  x86 stable, bug #376399
+
+  10 Sep 2011; Christian Ruppert <idl0r@gentoo.org> libmatroska-1.2.0.ebuild:
+  Fix dev-libs/libebml dependency, bug 382489.
+
+  04 Sep 2011; Tony Vroon <chainsaw@gentoo.org> libmatroska-1.2.0.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo & Ian
+  "idella4" Delaney in bug #376399 filed by Pacho Ramos.
+
+  04 Sep 2011; Markus Meier <maekke@gentoo.org> libmatroska-1.2.0.ebuild:
+  arm stable, bug #376399
+
+*libmatroska-1.2.0 (29 Jun 2011)
+
+  29 Jun 2011; Alexis Ballier <aballier@gentoo.org> +libmatroska-1.2.0.ebuild:
+  version bump
+
+  28 May 2011; Brent Baude <ranger@gentoo.org> libmatroska-1.0.0.ebuild:
+  Marking libmatroska-1.0.0 ppc for bug 329633
+
+  10 Feb 2011; Markos Chandras <hwoarang@gentoo.org> libmatroska-1.0.0.ebuild:
+  Stable on amd64 wrt bug #329633
+
+  07 Feb 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  libmatroska-1.0.0.ebuild:
+  x86 stable wrt bug #329633
+
+*libmatroska-1.1.0 (02 Feb 2011)
+
+  02 Feb 2011; Tim Harder <radhermit@gentoo.org> +libmatroska-1.1.0.ebuild:
+  Version bump. Explicitly define RDEPEND, set RESTRICT="test" until more tests
+  are fixed, and set the build directory to be where the makefile is located.
+
+  15 Oct 2010; Brent Baude <ranger@gentoo.org> libmatroska-0.9.0.ebuild:
+  stable ppc, bug 329631
+
+  29 Jul 2010; Markos Chandras <hwoarang@gentoo.org>
+  libmatroska-0.9.0.ebuild:
+  Stable on amd64 wrt bug #329631
+
+  24 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  libmatroska-0.9.0.ebuild:
+  x86 stable wrt bug #329631
+
+*libmatroska-1.0.0 (05 Jun 2010)
+
+  05 Jun 2010; Steve Dibb <beandog@gentoo.org> +libmatroska-1.0.0.ebuild,
+  +files/libmatroska-1.0.0-respectflags.patch:
+  Version bump
+
+*libmatroska-0.9.0 (05 Jun 2010)
+
+  05 Jun 2010; Steve Dibb <beandog@gentoo.org> +libmatroska-0.9.0.ebuild,
+  +files/libmatroska-0.9.0-respectflags.patch:
+  Version bump, bug 321021
+
+  06 Jan 2008; Alexis Ballier <aballier@gentoo.org>
+  -files/libmatroska-0.8.0-respectflags.patch,
+  -files/libmatroska-shared.patch, -libmatroska-0.7.6.ebuild,
+  -libmatroska-0.8.0.ebuild:
+  remove old
+
+  10 Nov 2007; Raúl Porcel <armin76@gentoo.org> libmatroska-0.8.1.ebuild:
+  alpha/ia64/sparc stable wrt #197933, thanks to Tobias Klausmann and Alex
+  Maclean for testing
+
+  07 Nov 2007; Jeroen Roovers <jer@gentoo.org> libmatroska-0.7.6.ebuild,
+  libmatroska-0.8.0.ebuild, libmatroska-0.8.1.ebuild:
+  Removing HPPA keywording because nothing HPPA has keyworded depends on this
+  (see bugs #99024 and #197933).
+
+  06 Nov 2007; Markus Rothe <corsair@gentoo.org> libmatroska-0.8.1.ebuild:
+  Stable on ppc64; bug #197933
+
+  04 Nov 2007; Christoph Mende <angelos@gentoo.org>
+  libmatroska-0.8.1.ebuild:
+  Stable on amd64 wrt bug #197933
+
+  04 Nov 2007; Lars Weiler <pylon@gentoo.org> libmatroska-0.8.1.ebuild:
+  stable ppc, bug #197933
+
+  03 Nov 2007; Dawid Węgliński <cla@gentoo.org> libmatroska-0.8.1.ebuild:
+  Stable on x86 (bug #197933)
+
+  18 Apr 2007; Timothy Redaelli <drizzt@gentoo.org>
+  libmatroska-0.8.1.ebuild:
+  Keyworded ~x86-fbsd wrt bug #175090
+
+*libmatroska-0.8.1 (24 Feb 2007)
+
+  24 Feb 2007; Alexis Ballier <aballier@gentoo.org>
+  +files/libmatroska-0.8.1-respectflags.patch, +libmatroska-0.8.1.ebuild:
+  Version bump
+
+  20 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  libmatroska-0.8.0.ebuild:
+  Stable on Alpha.
+
+  15 Oct 2006; Aron Griffis <agriffis@gentoo.org> libmatroska-0.8.0.ebuild:
+  Mark 0.8.0 stable on ia64. #149908
+
+  15 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libmatroska-0.8.0.ebuild:
+  hppa stable, bug #149908
+
+  04 Oct 2006; <nixnut@gentoo.org> libmatroska-0.8.0.ebuild:
+  Stable on ppc wrt bug 149908
+
+  04 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  libmatroska-0.8.0.ebuild:
+  Stable on x86 wrt bug #149908.
+
+  04 Oct 2006; Jason Wever <weeve@gentoo.org> libmatroska-0.8.0.ebuild:
+  Stable on SPARC wrt bug #149908.
+
+  03 Oct 2006; Markus Rothe <corsair@gentoo.org> libmatroska-0.8.0.ebuild:
+  Stable on ppc64; bug #149908
+
+  03 Oct 2006; Simon Stelling <blubb@gentoo.org> libmatroska-0.8.0.ebuild:
+  stable on amd64
+
+  18 Mar 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/libmatroska-0.8.0-respectflags.patch, libmatroska-0.8.0.ebuild:
+  Add patch to respect LDFLAGS and CXX.
+
+  09 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  libmatroska-0.7.3-r1.ebuild, libmatroska-0.7.6.ebuild,
+  libmatroska-0.7.7.ebuild, libmatroska-0.8.0.ebuild:
+  Use test-flags instead of deprecated test_flag function.
+
+  07 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  libmatroska-0.8.0.ebuild:
+  Bump libebml requirement to 0.7.6 (which it builds against). The debian
+  control file still reports 0.7.3 but bug #111726 shows different.
+
+*libmatroska-0.8.0 (05 Nov 2005)
+
+  05 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +libmatroska-0.8.0.ebuild:
+  Version bump as per bug #111047.
+
+  05 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -files/libmatroska-shared2.patch, -libmatroska-0.5.2.ebuild,
+  -libmatroska-0.6.2.ebuild, -libmatroska-0.6.3.ebuild,
+  -libmatroska-0.7.0.ebuild, -libmatroska-0.7.1.ebuild,
+  -libmatroska-0.7.2.ebuild, -libmatroska-0.7.3.ebuild,
+  -libmatroska-0.7.4.ebuild, -libmatroska-0.7.5.ebuild:
+  Cleanup of old ebuilds.
+
+  31 Oct 2005; Mike Frysinger <vapier@gentoo.org> libmatroska-0.7.6.ebuild,
+  libmatroska-0.7.7.ebuild:
+  Add ia64 love to shutp Flameeyes.
+
+  19 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  libmatroska-0.7.6.ebuild:
+  Stable on alpha.
+
+*libmatroska-0.7.7 (14 Jul 2005)
+
+  14 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +libmatroska-0.7.7.ebuild:
+  New upstream version. Dropped -fPIC workaround (fixed upstream, too).
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  libmatroska-0.7.6.ebuild:
+  Stable on ppc.
+
+  12 Jun 2005; Bryan Østergaard <kloeri@gentoo.org>
+  libmatroska-0.7.6.ebuild:
+  Add ~alpha keyword.
+
+  19 May 2005; Guy Martin <gmsoft@gentoo.org> libmatroska-0.7.6.ebuild:
+  Stable on hppa.
+
+  15 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  libmatroska-0.7.0.ebuild, libmatroska-0.7.1.ebuild,
+  libmatroska-0.7.2.ebuild, libmatroska-0.7.3.ebuild,
+  libmatroska-0.7.3-r1.ebuild, libmatroska-0.7.4.ebuild,
+  libmatroska-0.7.5.ebuild, libmatroska-0.7.6.ebuild:
+  Removed check for gcc version to set input charset and just use test_flag.
+
+  15 May 2005; Diego Pettenò <flameeyes@gentoo.org>
+  libmatroska-0.7.0.ebuild, libmatroska-0.7.1.ebuild,
+  libmatroska-0.7.2.ebuild, libmatroska-0.7.3.ebuild,
+  libmatroska-0.7.3-r1.ebuild, libmatroska-0.7.4.ebuild,
+  libmatroska-0.7.5.ebuild, libmatroska-0.7.6.ebuild:
+  Moved using toolchain-functs eclass.
+
+  03 May 2005; Jason Wever <weeve@gentoo.org> libmatroska-0.7.6.ebuild:
+  Stable on SPARC.
+
+*libmatroska-0.7.6 (24 Apr 2005)
+
+  24 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  libmatroska-0.7.0.ebuild, libmatroska-0.7.1.ebuild,
+  libmatroska-0.7.2.ebuild, libmatroska-0.7.3.ebuild,
+  libmatroska-0.7.3-r1.ebuild, libmatroska-0.7.4.ebuild,
+  +libmatroska-0.7.6.ebuild:
+  Added new upstream version and fixed url for old versions. Fixes #90222.
+
+  24 Apr 2005; Markus Rothe <corsair@gentoo.org> libmatroska-0.7.5.ebuild:
+  Stable on ppc64
+
+  24 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  libmatroska-0.7.4.ebuild:
+  Marked libmatroska-0.7.4 stable. See #90224.
+
+  22 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> libmatroska-0.7.5.ebuild:
+  stable on amd64 and x86
+
+  20 Mar 2005; Jason Wever <weeve@gentoo.org> libmatroska-0.7.4.ebuild:
+  Stable on SPARC.
+
+  11 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> libmatroska-0.7.4.ebuild:
+  stable on x86
+
+  11 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> libmatroska-0.7.5.ebuild:
+  added ~amd64 to KEYWORDS.
+
+*libmatroska-0.7.5 (27 Feb 2005)
+
+  27 Feb 2005; Martin Holzer <mholzer@gentoo.org>
+  +files/libmatroska-shared2.patch, +libmatroska-0.7.5.ebuild:
+  Version bumped. Closes 81468
+  Thx to Martin Wienold <martin.wienold@uni-dortmund.de> 
+
+  19 Dec 2004; Michael Hanselmann <hansmi@gentoo.org>
+  libmatroska-0.7.4.ebuild:
+  Added to ~ppc.
+
+*libmatroska-0.7.3-r1 (19 Dec 2004)
+
+  19 Dec 2004; Michael Hanselmann <hansmi@gentoo.org>
+  libmatroska-0.7.3-r1.ebuild:
+  Stable on ppc.
+
+  17 Dec 2004; Markus Rothe <corsair@gentoo.org> libmatroska-0.7.4.ebuild:
+  Stable on ppc64
+
+  15 Dec 2004; Bryan Østergaard <kloeri@gentoo.org>
+  libmatroska-0.7.0.ebuild:
+  Stable on alpha.
+
+  11 Dec 2004; Jason Wever <weeve@gentoo.org> libmatroska-0.7.0.ebuild:
+  Stable on sparc.
+
+  07 Dec 2004; Martin Holzer <mholzer@gentoo.org> libmatroska-0.7.0.ebuild:
+  x86 stable.
+
+  14 Nov 2004; Markus Rothe <corsair@gentoo.org> libmatroska-0.7.4.ebuild:
+  Marked ~ppc64; bug #68112
+
+  01 Nov 2004; Jason Wever <weeve@gentoo.org> libmatroska-0.7.4.ebuild:
+  Added ~sparc keyword as it mysteriously disappeared in the version bump.
+
+  01 Nov 2004; Bryan Østergaard <kloeri@gentoo.org>
+  libmatroska-0.6.3.ebuild:
+  Stable on alpha.
+
+*libmatroska-0.7.4 (25 Oct 2004)
+
+  25 Oct 2004; Anders Rune Jensen <arj@gentoo.org> libmatroska-0.7.4.ebuild:
+  Version bumped. Closes #66954
+	
+  08 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/libmatroska-0.7.3-shared.patch:
+  multilib fixes in existing versions.  Revbump to build shared library.
+
+  25 Sep 2004; Jason Wever <weeve@gentoo.org> libmatroska-0.6.3.ebuild:
+  Stable on sparc.
+
+*libmatroska-0.7.3 (25 Aug 2004)
+
+  25 Aug 2004; Martin Holzer <mholzer@gentoo.org> libmatroska-0.7.3.ebuild:
+  Version bumped. Closes 61207
+
+*libmatroska-0.7.2 (13 Aug 2004)
+
+  13 Aug 2004; Chris White <chriswhite@gentoo.org> +libmatroska-0.7.2.ebuild:
+  Version bump to 0.7.2.
+
+*libmatroska-0.7.1 (26 Jul 2004)
+
+  26 Jul 2004; Chris White <chriswhite@gentoo.org> +libmatroska-0.7.1.ebuild:
+  Version bump to 0.7.1 for mkvtoolnix bump in #58284
+
+  10 Jul 2004; Jason Wever <weeve@gentoo.org> libmatroska-0.6.2.ebuild:
+  Stable on sparc.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libmatroska-0.5.2.ebuild, libmatroska-0.6.2.ebuild,
+  libmatroska-0.6.3.ebuild, libmatroska-0.7.0.ebuild:
+  virtual/glibc -> virtual/libc
+
+  28 Jun 2004; Daniel Goller <morfic@gentoo.org> libmatroska-0.7.0.ebuild:
+  Added conditional CFLAGS to fix problem with locale of source on gcc-3.4
+  Fixes Bug #52385
+
+  09 Jun 2004; Luca Barbato <lu_zero@gentoo.org> libmatroska-0.7.0.ebuild:
+  Same fix from amd64
+
+  27 Apr 2004; Jon Portnoy <avenj@gentoo.org> libmatroska-0.7.0.ebuild :
+  Stable on AMD64.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> libmatroska-0.5.2.ebuild,
+  libmatroska-0.6.2.ebuild, libmatroska-0.6.3.ebuild,
+  libmatroska-0.7.0.ebuild:
+  Add flag-o-matic for bug 49179
+
+*libmatroska-0.7.0 (27 Apr 2004)
+
+  27 Apr 2004; Martin Holzer <mholzer@gentoo.org> libmatroska-0.7.0.ebuild:
+  Version bumped.
+
+  27 Apr 2004; Martin Holzer <mholzer@gentoo.org> libmatroska-0.6.3.ebuild:
+  fixing depend. Closes 47908
+
+  09 Apr 2004; Travis Tilley <lv@gentoo.org> libmatroska-0.6.3.ebuild:
+  -fPIC fix on amd64 that allows vlc to compile with matroska support
+
+  03 Apr 2004; Jason Wever <weeve@gentoo.org> libmatroska-0.6.3.ebuild:
+  Added ~sparc keyword.
+
+  15 Mar 2004; Stephen P. Becker <geoman@gentoo.org> libmatroska-0.6.3.ebuild:
+  Added ~mips keyword.
+
+  27 Feb 2004; Jason Wever <weeve@gentoo.org> libmatroska-0.6.2.ebuild:
+  Added ~sparc keyword.
+
+  26 Feb 2004; Guy Martin <gmsoft@gentoo.org> libmatroska-0.6.3.ebuild:
+  Keyworded ~hppa.
+
+  23 Feb 2004; Martin Holzer <mholzer@gentoo.org> libmatroska-0.6.2.ebuild:
+  x86 stable.
+
+*libmatroska-0.6.3 (23 Feb 2004)
+
+  23 Feb 2004; Martin Holzer <mholzer@gentoo.org> libmatroska-0.6.3.ebuild,
+  metadata.xml:
+  Version bumped. Closes 42561
+
+  21 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> libmatroska-0.4.4.ebuild,
+  libmatroska-0.5.0.ebuild, libmatroska-0.5.2.ebuild,
+  libmatroska-0.6.1.ebuild, libmatroska-0.6.2.ebuild:
+  libebml category move update
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> libmatroska-0.6.2.ebuild:
+  stable on alpha and ia64
+
+*libmatroska-0.6.2 (03 Jan 2004)
+
+  03 Jan 2004; <plasmaroo@gentoo.org> libmatroska-0.6.2.ebuild:
+  Version bump, bug #37125.
+
+*libmatroska-0.6.1 (21 Nov 2003)
+
+  21 Nov 2003; Martin Holzer <mholzer@gentoo.org> libmatroska-0.6.1.ebuild:
+  Version bumped. Closes #33160.
+
+  16 Nov 2003; Brad House <brad_mssw@gentoo.org> libmatroska-0.5.2.ebuild:
+  add amd64 flag
+
+  17 Oct 2003; Nick Hadaway <raker@getoo.org> libmatroska-0.5.2.ebuild:
+  Marked stable for x86.
+
+*libmatroska-0.5.2 (05 Oct 2003)
+
+  05 Oct 2003; Joel Hill <hillster@gentoo.org> libmatroska-0.5.2.ebuild:
+  Version Bump, added docs.
+
+  15 Sep 2003; Luca Barbato <lu_zero@gentoo.org> libmatroska-0.5.0.ebuild:
+  Marked ~ppc
+
+  09 Sep 2003; Martin Holzer <mholzer@gentoo.org> libmatroska-0.5.0.ebuild:
+  Changed depend.
+
+*libmatroska-0.5.0 (05 Sep 2003)
+
+  05 Sep 2003; Martin Holzer <mholzer@gentoo.org> libmatroska-0.5.0.ebuild:
+  Version bumped. Closes #27942
+
+*libmatroska-0.4.4 (19 Jul 2003)
+
+  19 Jul 2003; Nick Hadaway <raker@gentoo.org> libmatroska-0.4.4.ebuild:
+  New ebuild.  Let's hear it for new codecs.  w00t.

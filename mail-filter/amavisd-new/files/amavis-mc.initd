@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/amavisd-new/files/amavis-mc.initd,v 1.1 2012/11/07 12:55:15 eras Exp $
+
+prog="/usr/sbin/amavis-mc"
+progname="amavis-mc"
+
+depend() {
+	use logger
+	before amavisd-new snmpd
+}
+
+start() {
+	ebegin "Starting ${progname}"
+	start-stop-daemon --start --exec ${prog}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${progname}"
+	start-stop-daemon --stop --interpreted --exec ${prog}
+	eend $?
+}

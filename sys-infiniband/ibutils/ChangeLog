@@ -1,0 +1,35 @@
+# ChangeLog for sys-infiniband/ibutils
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-infiniband/ibutils/ChangeLog,v 1.7 2014/04/16 08:22:29 alexxy Exp $
+
+*ibutils-1.5.7-r3 (16 Apr 2014)
+
+  16 Apr 2014; Alexey Shvetsov <alexxy@gentoo.org> +ibutils-1.5.7-r3.ebuild,
+  -ibutils-1.5.7-r1.ebuild:
+  Update ofed stack to 3.12-rc1
+
+  13 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> ibutils-1.5.7-r2.ebuild:
+  [sys-infiniband] Update OFED
+
+*ibutils-1.5.7-r2 (12 Oct 2012)
+
+  12 Oct 2012; Alexey Shvetsov <alexxy@gentoo.org> +ibutils-1.5.7-r2.ebuild:
+  [sys-infiniband] OFED 3.5 rc2 update
+
+  24 Apr 2012; Kacper Kowalik <xarthisius@gentoo.org> ibutils-1.5.7-r1.ebuild:
+  Define OFED_SNAPSHOT wrt #413155 by <jarray52@gmail.com>
+
+*ibutils-1.5.7-r1 (18 Apr 2012)
+
+  18 Apr 2012; Alexey Shvetsov <alexxy@gentoo.org> +ibutils-1.5.7-r1.ebuild,
+  -ibutils-1.5.7.ebuild:
+  [sys-infiniband/ibutils] Version bump to OFED 1.5.4.1
+
+  02 Jul 2011; Alexey Shvetsov <alexxy@gentoo.org> ibutils-1.5.7.ebuild:
+  Add ~amd64-linux keywrod
+
+*ibutils-1.5.7 (30 Jun 2011)
+
+  30 Jun 2011; Alexey Shvetsov <alexxy@gentoo.org> +ibutils-1.5.7.ebuild,
+  +metadata.xml:
+  Initial import to tree

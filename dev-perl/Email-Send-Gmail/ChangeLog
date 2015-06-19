@@ -1,0 +1,29 @@
+# ChangeLog for dev-perl/Email-Send-Gmail
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Email-Send-Gmail/ChangeLog,v 1.7 2014/06/29 20:42:05 zlogene Exp $
+
+  29 Jun 2014; Mikle Kolyada <zlogene@gentoo.org>
+  Email-Send-Gmail-0.330.0.ebuild:
+  Add ~mips keyword
+
+  06 Jun 2013; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Reassigning due to Zlogene became Gentoo developer, remove proxy maintainers
+  herd
+
+  03 Apr 2013; Sergey Popov <pinkbyte@gentoo.org> metadata.xml:
+  Add CPAN info, add perl herd
+
+  25 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  Email-Send-Gmail-0.330.0.ebuild:
+  Stable for amd64, wrt bug #453946
+
+  25 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  Email-Send-Gmail-0.330.0.ebuild:
+  Stable for x86, wrt bug #453946
+
+*Email-Send-Gmail-0.330.0 (24 Dec 2012)
+
+  24 Dec 2012; Sergey Popov <pinkbyte@gentoo.org>
+  +Email-Send-Gmail-0.330.0.ebuild, +metadata.xml:
+  Initial commit wrt bug #447724. Ebuild by Mikle Kolyada. He will maintain
+  this package through proxy maintainers

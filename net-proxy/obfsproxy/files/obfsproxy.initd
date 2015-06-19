@@ -1,0 +1,58 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/obfsproxy/files/obfsproxy.initd,v 1.1 2013/01/19 16:00:49 blueness Exp $
+
+PIDFILE="/var/run/obfsproxy.pid"
+DAEMON="/usr/bin/obfsproxy"
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	[[ "x${PROTOCOL}" = "x" ]] \
+		&& eerror "PROTOCOL not given" && return 1
+	[[ "x${MODE}" = "x" ]] \
+		&& eerror "MODE not given" && return 1
+	if [ ${PROTOCOL} = "dummy" ] ; then
+		[[ "x${LISTEN}" = "x" ]] \
+			&& eerror "No listen address was given" && return 1
+		[[ "x${MODE}" = "xserver" && "x${TARGET}" = "x" ]] \
+			&& eerror "MODE=server but no target address was given" && return 1
+		[[ "x${MODE}" = "xsocks"  && "x${TARGET}" != "x" ]] \
+			&& eerror "MODE=sock but a target address was given" && return 1
+		CMDLINE="${LOGGING} ${PROTOCOL} ${MODE} ${LISTEN} ${TARGET}"
+	elif [ ${PROTOCOL} = "obfs2" ] ; then
+		[[ "x${MODE}" = "xsocks"  && "x${DESTINATION}" != "x" ]] \
+			&& eerror "MODE=sock but a destination address was given" && return 1
+		[[ "x${LISTEN}" = "x" ]] \
+			&& eerror "LISTEN host:port was not given" && return 1
+		[[ "x${DESTINATION}" != "x" ]] \
+			&& DESTINATION="--dest=${DESTINATION}"
+		[[ "x${SECRET}" != "x" ]] \
+			&& SECRET="--shared-secret=${SECRET}"
+		CMDLINE="${LOGGING} ${PROTOCOL} ${DESTINATION} ${SECRET} ${MODE} ${LISTEN}"
+	else
+		eerror "Unknown protocol ${PROTOCOL}"
+		return 1
+	fi
+	return 0
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting obfsproxy server"
+	start-stop-daemon --start \
+		--background --make-pidfile --pidfile ${PIDFILE} \
+		--exec ${DAEMON} -- ${CMDLINE}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping obfsproxy server"
+	start-stop-daemon --stop \
+		--pidfile ${PIDFILE} \
+		--exec ${DAEMON}
+	eend $?
+}

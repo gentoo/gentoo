@@ -1,0 +1,13 @@
+--- build.xml	2009-09-28 06:16:14.000000000 -0500
++++ build.xml.nosrcinjar	2009-09-28 06:16:03.000000000 -0500
+@@ -236,10 +236,6 @@
+                 </classpath>
+             </javac>
+             <copy file="LICENSE.txt" todir="build/temp/@{destjar}.contents"/>
+-            <!-- Put Java source in Jars for user's convenience. -->
+-            <copy todir="build/temp/@{destjar}.contents">
+-                <fileset dir="@{srcdir}"/>
+-            </copy>
+             <jar jarfile="@{destjar}">
+                 <fileset dir="build/temp/@{destjar}.contents"/>
+             </jar>

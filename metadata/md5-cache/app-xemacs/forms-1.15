@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=Forms editing support (obsolete, use Widget instead)
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/forms-1.15-pkg.tar.gz
+_eclasses_=xemacs-packages	29b865270cd0de904945912d5041f1cc
+_md5_=4747d773fd4fde28c9eac0f9b7dc953f

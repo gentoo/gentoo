@@ -1,0 +1,57 @@
+# ChangeLog for app-vim/nginx-syntax
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/nginx-syntax/ChangeLog,v 1.15 2013/12/18 01:30:55 radhermit Exp $
+
+*nginx-syntax-0.3.3 (18 Dec 2013)
+
+  18 Dec 2013; Tim Harder <radhermit@gentoo.org> +nginx-syntax-0.3.3.ebuild:
+  Version bump (bug #493750).
+
+  20 Jun 2013; Benedikt Böhm <hollow@gentoo.org> metadata.xml:
+  remove myself from maintainers
+
+  09 Jun 2013; Ulrich Müller <ulm@gentoo.org> nginx-syntax-0.3.2.ebuild:
+  Fix LICENSE, vim license according to author, bug 472768.
+
+  10 May 2013; Markus Meier <maekke@gentoo.org> nginx-syntax-0.3.2.ebuild:
+  add ~arm, bug #456752
+
+  18 Feb 2013; Alexis Ballier <aballier@gentoo.org> nginx-syntax-0.3.2.ebuild:
+  keyword ~amd64-fbsd
+
+  07 Dec 2012; Ulrich Müller <ulm@gentoo.org> nginx-syntax-0.3.2.ebuild:
+  Fix LICENSE, bug 445808.
+
+  08 Sep 2012; Agostino Sarubbo <ago@gentoo.org> -nginx-syntax-0.3.1.ebuild:
+  Remove old
+
+  19 Jul 2011; Markus Meier <maekke@gentoo.org> nginx-syntax-0.3.2.ebuild:
+  x86 stable, bug #374693
+
+  14 Jul 2011; Markos Chandras <hwoarang@gentoo.org> nginx-syntax-0.3.2.ebuild:
+  Stable on amd64 wrt bug #374693
+
+  05 Mar 2011; Brent Baude <ranger@gentoo.org> nginx-syntax-0.3.2.ebuild:
+  Marking nginx-syntax-0.3.2 ppc for bug 349223
+
+*nginx-syntax-0.3.2 (18 Feb 2011)
+
+  18 Feb 2011; Benedikt Böhm <hollow@gentoo.org>
+  +nginx-syntax-0.3.2.ebuild:
+  version bump wrt #352462
+
+  02 Jan 2011; Markos Chandras <hwoarang@gentoo.org> nginx-syntax-0.3.1.ebuild:
+  Stable on amd64 wrt bug #349223
+
+  21 Dec 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  nginx-syntax-0.3.1.ebuild:
+  x86 stable wrt bug #349223
+
+  29 May 2010; Benedikt Böhm <hollow@gentoo.org> nginx-syntax-0.3.1.ebuild:
+  add ppc keyword for PDEPEND.bad in nginx ebuild
+
+*nginx-syntax-0.3.1 (29 May 2010)
+
+  29 May 2010; Benedikt Böhm <hollow@gentoo.org>
+  +nginx-syntax-0.3.1.ebuild, +metadata.xml:
+  initial ebuild, thanks to Denis Seleznyov (bug #289926)

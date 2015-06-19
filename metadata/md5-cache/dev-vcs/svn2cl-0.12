@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst unpack
+DESCRIPTION=Create a GNU-style ChangeLog from subversion's svn log --xml output
+HOMEPAGE=http://ch.tudelft.nl/~arthur/svn2cl/
+KEYWORDS=amd64 ~mips ~ppc x86
+LICENSE=BSD
+RDEPEND=dev-libs/libxslt dev-vcs/subversion
+SLOT=0
+SRC_URI=http://ch.tudelft.nl/~arthur/svn2cl//svn2cl-0.12.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=6526ab33fb53bed9d09ecf906e9efac4

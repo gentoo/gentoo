@@ -1,0 +1,9 @@
+diff -Naur fig2sxd-0.20/Makefile fig2sxd-0.20.new/Makefile
+--- fig2sxd-0.20/Makefile	2008-05-16 18:47:34.000000000 -0400
++++ fig2sxd-0.20.new/Makefile	2009-08-31 22:22:07.000000000 -0400
+@@ -75,4 +75,4 @@
+ 	tar czf `date +"../fig2sxd-%Y-%m-%d-%H-%M.tar.gz"` -C $(SRCDIR)../ \
+ 		$(ARCHFILES)
+ 
+-.PHONY: all clean
++.PHONY: all clean check

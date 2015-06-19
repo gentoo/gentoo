@@ -1,0 +1,34 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/keepalived/files/keepalived.init,v 1.3 2013/03/05 13:40:24 ultrabug Exp $
+
+depend() {
+	use logger
+	# The interfaces do not actually need to exist to start, it handles them gracefully.
+	use net
+}
+
+command="/usr/sbin/keepalived"
+command_args="${KEEPALIVED_OPTS}"
+pidfile="/var/run/keepalived.pid"
+
+extra_commands="checkconfig reload"
+
+checkconfig() {
+	# keepalived has a config check command, but it does not work while the daemon is running!
+	if [ ! -e /etc/keepalived/keepalived.conf ] ; then
+		eerror "You need an /etc/keepalived/keepalived.conf file to run keepalived"
+		return 1
+	fi
+}
+
+start_pre() {
+	checkconfig || return 1
+}
+
+reload() {
+	ebegin "Reloading keepalived.conf"
+	start-stop-daemon --pidfile $pidfile --signal HUP
+	eend $?
+}

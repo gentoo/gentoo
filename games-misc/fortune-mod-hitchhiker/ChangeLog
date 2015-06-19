@@ -1,0 +1,45 @@
+# ChangeLog for games-misc/fortune-mod-hitchhiker
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-hitchhiker/ChangeLog,v 1.12 2015/02/04 21:49:57 tupone Exp $
+
+  04 Feb 2015; Tupone Alfredo <tupone@gentoo.org>
+  fortune-mod-hitchhiker-0.1.ebuild:
+  EAPI 5
+
+  12 Dec 2010; Fabian Groffen <grobian@gentoo.org>
+  fortune-mod-hitchhiker-0.1.ebuild:
+  Drop ~ia64-linux, add ~x86-interix, ~x86-solaris
+
+  08 Oct 2010; Mart Raudsepp <leio@gentoo.org>
+  fortune-mod-hitchhiker-0.1.ebuild:
+  Drop to ~mips
+
+  03 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  fortune-mod-hitchhiker-0.1.ebuild:
+  Transfer Prefix keywords
+
+  19 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  fortune-mod-hitchhiker-0.1.ebuild:
+  Add ~x86-fbsd keyword
+
+  27 Aug 2005; Markus Rothe <corsair@gentoo.org>
+  fortune-mod-hitchhiker-0.1.ebuild:
+  Stable on ppc64
+
+  31 Jul 2005; Markus Rothe <corsair@gentoo.org>
+  fortune-mod-hitchhiker-0.1.ebuild:
+  Added ~ppc64 (bug #100217)
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*fortune-mod-hitchhiker-0.1 (12 Aug 2002)
+
+  26 Aug 2003; Joshua Kinard <kumba@gentoo.org> fortune-mod-hitchhiker-0.1.ebuild:
+  Added ~mips & ~sparc to KEYWORDS
+
+  03 Nov 2002; Jon Nall <nall@gentoo.org> fortune-mod-hitchhiker-0.1.ebuild :
+  changed PPC to ppc in KEYWORDS
+
+  12 Aug 2002; J. Alberto Suárez López <bass@gentoo.org> gmudix-0.6.ebuild :
+  First relase.

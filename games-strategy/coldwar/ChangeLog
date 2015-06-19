@@ -1,0 +1,37 @@
+# ChangeLog for games-strategy/coldwar
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/coldwar/ChangeLog,v 1.9 2015/06/01 20:53:04 mr_bones_ Exp $
+
+  01 Jun 2015; Michael Sterrett <mr_bones_@gentoo.org> coldwar-1.0.1-r1.ebuild:
+  clean up app-emulation/emul-linux which has been removed
+
+  29 Aug 2014; Michael Sterrett <mr_bones_@gentoo.org> -coldwar-1.0.1.ebuild,
+  coldwar-1.0.1-r1.ebuild:
+  tidy; clean old
+
+  25 Jun 2014; Michał Górny <mgorny@gentoo.org> coldwar-1.0.1-r1.ebuild:
+  Update multilib dependencies to use the lowest known EAPI 5 or multilib
+  versions.
+
+*coldwar-1.0.1-r1 (25 Jun 2014)
+
+  25 Jun 2014; Michał Górny <mgorny@gentoo.org> +coldwar-1.0.1-r1.ebuild:
+  Support multilib dependencies aside to emul-linux-x86.
+
+  16 Apr 2014; Ulrich Müller <ulm@gentoo.org> coldwar-1.0.1.ebuild:
+  Fix LICENSE, add mirror and bindist restrictions, bug 505754.
+
+  05 Feb 2012; Mike Frysinger <vapier@gentoo.org> coldwar-1.0.1.ebuild:
+  Move to new unpacker eclass for unpack_makeself.
+
+  16 Jan 2012; Ulrich Müller <ulm@gentoo.org> coldwar-1.0.1.ebuild:
+  Migrate to cdrom.eclass, bug 398809.
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org> coldwar-1.0.1.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+*coldwar-1.0.1 (06 Feb 2007)
+
+  06 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +coldwar-1.0.1.ebuild:
+  Initial import.  Ebuild by Paul Bredbury <brebs@sent.com> and edited by me.

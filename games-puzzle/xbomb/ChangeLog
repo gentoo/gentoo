@@ -1,0 +1,82 @@
+# ChangeLog for games-puzzle/xbomb
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/xbomb/ChangeLog,v 1.23 2015/02/27 20:20:12 tupone Exp $
+
+  27 Feb 2015; Tupone Alfredo <tupone@gentoo.org> xbomb-2.2a.ebuild:
+  EAPI 5
+
+  22 Sep 2010; Alfredo Tupone <tupone@gentoo.org> xbomb-2.2a.ebuild,
+  +files/xbomb-2.2a-ldflags.patch:
+  Respect LDFLAGS. Bug #337872 by flameeyes@gentoo.org
+
+  23 Jan 2010; Brent Baude <ranger@gentoo.org> xbomb-2.2a.ebuild:
+  stable ppc, bug 299037
+
+  16 Jan 2010; Raúl Porcel <armin76@gentoo.org> xbomb-2.2.ebuild,
+  xbomb-2.2a.ebuild:
+  Drop ia64 keyword
+
+  14 Jan 2010; Markus Meier <maekke@gentoo.org> xbomb-2.2a.ebuild:
+  amd64/x86 stable, bug #299037
+
+  31 Dec 2009; Brent Baude <ranger@gentoo.org> xbomb-2.2a.ebuild:
+  Marking xbomb-2.2a ppc64 for bug 299037
+
+*xbomb-2.2a (30 Nov 2009)
+
+  30 Nov 2009; Michael Sterrett <mr_bones_@gentoo.org> +xbomb-2.2a.ebuild,
+  +files/xbomb-2.2a-DESTDIR.patch:
+  version bump
+
+  11 May 2008; Markus Rothe <corsair@gentoo.org> xbomb-2.2.ebuild:
+  Stable on ppc64; bug #220046
+
+  09 May 2008; Raúl Porcel <armin76@gentoo.org> xbomb-2.2.ebuild:
+  ia64 stable wrt #220046
+
+  04 May 2008; nixnut <nixnut@gentoo.org> xbomb-2.2.ebuild:
+  Stable on ppc wrt bug 220046
+
+  04 May 2008; Markus Meier <maekke@gentoo.org> xbomb-2.2.ebuild:
+  amd64/x86 stable, bug #220046
+
+*xbomb-2.2 (27 Jan 2008)
+
+  27 Jan 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/xbomb-2.2-DESTDIR.patch, +xbomb-2.2.ebuild:
+  version bump
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  06 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> xbomb-2.1-r1.ebuild:
+  Remove old virtual/x11 dependency.
+
+  29 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> xbomb-2.1-r1.ebuild:
+  Fixed binaries being pre-stripped. Thanks to Tristan Heaven
+  <tristanheaven@gmail.com> for the patch. Closing bug #137735.
+
+  17 Feb 2006; <Tupone@gentoo.org> xbomb-2.1-r1.ebuild:
+  Modular X dependency fix
+
+  16 Apr 2005; Yuta SATOH <nigoro@gentoo.org> xbomb-2.1-r1.ebuild:
+  Stable on ppc64
+
+  22 Dec 2004; Yuta SATOH <nigoro@gentoo.org> xbomb-2.1-r1.ebuild:
+  added ~ppc64
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> xbomb-2.1-r1.ebuild:
+  Added ~ppc.
+
+  23 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> xbomb-2.1-r1.ebuild:
+  don't rdepend on sed; tidy
+
+*xbomb-2.1-r1 (28 Jun 2003)
+
+  28 Jun 2003; <msterret@gentoo.org> xbomb-2.1-r1.ebuild:
+  fixed hiscore support (into /var/games); use sed -i
+
+*xbomb-2.1 (17 Dec 2002)
+
+  17 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Clemens Oertel <gentoo-bugzilla@kriegste.net>.

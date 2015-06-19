@@ -1,0 +1,174 @@
+# ChangeLog for dev-ruby/ruby-shadow
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-shadow/ChangeLog,v 1.44 2015/06/07 19:39:56 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  25 Mar 2015; Hans de Graaff <graaff@gentoo.org> ruby-shadow-2.4.1.ebuild:
+  Add ruby22.
+
+  22 Dec 2014; Manuel Rüger <mrueg@gentoo.org> -ruby-shadow-2.1.4.ebuild:
+  Remove old.
+
+  22 Dec 2014; Agostino Sarubbo <ago@gentoo.org> ruby-shadow-2.3.4.ebuild:
+  Stable for sparc, wrt bug #531776
+
+  22 Dec 2014; Agostino Sarubbo <ago@gentoo.org> ruby-shadow-2.3.4.ebuild:
+  Stable for ppc, wrt bug #531776
+
+  19 Dec 2014; Agostino Sarubbo <ago@gentoo.org> ruby-shadow-2.3.4.ebuild:
+  Stable for x86, wrt bug #531776
+
+  19 Dec 2014; Agostino Sarubbo <ago@gentoo.org> ruby-shadow-2.3.4.ebuild:
+  Stable for amd64, wrt bug #531776
+
+  07 Dec 2014; Jeroen Roovers <jer@gentoo.org> ruby-shadow-2.3.4.ebuild,
+  -files/ruby-shadow-1.4.1-debian.patch,
+  -files/ruby-shadow-2.1.2-file_ptr.patch,
+  -files/ruby-shadow-2.1.3-rb_iterator_p.patch:
+  Stable for HPPA (bug #531776).
+
+  06 Dec 2014; Hans de Graaff <graaff@gentoo.org> ruby-shadow-2.3.4.ebuild:
+  Drop ruby21 to create a stable candidate.
+
+  06 Dec 2014; Hans de Graaff <graaff@gentoo.org> -ruby-shadow-2.3.3.ebuild:
+  Cleanup.
+
+*ruby-shadow-2.4.1 (06 Dec 2014)
+
+  06 Dec 2014; Hans de Graaff <graaff@gentoo.org> +ruby-shadow-2.4.1.ebuild:
+  Version bump.
+
+*ruby-shadow-2.3.4 (03 May 2014)
+
+  03 May 2014; Hans de Graaff <graaff@gentoo.org> +ruby-shadow-2.3.4.ebuild:
+  Version bump.
+
+  05 Apr 2014; Manuel Rüger <mrueg@gentoo.org> -ruby-shadow-2.2.0.ebuild,
+  -ruby-shadow-2.3.1.ebuild, -ruby-shadow-2.3.2.ebuild,
+  ruby-shadow-2.1.4.ebuild, ruby-shadow-2.3.3.ebuild:
+  Remove ree18 and ruby18 target. Cleanup old.
+
+*ruby-shadow-2.3.3 (28 Feb 2014)
+
+  28 Feb 2014; Manuel Rüger <mrueg@gentoo.org> +ruby-shadow-2.3.3.ebuild:
+  Version bump. Add ruby21 target
+
+*ruby-shadow-2.3.2 (20 Dec 2013)
+
+  20 Dec 2013; Manuel Rüger <mrueg@gentoo.org> +ruby-shadow-2.3.2.ebuild:
+  Version bump.
+
+*ruby-shadow-2.3.1 (18 Nov 2013)
+
+  18 Nov 2013; Manuel Rüger <mrueg@gentoo.org> +ruby-shadow-2.3.1.ebuild:
+  Version bump. Add ruby20.
+
+*ruby-shadow-2.2.0 (18 Apr 2013)
+
+  18 Apr 2013; Hans de Graaff <graaff@gentoo.org> +ruby-shadow-2.2.0.ebuild:
+  Version bump.
+
+  18 Apr 2013; Hans de Graaff <graaff@gentoo.org> -ruby-shadow-1.4.1-r1.ebuild:
+  Cleanup.
+
+  08 Nov 2012; Anthony G. Basile <blueness@gentoo.org> ruby-shadow-2.1.4.ebuild:
+  stable ppc, bug #435192
+
+  07 Nov 2012; Jeroen Roovers <jer@gentoo.org> ruby-shadow-2.1.4.ebuild:
+  Stable for HPPA (bug #435192).
+
+  28 Oct 2012; Raúl Porcel <armin76@gentoo.org> ruby-shadow-2.1.4.ebuild:
+  sparc stable wrt #435192
+
+  18 Sep 2012; Johannes Huber <johu@gentoo.org> ruby-shadow-2.1.4.ebuild:
+  Stable for x86, wrt bug #435192
+
+  16 Sep 2012; Agostino Sarubbo <ago@gentoo.org> ruby-shadow-2.1.4.ebuild:
+  Stable for amd64, wrt bug #435192
+
+  16 Sep 2012; Hans de Graaff <graaff@gentoo.org> -ruby-shadow-2.1.2.ebuild,
+  -ruby-shadow-2.1.2-r1.ebuild, -ruby-shadow-2.1.3.ebuild:
+  Cleanup.
+
+*ruby-shadow-2.1.4 (21 Apr 2012)
+
+  21 Apr 2012; Hans de Graaff <graaff@gentoo.org> +ruby-shadow-2.1.4.ebuild:
+  Version bump.
+
+  17 Apr 2012; Hans de Graaff <graaff@gentoo.org> ruby-shadow-2.1.3.ebuild:
+  Fix USE=doc. Support prefix. Add missing die.
+
+*ruby-shadow-2.1.3 (17 Apr 2012)
+
+  17 Apr 2012; MATSUU Takuto <matsuu@gentoo.org> +ruby-shadow-2.1.3.ebuild,
+  +files/ruby-shadow-2.1.3-rb_iterator_p.patch:
+  Version bumped. Fixed undefined issue.
+
+*ruby-shadow-2.1.2-r1 (16 Mar 2012)
+
+  16 Mar 2012; MATSUU Takuto <matsuu@gentoo.org> +ruby-shadow-2.1.2-r1.ebuild,
+  +files/ruby-shadow-2.1.2-file_ptr.patch:
+  Fixed compile issue.
+
+*ruby-shadow-2.1.2 (14 Mar 2012)
+
+  14 Mar 2012; MATSUU Takuto <matsuu@gentoo.org> +ruby-shadow-2.1.2.ebuild:
+  Version bumped.
+
+  15 Jan 2011; Hans de Graaff <graaff@gentoo.org> -ruby-shadow-1.4.1.ebuild:
+  Remove old version.
+
+  20 Sep 2010; Guy Martin <gmsoft@gentoo.org> ruby-shadow-1.4.1-r1.ebuild:
+  hppa stable.
+
+  21 Jun 2010; Guy Martin <gmsoft@gentoo.org> ruby-shadow-1.4.1-r1.ebuild:
+  added ~hppa to KEYWORDS
+
+  27 Apr 2010; Tiago Cunha <tcunha@gentoo.org> ruby-shadow-1.4.1-r1.ebuild:
+  stable sparc, bug 312953
+
+  18 Apr 2010; <nixnut@gentoo.org> ruby-shadow-1.4.1-r1.ebuild:
+  ppc stable #312953
+
+  16 Apr 2010; Markos Chandras <hwoarang@gentoo.org>
+  ruby-shadow-1.4.1-r1.ebuild:
+  Stable on amd64 wrt bug #312953
+
+  12 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ruby-shadow-1.4.1-r1.ebuild:
+  x86 stable wrt bug #312953
+
+*ruby-shadow-1.4.1-r1 (07 Feb 2010)
+
+  07 Feb 2010; Hans de Graaff <graaff@gentoo.org>
+  +ruby-shadow-1.4.1-r1.ebuild, +files/ruby-shadow-1.4.1-debian.patch:
+  Convert to ruby-ng. Add Debian patch to fix #302798.
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> ruby-shadow-1.4.1.ebuild:
+  ppc stable #274170
+
+  05 Jul 2009; Markus Meier <maekke@gentoo.org> ruby-shadow-1.4.1.ebuild:
+  amd64 stable, bug #274170
+
+  17 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  ruby-shadow-1.4.1.ebuild:
+  stable x86, bug 274170
+
+  19 May 2009; Ferris McCormick <fmccor@gentoo.org>
+  ruby-shadow-1.4.1.ebuild:
+  Sparc stable, required for Bug #270432.
+
+  12 Apr 2009; Friedrich Oslage <bluebird@gentoo.org>
+  ruby-shadow-1.4.1.ebuild:
+  Add ~sparc keyword, bug #263620
+
+  24 Mar 2009; Joseph Jezak <josejx@gentoo.org> ruby-shadow-1.4.1.ebuild:
+  Marked ~ppc for bug #263620.
+
+*ruby-shadow-1.4.1 (25 Nov 2008)
+
+  25 Nov 2008; Caleb Tennis <caleb@gentoo.org> +metadata.xml,
+  +ruby-shadow-1.4.1.ebuild:
+  Initial commit - ruby bindings for shadow

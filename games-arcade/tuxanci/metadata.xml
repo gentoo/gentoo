@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>games</herd>
+<maintainer>
+	  <email>scarabeus@gentoo.org</email>
+</maintainer>
+<use>
+	<flag name="sound">Enable sound</flag>
+	<flag name="physfs">Use <pkg>dev-games/physfs</pkg> instead of
+		<pkg>dev-libs/libzip</pkg> to load compressed data</flag>
+</use>
+</pkgmetadata>

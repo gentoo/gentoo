@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=<app-arch/libzpaq-7 app-arch/unzip
+DESCRIPTION=Pipe compressor/decompressor for ZPAQ
+EAPI=5
+HOMEPAGE=http://mattmahoney.net/dc/zpaq.html
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=<app-arch/libzpaq-7
+SLOT=0
+SRC_URI=http://mattmahoney.net/dc/zpipe.201.zip
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=4f146460a7dbe7f3ced8b887df9691a1

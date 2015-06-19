@@ -1,0 +1,14 @@
+#!/bin/sh
+
+pyexe=python2.7
+
+if [ ! -x /usr/bin/${pyexe} ]; then
+    pyexe=python2.6
+fi
+
+if [ ! -x /usr/bin/${pyexe} ]; then
+    echo "No suitable python executable found in /usr/sbin (python2.6 || python2.7)"
+    exit 1
+fi
+
+cd /usr/share/sabnzbd && /usr/bin/${pyexe} SABnzbd.py $*

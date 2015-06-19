@@ -1,0 +1,67 @@
+diff -Naur a/meshlab/src/meshlabplugins/filter_qhull/filter_qhull.pro b/meshlab/src/meshlabplugins/filter_qhull/filter_qhull.pro
+--- a/meshlab/src/meshlabplugins/filter_qhull/filter_qhull.pro	2013-10-30 21:12:42.000000000 +0000
++++ b/meshlab/src/meshlabplugins/filter_qhull/filter_qhull.pro	2013-10-30 21:31:35.692580129 +0000
+@@ -8,28 +8,6 @@
+ SOURCES       += filter_qhull.cpp \ 
+ 		qhull_tools.cpp 
+ 
+-HEADERS += 	../../external/qhull-2003.1/src/geom.h \
+-		../../external/qhull-2003.1/src/io.h \
+-		../../external/qhull-2003.1/src/mem.h \
+-		../../external/qhull-2003.1/src/merge.h \
+-		../../external/qhull-2003.1/src/poly.h \
+-		../../external/qhull-2003.1/src/qhull.h \
+-		../../external/qhull-2003.1/src/qset.h \
+-		../../external/qhull-2003.1/src/stat.h \
+-		../../external/qhull-2003.1/src/user.h 
+-
+-SOURCES +=	../../external/qhull-2003.1/src/geom.c \
+-		../../external/qhull-2003.1/src/geom2.c \
+-		../../external/qhull-2003.1/src/global.c \
+-		../../external/qhull-2003.1/src/io.c \
+-		../../external/qhull-2003.1/src/mem.c \
+-		../../external/qhull-2003.1/src/merge.c \
+-		../../external/qhull-2003.1/src/poly.c \
+-		../../external/qhull-2003.1/src/poly2.c \
+-		../../external/qhull-2003.1/src/qconvex.c \
+-		../../external/qhull-2003.1/src/qhull.c \
+-		../../external/qhull-2003.1/src/qset.c \
+-		../../external/qhull-2003.1/src/stat.c \
+-		../../external/qhull-2003.1/src/user.c 
++LIBS += -lqhull 
+ 
+ TARGET        = filter_qhull
+\ В конце файла нет новой строки
+diff -Naur a/meshlab/src/meshlabplugins/filter_qhull/qhull_tools.h b/meshlab/src/meshlabplugins/filter_qhull/qhull_tools.h
+--- a/meshlab/src/meshlabplugins/filter_qhull/qhull_tools.h	1970-01-01 00:00:00.000000000 +0000
++++ b/meshlab/src/meshlabplugins/filter_qhull/qhull_tools.h	2013-10-30 21:32:57.242574626 +0000
+@@ -0,0 +1,29 @@
++ 
++#include <common/meshmodel.h>
++#include <math.h>
++
++
++#if defined(__cplusplus)
++extern "C"
++{
++#endif
++#include <stdio.h>
++#include <stdlib.h>
++#include <libqhull/libqhull.h>
++#include <libqhull/mem.h>
++#include <libqhull/qset.h>
++#include <libqhull/geom.h>
++#include <libqhull/merge.h>
++#include <libqhull/poly.h>
++#include <libqhull/io.h>
++#include <libqhull/stat.h>
++#if defined(__cplusplus)
++}
++#endif
++
++facetT *compute_convex_hull(int dim, int numpoints, MeshModel &m);
++facetT *compute_delaunay(int dim, int numpoints, MeshModel &m);
++bool compute_voronoi(int dim, int numpoints, MeshModel &m, MeshModel &pm,float threshold);
++bool compute_alpha_shapes(int dim, int numpoints, MeshModel &m, MeshModel &pm,double alpha, bool alphashape);
++int visible_points(int dim, int numpoints, MeshModel &m, MeshModel &pm,MeshModel &pm2, vcg::Point3f viewpointP,float threshold,bool convex_hullFP,bool triangVP);
++

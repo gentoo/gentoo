@@ -1,0 +1,68 @@
+# ChangeLog for sys-fs/s3backer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/s3backer/ChangeLog,v 1.14 2015/04/04 06:17:30 mr_bones_ Exp $
+
+  04 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> -s3backer-1.3.5.ebuild:
+  old
+
+  19 Jan 2015; Tim Harder <radhermit@gentoo.org> metadata.xml:
+  Drop myself from metadata.
+
+  07 Sep 2013; Tim Harder <radhermit@gentoo.org> -s3backer-1.3.2.ebuild,
+  -s3backer-1.3.3.ebuild, -s3backer-1.3.4.ebuild:
+  Remove old.
+
+*s3backer-1.3.7 (07 Sep 2013)
+
+  07 Sep 2013; Tim Harder <radhermit@gentoo.org> +s3backer-1.3.7.ebuild:
+  Version bump.
+
+*s3backer-1.3.5 (08 Jun 2013)
+
+  08 Jun 2013; Tim Harder <radhermit@gentoo.org> +s3backer-1.3.5.ebuild:
+  Version bump.
+
+*s3backer-1.3.4 (05 Apr 2013)
+
+  05 Apr 2013; Tim Harder <radhermit@gentoo.org> +s3backer-1.3.4.ebuild:
+  Version bump.
+
+  23 Aug 2012; Tim Harder <radhermit@gentoo.org> -files/s3backer-qa.patch,
+  -s3backer-1.2.2-r2.ebuild:
+  Remove old.
+
+*s3backer-1.3.3 (23 Aug 2012)
+
+  23 Aug 2012; Tim Harder <radhermit@gentoo.org> +s3backer-1.3.3.ebuild:
+  Version bump.
+
+  31 Aug 2011; Tim Harder <radhermit@gentoo.org> -s3backer-1.2.2.ebuild,
+  -s3backer-1.2.2-r1.ebuild:
+  Remove old.
+
+*s3backer-1.3.2 (31 Aug 2011)
+
+  31 Aug 2011; Tim Harder <radhermit@gentoo.org> +s3backer-1.3.2.ebuild,
+  metadata.xml:
+  Version bump. Take over maintainership.
+
+*s3backer-1.2.2-r2 (17 Jun 2010)
+
+  17 Jun 2010; Markos Chandras <hwoarang@gentoo.org>
+  +s3backer-1.2.2-r2.ebuild:
+  Fix documentation installation wrt bug #294271
+
+  02 Jun 2010; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove caleb from metadata.xml (#317071)
+
+*s3backer-1.2.2-r1 (24 Jun 2009)
+
+  24 Jun 2009; Caleb Tennis <caleb@gentoo.org> +files/s3backer-qa.patch,
+  +s3backer-1.2.2-r1.ebuild:
+  Bump for QA fix from #274211
+
+*s3backer-1.2.2 (19 Apr 2009)
+
+  19 Apr 2009; Caleb Tennis <caleb@gentoo.org +metadata.xml,
+  +s3backer-1.2.2.ebuild:
+  Initial import

@@ -1,0 +1,189 @@
+Note: This is not optimal but is backported from what is in the 3.12 branch.
+
+
+r28871 | rjongbloed | 2013-01-13 02:18:43 -0300 (Sun, 13 Jan 2013) | 2 lines
+
+Fixed compile against latest FFMPEG, specifically Mac OS-X "port" version. Have no idea what all the deprecated symbols are replaced by!
+
+Index: opal-3.10.9/plugins/video/H.263-1998/h263-1998.cxx
+===================================================================
+--- opal-3.10.9.orig/plugins/video/H.263-1998/h263-1998.cxx
++++ opal-3.10.9/plugins/video/H.263-1998/h263-1998.cxx
+@@ -312,6 +312,7 @@ void H263_Base_EncoderContext::SetOption
+     return;
+   }
+ 
++#ifdef CODEC_FLAG_H263P_UMV
+   if (STRCMPI(option, H263_ANNEX_D) == 0) {
+     // Annex D: Unrestructed Motion Vectors
+     // Level 2+ 
+@@ -322,7 +323,9 @@ void H263_Base_EncoderContext::SetOption
+       m_context->flags &= ~CODEC_FLAG_H263P_UMV; 
+     return;
+   }
++#endif
+ 
++#ifdef CODEC_FLAG_OBMC
+ #if 0 // DO NOT ENABLE THIS FLAG. FFMPEG IS NOT THREAD_SAFE WHEN THIS FLAG IS SET
+   if (STRCMPI(option, H263_ANNEX_F) == 0) {
+     // Annex F: Advanced Prediction Mode
+@@ -334,7 +337,9 @@ void H263_Base_EncoderContext::SetOption
+     return;
+   }
+ #endif
++#endif
+ 
++#ifdef CODEC_FLAG_AC_PRED
+   if (STRCMPI(option, H263_ANNEX_I) == 0) {
+     // Annex I: Advanced Intra Coding
+     // Level 3+
+@@ -345,7 +350,9 @@ void H263_Base_EncoderContext::SetOption
+       m_context->flags &= ~CODEC_FLAG_AC_PRED; 
+     return;
+   }
++#endif
+ 
++#ifdef CODEC_FLAG_LOOP_FILTER
+   if (STRCMPI(option, H263_ANNEX_J) == 0) {
+     // Annex J: Deblocking Filter
+     // works with eyeBeam
+@@ -355,7 +362,9 @@ void H263_Base_EncoderContext::SetOption
+       m_context->flags &= ~CODEC_FLAG_LOOP_FILTER; 
+     return;
+   }
++#endif
+ 
++#ifdef CODEC_FLAG_H263P_SLICE_STRUCT
+   if (STRCMPI(option, H263_ANNEX_K) == 0) {
+     // Annex K: Slice Structure
+     // does not work with eyeBeam
+@@ -365,7 +374,9 @@ void H263_Base_EncoderContext::SetOption
+       m_context->flags &= ~CODEC_FLAG_H263P_SLICE_STRUCT; 
+     return;
+   }
++#endif
+ 
++#ifdef CODEC_FLAG_H263P_AIV
+   if (STRCMPI(option, H263_ANNEX_S) == 0) {
+     // Annex S: Alternative INTER VLC mode
+     // does not work with eyeBeam
+@@ -375,6 +386,7 @@ void H263_Base_EncoderContext::SetOption
+       m_context->flags &= ~CODEC_FLAG_H263P_AIV; 
+     return;
+   }
++#endif
+ 
+   if (STRCMPI(option, PLUGINCODEC_MEDIA_PACKETIZATION) == 0 ||
+       STRCMPI(option, PLUGINCODEC_MEDIA_PACKETIZATIONS) == 0) {
+@@ -452,12 +464,24 @@ bool H263_Base_EncoderContext::OpenCodec
+ 
+   #define CODEC_TRACER_FLAG(tracer, flag) \
+     PTRACE(4, m_prefix, #flag " is " << ((m_context->flags & flag) ? "enabled" : "disabled"));
++#ifdef CODEC_FLAG_H263P_UMV
+   CODEC_TRACER_FLAG(tracer, CODEC_FLAG_H263P_UMV);
++#endif
++#ifdef CODEC_FLAG_OBMC
+   CODEC_TRACER_FLAG(tracer, CODEC_FLAG_OBMC);
++#endif
++#ifdef CODEC_FLAG_AC_PRED
+   CODEC_TRACER_FLAG(tracer, CODEC_FLAG_AC_PRED);
++#endif
++#ifdef CODEC_FLAG_H263P_SLICE_STRUCT
+   CODEC_TRACER_FLAG(tracer, CODEC_FLAG_H263P_SLICE_STRUCT)
++#endif
++#ifdef CODEC_FLAG_LOOP_FILTER
+   CODEC_TRACER_FLAG(tracer, CODEC_FLAG_LOOP_FILTER);
++#endif
++#ifdef CODEC_FLAG_H263P_AIV
+   CODEC_TRACER_FLAG(tracer, CODEC_FLAG_H263P_AIV);
++#endif
+ 
+   return FFMPEGLibraryInstance.AvcodecOpen(m_context, m_codec) == 0;
+ }
+@@ -521,7 +545,7 @@ bool H263_Base_EncoderContext::EncodeFra
+ 
+     // Need to copy to local buffer to guarantee 16 byte alignment
+     memcpy(m_inputFrame->data[0], OPAL_VIDEO_FRAME_DATA_PTR(header), header->width*header->height*3/2);
+-    m_inputFrame->pict_type = (flags & PluginCodec_CoderForceIFrame) ? FF_I_TYPE : AV_PICTURE_TYPE_NONE;
++    m_inputFrame->pict_type = (flags & PluginCodec_CoderForceIFrame) ? AV_PICTURE_TYPE_I : AV_PICTURE_TYPE_NONE;
+ 
+     /*
+     m_inputFrame->pts = (int64_t)srcRTP.GetTimestamp()*m_context->time_base.den/m_context->time_base.num/VIDEO_CLOCKRATE;
+@@ -603,13 +627,21 @@ bool H263_RFC2190_EncoderContext::Init()
+   m_context->rtp_callback = &H263_RFC2190_EncoderContext::RTPCallBack;
+   m_context->opaque = this; // used to separate out packets from different encode threads
+ 
++#ifdef CODEC_FLAG_H263P_UMV
+   m_context->flags &= ~CODEC_FLAG_H263P_UMV;
++#endif
++#ifdef CODEC_FLAG_4MV
+   m_context->flags &= ~CODEC_FLAG_4MV;
+-#if LIBAVCODEC_RTP_MODE
++#endif
++#if LIBAVCODEC_RTP_MODE && defined(CODEC_FLAG_H263P_AIC)
+   m_context->flags &= ~CODEC_FLAG_H263P_AIC;
+ #endif
++#ifdef CODEC_FLAG_H263P_AIV
+   m_context->flags &= ~CODEC_FLAG_H263P_AIV;
++#endif
++#ifdef CODEC_FLAG_H263P_SLICE_STRUCT
+   m_context->flags &= ~CODEC_FLAG_H263P_SLICE_STRUCT;
++#endif
+ 
+   return true;
+ }
+Index: opal-3.10.9/plugins/video/H.264/h264-x264.cxx
+===================================================================
+--- opal-3.10.9.orig/plugins/video/H.264/h264-x264.cxx
++++ opal-3.10.9/plugins/video/H.264/h264-x264.cxx
+@@ -1071,13 +1071,13 @@ class MyDecoder : public PluginCodec<MY_
+         return false;
+ 
+       m_context->workaround_bugs = FF_BUG_AUTODETECT;
++#ifdef FF_ER_AGGRESSIVE
+       m_context->error_recognition = FF_ER_AGGRESSIVE;
++#endif
+       m_context->idct_algo = FF_IDCT_H264;
+       m_context->error_concealment = FF_EC_GUESS_MVS | FF_EC_DEBLOCK;
+       m_context->flags = CODEC_FLAG_INPUT_PRESERVED | CODEC_FLAG_EMU_EDGE;
+-      m_context->flags2 = CODEC_FLAG2_BRDO |
+-                          CODEC_FLAG2_MEMC_ONLY |
+-                          CODEC_FLAG2_DROP_FRAME_TIMECODE |
++      m_context->flags2 = CODEC_FLAG2_DROP_FRAME_TIMECODE |
+                           CODEC_FLAG2_SKIP_RD |
+                           CODEC_FLAG2_CHUNKS;
+ 
+Index: opal-3.10.9/plugins/video/MPEG4-ffmpeg/mpeg4.cxx
+===================================================================
+--- opal-3.10.9.orig/plugins/video/MPEG4-ffmpeg/mpeg4.cxx
++++ opal-3.10.9/plugins/video/MPEG4-ffmpeg/mpeg4.cxx
+@@ -594,12 +594,10 @@ void MPEG4EncoderContext::SetStaticEncod
+ #else
+     m_avcontext->max_b_frames=0; /*don't use b frames*/
+     m_avcontext->flags|=CODEC_FLAG_AC_PRED;
+-    m_avcontext->flags|=CODEC_FLAG_H263P_UMV;
+     /*c->flags|=CODEC_FLAG_QPEL;*/ /*don't enable this one: this forces profile_level to advanced simple profile */
+     m_avcontext->flags|=CODEC_FLAG_4MV;
+     m_avcontext->flags|=CODEC_FLAG_GMC;
+     m_avcontext->flags|=CODEC_FLAG_LOOP_FILTER;
+-    m_avcontext->flags|=CODEC_FLAG_H263P_SLICE_STRUCT;
+ #endif
+     m_avcontext->opaque = this;              // for use in RTP callback
+ }
+@@ -804,7 +802,7 @@ int MPEG4EncoderContext::EncodeFrames(co
+         // Should the next frame be an I-Frame?
+         if ((flags & PluginCodec_CoderForceIFrame) || (m_frameNum == 0))
+         {
+-            m_avpicture->pict_type = FF_I_TYPE;
++            m_avpicture->pict_type = AV_PICTURE_TYPE_I;
+         }
+         else // No IFrame requested, let avcodec decide what to do
+         {
+@@ -1325,7 +1323,6 @@ void MPEG4DecoderContext::SetFrameHeight
+ 
+ void MPEG4DecoderContext::SetStaticDecodingParams() {
+     m_avcontext->flags |= CODEC_FLAG_4MV; 
+-    m_avcontext->flags |= CODEC_FLAG_PART;
+     m_avcontext->workaround_bugs = 0; // no workaround for buggy implementations
+ }
+ 

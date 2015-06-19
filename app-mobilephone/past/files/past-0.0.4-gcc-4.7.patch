@@ -1,0 +1,10 @@
+--- src/device.cpp
++++ src/device.cpp
+@@ -22,6 +22,7 @@
+ 
+ extern "C" {
+ #include <gnokii.h>
++#include <unistd.h>
+ }
+ 
+ #include "device.h"

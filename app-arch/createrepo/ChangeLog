@@ -1,0 +1,54 @@
+# ChangeLog for app-arch/createrepo
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/createrepo/ChangeLog,v 1.9 2014/12/25 11:12:05 alonbl Exp $
+
+  25 Dec 2014; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/createrepo-0.10.3-pkglist.patch,
+  +files/createrepo-0.10.3-ten-changelog-limit.patch, createrepo-0.10.3.ebuild:
+  Add some patches
+
+*createrepo-0.10.3 (25 Dec 2014)
+
+  25 Dec 2014; Alon Bar-Lev <alonbl@gentoo.org> +createrepo-0.10.3.ebuild,
+  -createrepo-0.9.9-r1.ebuild, -createrepo-0.9.9.ebuild,
+  -files/createrepo-0.9.9-ten-changelog-limit.patch:
+  Version bump, fix bug#533482, bug#533484, cleanup
+
+*createrepo-0.9.9-r1 (25 Dec 2014)
+
+  25 Dec 2014; Michał Górny <mgorny@gentoo.org> +createrepo-0.9.9-r1.ebuild:
+  Convert to python-single-r1.
+
+  03 Mar 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Alon is now a dev with commit rights
+
+*createrepo-0.9.9 (15 May 2012)
+
+  15 May 2012; Pacho Ramos <pacho@gentoo.org> +createrepo-0.9.9.ebuild,
+  +files/createrepo-0.9.9-ten-changelog-limit.patch,
+  -createrepo-0.9.7-r1.ebuild, -createrepo-0.9.7.ebuild,
+  -createrepo-0.9.8-r1.ebuild, -createrepo-0.9.8.ebuild, metadata.xml:
+  Version bump that should fix crash reported in bug #396067 by Carpentier.
+  Thanks a lot to Alon Bar-Lev for his work, he also becames its maintainer with
+  me as proxy. Remove old.
+
+*createrepo-0.9.8-r1 (12 Nov 2011)
+*createrepo-0.9.7-r1 (12 Nov 2011)
+
+  12 Nov 2011; Maxim Koltsov <maksbotan@gentoo.org>
+  +createrepo-0.9.7-r1.ebuild, +createrepo-0.9.8-r1.ebuild, metadata.xml:
+  Reassign to python & proxy-maintainers, fix bug #308293. Thanks to idella4
+
+  16 Jun 2010; Patrick Lauer <patrick@gentoo.org> createrepo-0.9.8.ebuild:
+  Fixing deps for #323793
+
+*createrepo-0.9.8 (26 Apr 2010)
+
+  26 Apr 2010; Mike Frysinger <vapier@gentoo.org> +createrepo-0.9.8.ebuild:
+  Version bump.
+
+*createrepo-0.9.7 (12 Apr 2009)
+
+  12 Apr 2009; Mike Frysinger <vapier@gentoo.org> +createrepo-0.9.7.ebuild:
+  Initial ebuild by Dick Marinus, Rene Zbinden, Juan Diego Calle, and me
+  #116913.

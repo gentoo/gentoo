@@ -1,0 +1,12 @@
+# ChangeLog for sys-fs/squashfuse
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/squashfuse/ChangeLog,v 1.2 2013/06/14 09:20:10 zmedico Exp $
+
+  14 Jun 2013; Zac Medico <zmedico@gentoo.org> squashfuse-0.1_p20130530.ebuild:
+  Use slot-operator deps.
+
+*squashfuse-0.1_p20130530 (14 Jun 2013)
+
+  14 Jun 2013; Zac Medico <zmedico@gentoo.org> +metadata.xml,
+  +squashfuse-0.1_p20130530.ebuild:
+  Add sys-fs/squashfuse

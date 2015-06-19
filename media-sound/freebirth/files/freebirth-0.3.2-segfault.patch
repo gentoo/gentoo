@@ -1,0 +1,17 @@
+https://bugs.gentoo.org/show_bug.cgi?id=320123
+
+Index: freebirth-0.3.2/oscillator.c
+===================================================================
+--- freebirth-0.3.2.orig/oscillator.c
++++ freebirth-0.3.2/oscillator.c
+@@ -237,8 +237,8 @@ event *event_freq_change_new(int seq_han
+ 
+ static sample_producer **get_children(osc *this)
+ {
+-  static sample_producer *no_kids[] = { NULL };
+-  return no_kids;
++  static sample_producer no_kids[] = {{ NULL }};
++  return &no_kids;
+ }
+ 
+ static char **get_header(osc *this)

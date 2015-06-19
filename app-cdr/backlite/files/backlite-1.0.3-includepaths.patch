@@ -1,0 +1,89 @@
+libavutil/time.h in recent ffmpeg versions pollute the includes.
+include libav* headers correcly.
+
+Index: backlite-1.0.3/backlite.pro
+===================================================================
+--- backlite-1.0.3.orig/backlite.pro
++++ backlite-1.0.3/backlite.pro
+@@ -383,39 +383,31 @@ for(a, INCLOC ) {
+     exists($$a/ffmpeg/libavcodec) { 
+         message(found $$a/ffmpeg!)
+         INCLUDEPATH += $$a/ffmpeg
+-	INCLUDEPATH += $$a/ffmpeg/libavcodec
+     }
+     exists($$a/ffmpeg/libavformat) { 
+         message(found $$a/ffmpeg!)
+         INCLUDEPATH += $$a/ffmpeg
+-	INCLUDEPATH += $$a/ffmpeg/libavformat
+     }
+     exists($$a/ffmpeg/libavutil) { 
+         message(found $$a/ffmpeg!)
+         INCLUDEPATH += $$a/ffmpeg
+-	INCLUDEPATH += $$a/ffmpeg/libavutil
+     }
+     exists($$a/ffmpeg/libswscale) { 
+         message(found $$a/ffmpeg!)
+         INCLUDEPATH += $$a/ffmpeg
+-	INCLUDEPATH += $$a/ffmpeg/libswscale
+         DEFINES += HAVE_SWSCALE
+     }
+     exists($$a/libavcodec) { 
+         message(found $$a/libavcodec!)
+-        INCLUDEPATH += $$a/libavcodec
+     }
+     exists($$a/libavformat) { 
+         message(found $$a/libavformat!)
+-        INCLUDEPATH += $$a/libavformat
+     }
+     exists($$a/libavutil) { 
+         message(found $$a/libavutil!)
+-        INCLUDEPATH += $$a/libavutil
+     }
+     exists($$a/libswscale) { 
+         message(found $$a/libswscale!)
+-        INCLUDEPATH += $$a/libswscale
+         DEFINES += HAVE_SWSCALE
+     }
+ }
+Index: backlite-1.0.3/src/import/k9avidecode.cpp
+===================================================================
+--- backlite-1.0.3.orig/src/import/k9avidecode.cpp
++++ backlite-1.0.3/src/import/k9avidecode.cpp
+@@ -10,14 +10,14 @@
+ //
+ //
+ #include "k9avidecode.h"
+-#include <avcodec.h>
++#include <libavcodec/avcodec.h>
+ #include <qimage.h>
+ #include <dlfcn.h>
+ #include "k9common.h"
+ 
+ #ifdef HAVE_SWSCALE
+ 
+-#include "swscale.h"
++#include <libswscale/swscale.h>
+ 
+ static int sws_flags = SWS_BICUBIC;
+ 
+Index: backlite-1.0.3/src/import/k9avidecode.h
+===================================================================
+--- backlite-1.0.3.orig/src/import/k9avidecode.h
++++ backlite-1.0.3/src/import/k9avidecode.h
+@@ -14,13 +14,13 @@
+ 
+ #include "k9common.h"
+ #include <qobject.h>
+-#include <avformat.h>
+-#include <avutil.h>
++#include <libavformat/avformat.h>
++#include <libavutil/avutil.h>
+ #include <qimage.h>
+ #include <cstdlib>
+ #include <QObject>
+ #ifdef HAVE_SWSCALE
+-#include <swscale.h>
++#include <libswscale/swscale.h>
+ #endif
+ /**
+ 	@author Jean-Michel PETIT <k9copy@free.fr>

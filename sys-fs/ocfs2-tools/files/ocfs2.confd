@@ -1,0 +1,38 @@
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/ocfs2-tools/files/ocfs2.confd,v 1.1 2011/08/31 17:15:18 alexxy Exp $
+
+# Put your cluster names here, separated by space, ie.
+# OCFS2_CLUSTER="cluster1 admincluster cluster2" 
+OCFS2_CLUSTER="home"
+
+# Some heartbeat tweaks to prevent self-fencing quite so much during heavy load.
+# http://oss.oracle.com/projects/ocfs2/dist/documentation/ocfs2_faq.html
+
+# How long to wait before a node is considered dead from lack of network activity.
+OCFS2_IDLE_TIMEOUT_MS="30000"
+# How often we should attempt to send heartbeats.
+OCFS2_KEEPALIVE_DELAY_MS="2000"
+OCFS2_RECONNECT_DELAY_MS="2000"
+# How often we should attempt to send heartbeats.
+# How many interations before a node is considered dead from lack of IO activity.
+# (dead_threshold - 1) * 2s
+OCFS2_DEAD_THRESHOLD="61"
+
+# Default: "-fy" (force check on double-unmounted boot). I beleave this is best.
+# Native way is "-y", but once I have twice reboot/powerOFF with bad result...
+# Affected only fstab.
+OCFS2_FSCK="-fy"
+
+# http://oss.oracle.com/projects/ocfs2-tools/news/article_8.html
+# starting from 1.4.3, fsck.ocfs2 "aggressively cache the metadata blocks"
+# this is useful on lots of free memory, but I have heavy slowdown on x86_64
+# with 1G of RAM.
+# "yes" will "swapoff -a" & "swapon -a" around fsck to avoid caching over swap
+OCFS2_FSCK_SWAPOFF="yes"
+
+# Signal to kill processes on stop/umount on busy device (empty to not kill)
+#OCFS2_UMOUNT_KILL="KILL"
+
+# "yes" to force stop
+#OCFS2_FORCE_STOP="no"

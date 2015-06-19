@@ -1,0 +1,290 @@
+# ChangeLog for dev-php/PEAR-Spreadsheet_Excel_Writer
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Spreadsheet_Excel_Writer/ChangeLog,v 1.66 2015/05/08 12:36:40 grknight Exp $
+
+  08 May 2015; Brian Evans <grknight@gentoo.org>
+  -PEAR-Spreadsheet_Excel_Writer-0.9.2.ebuild:
+  Drop old
+
+  08 May 2015; Agostino Sarubbo <ago@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.3.ebuild:
+  Stable for alpha/amd64/arm/ia64/ppc/sparc/x86, wrt bug #548620
+
+  05 May 2015; Jeroen Roovers <jer@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.3.ebuild:
+  Stable for PPC64 (bug #548620).
+
+  05 May 2015; Jeroen Roovers <jer@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.3.ebuild:
+  Stable for HPPA (bug #548620).
+
+*PEAR-Spreadsheet_Excel_Writer-0.9.3 (08 Oct 2014)
+
+  08 Oct 2014; Brian Evans <grknight@gentoo.org>
+  +PEAR-Spreadsheet_Excel_Writer-0.9.3.ebuild,
+  -PEAR-Spreadsheet_Excel_Writer-0.9.0.ebuild,
+  -PEAR-Spreadsheet_Excel_Writer-0.9.1-r1.ebuild,
+  -PEAR-Spreadsheet_Excel_Writer-0.9.1.ebuild:
+  Version bump wrt bug 443070; Drop old
+
+  26 Jan 2014; Ole Markus With <olemarkus@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.0.ebuild,
+  PEAR-Spreadsheet_Excel_Writer-0.9.1-r1.ebuild,
+  PEAR-Spreadsheet_Excel_Writer-0.9.1.ebuild,
+  PEAR-Spreadsheet_Excel_Writer-0.9.2.ebuild:
+  Removing stable keyword for sh/s390
+
+  18 Mar 2012; Raúl Porcel <armin76@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.2.ebuild:
+  ia64/s390/sh/sparc stable wrt #393961
+
+  03 Mar 2012; Tobias Klausmann <klausman@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.2.ebuild:
+  Stable on alpha, bug #393961
+
+  01 Feb 2012; Samuli Suominen <ssuominen@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.2.ebuild:
+  ppc/ppc64 stable wrt #393961
+
+  21 Dec 2011; Markus Meier <maekke@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.2.ebuild:
+  arm stable, bug #393961
+
+  15 Dec 2011; Agostino Sarubbo <ago@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.2.ebuild:
+  Stable for AMD64, wrt bug #393961
+
+  14 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.2.ebuild:
+  x86 stable wrt bug #393961
+
+  13 Dec 2011; Jeroen Roovers <jer@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.2.ebuild:
+  Stable for HPPA (bug #393961).
+
+*PEAR-Spreadsheet_Excel_Writer-0.9.2 (16 Apr 2010)
+
+  16 Apr 2010; Steve Dibb <beandog@gentoo.org>
+  +PEAR-Spreadsheet_Excel_Writer-0.9.2.ebuild:
+  Version bump
+
+  29 Mar 2008; Markus Meier <maekke@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.1-r1.ebuild:
+  amd64 stable, bug #208313
+
+  10 Feb 2008; Raúl Porcel <armin76@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.1-r1.ebuild:
+  alpha/ia64/sparc stable wrt #208313
+
+  10 Feb 2008; nixnut <nixnut@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.1-r1.ebuild:
+  stable on ppc wrt bug #208313
+
+  03 Feb 2008; Markus Meier <maekke@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.1-r1.ebuild:
+  x86 stable, bug #208313
+
+  01 Feb 2008; Brent Baude <ranger@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.1-r1.ebuild:
+  Marking PEAR-Spreadsheet_Excel_Writer-0.9.1-r1 ppc64 for bug 208313
+
+  31 Jan 2008; Jeroen Roovers <jer@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.1-r1.ebuild:
+  Stable for HPPA (bug #208313).
+
+*PEAR-Spreadsheet_Excel_Writer-0.9.1-r1 (29 Nov 2007)
+
+  29 Nov 2007; Markus Ullmann <jokey@gentoo.org>
+  +files/PEAR-Spreadsheet_Excel_Writer-0.9.1-utf8.patch,
+  +PEAR-Spreadsheet_Excel_Writer-0.9.1-r1.ebuild:
+  Version bump from project overlay
+
+  22 Oct 2007; Raúl Porcel <armin76@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.1.ebuild:
+  ia64 stable wrt #192247
+
+  05 Oct 2007; Raúl Porcel <armin76@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.1.ebuild:
+  alpha/sparc stable wrt #192247
+
+  28 Sep 2007; Christoph Mende <angelos@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.1.ebuild:
+  Stable on amd64 wrt bug #192247
+
+  26 Sep 2007; Brent Baude <ranger@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.1.ebuild:
+  Marking PEAR-Spreadsheet_Excel_Writer-0.9.1 ppc64 stable for bug 192247
+
+  25 Sep 2007; Lars Weiler <pylon@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.1.ebuild:
+  stable ppc, bug #192247
+
+  21 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.1.ebuild:
+  x86 stable, bug 192247
+
+  16 Sep 2007; Jeroen Roovers <jer@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.1.ebuild:
+  Stable for HPPA (bug #192247).
+
+  15 Aug 2007; Jakub Moc <jakub@gentoo.org> +metadata.xml,
+  +PEAR-Spreadsheet_Excel_Writer-0.9.1.ebuild:
+  Version bump, Bug 158633
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  21 May 2006; Luca Longinotti <chtekk@gentoo.org>
+  -PEAR-Spreadsheet_Excel_Writer-0.7.ebuild,
+  -PEAR-Spreadsheet_Excel_Writer-0.8.ebuild:
+  Remove old-style PHP packages.
+
+  17 Feb 2006; Aron Griffis <agriffis@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.0.ebuild:
+  Mark 0.9.0 stable on alpha. #119722
+
+  28 Jan 2006; Jeroen Roovers <jer@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.0.ebuild:
+  Marked ~hppa (bug #119722).
+
+  27 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.0.ebuild:
+  Stable on ppc.
+
+  23 Jan 2006; Bryan Østergaard <kloeri@gentoo.org
+  PEAR-Spreadsheet_Excel_Writer-0.9.0.ebuild:
+  ~ia64 keyword, bug 119722.
+
+  22 Jan 2006; Simon Stelling <blubb@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.0.ebuild:
+  stable on amd64 wrt bug 119722
+
+  22 Jan 2006; Jason Wever <weeve@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.0.ebuild:
+  Stable on SPARC wrt bug #119722.
+
+  22 Jan 2006; Mark Loeser <halcy0n@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.0.ebuild:
+  Stable on x86; bug #119722
+
+  21 Jan 2006; Markus Rothe <corsair@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.9.0.ebuild:
+  Stable on ppc64; bug #119722
+
+*PEAR-Spreadsheet_Excel_Writer-0.9.0 (25 Nov 2005)
+
+  25 Nov 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-Spreadsheet_Excel_Writer-0.8-r1.ebuild,
+  +PEAR-Spreadsheet_Excel_Writer-0.9.0.ebuild:
+  Version bump.
+
+  22 Nov 2005; Markus Rothe <corsair@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.8-r1.ebuild:
+  Added ~ppc64 keyword; bug #105385
+
+  21 Nov 2005; Joseph Jezak <josejx@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.8-r1.ebuild:
+  Marked ~ppc for bug #105385.
+
+  24 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.8-r1.ebuild:
+  Add ~amd64.
+
+  08 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.8-r1.ebuild:
+  Fix RDEPEND.
+
+  19 Sep 2005; Jason Wever <weeve@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.8-r1.ebuild:
+  Added ~sparc keyword.
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.8.ebuild:
+  Mark 0.8 stable on alpha
+
+*PEAR-Spreadsheet_Excel_Writer-0.8-r1 (08 Sep 2005)
+
+  08 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  +PEAR-Spreadsheet_Excel_Writer-0.8-r1.ebuild:
+  Use new PEAR eclass.
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.8.ebuild:
+  stable on ia64
+
+  05 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.8.ebuild:
+  Stable on sparc
+
+  21 Jul 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.7.ebuild,
+  PEAR-Spreadsheet_Excel_Writer-0.8.ebuild:
+  Add missing keywords.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.8.ebuild:
+  Stable on ppc.
+
+  16 May 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.8.ebuild:
+  Stable on amd64 and x86.
+
+  08 Mar 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-Spreadsheet_Excel_Writer-0.6-r1.ebuild,
+  -PEAR-Spreadsheet_Excel_Writer-0.6.ebuild:
+  Cleanup.
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  29 Nov 2004; Simon Stelling <blubb@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.8.ebuild:
+  added ~amd64
+
+  23 Oct 2004; Jason Wever <weeve@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.7.ebuild:
+  Stable on sparc.
+
+  03 Aug 2004; <agriffis@gentoo.org> PEAR-Spreadsheet_Excel_Writer-0.7.ebuild,
+  PEAR-Spreadsheet_Excel_Writer-0.8.ebuild:
+  add ia64 keywords #56295
+
+*PEAR-Spreadsheet_Excel_Writer-0.8 (30 Jul 2004)
+
+  30 Jul 2004; Tal Peer <coredumb@gentoo.org>
+  +PEAR-Spreadsheet_Excel_Writer-0.8.ebuild:
+  Version bump
+
+  06 Jul 2004; Michael Hanselmann <hansmi@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.7.ebuild:
+  Stable on ppc.
+
+  04 Jul 2004; Robin H. Johnson <robbat2@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.7.ebuild:
+  stable on x86.
+
+  30 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.7.ebuild:
+  Stable on alpha.
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.6-r1.ebuild,
+  PEAR-Spreadsheet_Excel_Writer-0.6.ebuild:
+  Added IUSE=
+
+*PEAR-Spreadsheet_Excel_Writer-0.7 (18 Apr 2004)
+
+  18 Apr 2004; Tal Peer <coredumb@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.7.ebuild:
+  Version bump, fixes bug #47293
+
+*PEAR-Spreadsheet_Excel_Writer-0.6-r1 (29 Feb 2004)
+
+  29 Feb 2004; <tal@gentoo.org> PEAR-Spreadsheet_Excel_Writer-0.6-r1.ebuild:
+  Added dep on PEAR-OLE, fixes bug #41510
+
+*PEAR-Spreadsheet_Excel_Writer-0.6 (25 Dec 2003)
+
+  25 Dec 2003; Tal Peer <coredumb@gentoo.org>
+  PEAR-Spreadsheet_Excel_Writer-0.6.ebuild:
+  Initial commit, fixes bug #22943

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer>
+    <email>jdhore@gentoo.org</email>
+    <name>Jeff Horelick</name>
+  </maintainer>
+  <use>
+    <flag name="sensord">Enable sensord - a daemon that can be used to
+			periodically log sensor readings from hardware health-monitoring
+			chips</flag>
+  </use>
+</pkgmetadata>

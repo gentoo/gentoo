@@ -1,0 +1,61 @@
+# ChangeLog for dev-db/xbsql
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/xbsql/ChangeLog,v 1.16 2012/09/21 14:15:36 johu Exp $
+
+  21 Sep 2012; Johannes Huber <johu@gentoo.org> -xbsql-0.11-r1.ebuild,
+  -xbsql-0.11.ebuild:
+  Remove old.
+
+  21 Sep 2012; Johannes Huber <johu@gentoo.org> xbsql-0.11-r2.ebuild:
+  Stable for x86, wrt bug #433209
+
+  17 Sep 2012; Anthony G. Basile <blueness@gentoo.org> xbsql-0.11-r2.ebuild:
+  Stable ppc, bug #433209
+
+  16 Sep 2012; Agostino Sarubbo <ago@gentoo.org> xbsql-0.11-r2.ebuild:
+  Stable for amd64, wrt bug #433209
+
+*xbsql-0.11-r2 (16 Sep 2012)
+
+  16 Sep 2012; Justin Lecher <jlec@gentoo.org> +xbsql-0.11-r2.ebuild,
+  +files/xbsql-0.11-bfr-overflow.patch:
+  Fix buffer overflow, #434198
+
+*xbsql-0.11-r1 (30 Jun 2012)
+
+  30 Jun 2012; Justin Lecher <jlec@gentoo.org> xbsql-0.11.ebuild,
+  +xbsql-0.11-r1.ebuild, +files/xbsql-0.11-autotools.patch,
+  +files/xbsql-0.11-ncurses64.patch, +files/xbsql-0.11-xbase64.patch,
+  metadata.xml:
+  Add fixes for newer xbase library, use autotools-utils and autoreconf,
+  respect LDFLAGS, #334897
+
+  16 Jun 2012; Pacho Ramos <pacho@gentoo.org> xbsql-0.11.ebuild:
+  Be less strict with xbase dependency.
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #47265
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> xbsql-0.11.ebuild:
+  Stable on ppc.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> xbsql-0.11.ebuild:
+  stable on amd64
+
+  24 Dec 2004; Simon Stelling <blubb@gentoo.org> xbsql-0.11.ebuild:
+  added ~amd64
+
+  20 Aug 2004; Carsten Lohrke <carlo@gentoo.org> xbsql-0.11.ebuild:
+  stable on x86
+
+  21 Jul 2004; David Holm <dholm@gentoo.org> xbsql-0.11.ebuild:
+  Added to ~ppc.
+
+*xbsql-0.11 (20 Jul 2004)
+
+  20 Jul 2004; Carsten Lohrke <carlo@gentoo.org> +metadata.xml,
+  +xbsql-0.11.ebuild:
+  Initial ebuild.

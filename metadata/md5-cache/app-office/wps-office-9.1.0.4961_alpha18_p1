@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm preinst prepare setup unpack
+DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings ) >=sys-apps/sed-4
+DESCRIPTION=WPS Office is an office productivity suite
+EAPI=5
+HOMEPAGE=http://linux.wps.cn/
+IUSE=+sharedfonts X
+KEYWORDS=~amd64 ~x86
+LICENSE=WPS-EULA
+RDEPEND=dev-qt/qtwebkit:4 media-libs/tiff:3 app-arch/bzip2 dev-libs/expat dev-libs/glib:2 dev-libs/libffi dev-libs/libxml2:2 media-libs/fontconfig:1.0 media-libs/freetype:2 media-libs/glu media-libs/gst-plugins-base:0.10 media-libs/gstreamer:0.10 media-libs/libpng:1.2 virtual/opengl media-libs/tiff:3 sys-apps/util-linux sys-libs/zlib x11-libs/libdrm x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXdamage x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXrender x11-libs/libXxf86vm media-libs/libmng net-print/cups net-nds/openldap dev-db/sqlite:3
+RESTRICT=strip mirror
+SLOT=0
+SRC_URI=x86? ( http://kdl.cc.ksosoft.com/wps-community/download/a18/wps-office_9.1.0.4961~a18p1_i386.deb ) amd64? ( http://kdl.cc.ksosoft.com/wps-community/download/a18/wps-office_9.1.0.4961~a18p1_amd64.deb )
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fdo-mime	0acfe1a88fd8751a1d5dc671168219fa	font	b3239d2dc442d1717b9725e2be7cb5d6	gnome2-utils	5cdfd22a2163c9d3a891648bd19453a7	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	versionator	cd0bcdb170807e4a1984115e9d53a26f
+_md5_=f0d637b4f163c86b7b81ce52fb00e4d7

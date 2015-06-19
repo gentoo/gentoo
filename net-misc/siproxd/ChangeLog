@@ -1,0 +1,130 @@
+# ChangeLog for net-misc/siproxd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/siproxd/ChangeLog,v 1.30 2015/04/04 06:43:27 mr_bones_ Exp $
+
+  04 Apr 2015; Michael Sterrett <mr_bones_@gentoo.org> -siproxd-0.8.1.ebuild:
+  old
+
+  03 Mar 2014; Lars Wendler <polynomial-c@gentoo.org> files/siproxd.rc8:
+  Fixed pidfile location for non-linux systems.
+
+*siproxd-0.8.1-r1 (03 Mar 2014)
+
+  03 Mar 2014; Lars Wendler <polynomial-c@gentoo.org> +siproxd-0.8.1-r1.ebuild,
+  +files/siproxd-0.8.1-amd64_static_build.patch, +files/siproxd.rc8:
+  EAPI-bump. Rewrote init script. Fixed static build on amd64 (bug #380835).
+
+  08 Jan 2014; Mike Frysinger <vapier@gentoo.org> siproxd-0.8.0-r2.ebuild,
+  siproxd-0.8.1.ebuild:
+  Inherit the user eclass for enewuser/etc...
+
+  27 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due voip herd removal:
+  http://article.gmane.org/gmane.linux.gentoo.devel/88434
+
+*siproxd-0.8.1 (20 Mar 2013)
+
+  20 Mar 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/siproxd.rc7, +siproxd-0.8.1.ebuild, -files/siproxd-libtool-2.2.patch,
+  -siproxd-0.8.0-r1.ebuild, siproxd-0.8.0-r2.ebuild:
+  Version bump. Do not keepdir /var/run, bug #452222. Restrict libosip
+  dependency as the package does not build against libosip-4.0.0.
+
+  04 Sep 2011; Markus Meier <maekke@gentoo.org> siproxd-0.8.0-r2.ebuild:
+  x86 stable, bug #380807
+
+  27 Aug 2011; Tony Vroon <chainsaw@gentoo.org> siproxd-0.8.0-r2.ebuild:
+  Marked stable based on arch testing by Agostino "ago" Sarubbo in bug #380807.
+
+  24 Jan 2011; Diego E. Pettenò <flameeyes@gentoo.org>
+  siproxd-0.8.0-r2.ebuild:
+  Avoid mantainer-mode automake calls by properly re-building autotools.
+
+*siproxd-0.8.0-r2 (20 Jan 2011)
+
+  20 Jan 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  siproxd-0.8.0-r1.ebuild, +siproxd-0.8.0-r2.ebuild,
+  +files/siproxd-libtool-2.4.patch:
+  Fix building with libtool-2.4, bug #349777
+
+  22 Jun 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -siproxd-0.8.0.ebuild:
+  Remove old version.
+
+  21 Jun 2010; Markus Meier <maekke@gentoo.org> siproxd-0.8.0-r1.ebuild:
+  amd64 stable, bug #299419
+
+  20 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  siproxd-0.8.0-r1.ebuild:
+  x86 stable wrt security bug #299419
+
+*siproxd-0.8.0-r1 (19 Jun 2010)
+
+  19 Jun 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +siproxd-0.8.0-r1.ebuild, +files/siproxd-libtool-2.2.patch:
+  Attempt to fix bug #308495, thanks to ssuominen for the pointer
+
+  03 Mar 2010; Christian Faulhammer <fauli@gentoo.org> siproxd-0.8.0.ebuild:
+  stable x86, bug 299419
+
+*siproxd-0.8.0 (28 Feb 2010)
+
+  28 Feb 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +siproxd-0.8.0.ebuild:
+  version bump for bug #299419 and bug #303697
+
+*siproxd-0.7.1 (01 Mar 2009)
+
+  01 Mar 2009; Jeremy Olexa <darkside@gentoo.org> +siproxd-0.7.1.ebuild:
+  (non maintainer commit) Version bump, ebuild by Mounir Lamouri in bug 235720
+
+  16 Feb 2009; Jeremy Olexa <darkside@gentoo.org> -siproxd-0.5.11.ebuild:
+  (non maintainer commit) remove old ebuild that has QA issues, bug 226605
+
+  16 Aug 2008; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove stkn from metadata.xml (#27693)
+
+  23 Apr 2008; Markus Meier <maekke@gentoo.org> siproxd-0.7.0.ebuild:
+  amd64/x86 stable, bug #218980
+
+*siproxd-0.7.0 (22 Mar 2008)
+
+  22 Mar 2008; Christian Faulhammer <opfer@gentoo.org>
+  +files/siproxd-0.7.0-guide.diff, +files/siproxd-0.7.0-libosip-3.1.0.diff,
+  +siproxd-0.7.0.ebuild:
+  version bump, taken from voip overlay. Fixes bugs 205766 and 205765, both
+  reported by Georgi Georgiev <chutz AT gg3 DOT net>
+
+  02 Nov 2007; Steve Dibb <beandog@gentoo.org> siproxd-0.5.13.ebuild:
+  amd64 stable, bug 197384
+
+  01 Nov 2007; Christian Faulhammer <opfer@gentoo.org>
+  siproxd-0.5.13.ebuild:
+  stable x86, bug 197384
+
+  28 Apr 2007; Sven Wegener <swegener@gentoo.org> siproxd-0.5.11.ebuild:
+  Fix *initd, *confd and *envd calls (#17388, #174266)
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  14 Nov 2006; Timothy Redaelli <drizzt@gentoo.org> siproxd-0.5.13.ebuild:
+  Oops, I missed to move pkg_postinst to pkg_setup.
+
+*siproxd-0.5.13 (14 Nov 2006)
+
+  14 Nov 2006; Timothy Redaelli <drizzt@gentoo.org> +siproxd-0.5.13.ebuild:
+  Version bump and fixed chowns wrt bug #132284.
+  Thanks to Janne Liimatainen and Randy McCaskill.
+
+  23 Sep 2005; Stefan Knoblich <stkn@gentoo.org> files/siproxd.rc6,
+  siproxd-0.5.11.ebuild:
+  Added non-root changes (with little modifications) submitted by CJ Kucera in
+  bug #97309.
+
+*siproxd-0.5.11 (07 May 2005)
+
+  07 May 2005; Stefan Knoblich <stkn@gentoo.org> +metadata.xml,
+  +files/siproxd-0.5.11-configure-docs.diff, +files/siproxd.rc6,
+  +siproxd-0.5.11.ebuild:
+  Initial import.

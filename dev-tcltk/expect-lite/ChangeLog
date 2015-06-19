@@ -1,0 +1,161 @@
+# ChangeLog for dev-tcltk/expect-lite
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/expect-lite/ChangeLog,v 1.36 2015/06/09 17:46:53 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*expect-lite-4.8.0 (15 Feb 2015)
+
+  15 Feb 2015; Mike Frysinger <vapier@gentoo.org> +expect-lite-4.8.0.ebuild:
+  Version bump.
+
+*expect-lite-4.7.2 (28 Jul 2014)
+
+  28 Jul 2014; Mike Frysinger <vapier@gentoo.org> +expect-lite-4.7.2.ebuild:
+  Version bump #517784 by Quentin Minster.
+
+  25 Dec 2013; Mike Frysinger <vapier@gentoo.org> expect-lite-4.6.2.ebuild:
+  Stabilize for all #495646 by Pacho Ramos.
+
+*expect-lite-4.6.2 (21 Nov 2013)
+
+  21 Nov 2013; Mike Frysinger <vapier@gentoo.org> +expect-lite-4.6.2.ebuild:
+  Version bump.
+
+  21 Nov 2013; Mike Frysinger <vapier@gentoo.org> expect-lite-4.6.1.ebuild:
+  Stabilize for all.
+
+*expect-lite-4.6.1 (30 Jul 2013)
+
+  30 Jul 2013; Mike Frysinger <vapier@gentoo.org> +expect-lite-4.6.1.ebuild:
+  Version bump.
+
+*expect-lite-4.6.0 (29 May 2013)
+
+  29 May 2013; Mike Frysinger <vapier@gentoo.org> +expect-lite-4.6.0.ebuild:
+  Version bump.
+
+  27 May 2013; Mike Frysinger <vapier@gentoo.org> expect-lite-4.5.0.ebuild:
+  Stabilize for all #470476.
+
+  17 Apr 2013; Mike Frysinger <vapier@gentoo.org> expect-lite-4.3.2.ebuild,
+  expect-lite-4.3.3.ebuild, expect-lite-4.4.0.ebuild, expect-lite-4.4.1.ebuild,
+  expect-lite-4.5.0.ebuild:
+  Install from examples/ with newer versions #465814 by Talamona Francesco.
+
+*expect-lite-4.5.0 (16 Mar 2013)
+
+  16 Mar 2013; Mike Frysinger <vapier@gentoo.org> +expect-lite-4.5.0.ebuild:
+  Version bump.
+
+  16 Mar 2013; Mike Frysinger <vapier@gentoo.org> expect-lite-4.4.1.ebuild:
+  Stabilize for all.
+
+  19 Feb 2013; Mike Frysinger <vapier@gentoo.org> expect-lite-4.3.3.ebuild:
+  Stabilize for all #456620.
+
+*expect-lite-4.4.1 (17 Feb 2013)
+
+  17 Feb 2013; Mike Frysinger <vapier@gentoo.org> +expect-lite-4.4.1.ebuild:
+  Version bump.
+
+*expect-lite-4.4.0 (21 Jan 2013)
+
+  21 Jan 2013; Mike Frysinger <vapier@gentoo.org> +expect-lite-4.4.0.ebuild:
+  Version bump.
+
+*expect-lite-4.3.3 (10 Dec 2012)
+
+  10 Dec 2012; Mike Frysinger <vapier@gentoo.org> +expect-lite-4.3.3.ebuild:
+  Version bump.
+
+  04 Nov 2012; Mike Frysinger <vapier@gentoo.org> expect-lite-4.3.2.ebuild:
+  Stabilize for all #441302 by Paweł Hajdan, Jr.
+
+*expect-lite-4.3.2 (16 Aug 2012)
+
+  16 Aug 2012; Mike Frysinger <vapier@gentoo.org> +expect-lite-4.3.2.ebuild:
+  Version bump.
+
+  03 Aug 2012; Mike Frysinger <vapier@gentoo.org> expect-lite-4.3.1.ebuild:
+  Stabilize for all #429048 by Paweł Hajdan, Jr..
+
+*expect-lite-4.3.1 (27 Jun 2012)
+
+  27 Jun 2012; Mike Frysinger <vapier@gentoo.org> +expect-lite-4.3.1.ebuild:
+  Version bump.
+
+  08 Jun 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  expect-lite-4.3.0.ebuild:
+  x86 stable wrt bug #418929
+
+  03 Jun 2012; Agostino Sarubbo <ago@gentoo.org> expect-lite-4.3.0.ebuild:
+  Stable for amd64, wrt bug #418929
+
+*expect-lite-4.3.0 (25 Apr 2012)
+
+  25 Apr 2012; Mike Frysinger <vapier@gentoo.org> +expect-lite-4.3.0.ebuild:
+  Version bump.
+
+*expect-lite-4.2.2 (17 Feb 2012)
+
+  17 Feb 2012; Mike Frysinger <vapier@gentoo.org> +expect-lite-4.2.2.ebuild:
+  Version bump.
+
+*expect-lite-4.2.1 (18 Dec 2011)
+
+  18 Dec 2011; Mike Frysinger <vapier@gentoo.org> +expect-lite-4.2.1.ebuild:
+  Version bump.
+
+*expect-lite-4.2.0 (11 Oct 2011)
+
+  11 Oct 2011; Mike Frysinger <vapier@gentoo.org> +expect-lite-4.2.0.ebuild:
+  Version bump.
+
+*expect-lite-4.1.2 (24 Aug 2011)
+
+  24 Aug 2011; Mike Frysinger <vapier@gentoo.org> +expect-lite-4.1.2.ebuild:
+  Version bump.
+
+*expect-lite-4.1.0 (18 May 2011)
+
+  18 May 2011; Mike Frysinger <vapier@gentoo.org> +expect-lite-4.1.0.ebuild:
+  Version bump.
+
+  12 May 2011; Mike Frysinger <vapier@gentoo.org> expect-lite-4.0.3.ebuild:
+  Stabilize for all.
+
+*expect-lite-4.0.3 (23 Feb 2011)
+
+  23 Feb 2011; Mike Frysinger <vapier@gentoo.org> +expect-lite-4.0.3.ebuild:
+  Version bump.
+
+*expect-lite-4.0.2 (21 Dec 2010)
+
+  21 Dec 2010; Mike Frysinger <vapier@gentoo.org> +expect-lite-4.0.2.ebuild:
+  Version bump.
+
+*expect-lite-4.0.1 (26 Oct 2010)
+
+  26 Oct 2010; Mike Frysinger <vapier@gentoo.org> +expect-lite-4.0.1.ebuild:
+  Version bump.
+
+  26 Oct 2010; Mike Frysinger <vapier@gentoo.org> expect-lite-3.7.1.ebuild:
+  Fix typo in examples path #342715 by Talamona Francesco.
+
+*expect-lite-3.7.1 (16 Sep 2010)
+
+  16 Sep 2010; Mike Frysinger <vapier@gentoo.org> +expect-lite-3.7.1.ebuild:
+  Version bump.
+
+*expect-lite-3.7.0 (13 Aug 2010)
+
+  13 Aug 2010; Mike Frysinger <vapier@gentoo.org> +expect-lite-3.7.0.ebuild:
+  Version bump.
+
+*expect-lite-3.6.2 (17 Jul 2010)
+
+  17 Jul 2010; Mike Frysinger <vapier@gentoo.org> +expect-lite-3.6.2.ebuild,
+  +metadata.xml:
+  Initial package.

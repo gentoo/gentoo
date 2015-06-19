@@ -1,0 +1,138 @@
+# ChangeLog for dev-perl/XML-Feed
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-Feed/ChangeLog,v 1.31 2015/06/13 22:26:24 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  XML-Feed-0.510.0.ebuild, XML-Feed-0.520.0.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  XML-Feed-0.510.0.ebuild, XML-Feed-0.520.0.ebuild:
+  The Module::Pluggable module is no longer part of core Perl and has been
+  moved to dev-perl
+
+  19 Oct 2014; Mikle Kolyada <zlogene@gentoo.org> -XML-Feed-0.500.0.ebuild:
+  Drop old.
+
+*XML-Feed-0.520.0 (17 Mar 2013)
+
+  17 Mar 2013; Torsten Veller <tove@gentoo.org> +XML-Feed-0.520.0.ebuild:
+  Version bump
+
+*XML-Feed-0.510.0 (06 Jan 2013)
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org> +XML-Feed-0.510.0.ebuild:
+  Version bump
+
+  28 Jul 2012; Torsten Veller <tove@gentoo.org> -XML-Feed-0.490.0.ebuild:
+  Cleanup
+
+*XML-Feed-0.500.0 (13 Jul 2012)
+
+  13 Jul 2012; Torsten Veller <tove@gentoo.org> +XML-Feed-0.500.0.ebuild:
+  Version bump
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  21 Apr 2012; Torsten Veller <tove@gentoo.org> -XML-Feed-0.460.0.ebuild,
+  -XML-Feed-0.470.0.ebuild, -XML-Feed-0.480.0.ebuild:
+  Cleanup
+
+*XML-Feed-0.490.0 (07 Apr 2012)
+
+  07 Apr 2012; Torsten Veller <tove@gentoo.org> +XML-Feed-0.490.0.ebuild:
+  Version bump
+
+*XML-Feed-0.480.0 (13 Mar 2012)
+
+  13 Mar 2012; Torsten Veller <tove@gentoo.org> +XML-Feed-0.480.0.ebuild:
+  Version bump
+
+*XML-Feed-0.470.0 (11 Mar 2012)
+
+  11 Mar 2012; Torsten Veller <tove@gentoo.org> +XML-Feed-0.470.0.ebuild:
+  Version bump
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org> -XML-Feed-0.450.0.ebuild:
+  Cleanup
+
+  09 Oct 2011; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove tove from metadata.xml
+
+*XML-Feed-0.460.0 (05 Sep 2011)
+
+  05 Sep 2011; Torsten Veller <tove@gentoo.org> +XML-Feed-0.460.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -XML-Feed-0.440.0.ebuild:
+  Cleanup
+
+*XML-Feed-0.450.0 (10 Aug 2011)
+
+  10 Aug 2011; Torsten Veller <tove@gentoo.org> +XML-Feed-0.450.0.ebuild:
+  Version bump
+
+  29 Jul 2011; Torsten Veller <tove@gentoo.org> -XML-Feed-0.43.ebuild:
+  Cleanup
+
+*XML-Feed-0.440.0 (14 Jul 2011)
+
+  14 Jul 2011; Torsten Veller <tove@gentoo.org> +XML-Feed-0.440.0.ebuild:
+  Version bump
+
+  03 Jun 2009; Torsten Veller <tove@gentoo.org> -XML-Feed-0.42.ebuild:
+  Cleanup
+
+*XML-Feed-0.43 (08 May 2009)
+
+  08 May 2009; Torsten Veller <tove@gentoo.org> +XML-Feed-0.43.ebuild:
+  Version bump
+
+  02 May 2009; Torsten Veller <tove@gentoo.org> -XML-Feed-0.41.ebuild:
+  Cleanup
+
+*XML-Feed-0.42 (03 Apr 2009)
+
+  03 Apr 2009; Torsten Veller <tove@gentoo.org> +XML-Feed-0.42.ebuild:
+  Version bump
+
+  30 Dec 2008; Torsten Veller <tove@gentoo.org> -XML-Feed-0.12.ebuild,
+  -XML-Feed-0.21.ebuild, -XML-Feed-0.23.ebuild, -XML-Feed-0.30.ebuild,
+  -XML-Feed-0.40.ebuild:
+  Cleanup
+
+*XML-Feed-0.41 (15 Dec 2008)
+
+  15 Dec 2008; Torsten Veller <tove@gentoo.org> +XML-Feed-0.41.ebuild:
+  Version bump
+
+*XML-Feed-0.40 (24 Nov 2008)
+
+  24 Nov 2008; Torsten Veller <tove@gentoo.org> +XML-Feed-0.40.ebuild:
+  Version bump
+
+*XML-Feed-0.30 (21 Nov 2008)
+
+  21 Nov 2008; Torsten Veller <tove@gentoo.org> +XML-Feed-0.30.ebuild:
+  Version bump
+
+  18 Nov 2008; Torsten Veller <tove@gentoo.org> XML-Feed-0.21.ebuild,
+  XML-Feed-0.23.ebuild:
+  New virtuals: module-build
+
+*XML-Feed-0.23 (26 Oct 2008)
+
+  26 Oct 2008; Torsten Veller <tove@gentoo.org> +XML-Feed-0.23.ebuild:
+  Version bump
+
+*XML-Feed-0.21 (20 Oct 2008)
+
+  20 Oct 2008; Torsten Veller <tove@gentoo.org> +XML-Feed-0.21.ebuild:
+  Version bump
+
+*XML-Feed-0.12 (01 Aug 2008)
+
+  01 Aug 2008; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +XML-Feed-0.12.ebuild:
+  Initial commit

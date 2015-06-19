@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>desktop-misc</herd>
+  <maintainer>
+    <email>sping@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="appindicator">Enable usage of <pkg>dev-libs/libappindicator</pkg> to export menu options in to unity and KDE 5</flag>
+    <flag name="geoclue">Control dependency on <pkg>app-misc/geoclue</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="github">jonls/redshift</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,75 @@
+# ChangeLog for dev-perl/Tk-JPEG-Lite
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Tk-JPEG-Lite/ChangeLog,v 1.18 2014/08/23 00:27:23 axs Exp $
+
+*Tk-JPEG-Lite-2.14.30-r1 (23 Aug 2014)
+
+  23 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Tk-JPEG-Lite-2.14.30-r1.ebuild, -Tk-JPEG-Lite-2.14.30.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -Tk-JPEG-Lite-2.01403.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> Tk-JPEG-Lite-2.14.30.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*Tk-JPEG-Lite-2.14.30 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +Tk-JPEG-Lite-2.14.30.ebuild:
+  Change version scheme
+
+  25 Feb 2011; Kevin McCarthy <signals@gentoo.org> Tk-JPEG-Lite-2.01403.ebuild:
+  Update depends from media-libs/jpeg to virtual/jpeg
+
+  03 Sep 2010; Torsten Veller <tove@gentoo.org> Tk-JPEG-Lite-2.01403.ebuild:
+  Maintenance: fix license and quoting, EAPI bump
+
+  24 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  Tk-JPEG-Lite-2.01403.ebuild:
+  Bug 152049, missing dep on media-libs/jpeg. Thanks ECP
+
+  30 Sep 2006; Daniel Gryniewicz <dang@gentoo.org>
+  Tk-JPEG-Lite-2.01403.ebuild:
+  Marked stable on amd64 for bug #148327
+
+  22 Aug 2006; Yuval Yaari <yuval@gentoo.org> Tk-JPEG-Lite-2.01403.ebuild:
+  Fixed bug #127730
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Tk-JPEG-Lite-2.01403.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org>
+  Tk-JPEG-Lite-2.01403.ebuild:
+  Mark 2.01403 stable on ia64
+
+  05 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  Tk-JPEG-Lite-2.01403.ebuild:
+  Fixed RDEPEND wrt bug #134781
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  Tk-JPEG-Lite-2.01403.ebuild:
+  Mark 2.01403 ~ia64
+
+  30 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Tk-JPEG-Lite-2.01403.ebuild:
+  Stable on sparc
+
+  09 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Tk-JPEG-Lite-2.01403.ebuild:
+  Keyworded ~sparc
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  Tk-JPEG-Lite-2.01403.ebuild:
+  Cleaning for mirror syntax
+
+*Tk-JPEG-Lite-2.01403 (22 Jan 2005)
+
+  22 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> +metadata.xml,
+  +Tk-JPEG-Lite-2.01403.ebuild:
+  Initial import to fix #69664.

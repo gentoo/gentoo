@@ -1,0 +1,44 @@
+# ChangeLog for net-misc/htun
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/htun/ChangeLog,v 1.10 2014/03/22 19:34:13 kensington Exp $
+
+  22 Mar 2014; Michael Palimaka <kensington@gentoo.org>
+  -files/htun-0.9.5-glibc.patch, -htun-0.9.5.ebuild:
+  Remove old.
+
+*htun-0.9.6 (12 Mar 2013)
+
+  12 Mar 2013; Sergey Popov <pinkbyte@gentoo.org> +htun-0.9.6.ebuild,
+  +files/htun-0.9.6-glibc.patch, +files/htun-0.9.6-makefile.patch,
+  +files/README.gentoo:
+  Version bump, wrt bug #460656. EAPI 5, add ~amd64 keyword, add epatch_user,
+  use readme.gentoo eclass instead of simple message in pkg_postinst, respect
+  CFLAGS, LDFLAGS and compiler. Thanks to Michael Mair-Keimberger and Andrew
+  Savchenko for ebuild improvements
+
+  14 Jan 2009; Mike Frysinger <vapier@gentoo.org>
+  +files/htun-0.9.5-glibc.patch, htun-0.9.5.ebuild:
+  Fix building with newer glibc #248100 by Diego E. Pettenò.
+
+  21 Apr 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Fix up metadata.xml. If there's no maintainer for the package, the metadata
+  also needs to contain m-needed@g.o.
+
+  05 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  09 Jan 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove retired dev from metadata.xml
+
+  29 Jul 2005; Marcelo Goes <vanquirius@gentoo.org> htun-0.9.5.ebuild:
+  Add dev-util/yacc to DEPEND for bug 100755. Thanks to Stefan Briesenick
+  <sbriesen@gentoo.org>.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> htun-0.9.5.ebuild:
+  change virtual/glibc to virtual/libc
+
+*htun-0.9.5 (30 Dec 2003)
+
+  30 Dec 2003; Chuck Short <zul@gentoo.org> htun-0.9.5.ebuild:
+  Initial version by Chris Verges <squirrel at headnut.org>
+  modified by me. Closes #35113.

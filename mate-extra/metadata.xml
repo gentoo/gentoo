@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The mate-extra category contains additional non-core MATE packages.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie mate-extra enthält zusätzliche MATE-Pakete die nicht
+		Teil des Basissystems sind.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría mate-extra contiene paquetes adicionales de MATE.
+	</longdescription>
+	<longdescription lang="ja">
+		mate-extraカテゴリーにはMATEのコアなし拡張パッケージが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De mate-extra categorie bevat optionele extra's voor de MATE desktopomgeving.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm mate-extra chứa các gói MATE bổ sung, không thuộc về các gói cốt lõi.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria mate-extra contiene pacchetti vari per MATE.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria mate-extra contém pacotes adicionais de MATE.
+	</longdescription>
+	<longdescription lang="pl">
+		Kategoria mate-extra zawiera dodatkowe pakiety dla środowiska MATE.
+	</longdescription>
+</catmetadata>
+

@@ -1,0 +1,87 @@
+# ChangeLog for dev-java/xmlc
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xmlc/ChangeLog,v 1.23 2014/06/19 00:30:13 mrueg Exp $
+
+  19 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -xmlc-2.3.1.ebuild:
+  NM: Cleanup superseded ebuilds.
+
+  02 Sep 2012; Michael Weber <xmw@gentoo.org> xmlc-2.3.1-r1.ebuild:
+  ppc stable (bug 424293).
+
+  03 Jul 2012; Agostino Sarubbo <ago@gentoo.org> xmlc-2.3.1-r1.ebuild:
+  Stable for amd64, wrt bug #424293
+
+  02 Jul 2012; Jeff Horelick <jdhore@gentoo.org> xmlc-2.3.1-r1.ebuild:
+  marked x86 per bug 424293
+
+*xmlc-2.3.1-r1 (01 Jul 2012)
+
+  01 Jul 2012; Ralph Sennhauser <sera@gentoo.org> +xmlc-2.3.1-r1.ebuild:
+  Add missing dep on xml-commons-external. #424293
+  Bump servlet-api dep to 2.5.
+
+  24 May 2010; Vlastimil Babka <caster@gentoo.org> -xmlc-2.3.ebuild,
+  -files/xmlc-2.3-build.xml.patch:
+  Remove old.
+
+  22 May 2010; Kenneth Prugh <ken69267@gentoo.org> xmlc-2.3.1.ebuild:
+  amd64 stable, bug #308239
+
+  13 May 2010; Joseph Jezak <josejx@gentoo.org> xmlc-2.3.1.ebuild:
+  Marked ppc stable for bug #308239.
+
+  31 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> xmlc-2.3.1.ebuild:
+  x86 stable wrt bug #308239
+
+  07 Mar 2010; Petteri Räty <betelgeuse@gentoo.org> xmlc-2.3.1.ebuild:
+  Fix documentation installation for bug #305573 and migrate to EAPI 2.
+
+*xmlc-2.3.1 (31 Jan 2009)
+
+  31 Jan 2009; Serkan Kaba <serkan@gentoo.org> +xmlc-2.3.1.ebuild:
+  Version bump and add missing dependency to ant-core.
+
+  27 Jul 2008; Petteri Räty <betelgeuse@gentoo.org> -xmlc-2.2.5.ebuild,
+  -xmlc-2.2.5-r1.ebuild:
+  Remove generation 1 ebuilds.
+
+  27 Jul 2008; nixnut <nixnut@gentoo.org> xmlc-2.3.ebuild:
+  Stable on ppc wrt bug 212664
+
+  23 May 2008; Kenneth Prugh <ken69267@gentoo.org> xmlc-2.3.ebuild:
+  amd64 stable, bug #212664
+
+  15 Mar 2008; nixnut <nixnut@gentoo.org> xmlc-2.3.ebuild:
+  Added ~ppc wrt bug 168655
+
+  09 Mar 2008; Markus Meier <maekke@gentoo.org> xmlc-2.3.ebuild:
+  x86 stable, bug #212664
+
+*xmlc-2.3 (02 Feb 2008)
+
+  02 Feb 2008; Vlastimil Babka <caster@gentoo.org>
+  +files/xmlc-2.3-build.xml.patch, +xmlc-2.3.ebuild:
+  Version bump and migration to gen-2 eclasses, bug #168655. Dropped ppc due
+  to nekohtml dep.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  05 Jan 2007; Vlastimil Babka <caster@gentoo.org> xmlc-2.2.5-r1.ebuild:
+  Convert einfo to elog.
+
+  05 Oct 2006; Gustavo Zacarias <gustavoz@gentoo.org> xmlc-2.2.5.ebuild:
+  Dropping sparc keywords, see #96229
+
+*xmlc-2.2.5-r1 (30 Dec 2005)
+
+  30 Dec 2005; Petteri Räty <betelgeuse@gentoo.org> metadata.xml,
+  +xmlc-2.2.5-r1.ebuild:
+  Does not use packed jars any more and does not install any classes from
+  dependencies. Resolves bug #98865.
+
+*xmlc-2.2.5 (16 Apr 2005)
+
+  16 Apr 2005; Chris Aniszczyk <zx@gentoo.org> +metadata.xml,
+  +xmlc-2.2.5.ebuild:
+  Initial Import. Closes #64427. Thanks Fredrik Andersson <krueger@shell.linux.se>

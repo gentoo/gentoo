@@ -1,0 +1,150 @@
+From 44e303d998c72d5d502705895a536b3657a7c4c5 Mon Sep 17 00:00:00 2001
+Message-Id: <44e303d998c72d5d502705895a536b3657a7c4c5.1323790511.git.jlec@gentoo.org>
+From: Justin Lecher <jlec@gentoo.org>
+Date: Tue, 13 Dec 2011 16:10:43 +0100
+Subject: [PATCH] 0.9.0 Makefile.patch
+
+Conflicts:
+
+	Makefile_LINUX_gcc42
+---
+ Makefile_LINUX_gcc42 |   63 ++++++++++++++++++++++++++-----------------------
+ 1 files changed, 33 insertions(+), 30 deletions(-)
+
+diff --git a/Makefile_LINUX_gcc42 b/Makefile_LINUX_gcc42
+index a74be5f..1cfb066 100644
+--- a/Makefile_LINUX_gcc42
++++ b/Makefile_LINUX_gcc42
+@@ -250,7 +250,10 @@
+ 
+ 
+ # Version string
+-VERSION = 0.9.2
++MAJOR = 0
++MINOR = 9
++MICRO = 2
++VERSION = ${MAJOR}.${MINOR}.${MICRO}
+ 
+ 
+ #
+@@ -290,7 +293,7 @@ SHAR	= /usr/bin/shar
+ #
+ # Program to use to create archives
+ #
+-AR	= /usr/bin/ar
++AR	= ar
+ 
+ #
+ # Program to use to add an index to an archive
+@@ -300,13 +303,13 @@ RANLIB  = /usr/bin/ranlib
+ #
+ # Program to use to decompress a data file
+ #
+-DECOMPRESS = /usr/bin/bunzip2
++DECOMPRESS = bunzip2
+ 
+ 
+ #
+ # Program to use to compress a data file
+ #
+-COMPRESS = /usr/bin/bzip2
++COMPRESS = bzip2
+ 
+ #
+ # Program to use to generate a signature
+@@ -509,21 +512,18 @@ SOURCE   =  $(SRC)/cbf.c               \
+ 
+ 
+ F90SOURCE = $(SRC)/fcb_atol_wcnt.f90     \
+-			$(SRC)/fcb_ci_strncmparr.f90 \
+-			$(SRC)/fcb_exit_binary.f90   \
+-			$(SRC)/fcb_nblen_array.f90   \
+-			$(SRC)/fcb_next_binary.f90   \
+-			$(SRC)/fcb_open_cifin.f90    \
+-			$(SRC)/fcb_packed.f90        \
+-			$(SRC)/fcb_read_bits.f90     \
+-			$(SRC)/fcb_read_byte.f90     \
+-			$(SRC)/fcb_read_image.f90    \
+-			$(SRC)/fcb_read_line.f90     \
+-			$(SRC)/fcb_read_xds_i2.f90   \
+-			$(SRC)/fcb_skip_whitespace.f90 \
+-			$(EXAMPLES)/test_fcb_read_image.f90 \
+-			$(EXAMPLES)/test_xds_binary.f90
+-			
++		    $(SRC)/fcb_ci_strncmparr.f90 \
++		    $(SRC)/fcb_exit_binary.f90   \
++		    $(SRC)/fcb_nblen_array.f90   \
++		    $(SRC)/fcb_next_binary.f90   \
++		    $(SRC)/fcb_open_cifin.f90    \
++		    $(SRC)/fcb_packed.f90        \
++		    $(SRC)/fcb_read_bits.f90     \
++		    $(SRC)/fcb_read_byte.f90     \
++		    $(SRC)/fcb_read_image.f90    \
++		    $(SRC)/fcb_read_line.f90     \
++		    $(SRC)/fcb_read_xds_i2.f90   \
++		    $(SRC)/fcb_skip_whitespace.f90
+ 		   
+ #
+ # Header files
+@@ -701,7 +701,7 @@ all::	$(BIN)/test_xds_binary   \
+ 		$(BIN)/test_fcb_read_image
+ endif
+ 
+-shared:	$(SOLIB)/libcbf.so $(SOLIB)/libfcb.so $(SOLIB)/libimg.so
++shared:	$(SOLIB)/libcbf.so.${VERSION} $(SOLIB)/libfcb.so.${VERSION} $(SOLIB)/libimg.so.${VERSION}
+ 
+ javawrapper: shared $(JCBF) $(JCBF)/cbflib-$(VERSION).jar $(SOLIB)/libcbf_wrap.so
+ 
+@@ -915,25 +915,27 @@ ifneq ($(RANLIB),)
+ 	$(RANLIB) $@
+ endif
+ 
+-$(SOLIB)/libcbf.so: $(SOURCE) $(HEADERS) $(COMMONDEP) $(SOLIB)
+-	$(CC) $(CFLAGS) $(NOLLFLAG) $(PYCIFRWFLAG) $(SOCFLAGS) $(INCLUDES) $(WARNINGS) -c $(SOURCE)
+-	$(CC) -o $@ *.o $(SOLDFLAGS) $(EXTRALIBS)
+-	rm *.o
++$(SOLIB)/libcbf.so.${VERSION}: $(SOURCE) $(HEADERS) $(COMMONDEP) $(SOLIB)
++	$(CC) $(CFLAGS) $(SOCFLAGS) $(INCLUDES) $(WARNINGS) -c $(SOURCE)
++	mv *.o $(SOLIB)
++	$(CC) $(LDFLAGS) -Wl,-soname,libcbf.so.$(VERSION) $(SOCFLAGS) $(SOLDFLAGS) -o $@ $(SOLIB)/*.o $(EXTRALIBS)
++	ln -sf libcbf.so.$(VERSION) $(SOLIB)/libcbf.so
+ 
+ #
+ # IMG library
+ #
+ $(LIB)/libimg.a: $(EXAMPLES)/img.c $(HEADERS) $(COMMONDEP) $(LIB)
+-	$(CC) $(CFLAGS) $(NOLLFLAG) $(INCLUDES) $(WARNINGS) -c $(EXAMPLES)/img.c
++	$(CC) $(CFLAGS) $(INCLUDES) $(WARNINGS) -c $(EXAMPLES)/img.c
+ 	$(AR) cr $@ img.o
+ ifneq ($(RANLIB),)
+ 	$(RANLIB) $@
+ endif
+ 	rm img.o
+ 	
+-$(SOLIB)/libimg.so: $(SOURCE) $(HEADERS) $(COMMONDEP) $(SOLIB)
+-	$(CC) $(CFLAGS) $(NOLLFLAG) $(SOCFLAGS) $(INCLUDES) $(WARNINGS) -c $(EXAMPLES)/img.c
+-	$(CC) -o $@ img.o $(SOLDFLAGS)
++$(SOLIB)/libimg.so.${VERSION}: $(SOURCE) $(HEADERS) $(COMMONDEP) $(SOLIB)
++	$(CC) $(CFLAGS) $(SOCFLAGS) $(INCLUDES) $(WARNINGS) -c $(EXAMPLES)/img.c
++	$(CC) $(LDFLAGS) -Wl,-soname,libimg.so.$(VERSION) $(SOCFLAGS) $(SOLDFLAGS) -o $@ img.o
++	ln -sf libimg.so.$(VERSION) $(SOLIB)/libimg.so
+ 	rm img.o
+ 
+ #
+@@ -957,10 +959,11 @@ else
+ 	echo "Define F90C to build $(LIB)/libfcb.a"
+ endif
+ 
+-$(SOLIB)/libfcb.so: $(F90SOURCE) $(HEADERS) $(COMMONDEP) $(SOLIB)
++$(SOLIB)/libfcb.so.${VERSION}: $(F90SOURCE) $(HEADERS) $(COMMONDEP) $(SOLIB)
+ ifneq ($(F90C),)
+ 	$(F90C) $(F90FLAGS) $(SOCFLAGS) $(INCLUDES) $(WARNINGS) -c $(F90SOURCE)
+-	$(F90C) $(F90FLAGS) -o $@ *.o $(SOLDFLAGS)
++	$(F90C) $(LDFLAGS) -Wl,-soname,libfcb.so.$(VERSION) $(SOCFLAGS) $(SOLDFLAGS) $(F90FLAGS) -o $@ *.o
++	ln -sf libfcb.so.$(VERSION) $(SOLIB)/libfcb.so
+ 	rm *.o
+ else
+ 	echo "Define F90C to build $(SOLIB)/libfcb.so"
+-- 
+1.7.8
+

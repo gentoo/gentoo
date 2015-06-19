@@ -1,0 +1,10 @@
+# ChangeLog for dev-perl/Net-Trackback
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Trackback/ChangeLog,v 1.1 2014/11/01 21:50:07 dilfridge Exp $
+
+*Net-Trackback-1.10.0 (01 Nov 2014)
+
+  01 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Net-Trackback-1.10.0.ebuild, +metadata.xml:
+  New package, imported from dilfridge overlay
+

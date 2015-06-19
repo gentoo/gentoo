@@ -1,0 +1,97 @@
+# ChangeLog for sys-apps/ucspi-unix
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/ucspi-unix/ChangeLog,v 1.25 2011/07/20 17:34:26 pacho Exp $
+
+  20 Jul 2011; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #118937
+
+*ucspi-unix-0.36-r4 (14 Jan 2010)
+
+  14 Jan 2010; Thilo Bangert <bangert@gentoo.org>
+  +ucspi-unix-0.36-r4.ebuild,
+  +files/ucspi-unix-0.36-fix-parallel-build.patch:
+  EAPI2 - multilib ready - use local var - use newstyle bglibs paths - fix
+  parallel build (bug #297986)
+
+  22 Dec 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  ucspi-unix-0.36-r3.ebuild:
+  Use emake -j1 for build, bug #297986.
+
+  19 Feb 2009; nixnut <nixnut@gentoo.org> ucspi-unix-0.36-r3.ebuild:
+  ppc stable #258261
+
+  15 Feb 2009; Markus Meier <maekke@gentoo.org> ucspi-unix-0.36-r3.ebuild:
+  x86 stable, bug #258261
+
+  12 Feb 2009; Jeremy Olexa <darkside@gentoo.org> ucspi-unix-0.36-r3.ebuild:
+  amd64 stable, bug 258261
+
+*ucspi-unix-0.36-r3 (07 Nov 2008)
+
+  07 Nov 2008; Thilo Bangert <bangert@gentoo.org>
+  +files/ucspi-unix-0.36-include-sys_socket.h.patch,
+  -ucspi-unix-0.36-r1.ebuild, +ucspi-unix-0.36-r3.ebuild:
+  remove old version - fix build with glibc-2.8 (bug #228173)
+
+  28 Mar 2008; Markus Meier <maekke@gentoo.org> ucspi-unix-0.36-r2.ebuild:
+  amd64 stable, bug #207626
+
+  31 Jan 2008; Raúl Porcel <armin76@gentoo.org> ucspi-unix-0.36-r2.ebuild:
+  sparc/x86 stable wrt #207626
+
+  31 Jan 2008; nixnut <nixnut@gentoo.org> ucspi-unix-0.36-r2.ebuild:
+  Stable on ppc wrt bug 207626
+
+  26 Jan 2008; Thilo Bangert <bangert@gentoo.org> ucspi-unix-0.36-r2.ebuild:
+  fix quoting - remove ChangeLog from dodoc
+
+  26 Feb 2007; Thilo Bangert <bangert@gentoo.org> ucspi-unix-0.36-r1.ebuild,
+  ucspi-unix-0.36-r2.ebuild:
+  fix ROOT misuse
+
+*ucspi-unix-0.36-r2 (11 Jun 2006)
+
+  11 Jun 2006; Thilo Bangert <bangert@gentoo.org> metadata.xml,
+  +ucspi-unix-0.36-r2.ebuild:
+  fix SRC_URI - use SO_PEERCRED on Linux
+  honor LDFLAGS - add longdesc - add maintainer
+  depend on new style bglibs
+
+  17 Oct 2004; David Holm <dholm@gentoo.org> ucspi-unix-0.36-r1.ebuild:
+  Added to ~ppc.
+
+  03 Oct 2004; Jason Wever <weeve@gentoo.org> ucspi-unix-0.36-r1.ebuild:
+  Stable on sparc.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> ucspi-unix-0.36-r1.ebuild,
+  ucspi-unix-0.36.ebuild:
+  Add inherit eutils
+
+*ucspi-unix-0.36-r1 (07 Jan 2004)
+
+  07 Jan 2004; Robin H. Johnson <robbat2@gentoo.org> ucspi-unix-0.34.ebuild,
+  ucspi-unix-0.36-r1.ebuild, ucspi-unix-0.36.ebuild:
+  fix copyright headers and correct accept keywords tree stuff
+
+  26 Dec 2003; Jason Wever <weeve@gentoo.org> ucspi-unix-0.34.ebuild,
+  ucspi-unix-0.36.ebuild, files/ucspi-unix-gentoo-head.patch:
+  Added ~sparc keyword and a patch for 0.36 to fix the change in head syntax.
+
+*ucspi-unix-0.36 (23 Apr 2003)
+
+  23 Apr 2003; Seth Chandler <sethbc@gentoo.org>; ucspi-unix-0.36.ebuild:
+  version bump
+
+  13 Mar 2002; Thilo Bangert <bangert@gentoo.org> ucspi-unix-0.34.ebuild:
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> ucspi-unix-0.34.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+  
+  SRC_URI fixor
+
+
+*ucspi-unix-0.34 (13 Mar 2002)
+
+  13 Mar 2002; Thilo Bangert <thilo.bangert@gmx.net> ChangeLog:
+
+  initial release

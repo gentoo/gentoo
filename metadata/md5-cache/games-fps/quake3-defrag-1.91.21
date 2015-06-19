@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Quake III Defrag - Trickjumping challenges for Quake III
+EAPI=2
+HOMEPAGE=http://cggdev.org/
+IUSE=dedicated opengl dedicated opengl
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=freedist
+RDEPEND=games-misc/games-envd dedicated? ( || ( games-fps/quake3[dedicated] games-fps/quake3-bin[dedicated] ) ) opengl? ( || ( || ( games-fps/quake3[opengl] games-fps/quake3[-dedicated] ) || ( games-fps/quake3-bin[opengl] games-fps/quake3-bin[-dedicated] ) ) ) !dedicated? ( !opengl? ( || ( || ( games-fps/quake3[opengl] games-fps/quake3[-dedicated] ) || ( games-fps/quake3-bin[opengl] games-fps/quake3-bin[-dedicated] ) ) ) )
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=http://q3defrag.org/files/defrag/defrag_1.91.21.zip http://www.german-defrag.de/files/defrag/defragcpmpak01.zip http://www.german-defrag.de/files/defrag/df-extras002.zip http://www.german-defrag.de/files/defrag/defragpak1.zip http://www.german-defrag.de/files/defrag/defragpak2.zip http://www.german-defrag.de/files/defrag/defragpak3.zip http://www.german-defrag.de/files/defrag/defragpak4.zip http://www.german-defrag.de/files/defrag/defragpak5.zip http://www.german-defrag.de/files/defrag/defragpak7.zip http://www.german-defrag.de/files/defrag/defragpak8.zip http://www.german-defrag.de/files/defrag/defragpak9.zip http://www.german-defrag.de/files/defrag/defragpak10.zip http://www.german-defrag.de/files/defrag/defragpak11.zip
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	eutils	9fb270e417e0e83d64ca52586c4a79de	games	1ad3205dbf62a2c98249f2f59b0a2d39	games-mods	9d44c6f45289592ca9cf29d77424a048	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=a81cc59569a2b214029e6a81195d1d8b

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=sys-libs/slang-2.2.4 >=sys-libs/ncurses-5.7-r7 virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=a lightweight programmers editor
+EAPI=5
+HOMEPAGE=http://packages.qa.debian.org/l/lpe.html
+IUSE=nls
+KEYWORDS=amd64 ppc sparc x86 ~x86-linux
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/slang-2.2.4 >=sys-libs/ncurses-5.7-r7
+SLOT=0
+SRC_URI=mirror://debian/pool/main/l/lpe/lpe_1.2.6.13-0.1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=4519018d8604967b0b8c151bdd5b0fa0

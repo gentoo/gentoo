@@ -1,0 +1,32 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/daemontools/files/svscan.init-0.76-r7,v 1.1 2008/12/07 06:59:37 robbat2 Exp $
+
+depend() {
+	use net
+	before ntpd ntp-client spamd apache apache2
+}
+
+start() {
+	ebegin "Starting service scan"
+	setsid start-stop-daemon --start --exec /usr/bin/svscan \
+		--background --make-pidfile \
+		--pidfile /var/run/svscan.pid -- /service
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping service scan"
+	start-stop-daemon --stop --exec /usr/bin/svscan \
+		--pidfile /var/run/svscan.pid
+	eend $?
+
+	ebegin "Stopping service scan services"
+	svc -dx /service/* 2>/dev/null
+	eend $?
+
+	ebegin "Stopping service scan logging"
+	svc -dx /service/*/log 2>/dev/null
+	eend $?
+}

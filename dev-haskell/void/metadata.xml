@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<longdescription>
+		A Haskell 98 logically uninhabited data type. Used to indicate that a given term should not exist.
+	</longdescription>
+	<use>
+		<flag name="safe">dissable effective but unsafe coersions</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ekmett/void</remote-id>
+	</upstream>
+</pkgmetadata>

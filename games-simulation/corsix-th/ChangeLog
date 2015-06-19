@@ -1,0 +1,21 @@
+# ChangeLog for games-simulation/corsix-th
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-simulation/corsix-th/ChangeLog,v 1.3 2014/10/12 22:30:19 hasufell Exp $
+
+*corsix-th-0.30 (12 Oct 2014)
+
+  12 Oct 2014; Julian Ospald <hasufell@gentoo.org> +corsix-th-0.30.ebuild,
+  +files/corsix-th-0.30-install.patch, metadata.xml:
+  version bump
+
+  28 Jul 2013; Angelo Arrifano <miknix@gentoo.org> corsix-th-0.21-r1.ebuild,
+  metadata.xml:
+  Update ebuild to EAPI5 and a few other improvements based on suggestions by
+  Julian Ospald (hasufell).
+
+*corsix-th-0.21-r1 (27 Jul 2013)
+
+  27 Jul 2013; Angelo Arrifano <miknix@gentoo.org> +corsix-th-0.21-r1.ebuild,
+  +files/corsix-th-0.21-naming.patch, +files/corsix-th-nodoc.patch:
+  Use user submitted ebuild, #352669
+

@@ -1,0 +1,91 @@
+# ChangeLog for dev-perl/Config-Crontab
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Config-Crontab/ChangeLog,v 1.21 2015/01/05 21:31:29 zlogene Exp $
+
+  05 Jan 2015; Mikle Kolyada <zlogene@gentoo.org> Config-Crontab-1.400.0.ebuild:
+  Mark stable
+
+*Config-Crontab-1.330.0-r1 (22 Aug 2014)
+
+  22 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Config-Crontab-1.330.0-r1.ebuild, -Config-Crontab-1.330.0.ebuild:
+  bumped current stable ebuild(s) EAPI to 5; committed directly to stable as no
+  other changes present and revbump helps stable systems to keep from dieing on
+  perl-5.18 upgrade
+
+*Config-Crontab-1.400.0 (19 Feb 2014)
+
+  19 Feb 2014; Tim Harder <radhermit@gentoo.org>
+  +Config-Crontab-1.400.0.ebuild:
+  Version bump.
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org> -Config-Crontab-1.20.ebuild:
+  Cleanup
+
+  12 Feb 2012; Raúl Porcel <armin76@gentoo.org> Config-Crontab-1.20.ebuild,
+  Config-Crontab-1.330.0.ebuild:
+  Drop ia64 keywords. x86 stable wrt #396917
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org> Config-Crontab-1.330.0.ebuild:
+  Stable for amd64, wrt bug #396917
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org> -Config-Crontab-1.30.ebuild:
+  Cleanup
+
+*Config-Crontab-1.330.0 (12 Apr 2011)
+
+  12 Apr 2011; Torsten Veller <tove@gentoo.org> +Config-Crontab-1.330.0.ebuild:
+  Version bump
+
+  02 May 2009; Torsten Veller <tove@gentoo.org> -Config-Crontab-1.21.ebuild:
+  Cleanup
+
+*Config-Crontab-1.30 (28 Oct 2008)
+
+  28 Oct 2008; Torsten Veller <tove@gentoo.org> +Config-Crontab-1.30.ebuild:
+  Version bump
+
+*Config-Crontab-1.21 (30 Sep 2008)
+
+  30 Sep 2008; Torsten Veller <tove@gentoo.org> +Config-Crontab-1.21.ebuild:
+  Version bump
+
+  27 Dec 2007; Andrej Kacian <ticho@gentoo.org> Config-Crontab-1.20.ebuild:
+  Stable on x86.
+
+  15 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  Config-Crontab-1.20.ebuild:
+  Stable on ia64.
+
+  08 Oct 2006; Michael Cummings <mcummings@gentoo.org>
+  -Config-Crontab-1.11.ebuild, Config-Crontab-1.20.ebuild:
+  Cleaning up
+
+  07 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Config-Crontab-1.20.ebuild:
+  Marking amd64 stable
+
+  05 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  Config-Crontab-1.11.ebuild, Config-Crontab-1.20.ebuild:
+  Adding perl dep; fixed DEPEND
+
+*Config-Crontab-1.20 (24 Apr 2006)
+
+  24 Apr 2006; <mcummings@gentoo.org> +Config-Crontab-1.20.ebuild:
+  Version bump
+
+  20 Apr 2006; Thomas Cort <tcort@gentoo.org> Config-Crontab-1.11.ebuild:
+  Added ~amd64 keyword wrt Bug #126325.
+
+  30 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  Config-Crontab-1.11.ebuild:
+  Mark 1.11 ~ia64
+
+*Config-Crontab-1.11 (07 Mar 2006)
+
+  07 Mar 2006; <mcumming@gentoo.org> +metadata.xml,
+  +Config-Crontab-1.11.ebuild:
+  Bug 124981, dep for media-tv/kalva

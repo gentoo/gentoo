@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>ml</herd>
+  <longdescription lang="en">
+	   This library defines a syntax extension for OCaml using Camlp4 that
+	   can be used to define first class values representing record fields,
+	   and additional routines, to get and set record fields, iterate and fold
+	   over all fields of a record and create new record values.
+  </longdescription>
+</pkgmetadata>

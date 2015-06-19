@@ -1,0 +1,15 @@
+# ChangeLog for net-dialup/freeradius-client
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/freeradius-client/ChangeLog,v 1.3 2014/01/16 17:48:07 jer Exp $
+
+  16 Jan 2014; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Spelling.
+
+  06 Apr 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #63588
+
+*freeradius-client-1.1.6 (03 Mar 2009)
+
+  03 Mar 2009; Alin Năstac <mrness@gentoo.org> +metadata.xml,
+  +freeradius-client-1.1.6.ebuild:
+  Initial import from bug 234098, thanks to MATSUU Takuto <matsuu@gentoo.org>.

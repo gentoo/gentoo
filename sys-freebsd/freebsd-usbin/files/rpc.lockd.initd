@@ -1,0 +1,20 @@
+#!/sbin/runscript
+# Copyright 1999-2008 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+        need net rpcbind rpc.statd
+}
+
+start() {
+        ebegin "Starting NFS lockd"
+        start-stop-daemon --start --quiet --exec \
+                /usr/sbin/rpc.lockd -- $rpclockdopts
+        eend $? "Error starting NFS lockd"
+}
+
+stop() {
+        ebegin "Stopping NFS lockd"
+        start-stop-daemon --stop --quiet --exec /usr/sbin/rpc.lockd
+        eend $? "Error stopping NFS lockd"
+}

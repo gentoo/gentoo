@@ -1,0 +1,19 @@
+--- src/snapshot.c
++++ src/snapshot.c
+@@ -26,6 +26,7 @@
+ #include "lightspeed.h"
+ 
+ #ifdef HAVE_LIBPNG
++#include <zlib.h>
+ #include <png.h>
+ static int write_png( int message, const void *data );
+ #endif
+@@ -305,7 +306,7 @@
+ 			return -1;
+ 		png_write_s = png_create_write_struct( PNG_LIBPNG_VER_STRING, NULL, NULL, NULL );
+ 		png_info_s = png_create_info_struct( png_write_s );
+-		if (setjmp( png_write_s->jmpbuf )) {
++		if (setjmp( png_jmpbuf( png_write_s ) )) {
+ 			/* Error writing file */
+ 			png_destroy_write_struct( &png_write_s, &png_info_s );
+ 			fclose( png_fp );

@@ -1,0 +1,24 @@
+# ChangeLog for x11-libs/libyui-qt
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libyui-qt/ChangeLog,v 1.5 2014/09/23 17:14:47 pinkbyte Exp $
+
+*libyui-qt-2.44.0 (23 Sep 2014)
+
+  23 Sep 2014; Sergey Popov <pinkbyte@gentoo.org> -libyui-qt-2.21.1.ebuild,
+  +libyui-qt-2.44.0.ebuild:
+  QA: Version bump, drop old, wrt bug #470860
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> libyui-qt-2.21.1.ebuild:
+  Move Qt dependencies to the new category
+
+  03 Aug 2012; Michal Hrusecky <miska@gentoo.org> libyui-qt-2.21.1.ebuild:
+  Dropping unneeded dependency bug#383421
+
+  26 Jul 2012; Johannes Huber <johu@gentoo.org> libyui-qt-2.21.1.ebuild:
+  Add missing slot dependencies on Qt.
+
+*libyui-qt-2.21.1 (15 Aug 2011)
+
+  15 Aug 2011; Michal Hrusecky <miska@gentoo.org> +libyui-qt-2.21.1.ebuild,
+  +metadata.xml:
+  New ebuild for libyui-qt. Ebuild written by me.

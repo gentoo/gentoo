@@ -1,0 +1,15 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/anacron/files/anacron.rc6,v 1.1 2005/03/03 17:32:37 ciaranm Exp $
+
+depend() {
+	use logger
+	need clock hostname 
+}
+
+start() {
+	ebegin "Running anacron"
+	/usr/sbin/anacron -s >>/var/log/cron.log 2>&1
+	eend $?
+}

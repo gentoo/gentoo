@@ -1,0 +1,12 @@
+DEFINED_PHASES=setup
+DEPEND=virtual/fortran
+DESCRIPTION=Protein X-ray crystallography toolkit -- meta package
+EAPI=4
+HOMEPAGE=http://www.ccp4.ac.uk/
+IUSE=X arpwarp +balbes
+KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux
+LICENSE=ccp4
+RDEPEND=~sci-chemistry/ccp4-apps-6.1.3[X?] !<=sci-chemistry/ccp4-apps-6.1.3-r2 >=sci-chemistry/molrep-11.0.00-r1 >=sci-chemistry/mosflm-7.0.6-r2 sci-chemistry/mrbump[X?] >=sci-chemistry/oasis-4.0-r1 >=sci-chemistry/pdb-extract-3.004-r2 >=sci-chemistry/refmac-5.5.0110-r1 >=sci-chemistry/scala-3.3.18-r1 >=sci-chemistry/sfcheck-7.03.18-r1 sci-chemistry/xia2 arpwarp? ( sci-chemistry/arp-warp-bin ) balbes? ( sci-chemistry/balbes ) X? ( ~sci-chemistry/ccp4i-6.1.3 sci-chemistry/imosflm sci-chemistry/pymol sci-chemistry/rasmol ) virtual/fortran
+SLOT=0
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	fortran-2	db8710b355fc5598015c4bc3aad3bdb0	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=f33c8c18ab5afdfd7ef02385e0d01ffe

@@ -1,0 +1,45 @@
+From 161e7cf6d2f0f18e9b44ef9ce960efb07c210c79 Mon Sep 17 00:00:00 2001
+From: Christopher Harvey <chris@basementcode.com>
+Date: Sun, 7 Oct 2012 15:41:00 -0400
+Subject: [PATCH] Fix LilyPond tremolo dotted chord export
+
+For example, NtEd would export "< a f' >4:8.", but the correct syntax
+is "< a f' >4.:8"
+---
+ chordorrest.cpp |   13 ++++++-------
+ 1 files changed, 6 insertions(+), 7 deletions(-)
+
+diff --git a/chordorrest.cpp b/chordorrest.cpp
+index cd93dab..9367f32 100644
+--- a/chordorrest.cpp
++++ b/chordorrest.cpp
+@@ -3821,6 +3821,10 @@ void NedChordOrRest::exportLilyPond(FILE *fp, int *last_line, unsigned int *midi
+ 				fprintf(fp, " >");
+ 			}
+ 			if (duration != *midi_len || (m_status & TREMOLO_MASK)) {
++				sprintf(Str, "%d", WHOLE_NOTE / m_length);
++				for (i = 0; i < m_dot_count; i++) {
++					strcat(Str, ".");
++				}
+ 				if (m_status & TREMOLO_MASK) {
+ 					switch (m_status & TREMOLO_MASK) {
+ 						case STAT_TREMOLO1: tremolo =  8; break;
+@@ -3828,13 +3832,8 @@ void NedChordOrRest::exportLilyPond(FILE *fp, int *last_line, unsigned int *midi
+ 						case STAT_TREMOLO3: tremolo = 32; break;
+ 						case STAT_TREMOLO4: tremolo = 64; break;
+ 					}
+-					sprintf(Str, "%d:%d", WHOLE_NOTE / m_length, tremolo);
+-				}
+-				else {
+-					sprintf(Str, "%d", WHOLE_NOTE / m_length);
+-				}
+-				for (i = 0; i < m_dot_count; i++) {
+-					strcat(Str, ".");
++					sprintf(Str2, ":%d", tremolo);
++					strcat(Str, &Str2[0]);
+ 				}
+ 				force_length = true;
+ 			}
+-- 
+1.7.8.6
+

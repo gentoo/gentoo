@@ -1,0 +1,36 @@
+diff -urN 1/glib/glue/list.c 2/glib/glue/list.c
+--- 1/glib/glue/list.c	2009-01-07 10:54:06.000000000 -0600
++++ 2/glib/glue/list.c	2012-02-14 20:50:32.116877699 -0600
+@@ -20,7 +20,7 @@
+  */
+ 
+ 
+-#include <glib/glist.h>
++#include <glib.h>
+ 
+ /* Forward declarations */
+ gpointer gtksharp_list_get_data (GList *l);
+diff -urN 1/glib/glue/slist.c 2/glib/glue/slist.c
+--- 1/glib/glue/slist.c	2009-01-07 10:54:06.000000000 -0600
++++ 2/glib/glue/slist.c	2012-02-14 20:50:43.721718553 -0600
+@@ -20,7 +20,7 @@
+  */
+ 
+ 
+-#include <glib/gslist.h>
++#include <glib.h>
+ 
+ /* Forward declarations */
+ gpointer gtksharp_slist_get_data (GSList *l);
+diff -urN 1/glib/glue/thread.c 2/glib/glue/thread.c
+--- 1/glib/glue/thread.c	2009-01-07 10:54:06.000000000 -0600
++++ 2/glib/glue/thread.c	2012-02-14 20:50:51.922605985 -0600
+@@ -20,7 +20,7 @@
+  */
+ 
+ 
+-#include <glib/gthread.h>
++#include <glib.h>
+ 
+ gboolean glibsharp_g_thread_supported (void);
+ 

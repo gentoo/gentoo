@@ -1,0 +1,17 @@
+--- parity.runtime/diagnose.c.orig	2012-09-28 17:12:54 +0200
++++ parity.runtime/diagnose.c	2012-09-28 17:11:14 +0200
+@@ -745,9 +745,11 @@
+ 		CloseHandle(hCore);
+ 	}
+ 
+-	// abort on fatal exceptions
+-	TerminateProcess(GetCurrentProcess(), 1);
+-	ExitProcess(1);
++	if (!IsDebuggerPresent()) {
++		// abort on fatal exceptions
++		TerminateProcess(GetCurrentProcess(), 1);
++		ExitProcess(1);
++	}
+ 	return EXCEPTION_CONTINUE_SEARCH;
+ }
+ 

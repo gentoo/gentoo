@@ -1,0 +1,17 @@
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Thu Aug  1 02:58:04 UTC 2013
+Subject: remove bundled setuptools
+
+--- allmydata-tahoe-1.10.0/setup.py
++++ allmydata-tahoe-1.10.0/setup.py
+@@ -70,9 +70,7 @@
+ 
+ __requires__ = install_requires[:]
+ 
+-egg = os.path.realpath(glob.glob('setuptools-*.egg')[0])
+-sys.path.insert(0, egg)
+-import setuptools; setuptools.bootstrap_install_from = egg
++import setuptools
+ 
+ from setuptools import setup
+ from setuptools.command import sdist

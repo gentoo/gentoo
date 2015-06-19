@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/uftp/files/uftpd.init,v 1.1 2012/08/10 15:16:26 maksbotan Exp $
+
+PROGRAM=/usr/sbin/uftpd
+PIDFILE=/var/run/uftpd.pid
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting uftpd"
+	start-stop-daemon --start --exec ${PROGRAM} -- \
+		-L /var/log/uftpd.log -P ${PIDFILE} -D ${UFTPD_DIR} ${UFTPD_OPTS}
+	eend $? "Failed to start uftpd"
+}
+
+stop() {
+	ebegin "Stopping uftpd"
+	start-stop-daemon --stop --exec ${PROGRAM} -p ${PIDFILE}
+	eend $? "Failed to stop uftpd"
+}

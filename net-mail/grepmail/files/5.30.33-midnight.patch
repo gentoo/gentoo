@@ -1,0 +1,17 @@
+Description: Fix bug with midnight
+Author: Manuel Prinz <manuel@debian.org>
+Last-Update: 2010-02-22
+Bug-Debian: http://bugs.debian.org/559588
+Bug-Gentoo: https://bugs.gentoo.org/355067
+
+--- grepmail/grepmail
++++ grepmail/grepmail
+@@ -397,7 +397,7 @@
+     if (eval 'require Date::Manip')
+     {
+       my ($version_number) = $Date::Manip::VERSION =~ /^(\d+\.\d+)/;
+-      Date::Manip::Date_Init("TodayIsMidnight=1") if $version_number >= 5.43;
++      Date::Manip::Date_Init("TodayIsMidnight=1") if $version_number >= 5.43 and $version_number < 6;
+     }
+   }
+ 

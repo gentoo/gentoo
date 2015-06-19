@@ -1,0 +1,222 @@
+# ChangeLog for net-misc/bird
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/bird/ChangeLog,v 1.31 2015/05/14 13:01:52 chainsaw Exp $
+
+*bird-1.5.0 (14 May 2015)
+
+  14 May 2015; Tony Vroon <chainsaw@gentoo.org> +bird-1.5.0.ebuild:
+  Version bump, as requested by Moyaze Shivji in the LINX technology team. This
+  addresses a BGP bug where TX was postponed unreasonably long and hold timers
+  could expire.
+
+*bird-1.4.5 (13 Oct 2014)
+
+  13 Oct 2014; Tony Vroon <chainsaw@gentoo.org> +bird-1.4.5.ebuild:
+  Adds support for "show route noexport", a port option for BGP sessions,
+  better constant handling in set literals and better rate filtering of log
+  messages. There is also mention of several minor bugfixes. As requested by
+  Moyaze Shivji in the LINX engineering team.
+
+*bird-1.4.4 (23 Jul 2014)
+
+  23 Jul 2014; Tony Vroon <chainsaw@gentoo.org> +bird-1.4.4.ebuild:
+  Improved OSPF multipath support and an important BGP bugfix. Default router
+  preference for RAdv.
+
+*bird-1.4.3 (15 Apr 2014)
+
+  15 Apr 2014; Tony Vroon <chainsaw@gentoo.org> -bird-1.2.4.ebuild,
+  -bird-1.3.0.ebuild, -bird-1.3.1.ebuild, -bird-1.3.2.ebuild,
+  -bird-1.3.6.ebuild, -bird-1.3.8-r2.ebuild, -bird-1.3.10.ebuild, 
+  -bird-1.3.11.ebuild, -bird-1.4.0.ebuild, +bird-1.4.3.ebuild:
+  Stability fixes for BFD support, BGP add-path support and BGP graceful
+  restart (RFC 4724). This is a new stable candidate. Thanks to Ondřej Surý.
+  Removing older versions.
+
+*bird-1.4.0 (14 Jan 2014)
+
+  14 Jan 2014; Tony Vroon <chainsaw@gentoo.org> +bird-1.4.0.ebuild:
+  Version bump, as requested by Moyaze Shivji in the LINX engineering team.
+
+*bird-1.3.11 (14 Aug 2013)
+*bird-1.3.10 (14 Aug 2013)
+
+  14 Aug 2013; Tony Vroon <chainsaw@gentoo.org> +bird-1.3.10.ebuild,
+  +bird-1.3.11.ebuild:
+  Version bump to 3.11 as requested by Moyaze Shivji in the LINX engineering
+  team. Also added intermediate 3.10 version.
+
+*bird-1.3.9 (15 Jan 2013)
+
+  15 Jan 2013; Tony Vroon <chainsaw@gentoo.org> +bird-1.3.9.ebuild:
+  Version bump to 1.3.9 which offers several filter improvements, new
+  reconfiguration options and DragonFly BSD support. As requested by LINX
+  network engineer Moyaze Shivji.
+
+*bird-1.3.8-r2 (15 Aug 2012)
+
+  15 Aug 2012; Tony Vroon <chainsaw@gentoo.org> -files/1.3.8-v4-v6-build.patch,
+  -bird-1.3.8.ebuild, -bird-1.3.8-r1.ebuild, +bird-1.3.8-r2.ebuild:
+  Install IPv6 daemon in sbin, not bin. Remove earlier 1.3.8 ebuilds in favour
+  of the new approach introduced by Tomáš "scarabeus" Chvátal.
+
+*bird-1.3.8-r1 (14 Aug 2012)
+
+  14 Aug 2012; Tomáš Chvátal <scarabeus@gentoo.org> +bird-1.3.8-r1.ebuild:
+  Bump eapi on bird to latest as dicussed on council meeting. Acked by chainsaw.
+
+*bird-1.3.8 (13 Aug 2012)
+
+  13 Aug 2012; Tony Vroon <chainsaw@gentoo.org> +files/1.3.8-v4-v6-build.patch,
+  +files/initd-v4-bird-1.3.8, +files/initd-v6-bird-1.3.8, +bird-1.3.8.ebuild:
+  Version bump, as requested by Moyaze Shivji in the LINX engineering
+  department. Rediffed "almost clean" build system patch, addressed OpenRC
+  deprecation warning in init scripts.
+
+*bird-1.3.6 (23 Jan 2012)
+
+  23 Jan 2012; Tony Vroon <chainsaw@gentoo.org> +bird-1.3.6.ebuild:
+  Version bump, as requested by Tim Preston in the LINX engineering team.
+
+*bird-1.3.2 (07 Nov 2011)
+
+  07 Nov 2011; Tony Vroon <chainsaw@gentoo.org> +files/1.3.2-v4-v6-build.patch,
+  +files/initd-v4-bird-1.3.2, +files/initd-v6-bird-1.3.2, +bird-1.3.2.ebuild:
+  Version bump, as requested by Moyaze Shivji of the LINX engineering
+  department.
+
+*bird-1.3.1 (02 May 2011)
+
+  02 May 2011; Tony Vroon <chainsaw@gentoo.org> +files/1.3.1-v4-v6-build.patch,
+  +files/initd-v4-bird-1.3.1, +files/initd-v6-bird-1.3.1, +bird-1.3.1.ebuild:
+  Improved support for multi-exit discriminator (MED) through the MED metric
+  attribute. Adds kernel route attributes krt_prefsrc & krt_realm. It is now
+  possible to use constants from /etc/iproute2/rt_* files. Several minor
+  bugfixes.
+
+*bird-1.3.0 (31 Mar 2011)
+
+  31 Mar 2011; Tony Vroon <chainsaw@gentoo.org> +files/1.3.0-v4-v6-build.patch,
+  -bird-1.2.3-r1.ebuild, +files/initd-v4-bird-1.3.0,
+  +files/initd-v6-bird-1.3.0, +bird-1.3.0.ebuild:
+  New upstream release, adds iBGP, multipath support, layer 2 link state
+  detection, IPv6 RAs and many bugfixes. OSPF now supports point-to-multipoint
+  interfaces. Azamat H. Hackimov has provided completely new initscripts and
+  important socket path fixes, closes bugs #338118 and #338188.
+
+  26 Sep 2010; Markus Meier <maekke@gentoo.org> bird-1.2.4.ebuild:
+  add ~x86, bug #338119
+
+*bird-1.2.4 (06 Sep 2010)
+
+  06 Sep 2010; <chainsaw@gentoo.org> +files/1.2.4-v4-v6-build.patch,
+  +files/initd-v4-bird-1.2.4, +files/initd-v6-bird-1.2.4,
+  +bird-1.2.4.ebuild:
+  Version bump. Now compiles again in full debug mode; closes bug #335790 by
+  Luca Postregna.
+
+*bird-1.2.3-r1 (23 Aug 2010)
+
+  23 Aug 2010; <chainsaw@gentoo.org> -files/1.1.7-nostrip.patch,
+  -files/initd-v4-bird-1.1.7, -files/initd-v6-bird-1.1.7,
+  -bird-1.1.7.ebuild, -files/1.2.2-v4-v6-build.patch,
+  -files/initd-v4-bird-1.2.2, -files/initd-v6-bird-1.2.2,
+  -bird-1.2.2.ebuild, files/initd-v6-bird-1.2.3, -bird-1.2.3.ebuild,
+  +bird-1.2.3-r1.ebuild:
+  Clean up old ebuilds. Actually install a V6 init script and use the
+  correct name.
+
+*bird-1.2.3 (07 Jun 2010)
+
+  07 Jun 2010; <chainsaw@gentoo.org> +files/1.2.3-v4-v6-build.patch,
+  +files/initd-v4-bird-1.2.3, +files/initd-v6-bird-1.2.3,
+  +bird-1.2.3.ebuild:
+  Version bump. The ebuild now properly supports building both IPv4 & IPv6
+  versions, with thanks to Ondrej Filip from upstream. This is a bugfix
+  release, particularly OSPF has received a lot of attention.
+
+*bird-1.2.2 (12 Apr 2010)
+
+  12 Apr 2010; <chainsaw@gentoo.org> -files/1.1.5-nostrip.patch,
+  -files/initd-v6-bird-1.1.5, -bird-1.1.5.ebuild,
+  -files/initd-v4-bird-1.1.6, -files/1.1.6-nostrip.patch,
+  -files/initd-v6-bird-1.1.6, -bird-1.1.6.ebuild,
+  +files/initd-v4-bird-1.2.2, +files/1.2.2-v4-v6-build.patch,
+  -files/initd-v4-bird-1.1.5, +files/initd-v6-bird-1.2.2,
+  +bird-1.2.2.ebuild:
+  New upstream release. Note that the V6 version is not functional, I have
+  contacted upstream and will provide an updated ebuild when possible.
+
+*bird-1.1.7 (20 Dec 2009)
+
+  20 Dec 2009; <chainsaw@gentoo.org> +files/1.1.7-nostrip.patch,
+  +files/initd-v4-bird-1.1.7, +files/initd-v6-bird-1.1.7,
+  +bird-1.1.7.ebuild:
+  Version bump. Now implements BGP route refresh (RFC2918) & route reload
+  command. Major changes & bugfixes in pipe protocol, OSPF link state
+  announcements no longer age prematurely.
+
+*bird-1.1.6 (23 Nov 2009)
+
+  23 Nov 2009; <chainsaw@gentoo.org> -files/1.1.1-nostrip.patch,
+  -files/initd-v6-bird-1.1.1, -bird-1.1.1.ebuild,
+  -files/initd-v4-bird-1.1.2, -files/1.1.2-nostrip.patch,
+  -files/initd-v6-bird-1.1.2, -bird-1.1.2.ebuild,
+  -files/initd-v4-bird-1.1.3, -files/1.1.3-nostrip.patch,
+  -files/initd-v6-bird-1.1.3, -bird-1.1.3.ebuild,
+  -files/initd-v4-bird-1.1.4, -files/1.1.4-nostrip.patch,
+  -files/initd-v6-bird-1.1.4, -bird-1.1.4.ebuild,
+  +files/initd-v4-bird-1.1.6, +files/1.1.6-nostrip.patch,
+  -files/initd-v4-bird-1.1.1, +files/initd-v6-bird-1.1.6,
+  +bird-1.1.6.ebuild:
+  Version bump, implements RFC 5004 (prefer older external routes) as well
+  as several other minor features. Some minor bugfixes as well. Removed
+  older ebuilds.
+
+*bird-1.1.5 (02 Nov 2009)
+
+  02 Nov 2009; <chainsaw@gentoo.org> +files/1.1.5-nostrip.patch,
+  +files/initd-v4-bird-1.1.5, +files/initd-v6-bird-1.1.5,
+  +bird-1.1.5.ebuild:
+  Version bump, increases scalability of the BGP implementation. New
+  accessors for AS path and allows import of kernel onlink routes.
+
+*bird-1.1.4 (02 Oct 2009)
+
+  02 Oct 2009; <chainsaw@gentoo.org> +files/1.1.4-nostrip.patch,
+  files/initd-v6-bird-1.1.3, +files/initd-v4-bird-1.1.4,
+  +files/initd-v6-bird-1.1.4, +bird-1.1.4.ebuild:
+  Version bump with minor bugfixes. Also adds passive BGP support.
+
+*bird-1.1.3 (11 Sep 2009)
+
+  11 Sep 2009; <chainsaw@gentoo.org> +files/1.1.3-nostrip.patch,
+  +files/initd-v4-bird-1.1.3, +files/initd-v6-bird-1.1.3,
+  +bird-1.1.3.ebuild:
+  Version bump, contains a core bugfix and corrects AS2->AS4 conversions.
+
+*bird-1.1.2 (24 Aug 2009)
+
+  24 Aug 2009; <chainsaw@gentoo.org> -files/1.1.0-nostrip.patch,
+  -files/initd-bird-1.1.0, -bird-1.1.0.ebuild, +files/1.1.2-nostrip.patch,
+  +files/initd-v4-bird-1.1.2, +files/initd-v6-bird-1.1.2,
+  +bird-1.1.2.ebuild:
+  New version that allows more kernel routing tables in IPv6 and contains a
+  core bugfix. Removed old ebuild.
+
+*bird-1.1.1 (20 Aug 2009)
+
+  20 Aug 2009; <chainsaw@gentoo.org> +files/1.1.1-nostrip.patch,
+  +files/initd-v4-bird-1.1.1, +files/initd-v6-bird-1.1.1,
+  +bird-1.1.1.ebuild:
+  With thanks to Ondrej Filip, the build system can now handle parallel
+  make. This new release also improves portability and adds more-style
+  paging to the client. The init-scripts have been reworked.
+
+*bird-1.1.0 (22 Jul 2009)
+
+  22 Jul 2009; <chainsaw@gentoo.org> +files/1.1.0-nostrip.patch,
+  +files/initd-bird-1.1.0, +bird-1.1.0.ebuild, +metadata.xml:
+  Resurrected ebuild that was in the tree earlier. With thanks to Chet
+  McNeill <chet@somedec.com> in bug #122823 for an initial ebuild and patch
+  set.

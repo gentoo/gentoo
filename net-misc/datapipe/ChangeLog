@@ -1,0 +1,38 @@
+# ChangeLog for net-misc/datapipe
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/datapipe/ChangeLog,v 1.11 2010/09/18 20:58:49 jer Exp $
+
+*datapipe-1.0-r1 (18 Sep 2010)
+
+  18 Sep 2010; Jeroen Roovers <jer@gentoo.org> -datapipe-1.0.ebuild,
+  +datapipe-1.0-r1.ebuild:
+  Respect CFLAGS (bug #336026).
+
+  14 Sep 2008; <solar@gentoo.org> datapipe-1.0.ebuild:
+  - keyword ~arm/~amd64
+
+  15 Jul 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Assigning to m-needed, as beu is being retired (#66608).
+
+  14 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  11 Dec 2006; Elfyn McBratney <beu@gentoo.org> datapipe-1.0.ebuild:
+  Kill redundant DEPEND.
+
+  30 May 2005; Danny van Dyk <kugelfang@gentoo.org> datapipe-1.0.ebuild:
+  Fixed deprecated usage of gcc.eclass. (BUG #92745)
+
+  03 Sep 2004; David Holm <dholm@gentoo.org> datapipe-1.0.ebuild:
+  Added to ~ppc.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> datapipe-1.0.ebuild:
+  change virtual/glibc to virtual/libc, add IUSE
+
+*datapipe-1.0 (17 Nov 2003)
+
+  17 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  Initial import.  Ebuild submitted by Jonathan Hitchcock <vhata-gentoo@rucus.ru.ac.za> #23523.

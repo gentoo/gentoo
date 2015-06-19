@@ -1,0 +1,16 @@
+# ChangeLog for dev-java/annogen
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/annogen/ChangeLog,v 1.3 2014/08/10 20:06:46 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> annogen-0.1.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  08 Jul 2014; Johann Schmitz <ercpe@gentoo.org> annogen-0.1.0.ebuild:
+  Fixed dependency to qdox (bug #515972); minor qa things
+
+*annogen-0.1.0 (17 Sep 2013)
+
+  17 Sep 2013; Tom Wijsman <TomWij@gentoo.org> +annogen-0.1.0.ebuild,
+  +metadata.xml:
+  New ebuild for dev-java/annogen; a tool which helps you work with JSR175
+  annotations. Imported from dmol overlay, for bug #173129.

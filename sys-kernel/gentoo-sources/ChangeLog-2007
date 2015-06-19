@@ -1,0 +1,2591 @@
+# ChangeLog for sys-kernel/gentoo-sources
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/gentoo-sources/ChangeLog-2007,v 1.1 2013/06/29 23:14:17 dilfridge Exp $
+
+  23 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  gentoo-sources-2.6.22-r10.ebuild:
+  alpha/ia64/sparc/x86 stable
+
+*gentoo-sources-2.6.23-r5 (21 Dec 2007)
+
+  21 Dec 2007; Mike Pagano <mpagano@gentoo.org>
+  +gentoo-sources-2.6.23-r5.ebuild:
+  Adding linux-2.6.23.11 and linux-2.6.23.12.
+
+*gentoo-sources-2.6.23-r4 (15 Dec 2007)
+
+  15 Dec 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.23-r4.ebuild:
+  Update to Linux 2.6.23.10. Fix flood of ACPI processor events. Another Nikon
+  D200 camera fix. Send uevents for platform devices.
+
+  12 Dec 2007; Jeroen Roovers <jer@gentoo.org>
+  gentoo-sources-2.6.23-r3.ebuild:
+  Stable for HPPA.
+
+  07 Dec 2007; Ferris McCormick <fmccor@gentoo.org>
+  gentoo-sources-2.6.23-r3.ebuild:
+  Sparc stable: Linux bender 2.6.23-gentoo-r3 #1 SMP Fri Dec 7 17:10:47 UTC
+  2007 sparc64 sun4v UltraSparc T1 (Niagara) GNU/Linux
+
+  06 Dec 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  gentoo-sources-2.6.23-r3.ebuild:
+  ppc stable, bug #200994
+
+  04 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  gentoo-sources-2.6.23-r3.ebuild:
+  stable x86, bug 200994
+
+  02 Dec 2007; Olivier Crête <tester@gentoo.org>
+  gentoo-sources-2.6.23-r3.ebuild:
+  Mark stable on amd64 for bug #200994
+
+  02 Dec 2007; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.23-r3.ebuild:
+  Stable on ppc64; bug #200994
+
+  28 Nov 2007; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.22-r9.ebuild:
+  Stable on ppc64
+
+*gentoo-sources-2.6.23-r3 (27 Nov 2007)
+
+  27 Nov 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.23-r3.ebuild:
+  Update to Linux 2.6.23.9. Fix missing USB attributes in sysfs. Fix 7 hour
+  boot delay for buggy forcedeth hardware.
+
+*gentoo-sources-2.6.23-r2 (17 Nov 2007)
+
+  17 Nov 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.23-r2.ebuild:
+  Update to Linux 2.6.23.8. Fix ACPI thermal check stack overflow.
+
+  15 Nov 2007; Jeroen Roovers <jer@gentoo.org>
+  gentoo-sources-2.6.23-r1.ebuild:
+  Marked ~hppa.
+
+*gentoo-sources-2.6.22-r10 (07 Nov 2007)
+
+  07 Nov 2007; Mike Pagano <mpagano@gentoo.org>
+  +gentoo-sources-2.6.22-r10.ebuild:
+  Update to Linux 2.6.22.12. Another usb-storage capacity fix for Nikon D40X
+  camera. Fix a divide-by-zero crash in the ALSA HDSP driver. Implement NHRP
+  over GRE tunnel. Fix a stack overflow due to recursive ACPI thermal checks.
+
+  05 Nov 2007; Raúl Porcel <armin76@gentoo.org>
+  gentoo-sources-2.6.22-r9.ebuild:
+  alpha stable
+
+*gentoo-sources-2.6.23-r1 (02 Nov 2007)
+
+  02 Nov 2007; Mike Pagano <mpagano@gentoo.org>
+  +gentoo-sources-2.6.23-r1.ebuild:
+  Update to Linux 2.6.23.1. Another usb-storage capacity fix for Nikon D40X
+  camera. Fix a divide-by-zero crash in the ALSA HDSP driver. Implement NHRP
+  over GRE tunnel. Add Intel ICH9 PCI-Express ethernet support. Fix NFS data
+  corruption regression.
+
+  31 Oct 2007; Raúl Porcel <armin76@gentoo.org>
+  gentoo-sources-2.6.22-r9.ebuild:
+  ia64/sparc stable
+
+  29 Oct 2007; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.22-r9.ebuild:
+  Stable on x86/amd64
+
+  26 Oct 2007; Raúl Porcel <armin76@gentoo.org>
+  gentoo-sources-2.6.23.ebuild:
+  Add ~ia64/~sparc
+
+  25 Oct 2007; Jose Luis Rivero <yoswink@gentoo.org>
+  gentoo-sources-2.6.22-r8.ebuild:
+  Stable on alpha. This solves some issues related to fdatasync defined but
+  unimplemented which was breaking mysql with the error 'Can't sync file
+  mysqld-bin.index' errno(78)
+
+  18 Oct 2007; Luca Barbato <lu_zero@gentoo.org>
+  gentoo-sources-2.6.23.ebuild:
+  Marked ~ppc ~ppc64
+
+*gentoo-sources-2.6.22-r9 (15 Oct 2007)
+
+  15 Oct 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.22-r9.ebuild:
+  Update to Linux 2.6.22.10. Fix custom keymap compilation. Fix hostap netdev
+  type registration.
+
+  14 Oct 2007; Raúl Porcel <armin76@gentoo.org>
+  gentoo-sources-2.6.22-r8.ebuild:
+  ia64 stable
+
+*gentoo-sources-2.6.23 (10 Oct 2007)
+
+  10 Oct 2007; Daniel Drake <dsd@gentoo.org> +gentoo-sources-2.6.23.ebuild:
+  Initial 2.6.23 release. vesafb-tng has been replaced by uvesafb, and
+  fbsplash has been renamed to fbcondecor.
+
+  27 Sep 2007; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.22-r8.ebuild:
+  Stable on amd64 and x86
+
+*gentoo-sources-2.6.22-r8 (26 Sep 2007)
+
+  26 Sep 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.22-r8.ebuild:
+  Update to Linux 2.6.22.9, includes ALSA security fix. Add sound support
+  (HDA) on ThinkPad T61. usb-storage capacity fix for Nikon D200 camera.
+
+  22 Sep 2007; Joseph Jezak <josejx@gentoo.org>
+  gentoo-sources-2.6.22-r5.ebuild:
+  Marked ppc64 stable.
+
+*gentoo-sources-2.6.22-r7 (22 Sep 2007)
+
+  22 Sep 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.22-r7.ebuild:
+  Update to Linux 2.6.22.7 for x86_64 security fix (bug #193386). Fix ivtv
+  configuration dependencies. Fix atl1 oops with over 4GB RAM. Add usb-storage
+  quirk for Nikon D40. Fix PCI-related boot problem on Sun Fire V100.
+
+  22 Sep 2007; Joseph Jezak <josejx@gentoo.org>
+  gentoo-sources-2.6.22-r5.ebuild:
+  Marked ppc stable.
+
+  04 Sep 2007; Raúl Porcel <armin76@gentoo.org>
+  gentoo-sources-2.6.22-r5.ebuild:
+  ia64 stable
+
+  01 Sep 2007; Christian Heim <phreak@gentoo.org>
+  gentoo-sources-2.6.22-r6.ebuild:
+  gentoo-sources-2.6.22-r6 wasn't supposed to go straight to stable.
+
+*gentoo-sources-2.6.22-r6 (01 Sep 2007)
+
+  01 Sep 2007; Christian Heim <phreak@gentoo.org>
+  +gentoo-sources-2.6.22-r6.ebuild:
+  Revision bump for Linux 2.6.22.5 and 2.6.22.6. Also fixing #187522 (thanks
+  to Mike Doty) and #188521 (thanks to Mike Pagano).
+
+  24 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.22-r5.ebuild:
+  Stable on sparc
+
+  22 Aug 2007; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.22-r5.ebuild:
+  Stable on x86 and amd64
+
+*gentoo-sources-2.6.22-r5 (21 Aug 2007)
+
+  21 Aug 2007; Christian Heim <phreak@gentoo.org>
+  +gentoo-sources-2.6.22-r5.ebuild:
+  Revision bump for Linux 2.6.22 and #187175 for ia64.
+
+*gentoo-sources-2.6.22-r4 (16 Aug 2007)
+
+  16 Aug 2007; Christian Heim <phreak@gentoo.org>
+  +gentoo-sources-2.6.22-r4.ebuild:
+  Revision bump for Linux 2.6.22.3.
+
+*gentoo-sources-2.6.20-r10 (16 Aug 2007)
+
+  16 Aug 2007; Christian Heim <phreak@gentoo.org>
+  +gentoo-sources-2.6.20-r10.ebuild:
+  Revision bump for Linux 2.6.20.16.
+
+*gentoo-sources-2.6.22-r3 (13 Aug 2007)
+
+  13 Aug 2007; Christian Heim <phreak@gentoo.org>
+  +gentoo-sources-2.6.22-r3.ebuild:
+  Revision bump for Linux 2.6.22.2.
+
+  13 Aug 2007; Christian Faulhammer <opfer@gentoo.org>
+  gentoo-sources-2.6.22-r2.ebuild:
+  stable x86, bug 187559
+
+  10 Aug 2007; Steve Dibb <beandog@gentoo.org>
+  gentoo-sources-2.6.22-r2.ebuild:
+  amd64 stable, bug 187559
+
+  07 Aug 2007; Joseph Jezak <josejx@gentoo.org>
+  gentoo-sources-2.6.22-r2.ebuild:
+  Marked ~ppc for bug #186953.
+
+  01 Aug 2007; Raúl Porcel <armin76@gentoo.org>
+  gentoo-sources-2.6.22-r2.ebuild:
+  Add ~ia64
+
+  01 Aug 2007; Christoph Mende <angelos@gentoo.org>
+  gentoo-sources-2.6.21-r4.ebuild:
+  Stable on amd64 wrt bug #184203
+
+  30 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.22-r2.ebuild:
+  Keyworded ~sparc
+
+  29 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  gentoo-sources-2.6.22-r2.ebuild:
+  Add ~alpha
+
+*gentoo-sources-2.6.22-r2 (28 Jul 2007)
+
+  28 Jul 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.22-r2.ebuild:
+  Fix squashfs compile. Add usb-storage quirk for Nikon D100. Fix a mac80211
+  deadlock. Fix disk detection in pata_hpt37x driver. Fix X on sparc64 Sabre
+  systems.
+
+  15 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  gentoo-sources-2.6.21-r4.ebuild:
+  ia64 stable, thanks to kloeri for testing
+
+  12 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  gentoo-sources-2.6.21-r4.ebuild:
+  stable x86, bug 184203
+
+  11 Jul 2007; Joseph Jezak <josejx@gentoo.org>
+  gentoo-sources-2.6.21-r4.ebuild:
+  Marked ppc stable for bug #184203.
+
+*gentoo-sources-2.6.22-r1 (11 Jul 2007)
+
+  11 Jul 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.22-r1.ebuild:
+  Update to Linux 2.6.22.1. Add another Logitech QuickCam microphone ID.
+
+  11 Jul 2007; Raúl Porcel <armin76@gentoo.org>
+  gentoo-sources-2.6.21-r4.ebuild:
+  alpha stable wrt #184203, thanks to Brian Evans for testing
+
+  10 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.21-r4.ebuild:
+  Stable on sparc
+
+  10 Jul 2007; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.22.ebuild:
+  Added ~ppc64
+
+*gentoo-sources-2.6.22 (09 Jul 2007)
+
+  09 Jul 2007; Daniel Drake <dsd@gentoo.org> +gentoo-sources-2.6.22.ebuild:
+  Initial 2.6.22 release. speakup has been dropped for incompatibility reasons.
+
+  09 Jul 2007; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.21-r4.ebuild:
+  Stable on ppc64; bug #184203
+
+*gentoo-sources-2.6.21-r4 (09 Jul 2007)
+
+  09 Jul 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.21-r4.ebuild:
+  Update to Linux 2.6.21.6. Readd Asus M2V HDA patch.
+
+  06 Jul 2007; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.21-r3.ebuild:
+  Stable on ppc64; bug #184203
+
+  04 Jul 2007; Joseph Jezak <josejx@gentoo.org>
+  gentoo-sources-2.6.21-r3.ebuild:
+  Marked ppc stable for bug #184203.
+
+  04 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.21-r3.ebuild:
+  Stable on sparc wrt #184203
+
+  26 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.20-r9.ebuild:
+  Stable on sparc
+
+*gentoo-sources-2.6.20-r9 (12 Jun 2007)
+
+  12 Jun 2007; Christian Heim <phreak@gentoo.org>
+  +gentoo-sources-2.6.20-r9.ebuild:
+  Update to Linux 2.6.20.14, fixing CVE-2007-2875, CVE-2007-2453 and
+  CVE-2007-2876. Also backporting some fixes that went into 2.6.21.5.
+
+*gentoo-sources-2.6.21-r3 (12 Jun 2007)
+
+  12 Jun 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.21-r3.ebuild: Update to Linux 2.6.21.5. Fix eth1394
+  network interface renaming. Reduce confusion around powernow-k8 ACPI
+  configuration.
+
+  07 Jun 2007; Raúl Porcel <armin76@gentoo.org>
+  gentoo-sources-2.6.21-r1.ebuild:
+  alpha stable as decided
+
+*gentoo-sources-2.6.21-r2 (25 May 2007)
+
+  25 May 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.21-r2.ebuild:
+  Update to Linux 2.6.21.3. Fix libata disk spindown issues. Fix tifm MMC
+  driver. Fix silent audio on Asus M2V.
+
+*gentoo-sources-2.6.21-r1 (19 May 2007)
+
+  19 May 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.21-r1.ebuild:
+  Fix alpha UAC control. Fix amd64 time measurement. Add AL2230S support for
+  zd1211 USB-WLAN devices. Fix resume of hda-intel sigmatel codecs. Fix
+  detection of Logitech QuickCam microphone. Fix AHCI/ATI boot problems. Fix
+  mouse probing on HP-500. Re-enable 88E8056 ethernet support in sky2. Fix
+  crash with sis900 ethernet hardware.
+
+  10 May 2007; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.20-r8.ebuild:
+  Stable on amd64
+
+  10 May 2007; Bryan Østergaard <kloeri@gentoo.org>
+  gentoo-sources-2.6.21.ebuild:
+  Add ~alpha and ~ia64 keywords.
+
+  07 May 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.20-r8.ebuild:
+  Stable on sparc
+
+  06 May 2007; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.20-r8.ebuild:
+  Stable on x86
+
+*gentoo-sources-2.6.20-r8 (02 May 2007)
+
+  02 May 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.20-r8.ebuild:
+  Update to Linux 2.6.20.11. Fix detection of Logitech QuickCam microphone
+
+  01 May 2007; Daniel Drake <dsd@gentoo.org>
+  -files/gentoo-sources-2.4.CAN-2004-1056.patch,
+  -files/gentoo-sources-2.4.81106.patch, -gentoo-sources-2.4.32-r7.ebuild:
+  Remove gentoo-sources-2.4 as previously discussed. Replaced by
+  vanilla-sources for 2.4 users, who are as usual strongly encouraged to
+  upgrade to 2.6
+
+  27 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.20-r7.ebuild:
+  Stable on sparc
+
+  27 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.21.ebuild:
+  Keyworded ~sparc
+
+  27 Apr 2007; Joseph Jezak <josejx@gentoo.org>
+  gentoo-sources-2.6.21.ebuild:
+  Marked ~ppc.
+
+*gentoo-sources-2.6.21 (26 Apr 2007)
+
+  26 Apr 2007; Daniel Drake <dsd@gentoo.org> +gentoo-sources-2.6.21.ebuild:
+  Initial 2.6.21 release
+
+*gentoo-sources-2.6.20-r7 (26 Apr 2007)
+
+  26 Apr 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.20-r7.ebuild:
+  Update to Linux 2.6.20.9. SPARC64 SBUS IOMMU and unaligned access fixes.
+  speakup compile fix
+
+  26 Apr 2007; Steve Dibb <beandog@gentoo.org>
+  gentoo-sources-2.6.20-r6.ebuild:
+  amd64 stable, bug 173702
+
+  18 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  gentoo-sources-2.6.20-r6.ebuild:
+  stable x86, bug 173710
+
+*gentoo-sources-2.6.20-r6 (15 Apr 2007)
+
+  15 Apr 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.20-r6.ebuild:
+  Update to 2.6.20.7. Fix i2c-i801 resume hang.
+
+  10 Apr 2007; Joseph Jezak <josejx@gentoo.org>
+  gentoo-sources-2.6.20-r5.ebuild:
+  Marked ppc stable for bug #173702.
+
+  08 Apr 2007; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.20-r5.ebuild:
+  Stable on ppc64; bug #173702
+
+*gentoo-sources-2.6.20-r5 (07 Apr 2007)
+
+  07 Apr 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.20-r5.ebuild:
+  Update to Linux 2.6.20.6
+
+  03 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.20-r4.ebuild:
+  Stable on sparc
+
+*gentoo-sources-2.6.20-r4 (25 Mar 2007)
+
+  25 Mar 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.20-r4.ebuild:
+  Update to Linux 2.6.20.4
+
+  18 Mar 2007; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove plasmaroo from metadata.xml due to retirement.
+
+*gentoo-sources-2.6.20-r3 (14 Mar 2007)
+
+  14 Mar 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.20-r3.ebuild:
+  Update to Linux 2.6.20.3
+
+*gentoo-sources-2.6.20-r2 (10 Mar 2007)
+
+  10 Mar 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.20-r2.ebuild:
+  Update to Linux 2.6.20.2. Fix link speed negociation with r8169 network driver.
+
+*gentoo-sources-2.6.20-r1 (06 Mar 2007)
+
+  06 Mar 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.20-r1.ebuild:
+  Update to Linux 2.6.20.1. Fix mouse detection issues. Readd sata_promise TX2
+  IDE support. Fix speakup modular build. Fix DVB/cx25840 firmware loading. 3
+  extra sparc64 fixes.
+
+*gentoo-sources-2.6.19-r7 (06 Mar 2007)
+
+  06 Mar 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.19-r7.ebuild:
+  Update to Linux 2.6.19.7
+
+*gentoo-sources-2.6.18-r7 (06 Mar 2007)
+
+  06 Mar 2007; Christian Heim <phreak@gentoo.org>
+  +gentoo-sources-2.6.18-r7.ebuild:
+  Bumping gentoo-sources to 2.6.18.8.
+
+  26 Feb 2007; Joseph Jezak <josejx@gentoo.org>
+  gentoo-sources-2.6.20.ebuild:
+  Marked ~ppc.
+
+  18 Feb 2007; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.20.ebuild:
+  Added ~ppc64
+
+  15 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  gentoo-sources-2.6.19-r5.ebuild:
+  Stable on amd64 wrt bug #164564.
+
+  11 Feb 2007; Lars Weiler <pylon@gentoo.org>
+  gentoo-sources-2.6.19-r5.ebuild:
+  Stable on ppc; bug #164564.
+
+  09 Feb 2007; Tim Yamin <plasmaroo@gentoo.org>
+  gentoo-sources-2.6.19-r6.ebuild:
+  Keyword ~ia64.
+
+*gentoo-sources-2.6.19-r6 (05 Feb 2007)
+
+  05 Feb 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.19-r6.ebuild:
+  Update to Linux 2.6.19.3. Add support for extra ports on ICH8 AHCI SATA
+  hardware.
+
+  05 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  gentoo-sources-2.6.19-r5.ebuild:
+  Stable on alpha wrt bug #164564.
+
+  05 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.20.ebuild:
+  Keyworded ~sparc
+
+*gentoo-sources-2.6.20 (05 Feb 2007)
+
+  05 Feb 2007; Daniel Drake <dsd@gentoo.org> +gentoo-sources-2.6.20.ebuild:
+  Initial 2.6.20 release
+
+  31 Jan 2007; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.19-r5.ebuild:
+  Stable on ppc64; bug #164564
+
+  30 Jan 2007; Raúl Porcel <armin76@gentoo.org>
+  gentoo-sources-2.6.19-r5.ebuild:
+  x86 stable wrt bug 164564
+
+*gentoo-sources-2.6.19-r5 (29 Jan 2007)
+
+  29 Jan 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.19-r5.ebuild:
+  Add support for composite input of Terratec Cinergy 1400 DVB-T. Fix IPv6
+  address obtain regression. Fix x86_64 NFS compilation on GCC 3.4. Work
+  around problem with Kyocera FS-820 initialization. Fix knfsd crash with
+  unaligned memory access.
+
+  15 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.17-r9.ebuild:
+  Stable on sparc
+
+*gentoo-sources-2.6.19-r4 (11 Jan 2007)
+
+  11 Jan 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.19-r4.ebuild:
+  Update to Linux 2.6.19.2. Fix boot time crash when using IDE command line
+  parameters. Fix CIFS page corruption.
+
+*gentoo-sources-2.6.19-r3 (05 Jan 2007)
+
+  05 Jan 2007; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.19-r3.ebuild:
+  Fix loss of keyboard/mouse. Minor error handling fixes for ext2, ext3,
+  squashfs, cramfs. Readd Promise 2037x IDE port support. Fix long term shared
+  mmap page writeback corruption bug.
+
+  27 Dec 2006; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.18-r6.ebuild:
+  Stable on x86 and amd64
+
+*gentoo-sources-2.6.18-r6 (26 Dec 2006)
+
+  26 Dec 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.18-r6.ebuild:
+  Fix ibmtr compile error. Add some minor corruption fixes for ext2, ext3,
+  squashfs, isofs, NTFS, cramfs, and HFS from the month of kernel bugs
+
+  22 Dec 2006; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.18-r5.ebuild:
+  Stable on x86 and amd64
+
+*gentoo-sources-2.6.18-r5 (20 Dec 2006)
+
+  20 Dec 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.18-r5.ebuild:
+  Update to Linux 2.6.18.6. Fix token ring networking security hole. Fix
+  libata status handling.
+
+  16 Dec 2006; Bryan Østergaard <kloeri@gentoo.org>
+  gentoo-sources-2.6.19-r2.ebuild:
+  Add ~alpha keyword.
+
+*gentoo-sources-2.6.19-r2 (13 Dec 2006)
+
+  13 Dec 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.19-r2.ebuild:
+  Update to Linux 2.6.19.1. Fix libata status handling.
+
+  07 Dec 2006; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.18-r4.ebuild:
+  Stable on x86 and amd64
+
+*gentoo-sources-2.6.18-r4 (07 Dec 2006)
+
+  07 Dec 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.18-r4.ebuild:
+  Update to Linux 2.6.18.5
+
+  03 Dec 2006; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.18-r3.ebuild:
+  Stable on ppc64
+
+  02 Dec 2006; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.19-r1.ebuild:
+  Added ~ppc64
+
+*gentoo-sources-2.6.19-r1 (02 Dec 2006)
+
+  02 Dec 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.19-r1.ebuild:
+  Fix compilation of vesafb-tng, speakup, and fbsplash. Sorry for the bad
+  initial release.
+
+  01 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.19.ebuild:
+  Keyworded ~sparc
+
+  01 Dec 2006; Joseph Jezak <josejx@gentoo.org>
+  gentoo-sources-2.6.18-r3.ebuild, gentoo-sources-2.6.19.ebuild:
+  Marked 2.6.19 ~ppc and 2.6.18-r3 ppc stable.
+
+*gentoo-sources-2.6.19 (30 Nov 2006)
+
+  30 Nov 2006; Daniel Drake <dsd@gentoo.org> +gentoo-sources-2.6.19.ebuild:
+  Initial 2.6.19 release
+
+*gentoo-sources-2.6.18-r3 (20 Nov 2006)
+
+  20 Nov 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.18-r3.ebuild:
+  Update to Linux 2.6.18.3. Fix xt_physdev compile error. Fix microcode update
+  with microcode-ctl-1.15. Fix ieee1394 module reload oops on PPC.
+
+  15 Nov 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  gentoo-sources-2.6.18-r2.ebuild:
+  Stable on amd64 wrt bug #154566.
+
+  15 Nov 2006; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.18-r2.ebuild:
+  Stable on ppc64; bug #154566
+
+  10 Nov 2006; Joshua Jackson <tsunam@gentoo.org>
+  gentoo-sources-2.6.18-r2.ebuild:
+  Stable x86; seems like everything that needs to go has
+
+*gentoo-sources-2.6.18-r2 (08 Nov 2006)
+
+  08 Nov 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.18-r2.ebuild:
+  Update to Linux 2.6.18.2. Fix bcm43xx signal quality and TX timeouts. Fix
+  slab corruption in softmac shared key authentication. Remove buggy promise
+  SATA patch. Fix sky2 hangs.
+
+*gentoo-sources-2.6.18-r1 (15 Oct 2006)
+
+  15 Oct 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.18-r1.ebuild:
+  Update to Linux 2.6.18.1. Add support for RTL8168 ethernet. Update sky2 to
+  version 1.9
+
+*gentoo-sources-2.6.17-r9 (15 Oct 2006)
+
+  15 Oct 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.17-r9.ebuild:
+  Update to Linux 2.6.17.14
+
+  12 Oct 2006; Tim Yamin <plasmaroo@gentoo.org> gentoo-sources-2.6.18.ebuild:
+  Stable on IA64.
+
+  24 Sep 2006; Michael Hanselmann <hansmi@gentoo.org>
+  gentoo-sources-2.6.17-r8.ebuild:
+  Stable on ppc.
+
+*gentoo-sources-2.6.18 (20 Sep 2006)
+
+  20 Sep 2006; Daniel Drake <dsd@gentoo.org> +gentoo-sources-2.6.18.ebuild:
+  Initial 2.6.18 release, features squashfs 3.1
+
+  12 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.17-r8.ebuild:
+  Stable on sparc
+
+  09 Sep 2006; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.17-r8.ebuild:
+  Stable on x86 and amd64
+
+*gentoo-sources-2.6.17-r8 (08 Sep 2006)
+
+  08 Sep 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.17-r8.ebuild:
+  Update to Linux 2.6.17.13. Add support for VIA VT8237A IDE/SATA. Fix TX
+  timeout handling in xirc2ps_cs net driver. Fix support for large SD/MMC
+  cards.
+
+  05 Sep 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  gentoo-sources-2.6.16-r13.ebuild:
+  Added ~alpha to 2.6.16-r13, which works for me and was used to build a LiveCD.
+
+  03 Sep 2006; Michael Hanselmann <hansmi@gentoo.org>
+  gentoo-sources-2.6.17-r7.ebuild:
+  Stable on ppc.
+
+  30 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.17-r7.ebuild:
+  Stable on sparc
+
+  29 Aug 2006; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.17-r7.ebuild:
+  Stable on x86 and amd64
+
+*gentoo-sources-2.6.17-r7 (28 Aug 2006)
+
+  28 Aug 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.17-r7.ebuild:
+  Readd VIA IRQ quirk patch which was accidently dropped in 2.6.17-r5
+
+*gentoo-sources-2.6.17-r6 (24 Aug 2006)
+
+  24 Aug 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.17-r6.ebuild:
+  Update to Linux 2.6.17.11. Fix some ultrasparc issues. Fix alpha EV56
+  Kconfig issue. Fix NFS stall bug. Update sky2 to v1.6
+
+  11 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.17-r5.ebuild:
+  Stable on sparc
+
+*gentoo-sources-2.6.17-r5 (09 Aug 2006)
+
+  09 Aug 2006; Christian Heim <phreak@gentoo.org>
+  +gentoo-sources-2.6.17-r5.ebuild:
+  Revision bump. Importing 2.6.17.8 and some fixes/feature-enhancements from
+  2.6.18
+
+  05 Aug 2006; Michael Hanselmann <hansmi@gentoo.org>
+  gentoo-sources-2.6.17-r4.ebuild:
+  Stable on ppc.
+
+*gentoo-sources-2.4.32-r7 (04 Aug 2006)
+
+  04 Aug 2006; <plasmaroo@gentoo.org> -gentoo-sources-2.4.32-r5.ebuild,
+  +gentoo-sources-2.4.32-r7.ebuild:
+  Bump to -hf32.7.
+
+  27 Jul 2006; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.17-r4.ebuild:
+  Stable on ppc64; bug #141444
+
+  25 Jul 2006; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.17-r4.ebuild:
+  Stable on amd64 and x86
+
+  24 Jul 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.16-r13.ebuild, gentoo-sources-2.6.17-r4.ebuild:
+  Stable on sparc
+
+  23 Jul 2006; <plasmaroo@gentoo.org> gentoo-sources-2.6.17-r3.ebuild:
+  Stable on IA64.
+
+*gentoo-sources-2.6.17-r4 (21 Jul 2006)
+
+  21 Jul 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.17-r4.ebuild:
+  Import some patches from the upcoming 2.6.17.7 release. Fix vesafb-tng mtrr
+  module parameter. Fix various IRQ/ACPI-related problems on VIA motherboards.
+  Boot/resume driver order fix. Add support for a new r8169 device, and
+  Broadcom 5787 ethernet. Update to sky2 v1.5.
+
+  15 Jul 2006; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.16-r13.ebuild:
+  Stable on x86 and amd64
+
+*gentoo-sources-2.6.17-r3 (15 Jul 2006)
+
+  15 Jul 2006; Christian Heim <phreak@gentoo.org>
+  +gentoo-sources-2.6.17-r3.ebuild:
+  procfs local priviledge escalation security fix. Note that our patch is
+  slightly safer than the one included in 2.6.17.5, we are otherwise equivalent
+  (#140444 / CVE-2006-3626)
+
+*gentoo-sources-2.6.16-r13 (15 Jul 2006)
+
+  15 Jul 2006; Christian Heim <phreak@gentoo.org>
+  +gentoo-sources-2.6.16-r13.ebuild:
+  procfs race local priviledge escalation security fix. Note that our patch
+  is slightly safer than the one included in 2.6.16.25, we are otherwise
+  equivalent (#140444 / CVE-2006-3626)
+
+  10 Jul 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.16-r12.ebuild, gentoo-sources-2.6.17-r2.ebuild:
+  Stable on sparc
+
+  08 Jul 2006; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.16-r12.ebuild:
+  Stable on ppc64
+
+  07 Jul 2006; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.16-r12.ebuild:
+  Stable on x86 + amd64
+
+*gentoo-sources-2.6.17-r2 (07 Jul 2006)
+
+  07 Jul 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.17-r2.ebuild:
+  Update to Linux 2.6.17.4 for coredump privilege escalation security fix
+
+*gentoo-sources-2.6.16-r12 (06 Jul 2006)
+
+  06 Jul 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.16-r12.ebuild:
+  Update to Linux 2.6.16.24 for coredump privilege escalation security fix
+
+  06 Jul 2006; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.16-r11.ebuild:
+  Stable on ppc64
+
+  05 Jul 2006; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.16-r11.ebuild:
+  Stable on amd64 and x86
+
+  04 Jul 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.16-r11.ebuild, gentoo-sources-2.6.17-r1.ebuild:
+  Stable on sparc
+
+*gentoo-sources-2.4.32-r6 (02 Jul 2006)
+
+  02 Jul 2006; <plasmaroo@gentoo.org> -gentoo-sources-2.4.31-r1.ebuild,
+  -gentoo-sources-2.4.32-r4.ebuild, gentoo-sources-2.4.32-r5.ebuild,
+  +gentoo-sources-2.4.32-r6.ebuild:
+  Add security patches for #138617; remove stale versions.
+
+*gentoo-sources-2.6.17-r1 (02 Jul 2006)
+
+  02 Jul 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.17-r1.ebuild:
+  Update to Linux 2.6.17.3. Fix link detection on VIA Velocity ethernet. Fix
+  sound on Lenovo 3000 laptops. Add support for Broadcom BCM4319 WLAN, nvidia
+  MCP61/65 LAN/SATA/IDE, VIA VT8251 SATA, new JMicron SATA, ASIX 88178
+  USB-LAN.
+
+  01 Jul 2006; <dams@gentoo.org> gentoo-sources-2.6.17.ebuild:
+  added ~ppc
+
+*gentoo-sources-2.6.16-r11 (01 Jul 2006)
+
+  01 Jul 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.16-r11.ebuild:
+  Update to Linux 2.6.16.23.
+
+  29 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.16-r10.ebuild, gentoo-sources-2.6.17.ebuild:
+  Stable on sparc, run for the hills
+
+  20 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.17.ebuild:
+  Give it some ~sparc love
+
+  20 Jun 2006; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.17.ebuild:
+  Added ~ppc64
+
+*gentoo-sources-2.6.17 (18 Jun 2006)
+
+  18 Jun 2006; Daniel Drake <dsd@gentoo.org> +gentoo-sources-2.6.17.ebuild:
+  Initial 2.6.17 release
+
+*gentoo-sources-2.6.16-r10 (16 Jun 2006)
+
+  16 Jun 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.16-r10.ebuild:
+  Update to Linux 2.6.16.20. Fix i2o storage regressions (#136088). Fix
+  PPP/PPTP connection dropping (#130555). Fix tmpfs time resolution problem
+  (#114722).
+
+  10 Jun 2006; Michael Hanselmann <hansmi@gentoo.org>
+  gentoo-sources-2.6.16-r9.ebuild:
+  Stable on ppc.
+
+  09 Jun 2006; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.16-r9.ebuild:
+  Stable on ppc64
+
+  04 Jun 2006; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.16-r9.ebuild:
+  Stable on x86
+
+  04 Jun 2006; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.16-r9.ebuild:
+  Stable on amd64
+
+*gentoo-sources-2.6.16-r9 (02 Jun 2006)
+
+  02 Jun 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.16-r9.ebuild:
+  Update to Linux 2.6.16.19. Another sky2 fix. Print a message when USB
+  devices are rejected due to power budgeting (#132721). Fix utimes()
+  behaviour on NFS (#132673). Fix DVB compile problem (#133249).
+
+*gentoo-sources-2.4.32-r5 (28 May 2006)
+
+  28 May 2006; <plasmaroo@gentoo.org> -gentoo-sources-2.4.32-r3.ebuild,
+  +gentoo-sources-2.4.32-r5.ebuild:
+  Security bump for #134365; include some fixes from -hf32.6.
+
+  24 May 2006; Michael Hanselmann <hansmi@gentoo.org>
+  gentoo-sources-2.6.16-r7.ebuild:
+  Stable on ppc.
+
+  23 May 2006; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.16-r7.ebuild:
+  Stable on ppc64
+
+*gentoo-sources-2.6.16-r8 (21 May 2006)
+
+  21 May 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.16-r8.ebuild:
+  Update to Linux 2.6.16.17. sky2 update to v1.4. Fix sbp2 breakage with
+  PL-3507 devices. Fix mouse wheel inversion with wacom driver.
+
+*gentoo-sources-2.4.32-r4 (11 May 2006)
+
+  11 May 2006; <plasmaroo@gentoo.org> +gentoo-sources-2.4.32-r4.ebuild:
+  Security bump to -hf32.4; bug #112791.
+
+  09 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  gentoo-sources-2.6.16-r7.ebuild:
+  Marking stable on x86 for bug #127003. Marking stable on amd64 for bug
+  #127003 and bug #130028. This also fixes some issues with the sky2 driver.
+
+*gentoo-sources-2.6.16-r7 (08 May 2006)
+
+  08 May 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.16-r7.ebuild:
+  Update to Linux 2.6.16.14 (2 minor security fixes). Update sky2 to v1.3-rc1
+
+  02 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  gentoo-sources-2.6.16-r6.ebuild:
+  Stable on x86 for the sky2 driver.
+
+*gentoo-sources-2.6.16-r6 (02 May 2006)
+
+  02 May 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.16-r6.ebuild:
+  Fix sky2 compilation problem, bug #132017
+
+  02 May 2006; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.16-r5.ebuild:
+  Stable on ppc64
+
+  02 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  gentoo-sources-2.6.16-r5.ebuild:
+  Stable on x86 wrt bug #127003.
+
+  02 May 2006; Joseph Jezak <josejx@gentoo.org>
+  gentoo-sources-2.6.16-r5.ebuild:
+  Marked ppc stable for bug #127003.
+
+*gentoo-sources-2.6.16-r5 (02 May 2006)
+
+  02 May 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.16-r5.ebuild:
+  Update to Linux 2.6.16.12. Fix lack of sound on certain HDA-based setups.
+  Update sky2 to v1.2. PS/2 mouse replug fix. Reduce ACPI verbosity on certain
+  error.
+
+  01 May 2006; Joseph Jezak <josejx@gentoo.org>
+  gentoo-sources-2.6.16-r3.ebuild:
+  Marked ppc stable for bug #127003.
+
+  30 Apr 2006; <plasmaroo@gentoo.org> files/gentoo-sources-2.4.81106.patch:
+  Fix #131607.
+
+  28 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.16-r4.ebuild:
+  Keyworded ~sparc wrt #127003
+
+  28 Apr 2006; <plasmaroo@gentoo.org> gentoo-sources-2.6.16-r3.ebuild:
+  Stable on IA64; bug #127003.
+
+*gentoo-sources-2.6.16-r4 (25 Apr 2006)
+
+  25 Apr 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.16-r4.ebuild:
+  Update to Linux 2.6.16.11. Fix boot when CONFIG_TIPAR=y (#128852). Add
+  IPW2200 monitor mode config option (#131017).
+
+  23 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  gentoo-sources-2.6.16-r3.ebuild:
+  Stable on x86 wrt bug #127003.
+
+  22 Apr 2006; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.16-r3.ebuild:
+  Stable on ppc64; bug #127003
+
+*gentoo-sources-2.6.16-r3 (19 Apr 2006)
+
+  19 Apr 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.16-r3.ebuild:
+  Update to Linux 2.6.16.9
+
+*gentoo-sources-2.4.32-r3 (16 Apr 2006)
+
+  16 Apr 2006; <plasmaroo@gentoo.org> -gentoo-sources-2.4.32-r2.ebuild,
+  +gentoo-sources-2.4.32-r3.ebuild:
+  Security bump (bug #112791).
+
+*gentoo-sources-2.6.16-r2 (12 Apr 2006)
+
+  12 Apr 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.16-r2.ebuild:
+  Update to Linux 2.6.16.4. Fix ppc boot code compile issue. Fix input.h
+  compilation from userspace.
+
+  05 Apr 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.16-r1.ebuild:
+  Removed from ~sparc - qlogic fc is b0rked, breaks blade 1000, 2000, 280r and
+  others
+
+  31 Mar 2006; Jeremy Huddleston <eradicator@gentoo.org>
+  gentoo-sources-2.6.16-r1.ebuild:
+  Added to ~sparc.
+
+*gentoo-sources-2.6.16-r1 (28 Mar 2006)
+
+  28 Mar 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.16-r1.ebuild:
+  Update to Linux 2.6.16.1. Add sparsemem sparc fix. Update skge and sky2
+  drivers. Fix compile of splashutils. Fix a key renewal bug in hostap.
+
+  27 Mar 2006; Aron Griffis <agriffis@gentoo.org>
+  gentoo-sources-2.6.16.ebuild:
+  Mark 2.6.16 ~ia64. #127003
+
+  22 Mar 2006; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.16.ebuild:
+  Added ~ppc64; bug #127003
+
+  22 Mar 2006; Luca Barbato <lu_zero@gentoo.org>
+  gentoo-sources-2.6.16.ebuild:
+  Marked ~ppc
+
+  22 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  gentoo-sources-2.6.16.ebuild:
+  Added ~x86 to KEYWORDS wrt bug #127003.
+
+*gentoo-sources-2.6.16 (20 Mar 2006)
+
+  20 Mar 2006; Daniel Drake <dsd@gentoo.org> +gentoo-sources-2.6.16.ebuild:
+  Initial 2.6.16 release. Features SquashFS 3.0
+
+  17 Mar 2006; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.15-r7.ebuild:
+  Stable on ppc64
+
+  11 Mar 2006; <plasmaroo@gentoo.org> gentoo-sources-2.6.15-r7.ebuild:
+  Stable on IA64; bug #125439.
+
+  05 Mar 2006; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.15-r7.ebuild:
+  Stable on amd64
+
+*gentoo-sources-2.6.15-r7 (02 Mar 2006)
+
+  02 Mar 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.15-r7.ebuild:
+  2 compile fixes (mempolicy/NFS). Another USB EHCI boot fix.
+
+*gentoo-sources-2.6.15-r6 (02 Mar 2006)
+
+  02 Mar 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.15-r6.ebuild:
+  Update to Linux 2.6.15.5, includes lots of fixes. Fix a bluetooth crasher.
+  Fix EHCI-related boot hang. Some security fixes.
+
+  20 Feb 2006; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.15-r5.ebuild:
+  Stable on ppc64
+
+  13 Feb 2006; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.15-r5.ebuild:
+  Stable on amd64
+
+*gentoo-sources-2.6.15-r5 (11 Feb 2006)
+
+  11 Feb 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.15-r5.ebuild:
+  Update to Linux 2.6.15.4. Includes various fixes.
+
+*gentoo-sources-2.6.15-r4 (07 Feb 2006)
+
+  07 Feb 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.15-r4.ebuild:
+  Update to Linux 2.6.15.3, includes security fix. Also fix some memory leaks
+  in mousedev and selinux, and a PPP checksum fix as well.
+
+  06 Feb 2006; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.15-r3.ebuild:
+  Stable on amd64
+
+  04 Feb 2006; <plasmaroo@gentoo.org> gentoo-sources-2.6.15-r3.ebuild:
+  Mark stable on IA64.
+
+*gentoo-sources-2.6.15-r3 (04 Feb 2006)
+
+  05 Feb 2006; Daniel Drake <dsd@gentoo.org> gentoo-sources-2.6.15-r3.ebuild:
+  Probably The Kernel For 2006.0 (TM): Fix unused CPU on some SMP boards with
+  broken BIOSes. Add JMicron JMB360/363 SATA support. Fix for setting date on
+  sparc64 (CVE-2006-0482). Fix emu10k1 sound driver. Fix hung dell_rbu
+  firmware kernel thread. PCI express mmconfig fix for broken BIOSes.
+
+*gentoo-sources-2.6.15-r2 (31 Jan 2006)
+
+  31 Jan 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.15-r2.ebuild:
+  Update to Linux 2.6.15.2. Some minor security fixes. Update sky2 to v0.15.
+  Enable libata ATAPI (i.e. SATA CDROM) support by default. Fix fbsplash
+  silent splash image not showing throughout bootup. Fix scsi memory leak.
+
+  30 Jan 2006; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.15-r1.ebuild:
+  Stable on ppc64: bug #118671
+
+  27 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  gentoo-sources-2.6.15-r1.ebuild:
+  Stable on ppc.
+
+  24 Jan 2006; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.15-r1.ebuild:
+  Added ~ppc64
+
+  22 Jan 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  gentoo-sources-2.6.15-r1.ebuild:
+  Marking stable on x86 wrt bug #118671.
+
+  22 Jan 2006; Stephen Bennett <spb@gentoo.org>
+  gentoo-sources-2.6.15-r1.ebuild:
+  Added ~alpha; bug #118671.
+
+  22 Jan 2006; Luis Medinas <metalgod@gentoo.org>
+  gentoo-sources-2.6.15-r1.ebuild:
+  Stable on amd64. See bug #118671.
+
+  16 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gentoo-sources-2.6.15-r1.ebuild:
+  Stick a ~sparc in it
+
+*gentoo-sources-2.6.15-r1 (15 Jan 2006)
+
+  15 Jan 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.15-r1.ebuild:
+  Update to Linux 2.6.15.1 - misc fixes, and some security fixes too. sky2
+  updated to v0.12. Add support for Intel ICH8. suspend/resume support for
+  ata_piix driver.
+
+  10 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  gentoo-sources-2.6.15.ebuild:
+  Added to ~ppc.
+
+  04 Jan 2006; Petteri Räty <betelgeuse@gentoo.org>
+  gentoo-sources-2.6.15.ebuild:
+  Added ~x86 keyword.
+
+*gentoo-sources-2.6.14-r7 (04 Jan 2006)
+
+  04 Jan 2006; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.14-r7.ebuild:
+  Security fixes for infra-red and rose hardware. Hopefully the last 2.6.14
+  release.
+
+*gentoo-sources-2.6.15 (03 Jan 2006)
+
+  03 Jan 2006; Daniel Drake <dsd@gentoo.org> +gentoo-sources-2.6.15.ebuild:
+  Initial 2.6.15 release. Features the new sky2 (Marvell SysKonnect Yukon-II)
+  network driver. vesafb/vesafb-tng users: Your framebuffer will run SLOOOW
+  unless you explicitly enable mtrr:3 on the kernel command line. I use (for
+  vesafb): vga=0x318 video=vesafb:mtrr:3
+
+*gentoo-sources-2.4.32-r2 (03 Jan 2006)
+
+  03 Jan 2006; <plasmaroo@gentoo.org> -gentoo-sources-2.4.32-r1.ebuild,
+  +gentoo-sources-2.4.32-r2.ebuild:
+  Backport latest security fixes (bug #112791).
+
+  30 Dec 2005; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.14-r6.ebuild:
+  Stable on ppc64; bug #100023
+
+*gentoo-sources-2.6.14-r6 (29 Dec 2005)
+
+  29 Dec 2005; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.14-r6.ebuild:
+  Update to Linux 2.6.14.5, plus a PPC G5 watercooling fix.
+
+  24 Dec 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gentoo-sources-2.6.14-r5.ebuild:
+  Stable on ppc.
+
+  21 Dec 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  gentoo-sources-2.6.14-r5.ebuild:
+  Stable on amd64.
+
+*gentoo-sources-2.4.32-r1 (18 Dec 2005)
+
+  18 Dec 2005; <plasmaroo@gentoo.org> +gentoo-sources-2.4.32-r1.ebuild:
+  Version bump; also fix #103312.
+
+  18 Dec 2005; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.14-r5.ebuild:
+  Stable on ppc64
+
+*gentoo-sources-2.6.14-r5 (15 Dec 2005)
+
+  15 Dec 2005; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.14-r5.ebuild:
+  Update to Linux 2.6.14.4. Really fix the hyperthreading slowdown. Fix NUMA
+  boot problem.
+
+  07 Dec 2005; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.14-r4.ebuild:
+  Stable on x86
+
+*gentoo-sources-2.6.14-r4 (02 Dec 2005)
+
+  02 Dec 2005; Daniel Drake <dsd@gentoo.org>
+  -gentoo-sources-2.6.9-r9.ebuild, +gentoo-sources-2.6.14-r4.ebuild:
+  Fix slowdown on pentium 4 systems. Fix boot hang for various HP/compaq
+  laptops. setkeys security fix. inode integer overflow fix.
+
+  28 Nov 2005; Bryan Østergaard <kloeri@gentoo.org>
+  gentoo-sources-2.6.14-r3.ebuild:
+  ~alpha keyword.
+
+  27 Nov 2005; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.4.31-r1.ebuild:
+  Stable on x86
+
+  26 Nov 2005; Daniel Drake <dsd@gentoo.org>
+  -files/gentoo-sources-2.4.28.77181.patch,
+  -files/gentoo-sources-2.4.28.arpFix.patch,
+  -files/gentoo-sources-2.4.28.brk-locked.patch,
+  -files/gentoo-sources-2.4.77094.patch,
+  -files/gentoo-sources-2.4.77666.patch,
+  -files/gentoo-sources-2.4.78362.patch,
+  -files/gentoo-sources-2.4.78363.patch,
+  -files/gentoo-sources-2.4.81195.patch,
+  -files/gentoo-sources-2.4.81295.patch,
+  -files/gentoo-sources-2.4.82201.patch,
+  -files/gentoo-sources-2.4.CAN-2004-1016.patch,
+  -files/gentoo-sources-2.4.CAN-2004-1137.patch,
+  -files/gentoo-sources-2.4.PaX-84167.patch,
+  -files/gentoo-sources-2.4.binfmt_a.out.patch,
+  -files/gentoo-sources-2.4.cmdlineLeak.patch,
+  -files/gentoo-sources-2.4.vma.patch, -gentoo-sources-2.4.28-r9.ebuild,
+  -gentoo-sources-2.6.13-r3.ebuild:
+  Remove old versions
+
+*gentoo-sources-2.6.14-r3 (25 Nov 2005)
+
+  25 Nov 2005; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.14-r3.ebuild:
+  Update to Linux 2.6.14.3. Fix the microtek scanner driver. Support new (5,8)
+  Powerbooks. Fix dvb-related compile error. Make cx88 less verbose.
+
+  23 Nov 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  gentoo-sources-2.6.14-r2.ebuild:
+  Stable on amd64, closes bug 112984.
+
+  19 Nov 2005; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.14-r2.ebuild:
+  Added ~ppc64
+
+  13 Nov 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gentoo-sources-2.6.14-r2.ebuild:
+  Stable on ppc.
+
+  12 Nov 2005; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.14-r2.ebuild:
+  Stable on x86
+
+*gentoo-sources-2.6.14-r2 (11 Nov 2005)
+
+  11 Nov 2005; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.14-r2.ebuild:
+  Update to Linux 2.6.14.2 - includes various bugfixes
+
+*gentoo-sources-2.6.14-r1 (09 Nov 2005)
+
+  09 Nov 2005; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.14-r1.ebuild:
+  Update to Linux 2.6.14.1 (includes important security fix). Fix a bug
+  causing BIND to break. Fix compile on alpha. Fix a slight NLS problem. Minor
+  fbsplash + vesfafb-tng updates. This will be marked stable soon, please
+  test.
+
+  29 Oct 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gentoo-sources-2.6.14.ebuild:
+  Added to ~amd64.
+
+  29 Oct 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gentoo-sources-2.6.13-r5.ebuild:
+  Stable on amd64.
+
+  28 Oct 2005; Joseph Jezak <josejx@gentoo.org>
+  gentoo-sources-2.6.14.ebuild:
+  Marked ~ppc.
+
+*gentoo-sources-2.6.14 (28 Oct 2005)
+
+  28 Oct 2005; Daniel Drake <dsd@gentoo.org> +gentoo-sources-2.6.14.ebuild:
+  Initial release. Features vesafb-tng 1.0-rc1-r1
+
+  28 Oct 2005; Daniel Drake <dsd@gentoo.org> -gentoo-sources-2.6.13.ebuild,
+  -gentoo-sources-2.6.13-r1.ebuild, -gentoo-sources-2.6.13-r2.ebuild,
+  -gentoo-sources-2.6.13-r4.ebuild, gentoo-sources-2.6.13-r5.ebuild:
+  Mark 2.6.13-r5 stable on x86, and remove some old versions
+
+*gentoo-sources-2.6.13-r5 (26 Oct 2005)
+
+  26 Oct 2005; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.13-r5.ebuild:
+  Fix suspend on iBooks. Fix amd64 pageattr bug. Fix inotify memory leak. Fix
+  vesafb-tng compile error. Fix 'make mandocs' target.
+
+  15 Oct 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gentoo-sources-2.6.13-r4.ebuild:
+  Added to ~sparc.
+
+*gentoo-sources-2.6.13-r4 (12 Oct 2005)
+
+  12 Oct 2005; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.13-r4.ebuild:
+  Clock skew fix for AMD64 X2, and update to Linux 2.6.13.4
+
+  10 Oct 2005; Luis Medinas <metalgod@gentoo.org>
+  gentoo-sources-2.6.13-r3.ebuild:
+  Marked Stable on amd64.
+
+  08 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gentoo-sources-2.6.13-r3.ebuild:
+  Stable on ppc.
+
+  07 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  gentoo-sources-2.6.13.ebuild, gentoo-sources-2.6.13-r1.ebuild,
+  gentoo-sources-2.6.13-r2.ebuild, gentoo-sources-2.6.13-r3.ebuild:
+  Arch-mask 2.6.13 on ia64 since it causes machine checks on rx2600. 2.6.14
+  seems to be fixed so well wait for gentoo-sources-2.6.14
+
+  06 Oct 2005; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.13-r3.ebuild:
+  Stable on x86
+
+*gentoo-sources-2.6.13-r3 (05 Oct 2005)
+
+  05 Oct 2005; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.13-r3.ebuild:
+  Update to 2.6.13.3, and fix the Yenta compile error.
+
+  19 Sep 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gentoo-sources-2.6.13-r2.ebuild:
+  Added to ~sparc.
+
+*gentoo-sources-2.6.13-r2 (18 Sep 2005)
+
+  18 Sep 2005; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.13-r2.ebuild:
+  Update to 2.6.13.2. Fix a speakup-related gameport problem. Fix the evil
+  AMD64 SMP crash issues, plus a couple more fixes.
+
+  17 Sep 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gentoo-sources-2.6.13-r1.ebuild:
+  Added to ~sparc.
+
+  14 Sep 2005; Luca Barbato <lu_zero@gentoo.org>
+  gentoo-sources-2.6.13-r1.ebuild:
+  Marked ~ppc
+
+*gentoo-sources-2.6.13-r1 (11 Sep 2005)
+
+  11 Sep 2005; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.13-r1.ebuild:
+  Update to 2.6.13.1 which fixes the most common problems from the original
+  2.6.13 release. skge tree update, and a fix for the build system requiring
+  an extra kallsyms pass in some situations
+
+  05 Sep 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gentoo-sources-2.6.13.ebuild:
+  Added ~sparc.
+
+  03 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gentoo-sources-2.6.12-r10.ebuild:
+  Stable on ppc.
+
+  03 Sep 2005; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.12-r10.ebuild:
+  Stable on ppc64
+
+  03 Sep 2005; Luis Medinas <metalgod@gentoo.org>
+  gentoo-sources-2.6.12-r10.ebuild:
+  Marked Stable on AMD64.
+
+  02 Sep 2005; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.12-r10.ebuild:
+  Stable on x86
+
+  30 Aug 2005; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.13.ebuild:
+  added ~ppc64
+
+  30 Aug 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  gentoo-sources-2.6.13.ebuild:
+  Marked ~amd64, closes bug 104256.
+
+*gentoo-sources-2.6.12-r10 (30 Aug 2005)
+
+  30 Aug 2005; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.12-r10.ebuild:
+  Update to 2.6.12.6, fix two AMD64 bugs, and fix a forcedeth problem
+
+*gentoo-sources-2.6.13 (29 Aug 2005)
+
+  29 Aug 2005; Daniel Drake <dsd@gentoo.org>
+  -gentoo-sources-2.6.12-r4.ebuild, -gentoo-sources-2.6.12-r6.ebuild,
+  -gentoo-sources-2.6.12-r7.ebuild, -gentoo-sources-2.6.12-r8.ebuild,
+  +gentoo-sources-2.6.13.ebuild:
+  2.6.13 initial release, includes squashfs 2.2
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  gentoo-sources-2.6.12-r9.ebuild:
+  stable on ia64 #102582
+
+  21 Aug 2005; Luis Medinas <metalgod@gentoo.org>
+  gentoo-sources-2.6.12-r9.ebuild:
+  Marked Stable on AMD64. Bug #102582
+
+  21 Aug 2005; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.12-r9.ebuild:
+  Stable on ppc64 (bug #102582)
+
+  21 Aug 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gentoo-sources-2.6.12-r9.ebuild:
+  Marked ~sparc.
+
+  19 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gentoo-sources-2.6.12-r9.ebuild:
+  Stable on ppc.
+
+  16 Aug 2005; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.12-r9.ebuild:
+  Stable on x86
+
+*gentoo-sources-2.6.12-r9 (16 Aug 2005)
+
+  16 Aug 2005; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.12-r9.ebuild:
+  Update to Linux 2.6.12.5, which contains some security fixes.
+
+*gentoo-sources-2.6.12-r8 (09 Aug 2005)
+
+  09 Aug 2005; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.12-r8.ebuild:
+  netfilter module loading (modalloc) fix. Fix netfilter locking mechanism.
+  Fix Cardbus on AMD64 laptops. skge tree update.
+
+*gentoo-sources-2.6.12-r7 (30 Jul 2005)
+
+  30 Jul 2005; Daniel Drake <dsd@gentoo.org>
+  -gentoo-sources-2.6.10-r6.ebuild, +gentoo-sources-2.6.12-r7.ebuild:
+  Support network on iMac G5
+  Support Promise TX4200 SATA
+  Fix touchpad on Alienware sentia
+  Fix matroxfb vs fbsplash conflict
+  Fix bringing up of VLANs
+  Fix gconfig crash
+  Fix powernow oops on dual-core athlon
+  Fix possible bio-clone corruption
+  Fix qla2xxx failure handling
+  Fix network skb signedness problem
+  Fix elf-related memory leak on AMD64
+  Fix possible overflow in IPSEC policy code
+  Fix possible corruption in memory NAT
+  Fix possible deadlock in ipv6
+  Fix crash on conntrac unload
+
+  24 Jul 2005; <plasmaroo@gentoo.org> gentoo-sources-2.6.12-r6.ebuild:
+  Stable on IA64.
+
+*gentoo-sources-2.4.31-r1 (20 Jul 2005)
+
+  20 Jul 2005; <plasmaroo@gentoo.org> +gentoo-sources-2.4.31-r1.ebuild:
+  Bump to 2.4.31.
+
+  20 Jul 2005; Herbie Hopkins <herbs@gentoo.org>
+  gentoo-sources-2.6.12-r6.ebuild:
+  Stable on amd64 wrt bug #99274.
+
+  19 Jul 2005; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.12-r6.ebuild:
+  Stable on ppc64 (bug #99274)
+
+  17 Jul 2005; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.12-r6.ebuild:
+  Stable on x86
+
+  16 Jul 2005; Joseph Jezak <josejx@gentoo.org>
+  gentoo-sources-2.6.12-r6.ebuild:
+  Marked ppc stable.
+
+*gentoo-sources-2.6.12-r6 (16 Jul 2005)
+
+  16 Jul 2005; Daniel Drake <dsd@gentoo.org>
+  -gentoo-sources-2.6.11-r8.ebuild, -gentoo-sources-2.6.12-r5.ebuild,
+  +gentoo-sources-2.6.12-r6.ebuild:
+  Linux 2.6.12.3. Add irqpoll boot workaround. Correct modpost on sparc.
+
+  13 Jul 2005; Aron Griffis <agriffis@gentoo.org>
+  gentoo-sources-2.6.12-r4.ebuild:
+  stable on ia64
+
+*gentoo-sources-2.6.12-r5 (13 Jul 2005)
+
+  13 Jul 2005; Daniel Drake <dsd@gentoo.org>
+  -gentoo-sources-2.6.11-r11.ebuild, -gentoo-sources-2.6.12-r3.ebuild,
+  +gentoo-sources-2.6.12-r5.ebuild:
+  Fix buggy netfilter conntrack behaviour, where applications took ages to
+  load. Fix gameport probe order. Fix inconsistent NTP behaviour on PPC.
+
+  07 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gentoo-sources-2.6.12-r4.ebuild:
+  Stable amd64 ~sparc.
+
+  06 Jul 2005; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.12-r4.ebuild:
+  Stable on x86. Remember to upgrade to udev-058, and, if you use fbsplash,
+  splashutils-1.1.9.6-r1
+
+  06 Jul 2005; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.12-r4.ebuild:
+  Switch to gentoo mirrors now that mirroring is fixed
+
+  05 Jul 2005; Aron Griffis <agriffis@gentoo.org>
+  gentoo-sources-2.6.12-r3.ebuild, gentoo-sources-2.6.12-r4.ebuild:
+  add ~ia64
+
+  05 Jul 2005; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.12-r4.ebuild:
+  Stable on ppc64
+
+*gentoo-sources-2.6.12-r4 (05 Jul 2005)
+
+  05 Jul 2005; Daniel Drake <dsd@gentoo.org>
+  -gentoo-sources-2.6.12-r2.ebuild, +gentoo-sources-2.6.12-r4.ebuild:
+  Add PCI IRQ fix, ppc64 multilib fix. Inotify returns, as the unmount bug is
+  fixed.
+
+  05 Jul 2005; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.12-r3.ebuild:
+  Stable on ppc64
+
+*gentoo-sources-2.6.12-r3 (01 Jul 2005)
+
+  01 Jul 2005; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.12-r3.ebuild:
+  Update to Linux 2.6.12.2. Add IT8212 storage driver. Megaraid driver update.
+  Allow both megaraid drivers to be built. Remove inotify temporarily due to
+  bug 97219.
+
+  28 Jun 2005; Daniel Drake <dsd@gentoo.org>
+  -gentoo-sources-2.6.1-r2.ebuild, -gentoo-sources-2.6.7-r19.ebuild,
+  -gentoo-sources-2.6.10-r7.ebuild, -gentoo-sources-2.6.12.ebuild,
+  -gentoo-sources-2.6.12-r1.ebuild:
+  Remove old versions
+
+*gentoo-sources-2.6.12-r2 (28 Jun 2005)
+
+  28 Jun 2005; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.12-r2.ebuild:
+  Support >2TB capacity in libata. Network support for USR 997902, Planex
+  FNW-3602-TX, Elecom (Laneed) LD-USBL/TX, forcedeth MCP51/55. ATA/SATA
+  support for nvidia MCP51/55. skge tree update including bugfixes.
+
+*gentoo-sources-2.6.12-r1 (23 Jun 2005)
+
+  23 Jun 2005; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.12-r1.ebuild:
+  SATA bridge lockup fix. Add support for BCM5785. Add support for pdc20619.
+  Remove support for libata PDC2027x as it is present as an IDE driver. Add
+  ALSA ice1712 SN25P support. Speakup returns. PCI driver typo-fix. Critical
+  e1000 spinlock fix. Fix Fix remap_pte_range checking. Sync to Linux 2.6.12.1
+
+  19 Jun 2005; Daniel Goller <morfic@gentoo.org>
+  gentoo-sources-2.6.12.ebuild:
+  Added ~ppc
+
+  19 Jun 2005; Mike Doty <kingtaco@gentoo.org> gentoo-sources-2.6.12.ebuild:
+  ~amd64 added, bug 96493
+
+  19 Jun 2005; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.12.ebuild:
+  added ~ppc64
+
+*gentoo-sources-2.6.12 (19 Jun 2005)
+
+  19 Jun 2005; Daniel Drake <dsd@gentoo.org>
+  -gentoo-sources-2.6.11-r7.ebuild, -gentoo-sources-2.6.11-r9.ebuild,
+  +gentoo-sources-2.6.12.ebuild:
+  Initial 2.6.12 release. Features inotify 0.23-12 and fbsplash 0.9.2-r3. Be
+  aware that you need udev-058 or newer, and splashutils-1.1.9.6 or newer
+  (only if you use fbsplash) to avoid potential problems. Speakup is missing
+  from this release but will return soon.
+
+  14 Jun 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  gentoo-sources-2.6.11-r11.ebuild:
+  Stable on amd64.
+
+  14 Jun 2005; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.11-r11.ebuild:
+  Stable on x86
+
+*gentoo-sources-2.6.11-r11 (12 Jun 2005)
+
+  12 Jun 2005; Daniel Drake <dsd@gentoo.org>
+  -gentoo-sources-2.6.11-r10.ebuild, +gentoo-sources-2.6.11-r11.ebuild:
+  Update to Linux 2.6.11.12 and add a keyboard resume fix
+
+*gentoo-sources-2.6.11-r10 (04 Jun 2005)
+
+  04 Jun 2005; Daniel Drake <dsd@gentoo.org>
+  -files/gentoo-sources-2.4.CAN-2004-0497.patch,
+  -files/gentoo-sources-2.4.brk-locked.patch,
+  +gentoo-sources-2.6.11-r10.ebuild:
+  Update to Linux 2.6.11.11, fix compilation with new binutils, fix
+  disappearing symbol on framebuffer scrollback
+
+*gentoo-sources-2.4.28-r9 (20 May 2005)
+
+  20 May 2005; <plasmaroo@gentoo.org> -gentoo-sources-2.4.28-r8.ebuild,
+  +gentoo-sources-2.4.28-r9.ebuild, +files/gentoo-sources-2.4.81195.patch,
+  +files/gentoo-sources-2.4.81295.patch,
+  +files/gentoo-sources-2.4.82201.patch:
+  Security fixes - #81195, #81295, #82201.
+
+  20 May 2005; <plasmaroo@gentoo.org> -gentoo-sources-2.4.25-r17.ebuild,
+  -files/gentoo-sources-2.4.AF_UNIX.patch,
+  -files/gentoo-sources-2.4.CAN-2004-0109.patch,
+  -files/gentoo-sources-2.4.CAN-2004-0133.patch,
+  -files/gentoo-sources-2.4.CAN-2004-0177.patch,
+  -files/gentoo-sources-2.4.CAN-2004-0178.patch,
+  -files/gentoo-sources-2.4.CAN-2004-0181.patch,
+  -files/gentoo-sources-2.4.CAN-2004-0394.patch,
+  -files/gentoo-sources-2.4.CAN-2004-0427.patch,
+  -files/gentoo-sources-2.4.CAN-2004-0495.patch,
+  -files/gentoo-sources-2.4.CAN-2004-0535.patch,
+  -files/gentoo-sources-2.4.CAN-2004-0685.patch,
+  -files/gentoo-sources-2.4.FPULockup-53804.patch,
+  -files/gentoo-sources-2.4.XDRWrapFix.patch,
+  -files/gentoo-sources-2.4.binfmt_elf.patch,
+  -files/gentoo-sources-2.4.smbfs.patch:
+  Remove 2.4.25.
+
+  18 May 2005; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.11-r9.ebuild:
+  Stable on x86 for security stuff
+
+  17 May 2005; Daniel Drake <dsd@gentoo.org> ChangeLog, Manifest:
+  Update to Linux 2.6.11.9 and 2.6.11.10, and try a speakup fix.
+
+  12 May 2005; Aron Griffis <agriffis@gentoo.org>
+  gentoo-sources-2.6.11-r8.ebuild:
+  Mark 2.6.11-r8 stable on ia64 #87913
+
+  11 May 2005; Markus Rothe <corsair@gentoo.org>
+  gentoo-sources-2.6.11-r8.ebuild:
+  Stable on ppc64; bug #87913
+
+  10 May 2005; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.11-r8.ebuild:
+  2.6.11-r8 stable on x86
+
+*gentoo-sources-2.6.11-r8 (09 May 2005)
+
+  09 May 2005; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.11-r8.ebuild:
+  Fix potential AIO DoS. Fix sparc64 SMP. Fix Invalid MAC on 3x59x network.
+  Fix LBA48 DMA. Add support for VIA VT6410 IDE. Revert broken SCSI TAPE
+  security fix.
+
+  03 May 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gentoo-sources-2.6.11-r7.ebuild:
+  Stable amd64 and ~sparc for security fixes.
+
+  30 Apr 2005; Daniel Drake <dsd@gentoo.org>
+  -files/gentoo-sources-2.4.20.78362.patch,
+  -files/gentoo-sources-2.4.20-CAN-2004-0685.patch,
+  -files/gentoo-sources-2.4.CAN-2004-0001.patch,
+  -files/gentoo-sources-2.4.20-CAN-2004-1056.patch,
+  -files/gentoo-sources-2.4.20-PaX-84167.patch,
+  -files/gentoo-sources-2.4.20-cs46xx-gcc33.patch,
+  -files/gentoo-sources-2.4.20-devfs-snd-fix.patch,
+  -files/gentoo-sources-2.4.20-fix-proc-mm.patch,
+  -files/gentoo-sources-2.4.20-gcc33.patch,
+  -files/gentoo-sources-2.4.20-grsec-datasize_fix.patch,
+  -files/gentoo-sources-2.4.20-grsec-disabled.patch,
+  -files/gentoo-sources-2.4.20-ipt-realm.patch,
+  -files/gentoo-sources-2.4.20-ipt-route.patch,
+  -files/gentoo-sources-2.4.20-mdcount.patch,
+  -files/gentoo-sources-2.4.20-munmap.patch,
+  -files/gentoo-sources-2.4.20-rtc_fix.patch,
+  -files/gentoo-sources-2.4.20-sched-interrupt.patch,
+  -files/gentoo-sources-2.4.20-smbfs.patch,
+  -files/gentoo-sources-2.4.CAN-2004-0010.patch,
+  -files/gentoo-sources-2.4.22-CAN-2004-0075.patch,
+  -files/gentoo-sources-2.4.I2C_Limits.patch,
+  -files/gentoo-sources-2.4.22-CAN-2004-1016.patch,
+  -files/gentoo-sources-2.4.22-kmsgdump.patch,
+  -files/gentoo-sources-2.4.22-rtc_fix.patch,
+  -files/gentoo-sources-2.4.22-vma.patch,
+  -files/gentoo-sources-2.4.CAN-2003-0643.patch,
+  -files/gentoo-sources-2.4.26-OpenSWAN-CompileFix.patch,
+  -files/gentoo-sources-2.4.CAN-2003-0985.patch,
+  -files/gentoo-sources-2.4.munmap.patch, -files/do_brk_fix.patch,
+  -files/security.patch1, -files/security.patch2, -files/security.patch3,
+  -files/security.patch4, -gentoo-sources-2.4.20-r33.ebuild:
+  Remove 2.4.20 and cleanout files/
+
+*gentoo-sources-2.6.11-r7 (30 Apr 2005)
+
+  30 Apr 2005; Daniel Drake <dsd@gentoo.org>
+  -gentoo-sources-2.6.8-r3.ebuild, +gentoo-sources-2.6.11-r7.ebuild:
+  Update to Linux 2.6.11.8. Fix security hole in ROSE networking. Fix SCSI
+  TAPE access permissions. Fix generation of kernel manpages. Fix dead
+  keyboard on USB headset unplug. Update to inotify 0.22-3
+
+  25 Apr 2005; Aron Griffis <agriffis@gentoo.org>
+  gentoo-sources-2.6.11-r6.ebuild:
+  stable on ia64
+
+  13 Apr 2005; Daniel Drake <dsd@gentoo.org>
+  -gentoo-sources-2.6.10-r8.ebuild, -gentoo-sources-2.6.11-r3.ebuild,
+  -gentoo-sources-2.6.11-r4.ebuild, -gentoo-sources-2.6.11-r5.ebuild,
+  gentoo-sources-2.6.11-r6.ebuild:
+  2.6.11-r6 stable on x86, remove old versions
+
+  07 Apr 2005; Tom Gall <tgall@gentoo.org>
+  gentoo-sources-2.6.11-r6.ebuild:
+  marked stable on ppc64, fixes in, already well tested on a wide range of hardware
+
+*gentoo-sources-2.6.11-r6 (07 Apr 2005)
+
+  07 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +gentoo-sources-2.6.11-r6.ebuild:
+  Fixed the sparc ffb.h patch to apply correctly. Removed the dm patches as
+  they caused oopses under certain circumstances. Fix p630 LPAR support on
+  ppc64. Fix deadlocks in rwsem code. Fix congestion in TCP BIC algorithm.
+  Fixes a race in the ext3 journal code. Fix matroxfb endianness issues for
+  ppc64. Fix oops when mismatching alsa-lib and alsa driver versions. Fix
+  hardlink count in /proc/<pid> directories. Fix hardlink count in
+  /proc/<pid>/task directories. Bump inotify to version 0.22-2. Stable amd64
+  for security fixes.
+
+  02 Apr 2005; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.11-r5.ebuild:
+  Stable on x86. Please upgrade for security fixes.
+
+*gentoo-sources-2.6.11-r5 (01 Apr 2005)
+
+  01 Apr 2005; Daniel Drake <dsd@gentoo.org>
+  -gentoo-sources-2.6.9-r14.ebuild, -gentoo-sources-2.6.11.ebuild,
+  -gentoo-sources-2.6.11-r1.ebuild, -gentoo-sources-2.6.11-r2.ebuild,
+  +gentoo-sources-2.6.11-r5.ebuild:
+  Update to 2.6.11.5 and 2.6.11.6. Added sparc patches for serial and fb.
+  Update skge driver to 0.6. Update inotify to 0.21-4.
+
+  30 Mar 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  gentoo-sources-2.6.11-r3.ebuild:
+  Marked stable on amd64.
+
+*gentoo-sources-2.6.10-r8 (19 Mar 2005)
+
+  19 Mar 2005; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.10-r8.ebuild:
+  Backporting lots of security fixes, for PPC.
+
+  17 Mar 2005; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.11-r4.ebuild:
+  Stable on x86, testing on sparc
+
+*gentoo-sources-2.6.11-r4 (16 Mar 2005)
+
+  16 Mar 2005; Daniel Drake <dsd@gentoo.org>
+  +gentoo-sources-2.6.11-r4.ebuild:
+  Sync to Linux 2.6.11.4. Fix silent speaker on 4.1 ALSA surround. Fix ALPS
+  touchpad tapping. Deprecate sk98lin.
+
+  16 Mar 2005; Daniel Drake <dsd@gentoo.org>
+  gentoo-sources-2.6.11-r3.ebuild:
+  Update SRC_URI
+
+  13 Mar 2005; <plasmaroo@gentoo.org> gentoo-sources-2.4.28-r8.ebuild:
+  Fix patch ordering.
+
+*gentoo-sources-2.6.11-r3 (09 Mar 2005)
+
+  09 Mar 2005; Daniel Drake <dsd@gentoo.org> +gentoo-sources-2.6.11-r3.ebuild:
+  Update to Linux 2.6.11.2 - fixes important security problem. Also upgraded to
+  inotify 0.20
+
+*gentoo-sources-2.6.7-r19 (09 Mar 2005)
+
+  09 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +gentoo-sources-2.6.7-r19.ebuild:
+  Readding last 2.6.7 kernel for some sparc users.
+
+*gentoo-sources-2.4.20-r33 (07 Mar 2005)
+
+  07 Mar 2005; <plasmaroo@gentoo.org> -gentoo-sources-2.4.20-r32.ebuild,
+  +gentoo-sources-2.4.20-r33.ebuild, -gentoo-sources-2.4.25-r16.ebuild,
+  +gentoo-sources-2.4.25-r17.ebuild, -gentoo-sources-2.4.28-r7.ebuild,
+  +gentoo-sources-2.4.28-r8.ebuild,
+  +files/gentoo-sources-2.4.20-PaX-84167.patch,
+  +files/gentoo-sources-2.4.PaX-84167.patch:
+  Security bump; fix #84167.
+
+  04 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gentoo-sources-2.6.11-r2.ebuild:
+  Added to ~ppc.
+
+*gentoo-sources-2.6.11-r2 (04 Mar 2005)
+
+  04 Mar 2005; Daniel Drake <dsd@gentoo.org> +gentoo-sources-2.6.11-r2.ebuild:
+  Update to Linux 2.6.11.1 which contains an important Dell keyboard fix. Also
+  added PPC32 compile fixes and a fix for an oops.
+
+*gentoo-sources-2.6.11-r1 (03 Mar 2005)
+
+  03 Mar 2005; Daniel Drake <dsd@gentoo.org> +gentoo-sources-2.6.11-r1.ebuild:
+  Readding speakup, dm-bbr, SPARC kconfig rework. Adding skge driver. Updating
+  promise storage patches.
+
+  03 Mar 2005; Markus Rothe <corsair@gentoo.org> gentoo-sources-2.6.11.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  02 Mar 2005; Daniel Drake <dsd@gentoo.org> gentoo-sources-2.6.11.ebuild:
+  Marked testing on amd64
+
+*gentoo-sources-2.6.11 (02 Mar 2005)
+
+  02 Mar 2005; Daniel Drake <dsd@gentoo.org> +gentoo-sources-2.6.11.ebuild:
+  Initial 2.6.11 release. This release does not include speakup or
+  dm-bbr/multipath. They will return once we get them to work. New versions of
+  fbsplash and inotify are included.
+
+  24 Feb 2005; Aron Griffis <agriffis@gentoo.org>
+  gentoo-sources-2.6.10-r7.ebuild:
+  add ~ia64
+
+  19 Feb 2005; <plasmaroo@gentoo.org> gentoo-sources-2.4.28-r7.ebuild:
+  Add missing #77181 patch to UNIPATCH_LIST.
+
+*gentoo-sources-2.4.28-r7 (18 Feb 2005)
+
+  18 Feb 2005; <plasmaroo@gentoo.org> -gentoo-sources-2.4.28-r6.ebuild,
+  +gentoo-sources-2.4.28-r7.ebuild, files/gentoo-sources-2.4.81106.patch:
+  Fix #81106 patch for 2.4; bug #82479.
+
+*gentoo-sources-2.4.20-r32 (17 Feb 2005)
+
+  17 Feb 2005; <plasmaroo@gentoo.org> -gentoo-sources-2.4.20-r31.ebuild,
+  +gentoo-sources-2.4.20-r32.ebuild, -gentoo-sources-2.4.25-r15.ebuild,
+  +gentoo-sources-2.4.25-r16.ebuild, -gentoo-sources-2.4.26-r15.ebuild,
+  -gentoo-sources-2.4.28-r5.ebuild, +gentoo-sources-2.4.28-r6.ebuild,
+  +files/gentoo-sources-2.4.20.78362.patch,
+  +files/gentoo-sources-2.4.28.arpFix.patch,
+  +files/gentoo-sources-2.4.28.77181.patch,
+  +files/gentoo-sources-2.4.77666.patch,
+  +files/gentoo-sources-2.4.78362.patch,
+  +files/gentoo-sources-2.4.78363.patch,
+  +files/gentoo-sources-2.4.81106.patch:
+  Security fixes: #77666, #78362, #78363, #81106. Fix #78945 and #77181 for
+  2.4.28.
+
+*gentoo-sources-2.6.10-r7 (05 Feb 2005)
+
+  05 Feb 2005; Daniel Drake <dsd@gentoo.org> -gentoo-sources-2.6.10-r1.ebuild,
+  -gentoo-sources-2.6.10-r2.ebuild, gentoo-sources-2.6.10-r6.ebuild,
+  +gentoo-sources-2.6.10-r7.ebuild:
+  New fbsplash version. Fixes for cd/dvd writing, amd64 device suspend, UML
+  stack corruption, seagate sata_sil blacklist, aacraid, gdth, ALSA VX driver
+  memory corruption, clock running too fast during ACPI sleep. Added patch for
+  configurable root mount delay. Removed bt8xx patch as it doesn't work.
+
+  22 Jan 2005; Daniel Drake <dsd@gentoo.org> -gentoo-sources-2.6.10-r4.ebuild,
+  gentoo-sources-2.6.10-r6.ebuild:
+  Sync to gentoo-dev-sources
+
+  19 Jan 2005; Daniel Drake <dsd@gentoo.org> -gentoo-sources-2.6.10-r5.ebuild,
+  gentoo-sources-2.6.10-r6.ebuild:
+  Stable on x86
+
+*gentoo-sources-2.6.10-r6 (19 Jan 2005)
+
+  19 Jan 2005; Daniel Drake <dsd@gentoo.org> +gentoo-sources-2.6.10-r6.ebuild:
+  Add SCSI/RAID corruption fix, NFS super-io security fix, NFSACL sunrpc
+  security fix.
+
+  17 Jan 2005; Daniel Drake <dsd@gentoo.org> gentoo-sources-2.6.10-r5.ebuild:
+  Stable on x86
+
+*gentoo-sources-2.6.10-r5 (16 Jan 2005)
+
+  16 Jan 2005; John Mylchreest <johnm@gentoo.org>
+  +gentoo-sources-2.6.10-r5.ebuild:
+  Vesafb-tng and fbsplash updates which should fix a number of bugs. Also: Sidewinder
+  debug message fix, new smbfs DoS fix (solves bug 72968), vmscan writeback (OOM)
+  fix, ACPI video slab corruption fix, iptables ECN corruption fix. Security: new rlimit
+  memlock fix, SMP stack resize fix, uselib fix update. Hardware support: Readd support
+  for cx24110 DVB, and add storage drivers for: Promise PATA PDC2027x, Promise PATA
+  PDC2037x, ULi5281 SATA, VIA VT6421 SATA, ATI IXP300/IXP400 SATA.
+
+*gentoo-sources-2.6.9-r13 (11 Jan 2005)
+
+  11 Jan 2005; John Mylchreest <johnm@gentoo.org>
+  +gentoo-sources-2.6.1-r2.ebuild, +gentoo-sources-2.6.10-r1.ebuild,
+  +gentoo-sources-2.6.10-r2.ebuild, +gentoo-sources-2.6.10-r4.ebuild,
+  +gentoo-sources-2.6.8-r3.ebuild, +gentoo-sources-2.6.9-r12.ebuild,
+  +gentoo-sources-2.6.9-r13.ebuild, +gentoo-sources-2.6.9-r14.ebuild,
+  +gentoo-sources-2.6.9-r9.ebuild:
+  The big amalgamation of 2.6->2.4. Oh, and before I forget, check out
+  ${FILESDIR}/Changelog-2.4.bz2 for the old changelog
+
+*gentoo-sources-2.4.28-r5 (08 Jan 2005)
+
+  08 Jan 2005; <plasmaroo@gentoo.org> -gentoo-sources-2.4.20-r30.ebuild,
+  +gentoo-sources-2.4.20-r31.ebuild, -gentoo-sources-2.4.22-r21.ebuild,
+  -gentoo-sources-2.4.25-r14.ebuild, +gentoo-sources-2.4.25-r15.ebuild,
+  -gentoo-sources-2.4.26-r14.ebuild, +gentoo-sources-2.4.26-r15.ebuild,
+  -gentoo-sources-2.4.28-r4.ebuild, +gentoo-sources-2.4.28-r5.ebuild,
+  +files/gentoo-sources-2.4.28.brk-locked.patch,
+  +files/gentoo-sources-2.4.77094.patch,
+  +files/gentoo-sources-2.4.brk-locked.patch:
+  Security bump; fixes bugs #77025 and #77094.
+
+  07 Jan 2005; <plasmaroo@gentoo.org> -gentoo-sources-2.4.27-r6.ebuild,
+  gentoo-sources-2.4.28-r4.ebuild:
+  Marking 2.4.28-r4 stable on x86.
+
+*gentoo-sources-2.4.28-r4 (01 Jan 2005)
+
+  01 Jan 2005; <plasmaroo@gentoo.org> -gentoo-sources-2.4.28-r3.ebuild,
+  +gentoo-sources-2.4.28-r4.ebuild:
+  Version bump. Fixes bugs #71715 and #71837.
+
+*gentoo-sources-2.4.22-r21 (24 Dec 2004)
+
+  24 Dec 2004; <plasmaroo@gentoo.org> -gentoo-sources-2.4.20-r29.ebuild,
+  +gentoo-sources-2.4.20-r30.ebuild, -gentoo-sources-2.4.22-r20.ebuild,
+  +gentoo-sources-2.4.22-r21.ebuild, -gentoo-sources-2.4.25-r13.ebuild,
+  +gentoo-sources-2.4.25-r14.ebuild, -gentoo-sources-2.4.26-r13.ebuild,
+  +gentoo-sources-2.4.26-r14.ebuild, -gentoo-sources-2.4.27-r5.ebuild,
+  +gentoo-sources-2.4.27-r6.ebuild, -gentoo-sources-2.4.28-r2.ebuild,
+  +gentoo-sources-2.4.28-r3.ebuild,
+  +files/gentoo-sources-2.4.20-CAN-2004-1056.patch,
+  +files/gentoo-sources-2.4.22-CAN-2004-1016.patch,
+  +files/gentoo-sources-2.4.22-vma.patch,
+  +files/gentoo-sources-2.4.CAN-2004-1016.patch,
+  +files/gentoo-sources-2.4.CAN-2004-1056.patch,
+  +files/gentoo-sources-2.4.CAN-2004-1137.patch,
+  +files/gentoo-sources-2.4.vma.patch:
+  Security bump; bugs #72452, #74384, #74392, #74464.
+
+*gentoo-sources-2.4.20-r29 (27 Nov 2004)
+
+  27 Nov 2004; <plasmaroo@gentoo.org> -gentoo-sources-2.4.20-r28.ebuild,
+  +gentoo-sources-2.4.20-r29.ebuild, -gentoo-sources-2.4.22-r19.ebuild,
+  +gentoo-sources-2.4.22-r20.ebuild, -gentoo-sources-2.4.25-r12.ebuild,
+  +gentoo-sources-2.4.25-r13.ebuild, -gentoo-sources-2.4.26-r12.ebuild,
+  +gentoo-sources-2.4.26-r13.ebuild, -gentoo-sources-2.4.27-r4.ebuild,
+  +gentoo-sources-2.4.27-r5.ebuild, -gentoo-sources-2.4.28-r1.ebuild,
+  +gentoo-sources-2.4.28-r2.ebuild, +files/gentoo-sources-2.4.AF_UNIX.patch,
+  +files/gentoo-sources-2.4.binfmt_a.out.patch:
+  Version bump for the AF_UNIX and a.out security vulnerabilities; bugs #72452
+  and #72317.
+
+*gentoo-sources-2.4.26-r12 (20 Nov 2004)
+
+  20 Nov 2004; <plasmaroo@gentoo.org> -gentoo-sources-2.4.20-r27.ebuild,
+  +gentoo-sources-2.4.20-r28.ebuild, -gentoo-sources-2.4.22-r18.ebuild,
+  +gentoo-sources-2.4.22-r19.ebuild, -gentoo-sources-2.4.25-r11.ebuild,
+  +gentoo-sources-2.4.25-r12.ebuild, -gentoo-sources-2.4.26-r11.ebuild,
+  +gentoo-sources-2.4.26-r12.ebuild, -gentoo-sources-2.4.27-r3.ebuild,
+  +gentoo-sources-2.4.27-r4.ebuild, +files/gentoo-sources-2.4.20-smbfs.patch,
+  files/gentoo-sources-2.4.binfmt_elf.patch,
+  +files/gentoo-sources-2.4.smbfs.patch:
+  Version bump; updates binfmt_elf patch (bug #70681) and adds the smbfs
+  security patch (bug #65877).
+
+*gentoo-sources-2.4.28-r1 (17 Nov 2004)
+
+  17 Nov 2004; <plasmaroo@gentoo.org> +gentoo-sources-2.4.28-r1.ebuild,
+  -gentoo-sources-2.4.28_rc3-r1.ebuild:
+  Version bump.
+
+*gentoo-sources-2.4.28_rc3-r1 (13 Nov 2004)
+
+  13 Nov 2004; <plasmaroo@gentoo.org> +gentoo-sources-2.4.28_rc3-r1.ebuild:
+  Version bump, fixes GCC 3.4 issues - bug #64220.
+
+*gentoo-sources-2.4.22-r18 (12 Nov 2004)
+
+  12 Nov 2004; <plasmaroo@gentoo.org> -gentoo-sources-2.4.20-r26.ebuild,
+  +gentoo-sources-2.4.20-r27.ebuild, -gentoo-sources-2.4.22-r17.ebuild,
+  +gentoo-sources-2.4.22-r18.ebuild, -gentoo-sources-2.4.25-r10.ebuild,
+  +gentoo-sources-2.4.25-r11.ebuild, -gentoo-sources-2.4.26-r10.ebuild,
+  +gentoo-sources-2.4.26-r11.ebuild, -gentoo-sources-2.4.27-r2.ebuild,
+  +gentoo-sources-2.4.27-r3.ebuild,
+  +files/gentoo-sources-2.4.binfmt_elf.patch:
+  Version bump for the binfmt_elf security vulnerability, bug #70681.
+
+*gentoo-sources-2.4.26-r10 (09 Nov 2004)
+
+  09 Nov 2004; <plasmaroo@gentoo.org> -gentoo-sources-2.4.19-r22.ebuild,
+  -gentoo-sources-2.4.20-r25.ebuild, +gentoo-sources-2.4.20-r26.ebuild,
+  -gentoo-sources-2.4.22-r16.ebuild, +gentoo-sources-2.4.22-r17.ebuild,
+  +gentoo-sources-2.4.25-r10.ebuild, -gentoo-sources-2.4.25-r9.ebuild,
+  +gentoo-sources-2.4.26-r10.ebuild, -gentoo-sources-2.4.26-r9.ebuild,
+  -gentoo-sources-2.4.27-r1.ebuild, +gentoo-sources-2.4.27-r2.ebuild,
+  -files/gentoo-sources-2.4.19-CAN-2004-0181.patch,
+  -files/gentoo-sources-2.4.19-gcc33.patch,
+  -files/gentoo-sources-2.4.19-munmap.patch,
+  -files/gentoo-sources-2.4.19-rtc_fix.patch,
+  +files/gentoo-sources-2.4.XDRWrapFix.patch, -files/i810_drm.patch,
+  -files/lcall-DoS.patch, -files/security.patch5:
+  Adding a fix for the 2.4 kNFSd security vulnerability, bug #62524.
+  Also fixed CAN-2004-0814, bug #68421. Obsoleting 2.4.19.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gentoo-sources-2.4.26-r9.ebuild, gentoo-sources-2.4.27-r1.ebuild:
+  Masked gentoo-sources-2.4.27-r1.ebuild broken for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gentoo-sources-2.4.26-r9.ebuild:
+  Masked gentoo-sources-2.4.26-r9.ebuild broken for ppc
+
+  25 Aug 2004; <plasmaroo@gentoo.org> gentoo-sources-2.4.27-r1.ebuild:
+  Added the /proc/cmdline patch to 2.4.27 as well since the issue also 
+  applies to it.
+
+*gentoo-sources-2.4.27-r1 (24 Aug 2004)
+
+  24 Aug 2004; <plasmaroo@gentoo.org> +gentoo-sources-2.4.27-r1.ebuild:
+  Version bump.
+
+*gentoo-sources-2.4.20-r25 (14 Aug 2004)
+
+  14 Aug 2004; <plasmaroo@gentoo.org> -gentoo-sources-2.4.19-r21.ebuild,
+  +gentoo-sources-2.4.19-r22.ebuild, -gentoo-sources-2.4.20-r24.ebuild,
+  +gentoo-sources-2.4.20-r25.ebuild, -gentoo-sources-2.4.22-r15.ebuild,
+  +gentoo-sources-2.4.22-r16.ebuild, -gentoo-sources-2.4.25-r8.ebuild,
+  +gentoo-sources-2.4.25-r9.ebuild, -gentoo-sources-2.4.26-r8.ebuild,
+  +gentoo-sources-2.4.26-r9.ebuild,
+  +files/gentoo-sources-2.4.cmdlineLeak.patch:
+  Version bump for the /proc/cmdline leak vulnerability; bug #59905.
+
+*gentoo-sources-2.4.25-r8 (08 Aug 2004)
+
+  08 Aug 2004; <plasmaroo@gentoo.org> -gentoo-sources-2.4.19-r20.ebuild,
+  +gentoo-sources-2.4.19-r21.ebuild, -gentoo-sources-2.4.20-r23.ebuild,
+  +gentoo-sources-2.4.20-r24.ebuild, -gentoo-sources-2.4.22-r14.ebuild,
+  +gentoo-sources-2.4.22-r15.ebuild, -gentoo-sources-2.4.25-r7.ebuild,
+  +gentoo-sources-2.4.25-r8.ebuild, -gentoo-sources-2.4.26-r7.ebuild,
+  +gentoo-sources-2.4.26-r8.ebuild,
+  +files/gentoo-sources-2.4.20-CAN-2004-0685.patch,
+  +files/gentoo-sources-2.4.CAN-2004-0685.patch:
+  Version bump for CAN-2004-0685, bug #59769.
+
+  05 Aug 2004; <plasmaroo@gentoo.org> gentoo-sources-2.4.19-r20.ebuild,
+  +files/security.patch5:
+  Compile and ptrace fix for 2.4.19; bug #59500.
+
+*gentoo-sources-2.4.25-r7 (04 Aug 2004)
+
+  04 Aug 2004; <plasmaroo@gentoo.org> -gentoo-sources-2.4.19-r19.ebuild,
+  +gentoo-sources-2.4.19-r20.ebuild, -gentoo-sources-2.4.20-r22.ebuild,
+  +gentoo-sources-2.4.20-r23.ebuild, -gentoo-sources-2.4.22-r13.ebuild,
+  +gentoo-sources-2.4.22-r14.ebuild, -gentoo-sources-2.4.25-r6.ebuild,
+  +gentoo-sources-2.4.25-r7.ebuild, -gentoo-sources-2.4.26-r5.ebuild,
+  -gentoo-sources-2.4.26-r6.ebuild, +gentoo-sources-2.4.26-r7.ebuild:
+  Added a patch for the CAN-2004-0415 vulnerability, bug #59378.
+
+*gentoo-sources-2.4.20-r22 (02 Aug 2004)
+
+  02 Aug 2004; <plasmaroo@gentoo.org> -gentoo-sources-2.4.19-r18.ebuild,
+  +gentoo-sources-2.4.19-r19.ebuild, -gentoo-sources-2.4.20-r21.ebuild,
+  +gentoo-sources-2.4.20-r22.ebuild,
+  +files/gentoo-sources-2.4.CAN-2003-0643.patch:
+  2.4.19 and 2.4.20 patched for CAN-2003-0643.
+
+  16 Jul 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  gentoo-sources-2.4.26-r6.ebuild:
+  Marked stable on x86.
+
+  13 Jul 2004; <plasmaroo@gentoo.org> gentoo-sources-2.4.26-r6.ebuild,
+  +files/gentoo-sources-2.4.26-OpenSWAN-CompileFix.patch:
+  Added a compile fix for OpenSWAN when debugging is turned off. Closes bug
+  #56822.
+
+*gentoo-sources-2.4.26-r6 (12 Jul 2004)
+
+  12 Jul 2004; <plasmaroo@gentoo.org> +gentoo-sources-2.4.26-r6.ebuild:
+  Version bump - SquashFS support bumped to 2.0.
+
+*gentoo-sources-2.4.26-r4 (09 Jul 2004)
+*gentoo-sources-2.4.22-r13 (09 Jul 2004)
+
+  09 Jul 2004; <plasmaroo@gentoo.org> -gentoo-sources-2.4.19-r17.ebuild,
+  +gentoo-sources-2.4.19-r18.ebuild, -gentoo-sources-2.4.20-r20.ebuild,
+  +gentoo-sources-2.4.20-r21.ebuild, -gentoo-sources-2.4.22-r12.ebuild,
+  +gentoo-sources-2.4.22-r13.ebuild, -gentoo-sources-2.4.25-r5.ebuild,
+  +gentoo-sources-2.4.25-r6.ebuild, -gentoo-sources-2.4.26-r3.ebuild,
+  -gentoo-sources-2.4.26-r4.ebuild, +gentoo-sources-2.4.26-r5.ebuild,
+  +files/gentoo-sources-2.4.CAN-2004-0497.patch:
+  Version bumps for kernel attribute vulnerabilities, bug #56479.
+
+  08 Jul 2004; <plasmaroo@gentoo.org> :
+  Version bump - FreeS/WAN is now replaced with OpenS/WAN.
+
+  25 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  gentoo-sources-2.4.26-r3.ebuild:
+  Marking stable on x86, per plasmaroo.
+
+*gentoo-sources-2.4.26-r3 (24 Jun 2004)
+
+  24 Jun 2004; <plasmaroo@gentoo.org> +gentoo-sources-2.4.19-r17.ebuild,
+  +gentoo-sources-2.4.20-r20.ebuild, +gentoo-sources-2.4.22-r12.ebuild,
+  +gentoo-sources-2.4.25-r5.ebuild, +gentoo-sources-2.4.26-r3.ebuild,
+  +files/gentoo-sources-2.4.19-gcc33.patch,
+  +files/gentoo-sources-2.4.CAN-2004-0495.patch,
+  +files/gentoo-sources-2.4.CAN-2004-0535.patch:
+  Security bumps for the CAN-2004-0495 and CAN-2004-0535 vulnerabilities. Also
+  closes bug #53983. Old versions removed.
+
+  23 Jun 2004; Aron Griffis <agriffis@gentoo.org>
+  gentoo-sources-2.4.19-r16.ebuild, gentoo-sources-2.4.20-r19.ebuild:
+  QA - fix use invocation
+
+*gentoo-sources-2.4.20-r19 (19 Jun 2004)
+
+  19 Jun 2004; <plasmaroo@gentoo.org> -gentoo-sources-2.4.19-r15.ebuild,
+  +gentoo-sources-2.4.19-r16.ebuild, -gentoo-sources-2.4.20-r18.ebuild,
+  +gentoo-sources-2.4.20-r19.ebuild,
+  +files/gentoo-sources-2.4.I2C_Limits.patch:
+  Added a patch to add in missing I2C sanity checks that were added upstream in
+  2.4.21.
+
+*gentoo-sources-2.4.20-r18 (14 Jun 2004)
+
+  14 Jun 2004; <plasmaroo@gentoo.org> +gentoo-sources-2.4.19-r15.ebuild,
+  +gentoo-sources-2.4.20-r18.ebuild, +gentoo-sources-2.4.22-r11.ebuild,
+  +gentoo-sources-2.4.25-r4.ebuild, +gentoo-sources-2.4.26-r2.ebuild,
+  +files/gentoo-sources-2.4.FPULockup-53804.patch:
+  Added patches for the FPU-lockup issues; please see bug #58304 for details.
+  Old versions removed.
+
+*gentoo-sources-2.4.26-r1 (10 Jun 2004)
+
+  10 Jun 2004; <plasmaroo@gentoo.org> +gentoo-sources-2.4.26-r1.ebuild:
+  Version bump.
+
+*gentoo-sources-2.4.25-r3 (01 Jun 2004)
+
+  01 Jun 2004; <plasmaroo@gentoo.org> +gentoo-sources-2.4.19-r14.ebuild,
+  +gentoo-sources-2.4.20-r17.ebuild, +gentoo-sources-2.4.22-r10.ebuild,
+  +gentoo-sources-2.4.25-r3.ebuild, +files/gentoo-sources-2.4...patch:
+  Added patches for the CAN-2004-0075, CAN-2004-0133, CAN-2004-0181,
+  CAN-2004-0394, and CAN-2004-0427 vulnerabilities. Bug #47881.
+
+  31 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gentoo-sources-2.4.25-r2.ebuild:
+  Masked gentoo-sources-2.4.25-r2.ebuild broken for ppc
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org>
+  gentoo-sources-2.4.19-r13.ebuild, gentoo-sources-2.4.20-r16.ebuild,
+  gentoo-sources-2.4.20-r7.ebuild, gentoo-sources-2.4.22-r3.ebuild:
+  Add inherit eutils.
+
+*gentoo-sources-2.4.25-r2 (17 Apr 2004)
+
+  17 Apr 2004; <plasmaroo@gentoo.org>
+  +files/gentoo-sources-2.4.CAN-2004-0010.patch,
+  +files/gentoo-sources-2.4.CAN-2004-0177.patch,
+  +files/gentoo-sources-2.4.CAN-2004-0178.patch,
+  +gentoo-sources-2.4.19-r13.ebuild, +gentoo-sources-2.4.20-r16.ebuild,
+  +gentoo-sources-2.4.22-r9.ebuild, +gentoo-sources-2.4.25-r2.ebuild:
+  Added patches for the CAN-2004-0010, CAN-2004-0177 and CAN-2004-0178
+  vulnerabilities. Some older revisions were removed.
+
+*gentoo-sources-2.4.20-r14 (15 Apr 2004)
+
+  15 Apr 2004; <plasmaroo@gentoo.org>
+  +files/gentoo-sources-2.4.CAN-2004-0109.patch,
+  -gentoo-sources-2.4.19-r11.ebuild, +gentoo-sources-2.4.19-r12.ebuild,
+  -gentoo-sources-2.4.20-r14.ebuild, +gentoo-sources-2.4.20-r15.ebuild,
+  +gentoo-sources-2.4.22-r8.ebuild, +gentoo-sources-2.4.25-r1.ebuild:
+  Version bump for the CAN-2004-0109 issue; bug #47881.
+
+*gentoo-sources-2.4.26_pre6 (26 Mar 2004)
+
+  26 Mar 2004; Bob Johnson <livewire@gentoo.org>
+  gentoo-sources-2.4.26_pre6.ebuild:
+  Bumped ~x86 to pre6
+
+*gentoo-sources-2.4.26_pre5 (20 Mar 2004)
+*gentoo-sources-2.4.26_pre3 (20 Mar 2004)
+
+  20 Mar 2004; Bob Johnson <livewire@gentoo.org>
+  gentoo-sources-2.4.26_pre5.ebuild, gentoo-sources-2.4.26_pre3.ebuild,
+  gentoo-sources-2.4.25.ebuild:
+  Bumped ~x86 to pre5
+  changed mis-named ebuilds -rc3 > -pre3
+  marked 2.4.25 stable
+
+*gentoo-sources-2.4.25 (16 Mar 2004)
+
+  16 Mar 2004; John Mylchreest <johnm@gentoo.org>
+  gentoo-sources-2.4.25.ebuild, gentoo-sources-2.4.26_rc3.ebuild:
+  bumping to kernel-2 and most recent versions on behalf of LiveWire
+
+*gentoo-sources-2.4.22-r7 (18 Feb 2004)
+*gentoo-sources-2.4.20-r13 (18 Feb 2004)
+
+  18 Feb 2004; <plasmaroo@gentoo.org> gentoo-sources-2.4.20-r13.ebuild,
+  gentoo-sources-2.4.22-r7.ebuild:
+  Added the patch for the mremap/munmap vulnerability. Bug #42024.
+
+*gentoo-sources-2.4.20-r12 (16 Feb 2004)
+*gentoo-sources-2.4.22-r6 (16 Feb 2004)
+
+  16 Feb 2004; <plasmaroo@gentoo.org> gentoo-sources-2.4.20-r12.ebuild,
+  gentoo-sources-2.4.22-r6.ebuild:
+  Added the fix for the ptrace vulnerability for AMD64 platforms. No other
+  functional change is included, so these packages are masked as "~amd64" only.
+
+*gentoo-sources-2.4.20-r11 (08 Feb 2004)
+
+  08 Feb 2004; <plasmaroo@gentoo.org> gentoo-sources-2.4.20-r11.ebuild:
+  Version bump. Closes bugs #12721, #18628, #28571, #34545,
+  #35850, and #38301.
+
+  18 Jan 2004; Brian Jackson <iggy@gentoo.org>
+  gentoo-sources-2.4.22-r5.ebuild:
+  Bad patch on the mirrors should be fixed: removing nomirror.
+
+  15 Jan 2004; Brian Jackson <iggy@gentoo.org>
+  gentoo-sources-2.4.22-r5.ebuild:
+  Nomirroring since the one on the mirrors is bad.
+
+*gentoo-sources-2.4.22-r5 (14 Jan 2004)
+
+  14 Jan 2004; Brian Jackson <iggy@gentoo.org>
+  gentoo-sources-2.4.22-r5.ebuild:
+  2.4.22-r5, should fix almost all bugs
+
+  09 Jan 2004; <plasmaroo@gentoo.org> gentoo-sources-2.4.22-r4.ebuild:
+  Fixed configuration problems; see bug #37668.
+
+*gentoo-sources-2.4.22-r4 (09 Jan 2004)
+
+  09 Jan 2004; Brian Jackson <iggy@gentoo.org>
+  gentoo-sources-2.4.20-r6.ebuild, gentoo-sources-2.4.20-r8.ebuild,
+  gentoo-sources-2.4.20-r9.ebuild, gentoo-sources-2.4.22-r1.ebuild,
+  gentoo-sources-2.4.22-r2.ebuild, gentoo-sources-2.4.22-r4.ebuild:
+  -r4 fixes a couple of bugs, some old stuff was cleaned up.
+
+*gentoo-sources-2.4.22-r3 (06 Jan 2004)
+*gentoo-sources-2.4.20-r10 (06 Jan 2004)
+
+  06 Jan 2004; <plasmaroo@gentoo.org> gentoo-sources-2.4.22-r3.ebuild:
+  gentoo-sources-2.4.20-r10.ebuild, gentoo-sources-2.4.22-r2.ebuild,
+  files/gentoo-sources-2.4.20-hpt372.patch,
+  files/gentoo-sources-2.4.20-rtc_fix.patch,
+  files/gentoo-sources-2.4.22-rtc_fix.patch,
+  files/gentoo-sources-2.4.CAN-2003-0985.patch:
+  Version bump - addresses the security vulnerabilities in bugs #37292 and
+  #37317. 2.4.20-r10 also includes the patch for HPT372/HPT374 controllers
+  from bug #20986.
+
+  21 Dec 2003; Brian Jackson <iggy@gentoo.org>
+  gentoo-sources-2.4.22-r2.ebuild: Bumped to stable.
+
+*gentoo-sources-2.4.22-r2 (21 Dec 2003)
+
+  21 Dec 2003; Brian Jackson <iggy@gentoo.org>
+  gentoo-sources-2.4.22-r2.ebuild:
+  New version, fixes bug #35045, ACPI update, updated forcedeth, etc.
+
+  05 Dec 2003; <plasmaroo@gentoo.org> gentoo-sources-2.4.22-r1.ebuild,
+  files/gentoo-sources-2.4.22-kmsgdump.patch:
+  Added a fix to fix a "CONFIG_LOG_BUF_SHIFT" problem as
+  include/asm-i386/kmsgdump.h was not updated for some reason. Thanks to
+  Jeremy Huddleston <jemeryhu at cory.eecs.berkeley.edu> for the patch. 
+  This closes bug #35123.
+
+  03 Dec 2003; Brian Jackson <iggy@gentoo.org>
+  gentoo-sources-2.4.20-r9.ebuild, files/do_brk_fix.patch:
+  Fixup do_brk() patch.
+
+*gentoo-sources-2.4.22-r1 (02 Dec 2003)
+
+  02 Dec 2003; Brian Jackson <iggy@gentoo.org>
+  gentoo-sources-2.4.20-r9.ebuild, gentoo-sources-2.4.22-r1.ebuild,
+  gentoo-sources-2.4.22.ebuild:
+  Version bump for the recent do_brk() vulnerability.
+
+  01 Dec 2003; Brian Jackson <iggy@gentoo.org>
+  gentoo-sources-2.4.19-r10.ebuild, gentoo-sources-2.4.20-r5.ebuild,
+  gentoo-sources-2.4.20-r6.ebuild, gentoo-sources-2.4.20-r7.ebuild,
+  gentoo-sources-2.4.20-r8.ebuild, gentoo-sources-2.4.22.ebuild:
+  Added a fix for the recent do_brk() vulnerability.
+
+*gentoo-sources-2.4.22 (01 Dec 2003)
+
+  01 Dec 2003; Brian Jackson <iggy@gentoo.org> gentoo-sources-2.4.22.ebuild:
+  added 2.4.22 version as ~x86, it's got one fix from the last
+  gentoo-test-sources
+
+  20 Nov 2003; Brandon Low <lostlogic@gentoo.org>
+  gentoo-sources-2.4.19-r10.ebuild, gentoo-sources-2.4.20-r5.ebuild,
+  gentoo-sources-2.4.20-r6.ebuild, gentoo-sources-2.4.20-r7.ebuild,
+  gentoo-sources-2.4.20-r8.ebuild:
+  Move version handling logic to after inherit kernel, or insert it where
+  necessary
+
+  17 Nov 2003; <plasmaroo@gentoo.org> gentoo-sources-2.4.20-r8.ebuild,
+  files/gentoo-sources-2.4.20-ipt-route.patch: Added the new ROUTE patch 
+  required to build iptables-1.2.9 properly.
+
+*gentoo-sources-2.4.20-r8 (21 Oct 2003)
+
+  21 Oct 2003; <plasmaroo@gentoo.org> gentoo-sources-2.4.20-r8.ebuild,
+  files/gentoo-sources-2.4.20-grsec-datasize_fix.patch:
+  Version bump. This release is mainly a "catch-up" for those who did not get
+  the latest unbumped versions and also contains the grsecurity fix to fix
+  negative memory counts. Thanks to <bartron@gmx.net> for the patch, Bug #25991
+
+  19 Oct 2003; <plasmaroo@gentoo.org> gentoo-sources-2.4.20-r7.ebuild,
+  files/gentoo-sources-2.4.20-ipt-realm.patch:
+  Added a patch to fix the ipt_realm.c bugs we have floating around...
+
+  11 Oct 2003; <plasmaroo@gentoo.org> gentoo-sources-2.4.20-r7.ebuild,
+  files/gentoo-sources-2.4.20-cs46xx-gcc33.patch:
+  Added CS46xx patch to fix the GCC 3.3 problems in the driver: Bug 29970
+
+  11 Oct 2003; <plasmaroo@gentoo.org> gentoo-sources-2.4.20-r7.ebuild,
+  files/gentoo-sources-2.4.20-devfs-snd-fix.patch:
+  Added a devfs patch to fix some issues with multiple soundcards: Bug #30837.
+ 
+  02 Oct 2003; <plasmaroo@gentoo.org> gentoo-sources-2.4.20-r7.ebuild,
+  files/gentoo-sources-2.4.20-mdcount.patch:
+  Added Software RAID patch for fix unsynchronized reference counts: Bug #30124.
+
+  24 Sep 2003; <plasmaroo@gentoo.org> gentoo-sources-2.4.20-r7.ebuild,
+  files/gentoo-sources-2.4.20-sched-interrupt.patch:
+  Added scheduler fix which should solve some PCMCIA issues.
+
+  21 Sep 2003; <plasmaroo@gentoo.org> files/gentoo-sources-2.4.20-gcc33.patch:
+  Added ip_nat_core.c GCC3.3 fix [Bug 28561 et al.]
+
+  14 Sep 2003; <plasmaroo@gentoo.org> gentoo-sources-2.4.20-r7.ebuild,
+  files/gentoo-sources-2.4.20-grsec-disabled.patch:
+  Added a GRSEC patch to make sysctl work when GRSEC is disabled...
+
+  13 Sep 2003; <plasmaroo@gentoo.org> files/gentoo-sources-2.4.20-gcc33.patch:
+  Added more GCC3.3 fixes
+
+*gentoo-sources-2.4.20-r7 (11 Sep 2003)
+
+  11 Sep 2003; <plasmaroo@gentoo.org> gentoo-sources-2.4.20-r7.ebuild,
+  files/gentoo-sources-2.4.20-gcc33.patch:
+  Added GCC3.3 compatibility patch.
+
+  08 Sep 2003; Martin Holzer <mholzer@gentoo.org>
+  gentoo-sources-2.4.19-r10.ebuild, gentoo-sources-2.4.20-r5.ebuild,
+  gentoo-sources-2.4.20-r6.ebuild:
+  SRC now uses mirror://kernel
+
+*gentoo-sources-2.4.20-r6 (08 Aug 2003)
+
+  08 Aug 2003; Daniel Ahlberg <aliz@gentoo.org> gentoo-source-2.4.20-r6.ebuid :
+  Apply a bunch of security fixes.
+
+*gentoo-sources-2.4.20-r5 (10 May 2003)
+
+  10 May 2003; Jay Pfeifer <pfeifer@gentoo.org> gentoo-sources-2.4.20-r5.ebuild:
+  Package is currently marked stable (x86).
+  Changes:
+  * Added Barton SSE suport
+  * Minor documentation fixes
+  * Fixed USAGI issue
+  * Other things I am forgetting to mention :)
+
+*gentoo-sources-2.4.20-r4 (08 May 2003)
+
+  08 May 2003; Jay Pfeifer <pfeifer@gentoo.org> gentoo-sources-2.4.20-r4.ebuild:
+  Package is currently marked stable (x86).
+  Changes:
+  * Added a few updates for ck6
+  * Updated SuperFreeS/WAN to 1,99,7rc2
+  * Updated to patch-o-matic from 01May2003 lotsa new goodies
+  * Updated USAGI to 28Apr2003 snapshot
+  * Made USAGI installable by a USE flag 'USAGI'
+    - if you use USAGI, you *cannot* use {freeswan/patch-int/loop-jari}
+    - the ebuild will drop either/or depending on your use flags :)
+  * Updated adaptec 79xxx to 01May2003
+  * Updated ntfs to 2.1.4a
+  * Updated grsecurity to 1.99g
+  * Added initial support for systrace v1.2
+  * Updated bluetooth support fro MH to 2.4.20-MH7
+  * Added kraxel patch which is v4l2 & other updates - see the docs
+  * Fixed broken gcc optimizations... the overoptimization was breaking things
+  * Added support for ipvs
+  * Added support for usbvision
+  * Added vesafb fix
+  * Added imq support & the ipv4 & ipv6 imq ipt patches
+  * Updated Wireless Extensions to WE-15
+  * Updated evms2 stuff to version 2.0.1
+  * Fixed another small grsec/rmap issue + added a grsec hardlink fix
+  * Added some jfs 1.1.2 fixes
+  * Added usb scanners update from 16Apr2003
+  * Added some minor grsecurity fixes
+  * Other things I am forgetting to mention :)
+
+*gentoo-sources-2.4.20-r3 (15 Apr 2003)
+
+  15 Apr 2003; Jay Pfeifer <pfeifer@gentoo.org> gentoo-sources-2.4.20-r3.ebuild:
+  Package is currently marked unstable (~x86).
+  * Added latest ck (12Apr2003) - thank you Con Kolivas!
+  * Added support for either rmap(default) or aavm (your choice)
+  * Added support for evms 2.0 (user selects 1.2.1 or 2.0). evms 1.2.1 default.
+  * If you are thinking about using evms 2.0 - READ the DOCS!!! <-- Warning!
+  * Added support for nforce2 ide & audio... (thanks alron & alain)
+  * ext3 fixes
+  * jfs fixes - 1.1.1 + xattr & acl
+  * update ntfs to 2.1.2a
+  * grsecurity bumped to 1.9.9f (this contains the ptrace fix)
+  * SuperFreeS/WAN up to 1.9.6.1
+  * updated to ea+acl+nfsacl 0.8.56
+  * Readded missing ciphers from patch-int
+  * Removed safe serial driver from usbdnet
+  * Added bootsplash 3.0.7
+  * Fixed a number of USAGI issues (but some still remain).
+  * Updated adaptec 79xx to 18Mar2003 version (thanks livewire)
+  * Added backported bluetooth support from MH
+  * Other things I am forgetting to mention
+
+*gentoo-sources-2.4.20-r2 (19 Mar 2003)
+  
+  21 Mar 2003; Jay Pfeifer <pfeifer@gentoo.org> gentoo-sources-2.4.20-r2.ebuild:
+  * Added ebuild note of lack of xfs support (use xfs-sources for xfs)
+
+  19 Mar 2003; Jay Pfeifer <pfeifer@gentoo.org> gentoo-sources-2.4.20-r2.ebuild:
+
+  * Added ptrace security fix.
+  * Process priorities are now obeyed. :)
+  * pom updated to 20030310
+  * removed aavm
+  * removed ck4 O(1) sched, ll, preempt patch
+  * added rml preempt & ll
+  * update xattr+acl to xattr+acl+trusted 0.8.55
+  * update usbdnet
+  * add dac960 root fix
+  * add sim710 compile fix
+
+*gentoo-sources-2.4.20-r1 (12 Jan 2003)
+
+  27 Feb 2003; Brandon Low <lostlogic@gentoo.org> gentoo-sources-2.4.20-r1.ebuild:
+  Move to stable
+
+  Ebuild Changes
+  * Dropped the *3c509-fix
+  * Dropped the *tcp-window-tracking
+  * Drop gcc-3.1 patch if not on gcc3
+  * Also make prettier output for the USE var controlled
+    patches
+  * Add a warning about maybe needing to rebuild iptables
+
+  Features of this kernel:
+  * Based heavily on ck-sources-2.4.20-r2 (linux-2.4.20-ck2)
+
+    From CK:
+  * O(1) Scheduler
+  * Low-latency scheduling
+  * Preempt
+  * Read-latency 2
+  * Reverse mapping VM
+  * Supermount
+  * ACPI update
+  * Variable HZ (automatically tuned afaik)
+
+    From elsewhere:
+  * 3.5G Address space
+  * xattr+acl support
+  * TIOCGDEV support
+  * Grsecurity-1.9.8-rc2
+  * ACLs for JFS
+  * Optimizations for GCC3 compilation
+  * EVMS 1.2.1
+  * Additional Tekram SCSI Support
+  * KT400 pci.ids thanks to viz
+  * NTFS-tng 2.10a
+  * Support for the ECC driver
+  * Video 4 Linux v2 API
+  * MPPE support
+  * i2c-2.7.0
+  * Inode Monitor support
+  * Support for kernel config on /proc/config
+  * Updated support for aic7xxx SCSI cards
+  * Ext3 data=journal fix.
+  * Fix for 3c509
+  * Synced with almost all of the iptables patch-o-matic base
+  * XFS optional useflag with a warning about JFS
+    xfs+quota-v2+kdb support many thanks to dragon
+  * Encrypted loopback support (loop-jari)
+  * CryptoAPI support from www.kerneli.org
+  * Super Free S/WAN
+  * Quick bugfixes
+  * Defconfig with some reasonable stuff for this kernel
+    on gentoo
+  * Gentoo fb-logos
+
+  17 Dec 2002; Brandon Low <lostlogic@gentoo.org>:
+  Make all kernel-sources SLOT="${KV}"
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  07 Dec 2002; Brandon Low <lostlogic@gentoo.org> gentoo-sources-2.4.19-r10.ebuild gentoo-sources-2.4.19-r9.ebuild:
+  Add fix for i810_drm compilation, this should make people nice and
+  happy :). (as shown above this is for -r10 and -r9
+
+  16 Nov 2002; Brandon Low <lostlogic@gentoo.org> gentoo-sources-2.4.19-r10.ebuild gentoo-sources-2.4.19-r9.ebuild:
+  Add fix for lcall-DoS from lkml.
+
+*gentoo-sources-2.4.19-r10 (06 Oct 2002)
+
+  06 Oct 2002; Brandon Low <lostlogic@gentoo.org> gentoo-sources-2.4.19-r10.ebuild:
+
+  While testing this kerenl I ran into very bad crashing behavior with 
+  the USE="acpi4linux" option enabled... just a warning.  But for you
+  laptopers it is still there.
+
+  Well I dug up about 3-4 hours of time and merged xfs into this kernel
+  so everyone who has been asking for it finally gets their way because
+  I hate being unpopular.  I hope you all enjoy XFS, it is enabled by a
+  hidden useflag so set USE="xfs" to turn it on for this kernel.  Please
+  let me know your results.  Apparently with these patches enabled, JFS
+  causes corruption due to some strange interrraction.  If you use JFS
+  and XFS use xfs-sources-2.4.19-r2 please.
+
+  New in this release:
+  - Dropped ext3-htree due to corruption with current e2fsprogs
+    this may bite some of you who are already using it, but
+    hopefully it will be updated before you need to fsck your
+    partitions a lot.
+  - Update EVMS
+  - Update JFS
+  - Fix for grsecurity compilation
+  - Update patches.txt documentation and kernel.eclass (makes older
+    a little funky, but is more forward working)
+  - Fix processor type options to show gcc>31 rather than gcc31
+  - Add futexes support
+  - Add imon support
+  - Optional XFS patch just set USE="xfs"
+  - Optional ACPI patch just set USE="acpi4linux"
+  - Redone ebuild setup now we have an eclass for these things
+  - Rename some patches to better names for use with KERNEL_EXCLUDE
+  - Add support for KERNEL_EXCLUDE
+  - Add and re-arrange VIA bugfixes
+  - Update grsecurity
+  - Switch to latest release IPSEC Free S/WAN
+  - Add usbdnet support for Zaurus handhelds
+  - Updated preempt
+  - Updated rmap
+  - Add xattr and acl patches and include the JFS patches for them.
+  - Add supermount patches.
+  - Incorportate the small fixes done to gentoo-sources-2.4.19-r9
+
+*gentoo-sources-2.4.19-r9 (03 Sep 2002)
+
+  04 Sep 2002; Brandon Low <lostlogic@gentoo.org> gentoo-sources-2.4.19-r9.ebuild:
+
+  Add 2 line patch to fix compilation with HIGHMEM
+
+  03 Sep 2002; Brandon Low <lostlogic@gentoo.org> gentoo-sources-2.4.19-r9.ebuild:
+
+  Whole new kernel patching methodology and new kernel.  
+
+  I won't mark what has changed as that would be impossible,
+  instead read /usr/share/doc/gentoo-sources-2.4.19-r9/patches.txt.gz
+  for information about all the patches in this kernel.
+
+*gentoo-sources-2.4.19-r8 (20 Aug 2002)
+
+  20 Aug 2002; Michael Cohen <mjc@gentoo.org>
+  new kernel with sys-kmod/$foo.  needs to have sparc* and ppc tested.
+
+*gentoo-sources-2.4.19-r7 (09 Jul 2002)
+
+  15 Jul 2002; Mark Guertin <gerk@gentoo.org>
+  Added arch keywords (-ppc -sparc -sparc64)
+
+  09 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> ChangeLog :
+
+  Added ChangeLog.
+

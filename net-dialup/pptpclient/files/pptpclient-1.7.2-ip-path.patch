@@ -1,0 +1,29 @@
+diff -Nru pptp-1.7.2.orig/routing.c pptp-1.7.2/routing.c
+--- pptp-1.7.2.orig/routing.c	2008-05-14 08:33:55.000000000 +0200
++++ pptp-1.7.2/routing.c	2009-09-16 23:28:11.000000000 +0200
+@@ -55,7 +55,7 @@
+ 
+ void routing_init(char *ip) {
+   char buf[256];
+-  snprintf(buf, 255, "/bin/ip route get %s", ip);
++  snprintf(buf, 255, "/sbin/ip route get %s", ip);
+   FILE *p = popen(buf, "r");
+   fgets(buf, 255, p);
+   /* TODO: check for failure of fgets */
+@@ -66,14 +66,14 @@
+ 
+ void routing_start() {
+   char buf[256];
+-  snprintf(buf, 255, "/bin/ip route replace %s", route);
++  snprintf(buf, 255, "/sbin/ip route replace %s", route);
+   FILE *p = popen(buf, "r");
+   pclose(p);
+ }
+ 
+ void routing_end() {
+   char buf[256];
+-  snprintf(buf, 255, "/bin/ip route delete %s", route);
++  snprintf(buf, 255, "/sbin/ip route delete %s", route);
+   FILE *p = popen(buf, "r");
+   pclose(p);
+ }

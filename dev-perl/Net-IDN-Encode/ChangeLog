@@ -1,0 +1,17 @@
+# ChangeLog for dev-perl/Net-IDN-Encode
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-IDN-Encode/ChangeLog,v 1.3 2015/06/13 22:28:49 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Net-IDN-Encode-2.201.0.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+  15 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  Net-IDN-Encode-2.201.0.ebuild:
+  Fix Module::Build version requirement
+
+*Net-IDN-Encode-2.201.0 (11 Oct 2014)
+
+  11 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Net-IDN-Encode-2.201.0.ebuild, +metadata.xml:
+  New package, bug 518842

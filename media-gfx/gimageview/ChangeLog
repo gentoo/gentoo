@@ -1,0 +1,134 @@
+# ChangeLog for media-gfx/gimageview
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gimageview/ChangeLog,v 1.33 2014/01/28 07:38:23 ssuominen Exp $
+
+  28 Jan 2014; Samuli Suominen <ssuominen@gentoo.org>
+  gimageview-0.2.27-r3.ebuild:
+  Link the gimv executable against mathlib for floor() and pow() wrt #417995 by
+  SN (Enlik)
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> gimageview-0.2.27-r3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  28 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  -gimageview-0.2.27-r2.ebuild:
+  old
+
+  28 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  gimageview-0.2.27-r3.ebuild:
+  amd64/ppc/ppc64/x86 stable
+
+  09 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  gimageview-0.2.27-r2.ebuild:
+  Pull in version < 1.2.0 of xine-lib.
+
+*gimageview-0.2.27-r3 (09 Jan 2012)
+
+  09 Jan 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +gimageview-0.2.27-r3.ebuild:
+  Temporarily remove USE="xine" for missing xine-lib >= 1.2.0 support wrt
+  #397639
+
+  07 Aug 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gimageview-0.2.27-r2.ebuild, +files/gimageview-0.2.27-libpng15.patch:
+  Fix building with libpng15 wrt #361941. Fix missing bzip2 and libXinerama
+  deps. Disable "deprecated" imlib-1.x support.
+
+  28 Mar 2011; Samuli Suominen <ssuominen@gentoo.org>
+  gimageview-0.2.27-r2.ebuild:
+  Use SLOT dependencies for x11-libs/gtk+. Remove useless libtool files. Fix
+  documentation path.
+
+  21 Dec 2008; <ssuominen@gentoo.org> +files/gimageview-0.2.27-gtk2.patch,
+  gimageview-0.2.27-r2.ebuild:
+  Remove unnecessary GTK+-2 defines, and add a missing one for bug 247725,
+  thanks to Flameeyes for reporting. Run elibtoolize.
+
+  16 Jan 2008; Markus Meier <maekke@gentoo.org> gimageview-0.2.27-r2.ebuild:
+  add quotes
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing usata from metadata.xml as per #22931.
+
+  30 Apr 2007; Marius Mauch <genone@gentoo.org> gimageview-0.2.27-r2.ebuild:
+  Replacing einfo with elog
+
+  04 Nov 2006; Mamoru KOMACHI <usata@gentoo.org>
+  gimageview-0.2.27-r2.ebuild:
+  Added pkg-config dep. This closes bug #153065.
+
+  04 Oct 2005; MATSUU Takuto <matsuu@gentoo.org>
+  -gimageview-0.2.27-r1.ebuild, gimageview-0.2.27-r2.ebuild:
+  Marked stable.
+
+*gimageview-0.2.27-r2 (23 Sep 2005)
+
+  23 Sep 2005; MATSUU Takuto <matsuu@gentoo.org>
+  +gimageview-0.2.27-r2.ebuild:
+  depricated gtk2 USE flag, Bug 106560.
+
+  29 May 2005; Mamoru KOMACHI <usata@gentoo.org> -gimageview-0.2.25.ebuild,
+  -gimageview-0.2.26.ebuild, gimageview-0.2.27-r1.ebuild:
+  Cleaned gtk2 USE flag. This closes bug #92164.
+
+  08 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  gimageview-0.2.27-r1.ebuild:
+  Marked stable on amd64.
+
+  08 Apr 2005; Markus Rothe <corsair@gentoo.org>
+  gimageview-0.2.27-r1.ebuild:
+  Stable on ppc64
+
+  30 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gimageview-0.2.27-r1.ebuild:
+  Stable on ppc.
+
+  21 Mar 2005; Mamoru KOMACHI <usata@gentoo.org>
+  gimageview-0.2.27-r1.ebuild:
+  Stable on x86.
+
+  05 Feb 2005; Mamoru KOMACHI <usata@gentoo.org>
+  +files/gimageview-0.2.27-gtk12_fix.diff,
+  +files/gimageview-0.2.27-sort_fix.diff, gimageview-0.2.27-r1.ebuild:
+  Added patches to fix bug #78648.
+
+*gimageview-0.2.27-r1 (19 Jan 2005)
+
+  19 Jan 2005; Mamoru KOMACHI <usata@gentoo.org>
+  +gimageview-0.2.27-r1.ebuild, -gimageview-0.2.27.ebuild:
+  Corrected install directory.
+
+*gimageview-0.2.27 (18 Jan 2005)
+
+  18 Jan 2005; Mamoru KOMACHI <usata@gentoo.org> +gimageview-0.2.27.ebuild:
+  Version bumped.
+
+  04 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> gimageview-0.2.26.ebuild:
+  Stable on x86 and ppc.
+
+*gimageview-0.2.26 (06 Oct 2004)
+
+  06 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> gimageview-0.2.25.ebuild,
+  +gimageview-0.2.26.ebuild:
+  Version bumped. Marked 0.2.25 stable on x86 and ppc.
+
+  31 Jul 2004; Tom Gall <tgall@gentoo.org> gimageview-0.2.25.ebuild:
+  stable on ppc64, bug #57127
+
+  29 Jun 2004; Daniel Goller <morfic@gentoo.org> gimageview-0.2.25.ebuild:
+  Added patch to allow compilation with gcc-3.4
+  Thanks Bret Towe (Magnade), for the patch.
+  This Closes #53693
+  
+  29 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> gimageview-0.2.25.ebuild:
+  Marked ~amd64.
+
+  24 Jun 2004; Aron Griffis <agriffis@gentoo.org> gimageview-0.2.25.ebuild:
+  QA - fix use invocation
+
+*gimageview-0.2.25 (23 May 2004)
+
+  23 May 2004; Mamoru KOMACHI <usata@gentoo.org> gimageview-0.2.25.ebuild:
+  Initial import. Thanks to Sadayuki Kobayashi <desperado@s17.xrea.com>,
+  MATSUU Takuto <matsuu@gentoo.org> and Lindsay Holmwood
+  <holmwoodl@iinet.net.au>. Bug #21066

@@ -1,0 +1,38 @@
+# ChangeLog for sci-electronics/electronics-menu
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/electronics-menu/ChangeLog,v 1.8 2015/03/16 19:04:11 tomjbe Exp $
+
+*electronics-menu-1.0-r1 (16 Mar 2015)
+
+  16 Mar 2015; Thomas Beierlein <tomjbe@gentoo.org>
+  +electronics-menu-1.0-r1.ebuild:
+  Migrate to EAPI5
+
+  08 Oct 2010; Jeremy Olexa <darkside@gentoo.org>
+  electronics-menu-1.0.ebuild:
+  Migrate to EAPI3 for Gentoo Prefix mods, bug 339958
+
+  20 Jan 2010; Brent Baude <ranger@gentoo.org> electronics-menu-1.0.ebuild:
+  Marking electronics-menu-1.0 ppc64 for bug 300766
+
+  17 Jan 2010; Raúl Porcel <armin76@gentoo.org>
+  electronics-menu-1.0.ebuild:
+  sparc stable wrt #300766
+
+  17 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  electronics-menu-1.0.ebuild:
+  stable x86, bug 300766
+
+  12 Jan 2010; nixnut <nixnut@gentoo.org> electronics-menu-1.0.ebuild:
+  ppc stable #299455
+
+  07 Jan 2010; Samuli Suominen <ssuominen@gentoo.org>
+  electronics-menu-1.0.ebuild:
+  amd64 stable wrt #299455
+
+*electronics-menu-1.0 (16 Nov 2009)
+
+  16 Nov 2009; Denis Dupeyron <calchan@gentoo.org>
+  +electronics-menu-1.0.ebuild:
+  Initial commit.
+

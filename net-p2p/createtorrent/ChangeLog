@@ -1,0 +1,38 @@
+# ChangeLog for net-p2p/createtorrent
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/createtorrent/ChangeLog,v 1.8 2015/03/11 17:32:04 mrueg Exp $
+
+  11 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -createtorrent-1.1.3-r1.ebuild,
+  -files/createtorrent-1.1.3-asneeded.patch:
+  Remove old.
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> createtorrent-1.1.4.ebuild:
+  amd64 stable, bug #289480
+
+*createtorrent-1.1.4 (05 Jun 2008)
+
+  25 Oct 2008; Pieter Van den Abeele <pvdabeel@gentoo.org> createtorrent-1.1.4.ebuild:
+  Keyworded ~ppc. Closes bug #229799
+
+  05 Jun 2008; Peter Volkov <pva@gentoo.org> +createtorrent-1.1.4.ebuild:
+  Version bump, as reported by me :), bug #224775.
+
+*createtorrent-1.1.3-r1 (13 Apr 2007)
+
+  13 Apr 2007; Samuli Suominen <drac@gentoo.org>
+  +files/createtorrent-1.1.3-asneeded.patch, -createtorrent-1.1.3.ebuild,
+  +createtorrent-1.1.3-r1.ebuild:
+  Fix compilation with --as-needed for bug 172827 and install documentation.
+  Thanks to Maarten Maathuis for reporting.
+
+  10 Mar 2007; Raúl Porcel <armin76@gentoo.org> createtorrent-1.1.3.ebuild:
+  Fix HOMEPAGE, thanks to corsair for noticing this, bug 170236
+
+  10 Mar 2007; Markus Rothe <corsair@gentoo.org> createtorrent-1.1.3.ebuild:
+  Added ~ppc64
+
+*createtorrent-1.1.3 (28 Feb 2007)
+
+  28 Feb 2007; Raúl Porcel <armin76@gentoo.org> +metadata.xml,
+  +createtorrent-1.1.3.ebuild:
+  New ebuild

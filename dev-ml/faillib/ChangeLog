@@ -1,0 +1,18 @@
+# ChangeLog for dev-ml/faillib
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/faillib/ChangeLog,v 1.3 2014/11/28 17:51:58 aballier Exp $
+
+  28 Nov 2014; Alexis Ballier <aballier@gentoo.org> faillib-111.17.00.ebuild:
+  update deps for ocaml 4.02
+
+*faillib-111.17.00 (30 Oct 2014)
+
+  30 Oct 2014; Alexis Ballier <aballier@gentoo.org> +faillib-111.17.00.ebuild:
+  version bump
+
+*faillib-109.60.00 (19 Jan 2014)
+
+  19 Jan 2014; Alexis Ballier <aballier@gentoo.org> +faillib-109.60.00.ebuild,
+  +metadata.xml:
+  initial import
+

@@ -1,0 +1,22 @@
+2006-07-17  Paul Eggert  <eggert@cs.ucla.edu>
+
+	* tests/tools.at (autom4te cache): Update wording of diagnostic
+	to match M4 1.4.5.
+
+Index: tests/tools.at
+===================================================================
+RCS file: /cvsroot/autoconf/autoconf/tests/tools.at,v
+retrieving revision 1.89
+retrieving revision 1.90
+diff -u -p -r1.89 -r1.90
+--- tests/tools.at	20 Jun 2006 05:37:43 -0000	1.89
++++ tests/tools.at	17 Jul 2006 17:30:44 -0000	1.90
+@@ -101,7 +101,7 @@ AT_CHECK_M4SUGAR
+ mkdir sub
+ mv foo sub
+ AT_CHECK_M4SUGAR([], [1], [],
+-[m4: script.4s: 1: Cannot open foo: No such file or directory
++[m4: script.4s: 1: cannot open `foo': No such file or directory
+ autom4te: m4 failed with exit status: 1
+ ])
+ 

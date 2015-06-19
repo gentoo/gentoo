@@ -1,0 +1,29 @@
+# ChangeLog for dev-php/pecl-amqp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/pecl-amqp/ChangeLog,v 1.6 2014/10/09 20:52:47 grknight Exp $
+
+*pecl-amqp-1.4.0 (30 Sep 2014)
+
+  30 Sep 2014; Brian Evans <grknight@gentoo.org> +pecl-amqp-1.4.0.ebuild,
+  -pecl-amqp-1.0.10.ebuild, -pecl-amqp-1.0.9.ebuild, -pecl-amqp-1.2.0.ebuild:
+  Version bump; drop old
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> pecl-amqp-1.0.10.ebuild,
+  pecl-amqp-1.0.9.ebuild, pecl-amqp-1.2.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*pecl-amqp-1.2.0 (28 May 2013)
+
+  28 May 2013; Ole Markus With <olemarkus@gentoo.org> +pecl-amqp-1.2.0.ebuild:
+  Version bump
+
+*pecl-amqp-1.0.10 (24 Apr 2013)
+
+  24 Apr 2013; Ole Markus With <olemarkus@gentoo.org> +pecl-amqp-1.0.10.ebuild:
+  Version bump
+
+*pecl-amqp-1.0.9 (14 Mar 2013)
+
+  14 Mar 2013; Ole Markus With <olemarkus@gentoo.org> +metadata.xml,
+  +pecl-amqp-1.0.9.ebuild:
+  New package. Thanks to Travis Hansen. Bug 433503

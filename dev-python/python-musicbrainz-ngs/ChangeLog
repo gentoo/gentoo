@@ -1,0 +1,58 @@
+# ChangeLog for dev-python/python-musicbrainz-ngs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-musicbrainz-ngs/ChangeLog,v 1.12 2015/06/07 15:44:06 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org>
+  python-musicbrainz-ngs-0.4.ebuild:
+  Drop old Python implementations
+
+  25 Nov 2014; Pacho Ramos <pacho@gentoo.org>
+  -python-musicbrainz-ngs-0.2.ebuild, -python-musicbrainz-ngs-0.3.ebuild,
+  python-musicbrainz-ngs-0.4.ebuild:
+  Support python 3.4
+
+  20 Oct 2013; Stanislav Ochotnicky <sochotnicky@gentoo.org> metadata.xml:
+  Move to maintainer-needed
+
+  13 Oct 2013; Pacho Ramos <pacho@gentoo.org> python-musicbrainz-ngs-0.4.ebuild:
+  Also compatible with python3_3
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org>
+  python-musicbrainz-ngs-0.4.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  08 Jun 2013; Stanislav Ochotnicky <sochotnicky@gentoo.org>
+  python-musicbrainz-ngs-0.4.ebuild:
+  Alphabetize IUSE
+
+*python-musicbrainz-ngs-0.4 (08 Jun 2013)
+
+  08 Jun 2013; Stanislav Ochotnicky <sochotnicky@gentoo.org>
+  +python-musicbrainz-ngs-0.4.ebuild,
+  +files/python-musicbrainz-ngs-0.4-fix-package_data-placement.patch:
+  Version bump, add examples and doc USE flags, convert to EAPI5
+
+*python-musicbrainz-ngs-0.3 (06 Apr 2013)
+
+  06 Apr 2013; Stanislav Ochotnicky <sochotnicky@gentoo.org>
+  +python-musicbrainz-ngs-0.3.ebuild:
+  Bump to 0.3 and add Python 3 support
+
+  30 May 2012; Kacper Kowalik <xarthisius@gentoo.org>
+  python-musicbrainz-ngs-0.2.ebuild:
+  Restrict not working ABIs, add proper PYTHON_DEPEND, enable tests, inherit
+  vcs-snapshot to avoid messing with S, use github tarball instead of gentoo
+  mirror, drop empty (R)DEPEND
+
+  28 May 2012; Jeff Horelick <jdhore@gentoo.org>
+  python-musicbrainz-ngs-0.2.ebuild:
+  Keyword ~x86.
+
+*python-musicbrainz-ngs-0.2 (27 May 2012)
+
+  27 May 2012; Stanislav Ochotnicky <sochotnicky@gentoo.org>
+  +python-musicbrainz-ngs-0.2.ebuild, +metadata.xml:
+  New ebuild for musicbrainz-ngs python module

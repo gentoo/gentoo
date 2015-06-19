@@ -1,0 +1,341 @@
+# ChangeLog for x11-libs/libXinerama
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXinerama/ChangeLog,v 1.92 2015/03/03 11:26:03 dlan Exp $
+
+  03 Mar 2015; Yixun Lan <dlan@gentoo.org> libXinerama-1.1.3.ebuild:
+  add arm64 support, tested on A53 board
+
+  18 Jun 2014; Michał Górny <mgorny@gentoo.org> libXinerama-1.1.3.ebuild:
+  Update dependencies to require guaranteed EAPI=5 or multilib ebuilds, bug
+  #513718.
+
+  26 Mar 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -libXinerama-1.1.1.ebuild, -libXinerama-1.1.2-r1.ebuild,
+  -libXinerama-1.1.2.ebuild:
+  Remove old/vulnerable versions, bug #471098.
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXinerama-1.1.3.ebuild:
+  Stable for x86, wrt bug #475480
+
+  07 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXinerama-1.1.3.ebuild:
+  Stable for sparc, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXinerama-1.1.3.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  05 Oct 2013; Markus Meier <maekke@gentoo.org> libXinerama-1.1.3.ebuild:
+  arm stable, bug #475480
+
+  05 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXinerama-1.1.3.ebuild:
+  Stable for alpha, wrt bug #475480
+
+  04 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXinerama-1.1.3.ebuild:
+  Stable for ppc64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org> libXinerama-1.1.3.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  02 Oct 2013; Jeroen Roovers <jer@gentoo.org> libXinerama-1.1.3.ebuild:
+  Stable for HPPA (bug #475480).
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org> libXinerama-1.1.3.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*libXinerama-1.1.3 (01 Jun 2013)
+
+  01 Jun 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libXinerama-1.1.3.ebuild:
+  Version bump for security bug #471098.
+
+*libXinerama-1.1.2-r1 (26 Feb 2013)
+
+  26 Feb 2013; Michał Górny <mgorny@gentoo.org> +libXinerama-1.1.2-r1.ebuild:
+  Enable multilib.
+
+  22 Feb 2013; Zac Medico <zmedico@gentoo.org> libXinerama-1.1.2.ebuild:
+  Add ~arm-linux keyword.
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> libXinerama-1.1.2.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #419473
+
+  12 Jul 2012; Brent Baude <ranger@gentoo.org> libXinerama-1.1.2.ebuild:
+  Marking libXinerama-1.1.2 ppc stable for bug 419473
+
+  11 Jul 2012; Brent Baude <ranger@gentoo.org> libXinerama-1.1.2.ebuild:
+  Marking libXinerama-1.1.2 ppc64 stable for bug 419473
+
+  29 Jun 2012; Markus Meier <maekke@gentoo.org> libXinerama-1.1.2.ebuild:
+  arm stable, bug #419473
+
+  28 Jun 2012; Jeroen Roovers <jer@gentoo.org> libXinerama-1.1.2.ebuild:
+  Stable for HPPA (bug #419473).
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libXinerama-1.1.2.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> libXinerama-1.1.2.ebuild:
+  Stable for amd64, wrt bug #419473
+
+  08 May 2012; Alexis Ballier <aballier@gentoo.org> libXinerama-1.1.2.ebuild:
+  keyword ~amd64-fbsd
+
+*libXinerama-1.1.2 (08 Mar 2012)
+
+  08 Mar 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +libXinerama-1.1.2.ebuild:
+  Version bump.
+
+  10 Oct 2011; Christian Ruppert <idl0r@gentoo.org> libXinerama-1.1.1.ebuild:
+  Add missing xproto dependency.
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  libXinerama-1.1.1.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> libXinerama-1.1.1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #344827
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> libXinerama-1.1.1.ebuild:
+  Stable for HPPA (bug #344827).
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org> libXinerama-1.1.1.ebuild:
+  arm stable, bug #344827
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  libXinerama-1.1.1.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> libXinerama-1.1.1.ebuild:
+  amd64 stable wrt #344827
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> libXinerama-1.1.1.ebuild:
+  ppc64 stable wrt #344827
+
+*libXinerama-1.1.1 (28 Oct 2010)
+
+  28 Oct 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +libXinerama-1.1.1.ebuild:
+  Version bump.
+
+  10 Sep 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -libXinerama-1.0.2.ebuild, -libXinerama-1.0.3.ebuild:
+  rm
+
+  02 Aug 2010; Raúl Porcel <armin76@gentoo.org> libXinerama-1.1.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #308521
+
+  01 Jun 2010; Guy Martin <gmsoft@gentoo.org> libXinerama-1.1.ebuild:
+  hppa stable, #308521
+
+  12 May 2010; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking libXinerama-1.1 ppc64 stable for bug 308521
+
+  18 Apr 2010; Markus Meier <maekke@gentoo.org> libXinerama-1.1.ebuild:
+  arm stable, bug #308521
+
+  18 Apr 2010; <nixnut@gentoo.org> libXinerama-1.1.ebuild:
+  ppc stable #308521
+
+  16 Apr 2010; Pacho Ramos <pacho@gentoo.org> libXinerama-1.1.ebuild:
+  amd64 stable, bug 308521
+
+  09 Apr 2010; Christian Faulhammer <fauli@gentoo.org>
+  libXinerama-1.1.ebuild:
+  stable x86, bug 308521
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  libXinerama-1.1.ebuild:
+  Transfer Prefix keywords
+
+  01 Nov 2009; Zac Medico <zmedico@gentoo.org> libXinerama-1.1.ebuild:
+  Block older versions of xineramaproto, in order to avoid file collisions
+  when installing from binary packages.
+
+*libXinerama-1.1 (03 Oct 2009)
+
+  03 Oct 2009; Tomáš Chvátal <scarabeus@gentoo.org>
+  +libXinerama-1.1.ebuild:
+  Version bump for xorg-server 1.7.
+
+  23 Jun 2009; Tobias Klausmann <klausman@gentoo.org>
+  libXinerama-1.0.3.ebuild:
+  Stable on alpha for xorg-server-1.5/xorg-x11-7.4
+
+  15 May 2009; Raúl Porcel <armin76@gentoo.org> libXinerama-1.0.3.ebuild:
+  arm/s390 stable
+
+  16 Apr 2009; Jeroen Roovers <jer@gentoo.org> libXinerama-1.0.3.ebuild:
+  Stable for HPPA (bug #251832).
+
+  15 Apr 2009; Raúl Porcel <armin76@gentoo.org> libXinerama-1.0.3.ebuild:
+  ia64/sh stable wrt #251832
+
+  06 Apr 2009; Friedrich Oslage <bluebird@gentoo.org>
+  libXinerama-1.0.3.ebuild:
+  Stable on sparc, bug #251832
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org> libXinerama-1.0.3.ebuild:
+  x86 stable, bug #251832
+
+  05 Apr 2009; Olivier Crête <tester@gentoo.org> libXinerama-1.0.3.ebuild:
+  Stable on amd64, bug #251832
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> libXinerama-1.0.3.ebuild:
+  Marking libXinerama-1.0.3 ppc64 stable for bug 251832
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> libXinerama-1.0.3.ebuild:
+  Marking libXinerama-1.0.3 ppc stable for bug 251832
+
+*libXinerama-1.0.3 (10 Mar 2008)
+
+  10 Mar 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  +libXinerama-1.0.3.ebuild:
+  Bump.
+
+  31 Jan 2008; Donnie Berkholz <dberkholz@gentoo.org>;
+  -libXinerama-1.0.1.ebuild:
+  Clean up.
+
+  07 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  libXinerama-1.0.2.ebuild:
+  Stable on sparc wrt #175465
+
+  06 Aug 2007; Donnie Berkholz <dberkholz@gentoo.org>; ChangeLog:
+  Fix up changelog to stop gentoo.tamperd.net/stable/ warning.
+
+  03 Jul 2007; Lars Weiler <pylon@gentoo.org> libXinerama-1.0.2.ebuild:
+  Stable on ppc; bug #175465.
+
+  02 Jul 2007; Raúl Porcel <armin76@gentoo.org> libXinerama-1.0.2.ebuild:
+  alpha stable wrt #175465
+
+  24 Jun 2007; Joshua Kinard <kumba@gentoo.org> libXinerama-1.0.2.ebuild:
+  Stable on mips, per #175465.
+
+  20 May 2007; Jeroen Roovers <jer@gentoo.org> libXinerama-1.0.2.ebuild:
+  Stable for HPPA (bug #175465).
+
+  04 May 2007; Daniel Gryniewicz <dang@gentoo.org> libXinerama-1.0.2.ebuild:
+  Marked stable on amd64 for bug #175465
+
+  29 Apr 2007; Andrej Kacian <ticho@gentoo.org> libXinerama-1.0.2.ebuild:
+  Stable on x86, bug #175465.
+
+  25 Apr 2007; Raúl Porcel <armin76@gentoo.org> libXinerama-1.0.2.ebuild:
+  Stable on ia64 wrt bug #175465.
+
+  25 Apr 2007; Markus Rothe <corsair@gentoo.org> libXinerama-1.0.2.ebuild:
+  Stable on ppc64; bug #175465
+
+*libXinerama-1.0.2 (22 Mar 2007)
+
+  22 Mar 2007; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXinerama-1.0.2.ebuild:
+  Version bump.  Includes new documentation and some small code tweaks.
+
+  01 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  libXinerama-1.0.1.ebuild:
+  libXext has a runtime dep on xextproto now, so we don't need to depend on it
+  here.
+
+  19 Jul 2006; Guy Martin <gmsoft@gentoo.org> libXinerama-1.0.1.ebuild:
+  Stable on hppa.
+
+  10 Jul 2006; Aron Griffis <agriffis@gentoo.org> libXinerama-1.0.1.ebuild:
+  Mark 1.0.1 stable on ia64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  libXinerama-1.0.1.ebuild:
+  ppc/sparc/mips/alpha/arm/sh stable
+
+  30 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  libXinerama-1.0.1.ebuild:
+  Stable on amd64.
+
+  30 Jun 2006; Markus Rothe <corsair@gentoo.org> libXinerama-1.0.1.ebuild:
+  Stable on ppc64
+
+  30 Jun 2006; Donnie Berkholz <spyderous@gentoo.org>;
+  libXinerama-1.0.1.ebuild:
+  x86 stable.
+
+  01 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  libXinerama-1.0.1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  09 Mar 2006; Aron Griffis <agriffis@gentoo.org> libXinerama-1.0.1.ebuild:
+  Mark 1.0.1 ~ia64
+
+  14 Feb 2006; Markus Rothe <corsair@gentoo.org> libXinerama-1.0.1.ebuild:
+  Added ~ppc64
+
+  31 Jan 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  libXinerama-1.0.1.ebuild:
+  Unstable on hppa.
+
+  26 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -libXinerama-0.99.2.ebuild, -libXinerama-1.0.0.ebuild:
+  Pull old versions.
+
+  26 Dec 2005; Stefaan De Roeck <stefaan@gentoo.org>
+  libXinerama-1.0.1.ebuild:
+  Marked ~alpha
+
+*libXinerama-1.0.1 (23 Dec 2005)
+
+  23 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libXinerama-1.0.1.ebuild:
+  Bump for 7.0.
+
+*libXinerama-1.0.0 (17 Dec 2005)
+
+  17 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXinerama-1.0.0.ebuild:
+  Bump for 7.0RC4.
+
+  09 Dec 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -libXinerama-0.99.1.ebuild:
+  Pull old versions.
+
+*libXinerama-0.99.2 (04 Dec 2005)
+
+  04 Dec 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libXinerama-0.99.2.ebuild:
+  Bump for 7.0RC3.
+
+  04 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -files/xineramaproto.patch, -libXinerama-0.99.0.ebuild:
+  Drop old version.
+
+*libXinerama-0.99.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libXinerama-0.99.1.ebuild:
+  Bump for 7.0 RC1.
+
+  24 Sep 2005; Doug Goldstein <cardoe@gentoo.org> libXinerama-0.99.0.ebuild:
+  mark ~ppc
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  22 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +files/xineramaproto.patch, libXinerama-0.99.0.ebuild:
+  Look for xineramaproto, not panoramix. Reported by steev.
+
+  20 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  libXinerama-0.99.0.ebuild:
+  panoramixproto moved to xineramaproto.
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> libXinerama-0.99.0.ebuild:
+  Marked ~amd64.
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org>
+  libXinerama-0.99.0.ebuild:
+  Add ~sparc keyword (modular X testing).
+
+*libXinerama-0.99.0 (08 Aug 2005)
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libXinerama-0.99.0.ebuild:
+  Initial commit for modular X.

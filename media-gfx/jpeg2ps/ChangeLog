@@ -1,0 +1,94 @@
+# ChangeLog for media-gfx/jpeg2ps
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/jpeg2ps/ChangeLog,v 1.27 2010/01/07 22:11:46 fauli Exp $
+
+  07 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  jpeg2ps-1.9-r1.ebuild:
+  Transfer Prefix keywords
+
+  25 Oct 2008; Markus Meier <maekke@gentoo.org> jpeg2ps-1.9-r1.ebuild:
+  respect CC variable, bug #244154
+
+  22 Aug 2008; Markus Meier <maekke@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  16 Aug 2008; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove pclouds from metadata.xml (#49680)
+
+  13 Apr 2008; Ulrich Mueller <ulm@gentoo.org> jpeg2ps-1.9-r1.ebuild:
+  Set default paper size according to "metric" USE flag, bug 61922.
+
+  26 Jan 2008; Fabian Groffen <grobian@gentoo.org> jpeg2ps-1.9-r1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  16 Jan 2008; Markus Meier <maekke@gentoo.org> -jpeg2ps-1.9.ebuild:
+  old
+
+  23 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> jpeg2ps-1.9-r1.ebuild:
+  Stable on sparc
+
+  14 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org> jpeg2ps-1.9-r1.ebuild:
+  Keyworded ~sparc wrt #182027
+
+  30 Apr 2007; Marius Mauch <genone@gentoo.org> jpeg2ps-1.9.ebuild,
+  jpeg2ps-1.9-r1.ebuild:
+  Replacing einfo with elog
+
+  12 Dec 2006; Nguyễn Thái Ngọc Duy <pclouds@gentoo.org>
+  jpeg2ps-1.9.ebuild, jpeg2ps-1.9-r1.ebuild:
+  Updated new homepage URL, #157877
+
+  15 Aug 2006; Markus Rothe <corsair@gentoo.org> jpeg2ps-1.9-r1.ebuild:
+  Added ~ppc64
+
+  18 Jul 2006; Michael Hanselmann <hansmi@gentoo.org> jpeg2ps-1.9-r1.ebuild:
+  Stable on ppc.
+
+  26 Jun 2006; Andrej Kacian <ticho@gentoo.org> jpeg2ps-1.9-r1.ebuild:
+  Stable on x86, bug #137815.
+
+  25 Jun 2006; Simon Stelling <blubb@gentoo.org> jpeg2ps-1.9-r1.ebuild:
+  stable on amd64
+
+  03 Dec 2005; <pclouds@gentoo.org> jpeg2ps-1.9-r1.ebuild:
+  Fix minor issue (comment #8 bug #61922), closing #61922
+
+  01 Nov 2005; Simon Stelling <blubb@gentoo.org> jpeg2ps-1.9-r1.ebuild:
+  re-adding wrongly removed ~amd64 keyword
+
+  30 Oct 2005; Fabian Groffen <grobian@gentoo.org> jpeg2ps-1.9-r1.ebuild:
+  Marked ~ppc-macos (bug #110822)
+
+  13 Sep 2005; Mark Loeser <halcy0n@gentoo.org>
+  +files/jpeg2ps-1.9-include.diff, jpeg2ps-1.9-r1.ebuild:
+  Added patch to get rid of warnings with gcc4.  Thanks to Marcelo Goes
+  <vanquirius@gentoo.org>; bug #105561
+
+  12 Sep 2005; Joseph Jezak <josejx@gentoo.org> jpeg2ps-1.9-r1.ebuild:
+  Marked ~ppc for bug #105561.
+
+*jpeg2ps-1.9-r1 (01 Aug 2005)
+
+  01 Aug 2005; <pclouds@gentoo.org> +jpeg2ps-1.9-r1.ebuild:
+  set papersize based on localtime #61922
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> jpeg2ps-1.9.ebuild:
+  Stable on ppc.
+
+  03 Jun 2005; Luca Barbato <lu_zero@gentoo.org> metadata.xml:
+  Metadata fix
+
+  27 Nov 2004; <pclouds@gentoo.org> jpeg2ps-1.9.ebuild:
+  Stable on x86
+
+  22 Sep 2004; <blubb@gentoo.org> jpeg2ps-1.9.ebuild:
+  added ~amd64
+
+  17 Jul 2004; David Holm <dholm@gentoo.org> jpeg2ps-1.9.ebuild:
+  Added to ~ppc.
+
+*jpeg2ps-1.9 (12 Jul 2004)
+
+  12 Jul 2004; <pclouds@gentoo.org> jpeg2ps-1.9.ebuild, metadata.xml:
+  New package, submitted by Colin Macdonald <cbm@sfu.ca> #55473
+

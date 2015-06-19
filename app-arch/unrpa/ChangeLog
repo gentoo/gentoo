@@ -1,0 +1,13 @@
+# ChangeLog for app-arch/unrpa
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/unrpa/ChangeLog,v 1.2 2015/06/05 11:49:57 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*unrpa-9999 (05 Apr 2015)
+*unrpa-1.4.1 (05 Apr 2015)
+
+  05 Apr 2015; Andrew Savchenko <bircoph@gentoo.org> +unrpa-1.4.1.ebuild,
+  +unrpa-9999.ebuild, +metadata.xml:
+  Initial version based on ebuild from bircoph overlay.

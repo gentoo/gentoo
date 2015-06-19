@@ -1,0 +1,20 @@
+will fix some compile Problems on gcc-4.1
+
+Joerg Bornkessel <hd_brummy@gentoo.org> 29 Sep 2006
+
+diff -Naur GUIlib-1.1.0.orig/GUI_menu.h GUIlib-1.1.0/GUI_menu.h
+--- GUIlib-1.1.0.orig/GUI_menu.h	2006-09-29 19:38:54.767324511 +0200
++++ GUIlib-1.1.0/GUI_menu.h	2006-09-29 19:40:13.464242760 +0200
+@@ -39,9 +39,9 @@
+   virtual void AddSubitem(GUI_Menuitem *newitem);
+   virtual GUI_Menuitem* GetSubItem(int Aid);
+ 
+-  GUI_status GUI_Submenu:: MouseDown(int x, int y, int button);
+-  GUI_status GUI_Submenu::MouseUp(int x,int y,int button);
+-  GUI_status GUI_Submenu::MouseMotion(int x,int y,Uint8 state);
++  GUI_status MouseDown(int x, int y, int button);
++  GUI_status MouseUp(int x,int y,int button);
++  GUI_status MouseMotion(int x,int y,Uint8 state);
+ 
+   inline virtual int GetSubmenuId()
+     {return submenuid;}

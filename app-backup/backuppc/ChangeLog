@@ -1,0 +1,127 @@
+# ChangeLog for app-backup/backuppc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/backuppc/ChangeLog,v 1.27 2015/06/09 09:00:51 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*backuppc-3.3.0-r1 (02 Dec 2014)
+
+  02 Dec 2014; Pacho Ramos <pacho@gentoo.org> +backuppc-3.3.0-r1.ebuild,
+  -backuppc-3.3.0.ebuild:
+  Install unit file again as looks like was dropped by error (#513850#c4 by Erik
+  Zeek)
+
+  18 Sep 2014; Tony Vroon <chainsaw@gentoo.org> -backuppc-2.1.2-r1.ebuild,
+  -backuppc-3.2.1-r2.ebuild, -backuppc-3.2.1-r3.ebuild:
+  Remove vulnerable ebuilds for security bug #405685.
+
+  16 Sep 2014; Agostino Sarubbo <ago@gentoo.org> backuppc-3.3.0.ebuild:
+  Stable for x86, wrt bug #519474
+
+  16 Sep 2014; Agostino Sarubbo <ago@gentoo.org> backuppc-3.3.0.ebuild:
+  Stable for amd64, wrt bug #519474
+
+  10 Aug 2014; Patrick Lauer <patrick@gentoo.org> backuppc-2.1.2-r1.ebuild,
+  backuppc-3.2.1-r2.ebuild, backuppc-3.2.1-r3.ebuild, backuppc-3.3.0.ebuild:
+  Fix description for more repoman happy
+
+  30 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> backuppc-3.3.0.ebuild:
+  perl-core/x -> virtual/perl-x
+
+*backuppc-3.3.0 (30 Jul 2014)
+
+  30 Jul 2014; Patrick Lauer <patrick@gentoo.org> +backuppc-3.3.0.ebuild,
+  +files/3.3.0/01-fix-configure.pl.patch,
+  +files/3.3.0/02-fix-config.pl-formatting.patch,
+  +files/3.3.0/03-reasonable-config.pl-defaults.patch:
+  Bump, ebuild modifications and patches thanks to Lenno Nagel. Fixes #468360
+
+  29 Jul 2014; Mikle Kolyada <zlogene@gentoo.org> backuppc-3.2.1-r2.ebuild,
+  backuppc-3.2.1-r3.ebuild:
+  perl-core/IO-Compress -> virtual/perl-IO-Compress
+
+*backuppc-3.2.1-r3 (01 Jul 2014)
+
+  01 Jul 2014; Pacho Ramos <pacho@gentoo.org> +backuppc-3.2.1-r3.ebuild,
+  +files/backuppc.service:
+  Add unit file (#513850 by thorus90)
+
+  07 Nov 2013; Patrick Lauer <patrick@gentoo.org> backuppc-2.1.2-r1.ebuild:
+  Harmonize description, make repoman happier
+
+  24 May 2012; Mike Frysinger <vapier@gentoo.org> backuppc-2.1.2-r1.ebuild,
+  backuppc-3.2.1-r2.ebuild:
+  Inherit user for enewuser/etc...
+
+  30 Mar 2012; Patrick Lauer <patrick@gentoo.org> files/apache2-backuppc.conf:
+  Fixing init script for #382947
+
+  01 Sep 2011; Tony Vroon <chainsaw@gentoo.org> backuppc-3.2.1-r2.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo, Ian
+  "idella4" Delaney & Tomáš "Mepho" Pružina in security bug #308013 filed by
+  Stefan "craig" Behte.
+
+  01 Sep 2011; Patrick Lauer <patrick@gentoo.org> backuppc-3.2.1-r2.ebuild:
+  More better fix for init script
+
+*backuppc-3.2.1-r2 (01 Sep 2011)
+
+  01 Sep 2011; Patrick Lauer <patrick@gentoo.org> -backuppc-3.2.1-r1.ebuild,
+  +backuppc-3.2.1-r2.ebuild:
+  Fixing init script warning
+
+*backuppc-3.2.1-r1 (01 Sep 2011)
+
+  01 Sep 2011; Patrick Lauer <patrick@gentoo.org> -backuppc-3.2.1.ebuild,
+  +backuppc-3.2.1-r1.ebuild:
+  Adding upgrade warning, changed default path
+
+  29 Aug 2011; Patrick Lauer <patrick@gentoo.org>
+  -files/3.2.0/02-fix-config.pl-formatting.patch, backuppc-3.2.1.ebuild:
+  Moving large patch away
+
+*backuppc-3.2.1 (29 Aug 2011)
+
+  29 Aug 2011; Patrick Lauer <patrick@gentoo.org>
+  +files/3.2.0/01-fix-configure.pl.patch,
+  +files/3.2.0/02-fix-config.pl-formatting.patch,
+  +files/3.2.0/03-reasonable-config.pl-defaults.patch,
+  +files/3.2.0/04-add-docdir-marker.patch, +files/3.2.0/05-nicelevel.patch,
+  +files/apache2-backuppc.conf, +files/apache2-backuppc.init,
+  +backuppc-3.2.1.ebuild, +files/httpd.conf:
+  Bump for #287133, ebuild from the portage-backup overlay. Thanks to Lenno
+  Nagel.
+
+  12 Oct 2009; Mark Loeser <halcy0n@gentoo.org> backuppc-2.1.2-r1.ebuild:
+  QA fixes; unquoted variables
+
+  24 Jul 2008; Richard Freeman <rich0@gentoo.org> backuppc-2.1.2-r1.ebuild:
+  amd64 stable - 211671
+
+  25 Dec 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing seemant from metadata.xml as per #202469.
+
+  10 Oct 2006; Seemant Kulleen <seemant@gentoo.org> -backuppc-2.1.2.ebuild,
+  backuppc-2.1.2-r1.ebuild:
+  removed cruft ebuild, and added a postinst to close bug #147063 by Hendrik
+  Friedel
+
+*backuppc-2.1.2-r1 (28 Sep 2006)
+
+  28 Sep 2006; Seemant Kulleen <seemant@gentoo.org>
+  +files/BackupPC-2.1.2pl2.diff, +backuppc-2.1.2-r1.ebuild:
+  Patch to make this work with more recent versions of rsync. Closes bug
+  #148935 by David Relson
+
+  02 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> backuppc-2.1.2.ebuild:
+  Don't use /bin/false as shell for backuppc user. Use -1 instead.
+
+*backuppc-2.1.2 (30 Sep 2005)
+
+  30 Sep 2005; Seemant Kulleen <seemant@gentoo.org>
+  +files/postinstall-en.txt, +metadata.xml, +backuppc-2.1.2.ebuild:
+  New package which makes it easy to backup windows and *nix computers. I
+  useit at work, and klieber and tigger^ both want to try it. Furthermore,
+  it's in high demand on the forums and submitted in bug #80818 by chewi
+  (James LeCuirot).  Metadata needed adjusting

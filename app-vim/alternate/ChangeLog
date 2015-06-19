@@ -1,0 +1,187 @@
+# ChangeLog for app-vim/alternate
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/alternate/ChangeLog,v 1.51 2013/10/21 11:52:14 grobian Exp $
+
+  21 Oct 2013; Fabian Groffen <grobian@gentoo.org> alternate-2.18.ebuild:
+  Marked ~x64-macos, bug #486818
+
+  12 Jan 2013; Ulrich Müller <ulm@gentoo.org> alternate-2.18.ebuild:
+  Fix LICENSE.
+
+  11 Nov 2010; Tim Harder <radhermit@gentoo.org> -alternate-2.12-r1.ebuild,
+  -alternate-2.15.ebuild:
+  Drop old versions.
+
+  10 Oct 2010; Raúl Porcel <armin76@gentoo.org> alternate-2.18.ebuild:
+  alpha/ia64/sparc stable wrt #339560
+
+  10 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  alternate-2.18.ebuild:
+  x86 stable wrt bug #339560
+
+  08 Oct 2010; Brent Baude <ranger@gentoo.org> alternate-2.18.ebuild:
+  stable ppc, bug 339560
+
+  07 Oct 2010; Mart Raudsepp <leio@gentoo.org> alternate-2.12-r1.ebuild,
+  alternate-2.15.ebuild:
+  Drop to ~mips
+
+  06 Oct 2010; Markos Chandras <hwoarang@gentoo.org> alternate-2.18.ebuild:
+  Stable on amd64 wrt bug #339560
+
+  17 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  alternate-2.12-r1.ebuild, alternate-2.15.ebuild, alternate-2.18.ebuild:
+  QA: add prefix keywords
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/alternate-2.12-hh-cc-alternation.patch:
+  Fix patch with absolute paths.
+
+  10 Oct 2008; Ali Polatel <hawking@gentoo.org>
+  +files/alternate-2.18-hh-cc-alternation.patch, alternate-2.18.ebuild:
+  Add fixed patch for 2.18, bug 238436, thanks to Andrew Savchenko
+  <Bircoph@list.ru>.
+
+*alternate-2.18 (20 Sep 2008)
+
+  20 Sep 2008; Ali Polatel <hawking@gentoo.org> alternate-2.12-r1.ebuild,
+  +alternate-2.18.ebuild:
+  Version bump. Quoting.
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*alternate-2.15 (04 Jan 2007)
+
+  04 Jan 2007; Elfyn McBratney <beu@gentoo.org> -alternate-2.8.ebuild,
+  -alternate-2.11a.ebuild, +alternate-2.15.ebuild:
+  Version bump.  Prune old versions.
+
+  07 Apr 2006; Bryan Østergaard <kloeri@gentoo.org metadata.xml:
+  Remove ciaranm from metadata.xml.
+
+  14 Jan 2006; Ciaran McCreesh <ciaranm@gentoo.org> -alternate-2.12.ebuild:
+  Tidy up old versions
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> alternate-2.12-r1.ebuild:
+  Mark 2.12-r1 stable on alpha
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  alternate-2.12-r1.ebuild:
+  Stable on ppc.
+
+  28 Aug 2005; Simon Stelling <blubb@gentoo.org> alternate-2.12-r1.ebuild:
+  stable on amd64
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> alternate-2.12-r1.ebuild:
+  stable on ia64
+
+  23 Aug 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  alternate-2.12-r1.ebuild:
+  x86 sparc mips stable
+
+*alternate-2.12-r1 (22 Jun 2005)
+
+  22 Jun 2005; Tom Martin <slarti@gentoo.org>
+  +files/alternate-2.12-hh-cc-alternation.patch, +alternate-2.12-r1.ebuild:
+  Added a patch from Ciaran McCreesh to fix alternation between .cc and .hh
+  files.
+
+*alternate-2.12 (06 May 2005)
+
+  06 May 2005; Ciaran McCreesh <ciaranm@gentoo.org> +alternate-2.12.ebuild:
+  Version bump
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  alternate-2.11a.ebuild:
+  Stable on ppc.
+
+  22 Feb 2005; Aron Griffis <agriffis@gentoo.org> alternate-2.11a.ebuild:
+  stable on ia64
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  16 Dec 2004; Dylan Carlson <absinthe@gentoo.org> alternate-2.11a.ebuild:
+  Stable on amd64.
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> alternate-2.11a.ebuild:
+  Stable on alpha.
+
+  24 Nov 2004; Ciaran McCreesh <ciaranm@gentoo.org> alternate-2.11a.ebuild:
+  mips, sparc, x86 stable
+
+*alternate-2.11a (31 Oct 2004)
+
+  31 Oct 2004; Ciaran McCreesh <ciaranm@gentoo.org> +alternate-2.11a.ebuild:
+  Bump
+
+  31 Oct 2004; Ciaran McCreesh <ciaranm@gentoo.org> -alternate-2.4.ebuild,
+  -alternate-2.7.ebuild:
+  Tidy up old versions
+
+  19 Sep 2004; Bryan Østergaard,,, <kloeri@gentoo.org> alternate-2.8.ebuild:
+  Stable on alpha.
+
+  09 Sep 2004; Danny van Dyk <kugelfang@gentoo.org> alternate-2.8.ebuild:
+  Marked stable on amd64.
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> alternate-2.8.ebuild:
+  Stable on x86, sparc, mips
+
+  06 Sep 2004; Bryan Østergaard <kloeri@gentoo.org> alternate-2.7.ebuild:
+  Stable on alpha.
+
+  03 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> alternate-2.8.ebuild:
+  Help text, bug #62559
+
+  25 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org> alternate-2.4.ebuild,
+  alternate-2.6a.ebuild, alternate-2.7.ebuild, alternate-2.8.ebuild:
+  Normalised HOMEPAGE to www.vim.org
+
+*alternate-2.8 (20 Aug 2004)
+
+  20 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org> +alternate-2.8.ebuild:
+  Version bump
+
+  20 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org> alternate-2.7.ebuild:
+  x86 stable in line with other archs
+
+  20 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> alternate-2.7.ebuild:
+  Stable on sparc, mips
+
+*alternate-2.7 (22 May 2004)
+
+  22 May 2004; Ciaran McCreesh <ciaranm@gentoo.org> +alternate-2.7.ebuild:
+  Version bump
+
+  17 Apr 2004; Ciaran McCreesh <ciaranm@gentoo.org> -alternate-2.5.ebuild:
+  Purge old versions
+
+  04 Apr 2004; Ciaran McCreesh <ciaranm@gentoo.org> alternate-2.6a.ebuild:
+  Stable on sparc, mips
+
+*alternate-2.6a (15 Mar 2004)
+
+  15 Mar 2004; Ciaran McCreesh <ciaranm@gentoo.org> alternate-2.6a.ebuild:
+  Version bump
+
+*alternate-2.5 (06 Feb 2004)
+
+  06 Feb 2004; Ciaran McCreesh <ciaranm@gentoo.org> alternate-2.5.ebuild:
+  Version bump, added in ~mips
+
+  23 Jan 2004; Aron Griffis <agriffis@gentoo.org> alternate-2.4.ebuild:
+  stable on alpha and ia64
+
+  10 Dec 2003; Ciaran McCreesh <ciaranm@gentoo.org> alternate-2.4.ebuild:
+  Added amd64 keyword
+
+  10 Dec 2003; Ciaran McCreesh <ciaranm@gentoo.org> alternate-2.4.ebuild:
+  Moved to stable on x86 and sparc
+
+*alternate-2.4 (15 Nov 2003)
+
+  15 Nov 2003; Ciaran McCreesh <ciaranm@gentoo.org> alternate-2.4.ebuild,
+  metadata.xml:
+  Initial version

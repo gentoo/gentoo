@@ -1,0 +1,54 @@
+# ChangeLog for sys-block/gpart
+# Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/gpart/ChangeLog,v 1.9 2010/03/29 06:40:53 jer Exp $
+
+  29 Mar 2010; Jeroen Roovers <jer@gentoo.org> gpart-0.1h-r2.ebuild:
+  Stable for HPPA (bug #308135).
+
+  21 Mar 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> gpart-0.1h-r2.ebuild:
+  x86 stable wrt bug #308135
+
+  18 Mar 2010; Markos Chandras <hwoarang@gentoo.org> gpart-0.1h-r2.ebuild:
+  Stable on amd64 wrt bug #308135
+
+*gpart-0.1h-r2 (19 Dec 2009)
+
+  19 Dec 2009; <hwoarang@gentoo.org> +gpart-0.1h-r2.ebuild,
+  +files/gpart-0.1h-l64seek.patch, +files/gpart-0.1h-openmode.patch:
+  Apply amd64 patches. Thanks to Fabio Rossi <rossi.f@inwind.it>. Fixes bug
+  #293955
+
+  03 Mar 2007; Mike Frysinger <vapier@gentoo.org>
+  +files/gpart-0.1h-no-_syscall.patch, gpart-0.1h-r1.ebuild:
+  Use syscall() rather than _syscall#() #163800 by Peter Ruskin.
+
+  28 Jan 2006; Diego Pettenò <flameeyes@gentoo.org> gpart-0.1h-r1.ebuild:
+  Move to -amd64 as per bug #120741 waiting for a solution.
+
+  05 May 2005; Michael Hanselmann <hansmi@gentoo.org> gpart-0.1h-r1.ebuild:
+  Added to ~hppa.
+
+*gpart-0.1h-r1 (06 Mar 2005)
+
+  06 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> +metadata.xml,
+  +files/gpart-0.1h-PIC.patch, +files/gpart-0.1h-errno.patch,
+  +files/gpart-0.1h-ntfs.patch, +files/gpart-0.1h-vfat.patch,
+  +gpart-0.1h-r1.ebuild:
+  Moved from sys-apps/gpart to sys-block/gpart.
+
+*gpart-0.1h-r1 (11 Feb 2005)
+
+  11 Feb 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/gpart-0.1h-errno.patch, +files/gpart-0.1h-ntfs.patch,
+  +files/gpart-0.1h-vfat.patch, +files/gpart-0.1h-PIC.patch:
+  Add fix from reiserfs for #49732 by Brice Arnould.  Grab patches from Debian
+  to fix NTFS building #49878 by Hans-Christian Armingeon.  Fix building with 
+  hardened (PIC) #43440 by John Davis.
+
+*gpart-0.1h (09 Feb 2003)
+
+  22 Apr 2003; Stefan Jones <cretin@gentoo.org> gpart-0.1h.ebuild gpart-0.1h-errno.diff :
+  Added errno patch to fix compile on nwer glibc, bug #19302
+
+  15 Feb 2003: Seth Chandler <sethbc@gentoo.org> gpart-0.1h.ebuild:
+  added gpart to portage...

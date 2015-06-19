@@ -1,0 +1,54 @@
+# ChangeLog for sci-biology/ariadne
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/ariadne/ChangeLog,v 1.12 2013/04/11 18:42:50 ulm Exp $
+
+  11 Apr 2013; Ulrich Müller <ulm@gentoo.org> ariadne-1.3-r1.ebuild,
+  ariadne-1.3-r2.ebuild:
+  Fix LICENSE, see README and notices in source files.
+
+  14 Jun 2012; Justin Lecher <jlec@gentoo.org> ariadne-1.3-r1.ebuild,
+  ariadne-1.3-r2.ebuild:
+  Correct deps, bump EAPI, handle static-libs
+
+*ariadne-1.3-r2 (15 Mar 2011)
+
+  15 Mar 2011; Kacper Kowalik <xarthisius@gentoo.org> +ariadne-1.3-r2.ebuild,
+  +files/ariadne-1.3-implicits.patch:
+  Fix implicits, add missing explicit RDEPEND, respect LDFLAGS wrt #359045.
+  Thanks to Diego for the report.
+
+  30 Sep 2008; Jeremy Olexa <darkside@gentoo.org> ariadne-1.3-r1.ebuild:
+  add ~amd64 kw based on Chad's testing. bug #239159
+
+  25 Mar 2007; Danny van Dyk <kugelfang@gentoo.org> ariadne-1.3-r1.ebuild:
+  QA: Removed redundant src_compile phase.
+
+  14 Sep 2006; Olivier Fisette <ribosome@gentoo.org> metadata.xml:
+  Stepping down from maintainership.
+
+  12 Sep 2006; Olivier Fisette <ribosome@gentoo.org>
+  +files/ariadne-1.3-gcc4.patch, ariadne-1.3-r1.ebuild:
+  Fixed a GCC4 compilation issue (see bug #138833).
+
+  21 Jan 2006; Olivier Fisette <ribosome@gentoo.org> ariadne-1.3-r1.ebuild:
+  Ebuild clean-up.
+
+  04 Jan 2006; Olivier Fisette <ribosome@gentoo.org> ariadne-1.3-r1.ebuild:
+  Do not depend on "virtual/libc" (package not in system target).
+
+  13 May 2005; Olivier Fisette <ribosome@gentoo.org> ariadne-1.3-r1.ebuild:
+  Added to x86.
+
+*ariadne-1.3-r1 (06 Mar 2005)
+
+  06 Mar 2005; Olivier Fisette <ribosome@gentoo.org> -files/ariadne-env,
+  +ariadne-1.3-r1.ebuild, -ariadne-1.3.ebuild:
+  Package no longer sets the "BLASTMAT" environment variable. (This is now
+  done by the "ncbi-tools" package.)
+
+*ariadne-1.3 (05 Mar 2005)
+
+  05 Mar 2005; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +files/ariadne-env, +ariadne-1.3.ebuild:
+  Initial import.
+

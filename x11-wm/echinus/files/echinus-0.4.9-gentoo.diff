@@ -1,0 +1,68 @@
+--- a/config.mk
++++ b/config.mk
+@@ -4,10 +4,10 @@
+ # Customize below to fit your system
+ 
+ # paths
+-PREFIX?= /usr/local
++PREFIX?= /usr
+ BINPREFIX?= ${PREFIX}/bin
+ MANPREFIX?= ${PREFIX}/share/man
+-CONFPREFIX?= ${PREFIX}/share/examples
++CONFPREFIX?= ${PREFIX}/share/echinus
+ DOCPREFIX?= ${PREFIX}/share/doc
+ CONF?= ${CONFPREFIX}
+ 
+@@ -15,14 +15,13 @@
+ X11LIB?= /usr/X11R6/lib
+ 
+ # includes and libs
+-INCS = -I. -I/usr/include -I${X11INC} `pkg-config --cflags xft`
+-LIBS = -L/usr/lib -lc -L${X11LIB} -lX11 `pkg-config --libs xft`
+-
+-DEFS = -DVERSION=\"${VERSION}\" -DSYSCONFPATH=\"${CONF}\"
++CFLAGS += -I. -I/usr/include `pkg-config --cflags x11 xft`
++LIBS 	 += -L/usr/lib -lc `pkg-config --libs x11 xft`
++CPPFLAGS += -DVERSION=\"${VERSION}\" -DSYSCONFPATH=\"${CONF}\"
+ 
+ # flags
+-CFLAGS = -Os ${INCS} ${DEFS}
+-LDFLAGS = -s ${LIBS}
++#CFLAGS = -Os ${INCS} ${DEFS}
++#LDFLAGS = -s ${LIBS}
+ # debug flags
+ #CFLAGS = -g3 -ggdb3 -std=c99 -pedantic -O0 ${INCS} -DDEBUG ${DEFS}
+ #LDFLAGS = -g3 -ggdb3 ${LIBS}
+@@ -35,9 +34,11 @@
+ #CFLAGS += -save-temps    # Keep precompiler output (great for debugging).
+ 
+ # XRandr (multihead support). Comment out to disable.
+-CFLAGS += -DXRANDR=1
+-LIBS += -lXrandr
+-
++ifdef MULTIHEAD
++CPPFLAGS += -DXRANDR=1
++LIBS += `pkg-config --libs xrandr`
++CCFLAGS += `pkg-config --libs xrandr`
++endif
+ # Solaris
+ #CFLAGS = -fast ${INCS} -DVERSION=\"${VERSION}\"
+ #LDFLAGS = ${LIBS}
+--- a/Makefile
++++ b/Makefile
+@@ -19,13 +19,13 @@
+ 
+ .c.o:
+ 	@echo CC $<
+-	@${CC} -c ${CFLAGS} $<
++	${CC} ${CPPFLAGS} -c ${CFLAGS} $<
+ 
+ ${OBJ}: config.mk ${HEADERS}
+ 
+ echinus: ${OBJ} ${SRC} ${HEADERS}
+ 	@echo CC -o $@
+-	@${CC} -o $@ ${OBJ} ${LDFLAGS}
++	${CC} ${CFLAGS} ${LDFLAGS} -o $@ ${OBJ} ${LIBS}
+ 
+ clean:
+ 	@echo cleaning

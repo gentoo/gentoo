@@ -1,0 +1,135 @@
+# ChangeLog for dev-perl/XML-RegExp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-RegExp/ChangeLog,v 1.41 2014/08/21 19:30:28 axs Exp $
+
+*XML-RegExp-0.40.0-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +XML-RegExp-0.40.0-r1.ebuild, -XML-RegExp-0.40.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  06 Jan 2013; Torsten Veller <tove@gentoo.org> -XML-RegExp-0.30.0.ebuild:
+  Cleanup
+
+  02 Sep 2012; Raúl Porcel <armin76@gentoo.org> XML-RegExp-0.40.0.ebuild:
+  alpha/ia64/sparc stable wrt #418871
+
+  09 Aug 2012; Brent Baude <ranger@gentoo.org> XML-RegExp-0.40.0.ebuild:
+  Marking XML-RegExp-0.40.0 ppc for bug 418871
+
+  07 Aug 2012; Brent Baude <ranger@gentoo.org> XML-RegExp-0.40.0.ebuild:
+  Marking XML-RegExp-0.40.0 ppc64 for bug 418871
+
+  05 Aug 2012; Markus Meier <maekke@gentoo.org> XML-RegExp-0.40.0.ebuild:
+  arm stable, bug #418871
+
+  04 Aug 2012; Jeroen Roovers <jer@gentoo.org> XML-RegExp-0.40.0.ebuild:
+  Stable for HPPA (bug #418871).
+
+  03 Aug 2012; Agostino Sarubbo <ago@gentoo.org> XML-RegExp-0.40.0.ebuild:
+  Stable for amd64, wrt bug #418871
+
+  31 Jul 2012; Johannes Huber <johu@gentoo.org> XML-RegExp-0.40.0.ebuild:
+  Stable for x86, wrt bug #418871
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  18 May 2012; Alexis Ballier <aballier@gentoo.org> XML-RegExp-0.40.0.ebuild:
+  keyword ~amd64-fbsd
+
+*XML-RegExp-0.40.0 (30 Mar 2012)
+
+  30 Mar 2012; Torsten Veller <tove@gentoo.org> +XML-RegExp-0.40.0.ebuild:
+  Version bump
+
+  04 Sep 2011; Torsten Veller <tove@gentoo.org> -XML-RegExp-0.03-r1.ebuild:
+  Cleanup
+
+  03 Sep 2011; Torsten Veller <tove@gentoo.org> XML-RegExp-0.30.0.ebuild:
+  Merge stable keywords from former version scheme ebuild
+
+*XML-RegExp-0.30.0 (28 Aug 2011)
+
+  28 Aug 2011; Torsten Veller <tove@gentoo.org> +XML-RegExp-0.30.0.ebuild:
+  Change version scheme
+
+  06 Mar 2010; Raúl Porcel <armin76@gentoo.org> XML-RegExp-0.03-r1.ebuild:
+  arm stable
+
+  06 Feb 2010; Torsten Veller <tove@gentoo.org> XML-RegExp-0.03-r1.ebuild:
+  Fix LICENSE (#301969). Maintenance
+
+  14 Jan 2010; Fabian Groffen <grobian@gentoo.org>
+  XML-RegExp-0.03-r1.ebuild:
+  Transfer Prefix keywords
+
+  10 Jan 2010; Raúl Porcel <armin76@gentoo.org> XML-RegExp-0.03-r1.ebuild:
+  Add ~arm
+
+  21 May 2008; Torsten Veller <tove@gentoo.org> metadata.xml,
+  XML-RegExp-0.03-r1.ebuild:
+  Update HOMEPAGE (#203637), shorten DESCRIPTION, update metadata
+
+  19 Jan 2007; Michael Cummings <mcummings@gentoo.org>
+  XML-RegExp-0.03-r1.ebuild:
+  Ebuild maintenance
+
+  06 Aug 2006; Michael Cummings <mcummings@gentoo.org>
+  XML-RegExp-0.03-r1.ebuild:
+  Adding perl dep; fixed DEPEND
+
+  05 Jul 2006; Christian Hartmann <ian@gentoo.org>
+  XML-RegExp-0.03-r1.ebuild:
+  Fixed RDEPEND wrt bug #134781; fixed DEPEND
+
+  29 Jun 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  XML-RegExp-0.03-r1.ebuild:
+  Stable on hppa
+
+  18 Jun 2006; Rene Nussbaumer <killerfox@gentoo.org>
+  XML-RegExp-0.03-r1.ebuild:
+  Unstable on hppa.
+
+  24 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  XML-RegExp-0.03-r1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> XML-RegExp-0.03-r1.ebuild:
+  Mark 0.03-r1 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> XML-RegExp-0.03-r1.ebuild:
+  add ~ia64
+
+  18 May 2005; Markus Rothe <corsair@gentoo.org> XML-RegExp-0.03-r1.ebuild:
+  Stable on ppc64
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -XML-RegExp-0.03.ebuild, XML-RegExp-0.03-r1.ebuild:
+  Cleaning for mirror
+
+  09 Mar 2005; Markus Rothe <corsair@gentoo.org> XML-RegExp-0.03-r1.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*XML-RegExp-0.03-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*XML-RegExp-0.03 (03 Jul 2002)
+
+  1 Aug 2002; Calum Selkirk <cselkirk@gentoo.org> XML-RegExp-0.03.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  03 Jul 2002; Seemant Kulleen <seemant@gentoo.org> XML-RegExp-0.03.ebuild
+  files/digest-XML-RegExp-0.03 :
+
+  New package which is required by XML-DOM and a few other packages.  Should
+  have been in portage a while ago, if you ask me.

@@ -1,0 +1,38 @@
+#!/bin/sh -
+# $Header: /var/cvsroot/gentoo-x86/app-eselect/eselect-wxwidgets/files/wx-config-1.3,v 1.1 2015/03/31 16:58:24 ulm Exp $
+#
+# /usr/bin/wx-config
+#
+#  a lame wx-config wrapper (bugs to wxwidgets@gentoo.org)
+
+_wxerror() {
+	cat >&2 <<- EOF
+		An error occurred while calling wx-config:
+		
+		${1}
+
+		Please use \`eselect wxwidgets\` to select an available profile and try again.
+	EOF
+	exit 1
+}
+
+if [ -n "${WX_ECLASS_CONFIG}" ]; then
+	${WX_ECLASS_CONFIG} "$@"
+	exit 0
+else
+	if [ -e /var/lib/wxwidgets/current ]; then
+		. /var/lib/wxwidgets/current
+	else
+		_wxerror "Cannot find the wxWidgets profile configuration ( /var/lib/wxwidgets/current )"
+	fi
+
+	[ -z "${WXCONFIG}" -o "${WXCONFIG}" = none ] && _wxerror "No profile currently selected"
+
+	if [ -x /usr/lib/wx/config/${WXCONFIG} ]; then
+	   /usr/lib/wx/config/${WXCONFIG} "$@"
+	else
+		_wxerror "Cannot find wxWidgets profile ( ${WXCONFIG} )"
+	fi
+	exit 0
+fi
+

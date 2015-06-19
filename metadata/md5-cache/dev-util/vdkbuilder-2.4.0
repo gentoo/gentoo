@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=dev-libs/vdk-2.4.0
+DESCRIPTION=The Visual Development Kit used for VDK Builder
+HOMEPAGE=http://vdkbuilder.sf.net
+IUSE=nls debug
+KEYWORDS=ppc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/vdk-2.4.0
+SLOT=0
+SRC_URI=mirror://sourceforge/vdkbuilder/vdkbuilder2-2.4.0.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=6ed3ff298a125981e8e8ceda002297cc

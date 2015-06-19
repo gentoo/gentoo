@@ -1,0 +1,40 @@
+# ChangeLog for sys-apps/adjtime
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/adjtime/ChangeLog,v 1.7 2014/04/30 18:28:05 ulm Exp $
+
+  30 Apr 2014; Ulrich Müller <ulm@gentoo.org> adjtime-0.4-r2.ebuild,
+  -files/adjtime.pl:
+  Fix LICENSE, remove distfile from FILESDIR, add mirror and bindist
+  restrictions, bug 441922.
+
+  07 Oct 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, #24135.
+
+  30 Nov 2006; Steve Arnold <nerdboy@gentoo.org> metadata.xml,
+  adjtime-0.4-r2.ebuild:
+  updated ntp depend
+
+*adjtime-0.4-r2 (15 Feb 2006)
+
+  15 Feb 2006; Steve Arnold <nerdboy@gentoo.org> -files/adjtime.conf,
+  -files/adjtime.init, -adjtime-0.4-r1.ebuild, +adjtime-0.4-r2.ebuild:
+  updated RDEPEND atom (sanitized for cirianm's protection) and removed 
+  init script and conf files (shell environment dorks up perl script
+  execution and I have no way of watching the boot process).
+
+  25 Jan 2006; Steve Arnold <nerdboy@gentoo.org> files/adjtime.pl:
+  updated to original script with only path change; not sure why a "which"
+  check on the path would dork it up...
+
+*adjtime-0.4-r1 (22 Jan 2006)
+
+  22 Jan 2006; Steve Arnold <nerdboy@gentoo.org> files/adjtime.init,
+  files/adjtime.pl, -adjtime-0.4.ebuild, +adjtime-0.4-r1.ebuild:
+  updated scripts and added ntp dependency (bug 119917)
+
+*adjtime-0.4 (21 Jan 2006)
+
+  21 Jan 2006; Steve Arnold <nerdboy@gentoo.org> +files/adjtime.conf,
+  +files/adjtime.init, +files/adjtime.pl, +metadata.xml,
+  +adjtime-0.4.ebuild:
+  Adding new perl script for adjusting the clock tick on kurobox and LinkStation

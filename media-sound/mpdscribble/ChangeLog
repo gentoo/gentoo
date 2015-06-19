@@ -1,0 +1,217 @@
+# ChangeLog for media-sound/mpdscribble
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mpdscribble/ChangeLog,v 1.50 2012/05/05 08:38:38 mgorny Exp $
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> mpdscribble-0.22.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  23 Jul 2011; Christoph Mende <angelos@gentoo.org>
+  -files/mpdscribble-0.18-ldadd_gthread.patch, -mpdscribble-0.21.ebuild:
+  Remove old
+
+  23 Jul 2011; Markus Meier <maekke@gentoo.org> mpdscribble-0.22.ebuild:
+  x86 stable, bug #375371
+
+  16 Jul 2011; Markos Chandras <hwoarang@gentoo.org> mpdscribble-0.22.ebuild:
+  Stable on amd64 wrt bug #375371
+
+*mpdscribble-0.22 (09 Jul 2011)
+
+  09 Jul 2011; Christoph Mende <angelos@gentoo.org>
+  -files/mpdscribble-0.19-config_path.patch, +mpdscribble-0.22.ebuild:
+  Version bump and remove unused patch
+
+  14 Jun 2011; Christoph Mende <angelos@gentoo.org> mpdscribble-0.21.ebuild:
+  Force libsoup, curl's last working version was removed
+
+  24 May 2011; Christoph Mende <angelos@gentoo.org> mpdscribble-0.21.ebuild:
+  Adjust curl dependency
+
+  21 May 2011; Christoph Mende <angelos@gentoo.org> -mpdscribble-0.19.ebuild,
+  -mpdscribble-0.20.ebuild:
+  Remove old
+
+  21 May 2011; Raúl Porcel <armin76@gentoo.org> mpdscribble-0.19.ebuild,
+  mpdscribble-0.20.ebuild, mpdscribble-0.21.ebuild:
+  Drop sparc keywords and x86 stable wrt #365067
+
+  29 Apr 2011; Markos Chandras <hwoarang@gentoo.org> mpdscribble-0.21.ebuild:
+  Stable on amd64 wrt bug #365067
+
+*mpdscribble-0.21 (14 Jan 2011)
+
+  14 Jan 2011; Tim Harder <radhermit@gentoo.org> +mpdscribble-0.21.ebuild:
+  Version bump. Update required libmpdclient version.
+
+*mpdscribble-0.20 (11 Oct 2010)
+
+  11 Oct 2010; Tim Harder <radhermit@gentoo.org> -mpdscribble-0.17.ebuild,
+  -mpdscribble-0.18.ebuild, -mpdscribble-0.18.1.ebuild,
+  +mpdscribble-0.20.ebuild:
+  Version bump to new bugfix release (fixes bug #339499, thanks to Mr. B
+  <tenebrarum@gmail.com> for reporting) and remove old.
+
+  06 Sep 2010; <angelos@gentoo.org> mpdscribble-0.19.ebuild,
+  +files/mpdscribble-0.19-config_path.patch:
+  Fix config file install path (bug #327959)
+
+  08 Jul 2010; Raúl Porcel <armin76@gentoo.org> mpdscribble-0.19.ebuild:
+  sparc stable wrt #320929
+
+  01 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  mpdscribble-0.19.ebuild:
+  x86 stable wrt bug #320929
+
+  25 May 2010; Christoph Mende <angelos@gentoo.org> mpdscribble-0.19.ebuild:
+  amd64 stable (bug 320929), thanks to Roeland Douma
+
+  16 Apr 2010; Brent Baude <ranger@gentoo.org> mpdscribble-0.19.ebuild:
+  keyworded ~arch for ppc, bug 302024
+
+  25 Jan 2010; Christoph Mende <angelos@gentoo.org> mpdscribble-0.19.ebuild:
+  Added missing libmpdclient dependency (bug #302024)
+
+*mpdscribble-0.19 (23 Jan 2010)
+
+  23 Jan 2010; Christoph Mende <angelos@gentoo.org>
+  +mpdscribble-0.19.ebuild:
+  Version bump
+
+*mpdscribble-0.18.1 (30 Oct 2009)
+
+  30 Oct 2009; Christoph Mende <angelos@gentoo.org>
+  +mpdscribble-0.18.1.ebuild:
+  Version bump
+
+  17 Aug 2009; Christian Faulhammer <fauli@gentoo.org>
+  mpdscribble-0.17.ebuild:
+  stable x86, bug 279567
+
+  29 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  mpdscribble-0.18.ebuild, +files/mpdscribble-0.18-ldadd_gthread.patch:
+  Fix missing LDADD for -lgthread-2.0.
+
+*mpdscribble-0.18 (29 Jul 2009)
+
+  29 Jul 2009; Samuli Suominen <ssuominen@gentoo.org>
+  +mpdscribble-0.18.ebuild:
+  Version bump. Change libsoup dep. to curl since it's apparently preferred
+  by the upstream configure.ac.
+
+  01 Jul 2009; Markus Meier <maekke@gentoo.org> mpdscribble-0.17.ebuild:
+  amd64 stable, bug #272350
+
+  26 Jun 2009; Raúl Porcel <armin76@gentoo.org> mpdscribble-0.17.ebuild:
+  sparc stable wrt #272350
+
+*mpdscribble-0.17 (10 Mar 2009)
+
+  10 Mar 2009; Christoph Mende <angelos@gentoo.org>
+  +mpdscribble-0.17.ebuild:
+  Version bump
+
+  15 Feb 2009; Christoph Mende <angelos@gentoo.org> files/mpdscribble.rc:
+  Don't fork twice and fix the pid file in the init script
+
+*mpdscribble-0.16 (19 Jan 2009)
+
+  19 Jan 2009; Christoph Mende <angelos@gentoo.org> files/mpdscribble.rc,
+  +mpdscribble-0.16.ebuild:
+  Version bump and remove -m from stop() in mpdscribble.rc (bug 254302)
+
+*mpdscribble-0.15 (07 Jan 2009)
+
+  07 Jan 2009; Christoph Mende <angelos@gentoo.org>
+  +mpdscribble-0.15.ebuild:
+  Version bump
+
+*mpdscribble-0.13 (20 Dec 2008)
+
+  20 Dec 2008; Christoph Mende <angelos@gentoo.org> metadata.xml,
+  mpdscribble-0.2.12.ebuild, +mpdscribble-0.13.ebuild:
+  Version bump and taking maintainership
+
+  29 Jan 2008; Samuli Suominen <drac@gentoo.org> -mpdscribble-0.2.6.ebuild,
+  -mpdscribble-0.2.7.ebuild, -mpdscribble-0.2.9.ebuild,
+  -mpdscribble-0.2.10.ebuild, mpdscribble-0.2.12.ebuild:
+  Fix libsoup depends
+
+  14 Jan 2008; Tony Vroon <chainsaw@gentoo.org> mpdscribble-0.2.6.ebuild,
+  mpdscribble-0.2.7.ebuild, mpdscribble-0.2.9.ebuild,
+  mpdscribble-0.2.10.ebuild, mpdscribble-0.2.12.ebuild:
+  Add pkgconfig dependency for the Evil Compile Person
+  <bugs@dev.gentooexperimental.org>, closes bug #205621. Quoted a few
+  variables on the way.
+
+  29 Jul 2007; Steve Dibb <beandog@gentoo.org> mpdscribble-0.2.12.ebuild:
+  amd64 stable, bug 183314
+
+  07 Jun 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  mpdscribble-0.2.12.ebuild:
+  Stable on sparc
+
+  16 May 2007; Jeroen Roovers <jer@gentoo.org> mpdscribble-0.2.12.ebuild:
+  Marked ~hppa (bug #177664).
+
+  01 May 2007; Marius Mauch <genone@gentoo.org> mpdscribble-0.2.6.ebuild,
+  mpdscribble-0.2.7.ebuild, mpdscribble-0.2.9.ebuild,
+  mpdscribble-0.2.10.ebuild, mpdscribble-0.2.12.ebuild:
+  Replacing einfo with elog
+
+  18 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  mpdscribble-0.2.12.ebuild:
+  Keyworded ~sparc wrt #172113
+
+*mpdscribble-0.2.12 (15 Mar 2007)
+
+  15 Mar 2007; Michael Marineau <marineam@gentoo.org>
+  +mpdscribble-0.2.12.ebuild:
+  Version bump to 0.2.12
+
+  22 Jun 2006; Tom Martin <slarti@gentoo.org> files/mpdscribble.rc:
+  Add 'use mpd' to depend() part of initscript. Resolves bug #135129.
+
+*mpdscribble-0.2.10 (03 Jun 2006)
+
+  03 Jun 2006; Tom Martin <slarti@gentoo.org> +mpdscribble-0.2.10.ebuild:
+  Version bump to 0.2.10. Resolves bug #135348.
+
+*mpdscribble-0.2.9 (28 May 2006)
+
+  28 May 2006; Tom Martin <slarti@gentoo.org> mpdscribble-0.2.6.ebuild,
+  mpdscribble-0.2.7.ebuild, +mpdscribble-0.2.9.ebuild:
+  Version bump to 0.2.9, plus fix a few more URLs in the old ebuilds.
+
+  20 May 2006; Tom Martin <slarti@gentoo.org> mpdscribble-0.2.7.ebuild:
+  Homepage moved, $HOMEPAGE altered accordingly.
+
+  09 Dec 2005; <chainsaw@gentoo.org> mpdscribble-0.2.6.ebuild,
+  mpdscribble-0.2.7.ebuild:
+  Depend on libsoup-2.2 as older versions will not work; closes bug #111287.
+
+*mpdscribble-0.2.7 (10 Nov 2005)
+
+  10 Nov 2005; Tom Martin <slarti@gentoo.org> +mpdscribble-0.2.7.ebuild:
+  Version bump to 0.2.7.
+
+  29 Oct 2005; Tom Martin <slarti@gentoo.org> files/mpdscribble.rc:
+  A few grammar and consistency corrections in the RC script's messages.
+
+  15 Oct 2005; Joseph Jezak <josejx@gentoo.org> mpdscribble-0.2.6.ebuild:
+  Marked ~ppc for bug #107814.
+
+  17 Sep 2005; Thomas Matthijs <axxo@gentoo.org> mpdscribble-0.2.6.ebuild:
+  Fix dep, keyword ~x86
+
+  17 Sep 2005; Tom Martin <slarti@gentoo.org> mpdscribble-0.2.6.ebuild:
+  Alter DEPEND, resolves bug #106172.
+
+  16 Sep 2005; Tom Martin <slarti@gentoo.org> mpdscribble-0.2.6.ebuild:
+  Added an RDEPEND for mpd or mpd-svn. I really am scatter-brained.
+
+*mpdscribble-0.2.6 (15 Sep 2005)
+
+  15 Sep 2005; Tom Martin <slarti@gentoo.org> +files/mpdscribble.rc,
+  +metadata.xml, +mpdscribble-0.2.6.ebuild:
+  Initial import, resolves bug 86934. Thanks to Boris Smus <boris@z3.ca>.
+

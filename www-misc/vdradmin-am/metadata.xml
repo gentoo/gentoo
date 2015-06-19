@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>media-tv</herd>
+	<maintainer>
+		<email>vdr@gentoo.org</email>
+		<name>Gentoo VDR Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		To program and steer central service over a Browser the VDR 
+	</longdescription>
+	<longdescription lang="de">
+		Zentraler Dienst um ueber einen Browser den VDR zu programmiern
+		und zu steuern.
+	</longdescription>
+	<use>
+		<flag name="vdr">
+			Support for media-video/vdr.
+			Disable this if the VDR you want to control runs at a remote machine.
+		</flag>
+	</use>
+</pkgmetadata>

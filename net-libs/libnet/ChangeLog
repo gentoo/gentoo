@@ -1,0 +1,426 @@
+# ChangeLog for net-libs/libnet
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libnet/ChangeLog,v 1.113 2014/06/09 23:58:56 vapier Exp $
+
+  09 Jun 2014; Mike Frysinger <vapier@gentoo.org> libnet-1.1.6.ebuild,
+  libnet-1.2_rc3.ebuild:
+  Add arm64 love.
+
+*libnet-1.2_rc3 (30 Jan 2014)
+
+  30 Jan 2014; Jeroen Roovers <jer@gentoo.org> -libnet-1.2_rc2.ebuild,
+  +libnet-1.2_rc3.ebuild, files/libnet-1.2-rc.patch:
+  Version bump.
+
+  22 Apr 2013; Jeroen Roovers <jer@gentoo.org> -libnet-1.0.2a-r4.ebuild:
+  Old.
+
+  22 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libnet-1.0.2a-r5.ebuild:
+  Stable for sparc, wrt bug #444242
+
+  21 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libnet-1.0.2a-r5.ebuild:
+  Stable for arm, wrt bug #444242
+
+  19 Apr 2013; Vicente Olivert Riera <vincent@gentoo.org>
+  libnet-1.0.2a-r5.ebuild:
+  ppc and ppc64 stable, wrt bug #444242
+
+  18 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libnet-1.0.2a-r5.ebuild:
+  Stable for alpha, wrt bug #444242
+
+  17 Apr 2013; Jeroen Roovers <jer@gentoo.org> libnet-1.0.2a-r5.ebuild:
+  Respect AR/RANLIB (bug #466202).
+
+  17 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libnet-1.0.2a-r5.ebuild:
+  Stable for x86, wrt bug #444242
+
+  17 Apr 2013; Agostino Sarubbo <ago@gentoo.org> libnet-1.0.2a-r5.ebuild:
+  Stable for amd64, wrt bug #444242
+
+  16 Apr 2013; Jeroen Roovers <jer@gentoo.org> libnet-1.0.2a-r5.ebuild:
+  Stable for HPPA (bug #444242).
+
+*libnet-1.2_rc2 (10 Apr 2013)
+
+  10 Apr 2013; Jeroen Roovers <jer@gentoo.org> +libnet-1.2_rc2.ebuild,
+  -libnet-1.2_rc1-r1.ebuild, files/libnet-1.2-rc.patch:
+  Version bump.
+
+*libnet-1.2_rc1-r1 (27 Mar 2013)
+
+  27 Mar 2013; Jeroen Roovers <jer@gentoo.org> -libnet-1.2_rc1.ebuild,
+  +libnet-1.2_rc1-r1.ebuild, +files/libnet-1.2-rc.patch:
+  Fix LIBNET_VERSION string (bug #463528).
+
+*libnet-1.2_rc1 (15 Mar 2013)
+
+  15 Mar 2013; Jeroen Roovers <jer@gentoo.org> +libnet-1.2_rc1.ebuild:
+  Version bump.
+
+  19 Feb 2013; Zac Medico <zmedico@gentoo.org> libnet-1.1.6.ebuild:
+  Add ~arm-linux keyword.
+
+*libnet-1.0.2a-r5 (05 Jan 2013)
+
+  05 Jan 2013; Jeroen Roovers <jer@gentoo.org> +libnet-1.0.2a-r5.ebuild:
+  Apply endian patch only on ARM (bug #444242).
+
+  03 Jan 2013; Jeroen Roovers <jer@gentoo.org> libnet-1.0.2a-r4.ebuild,
+  libnet-1.1.6.ebuild:
+  Set proper LICENSE (bug #449952).
+
+  29 Jul 2012; Jeroen Roovers <jer@gentoo.org> -libnet-1.0.2a-r3.ebuild:
+  Old.
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org> libnet-1.0.2a-r4.ebuild:
+  alpha/sparc stable wrt #418275
+
+  24 Jul 2012; Jeroen Roovers <jer@gentoo.org> -libnet-1.1.5.ebuild,
+  -files/libnet-1.1.5-darwin.patch:
+  Old.
+
+  17 Jun 2012; Raúl Porcel <armin76@gentoo.org> libnet-1.1.6.ebuild:
+  alpha/ia64/m68k/s390/sh/sparc stable wrt #413877
+
+  07 Jun 2012; Brent Baude <ranger@gentoo.org> libnet-1.0.2a-r4.ebuild:
+  Marking libnet-1.0.2a-r4 ppc for bug 418275
+
+  05 Jun 2012; Brent Baude <ranger@gentoo.org> libnet-1.0.2a-r4.ebuild:
+  Marking libnet-1.0.2a-r4 ppc64 for bug 418275
+
+  03 Jun 2012; Markus Meier <maekke@gentoo.org> libnet-1.0.2a-r4.ebuild:
+  arm stable, bug #418275
+
+  31 May 2012; Jeroen Roovers <jer@gentoo.org> libnet-1.0.2a-r4.ebuild:
+  Stable for HPPA (bug #418275).
+
+  31 May 2012; Agostino Sarubbo <ago@gentoo.org> libnet-1.0.2a-r4.ebuild:
+  Stable for amd64, wrt bug #418275
+
+  31 May 2012; Jeff Horelick <jdhore@gentoo.org> libnet-1.0.2a-r4.ebuild:
+  marked x86 per bug 418275
+
+  12 May 2012; Jeroen Roovers <jer@gentoo.org> libnet-1.1.6.ebuild:
+  Stable for HPPA (bug #413877).
+
+  08 May 2012; Brent Baude <ranger@gentoo.org> libnet-1.1.6.ebuild:
+  Marking libnet-1.1.6 ppc64 for bug 413877
+
+  05 May 2012; Brent Baude <ranger@gentoo.org> libnet-1.1.6.ebuild:
+  Marking libnet-1.1.6 ppc for bug 413877
+
+  03 May 2012; Markus Meier <maekke@gentoo.org> libnet-1.1.6.ebuild:
+  arm stable, bug #413877
+
+  30 Apr 2012; Jeff Horelick <jdhore@gentoo.org> libnet-1.1.6.ebuild:
+  marked x86 per bug 413877
+
+  30 Apr 2012; Agostino Sarubbo <ago@gentoo.org> libnet-1.1.6.ebuild:
+  Stable for amd64, wrt bug #413877
+
+*libnet-1.0.2a-r4 (28 Apr 2012)
+
+  28 Apr 2012; Jeroen Roovers <jer@gentoo.org> +files/1.0.2a-endian.patch,
+  files/1.0.2a-slot.patch, +libnet-1.0.2a-r4.ebuild:
+  Apply endian patch by Christopher Friedt (bug #275885). Clean up patch.
+  Respect CFLAGS.
+
+  23 Apr 2012; Fabian Groffen <grobian@gentoo.org> libnet-1.1.6.ebuild:
+  Marked ~{ppc,x86,x64}-macos, bug #410067
+
+  14 Apr 2012; Zac Medico <zmedico@gentoo.org> libnet-1.1.6.ebuild:
+  Fix for USE=-static-libs for prefix.
+
+*libnet-1.1.6 (30 Mar 2012)
+
+  30 Mar 2012; Jeroen Roovers <jer@gentoo.org> -libnet-1.1.6_rc3.ebuild,
+  +libnet-1.1.6.ebuild:
+  Version bump.
+
+*libnet-1.1.6_rc3 (28 Mar 2012)
+
+  28 Mar 2012; Jeroen Roovers <jer@gentoo.org> +libnet-1.1.6_rc3.ebuild:
+  Version bump.
+
+  19 Sep 2011; Naohiro Aota <naota@gentoo.org> libnet-1.0.2a-r3.ebuild:
+  Add ~x86-fbsd for 1.0.2a-r3
+
+  13 Jul 2011; Jeroen Roovers <jer@gentoo.org> -libnet-1.1.4-r1.ebuild,
+  -files/libnet-1.1.4-zero-pointers-after-free.patch:
+  ^
+
+  13 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> libnet-1.1.5.ebuild:
+  ppc/ppc64 stable wrt #359037
+
+  07 May 2011; Raúl Porcel <armin76@gentoo.org> libnet-1.1.5.ebuild:
+  alpha/arm/ia64/m68k/s390/sh/sparc stable wrt #359037
+
+  06 May 2011; Jeroen Roovers <jer@gentoo.org> libnet-1.1.5.ebuild:
+  Stable for HPPA (bug #359037).
+
+  04 May 2011; Markos Chandras <hwoarang@gentoo.org> libnet-1.1.5.ebuild:
+  Stable on amd64 wrt bug #359037
+
+  02 May 2011; Thomas Kahle <tomka@gentoo.org> libnet-1.1.5.ebuild:
+  x86 stable per bug 359037
+
+  13 Nov 2010; Fabian Groffen <grobian@gentoo.org> libnet-1.1.5.ebuild,
+  +files/libnet-1.1.5-darwin.patch:
+  Fix compilation on Darwin
+
+  10 Nov 2010; Jeroen Roovers <jer@gentoo.org> libnet-1.1.5.ebuild:
+  Forgot one.
+
+  10 Nov 2010; Jeroen Roovers <jer@gentoo.org> libnet-1.0.2a-r3.ebuild,
+  libnet-1.1.4-r1.ebuild:
+  Revert.
+
+  10 Nov 2010; Sebastian Pipping <sping@gentoo.org> libnet-1.0.2a-r3.ebuild,
+  libnet-1.1.4-r1.ebuild, libnet-1.1.5.ebuild:
+  Fix SRC_URI and HOMEPAGE
+
+*libnet-1.1.5 (09 Nov 2010)
+
+  09 Nov 2010; Jeroen Roovers <jer@gentoo.org> +libnet-1.1.5.ebuild:
+  Version bump.
+
+  19 Jul 2010; Markus Meier <maekke@gentoo.org> libnet-1.0.2a-r3.ebuild:
+  add ~arm, bug #301080
+
+  26 Jan 2010; Jeroen Roovers <jer@gentoo.org> libnet-1.0.2a-r3.ebuild,
+  -libnet-1.1.2.1-r1.ebuild, -libnet-1.1.2.1-r2.ebuild,
+  -files/libnet-1.1.2.1-autotools.patch,
+  -files/libnet-1.1.2.1-cq_end_loop.patch,
+  -files/libnet-1.1.2.1-fix-chksum.patch, -libnet-1.1.4.ebuild:
+  Remove old. 1.0.2a-r3 stable for HPPA too.
+
+  26 Jan 2010; Brent Baude <ranger@gentoo.org> libnet-1.1.4-r1.ebuild:
+  Marking libnet-1.1.4-r1 ppc64 for bug 289857
+
+  25 Jan 2010; Raúl Porcel <armin76@gentoo.org> libnet-1.1.4.ebuild,
+  libnet-1.1.4-r1.ebuild:
+  arm/ia64/m68k/s390/sh/sparc stable wrt #289857
+
+  16 Jan 2010; Tiago Cunha <tcunha@gentoo.org> libnet-1.1.4-r1.ebuild:
+  stable sparc, bug 289857
+
+  10 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  libnet-1.1.4-r1.ebuild:
+  Transfer Prefix keywords
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  libnet-1.1.4-r1.ebuild:
+  stable x86, bug 289857
+
+  01 Jan 2010; Tobias Klausmann <klausman@gentoo.org>
+  libnet-1.1.4-r1.ebuild:
+  Stable on alpha, bug #289857
+
+  24 Dec 2009; Pacho Ramos <pacho@gentoo.org> libnet-1.1.4-r1.ebuild:
+  amd64 stable, bug 289857
+
+  22 Dec 2009; Jeroen Roovers <jer@gentoo.org> libnet-1.1.4-r1.ebuild:
+  Stable for HPPA PPC (bug #289857).
+
+*libnet-1.1.4-r1 (22 Dec 2009)
+
+  22 Dec 2009; Peter Volkov <pva@gentoo.org> +libnet-1.1.4-r1.ebuild:
+  Bump revision to apply crasher fix from Jeroen Roovers.
+
+  10 Dec 2009; Jeroen Roovers <jer@gentoo.org> libnet-1.1.4.ebuild,
+  +files/libnet-1.1.4-zero-pointers-after-free.patch:
+  Apply Debian patch (bug #296417).
+
+  09 Dec 2009; nixnut <nixnut@gentoo.org> libnet-1.1.4.ebuild:
+  ppc stable #289857
+
+  01 Dec 2009; Tiago Cunha <tcunha@gentoo.org> libnet-1.1.4.ebuild:
+  stable sparc, bug 289857
+
+  22 Nov 2009; Jeroen Roovers <jer@gentoo.org> libnet-1.1.4.ebuild:
+  Stable for HPPA (bug #289857).
+
+  22 Nov 2009; Tobias Klausmann <klausman@gentoo.org> libnet-1.1.4.ebuild:
+  Stable on alpha, bug #289857
+
+  20 Nov 2009; Markus Meier <maekke@gentoo.org> libnet-1.1.4.ebuild:
+  amd64/arm/x86 stable, bug #289857
+
+*libnet-1.1.4 (20 Oct 2009)
+
+  20 Oct 2009; Jeroen Roovers <jer@gentoo.org> +libnet-1.1.4.ebuild:
+  Version bump from libnet-dev.sf.net.
+
+*libnet-1.1.2.1-r2 (25 May 2009)
+
+  25 May 2009; Jeroen Roovers <jer@gentoo.org> libnet-1.0.2a-r3.ebuild,
+  +libnet-1.1.2.1-r2.ebuild, +files/libnet-1.1.2.1-cq_end_loop.patch:
+  Do not call autoconf directly in 1.0.2a-r2, but call eautoconf (bug
+  #226599). Apply cq_end_loop patch to new 1.1.2.1 revision to build
+  net-analyzer/dhcp_probe against.
+
+  08 May 2007; Marius Mauch <genone@gentoo.org> libnet-1.0.2a-r3.ebuild:
+  Replacing einfo with elog
+
+  10 Sep 2006; Javier Villavicencio <the_paya@gentoo.org>
+  libnet-1.1.2.1-r1.ebuild:
+  Add ~x86-fbsd keyword.
+
+  25 Jul 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  libnet-1.0.2a-r3.ebuild:
+  Added to ~hppa.
+
+  27 Jun 2005; Markus Rothe <corsair@gentoo.org> libnet-1.0.2a-r3.ebuild:
+  Stable on ppc64
+
+  15 May 2005; Markus Rothe <corsair@gentoo.org> libnet-1.0.2a-r3.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  13 Apr 2005; Tom Gall <tgall@gentoo.org>
+  libnet-1.1.2.1.ebuild, libnet-1.1.2.1-r1.ebuild:
+  marked stable and ~ppc64 respectively
+
+*libnet-1.1.2.1-r1 (23 Mar 2005)
+
+  23 Mar 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/libnet-1.1.2.1-autotools.patch,
+  +files/libnet-1.1.2.1-fix-chksum.patch, +libnet-1.1.2.1-r1.ebuild:
+  Add patches from debian to generate a libnet.so for linking #82926.
+
+  11 Jan 2005; Daniel Black <dragonheart@gentoo.org> files/1.0.2a-slot.patch:
+  expanded patch to fix selftest routine.
+
+  25 Jul 2004; Lina Pezzella <j4rg0n@gentoo.org>
+  Fixed Manifest.
+
+  25 Jul 2004; Alexander Plank <alexander@gentoo.org> libnet-1.1.2.1.ebuild:
+  Added macos keyword (thanks Ryan Ramsey <admin@v3rt3x.mine.nu>)
+
+  08 May 2004; Joshua Kinard <kumba@gentoo.org> libnet-1.1.2.1.ebuild:
+  Added gnuconfig support for mips.
+
+*libnet-1.1.2.1 (01 Apr 2004)
+
+  01 Apr 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #46327 by Alberto Ornaghi.
+
+*libnet-1.1.2 (28 Mar 2004)
+
+  28 Mar 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #45876 by Alberto Ornaghi.
+
+  05 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org> libnet-1.1.1.ebuild:
+  stable on sparc
+
+  30 Jan 2004; Grant Goodyear <g2boojum@hotmail.com> libnet-1.1.1.ebuild,
+  metadata.xml:
+  Marking 1.1.1 x86 to enable netwox
+
+  17 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  libnet-1.0.2a-r3.ebuild:
+  update SRC_URI for old libnet (bug 38474); tidy
+
+  26 Dec 2003; Jason Wever <weeve@gentoo.org> libnet-1.1.1.ebuild:
+  Added ~sparc keyword.
+
+*libnet-1.1.1 (30 Nov 2003)
+
+  30 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #34457.
+
+  14 Nov 2003; Brad House <brad_mssw@gentoo.org> libnet-1.1.0-r3.ebuild:
+  mark stable on amd64
+
+  13 Nov 2003; <tuxus@gentoo.org> libnet-1.1.0-r3.ebuild:
+  added mips to KEYWORDS
+
+  04 Nov 2003; Jason Wever <weeve@gentoo.org> libnet-1.0.2a-r3.ebuild:
+  Marked stable too early, changing back to ~sparc.
+
+  01 Nov 2003; Jason Wever <weeve@gentoo.org> libnet-1.0.2a-r3.ebuild:
+  Marked stable on sparc.
+
+  08 Oct 2003; Joel Hill <hillster@gentoo.org> libnet-1.1.0-r3.ebuild:
+  marking stable.
+
+*libnet-1.1.0-r3 (21 Aug 2003)
+
+  21 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Stick libnet into better SLOT's ... that is, 1.0.x is deprecated so
+  libnet-1.1.x now occupies libnet.a, libnet.h, and libnet-config ... #17772
+
+*libnet-1.0.2a-r3 (21 Aug 2003)
+
+  21 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  While libnet-1.0.x now occupies libnet-1.0.a, libnet-1.0.h, and
+  libnet-1.0-config ... #17772
+
+*libnet-1.1.0-r2 (16 Aug 2003)
+
+  16 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Rather than using ${PV} for file tagging, use ${SLOT} ...
+  Also, move library to /usr/lib/libnet${SLOT}.a
+
+*libnet-1.1.0-r1 (02 Oct 2002)
+
+  21 May 2003; Tavis Ormandy <taviso@gentoo.org> libnet-1.1.0-r1.ebuild:
+  arking stable on alpha.
+
+  22 Apr 2003; Brandon Low <lostlogic@gentoo.org> libnet-1.1.0-r1.ebuild:
+  Change supersed dependencies
+
+  25 Mar 2003; Aron Griffis <agriffis@gentoo.org> libnet-1.1.0-r1.ebuild:
+  Add ~alpha to KEYWORDS
+
+*libnet-1.0.2a-r2 (02 Oct 2002)
+
+  24 Jul 2003; Hanno Boeck <hanno@gentoo.org> libnet-1.0.2a-r2.ebuild,
+  files/libnet-gcc33-fix:
+  Compile fix for gcc 3.3.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+  28 Apr 2003; Zach Welch <zwelch@gentoo.org> libnet-1.0.2a-r2.ebuild:
+  add arm keyword
+
+  02 Oct 2002; Seemant Kulleen <seemant@gentoo.org> libnet-1.0.2a-r2.ebuild
+  files/digest-libnet-1.0.2a-r2 libnet-1.1.0-r1.ebuild
+  files/digest-libnet-1.1.0-r1 :
+
+  Small fixes which include manpage installation and CFLAGS being honoured.
+  Thanks to: kevin@aptbasilicata.it (Maurizio Disimino) j2ee in #-dev in bug
+  #7754.  Now the two are SLOT'd
+
+*libnet-1.1.0 (27 Aug 2002)
+
+  02 Sep 2002: Brandon Low <lostlogic@gentoo.org>
+  This package is NOT backward compatible with previous versoins of libnet.
+  Additionally the install process forgets to install libnet-config which
+  is necessary for library configuration, Added that script, and trying to
+  figure out what is b0rken with this new library.
+
+  27 Aug 2002; Daniel Ahlberg <aliz@gentoo.org:
+  Version bump. Closes #7039. Ebuild contributed by kevin@aptbasilicata.it.
+
+*libnet-1.0.2a-r1 (27 Mar 2002)
+
+  06 Aug 2002; Mark Guertin <gerk@gentoo.org>:
+  Added ppc to keywords
+
+  11 May 2002; Wout Mertens <wmertens@gentoo.org> libnet-1.0.2a-r1.ebuild :
+
+  Made it copy libnet-config as well, so laptop-net builds.
+
+  27 Mar 2002; Seemant Kulleen <seemant@gentoo.org> libnet-1.0.2a-r1.ebuild :
+
+  Updated ebuild syntax, and man pages/LFH fixes by Matthew Kennedy.
+
+*libnet-1.0.2a (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

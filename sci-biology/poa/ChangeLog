@@ -1,0 +1,22 @@
+# ChangeLog for sci-biology/poa
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/poa/ChangeLog,v 1.5 2015/04/07 14:34:18 jlec Exp $
+
+  21 Mar 2015; Justin Lecher <jlec@gentoo.org> -poa-2.ebuild, metadata.xml,
+  poa-2-r1.ebuild:
+  Drop old; Bump EAPI; handle static-libs
+
+*poa-2-r1 (18 Sep 2010)
+
+  18 Sep 2010; Justin Lecher <jlec@gentoo.org> +files/2-respect-flags.patch,
+  +poa-2-r1.ebuild:
+  Respecting LDFLAGS, 337856
+
+  07 Sep 2008; Markus Dittrich <markusle@gentoo.org> poa-2.ebuild:
+  Fix outdated HOMEPAGE and keyword amd64.
+
+*poa-2 (21 Oct 2006)
+
+  21 Oct 2006; Donnie Berkholz <dberkholz@gentoo.org>;
+  +files/respect-cflags.patch, +metadata.xml, +poa-2.ebuild:
+  New package: Fast multiple sequence alignments using partial-order graphs.

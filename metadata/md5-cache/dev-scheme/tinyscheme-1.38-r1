@@ -1,0 +1,9 @@
+DEFINED_PHASES=install unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Lightweight scheme interpreter
+HOMEPAGE=http://tinyscheme.sourceforge.net
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=http://tinyscheme.sourceforge.net/tinyscheme1.38.zip
+_md5_=8fae2bb3345492d43e830cc628151f84

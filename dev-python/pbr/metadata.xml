@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>openstack</herd>
+	<maintainer>
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<longdescription lang="en">
+    Python Build Reasonableness
+	PBR is a library that injects some useful and sensible default behaviors into your setuptools run.
+  </longdescription>
+	<upstream>
+		<remote-id type="pypi">pbr</remote-id>
+		<remote-id type="github">openstack-dev/pbr</remote-id>
+	</upstream>
+</pkgmetadata>

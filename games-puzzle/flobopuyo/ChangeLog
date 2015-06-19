@@ -1,0 +1,78 @@
+# ChangeLog for games-puzzle/flobopuyo
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/flobopuyo/ChangeLog,v 1.19 2015/02/19 19:59:07 tupone Exp $
+
+  19 Feb 2015; Tupone Alfredo <tupone@gentoo.org> flobopuyo-0.20-r1.ebuild:
+  EAPI 5
+
+  04 Sep 2012; Michael Sterrett <mr_bones_@gentoo.org> flobopuyo-0.20-r1.ebuild:
+  any mod support will do
+
+  19 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  flobopuyo-0.20-r1.ebuild:
+  EAPI=2; add use-based deps
+
+  07 Aug 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  files/flobopuyo-0.20-libs.patch, flobopuyo-0.20-r1.ebuild:
+  rework Makefile patch for bug 234011
+
+  25 Jun 2008; nixnut <nixnut@gentoo.org> flobopuyo-0.20-r1.ebuild:
+  Stable on ppc wrt bug 228967
+
+  23 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  flobopuyo-0.20-r1.ebuild:
+  stable x86, bug 228967
+
+  22 Jun 2008; Kenneth Prugh <ken69267@gentoo.org> flobopuyo-0.20-r1.ebuild:
+  amd64 stable, bug #228967
+
+  07 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  flobopuyo-0.20-r1.ebuild:
+  QA cleanup: Removed line to add TryExec to the desktop file since
+  make_desktop_entry does this already.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*flobopuyo-0.20-r1 (20 Apr 2006)
+
+  20 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +flobopuyo-0.20-r1.ebuild:
+  Add icon and .desktop file, plus check for useflags needed on sdl-image. Bug
+  #128909.
+
+  11 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> flobopuyo-0.20.ebuild:
+  Add ~x86-fbsd keyword.
+
+  20 Mar 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/flobopuyo-0.20-libs.patch, flobopuyo-0.20.ebuild:
+  Added library patch and opengl USE flag as requested by flameeyes. Closing
+  bug #126835.
+
+  12 Mar 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  flobopuyo-0.20.ebuild:
+  let portage handle the stripping of the binary (bug #125550)
+
+  02 Feb 2006; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/flobopuyo-0.20-gcc41.patch, flobopuyo-0.20.ebuild:
+  gcc41 patch from flameeyes@gentoo.org (bug #121259)
+
+  03 Jan 2006; Mark Loeser <halcy0n@gentoo.org>
+  +files/flobopuyo-0.20-gcc4.patch, flobopuyo-0.20.ebuild:
+  Add patch to fix compilation on gcc-4, thanks to Diego Pettenò
+  <flameeyes@gentoo.org>; bug #106406
+
+  29 Dec 2004; Joseph Jezak <josejx@gentoo.org> flobopuyo-0.20.ebuild:
+  Marked ppc stable.
+
+  12 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org> flobopuyo-0.20.ebuild:
+  Added ~amd64 KEYWORDS and closing bug #69656.
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> flobopuyo-0.20.ebuild:
+  Added ~ppc.
+
+*flobopuyo-0.20 (15 Oct 2004)
+
+  15 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org> +metadata.xml,
+  +flobopuyo-0.20.ebuild:
+  initial commit - ebuild submitted by Rob Cakebread via bug #67028

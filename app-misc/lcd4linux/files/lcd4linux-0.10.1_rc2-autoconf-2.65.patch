@@ -1,0 +1,20 @@
+--- ac_python_devel.m4.orig	2010-03-06 01:28:40.000000000 +0200
++++ ac_python_devel.m4	2010-03-06 01:29:47.000000000 +0200
+@@ -68,7 +68,7 @@
+ PYTHON_EXTRA_LIBS and PYTHON_EXTRA_LDFLAGS by hand.
+ Moreover, to disable this check, set PYTHON_NOVERSIONCHECK
+ to something else than an empty string.
+-])dnl
++])
+ 		else
+ 			AC_MSG_RESULT([skip at user request])
+ 		fi
+@@ -92,7 +92,7 @@
+ If you have it installed, but it isn't the default Python
+ interpreter in your system path, please pass the PYTHON_VERSION 
+ variable to configure. See ``configure --help'' for reference.
+-])dnl
++])
+ 		fi
+ 	fi
+ 

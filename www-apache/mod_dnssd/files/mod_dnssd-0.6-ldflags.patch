@@ -1,0 +1,22 @@
+---
+ Respect LDFLAGS and properly use LIBS to avoid missing symbols at runtime.
+
+--- src/Makefile.in
++++ src/Makefile.in
+@@ -16,13 +16,14 @@
+ 
+ APXS=@APXS@
+ APACHECTL=@APACHECTL@
+-LIBS=-Wl,"@LIBS@" @AVAHI_LIBS@
++LIBS="@LIBS@" @AVAHI_LIBS@
+ CFLAGS=-Wc,"@CFLAGS@" @AVAHI_CFLAGS@
++APXS_LDFLAGS=`for ldflag in $(LDFLAGS); do echo -Wl,$$ldflag; done`
+ 
+ all: mod_dnssd.la
+ 
+ mod_dnssd.la: @srcdir@/mod_dnssd.c
+-	$(APXS) -c $(CFLAGS) $(LIBS) @srcdir@/mod_dnssd.c
++	$(APXS) -c $(CFLAGS) $(APXS_LDFLAGS) @srcdir@/mod_dnssd.c $(LIBS)
+ 
+ install: all
+ 	$(APXS) -i -a mod_dnssd.la 

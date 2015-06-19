@@ -1,0 +1,274 @@
+# ChangeLog for x11-libs/gksu
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gksu/ChangeLog,v 1.74 2013/04/27 16:41:01 ssuominen Exp $
+
+  27 Apr 2013; Samuli Suominen <ssuominen@gentoo.org> gksu-2.0.2-r1.ebuild:
+  Fix automake-1.13 compability by using AC_CONFIG_HEADERS instead of the
+  obsolete AM_CONFIG_HEADER wrt #467024 by Alphat-PC
+
+  30 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org> -gksu-2.0.2.ebuild:
+  Clean up old revision.
+
+  28 Oct 2012; Raúl Porcel <armin76@gentoo.org> gksu-2.0.2-r1.ebuild:
+  ia64/sh/sparc stable wrt #427544
+
+  16 Oct 2012; Anthony G. Basile <blueness@gentoo.org> gksu-2.0.2-r1.ebuild:
+  stable ppc, bug #427544
+
+  15 Oct 2012; Matt Turner <mattst88@gentoo.org> gksu-2.0.2-r1.ebuild:
+  Stable on alpha, bug 427544.
+
+  14 Oct 2012; Anthony G. Basile <blueness@gentoo.org> gksu-2.0.2-r1.ebuild:
+  stable ppc64, bug #427544
+
+  06 Oct 2012; Markus Meier <maekke@gentoo.org> gksu-2.0.2-r1.ebuild:
+  arm stable, bug #427544
+
+  04 Oct 2012; Agostino Sarubbo <ago@gentoo.org> gksu-2.0.2-r1.ebuild:
+  Stable for amd64, wrt bug #427544
+
+  03 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> gksu-2.0.2-r1.ebuild:
+  x86 stable wrt bug #427544
+
+  08 Jun 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer from metadata as talked with him, bug #90641.
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> gksu-2.0.2.ebuild,
+  gksu-2.0.2-r1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*gksu-2.0.2-r1 (07 Apr 2012)
+
+  07 Apr 2012; Alexandre Rostovtsev <tetromino@gentoo.org> gksu-2.0.2.ebuild,
+  +gksu-2.0.2-r1.ebuild, +files/gksu-2.0.2-glib-2.31.patch,
+  +files/gksu-2.0.2-nautilus-dir.patch:
+  Fix nautilus extension directoryfor nautilus-3. Add patch for building with
+  >=glib-2.31 (thanks to biohazrd for reporting in bug #401437 comment #1). Add
+  some missing dependencies.
+
+  06 Jan 2011; Daniel Gryniewicz <dang@gentoo.org>
+  -files/gksu-2.0.0-gnome-2.22.patch:
+  Remove unused patch
+
+  06 Jan 2011; Gilles Dartiguelongue <eva@gentoo.org> gksu-2.0.2.ebuild:
+  Drop gnome-vfs patch, bug #349520. Also remove static lib and la file for
+  nautilus extension.
+
+  03 Jan 2011; Gilles Dartiguelongue <eva@gentoo.org> gksu-2.0.2.ebuild:
+  Drop gnome-vfs dependency, bug #349520.
+
+  20 Jul 2010; Jeroen Roovers <jer@gentoo.org> gksu-2.0.2.ebuild:
+  Drop HPPA keywording (bug #324511).
+
+  22 Mar 2010; Pacho Ramos <pacho@gentoo.org> gksu-2.0.2.ebuild:
+  Set GCONF_DEBUG=no, bug 263406
+
+  13 Oct 2009; Gilles Dartiguelongue <eva@gentoo.org -gksu-2.0.0.ebuild,
+  -gksu-2.0.0-r2.ebuild, -files/gksu-2.0.0-new-nautilus.patch:
+  Clean up old revisions.
+
+  06 Sep 2009; Brent Baude <ranger@gentoo.org> gksu-2.0.2.ebuild:
+  Marking gksu-2.0.2 ppc64 for bug 278443
+
+  19 Aug 2009; Jeroen Roovers <jer@gentoo.org> gksu-2.0.2.ebuild:
+  Stable for HPPA (bug #278443).
+
+  09 Aug 2009; nixnut <nixnut@gentoo.org> gksu-2.0.2.ebuild:
+  ppc stable #278443
+
+  27 Jul 2009; <chainsaw@gentoo.org> gksu-2.0.2.ebuild:
+  Marked stable on AMD64 as requested by Pacho Ramos in bug #278443.
+  Compile-tested on Core2 Duo with USE="gnome -debug -doc".
+
+  23 Jul 2009; Raúl Porcel <armin76@gentoo.org> gksu-2.0.2.ebuild:
+  alpha/arm/ia64/sh/sparc stable wrt #278443
+
+  22 Jul 2009; Christian Faulhammer <fauli@gentoo.org> gksu-2.0.2.ebuild:
+  stable x86, bug 278443
+
+*gksu-2.0.2 (22 Mar 2009)
+
+  22 Mar 2009; Gilles Dartiguelongue <eva@gentoo.org> -gksu-1.9.1.ebuild,
+  -gksu-2.0.0-r1.ebuild, +gksu-2.0.2.ebuild:
+  Bump to 2.0.2. Closes #263074.
+
+*gksu-2.0.0-r2 (29 Oct 2008)
+
+  29 Oct 2008; Daniel Gryniewicz <dang@gentoo.org>
+  +files/gksu-2.0.0-new-nautilus.patch, +gksu-2.0.0-r2.ebuild:
+  Bump to gksu-2.0.0-r2
+
+  - Fix nautilus extension directory. Bug #241586
+
+  24 May 2008; Daniel Gryniewicz <dang@gentoo.org> gksu-2.0.0-r1.ebuild:
+  Oops, forgot the dep on gnome-terminal
+
+*gksu-2.0.0-r1 (24 May 2008)
+
+  24 May 2008; Daniel Gryniewicz <dang@gentoo.org> +gksu-2.0.0-r1.ebuild:
+  Bug #158469
+  - Only install gksu.desktop if use gnome
+  - Make it use gnome-terminal
+
+  02 May 2008; Doug Goldstein <cardoe@gentoo.org> gksu-2.0.0.ebuild:
+  remove global scoped variables
+
+  14 Apr 2008; Daniel Gryniewicz <dang@gentoo.org> gksu-2.0.0.ebuild:
+  Fix typo. Bug #217574
+
+  31 Mar 2008; Daniel Gryniewicz <dang@gentoo.org>
+  +files/gksu-2.0.0-gnome-2.22.patch, gksu-2.0.0.ebuild:
+  gksu needs gnome-vfs, but it's not pulled by nautilus anymore. Explicitly
+  pull it in, along with it's CFLAGS and LDFLAGS. Bug #215419
+
+  31 Mar 2008; <ricmm@gentoo.org> gksu-2.0.0.ebuild:
+  Drop to ~mips due to unstable deps
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; gksu-1.9.1.ebuild:
+  Drop virtual/x11 references.
+
+  19 Jun 2007; Daniel Gryniewicz <dang@gentoo.org> gksu-2.0.0.ebuild:
+  Add einfo about env_reset and gksudo
+
+  27 May 2007; Joshua Kinard <kumba@gentoo.org> gksu-2.0.0.ebuild:
+  Stable on mips.
+
+  03 May 2007; Daniel Gryniewicz <dang@gentoo.org> gksu-2.0.0.ebuild:
+  Install docs; bug #176871
+
+  06 Feb 2007; Roy Marples <uberlord@gentoo.org> gksu-2.0.0.ebuild:
+  Added ~x86-fbsd keyword.
+
+  30 Dec 2006; Bryan Østergaard <kloeri@gentoo.org> gksu-2.0.0.ebuild:
+  Stable on Alpha + IA64.
+
+  21 Dec 2006; Markus Rothe <corsair@gentoo.org> gksu-2.0.0.ebuild:
+  Stable on ppc64; bug #156662
+
+  18 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org> gksu-2.0.0.ebuild:
+  Stable on sparc
+
+  17 Dec 2006; René Nussbaumer <killerfox@gentoo.org> gksu-2.0.0.ebuild:
+  Stable on hppa. See bug #156662.
+
+  17 Dec 2006; René Nussbaumer <killerfox@gentoo.org> gksu-2.0.0.ebuild:
+  Stable on hppa. See bug #156662.
+
+  17 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org> gksu-2.0.0.ebuild:
+  Stable on ppc wrt bug #156662.
+
+  12 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> gksu-2.0.0.ebuild:
+  Stable on amd64 wrt bug #156662.
+
+  10 Dec 2006; Andrej Kacian <ticho@gentoo.org> gksu-2.0.0.ebuild:
+  Stable on x86, bug #156662.
+
+  25 Nov 2006; Bryan Østergaard <kloeri@gentoo.org> gksu-2.0.0.ebuild:
+  Add ~alpha keyword.
+
+  15 Nov 2006; Markus Rothe <corsair@gentoo.org> gksu-2.0.0.ebuild:
+  Added ~ppc64; bug #154290
+
+  04 Oct 2006; Daniel Gryniewicz <dang@gentoo.org> -gksu-1.0.5.ebuild:
+  1.9.1 is stable now; remove 1.0.5
+
+  03 Oct 2006; Aron Griffis <agriffis@gentoo.org> gksu-2.0.0.ebuild:
+  Mark 2.0.0 ~ia64
+
+  03 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org> gksu-1.9.1.ebuild:
+  Stable on x86 wrt bug #149444.
+
+  01 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org> gksu-2.0.0.ebuild:
+  Added ~hppa, bug #147484
+
+  30 Sep 2006; <nixnut@gentoo.org> gksu-1.9.1.ebuild:
+  Stable on ppc wrt bug 149444
+
+*gksu-2.0.0 (29 Sep 2006)
+
+  29 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> gksu-1.9.1.ebuild,
+  +gksu-2.0.0.ebuild:
+  2.0.0 is out. New feature is the nautilus extension (Open as administrator).
+  Also, upstream moved the download location for 1.9.1, fix that
+
+  28 Sep 2006; Gustavo Zacarias <gustavoz@gentoo.org> gksu-1.9.1.ebuild:
+  Stable on sparc wrt #149444
+
+  28 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> gksu-1.9.1.ebuild:
+  Marked stable on amd64 for bug #149444
+
+  28 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> -gksu-1.3.4.ebuild,
+  -gksu-1.3.7.ebuild:
+  Remove unused versions
+
+  13 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> metadata.xml:
+  Take maintainership from dragonheart with his blessing
+
+  10 Jun 2006; Daniel Black <dragonheart@gentoo.org> gksu-1.9.1.ebuild:
+  few little QA fixes
+
+*gksu-1.9.1 (06 May 2006)
+
+  06 May 2006; Daniel Black <dragonheart@gentoo.org> gksu-1.0.5.ebuild,
+  gksu-1.3.4.ebuild, gksu-1.3.7.ebuild, +gksu-1.9.1.ebuild:
+  added dev-util/gtk-doc dependency to gksu-1.0.5 as per bug #132296 thanks to
+  Mike. Version bump to 1.9.1 also
+
+  02 May 2006; Jason Wever <weeve@gentoo.org> gksu-1.3.7.ebuild:
+  Added ~sparc keyword.
+
+*gksu-1.3.7 (23 Apr 2006)
+
+  23 Apr 2006; Daniel Black <dragonheart@gentoo.org> gksu-1.0.5.ebuild,
+  -gksu-1.0.7.ebuild, -gksu-1.2.4.ebuild, +gksu-1.3.7.ebuild:
+  version bump as per bug #123137 thanks to Peter Hjalmarsson. removed old
+  version. modulare x11 ported 1.0.5
+
+  25 Jan 2006; Marcelo Goes <vanquirius@gentoo.org> gksu-1.3.4.ebuild:
+  Fix modular X dependencies for bug 117194. Thanks to Vladimir Lushnikov
+  <vladimir.d.lushnikov at gmail dot com>.
+
+  06 Sep 2005; Luis Medinas <metalgod@gentoo.org> gksu-1.3.4.ebuild:
+  Added ~amd64 keywords. Closes bug #104768.
+
+*gksu-1.3.4 (04 Sep 2005)
+
+  04 Sep 2005; Daniel Black <dragonheart@gentoo.org> +gksu-1.3.4.ebuild:
+  version bump
+
+  04 May 2005; David Holm <dholm@gentoo.org> gksu-1.2.4.ebuild:
+  Readded to ~ppc. Please don't remove it without filing a proper bug report.
+
+*gksu-1.2.4 (01 May 2005)
+
+  01 May 2005; Daniel Black <dragonheart@gentoo.org> +gksu-1.2.4.ebuild:
+  Version bump as per bug #88850 by Kalle Kotte <xake@telia.com>
+
+*gksu-1.0.7 (21 Apr 2005)
+
+  21 Apr 2005; Daniel Black <dragonheart@gentoo.org> +gksu-1.0.7.ebuild:
+  Version bump as per bug #88850. Thanks to Kalle Kotte <xake@telia.com>
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> gksu-1.0.5.ebuild:
+  Masked gksu-1.0.5.ebuild stable for ppc
+
+  03 Jul 2004; Tom Martin <slarti@gentoo.org> gksu-1.0.5.ebuild:
+  Added to ~amd64.
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> gksu-1.0.5.ebuild:
+  glibc -> libc
+
+  07 May 2004; Daniel Black <dragonheart@gentoo.org> gksu-1.0.5.ebuild:
+  x86 keyword added
+
+  26 Apr 2004; David Holm <dholm@gentoo.org> gksu-1.0.5.ebuild:
+  Added to ~ppc.
+
+*gksu-1.0.5 (26 Apr 2004)
+
+  26 Apr 2004; Daniel Black <dragonheart@gentoo.org> gksu-1.0.5.ebuild:
+  Added app-admin/sudo dependancy
+
+  26 Apr 2004; Daniel Black <dragonheart@gentoo.org> :
+  Inital import to support gtk-cpuspeedy. Missing dependancy noticed by Priit
+  Laes <amd@tt.ee> in bug #48978

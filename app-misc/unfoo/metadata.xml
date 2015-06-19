@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>shell-tools</herd>
+  <use>
+    <flag name="minimal">Do not install all support archive binaries</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">jlec/unfoo</remote-id>
+  </upstream>
+</pkgmetadata>

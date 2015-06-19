@@ -1,0 +1,33 @@
+--- a/src/mod/xp_icmp_echo.c
++++ b/src/mod/xp_icmp_echo.c
+@@ -90,7 +90,7 @@
+    fprintf(stderr,"[%d bytes] sent, waiting for reponse.\n", res);
+ #endif
+ 
+-   recv_pack = read_icmp(&res, ICMP_ECHOREPLY, -1);
++   recv_pack = read_icmp((ssize_t *)&res, ICMP_ECHOREPLY, -1);
+ 
+    if (recv_pack == NULL || (unsigned)res < sizeof(ip) + 8) {
+ #ifdef EBUG
+--- a/src/mod/xp_icmp_infr.c
++++ b/src/mod/xp_icmp_infr.c
+@@ -83,7 +83,7 @@
+    fprintf(stderr,"[%d bytes] sent, waiting for reponse.\n", res);
+ #endif
+    
+-   recv_pack = read_icmp(&res, ICMP_IREQREPLY, -1);
++   recv_pack = read_icmp((ssize_t *)&res, ICMP_IREQREPLY, -1);
+ 
+    if (recv_pack == NULL || (unsigned)res < sizeof(ip) + 8) {
+ #ifdef EBUG
+--- a/src/mod/xp_udp_probe.c
++++ b/src/mod/xp_udp_probe.c
+@@ -92,7 +92,7 @@
+ #ifdef EBUG
+    fprintf(stderr,"[%d bytes] sent, waiting for reponse.\n", res);
+ #endif
+-   recv_pack = read_icmp(&res, ICMP_UNREACH, -1);
++   recv_pack = read_icmp((ssize_t *)&res, ICMP_UNREACH, -1);
+ 
+    if (recv_pack == NULL || (unsigned)res < sizeof(ip) + 8) {
+ #ifdef EBUG

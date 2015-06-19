@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>netmon</herd>
+  <herd>python</herd>
+  <upstream>
+    <remote-id type="google-code">pypcap</remote-id>
+    <remote-id type="pypi">pypcap</remote-id>
+  </upstream>
+</pkgmetadata>

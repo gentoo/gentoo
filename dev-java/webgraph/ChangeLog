@@ -1,0 +1,58 @@
+# ChangeLog for dev-java/webgraph
+# Copyright 2000-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/webgraph/ChangeLog,v 1.18 2014/08/10 20:26:22 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> webgraph-1.4.1-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  24 Oct 2007; William L. Thomson Jr. <wltjr@gentoo.org>
+  -webgraph-1.4.1.ebuild:
+  Removed java gen 1 ebuild
+
+  07 Oct 2007; Christoph Mende <angelos@gentoo.org>
+  webgraph-1.4.1-r1.ebuild:
+  Stable on amd64 wrt bug #190402
+
+  02 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  webgraph-1.4.1-r1.ebuild:
+  stable x86, bug 190402
+
+*webgraph-1.4.1-r1 (28 Apr 2007)
+
+  28 Apr 2007; Krzysiek Pawlik <nelchael@gentoo.org>
+  -files/webgraph-1.4-gentoo.patch, -webgraph-1.4.ebuild,
+  +webgraph-1.4.1-r1.ebuild:
+  Migrated to generation 2.
+
+  12 Apr 2007; <welp@gentoo.org> webgraph-1.4.1.ebuild:
+  Stable on amd64 wrt bug 161738
+
+  02 Apr 2007; Christian Faulhammer <opfer@gentoo.org>
+  webgraph-1.4.1.ebuild:
+  x86 stable, bug 161738
+
+  13 Jan 2007; Petteri Räty <betelgeuse@gentoo.org> webgraph-1.4.ebuild:
+  Relaxed dev-java/colt dependency to not match only a subset of colt slot 0.
+
+  13 Jan 2007; Petteri Räty <betelgeuse@gentoo.org> webgraph-1.4.ebuild,
+  webgraph-1.4.1.ebuild:
+  Shortened DESCRIPTION.
+
+  13 Jan 2007; Petteri Räty <betelgeuse@gentoo.org> webgraph-1.4.1.ebuild:
+  Relaxed dev-java/colt dependency to not match only a subset of colt slot 0.
+
+*webgraph-1.4.1 (15 Apr 2005)
+
+  15 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +files/webgraph-1.4-gentoo.patch, +files/webgraph-1.4.1-gentoo.patch,
+  -files/webgraph-gentoo.patch, +webgraph-1.4.1.ebuild, webgraph-1.4.ebuild:
+  new upstream version, introduced support for the source useflag. marked 1.4
+  stable on amd64 and x86.
+
+  20 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> webgraph-1.4.ebuild:
+  added missing jikes dependency. see #78819.
+
+*webgraph-1.4 (04 Dec 2004)
+
+  04 Dec 2004; Karl Trygve Kalleberg <karltk@gentoo.org> webgraph-1.4.ebuild:
+  Initial import. Ebuild submitted by Jan Brinkmann <luck@the-luckyduck.de>.

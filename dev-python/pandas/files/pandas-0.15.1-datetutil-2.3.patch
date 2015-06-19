@@ -1,0 +1,56 @@
+From 4e4640f4a96525dd08461c9e80857c4f71552e37 Mon Sep 17 00:00:00 2001
+From: jreback <jeff@reback.net>
+Date: Sun, 7 Dec 2014 14:56:35 -0500
+Subject: [PATCH] COMPAT: dateutil fixups for 2.3 (GH9021, GH8639)
+
+---
+ pandas/tseries/tests/test_period.py | 4 ++--
+ pandas/tslib.pyx                    | 8 ++++++--
+ 2 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/pandas/tseries/tests/test_period.py b/pandas/tseries/tests/test_period.py
+index 1fd2d7b..cf82733 100644
+--- a/pandas/tseries/tests/test_period.py
++++ b/pandas/tseries/tests/test_period.py
+@@ -104,12 +104,12 @@ def test_timestamp_tz_arg_dateutil(self):
+         import dateutil
+         from pandas.tslib import maybe_get_tz
+         p = Period('1/1/2005', freq='M').to_timestamp(tz=maybe_get_tz('dateutil/Europe/Brussels'))
+-        self.assertEqual(p.tz, dateutil.tz.gettz('Europe/Brussels'))
++        self.assertEqual(p.tz, dateutil.zoneinfo.gettz('Europe/Brussels'))
+ 
+     def test_timestamp_tz_arg_dateutil_from_string(self):
+         import dateutil
+         p = Period('1/1/2005', freq='M').to_timestamp(tz='dateutil/Europe/Brussels')
+-        self.assertEqual(p.tz, dateutil.tz.gettz('Europe/Brussels'))
++        self.assertEqual(p.tz, dateutil.zoneinfo.gettz('Europe/Brussels'))
+ 
+     def test_timestamp_nat_tz(self):
+         t = Period('NaT', freq='M').to_timestamp()
+diff --git a/pandas/tslib.pyx b/pandas/tslib.pyx
+index b9ccb76..1976eee 100644
+--- a/pandas/tslib.pyx
++++ b/pandas/tslib.pyx
+@@ -37,8 +37,12 @@ cimport cython
+ 
+ from datetime import timedelta, datetime
+ from datetime import time as datetime_time
++
++# dateutil compat
+ from dateutil.tz import (tzoffset, tzlocal as _dateutil_tzlocal, tzfile as _dateutil_tzfile,
+-                         tzutc as _dateutil_tzutc, gettz as _dateutil_gettz)
++                         tzutc as _dateutil_tzutc)
++from dateutil.zoneinfo import gettz as _dateutil_gettz
++
+ from pytz.tzinfo import BaseTzInfo as _pytz_BaseTzInfo
+ from pandas.compat import parse_date, string_types, PY3, iteritems
+ 
+@@ -1258,7 +1262,7 @@ cpdef inline object maybe_get_tz(object tz):
+     if isinstance(tz, string_types):
+         if tz.startswith('dateutil/'):
+             zone = tz[9:]
+-            tz = _dateutil_gettz(tz[9:])
++            tz = _dateutil_gettz(zone)
+             # On Python 3 on Windows, the filename is not always set correctly.
+             if isinstance(tz, _dateutil_tzfile) and '.tar.gz' in tz._filename:
+                 tz._filename = zone

@@ -1,0 +1,20 @@
+# ChangeLog for dev-haskell/data-endian
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/data-endian/ChangeLog,v 1.4 2015/06/06 10:57:15 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*data-endian-0.1 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org> +data-endian-0.1.ebuild:
+  Bump data-endian to 0.1
+
+*data-endian-0.0.1 (26 Aug 2013)
+
+  26 Aug 2013; Alexander Vershilov <qnikst@gentoo.org>
+  +data-endian-0.0.1.ebuild, +metadata.xml:
+  dev-haskell/data-endian

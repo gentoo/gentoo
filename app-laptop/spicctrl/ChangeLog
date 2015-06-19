@@ -1,0 +1,81 @@
+# ChangeLog for app-laptop/spicctrl
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/spicctrl/ChangeLog,v 1.15 2012/11/21 13:08:42 kensington Exp $
+
+  21 Nov 2012; Michael Palimaka <kensington@gentoo.org> -spicctrl-1.6.ebuild,
+  -spicctrl-1.9.ebuild:
+  Remove old.
+
+  20 Nov 2012; Agostino Sarubbo <ago@gentoo.org> spicctrl-1.9-r1.ebuild:
+  Stable for x86, wrt bug #441082
+
+*spicctrl-1.9-r1 (20 Nov 2012)
+
+  20 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> +spicctrl-1.9-r1.ebuild,
+  +files/spicctrl-1.9-makefile.patch:
+  Revision bump: EAPI 4, base eclass, respect LDFLAGS and compiler wrt bug
+  #337317, keyword ~amd64
+
+  18 Nov 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop mobile herd as talked in gentoo-dev ML
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> spicctrl-1.6.ebuild,
+  spicctrl-1.9.ebuild:
+  Remove virtual/libc
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  08 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+*spicctrl-1.9 (09 Feb 2006)
+
+  09 Feb 2006; Alastair Tse <liquidx@gentoo.org> +spicctrl-1.9.ebuild:
+  version bump. updated URL thanks to theboywho (#120823)
+
+  21 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  spicctrl-1.6.ebuild:
+  marked -ppc since Sony Vaio is not powerpc
+
+  09 Oct 2004; Doug Goldstein <cardoe@gentoo.org> +metadata.xml:
+  add missing metadata.xml
+
+  10 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> spicctrl-1.6.ebuild:
+  don't assign default to S; tidy
+
+*spicctrl-1.6 (08 Mar 2004)
+
+  08 Mar 2004; Peter Johanson <latexer@gentoo.org> spicctrl-1.6.ebuild:
+  Moved to app-laptop
+
+*spicctrl-1.6 (23 Jun 2003)
+
+  23 Jun 2003; Hanno Boeck <hanno@gentoo.org> spicctrl-1.6.ebuild:
+  Version bump.
+
+*spicctrl-1.5 (04 Dec 2002)
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+
+  04 Dez 2002; Hanno Boeck <hanno@gentoo.org> spicctrl-1.5.ebuild :
+  New version.
+
+*spicctrl-1.4 (17 Nov 2002)
+
+  17 Nov 2002; Hanno Boeck <hanno@gentoo.org> spicctrl-1.4.ebuild :
+  New version.
+
+*spicctrl-1.3 (13 Oct 2002)
+
+  13 Oct 2002; Hanno Boeck <hanno@gentoo.org> :
+  
+  Updated version. Resolves bug #5954.
+
+*spicctrl (12 Jul 2002)
+
+  12 Jul 2002; Doug Goldstein <cardoe@gentoo.org> ChangeLog spicctrl-1.2.ebuild
+  files/digest-spicctrl-1.2 :
+
+  Ebuild submitted by hanno@gmx.de (Hanno Boeck) in bug #2985
+  Cleaned up prior to comitting

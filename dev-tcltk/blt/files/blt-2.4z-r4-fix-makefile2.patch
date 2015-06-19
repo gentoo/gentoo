@@ -1,0 +1,18 @@
+Source: mescalinum
+Upstream: N/A
+Reason: fix broken $DESTDIR support in Makefile
+--- Makefile.in.orig	2008-10-26 14:36:22.000000000 +0100
++++ Makefile.in	2008-10-26 14:37:04.000000000 +0100
+@@ -47,9 +47,9 @@ install-all:
+ 	(cd library; $(MAKE) install)
+ 	(cd man; $(MAKE) install)
+ 	(cd demos; $(MAKE) install)
+-	$(INSTALL_DATA) $(srcdir)/README $(INSTALL_DIR)$(scriptdir)
+-	$(INSTALL_DATA) $(srcdir)/PROBLEMS $(INSTALL_DIR)$(scriptdir)
+-	$(INSTALL_DATA) $(srcdir)/NEWS $(INSTALL_DIR)$(scriptdir)
++	$(INSTALL_DATA) $(srcdir)/README $(INSTALL_ROOT)$(scriptdir)
++	$(INSTALL_DATA) $(srcdir)/PROBLEMS $(INSTALL_ROOT)$(scriptdir)
++	$(INSTALL_DATA) $(srcdir)/NEWS $(INSTALL_ROOT)$(scriptdir)
+ 
+ mkdirs:
+ 	@for i in $(instdirs) ; do \

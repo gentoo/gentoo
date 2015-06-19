@@ -1,0 +1,29 @@
+# ChangeLog for app-admin/lastpass-cli
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/lastpass-cli/ChangeLog,v 1.7 2015/06/05 11:39:59 jlec Exp $
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> lastpass-cli-0.3.0.ebuild:
+  Add slot operators
+
+  05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*lastpass-cli-0.5.0 (14 Mar 2015)
+
+  14 Mar 2015; Jeff Horelick <jdhore@gentoo.org> +lastpass-cli-0.5.0.ebuild:
+  Version bump
+
+  23 Oct 2014; Jason A. Donenfeld <zx2c4@gentoo.org> metadata.xml:
+  Pass maintainership onto Jeff
+
+  23 Oct 2014; Rick Farina <zerochaos@gentoo.org> lastpass-cli-0.3.0.ebuild:
+  remove useless blank line per repoman warning
+
+  22 Oct 2014; Jason A. Donenfeld <zx2c4@gentoo.org> lastpass-cli-0.3.0.ebuild:
+  Trivial commit because cvs process crashed.
+
+*lastpass-cli-0.3.0 (22 Oct 2014)
+
+  22 Oct 2014; Jason A. Donenfeld <zx2c4@gentoo.org> +lastpass-cli-0.3.0.ebuild,
+  +metadata.xml:
+  Initial import

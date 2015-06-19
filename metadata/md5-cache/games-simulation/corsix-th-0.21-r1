@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=>=dev-lang/lua-5.1 media-libs/libsdl[X] ffmpeg? ( virtual/ffmpeg ) truetype? ( media-libs/freetype:2 ) opengl? ( virtual/opengl ) sound? ( media-libs/sdl-mixer ) midi? ( media-libs/sdl-mixer[timidity] ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=Open source clone of Theme Hospital
+EAPI=5
+HOMEPAGE=http://code.google.com/p/corsix-th/
+IUSE=+ffmpeg truetype opengl +sdl +sound +midi
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>=dev-lang/lua-5.1 media-libs/libsdl[X] ffmpeg? ( virtual/ffmpeg ) truetype? ( media-libs/freetype:2 ) opengl? ( virtual/opengl ) sound? ( media-libs/sdl-mixer ) midi? ( media-libs/sdl-mixer[timidity] ) games-misc/games-envd
+REQUIRED_USE=|| ( sdl opengl )
+SLOT=0
+SRC_URI=http://corsix-th.googlecode.com/files/CorsixTH-0.21-Source.tar.gz
+_eclasses_=base	87f7447ccfc06fd0729ff4684e11e0d6	cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	games	1ad3205dbf62a2c98249f2f59b0a2d39	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	user	f54e098dd38ba1c0847a13e685b87747
+_md5_=4afac5df5788b132584887e2611d0f8b

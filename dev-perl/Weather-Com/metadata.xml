@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+        <herd>perl</herd>
+        <upstream>
+                <remote-id type="cpan">Weather-Com</remote-id>
+                <remote-id type="cpan-module">Weather::Com</remote-id>
+                <remote-id type="cpan-module">Weather::Com::AirPressure</remote-id>
+                <remote-id type="cpan-module">Weather::Com::Base</remote-id>
+                <remote-id type="cpan-module">Weather::Com::Cached</remote-id>
+                <remote-id type="cpan-module">Weather::Com::CurrentConditions</remote-id>
+                <remote-id type="cpan-module">Weather::Com::DateTime</remote-id>
+                <remote-id type="cpan-module">Weather::Com::DayForecast</remote-id>
+                <remote-id type="cpan-module">Weather::Com::DayPart</remote-id>
+                <remote-id type="cpan-module">Weather::Com::Finder</remote-id>
+                <remote-id type="cpan-module">Weather::Com::Forecast</remote-id>
+                <remote-id type="cpan-module">Weather::Com::L10N</remote-id>
+                <remote-id type="cpan-module">Weather::Com::L10N::de</remote-id>
+                <remote-id type="cpan-module">Weather::Com::L10N::en_us</remote-id>
+                <remote-id type="cpan-module">Weather::Com::L10N::fr</remote-id>
+                <remote-id type="cpan-module">Weather::Com::Location</remote-id>
+                <remote-id type="cpan-module">Weather::Com::Moon</remote-id>
+                <remote-id type="cpan-module">Weather::Com::Object</remote-id>
+                <remote-id type="cpan-module">Weather::Com::Simple</remote-id>
+                <remote-id type="cpan-module">Weather::Com::UVIndex</remote-id>
+                <remote-id type="cpan-module">Weather::Com::Units</remote-id>
+                <remote-id type="cpan-module">Weather::Com::Wind</remote-id>
+        </upstream>
+</pkgmetadata>

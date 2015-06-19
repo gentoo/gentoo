@@ -1,0 +1,15 @@
+EXTENSIONDIR := $(shell pkg-config --variable=extensiondir libnautilus-extension)
+CFLAGS := -fPIC $(CFLAGS) $(shell pkg-config --cflags glib-2.0 gtk+-3.0 libnautilus-extension tracker-sparql-$(TRACKER_API))
+LIBS := $(shell pkg-config --libs glib-2.0 gtk+-3.0 libnautilus-extension tracker-sparql-$(TRACKER_API))
+RPATH := $(shell pkg-config --variable=libdir tracker-sparql-$(TRACKER_API))/tracker-$(TRACKER_API)
+INSTALL = install
+
+object_files = tracker-tags-extension.o tracker-tags-utils.o tracker-tags-view.o
+
+libnautilus-tracker-tags.so: $(object_files)
+	$(CC) -shared -Wl,-rpath=$(RPATH) -Wl,-soname=$@ $(LDFLAGS) $^ $(LIBS) -o $@
+
+install: libnautilus-tracker-tags.so
+	$(INSTALL) -d $(DESTDIR)$(EXTENSIONDIR)/
+	$(INSTALL) $^ $(DESTDIR)$(EXTENSIONDIR)/
+

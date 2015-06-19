@@ -1,0 +1,30 @@
+# ChangeLog for dev-db/psqlodbc
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/psqlodbc/ChangeLog,v 1.5 2014/12/28 15:15:55 titanofold Exp $
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  psqlodbc-09.01.0200.ebuild, psqlodbc-09.02.0100.ebuild,
+  psqlodbc-09.03.0210.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  psqlodbc-09.01.0200.ebuild, psqlodbc-09.02.0100.ebuild,
+  psqlodbc-09.03.0210.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+*psqlodbc-09.03.0210 (10 May 2014)
+
+  10 May 2014; Aaron W. Swenson <titanofold@gentoo.org>
+  +psqlodbc-09.03.0210.ebuild:
+  Version bump fixes bug 505938
+
+*psqlodbc-09.02.0100 (08 Jun 2013)
+
+  08 Jun 2013; Aaron W. Swenson <titanofold@gentoo.org>
+  +psqlodbc-09.02.0100.ebuild:
+  Version bump. Fix bug 472598.
+
+*psqlodbc-09.01.0200 (28 Nov 2012)
+
+  28 Nov 2012; <titan@gentoo.org> +psqlodbc-09.01.0200.ebuild, +metadata.xml:
+  New ebuild for psqlodbc. Written by me with help from folks on bug 50368.

@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install postinst
+DESCRIPTION=Firmware Tool for Broadcom 43xx based wireless network devices
+HOMEPAGE=http://bcm43xx.berlios.de
+KEYWORDS=~amd64 ppc ~x86 ~ppc64
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://berlios/bcm43xx/bcm43xx-fwcutter-005.tar.bz2
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=bd48f6d9fd5e45582643d79f882adb06

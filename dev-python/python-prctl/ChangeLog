@@ -1,0 +1,42 @@
+# ChangeLog for dev-python/python-prctl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-prctl/ChangeLog,v 1.8 2015/06/07 15:45:37 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*python-prctl-1.6.1 (28 Feb 2015)
+
+  28 Feb 2015; Patrick Lauer <patrick@gentoo.org> +python-prctl-1.6.1.ebuild:
+  Bump
+
+*python-prctl-1.6.0 (15 Feb 2015)
+
+  15 Feb 2015; Patrick Lauer <patrick@gentoo.org> +python-prctl-1.6.0.ebuild:
+  Bump
+
+*python-prctl-1.5.0-r1 (06 Jan 2015)
+
+  06 Jan 2015; Ian Delaney <idella4@gentoo.org> +python-prctl-1.5.0-r1.ebuild,
+  -python-prctl-1.3.1.ebuild, -python-prctl-1.4.0.ebuild,
+  -python-prctl-1.5.0.ebuild:
+  revbump; conversion -> distutils-r1, rm old
+
+*python-prctl-1.5.0 (24 Jan 2013)
+
+  24 Jan 2013; Patrick Lauer <patrick@gentoo.org> +python-prctl-1.5.0.ebuild:
+  Bump
+
+*python-prctl-1.4.0 (22 Jan 2013)
+
+  22 Jan 2013; Patrick Lauer <patrick@gentoo.org> +python-prctl-1.4.0.ebuild:
+  Bump
+
+  23 Feb 2012; Patrick Lauer <patrick@gentoo.org> python-prctl-1.3.1.ebuild:
+  Restricting python
+
+*python-prctl-1.3.1 (19 Nov 2011)
+
+  19 Nov 2011; Samuli Suominen <ssuominen@gentoo.org>
+  +python-prctl-1.3.1.ebuild:
+  Initial commit.

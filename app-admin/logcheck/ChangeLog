@@ -1,0 +1,166 @@
+# ChangeLog for app-admin/logcheck
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/logcheck/ChangeLog,v 1.35 2015/01/02 21:48:16 mrueg Exp $
+
+*logcheck-1.3.17 (02 Jan 2015)
+
+  02 Jan 2015; Manuel Rüger <mrueg@gentoo.org> +logcheck-1.3.17.ebuild:
+  Version bump. Fixes bug #530706.
+
+  10 Aug 2014; Patrick Lauer <patrick@gentoo.org> logcheck-1.3.15-r1.ebuild,
+  logcheck-1.3.15-r2.ebuild, logcheck-1.3.16.ebuild:
+  Fix description for more repoman happy
+
+  24 Mar 2014; Agostino Sarubbo <ago@gentoo.org> logcheck-1.3.15-r2.ebuild:
+  Stable for ppc, wrt bug #495316
+
+  23 Mar 2014; Agostino Sarubbo <ago@gentoo.org> logcheck-1.3.15-r2.ebuild:
+  Stable for x86, wrt bug #495316
+
+  07 Mar 2014; Pacho Ramos <pacho@gentoo.org> logcheck-1.3.15-r2.ebuild:
+  amd64 stable, bug #495316
+
+*logcheck-1.3.16 (08 Feb 2014)
+
+  08 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> +logcheck-1.3.16.ebuild:
+  Version bump.
+
+*logcheck-1.3.15-r2 (21 Jun 2013)
+
+  21 Jun 2013; Pawel Hajdan jr <phajdan.jr@gentoo.org> -logcheck-1.3.14.ebuild,
+  -logcheck-1.3.15.ebuild, +logcheck-1.3.15-r2.ebuild:
+  Fix bug #449968 by flameeyes. Remove old.
+
+  30 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  logcheck-1.3.15-r1.ebuild:
+  Stabilize latest to fix a regression in stable (bug #440880 by Ivan).
+
+*logcheck-1.3.15-r1 (30 Dec 2012)
+
+  30 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +logcheck-1.3.15-r1.ebuild, files/logcheck.cron:
+  Make sure lock directory exists, bug #440880 by Ivan.
+
+*logcheck-1.3.15 (31 Jul 2012)
+
+  31 Jul 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> -logcheck-1.3.13.ebuild,
+  +logcheck-1.3.15.ebuild:
+  Version bump (bug #425092 by Manuel Rueger). Remove old.
+
+  04 Jun 2012; Michael Weber <xmw@gentoo.org> logcheck-1.3.14.ebuild:
+  ppc stable (bug 400757)
+
+  31 May 2012; Zac Medico <zmedico@gentoo.org> logcheck-1.3.13.ebuild,
+  logcheck-1.3.14.ebuild:
+  inherit user for enewgroup and enewuser
+
+  16 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> logcheck-1.3.14.ebuild:
+  x86 stable wrt bug #400757
+
+  25 Jan 2012; Markos Chandras <hwoarang@gentoo.org> logcheck-1.3.14.ebuild:
+  Stable on amd64 wrt bug #400757
+
+  18 Dec 2011; Raúl Porcel <armin76@gentoo.org> logcheck-1.3.13.ebuild,
+  logcheck-1.3.14.ebuild:
+  Add ~sparc wrt #387629
+
+*logcheck-1.3.14 (14 Sep 2011)
+
+  14 Sep 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> -logcheck-1.3.8.ebuild,
+  +logcheck-1.3.14.ebuild:
+  Version bump. Remove old.
+
+  14 Oct 2010; Christian Faulhammer <fauli@gentoo.org>
+  logcheck-1.3.13.ebuild:
+  stable x86, bug 340803
+
+  13 Oct 2010; Markos Chandras <hwoarang@gentoo.org> logcheck-1.3.13.ebuild:
+  Stable on amd64 wrt bug #340803
+
+  08 Oct 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -files/logcheck-makefile.patch:
+  Remove unused patch, bug #339375 by jalan <jalanpalmer@gmail.com>.
+
+*logcheck-1.3.13 (04 Sep 2010)
+
+  04 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -logcheck-1.3.11.ebuild, -logcheck-1.3.12.ebuild, +logcheck-1.3.13.ebuild:
+  Version bump. Remove old.
+
+*logcheck-1.3.12 (11 Aug 2010)
+
+  11 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -logcheck-1.3.10.ebuild, +logcheck-1.3.12.ebuild:
+  Version bump. Remove old.
+
+*logcheck-1.3.11 (30 Jul 2010)
+
+  30 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +logcheck-1.3.11.ebuild:
+  Version bump.
+
+  19 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  logcheck-1.3.8.ebuild, logcheck-1.3.10.ebuild:
+  Improve the postinst message, and link to the guide, bug #328671 by Valeo
+  de Vries <valeo.de@gmail.com>.
+
+*logcheck-1.3.10 (07 Jun 2010)
+
+  07 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -logcheck-1.3.9.ebuild, +logcheck-1.3.10.ebuild:
+  Version bump. Removed a possibly broken version.
+
+*logcheck-1.3.9 (04 Jun 2010)
+
+  04 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -logcheck-1.3.6.ebuild, -logcheck-1.3.7.ebuild, +logcheck-1.3.9.ebuild:
+  Version bump. Removed old versions.
+
+  28 May 2010; Markus Meier <maekke@gentoo.org> logcheck-1.3.8.ebuild:
+  x86 stable, bug #314783
+
+  20 May 2010; Peter Volkov <pva@gentoo.org> logcheck-1.3.8.ebuild:
+  amd64 stable, bug #314783
+
+*logcheck-1.3.8 (16 Apr 2010)
+
+  16 Apr 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  -logcheck-1.3.4.ebuild, -logcheck-1.3.5.ebuild, +logcheck-1.3.8.ebuild:
+  Version bump. Remove old.
+
+  10 Mar 2010; Joseph Jezak <josejx@gentoo.org> logcheck-1.3.7.ebuild:
+  Marked ~ppc for bug #306633.
+
+*logcheck-1.3.7 (23 Feb 2010)
+
+  23 Feb 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +logcheck-1.3.7.ebuild:
+  Version bump.
+
+  05 Feb 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  logcheck-1.3.6.ebuild:
+  Add missing dependency on dev-perl/mime-construct.
+
+*logcheck-1.3.6 (27 Jan 2010)
+
+  27 Jan 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +logcheck-1.3.6.ebuild:
+  Version bump.
+
+*logcheck-1.3.5 (02 Jan 2010)
+
+  02 Jan 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +logcheck-1.3.5.ebuild:
+  Version bump.
+
+  23 Dec 2009; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  logcheck-1.3.4.ebuild:
+  Added ~amd64 keyword
+
+*logcheck-1.3.4 (20 Dec 2009)
+
+  20 Dec 2009; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +logcheck-1.3.4.ebuild, +files/logcheck.cron,
+  +files/logcheck-makefile.patch, +metadata.xml:
+  New ebuild for app-admin/logcheck. Implemented suggestions by Fritella
+  Laurento <mrfree@infinito.it>. Bug #105816.

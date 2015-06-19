@@ -1,0 +1,149 @@
+diff -Nur openpam-20130907.orig/include/security/Makefile.am openpam-20130907/include/security/Makefile.am
+--- openpam-20130907.orig/include/security/Makefile.am	2013-09-07 22:28:00.000000000 +0900
++++ openpam-20130907/include/security/Makefile.am	2013-11-26 23:24:54.000000000 +0900
+@@ -9,4 +9,5 @@
+ 	pam_appl.h \
+ 	pam_constants.h \
+ 	pam_modules.h \
+-	pam_types.h
++	pam_types.h \
++	pam_mod_misc.h
+diff -Nur openpam-20130907.orig/include/security/pam_mod_misc.h openpam-20130907/include/security/pam_mod_misc.h
+--- openpam-20130907.orig/include/security/pam_mod_misc.h	1970-01-01 09:00:00.000000000 +0900
++++ openpam-20130907/include/security/pam_mod_misc.h	2013-11-26 23:24:54.000000000 +0900
+@@ -0,0 +1,56 @@
++/*-
++ * Copyright 1998 Juniper Networks, Inc.
++ * All rights reserved.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
++ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
++ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
++ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
++ * SUCH DAMAGE.
++ *
++ *	$FreeBSD: src/lib/libpam/libpam/security/pam_mod_misc.h,v 1.12 2003/05/31 16:56:35 des Exp $
++ */
++
++#ifndef PAM_MOD_MISC_H
++#define PAM_MOD_MISC_H
++
++#include <sys/cdefs.h>
++
++/*
++ * Common option names
++ */
++#define	PAM_OPT_NULLOK		"nullok"
++#define PAM_OPT_AUTH_AS_SELF	"auth_as_self"
++#define PAM_OPT_ECHO_PASS	"echo_pass"
++#define PAM_OPT_DEBUG		"debug"
++
++__BEGIN_DECLS
++void	_pam_verbose_error(pam_handle_t *, int, const char *,
++		const char *, const char *, ...);
++__END_DECLS
++
++#define	PAM_LOG(...) \
++	openpam_log(PAM_LOG_DEBUG, __VA_ARGS__)
++
++#define PAM_RETURN(arg) \
++	return (arg)
++
++#define PAM_VERBOSE_ERROR(...) \
++	_pam_verbose_error(pamh, flags, __FILE__, __FUNCTION__, __VA_ARGS__)
++
++#endif
+diff -Nur openpam-20130907.orig/lib/libpam/Makefile.am openpam-20130907/lib/libpam/Makefile.am
+--- openpam-20130907.orig/lib/libpam/Makefile.am	2013-09-07 22:28:00.000000000 +0900
++++ openpam-20130907/lib/libpam/Makefile.am	2013-11-26 23:25:33.000000000 +0900
+@@ -75,6 +75,7 @@
+ 	pam_verror.c \
+ 	pam_vinfo.c \
+ 	pam_vprompt.c \
++	pam_debug_log.c \
+ 	$(NULL)
+ 
+ libpam_la_LDFLAGS = -no-undefined -version-info @LIB_MAJ@
+diff -Nur openpam-20130907.orig/lib/libpam/pam_debug_log.c openpam-20130907/lib/libpam/pam_debug_log.c
+--- openpam-20130907.orig/lib/libpam/pam_debug_log.c	1970-01-01 09:00:00.000000000 +0900
++++ openpam-20130907/lib/libpam/pam_debug_log.c	2013-11-26 23:24:54.000000000 +0900
+@@ -0,0 +1,64 @@
++/*-
++ * Copyright 2001 Mark R V Murray
++ * All rights reserved.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
++ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
++ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
++ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
++ * SUCH DAMAGE.
++ */
++
++#include <sys/cdefs.h>
++
++#ifndef __GLIBC__
++#include <libgen.h>
++#endif
++
++#include <stdarg.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++
++#include <security/pam_appl.h>
++#include <security/openpam.h>
++#include <security/pam_mod_misc.h>
++
++/* Print a verbose error, including the function name and a
++ * cleaned up filename.
++ */
++void
++_pam_verbose_error(pam_handle_t *pamh, int flags,
++    const char *file, const char *function, const char *format, ...)
++{
++	va_list ap;
++	char *fmtbuf, *modname, *period;
++
++	if (!(flags & PAM_SILENT) && !openpam_get_option(pamh, "no_warn")) {
++		modname = basename(file);
++		period = strchr(modname, '.');
++		if (period == NULL)
++			period = strchr(modname, '\0');
++		va_start(ap, format);
++		asprintf(&fmtbuf, "%.*s: %s: %s\n", (int)(period - modname),
++		    modname, function, format);
++		pam_verror(pamh, fmtbuf, ap);
++		free(fmtbuf);
++		va_end(ap);
++	}
++}

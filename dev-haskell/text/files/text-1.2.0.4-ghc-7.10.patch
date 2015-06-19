@@ -1,0 +1,41 @@
+ommit f74427c954fb4479f9db5025f27775e29ace125f
+Author: Bryan O'Sullivan <bos@serpentine.com>
+Date:   Fri Jan 9 16:14:15 2015 -0800
+
+    Fix test suite under GHC 7.10
+
+diff --git a/tests/Tests/Properties.hs b/tests/Tests/Properties.hs
+index 47474b0..6844723 100644
+--- a/tests/Tests/Properties.hs
++++ b/tests/Tests/Properties.hs
+@@ -14,7 +14,7 @@ import Data.Bits ((.&.))
+ import Data.Char (chr, isDigit, isHexDigit, isLower, isSpace, isUpper, ord)
+ import Data.Int (Int8, Int16, Int32, Int64)
+ import Data.Monoid (Monoid(..))
+-import Data.String (fromString)
++import Data.String (IsString(fromString))
+ import Data.Text.Encoding.Error
+ import Data.Text.Foreign
+ import Data.Text.Internal.Encoding.Utf8
+@@ -812,7 +812,7 @@ tl_hexadecimal m s ox =
+           p = if ox then "0x" else ""
+           n = getPositive m :: Int
+ 
+-isFloaty c = c `elem` "+-.0123456789eE"
++isFloaty c = c `elem` ("+-.0123456789eE" :: String)
+ 
+ t_read_rational p tol (n::Double) s =
+     case p (T.pack (show n) `T.append` t) of
+diff --git a/tests/cabal.config b/tests/cabal.config
+index 28241f0..64f6bbb 100644
+--- a/tests/cabal.config
++++ b/tests/cabal.config
+@@ -1,7 +1,6 @@
+ -- These flags help to speed up building the test suite.
+ 
+ documentation: False
+-executable-profiling: False
+ executable-stripping: False
+ flags: developer
+ library-profiling: False
+

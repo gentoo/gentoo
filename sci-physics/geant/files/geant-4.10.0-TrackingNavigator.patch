@@ -1,0 +1,60 @@
+accepted upstream. to be removed in the next minor release.
+
+https://bugs.gentoo.org/show_bug.cgi?id=496678
+http://bugzilla-geant4.kek.jp/show_bug.cgi?id=1537
+
+diff -Naur geant4.10.00/source/geometry/navigation/include/G4TransportationManager.hh geant4.10.00-mod/source/geometry/navigation/include/G4TransportationManager.hh
+--- geant4.10.00/source/geometry/navigation/include/G4TransportationManager.hh	2013-12-05 10:28:54.000000000 +0100
++++ geant4.10.00-mod/source/geometry/navigation/include/G4TransportationManager.hh	2013-12-12 01:40:12.341428809 +0100
+@@ -68,7 +68,7 @@
+        // Accessors for field handling
+ 
+      inline G4Navigator* GetNavigatorForTracking() const;
+-     inline void SetNavigatorForTracking( G4Navigator* newNavigator );
++     void SetNavigatorForTracking( G4Navigator* newNavigator );
+        // Accessors for the navigator for tracking
+ 
+      inline void SetWorldForTracking(G4VPhysicalVolume* theWorld);
+diff -Naur geant4.10.00/source/geometry/navigation/include/G4TransportationManager.icc geant4.10.00-mod/source/geometry/navigation/include/G4TransportationManager.icc
+--- geant4.10.00/source/geometry/navigation/include/G4TransportationManager.icc	2013-12-05 10:28:54.000000000 +0100
++++ geant4.10.00-mod/source/geometry/navigation/include/G4TransportationManager.icc	2013-12-12 01:40:12.341428809 +0100
+@@ -59,6 +59,7 @@
+    fNavigators[0]->SetWorldVolume(theWorld);
+ }
+ 
++/*
+ // ----------------------------------------------------------------------------
+ // SetNavigatorForTracking()
+ //
+@@ -70,6 +71,7 @@
+ {
+    fNavigators[0] = newNavigator;
+ }
++*/
+ 
+ // ----------------------------------------------------------------------------
+ // GetPropagatorInField()
+diff -Naur geant4.10.00/source/geometry/navigation/src/G4TransportationManager.cc geant4.10.00-mod/source/geometry/navigation/src/G4TransportationManager.cc
+--- geant4.10.00/source/geometry/navigation/src/G4TransportationManager.cc	2013-12-05 10:28:56.000000000 +0100
++++ geant4.10.00-mod/source/geometry/navigation/src/G4TransportationManager.cc	2013-12-12 01:40:12.345428679 +0100
+@@ -124,6 +124,20 @@
+    }
+ }
+ 
++
++// ----------------------------------------------------------------------------
++// SetNavigatorForTracking()
++//
++// Set the active navigator for tracking, always
++// the first in the collection of registered navigators.
++//
++void G4TransportationManager::SetNavigatorForTracking(G4Navigator* newNavigator)
++{
++   fNavigators[0] = newNavigator;
++   fActiveNavigators[0] = newNavigator;
++   fPropagatorInField->SetNavigatorForPropagating(newNavigator);
++}
++
+ // ----------------------------------------------------------------------------
+ // ClearNavigators()
+ //

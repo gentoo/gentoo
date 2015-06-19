@@ -1,0 +1,22 @@
+# ChangeLog for media-gfx/metapixel
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/metapixel/ChangeLog,v 1.5 2011/09/15 23:19:01 ssuominen Exp $
+
+  15 Sep 2011; Samuli Suominen <ssuominen@gentoo.org> metapixel-1.0.2.ebuild,
+  +files/metapixel-1.0.2-libpng15.patch:
+  Fix building with libpng15 wrt #378467 by _AxS_ from Freenode
+
+  08 Nov 2010; Markus Meier <maekke@gentoo.org> metapixel-1.0.2.ebuild:
+  change jpeg dep to virtual/jpeg
+
+  29 Sep 2009; Markus Meier <maekke@gentoo.org> metapixel-1.0.2.ebuild:
+  amd64/x86 stable, bug #286510
+
+  09 Jan 2008; Markus Meier <maekke@gentoo.org> metapixel-1.0.2.ebuild:
+  add ~x86
+
+*metapixel-1.0.2 (08 Jan 2008)
+
+  08 Jan 2008; Samuli Suominen <drac@gentoo.org> +metapixel-1.0.2.ebuild:
+  Initial commit wrt #26144, thanks to Carl A. Dunham and many others.
+

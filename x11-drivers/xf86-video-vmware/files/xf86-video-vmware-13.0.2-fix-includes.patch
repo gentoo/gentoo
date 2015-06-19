@@ -1,0 +1,41 @@
+From 4664412d7a5266d2b392957406b34abc5db95e48 Mon Sep 17 00:00:00 2001
+From: Stefan Dirsch <sndirsch@suse.de>
+Date: Tue, 7 Oct 2014 11:29:32 +0200
+Subject: xf86xv.h cannot be included without first including xorg-server.h.
+
+Without this the build fails on systems with the latest glibc,
+throwing this error:
+
+In file included from /usr/include/string.h:634:0,
+                 from /usr/include/xorg/os.h:53,
+                 from /usr/include/xorg/misc.h:115,
+                 from /usr/include/xorg/screenint.h:50,
+                 from /usr/include/xorg/scrnintstr.h:50,
+                 from /usr/include/xorg/xvdix.h:55,
+                 from /usr/include/xorg/xf86xv.h:32,
+                 from vmwgfx_overlay.c:38:
+/usr/include/xorg/os.h:579:1: error: expected identifier or '(' before '__extension__'
+strndup(const char *str, size_t n);
+
+This is caused by HAVE_STRNDUP not being set (it is set from xorg-server.h),
+causing os.h to redefine it.
+
+Signed-off-by: Stefan Dirsch <sndirsch@suse.de>
+Reviewed-by: Daniel Stone <daniels@collabora.com>
+Acked-by: Thomas Hellstrom <thellstrom@vmware.com>
+
+diff --git a/vmwgfx/vmwgfx_overlay.c b/vmwgfx/vmwgfx_overlay.c
+index ef1d541..2b05b0e 100644
+--- a/vmwgfx/vmwgfx_overlay.c
++++ b/vmwgfx/vmwgfx_overlay.c
+@@ -35,6 +35,7 @@
+  */
+ 
+ 
++#include "xorg-server.h"
+ #include "xf86xv.h"
+ #include "fourcc.h"
+ #define debug_printf(...)
+-- 
+cgit v0.10.2
+

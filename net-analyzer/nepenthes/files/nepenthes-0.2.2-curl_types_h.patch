@@ -1,0 +1,70 @@
+--- a/modules/submit-http/submit-http.hpp
++++ b/modules/submit-http/submit-http.hpp
+@@ -29,7 +29,6 @@
+  /* $Id: nepenthes-0.2.2-curl_types_h.patch,v 1.1 2014/10/25 11:50:22 jer Exp $ */
+ 
+ #include <curl/curl.h>
+-#include <curl/types.h> /* new for v7 */
+ #include <curl/easy.h> /* new for v7 */
+ 
+ #include "Nepenthes.hpp"
+--- a/modules/submit-http/HTTPSession.cpp
++++ b/modules/submit-http/HTTPSession.cpp
+@@ -28,7 +28,6 @@
+ 
+ 
+ #include <curl/curl.h>
+-#include <curl/types.h> /* new for v7 */
+ #include <curl/easy.h> /* new for v7 */
+ #include <sstream>
+ #include <netinet/in.h>
+--- a/modules/submit-http/HTTPSession.hpp
++++ b/modules/submit-http/HTTPSession.hpp
+@@ -29,7 +29,6 @@
+  /* $Id: nepenthes-0.2.2-curl_types_h.patch,v 1.1 2014/10/25 11:50:22 jer Exp $ */
+  
+ #include <curl/curl.h>
+-#include <curl/types.h>
+ 
+ #include "Download.hpp"
+ 
+--- a/modules/download-curl/download-curl.hpp
++++ b/modules/download-curl/download-curl.hpp
+@@ -28,7 +28,6 @@
+  /* $Id: nepenthes-0.2.2-curl_types_h.patch,v 1.1 2014/10/25 11:50:22 jer Exp $ */
+ 
+ #include <curl/curl.h>
+-#include <curl/types.h> /* new for v7 */
+ #include <curl/easy.h> /* new for v7 */
+ 
+ #include "Module.hpp"
+--- a/modules/submit-mwserv/submit-mwserv.hpp
++++ b/modules/submit-mwserv/submit-mwserv.hpp
+@@ -27,7 +27,6 @@
+  *******************************************************************************/
+  
+ #include <curl/curl.h>
+-#include <curl/types.h>
+ #include <curl/easy.h>
+ 
+ #include "Nepenthes.hpp"
+--- a/modules/submit-mwserv/TransferSession.hpp
++++ b/modules/submit-mwserv/TransferSession.hpp
+@@ -27,7 +27,6 @@
+  *******************************************************************************/
+ 
+ #include <curl/curl.h>
+-#include <curl/types.h>
+ #include <curl/easy.h>
+ 
+ #include <string>
+--- a/modules/submit-norman/submit-norman.hpp
++++ b/modules/submit-norman/submit-norman.hpp
+@@ -29,7 +29,6 @@
+ 
+ 
+ #include <curl/curl.h>
+-#include <curl/types.h> /* new for v7 */
+ #include <curl/easy.h> /* new for v7 */
+ 
+ #include "Module.hpp"

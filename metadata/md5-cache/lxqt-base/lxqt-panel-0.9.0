@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/glib:2 >=dev-libs/libqtxdg-1.0.0 dev-qt/linguist-tools:5 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 kde-frameworks/kguiaddons:5 kde-frameworks/kwindowsystem:5[X] >=lxde-base/menu-cache-0.3.3 ~lxqt-base/liblxqt-0.9.0 ~lxqt-base/liblxqt-mount-0.9.0 ~lxqt-base/lxqt-globalkeys-0.9.0 x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXdamage x11-libs/libXrender cpuload? ( sys-libs/libstatgrab ) networkmonitor? ( sys-libs/libstatgrab ) sensors? ( sys-apps/lm_sensors ) sysstat? ( =lxqt-base/libsysstat-0.3* ) volume? ( alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio ) ) sys-devel/make >=dev-util/cmake-2.8.12 userland_GNU? ( >=sys-apps/findutils-4.4.0 )
+DESCRIPTION=LXQt desktop panel and plugins
+EAPI=5
+HOMEPAGE=http://lxqt.org/
+IUSE=+alsa +clock colorpicker cpuload +desktopswitch dom +kbindicator +mainmenu +mount networkmonitor pulseaudio +quicklaunch screensaver sensors +showdesktop sysstat +taskbar +tray +volume worldclock
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=GPL-2 LGPL-2.1+
+RDEPEND=dev-libs/glib:2 >=dev-libs/libqtxdg-1.0.0 dev-qt/linguist-tools:5 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 kde-frameworks/kguiaddons:5 kde-frameworks/kwindowsystem:5[X] >=lxde-base/menu-cache-0.3.3 ~lxqt-base/liblxqt-0.9.0 ~lxqt-base/liblxqt-mount-0.9.0 ~lxqt-base/lxqt-globalkeys-0.9.0 x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXdamage x11-libs/libXrender cpuload? ( sys-libs/libstatgrab ) networkmonitor? ( sys-libs/libstatgrab ) sensors? ( sys-apps/lm_sensors ) sysstat? ( =lxqt-base/libsysstat-0.3* ) volume? ( alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio ) ) dev-qt/qtsvg:5 >=lxde-base/lxmenu-data-0.1.2
+REQUIRED_USE=volume? ( || ( alsa pulseaudio ) )
+SLOT=0
+SRC_URI=http://downloads.lxqt.org/lxqt/0.9.0/lxqt-panel-0.9.0.tar.xz
+_eclasses_=cmake-utils	0430c386d85cec959d72640afd63ea91	eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=3fd5e05ca68e4b647e2d83d10c474326

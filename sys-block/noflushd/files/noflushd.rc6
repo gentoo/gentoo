@@ -1,0 +1,31 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/noflushd/files/noflushd.rc6,v 1.1 2005/03/06 19:19:20 ciaranm Exp $
+
+# NB: Config is in /etc/conf.d/noflushd
+
+depend() {
+	need localmount
+}
+
+checkconfig() {
+	if [ -z "$NOFLUSHD_OPTS" ] ; then
+		eerror "You need to setup your NOFLUSHD_OPTS first"
+		eerror "Check that you've adjusted /etc/conf.d/noflushd for your needs"
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting noflushd"
+	start-stop-daemon --start --quiet --exec /usr/sbin/noflushd -- $NOFLUSHD_OPTS
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping noflushd"
+	start-stop-daemon --stop --quiet --pidfile /var/run/noflushd.pid
+	eend $?
+}

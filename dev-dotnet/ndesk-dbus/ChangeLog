@@ -1,0 +1,49 @@
+# ChangeLog for dev-dotnet/ndesk-dbus
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/ndesk-dbus/ChangeLog,v 1.2 2012/05/04 03:56:57 jdhore Exp $
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> ndesk-dbus-0.6.1a.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*ndesk-dbus-0.6.1a (12 Mar 2011)
+
+  12 Mar 2011; <angelos@gentoo.org> +ndesk-dbus-0.6.1a.ebuild, +metadata.xml:
+  Renamed dbus-sharp to ndesk-dbus (bug 356391)
+
+  07 Oct 2010; Pacho Ramos <pacho@gentoo.org> -dbus-sharp-0.6.0.ebuild:
+  Remove old.
+
+  23 Mar 2009; Peter Alfredsen <loki_val@gentoo.org> metadata.xml:
+  Dotnet herd taking this
+
+  20 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  metadata.xml:
+  Removing compnerd as a maintainer since he was retired.
+
+  28 Jul 2008; Raúl Porcel <armin76@gentoo.org> dbus-sharp-0.6.1a.ebuild:
+  x86 stable wrt #230177
+
+  18 Jul 2008; Santiago M. Mola <coldwind@gentoo.org>
+  dbus-sharp-0.6.1a.ebuild:
+  amd64 stable wrt bug #230177
+
+  16 Jul 2008; nixnut <nixnut@gentoo.org> dbus-sharp-0.6.1a.ebuild:
+  Stable on ppc wrt bug 230177
+
+  13 Feb 2008; Christian Faulhammer <opfer@gentoo.org> metadata.xml:
+  add no-herd
+
+*dbus-sharp-0.6.1a (28 Jan 2008)
+
+  28 Jan 2008; Samuli Suominen <drac@gentoo.org> +dbus-sharp-0.6.1a.ebuild:
+  Version bump.
+
+  07 Jan 2008; Joseph Jezak <josejx@gentoo.org> dbus-sharp-0.6.0.ebuild:
+  Marked ~ppc for bug #204673.
+
+*dbus-sharp-0.6.0 (30 Dec 2007)
+
+  30 Dec 2007; Saleem Abdulrasool <compnerd@gentoo.org> +metadata.xml,
+  +dbus-sharp-0.6.0.ebuild:
+  Initial import of package
+

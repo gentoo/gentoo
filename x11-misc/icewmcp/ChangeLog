@@ -1,0 +1,69 @@
+# ChangeLog for x11-misc/icewmcp
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/icewmcp/ChangeLog,v 1.16 2014/12/08 23:20:01 jer Exp $
+
+*icewmcp-3.2-r4 (08 Dec 2014)
+
+  08 Dec 2014; Jeroen Roovers <jer@gentoo.org> -icewmcp-3.2-r3.ebuild,
+  +icewmcp-3.2-r4.ebuild:
+  Fix shebangs to match compatible python version (bug #532004).
+
+*icewmcp-3.2-r3 (01 Oct 2011)
+
+  01 Oct 2011; Mike Frysinger <vapier@gentoo.org> +icewmcp-3.2-r3.ebuild:
+  Clean up ebuild a lot #384555 by i.Dark_Templar.
+
+  02 Mar 2011; Kevin McCarthy <signals@gentoo.org> icewmcp-3.2-r2.ebuild:
+  Slot all gnome-related deps.
+
+  02 Mar 2011; Kevin McCarthy <signals@gentoo.org> icewmcp-3.2-r2.ebuild:
+  Slotted gtk+ depends and EAPI=2 bump to support it.
+
+  22 Jul 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  icewmcp-3.2-r2.ebuild:
+  x86 stable wrt bug #329283
+
+*icewmcp-3.2-r2 (05 Jun 2010)
+
+  05 Jun 2010; Markos Chandras <hwoarang@gentoo.org> +icewmcp-3.2-r2.ebuild:
+  Make python improvements wrt bug #317017
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+*icewmcp-3.2-r1 (11 Oct 2006)
+
+  11 Oct 2006; Krzysiek Pawlik <nelchael@gentoo.org> -icewmcp-3.1.ebuild,
+  -icewmcp-3.2.ebuild, +icewmcp-3.2-r1.ebuild:
+  Fix bug #150336, remove old versions.
+
+  03 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> icewmcp-3.2.ebuild:
+  added ~amd64 to KEYWORDS. fixes #75613
+
+  29 Sep 2004; <pyrania@gentoo.org> icewmcp-3.2.ebuild:
+  Marked stable on x86.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> icewmcp-3.1.ebuild,
+  icewmcp-3.2.ebuild:
+  Masked icewmcp-3.2.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> icewmcp-3.1.ebuild:
+  Masked icewmcp-3.1.ebuild stable for ppc
+
+*icewmcp-3.2 (20 Aug 2004)
+
+  20 Aug 2004; Daniel Goller <morfic@gentoo.org> +icewmcp-3.2.ebuild:
+  Bumped to 3.2 closing bug #60496
+
+  01 Jun 2004; Brandon Hale <tseng@gentoo.org> icewmcp-3.1.ebuild:
+  Stable on x86
+
+  13 Apr 2004; David Holm <dholm@gentoo.org> icewmcp-3.1.ebuild:
+  Added to ~ppc.
+
+*icewmcp-3.1 (12 Apr 2004)
+
+  12 Apr 2004; Markus Nigbur <pyrania@gentoo.org> icewmcp-3.1.ebuild,
+  metadata.xml:
+  Initial import. Closing bug #42448.
+

@@ -1,0 +1,14 @@
+--- configure
++++ configure
+@@ -7113,9 +7113,9 @@
+ 	# If we're using GNU nm, then we don't want the "-C" option.
+ 	# -C means demangle to AIX nm, but means don't demangle with GNU nm
+ 	if $NM -V 2>&1 | grep 'GNU' > /dev/null; then
+-	  export_symbols_cmds='$NM -Bpg $libobjs $convenience | awk '\''{ if (((\$2 == "T") || (\$2 == "D") || (\$2 == "B")) && (substr(\$3,1,1) != ".")) { print \$3 } }'\'' | sort -u > $export_symbols'
++	  export_symbols_cmds='$NM -Bpg $libobjs $convenience | awk '\''{ if (((\$ 2 == "T") || (\$ 2 == "D") || (\$ 2 == "B") || (\$ 2 == "W")) && (substr(\$ 3,1,1) != ".")) { if (\$ 2 == "W") { print \$ 3 " weak" } else { print \$ 3 } } }'\'' | sort -u > $export_symbols'
+ 	else
+-	  export_symbols_cmds='$NM -BCpg $libobjs $convenience | awk '\''{ if (((\$2 == "T") || (\$2 == "D") || (\$2 == "B")) && (substr(\$3,1,1) != ".")) { print \$3 } }'\'' | sort -u > $export_symbols'
++	  export_symbols_cmds='`echo $NM | sed -e '\''s/B\([^B]*\)$/P\1/'\''` -PCpgl $libobjs $convenience | awk '\''{ if (((\$ 2 == "T") || (\$ 2 == "D") || (\$ 2 == "B") || (\$ 2 == "W") || (\$ 2 == "V") || (\$ 2 == "Z")) && (substr(\$ 1,1,1) != ".")) { if ((\$ 2 == "W") || (\$ 2 == "V") || (\$ 2 == "Z")) { print \$ 1 " weak" } else { print \$ 1 } } }'\'' | sort -u > $export_symbols'
+ 	fi
+ 	aix_use_runtimelinking=no
+ 

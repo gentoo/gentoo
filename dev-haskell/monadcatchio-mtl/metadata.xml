@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>haskell</herd>
+	<herd>proxy-maintainers</herd>
+	<maintainer>
+		<email>haskell@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		Provides a monad-transformer version of the @Control.Exception.catch@
+		function. For this, it defines the @MonadCatchIO@ class, a subset of
+		@MonadIO@. It defines proper instances for most monad transformers in
+		the &#39;mtl&#39; library.
+	</longdescription>
+</pkgmetadata>

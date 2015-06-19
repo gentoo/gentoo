@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/ultimate/files/ultimateircd.rc.2,v 1.1 2011/05/02 20:43:45 flameeyes Exp $
+
+depend() {
+	use dns net
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+ 	start-stop-daemon --start --quiet --exec /usr/bin/ultimateircd \
+		--chuid ${ULTIMATEIRCD_USER}
+	eend $?
+}
+
+stop() {
+	ebegin "Shutting down ${SVCNAME}"
+	start-stop-daemon --stop --pidfile /var/run/ultimateircd/ircd.pid
+	eend $?
+}

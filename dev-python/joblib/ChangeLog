@@ -1,0 +1,84 @@
+# ChangeLog for dev-python/joblib
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/joblib/ChangeLog,v 1.17 2015/03/08 23:51:27 pacho Exp $
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> joblib-0.8.4.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> joblib-0.8.4.ebuild:
+  amd64 stable, bug 540290
+
+*joblib-0.8.4 (04 Dec 2014)
+
+  04 Dec 2014; Patrick Lauer <patrick@gentoo.org> +joblib-0.8.4.ebuild:
+  Bump
+
+*joblib-0.8.3 (22 Aug 2014)
+
+  22 Aug 2014; Ian Delaney <idella4@gentoo.org> +joblib-0.8.3.ebuild:
+  bump
+
+*joblib-0.8.2 (14 Jul 2014)
+
+  14 Jul 2014; Patrick Lauer <patrick@gentoo.org> +joblib-0.8.2.ebuild:
+  Bump
+
+*joblib-0.8.1 (15 Jun 2014)
+
+  15 Jun 2014; Ian Delaney <idella4@gentoo.org> +joblib-0.8.1.ebuild,
+  -joblib-0.6.3.ebuild, -joblib-0.6.4.ebuild, -joblib-0.6.5.ebuild,
+  -joblib-0.7.0d-r1.ebuild, -joblib-0.7.0d.ebuild, -joblib-0.7.1.ebuild:
+  bump
+
+  01 Jun 2014; Patrick Lauer <patrick@gentoo.org> joblib-0.8.0.ebuild:
+  Whitespace
+
+*joblib-0.8.0 (01 Jun 2014)
+
+  01 Jun 2014; Ian Delaney <idella4@gentoo.org> +joblib-0.8.0.ebuild:
+  bump; drop py2.6 py3.2 add py3.4 pypy support, add IUSE doc, doc build,
+  upgrade test phase
+
+*joblib-0.7.1 (08 Aug 2013)
+
+  08 Aug 2013; Sébastien Fabbro <bicatali@gentoo.org> +joblib-0.7.1.ebuild,
+  metadata.xml:
+  Version bump
+
+*joblib-0.7.0d-r1 (09 Mar 2013)
+
+  09 Mar 2013; Ian Delaney <idella4@gentoo.org> +joblib-0.7.0d-r1.ebuild:
+  revbump to distutils-r1
+
+*joblib-0.7.0d (22 Feb 2013)
+
+  22 Feb 2013; Patrick Lauer <patrick@gentoo.org> +joblib-0.7.0d.ebuild:
+  Bump
+
+  29 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org> joblib-0.6.5.ebuild:
+  Keyword amd64-linux and x86-linux
+
+*joblib-0.6.5 (09 Oct 2012)
+
+  09 Oct 2012; Patrick Lauer <patrick@gentoo.org> +joblib-0.6.5.ebuild:
+  Bump
+
+  08 May 2012; Dirkjan Ochtman <djc@gentoo.org> -joblib-0.6.2.ebuild:
+  Remove old version.
+
+*joblib-0.6.4 (08 May 2012)
+
+  08 May 2012; Dirkjan Ochtman <djc@gentoo.org> +joblib-0.6.4.ebuild:
+  Version bump to 0.6.4.
+
+*joblib-0.6.3 (02 Mar 2012)
+
+  02 Mar 2012; Dirkjan Ochtman <djc@gentoo.org> +joblib-0.6.3.ebuild:
+  Version bump to 0.6.3.
+
+*joblib-0.6.2 (15 Feb 2012)
+
+  15 Feb 2012; Dirkjan Ochtman <djc@gentoo.org> +joblib-0.6.2.ebuild,
+  +metadata.xml:
+  Initial version of joblib (bug 402937). Ebuild contributed by
+  nicolas.pinto@gmail.com.

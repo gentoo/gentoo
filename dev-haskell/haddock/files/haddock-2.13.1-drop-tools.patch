@@ -1,0 +1,13 @@
+--- haddock-2.13.1-orig/haddock.cabal	2012-10-11 21:56:14.000000000 +1100
++++ haddock-2.13.1/haddock.cabal	2012-10-11 22:21:37.594323046 +1100
+@@ -108,10 +108,6 @@
+ 
+ library
+   default-language:     Haskell2010
+-  -- In a GHC tree - in particular, in a source tarball - we don't
+-  -- require alex or happy
+-  if !flag(in-ghc-tree)
+-    build-tools: alex >= 2.3, happy >= 1.18
+   build-depends:
+     base >= 4.3 && < 4.7,
+     filepath,

@@ -1,0 +1,182 @@
+# ChangeLog for app-i18n/scim-pinyin
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-pinyin/ChangeLog,v 1.45 2015/06/09 11:31:46 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  20 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -scim-pinyin-0.5.91-r2.ebuild:
+  Remove old.
+
+*scim-pinyin-0.5.92 (15 Aug 2012)
+
+  15 Aug 2012; Naohiro Aota <naota@gentoo.org> +scim-pinyin-0.5.92.ebuild:
+  Version bump. #430418
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> scim-pinyin-0.5.91-r2.ebuild,
+  scim-pinyin-0.5.91-r3.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  13 Feb 2011; Raúl Porcel <armin76@gentoo.org> scim-pinyin-0.5.91-r2.ebuild,
+  scim-pinyin-0.5.91-r3.ebuild:
+  Drop alpha/sparc keywords
+
+  31 Dec 2009; Brent Baude <ranger@gentoo.org> scim-pinyin-0.5.91-r3.ebuild:
+  Marking scim-pinyin-0.5.91-r3 ppc64 for bug 289644
+
+  26 Dec 2009; Raúl Porcel <armin76@gentoo.org>
+  scim-pinyin-0.5.91-r3.ebuild:
+  sparc stable wrt #289644
+
+  21 Nov 2009; Markus Meier <maekke@gentoo.org>
+  scim-pinyin-0.5.91-r3.ebuild:
+  x86 stable, bug #289644
+
+  08 Nov 2009; Tobias Klausmann <klausman@gentoo.org>
+  scim-pinyin-0.5.91-r3.ebuild:
+  Stable on alpha, bug #289644
+
+  24 Oct 2009; nixnut <nixnut@gentoo.org> scim-pinyin-0.5.91-r3.ebuild:
+  ppc stable #289644
+
+  23 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  scim-pinyin-0.5.91-r3.ebuild:
+  amd64 stable wrt #289644
+
+  18 Oct 2009; Samuli Suominen <ssuominen@gentoo.org>
+  scim-pinyin-0.5.91-r3.ebuild:
+  Remove KDE3 support wrt #277901.
+
+*scim-pinyin-0.5.91-r3 (24 Feb 2009)
+
+  24 Feb 2009; MATSUU Takuto <matsuu@gentoo.org>
+  +files/scim-pinyin-0.5.91-gbk.patch, -scim-pinyin-0.5.91.ebuild,
+  -scim-pinyin-0.5.91-r1.ebuild, +scim-pinyin-0.5.91-r3.ebuild:
+  Fixed locale issue, bug #259384. Fixed DEPEND. Removed old revision.
+
+  02 Dec 2008; Brent Baude <ranger@gentoo.org> scim-pinyin-0.5.91-r2.ebuild:
+  stable ppc64, bug 245187
+
+  15 Nov 2008; Raúl Porcel <armin76@gentoo.org>
+  scim-pinyin-0.5.91-r2.ebuild:
+  alpha/sparc/x86 stable wrt #245187
+
+  13 Nov 2008; Jeremy Olexa <darkside@gentoo.org>
+  scim-pinyin-0.5.91-r2.ebuild:
+  amd64 stable, bug 245187
+
+  08 Nov 2008; nixnut <nixnut@gentoo.org> scim-pinyin-0.5.91-r2.ebuild:
+  Stable on ppc wrt bug 245187
+
+*scim-pinyin-0.5.91-r2 (21 Jun 2008)
+
+  21 Jun 2008; MATSUU Takuto <matsuu@gentoo.org>
+  +files/scim-pinyin-0.5.91-gcc43.patch, +scim-pinyin-0.5.91-r2.ebuild:
+  Fixed to work with gcc-4.3*, bug #227689.
+
+  22 Jul 2007; Denis Dupeyron <calchan@gentoo.org>
+  scim-pinyin-0.5.91.ebuild, scim-pinyin-0.5.91-r1.ebuild:
+  Drop virtual/x11 dependency.
+
+  10 Feb 2007; Steve Dibb <beandog@gentoo.org> scim-pinyin-0.5.91-r1.ebuild:
+  amd64 stable, bug 159206
+
+  26 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  scim-pinyin-0.5.91-r1.ebuild:
+  Stable on Alpha.
+
+  22 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  scim-pinyin-0.5.91-r1.ebuild:
+  Stable on sparc
+
+  09 Jan 2007; Markus Rothe <corsair@gentoo.org>
+  scim-pinyin-0.5.91-r1.ebuild:
+  Stable on ppc64; bug #159206
+
+  04 Jan 2007; Bryan Østergaard <kloeri@gentoo.org>
+  scim-pinyin-0.5.91-r1.ebuild:
+  Add ~alpha keyword.
+
+  31 Dec 2006; Andrej Kacian <ticho@gentoo.org>
+  scim-pinyin-0.5.91-r1.ebuild:
+  Stable on x86, bug #159206.
+
+  29 Dec 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  scim-pinyin-0.5.91-r1.ebuild:
+  Stable on ppc wrt bug #159206.
+
+  29 Dec 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  scim-pinyin-0.5.91-r1.ebuild:
+  Keyworded ~sparc
+
+  21 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  scim-pinyin-0.5.91-r1.ebuild:
+  USe m4 directory when rebuilding autotools support. Thanks to Zhang Le in
+  bug #144930.
+
+  16 Oct 2006; Diego Pettenò <flameeyes@gentoo.org>
+  scim-pinyin-0.5.91.ebuild:
+  Add missing pkg-config depedency, thanks to Patrick Lauer for reporting in
+  bug #151618. Remove arts useflag, as it's pointless.
+
+  24 Sep 2006; Diego Pettenò <flameeyes@gentoo.org>
+  scim-pinyin-0.5.91-r1.ebuild:
+  Fix the autotools version dependencies.
+
+  04 Jul 2006; Markus Rothe <corsair@gentoo.org>
+  scim-pinyin-0.5.91-r1.ebuild:
+  Added ~ppc64
+
+*scim-pinyin-0.5.91-r1 (03 Jul 2006)
+
+  03 Jul 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/scim-pinyin-0.5.91-fixconfigure.patch,
+  +files/scim-pinyin-qt335.patch, scim-pinyin-0.5.91.ebuild,
+  +scim-pinyin-0.5.91-r1.ebuild:
+  Fix building with Qt 3.3.5, thanks to Wai Ling for reporting. Make skim
+  support conditional to kde useflag in last version (drop alpha, sparc, ppc64
+  keywords). Don't use gnome2 eclass if unneeded.
+
+  30 Apr 2006; Simon Stelling <blubb@gentoo.org> scim-pinyin-0.5.91.ebuild:
+  stable on amd64
+
+  10 Feb 2006; Alastair Tse <liquidx@gentoo.org> -scim-pinyin-0.5.0.ebuild,
+  -scim-pinyin-0.5.90.ebuild, scim-pinyin-0.5.91.ebuild:
+  modular-X-ified
+
+  25 Nov 2005; Tom Gall <tgall@gentoo.org> scim-pinyin-0.5.91.ebuild:
+  stable on ppc64
+
+  02 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  scim-pinyin-0.5.91.ebuild:
+  Stable on ppc.
+
+  02 Oct 2005; Bryan Østergaard <kloeri@gentoo.org>
+  scim-pinyin-0.5.91.ebuild:
+  Stable on alpha.
+
+  29 Sep 2005; Mamoru KOMACHI <usata@gentoo.org> scim-pinyin-0.5.91.ebuild:
+  Added arts USE. Thanks to kasim.terzic@gmail.com; bug #105196.
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> scim-pinyin-0.5.0.ebuild:
+  Mark 0.5.0 stable on alpha
+
+*scim-pinyin-0.5.91 (17 Aug 2005)
+
+  17 Aug 2005; Mamoru KOMACHI <usata@gentoo.org> +scim-pinyin-0.5.91.ebuild:
+  Version bumped.
+
+*scim-pinyin-0.5.90 (11 Aug 2005)
+
+  11 Aug 2005; Mamoru KOMACHI <usata@gentoo.org> +scim-pinyin-0.5.90.ebuild:
+  Version bumped.
+
+  21 Mar 2005; Mamoru KOMACHI <usata@gentoo.org> scim-pinyin-0.5.0.ebuild:
+  Stable on x86 and ppc.
+
+*scim-pinyin-0.5.0 (12 Feb 2005)
+
+  12 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
+  +scim-pinyin-0.5.0.ebuild:
+  Initial import. Ebuild submitted by Feng XU <forrest.xu@gmail.com>;
+  bug #77199.

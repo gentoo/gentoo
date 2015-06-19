@@ -1,0 +1,37 @@
+# ChangeLog for dev-haskell/mime-types
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/mime-types/ChangeLog,v 1.8 2015/06/06 12:32:21 jlec Exp $
+
+  06 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+*mime-types-0.1.0.6 (03 Apr 2015)
+
+  03 Apr 2015; Mark Wright <gienah@gentoo.org> +mime-types-0.1.0.6.ebuild:
+  Bump mime-types to 0.1.0.6
+
+*mime-types-0.1.0.5 (23 Dec 2014)
+
+  23 Dec 2014; Mark Wright <gienah@gentoo.org> +mime-types-0.1.0.5.ebuild:
+  Bump mime-types to 0.1.0.5
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+*mime-types-0.1.0.4 (02 Jul 2014)
+
+  02 Jul 2014; Mark Wright <gienah@gentoo.org> +mime-types-0.1.0.4.ebuild:
+  Bump mime-types to 0.1.0.4
+
+  24 Nov 2013; Agostino Sarubbo <ago@gentoo.org> mime-types-0.1.0.3.ebuild:
+  Stable for x86, wrt bug #488750
+
+  05 Nov 2013; Tony Vroon <chainsaw@gentoo.org> mime-types-0.1.0.3.ebuild:
+  Marked stable on AMD64 based on arch testing by Elijah "Armageddon" El
+  Lazkani in bug #488750.
+
+*mime-types-0.1.0.3 (26 Aug 2013)
+
+  26 Aug 2013; Alexander Vershilov <qnikst@gentoo.org> +metadata.xml,
+  +mime-types-0.1.0.3.ebuild:
+  dev-haskell/mime-types: initial layout

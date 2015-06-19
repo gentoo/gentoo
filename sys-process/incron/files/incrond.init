@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/incron/files/incrond.init,v 1.1 2011/01/31 15:14:12 idl0r Exp $
+
+depend() {
+	use clock logger
+	need localmount
+}
+
+start() {
+	ebegin "Starting incrond"
+	start-stop-daemon --start --pidfile /var/run/incrond.pid --exec /usr/sbin/incrond -- -f /etc/incron.conf
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping incrond"
+	start-stop-daemon --stop --pidfile /var/run/incrond.pid
+	eend $?
+}

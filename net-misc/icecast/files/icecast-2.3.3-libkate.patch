@@ -1,0 +1,28 @@
+Index: icecast-2.3.3/configure.in
+===================================================================
+--- icecast-2.3.3.orig/configure.in
++++ icecast-2.3.3/configure.in
+@@ -81,14 +81,18 @@ XIPH_PATH_SPEEX(
+     [ AC_MSG_WARN([Speex support disabled!])
+     ])
+ 
+-AC_CHECK_LIB(kate, kate_decode_init,[have_kate=yes],[have_kate=no], -logg)
+-if test "x$have_kate" == "xyes"
++AC_ARG_ENABLE([kate], AS_HELP_STRING([--disable-kate], [Disable karaoke and text encapsulation support for ogg]))
++if test "x$enable_kate" != "xno"
+ then
+-  AC_CHECK_LIB(oggkate, kate_ogg_decode_headerin,[have_kate=yes],[have_kate=no],-lkate -logg)
++  AC_CHECK_LIB(kate, kate_decode_init,[have_kate=yes],[have_kate=no], -logg)
+   if test "x$have_kate" == "xyes"
+   then
+-    KATE_LIBS="-loggkate -lkate -logg"
+-    AC_DEFINE([HAVE_KATE],[1],[Define if you have libkate])
++    AC_CHECK_LIB(oggkate, kate_ogg_decode_headerin,[have_kate=yes],[have_kate=no],-lkate -logg)
++    if test "x$have_kate" == "xyes"
++    then
++      KATE_LIBS="-loggkate -lkate -logg"
++      AC_DEFINE([HAVE_KATE],[1],[Define if you have libkate])
++    fi
+   fi
+ fi
+ dnl we still use format_kate as it doesn't need libkate to work

@@ -1,0 +1,92 @@
+# ChangeLog for net-dialup/isdn-firmware
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/isdn-firmware/ChangeLog,v 1.19 2014/05/24 21:48:03 jer Exp $
+
+  24 May 2014; Jeroen Roovers <jer@gentoo.org>
+  isdn-firmware-2005.8.15.2.ebuild:
+  Remove mirror://opensuse (bug #494868), use libdir.
+
+  30 Apr 2014; Ulrich Müller <ulm@gentoo.org>
+  isdn-firmware-2005.8.15.2.ebuild:
+  Fix LICENSE, bug 446158.
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #92799
+
+  18 Nov 2006; Alin Nastac <mrness@gentoo.org>
+  -isdn-firmware-2005.3.21.3.ebuild:
+  Remove obsolete version.
+
+  03 Sep 2006; Michael Hanselmann <hansmi@gentoo.org>
+  isdn-firmware-2005.8.15.2.ebuild:
+  Stable on ppc.
+
+  28 May 2006; Stefan Briesenick <sbriesen@gentoo.org>
+  isdn-firmware-2005.8.15.2.ebuild:
+  stable on amd64 and x86.
+
+  12 Mar 2006; Alin Nastac <mrness@gentoo.org>
+  -isdn-firmware-2004.4.5-r1.ebuild:
+  Remove old version.
+
+  19 Feb 2006; Michael Hanselmann <hansmi@gentoo.org>
+  isdn-firmware-2005.3.21.3.ebuild:
+  Stable on ppc. Hopefully it works, it seems like nobody can test it.
+
+  10 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  isdn-firmware-2004.4.5-r1.ebuild:
+  Removed sparc keyword, maybe it works, maybe it doesn't, it wasn't right in
+  the first place
+
+*isdn-firmware-2005.8.15.2 (11 Oct 2005)
+
+  11 Oct 2005; Stefan Briesenick <sbriesen@gentoo.org> metadata.xml,
+  +isdn-firmware-2005.8.15.2.ebuild:
+  version bump. switched to opensuse mirrors.
+
+  11 Sep 2005; Stefan Briesenick <sbriesen@gentoo.org>
+  isdn-firmware-2005.3.21.3.ebuild:
+  removed all archs other than x86, amd64 and ppc for the time being. needs
+  testing first.
+
+  11 Sep 2005; Stefan Briesenick <sbriesen@gentoo.org>
+  isdn-firmware-2005.3.21.3.ebuild:
+  revert all archs other than x86 and amd64 to unstable.
+
+  09 Sep 2005; Stefan Briesenick <sbriesen@gentoo.org>
+  isdn-firmware-2005.3.21.3.ebuild:
+  marking all other archs also stable, since this is no-arch stuff.
+
+  09 Sep 2005; Stefan Briesenick <sbriesen@gentoo.org>
+  isdn-firmware-2005.3.21.3.ebuild:
+  stable on x86 and amd64.
+
+*isdn-firmware-2005.3.21.3 (01 Jul 2005)
+
+  01 Jul 2005; Stefan Briesenick <sbriesen@gentoo.org>
+  +isdn-firmware-2005.3.21.3.ebuild:
+  Update to latest SuSE package, rpm-release is now included in the ebuild
+  version.
+
+  18 Feb 2005; Alin Nastac <mrness@gentoo.org>
+  isdn-firmware-2004.4.5-r1.ebuild:
+  Remove /lib/isdn symlink as is no longer required by the current version of
+  isdn4k-utils.
+
+  23 Dec 2004; Alin Nastac <mrness@gentoo.org>
+  isdn-firmware-2004.4.5-r1.ebuild:
+  Beautify ebuild code, thanks to Stefan Briesenick <sbriesen@gmx.de>.
+
+*isdn-firmware-2004.4.5-r1 (12 Dec 2004)
+
+  12 Dec 2004; Alin Nastac <mrness@gentoo.org>
+  +isdn-firmware-2004.4.5-r1.ebuild, -isdn-firmware-2004.4.5.ebuild:
+  Move firmware files to /lib/firmware, the new FHS standard location for
+  firmware files. See #73365.
+
+*isdn-firmware-2004.4.5 (22 Nov 2004)
+
+  22 Nov 2004; Alin Nastac <mrness@gentoo.org> +metadata.xml,
+  +isdn-firmware-2004.4.5.ebuild:
+  Rename capi4k-firmware to isdn-firmware, which seems to be a better name for
+  this.

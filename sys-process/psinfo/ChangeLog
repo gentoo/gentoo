@@ -1,0 +1,10 @@
+# ChangeLog for sys-process/psinfo
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/psinfo/ChangeLog,v 1.1 2011/04/25 15:48:10 jlec Exp $
+
+*psinfo-0.12 (25 Apr 2011)
+
+  25 Apr 2011; Justin Lecher <jlec@gentoo.org> +psinfo-0.12.ebuild,
+  +files/psinfo-0.12-asneeded.patch, +metadata.xml:
+  New addition, thanks Jiri Tyr for first ebuild, #242208
+

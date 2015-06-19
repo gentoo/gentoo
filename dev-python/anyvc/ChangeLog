@@ -1,0 +1,54 @@
+# ChangeLog for dev-python/anyvc
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/anyvc/ChangeLog,v 1.12 2015/03/08 23:39:00 pacho Exp $
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> anyvc-0.3.7.1-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> anyvc-0.3.7.1-r1.ebuild:
+  amd64 stable, bug 540290
+
+*anyvc-0.3.7.1-r1 (13 Dec 2014)
+
+  13 Dec 2014; Ian Delaney <idella4@gentoo.org> +anyvc-0.3.7.1-r1.ebuild,
+  -anyvc-0.3.5.ebuild, -anyvc-0.3.7.1.ebuild:
+  rebvump; convert -> distutils-r1, add missing dep, rm old
+
+  09 Aug 2013; Michael Weber <xmw@gentoo.org> metadata.xml:
+  global use flag "git"
+
+  04 Nov 2012; Ian Delaney <idella4@gentoo.org> anyvc-0.3.7.1.ebuild:
+  Fix to use of unsupported themes in building docs applied wrt Bug #423963,
+  patch thanks to Arfrever
+
+  07 Aug 2012; Patrick Lauer <patrick@gentoo.org> anyvc-0.3.7.1.ebuild:
+  Restricting py-2.5 and jython
+
+*anyvc-0.3.7.1 (28 Jun 2012)
+
+  28 Jun 2012; Patrick Lauer <patrick@gentoo.org> +anyvc-0.3.7.1.ebuild:
+  Bump
+
+*anyvc-0.3.5 (30 Oct 2010)
+
+  30 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -anyvc-0.3.4.ebuild, +anyvc-0.3.5.ebuild:
+  Version bump. Restrict 2.4 Python ABI (bug #343231).
+
+*anyvc-0.3.4 (02 Oct 2010)
+
+  02 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -anyvc-0.3.3.ebuild, +anyvc-0.3.4.ebuild:
+  Version bump.
+
+*anyvc-0.3.3 (14 Sep 2010)
+
+  14 Sep 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -anyvc-0.3.1.ebuild, +anyvc-0.3.3.ebuild:
+  Version bump.
+
+*anyvc-0.3.1 (23 Jun 2010)
+
+  23 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +anyvc-0.3.1.ebuild, +metadata.xml:
+  Initial addition. Ebuild written by me.

@@ -1,0 +1,234 @@
+# ChangeLog for net-p2p/ctorrent
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/ctorrent/ChangeLog,v 1.57 2015/04/29 20:09:30 mrueg Exp $
+
+  29 Apr 2015; Manuel Rüger <mrueg@gentoo.org> -ctorrent-3.3.2-r1.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> ctorrent-3.3.2-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> ctorrent-3.3.2-r2.ebuild:
+  Stable for ppc, wrt bug #495894
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> ctorrent-3.3.2-r2.ebuild:
+  amd64 stable, bug #495894
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ctorrent-3.3.2-r2.ebuild:
+  x86 stable wrt bug #495894
+
+  20 Feb 2014; Markus Meier <maekke@gentoo.org> ctorrent-3.3.2-r2.ebuild:
+  arm stable, bug #495894
+
+*ctorrent-3.3.2-r2 (16 Jan 2011)
+
+  16 Jan 2011; Mike Frysinger <vapier@gentoo.org> +ctorrent-3.3.2-r2.ebuild,
+  +files/ctorrent-3.3.2-negative-ints.patch:
+  Update to EAPI 2 and fix parsing of torrents with negative ints.
+
+  19 Sep 2010; Raúl Porcel <armin76@gentoo.org> ctorrent-3.3.2-r1.ebuild:
+  arm/s390/sh stable wrt #266953
+
+  11 Sep 2010; Joseph Jezak <josejx@gentoo.org> ctorrent-3.3.2-r1.ebuild:
+  Marked ppc stable for bug #266953.
+
+  31 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  ctorrent-3.3.2-r1.ebuild:
+  Stable on amd64 wrt bug #266953
+
+  31 Aug 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  ctorrent-3.3.2-r1.ebuild:
+  x86 stable wrt security bug #266953
+
+*ctorrent-3.3.2-r1 (30 Aug 2010)
+
+  30 Aug 2010; Alex Legler <a3li@gentoo.org> +ctorrent-3.3.2-r1.ebuild,
+  +files/ctorrent-CVE-2009-1759.patch:
+  Non-maintainer commit: Revision bump to fix CVE-2009-1759, bug 266953.
+
+  04 Nov 2008; Mike Frysinger <vapier@gentoo.org> ctorrent-3.3.2.ebuild:
+  Add arm/s390/sh love.
+
+  09 Aug 2008; Santiago M. Mola <coldwind@gentoo.org>
+  -ctorrent-3.3.1.ebuild, ctorrent-3.3.2.ebuild:
+  amd64 stable wrt bug #234114, remove old version.
+
+  08 Aug 2008; nixnut <nixnut@gentoo.org> ctorrent-3.3.2.ebuild:
+  Stable on ppc wrt bug 234114
+
+  06 Aug 2008; Raúl Porcel <armin76@gentoo.org>
+  -files/3.2-setvbuf-removal.patch, -ctorrent-3.2-r1.ebuild,
+  -ctorrent-3.3.ebuild, ctorrent-3.3.2.ebuild:
+  x86 stable, remove old
+
+  13 Jul 2008; Joseph Jezak <josejx@gentoo.org> ctorrent-3.3.1.ebuild:
+  Marked ppc stable for bug #231041.
+
+  07 Jul 2008; Kenneth Prugh <ken69267@gentoo.org> ctorrent-3.3.1.ebuild:
+  amd64 stable, bug #231041
+
+  07 Jul 2008; Raúl Porcel <armin76@gentoo.org> ctorrent-3.3.1.ebuild:
+  x86 stable
+
+*ctorrent-3.3.2 (07 Jul 2008)
+
+  07 Jul 2008; Raúl Porcel <armin76@gentoo.org> +ctorrent-3.3.2.ebuild:
+  Version bump
+
+*ctorrent-3.3.1 (06 Jun 2008)
+
+  06 Jun 2008; Raúl Porcel <armin76@gentoo.org> +ctorrent-3.3.1.ebuild:
+  Version bump
+
+*ctorrent-3.3 (19 Apr 2008)
+
+  19 Apr 2008; Raúl Porcel <armin76@gentoo.org> -files/as-needed.patch,
+  +ctorrent-3.3.ebuild:
+  Version bump
+
+*ctorrent-3.2-r1 (17 Dec 2007)
+
+  17 Dec 2007; Raúl Porcel <armin76@gentoo.org>
+  +files/3.2-setvbuf-removal.patch, -ctorrent-3.2.ebuild,
+  +ctorrent-3.2-r1.ebuild:
+  Add patch from bug #202041, thanks to gionnico <gionnico at email dot it>
+
+  01 Sep 2007; Raúl Porcel <armin76@gentoo.org> -ctorrent-2.2.ebuild,
+  -ctorrent-3.1.ebuild:
+  Remove old
+
+  01 Sep 2007; nixnut <nixnut@gentoo.org> ctorrent-3.2.ebuild:
+  Stable on ppc wrt bug 185080
+
+  31 Aug 2007; Christoph Mende <angelos@gentoo.org> ctorrent-3.2.ebuild:
+  Stable on amd64 wrt bug #185080
+
+  29 Aug 2007; Raúl Porcel <armin76@gentoo.org> ctorrent-3.2.ebuild:
+  x86 stable wrt #185080
+
+*ctorrent-3.2 (30 Jul 2007)
+
+  30 Jul 2007; Raúl Porcel <armin76@gentoo.org> +ctorrent-3.2.ebuild:
+  Version bump
+
+  13 Jul 2007; Joseph Jezak <josejx@gentoo.org> ctorrent-3.1.ebuild:
+  Marked ppc stable for bug #185080.
+
+  12 Jul 2007; Raúl Porcel <armin76@gentoo.org> ctorrent-3.1.ebuild:
+  x86 stable wrt #185080
+
+  21 Jun 2007; Raúl Porcel <armin76@gentoo.org> -ctorrent-3.ebuild,
+  -ctorrent-3_p20070427.ebuild:
+  old
+
+*ctorrent-3.1 (06 Jun 2007)
+
+  06 Jun 2007; Raúl Porcel <armin76@gentoo.org> +ctorrent-3.1.ebuild:
+  Version bump
+
+*ctorrent-3_p20070427 (18 May 2007)
+
+  18 May 2007; Raúl Porcel <armin76@gentoo.org>
+  +files/ctorrent-3_autoconf-fix.patch, +ctorrent-3_p20070427.ebuild:
+  Version bump
+
+*ctorrent-3 (13 Apr 2007)
+
+  13 Apr 2007; Samuli Suominen <drac@gentoo.org> +ctorrent-3.ebuild:
+  Version bump for bug 174483, thanks to Danny Brain.
+
+  19 Mar 2007; Raúl Porcel <armin76@gentoo.org>
+  -files/ctorrent-1.3.4-dnh2-SHA.patch,
+  -files/ctorrent-1.3.4-dnh2-vfat.patch, -ctorrent-1.3.4-r3.ebuild:
+  old
+
+  19 Mar 2007; Peter Weller <welp@gentoo.org> ctorrent-2.2.ebuild:
+  Stable on amd64 wrt bug 170764
+
+  15 Mar 2007; Matti Bickel <mabi@gentoo.org> ctorrent-2.2.ebuild:
+  ppc stable (bug #170764)
+
+  13 Mar 2007; Raúl Porcel <armin76@gentoo.org> ctorrent-2.2.ebuild:
+  x86 stable wrt bug 170764
+
+  20 Jan 2007; Raúl Porcel <armin76@gentoo.org> +files/as-needed.patch,
+  -ctorrent-1.3.4-r2.ebuild, ctorrent-2.2.ebuild:
+  Drop old && fix bug 162640 as-needed, thanks to TGL <degrenier at
+  easyconnect dot fr> for the patch and zzam for testing
+
+*ctorrent-2.2 (16 Jan 2007)
+
+  16 Jan 2007; Raúl Porcel <armin76@gentoo.org> +ctorrent-2.2.ebuild:
+  Version bump, from new upstream
+
+  09 Jan 2007; Raúl Porcel (armin76) <armin76@gentoo.org>
+  ctorrent-1.3.4-r3.ebuild:
+  Fix autotools variables, bug 161117
+
+  09 Oct 2006; Timothy Redaelli <drizzt@gentoo.org>
+  ctorrent-1.3.4-r3.ebuild:
+  Added ~x86-fbsd keyword.
+
+  27 Jun 2006; Joshua Jackson <tsunam@gentoo.org> ctorrent-1.3.4-r3.ebuild:
+  Stable on x86; bug #137387
+
+  25 Jun 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  ctorrent-1.3.4-r3.ebuild:
+  ppc stable, bug #137387
+
+  20 Jun 2006; Jon Hood <squinky86@gentoo.org> -ctorrent-1.3.4-r1.ebuild,
+  ctorrent-1.3.4-r3.ebuild:
+  Stable on amd64. Remove buggy versions.
+
+  12 May 2006; Joshua Jackson <tsunam@gentoo.org> ctorrent-1.3.4-r2.ebuild:
+  Stable on x86; bug #132394
+
+  11 May 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  ctorrent-1.3.4-r2.ebuild:
+  ppc stable, bug #132394
+
+  09 May 2006; Jon Hood <squinky86@gentoo.org> ctorrent-1.3.4-r2.ebuild:
+  Stable on amd64, #132394.
+
+*ctorrent-1.3.4-r3 (01 May 2006)
+
+  01 May 2006; Jon Hood <squinky86@gentoo.org>
+  +files/ctorrent-1.3.4-dnh2-SHA.patch,
+  +files/ctorrent-1.3.4-dnh2-vfat.patch, +ctorrent-1.3.4-r3.ebuild:
+  Version bump, #131903. Thanks to TGL <degrenier@easyconnect.fr> for the
+  updates.
+
+  30 Oct 2005; Jason Wever <weeve@gentoo.org> ctorrent-1.3.4-r2.ebuild:
+  Added ~sparc keyword.
+
+*ctorrent-1.3.4-r2 (29 Oct 2005)
+
+  29 Oct 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  +ctorrent-1.3.4-r2.ebuild:
+  Added new patches, which fix a lot of things, bug #110133
+
+  13 Sep 2005; <mkay@gentoo.org> -ctorrent-1.3.4.ebuild,
+  ctorrent-1.3.4-r1.ebuild:
+  Some cleanup. fix bug #69678
+
+  05 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> ctorrent-1.3.4-r1.ebuild:
+  added ~amd64 to KEYWORDS. fixes #80897
+
+*ctorrent-1.3.4-r1 (28 Nov 2004)
+
+  28 Nov 2004; Jon Hood <squinky86@gentoo.org> +ctorrent-1.3.4-r1.ebuild:
+  Version bump, fix CFLAGS, #69678, thanks mkennedy.
+
+  18 Oct 2004; Jon Hood <squinky86@gentoo.org> ctorrent-1.3.4.ebuild:
+  Stable on x86.
+
+  14 Oct 2004; David Holm <dholm@gentoo.org> ctorrent-1.3.4.ebuild:
+  Added to ~ppc.
+
+*ctorrent-1.3.4 (17 Sep 2004)
+
+  17 Sep 2004; Jon Hood <squinky86@gentoo.org> +metadata.xml,
+  +ctorrent-1.3.4.ebuild:
+  Initial import. Closes #45092, thanks to Scott Carr <scarr@progbits.com> and
+  Alexandru Toma <flash3001@yahoo.com>.

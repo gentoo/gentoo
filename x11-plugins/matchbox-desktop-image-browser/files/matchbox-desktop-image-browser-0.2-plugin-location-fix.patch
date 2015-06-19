@@ -1,0 +1,36 @@
+diff -Naurp mb-desktop-image-browser-0.2.orig/configure.ac mb-desktop-image-browser-0.2/configure.ac
+--- mb-desktop-image-browser-0.2.orig/configure.ac	2010-01-06 01:05:40.000000000 +0000
++++ mb-desktop-image-browser-0.2/configure.ac	2010-01-06 01:07:24.000000000 +0000
+@@ -34,6 +34,20 @@ AC_ARG_ENABLE(debug,
+       MB_CFLAGS="$MB_CFLAGS -DDEBUG"
+   fi])
+ 
++
++dnl ------ Substitute in found libs, clags to Makefiles etc -----------------
++
++if test "x$prefix" = xNONE; then
++   prefix="${ac_default_prefix}"
++fi
++if test "x$exec_prefix" = xNONE; then
++   exec_prefix='${prefix}'
++fi
++
++MBDESKTOP_PLUGIN_DIR=$libdir/matchbox/desktop
++eval MBDESKTOP_PLUGIN_DIR=`eval echo "$MBDESKTOP_PLUGIN_DIR"`
++
++AC_SUBST(MBDESKTOP_PLUGIN_DIR)
+ AC_SUBST(MB_LIBS)
+ AC_SUBST(MB_CFLAGS)
+ 
+diff -Naurp mb-desktop-image-browser-0.2.orig/Makefile.am mb-desktop-image-browser-0.2/Makefile.am
+--- mb-desktop-image-browser-0.2.orig/Makefile.am	2010-01-06 01:05:40.000000000 +0000
++++ mb-desktop-image-browser-0.2/Makefile.am	2010-01-06 01:07:01.000000000 +0000
+@@ -4,7 +4,7 @@ LDADD = $(MB_LIBS) 
+ AM_CFLAGS = $(MB_CFLAGS)  -g -DDATADIR=\"$(datadir)\"
+ 
+ lib_LTLIBRARIES = imgbrowser.la
+-libdir = $(datadir)/matchbox/desktop/modules
++libdir = $(MBDESKTOP_PLUGIN_DIR)
+ 
+ imgbrowser_la_SOURCES = imgbrowser.c
+ imgbrowser_la_LIBADD  = $(LDADD)

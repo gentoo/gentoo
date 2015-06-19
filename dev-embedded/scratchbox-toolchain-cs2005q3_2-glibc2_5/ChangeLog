@@ -1,0 +1,34 @@
+# ChangeLog for dev-embedded/scratchbox-toolchain-cs2005q3_2-glibc2_5
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/scratchbox-toolchain-cs2005q3_2-glibc2_5/ChangeLog,v 1.7 2014/08/10 20:05:33 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  scratchbox-toolchain-cs2005q3_2-glibc2_5-1.0.7.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #453094
+
+  18 Jan 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  scratchbox-toolchain-cs2005q3_2-glibc2_5-1.0.7.ebuild:
+  Repeat after me: the next person using binchecks to sidestep QA tests will
+  be asked to refrain from ever committing to the tree.
+
+  18 Jan 2010; Olivier Crête <tester@gentoo.org>
+  scratchbox-toolchain-cs2005q3_2-glibc2_5-1.0.7.ebuild:
+  Restore strip/binchecks RESTRICT, it does NOT work without them, bug
+  #296294
+
+  30 Nov 2009; Diego E. Pettenò <flameeyes@gentoo.org>
+  scratchbox-toolchain-cs2005q3_2-glibc2_5-1.0.7.ebuild:
+  Remove wrongly-set restricts.
+
+  21 Nov 2009; Dominik Kapusta <ayoy@gentoo.org>
+  scratchbox-toolchain-cs2005q3_2-glibc2_5-1.0.7.ebuild:
+  Keywording for amd64
+
+*scratchbox-toolchain-cs2005q3_2-glibc2_5-1.0.7 (06 May 2009)
+
+  06 May 2009; Olivier Crête <tester@gentoo.org> +metadata.xml,
+  +scratchbox-toolchain-cs2005q3_2-glibc2_5-1.0.7.ebuild:
+  Initial version, from sunrise and bug #94225

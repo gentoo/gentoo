@@ -1,0 +1,321 @@
+# ChangeLog for x11-apps/xinput
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xinput/ChangeLog,v 1.63 2014/01/26 16:20:08 chithanh Exp $
+
+  26 Jan 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -xinput-1.6.0.ebuild, xinput-1.6.1.ebuild:
+  Add libXrandr dependency, bug #431824. Remove old.
+
+  08 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xinput-1.6.1.ebuild:
+  Stable for x86, wrt bug #475480
+
+  07 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xinput-1.6.1.ebuild:
+  Stable for sparc, wrt bug #475480
+
+  06 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xinput-1.6.1.ebuild:
+  Stable for ia64, wrt bug #475480
+
+  05 Oct 2013; Markus Meier <maekke@gentoo.org> xinput-1.6.1.ebuild:
+  arm stable, bug #475480
+
+  05 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xinput-1.6.1.ebuild:
+  Stable for alpha, wrt bug #475480
+
+  04 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xinput-1.6.1.ebuild:
+  Stable for ppc64, wrt bug #475480
+
+  03 Oct 2013; Agostino Sarubbo <ago@gentoo.org> xinput-1.6.1.ebuild:
+  Stable for ppc, wrt bug #475480
+
+  02 Oct 2013; Jeroen Roovers <jer@gentoo.org> xinput-1.6.1.ebuild:
+  Stable for HPPA (bug #475480).
+
+  29 Sep 2013; Agostino Sarubbo <ago@gentoo.org> xinput-1.6.1.ebuild:
+  Stable for amd64, wrt bug #475480
+
+*xinput-1.6.1 (18 Sep 2013)
+
+  18 Sep 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xinput-1.6.1.ebuild, -files/xinput-1.5.3-inputproto-2.1.patch,
+  -xinput-1.5.3-r1.ebuild, -xinput-1.5.4.ebuild:
+  Version bump.
+
+  05 Jun 2013; Mike Frysinger <vapier@gentoo.org> metadata.xml:
+  Add upstream CPE tag (security info) from ChromiumOS.
+
+  11 May 2013; Patrick Lauer <patrick@gentoo.org> -xinput-1.5.3.ebuild:
+  Remove old version with unsatisfiable deps
+
+  26 Aug 2012; Raúl Porcel <armin76@gentoo.org> xinput-1.6.0.ebuild:
+  alpha/ia64/sh/sparc stable wrt #419473
+
+  12 Jul 2012; Brent Baude <ranger@gentoo.org> xinput-1.6.0.ebuild:
+  Marking xinput-1.6.0 ppc stable for bug 419473
+
+  11 Jul 2012; Brent Baude <ranger@gentoo.org> xinput-1.6.0.ebuild:
+  Marking xinput-1.6.0 ppc64 stable for bug 419473
+
+  28 Jun 2012; Jeroen Roovers <jer@gentoo.org> xinput-1.6.0.ebuild:
+  Stable for HPPA (bug #419473).
+
+  28 Jun 2012; Markus Meier <maekke@gentoo.org> xinput-1.6.0.ebuild:
+  arm stable, bug #419473
+
+  24 Jun 2012; Agostino Sarubbo <ago@gentoo.org> xinput-1.6.0.ebuild:
+  Stable for x86, wrt bug #419473
+
+  22 Jun 2012; Agostino Sarubbo <ago@gentoo.org> xinput-1.6.0.ebuild:
+  Stable for amd64, wrt bug #419473
+
+  04 Jun 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  xinput-1.6.0.ebuild:
+  Add missing libXinerama dependency, bug #419613.
+
+*xinput-1.6.0 (03 Jun 2012)
+
+  03 Jun 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xinput-1.6.0.ebuild:
+  Version bump.
+
+  15 May 2012; Alexis Ballier <aballier@gentoo.org> xinput-1.5.4.ebuild:
+  keyword ~amd64-fbsd
+
+*xinput-1.5.4 (01 Jan 2012)
+
+  01 Jan 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xinput-1.5.4.ebuild:
+  Version bump.
+
+*xinput-1.5.3-r1 (21 Dec 2011)
+
+  21 Dec 2011; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  xinput-1.5.3.ebuild, +xinput-1.5.3-r1.ebuild,
+  +files/xinput-1.5.3-inputproto-2.1.patch:
+  Unbreak package when built against inputproto-2.1, bug #395555.
+
+  14 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> xinput-1.5.3.ebuild:
+  ppc stable wrt #344827, #354237
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> xinput-1.5.3.ebuild:
+  alpha/ia64/sh/sparc stable wrt #344827
+
+  31 Dec 2010; Jeroen Roovers <jer@gentoo.org> xinput-1.5.3.ebuild:
+  Stable for HPPA (bug #344827).
+
+  29 Dec 2010; Markus Meier <maekke@gentoo.org> xinput-1.5.3.ebuild:
+  arm stable, bug #344827
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org> xinput-1.5.3.ebuild:
+  x86 stable, bug 344827
+
+  23 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> xinput-1.5.3.ebuild:
+  amd64 stable wrt #344827
+
+  19 Dec 2010; Samuli Suominen <ssuominen@gentoo.org> xinput-1.5.3.ebuild:
+  ppc64 stable wrt #344827
+
+*xinput-1.5.3 (11 Nov 2010)
+
+  11 Nov 2010; Tomáš Chvátal <scarabeus@gentoo.org> +xinput-1.5.3.ebuild:
+  Version bump
+
+  21 Oct 2010; Tomáš Chvátal <scarabeus@gentoo.org> -xinput-1.5.1.ebuild:
+  old
+
+  21 Oct 2010; Brent Baude <ranger@gentoo.org> ChangeLog:
+  Marking xinput-1.5.2 ppc stable for bug 239063
+
+  19 Sep 2010; Raúl Porcel <armin76@gentoo.org> xinput-1.5.2.ebuild:
+  ia64/sh/sparc stable wrt #327777
+
+  12 Sep 2010; Tobias Klausmann <klausman@gentoo.org> xinput-1.5.2.ebuild:
+  Stable on alpha, bug #327777
+
+  03 Aug 2010; Tomáš Chvátal <scarabeus@gentoo.org> -xinput-1.4.2.ebuild:
+  rm
+
+  02 Aug 2010; Samuli Suominen <ssuominen@gentoo.org> xinput-1.5.2.ebuild:
+  ppc64 stable wrt #327777
+
+  02 Aug 2010; Raúl Porcel <armin76@gentoo.org> xinput-1.5.1.ebuild:
+  alpha/ia64/sh/sparc stable wrt #308521
+
+  22 Jul 2010; Markus Meier <maekke@gentoo.org> xinput-1.5.2.ebuild:
+  arm stable, bug #327777
+
+  14 Jul 2010; Jeroen Roovers <jer@gentoo.org> xinput-1.5.2.ebuild:
+  Stable for HPPA (bug #327777).
+
+  13 Jul 2010; Christian Faulhammer <fauli@gentoo.org> xinput-1.5.2.ebuild:
+  x86 stable, bug 327777
+
+  12 Jul 2010; Markos Chandras <hwoarang@gentoo.org> xinput-1.5.2.ebuild:
+  Stable on amd64 wrt bug #327777
+
+*xinput-1.5.2 (08 Jun 2010)
+
+  08 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org> +xinput-1.5.2.ebuild:
+  Version bump.
+
+  31 May 2010; Guy Martin <gmsoft@gentoo.org> xinput-1.5.1.ebuild:
+  hppa stable, #308521
+
+  12 May 2010; Brent Baude <ranger@gentoo.org> xinput-1.5.1.ebuild:
+  Marking xinput-1.5.1 ppc64 stable for bug 308521
+
+  18 Apr 2010; Markus Meier <maekke@gentoo.org> xinput-1.5.1.ebuild:
+  arm stable, bug #308521
+
+  18 Apr 2010; <nixnut@gentoo.org> xinput-1.5.1.ebuild:
+  ppc stable #308521
+
+  16 Apr 2010; Pacho Ramos <pacho@gentoo.org> xinput-1.5.1.ebuild:
+  amd64 stable, bug 308521
+
+  09 Apr 2010; Christian Faulhammer <fauli@gentoo.org> xinput-1.5.1.ebuild:
+  stable x86, bug 308521
+
+*xinput-1.5.1 (15 Mar 2010)
+
+  15 Mar 2010; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  -xinput-1.5.0.ebuild, +xinput-1.5.1.ebuild:
+  Version bump.
+
+  23 Jan 2010; Tomáš Chvátal <scarabeus@gentoo.org> -xinput-1.4.0.ebuild:
+  rm
+
+  27 Dec 2009; Joseph Jezak <josejx@gentoo.org> xinput-1.4.2.ebuild:
+  Marked ppc stable for bug #294958.
+
+  15 Dec 2009; Brent Baude <ranger@gentoo.org> xinput-1.4.2.ebuild:
+  Marking xinput-1.4.2 ppc64 stable for bug 294958
+
+  15 Dec 2009; Raúl Porcel <armin76@gentoo.org> xinput-1.4.2.ebuild:
+  alpha/ia64/sh/sparc stable wrt #282290
+
+  26 Oct 2009; Jeroen Roovers <jer@gentoo.org> xinput-1.4.2.ebuild:
+  Stable for HPPA (bug #282290).
+
+*xinput-1.5.0 (14 Oct 2009)
+
+  14 Oct 2009; Rémi Cardona <remi@gentoo.org> +xinput-1.5.0.ebuild:
+  bump to 1.5.0, sync with overlay
+
+  09 Oct 2009; Markus Meier <maekke@gentoo.org> xinput-1.4.2.ebuild:
+  arm stable, bug #282290
+
+  05 Oct 2009; Christian Faulhammer <fauli@gentoo.org> xinput-1.4.2.ebuild:
+  x86 stable, bug 282290
+
+  30 Sep 2009; Samuli Suominen <ssuominen@gentoo.org> xinput-1.4.2.ebuild:
+  amd64 stable wrt #282290
+
+  23 Jun 2009; Tobias Klausmann <klausman@gentoo.org> xinput-1.4.2.ebuild:
+  Stable on alpha for xorg-server-1.5/xorg-x11-7.4
+
+  08 Jun 2009; Rémi Cardona <remi@gentoo.org> +xinput-1.4.0.ebuild,
+  +xinput-1.4.2.ebuild, +metadata.xml:
+  pkgmove from x11-misc/ to x11-apps/
+
+  08 Jun 2009; Rémi Cardona <remi@gentoo.org> -xinput-1.2.ebuild,
+  -xinput-1.3.0.ebuild:
+  prune old versions
+
+  28 May 2009; Raúl Porcel <armin76@gentoo.org> xinput-1.3.0.ebuild,
+  xinput-1.4.0.ebuild, xinput-1.4.2.ebuild:
+  Add ~alpha
+
+  15 May 2009; Raúl Porcel <armin76@gentoo.org> xinput-1.4.0.ebuild:
+  arm stable
+
+*xinput-1.4.2 (08 May 2009)
+
+  08 May 2009; Rémi Cardona <remi@gentoo.org> +xinput-1.4.2.ebuild:
+  bump to 1.4.2
+
+  16 Apr 2009; Jeroen Roovers <jer@gentoo.org> xinput-1.4.0.ebuild:
+  Stable for HPPA (bug #251832).
+
+  15 Apr 2009; Raúl Porcel <armin76@gentoo.org> xinput-1.4.0.ebuild:
+  ia64/sh stable wrt #251832
+
+  06 Apr 2009; Friedrich Oslage <bluebird@gentoo.org> xinput-1.4.0.ebuild:
+  Stable on sparc, bug #251832
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org> xinput-1.4.0.ebuild:
+  x86 stable, bug #251832
+
+  05 Apr 2009; Olivier Crête <tester@gentoo.org> xinput-1.4.0.ebuild:
+  Stable on amd64, bug #251832
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> xinput-1.4.0.ebuild:
+  Marking xinput-1.4.0 ppc64 stable for bug 251832
+
+  03 Apr 2009; Brent Baude <ranger@gentoo.org> xinput-1.4.0.ebuild:
+  Marking xinput-1.4.0 ppc stable for bug 251832
+
+  12 Mar 2009; Raúl Porcel <armin76@gentoo.org> xinput-1.4.0.ebuild:
+  Add ~arm/~sh
+
+  02 Mar 2009; Peter Volkov <pva@gentoo.org> xinput-1.3.0.ebuild,
+  xinput-1.4.0.ebuild:
+  ~mips keyworded, bug #237411
+
+*xinput-1.4.0 (16 Jan 2009)
+
+  16 Jan 2009; Rémi Cardona <remi@gentoo.org> +xinput-1.4.0.ebuild:
+  bump to 1.4.0
+
+  16 Dec 2008; Brent Baude <ranger@gentoo.org> xinput-1.3.0.ebuild:
+  Marking xinput-1.3.0 ~ppc64 for bug 237411
+
+  03 Oct 2008; Raúl Porcel <armin76@gentoo.org> xinput-1.3.0.ebuild:
+  Add ~ia64 wrt #237411
+
+  26 Sep 2008; Jeroen Roovers <jer@gentoo.org> xinput-1.3.0.ebuild:
+  Marked ~hppa (bug #237411).
+
+  24 Sep 2008; Alexis Ballier <aballier@gentoo.org> xinput-1.3.0.ebuild:
+  keyword ~x86-fbsd
+
+  14 Sep 2008; Friedrich Oslage <bluebird@gentoo.org> xinput-1.3.0.ebuild:
+  Add ~sparc keyword, bug #237411
+
+  13 Jan 2008; <welp@gentoo.org> xinput-1.2.ebuild:
+  Stable on amd64
+
+*xinput-1.3.0 (10 Jan 2008)
+
+  10 Jan 2008; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml,
+  +xinput-1.3.0.ebuild:
+  Bump and take over for x11 herd, since it's now become a modular xorg package.
+
+  30 Aug 2007; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing mattam from metadata due to his retirement (see #30021 for reference).
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  29 Nov 2006; Stefan Schweizer <genstef@gentoo.org> xinput-1.2.ebuild:
+  Add mising gccmakedep to dep thanks to Wilfried Holzke <gentoo@holzke.net>
+  in bug 144415
+
+  23 Mar 2006; Krzysiek Pawlik <nelchael@gentoo.org> xinput-1.2.ebuild:
+  Added missing rman DEPEND, fixes bug #127360.
+
+  21 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> xinput-1.2.ebuild:
+  Fixed DEPEND for modular X.
+
+  03 Oct 2005; Seemant Kulleen <seemant@gentoo.org> xinput-1.2.ebuild:
+  keyword for amd64 testing
+
+  29 Sep 2004; <pyrania@gentoo.org> xinput-1.2.ebuild:
+  Marked stable on x86.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> xinput-1.2.ebuild:
+  Masked xinput-1.2.ebuild stable for ppc
+
+*xinput-1.2 (30 Jun 2004)
+
+  30 Jun 2004; Matthieu Sozeau <mattam@gentoo.org> xinput-1.2.ebuild:
+  Initial import, see bug #10580.

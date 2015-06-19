@@ -1,0 +1,380 @@
+# ChangeLog for mail-filter/postgrey
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/postgrey/ChangeLog,v 1.90 2014/10/27 15:59:02 ago Exp $
+
+  27 Oct 2014; Agostino Sarubbo <ago@gentoo.org> postgrey-1.34-r3.ebuild:
+  Stable for ppc64, wrt bug #519232
+
+  12 Oct 2014; Agostino Sarubbo <ago@gentoo.org> postgrey-1.34-r3.ebuild:
+  Stable for x86, wrt bug #519232
+
+  22 Sep 2014; Chema Alonso <nimiux@gentoo.org> postgrey-1.34-r3.ebuild:
+  Stable for amd64 wrt bug #519232
+
+  17 Aug 2014; Jeroen Roovers <jer@gentoo.org> postgrey-1.34-r3.ebuild:
+  Stable for HPPA (bug #519232).
+
+*postgrey-1.35-r1 (13 Aug 2014)
+*postgrey-1.34-r3 (13 Aug 2014)
+
+  13 Aug 2014; Julian Ospald <hasufell@gentoo.org> +postgrey-1.34-r3.ebuild,
+  +postgrey-1.35-r1.ebuild, +files/postgrey-1.34-perl-5.18.patch,
+  +files/postgrey-1.34-r3.rc.new:
+  bump 1.34 to eapi=5, fix init script wrt #500174, backport upstream patch for
+  1.34 to work with perl-5.18, fix broken style
+
+  12 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> postgrey-1.35.ebuild:
+  Fix newconfd target file
+
+*postgrey-1.35 (06 Aug 2014)
+
+  06 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> +postgrey-1.35.ebuild:
+  Version bump wrt bug #518470. Thanks to Andreis Vinogradovs
+
+  16 Jan 2014; Jeroen Roovers <jer@gentoo.org> files/postgrey.conf.new:
+  Spelling.
+
+*postgrey-1.34-r2 (09 Sep 2013)
+
+  09 Sep 2013; Alexander Vershilov <qnikst@gentoo.org> +postgrey-1.34-r2.ebuild:
+  remove -T from postrey shebang (due to bug #479400)
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+  21 Nov 2012; Agostino Sarubbo <ago@gentoo.org> postgrey-1.34-r1.ebuild:
+  Stable for x86, wrt bug #439066
+
+  30 Oct 2012; Anthony G. Basile <blueness@gentoo.org> postgrey-1.34-r1.ebuild:
+  stable ppc64, bug #439066
+
+  30 Oct 2012; Jeroen Roovers <jer@gentoo.org> postgrey-1.34-r1.ebuild:
+  Stable for HPPA (bug #439066).
+
+  24 Oct 2012; <ago@gentoo.org> postgrey-1.34-r1.ebuild:
+  Stable for amd64, wrt bug #439066
+
+  21 Oct 2012; Alexander Vershilov <qnikst@gentoo.org> metadata.xml:
+  Fix maintainer manitest entry
+
+*postgrey-1.34-r1 (06 Sep 2012)
+
+  06 Sep 2012; Alexander Vershilov <qnikst@gentoo.org>
+  +files/targrey-0.31-postgrey-1.34.patch, +postgrey-1.34-r1.ebuild,
+  metadata.xml:
+  mail-filter/postgrey add targrey patch, thanks to slepnoga
+
+  05 Jun 2012; Zac Medico <zmedico@gentoo.org> postgrey-1.34.ebuild:
+  inherit user for enewgroup and enewuser
+
+  09 Mar 2012; Eray Aslan <eras@gentoo.org> -postgrey-1.32.ebuild,
+  -postgrey-1.33.ebuild, -postgrey-1.33-r1.ebuild:
+  remove old
+
+  08 Mar 2012; Brent Baude <ranger@gentoo.org> postgrey-1.34.ebuild:
+  Marking postgrey-1.34 ppc64 for bug 391135
+
+  05 Feb 2012; Raúl Porcel <armin76@gentoo.org> postgrey-1.32.ebuild,
+  postgrey-1.33.ebuild, postgrey-1.33-r1.ebuild, postgrey-1.34.ebuild:
+  Drop alpha/sparc keywords
+
+  30 Nov 2011; Eray Aslan <eras@gentoo.org> files/postgrey.rc.new:
+  Migrate from deprecated opts variable in init script - bug #392421
+
+  28 Nov 2011; Tony Vroon <chainsaw@gentoo.org> postgrey-1.34.ebuild:
+  Marked stable on AMD64 based on arch testing by Agostino "ago" Sarubbo &
+  Elijah "Armageddon" El Lazkani in bug #391135.
+
+  22 Nov 2011; Jeroen Roovers <jer@gentoo.org> postgrey-1.34.ebuild:
+  Stable for HPPA (bug #391135).
+
+  22 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> postgrey-1.34.ebuild:
+  x86 stable wrt bug #391135
+
+*postgrey-1.34 (08 Jun 2011)
+
+  08 Jun 2011; Eray Aslan <eras@gentoo.org> +postgrey-1.34.ebuild:
+  Drop targrey use flag. Version bump.
+
+*postgrey-1.33-r1 (07 Nov 2010)
+
+  07 Nov 2010; Tim Harder <radhermit@gentoo.org> +postgrey-1.33-r1.ebuild:
+  Revision bump to re-add targrey support (bug #342625 by Kazunori Kojima).
+  Update to EAPI 3 and reorder lines.
+
+  30 Jul 2010; Tobias Scherbaum <dertobi123@gentoo.org>
+  postgrey-1.32.ebuild, postgrey-1.33.ebuild:
+  Fix chmod on conf.d file (#280135)
+
+*postgrey-1.33 (09 Jul 2010)
+
+  09 Jul 2010; Tobias Scherbaum <dertobi123@gentoo.org>
+  +postgrey-1.33.ebuild:
+  Version bump, #325401. Remove targrey as no current patch is available.
+
+  01 Oct 2009; Jeroen Roovers <jer@gentoo.org> postgrey-1.32.ebuild:
+  Stable for HPPA (LuckyLuke).
+
+  06 Sep 2009; Tobias Scherbaum <dertobi123@gentoo.org>
+  -postgrey-1.31.ebuild:
+  Cleanup
+
+  05 Sep 2009; Brent Baude <ranger@gentoo.org> postgrey-1.32.ebuild:
+  Marking postgrey-1.32 ppc64 for bug 278702
+
+  26 Aug 2009; Tobias Klausmann <klausman@gentoo.org> postgrey-1.32.ebuild:
+  Stable on alpha, bug #278702
+
+  03 Aug 2009; Tiago Cunha <tcunha@gentoo.org> postgrey-1.32.ebuild:
+  stable sparc, bug 278702
+
+  02 Aug 2009; Markus Meier <maekke@gentoo.org> postgrey-1.32.ebuild:
+  x86 stable, bug #278702
+
+  27 Jul 2009; <chainsaw@gentoo.org> postgrey-1.32.ebuild:
+  Marked stable on AMD64 as requested by Tiago Cunha <tcunha@gentoo.org> in
+  bug #278702. Compile-tested with USE=targrey on a Core2 Duo with
+  MAKEOPTS=j2.
+
+  20 Nov 2008; Jeroen Roovers <jer@gentoo.org> postgrey-1.32.ebuild:
+  Marked ~hppa too (thanks to LuckyLuke).
+
+*postgrey-1.32 (12 Aug 2008)
+
+  12 Aug 2008; Tobias Scherbaum <dertobi123@gentoo.org> metadata.xml,
+  -postgrey-1.31-r2.ebuild, +postgrey-1.32.ebuild:
+  Version bump and describe local use-flags in metadata.xml
+
+  21 Jul 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  postgrey-1.31.ebuild, postgrey-1.31-r2.ebuild:
+  Fix perms on /etc/conf.d/postgrey, #231220
+
+*postgrey-1.31-r2 (21 May 2008)
+
+  21 May 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  files/postgrey.rc.new, -postgrey-1.31-r1.ebuild, +postgrey-1.31-r2.ebuild:
+  Fix for OpenRC, add pidfile (#215031)
+
+  16 Apr 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  files/postgrey.rc.new:
+  Fix initscript for OpenRC, #215031
+
+  12 Apr 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  postgrey-1.31-r1.ebuild:
+  Added ~ppc, bug #216925
+
+  10 Apr 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  files/postgrey.rc.new:
+  Reverting changes for OpenRC wrt #215031
+
+  06 Apr 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  files/postgrey.rc.new:
+  Fix init-script for OpenRC (#215031), swap POSTGREY_OPTS and
+  POSTGREY_TEXT_ARG. Don't put whitespaced configuration directives in
+  POSTGREY_OPTS. (#213709)
+
+  15 Mar 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  postgrey-1.31-r1.ebuild:
+  Add a whitespace in SRC_URI as reported by Bo Ørsted Andresen
+
+*postgrey-1.31-r1 (15 Mar 2008)
+
+  15 Mar 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  -postgrey-1.24.ebuild, postgrey-1.31.ebuild, +postgrey-1.31-r1.ebuild:
+  Quoting fixes, remove old version, add optional targrey patch. #211928 by
+  Douglas Mayle
+
+  19 Nov 2007; Raúl Porcel <armin76@gentoo.org> postgrey-1.31.ebuild:
+  alpha stable wrt #199035
+
+  14 Nov 2007; Ferris McCormick <fmccor@gentoo.org> postgrey-1.31.ebuild:
+  Sparc stable, Bug #199035.
+
+  14 Nov 2007; Alex Howells <astinus@gentoo.org> postgrey-1.31.ebuild:
+  changing ~amd64 -> amd64, wrt bug #199035
+
+  13 Nov 2007; Dawid Węgliński <cla@gentoo.org> postgrey-1.31.ebuild:
+  Stable on x86 (bug #199035)
+
+  13 Nov 2007; Markus Rothe <corsair@gentoo.org> postgrey-1.31.ebuild:
+  Stable on ppc64; bug #199035
+
+*postgrey-1.31 (08 Sep 2007)
+
+  08 Sep 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  files/postgrey.rc.new, -postgrey-1.30-r2.ebuild, +postgrey-1.31.ebuild:
+  Version bump, plus another quotation fix for #119109
+
+*postgrey-1.30-r2 (08 Sep 2007)
+
+  08 Sep 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  files/postgrey.rc.new, -postgrey-1.30.ebuild, -postgrey-1.30-r1.ebuild,
+  +postgrey-1.30-r2.ebuild:
+  Fix quotation per bug #119109
+
+  14 Aug 2007; Markus Rothe <corsair@gentoo.org> postgrey-1.30-r1.ebuild:
+  Added ~ppc64; bug #187964
+
+  09 Aug 2007; Raúl Porcel <armin76@gentoo.org> postgrey-1.30-r1.ebuild:
+  Readd ~alpha wrt #187964
+
+  09 Aug 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  postgrey-1.30-r1.ebuild:
+  Keyworded ~sparc wrt #187964
+
+*postgrey-1.30-r1 (08 Aug 2007)
+
+  08 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  +postgrey-1.30-r1.ebuild:
+  Revbump, add dev-perl/Net-RBLClient to RDEPEND as reported by Andrew Ross,
+  bug #187964
+
+*postgrey-1.30 (04 Aug 2007)
+
+  04 Aug 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  -files/postgrey.conf, -files/postgrey.rc, -postgrey-1.21-r2.ebuild,
+  -postgrey-1.27.ebuild, -postgrey-1.28.ebuild, -postgrey-1.29.ebuild,
+  +postgrey-1.30.ebuild:
+  Version bump and clean up
+
+*postgrey-1.29 (28 Jul 2007)
+
+  28 Jul 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  +postgrey-1.29.ebuild:
+  Version bump
+
+  26 Jul 2007; Raúl Porcel <armin76@gentoo.org> postgrey-1.24.ebuild:
+  alpha stable
+
+  27 Jun 2007; Raúl Porcel <armin76@gentoo.org> postgrey-1.28.ebuild:
+  Re-add ~alpha wrt #183038
+
+  27 Jun 2007; Markus Rothe <corsair@gentoo.org> postgrey-1.28.ebuild:
+  Added ~ppc64; bug #183038
+
+  26 Jun 2007; Ferris McCormick <fmccor@gentoo.org> postgrey-1.28.ebuild:
+  Re-keyword ~sparc at developer's request --- Bug #183038 --- all seems well.
+
+*postgrey-1.28 (26 Jun 2007)
+
+  26 Jun 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  postgrey-1.21-r2.ebuild, postgrey-1.24.ebuild, postgrey-1.27.ebuild,
+  +postgrey-1.28.ebuild:
+  Version bump per bug #183038, added new dev-perl/Parse-Syslog dependency
+  needed for the policy-test script which has been added to postgrey.
+  Fixed HOMEPAGE and SCR_URI per bug #182761.
+
+  18 Apr 2007; Gustavo Zacarias <gustavoz@gentoo.org> postgrey-1.27.ebuild:
+  Keyworded ~sparc wrt #172399
+
+  18 Mar 2007; Marius Mauch <genone@gentoo.org> postgrey-1.21-r2.ebuild,
+  postgrey-1.24.ebuild, postgrey-1.27.ebuild:
+  Replacing einfo with elog
+
+  30 Jan 2007; Patrick McLean <chutzpah@gentoo.org> files/postgrey.rc.new:
+  Add "reload" to rc script.
+
+  06 Jan 2007; Fernando J. Pereda <ferdy@gentoo.org> -postgrey-1.23.ebuild:
+  QA: Clean unused versions.
+
+  24 Dec 2006; Andrej Kacian <ticho@gentoo.org> postgrey-1.27.ebuild:
+  Removed postfix dependency - we don't really need postfix on the same host.
+  Closes bug #156389 by Colin Alston <colin at thusa.co.za>
+
+  14 Oct 2006; Markus Rothe <corsair@gentoo.org> postgrey-1.24.ebuild,
+  postgrey-1.27.ebuild:
+  Added ~ppc64; bug #151117
+
+  30 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> postgrey-1.24.ebuild:
+  Marked stable on amd64 for bug #149470
+
+*postgrey-1.27 (06 Aug 2006)
+
+  06 Aug 2006; Andrej Kacian <ticho@gentoo.org> +postgrey-1.27.ebuild:
+  Version bump. Closes bug #142894, reported by Wolfram Schlich <wschlich at
+  gentoo.org>.
+
+  27 Mar 2006; <ticho@gentoo.org> -postgrey-1.21.ebuild,
+  -postgrey-1.21-r1.ebuild, postgrey-1.24.ebuild:
+  Stable on x86. Removed obsolete ebuilds.
+
+*postgrey-1.24 (25 Feb 2006)
+
+  25 Feb 2006; Andrej Kacian <ticho@gentoo.org> files/postgrey.conf,
+  files/postgrey.conf.new, files/postgrey.rc, files/postgrey.rc.new,
+  -files/postgrey.rc.new-r2, postgrey-1.21-r1.ebuild,
+  postgrey-1.21-r2.ebuild, postgrey-1.23.ebuild, +postgrey-1.24.ebuild:
+  Version bump, bug #123437, reported by Daniel Webert <rockoo at gmail.com>.
+  Added delay and response settings to .conf file, bug #119109, reported by
+  Jeremy Clifton <j.clifton at intuiworx.com>.
+
+*postgrey-1.23 (02 Jan 2006)
+
+  02 Jan 2006; Andrej Kacian <ticho@gentoo.org> +postgrey-1.23.ebuild:
+  Version bump.
+
+  23 Dec 2005; Simon Stelling <blubb@gentoo.org> postgrey-1.21-r1.ebuild:
+  stable on amd64
+
+  12 Dec 2005; Andrej Kacian <ticho@gentoo.org> postgrey-1.21-r2.ebuild:
+  Stable on x86.
+
+  05 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  postgrey-1.21-r2.ebuild:
+  stable on alpha as per bug #111415
+
+*postgrey-1.21-r2 (03 Nov 2005)
+
+  03 Nov 2005; Andrej Kacian <ticho@gentoo.org> +files/postgrey.rc.new-r2,
+  +postgrey-1.21-r2.ebuild:
+  Improve socket permission setting - wait until socket is effectively created
+  and then set the perms. Patch by Arnaud Launay <asl at launay.org>, bug
+  #100733.
+
+  24 Oct 2005; Andrej Kacian <ticho@gentoo.org> postgrey-1.21-r1.ebuild:
+  Stable on x86.
+
+  18 Oct 2005; Aron Griffis <agriffis@gentoo.org> postgrey-1.21.ebuild:
+  Mark 1.21 stable on alpha
+
+  03 Oct 2005; Andrej Kacian <ticho@gentoo.org> postgrey-1.21.ebuild,
+  postgrey-1.21-r1.ebuild:
+  Do not install generic COPYING document.
+
+  07 Sep 2005; Andrej Kacian <ticho@gentoo.org> files/postgrey.rc,
+  files/postgrey.rc.new:
+  Do not 'use postfix', rather 'before postfix' to avoid circular iuse
+  dependency in initscripts.
+
+*postgrey-1.21-r1 (04 Sep 2005)
+
+  04 Sep 2005; Andrej Kacian <ticho@gentoo.org> files/postgrey.conf,
+  +files/postgrey.conf.new, files/postgrey.rc, +files/postgrey.rc.new,
+  +postgrey-1.21-r1.ebuild:
+  Add support for UNIX socket listening. Patch provided by Arnaud Launay <asl
+  at launay.org>, in bug #100733.
+
+  23 Aug 2005; Andrej Kacian <ticho@gentoo.org> postgrey-1.21.ebuild:
+  Use -1 for shell argument to enewuser. Bug #103421.
+
+  18 Jun 2005; Andrej Kacian <ticho@gentoo.org> files/postgrey.rc:
+  Initscript provides "postfix_graylist", so postfix can safely start after
+  postgrey. Bug #55705, by Duncan Hill <gentoo-bugs at nacnud.force9.co.uk>.
+
+  13 Jun 2005; Andrej Kacian <ticho@gentoo.org> postgrey-1.21.ebuild:
+  Stable on x86 and amd64.
+
+  11 May 2005; Fernando J. Pereda <ferdy@gentoo.org> postgrey-1.21.ebuild:
+  keyworded ~alpha wrt #90856
+
+  29 Apr 2005; Andrej Kacian <ticho@gentoo.org> files/postgrey.rc:
+  Adjusted initscript depend(), "before" is not needed.
+
+  29 Apr 2005; Andrej Kacian <ticho@gentoo.org> postgrey-1.21.ebuild:
+  Added ~amd64 keyword.
+
+*postgrey-1.21 (28 Apr 2005)
+
+  28 Apr 2005; Andrej Kacian <ticho@gentoo.org> +files/postgrey.conf,
+  +files/postgrey.rc, +metadata.xml, +postgrey-1.21.ebuild:
+  Initial import. Ebuild provided by steveb <tp22a@softhome.net>, bug #59691.

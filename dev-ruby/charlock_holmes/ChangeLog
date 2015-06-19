@@ -1,0 +1,43 @@
+# ChangeLog for dev-ruby/charlock_holmes
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/charlock_holmes/ChangeLog,v 1.9 2015/06/07 17:20:07 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  20 Mar 2015; Hans de Graaff <graaff@gentoo.org> charlock_holmes-0.7.3.ebuild:
+  Add ruby22.
+
+  04 Nov 2014; Manuel Rüger <mrueg@gentoo.org> -charlock_holmes-0.7.2.ebuild:
+  Cleanup old.
+
+  12 Sep 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  charlock_holmes-0.7.2.ebuild, charlock_holmes-0.7.3.ebuild:
+  Add subslot dependency on dev-libs/icu
+
+  15 Jun 2014; Manuel Rüger <mrueg@gentoo.org> -charlock_holmes-0.6.9.4.ebuild,
+  -charlock_holmes-0.7.1.ebuild, -files/charlock_holmes-0.6.9.4-extconf.patch:
+  Cleanup old.
+
+*charlock_holmes-0.7.3 (14 Jun 2014)
+
+  14 Jun 2014; Manuel Rüger <mrueg@gentoo.org> +charlock_holmes-0.7.3.ebuild:
+  Version bump.
+
+*charlock_holmes-0.7.2 (06 Jun 2014)
+
+  06 Jun 2014; Hans de Graaff <graaff@gentoo.org>
+  +charlock_holmes-0.7.2.ebuild:
+  Version bump.
+
+*charlock_holmes-0.7.1 (13 May 2014)
+
+  13 May 2014; Hans de Graaff <graaff@gentoo.org>
+  +charlock_holmes-0.7.1.ebuild:
+  Version bump.
+
+*charlock_holmes-0.6.9.4 (22 Apr 2014)
+
+  22 Apr 2014; Manuel Rüger <mrueg@gentoo.org> +charlock_holmes-0.6.9.4.ebuild,
+  +files/charlock_holmes-0.6.9.4-extconf.patch, +metadata.xml:
+  Initial version.

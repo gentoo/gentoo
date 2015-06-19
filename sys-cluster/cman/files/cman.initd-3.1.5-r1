@@ -1,0 +1,350 @@
+#!/sbin/runscript
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/cman/files/cman.initd-3.1.5-r1,v 1.2 2012/12/11 23:54:24 robbat2 Exp $
+
+CMAN_TOOL="/usr/sbin/cman_tool"
+FENCE_TOOL="/usr/sbin/fence_tool"
+GFS_CONTROLD="/usr/sbin/gfs_controld"
+DLM_CONTROLD="/usr/sbin/dlm_controld"
+GROUPD="/usr/sbin/groupd"
+FENCED="/usr/sbin/fenced"
+CCSD="/usr/sbin/ccsd"
+
+[ -z "$CCSD_OPTS" ] && CCSD_OPTS=""
+[ -z "$CMAN_CLUSTER_TIMEOUT" ] && CMAN_CLUSTER_TIMEOUT=120
+[ -z "$CMAN_QUORUM_TIMEOUT" ] && CMAN_QUORUM_TIMEOUT=0
+[ -z "$CMAN_SHUTDOWN_TIMEOUT" ] && CMAN_SHUTDOWN_TIMEOUT=60
+[ -z "$FENCED_START_TIMEOUT" ] && FENCED_START_TIMEOUT=300
+[ -z "$FENCED_MEMBER_DELAY" ] && FENCED_MEMBER_DELAY=300
+
+depend() {
+	use net
+	after xend
+	after xendomains
+	provide cman
+}
+
+load_modules() {
+	local module modules
+	modules=$1
+
+	rcS=0 # catch the first error here
+	[ -f /proc/modules ] && for module in ${modules}; do
+		ebegin "Loading ${module} kernel module"
+		modprobe -q ${module}
+		rc=$? # error for this modprobe call
+		eend $rc "Failed to load ${module} kernel module"
+		[ $rc -ne 0 ] && rcS=$rc
+	done
+	return $rcS
+}
+
+unload_modules() {
+	local module modules
+	modules=$1
+
+	[ -f /proc/modules ] && for module in ${modules}; do
+		ebegin "Unloading ${module} kernel module"
+		modprobe -r ${module} > /dev/null
+		eend $? "Failed to unload ${module} kernel module"
+	done
+}
+
+check_configfs() {
+	awk '{ print $2 }' /proc/mounts | grep -sq "/sys/kernel/config" \
+		&& awk '{ print $3 }' /proc/mounts | grep -sq "configfs"
+
+	if [ $? -ne 0 ]; then
+		ewarn "Please add the following line to /etc/fstab:"
+		ewarn "none configfs /sys/kernel/config defaults 0 0"
+		eend 1 "configfs not mounted at /sys/kernel/config"
+	fi
+}
+
+mount_configfs()
+{
+	local module=$(awk '$2 == "configfs" { print $2 }' /proc/filesystems)
+
+	if [ -z "${module}" ]; then
+		load_modules "configfs"
+		rc=$?
+		sleep 1s
+		[ $rc -ne 0 ] && return 1
+	fi
+
+	# configfs
+	awk '{ print $2 }' /proc/mounts | grep -sq "/sys/kernel/config" \
+		&& awk '{ print $3 }' /proc/mounts | grep -sq "configfs" 
+	rc=$?
+
+	if [ $rc -ne 0 ]
+	then
+		ebegin "Mounting ConfigFS"
+		/bin/mount -t configfs none /sys/kernel/config 2>&1
+		rc=$?
+		eend $rc
+	fi
+
+	return $rc
+}
+
+umount_configfs() {
+	local sig retry
+	local entry entries
+
+	entries="$(awk '$3 == "configfs" { print $2 }' /proc/mounts | sort -r)"
+
+	for entry in $entries; do
+		ebegin "Unmounting ConfigFS"
+		umount $entry >/dev/null 2>&1
+		eend $?
+	done
+
+	local module=$(awk '$1 == "configfs" { print $1 }' /proc/modules)
+
+	if [ ! -z "${module}" ]; then
+		unload_modules "configfs"
+		sleep 1s
+	fi
+}
+
+umount_gfs_filesystems() {
+	local sig retry
+	local remaining="$(awk '$3 == "gfs" || $3 == "gfs2" { print $2 }' /proc/mounts | sort -r)"
+
+	if [ -n "${remaining}" ]
+	then
+		sig=
+		retry=3
+		while [ -n "${remaining}" -a "${retry}" -gt 0 ]
+		do
+			if [ "${retry}" -lt 3 ]
+			then
+				ebegin "Unmounting GFS filesystems (retry)"
+				umount ${remaining} >/dev/null 2>&1
+				eend $? "Failed to unmount GFS filesystems this retry"
+			else
+				ebegin "Unmounting GFS filesystems"
+				umount ${remaining} >/dev/null 2>&1
+				eend $? "Failed to unmount GFS filesystems"
+			fi
+			remaining="$(awk '$3 == "gfs" || $3 == "gfs2" { if ($2 != "/") print $2 }' /proc/mounts | sort -r)"
+			[ -z "${remaining}" ] && break
+			/bin/fuser -k -m ${sig} ${remaining} >/dev/null 2>&1
+			sleep 5
+			retry=$((${retry} -1))
+			sig=-9
+		done
+	fi
+}
+
+unload_allmodules() {
+	local modules
+
+	modules=$(awk '$1 == "lock_gulm" || \
+		$1 == "lock_dlm" || $1 == "dlm" || \
+		$1 == "lock_harness" || $1 == "gfs2" || \
+		$1 == "gfs" { print $1 }' /proc/modules)
+
+	#modules=$(awk '$1 == "lock_harness" || \
+	#	$1 == "gfs" { print $1 }' /proc/modules)
+
+	unload_modules "${modules}"
+}
+
+start_ccsd() {
+	ebegin "Starting ccsd"
+	start-stop-daemon --start --quiet --exec ${CCSD} -- ${CCSD_OPTS}
+	eend $?
+}
+
+stop_ccsd() {
+	ebegin "Stopping ccsd"
+	start-stop-daemon --stop --quiet -s 9 --exec ${CCSD}
+	eend $?
+}
+
+start_cman() {
+	${CMAN_TOOL} status >/dev/null 2>&1
+	if [ $? -ne 0 ]
+	then
+	        ebegin "Starting cman"
+        	${CMAN_TOOL} -t ${CMAN_CLUSTER_TIMEOUT} \
+                	-w join ${CMAN_JOIN_OPTS} >/dev/null 2>&1
+
+	        if [ "$?" -ne 0 ]
+        	then
+                	eend 1 "Failed to start cman"
+					return 1
+	        else
+        	        eend 0
+
+                	# make sure that we are quorate?
+	                if [ ${CMAN_QUORUM_TIMEOUT} -gt 0 ]
+        	        then
+                	        ebegin "Waiting for quorum (${CMAN_QUORUM_TIMEOUT} secs)"
+                        	${CMAN_TOOL} -t ${CMAN_QUORUM_TIMEOUT} -q wait
+							rc=$?
+	                        eend $rc
+							return $rc
+        	        fi
+	        fi
+	else
+		einfo "cman already running"
+	fi
+}
+
+stop_cman() {
+	ebegin "Stopping cman"
+	local stat=0
+	${CMAN_TOOL} status > /dev/null 2>&1
+	if [ $? -eq 0 ]; then
+		retry=3
+		stat=1
+		while [ "${stat}" -eq 1 -a "${retry}" -gt 0 ]
+		do
+			#sleep 2
+			#${CMAN_TOOL} -w -t ${CMAN_SHUTDOWN_TIMEOUT} \
+			#	leave remove ${CMAN_LEAVE_OPTS} > /dev/null
+			${CMAN_TOOL} leave -t ${CMAN_SHUTDOWN_TIMEOUT} ${CMAN_LEAVE_OPTS} \
+				remove >/dev/null 2>&1
+				stat=$?
+				retry=$((${retry} -1))
+		done
+	fi
+	eend ${stat}
+}
+
+start_groupd() {
+	ebegin "Starting groupd"
+	start-stop-daemon --start --exec ${GROUPD} --name groupd
+	eend $?
+}
+
+stop_groupd() {
+	ebegin "Stopping groupd"
+	start-stop-daemon --stop --exec ${GROUPD} --name groupd
+	eend $?
+}
+
+start_fenced() {
+	ebegin "Starting fenced"
+	start-stop-daemon --start --exec ${FENCED} --name fenced
+	eend $?
+
+	${CMAN_TOOL} status | grep Flags | grep 2node >/dev/null 2>&1
+	local errmsg=$?
+
+	ebegin "Joining fence domain"
+	if [ "${errmsg}" -ne 0 ]
+	then
+		${FENCE_TOOL} join -t $FENCED_START_TIMEOUT >/dev/null 2>&1
+		[ $? -eq 0 ] && errmsg=$? || errmsg=1
+	else
+		${FENCE_TOOL} join -m $FENCED_MEMBER_DELAY >/dev/null 2>&1
+		[ $? -eq 0 ] && errmsg=$? || errmsg=1
+	fi
+	eend $errmsg
+}
+
+stop_fenced() {
+	# fenced services
+#	local fence_status="$( ${CMAN_TOOL} services | awk '$1 ~ /fence/ { print $3 }')"
+#	if [ -n "${fence_status}" ]; then
+#		if [ -x ${FENCE_TOOL} ]; then
+#			ebegin "Leaving fence domain"
+#			${FENCE_TOOL} leave > /dev/null 2>&1
+#			eend $?
+#		fi
+#	fi
+
+	if [ -x ${FENCE_TOOL} ]; then
+		if ${FENCE_TOOL} ls >/dev/null 2>&1; then
+			ebegin "Leaving fence domain"
+			${FENCE_TOOL} leave > /dev/null 2>&1
+			eend $?
+		fi
+	fi
+
+	ebegin "Stopping fenced"
+	start-stop-daemon --stop --exec ${FENCED} --name fenced
+	eend $?
+}
+
+start_gfs_controld() {
+	ebegin "Starting gfs_controld"
+	start-stop-daemon --start --exec ${GFS_CONTROLD} --name gfs_controld
+	eend $?
+}
+
+stop_gfs_controld() {
+	ebegin "Stopping gfs_controld"
+	start-stop-daemon --stop --exec ${GFS_CONTROLD} --name gfs_controld
+	eend $?
+}
+
+start_dlm_controld() {
+	ebegin "Starting dlm_controld"
+	start-stop-daemon --start --exec ${DLM_CONTROLD} --name dlm_controld
+	eend $?
+}
+
+stop_dlm_controld() {
+	ebegin "Stopping dlm_controld"
+	start-stop-daemon --stop --exec ${DLM_CONTROLD} --name dlm_controld
+	eend $?
+}
+
+start() {
+	if ! mount_configfs ; then
+		eerror "ConfigFS & DLM are required to use cman"
+		return 1
+	fi
+
+	[ -e /sys/module/dlm ] || [ -e /sys/kernel/dlm ] || load_modules "dlm"
+	if [ ! -e /sys/kernel/dlm ]; then
+		eerror "ConfigFS & DLM are required to use cman"
+		return 1
+	fi
+    mkdir -p /var/run/cluster
+
+#	start_ccsd
+	if ! start_cman ; then
+		eerror "Failed to start cman"
+		return 1
+	fi
+	if ! start_fenced; then
+		eerror "Failed to start fenced"
+		return 1
+	fi
+	if ! start_groupd; then
+		eerror "Failed to start groupd"
+		return 1
+	fi
+	if ! start_dlm_controld; then
+		eerror "Failed to start dlm_controld"
+		return 1
+	fi
+#	start_gfs_controld
+}
+
+stop() {
+
+# umount GFS filesystems
+#	umount_gfs_filesystems
+
+	stop_dlm_controld
+	stop_groupd
+	stop_fenced
+	stop_cman
+
+	#stop_gfs_controld
+	#stop_dlm_controld
+	#stop_groupd
+
+	unload_modules "dlm"
+#	stop_ccsd
+#	unload_allmodules
+	umount_configfs
+}

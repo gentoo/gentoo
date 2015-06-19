@@ -1,0 +1,116 @@
+# ChangeLog for games-fps/unreal-tournament
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/unreal-tournament/ChangeLog,v 1.26 2015/06/14 17:23:12 ulm Exp $
+
+  14 Jun 2015; Ulrich Müller <ulm@gentoo.org> unreal-tournament-451.ebuild:
+  [QA] Remove emul-linux-x86-* from dependencies.
+
+  16 May 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  unreal-tournament-451.ebuild:
+  update SRC_URI (bug #547796)
+
+  15 Oct 2014; Pacho Ramos <pacho@gentoo.org> unreal-tournament-451.ebuild:
+  Support multilib providers for deps. Bump to EAPI=5.
+
+  01 May 2014; Ulrich Müller <ulm@gentoo.org> unreal-tournament-451.ebuild:
+  Fix LICENSE, add mirror and bindist restrictions, bug 506952.
+
+  05 Sep 2012; Justin Lecher <jlec@gentoo.org> unreal-tournament-451.ebuild:
+  Use doicon instead insinto + doins to install icon files
+
+  05 Feb 2012; Mike Frysinger <vapier@gentoo.org> unreal-tournament-451.ebuild:
+  Move to new unpacker eclass for unpack_makeself.
+
+  16 Jan 2012; Ulrich Müller <ulm@gentoo.org> unreal-tournament-451.ebuild:
+  Migrate to cdrom.eclass, bug 398809.
+
+  29 Jun 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  unreal-tournament-451.ebuild:
+  more quoting (bug #275839)
+
+  29 Feb 2008; Carsten Lohrke <carlo@gentoo.org>
+  unreal-tournament-451.ebuild:
+  Remove icon extension from desktop entry to match Icon Theme Specification.
+
+  12 Mar 2007; Marius Mauch <genone@gentoo.org>
+  unreal-tournament-436.ebuild, unreal-tournament-451.ebuild:
+  Replacing einfo with elog
+
+  05 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  unreal-tournament-436.ebuild, unreal-tournament-451.ebuild:
+  Removing old virtual/x11 dependency.
+
+  24 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  unreal-tournament-436.ebuild, unreal-tournament-451.ebuild:
+  Moved cdrom_get_cds to src_unpack since binary packages don't require the
+  original media to install.
+
+  14 Apr 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  unreal-tournament-436.ebuild, unreal-tournament-451.ebuild:
+  Moved games_pkg_setup to the beginning of pkg_setup.
+
+  15 Feb 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  unreal-tournament-436.ebuild:
+  Fixed typo and closing bug #122902. Thanks to ciaranm for pointing out my
+  obvious fat-fingering.
+
+  10 Feb 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  unreal-tournament-436.ebuild, unreal-tournament-451.ebuild:
+  Added modular X dependencies and closing bug #121203.
+
+  20 Dec 2005; Diego Pettenò <flameeyes@gentoo.org>
+  unreal-tournament-451.ebuild:
+  Drop amd64 dependencies over virtual/x11, libsdl, virtual/opengl.
+
+  15 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  unreal-tournament-451.ebuild:
+  stable on amd64.
+
+  12 May 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  unreal-tournament-436.ebuild, unreal-tournament-451.ebuild:
+  Made X a hard dependency and closing bug #92255.
+
+  15 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  unreal-tournament-451.ebuild:
+  added ~amd64 to KEYWORDS and dependencies needed for amd64. fixes #88776
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  unreal-tournament-451.ebuild:
+  virtual/glibc -> virtual/libc
+
+  03 Jun 2004; Aron Griffis <agriffis@gentoo.org>
+  unreal-tournament-436.ebuild, unreal-tournament-451.ebuild:
+  Fix use invocation
+
+  13 May 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  unreal-tournament-451.ebuild:
+  fix odd double DEPEND
+
+  27 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  unreal-tournament-451.ebuild:
+  add missing opengl to IUSE
+
+  29 Aug 2003; Chris Gianelloni <wolf31o2@gentoo.org>
+  unreal-tournament-436.ebuild, unreal-tournament-451.ebuild:
+  Add .desktop file.  Closes bug #27542.
+
+*unreal-tournament-451 (10 Jul 2003)
+
+  10 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added UTPG patch to bring UT up to snuff :)
+  Thanks to mrannanj for pointing it out.
+
+*unreal-tournament-436 (23 Oct 2002)
+
+  21 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Reworked ebuild to install everything by hand.  This
+  bypasses shortcomings of loki installer and other requirements.
+
+  11 Mar 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added --target option to use ${T} in place of /tmp.
+
+  03 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Added a check for regular UT version.
+
+  23 Oct 2002; Mike Frysinger <vapier@gentoo.org> :
+  Initial import. Ebuild submitted by me.

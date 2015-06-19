@@ -1,0 +1,36 @@
+Index: gejengel-0.1.4/src/AudioDecoder/ffmpegdecoder.cpp
+===================================================================
+--- gejengel-0.1.4.orig/src/AudioDecoder/ffmpegdecoder.cpp
++++ gejengel-0.1.4/src/AudioDecoder/ffmpegdecoder.cpp
+@@ -83,7 +83,7 @@ void FFmpegDecoder::initialise()
+     avcodec_register_all();
+     av_register_all();
+ 
+-    if (av_open_input_file(&m_pFormatContext, m_Filepath.c_str(), NULL, 0, NULL) != 0)
++    if (avformat_open_input(&m_pFormatContext, m_Filepath.c_str(), NULL, NULL) != 0)
+     {
+         throw logic_error("Could not open input file: " + m_Filepath);
+     }
+@@ -307,21 +307,7 @@ AudioFormat FFmpegDecoder::getAudioForma
+ {
+     AudioFormat format;
+ 
+-    switch(m_pAudioCodecContext->sample_fmt)
+-    {
+-    case SAMPLE_FMT_U8:
+-        format.bits = 8;
+-        break;
+-    case SAMPLE_FMT_S16:
+-        format.bits = 16;
+-        break;
+-    case SAMPLE_FMT_S32:
+-        format.bits = 32;
+-        break;
+-    default:
+-        format.bits = 0;
+-    }
+-
++    format.bits             = av_get_bytes_per_sample(m_pAudioCodecContext->sample_fmt) << 3;
+     format.rate             = m_pAudioCodecContext->sample_rate;
+     format.numChannels      = m_pAudioCodecContext->channels;
+     format.framesPerPacket  = m_pAudioCodecContext->frame_size;

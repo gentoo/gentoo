@@ -1,0 +1,107 @@
+# ChangeLog for games-simulation/lincity
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-simulation/lincity/ChangeLog,v 1.23 2013/09/25 19:31:32 mr_bones_ Exp $
+
+  25 Sep 2013; Michael Sterrett <mr_bones_@gentoo.org> -lincity-1.12.1.ebuild:
+  old
+
+  25 Sep 2013; Agostino Sarubbo <ago@gentoo.org> lincity-1.13.1.ebuild:
+  Stable for ppc, wrt bug #485128
+
+  22 Sep 2013; Agostino Sarubbo <ago@gentoo.org> lincity-1.13.1.ebuild:
+  Stable for x86, wrt bug #485128
+
+  18 Sep 2013; Chema Alonso <nimiux@gentoo.org> lincity-1.13.1.ebuild:
+  Stable for amd64 wrt bug #485128
+
+*lincity-1.13.1 (05 Feb 2013)
+
+  05 Feb 2013; Julian Ospald <hasufell@gentoo.org> +lincity-1.13.1.ebuild:
+  version bump
+
+  12 Jan 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  lincity-1.12.1.ebuild:
+  EAPI=2
+
+  05 Feb 2008; Fabian Groffen <grobian@gentoo.org> lincity-1.12.1.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  06 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> lincity-1.12.1.ebuild:
+  Remove old virtual/x11 dependency.
+
+  05 Oct 2006; Tristan Heaven <nyhm@gentoo.org> lincity-1.12.1.ebuild:
+  Fix gettext dependency
+
+  22 Feb 2006; <Tupone@gentoo.org> lincity-1.12.1.ebuild:
+  Modular X dependency fix
+
+  29 Oct 2005; Fabian Groffen <grobian@gentoo.org> lincity-1.12.1.ebuild:
+  Marked ~ppc-macos (bug #107879)
+
+  29 Jun 2005; Ferris McCormick <fmccor@gentoo.org> lincity-1.12.1.ebuild:
+  Add ~sparc keyword.  Builds and runs fine.
+
+  17 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> -lincity-1.12.0.ebuild,
+  lincity-1.12.1.ebuild:
+  fix deps for bug #82318
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*lincity-1.12.1 (19 Oct 2004)
+
+  19 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org> +lincity-1.12.1.ebuild:
+  version bump (bug #65279)
+
+  19 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/lincity-1.11a-gcc3.patch, -lincity-1.12_pre53.ebuild:
+  clean older ebuild
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  lincity-1.12.0.ebuild, lincity-1.12_pre53.ebuild:
+  virtual/glibc -> virtual/libc
+
+  27 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> lincity-1.12.0.ebuild,
+  lincity-1.12_pre53.ebuild:
+  use || to say what we really mean in DEPEND
+
+*lincity-1.12.0 (22 Jan 2004)
+
+  22 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> lincity-1.12.0.ebuild:
+  version bump
+
+  12 Dec 2003; Jon Portnoy <avenj@gentoo.org> :
+  AMD64 keywords.
+
+*lincity-1.12_pre53 (13 Jul 2003)
+
+  13 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bumped to update to the new install process and fix
+  the HOMEPAGE for #17434.
+
+*lincity-1.11a-r1 (5 May 2002)
+
+  01 Nov 2002; Jon Nall <nall@gentoo.org> lincity-1.11a-r1.ebuild :
+  added PPC to KEYWORDS
+
+  01 Oct 2002; Mike Frysinger <vapier@gentoo.org> lincity-1.11a-r1.ebuild lincity-1.11a-gcc3.patch lincity-1.11a-Makefile.diff :
+  Deleted old patch and made a new one to address same issues and more ... #8448
+
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> lincity-1.11a-r1.ebuild :
+  Added LICENSE, KEYWORDS.
+
+  5 May 2002; B.Verwilst <verwilst@gentoo.org> ChangeLog :
+
+  Fixed bug #2194, now installs fine with sandbox.
+  when X in use, links xlincity to lincity, to keep standard startup 
+  method
+
+*lincity-1.11a (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

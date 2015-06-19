@@ -1,0 +1,37 @@
+# ChangeLog for net-proxy/ratproxy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/ratproxy/ChangeLog,v 1.7 2015/01/07 14:01:58 pacho Exp $
+
+  07 Jan 2015; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Reassign and cleanup as discussed at https://www.mail-archive.com/gentoo-
+  dev@lists.gentoo.org/msg66357.html
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> ratproxy-1.58.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*ratproxy-1.58 (22 May 2010)
+
+  22 May 2010; Jeroen Roovers <jer@gentoo.org> -ratproxy-1.51.ebuild,
+  -ratproxy-1.51-r1.ebuild, -ratproxy-1.53.ebuild, +ratproxy-1.58.ebuild,
+  metadata.xml:
+  Version bump.
+
+  25 Oct 2009; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Remove drizzt from metadata.xml (#149111)
+
+*ratproxy-1.53 (05 Feb 2009)
+
+  05 Feb 2009; Timothy Redaelli <drizzt@gentoo.org> +ratproxy-1.53.ebuild:
+  Version bump
+
+*ratproxy-1.51-r1 (01 Aug 2008)
+
+  01 Aug 2008; Timothy Redaelli <drizzt@gentoo.org>
+  +ratproxy-1.51-r1.ebuild:
+  Add ratproxy-report.sh wrt bug #233557.
+
+*ratproxy-1.51 (08 Jul 2008)
+
+  08 Jul 2008; Timothy Redaelli <drizzt@gentoo.org>
+  +files/ratproxy-Makefile.patch, +metadata.xml, +ratproxy-1.51.ebuild:
+  New ebuild.

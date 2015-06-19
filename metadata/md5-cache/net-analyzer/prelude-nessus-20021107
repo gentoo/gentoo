@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/perl
+DESCRIPTION=Nessus Correlation support for Prelude-IDS
+EAPI=4
+HOMEPAGE=http://www.rstack.org/oudot/prelude/correlation/
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://gentoo/prelude-correlation-20021107.tar.bz2
+_md5_=c65e33e13d15424596f5ff35ff636973

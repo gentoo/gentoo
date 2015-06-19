@@ -1,0 +1,94 @@
+# ChangeLog for app-emacs/emacs-wget
+# Copyright 2000-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/emacs-wget/ChangeLog,v 1.27 2014/04/20 12:26:09 ulm Exp $
+
+  20 Apr 2014; Ulrich Müller <ulm@gentoo.org> -emacs-wget-0.5.0.ebuild,
+  -files/65emacs-wget-gentoo.el:
+  Remove old.
+
+  20 Apr 2014; Agostino Sarubbo <ago@gentoo.org> emacs-wget-0.5.0-r1.ebuild:
+  Stable for ppc64, wrt bug #505204
+
+  19 Apr 2014; Agostino Sarubbo <ago@gentoo.org> emacs-wget-0.5.0-r1.ebuild:
+  Stable for alpha, wrt bug #505204
+
+  13 Apr 2014; Agostino Sarubbo <ago@gentoo.org> emacs-wget-0.5.0-r1.ebuild:
+  Stable for ppc, wrt bug #505204
+
+  05 Apr 2014; Agostino Sarubbo <ago@gentoo.org> emacs-wget-0.5.0-r1.ebuild:
+  Stable for x86, wrt bug #505204
+
+  02 Apr 2014; Chema Alonso <nimiux@gentoo.org> emacs-wget-0.5.0-r1.ebuild:
+  Stable for amd64 wrt bug #505204
+
+*emacs-wget-0.5.0-r1 (19 Feb 2014)
+
+  19 Feb 2014; Ulrich Müller <ulm@gentoo.org> +emacs-wget-0.5.0-r1.ebuild,
+  +files/50emacs-wget-gentoo.el:
+  Update ebuild to EAPI 5. Update HOMEPAGE. Specify LICENSE more precisely.
+  Install Japanese documentation only with LINGUAS=ja. Don't load w3m-wget in
+  site-init file.
+
+  27 Aug 2008; Ulrich Mueller <ulm@gentoo.org> emacs-wget-0.5.0.ebuild:
+  Use eclass default instead of elisp-comp, bug 235442.
+
+  24 Mar 2008; Ulrich Mueller <ulm@gentoo.org> files/65emacs-wget-gentoo.el:
+  Set the load-path during site initialisation.
+
+  02 Dec 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-wget-0.5.0.ebuild:
+  stable amd64
+
+  06 Oct 2007; Ulrich Mueller <ulm@gentoo.org> -emacs-wget-0.4.2.ebuild:
+  Remove old.
+
+  20 Sep 2007; Raúl Porcel <armin76@gentoo.org> emacs-wget-0.5.0.ebuild:
+  alpha stable wrt #192616
+
+  20 Sep 2007; Brent Baude <ranger@gentoo.org> emacs-wget-0.5.0.ebuild:
+  Marking emacs-wget-0.5.0 ppc64 stable for bug 192616
+
+  19 Sep 2007; Lars Weiler <pylon@gentoo.org> emacs-wget-0.5.0.ebuild:
+  Stable on ppc; bug #192616.
+
+  16 Sep 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-wget-0.5.0.ebuild:
+  stable x86, bug 192616
+
+  15 Sep 2007; Ulrich Mueller <ulm@gentoo.org> emacs-wget-0.5.0.ebuild:
+  Dropped ~ppc-macos keyword. Variables in canonical order.
+
+  03 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  emacs-wget-0.5.0.ebuild:
+  removed src_install (make use of DOCS variable and elisp.eclass)
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  01 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  emacs-wget-0.5.0.ebuild:
+  Keywording ~amd64.
+
+*emacs-wget-0.5.0 (19 Oct 2004)
+
+  19 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> +emacs-wget-0.5.0.ebuild:
+  Version bumped.
+
+  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> emacs-wget-0.4.2.ebuild:
+  Stable on alpha and ppc.
+
+  26 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> emacs-wget-0.4.2.ebuild:
+  Stable on x86. Added to ~alpha.
+
+  20 Aug 2004; Tom Gall <tgall@gentoo.org> emacs-wget-0.4.2.ebuild:
+  stable on ppc64 bug #58502
+
+  02 May 2004; David Holm <dholm@gentoo.org> emacs-wget-0.4.2.ebuild:
+  Added to ~ppc.
+
+*emacs-wget-0.4.2 (01 May 2004)
+
+  01 May 2004; Mamoru KOMACHI <usata@gentoo.org> emacs-wget-0.4.2.ebuild,
+  metadata.xml, files/65emacs-wget-gentoo.el:
+  Initial import. Ebuild submitted by Atzm Watanabe <sitosito@p.chan.ne.jp>
+  at GentooJP ebuild Project

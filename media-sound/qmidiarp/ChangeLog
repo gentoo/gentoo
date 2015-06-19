@@ -1,0 +1,18 @@
+# ChangeLog for media-sound/qmidiarp
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/qmidiarp/ChangeLog,v 1.15 2013/03/02 22:00:06 hwoarang Exp $
+
+  02 Mar 2013; Markos Chandras <hwoarang@gentoo.org> qmidiarp-0.3.9.ebuild:
+  Move Qt dependencies to the new category
+
+  05 May 2012; Michał Górny <mgorny@gentoo.org> qmidiarp-0.3.9.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  13 May 2011; Christoph Mende <angelos@gentoo.org> qmidiarp-0.3.9.ebuild,
+  +files/qmidiarp-0.3.9-ldadd.patch:
+  Fix compilation with forced as-needed (bug #367093)
+
+*qmidiarp-0.3.9 (26 Apr 2011)
+
+  26 Apr 2011; Samuli Suominen <ssuominen@gentoo.org> +qmidiarp-0.3.9.ebuild:
+  Initial commit wrt #364735 by Filipe Teixeira.

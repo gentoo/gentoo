@@ -1,0 +1,36 @@
+# ChangeLog for games-puzzle/rezerwar
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/rezerwar/ChangeLog,v 1.8 2015/02/24 22:26:02 tupone Exp $
+
+  24 Feb 2015; Tupone Alfredo <tupone@gentoo.org> rezerwar-0.4.2.ebuild:
+  EAPI 5
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> rezerwar-0.4.2.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  21 Jun 2010; Markus Meier <maekke@gentoo.org> rezerwar-0.4.2.ebuild:
+  amd64/x86 stable, bug #323467
+
+*rezerwar-0.4.2 (10 May 2010)
+
+  10 May 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +rezerwar-0.4.2.ebuild:
+  version bump
+
+  19 Dec 2009; Pacho Ramos <pacho@gentoo.org> rezerwar-0.4.1.ebuild:
+  amd64 stable, bug 296037
+
+  09 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  rezerwar-0.4.1.ebuild:
+  stable x86, bug 296037
+
+  05 Nov 2009; Tristan Heaven <nyhm@gentoo.org> rezerwar-0.4.1.ebuild:
+  Add ~amd64 keyword; respect LDFLAGS
+
+*rezerwar-0.4.1 (20 Oct 2009)
+
+  20 Oct 2009; Michael Sterrett <mr_bones_@gentoo.org>
+  +rezerwar-0.4.1.ebuild, +metadata.xml:
+  initial commit (bug #284645)
+

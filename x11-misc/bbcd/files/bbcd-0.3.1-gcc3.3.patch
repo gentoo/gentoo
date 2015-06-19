@@ -1,0 +1,20 @@
+--- bbcd-0.3.1/Color.cc.org	2003-12-07 14:55:51.791299707 +0100
++++ bbcd-0.3.1/Color.cc	2003-12-07 14:56:07.724194970 +0100
+@@ -32,6 +32,7 @@
+ //#include <stdio.h>
+ //}
+ #include <iostream>
++#include <assert.h>
+ 
+ 
+ BColor::ColorCache BColor::colorcache;
+--- bbcd-0.3.1/Texture.cc.org	2003-12-07 14:55:57.382507797 +0100
++++ bbcd-0.3.1/Texture.cc	2003-12-07 14:56:41.924228114 +0100
+@@ -37,6 +37,7 @@
+ #include "Texture.hh"
+ //#include "BaseDisplay.hh"
+ #include "Image.hh"
++#include <assert.h>
+ //#include "Screen.hh"
+ //#include "blackbox.hh"
+ 

@@ -1,0 +1,210 @@
+# ChangeLog for kde-base/kdebase-pam
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdebase-pam/ChangeLog,v 1.57 2015/03/03 07:58:11 dlan Exp $
+
+  02 Mar 2015; Yixun Lan <dlan@gentoo.org> kdebase-pam-9.ebuild:
+  add arm64 support, tested on A53 board
+
+  04 Jul 2013; Johannes Huber <johu@gentoo.org> -files/kde-np.pam-6,
+  -files/kde.pam-7, -kdebase-pam-7.ebuild:
+  Remove old.
+
+  04 Jul 2013; Agostino Sarubbo <ago@gentoo.org> kdebase-pam-9.ebuild:
+  Stable for ppc64, wrt bug #469836
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> kdebase-pam-9.ebuild:
+  Stable for ppc, wrt bug #469836
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> kdebase-pam-9.ebuild:
+  Stable for x86, wrt bug #469836
+
+  30 Jun 2013; Agostino Sarubbo <ago@gentoo.org> kdebase-pam-9.ebuild:
+  Stable for amd64, wrt bug #469836
+
+*kdebase-pam-9 (03 May 2013)
+
+  03 May 2013; Johannes Huber <johu@gentoo.org> +files/kde-np.pam-9,
+  +files/kde.pam-9, +kdebase-pam-9.ebuild:
+  Version bump, fixes bugs #422495, #436948. Thanks to all who were involved.
+
+  02 Apr 2013; Agostino Sarubbo <ago@gentoo.org> kdebase-pam-7.ebuild:
+  Stable for ppc64, wrt to bug #462890
+
+  23 Feb 2013; Agostino Sarubbo <ago@gentoo.org> kdebase-pam-7.ebuild:
+  Add ~ppc64, wrt bug #455960
+
+  15 Nov 2012; Johannes Huber <johu@gentoo.org> kdebase-pam-7.ebuild:
+  Update license to GPL-2 wrt bug #441702.
+
+  11 Jul 2011; Matt Turner <mattst88@gentoo.org> kdebase-pam-7.ebuild:
+  Drop ~mips
+
+  09 Aug 2010; Tomáš Chvátal <scarabeus@gentoo.org> kdebase-pam-7.ebuild:
+  Drop alpha ia64 and sparc per the AT Lead permission.
+
+  21 Jun 2010; Tomáš Chvátal <scarabeus@gentoo.org> kdebase-pam-7.ebuild:
+  Drop hppa keywords.
+
+  23 Jan 2010; Raúl Porcel <armin76@gentoo.org> kdebase-pam-7.ebuild:
+  Add ~arm
+
+  16 Oct 2009; Jonathan Callen <abcd@gentoo.org> -kdebase-pam-4.ebuild,
+  -files/kde.pam-6, -kdebase-pam-6.ebuild, kdebase-pam-7.ebuild,
+  -files/kde.pam, -files/kde-np.pam:
+  Drop old versions; drop to ~mips to stop repoman from complaining
+
+  08 Jul 2009; Alexey Shvetsov <alexxy@gentoo.org> ChangeLog:
+  Add ~mips keywords
+
+  14 Jun 2009; Alexey Shvetsov <alexxy@gentoo.org> -files/kde-np.pam-5,
+  -files/kde.pam-5:
+  Clean unneeded patches
+
+  08 Mar 2009; Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org>
+  kdebase-pam-7.ebuild:
+  Assigned DEPEND explicitely to RDEPEND.
+
+  16 Feb 2008; Ingmar Vanhassel <ingmar@gentoo.org> ChangeLog:
+  Spring cleaning
+
+  05 Jul 2007; Jeroen Roovers <jer@gentoo.org> kdebase-pam-7.ebuild:
+  Stable for HPPA (bug #183887).
+
+  05 Jul 2007; Markus Rothe <corsair@gentoo.org> kdebase-pam-7.ebuild:
+  Stable on ppc64; bug #183887
+
+  02 Jul 2007; Wulf C. Krueger <philantrop@gentoo.org> kdebase-pam-7.ebuild:
+  Marked stable on amd64 as per bug 183887.
+
+  02 Jul 2007; Raúl Porcel <armin76@gentoo.org> kdebase-pam-7.ebuild:
+  alpha/ia64/x86 stable wrt #183887
+
+  02 Jul 2007; Gustavo Zacarias <gustavoz@gentoo.org> kdebase-pam-7.ebuild:
+  Stable on sparc wrt #183887
+
+  02 Jul 2007; Lars Weiler <pylon@gentoo.org> kdebase-pam-7.ebuild:
+  Stable on ppc; bug #183887.
+
+  01 Jul 2007; Joshua Kinard <kumba@gentoo.org> kdebase-pam-7.ebuild:
+  Stable on mips, per #183887.
+
+*kdebase-pam-7 (01 Jul 2007)
+
+  01 Jul 2007; Diego Pettenò <flameeyes@gentoo.org> +files/kde.pam-7,
+  +kdebase-pam-7.ebuild:
+  Bump to fix the order between include and pam_login.
+
+  14 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org> ChangeLog:
+  Stable on sparc wrt #147570
+
+  05 Aug 2006; <psi29a@gentoo.org> kdebase-pam-6.ebuild:
+  stable on mips
+
+  29 May 2006; Diego Pettenò <flameeyes@gentoo.org> -kdebase-pam-5.ebuild:
+  Drop old versions.
+
+  26 May 2006; Markus Rothe <corsair@gentoo.org> ChangeLog:
+  Stable on ppc64
+
+  26 May 2006; Markus Rothe <corsair@gentoo.org> ChangeLog:
+  Stable on ppc64
+
+  01 Apr 2006; Diego Pettenò <flameeyes@gentoo.org> kdebase-pam-6.ebuild:
+  Update ~x86-fbsd keyword.
+
+*kdebase-pam-3.5.1 (23 Jan 2006)
+
+  23 Jan 2006; Dan Armak <danarmak@gentoo.org> +kdebase-pam-3.5.1.ebuild:
+  Version 3.5.1. Not yet released upstream, so package.masked for now.
+
+  16 Nov 2005; Markus Rothe <corsair@gentoo.org> kdebase-pam-6.ebuild:
+  Stable on ppc64
+
+  13 Sep 2005; Aron Griffis <agriffis@gentoo.org> kdebase-pam-6.ebuild:
+  Mark 6 stable on alpha
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> kdebase-pam-6.ebuild:
+  stable on ia64
+
+  19 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> kdebase-pam-6.ebuild:
+  Stable on hppa and ppc.
+
+  03 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> kdebase-pam-6.ebuild:
+  Stable on amd64.
+
+  01 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> kdebase-pam-6.ebuild:
+  Stable on sparc
+
+  30 Jul 2005; Gregorio Guidi <greg_g@gentoo.org> kdebase-pam-5.ebuild,
+  kdebase-pam-6.ebuild:
+  Stable on x86.
+
+*kdebase-pam-6 (09 Jul 2005)
+
+  09 Jul 2005; Gregorio Guidi <greg_g@gentoo.org> +files/kde-np.pam-6,
+  +files/kde.pam-6, +kdebase-pam-6.ebuild:
+  Remove references to the pam_console module (#31877).
+
+  01 Jul 2005; Hardave Riar <hardave@gentoo.org> kdebase-pam-4.ebuild:
+  Stable on mips
+
+  01 Jul 2005; Joseph Jezak <josejx@gentoo.org> kdebase-pam-4.ebuild:
+  Marked ppc stable for bug #97544.
+
+  12 Jun 2005; Bryan Østergaard <kloeri@gentoo.org> kdebase-pam-4.ebuild:
+  Stable on alpha.
+
+  26 May 2005; Marcus D. Hanwell <marcus@gentoo.org> kdebase-pam-4.ebuild:
+  Stable on amd64.
+
+*kdebase-pam-5 (26 May 2005)
+
+  26 May 2005; Gregorio Guidi <greg_g@gentoo.org> +files/kde-np.pam-5,
+  +files/kde.pam-5, +kdebase-pam-5.ebuild:
+  New version, needed for Gentoo/FBSD (#93179).
+
+  25 May 2005; Dan Armak <danarmak@gentoo.org> kdebase-pam-4.ebuild:
+  Added missing HOMEPAGE ebuild variable.
+
+  19 May 2005; Guy Martin <gmsoft@gentoo.org> kdebase-pam-4.ebuild:
+  Stable on hppa.
+
+  08 Apr 2005; Markus Rothe <corsair@gentoo.org> kdebase-pam-4.ebuild:
+  Stable on ppc64
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> kdebase-pam-4.ebuild:
+  stable on ia64
+
+  26 Mar 2005; Jason Wever <weeve@gentoo.org> kdebase-pam-4.ebuild:
+  Stable on SPARC.
+
+  25 Mar 2005; Gregorio Guidi <greg_g@gentoo.org> kdebase-pam-4.ebuild:
+  Stable on x86.
+
+  07 Feb 2005; Gregorio Guidi <greg_g@gentoo.org>
+  -kdebase-pam-3.4.0_beta2.ebuild, kdebase-pam-4.ebuild:
+  Add the same keywords as kdebase, since these two files were previously
+  distributed with kdebase.
+
+*kdebase-pam-3.4.0_beta2 (05 Feb 2005)
+
+  05 Feb 2005; Dan Armak <danarmak@gentoo.org>
+  +kdebase-pam-3.4.0_beta2.ebuild:
+  Ebuild for 3.4.0_beta2. Note that beta2 has NOT been released as of this
+  date. This ebuild is for inside testing by the KDE team, and is of course
+  package.masked.
+
+*kdebase-pam-4 (03 Feb 2005)
+
+  03 Feb 2005; Dan Armak <danarmak@gentoo.org>
+  -kdebase-pam-3.4.0_beta1.ebuild, +kdebase-pam-4.ebuild:
+  Changed the ebuild's slot to 0 and its version to 4 (which doesn't stand for
+  anything; it just enforces an upgrade from the previous version). Versions
+  of KDE will not have separate pam.d files. Bug 16022.
+
+*kdebase-pam-3.4.0_beta1 (15 Jan 2005)
+
+  15 Jan 2005; Dan Armak <danarmak@gentoo.org> +metadata.xml,
+  +files/kde-np.pam, +files/kde.pam, +kdebase-pam-3.4.0_beta1.ebuild:
+  Adding the split ebuilds to portage. For KDE 3.4, we've created separate
+  ebuilds for all the KDE apps.

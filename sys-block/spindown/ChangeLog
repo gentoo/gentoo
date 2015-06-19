@@ -1,0 +1,60 @@
+# ChangeLog for sys-block/spindown
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/spindown/ChangeLog,v 1.11 2014/03/22 18:10:59 kensington Exp $
+
+  22 Mar 2014; Michael Palimaka <kensington@gentoo.org>
+  -files/spindown-0.4.0-CFLAGS.patch, -spindown-0.4.0-r3.ebuild:
+  Remove old.
+
+  03 Mar 2013; Wolfram Schlich <wschlich@gentoo.org> metadata.xml:
+  removed myself from metadata.xml, added maintainer-needed@gentoo.org
+
+  11 Mar 2012; Wolfram Schlich <wschlich@gentoo.org> -spindown-0.4.0-r2.ebuild,
+  -files/spindownd.confd, -files/spindownd.initd:
+  removed old version
+
+*spindown-0.4.0-r4 (11 Mar 2012)
+
+  11 Mar 2012; Wolfram Schlich <wschlich@gentoo.org> +spindown-0.4.0-r4.ebuild,
+  +files/spindown-0.4.0-CFLAGS-LDFLAGS.patch:
+  respect LDFLAGS wrt bug #339110
+
+*spindown-0.4.0-r3 (01 Jan 2012)
+*spindown-0.4.0-r2 (01 Jan 2012)
+
+  01 Jan 2012; Christian Ruppert <idl0r@gentoo.org> -spindown-0.4.0.ebuild,
+  -spindown-0.4.0-r1.ebuild, +spindown-0.4.0-r2.ebuild,
+  +spindown-0.4.0-r3.ebuild, files/spindownd.initd, files/spindownd.initd-r1:
+  Revbump. Don't use the deprecated $opts variable, bug 386759.
+
+*spindown-0.4.0-r1 (21 Nov 2009)
+
+  21 Nov 2009; Wolfram Schlich <wschlich@gentoo.org>
+  +files/spindownd.confd-r1, +files/spindownd.initd-r1,
+  +spindown-0.4.0-r1.ebuild:
+  fix bug #278651
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> spindown-0.4.0.ebuild:
+  Remove virtual/libc
+
+*spindown-0.4.0 (09 Jun 2009)
+
+  09 Jun 2009; Wolfram Schlich <wschlich@gentoo.org>
+  -files/spindown-0.2.2-CFLAGS.patch, +files/spindown-0.4.0-CFLAGS.patch,
+  -spindown-0.2.2.ebuild, -spindown-0.3.0.ebuild, +spindown-0.4.0.ebuild:
+  version bump, removed old versions
+
+*spindown-0.3.0 (06 Mar 2009)
+
+  06 Mar 2009; Wolfram Schlich <wschlich@gentoo.org> +spindown-0.3.0.ebuild:
+  version bump
+
+  27 Nov 2008; Wolfram Schlich <wschlich@gentoo.org> spindown-0.2.2.ebuild:
+  fix typo
+
+*spindown-0.2.2 (21 Nov 2008)
+
+  21 Nov 2008; Wolfram Schlich <wschlich@gentoo.org>
+  +files/spindown-0.2.2-CFLAGS.patch, +files/spindownd.confd,
+  +files/spindownd.initd, +metadata.xml, +spindown-0.2.2.ebuild:
+  initial import

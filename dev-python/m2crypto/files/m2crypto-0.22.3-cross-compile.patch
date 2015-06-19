@@ -1,0 +1,41 @@
+https://bugzilla.osafoundation.org/show_bug.cgi?id=13116
+
+--- a/setup.py
++++ b/setup.py
+@@ -68,25 +68,14 @@ class _M2CryptoBuildExt(build_ext.build_ext):
+ 
+         build_ext.build_ext.finalize_options(self)
+ 
+-        self.add_multiarch_paths()
+-
+         opensslIncludeDir = os.path.join(self.openssl, 'include')
+         opensslLibraryDir = os.path.join(self.openssl, 'lib')
+ 
+-        self.swig_opts = ['-I%s' % i for i in self.include_dirs + \
+-                          [opensslIncludeDir, os.path.join(opensslIncludeDir, "openssl")]]
++        self.swig_opts = ['-I%s' % i for i in self.include_dirs]
+         self.swig_opts.append('-includeall')
+         self.swig_opts.append('-modern')
+ 
+-        # Fedora does hat tricks.
+-        if platform.linux_distribution()[0] in ['Fedora', 'CentOS']:
+-            if platform.architecture()[0] == '64bit':
+-                self.swig_opts.append('-D__x86_64__')
+-            elif platform.architecture()[0] == '32bit':
+-                self.swig_opts.append('-D__i386__')
+-
+-        self.include_dirs += [os.path.join(self.openssl, opensslIncludeDir),
+-                              os.path.join(os.getcwd(), 'SWIG')]
++        self.include_dirs += [os.path.join(os.getcwd(), 'SWIG')]
+ 
+         if sys.platform == 'cygwin':
+             # Cygwin SHOULD work (there's code in distutils), but
+@@ -96,8 +85,6 @@ class _M2CryptoBuildExt(build_ext.build_ext):
+             # Someday distutils will be fixed and this won't be needed.
+             self.library_dirs += [os.path.join(self.openssl, 'bin')]
+ 
+-        self.library_dirs += [os.path.join(self.openssl, opensslLibraryDir)]
+-
+ if sys.platform == 'darwin':
+    my_extra_compile_args = ["-Wno-deprecated-declarations"]
+ else:

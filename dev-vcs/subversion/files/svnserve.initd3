@@ -1,0 +1,21 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/dev-vcs/subversion/files/svnserve.initd3,v 1.1 2015/04/09 12:58:45 polynomial-c Exp $
+
+description="svn server"
+pidfile="/var/run/svnserve.pid"
+command="/usr/bin/svnserve"
+command_args="--foreground --daemon ${SVNSERVE_OPTS:---root=/var/svn}"
+command_background="true"
+start_stop_daemon_args="-u ${SVNSERVE_USER:-apache} -g ${SVNSERVE_GROUP:-apache}"
+
+depend() {
+	need net
+}
+
+start_pre() {
+	# Ensure that we run from a readable working dir, and that we do not
+	# lock filesystems when being run from such a location.
+	cd /
+}

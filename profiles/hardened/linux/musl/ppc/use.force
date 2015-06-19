@@ -1,0 +1,9 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/linux/musl/ppc/use.force,v 1.1 2014/11/04 18:21:44 blueness Exp $
+
+# Force the flag which corresponds to ARCH.
+ppc
+
+# Force the flag corresponding to the only ABI.
+abi_ppc_32

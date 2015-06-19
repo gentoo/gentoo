@@ -1,0 +1,11 @@
+# logrotate for openvas-manager
+/var/log/openvas/openvasmd.log {
+        rotate 4
+        weekly
+        compress
+        delaycompress
+        missingok
+	postrotate
+	    /bin/kill -HUP `pidof openvasmd`
+	endscript
+}

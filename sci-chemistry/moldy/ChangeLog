@@ -1,0 +1,110 @@
+# ChangeLog for sci-chemistry/moldy
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/moldy/ChangeLog,v 1.25 2012/06/22 13:04:06 jlec Exp $
+
+  22 Jun 2012; Justin Lecher <jlec@gentoo.org> moldy-2.16e-r2.ebuild:
+  Don't alter configure.ac needlessly to avoid autoreconf, #422871
+
+  06 Feb 2012; Kacper Kowalik <xarthisius@gentoo.org> moldy-2.16e-r2.ebuild:
+  ppc stable wrt #393697
+
+  18 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> moldy-2.16e-r2.ebuild:
+  x86 stable wrt bug #393697
+
+  15 Dec 2011; Justin Lecher <jlec@gentoo.org> moldy-2.16e-r2.ebuild:
+  Drop upstreams CFLAGS as requested by ago
+
+  15 Dec 2011; Agostino Sarubbo <ago@gentoo.org> moldy-2.16e-r2.ebuild:
+  Stable for AMD64, wrt bug #393697
+
+  15 Dec 2011; Justin Lecher <jlec@gentoo.org> -moldy-2.16e.ebuild,
+  moldy-2.16e-r2.ebuild:
+  Keyword for amd64-linux and removed old
+
+  26 Jun 2011; Justin Lecher <jlec@gentoo.org> moldy-2.16e.ebuild,
+  -moldy-2.16e-r1.ebuild, moldy-2.16e-r2.ebuild, metadata.xml:
+  Straight out QA issues
+
+*moldy-2.16e-r2 (15 Apr 2010)
+
+  15 Apr 2010; Justin Lecher <jlec@gentoo.org> +files/2.16e-as-needed.patch,
+  +moldy-2.16e-r2.ebuild:
+  Install docs into correct path, #315399; Link as-needed conform; build
+  docs only with USE=doc, #248348
+
+*moldy-2.16e-r1 (17 Feb 2010)
+
+  17 Feb 2010; Justin Lecher (jlec) <jlec@gentoo.org> moldy-2.16e.ebuild,
+  +moldy-2.16e-r1.ebuild:
+  import prefix changes from the overlay, moved to EAPI=3
+
+  23 Sep 2009; Patrick Lauer <patrick@gentoo.org> moldy-2.16e.ebuild:
+  Remove virtual/libc
+
+  09 Jun 2008; Markus Dittrich <markusle@gentoo.org> moldy-2.16e.ebuild:
+  Switched virtual/tetex -> virtual/latex-base and added amd64 keyword (see
+  bug #222501).
+
+  15 May 2008; Andrey Grozin <grozin@gentoo.org> moldy-2.16e.ebuild:
+  Set VARTEXFONTS (bug #221921)
+
+  31 Jan 2008; Fabian Groffen <grobian@gentoo.org> moldy-2.16e.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+  22 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  20 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  (#148281) Change herd to sci-chemistry from sci.
+
+  05 Aug 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Remove myself as maintainer, anyone feel free to work on this, although I'll
+  continue to do so as well.
+
+  07 Jul 2006; Donnie Berkholz <dberkholz@gentoo.org>; metadata.xml:
+  Update to my new email address.
+
+  18 Jan 2006; Donnie Berkholz <dberkholz@gentoo.org>; moldy-2.16e.ebuild:
+  Fix for modular X.
+
+  18 Jan 2006; Donnie Berkholz <dberkholz@gentoo.org>; moldy-2.16e.ebuild:
+  Fix SRC_URI.
+
+  25 May 2005; Donnie Berkholz <dberkholz@gentoo.org>; moldy-2.16e.ebuild:
+  Fix HOMEPAGE.
+
+  23 Jan 2005; <gongloo@gentoo.org> moldy-2.16e.ebuild:
+  Stable on ppc-macos.
+
+  24 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +moldy-2.16e.ebuild:
+  Moved from app-sci/moldy to sci-chemistry/moldy.
+
+  07 Dec 2004; <gongloo@gentoo.org> moldy-2.16e.ebuild:
+  Added ~ppc-macos
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> moldy-2.16e.ebuild:
+  virtual/glibc -> virtual/libc
+
+  18 May 2004; Mamoru KOMACHI <usata@gentoo.org> moldy-2.16e.ebuild:
+  Changed app-text/tetex to virutal/tetex.
+
+  30 Mar 2004; Donnie Berkholz <dberkholz@gentoo.org>; moldy-2.16e.ebuild:
+  Change x11-base/xfree dependency to virtual/x11.
+
+  27 Oct 2003; Patrick Kursawe <phosphan@gentoo.org> moldy-2.16e.ebuild:
+  Fixing sandbox issue from bug 20657
+
+  04 Oct 2003; Donnie Berkholz <dberkholz@gentoo.org>; moldy-2.16e.ebuild:
+  Adding what appears to be a non-optional tetex dependency. However there are
+  sandbox issues at present (bug #20657).
+
+*moldy-2.16e (1 Feb 2002)
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

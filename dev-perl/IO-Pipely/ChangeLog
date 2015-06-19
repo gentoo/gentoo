@@ -1,0 +1,18 @@
+# ChangeLog for dev-perl/IO-Pipely
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/IO-Pipely/ChangeLog,v 1.4 2014/08/05 13:23:23 zlogene Exp $
+
+  05 Aug 2014; Mikle Kolyada <zlogene@gentoo.org> IO-Pipely-0.005.0.ebuild:
+  Fix DESCRIPTION
+
+  17 Dec 2013; Mikle Kolyada <zlogene@gentoo.org> IO-Pipely-0.005.0.ebuild:
+  amd64/ppc/x86 stable wrt bug #494580
+
+  18 Sep 2013; Patrick Lauer <patrick@gentoo.org> IO-Pipely-0.005.0.ebuild:
+  Add keywords to match POE
+
+*IO-Pipely-0.005.0 (18 Sep 2013)
+
+  18 Sep 2013; Patrick Lauer <patrick@gentoo.org> +IO-Pipely-0.005.0.ebuild,
+  +metadata.xml:
+  Initial import, ebuild by me, test-dep of POE

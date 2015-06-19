@@ -1,0 +1,245 @@
+# ChangeLog for media-plugins/vdr-skinsoppalusikka
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-skinsoppalusikka/ChangeLog,v 1.41 2015/03/30 12:23:23 hd_brummy Exp $
+
+*vdr-skinsoppalusikka-2.2.0 (30 Mar 2015)
+
+  30 Mar 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-skinsoppalusikka-2.2.0.ebuild:
+  bump
+
+*vdr-skinsoppalusikka-2.0.3 (20 Feb 2015)
+
+  20 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-skinsoppalusikka-2.0.0.ebuild, +vdr-skinsoppalusikka-2.0.3.ebuild:
+  better Description
+
+  25 Sep 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-skinsoppalusikka-1.6.4.ebuild, vdr-skinsoppalusikka-2.0.0.ebuild:
+  cleanup old; stable amd64 x86, thanks to Martin Dummer for the hint on wrt
+  bug 520040
+
+  25 Sep 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-skinsoppalusikka-1.6.4.ebuild, vdr-skinsoppalusikka-2.0.0.ebuild:
+  cleanup old; stable amd64 x86, thanks to Martin Dummer for the hint on wrt
+  bug 520040
+
+  23 Feb 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-skinsoppalusikka-1.6.4.ebuild:
+  eapi=5; converted to vdr-plugin-2.eclass
+
+*vdr-skinsoppalusikka-2.0.0 (11 Apr 2013)
+
+  11 Apr 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-skinsoppalusikka-1.7.9.ebuild, +vdr-skinsoppalusikka-2.0.0.ebuild:
+  bump; cleanup
+
+*vdr-skinsoppalusikka-1.7.9 (31 Mar 2013)
+
+  31 Mar 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-skinsoppalusikka-1.7.9.ebuild:
+  bump, taken from vdr-devel overlay
+
+  17 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-skinsoppalusikka-1.0.6.ebuild, -vdr-skinsoppalusikka-1.1.5.ebuild,
+  -vdr-skinsoppalusikka-1.6.0.ebuild, -vdr-skinsoppalusikka-1.6.3.ebuild:
+  cleanup
+
+  17 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-skinsoppalusikka-1.6.4.ebuild:
+  cleanup, eapi=2, stable x86
+
+*vdr-skinsoppalusikka-1.6.4 (14 Apr 2009)
+
+  14 Apr 2009; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-skinsoppalusikka-1.6.4.ebuild:
+  Version bumped.
+
+*vdr-skinsoppalusikka-1.6.3 (30 Nov 2008)
+
+  30 Nov 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-skinsoppalusikka-1.6.3.ebuild:
+  version bump
+
+*vdr-skinsoppalusikka-1.6.0 (30 Mar 2008)
+
+  30 Mar 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-skinsoppalusikka-1.6.0.ebuild:
+  Version bumped.
+
+  24 Mar 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -vdr-skinsoppalusikka-1.0.2.ebuild, -vdr-skinsoppalusikka-1.0.4.ebuild,
+  -vdr-skinsoppalusikka-1.0.5.ebuild:
+  cleanup
+
+*vdr-skinsoppalusikka-1.1.5 (24 Mar 2008)
+
+  24 Mar 2008; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-skinsoppalusikka-1.0.6.ebuild, +vdr-skinsoppalusikka-1.1.5.ebuild:
+  cleanup; skinsoppalusikka-1.0.6 stable on x86; version bump
+
+*vdr-skinsoppalusikka-1.0.6 (20 Jan 2008)
+
+  20 Jan 2008; Matthias Schwarzott <zzam@gentoo.org>
+  +vdr-skinsoppalusikka-1.0.6.ebuild:
+  Version bumped.
+
+*vdr-skinsoppalusikka-1.0.5 (13 Oct 2007)
+
+  13 Oct 2007; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-skinsoppalusikka-1.0.2.ebuild, vdr-skinsoppalusikka-1.0.4.ebuild,
+  +vdr-skinsoppalusikka-1.0.5.ebuild:
+  Version bumped. Fixed quoting.
+
+  18 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-skinsoppalusikka-1.0.4.ebuild:
+  Marked stable on x86.
+
+*vdr-skinsoppalusikka-1.0.4 (28 Apr 2007)
+
+  28 Apr 2007; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-skinsoppalusikka-1.0.4.ebuild:
+  version bump
+
+  17 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
+  files/rc-addon-1.0.2.sh:
+  Removed bash specific stuff.
+
+  19 Nov 2006; Matthias Schwarzott <zzam@gentoo.org>
+  -files/vdr-skinsoppalusikka-0.0.5-pre-vdr-1.3.44.diff,
+  -files/vdr-skinsoppalusikka-0.0.6-pre-vdr-1.3.44.diff,
+  -files/vdr-skinsoppalusikka-0.0.7-language.diff, -files/rc-addon-1.0.1.sh,
+  -files/rc-addon.sh, -files/vdr-skinsoppalusikka-amd64.diff,
+  -vdr-skinsoppalusikka-0.0.5.ebuild, -vdr-skinsoppalusikka-0.0.6.ebuild,
+  -vdr-skinsoppalusikka-0.0.7.ebuild, -vdr-skinsoppalusikka-0.1.0.ebuild,
+  -vdr-skinsoppalusikka-1.0.0.ebuild, -vdr-skinsoppalusikka-1.0.1.ebuild:
+  Cleanup of older ebuilds.
+
+  16 Nov 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-skinsoppalusikka-1.0.2.ebuild:
+  Marked stable on x86.
+
+  29 Sep 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  files/rc-addon-1.0.1.sh, files/rc-addon-1.0.2.sh:
+  fix test in rc scripts; thanks to Ville Aakko on closed bug #149559
+
+*vdr-skinsoppalusikka-1.0.2 (18 Sep 2006)
+
+  18 Sep 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  files/rc-addon-1.0.1.sh, +files/rc-addon-1.0.2.sh,
+  +vdr-skinsoppalusikka-1.0.2.ebuild:
+  version bump; typo in rc-addon-1.0.1.sh fixed
+
+  08 Sep 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-skinsoppalusikka-1.0.1.ebuild:
+  Stable on x86.
+
+*vdr-skinsoppalusikka-1.0.1 (21 Jul 2006)
+
+  21 Jul 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/rc-addon-1.0.1.sh, metadata.xml,
+  +vdr-skinsoppalusikka-1.0.1.ebuild:
+  version bump; set Maintainer gentoo-vdr-project
+
+  17 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-skinsoppalusikka-1.0.0.ebuild:
+  Create files in /etc/vdr with permissions vdr:vdr.
+
+  31 May 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-skinsoppalusikka-1.0.0.ebuild:
+  Marked stable on x86.
+
+  15 May 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-skinsoppalusikka-0.0.5.ebuild:
+  Now inherits eutils.eclass
+
+*vdr-skinsoppalusikka-1.0.0 (01 May 2006)
+
+  01 May 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-skinsoppalusikka-1.0.0.ebuild:
+  version bump
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-vdr-skinsoppalusikka-0.0.5,
+  files/digest-vdr-skinsoppalusikka-0.0.7,
+  files/digest-vdr-skinsoppalusikka-0.1.0, Manifest:
+  Fixing SHA256 digest, pass four
+
+  17 Apr 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-skinsoppalusikka-0.0.6.ebuild:
+  Now inherits eutils.eclass
+
+*vdr-skinsoppalusikka-0.1.0 (16 Apr 2006)
+
+  16 Apr 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +vdr-skinsoppalusikka-0.1.0.ebuild:
+  version bump
+
+*vdr-skinsoppalusikka-0.0.7 (02 Apr 2006)
+
+  02 Apr 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -files/vdr-skinsoppalusikka-0.0.2.diff,
+  -files/vdr-skinsoppalusikka-0.0.3-pre-vdr-1.3.44.diff,
+  -files/vdr-skinsoppalusikka-0.0.4-pre-vdr-1.3.44.diff,
+  +files/vdr-skinsoppalusikka-0.0.7-language.diff,
+  -vdr-skinsoppalusikka-0.0.2.ebuild, -vdr-skinsoppalusikka-0.0.3.ebuild,
+  -vdr-skinsoppalusikka-0.0.4.ebuild, +vdr-skinsoppalusikka-0.0.7.ebuild:
+  version bump; old version removed
+
+  28 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-skinsoppalusikka-0.0.6-pre-vdr-1.3.44.diff,
+  vdr-skinsoppalusikka-0.0.6.ebuild:
+  added compatibility-patch for older vdr-versions
+
+*vdr-skinsoppalusikka-0.0.6 (28 Mar 2006)
+
+  28 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org> metadata.xml,
+  +vdr-skinsoppalusikka-0.0.6.ebuild:
+  version bump
+
+  20 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-skinsoppalusikka-amd64.diff, vdr-skinsoppalusikka-0.0.3.ebuild,
+  vdr-skinsoppalusikka-0.0.4.ebuild, vdr-skinsoppalusikka-0.0.5.ebuild:
+  amd64 compile fix added, thanks to M.Guenther
+
+*vdr-skinsoppalusikka-0.0.5 (20 Mar 2006)
+
+  20 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-skinsoppalusikka-0.0.5-pre-vdr-1.3.44.diff,
+  +vdr-skinsoppalusikka-0.0.5.ebuild:
+  Version bumped.
+
+  19 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
+  vdr-skinsoppalusikka-0.0.4.ebuild:
+  added updated german translations
+
+*vdr-skinsoppalusikka-0.0.4 (13 Mar 2006)
+
+  13 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-skinsoppalusikka-0.0.4-pre-vdr-1.3.44.diff,
+  +vdr-skinsoppalusikka-0.0.4.ebuild:
+  Version bumped
+
+*vdr-skinsoppalusikka-0.0.3 (09 Mar 2006)
+
+  09 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +files/vdr-skinsoppalusikka-0.0.3-pre-vdr-1.3.44.diff,
+  +vdr-skinsoppalusikka-0.0.3.ebuild:
+  Version bumped.
+
+*vdr-skinsoppalusikka-0.0.2 (07 Mar 2006)
+
+  07 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  -files/vdr-skinsoppalusikka-0.0.2_pre1.diff,
+  +files/vdr-skinsoppalusikka-0.0.2.diff,
+  -vdr-skinsoppalusikka-0.0.2_pre1.ebuild,
+  +vdr-skinsoppalusikka-0.0.2.ebuild:
+  version bump, _pre1 removed
+
+*vdr-skinsoppalusikka-0.0.2_pre1 (06 Mar 2006)
+
+  06 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +files/vdr-skinsoppalusikka-0.0.2_pre1.diff, +files/rc-addon.sh,
+  +metadata.xml, +vdr-skinsoppalusikka-0.0.2_pre1.ebuild:
+  initial import
+

@@ -1,0 +1,97 @@
+# ChangeLog for x11-plugins/asmem
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/asmem/ChangeLog,v 1.28 2014/08/10 20:00:53 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> asmem-1.12.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  19 Oct 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop afterstep herd
+
+  08 Nov 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  -asmem-1.10-r1.ebuild:
+  Actually drop the old version
+
+  08 Nov 2010; Bernard Cafarelli <voyageur@gentoo.org>
+  -files/asmem-1.10-gentoo.patch, asmem-1.12.ebuild:
+  Move to virtual/jpeg, drop old versions
+
+  27 Jun 2008; Raúl Porcel <armin76@gentoo.org> asmem-1.12.ebuild:
+  x86 stable wrt #229541
+
+  27 Jun 2008; Ferris McCormick <fmccor@gentoo.org> asmem-1.12.ebuild:
+  Sparc stable, Bug #229541.  Does what it says it does.
+
+  27 Jun 2008; Brent Baude <ranger@gentoo.org> asmem-1.12.ebuild:
+  stable ppc64, bug 229541
+
+  26 Jun 2008; nixnut <nixnut@gentoo.org> asmem-1.12.ebuild:
+  Stable on ppc wrt bug 229541
+
+  26 Jun 2008; Kenneth Prugh <ken69267@gentoo.org> asmem-1.12.ebuild:
+  amd64 stable, bug #229541
+
+*asmem-1.12 (17 Jan 2008)
+
+  17 Jan 2008; Samuli Suominen <drac@gentoo.org> +asmem-1.12.ebuild:
+  Version bump.
+
+  08 Dec 2006; Michael Sterrett <mr_bones_@gentoo.org> -asmem-1.10.ebuild:
+  clean old ebuild
+
+  27 Nov 2006; Gustavo Zacarias <gustavoz@gentoo.org> asmem-1.10-r1.ebuild:
+  Stable on sparc wrt #153218
+
+  27 Nov 2006; <malc@gentoo.org> asmem-1.10-r1.ebuild:
+  Add amd64 - bug #153218
+
+  24 Nov 2006; Markus Rothe <corsair@gentoo.org> asmem-1.10-r1.ebuild:
+  Stable on ppc64; bug #153218
+
+  23 Nov 2006; Christian Faulhammer <opfer@gentoo.org> asmem-1.10-r1.ebuild:
+  stable x86, bug #153218
+
+  22 Nov 2006; Joseph Jezak <josejx@gentoo.org> asmem-1.10-r1.ebuild:
+  Marked ppc stable for bug #153218.
+
+*asmem-1.10-r1 (10 Oct 2006)
+
+  10 Oct 2006; Bryan Østergaard <kloeri@gentoo.org>
+  files/asmem-1.10-gentoo.patch, +asmem-1.10-r1.ebuild:
+  Modular X fixes, bug 147238.
+
+  06 Jun 2006; Jason Wever <weeve@gentoo.org> asmem-1.10.ebuild:
+  Stable on SPARC.
+
+  20 Jan 2006; Luis Medinas <metalgod@gentoo.org> asmem-1.10.ebuild:
+  Added ~amd64 keyword.
+
+  02 Jan 2006; Michele Noberasco <s4t4n@gentoo.org> asmem-1.10.ebuild:
+  Removed LICENSE and INSTALL from dodoc.
+
+  13 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml:
+  Added metadata.xml (afterstep herd).
+
+  06 Feb 2005; Markus Rothe <corsair@gentoo.org> asmem-1.10.ebuild:
+  Stable on ppc64
+
+  23 Dec 2004; Markus Rothe <corsair@gentoo.org> asmem-1.10.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #74953
+
+*asmem-1.10 (11 May 2004)
+
+  11 May 2004; Christian Birchinger <joker@gentoo.org> asmem-1.10.ebuild,
+  files/asmem-1.10-gentoo.patch:
+  New version with Linux 2.6 fix
+
+  17 Mar 2004; Ciaran McCreesh <ciaranm@gentoo.org> asmem-1.9.ebuild:
+  Added ~sparc (#44975)
+
+  15 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> asmem-1.9.ebuild:
+  inherit eutils for epatch.
+
+*asmem-1.9 (5 June 2003)
+
+  5 June 2003; robh <robh@gentoo.org>
+  asmem-1.9.ebuild:
+  Initial release from <joker@gentoo.org>

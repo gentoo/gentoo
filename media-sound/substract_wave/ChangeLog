@@ -1,0 +1,28 @@
+# ChangeLog for media-sound/substract_wave
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/substract_wave/ChangeLog,v 1.5 2011/04/26 13:12:52 ssuominen Exp $
+
+*substract_wave-0.3-r1 (26 Apr 2011)
+
+  26 Apr 2011; Christoph Mende <angelos@gentoo.org>
+  -substract_wave-0.3.ebuild, +substract_wave-0.3-r1.ebuild,
+  +files/substract_wave-0.3-overflow.patch:
+  Fixed overflow (bug 337446))
+
+  11 May 2009; Samuli Suominen <ssuominen@gentoo.org>
+  substract_wave-0.3.ebuild, +files/substract_wave-0.3-Makefile.patch,
+  -files/substract_wave-0.3.diff:
+  Fix Makefile to work with -Wl,--as-needed wrt #240484, thanks to Diego E.
+  Pettenò.
+
+  06 Feb 2009; Stefan Briesenick <sbriesen@gentoo.org>
+  substract_wave-0.3.ebuild:
+  added math library, because some compilations needs it (depends on
+  CFLAGS).
+
+*substract_wave-0.3 (06 Oct 2007)
+
+  06 Oct 2007; Stefan Briesenick <sbriesen@gentoo.org>
+  +files/substract_wave-0.3.diff, +metadata.xml, +substract_wave-0.3.ebuild:
+  initial commit.
+

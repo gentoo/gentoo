@@ -1,0 +1,90 @@
+# ChangeLog for media-libs/raul
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/raul/ChangeLog,v 1.20 2015/01/03 12:03:20 mgorny Exp $
+
+  03 Jan 2015; Michał Górny <mgorny@gentoo.org> raul-0.8.0-r1.ebuild:
+  Add PYTHON_REQ_USE as necessary for waf.
+
+*raul-0.8.0-r1 (25 Dec 2014)
+
+  25 Dec 2014; Michał Górny <mgorny@gentoo.org> +raul-0.8.0-r1.ebuild:
+  Convert to python-any-r1.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> raul-0.8.0.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  24 Nov 2012; Alexis Ballier <aballier@gentoo.org> raul-0.8.0.ebuild,
+  +files/raul-0.8.0-gcc47.patch:
+  fix build with gcc 4.7, bug #425274
+
+  01 Jun 2012; Ian Stakenvicius <axs@gentoo.org> -raul-0.5.1.ebuild,
+  -files/raul-0.5.1-gcc44.patch, -raul-0.6.0.ebuild, -raul-0.7.0.ebuild,
+  -files/ldconfig.patch:
+  removed old ebuilds and files
+
+  01 Jun 2012; Ian Stakenvicius <axs@gentoo.org> raul-0.8.0.ebuild:
+  cleaned up ebuild, added logic to switch to python2 as required for this
+  particular waf
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> raul-0.5.1.ebuild,
+  raul-0.6.0.ebuild, raul-0.7.0.ebuild, raul-0.8.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  21 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> raul-0.8.0.ebuild:
+  x86 stable wrt bug #393869
+
+  18 Dec 2011; Agostino Sarubbo <ago@gentoo.org> raul-0.8.0.ebuild:
+  Stable for AMD64, wrt bug #393869
+
+*raul-0.8.0 (13 Jan 2011)
+
+  13 Jan 2011; Alexis Ballier <aballier@gentoo.org> +files/ldconfig2.patch,
+  +raul-0.8.0.ebuild:
+  version bump
+
+*raul-0.7.0 (09 Oct 2010)
+
+  09 Oct 2010; Alexis Ballier <aballier@gentoo.org> +raul-0.7.0.ebuild:
+  version bump
+
+*raul-0.6.0 (12 Apr 2010)
+
+  12 Apr 2010; Alexis Ballier <aballier@gentoo.org> +raul-0.6.0.ebuild,
+  +files/ldconfig.patch:
+  version bump
+
+  02 Aug 2009; <chainsaw@gentoo.org> raul-0.5.1.ebuild:
+  Marked stable on AMD64 as a dependency of media-sound/patchage-0.4.2;
+  requested by Alexis Ballier <aballier@gentoo.org> in bug #278595.
+  Compile-tested on a dual hex-core Opteron with USE="-debug -doc -jack
+  -test".
+
+  30 Jul 2009; Ryan Hill <dirtyepic@gentoo.org> raul-0.5.1.ebuild,
+  +files/raul-0.5.1-gcc44.patch:
+  Fix build w/ GCC 4.4. (bug #276495)
+
+  22 Jul 2009; Christian Faulhammer <fauli@gentoo.org> raul-0.5.1.ebuild:
+  stable x86, bug 278595
+
+  17 Sep 2008; Alexis Ballier <aballier@gentoo.org> -raul-0.5.0.ebuild:
+  remove old
+
+*raul-0.5.1 (17 Sep 2008)
+
+  17 Sep 2008; Alexis Ballier <aballier@gentoo.org> +raul-0.5.1.ebuild:
+  version bump
+
+  24 Jul 2008; Raúl Porcel <armin76@gentoo.org> raul-0.5.0.ebuild:
+  Add ~x86 wrt #232862
+
+*raul-0.5.0 (09 Jul 2008)
+
+  09 Jul 2008; Alexis Ballier <aballier@gentoo.org> -raul-0.4.0.ebuild,
+  +raul-0.5.0.ebuild:
+  version bump
+
+*raul-0.4.0 (29 May 2008)
+
+  29 May 2008; Alexis Ballier <aballier@gentoo.org> +metadata.xml,
+  +raul-0.4.0.ebuild:
+  initial import, ebuild by me

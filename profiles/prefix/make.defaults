@@ -1,0 +1,12 @@
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/prefix/make.defaults,v 1.8 2014/01/18 08:15:44 vapier Exp $
+
+# Some USE-flags that only die-hards don't want:
+# readline:  to have some sane command line editing, e.g. in python
+# zlib:      for many things you just want gzip support
+# ncurses:   a nice working console drawing library
+# ssl:       encrypted connections are a nice feature
+USE="readline zlib ncurses ssl"
+
+FEATURES="collision-protect"

@@ -1,0 +1,18 @@
+# ChangeLog for app-accessibility/festival-fi
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/festival-fi/ChangeLog,v 1.5 2012/10/19 19:15:29 ago Exp $
+
+  19 Oct 2012; Agostino Sarubbo <ago@gentoo.org> festival-fi-20041119.ebuild:
+  Add ~amd64, wrt to bug #438836
+
+  08 May 2009; William Hubbs <williamh@gentoo.org>
+  festival-fi-20041119.ebuild:
+  removed the unpack call from src_prepare since that is handled in
+  src_unpack.
+
+*festival-fi-20041119 (08 May 2009)
+
+  08 May 2009; Jesus Rivero <neurogeek@gentoo.org>
+  +files/festival-fi-20041119_lavennin_path.patch, +metadata.xml,
+  +festival-fi-20041119.ebuild:
+  Initial commit. Closes bug #141113

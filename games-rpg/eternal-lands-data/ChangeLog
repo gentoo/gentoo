@@ -1,0 +1,167 @@
+# ChangeLog for games-rpg/eternal-lands-data
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/eternal-lands-data/ChangeLog,v 1.30 2013/07/06 16:58:23 calchan Exp $
+
+*eternal-lands-data-1.9.3-r1 (06 Jul 2013)
+
+  06 Jul 2013; Denis Dupeyron <calchan@gentoo.org>
+  +eternal-lands-data-1.9.3-r1.ebuild:
+  Fix assertion error with >=libxml2-2.9 (bug #449352).
+
+  02 Mar 2012; Richard Freeman <rich0@gentoo.org>
+  -eternal-lands-data-1.9.1.ebuild, -eternal-lands-data-1.9.1_p20110117.ebuild:
+  Remove obsolete versions.
+
+*eternal-lands-data-1.9.3 (02 Mar 2012)
+
+  02 Mar 2012; Richard Freeman <rich0@gentoo.org>
+  +eternal-lands-data-1.9.3.ebuild:
+  Bump - 406511 - Thanks to Roman Gruber for catching this omission.
+
+  18 Jun 2011; Richard Freeman <rich0@gentoo.org>
+  -eternal-lands-data-1.9.0.ebuild, -eternal-lands-data-1.9.2.ebuild:
+  clean out older versions and broken 1.9.2
+
+*eternal-lands-data-1.9.2-r1 (18 Jun 2011)
+
+  18 Jun 2011; Richard Freeman <rich0@gentoo.org>
+  +eternal-lands-data-1.9.2-r1.ebuild:
+  add requirement for newer maps version if used
+
+*eternal-lands-data-1.9.2 (18 Jun 2011)
+
+  18 Jun 2011; Richard Freeman <rich0@gentoo.org>
+  +eternal-lands-data-1.9.2.ebuild:
+  version bump - 372181
+
+*eternal-lands-data-1.9.1_p20110117 (17 Jan 2011)
+
+  17 Jan 2011; Richard Freeman <rich0@gentoo.org>
+  +eternal-lands-data-1.9.1_p20110117.ebuild:
+  Update to sound files.
+
+*eternal-lands-data-1.9.1 (30 Dec 2010)
+
+  30 Dec 2010; Richard Freeman <rich0@gentoo.org>
+  +eternal-lands-data-1.9.1.ebuild:
+  Bump for upcoming game server update - masked for now.
+
+  13 May 2010; Richard Freeman <rich0@gentoo.org>
+  eternal-lands-data-1.9.0.ebuild, metadata.xml:
+  Add support for bloodsucker maps
+
+*eternal-lands-data-1.9.0 (03 Apr 2010)
+
+  03 Apr 2010; Richard Freeman <rich0@gentoo.org>
+  -eternal-lands-data-1.8.0-r1.ebuild, +eternal-lands-data-1.9.0.ebuild:
+  Version bump - cleaned old non-working versions.
+
+*eternal-lands-data-1.8.0-r1 (12 Jan 2009)
+
+  12 Jan 2009; Richard Freeman <rich0@gentoo.org>
+  -eternal-lands-data-1.8.0.ebuild, +eternal-lands-data-1.8.0-r1.ebuild:
+  Missed shaders directory in original install - 232188
+
+*eternal-lands-data-1.8.0 (11 Jan 2009)
+
+  11 Jan 2009; Richard Freeman <rich0@gentoo.org>
+  -eternal-lands-data-1.7.0-r1.ebuild, +eternal-lands-data-1.8.0.ebuild:
+  Version Bump - 254364
+
+*eternal-lands-data-1.7.0-r1 (18 Jul 2008)
+
+  18 Jul 2008; Richard Freeman <rich0@gentoo.org>
+  -eternal-lands-data-1.6.0.ebuild, -eternal-lands-data-1.7.0.ebuild,
+  +eternal-lands-data-1.7.0-r1.ebuild:
+  clean out non-working versions, update to add new skybox directory to data
+  files
+
+*eternal-lands-data-1.7.0 (17 Jul 2008)
+
+  17 Jul 2008; Richard Freeman <rich0@gentoo.org>
+  +eternal-lands-data-1.7.0.ebuild:
+  Rev bump to 1.7.0
+
+  12 Jun 2008; Richard Freeman <rich0@gentoo.org>
+  eternal-lands-data-1.6.0.ebuild:
+  Fix file collision - 226053 - thanks to Shaun Bouckaert
+
+  30 Mar 2008; Richard Freeman <rich0@gentoo.org>
+  -eternal-lands-data-1.5.0.ebuild:
+  cleaning out non-working version
+
+*eternal-lands-data-1.6.0 (29 Mar 2008)
+
+  29 Mar 2008; Richard Freeman <rich0@gentoo.org>
+  +eternal-lands-data-1.6.0.ebuild:
+  version bump - 215327
+
+  16 Feb 2008; Tristan Heaven <nyhm@gentoo.org>
+  eternal-lands-data-1.5.0.ebuild:
+  Fix RDEPEND
+
+  29 Dec 2007; Richard Freeman <rich0@gentoo.org>
+  -eternal-lands-data-1.3.3.ebuild:
+  Removing old versions - they no longer work with the server.
+
+*eternal-lands-data-1.5.0 (29 Dec 2007)
+
+  29 Dec 2007; Richard Freeman <rich0@gentoo.org> metadata.xml,
+  +eternal-lands-data-1.5.0.ebuild:
+  Version bump - #201161
+
+  07 Jan 2007; Roy Marples <uberlord@gentoo.org>
+  eternal-lands-data-1.3.3.ebuild:
+  USE -music now works, #160509 thanks to Richard Freeman.
+
+*eternal-lands-data-1.3.3 (06 Jan 2007)
+
+  06 Jan 2007; Roy Marples <uberlord@gentoo.org>
+  +eternal-lands-data-1.3.3.ebuild:
+  New release, #159336
+
+  26 Oct 2006; Roy Marples <uberlord@gentoo.org>
+  eternal-lands-data-1.3.2.ebuild:
+  Added x86-fbsd keyword.
+
+*eternal-lands-data-1.3.2 (03 Sep 2006)
+
+  03 Sep 2006; Roy Marples <uberlord@gentoo.org>
+  +eternal-lands-data-1.3.2.ebuild:
+  Version bump, #146023 thanks to Daniel Nilsson.
+
+*eternal-lands-data-1.3.0 (04 Jul 2006)
+
+  04 Jul 2006; Roy Marples <uberlord@gentoo.org>
+  +eternal-lands-data-1.3.0.ebuild:
+  Version bump.
+
+  02 Jul 2006; Roy Marples <uberlord@gentoo.org>
+  eternal-lands-data-1.2.0_p1-r3.ebuild:
+  Make files group writeable before install.
+
+*eternal-lands-data-1.2.0_p1-r3 (21 May 2006)
+
+  21 May 2006; Roy Marples <uberlord@gentoo.org>
+  +eternal-lands-data-1.2.0_p1-r3.ebuild:
+  Install book xml correctly, #133661 thanks to Jonathan Lambrechts.
+
+*eternal-lands-data-1.2.0_p1-r2 (08 Mar 2006)
+
+  08 Mar 2006; Roy Marples <uberlord@gentoo.org>
+  +eternal-lands-data-1.2.0_p1-r2.ebuild:
+  New music available, fixes #125406 thanks to Daniel Nilsson.
+
+*eternal-lands-data-1.2.0_p1-r1 (07 Mar 2006)
+
+  07 Mar 2006; Roy Marples <uberlord@gentoo.org>
+  +eternal-lands-data-1.2.0_p1-r1.ebuild:
+  Renamed stonebrick1.E3D to stonebrick1.e3d which fixes badobject
+  being shown on some textures. Thanks to Daniel Nilsson for the patch.
+
+*eternal-lands-data-1.2.0_p1 (13 Feb 2006)
+
+  13 Feb 2006; Roy Marples <uberlord@gentoo.org> +metadata.xml,
+  +eternal-lands-data-1.2.0_p1.ebuild:
+  Intial import
+

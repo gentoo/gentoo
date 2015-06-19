@@ -1,0 +1,51 @@
+# ChangeLog for media-libs/fontconfig-infinality
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/fontconfig-infinality/ChangeLog,v 1.10 2015/03/31 19:32:52 ulm Exp $
+
+  31 Mar 2015; Ulrich Müller <ulm@gentoo.org>
+  fontconfig-infinality-20120619.ebuild, fontconfig-infinality-20130404.ebuild:
+  Update dependency after package move of eselect modules to app-eselect.
+
+  13 Dec 2014; Ben de Groot <yngwin@gentoo.org>
+  fontconfig-infinality-20130404.ebuild:
+  Prevent circular dependencies
+
+  17 Mar 2014; Justin Lecher <jlec@gentoo.org>
+  fontconfig-infinality-20130404.ebuild:
+  Some prefix love
+
+  02 Jul 2013; Agostino Sarubbo <ago@gentoo.org>
+  fontconfig-infinality-20130404.ebuild:
+  Stable for x86, wrt bug #470504
+
+  02 Jul 2013; Agostino Sarubbo <ago@gentoo.org>
+  fontconfig-infinality-20130404.ebuild:
+  Stable for amd64, wrt bug #470504
+
+*fontconfig-infinality-20130404 (05 Apr 2013)
+
+  05 Apr 2013; Ben de Groot <yngwin@gentoo.org>
+  +fontconfig-infinality-20130404.ebuild, files/Xresources:
+  Version bump, thanks to lxnay for rolling the tarball.
+  Fixes bugs #456652 (version bump), #430550 (broken link), #452860 (wrong
+  Xresources syntax), #462924 (multiple values in test warning), and adds
+  a warning about type-1 fonts (#436500). Implements readme.gentoo eclass.
+  Apologies for the delay.
+
+  25 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  fontconfig-infinality-20120619.ebuild:
+  Stable for amd64, wrt bug #488550
+
+  25 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  fontconfig-infinality-20120619.ebuild:
+  Stable for x86, wrt bug #488550
+
+  30 Jul 2012; Ben de Groot <yngwin@gentoo.org>
+  fontconfig-infinality-20120619.ebuild, metadata.xml:
+  Change lcdfilter useflag to more precise infinality useflag (bug #428548)
+
+*fontconfig-infinality-20120619 (29 Jul 2012)
+
+  29 Jul 2012; Ben de Groot <yngwin@gentoo.org> +files/Xresources,
+  +fontconfig-infinality-20120619.ebuild, +metadata.xml:
+  Initial commit. Ebuild based on the one in infinality-overlay.

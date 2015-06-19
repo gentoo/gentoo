@@ -1,0 +1,18 @@
+# ChangeLog for app-office/multitalk
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/multitalk/ChangeLog,v 1.4 2013/06/16 09:05:33 pacho Exp $
+
+  16 Jun 2013; Pacho Ramos <pacho@gentoo.org> multitalk-1.4.ebuild:
+  Allow media-gfx/graphicsmagick[imagemagick] (#314225 by Wojciech Porczyk)
+
+  03 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #22900
+
+  16 May 2009; MATSUU Takuto <matsuu@gentoo.org> ChangeLog:
+  Added ~x86.
+
+*multitalk-1.4 (20 Nov 2008)
+
+  20 Nov 2008; MATSUU Takuto <matsuu@gentoo.org> +metadata.xml,
+  +multitalk-1.4.ebuild:
+  Initial import.

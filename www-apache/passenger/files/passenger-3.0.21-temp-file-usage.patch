@@ -1,0 +1,140 @@
+--- passenger-release-3.0.21.orig/ext/common/LoggingAgent/Main.cpp	2013-05-29 07:09:31.000000000 -0500
++++ passenger-release-3.0.21.orig/ext/common/LoggingAgent/Main.cpp	2013-07-18 09:35:47.514433743 -0500
+@@ -265,11 +265,6 @@ main(int argc, char *argv[]) {
+ 		ev::sig sigtermWatcher(eventLoop);
+ 		ev::sig sigquitWatcher(eventLoop);
+ 		
+-		if (feedbackFdAvailable()) {
+-			feedbackFdWatcher.set<&feedbackFdBecameReadable>();
+-			feedbackFdWatcher.start(FEEDBACK_FD, ev::READ);
+-			writeArrayMessage(FEEDBACK_FD, "initialized", NULL);
+-		}
+ 		sigintWatcher.set<&caughtExitSignal>();
+ 		sigintWatcher.start(SIGINT);
+ 		sigtermWatcher.set<&caughtExitSignal>();
+@@ -281,6 +276,11 @@ main(int argc, char *argv[]) {
+ 		/********** Initialized! Enter main loop... **********/
+ 		
+ 		P_DEBUG("Logging agent online, listening at " << socketAddress);
++		if (feedbackFdAvailable()) {
++			feedbackFdWatcher.set<&feedbackFdBecameReadable>();
++			feedbackFdWatcher.start(FEEDBACK_FD, ev::READ);
++			writeArrayMessage(FEEDBACK_FD, "initialized", NULL);
++		}
+ 		ev_loop(eventLoop, 0);
+ 		return exitCode;
+ 	} catch (const tracable_exception &e) {
+--- passenger-release-3.0.21.orig/ext/common/ServerInstanceDir.h	2013-05-29 07:09:31.000000000 -0500
++++ passenger-release-3.0.21.orig/ext/common/ServerInstanceDir.h	2013-07-18 09:38:54.431808622 -0500
+@@ -30,6 +30,7 @@ 
+ #include <oxt/backtrace.hpp>
+ 
+ #include <sys/types.h>
++#include <sys/stat.h>
+ #include <dirent.h>
+ #include <unistd.h>
+ #include <pwd.h>
+@@ -38,6 +39,7 @@ 
+ #include <cstring>
+ #include <string>
+ 
++#include <Logging.h> 
+ #include "Exceptions.h"
+ #include "Utils.h"
+ #include "Utils/StrIntUtils.h"
+@@ -217,7 +219,69 @@ private:
+ 		 * rights though, because we want admin tools to be able to list the available
+ 		 * generations no matter what user they're running as.
+ 		 */
+-		makeDirTree(path, "u=rwxs,g=rx,o=rx");
++		if (owner) {
++			switch (getFileType(path)) {
++			case FT_NONEXISTANT:
++				createDirectory(path);
++				break;
++			case FT_DIRECTORY:
++				verifyDirectoryPermissions(path);
++				break;
++			default:
++				throw RuntimeException("'" + path + "' already exists, and is not a directory");
++			}
++		} else if (getFileType(path) != FT_DIRECTORY) {
++			throw RuntimeException("Server instance directory '" + path +
++				"' does not exist");
++		}
++	}
++
++	void createDirectory(const string &path) const {
++		// We do not use makeDirTree() here. If an attacker creates a directory
++		// just before we do, then we want to abort because we want the directory
++		// to have specific permissions.
++		if (mkdir(path.c_str(), parseModeString("u=rwx,g=rx,o=rx")) == -1) {
++			int e = errno;
++			throw FileSystemException("Cannot create server instance directory '" +
++				path + "'", e, path);
++		}
++		// verifyDirectoryPermissions() checks for the owner/group so we must make
++		// sure the server instance directory has that owner/group, even when the
++		// parent directory has setgid on.
++		if (chown(path.c_str(), geteuid(), getegid()) == -1) {
++			int e = errno;
++			throw FileSystemException("Cannot change the permissions of the server "
++				"instance directory '" + path + "'", e, path);
++		}
++	}
++
++	/**
++	 * When reusing an existing server instance directory, check permissions
++	 * so that an attacker cannot pre-create a directory with too liberal
++	 * permissions.
++	 */
++	void verifyDirectoryPermissions(const string &path) {
++		TRACE_POINT();
++		struct stat buf;
++
++		if (stat(path.c_str(), &buf) == -1) {
++			int e = errno;
++			throw FileSystemException("Cannot stat() " + path, e, path);
++		} else if (buf.st_mode != (S_IFDIR | parseModeString("u=rwx,g=rx,o=rx"))) {
++			throw RuntimeException("Tried to reuse existing server instance directory " +
++				path + ", but it has wrong permissions");
++		} else if (buf.st_uid != geteuid() || buf.st_gid != getegid()) {
++			/* The server instance directory is always created by the Watchdog. Its UID/GID never
++			 * changes because:
++			 * 1. Disabling user switching only lowers the privilege of the HelperAgent.
++			 * 2. For the UID/GID to change, the web server must be completely restarted
++			 *    (not just graceful reload) so that the control process can change its UID/GID.
++			 *    This causes the PID to change, so that an entirely new server instance
++			 *    directory is created.
++			 */
++			throw RuntimeException("Tried to reuse existing server instance directory " +
++				path + ", but it has wrong owner and group");
++		}
+ 	}
+ 	
+ 	bool isDirectory(const string &dir, struct dirent *entry) const {
+--- passenger-release-3.0.21.orig/NEWS	2013-05-29 07:09:31.000000000 -0500
++++ passenger-release-3.0.21.orig/NEWS	2013-07-18 08:58:30.943558375 -0500
+@@ -8,6 +8,7 @@ Release 3.0.21
+  * Catch exceptions raised by Rack application objects.
+  * Fix for CVE-2013-2119. Details can be found in the announcement for version 4.0.5.
+  * Version 3.0.20 was pulled because its fixes were incomplete.
++ * Fix for CVE-2013-4136. Details can be found in the announcement for version 4.0.8.
+ 
+ 
+ Release 3.0.19
+--- passenger-release-3.0.21.orig/test/cxx/ServerInstanceDirTest.cpp	2013-05-29 07:09:31.000000000 -0500
++++ passenger-release-3.0.21.orig/test/cxx/ServerInstanceDirTest.cpp	2013-07-18 09:09:50.898433782 -0500
+@@ -73,9 +73,11 @@ namespace tut {
+ 	}
+ 	
+ 	TEST_METHOD(5) {
+-		// The destructor doesnn't remove the server instance directory if it
++		// The destructor doesn't remove the server instance directory if it
+ 		// wasn't created with the ownership flag or if it's been detached.
+ 		string path, path2;
++		makeDirTree(parentDir + "/passenger-test.1234");
++		makeDirTree(parentDir + "/passenger-test.5678");
+ 		{
+ 			ServerInstanceDir dir(1234, parentDir, false);
+ 			ServerInstanceDir dir2(5678, parentDir);

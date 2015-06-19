@@ -1,0 +1,55 @@
+# ChangeLog for media-video/videotrans
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/videotrans/ChangeLog,v 1.12 2014/08/10 21:01:04 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> videotrans-1.6.1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  21 Jul 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due #92799
+
+  16 May 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  -files/videotrans-1.6.0-forced-as-needed.patch, -videotrans-1.6.0.ebuild:
+  Remove old.
+
+*videotrans-1.6.1 (25 Nov 2011)
+
+  25 Nov 2011; Stefan Briesenick <sbriesen@gentoo.org>
+  +videotrans-1.6.1.ebuild:
+  version bump, fixing imagemagick-dependency (solving bug #314349).
+
+  15 May 2011; Tomáš Chvátal <scarabeus@gentoo.org> videotrans-1.6.0.ebuild:
+  Depend on virtual/ffmpeg. Move to eapi4. Fixes bug #362155.
+
+  17 Dec 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/videotrans-1.6.0-forced-as-needed.patch, videotrans-1.6.0.ebuild:
+  Fix forced-as-needed
+
+*videotrans-1.6.0 (04 Feb 2008)
+
+  04 Feb 2008; Stefan Briesenick <sbriesen@gentoo.org>
+  +videotrans-1.6.0.ebuild:
+  version bump.
+
+*videotrans-1.5.3 (07 Sep 2007)
+
+  07 Sep 2007; Stefan Briesenick <sbriesen@gentoo.org>
+  +videotrans-1.5.3.ebuild:
+  version bump, solving bug #189952.
+
+  27 Feb 2007; Stefan Briesenick <sbriesen@gentoo.org>
+  videotrans-1.5.2.ebuild:
+  added check that media-video/mjpegtools is built with 'png' use-flag
+  (solving bug #166482).
+
+  02 Feb 2007; Daniel Gryniewicz <dang@gentoo.org> videotrans-1.5.2.ebuild:
+  Marked ~amd64 For bug #154694
+
+  14 Jan 2007; Joseph Jezak <josejx@gentoo.org> videotrans-1.5.2.ebuild:
+  Marked ~ppc for bug #154694.
+
+*videotrans-1.5.2 (06 Jan 2007)
+
+  06 Jan 2007; Stefan Briesenick <sbriesen@gentoo.org> +metadata.xml,
+  +videotrans-1.5.2.ebuild:
+  initial commit.

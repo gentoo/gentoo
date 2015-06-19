@@ -1,0 +1,19 @@
+diff -r 9dc4a391dd6d mpi/generic/mpi-asm-defs.h
+--- a/mpi/generic/mpi-asm-defs.h	Tue Jul 29 16:44:47 2014 +0200
++++ b/mpi/generic/mpi-asm-defs.h	Tue Jul 29 16:47:43 2014 +0200
+@@ -1,7 +1,12 @@
+-/* This file defines some basic constants for the MPI machinery.  We
+- * need to define the types on a per-CPU basis, so it is done with
+- * this file here.  */
++/* AMD64 compiled with x32 fails in assembly due to incorrect 
++ * size of long detected. Using compiler information to detect
++ * this since it is no longer per-architecture
++ */
++#if defined(__GNUC__) && __GNUC__ >= 3 && defined(__x86_64__) && defined(__ILP32__)
++#define BYTES_PER_MPI_LIMB 8
++#else
+ #define BYTES_PER_MPI_LIMB  (SIZEOF_UNSIGNED_LONG)
++#endif
+ 
+ 
+ 

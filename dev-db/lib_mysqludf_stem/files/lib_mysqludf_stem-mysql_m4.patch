@@ -1,0 +1,71 @@
+--- config/ax_lib_mysql.m4.orig	2008-05-28 17:31:47.000000000 +0200
++++ config/ax_lib_mysql.m4	2008-11-26 22:43:48.000000000 +0100
+@@ -87,10 +87,9 @@
+             MYSQL_LDFLAGS="`$MYSQL_CONFIG --libs`"
+             
+             MYSQL_VERSION=`$MYSQL_CONFIG --version`
+-
+-            if test `$MYSQL_CONFIG | /usr/bin/awk '{if ($1 == "--plugindir") print 1}'` == "1"; then
+-	      MYSQL_PLUGINDIR=`$MYSQL_CONFIG --plugindir`
+-	    fi
++            if $MYSQL_CONFIG --plugindir > /dev/null; then
++              MYSQL_PLUGINDIR=`$MYSQL_CONFIG --plugindir`
++            fi
+ 	    
+             AC_DEFINE([HAVE_MYSQL], [1],
+                 [Define to 1 if MySQL libraries are available])
+--- config/ax_mysql_bin.m4.orig	2007-08-15 02:22:37.000000000 +0200
++++ config/ax_mysql_bin.m4	2008-11-26 22:55:40.000000000 +0100
+@@ -43,35 +43,36 @@
+   fi
+ 
+   if test -z "$withmysqlbin" -o "$withmysqlbin" = "yes"; then
+-    for i in /usr/bin /usr/local/bin ; do
+-      if test -f "$i/mysql" ; then
+-        MYSQL="$i/mysql $MYSQL_ARGS"
+-      fi
+-    done
++    MYSQL=`which mysql`;
++    if test -n "$MYSQL"; then MYSQL="$MYSQL $MYSQL_ARGS"; fi
+   elif test "$withmysqlbin" != "no"; then
+     MYSQL="$withmysqlbin"
+   fi
+ 
+   if test -n "$MYSQL" ; then
+-    MYSQLBIN_PATH = `dirname "$MYSQL"`
++    MYSQLBIN_PATH=`dirname "$MYSQL"`
+   fi
+   
+   if test -z "$withmysqladmin" -o "$withmysqladmin" = "yes"; then
+-    for i in "$MYSQLBIN_PATH" /usr/bin /usr/local/bin ; do
+-      if test -n "$i" -a -f "$i/mysqladmin" ; then
+-        MYSQLADMIN="$i/mysqladmin $MYSQL_ARGS"
+-      fi
+-    done
++    if test -n "$MYSQLBIN_PATH" -a -f "$MYSQLBIN_PATH/mysqladmin"; then
++      MYSQLADMIN="$MYSQLBIN_PATH/mysqladmin";
++    else
++      MYSQLADMIN=`which mysqladmin`;
++    fi
++    
++    if test -n "$MYSQLADMIN"; then MYSQLADMIN="$MYSQLADMIN $MYSQL_ARGS"; fi
+   elif test "$withmysqladmin" != "no"; then
+     MYSQLADMIN="$withmysqladmin"
+   fi
+ 
+   if test -z "$withmysqltest" -o "$withmysqltest" = "yes"; then
+-    for i in "$MYSQLBIN_PATH" /usr/bin /usr/local/bin ; do
+-      if test -n "$i" -a -f "$i/mysqltest" ; then
+-        MYSQLTEST="$i/mysqltest $MYSQL_ARGS"
+-      fi
+-    done
++    if test -n "$MYSQLBIN_PATH" -a -f "$MYSQLBIN_PATH/mysqltest"; then
++      MYSQLTEST="$MYSQLBIN_PATH/mysqltest";
++    else
++      MYSQLTEST=`which mysqltest`;
++    fi
++    
++    if test -n "$MYSQLTEST"; then MYSQLTEST="$MYSQLTEST $MYSQL_ARGS"; fi
+   elif test "$withmysqltest" != "no"; then
+     MYSQLTEST="$withmysqltest"
+   fi

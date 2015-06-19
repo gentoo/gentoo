@@ -1,0 +1,48 @@
+# ChangeLog for app-xemacs/easypg
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/easypg/ChangeLog,v 1.12 2014/08/10 18:50:54 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> easypg-1.02.ebuild,
+  easypg-1.03-r1.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  22 Jul 2011; Kacper Kowalik <xarthisius@gentoo.org> easypg-1.03-r1.ebuild:
+  ppc64 stable wrt #369897
+
+  03 Jul 2011; Markos Chandras <hwoarang@gentoo.org> easypg-1.03-r1.ebuild:
+  Stable on amd64 wrt bug #369897
+
+  28 Jun 2011; Brent Baude <ranger@gentoo.org> easypg-1.03-r1.ebuild:
+  Marking easypg-1.03-r1 ppc stable for bug 369897
+
+  26 Jun 2011; Raúl Porcel <armin76@gentoo.org> easypg-1.03-r1.ebuild:
+  alpha/sparc stable
+
+  12 Jun 2011; Thomas Kahle <tomka@gentoo.org> easypg-1.03-r1.ebuild:
+  x86 stable per bug 369897
+
+  24 Oct 2010; Brent Baude <ranger@gentoo.org> easypg-1.03-r1.ebuild:
+  Marking easypg-1.03-r1 ~ppc for bug 332607
+
+*easypg-1.03-r1 (13 Oct 2010)
+
+  13 Oct 2010; Hans de Graaff <graaff@gentoo.org> -easypg-1.03.ebuild,
+  +easypg-1.03-r1.ebuild:
+  Set PKG_CAT properly to avoid installing files in /.
+
+  18 Sep 2010; Raúl Porcel <armin76@gentoo.org> easypg-1.03.ebuild:
+  Add ~alpha/~sparc wrt #332607
+
+  18 Aug 2010; Christian Faulhammer <fauli@gentoo.org> easypg-1.03.ebuild:
+  keyworded ~arch for x86, bug 332607
+
+*easypg-1.03 (13 Aug 2010)
+
+  13 Aug 2010; Hans de Graaff <graaff@gentoo.org> +easypg-1.03.ebuild:
+  Version bump.
+
+*easypg-1.02 (26 Jul 2009)
+
+  26 Jul 2009; Hans de Graaff <graaff@gentoo.org> +easypg-1.02.ebuild,
+  +metadata.xml:
+  Initial import.

@@ -1,0 +1,40 @@
+# ChangeLog for x11-plugins/wmwave
+# Copyright 2000-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmwave/ChangeLog,v 1.11 2014/08/10 20:09:40 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> wmwave-0.4.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  20 Sep 2010; Michele Noberasco <s4t4n@gentoo.org>; wmwave-0.4.ebuild:
+  Honour Gentoo LDFLAGS. Closes bug #337845.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; wmwave-0.4.ebuild:
+  Drop virtual/x11 references.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  31 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> wmwave-0.4.ebuild:
+  Fixed DEPEND for modular X.
+
+  11 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmwave-0.4.ebuild:
+  removed COPYING from dodoc.
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> wmwave-0.4.ebuild:
+  Masked wmwave-0.4.ebuild stable for ppc
+
+  02 Aug 2004; Michele Noberasco <s4t4n@gentoo.org> wmwave-0.4.ebuild:
+  Stable for x86.
+
+  17 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmwave-0.4.ebuild:
+  Gave ebuild a good clean up: updated HOMEPAGE and SRC_URI, make it
+  honour Gentoo USE flags, add "virtual/X11" dependency, update
+  DESCRIPTION.
+  metadata.xml:
+  Assign this to the desktop-dock herd.
+
+*wmwave-0.4 (14 Dec 2003)
+
+  14 Dec 2003; Lars Weiler <pylon@gentoo.org> metadata.xml, wmwave-0.4.ebuild:
+  Initial import.
+  Thanks to Florian Daniel <fd@noxa.de> for this ebuild.

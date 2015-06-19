@@ -1,0 +1,24 @@
+# ChangeLog for dev-python/nose-testconfig
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/nose-testconfig/ChangeLog,v 1.6 2015/06/07 19:32:04 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add bitbucket to remote-id in metadata.xml
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> nose-testconfig-0.9.ebuild:
+  Drop old Python implementations
+
+  07 Sep 2014; Mike Gilbert <floppym@gentoo.org> nose-testconfig-0.9.ebuild:
+  Add python3.4.
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> nose-testconfig-0.9.ebuild:
+  Add support for the new PyPy slotting.
+
+*nose-testconfig-0.9 (14 Nov 2013)
+
+  14 Nov 2013; Ian Delaney <idella4@gentoo.org> +metadata.xml,
+  +nose-testconfig-0.9.ebuild:
+  new dep to new package hp3parclient ebuild prepped by me

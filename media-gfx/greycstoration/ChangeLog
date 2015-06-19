@@ -1,0 +1,49 @@
+# ChangeLog for media-gfx/greycstoration
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/greycstoration/ChangeLog,v 1.10 2015/05/23 01:18:50 mrueg Exp $
+
+  23 May 2015; Manuel Rüger <mrueg@gentoo.org> -greycstoration-2.9.ebuild:
+  Remove old.
+
+*greycstoration-2.9-r1 (27 Feb 2013)
+
+  27 Feb 2013; Justin Lecher <jlec@gentoo.org> +greycstoration-2.9-r1.ebuild,
+  metadata.xml:
+  Make heavily use of pkg-config
+
+  08 Nov 2010; Samuli Suominen <ssuominen@gentoo.org>
+  greycstoration-2.9.ebuild:
+  Use virtual/jpeg wrt #327487.
+
+  05 Aug 2010; Samuli Suominen <ssuominen@gentoo.org>
+  greycstoration-2.9.ebuild:
+  Remove USE="X" because it's always required wrt #247731.
+
+  10 Mar 2010; Samuli Suominen <ssuominen@gentoo.org>
+  greycstoration-2.9.ebuild, +files/greycstoration-2.9-libpng14.patch:
+  Fix building with libpng14.
+
+  15 Dec 2009; Peter Volkov <pva@gentoo.org> metadata.xml:
+  metadata.xml: put required herd tag.
+
+*greycstoration-2.9 (30 Aug 2008)
+
+  30 Aug 2008; Denis Dupeyron <calchan@gentoo.org>
+  +greycstoration-2.9.ebuild:
+  Version bump.
+
+  30 May 2008; Denis Dupeyron <calchan@gentoo.org>
+  greycstoration-2.8.ebuild:
+  Added unzip to DEPEND, thanks to Marek Miller (bug #114577).
+
+*greycstoration-2.8 (30 Mar 2008)
+
+  30 Mar 2008; Denis Dupeyron <calchan@gentoo.org>
+  +greycstoration-2.8.ebuild:
+  Version bump.
+
+*greycstoration-1.2.7 (25 Feb 2008)
+
+  25 Feb 2008; Denis Dupeyron <calchan@gentoo.org> +metadata.xml,
+  +greycstoration-1.2.7.ebuild:
+  Initial commit, see bug #114577.

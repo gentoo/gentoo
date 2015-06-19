@@ -1,0 +1,9 @@
+# ChangeLog for dev-python/mergedict
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/mergedict/ChangeLog,v 1.1 2015/06/12 12:50:10 idella4 Exp $
+
+*mergedict-0.2.0 (12 Jun 2015)
+
+  12 Jun 2015; Ian Delaney <idella4@gentoo.org> +mergedict-0.2.0.ebuild,
+  +metadata.xml:
+  ebuild written by me, new dep to dev-python/configclass

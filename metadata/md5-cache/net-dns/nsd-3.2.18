@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=dev-libs/openssl virtual/yacc sys-devel/flex
+DESCRIPTION=An authoritative only, high performance, open source name server
+EAPI=5
+HOMEPAGE=http://www.nlnetlabs.nl/projects/nsd
+IUSE=bind8-stats ipv6 minimal-responses mmap +nsec3 ratelimit root-server runtime-checks zone-stats
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-libs/openssl virtual/yacc
+SLOT=0
+SRC_URI=http://www.nlnetlabs.nl/downloads/nsd/nsd-3.2.18.tar.gz
+_eclasses_=user	f54e098dd38ba1c0847a13e685b87747
+_md5_=ca83bc68be5053abcc5a2964249a2290

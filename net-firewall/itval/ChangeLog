@@ -1,0 +1,38 @@
+# ChangeLog for net-firewall/itval
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/itval/ChangeLog,v 1.7 2014/07/18 12:55:43 jer Exp $
+
+  18 Jul 2014; Jeroen Roovers <jer@gentoo.org> -itval-1.1.ebuild,
+  itval-1.2_p20121104.ebuild, files/itval-1.1-gcc44.patch:
+  EAPI bump. Clean up patch.
+
+  25 Dec 2012; Jeff Horelick <jdhore@gentoo.org> itval-1.2_p20121104.ebuild:
+  marked x86 per bug 447332
+
+  16 Dec 2012; Markos Chandras <hwoarang@gentoo.org> itval-1.2_p20121104.ebuild:
+  Stable on amd64 wrt bug #447332
+
+*itval-1.2_p20121104 (15 Nov 2012)
+
+  15 Nov 2012; Sergey Popov <pinkbyte@gentoo.org> +itval-1.2_p20121104.ebuild:
+  Add snapshot ebuild wrt bug #370861. Thanks to Jeroen Roovers and Mikle
+  Kolyada for their work on it
+
+*itval-1.1 (09 Jul 2009)
+
+  09 Jul 2009; Peter Volkov <pva@gentoo.org> +itval-1.1.ebuild,
+  +files/itval-1.1-gcc44.patch:
+  Fixed suspect flex/bison dependencies, bug #221337 and #221603 thank Diego
+  E. 'Flameeyes' Pettenò for report. Fix build with gcc-4.4, bug #273900
+  thank Victor Ostorga for the patch.
+
+  15 Feb 2009; Peter Alfredsen <loki_val@gentoo.org>
+  +files/itval-1.0-gcc43.patch, itval-1.0.ebuild:
+  Adding gcc-4.3 patch per bug 251442. Thanks to Gene Seto
+  <geneseto@hotmail.com> for the patch.
+
+*itval-1.0 (23 May 2007)
+
+  23 May 2007; Markus Ullmann <jokey@gentoo.org> +metadata.xml,
+  +itval-1.0.ebuild:
+  Initial import for bug #143935 thanks to Robert Marmorstein

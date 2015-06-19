@@ -1,0 +1,41 @@
+diff -uNr yaboot/lib/malloc.c yaboot-1.3.16//lib/malloc.c
+--- yaboot/lib/malloc.c	2010-07-09 03:18:17.000000000 +0100
++++ yaboot-1.3.16//lib/malloc.c	2011-01-23 16:57:13.000000000 +0000
+@@ -42,6 +42,37 @@
+ 	last_alloc = 0;
+ }
+ 
++static char *align_ptr_to(char *ptr, unsigned long align)
++{
++	return (char *)((((unsigned long)ptr) + (align - 1UL)) &
++			~(align - 1UL));
++}
++
++int posix_memalign(void **memptr, unsigned long alignment, unsigned long size)
++{
++	char *caddr;
++
++	if (alignment & (alignment - 1UL))
++		return -1;
++
++	if (alignment & (sizeof(void *) - 1UL))
++		return -1;
++
++	if (size == 0)
++	{
++		*memptr = (void *)0;
++		return 0;
++	}
++
++	caddr = align_ptr_to(malloc_ptr, alignment);
++	malloc_ptr = (caddr + size);
++	last_alloc = caddr;
++	malloc_ptr = align_ptr_to(malloc_ptr, 8UL);
++
++	*memptr = caddr;
++	return 0;
++}
++
+ void *malloc (unsigned int size)
+ {
+     char *caddr;

@@ -1,0 +1,10 @@
+#! /bin/sh
+
+BASEDIR="/opt/teamspeak3-client"
+
+export LD_LIBRARY_PATH="${BASEDIR}${LD_LIBRARY_PATH:+:}${LD_LIBRARY_PATH}"
+
+# work around DT_RPATH (.) security issue by chdir'ing into expected $LD_LIBRARY_PATH
+cd "${BASEDIR}"
+
+exec "${BASEDIR}/ts3client" "$@"

@@ -1,0 +1,84 @@
+# ChangeLog for dev-lang/clojure
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/clojure/ChangeLog,v 1.22 2015/06/07 08:44:05 jlec Exp $
+
+  07 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add github to remote-id in metadata.xml
+
+  30 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> clojure-1.5.1.ebuild:
+  EAPI=5
+
+  23 Mar 2015; Michael Sterrett <mr_bones_@gentoo.org> -clojure-1.4.0.ebuild:
+  old
+
+  19 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org> -clojure-1.2.0.ebuild,
+  -clojure-1.3.0.ebuild:
+  old
+
+  11 Aug 2014; Chema Alonso <nimiux@gentoo.org> clojure-1.6.0.ebuild:
+  Stable for amd64 wrt bug #517216
+
+  26 Jul 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org> clojure-1.6.0.ebuild:
+  x86 stable wrt bug #517216
+
+*clojure-1.6.0 (04 Apr 2014)
+
+  04 Apr 2014; Michael Sterrett <mr_bones_@gentoo.org> +clojure-1.6.0.ebuild:
+  version bump
+
+  01 May 2013; Agostino Sarubbo <ago@gentoo.org> clojure-1.5.1.ebuild:
+  Stable for x86, wrt bug #466304
+
+  18 Apr 2013; Chema Alonso <nimiux@gentoo.org> clojure-1.5.1.ebuild:
+  Stable for amd64 wrt bug #466304
+
+*clojure-1.5.1 (14 Mar 2013)
+
+  14 Mar 2013; Michael Sterrett <mr_bones_@gentoo.org> +clojure-1.5.1.ebuild:
+  version bump (bug #461690)
+
+  29 May 2012; Agostino Sarubbo <ago@gentoo.org> clojure-1.4.0.ebuild:
+  Stable for amd64, wrt bug #418001
+
+  29 May 2012; Jeff Horelick <jdhore@gentoo.org> clojure-1.4.0.ebuild:
+  marked x86 per bug 418001
+
+*clojure-1.4.0 (24 Apr 2012)
+
+  24 Apr 2012; Michael Sterrett <mr_bones_@gentoo.org> +clojure-1.4.0.ebuild:
+  version bump with updated ebuild from Justin Foote (bug #412965)
+
+  17 Nov 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> clojure-1.3.0.ebuild:
+  x86 stable wrt bug #390557
+
+  15 Nov 2011; Markos Chandras <hwoarang@gentoo.org> clojure-1.3.0.ebuild:
+  Stable on amd64 wrt bug #390557
+
+*clojure-1.3.0 (14 Oct 2011)
+
+  14 Oct 2011; Michael Sterrett <mr_bones_@gentoo.org> +clojure-1.3.0.ebuild:
+  version bump (bug #387073)
+
+  24 Nov 2010; Jeremy Olexa <darkside@gentoo.org> clojure-1.2.0.ebuild:
+  Add ~x86-linux, as tested in bug 346557
+
+  05 Oct 2010; Markus Meier <maekke@gentoo.org> clojure-1.2.0.ebuild:
+  x86 stable, bug #338386
+
+  27 Sep 2010; Markos Chandras <hwoarang@gentoo.org> clojure-1.2.0.ebuild:
+  Stable on amd64 wrt bug #338386
+
+  20 Aug 2010; Michael Sterrett <mr_bones_@gentoo.org> clojure-1.2.0.ebuild:
+  make it a new slot to allow the older version to be installed as well.
+
+*clojure-1.2.0 (20 Aug 2010)
+
+  20 Aug 2010; Michael Sterrett <mr_bones_@gentoo.org> clojure-1.1.0.ebuild,
+  +clojure-1.2.0.ebuild:
+  version bump
+
+*clojure-1.1.0 (20 Jul 2010)
+
+  20 Jul 2010; Michael Sterrett <mr_bones_@gentoo.org>
+  +clojure-1.1.0.ebuild, +metadata.xml:
+  initial commit - ebuild submitted by Daniel Solano Gómez via bug #255140

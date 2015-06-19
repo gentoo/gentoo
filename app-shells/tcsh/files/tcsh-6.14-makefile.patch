@@ -1,0 +1,16 @@
+* don't strip (portage does that for us)
+* don't try to move away an older tcsh binary; we don't install in / so
+  that only results in an ugly error message
+
+--- tcsh-6.14.00/Makefile.in
++++ tcsh-6.14.00/Makefile.in
+@@ -477,9 +477,7 @@
+ 
+ install: tcsh$(EXEEXT) 
+ 	-mkdir -p ${DESTBIN}
+-	-mv -f ${DESTBIN}/tcsh$(EXEEXT)  ${DESTBIN}/tcsh.old
+ 	cp tcsh$(EXEEXT) ${DESTBIN}/tcsh$(EXEEXT)
+-	-strip ${DESTBIN}/tcsh$(EXEEXT)
+ 	chmod 755 ${DESTBIN}/tcsh$(EXEEXT)
+ 
+ install.man: tcsh.man

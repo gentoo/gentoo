@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Tool to manage OpenRC services that need to be restarted
+EAPI=5
+HOMEPAGE=http://dev.gentoo.org/~mschiff/restart_services/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=app-admin/lib_users sys-apps/openrc
+SLOT=0
+SRC_URI=http://dev.gentoo.org/~mschiff/src/restart_services/restart_services-0.11.0.tgz
+_md5_=ddae994b49f2fc7122c1daae83af321d

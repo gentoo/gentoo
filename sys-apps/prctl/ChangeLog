@@ -1,0 +1,22 @@
+# ChangeLog for sys-apps/prctl
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/prctl/ChangeLog,v 1.7 2013/01/27 23:28:09 mattst88 Exp $
+
+  27 Jan 2013; Matt Turner <mattst88@gentoo.org> prctl-1.5.ebuild:
+  Stable on alpha.
+
+  19 May 2011; Matt Turner <mattst88@gentoo.org> prctl-1.5.ebuild:
+  Add ~alpha keyword.
+
+  14 Jul 2008; Raúl Porcel <armin76@gentoo.org> prctl-1.5.ebuild:
+  ia64 stable
+
+  14 Nov 2007; Robin H. Johnson <robbat2@gentoo.org> prctl-1.5.ebuild:
+  Fix $Header: /var/cvsroot/gentoo-x86/sys-apps/prctl/ChangeLog,v 1.7 2013/01/27 23:28:09 mattst88 Exp $ string.
+
+*prctl-1.5 (11 Nov 2007)
+
+  11 Nov 2007; Raúl Porcel <armin76@gentoo.org> +metadata.xml,
+  +prctl-1.5.ebuild:
+  Initial import, bug #198681, initial ebuild by <blc+gentoo at q dot dyndns
+  dot org>

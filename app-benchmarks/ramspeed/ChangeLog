@@ -1,0 +1,65 @@
+# ChangeLog for app-benchmarks/ramspeed
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/ramspeed/ChangeLog,v 1.15 2015/01/28 19:02:25 mgorny Exp $
+
+  28 Jan 2015; Michał Górny <mgorny@gentoo.org> ramspeed-3.5.0-r2.ebuild:
+  Switch to CPU_FLAGS_X86.
+
+  10 Oct 2014; Justin Lecher <jlec@gentoo.org> -ramspeed-2.6.0.ebuild,
+  -ramspeed-3.5.0-r1.ebuild:
+  Drop old
+
+  10 Oct 2014; Agostino Sarubbo <ago@gentoo.org> ramspeed-3.5.0-r2.ebuild:
+  Stable for x86, wrt bug #522924
+
+  09 Oct 2014; Agostino Sarubbo <ago@gentoo.org> ramspeed-3.5.0-r2.ebuild:
+  Stable for amd64, wrt bug #522924
+
+*ramspeed-3.5.0-r2 (02 Jun 2013)
+
+  02 Jun 2013; Justin Lecher <jlec@gentoo.org> +ramspeed-3.5.0-r2.ebuild,
+  metadata.xml:
+  Take package, bump to EAPI=5
+
+  02 Jun 2013; Pacho Ramos <pacho@gentoo.org> -ramspeed-3.5.0.ebuild,
+  metadata.xml:
+  Cleanup due bug #328951
+
+  01 Dec 2012; Anthony G. Basile <blueness@gentoo.org> ramspeed-3.5.0-r1.ebuild:
+  Switch to EAPI=4
+
+  01 Dec 2012; Anthony G. Basile <blueness@gentoo.org> ramspeed-2.6.0.ebuild,
+  ramspeed-3.5.0.ebuild:
+  Restore to non-pic friendly versions, they should never have been changed
+
+  01 Dec 2012; Anthony G. Basile <blueness@gentoo.org> ramspeed-3.5.0-r1.ebuild:
+  Fix issue with the working directory
+
+*ramspeed-3.5.0-r1 (01 Dec 2012)
+
+  01 Dec 2012; Anthony G. Basile <blueness@gentoo.org>
+  +ramspeed-3.5.0-r1.ebuild, metadata.xml, ramspeed-2.6.0.ebuild,
+  ramspeed-3.5.0.ebuild:
+  Fix to build on hardened/PIE, but #442778
+
+*ramspeed-3.5.0 (22 Oct 2011)
+
+  22 Oct 2011; Patrick Lauer <patrick@gentoo.org> +ramspeed-3.5.0.ebuild:
+  Bump for #381367, thanks to Michael Seifert
+
+  16 Oct 2010; Dane Smith <c1pher@gentoo.org> metadata.xml:
+  Updated maintainer info in metadata.xml.
+
+  27 Aug 2010; Markos Chandras <hwoarang@gentoo.org> ramspeed-2.6.0.ebuild:
+  Stable on amd64 wrt bug #334667
+
+  27 Aug 2010; Christian Faulhammer <fauli@gentoo.org>
+  ramspeed-2.6.0.ebuild:
+  stable x86, bug 334667
+
+*ramspeed-2.6.0 (14 Jul 2010)
+
+  14 Jul 2010; Markos Chandras <hwoarang@gentoo.org> +ramspeed-2.6.0.ebuild,
+  +metadata.xml:
+  Moved from sunrise overlay. Fixes bug #304101. Thanks to Dane Smith
+  <smithdanea@gmail.com> for the ebuild. He will proxy-maintain this one

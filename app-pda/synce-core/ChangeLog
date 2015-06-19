@@ -1,0 +1,36 @@
+# ChangeLog for app-pda/synce-core
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-pda/synce-core/ChangeLog,v 1.8 2015/06/09 12:02:02 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  01 Jul 2014; Samuli Suominen <ssuominen@gentoo.org> synce-core-0.16-r1.ebuild:
+  Pull in virtual/libgudev to avoid using obsolete USE="gudev" of virtual/udev.
+
+  28 Nov 2012; Samuli Suominen <ssuominen@gentoo.org> -synce-core-0.16.ebuild:
+  old
+
+  28 Nov 2012; Samuli Suominen <ssuominen@gentoo.org>
+  synce-core-0.16-r1.ebuild:
+  Use virtual/udev instead of sys-fs/udev wrt #444398
+
+*synce-core-0.16-r1 (08 Aug 2012)
+
+  08 Aug 2012; Samuli Suominen <ssuominen@gentoo.org>
+  +synce-core-0.16-r1.ebuild:
+  Dummy revision bump to let upstream ./configure determine udevdir from
+  udev.pc pkg-config file.
+
+  15 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> synce-core-0.16.ebuild:
+  Missing dev-python/python-gudev RDEPEND. Run python_convert_shebangs for
+  dev-lang/python 2.x recursively.
+
+  15 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> synce-core-0.16.ebuild:
+  Block app-pda/synce-connector, dev-libs/librapi2 and dev-libs/libsynce since
+  this package is replacing all of them.
+
+*synce-core-0.16 (15 Jun 2012)
+
+  15 Jun 2012; Samuli Suominen <ssuominen@gentoo.org> +synce-core-0.16.ebuild:
+  Initial commit.

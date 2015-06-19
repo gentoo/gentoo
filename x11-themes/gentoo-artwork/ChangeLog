@@ -1,0 +1,137 @@
+# ChangeLog for x11-themes/gentoo-artwork
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gentoo-artwork/ChangeLog,v 1.34 2015/05/09 23:21:34 hwoarang Exp $
+
+  09 May 2015; Markos Chandras <hwoarang@gentoo.org>
+  gentoo-artwork-0.4.2-r1.ebuild:
+  Fix HOMEPAGE. Bug #549008
+
+  04 Mar 2014; Vicente Olivert Riera <vincent@gentoo.org>
+  gentoo-artwork-0.4.2-r1.ebuild:
+  Add ~mips keyword.
+
+  08 Oct 2012; Michael Palimaka <kensington@gentoo.org>
+  -gentoo-artwork-0.4.2.ebuild:
+  Remove old.
+
+  29 Jul 2012; Raúl Porcel <armin76@gentoo.org>
+  gentoo-artwork-0.4.2-r1.ebuild:
+  alpha/sparc stable wrt #421329
+
+  29 Jun 2012; Brent Baude <ranger@gentoo.org> gentoo-artwork-0.4.2-r1.ebuild:
+  Marking gentoo-artwork-0.4.2-r1 ppc for bug 421329
+
+  16 Jun 2012; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Drop maintainer due retirement, bug #173837
+
+  21 Aug 2008; Doug Goldstein <cardoe@gentoo.org> metadata.xml:
+  add GLEP 56 USE flag desc from use.local.desc
+
+  12 May 2008; Markus Rothe <corsair@gentoo.org>
+  gentoo-artwork-0.4.2-r1.ebuild:
+  Stable on ppc64
+
+  29 Apr 2008; Dawid Węgliński <cla@gentoo.org>
+  gentoo-artwork-0.4.2-r1.ebuild:
+  Fix permissions (bug #213385), mark stable on x86 and amd64
+
+  16 Jan 2008; Dawid Węgliński <cla@gentoo.org>
+  gentoo-artwork-0.4.2-r1.ebuild:
+  Fix typo, bug #203681
+
+  15 Jan 2008; Dawid Węgliński <cla@gentoo.org> ChangeLog:
+  Revrite ebuild and add few new flags so user can now decide what he wants to
+  install from package; (bug #203681)
+
+  15 Oct 2007; Dawid Węgliński <cla@gentoo.org>
+  gentoo-artwork-0.4.2.ebuild:
+  Quotes
+
+  11 Oct 2007; Dawid Węgliński <cla@gentoo.org> metadata.xml:
+  Assuming maintainer role of package
+
+  05 Mar 2007; Peter Weller <welp@gentoo.org> gentoo-artwork-0.4.2.ebuild:
+  Keyworded on x86-fbsd
+
+  15 Feb 2007; Chris Gianelloni <wolf31o2@gentoo.org>
+  gentoo-artwork-0.4.1.ebuild, gentoo-artwork-0.4.2.ebuild:
+  Added RESTRICT='binchecks strip' for bug #166987.
+
+*gentoo-artwork-0.4.2 (11 Aug 2006)
+
+  11 Aug 2006; Michał Januszewski <spock@gentoo.org> +files/index.theme,
+  +gentoo-artwork-0.4.2.ebuild:
+  Version bump. Includes new icons (Gentoo Bubble Icons, and others) and fixes
+  for bugs #50988, #89887, #132271, #139332.
+
+  10 Jul 2006; Thomas Cort <tcort@gentoo.org> gentoo-artwork-0.4.1.ebuild:
+  Stable on alpha.
+
+  12 May 2006; Thomas Cort <tcort@gentoo.org> gentoo-artwork-0.4.1.ebuild:
+  Added ~alpha keyword.
+
+  12 Mar 2006; Michał Januszewski <spock@gentoo.org>
+  gentoo-artwork-0.4.1.ebuild:
+  Added a fix for bug #119410 (misspelled filename).
+
+  23 Jan 2006; Markus Rothe <corsair@gentoo.org>
+  gentoo-artwork-0.4.1.ebuild:
+  Stable on ppc64
+
+  23 Aug 2005; Michał Januszewski <spock@gentoo.org>
+  gentoo-artwork-0.4.1.ebuild:
+  Added a fix for bug #103487.
+
+  04 Mar 2005; Michael Januszewski <spock@gentoo.org>
+  -gentoo-artwork-0.3.ebuild, gentoo-artwork-0.4.1.ebuild,
+  -gentoo-artwork-0.4.ebuild:
+  Removed old ebuilds.
+
+*gentoo-artwork-0.4.1 (04 Mar 2005)
+
+  04 Mar 2005; Michael Januszewski <spock@gentoo.org> +files/offensive_list,
+  +gentoo-artwork-0.4.1.ebuild:
+  Added a few new pics and made use of the 'offensive' flag to close bug
+  #83461. If you want the 'Gentoo Revolution' wallpaper, make sure you have it
+  in your USE var.
+
+*gentoo-artwork-0.4 (23 Aug 2004)
+
+  23 Aug 2004; Michael Januszewski <spock@gentoo.org> +metadata.xml,
+  +gentoo-artwork-0.4.ebuild:
+  Added new pictures, included the l33t icon set. Closes bugs #42210 and
+  #56968.
+
+  14 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  -gentoo-artwork-0.1.ebuild, -gentoo-artwork-0.2.ebuild:
+  clean older ebuilds
+
+  23 Jun 2004; Aron Griffis <agriffis@gentoo.org> gentoo-artwork-0.1.ebuild,
+  gentoo-artwork-0.2.ebuild, gentoo-artwork-0.3.ebuild:
+  QA - fix use invocation
+
+  13 Dec 2003; Brad House <brad_mssw@gentoo.org> gentoo-artwork-0.3.ebuild:
+  mark stable on amd64
+
+  03 Nov 2003; Jason Wever <weeve@gentoo.org> gentoo-artwork-0.3.ebuild:
+  Marked stable on sparc, resolves 32671.
+
+*gentoo-artwork-0.3 (12 Sep 2003)
+  12 Sep 2003; Troy Dack <tad@gentoo.org> gentoo-artwork-0.3.ebuild:
+  Version Bump.  Closes Bugs: #1194, #1285, #22222, #23948, #24711
+  Move to stable x86 -- it's only images.
+
+*gentoo-artwork-0.2 (06 Apr 2003)
+
+  06 Apr 2003; Troy Dack <tad@gentoo.org> gentoo-artwork-0.1.ebuild,
+  gentoo-artwork-0.2.ebuild: Version bump, inclusion of Gentoo icons
+  from website, noia icons removed.
+
+*gentoo-artwork-0.1 (01 Feb 2003)
+
+  18 Feb 2003; Troy Dack <tad@gentoo.org> gentoo-arwork-0.1.ebuild :
+  SRC_URI updated.
+
+  01 Feb 2003; Troy Dack <tad@gentoo.org> gentoo-artwork-0.1.ebuild,
+  Changelog, digest-gentoo-artwork-0.1 : Initial ebuild. See
+  /usr/share/pixmaps/gentoo/CREDITS for contributor details.

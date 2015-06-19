@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 1999-2006 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/gkrellm/files/gkrellmd,v 1.9 2010/01/12 14:40:37 lack Exp $
+
+depend() {
+	need net
+	after lm_sensors
+	after hddtemp
+}
+
+start() {
+	ebegin "Starting GNU Krell Monitor daemon"
+	start-stop-daemon --start --quiet --background --pidfile /var/run/gkrellmd.pid --make-pidfile --exec /usr/bin/gkrellmd -- ${GKRELLMD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping GNU Krell Monitor daemon"
+	start-stop-daemon --stop --quiet --pidfile /var/run/gkrellmd.pid --name gkrellmd
+	eend $?
+}

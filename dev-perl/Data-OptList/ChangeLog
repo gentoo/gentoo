@@ -1,0 +1,156 @@
+# ChangeLog for dev-perl/Data-OptList
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Data-OptList/ChangeLog,v 1.42 2015/01/13 06:55:27 zlogene Exp $
+
+  13 Jan 2015; Mikle Kolyada <zlogene@gentoo.org> Data-OptList-0.109.0.ebuild:
+  Mark stable for all 535168
+
+  12 Jan 2015; Jeroen Roovers <jer@gentoo.org> Data-OptList-0.109.0.ebuild:
+  Stable for HPPA (bug #535168).
+
+*Data-OptList-0.108.0-r1 (21 Aug 2014)
+
+  21 Aug 2014; Ian Stakenvicius (_AxS_) <axs@gentoo.org>
+  +Data-OptList-0.108.0-r1.ebuild, -Data-OptList-0.108.0.ebuild:
+  bumped EAPI to 5; committed directly to stable as no other changes present and
+  revbump helps stable systems to keep from dieing on perl-5.18 upgrade
+
+  21 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> -Data-OptList-0.107.0.ebuild,
+  Data-OptList-0.108.0.ebuild:
+  ppc stable wrt bug #492114; Drop old.
+
+  21 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> Data-OptList-0.108.0.ebuild:
+  ppc64 stable wrt bug #492114
+
+  21 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> Data-OptList-0.108.0.ebuild:
+  sparc stable wrt bug #492114
+
+  20 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> Data-OptList-0.108.0.ebuild:
+  x86 stable wrt bug #492114
+
+*Data-OptList-0.109.0 (20 Feb 2014)
+
+  20 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> +Data-OptList-0.109.0.ebuild:
+  Version bump
+
+  20 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> Data-OptList-0.108.0.ebuild:
+  amd64 stable wrt bug #492114
+
+  20 Feb 2014; Mikle Kolyada <zlogene@gentoo.org> Data-OptList-0.108.0.ebuild:
+  alpha stable wrt bug #492114
+
+  16 Feb 2014; Markus Meier <maekke@gentoo.org> Data-OptList-0.108.0.ebuild:
+  arm stable, bug #492114
+
+  14 Feb 2014; Akinori Hattori <hattya@gentoo.org> Data-OptList-0.108.0.ebuild:
+  ia64 stable wrt bug #492114
+
+  12 Feb 2014; Jeroen Roovers <jer@gentoo.org> Data-OptList-0.108.0.ebuild:
+  Stable for HPPA (bug #492114).
+
+  01 Feb 2014; Mike Frysinger <vapier@gentoo.org> Data-OptList-0.107.0.ebuild,
+  Data-OptList-0.108.0.ebuild:
+  Add arm64/m68k love.
+
+*Data-OptList-0.108.0 (14 Aug 2013)
+
+  14 Aug 2013; Patrick Lauer <patrick@gentoo.org> +Data-OptList-0.108.0.ebuild:
+  Bump
+
+  08 Jul 2013; Vicente Olivert Riera <vincent@gentoo.org>
+  Data-OptList-0.107.0.ebuild:
+  ppc64 stable. bug #449576
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> Data-OptList-0.107.0.ebuild:
+  Add ~ppc64, wrt bug #403413
+
+  09 Sep 2012; Raúl Porcel <armin76@gentoo.org> Data-OptList-0.107.0.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #418803
+
+  01 Sep 2012; Fabian Groffen <grobian@gentoo.org> Data-OptList-0.107.0.ebuild:
+  Marked ~ppc-aix, bug #432288
+
+  05 Aug 2012; Markus Meier <maekke@gentoo.org> Data-OptList-0.107.0.ebuild:
+  arm stable, bug #418803
+
+  02 Aug 2012; Jeroen Roovers <jer@gentoo.org> Data-OptList-0.107.0.ebuild:
+  Stable for HPPA (bug #418803).
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  18 Feb 2012; Torsten Veller <tove@gentoo.org> -Data-OptList-0.106.ebuild:
+  Cleanup
+
+  02 Feb 2012; Brent Baude <ranger@gentoo.org> Data-OptList-0.107.0.ebuild:
+  Marking Data-OptList-0.107.0 ppc for bug 392849
+
+  13 Dec 2011; Agostino Sarubbo <ago@gentoo.org> Data-OptList-0.107.0.ebuild:
+  Stable for AMD64, wrt bug #392849
+
+  11 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  Data-OptList-0.107.0.ebuild:
+  x86 stable wrt bug #392849
+
+  03 Sep 2011; Raúl Porcel <armin76@gentoo.org> Data-OptList-0.107.0.ebuild:
+  Add ~alpha/~arm/~ia64/~s390/~sh/~sparc wrt #379449
+
+  29 Aug 2011; Jeroen Roovers <jer@gentoo.org> Data-OptList-0.107.0.ebuild:
+  Marked ~hppa (bug #379449).
+
+  28 Aug 2011; Naohiro Aota <naota@gentoo.org> Data-OptList-0.107.0.ebuild:
+  Add ~x86-fbsd, bug #379449
+
+  26 Aug 2011; Fabian Groffen <grobian@gentoo.org> Data-OptList-0.107.0.ebuild:
+  Added Prefix keywords, bug #379449
+
+*Data-OptList-0.107.0 (11 May 2011)
+
+  11 May 2011; Torsten Veller <tove@gentoo.org> +Data-OptList-0.107.0.ebuild:
+  Version bump
+
+  15 Nov 2010; Fabian Groffen <grobian@gentoo.org>
+  Data-OptList-0.106.ebuild:
+  Marked ~ppc-macos and ~x86-solaris, bug #345435
+
+  27 Jun 2010; <nixnut@gentoo.org> Data-OptList-0.106.ebuild:
+  ppc stable #323529
+
+  11 Jun 2010; Torsten Veller <tove@gentoo.org> -Data-OptList-0.104.ebuild,
+  -Data-OptList-0.105.ebuild:
+  Cleanup
+
+  17 Apr 2010; Torsten Veller <tove@gentoo.org> Data-OptList-0.106.ebuild:
+  Stable on amd64, x86 (#314467)
+
+*Data-OptList-0.106 (15 Feb 2010)
+
+  15 Feb 2010; Torsten Veller <tove@gentoo.org> +Data-OptList-0.106.ebuild:
+  Version bump
+
+*Data-OptList-0.105 (16 Jan 2010)
+
+  16 Jan 2010; Torsten Veller <tove@gentoo.org> +Data-OptList-0.105.ebuild:
+  Version bump
+
+  02 Dec 2009; Torsten Veller <tove@gentoo.org> Data-OptList-0.104.ebuild:
+  Stable on amd64 and x86 (#293622)
+
+  26 Oct 2009; Mounir Lamouri <volkmar@gentoo.org>
+  Data-OptList-0.104.ebuild:
+  Keywording for ppc, bug 283244
+
+  02 May 2009; Torsten Veller <tove@gentoo.org> -Data-OptList-0.103.ebuild:
+  Cleanup
+
+*Data-OptList-0.104 (16 Jan 2009)
+
+  16 Jan 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Data-OptList-0.104.ebuild:
+  Version bump via perl-bump experimental tool.
+
+*Data-OptList-0.103 (14 Jan 2009)
+
+  14 Jan 2009; Torsten Veller <tove@gentoo.org> +metadata.xml,
+  +Data-OptList-0.103.ebuild:
+  Initial commit. From the perl overlay

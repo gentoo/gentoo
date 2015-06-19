@@ -1,0 +1,24 @@
+# ChangeLog for app-emacs/rudel
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/rudel/ChangeLog,v 1.5 2014/06/07 11:41:23 ulm Exp $
+
+  07 Jun 2014; Ulrich Müller <ulm@gentoo.org> rudel-0.3_pre20110721.ebuild:
+  Remove redundant NEED_EMACS assignment.
+
+  17 Mar 2014; Ulrich Müller <ulm@gentoo.org> rudel-0.3_pre20110721.ebuild:
+  Drop dependency on virtual/emacs-cedet, as CEDET is included with Emacs 23.2
+  and later. Update ebuild to EAPI 5. Inherit readme.gentoo.eclass to replace
+  postinst elog message. Specify LICENSE more precisely.
+
+  26 Dec 2011; Ulrich Mueller <ulm@gentoo.org> rudel-0.3_pre20110721.ebuild:
+  Add app-arch/xz-utils to DEPEND.
+
+  23 Aug 2011; Ulrich Mueller <ulm@gentoo.org> rudel-0.3_pre20110721.ebuild:
+  Remove redundant entry from SRC_URI.
+
+*rudel-0.3_pre20110721 (22 Jul 2011)
+
+  22 Jul 2011; Ulrich Mueller <ulm@gentoo.org> +files/60rudel-gentoo.el,
+  +rudel-0.3_pre20110721.ebuild, +metadata.xml:
+  Initial import, from Emacs overlay. Ebuild contributed by me.
+

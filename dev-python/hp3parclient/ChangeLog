@@ -1,0 +1,24 @@
+# ChangeLog for dev-python/hp3parclient
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/hp3parclient/ChangeLog,v 1.5 2015/06/03 19:40:20 jlec Exp $
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> hp3parclient-2.0.0.ebuild:
+  Drop old Python implementations
+
+*hp3parclient-3.0.0 (28 Apr 2014)
+
+  28 Apr 2014; Matthew Thode <prometheanfire@gentoo.org>
+  +hp3parclient-3.0.0.ebuild:
+  more for cinder
+
+  18 Dec 2013; Ian Delaney <idella4@gentoo.org> hp3parclient-2.0.0.ebuild:
+  Add missing dep for doc build
+
+*hp3parclient-2.0.0 (15 Nov 2013)
+
+  15 Nov 2013; Ian Delaney <idella4@gentoo.org> +hp3parclient-2.0.0.ebuild,
+  +metadata.xml:
+  New dep to testsuite of cinder, ebuild prepped by me

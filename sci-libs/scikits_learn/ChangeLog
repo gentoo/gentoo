@@ -1,0 +1,184 @@
+# ChangeLog for sci-libs/scikits_learn
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/scikits_learn/ChangeLog,v 1.30 2015/05/22 14:42:42 jlec Exp $
+
+*scikits_learn-0.16.1 (22 May 2015)
+
+  22 May 2015; Justin Lecher <jlec@gentoo.org> +scikits_learn-0.16.1.ebuild:
+  Version Bump
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> scikits_learn-0.13.1.ebuild,
+  scikits_learn-0.14.1.ebuild:
+  Drop old Python implementations
+
+*scikits_learn-0.15.2 (14 Nov 2014)
+
+  14 Nov 2014; Justin Lecher <jlec@gentoo.org> scikits_learn-0.15.1.ebuild,
+  +scikits_learn-0.15.2.ebuild:
+  Version Bump
+
+  26 Oct 2014; Justin Lecher <jlec@gentoo.org> scikits_learn-0.15.1.ebuild:
+  Add missing dep for doc building, #451834
+
+*scikits_learn-0.15.1 (26 Oct 2014)
+
+  26 Oct 2014; Justin Lecher <jlec@gentoo.org> +scikits_learn-0.15.1.ebuild:
+  Version Bump, #521042
+
+  18 Sep 2013; Justin Lecher <jlec@gentoo.org> scikits_learn-0.13.1.ebuild,
+  scikits_learn-0.14.1.ebuild, metadata.xml:
+  Drop broken python Abis; enhance test phase
+
+  08 Aug 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  scikits_learn-0.14.1.ebuild:
+  Version bump. Tentative to remove bundled joblib and atlas (which apparently
+  uses only cblas functions)
+
+*scikits_learn-0.14.1 (08 Aug 2013)
+
+  08 Aug 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/scikits_learn-0.14.1-system-cblas.patch, +scikits_learn-0.14.1.ebuild,
+  -scikits_learn-0.13-r1.ebuild, metadata.xml:
+  Version bump. Tentative to remove bundled joblib and atlas (which apparently
+  uses only cblas functions)
+
+  15 May 2013; Justin Lecher <jlec@gentoo.org> scikits_learn-0.13.1.ebuild,
+  metadata.xml:
+  Drop parallel build, has problem here
+
+  29 Apr 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  scikits_learn-0.13.1.ebuild:
+  Added python3 support
+
+*scikits_learn-0.13.1 (03 Mar 2013)
+
+  03 Mar 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +scikits_learn-0.13.1.ebuild, -files/0.10-atlas.patch,
+  -files/0.12.1-linalg.patch:
+  Version bump
+
+  21 Feb 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  -scikits_learn-0.12.1.ebuild, -scikits_learn-0.13.ebuild, metadata.xml:
+  Added upstream remote-id, removed old
+
+*scikits_learn-0.13-r1 (08 Feb 2013)
+
+  08 Feb 2013; Justin Lecher <jlec@gentoo.org> +scikits_learn-0.13-r1.ebuild,
+  metadata.xml:
+  Move to new python eclasses
+
+*scikits_learn-0.13 (30 Jan 2013)
+
+  30 Jan 2013; Sébastien Fabbro <bicatali@gentoo.org>
+  +scikits_learn-0.13.ebuild:
+  Version bump
+
+  10 Dec 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  -scikits_learn-0.11.ebuild, scikits_learn-0.12.1.ebuild:
+  Restricting python-3, removed old
+
+*scikits_learn-0.12.1 (30 Nov 2012)
+
+  30 Nov 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +files/0.12.1-linalg.patch, +scikits_learn-0.12.1.ebuild:
+  Version bump
+
+  21 Jun 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  -scikits_learn-0.10-r1.ebuild, scikits_learn-0.11.ebuild:
+  Restrict pypy
+
+*scikits_learn-0.11 (08 May 2012)
+
+  08 May 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  +scikits_learn-0.11.ebuild:
+  Version bump
+
+*scikits_learn-0.10-r1 (23 Apr 2012)
+
+  23 Apr 2012; Sébastien Fabbro <bicatali@gentoo.org> +files/0.10-atlas.patch,
+  -scikits_learn-0.9.ebuild, -scikits_learn-0.10.ebuild,
+  +scikits_learn-0.10-r1.ebuild:
+  Added a patch which makes sure cblas stock libraries are used instead of
+  bundled ATLAS library. Fixed doc generation with sphinx to link datasets in
+  plot generation
+
+  05 Feb 2012; Mike Gilbert <floppym@gentoo.org> scikits_learn-0.10.ebuild,
+  scikits_learn-0.9.ebuild:
+  Inherit multilib.
+
+*scikits_learn-0.10 (05 Feb 2012)
+
+  05 Feb 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  -scikits_learn-0.8.1.ebuild, +scikits_learn-0.10.ebuild, metadata.xml:
+  Version bump
+
+  24 Jan 2012; Justin Lecher <jlec@gentoo.org> scikits_learn-0.9.ebuild,
+  metadata.xml:
+  Keyworded for ~-linux prefix on request, #400541
+
+  04 Jan 2012; Sébastien Fabbro <bicatali@gentoo.org>
+  scikits_learn-0.9.ebuild:
+  Fix for bug #397605 by adding -shared to LDFLAGS
+
+*scikits_learn-0.9 (25 Nov 2011)
+
+  25 Nov 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  -scikits_learn-0.7.1.ebuild, -scikits_learn-0.8.ebuild,
+  +scikits_learn-0.9.ebuild:
+  Version bump
+
+*scikits_learn-0.8.1 (26 Jul 2011)
+
+  26 Jul 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  +scikits_learn-0.8.1.ebuild:
+  Version bump
+
+*scikits_learn-0.8 (09 Jun 2011)
+
+  09 Jun 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  -scikits_learn-0.6.ebuild, -scikits_learn-0.7.ebuild,
+  +scikits_learn-0.8.ebuild:
+  Version bump
+
+*scikits_learn-0.7.1 (30 Mar 2011)
+
+  30 Mar 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  +scikits_learn-0.7.1.ebuild:
+  Bump
+
+*scikits_learn-0.7 (05 Mar 2011)
+
+  05 Mar 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  +scikits_learn-0.7.ebuild:
+  Version bump
+
+*scikits_learn-0.6 (08 Jan 2011)
+
+  08 Jan 2011; Sébastien Fabbro <bicatali@gentoo.org>
+  +scikits_learn-0.6.ebuild, +metadata.xml:
+  Initial import to the main tree
+
+  04 Dec 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  scikits_learn-0.5.ebuild:
+  Now depend on common scikits
+
+*scikits_learn-0.5 (04 Dec 2010)
+
+  04 Dec 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +scikits_learn-0.5.ebuild:
+  Version bump. Now depends on sci-libs/scikits.
+
+*scikits_learn-0.4 (05 Aug 2010)
+
+  05 Aug 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  -scikits_learn-0.2.ebuild, +scikits_learn-0.4.ebuild:
+  Version bump. Now depend on system libsvm
+
+  29 Jun 2010; Justin Lecher <jlec@gentoo.org> scikits_learn-0.2.ebuild:
+  Python ABI fixes
+
+*scikits_learn-0.2 (26 Mar 2010)
+
+  26 Mar 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +scikits_learn-0.2.ebuild, +metadata.xml:
+  Initial import

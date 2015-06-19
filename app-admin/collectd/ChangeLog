@@ -1,0 +1,362 @@
+# ChangeLog for app-admin/collectd
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/collectd/ChangeLog,v 1.68 2014/12/28 14:43:46 titanofold Exp $
+
+  28 Dec 2014; Aaron W. Swenson <titanofold@gentoo.org> collectd-5.4.0.ebuild,
+  collectd-5.4.1.ebuild, collectd-5.4.1-r1.ebuild:
+  Rename virtual/postgresql to dev-db/postgresql
+
+*collectd-5.4.1-r1 (26 Dec 2014)
+
+  26 Dec 2014; Michał Górny <mgorny@gentoo.org> +collectd-5.4.1-r1.ebuild:
+  Convert to python-single-r1.
+
+  17 Nov 2014; Andreas K. Huettel <dilfridge@gentoo.org> collectd-5.4.0.ebuild,
+  collectd-5.4.1.ebuild:
+  Replace fixlocalpod with perl_delete_localpod
+
+  03 Nov 2014; Aaron W. Swenson <titanofold@gentoo.org> collectd-5.4.0.ebuild,
+  collectd-5.4.1.ebuild:
+  Update PostgreSQL dependencies and/or checks to virtual/postgresql.
+
+  02 Nov 2014; Sven Vermeulen <swift@gentoo.org> collectd-5.4.0.ebuild,
+  collectd-5.4.1.ebuild:
+  Remove sec-policy/selinux-* dependency from DEPEND but keep in RDEPEND (bug
+  #527698)
+
+  19 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org>
+  -collectd-5.2.2.ebuild, -collectd-5.3.0.ebuild:
+  Remove old
+
+  09 Oct 2014; Andreas K. Huettel <dilfridge@gentoo.org> collectd-5.2.2.ebuild,
+  collectd-5.3.0.ebuild, collectd-5.4.0.ebuild, collectd-5.4.1.ebuild:
+  The libperl ebuild is only a dummy and will be removed; libperl is provided
+  by dev-lang/perl.
+
+  14 Jul 2014; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Whitespace.
+
+  30 Jun 2014; Sven Vermeulen <swift@gentoo.org> collectd-5.2.2.ebuild,
+  collectd-5.3.0.ebuild, collectd-5.4.0.ebuild, collectd-5.4.1.ebuild:
+  Add USE=selinux dependency to sec-policy/selinux-collectd
+
+*collectd-5.4.1 (26 May 2014)
+
+  26 May 2014; Manuel Rüger <mrueg@gentoo.org> +collectd-5.4.1.ebuild,
+  +files/collectd-5.4.1-libocci.patch, +files/collectd-5.4.1-libperl.patch,
+  +files/collectd-5.4.1-lt.patch, +files/collectd-5.4.1-nohal.patch,
+  -collectd-5.1.0-r1.ebuild, -collectd-5.1.0-r2.ebuild,
+  -collectd-5.1.1-r1.ebuild, -collectd-5.1.1.ebuild, -collectd-5.2.0-r1.ebuild,
+  -collectd-5.2.0.ebuild, -collectd-5.2.1.ebuild,
+  -files/collectd-4.10.1-libperl.patch, -files/collectd-4.10.3-lt.patch,
+  -files/collectd-5.1.0-mongoc06.patch, -files/collectd-5.1.0-netlink.patch,
+  -files/collectd-5.1.1-perl-prefix.patch:
+  Version bump. Cleanup old. Proxy commit for Johan Bergström. Fixes bug
+  #501644.
+
+  01 Mar 2014; Michał Górny <mgorny@gentoo.org> collectd-5.1.0-r1.ebuild,
+  collectd-5.1.0-r2.ebuild, collectd-5.1.1-r1.ebuild, collectd-5.1.1.ebuild,
+  collectd-5.2.0-r1.ebuild, collectd-5.2.0.ebuild, collectd-5.2.1.ebuild,
+  collectd-5.2.2.ebuild, collectd-5.3.0.ebuild, collectd-5.4.0.ebuild:
+  Update libgcrypt dep to use slot :0.
+
+  23 Dec 2013; Tom Wijsman <TomWij@gentoo.org>
+  -files/collectd-4.10.1-libiptc.patch, -files/collectd-4.10.1-noowniptc.patch,
+  -files/collectd-4.10.2-libnotify-0.7.patch:
+  [QA] Remove unused files.
+
+  24 Nov 2013; Sergey Popov <pinkbyte@gentoo.org> collectd-5.1.0-r1.ebuild,
+  collectd-5.1.0-r2.ebuild, collectd-5.1.1.ebuild, collectd-5.1.1-r1.ebuild,
+  collectd-5.2.0.ebuild, collectd-5.2.0-r1.ebuild, collectd-5.2.1.ebuild,
+  collectd-5.2.2.ebuild, collectd-5.3.0.ebuild, collectd-5.4.0.ebuild:
+  Package should not depend on dev-lang/perl unconditionally, bug #487406.
+  Thanks to Nikoli <nikoli AT gmx.us> for discovering this issue
+
+  08 Sep 2013; Markos Chandras <hwoarang@gentoo.org> files/collectd.initd:
+  Avoid bashisms in init script. Bug #482070 thanks to Johan Bergström
+  <bugs@bergstroem.nu>
+
+*collectd-5.4.0 (22 Aug 2013)
+
+  22 Aug 2013; Tom Wijsman <TomWij@gentoo.org> +collectd-5.4.0.ebuild,
+  metadata.xml:
+  EAPI 5. Version bump to 5.4.0. Added cgroups, lvm and statsd plugins; amongst
+  other fixes. Proxied commit for Johan Bergström, fixes bug #482070.
+
+*collectd-5.2.2 (12 May 2013)
+
+  12 May 2013; Markos Chandras <hwoarang@gentoo.org> +collectd-5.2.2.ebuild:
+  Version bump. Bug #465602. Thanks s to Johan Bergström <bugs@bergstroem.nu>
+
+*collectd-5.3.0 (11 May 2013)
+
+  11 May 2013; Jan Matejka <yac@gentoo.org> +collectd-5.3.0.ebuild:
+  Version bump thanks to Johan Bergström <bugs@bergstroem.nu>. Bug 465602
+
+  06 Mar 2013; Markos Chandras <hwoarang@gentoo.org> collectd-5.2.1.ebuild:
+  Fix building without perl
+
+*collectd-5.2.1 (05 Mar 2013)
+
+  05 Mar 2013; Markos Chandras <hwoarang@gentoo.org> +collectd-5.2.1.ebuild:
+  Version bump. #454594. Thanks to Johan Bergström <bugs@bergstroem.nu>
+
+  16 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> collectd-5.2.0-r1.ebuild:
+  Sort eclasses inherit order, wrt bug #448480. Changes by Johan Bergström
+
+*collectd-5.2.0-r1 (16 Jan 2013)
+
+  16 Jan 2013; Sergey Popov <pinkbyte@gentoo.org> +collectd-5.2.0-r1.ebuild:
+  Revision bump: add installation of systemd service file and other little
+  fixes, wrt bug #448480. Thanks to Johan Bergström
+
+*collectd-5.2.0 (03 Dec 2012)
+
+  03 Dec 2012; Markos Chandras <hwoarang@gentoo.org> +collectd-5.2.0.ebuild,
+  metadata.xml:
+  Version bump thanks to Johan Bergström <bugs@bergstroem.nu>. Bug #443954
+
+*collectd-5.1.1-r1 (03 Dec 2012)
+
+  03 Dec 2012; Markos Chandras <hwoarang@gentoo.org> +collectd-5.1.1-r1.ebuild,
+  +files/collectd-5.1.1-perl-prefix.patch:
+  Revbump to fix installation path for perl module. Bug #444360 thanks to Johan
+  Bergström <bugs@bergstroem.nu>
+
+*collectd-5.1.1 (19 Nov 2012)
+
+  19 Nov 2012; Markos Chandras <hwoarang@gentoo.org> +collectd-5.1.1.ebuild,
+  +files/collectd-5.1.1-lt.patch:
+  Version bump. Bug #443170. Thanks to Johan Bergström <bugs@bergstroem.nu>
+
+*collectd-5.1.0-r2 (30 Oct 2012)
+
+  30 Oct 2012; Markos Chandras <hwoarang@gentoo.org> +collectd-5.1.0-r2.ebuild,
+  +files/collectd-5.1.0-libperl.patch, +files/collectd-5.1.0-mongoc06.patch:
+  Revbump for #436538 and #437680. Thanks to Johan Bergström
+  <bugs@bergstroem.nu>
+
+  16 Sep 2012; Pacho Ramos <pacho@gentoo.org> -collectd-5.1.0.ebuild,
+  metadata.xml:
+  This package has a proxy maintainer, move to proxy-maintainers herd until some
+  dev volunteers to proxy it. Drop old.
+
+  11 Sep 2012; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Drop maintainership
+
+  31 May 2012; Zac Medico <zmedico@gentoo.org> collectd-5.1.0-r1.ebuild,
+  collectd-5.1.0.ebuild:
+  inherit multilib for get_libdir
+
+  25 May 2012; Andreas K. Huettel <dilfridge@gentoo.org> collectd-5.1.0.ebuild,
+  metadata.xml:
+  Enable threshold and v5upgrade plugins
+
+  24 May 2012; Mike Frysinger <vapier@gentoo.org> collectd-5.1.0-r1.ebuild,
+  collectd-5.1.0.ebuild:
+  Inherit user for enewuser/etc...
+
+*collectd-5.1.0-r1 (07 May 2012)
+
+  07 May 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  -files/collectd-5.0.0-varnish.patch, -files/collectd-5.0.0-yajl2-2.patch,
+  -files/collectd-5.0.0-yajl2.patch, -files/collectd-5.0.1-varnish.patch,
+  -collectd-5.0.2-r1.ebuild, -files/collectd-5.0.2-irq.patch,
+  -files/collectd-5.0.2-message.patch, collectd-5.1.0.ebuild,
+  +collectd-5.1.0-r1.ebuild, +files/collectd-5.1.0-netlink.patch:
+  Fix compilation with newest iproute2 / libnetlink, bug 413993
+
+  03 May 2012; Jeff Horelick <jdhore@gentoo.org> collectd-5.0.2-r1.ebuild,
+  collectd-5.1.0.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*collectd-5.1.0 (08 Apr 2012)
+
+  08 Apr 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  +collectd-5.1.0.ebuild, metadata.xml:
+  Version bump
+
+  01 Apr 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  -collectd-5.0.2.ebuild, collectd-5.0.2-r1.ebuild:
+  Require at least iptables-1.4.13, fixes bug 375733. Drop old.
+
+  12 Feb 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  -collectd-5.0.0-r2.ebuild, -collectd-5.0.1.ebuild:
+  Remove old
+
+*collectd-5.0.2-r1 (12 Feb 2012)
+
+  12 Feb 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  +collectd-5.0.2-r1.ebuild, +files/collectd-5.0.2-message.patch:
+  Increase message buffer size for memcached, bug 402569
+
+*collectd-5.0.2 (07 Feb 2012)
+
+  07 Feb 2012; Andreas K. Huettel <dilfridge@gentoo.org>
+  +collectd-5.0.2.ebuild, +files/collectd-5.0.2-irq.patch,
+  files/collectd.initd:
+  Version bump, thanks Johan
+
+*collectd-5.0.1 (22 Oct 2011)
+
+  22 Oct 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -collectd-4.10.3-r1.ebuild, -collectd-5.0.0-r1.ebuild,
+  +collectd-5.0.1.ebuild, +files/collectd-5.0.1-varnish.patch:
+  Version bump; add varnish-3 patch, bug 386993
+
+  18 Oct 2011; Jeroen Roovers <jer@gentoo.org> metadata.xml:
+  Fix maintainer tag order and remove bug wrangler instructions that machines
+  would not understand.
+
+*collectd-5.0.0-r2 (17 Sep 2011)
+
+  17 Sep 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +collectd-5.0.0-r2.ebuild, +files/collectd-5.0.0-varnish.patch:
+  Add support for varnish plugin and fix bug 380297
+
+  26 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  collectd-5.0.0-r1.ebuild:
+  Add libgcrypt dependency, bug 376751
+
+  26 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org> metadata.xml:
+  Improve metadata
+
+  25 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org> files/collectd.initd:
+  Fix option deprecation warning in init script, bug 375731
+
+  25 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  collectd-5.0.0-r1.ebuild, +files/collectd-5.0.0-yajl2-2.patch:
+  Add missing yajl 1/2 check, bug 374411
+
+  25 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  collectd-4.10.3-r1.ebuild, collectd-5.0.0-r1.ebuild:
+  Add sys-devel/libtool to RDEPEND, bug 376085
+
+  18 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  collectd-5.0.0-r1.ebuild, +files/collectd-5.0.0-yajl2.patch, metadata.xml:
+  Add upstream compatibility patch for yajl-v2, bug 374411; add Johan
+  Bergström as proxied maintainer
+
+  24 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  collectd-4.10.3-r1.ebuild, +files/collectd-4.10.3-werror.patch,
+  collectd-5.0.0-r1.ebuild:
+  Don't use -Werror else gcc-4.6 will drive us mad; move 4.10.3 to EAPI=4;
+  use wrappers for chown and chmod
+
+*collectd-5.0.0-r1 (24 Apr 2011)
+*collectd-4.10.3-r1 (24 Apr 2011)
+
+  24 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -collectd-4.10.2-r3.ebuild, -collectd-4.10.3.ebuild,
+  +collectd-4.10.3-r1.ebuild, -collectd-5.0.0.ebuild,
+  +collectd-5.0.0-r1.ebuild, files/collectd.confd, files/collectd.initd:
+  Add useflag for perl bindings and static libs, run as unprivileged user;
+  bug 361723. Thanks to Bruno 'bonbons' on #collectd.
+
+  24 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  collectd-4.10.3.ebuild, +files/collectd-4.10.3-lt.patch,
+  collectd-5.0.0.ebuild:
+  Properly address the libtool / eautoreconf problem
+
+*collectd-5.0.0 (24 Apr 2011)
+
+  24 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +collectd-5.0.0.ebuild:
+  Version bump
+
+  30 Mar 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  collectd-4.10.3.ebuild, metadata.xml:
+  Added support for sys-power/nut
+
+*collectd-4.10.3 (30 Mar 2011)
+
+  30 Mar 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +collectd-4.10.3.ebuild:
+  Version bump, thanks to octo and bonbons on #collectd for the help!
+
+*collectd-4.10.2-r3 (07 Feb 2011)
+
+  07 Feb 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +collectd-4.10.2-r3.ebuild, +files/collectd-4.10.2-nohal.patch:
+  Remove hal dependency (bug 353839) and useless static archives and libtool
+  files (bug 353837)
+
+  06 Feb 2011; Samuli Suominen <ssuominen@gentoo.org>
+  collectd-4.10.2-r2.ebuild, +files/collectd-4.10.2-libnotify-0.7.patch:
+  Fix building with x11-libs/libnotify >= 0.7.
+
+  28 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  collectd-4.10.2-r2.ebuild:
+  Add hints about the changed configuration of the perl and python plugins
+  to config file (bug 351265, thanks drobbins!)
+
+  24 Dec 2010; Alex Legler <a3li@gentoo.org> -collectd-4.10.1-r4.ebuild:
+  Removing vulnerable ebuilds, bug 347622.
+
+*collectd-4.10.2-r2 (21 Dec 2010)
+
+  21 Dec 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  -collectd-4.10.2-r1.ebuild, +collectd-4.10.2-r2.ebuild, metadata.xml:
+  Added curl_json support thanks to Johan Bergström, fixing bug 349124
+
+*collectd-4.10.2-r1 (17 Dec 2010)
+
+  17 Dec 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  -collectd-4.10.2.ebuild, +collectd-4.10.2-r1.ebuild, metadata.xml:
+  Include support for ping plugin since we now have net-libs/liboping. Fixes
+  bug 346907.
+
+*collectd-4.10.2 (16 Dec 2010)
+
+  16 Dec 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  -collectd-4.10.1-r2.ebuild, -collectd-4.10.1-r3.ebuild,
+  +collectd-4.10.2.ebuild, +files/collectd-4.10.2-libocci.patch,
+  files/collectd.initd, metadata.xml:
+  Version bump, adding configuration checking on startup and support for the
+  Oracle plugin. Thanks to Aurelien Minet for the new features.
+
+*collectd-4.10.1-r4 (08 Nov 2010)
+
+  08 Nov 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  +collectd-4.10.1-r4.ebuild:
+  Create group collectd at install; cleanup
+
+*collectd-4.10.1-r3 (31 Oct 2010)
+
+  31 Oct 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  +collectd-4.10.1-r3.ebuild, +files/logrotate:
+  Added support for the ipmi and netlink plugins and added a small logrotate
+  control file. Thanks to Daniel Deptula.
+
+  12 Oct 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  collectd-4.10.1-r2.ebuild, +files/collectd-4.10.1-noowniptc.patch:
+  Real fix for bug 340109: use libiptc only if needed for iptables plugin,
+  and completely disable bundled version
+
+  10 Oct 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  files/collectd.initd:
+  Removed --quiet from startup script
+
+  10 Oct 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  collectd-4.10.1-r2.ebuild:
+  Added unconditional dependency on iptables as workaround for bug 340109. A
+  real resolution will follow.
+
+  03 Oct 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  collectd-4.10.1-r2.ebuild:
+  Removed the PROCFS checks for speedup (on request from flameeyes)
+
+  29 Sep 2010; Diego E. Pettenò <flameeyes@gentoo.org>
+  collectd-4.10.1-r2.ebuild:
+  Fix DEPEND variables.
+
+*collectd-4.10.1-r2 (28 Sep 2010)
+
+  28 Sep 2010; Andreas K. Huettel <dilfridge@gentoo.org>
+  +collectd-4.10.1-r2.ebuild, +files/collectd-4.10.1-libiptc.patch,
+  +files/collectd-4.10.1-libperl.patch, +files/collectd.confd,
+  +files/collectd.initd, +metadata.xml:
+  New application, fixes bug 107076. Thanks to all the previous authors of
+  the ebuild since 2005 (see Bugzilla for details), to the reviewers on
+  #gentoo-sunrise and #gentoo-dev, and in particular to Boian Berberov, on
+  whose work this is mainly based.

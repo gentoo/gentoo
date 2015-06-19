@@ -1,0 +1,38 @@
+# ChangeLog for app-xemacs/ecb
+# Copyright 2002-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/ecb/ChangeLog,v 1.11 2014/08/10 18:52:02 slyfox Exp $
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> ecb-1.22.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  19 Mar 2008; Hans de Graaff <graaff@gentoo.org> metadata.xml:
+  A herd should not be listed as maintainer
+
+  25 Oct 2007; Hans de Graaff <graaff@gentoo.org> -ecb-1.01.ebuild:
+  Remove old version
+
+  03 Jun 2007; Hans de Graaff <graaff@gentoo.org> ecb-1.22.ebuild:
+  Stable on amd64, ppc, ppc64, sparc, x86 as per #175560
+
+  29 May 2007; Raúl Porcel <armin76@gentoo.org> ecb-1.22.ebuild:
+  alpha stable wrt #175560
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*ecb-1.22 (11 Nov 2006)
+
+  11 Nov 2006; Hans de Graaff <graaff@gentoo.org> +metadata.xml,
+  +ecb-1.22.ebuild:
+  Version bump with updated dependencies; add metadata.
+
+  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> ecb-1.01.ebuild:
+  Stable on alpha
+
+*ecb-1.01 (16 Dec 2002)
+
+  22 Feb 2003;  <rendhalver@gentoo.org> ecb-1.01.ebuild files/digest-ecb-1.01 :
+  Add ~alpha to KEYWORDS
+
+  16 Dec 2002; Rendhalver [Peter Brown] <rendhalver@gentoo.org> :
+  Initial import.

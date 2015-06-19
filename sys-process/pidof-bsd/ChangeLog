@@ -1,0 +1,57 @@
+# ChangeLog for sys-process/pidof-bsd
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/pidof-bsd/ChangeLog,v 1.11 2015/02/21 16:10:24 mgorny Exp $
+
+  21 Feb 2015; Michał Górny <mgorny@gentoo.org>
+  +files/pidof-bsd-20050501-fbsd10.patch, pidof-bsd-20050501-r4.ebuild:
+  Fix build failure on FreeBSD 10.0, https://github.com/gentoo/gentoo-portage-
+  rsync-mirror/pull/31 by nigoro.
+
+*pidof-bsd-20050501-r4 (24 May 2012)
+
+  24 May 2012; Richard Yao <ryao@gentoo.org> +pidof-bsd-20050501-r4.ebuild,
+  -pidof-bsd-20050501-r3.ebuild, files/pidof-bsd-20050501-pname.patch:
+  Fix patch to avoid undefined behavior, bug \#417181
+
+  26 Apr 2012; Alexis Ballier <aballier@gentoo.org>
+  pidof-bsd-20050501-r3.ebuild:
+  keyword ~amd64-fbsd
+
+  18 Jul 2009; Alexis Ballier <aballier@gentoo.org>
+  pidof-bsd-20050501-r3.ebuild:
+  make patches a bash array
+
+  18 Jul 2009; Alexis Ballier <aballier@gentoo.org>
+  -pidof-bsd-20050501-r1.ebuild, -pidof-bsd-20050501-r2.ebuild:
+  remove old
+
+  18 Jul 2009; Alexis Ballier <aballier@gentoo.org>
+  pidof-bsd-20050501-r3.ebuild:
+  depend on fbsd-mk-defs to avoid failures when building stages
+
+  17 Nov 2008; Diego E. Pettenò <flameeyes@gentoo.org>
+  files/pidof-bsd-20050501-pname.patch:
+  Fix patch with absolute paths.
+
+  18 Oct 2006; Roy Marples <uberlord@gentoo.org>
+  pidof-bsd-20050501-r3.ebuild:
+  Added ~sparc-fbsd keyword.
+
+*pidof-bsd-20050501-r3 (25 Sep 2006)
+
+  25 Sep 2006; Javier Villavicencio <the_paya@gentoo.org>
+  +files/pidof-bsd-20050501-pname.patch, +pidof-bsd-20050501-r3.ebuild:
+  Added patch from Roy Marples, fixes for new baselayout.
+
+*pidof-bsd-20050501-r2 (13 Apr 2006)
+
+  13 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/pidof-bsd-20050501-firstarg.patch, +pidof-bsd-20050501-r2.ebuild:
+  Add patch to check only first argument when using pidof -x, fixes rc-daemon.
+
+*pidof-bsd-20050501-r1 (01 Apr 2006)
+
+  01 Apr 2006; Diego Pettenò <flameeyes@gentoo.org>
+  +files/pidof-bsd-20050501-gfbsd.patch, +metadata.xml,
+  +pidof-bsd-20050501-r1.ebuild:
+  Initial import in portage, from gentoo-alt overlay.

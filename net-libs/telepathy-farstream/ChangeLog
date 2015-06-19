@@ -1,0 +1,133 @@
+# ChangeLog for net-libs/telepathy-farstream
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/telepathy-farstream/ChangeLog,v 1.31 2015/02/12 11:47:36 pacho Exp $
+
+  12 Feb 2015; Pacho Ramos <pacho@gentoo.org> -telepathy-farstream-0.6.1.ebuild,
+  telepathy-farstream-0.6.2.ebuild:
+  Needs to be rebuilt when farstream .so version changes, drop old
+
+  19 Dec 2014; Pacho Ramos <pacho@gentoo.org> telepathy-farstream-0.6.2.ebuild:
+  amd64 stable, bug 529964
+
+  18 Dec 2014; Pacho Ramos <pacho@gentoo.org> telepathy-farstream-0.6.2.ebuild:
+  x86 stable, bug 529964
+
+  02 Dec 2014; Pacho Ramos <pacho@gentoo.org> -telepathy-farstream-0.4.0.ebuild:
+  drop old
+
+*telepathy-farstream-0.6.2 (01 Sep 2014)
+
+  01 Sep 2014; Pacho Ramos <pacho@gentoo.org> +telepathy-farstream-0.6.2.ebuild:
+  Version bump
+
+  27 Apr 2014; Pacho Ramos <pacho@gentoo.org> -telepathy-farstream-0.6.0.ebuild:
+  drop old
+
+  06 Apr 2014; Gilles Dartiguelongue <eva@gentoo.org>
+  telepathy-farstream-0.4.0.ebuild:
+  Pin gst-python to 0.10 slot.
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> telepathy-farstream-0.6.1.ebuild:
+  x86 stable, bug 499954
+
+  09 Mar 2014; Pacho Ramos <pacho@gentoo.org> telepathy-farstream-0.6.1.ebuild:
+  amd64 stable, bug 499954
+
+*telepathy-farstream-0.6.1 (08 Mar 2014)
+
+  08 Mar 2014; Pacho Ramos <pacho@gentoo.org> +telepathy-farstream-0.6.1.ebuild:
+  Version bump
+
+*telepathy-farstream-0.4.0 (27 Oct 2013)
+
+  27 Oct 2013; Pacho Ramos <pacho@gentoo.org> +telepathy-farstream-0.4.0.ebuild:
+  net-im/ktp-call-ui still needs old version, thanks for johu for pointing this
+
+  27 Oct 2013; Pacho Ramos <pacho@gentoo.org> -telepathy-farstream-0.4.0.ebuild,
+  metadata.xml:
+  Voip herd is removed: http://article.gmane.org/gmane.linux.gentoo.devel/88434
+
+  30 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org>
+  -telepathy-farstream-0.2.3.ebuild:
+  Clean up old revision.
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  telepathy-farstream-0.4.0.ebuild, telepathy-farstream-0.6.0.ebuild:
+  Stable for x86, wrt bug #458984
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org>
+  telepathy-farstream-0.4.0.ebuild, telepathy-farstream-0.6.0.ebuild:
+  Stable for amd64, wrt bug #458984
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  telepathy-farstream-0.6.0.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  telepathy-farstream-0.6.0.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  telepathy-farstream-0.6.0.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  telepathy-farstream-0.6.0.ebuild:
+  Add ~ppc64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org>
+  telepathy-farstream-0.6.0.ebuild:
+  Add ~ppc, wrt bug #449220
+
+*telepathy-farstream-0.6.0 (26 Dec 2012)
+
+  26 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org>
+  -telepathy-farstream-0.1.2.ebuild, +telepathy-farstream-0.6.0.ebuild:
+  Version bump. Clean up old revision.
+
+  23 Dec 2012; Markus Meier <maekke@gentoo.org>
+  telepathy-farstream-0.4.0.ebuild:
+  add ~arm
+
+  08 Dec 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  telepathy-farstream-0.2.3.ebuild, telepathy-farstream-0.4.0.ebuild:
+  Pin farstream slot.
+
+  08 Oct 2012; Andreas Schuerch <nativemad@gentoo.org>
+  telepathy-farstream-0.2.3.ebuild:
+  x86 stable, see bug 422989
+
+  06 Oct 2012; Agostino Sarubbo <ago@gentoo.org>
+  telepathy-farstream-0.2.3.ebuild:
+  Stable for amd64, wrt bug #422989
+
+*telepathy-farstream-0.4.0 (25 Jun 2012)
+
+  25 Jun 2012; Alexandre Rostovtsev <tetromino@gentoo.org>
+  -telepathy-farstream-0.1.1.ebuild, +telepathy-farstream-0.4.0.ebuild:
+  Version bump, drop old.
+
+*telepathy-farstream-0.2.3 (26 Mar 2012)
+
+  26 Mar 2012; Nirbheek Chauhan <nirbheek@gentoo.org>
+  +telepathy-farstream-0.2.3.ebuild:
+  Bump, uses farstream instead of farsight2. Masked because it blocks farsight2
+  and everything hasn't been ported over yet.
+
+  14 Jan 2012; Markus Meier <maekke@gentoo.org>
+  telepathy-farstream-0.1.2.ebuild:
+  x86 stable, bug #393007
+
+  29 Dec 2011; Pacho Ramos <pacho@gentoo.org> telepathy-farstream-0.1.2.ebuild:
+  amd64 stable, bug 393007
+
+*telepathy-farstream-0.1.2 (20 Nov 2011)
+
+  20 Nov 2011; Pacho Ramos <pacho@gentoo.org> +telepathy-farstream-0.1.2.ebuild:
+  Version bump.
+
+*telepathy-farstream-0.1.1 (30 Oct 2011)
+
+  30 Oct 2011; Alexandre Rostovtsev <tetromino@gentoo.org>
+  +telepathy-farstream-0.1.1.ebuild, +metadata.xml:
+  New ebuild, moved from the gnome overlay, used by empathy-3.2.

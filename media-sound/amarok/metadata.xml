@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>kde</herd>
+<herd>sound</herd>
+<maintainer>
+	<email>jmbsvicetto@gentoo.org</email>
+	<name>Jorge Manuel B. S. Vicetto</name>
+</maintainer>
+<use>
+	<flag name="embedded">Use libmysqld, MySQL embedded server library.
+		Try disabling this if you encounter -PIC related in amarok,
+		it will make amarok rely only on standalone MySQL server.
+	</flag>
+	<flag name="lastfm">Enable Last.fm streaming services support through
+		<pkg>media-libs/liblastfm</pkg>
+	</flag>
+	<flag name="mp3tunes">Enable mp3tunes integration</flag>
+	<flag name="mtp">Enable support for libMTP (Plays4Sure) devices access through libmtp
+	</flag>
+	<flag name="nepomuk">Enable Nepomuk based semantic desktop support (deprecated)</flag>
+	<flag name="ofa">Use <pkg>media-libs/libofa</pkg> to compute MusicDNS acoustic
+		fingerprints (used by MusicBrainz)
+	</flag>
+	<flag name="utils">Build the utils - old <pkg>media-sound/amarok-utils</pkg>
+	</flag>
+</use>
+</pkgmetadata>

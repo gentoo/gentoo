@@ -1,0 +1,347 @@
+# ChangeLog for media-gfx/gtkam
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gtkam/ChangeLog,v 1.90 2014/04/27 07:32:12 pacho Exp $
+
+  27 Apr 2014; Pacho Ramos <pacho@gentoo.org> -gtkam-0.1.18.ebuild:
+  drop old
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gtkam-0.2.0.ebuild:
+  Fix wrong commit, bug 502160
+
+  22 Feb 2014; Pacho Ramos <pacho@gentoo.org> gtkam-0.2.0.ebuild:
+  arch stable, bug 888
+
+  28 Dec 2013; Pacho Ramos <pacho@gentoo.org>
+  +files/gtkam-0.2.0-underlinking.patch, gtkam-0.2.0.ebuild:
+  Fix underlinking (#496136 by kalle)
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> gtkam-0.2.0.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> gtkam-0.2.0.ebuild:
+  amd64 stable, bug #478252
+
+  16 Feb 2013; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Cleanup due bug #96436
+
+*gtkam-0.2.0 (15 Sep 2012)
+
+  15 Sep 2012; Pacho Ramos <pacho@gentoo.org> +gtkam-0.2.0.ebuild,
+  -files/gtkam-0.1.14-as-needed.patch,
+  -files/gtkam-0.1.16.1-desktop-validation.patch, -gtkam-0.1.16.1.ebuild,
+  -gtkam-0.1.17.ebuild:
+  Version bump, drop old.
+
+  15 Jul 2012; Raúl Porcel <armin76@gentoo.org> gtkam-0.1.18.ebuild:
+  alpha/sparc stable wrt #410611
+
+  24 May 2012; Samuli Suominen <ssuominen@gentoo.org> gtkam-0.1.18.ebuild:
+  ppc stable wrt #410611
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> gtkam-0.1.16.1.ebuild,
+  gtkam-0.1.17.ebuild, gtkam-0.1.18.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  29 Apr 2012; Markus Meier <maekke@gentoo.org> gtkam-0.1.18.ebuild:
+  x86 stable, bug #410611
+
+  18 Apr 2012; Agostino Sarubbo <ago@gentoo.org> gtkam-0.1.18.ebuild:
+  Stable for amd64, wrt bug #410611
+
+  25 Mar 2012; Raúl Porcel <armin76@gentoo.org> gtkam-0.1.17.ebuild:
+  alpha/sparc stable wrt #393007
+
+  05 Mar 2012; Brent Baude <ranger@gentoo.org> gtkam-0.1.17.ebuild:
+  Marking gtkam-0.1.17 ppc stable for bug 393007
+
+*gtkam-0.1.18 (31 Jan 2012)
+
+  31 Jan 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/gtkam-0.1.18-desktop-validation.patch, +gtkam-0.1.18.ebuild:
+  Version bump, it should also fix location problems like bug #335292 by
+  Alexander E. Patrakov.
+
+  14 Jan 2012; Markus Meier <maekke@gentoo.org> gtkam-0.1.17.ebuild:
+  x86 stable, bug #393007
+
+  29 Dec 2011; Pacho Ramos <pacho@gentoo.org> gtkam-0.1.17.ebuild:
+  amd64 stable, bug 393007
+
+  29 Dec 2011; Pacho Ramos <pacho@gentoo.org> gtkam-0.1.17.ebuild:
+  Move gnome2_src_prepare to proper place.
+
+  12 Mar 2011; Tim Harder <radhermit@gentoo.org> gtkam-0.1.17.ebuild:
+  Use slot dep for gtk+.
+
+*gtkam-0.1.17 (13 May 2010)
+
+  13 May 2010; Peter Volkov <pva@gentoo.org> +gtkam-0.1.17.ebuild:
+  Version bump, bug #306727, thank hitachi for report.
+
+  09 Jul 2009; Gilles Dartiguelongue <eva@gentoo.org> -gtkam-0.1.14.ebuild,
+  -gtkam-0.1.15.ebuild, gtkam-0.1.16.1.ebuild,
+  +files/gtkam-0.1.16.1-desktop-validation.patch, -files/gtkam.png:
+  Fix validity of .desktop file, bug #271569. Clean up old revisions.
+
+  09 Jun 2009; Diego E. Pettenò <flameeyes@gentoo.org> gtkam-0.1.14.ebuild:
+  Avoid installing ABOUT-NLS file.
+
+  17 May 2009; nixnut <nixnut@gentoo.org> gtkam-0.1.16.1.ebuild:
+  ppc stable #265523
+
+  22 Apr 2009; Markus Meier <maekke@gentoo.org> gtkam-0.1.16.1:
+  amd64 stable, bug #265523
+
+  14 Apr 2009; Raúl Porcel <armin76@gentoo.org> gtkam-0.1.16.1.ebuild:
+  x86 stable wrt #265523
+
+  12 Apr 2009; Tobias Klausmann <klausman@gentoo.org> gtkam-0.1.16.1.ebuild:
+  Stable on alpha, bug #265523
+
+  09 Apr 2009; Ferris McCormick <fmccor@gentoo.org> gtkam-0.1.16.1.ebuild:
+  Sparc stable, Bug #265523.
+
+  17 Jan 2009; Markus Meier <maekke@gentoo.org>
+  -files/gtkam-0.1.16.1-gettext.patch, gtkam-0.1.16.1.ebuild:
+  depend on >=dev-util/intltool-0.40 and drop unneeded gettext patch, bug
+  #252255
+
+*gtkam-0.1.16.1 (21 Dec 2008)
+
+  21 Dec 2008; Markus Meier <maekke@gentoo.org>
+  +files/gtkam-0.1.16.1-gettext.patch, +gtkam-0.1.16.1.ebuild:
+  bump to 0.1.16.1, bug #250847; intltool problems solved by leio
+
+  25 Jun 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  -files/gtkam-0.1.10-norpm.patch, -files/gtkam-0.1.12-as-needed.patch,
+  -files/gtkam-0.1.12-desktop-image.patch,
+  -files/gtkam-0.1.12-helpdoc.patch, -gtkam-0.1.12-r2.ebuild:
+  clean up old revision.
+
+  25 May 2008; Tobias Klausmann <klausman@gentoo.org> gtkam-0.1.14.ebuild:
+  Stable on alpha, bug #178584
+
+  25 May 2008; Markus Meier <maekke@gentoo.org> gtkam-0.1.14.ebuild:
+  amd64 stable, bug #178584
+
+  25 May 2008; Markus Meier <maekke@gentoo.org> gtkam-0.1.14.ebuild:
+  remove MANUAL from DOCS (does not exist)
+
+  18 May 2008; Gilles Dartiguelongue <eva@gentoo.org>
+  files/gtkam-0.1.14-as-needed.patch:
+  update --as-needed patch, bug #169661.
+
+  18 May 2008; Raúl Porcel <armin76@gentoo.org> gtkam-0.1.14.ebuild:
+  sparc stable wrt #178584
+
+  17 May 2008; Raúl Porcel <armin76@gentoo.org> gtkam-0.1.12-r2.ebuild,
+  gtkam-0.1.14.ebuild, gtkam-0.1.15.ebuild:
+  Drop ia64, no hardware to test
+
+  17 May 2008; Christian Faulhammer <opfer@gentoo.org> gtkam-0.1.14.ebuild:
+  stable x86, bug 178584
+
+  16 May 2008; nixnut <nixnut@gentoo.org> gtkam-0.1.14.ebuild:
+  Stable on ppc wrt bug 178584
+
+*gtkam-0.1.15 (15 May 2008)
+
+  15 May 2008; Gilles Dartiguelongue <eva@gentoo.org> +gtkam-0.1.15.ebuild:
+  bump to 0.1.15. i18n update, fix broken png files.
+
+  15 May 2008; Markus Meier <maekke@gentoo.org> metadata.xml:
+  graphics herd will help to maintain this package
+
+  13 May 2008; Gilles Dartiguelongue <eva@gentoo.org> gtkam-0.1.14.ebuild:
+  Scrollkeeper is not optional for correct installation.
+  Fixing libgphoto dependency.
+
+  08 May 2007; Daniel Gryniewicz <dang@gentoo.org>
+  +files/gtkam-0.1.12-as-needed.patch, gtkam-0.1.12-r2.ebuild:
+  Fix building with --as-needed; bug #157893
+
+  31 Jan 2007; Saleem Abdulrasool <compnerd@gentoo.org> +files/gtkam.png,
+  gtkam-0.1.14.ebuild:
+  Fix issue caused by a courrupted icon in the tarball
+
+  29 Jan 2007; Saleem Abdulrasool <compnerd@gentoo.org> gtkam-0.1.14.ebuild:
+  Fix useflag handling and autotooling
+
+*gtkam-0.1.14 (29 Jan 2007)
+
+  29 Jan 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/gtkam-0.1.14-as-needed.patch, +gtkam-0.1.14.ebuild:
+  Version bump from upstream; patch for as-needed by flameeyes; resolves bug
+  #118311
+
+  29 Jan 2007; Saleem Abdulrasool <compnerd@gentoo.org>
+  -files/gtkam-0.1.10-gtk24.patch, -files/gtkam-0.1.11-gtk24.patch,
+  -gtkam-0.1.12-r1.ebuild:
+  Prune old release
+
+  23 Nov 2006; Tom Knight <tomk@gentoo.org> gtkam-0.1.12-r2.ebuild:
+  stable on amd64, fixes bug #154662
+
+  18 Nov 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  gtkam-0.1.12-r2.ebuild:
+  ppc stable, bug #154662
+
+  14 Nov 2006; Christian Faulhammer <opfer@gentoo.org>
+  gtkam-0.1.12-r2.ebuild:
+  stable x86, bug #154662
+
+  10 Nov 2006; John N. Laliberte <allanonjl@gentoo.org>
+  -gtkam-0.1.10-r1.ebuild, -gtkam-0.1.11.ebuild, -gtkam-0.1.12.ebuild,
+  gtkam-0.1.12-r1.ebuild, gtkam-0.1.12-r2.ebuild:
+  remove old versions, use gnome2_src_unpack to fix #154631 , cleanup ebuilds
+
+  27 Apr 2006; Marien Zwart <marienz@gentoo.org>
+  files/digest-gtkam-0.1.10-r1, files/digest-gtkam-0.1.11,
+  files/digest-gtkam-0.1.12, files/digest-gtkam-0.1.12-r1,
+  files/digest-gtkam-0.1.12-r2, Manifest:
+  Fixing SHA256 digest, pass four
+
+  09 Mar 2006; Aron Griffis <agriffis@gentoo.org> gtkam-0.1.12-r2.ebuild:
+  Mark 0.1.12-r2 stable on ia64
+
+  07 Feb 2006; Aron Griffis <agriffis@gentoo.org> gtkam-0.1.12-r2.ebuild:
+  Mark 0.1.12-r2 stable on alpha
+
+  06 Feb 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gtkam-0.1.12-r2.ebuild:
+  Stable on sparc
+
+  08 Jan 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  files/gtkam-0.1.12-desktop-image.patch:
+  Fixing up the patch.
+
+  08 Jan 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  gtkam-0.1.12-r2.ebuild:
+  Fixing up scrollkeeper collisions by taking advantage of the GNOME-2 eclass
+
+*gtkam-0.1.12-r2 (07 Jan 2006)
+
+  07 Jan 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  +files/gtkam-0.1.12-desktop-image.patch, +gtkam-0.1.12-r2.ebuild:
+  Adding desktop image icon patch to resolve bug #97924.
+
+  05 Jan 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  gtkam-0.1.12-r1.ebuild:
+  Keyworded ~sparc
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gtkam-0.1.12-r1.ebuild:
+  Stable on ppc.
+
+  13 Oct 2005; Aron Griffis <agriffis@gentoo.org> gtkam-0.1.12-r1.ebuild:
+  Mark 0.1.12-r1 stable on alpha/amd64/ia64/x86
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> gtkam-0.1.12.ebuild:
+  Stable on ppc.
+
+*gtkam-0.1.12-r1 (27 Aug 2005)
+
+  27 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  +files/gtkam-0.1.12-helpdoc.patch, gtkam-0.1.12.ebuild,
+  +gtkam-0.1.12-r1.ebuild:
+  Mark 0.1.12 stable on amd64 x86. Add 0.1.12-r1 which re-enables gnome
+  support and fixes a doc error, thanks to Tobias Sager #61248
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> gtkam-0.1.12.ebuild:
+  add ~alpha ~ia64
+
+  31 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org> gtkam-0.1.11.ebuild:
+  ppc stable
+
+  24 Jun 2005; Alastair Tse <liquidx@gentoo.org> gtkam-0.1.12.ebuild:
+  updated dep version and replaced USE jpeg with USE exif
+
+*gtkam-0.1.12 (24 Jun 2005)
+
+  24 Jun 2005; Alastair Tse <liquidx@gentoo.org> -gtkam-0.1.10.ebuild,
+  gtkam-0.1.11.ebuild, +gtkam-0.1.12.ebuild:
+  version bump (#96879)
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gtkam-0.1.10-r1.ebuild:
+  Stable on ppc.
+
+  09 Jun 2004; Yi Qiang <khai@gentoo.org> +files/gtkam-0.1.10-gtk24.patch,
+  gtkam-0.1.10-r1.ebuild, gtkam-0.1.11.ebuild:
+  Backported the gtk2.4 patch
+
+  04 May 2004; Alastair Tse <liquidx@gentoo.org> gtkam-0.1.11.ebuild:
+  add gnome2 eclass to get rid of scrollkeeper indexes
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> gtkam-0.1.10-r1.ebuild,
+  gtkam-0.1.10.ebuild, gtkam-0.1.11.ebuild:
+  Add inherit eutils
+
+  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> gtkam-0.1.11.ebuild:
+  Removing gnome deps, since it only builds a yelp file and we are missing the
+  gphoto2 docs in portage, the gnome deps served no purpose. For more
+  information, please see bug #36684.
+
+  11 Apr 2004; Alastair Tse <liquidx@gentoo.org> gtkam-0.1.11.ebuild:
+  fixed gtkam-0.1.11 dep to libgphoto2-2.1.4 (#47458)
+
+*gtkam-0.1.11 (28 Mar 2004)
+
+  28 Mar 2004; Alastair Tse <liquidx@gentoo.org> gtkam-0.1.11.ebuild,
+  files/gtkam-0.1.11-gtk24.patch:
+  version bump plus gtk2.4 fixes (#45510)
+
+  16 Feb 2004; Dylan Carlson <absinthe@gentoo.org> gtkam-0.1.10-r1.ebuild:
+  added ~amd64 keyword.
+
+  10 Nov 2003; Mike Gardiner <obz@gentoo.org> gtkam-0.1.10-r1.ebuild,
+  gtkam-0.1.10.ebuild:
+  Fixed homepage, gtkam is now at proj/gtkam
+
+  06 Oct 2003; Mike Gardiner <obz@gentoo.org> gtkam-0.1.10-r1.ebuild:
+  Marked stable on x86
+
+*gtkam-0.1.10-r1 (12 Sep 2003)
+
+  12 Sep 2003; <spider@gentoo.org> gtkam-0.1.10-r1.ebuild:
+  New rev to remove bonobo-activation.
+
+  09 Jul 2003; Alastair Tse <liquidx@gentoo.org> gtkam-0.1.10.ebuild,
+  gtkam-0.1.4.ebuild, gtkam-0.1.9.ebuild:
+  added pkgconfig deps and cleanup
+
+  10 Jun 2003; Alastair Tse <liquidx@gentoo.org> gtkam-0.1.10.ebuild:
+  bump to stable x86
+
+*gtkam-0.1.10 (11 May 2003)
+
+  11 May 2003; Alastair Tse <liquidx@gentoo.org> gtkam-0.1.10.ebuild,
+  files/gtkam-0.1.10-norpm.patch:
+  version bump. add gnome and exif support.
+
+*gtkam-0.1.9 (23 Oct 2002)
+
+  28 Mar 2003; Seemant Kulleen <seemant@gentoo.org> gtkam-0.1.9.ebuild:
+  nls in IUSE
+
+  31 Jan 2003; foser <foser@gentoo.org> gtkam-0.1.9.ebuild :
+  Doc fix (#12001)
+
+  29 Nov 2002; Jon Nall <nall@gentoo.org> gtkam-0.1.9.ebuild :
+  added ~ppc to KEYWORDS
+
+  27 Nov 2002; foser <foser@gentoo.org> gtkam-0.1.9.ebuild :
+  Fix deps to use GTK+-2 (bug #11228)
+  
+  23 Oct 2002; Spider <spider@gentoo.org> gtkam-0.1.9.ebuild :  Added the 
+  updated ebuild from Robert Davis <rdavis@uniformcompany.com> 
+
+*gtkam-0.1.4 (1 June 2002)
+
+  1 June 2002; Lasse Mikkelsen <lbm@fatalerror.dk> gtkam-0.1.4.ebuild :
+
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

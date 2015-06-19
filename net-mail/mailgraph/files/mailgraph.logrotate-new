@@ -1,0 +1,31 @@
+# $Header: /var/cvsroot/gentoo-x86/net-mail/mailgraph/files/mailgraph.logrotate-new,v 1.1 2007/04/01 19:30:00 ticho Exp $
+# logrotate config for mailgraph log
+
+/var/log/mailgraph/mailgraph.log {
+	## rotate daily
+	daily
+	## keep 30 old copies
+	rotate 30
+	## use .YYYYMMDD instead of .0,.1,.2 etc.
+	dateext
+	## also rotate empty logfiles to strictly retain chronology
+	ifempty
+	## re-create source logfile with original permissions
+	## do NOT use copy or copytruncate!
+	create
+	## compress on next logrotate run (e.g. next day) to give
+	## programs the chance to close the old logfile
+	delaycompress
+	## compress logfiles
+	compress
+	compresscmd /bin/gzip
+	compressoptions -9
+	uncompresscmd /bin/gunzip
+	## don't throw an error when a file doesn't exist
+	missingok
+	## restart mailgraph after rotating all logfiles
+	sharedscripts
+	postrotate
+		/etc/init.d/mailgraph restart >/dev/null
+	endscript
+}

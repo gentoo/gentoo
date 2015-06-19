@@ -1,0 +1,33 @@
+# ChangeLog for net-nds/led
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-nds/led/ChangeLog,v 1.8 2015/03/08 00:43:20 robbat2 Exp $
+
+  08 Mar 2015; Robin H. Johnson <robbat2@gentoo.org> -led-1.79.4.ebuild:
+  Cleanup.
+
+*led-1.111 (07 Nov 2011)
+
+  07 Nov 2011; Robin H. Johnson <robbat2@gentoo.org> +led-1.111.ebuild:
+  version bump, bug #353013.
+
+  17 Feb 2007; Robin H. Johnson <robbat2@gentoo.org> led-1.79.4.ebuild:
+  Add ~ppc keyword.
+
+  09 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  13 Feb 2006; Michael Cummings <mcummings@gentoo.org> led-1.79.4.ebuild:
+  Virtuals for some perl-core deps
+
+  18 Oct 2005; Karol Wojtaszek <sekretarz@gentoo.org> led-1.79.4.ebuild:
+  ~amd64 keyworded
+
+  24 May 2005; Michael Cummings <mcummings@gentoo.org> led-1.79.4.ebuild:
+  dev-perl/Digest-MD5 => perl-core/Digest-MD5
+
+*led-1.79.4 (08 Dec 2004)
+
+  08 Dec 2004; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
+  +led-1.79.4.ebuild:
+  New package, bug #71416. Based on submission by Gudleik Rasch
+  <gudleik@rastamatra.org>.

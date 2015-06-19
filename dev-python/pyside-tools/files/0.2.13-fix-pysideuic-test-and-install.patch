@@ -1,0 +1,27 @@
+diff -Naur pyside-tools-0.2.13.orig/CMakeLists.txt pyside-tools-0.2.13/CMakeLists.txt
+--- pyside-tools-0.2.13.orig/CMakeLists.txt	2012-03-09 00:46:56.377462594 +0100
++++ pyside-tools-0.2.13/CMakeLists.txt	2012-03-09 00:48:08.888556082 +0100
+@@ -11,7 +11,7 @@
+ set(pyside_tools_MICRO_VERSION "13")
+ set(pyside_tools_VERSION "${pyside_tools_MAJOR_VERSION}.${pyside_tools_MINOR_VERSION}.${pyside_tools_MICRO_VERSION}")
+ 
+-configure_file("pysideuic/__init__.py.in" "__init__.py" @ONLY)
++configure_file("pysideuic/__init__.py.in" "pysideuic/__init__.py" @ONLY)
+ 
+ option(BUILD_TESTS "Build tests." TRUE)
+ 
+@@ -34,13 +34,10 @@
+         GROUP_EXECUTE GROUP_READ
+         WORLD_EXECUTE WORLD_READ)
+ 
+-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/__init__.py"
+-        DESTINATION "${SITE_PACKAGE}/pysideuic")
+ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/pysideuic
+         DESTINATION ${SITE_PACKAGE}
+         PATTERN "*.in" EXCLUDE
+-        PATTERN "*pysideuic/__init__.py" EXCLUDE
+-        PATTERN "*pysideuic\\__init__.py" EXCLUDE)
++        PATTERN "*/pysideuic/*.1" EXCLUDE)
+ 
+ # Man pages for pyside-uic
+ if (NOT win32)

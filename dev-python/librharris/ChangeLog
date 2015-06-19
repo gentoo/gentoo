@@ -1,0 +1,27 @@
+# ChangeLog for dev-python/librharris
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/librharris/ChangeLog,v 1.5 2015/03/08 23:52:38 pacho Exp $
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> librharris-0.1.14-r1.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> librharris-0.1.14-r1.ebuild:
+  amd64 stable, bug 540290
+
+*librharris-0.1.14-r1 (31 Dec 2014)
+
+  31 Dec 2014; Ian Delaney <idella4@gentoo.org> +librharris-0.1.14-r1.ebuild,
+  -librharris-0.1.14.ebuild:
+  revbump; conversion -> distutils-r1, rm old
+
+  08 Nov 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  librharris-0.1.14.ebuild:
+  Update EAPI. Fix dependencies. Set SUPPORT_PYTHON_ABIS. Use PyPI mirrors.
+  Set PYTHON_MODNAME.
+
+*librharris-0.1.14 (03 Feb 2009)
+
+  03 Feb 2009; Patrick Lauer <patrick@gentoo.org> +metadata.xml,
+  +librharris-0.1.14.ebuild:
+  Initial import. Ebuild by Fernando V. <email@missionaccomplish.com>.
+  Closes #111808

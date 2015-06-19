@@ -1,0 +1,17 @@
+From: Nathan Phillip Brink <binki@gentoo.org>
+Date: 2011-06-22
+Subject: Fix missing $(LIBS) in the Makefiles where linking of modules
+	happens.
+
+diff -r 7c815ad6fa2e -r f195c349225a modules/Makerules
+--- a/modules/Makerules	Wed Jun 22 00:14:22 2011 -0400
++++ b/modules/Makerules	Wed Jun 22 13:32:24 2011 -0400
+@@ -104,7 +104,7 @@
+ 
+ # Compile one or more objects into a dynamic module.
+ $(TARGET).so: $(TARGET).o $(OBJECTS)
+-	$(CC_SHARED) $(CFLAGS) $(LFLAGS) $^ -o $@
++	$(CC_SHARED) $(CFLAGS) $(LFLAGS) $^ -o $@ $(LIBS)
+ 
+ # Compile one or more objects into a static module and generate a symbol
+ # list.  The .a file we create here is just a placeholder to show that

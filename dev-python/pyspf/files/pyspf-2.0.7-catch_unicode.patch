@@ -1,0 +1,22 @@
+See https://bugs.launchpad.net/pypolicyd-spf/+bug/832480
+diff -ur pyspf-2.0.7.orig/spf.py pyspf-2.0.7/spf.py
+--- spf.py	2012-02-03 10:26:20.000000000 +0800
++++ spf.py	2013-04-05 15:56:53.370995142 +0800
+@@ -1129,7 +1129,7 @@
+             try:
+                 return [''.join(s.decode("ascii") for s in a)
+                     for a in self.dns(domainname, 'TXT')]
+-            except UnicodeEncodeError:
++            except UnicodeError:
+                 raise PermError('Non-ascii character in SPF TXT record.')
+         return []
+     def dns_99(self, domainname):
+@@ -1138,7 +1138,7 @@
+             try:
+                 return [''.join(s.decode("ascii") for s in a)
+                     for a in self.dns(domainname, 'SPF')]
+-            except UnicodeEncodeError:
++            except UnicodeError:
+                 raise PermError('Non-ascii character in SPF record.')
+         return []
+ 

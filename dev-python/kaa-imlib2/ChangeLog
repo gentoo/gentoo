@@ -1,0 +1,86 @@
+# ChangeLog for dev-python/kaa-imlib2
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/kaa-imlib2/ChangeLog,v 1.21 2015/06/09 15:31:50 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> kaa-imlib2-0.2.3-r2.ebuild:
+  Drop old Python implementations
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org>
+  kaa-imlib2-0.2.3-r1.ebuild, kaa-imlib2-0.2.3-r2.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+*kaa-imlib2-0.2.3-r2 (01 Jul 2013)
+
+  01 Jul 2013; Ian Delaney <idella4@gentoo.org> +kaa-imlib2-0.2.3-r2.ebuild:
+  revbump; migrate -> distutils-r1
+
+  23 Feb 2012; Patrick Lauer <patrick@gentoo.org> kaa-imlib2-0.2.3-r1.ebuild:
+  Restricting pypy and jython
+
+  29 Jun 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  kaa-imlib2-0.2.3-r1.ebuild:
+  Set PYTHON_DEPEND.
+
+  18 Jan 2010; Robert Buchholz <rbu@gentoo.org> metadata.xml:
+  Dropping maintenance
+
+  31 Dec 2009; Christian Faulhammer <fauli@gentoo.org>
+  kaa-imlib2-0.2.3-r1.ebuild:
+  stable x86, bug 287622
+
+  26 Dec 2009; Pacho Ramos <pacho@gentoo.org> kaa-imlib2-0.2.3-r1.ebuild:
+  amd64 stable, bug 287622
+
+  19 Nov 2009; Mounir Lamouri <volkmar@gentoo.org>
+  kaa-imlib2-0.2.3-r1.ebuild:
+  Stable for ppc, bug 287622
+
+  04 Sep 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  kaa-imlib2-0.2.3-r1.ebuild:
+  Set SUPPORT_PYTHON_ABIS.
+
+*kaa-imlib2-0.2.3-r1 (16 Aug 2008)
+
+  16 Aug 2008; Robert Buchholz <rbu@gentoo.org>
+  +files/kaa-imlib2-remove-png-dep.patch, +kaa-imlib2-0.2.3-r1.ebuild:
+  Do not link against libpng, bug #211013
+
+  01 May 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  kaa-imlib2-0.2.3.ebuild:
+  ppc stable, bug #218647
+
+  27 Apr 2008; Markus Meier <maekke@gentoo.org> kaa-imlib2-0.2.3.ebuild:
+  x86 stable, bug #218647
+
+  20 Apr 2008; Robert Buchholz <rbu@gentoo.org> kaa-imlib2-0.2.3.ebuild:
+  amd64 stable, bug 218647
+
+*kaa-imlib2-0.2.3 (12 Mar 2008)
+
+  12 Mar 2008; Robert Buchholz <rbu@gentoo.org> kaa-imlib2-0.2.1.ebuild,
+  +kaa-imlib2-0.2.3.ebuild:
+  Version bump, thanks to alpiturchi (bug #210344). Hard depend 0.2.1 ->
+  ~kaa-base-0.1.3
+
+  06 Oct 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  kaa-imlib2-0.2.1.ebuild:
+  ppc stable, bug #190238
+
+  10 Sep 2007; Markus Meier <maekke@gentoo.org> kaa-imlib2-0.2.1.ebuild:
+  stable on x86, wrt bug #190238
+
+  25 Aug 2007; Steve Dibb <beandog@gentoo.org> kaa-imlib2-0.2.1.ebuild:
+  amd64 stable, bug 190238
+
+  15 Jul 2007; Robert Buchholz <rbu@gentoo.org> kaa-imlib2-0.2.1.ebuild:
+  Converting RDEPEND to DEPEND
+
+*kaa-imlib2-0.2.1 (11 Jul 2007)
+
+  11 Jul 2007; Robert Buchholz <rbu@gentoo.org> +metadata.xml,
+  +kaa-imlib2-0.2.1.ebuild:
+  Initial commit of ebuild by Ian Stakenvicius (_AxS_)
+  <ian@syndicated-productions.com> (bug #156497)

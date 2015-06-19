@@ -1,0 +1,17 @@
+#!/sbin/runscript
+
+depend() {
+    need net
+}
+
+start() {
+    ebegin "Starting Flumotion"
+    HOME=/usr/share/flumotion start-stop-daemon -o --start --chuid flumotion:flumotion --exec /usr/sbin/flumotion start 
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping Flumotion"
+    /usr/sbin/flumotion stop
+    eend $?
+}

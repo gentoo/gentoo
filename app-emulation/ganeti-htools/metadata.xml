@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>virtualization</herd>
+	<herd>haskell</herd>
+	<longdescription lang="en">
+	These are some simple cluster tools for fixing common allocation
+	problems on Ganeti 2.0 clusters.
+
+	Note that these tools are most useful for bigger cluster sizes
+	(e.g. more than five or ten machines); at lower sizes, the computations
+	they do can also be done manually.
+
+	Most of the tools revolve around the concept of keeping the cluster N+1
+	compliant: this means that in case of failure of any node, the instances
+	affected can be failed over (via ``gnt-node failover`` or ``gnt-instance
+	failover``) to their secondary node, and there is enough memory reserved
+	for this operation without needing to shutdown other instances or
+	rebalance the cluster.
+	</longdescription>
+</pkgmetadata>
+

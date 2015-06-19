@@ -1,0 +1,208 @@
+# ChangeLog for app-crypt/bcwipe
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/bcwipe/ChangeLog,v 1.54 2011/04/24 17:52:31 armin76 Exp $
+
+  24 Apr 2011; Raúl Porcel <armin76@gentoo.org> bcwipe-1.9.7.ebuild,
+  bcwipe-1.9.8.ebuild:
+  Drop sparc keyword
+
+  28 Mar 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> bcwipe-1.9.8.ebuild:
+  x86 stable wrt bug #360629
+
+  27 Mar 2011; Brent Baude <ranger@gentoo.org> bcwipe-1.9.8.ebuild:
+  stable ppc, bug 360629
+
+  26 Mar 2011; Christoph Mende <angelos@gentoo.org> bcwipe-1.9.8.ebuild:
+  Stable on amd64 wrt bug #360629
+
+*bcwipe-1.9.8 (23 Feb 2011)
+
+  23 Feb 2011; Sebastian Pipping <sping@gentoo.org> +bcwipe-1.9.8.ebuild,
+  +files/bcwipe-1.9.8-fix-flags.patch:
+  Bump to 1.9.8, looks trivial
+
+  12 Feb 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -files/bcwipe-1.9.1-fix_warnings.patch, -bcwipe-1.9.3.ebuild,
+  -bcwipe-1.9.6.ebuild:
+  Delete.
+
+  12 Feb 2011; Raúl Porcel <armin76@gentoo.org> bcwipe-1.9.7.ebuild:
+  sparc stable wrt #345483
+
+  07 Jan 2011; Brent Baude <ranger@gentoo.org> bcwipe-1.9.7.ebuild:
+  Marking bcwipe-1.9.7 ppc for bug 345483
+
+  19 Nov 2010; Markos Chandras <hwoarang@gentoo.org> bcwipe-1.9.7.ebuild:
+  Stable on amd64 wrt bug #345483
+
+  15 Nov 2010; Dane Smith <c1pher@gentoo.org> bcwipe-1.9.7.ebuild:
+  Stable x86 wrt bug 345483.
+
+*bcwipe-1.9.7 (16 Oct 2010)
+
+  16 Oct 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -bcwipe-1.9.1.ebuild, +bcwipe-1.9.7.ebuild,
+  +files/bcwipe-1.9.7-fix_warnings.patch:
+  Version bump.
+
+*bcwipe-1.9.6 (15 Oct 2010)
+
+  15 Oct 2010; Dane Smith <c1pher@gentoo.org> +bcwipe-1.9.6.ebuild:
+  Version bump for bcwipe wrt bug 309987.
+
+  29 Dec 2009; Raúl Porcel <armin76@gentoo.org> bcwipe-1.9.3.ebuild:
+  sparc stable wrt #296029
+
+  16 Dec 2009; Markus Meier <maekke@gentoo.org> bcwipe-1.9.3.ebuild:
+  amd64/x86 stable, bug #296029
+
+  09 Dec 2009; nixnut <nixnut@gentoo.org> bcwipe-1.9.3.ebuild:
+  ppc stable #296029
+
+*bcwipe-1.9.3 (07 Nov 2009)
+
+  07 Nov 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  +bcwipe-1.9.3.ebuild:
+  Version bump.
+
+  02 Jun 2009; Raúl Porcel <armin76@gentoo.org> bcwipe-1.9.1.ebuild:
+  sparc stable wrt #271910
+
+  31 May 2009; Markus Meier <maekke@gentoo.org> bcwipe-1.9.1.ebuild:
+  amd64/x86 stable, bug #271910
+
+  31 May 2009; nixnut <nixnut@gentoo.org> bcwipe-1.9.1.ebuild:
+  ppc stable #271910
+
+*bcwipe-1.9.1 (30 Apr 2009)
+
+  30 Apr 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -bcwipe-1.7_p2.ebuild, +bcwipe-1.9.1.ebuild,
+  +files/bcwipe-1.9.1-fix_warnings.patch:
+  Version bump (bug #267817).
+
+  26 Apr 2009; Brent Baude <ranger@gentoo.org> bcwipe-1.7_p7.ebuild:
+  stable ppc, bug 266807
+
+  26 Apr 2009; Raúl Porcel <armin76@gentoo.org> bcwipe-1.7_p7.ebuild:
+  sparc stable wrt #266807
+
+  23 Apr 2009; Markus Meier <maekke@gentoo.org> bcwipe-1.7_p7:
+  amd64/x86 stable, bug #266807
+
+*bcwipe-1.7_p7 (21 Mar 2009)
+
+  21 Mar 2009; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -files/bcwipe-1.6_p8-qa.patch, +files/bcwipe-1.7_p7-build.patch,
+  +bcwipe-1.7_p7.ebuild:
+  Version bump. Respect CFLAGS and LDFLAGS (bug #239967).
+
+  09 Apr 2008; Alon Bar-Lev <alonbl@gentoo.org> bcwipe-1.7_p2.ebuild:
+  Fix license reference, bug#216864, thanks to Philippe Chaintreuil
+
+  22 Mar 2008; Alon Bar-Lev <alonbl@gentoo.org> -bcwipe-1.6_p8.ebuild:
+  Cleanup
+
+  22 Mar 2008; nixnut <nixnut@gentoo.org> bcwipe-1.7_p2.ebuild:
+  Stable on ppc wrt bug 207547
+
+  21 Mar 2008; Ferris McCormick <fmccor@gentoo.org> bcwipe-1.7_p2.ebuild:
+  Sparc stable, Bug #207547.  Test (silently) passes.
+
+  21 Mar 2008; Markus Meier <maekke@gentoo.org> bcwipe-1.7_p2.ebuild:
+  amd64/x86 stable, bug #207547
+
+*bcwipe-1.7_p2 (26 Jan 2008)
+
+  26 Jan 2008; Alon Bar-Lev <alonbl@gentoo.org> +bcwipe-1.7_p2.ebuild:
+  Version bump, bug#207541, thanks to wschlich
+
+  02 Jan 2008; Alon Bar-Lev <alonbl@gentoo.org> -bcwipe-1.5_p3.ebuild,
+  -bcwipe-1.6_p1.ebuild:
+  Cleanup
+
+  02 Jan 2008; Christoph Mende <angelos@gentoo.org> bcwipe-1.6_p8.ebuild:
+  Stable on amd64 wrt bug #198630
+
+  31 Dec 2007; Raúl Porcel <armin76@gentoo.org> bcwipe-1.6_p8.ebuild:
+  sparc stable wrt #198630
+
+  29 Dec 2007; Markus Meier <maekke@gentoo.org> bcwipe-1.6_p8.ebuild:
+  x86 stable, bug #198630
+
+  29 Dec 2007; nixnut <nixnut@gentoo.org> bcwipe-1.6_p8.ebuild:
+  Stable on ppc wrt bug 198630
+
+*bcwipe-1.6_p8 (10 Nov 2007)
+
+  10 Nov 2007; Alon Bar-Lev <alonbl@gentoo.org>
+  +files/bcwipe-1.6_p8-qa.patch, +bcwipe-1.6_p8.ebuild:
+  Version bump
+
+  21 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+*bcwipe-1.6_p1 (23 Apr 2006)
+
+  23 Apr 2006; Daniel Black <dragonheart@gentoo.org> -bcwipe-1.3_p1.ebuild,
+  -bcwipe-1.5_p2.ebuild, bcwipe-1.5_p3.ebuild, +bcwipe-1.6_p1.ebuild:
+  version bump. fix typo in 1.5_p3. remove old versions
+
+  19 Apr 2006; Jason Wever <weeve@gentoo.org> bcwipe-1.5_p3.ebuild:
+  Stable on SPARC.
+
+  01 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org> bcwipe-1.5_p3.ebuild:
+  Stable on x86. Bug 111163.
+
+  17 Oct 2005; Joseph Jezak <josejx@gentoo.org> bcwipe-1.5_p3.ebuild:
+  Marked ppc stable for bug #108171.
+
+  30 Jul 2005; Simon Stelling <blubb@gentoo.org> bcwipe-1.5_p2.ebuild,
+  bcwipe-1.5_p3.ebuild:
+  stable on amd64
+
+*bcwipe-1.5_p3 (25 Jun 2005)
+
+  25 Jun 2005; Daniel Black <dragonheart@gentoo.org> metadata.xml,
+  bcwipe-1.5_p2.ebuild, +bcwipe-1.5_p3.ebuild:
+  version bump. 1.5_p2 x86 stable. metadata owner change to crypto herd
+
+  31 Dec 2004; Jason Wever <weeve@gentoo.org> bcwipe-1.5_p2.ebuild:
+  Added ~sparc keyword.
+
+  04 Sep 2004; Tom Martin <slarti@gentoo.org> bcwipe-1.5_p2.ebuild:
+  Marked ~amd64
+
+  26 Jun 2004; David Holm <dholm@gentoo.org> bcwipe-1.5_p2.ebuild:
+  Added to ~ppc.
+
+  14 Jun 2004; Daniel Black <dragonheart@gentoo.org> bcwipe-1.3_p1.ebuild,
+  -bcwipe-1.2_p3.ebuild:
+  BCWipe-1.3-1.tar.gz, and older versions, nolonger on web site. 
+  Documentation is the same for all versions. Digests updated to reflect 
+  this. This solves bug #53833 logged by Boris Wachtmeister 
+  <sirro@nurfuerspam.de>.
+
+*bcwipe-1.5_p2 (07 Jun 2004)
+
+  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> +bcwipe-1.5_p2.ebuild:
+  version bump
+
+  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  bcwipe-1.2_p3.ebuild, bcwipe-1.3_p1.ebuild:
+  QA - IUSE fix
+
+*bcwipe-1.3_p1 (20 Sep 2003)
+
+  20 Sep 2003; Preston A. Elder <prez@gentoo.org> bcwipe-1.3_p1.ebuild:
+  Version bump.
+
+*bcwipe-1.2_p3 (01 Mar 2003)
+
+  01 Mar 2003; Brandon Low <lostlogic@gentoo.org> bcwipe-1.2_p3.ebuild:
+  Fix license
+
+  01 Mar 2003; Brandon Low <lostlogic@gentoo.org> bcwipe-1.2_p3.ebuild:
+  Initial import, enjoy the security of wiped file deletion from Jetico (See the
+  license, this is commercial demoware)
+

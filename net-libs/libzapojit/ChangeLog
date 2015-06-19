@@ -1,0 +1,49 @@
+# ChangeLog for net-libs/libzapojit
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libzapojit/ChangeLog,v 1.13 2014/02/15 09:46:08 pacho Exp $
+
+  15 Feb 2014; Pacho Ramos <pacho@gentoo.org> -libzapojit-0.0.2.ebuild,
+  libzapojit-0.0.3.ebuild:
+  Documentation is now properly installed from start and, then, we don't need to
+  modify it any more (#501240 by Julian W.), drop old
+
+  08 Dec 2013; Pacho Ramos <pacho@gentoo.org> libzapojit-0.0.3.ebuild:
+  x86 stable, bug #478252
+
+  30 Nov 2013; Pacho Ramos <pacho@gentoo.org> libzapojit-0.0.3.ebuild:
+  amd64 stable, bug #478252
+
+  31 Mar 2013; Gilles Dartiguelongue <eva@gentoo.org> libzapojit-0.0.3.ebuild:
+  Cosmetic fixes.
+
+*libzapojit-0.0.3 (28 Mar 2013)
+
+  28 Mar 2013; Pacho Ramos <pacho@gentoo.org> +libzapojit-0.0.3.ebuild:
+  Version bump for Gnome 3.8
+
+  02 Feb 2013; Agostino Sarubbo <ago@gentoo.org> libzapojit-0.0.2.ebuild:
+  Add ~arm, wrt bug #449220
+
+  06 Jan 2013; Agostino Sarubbo <ago@gentoo.org> libzapojit-0.0.2.ebuild:
+  Add ~sparc, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> libzapojit-0.0.2.ebuild:
+  Add ~alpha, wrt bug #449220
+
+  01 Jan 2013; Agostino Sarubbo <ago@gentoo.org> libzapojit-0.0.2.ebuild:
+  Add ~ia64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> libzapojit-0.0.2.ebuild:
+  Add ~ppc64, wrt bug #449220
+
+  31 Dec 2012; Agostino Sarubbo <ago@gentoo.org> libzapojit-0.0.2.ebuild:
+  Add ~ppc, wrt bug #449220
+
+  23 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org> libzapojit-0.0.2.ebuild:
+  Drop extraneous documentation directory.
+
+*libzapojit-0.0.2 (23 Dec 2012)
+
+  23 Dec 2012; Gilles Dartiguelongue <eva@gentoo.org> +libzapojit-0.0.2.ebuild,
+  +metadata.xml:
+  Initial ebuild from gnome overlay.

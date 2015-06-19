@@ -1,0 +1,175 @@
+# ChangeLog for media-libs/libuninameslist
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libuninameslist/ChangeLog,v 1.43 2015/05/06 09:51:31 mrueg Exp $
+
+  06 May 2015; Manuel Rüger <mrueg@gentoo.org> -libuninameslist-20080409.ebuild:
+  Remove old.
+
+  10 Jun 2014; Mike Frysinger <vapier@gentoo.org>
+  libuninameslist-20091231.ebuild:
+  Add arm64 love.
+
+  09 May 2012; Alexis Ballier <aballier@gentoo.org>
+  libuninameslist-20091231.ebuild:
+  keyword ~amd64-fbsd
+
+  31 Mar 2012; Raúl Porcel <armin76@gentoo.org>
+  libuninameslist-20091231.ebuild:
+  alpha/ia64/s390/sh/sparc stable wrt #400383
+
+  09 Mar 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  libuninameslist-20091231.ebuild:
+  x86 stable wrt bug #400383
+
+  02 Mar 2012; Samuli Suominen <ssuominen@gentoo.org>
+  libuninameslist-20091231.ebuild:
+  ppc64 stable wrt #400383
+
+  02 Mar 2012; Markus Meier <maekke@gentoo.org>
+  libuninameslist-20091231.ebuild:
+  arm stable, bug #400383
+
+  01 Mar 2012; Brent Baude <ranger@gentoo.org> libuninameslist-20091231.ebuild:
+  Marking libuninameslist-20091231 ppc for bug 400383
+
+  27 Feb 2012; Jeroen Roovers <jer@gentoo.org> libuninameslist-20091231.ebuild:
+  Stable for HPPA (bug #400383).
+
+  24 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  libuninameslist-20091231.ebuild:
+  Stable for amd64, wrt bug #400383
+
+*libuninameslist-20091231 (09 Sep 2011)
+
+  09 Sep 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -libuninameslist-20030713.ebuild, -libuninameslist-20060907.ebuild,
+  +libuninameslist-20091231.ebuild:
+  Version bump to latest release. Do not install static libs and .la archives.
+
+  15 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  libuninameslist-20080409.ebuild:
+  Transfer Prefix keywords
+
+  15 Mar 2009; Raúl Porcel <armin76@gentoo.org>
+  libuninameslist-20080409.ebuild:
+  arm/ia64/s390/sh stable wrt #260288
+
+  07 Dec 2008; Mike Frysinger <vapier@gentoo.org>
+  libuninameslist-20080409.ebuild:
+  Add arm/s390/sh love #224541.
+
+  10 Aug 2008; Thomas Anderson <gentoofan23@gentoo.org>
+  libuninameslist-20080409.ebuild:
+  stable amd64, bug 231943
+
+  18 Jul 2008; Jeroen Roovers <jer@gentoo.org>
+  libuninameslist-20080409.ebuild:
+  Stable for HPPA (bug #231943).
+
+  17 Jul 2008; Markus Rothe <corsair@gentoo.org>
+  libuninameslist-20080409.ebuild:
+  Stable on ppc64; bug #231943
+
+  16 Jul 2008; Raúl Porcel <armin76@gentoo.org>
+  libuninameslist-20080409.ebuild:
+  alpha/ia64/x86 stable wrt #231943
+
+  16 Jul 2008; nixnut <nixnut@gentoo.org> libuninameslist-20080409.ebuild:
+  Stable on ppc wrt bug 231943
+
+  16 Jul 2008; Ferris McCormick <fmccor@gentoo.org>
+  libuninameslist-20080409.ebuild:
+  Sparc stable, Bug #231943 which see.
+
+  07 Jun 2008; nixnut <nixnut@gentoo.org> libuninameslist-20060907.ebuild:
+  Stable on ppc wrt bug 224599
+
+  06 Jun 2008; Peter Volkov <pva@gentoo.org>
+  libuninameslist-20060907.ebuild:
+  amd64 stable, bug #224599
+
+  05 Jun 2008; Raúl Porcel <armin76@gentoo.org>
+  libuninameslist-20060907.ebuild:
+  alpha/ia64/sparc stable wrt #224599
+
+  05 Jun 2008; Christian Faulhammer <opfer@gentoo.org>
+  libuninameslist-20060907.ebuild:
+  stable x86, bug 224599
+
+  04 Jun 2008; Jeroen Roovers <jer@gentoo.org>
+  libuninameslist-20060907.ebuild:
+  Stable for HPPA (bug #224599).
+
+*libuninameslist-20080409 (02 Jun 2008)
+
+  02 Jun 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +libuninameslist-20080409.ebuild:
+  Bumping for unicode-5.1 goodness.
+
+  10 Jan 2008; Fabian Groffen <grobian@gentoo.org>
+  libuninameslist-20030713.ebuild, libuninameslist-20060907.ebuild:
+  Dropped ppc-macos keyword, see you in prefix
+
+*libuninameslist-20060907 (17 Jun 2007)
+
+  17 Jun 2007; Ryan Hill <dirtyepic@gentoo.org>
+  +libuninameslist-20060907.ebuild:
+  Version bump, bug #160921.
+
+  22 Feb 2007; Piotr Jaroszyński <peper@gentoo.org> ChangeLog:
+  Transition to Manifest2.
+
+  19 Jan 2007; Charlie Shepherd <masterdriverz@gentoo.org>
+  libuninameslist-20030713.ebuild:
+  Remove invalid RESTRICT="mirror" and default src_compile
+
+  11 Jan 2007; Timothy Redaelli <drizzt@gentoo.org>
+  libuninameslist-20030713.ebuild:
+  Add ~x86-fbsd keyword
+
+  14 Oct 2006; Markus Rothe <corsair@gentoo.org>
+  libuninameslist-20030713.ebuild:
+  Stable on ppc64; bug #146562
+
+  01 Oct 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  libuninameslist-20030713.ebuild:
+  hppa stable, bug #146562
+
+  17 Sep 2006; Markus Rothe <corsair@gentoo.org>
+  libuninameslist-20030713.ebuild:
+  Added ~ppc64; bug #146562
+
+  10 Jan 2006; Michael Hanselmann <hansmi@gentoo.org>
+  libuninameslist-20030713.ebuild:
+  Added to ~hppa.
+
+  23 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  libuninameslist-20030713.ebuild:
+  Stable on sparc
+
+  20 Aug 2005; Fabian Groffen <grobian@gentoo.org>
+  libuninameslist-20030713.ebuild:
+  Marking ~ppc-macos
+
+  18 Feb 2005; Aron Griffis <agriffis@gentoo.org>
+  libuninameslist-20030713.ebuild:
+  stable on amd64 ia64
+
+  12 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libuninameslist-20030713.ebuild:
+  Added ~sparc and ~amd64
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libuninameslist-20030713.ebuild:
+  virtual/glibc -> virtual/libc
+
+  22 Jun 2004; Mamoru KOMACHI <usata@gentoo.org>
+  libuninameslist-20030713.ebuild:
+  Marked as stable.
+
+*libuninameslist-20030713 (18 May 2004)
+
+  18 May 2004; Mamoru KOMACHI <usata@gentoo.org>
+  libuninameslist-20030713.ebuild:
+  Initial import. Ebuild submitted by Martin Diers <martin@diers.us>.
+  Bug #46686

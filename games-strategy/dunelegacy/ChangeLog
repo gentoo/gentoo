@@ -1,0 +1,60 @@
+# ChangeLog for games-strategy/dunelegacy
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/dunelegacy/ChangeLog,v 1.15 2015/01/28 17:44:27 mr_bones_ Exp $
+
+  28 Jan 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -dunelegacy-0.96.2.ebuild, -files/dunelegacy-0.96.2-build.patch:
+  old
+
+  25 Nov 2014; Julian Ospald <hasufell@gentoo.org> metadata.xml:
+  drop maintainership
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> dunelegacy-0.96.2.ebuild,
+  dunelegacy-0.96.3.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  07 Jul 2013; Agostino Sarubbo <ago@gentoo.org> dunelegacy-0.96.3.ebuild:
+  Stable for x86, wrt bug #469744
+
+  17 May 2013; Agostino Sarubbo <ago@gentoo.org> dunelegacy-0.96.3.ebuild:
+  Stable for amd64, wrt bug #469744
+
+  14 May 2013; Julian Ospald <hasufell@gentoo.org> dunelegacy-0.96.3.ebuild:
+  we messed up, use right automake-version
+
+  14 May 2013; Julian Ospald <hasufell@gentoo.org> dunelegacy-0.96.3.ebuild:
+  remove all autotools stuff like autoreconf to fix bug #469798
+
+*dunelegacy-0.96.3 (04 Mar 2013)
+
+  04 Mar 2013; Julian Ospald <hasufell@gentoo.org> +dunelegacy-0.96.3.ebuild,
+  +files/dunelegacy-0.96.3-build.patch:
+  version bump
+
+  04 Nov 2012; Julian Ospald <hasufell@gentoo.org>
+  files/dunelegacy-0.96.2-build.patch:
+  use LDADD instead of LDFLAGS, possibly fixing bug 441694
+
+  17 Oct 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  dunelegacy-0.96.2.ebuild:
+  x86 stable wrt bug #435878
+
+  14 Oct 2012; Markus Meier <maekke@gentoo.org> dunelegacy-0.96.2.ebuild:
+  add ~arm, bug #431714
+
+  28 Sep 2012; Agostino Sarubbo <ago@gentoo.org> dunelegacy-0.96.2.ebuild:
+  Stable for amd64, wrt bug #435878
+
+  16 Aug 2012; Julian Ospald <hasufell@gentoo.org> dunelegacy-0.96.2.ebuild:
+  fix sound dependencies wrt #431610
+
+  10 Aug 2012; Julian Ospald <hasufell@gentoo.org>
+  files/dunelegacy-0.96.2-build.patch:
+  improve patch form
+
+*dunelegacy-0.96.2 (09 Aug 2012)
+
+  09 Aug 2012; Julian Ospald <hasufell@gentoo.org> +dunelegacy-0.96.2.ebuild,
+  +files/dunelegacy-0.96.2-build.patch, +metadata.xml:
+  initial commit

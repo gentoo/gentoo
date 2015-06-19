@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=app-arch/unzip lapack? ( virtual/pkgconfig )
+DESCRIPTION=Whole genome association analysis toolset
+EAPI=4
+HOMEPAGE=http://pngu.mgh.harvard.edu/~purcell/plink/
+IUSE=lapack -webcheck R
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib lapack? ( virtual/lapack )
+SLOT=0
+SRC_URI=http://pngu.mgh.harvard.edu/~purcell/plink/dist/plink-1.07-src.zip
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=8bf7664dcd62fd0dc3a4e983d87f7569

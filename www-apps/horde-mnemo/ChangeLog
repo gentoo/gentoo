@@ -1,0 +1,172 @@
+# ChangeLog for www-apps/horde-mnemo
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/horde-mnemo/ChangeLog,v 1.36 2012/08/22 15:25:27 a3li Exp $
+
+  22 Aug 2012; Alex Legler <a3li@gentoo.org> metadata.xml:
+  removing from metadata
+
+  22 Dec 2011; Agostino Sarubbo <ago@gentoo.org> horde-mnemo-2.2.4.ebuild:
+  Stable for AMD64, wrt bug #393797
+
+  18 Dec 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  horde-mnemo-2.2.4.ebuild:
+  x86 stable wrt bug #393797
+
+  22 Oct 2010; Alex Legler <a3li@gentoo.org> -horde-mnemo-2.1.2.ebuild:
+  cleanup
+
+  22 Oct 2010; Jeroen Roovers <jer@gentoo.org> horde-mnemo-2.2.3.ebuild:
+  Stable for HPPA (bug #333207).
+
+  08 Oct 2010; Brent Baude <ranger@gentoo.org> horde-mnemo-2.2.3.ebuild:
+  Marking horde-mnemo-2.2.3 ppc for bug 333207
+
+*horde-mnemo-2.2.4 (29 Sep 2010)
+
+  29 Sep 2010; Alex Legler <a3li@gentoo.org> -horde-mnemo-2.2.2.ebuild,
+  +horde-mnemo-2.2.4.ebuild:
+  Version bump, contains minor bugfixes and updated i18n. Removing old
+  version.
+
+  18 Sep 2010; Raúl Porcel <armin76@gentoo.org> horde-mnemo-2.2.3.ebuild:
+  alpha/sparc stable wrt #333207
+
+  23 Aug 2010; Markus Meier <maekke@gentoo.org> horde-mnemo-2.2.3.ebuild:
+  x86 stable, bug #333207
+
+  19 Aug 2010; Markos Chandras <hwoarang@gentoo.org>
+  horde-mnemo-2.2.3.ebuild:
+  Stable on amd64 wrt bug #333207
+
+*horde-mnemo-2.2.3 (17 Dec 2009)
+
+  17 Dec 2009; Alex Legler <a3li@gentoo.org> -horde-mnemo-2.2.ebuild,
+  +horde-mnemo-2.2.3.ebuild, metadata.xml:
+  Version bump, remove old version, take over maintenance
+
+*horde-mnemo-2.2.2 (17 Sep 2009)
+
+  17 Sep 2009; Alex Legler <a3li@gentoo.org> +horde-mnemo-2.2.2.ebuild:
+  Version bump
+
+  07 Aug 2008; wrobel@gentoo.org metadata.xml:
+  Updated maintainer.
+
+*horde-mnemo-2.2 (01 Jun 2008)
+
+  01 Jun 2008; Mike Frysinger <vapier@gentoo.org> +horde-mnemo-2.2.ebuild:
+  Version bump #224333 by Arfrever Frehtes Taifersar Arahesis.
+
+  21 Mar 2008; Markus Meier <maekke@gentoo.org> horde-mnemo-2.1.2.ebuild:
+  amd64 stable, security bug #212635
+
+  18 Mar 2008; Raúl Porcel <armin76@gentoo.org> horde-mnemo-2.1.2.ebuild:
+  alpha/sparc/x86 stable wrt security #212635
+
+  18 Mar 2008; Tobias Scherbaum <dertobi123@gentoo.org>
+  horde-mnemo-2.1.2.ebuild:
+  ppc stable, bug #212635
+
+  17 Mar 2008; Jeroen Roovers <jer@gentoo.org> horde-mnemo-2.1.2.ebuild:
+  Stable for HPPA (bug #212635).
+
+  12 Jan 2008; Mike Frysinger <vapier@gentoo.org> +horde-mnemo-2.1.2.ebuild:
+  Version bump .
+
+*horde-mnemo-2.1.2 (12 Jan 2008)
+
+  12 Jan 2008; Mike Frysinger <vapier@gentoo.org> +horde-mnemo-2.1.2.ebuild:
+  Version bump.
+
+*horde-mnemo-2.1.1 (15 Nov 2006)
+
+  15 Nov 2006; Mike Frysinger <vapier@gentoo.org> +horde-mnemo-2.1.1.ebuild:
+  Version bump.
+
+  04 Apr 2006; <blubb@gentoo.org> horde-mnemo-2.1.ebuild:
+  stable on amd64 wrt bug 126435
+
+  31 Mar 2006; Jose Luis Rivero <yoswink@gentoo.org> horde-mnemo-2.1.ebuild:
+  Stable on alpha wrt bug #126435
+
+  28 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  horde-mnemo-2.1.ebuild:
+  Stable on hppa wrt security #126435
+
+  28 Mar 2006; Mark Loeser <halcy0n@gentoo.org> horde-mnemo-2.1.ebuild:
+  Stable on x86; bug #126435
+
+  25 Mar 2006; Joseph Jezak <josejx@gentoo.org> horde-mnemo-2.1.ebuild:
+  Marked ppc stable for bug #126435.
+
+  20 Mar 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  horde-mnemo-2.1.ebuild:
+  Stable on sparc wrt security #126435
+
+*horde-mnemo-2.1 (09 Mar 2006)
+
+  09 Mar 2006; Mike Frysinger <vapier@gentoo.org> +horde-mnemo-2.1.ebuild:
+  Version bump #125571 by Pol.
+
+*horde-mnemo-2.0.3 (12 Dec 2005)
+
+  12 Dec 2005; Mike Frysinger <vapier@gentoo.org> +horde-mnemo-2.0.3.ebuild:
+  Version bump #115206 by David Watzke.
+
+*horde-mnemo-2.0.2 (14 Oct 2005)
+
+  14 Oct 2005; Mike Frysinger <vapier@gentoo.org> +horde-mnemo-2.0.2.ebuild:
+  Version bump #109171 by Christoph Gysin.
+
+*horde-mnemo-1.1.4 (26 Apr 2005)
+
+  26 Apr 2005; Mike Frysinger <vapier@gentoo.org> +horde-mnemo-1.1.4.ebuild:
+  Version bump for security #90365.
+
+*horde-mnemo-2.0.1 (23 Feb 2005)
+
+  23 Feb 2005; Mike Frysinger <vapier@gentoo.org> +horde-mnemo-2.0.1.ebuild,
+  -horde-mnemo-2.0.ebuild:
+  Version bump.
+
+*horde-mnemo-1.1.3 (16 Jan 2005)
+
+  16 Jan 2005; Mike Frysinger <vapier@gentoo.org> -horde-mnemo-1.1.2.ebuild,
+  +horde-mnemo-1.1.3.ebuild:
+  Version bump.
+
+*horde-mnemo-2.0 (24 Dec 2004)
+
+  24 Dec 2004; Mike Frysinger <vapier@gentoo.org> +horde-mnemo-2.0.ebuild:
+  Version bump.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  15 Aug 2004; Stuart Herbert <stuart@gentoo.org> horde-mnemo-1.1.1.ebuild,
+  horde-mnemo-1.1.2.ebuild:
+  Deps updated to reflect net-www split
+
+*horde-mnemo-1.1.2 (15 Aug 2004)
+
+  15 Aug 2004; Stuart Herbert <stuart@gentoo.org> +metadata.xml,
+  +horde-mnemo-1.1.1.ebuild, +horde-mnemo-1.1.2.ebuild:
+  Moved from net-www/horde-mnemo to www-apps/horde-mnemo.
+
+*horde-mnemo-1.1.2 (08 Aug 2004)
+
+  08 Aug 2004; Mike Frysinger <vapier@gentoo.org> +horde-mnemo-1.1.2.ebuild:
+  Version bump.
+
+  01 Apr 2004; Chris Aniszczyk <zx@gentoo.org> horde-mnemo-1.1.1.ebuild:
+  Marking ~hppa
+
+*horde-mnemo-1.1.1 (26 Feb 2004)
+
+  26 Feb 2004; Martin Holzer <mholzer@gentoo.org> horde-mnemo-1.1.1.ebuild:
+  version bumped.
+
+*horde-mnemo-1.1 (19 Jan 2004)
+
+  19 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Initial ebuild made by me.

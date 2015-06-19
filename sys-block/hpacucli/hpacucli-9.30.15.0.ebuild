@@ -1,0 +1,69 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/hpacucli/hpacucli-9.30.15.0.ebuild,v 1.1 2012/12/01 21:01:59 flameeyes Exp $
+
+EAPI=5
+
+inherit rpm versionator pax-utils
+
+MY_PV=$(replace_version_separator 2 '-')
+
+SRC_URI_BASE="ftp://ftp.hp.com/pub/softlib2/software1/pubsw-linux"
+AMD64_PID="1257348637"
+AMD64_VID="77370"
+X86_PID="414707558"
+X86_VID="77371"
+
+DESCRIPTION="HP Array Configuration Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)"
+HOMEPAGE="http://h18000.www1.hp.com/products/servers/linux/documentation.html"
+SRC_URI="
+	amd64? ( ${SRC_URI_BASE}/p${AMD64_PID}/v${AMD64_VID}/${PN}-${MY_PV}.x86_64.rpm )
+	x86? ( ${SRC_URI_BASE}/p${X86_PID}/v${X86_VID}/${PN}-${MY_PV}.i386.rpm )"
+
+LICENSE="hp-proliant-essentials"
+SLOT="0"
+KEYWORDS="-* ~amd64 ~x86"
+IUSE=""
+
+DEPEND=""
+RDEPEND="sys-apps/coreutils
+	sys-process/procps
+	>=sys-apps/util-linux-2.20.1"
+
+S="${WORKDIR}"
+
+HPACUCLI_BASEDIR="/opt/hp/hpacucli"
+QA_PREBUILT="${HPACUCLI_BASEDIR}/*"
+
+src_install() {
+	local MY_S="${S}/opt/compaq/${PN}/bld"
+
+	newsbin "${FILESDIR}"/"${PN}-wrapper" hpacucli
+	dosym /usr/sbin/hpacucli /usr/sbin/hpacuscripting
+
+	exeinto "${HPACUCLI_BASEDIR}"
+	for bin in "${MY_S}"/.hp*; do
+		local basename=$(basename "${bin}")
+		newexe "${bin}" ${basename#.}.bin
+	done
+
+	insinto "${HPACUCLI_BASEDIR}"
+	doins "${MY_S}"/*.so
+
+	dodoc "${MY_S}"/*.txt
+	doman "${S}"/usr/man/man*/*
+
+	cat <<-EOF >"${T}"/45${PN}
+		LDPATH=${HPACUCLI_BASEDIR}
+		EOF
+	doenvd "${T}"/45${PN}
+
+	pax-mark m "${D}/opt/hp/hpacucli/"*
+}
+
+pkg_postinst() {
+	elog
+	elog "For more information regarding this utility, please read"
+	elog "/usr/share/doc/${P}/${PN}-${MY_PV}.noarch.txt"
+	elog
+}

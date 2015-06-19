@@ -1,0 +1,13 @@
+# ChangeLog for games-rpg/avadon
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/avadon/ChangeLog,v 1.2 2013/08/18 00:20:16 hasufell Exp $
+
+  18 Aug 2013; Julian Ospald <hasufell@gentoo.org> avadon-1.0.4.ebuild:
+  stable amd64, x86 wrt #480804
+
+*avadon-1.0.4 (24 Jun 2013)
+
+  24 Jun 2013; Julian Ospald <hasufell@gentoo.org> +avadon-1.0.4.ebuild,
+  +metadata.xml:
+  initial import
+

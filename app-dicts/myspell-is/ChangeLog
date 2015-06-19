@@ -1,0 +1,66 @@
+# ChangeLog for app-dicts/myspell-is
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/myspell-is/ChangeLog,v 1.16 2014/01/05 11:23:24 pacho Exp $
+
+  05 Jan 2014; Pacho Ramos <pacho@gentoo.org> -myspell-is-2012.07.29.ebuild,
+  metadata.xml:
+  Cleanup due http://gentoo.2317880.n4.nabble.com/app-dicts-herd-is-empty-
+  td271273.html
+
+  07 Feb 2013; Ulrich Müller <ulm@gentoo.org> myspell-is-2012.07.29.ebuild,
+  myspell-is-2012.09.01.ebuild:
+  Move Creative Commons licenses to shorter names.
+
+  30 Dec 2012; Agostino Sarubbo <ago@gentoo.org> myspell-is-2012.09.01.ebuild:
+  Stable for alpha, wrt bug #441056
+
+  29 Dec 2012; Agostino Sarubbo <ago@gentoo.org> myspell-is-2012.09.01.ebuild:
+  Stable for sparc, wrt bug #441056
+
+  19 Dec 2012; Jeroen Roovers <jer@gentoo.org> myspell-is-2012.09.01.ebuild:
+  Stable for HPPA (bug #441056).
+
+  17 Dec 2012; Agostino Sarubbo <ago@gentoo.org> myspell-is-2012.09.01.ebuild:
+  Stable for ia64, wrt bug #441056
+
+  09 Dec 2012; Markus Meier <maekke@gentoo.org> myspell-is-2012.09.01.ebuild:
+  arm stable, bug #441056
+
+  08 Dec 2012; Agostino Sarubbo <ago@gentoo.org> myspell-is-2012.09.01.ebuild:
+  Stable for ppc64, wrt bug #441056
+
+  07 Dec 2012; Agostino Sarubbo <ago@gentoo.org> myspell-is-2012.09.01.ebuild:
+  Stable for ppc, wrt bug #1056
+
+  07 Dec 2012; <ago@gentoo.org> myspell-is-2012.09.01.ebuild:
+  Stable for x86, wrt bug #441056
+
+  07 Dec 2012; <ago@gentoo.org> myspell-is-2012.09.01.ebuild:
+  Stable for amd64, wrt bug #441056
+
+*myspell-is-2012.09.01 (10 Sep 2012)
+
+  10 Sep 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  +myspell-is-2012.09.01.ebuild, -myspell-is-2012.03.18.ebuild,
+  myspell-is-2012.07.29.ebuild:
+  Version bump to latest. Stable older. Remove oldest.
+
+*myspell-is-2012.07.29 (16 Aug 2012)
+
+  16 Aug 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  +myspell-is-2012.07.29.ebuild:
+  Version bump to latest.
+
+  23 Jul 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  myspell-is-2012.03.18.ebuild:
+  Whoops fix license.
+
+  23 Jul 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  myspell-is-2012.03.18.ebuild:
+  Stable, we just copy two files from a to b.
+
+*myspell-is-2012.03.18 (23 Jul 2012)
+
+  23 Jul 2012; Tomáš Chvátal <scarabeus@gentoo.org>
+  +myspell-is-2012.03.18.ebuild, +metadata.xml:
+  Initial commit. Make guys from Iceland happy.

@@ -1,0 +1,38 @@
+https://sourceforge.net/tracker/?func=detail&aid=3554646&group_id=943&atid=100943
+
+diff -ru fte.orig/src/g_unix_pipe.cpp fte/src/g_unix_pipe.cpp
+--- fte.orig/src/g_unix_pipe.cpp	2008-04-03 13:33:49 +0200
++++ fte/src/g_unix_pipe.cpp	2008-04-03 13:34:20 +0200
+@@ -4,6 +4,10 @@
+ #include <signal.h>
+ #include <sys/wait.h>
+ 
++#ifdef __INTERIX
++# include <sys/time.h>
++#endif
++
+ #include "sysdep.h"
+ #include "c_config.h"
+ #include "console.h"
+diff -ru fte.orig/src/sysdep.h fte/src/sysdep.h
+--- fte.orig/src/sysdep.h	2008-04-03 13:33:58 +0200
++++ fte/src/sysdep.h	2008-04-03 13:30:43 +0200
+@@ -15,7 +15,7 @@
+ #include <stdlib.h>
+ #include <stdarg.h>
+ #include <string.h>
+-#if defined(AIX) || defined(SCO) || defined(NCR)
++#if defined(AIX) || defined(SCO) || defined(NCR) || defined(__INTERIX)
+ #include <strings.h>
+ #endif
+ #include <stdio.h>
+@@ -38,7 +38,8 @@
+     !defined(IRIX) && \
+     !defined(SCO) && \
+     !defined(SUNOS) && \
+-    !defined(NCR)
++    !defined(NCR) && \
++	!defined(__INTERIX)
+ #    error Target not supported.
+ #endif
+ 

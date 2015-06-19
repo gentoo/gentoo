@@ -1,0 +1,21 @@
+diff -burN FusionSound-1.1.1.old//interfaces/IFusionSoundMusicProvider/ifusionsoundmusicprovider_ffmpeg.c FusionSound-1.1.1/interfaces/IFusionSoundMusicProvider/ifusionsoundmusicprovider_ffmpeg.c
+--- FusionSound-1.1.1.old//interfaces/IFusionSoundMusicProvider/ifusionsoundmusicprovider_ffmpeg.c	2012-11-25 14:41:46.306782213 +0100
++++ FusionSound-1.1.1/interfaces/IFusionSoundMusicProvider/ifusionsoundmusicprovider_ffmpeg.c	2012-11-25 14:46:14.151772465 +0100
+@@ -1197,7 +1197,7 @@
+           return DFB_FAILURE;
+      }
+      
+-     if (av_find_stream_info( data->ctx ) < 0) {
++     if (avformat_find_stream_info( data->ctx, NULL ) < 0) {
+           D_ERROR( "IFusionSoundMusicProvider_FFmpeg: couldn't find stream info!\n" );
+           IFusionSoundMusicProvider_FFmpeg_Destruct( thiz );
+           return DFB_FAILURE;
+@@ -1218,7 +1218,7 @@
+      
+      data->codec = data->st->codec;
+      c = avcodec_find_decoder( data->codec->codec_id );
+-     if (!c || avcodec_open( data->codec, c ) < 0) {
++     if (!c || avcodec_open2( data->codec, c, NULL ) < 0) {
+           D_ERROR( "IFusionSoundMusicProvider_FFmpeg: couldn't find audio decoder!\n" );
+           IFusionSoundMusicProvider_FFmpeg_Destruct( thiz );
+           return DFB_FAILURE;

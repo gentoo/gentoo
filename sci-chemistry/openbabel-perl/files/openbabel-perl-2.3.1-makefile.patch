@@ -1,0 +1,9 @@
+--- scripts/perl/Makefile.PL
++++ scripts/perl/Makefile.PL
+@@ -37,5 +37,6 @@     'LDFROM'    => $ldfrom,
+     'CC'        => $CC,
+     'LD'        => '$(CC)',
+     'INC'       => '-I../../include -I'.$cmakesrcdir.'/include',
++    'DESTDIR'   => @ENV{"D"},
+     'OBJECT'    => 'openbabel-perl.o'
+ );

@@ -1,0 +1,56 @@
+diff -ur Makefile.in Makefile.in
+--- Makefile.in	2009-08-04 09:37:52.000000000 +0200
++++ Makefile.in	2009-09-30 23:45:28.000000000 +0200
+@@ -54,8 +54,8 @@
+ LDFLAGS = @MYLDFLAGS@
+ CMDLDFLAGS = @MYCMDLDFLAGS@
+ LIBS = @LIBS@
+-LDENV = LD_RUN_PATH=/lib:/usr/lib:$(LIBDIR):$(HOME)/lib:/usr/local/lib:@MYRUNPATH@:.
+-RUNENV = @MYLDLIBPATHENV@=.:/lib:/usr/lib:$(LIBDIR):$(HOME)/lib:/usr/local/lib:@MYRUNPATH@
++LDENV =
++RUNENV = @MYLDLIBPATHENV@=.:$(LIBDIR)
+ POSTCMD = @MYPOSTCMD@
+ 
+ 
+diff -ur configure.in configure.in
+--- configure.in	2009-08-31 11:36:58.000000000 +0200
++++ configure.in	2009-09-30 23:45:28.000000000 +0200
+@@ -31,25 +31,15 @@
+ MYPCFILES="tokyocabinet.pc"
+ 
+ # Building flags
+-MYCFLAGS="-std=c99 -Wall -fPIC -fsigned-char -O2"
++MYCFLAGS="-std=c99 -Wall -fPIC -fsigned-char"
+-MYCPPFLAGS="-I. -I\$(INCLUDEDIR) -I$HOME/include -I/usr/local/include"
++MYCPPFLAGS="-I. -I\$(INCLUDEDIR)"
+ MYCPPFLAGS="$MYCPPFLAGS -DNDEBUG -D_GNU_SOURCE=1 -D_REENTRANT -D__EXTENSIONS__"
+-MYLDFLAGS="-L. -L\$(LIBDIR) -L$HOME/lib -L/usr/local/lib"
++MYLDFLAGS="-L. -L\$(LIBDIR)"
+ MYCMDLDFLAGS=""
+ MYRUNPATH="\$(LIBDIR)"
+ MYLDLIBPATHENV="LD_LIBRARY_PATH"
+ MYPOSTCMD="true"
+ 
+-# Building paths
+-PATH="$PATH:$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
+-PATH="$PATH:/opt/SUNWspro/bin:/usr/ccs/bin:/usr/xpg4/bin:/usr/xpg6/bin:/usr/ucb"
+-CPATH="$HOME/include:/usr/local/include:$CPATH"
+-LIBRARY_PATH="$HOME/lib:/usr/local/lib:$LIBRARY_PATH"
+-LD_LIBRARY_PATH="$HOME/lib:/usr/local/lib:$LD_LIBRARY_PATH"
+-PKG_CONFIG_PATH="$HOME/lib/pkgconfig:/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
+-export PATH CPATH LIBRARY_PATH LD_LIBRARY_PATH PKG_CONFIG_PATH
+-
+-
+ 
+ #================================================================
+ # Options
+diff -ur tokyocabinet.pc.in tokyocabinet.pc.in
+--- tokyocabinet.pc.in	2008-02-18 08:25:18.000000000 +0100
++++ tokyocabinet.pc.in	2009-09-30 23:45:28.000000000 +0200
+@@ -10,5 +10,5 @@
+ Name: Tokyo Cabinet
+ Description: a modern implementation of DBM
+ Version: @PACKAGE_VERSION@
+-Libs: -L${libdir} -ltokyocabinet @LIBS@
++Libs: -L${libdir} -ltokyocabinet
+ Cflags: -I${includedir}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>kde</herd>
+	<use>
+		<flag name="rdesktop">Enable runtime dependency for <pkg>net-misc/rdesktop</pkg></flag>
+		<flag name="telepathy">Enable desktop sharing through a telepathy client</flag>
+	</use>
+</pkgmetadata>

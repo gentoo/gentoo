@@ -1,0 +1,191 @@
+# ChangeLog for lxde-base/lxappearance
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/lxde-base/lxappearance/ChangeLog,v 1.43 2015/03/03 08:00:19 dlan Exp $
+
+  02 Mar 2015; Yixun Lan <dlan@gentoo.org> lxappearance-0.5.5.ebuild:
+  add arm64 support, tested on A53 board
+
+  08 Mar 2014; Markus Meier <maekke@gentoo.org> lxappearance-0.5.5.ebuild:
+  arm stable, bug #502818
+
+  05 Mar 2014; Agostino Sarubbo <ago@gentoo.org> lxappearance-0.5.5.ebuild:
+  Stable for ppc, wrt bug #502818
+
+  04 Mar 2014; Agostino Sarubbo <ago@gentoo.org> lxappearance-0.5.5.ebuild:
+  Stable for x86, wrt bug #502818
+
+  04 Mar 2014; Vicente Olivert Riera <vincent@gentoo.org>
+  lxappearance-0.5.5.ebuild:
+  Add ~mips keyword.
+
+  02 Mar 2014; Pacho Ramos <pacho@gentoo.org> lxappearance-0.5.5.ebuild:
+  amd64 stable, bug #502818
+
+*lxappearance-0.5.5 (08 Jan 2014)
+
+  08 Jan 2014; Pavel Kazakov <nullishzero@gentoo.org>
+  +lxappearance-0.5.5.ebuild:
+  Version bump
+
+*lxappearance-0.5.4 (01 Jan 2014)
+
+  01 Jan 2014; Pavel Kazakov <nullishzero@gentoo.org>
+  +lxappearance-0.5.4.ebuild:
+  Version bump and adding dbus use flag
+
+*lxappearance-0.5.3 (15 Dec 2013)
+
+  15 Dec 2013; Pavel Kazakov <nullishzero@gentoo.org>
+  +lxappearance-0.5.3.ebuild:
+  Version bump (bug #494358)
+
+  23 Feb 2013; Zac Medico <zmedico@gentoo.org> lxappearance-0.5.2.ebuild:
+  Add ~arm-linux keyword.
+
+  25 Aug 2012; Markos Chandras <hwoarang@gentoo.org> -lxappearance-0.2.1.ebuild,
+  -lxappearance-0.4.0.ebuild, -lxappearance-0.5.0.ebuild,
+  -lxappearance-0.5.1.ebuild:
+  Remove old LXDE packages
+
+  14 Aug 2012; Johannes Huber <johu@gentoo.org> lxappearance-0.5.2.ebuild:
+  Stable for x86, wrt bug #430494
+
+  11 Aug 2012; Agostino Sarubbo <ago@gentoo.org> lxappearance-0.5.2.ebuild:
+  Stable for amd64, wrt bug #430494
+
+  09 Aug 2012; Anthony G. Basile <blueness@gentoo.org>
+  lxappearance-0.5.2.ebuild:
+  Stable arm, bug #430494
+
+  09 Aug 2012; Anthony G. Basile <blueness@gentoo.org>
+  lxappearance-0.5.2.ebuild:
+  Stable ppc, bug #430494
+
+  05 Jun 2012; Michael Weber <xmw@gentoo.org> lxappearance-0.5.1.ebuild:
+  ppc stable (bug 385189)
+
+*lxappearance-0.5.2 (23 May 2012)
+
+  23 May 2012; Markos Chandras <hwoarang@gentoo.org> +lxappearance-0.5.2.ebuild:
+  Version bump
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> lxappearance-0.2.1.ebuild,
+  lxappearance-0.4.0.ebuild, lxappearance-0.5.0.ebuild,
+  lxappearance-0.5.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  09 Oct 2011; Markus Meier <maekke@gentoo.org> lxappearance-0.5.1.ebuild:
+  arm stable, bug #385189
+
+  07 Oct 2011; Markos Chandras <hwoarang@gentoo.org> lxappearance-0.5.1.ebuild:
+  Stable on amd64 wrt bug #385189
+
+  05 Oct 2011; Andreas Schuerch <nativemad@gentoo.org>
+  lxappearance-0.5.1.ebuild:
+  x86 stable, bug 385189
+
+*lxappearance-0.5.1 (03 Aug 2011)
+
+  03 Aug 2011; Markos Chandras <hwoarang@gentoo.org>
+  +lxappearance-0.5.1.ebuild:
+  Versionb ump
+
+  07 Mar 2011; Tobias Klausmann <klausman@gentoo.org>
+  lxappearance-0.5.0.ebuild:
+  Keyworded on alpha, bug #330911
+
+  22 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  lxappearance-0.5.0.ebuild:
+  ppc stable wrt #349762
+
+  08 Jan 2011; Markus Meier <maekke@gentoo.org> lxappearance-0.5.0.ebuild:
+  arm stable, bug #349762
+
+  04 Jan 2011; Christian Faulhammer <fauli@gentoo.org>
+  lxappearance-0.5.0.ebuild:
+  stable x86, bug 349762
+
+  01 Jan 2011; Markos Chandras <hwoarang@gentoo.org> lxappearance-0.5.0.ebuild:
+  Stable on amd64 wrt bug #349762
+
+*lxappearance-0.5.0 (12 Oct 2010)
+
+  12 Oct 2010; Víctor Ostorga <vostorga@gentoo.org>
+  +lxappearance-0.5.0.ebuild:
+  Version bump to 0.5.0
+
+  28 Feb 2010; nixnut <nixnut@gentoo.org> lxappearance-0.4.0.ebuild:
+  ppc stable #306433
+
+  25 Feb 2010; Christian Faulhammer <fauli@gentoo.org>
+  lxappearance-0.4.0.ebuild:
+  stable x86, bug 306433
+
+  23 Feb 2010; Raúl Porcel <armin76@gentoo.org> lxappearance-0.4.0.ebuild:
+  arm stable wrt #306433
+
+  23 Feb 2010; Markos Chandras <hwoarang@gentoo.org>
+  lxappearance-0.4.0.ebuild:
+  Stable on amd64 wrt bug #306433
+
+  24 Jan 2010; Raúl Porcel <armin76@gentoo.org> lxappearance-0.4.0.ebuild:
+  Add ~arm
+
+  22 Jan 2010; Víctor Ostorga <vostorga@gentoo.org>
+  lxappearance-0.4.0.ebuild, +files/lxappearance-0.4.0-linguas.patch:
+  Fixing missing linguas definition
+
+*lxappearance-0.4.0 (22 Jan 2010)
+
+  22 Jan 2010; Víctor Ostorga <vostorga@gentoo.org>
+  +lxappearance-0.4.0.ebuild:
+  Version bump to 0.4.0
+
+  01 Jan 2010; Christian Faulhammer <fauli@gentoo.org>
+  lxappearance-0.2.1.ebuild:
+  Transfer Prefix keywords
+
+  21 Nov 2009; nixnut <nixnut@gentoo.org> lxappearance-0.2.1.ebuild:
+  ppc stable #292698
+
+  20 Nov 2009; Markus Meier <maekke@gentoo.org> lxappearance-0.2.1.ebuild:
+  amd64/x86 stable, bug #292698
+
+  05 Nov 2009; Víctor Ostorga <vostorga@gentoo.org>
+  -lxappearance-0.2.ebuild:
+  Cleaning out old ebuild
+
+  27 Aug 2009; Víctor Ostorga <vostorga@gentoo.org>
+  lxappearance-0.2.1.ebuild:
+  Adding DEPEND on dev-util/intltool, patch thanks to Nathan Zachary
+  <NathanZachary@gentoo.org> bug #277651
+
+  13 Jul 2009; <vostorga@gentoo.org>
+  +files/lxappearance-0.2.1-intltool.patch, lxappearance-0.2.1.ebuild:
+  Fixing lxappearance-0.2.1 going into an infinite loop when using 
+  tmpfs or other high resolution time filesystem in PORTAGE_TMPDIR.
+  Closes bug #277651
+
+*lxappearance-0.2.1 (13 Jul 2009)
+
+  13 Jul 2009; Víctor Ostorga <vostorga@gentoo.org>
+  +lxappearance-0.2.1.ebuild:
+  Version bump to 0.2.1
+
+  07 Nov 2008; Ben de Groot <yngwin@gentoo.org> +metadata.xml,
+  +lxappearance-0.2.ebuild:
+  Moving package to lxde-base category. Use slot dep for gtk+.
+
+  24 Oct 2008; Pieter Van den Abeele <pvdabeel@gentoo.org> lxappearance-0.2.ebuild:
+  Keyworded ~ppc. Closes bug #235333
+
+  04 Sep 2008; Ben de Groot <yngwin@gentoo.org> metadata.xml:
+  LXDE team is taking over this package
+
+  23 May 2008; Denis Dupeyron <calchan@gentoo.org> lxappearance-0.2.ebuild:
+  Fixed DESCRIPTION, thanks to nightmorph.
+
+*lxappearance-0.2 (17 May 2008)
+
+  17 May 2008; Samuli Suominen <drac@gentoo.org> +lxappearance-0.2.ebuild:
+  Initial commit wrt #157989, thanks to Ryoichiro Suzuki and Jonathan Dehan.

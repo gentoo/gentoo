@@ -1,0 +1,19 @@
+# ChangeLog for app-emacs/teco
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/teco/ChangeLog,v 1.3 2014/02/10 20:25:39 ulm Exp $
+
+  10 Feb 2014; Ulrich Müller <ulm@gentoo.org> -teco-7.ebuild:
+  Remove old.
+
+*teco-7-r1 (30 Jul 2013)
+
+  30 Jul 2013; Ulrich Müller <ulm@gentoo.org> +teco-7-r1.ebuild,
+  +files/teco-7-emacs-24.patch:
+  Fix runtime failure with Emacs 24.3.
+
+*teco-7 (24 Nov 2011)
+
+  24 Nov 2011; Ulrich Mueller <ulm@gentoo.org> +files/50teco-gentoo.el,
+  +teco-7.ebuild, +files/teco-7-minibuffer-prompt.patch, +metadata.xml:
+  Initial import, from Emacs overlay. Ebuild contributed by me.
+

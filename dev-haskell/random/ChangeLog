@@ -1,0 +1,67 @@
+# ChangeLog for dev-haskell/random
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/random/ChangeLog,v 1.19 2014/12/14 05:40:32 gienah Exp $
+
+*random-1.1 (14 Dec 2014)
+
+  14 Dec 2014; Mark Wright <gienah@gentoo.org> +random-1.1.ebuild:
+  Bump random to 1.1
+
+  25 Jul 2014; Sergei Trofimovich <slyfox@gentoo.org> metadata.xml:
+  Drop redundant '<maintainer>' field, leave only '<herd>'.
+
+  31 Mar 2013; Agostino Sarubbo <ago@gentoo.org> random-1.0.1.1-r1.ebuild:
+  Stable for sparc, wrt bug #457282
+
+  30 Mar 2013; Agostino Sarubbo <ago@gentoo.org> random-1.0.1.1-r1.ebuild:
+  Stable for alpha, wrt bug #457282
+
+  28 Mar 2013; Agostino Sarubbo <ago@gentoo.org> random-1.0.1.1-r1.ebuild:
+  Stable for ia64, wrt bug #457282
+
+  27 Mar 2013; Agostino Sarubbo <ago@gentoo.org> random-1.0.1.1-r1.ebuild:
+  Stable for ppc64, wrt bug #457282
+
+  26 Mar 2013; Agostino Sarubbo <ago@gentoo.org> random-1.0.1.1-r1.ebuild:
+  Stable for ppc, wrt bug #457282
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> random-1.0.1.1-r1.ebuild:
+  Stable for x86, wrt bug #457282
+
+  25 Mar 2013; Agostino Sarubbo <ago@gentoo.org> random-1.0.1.1-r1.ebuild:
+  Stable for amd64, wrt bug #457282
+
+*random-1.0.1.1-r1 (23 Dec 2012)
+
+  23 Dec 2012; Sergei Trofimovich <slyfox@gentoo.org> +random-1.0.1.1-r1.ebuild:
+  Switch to EAPI=5
+
+  10 Dec 2012; Sergei Trofimovich <slyfox@gentoo.org> random-1.0.1.1.ebuild:
+  stable on alpha/ia64/sparc (bug #421351)
+
+  07 Dec 2012; Agostino Sarubbo <ago@gentoo.org> random-1.0.1.1.ebuild:
+  Stable for ppc64, wrt bug #421351
+
+  07 Dec 2012; Agostino Sarubbo <ago@gentoo.org> random-1.0.1.1.ebuild:
+  Stable for ppc, wrt bug #421351
+
+  06 Dec 2012; Sergei Trofimovich <slyfox@gentoo.org> random-1.0.1.1.ebuild:
+  Get rid of 'dev-haskell/time' depend as it's a ghc's core library.
+
+  25 Sep 2012; Andreas Schuerch <nativemad@gentoo.org> random-1.0.1.1.ebuild:
+  x86 stable, see bug 421351
+
+  12 Sep 2012; Alexander Vershilov <qnikst@gentoo.org> random-1.0.1.1.ebuild:
+  move dev-haskell/random/random-1.0.1.1.ebuild ebuild to mirror://hackage
+
+  07 Sep 2012; Agostino Sarubbo <ago@gentoo.org> random-1.0.1.1.ebuild:
+  Stable for amd64, wrt bug #421351
+
+  23 Mar 2012; Sergei Trofimovich <slyfox@gentoo.org> random-1.0.1.1.ebuild:
+  ~ia64 rekeyworded. Works file on ghc-6.12.
+
+*random-1.0.1.1 (03 Mar 2012)
+
+  03 Mar 2012; Mark Wright <gienah@gentoo.org> +random-1.0.1.1.ebuild,
+  +metadata.xml:
+  Add random, as it is a dependency of ghc 7.4.1

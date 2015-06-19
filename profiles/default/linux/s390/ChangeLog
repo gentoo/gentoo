@@ -1,0 +1,26 @@
+# ChangeLog for the default/linux/s390 profile directory
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/default/linux/s390/ChangeLog,v 1.5 2014/03/19 22:17:29 dilfridge Exp $
+
+  19 Mar 2014; Andreas K. Huettel <dilfridge@gentoo.org> 13.0/eapi,
+  +13.0/s390x/eapi, +eapi:
+  Increase EAPI to 5
+
+  16 Mar 2014; Andreas K. Huettel <dilfridge@gentoo.org> -10.0/deprecated,
+  -10.0/eapi, -10.0/parent, -10.0/s390x/deprecated, -10.0/s390x/parent,
+  -10.0/server/deprecated, -10.0/server/eapi, -10.0/server/parent,
+  -10.0/server/s390x/deprecated, -10.0/server/s390x/parent:
+  Remove deprecated 10.0 profiles
+
+  09 Feb 2013; Andreas K. Huettel <dilfridge@gentoo.org> +10.0/deprecated,
+  +10.0/s390x/deprecated, +10.0/server/deprecated,
+  +10.0/server/s390x/deprecated:
+  Deprecate 10.0 profiles
+
+  18 Jan 2013; Andreas K. Huettel <dilfridge@gentoo.org> ChangeLog:
+  Fix ChangeLog header
+
+  18 Jan 2013; Andreas K. Huettel <dilfridge@gentoo.org> +13.0/eapi,
+  +13.0/parent, +13.0/s390x/parent:
+  Copy profile tree 10.0 to 13.0 and adapt inheritance
+

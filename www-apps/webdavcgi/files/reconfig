@@ -1,0 +1,32 @@
+#!/bin/bash
+
+confDir="etc"
+distConfFile="webdav.conf-dist"
+
+sedCmd="/bin/sed"
+
+
+function die ()
+{
+	echo "reconfig error: $1" >&2
+    	exit 1
+}
+
+
+if [ $1 != "install" ]; then
+	# nothing to be done, exit
+	exit 0
+fi
+
+# Set the correct path within the config file
+distConfFilePath="${VHOST_ROOT}/${confDir}/${distConfFile}"
+if ! ${sedCmd} -i -e "s|^\(\$INSTALL_BASE\)=.*|\1='${VHOST_ROOT}/';|" \
+         ${distConfFilePath}
+then
+	die "Setting INSTALL_BASE path in ${distConfFilePath} failed"
+fi
+
+
+# Adding logout support
+# see: http://webdavcgi.sourceforge.net/doc.html#logout
+echo "\$HEADER = '<div class=\"header\">WebDAV CGI - Web interface: You are logged in as <span title="'.`id -a`.'">' .\$ENV{REMOTE_USER}.'</span> (<a href="/logout">Logout</a>).</div>';" >> ${distConfFilePath}

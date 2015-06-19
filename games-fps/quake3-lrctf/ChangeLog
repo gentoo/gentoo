@@ -1,0 +1,22 @@
+# ChangeLog for games-fps/quake3-lrctf
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-lrctf/ChangeLog,v 1.4 2011/12/14 17:23:13 vapier Exp $
+
+  14 Dec 2011; Mike Frysinger <vapier@gentoo.org> quake3-lrctf-1.1.ebuild:
+  The games.eclass has dropped GAMES_CHECK_LICENSE support (since portage now
+  has ACCEPT_LICENSE), so drop it here too.
+
+  07 Oct 2009; Tristan Heaven <nyhm@gentoo.org> quake3-lrctf-1.1.ebuild:
+  EAPI=2
+
+  26 Sep 2008; Zac Medico <zmedico@gentoo.org> quake3-lrctf-1.1.ebuild:
+  Set PROPERTIES=interactive since GAMES_CHECK_LICENSE=yes is set.
+
+*quake3-lrctf-1.1 (26 Oct 2006)
+
+  26 Oct 2006; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +quake3-lrctf-1.1.ebuild:
+  Initial import. Original ebuild by Sascha Geschwandtner
+  <s.geschwandtner@gmx.de> and ported to the games-mods eclass by me. Closing
+  bug #148043.
+

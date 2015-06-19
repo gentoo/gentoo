@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=virtual/libusb:0
+DESCRIPTION=Control utility for some special features of some special Logitech USB mice!
+EAPI=5
+HOMEPAGE=http://wiki.gentoo.org/wiki/No_homepage
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=virtual/libusb:0
+SLOT=0
+SRC_URI=mirror://gentoo/logitech_applet-0.4test1.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=63bd06fe4db13cd69d48b7eb6ecbbc5e

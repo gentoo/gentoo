@@ -1,0 +1,102 @@
+# ChangeLog for dev-perl/Data-ObjectDriver
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Data-ObjectDriver/ChangeLog,v 1.24 2015/06/13 21:46:27 dilfridge Exp $
+
+  13 Jun 2015; Andreas K. Huettel <dilfridge@gentoo.org>
+  Data-ObjectDriver-0.90.0-r1.ebuild:
+  Module::Build is no longer part of core Perl and has been moved to dev-perl
+
+  17 Dec 2013; Mikle Kolyada <zlogene@gentoo.org>
+  -Data-ObjectDriver-0.90.0.ebuild, Data-ObjectDriver-0.90.0-r1.ebuild:
+  amd64/ppc/ppc64/x86 stable wrt bug #492112; Old revision dropped.
+
+*Data-ObjectDriver-0.90.0-r1 (10 Sep 2013)
+
+  10 Sep 2013; Ian Delaney <idella4@gentoo.org>
+  +Data-ObjectDriver-0.90.0-r1.ebuild:
+  revbump -> EAPI 5
+
+  24 Jun 2012; Torsten Veller <tove@gentoo.org> metadata.xml:
+  Update CPAN upstream info
+
+  31 Mar 2012; Torsten Veller <tove@gentoo.org> -Data-ObjectDriver-0.07.ebuild:
+  Cleanup
+
+  02 Mar 2012; Brent Baude <ranger@gentoo.org> Data-ObjectDriver-0.90.0.ebuild:
+  Marking Data-ObjectDriver-0.90.0 ppc64 for bug 396923
+
+  12 Feb 2012; Raúl Porcel <armin76@gentoo.org> Data-ObjectDriver-0.07.ebuild,
+  Data-ObjectDriver-0.90.0.ebuild:
+  Drop alpha/ia64/sparc keywords, x86 stable wrt #396923
+
+  06 Feb 2012; Brent Baude <ranger@gentoo.org> Data-ObjectDriver-0.90.0.ebuild:
+  Marking Data-ObjectDriver-0.90.0 ppc for bug 396923
+
+  03 Feb 2012; Agostino Sarubbo <ago@gentoo.org>
+  Data-ObjectDriver-0.90.0.ebuild:
+  Stable for amd64, wrt bug #396923
+
+  30 Jul 2011; Torsten Veller <tove@gentoo.org> -Data-ObjectDriver-0.80.ebuild:
+  Cleanup
+
+*Data-ObjectDriver-0.90.0 (18 Mar 2011)
+
+  18 Mar 2011; Torsten Veller <tove@gentoo.org>
+  +Data-ObjectDriver-0.90.0.ebuild:
+  Version bump
+
+  27 Jan 2011; Kacper Kowalik <xarthisius@gentoo.org>
+  Data-ObjectDriver-0.07.ebuild:
+  ppc64 stable wrt #346403
+
+  27 Jan 2011; Brent Baude <ranger@gentoo.org>
+  Data-ObjectDriver-0.07.ebuild:
+  Marking Data-ObjectDriver-0.07 ppc stable for bug 346403
+
+*Data-ObjectDriver-0.80 (12 Jan 2011)
+
+  12 Jan 2011; Torsten Veller <tove@gentoo.org> +Data-ObjectDriver-0.80.ebuild:
+  Version bump
+
+  05 Dec 2010; Raúl Porcel <armin76@gentoo.org> Data-ObjectDriver-0.07.ebuild:
+  alpha/ia64/sparc stable wrt #346403
+
+  30 Nov 2010; Markus Meier <maekke@gentoo.org> Data-ObjectDriver-0.07.ebuild:
+  x86 stable, bug #346403
+
+  26 Nov 2010; Markos Chandras <hwoarang@gentoo.org>
+  Data-ObjectDriver-0.07.ebuild:
+  Stable on amd64 wrt bug #346403
+
+  11 Jun 2010; Torsten Veller <tove@gentoo.org>
+  -Data-ObjectDriver-0.06.ebuild:
+  Cleanup
+
+*Data-ObjectDriver-0.07 (24 Mar 2010)
+
+  24 Mar 2010; Torsten Veller <tove@gentoo.org>
+  +Data-ObjectDriver-0.07.ebuild:
+  Version bump. Run tests
+
+  10 Dec 2009; Brent Baude <ranger@gentoo.org>
+  Data-ObjectDriver-0.06.ebuild:
+  Marking Data-ObjectDriver-0.06 ~ppc64 for bug 284166
+
+  23 Nov 2009; Torsten Veller <tove@gentoo.org>
+  Data-ObjectDriver-0.06.ebuild:
+  Depend on Module-Build (#294231) and remove Test-Exception
+
+  27 Oct 2009; Mounir Lamouri <volkmar@gentoo.org>
+  Data-ObjectDriver-0.06.ebuild:
+  Keywording for ppc, bug 284166
+
+  30 Sep 2009; Raúl Porcel <armin76@gentoo.org>
+  Data-ObjectDriver-0.06.ebuild:
+  Add ~alpha/~ia64/~sparc wrt #284166
+
+*Data-ObjectDriver-0.06 (08 Sep 2009)
+
+  08 Sep 2009; Robin H. Johnson <robbat2@gentoo.org>
+  +Data-ObjectDriver-0.06.ebuild, +metadata.xml:
+  Initial commit. Extra dependancy for Bugzilla-3.4. Ebuild by Robin H.
+  Johnson <robbat2@gentoo.org>.

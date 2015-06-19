@@ -1,0 +1,15 @@
+# ChangeLog for media-plugins/vdr-rcu
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vdr-rcu/ChangeLog,v 1.2 2015/02/20 09:36:45 hd_brummy Exp $
+
+*vdr-rcu-2.2.0 (20 Feb 2015)
+
+  20 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-rcu-2.2.0.ebuild:
+  bump
+
+*vdr-rcu-2.0.0 (31 Mar 2013)
+
+  31 Mar 2013; Joerg Bornkessel <hd_brummy@gentoo.org> +vdr-rcu-2.0.0.ebuild,
+  +metadata.xml:
+  bump; initial, taken from vdr-devel overlay
+

@@ -1,0 +1,17 @@
+--- Makefile.orig	2003-09-04 13:00:48.784055072 -0400
++++ Makefile	2003-09-04 13:03:41.399813488 -0400
+@@ -11,11 +11,11 @@
+ #OPT	= -pg -g -DPRO -DACPI
+ 
+ CC	= gcc
+-CFLAGS	= $(OPT) -Wall -ansi -I/usr/X11R6/include
++CFLAGS	= $(OPT) -Wall -ansi -I/usr/X11R6/include -DACPI
+ LDFLAGS = $(OPT) -L/usr/X11R6/lib -lX11 -lXpm -lXext
+ 
+-SRCS	= wmacpi.c libapm.c libacpi.c
+-OBJS	= wmacpi.o libapm.o libacpi.o
++SRCS	= wmacpi.c libacpi.c
++OBJS	= wmacpi.o libacpi.o
+ 
+ all:	wmacpi
+ 

@@ -1,0 +1,115 @@
+taken from Fedora, but parts removed due to conflicts w/udftools-1.0.0b-bigendian.patch
+
+http://pkgs.fedoraproject.org/cgit/udftools.git/tree/udftools-1.0.0b3-mkudffs-bigendian.patch?h=f22
+
+diff -up udftools-1.0.0b3/mkudffs/defaults.c.mkudffs-bigendian udftools-1.0.0b3/mkudffs/defaults.c
+--- udftools-1.0.0b3/mkudffs/defaults.c.mkudffs-bigendian	2007-08-23 13:41:29.000000000 +0200
++++ udftools-1.0.0b3/mkudffs/defaults.c	2007-08-23 13:42:16.000000000 +0200
+@@ -69,7 +69,7 @@ struct primaryVolDesc default_pvd =
+ 	{
+ 		tagIdent : constant_cpu_to_le16(TAG_IDENT_PVD),
+ 		descVersion : constant_cpu_to_le16(3),
+-		tagSerialNum : 1,
++		tagSerialNum : constant_cpu_to_le16(1),
+ 		descCRC : constant_cpu_to_le16(sizeof(struct primaryVolDesc) - sizeof(tag)),
+ 	},
+ 	volDescSeqNum : constant_cpu_to_le32(1),
+@@ -119,7 +119,7 @@ struct logicalVolDesc default_lvd =
+ 	{
+ 		tagIdent : constant_cpu_to_le16(TAG_IDENT_LVD),
+ 		descVersion : constant_cpu_to_le16(3),
+-		tagSerialNum : 1,
++		tagSerialNum : constant_cpu_to_le16(1),
+ 		descCRC : constant_cpu_to_le16(sizeof(struct logicalVolDesc) - sizeof(tag)),
+ 	},
+ 	volDescSeqNum : constant_cpu_to_le32(2),
+@@ -157,7 +157,7 @@ struct volDescPtr default_vdp =
+ 	{
+ 		tagIdent : constant_cpu_to_le16(TAG_IDENT_VDP),
+ 		descVersion : constant_cpu_to_le16(3),
+-		tagSerialNum : 1,
++		tagSerialNum : constant_cpu_to_le16(1),
+ 		descCRC : constant_cpu_to_le16(sizeof(struct volDescPtr) - sizeof(tag)),
+ 	},
+ 	volDescSeqNum : constant_cpu_to_le32(3),
+@@ -192,7 +192,7 @@ struct impUseVolDesc default_iuvd =
+ 	{
+ 		tagIdent : constant_cpu_to_le16(TAG_IDENT_IUVD),
+ 		descVersion : constant_cpu_to_le16(3),
+-		tagSerialNum : 1,
++		tagSerialNum : constant_cpu_to_le16(1),
+ 		descCRC : constant_cpu_to_le16(sizeof(struct impUseVolDesc) - sizeof(tag)),
+ 	},
+ 	volDescSeqNum : constant_cpu_to_le32(4),
+@@ -215,7 +215,7 @@ struct partitionDesc default_pd =
+ 	{
+ 		tagIdent : constant_cpu_to_le16(TAG_IDENT_PD),
+ 		descVersion : constant_cpu_to_le16(3),
+-		tagSerialNum : 1,
++		tagSerialNum : constant_cpu_to_le16(1),
+ 		descCRC : constant_cpu_to_le16(sizeof(struct partitionDesc) - sizeof(tag)),
+ 	},
+ 	volDescSeqNum : constant_cpu_to_le32(5),
+@@ -242,7 +242,7 @@ struct unallocSpaceDesc default_usd =
+ 	{
+ 		tagIdent : constant_cpu_to_le16(TAG_IDENT_USD),
+ 		descVersion : constant_cpu_to_le16(3),
+-		tagSerialNum : 1,
++		tagSerialNum : constant_cpu_to_le16(1),
+ 		descCRC : constant_cpu_to_le16(sizeof(struct unallocSpaceDesc) - sizeof(tag)),
+ 	},
+ 	volDescSeqNum : constant_cpu_to_le32(6),
+@@ -254,7 +254,7 @@ struct terminatingDesc default_td =
+ 	{
+ 		tagIdent : constant_cpu_to_le16(TAG_IDENT_TD),
+ 		descVersion : constant_cpu_to_le16(3),
+-		tagSerialNum : 1,
++		tagSerialNum : constant_cpu_to_le16(1),
+ 		descCRC : constant_cpu_to_le16(sizeof(struct terminatingDesc) - sizeof(tag)),
+ 	},
+ };
+@@ -265,7 +265,7 @@ struct logicalVolIntegrityDesc default_l
+ 	{
+ 		tagIdent : constant_cpu_to_le16(TAG_IDENT_LVID),
+ 		descVersion : constant_cpu_to_le16(3),
+-		tagSerialNum : 1,
++		tagSerialNum : constant_cpu_to_le16(1),
+ 		descCRC : constant_cpu_to_le16(sizeof(struct logicalVolIntegrityDesc) - sizeof(tag)),
+ 	},
+ 	integrityType : constant_cpu_to_le32(LVID_INTEGRITY_TYPE_CLOSE),
+@@ -295,7 +295,7 @@ struct sparingTable default_stable =
+ 	{
+ 		tagIdent : constant_cpu_to_le16(0),
+ 		descVersion : constant_cpu_to_le16(3),
+-		tagSerialNum : 1,
++		tagSerialNum : constant_cpu_to_le16(1),
+ 		descCRC : constant_cpu_to_le16(sizeof(struct sparingTable) - sizeof(tag)),
+ 	},
+ 	sparingIdent :
+@@ -387,7 +387,7 @@ struct fileSetDesc default_fsd =
+ 	{
+ 		tagIdent : constant_cpu_to_le16(TAG_IDENT_FSD),
+ 		descVersion : constant_cpu_to_le16(3),
+-		tagSerialNum : 1,
++		tagSerialNum : constant_cpu_to_le16(1),
+ 		descCRC : constant_cpu_to_le16(sizeof(struct fileSetDesc) - sizeof(tag)),
+ 	},
+ 	interchangeLvl : constant_cpu_to_le16(2),
+@@ -426,7 +426,7 @@ struct fileEntry default_fe =
+ 	{
+ 		tagIdent : constant_cpu_to_le16(TAG_IDENT_LVID),
+ 		descVersion : constant_cpu_to_le16(3),
+-		tagSerialNum : 1,
++		tagSerialNum : constant_cpu_to_le16(1),
+ 		descCRC : constant_cpu_to_le16(sizeof(struct primaryVolDesc) - sizeof(tag)),
+ 	},
+ 	icbTag :
+@@ -458,7 +458,7 @@ struct extendedFileEntry default_efe =
+ 	{
+ 		tagIdent : constant_cpu_to_le16(TAG_IDENT_LVID),
+ 		descVersion : constant_cpu_to_le16(3),
+-		tagSerialNum : 1,
++		tagSerialNum : constant_cpu_to_le16(1),
+ 		descCRC : constant_cpu_to_le16(sizeof(struct primaryVolDesc) - sizeof(tag)),
+ 	},
+ 	icbTag :

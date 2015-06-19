@@ -1,0 +1,80 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/xen-tools/files/xencommons.initd,v 1.1 2013/12/06 23:34:11 idella4 Exp $
+
+depend() {
+	before xenstored
+}
+
+is_privileged_domain() {
+	grep -qsE '^control_d$' /proc/xen/capabilities
+	return $?
+}
+
+handle_kernel_modules() {
+	local XEN_DEFAULT_KERNEL_MODULES="
+		xen-evtchn
+		xen-gntdev
+		xen-gntalloc
+		xen-blkback
+		xen-netback
+		xen-pciback
+		gntdev
+		netbk
+		blkbk
+		xen-scsibk
+		usbbk
+		pciback
+		xen-acpi-processor
+		blktap2
+		blktap
+	"
+
+	[ "$1" = "remove" ] && OPTS="-r"
+
+	XEN_KERNEL_MODULES="${XEN_KERNEL_MODULES:-${XEN_DEFAULT_KERNEL_MODULES}}"
+	for i in ${XEN_KERNEL_MODULES}; do
+		modprobe ${OPTS} $i 2>/dev/null
+	done
+	return 0
+}
+
+start() {
+	ebegin "Starting xencommons daemon"
+
+	# not running in Xen dom0 or domU
+	if [ ! -d /proc/xen ]; then
+		eend 1 "Not running in Xen mode"
+		return 1
+	fi
+
+	# mount xenfs in dom0 or domU with a pv_ops kernel
+	if ! test -f /proc/xen/capabilities && \
+	   ! grep '^xenfs ' /proc/mounts >/dev/null;
+	then
+		mount -t xenfs xenfs /proc/xen
+	fi
+
+	if ! is_privileged_domain; then
+		eend 1 "Not running on a privileged domain. xencommons not started"
+		return 1
+	fi
+
+	handle_kernel_modules
+
+	eend $? "Failed to start xencommons"
+}
+
+stop () {
+	ebegin "Stopping xencommons"
+	if ! is_privileged_domain; then
+		eend 1 "Not running on a privileged domain. xencommons not started"
+		return 1
+	fi
+
+	handle_kernel_modules remove
+
+	eend $? "Failed to stop xencommons"
+}
+

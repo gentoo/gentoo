@@ -1,0 +1,55 @@
+# ChangeLog for app-backup/backupninja
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-backup/backupninja/ChangeLog,v 1.12 2013/03/17 15:12:15 hwoarang Exp $
+
+  17 Mar 2013; Markos Chandras <hwoarang@gentoo.org> metadata.xml:
+  Add proxy-maintainers to metadata.xml
+
+*backupninja-1.0.1 (04 Jan 2013)
+
+  04 Jan 2013; Tomáš Chvátal <scarabeus@gentoo.org> +backupninja-1.0.1.ebuild,
+  -backupninja-0.9.10.ebuild, -backupninja-0.9.9.ebuild:
+  Version bump to latest release. Remove older failing to build with stable
+  autotools. Stabilise 1.0.1 on amd64 and x86 to have buildable version.
+
+  01 Apr 2012; Markos Chandras <hwoarang@gentoo.org> backupninja-0.9.10.ebuild:
+  Add WANT_AUTOMAKE to workaround eautoreconf problems with 1.11.X. Bug #403005
+
+*backupninja-0.9.10 (22 Feb 2012)
+
+  22 Feb 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  +backupninja-0.9.10.ebuild:
+  Version bump wrt bug #391745 by amette .
+
+  11 Nov 2011; Tomáš Chvátal <scarabeus@gentoo.org> metadata.xml:
+  Drop me from maint.
+
+  26 Jul 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -backupninja-0.9.7.ebuild:
+  old
+
+  26 Jul 2011; Markus Meier <maekke@gentoo.org> backupninja-0.9.9.ebuild:
+  x86 stable, bug #375527
+
+  19 Jul 2011; Markos Chandras <hwoarang@gentoo.org> backupninja-0.9.9.ebuild:
+  Stable on amd64 wrt bug #375527
+
+*backupninja-0.9.9 (01 Jun 2011)
+
+  01 Jun 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +backupninja-0.9.9.ebuild:
+  Version bump to latest.
+
+  10 Jul 2010; Christian Faulhammer <fauli@gentoo.org>
+  backupninja-0.9.7.ebuild:
+  stable x86, bug 313281
+
+  05 Apr 2010; Markos Chandras <hwoarang@gentoo.org>
+  backupninja-0.9.7.ebuild:
+  Stable on amd64 wrt bug #313281
+
+*backupninja-0.9.7 (22 Feb 2010)
+
+  22 Feb 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +backupninja-0.9.7.ebuild, +metadata.xml:
+  Initial commit. Thanks to Premysl Vohnout for the ebuild.

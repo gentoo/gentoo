@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=dev-libs/libsigc++:2 >=net-libs/gnutls-1.2.10 virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=Network access framework for IPv4/IPv6 written in C++
+EAPI=4
+HOMEPAGE=http://gobby.0x539.de/
+IUSE=nls static-libs
+KEYWORDS=amd64 ~arm hppa ppc x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/libsigc++:2 >=net-libs/gnutls-1.2.10
+SLOT=0
+SRC_URI=http://releases.0x539.de/net6/net6-1.3.14.tar.gz
+_eclasses_=multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=6ac5341e04f6e2dcaeef2981b933ed05

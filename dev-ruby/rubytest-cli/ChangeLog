@@ -1,0 +1,30 @@
+# ChangeLog for dev-ruby/rubytest-cli
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rubytest-cli/ChangeLog,v 1.7 2015/04/28 18:28:32 graaff Exp $
+
+  28 Apr 2015; Hans de Graaff <graaff@gentoo.org> rubytest-cli-0.2.0.ebuild:
+  Add ruby22.
+
+  19 Aug 2014; Raúl Porcel <armin76@gentoo.org> rubytest-cli-0.2.0.ebuild:
+  add ~alpha/~arm/~ia64/~sparc/~x86, bug #519170
+
+  12 Aug 2014; Anthony G. Basile <blueness@gentoo.org>
+  rubytest-cli-0.2.0.ebuild:
+  Keyword ~ppc and ~ppc64, bug #519170
+
+  11 Aug 2014; Jeroen Roovers <jer@gentoo.org> rubytest-cli-0.2.0.ebuild:
+  Marked ~hppa (bug #519170).
+
+  06 Aug 2014; Manuel Rüger <mrueg@gentoo.org> -rubytest-cli-0.1.0.ebuild:
+  Cleanup old.
+
+*rubytest-cli-0.2.0 (20 Jul 2014)
+
+  20 Jul 2014; Manuel Rüger <mrueg@gentoo.org> +rubytest-cli-0.2.0.ebuild:
+  Version bump.
+
+*rubytest-cli-0.1.0 (15 May 2014)
+
+  15 May 2014; Peter Wilmott <p8952@gentoo.org> +metadata.xml,
+  +rubytest-cli-0.1.0.ebuild:
+  New ebuild for rubytest-cli. Dependency for hashery.

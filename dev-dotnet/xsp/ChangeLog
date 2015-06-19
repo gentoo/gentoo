@@ -1,0 +1,528 @@
+# ChangeLog for dev-dotnet/xsp
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/xsp/ChangeLog,v 1.112 2013/09/26 14:15:11 tomwij Exp $
+
+  26 Sep 2013; Tom Wijsman <TomWij@gentoo.org>
+  files/2.2/mod-mono-server-r1.initd:
+  Fixed bashism in files/2.2/mod-mono-server-r1.initd.
+
+  24 May 2013; Pacho Ramos <pacho@gentoo.org> -files/2.2/mod-mono-server.initd,
+  -xsp-2.10.2-r1.ebuild:
+  Drop old
+
+  07 Dec 2012; Pawel Hajdan jr <phajdan.jr@gentoo.org> xsp-2.10.2-r2.ebuild:
+  x86 stable wrt bug #435202
+
+  22 Sep 2012; Anthony G. Basile <blueness@gentoo.org> xsp-2.10.2-r2.ebuild:
+  stable ppc, bug #435202
+
+  16 Sep 2012; Agostino Sarubbo <ago@gentoo.org> xsp-2.10.2-r2.ebuild:
+  Stable for amd64, wrt bug #435202
+
+*xsp-2.10.2-r2 (15 Sep 2012)
+
+  15 Sep 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/xsp-2.10.2-endrequest.patch, +xsp-2.10.2-r2.ebuild, -xsp-2.10.2.ebuild:
+  Fix Connections leaking in Mono.Webserver.FastCgi, bug #432750 by gentoo at
+  pasichnyk dot net. Drop old.
+
+  18 Aug 2012; Michael Weber <xmw@gentoo.org> xsp-2.10.2-r1.ebuild:
+  ppc stable (bug 407701)
+
+  04 Jun 2012; Zac Medico <zmedico@gentoo.org> xsp-2.10.2-r1.ebuild,
+  xsp-2.10.2.ebuild:
+  inherit user for enewgroup and enewuser
+
+  22 May 2012; Agostino Sarubbo <ago@gentoo.org> xsp-2.10.2-r1.ebuild:
+  Stable for amd64, wrt bug #407701
+
+  09 Apr 2012; Markus Meier <maekke@gentoo.org> xsp-2.10.2-r1.ebuild:
+  x86 stable, bug #407701
+
+*xsp-2.10.2-r1 (22 Jan 2012)
+
+  22 Jan 2012; Pacho Ramos <pacho@gentoo.org>
+  +files/2.2/mod-mono-server-r1.initd, +xsp-2.10.2-r1.ebuild:
+  Fix mod-mono-server init.d to support MonoServerVersion=4, bug #388669.
+
+  22 Jan 2012; Pacho Ramos <pacho@gentoo.org> -xsp-2.10.ebuild:
+  Drop old.
+
+  10 Nov 2011; Kacper Kowalik <xarthisius@gentoo.org> xsp-2.10.2.ebuild:
+  ppc stable wrt #389181
+
+  08 Jul 2011; Pacho Ramos <pacho@gentoo.org> -xsp-2.6.5.ebuild,
+  -xsp-2.8.2.ebuild:
+  Remove old.
+
+  30 Jun 2011; Christoph Mende <angelos@gentoo.org> xsp-2.10.2.ebuild:
+  Stable on amd64 wrt bug #371163
+
+  21 Jun 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> xsp-2.10.2.ebuild:
+  x86 stable wrt bug #371163
+
+  11 May 2011; Christoph Mende <angelos@gentoo.org> xsp-2.10.ebuild:
+  Stable on amd64 wrt bug #359651
+
+  07 May 2011; Thomas Kahle <tomka@gentoo.org> xsp-2.10.ebuild:
+  x86 stable per bug 359651
+
+*xsp-2.10.2 (06 May 2011)
+
+  06 May 2011; Alistair Bush <ali_bush@gentoo.org> +xsp-2.10.2.ebuild:
+  Version Bump.
+
+  21 Mar 2011; Brent Baude <ranger@gentoo.org> xsp-2.10.ebuild:
+  Marking xsp-2.10 ppc stable for bug 359651
+
+*xsp-2.10 (27 Feb 2011)
+
+  27 Feb 2011; Pacho Ramos <pacho@gentoo.org> +xsp-2.10.ebuild:
+  Version bump for mono-2.10
+
+  29 Jan 2011; Markos Chandras <hwoarang@gentoo.org> xsp-2.8.2.ebuild:
+  Stable on amd64 wrt bug #352808
+
+  29 Jan 2011; Christian Faulhammer <fauli@gentoo.org> xsp-2.8.2.ebuild:
+  stable x86, bug 352808
+
+*xsp-2.8.2 (25 Jan 2011)
+
+  25 Jan 2011; Pacho Ramos <pacho@gentoo.org> -xsp-2.8.1.ebuild,
+  +xsp-2.8.2.ebuild, -xsp-9999.ebuild:
+  Version bump, remove old testing and 9999 version since it's not really
+  maintained downstream.
+
+*xsp-2.8.1 (26 Nov 2010)
+
+  26 Nov 2010; Pacho Ramos <pacho@gentoo.org> -xsp-2.8.ebuild,
+  +xsp-2.8.1.ebuild:
+  Version bump, remove old.
+
+*xsp-2.8 (08 Oct 2010)
+
+  08 Oct 2010; Alistair Bush <ali_bush@gentoo.org> +xsp-2.8.ebuild:
+  Version Bump for mono-2.8
+
+  07 Oct 2010; Pacho Ramos <pacho@gentoo.org>
+  -files/1.2.1/mod-mono-server.confd, -xsp-2.0.ebuild, -xsp-2.4.2.ebuild,
+  -files/1.2.1/mod-mono-server.initd, -xsp-2.0.9999.ebuild,
+  -xsp-2.4.9999.ebuild, -files/1.2.1/xsp.confd, -xsp-2.6.4.ebuild,
+  -files/1.2.1/xsp.initd, -files/1.2.4/mod-mono-server.confd,
+  -files/1.2.4/mod-mono-server.initd, -files/1.2.4/xsp.confd,
+  -files/1.2.4/xsp.initd, -files/1.2.6/mod-mono-server.confd,
+  -files/1.2.6/mod-mono-server.initd, -files/1.2.6/xsp.confd,
+  -files/1.2.6/xsp.initd, -files/2.0/mod-mono-server.confd,
+  -files/2.0/mod-mono-server.initd, -files/2.0/xsp.confd,
+  -files/2.0/xsp.initd, -files/2.2/configure-fix.patch, -xsp-1.2.1.ebuild,
+  -xsp-1.2.4.ebuild, -xsp-1.2.6.ebuild:
+  Remove old.
+
+  23 Sep 2010; Markos Chandras <hwoarang@gentoo.org> xsp-2.6.5.ebuild:
+  Stable on amd64 wrt bug #336851
+
+  12 Sep 2010; Joseph Jezak <josejx@gentoo.org> xsp-2.6.5.ebuild:
+  Marked ppc for bug #336851.
+
+  12 Sep 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org> xsp-2.6.5.ebuild:
+  x86 stable wrt bug #336851
+
+*xsp-2.6.5 (21 Jul 2010)
+
+  21 Jul 2010; Pacho Ramos <pacho@gentoo.org> +xsp-2.6.5.ebuild:
+  Version bump
+
+  12 Jul 2010; Christian Faulhammer <fauli@gentoo.org> xsp-2.6.4.ebuild:
+  stable x86, bug 327279
+
+  09 Jul 2010; Pacho Ramos <pacho@gentoo.org> xsp-2.6.4.ebuild:
+  amd64 stable, bug 327279
+
+*xsp-2.6.4 (04 Jul 2010)
+
+  04 Jul 2010; Pacho Ramos <pacho@gentoo.org> -xsp-2.6.ebuild,
+  +xsp-2.6.4.ebuild:
+  Version bump, remove old.
+
+*xsp-2.6 (21 Feb 2010)
+
+  21 Feb 2010; Patrick Lauer <patrick@gentoo.org> +xsp-2.6.ebuild:
+  Bump
+
+  27 Sep 2009; nixnut <nixnut@gentoo.org> xsp-2.4.2.ebuild:
+  ppc stable #284306
+
+  19 Sep 2009; Markus Meier <maekke@gentoo.org> xsp-2.4.2.ebuild:
+  amd64/x86 stable, bug #284306
+
+  02 Sep 2009; Peter Alfredsen <loki_val@gentoo.org> -xsp-2.2.ebuild,
+  -xsp-2.2.9999.ebuild, -xsp-2.4.ebuild:
+  Drop old
+
+*xsp-2.4.2 (30 Jun 2009)
+
+  30 Jun 2009; Peter Alfredsen <loki_val@gentoo.org> -xsp-2.4.2_rc1.ebuild,
+  +xsp-2.4.2.ebuild:
+  Bump to 2.4.2
+
+*xsp-2.4.2_rc1 (22 Jun 2009)
+
+  22 Jun 2009; Peter Alfredsen <loki_val@gentoo.org> -xsp-2.4.2_pre2.ebuild,
+  +xsp-2.4.2_rc1.ebuild:
+  Bump
+
+*xsp-2.4.2_pre2 (17 Jun 2009)
+
+  17 Jun 2009; Peter Alfredsen <loki_val@gentoo.org> -xsp-2.4.2_pre1.ebuild,
+  +xsp-2.4.2_pre2.ebuild:
+  Bump
+
+*xsp-2.4.2_pre1 (09 Jun 2009)
+
+  09 Jun 2009; Peter Alfredsen <loki_val@gentoo.org> +xsp-2.4.2_pre1.ebuild:
+  Add 2.4.2 preview 1
+
+  09 Jun 2009; Peter Alfredsen <loki_val@gentoo.org> xsp-2.0.9999.ebuild,
+  xsp-2.2.9999.ebuild, xsp-2.4.9999.ebuild, xsp-9999.ebuild:
+  Drop keywords for all *9999 ebuilds instead of maintaining a huge
+  package.mask
+
+  20 May 2009; Brent Baude <ranger@gentoo.org> xsp-2.4.ebuild:
+  Marking xsp-2.4 ~ppc for bug 268517
+
+  09 May 2009; Peter Alfredsen <loki_val@gentoo.org> xsp-2.4.9999.ebuild:
+  Switch back to 2-4 branch
+
+  05 May 2009; Peter Alfredsen <loki_val@gentoo.org> xsp-2.4.9999.ebuild:
+  Change to 2-4-1 branch.
+
+*xsp-9999 (05 May 2009)
+*xsp-2.4.9999 (05 May 2009)
+*xsp-2.2.9999 (05 May 2009)
+*xsp-2.0.9999 (05 May 2009)
+
+  05 May 2009; Peter Alfredsen <loki_val@gentoo.org> +xsp-2.0.9999.ebuild,
+  +xsp-2.2.9999.ebuild, +xsp-2.4.9999.ebuild, +xsp-9999.ebuild:
+  Add live ebuilds for trunk and >=2.0 branches
+
+  17 Apr 2009; Brent Baude <ranger@gentoo.org> xsp-2.2.ebuild:
+  Marking xsp-2.2 ~ppc for bug 255410
+
+  04 Apr 2009; Markus Meier <maekke@gentoo.org> xsp-2.0.ebuild:
+  amd64/x86 stable, bug #234305
+
+*xsp-2.4 (30 Mar 2009)
+
+  30 Mar 2009; Peter Alfredsen <loki_val@gentoo.org> +xsp-2.4.ebuild:
+  Bump to mono-2.4 version.
+
+  27 Mar 2009; Brent Baude <ranger@gentoo.org> xsp-2.0.ebuild:
+  Marking xsp-2.0 ppc stable for bug 234305
+
+  11 Feb 2009; Peter Alfredsen <loki_val@gentoo.org> xsp-2.2.ebuild:
+  Use portable cp -pPR instead of cp -a
+
+*xsp-2.2 (18 Jan 2009)
+
+  18 Jan 2009; Peter Alfredsen <loki_val@gentoo.org>
+  -files/1.2.3/mod-mono-server.initd, -files/1.2.3/xsp.initd,
+  -files/1.9.1/mod-mono-server.confd, -files/1.2.3/mod-mono-server.confd,
+  -files/1.2.3/xsp.confd, -files/1.2.5/mod-mono-server.confd,
+  -files/1.2.5/mod-mono-server.initd, -files/1.2.5/xsp.confd,
+  -files/1.2.5/xsp.initd, -files/1.9.1/mod-mono-server.initd,
+  -files/1.9.1/xsp.confd, -files/1.9.1/xsp.initd,
+  -files/1.9/mod-mono-server.confd, -files/1.9/mod-mono-server.initd,
+  -files/1.9/xsp.confd, -files/1.9/xsp.initd,
+  +files/2.2/configure-fix.patch, +files/2.2/mod-mono-server.confd,
+  +files/2.2/mod-mono-server.initd, +files/2.2/xsp.confd,
+  +files/2.2/xsp.initd, metadata.xml, -xsp-1.9.1.ebuild, +xsp-2.2.ebuild:
+  Bump to 2.2, bug 254929.
+
+  27 Nov 2008; <ssuominen@gentoo.org> xsp-1.2.1.ebuild, xsp-1.2.4.ebuild:
+  Move dev-util/pkgconfig from RDEPEND to DEPEND wrt #224301.
+
+  23 Nov 2008; Peter Alfredsen <loki_val@gentoo.org>
+  +files/2.0/mod-mono-server.confd, +files/2.0/mod-mono-server.initd,
+  +files/2.0/xsp.confd, +files/2.0/xsp.initd, xsp-2.0.ebuild:
+  Add necessary files, tidy up.
+
+*xsp-2.0 (19 Nov 2008)
+
+  19 Nov 2008; Peter Alfredsen <loki_val@gentoo.org> -xsp-1.2.3.ebuild,
+  -xsp-1.2.4-r1.ebuild, -xsp-1.2.5.ebuild, -xsp-1.9.ebuild, +xsp-2.0.ebuild:
+  Bump for mono-2, remove crufty slag.
+
+  31 May 2008; Jurek Bartuszek <jurek@gentoo.org> Manifest:
+  Fixed digests
+
+*xsp-1.9.1 (31 May 2008)
+*xsp-1.9 (31 May 2008)
+
+  31 May 2008; Jurek Bartuszek <jurek@gentoo.org>
+  +files/1.9.1/mod-mono-server.confd, +files/1.9.1/mod-mono-server.initd,
+  +files/1.9.1/xsp.confd, +files/1.9.1/xsp.initd,
+  +files/1.9/mod-mono-server.confd, +files/1.9/xsp.confd,
+  +files/1.9/mod-mono-server.initd, +files/1.9/xsp.initd, +xsp-1.9.ebuild,
+  +xsp-1.9.1.ebuild:
+  Version bump (bug #213381)
+
+  30 May 2008; Jurek Bartuszek <jurek@gentoo.org> xsp-1.2.1.ebuild,
+  xsp-1.2.3.ebuild, xsp-1.2.4.ebuild, xsp-1.2.4-r1.ebuild, xsp-1.2.5.ebuild:
+  Added dev-util/pkgconfig dependency (bug #216415)
+
+  06 May 2008; Lance Albertson <ramereth@gentoo.org> metadata.xml:
+  Remove myself from metadata.xml
+
+  12 Mar 2008; Christian Heim <phreak@gentoo.org> metadata.xml:
+  Removing Peter Johanson (latexer, #206688) from metadata.xml.
+
+  02 Mar 2008; Saleem Abdulrasool <compnerd@gentoo.org> xsp-1.2.6.ebuild:
+  add pkgconfig dep (bug #206126)
+
+  15 Dec 2007; Jurek Bartuszek <jurek@gentoo.org> xsp-1.2.6.ebuild:
+  Added =dev-db/sqlite-3* dependency
+
+*xsp-1.2.6 (14 Dec 2007)
+
+  14 Dec 2007; Jurek Bartuszek <jurek@gentoo.org>
+  +files/1.2.6/mod-mono-server.confd, +files/1.2.6/mod-mono-server.initd,
+  +files/1.2.6/xsp.confd, +files/1.2.6/xsp.initd, +xsp-1.2.6.ebuild:
+  Version bump
+
+  11 Sep 2007; Jurek Bartuszek <jurek@gentoo.org> Manifest:
+  Fixed digests (bug #192076)
+
+*xsp-1.2.5 (10 Sep 2007)
+
+  10 Sep 2007; Jurek Bartuszek <jurek@gentoo.org>
+  +files/1.2.5/mod-mono-server.confd, +files/1.2.5/mod-mono-server.initd,
+  +files/1.2.5/xsp.confd, +files/1.2.5/xsp.initd, +xsp-1.2.5.ebuild:
+  Version bump
+
+*xsp-1.2.4-r1 (27 Aug 2007)
+
+  27 Aug 2007; Jurek Bartuszek <jurek@gentoo.org> +xsp-1.2.4-r1.ebuild:
+  Fix multilib/symlink issue
+
+  01 Jul 2007; Piotr Jaroszyński <peper@gentoo.org>
+  +files/digest-xsp-1.2.1, +files/digest-xsp-1.2.3, +files/digest-xsp-1.2.4,
+  Manifest:
+  (QA) Add digests.
+
+  29 Jun 2007; Christian Faulhammer <opfer@gentoo.org> xsp-1.2.4.ebuild:
+  stable x86, bug 182850
+
+  26 Jun 2007; Lars Weiler <pylon@gentoo.org> xsp-1.2.4.ebuild:
+  Stable on ppc; bug #182850.
+
+*xsp-1.2.4 (17 May 2007)
+
+  17 May 2007; Jurek Bartuszek <jurek@gentoo.org>
+  +files/1.2.4/mod-mono-server.confd, +files/1.2.4/mod-mono-server.initd,
+  +files/1.2.4/xsp.confd, +files/1.2.4/xsp.initd, +xsp-1.2.4.ebuild:
+  Version bump (1.2.4).
+
+  29 Apr 2007; Torsten Veller <tove@gentoo.org> xsp-1.2.1.ebuild,
+  xsp-1.2.3.ebuild:
+  Fix *initd, *confd and *envd calls (#173884, #174266)
+
+  20 Feb 2007; Karol Wojtaszek <sekretarz@gentoo.org> xsp-1.2.1.ebuild:
+  Marked stable on amd64, bug #163298
+
+*xsp-1.2.3 (13 Feb 2007)
+
+  13 Feb 2007; Jurek Bartuszek <jurek@gentoo.org>
+  +files/1.2.3/mod-mono-server.confd, +files/1.2.3/mod-mono-server.initd,
+  +files/1.2.3/xsp.confd, +files/1.2.3/xsp.initd, +xsp-1.2.3.ebuild:
+  Version bump
+
+  01 Feb 2007; Jurek Bartuszek <jurek@gentoo.org>
+  -files/1.1.13/mod-mono-server.confd, -files/1.1.13/xsp.confd,
+  -files/1.1.18/mod-mono-server.confd, -files/1.1.13/mod-mono-server.initd,
+  -files/1.1.13/xsp.initd, -files/1.1.18/mod-mono-server.initd,
+  -files/1.1.18/xsp.confd, -files/1.1.18/xsp.initd, -xsp-1.1.13.7.ebuild,
+  -xsp-1.1.18.ebuild:
+  Cleaned out old ebuilds
+
+  23 Jan 2007; nixnut <nixnut@gentoo.org> xsp-1.2.1.ebuild:
+  Stable on ppc wrt bug 163298
+
+  23 Jan 2007; Christian Faulhammer <opfer@gentoo.org> xsp-1.2.1.ebuild:
+  stable x86; bug #163298
+
+  30 Nov 2006; Christian Faulhammer <opfer@gentoo.org> xsp-1.1.13.7.ebuild:
+  stable x86, bug #156356
+
+*xsp-1.2.1 (25 Nov 2006)
+
+  25 Nov 2006; Jurek Bartuszek <jurek@gentoo.org>
+  +files/1.2.1/mod-mono-server.confd, +files/1.2.1/mod-mono-server.initd,
+  +files/1.2.1/xsp.confd, +files/1.2.1/xsp.initd,
+  -files/xsp-monoworkerrequest-fix.patch, +xsp-1.2.1.ebuild:
+  Version bump
+
+  12 Nov 2006; Jurek Bartuszek <jurek@gentoo.org>
+  -files/1.1.10/mod-mono-server.confd, -files/1.1.10/mod-mono-server.initd,
+  -files/1.1.10/xsp.confd, -files/1.1.10/xsp.initd, -xsp-1.1.10-r2.ebuild:
+  Wiped out old versions
+
+*xsp-1.1.18 (27 Oct 2006)
+*xsp-1.1.13.7 (27 Oct 2006)
+*xsp-1.1.10-r2 (27 Oct 2006)
+
+  27 Oct 2006; Jurek Bartuszek <jurek@gentoo.org>
+  +files/1.1.10/mod-mono-server.confd, +files/1.1.10/xsp.initd,
+  +files/1.1.10/mod-mono-server.initd, +files/1.1.13/mod-mono-server.confd,
+  +files/1.1.10/xsp.confd, +files/1.1.13/mod-mono-server.initd,
+  +files/1.1.13/xsp.confd, +files/1.1.13/xsp.initd,
+  +files/1.1.18/mod-mono-server.confd, +files/1.1.18/mod-mono-server.initd,
+  +files/1.1.18/xsp.confd, +files/1.1.18/xsp.initd,
+  -files/mod-mono-server.confd, -files/mod-mono-server.initd,
+  -files/xsp.confd, -files/xsp.initd,
+  +files/xsp-monoworkerrequest-fix.patch, -xsp-1.1.10-r1.ebuild,
+  +xsp-1.1.10-r2.ebuild, +xsp-1.1.13.7.ebuild, +xsp-1.1.18.ebuild:
+  - Added patch against xsp-1.1.10 that fixes a possible path disclosure
+  security issue (bug #135002).
+  - Added new xsp versions 1.1.13.7 and 1.1.18
+  - Added possibility to host ASP.NET 2.0 applications
+  - Fixed bugs #146763, #122683, #147393, #135002
+  - Addressed bugs #77169, #91791, #132854
+  Credit goes to: Sune Kloppenborg Jeppesen <jaervosz@gentoo.org> for
+  notifying us about the security bug and Toffanin [WiredTEK]
+  <info@wiredtek.info> for providing the ebuilds.
+
+  25 Oct 2006; Jurek Bartuszek <jurek@gentoo.org> xsp-1.1.10-r1.ebuild:
+  Since mono-1.1.17 breaks xsp versions prior to 1.1.17 a new dependency has
+  been added
+
+  23 Oct 2006; Jurek Bartuszek <jurek@gentoo.org> xsp-1.1.10-r1.ebuild:
+  Now xsp requires at least mono-1.1.10 to be installed
+
+*xsp-1.1.10-r1 (23 Oct 2006)
+
+  23 Oct 2006; Jurek Bartuszek <jurek@gentoo.org>
+  files/mod-mono-server.confd, files/mod-mono-server.initd, files/xsp.confd,
+  files/xsp.initd, -xsp-1.0.8.ebuild, -xsp-1.0.9.ebuild, -xsp-1.1.10.ebuild,
+  +xsp-1.1.10-r1.ebuild:
+  * Cleaned out old ebuilds (<=1.1.10)
+  * Fixed all path references to the test application (bug 92338)
+
+*xsp-1.1.10 (20 Nov 2005)
+
+  20 Nov 2005; Lance Albertson <ramereth@gentoo.org> +xsp-1.1.10.ebuild:
+  * Version bump
+
+  23 Aug 2005; Lance Albertson <ramereth@gentoo.org> -xsp-1.0.2.ebuild,
+  -xsp-1.0.4.ebuild, -xsp-1.0.5.ebuild, -xsp-1.0.5-r1.ebuild,
+  -xsp-1.0.6.ebuild, xsp-1.0.8.ebuild, xsp-1.0.9.ebuild:
+  * Fixed enewuser to use -1 for shell per bug #103421
+  * Cleaned out old ebuilds
+
+  23 Jun 2005; Michael Tindal <urilith@gentoo.org> xsp-1.0.9.ebuild:
+  Fix typos.
+
+  16 Jun 2005; Michael Tindal <urilith@gentoo.org> files/xsp.initd:
+  Fix init.d script.
+
+  22 May 2005; Simon Stelling <blubb@gentoo.org> xsp-1.0.9.ebuild:
+  added ~amd64 keyword
+
+*xsp-1.0.9 (17 May 2005)
+
+  17 May 2005; Lance Albertson <ramereth@gentoo.org> +xsp-1.0.9.ebuild:
+  Version bump
+
+*xsp-1.0.8 (29 Apr 2005)
+
+  29 Apr 2005; Lance Albertson <ramereth@gentoo.org> metadata.xml,
+  +xsp-1.0.8.ebuild:
+  version bump, added myself to metadata
+
+  10 Mar 2005; Peter Johanson <latexer@gentoo.org> xsp-1.0.2.ebuild,
+  xsp-1.0.4.ebuild, xsp-1.0.5-r1.ebuild, xsp-1.0.5.ebuild, xsp-1.0.6.ebuild:
+  mono moved from dev-dotnet -> dev-lang
+
+*xsp-1.0.6 (21 Feb 2005)
+
+  21 Feb 2005; Peter Johanson <latexer@gentoo.org> +xsp-1.0.6.ebuild:
+  Bump.
+
+  17 Feb 2005; Christian Parpart <trapni@gentoo.org>
+  +files/mod-mono-server.confd, +files/mod-mono-server.initd:
+  adding mod-mono-server init.d/conf.d helper script for mod_mono; It is
+  questionable whether to add those right here or into mod_mono ebuild as the
+  server from dev-dotnet/xsp is started, but started for mod_mono as
+  mod-mono-server. however. See bug 70943.
+
+*xsp-1.0.5-r1 (08 Feb 2005)
+
+  08 Feb 2005; Peter Johanson <latexer@gentoo.org> +xsp-1.0.5-r1.ebuild:
+  Revision bump with small fix for mono-1.1.x compat.
+
+*xsp-1.0.5 (13 Dec 2004)
+
+  13 Dec 2004; Peter Johanson <latexer@gentoo.org> +xsp-1.0.5.ebuild:
+  Bump.
+
+  03 Nov 2004; Peter Johanson <latexer@gentoo.org> -xsp-0.13.ebuild,
+  -xsp-0.14.ebuild, -xsp-0.15.ebuild, -xsp-0.16.ebuild, -xsp-1.0.1.ebuild,
+  -xsp-1.0.ebuild:
+  Clean out some older ebuilds.
+
+*xsp-1.0.4 (03 Nov 2004)
+
+  03 Nov 2004; Peter Johanson <latexer@gentoo.org> +xsp-1.0.4.ebuild:
+  Bump.
+
+*xsp-1.0.2 (22 Sep 2004)
+
+  22 Sep 2004; Peter Johanson <latexer@gentoo.org> +xsp-1.0.2.ebuild:
+  Bump.
+
+*xsp-1.0.1 (21 Sep 2004)
+
+  21 Sep 2004; Peter Johanson <latexer@gentoo.org> +xsp-1.0.1.ebuild:
+  Bump.
+
+  02 Aug 2004; Peter Johanson <latexer@gentoo.org> xsp-0.13.ebuild,
+  xsp-0.14.ebuild, xsp-0.15.ebuild, xsp-0.16.ebuild, xsp-1.0.ebuild:
+  Fix for new group/user stuff. See bug #58526.
+
+  30 Jun 2004; Peter Johanson <latexer@gentoo.org> xsp-1.0.ebuild:
+  Smal dep fix.
+
+*xsp-1.0 (30 Jun 2004)
+
+  30 Jun 2004; Peter Johanson <latexer@gentoo.org> +xsp-1.0.ebuild:
+  1.0. Nuff said.
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> xsp-0.13.ebuild,
+  xsp-0.14.ebuild, xsp-0.15.ebuild, xsp-0.16.ebuild:
+  eutils
+
+*xsp-0.16 (27 Jun 2004)
+
+  27 Jun 2004; Peter Johanson <latexer@gentoo.org> +xsp-0.16.ebuild:
+  Release candidate goodness.
+
+*xsp-0.15 (16 Jun 2004)
+
+  16 Jun 2004; Peter Johanson, <latexer@gentoo.org> xsp-0.15.ebuild:
+  Beta3 loves you.
+
+  05 Jun 2004; Peter Johanson, <latexer@gentoo.org> xsp-0.14.ebuild:
+  Fix problem with installation paths. See bug #52969
+
+  02 Jun 2004; David Holm <dholm@gentoo.org> xsp-0.14.ebuild:
+  Added to ~ppc.
+
+*xsp-0.14 (02 Jun 2004)
+
+  02 Jun 2004; Peter Johanson <latexer@gentoo.org> xsp-0.14.ebuild:
+  Beta2. You know you love it.
+
+*xsp-0.13 (21 May 2004)
+
+  21 May 2004; Peter Johanson <latexer@gentoo.org> metadata.xml,
+  xsp-0.13.ebuild, files/xsp.confd, files/xsp.initd:
+  Initial commit. Thanks to everyone in bug #41652 for the ebuilds, inits, etc.

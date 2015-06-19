@@ -1,0 +1,198 @@
+# ChangeLog for games-sports/torcs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-sports/torcs/ChangeLog,v 1.44 2015/02/19 01:25:00 mr_bones_ Exp $
+
+  19 Feb 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/torcs-1.3.4-as-needed.patch, -files/torcs-1.3.4-flags.patch,
+  -files/torcs-1.3.4-no-automake.patch, -files/torcs-1.3.4-noXmuXt.patch,
+  -torcs-1.3.4.ebuild:
+  old
+
+  10 Feb 2015; Agostino Sarubbo <ago@gentoo.org> torcs-1.3.6.ebuild:
+  Stable for x86, wrt bug #539194
+
+  07 Feb 2015; Agostino Sarubbo <ago@gentoo.org> torcs-1.3.6.ebuild:
+  Stable for amd64, wrt bug #539194
+
+*torcs-1.3.6 (02 Sep 2014)
+
+  02 Sep 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/torcs-1.3.6-as-needed.patch, +files/torcs-1.3.6-flags.patch,
+  +files/torcs-1.3.6-no-automake.patch, +files/torcs-1.3.6-noXmuXt.patch,
+  +torcs-1.3.6.ebuild, files/torcs-1.3.4-as-needed.patch,
+  files/torcs-1.3.4-flags.patch, files/torcs-1.3.4-no-automake.patch,
+  files/torcs-1.3.4-noXmuXt.patch:
+  version bump
+
+  19 Jul 2014; Tupone Alfredo <tupone@gentoo.org> torcs-1.3.4.ebuild,
+  +files/torcs-1.3.4-noXmuXt.patch:
+  remove libXt and libXmu dependency. Fix bug #515750 by Patrick Lauer
+
+  30 Jan 2013; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/torcs-1.3.1-as-needed.patch, -files/torcs-1.3.1-libpng15.patch,
+  -files/torcs-1.3.1-no-automake.patch, -torcs-1.3.1.ebuild:
+  old
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org> torcs-1.3.4.ebuild:
+  Stable for x86, wrt bug #453384
+
+  23 Jan 2013; Chema Alonso <nimiux@gentoo.org> torcs-1.3.4.ebuild:
+  Marked stable for amd64 wrt bug #453384
+
+*torcs-1.3.4 (14 Dec 2012)
+
+  14 Dec 2012; Julian Ospald <hasufell@gentoo.org> +torcs-1.3.4.ebuild,
+  +files/torcs-1.3.4-as-needed.patch, +files/torcs-1.3.4-flags.patch,
+  +files/torcs-1.3.4-no-automake.patch:
+  version bump wrt #415909
+
+  22 Mar 2012; Mike Frysinger <vapier@gentoo.org> torcs-1.3.1.ebuild,
+  files/torcs-1.3.1-libpng15.patch, +files/torcs-1.3.1-no-automake.patch:
+  Do not use automake macros #408473 by Piotr Szymaniak.
+
+  30 May 2011; Michael Sterrett <mr_bones_@gentoo.org> torcs-1.3.1.ebuild,
+  +files/torcs-1.3.1-libpng15.patch:
+  add patch for building with libpng from wrstwssr@yahoo.com via bug #369231
+
+  16 Sep 2010; TomÃ¡Å¡ ChvÃ¡tal <scarabeus@gentoo.org> torcs-1.3.1.ebuild:
+  virtual/glut -> media-libs/glut
+
+  02 May 2010; Michael Sterrett <mr_bones_@gentoo.org> torcs-1.3.1.ebuild:
+  work around addpredict's odd path thing
+
+  26 Apr 2010; Michael Sterrett <mr_bones_@gentoo.org> torcs-1.3.1.ebuild:
+  increase predict for bug #317375
+
+  29 Oct 2009; Tupone Alfredo <tupone@gentoo.org> torcs-1.3.1.ebuild:
+  Fix detection of plib (Sandbox violation) Bug #290839 by matt
+
+  01 Aug 2009; Markus Meier <maekke@gentoo.org> torcs-1.3.1.ebuild:
+  amd64/x86 stable, bug #278888
+
+  24 Jul 2009; Michael Sterrett <mr_bones_@gentoo.org> torcs-1.3.1.ebuild:
+  EAPI=2
+
+  08 Jan 2009; Michael Sterrett <mr_bones_@gentoo.org> torcs-1.3.1.ebuild:
+  parallel make doesn't work with install either (bug #251797)
+
+*torcs-1.3.1 (20 Dec 2008)
+
+  20 Dec 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/torcs-1.3.1-as-needed.patch, +torcs-1.3.1.ebuild:
+  version bump
+
+  05 Sep 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/torcs-1.3.0-as-needed.patch, torcs-1.3.0.ebuild:
+  support building with --as-needed with patch from Dannee McGuire via bug
+  #232592
+
+  08 Apr 2008; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/torcs-1.3.0-gcc43.patch, torcs-1.3.0.ebuild:
+  add patch for compiling with gcc-4.3 from Bert Karwatzki via bug #216622
+
+  25 Jan 2008; Tristan Heaven <nyhm@gentoo.org> torcs-1.3.0.ebuild:
+  Add xf86vidmodeproto dep, bug #206416
+
+  09 Apr 2007; Peter Weller <welp@gentoo.org> torcs-1.3.0.ebuild:
+  Stable on amd64 wrt bug 170938
+
+  17 Mar 2007; Christian Faulhammer <opfer@gentoo.org> torcs-1.3.0.ebuild:
+  stable x86, bug 170938
+
+  06 Dec 2006; Chris Gianelloni <wolf31o2@gentoo.org> torcs-1.2.4-r1.ebuild:
+  Removing specific version of openal since the older CVS snapshot versions
+  have been removed from the tree for some time now.
+
+  12 Nov 2006; Tristan Heaven <nyhm@gentoo.org> torcs-1.3.0.ebuild:
+  Depend on openal-0.0.8-r1, bug #154822
+
+*torcs-1.3.0 (07 Nov 2006)
+
+  07 Nov 2006; Tristan Heaven <nyhm@gentoo.org> +torcs-1.3.0.ebuild:
+  Version bump, bug #154393
+
+  04 Nov 2006; Danny van Dyk <kugelfang@gentoo.org> torcs-1.2.4-r1.ebuild:
+  Marked stable on amd64.
+
+  27 Sep 2006; Tristan Heaven <nyhm@gentoo.org> torcs-1.2.4.ebuild,
+  torcs-1.2.4-r1.ebuild:
+  Add inherit eutils
+
+  14 Jun 2006; Chris Gianelloni <wolf31o2@gentoo.org> torcs-1.2.4-r1.ebuild:
+  Stable on x86 in preparation of split openal/freealut.
+
+  23 May 2006; <Tupone@gentoo.org> torcs-1.2.4.ebuild:
+  gcc-4.1 patch applied to 1.2.4, too
+
+  23 May 2006; <Tupone@gentoo.org> +files/torcs-1.2.4-gcc41.patch,
+  torcs-1.2.4-r1.ebuild:
+  Fix for gcc 4.1, bug #132096 by nyhm
+
+*torcs-1.2.4-r1 (11 May 2006)
+
+  11 May 2006; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/torcs-1.2.4-freealut.patch, +torcs-1.2.4-r1.ebuild:
+  Added patch to fix openal/freealut using upstream released versions and
+  closing bug #132837.
+
+  07 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org> torcs-1.2.4.ebuild:
+  stable for x86
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+*torcs-1.2.4 (27 Aug 2005)
+
+  27 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> +torcs-1.2.4.ebuild:
+  version bump
+
+*torcs-1.2.3 (17 Jul 2005)
+
+  17 Jul 2005; Mike Frysinger <vapier@gentoo.org> +torcs-1.2.3.ebuild:
+  Version bump #80983 by KÃ¥re Baastrup et al.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  23 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> torcs-1.2.1.ebuild:
+  don't rdepend on sed
+
+  27 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> torcs-1.2.2.ebuild:
+  MAKEOPTS="-j1" to fix bug #43071
+
+*torcs-1.2.2 (26 Feb 2004)
+
+  26 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> torcs-1.2.2.ebuild:
+  version bump; ebuild submitted by hodak@nemo.physics.ncsu.edu via bug #41599
+
+*torcs-1.2.1 (16 Jul 2003)
+
+  16 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #24061 + games.eclass support.
+
+*torcs-1.0.0-r1 (7 May 2002)
+
+  11 Jul 2003; Michael Sterrett <msterret@gentoo.org> torcs-1.0.0-r1.ebuild:
+  fix DESCRIPTION
+
+  30 Jun 2003; Michael Sterrett <msterret@gentoo.org> torcs-1.0.0-r1.ebuild:
+  use sed -i; sed things in unpack instead of compile; tidy
+
+  17 jul 2002; Jose Alberto Suarez Lopez <bass@gentoo.org> torcs-1.0.0-r1.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  7 May 2002; Spider <spider@gentoo.org> torcs-1.0.0-r1.ebuild :
+  fix sourceforge mirroring.
+      
+*torcs-1.0.0-r1 (29 Mar 2002)
+
+  29 Mar 2002; Bruce A. Locke <blocke@shivan.org> ChangeLog :
+
+  Moved from /usr/share/torcs to /opt/torcs (it really wants to be in /opt
+  based on its directory strucutre) and torcs script modified
+
+*torcs-1.0.0 (11 Feb 2002)
+
+  11 Feb 2002; Dan Armak <danarmak@gentoo.org> ChangeLog :
+  
+  Initial version, based on ebuild submission.

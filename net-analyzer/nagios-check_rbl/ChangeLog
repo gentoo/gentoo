@@ -1,0 +1,36 @@
+# ChangeLog for net-analyzer/nagios-check_rbl
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-check_rbl/ChangeLog,v 1.8 2015/02/02 14:43:14 jer Exp $
+
+  02 Feb 2015; Jeroen Roovers <jer@gentoo.org> nagios-check_rbl-1.3.7.ebuild:
+  Marked ~hppa (bug #538496).
+
+*nagios-check_rbl-1.3.7 (02 Feb 2015)
+
+  02 Feb 2015; Michael Orlitzky <mjo@gentoo.org> +nagios-check_rbl-1.3.7.ebuild,
+  metadata.xml:
+  Add myself as a maintainer and version bump, bug #500000.
+
+  26 May 2014; Jeroen Roovers <jer@gentoo.org> nagios-check_rbl-1.3.0.ebuild:
+  Stable for HPPA too.
+
+  03 Mar 2014; Pacho Ramos <pacho@gentoo.org> nagios-check_rbl-1.3.0.ebuild:
+  amd64 stable, bug #461050
+
+  24 Feb 2014; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  nagios-check_rbl-1.3.0.ebuild:
+  x86 stable wrt bug #461050
+
+  26 Jan 2014; Chris Reffett <creffett@gentoo.org> metadata.xml:
+  Update maintainers (add ahamilto as maintainer, me as proxy, proxy-maint herd
+  too)
+
+  18 Oct 2012; Jeroen Roovers <jer@gentoo.org> nagios-check_rbl-1.3.0.ebuild:
+  Marked ~hppa too.
+
+*nagios-check_rbl-1.3.0 (23 Sep 2012)
+
+  23 Sep 2012; Diego E. Pettenò <flameeyes@gentoo.org> +metadata.xml,
+  +nagios-check_rbl-1.3.0.ebuild:
+  Initial import of check_rbl plugin for nagios/icinga. Thanks to Michael
+  Orlitzky for the patch.

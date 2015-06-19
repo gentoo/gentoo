@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>python</herd>
+	<longdescription>
+		pyNotifier provides an implementation of a notifier/event
+		scheduler and is capable of wrapping other notifier
+		implementations of GTK+, Qt and wxWidgets.
+	</longdescription>
+</pkgmetadata>

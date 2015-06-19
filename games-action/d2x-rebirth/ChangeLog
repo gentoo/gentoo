@@ -1,0 +1,55 @@
+# ChangeLog for games-action/d2x-rebirth
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/d2x-rebirth/ChangeLog,v 1.13 2015/05/13 08:03:52 ago Exp $
+
+  13 May 2015; Agostino Sarubbo <ago@gentoo.org> d2x-rebirth-0.58.1.ebuild:
+  Stable for x86, wrt bug #549280
+
+  13 May 2015; Agostino Sarubbo <ago@gentoo.org> d2x-rebirth-0.58.1.ebuild:
+  Stable for amd64, wrt bug #549280
+
+  28 Aug 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  -d2x-rebirth-0.57.3.ebuild, -files/d2x-rebirth-0.57.3-flags.patch:
+  old
+
+  04 Jul 2014; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove unneeded useflag description from metadata.xml
+
+  02 Jul 2014; Michael Sterrett <mr_bones_@gentoo.org> -d2x-rebirth-0.50.ebuild:
+  old
+
+*d2x-rebirth-0.58.1 (02 Jul 2014)
+
+  02 Jul 2014; Michael Sterrett <mr_bones_@gentoo.org>
+  +d2x-rebirth-0.58.1.ebuild, +files/d2x-rebirth-0.58.1-flags.patch:
+  version bump
+
+  15 May 2014; Ulrich Müller <ulm@gentoo.org> d2x-rebirth-0.57.3.ebuild:
+  Fix USE dependency on media-libs/libsdl, "audio" USE flag was renamed to
+  "sound", bug 357661.
+
+  04 Apr 2014; Ulrich Müller <ulm@gentoo.org> d2x-rebirth-0.50.ebuild:
+  Fix LICENSE in previous ebuild too.
+
+*d2x-rebirth-0.57.3 (06 Feb 2013)
+
+  06 Feb 2013; Julian Ospald <hasufell@gentoo.org> +d2x-rebirth-0.57.3.ebuild,
+  +files/d2x-rebirth-0.57.3-flags.patch:
+  version bump wrt #167341
+
+  25 Apr 2012; Justin Lecher <jlec@gentoo.org> d2x-rebirth-0.50.ebuild:
+  Drop unnessecary die
+
+  06 Jun 2011; Michael Sterrett <mr_bones_@gentoo.org> d2x-rebirth-0.50.ebuild:
+  EAPI=2; add use deps for physfs (bug #370187)
+
+  06 Mar 2008; Chris Gianelloni <wolf31o2@gentoo.org>
+  d2x-rebirth-0.50.ebuild:
+  Removing COPYING from dodoc to shut up repoman.
+
+*d2x-rebirth-0.50 (09 Jan 2007)
+
+  09 Jan 2007; Chris Gianelloni <wolf31o2@gentoo.org> +metadata.xml,
+  +d2x-rebirth-0.50.ebuild:
+  Initial import. Ebuild by Paul Bredbury <brebs@sent.com>. Closing bug
+  #137309.

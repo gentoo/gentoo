@@ -1,0 +1,28 @@
+# ChangeLog for dev-libs/marisa
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/marisa/ChangeLog,v 1.7 2015/05/09 13:35:01 yngwin Exp $
+
+  09 May 2015; Ben de Groot <yngwin@gentoo.org> marisa-0.2.4.ebuild:
+  Mark stable on amd64 (bug #540844)
+
+  01 May 2015; Jeroen Roovers <jer@gentoo.org> marisa-0.2.4.ebuild:
+  Stable for PPC64 (bug #540844).
+
+  19 Apr 2015; Anthony G. Basile <blueness@gentoo.org> marisa-0.2.4.ebuild:
+  Keyword ~ppc and ~ppc64.  Bug #498686.
+
+  02 Mar 2015; Yixun Lan <dlan@gentoo.org> marisa-0.2.4.ebuild:
+  add arm64 support, tested on A53 board
+
+  01 Feb 2015; Michał Górny <mgorny@gentoo.org> marisa-0.2.4.ebuild,
+  metadata.xml:
+  Convert to CPU_FLAGS_X86. Add correct REQUIRED_USE. Add missing ||die.
+
+  29 Nov 2014; Pacho Ramos <pacho@gentoo.org> marisa-0.2.4.ebuild:
+  Support python 3.4
+
+*marisa-0.2.4 (22 Aug 2014)
+
+  22 Aug 2014; Yixun Lan <dlan@gentoo.org> +marisa-0.2.4.ebuild,
+  +files/marisa-0.2.4-python.patch, +metadata.xml:
+  initial version added, bug 479436

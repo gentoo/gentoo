@@ -1,0 +1,55 @@
+# ChangeLog for app-emacs/doxymacs
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/doxymacs/ChangeLog,v 1.12 2015/06/09 10:58:49 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+  07 Jun 2014; Ulrich Müller <ulm@gentoo.org> doxymacs-1.8.0-r3.ebuild:
+  Remove redundant NEED_EMACS assignment.
+
+  17 Feb 2014; Ulrich Müller <ulm@gentoo.org> doxymacs-1.8.0-r3.ebuild:
+  Update ebuild to EAPI 5. Specify LICENSE more precisely.
+
+  11 Jun 2009; Ulrich Mueller <ulm@gentoo.org> -doxymacs-1.8.0-r2.ebuild:
+  Remove old.
+
+  11 Jun 2009; Markus Meier <maekke@gentoo.org> doxymacs-1.8.0-r3.ebuild:
+  amd64 stable, bug #272462
+
+  04 Jun 2009; Christian Faulhammer <fauli@gentoo.org>
+  doxymacs-1.8.0-r3.ebuild:
+  stable x86, bug 272462
+
+*doxymacs-1.8.0-r3 (02 Mar 2009)
+
+  02 Mar 2009; Ulrich Mueller <ulm@gentoo.org> doxymacs-1.8.0-r2.ebuild,
+  +doxymacs-1.8.0-r3.ebuild:
+  Append "-Wno-error" to CFLAGS, bug 260874. Remove --with-datadir configure
+  option since it has no effect. Define DESTDIR for installation.
+
+  02 Apr 2008; Christian Faulhammer <opfer@gentoo.org>
+  doxymacs-1.8.0-r2.ebuild:
+  stable x86/amd64
+
+*doxymacs-1.8.0-r2 (04 Jul 2007)
+
+  04 Jul 2007; Ulrich Mueller <ulm@gentoo.org> files/50doxymacs-gentoo.el,
+  -doxymacs-1.8.0.ebuild, -doxymacs-1.8.0-r1.ebuild,
+  +doxymacs-1.8.0-r2.ebuild:
+  Make proper use of autoloads in sitefile, fixes bug #184175.
+
+*doxymacs-1.8.0-r1 (04 Jul 2007)
+
+  04 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  files/50doxymacs-gentoo.el, +doxymacs-1.8.0-r1.ebuild:
+  don't create autoloads as they are not sufficient; instead load doxymacs
+  when a C mode is entered; kill the font-lock in the site-init; fixes bug
+  184175, reported by Anders Bach Nielsen <abachn@daimi.au.dk>
+
+*doxymacs-1.8.0 (02 Jul 2007)
+
+  02 Jul 2007; Christian Faulhammer <opfer@gentoo.org>
+  +files/50doxymacs-gentoo.el, +metadata.xml, +doxymacs-1.8.0.ebuild:
+  new ebuild for bug 110083; taken from Sunrise; thanks to Ciprian Ciubotariu
+  <cheepeero@gmx.net> and Christian Schlotter <again@gmx.de>: massaged a bit

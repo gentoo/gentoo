@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>selinux</herd>
+	<longdescription>
+        The SELinux CIL Compiler is a compiler that converts the CIL language as
+        described on the CIL design wiki into a kernel binary policy file.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">SELinuxProject/selinux</remote-id>
+	</upstream>
+</pkgmetadata>

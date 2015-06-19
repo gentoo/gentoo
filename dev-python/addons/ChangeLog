@@ -1,0 +1,27 @@
+# ChangeLog for dev-python/addons
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/addons/ChangeLog,v 1.7 2015/06/03 11:47:48 jlec Exp $
+
+  03 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Add pypi to remote-id in metadata.xml
+
+  08 Apr 2015; Michał Górny <mgorny@gentoo.org> addons-0.7.ebuild:
+  Drop old Python implementations
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> addons-0.7.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> addons-0.7.ebuild:
+  amd64 stable, bug 540290
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> addons-0.7.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> addons-0.7.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+*addons-0.7 (10 Apr 2013)
+
+  10 Apr 2013; Ian Delaney <idella4@gentoo.org> +addons-0.7.ebuild,
+  +metadata.xml:
+  New package, dep to PEAK-Rules, ebuild written by me

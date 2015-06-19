@@ -1,0 +1,102 @@
+# ChangeLog for sci-calculators/orpie
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-calculators/orpie/ChangeLog,v 1.22 2014/11/13 12:55:45 jer Exp $
+
+  13 Nov 2014; Jeroen Roovers <jer@gentoo.org> +files/orpie-1.5.1-tinfo.patch,
+  orpie-1.5.1-r1.ebuild:
+  Fix building against sys-libs/ncurses[tinfo] (bug #456200).
+
+  04 Aug 2012; Sébastien Fabbro <bicatali@gentoo.org> orpie-1.5.1-r1.ebuild:
+  keyword amd64-linux, x86-linux
+
+  12 Feb 2011; Kacper Kowalik <xarthisius@gentoo.org> orpie-1.5.1-r1.ebuild:
+  Marked ~ppc wrt #322673
+
+  28 Nov 2010; Markos Chandras <hwoarang@gentoo.org> orpie-1.5.1-r1.ebuild:
+  Stable on amd64 wrt bug #344435
+
+  15 Nov 2010; Thomas Kahle <tomka@gentoo.org> orpie-1.5.1-r1.ebuild:
+  x86 stable per bug #344435
+
+  23 Jun 2010; Sébastien Fabbro <bicatali@gentoo.org> orpie-1.5.1.ebuild:
+  Removed bindist flag, orpie should be compatible GPL-3 anyway
+
+*orpie-1.5.1-r1 (03 Jun 2010)
+
+  03 Jun 2010; Sébastien Fabbro <bicatali@gentoo.org>
+  +orpie-1.5.1-r1.ebuild, +files/orpie-1.5.1-nogsl.patch,
+  +files/orpie-1.5.1-ocaml311.patch, +files/orpie-1.5.1-orpierc.patch:
+  Now build with system ocamlgsl. Added a fix for more recent ocaml, thanks
+  Dylan Simon for his patch. Closing bug #297409 and bug #314651. Dropping
+  ppc until we have ocamlgsl keyworded
+
+  03 Feb 2009; Sébastien Fabbro <bicatali@gentoo.org>
+  -files/orpie-1.4.3-quote-down-crash.patch,
+  -files/orpie-ocaml-gentoo.patch, -orpie-1.4.3-r1.ebuild:
+  Removed old versions
+
+  27 Mar 2008; Markus Meier <maekke@gentoo.org> orpie-1.5.1.ebuild:
+  x86 stable, bug #214622
+
+  27 Mar 2008; nixnut <nixnut@gentoo.org> orpie-1.5.1.ebuild:
+  Stable on ppc wrt bug 214622
+
+  26 Mar 2008; Sébastien Fabbro <bicatali@gentoo.org> orpie-1.5.1.ebuild:
+  Updated urls
+
+  25 Mar 2008; Ferris McCormick <fmccor@gentoo.org> orpie-1.5.1.ebuild:
+  Add -sparc in response to Bug #214622 --- this package checks for
+  architectures with double-word alignment for double precision items and
+  issues:
+  wrappers.h:13:2: error: #error "Architectures with double-word alignment for
+  doubles are not supported"
+  Thus, sparc cannot use orpie at all.
+
+  25 Mar 2008; Santiago M. Mola <coldwind@gentoo.org> orpie-1.5.1.ebuild:
+  amd64 stable wrt bug #214622
+
+  15 Feb 2008; Markus Dittrich <markusle@gentoo.org> orpie-1.4.3-r1.ebuild,
+  orpie-1.5.1.ebuild:
+  Fixed QA issues and added bindist for >=gsl-1.10 (see bug #199451).
+
+*orpie-1.5.1 (05 Jan 2008)
+
+  05 Jan 2008; Sébastien Fabbro <bicatali@gentoo.org> metadata.xml,
+  +orpie-1.5.1.ebuild:
+  Version bump. Closing bug #200360
+
+  08 Jan 2007; Markus Dittrich <markusle@gentoo.org>
+  +files/orpie-ocaml-gentoo.patch, orpie-1.4.3-r1.ebuild:
+  Added patch to allow orpie to be compiled against ocaml-3.09.*.
+  Thanks much to David Brown <gentoo@davidb.org> for the patch.
+  This closes bug #160825.
+
+  06 Jan 2007; Danny van Dyk <kugelfang@gentoo.org> -orpie-1.4.1.ebuild,
+  -orpie-1.4.3.ebuild:
+  QA: Removed unused versions.
+
+*orpie-1.4.3-r1 (02 Nov 2006)
+
+  02 Nov 2006; Olivier Fisette <ribosome@gentoo.org>
+  +files/orpie-1.4.3-quote-down-crash.patch, +orpie-1.4.3-r1.ebuild:
+  Fixed crash when typing a single quote followed by pressing the down arrow
+  (bug #151749, thanks to Samuel Tardieu <sam@rfc1149.net> for his patch).
+  Depend on ocaml 3.08.4 as it seems to be the only compatible version.
+
+*orpie-1.4.3 (27 Aug 2006)
+
+  27 Aug 2006; Markus Dittrich <markusle@gentoo.org> +orpie-1.4.3.ebuild:
+  Version bump. Thanks to Philip White <pmw+gentoo@qnan.org>
+  for his ebuild. This fixes bug #134125.
+
+  07 Apr 2006; Tobias Scherbaum <dertobi123@gentoo.org> orpie-1.4.1.ebuild:
+  Added to ~ppc, bug #128886
+
+  06 Jul 2005; Herbie Hopkins <herbs@gentoo.org> orpie-1.4.1.ebuild:
+  Marked ~amd64 wrt bug #97928.
+
+*orpie-1.4.1 (02 Feb 2005)
+
+  02 Feb 2005; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  +orpie-1.4.1.ebuild:
+  Initial import.

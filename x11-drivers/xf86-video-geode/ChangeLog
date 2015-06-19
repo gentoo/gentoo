@@ -1,0 +1,162 @@
+# ChangeLog for x11-drivers/xf86-video-geode
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-geode/ChangeLog,v 1.29 2015/05/24 02:59:03 mattst88 Exp $
+
+  24 May 2015; Matt Turner <mattst88@gentoo.org>
+  -xf86-video-geode-2.11.15.ebuild, -xf86-video-geode-2.11.16.ebuild:
+  Drop old.
+
+*xf86-video-geode-2.11.17 (24 May 2015)
+
+  24 May 2015; Matt Turner <mattst88@gentoo.org>
+  +xf86-video-geode-2.11.17.ebuild:
+  Version bump to 2.11.17, straight to stable. Bug 549786.
+
+*xf86-video-geode-2.11.16 (22 Oct 2014)
+
+  22 Oct 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-geode-2.11.16.ebuild,
+  -files/xf86-video-geode-2.11.14-remove-mibstore_h.patch,
+  -xf86-video-geode-2.11.14-r1.ebuild, -xf86-video-geode-2.11.14.ebuild:
+  Version bump. Remove old.
+
+  06 Apr 2014; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-geode-2.11.15.ebuild:
+  Stable for x86, wrt bug #500368
+
+  24 Feb 2014; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/xf86-video-geode-2.11.15-xf86Modes-include.patch,
+  +files/xf86-video-geode-2.11.15-xf86Modes-include2.patch,
+  xf86-video-geode-2.11.14-r1.ebuild, xf86-video-geode-2.11.15.ebuild:
+  Fix building against xorg-server-1.15
+
+  24 Dec 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-geode-2.11.14-r1.ebuild:
+  Stable for x86, wrt bug #487946
+
+*xf86-video-geode-2.11.15 (13 Oct 2013)
+
+  13 Oct 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-geode-2.11.15.ebuild:
+  Version bump.
+
+*xf86-video-geode-2.11.14-r1 (03 Jul 2013)
+
+  03 Jul 2013; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/xf86-video-geode-2.11.14-remove-mibstore_h.patch,
+  +xf86-video-geode-2.11.14-r1.ebuild:
+  Add patch to fix building against xorg-server-1.14, bug #461536.
+
+  04 Mar 2013; Mart Raudsepp <leio@gentoo.org>
+  -xf86-video-geode-2.11.12.ebuild, -xf86-video-geode-2.11.13.ebuild,
+  xf86-video-geode-2.11.14.ebuild, metadata.xml:
+  Remove old. Specify in descriptions the driver is for GX2 and LX, not GX as
+  in GX1
+
+  30 Jan 2013; Agostino Sarubbo <ago@gentoo.org>
+  xf86-video-geode-2.11.14.ebuild:
+  Stable for x86, wrt bug #453932
+
+*xf86-video-geode-2.11.14 (28 Nov 2012)
+
+  28 Nov 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-geode-2.11.14.ebuild:
+  Version bump, bug #444680.
+
+  10 Aug 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  xf86-video-geode-2.11.12.ebuild, xf86-video-geode-2.11.13.ebuild:
+  Does not work with xorg-server-1.13, per leio on IRC.
+
+*xf86-video-geode-2.11.13 (01 Jan 2012)
+
+  01 Jan 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +xf86-video-geode-2.11.13.ebuild, metadata.xml:
+  Version bump.
+
+  18 Apr 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86-video-geode-2.11.10.ebuild:
+  old
+
+  26 Mar 2011; Christian Faulhammer <fauli@gentoo.org>
+  xf86-video-geode-2.11.12.ebuild:
+  x86 stable, bug 359059
+
+*xf86-video-geode-2.11.12 (14 Feb 2011)
+
+  14 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  +xf86-video-geode-2.11.12.ebuild:
+  Version bump
+
+  09 Feb 2011; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86-video-geode-2.11.8.ebuild:
+  old
+
+  25 Dec 2010; Christian Faulhammer <fauli@gentoo.org>
+  xf86-video-geode-2.11.10.ebuild:
+  x86 stable, bug 344827
+
+  20 Nov 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86-video-geode-2.11.9.ebuild:
+  old
+
+*xf86-video-geode-2.11.10 (09 Nov 2010)
+
+  09 Nov 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  +xf86-video-geode-2.11.10.ebuild:
+  Version bump
+
+*xf86-video-geode-2.11.9 (23 Aug 2010)
+
+  23 Aug 2010; Tomáš Chvátal <scarabeus@gentoo.org>
+  -xf86-video-geode-2.10.1.ebuild, -xf86-video-geode-2.11.3.ebuild,
+  +xf86-video-geode-2.11.9.ebuild, metadata.xml:
+  Version bump. Drop older. Migrate to new eclass. Add x11 to metadata.xml.
+
+  01 Jun 2010; Pawel Hajdan jr <phajdan.jr@gentoo.org>
+  xf86-video-geode-2.11.8.ebuild:
+  x86 stable wrt bug #321583
+
+*xf86-video-geode-2.11.8 (29 Apr 2010)
+
+  29 Apr 2010; Mart Raudsepp <leio@gentoo.org>
+  -xf86-video-geode-2.9.0.ebuild, -xf86-video-geode-2.11.6.ebuild,
+  +xf86-video-geode-2.11.8.ebuild:
+  Version bump. Most importantly fixes image drawing under
+  xorg-server-1.7/1.8
+
+*xf86-video-geode-2.11.6 (03 Nov 2009)
+
+  03 Nov 2009; Rémi Cardona <remi@gentoo.org>
+  +xf86-video-geode-2.11.6.ebuild:
+  bump to 2.11.6, fixes bug #291128
+
+  05 Oct 2009; Christian Faulhammer <fauli@gentoo.org>
+  xf86-video-geode-2.11.3.ebuild:
+  x86 stable, bug 282290
+
+*xf86-video-geode-2.11.3 (09 Jul 2009)
+
+  09 Jul 2009; Mart Raudsepp <leio@gentoo.org>
+  +xf86-video-geode-2.11.3.ebuild:
+  Version bump. GeodeLX support now uses RANDR1.2. Bug fixes and
+  compatibility fixes. This version compiles against xorg-server-1.6+.
+  Unfortunately it crashes on startup if the serial port muxed with DDC is
+  in serial port mode (mostly only for development on boards that don't
+  expose the dedicated serial port pins).
+
+  05 Apr 2009; Markus Meier <maekke@gentoo.org>
+  xf86-video-geode-2.10.1.ebuild:
+  x86 stable, bug #251832
+
+*xf86-video-geode-2.10.1 (01 Sep 2008)
+
+  01 Sep 2008; Mart Raudsepp <leio@gentoo.org>
+  +xf86-video-geode-2.10.1.ebuild:
+  Version bump. Includes OLPC DCON and CS5535 DDC support
+
+*xf86-video-geode-2.9.0 (09 May 2008)
+
+  09 May 2008; Mart Raudsepp <leio@gentoo.org> +metadata.xml,
+  +xf86-video-geode-2.9.0.ebuild:
+  Add renamed AMD Geode GX and LX video driver. This is a pkgmove with a
+  version bump over xf86-video-amd-2.7.7.7, as noted in bug 217301

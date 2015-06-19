@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=sys-libs/ncurses net-libs/libpcap[ipv6?]
+DESCRIPTION=Displays various tables of DNS traffic on your network
+EAPI=5
+HOMEPAGE=http://dnstop.measurement-factory.com/
+IUSE=ipv6
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~x86
+LICENSE=BSD
+RDEPEND=sys-libs/ncurses net-libs/libpcap[ipv6?]
+SLOT=0
+SRC_URI=http://dnstop.measurement-factory.com/src/dnstop-20140915.tar.gz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4
+_md5_=9ee3ce037c935bd6d11512c43a13fde4

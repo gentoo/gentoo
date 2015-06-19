@@ -1,0 +1,35 @@
+--- Makefile.orig	2009-03-07 21:27:48.000000000 +0100
++++ Makefile	2009-03-07 21:28:43.000000000 +0100
+@@ -19,32 +19,6 @@
+ 
+ include config.mak
+ 
+-ifeq ($(CC),gcc)
+-  CFLAGS   := -Wall -g -O2 -funsigned-char
+-  # do not warn about zero-length formats.
+-  CFLAGS   += -Wno-format-zero-length
+-  LDFLAGS  := -g
+-endif
+-
+-#include local compiler configuration file
+--include cflags.mk
+-
+-ifdef TARGET_GPROF
+-  CFLAGS   += -p
+-  LDFLAGS  += -p
+-endif
+-
+-TLDFLAGS := $(LDFLAGS)
+-
+-ifdef TARGET_ARCH_X86
+-  #CFLAGS+=-fomit-frame-pointer
+-  ifeq ($(GCC_MAJOR),2)
+-    CFLAGS+=-m386 -malign-functions=0
+-  else
+-    CFLAGS+=-march=i386 -falign-functions=0
+-  endif
+-endif
+-
+ DEFINES=-DHAVE_QE_CONFIG_H
+ 
+ ########################################################

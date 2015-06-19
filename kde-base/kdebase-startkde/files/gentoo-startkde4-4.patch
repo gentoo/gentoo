@@ -1,0 +1,26 @@
+--- startkde.cmake.old	2011-03-24 13:07:04.919889148 +0100
++++ startkde.cmake	2011-03-24 13:14:42.033174445 +0100
+@@ -187,6 +187,11 @@
+   done
+ done
+ 
++# Gentoo part for FHS installs
++for file in "@GENTOO_PORTAGE_EPREFIX@/etc/kde/startup/"*.sh; do
++  test -r "${file}" && . "${file}"
++done
++
+ # Set the path for Qt plugins provided by KDE
+ if test -n "$QT_PLUGIN_PATH"; then
+   QT_PLUGIN_PATH="$QT_PLUGIN_PATH:`kde4-config --path qtplugins`"
+@@ -400,6 +405,11 @@
+   done
+ done
+ 
++# Gentoo part for FHS installs
++for file in "@GENTOO_PORTAGE_EPREFIX@/etc/kde/shutdown/"*.sh; do
++  test -r "${file}" && . "${file}"
++done
++
+ unset KDE_FULL_SESSION
+ xprop -root -remove KDE_FULL_SESSION
+ unset KDE_SESSION_VERSION

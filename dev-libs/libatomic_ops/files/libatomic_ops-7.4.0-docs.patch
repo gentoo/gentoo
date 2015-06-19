@@ -1,0 +1,19 @@
+--- libatomic_ops-7.4.0/doc/Makefile.am
++++ libatomic_ops-7.4.0/doc/Makefile.am
+@@ -1,4 +1,4 @@
+ # installed documentation
+ #
+-dist_pkgdata_DATA=LICENSING.txt README.txt README_stack.txt \
++dist_doc_DATA=README.txt README_stack.txt \
+     README_malloc.txt README_win32.txt
+--- libatomic_ops-7.4.0/Makefile.am
++++ libatomic_ops-7.4.0/Makefile.am
+@@ -6,8 +6,6 @@
+ pkgconfig_DATA = pkgconfig/atomic_ops.pc
+ noinst_DATA = pkgconfig/atomic_ops-uninstalled.pc
+ 
+-dist_pkgdata_DATA = COPYING README.md
+-
+ EXTRA_DIST = autogen.sh
+ 
+ #distclean-local:

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <herd>sci-geosciences</herd>
+  <longdescription>The original GIS, yes the first one, developed by the US Army Corp of Engineers, now an active open source GIS. 
+See the GRASS Documentation Project for more info http://grass.itc.it/gdp/index.php
+</longdescription>
+  <use>
+    <flag name="gmath">Enable gmath wrapper for BLAS/Lapack (<pkg>virtual/blas</pkg>, <pkg>virtual/lapack</pkg>)</flag>
+  </use>
+</pkgmetadata>

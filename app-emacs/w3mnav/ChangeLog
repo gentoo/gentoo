@@ -1,0 +1,55 @@
+# ChangeLog for app-emacs/w3mnav
+# Copyright 2000-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/w3mnav/ChangeLog,v 1.14 2014/02/24 16:50:31 ulm Exp $
+
+  24 Feb 2014; Ulrich Müller <ulm@gentoo.org> w3mnav-0.5-r3.ebuild:
+  Update ebuild to EAPI 5. Specify LICENSE more precisely.
+
+  05 May 2009; Christian Faulhammer <fauli@gentoo.org> w3mnav-0.5-r3.ebuild:
+  set explicit RDEPEND
+
+*w3mnav-0.5-r3 (21 Sep 2007)
+
+  21 Sep 2007; Ulrich Mueller <ulm@gentoo.org> files/75w3mnav-gentoo.el,
+  -w3mnav-0.5-r2.ebuild, +w3mnav-0.5-r3.ebuild:
+  Move binding of keys to w3m-mode-hook. Fixes bug #193287, thanks to Ivan
+  Toshkov <ivan@toshkov.org> for the report and solution.
+
+*w3mnav-0.5-r2 (20 Sep 2007)
+
+  20 Sep 2007; Ulrich Mueller <ulm@gentoo.org> +files/75w3mnav-gentoo.el,
+  -files/90w3mnav-gentoo.el, -w3mnav-0.5-r1.ebuild, +w3mnav-0.5-r2.ebuild:
+  Use autoload mechanism, bug #174469. Move sitefile from 90 to 75.
+  Simplify byte-compilation in src_compile.
+
+  06 Feb 2007; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
+  Regenerate digest in Manifest2 format.
+
+  28 Aug 2005; Olivier Crête <tester@gentoo.org> w3mnav-0.5-r1.ebuild:
+  Marked ~amd64, thanks to AT AJ Armstrong <aja@gentoo.org> for testing
+
+  07 Aug 2005; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog:
+  Corrected digests; Resolves Bug #101588
+
+  26 Apr 2004; David Holm <dholm@gentoo.org> w3mnav-0.5-r1.ebuild:
+  Added to ~ppc.
+
+*w3mnav-0.5-r1 (09 Mar 2004)
+
+  09 Mar 2004; <mkennedy@gentoo.org> :
+  Moved site-file from 60 to 90 (emacs-w3m is now 70).
+
+  09 Mar 2004; <mkennedy@gentoo.org> :
+  Fixes a regression introduced by the new site-gentoo.el improvements.
+
+*w3mnav-0.5 (31 Oct 2003)
+
+  06 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> metadata.xml,
+  w3mnav-0.5.ebuild:
+  Moved long DESCRITION to metadata.xml. Removed unnecessary
+  app-emacs/w3mnav from DEPEND list.
+
+  31 Oct 2003; <mkennedy@gentoo.org> w3mnav-0.5.ebuild,
+  files/60w3mnav-gentoo.el:
+  initial import. ebuild contributed by Matthew Kennedy <mkennedy@gentoo.org>
+

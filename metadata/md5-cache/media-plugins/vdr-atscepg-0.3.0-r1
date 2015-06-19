@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile config configure install postinst postrm prepare setup unpack
+DEPEND=>=media-video/vdr-2 >=media-tv/gentoo-vdr-scripts-0.4.2 virtual/linuxtv-dvb-headers
+DESCRIPTION=VDR plugin: receive schedule and event information from ATSC broadcasts
+EAPI=5
+HOMEPAGE=http://www.fepg.org/atscepg.html
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=media-video/vdr-2 >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/eselect-vdr-0.0.2
+SLOT=0
+SRC_URI=http://www.fepg.org/files/vdr-atscepg-0.3.0.tgz mirror://gentoo/atscepg-0.3.0_vdr-1.7.13.tbz http://dev.gentoo.org/~hd_brummy/distfiles/atscepg-0.3.0_vdr-1.7.13.tbz
+_eclasses_=eutils	9fb270e417e0e83d64ca52586c4a79de	flag-o-matic	c9602887773166fe300444712fc7ff98	multilib	62927b3db3a589b0806255f3a002d5d3	toolchain-funcs	42408102d713fbad60ca21349865edb4	unpacker	f300a7ca9131b1024a79762e8edd3c52	vdr-plugin-2	3cba10b397a7c399a0b953c28aa27529
+_md5_=e398934da26beebfd703c42859c39557

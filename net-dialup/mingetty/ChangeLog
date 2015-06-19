@@ -1,0 +1,214 @@
+# ChangeLog for net-dialup/mingetty
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/mingetty/ChangeLog,v 1.58 2015/03/28 23:53:46 mrueg Exp $
+
+  28 Mar 2015; Manuel Rüger <mrueg@gentoo.org> -files/mingetty-1.07-utf8.patch,
+  -mingetty-1.07-r1.ebuild:
+  Remove old.
+
+  10 Aug 2014; Sergei Trofimovich <slyfox@gentoo.org> mingetty-1.07-r1.ebuild,
+  mingetty-1.08.ebuild:
+  QA: drop trailing '.' from DESCRIPTION
+
+  06 Feb 2011; Mart Raudsepp <leio@gentoo.org> mingetty-1.07-r1.ebuild:
+  Drop to ~mips
+
+  26 Apr 2008; nixnut <nixnut@gentoo.org> mingetty-1.08.ebuild:
+  Stable on ppc wrt bug 214651
+
+  18 Apr 2008; Jeroen Roovers <jer@gentoo.org> mingetty-1.08.ebuild:
+  Stable for HPPA (bug #214651).
+
+  17 Apr 2008; Raúl Porcel <armin76@gentoo.org> mingetty-1.08.ebuild:
+  ia64/sparc stable wrt #214651
+
+  16 Apr 2008; Tobias Klausmann <klausman@gentoo.org> mingetty-1.08.ebuild:
+  Stable on alpha, bug #214651
+
+  14 Apr 2008; Markus Rothe <corsair@gentoo.org> mingetty-1.08.ebuild:
+  Stable on ppc64; bug #214651
+
+  13 Apr 2008; Markus Meier <maekke@gentoo.org> mingetty-1.08.ebuild:
+  amd64/x86 stable, bug #214651
+
+*mingetty-1.08 (29 Jan 2008)
+
+  29 Jan 2008; Alin Năstac <mrness@gentoo.org>
+  +files/mingetty-1.08-utf8.patch, +mingetty-1.08.ebuild:
+  Version bump (#208053).
+
+  25 Aug 2007; Alin Năstac <mrness@gentoo.org> -mingetty-1.07.ebuild:
+  Remove old revision.
+
+  18 Aug 2007; Jeroen Roovers <jer@gentoo.org> mingetty-1.07-r1.ebuild:
+  Stable for HPPA (bug #185735).
+
+  24 Jul 2007; Joseph Jezak <josejx@gentoo.org> mingetty-1.07-r1.ebuild:
+  Marked ppc stable for bug #195735.
+
+  19 Jul 2007; Raúl Porcel <armin76@gentoo.org> mingetty-1.07-r1.ebuild:
+  alpha stable wrt #185735
+
+  12 May 2007; Joshua Kinard <kumba@gentoo.org> mingetty-1.07-r1.ebuild:
+  Stable on mips.
+
+  22 Apr 2007; Raúl Porcel <armin76@gentoo.org> mingetty-1.07-r1.ebuild:
+  ia64 stable
+
+  16 Apr 2007; Markus Rothe <corsair@gentoo.org> mingetty-1.07-r1.ebuild:
+  Stable on ppc64
+
+  12 Feb 2007; Gustavo Zacarias <gustavoz@gentoo.org>
+  mingetty-1.07-r1.ebuild:
+  Stable on sparc
+
+  10 Feb 2007; Alin Năstac <mrness@gentoo.org> mingetty-1.07-r1.ebuild:
+  Stable on amd64 and x86.
+
+*mingetty-1.07-r1 (22 Nov 2006)
+
+  22 Nov 2006; Alin Nastac <mrness@gentoo.org>
+  +files/mingetty-1.07-utf8.patch, +mingetty-1.07-r1.ebuild:
+  Added support for Unicode, thanks to Vince C. <vcadet@hotmail.com> who
+  ported the Suse patch (#123270).
+
+*mingetty-1.07 (18 Nov 2006)
+
+  18 Nov 2006; Alin Nastac <mrness@gentoo.org> +mingetty-1.07.ebuild,
+  -mingetty-1.07.3.ebuild, -mingetty-1.07.5.ebuild:
+  Replace identical versions with the sourceforge variant.
+
+  04 Nov 2006; Alexander H. Færøy <eroyf@gentoo.org>
+  mingetty-1.07.5.ebuild:
+  Stable on alpha.
+
+  04 Sep 2006; Joshua Kinard <kumba@gentoo.org> mingetty-1.07.5.ebuild:
+  Marked stable on mips.
+
+  04 Aug 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  mingetty-1.07.5.ebuild:
+  Stable on hppa
+
+  13 Jul 2006; Aron Griffis <agriffis@gentoo.org> mingetty-1.07.5.ebuild:
+  Mark 1.07.5 stable on ia64
+
+  24 May 2006; Michael Hanselmann <hansmi@gentoo.org>
+  mingetty-1.07.5.ebuild:
+  Stable on ppc.
+
+  23 May 2006; Markus Rothe <corsair@gentoo.org> mingetty-1.07.5.ebuild:
+  Stable on ppc64
+
+  17 May 2006; Gustavo Zacarias <gustavoz@gentoo.org>
+  mingetty-1.07.5.ebuild:
+  Stable on sparc
+
+  14 May 2006; Alin Nastac <mrness@gentoo.org>
+  -files/mingetty-1.00-autologin.patch, -files/mingetty-1.00-strerror.patch,
+  -mingetty-1.00.3.ebuild, mingetty-1.07.5.ebuild:
+  Remove obsolete version. Stable on x86.
+
+  24 Apr 2006; Joshua Kinard <kumba@gentoo.org> mingetty-1.07.3.ebuild:
+  Marked stable on mips.
+
+*mingetty-1.07.5 (12 Mar 2006)
+
+  12 Mar 2006; Alin Nastac <mrness@gentoo.org> mingetty-1.07.3.ebuild,
+  +mingetty-1.07.5.ebuild:
+  Quote $WORKDIR, $S and $D. Version bump.
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mingetty-1.07.3.ebuild:
+  Stable on ppc.
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> mingetty-1.07.3.ebuild:
+  Stable on ppc64
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> mingetty-1.07.3.ebuild:
+  stable on amd64
+
+  28 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  mingetty-1.07.3.ebuild:
+  Use correct toolchain compiler.
+
+  19 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> mingetty-1.07.3.ebuild:
+  Stable on alpha.
+
+  08 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> mingetty-1.07.3.ebuild:
+  Stable on sparc
+
+  07 Feb 2005; Alin Nastac <mrness@gentoo.org> mingetty-1.07.3.ebuild:
+  Mark stable on x86.
+
+*mingetty-1.07.3 (20 Nov 2004)
+
+  20 Nov 2004; Alin Nastac <mrness@gentoo.org> metadata.xml,
+  +mingetty-1.07.3.ebuild:
+  Version bump.
+
+  02 Oct 2004; <solar@gentoo.org> +files/mingetty-1.00-strerror.patch,
+  mingetty-1.00.3.ebuild:
+  replaced legacy interface sys_errlist[errno] with strerror(errno)
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mingetty-1.00.3.ebuild:
+  virtual/glibc -> virtual/libc
+
+  13 May 2004; Michael McCabe <randy@gentoo.org> mingetty-1.00.3.ebuild:
+  Added s390 keywords
+
+  09 May 2004; Ilya A. Volynets-Evenbach <iluxa@gentoo.org>
+  mingetty-1.00.3.ebuild:
+  This has been ~mips long enough.
+
+  03 May 2004; Tom Gall <tgall@gentoo.org> mingetty-1.00.3.ebuild:
+  stable on ppc64
+
+  08 Mar 2004; Bartosch Pixa <darkspecter@gentoo.org> mingetty-1.00.3.ebuild:
+  set ppc in keywords
+
+  06 Mar 2004; Ilya A. Volynets-Evenbakh <ilya@total-knowledge.com>
+  mingetty-1.00.3.ebuild:
+  mark as ~mips
+
+  18 Jan 2004; Jason Wever <weeve@gentoo.org> mingetty-1.00.3.ebuild:
+  Marked stable on sparc.
+
+  06 Jan 2004; <agriffis@gentoo.org> mingetty-1.00.3.ebuild:
+  Stable on ia64 for bug 36061
+
+  19 Dec 2003; Seemant Kulleen <seemant@gentoo.org> mingetty-1.00.3.ebuild:
+  move to rpm eclass and eutils eclass to use rpm_src_unpack magic and epatch,
+  respectively
+
+  19 Nov 2003; Heinrich Wendel <lanius@gentoo.org> metadata.xml:
+  metadata.xml
+
+  19 Oct 2003; Jason Wever <weeve@gentoo.org> mingetty-1.00.3.ebuild:
+  Added ~sparc keyword.
+
+  13 Aug 2003; Aron Griffis <agriffis@gentoo.org> mingetty-1.00.3.ebuild:
+  Mark stable on alpha for LiveCD
+
+  31 Dec 2002; Daniel Robbins <drobbins@gentoo.org>: Added autologin patch to
+  mingetty-1.00.3. Not bumping rev as I did this about 20 mins after unmasking
+  this for x86. This patch includes the Red Hat "opt" patch.
+
+*mingetty-1.00.3 (31 Dec 2002)
+
+  31 Dec 2002; Daniel Robbins <drobbins@gentoo.org> mingetty-1.00.3.ebuild: New
+  Red Hat 8 release version; unmasked for x86 and a couple of ebuild usability
+  updates.
+
+*mingetty-1.00 (05 Nov 2002)
+
+  17 Dec 2002; Seth Chandler <sethbc@gentoo.org> mingetty-1.00.ebuild
+  added ~ppc to KEYWORDS
+
+  05 Nov 2002; Seemant Kulleen <seemant@gentoo.org> mingetty-1.00.ebuild
+  ChangeLog files/digest-mingetty-1.00 :
+
+  This is a minimal getty for virtual consoles only, as used by RedHat,
+  Mandrake, etc.  The SRC_URI points to a src.rpm from Redhat, which is why
+  rpm2targz was made a dependency of this.  Ebuild submission by:
+  ian@abbott.org (Ian Abbott) in bug #7382.

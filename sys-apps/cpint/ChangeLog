@@ -1,0 +1,27 @@
+# ChangeLog for sys-apps/cpint
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/cpint/ChangeLog,v 1.8 2014/04/29 21:51:15 vapier Exp $
+
+  29 Apr 2014; Mike Frysinger <vapier@gentoo.org> cpint-2.5.3.ebuild:
+  Update to EAPI=4.
+
+  11 Jan 2008; Mike Frysinger <vapier@gentoo.org>
+  +files/cpint-2.5.3-build.patch, +files/cpint-2.5.3-kernel.patch,
+  +files/cpint-2.5.3-prototypes.patch, cpint-2.5.3.ebuild:
+  Clean/fix up build.
+
+*cpint-2.5.3 (07 Apr 2007)
+
+  07 Apr 2007; Mike Frysinger <vapier@gentoo.org> +cpint-2.5.3.ebuild:
+  Version bump #52607 by jochen.
+
+  26 Jan 2007; Alexander H. Færøy <eroyf@gentoo.org> cpint-1.1.6.ebuild:
+  Moving SLOT to 0.
+
+  30 Jun 2004; Aron Griffis <agriffis@gentoo.org> cpint-1.1.6.ebuild:
+  sync IUSE (missing), trim trailing whitespace
+
+*cpint-1.1.6 (20 Apr 2004)
+
+  20 Apr 2004; Michael McCabe <randy@gentoo.org> :
+  Initial Commit. Submitted by Jochen Eisinger jochen.eisinger@gmx.de

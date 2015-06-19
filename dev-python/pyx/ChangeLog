@@ -1,0 +1,192 @@
+# ChangeLog for dev-python/pyx
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyx/ChangeLog,v 1.46 2015/06/09 16:57:57 jlec Exp $
+
+  09 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
+  Updating remote-id in metadata.xml
+
+*pyx-0.14 (26 May 2015)
+
+  26 May 2015; Patrick Lauer <patrick@gentoo.org> +pyx-0.14.ebuild:
+  Bump
+
+  08 Mar 2015; Pacho Ramos <pacho@gentoo.org> pyx-0.13.ebuild:
+  x86 stable, bug 540290
+
+  06 Mar 2015; Pacho Ramos <pacho@gentoo.org> pyx-0.13.ebuild:
+  amd64 stable, bug 540290
+
+  25 Nov 2014; Pacho Ramos <pacho@gentoo.org> pyx-0.13.ebuild:
+  Support python 3.4
+
+  02 Jul 2014; Ian Delaney <idella4@gentoo.org> pyx-0.12.1-r1.ebuild,
+  pyx-0.13.ebuild:
+  add missing rdep texlive-basic, patch by fau, fixes Bug #516004 also by fau
+
+  29 Jun 2014; Ian Delaney <idella4@gentoo.org> pyx-0.12.1-r1.ebuild,
+  pyx-0.13.ebuild:
+  0.12.1-r1; drop py2.6 pypy2_0 on 0.12.1-r1; add missing dep for doc build &
+  call of distutils-r1_python_install_all, tidy, based on patch by J. Braun from
+  Bug #509768, fixes said bug
+
+*pyx-0.13 (03 May 2014)
+
+  03 May 2014; Patrick Lauer <patrick@gentoo.org> +pyx-0.13.ebuild:
+  Bump
+
+  31 Mar 2014; Michał Górny <mgorny@gentoo.org> pyx-0.12.1-r1.ebuild:
+  Add support for the new PyPy slotting.
+
+  05 Sep 2013; Michał Górny <mgorny@gentoo.org> pyx-0.12.1-r1.ebuild:
+  Clean up PYTHON_COMPAT from old implementations.
+
+  27 Feb 2013; Kacper Kowalik <xarthisius@gentoo.org> -pyx-0.10-r1.ebuild:
+  Drop old
+
+  27 Feb 2013; Agostino Sarubbo <ago@gentoo.org> pyx-0.12.1-r1.ebuild:
+  Stable for x86, wrt bug #459434
+
+  27 Feb 2013; Agostino Sarubbo <ago@gentoo.org> pyx-0.12.1-r1.ebuild:
+  Stable for amd64, wrt bug #459434
+
+*pyx-0.10-r1 (27 Feb 2013)
+
+  27 Feb 2013; Kacper Kowalik <xarthisius@gentoo.org> +pyx-0.10-r1.ebuild:
+  Reintroduce mistakenly removed stable version. Thanks to Michael Sterrett
+  <mr_bones_@gentoo.org> for spotting this
+
+  02 Feb 2013; Kacper Kowalik <xarthisius@gentoo.org> -files/pyx-0.10.patch,
+  -pyx-0.10-r1.ebuild, -pyx-0.11.1.ebuild, -pyx-0.12.1.ebuild, -pyx-0.12.ebuild,
+  pyx-0.12.1-r1.ebuild:
+  Drop old, add prefix keywords
+
+*pyx-0.12.1-r1 (27 Jan 2013)
+
+  27 Jan 2013; Ian Delaney <idella4@gentoo.org> +pyx-0.12.1-r1.ebuild,
+  pyx-0.12.1.ebuild:
+  revbump; migrated to distutils-r1, un-needed eutils dropped, fix to building
+  of docs, fixes Bug #453758, thx to flameeyes
+
+*pyx-0.12.1 (14 Nov 2012)
+
+  14 Nov 2012; Patrick Lauer <patrick@gentoo.org> +pyx-0.12.1.ebuild:
+  Bump
+
+*pyx-0.12 (29 Oct 2012)
+
+  29 Oct 2012; Patrick Lauer <patrick@gentoo.org> +pyx-0.12.ebuild:
+  Bump
+
+*pyx-0.11.1 (29 Jul 2011)
+
+  29 Jul 2011; Sébastien Fabbro <bicatali@gentoo.org> +pyx-0.11.1.ebuild:
+  Version bump
+
+  02 Jan 2011; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  -pyx-0.10.ebuild:
+  Delete.
+
+  02 Jan 2011; Pawel Hajdan jr <phajdan.jr@gentoo.org> pyx-0.10-r1.ebuild:
+  x86 stable wrt bug #349697
+
+  29 Dec 2010; Markos Chandras <hwoarang@gentoo.org> pyx-0.10-r1.ebuild:
+  Stable on amd64 wrt bug #349697
+
+  25 Dec 2010; Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
+  pyx-0.10-r1.ebuild:
+  Fix dependencies. Set SUPPORT_PYTHON_ABIS.
+
+*pyx-0.10-r1 (03 Sep 2008)
+
+  03 Sep 2008; Sébastien Fabbro <bicatali@gentoo.org> -pyx-0.6.1.ebuild,
+  pyx-0.10.ebuild, +pyx-0.10-r1.ebuild:
+  Changed virtual/tetex to virtual/latex-base, bug #222501. Added building
+  of pykpathsea and t1code and rearranged deps.
+
+  13 May 2008; Ali Polatel <hawking@gentoo.org> pyx-0.10.ebuild:
+  Set VARTEXFONTS to avoid possible sandbox issues wrt TeX fonts. Use
+  distutils_src_unpack.
+
+  01 May 2008; Markus Meier <maekke@gentoo.org> pyx-0.10.ebuild:
+  amd64/x86 stable
+
+  03 Jan 2008; Ali Polatel <hawking@gentoo.org> -files/pyx-0.7.1.patch,
+  -files/pyx-0.8.1.patch, -files/pyx-0.9.patch, -pyx-0.6.3.ebuild,
+  -pyx-0.7.1.ebuild, -pyx-0.8.1.ebuild, -pyx-0.9.ebuild, pyx-0.10.ebuild:
+  Removed old versions, quoting
+
+*pyx-0.10 (13 Oct 2007)
+
+  12 Oct 2007; Dirkjan Ochtman (djc) <mail@manuzhai.nl> +files/pyx-0.10.patch,
+  +pyx-0.10.ebuild:
+  New ebuild for bug 195603.
+
+*pyx-0.9 (24 Sep 2006)
+
+  24 Sep 2006; Donnie Berkholz <dberkholz@gentoo.org>; +files/pyx-0.9.patch,
+  +pyx-0.9.ebuild:
+  (#138631) Bump.
+
+  04 Aug 2006; Yuta SATOH <nigoro@gentoo.org> pyx-0.8.1.ebuild:
+  added ~ppc64, bug #142741
+
+  01 Apr 2006; Aron Griffis <agriffis@gentoo.org> pyx-0.8.1.ebuild:
+  Mark 0.8.1 ~ia64
+
+  28 Nov 2005; Marien Zwart <marienz@gentoo.org> pyx-0.7.1.ebuild:
+  Add missing eutils inherit.
+
+  28 Nov 2005; Marien Zwart <marienz@gentoo.org> pyx-0.8.1.ebuild:
+  Add missing eutils inherit.
+
+*pyx-0.8.1 (03 Nov 2005)
+
+  03 Nov 2005; Alastair Tse <liquidx@gentoo.org> +files/pyx-0.8.1.patch,
+  +pyx-0.8.1.ebuild:
+  version bump (#103036)
+
+  03 Sep 2005; <dang@gentoo.org> pyx-0.7.1.ebuild:
+  Marked ~amd64
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*pyx-0.7.1 (20 Dec 2004)
+
+  20 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> +files/pyx-0.7.1.patch,
+  -pyx-0.3.1.ebuild, -pyx-0.5.1.ebuild, +pyx-0.7.1.ebuild:
+  Remove old ebuilds and bump version, new ebuild by Fernando Serboncini
+  <fserb@terra.com.br>.
+
+*pyx-0.6.3 (12 Sep 2004)
+
+  12 Sep 2004; Lukasz Strzygowski <lucass@gentoo.org> metadata.xml,
+  pyx-0.5.1.ebuild, pyx-0.6.1.ebuild, +pyx-0.6.3.ebuild:
+  Version bump, thanks for information to Christopher Knox in bug #63604.
+  Some minor changes in the ebuild. Added description to metadata.xml.
+  Versions 0.5.1 and 0.6.1 marked stable on x86.
+
+  18 May 2004; Mamoru KOMACHI <usata@gentoo.org> pyx-0.3.1.ebuild,
+  pyx-0.5.1.ebuild, pyx-0.6.1.ebuild:
+  Changed app-text/tetex to virtual/tetex, see bug #50865
+
+  07 Apr 2004; David Holm <dholm@gentoo.org> pyx-0.6.1.ebuild:
+  Added to ~ppc.
+
+*pyx-0.6.1 (04 Apr 2004)
+
+  04 Apr 2004; Alastair Tse <liquidx@gentoo.org> pyx-0.6.1.ebuild:
+  version bump
+
+*pyx-0.5.1 (28 Mar 2004)
+
+  28 Mar 2004; Bryan Østergaard <kloeri@gentoo.org> pyx-0.5.1.ebuild:
+  Version bump.
+
+  05 Aug 2003; Alastair Tse <liquidx@gentoo.org> pyx-0.3.1.ebuild:
+  added tetex dep (#25512)
+
+*pyx-0.3.1 (10 May 2003)
+
+  10 May 2003; Alastair Tse <liquidx@gentoo.org> pyx-0.3.1.ebuild:
+  Initial ebuild. Submitted by Dan Bullok <dan.gentoo@bullok.com>.

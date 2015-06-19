@@ -1,0 +1,35 @@
+# ChangeLog for media-gfx/pdf2svg
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/pdf2svg/ChangeLog,v 1.9 2014/03/13 05:45:44 ssuominen Exp $
+
+  13 Mar 2014; Samuli Suominen <ssuominen@gentoo.org> pdf2svg-0.2.2.ebuild:
+  Explicitely define DOCS to skip build instruction README.md file.
+
+*pdf2svg-0.2.2 (15 Jan 2014)
+
+  15 Jan 2014; Tim Harder <radhermit@gentoo.org> +pdf2svg-0.2.2.ebuild:
+  Version bump.
+
+  17 Mar 2013; Samuli Suominen <ssuominen@gentoo.org> pdf2svg-0.2.1.ebuild:
+  Use subslot dependency for app-text/poppler wrt #462020
+
+  05 May 2012; Jeff Horelick <jdhore@gentoo.org> pdf2svg-0.2.1.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+  12 Aug 2010; Markus Meier <maekke@gentoo.org> pdf2svg-0.2.1.ebuild:
+  amd64 stable, bug #286570
+
+  09 Aug 2010; Christian Faulhammer <fauli@gentoo.org> pdf2svg-0.2.1.ebuild:
+  stable x86, bug 286570
+
+  10 Feb 2010; Samuli Suominen <ssuominen@gentoo.org> pdf2svg-0.2.1.ebuild:
+  Fix poppler depend.
+
+  30 Mar 2009; Peter Alfredsen <loki_val@gentoo.org> pdf2svg-0.2.1.ebuild:
+  Update dependencies w.r.t. bug 264230, fully-split-out poppler transition.
+  Also use EAPI=2.
+
+*pdf2svg-0.2.1 (27 Jun 2008)
+
+  27 Jun 2008; Samuli Suominen <drac@gentoo.org> +pdf2svg-0.2.1.ebuild:
+  Initial commit for bug 207693, thanks to Oliver Borm.

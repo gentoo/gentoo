@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>graphics</herd>
+	<use>
+		<flag name="3ds">Enable support for 3D Studio models</flag>
+		<flag name="cuda">Use nvidia cuda toolkit for speeding up
+	computations</flag>
+		<flag name="gts">Add Support for the GNU Triangulated Surface Library
+	<pkg>sci-libs/gts</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">k3d</remote-id>
+	</upstream>
+</pkgmetadata>

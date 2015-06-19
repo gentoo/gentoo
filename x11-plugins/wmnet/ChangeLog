@@ -1,0 +1,75 @@
+# ChangeLog for x11-plugins/wmnet
+# Copyright 2002-2010 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmnet/ChangeLog,v 1.24 2010/09/01 08:30:49 s4t4n Exp $
+
+  01 Sep 2010; Michele Noberasco <s4t4n@gentoo.org>; wmnet-1.06-r1.ebuild:
+  Fix installation of missing documentation. Closes bug #315811.
+  Honour Gentoo LDFLAGS.
+
+  22 Jul 2007; Donnie Berkholz <dberkholz@gentoo.org>; wmnet-1.06-r1.ebuild:
+  Drop virtual/x11 references.
+
+  21 Feb 2007; Markus Ullmann <jokey@gentoo.org> ChangeLog:
+  Redigest for Manifest2
+
+  31 Jan 2006; Krzysiek Pawlik <nelchael@gentoo.org> wmnet-1.06-r1.ebuild:
+  Fixed DEPEND for modular X.
+
+  11 Apr 2005; Michele Noberasco <s4t4n@gentoo.org> wmnet-1.06.ebuild:
+  Removed older revision.
+
+  10 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> wmnet-1.06-r1.ebuild:
+  Stable on ppc.
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> wmnet-1.06-r1.ebuild:
+  stable on amd64
+
+  08 Mar 2005; Michele Noberasco <s4t4n@gentoo.org> wmnet-1.06-r1.ebuild:
+  Moved large patch to distfiles.
+
+  13 Feb 2005; Bryan Østergaard <kloeri@gentoo.org> wmnet-1.06-r1.ebuild:
+  Stable on alpha.
+
+  28 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> wmnet-1.06-r1.ebuild:
+  Stable on sparc
+
+  26 Jan 2005; Michele Noberasco <s4t4n@gentoo.org> wmnet-1.06-r1.ebuild:
+  Stable for x86. Update copyright headers.
+  wmnet-1.06.ebuild:
+  Update copyright headers.
+
+*wmnet-1.06-r1 (05 Dec 2004)
+
+  05 Dec 2004; Michele Noberasco <s4t4n@gentoo.org> wmnet-1.06-r1.ebuild:
+  Revision bump, with new patchset. Closes #72818.
+
+  17 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmnet-1.06.ebuild:
+  Fix HOMEPAGE, closes #42381.
+
+  19 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> wmnet-1.06.ebuild:
+  Inherit eutils.
+
+  14 Dec 2003; Lars Weiler <pylon@gentoo.org> wmnet-1.06.ebuild:
+  Make stable on ppc 
+  Thanks to Florian Daniel for the testing
+
+  17 Jun 2003; Will Woods <wwoods@gentoo.org> wmnet-1.06.ebuild:
+  Marked stable for alpha
+
+  16 May 2003; Will Woods <wwoods@gentoo.org> wmnet-1.06.ebuild,
+  files/wmnet-1.06-nonx86.patch:
+  Added patch for non-x86 arches and ~alpha to KEYWORDS, small fix to use
+  CFLAGS when building.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*wmnet-1.06 (8 Jun 2002)
+
+  04 Oct 2002; Nick Hadaway <raker@gentoo.org> wmnet-1.06.ebuild :
+  Added "... || die "blah"" to ebuild where appropriate. 
+
+  30 Aug 2002; Seemant Kulleen <seemant@gentoo.org> * :
+  Relocated to x11-plugins
+
+  8 Jun 2002; Donny Davies <woodchip@gentoo.org> :
+  New port from eyez@infinite.fsw.leidenuniv.nl (Y-z).
